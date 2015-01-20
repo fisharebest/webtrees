@@ -25,7 +25,7 @@ define('WT_SCRIPT_NAME', 'branches.php');
 require './includes/session.php';
 
 
-$controller = new WT_Controller_Branches();
+$controller = new WT_Controller_Branches;
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
@@ -48,9 +48,9 @@ $controller
 						<?php echo WT_I18N::translate('Phonetic search'); ?>
 					</p>
 					<p>
-						<input type="checkbox" name="soundex_std" id="soundex_std" value="1" <?php if ($controller->getSoundexStd()) echo ' checked="checked"'; ?>>
+						<input type="checkbox" name="soundex_std" id="soundex_std" value="1" <?php echo $controller->getSoundexStd() ? 'checked' : ''; ?>>
 						<label for="soundex_std"><?php echo WT_I18N::translate('Russell'); ?></label>
-						<input type="checkbox" name="soundex_dm" id="soundex_dm" value="1" <?php if ($controller->getSoundexDm()) echo ' checked="checked"'; ?>>
+						<input type="checkbox" name="soundex_dm" id="soundex_dm" value="1" <?php echo $controller->getSoundexDm() ? 'checked' : ''; ?>>
 						<label for="soundex_dm"><?php echo WT_I18N::translate('Daitch-Mokotoff'); ?></label>
 					</p>
 				</td>

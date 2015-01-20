@@ -23,10 +23,10 @@
 
 define('WT_SCRIPT_NAME', 'descendancy.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/functions/functions_edit.php';
-require_once WT_ROOT.'includes/functions/functions_print_lists.php';
+require_once WT_ROOT . 'includes/functions/functions_edit.php';
+require_once WT_ROOT . 'includes/functions/functions_print_lists.php';
 
-$controller = new WT_Controller_Descendancy();
+$controller = new WT_Controller_Descendancy;
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
@@ -57,16 +57,16 @@ $controller
 					<?php echo WT_I18N::translate('Layout'); ?>
 				</td>
 				<td rowspan="2" class="optionbox">
-					<input type="radio" name="chart_style" value="0"<?php echo $controller->chart_style==0 ? ' checked="checked"' : ''; ?>>
+					<input type="radio" name="chart_style" value="0" <?php echo $controller->chart_style == 0 ? 'checked' : ''; ?>>
 					<?php echo  WT_I18N::translate('List'); ?>
 					<br>
-					<input type="radio" name="chart_style" value="1"<?php echo $controller->chart_style==1 ? ' checked="checked"' : ''; ?>>
+					<input type="radio" name="chart_style" value="1" <?php echo $controller->chart_style == 1 ? 'checked' : ''; ?>>
 					<?php echo WT_I18N::translate('Booklet'); ?>
 					<br>
-					<input type="radio" name="chart_style" value="2"<?php echo $controller->chart_style==2 ? ' checked="checked"' : ''; ?>>
+					<input type="radio" name="chart_style" value="2" <?php echo $controller->chart_style == 2 ? 'checked' : ''; ?>>
 					<?php echo WT_I18N::translate('Individuals'); ?>
 					<br>
-					<input type="radio" name="chart_style" value="3"<?php echo $controller->chart_style==3 ? ' checked="checked"' : ''; ?>>
+					<input type="radio" name="chart_style" value="3" <?php echo $controller->chart_style == 3 ? 'checked' : ''; ?>>
 					<?php echo WT_I18N::translate('Families'); ?>
 				</td>
 				<td rowspan="2" class="topbottombar">
@@ -84,7 +84,7 @@ $controller
 					<?php echo WT_I18N::translate('Show details'); ?>
 				</td>
 					<td class="optionbox">
-						<input type="checkbox" value="<?php if ($controller->show_full) { echo '1" checked="checked" onclick="document.people.show_full.value=\'0\';"'; } else { echo '0" onclick="document.people.show_full.value=\'1\';"'; } ?>>
+						<input type="checkbox" value="<?php if ($controller->show_full) { echo '1" checked onclick="document.people.show_full.value=\'0\';"'; } else { echo '0" onclick="document.people.show_full.value=\'1\';"'; } ?>>
 				</td>
 			</tr>
 		</table>
@@ -96,13 +96,13 @@ if ($controller->error_message) {
 } else {
 	switch ($controller->chart_style) {
 	case 0: // List
-		echo '<ul style="list-style: none; display: block;" id="descendancy_chart">';
+		echo '<ul id="descendancy_chart" class="chart_common">';
 		$controller->printChildDescendancy($controller->root, $controller->generations);
 		echo '</ul>';
 		break;
 	case 1: // Booklet
 		$show_cousins = true;
-		echo '<div id="descendancy_chart">';
+		echo '<div id="descendancy_booklet">';
 		$controller->printChildFamily($controller->root, $controller->generations);
 		echo '</div>';
 		break;

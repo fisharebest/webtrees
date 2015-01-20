@@ -7062,25 +7062,25 @@ msgstr "Hermosillo, Meksiko"
 #: library/WT/Date/Jewish.php:142
 msgctxt "GENITIVE"
 msgid "Heshvan"
-msgstr "chesvan-kuuta"
+msgstr "heshvan-kuuta"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:222
 msgctxt "INSTRUMENTAL"
 msgid "Heshvan"
-msgstr "chesvan-kuun"
+msgstr "heshvan-kuun"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:182
 msgctxt "LOCATIVE"
 msgid "Heshvan"
-msgstr "chesvan-kuussa"
+msgstr "heshvan-kuussa"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:102
 msgctxt "NOMINATIVE"
 msgid "Heshvan"
-msgstr "chesvan-kuu"
+msgstr "heshvan-kuu"
 
 #: admin_trees_config.php:230
 msgid "Hide &amp; show"
@@ -10288,7 +10288,7 @@ msgstr "iltapäivällä"
 
 #: help_text.php:1308
 msgid "PGV must be version 4.2.3, or any SVN up to #6973"
-msgstr "PGV pitää olla versio 4.2.3 tai jokin sen SVN päivityksistä #6973 saakka"
+msgstr "PGV pitää olla versio 4.2.3 tai jokin sen SVN päivityksistä #6973 asti"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:82
@@ -13643,7 +13643,7 @@ msgstr "Aika sekunneissa, miten kauan webtrees sessio / käyttäjän istunto pys
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:77
 #, php-format
-msgid "The two family trees have %1$s record which use the same “XREF”."
+msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
 msgstr[0] "Molemmissa sukupuissa on yksi tietue joilla on sama “XREF”."
 msgstr[1] "Molemmissa sukupuissa on %1$s tietuetta joilla on sama “XREF”."
@@ -13931,7 +13931,7 @@ msgstr "Tämän henkilön tiedot on suojattu."
 
 #: help_text.php:1094
 msgid "This input box lets you change that year of the calendar.  Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>.  This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned.  Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits.  For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
-msgstr "Tässä kentässä voit muuttaa kalenterivuoden.<br><br><b>Erityisominaisuuksia</b> <b>Näytä vuosi</b><dl><dt><b>Enemmän kuin yksi vuosi</b></dt><dd>Voit hakea päivämääriä vuosijakson sisällä.<br><br>Vuosijaksossa aikaalue ulottuu ensimmäisen vuoden 1. tammikuusta viimeisen vuoden 31. joulukuuta saakka. Tässä muutama esimerkki vuosijaksoista:<br><br><b>1992-5</b> Kaikki tapahtumat vuodesta 1992 vuoteen 1995.<br><b>1972-89</b> Kaikki tapahtumat vuodesta 1972 vuoteen 1989.<br><b>1610-759</b> Kaikki tapahtumat vuodesta 1610 vuoteen 1759.<br><b>1880-1905</b> Kaikki tapahtumat vuodesta 1880 vuoteen 1905.<br><b>880-1105</b> Kaikki tapahtumat vuodesta 880 vuoteen 1105.<br><br>Nähdäksesi kaikki tapahtumat tietyllä vuosikymmenellä tai vuosisadalla, voit kirjoittaa <b>?</b> viimeisten numeromerkkien asemesta. Esimerkiksi <b>197?</b> kaikki tapahtumat vuosina 1970-1979 tai <b>16??</b> kaikki tapahtumat vuosina 1600-1699.<br><br>Valitsemalla vuosijakson kalenterinäkymä muuttuu vuosinäkymäksi.</dd></dl>"
+msgstr "Tässä kentässä voit muuttaa kalenterivuoden.<br><br><b>Erityisominaisuuksia</b> <b>Näytä vuosi</b><dl><dt><b>Enemmän kuin yksi vuosi</b></dt><dd>Voit hakea päivämääriä vuosijakson sisällä.<br><br>Vuosijaksossa aikaalue ulottuu ensimmäisen vuoden 1. tammikuusta viimeisen vuoden 31. joulukuuta asti. Tässä muutama esimerkki vuosijaksoista:<br><br><b>1992-5</b> Kaikki tapahtumat vuodesta 1992 vuoteen 1995.<br><b>1972-89</b> Kaikki tapahtumat vuodesta 1972 vuoteen 1989.<br><b>1610-759</b> Kaikki tapahtumat vuodesta 1610 vuoteen 1759.<br><b>1880-1905</b> Kaikki tapahtumat vuodesta 1880 vuoteen 1905.<br><b>880-1105</b> Kaikki tapahtumat vuodesta 880 vuoteen 1105.<br><br>Nähdäksesi kaikki tapahtumat tietyllä vuosikymmenellä tai vuosisadalla, voit kirjoittaa <b>?</b> viimeisten numeromerkkien asemesta. Esimerkiksi <b>197?</b> kaikki tapahtumat vuosina 1970-1979 tai <b>16??</b> kaikki tapahtumat vuosina 1600-1699.<br><br>Valitsemalla vuosijakson kalenterinäkymä muuttuu vuosinäkymäksi.</dd></dl>"
 
 #: modules_v3/clippings/help_text.php:32
 msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the “Add” button."
@@ -14386,7 +14386,7 @@ msgstr "Tämä sivusto on tilapäisesti poissa käytöstä"
 
 #: admin_trees_manage.php:137
 #, php-format
-msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM."
+msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM file."
 msgstr "Tämä poistaa kaikki sukututkimustiedot <b>%s</b>sta ja korvaa ne toisen GEDCOMin tiedoilla."
 
 #: modules_v3/googlemap/module.php:1772
@@ -14474,25 +14474,25 @@ msgstr "Tir"
 #: library/WT/Date/Jewish.php:140
 msgctxt "GENITIVE"
 msgid "Tishrei"
-msgstr "tishri-kuuta"
+msgstr "tishrei-kuuta"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:220
 msgctxt "INSTRUMENTAL"
 msgid "Tishrei"
-msgstr "tishri-kuun"
+msgstr "tishrei-kuun"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:180
 msgctxt "LOCATIVE"
 msgid "Tishrei"
-msgstr "tishri-kuussa"
+msgstr "tishrei-kuussa"
 
 #. I18N: a month in the Jewish calendar
 #: library/WT/Date/Jewish.php:100
 msgctxt "NOMINATIVE"
 msgid "Tishrei"
-msgstr "tishri-kuu"
+msgstr "tishrei-kuu"
 
 #. I18N: gedcom tag TITL
 #: library/WT/Gedcom/Tag.php:831
@@ -16291,7 +16291,7 @@ msgstr "muuttaja"
 #: library/WT/Date.php:272
 #, php-format
 msgid "calculated %s"
-msgstr "laskettu %s"
+msgstr "todennäköisesti %s"
 
 #: library/WT/Stats.php:2593
 msgid "census added"
@@ -16929,7 +16929,7 @@ msgstr "%s alkaen"
 #: library/WT/Date.php:296
 #, php-format
 msgid "from %s to %s"
-msgstr "%s - %s saakka"
+msgstr "%s - %s asti"
 
 #. I18N: layout option for the fan chart
 #: library/WT/Controller/Fanchart.php:65
@@ -19644,7 +19644,7 @@ msgstr "tls"
 #: library/WT/Date.php:290
 #, php-format
 msgid "to %s"
-msgstr "%s saakka"
+msgstr "%s asti"
 
 #: includes/functions/functions.php:711
 msgctxt "FEMALE"

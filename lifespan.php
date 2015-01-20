@@ -26,7 +26,7 @@
 define('WT_SCRIPT_NAME', 'lifespan.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Lifespan();
+$controller = new WT_Controller_Lifespan;
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
@@ -148,7 +148,7 @@ $people = count($controller->people);
 								<br>
 								<div style="text-align: center;">
 									<?php echo WT_I18N::translate('Include the individual’s immediate family?'); ?>
-									<input type="checkbox" checked="checked" value="yes" name="addFamily">
+									<input type="checkbox" checked value="yes" name="addFamily">
 								</div>
 								<div style="text-align: center;">
 									<input type="submit" value="<?php echo WT_I18N::translate('Add'); ?>">
@@ -178,10 +178,10 @@ $people = count($controller->people);
 								</select>
 							</td>
 							<td>
-								<input type="text" name="beginYear" size="5" value="<?php echo $controller->beginYear==0 ? '' : $controller->beginYear; ?>">
+								<input type="text" name="beginYear" size="5" value="<?php echo $controller->beginYear == 0 ? '' : $controller->beginYear; ?>">
 							</td>
 							<td>
-								<input type="text" name="endYear" size="5" value="<?php echo $controller->endYear==0 ? '' : $controller->endYear; ?>">
+								<input type="text" name="endYear" size="5" value="<?php echo $controller->endYear == 0 ? '' : $controller->endYear; ?>">
 							</td>
 							<td>
 								<input data-autocomplete-type="PLAC" type="text" name="place" size="15" value="<?php echo WT_Filter::escapeHtml($controller->place); ?>">
@@ -201,7 +201,7 @@ $people = count($controller->people);
 	</table>
 	<div dir="ltr" id="lifespan_chart" class="lifespan_outer">
 		<div dir="ltr" id="topInner"  class="lifespan_timeline" onmousedown="pandiv(); return false;">';
-			<?php $controller->printTimeline($controller->timelineMinYear,$controller->timelineMaxYear); ?>
+			<?php $controller->printTimeline($controller->timelineMinYear, $controller->timelineMaxYear); ?>
 		</div>
 		<div id="inner" class="lifespan_people" onmousedown="pandiv(); return false;">
 			<?php $maxY = $controller->fillTimeline($controller->people, $controller->YrowLoc); ?>
@@ -220,9 +220,9 @@ $people = count($controller->people);
 					<td><a href="#" onclick="return false;" onmousedown="startScroll('left')" onmouseup="stopScroll()" class="icon-lsrtarrow"></a></td>
 				</tr>
 				<tr>
-					<td>&nbsp;</td>
+					<td></td>
 					<td align="center"><a href="#" onclick="return false;" onmousedown="startScroll('up')" onmouseup="stopScroll()" class="icon-lsdnarrow"></a></td>
-					<td>&nbsp;</td>
+					<td></td>
 				</tr>
 			</table>
 		</div>
@@ -233,4 +233,4 @@ $people = count($controller->people);
 // Sets the boundaries for how far the timeline can move in the up direction
 $controller->addInlineJavascript('var maxY = 80-' . $maxY . ';');
 // Sets the boundaries for how far the timeline can move in the left direction
-$controller->addInlineJavascript('var maxX = ' . (isset($maxX)?$maxX:0) . ';');
+$controller->addInlineJavascript('var maxX = ' . (isset($maxX) ? $maxX : 0) . ';');

@@ -2,7 +2,7 @@
 // Filter/escape/validate input and output
 //
 // webtrees: Web based Family History software
-// Copyright (c) 2014 webtrees development team
+// Copyright (c) 2015 webtrees development team
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ class WT_Filter {
 	// (([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?
 	// This matches far too much while a “precise” regex is several pages long.
 	// This is a compromise.
-	const URL_REGEX='((https?|ftp]):)(//([^\s/?#<>]*))?([^\s?#<>]*)(\?([^\s#<>]*))?(#[^\s?#<>]+)?';
+	const URL_REGEX = '((https?|ftp]):)(//([^\s/?#<>]*))?([^\s?#<>]*)(\?([^\s#<>]*))?(#[^\s?#<>]+)?';
 
 	/**
 	 * Escape a string for use in HTML
@@ -136,7 +136,7 @@ class WT_Filter {
 	public static function expandUrls($text) {
 		return preg_replace_callback(
 			'/' . addcslashes('(?!>)' . WT_Filter::URL_REGEX . '(?!</a>)', '/') . '/i',
-			function ($m) {
+			function($m) {
 				return '<a href="' . $m[0] . '" target="_blank">' . $m[0] . '</a>';
 			},
 			WT_Filter::escapeHtml($text)
@@ -181,7 +181,7 @@ class WT_Filter {
 	 *
 	 * @return string|null
 	 */
-	private static function input($source, $variable, $regexp=null, $default=null) {
+	private static function input($source, $variable, $regexp = null, $default = null) {
 		if ($regexp) {
 			return filter_input(
 				$source,
@@ -205,7 +205,7 @@ class WT_Filter {
 					},
 				)
 			);
-			return ($tmp===null || $tmp===false) ? $default : $tmp;
+			return ($tmp === null || $tmp === false) ? $default : $tmp;
 		}
 	}
 
@@ -219,7 +219,7 @@ class WT_Filter {
 	 *
 	 * @return string[]
 	 */
-	private static function inputArray($source, $variable, $regexp=null, $default=null) {
+	private static function inputArray($source, $variable, $regexp = null, $default = null) {
 		if ($regexp) {
 			// PHP5.3 requires the $tmp variable
 			$tmp = filter_input_array(
@@ -263,7 +263,7 @@ class WT_Filter {
 	 *
 	 * @return null|string
 	 */
-	public static function get($variable, $regexp=null, $default=null) {
+	public static function get($variable, $regexp = null, $default = null) {
 		return self::input(INPUT_GET, $variable, $regexp, $default);
 	}
 
@@ -276,7 +276,7 @@ class WT_Filter {
 	 *
 	 * @return string[]
 	 */
-	public static function getArray($variable, $regexp=null, $default=null) {
+	public static function getArray($variable, $regexp = null, $default = null) {
 		return self::inputArray(INPUT_GET, $variable, $regexp, $default);
 	}
 
@@ -288,7 +288,7 @@ class WT_Filter {
 	 * @return boolean
 	 */
 	public static function getBool($variable) {
-		return (bool)filter_input(INPUT_GET, $variable, FILTER_VALIDATE_BOOLEAN);
+		return (bool) filter_input(INPUT_GET, $variable, FILTER_VALIDATE_BOOLEAN);
 	}
 
 	/**
@@ -301,7 +301,7 @@ class WT_Filter {
 	 *
 	 * @return integer
 	 */
-	public static function getInteger($variable, $min=0, $max=PHP_INT_MAX, $default=0) {
+	public static function getInteger($variable, $min = 0, $max = PHP_INT_MAX, $default = 0) {
 		return filter_input(INPUT_GET, $variable, FILTER_VALIDATE_INT, array('options'=>array('min_range'=>$min, 'max_range'=>$max, 'default'=>$default)));
 	}
 
@@ -313,7 +313,7 @@ class WT_Filter {
 	 *
 	 * @return null|string
 	 */
-	public static function getEmail($variable, $default=null) {
+	public static function getEmail($variable, $default = null) {
 		return filter_input(INPUT_GET, $variable, FILTER_VALIDATE_EMAIL) ?: $default;
 	}
 
@@ -325,7 +325,7 @@ class WT_Filter {
 	 *
 	 * @return null|string
 	 */
-	public static function getUrl($variable, $default=null) {
+	public static function getUrl($variable, $default = null) {
 		return filter_input(INPUT_GET, $variable, FILTER_VALIDATE_URL) ?: $default;
 	}
 
@@ -338,7 +338,7 @@ class WT_Filter {
 	 *
 	 * @return null|string
 	 */
-	public static function post($variable, $regexp=null, $default=null) {
+	public static function post($variable, $regexp = null, $default = null) {
 		return self::input(INPUT_POST, $variable, $regexp, $default);
 	}
 
@@ -351,7 +351,7 @@ class WT_Filter {
 	 *
 	 * @return string[]
 	 */
-	public static function postArray($variable, $regexp=null, $default=null) {
+	public static function postArray($variable, $regexp = null, $default = null) {
 		return self::inputArray(INPUT_POST, $variable, $regexp, $default);
 	}
 
@@ -363,7 +363,7 @@ class WT_Filter {
 	 * @return boolean
 	 */
 	public static function postBool($variable) {
-		return (bool)filter_input(INPUT_POST, $variable, FILTER_VALIDATE_BOOLEAN);
+		return (bool) filter_input(INPUT_POST, $variable, FILTER_VALIDATE_BOOLEAN);
 	}
 
 	/**
@@ -376,7 +376,7 @@ class WT_Filter {
 	 *
 	 * @return integer
 	 */
-	public static function postInteger($variable, $min=0, $max=PHP_INT_MAX, $default=0) {
+	public static function postInteger($variable, $min = 0, $max = PHP_INT_MAX, $default = 0) {
 		return filter_input(INPUT_POST, $variable, FILTER_VALIDATE_INT, array('options'=>array('min_range'=>$min, 'max_range'=>$max, 'default'=>$default)));
 	}
 
@@ -388,7 +388,7 @@ class WT_Filter {
 	 *
 	 * @return null|string
 	 */
-	public static function postEmail($variable, $default=null) {
+	public static function postEmail($variable, $default = null) {
 		return filter_input(INPUT_POST, $variable, FILTER_VALIDATE_EMAIL) ?: $default;
 	}
 
@@ -400,7 +400,7 @@ class WT_Filter {
 	 *
 	 * @return null|string
 	 */
-	public static function postUrl($variable, $default=null) {
+	public static function postUrl($variable, $default = null) {
 		return filter_input(INPUT_POST, $variable, FILTER_VALIDATE_URL) ?: $default;
 	}
 
@@ -413,7 +413,7 @@ class WT_Filter {
 	 *
 	 * @return null|string
 	 */
-	public static function cookie($variable, $regexp=null, $default=null) {
+	public static function cookie($variable, $regexp = null, $default = null) {
 		return self::input(INPUT_COOKIE, $variable, $regexp, $default);
 	}
 
@@ -428,7 +428,7 @@ class WT_Filter {
 
 		if ($WT_SESSION->CSRF_TOKEN === null) {
 			$charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcedfghijklmnopqrstuvwxyz0123456789';
-			for ($n=0; $n<32; ++$n) {
+			for ($n = 0; $n < 32; ++$n) {
 				$WT_SESSION->CSRF_TOKEN .= substr($charset, mt_rand(0, 61), 1);
 			}
 		}
@@ -454,9 +454,11 @@ class WT_Filter {
 		if (WT_Filter::post('csrf') !== WT_Filter::getCsrfToken()) {
 			// Oops.  Something is not quite right
 			Log::addAuthenticationLog('CSRF mismatch - session expired or malicious attack');
-			WT_FlashMessages::addMessage(WT_I18N::translate('This form has expired.  Try again.'));
+			WT_FlashMessages::addMessage(WT_I18N::translate('This form has expired.  Try again.'), 'error');
+
 			return false;
 		}
+
 		return true;
 	}
 }

@@ -259,7 +259,7 @@ class WT_Media extends WT_GedcomRecord {
 	public function getFilesize($which = 'main') {
 		$size = $this->getFilesizeraw($which);
 		if ($size) {
-			$size = (int)(($size + 1023) / 1024);
+			$size = (int) (($size + 1023) / 1024);
 		} // add some bytes to be sure we never return “0 KB”
 		return /* I18N: size of file in KB */
 			WT_I18N::translate('%s KB', WT_I18N::number($size));
@@ -404,9 +404,18 @@ class WT_Media extends WT_GedcomRecord {
 			$pathinfo = pathinfo($exp[0]);
 			$imgsize['ext'] = @strtoupper($pathinfo['extension']);
 			// all mimetypes we wish to serve with the media firewall must be added to this array.
-			$mime = array('DOC' => 'application/msword', 'MOV' => 'video/quicktime', 'MP3' => 'audio/mpeg', 'PDF' => 'application/pdf',
-			              'PPT' => 'application/vnd.ms-powerpoint', 'RTF' => 'text/rtf', 'SID' => 'image/x-mrsid', 'TXT' => 'text/plain', 'XLS' => 'application/vnd.ms-excel',
-			              'WMV' => 'video/x-ms-wmv');
+			$mime = array(
+				'DOC' => 'application/msword',
+				'MOV' => 'video/quicktime',
+				'MP3' => 'audio/mpeg',
+				'PDF' => 'application/pdf',
+				'PPT' => 'application/vnd.ms-powerpoint',
+				'RTF' => 'text/rtf',
+				'SID' => 'image/x-mrsid',
+				'TXT' => 'text/plain',
+				'XLS' => 'application/vnd.ms-excel',
+				'WMV' => 'video/x-ms-wmv',
+			);
 			if (empty($mime[$imgsize['ext']])) {
 				// if we don’t know what the mimetype is, use something ambiguous
 				$imgsize['mime'] = 'application/octet-stream';

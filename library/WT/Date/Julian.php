@@ -55,14 +55,15 @@ class WT_Date_Julian extends WT_Date_Calendar {
 	 * {@inheritdoc}
 	 */
 	protected function extractYear($year) {
-		if (preg_match('/^(\d\d\d\d)\/\d{1,4}$/', $year, $match)) { // Assume the first year is correct
+		if (preg_match('/^(\d\d\d\d)\/\d{1,4}$/', $year, $match)) {
+			// Assume the first year is correct
 			$this->new_old_style = true;
 
 			return $match[1] + 1;
 		} else if (preg_match('/^(\d+) B\.C\.$/', $year, $match)) {
 			return -$match[1];
 		} else {
-			return (int)$year;
+			return (int) $year;
 		}
 	}
 

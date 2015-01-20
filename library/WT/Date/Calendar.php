@@ -82,7 +82,7 @@ class WT_Date_Calendar {
 
 		// Construct from an array (of three gedcom-style strings: "1900", "FEB", "4")
 		if (is_array($date)) {
-			$this->d = (int)$date[2];
+			$this->d = (int) $date[2];
 			if (array_key_exists($date[1], static::$MONTH_ABBREV)) {
 				$this->m = static::$MONTH_ABBREV[$date[1]];
 			} else {
@@ -119,7 +119,7 @@ class WT_Date_Calendar {
 			$jd    = $date->calendar->ymdToJd($today[0], $date->m, $date->d == 0 ? $today[2] : $date->d);
 		} else {
 			// Complete date
-			$jd = (int)(($date->maxJD + $date->minJD) / 2);
+			$jd = (int) (($date->maxJD + $date->minJD) / 2);
 		}
 		list($this->y, $this->m, $this->d) = $this->calendar->jdToYmd($jd);
 		// New date has same precision as original date
@@ -410,7 +410,7 @@ class WT_Date_Calendar {
 	 * @return integer
 	 */
 	protected function extractYear($year) {
-		return (int)$year;
+		return (int) $year;
 	}
 
 	/**
@@ -649,7 +649,7 @@ class WT_Date_Calendar {
 				$format = str_replace($match, $this->daysInMonth(), $format);
 				break;
 			case '%L':
-				$format = str_replace($match, (int)$this->isLeapYear(), $format);
+				$format = str_replace($match, (int) $this->isLeapYear(), $format);
 				break;
 			case '%Y':
 				$format = str_replace($match, $this->formatLongYear(), $format);
@@ -892,7 +892,7 @@ class WT_Date_Calendar {
 	protected static function numberToRomanNumerals($number) {
 		if ($number < 1) {
 			// Cannot convert zero/negative numbers
-			return (string)$number;
+			return (string) $number;
 		}
 		$roman = '';
 		foreach (self::$roman_numerals as $key => $value) {
@@ -957,24 +957,22 @@ class WT_Date_Calendar {
 	 * @return string
 	 */
 	public function calendarUrl($date_format) {
-		$URL    = 'calendar.php?cal=' . rawurlencode(static::CALENDAR_ESCAPE);
-		$action = 'year';
-		if (strpos($date_format, 'Y') !== false || strpos($date_format, 'y') !== false) {
-			$URL .= '&amp;year=' . $this->formatGedcomYear();
-		}
-		if (strpos($date_format, 'F') !== false || strpos($date_format, 'M') !== false || strpos($date_format, 'm') !== false || strpos($date_format, 'n') !== false) {
-			$URL .= '&amp;month=' . $this->formatGedcomMonth();
-			if ($this->m > 0) {
-				$action = 'calendar';
-			}
-		}
-		if (strpos($date_format, 'd') !== false || strpos($date_format, 'D') !== false || strpos($date_format, 'j') !== false) {
-			$URL .= '&amp;day=' . $this->formatGedcomDay();
-			if ($this->d > 0) {
-				$action = 'today';
-			}
+		if (strpbrk($date_format, 'dDj') && $this->d) {
+			// If the format includes a day, and the date also includes a day, then use the day view
+			$view = 'day';
+		} elseif (strpbrk($date_format, 'FMmn') && $this->m) {
+			// If the format includes a month, and the date also includes a month, then use the month view
+			$view = 'month';
+		} else {
+			// Use the year view
+			$view = 'year';
 		}
 
-		return $URL . '&amp;action=' . $action;
+		return
+			'calendar.php?cal=' . rawurlencode(static::CALENDAR_ESCAPE) .
+			'&amp;year=' . $this->formatGedcomYear() .
+			'&amp;month=' . $this->formatGedcomMonth() .
+			'&amp;day=' . $this->formatGedcomDay() .
+			'&amp;view=' . $view;
 	}
 }

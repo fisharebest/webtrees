@@ -23,17 +23,17 @@
 
 define('WT_SCRIPT_NAME', 'placelist.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/functions/functions_print_lists.php';
+require_once WT_ROOT . 'includes/functions/functions_print_lists.php';
 
-$controller = new WT_Controller_Page();
+$controller = new WT_Controller_Page;
 
-$action  = WT_Filter::get('action',  'find|show', 'find');
+$action  = WT_Filter::get('action', 'find|show', 'find');
 $display = WT_Filter::get('display', 'hierarchy|list', 'hierarchy');
 $parent  = WT_Filter::getArray('parent');
 
-$level=count($parent);
+$level = count($parent);
 
-if ($display=='hierarchy') {
+if ($display == 'hierarchy') {
 	if ($level) {
 		$controller->setPageTitle(WT_I18N::translate('Place hierarchy') . ' - <span dir="auto">' . WT_Filter::escapeHtml(end($parent)) . '</span>');
 	} else {
@@ -50,27 +50,27 @@ echo '<div id="place-hierarchy">';
 switch ($display) {
 case 'list':
 	echo '<h2>', $controller->getPageTitle(), '</h2>';
-	$list_places=WT_Place::allPlaces(WT_GED_ID);
-	$num_places=count($list_places);
+	$list_places = WT_Place::allPlaces(WT_GED_ID);
+	$num_places = count($list_places);
 
-	if ($num_places==0) {
+	if ($num_places == 0) {
 		echo '<b>', WT_I18N::translate('No results found.'), '</b><br>';
 	} else {
 		echo '<table class="list_table">';
 		echo '<tr><td class="list_label" ';
-		echo ' colspan="', $num_places>20 ? 3 : 2, '"><i class="icon-place"></i> ';
+		echo ' colspan="', $num_places > 20 ? 3 : 2, '"><i class="icon-place"></i> ';
 		echo WT_I18N::translate('Place list');
 		echo '</td></tr><tr><td class="list_value_wrap"><ul>';
 		foreach ($list_places as $n=>$list_place) {
 			echo '<li><a href="', $list_place->getURL(), '">', $list_place->getReverseName(), '</a></li>';
 			if ($num_places > 20) {
-				if ($n == (int)($num_places / 3)) {
+				if ($n == (int) ($num_places / 3)) {
 					echo '</ul></td><td class="list_value_wrap"><ul>';
 				}
-				if ($n == (int)(($num_places / 3) * 2)) {
+				if ($n == (int) (($num_places / 3) * 2)) {
 					echo '</ul></td><td class="list_value_wrap"><ul>';
 				}
-			} elseif ($n == (int)($num_places/2)) {
+			} elseif ($n == (int) ($num_places / 2)) {
 				echo '</ul></td><td class="list_value_wrap"><ul>';
 			}
 		}
@@ -88,37 +88,37 @@ case 'hierarchy':
 	}
 
 	// Find this place and its ID
-	$place=new WT_Place(implode(', ', array_reverse($parent)), WT_GED_ID);
-	$place_id=$place->getPlaceId();
+	$place = new WT_Place(implode(', ', array_reverse($parent)), WT_GED_ID);
+	$place_id = $place->getPlaceId();
 
-	$child_places=$place->getChildPlaces();
+	$child_places = $place->getChildPlaces();
 
-	$numfound=count($child_places);
+	$numfound = count($child_places);
 
 	//-- if the number of places found is 0 then automatically redirect to search page
-	if ($numfound==0) {
-		$action='show';
+	if ($numfound == 0) {
+		$action = 'show';
 	}
 
 	echo '<h2>', $controller->getPageTitle();
 	// Breadcrumbs
 	if ($place_id) {
-		$parent_place=$place->getParentPlace();
+		$parent_place = $place->getParentPlace();
 		while ($parent_place->getPlaceId()) {
 			echo ', <a href="', $parent_place->getURL(), '" dir="auto">', $parent_place->getPlaceName(), '</a>';
-			$parent_place=$parent_place->getParentPlace();
+			$parent_place = $parent_place->getParentPlace();
 		}
 		echo ', <a href="', WT_SCRIPT_NAME, '">', WT_I18N::translate('Top level'), '</a>';
 	}
 	echo '</h2>';
 
 	if ($gm_module && $gm_module->getSetting('GM_PLACE_HIERARCHY')) {
-		$linklevels='';
-		$placelevels='';
-		$place_names=array();
-		for ($j=0; $j<$level; $j++) {
-			$linklevels .= '&amp;parent['.$j.']='.rawurlencode($parent[$j]);
-			if ($parent[$j]=='') {
+		$linklevels = '';
+		$placelevels = '';
+		$place_names = array();
+		for ($j = 0; $j < $level; $j++) {
+			$linklevels .= '&amp;parent[' . $j . ']=' . rawurlencode($parent[$j]);
+			if ($parent[$j] == '') {
 				$placelevels = ', ' . WT_I18N::translate('unknown') . $placelevels;
 			} else {
 				$placelevels = ', ' . $parent[$j] . $placelevels;
@@ -132,7 +132,7 @@ case 'hierarchy':
 
 	// -- echo the array
 	foreach ($child_places as $n => $child_place) {
-		if ($n==0) {
+		if ($n == 0) {
 			echo '<table id="place_hierarchy" class="list_table"><tr><td class="list_label" ';
 			if ($numfound > 20) {
 				echo 'colspan="3"';
@@ -150,24 +150,24 @@ case 'hierarchy':
 
 		echo '<li><a href="', $child_place->getURL(), '" class="list_item">', $child_place->getPlaceName(), '</a></li>';
 		if ($gm_module && $gm_module->getSetting('GM_PLACE_HIERARCHY')) {
-			list($tmp) =  explode(', ', $child_place->getGedcomName(), 2);
-			$place_names[$n]=$tmp;
+			list($tmp) = explode(', ', $child_place->getGedcomName(), 2);
+			$place_names[$n] = $tmp;
 		}
 		$n++;
 		if ($numfound > 20) {
-			if ($n == (int)($numfound / 3)) {
+			if ($n == (int) ($numfound / 3)) {
 				echo '</ul></td><td class="list_value"><ul>';
 			}
-			if ($n == (int)(($numfound / 3) * 2)) {
+			if ($n == (int) (($numfound / 3) * 2)) {
 				echo '</ul></td><td class="list_value"><ul>';
 			}
-		} elseif ($numfound > 4 && $n == (int)($numfound / 2)) {
+		} elseif ($numfound > 4 && $n == (int) ($numfound / 2)) {
 			echo '</ul></td><td class="list_value"><ul>';
 		}
 	}
 	if ($child_places) {
 		echo '</ul></td></tr>';
-		if ($action=='find' && $place_id) {
+		if ($action == 'find' && $place_id) {
 			echo '<tr><td class="list_label" ';
 			if ($numfound > 20) {
 				echo 'colspan="3"';
@@ -190,24 +190,24 @@ case 'hierarchy':
 		echo '</table>';
 	}
 	echo '</td></tr></table>';
-	if ($place_id && $action=='show') {
+	if ($place_id && $action == 'show') {
 		// -- array of names
 		$myindilist = array();
 		$myfamlist = array();
 
-		$positions=
+		$positions =
 			WT_DB::prepare("SELECT DISTINCT pl_gid FROM `##placelinks` WHERE pl_p_id=? AND pl_file=?")
 			->execute(array($place_id, WT_GED_ID))
 			->fetchOneColumn();
 
 		foreach ($positions as $position) {
-			$record=WT_GedcomRecord::getInstance($position);
+			$record = WT_GedcomRecord::getInstance($position);
 			if ($record && $record->canShow()) {
 				if ($record instanceof WT_Individual) {
-					$myindilist[]=$record;
+					$myindilist[] = $record;
 				}
 				if ($record instanceof WT_Family) {
-					$myfamlist[]=$record;
+					$myfamlist[] = $record;
 				}
 			}
 		}

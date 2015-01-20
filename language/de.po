@@ -8182,17 +8182,17 @@ msgstr "Diese Person als Kind mit einer existierenden Familie verbinden"
 #: admin_media.php:517 library/WT/Controller/Media.php:70
 #: library/WT/Controller/Media.php:159 modules_v3/lightbox/module.php:144
 msgid "Link this media object to a family"
-msgstr ""
+msgstr "Verlinke dieses Medienobjekt mit einer Familie"
 
 #: admin_media.php:522 library/WT/Controller/Media.php:74
 #: library/WT/Controller/Media.php:162 modules_v3/lightbox/module.php:149
 msgid "Link this media object to a source"
-msgstr ""
+msgstr "Verlinke dieses Medienobjekt mit einer Quelle"
 
 #: admin_media.php:512 library/WT/Controller/Media.php:66
 #: library/WT/Controller/Media.php:156 modules_v3/lightbox/module.php:139
 msgid "Link this media object to an individual"
-msgstr ""
+msgstr "Verlinke dieses Medienobjekt mit einer Person"
 
 #: inverselink.php:35 inverselink.php:68 library/WT/Controller/Family.php:215
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:75
@@ -11525,7 +11525,7 @@ msgstr "Wohnort"
 
 #: index_edit.php:355
 msgid "Restore the default block layout"
-msgstr ""
+msgstr "Stelle das ursprüngliche Block Layout wieder her"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:274
@@ -13644,7 +13644,7 @@ msgstr "Die Zeit in Sekunden, nach der man sich für eine webtrees-Sitzung erneu
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:77
 #, php-format
-msgid "The two family trees have %1$s record which use the same “XREF”."
+msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
 msgstr[0] "Die beiden Stammbäume haben einen Datensatz, der die selbe “XREF” verwendet."
 msgstr[1] "Die beiden Stammbäume haben %1$s Datensätze, die die selben “XREF” verwenden."
@@ -14387,7 +14387,7 @@ msgstr "Diese Webseite ist vorübergehend nicht verfügbar."
 
 #: admin_trees_manage.php:137
 #, php-format
-msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM."
+msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM file."
 msgstr "Dies wird die Genealogischen Daten von <b>%s</b> löschen und sie durch Daten einer andern GEDCOM ersetzen."
 
 #: modules_v3/googlemap/module.php:1772

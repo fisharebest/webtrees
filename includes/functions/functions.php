@@ -160,12 +160,12 @@ function load_gedcom_settings($ged_id) {
 	foreach ($rows as $row) {
 		if ($row->xref !== null) {
 			if ($row->tag_type !== null) {
-				$person_facts[$row->xref][$row->tag_type] = (int)$row->resn;
+				$person_facts[$row->xref][$row->tag_type] = (int) $row->resn;
 			} else {
-				$person_privacy[$row->xref] = (int)$row->resn;
+				$person_privacy[$row->xref] = (int) $row->resn;
 			}
 		} else {
-			$global_facts[$row->tag_type] = (int)$row->resn;
+			$global_facts[$row->tag_type] = (int) $row->resn;
 		}
 	}
 }
@@ -906,7 +906,8 @@ function get_relationship_name_from_path($path, WT_Individual $person1 = null, W
 			$dob1 = $person1->getBirthDate();
 			$dob2 = $person2->getBirthDate();
 			if ($dob1->isOK() && $dob2->isOK()) {
-				if (abs($dob1->JD() - $dob2->JD()) < 2 && !$dob1->qual1 && !$dob2->qual1) { // Exclude BEF, AFT, etc.
+				if (abs($dob1->JD() - $dob2->JD()) < 2 && !$dob1->qual1 && !$dob2->qual1) {
+					// Exclude BEF, AFT, etc.
 					return WT_I18N::translate('twin brother');
 				} elseif ($dob1->MaxJD() < $dob2->MinJD()) {
 					return WT_I18N::translate('younger brother');
@@ -922,7 +923,8 @@ function get_relationship_name_from_path($path, WT_Individual $person1 = null, W
 			$dob1 = $person1->getBirthDate();
 			$dob2 = $person2->getBirthDate();
 			if ($dob1->isOK() && $dob2->isOK()) {
-				if (abs($dob1->JD() - $dob2->JD()) < 2 && !$dob1->qual1 && !$dob2->qual1) { // Exclude BEF, AFT, etc.
+				if (abs($dob1->JD() - $dob2->JD()) < 2 && !$dob1->qual1 && !$dob2->qual1) {
+					// Exclude BEF, AFT, etc.
 					return WT_I18N::translate('twin sister');
 				} elseif ($dob1->MaxJD() < $dob2->MinJD()) {
 					return WT_I18N::translate('younger sister');
@@ -938,7 +940,8 @@ function get_relationship_name_from_path($path, WT_Individual $person1 = null, W
 			$dob1 = $person1->getBirthDate();
 			$dob2 = $person2->getBirthDate();
 			if ($dob1->isOK() && $dob2->isOK()) {
-				if (abs($dob1->JD() - $dob2->JD()) < 2 && !$dob1->qual1 && !$dob2->qual1) { // Exclude BEF, AFT, etc.
+				if (abs($dob1->JD() - $dob2->JD()) < 2 && !$dob1->qual1 && !$dob2->qual1) {
+					// Exclude BEF, AFT, etc.
 					return WT_I18N::translate('twin sibling');
 				} elseif ($dob1->MaxJD() < $dob2->MinJD()) {
 					return WT_I18N::translate('younger sibling');
@@ -2219,8 +2222,8 @@ function get_relationship_name_from_path($path, WT_Individual $person1 = null, W
 		$descent = $match[2];
 		$up = strlen($ascent) / 3;
 		$down = strlen($descent) / 3;
-		$cousin = min($up, $down);  // Moved out of switch (en/default case) so that
-		$removed = abs($down - $up);  // Spanish (and other languages) can use it, too.
+		$cousin = min($up, $down); // Moved out of switch (en/default case) so that
+		$removed = abs($down - $up); // Spanish (and other languages) can use it, too.
 
 		// Different languages have different rules for naming cousins.  For example,
 		// an English “second cousin once removed” is a Polish “cousin of 7th degree”.

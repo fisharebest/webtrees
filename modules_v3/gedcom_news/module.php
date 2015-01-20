@@ -1,6 +1,6 @@
 <?php
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -20,6 +20,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use WT\Auth;
+use WT\Theme;
 
 // Create tables, if not already present
 try {
@@ -100,7 +101,7 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 				$c++;
 			}
 			if ($limit == 'date') {
-				if ((int)((WT_TIMESTAMP - $news->updated) / 86400) > $flag) {
+				if ((int) ((WT_TIMESTAMP - $news->updated) / 86400) > $flag) {
 					break;
 				}
 			}
@@ -113,7 +114,7 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= $news->body;
 			// Print Admin options for this News item
 			if (WT_USER_GEDCOM_ADMIN) {
-				$content .= '<hr>' . '<a href="#" onclick="window.open(\'editnews.php?news_id=\'+' . $news->news_id . ', \'_blank\', news_window_specs); return false;">' . WT_I18N::translate('Edit') . '</a> | ' . '<a href="index.php?action=deletenews&amp;news_id=' . $news->news_id . '&amp;ctype=' . $ctype .'" onclick="return confirm(\'' . WT_I18N::translate('Are you sure you want to delete this news article?') . "');\">" . WT_I18N::translate('Delete') . '</a><br>';
+				$content .= '<hr>' . '<a href="#" onclick="window.open(\'editnews.php?news_id=\'+' . $news->news_id . ', \'_blank\', news_window_specs); return false;">' . WT_I18N::translate('Edit') . '</a> | ' . '<a href="index.php?action=deletenews&amp;news_id=' . $news->news_id . '&amp;ctype=' . $ctype . '" onclick="return confirm(\'' . WT_I18N::translate('Are you sure you want to delete this news article?') . "');\">" . WT_I18N::translate('Delete') . '</a><br>';
 			}
 			$content .= '</div>';
 		}
@@ -126,12 +127,12 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 			if ($printedAddLink) {
 				$content .= '&nbsp;&nbsp;|&nbsp;&nbsp;';
 			}
-			$content .= '<a href="index.php?gedcom_news_archive=yes&amp;ctype=' . $ctype .'">' . WT_I18N::translate('View archive') . "</a>";
+			$content .= '<a href="index.php?gedcom_news_archive=yes&amp;ctype=' . $ctype . '">' . WT_I18N::translate('View archive') . "</a>";
 			$content .= help_link('gedcom_news_archive') . '<br>';
 		}
 
 		if ($template) {
-			require WT_THEME_DIR . 'templates/block_main_temp.php';
+			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 			return $content;
 		}
@@ -167,11 +168,11 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 		echo
 			'<tr><td class="descriptionbox wrap width33">',
 			WT_I18N::translate('Limit display by:'), help_link('gedcom_news_limit'),
-			'</td><td class="optionbox"><select name="limit"><option value="nolimit"',
-			($limit == 'nolimit' ? ' selected="selected"' : '') . ">",
+			'</td><td class="optionbox"><select name="limit"><option value="nolimit" ',
+			($limit == 'nolimit' ? 'selected' : '') . ">",
 			WT_I18N::translate('No limit') . "</option>",
-			'<option value="date"' . ($limit == 'date' ? ' selected="selected"' : '') . ">" . WT_I18N::translate('Age of item') . "</option>",
-			'<option value="count"' . ($limit == 'count' ? ' selected="selected"' : '') . ">" . WT_I18N::translate('Number of items') . "</option>",
+			'<option value="date" ' . ($limit == 'date' ? 'selected' : '') . ">" . WT_I18N::translate('Age of item') . "</option>",
+			'<option value="count" ' . ($limit == 'count' ? 'selected' : '') . ">" . WT_I18N::translate('Number of items') . "</option>",
 			'</select></td></tr>';
 
 		// Flag to look for

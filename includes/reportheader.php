@@ -34,13 +34,13 @@ if (!defined('WT_WEBTREES')) {
  * @global array $elementHandler
  */
 $elementHandler = array();
-$elementHandler["Report"]["start"]   ="reportStartHandler";
-$elementHandler["var"]["start"]      ="varStartHandler";
-$elementHandler["Title"]["start"]    ="titleStartHandler";
-$elementHandler["Title"]["end"]      ="titleEndHandler";
-$elementHandler["Description"]["end"]="descriptionEndHandler";
-$elementHandler["Input"]["start"]    ="inputStartHandler";
-$elementHandler["Input"]["end"]      ="inputEndHandler";
+$elementHandler["Report"]["start"]   = "reportStartHandler";
+$elementHandler["var"]["start"]      = "varStartHandler";
+$elementHandler["Title"]["start"]    = "titleStartHandler";
+$elementHandler["Title"]["end"]      = "titleEndHandler";
+$elementHandler["Description"]["end"] = "descriptionEndHandler";
+$elementHandler["Input"]["start"]    = "inputStartHandler";
+$elementHandler["Input"]["end"]      = "inputEndHandler";
 
 $text = "";
 $report_array = array();
@@ -49,7 +49,7 @@ $report_array = array();
  * xml start element handler
  *
  * this function is called whenever a starting element is reached
-
+ *
  * @param resource $parser the resource handler for the xml parser
  * @param string   $name the name of the xml element parsed
  * @param string[] $attrs an array of key value pairs for the attributes
@@ -57,7 +57,7 @@ $report_array = array();
 function startElement($parser, $name, $attrs) {
 	global $elementHandler, $processIfs;
 
-	if (($processIfs==0) || ($name=="if")) {
+	if (($processIfs == 0) || ($name == "if")) {
 		if (isset($elementHandler[$name]["start"])) {
 			call_user_func($elementHandler[$name]["start"], $attrs);
 		}
@@ -74,7 +74,7 @@ function startElement($parser, $name, $attrs) {
 function endElement($parser, $name) {
 	global $elementHandler, $processIfs;
 
-	if (($processIfs==0) || ($name=="if")) {
+	if (($processIfs == 0) || ($name == "if")) {
 		if (isset($elementHandler[$name]["end"])) {
 			call_user_func($elementHandler[$name]["end"]);
 		}
@@ -125,7 +125,7 @@ function varStartHandler($attrs) {
 	$var = $attrs["var"];
 	if (!empty($var)) {
 		$tfact = $fact;
-		if ($fact=="EVEN") {
+		if ($fact == "EVEN") {
 			$tfact = $type;
 		}
 		$var = str_replace(array("@fact", "@desc"), array($tfact, $desc), $var);
@@ -166,7 +166,7 @@ function descriptionEndHandler() {
 function inputStartHandler($attrs) {
 	global $input, $text;
 
-	$text ="";
+	$text = "";
 	$input = array();
 	$input["name"] = "";
 	$input["type"] = "";
@@ -184,16 +184,16 @@ function inputStartHandler($attrs) {
 		$input["lookup"] = $attrs["lookup"];
 	}
 	if (isset($attrs["default"])) {
-		if ($attrs["default"]=="NOW") {
+		if ($attrs["default"] == "NOW") {
 			$input["default"] = date("d M Y");
 		} else {
 			$match = array();
-			if (preg_match("/NOW\s*([+\-])\s*(\d+)/", $attrs['default'], $match)>0) {
+			if (preg_match("/NOW\s*([+\-])\s*(\d+)/", $attrs['default'], $match) > 0) {
 				$plus = 1;
-				if ($match[1]=="-") {
+				if ($match[1] == "-") {
 					$plus = -1;
 				}
-				$input["default"] = date("d M Y", WT_TIMESTAMP + $plus*60*60*24*$match[2]);
+				$input["default"] = date("d M Y", WT_TIMESTAMP + $plus * 60 * 60 * 24 * $match[2]);
 			} else {
 				$input["default"] = $attrs["default"];
 			}

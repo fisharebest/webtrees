@@ -1,6 +1,6 @@
 <?php
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2008 PGV Development Team.  All rights reserved.
@@ -68,7 +68,7 @@ class WT_Fact {
 			$this->fact_id = $fact_id;
 			$this->tag     = $match[1];
 		} else {
-			throw new InvalidArgumentException('Invalid GEDCOM data passed to WT_Fact::_construct('.$gedcom.')');
+			throw new InvalidArgumentException('Invalid GEDCOM data passed to WT_Fact::_construct(' . $gedcom . ')');
 		}
 	}
 
@@ -403,25 +403,6 @@ class WT_Fact {
 			return '<div class="old">' . $html . '</div>';
 		} else {
 			return $html;
-		}
-	}
-
-	/**
-	 * Display an icon for this fact.
-	 * Icons are held in a theme subfolder.  Not all themes provide icons.
-	 *
-	 * @return string
-	 */
-	public function icon() {
-		$icon = 'images/facts/' . $this->getTag() . '.png';
-		$dir  = substr(WT_CSS_URL, strlen(WT_STATIC_URL));
-		if (file_exists($dir . $icon)) {
-			return '<img src="' . WT_CSS_URL . $icon . '" title="' . WT_Gedcom_Tag::getLabel($this->getTag()) . '">';
-		} elseif (file_exists($dir . 'images/facts/NULL.png')) {
-			// Spacer image - for alignment - until we move to a sprite.
-			return '<img src="' . WT_CSS_URL . 'images/facts/NULL.png">';
-		} else {
-			return '';
 		}
 	}
 

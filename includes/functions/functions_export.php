@@ -32,34 +32,34 @@ use WT\Auth;
 function reformat_record_export($rec) {
 	global $WORD_WRAPPED_NOTES;
 
-	$newrec='';
+	$newrec = '';
 	foreach (preg_split('/[\r\n]+/', $rec, -1, PREG_SPLIT_NO_EMPTY) as $line) {
 		// Split long lines
 		// The total length of a GEDCOM line, including level number, cross-reference number,
 		// tag, value, delimiters, and terminator, must not exceed 255 (wide) characters.
 		if (mb_strlen($line) > WT_GEDCOM_LINE_LENGTH) {
-			list($level, $tag)=explode(' ', $line, 3);
+			list($level, $tag) = explode(' ', $line, 3);
 			if ($tag != 'CONT' && $tag != 'CONC') {
 				$level++;
 			}
 			do {
 				// Split after $pos chars
-				$pos=WT_GEDCOM_LINE_LENGTH;
+				$pos = WT_GEDCOM_LINE_LENGTH;
 				if ($WORD_WRAPPED_NOTES) {
 					// Split on a space, and remove it (for compatibility with some desktop apps)
-					while ($pos && mb_substr($line, $pos-1, 1)!=' ') {
+					while ($pos && mb_substr($line, $pos - 1, 1) != ' ') {
 						--$pos;
 					}
 					if ($pos == strpos($line, ' ', 3) + 1) {
 						// No spaces in the data! Can’t split it :-(
 						break;
 					} else {
-						$newrec .= mb_substr($line, 0, $pos - 1).WT_EOL;
-						$line=$level.' CONC ' . mb_substr($line, $pos);
+						$newrec .= mb_substr($line, 0, $pos - 1) . WT_EOL;
+						$line = $level . ' CONC ' . mb_substr($line, $pos);
 					}
 				} else {
 					// Split on a non-space (standard gedcom behaviour)
-					while ($pos && mb_substr($line, $pos-1, 1) == ' ') {
+					while ($pos && mb_substr($line, $pos - 1, 1) == ' ') {
 						--$pos;
 					}
 					if ($pos == strpos($line, ' ', 3)) {
@@ -115,19 +115,19 @@ function gedcom_header($gedfile) {
 		$COPR = $fact->getValue();
 	}
 	// Link to actual SUBM/SUBN records, if they exist
-	$subn=
+	$subn =
 		WT_DB::prepare("SELECT o_id FROM `##other` WHERE o_type=? AND o_file=?")
 		->execute(array('SUBN', $ged_id))
 		->fetchOne();
 	if ($subn) {
-		$SUBN="\n1 SUBN @{$subn}@";
+		$SUBN = "\n1 SUBN @{$subn}@";
 	}
-	$subm=
+	$subm =
 		WT_DB::prepare("SELECT o_id FROM `##other` WHERE o_type=? AND o_file=?")
 		->execute(array('SUBM', $ged_id))
 		->fetchOne();
 	if ($subm) {
-		$SUBM="\n1 SUBM @{$subm}@";
+		$SUBM = "\n1 SUBM @{$subm}@";
 	}
 
 	return $HEAD . $SOUR . $DEST . $DATE . $GEDC . $CHAR . $FILE . $COPR . $LANG . $PLAC . $SUBN . $SUBM . "\n";
@@ -143,19 +143,20 @@ function gedcom_header($gedfile) {
  */
 function convert_media_path($rec, $path) {
 	if ($path && preg_match('/\n1 FILE (.+)/', $rec, $match)) {
-		$old_file_name=$match[1];
-		if (!preg_match('~^(https?|ftp):~', $old_file_name)) { // Don’t modify external links
+		$old_file_name = $match[1];
+		// Don’t modify external links
+		if (!preg_match('~^(https?|ftp):~', $old_file_name)) {
 			// Adding a windows path?  Convert the slashes.
-			if (strpos($path, '\\')!==false) {
-				$new_file_name=preg_replace('~/+~', '\\', $old_file_name);
+			if (strpos($path, '\\') !== false) {
+				$new_file_name = preg_replace('~/+~', '\\', $old_file_name);
 			} else {
-				$new_file_name=$old_file_name;
+				$new_file_name = $old_file_name;
 			}
 			// Path not present - add it.
-			if (strpos($new_file_name, $path)===false) {
-				$new_file_name=$path . $new_file_name;
+			if (strpos($new_file_name, $path) === false) {
+				$new_file_name = $path . $new_file_name;
 			}
-			$rec=str_replace("\n1 FILE ".$old_file_name, "\n1 FILE ".$new_file_name, $rec);
+			$rec = str_replace("\n1 FILE " . $old_file_name, "\n1 FILE " . $new_file_name, $rec);
 		}
 	}
 
@@ -182,7 +183,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	$GEDCOM = $gedcom;
 	$ged_id = get_id_from_gedcom($gedcom);
 
-	switch($exportOptions['privatize']) {
+	switch ($exportOptions['privatize']) {
 	case 'gedadmin':
 		$access_level = WT_PRIV_NONE;
 		break;
@@ -212,7 +213,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	// database queries, and we wish to avoid large gaps between queries due to MySQL connection timeouts.
 	$tmp_gedcom = '';
 	$rows = WT_DB::prepare(
-		"SELECT 'OBJE' AS type, m_id AS xref, m_file AS gedcom_id, m_gedcom AS gedcom".
+		"SELECT 'OBJE' AS type, m_id AS xref, m_file AS gedcom_id, m_gedcom AS gedcom" .
 		" FROM `##media` WHERE m_file=? ORDER BY m_id"
 	)->execute(array($ged_id))->fetchAll();
 	foreach ($rows as $row) {
@@ -225,7 +226,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	}
 
 	$rows = WT_DB::prepare(
-		"SELECT s_id AS xref, s_file AS gedcom_id, s_gedcom AS gedcom".
+		"SELECT s_id AS xref, s_file AS gedcom_id, s_gedcom AS gedcom" .
 		" FROM `##sources` WHERE s_file=? ORDER BY s_id"
 	)->execute(array($ged_id))->fetchAll();
 	foreach ($rows as $row) {
@@ -237,7 +238,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	}
 
 	$rows = WT_DB::prepare(
-		"SELECT o_type AS type, o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom".
+		"SELECT o_type AS type, o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom" .
 		" FROM `##other` WHERE o_file=? AND o_type!='HEAD' AND o_type!='TRLR' ORDER BY o_id"
 	)->execute(array($ged_id))->fetchAll();
 	foreach ($rows as $row) {
@@ -261,12 +262,12 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	}
 
 	$rows = WT_DB::prepare(
-		"SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom".
+		"SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom" .
 		" FROM `##individuals` WHERE i_file=? ORDER BY i_id"
 	)->execute(array($ged_id))->fetchAll();
 	foreach ($rows as $row) {
 		$rec = WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom)->privatizeGedcom($access_level);
-		if ($exportOptions['toANSI'] ==  'yes') {
+		if ($exportOptions['toANSI'] == 'yes') {
 			$rec = utf8_decode($rec);
 		}
 		$buffer .= reformat_record_export($rec);
@@ -277,7 +278,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	}
 
 	$rows = WT_DB::prepare(
-		"SELECT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom".
+		"SELECT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom" .
 		" FROM `##families` WHERE f_file=? ORDER BY f_id"
 	)->execute(array($ged_id))->fetchAll();
 	foreach ($rows as $row) {

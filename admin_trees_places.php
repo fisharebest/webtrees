@@ -35,7 +35,7 @@ if ($search && $replace) {
 	$rows = WT_DB::prepare(
 		"SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom" .
 		" FROM `##individuals`" .
-		" LEFT JOIN `##change` ON (i_id = xref AND i_file=gedcom_id AND status='pending')".
+		" LEFT JOIN `##change` ON (i_id = xref AND i_file=gedcom_id AND status='pending')" .
 		" WHERE i_file = ?" .
 		" AND COALESCE(new_gedcom, i_gedcom) REGEXP CONCAT('\n2 PLAC ([^\n]*, )*', ?, '(\n|$)')"
 	)->execute(array(WT_GED_ID, $search))->fetchAll();
@@ -54,9 +54,9 @@ if ($search && $replace) {
 		}
 	}
 	$rows = WT_DB::prepare(
-		"SELECT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom".
-		" FROM `##families`".
-		" LEFT JOIN `##change` ON (f_id = xref AND f_file=gedcom_id AND status='pending')".
+		"SELECT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom" .
+		" FROM `##families`" .
+		" LEFT JOIN `##change` ON (f_id = xref AND f_file=gedcom_id AND status='pending')" .
 		" WHERE COALESCE(new_gedcom, f_gedcom) REGEXP CONCAT('\n2 PLAC ([^\n]*, )*', ?, '(\n|$)')"
 	)->execute(array($search))->fetchAll();
 	foreach ($rows as $row) {
@@ -75,7 +75,7 @@ if ($search && $replace) {
 	}
 }
 
-$controller = new WT_Controller_Page();
+$controller = new WT_Controller_Page;
 $controller
 	->restrictAccess(Auth::isManager())
 	->setPageTitle(WT_I18N::translate('Administration - place edit'))

@@ -38,7 +38,7 @@ function send404AndExit() {
 
 	$width  = (mb_strlen($error)) * 6.5 + 50;
 	$height = 60;
-	$im     = imagecreatetruecolor($width, $height);  /* Create a black image */
+	$im     = imagecreatetruecolor($width, $height); /* Create a black image */
 	$bgc    = imagecolorallocate($im, 255, 255, 255); /* set background color */
 	imagefilledrectangle($im, 2, 2, $width - 4, $height - 4, $bgc); /* create a rectangle, leaving 2 px border */
 
@@ -288,10 +288,10 @@ if (!file_exists($serverFilename)) {
 $mimetype = $media->mimeType();
 
 $imgsize        = $media->getImageAttributes($which);
-$protocol       = $_SERVER['SERVER_PROTOCOL'];  // determine if we are using HTTP/1.0 or HTTP/1.1
+$protocol       = $_SERVER['SERVER_PROTOCOL']; // determine if we are using HTTP/1.0 or HTTP/1.1
 $filetime       = $media->getFiletime($which);
 $filetimeHeader = gmdate('D, d M Y H:i:s', $filetime) . ' GMT';
-$expireOffset   = 3600 * 24;  // tell browser to cache this image for 24 hours
+$expireOffset   = 3600 * 24; // tell browser to cache this image for 24 hours
 if (WT_Filter::get('cb')) {
 	$expireOffset = $expireOffset * 7;
 } // if cb parameter was sent, cache for 7 days

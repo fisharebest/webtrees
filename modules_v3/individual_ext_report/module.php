@@ -44,13 +44,13 @@ class individual_ext_report_WT_Module extends WT_Module implements WT_Module_Rep
 	public function getReportMenus() {
 		global $controller;
 
-		$menus=array();
-		$menu=new WT_Menu(
+		$menus = array();
+		$menu = new WT_Menu(
 			$this->getTitle(),
-			'reportengine.php?ged='.WT_GEDURL.'&amp;action=setup&amp;report='.WT_MODULES_DIR.$this->getName().'/report.xml&amp;pid='.$controller->getSignificantIndividual()->getXref(),
-			'menu-report-'.$this->getName()
+			'reportengine.php?ged=' . WT_GEDURL . '&amp;action=setup&amp;report=' . WT_MODULES_DIR . $this->getName() . '/report.xml&amp;pid=' . $controller->getSignificantIndividual()->getXref(),
+			'menu-report-' . $this->getName()
 		);
-		$menus[]=$menu;
+		$menus[] = $menu;
 
 		return $menus;
 	}

@@ -70,10 +70,10 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 
 		$block_ids =
 			WT_DB::prepare(
-				"SELECT block_id".
-				" FROM `##block`".
-				" WHERE module_name=?".
-				" AND xref=?".
+				"SELECT block_id" .
+				" FROM `##block`" .
+				" WHERE module_name=?" .
+				" AND xref=?" .
 				" AND gedcom_id=?"
 			)->execute(array(
 				$this->getName(),
@@ -114,10 +114,10 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 
 		$count_of_stories =
 			WT_DB::prepare(
-				"SELECT COUNT(block_id)".
-				" FROM `##block`".
-				" WHERE module_name=?".
-				" AND xref=?".
+				"SELECT COUNT(block_id)" .
+				" FROM `##block`" .
+				" WHERE module_name=?" .
+				" AND xref=?" .
 				" AND gedcom_id=?"
 			)->execute(array(
 				$this->getName(),
@@ -175,7 +175,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 			} else {
 				$block_id = WT_Filter::getInteger('block_id');
 
-				$controller = new WT_Controller_Page();
+				$controller = new WT_Controller_Page;
 				if ($block_id) {
 					$controller->setPageTitle(WT_I18N::translate('Edit story'));
 					$title      = get_block_setting($block_id, 'title');
@@ -270,7 +270,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 		if (WT_USER_GEDCOM_ADMIN) {
 
-			$controller = new WT_Controller_Page();
+			$controller = new WT_Controller_Page;
 			$controller
 				->setPageTitle($this->getTitle())
 				->pageHeader()
@@ -297,10 +297,10 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 				');
 
 			$stories = WT_DB::prepare(
-				"SELECT block_id, xref".
-				" FROM `##block` b".
-				" WHERE module_name=?".
-				" AND gedcom_id=?".
+				"SELECT block_id, xref" .
+				" FROM `##block` b" .
+				" WHERE module_name=?" .
+				" AND gedcom_id=?" .
 				" ORDER BY xref"
 			)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
 
@@ -319,8 +319,8 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 				echo '<thead><tr>
 					<th>', WT_I18N::translate('Story title'), '</th>
 					<th>', WT_I18N::translate('Individual'), '</th>
-					<th>&nbsp;</th>
-					<th>&nbsp;</th>
+					<th></th>
+					<th></th>
 					</tr></thead>';
 			}
 			echo '<tbody>';
@@ -350,7 +350,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 	private function showList() {
 		global $controller;
 
-		$controller = new WT_Controller_Page();
+		$controller = new WT_Controller_Page;
 		$controller
 			->setPageTitle($this->getTitle())
 			->pageHeader()
@@ -375,10 +375,10 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 			');
 
 		$stories = WT_DB::prepare(
-			"SELECT block_id, xref".
-			" FROM `##block` b".
-			" WHERE module_name=?".
-			" AND gedcom_id=?".
+			"SELECT block_id, xref" .
+			" FROM `##block` b" .
+			" WHERE module_name=?" .
+			" AND gedcom_id=?" .
 			" ORDER BY xref"
 		)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
 

@@ -23,10 +23,10 @@
 
 define('WT_SCRIPT_NAME', 'medialist.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/functions/functions_edit.php';
-require_once WT_ROOT.'includes/functions/functions_print_facts.php';
+require_once WT_ROOT . 'includes/functions/functions_edit.php';
+require_once WT_ROOT . 'includes/functions/functions_print_facts.php';
 
-$controller = new WT_Controller_Page();
+$controller = new WT_Controller_Page;
 $controller
 	->setPageTitle(WT_I18N::translate('Media objects'))
 	->pageHeader();
@@ -34,7 +34,7 @@ $controller
 $search = WT_Filter::get('search');
 $sortby = WT_Filter::get('sortby', 'file|title', 'title');
 if (!WT_USER_CAN_EDIT && !WT_USER_CAN_ACCEPT) {
-	$sortby='title';
+	$sortby = 'title';
 }
 $start          = WT_Filter::getInteger('start');
 $max            = WT_Filter::get('max', '10|20|30|40|50|75|100|125|150|200', '20');
@@ -44,16 +44,16 @@ $apply_filter   = WT_Filter::get('apply_filter');
 $filter         = WT_Filter::get('filter', null, ''); // MySQL needs an empty string, not NULL
 $columns        = WT_Filter::getInteger('columns', 1, 2, 2);
 $subdirs        = WT_Filter::get('subdirs', 'on');
-$currentdironly = ($subdirs=='on') ? false : true;
+$currentdironly = ($subdirs === 'on') ? false : true;
 
 // reset all variables
-if ($reset == 'Reset') {
-	$sortby = 'title';
-	$max = '20';
-	$folder = '';
-	$columns = '2';
+if ($reset === 'Reset') {
+	$sortby         = 'title';
+	$max            = '20';
+	$folder         = '';
+	$columns        = '2';
 	$currentdironly = true;
-	$filter = '';
+	$filter         = '';
 }
 
 // A list of all subfolders used by this tree
@@ -87,17 +87,17 @@ $medialist = WT_Query_Media::mediaList(
 				echo WT_I18N::translate('Sort order');
 				echo '</td><td class="optionbox wrap width25">';
 				echo '<select name="sortby">';
-				echo '<option value="title" ', ($sortby=='title') ? 'selected="selected"' : '', '>';
+				echo '<option value="title" ', ($sortby == 'title') ? 'selected' : '', '>';
 				echo /* I18N: An option in a list-box */ WT_I18N::translate('sort by title');
 				echo '</option>';
-				echo '<option value="file" ', ($sortby=='file') ? 'selected="selected"' : '' , '>';
+				echo '<option value="file" ', ($sortby == 'file') ? 'selected' : '', '>';
 				echo /* I18N: An option in a list-box */ WT_I18N::translate('sort by filename');
 				echo '</option>';
 				echo '</select>';
 				echo '</td>';
 			} else {
-				echo '<td class="descriptionbox wrap width25">&nbsp;</td>';
-				echo '<td class="optionbox wrap width25">&nbsp;</td>';
+				echo '<td class="descriptionbox wrap width25"></td>';
+				echo '<td class="optionbox wrap width25"></td>';
 			}
 			?>
 		</tr>
@@ -106,7 +106,7 @@ $medialist = WT_Query_Media::mediaList(
 				<?php echo /* I18N: Label for check-box */ WT_I18N::translate('Include subfolders'); ?>
 			</td>
 			<td class="optionbox wrap width25">
-				<input type="checkbox" id="subdirs" name="subdirs" <?php if (!$currentdironly) { ?>checked="checked"<?php } ?>>
+				<input type="checkbox" id="subdirs" name="subdirs" <?php echo $currentdironly ? '' : 'checked'; ?>>
 			</td>
 			<td class="descriptionbox wrap width25">
 				<?php echo WT_I18N::translate('Media objects per page'); ?>
@@ -115,8 +115,10 @@ $medialist = WT_Query_Media::mediaList(
 				<select name="max">
 					<?php
 					foreach (array('10', '20', '30', '40', '50', '75', '100', '125', '150', '200') as $selectEntry) {
-						echo '<option value="', $selectEntry, '"';
-						if ($selectEntry==$max) echo ' selected="selected"';
+						echo '<option value="', $selectEntry, '" ';
+						if ($selectEntry == $max) {
+							echo 'selected';
+						}
 						echo '>', $selectEntry, '</option>';
 					}
 					?>
@@ -137,8 +139,10 @@ $medialist = WT_Query_Media::mediaList(
 				<select name="columns">
 					<?php
 					foreach (array('1', '2') as $selectEntry) {
-						echo '<option value="', $selectEntry, '"';
-						if ($selectEntry==$columns) echo ' selected="selected"';
+						echo '<option value="', $selectEntry, '" ';
+						if ($selectEntry == $columns) {
+							echo 'selected';
+						}
 						echo '>', $selectEntry, '</option>';
 					}
 					?>
@@ -152,8 +156,8 @@ $medialist = WT_Query_Media::mediaList(
 				<input type="submit" name="apply_filter" value="<?php echo WT_I18N::translate('Search'); ?>">
 				<input type="submit" name="reset" value="<?php echo WT_I18N::translate('Reset'); ?>">
 			</td>
-			<td class="descriptionbox wrap width25">&nbsp;</td>
-			<td class="optionbox wrap width25">&nbsp;</td>
+			<td class="descriptionbox wrap width25"></td>
+			<td class="optionbox wrap width25"></td>
 		</tr>
 	</table>
 </form>
@@ -168,7 +172,7 @@ if ($search) {
 
 	echo '<div><p style="text-align: center;">', WT_I18N::translate('Media objects found'), ' ', $ct, '</p>';
 
-	if ($ct>0) {
+	if ($ct > 0) {
 		$currentPage = ((int) ($start / $max)) + 1;
 		$lastPage = (int) (($ct + $max - 1) / $max);
 
@@ -178,26 +182,30 @@ if ($search) {
 			echo '<', $tsection, '><tr><td colspan="2">';
 
 			echo '<table class="list_table_controls"><tr><td>';
-			if ($TEXT_DIRECTION=='ltr') {
-				if ($ct>$max) {
+			if ($TEXT_DIRECTION === 'ltr') {
+				if ($ct > $max) {
 					if ($currentPage > 1) {
 						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=0&amp;max=', $max, '" class="icon-ldarrow"></a>';
 					}
-					if ($start>0) {
-						$newstart = $start-$max;
-						if ($start<0) $start = 0;
+					if ($start > 0) {
+						$newstart = $start - $max;
+						if ($start < 0) {
+							$start = 0;
+						}
 						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $newstart, '&amp;max=', $max, '" class="icon-larrow"></a>';
 					}
 				}
 			} else {
-				if ($ct>$max) {
+				if ($ct > $max) {
 					if ($currentPage < $lastPage) {
 						$lastStart = ((int) ($ct / $max)) * $max;
 						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $lastStart, '&amp;max=', $max, '" class="icon-rdarrow"></a>';
 					}
-					if ($start+$max < $ct) {
-						$newstart = $start+$count;
-						if ($start<0) $start = 0;
+					if ($start + $max < $ct) {
+						$newstart = $start + $count;
+						if ($start < 0) {
+							$start = 0;
+						}
 						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $newstart, '&amp;max=', $max, '" class="icon-rarrow"></a>';
 					}
 				}
@@ -205,11 +213,13 @@ if ($search) {
 			echo '</td>';
 			echo '<td>', WT_I18N::translate('Page %s of %s', $currentPage, $lastPage), '</td>';
 			echo '<td>';
-			if ($TEXT_DIRECTION=='ltr') {
-				if ($ct>$max) {
-					if ($start+$max < $ct) {
-						$newstart = $start+$count;
-						if ($start<0) $start = 0;
+			if ($TEXT_DIRECTION === 'ltr') {
+				if ($ct > $max) {
+					if ($start + $max < $ct) {
+						$newstart = $start + $count;
+						if ($start < 0) {
+							$start = 0;
+						}
 						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $newstart, '&amp;max=', $max, '" class="icon-rarrow"></a>';
 					}
 					if ($currentPage < $lastPage) {
@@ -218,10 +228,12 @@ if ($search) {
 					}
 				}
 			} else {
-				if ($ct>$max) {
-					if ($start>0) {
-						$newstart = $start-$max;
-						if ($start<0) $start = 0;
+				if ($ct > $max) {
+					if ($start > 0) {
+						$newstart = $start - $max;
+						if ($start < 0) {
+							$start = 0;
+						}
 						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $newstart, '&amp;max=', $max, '" class="icon-larrow"></a>';
 					}
 					if ($currentPage > 1) {
@@ -236,11 +248,15 @@ if ($search) {
 		}
 
 		echo '<tbody><tr>';
-		for ($i=$start, $n=0; $i<$start+$count; ++$i) {
+		for ($i = $start, $n = 0; $i < $start + $count; ++$i) {
 			$mediaobject = $medialist[$i];
 
-			if ($columns == '1') echo '<td class="list_value_wrap width80">';
-			if ($columns == '2') echo '<td class="list_value_wrap width50">';
+			if ($columns == '1') {
+				echo '<td class="list_value_wrap width80">';
+			}
+			if ($columns == '2') {
+				echo '<td class="list_value_wrap width50">';
+			}
 
 			echo '<table><tr><td style="vertical-align:top; white-space:normal;">';
 			echo $mediaobject->displayImage();
@@ -249,7 +265,7 @@ if ($search) {
 				echo WT_Controller_Media::getMediaListMenu($mediaobject);
 			}
 			// If sorting by title, highlight the title.  If sorting by filename, highlight the filename
-			if ($sortby=='title') {
+			if ($sortby == 'title') {
 				echo '<p><b><a href="', $mediaobject->getHtmlUrl(), '">';
 				echo $mediaobject->getFullName();
 				echo '</a></b></p>';
@@ -283,13 +299,13 @@ if ($search) {
 			echo print_fact_notes($mediaobject->getGedcom(), 1);
 			echo '</div>';
 			foreach ($mediaobject->linkedIndividuals('OBJE') as $individual) {
-				echo '<a href="' . $individual->getHtmlUrl() . '">' . WT_I18N::translate('View person') . ' — ' . $individual->getFullname().'</a><br>';
+				echo '<a href="' . $individual->getHtmlUrl() . '">' . WT_I18N::translate('View person') . ' — ' . $individual->getFullname() . '</a><br>';
 			}
 			foreach ($mediaobject->linkedFamilies('OBJE') as $family) {
-				echo '<a href="' . $family->getHtmlUrl() . '">' . WT_I18N::translate('View family') . ' — ' . $family->getFullname().'</a><br>';
+				echo '<a href="' . $family->getHtmlUrl() . '">' . WT_I18N::translate('View family') . ' — ' . $family->getFullname() . '</a><br>';
 			}
 			foreach ($mediaobject->linkedSources('OBJE') as $source) {
-				echo '<a href="' . $source->getHtmlUrl() . '">' . WT_I18N::translate('View source') . ' — ' . $source->getFullname().'</a><br>';
+				echo '<a href="' . $source->getHtmlUrl() . '">' . WT_I18N::translate('View source') . ' — ' . $source->getFullname() . '</a><br>';
 			}
 			echo '</td></tr></table>';
 			echo '</td>';
@@ -299,14 +315,14 @@ if ($search) {
 		} // end media loop
 
 		// An odd number of media objects in two columns requires an empty cell
-		if ($columns == 2 && $n%2 == 1) {
-			echo '<td>&nbsp;</td>';
+		if ($columns == 2 && $n % 2 == 1) {
+			echo '<td></td>';
 		}
 
 		echo '</tr></tbody>';
 		echo '</table>';
 	}
-  echo '</div>';
+	echo '</div>';
 }
 echo '</div>';
 

@@ -1,6 +1,6 @@
 <?php
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -18,6 +18,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+use WT\Theme;
 
 /**
  * Class relatives_WT_Module
@@ -45,13 +46,13 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	 *
 	 * @return string
 	 */
-	static function ageDifference(WT_Date $prev, WT_Date $next, $child_number=0) {
+	static function ageDifference(WT_Date $prev, WT_Date $next, $child_number = 0) {
 		if ($prev->isOK() && $next->isOK()) {
 			$days = $next->MaxJD() - $prev->MinJD();
-			if ($days<0) {
+			if ($days < 0) {
 				// Show warning triangle if dates in reverse order
 				$diff = '<i class="icon-warning"></i> ';
-			} elseif ($child_number>1 && $days>1 && $days<240) {
+			} elseif ($child_number > 1 && $days > 1 && $days < 240) {
 				// Show warning triangle if children born too close together
 				$diff = '<i class="icon-warning"></i> ';
 			} else {
@@ -59,9 +60,9 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			}
 
 			$months = round($days * 12 / 365.25); // Approximate - we do not know the calendar
-			if (abs($months)==12 || abs($months)>=24) {
+			if (abs($months) == 12 || abs($months) >= 24) {
 				$diff .= WT_I18N::plural('%d year', '%d years', round($months / 12), round($months / 12));
-			} elseif ($months!=0) {
+			} elseif ($months != 0) {
 				$diff .= WT_I18N::plural('%d month', '%d months', $months, $months);
 			}
 
@@ -95,7 +96,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				</td>
 				<td>
 					<span class="subheaders"> <?php echo $label; ?> </span> -
-					<a href="<?php echo $family->getHtmlUrl() ; ?>"><?php echo WT_I18N::translate('View family'); ?></a>
+					<a href="<?php echo $family->getHtmlUrl(); ?>"><?php echo WT_I18N::translate('View family'); ?></a>
 				</td>
 			</tr>
 		</table>
@@ -121,7 +122,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 						<?php echo get_close_relationship_name($controller->record, $person); ?>
 					</td>
 					<td class="<?php echo $controller->getPersonStyle($person); ?>">
-						<?php print_pedigree_person($person, 2); ?>
+						<?php echo Theme::theme()->individualBoxLarge($person); ?>
 					</td>
 					</tr>
 				<?php
@@ -130,7 +131,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		if (!$found && $family->canEdit()) {
 			?>
 			<tr>
-				<td class="facts_label">&nbsp;</td>
+				<td class="facts_label"></td>
 				<td class="facts_value"><a href="#" onclick="return add_spouse_to_family('<?php echo $family->getXref(); ?>', 'HUSB');"><?php echo WT_I18N::translate('Add a husband to this family'); ?></a></td>
 			</tr>
 			<?php
@@ -155,7 +156,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 						<?php echo get_close_relationship_name($controller->record, $person); ?>
 					</td>
 					<td class="<?php echo $controller->getPersonStyle($person); ?>">
-						<?php print_pedigree_person($person, 2); ?>
+						<?php echo Theme::theme()->individualBoxLarge($person); ?>
 					</td>
 				</tr>
 				<?php
@@ -164,7 +165,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		if (!$found && $family->canEdit()) {
 			?>
 			<tr>
-				<td class="facts_label">&nbsp;</td>
+				<td class="facts_label"></td>
 				<td class="facts_value"><a href="#" onclick="return add_spouse_to_family('<?php echo $family->getXref(); ?>', 'WIFE');"><?php echo WT_I18N::translate('Add a wife to this family'); ?></a></td>
 			</tr>
 			<?php
@@ -229,7 +230,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				$next = new WT_Date('');
 				foreach ($person->getFacts(WT_EVENTS_BIRT) as $bfact) {
 					if ($bfact->getDate()->isOK()) {
-						$next=$bfact->getDate();
+						$next = $bfact->getDate();
 						break;
 					}
 				}
@@ -240,7 +241,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 						<?php echo get_close_relationship_name($controller->record, $person); ?>
 					</td>
 					<td class="<?php echo $controller->getPersonStyle($person); ?>">
-						<?php print_pedigree_person($person, 2); ?>
+						<?php echo Theme::theme()->individualBoxLarge($person); ?>
 					</td>
 				</tr>
 				<?php
@@ -257,7 +258,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			?>
 			<tr>
 				<td class="facts_label">
-					<?php if (count($family->getChildren())>1) { ?>
+					<?php if (count($family->getChildren()) > 1) { ?>
 					<a href="#" onclick="reorder_children('<?php echo $family->getXref(); ?>');tabswitch(5);"><i class="icon-media-shuffle"></i> <?php echo WT_I18N::translate('Re-order children'); ?></a>
 					<?php } ?>
 				</td>
@@ -281,13 +282,16 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function getTabContent() {
 		global $SHOW_AGE_DIFF, $show_full, $controller;
 
-		if (isset($show_full)) $saved_show_full = $show_full; // We always want to see full details here
+		if (isset($show_full)) {
+			$saved_show_full = $show_full;
+		}
+		// We always want to see full details here
 		$show_full = 1;
 
 		ob_start();
 		?>
 		<table class="facts_table"><tr><td class="descriptionbox rela">
-		<input id="checkbox_elder" type="checkbox" onclick="jQuery('div.elderdate').toggle();" <?php if ($SHOW_AGE_DIFF) echo "checked=\"checked\""; ?>>
+		<input id="checkbox_elder" type="checkbox" onclick="jQuery('div.elderdate').toggle();" <?php echo $SHOW_AGE_DIFF ? 'checked' : ''; ?>>
 		<label for="checkbox_elder"><?php echo WT_I18N::translate('Show date differences'); ?></label>
 		</td></tr></table>
 		<?php
@@ -334,7 +338,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		?>
 		<br><table class="facts_table">
 		<?php
-			if (count($families)>1) { ?>
+			if (count($families) > 1) { ?>
 			<tr>
 				<td class="facts_value">
 				<a href="#" onclick="return reorder_families('<?php echo $controller->record->getXref(); ?>');"><?php echo WT_I18N::translate('Re-order families'); ?></a>
@@ -346,7 +350,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				<a href="#" onclick="return add_famc('<?php echo $controller->record->getXref(); ?>');"><?php echo WT_I18N::translate('Link this individual to an existing family as a child'); ?></a>
 				</td>
 			</tr>
-			<?php if ($controller->record->getSex()!="F") { ?>
+			<?php if ($controller->record->getSex() != "F") { ?>
 			<tr>
 				<td class="facts_value">
 				<a href="#" onclick="return add_spouse_to_individual('<?php echo $controller->record->getXref(); ?>','WIFE');"><?php echo WT_I18N::translate('Add a new wife'); ?></a>
@@ -358,7 +362,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				</td>
 			</tr>
 			<?php }
-			if ($controller->record->getSex()!="M") { ?>
+			if ($controller->record->getSex() != "M") { ?>
 			<tr>
 				<td class="facts_value">
 				<a href="#" onclick="return add_spouse_to_individual('<?php echo $controller->record->getXref(); ?>','HUSB');"><?php echo WT_I18N::translate('Add a new husband'); ?></a>
@@ -381,9 +385,11 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		<?php
 
 		unset($show_full);
-		if (isset($saved_show_full)) $show_full = $saved_show_full;
+		if (isset($saved_show_full)) {
+			$show_full = $saved_show_full;
+		}
 
-		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
+		return '<div id="' . $this->getName() . '_content">' . ob_get_clean() . '</div>';
 	}
 
 	/** {@inheritdoc} */

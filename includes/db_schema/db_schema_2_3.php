@@ -28,14 +28,14 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 WT_DB::exec(
-	"CREATE TABLE IF NOT EXISTS `##gedcom_chunk` (".
-	" gedcom_chunk_id INTEGER AUTO_INCREMENT NOT NULL,".
-	" gedcom_id       INTEGER                NOT NULL,".
-	" chunk_data      MEDIUMBLOB             NOT NULL,".
-	" imported        BOOLEAN                NOT NULL DEFAULT FALSE,".
-	" PRIMARY KEY     (gedcom_chunk_id),".
-	"         KEY ix1 (gedcom_id, imported),".
-	" FOREIGN KEY fk1 (gedcom_id) REFERENCES `##gedcom` (gedcom_id)".
+	"CREATE TABLE IF NOT EXISTS `##gedcom_chunk` (" .
+	" gedcom_chunk_id INTEGER AUTO_INCREMENT NOT NULL," .
+	" gedcom_id       INTEGER                NOT NULL," .
+	" chunk_data      MEDIUMBLOB             NOT NULL," .
+	" imported        BOOLEAN                NOT NULL DEFAULT FALSE," .
+	" PRIMARY KEY     (gedcom_chunk_id)," .
+	"         KEY ix1 (gedcom_id, imported)," .
+	" FOREIGN KEY fk1 (gedcom_id) REFERENCES `##gedcom` (gedcom_id)" .
 	") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 );
 

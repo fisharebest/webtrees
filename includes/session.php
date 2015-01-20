@@ -2,7 +2,7 @@
 // Startup and session logic
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2011 PGV Development Team.
@@ -23,6 +23,7 @@
 
 use WT\Auth;
 use WT\Log;
+use WT\Theme;
 
 // WT_SCRIPT_NAME is defined in each script that the user is permitted to load.
 if (!defined('WT_SCRIPT_NAME')) {
@@ -33,38 +34,47 @@ if (!defined('WT_SCRIPT_NAME')) {
 // To embed webtrees code in other applications, we must explicitly declare any global variables that we create.
 // session.php
 global $start_time, $WT_REQUEST, $WT_SESSION, $WT_TREE, $GEDCOM, $SEARCH_SPIDER, $TEXT_DIRECTION;
-// theme.php
-global $headerfile, $footerfile, $WT_IMAGES, $fanchart, $bwidth, $bheight, $baseyoffset, $basexoffset, $bxspacing, $byspacing, $linewidth, $shadowcolor, $shadowblur, $shadowoffsetX, $shadowoffsetY, $Dbaseyoffset, $Dbasexoffset, $Dbxspacing, $Dbyspacing, $Dbwidth, $Dbheight, $Dindent, $Darrowwidth, $cbwidth, $cbheight, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y, $WT_STATS_L_CHART_X, $WT_STATS_MAP_X, $WT_STATS_MAP_Y, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_CHART_COLOR3;
 // most pages
 global $controller;
 
 // Identify ourself
 define('WT_WEBTREES', 'webtrees');
-define('WT_VERSION',  '1.6.3-dev');
+define('WT_VERSION',  '1.7.0-dev');
 
 // External URLs
 define('WT_WEBTREES_URL',  'http://www.webtrees.net/');
 define('WT_WEBTREES_WIKI', 'http://wiki.webtrees.net/');
 
-// Optionally, specify a CDN server for static content (e.g. CSS, JS, PNG)
-// For example, http://my.cdn.com/webtrees-static-1.3.1/
-define('WT_STATIC_URL', ''); // For example, http://my.cdn.com/webtrees-static-1.3.1/
+// Resources have version numbers in the URL, so that they can be cached indefinitely.
+define('WT_STATIC_URL', getenv('STATIC_URL')); // We could set this to load our own static resources from a cookie-free domain.
 
-// Optionally, load major JS libraries from Google’s public CDN
-define ('WT_USE_GOOGLE_API', false);
-if (WT_USE_GOOGLE_API) {
-	define('WT_JQUERY_URL',        'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js');
-	define('WT_JQUERYUI_URL',      'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js');
+if (getenv('USE_CDN')) {
+	define('WT_BOOTSTRAP_CSS_URL',            '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css');
+	define('WT_BOOTSTRAP_JS_URL',             '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js');
+	define('WT_BOOTSTRAP_RTL_CSS_URL',        '//cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.2.0-rc2/css/bootstrap-rtl.min.css'); // out of date!
+	define('WT_JQUERY_DATATABLES_URL',        '//cdnjs.cloudflare.com/ajax/libs/datatables/1.10.4/js/jquery.dataTables.min.js');
+	define('WT_DATATABLES_BOOTSTRAP_JS_URL',  '//cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js');
+	define('WT_DATATABLES_BOOTSTRAP_CSS_URL', '//cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css');
+	define('WT_FONT_AWESOME_CSS_URL',         '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css');
+	define('WT_JQUERY_COLORBOX_URL',          '//cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.4.33/jquery.colorbox-min.js'); // out of date!
+	define('WT_JQUERY_COOKIE_URL',            '//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js');
+	define('WT_JQUERY_URL',                   '//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js');
+	define('WT_JQUERYUI_URL',                 '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js');
 } else {
-	define('WT_JQUERY_URL',        WT_STATIC_URL . 'js/jquery-1.11.1.js');
-	define('WT_JQUERYUI_URL',      WT_STATIC_URL . 'js/jquery-ui-1.11.2.js');
+	define('WT_BOOTSTRAP_CSS_URL',            WT_STATIC_URL . 'packages/bootstrap-3.3.1/css/bootstrap.min.css');
+	define('WT_BOOTSTRAP_JS_URL',             WT_STATIC_URL . 'packages/bootstrap-3.3.1/js/bootstrap.min.js');
+	define('WT_BOOTSTRAP_RTL_CSS_URL',        WT_STATIC_URL . 'packages/bootstrap-rtl-3.2.0/css/bootstrap-rtl.min.css');
+	define('WT_JQUERY_DATATABLES_URL',        WT_STATIC_URL . 'packages/datatables-1.10.4/js/jquery.dataTables.min.js');
+	define('WT_DATATABLES_BOOTSTRAP_JS_URL',  WT_STATIC_URL . 'packages/datatables-1.10.4/plugins/dataTables.bootstrap.js');
+	define('WT_DATATABLES_BOOTSTRAP_CSS_URL', WT_STATIC_URL . 'packages/datatables-1.10.4/plugins/dataTables.bootstrap.css');
+	define('WT_FONT_AWESOME_CSS_URL',         WT_STATIC_URL . 'packages/font-awesome-4.2.0/css/font-awesome.min.css');
+	define('WT_JQUERY_COLORBOX_URL',          WT_STATIC_URL . 'js/jquery.colorbox-1.5.14.js');
+	define('WT_JQUERY_COOKIE_URL',            WT_STATIC_URL . 'js/jquery.cookie-1.4.1.js');
+	define('WT_JQUERY_URL',                   WT_STATIC_URL . 'js/jquery-1.11.2.js');
+	define('WT_JQUERYUI_URL',                 WT_STATIC_URL . 'js/jquery-ui-1.11.2.js');
 }
-define('WT_JQUERY_COLORBOX_URL',   WT_STATIC_URL . 'js/jquery.colorbox-1.5.14.js');
-define('WT_JQUERY_COOKIE_URL',     WT_STATIC_URL . 'js/jquery.cookie-1.4.1.js');
-define('WT_JQUERY_DATATABLES_URL', WT_STATIC_URL . 'js/jquery.datatables-1.10.3.js');
-define('WT_JQUERY_JEDITABLE_URL',  WT_STATIC_URL . 'js/jquery.jeditable-1.7.3.js');
-define('WT_JQUERY_WHEELZOOM_URL',  WT_STATIC_URL . 'js/jquery.wheelzoom-2.0.0.js');
-define('WT_WEBTREES_JS_URL',       WT_STATIC_URL . 'js/webtrees-1.6.2.js');
+define('WT_JQUERY_WHEELZOOM_URL',           WT_STATIC_URL . 'js/jquery.wheelzoom-2.0.0.js');
+define('WT_WEBTREES_JS_URL',                WT_STATIC_URL . 'js/webtrees-1.7.0.js');
 
 // Location of our modules and themes.  These are used as URLs and folder paths.
 define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes
@@ -114,10 +124,10 @@ define('WT_EVENTS_DIV',  'DIV|ANUL|_SEPR');
 define('WT_EOL', "\r\n");
 
 // Gedcom specification/definitions
-define ('WT_GEDCOM_LINE_LENGTH', 255 - strlen(WT_EOL)); // Characters, not bytes
+define('WT_GEDCOM_LINE_LENGTH', 255 - strlen(WT_EOL)); // Characters, not bytes
 
 // Used in Google charts
-define ('WT_GOOGLE_CHART_ENCODING', 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-.');
+define('WT_GOOGLE_CHART_ENCODING', 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-.');
 
 // Privacy constants
 define('WT_PRIV_PUBLIC',  2); // Allows visitors to view the marked information
@@ -126,7 +136,7 @@ define('WT_PRIV_NONE',    0); // Allows managers to access the marked informatio
 define('WT_PRIV_HIDE',   -1); // Hide the item to all users
 
 // For performance, it is quicker to refer to files using absolute paths
-define ('WT_ROOT', realpath(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR);
+define('WT_ROOT', realpath(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR);
 
 // Keep track of time statistics, for the summary in the footer
 $start_time = microtime(true);
@@ -337,7 +347,7 @@ if (file_exists(WT_ROOT . 'data/config.ini.php')) {
 	exit;
 }
 
-$WT_REQUEST = new Zend_Controller_Request_Http();
+$WT_REQUEST = new Zend_Controller_Request_Http;
 
 // Connect to the database
 try {
@@ -601,50 +611,46 @@ if (WT_TIMESTAMP - $WT_SESSION->activity_time > 300) {
 // Set the theme
 if (substr(WT_SCRIPT_NAME, 0, 5) == 'admin' || WT_SCRIPT_NAME == 'module.php' && substr(WT_Filter::get('mod_action'), 0, 5) == 'admin') {
 	// Administration scripts begin with “admin” and use a special administration theme
-	define('WT_THEME_DIR', WT_THEMES_DIR . '_administration/');
+	Theme::theme(new \WT\Theme\Administration)->init($WT_SESSION, $SEARCH_SPIDER, $WT_TREE);
 } else {
 	if (WT_Site::getPreference('ALLOW_USER_THEMES')) {
 		// Requested change of theme?
-		$THEME_DIR = WT_Filter::get('theme');
-		if (!in_array($THEME_DIR, get_theme_names())) {
-			$THEME_DIR = '';
+		$theme_id = WT_Filter::get('theme');
+		if (!array_key_exists($theme_id, Theme::themeNames())) {
+			$theme_id = '';
 		}
 		// Last theme used?
-		if (!$THEME_DIR && in_array($WT_SESSION->theme_id, get_theme_names())) {
-			$THEME_DIR = $WT_SESSION->theme_id;
+		if (!$theme_id && array_key_exists($WT_SESSION->theme_id, Theme::themeNames())) {
+			$theme_id = $WT_SESSION->theme_id;
 		}
 	} else {
-		$THEME_DIR = '';
+		$theme_id = '';
 	}
-	if (!$THEME_DIR) {
+	if (!$theme_id) {
 		// User cannot choose (or has not chosen) a theme.
 		// 1) gedcom setting
 		// 2) site setting
 		// 3) webtrees
 		// 4) first one found
 		if (WT_GED_ID) {
-			$THEME_DIR = $WT_TREE->getPreference('THEME_DIR');
+			$theme_id = $WT_TREE->getPreference('THEME_DIR');
 		}
-		if (!in_array($THEME_DIR, get_theme_names())) {
-			$THEME_DIR = WT_Site::getPreference('THEME_DIR');
+		if (!array_key_exists($theme_id, Theme::themeNames())) {
+			$theme_id = WT_Site::getPreference('THEME_DIR');
 		}
-		if (!in_array($THEME_DIR, get_theme_names())) {
-			$THEME_DIR = 'webtrees';
-		}
-		if (!in_array($THEME_DIR, get_theme_names())) {
-			list($THEME_DIR) = get_theme_names();
+		if (!array_key_exists($theme_id, Theme::themeNames())) {
+			$theme_id = 'webtrees';
 		}
 	}
-	define('WT_THEME_DIR', WT_THEMES_DIR . $THEME_DIR . '/');
-	// Remember this setting
-	if (WT_THEME_DIR != WT_THEMES_DIR . '_administration/') {
-		$WT_SESSION->theme_id = $THEME_DIR;
+	foreach (Theme::installedThemes() as $theme) {
+		if ($theme->themeId() === $theme_id) {
+			Theme::theme($theme)->init($WT_SESSION, $SEARCH_SPIDER, $WT_TREE);
+		}
 	}
-}
-// If we have specified a CDN, use it for static theme resources
-define('WT_THEME_URL', WT_STATIC_URL . WT_THEME_DIR);
 
-require WT_ROOT . WT_THEME_DIR . 'theme.php';
+	// Remember this setting
+	$WT_SESSION->theme_id = $theme_id;
+}
 
 // Page hit counter - load after theme, as we need theme formatting
 if ($WT_TREE && $WT_TREE->getPreference('SHOW_COUNTER') && !$SEARCH_SPIDER) {
@@ -659,9 +665,19 @@ if ($SEARCH_SPIDER && !in_array(WT_SCRIPT_NAME, array(
 	'individual.php', 'family.php', 'mediaviewer.php', 'note.php', 'repo.php', 'source.php',
 ))) {
 	header($_SERVER['SERVER_PROTOCOL'] . ' 403 Forbidden');
-	$controller = new WT_Controller_Page();
+	$controller = new WT_Controller_Page;
 	$controller->setPageTitle(WT_I18N::translate('Search engine'));
 	$controller->pageHeader();
 	echo '<p class="ui-state-error">', WT_I18N::translate('You do not have permission to view this page.'), '</p>';
 	exit;
 }
+
+// These theme globals are horribly abused.
+$bwidth       = Theme::theme()->parameter('chart-box-x');
+$bheight      = Theme::theme()->parameter('chart-box-y');
+$basexoffset  = Theme::theme()->parameter('chart-offset-x');
+$baseyoffset  = Theme::theme()->parameter('chart-offset-y');
+$bxspacing    = Theme::theme()->parameter('chart-spacing-x');
+$byspacing    = Theme::theme()->parameter('chart-spacing-y');
+$Dbwidth      = Theme::theme()->parameter('chart-descendancy-box-x');
+$Dbheight     = Theme::theme()->parameter('chart-descendancy-box-y');

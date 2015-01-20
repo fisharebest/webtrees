@@ -2,7 +2,7 @@
 // Callback function for inline editing.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -48,99 +48,15 @@ if (!WT_Filter::checkCsrf()) {
 // The id must be a valid CSS identifier, so it can be used in HTML.
 // We use "[A-Za-z0-9_]+" separated by "-".
 
-$id=WT_Filter::post('id', '[a-zA-Z0-9_-]+');
-list($table, $id1, $id2, $id3)=explode('-', $id.'---');
+$id = WT_Filter::post('id', '[a-zA-Z0-9_-]+');
+list($table, $id1, $id2, $id3) = explode('-', $id . '---');
 
 // The replacement value.
-$value=WT_Filter::post('value');
+$value = WT_Filter::post('value');
 
 // Every switch must have a default case, and every case must end in ok() or fail()
 
 switch ($table) {
-case 'site_setting':
-	//////////////////////////////////////////////////////////////////////////////
-	// Table name: WT_SITE_SETTING
-	// ID format:  site_setting-{setting_name}
-	//////////////////////////////////////////////////////////////////////////////
-
-	// Authorisation
-	if (!Auth::isAdmin()) {
-		fail();
-	}
-
-	// Validation
-	switch ($id1) {
-	case 'MAX_EXECUTION_TIME':
-		if ($value=='') {
-			// Delete the existing value
-			$value=null;
-		} elseif (!is_numeric($value)) {
-			fail();
-		}
-		break;
-	case 'SESSION_TIME':
-	case 'SMTP_PORT':
-		if (!is_numeric($value)) {
-			fail();
-		}
-		break;
-	case 'INDEX_DIRECTORY':
-		if (!is_dir($value) || substr($value, -1)!='/') {
-			fail();
-		}
-		break;
-	case 'MEMORY_LIMIT':
-		if ($value=='') {
-			// Delete the existing value
-			$value=null;
-		} elseif (!preg_match('/^[0-9]+[KMG]$/', $value)) {
-			// A number must be followed by K, M or G.
-			fail();
-		}
-		break;
-	case 'USE_REGISTRATION_MODULE':
-	case 'REQUIRE_ADMIN_AUTH_REGISTRATION':
-	case 'ALLOW_USER_THEMES':
-	case 'ALLOW_CHANGE_GEDCOM':
-	case 'SMTP_AUTH':
-	case 'SHOW_REGISTER_CAUTION':
-		$value=(int)$value;
-		break;
-	case 'WELCOME_TEXT_AUTH_MODE_4':
-		// Save a different version of this for each language.
-		$id1 = 'WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE;
-		break;
-	case 'LOGIN_URL':
-		if ($value && !preg_match('/^https?:\/\//', $value)) {
-			fail();
-		}
-		break;
-	case 'THEME_DIR':
-	case 'SERVER_URL':
-	case 'SMTP_ACTIVE':
-	case 'SMTP_AUTH_USER':
-	case 'SMTP_FROM_NAME':
-	case 'SMTP_HELO':
-	case 'SMTP_HOST':
-	case 'SMTP_SSL':
-	case 'WELCOME_TEXT_AUTH_MODE':
-		break;
-	case 'SMTP_AUTH_PASS':
-		// The password will be displayed as "click to edit" on screen.
-		// Accept the update, but pretend to fail.  This will leave the "click to edit" on screen
-		if ($value) {
-			WT_Site::setPreference($id1, $value);
-		}
-		fail();
-	default:
-		// An unrecognized setting
-		fail();
-	}
-
-	// Authorised and valid - make update
-	WT_Site::setPreference($id1, $value);
-	ok();
-
 case 'site_access_rule':
 	//////////////////////////////////////////////////////////////////////////////
 	// Table name: WT_SITE_ACCESS_RULE
@@ -155,7 +71,7 @@ case 'site_access_rule':
 	case 'ip_address_end':
 		WT_DB::prepare("UPDATE `##site_access_rule` SET {$id1}=INET_ATON(?) WHERE site_access_rule_id=?")
 			->execute(array($value, $id2));
-		$value=WT_DB::prepare(
+		$value = WT_DB::prepare(
 			"SELECT INET_NTOA({$id1}) FROM `##site_access_rule` WHERE site_access_rule_id=?"
 		)->execute(array($id2))->fetchOne();
 		ok();
@@ -213,7 +129,7 @@ case 'user_gedcom_setting':
 	// ID format:  user_gedcom_setting-{user_id}-{gedcom_id}-{setting_name}
 	//////////////////////////////////////////////////////////////////////////////
 
-	switch($id3) {
+	switch ($id3) {
 	case 'rootid':
 	case 'gedcomid':
 	case 'canedit':
@@ -237,7 +153,7 @@ case 'user_setting':
 
 	$user = User::find($id1);
 	// Authorisation
-	if (!(Auth::isAdmin() || $user && $user->getPreference('editaccount') && in_array($id2, array('language','visible_online','contact_method')))) {
+	if (!(Auth::isAdmin() || $user && $user->getPreference('editaccount') && in_array($id2, array('language', 'visible_online', 'contact_method')))) {
 		fail();
 	}
 
@@ -251,13 +167,13 @@ case 'user_setting':
 		break;
 	case 'verified_by_admin':
 		// Approving for the first time?  Send a confirmation email
-		if ($value && !$user->getPreference('verified_by_admin') && $user->getPreference('sessiontime')==0) {
+		if ($value && !$user->getPreference('verified_by_admin') && $user->getPreference('sessiontime') == 0) {
 			WT_I18N::init($user->getPreference('language'));
 			WT_Mail::systemMessage(
 				$WT_TREE,
 				$user,
-				WT_I18N::translate('Approval of account at %s', WT_SERVER_NAME.WT_SCRIPT_PATH),
-				WT_I18N::translate('The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s', WT_SERVER_NAME.WT_SCRIPT_PATH, WT_SERVER_NAME.WT_SCRIPT_PATH)
+				WT_I18N::translate('Approval of account at %s', WT_SERVER_NAME . WT_SCRIPT_PATH),
+				WT_I18N::translate('The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s', WT_SERVER_NAME . WT_SCRIPT_PATH, WT_SERVER_NAME . WT_SCRIPT_PATH)
 			);
 		}
 		break;
@@ -266,7 +182,7 @@ case 'user_setting':
 	case 'verified':
 	case 'visibleonline':
 	case 'max_relation_path':
-		$value=(int)$value;
+		$value = (int) $value;
 		break;
 	case 'contactmethod':
 	case 'comment':
@@ -281,29 +197,6 @@ case 'user_setting':
 	// Authorised and valid - make update
 	$user->setPreference($id2, $value);
 	ok();
-
-case 'module':
-	//////////////////////////////////////////////////////////////////////////////
-	// Table name: WT_MODULE
-	// ID format:  module-{column}-{module_name}
-	//////////////////////////////////////////////////////////////////////////////
-
-	// Authorisation
-	if (!Auth::isAdmin()) {
-		fail();
-	}
-
-	switch($id1) {
-	case 'status':
-	case 'tab_order':
-	case 'menu_order':
-	case 'sidebar_order':
-		WT_DB::prepare("UPDATE `##module` SET {$id1}=? WHERE module_name=?")
-			->execute(array($value, $id2));
-		ok();
-	default:
-		fail();
-	}
 
 default:
 	// An unrecognized table

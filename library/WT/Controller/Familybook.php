@@ -1,6 +1,6 @@
 <?php
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
@@ -18,6 +18,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+use WT\Theme;
 
 /**
  * Class WT_Controller_Familybook - Controller for the familybook chart
@@ -63,15 +64,15 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		$this->box_width = WT_Filter::getInteger('box_width', 50, 300, 100);
 
 		// Box sizes are set globally in the theme.  Modify them here.
-		global $bwidth, $bheight, $cbwidth, $cbheight, $Dbwidth, $bhalfheight, $Dbheight;
+		global $bwidth, $bheight, $Dbwidth, $bhalfheight, $Dbheight;
 		$Dbwidth = $this->box_width * $bwidth / 100;
 		$bwidth = $Dbwidth;
 		$bheight = $Dbheight;
 
 		// -- adjust size of the compact box
 		if (!$this->show_full) {
-			$bwidth = $this->box_width * $cbwidth / 100;
-			$bheight = $cbheight;
+			$bwidth = $this->box_width * Theme::theme()->parameter('compact-chart-box-x') / 100;
+			$bheight = Theme::theme()->parameter('compact-chart-box-y');
 		}
 		$bhalfheight = $bheight / 2;
 		if ($this->root && $this->root->canShowName()) {
@@ -98,7 +99,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 	 * @return integer
 	 */
 	private function printDescendency(WT_Individual $person = null, $count) {
-		global $WT_IMAGES, $bwidth, $bheight, $show_full, $box_width; // print_pedigree_person() requires these globals.
+		global $bwidth, $bheight, $show_full, $box_width; // print_pedigree_person() requires these globals.
 
 		if ($count > $this->dgenerations) {
 			return 0;
@@ -129,14 +130,16 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			$ct = 0; // set to 0 for empty boxes
 		}
 		if ($count < $this->dgenerations) {
-			if ($ct == 0) { // empty boxes
+			if ($ct == 0) {
+				// empty boxes
 				echo '<table><tr><td>';
 				$person2 = null;
 				$kids = $this->printDescendency($person2, $count + 1);
 				$numkids += $kids;
 				echo '</td></tr></table>';
 			}
-			if ($ct > 0) { // real people
+			if ($ct > 0) {
+				// real people
 				echo '<table>';
 				for ($i = 0; $i < $ct; $i++) {
 					$person2 = $children[$i];
@@ -149,13 +152,13 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 					if ($ct > 1) {
 						if ($i == 0) {
 							//-- adjust for the first column on left
-							$h = round(((($bheight) * $kids) + 8) / 2);  // Assumes border = 1 and padding = 3
+							$h = round(((($bheight) * $kids) + 8) / 2); // Assumes border = 1 and padding = 3
 							//-- adjust for other vertical columns
 							if ($kids > 1) {
 								$h = ($kids - 1) * 4 + $h;
 							}
 							echo '<td class="tdbot">',
-							'<img class="tvertline" id="vline_', $chil, '" src="', $WT_IMAGES["vline"], '"  height="', $h - 1, '" alt=""></td>';
+							'<img class="tvertline" id="vline_', $chil, '" src="', Theme::theme()->parameter('image-vline'), '"  height="', $h - 1, '" alt=""></td>';
 						} else if ($i == $ct - 1) {
 							//-- adjust for the first column on left
 							$h = round(((($bheight) * $kids) + 8) / 2);
@@ -164,10 +167,10 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 								$h = ((($kids - 1) * 4) + $h);
 							}
 							echo '<td class="tdtop">',
-							'<img class="bvertline" id="vline_', $chil, '" src="', $WT_IMAGES["vline"], '" height="', $h + 1, '" alt=""></td>';
+							'<img class="bvertline" id="vline_', $chil, '" src="', Theme::theme()->parameter('image-vline'), '" height="', $h + 1, '" alt=""></td>';
 						} else {
-							echo '<td style="background: url(', $WT_IMAGES["vline"], ');">',
-							'<img class="spacer" src="', $WT_IMAGES["spacer"], '" alt=""></td>';
+							echo '<td style="background: url(', Theme::theme()->parameter('image-vline'), ');">',
+							'<img class="spacer" src="', Theme::theme()->parameter('image-spacer'), '" alt=""></td>';
 						}
 					}
 					echo '</tr>';
@@ -185,7 +188,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		if ($person) {
 			print_pedigree_person($person);
 			echo '</td><td>',
-			'<img class="line2" src="', $WT_IMAGES["hline"], '" width="8" height="3" alt="">';
+			'<img class="line2" src="', Theme::theme()->parameter('image-hline'), '" width="8" height="3" alt="">';
 		} else {
 			echo '<div style="width:', $bwidth + 19, 'px; height:', $bheight + 8, 'px;"></div>',
 			'</td><td>';
@@ -223,12 +226,12 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 	 * @param integer       $count
 	 */
 	private function printPersonPedigree($person, $count) {
-		global $WT_IMAGES, $bheight, $bwidth, $bhalfheight;
+		global $bheight, $bwidth, $bhalfheight;
 		if ($count >= $this->generations) {
 			return;
 		}
 
-		$genoffset = $this->generations;  // handle pedigree n generations lines
+		$genoffset = $this->generations; // handle pedigree n generations lines
 		//-- calculate how tall the lines should be
 		$lh = ($bhalfheight + 4) * pow(2, ($genoffset - $count - 1));
 		//
@@ -248,22 +251,22 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			echo '</td><td></tr></table>';
 		}
 
-		//Empty box section done, now for regular pedigree
+		// Empty box section done, now for regular pedigree
 		foreach ($person->getChildFamilies() as $family) {
 			echo '<table><tr><td class="tdbot">';
-			//
-			//Determine line height for two or more spouces
-			//And then adjust the vertical line for the root person only
-			//
+			// Determine line height for two or more spouces
+			// And then adjust the vertical line for the root person only
 			$sfamilies = $person->getSpouseFamilies();
 			$famcount = 0;
-			if ($this->show_spouse) { // count number of spouses
+			if ($this->show_spouse) {
+				// count number of spouses
 				$famcount += count($sfamilies);
 			}
 			$savlh = $lh; // Save current line height
 			if ($count == 1 && $genoffset <= $famcount) {
 				$linefactor = 0;
-				if ($genoffset > 2) { // genoffset of 2 needs no adjustment
+				// genoffset of 2 needs no adjustment
+				if ($genoffset > 2) {
 					$tblheight = $bheight + 8;
 					if ($genoffset == 3) {
 						if ($famcount == 3) {
@@ -292,9 +295,9 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 					$lh = $savlh;
 				}
 			}
-			echo '<img class="line3 pvline"  src="', $WT_IMAGES["vline"], '" height="', $lh - 1, '" alt=""></td>',
+			echo '<img class="line3 pvline"  src="', Theme::theme()->parameter('image-vline'), '" height="', $lh - 1, '" alt=""></td>',
 			'<td>',
-			'<img class="line4" src="', $WT_IMAGES["hline"], '" height="3" alt=""></td>',
+			'<img class="line4" src="', Theme::theme()->parameter('image-hline'), '" height="3" alt=""></td>',
 			'<td>';
 			$lh = $savlh; // restore original line height
 			//-- print the father box
@@ -317,8 +320,8 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 				}
 			}
 			echo '</tr><tr>',
-			'<td class="tdtop"><img class="pvline" src="', $WT_IMAGES["vline"], '" height="', $lh + 1, '" alt=""></td>',
-			'<td><img class="line4" src="', $WT_IMAGES["hline"], '" height="3" alt=""></td>',
+			'<td class="tdtop"><img class="pvline" src="', Theme::theme()->parameter('image-vline'), '" height="', $lh + 1, '"></td>',
+			'<td><img class="line4" src="', Theme::theme()->parameter('image-hline'), '" height="3"></td>',
 			'<td>';
 			//-- print the mother box
 			print_pedigree_person($family->getWife());

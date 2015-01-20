@@ -1,6 +1,6 @@
 <?php
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
@@ -18,6 +18,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+use WT\Theme;
 
 /**
  * Class WT_Controller_Timeline - Controller for the timeline chart
@@ -67,7 +68,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 
 		$this->setPageTitle(WT_I18N::translate('Timeline'));
 
-		$this->baseyear = (int)date('Y');
+		$this->baseyear = (int) date('Y');
 		// new pid
 		$newpid = WT_Filter::get('newpid', WT_REGEX_XREF);
 
@@ -126,7 +127,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 							$this->topyear  = max($this->topyear, $date->y);
 
 							if (!$indi->isDead()) {
-								$this->topyear = max($this->topyear, (int)date('Y'));
+								$this->topyear = max($this->topyear, (int) date('Y'));
 							}
 
 							// do not add the same fact twice (prevents marriages from being added multiple times)
@@ -140,7 +141,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		}
 		$scale = WT_Filter::getInteger('scale', 0, 200);
 		if ($scale === 0) {
-			$this->scale = (int)(($this->topyear - $this->baseyear) / 20 * count($this->indifacts) / 4);
+			$this->scale = (int) (($this->topyear - $this->baseyear) / 20 * count($this->indifacts) / 4);
 			if ($this->scale < 6) {
 				$this->scale = 6;
 			}
@@ -158,7 +159,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 	 * @param WT_Fact $event
 	 */
 	function print_time_fact(WT_Fact $event) {
-		global $basexoffset, $baseyoffset, $factcount, $TEXT_DIRECTION, $WT_IMAGES, $placements;
+		global $basexoffset, $baseyoffset, $factcount, $TEXT_DIRECTION, $placements;
 
 		$desc = $event->getValue();
 		// check if this is a family fact
@@ -172,8 +173,8 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		$yoffset  = $baseyoffset + (($year - $this->baseyear) * $this->scale) - ($this->scale);
 		$yoffset  = $yoffset + (($month / 12) * $this->scale);
 		$yoffset  = $yoffset + (($day / 30) * ($this->scale / 12));
-		$yoffset  = (int)($yoffset);
-		$place    = (int)($yoffset / $this->bheight);
+		$yoffset  = (int) ($yoffset);
+		$place    = (int) ($yoffset / $this->bheight);
 		$i        = 1;
 		$j        = 0;
 		$tyoffset = 0;
@@ -185,7 +186,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 				$tyoffset = -1 * $this->bheight * $j;
 				$j++;
 			}
-			$place = (int)(($yoffset + $tyoffset) / ($this->bheight));
+			$place = (int) (($yoffset + $tyoffset) / ($this->bheight));
 		}
 		$yoffset += $tyoffset;
 		$xoffset += abs($tyoffset);
@@ -193,7 +194,7 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 
 		echo "<div id=\"fact$factcount\" style=\"position:absolute; " . ($TEXT_DIRECTION == "ltr" ? "left: " . ($xoffset) : "right: " . ($xoffset)) . "px; top:" . ($yoffset) . "px; font-size: 8pt; height: " . ($this->bheight) . "px;\" onmousedown=\"factMouseDown(this, '" . $factcount . "', " . ($yoffset - $tyoffset) . ");\">";
 		echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"cursor: hand;\"><tr><td>";
-		echo "<img src=\"" . $WT_IMAGES["hline"] . "\" name=\"boxline$factcount\" id=\"boxline$factcount\" height=\"3\" align=\"left\" width=\"10\" alt=\"\" style=\"padding-";
+		echo "<img src=\"" . Theme::theme()->parameter('image-hline') . "\" name=\"boxline$factcount\" id=\"boxline$factcount\" height=\"3\" align=\"left\" width=\"10\" alt=\"\" style=\"padding-";
 		if ($TEXT_DIRECTION == 'ltr') {
 			echo 'left: 3px;">';
 		} else {
@@ -250,26 +251,26 @@ class WT_Controller_Timeline extends WT_Controller_Page {
 		echo '</td></tr></table>';
 		echo '</div>';
 		if ($TEXT_DIRECTION === 'ltr') {
-			$img  = 'dline2';
+			$img  = 'image-dline2';
 			$ypos = '0%';
 		} else {
-			$img  = 'dline';
+			$img  = 'image-dline';
 			$ypos = '100%';
 		}
 		$dyoffset = ($yoffset - $tyoffset) + $this->bheight / 3;
 		if ($tyoffset < 0) {
 			$dyoffset = $yoffset + $this->bheight / 3;
 			if ($TEXT_DIRECTION === 'ltr') {
-				$img  = 'dline';
+				$img  = 'image-dline';
 				$ypos = '100%';
 			} else {
-				$img  = 'dline2';
+				$img  = 'image-dline2';
 				$ypos = '0%';
 			}
 		}
 		// Print the diagonal line
 		echo '<div id="dbox' . $factcount . '" style="position:absolute; ' . ($TEXT_DIRECTION == 'ltr' ? 'left: ' . ($basexoffset + 25) : 'right: ' . ($basexoffset + 25)) . 'px; top:' . ($dyoffset) . 'px; font-size: 8pt; height: ' . abs($tyoffset) . 'px; width: ' . abs($tyoffset) . 'px;';
-		echo ' background-image: url(\'' . $WT_IMAGES[$img] . '\');';
+		echo ' background-image: url(\'' . Theme::theme()->parameter($img) . '\');';
 		echo ' background-position: 0% ' . $ypos . ';">';
 		echo '</div>';
 	}

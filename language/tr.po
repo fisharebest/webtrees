@@ -13668,7 +13668,7 @@ msgstr "Saniye olarak webtrees in tekrar otutum açmak gerekmeden oturumu açık
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:77
 #, php-format
-msgid "The two family trees have %1$s record which use the same “XREF”."
+msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
 msgstr[0] "Her iki soy ağacında aynı “XREF” değerini taşıyan %1$s kayıt var. "
 
@@ -14576,7 +14576,7 @@ msgstr "Bu web sitesi geçici olarak kullanılamıyor"
 
 #: admin_trees_manage.php:137
 #, php-format
-msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM."
+msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM file."
 msgstr "Bu <b>%s</b> soyağacının tüm verileri silerek bir başka GEDCOM verileri yüklenecektir."
 
 #: modules_v3/googlemap/module.php:1772
@@ -20038,7 +20038,7 @@ msgstr "Güncelle"
 #. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
 #: library/WT/I18N.php:308
 msgid "utf8_unicode_ci"
-msgstr "utf8_unicode_ci"
+msgstr "utf8_turkish_ci"
 
 #: modules_v3/ahnentafel_report/report.xml:138
 #: modules_v3/descendancy_report/report.xml:104

@@ -19,6 +19,10 @@ It can also serve as a documentation source referencing the practical problems
 that arise when handling UTF-8 in PHP: Unicode concepts, related algorithms,
 bugs in PHP core, workarounds, etc.
 
+Version 1.2 adds best-fit mappings for UTF-8 to *Code Page* approximations.
+It also adds Unicode filesystem access under Windows, using preferably
+[wfio](https://github.com/kenjiuno/php-wfio) or a COM based fallback otherwise.
+
 Portability
 -----------
 
@@ -35,10 +39,11 @@ server even if one or more of those extensions are not enabled:
 - *utf8_encode, utf8_decode*,
 - `mbstring`: *mb_check_encoding, mb_convert_case, mb_convert_encoding,
   mb_decode_mimeheader, mb_detect_encoding, mb_detect_order,
-  mb_encode_mimeheader, mb_encoding_aliases, mb_internal_encoding, mb_language,
-  mb_list_encodings, mb_strlen, mb_strpos, mb_strrpos, mb_strtolower,
+  mb_encode_mimeheader, mb_encoding_aliases, mb_get_info, mb_http_input,
+  mb_http_output, mb_internal_encoding, mb_language, mb_list_encodings,
+  mb_output_handler, mb_strlen, mb_strpos, mb_strrpos, mb_strtolower,
   mb_strtoupper, mb_stripos, mb_stristr, mb_strrchr, mb_strrichr, mb_strripos,
-  mb_strstr, mb_substitute_character, mb_substr*,
+  mb_strstr, mb_strwidth, mb_substitute_character, mb_substr, mb_substr_count*,
 - `iconv`: *iconv, iconv_mime_decode, iconv_mime_decode_headers,
   iconv_get_encoding, iconv_set_encoding, iconv_mime_encode, ob_iconv_handler,
   iconv_strlen, iconv_strpos, iconv_strrpos, iconv_substr*,
@@ -62,7 +67,9 @@ Some more functions are also provided to help handling UTF-8 strings:
 - *isUtf8()*: checks if a string contains well formed UTF-8 data,
 - *toAscii()*: generic UTF-8 to ASCII transliteration,
 - *strtocasefold()*: unicode transformation for caseless matching,
-- *strtonatfold()*: generic case sensitive transformation for collation matching
+- *strtonatfold()*: generic case sensitive transformation for collation matching,
+- *strwidth()*: computes the width of a string when printed on a terminal,
+- *wrapPath()*: unicode filesystem access under Windows and other OSes.
 
 Mirrored string functions are:
 *strlen, substr, strpos, stripos, strrpos, strripos, strstr, stristr, strrchr,
@@ -91,7 +98,7 @@ the `php composer.phar install` command to install it:
 
     {
         "require": {
-            "patchwork/utf8": "~1.1"
+            "patchwork/utf8": "~1.2"
         }
     }
 
@@ -124,7 +131,8 @@ through. When dealing with badly formed UTF-8, you should not try to fix it
 Instead, consider it as [CP-1252](http://wikipedia.org/wiki/CP-1252) and use
 `Patchwork\Utf8::utf8_encode()` to get an UTF-8 string. Don't forget also to
 choose one unicode normalization form and stick to it. NFC is now the defacto
-standard. `Patchwork\Utf8::filter()` implements this behavior.
+standard. `Patchwork\Utf8::filter()` implements this behavior: it converts from
+CP1252 and to NFC.
 
 This library is orthogonal to `mbstring.func_overload` and will not work if the
 php.ini setting is enabled.

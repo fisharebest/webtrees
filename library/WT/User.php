@@ -8,7 +8,7 @@ use WT_Tree;
 /**
  * Class User - Provide an interface to the wt_user table.
  *
- * @copyright (c) 2014 webtrees development team
+ * @copyright (c) 2015 webtrees development team
  * @license   This program is free software: you can redistribute it and/or modify
  *            it under the terms of the GNU General Public License as published by
  *            the Free Software Foundation, either version 2 of the License, or
@@ -150,7 +150,7 @@ class User {
 	 * @return integer
 	 */
 	public static function count() {
-		return (int)WT_DB::prepare(
+		return (int) WT_DB::prepare(
 			"SELECT SQL_CACHE COUNT(*)" .
 			" FROM `##user`" .
 			" WHERE user_id > 0"
@@ -203,14 +203,37 @@ class User {
 	}
 
 	/**
+	 * Get a list of all verified uses.
+	 *
+	 * @return User[]
+	 */
+	public static function allVerified() {
+		$rows = WT_DB::prepare(
+			"SELECT SQL_CACHE user_id, user_name, real_name, email" .
+			" FROM `##user`" .
+			" JOIN `##user_setting` USING (user_id)" .
+			" WHERE user_id > 0" .
+			"   AND setting_name = 'verified'" .
+			"   AND setting_value = '1'"
+		)->fetchAll();
+
+		$users = array();
+		foreach ($rows as $row) {
+			$users[] = new User($row);
+		}
+
+		return $users;
+	}
+
+	/**
 	 * Get a list of all users who are currently logged in.
 	 *
 	 * @return User[]
 	 */
 	public static function allLoggedIn() {
 		$rows = WT_DB::prepare(
-			"SELECT SQL_NO_CACHE DISTINCT user_id, user_name, real_name, email".
-			" FROM `##user`".
+			"SELECT SQL_NO_CACHE DISTINCT user_id, user_name, real_name, email" .
+			" FROM `##user`" .
 			" JOIN `##session` USING (user_id)"
 		)->fetchAll();
 

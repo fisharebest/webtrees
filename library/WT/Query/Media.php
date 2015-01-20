@@ -24,7 +24,7 @@ class WT_Query_Media {
 			" ORDER BY 1"
 		)->execute(array(WT_GED_ID))->fetchOneColumn();
 
-		if (!$folders || reset($folders)!='') {
+		if (!$folders || reset($folders) != '') {
 			array_unshift($folders, '');
 		}
 

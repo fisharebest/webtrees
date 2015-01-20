@@ -42,13 +42,13 @@ class occupation_report_WT_Module extends WT_Module implements WT_Module_Report 
 
 	/** {@inheritdoc} */
 	public function getReportMenus() {
-		$menus=array();
-		$menu=new WT_Menu(
+		$menus = array();
+		$menu = new WT_Menu(
 			$this->getTitle(),
-			'reportengine.php?ged='.WT_GEDURL.'&amp;action=setup&amp;report='.WT_MODULES_DIR.$this->getName().'/report.xml',
-			'menu-report-'.$this->getName()
+			'reportengine.php?ged=' . WT_GEDURL . '&amp;action=setup&amp;report=' . WT_MODULES_DIR . $this->getName() . '/report.xml',
+			'menu-report-' . $this->getName()
 		);
-		$menus[]=$menu;
+		$menus[] = $menu;
 
 		return $menus;
 	}

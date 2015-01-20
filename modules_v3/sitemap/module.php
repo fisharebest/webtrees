@@ -22,7 +22,7 @@ use WT\Auth;
  * Class sitemap_WT_Module
  */
 class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
-	const RECORDS_PER_VOLUME = 500;    // Keep sitemap files small, for memory, CPU and max_allowed_packet limits.
+	const RECORDS_PER_VOLUME = 500; // Keep sitemap files small, for memory, CPU and max_allowed_packet limits.
 	const CACHE_LIFE = 1209600; // Two weeks
 
 	/** {@inheritdoc} */
@@ -257,7 +257,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 	 * Edit the configuration
 	 */
 	private function admin() {
-		$controller = new WT_Controller_Page();
+		$controller = new WT_Controller_Page;
 		$controller
 			->restrictAccess(Auth::isAdmin())
 			->setPageTitle($this->getTitle())
@@ -285,9 +285,9 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 			'<form method="post" action="module.php?mod=' . $this->getName() . '&amp;mod_action=admin">',
 		'<input type="hidden" name="action" value="save">';
 		foreach (WT_Tree::getAll() as $tree) {
-			echo '<p><input type="checkbox" name="include', $tree->tree_id, '"';
+			echo '<p><input type="checkbox" name="include', $tree->tree_id, '" ';
 			if ($tree->getPreference('include_in_sitemap')) {
-				echo ' checked="checked"';
+				echo 'checked';
 				$include_any = true;
 			}
 			echo '>', $tree->tree_title_html, '</p>';

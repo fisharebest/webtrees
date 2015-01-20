@@ -26,7 +26,7 @@ use WT\Auth;
 define('WT_SCRIPT_NAME', 'index_edit.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Ajax();
+$controller = new WT_Controller_Ajax;
 
 // Only one of $user_id and $gedcom_id should be set
 $user_id = WT_Filter::get('user_id', WT_REGEX_INTEGER, WT_Filter::post('user_id', WT_REGEX_INTEGER));
@@ -259,11 +259,11 @@ $controller
 	// Load Block Description array for use by javascript
 	foreach ($all_blocks as $block_name => $block) {
 		$controller->addInlineJavascript(
-			'block_descr["'.$block_name.'"] = "'.WT_Filter::escapeJs($block->getDescription()).'";'
+			'block_descr["' . $block_name . '"] = "' . WT_Filter::escapeJs($block->getDescription()) . '";'
 		);
 	}
 	$controller->addInlineJavascript(
-		'block_descr["advice1"] = "'.WT_I18N::translate('Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.').'";'
+		'block_descr["advice1"] = "' . WT_I18N::translate('Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.') . '";'
 	);
 
 ?>

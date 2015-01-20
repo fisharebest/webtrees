@@ -21,7 +21,7 @@ use WT\Auth;
 /**
  * Class batch_update_WT_Module
  */
-class batch_update_WT_Module extends WT_Module implements WT_Module_Config{
+class batch_update_WT_Module extends WT_Module implements WT_Module_Config {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ WT_I18N::translate('Batch update');
@@ -34,17 +34,17 @@ class batch_update_WT_Module extends WT_Module implements WT_Module_Config{
 
 	/** {@inheritdoc} */
 	public function modAction($mod_action) {
-		switch($mod_action) {
+		switch ($mod_action) {
 		case 'admin_batch_update':
-			$controller = new WT_Controller_Page();
+			$controller = new WT_Controller_Page;
 			$controller
 				->setPageTitle(WT_I18N::translate('Batch update'))
 				->restrictAccess(Auth::isAdmin())
 				->pageHeader();
 
 			// TODO: these files should be methods in this class
-			require WT_ROOT.WT_MODULES_DIR.$this->getName().'/'.$mod_action.'.php';
-			$mod=new batch_update;
+			require WT_ROOT . WT_MODULES_DIR . $this->getName() . '/' . $mod_action . '.php';
+			$mod = new batch_update;
 			echo $mod->main();
 			break;
 		default:
@@ -54,6 +54,6 @@ class batch_update_WT_Module extends WT_Module implements WT_Module_Config{
 
 	/** {@inheritdoc} */
 	public function getConfigLink() {
-		return 'module.php?mod='.$this->getName().'&amp;mod_action=admin_batch_update';
+		return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_batch_update';
 	}
 }

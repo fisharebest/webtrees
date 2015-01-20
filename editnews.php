@@ -28,7 +28,7 @@ use WT\Auth;
 define('WT_SCRIPT_NAME', 'editnews.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Simple();
+$controller = new WT_Controller_Simple;
 $controller
 	->setPageTitle(WT_I18N::translate('Add/edit a journal/news entry'))
 	->restrictAccess(Auth::isMember())
@@ -57,7 +57,7 @@ case 'compose':
 		$news['user_id']   = $user_id;
 		$news['gedcom_id'] = $gedcom_id;
 		$news['date']      = WT_TIMESTAMP;
-		$news['subject']     = '';
+		$news['subject']   = '';
 		$news['body']      = '';
 	}
 	echo '<input type="hidden" name="user_id" value="' . $news['user_id'] . '">';

@@ -204,7 +204,8 @@ if (!defined('WT_WEBTREES')) {
 		var cendate = getCenDate(cenyear);
 		// Get Married Date from Input Fields and re-calculate Marital Condition ============
 		var tbl = document.getElementById('tblSample');
-		for (var i=1; i<tbl.rows.length; i++) { // start at i=1 because we need to avoid header
+		// start at i=1 because we need to avoid header
+		for (var i=1; i<tbl.rows.length; i++) {
 			var tr = tbl.rows[i];
 			for (var j=2; j<tr.cells.length; j++) {
 				if (j!=4 && j!=15) {
@@ -320,7 +321,8 @@ if (!defined('WT_WEBTREES')) {
 		var cendate = getCenDate(cenyear);
 		// Get Children born Array from Input Fields and re-calculate Born Alive Died Condition ============
 		var tbl = document.getElementById('tblSample');
-		for (var i=1; i<tbl.rows.length; i++) { // start at i=1 because we need to avoid header
+		// start at i=1 because we need to avoid header
+		for (var i=1; i<tbl.rows.length; i++) {
 			var tr = tbl.rows[i];
 			for (var j=2; j<tr.cells.length; j++) {
 				if (j!=73) {
@@ -394,7 +396,8 @@ if (!defined('WT_WEBTREES')) {
 		// Get Age from Input Fields and re-calculate =======================================
 		var tbl = document.getElementById('tblSample');
 
-		for (var i=1; i<tbl.rows.length; i++) { // start at i=1 because we need to avoid header
+		// start at i=1 because we need to avoid header
+		for (var i=1; i<tbl.rows.length; i++) {
 			var tr = tbl.rows[i];
 			for (var j=2; j<tr.cells.length; j++) {
 				if (j!=7 && j!=12) {
@@ -484,7 +487,7 @@ if (!defined('WT_WEBTREES')) {
 		}
 		var cens_ctry_a = document.getElementById('censCtry');
 		var cens_ctry = cens_ctry_a.value;
-		document.getElementById('Titl').value = '<?php echo WT_I18N::translate('Census transcript'),' - ', WT_Filter::escapeJs($wholename), ' - ', WT_I18N::translate('Household'); ?>';
+		document.getElementById('Titl').value = '<?php echo WT_I18N::translate('Census transcript'), ' - ', WT_Filter::escapeJs($wholename), ' - ', WT_I18N::translate('Household'); ?>';
 		var prev = document.getElementById('prevYear');
 		prev.value = cenyear;
 	}
