@@ -36,11 +36,15 @@ $controller
 	->restrictAccess(Auth::isAdmin())
 	->setPageTitle(WT_I18N::translate('PhpGedView to webtrees transfer wizard'));
 
-$error    = '';
-$warning  = '';
+$error    = false;
 $PGV_PATH = WT_Filter::post('PGV_PATH');
 
 // We read these variables from PGV's config.php, and set them here in case any are missing.
+$INDEX_DIRECTORY                 = '';
+$DBHOST                          = '';
+$DBNAME                          = '';
+$TBLPREFIX                       = '';
+$PGV_SCHEMA_VERSION              = '';
 $USE_REGISTRATION_MODULE         = '';
 $REQUIRE_ADMIN_AUTH_REGISTRATION = '';
 $ALLOW_USER_THEMES               = '';
@@ -58,7 +62,8 @@ $PGV_SMTP_FROM_NAME              = '';
 
 if ($PGV_PATH) {
 	if (!is_dir($PGV_PATH) || !is_readable($PGV_PATH . '/config.php')) {
-		$error = WT_I18N::translate('The specified directory does not contain an installation of PhpGedView');
+		WT_FlashMessages::addMessage('The specified directory does not contain an installation of PhpGedView', 'danger');
+		$PGV_PATH = null;
 	} else {
 		// Load the configuration settings
 		$config_php = file_get_contents($PGV_PATH . '/config.php');
@@ -79,7 +84,8 @@ if ($PGV_PATH) {
 		}
 		$wt_config = parse_ini_file(WT_ROOT . 'data/config.ini.php');
 		if ($DBHOST != $wt_config['dbhost']) {
-			$error = WT_I18N::translate('PhpGedView must use the same database as webtrees.');
+			WT_FlashMessages::addMessage(WT_I18N::translate('PhpGedView must use the same database as webtrees.', 'danger'));
+			$PGV_PATH = null;
 			unset($wt_config);
 		} else {
 			unset($wt_config);
@@ -88,51 +94,42 @@ if ($PGV_PATH) {
 					"SELECT site_setting_value FROM `{$DBNAME}`.`{$TBLPREFIX}site_setting` WHERE site_setting_name='PGV_SCHEMA_VERSION'"
 				)->fetchOne();
 				if ($PGV_SCHEMA_VERSION < 10) {
-					$error = WT_I18N::translate('The version of %s is too old.', 'PhpGedView');
+					WT_FlashMessages::addMessage(WT_I18N::translate('The version of %s is too old.', 'PhpGedView'), 'danger');
+					$PGV_PATH = null;
 				} elseif ($PGV_SCHEMA_VERSION > 14) {
-					$error = WT_I18N::translate('The version of %s is too new.', 'PhpGedView');
+					WT_FlashMessages::addMessage(WT_I18N::translate('The version of %s is too new.', 'PhpGedView'), 'danger');
+					$PGV_PATH = null;
 				}
 			} catch (PDOException $ex) {
-				$error =
+				WT_FlashMessages::addMessage(
 					/* I18N: %s is a database name/identifier */
 					WT_I18N::translate('webtrees cannot connect to the PhpGedView database: %s.', $DBNAME . '@' . $DBHOST) .
 					'<br>' .
 					/* I18N: %s is an error message */
-					WT_I18N::translate('MySQL gave the error: %s', $ex->getMessage());
+					WT_I18N::translate('MySQL gave the error: %s', $ex->getMessage()), 'danger');
+					$PGV_PATH = null;
 			}
 		}
 	}
 }
 
-if ($PGV_PATH && !$error) {
+if ($PGV_PATH) {
 	// The account we are using is about to be deleted.
 	$WT_SESSION->wt_user = null;
 }
 
 $controller->pageHeader();
 
-echo
-	'<style type="text/css">
-		#container {width: 70%; margin:15px auto; border: 1px solid gray; padding: 10px;}
-		#container dl {margin:0 0 40px 25px;}
-		#container dt {display:inline; width: 320px; font-weight:normal; margin: 0 0 15px 0;}
-		#container dd {color: #81A9CB; margin-bottom:20px;font-weight:bold;}
-		#container p {color: #81A9CB; font-size: 14px; font-style: italic; font-weight:bold; padding: 0 5px 5px;}
-		h2 {color: #81A9CB;}
-		.good {color: green;}
-		.bad {color: red !important;}
-		.indifferent {color: blue;}
-		#container p.pgv  {color: black; font-size: 12px; font-style: normal; font-weight:normal; padding:0; margin:10px 0 0 320px;}
-	</style>';
+?>
+<ol class="breadcrumb small">
+	<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+<li><a href="admin_trees_manage.php"><?php echo WT_I18N::translate('Manage family trees'); ?></a></li>
+<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+</ol>
+<h2><?php echo $controller->getPageTitle(); ?></h2>
+<?php
 
-if ($error || !$PGV_PATH) {
-	// Prompt for location of PhpGedView installation
-	echo '<div id="container">';
-	echo '<h2>', WT_I18N::translate('PhpGedView to webtrees transfer wizard'), '</h2>';
-	if ($error) {
-		echo '<p class="bad">', $error, '</p>';
-	}
-
+if (!$PGV_PATH) {
 	// Look for PGV in some nearby directories
 	$pgv_dirs = array();
 	$dir      = opendir(realpath('..'));
@@ -143,33 +140,48 @@ if ($error || !$PGV_PATH) {
 	}
 	closedir($dir);
 
-	echo
-		'<form method="post">',
-		'<p>', WT_I18N::translate('Where is your PhpGedView installation?'), '</p>',
-		'<dl>',
-		'<dt>', WT_I18N::translate('Installation folder'), '</dt>';
-	switch (count($pgv_dirs)) {
-	case '0':
-		echo '<dd><input type="text" name="PGV_PATH" size="40" value="" autofocus></dd>';
-		break;
-	case '1':
-		echo '<dd><input type="text" name="PGV_PATH" size="40" value="' . WT_Filter::escapeHtml($pgv_dirs[0]) . '" autofocus></dd>';
-		break;
-	default:
-		echo '<dd><input type="text" name="PGV_PATH" size="40" value="" autofocus></dd>';
-		echo '<dt>', WT_I18N::translate('PhpGedView might be installed in one of these folders:'), '</dt>';
-		echo '<dd>';
-		foreach ($pgv_dirs as $pgvpath) {
-			echo '<p class="pgv">', $pgvpath, '</p>';
-		}
-		echo '</dd>';
-		break;
-	}
-	echo
-		'</dl>',
-		'<div class="center"><input type="submit" value="' . WT_I18N::translate('next') . '"></div>',
-		'</form>',
-		'</div>';
+	?>
+	<?php if (count($pgv_dirs) > 1): ?>
+		<div class="alert alert-info alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="<?php echo WT_I18N::translate('close'); ?>">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<?php echo WT_I18N::translate('PhpGedView might be installed in one of these folders:'); ?>
+			<?php foreach ($pgv_dirs as $pgv_dir): ?>
+				<br><?php echo WT_Filter::escapeHtml($pgv_dir); ?>
+			<?php endforeach; ?>
+		</div>
+	<?php endif; ?>
+
+	<form class="form-horizontal" method="post">
+		<div class="form-group">
+			<label class="control-label col-sm-3" for="PGV_PATH">
+				<?php echo WT_I18N::translate('Where is your PhpGedView installation?'); ?>
+			</label>
+			<div class="col-sm-9">
+				<input
+					type="text"
+					class="form-control"
+					dir="ltr"
+					id="PGV_PATH"
+					name="PGV_PATH"
+					size="40"
+					placeholder="<?php echo WT_I18N::translate('Installation folder'); ?>"
+					value="<?php echo count($pgv_dirs) === 1 ? WT_Filter::escapeHtml($pgv_dirs[0]) : ''; ?>"
+					required
+				>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-offset-3 col-sm-9">
+				<button type="submit" class="btn btn-primary">
+					<?php echo WT_I18N::translate('continue'); ?>
+				</button>
+			</div>
+		</div>
+	</form>
+	<?php
 
 	return;
 }
@@ -1146,4 +1158,4 @@ WT_DB::commit();
 
 echo '<hr>';
 echo '<p>', WT_I18N::translate('You need to login again, using your PhpGedView username and password.'), '</p>';
-echo '<a href="index.php"><button>', WT_I18N::translate('continue'), '</button></a>';
+echo '<a href="index.php"><button class="btn btn-primary">', WT_I18N::translate('continue'), '</button></a>';

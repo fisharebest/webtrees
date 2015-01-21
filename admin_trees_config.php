@@ -420,7 +420,7 @@ $controller
 </ol>
 <h2><?php echo $controller->getPageTitle(); ?></h2>
 
-<form class="form-horizontal" method="POST" role="form">
+<form class="form-horizontal" method="POST">
 	<?php echo WT_Filter::getCsrf(); ?>
 	<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 
