@@ -25,50 +25,6 @@ use Rhumsaa\Uuid\Uuid;
 use WT\Auth;
 
 /**
- * Create an edit control for inline editing using jeditable.
- *
- * @param string             $name
- * @param string             $value
- * @param WT_Controller_Base $controller
- *
- * @return string
- */
-function edit_field_inline($name, $value, WT_Controller_Base $controller = null) {
-	$html = '<span class="editable" id="' . $name . '">' . WT_Filter::escapeHtml($value) . '</span>';
-	$js = 'jQuery("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {submitdata: {csrf: WT_CSRF_TOKEN}, submit:"&nbsp;&nbsp;' . /* I18N: button label */ WT_I18N::translate('save') . '&nbsp;&nbsp;", style:"inherit", placeholder: "' . WT_I18N::translate('click to edit') . '"});';
-
-	if ($controller) {
-		$controller->addInlineJavascript($js);
-		return $html;
-	} else {
-		// For AJAX callbacks
-		return $html . '<script>' . $js . '</script>';
-	}
-}
-
-/**
- * Create a text area for inline editing using jeditable.
- *
- * @param string             $name
- * @param string             $value
- * @param WT_Controller_Base $controller
- *
- * @return string
- */
-function edit_text_inline($name, $value, WT_Controller_Base $controller = null) {
-	$html = '<span class="editable" style="white-space:pre-wrap;" id="' . $name . '">' . WT_Filter::escapeHtml($value) . '</span>';
-	$js = 'jQuery("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {submitdata: {csrf: WT_CSRF_TOKEN}, submit:"&nbsp;&nbsp;' . WT_I18N::translate('save') . '&nbsp;&nbsp;", style:"inherit", placeholder: "' . WT_I18N::translate('click to edit') . '", type: "textarea", rows:4, cols:60 });';
-
-	if ($controller) {
-		$controller->addInlineJavascript($js);
-		return $html;
-	} else {
-		// For AJAX callbacks
-		return $html . '<script>' . $js . '</script>';
-	}
-}
-
-/**
  * Create a <select> control for a form.
  *
  * @param string      $name
@@ -110,40 +66,6 @@ function select_edit_control($name, $values, $empty, $selected, $extra = '') {
 }
 
 /**
- * An inline-editing version of select_edit_control()
- *
- * @param string             $name
- * @param string[]           $values
- * @param string|null        $empty
- * @param string             $selected
- * @param WT_Controller_Base $controller
- *
- * @return string
- */
-function select_edit_control_inline($name, $values, $empty, $selected, WT_Controller_Base $controller = null) {
-	if (!is_null($empty)) {
-		// Push ''=>$empty onto the front of the array, maintaining keys
-		$tmp = array(''=>WT_Filter::escapeHtml($empty));
-		foreach ($values as $key=>$value) {
-			$tmp[$key] = WT_Filter::escapeHtml($value);
-		}
-		$values = $tmp;
-	}
-	$values['selected'] = WT_Filter::escapeHtml($selected);
-
-	$html = '<span class="editable" id="' . $name . '">' . (array_key_exists($selected, $values) ? $values[$selected] : '') . '</span>';
-	$js = 'jQuery("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {submitdata: {csrf: WT_CSRF_TOKEN}, type:"select", data:' . json_encode($values) . ', submit:"&nbsp;&nbsp;' . WT_I18N::translate('save') . '&nbsp;&nbsp;", style:"inherit", placeholder: "' . WT_I18N::translate('click to edit') . '", callback:function(value, settings) {jQuery(this).html(settings.data[value]);} });';
-
-	if ($controller) {
-		$controller->addInlineJavascript($js);
-		return $html;
-	} else {
-		// For AJAX callbacks
-		return $html . '<script>' . $js . '</script>';
-	}
-}
-
-/**
  * Create a set of radio buttons for a form
  *
  * @param string   $name      The ID for the form element
@@ -177,21 +99,6 @@ function radio_buttons($name, $values, $selected, $extra = '') {
 function edit_field_yes_no($name, $selected = false) {
 	return radio_buttons(
 		$name, array(false=>WT_I18N::translate('no'), true=>WT_I18N::translate('yes')), $selected
-	);
-}
-
-/**
- * An inline-editing version of edit_field_yes_no()
- *
- * @param string             $name
- * @param boolean            $selected
- * @param WT_Controller_Base $controller
- *
- * @return string
- */
-function edit_field_yes_no_inline($name, $selected = false, WT_Controller_Base $controller = null) {
-	return select_edit_control_inline(
-		$name, array(true=>WT_I18N::translate('yes'), false=>WT_I18N::translate('no')), null, (int) $selected, $controller
 	);
 }
 
@@ -335,27 +242,6 @@ function edit_field_contact($name, $selected = '', $extra = '') {
 }
 
 /**
- * Print an edit control for a contact method field.
- *
- * @param string             $name
- * @param string             $selected
- * @param WT_Controller_Base $controller
- *
- * @return string
- */
-function edit_field_contact_inline($name, $selected = '', WT_Controller_Base $controller = null) {
-	// Different ways to contact the users
-	$CONTACT_METHODS = array(
-		'messaging' =>WT_I18N::translate('webtrees internal messaging'),
-		'messaging2'=>WT_I18N::translate('Internal messaging with emails'),
-		'messaging3'=>WT_I18N::translate('webtrees sends emails with no storage'),
-		'mailto'    =>WT_I18N::translate('Mailto link'),
-		'none'      =>WT_I18N::translate('No contact'),
-	);
-	return select_edit_control_inline($name, $CONTACT_METHODS, null, $selected, $controller);
-}
-
-/**
  * Print an edit control for a language field.
  *
  * @param string $name
@@ -366,21 +252,6 @@ function edit_field_contact_inline($name, $selected = '', WT_Controller_Base $co
  */
 function edit_field_language($name, $selected = '', $extra = '') {
 	return select_edit_control($name, WT_I18N::installed_languages(), null, $selected, $extra);
-}
-
-/**
- * An inline-editing version of edit_field_language().
- *
- * @param string             $name
- * @param string             $selected
- * @param WT_Controller_Base $controller
- *
- * @return string
- */
-function edit_field_language_inline($name, $selected = '', WT_Controller_Base $controller = null) {
-	return select_edit_control_inline(
-		$name, WT_I18N::installed_languages(), null, $selected, $controller
-	);
 }
 
 /**

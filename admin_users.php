@@ -91,6 +91,17 @@ case 'save':
 		}
 
 		if ($user) {
+			// Approving for the first time?  Send a confirmation email
+			if ($approved && !$user->getPreference('verified_by_admin') && $user->getPreference('sessiontime') == 0) {
+				WT_I18N::init($user->getPreference('language'));
+				WT_Mail::systemMessage(
+					$WT_TREE,
+					$user,
+					WT_I18N::translate('Approval of account at %s', WT_SERVER_NAME . WT_SCRIPT_PATH),
+					WT_I18N::translate('The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s', WT_SERVER_NAME . WT_SCRIPT_PATH, WT_SERVER_NAME . WT_SCRIPT_PATH)
+				);
+			}
+
 			$user
 				->setPreference('theme', $theme)
 				->setPreference('language', $language)

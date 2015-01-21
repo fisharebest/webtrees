@@ -24,39 +24,12 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test that function edit_field_inline() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionEditFieldInlineExists() {
-		$this->assertEquals(function_exists('\\edit_field_inline'), true);
-	}
-
-	/**
-	 * Test that function edit_text_inline() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionEditTextInlineExists() {
-		$this->assertEquals(function_exists('\\edit_text_inline'), true);
-	}
-
-	/**
 	 * Test that function select_edit_control() exists in the global namespace.
 	 *
 	 * @return void
 	 */
 	public function testFunctionSelectEditControlExists() {
 		$this->assertEquals(function_exists('\\select_edit_control'), true);
-	}
-
-	/**
-	 * Test that function select_edit_control_inline() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionSelectEditControlInlineExists() {
-		$this->assertEquals(function_exists('\\select_edit_control_inline'), true);
 	}
 
 	/**
@@ -133,30 +106,12 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test that function edit_field_contact_inline() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionEditFieldContactInlineExists() {
-		$this->assertEquals(function_exists('\\edit_field_contact_inline'), true);
-	}
-
-	/**
 	 * Test that function edit_field_language() exists in the global namespace.
 	 *
 	 * @return void
 	 */
 	public function testFunctionEditFieldLangaugeExists() {
 		$this->assertEquals(function_exists('\\edit_field_language'), true);
-	}
-
-	/**
-	 * Test that function edit_field_language_inline() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionEditFieldLanguageInlineExists() {
-		$this->assertEquals(function_exists('\\edit_field_language_inline'), true);
 	}
 
 	/**
