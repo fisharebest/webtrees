@@ -286,7 +286,8 @@ case 'run':
 	if (strstr($report, 'report_singlepage.xml') !== false) {
 		$DEBUG = false;
 		$pedigree = new ReportPedigree;
-		exit;
+		
+		return;
 	}
 
 	switch ($output) {

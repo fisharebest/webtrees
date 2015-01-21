@@ -34,7 +34,8 @@ require WT_ROOT . 'includes/functions/functions_edit.php';
 // prevent users with editing account disabled from being able to edit their account
 if (!Auth::id() || !Auth::user()->getPreference('editaccount')) {
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
-	exit;
+	
+	return;
 }
 
 // Extract form variables
@@ -86,7 +87,8 @@ if ($form_action == 'update' && WT_Filter::checkCsrf()) {
 
 		// Reload page to pick up changes such as theme and user_id
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
-		exit;
+		
+		return;
 	}
 }
 

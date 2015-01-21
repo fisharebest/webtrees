@@ -369,11 +369,12 @@ header('Cache-Control: max-age=' . $expireOffset . ', s-maxage=0, proxy-revalida
 
 // if this file is already in the user’s cache, don’t resend it
 // first check if the if_modified_since param matches
-if (($if_modified_since === $filetimeHeader)) {
+if ($if_modified_since === $filetimeHeader) {
 	// then check if the etag matches
 	if ($if_none_match === $etag) {
 		header($protocol . ' 304 Not Modified');
-		exit;
+		
+		return;
 	}
 }
 

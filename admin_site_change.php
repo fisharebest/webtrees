@@ -146,7 +146,8 @@ case 'export':
 			'"', str_replace('"', '""', $row->gedcom_name), '"',
 			"\n";
 	}
-	exit;
+
+	return;
 case 'load_json':
 	Zend_Session::writeClose();
 	$start  = WT_Filter::getInteger('start');
@@ -212,7 +213,8 @@ case 'load_json':
 		'recordsFiltered' => $recordsFiltered,
 		'data'            => $data
 	));
-	exit;
+
+	return;
 }
 
 $controller

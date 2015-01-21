@@ -47,7 +47,8 @@ define('WT_PRIV_HIDE', -1);
 
 if (file_exists(WT_DATA_DIR . WT_CONFIG_FILE)) {
 	header('Location: index.php');
-	exit;
+	
+	return;
 }
 
 if (version_compare(PHP_VERSION, WT_REQUIRED_PHP_VERSION) < 0) {
@@ -56,7 +57,8 @@ if (version_compare(PHP_VERSION, WT_REQUIRED_PHP_VERSION) < 0) {
 		'<h1>Sorry, the setup wizard cannot start.</h1>',
 		'<p>This server is running PHP version ', PHP_VERSION, '</p>',
 		'<p>PHP ', WT_REQUIRED_PHP_VERSION, ' (or any later version) is required</p>';
-	exit;
+	
+	return;
 }
 
 require 'includes/functions/functions.php';
@@ -187,7 +189,8 @@ if (!isset($_POST['lang'])) {
 
 	}
 	echo '</form></body></html>';
-	exit;
+	
+	return;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -205,7 +208,8 @@ if ($FAB != 'FAB!') {
 	echo '<p>', WT_I18N::translate('You must change this before you can continue.'), '</p>';
 	echo '<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">';
 	echo '</form></body></html>';
-	exit;
+	
+	return;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -287,7 +291,8 @@ if (empty($_POST['dbuser']) || !WT_DB::isConnected() || !$db_version_ok) {
 		'<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">',
 		'</form>',
 		'</body></html>';
-		exit;
+		
+	return;
 } else {
 	// Copy these values through to the next step
 	echo '<input type="hidden" name="dbhost" value="', WT_Filter::escapeHtml($_POST['dbhost']), '">';
@@ -372,7 +377,8 @@ if (!$dbname_ok) {
 		'<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">',
 		'</form>',
 		'</body></html>';
-		exit;
+		
+	return;
 } else {
 	// Copy these values through to the next step
 	echo '<input type="hidden" name="dbname" value="', WT_Filter::escapeHtml($_POST['dbname']), '">';
@@ -438,7 +444,8 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 		'<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">',
 		'</form>',
 		'</body></html>';
-		exit;
+		
+	return;
 } else {
 	// Copy these values through to the next step
 	echo '<input type="hidden" name="wtname"     value="', WT_Filter::escapeHtml($_POST['wtname']), '">';
@@ -931,7 +938,8 @@ try {
 	echo
 		'<script>document.location=document.location;</script>',
 		'</form></body></html>';
-	exit;
+	
+	return;
 } catch (PDOException $ex) {
 	echo
 		'<p class="bad">', WT_I18N::translate('An unexpected database error occurred.'), '</p>',

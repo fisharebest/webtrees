@@ -76,7 +76,8 @@ if (WT_Filter::post('action') === 'delete' && WT_Filter::checkCsrf()) {
 	WT_FlashMessages::addMessage(WT_I18N::translate('The preferences for the module “%s” have been deleted.', $module_name), 'success');
 
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin_modules.php');
-	exit;
+
+	return;
 }
 
 // Module can’t be found on disk?

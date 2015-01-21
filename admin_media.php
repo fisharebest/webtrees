@@ -73,7 +73,8 @@ if ($delete_file) {
 		// File no longer exists?  Maybe it was already deleted or renamed.
 	}
 	$controller->pageHeader();
-	exit;
+
+	return;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -319,7 +320,8 @@ case 'load_json':
 		'recordsFiltered' => $recordsFiltered,
 		'data'            => $data
 	));
-	exit;
+
+	return;
 }
 
 /**

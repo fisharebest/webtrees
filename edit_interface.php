@@ -102,7 +102,8 @@ case 'updateraw':
 	if (!WT_Filter::checkCsrf()) {
 		Zend_Session::writeClose();
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=editraw&xref=' . $xref);
-		exit;
+		
+		return;
 	}
 
 	$record = WT_GedcomRecord::getInstance($xref);
@@ -154,7 +155,8 @@ case 'editrawfact':
 		$controller
 			->pageHeader()
 			->addInlineJavascript('closePopupAndReloadParent();');
-		exit;
+		
+		return;
 	}
 
 	$controller
@@ -197,7 +199,8 @@ case 'updaterawfact':
 	if (!WT_Filter::checkCsrf()) {
 		Zend_Session::writeClose();
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=editrawfact&xref=' . $xref . '&fact_id=' . $fact_id);
-		exit;
+		
+		return;
 	}
 
 	$record = WT_GedcomRecord::getInstance($xref);
@@ -215,7 +218,8 @@ case 'updaterawfact':
 		$controller
 			->pageHeader()
 			->addInlineJavascript('closePopupAndReloadParent();');
-		exit;
+		
+		return;
 	}
 
 	$controller
@@ -251,7 +255,8 @@ case 'edit':
 		$controller
 			->pageHeader()
 			->addInlineJavascript('closePopupAndReloadParent();');
-		exit;
+		
+		return;
 	}
 
 	$controller
@@ -399,7 +404,8 @@ case 'update':
 		$fact_type   = WT_Filter::post('fact_type', WT_REGEX_TAG);
 		Zend_Session::writeClose();
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=' . $prev_action . '&xref=' . $xref . '&fact_id=' . $fact_id . '&fact=' . $fact_type);
-		exit;
+		
+		return;
 	}
 
 	$record = WT_GedcomRecord::getInstance($xref);
@@ -527,7 +533,8 @@ case 'add_child_to_family_action':
 		$gender = WT_Filter::get('gender', '[MFU]', 'U');
 		Zend_Session::writeClose();
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=add_child_to_family&xref=' . $xref . '&gender=' . $gender);
-		exit;
+		
+		return;
 	}
 
 	$family = WT_Family::getInstance($xref);
@@ -604,7 +611,8 @@ case 'add_child_to_individual_action':
 	if (!WT_Filter::checkCsrf()) {
 		Zend_Session::writeClose();
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=add_child_to_individual&xref=' . $xref);
-		exit;
+		
+		return;
 	}
 
 	$person = WT_Individual::getInstance($xref);
@@ -687,7 +695,8 @@ case 'add_parent_to_individual_action':
 		$gender = WT_Filter::get('gender', '[MFU]', 'U');
 		Zend_Session::writeClose();
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=add_parent_to_individual&xref=' . $xref . '&gender=' . $gender);
-		exit;
+		
+		return;
 	}
 
 	$person = WT_Individual::getInstance($xref);
@@ -757,7 +766,8 @@ case 'add_unlinked_indi_action':
 	if (!WT_Filter::checkCsrf()) {
 		Zend_Session::writeClose();
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=add_unlinked_indi');
-		exit;
+		
+		return;
 	}
 
 	$controller
@@ -822,7 +832,8 @@ case 'add_spouse_to_individual_action':
 		$famtag = WT_Filter::get('famtag', 'HUSB|WIFE');
 		Zend_Session::writeClose();
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=add_spouse_to_individual&xref=' . $xref . '&famtag=' . $famtag);
-		exit;
+		
+		return;
 	}
 
 	$person = WT_Individual::getInstance($xref);
@@ -914,7 +925,8 @@ case 'add_spouse_to_family_action':
 		$famtag = WT_Filter::get('famtag', 'HUSB|WIFE');
 		Zend_Session::writeClose();
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=add_spouse_to_family&xref=' . $xref . '&famtag=' . $famtag);
-		exit;
+		
+		return;
 	}
 
 	$controller->pageHeader();
@@ -1024,7 +1036,8 @@ case 'linkfamaction':
 	if (!WT_Filter::checkCsrf()) {
 		Zend_Session::writeClose();
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=addfamlink&xref=' . $xref);
-		exit;
+		
+		return;
 	}
 
 	$person = WT_Individual::getInstance($xref);
@@ -1137,7 +1150,8 @@ case 'linkspouseaction':
 		$famtag = WT_Filter::get('famtag', 'HUSB|WIFE');
 		Zend_Session::writeClose();
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=linkspouse&xref=' . $xref . '&famtag=' . $famtag);
-		exit;
+		
+		return;
 	}
 
 	$person  = WT_Individual::getInstance($xref);
@@ -1277,7 +1291,8 @@ case 'addsourceaction':
 	if (!WT_Filter::checkCsrf()) {
 		Zend_Session::writeClose();
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=addnewsource');
-		exit;
+		
+		return;
 	}
 
 	$newgedrec = "0 @XREF@ SOUR";
@@ -1382,7 +1397,8 @@ case 'addnoteaction':
 	if (!WT_Filter::checkCsrf()) {
 		Zend_Session::writeClose();
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=addnewnote');
-		exit;
+		
+		return;
 	}
 
 	$gedrec = '0 @XREF@ NOTE ' . preg_replace("/\r?\n/", "\n1 CONT ", WT_Filter::post('NOTE'));
@@ -1405,7 +1421,8 @@ case 'addnoteaction_assisted':
 	if (!WT_Filter::checkCsrf()) {
 		Zend_Session::writeClose();
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=addnewnote_assisted');
-		exit;
+		
+		return;
 	}
 
 	echo '<div id="edit_interface-page">';
@@ -1490,7 +1507,8 @@ case 'editnoteaction':
 	if (!WT_Filter::checkCsrf()) {
 		Zend_Session::writeClose();
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=editnote&xref=' . $xref);
-		exit;
+		
+		return;
 	}
 
 	$record = WT_Note::getInstance($xref);
@@ -1580,7 +1598,8 @@ case 'addrepoaction':
 	if (!WT_Filter::checkCsrf()) {
 		Zend_Session::writeClose();
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=addnewrepository');
-		exit;
+		
+		return;
 	}
 
 	$controller
@@ -1644,7 +1663,8 @@ case 'editname':
 		$controller
 			->pageHeader()
 			->addInlineJavascript('closePopupAndReloadParent();');
-		exit;
+		
+		return;
 	}
 
 	$controller
@@ -1769,7 +1789,8 @@ case 'reorder_media_update':
 	if (!WT_Filter::checkCsrf()) {
 		Zend_Session::writeClose();
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=reorder_media_&xref=' . $xref);
-		exit;
+		
+		return;
 	}
 
 	$person = WT_Individual::getInstance($xref);
@@ -1879,7 +1900,8 @@ case 'reorder_update':
 	if (!WT_Filter::checkCsrf()) {
 		Zend_Session::writeClose();
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=reorder_children&xref=' . $xref);
-		exit;
+		
+		return;
 	}
 
 	$family = WT_Family::getInstance($xref);
@@ -2074,7 +2096,8 @@ case 'changefamily_update':
 	if (!WT_Filter::checkCsrf()) {
 		Zend_Session::writeClose();
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=changefamily&xref=' . $xref);
-		exit;
+		
+		return;
 	}
 
 	$CHIL = array();
@@ -2241,7 +2264,8 @@ case 'reorder_fams_update':
 	if (!WT_Filter::checkCsrf()) {
 		Zend_Session::writeClose();
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=reorder_fams&xref=' . $xref);
-		exit;
+		
+		return;
 	}
 
 	$person = WT_Individual::getInstance($xref);

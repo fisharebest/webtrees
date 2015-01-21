@@ -63,7 +63,8 @@ if (!WT_USER_CAN_EDIT || !$disp) {
 	$controller
 		->pageHeader()
 		->addInlineJavascript('closePopupAndReloadParent();');
-	exit;
+
+	return;
 }
 
 // TODO - there is a lot of common code in the create and update cases....
@@ -228,7 +229,8 @@ case 'create': // Save the information from the “showcreateform” action
 		$controller->addInlineJavascript('openerpasteid("' . $new_media->getXref() . '");');
 	}
 	echo '<button onclick="closePopupAndReloadParent();">', WT_I18N::translate('close'), '</button>';
-	exit;
+
+	return;
 
 case 'update': // Save the information from the “editmedia” action
 	$controller->setPageTitle(WT_I18N::translate('Edit media object'));
@@ -383,7 +385,8 @@ case 'update': // Save the information from the “editmedia” action
 	} else {
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	}
-	exit;
+
+	return;
 case 'showmediaform':
 	$controller->setPageTitle(WT_I18N::translate('Create a new media object'));
 	$action = 'create';

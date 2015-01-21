@@ -36,7 +36,7 @@ if (
 	$block->gedcom_id && !Auth::isManager(WT_Tree::get($block->gedcom_id)) ||
 	$block->user_id && $block->user_id != Auth::id() && !Auth::isAdmin()
 ) {
-	exit;
+	return;
 }
 
 $class_name = $block->module_name . '_WT_Module';

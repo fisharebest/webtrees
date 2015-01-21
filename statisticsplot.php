@@ -964,6 +964,6 @@ case '4':
 	break;
 default:
 	echo '<i class="icon-loading-large"></i>';
-	exit;
+	break;
 }
 echo '</div>';

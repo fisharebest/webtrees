@@ -32,7 +32,8 @@ require WT_ROOT . 'includes/functions/functions_edit.php';
 // If we are already logged in, then go to the “Home page”
 if (Auth::check() && WT_GED_ID) {
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
-	exit;
+	
+	return;
 }
 
 $controller = new WT_Controller_Page;
@@ -126,7 +127,8 @@ case 'login':
 		// Explicitly write the session data before we exit,
 		// as it doesn’t always happen when using APC.
 		Zend_Session::writeClose();
-		exit;
+		
+		return;
 	} catch (Exception $ex) {
 		$message = $ex->getMessage();
 	}
@@ -264,7 +266,8 @@ case 'requestpw':
 case 'register':
 	if (!WT_Site::getPreference('USE_REGISTRATION_MODULE')) {
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
-		exit;
+		
+		return;
 	}
 
 	$controller->setPageTitle(WT_I18N::translate('Request new user account'));
@@ -390,7 +393,8 @@ case 'register':
 				echo '</p>
 			</div>';
 			echo '</div>';
-			exit;
+			
+			return;
 		}
 	}
 
@@ -454,7 +458,8 @@ case 'register':
 case 'userverify':
 	if (!WT_Site::getPreference('USE_REGISTRATION_MODULE')) {
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
-		exit;
+		
+		return;
 	}
 
 	// Change to the new user’s language
@@ -491,7 +496,8 @@ case 'userverify':
 case 'verify_hash':
 	if (!WT_Site::getPreference('USE_REGISTRATION_MODULE')) {
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
-		exit;
+		
+		return;
 	}
 
 	// switch language to webmaster settings

@@ -39,7 +39,7 @@ $zip              = WT_Filter::get('zip', 'yes|no', 'no');
 $conv_path        = WT_Filter::get('conv_path');
 $privatize_export = WT_Filter::get('privatize_export', 'none|visitor|user|gedadmin');
 
-if ($action == 'download') {
+if ($action === 'download') {
 	$exportOptions = array(
 		'privatize' => $privatize_export,
 		'toANSI'    => $convert,
@@ -52,15 +52,16 @@ if ($action == 'download') {
 		$download_filename .= '.ged';
 	}
 
-	if ($zip == "yes") {
+	if ($zip === 'yes') {
 		require WT_ROOT . 'library/pclzip.lib.php';
 
-		$temp_dir = WT_DATA_DIR . 'tmp-' . WT_GEDCOM . '-' . date("YmdHis") . '/';
-		$zip_file = $download_filename . ".zip";
+		$temp_dir = WT_DATA_DIR . 'tmp-' . WT_GEDCOM . '-' . date('YmdHis') . '/';
+		$zip_file = $download_filename . '.zip';
 
 		if (!WT_File::mkdir($temp_dir)) {
 			echo "Error : Could not create temporary path!";
-			exit;
+
+			return;
 		}
 
 		// Create the unzipped GEDCOM on disk, so we can ZIP it.
@@ -91,7 +92,8 @@ if ($action == 'download') {
 		export_gedcom(WT_GEDCOM, $stream, $exportOptions);
 		fclose($stream);
 	}
-	exit;
+
+	return;
 }
 
 $controller->pageHeader();
