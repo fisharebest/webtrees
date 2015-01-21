@@ -388,14 +388,8 @@ a .name1:hover {
 }
 
 .icon {
-	display: none;
 	border: 0;
 	padding: 0 5px;
-}
-
-#head_icon {
-	display: block;
-	float: left;
 }
 
 .link {
@@ -438,8 +432,33 @@ a .name1:hover {
 }
 
 .submenu {
-	background-color: #eee;
-	border: solid #555 1px;
+	text-decoration: none;
+	font-size: 11px;
+	background-color: #fff;
+	border: solid #ccc 1px;
+	visibility: hidden;
+	position: absolute;
+	padding: 5px;
+}
+
+.submenuitem  {
+	vertical-align: middle;
+	font-size: 11px;
+	height: 20px;
+	text-decoration: none;
+	background-color: #fff;
+	padding: 1px;
+	white-space: nowrap;
+}
+
+.submenuitem_hover {
+	vertical-align: middle;
+	height: 20px;
+	font-size: 11px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	white-space: nowrap;
+	padding: 1px;
 }
 
 .journal_box {
@@ -1788,31 +1807,18 @@ span.link_text:hover {
 	padding: 5px;
 	background: none #fff;
 	border: 0;
-	font-size: 10px;
-}
-
-.indi_name_details .warning {
-	font-size: 1em;
-}
-
-.indi_name_details dl {
-	height: 10px;
-	margin-top: 0;
+	font-size: 12px;
 }
 
 .indi_name_details dt:after {
 	content: ":";
 }
 
-.indi_name_details dt.label,
-.indi_name_details dd.field {
-	font-size: 12px;
-}
-
 .indi_name_details .name1 {
 	font-weight: normal;
 	padding-top: 5px;
 	font-size: inherit;
+	font-size: 12px;
 }
 
 .indi_name_details .name1:hover {
@@ -2024,14 +2030,14 @@ dd .deletelink {
 
 /* === jquery-ui.css changes === */
 .ui-accordion .ui-accordion-content {
-	border-top: 0;
-	margin-top: 1px;
+	border: 0;
+	margin-top: 2px;
 	position: relative;
-	top: 1px;
 	padding: 0 5px;
 	overflow: visible;
 	display: none;
 }
+
 .ui-widget-content {
 	color: #555;
 }
@@ -2322,7 +2328,7 @@ dd .deletelink {
 	background-color: #fff;
 	border-color: #ddd;
 	width: 98%;
-	overflow: auto;
+	overflow: visible;
 }
 
 #sidebarAccordion {
@@ -2383,10 +2389,7 @@ dd .deletelink {
 /* Family navigator */
 #sb_content_family_nav {
 	padding: 0;
-}
-
-#sb_family_nav_content {
-	margin-top: 8px;
+	margin-top: 0;
 }
 
 .nam a:hover {

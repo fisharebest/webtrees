@@ -2103,8 +2103,10 @@ dd .deletelink {
 
 /* === jquery-ui.css changes === */
 .ui-accordion .ui-accordion-content {
+	border: 0;
 	position: relative;
 	padding: 0 5px;
+	overflow: visible;
 }
 
 #sidebarAccordion .ui-accordion-header {

@@ -548,7 +548,6 @@ a:hover .nameZoom {
 	height: 20px;
 	text-decoration: none;
 	background-color: #fff;
-	border: 1px solid #ccc;
 	padding: 1px;
 	white-space: nowrap;
 }
@@ -2194,6 +2193,7 @@ dd .deletelink {
 
 /* === jquery-ui.css changes === */
 .ui-accordion .ui-accordion-content {
+	border: 0;
 	position: relative;
 	padding: 0 5px;
 	overflow: visible;
@@ -2506,7 +2506,7 @@ dd .deletelink {
 
 /* Sidebar*/
 #sb_content_descendancy {
-	margin-top: 5px;
+	margin-top: 2px;
 }
 
 #sb_desc_content {
@@ -2546,7 +2546,7 @@ dd .deletelink {
 /* Individuals and Families */
 #sb_content_individuals,
 #sb_content_families {
-	margin-top: 5px;
+	margin-top: 2px;
 }
 
 .sb_indi_surname_li,
@@ -2573,7 +2573,7 @@ dd .deletelink {
 
 /* Clippings */
 #sb_content_clippings {
-	margin-top: 5px;
+	margin-top: 2px;
 }
 
 #sb_clippings_content ul {
