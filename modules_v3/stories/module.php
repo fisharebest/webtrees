@@ -197,6 +197,16 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 					ckeditor_WT_Module::enableEditor($controller);
 				}
 
+				?>
+				<ol class="breadcrumb small">
+					<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+					<li><a href="admin_modules.php"><?php echo WT_I18N::translate('Module administration'); ?></a></li>
+					<li><a href="module.php?mod=faq&mod_action=admin_config"><?php echo $this->getTitle(); ?></a></li>
+					<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+				</ol>
+				<h2><?php echo $controller->getPageTitle(); ?></h2>
+				<?php
+
 				echo '<form name="story" method="post" action="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">';
 				echo WT_Filter::getCsrf();
 				echo '<input type="hidden" name="save" value="1">';
@@ -304,8 +314,17 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 				" ORDER BY xref"
 			)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
 
+			?>
+			<ol class="breadcrumb small">
+				<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+				<li><a href="admin_modules.php"><?php echo WT_I18N::translate('Module administration'); ?></a></li>
+				<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+			</ol>
+			<h2><?php echo $controller->getPageTitle(); ?></h2>
+			<?php
+
 			echo
-				'<form method="get" action="', WT_SCRIPT_NAME, '">',
+				'<form>',
 				WT_I18N::translate('Family tree'), ' ',
 				'<input type="hidden" name="mod" value="', $this->getName(), '">',
 				'<input type="hidden" name="mod_action" value="admin_config">',

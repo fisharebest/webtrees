@@ -45,16 +45,6 @@ case 'add_faq_visibility':
 	$text = WT_I18N::translate('A FAQ item can be displayed on just one of the family trees, or on all the family trees.');
 	break;
 
-case 'delete_faq_item':
-	$title = WT_I18N::translate('Delete FAQ item');
-	$text = WT_I18N::translate('This option will let you delete an item from the FAQ page');
-	break;
-
-case 'edit_faq_item':
-	$title = WT_I18N::translate('Edit FAQ item');
-	$text = WT_I18N::translate('This option will let you edit an item on the FAQ page.');
-	break;
-
 case 'movedown_faq_item':
 	$title = WT_I18N::translate('Move FAQ item down');
 	$text = WT_I18N::translate('This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ position field.  When more than one FAQ item has the same position number, only one of these items will be visible.');

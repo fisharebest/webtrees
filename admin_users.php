@@ -695,6 +695,7 @@ case 'cleanup2':
 	break;
 default:
 	$controller
+		->setPageTitle(WT_I18N::translate('User administration'))
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 		->addExternalJavascript(WT_DATATABLES_BOOTSTRAP_JS_URL)
 		->addInlineJavascript('
