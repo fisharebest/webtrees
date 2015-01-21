@@ -182,7 +182,6 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 			break;
 		}
 		break;
-	default:
 	}
 
 	// apply the text
@@ -307,9 +306,9 @@ $usewatermark = false;
 // if this image supports watermarks and the watermark module is intalled...
 if ($type) {
 	// if this is not a thumbnail, or WATERMARK_THUMB is true
-	if (($which === 'main') || $WATERMARK_THUMB) {
+	if (($which === 'main') || $WT_TREE->getPreference('WATERMARK_THUMB')) {
 		// if the user’s priv’s justify it...
-		if (WT_USER_ACCESS_LEVEL > $SHOW_NO_WATERMARK) {
+		if (WT_USER_ACCESS_LEVEL > $WT_TREE->getPreference('SHOW_NO_WATERMARK')) {
 			// add a watermark
 			$usewatermark = true;
 		}
@@ -392,7 +391,7 @@ if ($generatewatermark) {
 		$im = applyWatermark($im);
 
 		// save the image, if preferences allow
-		if ($which === 'thumb' && $SAVE_WATERMARK_THUMB || $which === 'main' && $SAVE_WATERMARK_IMAGE) {
+		if ($which === 'thumb' && $WT_TREE->getPreference('SAVE_WATERMARK_THUMB') || $which === 'main' && $WT_TREE->getPreference('SAVE_WATERMARK_IMAGE')) {
 			// make sure the folder exists
 			WT_File::mkdir(dirname($watermarkfile));
 			// save the image
