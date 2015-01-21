@@ -356,15 +356,11 @@ try {
 	unset($dbconfig);
 	// Some of the FAMILY JOIN HUSBAND JOIN WIFE queries can excede the MAX_JOIN_SIZE setting
 	WT_DB::exec("SET NAMES 'utf8' COLLATE 'utf8_unicode_ci', SQL_BIG_SELECTS=1");
-	try {
-		WT_DB::updateSchema(WT_ROOT . 'includes/db_schema/', 'WT_SCHEMA_VERSION', WT_SCHEMA_VERSION);
-	} catch (PDOException $ex) {
-		// The schema update scripts should never fail.  If they do, there is no clean recovery.
-		die($ex);
-	}
+	WT_DB::updateSchema(WT_ROOT . 'includes/db_schema/', 'WT_SCHEMA_VERSION', WT_SCHEMA_VERSION);
 } catch (PDOException $ex) {
+	WT_FlashMessages::addMessage($ex->getMessage(), 'danger');
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'site-unavailable.php');
-	exit;
+	throw $ex;
 }
 
 // The config.ini.php file must always be in a fixed location.

@@ -50,7 +50,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			WT_DB::updateSchema(WT_ROOT . WT_MODULES_DIR . '/googlemap/db_schema/', 'GM_SCHEMA_VERSION', 5);
 		} catch (PDOException $ex) {
 			// The schema update scripts should never fail.  If they do, there is no clean recovery.
-			die($ex);
+			WT_FlashMessages::addMessage($ex->getMessage(), 'danger');
+			header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'site-unavailable.php');
+			throw $ex;
 		}
 
 		// Set default values

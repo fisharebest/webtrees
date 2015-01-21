@@ -332,7 +332,9 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			WT_DB::updateSchema(WT_ROOT . WT_MODULES_DIR . 'gedcom_favorites/db_schema/', 'FV_SCHEMA_VERSION', 4);
 		} catch (PDOException $ex) {
 			// The schema update scripts should never fail.  If they do, there is no clean recovery.
-			die($ex);
+			WT_FlashMessages::addMessage($ex->getMessage(), 'danger');
+			header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'site-unavailable.php');
+			throw $ex;
 		}
 	}
 }
