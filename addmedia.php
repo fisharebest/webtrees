@@ -684,7 +684,7 @@ if (Auth::isAdmin()) {
 	echo '<tr><td class="descriptionbox wrap width25">';
 	echo WT_Gedcom_Tag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
 	if ($NO_UPDATE_CHAN) {
-		echo '<input type="checkbox" checked= name="preserve_last_changed">';
+		echo '<input type="checkbox" checked name="preserve_last_changed">';
 	} else {
 		echo '<input type="checkbox" name="preserve_last_changed">';
 	}
