@@ -398,6 +398,7 @@ abstract class BaseTheme {
 			'<!--[if IE 8]><script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script><![endif]-->' .
 			$this->metaCharset() .
 			$this->title($title) .
+			$this->favicon() .
 			$this->metaViewport() .
 			$this->metaRobots($controller->getMetaRobots()) .
 			$this->metaUaCompatible() .
