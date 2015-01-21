@@ -132,12 +132,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 			set_block_setting($block_id, 'html', WT_Filter::post('html'));
 			set_block_setting($block_id, 'show_timestamp', WT_Filter::postBool('show_timestamp'));
 			set_block_setting($block_id, 'timestamp', WT_Filter::post('timestamp'));
-			$languages = array();
-			foreach (WT_I18N::installed_languages() as $code=>$name) {
-				if (WT_Filter::postBool('lang_' . $code)) {
-					$languages[] = $code;
-				}
-			}
+			$languages = WT_Filter::postArray('lang', null, array_keys(WT_I18N::installed_languages()));
 			set_block_setting($block_id, 'languages', implode(',', $languages));
 		}
 
@@ -256,7 +251,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		$html           = get_block_setting($block_id, 'html');
 		$gedcom         = get_block_setting($block_id, 'gedcom');
 		$show_timestamp = get_block_setting($block_id, 'show_timestamp', '0');
-		$languages      = get_block_setting($block_id, 'languages');
+		$languages      = explode(',', get_block_setting($block_id, 'languages'));
 
 		echo '<tr><td class="descriptionbox wrap">',
 			WT_Gedcom_Tag::getLabel('TITL'),
@@ -315,7 +310,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '<tr><td class="descriptionbox wrap">';
 		echo WT_I18N::translate('Show this block for which languages?');
 		echo '</td><td class="optionbox">';
-		echo edit_language_checkboxes('lang_', $languages);
+		echo edit_language_checkboxes('lang', $languages);
 		echo '</td></tr>';
 	}
 }

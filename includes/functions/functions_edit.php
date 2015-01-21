@@ -136,49 +136,28 @@ function two_state_checkbox($name, $is_checked = 0, $extra = '') {
 }
 
 /**
- * Print a set of edit controls to select languages
+ * Function edit_language_checkboxes
+ * @param string $parameter_name
  *
- * @param string $field_prefix
- * @param string $languages
+ * @param array $accepted_languages
  *
  * @return string
  */
-function edit_language_checkboxes($field_prefix, $languages) {
-	$html = '';
-	$i    = 0;
+function edit_language_checkboxes($parameter_name, $accepted_languages) {
+	/* number of checkboxes per row */
+	$CHUNK_SIZE = 4; // Make this a constant when moved to a class
 
-	foreach (WT_I18N::installed_languages() as $code=>$name) {
-		$content = '<input type="checkbox" name="' . $field_prefix . $code . '" id="' . $field_prefix . $code . '" ';
-		if (strpos(",{$languages},", ",{$code},") !== false) {
-			$content .= 'checked';
+	$html = '<table class="language-selection">';
+	foreach (array_chunk(WT_I18N::installed_languages(), $CHUNK_SIZE, true) as $chunk) {
+		$html .= '<tr>';
+		foreach ($chunk as $locale => $language) {
+			$checked = in_array($locale, $accepted_languages) ? 'checked' : '';
+			$html .= sprintf('<td><label><input type="checkbox" name="%s[]" value="%s"%s>%s</label></td>', $parameter_name, $locale, $checked, $language);
 		}
-		$content .= '><label for="' . $field_prefix . $code . '"> ' . $name . '</label>';
-		// print in three columns
-		switch ($i % 3) {
-		case 0:
-			$html .= '<tr><td>' . $content . '</td>';
-			break;
-		case 1:
-			$html .= '<td>' . $content . '</td>';
-			break;
-		case 2:
-			$html .= '<td>' . $content . '</td></tr>';
-			break;
-		}
-		$i++;
+		$html .= '</tr>';
 	}
-	switch ($i % 3) {
-	case 0:
-		break;
-	case 1:
-		$html .= '<td></td><td></td></tr>';
-		break;
-	case 2:
-		$html .= '<td></td></tr>';
-		break;
-	}
-
-	return '<table>' . $html . '</table>';
+	$html .= '</table>';
+	return $html;
 }
 
 /**
