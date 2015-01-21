@@ -4490,11 +4490,11 @@ footer {
 	background-position: right -30px;
 }
 
-#menu-chart-descendancy {
+#menu-chart-descendants {
 	background-position: left -150px;
 }
 
-[dir=rtl] #menu-chart-descendancy {
+[dir=rtl] #menu-chart-descendants {
 	background-position: right -150px;
 }
 

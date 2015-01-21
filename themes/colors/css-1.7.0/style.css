@@ -4583,11 +4583,11 @@ footer {
 	background-position: right -52px;
 }
 
-#menu-chart-descendancy {
+#menu-chart-descendants {
 	background-position: left -0px;
 }
 
-[dir=rtl] #menu-chart-descendancy {
+[dir=rtl] #menu-chart-descendants {
 	background-position: right -0px;
 }
 

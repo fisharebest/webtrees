@@ -4661,12 +4661,11 @@ footer .error {
 [dir=rtl] #menu-chart-compact {
 	background-position: right -0px;
 }
-
-#menu-chart-descendancy {
+#menu-chart-descendants {
 	background-position: left -69px;
 }
 
-[dir=rtl] #menu-chart-descendancy {
+[dir=rtl] #menu-chart-descendants {
 	background-position: right -69px;
 }
 
