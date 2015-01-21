@@ -613,55 +613,26 @@ class WT_GedcomRecord {
 	 * @return integer
 	 */
 	public function getPrimaryName() {
-		if (is_null($this->_getPrimaryName)) {
+		static $language_script;
+
+		if ($language_script === null) {
+			$language_script = WT_I18N::languageScript(WT_LOCALE);
+		}
+
+		if ($this->_getPrimaryName === null) {
 			// Generally, the first name is the primary one....
 			$this->_getPrimaryName = 0;
-			// ....except when the language/name use different character sets
+			// ...except when the language/name use different character sets
 			if (count($this->getAllNames()) > 1) {
-				switch (WT_LOCALE) {
-				case 'el':
-					foreach ($this->getAllNames() as $n=>$name) {
-						if ($name['type'] != '_MARNM' && WT_I18N::textScript($name['sort']) == 'Grek') {
-							$this->_getPrimaryName = $n;
-							break;
-						}
+				foreach ($this->getAllNames() as $n => $name) {
+					if ($name['type'] !== '_MARNM' && WT_I18N::textScript($name['sort']) === $language_script) {
+						$this->_getPrimaryName = $n;
+						break;
 					}
-					break;
-				case 'ru':
-					foreach ($this->getAllNames() as $n=>$name) {
-						if ($name['type'] != '_MARNM' && WT_I18N::textScript($name['sort']) == 'Cyrl') {
-							$this->_getPrimaryName = $n;
-							break;
-						}
-					}
-					break;
-				case 'he':
-					foreach ($this->getAllNames() as $n=>$name) {
-						if ($name['type'] != '_MARNM' && WT_I18N::textScript($name['sort']) == 'Hebr') {
-							$this->_getPrimaryName = $n;
-							break;
-						}
-					}
-					break;
-				case 'ar':
-					foreach ($this->getAllNames() as $n=>$name) {
-						if ($name['type'] != '_MARNM' && WT_I18N::textScript($name['sort']) == 'Arab') {
-							$this->_getPrimaryName = $n;
-							break;
-						}
-					}
-					break;
-				default:
-					foreach ($this->getAllNames() as $n=>$name) {
-						if ($name['type'] != '_MARNM' && WT_I18N::textScript($name['sort']) == 'Latn') {
-							$this->_getPrimaryName = $n;
-							break;
-						}
-					}
-					break;
 				}
 			}
 		}
+
 		return $this->_getPrimaryName;
 	}
 
