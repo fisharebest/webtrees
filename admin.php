@@ -676,6 +676,7 @@ function old_paths() {
 		WT_ROOT . 'js/jquery.jeditable-1.7.3.js',
 		WT_ROOT . 'js/webtrees-1.6.2.js',
 		WT_ROOT . 'library/WT/MenuBar.php',
+		WT_ROOT . 'save.php',
 		WT_ROOT . 'themes/_administration/css-1.6.2',
 		WT_ROOT . 'themes/_administration/templates',
 		WT_ROOT . 'themes/_administration/header.php',
