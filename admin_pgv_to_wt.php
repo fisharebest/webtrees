@@ -910,7 +910,7 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SUBLIST_TRIGGER_I', $SUBLIST_TRIGGER_I));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SURNAME_LIST_STYLE', $SURNAME_LIST_STYLE));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SURNAME_TRADITION', $SURNAME_TRADITION));
-	switch (@$THEME_DIR) {
+	switch ($THEME_DIR) {
 	case '':
 		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'THEME_DIR', ''));
 		break;

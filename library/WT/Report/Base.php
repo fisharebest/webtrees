@@ -1838,7 +1838,7 @@ function ifStartHandler($attrs) {
 		$i++;
 	}
 	$condition = "if ($condition) return true; else return false;";
-	$ret = @eval($condition);
+	$ret = eval($condition);
 	if (!$ret) {
 		$processIfs++;
 	}
