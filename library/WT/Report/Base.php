@@ -1429,7 +1429,7 @@ function repeatTagStartHandler($attrs) {
 			$count = preg_match_all("/$level $t(.*)/", $subrec, $match, PREG_SET_ORDER);
 			$i = 0;
 			while ($i < $count) {
-				$repeats[] = get_sub_record($level, "$level $t", $subrec, $i + 1); ;
+				$repeats[] = get_sub_record($level, "$level $t", $subrec, $i + 1);
 				$i++;
 			}
 		}
@@ -1831,7 +1831,7 @@ function ifStartHandler($attrs) {
 				$level++;
 				$value = get_gedcom_value($id, $level, $gedrec);
 			}
-			$value = preg_replace("/^@(" . WT_REGEX_XREF . ")@$/", "$1", $value);		
+			$value = preg_replace("/^@(" . WT_REGEX_XREF . ")@$/", "$1", $value);
 			$value = "\"" . addslashes($value) . "\"";
 		}
 		$condition = str_replace("@$id", $value, $condition);

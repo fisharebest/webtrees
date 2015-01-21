@@ -317,7 +317,7 @@ if ($type == "facts") {
 	<input type="hidden" name="tags" value="', $qs, '">
 	<input type="hidden" name="callback" value="', $callback, '">
 	<table class="list_table width100" border="0">
-	<tr><td class="list_label" style="padding: 5px; font-weight: normal; white-space: normal;">' ;
+	<tr><td class="list_label" style="padding: 5px; font-weight: normal; white-space: normal;">';
 
 	$all = strlen($qs) ? explode(',', strtoupper($qs)) : array();
 	$preselDefault = array();

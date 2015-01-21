@@ -132,8 +132,6 @@ class WT_Report_Base_Cell extends WT_Report_Base_Element {
 	 * @param string  $bocolor Border color
 	 * @param string  $tcolor  Text color
 	 * @param         $reseth
-	 *
-	 * @return \WT_Report_Base_Cell
 	 */
 	function __construct(
 		$width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth
