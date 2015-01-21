@@ -2765,7 +2765,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	 * @param boolean  $lastlevel
 	 */
 	private function printGoogleMapMarkers($place2, $level, $parent, $levelm, $linklevels, $placelevels, $lastlevel = false) {
-		if (($place2['lati'] == NULL) || ($place2['long'] == NULL) || (($place2['lati'] == '0') && ($place2['long'] == '0'))) {
+		if (($place2['lati'] == null) || ($place2['long'] == null) || (($place2['lati'] == '0') && ($place2['long'] == '0'))) {
 			echo 'var icon_type = new google.maps.MarkerImage();';
 			echo 'icon_type.image = "', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/marker_yellow.png";';
 			echo 'icon_type.shadow = "', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/shadow50.png";';
@@ -2779,7 +2779,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				if ($place2['place'] == "Unknown") echo "'><br>";
 				else echo addslashes($place2['place']), "'><br>";
 			}
-			if (($place2['icon'] != NULL) && ($place2['icon'] != '')) {
+			if (($place2['icon'] != null) && ($place2['icon'] != '')) {
 				echo '<img src=\"', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '\">&nbsp;&nbsp;';
 			}
 			if ($lastlevel) {
@@ -2838,7 +2838,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			}
 
 			// flags by kiwi3685 ---
-			if (($place2['icon'] == NULL) || ($place2['icon'] == '') || ($this->getSetting('GM_PH_MARKER') != 'G_FLAG')) {
+			if (($place2['icon'] == null) || ($place2['icon'] == '') || ($this->getSetting('GM_PH_MARKER') != 'G_FLAG')) {
 				echo 'var icon_type = new google.maps.MarkerImage();';
 			} else {
 				echo 'var icon_type = new google.maps.MarkerImage();';
@@ -2858,7 +2858,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					echo addslashes($place2['place']), "'><br>";
 				}
 			}
-			if (($place2['icon'] != NULL) && ($place2['icon'] != "")) {
+			if (($place2['icon'] != null) && ($place2['icon'] != "")) {
 				echo '<img src=\"', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '\">&nbsp;&nbsp;';
 			}
 			if ($lastlevel) {
@@ -4038,7 +4038,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				<td class="optionbox" colspan="2">
 					<div id="flagsDiv">
 		<?php
-				if (($place_icon == NULL) || ($place_icon == "")) { ?>
+				if (($place_icon == null) || ($place_icon == "")) { ?>
 						<a href="#" onclick="change_icon();return false;"><?php echo WT_I18N::translate('Change flag'); ?></a>
 		<?php   }
 				else { ?>
@@ -4149,7 +4149,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 								}
 							}
 						}
-						else $placelist[$j]['lati'] = NULL;
+						else $placelist[$j]['lati'] = null;
 						if (preg_match("/4 LONG (.*)/", $placerec, $match)) {
 							$placelist[$j]['long'] = trim($match[1]);
 							if (($placelist[$j]['long'][0] != 'E') && ($placelist[$j]['long'][0] != 'W')) {
@@ -4160,7 +4160,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 								}
 							}
 						}
-						else $placelist[$j]['long'] = NULL;
+						else $placelist[$j]['long'] = null;
 						$j = $j + 1;
 					}
 					$i = $i + 1;
@@ -4534,8 +4534,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			echo '<td>', $place['long'], '</td>';
 			echo '<td>', $place['zoom'], '</td>';
 			echo '<td>';
-			if (($place['icon'] == NULL) || ($place['icon'] == '')) {
-				if (($place['lati'] == NULL) || ($place['long'] == NULL) || (($place['lati'] == '0') && ($place['long'] == '0'))) {
+			if (($place['icon'] == null) || ($place['icon'] == '')) {
+				if (($place['lati'] == null) || ($place['long'] == null) || (($place['lati'] == '0') && ($place['long'] == '0'))) {
 					echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/mm_20_yellow.png">';
 				}
 				else {
