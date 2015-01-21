@@ -97,9 +97,9 @@ $controller
 		<dt><?php echo WT_I18N::translate('Family tree'); ?></dt>
 		<dd><?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM); ?></dd>
 		<dt><label for="search"><?php echo WT_I18N::translate('Search for'); ?></label></dt>
-		<dd><input name="search" id="search" type="text" size="30" value="<?= WT_Filter::escapeHtml($search) ?>" required autofocus></dd>
+		<dd><input name="search" id="search" type="text" size="30" value="<?php echo WT_Filter::escapeHtml($search) ?>" required autofocus></dd>
 		<dt><label for="replace"><?php echo WT_I18N::translate('Replace with'); ?></label></dt>
-		<dd><input name="replace" id="replace" type="text" size="30" value="<?= WT_Filter::escapeHtml($replace) ?>" required></dd>
+		<dd><input name="replace" id="replace" type="text" size="30" value="<?php echo WT_Filter::escapeHtml($replace) ?>" required></dd>
 	</dl>
 	<button type="submit" value="preview"><?php echo /* I18N: button label */ WT_I18N::translate('preview'); ?></button>
 	<button type="submit" value="update" name="confirm"><?php echo /* I18N: button label */ WT_I18N::translate('update'); ?></button>
