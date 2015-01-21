@@ -56,7 +56,7 @@ class user_blog_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 			break;
 		}
-		$block = get_block_setting($block_id, 'block', true);
+		$block = get_block_setting($block_id, 'block', '1');
 		if ($cfg) {
 			foreach (array('block') as $name) {
 				if (array_key_exists($name, $cfg)) {

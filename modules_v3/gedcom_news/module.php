@@ -59,10 +59,10 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 
 		if (isset($_REQUEST['gedcom_news_archive'])) {
 			$limit = 'nolimit';
-			$flag  = 0;
+			$flag  = '0';
 		} else {
 			$flag = get_block_setting($block_id, 'flag', 0);
-			if ($flag == 0) {
+			if ($flag === '0') {
 				$limit = 'nolimit';
 			} else {
 				$limit = get_block_setting($block_id, 'limit', 'nolimit');
@@ -158,13 +158,13 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			set_block_setting($block_id, 'limit', WT_Filter::post('limit'));
 			set_block_setting($block_id, 'flag', WT_Filter::post('flag'));
-			exit;
 		}
 
 		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
-		// Limit Type
 		$limit = get_block_setting($block_id, 'limit', 'nolimit');
+		$flag  = get_block_setting($block_id, 'flag', 0);
+
 		echo
 			'<tr><td class="descriptionbox wrap width33">',
 			WT_I18N::translate('Limit display by:'), help_link('gedcom_news_limit'),
@@ -175,8 +175,6 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 			'<option value="count" ' . ($limit == 'count' ? 'selected' : '') . ">" . WT_I18N::translate('Number of items') . "</option>",
 			'</select></td></tr>';
 
-		// Flag to look for
-		$flag = get_block_setting($block_id, 'flag', 0);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Limit:'), help_link('gedcom_news_flag');
 		echo '</td><td class="optionbox"><input type="text" name="flag" size="4" maxlength="4" value="' . $flag . '"></td></tr>';

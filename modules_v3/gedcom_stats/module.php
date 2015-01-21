@@ -40,26 +40,29 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $WT_TREE, $ctype;
 
-		$show_last_update    = get_block_setting($block_id, 'show_last_update', true);
-		$show_common_surnames = get_block_setting($block_id, 'show_common_surnames', true);
-		$stat_indi           = get_block_setting($block_id, 'stat_indi', true);
-		$stat_fam            = get_block_setting($block_id, 'stat_fam', true);
-		$stat_sour           = get_block_setting($block_id, 'stat_sour', true);
-		$stat_media          = get_block_setting($block_id, 'stat_media', true);
-		$stat_repo           = get_block_setting($block_id, 'stat_repo', true);
-		$stat_surname        = get_block_setting($block_id, 'stat_surname', true);
-		$stat_events         = get_block_setting($block_id, 'stat_events', true);
-		$stat_users          = get_block_setting($block_id, 'stat_users', true);
-		$stat_first_birth    = get_block_setting($block_id, 'stat_first_birth', true);
-		$stat_last_birth     = get_block_setting($block_id, 'stat_last_birth', true);
-		$stat_first_death    = get_block_setting($block_id, 'stat_first_death', true);
-		$stat_last_death     = get_block_setting($block_id, 'stat_last_death', true);
-		$stat_long_life      = get_block_setting($block_id, 'stat_long_life', true);
-		$stat_avg_life       = get_block_setting($block_id, 'stat_avg_life', true);
-		$stat_most_chil      = get_block_setting($block_id, 'stat_most_chil', true);
-		$stat_avg_chil       = get_block_setting($block_id, 'stat_avg_chil', true);
-		$stat_link           = get_block_setting($block_id, 'stat_link', true);
-		$block               = get_block_setting($block_id, 'block', false);
+		$show_last_update     = get_block_setting($block_id, 'show_last_update', '1');
+		$show_common_surnames = get_block_setting($block_id, 'show_common_surnames', '1');
+		$stat_indi            = get_block_setting($block_id, 'stat_indi', '1');
+		$stat_fam             = get_block_setting($block_id, 'stat_fam', '1');
+		$stat_sour            = get_block_setting($block_id, 'stat_sour', '1');
+		$stat_media           = get_block_setting($block_id, 'stat_media', '1');
+		$stat_repo            = get_block_setting($block_id, 'stat_repo', '1');
+		$stat_surname         = get_block_setting($block_id, 'stat_surname', '1');
+		$stat_events          = get_block_setting($block_id, 'stat_events', '1');
+		$stat_users           = get_block_setting($block_id, 'stat_users', '1');
+		$stat_first_birth     = get_block_setting($block_id, 'stat_first_birth', '1');
+		$stat_last_birth      = get_block_setting($block_id, 'stat_last_birth', '1');
+		$stat_first_death     = get_block_setting($block_id, 'stat_first_death', '1');
+		$stat_last_death      = get_block_setting($block_id, 'stat_last_death', '1');
+		$stat_long_life       = get_block_setting($block_id, 'stat_long_life', '1');
+		$stat_avg_life        = get_block_setting($block_id, 'stat_avg_life', '1');
+		$stat_most_chil       = get_block_setting($block_id, 'stat_most_chil', '1');
+		$stat_avg_chil        = get_block_setting($block_id, 'stat_avg_chil', '1');
+
+		// This can be overriden when embedding in an HTML block
+		$block     = '0';
+		$stat_link = '1';
+
 		if ($cfg) {
 			foreach (array('show_common_surnames', 'stat_indi', 'stat_fam', 'stat_sour', 'stat_media', 'stat_surname', 'stat_events', 'stat_users', 'stat_first_birth', 'stat_last_birth', 'stat_first_death', 'stat_last_death', 'stat_long_life', 'stat_avg_life', 'stat_most_chil', 'stat_avg_chil', 'stat_link', 'block') as $name) {
 				if (array_key_exists($name, $cfg)) {
@@ -248,42 +251,41 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 			set_block_setting($block_id, 'stat_avg_life', WT_Filter::postBool('stat_avg_life'));
 			set_block_setting($block_id, 'stat_most_chil', WT_Filter::postBool('stat_most_chil'));
 			set_block_setting($block_id, 'stat_avg_chil', WT_Filter::postBool('stat_avg_chil'));
-			exit;
 		}
 
 		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
-		$show_last_update = get_block_setting($block_id, 'show_last_update', true);
+		$show_last_update     = get_block_setting($block_id, 'show_last_update', '1');
+		$show_common_surnames = get_block_setting($block_id, 'show_common_surnames', '1');
+		$stat_indi            = get_block_setting($block_id, 'stat_indi', '1');
+		$stat_fam             = get_block_setting($block_id, 'stat_fam', '1');
+		$stat_sour            = get_block_setting($block_id, 'stat_sour', '1');
+		$stat_media           = get_block_setting($block_id, 'stat_media', '1');
+		$stat_repo            = get_block_setting($block_id, 'stat_repo', '1');
+		$stat_surname         = get_block_setting($block_id, 'stat_surname', '1');
+		$stat_events          = get_block_setting($block_id, 'stat_events', '1');
+		$stat_users           = get_block_setting($block_id, 'stat_users', '1');
+		$stat_first_birth     = get_block_setting($block_id, 'stat_first_birth', '1');
+		$stat_last_birth      = get_block_setting($block_id, 'stat_last_birth', '1');
+		$stat_first_death     = get_block_setting($block_id, 'stat_first_death', '1');
+		$stat_last_death      = get_block_setting($block_id, 'stat_last_death', '1');
+		$stat_long_life       = get_block_setting($block_id, 'stat_long_life', '1');
+		$stat_avg_life        = get_block_setting($block_id, 'stat_avg_life', '1');
+		$stat_most_chil       = get_block_setting($block_id, 'stat_most_chil', '1');
+		$stat_avg_chil        = get_block_setting($block_id, 'stat_avg_chil', '1');
+
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for yes/no option */ WT_I18N::translate('Show date of last update?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('show_last_update', $show_last_update);
 		echo '</td></tr>';
 
-		$show_common_surnames = get_block_setting($block_id, 'show_common_surnames', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Show common surnames?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('show_common_surnames', $show_common_surnames);
 		echo '</td></tr>';
 
-		$stat_indi           = get_block_setting($block_id, 'stat_indi', true);
-		$stat_fam            = get_block_setting($block_id, 'stat_fam', true);
-		$stat_sour           = get_block_setting($block_id, 'stat_sour', true);
-		$stat_other          = get_block_setting($block_id, 'stat_other', true);
-		$stat_media          = get_block_setting($block_id, 'stat_media', true);
-		$stat_repo           = get_block_setting($block_id, 'stat_repo', true);
-		$stat_surname        = get_block_setting($block_id, 'stat_surname', true);
-		$stat_events         = get_block_setting($block_id, 'stat_events', true);
-		$stat_users          = get_block_setting($block_id, 'stat_users', true);
-		$stat_first_birth    = get_block_setting($block_id, 'stat_first_birth', true);
-		$stat_last_birth     = get_block_setting($block_id, 'stat_last_birth', true);
-		$stat_first_death    = get_block_setting($block_id, 'stat_first_death', true);
-		$stat_last_death     = get_block_setting($block_id, 'stat_last_death', true);
-		$stat_long_life      = get_block_setting($block_id, 'stat_long_life', true);
-		$stat_avg_life       = get_block_setting($block_id, 'stat_avg_life', true);
-		$stat_most_chil      = get_block_setting($block_id, 'stat_most_chil', true);
-		$stat_avg_chil       = get_block_setting($block_id, 'stat_avg_chil', true);
 ?>
 	<tr>
 	<td class="descriptionbox wrap width33"><?php echo WT_I18N::translate('Select the stats to show in this block'); ?></td>
@@ -377,8 +379,8 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 			<tr>
 				<td>
 					<label>
-						<input type="checkbox" value="yes" name="stat_other" <?php echo $stat_other ? 'checked' : ''; ?>>
-						<?php echo WT_I18N::translate('Other records'); ?>
+						<input type="checkbox" value="yes" name="stat_events" <?php echo $stat_events ? 'checked' : ''; ?>>
+						<?php echo WT_I18N::translate('Total events'); ?>
 					</label>
 				</td>
 				<td>
@@ -391,8 +393,8 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 			<tr>
 				<td>
 					<label>
-						<input type="checkbox" value="yes" name="stat_events" <?php echo $stat_events ? 'checked' : ''; ?>>
-						<?php echo WT_I18N::translate('Total events'); ?>
+						<input type="checkbox" value="yes" name="stat_users" <?php echo $stat_users ? 'checked' : ''; ?>>
+						<?php echo WT_I18N::translate('Total users'); ?>
 					</label>
 				</td>
 				<td>
@@ -400,16 +402,6 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 						<input type="checkbox" value="yes" name="stat_avg_chil" <?php echo $stat_avg_chil ? 'checked' : ''; ?>>
 						<?php echo WT_I18N::translate('Average number of children per family'); ?>
 					</label>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<label>
-						<input type="checkbox" value="yes" name="stat_users" <?php echo $stat_users ? 'checked' : ''; ?>>
-						<?php echo WT_I18N::translate('Total users'); ?>
-					</label>
-				</td>
-				<td>
 				</td>
 			</tr>
 		</tbody>

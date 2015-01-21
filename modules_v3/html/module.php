@@ -40,8 +40,13 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $ctype, $GEDCOM;
 
+		$title          = get_block_setting($block_id, 'title');
+		$html           = get_block_setting($block_id, 'html');
+		$gedcom         = get_block_setting($block_id, 'gedcom');
+		$show_timestamp = get_block_setting($block_id, 'show_timestamp', '0');
+		$languages      = get_block_setting($block_id, 'languages');
+
 		// Only show this block for certain languages
-		$languages = get_block_setting($block_id, 'languages');
 		if ($languages && !in_array(WT_LOCALE, explode(',', $languages))) {
 			return;
 		}
@@ -49,7 +54,6 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		/*
 		 * Select GEDCOM
 		 */
-		$gedcom = get_block_setting($block_id, 'gedcom');
 		switch ($gedcom) {
 		case '__current__':
 			break;
@@ -72,12 +76,9 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		/*
 		* Retrieve text, process embedded variables
 		*/
-		$title_tmp = get_block_setting($block_id, 'title');
-		$html = get_block_setting($block_id, 'html');
-
-		if ((strpos($title_tmp, '#') !== false) || (strpos($html, '#') !== false)) {
+		if ((strpos($title, '#') !== false) || (strpos($html, '#') !== false)) {
 			$stats = new WT_Stats($GEDCOM);
-			$title_tmp = $stats->embedTags($title_tmp);
+			$title = $stats->embedTags($title);
 			$html = $stats->embedTags($html);
 		}
 
@@ -92,22 +93,16 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		$id = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		if ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype === 'user' && Auth::check()) {
-			$title = '<i class="icon-admin" title="' . WT_I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
-		} else {
-			$title = '';
+			$title = '<i class="icon-admin" title="' . WT_I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>' . $title;
 		}
-		$title .= $title_tmp;
 
 		$content = $html;
 
-		if (get_block_setting($block_id, 'show_timestamp', false)) {
+		if ($show_timestamp) {
 			$content .= '<br>' . format_timestamp(get_block_setting($block_id, 'timestamp', WT_TIMESTAMP));
 		}
 
 		if ($template) {
-			if (get_block_setting($block_id, 'block', false)) {
-				$class .= ' small_inner_block';
-			}
 			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 			return $content;
@@ -144,7 +139,6 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 				}
 			}
 			set_block_setting($block_id, 'languages', implode(',', $languages));
-			exit;
 		}
 
 		require_once WT_ROOT . 'includes/functions/functions_edit.php';
@@ -258,9 +252,12 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 			</div>'
 		);
 
-		$title = get_block_setting($block_id, 'title');
-		$html = get_block_setting($block_id, 'html');
-		// title
+		$title          = get_block_setting($block_id, 'title');
+		$html           = get_block_setting($block_id, 'html');
+		$gedcom         = get_block_setting($block_id, 'gedcom');
+		$show_timestamp = get_block_setting($block_id, 'show_timestamp', '0');
+		$languages      = get_block_setting($block_id, 'languages');
+
 		echo '<tr><td class="descriptionbox wrap">',
 			WT_Gedcom_Tag::getLabel('TITL'),
 			'</td><td class="optionbox"><input type="text" name="title" size="30" value="', WT_Filter::escapeHtml($title), '"></td></tr>';
@@ -283,8 +280,6 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 		echo '</select></td></tr>';
 
-		// gedcom
-		$gedcom = get_block_setting($block_id, 'gedcom');
 		if (count(WT_Tree::getAll()) > 1) {
 			if ($gedcom == '__current__') {$sel_current = 'selected'; } else {$sel_current = ''; }
 			if ($gedcom == '__default__') {$sel_default = 'selected'; } else {$sel_default = ''; }
@@ -310,7 +305,6 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '<textarea name="html" class="html-edit" rows="10" style="width:98%;">', WT_Filter::escapeHtml($html), '</textarea>';
 		echo '</td></tr>';
 
-		$show_timestamp = get_block_setting($block_id, 'show_timestamp', false);
 		echo '<tr><td class="descriptionbox wrap">';
 		echo WT_I18N::translate('Show the date and time of update');
 		echo '</td><td class="optionbox">';
@@ -318,7 +312,6 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '<input type="hidden" name="timestamp" value="', WT_TIMESTAMP, '">';
 		echo '</td></tr>';
 
-		$languages = get_block_setting($block_id, 'languages');
 		echo '<tr><td class="descriptionbox wrap">';
 		echo WT_I18N::translate('Show this block for which languages?');
 		echo '</td><td class="optionbox">';

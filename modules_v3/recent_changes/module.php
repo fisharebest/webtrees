@@ -44,13 +44,15 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		global $ctype;
 		require_once WT_ROOT . 'includes/functions/functions_print_lists.php';
 
-		$days = get_block_setting($block_id, 'days', self::DEFAULT_DAYS);
-		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');
-		$sortStyle = get_block_setting($block_id, 'sortStyle', 'date_desc');
-		$hide_empty = get_block_setting($block_id, 'hide_empty', false);
-		$block = get_block_setting($block_id, 'block', true);
+		$days       = get_block_setting($block_id, 'days', self::DEFAULT_DAYS);
+		$infoStyle  = get_block_setting($block_id, 'infoStyle', 'table');
+		$sortStyle  = get_block_setting($block_id, 'sortStyle', 'date_desc');
+		$block      = get_block_setting($block_id, 'block', '1');
+		$hide_empty = get_block_setting($block_id, 'hide_empty', '0');
+
+
 		if ($cfg) {
-			foreach (array('days', 'infoStyle', 'show_parents', 'sortStyle', 'hide_empty', 'block') as $name) {
+			foreach (array('days', 'infoStyle', 'sortStyle', 'hide_empty', 'block') as $name) {
 				if (array_key_exists($name, $cfg)) {
 					$$name = $cfg[$name];
 				}
@@ -123,12 +125,16 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 			set_block_setting($block_id, 'sortStyle', WT_Filter::post('sortStyle', 'name|date_asc|date_desc', 'date_desc'));
 			set_block_setting($block_id, 'hide_empty', WT_Filter::postBool('hide_empty'));
 			set_block_setting($block_id, 'block', WT_Filter::postBool('block'));
-			exit;
 		}
 
 		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
-		$days = get_block_setting($block_id, 'days', self::DEFAULT_DAYS);
+		$days       = get_block_setting($block_id, 'days', self::DEFAULT_DAYS);
+		$infoStyle  = get_block_setting($block_id, 'infoStyle', 'table');
+		$sortStyle  = get_block_setting($block_id, 'sortStyle', 'date_desc');
+		$block      = get_block_setting($block_id, 'block', '1');
+		$hide_empty = get_block_setting($block_id, 'hide_empty', '0');
+
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Number of days to show');
 		echo '</td><td class="optionbox">';
@@ -136,14 +142,12 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		echo ' <em>', WT_I18N::plural('maximum %d day', 'maximum %d days', self::MAX_DAYS, self::MAX_DAYS), '</em>';
 		echo '</td></tr>';
 
-		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
 		echo select_edit_control('infoStyle', array('list' => WT_I18N::translate('list'), 'table' => WT_I18N::translate('table')), null, $infoStyle, '');
 		echo '</td></tr>';
 
-		$sortStyle = get_block_setting($block_id, 'sortStyle', 'date');
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Sort order');
 		echo '</td><td class="optionbox">';
@@ -154,14 +158,12 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		), null, $sortStyle, '');
 		echo '</td></tr>';
 
-		$block = get_block_setting($block_id, 'block', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('block', $block);
 		echo '</td></tr>';
 
-		$hide_empty = get_block_setting($block_id, 'hide_empty', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Should this block be hidden when it is empty?');
 		echo '</td><td class="optionbox">';

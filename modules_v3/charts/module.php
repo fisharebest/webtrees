@@ -42,9 +42,10 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
 
-		$details = get_block_setting($block_id, 'details', false);
+		$details = get_block_setting($block_id, 'details', '0');
 		$type    = get_block_setting($block_id, 'type', 'pedigree');
 		$pid     = get_block_setting($block_id, 'pid', Auth::check() ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
+
 		if ($cfg) {
 			foreach (array('details', 'type', 'pid', 'block') as $name) {
 				if (array_key_exists($name, $cfg)) {
@@ -184,10 +185,9 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 			set_block_setting($block_id, 'details', WT_Filter::postBool('details'));
 			set_block_setting($block_id, 'type', WT_Filter::post('type', 'pedigree|descendants|hourglass|treenav', 'pedigree'));
 			set_block_setting($block_id, 'pid', WT_Filter::post('pid', WT_REGEX_XREF));
-			exit;
 		}
 
-		$details = get_block_setting($block_id, 'details', false);
+		$details = get_block_setting($block_id, 'details', '0');
 		$type    = get_block_setting($block_id, 'type', 'pedigree');
 		$pid     = get_block_setting($block_id, 'pid', Auth::check() ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 

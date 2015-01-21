@@ -41,10 +41,11 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $ctype, $controller;
 
-		$show_unassigned = get_block_setting($block_id, 'show_unassigned', true);
-		$show_other     = get_block_setting($block_id, 'show_other', true);
-		$show_future    = get_block_setting($block_id, 'show_future', true);
-		$block          = get_block_setting($block_id, 'block', true);
+		$show_other      = get_block_setting($block_id, 'show_other', '1');
+		$show_unassigned = get_block_setting($block_id, 'show_unassigned', '1');
+		$show_future     = get_block_setting($block_id, 'show_future', '1');
+		$block           = get_block_setting($block_id, 'block', '1');
+
 		if ($cfg) {
 			foreach (array('show_unassigned', 'show_other', 'show_future', 'block') as $name) {
 				if (array_key_exists($name, $cfg)) {
@@ -161,33 +162,33 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 			set_block_setting($block_id, 'show_unassigned', WT_Filter::postBool('show_unassigned'));
 			set_block_setting($block_id, 'show_future', WT_Filter::postBool('show_future'));
 			set_block_setting($block_id, 'block', WT_Filter::postBool('block'));
-			exit;
 		}
 
 		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
-		$show_other = get_block_setting($block_id, 'show_other', true);
+		$show_other      = get_block_setting($block_id, 'show_other', '1');
+		$show_unassigned = get_block_setting($block_id, 'show_unassigned', '1');
+		$show_future     = get_block_setting($block_id, 'show_future', '1');
+		$block           = get_block_setting($block_id, 'block', '1');
+
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Show research tasks that are assigned to other users');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('show_other', $show_other);
 		echo '</td></tr>';
 
-		$show_unassigned = get_block_setting($block_id, 'show_unassigned', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Show research tasks that are not assigned to any user');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('show_unassigned', $show_unassigned);
 		echo '</td></tr>';
 
-		$show_future = get_block_setting($block_id, 'show_future', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Show research tasks that have a date in the future');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('show_future', $show_future);
 		echo '</td></tr>';
 
-		$block = get_block_setting($block_id, 'block', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
