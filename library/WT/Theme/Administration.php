@@ -43,12 +43,6 @@ class Administration extends BaseTheme {
 	}
 
 	/** {@inheritdoc} */
-	protected function favicon() {
-		// Use the default webtrees favicon
-		return '<link rel="icon" href="favicon.ico" type="image/x-icon">';
-	}
-
-	/** {@inheritdoc} */
 	protected function footerContent() {
 		return '';
 	}

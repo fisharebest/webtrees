@@ -188,7 +188,8 @@ abstract class BaseTheme {
 	 * @return string
 	 */
 	protected function favicon() {
-		return '';
+		// Use the default webtrees favicon
+		return '<link rel="icon" href="favicon.ico" type="image/x-icon">';
 	}
 
 	/**
