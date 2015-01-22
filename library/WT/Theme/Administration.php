@@ -32,12 +32,12 @@ class Administration extends BaseTheme {
 			WT_FONT_AWESOME_CSS_URL,
 			WT_BOOTSTRAP_CSS_URL,
 			WT_DATATABLES_BOOTSTRAP_CSS_URL,
-			$this->cssUrl() . 'style.css',
+			$this->assetUrl() . 'style.css',
 		);
 	}
 
 	/** {@inheritdoc} */
-	public function cssUrl() {
+	public function assetUrl() {
 		return 'themes/_administration/css-1.7.0/';
 	}
 

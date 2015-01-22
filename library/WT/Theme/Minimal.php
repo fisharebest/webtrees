@@ -25,13 +25,13 @@ use WT_I18N;
  */
 class Minimal extends BaseTheme {
 	/** {@inheritdoc} */
-	public function cssUrl() {
+	public function assetUrl() {
 		return 'themes/minimal/css-1.7.0/';
 	}
 
 	/** {@inheritdoc} */
 	protected function favicon() {
-		return '<link rel="icon" href="' . $this->cssUrl() . 'favicon.png" type="image/png">';
+		return '<link rel="icon" href="' . $this->assetUrl() . 'favicon.png" type="image/png">';
 	}
 
 	/** {@inheritdoc} */
@@ -107,7 +107,7 @@ class Minimal extends BaseTheme {
 	protected function stylesheets() {
 		return array(
 			'themes/minimal/jquery-ui-1.11.2/jquery-ui.css',
-			$this->cssUrl() . 'style.css',
+			$this->assetUrl() . 'style.css',
 		);
 	}
 
