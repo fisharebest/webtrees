@@ -84,7 +84,7 @@ abstract class BaseTheme {
 	 */
 	public function bodyHeaderPopupWindow() {
 		return
-			'<body>' .
+			'<body class="container container-popup">' .
 			'<main id="content" role="main">' .
 			$this->flashMessagesContainer(WT_FlashMessages::getMessages());
 	}
