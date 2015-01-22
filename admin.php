@@ -96,9 +96,6 @@ $user_languages = WT_DB::prepare(
 $stats = new WT_Stats(WT_GEDCOM);
 
 ?>
-<ol class="breadcrumb small">
-	<li class="active"><?php echo WT_I18N::translate('Administration'); ?></li>
-</ol>
 <h2><?php echo $controller->getPageTitle(); ?></h2>
 
 <div>
