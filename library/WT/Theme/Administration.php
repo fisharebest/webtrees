@@ -180,7 +180,7 @@ class Administration extends BaseTheme {
 			$html .= $menu->bootstrap();
 		}
 
-		return '<ul class="nav nav-pills small" role="menu">' . $html . '</ul>';
+		return '<div class="clearfix"><ul class="nav nav-pills small pull-right" role="menu">' . $html . '</ul></div>';
 	}
 
 	/** {@inheritdoc} */
