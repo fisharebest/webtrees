@@ -3613,6 +3613,12 @@ a.icon-larrow:hover {
 	background-image: url(images/ldarrow.png);
 }
 
+.icon-ldarrow:hover {
+	width: 20px;
+	height: 20px;
+	background-image: url(images/ldarrow2.png);
+}
+
 .icon-lifespan-chunk {
 	width: 50px;
 	height: 37px;
