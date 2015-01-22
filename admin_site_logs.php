@@ -246,7 +246,7 @@ foreach (User::all() as $tmp_user) {
 	<input type="hidden" name="action" value="show">
 
 	<div class="row">
-		<div class="form-group col-xs-3">
+		<div class="form-group col-xs-6 col-sm-3">
 			<label for="from">
 				<?php echo /* I18N: label for the start of a date range (from x to y) */ WT_I18N::translate('From'); ?>
 			</label>
@@ -256,7 +256,7 @@ foreach (User::all() as $tmp_user) {
 			</div>
 		</div>
 
-		<div class="form-group col-xs-3">
+		<div class="form-group col-xs-6 col-sm-3">
 			<label for="to">
 				<?php /* I18N: label for the end of a date range (from x to y) */ echo WT_I18N::translate('To'); ?>
 			</label>
@@ -266,37 +266,37 @@ foreach (User::all() as $tmp_user) {
 			</div>
 		</div>
 
-		<div class="form-group col-xs-2">
+		<div class="form-group col-xs-6 col-sm-2">
 			<label for="type">
 				<?php echo WT_I18N::translate('Type'); ?>
 			</label>
 			<?php echo select_edit_control('type', array(''=>'', 'auth'=>'auth', 'config'=>'config', 'debug'=>'debug', 'edit'=>'edit', 'error'=>'error', 'media'=>'media', 'search'=>'search'), null, $type, 'class="form-control"'); ?>
 		</div>
 
-		<div class="form-group col-xs-4">
-			<label for="text">
-				<?php echo WT_I18N::translate('Message'); ?>
-			</label>
-			<input class="form-control" type="text" id="text" name="text" value="<?php echo WT_Filter::escapeHtml($text); ?>">
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="form-group col-xs-4">
+		<div class="form-group col-xs-6 col-sm-4">
 			<label for="ip">
 				<?php echo WT_I18N::translate('IP address'); ?>
 			</label>
 			<input class="form-control" type="text" id="ip" name="ip" value="<?php WT_Filter::escapeHtml($ip); ?>">
 		</div>
+	</div>
 
-		<div class="form-group col-xs-4">
+	<div class="row">
+		<div class="form-group col-sm-4">
+			<label for="text">
+				<?php echo WT_I18N::translate('Message'); ?>
+			</label>
+			<input class="form-control" type="text" id="text" name="text" value="<?php echo WT_Filter::escapeHtml($text); ?>">
+		</div>
+
+		<div class="form-group col-sm-4">
 			<label for="user">
 				<?php echo WT_I18N::translate('User'); ?>
 			</label>
 			<?php echo select_edit_control('user', $users_array, '', $user, 'class="form-control"'); ?>
 		</div>
 
-		<div class="form-group col-xs-4">
+		<div class="form-group col-sm-4">
 			<label for="gedc">
 				<?php echo WT_I18N::translate('Family tree'); ?>
 			</label>
