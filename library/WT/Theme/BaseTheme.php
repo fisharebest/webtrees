@@ -165,11 +165,11 @@ abstract class BaseTheme {
 	}
 
 	/**
-	 * Where are our CSS assets?
+	 * Where are our CSS, JS and other assets?
 	 *
 	 * @return string A relative path, such as "themes/foo/"
 	 */
-	public function cssUrl() {
+	public function assetUrl() {
 		return '';
 	}
 
@@ -487,12 +487,12 @@ abstract class BaseTheme {
 	 */
 	public function icon(WT_Fact $fact) {
 		$icon = 'images/facts/' . $fact->getTag() . '.png';
-		$dir  = substr($this->cssUrl(), strlen(WT_STATIC_URL));
+		$dir  = substr($this->assetUrl(), strlen(WT_STATIC_URL));
 		if (file_exists($dir . $icon)) {
-			return '<img src="' . $this->cssUrl() . $icon . '" title="' . WT_Gedcom_Tag::getLabel($fact->getTag()) . '">';
+			return '<img src="' . $this->assetUrl() . $icon . '" title="' . WT_Gedcom_Tag::getLabel($fact->getTag()) . '">';
 		} elseif (file_exists($dir . 'images/facts/NULL.png')) {
 			// Spacer image - for alignment - until we move to a sprite.
-			return '<img src="' . Theme::theme()->cssUrl() . 'images/facts/NULL.png">';
+			return '<img src="' . Theme::theme()->assetUrl() . 'images/facts/NULL.png">';
 		} else {
 			return '';
 		}
@@ -1532,20 +1532,20 @@ abstract class BaseTheme {
 			'stats-small-chart-x'            => 440,
 			'stats-small-chart-y'            => 125,
 			'stats-large-chart-x'            => 900,
-			'image-dline'                    => $this->cssUrl() . 'images/dline.png',
-			'image-dline2'                   => $this->cssUrl() . 'images/dline2.png',
-			'image-hline'                    => $this->cssUrl() . 'images/hline.png',
-			'image-spacer'                   => $this->cssUrl() . 'images/spacer.png',
-			'image-vline'                    => $this->cssUrl() . 'images/vline.png',
-			'image-add'                      => $this->cssUrl() . 'images/add.png',
-			'image-button_family'            => $this->cssUrl() . 'images/buttons/family.png',
-			'image-minus'                    => $this->cssUrl() . 'images/minus.png',
-			'image-plus'                     => $this->cssUrl() . 'images/plus.png',
-			'image-remove'                   => $this->cssUrl() . 'images/delete.png',
-			'image-search'                   => $this->cssUrl() . 'images/go.png',
-			'image-default_image_F'          => $this->cssUrl() . 'images/silhouette_female.png',
-			'image-default_image_M'          => $this->cssUrl() . 'images/silhouette_male.png',
-			'image-default_image_U'          => $this->cssUrl() . 'images/silhouette_unknown.png',
+			'image-dline'                    => $this->assetUrl() . 'images/dline.png',
+			'image-dline2'                   => $this->assetUrl() . 'images/dline2.png',
+			'image-hline'                    => $this->assetUrl() . 'images/hline.png',
+			'image-spacer'                   => $this->assetUrl() . 'images/spacer.png',
+			'image-vline'                    => $this->assetUrl() . 'images/vline.png',
+			'image-add'                      => $this->assetUrl() . 'images/add.png',
+			'image-button_family'            => $this->assetUrl() . 'images/buttons/family.png',
+			'image-minus'                    => $this->assetUrl() . 'images/minus.png',
+			'image-plus'                     => $this->assetUrl() . 'images/plus.png',
+			'image-remove'                   => $this->assetUrl() . 'images/delete.png',
+			'image-search'                   => $this->assetUrl() . 'images/go.png',
+			'image-default_image_F'          => $this->assetUrl() . 'images/silhouette_female.png',
+			'image-default_image_M'          => $this->assetUrl() . 'images/silhouette_male.png',
+			'image-default_image_U'          => $this->assetUrl() . 'images/silhouette_unknown.png',
 		);
 
 		if (array_key_exists($parameter_name, $parameters)) {
