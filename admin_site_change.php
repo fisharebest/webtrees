@@ -292,7 +292,7 @@ foreach (User::all() as $tmp_user) {
 				<?php echo /* I18N: label for the start of a date range (from x to y) */ WT_I18N::translate('From'); ?>
 			</label>
 			<div class="input-group date">
-				<input type="text" class="form-control" id="from" name="from" value="<?php echo WT_Filter::escapeHtml($from); ?>">
+				<input type="text" autocomplete="off" class="form-control" id="from" name="from" value="<?php echo WT_Filter::escapeHtml($from); ?>">
 				<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
 			</div>
 		</div>
@@ -302,7 +302,7 @@ foreach (User::all() as $tmp_user) {
 				<?php /* I18N: label for the end of a date range (from x to y) */ echo WT_I18N::translate('To'); ?>
 			</label>
 			<div class="input-group date">
-				<input type="text" class="form-control" id="to" name="to" value="<?php echo WT_Filter::escapeHtml($to); ?>">
+				<input type="text" autocomplete="off" class="form-control" id="to" name="to" value="<?php echo WT_Filter::escapeHtml($to); ?>">
 				<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
 			</div>
 		</div>
