@@ -5214,26 +5214,27 @@ footer {
 	#sidebar,
 	#separator,
 	.noprint {
-		display: none !important;
+		display: none;
+	}
+	
+	#pedigree_chart {
+		left: -40px;
+		top:  -260px;
+	}
+
+	[dir=rtl] #pedigree_chart {
+		left: auto;
+		right: -20px;
+	}
+	
+	#header_accordion1 {
+		width: 510px;
 	}
 
 	#familybook_chart h3 {
 		margin-bottom: 10px;
 	}
-
-	#header_accordion1 {
-		width: 510px !important;
-	}
-
-	#pedigree_chart {
-		left: -90px;
-	}
-
-	[dir=rtl] #pedigree_chart {
-		left: auto;
-		right: -90px;
-	}
-
+	
 	.lifespan_outer {
 		position: relative;
 		width: auto;

@@ -4419,16 +4419,30 @@ footer {
 	#sidebar,
 	#separator,
 	.noprint {
-		display: none !important;
+		display: none;
 	}
-
+	
+	.descriptionbox, .optionbox {
+		border: solid #888 1px;
+		}
+	
 	.person_box, .person_boxF, .person_boxNN {
 		border: solid #888 1px;
 		background: #fff;
 	}
-
+	
+	#pedigree_chart {
+		left: -35px;
+		top:  -260px;
+	}
+	
+	[dir=rtl] #pedigree_chart {
+		left: auto;
+		right: -20px;
+	}
+	
 	#header_accordion1 {
-		width: 510px !important;
+		width: 510px;
 	}
 
 	#familybook_chart h3 {

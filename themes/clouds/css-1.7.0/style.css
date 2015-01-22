@@ -4499,11 +4499,6 @@ footer {
 	content: url(images/powered-by-webtrees.png);
 }
 
-.execution_stats {
-	padding: 12px;
-	text-align: center;
-}
-
 .logo {
 	text-align: center;
 }
@@ -5292,7 +5287,7 @@ footer .error {
 	#sidebar,
 	#separator,
 	.noprint {
-		display: none !important;
+		display: none;
 	}
 
 	#content {
@@ -5300,16 +5295,17 @@ footer .error {
 	}
 
 	#pedigree_chart {
-		left: -80px;
-	}
-
-	#header_accordion1 {
-		width: 510px !important;
+		left: -40px;
+		top:  -260px;
 	}
 
 	[dir=rtl] #pedigree_chart {
 		left: auto;
-		right: -80px;
+		right: -20px;
+	}
+
+	#header_accordion1 {
+		width: 510px;
 	}
 
 	#familybook_chart h3 {
@@ -5317,7 +5313,6 @@ footer .error {
 		vertical-align: middle;
 	}
 
-	/* buttons and input are used out of forms in sortable tables*/
 	.lifespan_outer {
 		border: 0;
 		height: auto;
