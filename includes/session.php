@@ -39,49 +39,55 @@ global $controller;
 
 // Identify ourself
 define('WT_WEBTREES', 'webtrees');
-define('WT_VERSION',  '1.7.0-dev');
+define('WT_VERSION', '1.7.0-dev');
 
 // External URLs
-define('WT_WEBTREES_URL',  'http://www.webtrees.net/');
+define('WT_WEBTREES_URL', 'http://www.webtrees.net/');
 define('WT_WEBTREES_WIKI', 'http://wiki.webtrees.net/');
 
 // Resources have version numbers in the URL, so that they can be cached indefinitely.
 define('WT_STATIC_URL', getenv('STATIC_URL')); // We could set this to load our own static resources from a cookie-free domain.
 
 if (getenv('USE_CDN')) {
-	define('WT_BOOTSTRAP_CSS_URL',            '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css');
-	define('WT_BOOTSTRAP_JS_URL',             '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js');
-	define('WT_BOOTSTRAP_RTL_CSS_URL',        '//cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.2.0-rc2/css/bootstrap-rtl.min.css'); // out of date!
-	define('WT_JQUERY_DATATABLES_URL',        '//cdnjs.cloudflare.com/ajax/libs/datatables/1.10.4/js/jquery.dataTables.min.js');
-	define('WT_DATATABLES_BOOTSTRAP_JS_URL',  '//cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js');
+	define('WT_BOOTSTRAP_CSS_URL', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css');
+	define('WT_BOOTSTRAP_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js');
+	define('WT_BOOTSTRAP_RTL_CSS_URL', '//cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.2.0-rc2/css/bootstrap-rtl.min.css'); // CDNSJ is out of date
+	define('WT_BOOTSTRAP_DATETIMEPICKER_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.0.0/css/bootstrap-datetimepicker.js');
+	define('WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL', '//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.0.0/js/bootstrap-datetimepicker.min.css');
+	define('WT_JQUERY_DATATABLES_URL', '//cdnjs.cloudflare.com/ajax/libs/datatables/1.10.4/js/jquery.dataTables.min.js');
+	define('WT_DATATABLES_BOOTSTRAP_JS_URL', '//cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js');
 	define('WT_DATATABLES_BOOTSTRAP_CSS_URL', '//cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css');
-	define('WT_FONT_AWESOME_CSS_URL',         '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css');
-	define('WT_JQUERY_COLORBOX_URL',          '//cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.4.33/jquery.colorbox-min.js'); // out of date!
-	define('WT_JQUERY_COOKIE_URL',            '//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js');
-	define('WT_JQUERY_URL',                   '//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js');
-	define('WT_JQUERYUI_URL',                 '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js');
+	define('WT_FONT_AWESOME_CSS_URL', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css');
+	define('WT_MOMENT_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js');
+	define('WT_JQUERY_COLORBOX_URL', '//cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.4.33/jquery.colorbox-min.js'); // CDNSJ is out of date
+	define('WT_JQUERY_COOKIE_URL', '//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js');
+	define('WT_JQUERY_URL', '//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js');
+	define('WT_JQUERYUI_URL', '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js');
 } else {
-	define('WT_BOOTSTRAP_CSS_URL',            WT_STATIC_URL . 'packages/bootstrap-3.3.1/css/bootstrap.min.css');
-	define('WT_BOOTSTRAP_JS_URL',             WT_STATIC_URL . 'packages/bootstrap-3.3.1/js/bootstrap.min.js');
-	define('WT_BOOTSTRAP_RTL_CSS_URL',        WT_STATIC_URL . 'packages/bootstrap-rtl-3.2.0/css/bootstrap-rtl.min.css');
-	define('WT_JQUERY_DATATABLES_URL',        WT_STATIC_URL . 'packages/datatables-1.10.4/js/jquery.dataTables.min.js');
-	define('WT_DATATABLES_BOOTSTRAP_JS_URL',  WT_STATIC_URL . 'packages/datatables-1.10.4/plugins/dataTables.bootstrap.js');
+	define('WT_BOOTSTRAP_CSS_URL', WT_STATIC_URL . 'packages/bootstrap-3.3.1/css/bootstrap.min.css');
+	define('WT_BOOTSTRAP_JS_URL', WT_STATIC_URL . 'packages/bootstrap-3.3.1/js/bootstrap.min.js');
+	define('WT_BOOTSTRAP_RTL_CSS_URL', WT_STATIC_URL . 'packages/bootstrap-rtl-3.2.0/css/bootstrap-rtl.min.css');
+	define('WT_BOOTSTRAP_DATETIMEPICKER_JS_URL', WT_STATIC_URL . 'packages/bootstrap-datetimepicker-4.0.0/bootstrap-datetimepicker.min.js');
+	define('WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL', WT_STATIC_URL . 'packages/bootstrap-datetimepicker-4.0.0/bootstrap-datetimepicker.min.css');
+	define('WT_JQUERY_DATATABLES_URL', WT_STATIC_URL . 'packages/datatables-1.10.4/js/jquery.dataTables.min.js');
+	define('WT_DATATABLES_BOOTSTRAP_JS_URL', WT_STATIC_URL . 'packages/datatables-1.10.4/plugins/dataTables.bootstrap.js');
 	define('WT_DATATABLES_BOOTSTRAP_CSS_URL', WT_STATIC_URL . 'packages/datatables-1.10.4/plugins/dataTables.bootstrap.css');
-	define('WT_FONT_AWESOME_CSS_URL',         WT_STATIC_URL . 'packages/font-awesome-4.2.0/css/font-awesome.min.css');
-	define('WT_JQUERY_COLORBOX_URL',          WT_STATIC_URL . 'js/jquery.colorbox-1.5.14.js');
-	define('WT_JQUERY_COOKIE_URL',            WT_STATIC_URL . 'js/jquery.cookie-1.4.1.js');
-	define('WT_JQUERY_URL',                   WT_STATIC_URL . 'js/jquery-1.11.2.js');
-	define('WT_JQUERYUI_URL',                 WT_STATIC_URL . 'js/jquery-ui-1.11.2.js');
+	define('WT_FONT_AWESOME_CSS_URL', WT_STATIC_URL . 'packages/font-awesome-4.2.0/css/font-awesome.min.css');
+	define('WT_MOMENT_JS_URL', WT_STATIC_URL . 'packages/moment-2.9.0/moment-with-locales.min.js');
+	define('WT_JQUERY_COLORBOX_URL', WT_STATIC_URL . 'js/jquery.colorbox-1.5.14.js');
+	define('WT_JQUERY_COOKIE_URL', WT_STATIC_URL . 'js/jquery.cookie-1.4.1.js');
+	define('WT_JQUERY_URL', WT_STATIC_URL . 'js/jquery-1.11.2.js');
+	define('WT_JQUERYUI_URL', WT_STATIC_URL . 'js/jquery-ui-1.11.2.js');
 }
-define('WT_JQUERY_WHEELZOOM_URL',           WT_STATIC_URL . 'js/jquery.wheelzoom-2.0.0.js');
-define('WT_WEBTREES_JS_URL',                WT_STATIC_URL . 'js/webtrees-1.7.0.js');
+define('WT_JQUERY_WHEELZOOM_URL', WT_STATIC_URL . 'js/jquery.wheelzoom-2.0.0.js');
+define('WT_WEBTREES_JS_URL', WT_STATIC_URL . 'js/webtrees-1.7.0.js');
 
 // Location of our modules and themes.  These are used as URLs and folder paths.
 define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes
-define('WT_THEMES_DIR',  'themes/' );
+define('WT_THEMES_DIR', 'themes/' );
 
 // Enable debugging output?
-define('WT_DEBUG',     false);
+define('WT_DEBUG', false);
 define('WT_DEBUG_SQL', false);
 
 // Error reporting

@@ -32,6 +32,7 @@ class Administration extends BaseTheme {
 			WT_FONT_AWESOME_CSS_URL,
 			WT_BOOTSTRAP_CSS_URL,
 			WT_DATATABLES_BOOTSTRAP_CSS_URL,
+			WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL,
 			$this->assetUrl() . 'style.css',
 		);
 	}
