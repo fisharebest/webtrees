@@ -484,6 +484,10 @@ abstract class WT_Module {
 			}
 		}
 
+		uasort($modules, function(WT_Module $x, WT_Module $y) {
+			return WT_I18N::strcasecmp($x->getTitle(), $y->getTitle());
+		});
+
 		return $modules;
 	}
 
