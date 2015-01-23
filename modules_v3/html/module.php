@@ -265,8 +265,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		// templates
 		echo '<tr><td class="descriptionbox wrap">',
 			WT_I18N::translate('Templates'),
-			help_link('block_html_template', $this->getName()),
-			'</td><td class="optionbox">';
+			'</td><td class="optionbox wrap">';
 		// The CK editor needs lots of help to load/save data :-(
 		if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 			$ckeditor_onchange = 'CKEDITOR.instances.html.setData(document.block.html.value);';
@@ -278,7 +277,11 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		foreach ($templates as $title=>$template) {
 			echo '<option value="', WT_Filter::escapeHtml($template), '">', $title, '</option>';
 		}
-		echo '</select></td></tr>';
+		echo '</select>';
+		if (!$html) {
+			echo '<p>', WT_I18N::translate('To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements.'), '</p>';
+		}
+		echo '</td></tr>';
 
 		if (count(WT_Tree::getAll()) > 1) {
 			if ($gedcom == '__current__') {$sel_current = 'selected'; } else {$sel_current = ''; }
@@ -293,13 +296,17 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 				if ($tree->tree_name == $gedcom) {$sel = 'selected'; } else {$sel = ''; }
 				echo '<option value="', $tree->tree_name, '" ', $sel, ' dir="auto">', $tree->tree_title_html, '</option>';
 			}
-			echo '</select></td></tr>';
+			echo '</select>';
+			echo '</td></tr>';
 		}
 
 		// html
 		echo '<tr><td colspan="2" class="descriptionbox">',
-			WT_I18N::translate('Content'),
-			help_link('block_html_content', $this->getName()),
+			WT_I18N::translate('Content');
+		if (!$html) {
+			echo '<p>', WT_I18N::translate('As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically.  These special fields are marked with <b>#</b> characters.  For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database.  Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme.'), '</p>';
+		}
+		echo
 			'</td></tr><tr>',
 			'<td colspan="2" class="optionbox">';
 		echo '<textarea name="html" class="html-edit" rows="10" style="width:98%;">', WT_Filter::escapeHtml($html), '</textarea>';

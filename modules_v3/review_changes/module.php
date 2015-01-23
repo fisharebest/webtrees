@@ -84,49 +84,49 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 				}
 				WT_Site::setPreference('LAST_CHANGE_EMAIL', WT_TIMESTAMP);
 			}
-			if (WT_USER_CAN_EDIT) {
-				$id = $this->getName() . $block_id;
-				$class = $this->getName() . '_block';
-				if ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype === 'user' && Auth::check()) {
-					$title = '<i class="icon-admin" title="' . WT_I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
-				} else {
-					$title = '';
-				}
-				$title .= $this->getTitle() . help_link('review_changes', $this->getName());
+		}
+		if (WT_USER_CAN_EDIT) {
+			$id = $this->getName() . $block_id;
+			$class = $this->getName() . '_block';
+			if ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype === 'user' && Auth::check()) {
+				$title = '<i class="icon-admin" title="' . WT_I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
+			} else {
+				$title = '';
+			}
+			$title .= $this->getTitle();
 
-				$content = '';
-				if (WT_USER_CAN_ACCEPT) {
-					$content .= "<a href=\"#\" onclick=\"window.open('edit_changes.php','_blank', chan_window_specs); return false;\">" . WT_I18N::translate('There are pending changes for you to moderate.') . "</a><br>";
+			$content = '';
+			if (WT_USER_CAN_ACCEPT) {
+				$content .= "<a href=\"#\" onclick=\"window.open('edit_changes.php','_blank', chan_window_specs); return false;\">" . WT_I18N::translate('There are pending changes for you to moderate.') . "</a><br>";
+			}
+			if ($sendmail == "yes") {
+				$content .= WT_I18N::translate('Last email reminder was sent ') . format_timestamp(WT_Site::getPreference('LAST_CHANGE_EMAIL')) . "<br>";
+				$content .= WT_I18N::translate('Next email reminder will be sent after ') . format_timestamp(WT_Site::getPreference('LAST_CHANGE_EMAIL') + (60 * 60 * 24 * $days)) . "<br><br>";
+			}
+			$changes = WT_DB::prepare(
+				"SELECT xref" .
+				" FROM  `##change`" .
+				" WHERE status='pending'" .
+				" AND   gedcom_id=?" .
+				" GROUP BY xref"
+			)->execute(array(WT_GED_ID))->fetchAll();
+			foreach ($changes as $change) {
+				$record = WT_GedcomRecord::getInstance($change->xref);
+				if ($record->canShow()) {
+					$content .= '<b>' . $record->getFullName() . '</b>';
+					$content .= $block ? '<br>' : ' ';
+					$content .= '<a href="' . $record->getHtmlUrl() . '">' . WT_I18N::translate('View the changes') . '</a>';
+					$content .= '<br>';
 				}
-				if ($sendmail == "yes") {
-					$content .= WT_I18N::translate('Last email reminder was sent ') . format_timestamp(WT_Site::getPreference('LAST_CHANGE_EMAIL')) . "<br>";
-					$content .= WT_I18N::translate('Next email reminder will be sent after ') . format_timestamp(WT_Site::getPreference('LAST_CHANGE_EMAIL') + (60 * 60 * 24 * $days)) . "<br><br>";
-				}
-				$changes = WT_DB::prepare(
-					"SELECT xref" .
-					" FROM  `##change`" .
-					" WHERE status='pending'" .
-					" AND   gedcom_id=?" .
-					" GROUP BY xref"
-				)->execute(array(WT_GED_ID))->fetchAll();
-				foreach ($changes as $change) {
-					$record = WT_GedcomRecord::getInstance($change->xref);
-					if ($record->canShow()) {
-						$content .= '<b>' . $record->getFullName() . '</b>';
-						$content .= $block ? '<br>' : ' ';
-						$content .= '<a href="' . $record->getHtmlUrl() . '">' . WT_I18N::translate('View the changes') . '</a>';
-						$content .= '<br>';
-					}
-				}
+			}
 
-				if ($template) {
-					if ($block) {
-						$class .= ' small_inner_block';
-					}
-					return Theme::theme()->formatBlock($id, $title, $class, $content);
-				} else {
-					return $content;
+			if ($template) {
+				if ($block) {
+					$class .= ' small_inner_block';
 				}
+				return Theme::theme()->formatBlock($id, $title, $class, $content);
+			} else {
+				return $content;
 			}
 		}
 	}
@@ -160,6 +160,14 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		$days     = get_block_setting($block_id, 'days', '1');
 		$block    = get_block_setting($block_id, 'block', '1');
 
+	?>
+	<tr>
+		<td colspan="2">
+			<?php echo WT_I18N::translate('This block will show editors a list of records with pending changes that need to be approved by a moderator.  It also generates daily emails to moderators whenever pending changes exist.'); ?>
+		</td>
+	</tr>
+
+	<?php
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Send out reminder emails?');
 		echo '</td><td class="optionbox">';
