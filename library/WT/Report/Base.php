@@ -407,10 +407,10 @@ class WT_Report_Base {
 			$this->pageh = $sizes[1];
 		} else {
 			if ($this->pagew < 10) {
-				die("<strong>REPORT ERROR WT_Report_Base::setup(): </strong>For custom size pages you must set \"customwidth\" larger then this in the XML file");
+				throw new DomainException('REPORT ERROR WT_Report_Base::setup(): For custom size pages you must set "customwidth" larger then this in the XML file');
 			}
 			if ($this->pageh < 10) {
-				die("<strong>REPORT ERROR WT_Report_Base::setup(): </strong>For custom size pages you must set \"customheight\" larger then this in the XML file");
+				throw new DomainException('REPORT ERROR WT_Report_Base::setup(): For custom size pages you must set "customheight" larger then this in the XML file');
 			}
 		}
 
@@ -577,7 +577,7 @@ function styleStartHandler($attrs) {
 	global $wt_report;
 
 	if (empty($attrs['name'])) {
-		die("<strong>REPORT ERROR Style: </strong> The \"name\" of the style is missing or not set in the XML file.");
+		throw new DomainException('REPORT ERROR Style: The "name" of the style is missing or not set in the XML file.');
 	}
 
 	// array Style that will be passed on
@@ -1490,16 +1490,15 @@ function repeatTagEndHandler() {
 			//-- make sure everything is case sensitive
 			xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, false);
 			//-- set the main element handler functions
-			xml_set_element_handler($repeat_parser, "startElement", "endElement");
+			xml_set_element_handler($repeat_parser, 'startElement', 'endElement');
 			//-- set the character data handler
-			xml_set_character_data_handler($repeat_parser, "characterData");
+			xml_set_character_data_handler($repeat_parser, 'characterData');
 			if (!xml_parse($repeat_parser, $reportxml, true)) {
-				printf(
-					$reportxml . "\nRepeatTagEHandler XML error: %s at line %d",
+				throw new DomainException(sprintf(
+					'RepeatTagEHandler XML error: %s at line %d',
 					xml_error_string(xml_get_error_code($repeat_parser)),
 					xml_get_current_line_number($repeat_parser)
-				);
-				exit;
+				));
 			}
 			xml_parser_free($repeat_parser);
 		}
@@ -1685,12 +1684,12 @@ function factsEndHandler() {
 			//-- make sure everything is case sensitive
 			xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, false);
 			//-- set the main element handler functions
-			xml_set_element_handler($repeat_parser, "startElement", "endElement");
+			xml_set_element_handler($repeat_parser, 'startElement', 'endElement');
 			//-- set the character data handler
-			xml_set_character_data_handler($repeat_parser, "characterData");
+			xml_set_character_data_handler($repeat_parser, 'characterData');
 			if (!xml_parse($repeat_parser, $reportxml, true)) {
-				die(sprintf(
-					$reportxml . "\nFactsEHandler XML error: %s at line %d",
+				throw new DomainException(sprintf(
+					'FactsEHandler XML error: %s at line %d',
 					xml_error_string(xml_get_error_code($repeat_parser)),
 					xml_get_current_line_number($repeat_parser)
 				));
@@ -1717,7 +1716,7 @@ function setVarStartHandler($attrs) {
 	global $vars, $gedrec, $fact, $desc, $generation;
 
 	if (empty($attrs['name'])) {
-		die("<strong>REPORT ERROR var: </strong> The attribute \"name=\" is missing or not set in the XML file");
+		throw new DomainException('REPORT ERROR var: The attribute "name" is missing or not set in the XML file');
 	}
 
 	$name = $attrs['name'];
@@ -2422,7 +2421,7 @@ function listStartHandler($attrs) {
 		unset($sql_join, $sql_where, $sql_order_by);
 		break;
 	default:
-		die("Invalid list name: $listname");
+		throw new DomainException('Invalid list name: ' . $listname);
 	}
 
 	$filters = array();
@@ -2659,12 +2658,11 @@ function listEndHandler() {
 				//-- set the character data handler
 				xml_set_character_data_handler($repeat_parser, "characterData");
 				if (!xml_parse($repeat_parser, $reportxml, true)) {
-					printf(
-						$reportxml . "\nListEHandler XML error: %s at line %d",
+					throw new DomainException(sprintf(
+						'ListEHandler XML error: %s at line %d',
 						xml_error_string(xml_get_error_code($repeat_parser)),
 						xml_get_current_line_number($repeat_parser)
-					);
-					exit;
+					));
 				}
 				xml_parser_free($repeat_parser);
 			} else {

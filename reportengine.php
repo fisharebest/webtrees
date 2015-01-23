@@ -142,12 +142,14 @@ case 'setup':
 	xml_set_character_data_handler($xml_parser, 'characterData');
 
 	// Open the file
-	if (!($fp = fopen($report, 'r'))) {
-		die('could not open XML input');
-	}
+	$fp = fopen($report, 'r');
 	while (($data = fread($fp, 4096))) {
 		if (!xml_parse($xml_parser, $data, feof($fp))) {
-			die(sprintf($data . ' XML error: %s at line %d', xml_error_string(xml_get_error_code($xml_parser)), xml_get_current_line_number($xml_parser)));
+			throw new DomainException(sprintf(
+				'XML error: %s at line %d',
+				xml_error_string(xml_get_error_code($xml_parser)),
+				xml_get_current_line_number($xml_parser)
+			));
 		}
 	}
 	xml_parser_free($xml_parser);
@@ -286,7 +288,7 @@ case 'run':
 	if (strstr($report, 'report_singlepage.xml') !== false) {
 		$DEBUG = false;
 		$pedigree = new ReportPedigree;
-		
+
 		return;
 	}
 
@@ -476,12 +478,14 @@ case 'run':
 	//-- set the character data handler
 	xml_set_character_data_handler($xml_parser, 'characterData');
 
-	if (!($fp = fopen($report, 'r'))) {
-		die('could not open XML input');
-	}
+	$fp = fopen($report, 'r');
 	while (($data = fread($fp, 4096))) {
 		if (!xml_parse($xml_parser, $data, feof($fp))) {
-			die(sprintf($data . ' XML error: %s at line %d', xml_error_string(xml_get_error_code($xml_parser)), xml_get_current_line_number($xml_parser)));
+			throw new DomainException(sprintf(
+				'XML error: %s at line %d',
+				xml_error_string(xml_get_error_code($xml_parser)),
+				xml_get_current_line_number($xml_parser)
+			));
 		}
 	}
 	xml_parser_free($xml_parser);
