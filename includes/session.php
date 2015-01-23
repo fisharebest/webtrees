@@ -52,40 +52,41 @@ if (getenv('USE_CDN')) {
 	// Caution, using a CDN will break support for responsive features in IE8, as respond.js
 	// needs to be on the same domain as all the CSS files.
 	define('WT_BOOTSTRAP_CSS_URL', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css');
+	define('WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL', '//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.0.0/js/bootstrap-datetimepicker.min.css');
+	define('WT_BOOTSTRAP_DATETIMEPICKER_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.0.0/css/bootstrap-datetimepicker.js');
 	define('WT_BOOTSTRAP_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js');
 	define('WT_BOOTSTRAP_RTL_CSS_URL', '//cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.2.0-rc2/css/bootstrap-rtl.min.css'); // CDNSJ is out of date
-	define('WT_BOOTSTRAP_DATETIMEPICKER_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.0.0/css/bootstrap-datetimepicker.js');
-	define('WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL', '//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.0.0/js/bootstrap-datetimepicker.min.css');
-	define('WT_JQUERY_DATATABLES_URL', '//cdnjs.cloudflare.com/ajax/libs/datatables/1.10.4/js/jquery.dataTables.min.js');
-	define('WT_DATATABLES_BOOTSTRAP_JS_URL', '//cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js');
 	define('WT_DATATABLES_BOOTSTRAP_CSS_URL', '//cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css');
+	define('WT_DATATABLES_BOOTSTRAP_JS_URL', '//cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js');
 	define('WT_FONT_AWESOME_CSS_URL', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css');
-	define('WT_MOMENT_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js');
-	define('WT_JQUERY_COLORBOX_URL', '//cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.4.33/jquery.colorbox-min.js'); // CDNSJ is out of date
-	define('WT_JQUERY_COOKIE_URL', '//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js');
-	define('WT_JQUERY_URL', '//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js');
 	define('WT_JQUERYUI_URL', '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js');
-	define('WT_RESPOND_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js');
+	define('WT_JQUERY_COOKIE_URL', '//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js');
+	define('WT_JQUERY_DATATABLES_URL', '//cdnjs.cloudflare.com/ajax/libs/datatables/1.10.4/js/jquery.dataTables.min.js');
+	define('WT_JQUERY_URL', '//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js');
 	define('WT_MODERNIZR_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js');
+	define('WT_MOMENT_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js');
+	define('WT_RESPOND_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js');
 } else {
 	define('WT_BOOTSTRAP_CSS_URL', WT_STATIC_URL . 'packages/bootstrap-3.3.1/css/bootstrap.min.css');
+	define('WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL', WT_STATIC_URL . 'packages/bootstrap-datetimepicker-4.0.0/bootstrap-datetimepicker.min.css');
+	define('WT_BOOTSTRAP_DATETIMEPICKER_JS_URL', WT_STATIC_URL . 'packages/bootstrap-datetimepicker-4.0.0/bootstrap-datetimepicker.min.js');
 	define('WT_BOOTSTRAP_JS_URL', WT_STATIC_URL . 'packages/bootstrap-3.3.1/js/bootstrap.min.js');
 	define('WT_BOOTSTRAP_RTL_CSS_URL', WT_STATIC_URL . 'packages/bootstrap-rtl-3.2.0/css/bootstrap-rtl.min.css');
-	define('WT_BOOTSTRAP_DATETIMEPICKER_JS_URL', WT_STATIC_URL . 'packages/bootstrap-datetimepicker-4.0.0/bootstrap-datetimepicker.min.js');
-	define('WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL', WT_STATIC_URL . 'packages/bootstrap-datetimepicker-4.0.0/bootstrap-datetimepicker.min.css');
-	define('WT_JQUERY_DATATABLES_URL', WT_STATIC_URL . 'packages/datatables-1.10.4/js/jquery.dataTables.min.js');
-	define('WT_DATATABLES_BOOTSTRAP_JS_URL', WT_STATIC_URL . 'packages/datatables-1.10.4/plugins/dataTables.bootstrap.js');
 	define('WT_DATATABLES_BOOTSTRAP_CSS_URL', WT_STATIC_URL . 'packages/datatables-1.10.4/plugins/dataTables.bootstrap.css');
+	define('WT_DATATABLES_BOOTSTRAP_JS_URL', WT_STATIC_URL . 'packages/datatables-1.10.4/plugins/dataTables.bootstrap.js');
 	define('WT_FONT_AWESOME_CSS_URL', WT_STATIC_URL . 'packages/font-awesome-4.2.0/css/font-awesome.min.css');
-	define('WT_MOMENT_JS_URL', WT_STATIC_URL . 'packages/moment-2.9.0/moment-with-locales.min.js');
-	define('WT_JQUERY_COLORBOX_URL', WT_STATIC_URL . 'js/jquery.colorbox-1.5.14.js');
-	define('WT_JQUERY_COOKIE_URL', WT_STATIC_URL . 'js/jquery.cookie-1.4.1.js');
-	define('WT_JQUERY_URL', WT_STATIC_URL . 'js/jquery-1.11.2.js');
 	define('WT_JQUERYUI_URL', WT_STATIC_URL . 'js/jquery-ui-1.11.2.js');
-	define('WT_RESPOND_JS_URL', WT_STATIC_URL . 'packages/respond-1.4.2/respond.min.js');
+	define('WT_JQUERY_COOKIE_URL', WT_STATIC_URL . 'js/jquery.cookie-1.4.1.js');
+	define('WT_JQUERY_DATATABLES_URL', WT_STATIC_URL . 'packages/datatables-1.10.4/js/jquery.dataTables.min.js');
+	define('WT_JQUERY_URL', WT_STATIC_URL . 'js/jquery-1.11.2.js');
 	define('WT_MODERNIZR_JS_URL', WT_STATIC_URL . 'packages/modernizr-2.8.3/modernizr.min.js');
+	define('WT_MOMENT_JS_URL', WT_STATIC_URL . 'packages/moment-2.9.0/moment-with-locales.min.js');
+	define('WT_RESPOND_JS_URL', WT_STATIC_URL . 'packages/respond-1.4.2/respond.min.js');
 }
+// We can't load these from a CDN, as our local copies have been patched.
+define('WT_JQUERY_COLORBOX_URL', WT_STATIC_URL . 'js/jquery.colorbox-1.5.14.js');
 define('WT_JQUERY_WHEELZOOM_URL', WT_STATIC_URL . 'js/jquery.wheelzoom-2.0.0.js');
+
 define('WT_WEBTREES_JS_URL', WT_STATIC_URL . 'js/webtrees-1.7.0.js');
 
 // Location of our modules and themes.  These are used as URLs and folder paths.
@@ -105,12 +106,12 @@ define('WT_SCHEMA_VERSION', 29);
 // Regular expressions for validating user input, etc.
 define('WT_MINIMUM_PASSWORD_LENGTH', 6);
 
-define('WT_REGEX_XREF',     '[A-Za-z0-9:_-]+');
-define('WT_REGEX_TAG',      '[_A-Z][_A-Z0-9]*');
-define('WT_REGEX_INTEGER',  '-?\d+');
-define('WT_REGEX_ALPHA',    '[a-zA-Z]+');
+define('WT_REGEX_XREF', '[A-Za-z0-9:_-]+');
+define('WT_REGEX_TAG', '[_A-Z][_A-Z0-9]*');
+define('WT_REGEX_INTEGER', '-?\d+');
+define('WT_REGEX_ALPHA', '[a-zA-Z]+');
 define('WT_REGEX_ALPHANUM', '[a-zA-Z0-9]+');
-define('WT_REGEX_BYTES',    '[0-9]+[bBkKmMgG]?');
+define('WT_REGEX_BYTES', '[0-9]+[bBkKmMgG]?');
 define('WT_REGEX_USERNAME', '[^<>"%{};]+');
 define('WT_REGEX_PASSWORD', '.{' . WT_MINIMUM_PASSWORD_LENGTH . ',}');
 
@@ -130,7 +131,7 @@ define('WT_UTF8_PDF', "\xE2\x80\xAC"); // U+202C  (Pop directional formatting: r
 define('WT_EVENTS_BIRT', 'BIRT|CHR|BAPM|_BRTM|ADOP');
 define('WT_EVENTS_DEAT', 'DEAT|BURI|CREM');
 define('WT_EVENTS_MARR', 'MARR|_NMR');
-define('WT_EVENTS_DIV',  'DIV|ANUL|_SEPR');
+define('WT_EVENTS_DIV', 'DIV|ANUL|_SEPR');
 
 // Use these line endings when writing files on the server
 define('WT_EOL', "\r\n");
@@ -142,10 +143,10 @@ define('WT_GEDCOM_LINE_LENGTH', 255 - strlen(WT_EOL)); // Characters, not bytes
 define('WT_GOOGLE_CHART_ENCODING', 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-.');
 
 // Privacy constants
-define('WT_PRIV_PUBLIC',  2); // Allows visitors to view the marked information
-define('WT_PRIV_USER',    1); // Allows members to access the marked information
-define('WT_PRIV_NONE',    0); // Allows managers to access the marked information
-define('WT_PRIV_HIDE',   -1); // Hide the item to all users
+define('WT_PRIV_PUBLIC', 2); // Allows visitors to view the marked information
+define('WT_PRIV_USER', 1); // Allows members to access the marked information
+define('WT_PRIV_NONE', 0); // Allows managers to access the marked information
+define('WT_PRIV_HIDE', -1); // Hide the item to all users
 
 // For performance, it is quicker to refer to files using absolute paths
 define('WT_ROOT', realpath(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR);
@@ -526,18 +527,18 @@ foreach (WT_Tree::getAll() as $tree) {
 
 // These attributes of the currently-selected tree are used frequently
 if ($WT_TREE) {
-	define('WT_GEDCOM',            $WT_TREE->tree_name);
-	define('WT_GED_ID',            $WT_TREE->tree_id);
-	define('WT_GEDURL',            $WT_TREE->tree_name_url);
-	define('WT_TREE_TITLE',        $WT_TREE->tree_title_html);
-	define('WT_IMPORTED',          $WT_TREE->imported);
+	define('WT_GEDCOM', $WT_TREE->tree_name);
+	define('WT_GED_ID', $WT_TREE->tree_id);
+	define('WT_GEDURL', $WT_TREE->tree_name_url);
+	define('WT_TREE_TITLE', $WT_TREE->tree_title_html);
+	define('WT_IMPORTED', $WT_TREE->imported);
 	define('WT_USER_GEDCOM_ADMIN', Auth::isManager($WT_TREE));
-	define('WT_USER_CAN_ACCEPT',   Auth::isModerator($WT_TREE));
-	define('WT_USER_CAN_EDIT',     Auth::isEditor($WT_TREE));
-	define('WT_USER_CAN_ACCESS',   Auth::isMember($WT_TREE));
-	define('WT_USER_GEDCOM_ID',    $WT_TREE->getUserPreference(Auth::user(), 'gedcomid'));
-	define('WT_USER_ROOT_ID',      $WT_TREE->getUserPreference(Auth::user(), 'rootid') ? $WT_TREE->getUserPreference(Auth::user(), 'rootid') : WT_USER_GEDCOM_ID);
-	define('WT_USER_PATH_LENGTH',  $WT_TREE->getUserPreference(Auth::user(), 'RELATIONSHIP_PATH_LENGTH'));
+	define('WT_USER_CAN_ACCEPT', Auth::isModerator($WT_TREE));
+	define('WT_USER_CAN_EDIT', Auth::isEditor($WT_TREE));
+	define('WT_USER_CAN_ACCESS', Auth::isMember($WT_TREE));
+	define('WT_USER_GEDCOM_ID', $WT_TREE->getUserPreference(Auth::user(), 'gedcomid'));
+	define('WT_USER_ROOT_ID', $WT_TREE->getUserPreference(Auth::user(), 'rootid') ? $WT_TREE->getUserPreference(Auth::user(), 'rootid') : WT_USER_GEDCOM_ID);
+	define('WT_USER_PATH_LENGTH', $WT_TREE->getUserPreference(Auth::user(), 'RELATIONSHIP_PATH_LENGTH'));
 	if (WT_USER_GEDCOM_ADMIN) {
 		define('WT_USER_ACCESS_LEVEL', WT_PRIV_NONE);
 	} elseif (WT_USER_CAN_ACCESS) {
@@ -547,18 +548,18 @@ if ($WT_TREE) {
 	}
 	load_gedcom_settings(WT_GED_ID);
 } else {
-	define('WT_GEDCOM',            '');
-	define('WT_GED_ID',            null);
-	define('WT_GEDURL',            '');
-	define('WT_TREE_TITLE',        WT_WEBTREES);
-	define('WT_IMPORTED',          false);
+	define('WT_GEDCOM', '');
+	define('WT_GED_ID', null);
+	define('WT_GEDURL', '');
+	define('WT_TREE_TITLE', WT_WEBTREES);
+	define('WT_IMPORTED', false);
 	define('WT_USER_GEDCOM_ADMIN', false);
-	define('WT_USER_CAN_ACCEPT',   false);
-	define('WT_USER_CAN_EDIT',     false);
-	define('WT_USER_CAN_ACCESS',   false);
-	define('WT_USER_GEDCOM_ID',    '');
-	define('WT_USER_ROOT_ID',      '');
-	define('WT_USER_PATH_LENGTH',  0);
+	define('WT_USER_CAN_ACCEPT', false);
+	define('WT_USER_CAN_EDIT', false);
+	define('WT_USER_CAN_ACCESS', false);
+	define('WT_USER_GEDCOM_ID', '');
+	define('WT_USER_ROOT_ID', '');
+	define('WT_USER_PATH_LENGTH', 0);
 	define('WT_USER_ACCESS_LEVEL', WT_PRIV_PUBLIC);
 }
 $GEDCOM = WT_GEDCOM;
