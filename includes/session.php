@@ -33,7 +33,7 @@ if (!defined('WT_SCRIPT_NAME')) {
 
 // To embed webtrees code in other applications, we must explicitly declare any global variables that we create.
 // session.php
-global $start_time, $WT_REQUEST, $WT_SESSION, $WT_TREE, $GEDCOM, $SEARCH_SPIDER, $TEXT_DIRECTION;
+global $WT_REQUEST, $WT_SESSION, $WT_TREE, $GEDCOM, $SEARCH_SPIDER, $TEXT_DIRECTION;
 // most pages
 global $controller;
 
@@ -97,9 +97,6 @@ define('WT_THEMES_DIR', 'themes/' );
 define('WT_DEBUG', false);
 define('WT_DEBUG_SQL', false);
 
-// Error reporting
-define('WT_ERROR_LEVEL', 2); // 0=none, 1=minimal, 2=full
-
 // Required version of database tables/columns/indexes/etc.
 define('WT_SCHEMA_VERSION', 29);
 
@@ -152,7 +149,7 @@ define('WT_PRIV_HIDE', -1); // Hide the item to all users
 define('WT_ROOT', realpath(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR);
 
 // Keep track of time statistics, for the summary in the footer
-$start_time = microtime(true);
+define('WT_START_TIME', microtime(true));
 
 // We want to know about all PHP errors
 error_reporting(E_ALL | E_STRICT);
@@ -299,9 +296,6 @@ require WT_ROOT . 'includes/functions/functions_import.php';
 // Set a custom error handler
 set_error_handler(function ($errno, $errstr) {
 	if (error_reporting() > 0 && $errno < 2048) {
-		if (WT_ERROR_LEVEL == 0) {
-			return false;
-		}
 		$fmt_msg = "<br>ERROR {$errno}: {$errstr}<br>";
 		$log_msg = "ERROR {$errno}: {$errstr};";
 		// Although debug_backtrace should always exist in PHP5, without this check, PHP sometimes crashes.
@@ -309,9 +303,6 @@ set_error_handler(function ($errno, $errstr) {
 		if ($errno < 16 && function_exists("debug_backtrace") && strstr($errstr, "headers already sent by") === false) {
 			$backtrace = debug_backtrace();
 			$num = count($backtrace);
-			if (WT_ERROR_LEVEL == 1) {
-				$num = 1;
-			}
 			for ($i = 0; $i < $num; $i++) {
 				if ($i === 0) {
 					$fmt_msg .= "0 Error occurred on ";

@@ -248,7 +248,7 @@ if (WT_Filter::get('go')) {
 		}
 
 		// How much time do we have left?
-		if (microtime(true) - $start_time > ini_get('max_execution_time') - 5) {
+		if (microtime(true) - WT_START_TIME > ini_get('max_execution_time') - 2) {
 			echo '<p>', WT_I18N::translate('The server’s time limit was reached.'), '</p>';
 			break;
 		}
