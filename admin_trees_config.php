@@ -63,7 +63,7 @@ $hide_show = array(
 );
 
 $privacy = array(
-	WT_PRIV_PUBLIC => WT_I18N::translate('Show to public'),
+	WT_PRIV_PUBLIC => WT_I18N::translate('Show to visitors'),
 	WT_PRIV_USER   => WT_I18N::translate('Show to members'),
 	WT_PRIV_NONE   => WT_I18N::translate('Show to managers'),
 	WT_PRIV_HIDE   => WT_I18N::translate('Hide from everyone'),
@@ -153,7 +153,7 @@ $PRIVACY_CONSTANTS = array(
 );
 
 $privacy = array(
-	WT_PRIV_PUBLIC => WT_I18N::translate('Show to public'),
+	WT_PRIV_PUBLIC => WT_I18N::translate('Show to visitors'),
 	WT_PRIV_USER   => WT_I18N::translate('Show to members'),
 	WT_PRIV_NONE   => WT_I18N::translate('Show to managers'),
 	WT_PRIV_HIDE   => WT_I18N::translate('Hide from everyone'),
