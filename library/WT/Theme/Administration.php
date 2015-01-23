@@ -83,7 +83,7 @@ class Administration extends BaseTheme {
 		);
 
 		if (count(WT_Tree::getAll()) > 1) {
-			$submenus[] = new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Set the default blocks'), '#', '', 'return modalDialog(\'index_edit.php?gedcom_id=-1\', \'' . WT_I18N::translate('Set the default blocks for new family trees') . '\')');
+			$submenus[] = new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Set the default blocks for new family trees'), '#', '', 'return modalDialog(\'index_edit.php?gedcom_id=-1\', \'' . WT_I18N::translate('Set the default blocks for new family trees') . '\')');
 			$submenus[] = new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Merge family trees'), 'admin_trees_merge.php');
 		}
 
@@ -99,7 +99,7 @@ class Administration extends BaseTheme {
 			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Add a new user'), 'admin_users.php?action=edit'),
 			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Send broadcast messages'), 'admin_users_bulk.php'),
 			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Delete inactive users'), 'admin_users.php?action=cleanup'),
-			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Set the default blocks'), '#', '', 'return modalDialog(\'index_edit.php?user_id=-1\', \'' . WT_I18N::translate('Set the default blocks for new users') . '\')'),
+			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Set the default blocks for new users'), '#', '', 'return modalDialog(\'index_edit.php?user_id=-1\', \'' . WT_I18N::translate('Set the default blocks for new users') . '\')'),
 		));
 	}
 
