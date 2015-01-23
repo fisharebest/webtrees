@@ -91,7 +91,7 @@ define('WT_WEBTREES_JS_URL', WT_STATIC_URL . 'js/webtrees-1.7.0.js');
 
 // Location of our modules and themes.  These are used as URLs and folder paths.
 define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes
-define('WT_THEMES_DIR', 'themes/' );
+define('WT_THEMES_DIR', 'themes/');
 
 // Enable debugging output?
 define('WT_DEBUG', false);
@@ -222,8 +222,8 @@ if (!ini_get('date.timezone')) {
 // 1) set all PHP defaults to UTF-8
 // 2) create shims for missing mb_string functions such as mb_strlen()
 // 3) check that requests are valid UTF-8
-\Patchwork\Utf8\Bootup::initAll();             // Enables the portablity layer and configures PHP for UTF-8
-\Patchwork\Utf8\Bootup::filterRequestUri();    // Redirects to an UTF-8 encoded URL if it's not already the case
+\Patchwork\Utf8\Bootup::initAll(); // Enables the portablity layer and configures PHP for UTF-8
+\Patchwork\Utf8\Bootup::filterRequestUri(); // Redirects to an UTF-8 encoded URL if it's not already the case
 \Patchwork\Utf8\Bootup::filterRequestInputs(); // Normalizes HTTP inputs to UTF-8 NFC
 
 // Use the fisharebest/ext-calendar library to
@@ -294,7 +294,7 @@ require WT_ROOT . 'includes/functions/functions_charts.php';
 require WT_ROOT . 'includes/functions/functions_import.php';
 
 // Set a custom error handler
-set_error_handler(function ($errno, $errstr) {
+set_error_handler(function($errno, $errstr) {
 	if (error_reporting() > 0 && $errno < 2048) {
 		$fmt_msg = "<br>ERROR {$errno}: {$errstr}<br>";
 		$log_msg = "ERROR {$errno}: {$errstr};";
@@ -422,19 +422,19 @@ case '':
 // Store our session data in the database.
 session_set_save_handler(
 	// open
-	function () {
+	function() {
 		return true;
 	},
 	// close
-	function () {
+	function() {
 		return true;
 	},
 	// read
-	function ($id) {
+	function($id) {
 		return WT_DB::prepare("SELECT session_data FROM `##session` WHERE session_id=?")->execute(array($id))->fetchOne();
 	},
 	// write
-	function ($id, $data) use ($WT_REQUEST) {
+	function($id, $data) use ($WT_REQUEST) {
 		// Only update the session table once per minute, unless the session data has actually changed.
 		WT_DB::prepare(
 			"INSERT INTO `##session` (session_id, user_id, ip_address, session_data, session_time)" .
@@ -444,18 +444,18 @@ session_set_save_handler(
 			" ip_address   = VALUES(ip_address)," .
 			" session_data = VALUES(session_data)," .
 			" session_time = CURRENT_TIMESTAMP - SECOND(CURRENT_TIMESTAMP)"
-		)->execute(array($id, (int)Auth::id(), $WT_REQUEST->getClientIp(), $data));
+		)->execute(array($id, (int) Auth::id(), $WT_REQUEST->getClientIp(), $data));
 
 		return true;
 	},
 	// destroy
-	function ($id) {
+	function($id) {
 		WT_DB::prepare("DELETE FROM `##session` WHERE session_id=?")->execute(array($id));
 
 		return true;
 	},
 	// gc
-	function ($maxlifetime) {
+	function($maxlifetime) {
 		WT_DB::prepare("DELETE FROM `##session` WHERE session_time < DATE_SUB(NOW(), INTERVAL ? SECOND)")->execute(array($maxlifetime));
 
 		return true;
@@ -567,17 +567,17 @@ if (empty($WEBTREES_EMAIL)) {
 }
 
 // Note that the database/webservers may not be synchronised, so use DB time throughout.
-define('WT_TIMESTAMP', (int)WT_DB::prepare("SELECT UNIX_TIMESTAMP()")->fetchOne());
+define('WT_TIMESTAMP', (int) WT_DB::prepare("SELECT UNIX_TIMESTAMP()")->fetchOne());
 
 // Server timezone is defined in php.ini
-define('WT_SERVER_TIMESTAMP', WT_TIMESTAMP + (int)date('Z'));
+define('WT_SERVER_TIMESTAMP', WT_TIMESTAMP + (int) date('Z'));
 
 if (Auth::check()) {
 	define('WT_CLIENT_TIMESTAMP', WT_TIMESTAMP - $WT_SESSION->timediff);
 } else {
 	define('WT_CLIENT_TIMESTAMP', WT_SERVER_TIMESTAMP);
 }
-define('WT_CLIENT_JD', 2440588 + (int)(WT_CLIENT_TIMESTAMP / 86400));
+define('WT_CLIENT_JD', 2440588 + (int) (WT_CLIENT_TIMESTAMP / 86400));
 
 // Application configuration data - things that aren’t (yet?) user-editable
 require WT_ROOT . 'includes/config_data.php';
