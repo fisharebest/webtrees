@@ -509,11 +509,6 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`" .
 			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)" .
 			" UNION ALL" .
-			" SELECT user_id, 'editaccount', " .
-			" CASE WHEN u_editaccount IN ('Y', 'yes') THEN 1 WHEN u_editaccount IN ('N', 'no') THEN 0 ELSE u_editaccount END" .
-			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`" .
-			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)" .
-			" UNION ALL" .
 			" SELECT user_id, 'comment', u_comment" .
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`" .
 			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)" .

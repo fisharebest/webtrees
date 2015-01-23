@@ -1278,10 +1278,7 @@ abstract class BaseTheme {
 		$menu = new WT_Menu(WT_I18N::translate('My page'), 'index.php?ctype=user&amp;' . $this->tree_url, 'menu-mymenu');
 
 		$menu->addSubmenu($this->menuMyPage());
-
-		if (Auth::user()->getPreference('editaccount')) {
-			$menu->addSubmenu(new WT_Menu(WT_I18N::translate('My account'), 'edituser.php', 'menu-myaccount'));
-		}
+		$menu->addSubmenu(new WT_Menu(WT_I18N::translate('My account'), 'edituser.php', 'menu-myaccount'));
 
 		if (WT_USER_GEDCOM_ID) {
 			$menu->addSubmenu(new WT_Menu(

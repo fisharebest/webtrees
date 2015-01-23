@@ -560,21 +560,6 @@ case 'edit_SOUR_EVEN':
 	$text = WT_I18N::translate('Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho.');
 	break;
 
-case 'edituser_contact_meth':
-	$title = WT_I18N::translate('Contact method');
-	$text = WT_I18N::translate('Site members can send each other messages.  You can choose to how these messages are sent to you, or choose not receive them at all.');
-	break;
-
-case 'edituser_gedcomid':
-	$title = WT_I18N::translate('Individual record');
-	$text = WT_I18N::translate('This is a link to your own record in the family tree.  If this is the wrong individual, contact an administrator.');
-	break;
-
-case 'email':
-	$title = WT_I18N::translate('Email address');
-	$text = WT_I18N::translate('This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site.');
-	break;
-
 case 'export_gedcom':
 	$title = WT_I18N::translate('Export family tree');
 	$text =
@@ -657,16 +642,6 @@ case 'oldest_top':
 	$text = WT_I18N::translate('When this check box is checked, the chart will be printed with oldest individuals at the top.  When it is unchecked, youngest individuals will appear at the top.');
 	break;
 
-case 'password':
-	$title = WT_I18N::translate('Password');
-	$text = WT_I18N::translate('Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”.');
-	break;
-
-case 'password_confirm':
-	$title = WT_I18N::translate('Confirm password');
-	$text = WT_I18N::translate('Type your password again, to make sure you have typed it correctly.');
-	break;
-
 case 'pending_changes':
 	$title = WT_I18N::translate('Pending changes');
 	$text =
@@ -689,16 +664,6 @@ case 'pending_changes':
 case 'ppp_view_records':
 	$title = WT_I18N::translate('View all records');
 	$text = WT_I18N::translate('Clicking on this link will show you a list of all of the individuals and families that have events occurring in this place.  When you get to the end of a place hierarchy, which is normally a town or city, the name list will be shown automatically.');
-	break;
-
-case 'real_name':
-	$title = WT_I18N::translate('Real name');
-	$text = WT_I18N::translate('This is your real name, as you would like it displayed on screen.');
-	break;
-
-case 'register_comments':
-	$title = WT_I18N::translate('Comments');
-	$text = WT_I18N::translate('Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site.  You can also use this to enter any other comments you may have for the site administrator.');
 	break;
 
 case 'register_gedcomid':
@@ -788,16 +753,6 @@ case 'upload_thumbnail_file':
 case 'useradmin_gedcomid':
 	$title = WT_I18N::translate('Individual record');
 	$text = WT_I18N::translate('The individual record identifies the user in each family tree.  Since a user can view the details of their individual record, this can only be set by an administrator.  If the user does not have a record in a family tree, leave it empty.');
-	break;
-
-case 'username':
-	$title = WT_I18N::translate('Username');
-	$text =
-		'<p>' .
-		WT_I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.') .
-		'</p><p>' .
-		WT_I18N::translate('Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;') .
-		'</p>';
 	break;
 
 case 'zip':

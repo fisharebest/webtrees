@@ -47,7 +47,7 @@ define('WT_PRIV_HIDE', -1);
 
 if (file_exists(WT_DATA_DIR . WT_CONFIG_FILE)) {
 	header('Location: index.php');
-	
+
 	return;
 }
 
@@ -57,7 +57,7 @@ if (version_compare(PHP_VERSION, WT_REQUIRED_PHP_VERSION) < 0) {
 		'<h1>Sorry, the setup wizard cannot start.</h1>',
 		'<p>This server is running PHP version ', PHP_VERSION, '</p>',
 		'<p>PHP ', WT_REQUIRED_PHP_VERSION, ' (or any later version) is required</p>';
-	
+
 	return;
 }
 
@@ -189,7 +189,7 @@ if (!isset($_POST['lang'])) {
 
 	}
 	echo '</form></body></html>';
-	
+
 	return;
 }
 
@@ -208,7 +208,7 @@ if ($FAB != 'FAB!') {
 	echo '<p>', WT_I18N::translate('You must change this before you can continue.'), '</p>';
 	echo '<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">';
 	echo '</form></body></html>';
-	
+
 	return;
 }
 
@@ -291,7 +291,7 @@ if (empty($_POST['dbuser']) || !WT_DB::isConnected() || !$db_version_ok) {
 		'<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">',
 		'</form>',
 		'</body></html>';
-		
+
 	return;
 } else {
 	// Copy these values through to the next step
@@ -377,7 +377,7 @@ if (!$dbname_ok) {
 		'<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">',
 		'</form>',
 		'</body></html>';
-		
+
 	return;
 } else {
 	// Copy these values through to the next step
@@ -444,7 +444,7 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 		'<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">',
 		'</form>',
 		'</body></html>';
-		
+
 	return;
 } else {
 	// Copy these values through to the next step
@@ -874,11 +874,10 @@ try {
 		" (1, 'language',          ?)," .
 		" (1, 'verified',          ?)," .
 		" (1, 'verified_by_admin', ?)," .
-		" (1, 'editaccount',       ?)," .
 		" (1, 'auto_accept',       ?)," .
 		" (1, 'visibleonline',     ?)"
 	)->execute(array(
-		1, WT_LOCALE, 1, 1, 1, 0, 1
+		1, WT_LOCALE, 1, 1, 0, 1
 	));
 
 	WT_DB::prepare(
@@ -938,7 +937,7 @@ try {
 	echo
 		'<script>document.location=document.location;</script>',
 		'</form></body></html>';
-	
+
 	return;
 } catch (PDOException $ex) {
 	echo

@@ -110,7 +110,6 @@ case 'save':
 				->setPreference('auto_accept', $auto_accept ? '1' : '0')
 				->setPreference('admin', $admin ? '1' : '0')
 				->setPreference('visibleonline', $visible_online ? '1' : '0')
-				->setPreference('editaccount', $edit_account ? '1' : '0')
 				->setPreference('verified', $verified ? '1' : '0')
 				->setPreference('verified_by_admin', $approved ? '1' : '0');
 
@@ -405,23 +404,6 @@ case 'edit':
 			</div>
 		</div>
 
-		<!-- EDIT ACCOUNT -->
-		<div class="form-group">
-			<label class="control-label col-sm-3" for="edit_account">
-			</label>
-			<div class="col-sm-9">
-				<div class="checkbox">
-					<label>
-						<input type="checkbox" name="edit_account" value="1" <?php echo $user->getPreference('edit_account') ? 'checked' : ''; ?>>
-						<?php echo WT_I18N::translate('Allow this user to edit his account information'); ?>
-					</label>
-					<p class="small text-muted">
-						<?php echo WT_I18N::translate('If this box is checked, this user will be able to edit his account information.  Although this is not generally recommended, you can create a single user name and password for multiple users.  When this box is unchecked for all users with the shared account, they are prevented from editing the account information and only an administrator can alter that account.'); ?>
-					</p>
-				</div>
-			</div>
-		</div>
-
 		<!-- VISIBLE ONLINE -->
 		<div class="form-group">
 			<label class="control-label col-sm-3" for="edit_account">
@@ -686,8 +668,8 @@ case 'cleanup2':
 	foreach (User::all() as $user) {
 		if (WT_Filter::post('del_' . $user->getUserId()) == '1') {
 			Log::addAuthenticationLog('Deleted user: ' . $user->getUserName());
-			WT_FlashMessages::addMessage(WT_I18N::translate('Deleted user: ') . $user->getUserName(), 'success');
 			$user->delete();
+			WT_I18N::translate('The user %s has been deleted.', WT_Filter::escapeHtml($user->getUserName()));
 		}
 	}
 
