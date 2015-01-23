@@ -49,6 +49,8 @@ define('WT_WEBTREES_WIKI', 'http://wiki.webtrees.net/');
 define('WT_STATIC_URL', getenv('STATIC_URL')); // We could set this to load our own static resources from a cookie-free domain.
 
 if (getenv('USE_CDN')) {
+	// Caution, using a CDN will break support for responsive features in IE8, as respond.js
+	// needs to be on the same domain as all the CSS files.
 	define('WT_BOOTSTRAP_CSS_URL', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css');
 	define('WT_BOOTSTRAP_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js');
 	define('WT_BOOTSTRAP_RTL_CSS_URL', '//cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.2.0-rc2/css/bootstrap-rtl.min.css'); // CDNSJ is out of date
@@ -63,6 +65,8 @@ if (getenv('USE_CDN')) {
 	define('WT_JQUERY_COOKIE_URL', '//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js');
 	define('WT_JQUERY_URL', '//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js');
 	define('WT_JQUERYUI_URL', '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js');
+	define('WT_RESPOND_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js');
+	define('WT_MODERNIZR_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js');
 } else {
 	define('WT_BOOTSTRAP_CSS_URL', WT_STATIC_URL . 'packages/bootstrap-3.3.1/css/bootstrap.min.css');
 	define('WT_BOOTSTRAP_JS_URL', WT_STATIC_URL . 'packages/bootstrap-3.3.1/js/bootstrap.min.js');
@@ -78,6 +82,8 @@ if (getenv('USE_CDN')) {
 	define('WT_JQUERY_COOKIE_URL', WT_STATIC_URL . 'js/jquery.cookie-1.4.1.js');
 	define('WT_JQUERY_URL', WT_STATIC_URL . 'js/jquery-1.11.2.js');
 	define('WT_JQUERYUI_URL', WT_STATIC_URL . 'js/jquery-ui-1.11.2.js');
+	define('WT_RESPOND_JS_URL', WT_STATIC_URL . 'packages/respond-1.4.2/respond.min.js');
+	define('WT_MODERNIZR_JS_URL', WT_STATIC_URL . 'packages/modernizr-2.8.3/modernizr.min.js');
 }
 define('WT_JQUERY_WHEELZOOM_URL', WT_STATIC_URL . 'js/jquery.wheelzoom-2.0.0.js');
 define('WT_WEBTREES_JS_URL', WT_STATIC_URL . 'js/webtrees-1.7.0.js');

@@ -395,8 +395,9 @@ abstract class BaseTheme {
 		}
 
 		$html =
-			// Modernizr needs to be loaded before the <body> to avoid FOUC in IE8
-			'<!--[if IE 8]><script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script><![endif]-->' .
+			// modernizr.js and respond.js need to be loaded before the <body> to avoid FOUC
+			'<!--[if IE 8]><script src="' . WT_MODERNIZR_JS_URL . '"></script><![endif]-->' .
+			'<!--[if IE 8]><script src="' . WT_RESPOND_JS_URL . '"></script><![endif]-->' .
 			$this->metaCharset() .
 			$this->title($title) .
 			$this->favicon() .
