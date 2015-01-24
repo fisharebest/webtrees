@@ -442,7 +442,7 @@ $controller
 			</div>
 		</div>
 		<div class="col-sm-8">
-			<?php echo select_edit_control('REQUIRE_AUTHENTICATION', array('0' => WT_I18N::translate('Show to visitors'), '1' => WT_I18N::translate('Show to members'), ), null, $WT_TREE->getPreference('REQUIRE_AUTHENTICATION'), 'class="form-control"'); ?>
+			<?php echo select_edit_control('REQUIRE_AUTHENTICATION', array('0' => WT_I18N::translate('Show to visitors'), '1' => WT_I18N::translate('Show to members')), null, $WT_TREE->getPreference('REQUIRE_AUTHENTICATION'), 'class="form-control"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Family tree” configuration setting */ WT_I18N::translate('Enabling this option will force all visitors to login before they can view any data on the site.'); ?>
 			</p>
@@ -506,7 +506,7 @@ $controller
 			</div>
 		</div>
 		<div class="col-sm-8">
-			<?php echo select_edit_control('HIDE_LIVE_PEOPLE', array('0' => WT_I18N::translate('Show to visitors'), '1' => WT_I18N::translate('Show to members'), ), null, $WT_TREE->getPreference('HIDE_LIVE_PEOPLE'), 'class="form-control"'); ?>
+			<?php echo select_edit_control('HIDE_LIVE_PEOPLE', array('0' => WT_I18N::translate('Show to visitors'), '1' => WT_I18N::translate('Show to members')), null, $WT_TREE->getPreference('HIDE_LIVE_PEOPLE'), 'class="form-control"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Show living individuals” configuration setting */ WT_I18N::translate('If you show living individuals to visitors, all other privacy restrictions are ignored.  Do this only if all the data in your tree is public.'); ?>
 			</p>
@@ -566,7 +566,7 @@ $controller
 			</div>
 		</div>
 		<div class="col-sm-8">
-			<?php echo select_edit_control('SHOW_PRIVATE_RELATIONSHIPS', array('0' => WT_I18N::translate('Show to visitors'), '1' => WT_I18N::translate('Show to members'), ), null, $WT_TREE->getPreference('SHOW_PRIVATE_RELATIONSHIPS'), 'class="form-control"'); ?>
+			<?php echo select_edit_control('SHOW_PRIVATE_RELATIONSHIPS', array('0' => WT_I18N::translate('Show to visitors'), '1' => WT_I18N::translate('Show to members')), null, $WT_TREE->getPreference('SHOW_PRIVATE_RELATIONSHIPS'), 'class="form-control"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Show private relationships” configuration setting */ WT_I18N::translate('This option will retain family links in private records.  This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals.'); ?>
 			</p>
