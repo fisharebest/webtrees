@@ -2481,6 +2481,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		$par      = explode(',', strip_tags($place));
 		$par      = array_reverse($par);
 		$place_id = 0;
+		$pl_id    = 0;
+
 		for ($i = 0; $i < count($par); $i++) {
 			$par[$i] = trim($par[$i]);
 			if (empty($par[$i])) {
@@ -2517,6 +2519,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		$par      = explode(',', $place);
 		$par      = array_reverse($par);
 		$place_id = 0;
+		$pl_id    = 0;
 
 		for ($i = 0; $i < count($par); $i++) {
 			$par[$i]   = trim($par[$i]);
