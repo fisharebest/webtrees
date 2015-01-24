@@ -244,12 +244,9 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 				echo '<p><input type="submit" value="', WT_I18N::translate('save'), '" tabindex="5">';
 				echo '</p>';
 				echo '</form>';
-
-				exit;
 			}
 		} else {
 			header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
-			exit;
 		}
 	}
 

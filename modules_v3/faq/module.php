@@ -171,7 +171,6 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Confi
 
 			echo '<p><input type="submit" value="', WT_I18N::translate('save'), '" tabindex="5">';
 			echo '</form>';
-			exit;
 		}
 	}
 
