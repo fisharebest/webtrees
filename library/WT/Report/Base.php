@@ -1536,9 +1536,7 @@ function varStartHandler($attrs) {
 	global $desc, $fact, $vars;
 
 	if (empty($attrs['var'])) {
-		die("<strong>REPORT ERROR var: </strong> The attribute \"var=\" is missing or not set in the XML file on line: " . xml_get_current_line_number(
-				$parser
-			));
+		throw new DomainException('REPORT ERROR var: The attribute "var=" is missing or not set in the XML file on line: ' . xml_get_current_line_number($parser));
 	}
 
 	$var = $attrs['var'];
@@ -2903,12 +2901,7 @@ function relativesEndHandler() {
 			xml_set_character_data_handler($repeat_parser, "characterData");
 
 			if (!xml_parse($repeat_parser, $reportxml, true)) {
-				printf(
-					$reportxml . "\nRelativesEHandler XML error: %s at line %d",
-					xml_error_string(xml_get_error_code($repeat_parser)),
-					xml_get_current_line_number($repeat_parser)
-				);
-				exit;
+				throw new DomainException("RelativesEHandler XML error: %s at line %d", xml_error_string(xml_get_error_code($repeat_parser)), xml_get_current_line_number($repeat_parser));
 			}
 			xml_parser_free($repeat_parser);
 		}
