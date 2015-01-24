@@ -443,11 +443,6 @@ case 'THUMBNAIL_WIDTH':
 	$text = WT_I18N::translate('This is the width (in pixels) that the program will use when automatically generating thumbnails.  The default setting is 100.');
 	break;
 
-case 'USE_RELATIONSHIP_PRIVACY':
-	$title = WT_I18N::translate('Use relationship privacy');
-	$text = WT_I18N::translate('<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The administrator can override this option for individual users by editing the user’s account details.');
-	break;
-
 	//////////////////////////////////////////////////////////////////////////////
 	// This section contains all the other help items.
 	//////////////////////////////////////////////////////////////////////////////
@@ -591,11 +586,6 @@ case 'google_chart_surname':
 	$text = WT_I18N::translate('The number of occurrences of the specified name will be shown on the map.  If you leave this field empty, the most common surname will be used.');
 	break;
 
-case 'header_favorites':
-	$title = WT_I18N::translate('Favorites');
-	$text = WT_I18N::translate('The Favorites drop-down list shows the favorites that you have selected on your “My page”.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding favorites is available in your “My page”.');
-	break;
-
 case 'import_gedcom':
 	$title = WT_I18N::translate('Import family tree');
 	$text =
@@ -627,11 +617,6 @@ case 'no_update_CHAN':
 	$text = WT_I18N::translate('Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, webtrees will retain the original change information instead of replacing it with that of the current session.  With this option selected, administrators also have the ability to modify or delete the information associated with the original CHAN tag.');
 	break;
 
-case 'oldest_top':
-	$title = WT_I18N::translate('Show oldest top');
-	$text = WT_I18N::translate('When this check box is checked, the chart will be printed with oldest individuals at the top.  When it is unchecked, youngest individuals will appear at the top.');
-	break;
-
 case 'pending_changes':
 	$title = WT_I18N::translate('Pending changes');
 	$text =
@@ -648,22 +633,11 @@ case 'pending_changes':
 			WT_I18N::translate('Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account.') .
 			'</p>';
 	}
-
 	break;
 
 case 'ppp_view_records':
 	$title = WT_I18N::translate('View all records');
 	$text = WT_I18N::translate('Clicking on this link will show you a list of all of the individuals and families that have events occurring in this place.  When you get to the end of a place hierarchy, which is normally a town or city, the name list will be shown automatically.');
-	break;
-
-case 'register_gedcomid':
-	$title = WT_I18N::translate('Individual record');
-	$text = WT_I18N::translate('Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the comments field to help the site administrator identify who you are on this site so that he can set the ID for you.');
-	break;
-
-case 'remove_person':
-	$title = WT_I18N::translate('Remove person');
-	$text = WT_I18N::translate('Click this link to remove the individual from the timeline.');
 	break;
 
 case 'show_fact_sources':
@@ -674,11 +648,6 @@ case 'show_fact_sources':
 case 'show_spouse':
 	$title = WT_I18N::translate('Show spouses');
 	$text = WT_I18N::translate('By default this chart does not show spouses for the descendants because it makes the chart harder to read and understand.  Turning this option on will show spouses on the chart.');
-	break;
-
-case 'simple_filter':
-	$title = WT_I18N::translate('Simple search filter');
-	$text = WT_I18N::translate('Simple search filter based on the characters entered, no wildcards are accepted.');
 	break;
 
 case 'upload_gedcom':
