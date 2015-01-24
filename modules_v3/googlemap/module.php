@@ -2488,14 +2488,18 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			}
 			$placelist = $this->createPossiblePlaceNames($par[$i], $i + 1);
 			foreach ($placelist as $key => $placename) {
-				$pl_id = WT_DB::prepare(
-					"SELECT pl_id FROM `##placelocation` WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ? ORDER BY pl_place"
-				)->execute(array($i, $place_id, $placename))->fetchOne();
-				if (!empty($pl_id)) {
+				$pl_id = (int) WT_DB::prepare(
+					"SELECT pl_id FROM `##placelocation` WHERE pl_level = :level AND pl_parent_id = :parent_id AND pl_place LIKE :placename"
+				)->execute(array(
+					'level' => $i,
+					'parent_id' => $place_id,
+					'placename' => $placename,
+				))->fetchOne();
+				if ($pl_id) {
 					break;
 				}
 			}
-			if (empty($pl_id)) {
+			if (!$pl_id) {
 				break;
 			}
 			$place_id = $pl_id;
@@ -2513,18 +2517,23 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		$par      = explode(',', $place);
 		$par      = array_reverse($par);
 		$place_id = 0;
+
 		for ($i = 0; $i < count($par); $i++) {
 			$par[$i]   = trim($par[$i]);
 			$placelist = $this->createPossiblePlaceNames($par[$i], $i + 1);
-			foreach ($placelist as $key => $placename) {
-				$pl_id = WT_DB::prepare(
-					"SELECT p_id FROM `##places` WHERE p_parent_id=? AND p_file=? AND p_place LIKE ? ORDER BY p_place"
-				)->execute(array($place_id, WT_GED_ID, $placename))->fetchOne();
-				if (!empty($pl_id)) {
+			foreach ($placelist as $placename) {
+				$pl_id = (int) WT_DB::prepare(
+					"SELECT p_id FROM `##places` WHERE p_parent_id = :place_id AND p_file = :tree_id AND p_place = :placename"
+				)->execute(array(
+					'place_id' => $place_id,
+					'tree_id' => WT_GED_ID,
+					'placename' => $placename,
+				))->fetchOne();
+				if ($pl_id) {
 					break;
 				}
 			}
-			if (empty($pl_id)) {
+			if (!$pl_id) {
 				break;
 			}
 			$place_id = $pl_id;
@@ -3097,8 +3106,10 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			$placeidlist = array_keys($placeidlist);
 			// note: this implode/array_fill code generates one '?' for each entry in the $placeidlist array
 			$placelist =
-				WT_DB::prepare('SELECT pl_id as place_id, pl_place as place, pl_lati as lati, pl_long as `long`, pl_zoom as zoom, pl_icon as icon FROM `##placelocation` WHERE pl_id IN (' . implode(',', array_fill(0, count($placeidlist), '?')) . ')')
-				->execute($placeidlist)
+				WT_DB::prepare(
+					"SELECT pl_id as place_id, pl_place as place, pl_lati as lati, pl_long as `long`, pl_zoom as zoom, pl_icon as icon" .
+					" FROM `##placelocation` WHERE pl_id IN (" . implode(',', array_fill(0, count($placeidlist), '?')) . ')'
+				)->execute($placeidlist)
 				->fetchAll(PDO::FETCH_ASSOC);
 
 			foreach ($placelist as $place) {
