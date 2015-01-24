@@ -686,11 +686,6 @@ case 'zip':
 default:
 	$title = WT_I18N::translate('Help');
 	$text  = WT_I18N::translate('The help text has not been written for this item.');
-	// If we've been called from a module, allow the module to provide the help text
-	$mod = WT_Filter::get('mod', '[A-Za-z0-9_]+');
-	if (array_key_exists($mod, WT_Module::getActiveModules()) && file_exists(WT_ROOT . WT_MODULES_DIR . $mod . '/help_text.php')) {
-		require WT_ROOT . WT_MODULES_DIR . $mod . '/help_text.php';
-	}
 	break;
 }
 // This file is called by a getJSON call so return the data
