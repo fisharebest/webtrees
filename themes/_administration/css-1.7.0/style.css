@@ -1647,10 +1647,11 @@ table#story_table {
 	border: 1px solid black;
 	background-color: #fff;
 	z-index: 99999;
-    list-style: none outside none;
-    margin: 0;;
+	list-style: none outside none;
+	margin: 0;;
 	max-height: 200px;
-	overflow-y: auto;
+	overflow-x: hidden;
+	overflow-y: scroll;
 }
 
 .ui-autocomplete li {

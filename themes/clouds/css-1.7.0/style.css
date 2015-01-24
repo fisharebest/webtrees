@@ -880,7 +880,8 @@ a.showit:hover > span {
 	list-style: none outside none;
 	margin: 0;
 	max-height: 200px;
-	overflow-y: auto;
+	overflow-x: hidden;
+	overflow-y: scroll;
 }
 
 .ui-autocomplete li {
