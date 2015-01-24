@@ -563,7 +563,7 @@ $controller
 			<div class="hidden-xs">
 				<span class="label visitors"><i class="fa fa-fw"></i> <?php echo WT_I18N::translate('visitors'); ?></span>
 				<span class="label members"><i class="fa fa-fw"></i><?php echo WT_I18N::translate('members'); ?></span>
-cd js			</div>
+			</div>
 		</div>
 		<div class="col-sm-8">
 			<?php echo select_edit_control('SHOW_PRIVATE_RELATIONSHIPS', array('0' => WT_I18N::translate('Show to visitors'), '1' => WT_I18N::translate('Show to members'), ), null, $WT_TREE->getPreference('SHOW_PRIVATE_RELATIONSHIPS'), 'class="form-control"'); ?>
