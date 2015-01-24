@@ -156,8 +156,8 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Confi
 			echo '</table><table id="faq_module2">';
 			echo '<tr>';
 			echo '<th>', WT_I18N::translate('Show this block for which languages?'), '</th>';
-			echo '<th>', WT_I18N::translate('FAQ position'), help_link('add_faq_order', $this->getName()), '</th>';
-			echo '<th>', WT_I18N::translate('FAQ visibility'), help_link('add_faq_visibility', $this->getName()), '</th>';
+			echo '<th>', WT_I18N::translate('FAQ position'), '</th>';
+			echo '<th>', WT_I18N::translate('FAQ visibility'), '<br><small>', WT_I18N::translate('A FAQ item can be displayed on just one of the family trees, or on all the family trees.'), '</small></th>';
 			echo '</tr><tr>';
 			echo '<td>';
 			$languages = get_block_setting($block_id, 'languages');
@@ -390,14 +390,12 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Confi
 					echo '&nbsp;';
 				} else {
 					echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_moveup&amp;block_id=', $faq->block_id, '" class="icon-uarrow"></a>';
-					echo help_link('moveup_faq_item', $this->getName());
 				}
 				echo '</td><td>';
 				if ($faq->block_order == $max_block_order) {
 					echo '&nbsp;';
 				} else {
 					echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_movedown&amp;block_id=', $faq->block_id, '" class="icon-darrow"></a>';
-					echo help_link('movedown_faq_item', $this->getName());
 				}
 				echo '</td><td>';
 				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit&amp;block_id=', $faq->block_id, '">', WT_I18N::translate('Edit'), '</a>';
