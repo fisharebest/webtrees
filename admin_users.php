@@ -108,10 +108,14 @@ case 'save':
 				->setPreference('contactmethod', $contact_method)
 				->setPreference('comment', $comment)
 				->setPreference('auto_accept', $auto_accept ? '1' : '0')
-				->setPreference('admin', $admin ? '1' : '0')
 				->setPreference('visibleonline', $visible_online ? '1' : '0')
 				->setPreference('verified', $verified ? '1' : '0')
 				->setPreference('verified_by_admin', $approved ? '1' : '0');
+
+			// We cannot change our own admin status.  Another admin will need to do it.
+			if ($user->getUserId() !== Auth::id) {
+				$user->setPreference('admin', $admin ? '1' : '0');
+			}
 
 			foreach (WT_Tree::getAll() as $tree) {
 				$tree->setUserPreference($user, 'gedcomid', WT_Filter::post('gedcomid' . $tree->tree_id, WT_REGEX_XREF));
@@ -412,7 +416,7 @@ case 'edit':
 			<div class="col-sm-9">
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" name="visible_online" value="1" <?php echo $user->getPreference('visible_online') ? 'checked' : ''; ?>>
+						<input type="checkbox" id="visible_online" name="visible_online" value="1" <?php echo $user->getPreference('visible_online') ? 'checked' : ''; ?>>
 						<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Visible to other users when online'); ?>
 					</label>
 					<p class="small text-muted">
@@ -462,7 +466,11 @@ case 'edit':
 			<div class="col-sm-9">
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" name="admin" value="1" <?php echo $user->getPreference('admin') ? 'checked' : ''; ?>>
+						<input
+							type="checkbox" id="admin" name="admin" value="1"
+							<?php echo $user->getPreference('admin') ? 'checked' : ''; ?>
+							<?php echo $user->getUserId() === Auth::id() ? 'disabled' : ''; ?>
+						>
 						<?php echo WT_I18N::translate('Administrator'); ?>
 					</label>
 					<p class="small text-muted">
