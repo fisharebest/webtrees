@@ -1177,7 +1177,7 @@ abstract class BaseTheme {
 		)->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID))->fetchOneRow();
 
 		// Build a list of submenu items and then sort it in localized name order
-		$surname_url = '&surname=' . rawurlencode($controller->getSignificantSurname()) . '&amp;' . $this->tree_url;
+		$surname_url = '&amp;surname=' . rawurlencode($controller->getSignificantSurname());
 
 		$menulist = array(
 			new WT_Menu(WT_I18N::translate('Individuals'), 'indilist.php?' . $this->tree_url . $surname_url, 'menu-list-indi'),
