@@ -841,15 +841,15 @@ abstract class BaseTheme {
 		$menu = new WT_Menu(WT_I18N::translate('Calendar'), 'calendar.php?' . $this->tree_url, 'menu-calendar');
 
 		// Day view
-		$submenu = new WT_Menu(WT_I18N::translate('Day'), 'calendar.php?' . $this->tree_url, 'menu-calendar-day');
+		$submenu = new WT_Menu(WT_I18N::translate('Day'), 'calendar.php?' . $this->tree_url . '&amp;view=day', 'menu-calendar-day');
 		$menu->addSubmenu($submenu);
 
 		// Month view
-		$submenu = new WT_Menu(WT_I18N::translate('Month'), 'calendar.php?' . $this->tree_url . '&amp;action=calendar', 'menu-calendar-month');
+		$submenu = new WT_Menu(WT_I18N::translate('Month'), 'calendar.php?' . $this->tree_url . '&amp;view=month', 'menu-calendar-month');
 		$menu->addSubmenu($submenu);
 
 		//Year view
-		$submenu = new WT_Menu(WT_I18N::translate('Year'), 'calendar.php?' . $this->tree_url . '&amp;action=year', 'menu-calendar-year');
+		$submenu = new WT_Menu(WT_I18N::translate('Year'), 'calendar.php?' . $this->tree_url . '&amp;view=year', 'menu-calendar-year');
 		$menu->addSubmenu($submenu);
 
 		return $menu;
