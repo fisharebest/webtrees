@@ -2781,7 +2781,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				if ($place2['place'] == "Unknown") echo "'><br>";
 				else echo addslashes($place2['place']), "'><br>";
 			}
-			if (($place2['icon'] != null) && ($place2['icon'] != '')) {
+			if (($place2['icon'] !== null) && ($place2['icon'] !== '')) {
 				echo '<img src=\"', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '\">&nbsp;&nbsp;';
 			}
 			if ($lastlevel) {
@@ -2839,56 +2839,51 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				$long = '-' . abs($long);
 			}
 
-			// flags by kiwi3685 ---
-			if (($place2['icon'] == null) || ($place2['icon'] == '') || ($this->getSetting('GM_PH_MARKER') != 'G_FLAG')) {
-				echo 'var icon_type = new google.maps.MarkerImage();';
-			} else {
-				echo 'var icon_type = new google.maps.MarkerImage();';
+			echo 'var icon_type = new google.maps.MarkerImage();';
+			if ($place2['icon'] !== null && $place2['icon'] !== '' && $this->getSetting('GM_PH_MARKER') === 'G_FLAG') {
 				echo ' icon_type.image = "', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '";';
 				echo ' icon_type.shadow = "', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/flag_shadow.png";';
 				echo ' icon_type.iconSize = new google.maps.Size(25, 15);';
 				echo ' icon_type.shadowSize = new google.maps.Size(35, 45);';
 			}
-			echo "var point = new google.maps.LatLng({$lati}, {$long});";
-			if ($lastlevel) {
-				echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'><a href='?action=find", $linklevels, "'><br>";
-			} else {
-				echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'><a href='?action=find", $linklevels, "&amp;parent[{$level}]=";
-				if ($place2['place'] == 'Unknown') {
-					echo "'><br>";
-				} else {
-					echo addslashes($place2['place']), "'><br>";
+			echo 'var point = new google.maps.LatLng(', $lati, ', ', $long, ');';
+			echo 'var marker = createMarker(point, "<div class=\"iwstyle\" style=\"width: 250px;\"><a href=\"?action=find', $linklevels;
+			if (!$lastlevel) {
+				echo '&amp;parent[', $level, ']=';
+				if ($place2['place'] !== 'Unknown') {
+					echo WT_Filter::escapeJs($place2['place']);
 				}
 			}
-			if (($place2['icon'] != null) && ($place2['icon'] != "")) {
+			echo '\"><br>';
+			if ($place2['icon'] !== null && $place2['icon'] !== '') {
 				echo '<img src=\"', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '\">&nbsp;&nbsp;';
 			}
 			if ($lastlevel) {
-				if ($place2['place'] == 'Unknown') {
-					if (!$this->getSetting('GM_DISP_SHORT_PLACE')) {
-						echo addslashes(substr($placelevels, 2));
-					} else {
+				if ($place2['place'] === 'Unknown') {
+					if ($this->getSetting('GM_DISP_SHORT_PLACE')) {
 						echo WT_I18N::translate('unknown');
+					} else {
+						echo WT_Filter::escapeJs(substr($placelevels, 2));
 					}
 				} else {
-					if (!$this->getSetting('GM_DISP_SHORT_PLACE')) {
-						echo addslashes(substr($placelevels, 2));
+					if ($this->getSetting('GM_DISP_SHORT_PLACE')) {
+						echo WT_Filter::escapeJs($place2['place']);
 					} else {
-						echo addslashes($place2['place']);
+						echo WT_Filter::escapeJs(substr($placelevels, 2));
 					}
 				}
 			} else {
-				if ($place2['place'] == 'Unknown') {
-					if (!$this->getSetting('GM_DISP_SHORT_PLACE')) {
-						echo addslashes(WT_I18N::translate('unknown') . $placelevels);
-					} else {
+				if ($place2['place'] === 'Unknown') {
+					if ($this->getSetting('GM_DISP_SHORT_PLACE')) {
 						echo WT_I18N::translate('unknown');
+					} else {
+						echo WT_Filter::escapeJs(WT_I18N::translate('unknown') . $placelevels);
 					}
 				} else {
-					if (!$this->getSetting('GM_DISP_SHORT_PLACE')) {
-						echo addslashes($place2['place'] . $placelevels);
+					if ($this->getSetting('GM_DISP_SHORT_PLACE')) {
+						echo WT_Filter::escapeJs($place2['place']);
 					} else {
-						echo addslashes($place2['place']);
+						echo WT_Filter::escapeJs($place2['place'] . $placelevels);
 					}
 				}
 			}
@@ -2899,13 +2894,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				$parent[$level] = $place2['place'];
 				$this->printHowManyPeople($level + 1, $parent);
 			}
-			$temp = addslashes($place2['place']);
-			$temp = str_replace(array('&lrm;', '&rlm;'), array(WT_UTF8_LRM, WT_UTF8_RLM), $temp);
-			if (!$this->getSetting('GM_COORD')) {
-				echo "<br><br></div>\", icon_type, \"", $temp, "\");";
-			} else {
-				echo "<br><br>", $place2['lati'], ", ", $place2['long'], "</div>\", icon_type, \"", $temp, "\");";
+			echo '<br><br>';
+			if ($this->getSetting('GM_COORD')) {
+				echo '', $place2['lati'], ', ', $place2['long'];
 			}
+			echo '</div>", icon_type, "', WT_Filter::escapeJs($place2['place']), '");';
 		}
 	}
 
