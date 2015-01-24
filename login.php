@@ -433,7 +433,7 @@ case 'register':
 						<input type="email" id="user_email" name="user_email" required maxlength="64" value="<?php echo WT_Filter::escapeHtml($user_email); ?>">
 					</label>
 					<p class="small text-muted">
-						<?php echo WT_I18N::translate('This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site.'); ?>
+						<?php echo WT_I18N::translate('This email address will be used to send password reminders, site notifications, and messages from other family members who are registered on the site.'); ?>
 					</p>
 				</div>
 

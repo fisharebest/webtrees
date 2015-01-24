@@ -422,16 +422,6 @@ case 'PEDIGREE_SHOW_GENDER':
 	$text = WT_I18N::translate('This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender.  The option simply removes some duplicate information from the box.');
 	break;
 
-case 'RELATIONSHIP_PATH_LENGTH':
-	$title = WT_I18N::translate('Restrict to immediate family');
-	$text =
-		WT_I18N::translate('Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations.  You specify the number of relationship steps that the user is allowed to see.') .
-		'<br><br>' .
-		WT_I18N::translate('For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child).') .
-		'<br><br>' .
-		WT_I18N::translate('Note: longer path lengths require a lot of calculation, which can make your site run slowly for these users.');
-	break;
-
 case 'SHOW_EST_LIST_DATES':
 	$title = WT_I18N::translate('Estimated dates for birth and death');
 	$text = WT_I18N::translate('This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known.');
@@ -676,37 +666,6 @@ case 'remove_person':
 	$text = WT_I18N::translate('Click this link to remove the individual from the timeline.');
 	break;
 
-case 'role':
-	$title = WT_I18N::translate('Role');
-	$text =
-		WT_I18N::translate('A role is a set of access rights, which give permission to view data, change configuration settings, etc.  Access rights are assigned to roles, and roles are granted to users.  Each family tree can assign different access to each role, and users can have a different role in each family tree.') .
-		'<br><br>' .
-		'<dl>' .
-		'<dt>' . WT_I18N::translate('Visitor') . '</dt><dd>' .
-		WT_I18N::translate('Everybody has this role, including visitors to the site and search engines.') .
-		'</dd>' .
-		'<dl>' .
-		'<dt>' . WT_I18N::translate('Member') . '</dt><dd>' .
-		WT_I18N::translate('This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration.') .
-		'</dd>' .
-		'<dl>' .
-		'<dt>' . WT_I18N::translate('Editor') . '</dt><dd>' .
-		WT_I18N::translate('This role has all the permissions of the member role, plus permission to add/change/delete data.  Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled.') .
-		'</dd>' .
-		'<dl>' .
-		'<dt>' . WT_I18N::translate('Moderator') . '</dt><dd>' .
-		WT_I18N::translate('This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users.') .
-		'</dd>' .
-		'<dl>' .
-		'<dt>' . WT_I18N::translate('Manager') . '</dt><dd>' .
-		WT_I18N::translate('This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree.') .
-		'</dd>' .
-		'<dl>' .
-		'<dt>' . WT_I18N::translate('Administrator') . '</dt><dd>' .
-		WT_I18N::translate('This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users, and modules.') .
-		'</dd>';
-	break;
-
 case 'show_fact_sources':
 	$title = WT_I18N::translate('Show all sources');
 	$text = WT_I18N::translate('When this option is checked, you can see all source or note records for this individual.  When this option is unchecked, source or note records that are associated with other facts for this individual will not be shown.');
@@ -748,11 +707,6 @@ case 'upload_server_folder':
 case 'upload_thumbnail_file':
 	$title = WT_I18N::translate('Thumbnail to upload');
 	$text = WT_I18N::translate('Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording.');
-	break;
-
-case 'useradmin_gedcomid':
-	$title = WT_I18N::translate('Individual record');
-	$text = WT_I18N::translate('The individual record identifies the user in each family tree.  Since a user can view the details of their individual record, this can only be set by an administrator.  If the user does not have a record in a family tree, leave it empty.');
 	break;
 
 case 'zip':

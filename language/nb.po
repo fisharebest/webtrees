@@ -13810,7 +13810,7 @@ msgid "This database is only running MySQL version %s.  You cannot install webtr
 msgstr "Databasen bruker kun MySQL versjon %s. Du kan ikke installere webtrees her."
 
 #: help_text.php:1207 setup.php:412
-msgid "This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site."
+msgid "This email address will be used to send password reminders, site notifications, and messages from other family members who are registered on the site."
 msgstr "Denne epost-adressen vil bli brukt for å sende deg nytt passord når du ber om det, nettstedskunngjøringer, og beskjeder fra andre familiemedlemmer som er registrert på nettstedet."
 
 #: addmedia.php:519

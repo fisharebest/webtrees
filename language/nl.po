@@ -13814,7 +13814,7 @@ msgid "This database is only running MySQL version %s.  You cannot install webtr
 msgstr "Deze database draait alleen maar MySQL versie %s. U kunt webtrees hier niet op installeren."
 
 #: help_text.php:1207 setup.php:412
-msgid "This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site."
+msgid "This email address will be used to send password reminders, site notifications, and messages from other family members who are registered on the site."
 msgstr "Dit e-mailadres wordt gebruikt om u een bericht te kunnen sturen als u uw wachtwoord bent vergeten. Daarnaast wordt dit e-mailadres gebruikt voor websitemededelingen en berichten van andere geregistreerde familieleden."
 
 #: addmedia.php:519

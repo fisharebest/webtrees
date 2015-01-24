@@ -13782,7 +13782,7 @@ msgid "This database is only running MySQL version %s.  You cannot install webtr
 msgstr "這僅支援MySQL 版本%s. 你無法在這裡安裝webtrees."
 
 #: help_text.php:1207 setup.php:412
-msgid "This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site."
+msgid "This email address will be used to send password reminders, site notifications, and messages from other family members who are registered on the site."
 msgstr "此電子郵件地址將被用來向您發送密碼提醒，網站通知，並從其他家庭成員在網站上註冊的消息。"
 
 #: addmedia.php:519
