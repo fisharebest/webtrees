@@ -33,7 +33,7 @@ $controller = new WT_Controller_Simple;
 $controller
 	->restrictAccess(Auth::isEditor())
 	->setPageTitle(WT_I18N::translate('Link to an existing media object'))
-	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();')
 	->pageHeader();
 

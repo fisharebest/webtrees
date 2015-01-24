@@ -190,7 +190,7 @@ case 'load_json':
 
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+	->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 	->addExternalJavascript(WT_DATATABLES_BOOTSTRAP_JS_URL)
 	->addExternalJavascript(WT_MOMENT_JS_URL)
 	->addExternalJavascript(WT_BOOTSTRAP_DATETIMEPICKER_JS_URL)

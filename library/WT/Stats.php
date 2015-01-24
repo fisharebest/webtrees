@@ -5070,7 +5070,7 @@ class WT_Stats {
 				global $controller;
 				$table_id = Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 				$controller
-					->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+					->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 					->addInlineJavascript('
 					jQuery("#' . $table_id . '").dataTable({
 						dom: \'t\',

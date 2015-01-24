@@ -125,7 +125,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 		default:
 			$table_id = Uuid::uuid4(); // table requires a unique ID
 			$controller
-				->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+				->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 				->addInlineJavascript('
 					jQuery("#'.$table_id . '").dataTable({
 						dom: \'t\',

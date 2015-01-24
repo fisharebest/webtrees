@@ -59,7 +59,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			$controller
 				->setPageTitle($this->getTitle())
 				->PageHeader()
-				->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+				->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 				->addInlineJavascript('autocomplete();');
 
 			echo '<script>';

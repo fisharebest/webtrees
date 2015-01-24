@@ -191,7 +191,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 				}
 				$controller
 					->pageHeader()
-					->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+					->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 					->addInlineJavascript('autocomplete();');
 				if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 					ckeditor_WT_Module::enableEditor($controller);
@@ -284,7 +284,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 			->restrictAccess(WT_USER_GEDCOM_ADMIN)
 			->setPageTitle($this->getTitle())
 			->pageHeader()
-			->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 			->addExternalJavascript(WT_DATATABLES_BOOTSTRAP_JS_URL)
 			->addInlineJavascript('
 				jQuery("#story_table").dataTable({
@@ -392,7 +392,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 		$controller
 			->setPageTitle($this->getTitle())
 			->pageHeader()
-			->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 			->addInlineJavascript('
 				jQuery("#story_table").dataTable({
 					dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',

@@ -34,7 +34,7 @@ $gid         = WT_Filter::get('gid', WT_REGEX_XREF);
 $update_CHAN = WT_Filter::get('preserve_last_changed');
 
 $controller
-	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');
 
 $paramok = true;

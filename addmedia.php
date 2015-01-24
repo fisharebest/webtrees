@@ -44,7 +44,7 @@ $update_CHAN = !WT_Filter::postBool('preserve_last_changed');
 
 $controller = new WT_Controller_Simple;
 $controller
-	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();')
 	->restrictAccess(Auth::isMember());
 

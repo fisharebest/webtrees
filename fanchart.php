@@ -36,7 +36,7 @@ if (WT_Filter::getBool('img')) {
 
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('
 		autocomplete();
 		var WT_FANCHART = (function() {

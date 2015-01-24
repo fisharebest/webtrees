@@ -256,7 +256,7 @@ case 'edit':
 
 	$controller
 		->pageHeader()
-		->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+		->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 		->addInlineJavascript('autocomplete();')
 		->addInlineJavascript('
 			jQuery(".relpath").change(function() {
@@ -678,7 +678,7 @@ case 'cleanup2':
 default:
 	$controller
 		->setPageTitle(WT_I18N::translate('User administration'))
-		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+		->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 		->addExternalJavascript(WT_DATATABLES_BOOTSTRAP_JS_URL)
 		->addInlineJavascript('
 			jQuery(".table-user-list").dataTable({

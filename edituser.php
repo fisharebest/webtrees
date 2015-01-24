@@ -107,7 +107,7 @@ $controller = new WT_Controller_Page;
 $controller
 	->setPageTitle(WT_I18N::translate('My account'))
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');
 
 $my_individual_record = WT_Individual::getInstance(WT_USER_GEDCOM_ID);

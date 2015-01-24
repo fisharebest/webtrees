@@ -33,8 +33,8 @@ class WT_Controller_Page extends WT_Controller_Base {
 		parent::__construct();
 		// Every page uses these scripts
 		$this
-			->addExternalJavascript(WT_JQUERY_URL)
-			->addExternalJavascript(WT_JQUERYUI_URL)
+			->addExternalJavascript(WT_JQUERY_JS_URL)
+			->addExternalJavascript(WT_JQUERYUI_JS_URL)
 			->addExternalJavascript(WT_WEBTREES_JS_URL);
 	}
 
