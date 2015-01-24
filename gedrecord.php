@@ -36,7 +36,8 @@ if (
 ) {
 	Zend_Session::writeClose();
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . $obj->getRawUrl());
-	exit;
+	
+	return;
 } elseif (!$obj || !$obj->canShow()) {
 	$controller->pageHeader();
 	echo '<div class="error">', WT_I18N::translate('This information is private and cannot be shown.'), '</div>';

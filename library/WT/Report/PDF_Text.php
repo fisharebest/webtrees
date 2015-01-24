@@ -107,7 +107,7 @@ class WT_Report_PDF_Text extends WT_Report_Base_Text {
 		if ($this->wrapWidthRemaining > 0) {
 			// Check with line counter too!
 			// but floor the $wrapWidthRemaining first to keep it bugfree!
-			$wrapWidthRemaining = (int)($this->wrapWidthRemaining);
+			$wrapWidthRemaining = (int) ($this->wrapWidthRemaining);
 			if (($lw >= ($wrapWidthRemaining)) or ($lfct > 1)) {
 				$newtext = "";
 				$lines = explode("\n", $this->text);

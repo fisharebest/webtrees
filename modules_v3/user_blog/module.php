@@ -27,7 +27,9 @@ try {
 	WT_DB::updateSchema(WT_MODULES_DIR . 'user_blog/db_schema/', 'NB_SCHEMA_VERSION', 3);
 } catch (PDOException $ex) {
 	// The schema update scripts should never fail.  If they do, there is no clean recovery.
-	die($ex);
+	WT_FlashMessages::addMessage($ex->getMessage(), 'danger');
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'site-unavailable.php');
+	throw $ex;
 }
 
 /**
@@ -56,7 +58,7 @@ class user_blog_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 			break;
 		}
-		$block = get_block_setting($block_id, 'block', true);
+		$block = get_block_setting($block_id, 'block', '1');
 		if ($cfg) {
 			foreach (array('block') as $name) {
 				if (array_key_exists($name, $cfg)) {

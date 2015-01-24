@@ -146,7 +146,8 @@ case 'export':
 			'"', str_replace('"', '""', $row->gedcom_name), '"',
 			"\n";
 	}
-	exit;
+
+	return;
 case 'load_json':
 	Zend_Session::writeClose();
 	$start  = WT_Filter::getInteger('start');
@@ -206,13 +207,14 @@ case 'load_json':
 
 	header('Content-type: application/json');
 	// See http://www.datatables.net/usage/server-side
-	echo json_encode(array( 
+	echo json_encode(array(
 		'draw'            => WT_Filter::getInteger('draw'), // Always an integer
 		'recordsTotal'    => $recordsTotal,
 		'recordsFiltered' => $recordsFiltered,
 		'data'            => $data
 	));
-	exit;
+
+	return;
 }
 
 $controller
@@ -289,8 +291,8 @@ echo
 			'</tr><tr>',
 				'<td colspan="6">',
 					'<input type="submit" value="', WT_I18N::translate('Filter'), '">',
-					'<input type="submit" value="', WT_I18N::translate('Export'), '" onclick="document.changes.action.value=\'export\';return true;" ', ($action == 'show' ? '' : 'disabled="disabled"'), '>',
-					'<input type="submit" value="', WT_I18N::translate('Delete'), '" onclick="if (confirm(\'', WT_Filter::escapeHtml(WT_I18N::translate('Permanently delete these records?')), '\')) {document.changes.action.value=\'delete\';return true;} else {return false;}" ', ($action == 'show' ? '' : 'disabled="disabled"'), '>',
+					'<input type="submit" value="', WT_I18N::translate('Export'), '" onclick="document.changes.action.value=\'export\';return true;" ', ($action === 'show' ? '' : 'disabled'), '>',
+					'<input type="submit" value="', WT_I18N::translate('Delete'), '" onclick="if (confirm(\'', WT_Filter::escapeHtml(WT_I18N::translate('Permanently delete these records?')), '\')) {document.changes.action.value=\'delete\';return true;} else {return false;}" ', ($action === 'show' ? '' : 'disabled'), '>',
 				'</td>',
 			'</tr>',
 		'</table>',

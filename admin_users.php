@@ -54,7 +54,7 @@ case 'save':
 		$email          = WT_Filter::postEmail('email');
 		$pass1          = WT_Filter::post('pass1', WT_REGEX_PASSWORD);
 		$pass2          = WT_Filter::post('pass2', WT_REGEX_PASSWORD);
-		$theme          = WT_Filter::post('theme', implode('|', array_keys(Theme::installedThemes())));
+		$theme          = WT_Filter::post('theme', implode('|', array_keys(Theme::installedThemes())), '');
 		$language       = WT_Filter::post('language', implode('|', array_keys(WT_I18N::installed_languages())), WT_LOCALE);
 		$contact_method = WT_Filter::post('contact_method');
 		$comment        = WT_Filter::post('comment');
@@ -91,6 +91,17 @@ case 'save':
 		}
 
 		if ($user) {
+			// Approving for the first time?  Send a confirmation email
+			if ($approved && !$user->getPreference('verified_by_admin') && $user->getPreference('sessiontime') == 0) {
+				WT_I18N::init($user->getPreference('language'));
+				WT_Mail::systemMessage(
+					$WT_TREE,
+					$user,
+					WT_I18N::translate('Approval of account at %s', WT_SERVER_NAME . WT_SCRIPT_PATH),
+					WT_I18N::translate('The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s', WT_SERVER_NAME . WT_SCRIPT_PATH, WT_SERVER_NAME . WT_SCRIPT_PATH)
+				);
+			}
+
 			$user
 				->setPreference('theme', $theme)
 				->setPreference('language', $language)
@@ -435,7 +446,7 @@ case 'edit':
 				<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Preferred contact method'); ?>
 			</label>
 			<div class="col-sm-9">
-				<?php echo edit_field_contact('contactmethod', $user->getPreference('contact_method')); ?>
+				<?php echo edit_field_contact('contact_method', $user->getPreference('contactmethod')); ?>
 				<p class="small text-muted">
 					<?php echo /* I18N: Help text for the “Preferred contact method” configuration setting */WT_I18N::translate('Site members can send each other messages.  You can choose to how these messages are sent to you, or choose not receive them at all.'); ?>
 				</p>
@@ -525,9 +536,7 @@ case 'edit':
 						<select name="canedit<?php echo $tree->tree_id; ?>">
 							<?php foreach ($ALL_EDIT_OPTIONS as $EDIT_OPTION => $desc): ?>
 							<option value="<?php echo $EDIT_OPTION; ?>"
-								<?php if ($EDIT_OPTION === $tree->getUserPreference($user, 'canedit')): ?>
-									selected="selected"
-								<?php endif; ?>
+								<?php echo $EDIT_OPTION === $tree->getUserPreference($user, 'canedit') ? 'selected' : ''; ?>
 							>
 								<?php echo $desc; ?>
 							</option>
@@ -575,9 +584,9 @@ case 'cleanup':
 	echo '<tr><th colspan="2">', WT_I18N::translate('Number of months since the last login for a user’s account to be considered inactive: '), '</th>';
 	echo '<td><select onchange="document.location=options[selectedIndex].value;">';
 	for ($i = 1; $i <= 12; $i++) {
-		echo '<option value="admin_users.php?action=cleanup&amp;month=' . $i . '"';
-		if ($i == $month) {
-			echo ' selected="selected"';
+		echo '<option value="admin_users.php?action=cleanup&amp;month=' . $i . '" ';
+		if ($i === $month) {
+			echo 'selected';
 		}
 		echo '>', $i, '</option>';
 	}
@@ -686,6 +695,7 @@ case 'cleanup2':
 	break;
 default:
 	$controller
+		->setPageTitle(WT_I18N::translate('User administration'))
 		->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
 		->addExternalJavascript(WT_DATATABLES_BOOTSTRAP_JS_URL)
 		->addInlineJavascript('

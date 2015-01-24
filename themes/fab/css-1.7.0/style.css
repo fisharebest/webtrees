@@ -421,6 +421,10 @@ a:hover .nameZoom {
 	padding: 3px;
 }
 
+.icon {
+	border: 0;
+	padding: 0 5px;
+}
 
 .sublinks_cell {
 	background-color: #ccc;
@@ -1842,13 +1846,6 @@ span.link_text {
 	color: #f00;
 }
 
-#main_name {
-	float: left;
-	font-size: 2em;
-	margin: 10px;
-	font-weight: bold;
-}
-
 #indi_mainimage {
 	float: right;
 }
@@ -1950,10 +1947,6 @@ dd .deletelink {
 [dir=rtl] #indi_header h3 .header_age {
 	padding: 5px 5px 5px 0;
 	float: left;
-}
-
-[dir=rtl] #main_name {
-	float: right;
 }
 
 [dir=rtl] #indi_mainimage {
@@ -4426,16 +4419,30 @@ footer {
 	#sidebar,
 	#separator,
 	.noprint {
-		display: none !important;
+		display: none;
 	}
-
+	
+	.descriptionbox, .optionbox {
+		border: solid #888 1px;
+		}
+	
 	.person_box, .person_boxF, .person_boxNN {
 		border: solid #888 1px;
 		background: #fff;
 	}
-
+	
+	#pedigree_chart {
+		left: -35px;
+		top:  -260px;
+	}
+	
+	[dir=rtl] #pedigree_chart {
+		left: auto;
+		right: -20px;
+	}
+	
 	#header_accordion1 {
-		width: 510px !important;
+		width: 510px;
 	}
 
 	#familybook_chart h3 {

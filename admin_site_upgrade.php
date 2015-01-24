@@ -62,12 +62,14 @@ echo '<h2>', $controller->getPageTitle(), '</h2>';
 
 if ($latest_version == '') {
 	echo '<p>', WT_I18N::translate('No upgrade information is available.'), '</p>';
-	exit;
+
+	return;
 }
 
 if (version_compare(WT_VERSION, $latest_version) >= 0) {
 	echo '<p>', WT_I18N::translate('This is the latest version of webtrees.  No upgrade is available.'), '</p>';
-	exit;
+
+	return;
 }
 
 echo '<form method="POST" action="admin_site_upgrade.php">';
@@ -82,7 +84,8 @@ if ($continue) {
 	echo '<p>', WT_I18N::translate('It can take several minutes to download and install the upgrade.  Be patient.'), '</p>';
 	echo '<button type="submit" name="continue" value="1">', /* I18N: %s is a version number, such as 1.2.3 */ WT_I18N::translate('Upgrade to webtrees %s', $latest_version_html), '</button>';
 	echo '</form>';
-	exit;
+
+	return;
 }
 
 echo '<ul>';
@@ -99,7 +102,8 @@ if ($changes) {
 	echo '<br>', WT_I18N::translate('You should accept or reject all pending changes before upgrading.'), $icon_failure;
 	echo '<br><button onclick="window.open(\'edit_changes.php\',\'_blank\', chan_window_specs); return false;"">', WT_I18N::translate('Pending changes'), '</button>';
 	echo '</li></ul></form>';
-	exit;
+
+	return;
 } else {
 	echo '<br>', WT_I18N::translate('There are no pending changes.'), $icon_success;
 }
@@ -198,7 +202,8 @@ if ($custom_modules) {
 	echo '<br>', '<button type="submit" name="modules" value="disable">', WT_I18N::translate('Disable these modules'), '</button> — ', WT_I18N::translate('You can re-enable these modules after the upgrade.');
 	echo '<br>', '<button type="submit" name="modules" value="ignore">', /* I18N: Ignore the warnings, and [...] */ WT_I18N::translate('Upgrade anyway'), '</button> — ', WT_I18N::translate('Caution: old modules may not work, or they may prevent webtrees from working.');
 	echo '</li></ul></form>';
-	exit;
+
+	return;
 } else {
 	if ($modules_action != 'ignore') {
 		echo '<br>', WT_I18N::translate('No custom modules are enabled.'), $icon_success;
@@ -261,7 +266,8 @@ if ($custom_themes) {
 	echo '<br>', '<button type="submit" name="themes" value="disable">', WT_I18N::translate('Disable these themes'), '</button> — ', WT_I18N::translate('You can re-enable these themes after the upgrade.');
 	echo '<br>', '<button type="submit" name="themes" value="ignore">', WT_I18N::translate('Upgrade anyway'), '</button> — ', WT_I18N::translate('Caution: old themes may not work, or they may prevent webtrees from working.');
 	echo '</li></ul></form>';
-	exit;
+
+	return;
 } else {
 	if ($themes_action != 'ignore') {
 		echo '<br>', WT_I18N::translate('No custom themes are enabled.'), $icon_success;
@@ -335,7 +341,8 @@ if (!is_array($res) || $res['status'] != 'ok') {
 	echo '<br>', WT_I18N::translate('An error occurred when unzipping the file.'), $icon_failure;
 	echo '<br>', $archive->errorInfo(true);
 	echo '</li></ul></form>';
-	exit;
+
+	return;
 }
 
 $num_files = $res['nb'];
@@ -357,7 +364,8 @@ if (is_array($res)) {
 			echo '<pre>', $result['status'], '</pre>';
 			echo '<pre>', $result['filename'], '</pre>';
 			echo '</li></ul></form>';
-			exit;
+
+			return;
 		}
 	}
 	echo '<br>', /* I18N: [...] from the .ZIP file, %2$s is a (fractional) number of seconds */ WT_I18N::plural('%1$s file was extracted in %2$s seconds.', '%1$s files were extracted in %2$s seconds.', count($res), count($res), WT_I18N::number($end_time - $start_time, 2)), $icon_success;
@@ -365,7 +373,8 @@ if (is_array($res)) {
 	echo '<br>', WT_I18N::translate('An error occurred when unzipping the file.'), $icon_failure;
 	echo '<pre>', $archive->errorInfo(true), '</pre>';
 	echo '</li></ul></form>';
-	exit;
+
+	return;
 }
 
 echo '</li>';
@@ -388,7 +397,8 @@ foreach (new RecursiveIteratorIterator($iterator) as $file) {
 		echo '<p>', WT_I18N::translate('The new files are currently located in the folder %s.', '<b dir="ltr">' . $zip_dir . DIRECTORY_SEPARATOR . '</b>'), '</p>';
 		echo '<p>', WT_I18N::translate('Copy these files to the folder %s, replacing any that have the same name.', '<b dir="ltr">' . WT_ROOT . '</b>'), '</p>';
 		echo '<p>', WT_I18N::translate('To prevent visitors from accessing the site while you are in the middle of copying files, you can temporarily create a file %s on the server.  If it contains a message, it will be displayed to visitors.', '<b>' . $lock_file_html . '</b>'), '</p>';
-		exit;
+
+		return;
 	}
 }
 
@@ -442,7 +452,8 @@ if (is_array($res)) {
 } else {
 	echo '<br>', WT_I18N::translate('An error occurred when unzipping the file.'), $icon_failure;
 	echo '</li></ul></form>';
-	exit;
+
+	return;
 }
 
 echo '</li>';

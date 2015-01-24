@@ -44,7 +44,8 @@ if (file_exists(WT_DATA_DIR . 'offline.txt')) {
 } else {
 	// offline.txt has gone - we're back online!
 	header('Location: index.php');
-	exit;
+	
+	return;
 }
 
 header('Content-Type: text/html; charset=UTF-8');

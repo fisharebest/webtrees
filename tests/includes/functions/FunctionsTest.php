@@ -185,7 +185,7 @@ class FunctionsTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Tests for function edit_field_inline()
+	 * Tests for function isFileExternal()
 	 *
 	 * @return void
 	 */

@@ -297,10 +297,10 @@ if ($type == 'specialchar') {
 	<p><select id="language_filter" name="language_filter" onchange="submit();">
 	<option value="">', WT_I18N::translate('Change language'), '</option>';
 	$language_options = '';
-	foreach ($specialchar_languages as $key=>$special_character) {
-		$language_options .= '<option value="' . $key . '"';
+	foreach ($specialchar_languages as $key => $special_character) {
+		$language_options .= '<option value="' . $key . '" ';
 		if ($key == $language_filter) {
-			$language_options .= ' selected="selected"';
+			$language_options .= 'selected';
 		}
 		$language_options .= '>' . $special_character . '</option>';
 	}
@@ -317,7 +317,7 @@ if ($type == "facts") {
 	<input type="hidden" name="tags" value="', $qs, '">
 	<input type="hidden" name="callback" value="', $callback, '">
 	<table class="list_table width100" border="0">
-	<tr><td class="list_label" style="padding: 5px; font-weight: normal; white-space: normal;">' ;
+	<tr><td class="list_label" style="padding: 5px; font-weight: normal; white-space: normal;">';
 
 	$all = strlen($qs) ? explode(',', strtoupper($qs)) : array();
 	$preselDefault = array();
@@ -481,7 +481,7 @@ if ($type == "facts") {
 	<td><td></tbody></table>
 
 	<table id="tabAction"><tbody><tr>
-		<td colspan="2"><button id="btnOk" disabled="disabled" onclick="if (!this.disabled) { DoOK(); }">', WT_I18N::translate('save'), '</button></td>
+		<td colspan="2"><button id="btnOk" disabled onclick="if (!this.disabled) { DoOK(); }">', WT_I18N::translate('save'), '</button></td>
 	<tr></tbody></table>
 	</td></tr></table>
 	</form></div>';

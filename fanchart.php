@@ -119,7 +119,8 @@ $controller
 
 if ($controller->error_message) {
 	echo '<p class="ui-state-error">', $controller->error_message, '</p>';
-	exit;
+	
+	return;
 }
 
 if ($controller->root) {

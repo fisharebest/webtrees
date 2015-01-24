@@ -217,8 +217,8 @@ abstract class WT_Module {
 			}
 		}
 		if ($sort && !$sorted) {
-			$sorted = uasort($modules, function(WT_Module $x, WT_MOdule $y) {
-				return WT_I18N::strcasecmp((string) $x, (string) $y);
+			$sorted = uasort($modules, function(WT_Module $x, WT_Module $y) {
+				return WT_I18N::strcasecmp($x->getTitle(), $y->getTitle());
 			});
 		}
 
@@ -269,7 +269,7 @@ abstract class WT_Module {
 		// The order of some modules is defined by the user.  Others are sorted by name.
 		if ($component !== 'menu' && $component !== 'sidebar' && $component !== 'tab') {
 			uasort($array, function(WT_Module $x, WT_Module $y) {
-				return WT_I18N::strcasecmp((string) $x, (string) $y);
+				return WT_I18N::strcasecmp($x->getTitle(), $y->getTitle());
 			});
 		}
 
@@ -483,6 +483,10 @@ abstract class WT_Module {
 				}
 			}
 		}
+
+		uasort($modules, function(WT_Module $x, WT_Module $y) {
+			return WT_I18N::strcasecmp($x->getTitle(), $y->getTitle());
+		});
 
 		return $modules;
 	}

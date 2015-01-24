@@ -432,6 +432,7 @@ a:hover .nameZoom {
 
 .icon {
 	border: 0;
+	padding: 0 5px;
 }
 
 .sublinks_cell {
@@ -918,10 +919,6 @@ a.showit:hover > span {
 
 .clearfloat {
 	clear: both;
-}
-
-td.descriptionbox a {
-	color: #fff;
 }
 
 /* this keeps the tag color the same when it is a link as when not */
@@ -1860,13 +1857,6 @@ span.link_text {
 	color: #f00;
 }
 
-#main_name {
-	float: left;
-	font-size: 2em;
-	margin: 10px;
-	font-weight: bold;
-}
-
 #indi_mainimage {
 	float: left;
 	padding: 0 10px;
@@ -1968,10 +1958,6 @@ dd .deletelink {
 [dir=rtl] #indi_header h3 .header_age {
 	padding: 5px 5px 5px 0;
 	float: left;
-}
-
-[dir=rtl] #main_name {
-	float: right;
 }
 
 [dir=rtl] #indi_mainimage {
@@ -2129,8 +2115,10 @@ dd .deletelink {
 
 /* === jquery-ui.css changes === */
 .ui-accordion .ui-accordion-content {
+	border: 0;
 	position: relative;
 	padding: 0 5px;
+	overflow: visible;
 }
 
 #sidebarAccordion .ui-accordion-header {
@@ -4509,11 +4497,11 @@ footer {
 	background-position: right -46px;
 }
 
-#menu-chart-descendancy {
+#menu-chart-descendants {
 	background-position: left -69px;
 }
 
-[dir=rtl] #menu-chart-descendancy {
+[dir=rtl] #menu-chart-descendants {
 	background-position: right -69px;
 }
 
@@ -5126,23 +5114,23 @@ footer {
 	#sidebar,
 	#separator,
 	.noprint {
-		display: none !important;
+		display: none;
 	}
 
 	#pedigree_chart {
-		right: auto;
-		left: -80px;
-	}
-
-	#header_accordion1 {
-		width: 500px !important;
+		left: -30px;
+		top:  -260px;
 	}
 
 	[dir=rtl] #pedigree_chart {
 		left: auto;
-		right: -80px;
+		right: -20px;
 	}
-
+	
+	#header_accordion1 {
+		width: 500px;
+	}
+	
 	#familybook_chart h3 {
 		margin-bottom: 10px;
 	}

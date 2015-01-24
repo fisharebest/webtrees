@@ -95,20 +95,23 @@ case 'delete':
 		WT_Tree::get($gedcom_id)->delete();
 	}
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
-	exit;
+	
+	return;
 case 'setdefault':
 	if (WT_Filter::checkCsrf()) {
 		WT_Site::setPreference('DEFAULT_GEDCOM', WT_Filter::post('ged'));
 	}
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
-	exit;
+	
+	return;
 case 'new_tree':
 	$tree_name = basename(WT_Filter::post('tree_name'));
 	if (WT_Filter::checkCsrf() && $tree_name) {
 		WT_Tree::create($tree_name);
 	}
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?ged=' . $tree_name);
-	exit;
+	
+	return;
 case 'replace_upload':
 	$gedcom_id = WT_Filter::postInteger('gedcom_id');
 	// Make sure the gedcom still exists
@@ -201,9 +204,9 @@ case 'importform':
 			sort($files);
 			echo WT_DATA_DIR, '<select name="tree_name">';
 			foreach ($files as $file) {
-				echo '<option value="', WT_Filter::escapeHtml($file), '"';
+				echo '<option value="', WT_Filter::escapeHtml($file), '" ';
 				if ($file == $previous_gedcom_filename) {
-					echo ' selected="selected"';
+					echo '';
 				}
 				echo'>', WT_Filter::escapeHtml($file), '</option>';
 			}
@@ -211,14 +214,16 @@ case 'importform':
 		} else {
 			echo '<p>', WT_I18N::translate('No GEDCOM files found.  You need to copy files to the <b>%s</b> directory on your server.', WT_DATA_DIR);
 			echo '</form>';
-			exit;
+			
+			return;
 		}
 	}
 	echo '<br><br><input type="checkbox" name="keep_media', $tree->tree_id, '" value="1">';
 	echo WT_I18N::translate('If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM file.');
 	echo '<br><br><input type="submit" value="', WT_I18N::translate('continue'), '">';
 	echo '</form>';
-	exit;
+	
+	return;
 }
 
 // List the gedcoms available to this user
@@ -601,16 +606,10 @@ case 'importform':
 						<?php echo WT_I18N::translate('webtrees’ database must be on the same server as PGV’s'); ?>
 					</li>
 					<li>
-						<?php echo WT_I18N::translate('PGV must be version 4.2.3, or any SVN up to #6973'); ?>
+						<?php echo /* I18N: %s is a number */ WT_I18N::translate('PGV must be version 4.2.3, or any SVN up to #%s', WT_I18N::digits(7101)); ?>
 					</li>
 					<li>
 						<?php echo WT_I18N::translate('All changes in PGV must be accepted'); ?>
-					</li>
-					<li>
-						<?php echo WT_I18N::translate('You must export your latest GEDCOM data'); ?>
-					</li>
-					<li>
-						<?php echo WT_I18N::translate('The current webtrees admin username must be the same as an existing PGV admin username'); ?>
 					</li>
 					<li>
 						<?php echo WT_I18N::translate('All existing PGV users must have distinct email addresses'); ?>

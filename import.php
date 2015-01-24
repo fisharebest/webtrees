@@ -31,7 +31,8 @@ require './includes/session.php';
 
 if (!WT_USER_GEDCOM_ADMIN) {
 	header('HTTP/1.1 403 Access Denied');
-	exit;
+	
+	return;
 }
 
 $controller = new WT_Controller_Ajax;
@@ -68,7 +69,8 @@ if ($row->import_offset == $row->import_total) {
 		'jQuery("#import' . $gedcom_id . '").addClass("hidden");' .
 		'jQuery("#actions' . $gedcom_id . '").removeClass("hidden");'
 	);
-	exit;
+	
+	return;
 }
 
 // Calculate progress so far
@@ -120,7 +122,8 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 			WT_DB::rollBack();
 			echo WT_I18N::translate('Invalid GEDCOM file - no header record found.');
 			$controller->addInlineJavascript('jQuery("#actions' . $gedcom_id . '").removeClass("hidden");');
-			exit;
+			
+			return;
 		}
 		// What character set is this?  Need to convert it to UTF8
 		if (preg_match('/\n[ \t]*1 CHAR(?:ACTER)? (.+)/', $data->chunk_data, $match)) {
@@ -197,7 +200,8 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 			WT_DB::rollBack();
 			echo '<span class="error">', WT_I18N::translate('Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported.', $charset), '</span>';
 			$controller->addInlineJavascript('jQuery("#actions' . $gedcom_id . '").removeClass("hidden");');
-			exit;
+			
+			return;
 		}
 		$first_time = false;
 
@@ -232,7 +236,8 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 			echo '<span class="error">', $ex->getMessage(), '</span>';
 			$controller->addInlineJavascript('jQuery("#actions' . $gedcom_id . '").removeClass("hidden");');
 		}
-		exit;
+		
+		return;
 	}
 }
 

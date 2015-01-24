@@ -54,7 +54,7 @@ $controller
 						<?php echo WT_I18N::translate('Show highlight images in individual boxes'); ?>
 					</td>
 					<td class="optionbox">
-						<input name="show_thumbs" type="checkbox" value="1" <?php echo $controller->show_thumbs ? 'checked="checked"' : ''; ?>>
+						<input name="show_thumbs" type="checkbox" value="1" <?php echo $controller->show_thumbs ? 'checked' : ''; ?>>
 					</td>
 				</tr>
 				<?php } ?>

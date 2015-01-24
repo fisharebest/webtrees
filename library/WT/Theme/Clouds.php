@@ -27,13 +27,13 @@ use WT_Menu;
  */
 class Clouds extends BaseTheme {
 	/** {@inheritdoc} */
-	public function cssUrl() {
+	public function assetUrl() {
 		return 'themes/clouds/css-1.7.0/';
 	}
 
 	/** {@inheritdoc} */
 	protected function favicon() {
-		return '<link rel="icon" href="' . $this->cssUrl() . 'favicon.png" type="image/png">';
+		return '<link rel="icon" href="' . $this->assetUrl() . 'favicon.png" type="image/png">';
 	}
 
 	/** {@inheritdoc} */
@@ -109,11 +109,6 @@ class Clouds extends BaseTheme {
 			array_unshift($submenus, $tmp);
 			$menu->setSubmenus($submenus);
 
-			// Neutralise the top-level menu
-			$menu->setLabel('');
-			$menu->setLink('');
-			$menu->setOnclick('');
-
 			$html .= $menu->getMenuAsList();
 		}
 
@@ -124,7 +119,7 @@ class Clouds extends BaseTheme {
 	protected function stylesheets() {
 		return array(
 			'themes/clouds/jquery-ui-1.11.2/jquery-ui.css',
-			$this->cssUrl() . 'style.css',
+			$this->assetUrl() . 'style.css',
 		);
 	}
 

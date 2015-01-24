@@ -61,7 +61,8 @@ if ($action === 'ajax') {
 	} elseif (array_key_exists($block_id, $blocks['side'])) {
 		$module_name = $blocks['side'][$block_id];
 	} else {
-		exit;
+		
+		return;
 	}
 	if (array_key_exists($module_name, $all_blocks)) {
 		$class_name = $module_name . '_WT_Module';
@@ -71,7 +72,8 @@ if ($action === 'ajax') {
 	if (WT_DEBUG_SQL) {
 		echo WT_DB::getQueryLog();
 	}
-	exit;
+	
+	return;
 }
 
 $controller = new WT_Controller_Page;

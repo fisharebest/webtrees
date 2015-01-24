@@ -10308,8 +10308,8 @@ msgid "P.M."
 msgstr "öğleden sonra"
 
 #: help_text.php:1308
-msgid "PGV must be version 4.2.3, or any SVN up to #6973"
-msgstr "PGV versiyonu 4.2.3 yada #6973 kadar herhangi bir SVN olmalı"
+msgid "PGV must be version 4.2.3, or any SVN up to #%s"
+msgstr "PGV versiyonu 4.2.3 yada #%s kadar herhangi bir SVN olmalı"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:82

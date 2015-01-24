@@ -34,7 +34,8 @@ require WT_ROOT . 'includes/functions/functions_edit.php';
 // prevent users with editing account disabled from being able to edit their account
 if (!Auth::id() || !Auth::user()->getPreference('editaccount')) {
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
-	exit;
+	
+	return;
 }
 
 // Extract form variables
@@ -86,7 +87,8 @@ if ($form_action == 'update' && WT_Filter::checkCsrf()) {
 
 		// Reload page to pick up changes such as theme and user_id
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
-		exit;
+		
+		return;
 	}
 }
 
@@ -163,9 +165,9 @@ echo '<div id="edituser-page">
 			<select name="form_theme">
 			<option value="">', WT_Filter::escapeHtml(/* I18N: default option in list of themes */ WT_I18N::translate('<default theme>')), '</option>';
 			foreach (Theme::themeNames() as $theme_id => $theme_name) {
-				echo '<option value="', $theme_id, '"';
+				echo '<option value="', $theme_id, '" ';
 				if ($theme_id === Auth::user()->getPreference('theme')) {
-					echo ' selected="selected"';
+					echo 'selected';
 				}
 				echo '>', $theme_name, '</option>';
 			}

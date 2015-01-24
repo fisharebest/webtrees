@@ -128,7 +128,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		<?php
 		$access_level = $SHOW_PRIVATE_RELATIONSHIPS ? WT_PRIV_HIDE : WT_USER_ACCESS_LEVEL;
 		$facts = array_merge($family->getFacts('HUSB', false, $access_level), $family->getFacts('WIFE', false, $access_level));
-		foreach($facts as $fact) {
+		foreach ($facts as $fact) {
 			$spouse = $fact->getTarget();
 			if ($this->isPerson($spouse)) {
 				$menu = new WT_Menu(get_close_relationship_name($controller->record, $spouse));
@@ -183,7 +183,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	 *
 	 * @return string
 	 */
-	private function getHTML($person, $showUnknown=false) {
+	private function getHTML($person, $showUnknown = false) {
 		if ($this->isPerson($person)) {
 			return sprintf(self::LNK, $person->getHtmlUrl(), $person->getFullName());
 		} elseif ($showUnknown) {
@@ -221,15 +221,14 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						$stepParents .= $this->getHTML($family->getWife());
 					}
 				}
-				if($stepParents) {
+				if ($stepParents) {
 					$relationship = $this->isPerson($father) ?
-						WT_I18N::translate_c("father’s wife", "step-mother") :
-						WT_I18N::translate_c("mother’s husband", "step-father");
+						WT_I18N::translate_c("father’s wife", "step-mother") : WT_I18N::translate_c("mother’s husband", "step-father");
 					$html .= sprintf(self::TTL, $relationship) . $stepParents;
 				}
 			}
 		}
-		if(!($this->isPerson($father) || $this->isPerson($mother))) {
+		if (!($this->isPerson($father) || $this->isPerson($mother))) {
 			$html .= sprintf(self::MSG, WT_I18N::translate_c('unknown family', 'unknown'));
 		}
 		return $html;

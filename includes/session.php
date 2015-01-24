@@ -124,10 +124,10 @@ define('WT_EVENTS_DIV',  'DIV|ANUL|_SEPR');
 define('WT_EOL', "\r\n");
 
 // Gedcom specification/definitions
-define ('WT_GEDCOM_LINE_LENGTH', 255 - strlen(WT_EOL)); // Characters, not bytes
+define('WT_GEDCOM_LINE_LENGTH', 255 - strlen(WT_EOL)); // Characters, not bytes
 
 // Used in Google charts
-define ('WT_GOOGLE_CHART_ENCODING', 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-.');
+define('WT_GOOGLE_CHART_ENCODING', 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-.');
 
 // Privacy constants
 define('WT_PRIV_PUBLIC',  2); // Allows visitors to view the marked information
@@ -136,7 +136,7 @@ define('WT_PRIV_NONE',    0); // Allows managers to access the marked informatio
 define('WT_PRIV_HIDE',   -1); // Hide the item to all users
 
 // For performance, it is quicker to refer to files using absolute paths
-define ('WT_ROOT', realpath(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR);
+define('WT_ROOT', realpath(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR);
 
 // Keep track of time statistics, for the summary in the footer
 $start_time = microtime(true);
@@ -356,15 +356,11 @@ try {
 	unset($dbconfig);
 	// Some of the FAMILY JOIN HUSBAND JOIN WIFE queries can excede the MAX_JOIN_SIZE setting
 	WT_DB::exec("SET NAMES 'utf8' COLLATE 'utf8_unicode_ci', SQL_BIG_SELECTS=1");
-	try {
-		WT_DB::updateSchema(WT_ROOT . 'includes/db_schema/', 'WT_SCHEMA_VERSION', WT_SCHEMA_VERSION);
-	} catch (PDOException $ex) {
-		// The schema update scripts should never fail.  If they do, there is no clean recovery.
-		die($ex);
-	}
+	WT_DB::updateSchema(WT_ROOT . 'includes/db_schema/', 'WT_SCHEMA_VERSION', WT_SCHEMA_VERSION);
 } catch (PDOException $ex) {
+	WT_FlashMessages::addMessage($ex->getMessage(), 'danger');
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'site-unavailable.php');
-	exit;
+	throw $ex;
 }
 
 // The config.ini.php file must always be in a fixed location.

@@ -47,7 +47,8 @@ define('WT_PRIV_HIDE', -1);
 
 if (file_exists(WT_DATA_DIR . WT_CONFIG_FILE)) {
 	header('Location: index.php');
-	exit;
+	
+	return;
 }
 
 if (version_compare(PHP_VERSION, WT_REQUIRED_PHP_VERSION) < 0) {
@@ -56,7 +57,8 @@ if (version_compare(PHP_VERSION, WT_REQUIRED_PHP_VERSION) < 0) {
 		'<h1>Sorry, the setup wizard cannot start.</h1>',
 		'<p>This server is running PHP version ', PHP_VERSION, '</p>',
 		'<p>PHP ', WT_REQUIRED_PHP_VERSION, ' (or any later version) is required</p>';
-	exit;
+	
+	return;
 }
 
 require 'includes/functions/functions.php';
@@ -187,7 +189,8 @@ if (!isset($_POST['lang'])) {
 
 	}
 	echo '</form></body></html>';
-	exit;
+	
+	return;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -205,19 +208,32 @@ if ($FAB != 'FAB!') {
 	echo '<p>', WT_I18N::translate('You must change this before you can continue.'), '</p>';
 	echo '<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">';
 	echo '</form></body></html>';
-	exit;
+	
+	return;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // Step three - Database connection.
 ////////////////////////////////////////////////////////////////////////////////
 
-if (!isset($_POST['dbhost'])) $_POST['dbhost'] = 'localhost';
-if (!isset($_POST['dbport'])) $_POST['dbport'] = '3306';
-if (!isset($_POST['dbuser'])) $_POST['dbuser'] = '';
-if (!isset($_POST['dbpass'])) $_POST['dbpass'] = '';
-if (!isset($_POST['dbname'])) $_POST['dbname'] = '';
-if (!isset($_POST['tblpfx'])) $_POST['tblpfx'] = 'wt_';
+if (!isset($_POST['dbhost'])) {
+	$_POST['dbhost'] = 'localhost';
+}
+if (!isset($_POST['dbport'])) {
+	$_POST['dbport'] = '3306';
+}
+if (!isset($_POST['dbuser'])) {
+	$_POST['dbuser'] = '';
+}
+if (!isset($_POST['dbpass'])) {
+	$_POST['dbpass'] = '';
+}
+if (!isset($_POST['dbname'])) {
+	$_POST['dbname'] = '';
+}
+if (!isset($_POST['tblpfx'])) {
+	$_POST['tblpfx'] = 'wt_';
+}
 
 define('WT_TBLPREFIX', $_POST['tblpfx']);
 try {
@@ -275,7 +291,8 @@ if (empty($_POST['dbuser']) || !WT_DB::isConnected() || !$db_version_ok) {
 		'<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">',
 		'</form>',
 		'</body></html>';
-		exit;
+		
+	return;
 } else {
 	// Copy these values through to the next step
 	echo '<input type="hidden" name="dbhost" value="', WT_Filter::escapeHtml($_POST['dbhost']), '">';
@@ -293,7 +310,7 @@ if (empty($_POST['dbuser']) || !WT_DB::isConnected() || !$db_version_ok) {
 //
 // Other characters may be invalid (objects must be valid filenames on the
 // MySQL server’s filesystem), so block the usual ones.
-$DBNAME   = str_replace(array('`', '"', '\'', ':', '/', '\\', '\r', '\n', '\t', '\0'), '', $_POST['dbname']);
+$DBNAME = str_replace(array('`', '"', '\'', ':', '/', '\\', '\r', '\n', '\t', '\0'), '', $_POST['dbname']);
 $TBLPREFIX = str_replace(array('`', '"', '\'', ':', '/', '\\', '\r', '\n', '\t', '\0'), '', $_POST['tblpfx']);
 
 // If we have specified a database, and we have not used invalid characters,
@@ -360,7 +377,8 @@ if (!$dbname_ok) {
 		'<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">',
 		'</form>',
 		'</body></html>';
-		exit;
+		
+	return;
 } else {
 	// Copy these values through to the next step
 	echo '<input type="hidden" name="dbname" value="', WT_Filter::escapeHtml($_POST['dbname']), '">';
@@ -371,11 +389,21 @@ if (!$dbname_ok) {
 // Step five - site setup data
 ////////////////////////////////////////////////////////////////////////////////
 
-if (!isset($_POST['wtname'])) $_POST['wtname'] = '';
-if (!isset($_POST['wtuser'])) $_POST['wtuser'] = '';
-if (!isset($_POST['wtpass'])) $_POST['wtpass'] = '';
-if (!isset($_POST['wtpass2'])) $_POST['wtpass2'] = '';
-if (!isset($_POST['wtemail'])) $_POST['wtemail'] = '';
+if (!isset($_POST['wtname'])) {
+	$_POST['wtname'] = '';
+}
+if (!isset($_POST['wtuser'])) {
+	$_POST['wtuser'] = '';
+}
+if (!isset($_POST['wtpass'])) {
+	$_POST['wtpass'] = '';
+}
+if (!isset($_POST['wtpass2'])) {
+	$_POST['wtpass2'] = '';
+}
+if (!isset($_POST['wtemail'])) {
+	$_POST['wtemail'] = '';
+}
 
 if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass']) < 6 || strlen($_POST['wtpass2']) < 6 || empty($_POST['wtemail']) || $_POST['wtpass'] <> $_POST['wtpass2']) {
 	if (strlen($_POST['wtpass']) > 0 && strlen($_POST['wtpass']) < 6) {
@@ -416,7 +444,8 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 		'<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">',
 		'</form>',
 		'</body></html>';
-		exit;
+		
+	return;
 } else {
 	// Copy these values through to the next step
 	echo '<input type="hidden" name="wtname"     value="', WT_Filter::escapeHtml($_POST['wtname']), '">';
@@ -765,14 +794,6 @@ try {
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	WT_DB::exec(
-		"CREATE TABLE IF NOT EXISTS `##ip_address` (" .
-		" ip_address VARCHAR(40)                                NOT NULL," . // long enough for IPv6
-		" category   ENUM('banned', 'search-engine', 'allowed') NOT NULL," .
-		" comment    VARCHAR(255)                               NOT NULL," .
-		" PRIMARY KEY (ip_address)" .
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-	);
-	WT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##session` (" .
 		" session_id   CHAR(128)   NOT NULL," .
 		" session_time TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP," .
@@ -917,7 +938,8 @@ try {
 	echo
 		'<script>document.location=document.location;</script>',
 		'</form></body></html>';
-	exit;
+	
+	return;
 } catch (PDOException $ex) {
 	echo
 		'<p class="bad">', WT_I18N::translate('An unexpected database error occurred.'), '</p>',

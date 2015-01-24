@@ -80,33 +80,35 @@ echo '<div id="search-page">
 		if ($controller->action == "general") {
 			echo '<div class="label">', WT_I18N::translate('Search for'), '</div>
 			<div class="value"><input tabindex="1" id="query" type="text" name="query" value="';
-				if (isset($controller->myquery)) 	echo $controller->myquery;
+				if (isset($controller->myquery)) {
+					echo $controller->myquery;
+				}
 				echo '" size="40" autofocus> ', print_specialchar_link('query'), '</div>
 			<div class="label">' ,  WT_I18N::translate('Records'), '</div>
 			<div class="value"><p>
-				<input type="checkbox"';
-				if (isset ($controller->srindi) || !$controller->isPostBack) echo ' checked="checked"';
+				<input type="checkbox" ';
+				echo isset ($controller->srindi) || !$controller->isPostBack ? 'checked' : '';
 				echo ' value="yes" id="srindi" name="srindi">
 					<label for="srindi">' ,  WT_I18N::translate('Individuals'), '</label>
 				</p><p>
-				<input type="checkbox"';
-				if (isset ($controller->srfams)) echo ' checked="checked"';
+				<input type="checkbox" ';
+				echo isset ($controller->srfams) ? 'checked' : '';
 				echo ' value="yes" id="srfams" name="srfams">
 					<label for="srfams">' , WT_I18N::translate('Families'), '</label>
 				</p><p>
-				<input type="checkbox"';
-				if (isset ($controller->srsour)) echo ' checked="checked"';
+				<input type="checkbox" ';
+				echo isset ($controller->srsour) ? 'checked' : '';
 				echo ' value="yes" id="srsour" name="srsour">
 					<label for="srsour">' ,  WT_I18N::translate('Sources'), '</label>
 				</p><p>
-				<input type="checkbox"';
-				if (isset ($controller->srnote)) echo 'checked="checked"';
+				<input type="checkbox" ';
+				echo isset ($controller->srnote) ? 'checked' : '';
 				echo ' value="yes" id="srnote" name="srnote">
 					<label for="srnote">' ,  WT_I18N::translate('Shared notes'), '</label>
 			</p></div>
 			<div class="label">' , WT_I18N::translate('Associates'), '</div>
-			<div class="value"><input type="checkbox" id="showasso" name="showasso" value="on"';
-				if ($controller->showasso == 'on') echo ' checked="checked"';
+			<div class="value"><input type="checkbox" id="showasso" name="showasso" value="on" ';
+				echo $controller->showasso === 'on' ? 'checked' : '';
 			echo '><label for="showasso">', WT_I18N::translate('Show related individuals/families'), '</label></div>';
 		}
 		//========== Search and replace Search Form ==========
@@ -133,17 +135,17 @@ echo '<div id="search-page">
 				<?php
 				echo '<div class="label">', WT_I18N::translate('Search'), '</div>
 					<div class="value"><p>
-						<input id="replaceAll" checked="checked" onclick="checkAll(this);" value="yes" name="replaceAll" type="checkbox">
+						<input id="replaceAll" checked onclick="checkAll(this);" value="yes" name="replaceAll" type="checkbox">
 						<label for="replaceAll">' , WT_I18N::translate('Entire record'), '</label>
 						<hr>
 					</p><p>
-						<input id="replaceNames" checked="checked" disabled="disabled" value="yes" name="replaceNames" type="checkbox">
+						<input id="replaceNames" checked disabled value="yes" name="replaceNames" type="checkbox">
 						<label for="replaceNames">' , WT_I18N::translate('Individuals'), '</label>
 					</p><p>
-						<input id="replacePlace" checked="checked" disabled="disabled" value="yes" name="replacePlaces" type="checkbox">
+						<input id="replacePlace" checked disabled value="yes" name="replacePlaces" type="checkbox">
 						<label for="replacePlace">' , WT_I18N::translate('Place'), '</label>
 					</p><p>
-						<input id="replaceWords" checked="checked" disabled="disabled" value="yes" name="replacePlacesWord" type="checkbox">
+						<input id="replaceWords" checked disabled value="yes" name="replacePlacesWord" type="checkbox">
 						<label for="replaceWords">' , WT_I18N::translate('Whole words only'), '</label>
 					</p></div>';
 			}
@@ -162,18 +164,20 @@ echo '<div id="search-page">
 			// ---- Soundex type options (Russell, DaitchM) ---
 			echo '<div class="label">', WT_I18N::translate('Phonetic algorithm'), '</div>
 				<div class="value"><p>
-					<input type="radio" name="soundex" value="Russell"';
-						if ($controller->soundex == "Russell") echo ' checked="checked" ';
+					<input type="radio" name="soundex" value="Russell" ';
+						if ($controller->soundex === 'Russell') {
+							echo 'checked';
+						}
 						echo '>', WT_I18N::translate('Russell');
 					echo '</p><p>
-						<input type="radio" name="soundex" value="DaitchM"';
-						if ($controller->soundex == "DaitchM" || $controller->soundex == "") echo ' checked="checked" ';
+						<input type="radio" name="soundex" value="DaitchM" ';
+						echo $controller->soundex === 'DaitchM' || $controller->soundex == "" ? 'checked' : '';
 						echo'>', WT_I18N::translate('Daitch-Mokotoff');
 				echo '</p></div>';
 			// Associates Section
 			echo '<div class="label">', WT_I18N::translate('Associates'), '</div>
-				<div class="value"><input type="checkbox" name="showasso" value="on"';
-					if ($controller->showasso == "on") echo ' checked="checked" ';
+				<div class="value"><input type="checkbox" name="showasso" value="on" ';
+					echo $controller->showasso === 'on' ? 'checked' : '';
 					echo '>', WT_I18N::translate('Show related individuals/families'),
 				'</div>';
 		}
@@ -200,10 +204,8 @@ echo '<div id="search-page">
 						$str = str_replace(array(".", "-", " "), array("_", "_", "_"), $tree->tree_name);
 						$controller->inputFieldNames[] = "$str";
 						echo '<p><input type="checkbox" ';
-						if (isset ($_REQUEST["$str"])) {
-							echo 'checked="checked" ';
-						}
-						echo 'value="yes" id="checkbox_', $tree->tree_id, '" name="', $str, '"><label for="checkbox_', $tree->tree_id, '">', $tree->tree_title_html, '</label></p>', "\n";
+						echo isset ($_REQUEST[$str]) ? 'checked' : '';
+						echo ' value="yes" id="checkbox_', $tree->tree_id, '" name="', $str, '"><label for="checkbox_', $tree->tree_id, '">', $tree->tree_title_html, '</label></p>', "\n";
 					}
 				echo '</div>';
 			}

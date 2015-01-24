@@ -90,10 +90,10 @@ if ($action != 'choose') {
 				foreach ($facts1 as $fact_id1 => $fact1) {
 					foreach ($facts2 as $fact_id2 => $fact2) {
 						if ($fact_id1 == $fact_id2) {
-							echo '<tr><td><input type="checkbox" name="keep1[]" value="', $fact_id1, '" checked="checked"';
+							echo '<tr><td><input type="checkbox" name="keep1[]" value="', $fact_id1, '" checked';
 							if ($ged1 != $ged2 && $fact1->getTarget()) {
 								// Don't change links when merging remote facts.
-								echo ' readonly="readonly"';
+								echo ' readonly';
 							}
 							echo '></td><td>', nl2br($fact1->getGedcom(), false), '</td></tr>';
 							$skip[] = $fact_id1;
@@ -113,10 +113,10 @@ if ($action != 'choose') {
 				echo '<table>';
 				foreach ($facts1 as $n=>$fact1) {
 					if ($fact1->getTag() != 'CHAN') {
-						echo '<tr><td><input type="checkbox" name="keep1[]" value="', $n, '" checked="checked"';
+						echo '<tr><td><input type="checkbox" name="keep1[]" value="', $n, '" checked';
 						if ($ged1 != $ged2 && $fact1->getTarget()) {
 							// Don't change links when merging remote facts.
-							echo ' readonly="readonly"';
+							echo ' readonly';
 						}
 						echo '></td>';
 						echo '<td>', nl2br(WT_Filter::escapeHtml($fact1->getGedcom()), false), '</td></tr>';
@@ -130,9 +130,9 @@ if ($action != 'choose') {
 						echo '<tr><td><input type="checkbox" name="keep2[]" value="', $n, '"';
 						if ($ged1 == $ged2 || !$fact2->getTarget()) {
 							// Don't merge links from different trees.  What would they point to!
-							echo ' checked="checked"';
+							echo ' checked';
 						} else {
-							echo ' readonly="readonly"';
+							echo ' readonly';
 						}
 						echo '></td>';
 						echo '<td>', nl2br(WT_Filter::escapeHtml($fact2->getGedcom()), false), '</td></tr>';
@@ -250,9 +250,9 @@ if ($action == 'choose') {
 	}
 	echo ' >';
 	foreach (WT_Tree::getAll() as $tree) {
-		echo '<option value="', $tree->tree_name_html, '"';
+		echo '<option value="', $tree->tree_name_html, '" ';
 		if (empty($ged) && $tree->tree_id == WT_GED_ID || !empty($ged) && $ged == $tree->tree_name) {
-			echo ' selected="selected"';
+			echo 'selected';
 		}
 		echo ' dir="auto">', $tree->tree_title_html, '</option>';
 	}
@@ -271,9 +271,9 @@ if ($action == 'choose') {
 	}
 	echo ' >';
 	foreach (WT_Tree::getAll() as $tree) {
-		echo '<option value="', $tree->tree_name_html, '"';
+		echo '<option value="', $tree->tree_name_html, '" ';
 		if (empty($ged2) && $tree->tree_id == WT_GED_ID || !empty($ged2) && $ged2 == $tree->tree_name) {
-			echo ' selected="selected"';
+			echo 'selected';
 		}
 		echo ' dir="auto">', $tree->tree_title_html, '</option>';
 	}

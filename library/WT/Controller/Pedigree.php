@@ -63,8 +63,10 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 		$this->box_width            = WT_Filter::getInteger('box_width', 50, 300, 100);
 		$this->PEDIGREE_GENERATIONS = WT_Filter::getInteger('PEDIGREE_GENERATIONS', 2, $MAX_PEDIGREE_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS);
 
-		if ($this->talloffset == 1) $this->talloffset = 1; // Make SURE this is an integer
-		if ($this->talloffset > 1 && $this->PEDIGREE_GENERATIONS > 8) $this->PEDIGREE_GENERATIONS = 8;
+		// With more than 8 generations, we run out of pixels on the <canvas>
+		if ($this->PEDIGREE_GENERATIONS > 8) {
+			$this->PEDIGREE_GENERATIONS = 8;
+		}
 
 		// TODO: some library functions expect this as a global.
 		// Passing a function parameter would be much better.
@@ -78,7 +80,7 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 		} elseif ($this->talloffset < 0) {
 			$this->talloffset = 0;
 		}
-		$show_full = $this->show_full;
+		$show_full  = $this->show_full;
 		$talloffset = $this->talloffset;
 
 		if ($this->root && $this->root->canShowName()) {
@@ -145,7 +147,9 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 		$this->prevyoffset = 0; // -- used to track the y position of the previous box
 		$this->offsetarray = array();
 		$this->minyoffset = 0;
-		if ($this->treesize < 3) $this->treesize = 3;
+		if ($this->treesize < 3) {
+			$this->treesize = 3;
+		}
 		// -- loop through all of IDs in the array starting at the last and working to the first
 		//-- calculation the box positions
 		for ($i = ($this->treesize - 1); $i >= 0; $i--) {
@@ -159,8 +163,7 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 			if ($this->talloffset < 2) {
 				$genoffset = pow(2, $this->curgen - $this->talloffset);
 				$boxspacing = $this->pbheight + $byspacing;
-			}
-			else {
+			} else {
 				$genoffset = pow(2, $this->curgen - 1);
 				$boxspacing = $this->pbwidth + $byspacing;
 			}
@@ -171,53 +174,77 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 				if ($this->PEDIGREE_GENERATIONS < 6) {
 					$addxoffset = $basexoffset + (10 + 60 * (5 - $this->PEDIGREE_GENERATIONS));
 					$this->xoffset = ($this->PEDIGREE_GENERATIONS - $this->curgen) * (($this->pbwidth + $bxspacing) / 2) + $addxoffset;
-				}
-				else {
+				} else {
 					$addxoffset = $basexoffset + 10;
 					$this->xoffset = ($this->PEDIGREE_GENERATIONS - $this->curgen) * (($this->pbwidth + $bxspacing) / 2) + $addxoffset;
 				}
 				//-- compact the tree
 				if ($this->curgen < $this->PEDIGREE_GENERATIONS) {
 					$parent = (int) (($i - 1) / 2);
-					if ($i % 2 == 0) $this->yoffset = $this->yoffset - (($boxspacing / 2) * ($this->curgen - 1));
-					else $this->yoffset = $this->yoffset + (($boxspacing / 2) * ($this->curgen - 1));
+					if ($i % 2 == 0) {
+						$this->yoffset = $this->yoffset - (($boxspacing / 2) * ($this->curgen - 1));
+					} else {
+						$this->yoffset = $this->yoffset + (($boxspacing / 2) * ($this->curgen - 1));
+					}
 					$pgen = $this->curgen;
 					while ($parent > 0) {
-						if ($parent % 2 == 0) $this->yoffset = $this->yoffset - (($boxspacing / 2) * $pgen);
-						else $this->yoffset = $this->yoffset + (($boxspacing / 2) * $pgen);
+						if ($parent % 2 == 0) {
+							$this->yoffset = $this->yoffset - (($boxspacing / 2) * $pgen);
+						} else {
+							$this->yoffset = $this->yoffset + (($boxspacing / 2) * $pgen);
+						}
 						$pgen++;
 						if ($pgen > 3) {
 							$temp = 0;
-							for ($j = 1; $j < ($pgen - 2); $j++) $temp += (pow(2, $j) - 1);
-							if ($parent % 2 == 0) $this->yoffset = $this->yoffset - (($boxspacing / 2) * $temp);
-							else $this->yoffset = $this->yoffset + (($boxspacing / 2) * $temp);
+							for ($j = 1; $j < ($pgen - 2); $j++) {
+								$temp += (pow(2, $j) - 1);
+							}
+							if ($parent % 2 == 0) {
+								$this->yoffset = $this->yoffset - (($boxspacing / 2) * $temp);
+							} else {
+								$this->yoffset = $this->yoffset + (($boxspacing / 2) * $temp);
+							}
 						}
 						$parent = (int) (($parent - 1) / 2);
 					}
 					if ($this->curgen > 3) {
 						$temp = 0;
-							for ($j = 1; $j < ($this->curgen - 2); $j++) $temp += (pow(2, $j) - 1);
-						if ($i % 2 == 0) $this->yoffset = $this->yoffset - (($boxspacing / 2) * $temp);
-						else $this->yoffset = $this->yoffset + (($boxspacing / 2) * $temp);
+							for ($j = 1; $j < ($this->curgen - 2); $j++) {
+								$temp += (pow(2, $j) - 1);
+							}
+						if ($i % 2 == 0) {
+							$this->yoffset = $this->yoffset - (($boxspacing / 2) * $temp);
+						} else {
+							$this->yoffset = $this->yoffset + (($boxspacing / 2) * $temp);
+						}
 					}
 
 				}
 				$this->yoffset -= (($boxspacing / 2) * pow(2, ($this->PEDIGREE_GENERATIONS - 2)) - ($boxspacing / 2));
-			}
-			else if ($this->talloffset == 1) {
+			} else if ($this->talloffset == 1) {
 				$this->xoffset = 22 + $basexoffset + (($this->PEDIGREE_GENERATIONS - $this->curgen) * ($this->pbwidth + $bxspacing));
-				if ($this->curgen == $this->PEDIGREE_GENERATIONS) $this->xoffset;
-				if ($this->PEDIGREE_GENERATIONS < 4) $this->xoffset += 60;
+				if ($this->curgen == $this->PEDIGREE_GENERATIONS) {
+					$this->xoffset;
+				}
+				if ($this->PEDIGREE_GENERATIONS < 4) {
+					$this->xoffset += 60;
+				}
+			} else if ($this->talloffset == 2) {
+				if ($this->show_full) {
+					$this->xoffset = ($this->curgen) * (($this->pbwidth + $bxspacing) / 2) + ($this->curgen) * 10 + 136.5;
+				} else {
+					$this->xoffset = ($this->curgen) * (($this->pbwidth + $bxspacing) / 4) + ($this->curgen) * 10 + 215.75;
+				}
+			} else {
+				if ($this->show_full) {
+					$this->xoffset = ($this->PEDIGREE_GENERATIONS - $this->curgen) * (($this->pbwidth + $bxspacing) / 2) + 260;
+				} else {
+					$this->xoffset = ($this->PEDIGREE_GENERATIONS - $this->curgen) * (($this->pbwidth + $bxspacing) / 4) + 270;
+				}
 			}
-			else if ($this->talloffset == 2) {
-				if ($this->show_full) $this->xoffset = ($this->curgen) * (($this->pbwidth + $bxspacing) / 2) + ($this->curgen) * 10 + 136.5;
-				else $this->xoffset = ($this->curgen) * (($this->pbwidth + $bxspacing) / 4) + ($this->curgen) * 10 + 215.75;
+			if ($this->curgen == 1 && $this->talloffset == 1) {
+				$this->xoffset += 10;
 			}
-			else {
-				if ($this->show_full) $this->xoffset = ($this->PEDIGREE_GENERATIONS - $this->curgen) * (($this->pbwidth + $bxspacing) / 2) + 260;
-				else $this->xoffset = ($this->PEDIGREE_GENERATIONS - $this->curgen) * (($this->pbwidth + $bxspacing) / 4) + 270;
-			}
-			if ($this->curgen == 1 && $this->talloffset == 1) $this->xoffset += 10;
 			$this->offsetarray[$i]["x"] = $this->xoffset;
 			$this->offsetarray[$i]["y"] = $this->yoffset;
 		}
@@ -226,7 +253,9 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 		$minyoffset = 0;
 		for ($i = 0; $i < count($this->ancestors); $i++) {
 			if (!empty($offsetarray[$i])) {
-				if (($minyoffset == 0) || ($minyoffset > $this->offsetarray[$i]["y"]))  $minyoffset = $this->offsetarray[$i]["y"];
+				if (($minyoffset == 0) || ($minyoffset > $this->offsetarray[$i]["y"])) {
+					$minyoffset = $this->offsetarray[$i]["y"];
+				}
 			}
 		}
 	}

@@ -196,11 +196,11 @@ class WT_Tree {
 				" LEFT JOIN `##gedcom_setting`      gs3 ON (g.gedcom_id=gs3.gedcom_id AND gs3.setting_name='REQUIRE_AUTHENTICATION')" .
 				" LEFT JOIN `##user_gedcom_setting` ugs ON (g.gedcom_id=ugs.gedcom_id AND ugs.setting_name='canedit' AND ugs.user_id=?)" .
 				" WHERE " .
-				"  g.gedcom_id>0 AND (".          // exclude the "template" tree
+				"  g.gedcom_id>0 AND (" . // exclude the "template" tree
 				"    EXISTS (SELECT 1 FROM `##user_setting` WHERE user_id=? AND setting_name='canadmin' AND setting_value=1)" . // Admin sees all
 				"   ) OR (" .
-				"    gs2.setting_value = 1 AND (".                 // Allow imported trees, with either:
-				"     gs3.setting_value <> 1 OR" .                 // visitor access
+				"    gs2.setting_value = 1 AND (" . // Allow imported trees, with either:
+				"     gs3.setting_value <> 1 OR" . // visitor access
 				"     IFNULL(ugs.setting_value, 'none')<>'none'" . // explicit access
 				"   )" .
 				"  )" .
@@ -422,7 +422,7 @@ class WT_Tree {
 		$tree->setPreference('WEBTREES_EMAIL', '');
 		$tree->setPreference('WORD_WRAPPED_NOTES', '0');
 		$tree->setPreference('imported', '0');
-		$tree->setPreference('title',                        /* I18N: Default title for new family trees */ WT_I18N::translate('My family tree'));
+		$tree->setPreference('title', /* I18N: Default title for new family trees */ WT_I18N::translate('My family tree'));
 
 		// Default restriction settings
 		$statement = WT_DB::prepare(
@@ -436,7 +436,7 @@ class WT_Tree {
 
 		// Genealogy data
 		// It is simpler to create a temporary/unimported GEDCOM than to populate all the tables...
-		$john_doe =/* I18N: This should be a common/default/placeholder name of an individual.  Put slashes around the surname. */
+		$john_doe = /* I18N: This should be a common/default/placeholder name of an individual.  Put slashes around the surname. */
 			WT_I18N::translate('John /DOE/');
 		$note     = WT_I18N::translate('Edit this individual and replace their details with your own');
 		WT_DB::prepare("INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data) VALUES (?, ?)")->execute(array(

@@ -84,7 +84,7 @@ abstract class BaseTheme {
 	 */
 	public function bodyHeaderPopupWindow() {
 		return
-			'<body>' .
+			'<body class="container container-popup">' .
 			'<main id="content" role="main">' .
 			$this->flashMessagesContainer(WT_FlashMessages::getMessages());
 	}
@@ -165,11 +165,11 @@ abstract class BaseTheme {
 	}
 
 	/**
-	 * Where are our CSS assets?
+	 * Where are our CSS, JS and other assets?
 	 *
 	 * @return string A relative path, such as "themes/foo/"
 	 */
-	public function cssUrl() {
+	public function assetUrl() {
 		return '';
 	}
 
@@ -398,6 +398,7 @@ abstract class BaseTheme {
 			'<!--[if IE 8]><script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script><![endif]-->' .
 			$this->metaCharset() .
 			$this->title($title) .
+			$this->favicon() .
 			$this->metaViewport() .
 			$this->metaRobots($controller->getMetaRobots()) .
 			$this->metaUaCompatible() .
@@ -486,12 +487,12 @@ abstract class BaseTheme {
 	 */
 	public function icon(WT_Fact $fact) {
 		$icon = 'images/facts/' . $fact->getTag() . '.png';
-		$dir  = substr($this->cssUrl(), strlen(WT_STATIC_URL));
+		$dir  = substr($this->assetUrl(), strlen(WT_STATIC_URL));
 		if (file_exists($dir . $icon)) {
-			return '<img src="' . $this->cssUrl() . $icon . '" title="' . WT_Gedcom_Tag::getLabel($fact->getTag()) . '">';
+			return '<img src="' . $this->assetUrl() . $icon . '" title="' . WT_Gedcom_Tag::getLabel($fact->getTag()) . '">';
 		} elseif (file_exists($dir . 'images/facts/NULL.png')) {
 			// Spacer image - for alignment - until we move to a sprite.
-			return '<img src="' . Theme::theme()->cssUrl() . 'images/facts/NULL.png">';
+			return '<img src="' . Theme::theme()->assetUrl() . 'images/facts/NULL.png">';
 		} else {
 			return '';
 		}
@@ -523,11 +524,11 @@ abstract class BaseTheme {
 			'</div>' .
 			'<div class="chart_textbox" style="max-height:' . $this->parameter('chart-box-y') . 'px;">' .
 			$thumbnail .
-			'<a href="' . $individual->getHtmlUrl() . '">'.
+			'<a href="' . $individual->getHtmlUrl() . '">' .
 			'<span class="namedef name1">' . $individual->getFullName() . '</span>' .
 			'</a>' .
 			'<div class="namedef name1">' . $individual->getAddName() . '</div>' .
-			'<div class="inout2 details1">' . $this->individualBoxFacts($individual) .'</div>' .
+			'<div class="inout2 details1">' . $this->individualBoxFacts($individual) . '</div>' .
 			'</div>' .
 			'<div class="inout"></div>' .
 			'</div>';
@@ -568,11 +569,11 @@ abstract class BaseTheme {
 			'</div>' .
 			'<div class="chart_textbox" style="max-height:' . $this->parameter('chart-box-y') . 'px;">' .
 			$thumbnail .
-			'<a href="' . $individual->getHtmlUrl() . '">'.
+			'<a href="' . $individual->getHtmlUrl() . '">' .
 			'<span class="namedef name2">' . $individual->getFullName() . '</span>' .
 			'</a>' .
 			'<div class="namedef name2">' . $individual->getAddName() . '</div>' .
-			'<div class="inout2 details2">' . $this->individualBoxFacts($individual) .'</div>' .
+			'<div class="inout2 details2">' . $this->individualBoxFacts($individual) . '</div>' .
 			'</div>' .
 			'<div class="inout"></div>' .
 			'</div>';
@@ -598,10 +599,10 @@ abstract class BaseTheme {
 			'<div data-pid="' . $individual->getXref() . '" class="person_box_template ' . $personBoxClass . ' box-style0" style="width: ' . $this->parameter('compact-chart-box-x') . 'px; min-height: ' . $this->parameter('compact-chart-box-y') . 'px">' .
 			'<div class="compact_view">' .
 			$thumbnail .
-			'<a href="' . $individual->getHtmlUrl() . '">'.
+			'<a href="' . $individual->getHtmlUrl() . '">' .
 			'<span class="namedef name0">' . $individual->getFullName() . '</span>' .
 			'</a>' .
-			'<div class="inout2 details0">' . $individual->getLifeSpan() .'</div>' .
+			'<div class="inout2 details0">' . $individual->getLifeSpan() . '</div>' .
 			'</div>' .
 			'<div class="inout"></div>' .
 			'</div>';
@@ -732,7 +733,7 @@ abstract class BaseTheme {
 			$this->menuChartTimeline($individual),
 		));
 
-		usort($menus, function (WT_Menu $x, WT_Menu $y) {
+		usort($menus, function(WT_Menu $x, WT_Menu $y) {
 			return WT_I18N::strcasecmp($x->getLabel(), $y->getLabel());
 		});
 
@@ -882,7 +883,7 @@ abstract class BaseTheme {
 				$this->menuChartTimeline($individual),
 			));
 
-			usort($submenus, function (WT_Menu $x, WT_Menu $y) {
+			usort($submenus, function(WT_Menu $x, WT_Menu $y) {
 				return WT_I18N::strcasecmp($x->getLabel(), $y->getLabel());
 			});
 
@@ -1197,7 +1198,7 @@ abstract class BaseTheme {
 				$menulist[] = new WT_Menu(WT_I18N::translate('Shared notes'), 'notelist.php?' . $this->tree_url, 'menu-list-note');
 			}
 		}
-		uasort($menulist, function (WT_Menu $x, WT_Menu $y) {
+		uasort($menulist, function(WT_Menu $x, WT_Menu $y) {
 				return WT_I18N::strcasecmp($x->getLabel(), $y->getLabel());
 			});
 
@@ -1531,20 +1532,20 @@ abstract class BaseTheme {
 			'stats-small-chart-x'            => 440,
 			'stats-small-chart-y'            => 125,
 			'stats-large-chart-x'            => 900,
-			'image-dline'                    => $this->cssUrl() . 'images/dline.png',
-			'image-dline2'                   => $this->cssUrl() . 'images/dline2.png',
-			'image-hline'                    => $this->cssUrl() . 'images/hline.png',
-			'image-spacer'                   => $this->cssUrl() . 'images/spacer.png',
-			'image-vline'                    => $this->cssUrl() . 'images/vline.png',
-			'image-add'                      => $this->cssUrl() . 'images/add.png',
-			'image-button_family'            => $this->cssUrl() . 'images/buttons/family.png',
-			'image-minus'                    => $this->cssUrl() . 'images/minus.png',
-			'image-plus'                     => $this->cssUrl() . 'images/plus.png',
-			'image-remove'                   => $this->cssUrl() . 'images/delete.png',
-			'image-search'                   => $this->cssUrl() . 'images/go.png',
-			'image-default_image_F'          => $this->cssUrl() . 'images/silhouette_female.png',
-			'image-default_image_M'          => $this->cssUrl() . 'images/silhouette_male.png',
-			'image-default_image_U'          => $this->cssUrl() . 'images/silhouette_unknown.png',
+			'image-dline'                    => $this->assetUrl() . 'images/dline.png',
+			'image-dline2'                   => $this->assetUrl() . 'images/dline2.png',
+			'image-hline'                    => $this->assetUrl() . 'images/hline.png',
+			'image-spacer'                   => $this->assetUrl() . 'images/spacer.png',
+			'image-vline'                    => $this->assetUrl() . 'images/vline.png',
+			'image-add'                      => $this->assetUrl() . 'images/add.png',
+			'image-button_family'            => $this->assetUrl() . 'images/buttons/family.png',
+			'image-minus'                    => $this->assetUrl() . 'images/minus.png',
+			'image-plus'                     => $this->assetUrl() . 'images/plus.png',
+			'image-remove'                   => $this->assetUrl() . 'images/delete.png',
+			'image-search'                   => $this->assetUrl() . 'images/go.png',
+			'image-default_image_F'          => $this->assetUrl() . 'images/silhouette_female.png',
+			'image-default_image_M'          => $this->assetUrl() . 'images/silhouette_male.png',
+			'image-default_image_U'          => $this->assetUrl() . 'images/silhouette_unknown.png',
 		);
 
 		if (array_key_exists($parameter_name, $parameters)) {

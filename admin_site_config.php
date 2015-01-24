@@ -90,11 +90,8 @@ case 'login':
 		WT_Site::setPreference('WELCOME_TEXT_AUTH_MODE', WT_Filter::post('WELCOME_TEXT_AUTH_MODE'));
 		WT_Site::setPreference('WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE, WT_Filter::post('WELCOME_TEXT_AUTH_MODE_4'));
 		WT_Site::setPreference('USE_REGISTRATION_MODULE', WT_Filter::post('USE_REGISTRATION_MODULE'));
-		WT_Site::setPreference('LOGIN_URL', WT_Filter::post('LOGIN_URL'));
-		WT_Site::setPreference('LOGIN_URL', WT_Filter::post('LOGIN_URL'));
-		WT_Site::setPreference('LOGIN_URL', WT_Filter::post('LOGIN_URL'));
-		WT_Site::setPreference('LOGIN_URL', WT_Filter::post('LOGIN_URL'));
-		WT_Site::setPreference('LOGIN_URL', WT_Filter::post('LOGIN_URL'));
+		WT_Site::setPreference('REQUIRE_ADMIN_AUTH_REGISTRATION', WT_Filter::post('REQUIRE_ADMIN_AUTH_REGISTRATION'));
+		WT_Site::setPreference('SHOW_REGISTER_CAUTION', WT_Filter::post('SHOW_REGISTER_CAUTION'));
 	}
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=login');
 
@@ -443,7 +440,7 @@ $controller->pageHeader();
 			</div>
 		</div>
 
-		<!-- USE_REGISTRATION_MODULE -->
+		<!-- REQUIRE_ADMIN_AUTH_REGISTRATION -->
 		<div class="form-group">
 			<label for="REQUIRE_ADMIN_AUTH_REGISTRATION" class="col-sm-3 control-label">
 				<?php echo /* I18N: A site configuration setting */ WT_I18N::translate('Require an administrator to approve new user registrations'); ?>

@@ -62,13 +62,13 @@ $controller
 					<input type="radio" name="chart_style" value="0"
 					<?php
 						if ($controller->chart_style == 0) {
-							echo ' checked="checked"';
+							echo 'checked';
 						}
 						echo ' onclick="statusDisable(\'cousins\');';
 						echo '">', WT_I18N::translate('List');
-						echo '<br><input type="radio" name="chart_style" value="1"';
+						echo '<br><input type="radio" name="chart_style" value="1" ';
 						if ($controller->chart_style == 1) {
-							echo ' checked="checked"';
+							echo 'checked';
 						}
 						echo ' onclick="statusEnable(\'cousins\');';
 						echo '">', WT_I18N::translate('Booklet');
@@ -77,26 +77,26 @@ $controller
 					<?php
 						echo '<input ';
 						if ($controller->chart_style == 0) {
-							echo 'disabled="disabled" ';
+							echo 'disabled';
 						}
-						echo 'id="cousins" type="checkbox" value="';
+						echo ' id="cousins" type="checkbox" value="';
 						if ($controller->show_cousins) {
-							echo '1" checked="checked" onclick="document.people.show_cousins.value=\'0\';"';
+							echo '1" checked onclick="document.people.show_cousins.value=\'0\';"';
 						} else {
 							echo '0" onclick="document.people.show_cousins.value=\'1\';"';
 						}
 						echo '>';
 						echo WT_I18N::translate('Show cousins');
-						echo '<br><input type="radio" name="chart_style" value="2"';
+						echo '<br><input type="radio" name="chart_style" value="2" ';
 						if ($controller->chart_style == 2) {
-							echo ' checked="checked" ';
+							echo 'checked';
 						}
 						echo ' onclick="statusDisable(\'cousins\');"';
 						echo '>', WT_I18N::translate('Individuals');
 						echo '<br><input type="radio" name="chart_style" value="3"';
-						echo ' onclick="statusDisable(\'cousins\');"';
+						echo ' onclick="statusDisable(\'cousins\');" ';
 						if ($controller->chart_style == 3) {
-							echo ' checked="checked" ';
+							echo 'checked';
 						}
 						echo '>', WT_I18N::translate('Families');
 					?>
@@ -113,9 +113,9 @@ $controller
 					<select name="PEDIGREE_GENERATIONS">
 						<?php
 							for ($i = 2; $i <= $MAX_PEDIGREE_GENERATIONS; $i++) {
-								echo '<option value="', $i, '"';
+								echo '<option value="', $i, '" ';
 								if ($i == $OLD_PGENS) {
-									echo ' selected="selected"';
+									echo 'selected';
 								}
 									echo '>', WT_I18N::number($i), '</option>';
 								}
@@ -126,7 +126,7 @@ $controller
 					<?php echo WT_I18N::translate('Show details'); ?>
 				</td>
 				<td class="optionbox">
-					<input type="checkbox" value="<?php if ($controller->show_full) { echo '1" checked="checked" onclick="document.people.show_full.value=\'0\';'; } else { echo '0" onclick="document.people.show_full.value=\'1\';'; } ?>">
+					<input type="checkbox" value="<?php if ($controller->show_full) { echo '1" checked onclick="document.people.show_full.value=\'0\';'; } else { echo '0" onclick="document.people.show_full.value=\'1\';'; } ?>">
 				</td>
 			</tr>
 		</table>

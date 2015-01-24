@@ -49,7 +49,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 				WT_DB::prepare("DELETE FROM `##message` WHERE message_id=?")->execute(array($message_id));
 			}
 		}
-		$block = get_block_setting($block_id, 'block', true);
+		$block = get_block_setting($block_id, 'block', '1');
 		if ($cfg) {
 			foreach (array('block') as $name) {
 				if (array_key_exists($name, $cfg)) {
@@ -147,12 +147,11 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 	public function configureBlock($block_id) {
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			set_block_setting($block_id, 'block', WT_Filter::postBool('block'));
-			exit;
 		}
 
 		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
-		$block = get_block_setting($block_id, 'block', true);
+		$block = get_block_setting($block_id, 'block', '1');
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';

@@ -48,7 +48,8 @@ if (
 ) {
 	$controller->pageHeader();
 	$controller->addInlineJavascript('window.location.reload();');
-	exit;
+	
+	return;
 }
 
 $action = WT_Filter::get('action');
@@ -133,7 +134,8 @@ if ($action === 'update') {
 			}
 		}
 	}
-	exit;
+	
+	return;
 }
 
 $controller
@@ -259,11 +261,11 @@ $controller
 	// Load Block Description array for use by javascript
 	foreach ($all_blocks as $block_name => $block) {
 		$controller->addInlineJavascript(
-			'block_descr["'.$block_name.'"] = "'.WT_Filter::escapeJs($block->getDescription()).'";'
+			'block_descr["' . $block_name . '"] = "' . WT_Filter::escapeJs($block->getDescription()) . '";'
 		);
 	}
 	$controller->addInlineJavascript(
-		'block_descr["advice1"] = "'.WT_I18N::translate('Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.').'";'
+		'block_descr["advice1"] = "' . WT_I18N::translate('Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.') . '";'
 	);
 
 ?>

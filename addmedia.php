@@ -63,7 +63,8 @@ if (!WT_USER_CAN_EDIT || !$disp) {
 	$controller
 		->pageHeader()
 		->addInlineJavascript('closePopupAndReloadParent();');
-	exit;
+
+	return;
 }
 
 // TODO - there is a lot of common code in the create and update cases....
@@ -228,7 +229,8 @@ case 'create': // Save the information from the “showcreateform” action
 		$controller->addInlineJavascript('openerpasteid("' . $new_media->getXref() . '");');
 	}
 	echo '<button onclick="closePopupAndReloadParent();">', WT_I18N::translate('close'), '</button>';
-	exit;
+
+	return;
 
 case 'update': // Save the information from the “editmedia” action
 	$controller->setPageTitle(WT_I18N::translate('Edit media object'));
@@ -383,7 +385,8 @@ case 'update': // Save the information from the “editmedia” action
 	} else {
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	}
-	exit;
+
+	return;
 case 'showmediaform':
 	$controller->setPageTitle(WT_I18N::translate('Create a new media object'));
 	$action = 'create';
@@ -498,18 +501,18 @@ if (!$isExternal) {
 	if ($action !== 'update' || WT_USER_GEDCOM_ADMIN) {
 		$mediaFolders = WT_Query_Media::folderList();
 		echo '<span dir="ltr"><select name="folder_list" onchange="document.newmedia.folder.value=this.options[this.selectedIndex].value;">';
-		echo '<option';
+		echo '<option ';
 		if ($folder == '') {
-			echo ' selected="selected"';
+			echo 'selected';
 		}
 		echo ' value=""> ', WT_I18N::translate('Choose: '), ' </option>';
 		if (Auth::isAdmin()) {
 			echo '<option value="other" disabled>', WT_I18N::translate('Other folder… please type in'), "</option>";
 		}
 		foreach ($mediaFolders as $f) {
-			echo '<option value="', $f, '"';
+			echo '<option value="', $f, '" ';
 			if ($folder == $f) {
-				echo ' selected="selected"';
+				echo 'selected';
 			}
 			echo '>', $f, "</option>";
 		}
@@ -678,12 +681,12 @@ if (!empty($gedrec)) {
 	}
 }
 if (Auth::isAdmin()) {
-	echo "<tr><td class=\"descriptionbox wrap width25\">";
-	echo WT_Gedcom_Tag::getLabel('CHAN'), "</td><td class=\"optionbox wrap\">";
+	echo '<tr><td class="descriptionbox wrap width25">';
+	echo WT_Gedcom_Tag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
 	if ($NO_UPDATE_CHAN) {
-		echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\">";
+		echo '<input type="checkbox" checked name="preserve_last_changed">';
 	} else {
-		echo "<input type=\"checkbox\" name=\"preserve_last_changed\">";
+		echo '<input type="checkbox" name="preserve_last_changed">';
 	}
 	echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN'), '<br>';
 	echo '</td></tr>';

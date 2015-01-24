@@ -26,13 +26,13 @@ use WT_I18N;
  */
 class Webtrees extends BaseTheme {
 	/** {@inheritdoc} */
-	public function cssUrl() {
+	public function assetUrl() {
 		return 'themes/webtrees/css-1.7.0/';
 	}
 
 	/** {@inheritdoc} */
 	protected function favicon() {
-		return '<link rel="icon" href="' . $this->cssUrl() . 'favicon.png" type="image/png">';
+		return '<link rel="icon" href="' . $this->assetUrl() . 'favicon.png" type="image/png">';
 	}
 
 	/** {@inheritdoc} */
@@ -73,7 +73,7 @@ class Webtrees extends BaseTheme {
 			'chart-background-m'             => 'b1cff0',
 			'distribution-chart-high-values' => '84beff',
 			'distribution-chart-low-values'  => 'c3dfff',
-			'image-search'                   => $this->cssUrl() . 'images/search.png',
+			'image-search'                   => $this->assetUrl() . 'images/search.png',
 		);
 
 		if (array_key_exists($parameter_name, $parameters)) {
@@ -87,7 +87,7 @@ class Webtrees extends BaseTheme {
 	protected function stylesheets() {
 		return array(
 			'themes/webtrees/jquery-ui-1.11.2/jquery-ui.css',
-			$this->cssUrl() . 'style.css',
+			$this->assetUrl() . 'style.css',
 		);
 	}
 

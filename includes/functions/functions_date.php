@@ -40,7 +40,7 @@ function get_age_at_event($age_string, $show_years) {
 			array(
 				'/(\d+)([ymwd])/',
 			),
-			function ($match) use ($age_string, $show_years) {
+			function($match) use ($age_string, $show_years) {
 				switch ($match[2]) {
 				case 'y':
 					if ($show_years || preg_match('/[dm]/', $age_string)) {

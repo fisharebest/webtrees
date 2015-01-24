@@ -420,7 +420,7 @@ $controller
 </ol>
 <h2><?php echo $controller->getPageTitle(); ?></h2>
 
-<form class="form-horizontal" method="POST" role="form">
+<form class="form-horizontal" method="POST">
 	<?php echo WT_Filter::getCsrf(); ?>
 	<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 
@@ -929,7 +929,7 @@ $controller
 				<option value=""></option>
 				<?php foreach (User::all() as $user): ?>
 					<?php if (Auth::isMember($WT_TREE, $user)): ?>
-						<option value="<?php echo $user->getUserId(); ?>" selected="<?php echo $WT_TREE->getPreference('CONTACT_USER_ID') === $user->getUserId() ? 'selected' : ''; ?>">
+						<option value="<?php echo $user->getUserId(); ?>" <?php echo $WT_TREE->getPreference('CONTACT_USER_ID') === $user->getUserId() ? 'selected' : ''; ?>>
 							<?php echo WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName()); ?>
 						</option>
 					<?php endif; ?>
@@ -951,7 +951,7 @@ $controller
 				<option value=""></option>
 				<?php foreach (User::all() as $user): ?>
 					<?php if (Auth::isMember($WT_TREE, $user)): ?>
-						<option value="<?php echo $user->getUserId(); ?>" selected="<?php echo $WT_TREE->getPreference('WEBMASTER_USER_ID') === $user->getUserId() ? 'selected' : ''; ?>">
+						<option value="<?php echo $user->getUserId(); ?>" <?php echo $WT_TREE->getPreference('WEBMASTER_USER_ID') === $user->getUserId() ? 'selected' : ''; ?>>
 							<?php echo WT_Filter::escapeHtml($user->getRealName()) . ' - ' . WT_Filter::escapeHtml($user->getUserName()); ?>
 						</option>
 					<?php endif; ?>
@@ -1446,19 +1446,19 @@ $controller
 		<div class="col-sm-3">
 			<div class="checkbox">
 				<label for="_BIRT_GCHI">
-					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_BIRT_GCHI" value="_BIRT_GCHI" <?php echo in_array('_BIRT_GCHI', $relatives_events) ? ' checked="checked"' : ''; ?>>
+					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_BIRT_GCHI" value="_BIRT_GCHI" <?php echo in_array('_BIRT_GCHI', $relatives_events) ? 'checked' : ''; ?>>
 					<?php echo WT_Gedcom_Tag::getLabel('_BIRT_GCHI'); ?>
 				</label>
 			</div>
 			<div class="checkbox">
 				<label for="_BIRT_CHIL">
-					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_BIRT_CHIL" value="_BIRT_CHIL" <?php echo in_array('_BIRT_CHIL', $relatives_events) ? ' checked="checked"' : ''; ?>>
+					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_BIRT_CHIL" value="_BIRT_CHIL" <?php echo in_array('_BIRT_CHIL', $relatives_events) ? 'checked' : ''; ?>>
 					<?php echo WT_Gedcom_Tag::getLabel('_BIRT_CHIL'); ?>
 				</label>
 			</div>
 			<div class="checkbox">
 				<label for="_BIRT_SIBL">
-					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_BIRT_SIBL" value="_BIRT_SIBL" <?php echo in_array('_BIRT_SIBL', $relatives_events) ? ' checked="checked"' : ''; ?>>
+					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_BIRT_SIBL" value="_BIRT_SIBL" <?php echo in_array('_BIRT_SIBL', $relatives_events) ? 'checked' : ''; ?>>
 					<?php echo WT_Gedcom_Tag::getLabel('_BIRT_SIBL'); ?>
 				</label>
 			</div>
@@ -1466,25 +1466,25 @@ $controller
 		<div class="col-sm-3">
 			<div class="checkbox">
 				<label for="_MARR_GCHI">
-					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_MARR_GCHI" value="_MARR_GCHI" <?php echo in_array('_MARR_GCHI', $relatives_events) ? ' checked="checked"' : ''; ?>>
+					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_MARR_GCHI" value="_MARR_GCHI" <?php echo in_array('_MARR_GCHI', $relatives_events) ? 'checked' : ''; ?>>
 					<?php echo WT_Gedcom_Tag::getLabel('_MARR_GCHI'); ?>
 				</label>
 			</div>
 			<div class="checkbox">
 				<label for="_MARR_CHIL">
-					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_MARR_CHIL" value="_MARR_CHIL" <?php echo in_array('_MARR_CHIL', $relatives_events) ? ' checked="checked"' : ''; ?>>
+					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_MARR_CHIL" value="_MARR_CHIL" <?php echo in_array('_MARR_CHIL', $relatives_events) ? 'checked' : ''; ?>>
 					<?php echo WT_Gedcom_Tag::getLabel('_MARR_CHIL'); ?>
 				</label>
 			</div>
 			<div class="checkbox">
 				<label for="_MARR_SIBL">
-					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_MARR_SIBL" value="_MARR_SIBL" <?php echo in_array('_MARR_SIBL', $relatives_events) ? ' checked="checked"' : ''; ?>>
+					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_MARR_SIBL" value="_MARR_SIBL" <?php echo in_array('_MARR_SIBL', $relatives_events) ? 'checked' : ''; ?>>
 					<?php echo WT_Gedcom_Tag::getLabel('_MARR_SIBL'); ?>
 				</label>
 			</div>
 			<div class="checkbox">
 				<label for="_MARR_PARE">
-					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_MARR_PARE" value="_MARR_PARE" <?php echo in_array('_MARR_PARE', $relatives_events) ? ' checked="checked"' : ''; ?>>
+					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_MARR_PARE" value="_MARR_PARE" <?php echo in_array('_MARR_PARE', $relatives_events) ? 'checked' : ''; ?>>
 					<?php echo WT_Gedcom_Tag::getLabel('_MARR_PARE'); ?>
 				</label>
 			</div>
@@ -1492,37 +1492,37 @@ $controller
 		<div class="col-sm-3">
 			<div class="checkbox">
 				<label for="_DEAT_GCHI">
-					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_GCHI" value="_DEAT_GCHI" <?php echo in_array('_DEAT_GCHI', $relatives_events) ? ' checked="checked"' : ''; ?>>
+					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_GCHI" value="_DEAT_GCHI" <?php echo in_array('_DEAT_GCHI', $relatives_events) ? 'checked' : ''; ?>>
 					<?php echo WT_Gedcom_Tag::getLabel('_DEAT_GCHI'); ?>
 				</label>
 			</div>
 			<div class="checkbox">
 				<label for="_DEAT_CHIL">
-					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_CHIL" value="_DEAT_CHIL" <?php echo in_array('_DEAT_CHIL', $relatives_events) ? ' checked="checked"' : ''; ?>>
+					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_CHIL" value="_DEAT_CHIL" <?php echo in_array('_DEAT_CHIL', $relatives_events) ? 'checked' : ''; ?>>
 					<?php echo WT_Gedcom_Tag::getLabel('_DEAT_CHIL'); ?>
 				</label>
 			</div>
 			<div class="checkbox">
 				<label for="_DEAT_SIBL">
-					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_SIBL" value="_DEAT_SIBL" <?php echo in_array('_DEAT_SIBL', $relatives_events) ? ' checked="checked"' : ''; ?>>
+					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_SIBL" value="_DEAT_SIBL" <?php echo in_array('_DEAT_SIBL', $relatives_events) ? 'checked' : ''; ?>>
 					<?php echo WT_Gedcom_Tag::getLabel('_DEAT_SIBL'); ?>
 				</label>
 			</div>
 			<div class="checkbox">
 				<label for="_DEAT_PARE">
-					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_PARE" value="_DEAT_PARE" <?php echo in_array('_DEAT_PARE', $relatives_events) ? ' checked="checked"' : ''; ?>>
+					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_PARE" value="_DEAT_PARE" <?php echo in_array('_DEAT_PARE', $relatives_events) ? 'checked' : ''; ?>>
 					<?php echo WT_Gedcom_Tag::getLabel('_DEAT_PARE'); ?>
 				</label>
 			</div>
 			<div class="checkbox">
 				<label for="_DEAT_SPOU">
-					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_SPOU" value="_DEAT_SPOU" <?php echo in_array('_DEAT_SPOU', $relatives_events) ? ' checked="checked"' : ''; ?>>
+					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_SPOU" value="_DEAT_SPOU" <?php echo in_array('_DEAT_SPOU', $relatives_events) ? 'checked' : ''; ?>>
 					<?php echo WT_Gedcom_Tag::getLabel('_DEAT_SPOU'); ?>
 				</label>
 			</div>
 			<div class="checkbox">
 				<label for="_DEAT_GPAR">
-					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_GPAR" value="_DEAT_GPAR" <?php echo in_array('_DEAT_GPAR', $relatives_events) ? ' checked="checked"' : ''; ?>>
+					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_GPAR" value="_DEAT_GPAR" <?php echo in_array('_DEAT_GPAR', $relatives_events) ? 'checked' : ''; ?>>
 					<?php echo WT_Gedcom_Tag::getLabel('_DEAT_GPAR'); ?>
 				</label>
 			</div>

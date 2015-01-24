@@ -130,8 +130,16 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Confi
 				ckeditor_WT_Module::enableEditor($controller);
 			}
 
-			// "Help for this page" link
-			echo '<div id="page_help">', help_link('add_faq_item', $this->getName()), '</div>';
+			?>
+			<ol class="breadcrumb small">
+				<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+				<li><a href="admin_modules.php"><?php echo WT_I18N::translate('Module administration'); ?></a></li>
+				<li><a href="module.php?mod=faq&mod_action=admin_config"><?php echo WT_I18N::translate('Frequently asked questions'); ?></a></li>
+				<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+			</ol>
+			<h2><?php echo $controller->getPageTitle(); ?></h2>
+			<?php
+
 			echo '<form name="faq" method="post" action="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">';
 			echo WT_Filter::getCsrf();
 			echo '<input type="hidden" name="save" value="1">';
@@ -193,11 +201,11 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Confi
 		)->execute(array($block_id))->fetchOne();
 
 		$swap_block = WT_DB::prepare(
-			"SELECT block_order, block_id".
-			" FROM `##block`".
-			" WHERE block_order=(".
-			"  SELECT MAX(block_order) FROM `##block` WHERE block_order < ? AND module_name=?".
-			" ) AND module_name=?".
+			"SELECT block_order, block_id" .
+			" FROM `##block`" .
+			" WHERE block_order=(" .
+			"  SELECT MAX(block_order) FROM `##block` WHERE block_order < ? AND module_name=?" .
+			" ) AND module_name=?" .
 			" LIMIT 1"
 		)->execute(array($block_order, $this->getName(), $this->getName()))->fetchOneRow();
 		if ($swap_block) {
@@ -221,11 +229,11 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Confi
 		)->execute(array($block_id))->fetchOne();
 
 		$swap_block = WT_DB::prepare(
-			"SELECT block_order, block_id".
-			" FROM `##block`".
-			" WHERE block_order=(".
-			"  SELECT MIN(block_order) FROM `##block` WHERE block_order>? AND module_name=?".
-			" ) AND module_name=?".
+			"SELECT block_order, block_id" .
+			" FROM `##block`" .
+			" WHERE block_order=(" .
+			"  SELECT MIN(block_order) FROM `##block` WHERE block_order>? AND module_name=?" .
+			" ) AND module_name=?" .
 			" LIMIT 1"
 		)->execute(array($block_order, $this->getName(), $this->getName()))->fetchOneRow();
 		if ($swap_block) {
@@ -245,7 +253,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Confi
 		global $controller;
 		$controller = new WT_Controller_Page;
 		$controller
-			->setPageTitle($this->getTitle())
+			->setPageTitle(WT_I18N::translate('Frequently asked questions'))
 			->pageHeader();
 
 		$faqs = WT_DB::prepare(
@@ -261,6 +269,15 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Confi
 			" AND IFNULL(gedcom_id, ?)=?" .
 			" ORDER BY block_order"
 		)->execute(array($this->getName(), WT_GED_ID, WT_GED_ID))->fetchAll();
+
+		?>
+		<ol class="breadcrumb small">
+			<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+			<li><a href="admin_modules.php"><?php echo WT_I18N::translate('Module administration'); ?></a></li>
+			<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+		</ol>
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
+		<?php
 
 		// Define your colors for the alternating rows
 		echo '<h2 class="center">', WT_I18N::translate('Frequently asked questions'), '</h2>';
@@ -306,7 +323,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Confi
 
 		$controller = new WT_Controller_Page;
 		$controller
-			->setPageTitle($this->getTitle())
+			->setPageTitle(WT_I18N::translate('Frequently asked questions'))
 			->pageHeader();
 
 		$faqs = WT_DB::prepare(
@@ -329,8 +346,21 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Confi
 			"SELECT MAX(block_order) FROM `##block` WHERE module_name=?"
 		)->execute(array($this->getName()))->fetchOne();
 
+		?>
+		<ol class="breadcrumb small">
+			<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+			<li><a href="admin_modules.php"><?php echo WT_I18N::translate('Module administration'); ?></a></li>
+			<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+		</ol>
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
+		<p>
+			<?php echo WT_I18N::translate('FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors.  Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc.'); ?>
+			<?php echo WT_I18N::translate('You may use HTML to format the answer and to add links to other websites.'); ?>
+		</p>
+		<?php
+
 		echo
-			'<p><form method="get" action="', WT_SCRIPT_NAME ,'">',
+			'<p><form>',
 			WT_I18N::translate('Family tree'), ' ',
 			'<input type="hidden" name="mod", value="', $this->getName(), '">',
 			'<input type="hidden" name="mod_action", value="admin_config">',
@@ -339,7 +369,6 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Confi
 			'</form></p>';
 
 		echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">', WT_I18N::translate('Add an FAQ item'), '</a>';
-		echo help_link('add_faq_item', $this->getName());
 
 		echo '<table id="faq_edit">';
 		if (empty($faqs)) {
@@ -373,10 +402,8 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Confi
 				}
 				echo '</td><td>';
 				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit&amp;block_id=', $faq->block_id, '">', WT_I18N::translate('Edit'), '</a>';
-				echo help_link('edit_faq_item', $this->getName());
 				echo '</td><td>';
 				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_delete&amp;block_id=', $faq->block_id, '" onclick="return confirm(\'', WT_I18N::translate('Are you sure you want to delete this FAQ entry?'), '\');">', WT_I18N::translate('Delete'), '</a>';
-				echo help_link('delete_faq_item', $this->getName());
 				echo '</td></tr>';
 				// NOTE: Print the title text of the current item
 				echo '<tr><td colspan="5">';

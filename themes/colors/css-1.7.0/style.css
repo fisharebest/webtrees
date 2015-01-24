@@ -380,7 +380,8 @@ div.fact_SHARED_NOTE {
 	width: 99%;
 }
 
-.name1, .name2 {
+.name1,
+.name2 {
 	color: #555;
 	font-weight: bold;
 	font-size: 12px;
@@ -472,6 +473,7 @@ a:hover .nameZoom {
 
 .icon {
 	border: 0;
+	padding: 0 5px;
 }
 
 .sublinks_cell {
@@ -546,7 +548,6 @@ a:hover .nameZoom {
 	height: 20px;
 	text-decoration: none;
 	background-color: #fff;
-	border: 1px solid #ccc;
 	padding: 1px;
 	white-space: nowrap;
 }
@@ -715,7 +716,6 @@ a:hover .nameZoom {
 
 .search_hit {
 	background-color: #ff0;
-	color: #000;
 }
 
 .search_item {
@@ -833,7 +833,6 @@ a:hover .nameZoom {
 a.showit {
 	position: relative;
 	z-index: 24;
-	color: #000;
 	text-decoration: none;
 }
 
@@ -941,7 +940,7 @@ a.showit:hover > span {
 }
 
 .gchart {
-	border: 1px solid #999;
+	border: solid #999 1px;
 }
 
 /* ---Find special characters--- */
@@ -957,10 +956,6 @@ a.showit:hover > span {
 
 .clearfloat {
 	clear: both;
-}
-
-td.descriptionbox a {
-	color: #fff;
 }
 
 /* this keeps the tag color the same when it is a link as when not */
@@ -1146,15 +1141,15 @@ td.descriptionbox a {
 	float: right;
 }
 
-.lb-image_edit {
+.list_value_wrap .lb-image_edit {
 	background: url(images/image_edit.png) no-repeat 50% 20%;
 }
 
-.lb-image_link {
+.list_value_wrap .lb-image_link {
 	background: url(images/image_link.png) no-repeat 50% 20%;
 }
 
-.lb-image_view {
+.list_value_wrap .lb-image_view {
 	background: url(images/image_view.png) no-repeat 50% 20%;
 }
 
@@ -1251,6 +1246,7 @@ td.descriptionbox a {
 #register-form label input,
 #register-form label select,
 #register-form textarea {
+	background-color: #fff;
 	width: 220px;
 	margin: 0 10px;
 	padding: 3px;
@@ -1316,7 +1312,7 @@ td.descriptionbox a {
 
 .popup {
 	position: absolute;
-	top: 20px;
+	top: 21px;
 	right: 0;
 	left: auto;
 	visibility: hidden;
@@ -1621,10 +1617,6 @@ td.descriptionbox a {
 	float: left;
 }
 
-#index_small_blocks .name1 {
-	color: #333;
-}
-
 .small_inner_block {
 	max-height: 200px;
 	overflow: auto;
@@ -1898,7 +1890,7 @@ span.link_text {
 }
 
 #indi_header h3 {
-	color: #777;
+	color: #555;
 	font-size: 90%;
 	font-weight: bold;
 	margin: 0;
@@ -1941,14 +1933,6 @@ span.link_text {
 
 #indi_header a:hover {
 	color: #f00;
-}
-
-#main_name {
-	color: #555;
-	float: left;
-	font-size: 2em;
-	margin: 10px;
-	font-weight: bold;
 }
 
 #indi_mainimage {
@@ -2052,10 +2036,6 @@ dd .deletelink {
 [dir=rtl] #indi_header h3 .header_age {
 	padding: 5px 5px 5px 0;
 	float: left;
-}
-
-[dir=rtl] #main_name {
-	float: right;
 }
 
 [dir=rtl] #indi_mainimage {
@@ -2213,6 +2193,7 @@ dd .deletelink {
 
 /* === jquery-ui.css changes === */
 .ui-accordion .ui-accordion-content {
+	border: 0;
 	position: relative;
 	padding: 0 5px;
 	overflow: visible;
@@ -2228,7 +2209,6 @@ dd .deletelink {
 }
 
 .ui-widget-header {
-	border: 1px solid #fff;
 	padding: 3px;
 }
 
@@ -2526,7 +2506,7 @@ dd .deletelink {
 
 /* Sidebar*/
 #sb_content_descendancy {
-	margin-top: 5px;
+	margin-top: 2px;
 }
 
 #sb_desc_content {
@@ -2566,7 +2546,7 @@ dd .deletelink {
 /* Individuals and Families */
 #sb_content_individuals,
 #sb_content_families {
-	margin-top: 5px;
+	margin-top: 2px;
 }
 
 .sb_indi_surname_li,
@@ -2593,7 +2573,7 @@ dd .deletelink {
 
 /* Clippings */
 #sb_content_clippings {
-	margin-top: 5px;
+	margin-top: 2px;
 }
 
 #sb_clippings_content ul {
@@ -2768,6 +2748,7 @@ dd .deletelink {
 
 #search-page-table .value {
 	background-color: #ecf5ff;
+	color: #333;
 	border-top: 1px solid #999;
 	margin: 0 0 0 170px;
 	padding: 5px;
@@ -3370,11 +3351,6 @@ table.table-census-assistant th {
 .charts_block td {
 	padding: 0;
 	empty-cells: show;
-}
-
-/*-- Interactive ---- */
-.tv_out {
-	margin-top: 12px;
 }
 
 /*-- Lifespan ---- */
@@ -4340,6 +4316,7 @@ header nav {
 .primary-menu > li > a {
 	height: 37px;
 	width: 27px;
+	color: transparent; /* Use class="sr-only" from bootstrap? */
 }
 
 .primary-menu > li > ul {
@@ -4606,11 +4583,11 @@ footer {
 	background-position: right -52px;
 }
 
-#menu-chart-descendancy {
+#menu-chart-descendants {
 	background-position: left -0px;
 }
 
-[dir=rtl] #menu-chart-descendancy {
+[dir=rtl] #menu-chart-descendants {
 	background-position: right -0px;
 }
 
@@ -5159,7 +5136,7 @@ footer {
 }
 
 .icon-indis {
-	width: 22px;
+	width: 25px;
 	height: 25px;
 	background-image: url(images/mypage.png);
 }
@@ -5171,8 +5148,8 @@ footer {
 }
 
 .icon-pedigree {
-	width: 20px;
-	height: 20px;
+	width: 25px;
+	height: 25px;
 	background-image: url(images/pedigree.png);
 }
 
@@ -5219,8 +5196,8 @@ footer {
 }
 
 .icon-user_add {
-	width: 20px;
-	height: 20px;
+	width: 25px;
+	height: 25px;
 	background-image: url(images/user_add.png);
 }
 
@@ -5237,26 +5214,27 @@ footer {
 	#sidebar,
 	#separator,
 	.noprint {
-		display: none !important;
+		display: none;
+	}
+	
+	#pedigree_chart {
+		left: -40px;
+		top:  -260px;
+	}
+
+	[dir=rtl] #pedigree_chart {
+		left: auto;
+		right: -20px;
+	}
+	
+	#header_accordion1 {
+		width: 510px;
 	}
 
 	#familybook_chart h3 {
 		margin-bottom: 10px;
 	}
-
-	#header_accordion1 {
-		width: 510px !important;
-	}
-
-	#pedigree_chart {
-		left: -90px;
-	}
-
-	[dir=rtl] #pedigree_chart {
-		left: auto;
-		right: -90px;
-	}
-
+	
 	.lifespan_outer {
 		position: relative;
 		width: auto;
