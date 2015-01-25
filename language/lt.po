@@ -1,18 +1,18 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Fab\n"
+"Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-12-15 10:38+0000\n"
-"PO-Revision-Date: 2014-11-24 22:24+1000\n"
+"PO-Revision-Date: 2015-01-25 15:47+1000\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
 "Language-Team: \n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Launchpad-Export-Date: 2013-08-04 19:02+0000\n"
-"X-Generator: Poedit 1.6.9\n"
+"X-Generator: Poedit 1.7.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 "X-Poedit-Basepath: ..\n"
@@ -5701,7 +5701,7 @@ msgstr "Artimų giminaičių įvykiai"
 
 #: help_text.php:1363
 msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
-msgstr ""
+msgstr "Kiekvienas asmuo šioje duomenų bazėje turi unikalų ID. Jei žinote savo įrašo ID, įveskite jį čia. Jei nežinote savo įrašo ID arba negalite jo rasti dėl privatumo nustatymų, prašome pateikti pakankama kiekį duomenų, komentarų srityje, kad svetainės administratorius galėtu nustatyti kas jus esate šioje svetainėje ir tada jis galės nustatyti ID už jus."
 
 #: help_text.php:1378
 msgid "Everybody has this role, including visitors to the site and search engines."
@@ -8210,17 +8210,17 @@ msgstr "Įtraukti šį asmenį į jau sukurtą šeimą kaip vaiką"
 #: admin_media.php:517 library/WT/Controller/Media.php:70
 #: library/WT/Controller/Media.php:159 modules_v3/lightbox/module.php:144
 msgid "Link this media object to a family"
-msgstr ""
+msgstr "Susieti šį medijos objektą su šeima"
 
 #: admin_media.php:522 library/WT/Controller/Media.php:74
 #: library/WT/Controller/Media.php:162 modules_v3/lightbox/module.php:149
 msgid "Link this media object to a source"
-msgstr ""
+msgstr "Susieti šį medijos objektą su šaltiniu"
 
 #: admin_media.php:512 library/WT/Controller/Media.php:66
 #: library/WT/Controller/Media.php:156 modules_v3/lightbox/module.php:139
 msgid "Link this media object to an individual"
-msgstr ""
+msgstr "Susieti šį medijos objektą su asmeniu"
 
 #: inverselink.php:35 inverselink.php:68 library/WT/Controller/Family.php:215
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:75
@@ -8228,7 +8228,7 @@ msgstr ""
 #: modules_v3/lightbox/module.php:72 modules_v3/lightbox/module.php:73
 #: modules_v3/media/module.php:85 repo.php:140 source.php:157
 msgid "Link to an existing media object"
-msgstr "Nuoroda į jau esantį medijos objektą"
+msgstr "Susieti su jau esamu medijos objektu"
 
 #. I18N: gedcom tag _DBID
 #: library/WT/Gedcom/Tag.php:1349
@@ -10586,7 +10586,7 @@ msgstr "Nuotrauka"
 
 #: admin_pgv_to_wt.php:147
 msgid "PhpGedView might be installed in one of these folders:"
-msgstr ""
+msgstr "PhpGedView galimai įkurtas vienoje iš šių aplankų:"
 
 #: admin_pgv_to_wt.php:65
 msgid "PhpGedView must use the same database as webtrees."
@@ -13843,7 +13843,7 @@ msgstr "Ši duomenų bazė veikia tik su %s MySQL versija. Jūs negalite įdiegt
 
 #: help_text.php:1207 setup.php:412
 msgid "This email address will be used to send password reminders, site notifications, and messages from other family members who are registered on the site."
-msgstr "Šis elektroninio pašto adresas bus naudojamas siųsti jums slaptažodžio priminimus, svetainės pranešimus ir žinutes iš kitų šeimos narių, kurie yra užsiregistravę svetainėje."
+msgstr "Šis elektroninio pašto adresas bus naudojamas siųsti slaptažodžio priminimus, svetainės pranešimus ir žinutes iš kitų šeimos narių, kurie yra užsiregistravę svetainėje."
 
 #: addmedia.php:519
 msgid "This entry is ignored if you have entered a URL into the filename field."
@@ -14074,7 +14074,7 @@ msgstr ""
 
 #: help_text.php:992
 msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails.  The default setting is 100."
-msgstr ""
+msgstr "Tai plotis (pikseliais) kurį programa naudos, kai automatiškai sukurs miniatiūras.  Numatytasis parametras yra 100."
 
 #: help_text.php:1353 setup.php:396
 msgid "This is your real name, as you would like it displayed on screen."
