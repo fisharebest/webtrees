@@ -349,10 +349,6 @@ class WT_I18N {
 					$installed_languages[$match[1]] = $tmp2 . '|' . $tmp1;
 				}
 			}
-			if (empty($installed_languages)) {
-				// We cannot translate this
-				die('There are no languages installed.  You must include at least one xx.mo file in /language/');
-			}
 			// Sort by the combined language/language name...
 			uasort($installed_languages, array('WT_I18N', 'strcasecmp'));
 			foreach ($installed_languages as &$value) {
