@@ -294,7 +294,7 @@ if ($search) {
 				}
 			}
 			echo '<br>';
-			echo '<div">';
+			echo '<div>';
 			echo print_fact_sources($mediaobject->getGedcom(), 1);
 			echo print_fact_notes($mediaobject->getGedcom(), 1);
 			echo '</div>';
