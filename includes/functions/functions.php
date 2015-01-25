@@ -858,7 +858,11 @@ function get_relationship_name_from_path($path, WT_Individual $person1 = null, W
 			foreach ($person1->getSpouseFamilies() as $family) {
 				if ($person2 === $family->getSpouse($person1)) {
 					if ($family->getFacts('_NMR')) {
-						return WT_I18N::translate_c('MALE', 'partner');
+						if ($family->getFacts(WT_EVENTS_DIV)) {
+							return WT_I18N::translate_c('MALE', 'ex-partner');
+						} else {
+							return WT_I18N::translate_c('MALE', 'partner');
+						}
 					} elseif ($family->getFacts(WT_EVENTS_DIV)) {
 						return WT_I18N::translate('ex-husband');
 					}
@@ -872,7 +876,11 @@ function get_relationship_name_from_path($path, WT_Individual $person1 = null, W
 			foreach ($person1->getSpouseFamilies() as $family) {
 				if ($person2 === $family->getSpouse($person1)) {
 					if ($family->getFacts('_NMR')) {
-						return WT_I18N::translate_c('FEMALE', 'partner');
+						if ($family->getFacts(WT_EVENTS_DIV)) {
+							return WT_I18N::translate_c('FEMALE', 'ex-partner');
+						} else {
+							return WT_I18N::translate_c('FEMALE', 'partner');
+						}
 					} elseif ($family->getFacts(WT_EVENTS_DIV)) {
 						return WT_I18N::translate('ex-wife');
 					}
@@ -886,7 +894,11 @@ function get_relationship_name_from_path($path, WT_Individual $person1 = null, W
 			foreach ($person1->getSpouseFamilies() as $family) {
 				if ($person2 === $family->getSpouse($person1)) {
 					if ($family->getFacts('_NMR')) {
-						return WT_I18N::translate_c('MALE/FEMALE', 'partner');
+						if ($family->getFacts(WT_EVENTS_DIV)) {
+							return WT_I18N::translate_c('MALE/FEMALE', 'ex-partner');
+						} else {
+							return WT_I18N::translate_c('MALE/FEMALE', 'partner');
+						}
 					} elseif ($family->getFacts(WT_EVENTS_DIV)) {
 						return WT_I18N::translate('ex-spouse');
 					}
