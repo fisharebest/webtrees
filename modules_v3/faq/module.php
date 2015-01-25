@@ -95,12 +95,8 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Confi
 			}
 			set_block_setting($block_id, 'header', WT_Filter::post('header'));
 			set_block_setting($block_id, 'faqbody', WT_Filter::post('faqbody'));
-			$languages = array();
-			foreach (WT_I18N::installed_languages() as $code => $name) {
-				if (WT_Filter::postBool('lang_' . $code)) {
-					$languages[] = $code;
-				}
-			}
+
+			$languages = WT_Filter::postArray('lang', null, array_keys(WT_I18N::installed_languages()));
 			set_block_setting($block_id, 'languages', implode(',', $languages));
 			$this->config();
 		} else {
@@ -160,8 +156,8 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Confi
 			echo '<th>', WT_I18N::translate('FAQ visibility'), '<br><small>', WT_I18N::translate('A FAQ item can be displayed on just one of the family trees, or on all the family trees.'), '</small></th>';
 			echo '</tr><tr>';
 			echo '<td>';
-			$languages = get_block_setting($block_id, 'languages');
-			echo edit_language_checkboxes('lang_', $languages);
+			$languages = explode(',', get_block_setting($block_id, 'languages'));
+			echo edit_language_checkboxes('lang', $languages);
 			echo '</td><td>';
 			echo '<input type="text" name="block_order" size="3" tabindex="3" value="', $block_order, '"></td>';
 			echo '</td><td>';

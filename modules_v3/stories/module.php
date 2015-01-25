@@ -164,12 +164,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 				}
 				set_block_setting($block_id, 'title', WT_Filter::post('title'));
 				set_block_setting($block_id, 'story_body', WT_Filter::post('story_body'));
-				$languages = array();
-				foreach (WT_I18N::installed_languages() as $code => $name) {
-					if (WT_Filter::postBool('lang_' . $code)) {
-						$languages[] = $code;
-					}
-				}
+				$languages = WT_Filter::postArray('lang', null, array_keys(WT_I18N::installed_languages()));
 				set_block_setting($block_id, 'languages', implode(',', $languages));
 				$this->config();
 			} else {
@@ -237,9 +232,9 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 					}
 				}
 				echo '</td>';
-				$languages = get_block_setting($block_id, 'languages');
+				$languages = explode(',', get_block_setting($block_id, 'languages'));
 				echo '<td class="optionbox">';
-				echo edit_language_checkboxes('lang_', $languages);
+				echo edit_language_checkboxes('lang', $languages);
 				echo '</td></tr></table>';
 				echo '<p><input type="submit" value="', WT_I18N::translate('save'), '" tabindex="5">';
 				echo '</p>';
