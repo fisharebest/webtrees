@@ -1264,7 +1264,7 @@ class WT_Stats {
 		switch ($type) {
 		default:
 		case 'full':
-			if ($record->canShow()) {
+			if ($record->canShowName()) {
 				$result = $record->format_list('span', false, $record->getFullName());
 			} else {
 				$result = WT_I18N::translate('This information is private and cannot be shown.');
