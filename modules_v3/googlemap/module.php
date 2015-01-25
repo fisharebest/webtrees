@@ -324,7 +324,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							</td>
 						</tr>
 						<tr>
-							<th><?php echo WT_I18N::translate('Zoom level of map'), help_link('GM_MAP_ZOOM', 'googlemap'); ?></th>
+							<th><?php echo WT_I18N::translate('Zoom level of map'); ?></th>
 							<td>
 								<?php echo WT_I18N::translate('minimum'); ?>: <select name="NEW_GM_MIN_ZOOM">
 								<?php for ($j = 1; $j < 15; $j++) { ?>
@@ -336,6 +336,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 								<option value="<?php echo $j, "\" "; if ($this->getSetting('GM_MAX_ZOOM') == $j) echo "selected"; echo ">", $j; ?></option>
 								<?php } ?>
 								</select>
+								<p>
+									<?php echo WT_I18N::translate('Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house.  Note that 15 is only available in certain areas.'); ?>
+								</p>
 							</td>
 						</tr>
 					</table>
@@ -344,7 +347,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				<div id="gm_advanced">
 					<table class="gm_edit_config">
 						<tr>
-							<th colspan="2"><?php echo WT_I18N::translate('Precision of the latitude and longitude'), help_link('GM_PRECISION', 'googlemap'); ?></th>
+							<th colspan="2">
+								<?php echo WT_I18N::translate('Precision of the latitude and longitude'); ?>
+							</th>
 							<td>
 								<table>
 									<tr>
@@ -399,10 +404,20 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 										</td>
 									</tr>
 								</table>
+								<p class="small text-muted">
+									<?php echo WT_I18N::translate('This specifies the precision of the different levels when entering new geographic locations.  For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits.'); ?>
+								</p>
 							</td>
 							<td></td>
 						</tr>
-							<th class="gm_prefix" colspan="3"><?php echo WT_I18N::translate('Optional prefixes and suffixes'), help_link('GM_NAME_PREFIX_SUFFIX', 'googlemap'); ?></th>
+							<th class="gm_prefix">
+								<?php echo WT_I18N::translate('Optional prefixes and suffixes'); ?>
+							</th>
+							<td colspan="2">
+								<p class="small text-muted">
+									<?php echo WT_I18N::translate('Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”.'); ?>
+								</p>
+							</td>
 						</tr>
 						<tr id="gm_level_titles">
 							<th></th>
@@ -419,8 +434,12 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 								}
 								?>
 							</th>
-							<td><input type="text" size="30" name="NEW_GM_PREFIX_<?php echo $level; ?>" value="<?php echo $this->getSetting('GM_PREFIX_' . $level); ?>"></td>
-							<td><input type="text" size="30" name="NEW_GM_POSTFIX_<?php echo $level; ?>" value="<?php echo $this->getSetting('GM_POSTFIX_' . $level); ?>"></td>
+							<td>
+								<input type="text" size="30" name="NEW_GM_PREFIX_<?php echo $level; ?>" value="<?php echo $this->getSetting('GM_PREFIX_' . $level); ?>">
+							</td>
+							<td>
+								<input type="text" size="30" name="NEW_GM_POSTFIX_<?php echo $level; ?>" value="<?php echo $this->getSetting('GM_POSTFIX_' . $level); ?>">
+							</td>
 						</tr>
 						<?php } ?>
 					</table>
@@ -451,12 +470,26 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 							</td>
 						</tr>
 						<tr>
-							<th><?php echo WT_I18N::translate('Display short placenames'), help_link('GM_DISP_SHORT_PLACE', 'googlemap'); ?></th>
-							<td><?php echo edit_field_yes_no('NEW_GM_DISP_SHORT_PLACE', $this->getSetting('GM_DISP_SHORT_PLACE')); ?></td>
+							<th>
+								<?php echo WT_I18N::translate('Display short placenames'), help_link('GM_DISP_SHORT_PLACE', 'googlemap'); ?>
+							</th>
+							<td>
+								<?php echo edit_field_yes_no('NEW_GM_DISP_SHORT_PLACE', $this->getSetting('GM_DISP_SHORT_PLACE')); ?>
+								<p class="small text-muted">
+									<?php echo WT_I18N::translate('Hide the flags that are configured in the googlemap module.  Usually these are for countries and states.  This serves as a visual cue that the markers around the flag are from the general area, and not the specific spot.'); ?>
+								</p>
+							</td>
 						</tr>
 						<tr>
-							<th><?php echo WT_I18N::translate('Display map coordinates'), help_link('GM_COORD', 'googlemap'); ?></th>
-							<td><?php echo edit_field_yes_no('NEW_GM_COORD', $this->getSetting('GM_COORD')); ?></td>
+							<th>
+								<?php echo WT_I18N::translate('Display map coordinates'); ?>
+							</th>
+							<td>
+								<?php echo edit_field_yes_no('NEW_GM_COORD', $this->getSetting('GM_COORD')); ?>
+								<p class="small text-muted">
+									<?php echo WT_I18N::translate('This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers.'); ?>
+								</p>
+							</td>
 						</tr>
 					</table>
 				</div>
@@ -601,6 +634,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		}
 		?>
 		<h4><?php echo WT_I18N::translate('Change flag'); ?></h4>
+
+		<p class="small text-muted">
+			<?php echo WT_I18N::translate('Using the pull down menu it is possible to select a country, of which a flag can be selected.  If no flags are shown, then there are no flags defined for this country.'); ?>
+		</p>
+
 		<form method="post" id="flags" name="flags" action="module.php?mod=googlemap&amp;mod_action=flags&amp;countrySelected=<?php echo $countrySelected; ?>&amp;stateSelected=<?php echo $stateSelected; ?>">
 			<input type="hidden" name="action" value="ChangeFlag">
 			<input type="hidden" name="selcountry" value="<?php echo $countrySelected; ?>">
@@ -608,7 +646,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			<table class="facts_table">
 				<tr>
 					<td class="optionbox" colspan="4">
-						<?php echo help_link('PLE_FLAGS', 'googlemap'); ?>
 						<select name="COUNTRYSELECT" dir="ltr" onchange="selectCountry()">
 							<option value="Countries"><?php echo WT_I18N::translate('Countries'); ?></option>
 							<?php foreach ($countryList as $country_key=>$country_name) {
@@ -653,7 +690,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				echo '>';
 		?>
 					<td class="optionbox" colspan="4">
-						<?php echo help_link('PLE_FLAGS', 'googlemap'); ?>
 						<select name="STATESELECT" dir="ltr" onchange="selectCountry()">
 							<option value="States"><?php echo /* I18N: Part of a country, state/region/county */ WT_I18N::translate('Subdivision'); ?></option>
 							<?php foreach ($stateList as $state_key=>$state_name) {
@@ -733,10 +769,10 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						<?php echo WT_I18N::translate('Generations'); ?>
 					</td>
 					<td class="descriptionbox wrap">
-						<?php echo WT_I18N::translate('Hide flags'), help_link('PEDIGREE_MAP_hideflags', 'googlemap'); ?>
+						<?php echo WT_I18N::translate('Hide flags'); ?>
 					</td>
 					<td class="descriptionbox wrap">
-						<?php echo WT_I18N::translate('Hide lines'), help_link('PEDIGREE_MAP_hidelines', 'googlemap'); ?>
+						<?php echo WT_I18N::translate('Hide lines'); ?>
 					</td>
 				</tr>
 				<tr>
@@ -757,19 +793,25 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						?>
 						</select>
 					</td>
-					<td class="optionbox">
+					<td class="optionbox wrap">
 						<?php
 						echo '<input name="hideflags" type="checkbox" value="1" ';
 						echo $hideflags ? 'checked' : '';
 						echo '>';
 						?>
+						<p class="small text-muted">
+							<?php echo WT_I18N::translate('Hide the flags that are configured in the googlemap module.  Usually these are for countries and states.  This serves as a visual cue that the markers around the flag are from the general area, and not the specific spot.'); ?>
+						</p>
 					</td>
-					<td class="optionbox">
+					<td class="optionbox wrap">
 						<?php
 						echo '<input name="hidelines" type="checkbox" value="1" ';
 						echo $hidelines ? 'checked' : '';
 						echo '>';
 						?>
+						<p class="small text-muted">
+							<?php echo WT_I18N::translate('Hide the lines connecting the child to each parent if they exist on the map.'); ?>
+						</p>
 					</td>
 				</tr>
 				<tr>
@@ -2481,6 +2523,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		$par      = explode(',', strip_tags($place));
 		$par      = array_reverse($par);
 		$place_id = 0;
+		$pl_id    = 0;
+
 		for ($i = 0; $i < count($par); $i++) {
 			$par[$i] = trim($par[$i]);
 			if (empty($par[$i])) {
@@ -2517,6 +2561,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		$par      = explode(',', $place);
 		$par      = array_reverse($par);
 		$place_id = 0;
+		$pl_id    = 0;
 
 		for ($i = 0; $i < count($par); $i++) {
 			$par[$i]   = trim($par[$i]);
@@ -3241,7 +3286,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		if (file_exists($path)) {
 			$dir = dir($path);
 			while (false !== ($entry = $dir->read())) {
-				if ($entry != '.' && $entry != '..' && $entry != '.svn') {
+				if ($entry !== '.' && $entry !== '..') {
 					if (is_dir($path . '/' . $entry)) {
 						$this->findFiles($path . '/' . $entry);
 					} elseif (strstr($entry, '.csv') !== false) {
@@ -3979,7 +4024,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				</td>
 			</tr>
 			<tr>
-				<td class="descriptionbox"><?php echo WT_I18N::translate('Precision'), help_link('PLE_PRECISION', 'googlemap'); ?></td>
+				<td class="descriptionbox">
+					<?php echo WT_I18N::translate('Precision'); ?>
+				</td>
 				<?php
 					$exp = explode(".", $place_lati);
 					if (isset($exp[1])) {
@@ -4012,6 +4059,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					<label for="new_prec_4"><?php echo WT_I18N::translate('House'); ?></label>
 					<input type="radio" id="new_prec_5" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision >= $this->getSetting('GM_PRECISION_5')) echo 'checked'; ?> value="<?php echo $this->getSetting('GM_PRECISION_5'); ?>">
 					<label for="new_prec_5"><?php echo WT_I18N::translate('Max'); ?></label>
+					<p class="small text-muted">
+						<?php echo WT_I18N::translate('Here you can enter the precision.  Based on this setting the number of digits that will be used in the latitude and longitude is determined.'); ?>
+					</p>
 				</td>
 			</tr>
 			<tr>
@@ -4035,12 +4085,20 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				</td>
 			</tr>
 			<tr>
-				<td class="descriptionbox"><?php echo WT_I18N::translate('Zoom level'), help_link('PLE_ZOOM', 'googlemap'); ?></td>
+				<td class="descriptionbox">
+					<?php echo WT_I18N::translate('Zoom level'); ?>
+				</td>
 				<td class="optionbox" colspan="2">
-					<input type="text" id="NEW_ZOOM_FACTOR" name="NEW_ZOOM_FACTOR" value="<?php echo $zoomfactor; ?>" size="20" onchange="updateMap();"></td>
+					<input type="text" id="NEW_ZOOM_FACTOR" name="NEW_ZOOM_FACTOR" value="<?php echo $zoomfactor; ?>" size="20" onchange="updateMap();">
+					<p class="small text-muted">
+						<?php echo WT_I18N::translate('Here the zoom level can be entered.  This value will be used as the minimal value when displaying this geographic location on a map.'); ?>
+					</p>
+				</td>
 			</tr>
 			<tr>
-				<td class="descriptionbox"><?php echo WT_I18N::translate('Flag'), help_link('PLE_ICON', 'googlemap'); ?></td>
+				<td class="descriptionbox">
+					<?php echo WT_I18N::translate('Flag'); ?>
+				</td>
 				<td class="optionbox" colspan="2">
 					<div id="flagsDiv">
 		<?php
@@ -4052,7 +4110,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						<a href="#" onclick="change_icon();return false;"><?php echo WT_I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;
 						<a href="#" onclick="remove_icon();return false;"><?php echo WT_I18N::translate('Remove flag'); ?></a>
 		<?php   } ?>
-					</div></td>
+					</div>
+					<p class="small text-muted">
+						<?php echo WT_I18N::translate('Here an icon can be set or removed.  Using this link a flag can be selected.  When this geographic location is shown, this flag will be displayed.'); ?>
+					</p>
+				</td>
 			</tr>
 			</table>
 			<p id="save-cancel">
@@ -4262,7 +4324,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				</tr>
 				<?php if (count($placefiles) > 0) { ?>
 				<tr>
-					<th><?php echo WT_I18N::translate('Server file containing places (CSV)'), help_link('PLIF_LOCALFILE', 'googlemap'); ?></th>
+					<th>
+						<?php echo WT_I18N::translate('Server file containing places (CSV)'); ?>
+					</th>
 					<td>
 						<select name="localfile">
 							<option></option>
@@ -4272,6 +4336,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 								else echo $placefile; ?></option>
 							<?php } ?>
 						</select>
+						<p class="small text-muted">
+							<?php echo WT_I18N::translate('Select a file from the list of files already on the server which contains the place locations in CSV format.'); ?>
+						</p>
 					</td>
 				</tr>
 				<?php } ?>
@@ -4516,7 +4583,13 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		echo '<input type="checkbox" name="inactive" id="inactive" ';
 		echo $inactive ? 'checked' : '';
 		echo ' onclick="updateList(this.checked)"';
-		echo '>', help_link('PLE_ACTIVE', 'googlemap'), '</div></form>';
+		echo '></div>';
+		echo '<p class="small text-muted">';
+		echo WT_I18N::translate('By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used.');
+		echo ' ';
+		echo WT_I18N::translate('If you have a large number of inactive places, it can be slow to generate the list.');
+		echo '</p>';
+		echo '</form>';
 
 		$placelist = $this->getPlaceListLocation($parent, $inactive);
 		echo '<div class="gm_plac_edit">';

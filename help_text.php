@@ -422,16 +422,6 @@ case 'PEDIGREE_SHOW_GENDER':
 	$text = WT_I18N::translate('This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender.  The option simply removes some duplicate information from the box.');
 	break;
 
-case 'RELATIONSHIP_PATH_LENGTH':
-	$title = WT_I18N::translate('Restrict to immediate family');
-	$text =
-		WT_I18N::translate('Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations.  You specify the number of relationship steps that the user is allowed to see.') .
-		'<br><br>' .
-		WT_I18N::translate('For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child).') .
-		'<br><br>' .
-		WT_I18N::translate('Note: longer path lengths require a lot of calculation, which can make your site run slowly for these users.');
-	break;
-
 case 'SHOW_EST_LIST_DATES':
 	$title = WT_I18N::translate('Estimated dates for birth and death');
 	$text = WT_I18N::translate('This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known.');
@@ -451,11 +441,6 @@ case 'SHOW_PARENTS_AGE':
 case 'THUMBNAIL_WIDTH':
 	$title = WT_I18N::translate('Width of generated thumbnails');
 	$text = WT_I18N::translate('This is the width (in pixels) that the program will use when automatically generating thumbnails.  The default setting is 100.');
-	break;
-
-case 'USE_RELATIONSHIP_PRIVACY':
-	$title = WT_I18N::translate('Use relationship privacy');
-	$text = WT_I18N::translate('<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The administrator can override this option for individual users by editing the user’s account details.');
 	break;
 
 	//////////////////////////////////////////////////////////////////////////////
@@ -601,11 +586,6 @@ case 'google_chart_surname':
 	$text = WT_I18N::translate('The number of occurrences of the specified name will be shown on the map.  If you leave this field empty, the most common surname will be used.');
 	break;
 
-case 'header_favorites':
-	$title = WT_I18N::translate('Favorites');
-	$text = WT_I18N::translate('The Favorites drop-down list shows the favorites that you have selected on your “My page”.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding favorites is available in your “My page”.');
-	break;
-
 case 'import_gedcom':
 	$title = WT_I18N::translate('Import family tree');
 	$text =
@@ -637,11 +617,6 @@ case 'no_update_CHAN':
 	$text = WT_I18N::translate('Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, webtrees will retain the original change information instead of replacing it with that of the current session.  With this option selected, administrators also have the ability to modify or delete the information associated with the original CHAN tag.');
 	break;
 
-case 'oldest_top':
-	$title = WT_I18N::translate('Show oldest top');
-	$text = WT_I18N::translate('When this check box is checked, the chart will be printed with oldest individuals at the top.  When it is unchecked, youngest individuals will appear at the top.');
-	break;
-
 case 'pending_changes':
 	$title = WT_I18N::translate('Pending changes');
 	$text =
@@ -658,53 +633,11 @@ case 'pending_changes':
 			WT_I18N::translate('Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account.') .
 			'</p>';
 	}
-
 	break;
 
 case 'ppp_view_records':
 	$title = WT_I18N::translate('View all records');
 	$text = WT_I18N::translate('Clicking on this link will show you a list of all of the individuals and families that have events occurring in this place.  When you get to the end of a place hierarchy, which is normally a town or city, the name list will be shown automatically.');
-	break;
-
-case 'register_gedcomid':
-	$title = WT_I18N::translate('Individual record');
-	$text = WT_I18N::translate('Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the comments field to help the site administrator identify who you are on this site so that he can set the ID for you.');
-	break;
-
-case 'remove_person':
-	$title = WT_I18N::translate('Remove person');
-	$text = WT_I18N::translate('Click this link to remove the individual from the timeline.');
-	break;
-
-case 'role':
-	$title = WT_I18N::translate('Role');
-	$text =
-		WT_I18N::translate('A role is a set of access rights, which give permission to view data, change configuration settings, etc.  Access rights are assigned to roles, and roles are granted to users.  Each family tree can assign different access to each role, and users can have a different role in each family tree.') .
-		'<br><br>' .
-		'<dl>' .
-		'<dt>' . WT_I18N::translate('Visitor') . '</dt><dd>' .
-		WT_I18N::translate('Everybody has this role, including visitors to the site and search engines.') .
-		'</dd>' .
-		'<dl>' .
-		'<dt>' . WT_I18N::translate('Member') . '</dt><dd>' .
-		WT_I18N::translate('This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration.') .
-		'</dd>' .
-		'<dl>' .
-		'<dt>' . WT_I18N::translate('Editor') . '</dt><dd>' .
-		WT_I18N::translate('This role has all the permissions of the member role, plus permission to add/change/delete data.  Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled.') .
-		'</dd>' .
-		'<dl>' .
-		'<dt>' . WT_I18N::translate('Moderator') . '</dt><dd>' .
-		WT_I18N::translate('This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users.') .
-		'</dd>' .
-		'<dl>' .
-		'<dt>' . WT_I18N::translate('Manager') . '</dt><dd>' .
-		WT_I18N::translate('This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree.') .
-		'</dd>' .
-		'<dl>' .
-		'<dt>' . WT_I18N::translate('Administrator') . '</dt><dd>' .
-		WT_I18N::translate('This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users, and modules.') .
-		'</dd>';
 	break;
 
 case 'show_fact_sources':
@@ -715,11 +648,6 @@ case 'show_fact_sources':
 case 'show_spouse':
 	$title = WT_I18N::translate('Show spouses');
 	$text = WT_I18N::translate('By default this chart does not show spouses for the descendants because it makes the chart harder to read and understand.  Turning this option on will show spouses on the chart.');
-	break;
-
-case 'simple_filter':
-	$title = WT_I18N::translate('Simple search filter');
-	$text = WT_I18N::translate('Simple search filter based on the characters entered, no wildcards are accepted.');
 	break;
 
 case 'upload_gedcom':
@@ -750,11 +678,6 @@ case 'upload_thumbnail_file':
 	$text = WT_I18N::translate('Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording.');
 	break;
 
-case 'useradmin_gedcomid':
-	$title = WT_I18N::translate('Individual record');
-	$text = WT_I18N::translate('The individual record identifies the user in each family tree.  Since a user can view the details of their individual record, this can only be set by an administrator.  If the user does not have a record in a family tree, leave it empty.');
-	break;
-
 case 'zip':
 	$title = WT_I18N::translate('Zip clippings');
 	$text = WT_I18N::translate('Select this option as to save your clippings in a ZIP file.  For more information about ZIP files, please visit <a href="http://www.winzip.com" target="_blank">http://www.winzip.com</a>.');
@@ -763,11 +686,6 @@ case 'zip':
 default:
 	$title = WT_I18N::translate('Help');
 	$text  = WT_I18N::translate('The help text has not been written for this item.');
-	// If we've been called from a module, allow the module to provide the help text
-	$mod = WT_Filter::get('mod', '[A-Za-z0-9_]+');
-	if (array_key_exists($mod, WT_Module::getActiveModules()) && file_exists(WT_ROOT . WT_MODULES_DIR . $mod . '/help_text.php')) {
-		require WT_ROOT . WT_MODULES_DIR . $mod . '/help_text.php';
-	}
 	break;
 }
 // This file is called by a getJSON call so return the data

@@ -61,7 +61,6 @@ case 'save':
 		$auto_accept    = WT_Filter::postBool('auto_accept');
 		$admin          = WT_Filter::postBool('admin');
 		$visible_online = WT_Filter::postBool('visible_online');
-		$edit_account   = WT_Filter::postBool('edit_account');
 		$verified       = WT_Filter::postBool('verified');
 		$approved       = WT_Filter::postBool('approved');
 
@@ -108,10 +107,14 @@ case 'save':
 				->setPreference('contactmethod', $contact_method)
 				->setPreference('comment', $comment)
 				->setPreference('auto_accept', $auto_accept ? '1' : '0')
-				->setPreference('admin', $admin ? '1' : '0')
 				->setPreference('visibleonline', $visible_online ? '1' : '0')
 				->setPreference('verified', $verified ? '1' : '0')
 				->setPreference('verified_by_admin', $approved ? '1' : '0');
+
+			// We cannot change our own admin status.  Another admin will need to do it.
+			if ($user->getUserId() !== Auth::id()) {
+				$user->setPreference('admin', $admin ? '1' : '0');
+			}
 
 			foreach (WT_Tree::getAll() as $tree) {
 				$tree->setUserPreference($user, 'gedcomid', WT_Filter::post('gedcomid' . $tree->tree_id, WT_REGEX_XREF));
@@ -342,6 +345,9 @@ case 'edit':
 			</label>
 			<div class="col-sm-9">
 				<input class="form-control" type="email" id="email" name="email" required maxlength="64" value="<?php echo WT_Filter::escapeHtml($user->getEmail()); ?>">
+				<p class="small text-muted">
+					<?php echo WT_I18N::translate('This email address will be used to send password reminders, site notifications, and messages from other family members who are registered on the site.'); ?>
+				</p>
 			</div>
 		</div>
 
@@ -406,13 +412,13 @@ case 'edit':
 
 		<!-- VISIBLE ONLINE -->
 		<div class="form-group">
-			<label class="control-label col-sm-3" for="edit_account">
+			<label class="control-label col-sm-3" for="visible_online">
 				<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Visible online'); ?>
 			</label>
 			<div class="col-sm-9">
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" name="visible_online" value="1" <?php echo $user->getPreference('visible_online') ? 'checked' : ''; ?>>
+						<input type="checkbox" id="visible_online" name="visible_online" value="1" <?php echo $user->getPreference('visible_online') ? 'checked' : ''; ?>>
 						<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Visible to other users when online'); ?>
 					</label>
 					<p class="small text-muted">
@@ -462,26 +468,109 @@ case 'edit':
 			<div class="col-sm-9">
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" name="admin" value="1" <?php echo $user->getPreference('admin') ? 'checked' : ''; ?>>
+						<input
+							type="checkbox" id="admin" name="admin" value="1"
+							<?php echo $user->getPreference('admin') ? 'checked' : ''; ?>
+							<?php echo $user->getUserId() === Auth::id() ? 'disabled' : ''; ?>
+						>
 						<?php echo WT_I18N::translate('Administrator'); ?>
 					</label>
-					<p class="small text-muted">
-						<?php echo help_link('role'); ?>
-					</p>
 				</div>
 			</div>
 		</div>
 
 		<h3><?php echo WT_I18N::translate('Family tree access and settings'); ?></h3>
 
+		<p>
+			<?php echo WT_I18N::translate('A role is a set of access rights, which give permission to view data, change configuration settings, etc.  Access rights are assigned to roles, and roles are granted to users.  Each family tree can assign different access to each role, and users can have a different role in each family tree.'); ?>
+		</p>
+
+		<div class="row">
+			<div class="col-xs-4">
+				<h4>
+					<?php echo WT_I18N::translate('Visitor'); ?>
+				</h4>
+				<p class="small text-muted">
+					<?php echo WT_I18N::translate('Everybody has this role, including visitors to the site and search engines.'); ?>
+				</p>
+				<h4>
+					<?php echo WT_I18N::translate('Member'); ?>
+				</h4>
+				<p class="small text-muted">
+					<?php echo WT_I18N::translate('This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration.'); ?>
+				</p>
+			</div>
+			<div class="col-xs-4">
+				<h4>
+					<?php echo WT_I18N::translate('Editor'); ?>
+				</h4>
+				<p class="small text-muted">
+					<?php echo WT_I18N::translate('This role has all the permissions of the member role, plus permission to add/change/delete data.  Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled.'); ?>
+				</p>
+				<h4>
+					<?php echo WT_I18N::translate('Moderator'); ?>
+				</h4>
+				<p class="small text-muted">
+					<?php echo WT_I18N::translate('This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users.'); ?>
+				</p>
+			</div>
+			<div class="col-xs-4">
+				<h4>
+					<?php echo WT_I18N::translate('Manager'); ?>
+				</h4>
+				<p class="small text-muted">
+					<?php echo WT_I18N::translate('This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree.'); ?>
+				</p>
+				<h4>
+					<?php echo WT_I18N::translate('Administrator'); ?>
+				</h4>
+				<p class="small text-muted">
+					<?php echo WT_I18N::translate('This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users, and modules.'); ?>
+				</p>
+			</div>
+		</div>
+
 		<table class="table table-bordered table-condensed table-responsive">
 			<thead>
 				<tr>
-					<th><?php echo WT_I18N::translate('Family tree'); ?></th>
-					<th><?php echo WT_I18N::translate('Default individual'), help_link('default_individual'); ?></th>
-					<th><?php echo WT_I18N::translate('Individual record'), help_link('useradmin_gedcomid'); ?></th>
-					<th><?php echo WT_I18N::translate('Role'), help_link('role'); ?></th>
-					<th><?php echo WT_I18N::translate('Restrict to immediate family'), help_link('RELATIONSHIP_PATH_LENGTH'); ?></th>
+					<th>
+						<?php echo WT_I18N::translate('Family tree'); ?>
+					</th>
+					<th>
+						<?php echo WT_I18N::translate('Role'); ?>
+					</th>
+					<th>
+						<?php echo WT_I18N::translate('Default individual'); ?>
+					</th>
+					<th>
+						<?php echo WT_I18N::translate('Individual record'); ?>
+						</th>
+					<th>
+						<?php echo WT_I18N::translate('Restrict to immediate family'); ?>
+					</th>
+				</tr>
+				<tr>
+					<td>
+					</td>
+					<td>
+					</td>
+					<td>
+						<p class="small text-muted">
+							<?php echo WT_I18N::translate('This individual will be selected by default when viewing charts and reports.'); ?>
+						</p>
+					</td>
+					<td>
+						<p class="small text-muted">
+							<?php echo WT_I18N::translate('Link this user to an individual in the family tree.'); ?>
+						</p>
+					</td>
+					<td>
+						<p class="small text-muted">
+								<?php echo WT_I18N::translate('Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations.  You specify the number of relationship steps that the user is allowed to see.'); ?>
+							<?php echo WT_I18N::translate('For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child).'); ?>
+							<?php echo WT_I18N::translate('Note: longer path lengths require a lot of calculation, which can make your site run slowly for these users.'); ?>
+						</p>
+					</td>
 				</tr>
 			</thead>
 			<tbody>
@@ -489,6 +578,17 @@ case 'edit':
 				<tr>
 					<td>
 						<?php echo $tree->tree_title_html; ?>
+					</td>
+					<td>
+						<select name="canedit<?php echo $tree->tree_id; ?>">
+							<?php foreach ($ALL_EDIT_OPTIONS as $EDIT_OPTION => $desc): ?>
+								<option value="<?php echo $EDIT_OPTION; ?>"
+									<?php echo $EDIT_OPTION === $tree->getUserPreference($user, 'canedit') ? 'selected' : ''; ?>
+									>
+									<?php echo $desc; ?>
+								</option>
+							<?php endforeach; ?>
+						</select>
 					</td>
 					<td>
 						<input
@@ -515,17 +615,6 @@ case 'edit':
 						<?php echo print_findindi_link('gedcomid' . $tree->tree_id, '', $tree->tree_name); ?>
 					</td>
 					<td>
-						<select name="canedit<?php echo $tree->tree_id; ?>">
-							<?php foreach ($ALL_EDIT_OPTIONS as $EDIT_OPTION => $desc): ?>
-							<option value="<?php echo $EDIT_OPTION; ?>"
-								<?php echo $EDIT_OPTION === $tree->getUserPreference($user, 'canedit') ? 'selected' : ''; ?>
-							>
-								<?php echo $desc; ?>
-							</option>
-							<?php endforeach; ?>
-						</select>
-					</td>
-					<td>
 						<select name="RELATIONSHIP_PATH_LENGTH<?php echo $tree->tree_id; ?>" id="RELATIONSHIP_PATH_LENGTH<?php echo $tree->tree_id; ?>" class="relpath">
 							<?php for ($n = 0; $n <= 10; ++$n): ?>
 							<option value="<?php echo $n; ?>" <?php echo $tree->getUserPreference($user, 'RELATIONSHIP_PATH_LENGTH') === $n ? 'checked' : ''; ?>>
@@ -538,7 +627,11 @@ case 'edit':
 				<?php endforeach; ?>
 			</tbody>
 		</table>
-		<button class="btn btn-primary" type="submit"><?php echo WT_I18N::translate('save'); ?></button>
+		<div class="text-center">
+			<button class="btn btn-primary" type="submit">
+				<?php echo WT_I18N::translate('save'); ?>
+			</button>
+		</div>
 	</form>
 	<?php
 

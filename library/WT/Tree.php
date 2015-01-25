@@ -96,17 +96,17 @@ class WT_Tree {
 			// Update the database
 			if ($setting_value === null) {
 				WT_DB::prepare(
-					"DELETE FROM `##gedcom_setting` WHERE gedcom_id = :gedcom_id AND setting_name = :setting_name"
+					"DELETE FROM `##gedcom_setting` WHERE gedcom_id = :tree_id AND setting_name = :setting_name"
 				)->execute(array(
-					'gedcom_id'    => $this->tree_id,
+					'tree_id'      => $this->tree_id,
 					'setting_name' => $setting_name,
 				));
 			} else {
 				WT_DB::prepare(
 					"REPLACE INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value)" .
-					" VALUES (:gedcom_id, :setting_name, LEFT(:setting_value, 255))"
+					" VALUES (:tree_id, :setting_name, LEFT(:setting_value, 255))"
 				)->execute(array(
-					'gedcom_id'     => $this->tree_id,
+					'tree_id'       => $this->tree_id,
 					'setting_name'  => $setting_name,
 					'setting_value' => $setting_value,
 				));
@@ -157,9 +157,24 @@ class WT_Tree {
 	public function setUserPreference(User $user, $setting_name, $setting_value) {
 		if ($this->getUserPreference($user, $setting_name) !== $setting_value) {
 			// Update the database
-			WT_DB::prepare(
-				"REPLACE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (?, ?, ?, LEFT(?, 255))"
-			)->execute(array($user->getUserId(), $this->tree_id, $setting_name, $setting_value));
+			if ($setting_value === null) {
+				WT_DB::prepare(
+					"DELETE FROM `##user_gedcom_setting` WHERE gedcom_id = :tree_id AND user_id = :user_id AND setting_name = :setting_name"
+				)->execute(array(
+					'tree_id'      => $this->tree_id,
+					'user_id'      => $user->getUserId(),
+					'setting_name' => $setting_name,
+				));
+			} else {
+				WT_DB::prepare(
+					"REPLACE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (:user_id, :tree_id, :setting_name, LEFT(:setting_value, 255))"
+				)->execute(array(
+					'user_id'       => $user->getUserId(),
+					'tree_id'       => $this->tree_id,
+					'setting_name'  => $setting_name,
+					'setting_value' => $setting_value
+				));
+			}
 			// Update our cache
 			$this->user_preferences[$user->getUserId()][$setting_name] = $setting_value;
 			// Audit log of changes
