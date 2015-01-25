@@ -1108,7 +1108,11 @@ td.descriptionbox a {
 	display: inline-block;
 	margin: 10px auto 0;
 	padding: 5px;
-	width: 400px;
+}
+
+#register-form,
+#verify-form {
+	width: 440px;
 }
 
 #login-form div,
