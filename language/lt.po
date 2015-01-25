@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-12-15 10:38+0000\n"
-"PO-Revision-Date: 2015-01-25 15:34+1000\n"
+"PO-Revision-Date: 2015-01-25 15:47+1000\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
 "Language-Team: \n"
 "Language: lt\n"
@@ -13843,7 +13843,7 @@ msgstr "Ši duomenų bazė veikia tik su %s MySQL versija. Jūs negalite įdiegt
 
 #: help_text.php:1207 setup.php:412
 msgid "This email address will be used to send password reminders, site notifications, and messages from other family members who are registered on the site."
-msgstr "Šis elektroninio pašto adresas bus naudojamas siųsti jums slaptažodžio priminimus, svetainės pranešimus ir žinutes iš kitų šeimos narių, kurie yra užsiregistravę svetainėje."
+msgstr "Šis elektroninio pašto adresas bus naudojamas siųsti slaptažodžio priminimus, svetainės pranešimus ir žinutes iš kitų šeimos narių, kurie yra užsiregistravę svetainėje."
 
 #: addmedia.php:519
 msgid "This entry is ignored if you have entered a URL into the filename field."
