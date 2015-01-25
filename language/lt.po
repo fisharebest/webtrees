@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2014-12-15 10:38+0000\n"
-"PO-Revision-Date: 2015-01-22 20:15+1000\n"
+"PO-Revision-Date: 2015-01-25 15:34+1000\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
 "Language-Team: \n"
 "Language: lt\n"
@@ -14074,7 +14074,7 @@ msgstr ""
 
 #: help_text.php:992
 msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails.  The default setting is 100."
-msgstr ""
+msgstr "Tai plotis (pikseliais) kurį programa naudos, kai automatiškai sukurs miniatiūras.  Numatytasis parametras yra 100."
 
 #: help_text.php:1353 setup.php:396
 msgid "This is your real name, as you would like it displayed on screen."
