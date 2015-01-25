@@ -59,7 +59,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			$controller
 				->setPageTitle($this->getTitle())
 				->PageHeader()
-				->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+				->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 				->addInlineJavascript('autocomplete();');
 
 			echo '<script>';
@@ -143,7 +143,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 					<table>
 					<tr>
 						<td colspan="2" class="topbottombar" style="text-align:center; ">
-							<?php echo WT_I18N::translate('Enter an individual, family, or source ID'), help_link('add_by_id', $this->getName()); ?>
+							<?php echo WT_I18N::translate('Enter an individual, family, or source ID'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -226,7 +226,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 					<table>
 					<tr>
 						<td colspan="2" class="topbottombar" style="text-align:center; ">
-							<?php echo WT_I18N::translate('Enter an individual, family, or source ID'), help_link('add_by_id', $this->getName()); ?>
+							<?php echo WT_I18N::translate('Enter an individual, family, or source ID'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -247,7 +247,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 
 
 				<?php } ?>
-				<br><a href="module.php?mod=clippings&amp;mod_action=index&amp;action=empty"><?php echo WT_I18N::translate('Empty the clippings cart'); ?></a><?php echo help_link('empty_cart', $this->getName()); ?>
+				<br><a href="module.php?mod=clippings&amp;mod_action=index&amp;action=empty"><?php echo WT_I18N::translate('Empty the clippings cart'); ?></a>
 				</td></tr>
 
 				<tr><td class="topbottombar"><h2><?php echo WT_I18N::translate('Family tree clippings cart'); ?></h2></td></tr>
@@ -460,7 +460,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			$out .=
 				'<br><a href="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax&amp;sb_action=clippings&amp;empty=true&amp;pid=' . $pid . '" class="remove_cart">' .
 				WT_I18N::translate('Empty the clippings cart') .
-				'</a>' . help_link('empty_cart', $this->getName()) .
+				'</a>' .
 				'<br>' .
 				'<a href="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax&amp;sb_action=clippings&amp;download=true&amp;pid=' . $pid . '" class="add_cart">' .
 				WT_I18N::translate('Download') .

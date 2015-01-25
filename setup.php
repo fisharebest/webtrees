@@ -47,7 +47,8 @@ define('WT_PRIV_HIDE', -1);
 
 if (file_exists(WT_DATA_DIR . WT_CONFIG_FILE)) {
 	header('Location: index.php');
-	exit;
+
+	return;
 }
 
 if (version_compare(PHP_VERSION, WT_REQUIRED_PHP_VERSION) < 0) {
@@ -56,7 +57,8 @@ if (version_compare(PHP_VERSION, WT_REQUIRED_PHP_VERSION) < 0) {
 		'<h1>Sorry, the setup wizard cannot start.</h1>',
 		'<p>This server is running PHP version ', PHP_VERSION, '</p>',
 		'<p>PHP ', WT_REQUIRED_PHP_VERSION, ' (or any later version) is required</p>';
-	exit;
+
+	return;
 }
 
 require 'includes/functions/functions.php';
@@ -187,7 +189,8 @@ if (!isset($_POST['lang'])) {
 
 	}
 	echo '</form></body></html>';
-	exit;
+
+	return;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -205,7 +208,8 @@ if ($FAB != 'FAB!') {
 	echo '<p>', WT_I18N::translate('You must change this before you can continue.'), '</p>';
 	echo '<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">';
 	echo '</form></body></html>';
-	exit;
+
+	return;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -287,7 +291,8 @@ if (empty($_POST['dbuser']) || !WT_DB::isConnected() || !$db_version_ok) {
 		'<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">',
 		'</form>',
 		'</body></html>';
-		exit;
+
+	return;
 } else {
 	// Copy these values through to the next step
 	echo '<input type="hidden" name="dbhost" value="', WT_Filter::escapeHtml($_POST['dbhost']), '">';
@@ -372,7 +377,8 @@ if (!$dbname_ok) {
 		'<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">',
 		'</form>',
 		'</body></html>';
-		exit;
+
+	return;
 } else {
 	// Copy these values through to the next step
 	echo '<input type="hidden" name="dbname" value="', WT_Filter::escapeHtml($_POST['dbname']), '">';
@@ -431,14 +437,15 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 		'</td></tr><tr><td>',
 		WT_I18N::translate('Email address'), '</td><td>',
 		'<input type="email" name="wtemail" value="', WT_Filter::escapeHtml($_POST['wtemail']), '"></td><td>',
-		WT_I18N::translate('This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site.'),
+		WT_I18N::translate('This email address will be used to send password reminders, site notifications, and messages from other family members who are registered on the site.'),
 		'</td></tr><tr><td>',
 		'</td></tr></table>',
 		'</fieldset>',
 		'<br><hr><input type="submit" id="btncontinue" value="', WT_I18N::translate('continue'), '">',
 		'</form>',
 		'</body></html>';
-		exit;
+
+	return;
 } else {
 	// Copy these values through to the next step
 	echo '<input type="hidden" name="wtname"     value="', WT_Filter::escapeHtml($_POST['wtname']), '">';
@@ -787,14 +794,6 @@ try {
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	WT_DB::exec(
-		"CREATE TABLE IF NOT EXISTS `##ip_address` (" .
-		" ip_address VARCHAR(40)                                NOT NULL," . // long enough for IPv6
-		" category   ENUM('banned', 'search-engine', 'allowed') NOT NULL," .
-		" comment    VARCHAR(255)                               NOT NULL," .
-		" PRIMARY KEY (ip_address)" .
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-	);
-	WT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##session` (" .
 		" session_id   CHAR(128)   NOT NULL," .
 		" session_time TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP," .
@@ -875,11 +874,10 @@ try {
 		" (1, 'language',          ?)," .
 		" (1, 'verified',          ?)," .
 		" (1, 'verified_by_admin', ?)," .
-		" (1, 'editaccount',       ?)," .
 		" (1, 'auto_accept',       ?)," .
 		" (1, 'visibleonline',     ?)"
 	)->execute(array(
-		1, WT_LOCALE, 1, 1, 1, 0, 1
+		1, WT_LOCALE, 1, 1, 0, 1
 	));
 
 	WT_DB::prepare(
@@ -939,7 +937,8 @@ try {
 	echo
 		'<script>document.location=document.location;</script>',
 		'</form></body></html>';
-	exit;
+
+	return;
 } catch (PDOException $ex) {
 	echo
 		'<p class="bad">', WT_I18N::translate('An unexpected database error occurred.'), '</p>',

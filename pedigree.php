@@ -33,7 +33,7 @@ define("BOX_WRAPPER", "<div class='shadow' style='%s:%spx; top:%spx; width:%spx;
 $controller = new WT_Controller_Pedigree;
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');
 
 ?>
@@ -86,7 +86,8 @@ $controller
 <?php
 if ($controller->error_message) {
 	echo '<p class="ui-state-error">', $controller->error_message, '</p>';
-	exit;
+	
+	return;
 }
 
 $posn = $TEXT_DIRECTION == 'rtl' ? 'right' : 'left';

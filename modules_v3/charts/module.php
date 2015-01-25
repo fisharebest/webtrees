@@ -42,9 +42,10 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
 
-		$details = get_block_setting($block_id, 'details', false);
+		$details = get_block_setting($block_id, 'details', '0');
 		$type    = get_block_setting($block_id, 'type', 'pedigree');
 		$pid     = get_block_setting($block_id, 'pid', Auth::check() ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
+
 		if ($cfg) {
 			foreach (array('details', 'type', 'pid', 'block') as $name) {
 				if (array_key_exists($name, $cfg)) {
@@ -184,27 +185,33 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 			set_block_setting($block_id, 'details', WT_Filter::postBool('details'));
 			set_block_setting($block_id, 'type', WT_Filter::post('type', 'pedigree|descendants|hourglass|treenav', 'pedigree'));
 			set_block_setting($block_id, 'pid', WT_Filter::post('pid', WT_REGEX_XREF));
-			exit;
 		}
 
-		$details = get_block_setting($block_id, 'details', false);
+		$details = get_block_setting($block_id, 'details', '0');
 		$type    = get_block_setting($block_id, 'type', 'pedigree');
 		$pid     = get_block_setting($block_id, 'pid', Auth::check() ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
 		$controller
-			->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 			->addInlineJavascript('autocomplete();');
 	?>
-		<tr><td class="descriptionbox wrap width33"><?php echo WT_I18N::translate('Chart type'); ?></td>
-		<td class="optionbox">
-			<?php echo select_edit_control('type',
-			array(
-				'pedigree'    => WT_I18N::translate('Pedigree'),
-				'descendants' => WT_I18N::translate('Descendants'),
-				'hourglass'   => WT_I18N::translate('Hourglass chart'),
-				'treenav'     => WT_I18N::translate('Interactive tree')),
-			null, $type); ?>
-		</td></tr>
+		<tr>
+			<td colspan="2">
+				<?php echo WT_I18N::translate('This block allows a pedigree, descendancy, or hourglass chart to appear on your “My page” or the “Home page”.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the “Home page”, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s “My page”, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them.'); ?>
+			</td>
+		</tr>
+		<tr>
+			<td class="descriptionbox wrap width33"><?php echo WT_I18N::translate('Chart type'); ?></td>
+			<td class="optionbox">
+				<?php echo select_edit_control('type',
+				array(
+					'pedigree'    => WT_I18N::translate('Pedigree'),
+					'descendants' => WT_I18N::translate('Descendants'),
+					'hourglass'   => WT_I18N::translate('Hourglass chart'),
+					'treenav'     => WT_I18N::translate('Interactive tree')),
+				null, $type); ?>
+			</td>
+		</tr>
 		<tr>
 			<td class="descriptionbox wrap width33"><?php echo WT_I18N::translate('Show details'); ?></td>
 		<td class="optionbox">

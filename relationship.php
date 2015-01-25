@@ -54,7 +54,7 @@ $person1 = WT_Individual::getInstance($pid1);
 $person2 = WT_Individual::getInstance($pid2);
 
 $controller
-	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');
 
 if ($person1 && $person1->canShowName() && $person2 && $person2->canShowName()) {
@@ -115,7 +115,7 @@ if ($person1 && $person1->canShowName() && $person2 && $person2->canShowName()) 
 					<?php echo print_findindi_link('pid2'); ?>
 				</td>
 				<td class="descriptionbox">
-					<?php echo WT_I18N::translate('Show oldest top'), help_link('oldest_top'); ?>
+					<?php echo WT_I18N::translate('Show oldest top'); ?>
 				</td>
 				<td class="optionbox">
 					<input tabindex="4" type="checkbox" name="asc" value="1" <?php echo $asc === -1 ? 'checked' : ''; ?>>

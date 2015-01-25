@@ -299,8 +299,7 @@ class batch_update {
 			' bu_form.action.value="";' .
 			' bu_form.data.value="";' .
 			' bu_form.submit();' .
-			'}</script>'
-		;
+			'}</script>';
 	}
 
 	/**

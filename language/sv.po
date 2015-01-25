@@ -10291,8 +10291,8 @@ msgid "P.M."
 msgstr "E.M."
 
 #: help_text.php:1308
-msgid "PGV must be version 4.2.3, or any SVN up to #6973"
-msgstr "PGV måste vara version 4.2.3, eller någon av dess SVN uppdatering upp till #6973"
+msgid "PGV must be version 4.2.3, or any SVN up to #%s"
+msgstr "PGV måste vara version 4.2.3, eller någon av dess SVN uppdatering upp till #%s"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:82
@@ -13814,7 +13814,7 @@ msgid "This database is only running MySQL version %s.  You cannot install webtr
 msgstr "Denna databas kör endast med MySQL version %s. Du kan inte installera webtees här."
 
 #: help_text.php:1207 setup.php:412
-msgid "This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site."
+msgid "This email address will be used to send password reminders, site notifications, and messages from other family members who are registered on the site."
 msgstr "Denna e-postadress kommer att användas för att skicka dig lösenordspåminnelser, sajt-notifieringar och meddelanden från andra familjemedlemmar som är registrerade på sidan."
 
 #: addmedia.php:519

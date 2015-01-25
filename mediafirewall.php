@@ -32,24 +32,25 @@ $mid   = WT_Filter::get('mid', WT_REGEX_XREF);
 $thumb = WT_Filter::getBool('thumb');
 $media = WT_Media::getInstance($mid);
 
-// Send a “Not found” error as an image
-function send404AndExit() {
+/**
+ * Send a “Not found” error as an image
+ */
+function send404AsImage() {
 	$error = WT_I18N::translate('The media file was not found in this family tree');
 
-	$width  = (mb_strlen($error)) * 6.5 + 50;
+	$width  = mb_strlen($error) * 6.5 + 50;
 	$height = 60;
 	$im     = imagecreatetruecolor($width, $height); /* Create a black image */
 	$bgc    = imagecolorallocate($im, 255, 255, 255); /* set background color */
 	imagefilledrectangle($im, 2, 2, $width - 4, $height - 4, $bgc); /* create a rectangle, leaving 2 px border */
 
-	embedText($im, $error, 100, "255, 0, 0", "", "top", "left");
+	embedText($im, $error, 100, '255, 0, 0', '', 'top', 'left');
 
 	header('HTTP/1.0 404 Not Found');
 	header('Status: 404 Not Found');
 	header('Content-Type: image/png');
 	imagepng($im);
 	imagedestroy($im);
-	exit;
 }
 
 /**
@@ -67,21 +68,21 @@ function applyWatermark($im) {
 	// maximum font size for “word1” ; will be automaticaly reduced to fit in the image
 	$word1_maxsize = 100;
 	// rgb color codes for text
-	$word1_color = "0, 0, 0";
+	$word1_color = '0,0,0';
 	// ttf font file to use. must exist in the includes/fonts/ folder
-	$word1_font = "";
+	$word1_font = '';
 	// vertical position for the text to past; possible values are: top, middle or bottom, across
-	$word1_vpos = "across";
+	$word1_vpos = 'across';
 	// horizontal position for the text to past in media file; possible values are: left, right, top2bottom, bottom2top
 	// this value is used only if $word1_vpos=across
-	$word1_hpos = "left";
+	$word1_hpos = 'left';
 
-	$word2_text    = $_SERVER["HTTP_HOST"];
+	$word2_text    = $_SERVER['HTTP_HOST'];
 	$word2_maxsize = 20;
-	$word2_color   = "0, 0, 0";
-	$word2_font    = "";
-	$word2_vpos    = "top";
-	$word2_hpos    = "top2bottom";
+	$word2_color   = '0,0,0';
+	$word2_font    = '';
+	$word2_vpos    = 'top';
+	$word2_hpos    = 'top2bottom';
 
 	embedText($im, $word1_text, $word1_maxsize, $word1_color, $word1_font, $word1_vpos, $word1_hpos);
 	embedText($im, $word2_text, $word2_maxsize, $word2_color, $word2_font, $word2_vpos, $word2_hpos);
@@ -114,9 +115,8 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 		}
 	}
 
-	// no errors if an invalid color string was passed in, just strange colors
-	$col       = explode(",", $color);
-	$textcolor = @imagecolorallocate($im, $col[0], $col[1], $col[2]);
+	$col       = explode(',', $color);
+	$textcolor = imagecolorallocate($im, $col[0], $col[1], $col[2]);
 
 	// make adjustments to settings that imagestring and imagestringup can’t handle
 	if (!$useTTF) {
@@ -134,6 +134,7 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 
 	// vertical and horizontal position of the text
 	switch ($vpos) {
+	default:
 	case 'top':
 		$taille   = textlength($maxsize, $width, $text);
 		$pos_y    = $height * 0.15 + $taille;
@@ -154,6 +155,7 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 		break;
 	case 'across':
 		switch ($hpos) {
+		default:
 		case 'left':
 			$taille   = textlength($maxsize, $hypoth, $text);
 			$pos_y    = ($height * .85 - $taille);
@@ -180,7 +182,6 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 			break;
 		}
 		break;
-	default:
 	}
 
 	// apply the text
@@ -192,7 +193,7 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 	}
 	// Don’t use an ‘else’ here since imagettftextErrorHandler may have changed the value of $useTTF from true to false
 	if (!$useTTF) {
-		if ($rotation != 90) {
+		if ($rotation !== 90) {
 			imagestring($im, 5, $pos_x, $pos_y, $text, $textcolor);
 		} else {
 			imagestringup($im, 5, $pos_x, $pos_y, $text, $textcolor);
@@ -269,24 +270,27 @@ $useTTF = function_exists('imagettftext');
 
 // Media object missing/private?
 if (!$media || !$media->canShow()) {
-	send404AndExit();
+	send404AsImage();
+
+	return;
 }
 // media file somewhere else?
 if ($media->isExternal()) {
 	header('Location: ' . $media->getFilename());
-	exit;
+
+	return;
 }
 
-$which = $thumb ? 'thumb' : 'main';
-
+$which          = $thumb ? 'thumb' : 'main';
 $serverFilename = $media->getServerFilename($which);
 
 if (!file_exists($serverFilename)) {
-	send404AndExit();
+	send404AsImage();
+
+	return;
 }
 
-$mimetype = $media->mimeType();
-
+$mimetype       = $media->mimeType();
 $imgsize        = $media->getImageAttributes($which);
 $protocol       = $_SERVER['SERVER_PROTOCOL']; // determine if we are using HTTP/1.0 or HTTP/1.1
 $filetime       = $media->getFiletime($which);
@@ -302,9 +306,9 @@ $usewatermark = false;
 // if this image supports watermarks and the watermark module is intalled...
 if ($type) {
 	// if this is not a thumbnail, or WATERMARK_THUMB is true
-	if (($which == 'main') || $WATERMARK_THUMB) {
+	if (($which === 'main') || $WT_TREE->getPreference('WATERMARK_THUMB')) {
 		// if the user’s priv’s justify it...
-		if (WT_USER_ACCESS_LEVEL > $SHOW_NO_WATERMARK) {
+		if (WT_USER_ACCESS_LEVEL > $WT_TREE->getPreference('SHOW_NO_WATERMARK')) {
 			// add a watermark
 			$usewatermark = true;
 		}
@@ -323,7 +327,7 @@ $watermarkfile     = '';
 $generatewatermark = false;
 
 if ($usewatermark) {
-	if ($which == 'thumb') {
+	if ($which === 'thumb') {
 		$watermarkfile = WT_DATA_DIR . $MEDIA_DIRECTORY . 'watermark/' . WT_GEDCOM . '/thumb/' . $media->getFilename();
 	} else {
 		$watermarkfile = WT_DATA_DIR . $MEDIA_DIRECTORY . 'watermark/' . WT_GEDCOM . '/' . $media->getFilename();
@@ -347,13 +351,13 @@ $etag = $media->getEtag($which);
 
 // parse IF_MODIFIED_SINCE header from client
 $if_modified_since = 'x';
-if (@$_SERVER['HTTP_IF_MODIFIED_SINCE']) {
+if (isset($_SERVER['HTTP_IF_MODIFIED_SINCE'])) {
 	$if_modified_since = preg_replace('/;.*$/', '', $_SERVER['HTTP_IF_MODIFIED_SINCE']);
 }
 
 // parse IF_NONE_MATCH header from client
 $if_none_match = 'x';
-if (@$_SERVER['HTTP_IF_NONE_MATCH']) {
+if (isset($_SERVER['HTTP_IF_NONE_MATCH'])) {
 	$if_none_match = str_replace('"', '', $_SERVER['HTTP_IF_NONE_MATCH']);
 }
 
@@ -365,11 +369,12 @@ header('Cache-Control: max-age=' . $expireOffset . ', s-maxage=0, proxy-revalida
 
 // if this file is already in the user’s cache, don’t resend it
 // first check if the if_modified_since param matches
-if (($if_modified_since == $filetimeHeader)) {
+if ($if_modified_since === $filetimeHeader) {
 	// then check if the etag matches
-	if ($if_none_match == $etag) {
+	if ($if_none_match === $etag) {
 		header($protocol . ' 304 Not Modified');
-		exit;
+		
+		return;
 	}
 }
 
@@ -380,14 +385,14 @@ header('Content-Disposition: filename="' . addslashes(basename($media->file)) . 
 if ($generatewatermark) {
 	// generate the watermarked image
 	$imCreateFunc = 'imagecreatefrom' . $type;
-	$im           = @$imCreateFunc($serverFilename);
+	$imSendFunc   = 'image' . $type;
 
-	if ($im) {
+	if (function_exists($imCreateFunc) && function_exists($imSendFunc)) {
+		$im = $imCreateFunc($serverFilename);
 		$im = applyWatermark($im);
 
-		$imSendFunc = 'image' . $type;
 		// save the image, if preferences allow
-		if ((($which == 'thumb') && $SAVE_WATERMARK_THUMB) || (($which == 'main') && $SAVE_WATERMARK_IMAGE)) {
+		if ($which === 'thumb' && $WT_TREE->getPreference('SAVE_WATERMARK_THUMB') || $which === 'main' && $WT_TREE->getPreference('SAVE_WATERMARK_IMAGE')) {
 			// make sure the folder exists
 			WT_File::mkdir(dirname($watermarkfile));
 			// save the image
@@ -398,8 +403,7 @@ if ($generatewatermark) {
 		$imSendFunc($im);
 		imagedestroy($im);
 
-		exit;
-
+		return;
 	} else {
 		// this image is defective.  log it
 		Log::addMediaLog('Media Firewall error: >' . WT_I18N::translate('This media file is broken and cannot be watermarked') . '< in file >' . $serverFilename . '< memory used: ' . memory_get_usage());

@@ -48,7 +48,8 @@ if (
 ) {
 	$controller->pageHeader();
 	$controller->addInlineJavascript('window.location.reload();');
-	exit;
+	
+	return;
 }
 
 $action = WT_Filter::get('action');
@@ -133,7 +134,8 @@ if ($action === 'update') {
 			}
 		}
 	}
-	exit;
+	
+	return;
 }
 
 $controller

@@ -32,19 +32,14 @@ class Administration extends BaseTheme {
 			WT_FONT_AWESOME_CSS_URL,
 			WT_BOOTSTRAP_CSS_URL,
 			WT_DATATABLES_BOOTSTRAP_CSS_URL,
-			$this->cssUrl() . 'style.css',
+			WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL,
+			$this->assetUrl() . 'style.css',
 		);
 	}
 
 	/** {@inheritdoc} */
-	public function cssUrl() {
+	public function assetUrl() {
 		return 'themes/_administration/css-1.7.0/';
-	}
-
-	/** {@inheritdoc} */
-	protected function favicon() {
-		// Use the default webtrees favicon
-		return '<link rel="icon" href="favicon.ico" type="image/x-icon">';
 	}
 
 	/** {@inheritdoc} */
@@ -88,7 +83,7 @@ class Administration extends BaseTheme {
 		);
 
 		if (count(WT_Tree::getAll()) > 1) {
-			$submenus[] = new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Set the default blocks'), '#', '', 'return modalDialog(\'index_edit.php?gedcom_id=-1\', \'' . WT_I18N::translate('Set the default blocks for new family trees') . '\')');
+			$submenus[] = new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Set the default blocks for new family trees'), '#', '', 'return modalDialog(\'index_edit.php?gedcom_id=-1\', \'' . WT_I18N::translate('Set the default blocks for new family trees') . '\')');
 			$submenus[] = new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Merge family trees'), 'admin_trees_merge.php');
 		}
 
@@ -104,7 +99,7 @@ class Administration extends BaseTheme {
 			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Add a new user'), 'admin_users.php?action=edit'),
 			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Send broadcast messages'), 'admin_users_bulk.php'),
 			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Delete inactive users'), 'admin_users.php?action=cleanup'),
-			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Set the default blocks'), '#', '', 'return modalDialog(\'index_edit.php?user_id=-1\', \'' . WT_I18N::translate('Set the default blocks for new users') . '\')'),
+			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Set the default blocks for new users'), '#', '', 'return modalDialog(\'index_edit.php?user_id=-1\', \'' . WT_I18N::translate('Set the default blocks for new users') . '\')'),
 		));
 	}
 
@@ -171,11 +166,11 @@ class Administration extends BaseTheme {
 
 	/** {@inheritdoc} */
 	protected function secondaryMenu() {
-		return array(
+		return array_filter(array(
 			$this->menuMyPage(),
 			$this->menuLanguages(),
 			$this->menuLogout(),
-		);
+		));
 	}
 
 	/** {@inheritdoc} */
@@ -185,7 +180,7 @@ class Administration extends BaseTheme {
 			$html .= $menu->bootstrap();
 		}
 
-		return '<ul class="nav nav-pills small" role="menu">' . $html . '</ul>';
+		return '<div class="clearfix"><ul class="nav nav-pills small pull-right" role="menu">' . $html . '</ul></div>';
 	}
 
 	/** {@inheritdoc} */

@@ -40,9 +40,10 @@ class top10_pageviews_WT_Module extends WT_Module implements WT_Module_Block {
 	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $ctype;
 
+		$num             = get_block_setting($block_id, 'num', '10');
 		$count_placement = get_block_setting($block_id, 'count_placement', 'before');
-		$num = (int) get_block_setting($block_id, 'num', 10);
-		$block = get_block_setting($block_id, 'block', false);
+		$block           = get_block_setting($block_id, 'block', '0');
+
 		if ($cfg) {
 			foreach (array('count_placement', 'num', 'block') as $name) {
 				if (array_key_exists($name, $cfg)) {
@@ -125,25 +126,25 @@ class top10_pageviews_WT_Module extends WT_Module implements WT_Module_Block {
 			set_block_setting($block_id, 'num', WT_Filter::postInteger('num', 1, 10000, 10));
 			set_block_setting($block_id, 'count_placement', WT_Filter::post('count_placement', 'before|after', 'before'));
 			set_block_setting($block_id, 'block', WT_Filter::postBool('block'));
-			exit;
 		}
 		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
-		$num = get_block_setting($block_id, 'num', 10);
+		$num             = get_block_setting($block_id, 'num', '10');
+		$count_placement = get_block_setting($block_id, 'count_placement', 'before');
+		$block           = get_block_setting($block_id, 'block', '0');
+
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Number of items to show');
 		echo '</td><td class="optionbox">';
 		echo '<input type="text" name="num" size="2" value="', $num, '">';
 		echo '</td></tr>';
 
-		$count_placement = get_block_setting($block_id, 'count_placement', 'left');
 		echo "<tr><td class=\"descriptionbox wrap width33\">";
 		echo WT_I18N::translate('Place counts before or after name?');
 		echo "</td><td class=\"optionbox\">";
 		echo select_edit_control('count_placement', array('before'=>WT_I18N::translate('before'), 'after'=>WT_I18N::translate('after')), null, $count_placement, '');
 		echo '</td></tr>';
 
-		$block = get_block_setting($block_id, 'block', false);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';

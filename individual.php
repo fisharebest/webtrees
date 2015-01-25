@@ -29,12 +29,13 @@ define('WT_SCRIPT_NAME', 'individual.php');
 require './includes/session.php';
 $controller = new WT_Controller_Individual;
 $controller
-	->addExternalJavascript(WT_JQUERY_COOKIE_URL); // We use this to record the sidebar state
+	->addExternalJavascript(WT_JQUERY_COOKIE_JS_URL); // We use this to record the sidebar state
 
 if ($controller->record && $controller->record->canShow()) {
 	if (WT_Filter::get('action') == 'ajax') {
 		$controller->ajaxRequest();
-		exit;
+		
+		return;
 	}
 	// Generate the sidebar content *before* we display the page header,
 	// as the clippings cart needs to have write access to the session.
@@ -83,12 +84,14 @@ if ($controller->record && $controller->record->canShow()) {
 	$controller->pageHeader();
 	echo '<h2>', $controller->record->getFullName(), '</h2>';
 	echo '<p class="ui-state-highlight">', WT_I18N::translate('The details of this individual are private.'), '</p>';
-	exit;
+	
+	return;
 } else {
 	header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
 	$controller->pageHeader();
 	echo '<p class="ui-state-error">', WT_I18N::translate('This individual does not exist or you do not have permission to view it.'), '</p>';
-	exit;
+	
+	return;
 }
 
 $controller->addInlineJavascript('

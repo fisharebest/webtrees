@@ -25,13 +25,13 @@ use WT_I18N;
  */
 class Xenea extends BaseTheme {
 	/** {@inheritdoc} */
-	public function cssUrl() {
+	public function assetUrl() {
 		return 'themes/xenea/css-1.7.0/';
 	}
 
 	/** {@inheritdoc} */
 	protected function favicon() {
-		return '<link rel="icon" href="' . $this->cssUrl() . 'favicon.png" type="image/png">';
+		return '<link rel="icon" href="' . $this->assetUrl() . 'favicon.png" type="image/png">';
 	}
 
 	/** {@inheritdoc} */
@@ -97,7 +97,7 @@ class Xenea extends BaseTheme {
 	protected function stylesheets() {
 		return array(
 			'themes/xenea/jquery-ui-1.11.2/jquery-ui.css',
-			$this->cssUrl() . 'style.css',
+			$this->assetUrl() . 'style.css',
 		);
 	}
 

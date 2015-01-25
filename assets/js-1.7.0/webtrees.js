@@ -1111,7 +1111,7 @@ function valid_lati_long(field, pos, neg) {
 	// 0.5698W ==> W0.5698
 	txt=txt.replace(/(.*)([N|S|E|W]+)$/g, '$2$1');
 	// 17.1234 ==> N17.1234
-	if (txt && txt.charAt(0)!=neg && txt.charAt(0) !== pos) {
+	if (txt && txt.charAt(0) !== neg && txt.charAt(0) !== pos) {
 			txt = pos + txt;
 	}
 	field.value = txt;

@@ -463,6 +463,7 @@ a:hover .nameZoom {
 
 .icon {
 	border: 0;
+	padding: 0 5px
 }
 
 .sublinks_cell {
@@ -538,7 +539,6 @@ a:hover .nameZoom {
 	height: 20px;
 	text-decoration: none;
 	background-color: #fff;
-	border: 1px solid #ccc;
 	padding: 1px;
 	white-space: nowrap;
 }
@@ -880,7 +880,8 @@ a.showit:hover > span {
 	list-style: none outside none;
 	margin: 0;
 	max-height: 200px;
-	overflow-y: auto;
+	overflow-x: hidden;
+	overflow-y: scroll;
 }
 
 .ui-autocomplete li {
@@ -1059,9 +1060,44 @@ a.showit:hover > span {
 	margin: 0 auto;
 }
 
-#medialist-page .list_table,
-#medialist-page .list_table_controls {
+#medialist-page form .list_table {
+	width: 75%;
+}
+
+#medialist-page div .list_table,
+#medialist-page .media-col,
+#medialist-page .media-col1,
+#medialist-page .list_value_wrap,
+#medialist-page div .list_table_controls {
 	width: 100%;
+}
+
+#medialist-page .optionbox, 
+#medialist-page .descriptionbox {
+	width: 25%;
+}
+
+#medialist-page .media-col2 {
+	width: 50%;
+}
+
+#medialist-page .media-col {
+	padding-left: 5px; 
+	border: none;
+}
+
+[dir=rtl] #medialist-page .media-col {
+	padding-left: 0;
+	padding-right: 5px;
+}
+
+#medialist-page .media-image {
+	vertical-align:top; 
+	white-space:normal;
+}
+
+#medialist-page p {
+	text-align: center;
 }
 
 .list_table_controls td {
@@ -2192,8 +2228,9 @@ dd .deletelink {
 
 /* === jquery-ui.css changes === */
 .ui-accordion .ui-accordion-content {
+	border: 0;
 	position: relative;
-	padding: 0 5px;
+	padding: 5px 5px 0 5px;
 	overflow: visible;
 }
 
@@ -2207,7 +2244,6 @@ dd .deletelink {
 }
 
 .ui-widget-header {
-	border: 1px solid #fff;
 	padding: 3px;
 }
 
@@ -2449,7 +2485,7 @@ dd .deletelink {
 }
 
 #sb_family_nav_content {
-	margin-top: 8px;
+	margin-top: 0px;
 }
 
 .nam a:hover {
@@ -2505,7 +2541,7 @@ dd .deletelink {
 
 /* Sidebar*/
 #sb_content_descendancy {
-	margin-top: 5px;
+	margin-top: 0;
 }
 
 #sb_desc_content {
@@ -2545,7 +2581,7 @@ dd .deletelink {
 /* Individuals and Families */
 #sb_content_individuals,
 #sb_content_families {
-	margin-top: 5px;
+	margin-top: 0;
 }
 
 .sb_indi_surname_li,
@@ -2572,7 +2608,7 @@ dd .deletelink {
 
 /* Clippings */
 #sb_content_clippings {
-	margin-top: 5px;
+	margin-top: 0;
 }
 
 #sb_clippings_content ul {
@@ -2591,7 +2627,7 @@ dd .deletelink {
 #sb_content_extra_info {
 	font-size: 80%;
 	font-weight: bold;
-	margin-top: 1px;
+	margin-top: 0;
 	overflow: hidden;
 	padding: 5px;
 }
@@ -3359,6 +3395,23 @@ table.table-census-assistant th {
 }
 
 /*-- Lifespan ---- */
+#lifespan-page .person0 {
+	padding: 5px;
+}
+
+#lifespan-page .person0 div{
+	text-align: center;
+}
+
+#lifespan_chart .div-controls {
+	opacity: 0.67;
+	position: relative;
+	top: 80px;
+	width: 180px;
+	z-index: 100;
+	margin-left: 20px;
+}
+
 .lifespan_people span:first-letter {
 	font-variant: small-caps;
 	font-size: 16px;
@@ -4499,11 +4552,6 @@ footer {
 	content: url(images/powered-by-webtrees.png);
 }
 
-.execution_stats {
-	padding: 12px;
-	text-align: center;
-}
-
 .logo {
 	text-align: center;
 }
@@ -4661,12 +4709,11 @@ footer .error {
 [dir=rtl] #menu-chart-compact {
 	background-position: right -0px;
 }
-
-#menu-chart-descendancy {
+#menu-chart-descendants {
 	background-position: left -69px;
 }
 
-[dir=rtl] #menu-chart-descendancy {
+[dir=rtl] #menu-chart-descendants {
 	background-position: right -69px;
 }
 
@@ -5293,7 +5340,7 @@ footer .error {
 	#sidebar,
 	#separator,
 	.noprint {
-		display: none !important;
+		display: none;
 	}
 
 	#content {
@@ -5301,16 +5348,17 @@ footer .error {
 	}
 
 	#pedigree_chart {
-		left: -80px;
-	}
-
-	#header_accordion1 {
-		width: 510px !important;
+		left: -40px;
+		top:  -260px;
 	}
 
 	[dir=rtl] #pedigree_chart {
 		left: auto;
-		right: -80px;
+		right: -20px;
+	}
+
+	#header_accordion1 {
+		width: 510px;
 	}
 
 	#familybook_chart h3 {
@@ -5318,7 +5366,6 @@ footer .error {
 		vertical-align: middle;
 	}
 
-	/* buttons and input are used out of forms in sortable tables*/
 	.lifespan_outer {
 		border: 0;
 		height: auto;

@@ -36,7 +36,7 @@ if (WT_Filter::getBool('img')) {
 
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('
 		autocomplete();
 		var WT_FANCHART = (function() {
@@ -119,7 +119,8 @@ $controller
 
 if ($controller->error_message) {
 	echo '<p class="ui-state-error">', $controller->error_message, '</p>';
-	exit;
+	
+	return;
 }
 
 if ($controller->root) {

@@ -35,7 +35,7 @@ class Colors extends Clouds {
 	protected $sub_color;
 
 	/** {@inheritdoc} */
-	public function cssUrl() {
+	public function assetUrl() {
 		return 'themes/colors/css-1.7.0/';
 	}
 
@@ -156,8 +156,8 @@ class Colors extends Clouds {
 	protected function stylesheets() {
 		return array(
 			'themes/colors/jquery-ui-1.11.2/jquery-ui.css',
-			$this->cssUrl() . 'style.css',
-			$this->cssUrl() . 'palette/' . $this->sub_color . '.css',
+			$this->assetUrl() . 'style.css',
+			$this->assetUrl() . 'palette/' . $this->sub_color . '.css',
 		);
 	}
 

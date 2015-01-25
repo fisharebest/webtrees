@@ -32,7 +32,8 @@ require WT_ROOT . 'includes/functions/functions_edit.php';
 // If we are already logged in, then go to the “Home page”
 if (Auth::check() && WT_GED_ID) {
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
-	exit;
+
+	return;
 }
 
 $controller = new WT_Controller_Page;
@@ -126,7 +127,8 @@ case 'login':
 		// Explicitly write the session data before we exit,
 		// as it doesn’t always happen when using APC.
 		Zend_Session::writeClose();
-		exit;
+
+		return;
 	} catch (Exception $ex) {
 		$message = $ex->getMessage();
 	}
@@ -264,7 +266,8 @@ case 'requestpw':
 case 'register':
 	if (!WT_Site::getPreference('USE_REGISTRATION_MODULE')) {
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
-		exit;
+
+		return;
 	}
 
 	$controller->setPageTitle(WT_I18N::translate('Request new user account'));
@@ -298,7 +301,6 @@ case 'register':
 				->setPreference('contactmethod', 'messaging2')
 				->setPreference('comment', $user_comments)
 				->setPreference('visibleonline', '1')
-				->setPreference('editaccount', '1')
 				->setPreference('auto_accept', '0')
 				->setPreference('canadmin', '0')
 				->setPreference('sessiontime', '0');
@@ -390,7 +392,8 @@ case 'register':
 				echo '</p>
 			</div>';
 			echo '</div>';
-			exit;
+
+			return;
 		}
 	}
 
@@ -399,62 +402,117 @@ case 'register':
 		->pageHeader()
 		->addInlineJavascript('function regex_quote(str) {return str.replace(/[\\\\.?+*()[\](){}|]/g, "\\\\$&");}');
 
-	echo '<div id="login-register-page">
-		<h2>', $controller->getPageTitle(), '</h2>';
-		if (WT_Site::getPreference('SHOW_REGISTER_CAUTION')) {
-			echo '<div id="register-text">';
-			echo WT_I18N::translate('<div class="largeError">Notice:</div><div class="error">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>');
-			echo '</div>';
-		}
-		echo '<div id="register-box">
-			<form id="register-form" name="register-form" method="post" action="'.WT_LOGIN_URL . '" onsubmit="return checkform(this);" autocomplete="off">
-			<input type="hidden" name="action" value="register">
-			<h4>', WT_I18N::translate('All fields must be completed.'), '</h4><hr>
-			<div>
-				<label for="user_realname">', WT_I18N::translate('Real name'), help_link('real_name'),
-					'<input type="text" id="user_realname" name="user_realname" required maxlength="64" value="', WT_Filter::escapeHtml($user_realname), '" autofocus>
-				</label>
-			</div>
-			<div>
-				<label for="user_email">', WT_I18N::translate('Email address'), help_link('email'),
-					'<input type="email" id="user_email" name="user_email" required maxlength="64" value="', WT_Filter::escapeHtml($user_email), '">
-				</label>
-			</div>
-			<div>
-				<label for="username">', WT_I18N::translate('Desired user name'), help_link('username'),
-					'<input type="text" id="username" name="user_name" required maxlength="32" value="', WT_Filter::escapeHtml($user_name), '">
-				</label>
-			</div>
-			<div>
-				<label for="user_password01">', WT_I18N::translate('Desired password'), help_link('password'),
-					'<input type="password" id="user_password01" name="user_password01" value="', WT_Filter::escapeHtml($user_password01), '" required placeholder="', /* I18N: placeholder text for new-password field */ WT_I18N::plural('Use at least %s character.', 'Use at least %s characters.', WT_MINIMUM_PASSWORD_LENGTH, WT_I18N::number(WT_MINIMUM_PASSWORD_LENGTH)), '" pattern="' . WT_REGEX_PASSWORD . '" onchange="form.user_password02.pattern = regex_quote(this.value);">
-				</label>
-			</div>
-			<div>
-				<label for="user_password02">', WT_I18N::translate('Confirm password'), help_link('password_confirm'),
-					'<input type="password" id="user_password02" name="user_password02" value="', WT_Filter::escapeHtml($user_password02), '" required placeholder="', /* I18N: placeholder text for repeat-password field */ WT_I18N::translate('Type the password again.'), '" pattern="' . WT_REGEX_PASSWORD . '">
-				</label>
-			</div>
-			<div>
-				<label for="user_comments">', WT_I18N::translate('Comments'), help_link('register_comments'),
-					'<textarea cols="50" rows="5" id="user_comments" name="user_comments" required placeholder="', /* I18N: placeholder text for registration-comments field */ WT_I18N::translate('Explain why you are requesting an account.'), '">',
-						WT_Filter::escapeHtml($user_comments),
-					'</textarea>
-				</label>
-			</div>
-			<hr>
-			<div id="registration-submit">
-				<input type="submit" value="', WT_I18N::translate('continue'), '">
-			</div>
-		</form>
+	?>
+	<div id="login-register-page">
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
+
+		<?php if (WT_Site::getPreference('SHOW_REGISTER_CAUTION')): ?>
+		<div id="register-text">
+			<?php echo WT_I18N::translate('<div class="largeError">Notice:</div><div class="error">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>'); ?>
+		</div>
+		<?php endif; ?>
+		<div id="register-box">
+			<form id="register-form" name="register-form" method="post" onsubmit="return checkform(this);" autocomplete="off">
+				<input type="hidden" name="action" value="register">
+				<h4><?php echo WT_I18N::translate('All fields must be completed.'); ?></h4>
+				<hr>
+
+				<div>
+					<label for="user_realname">
+						<?php echo WT_I18N::translate('Real name'); ?>
+						<input type="text" id="user_realname" name="user_realname" required maxlength="64" value="<?php echo WT_Filter::escapeHtml($user_realname); ?>" autofocus>
+					</label>
+					<p class="small text-muted">
+						<?php echo WT_I18N::translate('This is your real name, as you would like it displayed on screen.'); ?>
+					</p>
+				</div>
+
+				<div>
+					<label for="user_email">
+						<?php echo WT_I18N::translate('Email address'); ?>
+						<input type="email" id="user_email" name="user_email" required maxlength="64" value="<?php echo WT_Filter::escapeHtml($user_email); ?>">
+					</label>
+					<p class="small text-muted">
+						<?php echo WT_I18N::translate('This email address will be used to send password reminders, site notifications, and messages from other family members who are registered on the site.'); ?>
+					</p>
+				</div>
+
+				<div>
+					<label for="username">
+						<?php echo WT_I18N::translate('Desired user name'); ?>
+						<input type="text" id="username" name="user_name" required maxlength="32" value="<?php WT_Filter::escapeHtml($user_name); ?>">
+					</label>
+					<p class="small text-muted">
+						<?php echo WT_I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.'); ?>
+						<?php echo WT_I18N::translate('Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;'); ?>
+					</p>
+				</div>
+
+				<div>
+					<label for="user_password01">
+						<?php echo WT_I18N::translate('Desired password'); ?>
+						<input required
+							type="password"
+							id="user_password01" name="user_password01"
+							value="<?php echo WT_Filter::escapeHtml($user_password01); ?>"
+							placeholder="<?php echo /* I18N: placeholder text for new-password field */ WT_I18N::plural('Use at least %s character.', 'Use at least %s characters.', WT_MINIMUM_PASSWORD_LENGTH, WT_I18N::number(WT_MINIMUM_PASSWORD_LENGTH)); ?>"
+							pattern="<?php echo  WT_REGEX_PASSWORD; ?>"
+							onchange="form.user_password02.pattern = regex_quote(this.value);"
+						>
+					</label>
+					<p class="small text-muted">
+						<?php echo WT_I18N::translate('Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”.'); ?>
+					</p>
+				</div>
+
+				<div>
+					<label for="user_password02">
+						<?php echo WT_I18N::translate('Confirm password'); ?>
+						<input required
+							type="password"
+							id="user_password02" name="user_password02"
+							value="<?php echo WT_Filter::escapeHtml($user_password02); ?>"
+							placeholder="<?php echo /* I18N: placeholder text for repeat-password field */ WT_I18N::translate('Type the password again.'); ?>"
+							pattern="<?php echo WT_REGEX_PASSWORD; ?>"
+						>
+					</label>
+					<p class="small text-muted">
+						<?php echo WT_I18N::translate('Type your password again, to make sure you have typed it correctly.'); ?>
+					</p>
+				</div>
+
+				<div>
+					<label for="user_comments">
+						<?php echo WT_I18N::translate('Comments'); ?>
+						<textarea required
+							cols="50" rows="5"
+							id="user_comments" name="user_comments"
+							placeholder="', /* I18N: placeholder text for registration-comments field */ WT_I18N::translate('Explain why you are requesting an account.'), '"
+						>
+							<?php echo WT_Filter::escapeHtml($user_comments); ?>
+						</textarea>
+					</label>
+					<p class="small text-muted">
+						<?php echo WT_I18N::translate('Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site.  You can also use this to enter any other comments you may have for the site administrator.'); ?>
+					</p>
+				</div>
+
+				<hr>
+
+				<div id="registration-submit">
+					<input type="submit" value="<?php echo WT_I18N::translate('continue'); ?>">
+				</div>
+			</form>
+		</div>
 	</div>
-	</div>';
+	<?php
 	break;
 
 case 'userverify':
 	if (!WT_Site::getPreference('USE_REGISTRATION_MODULE')) {
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
-		exit;
+
+		return;
 	}
 
 	// Change to the new user’s language
@@ -491,7 +549,8 @@ case 'userverify':
 case 'verify_hash':
 	if (!WT_Site::getPreference('USE_REGISTRATION_MODULE')) {
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
-		exit;
+
+		return;
 	}
 
 	// switch language to webmaster settings

@@ -191,11 +191,21 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 				}
 				$controller
 					->pageHeader()
-					->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+					->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 					->addInlineJavascript('autocomplete();');
 				if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 					ckeditor_WT_Module::enableEditor($controller);
 				}
+
+				?>
+				<ol class="breadcrumb small">
+					<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+					<li><a href="admin_modules.php"><?php echo WT_I18N::translate('Module administration'); ?></a></li>
+					<li><a href="module.php?mod=<?php echo $this->getName(); ?>&mod_action=admin_config"><?php echo $this->getTitle(); ?></a></li>
+					<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+				</ol>
+				<h2><?php echo $controller->getPageTitle(); ?></h2>
+				<?php
 
 				echo '<form name="story" method="post" action="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">';
 				echo WT_Filter::getCsrf();
@@ -234,12 +244,9 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 				echo '<p><input type="submit" value="', WT_I18N::translate('save'), '" tabindex="5">';
 				echo '</p>';
 				echo '</form>';
-
-				exit;
 			}
 		} else {
 			header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
-			exit;
 		}
 	}
 
@@ -268,80 +275,108 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 	 */
 	private function config() {
 		require_once WT_ROOT . 'includes/functions/functions_edit.php';
-		if (WT_USER_GEDCOM_ADMIN) {
 
-			$controller = new WT_Controller_Page;
-			$controller
-				->setPageTitle($this->getTitle())
-				->pageHeader()
-				->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
-				->addInlineJavascript('
-					jQuery("#story_table").dataTable({
-						dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-						' . WT_I18N::datatablesI18N() . ',
-						autoWidth: false,
-						paging: true,
-						pagingType: "full_numbers",
-						lengthChange: true,
-						filter: true,
-						info: true,
-						jQueryUI: true,
-						sorting: [[0,"asc"]],
-						columns: [
-							/* 0-name */ null,
-							/* 1-NAME */ null,
-							/* 2-NAME */ { sortable:false },
-							/* 3-NAME */ { sortable:false }
-						]
-					});
-				');
+		$controller = new WT_Controller_Page;
+		$controller
+			->restrictAccess(WT_USER_GEDCOM_ADMIN)
+			->setPageTitle($this->getTitle())
+			->pageHeader()
+			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
+			->addExternalJavascript(WT_DATATABLES_BOOTSTRAP_JS_URL)
+			->addInlineJavascript('
+				jQuery("#story_table").dataTable({
+					' . WT_I18N::datatablesI18N() . ',
+					autoWidth: false,
+					paging: true,
+					pagingType: "full_numbers",
+					lengthChange: true,
+					filter: true,
+					info: true,
+					sorting: [[0,"asc"]],
+					columns: [
+						/* 0-name */ null,
+						/* 1-NAME */ null,
+						/* 2-NAME */ { sortable:false },
+						/* 3-NAME */ { sortable:false }
+					]
+				});
+			');
 
-			$stories = WT_DB::prepare(
-				"SELECT block_id, xref" .
-				" FROM `##block` b" .
-				" WHERE module_name=?" .
-				" AND gedcom_id=?" .
-				" ORDER BY xref"
-			)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
+		$stories = WT_DB::prepare(
+			"SELECT block_id, xref" .
+			" FROM `##block` b" .
+			" WHERE module_name=?" .
+			" AND gedcom_id=?" .
+			" ORDER BY xref"
+		)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
 
-			echo
-				'<form method="get" action="', WT_SCRIPT_NAME, '">',
-				WT_I18N::translate('Family tree'), ' ',
-				'<input type="hidden" name="mod" value="', $this->getName(), '">',
-				'<input type="hidden" name="mod_action" value="admin_config">',
-				select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM),
-				'<input type="submit" value="', WT_I18N::translate('show'), '">',
-				'</form>';
+		?>
+		<ol class="breadcrumb small">
+			<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+			<li><a href="admin_modules.php"><?php echo WT_I18N::translate('Module administration'); ?></a></li>
+			<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+		</ol>
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
 
-			echo '<h3><a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">', WT_I18N::translate('Add a story'), '</a></h3>';
-			if (count($stories) > 0) {
-				echo '<table id="story_table">';
-				echo '<thead><tr>
-					<th>', WT_I18N::translate('Story title'), '</th>
-					<th>', WT_I18N::translate('Individual'), '</th>
-					<th></th>
-					<th></th>
-					</tr></thead>';
-			}
-			echo '<tbody>';
-			foreach ($stories as $story) {
-				$story_title = get_block_setting($story->block_id, 'title');
-				$indi        = WT_Individual::getInstance($story->xref);
-				if ($indi) {
-					echo '<tr><td><a href="', $indi->getHtmlUrl() . '#stories">', $story_title, '</a></td>
-							  <td><a href="', $indi->getHtmlUrl() . '#stories">' . $indi->getFullName(), '</a></td>';
-				} else {
-					echo '<tr><td>', $story_title, '</td><td class="error">', $story->xref, '</td>';
-				}
-				echo '<td><a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit&amp;block_id=', $story->block_id, '"><div class="icon-edit">&nbsp;</div></a></td>
-						 <td><a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_delete&amp;block_id=', $story->block_id, '" onclick="return confirm(\'', WT_I18N::translate('Are you sure you want to delete this story?'), '\');"><div class="icon-delete">&nbsp;</div></a></td>
-						 </tr>';
-			}
-			echo '</tbody></table>';
-		} else {
-			header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
-			exit;
-		}
+		<form class="form form-inline">
+			<label for="ged" class="sr-only">
+				<?php echo WT_I18N::translate('Family tree'); ?>
+			</label>
+			<input type="hidden" name="mod" value="<?php echo  $this->getName(); ?>">
+			<input type="hidden" name="mod_action" value="admin_config">
+			<?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM, 'class="form-control"'); ?>
+			<input type="submit" class="btn btn-primary" value="<?php echo WT_I18N::translate('show'); ?>">
+		</form>
+
+		<p>
+			<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_edit" class="btn btn-default">
+				<i class="fa fa-plus"></i>
+				<?php echo WT_I18N::translate('Add a story'); ?>
+			</a>
+		</p>
+
+		<table class="table table-bordered table-condensed">
+			<thead>
+				<tr>
+					<th><?php echo WT_I18N::translate('Story title'); ?></th>
+					<th><?php echo WT_I18N::translate('Individual'); ?></th>
+					<th><?php echo WT_I18N::translate('Edit'); ?></th>
+					<th><?php echo WT_I18N::translate('Delete'); ?></th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach ($stories as $story): ?>
+				<tr>
+					<td>
+						<?php echo WT_Filter::escapeHtml(get_block_setting($story->block_id, 'title')); ?>
+					</td>
+					<td>
+						<?php if ($indi = WT_Individual::getInstance($story->xref)): ?>
+						<a href="<?php echo $indi->getHtmlUrl(); ?>#stories">
+							<?php echo $indi->getFullName(); ?>
+						</a>
+						<?php else: ?>
+							<?php echo $story->xref; ?>
+						<?php endif; ?>
+						</td>
+						<td>
+							<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit&amp;block_id=', $story->block_id, '">
+								<div class="icon-edit">&nbsp;</div>
+							</a>
+						</td>
+						<td>
+							<a
+								href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_delete&amp;block_id=<?php echo $story->block_id; ?>"
+								onclick="return confirm('<?php echo WT_I18N::translate('Are you sure you want to delete this story?'); ?>');"
+							>
+								<div class="icon-delete">&nbsp;</div>
+							</a>
+					</td>
+				</tr>
+				<?php endforeach; ?>
+			</tbody>
+		</table>
+		<?php
 	}
 
 	/**
@@ -354,7 +389,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 		$controller
 			->setPageTitle($this->getTitle())
 			->pageHeader()
-			->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 			->addInlineJavascript('
 				jQuery("#story_table").dataTable({
 					dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',

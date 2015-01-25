@@ -26,13 +26,13 @@ use WT_Menu;
  */
 class Fab extends BaseTheme {
 	/** {@inheritdoc} */
-	public function cssUrl() {
+	public function assetUrl() {
 		return 'themes/fab/css-1.7.0/';
 	}
 
 	/** {@inheritdoc} */
 	protected function favicon() {
-		return '<link rel="icon" href="' . $this->cssUrl() . 'favicon.png" type="image/png">';
+		return '<link rel="icon" href="' . $this->assetUrl() . 'favicon.png" type="image/png">';
 	}
 
 	/** {@inheritdoc} */
@@ -110,7 +110,7 @@ class Fab extends BaseTheme {
 	protected function stylesheets() {
 		return array(
 			'themes/fab/jquery-ui-1.11.2/jquery-ui.css',
-			$this->cssUrl() . 'style.css',
+			$this->assetUrl() . 'style.css',
 		);
 	}
 

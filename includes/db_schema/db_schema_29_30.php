@@ -1,11 +1,16 @@
 <?php
-// Module help text.
+// Update the database schema from version 29-30
+// - delete an old/unused table
 //
-// This file is included from the application help_text.php script.
-// It simply needs to set $title and $text for the help topic $help_topic
+// The script should assume that it can be interrupted at
+// any point, and be able to continue by re-running the script.
+// Fatal errors, however, should be allowed to throw exceptions,
+// which will be caught by the framework.
+// It shouldn't do anything that might take more than a few
+// seconds, for systems with low timeout values.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2014 Greg Roach
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -21,9 +26,13 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME != 'help_text.php') {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
+try {
+	WT_DB::exec("DROP TABLE `##ip_address`");
+} catch (PDOException $ex) {
+	// Already deleted?
 }
-switch ($help) {
-}
+
+WT_DB::exec("DELETE FROM `##user_setting` WHERE setting_name in ('edit_account')");
+
+// Update the version to indicate success
+WT_Site::setPreference($schema_name, $next_version);

@@ -25,11 +25,6 @@
 
 use WT\User;
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 require_once WT_ROOT . 'includes/functions/functions_export.php';
 require_once WT_ROOT . 'library/pclzip.lib.php';
 
@@ -241,7 +236,7 @@ class WT_Controller_Clippings {
 							if (file_exists(WT_DATA_DIR . $MEDIA_DIRECTORY . $match[$k][1])) {
 								$media[$mediacount] = array(
 									PCLZIP_ATT_FILE_NAME          => WT_DATA_DIR . $MEDIA_DIRECTORY . $match[$k][1],
-									PCLZIP_ATT_FILE_NEW_FULL_NAME =>                                  $match[$k][1],
+									PCLZIP_ATT_FILE_NEW_FULL_NAME => $match[$k][1],
 								);
 								$mediacount++;
 							}

@@ -59,7 +59,7 @@ function return_bytes($val) {
  */
 function hasMemoryForImage($serverFilename) {
 	// find out how much total memory this script can access
-	$memoryAvailable = return_bytes(@ini_get('memory_limit'));
+	$memoryAvailable = return_bytes(ini_get('memory_limit'));
 	// if memory is unlimited, it will return -1 and we don’t need to worry about it
 	if ($memoryAvailable == -1) {
 		return true;

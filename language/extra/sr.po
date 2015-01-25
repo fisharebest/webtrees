@@ -10319,7 +10319,7 @@ msgid "P.M."
 msgstr ""
 
 #: help_text.php:1308
-msgid "PGV must be version 4.2.3, or any SVN up to #6973"
+msgid "PGV must be version 4.2.3, or any SVN up to #%s"
 msgstr ""
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
@@ -13843,7 +13843,7 @@ msgid "This database is only running MySQL version %s.  You cannot install webtr
 msgstr ""
 
 #: help_text.php:1207 setup.php:412
-msgid "This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site."
+msgid "This email address will be used to send password reminders, site notifications, and messages from other family members who are registered on the site."
 msgstr ""
 
 #: addmedia.php:519

@@ -44,7 +44,7 @@ $update_CHAN = !WT_Filter::postBool('preserve_last_changed');
 
 $controller = new WT_Controller_Simple;
 $controller
-	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();')
 	->restrictAccess(Auth::isMember());
 
@@ -63,7 +63,8 @@ if (!WT_USER_CAN_EDIT || !$disp) {
 	$controller
 		->pageHeader()
 		->addInlineJavascript('closePopupAndReloadParent();');
-	exit;
+
+	return;
 }
 
 // TODO - there is a lot of common code in the create and update cases....
@@ -228,7 +229,8 @@ case 'create': // Save the information from the “showcreateform” action
 		$controller->addInlineJavascript('openerpasteid("' . $new_media->getXref() . '");');
 	}
 	echo '<button onclick="closePopupAndReloadParent();">', WT_I18N::translate('close'), '</button>';
-	exit;
+
+	return;
 
 case 'update': // Save the information from the “editmedia” action
 	$controller->setPageTitle(WT_I18N::translate('Edit media object'));
@@ -383,7 +385,8 @@ case 'update': // Save the information from the “editmedia” action
 	} else {
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
 	}
-	exit;
+
+	return;
 case 'showmediaform':
 	$controller->setPageTitle(WT_I18N::translate('Create a new media object'));
 	$action = 'create';
@@ -681,7 +684,7 @@ if (Auth::isAdmin()) {
 	echo '<tr><td class="descriptionbox wrap width25">';
 	echo WT_Gedcom_Tag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
 	if ($NO_UPDATE_CHAN) {
-		echo '<input type="checkbox" checked= name="preserve_last_changed">';
+		echo '<input type="checkbox" checked name="preserve_last_changed">';
 	} else {
 		echo '<input type="checkbox" name="preserve_last_changed">';
 	}

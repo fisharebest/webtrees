@@ -128,7 +128,8 @@ case 'export':
 			'"', str_replace('"', '""', $row->gedcom_name), '"',
 			"\n";
 	}
-	exit;
+
+	return;
 case 'load_json':
 	Zend_Session::writeClose();
 	$start  = WT_Filter::getInteger('start');
@@ -183,21 +184,40 @@ case 'load_json':
 		'recordsFiltered' => $recordsFiltered,
 		'data'            => $data
 	));
-	exit;
+
+	return;
 }
 
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+	->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 	->addExternalJavascript(WT_DATATABLES_BOOTSTRAP_JS_URL)
+	->addExternalJavascript(WT_MOMENT_JS_URL)
+	->addExternalJavascript(WT_BOOTSTRAP_DATETIMEPICKER_JS_URL)
 	->addInlineJavascript('
 		jQuery(".table-site-logs").dataTable( {
 			processing: true,
 			serverSide: true,
 			ajax: "'.WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=load_json&from=' . $from . '&to=' . $to . '&type=' . $type . '&text=' . rawurlencode($text) . '&ip=' . rawurlencode($ip) . '&user=' . rawurlencode($user) . '&gedc=' . rawurlencode($gedc) . '",
-			'.WT_I18N::datatablesI18N(array(10, 20, 50, 100, 500, 1000, -1)) . ',
+			' . WT_I18N::datatablesI18N(array(10, 20, 50, 100, 500, 1000, -1)) . ',
 			sorting: [[ 0, "desc" ]],
 			pageLength: ' . Auth::user()->getPreference('admin_site_log_page_size', 20) . '
+		});
+		jQuery("#from,#to").parent("div").datetimepicker({
+			format: "YYYY-MM-DD",
+			minDate: "' . $earliest . '",
+			maxDate: "' . $latest . '",
+			locale: "' . WT_LOCALE . '",
+			icons: {
+				time: "fa fa-clock-o",
+				date: "fa fa-calendar",
+				up: "fa fa-arrow-up",
+				down: "fa fa-arrow-down",
+				previous: "fa fa-arrow-left",
+				next: "fa fa-arrow-right",
+				today: "fa fa-trash-o",
+				clear: "fa fa-trash-o"
+			}
 		});
 	');
 
@@ -222,59 +242,85 @@ foreach (User::all() as $tmp_user) {
 </ol>
 <h2><?php echo $controller->getPageTitle(); ?></h2>
 
-<form name="logs">
+<form class="form">
 	<input type="hidden" name="action" value="show">
-	<table class="table table-site-logs-options">
-		<tbody>
-			<tr>
-				<td colspan="6">
-					<?php echo /* I18N: %s are both user-input date fields */ WT_I18N::translate('From %s to %s', '<input class="log-date" name="from" value="' . WT_Filter::escapeHtml($from) . '">', '<input class="log-date" name="to" value="' . WT_Filter::escapeHtml($to) . '">'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<?php echo WT_I18N::translate('Type'), '<br>', select_edit_control('type', array(''=>'', 'auth'=>'auth', 'config'=>'config', 'debug'=>'debug', 'edit'=>'edit', 'error'=>'error', 'media'=>'media', 'search'=>'search'), null, $type, ''); ?>
-				</td>
-				<td>
-					<?php echo WT_I18N::translate('Message'); ?>
-					<br>
-					<input class="log-filter" name="text" value="<?php echo WT_Filter::escapeHtml($text); ?>">
-				</td>
-				<td>
-					<?php echo WT_I18N::translate('IP address'); ?>
-					<br>
-					<input class="log-filter" name="ip" value="<?php WT_Filter::escapeHtml($ip); ?>">
-				</td>
-				<td>
-					<?php echo WT_I18N::translate('User'); ?>
-					<br>
-					<?php echo select_edit_control('user', $users_array, '', $user, ''); ?>
-				</td>
-				<td>
-					<?php echo WT_I18N::translate('Family tree'); ?>
-					<br>
-					<?php echo select_edit_control('gedc', WT_Tree::getNameList(), '', $gedc, Auth::isAdmin() ? '' : 'disabled'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="6">
-					<button type="submit" class="btn btn-primary">
-							<?php echo WT_I18N::translate('Filter'); ?>
-					</button>
-					<button type="button" class="btn btn-primary" onclick="document.logs.action.value='export';return true;" <?php echo $action === 'show' ? '' : 'disabled'; ?>>
-						<?php echo WT_I18N::translate('Export'); ?>
-					</button>
-					<button type="button" class="btn btn-primary" onclick="if (confirm('<?php echo WT_I18N::translate('Permanently delete these records?'); ?>')) {document.logs.action.value='delete'; return true;} else {return false;}" <?php echo $action === 'show' ? '' : 'disabled'; ?>>
-						<?php echo WT_I18N::translate('Delete'); ?>
-					</button>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+
+	<div class="row">
+		<div class="form-group col-xs-6 col-sm-3">
+			<label for="from">
+				<?php echo /* I18N: label for the start of a date range (from x to y) */ WT_I18N::translate('From'); ?>
+			</label>
+			<div class="input-group date">
+				<input type="text" autocomplete="off" class="form-control" id="from" name="from" value="<?php echo WT_Filter::escapeHtml($from); ?>" autocomplete="off">
+				<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+			</div>
+		</div>
+
+		<div class="form-group col-xs-6 col-sm-3">
+			<label for="to">
+				<?php /* I18N: label for the end of a date range (from x to y) */ echo WT_I18N::translate('To'); ?>
+			</label>
+			<div class="input-group date">
+				<input type="text" autocomplete="off" class="form-control" id="to" name="to" value="<?php echo WT_Filter::escapeHtml($to); ?>" autocomplete="off">
+				<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+			</div>
+		</div>
+
+		<div class="form-group col-xs-6 col-sm-2">
+			<label for="type">
+				<?php echo WT_I18N::translate('Type'); ?>
+			</label>
+			<?php echo select_edit_control('type', array(''=>'', 'auth'=>'auth', 'config'=>'config', 'debug'=>'debug', 'edit'=>'edit', 'error'=>'error', 'media'=>'media', 'search'=>'search'), null, $type, 'class="form-control"'); ?>
+		</div>
+
+		<div class="form-group col-xs-6 col-sm-4">
+			<label for="ip">
+				<?php echo WT_I18N::translate('IP address'); ?>
+			</label>
+			<input class="form-control" type="text" id="ip" name="ip" value="<?php WT_Filter::escapeHtml($ip); ?>">
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="form-group col-sm-4">
+			<label for="text">
+				<?php echo WT_I18N::translate('Message'); ?>
+			</label>
+			<input class="form-control" type="text" id="text" name="text" value="<?php echo WT_Filter::escapeHtml($text); ?>">
+		</div>
+
+		<div class="form-group col-sm-4">
+			<label for="user">
+				<?php echo WT_I18N::translate('User'); ?>
+			</label>
+			<?php echo select_edit_control('user', $users_array, '', $user, 'class="form-control"'); ?>
+		</div>
+
+		<div class="form-group col-sm-4">
+			<label for="gedc">
+				<?php echo WT_I18N::translate('Family tree'); ?>
+			</label>
+			<?php echo select_edit_control('gedc', WT_Tree::getNameList(), '', $gedc, Auth::isAdmin() ? 'class="form-control"' : 'disabled class="form-control"'); ?>
+		</div>
+	</div>
+
+	<div class="row text-center">
+		<button type="submit" class="btn btn-primary">
+			<?php echo WT_I18N::translate('Filter'); ?>
+		</button>
+
+		<button type="button" class="btn btn-primary" onclick="document.logs.action.value='export';return true;" <?php echo $action === 'show' ? '' : 'disabled'; ?>>
+			<?php echo WT_I18N::translate('Export'); ?>
+		</button>
+
+		<button type="button" class="btn btn-primary" onclick="if (confirm('<?php echo WT_I18N::translate('Permanently delete these records?'); ?>')) {document.logs.action.value='delete'; return true;} else {return false;}" <?php echo $action === 'show' ? '' : 'disabled'; ?>>
+			<?php echo WT_I18N::translate('Delete'); ?>
+		</button>
+	</div>
 </form>
 
 <?php if ($action): ?>
-<table class="table table-bordered table-condensed table-hover table-striped table-site-logs">
+<table class="table table-bordered table-condensed table-hover table-site-logs">
 	<thead>
 		<tr>
 			<th><?php echo WT_I18N::translate('Timestamp'); ?></th>

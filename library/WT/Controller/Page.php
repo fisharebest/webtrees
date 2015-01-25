@@ -33,8 +33,8 @@ class WT_Controller_Page extends WT_Controller_Base {
 		parent::__construct();
 		// Every page uses these scripts
 		$this
-			->addExternalJavascript(WT_JQUERY_URL)
-			->addExternalJavascript(WT_JQUERYUI_URL)
+			->addExternalJavascript(WT_JQUERY_JS_URL)
+			->addExternalJavascript(WT_JQUERYUI_JS_URL)
 			->addExternalJavascript(WT_WEBTREES_JS_URL);
 	}
 
@@ -136,8 +136,6 @@ class WT_Controller_Page extends WT_Controller_Base {
 	 * @return string
 	 */
 	protected function pageFooter() {
-		global $start_time;
-
 		return
 			Theme::theme()->footerContainer() .
 			$this->getJavascript() .
@@ -145,7 +143,7 @@ class WT_Controller_Page extends WT_Controller_Base {
 			'</body>' .
 			'</html>' . PHP_EOL .
 			'<!-- webtrees: ' . WT_VERSION . ' -->' .
-			'<!-- Execution time: ' . WT_I18N::number(microtime(true) - $start_time, 3) . ' seconds -->' .
+			'<!-- Execution time: ' . WT_I18N::number(microtime(true) - WT_START_TIME, 3) . ' seconds -->' .
 			'<!-- Memory: ' . WT_I18N::number(memory_get_peak_usage(true) / 1024) . ' KB -->' .
 			'<!-- SQL queries: ' . WT_I18N::number(WT_DB::getQueryCount()) . ' -->';
 	}

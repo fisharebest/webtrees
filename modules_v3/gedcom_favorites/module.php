@@ -87,7 +87,8 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			break;
 		}
 
-		$block = get_block_setting($block_id, 'block', false);
+		$block = get_block_setting($block_id, 'block', '0');
+
 		if ($cfg) {
 			foreach (array('block') as $name) {
 				if (array_key_exists($name, $cfg)) {
@@ -115,7 +116,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 
 		if (Auth::check()) {
 			$controller
-				->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+				->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 				->addInlineJavascript('autocomplete();');
 		}
 
@@ -237,12 +238,12 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 	public function configureBlock($block_id) {
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			set_block_setting($block_id, 'block', WT_Filter::postBool('block'));
-			exit;
 		}
 
 		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
-		$block = get_block_setting($block_id, 'block', false);
+		$block = get_block_setting($block_id, 'block', '0');
+
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
@@ -331,7 +332,9 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			WT_DB::updateSchema(WT_ROOT . WT_MODULES_DIR . 'gedcom_favorites/db_schema/', 'FV_SCHEMA_VERSION', 4);
 		} catch (PDOException $ex) {
 			// The schema update scripts should never fail.  If they do, there is no clean recovery.
-			die($ex);
+			WT_FlashMessages::addMessage($ex->getMessage(), 'danger');
+			header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'site-unavailable.php');
+			throw $ex;
 		}
 	}
 }

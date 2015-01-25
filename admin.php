@@ -96,9 +96,6 @@ $user_languages = WT_DB::prepare(
 $stats = new WT_Stats(WT_GEDCOM);
 
 ?>
-<ol class="breadcrumb small">
-	<li class="active"><?php echo WT_I18N::translate('Administration'); ?></li>
-</ol>
 <h2><?php echo $controller->getPageTitle(); ?></h2>
 
 <div>
@@ -320,7 +317,6 @@ function old_paths() {
 		WT_ROOT . 'includes/family_nav.php',
 		WT_ROOT . 'includes/functions/functions_lang.php',
 		WT_ROOT . 'includes/functions/functions_tools.php',
-		WT_ROOT . 'js/conio',
 		WT_ROOT . 'logs.php',
 		WT_ROOT . 'manageservers.php',
 		WT_ROOT . 'media.php',
@@ -353,7 +349,6 @@ function old_paths() {
 		WT_ROOT . 'wtinfo.php',
 		// Removed in 1.1.1
 		// Removed in 1.1.2
-		WT_ROOT . 'js/treenav.js',
 		WT_ROOT . 'library/WT/TreeNav.php',
 		WT_ROOT . 'treenav.php',
 		// Removed in 1.2.0
@@ -387,7 +382,6 @@ function old_paths() {
 		//WT_ROOT.'modules_v2', // Do not delete - users may have stored custom modules/data here
 		// Removed in 1.2.4
 		WT_ROOT . 'includes/cssparser.inc.php',
-		WT_ROOT . 'js/strings.js',
 		WT_ROOT . 'modules_v3/gedcom_favorites/help_text.php',
 		WT_ROOT . 'modules_v3/GEDFact_assistant/_MEDIA/media_3_find.php',
 		WT_ROOT . 'modules_v3/GEDFact_assistant/_MEDIA/media_3_search_add.php',
@@ -414,14 +408,6 @@ function old_paths() {
 		// Removed in 1.2.5
 		WT_ROOT . 'includes/media_reorder_count.php',
 		WT_ROOT . 'includes/media_tab_head.php',
-		WT_ROOT . 'js/behaviour.js.htm',
-		WT_ROOT . 'js/bennolan',
-		WT_ROOT . 'js/bosrup',
-		WT_ROOT . 'js/kryogenix',
-		WT_ROOT . 'js/overlib.js.htm',
-		WT_ROOT . 'js/scriptaculous',
-		WT_ROOT . 'js/scriptaculous.js.htm',
-		WT_ROOT . 'js/sorttable.js.htm',
 		WT_ROOT . 'library/WT/JS.php',
 		WT_ROOT . 'modules_v3/clippings/index.php',
 		WT_ROOT . 'modules_v3/googlemap/css/googlemap_style.css',
@@ -461,9 +447,6 @@ function old_paths() {
 		WT_ROOT . 'includes/functions/functions_name.php',
 		WT_ROOT . 'includes/grampsxml.rng',
 		WT_ROOT . 'includes/session_spider.php',
-		WT_ROOT . 'js/autocomplete.js.htm',
-		WT_ROOT . 'js/prototype',
-		WT_ROOT . 'js/prototype.js.htm',
 		WT_ROOT . 'modules_v3/googlemap/admin_editconfig.php',
 		WT_ROOT . 'modules_v3/googlemap/admin_placecheck.php',
 		WT_ROOT . 'modules_v3/googlemap/flags.php',
@@ -475,7 +458,6 @@ function old_paths() {
 		// Removed in 1.3.1
 		WT_ROOT . 'imageflush.php',
 		WT_ROOT . 'includes/functions/functions_places.php',
-		WT_ROOT . 'js/html5.js',
 		WT_ROOT . 'modules_v3/googlemap/wt_v3_pedigree_map.js.php',
 		WT_ROOT . 'modules_v3/lightbox/js/tip_balloon_RTL.js',
 		// Removed in 1.3.2
@@ -486,10 +468,6 @@ function old_paths() {
 		// Removed in 1.4.0
 		WT_ROOT . 'imageview.php',
 		WT_ROOT . 'includes/functions/functions_media_reorder.php',
-		WT_ROOT . 'js/jquery',
-		WT_ROOT . 'js/jw_player',
-		WT_ROOT . 'js/modernizr.custom-2.6.1.js',
-		WT_ROOT . 'js/webtrees.js',
 		WT_ROOT . 'media/MediaInfo.txt',
 		WT_ROOT . 'media/thumbs/ThumbsInfo.txt',
 		WT_ROOT . 'modules_v3/GEDFact_assistant/css/media_0_inverselink.css',
@@ -520,14 +498,10 @@ function old_paths() {
 		WT_ROOT . 'themes/_administration/jquery',
 		WT_ROOT . 'themes/webtrees/chrome.css',
 		// Removed in 1.4.1
-		WT_ROOT . 'js/webtrees-1.4.0.js',
 		WT_ROOT . 'modules_v3/lightbox/images/image_edit.png',
 		WT_ROOT . 'modules_v3/lightbox/images/image_view.png',
 		// Removed in 1.4.2
 		WT_ROOT . 'modules_v3/lightbox/images/image_view.png',
-		WT_ROOT . 'js/jquery.colorbox-1.4.3.js',
-		WT_ROOT . 'js/jquery-ui-1.10.0.js',
-		WT_ROOT . 'js/webtrees-1.4.1.js',
 		WT_ROOT . 'modules_v3/top10_pageviews/help_text.php',
 		WT_ROOT . 'themes/_administration/jquery-ui-1.10.0',
 		WT_ROOT . 'themes/clouds/jquery-ui-1.10.0',
@@ -541,9 +515,6 @@ function old_paths() {
 		WT_ROOT . 'includes/functions/functions_privacy.php',
 		WT_ROOT . 'includes/media_reorder.php',
 		WT_ROOT . 'includes/old_messages.php',
-		WT_ROOT . 'js/jquery-1.9.1.js',
-		WT_ROOT . 'js/jquery.cookie-1.3.1.js',
-		WT_ROOT . 'js/webtrees-1.4.2.js',
 		WT_ROOT . 'library/WT/Event.php',
 		WT_ROOT . 'library/WT/Person.php',
 		WT_ROOT . 'library/phpmailer',
@@ -584,7 +555,6 @@ function old_paths() {
 		WT_ROOT . 'themes/xenea/msie.css',
 		WT_ROOT . 'themes/xenea/style.css',
 		// Removed in 1.5.1
-		WT_ROOT . 'js/webtrees-1.5.0.js',
 		WT_ROOT . 'themes/_administration/css-1.5.0',
 		WT_ROOT . 'themes/clouds/css-1.5.0',
 		WT_ROOT . 'themes/colors/css-1.5.0',
@@ -593,7 +563,6 @@ function old_paths() {
 		WT_ROOT . 'themes/webtrees/css-1.5.0',
 		WT_ROOT . 'themes/xenea/css-1.5.0',
 		// Removed in 1.5.2
-		WT_ROOT . 'js/webtrees-1.5.1.js',
 		WT_ROOT . 'themes/_administration/css-1.5.1',
 		WT_ROOT . 'themes/clouds/css-1.5.1',
 		WT_ROOT . 'themes/colors/css-1.5.1',
@@ -602,9 +571,6 @@ function old_paths() {
 		WT_ROOT . 'themes/webtrees/css-1.5.1',
 		WT_ROOT . 'themes/xenea/css-1.5.1',
 		// Removed in 1.5.3
-		WT_ROOT . 'js/jquery-1.10.2.js',
-		WT_ROOT . 'js/jquery-ui-1.10.3.js',
-		WT_ROOT . 'js/webtrees-1.5.2.js',
 		WT_ROOT . 'library/htmlpurifier-4.6.0',
 		//WT_ROOT.'library/Michelf', On windows, this would delete library/michelf
 		WT_ROOT . 'library/tcpdf',
@@ -630,13 +596,6 @@ function old_paths() {
 		// Removed in 1.6.0
 		WT_ROOT . 'downloadbackup.php',
 		WT_ROOT . 'includes/functions/functions_utf-8.php',
-		WT_ROOT . 'js/jquery.colorbox-1.4.15.js',
-		WT_ROOT . 'js/jquery.cookie-1.4.0.js',
-		WT_ROOT . 'js/jquery.datatables-1.9.4.js',
-		WT_ROOT . 'js/jquery.jeditable-1.7.1.js',
-		WT_ROOT . 'js/jquery.wheelzoom-1.1.2.js',
-		WT_ROOT . 'js/jquery-1.11.0.js',
-		WT_ROOT . 'js/webtrees-1.5.3.js',
 		WT_ROOT . 'library/WT/Debug.php',
 		WT_ROOT . 'modules_v3/ckeditor/ckeditor-4.3.2-custom',
 		WT_ROOT . 'site-php-version.php',
@@ -650,10 +609,6 @@ function old_paths() {
 		// Removed in 1.6.1
 		WT_ROOT . 'includes/authentication.php',
 		// Removed in 1.6.2
-		WT_ROOT . 'js/jquery.colorbox-1.5.9.js',
-		WT_ROOT . 'js/jquery-ui-1.10.4.js',
-		WT_ROOT . 'js/modernizr.custom-2.6.2.js',
-		WT_ROOT . 'js/webtrees-1.6.0.js',
 		WT_ROOT . 'themes/_administration/css-1.6.0',
 		WT_ROOT . 'themes/_administration/jquery-ui-1.10.3',
 		WT_ROOT . 'themes/clouds/css-1.6.0',
@@ -671,11 +626,9 @@ function old_paths() {
 		WT_ROOT . 'themes/_administration/css-1.6.0',
 		WT_ROOT . 'themes/_administration/jquery-ui-1.10.3',
 		// Removed in 1.7.0
-		WT_ROOT . 'js/jquery-1.11.1.js',
-		WT_ROOT . 'js/jquery.datatables-1.10.3.js',
-		WT_ROOT . 'js/jquery.jeditable-1.7.3.js',
-		WT_ROOT . 'js/webtrees-1.6.2.js',
+		WT_ROOT . 'js',
 		WT_ROOT . 'library/WT/MenuBar.php',
+		WT_ROOT . 'save.php',
 		WT_ROOT . 'themes/_administration/css-1.6.2',
 		WT_ROOT . 'themes/_administration/templates',
 		WT_ROOT . 'themes/_administration/header.php',

@@ -76,7 +76,8 @@ if (WT_Filter::post('action') === 'delete' && WT_Filter::checkCsrf()) {
 	WT_FlashMessages::addMessage(WT_I18N::translate('The preferences for the module “%s” have been deleted.', $module_name), 'success');
 
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin_modules.php');
-	exit;
+
+	return;
 }
 
 // Module can’t be found on disk?
@@ -97,7 +98,7 @@ foreach ($module_status as $module_name => $status) {
 
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+	->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 	->addExternalJavascript(WT_DATATABLES_BOOTSTRAP_JS_URL)
 	->addInlineJavascript('
 	  function reindexMods(id) {
@@ -155,31 +156,29 @@ $controller
 		</thead>
 		<tbody>
 		<?php
-		foreach ($module_status as $module_name => $status) {
-			if (array_key_exists($module_name, $modules)) {
-				$module = $modules[$module_name];
-				echo
-					'<tr><td class="text-center">', two_state_checkbox('status-' . $module_name, $status === 'enabled'), '</td>',
-					'<td>';
-				if ($module instanceof WT_Module_Config) {
-					echo '<a href="', $module->getConfigLink(), '">';
-				}
-				echo $module->getTitle();
-				if ($module instanceof WT_Module_Config) {
-					echo ' <i class="fa fa-cogs"></i></a>';
-				}
-				echo
-					'</td>',
-					'<td>', $module->getDescription(), '</td>',
-					'<td class="text-center text-muted hidden-xs">', $module instanceof WT_Module_Menu ? '<i class="fa fa-list-ul" title="' . WT_I18N::translate('Menu') . '"></i>' : '-', '</td>',
-					'<td class="text-center text-muted hidden-xs">', $module instanceof WT_Module_Tab ? '<i class="fa fa-folder" title="' . WT_I18N::translate('Tab') . '"></i>' : '-', '</td>',
-					'<td class="text-center text-muted hidden-xs">', $module instanceof WT_Module_Sidebar ? '<i class="fa fa-th-large" title="' . WT_I18N::translate('Sidebar') . '"></i>' : '-', '</td>',
-					'<td class="text-center text-muted hidden-xs">', $module instanceof WT_Module_Block ? (($module->isUserBlock() ? '<i class="fa fa-user" title="' . WT_I18N::translate('My page') . '"></i>' : '') . ($module->isGedcomBlock() ? '<i class="fa fa-tree" title="' . WT_I18N::translate('Home page') . '"></i>' : '')) : '-', '</td>',
-					'<td class="text-center text-muted hidden">', $module instanceof WT_Module_Chart ? '<i class="fa fa-check" title="' . WT_I18N::translate('Chart') . '"></i>' : '-', '</td>',
-					'<td class="text-center text-muted hidden-xs">', $module instanceof WT_Module_Report ? '<i class="fa fa-file" title="' . WT_I18N::translate('Report') . '"></i>' : '-', '</td>',
-					'<td class="text-center text-muted hidden">', $module instanceof WT_Module_Theme ? '<i class="fa fa-check" title="' . WT_I18N::translate('Theme') . '"></i>' : '-', '</td>',
-					'</tr>';
+		foreach ($modules as $module) {
+			$status = $module_status[$module->getName()];
+			echo
+			'<tr><td class="text-center">', two_state_checkbox('status-' . $module->getName(), $status === 'enabled'), '</td>',
+			'<td>';
+			if ($module instanceof WT_Module_Config) {
+				echo '<a href="', $module->getConfigLink(), '">';
 			}
+			echo $module->getTitle();
+			if ($module instanceof WT_Module_Config) {
+				echo ' <i class="fa fa-cogs"></i></a>';
+			}
+			echo
+			'</td>',
+			'<td>', $module->getDescription(), '</td>',
+			'<td class="text-center text-muted hidden-xs">', $module instanceof WT_Module_Menu ? '<i class="fa fa-list-ul" title="' . WT_I18N::translate('Menu') . '"></i>' : '-', '</td>',
+			'<td class="text-center text-muted hidden-xs">', $module instanceof WT_Module_Tab ? '<i class="fa fa-folder" title="' . WT_I18N::translate('Tab') . '"></i>' : '-', '</td>',
+			'<td class="text-center text-muted hidden-xs">', $module instanceof WT_Module_Sidebar ? '<i class="fa fa-th-large" title="' . WT_I18N::translate('Sidebar') . '"></i>' : '-', '</td>',
+			'<td class="text-center text-muted hidden-xs">', $module instanceof WT_Module_Block ? (($module->isUserBlock() ? '<i class="fa fa-user" title="' . WT_I18N::translate('My page') . '"></i>' : '') . ($module->isGedcomBlock() ? '<i class="fa fa-tree" title="' . WT_I18N::translate('Home page') . '"></i>' : '')) : '-', '</td>',
+			'<td class="text-center text-muted hidden">', $module instanceof WT_Module_Chart ? '<i class="fa fa-check" title="' . WT_I18N::translate('Chart') . '"></i>' : '-', '</td>',
+			'<td class="text-center text-muted hidden-xs">', $module instanceof WT_Module_Report ? '<i class="fa fa-file" title="' . WT_I18N::translate('Report') . '"></i>' : '-', '</td>',
+			'<td class="text-center text-muted hidden">', $module instanceof WT_Module_Theme ? '<i class="fa fa-check" title="' . WT_I18N::translate('Theme') . '"></i>' : '-', '</td>',
+			'</tr>';
 		}
 		?>
 		</tbody>

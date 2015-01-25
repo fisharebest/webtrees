@@ -10291,8 +10291,8 @@ msgid "P.M."
 msgstr "אחה״צ"
 
 #: help_text.php:1308
-msgid "PGV must be version 4.2.3, or any SVN up to #6973"
-msgstr "PGV חייבת להיות גירסה 4.2.3, או SVN עד ל-#6973"
+msgid "PGV must be version 4.2.3, or any SVN up to #%s"
+msgstr "PGV חייבת להיות גירסה 4.2.3, או SVN עד ל-#%s"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:82
@@ -13814,7 +13814,7 @@ msgid "This database is only running MySQL version %s.  You cannot install webtr
 msgstr "באתר זה פועלת רק  גירסה %s  של MySQL. אינך יכול להתקין כאן webtrees."
 
 #: help_text.php:1207 setup.php:412
-msgid "This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site."
+msgid "This email address will be used to send password reminders, site notifications, and messages from other family members who are registered on the site."
 msgstr "כתובת דוא״ל הזו תהיה בשימוש כאשר שולחים לך תזכורת סיסמא, הודעות האתר והודעות מבני משפחה אחרים הרשומים באתר."
 
 #: addmedia.php:519

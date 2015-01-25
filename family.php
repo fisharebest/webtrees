@@ -75,7 +75,8 @@ if ($controller->record && $controller->record->canShow()) {
 	header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
 	$controller->pageHeader();
 	echo '<p class="ui-state-error">', WT_I18N::translate('This family does not exist or you do not have permission to view it.'), '</p>';
-	exit;
+	
+	return;
 }
 
 $PEDIGREE_FULL_DETAILS = '1'; // Override GEDCOM configuration

@@ -24,10 +24,16 @@ define('WT_SCRIPT_NAME', 'admin_site_access.php');
 require './includes/session.php';
 require WT_ROOT . 'includes/functions/functions_edit.php';
 
+$rules = array(
+	'allow' => /* I18N: An access rule - allow access to the site */ WT_I18N::translate('allow'),
+	'deny'  => /* I18N: An access rule - deny access to the site */  WT_I18N::translate('deny'),
+	'robot' => /* I18N: http://en.wikipedia.org/wiki/Web_crawler */  WT_I18N::translate('robot'),
+);
+
 $controller = new WT_Controller_Page;
 $controller
 	->restrictAccess(Auth::isAdmin())
-	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+	->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 	->addExternalJavascript(WT_DATATABLES_BOOTSTRAP_JS_URL)
 	->setPageTitle(WT_I18N::translate('Site access rules'));
 
@@ -104,15 +110,7 @@ case 'load_rules':
 	foreach ($data as &$datum) {
 		$site_access_rule_id = $datum[7];
 		$user_agent = $datum[4];
-		$datum[0] = edit_field_inline('site_access_rule-ip_address_start-' . $site_access_rule_id, $datum[0]);
-		$datum[2] = edit_field_inline('site_access_rule-ip_address_end-' . $site_access_rule_id, $datum[2]);
-		$datum[4] = edit_field_inline('site_access_rule-user_agent_pattern-' . $site_access_rule_id, $datum[4]);
-		$datum[5] = select_edit_control_inline('site_access_rule-rule-' . $site_access_rule_id, array(
-			'allow' => /* I18N: An access rule - allow access to the site */ WT_I18N::translate('allow'),
-			'deny'  => /* I18N: An access rule - deny access to the site */  WT_I18N::translate('deny'),
-			'robot' => /* I18N: http://en.wikipedia.org/wiki/Web_crawler */  WT_I18N::translate('robot'),
-		), null, $datum[5]);
-		$datum[6] = edit_field_inline('site_access_rule-comment-' . $site_access_rule_id, $datum[6]);
+		$datum[5] = $rules[$datum[5]];
 		$datum[7] = '<button class="btn btn-danger" onclick="if (confirm(\'' . WT_Filter::escapeHtml(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($user_agent))) . '\')) { document.location=\'' . WT_SCRIPT_NAME . '?action=delete&amp;site_access_rule_id=' . $site_access_rule_id . '\'; }"><i class="fa fa-trash-o"></i></button>';
 	}
 
@@ -128,7 +126,8 @@ case 'load_rules':
 		'recordsFiltered' => $recordsFiltered,
 		'data'            => $data
 	));
-	exit;
+
+	return;
 case 'load_unknown':
 	Zend_Session::writeClose();
 	// AJAX callback for datatables
@@ -201,7 +200,8 @@ case 'load_unknown':
 		'recordsFiltered' => $recordsFiltered,
 		'data'            => $data
 	));
-	exit;
+
+	return;
 }
 
 $controller

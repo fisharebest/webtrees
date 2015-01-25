@@ -63,7 +63,7 @@ $hide_show = array(
 );
 
 $privacy = array(
-	WT_PRIV_PUBLIC => WT_I18N::translate('Show to public'),
+	WT_PRIV_PUBLIC => WT_I18N::translate('Show to visitors'),
 	WT_PRIV_USER   => WT_I18N::translate('Show to members'),
 	WT_PRIV_NONE   => WT_I18N::translate('Show to managers'),
 	WT_PRIV_HIDE   => WT_I18N::translate('Hide from everyone'),
@@ -153,7 +153,7 @@ $PRIVACY_CONSTANTS = array(
 );
 
 $privacy = array(
-	WT_PRIV_PUBLIC => WT_I18N::translate('Show to public'),
+	WT_PRIV_PUBLIC => WT_I18N::translate('Show to visitors'),
 	WT_PRIV_USER   => WT_I18N::translate('Show to members'),
 	WT_PRIV_NONE   => WT_I18N::translate('Show to managers'),
 	WT_PRIV_HIDE   => WT_I18N::translate('Hide from everyone'),
@@ -190,9 +190,10 @@ foreach ($resns as $resn) {
 	if ($resn->tag_type) {
 		$resn->tag_label = WT_Gedcom_Tag::getLabel($resn->tag_type);
 	} else {
-		$resn->tag_label = '&nbsp;';
+		$resn->tag_label = '';
 	}
 }
+usort($resns, function(\stdClass $x, \stdClass $y) { return WT_I18N::strcasecmp($x->tag_label, $y->tag_label); });
 
 // We have two fields in one
 $CALENDAR_FORMATS = explode('_and_', $WT_TREE->getPreference('CALENDAR_FORMAT') . '_and_');
@@ -409,7 +410,8 @@ default:
 
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addExternalJavascript(WT_ADMIN_JS_URL)
+	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');
 
 ?>
@@ -420,7 +422,7 @@ $controller
 </ol>
 <h2><?php echo $controller->getPageTitle(); ?></h2>
 
-<form class="form-horizontal" method="POST" role="form">
+<form class="form-horizontal" method="POST">
 	<?php echo WT_Filter::getCsrf(); ?>
 	<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 
@@ -429,95 +431,55 @@ $controller
 	<input type="hidden" name="action" value="privacy">
 
 	<!-- REQUIRE_AUTHENTICATION -->
-	<fieldset class="form-group">
-		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Require visitor authentication'); ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo radio_buttons('REQUIRE_AUTHENTICATION', $no_yes, $WT_TREE->getPreference('REQUIRE_AUTHENTICATION'), 'class="radio-inline"'); ?>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Require visitor authentication” configuration setting */ WT_I18N::translate('Enabling this option will force all visitors to login before they can view any data on the site.'); ?>
-			</p>
+	<div class="form-group">
+		<div class="control-label col-sm-4">
+			<label>
+				<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Show the family tree'); ?>
+			</label>
+			<div class="hidden-xs">
+				<span class="label visitors"><i class="fa fa-fw"></i> <?php echo WT_I18N::translate('visitors'); ?></span>
+				<span class="label members"><i class="fa fa-fw"></i><?php echo WT_I18N::translate('members'); ?></span>
+			</div>
 		</div>
-	</fieldset>
-
-	<!-- HIDE_LIVE_PEOPLE -->
-	<fieldset class="form-group">
-		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Privacy options'); ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo radio_buttons('HIDE_LIVE_PEOPLE', $disable_enable, $WT_TREE->getPreference('HIDE_LIVE_PEOPLE'), 'class="radio-inline"'); ?>
+		<div class="col-sm-8">
+			<?php echo select_edit_control('REQUIRE_AUTHENTICATION', array('0' => WT_I18N::translate('Show to visitors'), '1' => WT_I18N::translate('Show to members')), null, $WT_TREE->getPreference('REQUIRE_AUTHENTICATION'), 'class="form-control"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Privacy options” configuration setting */ WT_I18N::translate('This option will enable all privacy settings and hide the details of living individuals, as defined or modified on the Privacy tab of each GEDCOM’s configuration page.'); ?>
+				<?php echo /* I18N: Help text for the “Family tree” configuration setting */ WT_I18N::translate('Enabling this option will force all visitors to login before they can view any data on the site.'); ?>
 			</p>
+			<?php if (WT_Site::getPreference('USE_REGISTRATION_MODULE')): ?>
+			<p class="small text-muted">
+				<?php echo WT_I18N::translate('If visitors can not see the family tree, they will not be able to sign up for an account.  You will need to add their account manually.'); ?>
+			</p>
+			<?php endif; ?>
 		</div>
-	</fieldset>
+	</div>
 
 	<!-- SHOW_DEAD_PEOPLE -->
 	<div class="form-group">
-		<label class="control-label col-sm-3" for="SHOW_DEAD_PEOPLE">
-			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Show dead individuals'); ?>
-		</label>
-		<div class="col-sm-9">
-			<?php echo select_edit_control('SHOW_DEAD_PEOPLE', $privacy, null, $WT_TREE->getPreference('SHOW_DEAD_PEOPLE'), 'class="form-control"'); ?>
+		<div class="control-label col-sm-4">
+			<label for="SHOW_DEAD_PEOPLE">
+				<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Show dead individuals'); ?>
+			</label>
+			<div class="hidden-xs">
+				<span class="label visitors"><i class="fa fa-fw"></i> <?php echo WT_I18N::translate('visitors'); ?></span>
+				<span class="label members"><i class="fa fa-fw"></i><?php echo WT_I18N::translate('members'); ?></span>
+			</div>
+		</div>
+		<div class="col-sm-8">
+			<?php echo select_edit_control('SHOW_DEAD_PEOPLE', array_slice($privacy, 0, 2, true), null, $WT_TREE->getPreference('SHOW_DEAD_PEOPLE'), 'class="form-control"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Show dead individuals” configuration setting */ WT_I18N::translate('Set the privacy access level for all dead individuals.'); ?>
 			</p>
 		</div>
 	</div>
 
-	<!-- KEEP_ALIVE_YEARS_BIRTH / KEEP_ALIVE_YEARS_DEATH -->
-	<fieldset class="form-group">
-		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting.  ... [who were] born in the last XX years or died in the last YY years */ WT_I18N::translate('Extend privacy to dead individuals'); ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php
-			echo
-				/* I18N: Extend privacy to dead people [who were] ... */ WT_I18N::translate(
-				'born in the last %1$s years or died in the last %2$s years',
-				'<input type="text" name="KEEP_ALIVE_YEARS_BIRTH" value="' . $WT_TREE->getPreference('KEEP_ALIVE_YEARS_BIRTH') . '" size="5" maxlength="3">',
-				'<input type="text" name="KEEP_ALIVE_YEARS_DEATH" value="' . $WT_TREE->getPreference('KEEP_ALIVE_YEARS_DEATH') . '" size="5" maxlength="3">'
-			); ?>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Extend privacy to dead individuals” configuration setting */ WT_I18N::translate('In some countries, privacy laws apply not only to living individuals, but also to those who have died recently.  This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years.  Leave these values empty to disable this feature.'); ?>
-			</p>
-		</div>
-	</fieldset>
-
-	<!-- SHOW_LIVING_NAMES -->
-	<div class="form-group">
-		<label class="control-label col-sm-3" for="SHOW_LIVING_NAMES">
-			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Names of private individuals'); ?>
-		</label>
-		<div class="col-sm-9">
-			<?php echo select_edit_control('SHOW_LIVING_NAMES', $privacy, null, $WT_TREE->getPreference('SHOW_LIVING_NAMES'), 'class="form-control"'); ?>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Names of private individuals” configuration setting */ WT_I18N::translate('This option will show the names (but no other details) of private individuals.  Individuals are private if they are still alive or if a privacy restriction has been added to their individual record.  To hide a specific name, add a privacy restriction to that name record.'); ?>
-			</p>
-		</div>
-	</div>
-
-	<!-- SHOW_PRIVATE_RELATIONSHIPS -->
-	<fieldset class="form-group">
-		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Show private relationships'); ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo radio_buttons('SHOW_PRIVATE_RELATIONSHIPS', $disable_enable, $WT_TREE->getPreference('SHOW_PRIVATE_RELATIONSHIPS'), 'class="radio-inline"'); ?>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Show private relationships” configuration setting */ WT_I18N::translate('This option will retain family links in private records.  This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals.'); ?>
-			</p>
-		</div>
-	</fieldset>
 
 	<!-- MAX_ALIVE_AGE -->
 	<div class="form-group">
-		<label class="control-label col-sm-3" for="MAX_ALIVE_AGE">
+		<label class="control-label col-sm-4" for="MAX_ALIVE_AGE">
 			<?php echo WT_I18N::translate('Age at which to assume an individual is dead'); ?>
 		</label>
-		<div class="col-sm-9">
+		<div class="col-sm-8">
 			<input
 				class="form-control"
 				id="MAX_ALIVE_AGE"
@@ -532,6 +494,84 @@ $controller
 		</div>
 	</div>
 
+	<!-- HIDE_LIVE_PEOPLE -->
+	<fieldset class="form-group">
+		<div class="control-label col-sm-4">
+			<legend>
+				<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Show living individuals'); ?>
+			</legend>
+			<div class="hidden-xs">
+				<span class="label visitors"><i class="fa fa-fw"></i> <?php echo WT_I18N::translate('visitors'); ?></span>
+				<span class="label members"><i class="fa fa-fw"></i><?php echo WT_I18N::translate('members'); ?></span>
+			</div>
+		</div>
+		<div class="col-sm-8">
+			<?php echo select_edit_control('HIDE_LIVE_PEOPLE', array('0' => WT_I18N::translate('Show to visitors'), '1' => WT_I18N::translate('Show to members')), null, $WT_TREE->getPreference('HIDE_LIVE_PEOPLE'), 'class="form-control"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Show living individuals” configuration setting */ WT_I18N::translate('If you show living individuals to visitors, all other privacy restrictions are ignored.  Do this only if all the data in your tree is public.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+		<!-- KEEP_ALIVE_YEARS_BIRTH / KEEP_ALIVE_YEARS_DEATH -->
+	<fieldset class="form-group">
+		<div class="control-label col-sm-4">
+			<legend>
+				<?php echo /* I18N: A configuration setting.  ... [who were] born in the last XX years or died in the last YY years */ WT_I18N::translate('Extend privacy to dead individuals'); ?>
+			</legend>
+		</div>
+		<div class="col-sm-8">
+			<?php
+			echo
+				/* I18N: Extend privacy to dead individuals [who were] ... */ WT_I18N::translate(
+				'born in the last %1$s years or died in the last %2$s years',
+				'<input type="text" name="KEEP_ALIVE_YEARS_BIRTH" value="' . $WT_TREE->getPreference('KEEP_ALIVE_YEARS_BIRTH') . '" size="5" maxlength="3">',
+				'<input type="text" name="KEEP_ALIVE_YEARS_DEATH" value="' . $WT_TREE->getPreference('KEEP_ALIVE_YEARS_DEATH') . '" size="5" maxlength="3">'
+			); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Extend privacy to dead individuals” configuration setting */ WT_I18N::translate('In some countries, privacy laws apply not only to living individuals, but also to those who have died recently.  This option will allow you to extend the privacy rules for living individuals to those who were born or died within a specified number of years.  Leave these values empty to disable this feature.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- SHOW_LIVING_NAMES -->
+	<div class="form-group">
+		<div class="control-label col-sm-4">
+			<label for="SHOW_LIVING_NAMES">
+				<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Show names of private individuals'); ?>
+			</label>
+			<div class="hidden-xs">
+				<span class="label visitors"><i class="fa fa-fw"></i> <?php echo WT_I18N::translate('visitors'); ?></span>
+				<span class="label members"><i class="fa fa-fw"></i><?php echo WT_I18N::translate('members'); ?></span>
+				<span class="label managers"><i class="fa fa-fw"></i> <?php echo WT_I18N::translate('managers'); ?></span>
+			</div>
+		</div>
+		<div class="col-sm-8">
+			<?php echo select_edit_control('SHOW_LIVING_NAMES', array_slice($privacy, 0, 3, true), null, $WT_TREE->getPreference('SHOW_LIVING_NAMES'), 'class="form-control"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Show names of private individuals” configuration setting */ WT_I18N::translate('This option will show the names (but no other details) of private individuals.  Individuals are private if they are still alive or if a privacy restriction has been added to their individual record.  To hide a specific name, add a privacy restriction to that name record.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- SHOW_PRIVATE_RELATIONSHIPS -->
+	<div class="form-group">
+		<div class="control-label col-sm-4">
+			<div>
+				<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Show private relationships'); ?>
+			</div>
+			<div class="hidden-xs">
+				<span class="label visitors"><i class="fa fa-fw"></i> <?php echo WT_I18N::translate('visitors'); ?></span>
+				<span class="label members"><i class="fa fa-fw"></i><?php echo WT_I18N::translate('members'); ?></span>
+			</div>
+		</div>
+		<div class="col-sm-8">
+			<?php echo select_edit_control('SHOW_PRIVATE_RELATIONSHIPS', array('0' => WT_I18N::translate('Show to visitors'), '1' => WT_I18N::translate('Show to members')), null, $WT_TREE->getPreference('SHOW_PRIVATE_RELATIONSHIPS'), 'class="form-control"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Show private relationships” configuration setting */ WT_I18N::translate('This option will retain family links in private records.  This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals.'); ?>
+			</p>
+		</div>
+	</div>
 	<h2><?php echo WT_I18N::translate('Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag'); ?></h2>
 
 	<script id="new-resn-template" type="text/html">
@@ -551,7 +591,7 @@ $controller
 		</tr>
 	</script>
 
-	<table class="table table-bordered table-hover" id="default-resn">
+	<table class="table table-bordered table-condensed table-hover" id="default-resn">
 		<caption class="sr-only">
 			<?php echo WT_I18N::translate('Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag'); ?>
 		</caption>
@@ -568,35 +608,36 @@ $controller
 			</th>
 			<th>
 				<button class="btn btn-primary" id="add-resn" type="button">
-					<?php echo WT_I18N::translate('Add'); ?>
+					<i class="fa fa-plus"></i>
+					<?php echo /* I18N: button label.  Add a new item. */ WT_I18N::translate('Add'); ?>
 				</button>
 			</th>
 		</tr>
 		</thead>
-		<tfoot>
-		<tr>
-			<td colspan="3">
-				&nbsp;
-			</td>
-			<td>
-				<button type="submit" class="btn btn-primary"><?php echo WT_I18N::translate('save'); ?></button>
-			</td>
-		</tr>
-		</tfoot>
 		<tbody>
 		<?php foreach ($resns as $resn): ?>
 			<tr>
 				<td>
 					<?php if ($resn->record): ?>
-						<a href="<?php echo $resn->record->getHtmlUrl(); ?>"><?php echo $resn->record->getFullName(); ?></a>
+					<a href="<?php echo $resn->record->getHtmlUrl(); ?>"><?php echo $resn->record->getFullName(); ?></a>
 					<?php elseif ($resn->xref): ?>
+					<div class="bg-danger text-danger">
 						<?php echo $resn->xref, ' — ', WT_I18N::translate('this record does not exist'); ?>
+					</div>
 					<?php else: ?>
-						&nbsp;
+					<div class="text-muted">
+						<?php echo WT_I18N::translate('All records'); ?>
+					</div>
 					<?php endif; ?>
 				</td>
 				<td>
+					<?php if ($resn->tag_label): ?>
 					<?php echo $resn->tag_label; ?>
+					<?php else: ?>
+					<div class="text-muted">
+						<?php echo WT_I18N::translate('All facts and events'); ?>
+					</div>
+					<?php endif; ?>
 				</td>
 				<td>
 					<?php echo $PRIVACY_CONSTANTS[$resn->resn]; ?>
@@ -2337,9 +2378,7 @@ $controller
 
 	<?php endif; ?>
 
-	<div class="form-group">
-		<div class="col-sm-offset-3 col-sm-9">
-			<button type="submit" class="btn btn-primary"><?php echo WT_I18N::translate('save'); ?></button>
-		</div>
+	<div class="text-center">
+		<button type="submit" class="btn btn-primary"><?php echo WT_I18N::translate('save'); ?></button>
 	</div>
 </form>

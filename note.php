@@ -71,7 +71,8 @@ if ($controller->record && $controller->record->canShow()) {
 	header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
 	$controller->pageHeader();
 	echo '<p class="ui-state-error">', WT_I18N::translate('This note does not exist or you do not have permission to view it.'), '</p>';
-	exit;
+	
+	return;
 }
 
 $controller->addInlineJavascript('

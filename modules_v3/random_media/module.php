@@ -40,10 +40,9 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $ctype;
 
-		$filter  = get_block_setting($block_id, 'filter', 'all');
-		$controls = get_block_setting($block_id, 'controls', true);
-		$start   = get_block_setting($block_id, 'start', false) || WT_Filter::getBool('start');
-		$block   = get_block_setting($block_id, 'block', true);
+		$filter   = get_block_setting($block_id, 'filter', 'all');
+		$controls = get_block_setting($block_id, 'controls', '1');
+		$start    = get_block_setting($block_id, 'start', '0') || WT_Filter::getBool('start');
 
 		// We can apply the filters using SQL
 		// Do not use "ORDER BY RAND()" - it is very slow on large tables.  Use PHP::array_rand() instead.
@@ -54,36 +53,36 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			" AND m_type IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, '')"
 		)->execute(array(
 			WT_GED_ID,
-			get_block_setting($block_id, 'filter_avi', false) ? 'avi' : NULL,
-			get_block_setting($block_id, 'filter_bmp', true) ? 'bmp' : NULL,
-			get_block_setting($block_id, 'filter_gif', true) ? 'gif' : NULL,
-			get_block_setting($block_id, 'filter_jpeg', true) ? 'jpg' : NULL,
-			get_block_setting($block_id, 'filter_jpeg', true) ? 'jpeg' : NULL,
-			get_block_setting($block_id, 'filter_mp3', false) ? 'mp3' : NULL,
-			get_block_setting($block_id, 'filter_ole', true) ? 'ole' : NULL,
-			get_block_setting($block_id, 'filter_pcx', true) ? 'pcx' : NULL,
-			get_block_setting($block_id, 'filter_pdf', false) ? 'pdf' : NULL,
-			get_block_setting($block_id, 'filter_png', true) ? 'png' : NULL,
-			get_block_setting($block_id, 'filter_tiff', true) ? 'tiff' : NULL,
-			get_block_setting($block_id, 'filter_wav', false) ? 'wav' : NULL,
-			get_block_setting($block_id, 'filter_audio', false) ? 'audio' : NULL,
-			get_block_setting($block_id, 'filter_book', true) ? 'book' : NULL,
-			get_block_setting($block_id, 'filter_card', true) ? 'card' : NULL,
-			get_block_setting($block_id, 'filter_certificate', true) ? 'certificate' : NULL,
-			get_block_setting($block_id, 'filter_coat', true) ? 'coat' : NULL,
-			get_block_setting($block_id, 'filter_document', true) ? 'document' : NULL,
-			get_block_setting($block_id, 'filter_electronic', true) ? 'electronic' : NULL,
-			get_block_setting($block_id, 'filter_fiche', true) ? 'fiche' : NULL,
-			get_block_setting($block_id, 'filter_film', true) ? 'film' : NULL,
-			get_block_setting($block_id, 'filter_magazine', true) ? 'magazine' : NULL,
-			get_block_setting($block_id, 'filter_manuscript', true) ? 'manuscript' : NULL,
-			get_block_setting($block_id, 'filter_map', true) ? 'map' : NULL,
-			get_block_setting($block_id, 'filter_newspaper', true) ? 'newspaper' : NULL,
-			get_block_setting($block_id, 'filter_other', true) ? 'other' : NULL,
-			get_block_setting($block_id, 'filter_painting', true) ? 'painting' : NULL,
-			get_block_setting($block_id, 'filter_photo', true) ? 'photo' : NULL,
-			get_block_setting($block_id, 'filter_tombstone', true) ? 'tombstone' : NULL,
-			get_block_setting($block_id, 'filter_video', false) ? 'video' : NULL,
+			get_block_setting($block_id, 'filter_avi', '0') ? 'avi' : null,
+			get_block_setting($block_id, 'filter_bmp', '1') ? 'bmp' : null,
+			get_block_setting($block_id, 'filter_gif', '1') ? 'gif' : null,
+			get_block_setting($block_id, 'filter_jpeg', '1') ? 'jpg' : null,
+			get_block_setting($block_id, 'filter_jpeg', '1') ? 'jpeg' : null,
+			get_block_setting($block_id, 'filter_mp3', '0') ? 'mp3' : null,
+			get_block_setting($block_id, 'filter_ole', '1') ? 'ole' : null,
+			get_block_setting($block_id, 'filter_pcx', '1') ? 'pcx' : null,
+			get_block_setting($block_id, 'filter_pdf', '0') ? 'pdf' : null,
+			get_block_setting($block_id, 'filter_png', '1') ? 'png' : null,
+			get_block_setting($block_id, 'filter_tiff', '1') ? 'tiff' : null,
+			get_block_setting($block_id, 'filter_wav', '0') ? 'wav' : null,
+			get_block_setting($block_id, 'filter_audio', '0') ? 'audio' : null,
+			get_block_setting($block_id, 'filter_book', '1') ? 'book' : null,
+			get_block_setting($block_id, 'filter_card', '1') ? 'card' : null,
+			get_block_setting($block_id, 'filter_certificate', '1') ? 'certificate' : null,
+			get_block_setting($block_id, 'filter_coat', '1') ? 'coat' : null,
+			get_block_setting($block_id, 'filter_document', '1') ? 'document' : null,
+			get_block_setting($block_id, 'filter_electronic', '1') ? 'electronic' : null,
+			get_block_setting($block_id, 'filter_fiche', '1') ? 'fiche' : null,
+			get_block_setting($block_id, 'filter_film', '1') ? 'film' : null,
+			get_block_setting($block_id, 'filter_magazine', '1') ? 'magazine' : null,
+			get_block_setting($block_id, 'filter_manuscript', '1') ? 'manuscript' : null,
+			get_block_setting($block_id, 'filter_map', '1') ? 'map' : null,
+			get_block_setting($block_id, 'filter_newspaper', '1') ? 'newspaper' : null,
+			get_block_setting($block_id, 'filter_other', '1') ? 'other' : null,
+			get_block_setting($block_id, 'filter_painting', '1') ? 'painting' : null,
+			get_block_setting($block_id, 'filter_photo', '1') ? 'photo' : null,
+			get_block_setting($block_id, 'filter_tombstone', '1') ? 'tombstone' : null,
+			get_block_setting($block_id, 'filter_video', '0') ? 'video' : null,
 		))->fetchOneColumn();
 
 		// Keep looking through the media until a suitable one is found.
@@ -158,21 +157,10 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				$content .= '<script>togglePlay();</script>';
 			}
 			$content .= '<div class="center" id="random_picture_content' . $block_id . '">';
-			$content .= '<table id="random_picture_box"><tr><td';
-
-			if ($block) {
-				$content .= ' class="details1"';
-			} else {
-				$content .= ' class="details2"';
-			}
-			$content .= ' >';
+			$content .= '<table id="random_picture_box"><tr><td class="details1">';
 			$content .= $random_media->displayImage();
 
-			if ($block) {
-				$content .= '<br>';
-			} else {
-				$content .= '</td><td class="details2">';
-			}
+			$content .= '<br>';
 			$content .= '<a href="' . $random_media->getHtmlUrl() . '"><b>' . $random_media->getFullName() . '</b></a><br>';
 			foreach ($random_media->linkedIndividuals('OBJE') as $individual) {
 				$content .= '<a href="' . $individual->getHtmlUrl() . '">' . WT_I18N::translate('View person') . ' — ' . $individual->getFullname() . '</a><br>';
@@ -249,12 +237,15 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			set_block_setting($block_id, 'filter_photo', WT_Filter::postBool('filter_photo'));
 			set_block_setting($block_id, 'filter_tombstone', WT_Filter::postBool('filter_tombstone'));
 			set_block_setting($block_id, 'filter_video', WT_Filter::postBool('filter_video'));
-			exit;
 		}
 
 		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
-		$filter = get_block_setting($block_id, 'filter', 'all');
+
+		$filter   = get_block_setting($block_id, 'filter', 'all');
+		$controls = get_block_setting($block_id, 'controls', '1');
+		$start    = get_block_setting($block_id, 'start', '0') || WT_Filter::getBool('start');
+
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Show only individuals, events, or all?');
 		echo '</td><td class="optionbox">';
@@ -262,35 +253,35 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '</td></tr>';
 
 		$filters = array(
-			'avi'        =>get_block_setting($block_id, 'filter_avi', false),
-			'bmp'        =>get_block_setting($block_id, 'filter_bmp', true),
-			'gif'        =>get_block_setting($block_id, 'filter_gif', true),
-			'jpeg'       =>get_block_setting($block_id, 'filter_jpeg', true),
-			'mp3'        =>get_block_setting($block_id, 'filter_mp3', false),
-			'ole'        =>get_block_setting($block_id, 'filter_ole', true),
-			'pcx'        =>get_block_setting($block_id, 'filter_pcx', true),
-			'pdf'        =>get_block_setting($block_id, 'filter_pdf', false),
-			'png'        =>get_block_setting($block_id, 'filter_png', true),
-			'tiff'       =>get_block_setting($block_id, 'filter_tiff', true),
-			'wav'        =>get_block_setting($block_id, 'filter_wav', false),
-			'audio'      =>get_block_setting($block_id, 'filter_audio', false),
-			'book'       =>get_block_setting($block_id, 'filter_book', true),
-			'card'       =>get_block_setting($block_id, 'filter_card', true),
-			'certificate'=>get_block_setting($block_id, 'filter_certificate', true),
-			'coat'       =>get_block_setting($block_id, 'filter_coat', true),
-			'document'   =>get_block_setting($block_id, 'filter_document', true),
-			'electronic' =>get_block_setting($block_id, 'filter_electronic', true),
-			'fiche'      =>get_block_setting($block_id, 'filter_fiche', true),
-			'film'       =>get_block_setting($block_id, 'filter_film', true),
-			'magazine'   =>get_block_setting($block_id, 'filter_magazine', true),
-			'manuscript' =>get_block_setting($block_id, 'filter_manuscript', true),
-			'map'        =>get_block_setting($block_id, 'filter_map', true),
-			'newspaper'  =>get_block_setting($block_id, 'filter_newspaper', true),
-			'other'      =>get_block_setting($block_id, 'filter_other', true),
-			'painting'   =>get_block_setting($block_id, 'filter_painting', true),
-			'photo'      =>get_block_setting($block_id, 'filter_photo', true),
-			'tombstone'  =>get_block_setting($block_id, 'filter_tombstone', true),
-			'video'      =>get_block_setting($block_id, 'filter_video', false),
+			'avi'        =>get_block_setting($block_id, 'filter_avi', '0'),
+			'bmp'        =>get_block_setting($block_id, 'filter_bmp', '1'),
+			'gif'        =>get_block_setting($block_id, 'filter_gif', '1'),
+			'jpeg'       =>get_block_setting($block_id, 'filter_jpeg', '1'),
+			'mp3'        =>get_block_setting($block_id, 'filter_mp3', '0'),
+			'ole'        =>get_block_setting($block_id, 'filter_ole', '1'),
+			'pcx'        =>get_block_setting($block_id, 'filter_pcx', '1'),
+			'pdf'        =>get_block_setting($block_id, 'filter_pdf', '0'),
+			'png'        =>get_block_setting($block_id, 'filter_png', '1'),
+			'tiff'       =>get_block_setting($block_id, 'filter_tiff', '1'),
+			'wav'        =>get_block_setting($block_id, 'filter_wav', '0'),
+			'audio'      =>get_block_setting($block_id, 'filter_audio', '0'),
+			'book'       =>get_block_setting($block_id, 'filter_book', '1'),
+			'card'       =>get_block_setting($block_id, 'filter_card', '1'),
+			'certificate'=>get_block_setting($block_id, 'filter_certificate', '1'),
+			'coat'       =>get_block_setting($block_id, 'filter_coat', '1'),
+			'document'   =>get_block_setting($block_id, 'filter_document', '1'),
+			'electronic' =>get_block_setting($block_id, 'filter_electronic', '1'),
+			'fiche'      =>get_block_setting($block_id, 'filter_fiche', '1'),
+			'film'       =>get_block_setting($block_id, 'filter_film', '1'),
+			'magazine'   =>get_block_setting($block_id, 'filter_magazine', '1'),
+			'manuscript' =>get_block_setting($block_id, 'filter_manuscript', '1'),
+			'map'        =>get_block_setting($block_id, 'filter_map', '1'),
+			'newspaper'  =>get_block_setting($block_id, 'filter_newspaper', '1'),
+			'other'      =>get_block_setting($block_id, 'filter_other', '1'),
+			'painting'   =>get_block_setting($block_id, 'filter_painting', '1'),
+			'photo'      =>get_block_setting($block_id, 'filter_photo', '1'),
+			'tombstone'  =>get_block_setting($block_id, 'filter_tombstone', '1'),
+			'video'      =>get_block_setting($block_id, 'filter_video', '0'),
 		);
 
 		echo '<tr><td class="descriptionbox wrap width33">';
@@ -401,14 +392,12 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 
 	<?php
 
-		$controls = get_block_setting($block_id, 'controls', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Show slide show controls?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('controls', $controls);
 		echo '</td></tr>';
 
-		$start = get_block_setting($block_id, 'start', false);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Start slide show on page load?');
 		echo '</td><td class="optionbox">';

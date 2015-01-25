@@ -765,8 +765,7 @@ function set_parameters($current, $indfam, $xg, $zg, $titstr, $xt, $gx, $gz, $my
 	global $stats;
 
 	if (!function_exists($myfunc)) {
-		echo WT_I18N::translate('%s not implemented', $myfunc);
-		exit;
+		throw new DomainException(WT_I18N::translate('%s not implemented', $myfunc));
 	}
 
 	$monthdata = array();
@@ -964,6 +963,6 @@ case '4':
 	break;
 default:
 	echo '<i class="icon-loading-large"></i>';
-	exit;
+	break;
 }
 echo '</div>';

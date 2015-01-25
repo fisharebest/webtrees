@@ -204,7 +204,7 @@ if ($type == 'media') {
 		echo $filter;
 	}
 	echo '" autofocus>',
-	help_link('simple_filter'),
+	'<p>', WT_I18N::translate('Simple search filter based on the characters entered, no wildcards are accepted.'), '</p>',
 	'<p><input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
 	<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
 	</p></form></div>';
@@ -317,7 +317,7 @@ if ($type == "facts") {
 	<input type="hidden" name="tags" value="', $qs, '">
 	<input type="hidden" name="callback" value="', $callback, '">
 	<table class="list_table width100" border="0">
-	<tr><td class="list_label" style="padding: 5px; font-weight: normal; white-space: normal;">' ;
+	<tr><td class="list_label" style="padding: 5px; font-weight: normal; white-space: normal;">';
 
 	$all = strlen($qs) ? explode(',', strtoupper($qs)) : array();
 	$preselDefault = array();
