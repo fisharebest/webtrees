@@ -112,7 +112,7 @@ case 'save':
 				->setPreference('verified_by_admin', $approved ? '1' : '0');
 
 			// We cannot change our own admin status.  Another admin will need to do it.
-			if ($user->getUserId() !== Auth::id) {
+			if ($user->getUserId() !== Auth::id()) {
 				$user->setPreference('admin', $admin ? '1' : '0');
 			}
 
