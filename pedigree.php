@@ -33,7 +33,7 @@ define("BOX_WRAPPER", "<div class='shadow' style='%s:%spx; top:%spx; width:%spx;
 $controller = new WT_Controller_Pedigree;
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');
 
 ?>

@@ -191,7 +191,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 				}
 				$controller
 					->pageHeader()
-					->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+					->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 					->addInlineJavascript('autocomplete();');
 				if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 					ckeditor_WT_Module::enableEditor($controller);
@@ -201,7 +201,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 				<ol class="breadcrumb small">
 					<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
 					<li><a href="admin_modules.php"><?php echo WT_I18N::translate('Module administration'); ?></a></li>
-					<li><a href="module.php?mod=faq&mod_action=admin_config"><?php echo $this->getTitle(); ?></a></li>
+					<li><a href="module.php?mod=<?php echo $this->getName(); ?>&mod_action=admin_config"><?php echo $this->getTitle(); ?></a></li>
 					<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 				</ol>
 				<h2><?php echo $controller->getPageTitle(); ?></h2>
@@ -244,12 +244,9 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 				echo '<p><input type="submit" value="', WT_I18N::translate('save'), '" tabindex="5">';
 				echo '</p>';
 				echo '</form>';
-
-				exit;
 			}
 		} else {
 			header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
-			exit;
 		}
 	}
 
@@ -284,7 +281,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 			->restrictAccess(WT_USER_GEDCOM_ADMIN)
 			->setPageTitle($this->getTitle())
 			->pageHeader()
-			->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 			->addExternalJavascript(WT_DATATABLES_BOOTSTRAP_JS_URL)
 			->addInlineJavascript('
 				jQuery("#story_table").dataTable({
@@ -392,7 +389,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 		$controller
 			->setPageTitle($this->getTitle())
 			->pageHeader()
-			->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 			->addInlineJavascript('
 				jQuery("#story_table").dataTable({
 					dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',

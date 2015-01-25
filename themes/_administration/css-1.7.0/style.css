@@ -1095,6 +1095,10 @@ table.media_table td {
 	padding: 5px;
 }
 
+table.media_table .label {
+	color:#2e6e9e;
+}
+
 /* UPLOAD MEDIA */
 table.upload_media {
 	border-collapse: separate;

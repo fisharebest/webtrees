@@ -33,7 +33,7 @@ $rules = array(
 $controller = new WT_Controller_Page;
 $controller
 	->restrictAccess(Auth::isAdmin())
-	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+	->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 	->addExternalJavascript(WT_DATATABLES_BOOTSTRAP_JS_URL)
 	->setPageTitle(WT_I18N::translate('Site access rules'));
 

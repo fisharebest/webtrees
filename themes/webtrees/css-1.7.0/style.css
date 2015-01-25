@@ -1014,15 +1014,51 @@ td.descriptionbox a {
 	margin: 0 auto;
 }
 
-#medialist-page .list_table,
-#medialist-page .list_table_controls {
+#medialist-page form .list_table {
+	width: 75%;
+}
+
+#medialist-page div .list_table,
+#medialist-page .media-col,
+#medialist-page .media-col1,
+#medialist-page .list_value_wrap,
+#medialist-page div .list_table_controls {
 	width: 100%;
+}
+
+#medialist-page .optionbox, 
+#medialist-page .descriptionbox {
+	width: 25%;
+}
+
+#medialist-page .media-col2 {
+	width: 50%;
+}
+
+#medialist-page .media-col {
+	padding-left: 5px; 
+	border: none;
+}
+
+[dir=rtl] #medialist-page .media-col {
+	padding-left: 0;
+	padding-right: 5px;
+}
+
+#medialist-page .media-image {
+	vertical-align:top; 
+	white-space:normal;
+}
+
+#medialist-page p {
+	text-align: center;
 }
 
 .list_table_controls td {
 	min-width: 40px;
 	text-align: center;
 }
+
 /* ======== medialist.php ==== */
 .makeMenu li ul {
 	border: thin solid #AAA;
@@ -3251,6 +3287,23 @@ table.table-census-assistant th {
 }
 
 /*-- Lifespan ---- */
+#lifespan-page .person0 {
+	padding: 5px;
+}
+
+#lifespan-page .person0 div{
+	text-align: center;
+}
+
+#lifespan_chart .div-controls {
+	opacity: 0.67;
+	position: relative;
+	top: 80px;
+	width: 180px;
+	z-index: 100;
+	margin-left: 20px;
+}
+
 .lifespan_people span:first-letter {
 	font-variant: small-caps;
 	font-size: 16px;

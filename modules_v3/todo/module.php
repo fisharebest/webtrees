@@ -61,12 +61,12 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 		} else {
 			$title = '';
 		}
-		$title .= $this->getTitle() . help_link('todo', $this->getName());
+		$title .= $this->getTitle();
 
 		$table_id = Uuid::uuid4(); // create a unique ID
 
 		$controller
-			->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 			->addInlineJavascript('
 			jQuery("#' . $table_id . '").dataTable({
 				dom: \'t\',
@@ -170,6 +170,16 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 		$show_unassigned = get_block_setting($block_id, 'show_unassigned', '1');
 		$show_future     = get_block_setting($block_id, 'show_future', '1');
 		$block           = get_block_setting($block_id, 'block', '1');
+
+		?>
+		<tr>
+			<td colspan="2">
+				<?php echo WT_I18N::translate('Research tasks are special events, added to individuals in your family tree, which identify the need for further research.  You can use them as a reminder to check facts against more reliable sources, to obtain documents or photographs, to resolve conflicting information, etc.'); ?>
+				<?php echo WT_I18N::translate('To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences.'); ?>
+				<?php echo WT_I18N::translate('Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognize this tag.'); ?>
+			</td>
+		</tr>
+		<?php
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Show research tasks that are assigned to other users');

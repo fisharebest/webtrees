@@ -1011,9 +1011,44 @@ a.showit:hover > span {
 	margin: 0 auto;
 }
 
-#medialist-page .list_table,
-#medialist-page .list_table_controls {
+#medialist-page form .list_table {
+	width: 75%;
+}
+
+#medialist-page div .list_table,
+#medialist-page .media-col,
+#medialist-page .media-col1,
+#medialist-page .list_value_wrap,
+#medialist-page div .list_table_controls {
 	width: 100%;
+}
+
+#medialist-page .optionbox, 
+#medialist-page .descriptionbox {
+	width: 25%;
+}
+
+#medialist-page .media-col2 {
+	width: 50%;
+}
+
+#medialist-page .media-col {
+	padding-left: 5px; 
+	border: none;
+}
+
+[dir=rtl] #medialist-page .media-col {
+	padding-left: 0;
+	padding-right: 5px;
+}
+
+#medialist-page .media-image {
+	vertical-align:top; 
+	white-space:normal;
+}
+
+#medialist-page p {
+	text-align: center;
 }
 
 .list_table_controls td {
@@ -1073,7 +1108,7 @@ a.showit:hover > span {
 }
 
 .lb-menu li a {
-	padding: 24px 10px 1px 5px;
+	padding: 0px 10px 1px 5px;
 }
 
 .lb-menu li li a {
@@ -1089,16 +1124,8 @@ a.showit:hover > span {
 	float: right;
 }
 
-.lb-image_edit {
-	background: url(images/image_edit.png) no-repeat 50% 20%;
-}
-
-.lb-image_link {
-	background: url(images/image_link.png) no-repeat 50% 20%;
-}
-
-.lb-image_view {
-	background: url(images/image_view.png) no-repeat 50% 20%;
+.lb-image_edit, .lb-image_link {
+	padding-right: 5px;
 }
 
 /* login.php */
@@ -3290,6 +3317,24 @@ table.table-census-assistant th {
 }
 
 /*-- Lifespan ---- */
+
+#lifespan-page .person0 {
+	padding: 5px;
+}
+
+#lifespan-page .person0 div{
+	text-align: center;
+}
+
+#lifespan_chart .div-controls {
+	opacity: 0.67;
+	position: relative;
+	top: 80px;
+	width: 180px;
+	z-index: 100;
+	margin-left: 20px;
+}
+
 .lifespan_people span:first-letter {
 	font-variant: small-caps;
 	font-size: 16px;
@@ -3611,6 +3656,12 @@ a.icon-larrow:hover {
 	width: 20px;
 	height: 20px;
 	background-image: url(images/ldarrow.png);
+}
+
+.icon-ldarrow:hover {
+	width: 20px;
+	height: 20px;
+	background-image: url(images/ldarrow2.png);
 }
 
 .icon-lifespan-chunk {

@@ -33,7 +33,7 @@ $action = WT_Filter::post('action', null, WT_Filter::get('action'));
 $controller = new WT_Controller_Simple;
 $controller
 	->restrictAccess(Auth::isEditor())
-	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();')
 	->addInlineJavascript('
 	var locale_date_format="' . preg_replace('/[^DMY]/', '', str_replace(array('J', 'F'), array('D', 'M'), strtoupper($DATE_FORMAT))) . '";

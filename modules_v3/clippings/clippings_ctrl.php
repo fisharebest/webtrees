@@ -25,11 +25,6 @@
 
 use WT\User;
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 require_once WT_ROOT . 'includes/functions/functions_export.php';
 require_once WT_ROOT . 'library/pclzip.lib.php';
 

@@ -29,7 +29,7 @@ require_once WT_ROOT . 'includes/functions/functions_print_lists.php';
 $controller = new WT_Controller_Descendancy;
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');
 
 ?>

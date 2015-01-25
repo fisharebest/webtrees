@@ -32,5 +32,7 @@ try {
 	// Already deleted?
 }
 
+WT_DB::exec("DELETE FROM `##user_setting` WHERE setting_name in ('edit_account')");
+
 // Update the version to indicate success
 WT_Site::setPreference($schema_name, $next_version);

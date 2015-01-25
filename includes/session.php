@@ -33,59 +33,73 @@ if (!defined('WT_SCRIPT_NAME')) {
 
 // To embed webtrees code in other applications, we must explicitly declare any global variables that we create.
 // session.php
-global $start_time, $WT_REQUEST, $WT_SESSION, $WT_TREE, $GEDCOM, $SEARCH_SPIDER, $TEXT_DIRECTION;
+global $WT_REQUEST, $WT_SESSION, $WT_TREE, $GEDCOM, $SEARCH_SPIDER, $TEXT_DIRECTION;
 // most pages
 global $controller;
 
 // Identify ourself
 define('WT_WEBTREES', 'webtrees');
-define('WT_VERSION',  '1.7.0-dev');
+define('WT_VERSION', '1.7.0-dev');
 
 // External URLs
-define('WT_WEBTREES_URL',  'http://www.webtrees.net/');
+define('WT_WEBTREES_URL', 'http://www.webtrees.net/');
 define('WT_WEBTREES_WIKI', 'http://wiki.webtrees.net/');
 
 // Resources have version numbers in the URL, so that they can be cached indefinitely.
 define('WT_STATIC_URL', getenv('STATIC_URL')); // We could set this to load our own static resources from a cookie-free domain.
 
 if (getenv('USE_CDN')) {
-	define('WT_BOOTSTRAP_CSS_URL',            '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css');
-	define('WT_BOOTSTRAP_JS_URL',             '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js');
-	define('WT_BOOTSTRAP_RTL_CSS_URL',        '//cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.2.0-rc2/css/bootstrap-rtl.min.css'); // out of date!
-	define('WT_JQUERY_DATATABLES_URL',        '//cdnjs.cloudflare.com/ajax/libs/datatables/1.10.4/js/jquery.dataTables.min.js');
-	define('WT_DATATABLES_BOOTSTRAP_JS_URL',  '//cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js');
+	// Caution, using a CDN will break support for responsive features in IE8, as respond.js
+	// needs to be on the same domain as all the CSS files.
+	define('WT_BOOTSTRAP_CSS_URL', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css');
+	define('WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL', '//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.0.0/js/bootstrap-datetimepicker.min.css');
+	define('WT_BOOTSTRAP_DATETIMEPICKER_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.0.0/css/bootstrap-datetimepicker.js');
+	define('WT_BOOTSTRAP_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js');
+	define('WT_BOOTSTRAP_RTL_CSS_URL', '//cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.2.0-rc2/css/bootstrap-rtl.min.css'); // CDNSJ is out of date
 	define('WT_DATATABLES_BOOTSTRAP_CSS_URL', '//cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css');
-	define('WT_FONT_AWESOME_CSS_URL',         '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css');
-	define('WT_JQUERY_COLORBOX_URL',          '//cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.4.33/jquery.colorbox-min.js'); // out of date!
-	define('WT_JQUERY_COOKIE_URL',            '//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js');
-	define('WT_JQUERY_URL',                   '//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js');
-	define('WT_JQUERYUI_URL',                 '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js');
+	define('WT_DATATABLES_BOOTSTRAP_JS_URL', '//cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js');
+	define('WT_FONT_AWESOME_CSS_URL', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css');
+	define('WT_JQUERYUI_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js');
+	define('WT_JQUERY_COOKIE_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js');
+	define('WT_JQUERY_DATATABLES_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/datatables/1.10.4/js/jquery.dataTables.min.js');
+	define('WT_JQUERY_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js');
+	define('WT_MODERNIZR_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js');
+	define('WT_MOMENT_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js');
+	define('WT_RESPOND_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js');
 } else {
-	define('WT_BOOTSTRAP_CSS_URL',            WT_STATIC_URL . 'packages/bootstrap-3.3.1/css/bootstrap.min.css');
-	define('WT_BOOTSTRAP_JS_URL',             WT_STATIC_URL . 'packages/bootstrap-3.3.1/js/bootstrap.min.js');
-	define('WT_BOOTSTRAP_RTL_CSS_URL',        WT_STATIC_URL . 'packages/bootstrap-rtl-3.2.0/css/bootstrap-rtl.min.css');
-	define('WT_JQUERY_DATATABLES_URL',        WT_STATIC_URL . 'packages/datatables-1.10.4/js/jquery.dataTables.min.js');
-	define('WT_DATATABLES_BOOTSTRAP_JS_URL',  WT_STATIC_URL . 'packages/datatables-1.10.4/plugins/dataTables.bootstrap.js');
+	define('WT_BOOTSTRAP_CSS_URL', WT_STATIC_URL . 'packages/bootstrap-3.3.1/css/bootstrap.min.css');
+	define('WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL', WT_STATIC_URL . 'packages/bootstrap-datetimepicker-4.0.0/bootstrap-datetimepicker.min.css');
+	define('WT_BOOTSTRAP_DATETIMEPICKER_JS_URL', WT_STATIC_URL . 'packages/bootstrap-datetimepicker-4.0.0/bootstrap-datetimepicker.min.js');
+	define('WT_BOOTSTRAP_JS_URL', WT_STATIC_URL . 'packages/bootstrap-3.3.1/js/bootstrap.min.js');
+	define('WT_BOOTSTRAP_RTL_CSS_URL', WT_STATIC_URL . 'packages/bootstrap-rtl-3.2.0/css/bootstrap-rtl.min.css');
 	define('WT_DATATABLES_BOOTSTRAP_CSS_URL', WT_STATIC_URL . 'packages/datatables-1.10.4/plugins/dataTables.bootstrap.css');
-	define('WT_FONT_AWESOME_CSS_URL',         WT_STATIC_URL . 'packages/font-awesome-4.2.0/css/font-awesome.min.css');
-	define('WT_JQUERY_COLORBOX_URL',          WT_STATIC_URL . 'js/jquery.colorbox-1.5.14.js');
-	define('WT_JQUERY_COOKIE_URL',            WT_STATIC_URL . 'js/jquery.cookie-1.4.1.js');
-	define('WT_JQUERY_URL',                   WT_STATIC_URL . 'js/jquery-1.11.2.js');
-	define('WT_JQUERYUI_URL',                 WT_STATIC_URL . 'js/jquery-ui-1.11.2.js');
+	define('WT_DATATABLES_BOOTSTRAP_JS_URL', WT_STATIC_URL . 'packages/datatables-1.10.4/plugins/dataTables.bootstrap.js');
+	define('WT_FONT_AWESOME_CSS_URL', WT_STATIC_URL . 'packages/font-awesome-4.3.0/css/font-awesome.min.css');
+	define('WT_JQUERYUI_JS_URL', WT_STATIC_URL . 'packages/jquery-ui-1.11.2/js/jquery-ui.min.js');
+	define('WT_JQUERY_COOKIE_JS_URL', WT_STATIC_URL . 'packages/jquery-cookie-1.4.1/jquery.cookie.js');
+	define('WT_JQUERY_DATATABLES_JS_URL', WT_STATIC_URL . 'packages/datatables-1.10.4/js/jquery.dataTables.min.js');
+	define('WT_JQUERY_JS_URL', WT_STATIC_URL . 'packages/jquery-1.11.2/jquery.min.js');
+	define('WT_MODERNIZR_JS_URL', WT_STATIC_URL . 'packages/modernizr-2.8.3/modernizr.min.js');
+	define('WT_MOMENT_JS_URL', WT_STATIC_URL . 'packages/moment-2.9.0/moment-with-locales.min.js');
+	define('WT_RESPOND_JS_URL', WT_STATIC_URL . 'packages/respond-1.4.2/respond.min.js');
 }
-define('WT_JQUERY_WHEELZOOM_URL',           WT_STATIC_URL . 'js/jquery.wheelzoom-2.0.0.js');
-define('WT_WEBTREES_JS_URL',                WT_STATIC_URL . 'js/webtrees-1.7.0.js');
+
+// We can't load these from a CDN, as these have been patched.
+define('WT_JQUERY_COLORBOX_URL', WT_STATIC_URL . 'assets/js-1.7.0/jquery.colorbox-1.5.14.js');
+define('WT_JQUERY_WHEELZOOM_URL', WT_STATIC_URL . 'assets/js-1.7.0/jquery.wheelzoom-2.0.0.js');
+
+// Location of our own scripts
+define('WT_ADMIN_JS_URL', WT_STATIC_URL . 'assets/js-1.7.0/admin.js');
+define('WT_AUTOCOMPLETE_JS_URL', WT_STATIC_URL . 'assets/js-1.7.0/autocomplete.js');
+define('WT_WEBTREES_JS_URL', WT_STATIC_URL . 'assets/js-1.7.0/webtrees.js');
 
 // Location of our modules and themes.  These are used as URLs and folder paths.
 define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes
-define('WT_THEMES_DIR',  'themes/' );
+define('WT_THEMES_DIR', 'themes/');
 
 // Enable debugging output?
-define('WT_DEBUG',     false);
+define('WT_DEBUG', false);
 define('WT_DEBUG_SQL', false);
-
-// Error reporting
-define('WT_ERROR_LEVEL', 2); // 0=none, 1=minimal, 2=full
 
 // Required version of database tables/columns/indexes/etc.
 define('WT_SCHEMA_VERSION', 29);
@@ -93,12 +107,12 @@ define('WT_SCHEMA_VERSION', 29);
 // Regular expressions for validating user input, etc.
 define('WT_MINIMUM_PASSWORD_LENGTH', 6);
 
-define('WT_REGEX_XREF',     '[A-Za-z0-9:_-]+');
-define('WT_REGEX_TAG',      '[_A-Z][_A-Z0-9]*');
-define('WT_REGEX_INTEGER',  '-?\d+');
-define('WT_REGEX_ALPHA',    '[a-zA-Z]+');
+define('WT_REGEX_XREF', '[A-Za-z0-9:_-]+');
+define('WT_REGEX_TAG', '[_A-Z][_A-Z0-9]*');
+define('WT_REGEX_INTEGER', '-?\d+');
+define('WT_REGEX_ALPHA', '[a-zA-Z]+');
 define('WT_REGEX_ALPHANUM', '[a-zA-Z0-9]+');
-define('WT_REGEX_BYTES',    '[0-9]+[bBkKmMgG]?');
+define('WT_REGEX_BYTES', '[0-9]+[bBkKmMgG]?');
 define('WT_REGEX_USERNAME', '[^<>"%{};]+');
 define('WT_REGEX_PASSWORD', '.{' . WT_MINIMUM_PASSWORD_LENGTH . ',}');
 
@@ -118,7 +132,7 @@ define('WT_UTF8_PDF', "\xE2\x80\xAC"); // U+202C  (Pop directional formatting: r
 define('WT_EVENTS_BIRT', 'BIRT|CHR|BAPM|_BRTM|ADOP');
 define('WT_EVENTS_DEAT', 'DEAT|BURI|CREM');
 define('WT_EVENTS_MARR', 'MARR|_NMR');
-define('WT_EVENTS_DIV',  'DIV|ANUL|_SEPR');
+define('WT_EVENTS_DIV', 'DIV|ANUL|_SEPR');
 
 // Use these line endings when writing files on the server
 define('WT_EOL', "\r\n");
@@ -130,16 +144,16 @@ define('WT_GEDCOM_LINE_LENGTH', 255 - strlen(WT_EOL)); // Characters, not bytes
 define('WT_GOOGLE_CHART_ENCODING', 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-.');
 
 // Privacy constants
-define('WT_PRIV_PUBLIC',  2); // Allows visitors to view the marked information
-define('WT_PRIV_USER',    1); // Allows members to access the marked information
-define('WT_PRIV_NONE',    0); // Allows managers to access the marked information
-define('WT_PRIV_HIDE',   -1); // Hide the item to all users
+define('WT_PRIV_PUBLIC', 2); // Allows visitors to view the marked information
+define('WT_PRIV_USER', 1); // Allows members to access the marked information
+define('WT_PRIV_NONE', 0); // Allows managers to access the marked information
+define('WT_PRIV_HIDE', -1); // Hide the item to all users
 
 // For performance, it is quicker to refer to files using absolute paths
 define('WT_ROOT', realpath(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR);
 
 // Keep track of time statistics, for the summary in the footer
-$start_time = microtime(true);
+define('WT_START_TIME', microtime(true));
 
 // We want to know about all PHP errors
 error_reporting(E_ALL | E_STRICT);
@@ -212,8 +226,8 @@ if (!ini_get('date.timezone')) {
 // 1) set all PHP defaults to UTF-8
 // 2) create shims for missing mb_string functions such as mb_strlen()
 // 3) check that requests are valid UTF-8
-\Patchwork\Utf8\Bootup::initAll();             // Enables the portablity layer and configures PHP for UTF-8
-\Patchwork\Utf8\Bootup::filterRequestUri();    // Redirects to an UTF-8 encoded URL if it's not already the case
+\Patchwork\Utf8\Bootup::initAll(); // Enables the portablity layer and configures PHP for UTF-8
+\Patchwork\Utf8\Bootup::filterRequestUri(); // Redirects to an UTF-8 encoded URL if it's not already the case
 \Patchwork\Utf8\Bootup::filterRequestInputs(); // Normalizes HTTP inputs to UTF-8 NFC
 
 // Use the fisharebest/ext-calendar library to
@@ -284,11 +298,8 @@ require WT_ROOT . 'includes/functions/functions_charts.php';
 require WT_ROOT . 'includes/functions/functions_import.php';
 
 // Set a custom error handler
-set_error_handler(function ($errno, $errstr) {
+set_error_handler(function($errno, $errstr) {
 	if (error_reporting() > 0 && $errno < 2048) {
-		if (WT_ERROR_LEVEL == 0) {
-			return false;
-		}
 		$fmt_msg = "<br>ERROR {$errno}: {$errstr}<br>";
 		$log_msg = "ERROR {$errno}: {$errstr};";
 		// Although debug_backtrace should always exist in PHP5, without this check, PHP sometimes crashes.
@@ -296,9 +307,6 @@ set_error_handler(function ($errno, $errstr) {
 		if ($errno < 16 && function_exists("debug_backtrace") && strstr($errstr, "headers already sent by") === false) {
 			$backtrace = debug_backtrace();
 			$num = count($backtrace);
-			if (WT_ERROR_LEVEL == 1) {
-				$num = 1;
-			}
 			for ($i = 0; $i < $num; $i++) {
 				if ($i === 0) {
 					$fmt_msg .= "0 Error occurred on ";
@@ -418,19 +426,19 @@ case '':
 // Store our session data in the database.
 session_set_save_handler(
 	// open
-	function () {
+	function() {
 		return true;
 	},
 	// close
-	function () {
+	function() {
 		return true;
 	},
 	// read
-	function ($id) {
+	function($id) {
 		return WT_DB::prepare("SELECT session_data FROM `##session` WHERE session_id=?")->execute(array($id))->fetchOne();
 	},
 	// write
-	function ($id, $data) use ($WT_REQUEST) {
+	function($id, $data) use ($WT_REQUEST) {
 		// Only update the session table once per minute, unless the session data has actually changed.
 		WT_DB::prepare(
 			"INSERT INTO `##session` (session_id, user_id, ip_address, session_data, session_time)" .
@@ -440,18 +448,18 @@ session_set_save_handler(
 			" ip_address   = VALUES(ip_address)," .
 			" session_data = VALUES(session_data)," .
 			" session_time = CURRENT_TIMESTAMP - SECOND(CURRENT_TIMESTAMP)"
-		)->execute(array($id, (int)Auth::id(), $WT_REQUEST->getClientIp(), $data));
+		)->execute(array($id, (int) Auth::id(), $WT_REQUEST->getClientIp(), $data));
 
 		return true;
 	},
 	// destroy
-	function ($id) {
+	function($id) {
 		WT_DB::prepare("DELETE FROM `##session` WHERE session_id=?")->execute(array($id));
 
 		return true;
 	},
 	// gc
-	function ($maxlifetime) {
+	function($maxlifetime) {
 		WT_DB::prepare("DELETE FROM `##session` WHERE session_time < DATE_SUB(NOW(), INTERVAL ? SECOND)")->execute(array($maxlifetime));
 
 		return true;
@@ -514,18 +522,18 @@ foreach (WT_Tree::getAll() as $tree) {
 
 // These attributes of the currently-selected tree are used frequently
 if ($WT_TREE) {
-	define('WT_GEDCOM',            $WT_TREE->tree_name);
-	define('WT_GED_ID',            $WT_TREE->tree_id);
-	define('WT_GEDURL',            $WT_TREE->tree_name_url);
-	define('WT_TREE_TITLE',        $WT_TREE->tree_title_html);
-	define('WT_IMPORTED',          $WT_TREE->imported);
+	define('WT_GEDCOM', $WT_TREE->tree_name);
+	define('WT_GED_ID', $WT_TREE->tree_id);
+	define('WT_GEDURL', $WT_TREE->tree_name_url);
+	define('WT_TREE_TITLE', $WT_TREE->tree_title_html);
+	define('WT_IMPORTED', $WT_TREE->imported);
 	define('WT_USER_GEDCOM_ADMIN', Auth::isManager($WT_TREE));
-	define('WT_USER_CAN_ACCEPT',   Auth::isModerator($WT_TREE));
-	define('WT_USER_CAN_EDIT',     Auth::isEditor($WT_TREE));
-	define('WT_USER_CAN_ACCESS',   Auth::isMember($WT_TREE));
-	define('WT_USER_GEDCOM_ID',    $WT_TREE->getUserPreference(Auth::user(), 'gedcomid'));
-	define('WT_USER_ROOT_ID',      $WT_TREE->getUserPreference(Auth::user(), 'rootid') ? $WT_TREE->getUserPreference(Auth::user(), 'rootid') : WT_USER_GEDCOM_ID);
-	define('WT_USER_PATH_LENGTH',  $WT_TREE->getUserPreference(Auth::user(), 'RELATIONSHIP_PATH_LENGTH'));
+	define('WT_USER_CAN_ACCEPT', Auth::isModerator($WT_TREE));
+	define('WT_USER_CAN_EDIT', Auth::isEditor($WT_TREE));
+	define('WT_USER_CAN_ACCESS', Auth::isMember($WT_TREE));
+	define('WT_USER_GEDCOM_ID', $WT_TREE->getUserPreference(Auth::user(), 'gedcomid'));
+	define('WT_USER_ROOT_ID', $WT_TREE->getUserPreference(Auth::user(), 'rootid') ? $WT_TREE->getUserPreference(Auth::user(), 'rootid') : WT_USER_GEDCOM_ID);
+	define('WT_USER_PATH_LENGTH', $WT_TREE->getUserPreference(Auth::user(), 'RELATIONSHIP_PATH_LENGTH'));
 	if (WT_USER_GEDCOM_ADMIN) {
 		define('WT_USER_ACCESS_LEVEL', WT_PRIV_NONE);
 	} elseif (WT_USER_CAN_ACCESS) {
@@ -535,18 +543,18 @@ if ($WT_TREE) {
 	}
 	load_gedcom_settings(WT_GED_ID);
 } else {
-	define('WT_GEDCOM',            '');
-	define('WT_GED_ID',            null);
-	define('WT_GEDURL',            '');
-	define('WT_TREE_TITLE',        WT_WEBTREES);
-	define('WT_IMPORTED',          false);
+	define('WT_GEDCOM', '');
+	define('WT_GED_ID', null);
+	define('WT_GEDURL', '');
+	define('WT_TREE_TITLE', WT_WEBTREES);
+	define('WT_IMPORTED', false);
 	define('WT_USER_GEDCOM_ADMIN', false);
-	define('WT_USER_CAN_ACCEPT',   false);
-	define('WT_USER_CAN_EDIT',     false);
-	define('WT_USER_CAN_ACCESS',   false);
-	define('WT_USER_GEDCOM_ID',    '');
-	define('WT_USER_ROOT_ID',      '');
-	define('WT_USER_PATH_LENGTH',  0);
+	define('WT_USER_CAN_ACCEPT', false);
+	define('WT_USER_CAN_EDIT', false);
+	define('WT_USER_CAN_ACCESS', false);
+	define('WT_USER_GEDCOM_ID', '');
+	define('WT_USER_ROOT_ID', '');
+	define('WT_USER_PATH_LENGTH', 0);
 	define('WT_USER_ACCESS_LEVEL', WT_PRIV_PUBLIC);
 }
 $GEDCOM = WT_GEDCOM;
@@ -563,17 +571,17 @@ if (empty($WEBTREES_EMAIL)) {
 }
 
 // Note that the database/webservers may not be synchronised, so use DB time throughout.
-define('WT_TIMESTAMP', (int)WT_DB::prepare("SELECT UNIX_TIMESTAMP()")->fetchOne());
+define('WT_TIMESTAMP', (int) WT_DB::prepare("SELECT UNIX_TIMESTAMP()")->fetchOne());
 
 // Server timezone is defined in php.ini
-define('WT_SERVER_TIMESTAMP', WT_TIMESTAMP + (int)date('Z'));
+define('WT_SERVER_TIMESTAMP', WT_TIMESTAMP + (int) date('Z'));
 
 if (Auth::check()) {
 	define('WT_CLIENT_TIMESTAMP', WT_TIMESTAMP - $WT_SESSION->timediff);
 } else {
 	define('WT_CLIENT_TIMESTAMP', WT_SERVER_TIMESTAMP);
 }
-define('WT_CLIENT_JD', 2440588 + (int)(WT_CLIENT_TIMESTAMP / 86400));
+define('WT_CLIENT_JD', 2440588 + (int) (WT_CLIENT_TIMESTAMP / 86400));
 
 // Application configuration data - things that aren’t (yet?) user-editable
 require WT_ROOT . 'includes/config_data.php';

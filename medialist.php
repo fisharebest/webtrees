@@ -73,19 +73,19 @@ $medialist = WT_Query_Media::mediaList(
 <form action="medialist.php" method="get">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="search" value="yes">
-	<table class="list_table width75">
+	<table class="list_table">
 		<tr>
-			<td class="descriptionbox wrap width25">
+			<td class="descriptionbox wrap">
 				<?php echo WT_I18N::translate('Folder'); ?>
 			</td>
-			<td class="optionbox wrap width25">
+			<td class="optionbox wrap">
 				<?php echo select_edit_control('folder', $folders, null, $folder); ?>
 			</td>
 			<?php
 			if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
-				echo '<td class="descriptionbox wrap width25">';
+				echo '<td class="descriptionbox wrap">';
 				echo WT_I18N::translate('Sort order');
-				echo '</td><td class="optionbox wrap width25">';
+				echo '</td><td class="optionbox wrap">';
 				echo '<select name="sortby">';
 				echo '<option value="title" ', ($sortby == 'title') ? 'selected' : '', '>';
 				echo /* I18N: An option in a list-box */ WT_I18N::translate('sort by title');
@@ -96,22 +96,22 @@ $medialist = WT_Query_Media::mediaList(
 				echo '</select>';
 				echo '</td>';
 			} else {
-				echo '<td class="descriptionbox wrap width25"></td>';
-				echo '<td class="optionbox wrap width25"></td>';
+				echo '<td class="descriptionbox wrap"></td>';
+				echo '<td class="optionbox wrap"></td>';
 			}
 			?>
 		</tr>
 		<tr>
-			<td class="descriptionbox wrap width25">
+			<td class="descriptionbox wrap">
 				<?php echo /* I18N: Label for check-box */ WT_I18N::translate('Include subfolders'); ?>
 			</td>
-			<td class="optionbox wrap width25">
+			<td class="optionbox wrap">
 				<input type="checkbox" id="subdirs" name="subdirs" <?php echo $currentdironly ? '' : 'checked'; ?>>
 			</td>
-			<td class="descriptionbox wrap width25">
+			<td class="descriptionbox wrap">
 				<?php echo WT_I18N::translate('Media objects per page'); ?>
 			</td>
-			<td class="optionbox wrap width25">
+			<td class="optionbox wrap">
 				<select name="max">
 					<?php
 					foreach (array('10', '20', '30', '40', '50', '75', '100', '125', '150', '200') as $selectEntry) {
@@ -126,16 +126,16 @@ $medialist = WT_Query_Media::mediaList(
 			</td>
 		</tr>
 		<tr>
-			<td class="descriptionbox wrap width25">
+			<td class="descriptionbox wrap">
 				<?php echo WT_I18N::translate('Search filters'); ?>
 			</td>
-			<td class="optionbox wrap width25">
+			<td class="optionbox wrap">
 				<input id="filter" name="filter" value="<?php echo WT_Filter::escapeHtml($filter); ?>" size="14" dir="auto">
 			</td>
-			<td class="descriptionbox wrap width25">
+			<td class="descriptionbox wrap">
 				<?php echo WT_I18N::translate('Columns per page'); ?>
 			</td>
-			<td class="optionbox wrap width25">
+			<td class="optionbox wrap">
 				<select name="columns">
 					<?php
 					foreach (array('1', '2') as $selectEntry) {
@@ -150,14 +150,14 @@ $medialist = WT_Query_Media::mediaList(
 			</td>
 		</tr>
 		<tr>
-			<td class="descriptionbox wrap width25">
+			<td class="descriptionbox wrap">
 			</td>
-			<td class="optionbox wrap width25">
+			<td class="optionbox wrap">
 				<input type="submit" name="apply_filter" value="<?php echo WT_I18N::translate('Search'); ?>">
 				<input type="submit" name="reset" value="<?php echo WT_I18N::translate('Reset'); ?>">
 			</td>
-			<td class="descriptionbox wrap width25"></td>
-			<td class="optionbox wrap width25"></td>
+			<td class="descriptionbox wrap"></td>
+			<td class="optionbox wrap"></td>
 		</tr>
 	</table>
 </form>
@@ -170,13 +170,13 @@ if ($search) {
 		$count = $ct - $start;
 	}
 
-	echo '<div><p style="text-align: center;">', WT_I18N::translate('Media objects found'), ' ', $ct, '</p>';
+	echo '<div><p>', WT_I18N::translate('Media objects found'), ' ', $ct, '</p>';
 
 	if ($ct > 0) {
 		$currentPage = ((int) ($start / $max)) + 1;
 		$lastPage = (int) (($ct + $max - 1) / $max);
 
-		echo '<table class="list_table width100">';
+		echo '<table class="list_table">';
 		// Display controls twice - at the top and bottom of the table
 		foreach (array('thead', 'tfoot') as $tsection) {
 			echo '<', $tsection, '><tr><td colspan="2">';
@@ -252,15 +252,15 @@ if ($search) {
 			$mediaobject = $medialist[$i];
 
 			if ($columns == '1') {
-				echo '<td class="list_value_wrap width80">';
+				echo '<td class="media-col1 list_value_wrap">';
 			}
 			if ($columns == '2') {
-				echo '<td class="list_value_wrap width50">';
+				echo '<td class="media-col2 list_value_wrap">';
 			}
 
-			echo '<table><tr><td style="vertical-align:top; white-space:normal;">';
+			echo '<table><tr><td class="media-image">';
 			echo $mediaobject->displayImage();
-			echo '</td><td class="list_value_wrap width100" style="border: none; padding-left: 5px;">';
+			echo '</td><td class="media-col list_value_wrap">';
 			if (WT_USER_CAN_EDIT) {
 				echo WT_Controller_Media::getMediaListMenu($mediaobject);
 			}
@@ -294,7 +294,7 @@ if ($search) {
 				}
 			}
 			echo '<br>';
-			echo '<div style="white-space: normal; width: 95%;">';
+			echo '<div">';
 			echo print_fact_sources($mediaobject->getGedcom(), 1);
 			echo print_fact_notes($mediaobject->getGedcom(), 1);
 			echo '</div>';

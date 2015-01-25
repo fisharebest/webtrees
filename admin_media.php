@@ -572,7 +572,7 @@ $controller = new WT_Controller_Page;
 $controller
 	->restrictAccess(Auth::isAdmin())
 	->setPageTitle(WT_I18N::translate('Media'))
-	->addExternalJavascript(WT_JQUERY_DATATABLES_URL)
+	->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 	->addExternalJavascript(WT_DATATABLES_BOOTSTRAP_JS_URL)
 	->pageHeader()
 	->addInlineJavascript('

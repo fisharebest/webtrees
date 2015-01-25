@@ -36,7 +36,7 @@ $ajax = WT_Filter::getBool('ajax');
 if (!$ajax) {
 	$controller = new WT_Controller_Page;
 	$controller->setPageTitle(WT_I18N::translate('Statistics'))
-		->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+		->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 		->addInlineJavascript('
 			jQuery("#statistics_chart").css("visibility", "visible");
 			jQuery("#statistics_chart").tabs({
