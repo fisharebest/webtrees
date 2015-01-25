@@ -61,7 +61,6 @@ case 'save':
 		$auto_accept    = WT_Filter::postBool('auto_accept');
 		$admin          = WT_Filter::postBool('admin');
 		$visible_online = WT_Filter::postBool('visible_online');
-		$edit_account   = WT_Filter::postBool('edit_account');
 		$verified       = WT_Filter::postBool('verified');
 		$approved       = WT_Filter::postBool('approved');
 
@@ -113,7 +112,7 @@ case 'save':
 				->setPreference('verified_by_admin', $approved ? '1' : '0');
 
 			// We cannot change our own admin status.  Another admin will need to do it.
-			if ($user->getUserId() !== Auth::id) {
+			if ($user->getUserId() !== Auth::id()) {
 				$user->setPreference('admin', $admin ? '1' : '0');
 			}
 
@@ -413,7 +412,7 @@ case 'edit':
 
 		<!-- VISIBLE ONLINE -->
 		<div class="form-group">
-			<label class="control-label col-sm-3" for="edit_account">
+			<label class="control-label col-sm-3" for="visible_online">
 				<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Visible online'); ?>
 			</label>
 			<div class="col-sm-9">
