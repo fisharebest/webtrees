@@ -157,6 +157,9 @@ define('WT_START_TIME', microtime(true));
 
 // We want to know about all PHP errors
 error_reporting(E_ALL | E_STRICT);
+if (strpos(ini_get('disable_functions'), 'ini_set') === false) {
+	ini_set('display_errors', 'on');
+}
 
 // PHP5.3 may be using magic-quotes :-(
 if (version_compare(PHP_VERSION, '5.4', '<') && get_magic_quotes_gpc()) {
@@ -297,40 +300,32 @@ require WT_ROOT . 'includes/functions/functions_date.php';
 require WT_ROOT . 'includes/functions/functions_charts.php';
 require WT_ROOT . 'includes/functions/functions_import.php';
 
-// Set a custom error handler
+// Log errors to the database
 set_error_handler(function($errno, $errstr) {
-	if (error_reporting() > 0 && $errno < 2048) {
-		$fmt_msg = "<br>ERROR {$errno}: {$errstr}<br>";
-		$log_msg = "ERROR {$errno}: {$errstr};";
-		// Although debug_backtrace should always exist in PHP5, without this check, PHP sometimes crashes.
-		// Possibly calling it generates an error, which causes infinite recursion??
-		if ($errno < 16 && function_exists("debug_backtrace") && strstr($errstr, "headers already sent by") === false) {
-			$backtrace = debug_backtrace();
-			$num = count($backtrace);
-			for ($i = 0; $i < $num; $i++) {
-				if ($i === 0) {
-					$fmt_msg .= "0 Error occurred on ";
-					$log_msg .= "\n0 Error occurred on ";
+	static $first_error = false;
+
+	if (!$first_error) {
+		$first_error = true;
+
+		$message = 'ERROR ' . $errno . ': ' . $errstr;
+		// Although debug_backtrace should always exist, PHP sometimes crashes without this check.
+		if (function_exists('debug_backtrace') && strstr($errstr, 'headers already sent by') === false) {
+			$backtraces = debug_backtrace();
+			foreach ($backtraces as $level => $backtrace) {
+				if ($level === 0) {
+					$message .= '; Error occurred on ';
 				} else {
-					$fmt_msg .= "{$i} called from ";
-					$log_msg .= "\n{$i} called from ";
+					$message .= '; called from ';
 				}
-				if (isset($backtrace[$i]["line"]) && isset($backtrace[$i]["file"])) {
-					$fmt_msg .= "line <b>{$backtrace[$i]['line']}</b> of file <b>" . basename($backtrace[$i]['file']) . "</b>";
-					$log_msg .= "line {$backtrace[$i]['line']} of file " . basename($backtrace[$i]['file']);
+				if (isset($backtrace[$level]['line']) && isset($backtrace[$level]['file'])) {
+					$message .= 'line ' . $backtraces[$level]['line'] . ' of file ' . $backtraces[$level]['file'];
 				}
-				if ($i < $num - 1) {
-					$fmt_msg .= " in function <b>" . $backtrace[$i + 1]['function'] . "</b>";
-					$log_msg .= " in function " . $backtrace[$i + 1]['function'];
+				if ($level < count($backtraces) - 1) {
+					$message .= ' in function ' . $backtraces[$level + 1]['function'];
 				}
-				$fmt_msg .= "<br>";
 			}
 		}
-		echo $fmt_msg;
-		Log::addErrorLog($log_msg);
-		if ($errno == 1) {
-			die();
-		}
+		Log::addErrorLog($message);
 	}
 
 	return false;

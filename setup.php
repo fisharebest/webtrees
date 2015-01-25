@@ -18,6 +18,12 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+// We want to know about all PHP errors
+error_reporting(E_ALL | E_STRICT);
+if (strpos(ini_get('disable_functions'), 'ini_set') === false) {
+	ini_set('display_errors', 'on');
+}
+
 // To embed webtrees code in other applications, we must explicitly declare any global variables that we create.
 global $WT_REQUEST, $WT_SESSION;
 
@@ -32,7 +38,6 @@ require 'library/autoload.php';
 define('WT_WEBTREES', 'webtrees');
 define('WT_SERVER_NAME', '');
 define('WT_SCRIPT_PATH', '');
-require 'includes/functions/functions_db.php'; // for get/setSiteSetting()
 define('WT_DATA_DIR', 'data/');
 define('WT_DEBUG_SQL', false);
 define('WT_REQUIRED_MYSQL_VERSION', '5.0.13');
