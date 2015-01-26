@@ -161,10 +161,8 @@ $controller->pageHeader();
 
 <?php if (!WT_Tree::getAll()): ?>
 	<p class="alert alert-info alert-dismissable" role="alert">
-		<button type="button" class="close" data-dismiss="alert">
-			<span aria-hidden="true">&times;</span><span class="sr-only">
-				<?php echo WT_I18N::translate('Close'); ?>
-			</span>
+		<button type="button" class="close" data-dismiss="alert" aria-label="<?php echo WT_I18N::translate('close'); ?>">
+			<span aria-hidden="true">&times;</span>
 		</button>
 		<?php echo WT_I18N::translate('Before you can continue, you must create a family tree.'); ?>
 	</p>

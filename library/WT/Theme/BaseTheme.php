@@ -219,7 +219,7 @@ abstract class BaseTheme {
 	protected function flashMessageContainer(\stdClass $message) {
 		return
 			'<div class="alert alert-' . $message->status . ' alert-dismissible" role="alert">' .
-			'<button type="button" class="close" data-dismiss="alert" aria-label="' . /* I18N: button label */ WT_I18N::translate('close') . '">' .
+			'<button type="button" class="close" data-dismiss="alert" aria-label="' . WT_I18N::translate('close') .'">' .
 			'<span aria-hidden="true">&times;</span>' .
 			'</button>' .
 			$message->text .
