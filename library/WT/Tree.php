@@ -304,16 +304,20 @@ class WT_Tree {
 	 * Create a new tree
 	 *
 	 * @param string $tree_name
+	 * @param string $tree_title
 	 *
 	 * @return void
 	 */
-	public static function create($tree_name) {
+	public static function create($tree_name, $tree_title) {
 		try {
 			// Create a new tree
 			WT_DB::prepare(
 				"INSERT INTO `##gedcom` (gedcom_name) VALUES (?)"
 			)->execute(array($tree_name));
 			$tree_id = WT_DB::prepare("SELECT LAST_INSERT_ID()")->fetchOne();
+			WT_DB::prepare(
+				"INSERT INTO `##gedcom_setting` (gedcom_id, setting_name) VALUES (?, ?)"
+			)->execute(array($tree_id, $tree_title));
 		} catch (PDOException $ex) {
 			// A tree with that name already exists?
 			return;

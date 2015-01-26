@@ -105,9 +105,11 @@ case 'setdefault':
 	
 	return;
 case 'new_tree':
-	$tree_name = basename(WT_Filter::post('tree_name'));
-	if (WT_Filter::checkCsrf() && $tree_name) {
-		WT_Tree::create($tree_name);
+	$tree_name  = basename(WT_Filter::post('tree_name'));
+	$tree_title = WT_Filter::post('tree_title');
+
+	if (WT_Filter::checkCsrf() && $tree_name && $tree_title) {
+		WT_Tree::create($tree_name, $tree_title);
 	}
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?ged=' . $tree_name);
 	

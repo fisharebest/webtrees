@@ -283,7 +283,7 @@ foreach (User::all() as $tmp_user) {
 </ol>
 <h2><?php echo $controller->getPageTitle(); ?></h2>
 
-<form class="form">
+<form class="form" name="logs">
 	<input type="hidden" name="action" value="show">
 
 	<div class="row">
@@ -357,12 +357,12 @@ foreach (User::all() as $tmp_user) {
 			<?php echo WT_I18N::translate('Filter'); ?>
 		</button>
 
-		<button type="button" class="btn btn-primary" onclick="document.logs.action.value='export';return true;" <?php echo $action === 'show' ? '' : 'disabled'; ?>>
+		<button type="submit" class="btn btn-primary" onclick="document.logs.action.value='export';return true;" <?php echo $action === 'show' ? '' : 'disabled'; ?>>
 			<?php echo WT_I18N::translate('Export'); ?>
 		</button>
 
 
-		<button type="button" class="btn btn-primary" onclick="if (confirm('<?php echo WT_I18N::translate('Permanently delete these records?'); ?>')) {document.changes.action.value='delete'; return true;} else {return false;}" <?php echo $action === 'show' ? '' : 'disabled'; ?>>
+		<button type="submit" class="btn btn-primary" onclick="if (confirm('<?php echo WT_I18N::translate('Permanently delete these records?'); ?>')) {document.changes.action.value='delete'; return true;} else {return false;}" <?php echo $action === 'show' ? '' : 'disabled'; ?>>
 			<?php echo WT_I18N::translate('Delete'); ?>
 		</button>
 	</div>

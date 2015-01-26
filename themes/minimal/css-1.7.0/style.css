@@ -1110,6 +1110,11 @@ td.descriptionbox a {
 	padding: 5px;
 }
 
+#register-form,
+#verify-form {
+	width: 440px;
+}
+
 #login-form div,
 #login-form div a,
 #new_passwd_form div,
@@ -1132,6 +1137,11 @@ td.descriptionbox a {
 #verify-form input {
 	width: 140px;
 	margin: 0 10px;
+}
+
+#register-form p,
+#verify-form p {
+	text-align: left;
 }
 
 #new_passwd_form h4,
@@ -1183,6 +1193,11 @@ td.descriptionbox a {
 [dir=rtl] #register-form div,
 [dir=rtl] #verify-form div {
 	text-align: left;
+}
+
+[dir=rtl] #register-form p, 
+[dir=rtl] #verify-form p {
+	text-align: right;
 }
 
 /* --- reportengine.php --- */

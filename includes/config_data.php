@@ -26,11 +26,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
 // Unknown surname
 $UNKNOWN_NN = WT_I18N::translate_c('Unknown surname', '…');
 
@@ -74,38 +69,6 @@ $NPFX_accept = array(
 	'Sra',
 	'Srta',
 	'Ven',
-);
-
-// SPFX tags - surname prefixes
-$SPFX_accept = array(
-	'al',
-	'da',
-	'de',
-	'dem',
-	'den',
-	'der',
-	'di',
-	'du',
-	'el',
-	'la',
-	'van',
-	'von',
-);
-
-// NSFX tags - name suffixes
-$NSFX_accept = array(
-	'I',
-	'II',
-	'III',
-	'IV',
-	'Jr',
-	'Junior',
-	'MD',
-	'PhD',
-	'Senior',
-	'Sr',
-	'V',
-	'VI',
 );
 
 // FILE:FORM tags - file formats
@@ -209,10 +172,6 @@ $nondatefacts = array(
 	'WIFE',
 	'WWW',
 	'_EMAIL',
-);
-
-// Tags that require a TYPE subtag
-$typefacts = array(
 );
 
 // Tags that require a DATE:TIME as well as a DATE
@@ -438,6 +397,5 @@ $level2_tags = array(
 	),
 );
 
-// The order of name parts, when generating names
+// Name fields
 $STANDARD_NAME_FACTS = array('NAME', 'NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX');
-$REVERSED_NAME_FACTS = array('NAME', 'NPFX', 'SPFX', 'SURN', 'GIVN', 'NSFX');

@@ -2795,11 +2795,12 @@ function print_indi_form($nextaction, WT_Individual $person = null, WT_Family $f
 		print_add_layer('SOUR');
 		print_add_layer('NOTE');
 		print_add_layer('SHARED_NOTE');
+		print_add_layer('RESN');
 	} else {
 		print_add_layer('SOUR', 1);
-		print_add_layer('OBJE', 1);
 		print_add_layer('NOTE', 1);
 		print_add_layer('SHARED_NOTE', 1);
+		print_add_layer('RESN', 1);
 	}
 
 	// If we are editing an existing name, allow raw GEDCOM editing
