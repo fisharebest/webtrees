@@ -382,8 +382,7 @@ $controller->pageHeader();
 
 		<div class="form-group">
 			<div class="col-sm-offset-3 col-sm-9">
-				<p class="alert alert-info">
-					<?php echo WT_I18N::translate('To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]'); ?>
+				<?php echo Theme::theme()->htmlAlert(WT_I18N::translate('To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]'), 'info', false); ?>
 				</p>
 			</div>
 		</div>
