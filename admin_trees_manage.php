@@ -95,14 +95,14 @@ case 'delete':
 		WT_Tree::get($gedcom_id)->delete();
 	}
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
-	
+
 	return;
 case 'setdefault':
 	if (WT_Filter::checkCsrf()) {
 		WT_Site::setPreference('DEFAULT_GEDCOM', WT_Filter::post('ged'));
 	}
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
-	
+
 	return;
 case 'new_tree':
 	$tree_name  = basename(WT_Filter::post('tree_name'));
@@ -112,7 +112,7 @@ case 'new_tree':
 		WT_Tree::create($tree_name, $tree_title);
 	}
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?ged=' . $tree_name);
-	
+
 	return;
 case 'replace_upload':
 	$gedcom_id = WT_Filter::postInteger('gedcom_id');
@@ -216,7 +216,7 @@ case 'importform':
 		} else {
 			echo '<p>', WT_I18N::translate('No GEDCOM files found.  You need to copy files to the <b>%s</b> directory on your server.', WT_DATA_DIR);
 			echo '</form>';
-			
+
 			return;
 		}
 	}
@@ -224,7 +224,7 @@ case 'importform':
 	echo WT_I18N::translate('If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM file.');
 	echo '<br><br><input type="submit" value="', WT_I18N::translate('continue'), '">';
 	echo '</form>';
-	
+
 	return;
 }
 
@@ -532,13 +532,13 @@ case 'importform':
 					<?php echo WT_Filter::getCsrf(); ?>
 					<input type="hidden" name="action" value="new_tree">
 					<div class="form-group">
-						<label for="ged_title" class="col-sm-2 control-label">
+						<label for="tree_title" class="col-sm-2 control-label">
 							<?php echo WT_I18N::translate('Family tree title'); ?>
 						</label>
 						<div class="col-sm-10">
 							<input
 								class="form-control"
-								id="ged_title"
+								id="tree_title"
 								maxlength="255"
 								name="tree_title"
 								required

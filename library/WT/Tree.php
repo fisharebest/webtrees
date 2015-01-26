@@ -315,9 +315,6 @@ class WT_Tree {
 				"INSERT INTO `##gedcom` (gedcom_name) VALUES (?)"
 			)->execute(array($tree_name));
 			$tree_id = WT_DB::prepare("SELECT LAST_INSERT_ID()")->fetchOne();
-			WT_DB::prepare(
-				"INSERT INTO `##gedcom_setting` (gedcom_id, setting_name) VALUES (?, ?)"
-			)->execute(array($tree_id, $tree_title));
 		} catch (PDOException $ex) {
 			// A tree with that name already exists?
 			return;
@@ -441,7 +438,7 @@ class WT_Tree {
 		$tree->setPreference('WEBTREES_EMAIL', '');
 		$tree->setPreference('WORD_WRAPPED_NOTES', '0');
 		$tree->setPreference('imported', '0');
-		$tree->setPreference('title', /* I18N: Default title for new family trees */ WT_I18N::translate('My family tree'));
+		$tree->setPreference('title', $tree_title);
 
 		// Default restriction settings
 		$statement = WT_DB::prepare(
