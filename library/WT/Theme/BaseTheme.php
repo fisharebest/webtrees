@@ -62,6 +62,23 @@ abstract class BaseTheme {
 	}
 
 	/**
+	 * Create accessibility links for the header.
+	 *
+	 * "Skip to content" allows keyboard only users to navigate over the headers without
+	 * pressing TAB many times.
+	 *
+	 * @return string
+	 */
+	public function accessibilityLinks() {
+		return
+			'<div class="accessibility-links">' .
+			'<a class="sr-only sr-only-focusable btn btn-info btn-sm" href="#content">' .
+			/* I18N: Skip over the headers and menus, to the main content of the page */ WT_I18N::translate('Skip to content') .
+			'</a>' .
+			'</div>';
+	}
+
+	/**
 	 * Create the top of the <body>.
 	 *
 	 * @return string
@@ -426,6 +443,7 @@ abstract class BaseTheme {
 	 */
 	protected function headerContent() {
 		return
+			//$this->accessibilityLinks() .
 			$this->logoHeader() .
 			$this->secondaryMenuContainer($this->secondaryMenu()) .
 			$this->formatTreeTitle() .
@@ -1294,7 +1312,7 @@ abstract class BaseTheme {
 		}
 
 		if (WT_USER_GEDCOM_ADMIN) {
-			$menu->addSubmenu(new WT_Menu(WT_I18N::translate('Administration'), 'admin.php', 'menu-admin'));
+			$menu->addSubmenu(new WT_Menu(WT_I18N::translate('Control panel'), 'admin.php', 'menu-admin'));
 		}
 
 		return $menu;

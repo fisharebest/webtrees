@@ -38,7 +38,7 @@ $variables = WT_DB::prepare("SHOW VARIABLES")->fetchAssoc();
 array_walk($variables, function(&$x) { $x = str_replace(',', ', ', $x); });
 
 ob_start();
-phpinfo();
+phpinfo(INFO_ALL & ~INFO_CREDITS & ~INFO_LICENSE);
 preg_match('%<style type="text/css">(.*?)</style>.*?(<body>.*</body>)%s', ob_get_clean(), $matches);
 $style = $matches[1];
 $html  = $matches[2];
@@ -46,7 +46,7 @@ $html  = $matches[2];
 ?>
 
 <ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+	<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
 	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 </ol>
 <h2><?php echo $controller->getPageTitle(); ?></h2>

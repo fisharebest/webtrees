@@ -49,7 +49,9 @@ class Administration extends BaseTheme {
 
 	/** {@inheritdoc} */
 	protected function headerContent() {
-		return $this->secondaryMenuContainer($this->secondaryMenu());
+		return
+			$this->accessibilityLinks() .
+			$this->secondaryMenuContainer($this->secondaryMenu());
 	}
 
 	/** {@inheritdoc} */
@@ -62,7 +64,7 @@ class Administration extends BaseTheme {
 	 * @return WT_Menu
 	 */
 	protected function menuAdminSite() {
-		return new WT_Menu(/* I18N: Menu entry*/ WT_I18N::translate('webtrees'), '#', '', '', array(
+		return new WT_Menu(/* I18N: Menu entry*/ WT_I18N::translate('Server'), '#', '', '', array(
 			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Site preferences'), 'admin_site_config.php?action=site'),
 			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Sending email'), 'admin_site_config.php?action=email'),
 			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Login and registration'), 'admin_site_config.php?action=login'),
@@ -154,7 +156,7 @@ class Administration extends BaseTheme {
 			'<span class="icon-bar"></span>' .
 			'<span class="icon-bar"></span>' .
 			'</button>' .
-			//'<a class="navbar-brand" href="index.php">' . WT_WEBTREES . '</a>' .
+			'<a class="navbar-brand" href="admin.php">' . WT_I18N::translate('Control panel') . '</a>' .
 			'</div>' .
 			'<div class="collapse navbar-collapse" id="primary-navbar-collapse">' .
 			'<ul class="nav navbar-nav">' .

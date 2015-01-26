@@ -53,6 +53,7 @@ class Colors extends Clouds {
 	/** {@inheritdoc} */
 	protected function headerContent() {
 		return
+			//$this->accessibilityLinks() .
 			$this->formatTreeTitle() .
 			$this->formatSecondaryMenu();
 	}

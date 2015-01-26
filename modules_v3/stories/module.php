@@ -194,7 +194,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 
 				?>
 				<ol class="breadcrumb small">
-					<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+					<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
 					<li><a href="admin_modules.php"><?php echo WT_I18N::translate('Module administration'); ?></a></li>
 					<li><a href="module.php?mod=<?php echo $this->getName(); ?>&mod_action=admin_config"><?php echo $this->getTitle(); ?></a></li>
 					<li class="active"><?php echo $controller->getPageTitle(); ?></li>
@@ -307,7 +307,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 
 		?>
 		<ol class="breadcrumb small">
-			<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+			<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
 			<li><a href="admin_modules.php"><?php echo WT_I18N::translate('Module administration'); ?></a></li>
 			<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 		</ol>

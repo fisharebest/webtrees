@@ -119,7 +119,7 @@ $controller->pageHeader();
 ?>
 
 <ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+	<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
 	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 </ol>
 <h2><?php echo $controller->getPageTitle(); ?></h2>

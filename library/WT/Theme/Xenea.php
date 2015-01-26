@@ -50,6 +50,7 @@ class Xenea extends BaseTheme {
 	/** {@inheritdoc} */
 	protected function headerContent() {
 		return
+			//$this->accessibilityLinks() .
 			'<div class="header-upper">' .
 			$this->formatTreeTitle() .
 			$this->formQuickSearch() .

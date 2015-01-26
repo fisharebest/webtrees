@@ -58,6 +58,11 @@ body {
 	}
 }
 
+/* Do not let the focused accessibility links change the layout */
+.accessibility-links {
+	position: fixed;
+}
+
 /* Make <fieldset class="form-group"> look like <div class="form-group"> so we can use semantic/accessible markup */
 fieldset {
 	margin-bottom: inherit;

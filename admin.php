@@ -33,7 +33,7 @@ $controller
 	->addInlineJavascript('jQuery("#tree_stats").accordion();')
 	->addInlineJavascript('jQuery("#changes").accordion();')
 	->addInlineJavascript('jQuery("#content_container").css("visibility", "visible");')
-	->setPageTitle(WT_I18N::translate('Administration'))
+	->setPageTitle(WT_I18N::translate('Control panel'))
 	->pageHeader();
 
 // Check for updates
