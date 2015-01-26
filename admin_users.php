@@ -282,7 +282,8 @@ case 'edit':
 		<li><a href="admin_users.php"><?php echo WT_I18N::translate('User administration'); ?></a></li>
 		<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 	</ol>
-	<h2><?php echo $controller->getPageTitle(); ?></h2>
+
+	<h1><?php echo $controller->getPageTitle(); ?></h1>
 
 	<form class="form-horizontal" name="newform" method="post" role="form" action="?action=edit" autocomplete="off">
 		<?php echo WT_Filter::getCsrf(); ?>
@@ -649,7 +650,7 @@ case 'cleanup':
 		<li><a href="admin_users.php"><?php echo WT_I18N::translate('User administration'); ?></a></li>
 		<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 	</ol>
-	<h2><?php echo $controller->getPageTitle(); ?></h2>
+	<h1><?php echo $controller->getPageTitle(); ?></h1>
 
 	<form method="post" action="?action=cleanup2">
 	<table class="table table-bordered">
@@ -812,7 +813,7 @@ default:
 		<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
 		<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 	</ol>
-	<h2><?php echo $controller->getPageTitle(); ?></h2>
+	<h1><?php echo $controller->getPageTitle(); ?></h1>
 
 	<table class="table table-condensed table-bordered table-user-list">
 		<thead>

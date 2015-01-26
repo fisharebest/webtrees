@@ -41,7 +41,8 @@ $controller
 	<li><a href="admin_users.php"><?php echo WT_I18N::translate('User administration'); ?></a></li>
 	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 </ol>
-<h2><?php echo $controller->getPageTitle(); ?></h2>
+
+<h1><?php echo $controller->getPageTitle(); ?></h1>
 
 <p>
 	<a href="#" onclick="return message('all', 'messaging2', '');">

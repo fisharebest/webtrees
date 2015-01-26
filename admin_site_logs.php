@@ -240,7 +240,8 @@ foreach (User::all() as $tmp_user) {
 	<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
 	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 </ol>
-<h2><?php echo $controller->getPageTitle(); ?></h2>
+
+<h1><?php echo $controller->getPageTitle(); ?></h1>
 
 <form class="form" name="logs">
 	<input type="hidden" name="action" value="show">
@@ -321,6 +322,9 @@ foreach (User::all() as $tmp_user) {
 
 <?php if ($action): ?>
 <table class="table table-bordered table-condensed table-hover table-site-logs">
+	<caption class="sr-only">
+		<?php echo $controller->getPageTitle(); ?>
+	</caption>
 	<thead>
 		<tr>
 			<th><?php echo WT_I18N::translate('Timestamp'); ?></th>
@@ -331,7 +335,5 @@ foreach (User::all() as $tmp_user) {
 			<th><?php echo WT_I18N::translate('Family tree'); ?></th>
 		</tr>
 	</thead>
-	<tbody>
-	</tbody>
 </table>
 <?php endif; ?>

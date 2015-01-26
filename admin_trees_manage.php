@@ -158,7 +158,8 @@ $controller->pageHeader();
 	<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
 	<li class="active"><?php echo WT_I18N::translate('Manage family trees'); ?></li>
 </ol>
-<h2><?php echo $controller->getPageTitle(); ?></h2>
+
+<h1><?php echo $controller->getPageTitle(); ?></h1>
 
 <?php
 
@@ -486,13 +487,14 @@ case 'importform':
 							</li>
 							<!-- EXPORT -->
 							<li>
-								<i class="fa fa-li fa-file-text"></i>
-								<a href="#" onclick="return modalDialog('admin_trees_export.php?ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>', '<?php echo WT_I18N::translate('Export'); ?>');">
-									<?php echo WT_I18N::translate('Export'); ?>
-									<span class="sr-only">
-										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
-									</span>
-								</a>
+								<form action="admin_trees_export.php" method="post">
+									<?php echo WT_Filter::getCsrf(); ?>
+									<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
+									<i class="fa fa-li fa-file-text"></i>
+									<a href="#" onclick="jQuery(this).closest('form').submit();">
+										<?php echo WT_I18N::translate('Export'); ?>
+									</a>
+								</form>
 							</li>
 							<!-- IMPORT -->
 							<li>

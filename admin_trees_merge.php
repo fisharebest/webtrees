@@ -36,7 +36,9 @@ $controller
 	<li><a href="admin_trees_manage.php"><?php echo WT_I18N::translate('Manage family trees'); ?></a></li>
 	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 </ol>
-<h2><?php echo $controller->getPageTitle(); ?></h2>
+
+<h1><?php echo $controller->getPageTitle(); ?></h1>
+
 <?php
 
 $tree1_id = WT_Filter::post('tree1_id');

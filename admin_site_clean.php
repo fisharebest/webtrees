@@ -86,7 +86,8 @@ sort($entries);
 	<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
 	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 </ol>
-<h2><?php echo $controller->getPageTitle(); ?></h2>
+
+<h1><?php echo $controller->getPageTitle(); ?></h1>
 
 <p>
 	<?php echo WT_I18N::translate('Files marked with %s are required for proper operation and cannot be removed.', $locked_icon); ?>

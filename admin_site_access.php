@@ -262,13 +262,17 @@ WT_DB::exec(
 	<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
 	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 </ol>
-<h2><?php echo $controller->getPageTitle(); ?></h2>
+
+<h1><?php echo $controller->getPageTitle(); ?></h1>
 
 <p><?php echo /* I18N: http://en.wikipedia.org/wiki/User_agent */ WT_I18N::translate('Restrict access to the site, using IP addresses and user-agent strings'); ?></p>
 
 <p><?php echo WT_I18N::translate('The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access).'); ?></p>
 
 <table class="table table-hover table-condensed table-bordered table-site-access-rules">
+	<caption class="sr-only">
+		<?php echo WT_I18N::translate('The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access).'); ?>
+	</caption>
 	<thead>
 		<tr>
 			<th><?php echo /* I18N [...] of a range of addresses */ WT_I18N::translate('Start IP address'); ?></th>
@@ -286,6 +290,9 @@ WT_DB::exec(
 <p><?php echo WT_I18N::translate('The following visitors were not recognized, and were assumed to be search engines.'); ?></p>
 
 <table class="table table-hover table-condensed table-bordered table-unknown-site-visitors">
+	<caption class="sr-only">
+		<?php echo WT_I18N::translate('The following visitors were not recognized, and were assumed to be search engines.'); ?>
+	</caption>
 	<thead>
 		<tr>
 			<th rowspan="2"><?php /* I18N: http://en.wikipedia.org/wiki/IP_address */ echo WT_I18N::translate('IP address'); ?></th>

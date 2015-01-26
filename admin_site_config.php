@@ -124,7 +124,8 @@ $controller->pageHeader();
 	<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
 	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 </ol>
-<h2><?php echo $controller->getPageTitle(); ?></h2>
+
+<h1><?php echo $controller->getPageTitle(); ?></h1>
 
 <form method="post" class="form-horizontal">
 	<?php echo WT_Filter::getCsrf(); ?>
@@ -205,30 +206,30 @@ $controller->pageHeader();
 		</div>
 
 		<!-- ALLOW_USER_THEMES -->
-	<div class="form-group">
-		<label for="ALLOW_USER_THEMES" class="col-sm-3 control-label">
+	<fieldset class="form-group">
+		<legend class="col-sm-3 control-label">
 			<?php echo /* I18N: A site configuration setting */ WT_I18N::translate('Allow users to select their own theme'); ?>
-		</label>
+		</legend>
 		<div class="col-sm-9">
 			<?php echo edit_field_yes_no('ALLOW_USER_THEMES', WT_Site::getPreference('ALLOW_USER_THEMES')); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Allow users to select their own theme” site configuration setting */ WT_I18N::translate('Gives users the option of selecting their own theme.'); ?>
 			</p>
 		</div>
-	</div>
+	</fieldset>
 
 		<!-- ALLOW_CHANGE_GEDCOM -->
-	<div class="form-group">
-		<label for="ALLOW_CHANGE_GEDCOM" class="col-sm-3 control-label">
+	<fieldset class="form-group">
+		<legend class="col-sm-3 control-label">
 			<?php echo /* I18N: A site configuration setting */ WT_I18N::translate('Show list of family trees'); ?>
-		</label>
+		</legend>
 		<div class="col-sm-9">
 			<?php echo edit_field_yes_no('ALLOW_CHANGE_GEDCOM', WT_Site::getPreference('ALLOW_CHANGE_GEDCOM')); ?>
 			<p class="small text-muted">
 				<?php /* I18N: Help text for the “Show list of family trees” site configuration setting */ WT_I18N::translate('For sites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc.'); ?>
 			</p>
 		</div>
-	</div>
+	</fieldset>
 
 		<!-- SESSION_TIME -->
 		<div class="form-group">
@@ -287,7 +288,7 @@ $controller->pageHeader();
 			</div>
 		</div>
 
-		<h3><?php echo WT_I18N::translate('SMTP mail server'); ?></h3>
+		<h2><?php echo WT_I18N::translate('SMTP mail server'); ?></h2>
 
 		<!-- SMTP_HOST -->
 		<div class="form-group">
@@ -316,17 +317,17 @@ $controller->pageHeader();
 		</div>
 
 		<!-- SMTP_AUTH -->
-		<div class="form-group">
-			<label for="SMTP_AUTH" class="col-sm-3 control-label">
+		<fieldset class="form-group">
+			<legend class="col-sm-3 control-label">
 				<?php echo /* I18N: A site configuration setting */ WT_I18N::translate('Use password'); ?>
-			</label>
+			</legend>
 			<div class="col-sm-9">
 				<?php echo edit_field_yes_no('SMTP_AUTH', WT_Site::getPreference('SMTP_AUTH')); ?>
 				<p class="small text-muted">
 					<?php echo /* I18N: Help text for the “Use password” site configuration setting */ WT_I18N::translate('Most SMTP servers require a password.'); ?>
 				</p>
 			</div>
-		</div>
+		</fieldset>
 
 		<!-- SMTP_AUTH_USER -->
 		<div class="form-group">
@@ -429,41 +430,41 @@ $controller->pageHeader();
 		</div>
 
 		<!-- USE_REGISTRATION_MODULE -->
-		<div class="form-group">
-			<label for="USE_REGISTRATION_MODULE" class="col-sm-3 control-label">
+		<fieldset class="form-group">
+			<legend class="col-sm-3 control-label">
 				<?php echo /* I18N: A site configuration setting */ WT_I18N::translate('Allow visitors to request account registration'); ?>
-			</label>
+			</legend>
 			<div class="col-sm-9">
 				<?php echo edit_field_yes_no('USE_REGISTRATION_MODULE', WT_Site::getPreference('USE_REGISTRATION_MODULE')); ?>
 				<p class="small text-muted">
 					<?php echo /* I18N: Help text for the “Allow visitors to request account registration” site configuration setting */ WT_I18N::translate('Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, an administrator will have to approve the registration before it becomes active.'); ?>
 				</p>
 			</div>
-		</div>
+		</fieldset>
 
 		<!-- REQUIRE_ADMIN_AUTH_REGISTRATION -->
-		<div class="form-group">
-			<label for="REQUIRE_ADMIN_AUTH_REGISTRATION" class="col-sm-3 control-label">
+		<fieldset class="form-group">
+			<legend class="col-sm-3 control-label">
 				<?php echo /* I18N: A site configuration setting */ WT_I18N::translate('Require an administrator to approve new user registrations'); ?>
-			</label>
+			</legend>
 			<div class="col-sm-9">
 				<?php echo edit_field_yes_no('REQUIRE_ADMIN_AUTH_REGISTRATION', WT_Site::getPreference('REQUIRE_ADMIN_AUTH_REGISTRATION')); ?>
 				<p class="small text-muted">
 				</p>
 			</div>
-		</div>
+		</fieldset>
 
-		<!-- USE_REGISTRATION_MODULE -->
-		<div class="form-group">
-			<label for="SHOW_REGISTER_CAUTION" class="col-sm-3 control-label">
+		<!-- SHOW_REGISTER_CAUTION -->
+		<fieldset class="form-group">
+			<legend class="col-sm-3 control-label">
 				<?php echo /* I18N: A site configuration setting */ WT_I18N::translate('Show acceptable use agreement on “Request new user account” page'); ?>
-			</label>
+			</legend>
 			<div class="col-sm-9">
 				<?php echo edit_field_yes_no('SHOW_REGISTER_CAUTION', WT_Site::getPreference('SHOW_REGISTER_CAUTION')); ?>
 				<p class="small text-muted">
 				</p>
 			</div>
-		</div>
+		</fieldset>
 
 	<?php endif; ?>
 	<div class="form-group">

@@ -504,7 +504,7 @@ abstract class BaseTheme {
 	public function htmlAlert($html, $level, $dismissible) {
 		if ($dismissible) {
 			return
-				'<div class="alert alert-' . $level . ' alert-dismissible role="alert">' .
+				'<div class="alert alert-' . $level . '" alert-dismissible role="alert">' .
 				'<button type="button" class="close" data-dismiss="alert" aria-label="' . WT_I18N::translate('close') . '">' .
 				'<span aria-hidden="true">&times;</span>' .
 				'</button>' .
@@ -512,10 +512,22 @@ abstract class BaseTheme {
 				'</div>';
 		} else {
 			return
-				'<div class="alert alert-' . $level . ' role="alert">' .
+				'<div class="alert alert-' . $level . '" role="alert">' .
 				$html .
 				'</div>';
 		}
+	}
+
+	/**
+	 * Add HTML markup to create a group of radio buttons
+	 *
+	 * @param string  $name        The form name of the controls
+	 * @param string  $legend      A description of the group of controls
+	 *
+	 * @return string
+	 */
+	public function htmlRadioButtons($name, $legend) {
+		return '<fieldset><legend>' . $legend . '</legend></fieldset>';
 	}
 
 	/**

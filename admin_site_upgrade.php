@@ -58,7 +58,7 @@ $controller
 	->setPageTitle(WT_I18N::translate('Upgrade wizard'))
 	->pageHeader();
 
-echo '<h2>', $controller->getPageTitle(), '</h2>';
+echo '<h1>', $controller->getPageTitle(), '</h1>';
 
 if ($latest_version == '') {
 	echo '<p>', WT_I18N::translate('No upgrade information is available.'), '</p>';

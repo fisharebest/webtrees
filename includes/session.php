@@ -520,7 +520,7 @@ if ($WT_TREE) {
 	define('WT_GEDCOM', $WT_TREE->tree_name);
 	define('WT_GED_ID', $WT_TREE->tree_id);
 	define('WT_GEDURL', $WT_TREE->tree_name_url);
-	define('WT_TREE_TITLE', $WT_TREE->tree_title_html);
+	define('WT_TREE_TITLE', WT_Filter::escapeHtml($WT_TREE->tree_title));
 	define('WT_IMPORTED', $WT_TREE->imported);
 	define('WT_USER_GEDCOM_ADMIN', Auth::isManager($WT_TREE));
 	define('WT_USER_CAN_ACCEPT', Auth::isModerator($WT_TREE));

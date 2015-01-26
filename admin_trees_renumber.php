@@ -26,7 +26,7 @@ require './includes/session.php';
 $controller = new WT_Controller_Page;
 $controller
 	->restrictAccess(Auth::isManager())
-	->setPageTitle(WT_I18N::translate(/* I18N: Renumber the records in a family tree */ 'Renumber family tree'))
+	->setPageTitle(WT_I18N::translate(/* I18N: Renumber the records in a family tree */ 'Renumber family tree') . ' — ' . WT_Filter::escapeHtml($WT_TREE->tree_title))
 	->pageHeader();
 
 // Every XREF used by this tree and also used by some other tree
@@ -59,7 +59,8 @@ $xrefs = WT_DB::prepare(
 	WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID
 ))->fetchAssoc();
 
-echo '<h2>', $controller->getPageTitle(), ' — ', $WT_TREE->tree_title_html, '</h2>';
+echo '<h1>', $controller->getPageTitle(), '</h1>';
+
 if (WT_Filter::get('go')) {
 	foreach ($xrefs as $old_xref=>$type) {
 		WT_DB::beginTransaction();

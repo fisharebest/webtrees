@@ -77,7 +77,8 @@ $controller
 	<li><a href="admin_modules.php"><?php echo WT_I18N::translate('Module administration'); ?></a></li>
 	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 </ol>
-<h2><?php echo $controller->getPageTitle(); ?></h2>
+
+<h1><?php echo $controller->getPageTitle(); ?></h1>
 
 <form method="post">
 	<input type="hidden" name="action" value="update_mods">

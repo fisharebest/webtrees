@@ -78,15 +78,17 @@ if ($search && $replace) {
 $controller = new WT_Controller_Page;
 $controller
 	->restrictAccess(Auth::isManager())
-	->setPageTitle(WT_I18N::translate('Administration - place edit'))
+	->setPageTitle(WT_I18N::translate('Update all the place names in a family tree') . ' — ' . WT_Filter::escapeHtml($WT_TREE->tree_title))
 	->pageHeader();
 ?>
 
-<h2>
-	<?php echo WT_I18N::translate('Update all the place names in a family tree'); ?>
-	—
-	<?php echo WT_Filter::escapeHtml($WT_TREE->tree_title); ?>
-</h2>
+<ol class="breadcrumb small">
+	<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
+	<li><a href="admin_trees_manage.php"><?php echo WT_I18N::translate('Manage family trees'); ?></a></li>
+	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+</ol>
+
+<h1><?php echo $controller->getPageTitle(); ?></h1>
 
 <p>
 	<?php echo WT_I18N::translate('This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”.'); ?>
@@ -94,8 +96,6 @@ $controller
 
 <form method="post">
 	<dl>
-		<dt><?php echo WT_I18N::translate('Family tree'); ?></dt>
-		<dd><?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM); ?></dd>
 		<dt><label for="search"><?php echo WT_I18N::translate('Search for'); ?></label></dt>
 		<dd><input name="search" id="search" type="text" size="30" value="<?php echo WT_Filter::escapeHtml($search) ?>" required autofocus></dd>
 		<dt><label for="replace"><?php echo WT_I18N::translate('Replace with'); ?></label></dt>

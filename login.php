@@ -312,7 +312,7 @@ case 'register':
 			$mail1_body =
 				WT_I18N::translate('Hello administrator…') . WT_Mail::EOL . WT_Mail::EOL .
 				/* I18N: %s is a server name/URL */
-				WT_I18N::translate('A prospective user has registered with webtrees at %s.', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . $WT_TREE->tree_title_html) . WT_Mail::EOL . WT_Mail::EOL .
+				WT_I18N::translate('A prospective user has registered with webtrees at %s.', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . WT_Filter::escapeHtml($WT_TREE->tree_title)) . WT_Mail::EOL . WT_Mail::EOL .
 				WT_I18N::translate('Username') . ' ' . $user->getUserName() . WT_Mail::EOL .
 				WT_I18N::translate('Real name') . ' ' . $user->getRealName() . WT_Mail::EOL .
 				WT_I18N::translate('Email address:') . ' ' . $user->getEmail() . WT_Mail::EOL .
@@ -334,7 +334,7 @@ case 'register':
 			$mail2_body =
 				WT_I18N::translate('Hello %s…', $user->getRealName()) . WT_Mail::EOL . WT_Mail::EOL .
 				/* I18N: %1$s is the site URL and %2$s is an email address */
-				WT_I18N::translate('You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s.', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . $WT_TREE->tree_title_html, $user->getEmail()) . '  ' .
+				WT_I18N::translate('You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s.', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . WT_Filter::escapeHtml($WT_TREE->tree_title), $user->getEmail()) . '  ' .
 				WT_I18N::translate('Information about the request is shown under the link below.') . WT_Mail::EOL .
 				WT_I18N::translate('Please click on the following link and fill in the requested data to confirm your request and email address.') . WT_Mail::EOL . WT_Mail::EOL .
 				'<a href="' . WT_LOGIN_URL . "?user_name=" . WT_Filter::escapeUrl($user->getUserName()) . "&amp;user_hashcode=" . $user->getPreference('reg_hashcode') . '&amp;action=userverify">' .
