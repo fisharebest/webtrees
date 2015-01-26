@@ -19,6 +19,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use WT\Auth;
+use WT\Theme;
 use WT\User;
 
 define('WT_SCRIPT_NAME', 'admin_trees_manage.php');
@@ -159,14 +160,11 @@ $controller->pageHeader();
 </ol>
 <h2><?php echo $controller->getPageTitle(); ?></h2>
 
-<?php if (!WT_Tree::getAll()): ?>
-	<p class="alert alert-info alert-dismissable" role="alert">
-		<button type="button" class="close" data-dismiss="alert" aria-label="<?php echo WT_I18N::translate('close'); ?>">
-			<span aria-hidden="true">&times;</span>
-		</button>
-		<?php echo WT_I18N::translate('Before you can continue, you must create a family tree.'); ?>
-	</p>
-<?php endif;
+<?php
+
+if (!WT_Tree::getAll()) {
+	echo Theme::theme()->htmlAlert(WT_I18N::translate('Before you can continue, you must create a family tree.'), 'info', true);
+}
 
 // Process GET actions
 switch (WT_Filter::get('action')) {

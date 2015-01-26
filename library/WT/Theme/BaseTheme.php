@@ -499,6 +499,32 @@ abstract class BaseTheme {
 	}
 
 	/**
+	 * Add HTML markup to create an alert
+	 *
+	 * @param string  $html        The content of the alert
+	 * @param string  $level       One of 'success', 'info', 'warning', 'danger'
+	 * @param boolean $dismissible If true, add a close button.
+	 *
+	 * @return string
+	 */
+	public function htmlAlert($html, $level, $dismissible) {
+		if ($dismissible) {
+			return
+				'<div class="alert alert-' . $level . ' alert-dismissible role="alert">' .
+				'<button type="button" class="close" data-dismiss="alert" aria-label="' . WT_I18N::translate('close') . '">' .
+				'<span aria-hidden="true">&times;</span>' .
+				'</button>' .
+				$html .
+				'</div>';
+		} else {
+			return
+				'<div class="alert alert-' . $level . ' role="alert">' .
+				$html .
+				'</div>';
+		}
+	}
+
+	/**
 	 * Display an icon for this fact.
 	 *
 	 * @param WT_Fact $fact

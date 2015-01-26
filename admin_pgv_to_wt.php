@@ -19,6 +19,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use WT\Auth;
+use WT\Theme;
 use WT\User;
 
 define('WT_SCRIPT_NAME', 'admin_pgv_to_wt.php');
@@ -140,18 +141,15 @@ if (!$PGV_PATH) {
 	}
 	closedir($dir);
 
+	if (count($pgv_dirs) > 1) {
+		$html = WT_I18N::translate('PhpGedView might be installed in one of these folders:');
+		foreach ($pgv_dirs as $pgv_dir) {
+			$html .= '<div onclick="jQuery(\'#PGV_PATH\').val(\'' . WT_Filter::escapeHtml($pgv_dir) . '\')">' . WT_Filter::escapeHtml($pgv_dir) . '</div>';
+		}
+
+		echo Theme::theme()->htmlAlert($html, 'info', true);
+	}
 	?>
-	<?php if (count($pgv_dirs) > 1): ?>
-		<div class="alert alert-info alert-dismissible" role="alert">
-			<button type="button" class="close" data-dismiss="alert" aria-label="<?php echo WT_I18N::translate('close'); ?>">
-				<span aria-hidden="true">&times;</span>
-			</button>
-			<?php echo WT_I18N::translate('PhpGedView might be installed in one of these folders:'); ?>
-			<?php foreach ($pgv_dirs as $pgv_dir): ?>
-				<br><?php echo WT_Filter::escapeHtml($pgv_dir); ?>
-			<?php endforeach; ?>
-		</div>
-	<?php endif; ?>
 
 	<form class="form-horizontal" method="post">
 		<div class="form-group">
