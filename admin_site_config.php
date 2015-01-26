@@ -77,9 +77,11 @@ case 'email':
 		WT_Site::setPreference('SMTP_PORT', WT_Filter::post('SMTP_PORT'));
 		WT_Site::setPreference('SMTP_AUTH', WT_Filter::post('SMTP_AUTH'));
 		WT_Site::setPreference('SMTP_AUTH_USER', WT_Filter::post('SMTP_AUTH_USER'));
-		WT_Site::setPreference('SMTP_AUTH_PASS', WT_Filter::post('SMTP_AUTH_PASS'));
 		WT_Site::setPreference('SMTP_SSL', WT_Filter::post('SMTP_SSL'));
 		WT_Site::setPreference('SMTP_HELO', WT_Filter::post('SMTP_HELO'));
+		if (WT_Filter::post('SMTP_AUTH_PASS')) {
+			WT_Site::setPreference('SMTP_AUTH_PASS', WT_Filter::post('SMTP_AUTH_PASS'));
+		}
 	}
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=email');
 
@@ -345,7 +347,7 @@ $controller->pageHeader();
 				<?php echo /* I18N: A site configuration setting */ WT_I18N::translate('Password'); ?>
 			</label>
 			<div class="col-sm-9">
-				<input type="password" class="form-control" id="SMTP_AUTH_PASS" name="SMTP_AUTH_PASS" value="<?php echo WT_Filter::escapeHtml(WT_Site::getPreference('SMTP_AUTH_PASS')); ?>">
+				<input type="password" class="form-control" id="SMTP_AUTH_PASS" name="SMTP_AUTH_PASS" value="">
 				<p class="small text-muted">
 					<?php echo /* I18N: Help text for the "Password" site configuration setting */ WT_I18N::translate('The password required for authentication with the SMTP server.'); ?>
 				</p>
