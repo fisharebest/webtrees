@@ -107,10 +107,10 @@ $controller->pageHeader();
 
 <h1><?php echo $controller->getPageTitle(); ?></h1>
 
-<form name="convertform" method="get">
+<form class="form form-horizontal">
 	<input type="hidden" name="action" value="download">
 	<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">
-	<div id="tree-download" class="ui-helper-clearfix">
+	<div id="tree-download">
 		<dl>
 			<dt>
 				<?php echo WT_I18N::translate('Zip file(s)'), help_link('download_zipped'); ?>

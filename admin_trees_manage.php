@@ -151,26 +151,28 @@ while (array_key_exists($default_tree_name . $default_tree_number, $existing_tre
 }
 $default_tree_name .= $default_tree_number;
 
-$controller->pageHeader();
-
-?>
-<ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
-	<li class="active"><?php echo WT_I18N::translate('Manage family trees'); ?></li>
-</ol>
-
-<h1><?php echo $controller->getPageTitle(); ?></h1>
-
-<?php
-
-if (!WT_Tree::getAll()) {
-	echo Theme::theme()->htmlAlert(WT_I18N::translate('Before you can continue, you must create a family tree.'), 'info', true);
-}
-
 // Process GET actions
 switch (WT_Filter::get('action')) {
 case 'uploadform':
 case 'importform':
+	$controller->pageHeader();
+
+	if (WT_Filter::get('action') === 'uploadform') {
+		$controller->setPageTitle(WT_I18N::translate('Upload family tree'));
+	} else {
+		$controller->setPageTitle(WT_I18N::translate('Import family tree'));
+	}
+
+	?>
+	<ol class="breadcrumb small">
+		<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
+		<li><a href="admin_trees_manage.php"><?php echo WT_I18N::translate('Manage family trees'); ?></a></li>
+		<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+	</ol>
+
+	<h1><?php echo $controller->getPageTitle(); ?></h1>
+	<?php
+
 	$tree = WT_Tree::get(WT_Filter::getInteger('gedcom_id'));
 	// Check it exists
 	if (!$tree) {
@@ -225,8 +227,21 @@ case 'importform':
 	return;
 }
 
+if (!WT_Tree::getAll()) {
+	echo Theme::theme()->htmlAlert(WT_I18N::translate('Before you can continue, you must create a family tree.'), 'info', true);
+}
+
+$controller->pageHeader();
+
 // List the gedcoms available to this user
 ?>
+<ol class="breadcrumb small">
+	<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
+	<li class="active"><?php echo WT_I18N::translate('Manage family trees'); ?></li>
+</ol>
+
+<h1><?php echo $controller->getPageTitle(); ?></h1>
+
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 	<?php foreach (WT_Tree::GetAll() as $tree): ?>
 	<?php if (Auth::isManager($tree)): ?>
