@@ -355,7 +355,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 						<?php endif; ?>
 						</td>
 						<td>
-							<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit&amp;block_id=', $story->block_id, '">
+							<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_edit&amp;block_id=<?php echo $story->block_id; ?>">
 								<div class="icon-edit">&nbsp;</div>
 							</a>
 						</td>
