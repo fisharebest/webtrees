@@ -1386,7 +1386,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 								$js .= 'Marker1_0_flag.shadow = "' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/flag_shadow.png";';
 								$js .= 'Marker1_0_flag.iconSize = new google.maps.Size(25, 15);';
 								$js .= 'Marker1_0_flag.shadowSize = new google.maps.Size(35, 45);';
-								$js .= 'Marker1_0_flag.iconAnchor = new google.maps.Point(1, 45);';
+								$js .= 'Marker1_0_flag.iconAnchor = new google.maps.Point(12, 15);';
 								$js .= 'var Marker1_0 = new google.maps.LatLng(point, {icon:Marker1_0_flag});';
 							}
 						}
@@ -2187,7 +2187,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					var icon_image = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+'googlemap/'+marker_icon,
 						new google.maps.Size(25, 15),
 						new google.maps.Point(0,0),
-						new google.maps.Point(0, 44));
+						new google.maps.Point(12, 15));
 					var icon_shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+'googlemap/images/flag_shadow.png',
 						new google.maps.Size(35, 45), // Shadow size
 						new google.maps.Point(0,0),   // Shadow origin
@@ -3024,7 +3024,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						var iconImage = new google.maps.MarkerImage(icon.image,
 						new google.maps.Size(25, 15),
 						new google.maps.Point(0,0),
-						new google.maps.Point(1, 45));
+						new google.maps.Point(12, 15));
 						var iconShadow = new google.maps.MarkerImage("'.WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/flag_shadow.png",
 						new google.maps.Size(35, 45),
 						new google.maps.Point(0,0),
@@ -3282,7 +3282,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	 * @param string $path
 	 */
 	private function findFiles($path) {
-		global $placefiles;
+		$placefiles = array();
+
 		if (file_exists($path)) {
 			$dir = dir($path);
 			while (false !== ($entry = $dir->read())) {
@@ -3296,6 +3297,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			}
 			$dir->close();
 		}
+
+		return $placefiles;
 	}
 
 	/**
@@ -3793,7 +3796,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					echo 'var image = new google.maps.MarkerImage("', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place_icon, '",';
 						echo 'new google.maps.Size(25, 15),'; // Image size
 						echo 'new google.maps.Point(0, 0),'; // Image origin
-						echo 'new google.maps.Point(0, 44)'; // Image anchor
+						echo 'new google.maps.Point(12, 15)'; // Image anchor
 					echo ');';
 					echo 'var iconShadow = new google.maps.MarkerImage("', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/flag_shadow.png",';
 						echo 'new google.maps.Size(35, 45),'; // Shadow size
@@ -4311,9 +4314,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			$parent = 0;
 		}
 
-		if ($action == 'ImportFile') {
-			$placefiles = array();
-			$this->findFiles(WT_MODULES_DIR . 'googlemap/extra');
+		if ($action === 'ImportFile') {
+			$placefiles = $this->findFiles(WT_MODULES_DIR . 'googlemap/extra');
 			sort($placefiles);
 		?>
 		<form method="post" enctype="multipart/form-data" id="importfile" name="importfile" action="module.php?mod=googlemap&amp;mod_action=admin_places&amp;action=ImportFile2">
