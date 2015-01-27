@@ -593,6 +593,7 @@ $controller->pageHeader();
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
 							<button type="submit" class="btn btn-primary">
+								<i class="fa fa-check"></i>
 								<?php echo /* I18N: Button label */ WT_I18N::translate('create'); ?>
 							</button>
 							<p class="small text-muted">

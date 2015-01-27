@@ -194,6 +194,8 @@ if ($tree1_id && $tree2_id != $tree1_id) {
 	),
 	'</p>';
 
-	echo '<input type="submit" value="', WT_I18N::translate('continue'), '">';
+	echo '<button type="submit" class="btn btn-primary">';
+	echo '<i class="fa fa-check"></i> ', /* I18N: Button label */ WT_I18N::translate('continue');
+	echo '</button>';
 	echo '</form>';
 }

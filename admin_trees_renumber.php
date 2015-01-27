@@ -272,8 +272,11 @@ if ($xrefs) {
 	// We use GET (not POST) for this update operation - because we want the user to
 	// be able to press F5 to continue after a timeout.
 	echo '<form method="GET" action="', WT_SCRIPT_NAME, '">';
-	echo '<p>', WT_I18N::translate('You can renumber this family tree.');
-	echo '<input type="submit" name="go" value="', /* I18N: button label */ WT_I18N::translate('go'), '"></p>';
+	echo '<p>', WT_I18N::translate('You can renumber this family tree.'), '</p>';
+	echo '<button type="submit" class="btn btn-primary">';
+	echo '<i class="fa fa-check"></i> ', /* I18N: Button label */ WT_I18N::translate('continue');
+	echo '</button>';
+	//echo '<input type="submit" name="go" value="', /* I18N: button label */ WT_I18N::translate('go'), '"></p>';
 	echo '<input type="hidden" name="ged" value="', WT_Filter::escapeUrl(WT_GEDCOM), '">';
 	echo '</form>';
 	echo '<p>', WT_I18N::translate('Caution!  This may take a long time.  Be patient.'), '</p>';

@@ -115,5 +115,8 @@ sort($entries);
 			?>
 		</ul>
 	</fieldset>
-	<button class="btn btn-primary" type="submit"><?php echo /* I18N: Button label */ WT_I18N::translate('Delete'); ?></button>
+	<button class="btn btn-danger" type="submit">
+		<i class="fa fa-trash-o"></i>
+		<?php echo /* I18N: Button label */ WT_I18N::translate('delete'); ?>
+	</button>
 </form>

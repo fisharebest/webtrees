@@ -470,6 +470,7 @@ $controller->pageHeader();
 	<div class="form-group">
 		<div class="col-sm-offset-3 col-sm-9">
 			<button type="submit" class="btn btn-primary">
+				<i class="fa fa-check"></i>
 				<?php echo WT_I18N::translate('save'); ?>
 			</button>
 		</div>
