@@ -282,18 +282,12 @@ $controller->pageHeader();
 					<div class="col-sm-6 col-md-3">
 						<h4>
 							<?php echo WT_I18N::translate('Family tree'); ?>
+							—
+							<a href="index.php?ctype=gedcom&ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
+								<?php echo WT_I18N::translate('View'); ?>
+							</a>
 						</h4>
 						<ul class="fa-ul">
-							<!-- HOME PAGE -->
-							<li>
-								<i class="fa fa-li fa-home"></i>
-								<a href="index.php?ctype=gedcom&ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
-									<?php echo WT_I18N::translate('Home page'); ?>
-									<span class="sr-only">
-										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
-									</span>
-								</a>
-							</li>
 							<!-- PREFERENCES -->
 							<li>
 								<i class="fa fa-li fa-cogs"></i>
@@ -314,31 +308,16 @@ $controller->pageHeader();
 									</span>
 								</a>
 							</li>
-							<!-- SET AS DEFAULT -->
-							<?php if (count(WT_Tree::getAll()) > 1): ?>
+							<!-- HOME PAGE BLOCKS-->
 							<li>
-								<i class="fa fa-li fa-star"></i>
-								<?php if ($tree->tree_name == WT_Site::getPreference('DEFAULT_GEDCOM')): ?>
-								<?php echo WT_I18N::translate('Default family tree'); ?>
-								<?php else: ?>
-								<a href="#" onclick="document.defaultform<?php echo $tree->tree_id; ?>.submit();">
-									<?php echo WT_I18N::translate('Set as default'); ?>
+								<i class="fa fa-li fa-th-large"></i>
+								<a href="index_edit.php?gedcom_id=<?php echo $tree->tree_id; ?>">
+									<?php echo WT_I18N::translate('Change the “Home page” blocks'); ?>
 									<span class="sr-only">
 										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
 									</span>
 								</a>
-								<form name="defaultform<?php echo $tree->tree_id; ?>" method="POST" action="admin_trees_manage.php">
-									<input type="hidden" name="action" value="setdefault">
-									<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
-									<?php echo WT_Filter::getCsrf(); ?>
-									<!-- A11Y - forms need submit buttons, but they look ugly here -->
-									<button class="sr-only" type="submit">
-										<?php echo WT_I18N::translate('Set as default'); ?>
-									</button>
-								</form>
-								<?php endif; ?>
 							</li>
-							<?php endif; ?>
 							<!-- DELETE -->
 							<li>
 								<i class="fa fa-li fa-trash-o"></i>
@@ -358,6 +337,31 @@ $controller->pageHeader();
 									</button>
 								</form>
 							</li>
+							<!-- SET AS DEFAULT -->
+							<?php if (count(WT_Tree::getAll()) > 1): ?>
+								<li>
+									<i class="fa fa-li fa-star"></i>
+									<?php if ($tree->tree_name == WT_Site::getPreference('DEFAULT_GEDCOM')): ?>
+										<?php echo WT_I18N::translate('Default family tree'); ?>
+									<?php else: ?>
+										<a href="#" onclick="document.defaultform<?php echo $tree->tree_id; ?>.submit();">
+											<?php echo WT_I18N::translate('Set as default'); ?>
+											<span class="sr-only">
+										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
+									</span>
+										</a>
+										<form name="defaultform<?php echo $tree->tree_id; ?>" method="POST" action="admin_trees_manage.php">
+											<input type="hidden" name="action" value="setdefault">
+											<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
+											<?php echo WT_Filter::getCsrf(); ?>
+											<!-- A11Y - forms need submit buttons, but they look ugly here -->
+											<button class="sr-only" type="submit">
+												<?php echo WT_I18N::translate('Set as default'); ?>
+											</button>
+										</form>
+									<?php endif; ?>
+								</li>
+							<?php endif; ?>
 						</ul>
 					</div>
 					<div class="col-sm-6 col-md-3">

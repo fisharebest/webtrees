@@ -190,15 +190,14 @@ case 'loadrows':
 		$user_name = $datum[2];
 
 		if ($user_id != Auth::id()) {
-			$admin_options = '<li class="divider">' . '<li><a onclick="modalDialog(\'index_edit.php?user_id=' . $user_id . '\', \'' . /* I18N: %s is a user's name. */
-				WT_I18N::translate('Change the blocks on this user’s “My page”') . '\');" href="#"><i class="fa fa-fw fa-th-large"></i> ' . WT_I18N::translate('Change the blocks on this user’s “My page”') . '</a></li>' . '<li><a href="#" onclick="return masquerade(' . $user_id . ')"><i class="fa fa-fw fa-user"></i> ' . /* I18N: Pretend to be another user, by logging in as them */
+			$admin_options = '<li><a href="#" onclick="return masquerade(' . $user_id . ')"><i class="fa fa-fw fa-user"></i> ' . /* I18N: Pretend to be another user, by logging in as them */
 				WT_I18N::translate('Masquerade as this user') . '</a></li>' . '<li><a href="#" onclick="delete_user(\'' . WT_I18N::translate('Are you sure you want to delete “%s”?', WT_Filter::escapeJs($user_name)) . '\', \'' . WT_Filter::escapeJs($user_id) . '\');"><i class="fa fa-fw fa-trash-o"></i> ' . WT_I18N::translate('Delete') . '</a></li>';
 		} else {
 			// Do not delete ourself!
 			$admin_options = '';
 		}
 
-		$datum[0] = '<div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-pencil"></i> <span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li><a href="?action=edit&amp;user_id=' . $user_id . '"><i class="fa fa-fw fa-pencil"></i> ' . WT_I18N::translate('Edit') . '</a></li></li>' . $admin_options . '</ul></div>';
+		$datum[0] = '<div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-pencil"></i> <span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li><a href="?action=edit&amp;user_id=' . $user_id . '"><i class="fa fa-fw fa-pencil"></i> ' . WT_I18N::translate('Edit') . '</a></li><li class="divider"><li><a href="index_edit.php?user_id=' . $user_id . '"><i class="fa fa-fw fa-th-large"></i> ' . WT_I18N::translate('Change the blocks on this user’s “My page”') . '</a></li>' . $admin_options . '</ul></div>';
 		// $datum[1] is the user ID
 		// $datum[2] is the user name
 		// $datum[3] is the real name
