@@ -627,10 +627,13 @@ case 'edit':
 				<?php endforeach; ?>
 			</tbody>
 		</table>
-		<div class="text-center">
-			<button class="btn btn-primary" type="submit">
-				<?php echo WT_I18N::translate('save'); ?>
-			</button>
+
+		<div class="form-group">
+			<div class="col-sm-offset-3 col-sm-9">
+				<button type="submit" class="btn btn-primary">
+					<?php echo WT_I18N::translate('save'); ?>
+				</button>
+			</div>
 		</div>
 	</form>
 	<?php

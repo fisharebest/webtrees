@@ -2379,7 +2379,11 @@ $controller
 
 	<?php endif; ?>
 
-	<div class="text-center">
-		<button type="submit" class="btn btn-primary"><?php echo WT_I18N::translate('save'); ?></button>
+	<div class="form-group">
+		<div class="col-sm-offset-3 col-sm-9">
+			<button type="submit" class="btn btn-primary">
+				<?php echo WT_I18N::translate('save'); ?>
+			</button>
+		</div>
 	</div>
 </form>
