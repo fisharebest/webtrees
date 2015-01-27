@@ -127,7 +127,7 @@ msgstr "%1$s (%2$s)"
 #: admin_site_upgrade.php:314
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr "%1$sKB nedladdades i %2$s sekunder."
+msgstr "%1$s KB laddades ner på %2$s sekunder."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_trees_check.php:163
@@ -5197,33 +5197,33 @@ msgstr "Dominikanska republiken"
 #: modules_v3/clippings/module.php:570 modules_v3/clippings/module.php:613
 #: modules_v3/googlemap/module.php:4601
 msgid "Download"
-msgstr "Nedladda"
+msgstr "Ladda ner"
 
 #. I18N: The system is about to [...]; %s is a URL.
 #: admin_site_upgrade.php:302
 #, php-format
 msgid "Download %s…"
-msgstr "Nedladda %s…"
+msgstr "Ladda ner %s…"
 
 #: admin_trees_download.php:32
 msgid "Download GEDCOM"
-msgstr "Nedladda GEDCOM-fil"
+msgstr "Ladda ner GEDCOM-fil"
 
 #: help_text.php:1128
 msgid "Download ZIP file"
-msgstr "Nedladda ZIP-fil"
+msgstr "Ladda ner ZIP-fil"
 
 #: help_text.php:1123
 msgid "Download family tree"
-msgstr "Nedladda släktträd"
+msgstr "Ladda ner släktträd"
 
 #: mediaviewer.php:108
 msgid "Download file"
-msgstr "Nedladda fil"
+msgstr "Ladda ner fil"
 
 #: modules_v3/googlemap/module.php:4593
 msgid "Download geographic data"
-msgstr "Nedladda geografisk data"
+msgstr "Ladda ner geografisk data"
 
 #. I18N: a day in the French republican calendar
 #: library/WT/Date/French.php:206
@@ -7649,7 +7649,7 @@ msgstr "Israel"
 
 #: admin_site_upgrade.php:83 admin_site_upgrade.php:87
 msgid "It can take several minutes to download and install the upgrade.  Be patient."
-msgstr "Det kan ta flera minuter att nedladda och installera uppgraderingen.  Ha tålamod."
+msgstr "Det kan ta flera minuter att ladda ner och installera uppgraderingen. Ha tålamod."
 
 #: library/WT/Stats.php:6129
 msgid "Italy"
@@ -13328,7 +13328,7 @@ msgstr "Haag, Nederländerna"
 
 #: help_text.php:875
 msgid "The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons."
-msgstr "Mediavisaren kan visa en länk, som när klickad, nedladdar media filen till lokaldatorn.<br><br>För ökad säkerhet kan du dölja denna länk."
+msgstr "Mediavisaren kan visa en länk, för att ladda ner mediafilen till datorn.<br><br>För ökad säkerhet kan du dölja denna länk."
 
 #: help_text.php:1304
 msgid "The PGV to webtrees wizard is an automated process to assist administrators make the move from a PGV installation to a new webtrees one.  It will transfer all PGV GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:"
