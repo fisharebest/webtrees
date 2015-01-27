@@ -247,14 +247,14 @@ $controller->pageHeader();
 	<?php if (Auth::isManager($tree)): ?>
 	<div class="panel panel-default">
 		<div class="panel-heading" role="tab" id="panel-tree-<?php echo $tree->tree_id; ?>">
-			<h3 class="panel-title">
+			<h2 class="panel-title">
 				<i class="fa fa-fw fa-tree"></i>
 				<a data-toggle="collapse" data-parent="#accordion" href="#tree-<?php echo $tree->tree_id; ?>" aria-expanded="true" aria-controls="tree-<?php echo $tree->tree_id; ?>">
 					<?php echo WT_Filter::escapeHtml($tree->tree_name); ?> — <?php echo WT_Filter::escapeHtml($tree->tree_title); ?>
 				</a>
-			</h3>
+			</h2>
 		</div>
-		<div id="tree-<?php echo $tree->tree_id; ?>" class="panel-collapse collapse<?php echo $tree->tree_id === WT_GED_ID ? ' in' : ''; ?>" aria-labelled-by="panel-tree-<?php echo $tree->tree_id; ?>">
+		<div id="tree-<?php echo $tree->tree_id; ?>" class="panel-collapse collapse<?php echo $tree->tree_id === WT_GED_ID ? ' in' : ''; ?>" role="tabpanel" aria-labelledby="panel-tree-<?php echo $tree->tree_id; ?>">
 			<div class="panel-body">
 				<?php
 
@@ -280,13 +280,13 @@ $controller->pageHeader();
 				?>
 				<div class="row<?php echo $importing ? ' hidden' : ''; ?>" id="actions<?php echo $tree->tree_id; ?>">
 					<div class="col-sm-6 col-md-3">
-						<h4>
+						<h3>
 							<?php echo WT_I18N::translate('Family tree'); ?>
 							—
 							<a href="index.php?ctype=gedcom&ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
 								<?php echo WT_I18N::translate('View'); ?>
 							</a>
-						</h4>
+						</h3>
 						<ul class="fa-ul">
 							<!-- PREFERENCES -->
 							<li>
@@ -365,9 +365,9 @@ $controller->pageHeader();
 						</ul>
 					</div>
 					<div class="col-sm-6 col-md-3">
-						<h4>
+						<h3>
 							<?php echo /* I18N: Individuals, sources, dates, places, etc. */ WT_I18N::translate('Genealogy data'); ?>
-						</h4>
+						</h3>
 						<ul class="fa-ul">
 							<!-- MERGE -->
 							<li>
@@ -423,9 +423,9 @@ $controller->pageHeader();
 					</div>
 					<div class="clearfix visible-sm-block"></div>
 					<div class="col-sm-6 col-md-3">
-						<h4>
+						<h3>
 							<?php echo WT_I18N::translate('Add unlinked records'); ?>
-						</h4>
+						</h3>
 						<ul class="fa-ul">
 							<!-- UNLINKED INDIVIDUAL -->
 							<li>
@@ -480,9 +480,9 @@ $controller->pageHeader();
 						</ul>
 					</div>
 					<div class="col-sm-6 col-md-3">
-						<h4>
+						<h3>
 							<?php echo WT_I18N::translate('GEDCOM file'); ?>
-						</h4>
+						</h3>
 						<ul class="fa-ul">
 							<!-- DOWNLOAD -->
 							<li>
@@ -510,6 +510,7 @@ $controller->pageHeader();
 									<?php echo WT_Filter::getCsrf(); ?>
 									<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
 									<i class="fa fa-li fa-file-text"></i>
+									<input type="submit" class="hide"><!-- for WCAG2 -->
 									<a href="#" onclick="jQuery(this).closest('form').submit();">
 										<?php echo WT_I18N::translate('Export'); ?>
 									</a>
@@ -536,12 +537,12 @@ $controller->pageHeader();
 	<?php if (Auth::isAdmin()): ?>
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h3 class="panel-title">
+			<h2 class="panel-title">
 				<i class="fa fa-fw fa-plus"></i>
 				<a data-toggle="collapse" data-parent="#accordion" href="#create-a-new-family-tree">
 					<?php echo WT_I18N::translate('Create a new family tree'); ?>
 				</a>
-			</h3>
+			</h2>
 		</div>
 		<div id="create-a-new-family-tree" class="panel-collapse collapse<?php echo WT_Tree::getAll() ? '' : ' in'; ?>">
 			<div class="panel-body">
@@ -608,12 +609,12 @@ $controller->pageHeader();
 	<?php if (count(WT_Tree::GetAll()) === 0 && count(User::all()) === 1): ?>
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h3 class="panel-title">
+			<h2 class="panel-title">
 			<i class="fa fa-fw fa-magic"></i>
 			<a data-toggle="collapse" data-parent="#accordion" href="#pgv-import-wizard">
 				<?php echo WT_I18N::translate('PhpGedView to webtrees transfer wizard'); ?>
 			</a>
-		</h3>
+		</h2>
 		</div>
 		<div id="pgv-import-wizard" class="panel-collapse collapse">
 			<div class="panel-body">

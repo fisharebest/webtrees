@@ -68,6 +68,10 @@ function select_edit_control($name, $values, $empty, $selected, $extra = '') {
 /**
  * Create a set of radio buttons for a form
  *
+ * Although for/id are not required when the <input> is inside the <label>,
+ * many assistive technologies cannot use it, and it will fail WCAG2.0
+ * @link http://www.w3.org/TR/WCAG20-TECHS/F68.html
+ *
  * @param string   $name      The ID for the form element
  * @param string[] $values    Array of value=>display items
  * @param string   $selected  The currently selected item
@@ -78,7 +82,10 @@ function select_edit_control($name, $values, $empty, $selected, $extra = '') {
 function radio_buttons($name, $values, $selected, $extra = '') {
 	$html = '';
 	foreach ($values as $key => $value) {
-		$html .= '<label ' . $extra . '><input type="radio" name="' . $name . '" value="' . WT_Filter::escapeHtml($key) . '"';
+		$id = 'input-' . Uuid::uuid4();
+		$html .=
+			'<label ' . $extra . ' for="' . $id . '">' .
+			'<input type="radio" id="' . $id . '" name="' . $name . '" value="' . WT_Filter::escapeHtml($key) . '"';
 		// PHP array keys are cast to integers!  Cast them back
 		if ((string) $key === (string) $selected) {
 			$html .= ' checked';
@@ -137,8 +144,12 @@ function two_state_checkbox($name, $is_checked = 0, $extra = '') {
 
 /**
  * Function edit_language_checkboxes
- * @param string $parameter_name
  *
+ * Although for/id are not required when the <input> is inside the <label>,
+ * many assistive technologies cannot use it, and it will fail WCAG2.0
+ * @link http://www.w3.org/TR/WCAG20-TECHS/F68.html
+ *
+ * @param string $parameter_name
  * @param array $accepted_languages
  *
  * @return string
@@ -151,8 +162,9 @@ function edit_language_checkboxes($parameter_name, $accepted_languages) {
 	foreach (array_chunk(WT_I18N::installed_languages(), $CHUNK_SIZE, true) as $chunk) {
 		$html .= '<tr>';
 		foreach ($chunk as $locale => $language) {
+			$id = 'input-' . Uuid::uuid4();
 			$checked = in_array($locale, $accepted_languages) ? 'checked' : '';
-			$html .= sprintf('<td><label><input type="checkbox" name="%s[]" value="%s"%s>%s</label></td>', $parameter_name, $locale, $checked, $language);
+			$html .= sprintf('<td><label for="%s"><input type="checkbox" id="%s" name="%s[]" value="%s"%s>%s</label></td>', $id, $id, $parameter_name, $locale, $checked, $language);
 		}
 		$html .= '</tr>';
 	}

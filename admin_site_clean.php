@@ -95,22 +95,25 @@ sort($entries);
 
 <form method="post">
 	<?php echo WT_Filter::getCsrf(); ?>
-	<ul class="fa-ul">
-		<?php
-		foreach ($entries as $entry) {
-			if (in_array($entry, $do_not_delete)) {
-				echo '<li><i class="fa-li fa fa-ban text-danger"></i>', WT_Filter::escapeHtml($entry), '</li>';
-			} else {
-				$uuid = 'label-' . Uuid::uuid4();
-				echo '<li><i class="fa-li fa fa-trash-o"></i>';
-				echo '<label>';
-				echo WT_Filter::escapeHtml($entry);
-				echo ' <input type="checkbox" name="to_delete[]" value="', WT_Filter::escapeHtml($entry), '">';
-				echo '</label></li>';
+	<fieldset>
+		<legend class="sr-only"><?php echo $controller->getPageTitle(); ?></legend>
+		<ul class="fa-ul">
+			<?php
+			foreach ($entries as $entry) {
+				if (in_array($entry, $do_not_delete)) {
+					echo '<li><i class="fa-li fa fa-ban text-danger"></i>', WT_Filter::escapeHtml($entry), '</li>';
+				} else {
+					$id = 'input-' . Uuid::uuid4();
+					echo '<li><i class="fa-li fa fa-trash-o"></i>';
+					echo '<label for="', $id, '">';
+					echo '<input type="checkbox" id="', $id, '" name="to_delete[]" value="', WT_Filter::escapeHtml($entry), '"> ';
+					echo WT_Filter::escapeHtml($entry);
+					echo '</label></li>';
+				}
 			}
-		}
-		$dir->close();
-		?>
-	</ul>
+			$dir->close();
+			?>
+		</ul>
+	</fieldset>
 	<button class="btn btn-primary" type="submit"><?php echo /* I18N: Button label */ WT_I18N::translate('Delete'); ?></button>
 </form>
