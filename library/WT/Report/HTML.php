@@ -147,7 +147,7 @@ class WT_Report_HTML extends WT_Report_Base {
 			$this->pageh = $tmpw;
 		}
 		// Store the pagewidth without margins
-		$this->noMarginWidth = (int)($this->pagew - $this->leftmargin - $this->rightmargin);
+		$this->noMarginWidth = (int) ($this->pagew - $this->leftmargin - $this->rightmargin);
 		// If RTL
 		if ($this->rtl) {
 			$this->alignRTL = "right";
@@ -211,7 +211,7 @@ class WT_Report_HTML extends WT_Report_Base {
 	 *
 	 */
 	function run() {
-		$controller = new WT_Controller_Simple();
+		$controller = new WT_Controller_Simple;
 		$controller
 			->setPageTitle($this->title)
 			->pageHeader();
@@ -360,7 +360,7 @@ class WT_Report_HTML extends WT_Report_Base {
 	 * @return WT_Report_HTML_PageHeader
 	 */
 	function createPageHeader() {
-		return new WT_Report_HTML_PageHeader();
+		return new WT_Report_HTML_PageHeader;
 	}
 
 	/**
@@ -663,7 +663,7 @@ class WT_Report_HTML extends WT_Report_Base {
 	 */
 	function textWrap($str, $width) {
 		// Calculate the line width
-		$lw = (int)($width / ($this->getCurrentStyleHeight() / 2));
+		$lw = (int) ($width / ($this->getCurrentStyleHeight() / 2));
 		// Wordwrap each line
 		$lines = explode("\n", $str);
 		// Line Feed counter

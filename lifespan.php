@@ -26,10 +26,10 @@
 define('WT_SCRIPT_NAME', 'lifespan.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Lifespan();
+$controller = new WT_Controller_Lifespan;
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();')
 	->addInlineJavascript('
 	var timer;
@@ -140,17 +140,17 @@ $people = count($controller->people);
 					<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 					<table>
 						<tr>
-							<td class="person0" style="padding: 5px;" valign="top">
+							<td class="person0">
 								<?php echo WT_I18N::translate('Add another individual to the chart'); ?>
 								<br>
 								<input class="pedigree_form" data-autocomplete-type="INDI" type="text" size="5" id="newpid" name="newpid">
 								<?php print_findindi_link('newpid'); ?>
 								<br>
-								<div style="text-align: center;">
+								<div>
 									<?php echo WT_I18N::translate('Include the individual’s immediate family?'); ?>
-									<input type="checkbox" checked="checked" value="yes" name="addFamily">
+									<input type="checkbox" checked value="yes" name="addFamily">
 								</div>
-								<div style="text-align: center;">
+								<div>
 									<input type="submit" value="<?php echo WT_I18N::translate('Add'); ?>">
 								</div>
 							</td>
@@ -178,10 +178,10 @@ $people = count($controller->people);
 								</select>
 							</td>
 							<td>
-								<input type="text" name="beginYear" size="5" value="<?php echo $controller->beginYear==0 ? '' : $controller->beginYear; ?>">
+								<input type="text" name="beginYear" size="5" value="<?php echo $controller->beginYear == 0 ? '' : $controller->beginYear; ?>">
 							</td>
 							<td>
-								<input type="text" name="endYear" size="5" value="<?php echo $controller->endYear==0 ? '' : $controller->endYear; ?>">
+								<input type="text" name="endYear" size="5" value="<?php echo $controller->endYear == 0 ? '' : $controller->endYear; ?>">
 							</td>
 							<td>
 								<input data-autocomplete-type="PLAC" type="text" name="place" size="15" value="<?php echo WT_Filter::escapeHtml($controller->place); ?>">
@@ -201,14 +201,14 @@ $people = count($controller->people);
 	</table>
 	<div dir="ltr" id="lifespan_chart" class="lifespan_outer">
 		<div dir="ltr" id="topInner"  class="lifespan_timeline" onmousedown="pandiv(); return false;">';
-			<?php $controller->printTimeline($controller->timelineMinYear,$controller->timelineMaxYear); ?>
+			<?php $controller->printTimeline($controller->timelineMinYear, $controller->timelineMaxYear); ?>
 		</div>
 		<div id="inner" class="lifespan_people" onmousedown="pandiv(); return false;">
 			<?php $maxY = $controller->fillTimeline($controller->people, $controller->YrowLoc); ?>
 		</div>
 		<!--  Floating div controls START -->
-		<div dir="ltr" style="position:relative; z-index: 100; filter: alpha(opacity=67); -moz-opacity: 0.67;  opacity: 0.67; width:180px; top: 80px;">
-			<table style="margin-left: 20px;" dir="ltr" border="0" cellpadding="0">
+		<div class="div-controls" dir="ltr">
+			<table dir="ltr" >
 				<tr>
 					<td></td>
 					<td align="center"><a href="#" onclick="return false;" onmousedown="startScroll('down')" onmouseup="stopScroll()" class="icon-lsuparrow"></a></td>
@@ -233,4 +233,4 @@ $people = count($controller->people);
 // Sets the boundaries for how far the timeline can move in the up direction
 $controller->addInlineJavascript('var maxY = 80-' . $maxY . ';');
 // Sets the boundaries for how far the timeline can move in the left direction
-$controller->addInlineJavascript('var maxX = ' . (isset($maxX)?$maxX:0) . ';');
+$controller->addInlineJavascript('var maxX = ' . (isset($maxX) ? $maxX : 0) . ';');

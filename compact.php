@@ -24,10 +24,10 @@
 define('WT_SCRIPT_NAME', 'compact.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Compact();
+$controller = new WT_Controller_Compact;
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');
 
 ?>
@@ -54,7 +54,7 @@ $controller
 						<?php echo WT_I18N::translate('Show highlight images in individual boxes'); ?>
 					</td>
 					<td class="optionbox">
-						<input name="show_thumbs" type="checkbox" value="1" <?php echo $controller->show_thumbs ? 'checked="checked"' : ''; ?>>
+						<input name="show_thumbs" type="checkbox" value="1" <?php echo $controller->show_thumbs ? 'checked' : ''; ?>>
 					</td>
 				</tr>
 				<?php } ?>

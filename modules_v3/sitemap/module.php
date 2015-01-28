@@ -22,7 +22,7 @@ use WT\Auth;
  * Class sitemap_WT_Module
  */
 class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
-	const RECORDS_PER_VOLUME = 500;    // Keep sitemap files small, for memory, CPU and max_allowed_packet limits.
+	const RECORDS_PER_VOLUME = 500; // Keep sitemap files small, for memory, CPU and max_allowed_packet limits.
 	const CACHE_LIFE = 1209600; // Two weeks
 
 	/** {@inheritdoc} */
@@ -46,7 +46,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 			$this->generate(WT_Filter::get('file'));
 			break;
 		default:
-			header('HTTP/1.0 404 Not Found');
+			http_response_code(404);
 		}
 	}
 
@@ -59,7 +59,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 		} elseif (preg_match('/^sitemap-(\d+)-([isrmn])-(\d+).xml$/', $file, $match)) {
 			$this->generateFile($match[1], $match[2], $match[3]);
 		} else {
-			header('HTTP/1.0 404 Not Found');
+			http_response_code(404);
 		}
 	}
 
@@ -257,7 +257,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 	 * Edit the configuration
 	 */
 	private function admin() {
-		$controller = new WT_Controller_Page();
+		$controller = new WT_Controller_Page;
 		$controller
 			->restrictAccess(Auth::isAdmin())
 			->setPageTitle($this->getTitle())
@@ -275,8 +275,17 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 		}
 
 		$include_any = false;
+
+		?>
+		<ol class="breadcrumb small">
+			<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
+			<li><a href="admin_modules.php"><?php echo WT_I18N::translate('Module administration'); ?></a></li>
+			<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+		</ol>
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
+		<?php
+
 		echo
-		'<h3>', $this->getTitle(), '</h3>',
 		'<p>',
 			/* I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL. */
 			WT_I18N::translate('Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling.  All major search engines support sitemaps.  For more information, see <a href="http://www.sitemaps.org/">www.sitemaps.org</a>.') .
@@ -285,9 +294,9 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 			'<form method="post" action="module.php?mod=' . $this->getName() . '&amp;mod_action=admin">',
 		'<input type="hidden" name="action" value="save">';
 		foreach (WT_Tree::getAll() as $tree) {
-			echo '<p><input type="checkbox" name="include', $tree->tree_id, '"';
+			echo '<p><input type="checkbox" name="include', $tree->tree_id, '" ';
 			if ($tree->getPreference('include_in_sitemap')) {
-				echo ' checked="checked"';
+				echo 'checked';
 				$include_any = true;
 			}
 			echo '>', $tree->tree_title_html, '</p>';

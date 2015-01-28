@@ -42,7 +42,7 @@ $url        = WT_Filter::postUrl('url', WT_Filter::getUrl('url'));
 
 $to_user = User::findByIdentifier($to);
 
-$controller = new WT_Controller_Simple();
+$controller = new WT_Controller_Simple;
 $controller
 	->restrictAccess($to_user || Auth::isAdmin() && ($to === 'all' || $to === 'last_6mo' || $to === 'never_logged'))
 	->setPageTitle(WT_I18N::translate('webtrees message'));
@@ -140,7 +140,7 @@ case 'compose':
 		echo WT_I18N::translate('When you send this message you will receive a copy sent via email to the address you provided.');
 	}
 	echo
-		'<br><br><br><br>',  // TODO use margin-bottom instead of this
+		'<br><br><br><br>', // TODO use margin-bottom instead of this
 		'<p id="save-cancel">',
 		'<input type="button" class="cancel" value="', WT_I18N::translate('close'), '" onclick="window.close();">',
 		'</p>';

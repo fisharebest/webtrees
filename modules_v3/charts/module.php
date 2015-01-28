@@ -1,6 +1,6 @@
 <?php
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -20,6 +20,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use WT\Auth;
+use WT\Theme;
 
 /**
  * Class charts_WT_Module
@@ -36,14 +37,15 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	/** {@inheritdoc} */
-	public function getBlock($block_id, $template=true, $cfg=null) {
+	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $WT_TREE, $ctype, $PEDIGREE_FULL_DETAILS, $show_full, $controller;
 
 		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
 
-		$details = get_block_setting($block_id, 'details', false);
+		$details = get_block_setting($block_id, 'details', '0');
 		$type    = get_block_setting($block_id, 'type', 'pedigree');
 		$pid     = get_block_setting($block_id, 'pid', Auth::check() ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
+
 		if ($cfg) {
 			foreach (array('details', 'type', 'pid', 'block') as $name) {
 				if (array_key_exists($name, $cfg)) {
@@ -73,46 +75,46 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 			$person = WT_Individual::getInstance($pid);
 		}
 
-		if ($type!='treenav' && $person) {
+		if ($type != 'treenav' && $person) {
 			$chartController = new WT_Controller_Hourglass($person->getXref(), 0, false);
 			$controller->addInlineJavascript($chartController->setupJavascript());
 		}
 
-		$id=$this->getName().$block_id;
-		$class=$this->getName().'_block';
-		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && Auth::check()) {
-			$title='<i class="icon-admin" title="'.WT_I18N::translate('Configure').'" onclick="modalDialog(\'block_edit.php?block_id='.$block_id.'\', \''.$this->getTitle().'\');"></i>';
+		$id = $this->getName() . $block_id;
+		$class = $this->getName() . '_block';
+		if ($ctype == 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype == 'user' && Auth::check()) {
+			$title = '<i class="icon-admin" title="' . WT_I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
 		} else {
-			$title='';
+			$title = '';
 		}
 
 		if ($person) {
-			switch($type) {
-				case 'pedigree':
-					$title .= WT_I18N::translate('Pedigree of %s', $person->getFullName());
-					break;
-				case 'descendants':
-					$title .= WT_I18N::translate('Descendants of %s', $person->getFullName());
-					break;
-				case 'hourglass':
-					$title .= WT_I18N::translate('Hourglass chart of %s', $person->getFullName());
-					break;
-				case 'treenav':
-					$title .= WT_I18N::translate('Interactive tree of %s', $person->getFullName());
-					break;
+			switch ($type) {
+			case 'pedigree':
+				$title .= WT_I18N::translate('Pedigree of %s', $person->getFullName());
+				break;
+			case 'descendants':
+				$title .= WT_I18N::translate('Descendants of %s', $person->getFullName());
+				break;
+			case 'hourglass':
+				$title .= WT_I18N::translate('Hourglass chart of %s', $person->getFullName());
+				break;
+			case 'treenav':
+				$title .= WT_I18N::translate('Interactive tree of %s', $person->getFullName());
+				break;
 			}
 			$title .= help_link('index_charts', $this->getName());
 			$content = '<table cellspacing="0" cellpadding="0" border="0"><tr>';
-			if ($type=='descendants' || $type=='hourglass') {
+			if ($type == 'descendants' || $type == 'hourglass') {
 				$content .= "<td valign=\"middle\">";
 				ob_start();
 				$chartController->printDescendency($person, 1, false);
 				$content .= ob_get_clean();
 				$content .= "</td>";
 			}
-			if ($type=='pedigree' || $type=='hourglass') {
+			if ($type == 'pedigree' || $type == 'hourglass') {
 				//-- print out the root person
-				if ($type!='hourglass') {
+				if ($type != 'hourglass') {
 					$content .= "<td valign=\"middle\">";
 					ob_start();
 					print_pedigree_person($person);
@@ -125,22 +127,22 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 				$content .= ob_get_clean();
 				$content .= "</td>";
 			}
-			if ($type=='treenav') {
-				require_once WT_MODULES_DIR.'tree/module.php';
-				require_once WT_MODULES_DIR.'tree/class_treeview.php';
-				$mod=new tree_WT_Module;
-				$tv=new TreeView;
+			if ($type == 'treenav') {
+				require_once WT_MODULES_DIR . 'tree/module.php';
+				require_once WT_MODULES_DIR . 'tree/class_treeview.php';
+				$mod = new tree_WT_Module;
+				$tv = new TreeView;
 				$content .= '<td>';
 
-				$content .= '<script>jQuery("head").append(\'<link rel="stylesheet" href="'.$mod->css().'" type="text/css" />\');</script>';
-				$content .= '<script src="'.$mod->js().'"></script>';
+				$content .= '<script>jQuery("head").append(\'<link rel="stylesheet" href="' . $mod->css() . '" type="text/css" />\');</script>';
+				$content .= '<script src="' . $mod->js() . '"></script>';
 				list($html, $js) = $tv->drawViewport($person, 2);
-				$content .= $html.'<script>'.$js.'</script>';
+				$content .= $html . '<script>' . $js . '</script>';
 				$content .= '</td>';
 			}
 			$content .= "</tr></table>";
 		} else {
-			$content=WT_I18N::translate('You must select an individual and chart type in the block configuration settings.');
+			$content = WT_I18N::translate('You must select an individual and chart type in the block configuration settings.');
 		}
 
 		// Restore GEDCOM configuration
@@ -151,7 +153,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 		$PEDIGREE_FULL_DETAILS = $savePedigreeFullDetails;
 
 		if ($template) {
-			require WT_THEME_DIR.'templates/block_main_temp.php';
+			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 			return $content;
 		}
@@ -175,35 +177,41 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
 		global $WT_TREE, $controller;
-		require_once WT_ROOT.'includes/functions/functions_edit.php';
+		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
 		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
 
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
 			set_block_setting($block_id, 'details', WT_Filter::postBool('details'));
-			set_block_setting($block_id, 'type',    WT_Filter::post('type', 'pedigree|descendants|hourglass|treenav', 'pedigree'));
-			set_block_setting($block_id, 'pid',     WT_Filter::post('pid', WT_REGEX_XREF));
-			exit;
+			set_block_setting($block_id, 'type', WT_Filter::post('type', 'pedigree|descendants|hourglass|treenav', 'pedigree'));
+			set_block_setting($block_id, 'pid', WT_Filter::post('pid', WT_REGEX_XREF));
 		}
 
-		$details = get_block_setting($block_id, 'details', false);
+		$details = get_block_setting($block_id, 'details', '0');
 		$type    = get_block_setting($block_id, 'type', 'pedigree');
 		$pid     = get_block_setting($block_id, 'pid', Auth::check() ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
 		$controller
-			->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 			->addInlineJavascript('autocomplete();');
 	?>
-		<tr><td class="descriptionbox wrap width33"><?php echo WT_I18N::translate('Chart type'); ?></td>
-		<td class="optionbox">
-			<?php echo select_edit_control('type',
-			array(
-				'pedigree'    => WT_I18N::translate('Pedigree'),
-				'descendants' => WT_I18N::translate('Descendants'),
-				'hourglass'   => WT_I18N::translate('Hourglass chart'),
-				'treenav'     => WT_I18N::translate('Interactive tree')),
-			null, $type); ?>
-		</td></tr>
+		<tr>
+			<td colspan="2">
+				<?php echo WT_I18N::translate('This block allows a pedigree, descendancy, or hourglass chart to appear on your “My page” or the “Home page”.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the “Home page”, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s “My page”, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them.'); ?>
+			</td>
+		</tr>
+		<tr>
+			<td class="descriptionbox wrap width33"><?php echo WT_I18N::translate('Chart type'); ?></td>
+			<td class="optionbox">
+				<?php echo select_edit_control('type',
+				array(
+					'pedigree'    => WT_I18N::translate('Pedigree'),
+					'descendants' => WT_I18N::translate('Descendants'),
+					'hourglass'   => WT_I18N::translate('Hourglass chart'),
+					'treenav'     => WT_I18N::translate('Interactive tree')),
+				null, $type); ?>
+			</td>
+		</tr>
 		<tr>
 			<td class="descriptionbox wrap width33"><?php echo WT_I18N::translate('Show details'); ?></td>
 		<td class="optionbox">
@@ -216,7 +224,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 				<input data-autocomplete-type="INDI" type="text" name="pid" id="pid" value="<?php echo $pid; ?>" size="5">
 				<?php
 				echo print_findindi_link('pid');
-				$root=WT_Individual::getInstance($pid);
+				$root = WT_Individual::getInstance($pid);
 				if ($root) {
 					echo ' <span class="list_item">', $root->getFullName(), $root->format_first_major_fact(WT_EVENTS_BIRT, 1), '</span>';
 				}

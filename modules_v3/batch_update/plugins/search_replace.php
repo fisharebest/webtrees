@@ -20,12 +20,12 @@
  * Class search_replace_bu_plugin Batch Update plugin: search/replace
  */
 class search_replace_bu_plugin extends base_plugin {
-	var $search =null; // Search string
-	var $replace=null; // Replace string
-	var $method =null; // simple/wildcards/regex
-	var $regex  =null; // Search string, converted to a regex
-	var $case   =null; // "i" for case insensitive, "" for case sensitive
-	var $error  =null; // Message for bad user parameters
+	var $search = null; // Search string
+	var $replace = null; // Replace string
+	var $method = null; // simple/wildcards/regex
+	var $regex  = null; // Search string, converted to a regex
+	var $case   = null; // "i" for case insensitive, "" for case sensitive
+	var $error  = null; // Message for bad user parameters
 
 	/**
 	 * User-friendly name for this plugin.
@@ -63,7 +63,7 @@ class search_replace_bu_plugin extends base_plugin {
 	 * @return boolean
 	 */
 	public function doesRecordNeedUpdate($xref, $gedrec) {
-		return !$this->error && preg_match('/(?:'.$this->regex.')/mu'.$this->case, $gedrec);
+		return !$this->error && preg_match('/(?:' . $this->regex . ')/mu' . $this->case, $gedrec);
 	}
 
 	/**
@@ -77,7 +77,7 @@ class search_replace_bu_plugin extends base_plugin {
 	public function updateRecord($xref, $gedrec) {
 		// Allow "\n" to indicate a line-feed in replacement text.
 		// Back-references such as $1, $2 are handled automatically.
-		return preg_replace('/'.$this->regex.'/mu'.$this->case, str_replace('\n', "\n", $this->replace), $gedrec);
+		return preg_replace('/' . $this->regex . '/mu' . $this->case, str_replace('\n', "\n", $this->replace), $gedrec);
 	}
 
 	/**
@@ -90,24 +90,24 @@ class search_replace_bu_plugin extends base_plugin {
 		$this->method  = WT_Filter::get('method', 'exact|words|wildcards|regex', 'exact');
 		$this->case    = WT_Filter::get('case', 'i');
 
-		$this->error='';
+		$this->error = '';
 		switch ($this->method) {
 		case 'exact':
-			$this->regex=preg_quote($this->search, '/');
+			$this->regex = preg_quote($this->search, '/');
 			break;
 		case 'words':
-			$this->regex='\b'.preg_quote($this->search, '/').'\b';
+			$this->regex = '\b' . preg_quote($this->search, '/') . '\b';
 			break;
 		case 'wildcards':
-			$this->regex='\b'.str_replace(array('\*', '\?'), array('.*', '.'), preg_quote($this->search, '/')).'\b';
+			$this->regex = '\b' . str_replace(array('\*', '\?'), array('.*', '.'), preg_quote($this->search, '/')) . '\b';
 			break;
 		case 'regex':
-			$this->regex=$this->search;
+			$this->regex = $this->search;
 			// Check for invalid regular expressions.
 			// A valid regex on a null string returns zero.
 			// An invalid regex on a null string returns false (and throws a warning).
-			if (@preg_match('/'.$this->search.'/', null) === false) {
-				$this->error='<br><span class="error">'.WT_I18N::translate('The regex appears to contain an error.  It can’t be used.').'</span>';
+			if (@preg_match('/' . $this->search . '/', null) === false) {
+				$this->error = '<br><span class="error">' . WT_I18N::translate('The regex appears to contain an error.  It can’t be used.') . '</span>';
 			}
 			break;
 		}
@@ -119,7 +119,7 @@ class search_replace_bu_plugin extends base_plugin {
 	 * @return string
 	 */
 	public function getOptionsForm() {
-		$descriptions=array(
+		$descriptions = array(
 			'exact'     => WT_I18N::translate('Match the exact text, even if it occurs in the middle of a word.'),
 			'words'     => WT_I18N::translate('Match the exact text, unless it occurs in the middle of a word.'),
 			'wildcards' => WT_I18N::translate('Use a “?” to match a single character, use “*” to match zero or more characters.'),
@@ -137,14 +137,14 @@ class search_replace_bu_plugin extends base_plugin {
 			'" onchange="this.form.submit();"></td></tr>' .
 			'<tr><th>' . WT_I18N::translate('Search method') . '</th>' .
 			'<td><select name="method" onchange="this.form.submit();">' .
-			'<option value="exact"' . ($this->method == 'exact' ? ' selected="selected"' : '') . '>' . WT_I18N::translate('Exact text') . '</option>' .
-			'<option value="words"' . ($this->method == 'words' ? ' selected="selected"' : '') . '>' . WT_I18N::translate('Whole words only') . '</option>' .
-			'<option value="wildcards"' . ($this->method == 'wildcards' ? ' selected="selected"' : '') . '>' . WT_I18N::translate('Wildcards') . '</option>' .
-			'<option value="regex"' . ($this->method == 'regex' ? ' selected="selected"' : '') . '>' . WT_I18N::translate('Regular expression') . '</option>' .
+			'<option value="exact" ' . ($this->method == 'exact' ? 'selected' : '') . '>' . WT_I18N::translate('Exact text') . '</option>' .
+			'<option value="words" ' . ($this->method == 'words' ? 'selected' : '') . '>' . WT_I18N::translate('Whole words only') . '</option>' .
+			'<option value="wildcards" ' . ($this->method == 'wildcards' ? 'selected' : '') . '>' . WT_I18N::translate('Wildcards') . '</option>' .
+			'<option value="regex" ' . ($this->method == 'regex' ? 'selected' : '') . '>' . WT_I18N::translate('Regular expression') . '</option>' .
 			'</select><br><em>' . $descriptions[$this->method] . '</em>' . $this->error . '</td></tr>' .
 			'<tr><th>' . WT_I18N::translate('Case insensitive') . '</th>' .
 			'<td>' .
-			'<input type="checkbox" name="case" value="i" ' . ($this->case == 'i' ? 'checked="checked"' : '') . '" onchange="this.form.submit();">' .
+			'<input type="checkbox" name="case" value="i" ' . ($this->case == 'i' ? 'checked' : '') . '" onchange="this.form.submit();">' .
 			'<br><em>' . WT_I18N::translate('Tick this box to match both upper and lower case letters.') . '</em></td></tr>' .
 			parent::getOptionsForm();
 	}

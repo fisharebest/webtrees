@@ -2,7 +2,7 @@
 // Allow admin users to upload media files using a web interface.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team.
@@ -26,9 +26,9 @@ use WT\Log;
 
 define('WT_SCRIPT_NAME', 'admin_media_upload.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/functions/functions_mediadb.php';
+require_once WT_ROOT . 'includes/functions/functions_mediadb.php';
 
-$controller = new WT_Controller_Page();
+$controller = new WT_Controller_Page;
 $controller
 	->restrictAccess(Auth::isManager())
 	->setPageTitle(WT_I18N::translate('Upload media files'));
@@ -36,8 +36,8 @@ $controller
 $action = WT_Filter::post('action');
 
 if ($action == "upload") {
-	for ($i=1; $i<6; $i++) {
-		if (!empty($_FILES['mediafile'.$i]["name"]) || !empty($_FILES['thumbnail'.$i]["name"])) {
+	for ($i = 1; $i < 6; $i++) {
+		if (!empty($_FILES['mediafile' . $i]["name"]) || !empty($_FILES['thumbnail' . $i]["name"])) {
 			$folder = WT_Filter::post('folder' . $i);
 
 			// Validate the media folder
@@ -49,7 +49,7 @@ if ($action == "upload") {
 			if ($folderName) {
 				$folderName .= '/';
 				// Not allowed to use “../”
-				if (strpos('/' . $folderName, '/../')!==false) {
+				if (strpos('/' . $folderName, '/../') !== false) {
 					WT_FlashMessages::addMessage('Folder names are not allowed to include “../”');
 					break;
 				}
@@ -151,9 +151,9 @@ if ($action == "upload") {
 				if (!empty($_FILES['thumbnail' . $i]['name']) && preg_match('/^image\/(png|gif|jpeg)/', $_FILES['thumbnail' . $i]['type'], $match)) {
 					$extension = $match[1];
 					$thumbFile = preg_replace('/\.[a-z0-9]{3,5}$/', '.' . $extension, $fileName);
-					$serverFileName = WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName .  $thumbFile;
+					$serverFileName = WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName . $thumbFile;
 					if (move_uploaded_file($_FILES['thumbnail' . $i]['tmp_name'], $serverFileName)) {
-					WT_FlashMessages::addMessage(WT_I18N::translate('The file %s was uploaded.', '<span class="filename">' . $serverFileName . '</span>'));
+						WT_FlashMessages::addMessage(WT_I18N::translate('The file %s was uploaded.', '<span class="filename">' . $serverFileName . '</span>'));
 						Log::addMediaLog('Thumbnail file ' . $serverFileName . ' uploaded');
 					}
 				}
@@ -169,7 +169,20 @@ $mediaFolders = WT_Query_Media::folderListAll();
 // Determine file size limit
 // TODO: do we need to check post_max_size size too?
 $filesize = ini_get('upload_max_filesize');
-if (empty($filesize)) $filesize = "2M";
+if (empty($filesize)) {
+	$filesize = "2M";
+}
+
+?>
+<ol class="breadcrumb small">
+	<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
+	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+</ol>
+
+<h1><?php echo $controller->getPageTitle(); ?></h1>
+
+<?php
+
 
 // Print the form
 echo '<form name="uploadmedia" enctype="multipart/form-data" method="post" action="', WT_SCRIPT_NAME, '">';
@@ -177,7 +190,7 @@ echo '<input type="hidden" name="action" value="upload">';
 echo '<p>', WT_I18N::translate('Upload media files'), ':&nbsp;&nbsp;', WT_I18N::translate('Maximum upload size: '), '<span class="accepted">', $filesize, '</span></p>';
 
 // Print 5 forms for uploading images
-for ($i=1; $i<6; $i++) {
+for ($i = 1; $i < 6; $i++) {
 	echo '<table class="upload_media">';
 	echo '<tr><th>', WT_I18N::translate('Media file'), ':&nbsp;&nbsp;', $i, '</th></tr>';
 	echo '<tr><td>';
@@ -199,7 +212,9 @@ for ($i=1; $i<6; $i++) {
 		echo '</td>';
 		echo '<td>';
 		echo '<input name="filename', $i, '" type="text" size="40">';
-		if ($i==1) echo "<br><sub>", WT_I18N::translate('Do not change to keep original filename.'), "</sub>";
+		if ($i == 1) {
+			echo "<br><sub>", WT_I18N::translate('Do not change to keep original filename.'), "</sub>";
+		}
 		echo '</td></tr>';
 	} else {
 		echo '<tr style="display:none;"><td><input type="hidden" name="filename', $i, '" value=""></td></tr>';
@@ -214,7 +229,9 @@ for ($i=1; $i<6; $i++) {
 		echo '<span dir="ltr"><select name="folder_list', $i, '" onchange="document.uploadmedia.folder', $i, '.value=this.options[this.selectedIndex].value;">';
 		echo '<option';
 		echo ' value="/"> ', WT_I18N::translate('Choose: '), ' </option>';
-		if (Auth::isAdmin()) echo '<option value="other" disabled>', WT_I18N::translate('Other folder… please type in'), "</option>";
+		if (Auth::isAdmin()) {
+			echo '<option value="other" disabled>', WT_I18N::translate('Other folder… please type in'), "</option>";
+		}
 		foreach ($mediaFolders as $f) {
 			echo '<option value="', WT_Filter::escapeHtml($f), '">', WT_Filter::escapeHtml($f), "</option>";
 		}

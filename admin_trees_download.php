@@ -25,21 +25,21 @@ use WT\Auth;
 
 define('WT_SCRIPT_NAME', 'admin_trees_download.php');
 require './includes/session.php';
-require WT_ROOT.'includes/functions/functions_export.php';
+require WT_ROOT . 'includes/functions/functions_export.php';
 
-$controller = new WT_Controller_Page();
+$controller = new WT_Controller_Page;
 $controller
-	->setPageTitle(WT_I18N::translate('Download GEDCOM'))
+	->setPageTitle(WT_I18N::translate('Download GEDCOM') . ' — ' . WT_Filter::escapeHtml(WT_GEDCOM))
 	->restrictAccess(Auth::isManager());
 
 // Validate user parameters
-$action           = WT_Filter::get('action',           'download');
-$convert          = WT_Filter::get('convert',          'yes|no', 'no');
-$zip              = WT_Filter::get('zip',              'yes|no', 'no');
+$action           = WT_Filter::get('action', 'download');
+$convert          = WT_Filter::get('convert', 'yes|no', 'no');
+$zip              = WT_Filter::get('zip', 'yes|no', 'no');
 $conv_path        = WT_Filter::get('conv_path');
 $privatize_export = WT_Filter::get('privatize_export', 'none|visitor|user|gedadmin');
 
-if ($action == 'download') {
+if ($action === 'download') {
 	$exportOptions = array(
 		'privatize' => $privatize_export,
 		'toANSI'    => $convert,
@@ -52,15 +52,16 @@ if ($action == 'download') {
 		$download_filename .= '.ged';
 	}
 
-	if ($zip == "yes") {
-		require WT_ROOT.'library/pclzip.lib.php';
+	if ($zip === 'yes') {
+		require WT_ROOT . 'library/pclzip.lib.php';
 
-		$temp_dir = WT_DATA_DIR . 'tmp-' . WT_GEDCOM . '-' . date("YmdHis") . '/';
-		$zip_file  = $download_filename . ".zip";
+		$temp_dir = WT_DATA_DIR . 'tmp-' . WT_GEDCOM . '-' . date('YmdHis') . '/';
+		$zip_file = $download_filename . '.zip';
 
 		if (!WT_File::mkdir($temp_dir)) {
 			echo "Error : Could not create temporary path!";
-			exit;
+
+			return;
 		}
 
 		// Create the unzipped GEDCOM on disk, so we can ZIP it.
@@ -77,7 +78,7 @@ if ($action == 'download') {
 		} else {
 			header('Content-Type: application/zip');
 			header('Content-Disposition: attachment; filename="' . $zip_file . '"');
-			header('Content-length: '.filesize($temp_dir . $zip_file));
+			header('Content-length: ' . filesize($temp_dir . $zip_file));
 			readfile($temp_dir . $zip_file);
 			WT_File::delete($temp_dir);
 		}
@@ -91,17 +92,25 @@ if ($action == 'download') {
 		export_gedcom(WT_GEDCOM, $stream, $exportOptions);
 		fclose($stream);
 	}
-	exit;
+
+	return;
 }
 
 $controller->pageHeader();
 
 ?>
-<h2><?php echo $controller->getPageTitle(); ?> - <?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?></h2>
-<form name="convertform" method="get">
+<ol class="breadcrumb small">
+	<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
+	<li><a href="admin_trees_manage.php"><?php echo WT_I18N::translate('Manage family trees'); ?></a></li>
+	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+</ol>
+
+<h1><?php echo $controller->getPageTitle(); ?></h1>
+
+<form class="form form-horizontal">
 	<input type="hidden" name="action" value="download">
 	<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">
-	<div id="tree-download" class="ui-helper-clearfix">
+	<div id="tree-download">
 		<dl>
 			<dt>
 				<?php echo WT_I18N::translate('Zip file(s)'), help_link('download_zipped'); ?>
@@ -113,7 +122,7 @@ $controller->pageHeader();
 				<?php echo WT_I18N::translate('Apply privacy settings?'), help_link('apply_privacy'); ?>
 			</dt>
 			<dd>
-				<input type="radio" name="privatize_export" value="none" checked="checked">&nbsp;&nbsp;<?php echo WT_I18N::translate('None'); ?>
+				<input type="radio" name="privatize_export" value="none" checked>&nbsp;&nbsp;<?php echo WT_I18N::translate('None'); ?>
 				<br>
 				<input type="radio" name="privatize_export" value="gedadmin">&nbsp;&nbsp;<?php echo WT_I18N::translate('Manager'); ?>
 				<br>

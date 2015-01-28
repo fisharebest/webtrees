@@ -1,6 +1,6 @@
 <?php
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -20,6 +20,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use WT\Auth;
+use WT\Theme;
 
 /**
  * Class login_block_WT_Module
@@ -36,10 +37,10 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	/** {@inheritdoc} */
-	public function getBlock($block_id, $template=true, $cfg=null) {
+	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $controller;
-		$id=$this->getName().$block_id;
-		$class=$this->getName().'_block';
+		$id = $this->getName() . $block_id;
+		$class = $this->getName() . '_block';
 		$controller->addInlineJavascript('
 			jQuery("#new_passwd").hide();
 			jQuery("#passwd_click").click(function() {
@@ -53,56 +54,56 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 		if (Auth::check()) {
 			$title   = WT_I18N::translate('Logout');
 			$content = '<div class="center"><form method="post" action="logout.php" name="logoutform" onsubmit="return true;">';
-			$content .= '<br><a href="edituser.php" class="name2">'.WT_I18N::translate('Logged in as ') . ' ' . WT_Filter::escapeHtml(Auth::user()->getRealName()) . '</a><br><br>';
+			$content .= '<br><a href="edituser.php" class="name2">' . WT_I18N::translate('Logged in as ') . ' ' . WT_Filter::escapeHtml(Auth::user()->getRealName()) . '</a><br><br>';
 			$content .= '<input type="submit" value="' . WT_I18N::translate('Logout') . '">';
 
 			$content .= '<br><br></form></div>';
 		} else {
 			$title   = WT_I18N::translate('Login');
 			$content = '<div id="login-box">
-				<form id="login-form" name="login-form" method="post" action="'. WT_LOGIN_URL. '" onsubmit="d=new Date(); this.timediff.value=d.getTimezoneOffset()*60;">
+				<form id="login-form" name="login-form" method="post" action="'. WT_LOGIN_URL . '" onsubmit="d=new Date(); this.timediff.value=d.getTimezoneOffset()*60;">
 				<input type="hidden" name="action" value="login">
 				<input type="hidden" name="timediff" value="">';
-			$content.= '<div>
-				<label for="username">'. WT_I18N::translate('Username').
+			$content .= '<div>
+				<label for="username">'. WT_I18N::translate('Username') .
 					'<input type="text" id="username" name="username" class="formField">
 				</label>
 				</div>
 				<div>
-					<label for="password">'. WT_I18N::translate('Password').
+					<label for="password">'. WT_I18N::translate('Password') .
 						'<input type="password" id="password" name="password" class="formField">
 					</label>
 				</div>
 				<div>
-					<input type="submit" value="'. WT_I18N::translate('Login'). '">
+					<input type="submit" value="'. WT_I18N::translate('Login') . '">
 				</div>
 				<div>
-					<a href="#" id="passwd_click">'. WT_I18N::translate('Request new password').'</a>
+					<a href="#" id="passwd_click">'. WT_I18N::translate('Request new password') . '</a>
 				</div>';
 			if (WT_Site::getPreference('USE_REGISTRATION_MODULE')) {
-				$content .= '<div><a href="'.WT_LOGIN_URL.'?action=register">'. WT_I18N::translate('Request new user account').'</a></div>';
+				$content .= '<div><a href="' . WT_LOGIN_URL . '?action=register">' . WT_I18N::translate('Request new user account') . '</a></div>';
 			}
 		$content .= '</form>'; // close "login-form"
 
 		// hidden New Password block
 		$content .= '<div id="new_passwd">
-			<form id="new_passwd_form" name="new_passwd_form" action="'.WT_LOGIN_URL.'" method="post">
+			<form id="new_passwd_form" name="new_passwd_form" action="'.WT_LOGIN_URL . '" method="post">
 			<input type="hidden" name="time" value="">
 			<input type="hidden" name="action" value="requestpw">
-			<h4>'. WT_I18N::translate('Lost password request').'</h4>
+			<h4>'. WT_I18N::translate('Lost password request') . '</h4>
 			<div>
-				<label for="new_passwd_username">'. WT_I18N::translate('Username or email address').
+				<label for="new_passwd_username">'. WT_I18N::translate('Username or email address') .
 					'<input type="text" id="new_passwd_username" name="new_passwd_username" value="">
 				</label>
 			</div>
-			<div><input type="submit" value="'. WT_I18N::translate('continue'). '"></div>
+			<div><input type="submit" value="'. WT_I18N::translate('continue') . '"></div>
 			</form>
 		</div>'; //"new_passwd"
-		$content .= '</div>';//"login-box"
+		$content .= '</div>'; //"login-box"
 		}
 
 		if ($template) {
-			require WT_THEME_DIR.'templates/block_main_temp.php';
+			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 			return $content;
 		}

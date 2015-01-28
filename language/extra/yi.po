@@ -10287,7 +10287,7 @@ msgid "P.M."
 msgstr ""
 
 #: help_text.php:1308
-msgid "PGV must be version 4.2.3, or any SVN up to #6973"
+msgid "PGV must be version 4.2.3, or any SVN up to #%s"
 msgstr ""
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
@@ -13643,7 +13643,7 @@ msgstr ""
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:77
 #, php-format
-msgid "The two family trees have %1$s record which use the same “XREF”."
+msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
 msgstr[0] ""
 msgstr[1] ""
@@ -13810,7 +13810,7 @@ msgid "This database is only running MySQL version %s.  You cannot install webtr
 msgstr "דאס דייטאַבייס איז נאָר פליסנדיק MySQL ווערסיע %s. איר קענען נישט ינסטאַלירן וועבטרעעס דאָ."
 
 #: help_text.php:1207 setup.php:412
-msgid "This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site."
+msgid "This email address will be used to send password reminders, site notifications, and messages from other family members who are registered on the site."
 msgstr "דעם בליצפּאָסט אַדרעס וועט זייַן געניצט צו שיקן איר פעסווארד רימיינדערז, זייטל נאָוטאַפאַקיישאַנז, און אָנזאָגן פון אנדערע משפּחה מיטגלידער וואס זענען רעגיסטרירט אויף דעם זייטל."
 
 #: addmedia.php:519
@@ -14386,7 +14386,7 @@ msgstr "דעם וועבזייַטל איז צייַטווייַליק נישט �
 
 #: admin_trees_manage.php:137
 #, php-format
-msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM."
+msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM file."
 msgstr ""
 
 #: modules_v3/googlemap/module.php:1772

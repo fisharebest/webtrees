@@ -26,7 +26,7 @@
 define('WT_SCRIPT_NAME', 'family.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Family();
+$controller = new WT_Controller_Family;
 
 if ($controller->record && $controller->record->canShow()) {
 	$controller->pageHeader();
@@ -36,8 +36,8 @@ if ($controller->record && $controller->record->canShow()) {
 				'<p class="ui-state-highlight">',
 				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ WT_I18N::translate(
 					'This family has been deleted.  You should review the deletion and then %1$s or %2$s it.',
-					'<a href="#" onclick="accept_changes(\''.$controller->record->getXref().'\');">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
-					'<a href="#" onclick="reject_changes(\''.$controller->record->getXref().'\');">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
+					'<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
+					'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
 				),
 				' ', help_link('pending_changes'),
 				'</p>';
@@ -54,8 +54,8 @@ if ($controller->record && $controller->record->canShow()) {
 				'<p class="ui-state-highlight">',
 				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ WT_I18N::translate(
 					'This family has been edited.  You should review the changes and then %1$s or %2$s them.',
-					'<a href="#" onclick="accept_changes(\''.$controller->record->getXref().'\');">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'accept') . '</a>',
-					'<a href="#" onclick="reject_changes(\''.$controller->record->getXref().'\');">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'reject') . '</a>'
+					'<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'accept') . '</a>',
+					'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'reject') . '</a>'
 				),
 				' ', help_link('pending_changes'),
 				'</p>';
@@ -72,10 +72,11 @@ if ($controller->record && $controller->record->canShow()) {
 	// Continue - to display the children/parents/grandparents.
 	// We'll check for showing the details again later
 } else {
-	header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found');
+	http_response_code(404);
 	$controller->pageHeader();
 	echo '<p class="ui-state-error">', WT_I18N::translate('This family does not exist or you do not have permission to view it.'), '</p>';
-	exit;
+	
+	return;
 }
 
 $PEDIGREE_FULL_DETAILS = '1'; // Override GEDCOM configuration
@@ -87,7 +88,7 @@ $show_full = '1';
 
 <table id="family-table" align="center" width="95%">
 	<tr valign="top">
-		<td valign="top" style="width: <?php echo $pbwidth+30; ?>px;"><!--//List of children//-->
+		<td valign="top" style="width: <?php echo $pbwidth + 30; ?>px;"><!--//List of children//-->
 			<?php print_family_children($controller->record); ?>
 		</td>
 		<td> <!--//parents pedigree chart and Family Details//-->
@@ -101,12 +102,12 @@ $show_full = '1';
 						<?php
 						print_family_parents($controller->record);
 						if (WT_USER_CAN_EDIT) {
-							$husb=$controller->record->getHusband();
+							$husb = $controller->record->getHusband();
 							if (!$husb) {
 								echo '<a href="#" onclick="return add_spouse_to_family(\'', $controller->record->getXref(), '\', \'HUSB\');">', WT_I18N::translate('Add a new father'), '</a><br>';
 							}
-							$wife=$controller->record->getWife();
-							if (!$wife)  {
+							$wife = $controller->record->getWife();
+							if (!$wife) {
 								echo '<a href="#" onclick="return add_spouse_to_family(\'', $controller->record->getXref(), '\', \'WIFE\');">', WT_I18N::translate('Add a new mother'), '</a><br>';
 							}
 						}

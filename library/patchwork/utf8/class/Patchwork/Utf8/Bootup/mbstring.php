@@ -43,3 +43,9 @@ function mb_strrichr($s, $needle, $part = false, $enc = INF) {return s\Mbstring:
 function mb_strripos($s, $needle, $offset = 0, $enc = INF) {return s\Mbstring::mb_strripos($s, $needle, $offset, $enc);};
 function mb_strrpos($s, $needle, $offset = 0, $enc = INF) {return s\Mbstring::mb_strrpos($s, $needle, $offset, $enc);};
 function mb_strstr($s, $needle, $part = false, $enc = INF) {return s\Mbstring::mb_strstr($s, $needle, $part, $enc);};
+function mb_get_info($type = 'all') {return s\Mbstring::mb_get_info($type);}
+function mb_http_output($enc = INF) {return s\Mbstring::mb_http_output($enc);}
+function mb_strwidth($s, $enc = INF) {return s\Mbstring::mb_strwidth($s, $enc);}
+function mb_substr_count($haystack, $needle, $enc = INF) {return s\Mbstring::mb_substr_count($haystack, $needle, $enc);}
+function mb_output_handler($contents, $status) {return s\Mbstring::mb_output_handler($contents, $status);}
+function mb_http_input($type = '') {return s\Mbstring::mb_http_input($type);}

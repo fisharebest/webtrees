@@ -1,6 +1,6 @@
 <?php
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -20,6 +20,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use WT\Auth;
+use WT\Theme;
 
 /**
  * Class lightbox_WT_Module
@@ -57,26 +58,26 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function getTabContent() {
 		global $WT_TREE, $controller;
 
-		$html='<div id="' . $this->getName() . '_content">';
+		$html = '<div id="' . $this->getName() . '_content">';
 		//Show Lightbox-Album header Links
 		if (WT_USER_CAN_EDIT) {
-			$html.='<table class="facts_table"><tr><td class="descriptionbox rela">';
+			$html .= '<table class="facts_table"><tr><td class="descriptionbox rela">';
 			// Add a new media object
 			if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
-				$html .= '<span><a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&linktoid='.$controller->record->getXref().'\', \'_blank\', \'resizable=1,scrollbars=1,top=50,height=780,width=600\');return false;">';
-				$html .= '<img src="'.WT_CSS_URL.'images/image_add.png" id="head_icon" class="icon" title="'.WT_I18N::translate('Add a new media object').'" alt="'.WT_I18N::translate('Add a new media object').'">';
+				$html .= '<span><a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&linktoid=' . $controller->record->getXref() . '\', \'_blank\', \'resizable=1,scrollbars=1,top=50,height=780,width=600\');return false;">';
+				$html .= '<img src="' . Theme::theme()->assetUrl() . 'images/image_add.png" id="head_icon" class="icon" title="' . WT_I18N::translate('Add a new media object') . '" alt="' . WT_I18N::translate('Add a new media object') . '">';
 				$html .= WT_I18N::translate('Add a new media object');
 				$html .= '</a></span>';
 				// Link to an existing item
-				$html .= '<span><a href="#" onclick="window.open(\'inverselink.php?linktoid='.$controller->record->getXref().'&linkto=person\', \'_blank\', \'resizable=1,scrollbars=1,top=50,height=300,width=450\');">';
-				$html .= '<img src="'.WT_CSS_URL.'images/image_link.png" id="head_icon" class="icon" title="'.WT_I18N::translate('Link to an existing media object').'" alt="'.WT_I18N::translate('Link to an existing media object').'">';
+				$html .= '<span><a href="#" onclick="window.open(\'inverselink.php?linktoid=' . $controller->record->getXref() . '&linkto=person\', \'_blank\', \'resizable=1,scrollbars=1,top=50,height=300,width=450\');">';
+				$html .= '<img src="' . Theme::theme()->assetUrl() . 'images/image_link.png" id="head_icon" class="icon" title="' . WT_I18N::translate('Link to an existing media object') . '" alt="' . WT_I18N::translate('Link to an existing media object') . '">';
 				$html .= WT_I18N::translate('Link to an existing media object');
 				$html .= '</a></span>';
 			}
 			if (WT_USER_GEDCOM_ADMIN && $this->get_media()) {
 				// Popup Reorder Media
-				$html .= '<span><a href="#" onclick="reorder_media(\''.$controller->record->getXref().'\')">';
-				$html .= '<img src="'.WT_CSS_URL.'images/images.png" id="head_icon" class="icon" title="'.WT_I18N::translate('Re-order media').'" alt="'.WT_I18N::translate('Re-order media').'">';
+				$html .= '<span><a href="#" onclick="reorder_media(\'' . $controller->record->getXref() . '\')">';
+				$html .= '<img src="' . Theme::theme()->assetUrl() . 'images/images.png" id="head_icon" class="icon" title="' . WT_I18N::translate('Re-order media') . '" alt="' . WT_I18N::translate('Re-order media') . '">';
 				$html .= WT_I18N::translate('Re-order media');
 				$html .= '</a></span>';
 			}
@@ -104,7 +105,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 			if (strpos($media->getGedcom(), "\n1 NOTE")) {
 				$submenu = new WT_Menu(WT_I18N::translate('View notes'));
 				// Notes Tooltip ----------------------------------------------------
-				$submenu->setOnclick("modalNotes('". WT_Filter::escapeJs($notes) . "','". WT_I18N::translate('View notes') . "'); return false;");
+				$submenu->setOnclick("modalNotes('" . WT_Filter::escapeJs($notes) . "','" . WT_I18N::translate('View notes') . "'); return false;");
 				$submenu->addClass("submenuitem");
 				$menu->addSubmenu($submenu);
 			}
@@ -126,13 +127,13 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 			if (WT_USER_CAN_EDIT) {
 				// Edit Media
 				$submenu = new WT_Menu(WT_I18N::translate('Edit media'));
-				$submenu->setOnclick("return window.open('addmedia.php?action=editmedia&amp;pid=".$media->getXref()."', '_blank', edit_window_specs);");
+				$submenu->setOnclick("return window.open('addmedia.php?action=editmedia&amp;pid=" . $media->getXref() . "', '_blank', edit_window_specs);");
 				$submenu->addClass("submenuitem");
 				$menu->addSubmenu($submenu);
 				if (Auth::isAdmin()) {
 					if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 						$submenu = new WT_Menu(WT_I18N::translate('Manage links'));
-						$submenu->setOnclick("return window.open('inverselink.php?mediaid=".$media->getXref()."&amp;linkto=manage', '_blank', find_window_specs);");
+						$submenu->setOnclick("return window.open('inverselink.php?mediaid=" . $media->getXref() . "&amp;linkto=manage', '_blank', find_window_specs);");
 						$submenu->addClass("submenuitem");
 						$menu->addSubmenu($submenu);
 					} else {
@@ -186,7 +187,8 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 			// Use all media from each fact
 			$this->media_list = array();
 			foreach ($facts as $fact) {
-				if (!$fact->isPendingDeletion()) { // Don't show pending edits, as the user just sees duplicates
+				// Don't show pending edits, as the user just sees duplicates
+				if (!$fact->isPendingDeletion()) {
 					preg_match_all('/(?:^1|\n\d) OBJE @(' . WT_REGEX_XREF . ')@/', $fact->getGedcom(), $matches);
 					foreach ($matches[1] as $match) {
 						$media = WT_Media::getInstance($match);

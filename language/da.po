@@ -1677,12 +1677,12 @@ msgstr "Forældres alder ved siden af barns fødselsdag"
 
 #: statistics.php:569 statisticsplot.php:939
 msgid "Age related to birth year"
-msgstr "alder i forhold til fødselsår."
+msgstr "Alder i forhold til fødselsår."
 
 #: includes/functions/functions_print_lists.php:509 statistics.php:575
 #: statisticsplot.php:942
 msgid "Age related to death year"
-msgstr "alder i forhold år for dødsfald"
+msgstr "Alder i forhold år for dødsfald"
 
 #. I18N: gedcom tag AGNC
 #: library/WT/Gedcom/Tag.php:147
@@ -1742,11 +1742,11 @@ msgstr "Alle"
 
 #: help_text.php:1310
 msgid "All changes in PGV must be accepted"
-msgstr "Alle ændringer foretaget i PGV skal godkendes"
+msgstr "Alle ændringer skal godkendes"
 
 #: help_text.php:1316
 msgid "All existing PGV users must have distinct email addresses"
-msgstr "Alle eksisterende PGV-brugere skal have forskellige email-adresser"
+msgstr "Alle eksisterende brugere skal have forskellige email-adresser"
 
 #: admin_trees_config.php:1157 help_text.php:505
 msgid "All family facts"
@@ -3140,7 +3140,7 @@ msgstr "Som standard vises ægtefæller til efterkommere ikke, fordi det gør sl
 #. I18N: Help text for the "Port number" site configuration setting
 #: help_text.php:769
 msgid "By default, SMTP works on port 25."
-msgstr "Som standard bruger SMTP port 25."
+msgstr "Som standard bruges port 25 til SMTP."
 
 #: modules_v3/googlemap/help_text.php:81
 msgid "By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used."
@@ -3385,7 +3385,7 @@ msgstr "Diagramtype"
 #: library/WT/MenuBar.php:103 modules_v3/charts/help_text.php:31
 #: modules_v3/charts/module.php:30
 msgid "Charts"
-msgstr "Slægtstræer"
+msgstr "Diagrammer"
 
 #: modules_v3/clippings/clippings_ctrl.php:297
 msgid "Check access rights on this directory."
@@ -3393,17 +3393,17 @@ msgstr "Kontrollér adgangsrettighederne til denne mappe."
 
 #: admin_site_upgrade.php:383
 msgid "Check file permissions…"
-msgstr "Check af fil tilladelser"
+msgstr "Kontrol af fil tilladelser"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:118
 msgid "Check for custom modules…"
-msgstr "Check af brugerdefineret moduler"
+msgstr "Kontrol af brugerdefineret moduler"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:220
 msgid "Check for custom themes…"
-msgstr "Check af brugderdefineret temaer"
+msgstr "Kontrol af brugderdefineret temaer"
 
 #: admin_trees_check.php:30 themes/_administration/header.php:125
 msgid "Check for errors"
@@ -3412,7 +3412,7 @@ msgstr "Søg efter fejl"
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:99
 msgid "Check for pending changes…"
-msgstr "Check af ventende ændringer"
+msgstr "Kontrol af ventende ændringer"
 
 #: help_text.php:460 relationship.php:138
 msgid "Check relationships by marriage"
@@ -3677,7 +3677,7 @@ msgstr "Klik på en række og træk-og-slip for at gensortere medier "
 
 #: admin_trees_manage.php:291
 msgid "Click here for PhpGedView to webtrees transfer wizard"
-msgstr "Klik her for guiden PhpGedView til <b>webtree</b> overførsel"
+msgstr "Klik her for guiden PhpGedView til <b>webtrees</b> overførsel"
 
 #: modules_v3/faq/module.php:276
 msgid "Click here to add, edit, or delete"
@@ -3766,7 +3766,7 @@ msgstr "Columbus, Ohio"
 
 #: medialist.php:134
 msgid "Columns per page"
-msgstr "Kolonner per side"
+msgstr "Kolonner pr side"
 
 #. I18N: gedcom tag COMM
 #: admin_site_access.php:287 library/WT/Gedcom/Tag.php:299
@@ -3876,7 +3876,7 @@ msgstr "Fortsæt med at tilføje"
 #. I18N: gedcom tag CONT
 #: library/WT/Gedcom/Tag.php:307
 msgid "Continued"
-msgstr "Fortsættes"
+msgstr "Fortsat"
 
 #: admin_trees_download.php:125 help_text.php:1493
 #: modules_v3/clippings/module.php:205 modules_v3/clippings/module.php:597
@@ -3908,7 +3908,7 @@ msgstr "Kopier alle poster fra %1$s til %2$s."
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:424
 msgid "Copy files…"
-msgstr "Kopiere filer…"
+msgstr "Kopier filer…"
 
 #: admin_site_upgrade.php:395
 #, php-format
@@ -4007,7 +4007,7 @@ msgstr "Opret en ny delt note"
 #: edit_interface.php:1373 modules_v3/GEDFact_assistant/CENS_ctrl.php:32
 #: modules_v3/GEDFact_assistant/module.php:350
 msgid "Create a new shared note using assistant"
-msgstr "Opret en ny delt note via assistent"
+msgstr "Opret en ny delt note via guiden"
 
 #. I18N: A source that is not linked to any other record
 #: admin_site_other.php:64 edit_interface.php:1160 edit_interface.php:1245
@@ -4177,7 +4177,7 @@ msgstr "Brugerdefineret begivenhed"
 
 #: includes/functions/functions_print.php:976
 msgid "Custom fact"
-msgstr "Brugerdefineret fatak"
+msgstr "Brugerdefineret fakta"
 
 #: admin_site_upgrade.php:192 admin_site_upgrade.php:195
 msgid "Custom module"
@@ -5310,7 +5310,7 @@ msgstr "Rediger en FAQ"
 
 #: help_text.php:1457
 msgid "Edit account information"
-msgstr "Rediger kontoinformation"
+msgstr "Rediger konto information"
 
 #: library/WT/Controller/Media.php:149
 msgid "Edit details"
@@ -5717,7 +5717,7 @@ msgstr "Udførelsesstatistikker"
 #: includes/functions/functions_print.php:239
 #, php-format
 msgid "Execution time: %1$s seconds.  Database queries: %2$s.  Memory usage: %3$s KB."
-msgstr "Udførselstid: %1$s sektunder. Database forespørgsler: %2$s. Hukommelsesforbrug: %3$s KB."
+msgstr "Udførselstid: %1$s sekunder. Database forespørgsler: %2$s. Hukommelsesforbrug: %3$s KB."
 
 #. I18N: placeholder text for registration-comments field
 #: login.php:440
@@ -10291,8 +10291,8 @@ msgid "P.M."
 msgstr "P.M."
 
 #: help_text.php:1308
-msgid "PGV must be version 4.2.3, or any SVN up to #6973"
-msgstr "PGV skal være version 4.2.3, eller en SVN op til #6973"
+msgid "PGV must be version 4.2.3, or any SVN up to #%s"
+msgstr "PGV skal være version 4.2.3, eller en SVN op til #%s"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:82
@@ -13647,7 +13647,7 @@ msgstr "Tiden i sekunder som en webtrees session må være aktiv før der atter 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:77
 #, php-format
-msgid "The two family trees have %1$s record which use the same “XREF”."
+msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
 msgstr[0] "De to familietræer er posten %1$s oprettet med den samme “XREF”."
 msgstr[1] "De to familietræer er posterne %1$s oprettet med den samme “XREF”."
@@ -13814,7 +13814,7 @@ msgid "This database is only running MySQL version %s.  You cannot install webtr
 msgstr "Databasen bruger kun MySQL version %s. Du kan ikke installere webtrees her.."
 
 #: help_text.php:1207 setup.php:412
-msgid "This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site."
+msgid "This email address will be used to send password reminders, site notifications, and messages from other family members who are registered on the site."
 msgstr "Denne email adresse vil blive brugt til at sende dine adgangskode påmindelser, websteds-beskeder og beskeder fra andre familiemedlemmer der er registreret på dette websted."
 
 #: addmedia.php:519
@@ -14390,7 +14390,7 @@ msgstr "Dette websted er ikke tilgængeligt i øjeblikket"
 
 #: admin_trees_manage.php:137
 #, php-format
-msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM."
+msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM file."
 msgstr "Dette sletter al slægtsdata fra <b>%s</b> og erstatter den med data fra en anden GEDCOM."
 
 #: modules_v3/googlemap/module.php:1772

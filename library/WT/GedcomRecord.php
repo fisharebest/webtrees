@@ -133,7 +133,7 @@ class WT_GedcomRecord {
 	 * @return WT_GedcomRecord|null
 	 * @throws Exception
 	 */
-	public static function getInstance($xref, $gedcom_id=WT_GED_ID, $gedcom=null) {
+	public static function getInstance($xref, $gedcom_id = WT_GED_ID, $gedcom = null) {
 		// Is this record already in the cache?
 		if (isset(self::$gedcom_record_cache[$xref][$gedcom_id])) {
 			return self::$gedcom_record_cache[$xref][$gedcom_id];
@@ -148,7 +148,7 @@ class WT_GedcomRecord {
 		if (WT_USER_CAN_EDIT) {
 			if (!isset(self::$pending_record_cache[$gedcom_id])) {
 				// Fetch all pending records in one database query
-				self::$pending_record_cache[$gedcom_id]=array();
+				self::$pending_record_cache[$gedcom_id] = array();
 				$rows = WT_DB::prepare(
 					"SELECT xref, new_gedcom FROM `##change` WHERE status='pending' AND gedcom_id=?"
 				)->execute(array($gedcom_id))->fetchAll();
@@ -174,20 +174,20 @@ class WT_GedcomRecord {
 		}
 
 		// Create the object
-		if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ (' . WT_REGEX_TAG . ')/', $gedcom.$pending, $match)) {
+		if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ (' . WT_REGEX_TAG . ')/', $gedcom . $pending, $match)) {
 			$xref = $match[1]; // Collation - we may have requested I123 and found i123
 			$type = $match[2];
-		} elseif (preg_match('/^0 (HEAD|TRLR)/', $gedcom.$pending, $match)) {
+		} elseif (preg_match('/^0 (HEAD|TRLR)/', $gedcom . $pending, $match)) {
 			$xref = $match[1];
 			$type = $match[1];
-		} elseif ($gedcom.$pending) {
+		} elseif ($gedcom . $pending) {
 			throw new Exception('Unrecognized GEDCOM record: ' . $gedcom);
 		} else {
 			// A record with both pending creation and pending deletion
 			$type = static::RECORD_TYPE;
 		}
 
-		switch($type) {
+		switch ($type) {
 		case 'INDI':
 			$record = new WT_Individual($xref, $gedcom, $pending, $gedcom_id);
 			break;
@@ -226,7 +226,7 @@ class WT_GedcomRecord {
 	 * @return null|string
 	 */
 	protected static function fetchGedcomRecord($xref, $gedcom_id) {
-		static $statement=null;
+		static $statement = null;
 
 		// We don't know what type of object this is.  Try each one in turn.
 		$data = WT_Individual::fetchGedcomRecord($xref, $gedcom_id);
@@ -255,7 +255,7 @@ class WT_GedcomRecord {
 		}
 		// Some other type of record...
 		if (is_null($statement)) {
-			$statement=WT_DB::prepare("SELECT o_gedcom FROM `##other` WHERE o_id=? AND o_file=?");
+			$statement = WT_DB::prepare("SELECT o_gedcom FROM `##other` WHERE o_id=? AND o_file=?");
 		}
 		return $statement->execute(array($xref, $gedcom_id))->fetchOne();
 
@@ -372,16 +372,16 @@ class WT_GedcomRecord {
 		}
 
 		// We should always be able to see our own record (unless an admin is applying download restrictions)
-		if ($this->getXref()==WT_USER_GEDCOM_ID && $this->getGedcomId()==WT_GED_ID && $access_level==WT_USER_ACCESS_LEVEL) {
+		if ($this->getXref() == WT_USER_GEDCOM_ID && $this->getGedcomId() == WT_GED_ID && $access_level == WT_USER_ACCESS_LEVEL) {
 			return true;
 		}
 
 		// Does this record have a RESN?
 		if (strpos($this->gedcom, "\n1 RESN confidential")) {
-			return WT_PRIV_NONE>=$access_level;
+			return WT_PRIV_NONE >= $access_level;
 		}
 		if (strpos($this->gedcom, "\n1 RESN privacy")) {
-			return WT_PRIV_USER>=$access_level;
+			return WT_PRIV_USER >= $access_level;
 		}
 		if (strpos($this->gedcom, "\n1 RESN none")) {
 			return true;
@@ -389,11 +389,11 @@ class WT_GedcomRecord {
 
 		// Does this record have a default RESN?
 		if (isset($person_privacy[$this->getXref()])) {
-			return $person_privacy[$this->getXref()]>=$access_level;
+			return $person_privacy[$this->getXref()] >= $access_level;
 		}
 
 		// Privacy rules do not apply to admins
-		if (WT_PRIV_NONE>=$access_level) {
+		if (WT_PRIV_NONE >= $access_level) {
 			return true;
 		}
 
@@ -413,7 +413,7 @@ class WT_GedcomRecord {
 
 		if (isset($global_facts[static::RECORD_TYPE])) {
 			// Restriction found
-			return $global_facts[static::RECORD_TYPE]>=$access_level;
+			return $global_facts[static::RECORD_TYPE] >= $access_level;
 		} else {
 			// No restriction found - must be public:
 			return true;
@@ -427,23 +427,23 @@ class WT_GedcomRecord {
 	 *
 	 * @return boolean
 	 */
-	public function canShow($access_level=WT_USER_ACCESS_LEVEL) {
+	public function canShow($access_level = WT_USER_ACCESS_LEVEL) {
 		// CACHING: this function can take three different parameters,
 		// and therefore needs three different caches for the result.
 		switch ($access_level) {
 		case WT_PRIV_PUBLIC: // visitor
-			if ($this->disp_public===null) {
-				$this->disp_public=$this->_canShow(WT_PRIV_PUBLIC);
+			if ($this->disp_public === null) {
+				$this->disp_public = $this->_canShow(WT_PRIV_PUBLIC);
 			}
 			return $this->disp_public;
 		case WT_PRIV_USER: // member
-			if ($this->disp_user===null) {
-				$this->disp_user=$this->_canShow(WT_PRIV_USER);
+			if ($this->disp_user === null) {
+				$this->disp_user = $this->_canShow(WT_PRIV_USER);
 			}
 			return $this->disp_user;
 		case WT_PRIV_NONE: // admin
-			if ($this->disp_none===null) {
-				$this->disp_none=$this->_canShow(WT_PRIV_NONE);
+			if ($this->disp_none === null) {
+				$this->disp_none = $this->_canShow(WT_PRIV_NONE);
 			}
 			return $this->disp_none;
 		case WT_PRIV_HIDE: // hidden from admins
@@ -463,7 +463,7 @@ class WT_GedcomRecord {
 	 *
 	 * @return boolean
 	 */
-	public function canShowName($access_level=WT_USER_ACCESS_LEVEL) {
+	public function canShowName($access_level = WT_USER_ACCESS_LEVEL) {
 		return $this->canShow($access_level);
 	}
 
@@ -473,7 +473,7 @@ class WT_GedcomRecord {
 	 * @return boolean
 	 */
 	public function canEdit() {
-		return WT_USER_GEDCOM_ADMIN || WT_USER_CAN_EDIT && strpos($this->gedcom, "\n1 RESN locked")===false;
+		return WT_USER_GEDCOM_ADMIN || WT_USER_CAN_EDIT && strpos($this->gedcom, "\n1 RESN locked") === false;
 	}
 
 	/**
@@ -485,14 +485,14 @@ class WT_GedcomRecord {
 	 * @return string
 	 */
 	public function privatizeGedcom($access_level) {
-		if ($access_level==WT_PRIV_HIDE) {
+		if ($access_level == WT_PRIV_HIDE) {
 			// We may need the original record, for example when downloading a GEDCOM or clippings cart
 			return $this->gedcom;
 		} elseif ($this->canShow($access_level)) {
 			// The record is not private, but the individual facts may be.
 
 			// Include the entire first line (for NOTE records)
-			list($gedrec)=explode("\n", $this->gedcom, 2);
+			list($gedrec) = explode("\n", $this->gedcom, 2);
 
 			// Check each of the facts for access
 			foreach ($this->getFacts(null, false, $access_level) as $fact) {
@@ -529,7 +529,7 @@ class WT_GedcomRecord {
 		$this->_getAllNames[] = array(
 			'type'   => $type,
 			'sort'   => preg_replace_callback('/([0-9]+)/', function($matches) { return str_pad($matches[0], 10, '0', STR_PAD_LEFT); }, $value),
-			'full'   => '<span dir="auto">'.WT_Filter::escapeHtml($value).'</span>',    // This is used for display
+			'full'   => '<span dir="auto">' . WT_Filter::escapeHtml($value) . '</span>', // This is used for display
 			'fullNN' => $value, // This goes into the database
 		);
 	}
@@ -554,7 +554,7 @@ class WT_GedcomRecord {
 			if (preg_match_all("/^{$level} ({$fact_type}) (.+)((\n[{$sublevel}-9].+)*)/m", $fact->getGedcom(), $matches, PREG_SET_ORDER)) {
 				foreach ($matches as $match) {
 					// Treat 1 NAME / 2 TYPE married the same as _MARNM
-					if ($match[1]=='NAME' && strpos($match[3], "\n2 TYPE married")!==false) {
+					if ($match[1] == 'NAME' && strpos($match[3], "\n2 TYPE married") !== false) {
 						$this->addName('_MARNM', $match[2], $fact->getGedcom());
 					} else {
 						$this->addName($match[1], $match[2], $fact->getGedcom());
@@ -613,55 +613,26 @@ class WT_GedcomRecord {
 	 * @return integer
 	 */
 	public function getPrimaryName() {
-		if (is_null($this->_getPrimaryName)) {
+		static $language_script;
+
+		if ($language_script === null) {
+			$language_script = WT_I18N::languageScript(WT_LOCALE);
+		}
+
+		if ($this->_getPrimaryName === null) {
 			// Generally, the first name is the primary one....
-			$this->_getPrimaryName=0;
-			// ....except when the language/name use different character sets
-			if (count($this->getAllNames())>1) {
-				switch (WT_LOCALE) {
-				case 'el':
-					foreach ($this->getAllNames() as $n=>$name) {
-						if ($name['type']!='_MARNM' && WT_I18N::textScript($name['sort'])=='Grek') {
-							$this->_getPrimaryName=$n;
-							break;
-						}
+			$this->_getPrimaryName = 0;
+			// ...except when the language/name use different character sets
+			if (count($this->getAllNames()) > 1) {
+				foreach ($this->getAllNames() as $n => $name) {
+					if ($name['type'] !== '_MARNM' && WT_I18N::textScript($name['sort']) === $language_script) {
+						$this->_getPrimaryName = $n;
+						break;
 					}
-					break;
-				case 'ru':
-					foreach ($this->getAllNames() as $n=>$name) {
-						if ($name['type']!='_MARNM' && WT_I18N::textScript($name['sort'])=='Cyrl') {
-							$this->_getPrimaryName=$n;
-							break;
-						}
-					}
-					break;
-				case 'he':
-					foreach ($this->getAllNames() as $n=>$name) {
-						if ($name['type']!='_MARNM' && WT_I18N::textScript($name['sort'])=='Hebr') {
-							$this->_getPrimaryName=$n;
-							break;
-						}
-					}
-					break;
-				case 'ar':
-					foreach ($this->getAllNames() as $n=>$name) {
-						if ($name['type']!='_MARNM' && WT_I18N::textScript($name['sort'])=='Arab') {
-							$this->_getPrimaryName=$n;
-							break;
-						}
-					}
-					break;
-				default:
-					foreach ($this->getAllNames() as $n=>$name) {
-						if ($name['type']!='_MARNM' && WT_I18N::textScript($name['sort'])=='Latn') {
-							$this->_getPrimaryName=$n;
-							break;
-						}
-					}
-					break;
 				}
 			}
 		}
+
 		return $this->_getPrimaryName;
 	}
 
@@ -673,14 +644,14 @@ class WT_GedcomRecord {
 	public function getSecondaryName() {
 		if (is_null($this->_getSecondaryName)) {
 			// Generally, the primary and secondary names are the same
-			$this->_getSecondaryName=$this->getPrimaryName();
+			$this->_getSecondaryName = $this->getPrimaryName();
 			// ....except when there are names with different character sets
-			$all_names=$this->getAllNames();
-			if (count($all_names)>1) {
-				$primary_script=WT_I18N::textScript($all_names[$this->getPrimaryName()]['sort']);
+			$all_names = $this->getAllNames();
+			if (count($all_names) > 1) {
+				$primary_script = WT_I18N::textScript($all_names[$this->getPrimaryName()]['sort']);
 				foreach ($all_names as $n=>$name) {
-					if ($n!=$this->getPrimaryName() && $name['type']!='_MARNM' && WT_I18N::textScript($name['sort'])!=$primary_script) {
-						$this->_getSecondaryName=$n;
+					if ($n != $this->getPrimaryName() && $name['type'] != '_MARNM' && WT_I18N::textScript($name['sort']) != $primary_script) {
+						$this->_getSecondaryName = $n;
 						break;
 					}
 				}
@@ -764,7 +735,7 @@ class WT_GedcomRecord {
 	 * @return null|string
 	 */
 	public function getAddName() {
-		if ($this->canShowName() && $this->getPrimaryName()!=$this->getSecondaryName()) {
+		if ($this->canShowName() && $this->getPrimaryName() != $this->getSecondaryName()) {
 			$all_names = $this->getAllNames();
 			return $all_names[$this->getSecondaryName()]['full'];
 		} else {
@@ -783,17 +754,17 @@ class WT_GedcomRecord {
 	 *
 	 * @return string
 	 */
-	public function format_list($tag='li', $find=false, $name=null) {
+	public function format_list($tag = 'li', $find = false, $name = null) {
 		if (is_null($name)) {
-			$name=$this->getFullName();
+			$name = $this->getFullName();
 		}
-		$html='<a href="'.$this->getHtmlUrl().'"';
+		$html = '<a href="' . $this->getHtmlUrl() . '"';
 		if ($find) {
-			$html.=' onclick="pasteid(\''.$this->getXref().'\', \'' . htmlentities($name) . '\');"';
+			$html .= ' onclick="pasteid(\'' . $this->getXref() . '\', \'' . htmlentities($name) . '\');"';
 		}
-		$html.=' class="list_item"><b>'.$name.'</b>';
-		$html.=$this->formatListDetails();
-		$html='<'.$tag.'>'.$html.'</a></'.$tag.'>';
+		$html .= ' class="list_item"><b>' . $name . '</b>';
+		$html .= $this->formatListDetails();
+		$html = '<' . $tag . '>' . $html . '</a></' . $tag . '>';
 		return $html;
 	}
 
@@ -821,9 +792,9 @@ class WT_GedcomRecord {
 			if ($event->getDate()->isOK() || !$event->getPlace()->isEmpty()) {
 				switch ($style) {
 				case 1:
-					return '<br><em>'.$event->getLabel().' '.format_fact_date($event, $this, false, false).' '.format_fact_place($event).'</em>';
+					return '<br><em>' . $event->getLabel() . ' ' . format_fact_date($event, $this, false, false) . ' ' . format_fact_place($event) . '</em>';
 				case 2:
-					return '<dl><dt class="label">'.$event->getLabel().'</dt><dd class="field">'.format_fact_date($event, $this, false, false).' '.format_fact_place($event).'</dd></dl>';
+					return '<dl><dt class="label">' . $event->getLabel() . '</dt><dd class="field">' . format_fact_date($event, $this, false, false) . ' ' . format_fact_place($event) . '</dd></dl>';
 				}
 			}
 		}
@@ -943,13 +914,13 @@ class WT_GedcomRecord {
 	 * @return WT_Note[]
 	 */
 	public function linkedNotes($link) {
-		$rows=WT_DB::prepare(
-			"SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom".
-			" FROM `##other`".
-			" JOIN `##link` ON (o_file=l_file AND o_id=l_from)".
-			" LEFT JOIN `##name` ON (o_file=n_file AND o_id=n_id AND n_num=0)".
-			" WHERE o_file=? AND o_type='NOTE' AND l_type=? AND l_to=?".
-			" ORDER BY n_sort COLLATE '".WT_I18N::$collation."'"
+		$rows = WT_DB::prepare(
+			"SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom" .
+			" FROM `##other`" .
+			" JOIN `##link` ON (o_file=l_file AND o_id=l_from)" .
+			" LEFT JOIN `##name` ON (o_file=n_file AND o_id=n_id AND n_num=0)" .
+			" WHERE o_file=? AND o_type='NOTE' AND l_type=? AND l_to=?" .
+			" ORDER BY n_sort COLLATE '" . WT_I18N::$collation . "'"
 		)->execute(array($this->gedcom_id, $link, $this->xref))->fetchAll();
 
 		$list = array();
@@ -970,13 +941,13 @@ class WT_GedcomRecord {
 	 * @return WT_Repository
 	 */
 	public function linkedRepositories($link) {
-		$rows=WT_DB::prepare(
-			"SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom".
-			" FROM `##other`".
-			" JOIN `##link` ON (o_file=l_file AND o_id=l_from)".
-			" LEFT JOIN `##name` ON (o_file=n_file AND o_id=n_id AND n_num=0)".
-			" WHERE o_file=? AND o_type='REPO' AND l_type=? AND l_to=?".
-			" ORDER BY n_sort COLLATE '".WT_I18N::$collation."'"
+		$rows = WT_DB::prepare(
+			"SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom" .
+			" FROM `##other`" .
+			" JOIN `##link` ON (o_file=l_file AND o_id=l_from)" .
+			" LEFT JOIN `##name` ON (o_file=n_file AND o_id=n_id AND n_num=0)" .
+			" WHERE o_file=? AND o_type='REPO' AND l_type=? AND l_to=?" .
+			" ORDER BY n_sort COLLATE '" . WT_I18N::$collation . "'"
 		)->execute(array($this->gedcom_id, $link, $this->xref))->fetchAll();
 
 		$list = array();
@@ -1058,11 +1029,11 @@ class WT_GedcomRecord {
 	 *
 	 * @return WT_Fact[]
 	 */
-	public function getFacts($filter=null, $sort=false, $access_level=WT_USER_ACCESS_LEVEL, $override=false) {
-		$facts=array();
+	public function getFacts($filter = null, $sort = false, $access_level = WT_USER_ACCESS_LEVEL, $override = false) {
+		$facts = array();
 		if ($this->canShow($access_level) || $override) {
 			foreach ($this->facts as $fact) {
-				if (($filter==null || preg_match('/^' . $filter . '$/', $fact->getTag())) && $fact->canShow($access_level)) {
+				if (($filter == null || preg_match('/^' . $filter . '$/', $fact->getTag())) && $fact->canShow($access_level)) {
 					$facts[] = $fact;
 				}
 			}
@@ -1081,18 +1052,18 @@ class WT_GedcomRecord {
 	 *
 	 * @return string
 	 */
-	public function lastChangeTimestamp($sorting=false) {
+	public function lastChangeTimestamp($sorting = false) {
 		$chan = $this->getFirstFact('CHAN');
 
 		if ($chan) {
 			// The record does have a CHAN event
 			$d = $chan->getDate()->MinDate();
 			if (preg_match('/\n3 TIME (\d\d):(\d\d):(\d\d)/', $chan->getGedcom(), $match)) {
-				$t=mktime((int)$match[1], (int)$match[2], (int)$match[3], (int)$d->format('%n'), (int)$d->format('%j'), (int)$d->format('%Y'));
+				$t = mktime((int) $match[1], (int) $match[2], (int) $match[3], (int) $d->format('%n'), (int) $d->format('%j'), (int) $d->format('%Y'));
 			} elseif (preg_match('/\n3 TIME (\d\d):(\d\d)/', $chan->getGedcom(), $match)) {
-				$t=mktime((int)$match[1], (int)$match[2], 0, (int)$d->format('%n'), (int)$d->format('%j'), (int)$d->format('%Y'));
+				$t = mktime((int) $match[1], (int) $match[2], 0, (int) $d->format('%n'), (int) $d->format('%j'), (int) $d->format('%Y'));
 			} else {
-				$t=mktime(0, 0, 0, (int)$d->format('%n'), (int)$d->format('%j'), (int)$d->format('%Y'));
+				$t = mktime(0, 0, 0, (int) $d->format('%n'), (int) $d->format('%j'), (int) $d->format('%Y'));
 			}
 			if ($sorting) {
 				return $t;
@@ -1163,7 +1134,7 @@ class WT_GedcomRecord {
 		$gedcom = preg_replace('/[\r\n]+/', "\n", $gedcom);
 		$gedcom = trim($gedcom);
 
-		if ($this->pending==='') {
+		if ($this->pending === '') {
 			throw new Exception('Cannot edit a deleted record');
 		}
 		if ($gedcom && !preg_match('/^1 ' . WT_REGEX_TAG . '/', $gedcom)) {
@@ -1187,7 +1158,7 @@ class WT_GedcomRecord {
 						$new_gedcom .= "\n" . $gedcom;
 					}
 					$fact_id = true; // Only replace/delete one copy of a duplicate fact
-				} elseif ($fact->getTag()!='CHAN' || !$update_chan) {
+				} elseif ($fact->getTag() != 'CHAN' || !$update_chan) {
 					$new_gedcom .= "\n" . $fact->getGedcom();
 				}
 			}
@@ -1240,7 +1211,7 @@ class WT_GedcomRecord {
 		} else {
 			throw new Exception('Invalid argument to WT_GedcomRecord::createRecord(' . $gedcom . ')');
 		}
-		if (strpos("\r", $gedcom)!==false) {
+		if (strpos("\r", $gedcom) !== false) {
 			// MSDOS line endings will break things in horrible ways
 			throw new Exception('Evil line endings found in WT_GedcomRecord::createRecord(' . $gedcom . ')');
 		}
@@ -1366,7 +1337,7 @@ class WT_GedcomRecord {
 				foreach ($matches as $match) {
 					$next_level = $match[1] + 1;
 					$next_levels = '[' . $next_level . '-9]';
-					$gedcom = preg_replace('/' . $match[0] . '(\n' . $next_levels .'.*)*/', '', $gedcom);
+					$gedcom = preg_replace('/' . $match[0] . '(\n' . $next_levels . '.*)*/', '', $gedcom);
 				}
 				$this->updateFact($fact->getFactId(), $gedcom, $update_chan);
 			}

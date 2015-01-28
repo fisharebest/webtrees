@@ -73,7 +73,8 @@ case 'ASSO': // Associates of an individuals, whose name contains the search ter
 		}
 	}
 	echo json_encode($data);
-	exit;
+	
+	return;
 
 case 'CEME': // Cemetery fields, that contain the search term
 	$data = array();
@@ -83,7 +84,7 @@ case 'CEME': // Cemetery fields, that contain the search term
 			"SELECT SQL_CACHE i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom" .
 			" FROM `##individuals`" .
 			" WHERE i_gedcom LIKE '%\n2 CEME %' AND i_file=?" .
-			" ORDER BY SUBSTRING_INDEX(i_gedcom, '\n2 CEME ', -1) COLLATE '".WT_I18N::$collation."'"
+			" ORDER BY SUBSTRING_INDEX(i_gedcom, '\n2 CEME ', -1) COLLATE '" . WT_I18N::$collation . "'"
 		)
 		->execute(array(WT_GED_ID))
 		->fetchAll();
@@ -97,7 +98,8 @@ case 'CEME': // Cemetery fields, that contain the search term
 		}
 	}
 	echo json_encode($data);
-	exit;
+	
+	return;
 
 case 'FAM': // Families, whose name contains the search terms
 	$data = array();
@@ -116,7 +118,8 @@ case 'FAM': // Families, whose name contains the search terms
 		}
 	}
 	echo json_encode($data);
-	exit;
+	
+	return;
 
 case 'GIVN': // Given names, that start with the search term
 	// Do not filter by privacy.  Given names on their own do not identify individuals.
@@ -130,7 +133,8 @@ case 'GIVN': // Given names, that start with the search term
 		->execute(array($term, WT_GED_ID))
 		->fetchOneColumn()
 	);
-	exit;
+	
+	return;
 
 case 'INDI': // Individuals, whose name contains the search terms
 	$data = array();
@@ -152,7 +156,8 @@ case 'INDI': // Individuals, whose name contains the search terms
 		}
 	}
 	echo json_encode($data);
-	exit;
+	
+	return;
 
 case 'NOTE': // Notes which contain the search terms
 	$data = array();
@@ -166,7 +171,8 @@ case 'NOTE': // Notes which contain the search terms
 		}
 	}
 	echo json_encode($data);
-	exit;
+	
+	return;
 
 case 'OBJE':
 	$data = array();
@@ -180,7 +186,8 @@ case 'OBJE':
 		}
 	}
 	echo json_encode($data);
-	exit;
+	
+	return;
 
 case 'PLAC': // Place names (with hierarchy), that include the search term
 	// Do not filter by privacy.  Place names on their own do not identify individuals.
@@ -192,8 +199,8 @@ case 'PLAC': // Place names (with hierarchy), that include the search term
 		// No place found?  Use an external gazetteer
 		$url =
 			"http://api.geonames.org/searchJSON" .
-			"?name_startsWith=".urlencode($term) .
-			"&lang=".WT_LOCALE .
+			"?name_startsWith=" . urlencode($term) .
+			"&lang=" . WT_LOCALE .
 			"&fcode=CMTY&fcode=ADM4&fcode=PPL&fcode=PPLA&fcode=PPLC" .
 			"&style=full" .
 			"&username=" . $WT_TREE->getPreference('GEONAMES_ACCOUNT');
@@ -217,7 +224,8 @@ case 'PLAC': // Place names (with hierarchy), that include the search term
 		}
 	}
 	echo json_encode($data);
-	exit;
+	
+	return;
 
 case 'PLAC2': // Place names (without hierarchy), that include the search term
 	// Do not filter by privacy.  Place names on their own do not identify individuals.
@@ -226,12 +234,13 @@ case 'PLAC2': // Place names (without hierarchy), that include the search term
 			"SELECT SQL_CACHE p_place" .
 			" FROM `##places`" .
 			" WHERE p_place LIKE CONCAT('%', ?, '%') AND p_file=?" .
-			" ORDER BY p_place COLLATE '".WT_I18N::$collation."'"
+			" ORDER BY p_place COLLATE '" . WT_I18N::$collation . "'"
 		)
 		->execute(array($term, WT_GED_ID))
 		->fetchOneColumn()
 	);
-	exit;
+	
+	return;
 
 case 'REPO': // Repositories, that include the search terms
 	$data = array();
@@ -247,7 +256,8 @@ case 'REPO': // Repositories, that include the search terms
 		}
 	}
 	echo json_encode($data);
-	exit;
+	
+	return;
 
 case 'REPO_NAME': // Repository names, that include the search terms
 	$data = array();
@@ -261,7 +271,8 @@ case 'REPO_NAME': // Repository names, that include the search terms
 		}
 	}
 	echo json_encode($data);
-	exit;
+	
+	return;
 
 case 'SOUR': // Sources, that include the search terms
 	$data = array();
@@ -277,7 +288,8 @@ case 'SOUR': // Sources, that include the search terms
 		}
 	}
 	echo json_encode($data);
-	exit;
+	
+	return;
 
 case 'PAGE': // Citation details, for a given source, that contain the search term
 	$data = array();
@@ -325,7 +337,8 @@ case 'PAGE': // Citation details, for a given source, that contain the search te
 	// back into integers.
 	$data = array_values(array_unique($data));
 	echo json_encode($data);
-	exit;
+	
+	return;
 
 case 'SOUR_TITL': // Source titles, that include the search terms
 	$data = array();
@@ -334,7 +347,7 @@ case 'SOUR_TITL': // Source titles, that include the search terms
 		WT_DB::prepare(
 			"SELECT s_id AS xref, s_file AS gedcom_id, s_gedcom AS gedcom, s_name" .
 			" FROM `##sources`" .
-			" WHERE s_name LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND s_file=? ORDER BY s_name COLLATE '".WT_I18N::$collation."'"
+			" WHERE s_name LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND s_file=? ORDER BY s_name COLLATE '" . WT_I18N::$collation . "'"
 		)
 		->execute(array($term, WT_GED_ID))
 		->fetchAll();
@@ -346,7 +359,8 @@ case 'SOUR_TITL': // Source titles, that include the search terms
 		}
 	}
 	echo json_encode($data);
-	exit;
+	
+	return;
 
 case 'SURN': // Surnames, that start with the search term
 	// Do not filter by privacy.  Surnames on their own do not identify individuals.
@@ -360,7 +374,8 @@ case 'SURN': // Surnames, that start with the search term
 		->execute(array($term, WT_GED_ID))
 		->fetchOneColumn()
 	);
-	exit;
+	
+	return;
 
 case 'IFSRO':
 	$data = array();
@@ -424,7 +439,8 @@ case 'IFSRO':
 		}
 	}
 	echo json_encode($data);
-	exit;
+	
+	return;
 
 case 'IFS':
 	$data = array();
@@ -461,7 +477,8 @@ case 'IFS':
 		}
 	}
 	echo json_encode($data);
-	exit;
+	
+	return;
 }
 
 /**

@@ -32,12 +32,18 @@ class WT_Report_HTML_Line extends WT_Report_Base_Line {
 	 * @return void
 	 */
 	function render($renderer) {
-		if ($this->x1 == ".") $this->x1 = $renderer->getX();
-		if ($this->y1 == ".") $this->y1 = $renderer->getY();
-		if ($this->x2 == ".") {
+		if ($this->x1 == '.') {
+			$this->x1 = $renderer->getX();
+		}
+		if ($this->y1 == '.') {
+			$this->y1 = $renderer->getY();
+		}
+		if ($this->x2 == '.') {
 			$this->x2 = $renderer->getRemainingWidth();
 		}
-		if ($this->y2 == ".") $this->y2 = $renderer->getY();
+		if ($this->y2 == '.') {
+			$this->y2 = $renderer->getY();
+		}
 		// TODO Non verticle or horizontal lines can use a series of divs absolutely positioned
 		// Vertical line
 		if ($this->x1 == $this->x2) {

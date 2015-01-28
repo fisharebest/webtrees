@@ -27,13 +27,13 @@ use WT\Auth;
 
 define('WT_SCRIPT_NAME', 'inverselink.php');
 require './includes/session.php';
-require WT_ROOT.'includes/functions/functions_edit.php';
+require WT_ROOT . 'includes/functions/functions_edit.php';
 
-$controller = new WT_Controller_Simple();
+$controller = new WT_Controller_Simple;
 $controller
 	->restrictAccess(Auth::isEditor())
 	->setPageTitle(WT_I18N::translate('Link to an existing media object'))
-	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();')
 	->pageHeader();
 
@@ -44,13 +44,15 @@ $linkto   = WT_Filter::get('linkto', 'person|source|family|manage|repository|not
 $action   = WT_Filter::get('action', 'choose|update', 'choose');
 
 // If GedFAct_assistant/_MEDIA/ installed ======================
-if ($linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-	require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_MEDIA/media_0_inverselink.php';
+if ($linkto == 'manage' && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+	require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/_MEDIA/media_0_inverselink.php';
 } else {
 
 	//-- check for admin
-	$paramok =  true;
-	if (!empty($linktoid)) $paramok = WT_GedcomRecord::getInstance($linktoid)->canShow();
+	$paramok = true;
+	if (!empty($linktoid)) {
+		$paramok = WT_GedcomRecord::getInstance($linktoid)->canShow();
+	}
 
 	if ($action == "choose" && $paramok) {
 		echo '<form name="link" method="get" action="inverselink.php">';
@@ -70,7 +72,7 @@ if ($linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getAct
 		echo '<td class="optionbox wrap">';
 		if (!empty($mediaid)) {
 			//-- Get the title of this existing Media item
-			$title=
+			$title =
 				WT_DB::prepare("SELECT m_titl FROM `##media` where m_id=? AND m_file=?")
 				->execute(array($mediaid, WT_GED_ID))
 				->fetchOne();
@@ -82,20 +84,22 @@ if ($linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getAct
 		} else {
 			echo '<input data-autocomplete-type="OBJE" type="text" name="mediaid" id="mediaid" size="5">';
 			echo ' ', print_findmedia_link('mediaid', '1media');
-			echo "</td></tr>";
+			echo '</td></tr>';
 		}
 
-		if (!isset($linktoid)) $linktoid = "";
+		if (!isset($linktoid)) {
+			$linktoid = '';
+		}
 		echo '<tr><td class="descriptionbox">';
 
 		if ($linkto == "person") {
 			echo WT_I18N::translate('Individual'), "</td>";
 			echo '<td class="optionbox wrap">';
-			if ($linktoid=="") {
+			if ($linktoid == "") {
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktopid" size="3" value="', $linktoid, '"> ';
 				echo print_findindi_link('linktopid');
 			} else {
-				$record=WT_Individual::getInstance($linktoid);
+				$record = WT_Individual::getInstance($linktoid);
 				echo $record->format_list('span', false, $record->getFullName());
 			}
 		}
@@ -103,11 +107,11 @@ if ($linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getAct
 		if ($linkto == "family") {
 			echo WT_I18N::translate('Family'), '</td>';
 			echo '<td class="optionbox wrap">';
-			if ($linktoid=="") {
+			if ($linktoid == "") {
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktofamid" size="3" value="', $linktoid, '"> ';
 				echo print_findfamily_link('linktofamid');
 			} else {
-				$record=WT_Family::getInstance($linktoid);
+				$record = WT_Family::getInstance($linktoid);
 				echo $record->format_list('span', false, $record->getFullName());
 			}
 		}
@@ -115,21 +119,21 @@ if ($linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getAct
 		if ($linkto == "source") {
 			echo WT_I18N::translate('Source'), "</td>";
 			echo '<td  class="optionbox wrap">';
-			if ($linktoid=="") {
+			if ($linktoid == "") {
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktosid" size="3" value="', $linktoid, '"> ';
 				echo print_findsource_link('linktosid');
 			} else {
-				$record=WT_Source::getInstance($linktoid);
+				$record = WT_Source::getInstance($linktoid);
 				echo $record->format_list('span', false, $record->getFullName());
 			}
 		}
 		if ($linkto == "repository") {
 			echo WT_I18N::translate('Repository'), "</td>";
 			echo '<td  class="optionbox wrap">';
-			if ($linktoid=="") {
+			if ($linktoid == "") {
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktorid" size="3" value="', $linktoid, '">';
 			} else {
-				$record=WT_Repository::getInstance($linktoid);
+				$record = WT_Repository::getInstance($linktoid);
 				echo $record->format_list('span', false, $record->getFullName());
 			}
 		}
@@ -137,10 +141,10 @@ if ($linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getAct
 		if ($linkto == "note") {
 			echo WT_I18N::translate('Shared note'), "</td>";
 			echo '<td  class="optionbox wrap">';
-			if ($linktoid=="") {
+			if ($linktoid == "") {
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktonid" size="3" value="', $linktoid, '">';
 			} else {
-				$record=WT_Note::getInstance($linktoid);
+				$record = WT_Note::getInstance($linktoid);
 				echo $record->format_list('span', false, $record->getFullName());
 			}
 		}

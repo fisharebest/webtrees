@@ -26,14 +26,14 @@
 define('WT_SCRIPT_NAME', 'hourglass_ajax.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Hourglass();
+$controller = new WT_Controller_Hourglass;
 
 header('Content-type: text/html; charset=UTF-8');
 
 Zend_Session::writeClose();
 
 // -- print html header information
-if (WT_Filter::get('type')=='desc') {
+if (WT_Filter::get('type') == 'desc') {
 	$controller->printDescendency(WT_Individual::getInstance($controller->pid), 1, false);
 } else {
 	$controller->printPersonPedigree(WT_Individual::getInstance($controller->pid), 0);

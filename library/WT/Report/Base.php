@@ -407,10 +407,10 @@ class WT_Report_Base {
 			$this->pageh = $sizes[1];
 		} else {
 			if ($this->pagew < 10) {
-				die("<strong>REPORT ERROR WT_Report_Base::setup(): </strong>For custom size pages you must set \"customwidth\" larger then this in the XML file");
+				throw new DomainException('REPORT ERROR WT_Report_Base::setup(): For custom size pages you must set "customwidth" larger then this in the XML file');
 			}
 			if ($this->pageh < 10) {
-				die("<strong>REPORT ERROR WT_Report_Base::setup(): </strong>For custom size pages you must set \"customheight\" larger then this in the XML file");
+				throw new DomainException('REPORT ERROR WT_Report_Base::setup(): For custom size pages you must set "customheight" larger then this in the XML file');
 			}
 		}
 
@@ -577,7 +577,7 @@ function styleStartHandler($attrs) {
 	global $wt_report;
 
 	if (empty($attrs['name'])) {
-		die("<strong>REPORT ERROR Style: </strong> The \"name\" of the style is missing or not set in the XML file.");
+		throw new DomainException('REPORT ERROR Style: The "name" of the style is missing or not set in the XML file.');
 	}
 
 	// array Style that will be passed on
@@ -595,7 +595,7 @@ function styleStartHandler($attrs) {
 	// int The size of the font in points
 	$s['size'] = $wt_report->defaultFontSize;
 	if (!empty($attrs['size'])) {
-		$s['size'] = (int)$attrs['size'];
+		$s['size'] = (int) $attrs['size'];
 	} // Get it as int to ignore all decimal points or text (if any text then int(0))
 
 	// string B: bold, I: italic, U: underline, D: line trough, The default value is regular.
@@ -621,11 +621,11 @@ function docStartHandler($attrs) {
 
 	// Custom page width
 	if (!empty($attrs['customwidth'])) {
-		$wt_report->pagew = (int)$attrs['customwidth'];
+		$wt_report->pagew = (int) $attrs['customwidth'];
 	} // Get it as int to ignore all decimal points or text (if any text then int(0))
 	// Custom Page height
 	if (!empty($attrs['customheight'])) {
-		$wt_report->pageh = (int)$attrs['customheight'];
+		$wt_report->pageh = (int) $attrs['customheight'];
 	} // Get it as int to ignore all decimal points or text (if any text then int(0))
 
 	// Left Margin
@@ -633,7 +633,7 @@ function docStartHandler($attrs) {
 		if ($attrs['leftmargin'] === "0") {
 			$wt_report->leftmargin = 0;
 		} elseif (!empty($attrs['leftmargin'])) {
-			$wt_report->leftmargin = (int)$attrs['leftmargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
+			$wt_report->leftmargin = (int) $attrs['leftmargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
 		}
 	}
 	// Right Margin
@@ -641,7 +641,7 @@ function docStartHandler($attrs) {
 		if ($attrs['rightmargin'] === "0") {
 			$wt_report->rightmargin = 0;
 		} elseif (!empty($attrs['rightmargin'])) {
-			$wt_report->rightmargin = (int)$attrs['rightmargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
+			$wt_report->rightmargin = (int) $attrs['rightmargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
 		}
 	}
 	// Top Margin
@@ -649,7 +649,7 @@ function docStartHandler($attrs) {
 		if ($attrs['topmargin'] === "0") {
 			$wt_report->topmargin = 0;
 		} elseif (!empty($attrs['topmargin'])) {
-			$wt_report->topmargin = (int)$attrs['topmargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
+			$wt_report->topmargin = (int) $attrs['topmargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
 		}
 	}
 	// Bottom Margin
@@ -657,7 +657,7 @@ function docStartHandler($attrs) {
 		if ($attrs['bottommargin'] === "0") {
 			$wt_report->bottommargin = 0;
 		} elseif (!empty($attrs['bottommargin'])) {
-			$wt_report->bottommargin = (int)$attrs['bottommargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
+			$wt_report->bottommargin = (int) $attrs['bottommargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
 		}
 	}
 	// Header Margin
@@ -665,7 +665,7 @@ function docStartHandler($attrs) {
 		if ($attrs['headermargin'] === "0") {
 			$wt_report->headermargin = 0;
 		} elseif (!empty($attrs['headermargin'])) {
-			$wt_report->headermargin = (int)$attrs['headermargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
+			$wt_report->headermargin = (int) $attrs['headermargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
 		}
 	}
 	// Footer Margin
@@ -673,7 +673,7 @@ function docStartHandler($attrs) {
 		if ($attrs['footermargin'] === "0") {
 			$wt_report->footermargin = 0;
 		} elseif (!empty($attrs['footermargin'])) {
-			$wt_report->footermargin = (int)$attrs['footermargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
+			$wt_report->footermargin = (int) $attrs['footermargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
 		}
 	}
 
@@ -829,18 +829,18 @@ function cellStartHandler($attrs) {
 	// int Cell height (expressed in points) The starting height of this cell. If the text wraps the height will automatically be adjusted.
 	$height = 0;
 	if (!empty($attrs['height'])) {
-		$height = (int)$attrs['height'];
+		$height = (int) $attrs['height'];
 	}
 	// int Cell width (expressed in points) Setting the width to 0 will make it the width from the current location to the right margin.
 	$width = 0;
 	if (!empty($attrs['width'])) {
-		$width = (int)$attrs['width'];
+		$width = (int) $attrs['width'];
 	}
 
 	// int Stretch carachter mode
 	$stretch = 0;
 	if (!empty($attrs['stretch'])) {
-		$stretch = (int)$attrs['stretch'];
+		$stretch = (int) $attrs['stretch'];
 	}
 
 	// mixed Position the left corner of this box on the page. The default is the current position.
@@ -849,7 +849,7 @@ function cellStartHandler($attrs) {
 		if ($attrs['left'] === ".") {
 			$left = ".";
 		} elseif (!empty($attrs['left'])) {
-			$left = (int)$attrs['left'];
+			$left = (int) $attrs['left'];
 		} elseif ($attrs['left'] === "0") {
 			$left = 0;
 		}
@@ -860,7 +860,7 @@ function cellStartHandler($attrs) {
 		if ($attrs['top'] === ".") {
 			$top = ".";
 		} elseif (!empty($attrs['top'])) {
-			$top = (int)$attrs['top'];
+			$top = (int) $attrs['top'];
 		} elseif ($attrs['top'] === "0") {
 			$top = 0;
 		}
@@ -882,7 +882,7 @@ function cellStartHandler($attrs) {
 	$ln = 0;
 	if (isset($attrs['newline'])) {
 		if (!empty($attrs['newline'])) {
-			$ln = (int)$attrs['newline'];
+			$ln = (int) $attrs['newline'];
 		} elseif ($attrs['newline'] === "0") {
 			$ln = 0;
 		}
@@ -1078,12 +1078,12 @@ function textBoxStartHandler($attrs) {
 	// int The starting height of this cell. If the text wraps the height will automatically be adjusted
 	$height = 0;
 	if (!empty($attrs['height'])) {
-		$height = (int)$attrs['height'];
+		$height = (int) $attrs['height'];
 	}
 	// int Setting the width to 0 will make it the width from the current location to the margin
 	$width = 0;
 	if (!empty($attrs['width'])) {
-		$width = (int)$attrs['width'];
+		$width = (int) $attrs['width'];
 	}
 
 	// mixed Position the left corner of this box on the page. The default is the current position.
@@ -1092,7 +1092,7 @@ function textBoxStartHandler($attrs) {
 		if ($attrs['left'] === ".") {
 			$left = ".";
 		} elseif (!empty($attrs['left'])) {
-			$left = (int)$attrs['left'];
+			$left = (int) $attrs['left'];
 		} elseif ($attrs['left'] === "0") {
 			$left = 0;
 		}
@@ -1103,7 +1103,7 @@ function textBoxStartHandler($attrs) {
 		if ($attrs['top'] === ".") {
 			$top = ".";
 		} elseif (!empty($attrs['top'])) {
-			$top = (int)$attrs['top'];
+			$top = (int) $attrs['top'];
 		} elseif ($attrs['top'] === "0") {
 			$top = 0;
 		}
@@ -1429,7 +1429,7 @@ function repeatTagStartHandler($attrs) {
 			$count = preg_match_all("/$level $t(.*)/", $subrec, $match, PREG_SET_ORDER);
 			$i = 0;
 			while ($i < $count) {
-				$repeats[] = get_sub_record($level, "$level $t", $subrec, $i + 1);;
+				$repeats[] = get_sub_record($level, "$level $t", $subrec, $i + 1);
 				$i++;
 			}
 		}
@@ -1490,16 +1490,15 @@ function repeatTagEndHandler() {
 			//-- make sure everything is case sensitive
 			xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, false);
 			//-- set the main element handler functions
-			xml_set_element_handler($repeat_parser, "startElement", "endElement");
+			xml_set_element_handler($repeat_parser, 'startElement', 'endElement');
 			//-- set the character data handler
-			xml_set_character_data_handler($repeat_parser, "characterData");
+			xml_set_character_data_handler($repeat_parser, 'characterData');
 			if (!xml_parse($repeat_parser, $reportxml, true)) {
-				printf(
-					$reportxml . "\nRepeatTagEHandler XML error: %s at line %d",
+				throw new DomainException(sprintf(
+					'RepeatTagEHandler XML error: %s at line %d',
 					xml_error_string(xml_get_error_code($repeat_parser)),
 					xml_get_current_line_number($repeat_parser)
-				);
-				exit;
+				));
 			}
 			xml_parser_free($repeat_parser);
 		}
@@ -1537,9 +1536,7 @@ function varStartHandler($attrs) {
 	global $desc, $fact, $vars;
 
 	if (empty($attrs['var'])) {
-		die("<strong>REPORT ERROR var: </strong> The attribute \"var=\" is missing or not set in the XML file on line: " . xml_get_current_line_number(
-				$parser
-			));
+		throw new DomainException('REPORT ERROR var: The attribute "var=" is missing or not set in the XML file on line: ' . xml_get_current_line_number($parser));
 	}
 
 	$var = $attrs['var'];
@@ -1685,12 +1682,12 @@ function factsEndHandler() {
 			//-- make sure everything is case sensitive
 			xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, false);
 			//-- set the main element handler functions
-			xml_set_element_handler($repeat_parser, "startElement", "endElement");
+			xml_set_element_handler($repeat_parser, 'startElement', 'endElement');
 			//-- set the character data handler
-			xml_set_character_data_handler($repeat_parser, "characterData");
+			xml_set_character_data_handler($repeat_parser, 'characterData');
 			if (!xml_parse($repeat_parser, $reportxml, true)) {
-				die(sprintf(
-					$reportxml . "\nFactsEHandler XML error: %s at line %d",
+				throw new DomainException(sprintf(
+					'FactsEHandler XML error: %s at line %d',
 					xml_error_string(xml_get_error_code($repeat_parser)),
 					xml_get_current_line_number($repeat_parser)
 				));
@@ -1717,7 +1714,7 @@ function setVarStartHandler($attrs) {
 	global $vars, $gedrec, $fact, $desc, $generation;
 
 	if (empty($attrs['name'])) {
-		die("<strong>REPORT ERROR var: </strong> The attribute \"name=\" is missing or not set in the XML file");
+		throw new DomainException('REPORT ERROR var: The attribute "name" is missing or not set in the XML file');
 	}
 
 	$name = $attrs['name'];
@@ -1831,14 +1828,14 @@ function ifStartHandler($attrs) {
 				$level++;
 				$value = get_gedcom_value($id, $level, $gedrec);
 			}
-			$value = preg_replace("/^@(".WT_REGEX_XREF.")@$/", "$1", $value);		
+			$value = preg_replace("/^@(" . WT_REGEX_XREF . ")@$/", "$1", $value);
 			$value = "\"" . addslashes($value) . "\"";
 		}
 		$condition = str_replace("@$id", $value, $condition);
 		$i++;
 	}
 	$condition = "if ($condition) return true; else return false;";
-	$ret = @eval($condition);
+	$ret = eval($condition);
 	if (!$ret) {
 		$processIfs++;
 	}
@@ -2012,7 +2009,7 @@ function highlightedImageStartHandler($attrs) {
 		} elseif ($attrs['top'] === '.') {
 			$top = '.';
 		} elseif (!empty($attrs['top'])) {
-			$top = (int)$attrs['top'];
+			$top = (int) $attrs['top'];
 		}
 	}
 
@@ -2024,7 +2021,7 @@ function highlightedImageStartHandler($attrs) {
 		} elseif ($attrs['left'] === '.') {
 			$left = '.';
 		} elseif (!empty($attrs['left'])) {
-			$left = (int)$attrs['left'];
+			$left = (int) $attrs['left'];
 		}
 	}
 
@@ -2043,10 +2040,10 @@ function highlightedImageStartHandler($attrs) {
 	$width = 0;
 	$height = 0;
 	if (!empty($attrs['width'])) {
-		$width = (int)$attrs['width'];
+		$width = (int) $attrs['width'];
 	}
 	if (!empty($attrs['height'])) {
-		$height = (int)$attrs['height'];
+		$height = (int) $attrs['height'];
 	}
 
 	$person = WT_Individual::getInstance($id);
@@ -2105,7 +2102,7 @@ function imageStartHandler($attrs) {
 		} elseif ($attrs['top'] === '.') {
 			$top = '.';
 		} elseif (!empty($attrs['top'])) {
-			$top = (int)$attrs['top'];
+			$top = (int) $attrs['top'];
 		}
 	}
 
@@ -2117,7 +2114,7 @@ function imageStartHandler($attrs) {
 		} elseif ($attrs['left'] === '.') {
 			$left = '.';
 		} elseif (!empty($attrs['left'])) {
-			$left = (int)$attrs['left'];
+			$left = (int) $attrs['left'];
 		}
 	}
 
@@ -2136,10 +2133,10 @@ function imageStartHandler($attrs) {
 	$width = 0;
 	$height = 0;
 	if (!empty($attrs['width'])) {
-		$width = (int)$attrs['width'];
+		$width = (int) $attrs['width'];
 	}
 	if (!empty($attrs['height'])) {
-		$height = (int)$attrs['height'];
+		$height = (int) $attrs['height'];
 	}
 
 	$file = '';
@@ -2222,7 +2219,7 @@ function lineStartHandler($attrs) {
 		} elseif ($attrs['x1'] === ".") {
 			$x1 = ".";
 		} elseif (!empty($attrs['x1'])) {
-			$x1 = (int)$attrs['x1'];
+			$x1 = (int) $attrs['x1'];
 		}
 	}
 	// Start vertical position, current position (default)
@@ -2233,7 +2230,7 @@ function lineStartHandler($attrs) {
 		} elseif ($attrs['y1'] === ".") {
 			$y1 = ".";
 		} elseif (!empty($attrs['y1'])) {
-			$y1 = (int)$attrs['y1'];
+			$y1 = (int) $attrs['y1'];
 		}
 	}
 	// End horizontal position, maximum width (default)
@@ -2244,7 +2241,7 @@ function lineStartHandler($attrs) {
 		} elseif ($attrs['x2'] === ".") {
 			$x2 = ".";
 		} elseif (!empty($attrs['x2'])) {
-			$x2 = (int)$attrs['x2'];
+			$x2 = (int) $attrs['x2'];
 		}
 	}
 	// End vertical position
@@ -2255,7 +2252,7 @@ function lineStartHandler($attrs) {
 		} elseif ($attrs['y2'] === ".") {
 			$y2 = ".";
 		} elseif (!empty($attrs['y2'])) {
-			$y2 = (int)$attrs['y2'];
+			$y2 = (int) $attrs['y2'];
 		}
 	}
 
@@ -2314,7 +2311,7 @@ function listStartHandler($attrs) {
 				// Substitute global vars
 				$value = preg_replace_callback(
 					'/\$(\w+)/',
-					function ($matches) use ($vars) {
+					function($matches) use ($vars) {
 						return $vars[$matches[1]]['id'];
 					},
 					$value
@@ -2422,7 +2419,7 @@ function listStartHandler($attrs) {
 		unset($sql_join, $sql_where, $sql_order_by);
 		break;
 	default:
-		die("Invalid list name: $listname");
+		throw new DomainException('Invalid list name: ' . $listname);
 	}
 
 	$filters = array();
@@ -2577,7 +2574,7 @@ function listStartHandler($attrs) {
 		uasort($list, array("WT_GedcomRecord", "compare"));
 		break;
 	case "CHAN":
-		uasort($list, function (WT_GedcomRecord $x, WT_GedcomRecord $y) {
+		uasort($list, function(WT_GedcomRecord $x, WT_GedcomRecord $y) {
 			return $y->lastChangeTimestamp(true) - $x->lastChangeTimestamp(true);
 		});
 		break;
@@ -2659,12 +2656,11 @@ function listEndHandler() {
 				//-- set the character data handler
 				xml_set_character_data_handler($repeat_parser, "characterData");
 				if (!xml_parse($repeat_parser, $reportxml, true)) {
-					printf(
-						$reportxml . "\nListEHandler XML error: %s at line %d",
+					throw new DomainException(sprintf(
+						'ListEHandler XML error: %s at line %d',
 						xml_error_string(xml_get_error_code($repeat_parser)),
 						xml_get_current_line_number($repeat_parser)
-					);
-					exit;
+					));
 				}
 				xml_parser_free($repeat_parser);
 			} else {
@@ -2825,7 +2821,7 @@ function relativesStartHandler($attrs) {
 			foreach ($list as $key => $value) {
 				$generation = $value->generation;
 				if ($generation == $genCounter) {
-					$newarray[$key] = new stdClass();
+					$newarray[$key] = new stdClass;
 					$newarray[$key]->generation = $generation;
 				}
 			}
@@ -2905,12 +2901,7 @@ function relativesEndHandler() {
 			xml_set_character_data_handler($repeat_parser, "characterData");
 
 			if (!xml_parse($repeat_parser, $reportxml, true)) {
-				printf(
-					$reportxml . "\nRelativesEHandler XML error: %s at line %d",
-					xml_error_string(xml_get_error_code($repeat_parser)),
-					xml_get_current_line_number($repeat_parser)
-				);
-				exit;
+				throw new DomainException("RelativesEHandler XML error: %s at line %d", xml_error_string(xml_get_error_code($repeat_parser)), xml_get_current_line_number($repeat_parser));
 			}
 			xml_parser_free($repeat_parser);
 		}
@@ -3036,7 +3027,7 @@ function get_gedcom_value($tag, $level, $gedrec) {
 	$tags = explode(':', $tag);
 	$origlevel = $level;
 	if ($level == 0) {
-		$level = $gedrec{0} + 1;
+		$level = $gedrec{0} +1;
 	}
 
 	$subrec = $gedrec;

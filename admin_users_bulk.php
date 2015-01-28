@@ -2,7 +2,7 @@
 // Administrative User Interface.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team.
@@ -28,27 +28,34 @@ use WT\Auth;
 define('WT_SCRIPT_NAME', 'admin_users_bulk.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Page();
+$controller = new WT_Controller_Page;
 $controller
 	->restrictAccess(Auth::isAdmin())
 	->setPageTitle(WT_I18N::translate('Send broadcast messages'))
 	->pageHeader();
 
 ?>
-<div id="users_bulk">
-	<p>
-		<a href="#" onclick="message('all', 'messaging2', ''); return false;">
-			<?php echo WT_I18N::translate('Send a message to all users'); ?>
-		</a>
-	</p>
-	<p>
-		<a href="#" onclick="message('never_logged', 'messaging2', ''); return false;">
-			<?php echo WT_I18N::translate('Send a message to users who have never logged in'); ?>
-		</a>
-	</p>
-	<p>
-		<a href="#" onclick="message('last_6mo', 'messaging2', ''); return false;">
-			<?php echo WT_I18N::translate('Send a message to users who have not logged in for 6 months'); ?>
-		</a>
-	</p>
-</div>
+
+<ol class="breadcrumb small">
+	<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
+	<li><a href="admin_users.php"><?php echo WT_I18N::translate('User administration'); ?></a></li>
+	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+</ol>
+
+<h1><?php echo $controller->getPageTitle(); ?></h1>
+
+<p>
+	<a href="#" onclick="return message('all', 'messaging2', '');">
+		<?php echo WT_I18N::translate('Send a message to all users'); ?>
+	</a>
+</p>
+<p>
+	<a href="#" onclick="return message('never_logged', 'messaging2', '');">
+		<?php echo WT_I18N::translate('Send a message to users who have never logged in'); ?>
+	</a>
+</p>
+<p>
+	<a href="#" onclick="return message('last_6mo', 'messaging2', '');">
+		<?php echo WT_I18N::translate('Send a message to users who have not logged in for 6 months'); ?>
+	</a>
+</p>

@@ -25,12 +25,12 @@
 
 define('WT_SCRIPT_NAME', 'ancestry.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/functions/functions_print_lists.php';
+require_once WT_ROOT . 'includes/functions/functions_print_lists.php';
 
-$controller = new WT_Controller_Ancestry();
+$controller = new WT_Controller_Ancestry;
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');
 
 ?>
@@ -61,14 +61,14 @@ $controller
 				<td rowspan="2" class="optionbox">
 					<input type="radio" name="chart_style" value="0"
 					<?php
-						if ($controller->chart_style==0) {
-							echo ' checked="checked"';
+						if ($controller->chart_style == 0) {
+							echo 'checked';
 						}
 						echo ' onclick="statusDisable(\'cousins\');';
 						echo '">', WT_I18N::translate('List');
-						echo '<br><input type="radio" name="chart_style" value="1"';
-						if ($controller->chart_style==1) {
-							echo ' checked="checked"';
+						echo '<br><input type="radio" name="chart_style" value="1" ';
+						if ($controller->chart_style == 1) {
+							echo 'checked';
 						}
 						echo ' onclick="statusEnable(\'cousins\');';
 						echo '">', WT_I18N::translate('Booklet');
@@ -76,27 +76,27 @@ $controller
 					<br>
 					<?php
 						echo '<input ';
-						if ($controller->chart_style==0) {
-							echo 'disabled="disabled" ';
+						if ($controller->chart_style == 0) {
+							echo 'disabled';
 						}
-						echo 'id="cousins" type="checkbox" value="';
+						echo ' id="cousins" type="checkbox" value="';
 						if ($controller->show_cousins) {
-							echo '1" checked="checked" onclick="document.people.show_cousins.value=\'0\';"';
+							echo '1" checked onclick="document.people.show_cousins.value=\'0\';"';
 						} else {
 							echo '0" onclick="document.people.show_cousins.value=\'1\';"';
 						}
 						echo '>';
 						echo WT_I18N::translate('Show cousins');
-						echo '<br><input type="radio" name="chart_style" value="2"';
-						if ($controller->chart_style==2) {
-							echo ' checked="checked" ';
+						echo '<br><input type="radio" name="chart_style" value="2" ';
+						if ($controller->chart_style == 2) {
+							echo 'checked';
 						}
 						echo ' onclick="statusDisable(\'cousins\');"';
 						echo '>', WT_I18N::translate('Individuals');
 						echo '<br><input type="radio" name="chart_style" value="3"';
-						echo ' onclick="statusDisable(\'cousins\');"';
-						if ($controller->chart_style==3) {
-							echo ' checked="checked" ';
+						echo ' onclick="statusDisable(\'cousins\');" ';
+						if ($controller->chart_style == 3) {
+							echo 'checked';
 						}
 						echo '>', WT_I18N::translate('Families');
 					?>
@@ -112,10 +112,10 @@ $controller
 				<td class="optionbox">
 					<select name="PEDIGREE_GENERATIONS">
 						<?php
-							for ($i=2; $i<=$MAX_PEDIGREE_GENERATIONS; $i++) {
-								echo '<option value="', $i, '"';
-								if ($i==$OLD_PGENS) {
-									echo ' selected="selected"';
+							for ($i = 2; $i <= $MAX_PEDIGREE_GENERATIONS; $i++) {
+								echo '<option value="', $i, '" ';
+								if ($i == $OLD_PGENS) {
+									echo 'selected';
 								}
 									echo '>', WT_I18N::number($i), '</option>';
 								}
@@ -126,7 +126,7 @@ $controller
 					<?php echo WT_I18N::translate('Show details'); ?>
 				</td>
 				<td class="optionbox">
-					<input type="checkbox" value="<?php if ($controller->show_full) { echo '1" checked="checked" onclick="document.people.show_full.value=\'0\';'; } else { echo '0" onclick="document.people.show_full.value=\'1\';'; } ?>">
+					<input type="checkbox" value="<?php if ($controller->show_full) { echo '1" checked onclick="document.people.show_full.value=\'0\';'; } else { echo '0" onclick="document.people.show_full.value=\'1\';'; } ?>">
 				</td>
 			</tr>
 		</table>
@@ -141,9 +141,9 @@ if ($controller->error_message) {
 switch ($controller->chart_style) {
 case 0:
 	// List
-	$pidarr=array();
+	$pidarr = array();
 	echo '<ul id="ancestry_chart" class="chart_common">';
-	$controller->printChildAscendancy($controller->root, 1, $OLD_PGENS-1);
+	$controller->printChildAscendancy($controller->root, 1, $OLD_PGENS - 1);
 	echo '</ul>';
 	echo '<br>';
 	break;
@@ -155,7 +155,7 @@ case 1:
 	// first page : show indi facts
 	print_pedigree_person($controller->root);
 	// process the tree
-	$ancestors = $controller->sosaAncestors($PEDIGREE_GENERATIONS-1);
+	$ancestors = $controller->sosaAncestors($PEDIGREE_GENERATIONS - 1);
 	$ancestors = array_filter($ancestors); // The SOSA array includes empty placeholders
 	foreach ($ancestors as $sosa => $individual) {
 		foreach ($individual->getChildFamilies() as $family) {
@@ -172,7 +172,7 @@ case 2:
 	break;
 case 3:
 	// Family list
-	$ancestors = $controller->sosaAncestors($PEDIGREE_GENERATIONS-1);
+	$ancestors = $controller->sosaAncestors($PEDIGREE_GENERATIONS - 1);
 	$ancestors = array_filter($ancestors); // The SOSA array includes empty placeholders
 	$families = array();
 	foreach ($ancestors as $individual) {

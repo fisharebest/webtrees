@@ -10291,8 +10291,8 @@ msgid "P.M."
 msgstr "P.M."
 
 #: help_text.php:1308
-msgid "PGV must be version 4.2.3, or any SVN up to #6973"
-msgstr "PGV doit être la version 4.2.3, ou tout SVN jusqu’à # 6973"
+msgid "PGV must be version 4.2.3, or any SVN up to #%s"
+msgstr "PGV doit être la version 4.2.3, ou tout SVN jusqu’à # %s"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:82
@@ -13647,7 +13647,7 @@ msgstr "La durée en secondes durant laquelle la session webtrees reste active a
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:77
 #, php-format
-msgid "The two family trees have %1$s record which use the same “XREF”."
+msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
 msgstr[0] "Les deux arbres généalogiques ont %1$s enregistrement qui utilise le même code (“XREF”)."
 msgstr[1] "Les deux arbres généalogiques ont %1$s enregistrements qui utilisent le même identifiant (“XREF”)."
@@ -13814,7 +13814,7 @@ msgid "This database is only running MySQL version %s.  You cannot install webtr
 msgstr "La base de données nécessite au moins la version MySQL %s. Vous ne pouvez pas installer webtrees sur ce serveur."
 
 #: help_text.php:1207 setup.php:412
-msgid "This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site."
+msgid "This email address will be used to send password reminders, site notifications, and messages from other family members who are registered on the site."
 msgstr "Cette adresse courriel sera utilisée pour recevoir votre mot de passe, pour les notifications du site et pour les messages en provenance des autres membres de la famille enregistrés sur le site."
 
 #: addmedia.php:519
@@ -14390,7 +14390,7 @@ msgstr "Ce site est momentanément indisponible"
 
 #: admin_trees_manage.php:137
 #, php-format
-msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM."
+msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM file."
 msgstr "Toutes les données généalogiques de <b>%s</b> seront effacées et seront remplacées par les données provenant d’un autre GEDCOM."
 
 #: modules_v3/googlemap/module.php:1772

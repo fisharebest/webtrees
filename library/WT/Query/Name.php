@@ -18,82 +18,82 @@ class WT_Query_Name {
 		switch ($locale) {
 		case 'ar':
 			return array(
-				'ا','ب','ت','ث','ج','ح','خ','د','ذ','ر','ز','س','ش','ص','ض','ط','ظ','ع','غ','ف','ق','ك','ل','م','ن','ه','و','ي','آ','ة','ى','ی'
+				'ا', 'ب', 'ت', 'ث', 'ج', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'ه', 'و', 'ي', 'آ', 'ة', 'ى', 'ی'
 			);
 		case 'cs':
 			return array(
-				'A','B','C','D','E','F','G','H','CH','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'
+				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'CH', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
 			);
 		case 'da':
 		case 'nb':
 		case 'nn':
 			return array(
-				'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','Æ','Ø','Å'
+				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Æ', 'Ø', 'Å'
 			);
 		case 'el':
 			return array(
-				'Α','Β','Γ','Δ','Ε','Ζ','Η','Θ','Ι','Κ','Λ','Μ','Ν','Ξ','Ο','Π','Ρ','Σ','Τ','Υ','Φ','Χ','Ψ','Ω'
+				'Α', 'Β', 'Γ', 'Δ', 'Ε', 'Ζ', 'Η', 'Θ', 'Ι', 'Κ', 'Λ', 'Μ', 'Ν', 'Ξ', 'Ο', 'Π', 'Ρ', 'Σ', 'Τ', 'Υ', 'Φ', 'Χ', 'Ψ', 'Ω'
 			);
 		case 'es':
 			return array(
-				'A','B','C','D','E','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X','Y','Z'
+				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
 			);
 		case 'et':
 			return array(
-				'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','Š','Z','Ž','T','U','V','W','Õ','Ä','Ö','Ü','X','Y'
+				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Š', 'Z', 'Ž', 'T', 'U', 'V', 'W', 'Õ', 'Ä', 'Ö', 'Ü', 'X', 'Y'
 			);
 		case 'fi':
 		case 'sv':
 			return array(
-				'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','Å','Ä','Ö'
+				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Å', 'Ä', 'Ö'
 			);
 		case 'he':
 			return array(
-				'א','ב','ג','ד','ה','ו','ז','ח','ט','י','כ','ל','מ','נ','ס','ע','פ','צ','ק','ר','ש','ת'
+				'א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח', 'ט', 'י', 'כ', 'ל', 'מ', 'נ', 'ס', 'ע', 'פ', 'צ', 'ק', 'ר', 'ש', 'ת'
 			);
 		case 'hu':
 			return array(
-				'A','B','C','CS','D','DZ','DZS','E','F','G','GY','H','I','J','K','L','LY','M','N','NY','O','Ö','P','Q','R','S','SZ','T','TY','U','Ü','V','W','X','Y','Z','ZS'
+				'A', 'B', 'C', 'CS', 'D', 'DZ', 'DZS', 'E', 'F', 'G', 'GY', 'H', 'I', 'J', 'K', 'L', 'LY', 'M', 'N', 'NY', 'O', 'Ö', 'P', 'Q', 'R', 'S', 'SZ', 'T', 'TY', 'U', 'Ü', 'V', 'W', 'X', 'Y', 'Z', 'ZS'
 			);
 		case 'lt':
 			return array(
-				'A','Ą','B','C','Č','D','E','Ę','Ė','F','G','H','I','Y','Į','J','K','L','M','N','O','P','R','S','Š','T','U','Ų','Ū','V','Z','Ž'
+				'A', 'Ą', 'B', 'C', 'Č', 'D', 'E', 'Ę', 'Ė', 'F', 'G', 'H', 'I', 'Y', 'Į', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'Š', 'T', 'U', 'Ų', 'Ū', 'V', 'Z', 'Ž'
 			);
 		case 'nl':
 			return array(
-				'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','IJ'
+				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'IJ'
 			);
 		case 'pl':
 			return array(
-				'A','B','C','Ć','D','E','F','G','H','I','J','K','L','Ł','M','N','O','Ó','P','Q','R','S','Ś','T','U','V','W','X','Y','Z','Ź','Ż'
+				'A', 'B', 'C', 'Ć', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'Ł', 'M', 'N', 'O', 'Ó', 'P', 'Q', 'R', 'S', 'Ś', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ź', 'Ż'
 			);
 		case 'ro':
 			return array(
-				'A','Ă','Â','B','C','D','E','F','G','H','I','Î','J','K','L','M','N','O','P','Q','R','S','Ş','T','Ţ','U','V','W','X','Y','Z'
+				'A', 'Ă', 'Â', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'Î', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Ş', 'T', 'Ţ', 'U', 'V', 'W', 'X', 'Y', 'Z'
 			);
 		case 'ru':
 			return array(
-				'А','Б','В','Г','Д','Е','Ё','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч','Ш','Щ','Ъ','Ы','Ь','Э','Ю','Я'
+				'А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я'
 			);
 		case 'sk':
 			return array(
-				'A','Á','Ä','B','C','Č','D','Ď','E','É','F','G','H','I','Í','J','K','L','Ľ','Ĺ','M','N','Ň','O','Ó','Ô','P','Q','R','Ŕ','S','Š','T','Ť','U','Ú','V','W','X','Y','Ý','Z','Ž'
+				'A', 'Á', 'Ä', 'B', 'C', 'Č', 'D', 'Ď', 'E', 'É', 'F', 'G', 'H', 'I', 'Í', 'J', 'K', 'L', 'Ľ', 'Ĺ', 'M', 'N', 'Ň', 'O', 'Ó', 'Ô', 'P', 'Q', 'R', 'Ŕ', 'S', 'Š', 'T', 'Ť', 'U', 'Ú', 'V', 'W', 'X', 'Y', 'Ý', 'Z', 'Ž'
 			);
 		case 'sl':
 			return array(
-				'A','B','C','Č','Ć','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','Š','T','U','V','W','X','Y','Z','Ž'
+				'A', 'B', 'C', 'Č', 'Ć', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Š', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ž'
 			);
 		case 'sr':
 			return array(
-				'A','B','C','Č','Ć','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','Š','T','U','V','W','X','Y','Z','Ž'
+				'A', 'B', 'C', 'Č', 'Ć', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Š', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ž'
 			);
 		case 'tr':
 			return array(
-				'A','B','C','Ç','D','E','F','G','Ğ','H','I','İ','J','K','L','M','N','O','Ö','P','R','S','Ş','T','U','Ü','V','Y','Z'
+				'A', 'B', 'C', 'Ç', 'D', 'E', 'F', 'G', 'Ğ', 'H', 'I', 'İ', 'J', 'K', 'L', 'M', 'N', 'O', 'Ö', 'P', 'R', 'S', 'Ş', 'T', 'U', 'Ü', 'V', 'Y', 'Z'
 			);
 		default:
 			return array(
-				'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'
+				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
 			);
 		}
 	}
@@ -175,7 +175,7 @@ class WT_Query_Name {
 		switch (WT_LOCALE) {
 		case 'cs':
 			switch ($letter) {
-			case 'C': return $field." LIKE 'C%' COLLATE ".WT_I18N::$collation." AND ".$field." NOT LIKE 'CH%' COLLATE ".WT_I18N::$collation;
+			case 'C': return $field . " LIKE 'C%' COLLATE " . WT_I18N::$collation . " AND " . $field . " NOT LIKE 'CH%' COLLATE " . WT_I18N::$collation;
 			}
 			break;
 		case 'da':
@@ -183,31 +183,31 @@ class WT_Query_Name {
 		case 'nn':
 			switch ($letter) {
 			// AA gets listed under Å
-			case 'A': return $field." LIKE 'A%' COLLATE ".WT_I18N::$collation." AND ".$field." NOT LIKE 'AA%' COLLATE ".WT_I18N::$collation;
-			case 'Å': return "(".$field." LIKE 'Å%' COLLATE ".WT_I18N::$collation." OR ".$field." LIKE 'AA%' COLLATE ".WT_I18N::$collation.")";
+			case 'A': return $field . " LIKE 'A%' COLLATE " . WT_I18N::$collation . " AND " . $field . " NOT LIKE 'AA%' COLLATE " . WT_I18N::$collation;
+			case 'Å': return "(" . $field . " LIKE 'Å%' COLLATE " . WT_I18N::$collation . " OR " . $field . " LIKE 'AA%' COLLATE " . WT_I18N::$collation . ")";
 			}
 			break;
 		case 'hu':
 			switch ($letter) {
-			case 'C':  return $field." LIKE 'C%' COLLATE ". WT_I18N::$collation." AND ".$field." NOT LIKE 'CS%' COLLATE ". WT_I18N::$collation;
-			case 'D':  return $field." LIKE 'D%' COLLATE ". WT_I18N::$collation." AND ".$field." NOT LIKE 'DZ%' COLLATE ". WT_I18N::$collation;
-			case 'DZ': return $field." LIKE 'DZ%' COLLATE ".WT_I18N::$collation." AND ".$field." NOT LIKE 'DZS%' COLLATE ".WT_I18N::$collation;
-			case 'G':  return $field." LIKE 'G%' COLLATE ". WT_I18N::$collation." AND ".$field." NOT LIKE 'GY%' COLLATE ". WT_I18N::$collation;
-			case 'L':  return $field." LIKE 'L%' COLLATE ". WT_I18N::$collation." AND ".$field." NOT LIKE 'LY%' COLLATE ". WT_I18N::$collation;
-			case 'N':  return $field." LIKE 'N%' COLLATE ". WT_I18N::$collation." AND ".$field." NOT LIKE 'NY%' COLLATE ". WT_I18N::$collation;
-			case 'S':  return $field." LIKE 'S%' COLLATE ". WT_I18N::$collation." AND ".$field." NOT LIKE 'SZ%' COLLATE ". WT_I18N::$collation;
-			case 'T':  return $field." LIKE 'T%' COLLATE ". WT_I18N::$collation." AND ".$field." NOT LIKE 'TY%' COLLATE ". WT_I18N::$collation;
-			case 'Z':  return $field." LIKE 'Z%' COLLATE ". WT_I18N::$collation." AND ".$field." NOT LIKE 'ZS%' COLLATE ". WT_I18N::$collation;
+			case 'C':  return $field . " LIKE 'C%' COLLATE " . WT_I18N::$collation . " AND " . $field . " NOT LIKE 'CS%' COLLATE " . WT_I18N::$collation;
+			case 'D':  return $field . " LIKE 'D%' COLLATE " . WT_I18N::$collation . " AND " . $field . " NOT LIKE 'DZ%' COLLATE " . WT_I18N::$collation;
+			case 'DZ': return $field . " LIKE 'DZ%' COLLATE " . WT_I18N::$collation . " AND " . $field . " NOT LIKE 'DZS%' COLLATE " . WT_I18N::$collation;
+			case 'G':  return $field . " LIKE 'G%' COLLATE " . WT_I18N::$collation . " AND " . $field . " NOT LIKE 'GY%' COLLATE " . WT_I18N::$collation;
+			case 'L':  return $field . " LIKE 'L%' COLLATE " . WT_I18N::$collation . " AND " . $field . " NOT LIKE 'LY%' COLLATE " . WT_I18N::$collation;
+			case 'N':  return $field . " LIKE 'N%' COLLATE " . WT_I18N::$collation . " AND " . $field . " NOT LIKE 'NY%' COLLATE " . WT_I18N::$collation;
+			case 'S':  return $field . " LIKE 'S%' COLLATE " . WT_I18N::$collation . " AND " . $field . " NOT LIKE 'SZ%' COLLATE " . WT_I18N::$collation;
+			case 'T':  return $field . " LIKE 'T%' COLLATE " . WT_I18N::$collation . " AND " . $field . " NOT LIKE 'TY%' COLLATE " . WT_I18N::$collation;
+			case 'Z':  return $field . " LIKE 'Z%' COLLATE " . WT_I18N::$collation . " AND " . $field . " NOT LIKE 'ZS%' COLLATE " . WT_I18N::$collation;
 			}
 			break;
 		case 'nl':
 			switch ($letter) {
-			case 'I': return $field." LIKE 'I%' COLLATE ".WT_I18N::$collation." AND ".$field." NOT LIKE 'IJ%' COLLATE ".WT_I18N::$collation;
+			case 'I': return $field . " LIKE 'I%' COLLATE " . WT_I18N::$collation . " AND " . $field . " NOT LIKE 'IJ%' COLLATE " . WT_I18N::$collation;
 			}
 			break;
 		}
 		// Easy cases: the MySQL collation rules take care of it
-		return "$field LIKE CONCAT('@',".WT_DB::quote($letter).",'%') COLLATE ".WT_I18N::$collation." ESCAPE '@'";
+		return "$field LIKE CONCAT('@'," . WT_DB::quote($letter) . ",'%') COLLATE " . WT_I18N::$collation . " ESCAPE '@'";
 	}
 
 	/**
@@ -286,7 +286,7 @@ class WT_Query_Name {
 	 * @return integer[]
 	 */
 	public static function givenAlpha($surn, $salpha, $marnm, $fams, $ged_id) {
-		$alphas=array();
+		$alphas = array();
 
 		$sql =
 			"SELECT SQL_CACHE COUNT(DISTINCT n_id)" .
@@ -297,9 +297,9 @@ class WT_Query_Name {
 
 		if ($surn) {
 			$sql .= " AND n_surn=" . WT_DB::quote($surn) . " COLLATE '" . WT_I18N::$collation . "'";
-		} elseif ($salpha==',') {
+		} elseif ($salpha == ',') {
 			$sql .= " AND n_surn=''";
-		} elseif ($salpha=='@') {
+		} elseif ($salpha == '@') {
 			$sql .= " AND n_surn='@N.N.'";
 		} elseif ($salpha) {
 			$sql .= " AND " . self::getInitialSql('n_surn', $salpha);
@@ -312,7 +312,7 @@ class WT_Query_Name {
 		// are any names beginning with that letter.  It looks better to
 		// show the full alphabet, rather than omitting rare letters such as X
 		foreach (self::getAlphabetForLocale(WT_LOCALE) as $letter) {
-			$count=WT_DB::prepare($sql . " AND " . self::getInitialSql('n_givn', $letter))->fetchOne();
+			$count = WT_DB::prepare($sql . " AND " . self::getInitialSql('n_givn', $letter))->fetchOne();
 			$alphas[$letter] = $count;
 		}
 
@@ -327,9 +327,9 @@ class WT_Query_Name {
 
 		if ($surn) {
 			$sql .= " AND n_surn=" . WT_DB::quote($surn) . " COLLATE '" . WT_I18N::$collation . "'";
-		} elseif ($salpha==',') {
+		} elseif ($salpha == ',') {
 			$sql .= " AND n_surn=''";
-		} elseif ($salpha=='@') {
+		} elseif ($salpha == '@') {
 			$sql .= " AND n_surn='@N.N.'";
 		} elseif ($salpha) {
 			$sql .= " AND " . self::getInitialSql('n_surn', $salpha);
@@ -361,34 +361,34 @@ class WT_Query_Name {
 	 * @return array
 	 */
 	public static function surnames($surn, $salpha, $marnm, $fams, $ged_id) {
-		$sql=
-			"SELECT SQL_CACHE n2.n_surn, n1.n_surname, n1.n_id".
-			" FROM `##name` n1 ".
-			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "").
-			" JOIN (SELECT n_surn, n_file FROM `##name`".
-			" WHERE n_file={$ged_id}".
+		$sql =
+			"SELECT SQL_CACHE n2.n_surn, n1.n_surname, n1.n_id" .
+			" FROM `##name` n1 " .
+			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "") .
+			" JOIN (SELECT n_surn, n_file FROM `##name`" .
+			" WHERE n_file={$ged_id}" .
 			($marnm ? "" : " AND n_type!='_MARNM'");
 
 		if ($surn) {
-			$sql.=" AND n_surn COLLATE '".WT_I18N::$collation."' =".WT_DB::quote($surn);
-		} elseif ($salpha==',') {
-			$sql.=" AND n_surn=''";
-		} elseif ($salpha=='@') {
-			$sql.=" AND n_surn='@N.N.'";
+			$sql .= " AND n_surn COLLATE '" . WT_I18N::$collation . "' =" . WT_DB::quote($surn);
+		} elseif ($salpha == ',') {
+			$sql .= " AND n_surn=''";
+		} elseif ($salpha == '@') {
+			$sql .= " AND n_surn='@N.N.'";
 		} elseif ($salpha) {
-			$sql.=" AND ".self::getInitialSql('n_surn', $salpha);
+			$sql .= " AND " . self::getInitialSql('n_surn', $salpha);
 		} else {
 			// All surnames
-			$sql.=" AND n_surn NOT IN ('', '@N.N.')";
+			$sql .= " AND n_surn NOT IN ('', '@N.N.')";
 		}
-		$sql.=" GROUP BY n_surn COLLATE '".WT_I18N::$collation."', n_file) n2 ON (n1.n_surn=n2.n_surn COLLATE '".WT_I18N::$collation."' AND n1.n_file=n2.n_file)";
+		$sql .= " GROUP BY n_surn COLLATE '" . WT_I18N::$collation . "', n_file) n2 ON (n1.n_surn=n2.n_surn COLLATE '" . WT_I18N::$collation . "' AND n1.n_file=n2.n_file)";
 		if (!$marnm) {
-			$sql.=" AND n_type!='_MARNM'";
+			$sql .= " AND n_type!='_MARNM'";
 		}
 
-		$list=array();
+		$list = array();
 		foreach (WT_DB::prepare($sql)->fetchAll() as $row) {
-			$list[WT_I18N::strtoupper($row->n_surn)][$row->n_surname][$row->n_id]=true;
+			$list[WT_I18N::strtoupper($row->n_surn)][$row->n_surname][$row->n_id] = true;
 		}
 		return $list;
 	}
@@ -409,7 +409,7 @@ class WT_Query_Name {
 	 * @return WT_Individual[]
 	 */
 	public static function individuals($surn, $salpha, $galpha, $marnm, $fams, $ged_id) {
-		$sql=
+		$sql =
 			"SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom, n_full " .
 			"FROM `##individuals` " .
 			"JOIN `##name` ON (n_id=i_id AND n_file=i_file) " .
@@ -419,12 +419,12 @@ class WT_Query_Name {
 
 		if ($surn) {
 			$sql .= " AND n_surn COLLATE '" . WT_I18N::$collation . "'=" . WT_DB::quote($surn);
-		} elseif ($salpha==',') {
+		} elseif ($salpha == ',') {
 			$sql .= " AND n_surn=''";
-		} elseif ($salpha=='@') {
+		} elseif ($salpha == '@') {
 			$sql .= " AND n_surn='@N.N.'";
 		} elseif ($salpha) {
-			$sql .= " AND ".self::getInitialSql('n_surn', $salpha);
+			$sql .= " AND " . self::getInitialSql('n_surn', $salpha);
 		} else {
 			// All surnames
 			$sql .= " AND n_surn NOT IN ('', '@N.N.')";
@@ -469,10 +469,10 @@ class WT_Query_Name {
 	 * @return WT_Family[]
 	 */
 	public static function families($surn, $salpha, $galpha, $marnm, $ged_id) {
-		$list=array();
+		$list = array();
 		foreach (self::individuals($surn, $salpha, $galpha, $marnm, true, $ged_id) as $indi) {
 			foreach ($indi->getSpouseFamilies() as $family) {
-				$list[$family->getXref()]=$family;
+				$list[$family->getXref()] = $family;
 			}
 		}
 		usort($list, array('WT_GedcomRecord', 'compare'));

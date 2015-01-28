@@ -27,7 +27,7 @@
 define('WT_SCRIPT_NAME', 'statisticsplot.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Ajax();
+$controller = new WT_Controller_Ajax;
 
 $stats = new WT_Stats($GEDCOM);
 
@@ -257,7 +257,7 @@ function lifespan_by_birth_year() {
 		$num = $stats->statsAgeQuery(false, 'BIRT');
 		foreach ($num as $values) {
 			foreach ($values as $age_value) {
-				fill_y_data(0, (int)($age_value / 365.25), 1);
+				fill_y_data(0, (int) ($age_value / 365.25), 1);
 				$n1++;
 			}
 		}
@@ -265,14 +265,14 @@ function lifespan_by_birth_year() {
 		$num = $stats->statsAgeQuery(false, 'BIRT', 'M');
 		foreach ($num as $values) {
 			foreach ($values as $age_value) {
-				fill_y_data(0, (int)($age_value / 365.25), 1);
+				fill_y_data(0, (int) ($age_value / 365.25), 1);
 				$n1++;
 			}
 		}
 		$num = $stats->statsAgeQuery(false, 'BIRT', 'F');
 		foreach ($num as $values) {
 			foreach ($values as $age_value) {
-				fill_y_data(1, (int)($age_value / 365.25), 1);
+				fill_y_data(1, (int) ($age_value / 365.25), 1);
 				$n1++;
 			}
 		}
@@ -282,7 +282,7 @@ function lifespan_by_birth_year() {
 			$num = $stats->statsAgeQuery(false, 'BIRT', 'BOTH', $zstart, $boundary);
 			foreach ($num as $values) {
 				foreach ($values as $age_value) {
-					fill_y_data($boundary, (int)($age_value / 365.25), 1);
+					fill_y_data($boundary, (int) ($age_value / 365.25), 1);
 					$n1++;
 				}
 			}
@@ -299,7 +299,7 @@ function lifespan_by_death_year() {
 		$num = $stats->statsAgeQuery(false, 'DEAT');
 		foreach ($num as $values) {
 			foreach ($values as $age_value) {
-				fill_y_data(0, (int)($age_value / 365.25), 1);
+				fill_y_data(0, (int) ($age_value / 365.25), 1);
 				$n1++;
 			}
 		}
@@ -307,14 +307,14 @@ function lifespan_by_death_year() {
 		$num = $stats->statsAgeQuery(false, 'DEAT', 'M');
 		foreach ($num as $values) {
 			foreach ($values as $age_value) {
-				fill_y_data(0, (int)($age_value / 365.25), 1);
+				fill_y_data(0, (int) ($age_value / 365.25), 1);
 				$n1++;
 			}
 		}
 		$num = $stats->statsAgeQuery(false, 'DEAT', 'F');
 		foreach ($num as $values) {
 			foreach ($values as $age_value) {
-				fill_y_data(1, (int)($age_value / 365.25), 1);
+				fill_y_data(1, (int) ($age_value / 365.25), 1);
 				$n1++;
 			}
 		}
@@ -324,7 +324,7 @@ function lifespan_by_death_year() {
 			$num = $stats->statsAgeQuery(false, 'DEAT', 'BOTH', $zstart, $boundary);
 			foreach ($num as $values) {
 				foreach ($values as $age_value) {
-					fill_y_data($boundary, (int)($age_value / 365.25), 1);
+					fill_y_data($boundary, (int) ($age_value / 365.25), 1);
 					$n1++;
 				}
 			}
@@ -340,23 +340,23 @@ function age_at_marriage() {
 	if ($z_axis == 300) {
 		$num = $stats->statsMarrAgeQuery(false, 'M');
 		foreach ($num as $values) {
-			fill_y_data(0, (int)($values['age'] / 365.25), 1);
+			fill_y_data(0, (int) ($values['age'] / 365.25), 1);
 			$n1++;
 		}
 		$num = $stats->statsMarrAgeQuery(false, 'F');
 		foreach ($num as $values) {
-			fill_y_data(0, (int)($values['age'] / 365.25), 1);
+			fill_y_data(0, (int) ($values['age'] / 365.25), 1);
 			$n1++;
 		}
 	} else if ($z_axis == 301) {
 		$num = $stats->statsMarrAgeQuery(false, 'M');
 		foreach ($num as $values) {
-			fill_y_data(0, (int)($values['age'] / 365.25), 1);
+			fill_y_data(0, (int) ($values['age'] / 365.25), 1);
 			$n1++;
 		}
 		$num = $stats->statsMarrAgeQuery(false, 'F');
 		foreach ($num as $values) {
-			fill_y_data(1, (int)($values['age'] / 365.25), 1);
+			fill_y_data(1, (int) ($values['age'] / 365.25), 1);
 			$n1++;
 		}
 	} else {
@@ -364,12 +364,12 @@ function age_at_marriage() {
 		foreach ($z_boundaries as $boundary) {
 			$num = $stats->statsMarrAgeQuery(false, 'M', $zstart, $boundary);
 			foreach ($num as $values) {
-				fill_y_data($boundary, (int)($values['age'] / 365.25), 1);
+				fill_y_data($boundary, (int) ($values['age'] / 365.25), 1);
 				$n1++;
 			}
 			$num = $stats->statsMarrAgeQuery(false, 'F', $zstart, $boundary);
 			foreach ($num as $values) {
-				fill_y_data($boundary, (int)($values['age'] / 365.25), 1);
+				fill_y_data($boundary, (int) ($values['age'] / 365.25), 1);
 				$n1++;
 			}
 			$zstart = $boundary + 1;
@@ -386,7 +386,7 @@ function age_at_first_marriage() {
 		$indi = array();
 		foreach ($num as $values) {
 			if (!in_array($values['d_gid'], $indi)) {
-				fill_y_data(0, (int)($values['age'] / 365.25), 1);
+				fill_y_data(0, (int) ($values['age'] / 365.25), 1);
 				$n1++;
 				$indi[] = $values['d_gid'];
 			}
@@ -395,7 +395,7 @@ function age_at_first_marriage() {
 		$indi = array();
 		foreach ($num as $values) {
 			if (!in_array($values['d_gid'], $indi)) {
-				fill_y_data(0, (int)($values['age'] / 365.25), 1);
+				fill_y_data(0, (int) ($values['age'] / 365.25), 1);
 				$n1++;
 				$indi[] = $values['d_gid'];
 			}
@@ -405,7 +405,7 @@ function age_at_first_marriage() {
 		$indi = array();
 		foreach ($num as $values) {
 			if (!in_array($values['d_gid'], $indi)) {
-				fill_y_data(0, (int)($values['age'] / 365.25), 1);
+				fill_y_data(0, (int) ($values['age'] / 365.25), 1);
 				$n1++;
 				$indi[] = $values['d_gid'];
 			}
@@ -414,7 +414,7 @@ function age_at_first_marriage() {
 		$indi = array();
 		foreach ($num as $values) {
 			if (!in_array($values['d_gid'], $indi)) {
-				fill_y_data(1, (int)($values['age'] / 365.25), 1);
+				fill_y_data(1, (int) ($values['age'] / 365.25), 1);
 				$n1++;
 				$indi[] = $values['d_gid'];
 			}
@@ -426,7 +426,7 @@ function age_at_first_marriage() {
 			$num = $stats->statsMarrAgeQuery(false, 'M', $zstart, $boundary);
 			foreach ($num as $values) {
 				if (!in_array($values['d_gid'], $indi)) {
-					fill_y_data($boundary, (int)($values['age'] / 365.25), 1);
+					fill_y_data($boundary, (int) ($values['age'] / 365.25), 1);
 					$n1++;
 					$indi[] = $values['d_gid'];
 				}
@@ -434,7 +434,7 @@ function age_at_first_marriage() {
 			$num = $stats->statsMarrAgeQuery(false, 'F', $zstart, $boundary);
 			foreach ($num as $values) {
 				if (!in_array($values['d_gid'], $indi)) {
-					fill_y_data($boundary, (int)($values['age'] / 365.25), 1);
+					fill_y_data($boundary, (int) ($values['age'] / 365.25), 1);
 					$n1++;
 					$indi[] = $values['d_gid'];
 				}
@@ -628,7 +628,7 @@ function my_plot($mytitle, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 	}
 	$imgurl .= '&amp;chxt=x,x,y,y&amp;chxl=0:|';
 	for ($i = 0; $i < count($xdata); $i++) {
-		$imgurl .= $xdata[$i] . '|';
+		$imgurl .= rawurlencode($xdata[$i]) . '|';
 	}
 
 	$imgurl .= '1:||||' . rawurlencode($xtitle) . '|2:|';
@@ -765,8 +765,7 @@ function set_parameters($current, $indfam, $xg, $zg, $titstr, $xt, $gx, $gz, $my
 	global $stats;
 
 	if (!function_exists($myfunc)) {
-		echo WT_I18N::translate('%s not implemented', $myfunc);
-		exit;
+		throw new DomainException(WT_I18N::translate('%s not implemented', $myfunc));
 	}
 
 	$monthdata = array();
@@ -964,6 +963,6 @@ case '4':
 	break;
 default:
 	echo '<i class="icon-loading-large"></i>';
-	exit;
+	break;
 }
 echo '</div>';

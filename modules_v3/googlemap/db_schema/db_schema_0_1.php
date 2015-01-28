@@ -30,21 +30,21 @@
 
 // Create all of the tables needed for this module
 WT_DB::exec(
-	"CREATE TABLE IF NOT EXISTS `##placelocation` (".
-	" pl_id        INTEGER      NOT NULL,".
-	" pl_parent_id INTEGER          NULL,".
-	" pl_level     INTEGER          NULL,".
-	" pl_place     VARCHAR(255)     NULL,".
-	" pl_long      VARCHAR(30)      NULL,".
-	" pl_lati      VARCHAR(30)      NULL,".
-	" pl_zoom      INTEGER          NULL,".
-	" pl_icon      VARCHAR(255)     NULL,".
-	" PRIMARY KEY     (pl_id),".
-	"         KEY ix1 (pl_level),".
-	"         KEY ix2 (pl_long),".
-	"         KEY ix3 (pl_lati),".
-	"         KEY ix4 (pl_place),".
-	"         KEY ix5 (pl_parent_id)".
+	"CREATE TABLE IF NOT EXISTS `##placelocation` (" .
+	" pl_id        INTEGER      NOT NULL," .
+	" pl_parent_id INTEGER          NULL," .
+	" pl_level     INTEGER          NULL," .
+	" pl_place     VARCHAR(255)     NULL," .
+	" pl_long      VARCHAR(30)      NULL," .
+	" pl_lati      VARCHAR(30)      NULL," .
+	" pl_zoom      INTEGER          NULL," .
+	" pl_icon      VARCHAR(255)     NULL," .
+	" PRIMARY KEY     (pl_id)," .
+	"         KEY ix1 (pl_level)," .
+	"         KEY ix2 (pl_long)," .
+	"         KEY ix3 (pl_lati)," .
+	"         KEY ix4 (pl_place)," .
+	"         KEY ix5 (pl_parent_id)" .
 	") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 );
 

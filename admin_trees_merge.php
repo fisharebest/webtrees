@@ -2,7 +2,7 @@
 // Merge two trees, by copying the records from one into another.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2014 Greg Roach
+// Copyright (C) 2015 Greg Roach
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -24,13 +24,22 @@ define('WT_SCRIPT_NAME', 'admin_trees_merge.php');
 require './includes/session.php';
 require WT_ROOT . 'includes/functions/functions_edit.php';
 
-$controller = new WT_Controller_Page();
+$controller = new WT_Controller_Page;
 $controller
 	->restrictAccess(Auth::isManager())
 	->setPageTitle(WT_I18N::translate('Merge family trees'))
 	->pageHeader();
 
-echo '<h2>', $controller->getPageTitle(), '</h2>';
+?>
+<ol class="breadcrumb small">
+	<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
+	<li><a href="admin_trees_manage.php"><?php echo WT_I18N::translate('Manage family trees'); ?></a></li>
+	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+</ol>
+
+<h1><?php echo $controller->getPageTitle(); ?></h1>
+
+<?php
 
 $tree1_id = WT_Filter::post('tree1_id');
 $tree2_id = WT_Filter::post('tree2_id');
@@ -48,7 +57,7 @@ if ($tree1_id && $tree2_id != $tree1_id) {
 		" SELECT m_id AS xref, 'OBJE' AS type FROM `##media` WHERE m_file = ?" .
 		"  UNION " .
 		" SELECT o_id AS xref, o_type AS type FROM `##other` WHERE o_file = ? AND o_type NOT IN ('HEAD', 'TRLR')" .
-		") AS this_tree JOIN (".
+		") AS this_tree JOIN (" .
 		" SELECT xref FROM `##change` WHERE gedcom_id = ?" .
 		"  UNION " .
 		" SELECT i_id AS xref FROM `##individuals` WHERE i_file = ?" .
@@ -62,19 +71,19 @@ if ($tree1_id && $tree2_id != $tree1_id) {
 		" SELECT o_id AS xref FROM `##other` WHERE o_file = ? AND o_type NOT IN ('HEAD', 'TRLR')" .
 		") AS other_trees USING (xref)"
 	)->execute(array(
-			$tree1_id, $tree1_id, $tree1_id, $tree1_id, $tree1_id,
-			$tree2_id, $tree2_id, $tree2_id, $tree2_id, $tree2_id, $tree2_id
+		$tree1_id, $tree1_id, $tree1_id, $tree1_id, $tree1_id,
+		$tree2_id, $tree2_id, $tree2_id, $tree2_id, $tree2_id, $tree2_id
 	))->fetchAssoc();
 
 	if ($xrefs) {
 		$tree1 = WT_Tree::get($tree1_id);
 		$tree2 = WT_Tree::get($tree2_id);
 		echo
-			'<p>', WT_I18N::translate('In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”.') ,'</p>',
+			'<p>', WT_I18N::translate('In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”.'), '</p>',
 			'<p>',
 			WT_I18N::plural(
 				/* I18N: An XREF is the identification number used in GEDCOM files. */
-				'The two family trees have %1$s record which use the same “XREF”.',
+				'The two family trees have %1$s record which uses the same “XREF”.',
 				'The two family trees have %1$s records which use the same “XREF”.',
 				count($xrefs), count($xrefs)
 			),
@@ -185,6 +194,8 @@ if ($tree1_id && $tree2_id != $tree1_id) {
 	),
 	'</p>';
 
-	echo '<input type="submit" value="', WT_I18N::translate('continue'), '">';
+	echo '<button type="submit" class="btn btn-primary">';
+	echo '<i class="fa fa-check"></i> ', /* I18N: Button label */ WT_I18N::translate('continue');
+	echo '</button>';
 	echo '</form>';
 }

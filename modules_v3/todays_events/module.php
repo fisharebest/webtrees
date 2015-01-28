@@ -1,6 +1,6 @@
 <?php
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -20,6 +20,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use WT\Auth;
+use WT\Theme;
 
 /**
  * Class todays_events_WT_Module
@@ -36,20 +37,21 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 	}
 
 	/** {@inheritdoc} */
-	public function getBlock($block_id, $template=true, $cfg=null) {
+	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $ctype;
 
-		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
+		require_once WT_ROOT . 'includes/functions/functions_print_lists.php';
 
-		$filter    = get_block_setting($block_id, 'filter',    true);
-		$onlyBDM   = get_block_setting($block_id, 'onlyBDM',   true);
+		$filter    = get_block_setting($block_id, 'filter', '1');
+		$onlyBDM   = get_block_setting($block_id, 'onlyBDM', '1');
 		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');
 		$sortStyle = get_block_setting($block_id, 'sortStyle', 'alpha');
-		$block     = get_block_setting($block_id, 'block',     true);
+		$block     = get_block_setting($block_id, 'block', '1');
+
 		if ($cfg) {
 			foreach (array('filter', 'onlyBDM', 'infoStyle', 'sortStyle', 'block') as $name) {
 				if (array_key_exists($name, $cfg)) {
-					$$name=$cfg[$name];
+					$$name = $cfg[$name];
 				}
 			}
 		}
@@ -81,10 +83,9 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 
 		if ($template) {
 			if ($block) {
-				require WT_THEME_DIR . 'templates/block_small_temp.php';
-			} else {
-				require WT_THEME_DIR . 'templates/block_main_temp.php';
+				$class .= ' small_inner_block';
 			}
+			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 			return $content;
 		}
@@ -108,38 +109,39 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
 		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
-			set_block_setting($block_id, 'filter',    WT_Filter::postBool('filter'));
-			set_block_setting($block_id, 'onlyBDM',   WT_Filter::postBool('onlyBDM'));
+			set_block_setting($block_id, 'filter', WT_Filter::postBool('filter'));
+			set_block_setting($block_id, 'onlyBDM', WT_Filter::postBool('onlyBDM'));
 			set_block_setting($block_id, 'infoStyle', WT_Filter::post('infoStyle', 'list|table', 'table'));
 			set_block_setting($block_id, 'sortStyle', WT_Filter::post('sortStyle', 'alpha|anniv', 'alpha'));
-			set_block_setting($block_id, 'block',     WT_Filter::postBool('block'));
-			exit;
+			set_block_setting($block_id, 'block', WT_Filter::postBool('block'));
 		}
 
-		require_once WT_ROOT.'includes/functions/functions_edit.php';
+		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
-		$filter=get_block_setting($block_id, 'filter', true);
+		$filter    = get_block_setting($block_id, 'filter', '1');
+		$onlyBDM   = get_block_setting($block_id, 'onlyBDM', '1');
+		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');
+		$sortStyle = get_block_setting($block_id, 'sortStyle', 'alpha');
+		$block     = get_block_setting($block_id, 'block', '1');
+
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Show only events of living individuals?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('filter', $filter);
 		echo '</td></tr>';
 
-		$onlyBDM=get_block_setting($block_id, 'onlyBDM', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Show only births, deaths, and marriages?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('onlyBDM', $onlyBDM);
 		echo '</td></tr>';
 
-		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
 		echo select_edit_control('infoStyle', array('list'=>WT_I18N::translate('list'), 'table'=>WT_I18N::translate('table')), null, $infoStyle, '');
 		echo '</td></tr>';
 
-		$sortStyle=get_block_setting($block_id, 'sortStyle',  'alpha');
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Sort order');
 		echo '</td><td class="optionbox">';
@@ -149,7 +151,6 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 		), null, $sortStyle, '');
 		echo '</td></tr>';
 
-		$block=get_block_setting($block_id, 'block', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';

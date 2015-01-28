@@ -2,7 +2,7 @@
 // View for the fan chart.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010 PGV Development Team.
@@ -23,20 +23,20 @@
 
 define('WT_SCRIPT_NAME', 'fanchart.php');
 require './includes/session.php';
-require WT_ROOT.'includes/functions/functions_edit.php';
+require WT_ROOT . 'includes/functions/functions_edit.php';
 
-$controller = new WT_Controller_Fanchart();
+$controller = new WT_Controller_Fanchart;
 
 if (WT_Filter::getBool('img')) {
 	Zend_Session::writeClose();
 	header('Content-Type: image/png');
-	echo $controller->generateFanChart('png', $fanChart); // $fanChart comes from the theme
+	echo $controller->generateFanChart('png');
 	return;
 }
 
 $controller
 	->pageHeader()
-	->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('
 		autocomplete();
 		var WT_FANCHART = (function() {
@@ -119,10 +119,11 @@ $controller
 
 if ($controller->error_message) {
 	echo '<p class="ui-state-error">', $controller->error_message, '</p>';
-	exit;
+	
+	return;
 }
 
 if ($controller->root) {
-	echo '<div id="fan_chart">', $controller->generateFanChart('html', $fanChart), '</div>';
+	echo '<div id="fan_chart">', $controller->generateFanChart('html'), '</div>';
 }
 echo '</div>';

@@ -24,7 +24,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
  if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
+	http_response_code(403);
 	exit;
 }
 
@@ -35,7 +35,7 @@ $censyear = $censdate->date1->y;
 $ctry     = 'UK';
 
 // === Set $married to "Not married as we only want the Birth name here" ===
-$married=-1;
+$married = -1;
 
 $nam = $person->getAllNames();
 if ($person->getDeathYear() == 0) {
@@ -48,9 +48,9 @@ if ($person->getBirthYear() == 0) {
 } else {
 	$BirthYr = $person->getBirthYear();
 }
-$fulln = rtrim($nam[0]['givn'],'*')." ".$nam[0]['surname'];
-$fulln = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $fulln);
-$fulln = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $fulln);
+$fulln = rtrim($nam[0]['givn'], '*') . " " . $nam[0]['surname'];
+$fulln = str_replace("@N.N.", "(" . WT_I18N::translate('unknown') . ")", $fulln);
+$fulln = str_replace("@P.N.", "(" . WT_I18N::translate('unknown') . ")", $fulln);
 $wholename = $fulln;
 
 echo '<script src="', WT_STATIC_URL, WT_MODULES_DIR, 'GEDFact_assistant/_CENS/js/dynamicoptionlist.js"></script>';
@@ -75,18 +75,18 @@ echo '</div>';
 //-- Census & Source Information Area =============================================
 echo '<div class="cens_container">';
 echo '<span >';
-require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_2_source_input.php';
+require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/_CENS/census_2_source_input.php';
 echo '</span>';
 //-- Proposed Census Text Area ================================================
 echo '<span>';
-require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_4_text.php';
+require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/_CENS/census_4_text.php';
 echo '</span>';
 echo '</div>';
 
 //-- Search  and Add Family Members Area ==========================================
 echo '<div class="optionbox cens_search" style="overflow:-moz-scrollbars-horizontal;overflow-x:hidden;overflow-y:scroll;">';
 ?><!--[if lte IE 7]><style>.cens_search{margin-top:-0.7em;}</style><![EndIf]--><?php
-require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_3_search_add.php';
+require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/_CENS/census_3_search_add.php';
 echo '</div>';
 
 //-- Census Text Input Area =======================================================
@@ -97,12 +97,12 @@ echo '</div>';
 	</div>
 	<div class="cens_textinput_right">
 		<?php echo WT_I18N::translate('Add'); ?>
-		<input  type="radio" name="totallyrad" value="0" checked="checked">
+		<input  type="radio" name="totallyrad" value="0" checked>
 	</div>
 	<?php
 	//-- Census Add Rows Area =========================================================
 	echo '<div class="cens_addrows">';
-	require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_5_input.php';
+	require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/_CENS/census_5_input.php';
 	echo '</div>';
 	?>
 </div>

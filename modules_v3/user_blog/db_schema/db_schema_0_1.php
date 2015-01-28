@@ -29,14 +29,14 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 WT_DB::exec(
-	"CREATE TABLE IF NOT EXISTS `##news` (".
-	" n_id       INTEGER AUTO_INCREMENT NOT NULL,".
-	" n_username VARCHAR(100)           NOT NULL,".
-	" n_date     INTEGER                NOT NULL,".
-	" n_title    VARCHAR(255)           NOT NULL,".
-	" n_text     TEXT                   NOT NULL,".
-	" PRIMARY KEY     (n_id),".
-	"         KEY ix1 (n_username)".
+	"CREATE TABLE IF NOT EXISTS `##news` (" .
+	" n_id       INTEGER AUTO_INCREMENT NOT NULL," .
+	" n_username VARCHAR(100)           NOT NULL," .
+	" n_date     INTEGER                NOT NULL," .
+	" n_title    VARCHAR(255)           NOT NULL," .
+	" n_text     TEXT                   NOT NULL," .
+	" PRIMARY KEY     (n_id)," .
+	"         KEY ix1 (n_username)" .
 	") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 );
 

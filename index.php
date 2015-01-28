@@ -3,7 +3,7 @@
 // to keep bookmarks, see a list of upcoming events, etc.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team.
@@ -51,7 +51,7 @@ fetch_latest_version();
 
 // We generate individual blocks using AJAX
 if ($action === 'ajax') {
-	$controller = new WT_Controller_Ajax();
+	$controller = new WT_Controller_Ajax;
 	$controller->pageHeader();
 
 	// Check we’re displaying an allowable block.
@@ -61,20 +61,22 @@ if ($action === 'ajax') {
 	} elseif (array_key_exists($block_id, $blocks['side'])) {
 		$module_name = $blocks['side'][$block_id];
 	} else {
-		exit;
+		
+		return;
 	}
 	if (array_key_exists($module_name, $all_blocks)) {
 		$class_name = $module_name . '_WT_Module';
 		$module     = new $class_name;
-		$module->getBlock($block_id);
+		echo $module->getBlock($block_id);
 	}
 	if (WT_DEBUG_SQL) {
 		echo WT_DB::getQueryLog();
 	}
-	exit;
+	
+	return;
 }
 
-$controller = new WT_Controller_Page();
+$controller = new WT_Controller_Page;
 if ($ctype === 'user') {
 	$controller->restrictAccess(Auth::check());
 }
@@ -103,7 +105,7 @@ if ($blocks['main']) {
 		$module     = new $class_name;
 		if ($SEARCH_SPIDER || !$module->loadAjax()) {
 			// Load the block directly
-			$module->getBlock($block_id);
+			echo $module->getBlock($block_id);
 		} else {
 			// Load the block asynchronously
 			echo '<div id="block_', $block_id, '"><div class="loading-image">&nbsp;</div></div>';
@@ -125,7 +127,7 @@ if ($blocks['side']) {
 		$module     = new $class_name;
 		if ($SEARCH_SPIDER || !$module->loadAjax()) {
 			// Load the block directly
-			$module->getBlock($block_id);
+			echo $module->getBlock($block_id);
 		} else {
 			// Load the block asynchronously
 			echo '<div id="block_', $block_id, '"><div class="loading-image">&nbsp;</div></div>';
@@ -140,9 +142,9 @@ if ($blocks['side']) {
 echo '<div id="link_change_blocks">';
 
 if ($ctype === 'user') {
-	echo '<a href="#" onclick="return modalDialog(\'index_edit.php?user_id=' . Auth::id() . '\', \'', WT_I18N::translate('Change the blocks on this page'), '\');">', WT_I18N::translate('Change the blocks on this page'), '</a>';
+	echo '<a href="index_edit.php?user_id=' . Auth::id() . '">', WT_I18N::translate('Change the blocks on this page'), '</a>';
 } elseif ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN) {
-	echo '<a href="#" onclick="return modalDialog(\'index_edit.php?gedcom_id=' . WT_GED_ID . '\', \'', WT_I18N::translate('Change the blocks on this page'), '\');">', WT_I18N::translate('Change the blocks on this page'), '</a>';
+	echo '<a href="index_edit.php?gedcom_id=' . WT_GED_ID . '">', WT_I18N::translate('Change the blocks on this page'), '</a>';
 }
 
 if ($WT_TREE->getPreference('SHOW_COUNTER')) {

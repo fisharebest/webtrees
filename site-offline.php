@@ -20,6 +20,10 @@
 
 define('WT_SCRIPT_NAME', 'site-offline.php');
 
+// We use some PHP5.5 features, but need to run on older servers
+if (version_compare(PHP_VERSION, '5.4', '<')) {
+	require WT_ROOT . 'includes/php_53_compatibility.php';
+}
 require 'library/autoload.php';
 
 // This script does not load session.php.
@@ -30,25 +34,26 @@ define('WT_SERVER_NAME', '');
 define('WT_SCRIPT_PATH', '');
 define('WT_ROOT', '');
 define('WT_GED_ID', 0);
-define('WT_DATA_DIR', realpath('data').DIRECTORY_SEPARATOR);
+define('WT_DATA_DIR', realpath('data') . DIRECTORY_SEPARATOR);
 
-$WT_SESSION=new stdClass();
-$WT_SESSION->locale='';
+$WT_SESSION         = new stdClass;
+$WT_SESSION->locale = '';
 
 require 'includes/functions/functions.php';
 
 define('WT_LOCALE', WT_I18N::init());
 
-if (file_exists(WT_DATA_DIR.'offline.txt')) {
-	$offline_txt=file_get_contents(WT_DATA_DIR.'offline.txt');
+if (file_exists(WT_DATA_DIR . 'offline.txt')) {
+	$offline_txt = file_get_contents(WT_DATA_DIR . 'offline.txt');
 } else {
 	// offline.txt has gone - we're back online!
 	header('Location: index.php');
-	exit;
+	
+	return;
 }
 
+http_response_code(503);
 header('Content-Type: text/html; charset=UTF-8');
-header($_SERVER['SERVER_PROTOCOL'].' 503 Service Temporarily Unavailable');
 
 echo
 	'<!DOCTYPE html>',

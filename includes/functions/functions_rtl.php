@@ -111,7 +111,7 @@ function spanLTRRTL($inputText, $direction = 'BOTH', $class = '') {
 			$currentLen += $endPos;
 			$element = substr($workingText, 0, $currentLen);
 			$temp    = strtolower(substr($element, 0, 3));
-			if (strlen($element) < 7 && $temp == '<br') { // assume we have '<br>' or a variant thereof
+			if (strlen($element) < 7 && $temp == '<br') {
 				if ($numberState) {
 					$numberState = false;
 					if ($currentState == 'RTL') {
@@ -1108,7 +1108,8 @@ function finishCurrentSpan(&$result, $theEnd = false) {
 function utf8_wordwrap($string, $width = 75, $sep = "\n", $cut = false) {
 	$out = '';
 	while ($string) {
-		if (mb_strlen($string) <= $width) { //Do not wrap any text that is less than the output area.
+		if (mb_strlen($string) <= $width) {
+			// Do not wrap any text that is less than the output area.
 			$out .= $string;
 			$string = '';
 		} else {

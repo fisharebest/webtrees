@@ -10287,8 +10287,8 @@ msgid "P.M."
 msgstr "P.M."
 
 #: help_text.php:1308
-msgid "PGV must be version 4.2.3, or any SVN up to #6973"
-msgstr "PGV verður að vera útgáfa 4.2.3 eða hvaða SVN upp að #6973"
+msgid "PGV must be version 4.2.3, or any SVN up to #%s"
+msgstr "PGV verður að vera útgáfa 4.2.3 eða hvaða SVN upp að #%s"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:82
@@ -13643,7 +13643,7 @@ msgstr "Tíminn í sekúndum sem webtrees seta helst virk áður en krafist er i
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:77
 #, php-format
-msgid "The two family trees have %1$s record which use the same “XREF”."
+msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
 msgstr[0] ""
 msgstr[1] ""
@@ -13810,7 +13810,7 @@ msgid "This database is only running MySQL version %s.  You cannot install webtr
 msgstr "Þessi gagnagrunnur keyrir eingöngu MySQL útgáfu %s. Þú getur ekki sett upp webtrees hér."
 
 #: help_text.php:1207 setup.php:412
-msgid "This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site."
+msgid "This email address will be used to send password reminders, site notifications, and messages from other family members who are registered on the site."
 msgstr "Þetta netfang verður notað til að senda þér lykilorða upprifjun, vefsíðu tilkynningar og skilaboð frá öðrum fjölskyldumeðlimum sem eru skráðir á vefsíðunni."
 
 #: addmedia.php:519
@@ -14386,7 +14386,7 @@ msgstr "Þessi vefsíða er tímabundið óaðgengileg."
 
 #: admin_trees_manage.php:137
 #, php-format
-msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM."
+msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM file."
 msgstr "Þetta mun eyða öllum ættfræðigögnum frá <b>%s</b> og skipta þeim út með gögnum frá öðrum GEDCOM."
 
 #: modules_v3/googlemap/module.php:1772

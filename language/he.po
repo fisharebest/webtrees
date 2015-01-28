@@ -10291,8 +10291,8 @@ msgid "P.M."
 msgstr "אחה״צ"
 
 #: help_text.php:1308
-msgid "PGV must be version 4.2.3, or any SVN up to #6973"
-msgstr "PGV חייבת להיות גירסה 4.2.3, או SVN עד ל-#6973"
+msgid "PGV must be version 4.2.3, or any SVN up to #%s"
+msgstr "PGV חייבת להיות גירסה 4.2.3, או SVN עד ל-#%s"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:82
@@ -13647,7 +13647,7 @@ msgstr "הזמן בשניות שמושב webtrees נשאר פעיל לפני ש�
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:77
 #, php-format
-msgid "The two family trees have %1$s record which use the same “XREF”."
+msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
 msgstr[0] "בשני עצי המשפחה יש רשומה אחת המשתמשת באותו ”XREF”."
 msgstr[1] "בשני עצי המשפחה יש %1$s  רשומות המשתמשות באותו ”XREF”."
@@ -13814,7 +13814,7 @@ msgid "This database is only running MySQL version %s.  You cannot install webtr
 msgstr "באתר זה פועלת רק  גירסה %s  של MySQL. אינך יכול להתקין כאן webtrees."
 
 #: help_text.php:1207 setup.php:412
-msgid "This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site."
+msgid "This email address will be used to send password reminders, site notifications, and messages from other family members who are registered on the site."
 msgstr "כתובת דוא״ל הזו תהיה בשימוש כאשר שולחים לך תזכורת סיסמא, הודעות האתר והודעות מבני משפחה אחרים הרשומים באתר."
 
 #: addmedia.php:519
@@ -14390,7 +14390,7 @@ msgstr "אתר האינטרנט הזה אינו זמין באופן זמני."
 
 #: admin_trees_manage.php:137
 #, php-format
-msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM."
+msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM file."
 msgstr "פעולה זו ימחק את כל הנתונים הגנאלוגיים מן <b>%s</b> ויחליף אותו עם נתוני GEDCOM אחרת."
 
 #: modules_v3/googlemap/module.php:1772

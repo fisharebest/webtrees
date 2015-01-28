@@ -8,7 +8,7 @@ use PHPUnit_Framework_TestCase;
  *
  * @package   webtrees
  * @author    Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2014 webtrees development team
+ * @copyright (c) 2015 webtrees development team
  * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2
  */
 
@@ -158,15 +158,6 @@ class FunctionsTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test that function get_theme_names() exists in the global namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionGetThemeNamesExists() {
-		$this->assertEquals(function_exists('\\get_theme_names'), true);
-	}
-
-	/**
 	 * Test that function get_query_url() exists in the global namespace.
 	 *
 	 * @return void
@@ -194,7 +185,7 @@ class FunctionsTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Tests for function edit_field_inline()
+	 * Tests for function isFileExternal()
 	 *
 	 * @return void
 	 */

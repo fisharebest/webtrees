@@ -4,7 +4,7 @@
 // Provides links for administrators to get to other administrative areas of the site
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team.
@@ -28,36 +28,86 @@ use WT\Auth;
 define('WT_SCRIPT_NAME', 'admin_site_info.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Page();
+$controller = new WT_Controller_Page;
 $controller
 	->restrictAccess(Auth::isAdmin())
-	->setPageTitle(WT_I18N::translate('PHP information'))
+	->setPageTitle(WT_I18N::translate('Server information'))
 	->pageHeader();
 
+$variables = WT_DB::prepare("SHOW VARIABLES")->fetchAssoc();
+array_walk($variables, function(&$x) { $x = str_replace(',', ', ', $x); });
+
 ob_start();
-phpinfo();
-$php_info = ob_get_clean();
+phpinfo(INFO_ALL & ~INFO_CREDITS & ~INFO_LICENSE);
+preg_match('%<style type="text/css">(.*?)</style>.*?(<body>.*</body>)%s', ob_get_clean(), $matches);
+$style = $matches[1];
+$html  = $matches[2];
 
-$php_info    = str_replace(" width=\"600\"", " width=\"\"", $php_info);
-$php_info    = str_replace("</body></html>", "", $php_info);
-$php_info    = str_replace("<table", "<table class=\"php_info ltr\"", $php_info);
-$php_info    = str_replace("td class=\"e\"", "td", $php_info);
-$php_info    = str_replace("td class=\"v\"", "td", $php_info);
-$php_info    = str_replace("tr class=\"v\"", "tr", $php_info);
-$php_info    = str_replace("tr class=\"h\"", "tr", $php_info);
+?>
 
-$php_info    = str_replace(";", "; ", $php_info);
-$php_info    = str_replace(",", ", ", $php_info);
+<ol class="breadcrumb small">
+	<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
+	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+</ol>
 
-// Put logo in table header
-$logo_offset = strpos($php_info, "<td>");
-$php_info = substr_replace($php_info, "<td colspan=\"3\" class=\"center\">", $logo_offset, 4);
-$logo_width_offset = strpos($php_info, "width=\"\"");
-$php_info = substr_replace($php_info, "", $logo_width_offset, 8);
-$php_info = str_replace(" width=\"\"", "", $php_info);
+<h1><?php echo $controller->getPageTitle(); ?></h1>
 
-$offset = strpos($php_info, "<table");
-$php_info = substr($php_info, $offset);
+<div class="row">
+	<div class="col-xs-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h2 class="panel-title">
+					<?php echo WT_I18N::translate('PHP information'); ?>
+				</h2>
+			</div>
+			<div class="panel-body">
+				<style type="text/css" scoped>
+					<?php echo $style; ?>
+					table { width: 100%; }
+					td.v { word-break: break-all; }
+				</style>
+				<?php echo $html; ?>
+			</div>
+		</div>
+	</div>
+</div>
 
-echo '<div id="page_help">', help_link('phpinfo'), '</div>';
-echo '<div class="php_info">', $php_info, '</div>';
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h2 class="panel-title">
+					<?php echo WT_I18N::translate('MySQL variables'); ?>
+				</h2>
+			</div>
+			<div class="panel-body">
+				<dl>
+					<?php foreach ($variables as $variable => $value): ?>
+						<dt><?php echo WT_Filter::escapeHtml($variable); ?></dt>
+						<dd><?php echo WT_Filter::escapeHtml($value); ?></dd>
+					<?php endforeach; ?>
+				</dl>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h2 class="panel-title">
+					<?php echo WT_I18N::translate('Time'); ?>
+				</h2>
+			</div>
+			<div class="panel-body">
+				<?php echo /* I18N: The local time on the server */ WT_I18N::translate('Server time'); ?> —
+				<?php echo format_timestamp(WT_SERVER_TIMESTAMP); ?><br>
+				<?php echo /* I18N: The local time on the client/browser */ WT_I18N::translate('Client time'); ?> —
+				<?php echo format_timestamp(WT_CLIENT_TIMESTAMP); ?><br>
+				<?php echo /* I18N: Timezone - http://en.wikipedia.org/wiki/UTC */ WT_I18N::translate('UTC'); ?> —
+				<?php echo format_timestamp(WT_TIMESTAMP); ?>
+			</div>
+		</div>
+	</div>
+</div>

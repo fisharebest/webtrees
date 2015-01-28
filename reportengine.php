@@ -27,7 +27,7 @@ define('WT_SCRIPT_NAME', 'reportengine.php');
 require './includes/session.php';
 require WT_ROOT . 'includes/functions/functions_rtl.php';
 
-$controller = new WT_Controller_Page();
+$controller = new WT_Controller_Page;
 
 $famid = WT_Filter::get('famid', WT_REGEX_XREF);
 $pid = WT_Filter::get('pid', WT_REGEX_XREF);
@@ -142,12 +142,14 @@ case 'setup':
 	xml_set_character_data_handler($xml_parser, 'characterData');
 
 	// Open the file
-	if (!($fp = fopen($report, 'r'))) {
-		die('could not open XML input');
-	}
+	$fp = fopen($report, 'r');
 	while (($data = fread($fp, 4096))) {
 		if (!xml_parse($xml_parser, $data, feof($fp))) {
-			die(sprintf($data . ' XML error: %s at line %d', xml_error_string(xml_get_error_code($xml_parser)), xml_get_current_line_number($xml_parser)));
+			throw new DomainException(sprintf(
+				'XML error: %s at line %d',
+				xml_error_string(xml_get_error_code($xml_parser)),
+				xml_get_current_line_number($xml_parser)
+			));
 		}
 	}
 	xml_parser_free($xml_parser);
@@ -155,7 +157,7 @@ case 'setup':
 	$controller
 		->setPageTitle($report_array['title'])
 		->pageHeader()
-		->addExternalJavascript(WT_STATIC_URL . 'js/autocomplete.js')
+		->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 		->addInlineJavascript('autocomplete();');
 
 	init_calendar_popup();
@@ -221,10 +223,8 @@ case 'setup':
 			echo ' type="text" name="vars[', WT_Filter::escapeHtml($input['name']), ']" id="', WT_Filter::escapeHtml($input['name']), '" value="', WT_Filter::escapeHtml($input['default']), '" style="direction: ltr;">';
 		}
 		if ($input['type'] == 'checkbox') {
-			echo '<input type="checkbox" name="vars[', WT_Filter::escapeHtml($input['name']), ']" id="', WT_Filter::escapeHtml($input['name']), '" value="1"';
-			if ($input['default'] == '1') {
-				echo ' checked="checked"';
-			}
+			echo '<input type="checkbox" name="vars[', WT_Filter::escapeHtml($input['name']), ']" id="', WT_Filter::escapeHtml($input['name']), '" value="1" ';
+			echo $input['default'] == '1' ? 'checked' : '';
 			echo '>';
 		}
 		if ($input['type'] == 'select') {
@@ -240,9 +240,9 @@ case 'setup':
 				} elseif (preg_match('/^WT_I18N::translate_c\(\'(.+)\', *\'(.+)\'\)$/', $display, $match)) {
 					$display = WT_I18N::translate_c($match[1], $match[2]);
 				}
-				echo '<option value="', WT_Filter::escapeHtml($value), '"';
+				echo '<option value="', WT_Filter::escapeHtml($value), '" ';
 				if ($opt[0] == $input['default']) {
-					echo ' selected="selected"';
+					echo 'selected';
 				}
 				echo '>', WT_Filter::escapeHtml($display), '</option>';
 			}
@@ -270,7 +270,7 @@ case 'setup':
 		<div class="report-type">
 		<div>
 		<label for="PDF"><i class="icon-mime-application-pdf"></i></label>
-		<p><input type="radio" name="output" value="PDF" id="PDF" checked="checked"></p>
+		<p><input type="radio" name="output" value="PDF" id="PDF" checked></p>
 		</div>
 		<div>
 		<label for="HTML"><i class="icon-mime-text-html"></i></label>
@@ -287,18 +287,19 @@ case 'setup':
 case 'run':
 	if (strstr($report, 'report_singlepage.xml') !== false) {
 		$DEBUG = false;
-		$pedigree = new ReportPedigree();
-		exit;
+		$pedigree = new ReportPedigree;
+
+		return;
 	}
 
 	switch ($output) {
 	case 'HTML':
 		header('Content-type: text/html; charset=UTF-8');
-		$wt_report = new WT_Report_HTML();
+		$wt_report = new WT_Report_HTML;
 		$ReportRoot = $wt_report;
 		break;
 	case 'PDF':
-		$wt_report = new WT_Report_PDF();
+		$wt_report = new WT_Report_PDF;
 		$ReportRoot = $wt_report;
 		break;
 	}
@@ -370,7 +371,7 @@ case 'run':
 	 *
 	 * @global object $currentElement
 	 */
-	$currentElement = new WT_Report_Base_Element();
+	$currentElement = new WT_Report_Base_Element;
 
 	/**
 	 * Should character data be printed
@@ -477,12 +478,14 @@ case 'run':
 	//-- set the character data handler
 	xml_set_character_data_handler($xml_parser, 'characterData');
 
-	if (!($fp = fopen($report, 'r'))) {
-		die('could not open XML input');
-	}
+	$fp = fopen($report, 'r');
 	while (($data = fread($fp, 4096))) {
 		if (!xml_parse($xml_parser, $data, feof($fp))) {
-			die(sprintf($data . ' XML error: %s at line %d', xml_error_string(xml_get_error_code($xml_parser)), xml_get_current_line_number($xml_parser)));
+			throw new DomainException(sprintf(
+				'XML error: %s at line %d',
+				xml_error_string(xml_get_error_code($xml_parser)),
+				xml_get_current_line_number($xml_parser)
+			));
 		}
 	}
 	xml_parser_free($xml_parser);

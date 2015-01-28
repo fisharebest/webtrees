@@ -1,6 +1,6 @@
 <?php
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ class WT_Controller_Base {
 	);
 	private $external_javascript = array();
 
-	protected $page_header = false;        // Have we printed a page header?
+	protected $page_header = false; // Have we printed a page header?
 
 	/**
 	 * Startup activity
@@ -45,7 +45,7 @@ class WT_Controller_Base {
 	public function __destruct() {
 		// If we printed a header, automatically print a footer
 		if ($this->page_header) {
-			$this->pageFooter();
+			echo $this->pageFooter();
 		}
 	}
 
@@ -78,7 +78,7 @@ class WT_Controller_Base {
 			$backtrace = debug_backtrace();
 			$script = '/* ' . $backtrace[0]['file'] . ':' . $backtrace[0]['line'] . ' */' . PHP_EOL . $script;
 		}
-		$tmp =& $this->inline_javascript[$priority];
+		$tmp = & $this->inline_javascript[$priority];
 		$tmp[] = $script;
 
 		return $this;

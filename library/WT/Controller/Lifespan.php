@@ -77,7 +77,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 		$this->Mcolorindex = 0;
 		$this->zoomfactor  = 10;
 		$this->color       = '#0000FF';
-		$this->currentYear = (int)date('Y');
+		$this->currentYear = (int) date('Y');
 		$this->deathMod    = 0;
 		$this->endDate     = $this->currentYear;
 
@@ -131,7 +131,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 		$this->endYear   = $endYear;
 		if ($beginYear == 0 || $endYear == 0) {
 			//-- cleanup user input
-			$this->pids = array_unique($this->pids);  //removes duplicates
+			$this->pids = array_unique($this->pids); //removes duplicates
 			foreach ($this->pids as $key => $value) {
 				if ($value != $remove) {
 					$this->pids[$key] = $value;
@@ -169,7 +169,7 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 		}
 
 		// Sort the array in order of birth year
-		uasort($this->people, function (WT_Individual $a, WT_Individual $b) {
+		uasort($this->people, function(WT_Individual $a, WT_Individual $b) {
 			return WT_Date::Compare($a->getEstimatedBirthDate(), $b->getEstimatedBirthDate());
 		});
 		//If there is people in the array posted back this if occurs
@@ -279,8 +279,8 @@ class WT_Controller_Lifespan extends WT_Controller_Page {
 		$totalYears            = $newEndYear - $newStartYear; //length of timeline
 		$timelineTick          = $totalYears / $yearSpan; //calculates the length of the timeline
 
-		for ($i = 0; $i < $timelineTick; $i++) { //prints the timeline
-			echo "<div class=\"sublinks_cell\" style=\"text-align: left; position: absolute; top: ", $top, "px; left: ", $leftPosition, "px; width: ", $tickDistance, "px;\">$newStartYear<i class=\"icon-lifespan-chunk\"></i></div>";  //onclick="zoomToggle('100px', '100px', '200px', '200px', this);"
+		for ($i = 0; $i < $timelineTick; $i++) {
+			echo "<div class=\"sublinks_cell\" style=\"text-align: left; position: absolute; top: ", $top, "px; left: ", $leftPosition, "px; width: ", $tickDistance, "px;\">$newStartYear<i class=\"icon-lifespan-chunk\"></i></div>"; //onclick="zoomToggle('100px', '100px', '200px', '200px', this);"
 			$leftPosition += $tickDistance;
 			$newStartYear += $yearSpan;
 		}

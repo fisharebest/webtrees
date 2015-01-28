@@ -10291,8 +10291,8 @@ msgid "P.M."
 msgstr "P.M."
 
 #: help_text.php:1308
-msgid "PGV must be version 4.2.3, or any SVN up to #6973"
-msgstr "PGV ha d’ésser versió 4.2.3, o qualsevol SVN fins el #6973"
+msgid "PGV must be version 4.2.3, or any SVN up to #%s"
+msgstr "PGV ha d’ésser versió 4.2.3, o qualsevol SVN fins el #%s"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:82
@@ -13647,7 +13647,7 @@ msgstr "El temps en segons que una sessio webtrees romàn activa abans de requer
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:77
 #, php-format
-msgid "The two family trees have %1$s record which use the same “XREF”."
+msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
 msgstr[0] ""
 msgstr[1] ""
@@ -13814,7 +13814,7 @@ msgid "This database is only running MySQL version %s.  You cannot install webtr
 msgstr "Aquesta base de dades solament funciona amb la versió %s MySQL.  Aquí no podeu instal·lar-hi elwebtrees."
 
 #: help_text.php:1207 setup.php:412
-msgid "This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site."
+msgid "This email address will be used to send password reminders, site notifications, and messages from other family members who are registered on the site."
 msgstr "Aquesta adreça de correu electrònic serà utilitzada per enviar el recordatori de contrasenya, les notificacions del lloc, i els missatges dels membres de la família que estan registrats en el lloc."
 
 #: addmedia.php:519
@@ -14390,7 +14390,7 @@ msgstr "Lloc web indisponible temporalment"
 
 #: admin_trees_manage.php:137
 #, php-format
-msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM."
+msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM file."
 msgstr "Això esborrarà totes les dades genealògiques de <b>%s</b> i les substituirà per les d’un altre GEDCOM."
 
 #: modules_v3/googlemap/module.php:1772

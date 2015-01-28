@@ -308,7 +308,7 @@ class WT_DB {
 	 */
 	public static function updateSchema($schema_dir, $schema_name, $target_version) {
 		try {
-			$current_version = (int)WT_Site::getPreference($schema_name);
+			$current_version = (int) WT_Site::getPreference($schema_name);
 		} catch (PDOException $e) {
 			// During initial installation, this table won’t exist.
 			// It will only be a problem if we can’t subsequently create it.
@@ -337,7 +337,7 @@ class WT_DB {
 			$next_version = $current_version + 1;
 			require $schema_dir . 'db_schema_' . $current_version . '_' . $next_version . '.php';
 			// The updatescript should update the version or throw an exception
-			$current_version = (int)WT_Site::getPreference($schema_name);
+			$current_version = (int) WT_Site::getPreference($schema_name);
 			if ($current_version != $next_version) {
 				throw new Exception("Internal error while updating {$schema_name} to {$next_version}");
 			}

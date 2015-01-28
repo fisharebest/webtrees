@@ -28,20 +28,21 @@ use WT\User;
 
 define('WT_SCRIPT_NAME', 'login.php');
 require './includes/session.php';
-require WT_ROOT.'includes/functions/functions_edit.php';
+require WT_ROOT . 'includes/functions/functions_edit.php';
 // If we are already logged in, then go to the “Home page”
 if (Auth::check() && WT_GED_ID) {
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
-	exit;
+
+	return;
 }
 
-$controller = new WT_Controller_Page();
+$controller = new WT_Controller_Page;
 
 $REQUIRE_ADMIN_AUTH_REGISTRATION = WT_Site::getPreference('REQUIRE_ADMIN_AUTH_REGISTRATION');
 
 $action          = WT_Filter::post('action');
 $user_realname   = WT_Filter::post('user_realname');
-$user_name       = WT_Filter::post('user_name',       WT_REGEX_USERNAME);
+$user_name       = WT_Filter::post('user_name', WT_REGEX_USERNAME);
 $user_email      = WT_Filter::postEmail('user_email');
 $user_password01 = WT_Filter::post('user_password01', WT_REGEX_PASSWORD);
 $user_password02 = WT_Filter::post('user_password02', WT_REGEX_PASSWORD);
@@ -57,7 +58,7 @@ $timediff        = WT_Filter::postInteger('timediff', -43200, 50400, 0); // Same
 if (!$action)        $action        = WT_Filter::get('action');
 if (!$user_name)     $user_name     = WT_Filter::get('user_name', WT_REGEX_USERNAME);
 if (!$user_hashcode) $user_hashcode = WT_Filter::get('user_hashcode');
-if (!$url)           $url           = WT_Filter::get('url'); // Not actually a URL - just a path
+if (!$url)           $url           = WT_Filter::get('url');
 
 $message = '';
 
@@ -112,7 +113,7 @@ case 'login':
 			$latest_version_txt = fetch_latest_version();
 			if (preg_match('/^[0-9.]+\|[0-9.]+\|/', $latest_version_txt)) {
 				list($latest_version, $earliest_version, $download_url) = explode('|', $latest_version_txt);
-				if (version_compare(WT_VERSION, $latest_version)<0) {
+				if (version_compare(WT_VERSION, $latest_version) < 0) {
 					// An upgrade is available.  Let the admin know, by redirecting to the upgrade wizard
 					$url = 'admin_site_upgrade.php';
 				}
@@ -126,7 +127,8 @@ case 'login':
 		// Explicitly write the session data before we exit,
 		// as it doesn’t always happen when using APC.
 		Zend_Session::writeClose();
-		exit;
+
+		return;
 	} catch (Exception $ex) {
 		$message = $ex->getMessage();
 	}
@@ -160,7 +162,7 @@ default:
 		echo WT_I18N::translate('<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.');
 		break;
 	case 4:
-		echo '<p>', WT_Site::getPreference('WELCOME_TEXT_AUTH_MODE_'.WT_LOCALE), '</p>';
+		echo '<p>', WT_Site::getPreference('WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE), '</p>';
 		break;
 	}
 
@@ -195,14 +197,14 @@ default:
 				<a href="#" id="passwd_click">', WT_I18N::translate('Request new password'), '</a>
 			</div>';
 			if (WT_Site::getPreference('USE_REGISTRATION_MODULE')) {
-				echo '<div><a href="'.WT_LOGIN_URL.'?action=register">', WT_I18N::translate('Request new user account'), '</a></div>';
+				echo '<div><a href="' . WT_LOGIN_URL . '?action=register">', WT_I18N::translate('Request new user account'), '</a></div>';
 			}
 		}
 	echo '</form>';
 
 	// hidden New Password block
 	echo '<div id="new_passwd">
-		<form id="new_passwd_form" name="new_passwd_form" action="'.WT_LOGIN_URL.'" method="post">
+		<form id="new_passwd_form" name="new_passwd_form" action="'.WT_LOGIN_URL . '" method="post">
 		<input type="hidden" name="action" value="requestpw">
 		<h4>', WT_I18N::translate('Lost password request'), '</h4>
 		<div>
@@ -229,9 +231,9 @@ case 'requestpw':
 	if ($user) {
 		$passchars = 'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 		$user_new_pw = '';
-		$max = strlen($passchars)-1;
-		for ($i=0; $i<8; $i++) {
-			$index = rand(0,$max);
+		$max = strlen($passchars) - 1;
+		for ($i = 0; $i < 8; $i++) {
+			$index = rand(0, $max);
 			$user_new_pw .= $passchars{$index};
 		}
 
@@ -245,7 +247,7 @@ case 'requestpw':
 			WT_I18N::translate('Hello %s…', WT_Filter::escapeHtml($user->getRealName())) . WT_Mail::EOL . WT_Mail::EOL .
 			WT_I18N::translate('A new password was requested for your user name.') . WT_Mail::EOL . WT_Mail::EOL .
 			WT_I18N::translate('Username') . ": " . WT_Filter::escapeHtml($user->getUserName()) . WT_Mail::EOL .
-			WT_I18N::translate('Password') . ": " . $user_new_pw  . WT_Mail::EOL . WT_Mail::EOL .
+			WT_I18N::translate('Password') . ": " . $user_new_pw . WT_Mail::EOL . WT_Mail::EOL .
 			WT_I18N::translate('After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password.') . WT_Mail::EOL . WT_Mail::EOL .
 			'<a href="' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'login.php?ged=' . WT_GEDURL . '">' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'login.php?ged=' . WT_GEDURL . '</a>'
 		);
@@ -263,21 +265,22 @@ case 'requestpw':
 
 case 'register':
 	if (!WT_Site::getPreference('USE_REGISTRATION_MODULE')) {
-		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
-		exit;
+		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
+
+		return;
 	}
 
 	$controller->setPageTitle(WT_I18N::translate('Request new user account'));
 
 	// The form parameters are mandatory, and the validation errors are shown in the client.
-	if ($WT_SESSION->good_to_send && $user_name && $user_password01 && $user_password01==$user_password02 && $user_realname && $user_email && $user_comments) {
+	if ($WT_SESSION->good_to_send && $user_name && $user_password01 && $user_password01 == $user_password02 && $user_realname && $user_email && $user_comments) {
 
 		// These validation errors cannot be shown in the client.
 		if (User::findByIdentifier($user_name)) {
 			WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'));
 		} elseif (User::findByIdentifier($user_email)) {
 			WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate email address.  A user with that email already exists.'));
-		} elseif (preg_match('/(?!'.preg_quote(WT_SERVER_NAME, '/').')(((?:ftp|http|https):\/\/)[a-zA-Z0-9.-]+)/', $user_comments, $match)) {
+		} elseif (preg_match('/(?!' . preg_quote(WT_SERVER_NAME, '/') . ')(((?:ftp|http|https):\/\/)[a-zA-Z0-9.-]+)/', $user_comments, $match)) {
 			WT_FlashMessages::addMessage(
 				WT_I18N::translate('You are not allowed to send messages that contain external links.') . ' ' .
 				WT_I18N::translate('You should delete the “%1$s” from “%2$s” and try again.', $match[2], $match[1])
@@ -290,18 +293,17 @@ case 'register':
 
 			$user = User::create($user_name, $user_realname, $user_email, $user_password01);
 			$user
-				->setPreference('language',          WT_LOCALE)
-				->setPreference('verified',          '0')
+				->setPreference('language', WT_LOCALE)
+				->setPreference('verified', '0')
 				->setPreference('verified_by_admin', !$REQUIRE_ADMIN_AUTH_REGISTRATION)
-				->setPreference('reg_timestamp',     date('U'))
-				->setPreference('reg_hashcode',      md5(Uuid::uuid4()))
-				->setPreference('contactmethod',     'messaging2')
-				->setPreference('comment',           $user_comments)
-				->setPreference('visibleonline',     '1')
-				->setPreference('editaccount',       '1')
-				->setPreference('auto_accept',       '0')
-				->setPreference('canadmin',          '0')
-				->setPreference('sessiontime',       '0');
+				->setPreference('reg_timestamp', date('U'))
+				->setPreference('reg_hashcode', md5(Uuid::uuid4()))
+				->setPreference('contactmethod', 'messaging2')
+				->setPreference('comment', $user_comments)
+				->setPreference('visibleonline', '1')
+				->setPreference('auto_accept', '0')
+				->setPreference('canadmin', '0')
+				->setPreference('sessiontime', '0');
 
 			// Generate an email in the admin’s language
 			$webmaster = User::find($WT_TREE->getPreference('WEBMASTER_USER_ID'));
@@ -310,11 +312,11 @@ case 'register':
 			$mail1_body =
 				WT_I18N::translate('Hello administrator…') . WT_Mail::EOL . WT_Mail::EOL .
 				/* I18N: %s is a server name/URL */
-				WT_I18N::translate('A prospective user has registered with webtrees at %s.', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . $WT_TREE->tree_title_html) . WT_Mail::EOL . WT_Mail::EOL .
-				WT_I18N::translate('Username')       . ' ' . $user->getUserName() . WT_Mail::EOL .
-				WT_I18N::translate('Real name')      . ' ' . $user->getRealName() . WT_Mail::EOL .
-				WT_I18N::translate('Email address:') . ' ' . $user->getEmail()    . WT_Mail::EOL .
-				WT_I18N::translate('Comments')       . ' ' . $user_comments       . WT_Mail::EOL . WT_Mail::EOL .
+				WT_I18N::translate('A prospective user has registered with webtrees at %s.', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . WT_Filter::escapeHtml($WT_TREE->tree_title)) . WT_Mail::EOL . WT_Mail::EOL .
+				WT_I18N::translate('Username') . ' ' . $user->getUserName() . WT_Mail::EOL .
+				WT_I18N::translate('Real name') . ' ' . $user->getRealName() . WT_Mail::EOL .
+				WT_I18N::translate('Email address:') . ' ' . $user->getEmail() . WT_Mail::EOL .
+				WT_I18N::translate('Comments') . ' ' . $user_comments . WT_Mail::EOL . WT_Mail::EOL .
 				WT_I18N::translate('The user has been sent an e-mail with the information necessary to confirm the access request') . WT_Mail::EOL . WT_Mail::EOL;
 			if ($REQUIRE_ADMIN_AUTH_REGISTRATION) {
 				$mail1_body .= WT_I18N::translate('You will be informed by e-mail when this prospective user has confirmed the request.  You can then complete the process by activating the user name.  The new user will not be able to login until you activate the account.');
@@ -329,20 +331,20 @@ case 'register':
 			echo '<div id="login-register-page">';
 
 			// Generate an email in the user’s language
-			$mail2_body=
+			$mail2_body =
 				WT_I18N::translate('Hello %s…', $user->getRealName()) . WT_Mail::EOL . WT_Mail::EOL .
 				/* I18N: %1$s is the site URL and %2$s is an email address */
-				WT_I18N::translate('You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s.', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . $WT_TREE->tree_title_html, $user->getEmail()) . '  '.
+				WT_I18N::translate('You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s.', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . WT_Filter::escapeHtml($WT_TREE->tree_title), $user->getEmail()) . '  ' .
 				WT_I18N::translate('Information about the request is shown under the link below.') . WT_Mail::EOL .
 				WT_I18N::translate('Please click on the following link and fill in the requested data to confirm your request and email address.') . WT_Mail::EOL . WT_Mail::EOL .
-				'<a href="' . WT_LOGIN_URL . "?user_name=".WT_Filter::escapeUrl($user->getUserName())."&amp;user_hashcode=".$user->getPreference('reg_hashcode') . '&amp;action=userverify">' .
-				WT_LOGIN_URL . "?user_name=".WT_Filter::escapeUrl($user->getUserName())."&user_hashcode=".urlencode($user->getPreference('reg_hashcode'))."&action=userverify" .
+				'<a href="' . WT_LOGIN_URL . "?user_name=" . WT_Filter::escapeUrl($user->getUserName()) . "&amp;user_hashcode=" . $user->getPreference('reg_hashcode') . '&amp;action=userverify">' .
+				WT_LOGIN_URL . "?user_name=" . WT_Filter::escapeUrl($user->getUserName()) . "&user_hashcode=" . urlencode($user->getPreference('reg_hashcode')) . "&action=userverify" .
 				'</a>' . WT_Mail::EOL . WT_Mail::EOL .
 				WT_I18N::translate('Username') . " " . WT_Filter::escapeHtml($user->getUserName()) . WT_Mail::EOL .
 				WT_I18N::translate('Verification code:') . " " . $user->getPreference('reg_hashcode') . WT_Mail::EOL .
-				WT_I18N::translate('Comments').": " . $user->getPreference('comment') . WT_Mail::EOL .
+				WT_I18N::translate('Comments') . ": " . $user->getPreference('comment') . WT_Mail::EOL .
 				WT_I18N::translate('If you didn’t request an account, you can just delete this message.') . WT_Mail::EOL;
-			$mail2_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('Your registration at %s', WT_SERVER_NAME.WT_SCRIPT_PATH);
+			$mail2_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('Your registration at %s', WT_SERVER_NAME . WT_SCRIPT_PATH);
 			$mail2_to      = $user->getEmail();
 			$mail2_from    = $WEBTREES_EMAIL;
 
@@ -376,7 +378,7 @@ case 'register':
 				$mail1_body
 			);
 			$mail1_method = $webmaster->getPreference('contact_method');
-			if ($mail1_method!='messaging3' && $mail1_method!='mailto' && $mail1_method!='none') {
+			if ($mail1_method != 'messaging3' && $mail1_method != 'mailto' && $mail1_method != 'none') {
 				WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
 					->execute(array($user->getEmail(), $WT_REQUEST->getClientIp(), $webmaster->getUserId(), $mail1_subject, WT_Filter::unescapeHtml($mail1_body)));
 			}
@@ -390,7 +392,8 @@ case 'register':
 				echo '</p>
 			</div>';
 			echo '</div>';
-			exit;
+
+			return;
 		}
 	}
 
@@ -399,62 +402,117 @@ case 'register':
 		->pageHeader()
 		->addInlineJavascript('function regex_quote(str) {return str.replace(/[\\\\.?+*()[\](){}|]/g, "\\\\$&");}');
 
-	echo '<div id="login-register-page">
-		<h2>', $controller->getPageTitle(), '</h2>';
-		if (WT_Site::getPreference('SHOW_REGISTER_CAUTION')) {
-			echo '<div id="register-text">';
-			echo WT_I18N::translate('<div class="largeError">Notice:</div><div class="error">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>');
-			echo '</div>';
-		}
-		echo '<div id="register-box">
-			<form id="register-form" name="register-form" method="post" action="'.WT_LOGIN_URL.'" onsubmit="return checkform(this);" autocomplete="off">
-			<input type="hidden" name="action" value="register">
-			<h4>', WT_I18N::translate('All fields must be completed.'), '</h4><hr>
-			<div>
-				<label for="user_realname">', WT_I18N::translate('Real name'), help_link('real_name'),
-					'<input type="text" id="user_realname" name="user_realname" required maxlength="64" value="', WT_Filter::escapeHtml($user_realname), '" autofocus>
-				</label>
-			</div>
-			<div>
-				<label for="user_email">', WT_I18N::translate('Email address'), help_link('email'),
-					'<input type="email" id="user_email" name="user_email" required maxlength="64" value="', WT_Filter::escapeHtml($user_email), '">
-				</label>
-			</div>
-			<div>
-				<label for="username">', WT_I18N::translate('Desired user name'), help_link('username'),
-					'<input type="text" id="username" name="user_name" required maxlength="32" value="', WT_Filter::escapeHtml($user_name), '">
-				</label>
-			</div>
-			<div>
-				<label for="user_password01">', WT_I18N::translate('Desired password'), help_link('password'),
-					'<input type="password" id="user_password01" name="user_password01" value="', WT_Filter::escapeHtml($user_password01), '" required placeholder="', /* I18N: placeholder text for new-password field */ WT_I18N::plural('Use at least %s character.', 'Use at least %s characters.', WT_MINIMUM_PASSWORD_LENGTH, WT_I18N::number(WT_MINIMUM_PASSWORD_LENGTH)), '" pattern="'. WT_REGEX_PASSWORD .'" onchange="form.user_password02.pattern = regex_quote(this.value);">
-				</label>
-			</div>
-			<div>
-				<label for="user_password02">', WT_I18N::translate('Confirm password'), help_link('password_confirm'),
-					'<input type="password" id="user_password02" name="user_password02" value="', WT_Filter::escapeHtml($user_password02), '" required placeholder="', /* I18N: placeholder text for repeat-password field */ WT_I18N::translate('Type the password again.'), '" pattern="'. WT_REGEX_PASSWORD .'">
-				</label>
-			</div>
-			<div>
-				<label for="user_comments">', WT_I18N::translate('Comments'), help_link('register_comments'),
-					'<textarea cols="50" rows="5" id="user_comments" name="user_comments" required placeholder="', /* I18N: placeholder text for registration-comments field */ WT_I18N::translate('Explain why you are requesting an account.'), '">',
-						WT_Filter::escapeHtml($user_comments),
-					'</textarea>
-				</label>
-			</div>
-			<hr>
-			<div id="registration-submit">
-				<input type="submit" value="', WT_I18N::translate('continue'), '">
-			</div>
-		</form>
+	?>
+	<div id="login-register-page">
+		<h2><?php echo $controller->getPageTitle(); ?></h2>
+
+		<?php if (WT_Site::getPreference('SHOW_REGISTER_CAUTION')): ?>
+		<div id="register-text">
+			<?php echo WT_I18N::translate('<div class="largeError">Notice:</div><div class="error">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>'); ?>
+		</div>
+		<?php endif; ?>
+		<div id="register-box">
+			<form id="register-form" name="register-form" method="post" onsubmit="return checkform(this);" autocomplete="off">
+				<input type="hidden" name="action" value="register">
+				<h4><?php echo WT_I18N::translate('All fields must be completed.'); ?></h4>
+				<hr>
+
+				<div>
+					<label for="user_realname">
+						<?php echo WT_I18N::translate('Real name'); ?>
+						<input type="text" id="user_realname" name="user_realname" required maxlength="64" value="<?php echo WT_Filter::escapeHtml($user_realname); ?>" autofocus>
+					</label>
+					<p class="small text-muted">
+						<?php echo WT_I18N::translate('This is your real name, as you would like it displayed on screen.'); ?>
+					</p>
+				</div>
+
+				<div>
+					<label for="user_email">
+						<?php echo WT_I18N::translate('Email address'); ?>
+						<input type="email" id="user_email" name="user_email" required maxlength="64" value="<?php echo WT_Filter::escapeHtml($user_email); ?>">
+					</label>
+					<p class="small text-muted">
+						<?php echo WT_I18N::translate('This email address will be used to send password reminders, site notifications, and messages from other family members who are registered on the site.'); ?>
+					</p>
+				</div>
+
+				<div>
+					<label for="username">
+						<?php echo WT_I18N::translate('Desired user name'); ?>
+						<input type="text" id="username" name="user_name" required maxlength="32" value="<?php WT_Filter::escapeHtml($user_name); ?>">
+					</label>
+					<p class="small text-muted">
+						<?php echo WT_I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.'); ?>
+						<?php echo WT_I18N::translate('Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;'); ?>
+					</p>
+				</div>
+
+				<div>
+					<label for="user_password01">
+						<?php echo WT_I18N::translate('Desired password'); ?>
+						<input required
+							type="password"
+							id="user_password01" name="user_password01"
+							value="<?php echo WT_Filter::escapeHtml($user_password01); ?>"
+							placeholder="<?php echo /* I18N: placeholder text for new-password field */ WT_I18N::plural('Use at least %s character.', 'Use at least %s characters.', WT_MINIMUM_PASSWORD_LENGTH, WT_I18N::number(WT_MINIMUM_PASSWORD_LENGTH)); ?>"
+							pattern="<?php echo  WT_REGEX_PASSWORD; ?>"
+							onchange="form.user_password02.pattern = regex_quote(this.value);"
+						>
+					</label>
+					<p class="small text-muted">
+						<?php echo WT_I18N::translate('Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”.'); ?>
+					</p>
+				</div>
+
+				<div>
+					<label for="user_password02">
+						<?php echo WT_I18N::translate('Confirm password'); ?>
+						<input required
+							type="password"
+							id="user_password02" name="user_password02"
+							value="<?php echo WT_Filter::escapeHtml($user_password02); ?>"
+							placeholder="<?php echo /* I18N: placeholder text for repeat-password field */ WT_I18N::translate('Type the password again.'); ?>"
+							pattern="<?php echo WT_REGEX_PASSWORD; ?>"
+						>
+					</label>
+					<p class="small text-muted">
+						<?php echo WT_I18N::translate('Type your password again, to make sure you have typed it correctly.'); ?>
+					</p>
+				</div>
+
+				<div>
+					<label for="user_comments">
+						<?php echo WT_I18N::translate('Comments'); ?>
+						<textarea required
+							cols="50" rows="5"
+							id="user_comments" name="user_comments"
+							placeholder="', /* I18N: placeholder text for registration-comments field */ WT_I18N::translate('Explain why you are requesting an account.'), '"
+						>
+							<?php echo WT_Filter::escapeHtml($user_comments); ?>
+						</textarea>
+					</label>
+					<p class="small text-muted">
+						<?php echo WT_I18N::translate('Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site.  You can also use this to enter any other comments you may have for the site administrator.'); ?>
+					</p>
+				</div>
+
+				<hr>
+
+				<div id="registration-submit">
+					<input type="submit" value="<?php echo WT_I18N::translate('continue'); ?>">
+				</div>
+			</form>
+		</div>
 	</div>
-	</div>';
+	<?php
 	break;
 
 case 'userverify':
 	if (!WT_Site::getPreference('USE_REGISTRATION_MODULE')) {
-		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
-		exit;
+		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
+
+		return;
 	}
 
 	// Change to the new user’s language
@@ -491,7 +549,8 @@ case 'userverify':
 case 'verify_hash':
 	if (!WT_Site::getPreference('USE_REGISTRATION_MODULE')) {
 		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
-		exit;
+
+		return;
 	}
 
 	// switch language to webmaster settings
@@ -514,8 +573,8 @@ case 'verify_hash':
 	}
 	$mail1_body .=
 		WT_Mail::EOL .
-		'<a href="'. WT_SERVER_NAME.WT_SCRIPT_PATH."admin_users.php?filter=" . WT_Filter::escapeUrl($user->getUserName()) . '">' .
-		WT_SERVER_NAME.WT_SCRIPT_PATH."admin_users.php?filter=" . WT_Filter::escapeUrl($user->getUserName()) .
+		'<a href="' . WT_SERVER_NAME . WT_SCRIPT_PATH . "admin_users.php?filter=" . WT_Filter::escapeUrl($user->getUserName()) . '">' .
+		WT_SERVER_NAME . WT_SCRIPT_PATH . "admin_users.php?filter=" . WT_Filter::escapeUrl($user->getUserName()) .
 		'</a>' .
 		WT_Mail::auditFooter();
 
@@ -528,7 +587,7 @@ case 'verify_hash':
 	$controller->pageHeader();
 
 	echo '<div id="login-register-page">';
-	echo '<h2>'.WT_I18N::translate('User verification').'</h2>';
+	echo '<h2>' . WT_I18N::translate('User verification') . '</h2>';
 	echo '<div id="user-verify">';
 	echo WT_I18N::translate('The data for the user <b>%s</b> was checked.', $user_name);
 	if ($user) {
@@ -546,8 +605,8 @@ case 'verify_hash':
 				$mail1_subject,
 				$mail1_body
 			);
-			$mail1_method  = $webmaster->getPreference('CONTACT_METHOD');
-			if ($mail1_method!='messaging3' && $mail1_method!='mailto' && $mail1_method!='none') {
+			$mail1_method = $webmaster->getPreference('CONTACT_METHOD');
+			if ($mail1_method != 'messaging3' && $mail1_method != 'mailto' && $mail1_method != 'none') {
 				WT_DB::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
 					->execute(array($user_name, $WT_REQUEST->getClientIp(), $webmaster->getUserId(), $mail1_subject, WT_Filter::unescapeHtml($mail1_body)));
 			}
@@ -562,7 +621,7 @@ case 'verify_hash':
 			}
 			Log::addAuthenticationLog('User ' . $user_name . ' verified their email address');
 
-			echo '<br><br>'.WT_I18N::translate('You have confirmed your request to become a registered user.').'<br><br>';
+			echo '<br><br>' . WT_I18N::translate('You have confirmed your request to become a registered user.') . '<br><br>';
 			if ($REQUIRE_ADMIN_AUTH_REGISTRATION && !$user->getPreference('verified_by_admin')) {
 				echo WT_I18N::translate('The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password.');
 			} else {

@@ -1,6 +1,6 @@
 <?php
 // webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
+// Copyright (C) 2015 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -20,13 +20,16 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use \WT\Auth;
+use WT\Theme;
 
 // Create tables, if not already present
 try {
 	WT_DB::updateSchema(WT_MODULES_DIR . 'user_blog/db_schema/', 'NB_SCHEMA_VERSION', 3);
 } catch (PDOException $ex) {
 	// The schema update scripts should never fail.  If they do, there is no clean recovery.
-	die($ex);
+	WT_FlashMessages::addMessage($ex->getMessage(), 'danger');
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'site-unavailable.php');
+	throw $ex;
 }
 
 /**
@@ -55,7 +58,7 @@ class user_blog_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 			break;
 		}
-		$block = get_block_setting($block_id, 'block', true);
+		$block = get_block_setting($block_id, 'block', '1');
 		if ($cfg) {
 			foreach (array('block') as $name) {
 				if (array_key_exists($name, $cfg)) {
@@ -85,17 +88,16 @@ class user_blog_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 			$content .= $news->body . '<br><br>';
 			$content .= '<a href="#" onclick="window.open(\'editnews.php?news_id=\'+' . $news->news_id . ', \'_blank\', indx_window_specs); return false;">' . WT_I18N::translate('Edit') . '</a> | ';
-			$content .= '<a href="index.php?action=deletenews&amp;news_id=' . $news->news_id . '&amp;ctype=' . $ctype .'" onclick="return confirm(\'' . WT_I18N::translate('Are you sure you want to delete this journal entry?') . "');\">" . WT_I18N::translate('Delete') . '</a><br>';
+			$content .= '<a href="index.php?action=deletenews&amp;news_id=' . $news->news_id . '&amp;ctype=' . $ctype . '" onclick="return confirm(\'' . WT_I18N::translate('Are you sure you want to delete this journal entry?') . "');\">" . WT_I18N::translate('Delete') . '</a><br>';
 			$content .= "</div><br>";
 		}
 		$content .= '<br><a href="#" onclick="window.open(\'editnews.php?user_id=' . Auth::id() . '\', \'_blank\', indx_window_specs); return false;">' . WT_I18N::translate('Add a new journal entry') . '</a>';
 
 		if ($template) {
 			if ($block) {
-				require WT_THEME_DIR . 'templates/block_small_temp.php';
-			} else {
-				require WT_THEME_DIR . 'templates/block_main_temp.php';
+				$class .= ' small_inner_block';
 			}
+			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 			return $content;
 		}

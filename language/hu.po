@@ -10292,7 +10292,7 @@ msgid "P.M."
 msgstr ""
 
 #: help_text.php:1308
-msgid "PGV must be version 4.2.3, or any SVN up to #6973"
+msgid "PGV must be version 4.2.3, or any SVN up to #%s"
 msgstr ""
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
@@ -13649,7 +13649,7 @@ msgstr ""
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:77
 #, php-format
-msgid "The two family trees have %1$s record which use the same “XREF”."
+msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
 msgstr[0] ""
 msgstr[1] ""
@@ -13816,7 +13816,7 @@ msgid "This database is only running MySQL version %s.  You cannot install webtr
 msgstr "Ez az adatbázis csak MySQL %s verzión fut. Erre nem telepítheti a webtrees-t."
 
 #: help_text.php:1207 setup.php:412
-msgid "This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site."
+msgid "This email address will be used to send password reminders, site notifications, and messages from other family members who are registered on the site."
 msgstr "Erre az e-mail-címre érkeznek majd a jelszó-emlékeztető üzenetek, az oldallal kapcsolatos jelentések és más az oldalon regisztrált felhasználók (családtagok) üzenetei."
 
 #: addmedia.php:519
@@ -14392,7 +14392,7 @@ msgstr "Ez az oldal ideiglenesen nem elérhető."
 
 #: admin_trees_manage.php:137
 #, php-format
-msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM."
+msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM file."
 msgstr "Ez kitörli az összes családfa adatot a(z) <b>%s</b> bejegyzésből és felülírja egy másik GEDCOM adataival."
 
 #: modules_v3/googlemap/module.php:1772

@@ -10264,8 +10264,8 @@ msgid "P.M."
 msgstr "Chiều"
 
 #: help_text.php:1308
-msgid "PGV must be version 4.2.3, or any SVN up to #6973"
-msgstr "PGV phải có version 4.2.3, hoặc bất kỳ bản phát triển SVN nào đến #6973"
+msgid "PGV must be version 4.2.3, or any SVN up to #%s"
+msgstr "PGV phải có version 4.2.3, hoặc bất kỳ bản phát triển SVN nào đến #%s"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:82
@@ -13620,7 +13620,7 @@ msgstr "Thời gian bằng giây mà phiên làm việc webtrees vẫn hoạt đ
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:77
 #, php-format
-msgid "The two family trees have %1$s record which use the same “XREF”."
+msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
 msgstr[0] ""
 
@@ -13786,7 +13786,7 @@ msgid "This database is only running MySQL version %s.  You cannot install webtr
 msgstr "CSDL này chỉ chạy ở MySQL phiên bản %s. Bạn không thể cài webtrees vào đây."
 
 #: help_text.php:1207 setup.php:412
-msgid "This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site."
+msgid "This email address will be used to send password reminders, site notifications, and messages from other family members who are registered on the site."
 msgstr "Địa chỉ email này được dùng để gửi cho bạn lời nhắc về mật khẩu, thông báo về site, và các thông báo từ những thành viên gia đình khác có đăng ký ở site."
 
 #: addmedia.php:519
@@ -14361,7 +14361,7 @@ msgstr "Site hiện tạm thời không hoạt động"
 
 #: admin_trees_manage.php:137
 #, php-format
-msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM."
+msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM file."
 msgstr "Việc này sẽ xóa bỏ mọi chi tiết gia phả của <b>%s</b> và thay thế bằng số liệu từ một file GEDCOM khác."
 
 #: modules_v3/googlemap/module.php:1772

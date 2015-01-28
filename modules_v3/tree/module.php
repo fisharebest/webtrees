@@ -91,7 +91,7 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 		switch ($mod_action) {
 		case 'treeview':
 			global $controller;
-			$controller = new WT_Controller_Chart();
+			$controller = new WT_Controller_Chart;
 			$tv = new TreeView('tv');
 			ob_start();
 
@@ -136,7 +136,7 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 			break;
 
 		default:
-			header('HTTP/1.0 404 Not Found');
+			http_response_code(404);
 			break;
 		}
 	}

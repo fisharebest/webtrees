@@ -2,7 +2,7 @@
 // Renumber the XREFs in a tree, so they are unique across the site.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2014 Greg Roach
+// Copyright (C) 2015 Greg Roach
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -23,10 +23,10 @@ use WT\Auth;
 define('WT_SCRIPT_NAME', 'admin_trees_renumber.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Page();
+$controller = new WT_Controller_Page;
 $controller
 	->restrictAccess(Auth::isManager())
-	->setPageTitle(WT_I18N::translate(/* I18N: Renumber the records in a family tree */ 'Renumber family tree'))
+	->setPageTitle(WT_I18N::translate(/* I18N: Renumber the records in a family tree */ 'Renumber family tree') . ' — ' . WT_Filter::escapeHtml($WT_TREE->tree_title))
 	->pageHeader();
 
 // Every XREF used by this tree and also used by some other tree
@@ -41,7 +41,7 @@ $xrefs = WT_DB::prepare(
 	" SELECT m_id AS xref, 'OBJE' AS type FROM `##media` WHERE m_file = ?" .
 	"  UNION " .
 	" SELECT o_id AS xref, o_type AS type FROM `##other` WHERE o_file = ? AND o_type NOT IN ('HEAD', 'TRLR')" .
-	") AS this_tree JOIN (".
+	") AS this_tree JOIN (" .
 	" SELECT xref FROM `##change` WHERE gedcom_id <> ?" .
 	"  UNION " .
 	" SELECT i_id AS xref FROM `##individuals` WHERE i_file <> ?" .
@@ -55,11 +55,12 @@ $xrefs = WT_DB::prepare(
 	" SELECT o_id AS xref FROM `##other` WHERE o_file <> ? AND o_type NOT IN ('HEAD', 'TRLR')" .
 	") AS other_trees USING (xref)"
 )->execute(array(
-		WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID,
-		WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID
-	))->fetchAssoc();
+	WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID,
+	WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID
+))->fetchAssoc();
 
-echo '<h2>', $controller->getPageTitle(), ' — ', $WT_TREE->tree_title_html, '</h2>';
+echo '<h1>', $controller->getPageTitle(), '</h1>';
+
 if (WT_Filter::get('go')) {
 	foreach ($xrefs as $old_xref=>$type) {
 		WT_DB::beginTransaction();
@@ -248,7 +249,7 @@ if (WT_Filter::get('go')) {
 		}
 
 		// How much time do we have left?
-		if (microtime(true) - $start_time > ini_get('max_execution_time') - 5) {
+		if (microtime(true) - WT_START_TIME > ini_get('max_execution_time') - 2) {
 			echo '<p>', WT_I18N::translate('The server’s time limit was reached.'), '</p>';
 			break;
 		}
@@ -257,8 +258,8 @@ if (WT_Filter::get('go')) {
 
 	}
 } else {
-	echo '<p>', WT_I18N::translate('In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”.') ,'</p>';
-	echo '<p>', WT_I18N::translate('You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree.') ,'</p>';
+	echo '<p>', WT_I18N::translate('In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”.'), '</p>';
+	echo '<p>', WT_I18N::translate('You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree.'), '</p>';
 }
 
 echo '<p>', WT_I18N::plural(
@@ -271,8 +272,11 @@ if ($xrefs) {
 	// We use GET (not POST) for this update operation - because we want the user to
 	// be able to press F5 to continue after a timeout.
 	echo '<form method="GET" action="', WT_SCRIPT_NAME, '">';
-	echo '<p>', WT_I18N::translate('You can renumber this family tree.');
-	echo '<input type="submit" name="go" value="', /* I18N: button label */ WT_I18N::translate('go') ,'"></p>';
+	echo '<p>', WT_I18N::translate('You can renumber this family tree.'), '</p>';
+	echo '<button type="submit" class="btn btn-primary">';
+	echo '<i class="fa fa-check"></i> ', /* I18N: Button label */ WT_I18N::translate('continue');
+	echo '</button>';
+	//echo '<input type="submit" name="go" value="', /* I18N: button label */ WT_I18N::translate('go'), '"></p>';
 	echo '<input type="hidden" name="ged" value="', WT_Filter::escapeUrl(WT_GEDCOM), '">';
 	echo '</form>';
 	echo '<p>', WT_I18N::translate('Caution!  This may take a long time.  Be patient.'), '</p>';

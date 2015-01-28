@@ -96,17 +96,17 @@ class WT_Tree {
 			// Update the database
 			if ($setting_value === null) {
 				WT_DB::prepare(
-					"DELETE FROM `##gedcom_setting` WHERE gedcom_id = :gedcom_id AND setting_name = :setting_name"
+					"DELETE FROM `##gedcom_setting` WHERE gedcom_id = :tree_id AND setting_name = :setting_name"
 				)->execute(array(
-					'gedcom_id'    => $this->tree_id,
+					'tree_id'      => $this->tree_id,
 					'setting_name' => $setting_name,
 				));
 			} else {
 				WT_DB::prepare(
 					"REPLACE INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value)" .
-					" VALUES (:gedcom_id, :setting_name, LEFT(:setting_value, 255))"
+					" VALUES (:tree_id, :setting_name, LEFT(:setting_value, 255))"
 				)->execute(array(
-					'gedcom_id'     => $this->tree_id,
+					'tree_id'       => $this->tree_id,
 					'setting_name'  => $setting_name,
 					'setting_value' => $setting_value,
 				));
@@ -157,9 +157,24 @@ class WT_Tree {
 	public function setUserPreference(User $user, $setting_name, $setting_value) {
 		if ($this->getUserPreference($user, $setting_name) !== $setting_value) {
 			// Update the database
-			WT_DB::prepare(
-				"REPLACE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (?, ?, ?, LEFT(?, 255))"
-			)->execute(array($user->getUserId(), $this->tree_id, $setting_name, $setting_value));
+			if ($setting_value === null) {
+				WT_DB::prepare(
+					"DELETE FROM `##user_gedcom_setting` WHERE gedcom_id = :tree_id AND user_id = :user_id AND setting_name = :setting_name"
+				)->execute(array(
+					'tree_id'      => $this->tree_id,
+					'user_id'      => $user->getUserId(),
+					'setting_name' => $setting_name,
+				));
+			} else {
+				WT_DB::prepare(
+					"REPLACE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (:user_id, :tree_id, :setting_name, LEFT(:setting_value, 255))"
+				)->execute(array(
+					'user_id'       => $user->getUserId(),
+					'tree_id'       => $this->tree_id,
+					'setting_name'  => $setting_name,
+					'setting_value' => $setting_value
+				));
+			}
 			// Update our cache
 			$this->user_preferences[$user->getUserId()][$setting_name] = $setting_value;
 			// Audit log of changes
@@ -196,11 +211,11 @@ class WT_Tree {
 				" LEFT JOIN `##gedcom_setting`      gs3 ON (g.gedcom_id=gs3.gedcom_id AND gs3.setting_name='REQUIRE_AUTHENTICATION')" .
 				" LEFT JOIN `##user_gedcom_setting` ugs ON (g.gedcom_id=ugs.gedcom_id AND ugs.setting_name='canedit' AND ugs.user_id=?)" .
 				" WHERE " .
-				"  g.gedcom_id>0 AND (".          // exclude the "template" tree
+				"  g.gedcom_id>0 AND (" . // exclude the "template" tree
 				"    EXISTS (SELECT 1 FROM `##user_setting` WHERE user_id=? AND setting_name='canadmin' AND setting_value=1)" . // Admin sees all
 				"   ) OR (" .
-				"    gs2.setting_value = 1 AND (".                 // Allow imported trees, with either:
-				"     gs3.setting_value <> 1 OR" .                 // visitor access
+				"    gs2.setting_value = 1 AND (" . // Allow imported trees, with either:
+				"     gs3.setting_value <> 1 OR" . // visitor access
 				"     IFNULL(ugs.setting_value, 'none')<>'none'" . // explicit access
 				"   )" .
 				"  )" .
@@ -289,10 +304,11 @@ class WT_Tree {
 	 * Create a new tree
 	 *
 	 * @param string $tree_name
+	 * @param string $tree_title
 	 *
 	 * @return void
 	 */
-	public static function create($tree_name) {
+	public static function create($tree_name, $tree_title) {
 		try {
 			// Create a new tree
 			WT_DB::prepare(
@@ -422,7 +438,7 @@ class WT_Tree {
 		$tree->setPreference('WEBTREES_EMAIL', '');
 		$tree->setPreference('WORD_WRAPPED_NOTES', '0');
 		$tree->setPreference('imported', '0');
-		$tree->setPreference('title',                        /* I18N: Default title for new family trees */ WT_I18N::translate('My family tree'));
+		$tree->setPreference('title', $tree_title);
 
 		// Default restriction settings
 		$statement = WT_DB::prepare(
@@ -436,7 +452,7 @@ class WT_Tree {
 
 		// Genealogy data
 		// It is simpler to create a temporary/unimported GEDCOM than to populate all the tables...
-		$john_doe =/* I18N: This should be a common/default/placeholder name of an individual.  Put slashes around the surname. */
+		$john_doe = /* I18N: This should be a common/default/placeholder name of an individual.  Put slashes around the surname. */
 			WT_I18N::translate('John /DOE/');
 		$note     = WT_I18N::translate('Edit this individual and replace their details with your own');
 		WT_DB::prepare("INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data) VALUES (?, ?)")->execute(array(
