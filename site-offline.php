@@ -20,6 +20,10 @@
 
 define('WT_SCRIPT_NAME', 'site-offline.php');
 
+// We use some PHP5.5 features, but need to run on older servers
+if (version_compare(PHP_VERSION, '5.4', '<')) {
+	require WT_ROOT . 'includes/php_53_compatibility.php';
+}
 require 'library/autoload.php';
 
 // This script does not load session.php.
@@ -48,8 +52,8 @@ if (file_exists(WT_DATA_DIR . 'offline.txt')) {
 	return;
 }
 
+http_response_code(503);
 header('Content-Type: text/html; charset=UTF-8');
-header($_SERVER['SERVER_PROTOCOL'] . ' 503 Service Temporarily Unavailable');
 
 echo
 	'<!DOCTYPE html>',

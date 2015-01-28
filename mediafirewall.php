@@ -291,7 +291,6 @@ if (!file_exists($serverFilename)) {
 
 $mimetype       = $media->mimeType();
 $imgsize        = $media->getImageAttributes($which);
-$protocol       = $_SERVER['SERVER_PROTOCOL']; // determine if we are using HTTP/1.0 or HTTP/1.1
 $filetime       = $media->getFiletime($which);
 $filetimeHeader = gmdate('D, d M Y H:i:s', $filetime) . ' GMT';
 $expireOffset   = 3600 * 24; // tell browser to cache this image for 24 hours
