@@ -48,7 +48,7 @@ header('Content-type: text/html; charset=UTF-8');
 
 if (!WT_Filter::checkCsrf()) {
 	Zend_Session::writeClose();
-	header('HTTP/1.0 406 Not Acceptable');
+	http_response_code(406);
 
 	return;
 }
@@ -61,7 +61,7 @@ case 'accept-changes':
 		WT_FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ WT_I18N::translate('The changes to “%s” have been accepted.', $record->getFullName()));
 		accept_all_changes($record->getXref(), $record->getGedcomId());
 	} else {
-		header('HTTP/1.0 406 Not Acceptable');
+		http_response_code(406);
 	}
 	break;
 
@@ -134,7 +134,7 @@ case 'delete-fact':
 	}
 
 	// Can’t find the record/fact, or don’t have permission to delete it.
-	header('HTTP/1.0 406 Not Acceptable');
+	http_response_code(406);
 	break;
 
 case 'delete-family':
@@ -178,7 +178,7 @@ case 'delete-source':
 		// Delete the record itself
 		$record->deleteRecord();
 	} else {
-		header('HTTP/1.0 406 Not Acceptable');
+		http_response_code(406);
 	}
 	break;
 
@@ -198,7 +198,7 @@ case 'masquerade':
 		Log::addAuthenticationLog('Masquerade as user: ' . $user->getUserName());
 		Auth::login($user);
 	} else {
-		header('HTTP/1.0 406 Not Acceptable');
+		http_response_code(406);
 	}
 	break;
 
@@ -226,7 +226,7 @@ case 'unlink-media':
 			}
 		}
 	} else {
-		header('HTTP/1.0 406 Not Acceptable');
+		http_response_code(406);
 	}
 	break;
 
@@ -237,7 +237,7 @@ case 'reject-changes':
 		WT_FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ WT_I18N::translate('The changes to “%s” have been rejected.', $record->getFullName()));
 		reject_all_changes($record->getXref(), $record->getGedcomId());
 	} else {
-		header('HTTP/1.0 406 Not Acceptable');
+		http_response_code(406);
 	}
 	break;
 
@@ -250,7 +250,7 @@ case 'theme':
 		Auth::user()->setPreference('theme', $theme);
 	} else {
 		// Request for a non-existant theme.
-		header('HTTP/1.0 406 Not Acceptable');
+		http_response_code(406);
 	}
 	break;
 }

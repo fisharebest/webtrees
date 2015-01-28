@@ -30,7 +30,7 @@ define('WT_SCRIPT_NAME', 'import.php');
 require './includes/session.php';
 
 if (!WT_USER_GEDCOM_ADMIN) {
-	header('HTTP/1.1 403 Access Denied');
+	http_response_code(403);
 	
 	return;
 }

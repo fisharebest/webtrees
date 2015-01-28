@@ -27,7 +27,7 @@ use WT\Theme;
 
 // WT_SCRIPT_NAME is defined in each script that the user is permitted to load.
 if (!defined('WT_SCRIPT_NAME')) {
-	header('HTTP/1.0 403 Forbidden');
+	http_response_code(403);
 	exit;
 }
 
@@ -161,61 +161,9 @@ if (strpos(ini_get('disable_functions'), 'ini_set') === false) {
 	ini_set('display_errors', 'on');
 }
 
-// PHP5.3 may be using magic-quotes :-(
-if (version_compare(PHP_VERSION, '5.4', '<') && get_magic_quotes_gpc()) {
-	// http://php.net/manual/en/security.magicquotes.disabling.php
-	$process = array(&$_GET, &$_POST, &$_COOKIE, &$_REQUEST);
-	while (list($key, $val) = each($process)) {
-		foreach ($val as $k => $v) {
-			unset($process[$key][$k]);
-			if (is_array($v)) {
-				$process[$key][stripslashes($k)] = $v;
-				$process[] = &$process[$key][stripslashes($k)];
-			} else {
-				$process[$key][stripslashes($k)] = stripslashes($v);
-			}
-		}
-	}
-	unset($process);
-}
-
-////////////////////////////////////////////////////////////////////////////////
-// The ircmaxell/password-compat library does not support unpatched versions of
-// PHP older than PHP5.3.6.  These versions of PHP have no secure crypt library.
-////////////////////////////////////////////////////////////////////////////////
-$hash = '$2y$04$usesomesillystringfore7hnbRJHxXVLeakoG8K30oukPsA.ztMG';
-if (!defined('PASSWORD_BCRYPT') && crypt("password", $hash) !== $hash) {
-	define('PASSWORD_BCRYPT', 1);
-	define('PASSWORD_DEFAULT', 1);
-	/**
-	 * @param string  $password
-	 * @param integer $algo
-	 *
-	 * @return string
-	 */
-	function password_hash($password, $algo) {
-		return crypt($password);
-	}
-
-	/**
-	 * @param string  $hash
-	 * @param integer $algo
-	 *
-	 * @return boolean
-	 */
-	function password_needs_rehash($hash, $algo) {
-		return false;
-	}
-
-	/**
-	 * @param string  $password
-	 * @param integer $hash
-	 *
-	 * @return boolean
-	 */
-	function password_verify($password, $hash) {
-		return crypt($password, $hash) === $hash;
-	}
+// We use some PHP5.5 features, but need to run on older servers
+if (version_compare(PHP_VERSION, '5.4', '<')) {
+	require WT_ROOT . 'includes/php_53_compatibility.php';
 }
 
 require WT_ROOT . 'library/autoload.php';
@@ -401,7 +349,7 @@ case 'allow':
 	$SEARCH_SPIDER = false;
 	break;
 case 'deny':
-	header('HTTP/1.1 403 Access Denied');
+	http_response_code(403);
 	exit;
 case 'robot':
 case 'unknown':
@@ -663,7 +611,7 @@ if ($SEARCH_SPIDER && !in_array(WT_SCRIPT_NAME, array(
 	'index.php', 'indilist.php', 'module.php', 'mediafirewall.php',
 	'individual.php', 'family.php', 'mediaviewer.php', 'note.php', 'repo.php', 'source.php',
 ))) {
-	header($_SERVER['SERVER_PROTOCOL'] . ' 403 Forbidden');
+	http_response_code(403);
 	$controller = new WT_Controller_Page;
 	$controller->setPageTitle(WT_I18N::translate('Search engine'));
 	$controller->pageHeader();

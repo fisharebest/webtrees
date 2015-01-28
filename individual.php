@@ -87,7 +87,7 @@ if ($controller->record && $controller->record->canShow()) {
 	
 	return;
 } else {
-	header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
+	http_response_code(404);
 	$controller->pageHeader();
 	echo '<p class="ui-state-error">', WT_I18N::translate('This individual does not exist or you do not have permission to view it.'), '</p>';
 	

@@ -50,7 +50,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 			$this->showList();
 			break;
 		default:
-			header('HTTP/1.0 404 Not Found');
+			http_response_code(404);
 		}
 	}
 

@@ -46,7 +46,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 			$this->generate(WT_Filter::get('file'));
 			break;
 		default:
-			header('HTTP/1.0 404 Not Found');
+			http_response_code(404);
 		}
 	}
 
@@ -59,7 +59,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 		} elseif (preg_match('/^sitemap-(\d+)-([isrmn])-(\d+).xml$/', $file, $match)) {
 			$this->generateFile($match[1], $match[2], $match[3]);
 		} else {
-			header('HTTP/1.0 404 Not Found');
+			http_response_code(404);
 		}
 	}
 
