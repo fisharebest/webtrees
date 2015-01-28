@@ -135,7 +135,7 @@ class Colors extends Clouds {
 		foreach ($this->palettes as $palette_id => $palette_name) {
 			$submenu = new WT_Menu($palette_name, get_query_url(array('themecolor' => $palette_id), '&amp;'), 'menu-color-' . $palette_id);
 			if ($this->palette === $palette_id) {
-				$submenu->addClass('active');
+				$submenu->addClass('', '', 'active');
 			}
 			$menu->addSubmenu($submenu);
 		}
