@@ -65,6 +65,8 @@ if (!defined('PASSWORD_BCRYPT') && crypt("password", $hash) !== $hash) {
  * @return int|null
  */
 function http_response_code($code = null) {
+	static $http_response_code = 200;
+
 	if ($code !== null) {
 		switch ($code) {
 		case 100:
@@ -179,15 +181,12 @@ function http_response_code($code = null) {
 			$text = 'HTTP Version not supported';
 			break;
 		default:
-			exit('Unknown http status code "' . htmlentities($code) . '"');
-			break;
+			throw new DomainException;
 		}
-		$protocol = (isset($_SERVER['SERVER_PROTOCOL']) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0');
+		$http_response_code = $code;
+		$protocol = WT_Filter::server('SERVER_PROTOCOL', null, 'HTTP/1.0');
 		header($protocol . ' ' . $code . ' ' . $text);
-		$GLOBALS['http_response_code'] = $code;
-	} else {
-		$code = (isset($GLOBALS['http_response_code']) ? $GLOBALS['http_response_code'] : 200);
 	}
 
-	return $code;
+	return $http_response_code;
 }

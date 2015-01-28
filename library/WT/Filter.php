@@ -172,7 +172,7 @@ class WT_Filter {
 	}
 
 	/**
-	 * Validate INPUT requests
+	 * Validate INPUT parameters
 	 *
 	 * @param string      $source
 	 * @param string      $variable
@@ -201,7 +201,7 @@ class WT_Filter {
 				FILTER_CALLBACK,
 				array(
 					'options' => function($x) {
-						return !function_exists('mb_convert_encoding') || mb_check_encoding($x, 'UTF-8') ? $x : false;
+						return mb_check_encoding($x, 'UTF-8') ? $x : false;
 					},
 				)
 			);
@@ -210,7 +210,7 @@ class WT_Filter {
 	}
 
 	/**
-	 * Validate array INPUT requests
+	 * Validate array INPUT parameters
 	 *
 	 * @param string      $source
 	 * @param string      $variable
@@ -255,7 +255,7 @@ class WT_Filter {
 	}
 
 	/**
-	 * Validate GET requests
+	 * Validate GET parameters
 	 *
 	 * @param string      $variable
 	 * @param string|null $regexp
@@ -268,7 +268,7 @@ class WT_Filter {
 	}
 
 	/**
-	 * Validate array GET requests
+	 * Validate array GET parameters
 	 *
 	 * @param string      $variable
 	 * @param string|null $regexp
@@ -281,7 +281,7 @@ class WT_Filter {
 	}
 
 	/**
-	 * Validate boolean GET requests
+	 * Validate boolean GET parameters
 	 *
 	 * @param string $variable
 	 *
@@ -292,7 +292,7 @@ class WT_Filter {
 	}
 
 	/**
-	 * Validate integer GET requests
+	 * Validate integer GET parameters
 	 *
 	 * @param string  $variable
 	 * @param integer $min
@@ -306,7 +306,7 @@ class WT_Filter {
 	}
 
 	/**
-	 * Validate email GET requests
+	 * Validate email GET parameters
 	 *
 	 * @param string      $variable
 	 * @param string|null $default
@@ -318,7 +318,7 @@ class WT_Filter {
 	}
 
 	/**
-	 * Validate URL GET requests
+	 * Validate URL GET parameters
 	 *
 	 * @param string      $variable
 	 * @param string|null $default
@@ -330,7 +330,7 @@ class WT_Filter {
 	}
 
 	/**
-	 * Validate POST requests
+	 * Validate POST parameters
 	 *
 	 * @param string      $variable
 	 * @param string|null $regexp
@@ -343,7 +343,7 @@ class WT_Filter {
 	}
 
 	/**
-	 * Validate array POST requests
+	 * Validate array POST parameters
 	 *
 	 * @param string      $variable
 	 * @param string|null $regexp
@@ -356,7 +356,7 @@ class WT_Filter {
 	}
 
 	/**
-	 * Validate boolean POST requests
+	 * Validate boolean POST parameters
 	 *
 	 * @param string $variable
 	 *
@@ -367,7 +367,7 @@ class WT_Filter {
 	}
 
 	/**
-	 * Validate integer POST requests
+	 * Validate integer POST parameters
 	 *
 	 * @param string  $variable
 	 * @param integer $min
@@ -381,7 +381,7 @@ class WT_Filter {
 	}
 
 	/**
-	 * Validate email POST requests
+	 * Validate email POST parameters
 	 *
 	 * @param string      $variable
 	 * @param string|null $default
@@ -393,7 +393,7 @@ class WT_Filter {
 	}
 
 	/**
-	 * Validate URL GET requests
+	 * Validate URL GET parameters
 	 *
 	 * @param string      $variable
 	 * @param string|null $default
@@ -405,7 +405,7 @@ class WT_Filter {
 	}
 
 	/**
-	 * Validate COOKIE requests
+	 * Validate COOKIE parameters
 	 *
 	 * @param string      $variable
 	 * @param string|null $regexp
@@ -415,6 +415,19 @@ class WT_Filter {
 	 */
 	public static function cookie($variable, $regexp = null, $default = null) {
 		return self::input(INPUT_COOKIE, $variable, $regexp, $default);
+	}
+
+	/**
+	 * Validate SERVER parameters
+	 *
+	 * @param string      $variable
+	 * @param string|null $regexp
+	 * @param string|null $default
+	 *
+	 * @return null|string
+	 */
+	public static function server($variable, $regexp = null, $default = null) {
+		return self::input(INPUT_SERVER, $variable, $regexp, $default);
 	}
 
 	/**
