@@ -858,7 +858,7 @@ try {
 		" ('Opera/% (%) Presto/% Version/%', 'allow', 'Presto-based browsers')," .
 		" ('Mozilla/% (compatible; MSIE %', 'allow', 'Trident-based browsers')," .
 		" ('Mozilla/% (Windows%; Trident%; rv:%) like Gecko', 'allow', 'Modern Internet Explorer')," .
-		" ('Mozilla/5.0 (compatible; Konqueror/%', 'allow', 'Konqueror browser')"
+		" ('Mozilla/5.0 (% Konqueror/%', 'allow', 'Konqueror browser')"
 	);
 
 	WT_DB::prepare(
