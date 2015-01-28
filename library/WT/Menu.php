@@ -273,8 +273,8 @@ class WT_Menu {
 	 * @return string
 	 */
 	public function getMenuAsList() {
-		if ($this->iconclass) {
-			$class = ' class="' . $this->iconclass . '"';
+		if ($this->class) {
+			$class = ' class="' . $this->class . '"';
 		} else {
 			$class = '';
 		}

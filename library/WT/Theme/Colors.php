@@ -29,10 +29,10 @@ use WT_Site;
  */
 class Colors extends Clouds {
 	/** @var string[] A list of color palettes */
-	protected $sub_colors;
+	protected $palettes;
 
 	/** @var string Which of the color palettes to use on this page */
-	protected $sub_color;
+	protected $palette;
 
 	/** {@inheritdoc} */
 	public function assetUrl() {
@@ -64,7 +64,7 @@ class Colors extends Clouds {
 	 * {@inheritdoc}
 	 */
 	public function hookAfterInit() {
-		$this->sub_colors = array(
+		$this->palettes = array(
 			'aquamarine'      => /* I18N: The name of a colour-scheme */ WT_I18N::translate('Aqua Marine'),
 			'ash'             => /* I18N: The name of a colour-scheme */ WT_I18N::translate('Ash'),
 			'belgianchocolate'=> /* I18N: The name of a colour-scheme */ WT_I18N::translate('Belgian Chocolate'),
@@ -82,33 +82,33 @@ class Colors extends Clouds {
 			'shinytomato'     => /* I18N: The name of a colour-scheme */ WT_I18N::translate('Shiny Tomato'),
 			'tealtop'         => /* I18N: The name of a colour-scheme */ WT_I18N::translate('Teal Top'),
 		);
-		uasort($this->sub_colors, array('WT_I18N', 'strcasecmp'));
+		uasort($this->palettes, array('WT_I18N', 'strcasecmp'));
 
 		// If we've selected a new palette, and we are logged in, set this value as a default.
-		if (isset($_GET['themecolor']) && array_key_exists($_GET['themecolor'], $this->sub_colors)) {
+		if (isset($_GET['themecolor']) && array_key_exists($_GET['themecolor'], $this->palettes)) {
 			// Request to change color
-			$this->sub_color = $_GET['themecolor'];
-			Auth::user()->setPreference('themecolor', $this->sub_color);
+			$this->palette = $_GET['themecolor'];
+			Auth::user()->setPreference('themecolor', $this->palette);
 			if (Auth::isAdmin()) {
-				WT_Site::setPreference('DEFAULT_COLOR_PALETTE', $this->sub_color);
+				WT_Site::setPreference('DEFAULT_COLOR_PALETTE', $this->palette);
 			}
 			unset($_GET['themecolor']);
 			// Rember that we have selected a value
-			$this->session->subColor = $this->sub_color;
+			$this->session->subColor = $this->palette;
 		}
 		// If we are logged in, use our preference
-		$this->sub_color = Auth::user()->getPreference('themecolor');
+		$this->palette = Auth::user()->getPreference('themecolor');
 		// If not logged in or no preference, use one we selected earlier in the session?
-		if (!$this->sub_color) {
-			$this->sub_color = $this->session->subColor;
+		if (!$this->palette) {
+			$this->palette = $this->session->subColor;
 		}
 		// We haven't selected one this session?  Use the site default
-		if (!$this->sub_color) {
-			$this->sub_color = WT_Site::getPreference('DEFAULT_COLOR_PALETTE');
+		if (!$this->palette) {
+			$this->palette = WT_Site::getPreference('DEFAULT_COLOR_PALETTE');
 		}
 		// Make sure our selected palette actually exists
-		if (!array_key_exists($this->sub_color, $this->sub_colors)) {
-			$this->sub_color = 'ash';
+		if (!array_key_exists($this->palette, $this->palettes)) {
+			$this->palette = 'ash';
 		}
 	}
 
@@ -132,20 +132,10 @@ class Colors extends Clouds {
 	protected function menuPalette() {
 		$menu = new WT_Menu(/* I18N: A colour scheme */ WT_I18N::translate('Palette'), '#', 'menu-color');
 
-		foreach ($this->sub_colors as $colorChoice => $color_name) {
-			$submenu = new WT_Menu($color_name, get_query_url(array('themecolor' => $colorChoice), '&amp;'), 'menu-color-' . $colorChoice);
-			if ($this->session->subColor) {
-				if ($this->session->subColor === $colorChoice) {
-					$submenu->addClass('', '', 'theme-active');
-				}
-			} elseif (WT_Site::getPreference('DEFAULT_COLOR_PALETTE') === $colorChoice) {
-				// here when visitor changes palette from default
-				$submenu->addClass('', '', 'theme-active');
-			} elseif ($this->sub_color === 'ash') {
-				// here when site has different theme as default and user switches to colors
-				if ($this->sub_color === $colorChoice) {
-					$submenu->addClass('', '', 'theme-active');
-				}
+		foreach ($this->palettes as $palette_id => $palette_name) {
+			$submenu = new WT_Menu($palette_name, get_query_url(array('themecolor' => $palette_id), '&amp;'), 'menu-color-' . $palette_id);
+			if ($this->palette === $palette_id) {
+				$submenu->addClass('active');
 			}
 			$menu->addSubmenu($submenu);
 		}
@@ -158,7 +148,7 @@ class Colors extends Clouds {
 		return array(
 			'themes/colors/jquery-ui-1.11.2/jquery-ui.css',
 			$this->assetUrl() . 'style.css',
-			$this->assetUrl() . 'palette/' . $this->sub_color . '.css',
+			$this->assetUrl() . 'palette/' . $this->palette . '.css',
 		);
 	}
 
