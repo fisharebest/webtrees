@@ -209,7 +209,7 @@ case 'load_json':
 	header('Content-type: application/json');
 	// See http://www.datatables.net/usage/server-side
 	echo json_encode(array(
-		'draw'            => WT_Filter::getInteger('draw'), // Always an integer
+		'draw'            => WT_Filter::getInteger('draw'),
 		'recordsTotal'    => $recordsTotal,
 		'recordsFiltered' => $recordsFiltered,
 		'data'            => $data

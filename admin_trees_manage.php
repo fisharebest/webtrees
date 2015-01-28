@@ -327,7 +327,7 @@ $controller->pageHeader();
 										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
 									</span>
 								</a>
-								<form name="delete_form<?php echo $tree->tree_id; ?>" method="POST" action="admin_trees_manage.php">
+								<form name="delete_form<?php echo $tree->tree_id; ?>" method="post">
 									<input type="hidden" name="action" value="delete">
 									<input type="hidden" name="gedcom_id" value="<?php echo $tree->tree_id; ?>">
 									<?php echo WT_Filter::getCsrf(); ?>
@@ -350,7 +350,7 @@ $controller->pageHeader();
 										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
 									</span>
 										</a>
-										<form name="defaultform<?php echo $tree->tree_id; ?>" method="POST" action="admin_trees_manage.php">
+										<form name="defaultform<?php echo $tree->tree_id; ?>" method="post">
 											<input type="hidden" name="action" value="setdefault">
 											<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
 											<?php echo WT_Filter::getCsrf(); ?>
@@ -546,7 +546,7 @@ $controller->pageHeader();
 		</div>
 		<div id="create-a-new-family-tree" class="panel-collapse collapse<?php echo WT_Tree::getAll() ? '' : ' in'; ?>">
 			<div class="panel-body">
-				<form role="form" class="form-horizontal" method="POST" action="admin_trees_manage.php">
+				<form role="form" class="form-horizontal" method="post">
 					<?php echo WT_Filter::getCsrf(); ?>
 					<input type="hidden" name="action" value="new_tree">
 					<div class="form-group">
