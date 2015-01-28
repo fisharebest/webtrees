@@ -28,13 +28,19 @@ use WT_Tree;
 class Administration extends BaseTheme {
 	/** {@inheritdoc} */
 	protected function stylesheets() {
-		return array(
+		$stylesheets = array(
 			WT_FONT_AWESOME_CSS_URL,
 			WT_BOOTSTRAP_CSS_URL,
 			WT_DATATABLES_BOOTSTRAP_CSS_URL,
 			WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL,
 			$this->assetUrl() . 'style.css',
 		);
+
+		if (WT_I18N::scriptDirection(WT_I18N::languageScript(WT_LOCALE)) === 'rtl') {
+			$stylesheets[] = WT_BOOTSTRAP_RTL_CSS_URL;
+		}
+
+		return $stylesheets;
 	}
 
 	/** {@inheritdoc} */
@@ -182,7 +188,7 @@ class Administration extends BaseTheme {
 			$html .= $menu->bootstrap();
 		}
 
-		return '<div class="clearfix"><ul class="nav nav-pills small pull-right" role="menu">' . $html . '</ul></div>';
+		return '<div class="clearfix"><ul class="nav nav-pills small pull-right flip" role="menu">' . $html . '</ul></div>';
 	}
 
 	/** {@inheritdoc} */
