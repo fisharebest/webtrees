@@ -181,7 +181,7 @@ $controller->pageHeader();
 				<?php echo WT_I18N::plural(
 					'By default, your server allows scripts to run for %s second.',
 					'By default, your server allows scripts to run for %s seconds.',
-					get_cfg_var('max_execution_time'), get_cfg_var('max_execution_time'));
+					get_cfg_var('max_execution_time'), WT_I18N::number(get_cfg_var('max_execution_time')));
 				?>
 				<?php echo WT_I18N::translate('You can request a higher or lower limit, although the server may ignore this request.'); ?>
 				<?php echo WT_I18N::translate('If you leave this setting empty, the default value will be used.'); ?>
