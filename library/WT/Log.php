@@ -71,10 +71,11 @@ class Log {
 	/**
 	 * Store a configuration message in the message log.
 	 *
-	 * @param string $message
+	 * @param string       $message
+	 * @param WT_Tree|null $tree
 	 */
-	public static function addConfigurationLog($message) {
-		self::addLog($message, self::TYPE_CONFIGURATION);
+	public static function addConfigurationLog($message, WT_Tree $tree = null) {
+		self::addLog($message, self::TYPE_CONFIGURATION, $tree);
 	}
 
 	/**
