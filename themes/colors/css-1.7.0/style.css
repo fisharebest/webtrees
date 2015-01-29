@@ -5320,3 +5320,9 @@ footer {
 		z-index: 1;
 	}
 }
+/* temporary hack for secondary colors theme submenus and IE 10+ */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+.secondary-menu,
+.secondary-menu li ul {
+	top: -2px;
+}
