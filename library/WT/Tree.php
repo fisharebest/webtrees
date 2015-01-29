@@ -304,7 +304,7 @@ class WT_Tree {
 	 * @param string $tree_name
 	 * @param string $tree_title
 	 *
-	 * @return void
+	 * @return WT_Tree
 	 */
 	public static function create($tree_name, $tree_title) {
 		try {
@@ -315,7 +315,7 @@ class WT_Tree {
 			$tree_id = WT_DB::prepare("SELECT LAST_INSERT_ID()")->fetchOne();
 		} catch (PDOException $ex) {
 			// A tree with that name already exists?
-			return;
+			return self::get(self::getIdFromName($tree_name));
 		}
 
 		// Update the list of trees - to include this new one
@@ -467,8 +467,10 @@ class WT_Tree {
 			" WHERE gedcom_id = -1"
 		)->execute(array($tree_id));
 
-		// Update the list of trees - to include the new configuration settings
-		self::$trees = null;
+		// Update our cache
+		self::$trees[$tree->tree_id] = $tree;
+
+		return $tree;
 	}
 
 	/**

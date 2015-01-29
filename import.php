@@ -151,9 +151,15 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 			)->execute(array($gedcom_id));
 			break;
 		case 'ANSI': // ANSI could be anything.  Most applications seem to treat it as latin1.
-			$controller->addInlineJavascript(
-				'alert("' . /* I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII */ WT_I18N::translate('This GEDCOM file is encoded using %1$s.  Assume this to mean %2$s.', $charset, 'ISO-8859-1') . '");'
-			);
+			$tmp = WT_DB::prepare("SELECT COUNT(*) FROM `##gedcom_setting` WHERE setting_name='imported' AND setting_value = '0'")->fetchOne();
+
+			if ($tmp === '1') {
+				// Don't show this warning repeadly when we are importing bulk files.
+				$controller->addInlineJavascript(
+					'alert("' . /* I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII */
+					WT_I18N::translate('This GEDCOM file is encoded using %1$s.  Assume this to mean %2$s.', $charset, 'ISO-8859-1') . '");'
+				);
+			}
 		case 'WINDOWS':
 		case 'CP1252':
 		case 'ISO8859-1':

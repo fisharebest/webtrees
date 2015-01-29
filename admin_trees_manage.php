@@ -30,12 +30,16 @@ $controller
 	->restrictAccess(Auth::isManager())
 	->setPageTitle(WT_I18N::translate('Manage family trees'));
 
+$gedcom_files = glob(WT_DATA_DIR . '*.{ged,Ged,GED}', GLOB_NOSORT | GLOB_BRACE);
+
 // Process POST actions
 switch (WT_Filter::post('action')) {
 case 'delete':
 	$gedcom_id = WT_Filter::postInteger('gedcom_id');
 	if (WT_Filter::checkCsrf() && $gedcom_id) {
-		WT_Tree::get($gedcom_id)->delete();
+		$tree = WT_Tree::get($gedcom_id);
+		WT_FlashMessages::addMessage(WT_I18N::translate('The family tree %s was deleted.', WT_Filter::escapeHtml($tree->tree_name)), 'success');
+		$tree->delete();
 	}
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
 
@@ -48,13 +52,13 @@ case 'setdefault':
 
 	return;
 case 'new_tree':
-	$tree_name  = basename(WT_Filter::post('tree_name'));
+	$basename  = basename(WT_Filter::post('tree_name'));
 	$tree_title = WT_Filter::post('tree_title');
 
-	if (WT_Filter::checkCsrf() && $tree_name && $tree_title) {
-		WT_Tree::create($tree_name, $tree_title);
+	if (WT_Filter::checkCsrf() && $basename && $tree_title) {
+		WT_Tree::create($basename, $tree_title);
 	}
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?ged=' . $tree_name);
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?ged=' . $basename);
 
 	return;
 case 'replace_upload':
@@ -73,13 +77,43 @@ case 'replace_upload':
 
 	return;
 case 'replace_import':
-	$tree_name  = basename(WT_Filter::post('tree_name'));
+	$basename  = basename(WT_Filter::post('tree_name'));
 	$gedcom_id  = WT_Filter::postInteger('gedcom_id');
 	$keep_media = WT_Filter::postBool('keep_media');
 	$tree       = WT_Tree::get($gedcom_id);
 
-	if (WT_Filter::checkCsrf() && $tree && $tree_name) {
-		$tree->importGedcomFile(WT_DATA_DIR . $tree_name, $tree_name, $keep_media);
+	if (WT_Filter::checkCsrf() && $tree && $basename) {
+		$tree->importGedcomFile(WT_DATA_DIR . $basename, $basename, $keep_media);
+	}
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
+
+	return;
+
+case 'bulk-import':
+	if (WT_Filter::checkCsrf()) {
+		$tree_names = WT_Tree::getNameList();
+		$basenames  = array();
+
+		foreach ($gedcom_files as $gedcom_file) {
+			$filemtime   = filemtime($gedcom_file); // Only import files that have chandged
+			$basename    = basename($gedcom_file);
+			$basenames[] = $basename;
+
+			$tree = WT_Tree::create($basename, $basename);
+			if ($tree->getPreference('filemtime') != $filemtime) {
+				$tree->importGedcomFile($gedcom_file, $basename, false);
+				$tree->setPreference('filemtime', $filemtime);
+				WT_FlashMessages::addMessage(WT_I18N::translate('The GEDCOM file %s was imported', WT_Filter::escapeHtml($basename)), 'success');
+			}
+		}
+
+		foreach (WT_Tree::getAll() as $tree) {
+			if (!in_array($tree->tree_name, $basenames)) {
+				WT_FlashMessages::addMessage(WT_I18N::translate('The family tree %s was deleted.', WT_Filter::escapeHtml($tree->tree_name)), 'success');
+				$tree->delete();
+			}
+		}
+
 	}
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
 
@@ -149,12 +183,12 @@ case 'importform':
 		if ($files) {
 			sort($files);
 			echo WT_DATA_DIR, '<select name="tree_name">';
-			foreach ($files as $file) {
-				echo '<option value="', WT_Filter::escapeHtml($file), '" ';
-				if ($file == $previous_gedcom_filename) {
+			foreach ($files as $gedcom_file) {
+				echo '<option value="', WT_Filter::escapeHtml($gedcom_file), '" ';
+				if ($gedcom_file == $previous_gedcom_filename) {
 					echo '';
 				}
-				echo'>', WT_Filter::escapeHtml($file), '</option>';
+				echo'>', WT_Filter::escapeHtml($gedcom_file), '</option>';
 			}
 			echo '</select>';
 		} else {
@@ -173,7 +207,7 @@ case 'importform':
 }
 
 if (!WT_Tree::getAll()) {
-	echo Theme::theme()->htmlAlert(WT_I18N::translate('Before you can continue, you must create a family tree.'), 'info', true);
+	WT_FlashMessages::addMessage(WT_I18N::translate('Before you can continue, you must create a family tree.'), 'info');
 }
 
 $controller->pageHeader();
@@ -187,7 +221,7 @@ $controller->pageHeader();
 
 <h1><?php echo $controller->getPageTitle(); ?></h1>
 
-<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+<div class="panel-group" id="accordion" role="tablist">
 	<?php foreach (WT_Tree::GetAll() as $tree): ?>
 	<?php if (Auth::isManager($tree)): ?>
 	<div class="panel panel-default">
@@ -230,6 +264,7 @@ $controller->pageHeader();
 							—
 							<a href="index.php?ctype=gedcom&ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
 								<?php echo WT_I18N::translate('View'); ?>
+								<span class="sr-only"><?php echo WT_Filter::escapeHtml($tree->tree_name); ?></span>
 							</a>
 						</h3>
 						<ul class="fa-ul">
@@ -589,6 +624,38 @@ $controller->pageHeader();
 						<?php echo WT_I18N::translate('Click here for PhpGedView to webtrees transfer wizard'); ?>
 					</a>
 				</p>
+			</div>
+		</div>
+	</div>
+	<?php endif; ?>
+
+	<!-- BULK LOAD/SYNCHRONISE GEDCOM FILES -->
+	<?php if (count($gedcom_files) >= 25): ?>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h2 class="panel-title">
+			<i class="fa fa-fw fa-refresh"></i>
+			<a data-toggle="collapse" data-parent="#accordion" href="#pgv-import-wizard">
+				<?php echo WT_I18N::translate('Bulk import GEDCOM files'); ?>
+			</a>
+		</h2>
+		</div>
+		<div id="pgv-import-wizard" class="panel-collapse collapse">
+			<div class="panel-body">
+				<p>
+					<?php echo WT_I18N::translate('Create or update a family tree for every GEDCOM file in the data folder.'); ?>
+				</p>
+				<form method="post" class="form form-horizontal">
+					<?php echo WT_Filter::getCsrf(); ?>
+					<input type="hidden" name="action" value="bulk-import">
+					<button type="submit" class="btn btn-primary">
+						<i class="fa fa-check"></i>
+						<?php echo /* I18N: Button label */ WT_I18N::translate('continue'); ?>
+					</button>
+					<p class="small text-muted">
+						<?php echo WT_I18N::translate('Caution!  This may take a long time.  Be patient.'); ?>
+					</p>
+				</form>
 			</div>
 		</div>
 	</div>

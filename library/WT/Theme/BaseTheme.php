@@ -504,7 +504,7 @@ abstract class BaseTheme {
 	public function htmlAlert($html, $level, $dismissible) {
 		if ($dismissible) {
 			return
-				'<div class="alert alert-' . $level . '" alert-dismissible role="alert">' .
+				'<div class="alert alert-' . $level . ' alert-dismissible" role="alert">' .
 				'<button type="button" class="close" data-dismiss="alert" aria-label="' . WT_I18N::translate('close') . '">' .
 				'<span aria-hidden="true">&times;</span>' .
 				'</button>' .
