@@ -4284,7 +4284,7 @@ header {
 	color: #fff;
 	list-style: none;
 	padding: 1px;
-	top: 5px;
+	top: 6px;
 }
 
 /*set position of dropdown */
@@ -4316,7 +4316,6 @@ header {
 }
 
 .search-icon {
-	height: 17px;
 	vertical-align: top;
 }
 
@@ -5319,10 +5318,4 @@ footer {
 		top: -60px;
 		z-index: 1;
 	}
-}
-/* temporary hack for secondary colors theme submenus and IE 10+ */
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-.secondary-menu,
-.secondary-menu li ul {
-	top: -2px;
 }
