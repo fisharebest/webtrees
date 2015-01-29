@@ -42,7 +42,7 @@ $REQUIRE_ADMIN_AUTH_REGISTRATION = WT_Site::getPreference('REQUIRE_ADMIN_AUTH_RE
 
 $action          = WT_Filter::post('action');
 $user_realname   = WT_Filter::post('user_realname');
-$user_name       = WT_Filter::post('user_name', WT_REGEX_USERNAME);
+$user_name       = WT_Filter::post('user_name');
 $user_email      = WT_Filter::postEmail('user_email');
 $user_password01 = WT_Filter::post('user_password01', WT_REGEX_PASSWORD);
 $user_password02 = WT_Filter::post('user_password02', WT_REGEX_PASSWORD);
@@ -313,10 +313,10 @@ case 'register':
 				WT_I18N::translate('Hello administrator…') . WT_Mail::EOL . WT_Mail::EOL .
 				/* I18N: %s is a server name/URL */
 				WT_I18N::translate('A prospective user has registered with webtrees at %s.', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . WT_Filter::escapeHtml($WT_TREE->tree_title)) . WT_Mail::EOL . WT_Mail::EOL .
-				WT_I18N::translate('Username') . ' ' . $user->getUserName() . WT_Mail::EOL .
-				WT_I18N::translate('Real name') . ' ' . $user->getRealName() . WT_Mail::EOL .
-				WT_I18N::translate('Email address:') . ' ' . $user->getEmail() . WT_Mail::EOL .
-				WT_I18N::translate('Comments') . ' ' . $user_comments . WT_Mail::EOL . WT_Mail::EOL .
+				WT_I18N::translate('Username') . ' ' . WT_Filter::escapeHtml($user->getUserName()) . WT_Mail::EOL .
+				WT_I18N::translate('Real name') . ' ' . WT_Filter::escapeHtml($user->getRealName()) . WT_Mail::EOL .
+				WT_I18N::translate('Email address:') . ' ' . WT_Filter::escapeHtml($user->getEmail()) . WT_Mail::EOL .
+				WT_I18N::translate('Comments') . ' ' . WT_Filter::escapeHtml($user_comments) . WT_Mail::EOL . WT_Mail::EOL .
 				WT_I18N::translate('The user has been sent an e-mail with the information necessary to confirm the access request') . WT_Mail::EOL . WT_Mail::EOL;
 			if ($REQUIRE_ADMIN_AUTH_REGISTRATION) {
 				$mail1_body .= WT_I18N::translate('You will be informed by e-mail when this prospective user has confirmed the request.  You can then complete the process by activating the user name.  The new user will not be able to login until you activate the account.');

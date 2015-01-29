@@ -122,7 +122,7 @@ abstract class BaseTheme {
 		case 'mailto':
 			return '<a href="mailto:' . WT_Filter::escapeHtml($user->getEmail()) . '">' . WT_Filter::escapeHtml($user->getRealName()) . '</a>';
 		default:
-			return "<a href='#' onclick='message(\"" . WT_Filter::escapeJs($user->getUserName()) . "\", \"" . $method . "\", \"" . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_Filter::escapeJs(get_query_url()) . "\", \"\");return false;'>" . WT_Filter::escapeHtml($user->getRealName()) . '</a>';
+			return "<a href='#' onclick='message(\"" . WT_Filter::escapeHtml($user->getUserName()) . "\", \"" . $method . "\", \"" . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_Filter::escapeHtml(get_query_url()) . "\", \"\");return false;'>" . WT_Filter::escapeHtml($user->getRealName()) . '</a>';
 		}
 	}
 
@@ -1009,7 +1009,7 @@ abstract class BaseTheme {
 	}
 
 	/**
-	 * Generate a menu item for the pedigree map (googlemap module).
+	 * Generate a menu item for the interactive tree (tree module).
 	 *
 	 * @param WT_Individual $individual
 	 *
@@ -1104,6 +1104,19 @@ abstract class BaseTheme {
 	 */
 	protected function menuChartTimeline(WT_Individual $individual) {
 		return new WT_Menu(WT_I18N::translate('Timeline'), 'timeline.php?pids%5B%5D=' . $individual->getXref() . '&amp;' . $this->tree_url, 'menu-chart-timeline');
+	}
+
+	/**
+	 * Generate a menu item for the control panel (admin.php).
+	 *
+	 * @return WT_Menu|null
+	 */
+	protected function menuControlPanel() {
+		if (WT_USER_GEDCOM_ADMIN) {
+			return new WT_Menu(WT_I18N::translate('Control panel'), 'admin.php', 'menu-admin');
+		} else {
+			return null;
+		}
 	}
 
 	/**
@@ -1303,13 +1316,26 @@ abstract class BaseTheme {
 	}
 
 	/**
-	 * A link to allow users to edit their account settings.
+	 * A link to allow users to edit their account settings (edituser.php).
 	 *
 	 * @return WT_Menu|null
 	 */
 	protected function menuMyAccount() {
 		if (Auth::check()) {
-			return new WT_Menu(WT_Filter::escapeHtml(Auth::user()->getRealName()), 'edituser.php');
+			return new WT_Menu(WT_I18N::translate('My account'), 'edituser.php');
+		} else {
+			return null;
+		}
+	}
+
+	/**
+	 * A link to the user's individual record (individual.php).
+	 *
+	 * @return WT_Menu|null
+	 */
+	protected function menuMyIndividualRecord() {
+		if (WT_USER_GEDCOM_ID) {
+			return new WT_Menu(WT_I18N::translate('My individual record'), 'individual.php?pid=' . WT_USER_GEDCOM_ID . '&amp;' . $this->tree_url, 'menu-myrecord');
 		} else {
 			return null;
 		}
@@ -1319,35 +1345,43 @@ abstract class BaseTheme {
 	 * @return WT_Menu|null
 	 */
 	protected function menuMyMenu() {
-		$showFull   = $this->tree->getPreference('PEDIGREE_FULL_DETAILS') ? 1 : 0;
-		$showLayout = $this->tree->getPreference('PEDIGREE_LAYOUT') ? 1 : 0;
-
 		if (!Auth::id()) {
 			return null;
 		}
 
 		$menu = new WT_Menu(WT_I18N::translate('My page'), 'index.php?ctype=user&amp;' . $this->tree_url, 'menu-mymenu');
 
-		$menu->addSubmenu($this->menuMyPage());
-		$menu->addSubmenu(new WT_Menu(WT_I18N::translate('My account'), 'edituser.php', 'menu-myaccount'));
+		$submenus = array_filter(array(
+			$this->menuMyPage(),
+			$this->menuMyAccount(),
+			$this->menuMyPedigree(),
+			$this->menuMyIndividualRecord(),
+			$this->menuControlPanel(),
+		));
+
+		$menu->setSubmenus($submenus);
+
+		return $menu;
+	}
+
+	/**
+	 * A link to the user's individual record (pedigree.php).
+	 *
+	 * @return WT_Menu|null
+	 */
+	protected function menuMyPedigree() {
+		$showFull   = $this->tree->getPreference('PEDIGREE_FULL_DETAILS') ? 1 : 0;
+		$showLayout = $this->tree->getPreference('PEDIGREE_LAYOUT') ? 1 : 0;
 
 		if (WT_USER_GEDCOM_ID) {
-			$menu->addSubmenu(new WT_Menu(
+			return new WT_Menu(
 				WT_I18N::translate('My pedigree'),
 				'pedigree.php?' . $this->tree_url . '&amp;rootid=' . WT_USER_GEDCOM_ID . "&amp;show_full={$showFull}&amp;talloffset={$showLayout}",
 				'menu-mypedigree'
-			));
-
-			$menu->addSubmenu(new WT_Menu(
-				WT_I18N::translate('My individual record'), 'individual.php?pid=' . WT_USER_GEDCOM_ID . '&amp;' . $this->tree_url, 'menu-myrecord'
-			));
+			);
+		} else {
+			return null;
 		}
-
-		if (WT_USER_GEDCOM_ADMIN) {
-			$menu->addSubmenu(new WT_Menu(WT_I18N::translate('Control panel'), 'admin.php', 'menu-admin'));
-		}
-
-		return $menu;
 	}
 
 	/**

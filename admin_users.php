@@ -49,7 +49,7 @@ case 'save':
 	if (WT_Filter::checkCsrf()) {
 		$user_id        = WT_Filter::postInteger('user_id');
 		$user           = User::find($user_id);
-		$username       = WT_Filter::post('username', WT_REGEX_USERNAME);
+		$username       = WT_Filter::post('username');
 		$real_name      = WT_Filter::post('real_name');
 		$email          = WT_Filter::postEmail('email');
 		$pass1          = WT_Filter::post('pass1', WT_REGEX_PASSWORD);
@@ -79,7 +79,7 @@ case 'save':
 			}
 		} else {
 			$user = User::find($user_id);
-			if ($user) {
+			if ($user && $username && $real_name) {
 				$user->setEmail($email);
 				$user->setUserName($username);
 				$user->setRealName($real_name);
@@ -200,10 +200,12 @@ case 'loadrows':
 		$datum[0] = '<div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-pencil"></i> <span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li><a href="?action=edit&amp;user_id=' . $user_id . '"><i class="fa fa-fw fa-pencil"></i> ' . WT_I18N::translate('Edit') . '</a></li><li class="divider"><li><a href="index_edit.php?user_id=' . $user_id . '"><i class="fa fa-fw fa-th-large"></i> ' . WT_I18N::translate('Change the blocks on this user’s “My page”') . '</a></li>' . $admin_options . '</ul></div>';
 		// $datum[1] is the user ID
 		// $datum[2] is the user name
+		$datum[2] = WT_Filter::escapeHtml($datum[2]);
 		// $datum[3] is the real name
+		$datum[3] = WT_Filter::escapeHtml($datum[3]);
 		// $datum[4] is the email address
 		if ($user_id != Auth::id()) {
-			$datum[4] = '<a href="#" onclick="return message(\'' . $datum[2] . '\', \'\', \'\');">' . $datum[4] . '</i></a>';
+			$datum[4] = '<a href="#" onclick="return message(\'' . WT_Filter::escapeHtml($datum[2]) . '\', \'\', \'\');">' . WT_Filter::escapeHtml($datum[4]) . '</i></a>';
 		}
 		// $datum[5] is the langauge
 		if (array_key_exists($datum[5], $installed_languages)) {
@@ -308,9 +310,9 @@ case 'edit':
 				<?php echo WT_I18N::translate('Username'); ?>
 			</label>
 			<div class="col-sm-9">
-				<input class="form-control" type="text" id="username" name="username" required maxlength="32" value="<?php echo WT_Filter::escapeHtml($user->getUserName()); ?>" pattern="<?php echo WT_REGEX_USERNAME; ?>">
+				<input class="form-control" type="text" id="username" name="username" required maxlength="32" value="<?php echo WT_Filter::escapeHtml($user->getUserName()); ?>">
 				<p class="small text-muted">
-					<?php echo WT_I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.'), ' ', WT_I18N::translate('Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;'); ?>
+					<?php echo WT_I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.'); ?>
 				</p>
 			</div>
 		</div>
