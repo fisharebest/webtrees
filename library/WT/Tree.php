@@ -51,14 +51,13 @@ class WT_Tree {
 	 * @param $tree_title
 	 * @param $imported
 	 */
-	private function __construct($tree_id, $tree_name, $tree_title, $imported) {
+	private function __construct($tree_id, $tree_name, $tree_title) {
 		$this->tree_id         = $tree_id;
 		$this->tree_name       = $tree_name;
 		$this->tree_name_url   = rawurlencode($tree_name);
 		$this->tree_name_html  = WT_Filter::escapeHtml($tree_name);
 		$this->tree_title      = $tree_title;
 		$this->tree_title_html = '<span dir="auto">' . WT_Filter::escapeHtml($tree_title) . '</span>';
-		$this->imported        = $imported;
 	}
 
 	/**
@@ -114,7 +113,7 @@ class WT_Tree {
 			// Update our cache
 			$this->preferences[$setting_name] = $setting_value;
 			// Audit log of changes
-			Log::addConfigurationLog('Tree setting "' . $setting_name . '" set to "' . $setting_value . '"');
+			Log::addConfigurationLog('Tree setting "' . $setting_name . '" set to "' . $setting_value . '"', $this);
 		}
 
 		return $this;
@@ -178,7 +177,7 @@ class WT_Tree {
 			// Update our cache
 			$this->user_preferences[$user->getUserId()][$setting_name] = $setting_value;
 			// Audit log of changes
-			Log::addConfigurationLog('Tree setting "' . $setting_name . '" set to "' . $setting_value . '" for user "' . $user->getUserName() . '"');
+			Log::addConfigurationLog('Tree setting "' . $setting_name . '" set to "' . $setting_value . '" for user "' . $user->getUserName() . '"', $this);
 		}
 
 		return $this;
@@ -204,7 +203,7 @@ class WT_Tree {
 		if (self::$trees === null) {
 			self::$trees = array();
 			$rows = WT_DB::prepare(
-				"SELECT SQL_CACHE g.gedcom_id AS tree_id, g.gedcom_name AS tree_name, gs1.setting_value AS tree_title, gs2.setting_value AS imported" .
+				"SELECT SQL_CACHE g.gedcom_id AS tree_id, g.gedcom_name AS tree_name, gs1.setting_value AS tree_title" .
 				" FROM `##gedcom` g" .
 				" LEFT JOIN `##gedcom_setting`      gs1 ON (g.gedcom_id=gs1.gedcom_id AND gs1.setting_name='title')" .
 				" LEFT JOIN `##gedcom_setting`      gs2 ON (g.gedcom_id=gs2.gedcom_id AND gs2.setting_name='imported')" .
@@ -222,7 +221,7 @@ class WT_Tree {
 				" ORDER BY g.sort_order, 3"
 			)->execute(array(Auth::id(), Auth::id()))->fetchAll();
 			foreach ($rows as $row) {
-				self::$trees[$row->tree_id] = new WT_Tree($row->tree_id, $row->tree_name, $row->tree_title, $row->imported);
+				self::$trees[$row->tree_id] = new WT_Tree($row->tree_id, $row->tree_name, $row->tree_title);
 			}
 		}
 
@@ -230,8 +229,7 @@ class WT_Tree {
 	}
 
 	/**
-	 * Get the tree with a specific ID.  TODO - is this function needed long-term, or just while
-	 * we integrate this class into the rest of the code?
+	 * Get the tree with a specific ID.
 	 *
 	 * @param integer $tree_id
 	 *
@@ -323,6 +321,9 @@ class WT_Tree {
 		// Update the list of trees - to include this new one
 		self::$trees = null;
 		$tree        = self::get($tree_id);
+
+		$tree->setPreference('imported', '0');
+		$tree->setPreference('title', $tree_title);
 
 		// Module privacy
 		WT_Module::setDefaultAccess($tree_id);
@@ -437,8 +438,6 @@ class WT_Tree {
 		$tree->setPreference('WEBMASTER_USER_ID', Auth::id());
 		$tree->setPreference('WEBTREES_EMAIL', '');
 		$tree->setPreference('WORD_WRAPPED_NOTES', '0');
-		$tree->setPreference('imported', '0');
-		$tree->setPreference('title', $tree_title);
 
 		// Default restriction settings
 		$statement = WT_DB::prepare(

@@ -459,7 +459,7 @@ if (isset($_REQUEST['ged'])) {
 $WT_TREE = null;
 foreach (WT_Tree::getAll() as $tree) {
 	$WT_TREE = $tree;
-	if ($WT_TREE->tree_name == $GEDCOM && ($WT_TREE->imported || Auth::isAdmin())) {
+	if ($WT_TREE->tree_name == $GEDCOM && ($WT_TREE->getPreference('imported') || Auth::isAdmin())) {
 		break;
 	}
 }
@@ -470,7 +470,6 @@ if ($WT_TREE) {
 	define('WT_GED_ID', $WT_TREE->tree_id);
 	define('WT_GEDURL', $WT_TREE->tree_name_url);
 	define('WT_TREE_TITLE', WT_Filter::escapeHtml($WT_TREE->tree_title));
-	define('WT_IMPORTED', $WT_TREE->imported);
 	define('WT_USER_GEDCOM_ADMIN', Auth::isManager($WT_TREE));
 	define('WT_USER_CAN_ACCEPT', Auth::isModerator($WT_TREE));
 	define('WT_USER_CAN_EDIT', Auth::isEditor($WT_TREE));
@@ -491,7 +490,6 @@ if ($WT_TREE) {
 	define('WT_GED_ID', null);
 	define('WT_GEDURL', '');
 	define('WT_TREE_TITLE', WT_WEBTREES);
-	define('WT_IMPORTED', false);
 	define('WT_USER_GEDCOM_ADMIN', false);
 	define('WT_USER_CAN_ACCEPT', false);
 	define('WT_USER_CAN_EDIT', false);
@@ -539,7 +537,7 @@ if (WT_Site::getPreference('LOGIN_URL')) {
 
 // If there is no current tree and we need one, then redirect somewhere
 if (WT_SCRIPT_NAME != 'admin_trees_manage.php' && WT_SCRIPT_NAME != 'admin_pgv_to_wt.php' && WT_SCRIPT_NAME != 'login.php' && WT_SCRIPT_NAME != 'logout.php' && WT_SCRIPT_NAME != 'import.php' && WT_SCRIPT_NAME != 'help_text.php' && WT_SCRIPT_NAME != 'message.php') {
-	if (!$WT_TREE || !WT_IMPORTED) {
+	if (!$WT_TREE || !$WT_TREE->getPreference('imported')) {
 		if (Auth::isAdmin()) {
 			header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin_trees_manage.php');
 		} else {
