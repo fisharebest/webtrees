@@ -23,19 +23,19 @@ use WT\Auth;
 define('WT_SCRIPT_NAME', 'admin_trees_export.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Ajax;
-$controller
-	->pageHeader()
-	->restrictAccess(Auth::isManager());
+if (Auth::isManager($WT_TREE) && WT_Filter::checkCsrf()) {
+	$filename = WT_DATA_DIR . $WT_TREE->tree_name;
+	// Force a ".ged" suffix
+	if (strtolower(substr($filename, -4)) != '.ged') {
+		$filename .= '.ged';
+	}
 
-$filename = WT_DATA_DIR . $WT_TREE->tree_name;
-// Force a ".ged" suffix
-if (strtolower(substr($filename, -4)) != '.ged') {
-	$filename .= '.ged';
+	if ($WT_TREE->exportGedcom($filename)) {
+		WT_FlashMessages::addMessage(/* I18N: %s is a filename */ WT_I18N::translate('Family tree exported to %s.', '<span dir="ltr">' . $filename . '</span>'), 'success');
+	} else {
+		WT_FlashMessages::addMessage(/* I18N: %s is a filename */ WT_I18N::translate('Unable to create %s.  Check the permissions.', $filename), 'danger');
+	}
 }
 
-if ($WT_TREE->exportGedcom($filename)) {
-	echo '<p>', /* I18N: %s is a filename */ WT_I18N::translate('Family tree exported to %s.', '<span dir="ltr">' . $filename . '</span>'), '</p>';
-} else {
-	echo '<p class="error">', /* I18N: %s is a filename */ WT_I18N::translate('Unable to create %s.  Check the permissions.', $filename), '</p>';
-}
+header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin_trees_manage.php');
+

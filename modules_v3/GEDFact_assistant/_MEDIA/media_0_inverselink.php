@@ -27,6 +27,7 @@
 
 //-- extra page parameters and checking
 use WT\Auth;
+use WT\Theme;
 
 $more_links  = WT_Filter::get('more_links');
 $exist_links = WT_Filter::get('exist_links');
@@ -171,7 +172,7 @@ if ($action == 'choose' && $paramok) {
 	echo '<input type="text" data-autocomplete-type="IFS" name="gid" id="gid" size="6" value="">';
 	echo '</td><td style="padding-bottom: 2px; vertical-align: middle;">';
 	echo '&nbsp;';
-	echo '<img style="border-style:none;" src="', Theme::theme()->parameter('add'), '" alt="', WT_I18N::translate('Add'), ' " title="', WT_I18N::translate('Add'), '" align="middle" name="addLink" value="" onclick="blankwin(); return false;">';
+	echo '<img style="border-style:none;" src="', Theme::theme()->parameter('image-add'), '" alt="', WT_I18N::translate('Add'), ' " title="', WT_I18N::translate('Add'), '" align="middle" name="addLink" value="" onclick="blankwin(); return false;">';
 	echo ' ', print_findindi_link('gid');
 	echo ' ', print_findfamily_link('gid');
 	echo ' ', print_findsource_link('gid');

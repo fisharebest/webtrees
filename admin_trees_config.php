@@ -416,13 +416,14 @@ $controller
 
 ?>
 <ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+	<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
 	<li><a href="admin_trees_manage.php"><?php echo WT_I18N::translate('Manage family trees'); ?></a></li>
 	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 </ol>
-<h2><?php echo $controller->getPageTitle(); ?></h2>
 
-<form class="form-horizontal" method="POST">
+<h1><?php echo $controller->getPageTitle(); ?></h1>
+
+<form class="form-horizontal" method="post">
 	<?php echo WT_Filter::getCsrf(); ?>
 	<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 
@@ -2378,7 +2379,12 @@ $controller
 
 	<?php endif; ?>
 
-	<div class="text-center">
-		<button type="submit" class="btn btn-primary"><?php echo WT_I18N::translate('save'); ?></button>
+	<div class="form-group">
+		<div class="col-sm-offset-3 col-sm-9">
+			<button type="submit" class="btn btn-primary">
+				<i class="fa fa-check"></i>
+				<?php echo WT_I18N::translate('save'); ?>
+			</button>
+		</div>
 	</div>
 </form>

@@ -190,15 +190,14 @@ case 'loadrows':
 		$user_name = $datum[2];
 
 		if ($user_id != Auth::id()) {
-			$admin_options = '<li class="divider">' . '<li><a onclick="modalDialog(\'index_edit.php?user_id=' . $user_id . '\', \'' . /* I18N: %s is a user's name. */
-				WT_I18N::translate('Change the blocks on this user’s “My page”') . '\');" href="#"><i class="fa fa-fw fa-th-large"></i> ' . WT_I18N::translate('Change the blocks on this user’s “My page”') . '</a></li>' . '<li><a href="#" onclick="return masquerade(' . $user_id . ')"><i class="fa fa-fw fa-user"></i> ' . /* I18N: Pretend to be another user, by logging in as them */
+			$admin_options = '<li><a href="#" onclick="return masquerade(' . $user_id . ')"><i class="fa fa-fw fa-user"></i> ' . /* I18N: Pretend to be another user, by logging in as them */
 				WT_I18N::translate('Masquerade as this user') . '</a></li>' . '<li><a href="#" onclick="delete_user(\'' . WT_I18N::translate('Are you sure you want to delete “%s”?', WT_Filter::escapeJs($user_name)) . '\', \'' . WT_Filter::escapeJs($user_id) . '\');"><i class="fa fa-fw fa-trash-o"></i> ' . WT_I18N::translate('Delete') . '</a></li>';
 		} else {
 			// Do not delete ourself!
 			$admin_options = '';
 		}
 
-		$datum[0] = '<div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-pencil"></i> <span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li><a href="?action=edit&amp;user_id=' . $user_id . '"><i class="fa fa-fw fa-pencil"></i> ' . WT_I18N::translate('Edit') . '</a></li></li>' . $admin_options . '</ul></div>';
+		$datum[0] = '<div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-pencil"></i> <span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li><a href="?action=edit&amp;user_id=' . $user_id . '"><i class="fa fa-fw fa-pencil"></i> ' . WT_I18N::translate('Edit') . '</a></li><li class="divider"><li><a href="index_edit.php?user_id=' . $user_id . '"><i class="fa fa-fw fa-th-large"></i> ' . WT_I18N::translate('Change the blocks on this user’s “My page”') . '</a></li>' . $admin_options . '</ul></div>';
 		// $datum[1] is the user ID
 		// $datum[2] is the user name
 		// $datum[3] is the real name
@@ -278,11 +277,12 @@ case 'edit':
 
 	?>
 	<ol class="breadcrumb small">
-		<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+		<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
 		<li><a href="admin_users.php"><?php echo WT_I18N::translate('User administration'); ?></a></li>
 		<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 	</ol>
-	<h2><?php echo $controller->getPageTitle(); ?></h2>
+
+	<h1><?php echo $controller->getPageTitle(); ?></h1>
 
 	<form class="form-horizontal" name="newform" method="post" role="form" action="?action=edit" autocomplete="off">
 		<?php echo WT_Filter::getCsrf(); ?>
@@ -627,10 +627,13 @@ case 'edit':
 				<?php endforeach; ?>
 			</tbody>
 		</table>
-		<div class="text-center">
-			<button class="btn btn-primary" type="submit">
-				<?php echo WT_I18N::translate('save'); ?>
-			</button>
+
+		<div class="form-group">
+			<div class="col-sm-offset-3 col-sm-9">
+				<button type="submit" class="btn btn-primary">
+					<?php echo WT_I18N::translate('save'); ?>
+				</button>
+			</div>
 		</div>
 	</form>
 	<?php
@@ -645,11 +648,11 @@ case 'cleanup':
 
 	?>
 	<ol class="breadcrumb small">
-		<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+		<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
 		<li><a href="admin_users.php"><?php echo WT_I18N::translate('User administration'); ?></a></li>
 		<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 	</ol>
-	<h2><?php echo $controller->getPageTitle(); ?></h2>
+	<h1><?php echo $controller->getPageTitle(); ?></h1>
 
 	<form method="post" action="?action=cleanup2">
 	<table class="table table-bordered">
@@ -809,10 +812,10 @@ default:
 
 	?>
 	<ol class="breadcrumb small">
-		<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+		<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
 		<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 	</ol>
-	<h2><?php echo $controller->getPageTitle(); ?></h2>
+	<h1><?php echo $controller->getPageTitle(); ?></h1>
 
 	<table class="table table-condensed table-bordered table-user-list">
 		<thead>

@@ -29,7 +29,7 @@ require WT_ROOT . 'includes/functions/functions_export.php';
 
 $controller = new WT_Controller_Page;
 $controller
-	->setPageTitle(WT_I18N::translate('Download GEDCOM'))
+	->setPageTitle(WT_I18N::translate('Download GEDCOM') . ' — ' . WT_Filter::escapeHtml(WT_GEDCOM))
 	->restrictAccess(Auth::isManager());
 
 // Validate user parameters
@@ -99,11 +99,18 @@ if ($action === 'download') {
 $controller->pageHeader();
 
 ?>
-<h2><?php echo $controller->getPageTitle(); ?> - <?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?></h2>
-<form name="convertform" method="get">
+<ol class="breadcrumb small">
+	<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
+	<li><a href="admin_trees_manage.php"><?php echo WT_I18N::translate('Manage family trees'); ?></a></li>
+	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+</ol>
+
+<h1><?php echo $controller->getPageTitle(); ?></h1>
+
+<form class="form form-horizontal">
 	<input type="hidden" name="action" value="download">
 	<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">
-	<div id="tree-download" class="ui-helper-clearfix">
+	<div id="tree-download">
 		<dl>
 			<dt>
 				<?php echo WT_I18N::translate('Zip file(s)'), help_link('download_zipped'); ?>

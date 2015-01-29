@@ -26,7 +26,7 @@ require './includes/session.php';
 $controller = new WT_Controller_Page;
 $controller
 	->restrictAccess(Auth::isManager())
-	->setPageTitle(WT_I18N::translate(/* I18N: Renumber the records in a family tree */ 'Renumber family tree'))
+	->setPageTitle(WT_I18N::translate(/* I18N: Renumber the records in a family tree */ 'Renumber family tree') . ' — ' . WT_Filter::escapeHtml($WT_TREE->tree_title))
 	->pageHeader();
 
 // Every XREF used by this tree and also used by some other tree
@@ -59,7 +59,8 @@ $xrefs = WT_DB::prepare(
 	WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID
 ))->fetchAssoc();
 
-echo '<h2>', $controller->getPageTitle(), ' — ', $WT_TREE->tree_title_html, '</h2>';
+echo '<h1>', $controller->getPageTitle(), '</h1>';
+
 if (WT_Filter::get('go')) {
 	foreach ($xrefs as $old_xref=>$type) {
 		WT_DB::beginTransaction();
@@ -270,9 +271,12 @@ echo '<p>', WT_I18N::plural(
 if ($xrefs) {
 	// We use GET (not POST) for this update operation - because we want the user to
 	// be able to press F5 to continue after a timeout.
-	echo '<form method="GET" action="', WT_SCRIPT_NAME, '">';
-	echo '<p>', WT_I18N::translate('You can renumber this family tree.');
-	echo '<input type="submit" name="go" value="', /* I18N: button label */ WT_I18N::translate('go'), '"></p>';
+	echo '<form>';
+	echo '<p>', WT_I18N::translate('You can renumber this family tree.'), '</p>';
+	echo '<button type="submit" class="btn btn-primary">';
+	echo '<i class="fa fa-check"></i> ', /* I18N: Button label */ WT_I18N::translate('continue');
+	echo '</button>';
+	//echo '<input type="submit" name="go" value="', /* I18N: button label */ WT_I18N::translate('go'), '"></p>';
 	echo '<input type="hidden" name="ged" value="', WT_Filter::escapeUrl(WT_GEDCOM), '">';
 	echo '</form>';
 	echo '<p>', WT_I18N::translate('Caution!  This may take a long time.  Be patient.'), '</p>';

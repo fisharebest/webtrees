@@ -46,8 +46,7 @@ function send404AsImage() {
 
 	embedText($im, $error, 100, '255, 0, 0', '', 'top', 'left');
 
-	header('HTTP/1.0 404 Not Found');
-	header('Status: 404 Not Found');
+	http_response_code(404);
 	header('Content-Type: image/png');
 	imagepng($im);
 	imagedestroy($im);
@@ -292,7 +291,6 @@ if (!file_exists($serverFilename)) {
 
 $mimetype       = $media->mimeType();
 $imgsize        = $media->getImageAttributes($which);
-$protocol       = $_SERVER['SERVER_PROTOCOL']; // determine if we are using HTTP/1.0 or HTTP/1.1
 $filetime       = $media->getFiletime($which);
 $filetimeHeader = gmdate('D, d M Y H:i:s', $filetime) . ' GMT';
 $expireOffset   = 3600 * 24; // tell browser to cache this image for 24 hours
@@ -372,7 +370,7 @@ header('Cache-Control: max-age=' . $expireOffset . ', s-maxage=0, proxy-revalida
 if ($if_modified_since === $filetimeHeader) {
 	// then check if the etag matches
 	if ($if_none_match === $etag) {
-		header($protocol . ' 304 Not Modified');
+		http_response_code(304);
 		
 		return;
 	}

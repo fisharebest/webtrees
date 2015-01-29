@@ -73,11 +73,12 @@ $controller
 
 ?>
 <ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+	<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
 	<li><a href="admin_modules.php"><?php echo WT_I18N::translate('Module administration'); ?></a></li>
 	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 </ol>
-<h2><?php echo $controller->getPageTitle(); ?></h2>
+
+<h1><?php echo $controller->getPageTitle(); ?></h1>
 
 <form method="post">
 	<input type="hidden" name="action" value="update_mods">
@@ -125,5 +126,8 @@ $controller
 		<?php endforeach; ?>
 		</tbody>
 	</table>
-	<button class="btn btn-primary" type="submit"><?php echo WT_I18N::translate('save'); ?></button>
+	<button class="btn btn-primary" type="submit">
+		<i class="fa fa-check"></i>
+		<?php echo WT_I18N::translate('save'); ?>
+	</button>
 </form>

@@ -58,7 +58,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Confi
 			$this->show();
 			break;
 		default:
-			header('HTTP/1.0 404 Not Found');
+			http_response_code(404);
 		}
 	}
 
@@ -128,7 +128,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Confi
 
 			?>
 			<ol class="breadcrumb small">
-				<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+				<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
 				<li><a href="admin_modules.php"><?php echo WT_I18N::translate('Module administration'); ?></a></li>
 				<li><a href="module.php?mod=<?php echo $this->getName(); ?>&mod_action=admin_config"><?php echo WT_I18N::translate('Frequently asked questions'); ?></a></li>
 				<li class="active"><?php echo $controller->getPageTitle(); ?></li>
@@ -364,7 +364,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Confi
 
 		?>
 		<ol class="breadcrumb small">
-			<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+			<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
 			<li><a href="admin_modules.php"><?php echo WT_I18N::translate('Module administration'); ?></a></li>
 			<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 		</ol>

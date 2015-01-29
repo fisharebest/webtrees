@@ -27,7 +27,7 @@ use WT\Theme;
 
 // WT_SCRIPT_NAME is defined in each script that the user is permitted to load.
 if (!defined('WT_SCRIPT_NAME')) {
-	header('HTTP/1.0 403 Forbidden');
+	http_response_code(403);
 	exit;
 }
 
@@ -51,11 +51,11 @@ define('WT_STATIC_URL', getenv('STATIC_URL')); // We could set this to load our 
 if (getenv('USE_CDN')) {
 	// Caution, using a CDN will break support for responsive features in IE8, as respond.js
 	// needs to be on the same domain as all the CSS files.
-	define('WT_BOOTSTRAP_CSS_URL', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css');
+	define('WT_BOOTSTRAP_CSS_URL', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.min.css');
 	define('WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL', '//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.0.0/js/bootstrap-datetimepicker.min.css');
 	define('WT_BOOTSTRAP_DATETIMEPICKER_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.0.0/css/bootstrap-datetimepicker.js');
-	define('WT_BOOTSTRAP_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js');
-	define('WT_BOOTSTRAP_RTL_CSS_URL', '//cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.2.0-rc2/css/bootstrap-rtl.min.css'); // CDNSJ is out of date
+	define('WT_BOOTSTRAP_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js');
+	define('WT_BOOTSTRAP_RTL_CSS_URL', '//cdn.rawgit.com/morteza/bootstrap-rtl/master/dist/cdnjs/3.3.1/css/bootstrap-rtl.min.css'); // Cloudflare is out of date
 	define('WT_DATATABLES_BOOTSTRAP_CSS_URL', '//cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css');
 	define('WT_DATATABLES_BOOTSTRAP_JS_URL', '//cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js');
 	define('WT_FONT_AWESOME_CSS_URL', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css');
@@ -67,11 +67,11 @@ if (getenv('USE_CDN')) {
 	define('WT_MOMENT_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js');
 	define('WT_RESPOND_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js');
 } else {
-	define('WT_BOOTSTRAP_CSS_URL', WT_STATIC_URL . 'packages/bootstrap-3.3.1/css/bootstrap.min.css');
+	define('WT_BOOTSTRAP_CSS_URL', WT_STATIC_URL . 'packages/bootstrap-3.3.2/css/bootstrap.min.css');
 	define('WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL', WT_STATIC_URL . 'packages/bootstrap-datetimepicker-4.0.0/bootstrap-datetimepicker.min.css');
 	define('WT_BOOTSTRAP_DATETIMEPICKER_JS_URL', WT_STATIC_URL . 'packages/bootstrap-datetimepicker-4.0.0/bootstrap-datetimepicker.min.js');
-	define('WT_BOOTSTRAP_JS_URL', WT_STATIC_URL . 'packages/bootstrap-3.3.1/js/bootstrap.min.js');
-	define('WT_BOOTSTRAP_RTL_CSS_URL', WT_STATIC_URL . 'packages/bootstrap-rtl-3.2.0/css/bootstrap-rtl.min.css');
+	define('WT_BOOTSTRAP_JS_URL', WT_STATIC_URL . 'packages/bootstrap-3.3.2/js/bootstrap.min.js');
+	define('WT_BOOTSTRAP_RTL_CSS_URL', WT_STATIC_URL . 'packages/bootstrap-rtl-3.3.1/css/bootstrap-rtl.min.css');
 	define('WT_DATATABLES_BOOTSTRAP_CSS_URL', WT_STATIC_URL . 'packages/datatables-1.10.4/plugins/dataTables.bootstrap.css');
 	define('WT_DATATABLES_BOOTSTRAP_JS_URL', WT_STATIC_URL . 'packages/datatables-1.10.4/plugins/dataTables.bootstrap.js');
 	define('WT_FONT_AWESOME_CSS_URL', WT_STATIC_URL . 'packages/font-awesome-4.3.0/css/font-awesome.min.css');
@@ -113,6 +113,7 @@ define('WT_REGEX_INTEGER', '-?\d+');
 define('WT_REGEX_ALPHA', '[a-zA-Z]+');
 define('WT_REGEX_ALPHANUM', '[a-zA-Z0-9]+');
 define('WT_REGEX_BYTES', '[0-9]+[bBkKmMgG]?');
+define('WT_REGEX_IPV4', '\d{1,3}(\.\d{1,3}){3}');
 define('WT_REGEX_USERNAME', '[^<>"%{};]+');
 define('WT_REGEX_PASSWORD', '.{' . WT_MINIMUM_PASSWORD_LENGTH . ',}');
 
@@ -161,61 +162,9 @@ if (strpos(ini_get('disable_functions'), 'ini_set') === false) {
 	ini_set('display_errors', 'on');
 }
 
-// PHP5.3 may be using magic-quotes :-(
-if (version_compare(PHP_VERSION, '5.4', '<') && get_magic_quotes_gpc()) {
-	// http://php.net/manual/en/security.magicquotes.disabling.php
-	$process = array(&$_GET, &$_POST, &$_COOKIE, &$_REQUEST);
-	while (list($key, $val) = each($process)) {
-		foreach ($val as $k => $v) {
-			unset($process[$key][$k]);
-			if (is_array($v)) {
-				$process[$key][stripslashes($k)] = $v;
-				$process[] = &$process[$key][stripslashes($k)];
-			} else {
-				$process[$key][stripslashes($k)] = stripslashes($v);
-			}
-		}
-	}
-	unset($process);
-}
-
-////////////////////////////////////////////////////////////////////////////////
-// The ircmaxell/password-compat library does not support unpatched versions of
-// PHP older than PHP5.3.6.  These versions of PHP have no secure crypt library.
-////////////////////////////////////////////////////////////////////////////////
-$hash = '$2y$04$usesomesillystringfore7hnbRJHxXVLeakoG8K30oukPsA.ztMG';
-if (!defined('PASSWORD_BCRYPT') && crypt("password", $hash) !== $hash) {
-	define('PASSWORD_BCRYPT', 1);
-	define('PASSWORD_DEFAULT', 1);
-	/**
-	 * @param string  $password
-	 * @param integer $algo
-	 *
-	 * @return string
-	 */
-	function password_hash($password, $algo) {
-		return crypt($password);
-	}
-
-	/**
-	 * @param string  $hash
-	 * @param integer $algo
-	 *
-	 * @return boolean
-	 */
-	function password_needs_rehash($hash, $algo) {
-		return false;
-	}
-
-	/**
-	 * @param string  $password
-	 * @param integer $hash
-	 *
-	 * @return boolean
-	 */
-	function password_verify($password, $hash) {
-		return crypt($password, $hash) === $hash;
-	}
+// We use some PHP5.5 features, but need to run on older servers
+if (version_compare(PHP_VERSION, '5.4', '<')) {
+	require WT_ROOT . 'includes/php_53_compatibility.php';
 }
 
 require WT_ROOT . 'library/autoload.php';
@@ -401,7 +350,7 @@ case 'allow':
 	$SEARCH_SPIDER = false;
 	break;
 case 'deny':
-	header('HTTP/1.1 403 Access Denied');
+	http_response_code(403);
 	exit;
 case 'robot':
 case 'unknown':
@@ -520,7 +469,7 @@ if ($WT_TREE) {
 	define('WT_GEDCOM', $WT_TREE->tree_name);
 	define('WT_GED_ID', $WT_TREE->tree_id);
 	define('WT_GEDURL', $WT_TREE->tree_name_url);
-	define('WT_TREE_TITLE', $WT_TREE->tree_title_html);
+	define('WT_TREE_TITLE', WT_Filter::escapeHtml($WT_TREE->tree_title));
 	define('WT_IMPORTED', $WT_TREE->imported);
 	define('WT_USER_GEDCOM_ADMIN', Auth::isManager($WT_TREE));
 	define('WT_USER_CAN_ACCEPT', Auth::isModerator($WT_TREE));
@@ -663,7 +612,7 @@ if ($SEARCH_SPIDER && !in_array(WT_SCRIPT_NAME, array(
 	'index.php', 'indilist.php', 'module.php', 'mediafirewall.php',
 	'individual.php', 'family.php', 'mediaviewer.php', 'note.php', 'repo.php', 'source.php',
 ))) {
-	header($_SERVER['SERVER_PROTOCOL'] . ' 403 Forbidden');
+	http_response_code(403);
 	$controller = new WT_Controller_Page;
 	$controller->setPageTitle(WT_I18N::translate('Search engine'));
 	$controller->pageHeader();

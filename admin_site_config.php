@@ -77,9 +77,11 @@ case 'email':
 		WT_Site::setPreference('SMTP_PORT', WT_Filter::post('SMTP_PORT'));
 		WT_Site::setPreference('SMTP_AUTH', WT_Filter::post('SMTP_AUTH'));
 		WT_Site::setPreference('SMTP_AUTH_USER', WT_Filter::post('SMTP_AUTH_USER'));
-		WT_Site::setPreference('SMTP_AUTH_PASS', WT_Filter::post('SMTP_AUTH_PASS'));
 		WT_Site::setPreference('SMTP_SSL', WT_Filter::post('SMTP_SSL'));
 		WT_Site::setPreference('SMTP_HELO', WT_Filter::post('SMTP_HELO'));
+		if (WT_Filter::post('SMTP_AUTH_PASS')) {
+			WT_Site::setPreference('SMTP_AUTH_PASS', WT_Filter::post('SMTP_AUTH_PASS'));
+		}
 	}
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=email');
 
@@ -119,10 +121,11 @@ $controller->pageHeader();
 ?>
 
 <ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+	<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
 	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 </ol>
-<h2><?php echo $controller->getPageTitle(); ?></h2>
+
+<h1><?php echo $controller->getPageTitle(); ?></h1>
 
 <form method="post" class="form-horizontal">
 	<?php echo WT_Filter::getCsrf(); ?>
@@ -178,7 +181,7 @@ $controller->pageHeader();
 				<?php echo WT_I18N::plural(
 					'By default, your server allows scripts to run for %s second.',
 					'By default, your server allows scripts to run for %s seconds.',
-					get_cfg_var('max_execution_time'), get_cfg_var('max_execution_time'));
+					get_cfg_var('max_execution_time'), WT_I18N::number(get_cfg_var('max_execution_time')));
 				?>
 				<?php echo WT_I18N::translate('You can request a higher or lower limit, although the server may ignore this request.'); ?>
 				<?php echo WT_I18N::translate('If you leave this setting empty, the default value will be used.'); ?>
@@ -203,30 +206,30 @@ $controller->pageHeader();
 		</div>
 
 		<!-- ALLOW_USER_THEMES -->
-	<div class="form-group">
-		<label for="ALLOW_USER_THEMES" class="col-sm-3 control-label">
+	<fieldset class="form-group">
+		<legend class="col-sm-3 control-label">
 			<?php echo /* I18N: A site configuration setting */ WT_I18N::translate('Allow users to select their own theme'); ?>
-		</label>
+		</legend>
 		<div class="col-sm-9">
 			<?php echo edit_field_yes_no('ALLOW_USER_THEMES', WT_Site::getPreference('ALLOW_USER_THEMES')); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Allow users to select their own theme” site configuration setting */ WT_I18N::translate('Gives users the option of selecting their own theme.'); ?>
 			</p>
 		</div>
-	</div>
+	</fieldset>
 
 		<!-- ALLOW_CHANGE_GEDCOM -->
-	<div class="form-group">
-		<label for="ALLOW_CHANGE_GEDCOM" class="col-sm-3 control-label">
+	<fieldset class="form-group">
+		<legend class="col-sm-3 control-label">
 			<?php echo /* I18N: A site configuration setting */ WT_I18N::translate('Show list of family trees'); ?>
-		</label>
+		</legend>
 		<div class="col-sm-9">
 			<?php echo edit_field_yes_no('ALLOW_CHANGE_GEDCOM', WT_Site::getPreference('ALLOW_CHANGE_GEDCOM')); ?>
 			<p class="small text-muted">
 				<?php /* I18N: Help text for the “Show list of family trees” site configuration setting */ WT_I18N::translate('For sites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc.'); ?>
 			</p>
 		</div>
-	</div>
+	</fieldset>
 
 		<!-- SESSION_TIME -->
 		<div class="form-group">
@@ -285,7 +288,7 @@ $controller->pageHeader();
 			</div>
 		</div>
 
-		<h3><?php echo WT_I18N::translate('SMTP mail server'); ?></h3>
+		<h2><?php echo WT_I18N::translate('SMTP mail server'); ?></h2>
 
 		<!-- SMTP_HOST -->
 		<div class="form-group">
@@ -314,17 +317,17 @@ $controller->pageHeader();
 		</div>
 
 		<!-- SMTP_AUTH -->
-		<div class="form-group">
-			<label for="SMTP_AUTH" class="col-sm-3 control-label">
+		<fieldset class="form-group">
+			<legend class="col-sm-3 control-label">
 				<?php echo /* I18N: A site configuration setting */ WT_I18N::translate('Use password'); ?>
-			</label>
+			</legend>
 			<div class="col-sm-9">
 				<?php echo edit_field_yes_no('SMTP_AUTH', WT_Site::getPreference('SMTP_AUTH')); ?>
 				<p class="small text-muted">
 					<?php echo /* I18N: Help text for the “Use password” site configuration setting */ WT_I18N::translate('Most SMTP servers require a password.'); ?>
 				</p>
 			</div>
-		</div>
+		</fieldset>
 
 		<!-- SMTP_AUTH_USER -->
 		<div class="form-group">
@@ -345,7 +348,7 @@ $controller->pageHeader();
 				<?php echo /* I18N: A site configuration setting */ WT_I18N::translate('Password'); ?>
 			</label>
 			<div class="col-sm-9">
-				<input type="password" class="form-control" id="SMTP_AUTH_PASS" name="SMTP_AUTH_PASS" value="<?php echo WT_Filter::escapeHtml(WT_Site::getPreference('SMTP_AUTH_PASS')); ?>">
+				<input type="password" class="form-control" id="SMTP_AUTH_PASS" name="SMTP_AUTH_PASS" value="">
 				<p class="small text-muted">
 					<?php echo /* I18N: Help text for the "Password" site configuration setting */ WT_I18N::translate('The password required for authentication with the SMTP server.'); ?>
 				</p>
@@ -380,8 +383,7 @@ $controller->pageHeader();
 
 		<div class="form-group">
 			<div class="col-sm-offset-3 col-sm-9">
-				<p class="alert alert-info">
-					<?php echo WT_I18N::translate('To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]'); ?>
+				<?php echo Theme::theme()->htmlAlert(WT_I18N::translate('To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]'), 'info', false); ?>
 				</p>
 			</div>
 		</div>
@@ -428,46 +430,47 @@ $controller->pageHeader();
 		</div>
 
 		<!-- USE_REGISTRATION_MODULE -->
-		<div class="form-group">
-			<label for="USE_REGISTRATION_MODULE" class="col-sm-3 control-label">
+		<fieldset class="form-group">
+			<legend class="col-sm-3 control-label">
 				<?php echo /* I18N: A site configuration setting */ WT_I18N::translate('Allow visitors to request account registration'); ?>
-			</label>
+			</legend>
 			<div class="col-sm-9">
 				<?php echo edit_field_yes_no('USE_REGISTRATION_MODULE', WT_Site::getPreference('USE_REGISTRATION_MODULE')); ?>
 				<p class="small text-muted">
 					<?php echo /* I18N: Help text for the “Allow visitors to request account registration” site configuration setting */ WT_I18N::translate('Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, an administrator will have to approve the registration before it becomes active.'); ?>
 				</p>
 			</div>
-		</div>
+		</fieldset>
 
 		<!-- REQUIRE_ADMIN_AUTH_REGISTRATION -->
-		<div class="form-group">
-			<label for="REQUIRE_ADMIN_AUTH_REGISTRATION" class="col-sm-3 control-label">
+		<fieldset class="form-group">
+			<legend class="col-sm-3 control-label">
 				<?php echo /* I18N: A site configuration setting */ WT_I18N::translate('Require an administrator to approve new user registrations'); ?>
-			</label>
+			</legend>
 			<div class="col-sm-9">
 				<?php echo edit_field_yes_no('REQUIRE_ADMIN_AUTH_REGISTRATION', WT_Site::getPreference('REQUIRE_ADMIN_AUTH_REGISTRATION')); ?>
 				<p class="small text-muted">
 				</p>
 			</div>
-		</div>
+		</fieldset>
 
-		<!-- USE_REGISTRATION_MODULE -->
-		<div class="form-group">
-			<label for="SHOW_REGISTER_CAUTION" class="col-sm-3 control-label">
+		<!-- SHOW_REGISTER_CAUTION -->
+		<fieldset class="form-group">
+			<legend class="col-sm-3 control-label">
 				<?php echo /* I18N: A site configuration setting */ WT_I18N::translate('Show acceptable use agreement on “Request new user account” page'); ?>
-			</label>
+			</legend>
 			<div class="col-sm-9">
 				<?php echo edit_field_yes_no('SHOW_REGISTER_CAUTION', WT_Site::getPreference('SHOW_REGISTER_CAUTION')); ?>
 				<p class="small text-muted">
 				</p>
 			</div>
-		</div>
+		</fieldset>
 
 	<?php endif; ?>
 	<div class="form-group">
 		<div class="col-sm-offset-3 col-sm-9">
 			<button type="submit" class="btn btn-primary">
+				<i class="fa fa-check"></i>
 				<?php echo WT_I18N::translate('save'); ?>
 			</button>
 		</div>

@@ -33,7 +33,7 @@ $controller
 	->addInlineJavascript('jQuery("#tree_stats").accordion();')
 	->addInlineJavascript('jQuery("#changes").accordion();')
 	->addInlineJavascript('jQuery("#content_container").css("visibility", "visible");')
-	->setPageTitle(WT_I18N::translate('Administration'))
+	->setPageTitle(WT_I18N::translate('Control panel'))
 	->pageHeader();
 
 // Check for updates
@@ -96,7 +96,7 @@ $user_languages = WT_DB::prepare(
 $stats = new WT_Stats(WT_GEDCOM);
 
 ?>
-<h2><?php echo $controller->getPageTitle(); ?></h2>
+<h1><?php echo $controller->getPageTitle(); ?></h1>
 
 <div>
 	<div id="x">
@@ -626,6 +626,7 @@ function old_paths() {
 		WT_ROOT . 'themes/_administration/css-1.6.0',
 		WT_ROOT . 'themes/_administration/jquery-ui-1.10.3',
 		// Removed in 1.7.0
+		WT_ROOT . 'admin_site_other.php',
 		WT_ROOT . 'js',
 		WT_ROOT . 'library/WT/MenuBar.php',
 		WT_ROOT . 'save.php',

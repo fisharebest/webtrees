@@ -628,7 +628,7 @@ function my_plot($mytitle, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 	}
 	$imgurl .= '&amp;chxt=x,x,y,y&amp;chxl=0:|';
 	for ($i = 0; $i < count($xdata); $i++) {
-		$imgurl .= $xdata[$i] . '|';
+		$imgurl .= rawurlencode($xdata[$i]) . '|';
 	}
 
 	$imgurl .= '1:||||' . rawurlencode($xtitle) . '|2:|';

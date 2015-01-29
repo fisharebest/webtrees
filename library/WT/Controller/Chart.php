@@ -40,7 +40,7 @@ class WT_Controller_Chart extends WT_Controller_Page {
 		}
 
 		if (!$this->root || !$this->root->canShowName()) {
-			header($_SERVER['SERVER_PROTOCOL'] . ' 403 Forbidden');
+			http_response_code(404);
 			$this->error_message = WT_I18N::translate('This individual does not exist or you do not have permission to view it.');
 		}
 	}

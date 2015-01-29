@@ -96,7 +96,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 
 		// Search engines should not make AJAX requests
 		if ($SEARCH_SPIDER) {
-			header($_SERVER['SERVER_PROTOCOL'] . ' 403 Forbidden');
+			http_response_code(403);
 			exit;
 		}
 
@@ -107,7 +107,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		if (array_key_exists($tab, $this->tabs)) {
 			$mod = $this->tabs[$tab];
 		} else {
-			header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
+			http_response_code(404);
 			exit;
 		}
 

@@ -142,9 +142,9 @@ if ($blocks['side']) {
 echo '<div id="link_change_blocks">';
 
 if ($ctype === 'user') {
-	echo '<a href="#" onclick="return modalDialog(\'index_edit.php?user_id=' . Auth::id() . '\', \'', WT_I18N::translate('Change the blocks on this page'), '\');">', WT_I18N::translate('Change the blocks on this page'), '</a>';
+	echo '<a href="index_edit.php?user_id=' . Auth::id() . '">', WT_I18N::translate('Change the blocks on this page'), '</a>';
 } elseif ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN) {
-	echo '<a href="#" onclick="return modalDialog(\'index_edit.php?gedcom_id=' . WT_GED_ID . '\', \'', WT_I18N::translate('Change the blocks on this page'), '\');">', WT_I18N::translate('Change the blocks on this page'), '</a>';
+	echo '<a href="index_edit.php?gedcom_id=' . WT_GED_ID . '">', WT_I18N::translate('Change the blocks on this page'), '</a>';
 }
 
 if ($WT_TREE->getPreference('SHOW_COUNTER')) {

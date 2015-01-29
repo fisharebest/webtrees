@@ -49,7 +49,9 @@ class Administration extends BaseTheme {
 
 	/** {@inheritdoc} */
 	protected function headerContent() {
-		return $this->secondaryMenuContainer($this->secondaryMenu());
+		return
+			$this->accessibilityLinks() .
+			$this->secondaryMenuContainer($this->secondaryMenu());
 	}
 
 	/** {@inheritdoc} */
@@ -62,7 +64,7 @@ class Administration extends BaseTheme {
 	 * @return WT_Menu
 	 */
 	protected function menuAdminSite() {
-		return new WT_Menu(/* I18N: Menu entry*/ WT_I18N::translate('webtrees'), '#', '', '', array(
+		return new WT_Menu(/* I18N: Menu entry*/ WT_I18N::translate('Server'), '#', '', '', array(
 			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Site preferences'), 'admin_site_config.php?action=site'),
 			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Sending email'), 'admin_site_config.php?action=email'),
 			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Login and registration'), 'admin_site_config.php?action=login'),
@@ -83,7 +85,7 @@ class Administration extends BaseTheme {
 		);
 
 		if (count(WT_Tree::getAll()) > 1) {
-			$submenus[] = new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Set the default blocks for new family trees'), '#', '', 'return modalDialog(\'index_edit.php?gedcom_id=-1\', \'' . WT_I18N::translate('Set the default blocks for new family trees') . '\')');
+			$submenus[] = new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Set the default blocks for new family trees'), 'index_edit.php?gedcom_id=-1');
 			$submenus[] = new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Merge family trees'), 'admin_trees_merge.php');
 		}
 
@@ -99,7 +101,7 @@ class Administration extends BaseTheme {
 			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Add a new user'), 'admin_users.php?action=edit'),
 			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Send broadcast messages'), 'admin_users_bulk.php'),
 			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Delete inactive users'), 'admin_users.php?action=cleanup'),
-			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Set the default blocks for new users'), '#', '', 'return modalDialog(\'index_edit.php?user_id=-1\', \'' . WT_I18N::translate('Set the default blocks for new users') . '\')'),
+			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Set the default blocks for new users'), 'index_edit.php?user_id=-1'),
 		));
 	}
 
@@ -154,7 +156,7 @@ class Administration extends BaseTheme {
 			'<span class="icon-bar"></span>' .
 			'<span class="icon-bar"></span>' .
 			'</button>' .
-			//'<a class="navbar-brand" href="index.php">' . WT_WEBTREES . '</a>' .
+			'<a class="navbar-brand" href="admin.php">' . WT_I18N::translate('Control panel') . '</a>' .
 			'</div>' .
 			'<div class="collapse navbar-collapse" id="primary-navbar-collapse">' .
 			'<ul class="nav navbar-nav">' .

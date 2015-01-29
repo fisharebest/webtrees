@@ -50,7 +50,7 @@ class WT_Controller_Ajax extends WT_Controller_Base {
 	 */
 	public function restrictAccess($condition) {
 		if ($condition !== true) {
-			header('HTTP/1.0 403 Access Denied');
+			http_response_code(403);
 			exit;
 		}
 

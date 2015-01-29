@@ -38,7 +38,7 @@ $variables = WT_DB::prepare("SHOW VARIABLES")->fetchAssoc();
 array_walk($variables, function(&$x) { $x = str_replace(',', ', ', $x); });
 
 ob_start();
-phpinfo();
+phpinfo(INFO_ALL & ~INFO_CREDITS & ~INFO_LICENSE);
 preg_match('%<style type="text/css">(.*?)</style>.*?(<body>.*</body>)%s', ob_get_clean(), $matches);
 $style = $matches[1];
 $html  = $matches[2];
@@ -46,18 +46,19 @@ $html  = $matches[2];
 ?>
 
 <ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+	<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
 	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 </ol>
-<h2><?php echo $controller->getPageTitle(); ?></h2>
+
+<h1><?php echo $controller->getPageTitle(); ?></h1>
 
 <div class="row">
 	<div class="col-xs-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title">
+				<h2 class="panel-title">
 					<?php echo WT_I18N::translate('PHP information'); ?>
-				</h3>
+				</h2>
 			</div>
 			<div class="panel-body">
 				<style type="text/css" scoped>
@@ -75,9 +76,9 @@ $html  = $matches[2];
 	<div class="col-md-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title">
+				<h2 class="panel-title">
 					<?php echo WT_I18N::translate('MySQL variables'); ?>
-				</h3>
+				</h2>
 			</div>
 			<div class="panel-body">
 				<dl>
@@ -95,9 +96,9 @@ $html  = $matches[2];
 	<div class="col-md-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title">
+				<h2 class="panel-title">
 					<?php echo WT_I18N::translate('Time'); ?>
-				</h3>
+				</h2>
 			</div>
 			<div class="panel-body">
 				<?php echo /* I18N: The local time on the server */ WT_I18N::translate('Server time'); ?> —

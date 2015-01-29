@@ -46,7 +46,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 			$this->generate(WT_Filter::get('file'));
 			break;
 		default:
-			header('HTTP/1.0 404 Not Found');
+			http_response_code(404);
 		}
 	}
 
@@ -59,7 +59,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 		} elseif (preg_match('/^sitemap-(\d+)-([isrmn])-(\d+).xml$/', $file, $match)) {
 			$this->generateFile($match[1], $match[2], $match[3]);
 		} else {
-			header('HTTP/1.0 404 Not Found');
+			http_response_code(404);
 		}
 	}
 
@@ -278,7 +278,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 
 		?>
 		<ol class="breadcrumb small">
-			<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+			<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
 			<li><a href="admin_modules.php"><?php echo WT_I18N::translate('Module administration'); ?></a></li>
 			<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 		</ol>

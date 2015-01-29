@@ -116,6 +116,7 @@ $RECORD_LINKS = array(
 
 $errors = false;
 
+echo '<h1>', $controller->getPageTitle(), '</h1>';
 echo '<fieldset><legend>', WT_I18N::translate('Types of error'), '</legend>';
 echo '<p class="ui-state-error">', WT_I18N::translate('This may cause a problem for webtrees.'), '</p>';
 echo '<p class="ui-state-highlight">', WT_I18N::translate('This may cause a problem for other applications.'), '</p>';

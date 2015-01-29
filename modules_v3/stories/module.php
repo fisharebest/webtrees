@@ -50,7 +50,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 			$this->showList();
 			break;
 		default:
-			header('HTTP/1.0 404 Not Found');
+			http_response_code(404);
 		}
 	}
 
@@ -194,12 +194,13 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 
 				?>
 				<ol class="breadcrumb small">
-					<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+					<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
 					<li><a href="admin_modules.php"><?php echo WT_I18N::translate('Module administration'); ?></a></li>
 					<li><a href="module.php?mod=<?php echo $this->getName(); ?>&mod_action=admin_config"><?php echo $this->getTitle(); ?></a></li>
 					<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 				</ol>
-				<h2><?php echo $controller->getPageTitle(); ?></h2>
+
+				<h1><?php echo $controller->getPageTitle(); ?></h1>
 				<?php
 
 				echo '<form name="story" method="post" action="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">';
@@ -307,11 +308,12 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 
 		?>
 		<ol class="breadcrumb small">
-			<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+			<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
 			<li><a href="admin_modules.php"><?php echo WT_I18N::translate('Module administration'); ?></a></li>
 			<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 		</ol>
-		<h2><?php echo $controller->getPageTitle(); ?></h2>
+
+		<h1><?php echo $controller->getPageTitle(); ?></h1>
 
 		<form class="form form-inline">
 			<label for="ged" class="sr-only">
@@ -355,7 +357,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 						<?php endif; ?>
 						</td>
 						<td>
-							<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit&amp;block_id=', $story->block_id, '">
+							<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_edit&amp;block_id=<?php echo $story->block_id; ?>">
 								<div class="icon-edit">&nbsp;</div>
 							</a>
 						</td>

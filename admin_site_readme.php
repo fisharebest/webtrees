@@ -37,10 +37,11 @@ $readme = preg_replace('/.*(?=# webtrees)/s', '', $readme);
 
 ?>
 <ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+	<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
 	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 </ol>
-<h2><?php echo $controller->getPageTitle(); ?></h2>
+
+<h1><?php echo $controller->getPageTitle(); ?></h1>
 
 <div class="markdown" dir="ltr" lang="en">
 	<?php echo MarkdownExtra::defaultTransform($readme); ?>

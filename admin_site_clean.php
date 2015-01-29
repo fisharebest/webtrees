@@ -83,10 +83,11 @@ sort($entries);
 
 ?>
 <ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
+	<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
 	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 </ol>
-<h2><?php echo $controller->getPageTitle(); ?></h2>
+
+<h1><?php echo $controller->getPageTitle(); ?></h1>
 
 <p>
 	<?php echo WT_I18N::translate('Files marked with %s are required for proper operation and cannot be removed.', $locked_icon); ?>
@@ -94,22 +95,28 @@ sort($entries);
 
 <form method="post">
 	<?php echo WT_Filter::getCsrf(); ?>
-	<ul class="fa-ul">
-		<?php
-		foreach ($entries as $entry) {
-			if (in_array($entry, $do_not_delete)) {
-				echo '<li><i class="fa-li fa fa-ban text-danger"></i>', WT_Filter::escapeHtml($entry), '</li>';
-			} else {
-				$uuid = 'label-' . Uuid::uuid4();
-				echo '<li><i class="fa-li fa fa-trash-o"></i>';
-				echo '<label>';
-				echo WT_Filter::escapeHtml($entry);
-				echo ' <input type="checkbox" name="to_delete[]" value="', WT_Filter::escapeHtml($entry), '">';
-				echo '</label></li>';
+	<fieldset>
+		<legend class="sr-only"><?php echo $controller->getPageTitle(); ?></legend>
+		<ul class="fa-ul">
+			<?php
+			foreach ($entries as $entry) {
+				if (in_array($entry, $do_not_delete)) {
+					echo '<li><i class="fa-li fa fa-ban text-danger"></i>', WT_Filter::escapeHtml($entry), '</li>';
+				} else {
+					$id = 'input-' . Uuid::uuid4();
+					echo '<li><i class="fa-li fa fa-trash-o"></i>';
+					echo '<label for="', $id, '">';
+					echo '<input type="checkbox" id="', $id, '" name="to_delete[]" value="', WT_Filter::escapeHtml($entry), '"> ';
+					echo WT_Filter::escapeHtml($entry);
+					echo '</label></li>';
+				}
 			}
-		}
-		$dir->close();
-		?>
-	</ul>
-	<button class="btn btn-primary" type="submit"><?php echo /* I18N: Button label */ WT_I18N::translate('Delete'); ?></button>
+			$dir->close();
+			?>
+		</ul>
+	</fieldset>
+	<button class="btn btn-danger" type="submit">
+		<i class="fa fa-trash-o"></i>
+		<?php echo /* I18N: Button label */ WT_I18N::translate('delete'); ?>
+	</button>
 </form>

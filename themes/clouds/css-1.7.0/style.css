@@ -1072,7 +1072,7 @@ a.showit:hover > span {
 	width: 100%;
 }
 
-#medialist-page .optionbox, 
+#medialist-page .optionbox,
 #medialist-page .descriptionbox {
 	width: 25%;
 }
@@ -1082,7 +1082,7 @@ a.showit:hover > span {
 }
 
 #medialist-page .media-col {
-	padding-left: 5px; 
+	padding-left: 5px;
 	border: none;
 }
 
@@ -1092,7 +1092,7 @@ a.showit:hover > span {
 }
 
 #medialist-page .media-image {
-	vertical-align:top; 
+	vertical-align:top;
 	white-space:normal;
 }
 
@@ -1326,7 +1326,7 @@ background-color: #fff;
 	text-align: left;
 }
 
-[dir=rtl] #register-form p, 
+[dir=rtl] #register-form p,
 [dir=rtl] #verify-form p {
 	text-align: right;
 }
@@ -4363,8 +4363,7 @@ li a.link {
 	content: "";
 }
 
-.lang-active,
-.theme-active {
+.secondary-menu .active {
 	color: #006;
 	font-weight: 900;
 }

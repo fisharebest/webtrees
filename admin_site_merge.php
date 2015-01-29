@@ -37,6 +37,8 @@ $controller
 	->addInlineJavascript('autocomplete();')
 	->pageHeader();
 
+echo '<h1>',  $controller->getPageTitle(), '</h1>';
+
 $ged    = $GEDCOM;
 $gid1   = WT_Filter::post('gid1', WT_REGEX_XREF);
 $gid2   = WT_Filter::post('gid2', WT_REGEX_XREF);

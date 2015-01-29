@@ -19,6 +19,7 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use WT\Auth;
+use WT\Theme;
 use WT\User;
 
 define('WT_SCRIPT_NAME', 'admin_trees_manage.php');
@@ -95,14 +96,14 @@ case 'delete':
 		WT_Tree::get($gedcom_id)->delete();
 	}
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
-	
+
 	return;
 case 'setdefault':
 	if (WT_Filter::checkCsrf()) {
 		WT_Site::setPreference('DEFAULT_GEDCOM', WT_Filter::post('ged'));
 	}
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
-	
+
 	return;
 case 'new_tree':
 	$tree_name  = basename(WT_Filter::post('tree_name'));
@@ -112,7 +113,7 @@ case 'new_tree':
 		WT_Tree::create($tree_name, $tree_title);
 	}
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?ged=' . $tree_name);
-	
+
 	return;
 case 'replace_upload':
 	$gedcom_id = WT_Filter::postInteger('gedcom_id');
@@ -150,30 +151,28 @@ while (array_key_exists($default_tree_name . $default_tree_number, $existing_tre
 }
 $default_tree_name .= $default_tree_number;
 
-$controller->pageHeader();
-
-?>
-<ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo WT_I18N::translate('Administration'); ?></a></li>
-	<li class="active"><?php echo WT_I18N::translate('Manage family trees'); ?></li>
-</ol>
-<h2><?php echo $controller->getPageTitle(); ?></h2>
-
-<?php if (!WT_Tree::getAll()): ?>
-	<p class="alert alert-info alert-dismissable" role="alert">
-		<button type="button" class="close" data-dismiss="alert">
-			<span aria-hidden="true">&times;</span><span class="sr-only">
-				<?php echo WT_I18N::translate('Close'); ?>
-			</span>
-		</button>
-		<?php echo WT_I18N::translate('Before you can continue, you must create a family tree.'); ?>
-	</p>
-<?php endif;
-
 // Process GET actions
 switch (WT_Filter::get('action')) {
 case 'uploadform':
 case 'importform':
+	$controller->pageHeader();
+
+	if (WT_Filter::get('action') === 'uploadform') {
+		$controller->setPageTitle(WT_I18N::translate('Upload family tree'));
+	} else {
+		$controller->setPageTitle(WT_I18N::translate('Import family tree'));
+	}
+
+	?>
+	<ol class="breadcrumb small">
+		<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
+		<li><a href="admin_trees_manage.php"><?php echo WT_I18N::translate('Manage family trees'); ?></a></li>
+		<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+	</ol>
+
+	<h1><?php echo $controller->getPageTitle(); ?></h1>
+	<?php
+
 	$tree = WT_Tree::get(WT_Filter::getInteger('gedcom_id'));
 	// Check it exists
 	if (!$tree) {
@@ -216,7 +215,7 @@ case 'importform':
 		} else {
 			echo '<p>', WT_I18N::translate('No GEDCOM files found.  You need to copy files to the <b>%s</b> directory on your server.', WT_DATA_DIR);
 			echo '</form>';
-			
+
 			return;
 		}
 	}
@@ -224,25 +223,38 @@ case 'importform':
 	echo WT_I18N::translate('If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM file.');
 	echo '<br><br><input type="submit" value="', WT_I18N::translate('continue'), '">';
 	echo '</form>';
-	
+
 	return;
 }
 
+if (!WT_Tree::getAll()) {
+	echo Theme::theme()->htmlAlert(WT_I18N::translate('Before you can continue, you must create a family tree.'), 'info', true);
+}
+
+$controller->pageHeader();
+
 // List the gedcoms available to this user
 ?>
+<ol class="breadcrumb small">
+	<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
+	<li class="active"><?php echo WT_I18N::translate('Manage family trees'); ?></li>
+</ol>
+
+<h1><?php echo $controller->getPageTitle(); ?></h1>
+
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 	<?php foreach (WT_Tree::GetAll() as $tree): ?>
 	<?php if (Auth::isManager($tree)): ?>
 	<div class="panel panel-default">
 		<div class="panel-heading" role="tab" id="panel-tree-<?php echo $tree->tree_id; ?>">
-			<h3 class="panel-title">
+			<h2 class="panel-title">
 				<i class="fa fa-fw fa-tree"></i>
 				<a data-toggle="collapse" data-parent="#accordion" href="#tree-<?php echo $tree->tree_id; ?>" aria-expanded="true" aria-controls="tree-<?php echo $tree->tree_id; ?>">
 					<?php echo WT_Filter::escapeHtml($tree->tree_name); ?> — <?php echo WT_Filter::escapeHtml($tree->tree_title); ?>
 				</a>
-			</h3>
+			</h2>
 		</div>
-		<div id="tree-<?php echo $tree->tree_id; ?>" class="panel-collapse collapse<?php echo $tree->tree_id === WT_GED_ID ? ' in' : ''; ?>" aria-labelled-by="panel-tree-<?php echo $tree->tree_id; ?>">
+		<div id="tree-<?php echo $tree->tree_id; ?>" class="panel-collapse collapse<?php echo $tree->tree_id === WT_GED_ID || $tree->getPreference('imported') === '0' ? ' in' : ''; ?>" role="tabpanel" aria-labelledby="panel-tree-<?php echo $tree->tree_id; ?>">
 			<div class="panel-body">
 				<?php
 
@@ -268,20 +280,14 @@ case 'importform':
 				?>
 				<div class="row<?php echo $importing ? ' hidden' : ''; ?>" id="actions<?php echo $tree->tree_id; ?>">
 					<div class="col-sm-6 col-md-3">
-						<h4>
+						<h3>
 							<?php echo WT_I18N::translate('Family tree'); ?>
-						</h4>
+							—
+							<a href="index.php?ctype=gedcom&ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
+								<?php echo WT_I18N::translate('View'); ?>
+							</a>
+						</h3>
 						<ul class="fa-ul">
-							<!-- HOME PAGE -->
-							<li>
-								<i class="fa fa-li fa-home"></i>
-								<a href="index.php?ctype=gedcom&ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
-									<?php echo WT_I18N::translate('Home page'); ?>
-									<span class="sr-only">
-										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
-									</span>
-								</a>
-							</li>
 							<!-- PREFERENCES -->
 							<li>
 								<i class="fa fa-li fa-cogs"></i>
@@ -302,31 +308,16 @@ case 'importform':
 									</span>
 								</a>
 							</li>
-							<!-- SET AS DEFAULT -->
-							<?php if (count(WT_Tree::getAll()) > 1): ?>
+							<!-- HOME PAGE BLOCKS-->
 							<li>
-								<i class="fa fa-li fa-star"></i>
-								<?php if ($tree->tree_name == WT_Site::getPreference('DEFAULT_GEDCOM')): ?>
-								<?php echo WT_I18N::translate('Default family tree'); ?>
-								<?php else: ?>
-								<a href="#" onclick="document.defaultform<?php echo $tree->tree_id; ?>.submit();">
-									<?php echo WT_I18N::translate('Set as default'); ?>
+								<i class="fa fa-li fa-th-large"></i>
+								<a href="index_edit.php?gedcom_id=<?php echo $tree->tree_id; ?>">
+									<?php echo WT_I18N::translate('Change the “Home page” blocks'); ?>
 									<span class="sr-only">
 										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
 									</span>
 								</a>
-								<form name="defaultform<?php echo $tree->tree_id; ?>" method="POST" action="admin_trees_manage.php">
-									<input type="hidden" name="action" value="setdefault">
-									<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
-									<?php echo WT_Filter::getCsrf(); ?>
-									<!-- A11Y - forms need submit buttons, but they look ugly here -->
-									<button class="sr-only" type="submit">
-										<?php echo WT_I18N::translate('Set as default'); ?>
-									</button>
-								</form>
-								<?php endif; ?>
 							</li>
-							<?php endif; ?>
 							<!-- DELETE -->
 							<li>
 								<i class="fa fa-li fa-trash-o"></i>
@@ -336,7 +327,7 @@ case 'importform':
 										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
 									</span>
 								</a>
-								<form name="delete_form<?php echo $tree->tree_id; ?>" method="POST" action="admin_trees_manage.php">
+								<form name="delete_form<?php echo $tree->tree_id; ?>" method="post">
 									<input type="hidden" name="action" value="delete">
 									<input type="hidden" name="gedcom_id" value="<?php echo $tree->tree_id; ?>">
 									<?php echo WT_Filter::getCsrf(); ?>
@@ -346,12 +337,37 @@ case 'importform':
 									</button>
 								</form>
 							</li>
+							<!-- SET AS DEFAULT -->
+							<?php if (count(WT_Tree::getAll()) > 1): ?>
+								<li>
+									<i class="fa fa-li fa-star"></i>
+									<?php if ($tree->tree_name == WT_Site::getPreference('DEFAULT_GEDCOM')): ?>
+										<?php echo WT_I18N::translate('Default family tree'); ?>
+									<?php else: ?>
+										<a href="#" onclick="document.defaultform<?php echo $tree->tree_id; ?>.submit();">
+											<?php echo WT_I18N::translate('Set as default'); ?>
+											<span class="sr-only">
+										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
+									</span>
+										</a>
+										<form name="defaultform<?php echo $tree->tree_id; ?>" method="post">
+											<input type="hidden" name="action" value="setdefault">
+											<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
+											<?php echo WT_Filter::getCsrf(); ?>
+											<!-- A11Y - forms need submit buttons, but they look ugly here -->
+											<button class="sr-only" type="submit">
+												<?php echo WT_I18N::translate('Set as default'); ?>
+											</button>
+										</form>
+									<?php endif; ?>
+								</li>
+							<?php endif; ?>
 						</ul>
 					</div>
 					<div class="col-sm-6 col-md-3">
-						<h4>
+						<h3>
 							<?php echo /* I18N: Individuals, sources, dates, places, etc. */ WT_I18N::translate('Genealogy data'); ?>
-						</h4>
+						</h3>
 						<ul class="fa-ul">
 							<!-- MERGE -->
 							<li>
@@ -407,9 +423,9 @@ case 'importform':
 					</div>
 					<div class="clearfix visible-sm-block"></div>
 					<div class="col-sm-6 col-md-3">
-						<h4>
+						<h3>
 							<?php echo WT_I18N::translate('Add unlinked records'); ?>
-						</h4>
+						</h3>
 						<ul class="fa-ul">
 							<!-- UNLINKED INDIVIDUAL -->
 							<li>
@@ -464,9 +480,9 @@ case 'importform':
 						</ul>
 					</div>
 					<div class="col-sm-6 col-md-3">
-						<h4>
+						<h3>
 							<?php echo WT_I18N::translate('GEDCOM file'); ?>
-						</h4>
+						</h3>
 						<ul class="fa-ul">
 							<!-- DOWNLOAD -->
 							<li>
@@ -490,13 +506,15 @@ case 'importform':
 							</li>
 							<!-- EXPORT -->
 							<li>
-								<i class="fa fa-li fa-file-text"></i>
-								<a href="#" onclick="return modalDialog('admin_trees_export.php?ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>', '<?php echo WT_I18N::translate('Export'); ?>');">
-									<?php echo WT_I18N::translate('Export'); ?>
-									<span class="sr-only">
-										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
-									</span>
-								</a>
+								<form action="admin_trees_export.php" method="post">
+									<?php echo WT_Filter::getCsrf(); ?>
+									<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
+									<i class="fa fa-li fa-file-text"></i>
+									<input type="submit" class="hide"><!-- for WCAG2 -->
+									<a href="#" onclick="jQuery(this).closest('form').submit();">
+										<?php echo WT_I18N::translate('Export'); ?>
+									</a>
+								</form>
 							</li>
 							<!-- IMPORT -->
 							<li>
@@ -519,26 +537,26 @@ case 'importform':
 	<?php if (Auth::isAdmin()): ?>
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h3 class="panel-title">
+			<h2 class="panel-title">
 				<i class="fa fa-fw fa-plus"></i>
 				<a data-toggle="collapse" data-parent="#accordion" href="#create-a-new-family-tree">
 					<?php echo WT_I18N::translate('Create a new family tree'); ?>
 				</a>
-			</h3>
+			</h2>
 		</div>
 		<div id="create-a-new-family-tree" class="panel-collapse collapse<?php echo WT_Tree::getAll() ? '' : ' in'; ?>">
 			<div class="panel-body">
-				<form role="form" class="form-horizontal" method="POST" action="admin_trees_manage.php">
+				<form role="form" class="form-horizontal" method="post">
 					<?php echo WT_Filter::getCsrf(); ?>
 					<input type="hidden" name="action" value="new_tree">
 					<div class="form-group">
-						<label for="ged_title" class="col-sm-2 control-label">
+						<label for="tree_title" class="col-sm-2 control-label">
 							<?php echo WT_I18N::translate('Family tree title'); ?>
 						</label>
 						<div class="col-sm-10">
 							<input
 								class="form-control"
-								id="ged_title"
+								id="tree_title"
 								maxlength="255"
 								name="tree_title"
 								required
@@ -575,6 +593,7 @@ case 'importform':
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
 							<button type="submit" class="btn btn-primary">
+								<i class="fa fa-check"></i>
 								<?php echo /* I18N: Button label */ WT_I18N::translate('create'); ?>
 							</button>
 							<p class="small text-muted">
@@ -591,12 +610,12 @@ case 'importform':
 	<?php if (count(WT_Tree::GetAll()) === 0 && count(User::all()) === 1): ?>
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h3 class="panel-title">
+			<h2 class="panel-title">
 			<i class="fa fa-fw fa-magic"></i>
 			<a data-toggle="collapse" data-parent="#accordion" href="#pgv-import-wizard">
 				<?php echo WT_I18N::translate('PhpGedView to webtrees transfer wizard'); ?>
 			</a>
-		</h3>
+		</h2>
 		</div>
 		<div id="pgv-import-wizard" class="panel-collapse collapse">
 			<div class="panel-body">

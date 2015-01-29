@@ -62,6 +62,23 @@ abstract class BaseTheme {
 	}
 
 	/**
+	 * Create accessibility links for the header.
+	 *
+	 * "Skip to content" allows keyboard only users to navigate over the headers without
+	 * pressing TAB many times.
+	 *
+	 * @return string
+	 */
+	public function accessibilityLinks() {
+		return
+			'<div class="accessibility-links">' .
+			'<a class="sr-only sr-only-focusable btn btn-info btn-sm" href="#content">' .
+			/* I18N: Skip over the headers and menus, to the main content of the page */ WT_I18N::translate('Skip to content') .
+			'</a>' .
+			'</div>';
+	}
+
+	/**
 	 * Create the top of the <body>.
 	 *
 	 * @return string
@@ -200,13 +217,7 @@ abstract class BaseTheme {
 	 * @return string
 	 */
 	protected function flashMessageContainer(\stdClass $message) {
-		return
-			'<div class="alert alert-' . $message->status . ' alert-dismissible" role="alert">' .
-			'<button type="button" class="close" data-dismiss="alert" aria-label="' . /* I18N: button label */ WT_I18N::translate('close') . '">' .
-			'<span aria-hidden="true">&times;</span>' .
-			'</button>' .
-			$message->text .
-			'</div>';
+		return $this->htmlAlert($message->text, $message->status, true);
 	}
 
 	/**
@@ -426,6 +437,7 @@ abstract class BaseTheme {
 	 */
 	protected function headerContent() {
 		return
+			//$this->accessibilityLinks() .
 			$this->logoHeader() .
 			$this->secondaryMenuContainer($this->secondaryMenu()) .
 			$this->formatTreeTitle() .
@@ -478,6 +490,44 @@ abstract class BaseTheme {
 	 */
 	public function html() {
 		return '<html ' . WT_I18N::html_markup() . '>';
+	}
+
+	/**
+	 * Add HTML markup to create an alert
+	 *
+	 * @param string  $html        The content of the alert
+	 * @param string  $level       One of 'success', 'info', 'warning', 'danger'
+	 * @param boolean $dismissible If true, add a close button.
+	 *
+	 * @return string
+	 */
+	public function htmlAlert($html, $level, $dismissible) {
+		if ($dismissible) {
+			return
+				'<div class="alert alert-' . $level . '" alert-dismissible role="alert">' .
+				'<button type="button" class="close" data-dismiss="alert" aria-label="' . WT_I18N::translate('close') . '">' .
+				'<span aria-hidden="true">&times;</span>' .
+				'</button>' .
+				$html .
+				'</div>';
+		} else {
+			return
+				'<div class="alert alert-' . $level . '" role="alert">' .
+				$html .
+				'</div>';
+		}
+	}
+
+	/**
+	 * Add HTML markup to create a group of radio buttons
+	 *
+	 * @param string  $name        The form name of the controls
+	 * @param string  $legend      A description of the group of controls
+	 *
+	 * @return string
+	 */
+	public function htmlRadioButtons($name, $legend) {
+		return '<fieldset><legend>' . $legend . '</legend></fieldset>';
 	}
 
 	/**
@@ -1294,7 +1344,7 @@ abstract class BaseTheme {
 		}
 
 		if (WT_USER_GEDCOM_ADMIN) {
-			$menu->addSubmenu(new WT_Menu(WT_I18N::translate('Administration'), 'admin.php', 'menu-admin'));
+			$menu->addSubmenu(new WT_Menu(WT_I18N::translate('Control panel'), 'admin.php', 'menu-admin'));
 		}
 
 		return $menu;

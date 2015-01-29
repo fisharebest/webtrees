@@ -54,6 +54,7 @@ class Fab extends BaseTheme {
 	/** {@inheritdoc} */
 	protected function headerContent() {
 		return
+			//$this->accessibilityLinks() .
 			$this->formatTreeTitle() .
 			$this->formatSecondaryMenu();
 	}

@@ -58,7 +58,7 @@ $controller
 	->setPageTitle(WT_I18N::translate('Upgrade wizard'))
 	->pageHeader();
 
-echo '<h2>', $controller->getPageTitle(), '</h2>';
+echo '<h1>', $controller->getPageTitle(), '</h1>';
 
 if ($latest_version == '') {
 	echo '<p>', WT_I18N::translate('No upgrade information is available.'), '</p>';
@@ -72,7 +72,7 @@ if (version_compare(WT_VERSION, $latest_version) >= 0) {
 	return;
 }
 
-echo '<form method="POST" action="admin_site_upgrade.php">';
+echo '<form method="post" action="admin_site_upgrade.php">';
 echo WT_Filter::getCsrf();
 
 if ($continue) {

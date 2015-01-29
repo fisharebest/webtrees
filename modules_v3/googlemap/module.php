@@ -113,7 +113,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			$this->wtStreetView();
 			break;
 		default:
-			header('HTTP/1.0 404 Not Found');
+			http_response_code(404);
 			break;
 		}
 	}
@@ -1386,7 +1386,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 								$js .= 'Marker1_0_flag.shadow = "' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/flag_shadow.png";';
 								$js .= 'Marker1_0_flag.iconSize = new google.maps.Size(25, 15);';
 								$js .= 'Marker1_0_flag.shadowSize = new google.maps.Size(35, 45);';
-								$js .= 'Marker1_0_flag.iconAnchor = new google.maps.Point(1, 45);';
+								$js .= 'Marker1_0_flag.iconAnchor = new google.maps.Point(12, 15);';
 								$js .= 'var Marker1_0 = new google.maps.LatLng(point, {icon:Marker1_0_flag});';
 							}
 						}
@@ -2187,7 +2187,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					var icon_image = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+'googlemap/'+marker_icon,
 						new google.maps.Size(25, 15),
 						new google.maps.Point(0,0),
-						new google.maps.Point(0, 44));
+						new google.maps.Point(12, 15));
 					var icon_shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+'googlemap/images/flag_shadow.png',
 						new google.maps.Size(35, 45), // Shadow size
 						new google.maps.Point(0,0),   // Shadow origin
@@ -2259,7 +2259,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 					// Use jquery for info window tabs
 					google.maps.event.addListener(infowindow, 'domready', function() {
-		  	    //jQuery code here
+						//jQuery code here
 						jQuery('#EV').click(function() {
 							document.tabLayerEV = document.getElementById("EV");
 							document.tabLayerEV.style.background = '#ffffff';
@@ -2395,15 +2395,13 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				];
 
 				// Group the markers by location
-				var location_groups = new Array();
+				var location_groups = [];
 				for (var key in locations) {
 					if (!location_groups.hasOwnProperty(locations[key].place)) {
-						location_groups[locations[key].place] = new Array();
+						location_groups[locations[key].place] = [];
 					}
 					location_groups[locations[key].place].push(locations[key]);
 				}
-				// TODO: why doesn't this next line work?
-				//var location_groups = <?php echo json_encode($location_groups); ?>;
 
 				// Set the Marker bounds
 				var bounds = new google.maps.LatLngBounds ();
@@ -3024,12 +3022,12 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						var iconImage = new google.maps.MarkerImage(icon.image,
 						new google.maps.Size(25, 15),
 						new google.maps.Point(0,0),
-						new google.maps.Point(1, 45));
+						new google.maps.Point(12, 15));
 						var iconShadow = new google.maps.MarkerImage("'.WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/flag_shadow.png",
 						new google.maps.Size(35, 45),
 						new google.maps.Point(0,0),
 						new google.maps.Point(1, 45));
-					 } else {
+					} else {
 						var iconImage = new google.maps.MarkerImage(icon.image,
 						new google.maps.Size(20, 34),
 						new google.maps.Point(0,0),
@@ -3280,9 +3278,12 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	 * recursively find all of the csv files on the server
 	 *
 	 * @param string $path
+	 *
+	 * @return string[]
 	 */
 	private function findFiles($path) {
-		global $placefiles;
+		$placefiles = array();
+
 		if (file_exists($path)) {
 			$dir = dir($path);
 			while (false !== ($entry = $dir->read())) {
@@ -3296,6 +3297,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			}
 			$dir->close();
 		}
+
+		return $placefiles;
 	}
 
 	/**
@@ -3488,6 +3491,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			var pl_zoom = <?php echo $zoomfactor; ?>;
 			var latlng = new google.maps.LatLng(pl_lati, pl_long);
 			var polygon1;
+			var polygon2;
 			var geocoder;
 			var mapType;
 
@@ -3509,14 +3513,12 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 			function updateMap(event) {
 				var point;
-				var zoom;
+				var zoom = parseInt(document.editplaces.NEW_ZOOM_FACTOR.value);
 				var latitude;
 				var longitude;
 				var i;
+				var prec = 20;
 
-				zoom = parseInt(document.editplaces.NEW_ZOOM_FACTOR.value);
-
-				prec = 20;
 				for (i=0;i<document.editplaces.NEW_PRECISION.length;i++) {
 					if (document.editplaces.NEW_PRECISION[i].checked) {
 						prec = document.editplaces.NEW_PRECISION[i].value;
@@ -3633,72 +3635,69 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				// -------------------------------------------------------------------------
 			*/
 
-			    // If showing one country only (num_arrays == 1) ---------------------------
+				// If showing one country only (num_arrays == 1) ---------------------------
 				// Calculate polygon
 				if (num_arrays == 1 ) {
-					var geomAry1 = new Array();
-					geomAry1 = returnGeom1.split('|');
-					var XY1 = new Array();
+					var geomAry1 = returnGeom1.split('|');
+					var XY1 = [];
 					var points1 = [];
 					for (var i = 0; i < geomAry1.length; i++) {
 						XY1 = geomAry1[i].split(',');
 						points1.push( new google.maps.LatLng(parseFloat(XY1[1]),parseFloat(XY1[0]))) ;
 					}
-			    	// Construct the polygon
-			    	polygon1 = new google.maps.Polygon({
-			    	  paths: points1,
-			    	  strokeColor: "#888888",
-			    	  strokeOpacity: 0.8,
-			    	  strokeWeight: 1,
-			    	  fillColor: "#ff0000",
-			    	  fillOpacity: 0.15
-			    	});
-			    	polygon1.setMap(map);
-			    }
+					// Construct the polygon
+					polygon1 = new google.maps.Polygon({
+						paths: points1,
+						strokeColor: "#888888",
+						strokeOpacity: 0.8,
+						strokeWeight: 1,
+						fillColor: "#ff0000",
+						fillOpacity: 0.15
+					});
+					polygon1.setMap(map);
+				}
 
-			    // If showing two countries at the same time (num_arrays == 2) --------------
+				// If showing two countries at the same time (num_arrays == 2) --------------
 				if (num_arrays == 2) {
 					// Calculate polygon1
-					var geomAry1 = new Array();
-					geomAry1 = returnGeom1.split('|');
-					var XY1 = new Array();
+					var geomAry1 = returnGeom1.split('|');
+					var XY1 = [];
 					var points1 = [];
 					for (var i = 0; i < geomAry1.length; i++) {
 						XY1 = geomAry1[i].split(',');
 						points1.push( new google.maps.LatLng(parseFloat(XY1[1]),parseFloat(XY1[0]))) ;
 					}
 
-			    	// Construct polygon1
-			    	polygon1 = new google.maps.Polygon({
-			    	  paths: points1,
-			    	  strokeColor: "#888888",
-			    	  strokeOpacity: 0.8,
-			    	  strokeWeight: 1,
-			    	  fillColor: "#ff0000",
-			    	  fillOpacity: 0.15
-			    	});
-			    	polygon1.setMap(map);
+					// Construct polygon1
+					polygon1 = new google.maps.Polygon({
+						paths: points1,
+						strokeColor: "#888888",
+						strokeOpacity: 0.8,
+						strokeWeight: 1,
+						fillColor: "#ff0000",
+						fillOpacity: 0.15
+					});
+					polygon1.setMap(map);
 
-			    	// Calculate polygon2
-					var geomAry2 = new Array();
-					geomAry2 = returnGeom2.split('|');
-					var XY2 = new Array();
+					// Calculate polygon2
+					var geomAry2 = returnGeom2.split('|');
+					var XY2 = [];
 					var points2 = [];
 					for (var i = 0; i < geomAry2.length; i++) {
 						XY2 = geomAry2[i].split(',');
 						points2.push( new google.maps.LatLng(parseFloat(XY2[1]),parseFloat(XY2[0]))) ;
 					}
 
-			    	// Construct polygon2
-			    	polygon2 = new google.maps.Polygon({
-			    	  paths: points2,
-			    	  strokeColor: "#888888",
-			    	  strokeOpacity: 0.8,
-			    	  strokeWeight: 1,
-			    	  fillColor: "#ff0000",
-			    	  fillOpacity: 0.15
-			    	});
-			    	polygon2.setMap(map);
+					// Construct polygon2
+					polygon2 = new google.maps.Polygon({
+						paths: points2,
+						strokeColor: "#888888",
+						strokeOpacity: 0.8,
+						strokeWeight: 1,
+						fillColor: "#ff0000",
+						fillOpacity: 0.15
+					});
+					polygon2.setMap(map);
 				}
 			}
 
@@ -3740,6 +3739,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			}
 
 			function loadMap(zoom, mapType) {
+				var mapTyp;
+
 				if (mapType) {
 					mapTyp = mapType;
 				} else {
@@ -3753,16 +3754,16 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				var myOptions = {
 					zoom: zoom,
 					center: latlng,
-					mapTypeId: mapTyp,											// ROADMAP, SATELLITE, HYBRID, TERRAIN
-					// mapTypeId: google.maps.MapTypeId.ROADMAP,				// ROADMAP, SATELLITE, HYBRID, TERRAIN
+					mapTypeId: mapTyp,// ROADMAP, SATELLITE, HYBRID, TERRAIN
+					// mapTypeId: google.maps.MapTypeId.ROADMAP, // ROADMAP, SATELLITE, HYBRID, TERRAIN
 					mapTypeControlOptions: {
-						style: google.maps.MapTypeControlStyle.DROPDOWN_MENU	// DEFAULT, DROPDOWN_MENU, HORIZONTAL_BAR
+						style: google.maps.MapTypeControlStyle.DROPDOWN_MENU // DEFAULT, DROPDOWN_MENU, HORIZONTAL_BAR
 					},
 					navigationControlOptions: {
-					position: google.maps.ControlPosition.TOP_RIGHT,			// BOTTOM, BOTTOM_LEFT, LEFT, TOP, etc
-					style: google.maps.NavigationControlStyle.SMALL				// ANDROID, DEFAULT, SMALL, ZOOM_PAN
+					position: google.maps.ControlPosition.TOP_RIGHT, // BOTTOM, BOTTOM_LEFT, LEFT, TOP, etc
+					style: google.maps.NavigationControlStyle.SMALL // ANDROID, DEFAULT, SMALL, ZOOM_PAN
 					},
-					streetViewControl: false,									// Show Pegman or not
+					streetViewControl: false, // Show Pegman or not
 					scrollwheel: true
 				};
 
@@ -3793,7 +3794,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					echo 'var image = new google.maps.MarkerImage("', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place_icon, '",';
 						echo 'new google.maps.Size(25, 15),'; // Image size
 						echo 'new google.maps.Point(0, 0),'; // Image origin
-						echo 'new google.maps.Point(0, 44)'; // Image anchor
+						echo 'new google.maps.Point(12, 15)'; // Image anchor
 					echo ');';
 					echo 'var iconShadow = new google.maps.MarkerImage("', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/flag_shadow.png",';
 						echo 'new google.maps.Size(35, 45),'; // Shadow size
@@ -3820,15 +3821,15 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				}
 				?>
 
-				prec = 20;
-				for (i=0;i<document.editplaces.NEW_PRECISION.length;i++) {
+				var prec = 20;
+				for (var i=0;i<document.editplaces.NEW_PRECISION.length;i++) {
 					if (document.editplaces.NEW_PRECISION[i].checked) {
 						prec = document.editplaces.NEW_PRECISION[i].value;
 					}
 				}
 
 				// Set marker by clicking on map ---
-				clickset = google.maps.event.addListener(map, 'click', function(event) {
+				google.maps.event.addListener(map, 'click', function(event) {
 					clearMarks();
 					latlng = event.latLng;
 					<?php
@@ -3840,23 +3841,23 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						echo 'zIndex: 1';
 					echo '});';
 					?>
-					pos3 = marker.getPosition();
+					var pos3 = marker.getPosition();
 					document.getElementById('NEW_PLACE_LATI').value = parseFloat(pos3.lat()).toFixed(prec);
 					document.getElementById('NEW_PLACE_LONG').value = parseFloat(pos3.lng()).toFixed(prec);
 					updateMap('flag_drag');
-					currzoom = parseInt(document.editplaces.NEW_ZOOM_FACTOR.value);
+					var currzoom = parseInt(document.editplaces.NEW_ZOOM_FACTOR.value);
 					mapType = map.getMapTypeId();
 					loadMap(currzoom, mapType);
 				});
 
 				// Set marker by drag-n-drop on map ---
-				dragset = google.maps.event.addListener(marker, 'drag', function() {
-					pos1 = marker.getPosition();
+				google.maps.event.addListener(marker, 'drag', function() {
+					var pos1 = marker.getPosition();
 					document.getElementById('NEW_PLACE_LATI').value = parseFloat(pos1.lat()).toFixed(prec);
 					document.getElementById('NEW_PLACE_LONG').value = parseFloat(pos1.lng()).toFixed(prec);
 				});
-				dropset = google.maps.event.addListener(marker, 'dragend', function() {
-					pos2 = marker.getPosition();
+				google.maps.event.addListener(marker, 'dragend', function() {
+					var pos2 = marker.getPosition();
 					document.getElementById('NEW_PLACE_LATI').value = parseFloat(pos2.lat()).toFixed(prec);
 					document.getElementById('NEW_PLACE_LONG').value = parseFloat(pos2.lng()).toFixed(prec);
 					updateMap('flag_drag');
@@ -3868,8 +3869,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			}
 
 			function setLoc(lat, lng) {
-				prec = 20;
-				for (i=0;i<document.editplaces.NEW_PRECISION.length;i++) {
+				var prec = 20;
+				for (var i=0;i<document.editplaces.NEW_PRECISION.length;i++) {
 					if (document.editplaces.NEW_PRECISION[i].checked) {
 						prec = document.editplaces.NEW_PRECISION[i].value;
 					}
@@ -3888,7 +3889,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					document.editplaces.NEW_PLACE_LONG.value = lng.toFixed(prec);
 					document.editplaces.LONG_CONTROL.value = 'PL_E';
 				}
-				newval = new google.maps.LatLng (lat.toFixed(prec), lng.toFixed(prec));
+				new google.maps.LatLng (lat.toFixed(prec), lng.toFixed(prec));
 				updateMap();
 			}
 
@@ -3943,7 +3944,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					alert('<?php echo WT_I18N::translate('No places found'); ?>');
 				} else {
 					if (response.length > 0) {
-						for (i=0; i<response.length; i++) {
+						for (var i=0; i<response.length; i++) {
 							// 5 decimal places is approx 1 metre accuracy.
 							var name  = '<div id="gname" class="iwstyle">'+response[i].address_components[0].short_name+'<br>('+response[i].geometry.location.lng().toFixed(5)+','+response[i].geometry.location.lat().toFixed(5)+'';
 								name +=	'<br><a href="#" onclick="setLoc(' + response[i].geometry.location.lat() + ', ' + response[i].geometry.location.lng() + ');"><div id="namelink"><?php echo WT_I18N::translate('Use this value'); ?></div></a>';
@@ -3956,7 +3957,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						<?php if ($level > 0) { ?>
 							map.fitBounds(bounds);
 						<?php } ?>
-						zoomlevel = map.getZoom();
+						var zoomlevel = map.getZoom();
 
 						if (zoomlevel < <?php echo $this->getSetting('GM_MIN_ZOOM'); ?>) {
 							zoomlevel = <?php echo $this->getSetting('GM_MIN_ZOOM'); ?>;
@@ -4015,7 +4016,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			</tr>
 			<tr>
 				<td class="descriptionbox"><?php echo WT_Gedcom_Tag::getLabel('PLAC'); ?></td>
-				 <td class="optionbox"><input type="text" id="new_pl_name" name="NEW_PLACE_NAME" value="<?php echo WT_Filter::escapeHtml($place_name); ?>" size="25" class="address_input">
+				<td class="optionbox"><input type="text" id="new_pl_name" name="NEW_PLACE_NAME" value="<?php echo WT_Filter::escapeHtml($place_name); ?>" size="25" class="address_input">
 					<div id="INDI_PLAC_pop" style="display: inline;">
 					<?php echo print_specialchar_link('new_pl_name'); ?></div></td><td class="optionbox">
 					<label for="new_pl_name"><a href="#" onclick="showLocation_all(document.getElementById('new_pl_name').value); return false">&nbsp;<?php echo WT_I18N::translate('Search globally'); ?></a></label>
@@ -4311,9 +4312,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			$parent = 0;
 		}
 
-		if ($action == 'ImportFile') {
-			$placefiles = array();
-			$this->findFiles(WT_MODULES_DIR . 'googlemap/extra');
+		if ($action === 'ImportFile') {
+			$placefiles = $this->findFiles(WT_MODULES_DIR . 'googlemap/extra');
 			sort($placefiles);
 		?>
 		<form method="post" enctype="multipart/form-data" id="importfile" name="importfile" action="module.php?mod=googlemap&amp;mod_action=admin_places&amp;action=ImportFile2">
@@ -4712,7 +4712,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				<script>
 
 		// Following function creates an array of the google map parameters passed ---------------------
-		var qsParm = new Array();
+		var qsParm = [];
 		function qs() {
 			var query = window.location.search.substring(1);
 			var parms = query.split('&');
@@ -4854,7 +4854,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					zoom: svzoom
 				}
 			};
-			panorama = new google.maps.StreetViewPanorama(document.getElementById('mapCanvas'), panoramaOptions);
+			var panorama = new google.maps.StreetViewPanorama(document.getElementById('mapCanvas'), panoramaOptions);
 			panorama.setPosition(latLng);
 			setTimeout(function() { panorama.setVisible(true); }, 1000);
 			setTimeout(function() { panorama.setVisible(true); }, 2000);
@@ -4910,14 +4910,14 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			});
 
 			google.maps.event.addListener(panorama, 'pov_changed', function() {
-				povLevel = panorama.getPov();
+				var povLevel = panorama.getPov();
 				parent.document.getElementById('sv_bearText').value = roundNumber(povLevel.heading, 2)+"\u00B0";
 				parent.document.getElementById('sv_elevText').value = roundNumber(povLevel.pitch, 2)+"\u00B0";
 				parent.document.getElementById('sv_zoomText').value = roundNumber(povLevel.zoom, 2);
 			});
 
 			google.maps.event.addListener(panorama, 'position_changed', function() {
-				pos = panorama.getPosition();
+				var pos = panorama.getPosition();
 				marker.setPosition(pos);
 				parent.document.getElementById('sv_latiText').value = pos.lat()+"\u00B0";
 				parent.document.getElementById('sv_longText').value = pos.lng()+"\u00B0";

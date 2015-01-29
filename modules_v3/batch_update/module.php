@@ -48,7 +48,7 @@ class batch_update_WT_Module extends WT_Module implements WT_Module_Config {
 			echo $mod->main();
 			break;
 		default:
-			header('HTTP/1.0 404 Not Found');
+			http_response_code(404);
 		}
 	}
 
