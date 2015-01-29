@@ -31,7 +31,7 @@ require './includes/session.php';
 
 if (!WT_USER_GEDCOM_ADMIN) {
 	http_response_code(403);
-	
+
 	return;
 }
 
@@ -69,7 +69,7 @@ if ($row->import_offset == $row->import_total) {
 		'jQuery("#import' . $gedcom_id . '").addClass("hidden");' .
 		'jQuery("#actions' . $gedcom_id . '").removeClass("hidden");'
 	);
-	
+
 	return;
 }
 
@@ -101,11 +101,8 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 		" ORDER BY gedcom_chunk_id" .
 		" LIMIT 1"
 	)->execute(array($gedcom_id))->fetchOneRow();
-	// If we are at the start position, do some tidying up
+	// If we are loading the first (header) record, make sure the encoding is UTF-8.
 	if ($first_time) {
-		$keep_media = WT_Filter::getBool('keep_media' . $gedcom_id);
-		WT_Tree::get($gedcom_id)->deleteGenealogyData($keep_media);
-		WT_Tree::get($gedcom_id)->setPreference('imported', '0');
 		// Remove any byte-order-mark
 		WT_DB::prepare(
 			"UPDATE `##gedcom_chunk`" .
@@ -122,7 +119,7 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 			WT_DB::rollBack();
 			echo WT_I18N::translate('Invalid GEDCOM file - no header record found.');
 			$controller->addInlineJavascript('jQuery("#actions' . $gedcom_id . '").removeClass("hidden");');
-			
+
 			return;
 		}
 		// What character set is this?  Need to convert it to UTF8
@@ -200,7 +197,7 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 			WT_DB::rollBack();
 			echo '<span class="error">', WT_I18N::translate('Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported.', $charset), '</span>';
 			$controller->addInlineJavascript('jQuery("#actions' . $gedcom_id . '").removeClass("hidden");');
-			
+
 			return;
 		}
 		$first_time = false;
@@ -236,7 +233,7 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 			echo '<span class="error">', $ex->getMessage(), '</span>';
 			$controller->addInlineJavascript('jQuery("#actions' . $gedcom_id . '").removeClass("hidden");');
 		}
-		
+
 		return;
 	}
 }

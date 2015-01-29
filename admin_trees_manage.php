@@ -26,67 +26,9 @@ define('WT_SCRIPT_NAME', 'admin_trees_manage.php');
 require './includes/session.php';
 
 $controller = new WT_Controller_Page;
-$controller->restrictAccess(Auth::isManager());
-
-switch (WT_Filter::get('action')) {
-case 'uploadform':
-	$controller->setPageTitle(WT_I18N::translate('Upload family tree'));
-	break;
-case 'importform':
-	$controller->setPageTitle(WT_I18N::translate('Import family tree'));
-	break;
-default:
-	$controller->setPageTitle(WT_I18N::translate('Manage family trees'));
-	break;
-}
-
-// Don’t allow the user to cancel the request.  We do not want to be left
-// with an incomplete transaction.
-ignore_user_abort(true);
-
-/**
- * @param integer $gedcom_id
- * @param string  $path      the full path to the (possibly temporary) file.
- * @param string  $filename  the actual filename (no folder).
- *
- * @throws Exception
- */
-function import_gedcom_file($gedcom_id, $path, $filename) {
-	// Read the file in blocks of roughly 64K.  Ensure that each block
-	// contains complete gedcom records.  This will ensure we don’t split
-	// multi-byte characters, as well as simplifying the code to import
-	// each block.
-
-	$file_data = '';
-	$fp = fopen($path, 'rb');
-
-	WT_DB::beginTransaction();
-	WT_DB::prepare("DELETE FROM `##gedcom_chunk` WHERE gedcom_id=?")->execute(array($gedcom_id));
-
-	while (!feof($fp)) {
-		$file_data .= fread($fp, 65536);
-		// There is no strrpos() function that searches for substrings :-(
-		for ($pos = strlen($file_data) - 1; $pos > 0; --$pos) {
-			if ($file_data[$pos] == '0' && ($file_data[$pos - 1] == "\n" || $file_data[$pos - 1] == "\r")) {
-				// We’ve found the last record boundary in this chunk of data
-				break;
-			}
-		}
-		if ($pos) {
-			WT_DB::prepare(
-				"INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data) VALUES (?, ?)"
-			)->execute(array($gedcom_id, substr($file_data, 0, $pos)));
-			$file_data = substr($file_data, $pos);
-		}
-	}
-	WT_DB::prepare(
-		"INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data) VALUES (?, ?)"
-	)->execute(array($gedcom_id, $file_data));
-
-	WT_Tree::get($gedcom_id)->setPreference('gedcom_filename', $filename);
-	WT_DB::commit();
-	fclose($fp);
-}
+$controller
+	->restrictAccess(Auth::isManager())
+	->setPageTitle(WT_I18N::translate('Manage family trees'));
 
 // Process POST actions
 switch (WT_Filter::post('action')) {
@@ -117,31 +59,34 @@ case 'new_tree':
 	return;
 case 'replace_upload':
 	$gedcom_id = WT_Filter::postInteger('gedcom_id');
-	// Make sure the gedcom still exists
-	if (WT_Filter::checkCsrf() && WT_Tree::get($gedcom_id)) {
+	$keep_media = WT_Filter::postBool('keep_media');
+	$tree      = WT_Tree::get($gedcom_id);
+
+	if (WT_Filter::checkCsrf() && $tree) {
 		foreach ($_FILES as $FILE) {
 			if ($FILE['error'] == 0 && is_readable($FILE['tmp_name'])) {
-				import_gedcom_file($gedcom_id, $FILE['tmp_name'], $FILE['name']);
+				$tree->importGedcomFile($FILE['tmp_name'], $FILE['name'], $keep_media);
 			}
 		}
 	}
-
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?keep_media' . $gedcom_id . '=' . WT_Filter::postBool('keep_media' . $gedcom_id));
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
 
 	return;
 case 'replace_import':
-	$gedcom_id = WT_Filter::postInteger('gedcom_id');
-	// Make sure the gedcom still exists
-	if (WT_Filter::checkCsrf() && WT_Tree::get($gedcom_id)) {
-		$tree_name = basename(WT_Filter::post('tree_name'));
-		import_gedcom_file($gedcom_id, WT_DATA_DIR . $tree_name, $tree_name);
-	}
+	$tree_name  = basename(WT_Filter::post('tree_name'));
+	$gedcom_id  = WT_Filter::postInteger('gedcom_id');
+	$keep_media = WT_Filter::postBool('keep_media');
+	$tree       = WT_Tree::get($gedcom_id);
 
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?keep_media' . $gedcom_id . '=' . WT_Filter::postBool('keep_media' . $gedcom_id));
+	if (WT_Filter::checkCsrf() && $tree && $tree_name) {
+		$tree->importGedcomFile(WT_DATA_DIR . $tree_name, $tree_name, $keep_media);
+	}
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
 
 	return;
 }
 
+// Default name for a new tree
 $default_tree_title  = WT_I18N::translate('My family tree');
 $default_tree_name   = 'tree';
 $default_tree_number = 1;
@@ -155,13 +100,13 @@ $default_tree_name .= $default_tree_number;
 switch (WT_Filter::get('action')) {
 case 'uploadform':
 case 'importform':
-	$controller->pageHeader();
-
 	if (WT_Filter::get('action') === 'uploadform') {
 		$controller->setPageTitle(WT_I18N::translate('Upload family tree'));
 	} else {
 		$controller->setPageTitle(WT_I18N::translate('Import family tree'));
 	}
+
+	$controller->pageHeader();
 
 	?>
 	<ol class="breadcrumb small">
@@ -219,7 +164,7 @@ case 'importform':
 			return;
 		}
 	}
-	echo '<br><br><input type="checkbox" name="keep_media', $tree->tree_id, '" value="1">';
+	echo '<br><br><input type="checkbox" name="keep_media" value="1">';
 	echo WT_I18N::translate('If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM file.');
 	echo '<br><br><input type="submit" value="', WT_I18N::translate('continue'), '">';
 	echo '</form>';
@@ -274,7 +219,7 @@ $controller->pageHeader();
 				</div>
 				<?php
 			$controller->addInlineJavascript(
-				'jQuery("#import' . $tree->tree_id . '").load("import.php?gedcom_id=' . $tree->tree_id . '&keep_media' . $tree->tree_id . '=' . WT_Filter::get('keep_media' . $tree->tree_id) . '");'
+				'jQuery("#import' . $tree->tree_id . '").load("import.php?gedcom_id=' . $tree->tree_id . '");'
 			);
 		}
 				?>
@@ -327,7 +272,7 @@ $controller->pageHeader();
 										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
 									</span>
 								</a>
-								<form name="delete_form<?php echo $tree->tree_id; ?>" method="post">
+								<form name="delete_form<?php echo $tree->tree_id; ?>" method="POST" action="admin_trees_manage.php">
 									<input type="hidden" name="action" value="delete">
 									<input type="hidden" name="gedcom_id" value="<?php echo $tree->tree_id; ?>">
 									<?php echo WT_Filter::getCsrf(); ?>
@@ -350,7 +295,7 @@ $controller->pageHeader();
 										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
 									</span>
 										</a>
-										<form name="defaultform<?php echo $tree->tree_id; ?>" method="post">
+										<form name="defaultform<?php echo $tree->tree_id; ?>" method="POST" action="admin_trees_manage.php">
 											<input type="hidden" name="action" value="setdefault">
 											<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
 											<?php echo WT_Filter::getCsrf(); ?>
@@ -546,7 +491,7 @@ $controller->pageHeader();
 		</div>
 		<div id="create-a-new-family-tree" class="panel-collapse collapse<?php echo WT_Tree::getAll() ? '' : ' in'; ?>">
 			<div class="panel-body">
-				<form role="form" class="form-horizontal" method="post">
+				<form role="form" class="form-horizontal" method="POST" action="admin_trees_manage.php">
 					<?php echo WT_Filter::getCsrf(); ?>
 					<input type="hidden" name="action" value="new_tree">
 					<div class="form-group">
