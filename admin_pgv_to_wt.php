@@ -63,7 +63,7 @@ $PGV_SMTP_FROM_NAME              = '';
 
 if ($PGV_PATH) {
 	if (!is_dir($PGV_PATH) || !is_readable($PGV_PATH . '/config.php')) {
-		WT_FlashMessages::addMessage('The specified directory does not contain an installation of PhpGedView', 'danger');
+		WT_FlashMessages::addMessage('The specified folder does not contain an installation of PhpGedView', 'danger');
 		$PGV_PATH = null;
 	} else {
 		// Load the configuration settings

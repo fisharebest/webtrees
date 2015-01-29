@@ -3412,7 +3412,7 @@ msgid "Charts"
 msgstr "Diagramos"
 
 #: modules_v3/clippings/clippings_ctrl.php:297
-msgid "Check access rights on this directory."
+msgid "Check the access rights on this folder."
 msgstr "Patikrinkite šio aplanko prieigos teises."
 
 #: admin_site_upgrade.php:383
@@ -9103,7 +9103,7 @@ msgstr "Minimalus ir maksimalus priartinimo lygmuo Google žemėlapyje. 1 rodo v
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
-msgid "Missing PHP temporary directory"
+msgid "Missing PHP temporary folder"
 msgstr "Trūksta PHP laikinojo aplanko"
 
 #. I18N: Name of a module/report
@@ -9683,7 +9683,7 @@ msgstr "Ne"
 #: admin_trees_manage.php:172
 #, php-format
 msgid "No GEDCOM files found.  You need to copy files to the “%s” folder on your server."
-msgstr "GEDCOM bylų nerasta. Jūs turite nukopijuoti bylas į “%s” aplanką, esantčią jūsų serveryje."
+msgstr "GEDCOM bylų nerasta. Jūs turite nukopijuoti bylas į „%s“ aplanką, esantčią jūsų serveryje."
 
 #: modules_v3/googlemap/module.php:879
 msgid "No ancestors in the database."
@@ -12094,7 +12094,7 @@ msgid "Set the privacy access level for all dead individuals."
 msgstr "Nustatyti privatumo prieigą visiems mirusiems žmonėms."
 
 #: help_text.php:849
-msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> directory of the current theme."
+msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> folder of the current theme."
 msgstr ""
 
 #: help_text.php:1012
@@ -13643,7 +13643,7 @@ msgid "The size of the family tree, earliest and latest events, common names, et
 msgstr "Šeimos medžio dydis, anksčiausias ir vėliausias įrašas, dažniausiai naudojami vardai ir t.t."
 
 #: admin_pgv_to_wt.php:44
-msgid "The specified directory does not contain an installation of PhpGedView"
+msgid "The specified folder does not contain an installation of PhpGedView"
 msgstr "Nurodytas aplankas netalpina PhpGedView įrenginio"
 
 #: help_text.php:279
@@ -19607,13 +19607,13 @@ msgstr "dešimtos eilės pusbrolis/pusseserė"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:78
-msgid "the database connection settings in the file <b>/data/config.ini.php</b> are still correct"
-msgstr "duomenų bazės ryšio nustatymai <b>/data/config.ini.php</b> faile vis dar teisingi"
+msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
+msgstr "duomenų bazės ryšio nustatymai „/data/config.ini.php“ faile vis dar teisingi"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:79
-msgid "the directory <b>/data</b> and the file <b>/data/config.ini.php</b> have access permissions that allow the webserver to read them"
-msgstr "aplankas <b>/data</b> ir failas <b>/data/config.ini.php</b> turi prieigos teises, kurios leidžia žiniatinklio serveriui juos perskaityti"
+msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
+msgstr "aplankas „/data“ ir failas „/data/config.ini.php“ turi prieigos teises, kurios leidžia žiniatinklio serveriui juos perskaityti"
 
 #: includes/functions/functions.php:793
 #, php-format

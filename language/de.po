@@ -896,7 +896,7 @@ msgstr "Ein Reiter zur Anzeige von Quellen, die mit einzelnen Personen verbunden
 
 #: help_text.php:1474
 msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
-msgstr "Ein Benutzer kann sich nicht anmelden, solange nicht beide Optionen “E-Mail überprüft” und “Vom Administrator zugelassen” erfüllt sind."
+msgstr "Ein Benutzer kann sich nicht anmelden, solange nicht beide Optionen „E-Mail überprüft“ und „Vom Administrator zugelassen“ erfüllt sind."
 
 #: help_text.php:1025
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
@@ -1776,7 +1776,7 @@ msgstr "Alle Tatsachen und Ereignisse von Quellen"
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:35
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
-msgstr "Gestattet anderen Modulen den Text mit einem “WYSIWYG” Editor zu bearbeiten, anstelle HTML Code zu benutzen."
+msgstr "Gestattet anderen Modulen den Text mit einem „WYSIWYG“ Editor zu bearbeiten, anstelle HTML Code zu benutzen."
 
 #: admin_users.php:197 admin_users.php:392
 msgid "Allow this user to edit his account information"
@@ -1818,7 +1818,7 @@ msgstr "Amerikanisch-Samoa"
 #. I18N: Description of the “Album” module
 #: modules_v3/lightbox/module.php:37
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr "Erweiterter Bild-Betrachter als Alternative zum “Medien”-Reiter."
+msgstr "Erweiterter Bild-Betrachter als Alternative zum „Medien“-Reiter."
 
 #. I18N: Description of the “Charts” module
 #: modules_v3/charts/module.php:35
@@ -1842,11 +1842,11 @@ msgstr "Eine alternative Möglichkeit, eine neue Layoutvorlage zu wählen."
 
 #: help_text.php:65
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
-msgstr "Eine “verbundene Person” ist eine Person, die bei einem Ereignis beteiligt war, z.B. ein Zeuge oder ein Geistlicher."
+msgstr "Eine „verbundene Person“ ist eine Person, die bei einem Ereignis beteiligt war, z.B. ein Zeuge oder ein Geistlicher."
 
 #: help_text.php:60
 msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
-msgstr "Eine “verbundene Person” ist eine Person, die Umgang mit dieser Person hatte, z.B. ein Freund oder Arbeitgeber."
+msgstr "Eine „verbundene Person“ ist eine Person, die Umgang mit dieser Person hatte, z.B. ein Freund oder Arbeitgeber."
 
 #. I18N: Description of the “Edit” module
 #: modules_v3/page_menu/module.php:33
@@ -2042,7 +2042,7 @@ msgstr "Soll diese Geschichte gelöscht werden?"
 #: library/WT/Controller/Source.php:71
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr "Wollen Sie “%s” wirklich löschen?"
+msgstr "Wollen Sie „%s“ wirklich löschen?"
 
 #: modules_v3/lightbox/module.php:155
 msgid "Are you sure you want to remove links to this media object?"
@@ -3384,7 +3384,7 @@ msgid "Charts"
 msgstr "Diagramme"
 
 #: modules_v3/clippings/clippings_ctrl.php:297
-msgid "Check access rights on this directory."
+msgid "Check the access rights on this folder."
 msgstr "Prüfen Sie die Zugriffsrechte für dieses Verzeichnis."
 
 #: admin_site_upgrade.php:383
@@ -3706,7 +3706,7 @@ msgstr "Wenn Sie auf diesen Link klicken, erhalten Sie eine Liste mit allen Pers
 
 #: help_text.php:1139
 msgid "Clicking the “+” icon will open the GEDFact shared note assistant window.<br>Specific help will be found there.<br><br>When you click the “save” button, the ID of the shared note will be pasted here."
-msgstr "Ein Klick auf das “+” Icon öffnet das Fenster mit dem GEDFact Assistenten für gemeinsame Bemerkungen.<br>Dort finden Sie auch weitere Hilfen.<br><br>Wenn Sie auf “Speichern” klicken, wird die ID der gemeinsamen Bemerkung hier eingefügt."
+msgstr "Ein Klick auf das „+“ Icon öffnet das Fenster mit dem GEDFact Assistenten für gemeinsame Bemerkungen.<br>Dort finden Sie auch weitere Hilfen.<br><br>Wenn Sie auf „Speichern“ klicken, wird die ID der gemeinsamen Bemerkung hier eingefügt."
 
 #. I18N: The local time on the client/browser
 #: themes/_administration/header.php:86
@@ -5174,7 +5174,7 @@ msgstr "Nicht siegeln - keine Erlaubnis"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:580
 #: modules_v3/batch_update/admin_batch_update.php:388
 msgid "Do not update the “last change” record"
-msgstr "Den Eintrag “Letzte Änderung” nicht aktualisieren"
+msgstr "Den Eintrag „Letzte Änderung“ nicht aktualisieren"
 
 #: library/WT/Gedcom/Tag.php:1866
 msgid "Document"
@@ -5244,7 +5244,7 @@ msgstr "Jede Quelle enthält Einträge über bestimmte Ereignisse, im Großen un
 
 #: help_text.php:1340
 msgid "Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account."
-msgstr "Jedem Benutzerkonto kann optional die Möglichkeit auf “automatisches Akzeptieren von Änderungen” zugeordnet werden. Wenn diese Option aktiviert ist, werden alle durch den Benutzer vorgenommen Änderungen unmittelbar, ohne Prüfprozess, wirksam. Viele Administratoren aktivieren diese Option für ihr eigenes Benutzerkonto."
+msgstr "Jedem Benutzerkonto kann optional die Möglichkeit auf „automatisches Akzeptieren von Änderungen“ zugeordnet werden. Wenn diese Option aktiviert ist, werden alle durch den Benutzer vorgenommen Änderungen unmittelbar, ohne Prüfprozess, wirksam. Viele Administratoren aktivieren diese Option für ihr eigenes Benutzerkonto."
 
 #: statistics.php:127
 msgid "Earliest birth"
@@ -5695,7 +5695,7 @@ msgstr "Genauer Text"
 #: famlist.php:172 indilist.php:172
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
-msgstr "Schließt Personen mit “%s” als Ehename aus."
+msgstr "Schließt Personen mit „%s“ als Ehename aus."
 
 #: admin_media.php:641
 msgid "Exclude subfolders"
@@ -6228,12 +6228,12 @@ msgstr "Dateiname auf dem Server"
 #: addmedia.php:155 addmedia.php:292 admin_media_upload.php:114
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
-msgstr "Dateinamen dürfen das Zeichen “%s” nicht enthalten."
+msgstr "Dateinamen dürfen das Zeichen „%s“ nicht enthalten."
 
 #: addmedia.php:160 addmedia.php:297 admin_media_upload.php:119
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
-msgstr "Dateinamen dürfen nicht die Erweiterung “%s” haben."
+msgstr "Dateinamen dürfen nicht die Erweiterung „%s“ haben."
 
 #: admin.php:123
 msgid "Files have been found from a previous version of webtrees.  Old files can sometimes be a security risk.  You should delete them."
@@ -7394,15 +7394,15 @@ msgstr "Import des Familenstammbaumes"
 
 #: admin_trees_merge.php:73 admin_trees_renumber.php:260
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
-msgstr "In einem Stammbaum hat jeder Datensatz eine interne Referenznummer (auch “XREF” genannt) wie “F123” oder “R14”."
+msgstr "In einem Stammbaum hat jeder Datensatz eine interne Referenznummer (auch „XREF“ genannt) wie „F123“ oder „R14“."
 
 #: help_text.php:348
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur."
-msgstr "In vielen Kulturkreisen ist es üblich, den traditionellen Namen in landesüblicher Schreibweise festzuhalten und zusätzlich einen romanisierten Namen, der die Aussprache des Namens im lateinischen Alphabet wiedergibt.<br><br>Falls Sie es vorziehen ein nicht lateinisches Alphabet, wie Hebräisch, Griechisch, Russisch, Chinesisch oder Arabisch zur Namenseingabe in den Standardfeldern zu nutzen, dann steht dieses Feld zur Eingabe eines Namens im lateinischen Alphabet bereit. Beide Namensversionen erscheinen in Listen und Diagrammen.<br><br>Wenngleich das Feld als “Romanized” gekennzeichnet ist, ist es nicht auf die Eingabe von Buchstaben des lateinischen Alphabets beschränkt. Dies ist bei japanischen Namen von Interesse, wo drei verschiedene Alphabete vorkommen können."
+msgstr "In vielen Kulturkreisen ist es üblich, den traditionellen Namen in landesüblicher Schreibweise festzuhalten und zusätzlich einen romanisierten Namen, der die Aussprache des Namens im lateinischen Alphabet wiedergibt.<br><br>Falls Sie es vorziehen ein nicht lateinisches Alphabet, wie Hebräisch, Griechisch, Russisch, Chinesisch oder Arabisch zur Namenseingabe in den Standardfeldern zu nutzen, dann steht dieses Feld zur Eingabe eines Namens im lateinischen Alphabet bereit. Beide Namensversionen erscheinen in Listen und Diagrammen.<br><br>Wenngleich das Feld als „Romanized“ gekennzeichnet ist, ist es nicht auf die Eingabe von Buchstaben des lateinischen Alphabets beschränkt. Dies ist bei japanischen Namen von Interesse, wo drei verschiedene Alphabete vorkommen können."
 
 #: help_text.php:393
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters."
-msgstr "In vielen Kulturkreisen ist es üblich, neben dem in Landessprache geschrieben Namen einen romanisiert geschriebenen oder ausgesprochenen Namen in lateinischem Alphabet zu führen.<br><br>Falls Sie es vorziehen, das lateinische Alphabet für Namen in den Standard Feldern zu nutzen, dann kann dieses Feld zum Eintrag der Nicht-lateinischen Version, wie griechisch, hebräisch, russisch, arabisch oder chinesisch genutzt werden. Beide Versionen des Namens werden in Listen und Diagrammen dargestellt.<br><br>Auch wenn dieses Feld auch als “hebräisch” bezeichnet ist, muß es nicht nur hebräische Zeichen beinhalten."
+msgstr "In vielen Kulturkreisen ist es üblich, neben dem in Landessprache geschrieben Namen einen romanisiert geschriebenen oder ausgesprochenen Namen in lateinischem Alphabet zu führen.<br><br>Falls Sie es vorziehen, das lateinische Alphabet für Namen in den Standard Feldern zu nutzen, dann kann dieses Feld zum Eintrag der Nicht-lateinischen Version, wie griechisch, hebräisch, russisch, arabisch oder chinesisch genutzt werden. Beide Versionen des Namens werden in Listen und Diagrammen dargestellt.<br><br>Auch wenn dieses Feld auch als „hebräisch“ bezeichnet ist, muß es nicht nur hebräische Zeichen beinhalten."
 
 #: help_text.php:450
 msgid "In some calendars, days start at midnight.  In other calendars, days start at sunset.  The conversion process does not take account of the time, so for any event that occurs between sunset and midnight, the conversion between these types of calendar will be one day out."
@@ -7435,7 +7435,7 @@ msgstr "Vollständig definierte Orte auch mit anzeigen: "
 #: famlist.php:174 indilist.php:174
 #, php-format
 msgid "Include individuals with “%s” as a married name"
-msgstr "Schließt Personen mit “%s” als Ehename ein."
+msgstr "Schließt Personen mit „%s“ als Ehename ein."
 
 #: help_text.php:1268 modules_v3/clippings/module.php:186
 #: modules_v3/clippings/module.php:574
@@ -9075,7 +9075,7 @@ msgstr "Zoomfaktor der Karte<br><br>Kleinster und größter Zoomfaktor der Karte
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
-msgid "Missing PHP temporary directory"
+msgid "Missing PHP temporary folder"
 msgstr "Das von PHP benötigte <i>tmp</i> Zwischenverzeichnis existiert nicht"
 
 #. I18N: Name of a module/report
@@ -9655,7 +9655,7 @@ msgstr "Nein"
 #: admin_trees_manage.php:172
 #, php-format
 msgid "No GEDCOM files found.  You need to copy files to the “%s” folder on your server."
-msgstr "Keine GEDCOM Dateien gefunden. Sie müssen diese Dateien in das “%s” Verzeichnis auf Ihrem Server kopieren."
+msgstr "Keine GEDCOM Dateien gefunden. Sie müssen diese Dateien in das „%s“ Verzeichnis auf Ihrem Server kopieren."
 
 #: modules_v3/googlemap/module.php:879
 msgid "No ancestors in the database."
@@ -9917,8 +9917,8 @@ msgstr "Anmerkung: längere Pfade benötigen viel Rechenleistung, was die Antwor
 #, php-format
 msgid "Note: “living” is defined (if no death or burial is known) as ending %d year after birth or estimated birth."
 msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %d years after birth or estimated birth."
-msgstr[0] "Bemerkung: “lebend” ist definiert (sofern weder Tod noch Bestattung genannt ist) solange nicht ein komplettes Jahr nach dem Geburtsdatum oder geschätztem Geburtsdatum vergangen ist."
-msgstr[1] "Bemerkung: “lebend” ist definiert (sofern weder Tod noch Bestattung genannt ist) solange nicht %d komplette Jahre nach dem Geburtsdatum oder geschätztem Geburtsdatum vergangen sind."
+msgstr[0] "Bemerkung: „lebend“ ist definiert (sofern weder Tod noch Bestattung genannt ist) solange nicht ein komplettes Jahr nach dem Geburtsdatum oder geschätztem Geburtsdatum vergangen ist."
+msgstr[1] "Bemerkung: „lebend“ ist definiert (sofern weder Tod noch Bestattung genannt ist) solange nicht %d komplette Jahre nach dem Geburtsdatum oder geschätztem Geburtsdatum vergangen sind."
 
 #. I18N: Name of a module
 #: admin.php:214 admin.php:271 library/WT/Controller/Search.php:600
@@ -10171,7 +10171,7 @@ msgstr "OpenStreetMap™"
 
 #: modules_v3/googlemap/help_text.php:41 modules_v3/googlemap/module.php:402
 msgid "Optional prefixes and suffixes"
-msgstr "optionale Namenszusätze (z.B. “jun.” oder “d. Ä.”)"
+msgstr "optionale Namenszusätze (z.B. „jun.“ oder „d. Ä.“)"
 
 #: admin_users.php:503 relationship.php:89
 msgid "Options:"
@@ -10298,12 +10298,12 @@ msgstr "Eine PHP Erweiterung blockierte das Hochladen der Datei"
 #: setup.php:136
 #, php-format
 msgid "PHP extension “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
-msgstr "Die PHP Erweiterung “%1$s” ist deaktiviert. Ohne diese werden die folgenden Funktionen nicht funktionieren: %2$s. Bitten Sie Ihren Serveradministrator diese zu aktivieren."
+msgstr "Die PHP Erweiterung „%1$s“ ist deaktiviert. Ohne diese werden die folgenden Funktionen nicht funktionieren: %2$s. Bitten Sie Ihren Serveradministrator diese zu aktivieren."
 
 #: setup.php:125
 #, php-format
 msgid "PHP extension “%s” is disabled.  You cannot install webtrees until this is enabled.  Please ask your server’s administrator to enable it."
-msgstr "Die PHP Erweiterung “%s” ist deaktiviert. Sie können webtrees nicht installieren, solange diese deaktiviert ist. Bitten Sie Ihren Serveradministrator diese zu aktivieren."
+msgstr "Die PHP Erweiterung „%s“ ist deaktiviert. Sie können webtrees nicht installieren, solange diese deaktiviert ist. Bitten Sie Ihren Serveradministrator diese zu aktivieren."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:79
@@ -10318,7 +10318,7 @@ msgstr "PHP Informationen"
 #: setup.php:145
 #, php-format
 msgid "PHP setting “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
-msgstr "Die PHP Einstellung “%1$s” ist deaktiviert. Ohne diese werden die folgenden Funktionen nicht funktionieren: %2$s. Bitten Sie Ihren Serveradministrator diese zu aktivieren."
+msgstr "Die PHP Einstellung „%1$s“ ist deaktiviert. Ohne diese werden die folgenden Funktionen nicht funktionieren: %2$s. Bitten Sie Ihren Serveradministrator diese zu aktivieren."
 
 #: admin_site_config.php:78 help_text.php:635
 msgid "PHP time limit"
@@ -10434,7 +10434,7 @@ msgstr "Passwörter stimmen nicht überein."
 
 #: help_text.php:1294
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”."
-msgstr "Passwörter müssen mindestens 6 Zeichen lang sein. Groß-/Kleinschreibung werden berücksichtigt, so dass “geheim” von “GEHEIM” abweicht."
+msgstr "Passwörter müssen mindestens 6 Zeichen lang sein. Groß-/Kleinschreibung werden berücksichtigt, so dass „geheim“ von „GEHEIM“ abweicht."
 
 #: admin_users.php:339 edituser.php:119
 msgid "Passwords must contain at least 6 characters."
@@ -10764,7 +10764,7 @@ msgstr "Orte in %s"
 
 #: help_text.php:330
 msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-msgstr "Orte sollten gemäß den Genealogie-Standards eingegeben werden. In der Genealogie werden Orte mit den spezifischsten Ortsinformationen am Anfang und bis hin zu den allgemeinsten Informationen am Ende aufgezeichnet, wobei Kommas die verschiedenen Ebenen voneinander trennen. Die Ebene, auf der Sie Ortsinformationen erfassen, sollten staatliche oder kirchliche Einheiten widerspiegeln, wo die Personenstandsbücher für diesen Ort aufbewahrt werden.<br><br>Zum Beispiel würde ein Ort wie Salt Lake City als “Salt Lake City, Salt Lake, Utah, USA” eingegeben werden.<br><br>Betrachten wir jeden Teil dieses Ortes. Der erste Teil, “Salt Lake City”, ist die Stadt oder Gemeinde, wo das Ereignis stattfand. In einigen Ländern kann es Gemeinden oder Bezirke in einer Stadt geben, die ebenfalls zu beachten sind. In diesem Fall sollten diese vor der Stadt stehen. Der nächste Teil, “Salt Lake”, ist der Kreis. “Utah” ist das Bundesland und “USA” das Land. Es ist wichtig, dass Sie jeden Teil des Ortes zu benennen, da genealogische Aufzeichnungen von den Regierungsbehörden auf jeder Ebene geführt werden.<br><br>Wenn ein Teil der Ortsbeschreibung unbekannt ist, sollten Sie Leerzeichen zwischen den Kommas lassen. Nehmen wir im obigen Beispiel an, Sie wüssten den Landkreis für Salt Lake City nicht, dann sollten Sie es so aufzeichnen: “Salt Lake City, , Utah, USA”. Angenommen, Sie wissen nur, dass ein Individuum in Utah geboren wurde. Sie würden die Informationen wie folgt eingeben “ , , Utah, USA”.<br><br>Sie können den Link <b>Orte suchen</ b> verwenden, um Orte, die bereits in der Datenbank sind, aufzufinden."
+msgstr "Orte sollten gemäß den Genealogie-Standards eingegeben werden. In der Genealogie werden Orte mit den spezifischsten Ortsinformationen am Anfang und bis hin zu den allgemeinsten Informationen am Ende aufgezeichnet, wobei Kommas die verschiedenen Ebenen voneinander trennen. Die Ebene, auf der Sie Ortsinformationen erfassen, sollten staatliche oder kirchliche Einheiten widerspiegeln, wo die Personenstandsbücher für diesen Ort aufbewahrt werden.<br><br>Zum Beispiel würde ein Ort wie Salt Lake City als „Salt Lake City, Salt Lake, Utah, USA“ eingegeben werden.<br><br>Betrachten wir jeden Teil dieses Ortes. Der erste Teil, „Salt Lake City“, ist die Stadt oder Gemeinde, wo das Ereignis stattfand. In einigen Ländern kann es Gemeinden oder Bezirke in einer Stadt geben, die ebenfalls zu beachten sind. In diesem Fall sollten diese vor der Stadt stehen. Der nächste Teil, „Salt Lake“, ist der Kreis. „Utah“ ist das Bundesland und „USA“ das Land. Es ist wichtig, dass Sie jeden Teil des Ortes zu benennen, da genealogische Aufzeichnungen von den Regierungsbehörden auf jeder Ebene geführt werden.<br><br>Wenn ein Teil der Ortsbeschreibung unbekannt ist, sollten Sie Leerzeichen zwischen den Kommas lassen. Nehmen wir im obigen Beispiel an, Sie wüssten den Landkreis für Salt Lake City nicht, dann sollten Sie es so aufzeichnen: „Salt Lake City, , Utah, USA“. Angenommen, Sie wissen nur, dass ein Individuum in Utah geboren wurde. Sie würden die Informationen wie folgt eingeben „ , , Utah, USA“.<br><br>Sie können den Link <b>Orte suchen</ b> verwenden, um Orte, die bereits in der Datenbank sind, aufzufinden."
 
 #: modules_v3/random_media/module.php:128 themes/_administration/header.php:33
 #: themes/clouds/header.php:36 themes/colors/header.php:38
@@ -11512,7 +11512,7 @@ msgstr "Forschungsaufgaben sind besondere Ereignisse, die zu Personen in Ihrem S
 
 #: modules_v3/todo/help_text.php:36
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognize this tag."
-msgstr "Forschungsaufgaben werden mithilfe des benutzerdefinierten GEDCOM Tags “_TODO” gespeichert. Andere Genealogie-Anwendungen können dieses Tag möglicherweise nicht korrekt interpretieren."
+msgstr "Forschungsaufgaben werden mithilfe des benutzerdefinierten GEDCOM Tags „_TODO“ gespeichert. Andere Genealogie-Anwendungen können dieses Tag möglicherweise nicht korrekt interpretieren."
 
 #: medialist.php:153 modules_v3/googlemap/module.php:4900
 msgid "Reset"
@@ -12063,7 +12063,7 @@ msgid "Set the privacy access level for all dead individuals."
 msgstr "Setzt die Datenschutzeinstellungen für alle verstorbenen Personen."
 
 #: help_text.php:849
-msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> directory of the current theme."
+msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> folder of the current theme."
 msgstr "Die Wahl <b>Ja</b> bedeutet, dass webtrees Ereignis-Symbole auf der «Persönliche Daten und Details» Seite zeigen soll. Diese Symbole werden nur gezeigt, wenn sie im Verzeichnis <i>images/facts</i> des aktuellen Themas vorhanden sind."
 
 #: help_text.php:1012
@@ -12280,7 +12280,7 @@ msgstr "Zeigen"
 
 #: admin_site_config.php:168 help_text.php:894
 msgid "Show acceptable use agreement on “Request new user account” page"
-msgstr "Bedingungen auf der “Neues Benutzerkonto anfragen” Seite zeigen"
+msgstr "Bedingungen auf der „Neues Benutzerkonto anfragen“ Seite zeigen"
 
 #: help_text.php:879
 msgid "Show age of parents next to child’s birthdate"
@@ -12292,7 +12292,7 @@ msgstr "Zeige alle Bemerkungen"
 
 #: admin_trees_config.php:1057 help_text.php:863
 msgid "Show all notes and source references on notes and sources tabs"
-msgstr "Alle Bemerkungen und Quellenangaben im “Bemerkungen” oder “Quellen” Ordner zeigen"
+msgstr "Alle Bemerkungen und Quellenangaben im „Bemerkungen“ oder „Quellen“ Ordner zeigen"
 
 #: placelist.php:242
 msgid "Show all places in a list"
@@ -12630,7 +12630,7 @@ msgstr "«Blätter» zeigen.  «Blätter» sind lebend aber nachfolgerlos."
 #: includes/functions/functions_print_lists.php:236
 #: includes/functions/functions_print_lists.php:671
 msgid "Show “roots” couples or individuals.  These individuals may also be called “patriarchs”.  They are individuals who have no parents recorded in the database."
-msgstr "“Wurzeln” zeigen. “Wurzeln” können auch “Patriarch” gennant werden. Sie sind elternlos in der Datenbank eingetragen."
+msgstr "„Wurzeln“ zeigen. „Wurzeln“ können auch „Patriarch“ gennant werden. Sie sind elternlos in der Datenbank eingetragen."
 
 #. I18N: %s are placeholders for numbers
 #: library/WT/I18N.php:934 library/WT/I18N.php:935
@@ -12798,7 +12798,7 @@ msgstr "Einige Daten konnten aus Datenschutzgründen nicht hinzugefügt werden"
 
 #: modules_v3/googlemap/help_text.php:42
 msgid "Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”."
-msgstr "Einige Ortsnamen können mit optionalen Zusatzbezeichnungen versehen sein. zB. “Orange” oder “Orange County”. Falls der Stammbaum die vollständige Ortsbezeichnung enthält, die geographische Datenbank jedoch die Kurzform, dann sollte eine Auswahl an zu entfernenden Bezeichnungen erstellt werden. Mehrere Möglichkeiten sollten mit Semikolon getrennt aufgeführt werden, z.B. “County;County of”, “Township;Twp;Twp.” oder “Kreis;Kr;Kr.”."
+msgstr "Einige Ortsnamen können mit optionalen Zusatzbezeichnungen versehen sein. zB. „Orange“ oder „Orange County“. Falls der Stammbaum die vollständige Ortsbezeichnung enthält, die geographische Datenbank jedoch die Kurzform, dann sollte eine Auswahl an zu entfernenden Bezeichnungen erstellt werden. Mehrere Möglichkeiten sollten mit Semikolon getrennt aufgeführt werden, z.B. „County;County of“, „Township;Twp;Twp.“ oder „Kreis;Kr;Kr.“."
 
 #: modules_v3/family_group_report/report.xml:762
 #: modules_v3/individual_ext_report/report.xml:517
@@ -13317,7 +13317,7 @@ msgstr "Die FAQ Liste ist leer."
 
 #: help_text.php:1253
 msgid "The Favorites drop-down list shows the favorites that you have selected on your “My page”.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding favorites is available in your “My page”."
-msgstr "Diese Liste zeigt Ihnen Ihre Favoriten, sofern Sie welche erstellt haben. Sie zeigt auch die Favoriten, die der Verwalter für die GEDCOM-Datei erstellt hat.<br><br>Wenn Sie auf einen Ihrer Favoriten klicken, gelangen Sie zur Seite mit persönlichen Informationen zur jeweiligen Person. Weitere Hilfe zum Erstellen von Favoriten finden Sie unter “Mein webtrees”."
+msgstr "Diese Liste zeigt Ihnen Ihre Favoriten, sofern Sie welche erstellt haben. Sie zeigt auch die Favoriten, die der Verwalter für die GEDCOM-Datei erstellt hat.<br><br>Wenn Sie auf einen Ihrer Favoriten klicken, gelangen Sie zur Seite mit persönlichen Informationen zur jeweiligen Person. Weitere Hilfe zum Erstellen von Favoriten finden Sie unter „Mein webtrees“."
 
 #: library/WT/Gedcom/Code/Temp.php:160
 msgid "The Hague, Netherlands"
@@ -13344,13 +13344,13 @@ msgstr "Der Verwalter wurde benachrichtigt. Sobald dieser Ihr Benutzerkonto frei
 #: action.php:60
 #, php-format
 msgid "The changes to “%s” have been accepted."
-msgstr "Die Änderungen an “%s” wurden angenommen."
+msgstr "Die Änderungen an „%s“ wurden angenommen."
 
 #. I18N: %s is the name of an individual, source or other record
 #: action.php:236
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr "Die Änderungen an “%s” wurden nicht angenommen."
+msgstr "Die Änderungen an „%s“ wurden nicht angenommen."
 
 #: modules_v3/clippings/module.php:138
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple.  Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name.  There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
@@ -13389,7 +13389,7 @@ msgstr "Die Stammbäume wurde erfolgreich zusammengeführt."
 #: action.php:160
 #, php-format
 msgid "The family “%s” was deleted because it only has one member."
-msgstr "Die Familie “%s” wurde gelöscht, da sie nur aus einem Mitglied bestand."
+msgstr "Die Familie „%s“ wurde gelöscht, da sie nur aus einem Mitglied bestand."
 
 #: addmedia.php:174 admin_media_upload.php:133
 #, php-format
@@ -13432,7 +13432,7 @@ msgstr "Die Datei %s wurde hochgeladen."
 #: medialist.php:277 mediaviewer.php:111
 #, php-format
 msgid "The file “%s” does not exist."
-msgstr "Die Datei “%s” existiert nicht."
+msgstr "Die Datei „%s“ existiert nicht."
 
 #: admin_site_upgrade.php:480
 #, php-format
@@ -13517,14 +13517,14 @@ msgstr "Die Mail-Adresse, die kontaktiert werden soll, falls jemand Fragen zu de
 
 #: help_text.php:573
 msgid "The length of time after birth can be set on the “Privacy” tab option “Age at which to assume an individual is dead”."
-msgstr "Die Zeitspanne nach dem Geburtsdatum kann im Datenschutzreiter unter dem Punkt“Alter, ab dem angenommen wird, dass eine Person verstorben ist” eingestellt werden."
+msgstr "Die Zeitspanne nach dem Geburtsdatum kann im Datenschutzreiter unter dem Punkt„Alter, ab dem angenommen wird, dass eine Person verstorben ist“ eingestellt werden."
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
 #: action.php:168 action.php:172 library/WT/Controller/GedcomRecord.php:35
 #: library/WT/Controller/GedcomRecord.php:43
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been deleted."
-msgstr "Die Beziehung zwischen “%1$s” und “%2$s” wurde gelöscht."
+msgstr "Die Beziehung zwischen „%1$s“ und „%2$s“ wurde gelöscht."
 
 #: addmedia.php:312 addmedia.php:339
 #, php-format
@@ -13580,7 +13580,7 @@ msgstr "Die Passwörter stimmen nicht überein."
 
 #: setup.php:357
 msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
-msgstr "Die Benutzung eines Präfix ist zwar nicht zwingend erforderlich, wird aber empfohlen. Wenn Sie ihren Tabellennamen ein Präfix voranstellen, können Sie Ihre Datenbank mit mehreren Programmen gleichzeitig nutzen. “wt_” wird vorgeschlagen, aber Sie können auch ein anderes Präfix vergeben."
+msgstr "Die Benutzung eines Präfix ist zwar nicht zwingend erforderlich, wird aber empfohlen. Wenn Sie ihren Tabellennamen ein Präfix voranstellen, können Sie Ihre Datenbank mit mehreren Programmen gleichzeitig nutzen. „wt_“ wird vorgeschlagen, aber Sie können auch ein anderes Präfix vergeben."
 
 #: admin_trees_renumber.php:237
 #, php-format
@@ -13613,7 +13613,7 @@ msgid "The size of the family tree, earliest and latest events, common names, et
 msgstr "Anzahl der Personen im Stammbaum, älteste und neueste Ereignisse, häufige Namen, usw."
 
 #: admin_pgv_to_wt.php:44
-msgid "The specified directory does not contain an installation of PhpGedView"
+msgid "The specified folder does not contain an installation of PhpGedView"
 msgstr "Das ausgewählte Verzeichnis beinhaltet keine PhpGedView-Installation."
 
 #: help_text.php:279
@@ -13646,8 +13646,8 @@ msgstr "Die Zeit in Sekunden, nach der man sich für eine webtrees-Sitzung erneu
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] "Die beiden Stammbäume haben einen Datensatz, der die selbe “XREF” verwendet."
-msgstr[1] "Die beiden Stammbäume haben %1$s Datensätze, die die selben “XREF” verwenden."
+msgstr[0] "Die beiden Stammbäume haben einen Datensatz, der die selbe „XREF“ verwendet."
+msgstr[1] "Die beiden Stammbäume haben %1$s Datensätze, die die selben „XREF“ verwenden."
 
 #: admin_site_upgrade.php:492
 msgid "The upgrade is complete."
@@ -13704,7 +13704,7 @@ msgstr "Auswahl eines Themas"
 
 #: help_text.php:987
 msgid "Themes can be selected at three levels: user, GEDCOM, and site.  User settings take priority over GEDCOM settings, which in turn take priority over the site setting.  Selecting “default theme” at user level will give the setting for the current GEDCOM.  Selecting “default theme” at GEDCOM level will give the site setting."
-msgstr "Themen können auf drei Ebenen ausgewählt werden: Benutzer, Stammbaum und Webseite. Benutzerspezifische Einstellungen haben Vorrang vor Stammbaum-spezifischen Einstellungen, diese wiederum haben Vorrang vor Webseiten-spezifischen Einstellungen. Die Auswahl eines “Standardthemas” auf Benutzer-Ebene prägt die Einstellung für den aktuellen Stammbaum. Die Auswahl eines “Standardthemas” auf Stammbaum-Ebene prägt die Einstellung für die Webseite."
+msgstr "Themen können auf drei Ebenen ausgewählt werden: Benutzer, Stammbaum und Webseite. Benutzerspezifische Einstellungen haben Vorrang vor Stammbaum-spezifischen Einstellungen, diese wiederum haben Vorrang vor Webseiten-spezifischen Einstellungen. Die Auswahl eines „Standardthemas“ auf Benutzer-Ebene prägt die Einstellung für den aktuellen Stammbaum. Die Auswahl eines „Standardthemas“ auf Stammbaum-Ebene prägt die Einstellung für die Webseite."
 
 #: modules_v3/extra_info/module.php:58
 #: modules_v3/personal_facts/module.php:118
@@ -13851,8 +13851,8 @@ msgstr "Diese Familie blieb kinderlos"
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] "Dieser Stammbaum hat einen Datensatz, der den selben “XREF” verwendet wie in einem anderen Stammbaum."
-msgstr[1] "Dieser Stammbaum hat %s Datensätze, die den selben “XREF” verwendet wie einem anderen Stammbaum."
+msgstr[0] "Dieser Stammbaum hat einen Datensatz, der den selben „XREF“ verwendet wie in einem anderen Stammbaum."
+msgstr[1] "Dieser Stammbaum hat %s Datensätze, die den selben „XREF“ verwendet wie einem anderen Stammbaum."
 
 #: modules_v3/random_media/module.php:192
 msgid "This family tree has no images to display."
@@ -13977,7 +13977,7 @@ msgstr "Groß-/Kleinschreibung beachten. Sofern noch keine Datenbank mit diesem 
 #. I18N: Help text for the “Show chart details by default” tree configuration setting
 #: help_text.php:704
 msgid "This is the initial setting for the “show details” option on the charts."
-msgstr "Dies ist die initiale Einstellung für die “Zeige Details”-Option für Diagramme."
+msgstr "Dies ist die initiale Einstellung für die „Zeige Details“-Option für Diagramme."
 
 #: admin_site_upgrade.php:74
 msgid "This is the latest version of webtrees.  No upgrade is available."
@@ -14018,7 +14018,7 @@ msgstr "Diese Liste enthält alle Ereignisse, die im Quellendatensatz nur <u>ein
 #. I18N: Help text for the “Server name” site configuration setting
 #: help_text.php:764
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
-msgstr "Dies ist der Name des SMTP-Servers. “localhost” bedeutet, dass der Mailserver auf dem gleichen Computer läuft wie der Webserver."
+msgstr "Dies ist der Name des SMTP-Servers. „localhost“ bedeutet, dass der Mailserver auf dem gleichen Computer läuft wie der Webserver."
 
 #: help_text.php:476
 msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the “Home page”."
@@ -14120,7 +14120,7 @@ msgstr "Das Passwort muss mindestens sechs Zeichen lang sein. Groß- und Kleinsc
 #. I18N: Help text for the “Sender name” site configuration setting
 #: help_text.php:754
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
-msgstr "Dieser Name wird für die Absenderangabe im “Von”-Feld benutzt, wenn automatische Mails von diesem Server versandt werden."
+msgstr "Dieser Name wird für die Absenderangabe im „Von“-Feld benutzt, wenn automatische Mails von diesem Server versandt werden."
 
 #: note.php:73
 msgid "This note does not exist or you do not have permission to view it."
@@ -14229,7 +14229,7 @@ msgstr "Diese Option wird private Daten aus heruntergeladen GEDCOM-Datei entfern
 
 #: help_text.php:890
 msgid "This option will retain family links in private records.  This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr "Diese Option wird familiäre Verbindungen als private Daten behandeln. Das bedeutet, dass Sie leere “private”-Boxen auf dem Stammbaum und auf den übrigen Diagrammen als “privat” (i.S.v. nichtöffentlich) eingestufter Personen sehen."
+msgstr "Diese Option wird familiäre Verbindungen als private Daten behandeln. Das bedeutet, dass Sie leere „private“-Boxen auf dem Stammbaum und auf den übrigen Diagrammen als „privat“ (i.S.v. nichtöffentlich) eingestufter Personen sehen."
 
 #: help_text.php:1214
 msgid "This option will save the family tree to a GEDCOM file on the server."
@@ -14297,7 +14297,7 @@ msgstr "Diese Rolle verfügt über alle Berechtigungen der Manager-Rolle in alle
 
 #: help_text.php:1386
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data.  Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr "Diese Rolle verfügt über alle Berechtigungen der Rolle “Mitglied”, zuzüglich der Berechtigung zum Hinzufügen, Ändern und Löschen von Daten. Alle Änderungen müssen von einem Moderator genehmigt werden, es sei denn, der Benutzer hat die Option “automatisches Akzeptieren von Änderungen” in seinem Benutzerkonto aktiviert (bekommen)."
+msgstr "Diese Rolle verfügt über alle Berechtigungen der Rolle „Mitglied“, zuzüglich der Berechtigung zum Hinzufügen, Ändern und Löschen von Daten. Alle Änderungen müssen von einem Moderator genehmigt werden, es sei denn, der Benutzer hat die Option „automatisches Akzeptieren von Änderungen“ in seinem Benutzerkonto aktiviert (bekommen)."
 
 #: help_text.php:1394
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
@@ -14305,7 +14305,7 @@ msgstr "Diese Rolle verfügt über alle Berechtigungen der Moderatorenrolle, zuz
 
 #: help_text.php:1382
 msgid "This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration."
-msgstr "Diese Rolle hat alle Berechtigungen der Rolle “Besucher”, zuzüglich zusätzlicher Zugriffsmöglichkeiten, die durch die jeweilige Stammbaumkonfiguration gewährt werden."
+msgstr "Diese Rolle hat alle Berechtigungen der Rolle „Besucher“, zuzüglich zusätzlicher Zugriffsmöglichkeiten, die durch die jeweilige Stammbaumkonfiguration gewährt werden."
 
 #: help_text.php:1144
 msgid "This section allows you to add a new note to the fact that you are currently editing.  Notes are free-form text and will appear in the Fact Details section of the page."
@@ -14331,7 +14331,7 @@ msgstr "Diese Einstellung wird nur verwendet, wenn GEDCOM Dateien gelesen oder g
 
 #: help_text.php:456
 msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-msgstr "Die Liste, deren Einträge durch Komma oder Leerzeichen getrennt sind, bestimmt die Ereignisse oder Fakten die in Boxen in Diagrammen auftreten dürfen. Alle Einträge in dieser Liste müssen Fakten sein, wie im GEDCOM 5.5.1 Standard definiert. Zum Beispiel, falls der Beruf der Person in deren Box zu zeigen ist, muss dieses Feld den Eintrag “OCCU” enthalten."
+msgstr "Die Liste, deren Einträge durch Komma oder Leerzeichen getrennt sind, bestimmt die Ereignisse oder Fakten die in Boxen in Diagrammen auftreten dürfen. Alle Einträge in dieser Liste müssen Fakten sein, wie im GEDCOM 5.5.1 Standard definiert. Zum Beispiel, falls der Beruf der Person in deren Box zu zeigen ist, muss dieses Feld den Eintrag „OCCU“ enthalten."
 
 #: admin_site_upgrade.php:43
 msgid "This site is being upgraded.  Try again in a few minutes."
@@ -14388,7 +14388,7 @@ msgstr "Diese Webseite ist vorübergehend nicht verfügbar."
 #: admin_trees_manage.php:137
 #, php-format
 msgid "This will delete all the genealogical data from “%s” and replace it with data from another GEDCOM file."
-msgstr "Dies wird die Genealogischen Daten von “%s” löschen und sie durch Daten einer andern GEDCOM ersetzen."
+msgstr "Dies wird die Genealogischen Daten von „%s“ löschen und sie durch Daten einer andern GEDCOM ersetzen."
 
 #: modules_v3/googlemap/module.php:1772
 msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
@@ -14396,7 +14396,7 @@ msgstr "Hier werden alle Orte der ausgewählten GEDCOM Datei angezeigt. Normaler
 
 #: admin_trees_places.php:92
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-msgstr "Dies aktualisiert die oberste Stufe oder Stufen von Ortsnamen. Zum Beispiel findet die Eingabe “Mexico” “Quintana Roo, Mexico” aber nicht “Santa Fe, New Mexico”."
+msgstr "Dies aktualisiert die oberste Stufe oder Stufen von Ortsnamen. Zum Beispiel findet die Eingabe „Mexico“ „Quintana Roo, Mexico“ aber nicht „Santa Fe, New Mexico“."
 
 #: includes/functions/functions_print.php:1013
 #: library/WT/Date/Calendar.php:409
@@ -14520,7 +14520,7 @@ msgstr "Um die Aktualisierung abzuschließen, installieren Sie die Dateien manue
 
 #: modules_v3/todo/help_text.php:34
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "Um neue Forschungsaufgaben zu erstellen, müssen Sie zunächst eine “Forschungsaufgabe” zur Liste der Tatsachen und Ereignisse in den Stammbaumeinstellungen hinzufügen."
+msgstr "Um neue Forschungsaufgaben zu erstellen, müssen Sie zunächst eine „Forschungsaufgabe“ zur Liste der Tatsachen und Ereignisse in den Stammbaumeinstellungen hinzufügen."
 
 #: help_text.php:528
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text.  However, formatting is often desirable to aid presentation, comprehension, etc."
@@ -15024,7 +15024,7 @@ msgstr "SMTP zum Senden von Nachrichten benutzen"
 
 #: modules_v3/batch_update/plugins/search_replace.php:125
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr "“?” ist einem einzelnen beliebigen Zeichen gleich; “*” ist keinem, einem oder mehreren beliebigen Zeichen gleich."
+msgstr "„?“ ist einem einzelnen beliebigen Zeichen gleich; „*“ ist keinem, einem oder mehreren beliebigen Zeichen gleich."
 
 #. I18N: placeholder text for new-password field
 #: admin_users.php:386 login.php:430
@@ -15131,7 +15131,7 @@ msgstr "Benutzername oder E-Mail-Adresse"
 
 #: help_text.php:1486
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr "Benutzernamen ignorieren Groß-und Kleinschreibung  und Buchstaben mit Akzenten, so dass “Chloe”, “chlo&euml;” und “CHLOE” als identisch betrachtet werden."
+msgstr "Benutzernamen ignorieren Groß-und Kleinschreibung  und Buchstaben mit Akzenten, so dass „Chloe“, „chlo&euml;“ und „CHLOE“ als identisch betrachtet werden."
 
 #: help_text.php:1488
 #, php-format
@@ -15468,7 +15468,7 @@ msgstr "Jeder mit webtrees neu angelegte Quellendatensatz bekommt automatisch ei
 
 #: help_text.php:1468
 msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "Sobald sich ein Benutzer für ein Konto einträgt, wird eine E-Mail mit einem Bestätigungslink an die angegebene Adresse gesandt. Wenn er diesen Link betätigt, wissen wir, dass diese Adresse korrekt ist. Damit wird die Option “E-Mail überprüft” automatisch ausgewählt."
+msgstr "Sobald sich ein Benutzer für ein Konto einträgt, wird eine E-Mail mit einem Bestätigungslink an die angegebene Adresse gesandt. Wenn er diesen Link betätigt, wissen wir, dass diese Adresse korrekt ist. Damit wird die Option „E-Mail überprüft“ automatisch ausgewählt."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:48
 msgid "When adding a link, the ID field cannot be empty."
@@ -15504,7 +15504,7 @@ msgstr "Beim Hinzufügen eines neuen Familienmitgliedes kann ein voreingestellte
 
 #: help_text.php:1331
 msgid "When you add, edit, or delete information, the changes are not saved immediately.  Instead, they are kept in a “pending” area.  These pending changes need to be reviewed by a moderator before they are accepted."
-msgstr "Wenn Sie Informationen hinzufügen, bearbeiten oder löschen, werden die Änderungen zur Sicherheit nicht unmittelbar wirksam. Stattdessen werden sie in einer “Warteschlange” zur Überprüfung und Freigabe bereitgehalten. Die von Ihnen vorgenommenen Ergänzungen oder Änderungen müssen zunächst von einem Administrator überprüft und akzeptiert werden, bevor sie allgemein sichtbar werden. Auf diese Weise sollen Bedienungsfehler und versehentliche Änderungen vermieden werden."
+msgstr "Wenn Sie Informationen hinzufügen, bearbeiten oder löschen, werden die Änderungen zur Sicherheit nicht unmittelbar wirksam. Stattdessen werden sie in einer „Warteschlange“ zur Überprüfung und Freigabe bereitgehalten. Die von Ihnen vorgenommenen Ergänzungen oder Änderungen müssen zunächst von einem Administrator überprüft und akzeptiert werden, bevor sie allgemein sichtbar werden. Auf diese Weise sollen Bedienungsfehler und versehentliche Änderungen vermieden werden."
 
 #: help_text.php:1129
 msgid "When you check this option, a copy of the GEDCOM file will be compressed into ZIP format before the download begins.  This will reduce its size considerably, but you will need to use a compatible Unzip program (WinZIP, for example) to decompress the transmitted GEDCOM file before you can use it.<br><br>This is a useful option for downloading large GEDCOM files.  There is a risk that the download time for the uncompressed file may exceed the maximum allowed execution time, resulting in incompletely downloaded files.  The ZIP option should reduce the download time by 75 percent."
@@ -15512,7 +15512,7 @@ msgstr "Diese Option ist besonders nützlich, wenn große GEDCOM-Dateien übertr
 
 #: help_text.php:1083
 msgid "When you click the <b>Add a new shared note</b> link, a new window will open.  You can choose to link to an existing shared note, or you can create a new shared note and at the same time create a link to it."
-msgstr "Wenn Sie auf den Link <b>Hinzufügen einer neuen “Gemeinsamen Notiz”</b> klicken, wird sich ein neues Fenster öffnen. Sie können dort wählen, ob auf eine bereits vorhandene “Gemeinsame Notiz” verlinkt werden soll, oder ob Sie eine neue “Gemeinsame Notiz” erstellen und gleichzeitig einen Link darauf erzeugen wollen."
+msgstr "Wenn Sie auf den Link <b>Hinzufügen einer neuen „Gemeinsamen Notiz“</b> klicken, wird sich ein neues Fenster öffnen. Sie können dort wählen, ob auf eine bereits vorhandene „Gemeinsame Notiz“ verlinkt werden soll, oder ob Sie eine neue „Gemeinsame Notiz“ erstellen und gleichzeitig einen Link darauf erzeugen wollen."
 
 #: modules_v3/clippings/help_text.php:37
 msgid "When you click this link your clippings cart will be totally emptied.<br><br>If you don’t want to remove all individuals, families, etc. from the clippings cart, you can remove items individually by clicking the <b>Remove</b> link in the name boxes.  There is <u>no</u> confirmation dialog when you click either of these links;  the requested deletion takes place immediately."
@@ -15690,7 +15690,7 @@ msgstr "Sie dürfen keine Mitteilungen versenden, die externe Adressen enthalten
 #. I18N: Help text for the "Default theme" site configuration setting
 #: help_text.php:985
 msgid "You can change the appearance of webtrees using “themes”.  Each theme has a different style, layout, color scheme, etc."
-msgstr "Sie können das Aussehen von webtrees mit vorgefertigten Layoutvorlagen (sogenannten “Themen”) ändern. Jedes Thema hat einen anderen Stil, Layout, Farbgebung, etc."
+msgstr "Sie können das Aussehen von webtrees mit vorgefertigten Layoutvorlagen (sogenannten „Themen“) ändern. Jedes Thema hat einen anderen Stil, Layout, Farbgebung, etc."
 
 #: help_text.php:1279
 msgid "You can click this button to see whether there is another relationship path between the two individuals.  Previously found paths can be displayed again by clicking the link with the path number."
@@ -15736,7 +15736,7 @@ msgstr "Sie können einen höheren oder niedrigeren Wert anfordern, wenngleich d
 
 #: modules_v3/batch_update/plugins/death_y.php:38
 msgid "You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc."
-msgstr "Wenn für eine Person noch kein Datensatz für das Todes-, Begräbnis- oder Einäscherungsdatum gesetzt ist, können die Datenschutzabfragen beschleunigt werden, in dem ein “verstorben”-Merkmal gesetzt wird, das aus anderen Ereignissen abgeleitet werden kann."
+msgstr "Wenn für eine Person noch kein Datensatz für das Todes-, Begräbnis- oder Einäscherungsdatum gesetzt ist, können die Datenschutzabfragen beschleunigt werden, in dem ein „verstorben“-Merkmal gesetzt wird, das aus anderen Ereignissen abgeleitet werden kann."
 
 #: login.php:69
 msgid "You cannot login because your browser does not accept cookies."
@@ -15772,7 +15772,7 @@ msgstr "Sie haben eine GEDCOM mit einem anderen Namen gewählt. Ist das korrekt?
 
 #: addmedia.php:455
 msgid "You may enter a URL, beginning with “http://”."
-msgstr "Sie können hier einen URL eingeben, der mit “http://” beginnt."
+msgstr "Sie können hier einen URL eingeben, der mit „http://“ beginnt."
 
 #: modules_v3/faq/help_text.php:35
 msgid "You may use HTML to format the answer and to add links to other websites."
@@ -15845,7 +15845,7 @@ msgstr "Sie müssen ein Administratorkonto einrichten. Mit diesem Konto haben Si
 
 #: login.php:511
 msgid "You now need to review the account details, and set the “approved” status to “yes”."
-msgstr "Sie sollten nun die Angaben des Benutzerkontos prüfen und den “bestätigt”-Status auf “ja” setzen."
+msgstr "Sie sollten nun die Angaben des Benutzerkontos prüfen und den „bestätigt“-Status auf „ja“ setzen."
 
 #. I18N: Help text for the “Login URL” site configuration setting
 #: help_text.php:618
@@ -15866,7 +15866,7 @@ msgstr "Vor der Aktualisierung sollten Sie ausstehende Änderungen entweder akze
 
 #: help_text.php:1151
 msgid "You should avoid using the vertical line character “|” in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
-msgstr "Sie sollten vermeiden, dass vertikale Linienzeichen “|” in Ihrer Merkliste verwendet werden. Es wird intern von webtrees verwendet und kann dazu führen, das Bemerkungen falsch angezeigt werden."
+msgstr "Sie sollten vermeiden, dass vertikale Linienzeichen „|“ in Ihrer Merkliste verwendet werden. Es wird intern von webtrees verwendet und kann dazu führen, das Bemerkungen falsch angezeigt werden."
 
 #: admin_site_upgrade.php:202
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
@@ -15880,7 +15880,7 @@ msgstr "Sie sollten den Autor des Themas kontaktieren, um die Kompatibilität mi
 #: login.php:283 message.php:66
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
-msgstr "Bitte entfernen Sie das “%1$s” von “%2$s” und versuchen Sie es erneut."
+msgstr "Bitte entfernen Sie das „%1$s“ von „%2$s“ und versuchen Sie es erneut."
 
 #: help_text.php:1472
 msgid "You should not approve an account unless you know that the email address is correct."
@@ -15938,7 +15938,7 @@ msgstr "Ihr Provider kann Ihnen die Details der Verbindungseinstellungen bereits
 
 #: modules_v3/batch_update/admin_batch_update.php:81
 msgid "Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time."
-msgstr "Ihr Benutzerkonto verfügt nicht über die Berechtigung zur “automatischen Änderung” von Datensätzen. Sie können nur jeweils einen Datensatz ändern."
+msgstr "Ihr Benutzerkonto verfügt nicht über die Berechtigung zur „automatischen Änderung“ von Datensätzen. Sie können nur jeweils einen Datensatz ändern."
 
 #: library/WT/Stats.php:6271
 msgid "Yugoslavia"
@@ -19569,13 +19569,13 @@ msgstr "Cousin/e 10. Grades"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:78
-msgid "the database connection settings in the file <b>/data/config.ini.php</b> are still correct"
-msgstr "die Datenbankverbindungseinstellungen in der Datei <b>/data/config.ini.php</b> sind immer noch richtig"
+msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
+msgstr "die Datenbankverbindungseinstellungen in der Datei „/data/config.ini.php“ sind immer noch richtig"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:79
-msgid "the directory <b>/data</b> and the file <b>/data/config.ini.php</b> have access permissions that allow the webserver to read them"
-msgstr "das Verzeichnis <b>/data</b> und die Datei <b>/data/config.ini.php</b> besitzten Berechtigungen, die es dem Server erlauben, sie zu lesen"
+msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
+msgstr "das Verzeichnis „/data“ und die Datei „/data/config.ini.php“ besitzten Berechtigungen, die es dem Server erlauben, sie zu lesen"
 
 #: includes/functions/functions.php:793
 #, php-format
@@ -19927,13 +19927,13 @@ msgstr[1] "±%d Jahre"
 #: library/WT/Individual.php:1201
 #, php-format
 msgid "“%s”"
-msgstr "“%s”"
+msgstr "„%s“"
 
 #. I18N: %s is the name of an individual, source or other record
 #: modules_v3/user_favorites/module.php:80
 #, php-format
 msgid "“%s” has been added to your favorites."
-msgstr "“%s” wurde zu den Favoriten hinzugefügt."
+msgstr "„%s“ wurde zu den Favoriten hinzugefügt."
 
 #: includes/functions/functions_print.php:406 library/WT/Note.php:122
 msgid "…"

@@ -3386,7 +3386,7 @@ msgid "Charts"
 msgstr "Diagrammes"
 
 #: modules_v3/clippings/clippings_ctrl.php:297
-msgid "Check access rights on this directory."
+msgid "Check the access rights on this folder."
 msgstr "Vérifier les droits d’écriture de ce dossier."
 
 #: admin_site_upgrade.php:383
@@ -9077,7 +9077,7 @@ msgstr "Facteur de zoom mini et maxi applicable à la carte. 1 correspond à une
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
-msgid "Missing PHP temporary directory"
+msgid "Missing PHP temporary folder"
 msgstr "Répertoire temporaire PHP manquant"
 
 #. I18N: Name of a module/report
@@ -12065,7 +12065,7 @@ msgid "Set the privacy access level for all dead individuals."
 msgstr "Niveau de confidentialité pour toutes les personnes décédées"
 
 #: help_text.php:849
-msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> directory of the current theme."
+msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> folder of the current theme."
 msgstr "Entrez <b>Oui</b> pour afficher les icônes près des étiquettes de faits sur la page Faits personnels. Les icônes de faits ne seront affichées que si elles existent dans le dossier <i>images/facts</i> du thème actuel."
 
 #: help_text.php:1012
@@ -13614,7 +13614,7 @@ msgid "The size of the family tree, earliest and latest events, common names, et
 msgstr "La dimension de l’arbre généalogique, les événements les plus récents et les plus anciens, les noms les plus fréquents, etc."
 
 #: admin_pgv_to_wt.php:44
-msgid "The specified directory does not contain an installation of PhpGedView"
+msgid "The specified folder does not contain an installation of PhpGedView"
 msgstr "Le répertoire spécifié ne contient pas une installation de PhpGedView"
 
 #: help_text.php:279
@@ -19570,13 +19570,13 @@ msgstr "10<sup>e</sup> arrière-petit(e)-cousin(e)"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:78
-msgid "the database connection settings in the file <b>/data/config.ini.php</b> are still correct"
-msgstr "les paramètres de connexion de base de données dans le fichier <b>/data/config.ini.php</b> sont encore corrects"
+msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
+msgstr "les paramètres de connexion de base de données dans le fichier “/data/config.ini.php” sont encore corrects"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:79
-msgid "the directory <b>/data</b> and the file <b>/data/config.ini.php</b> have access permissions that allow the webserver to read them"
-msgstr "Le dossier <b>/data</b> et le fichier <b>/data/config.ini.php</b> ont les autorisations d’accès qui permettent au serveur web de les lire"
+msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
+msgstr "Le dossier “/data” et le fichier “/data/config.ini.php” ont les autorisations d’accès qui permettent au serveur web de les lire"
 
 #: includes/functions/functions.php:793
 #, php-format

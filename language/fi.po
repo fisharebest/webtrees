@@ -3384,7 +3384,7 @@ msgid "Charts"
 msgstr "Kaaviot"
 
 #: modules_v3/clippings/clippings_ctrl.php:297
-msgid "Check access rights on this directory."
+msgid "Check the access rights on this folder."
 msgstr "Tarkista tämän kansion käyttöoikeudet."
 
 #: admin_site_upgrade.php:383
@@ -7394,7 +7394,7 @@ msgstr "Tuo (import) palvelimelle sukupuun"
 
 #: admin_trees_merge.php:73 admin_trees_renumber.php:260
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
-msgstr "Sukupuussa jokaisella tietueella on sisäinen viitenumero (nimeltä ”XREF”), kuten esimerkiksi “F123” tai “R14”."
+msgstr "Sukupuussa jokaisella tietueella on sisäinen viitenumero (nimeltä ”XREF”), kuten esimerkiksi ”F123” tai ”R14”."
 
 #: help_text.php:348
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur."
@@ -9075,7 +9075,7 @@ msgstr "Pienin ja suurin zoomauskerroin Google Mapsille. 1 on täysi kartta ja 1
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
-msgid "Missing PHP temporary directory"
+msgid "Missing PHP temporary folder"
 msgstr "PHPn tilapäistiedostojen kansio puuttuu"
 
 #. I18N: Name of a module/report
@@ -9655,7 +9655,7 @@ msgstr "Ei"
 #: admin_trees_manage.php:172
 #, php-format
 msgid "No GEDCOM files found.  You need to copy files to the “%s” folder on your server."
-msgstr "Ei löytynyt GEDCOM tiedostoja. Sinun pitää itse kopioida “%s” hakemiston palvelimellesi."
+msgstr "Ei löytynyt GEDCOM tiedostoja. Sinun pitää itse kopioida ”%s” hakemiston palvelimellesi."
 
 #: modules_v3/googlemap/module.php:879
 msgid "No ancestors in the database."
@@ -12063,7 +12063,7 @@ msgid "Set the privacy access level for all dead individuals."
 msgstr "Määrittele ketkä saavat nähdä kuolleiden tiedot."
 
 #: help_text.php:849
-msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> directory of the current theme."
+msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> folder of the current theme."
 msgstr "Valinnalla <b>Kyllä</b> henkilötiedot-sivuilla näytetään kuvake tiedon viereen, jos sellainen kuvake on tarjolla käytössä olevan teeman <i>images/facts</i> hakemistossa."
 
 #: help_text.php:1012
@@ -13612,7 +13612,7 @@ msgid "The size of the family tree, earliest and latest events, common names, et
 msgstr "Sukupuun koko, varhaisin ja uusin tapahtuma, yleisimmät nimet jne."
 
 #: admin_pgv_to_wt.php:44
-msgid "The specified directory does not contain an installation of PhpGedView"
+msgid "The specified folder does not contain an installation of PhpGedView"
 msgstr "Hakemistoon ei ole asennettu PhpGedView:tä."
 
 #: help_text.php:279
@@ -13645,8 +13645,8 @@ msgstr "Aika sekunneissa, miten kauan webtrees sessio / käyttäjän istunto pys
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] "Molemmissa sukupuissa on yksi tietue joilla on sama “XREF”."
-msgstr[1] "Molemmissa sukupuissa on %1$s tietuetta joilla on sama “XREF”."
+msgstr[0] "Molemmissa sukupuissa on yksi tietue joilla on sama ”XREF”."
+msgstr[1] "Molemmissa sukupuissa on %1$s tietuetta joilla on sama ”XREF”."
 
 #: admin_site_upgrade.php:492
 msgid "The upgrade is complete."
@@ -13850,8 +13850,8 @@ msgstr "Tämä perhe jäi lapsettomaksi"
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] "Tässä sukupuussa on tietue jolla on sama “XREF” kuin toisessa sukupuussa."
-msgstr[1] "Tässä sukupuussa on %s tietuetta joilla on sama “XREF” kuin toisessa sukupuussa."
+msgstr[0] "Tässä sukupuussa on tietue jolla on sama ”XREF” kuin toisessa sukupuussa."
+msgstr[1] "Tässä sukupuussa on %s tietuetta joilla on sama ”XREF” kuin toisessa sukupuussa."
 
 #: modules_v3/random_media/module.php:192
 msgid "This family tree has no images to display."
@@ -14387,7 +14387,7 @@ msgstr "Tämä sivusto on tilapäisesti poissa käytöstä"
 #: admin_trees_manage.php:137
 #, php-format
 msgid "This will delete all the genealogical data from “%s” and replace it with data from another GEDCOM file."
-msgstr "Tämä poistaa kaikki sukututkimustiedot “%s” sta ja korvaa ne toisen GEDCOMin tiedoilla."
+msgstr "Tämä poistaa kaikki sukututkimustiedot ”%s” sta ja korvaa ne toisen GEDCOMin tiedoilla."
 
 #: modules_v3/googlemap/module.php:1772
 msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
@@ -15023,7 +15023,7 @@ msgstr "Käytä SMTP sähköpostin lähettämiseen"
 
 #: modules_v3/batch_update/plugins/search_replace.php:125
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr "Käytä “?” täsmätäksesi yhden erillisen merkin, käytä “*” täsmätäksesi nolla tai useampia merkkejä."
+msgstr "Käytä ”?” täsmätäksesi yhden erillisen merkin, käytä ”*” täsmätäksesi nolla tai useampia merkkejä."
 
 #. I18N: placeholder text for new-password field
 #: admin_users.php:386 login.php:430
@@ -15865,7 +15865,7 @@ msgstr "Hyväksy tai hylkää odottavat muutokset ennen päivitystä."
 
 #: help_text.php:1151
 msgid "You should avoid using the vertical line character “|” in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
-msgstr "Sinun tulisi välttää pystyviivamerkin “|” käyttämistä lisätiedoissasi. Sitä käytetään sisäisesti webtrees ohjelmassa ja se voi aiheuttaa lisätiedon väärän näkymisen."
+msgstr "Sinun tulisi välttää pystyviivamerkin ”|” käyttämistä lisätiedoissasi. Sitä käytetään sisäisesti webtrees ohjelmassa ja se voi aiheuttaa lisätiedon väärän näkymisen."
 
 #: admin_site_upgrade.php:202
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
@@ -19568,13 +19568,13 @@ msgstr "10. serkku"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:78
-msgid "the database connection settings in the file <b>/data/config.ini.php</b> are still correct"
-msgstr "tietokantayhteysasetukset tiedostossa <b>/data/config.ini.php</b> ovat oikein."
+msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
+msgstr "tietokantayhteysasetukset tiedostossa ”/data/config.ini.php” ovat oikein."
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:79
-msgid "the directory <b>/data</b> and the file <b>/data/config.ini.php</b> have access permissions that allow the webserver to read them"
-msgstr "hakemisto <b>/data</b> ja tiedostolla <b>/data/config.ini.php</b> on sellaiset oikeudet, että web palvelin (sovellus, esim. apache) pystyy niitä myös lukemaan"
+msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
+msgstr "hakemisto ”/data” ja tiedostolla ”/data/config.ini.php” on sellaiset oikeudet, että web palvelin (sovellus, esim. apache) pystyy niitä myös lukemaan"
 
 #: includes/functions/functions.php:793
 #, php-format

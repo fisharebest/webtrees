@@ -3388,7 +3388,7 @@ msgid "Charts"
 msgstr "Διαγράμματα"
 
 #: modules_v3/clippings/clippings_ctrl.php:297
-msgid "Check access rights on this directory."
+msgid "Check the access rights on this folder."
 msgstr ""
 
 #: admin_site_upgrade.php:383
@@ -5699,7 +5699,7 @@ msgstr "Ακριβές κείμενο"
 #: famlist.php:172 indilist.php:172
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
-msgstr "Εξέραιση ατόμων με το “%s” ως επώνυμο γάμου"
+msgstr "Εξέραιση ατόμων με το «%s» ως επώνυμο γάμου"
 
 #: admin_media.php:641
 msgid "Exclude subfolders"
@@ -6232,7 +6232,7 @@ msgstr "Όνομα αρχείου στον server"
 #: addmedia.php:155 addmedia.php:292 admin_media_upload.php:114
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
-msgstr "Τα ονόματα αρχείων δεν επιτρέπεται να περιέχουν τον χαρακτήρα “%s”."
+msgstr "Τα ονόματα αρχείων δεν επιτρέπεται να περιέχουν τον χαρακτήρα «%s»."
 
 #: addmedia.php:160 addmedia.php:297 admin_media_upload.php:119
 #, php-format
@@ -9079,7 +9079,7 @@ msgstr "Ελάχιστος και μέγιστος συντελεστής μεγ
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
-msgid "Missing PHP temporary directory"
+msgid "Missing PHP temporary folder"
 msgstr ""
 
 #. I18N: Name of a module/report
@@ -12067,7 +12067,7 @@ msgid "Set the privacy access level for all dead individuals."
 msgstr "Show dead people<br><br>Set the privacy access level for all dead people"
 
 #: help_text.php:849
-msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> directory of the current theme."
+msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> folder of the current theme."
 msgstr ""
 
 #: help_text.php:1012
@@ -13436,7 +13436,7 @@ msgstr ""
 #: medialist.php:277 mediaviewer.php:111
 #, php-format
 msgid "The file “%s” does not exist."
-msgstr "Το αρχείο “%s” δεν υπάρχει."
+msgstr "Το αρχείο «%s» δεν υπάρχει."
 
 #: admin_site_upgrade.php:480
 #, php-format
@@ -13617,7 +13617,7 @@ msgid "The size of the family tree, earliest and latest events, common names, et
 msgstr ""
 
 #: admin_pgv_to_wt.php:44
-msgid "The specified directory does not contain an installation of PhpGedView"
+msgid "The specified folder does not contain an installation of PhpGedView"
 msgstr ""
 
 #: help_text.php:279
@@ -13671,7 +13671,7 @@ msgstr ""
 
 #: help_text.php:689
 msgid "The value to place in the “meta description” tag in the HTML page header.  Leave this field empty to use the name of the family tree."
-msgstr "The value to place in the “meta description” tag in the HTML page header.  Leave this field empty to use the currently active GEDCOM's title for this value."
+msgstr "The value to place in the «meta description» tag in the HTML page header.  Leave this field empty to use the currently active GEDCOM's title for this value."
 
 #: admin_pgv_to_wt.php:76
 #, php-format
@@ -19573,12 +19573,12 @@ msgstr "10α ξαδέρφια"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:78
-msgid "the database connection settings in the file <b>/data/config.ini.php</b> are still correct"
+msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
 msgstr ""
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:79
-msgid "the directory <b>/data</b> and the file <b>/data/config.ini.php</b> have access permissions that allow the webserver to read them"
+msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr ""
 
 #: includes/functions/functions.php:793

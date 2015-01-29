@@ -1715,7 +1715,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo radio_buttons('SHOW_FACT_ICONS', $hide_show, $WT_TREE->getPreference('SHOW_FACT_ICONS'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Fact icons” configuration setting */ WT_I18N::translate('Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> directory of the current theme.'); ?>
+				<?php echo /* I18N: Help text for the “Fact icons” configuration setting */ WT_I18N::translate('Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> folder of the current theme.'); ?>
 			</p>
 		</div>
 	</fieldset>

@@ -3388,7 +3388,7 @@ msgid "Charts"
 msgstr "Tavlor"
 
 #: modules_v3/clippings/clippings_ctrl.php:297
-msgid "Check access rights on this directory."
+msgid "Check the access rights on this folder."
 msgstr "Kontrollera åtkomsträttigheter för mappen."
 
 #: admin_site_upgrade.php:383
@@ -9079,7 +9079,7 @@ msgstr "Minimum och maximum zoomfaktor för Google-karta. 1 är hela kartan, 15 
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
-msgid "Missing PHP temporary directory"
+msgid "Missing PHP temporary folder"
 msgstr "PHP:s temporära katalog saknas"
 
 #. I18N: Name of a module/report
@@ -12067,7 +12067,7 @@ msgid "Set the privacy access level for all dead individuals."
 msgstr "Sätt integritetsaccessnivå för alla döda personer."
 
 #: help_text.php:849
-msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> directory of the current theme."
+msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> folder of the current theme."
 msgstr "Sett detta till <b>Ja</b> för att visa ikoner nära faktanamn på Personliga fakta och detaljer-sidan. Fakta-ikoner kommer att visas endast om <i>images/facts</i> mappen finns i det nuvarande temat."
 
 #: help_text.php:1012
@@ -13616,7 +13616,7 @@ msgid "The size of the family tree, earliest and latest events, common names, et
 msgstr "Släktträdets storlek, äldsta och yngsta händelse, vanligaste namn o.s.v."
 
 #: admin_pgv_to_wt.php:44
-msgid "The specified directory does not contain an installation of PhpGedView"
+msgid "The specified folder does not contain an installation of PhpGedView"
 msgstr "Den angivna katalogen innehåller inte en installation av PhpGedView"
 
 #: help_text.php:279
@@ -19572,13 +19572,13 @@ msgstr "10. kusin"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:78
-msgid "the database connection settings in the file <b>/data/config.ini.php</b> are still correct"
-msgstr "databasanslutningens inställningar i filen <b>/data/config.ini.php</b> är fortfarande riktiga"
+msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
+msgstr "databasanslutningens inställningar i filen “/data/config.ini.php” är fortfarande riktiga"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:79
-msgid "the directory <b>/data</b> and the file <b>/data/config.ini.php</b> have access permissions that allow the webserver to read them"
-msgstr "katalogen <b>/data</b> och filen <b>/data/config.ini.php</b> har åtkomsträttigheter som tillåter webbservern att läsa dem"
+msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
+msgstr "katalogen “/data” och filen “/data/config.ini.php” har åtkomsträttigheter som tillåter webbservern att läsa dem"
 
 #: includes/functions/functions.php:793
 #, php-format

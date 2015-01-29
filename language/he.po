@@ -3388,7 +3388,7 @@ msgid "Charts"
 msgstr "תרשימים"
 
 #: modules_v3/clippings/clippings_ctrl.php:297
-msgid "Check access rights on this directory."
+msgid "Check the access rights on this folder."
 msgstr "בדוק הרשאות גישה לתיקיה הזו."
 
 #: admin_site_upgrade.php:383
@@ -9079,7 +9079,7 @@ msgstr "מינימום ומקסימום ההגדלה במפה של גוגל. 1 �
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
-msgid "Missing PHP temporary directory"
+msgid "Missing PHP temporary folder"
 msgstr "חסרה תיקייה זמנית של PHP"
 
 #. I18N: Name of a module/report
@@ -12067,7 +12067,7 @@ msgid "Set the privacy access level for all dead individuals."
 msgstr "הגדר את רמת גישת הפרטיות עבור כל האנשים המתים."
 
 #: help_text.php:849
-msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> directory of the current theme."
+msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> folder of the current theme."
 msgstr "קבע את זה כ<b>כן</b> כדי להציג סמלים ליד שמות עובדה בדף העובדות והאירועים של אדם. סמלי עובדות יוצגו רק אם הם קיימים בתיקיית <i>images/facts</i> של העיצוב הנוכחי."
 
 #: help_text.php:1012
@@ -13616,7 +13616,7 @@ msgid "The size of the family tree, earliest and latest events, common names, et
 msgstr "גודל עץ המשפחה, אירועים מוקדמים ומאוחרים, שמות שכיחים, וכו׳"
 
 #: admin_pgv_to_wt.php:44
-msgid "The specified directory does not contain an installation of PhpGedView"
+msgid "The specified folder does not contain an installation of PhpGedView"
 msgstr "התיקייה המצוינת אינה מכילה התקנה של PhpGedView"
 
 #: help_text.php:279
@@ -19572,13 +19572,13 @@ msgstr "דודן/דודנית מדרגה 10"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:78
-msgid "the database connection settings in the file <b>/data/config.ini.php</b> are still correct"
-msgstr "הגדרות הקישוריות של מאגר הנתונים בקובץ <b>/data/config.ini.php</b> עדיין נכונות"
+msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
+msgstr "הגדרות הקישוריות של מאגר הנתונים בקובץ “/data/config.ini.php” עדיין נכונות"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:79
-msgid "the directory <b>/data</b> and the file <b>/data/config.ini.php</b> have access permissions that allow the webserver to read them"
-msgstr "לתיקייה <b>/data</b> וקובץ <b>/data/config.ini.php</b> יש הרשאות גישה שמאפשרות ל-webserver לקרוא אותם"
+msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
+msgstr "לתיקייה “/data” וקובץ “/data/config.ini.php” יש הרשאות גישה שמאפשרות ל-webserver לקרוא אותם"
 
 #: includes/functions/functions.php:793
 #, php-format

@@ -587,7 +587,7 @@ msgstr "9º"
 
 #: help_text.php:559
 msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
-msgstr "<b>GUID</b> neste contexto é um acrônimo para “Globally Unique ID” (do inglês, Identificador Único Global).<br><br>Os GUIDs são destinados a ajudar na identificação de cada indivíduo de uma maneira que é repetível, de modo que as organizações centrais, como Centro de História da Família da Igreja Mórmon na cidade de Salt Lake, ou mesmo programas compatíveis em execução no seu próprio servidor, possam determinar se eles estão lidando com a mesma pessoa, não importa de onde o GEDCOM origina. O objetivo do Centro de História da Família é ter um repositório central de dados genealógicos e expô-lo através de serviços web. Isto irá permitir que qualquer programa acesse os dados e atualize seus dados dentro dele.<br><br>Se você não pretende compartilhar esse GEDCOM com mais ninguém, você não precisa deixar webtrees criar esses GUIDs, no entanto, isso não trará nenhum dano que não o de aumentar o tamanho do seu GEDCOM."
+msgstr "<b>GUID</b> neste contexto é um acrônimo para «Globally Unique ID» (do inglês, Identificador Único Global).<br><br>Os GUIDs são destinados a ajudar na identificação de cada indivíduo de uma maneira que é repetível, de modo que as organizações centrais, como Centro de História da Família da Igreja Mórmon na cidade de Salt Lake, ou mesmo programas compatíveis em execução no seu próprio servidor, possam determinar se eles estão lidando com a mesma pessoa, não importa de onde o GEDCOM origina. O objetivo do Centro de História da Família é ter um repositório central de dados genealógicos e expô-lo através de serviços web. Isto irá permitir que qualquer programa acesse os dados e atualize seus dados dentro dele.<br><br>Se você não pretende compartilhar esse GEDCOM com mais ninguém, você não precisa deixar webtrees criar esses GUIDs, no entanto, isso não trará nenhum dano que não o de aumentar o tamanho do seu GEDCOM."
 
 #: help_text.php:1318
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items.  You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
@@ -1781,7 +1781,7 @@ msgstr ""
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:35
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
-msgstr "Permitir que outros módulos alterem textos usando um editor “WYSIWYG”, ao invés de usar códigos HTML."
+msgstr "Permitir que outros módulos alterem textos usando um editor «WYSIWYG», ao invés de usar códigos HTML."
 
 #: admin_users.php:197 admin_users.php:392
 msgid "Allow this user to edit his account information"
@@ -3389,7 +3389,7 @@ msgid "Charts"
 msgstr "Gráficos"
 
 #: modules_v3/clippings/clippings_ctrl.php:297
-msgid "Check access rights on this directory."
+msgid "Check the access rights on this folder."
 msgstr "Verifique os direitos de acesso deste diretório"
 
 #: admin_site_upgrade.php:383
@@ -9080,7 +9080,7 @@ msgstr "Fator de zoom mínimo e máximo para o Google-map. 1 é o mapa cheio, 15
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
-msgid "Missing PHP temporary directory"
+msgid "Missing PHP temporary folder"
 msgstr "Diretório temporário PHP faltante"
 
 #. I18N: Name of a module/report
@@ -9660,7 +9660,7 @@ msgstr "Não"
 #: admin_trees_manage.php:172
 #, php-format
 msgid "No GEDCOM files found.  You need to copy files to the “%s” folder on your server."
-msgstr "Nenhum arquivo GEDCOM encontrado. Você precisa copiar arquivos para o diretório “%s” em seu servidor."
+msgstr "Nenhum arquivo GEDCOM encontrado. Você precisa copiar arquivos para o diretório «%s» em seu servidor."
 
 #: modules_v3/googlemap/module.php:879
 msgid "No ancestors in the database."
@@ -9922,8 +9922,8 @@ msgstr ""
 #, php-format
 msgid "Note: “living” is defined (if no death or burial is known) as ending %d year after birth or estimated birth."
 msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %d years after birth or estimated birth."
-msgstr[0] "Nota: “vivo” é definido (se não é conhecido falecimento ou sepultamento) como findo %d ano após o nascimento ou estimativa de nascimento."
-msgstr[1] "Nota: “vivo” é definido (se não é conhecido falecimento ou sepultamento) como findo %d anos após o nascimento ou estimativa de nascimento."
+msgstr[0] "Nota: «vivo» é definido (se não é conhecido falecimento ou sepultamento) como findo %d ano após o nascimento ou estimativa de nascimento."
+msgstr[1] "Nota: «vivo» é definido (se não é conhecido falecimento ou sepultamento) como findo %d anos após o nascimento ou estimativa de nascimento."
 
 #. I18N: Name of a module
 #: admin.php:214 admin.php:271 library/WT/Controller/Search.php:600
@@ -12068,7 +12068,7 @@ msgid "Set the privacy access level for all dead individuals."
 msgstr ""
 
 #: help_text.php:849
-msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> directory of the current theme."
+msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> folder of the current theme."
 msgstr ""
 
 #: help_text.php:1012
@@ -13436,7 +13436,7 @@ msgstr ""
 #: medialist.php:277 mediaviewer.php:111
 #, php-format
 msgid "The file “%s” does not exist."
-msgstr "O arquivo “%s” não existe."
+msgstr "O arquivo «%s» não existe."
 
 #: admin_site_upgrade.php:480
 #, php-format
@@ -13617,7 +13617,7 @@ msgid "The size of the family tree, earliest and latest events, common names, et
 msgstr "O tamanho da árvore genealógica, eventos anteriores e posteriores, nomes comuns, etc."
 
 #: admin_pgv_to_wt.php:44
-msgid "The specified directory does not contain an installation of PhpGedView"
+msgid "The specified folder does not contain an installation of PhpGedView"
 msgstr "O diretório especificado não contém uma instalação do PhpGedView"
 
 #: help_text.php:279
@@ -14392,7 +14392,7 @@ msgstr "Este site web está temporariamente indisponível"
 #: admin_trees_manage.php:137
 #, php-format
 msgid "This will delete all the genealogical data from “%s” and replace it with data from another GEDCOM file."
-msgstr "Isto excluirá todos os dados genealógicos de “%s” e o substituirá com os dados de outro GEDCOM"
+msgstr "Isto excluirá todos os dados genealógicos de «%s» e o substituirá com os dados de outro GEDCOM"
 
 #: modules_v3/googlemap/module.php:1772
 msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
@@ -15028,7 +15028,7 @@ msgstr "Usar SMTP para enviar mensagens"
 
 #: modules_v3/batch_update/plugins/search_replace.php:125
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr "Use “?” para coincidir um único caracter e &laquo;*&raquo; par coincidir zero um mais caracteres."
+msgstr "Use «?» para coincidir um único caracter e &laquo;*&raquo; par coincidir zero um mais caracteres."
 
 #. I18N: placeholder text for new-password field
 #: admin_users.php:386 login.php:430
@@ -15776,7 +15776,7 @@ msgstr "Você selecionou um GEDCOM com o nome diferente. Está correto?"
 
 #: addmedia.php:455
 msgid "You may enter a URL, beginning with “http://”."
-msgstr "Você pode inserir uma URL inciando por “http://”."
+msgstr "Você pode inserir uma URL inciando por «http://»."
 
 #: modules_v3/faq/help_text.php:35
 msgid "You may use HTML to format the answer and to add links to other websites."
@@ -15884,7 +15884,7 @@ msgstr ""
 #: login.php:283 message.php:66
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
-msgstr "Você deveria excluir o “%1$s” do “%2$s” e tentar novamente."
+msgstr "Você deveria excluir o «%1$s» do «%2$s» e tentar novamente."
 
 #: help_text.php:1472
 msgid "You should not approve an account unless you know that the email address is correct."
@@ -19573,13 +19573,13 @@ msgstr "primo de décimo grau"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:78
-msgid "the database connection settings in the file <b>/data/config.ini.php</b> are still correct"
-msgstr "as definições da conexão da base de dados no arquivo <b>/data/config.ini.php</b> ainda estão corretas"
+msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
+msgstr "as definições da conexão da base de dados no arquivo «/data/config.ini.php» ainda estão corretas"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:79
-msgid "the directory <b>/data</b> and the file <b>/data/config.ini.php</b> have access permissions that allow the webserver to read them"
-msgstr "o diretório <b>/data</b> e o arquivo <b>/data/config.ini.php</b> tem permissões de acesso para que o servidor web possa lê-los"
+msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
+msgstr "o diretório «/data» e o arquivo «/data/config.ini.php» tem permissões de acesso para que o servidor web possa lê-los"
 
 #: includes/functions/functions.php:793
 #, php-format
@@ -19931,7 +19931,7 @@ msgstr[1] "±%d anos"
 #: library/WT/Individual.php:1201
 #, php-format
 msgid "“%s”"
-msgstr "“%s”"
+msgstr "«%s»"
 
 #. I18N: %s is the name of an individual, source or other record
 #: modules_v3/user_favorites/module.php:80

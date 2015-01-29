@@ -896,7 +896,7 @@ msgstr "Flipi sem sýnir uppruna sem eru tengdir við einstakling."
 
 #: help_text.php:1474
 msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
-msgstr "Notandi mun ekki geta skráð sig inn fyrr en bæði \"tölvupóstur staðfestur\" og \"samþykkt af kerfisstjóra\" valkostirnir hafa verið valdir."
+msgstr "Notandi mun ekki geta skráð sig inn fyrr en bæði „tölvupóstur staðfestur“ og „samþykkt af kerfisstjóra“ valkostirnir hafa verið valdir."
 
 #: help_text.php:1025
 msgid "A watermark is text that is added to an image, to discourage others from copying it without permission."
@@ -1776,7 +1776,7 @@ msgstr ""
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:35
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
-msgstr "Heimila öðrum einingum að ritstýra texta með því að nota \"WYSIWYG\" ritil, í stað þess að nota HTML kóða."
+msgstr "Heimila öðrum einingum að ritstýra texta með því að nota „WYSIWYG“ ritil, í stað þess að nota HTML kóða."
 
 #: admin_users.php:197 admin_users.php:392
 msgid "Allow this user to edit his account information"
@@ -2042,7 +2042,7 @@ msgstr "Ertu viss um að þú viljir eyða þessari sögu?"
 #: library/WT/Controller/Source.php:71
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr "Ertu viss um að þú viljir eyða “%s”?"
+msgstr "Ertu viss um að þú viljir eyða „%s“?"
 
 #: modules_v3/lightbox/module.php:155
 msgid "Are you sure you want to remove links to this media object?"
@@ -3384,7 +3384,7 @@ msgid "Charts"
 msgstr "Gröf"
 
 #: modules_v3/clippings/clippings_ctrl.php:297
-msgid "Check access rights on this directory."
+msgid "Check the access rights on this folder."
 msgstr "Athugið aðgangsréttindi á þessa möppu."
 
 #: admin_site_upgrade.php:383
@@ -3706,7 +3706,7 @@ msgstr "Með því að smella á þessa krækju þá sérðu lista yfir alla ein
 
 #: help_text.php:1139
 msgid "Clicking the “+” icon will open the GEDFact shared note assistant window.<br>Specific help will be found there.<br><br>When you click the “save” button, the ID of the shared note will be pasted here."
-msgstr "Með því að smella á \"+\" táknið þá opnast glugginn GEDFact sameiginleg glósu aðstoð.<br>Sérstaka hjálp er að finna þarna.<br><br>Þegar þú smellir á \"Vista\" hnappinn, þá verður auðkenni sameiginlegu glósunnar límt inn hér."
+msgstr "Með því að smella á „+“ táknið þá opnast glugginn GEDFact sameiginleg glósu aðstoð.<br>Sérstaka hjálp er að finna þarna.<br><br>Þegar þú smellir á „Vista“ hnappinn, þá verður auðkenni sameiginlegu glósunnar límt inn hér."
 
 #. I18N: The local time on the client/browser
 #: themes/_administration/header.php:86
@@ -5174,7 +5174,7 @@ msgstr "Innsiglið ekki: óheimilt"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:580
 #: modules_v3/batch_update/admin_batch_update.php:388
 msgid "Do not update the “last change” record"
-msgstr "Ekki uppfæra \"síðasta breyting\" færsluna"
+msgstr "Ekki uppfæra „síðasta breyting“ færsluna"
 
 #: library/WT/Gedcom/Tag.php:1866
 msgid "Document"
@@ -5244,7 +5244,7 @@ msgstr ""
 
 #: help_text.php:1340
 msgid "Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account."
-msgstr "Hver notandareikningur hefur þann valkost að \"sjálfvirkt samþykkja breytingar\". Þegar þessi valkostur er virkjaður, þá verða allar breytingar sem gerðar eru af notanda vistaðar strax. Margir kerfisstjórar virkja þetta fyrir þeirra eigin notandareikning."
+msgstr "Hver notandareikningur hefur þann valkost að „sjálfvirkt samþykkja breytingar“. Þegar þessi valkostur er virkjaður, þá verða allar breytingar sem gerðar eru af notanda vistaðar strax. Margir kerfisstjórar virkja þetta fyrir þeirra eigin notandareikning."
 
 #: statistics.php:127
 msgid "Earliest birth"
@@ -5695,7 +5695,7 @@ msgstr "Nákvæmur texti"
 #: famlist.php:172 indilist.php:172
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
-msgstr "Sleppið einstaklingum með \"%s\" sem giftingarnafn"
+msgstr "Sleppið einstaklingum með „%s“ sem giftingarnafn"
 
 #: admin_media.php:641
 msgid "Exclude subfolders"
@@ -6047,7 +6047,7 @@ msgstr "Fjölskylda með foreldrum"
 #. I18N: “rada” is an Arabic word, pronounced “ra DAH”.  It is child-to-parent pedigree, established by wet-nursing.
 #: library/WT/Gedcom/Code/Pedi.php:136
 msgid "Family with rada parents"
-msgstr "Fjölskylda með \"rada\" foreldra"
+msgstr "Fjölskylda með „rada“ foreldra"
 
 #. I18N: “sealing” is a Mormon ceremony.
 #: library/WT/Gedcom/Code/Pedi.php:132
@@ -6228,12 +6228,12 @@ msgstr "Skáarheiti á þjóni"
 #: addmedia.php:155 addmedia.php:292 admin_media_upload.php:114
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
-msgstr "Skráarheiti geta ekki innihaldið bókstafin \"%s\"."
+msgstr "Skráarheiti geta ekki innihaldið bókstafin „%s“."
 
 #: addmedia.php:160 addmedia.php:297 admin_media_upload.php:119
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
-msgstr "Skráarheiti geta ekki innihaldið endinguna \"%s\"."
+msgstr "Skráarheiti geta ekki innihaldið endinguna „%s“."
 
 #: admin.php:123
 msgid "Files have been found from a previous version of webtrees.  Old files can sometimes be a security risk.  You should delete them."
@@ -7292,7 +7292,7 @@ msgstr ""
 
 #: help_text.php:623
 msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, he is considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
-msgstr "Ef þessi persóna hefur einhverja atburði aðra en Andlát, Jarðaför eða Líkbrennslu sem eru nýlegri en þessi fjöldi ára, þá er hann talinn vera á \"lifandi\". Fæðingardagar barna eru taldir vera slíkir atburðir í þessum tilgangi."
+msgstr "Ef þessi persóna hefur einhverja atburði aðra en Andlát, Jarðaför eða Líkbrennslu sem eru nýlegri en þessi fjöldi ára, þá er hann talinn vera á „lifandi“. Fæðingardagar barna eru taldir vera slíkir atburðir í þessum tilgangi."
 
 #: help_text.php:661
 msgid "If two family trees use the same media folder, then they will be able to share media files.  If they use different media folders, then their media files will be kept separate."
@@ -7435,7 +7435,7 @@ msgstr "Innifela staði með fullri samsvörun: "
 #: famlist.php:174 indilist.php:174
 #, php-format
 msgid "Include individuals with “%s” as a married name"
-msgstr "Innifelið einstaklinga með \"%s\" sem giftingarnafn"
+msgstr "Innifelið einstaklinga með „%s“ sem giftingarnafn"
 
 #: help_text.php:1268 modules_v3/clippings/module.php:186
 #: modules_v3/clippings/module.php:574
@@ -9067,7 +9067,7 @@ msgstr "Hernaðarþjónusta"
 
 #: admin_trees_config.php:758 help_text.php:475
 msgid "Min. no. of occurrences to be a “common surname”"
-msgstr "Lágmarksfjöldi tilfella til að teljast \"algengt eftirnafn\""
+msgstr "Lágmarksfjöldi tilfella til að teljast „algengt eftirnafn“"
 
 #: modules_v3/googlemap/help_text.php:32
 msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house.  Note that 15 is only available in certain areas."
@@ -9075,7 +9075,7 @@ msgstr "Lágmarks og hámarks þysjunarstuðull fyrir Google landakortið. 1 er 
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
-msgid "Missing PHP temporary directory"
+msgid "Missing PHP temporary folder"
 msgstr "Vantar PHP tímabundið skráarsafn"
 
 #. I18N: Name of a module/report
@@ -9655,7 +9655,7 @@ msgstr "Nei"
 #: admin_trees_manage.php:172
 #, php-format
 msgid "No GEDCOM files found.  You need to copy files to the “%s” folder on your server."
-msgstr "Engar GEDCOM skrár fundust. Þú þarft að afrita skrár yfir í “%s” möppuna á þínum vefþjóni."
+msgstr "Engar GEDCOM skrár fundust. Þú þarft að afrita skrár yfir í „%s“ möppuna á þínum vefþjóni."
 
 #: modules_v3/googlemap/module.php:879
 msgid "No ancestors in the database."
@@ -9917,8 +9917,8 @@ msgstr "Athugið: lengri slóðalengdir þurfa mikinn útreikning, sem getur hæ
 #, php-format
 msgid "Note: “living” is defined (if no death or burial is known) as ending %d year after birth or estimated birth."
 msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %d years after birth or estimated birth."
-msgstr[0] "Athugið: “lifandi” er skilgreint (ef ekki er vitað af andláti eða jarðaför) sem endar %d ár eftir fæðingu eða áætlaðrar fæðingu."
-msgstr[1] "Athugið: “lifandi” er skilgreint (ef ekki er vitað af andláti eða jarðför) sem endar %d árum eftir fæðingu eða áætlaðrar fæðingu."
+msgstr[0] "Athugið: „lifandi“ er skilgreint (ef ekki er vitað af andláti eða jarðaför) sem endar %d ár eftir fæðingu eða áætlaðrar fæðingu."
+msgstr[1] "Athugið: „lifandi“ er skilgreint (ef ekki er vitað af andláti eða jarðför) sem endar %d árum eftir fæðingu eða áætlaðrar fæðingu."
 
 #. I18N: Name of a module
 #: admin.php:214 admin.php:271 library/WT/Controller/Search.php:600
@@ -10298,12 +10298,12 @@ msgstr "PHP útilokaði skrá eftir endingu hennar"
 #: setup.php:136
 #, php-format
 msgid "PHP extension “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
-msgstr "PHP viðauki \"%1$s\" er óvirkur. Án þess, þá munu eftirfarandi eiginleikar ekki virka: %2$s. Vinsamlega óskaðu eftir því við kerfisstjóra vefþjónsins að virkja þetta."
+msgstr "PHP viðauki „%1$s“ er óvirkur. Án þess, þá munu eftirfarandi eiginleikar ekki virka: %2$s. Vinsamlega óskaðu eftir því við kerfisstjóra vefþjónsins að virkja þetta."
 
 #: setup.php:125
 #, php-format
 msgid "PHP extension “%s” is disabled.  You cannot install webtrees until this is enabled.  Please ask your server’s administrator to enable it."
-msgstr "PHP viðauki \"%s\" er óvirkur. Þú getur ekki sett upp webtrees fyrr en þetta hefur verið virkjað. Vinsamlega óskaðu eftir því við kerfisstjóra vefþjónsins að virkja þetta."
+msgstr "PHP viðauki „%s“ er óvirkur. Þú getur ekki sett upp webtrees fyrr en þetta hefur verið virkjað. Vinsamlega óskaðu eftir því við kerfisstjóra vefþjónsins að virkja þetta."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:79
@@ -10318,7 +10318,7 @@ msgstr "PHP upplýsingar"
 #: setup.php:145
 #, php-format
 msgid "PHP setting “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
-msgstr "PHP stilling \"%1$s\" er óvirk. Án þess, þá munu eftirfarandi eiginleikar ekki virka: %2$s. Vinsamlega óskaðu eftir því við kerfisstjóra vefþjónsins að virkja þetta."
+msgstr "PHP stilling „%1$s“ er óvirk. Án þess, þá munu eftirfarandi eiginleikar ekki virka: %2$s. Vinsamlega óskaðu eftir því við kerfisstjóra vefþjónsins að virkja þetta."
 
 #: admin_site_config.php:78 help_text.php:635
 msgid "PHP time limit"
@@ -10434,7 +10434,7 @@ msgstr "Lykilorðin stemma ekki."
 
 #: help_text.php:1294
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”."
-msgstr "Lykilorð verða að vera að lágmarki 6 stafir að lengd og þau eru stafstaða viðkvæm, þannig að \"secret\" er frábrugðið við \"SECRET\"."
+msgstr "Lykilorð verða að vera að lágmarki 6 stafir að lengd og þau eru stafstaða viðkvæm, þannig að „secret“ er frábrugðið við „SECRET“."
 
 #: admin_users.php:339 edituser.php:119
 msgid "Passwords must contain at least 6 characters."
@@ -11512,7 +11512,7 @@ msgstr "Rannsóknarverkefni eru sérstakir atburðir, sem bætt er við einstakl
 
 #: modules_v3/todo/help_text.php:36
 msgid "Research tasks are stored using the custom GEDCOM tag “_TODO”.  Other genealogy applications may not recognize this tag."
-msgstr "Rannsóknarverkefni eru geymd með því að nota sérsniðin GEDCOM merkimiða\"_TODO\". Ekki er víst að önnur ættfræðiforrit þekki þennan merkimiða."
+msgstr "Rannsóknarverkefni eru geymd með því að nota sérsniðin GEDCOM merkimiða „_TODO“. Ekki er víst að önnur ættfræðiforrit þekki þennan merkimiða."
 
 #: medialist.php:153 modules_v3/googlemap/module.php:4900
 msgid "Reset"
@@ -12063,7 +12063,7 @@ msgid "Set the privacy access level for all dead individuals."
 msgstr "Stilla friðhelgis aðgangsstig fyrir allt látið fólk."
 
 #: help_text.php:849
-msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> directory of the current theme."
+msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> folder of the current theme."
 msgstr "Stilla þetta á <b>Já</b> til að sýna tákn nálægt staðreyndaheitum á persónu staðreynda- og upplýsingasíðu. Staðreyndatákn verða aðeins sýnd ef þau eru til staðar í <i>images/facts</i> möppunni í núverandi þema."
 
 #: help_text.php:1012
@@ -13343,13 +13343,13 @@ msgstr "Kerfisstjórinn hefur verið upplýstur. Um leið og hann gefur þér he
 #: action.php:60
 #, php-format
 msgid "The changes to “%s” have been accepted."
-msgstr "Breytingar við “%s” hafa verið samþykktar."
+msgstr "Breytingar við „%s“ hafa verið samþykktar."
 
 #. I18N: %s is the name of an individual, source or other record
 #: action.php:236
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr "Breytingarnar við “%s” hefur verið hafnað."
+msgstr "Breytingarnar við „%s“ hefur verið hafnað."
 
 #: modules_v3/clippings/module.php:138
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple.  Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name.  There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
@@ -13388,7 +13388,7 @@ msgstr ""
 #: action.php:160
 #, php-format
 msgid "The family “%s” was deleted because it only has one member."
-msgstr "Fjölskyldunni “%s” hefur verið eytt, þar sem hún hefur aðeins einn meðlim."
+msgstr "Fjölskyldunni „%s“ hefur verið eytt, þar sem hún hefur aðeins einn meðlim."
 
 #: addmedia.php:174 admin_media_upload.php:133
 #, php-format
@@ -13431,7 +13431,7 @@ msgstr ""
 #: medialist.php:277 mediaviewer.php:111
 #, php-format
 msgid "The file “%s” does not exist."
-msgstr "Skráin \"%s\" er ekki til."
+msgstr "Skráin „%s“ er ekki til."
 
 #: admin_site_upgrade.php:480
 #, php-format
@@ -13516,14 +13516,14 @@ msgstr "Persónan til að hafa samband við varðandi ættfræðigögnin á þes
 
 #: help_text.php:573
 msgid "The length of time after birth can be set on the “Privacy” tab option “Age at which to assume an individual is dead”."
-msgstr "Lengd tíma eftir fæðingu er hægt að setja á friðhelgis uppsetningarflipa valmöguleikanum \"Aldur sem hægt er að áætla að persóna sé látin\"."
+msgstr "Lengd tíma eftir fæðingu er hægt að setja á friðhelgis uppsetningarflipa valmöguleikanum „Aldur sem hægt er að áætla að persóna sé látin“."
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
 #: action.php:168 action.php:172 library/WT/Controller/GedcomRecord.php:35
 #: library/WT/Controller/GedcomRecord.php:43
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been deleted."
-msgstr "Krækjan frá “%1$s” til “%2$s” hefur verið eytt."
+msgstr "Krækjan frá „%1$s“ til „%2$s“ hefur verið eytt."
 
 #: addmedia.php:312 addmedia.php:339
 #, php-format
@@ -13579,7 +13579,7 @@ msgstr "Lykilorðin stemma ekki saman."
 
 #: setup.php:357
 msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
-msgstr "Forskeytið er valkvætt, en mælt er með því. Með því að gefa töfluheiti einstakt forskeyti þá getur þú látið mörg mismunandi forrit deila sama gagnagrunn. \"wt_\" er ráðlagt, en getur hvað sem þú vilt."
+msgstr "Forskeytið er valkvætt, en mælt er með því. Með því að gefa töfluheiti einstakt forskeyti þá getur þú látið mörg mismunandi forrit deila sama gagnagrunn. „wt_“ er ráðlagt, en getur hvað sem þú vilt."
 
 #: admin_trees_renumber.php:237
 #, php-format
@@ -13592,7 +13592,7 @@ msgstr "Færsla afrituð á klippiborð"
 
 #: modules_v3/batch_update/plugins/search_replace.php:110
 msgid "The regex appears to contain an error.  It can’t be used."
-msgstr "\"Regexið\" virðist innihalda villu. Ekki er hægt að nota það."
+msgstr "„Regexið“ virðist innihalda villu. Ekki er hægt að nota það."
 
 #: setup.php:150
 msgid "The server configuration is OK."
@@ -13612,7 +13612,7 @@ msgid "The size of the family tree, earliest and latest events, common names, et
 msgstr "Stærð fjölskyldutrés, fyrstu og nýjustu atburða, algeng nöfn o.s.frv."
 
 #: admin_pgv_to_wt.php:44
-msgid "The specified directory does not contain an installation of PhpGedView"
+msgid "The specified folder does not contain an installation of PhpGedView"
 msgstr "Tilgreint skráarsafn inniheldur ekki uppsetningu af PhpGedView"
 
 #: help_text.php:279
@@ -13703,7 +13703,7 @@ msgstr "Þema flettiveljari fyrir þemabreytingar"
 
 #: help_text.php:987
 msgid "Themes can be selected at three levels: user, GEDCOM, and site.  User settings take priority over GEDCOM settings, which in turn take priority over the site setting.  Selecting “default theme” at user level will give the setting for the current GEDCOM.  Selecting “default theme” at GEDCOM level will give the site setting."
-msgstr "Þema er hægt að velja á þremur stigum: notandi, GEDCOM og vefsíða. Notanda stillingar hafa forgang yfir GEDCOM stillingar, sem á móti hafa forgang yfir vefsíðu stillingar. Með því að velja \"sjálfgefið þema\" á notandastigi mun ákvarða stillinguna fyrir núverandi GEDCOM. Með því að velja \"sjálfgefið þema\" á GEDCOM stigi mun ákvarða stillinguna fyrir vefsíðuna."
+msgstr "Þema er hægt að velja á þremur stigum: notandi, GEDCOM og vefsíða. Notanda stillingar hafa forgang yfir GEDCOM stillingar, sem á móti hafa forgang yfir vefsíðu stillingar. Með því að velja „sjálfgefið þema“ á notandastigi mun ákvarða stillinguna fyrir núverandi GEDCOM. Með því að velja „sjálfgefið þema“ á GEDCOM stigi mun ákvarða stillinguna fyrir vefsíðuna."
 
 #: modules_v3/extra_info/module.php:58
 #: modules_v3/personal_facts/module.php:118
@@ -14228,7 +14228,7 @@ msgstr "Þessi valkostur mun fjarlægja friðhelgis gögn frá niðurhlaðinni G
 
 #: help_text.php:890
 msgid "This option will retain family links in private records.  This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals."
-msgstr "Þessi valkostur mun halda eftir fjölskyldu krækjum í færslum með friðhelgi. Þetta þýðir að þú sérð auða \"friðhelgis\" kassa á ættartölugrafinu og á öðrum gröfum hjá fólki með friðhelgi."
+msgstr "Þessi valkostur mun halda eftir fjölskyldu krækjum í færslum með friðhelgi. Þetta þýðir að þú sérð auða „friðhelgis“ kassa á ættartölugrafinu og á öðrum gröfum hjá fólki með friðhelgi."
 
 #: help_text.php:1214
 msgid "This option will save the family tree to a GEDCOM file on the server."
@@ -14296,7 +14296,7 @@ msgstr "Þetta hlutverk hefur öll réttindi stjórnendahlutverks í öllum fjö
 
 #: help_text.php:1386
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data.  Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr "Þetta hlutverk hefur öll réttindi meðlimahlutverksins, ásamt réttindum til að bæta við/breyta/eyða gögnum. Allar breytingar þurfa samþykki stjórnanda, nema notandinn sé með valkostinn \"sjálfvirkt samþykkja breytingar\" virkann."
+msgstr "Þetta hlutverk hefur öll réttindi meðlimahlutverksins, ásamt réttindum til að bæta við/breyta/eyða gögnum. Allar breytingar þurfa samþykki stjórnanda, nema notandinn sé með valkostinn „jálfvirkt samþykkja breytingar“ virkann."
 
 #: help_text.php:1394
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
@@ -14330,7 +14330,7 @@ msgstr ""
 
 #: help_text.php:456
 msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-msgstr "Þætta ætti að vera komma eða bil aðgreidur listi af staðreyndum, til viðbótar við Fæðingu og Andláat, sem þú vilt að birtist í grafarkassa einsog ættartölugrafið. Þessi listi þarfnast þes að þú notir staðreynda merkimiða sem skilgreindir eru í GEDCOM 5.5.1 standard. Sem dæmi, ef þú vilt að starfsheiti birtist í kassanum, þá þarftu að bæta \"OCCU\" við þennan reit."
+msgstr "Þætta ætti að vera komma eða bil aðgreidur listi af staðreyndum, til viðbótar við Fæðingu og Andláat, sem þú vilt að birtist í grafarkassa einsog ættartölugrafið. Þessi listi þarfnast þes að þú notir staðreynda merkimiða sem skilgreindir eru í GEDCOM 5.5.1 standard. Sem dæmi, ef þú vilt að starfsheiti birtist í kassanum, þá þarftu að bæta „OCCU“ við þennan reit."
 
 #: admin_site_upgrade.php:43
 msgid "This site is being upgraded.  Try again in a few minutes."
@@ -14387,7 +14387,7 @@ msgstr "Þessi vefsíða er tímabundið óaðgengileg."
 #: admin_trees_manage.php:137
 #, php-format
 msgid "This will delete all the genealogical data from “%s” and replace it with data from another GEDCOM file."
-msgstr "Þetta mun eyða öllum ættfræðigögnum frá “%s” og skipta þeim út með gögnum frá öðrum GEDCOM."
+msgstr "Þetta mun eyða öllum ættfræðigögnum frá „%s“ og skipta þeim út með gögnum frá öðrum GEDCOM."
 
 #: modules_v3/googlemap/module.php:1772
 msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
@@ -14519,7 +14519,7 @@ msgstr ""
 
 #: modules_v3/todo/help_text.php:34
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "Til að stofna nýtt rannsóknarverkefni, þá verður þú fyrst að bæta við \"rannsóknarverkefni\" við lista yfir staðreyndir og atburði í fjölskylduré uppáhaldinu."
+msgstr "Til að stofna nýtt rannsóknarverkefni, þá verður þú fyrst að bæta við „rannsóknarverkefni“ við lista yfir staðreyndir og atburði í fjölskylduré uppáhaldinu."
 
 #: help_text.php:528
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text.  However, formatting is often desirable to aid presentation, comprehension, etc."
@@ -15023,7 +15023,7 @@ msgstr "Nota SMTP til að senda skilaboð"
 
 #: modules_v3/batch_update/plugins/search_replace.php:125
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr "Notið “?” til að finna samsvörun við einn bókstaf, notið use &laquo;*&raquo; til að finna samsvörun við engan eða fleiri bókstafi."
+msgstr "Notið „?“ til að finna samsvörun við einn bókstaf, notið use &laquo;*&raquo; til að finna samsvörun við engan eða fleiri bókstafi."
 
 #. I18N: placeholder text for new-password field
 #: admin_users.php:386 login.php:430
@@ -15130,7 +15130,7 @@ msgstr "Notendaheiti eða netfang"
 
 #: help_text.php:1486
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr "Notandaheiti er stafstaða ónæmt og sleppið broddstöfum, þannig að “chloe”, “chloë” og “Chloe” eru álitin vera það sama."
+msgstr "Notandaheiti er stafstaða ónæmt og sleppið broddstöfum, þannig að „chloe“, „chloë“ og „Chloe“ eru álitin vera það sama."
 
 #: help_text.php:1488
 #, php-format
@@ -15467,7 +15467,7 @@ msgstr "Þegar nýrr heimildafærslu er bætt við á vefnum webtrees, þá ver�
 
 #: help_text.php:1468
 msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "Þegar notandi skráir sig fyrir reikningi, þá er tölvupóstur sendur á netfangið hans með staðfestingarkrækju. Þegar hann smellir á þessa krækju, þá vitum við að netfangið er rétt, og valkosturinn \"netfang staðfest\" er sjálfvirkt valinn."
+msgstr "Þegar notandi skráir sig fyrir reikningi, þá er tölvupóstur sendur á netfangið hans með staðfestingarkrækju. Þegar hann smellir á þessa krækju, þá vitum við að netfangið er rétt, og valkosturinn „netfang staðfest“ er sjálfvirkt valinn."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:48
 msgid "When adding a link, the ID field cannot be empty."
@@ -15503,7 +15503,7 @@ msgstr "Þegar þú bætir við nýjum fjölskyldumeðlimi, þá verður sjálfg
 
 #: help_text.php:1331
 msgid "When you add, edit, or delete information, the changes are not saved immediately.  Instead, they are kept in a “pending” area.  These pending changes need to be reviewed by a moderator before they are accepted."
-msgstr "Þegar þú bætir við, breytir eða eyðir upplýsingum þá vistast breytingar ekki strax. Í staðinn eru þær geymdar í \"fyrirhuguðu\" svæði. Þessar fyrirhuguðu breytingar þurfa að endurskoðast af stjórnanda áður en þær eru samþykktar."
+msgstr "Þegar þú bætir við, breytir eða eyðir upplýsingum þá vistast breytingar ekki strax. Í staðinn eru þær geymdar í „fyrirhuguðu“ svæði. Þessar fyrirhuguðu breytingar þurfa að endurskoðast af stjórnanda áður en þær eru samþykktar."
 
 #: help_text.php:1129
 msgid "When you check this option, a copy of the GEDCOM file will be compressed into ZIP format before the download begins.  This will reduce its size considerably, but you will need to use a compatible Unzip program (WinZIP, for example) to decompress the transmitted GEDCOM file before you can use it.<br><br>This is a useful option for downloading large GEDCOM files.  There is a risk that the download time for the uncompressed file may exceed the maximum allowed execution time, resulting in incompletely downloaded files.  The ZIP option should reduce the download time by 75 percent."
@@ -15689,7 +15689,7 @@ msgstr "Þú hefur ekki heimild til að senda skilaboð sem innihalda ytri kræk
 #. I18N: Help text for the "Default theme" site configuration setting
 #: help_text.php:985
 msgid "You can change the appearance of webtrees using “themes”.  Each theme has a different style, layout, color scheme, etc."
-msgstr "Þú getur breytt útlitinu á webtrees með því að nota \"þemu\". Hvert þema hefur mismunandi stíl, útlit, litaskema o.s.frv."
+msgstr "Þú getur breytt útlitinu á webtrees með því að nota „þemu“. Hvert þema hefur mismunandi stíl, útlit, litaskema o.s.frv."
 
 #: help_text.php:1279
 msgid "You can click this button to see whether there is another relationship path between the two individuals.  Previously found paths can be displayed again by clicking the link with the path number."
@@ -15771,7 +15771,7 @@ msgstr "Þú hefur valið GEDCOM með öðru heiti. Er þetta rétt?"
 
 #: addmedia.php:455
 msgid "You may enter a URL, beginning with “http://”."
-msgstr "Þú getur slegið inn veffang, sem byrjar á “http://”."
+msgstr "Þú getur slegið inn veffang, sem byrjar á „http://“."
 
 #: modules_v3/faq/help_text.php:35
 msgid "You may use HTML to format the answer and to add links to other websites."
@@ -15844,7 +15844,7 @@ msgstr "Þú þarft að setja upp kerfisstjóra reikning. Þessi reikningur getu
 
 #: login.php:511
 msgid "You now need to review the account details, and set the “approved” status to “yes”."
-msgstr "Þú þarft núna að skoða reiknings upplýsingarnar og setja \"samþykkta\" stöðu á \"já\"."
+msgstr "Þú þarft núna að skoða reiknings upplýsingarnar og setja „samþykkta“ stöðu á „já“."
 
 #. I18N: Help text for the “Login URL” site configuration setting
 #: help_text.php:618
@@ -15879,7 +15879,7 @@ msgstr ""
 #: login.php:283 message.php:66
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
-msgstr "Þú ættir að eyða “%1$s” frá “%2$s” og reyna aftur."
+msgstr "Þú ættir að eyða „%1$s“ frá „%2$s“ og reyna aftur."
 
 #: help_text.php:1472
 msgid "You should not approve an account unless you know that the email address is correct."
@@ -15937,7 +15937,7 @@ msgstr "Kerfisstjórinn fyrir vefþjóninn þinn mun útvega þér upplýsingar 
 
 #: modules_v3/batch_update/admin_batch_update.php:81
 msgid "Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time."
-msgstr "Þinn notendareikningur er ekki með aðgerðina \"samþykkja sjálfvirkt breytingar\" virkjaða. Þú getur aðeins breytt einni færslu í einu."
+msgstr "Þinn notendareikningur er ekki með aðgerðina „samþykkja sjálfvirkt breytingar“ virkjaða. Þú getur aðeins breytt einni færslu í einu."
 
 #: library/WT/Stats.php:6271
 msgid "Yugoslavia"
@@ -19568,13 +19568,13 @@ msgstr "tíundu frændsystkini"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:78
-msgid "the database connection settings in the file <b>/data/config.ini.php</b> are still correct"
-msgstr "tengistillingar gagnagrunnsins í skránni <b>/data/config.ini.php</b> eru ennþá réttar"
+msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
+msgstr "tengistillingar gagnagrunnsins í skránni „/data/config.ini.php“ eru ennþá réttar"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:79
-msgid "the directory <b>/data</b> and the file <b>/data/config.ini.php</b> have access permissions that allow the webserver to read them"
-msgstr "mappan <b>/data</b> og skráin <b>/data/config.ini.php</b> eru með aðgangsréttindi sem heimila vefþjóninum að lesa þau"
+msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
+msgstr "mappan „/data“ og skráin „/data/config.ini.php“ eru með aðgangsréttindi sem heimila vefþjóninum að lesa þau"
 
 #: includes/functions/functions.php:793
 #, php-format
@@ -19926,13 +19926,13 @@ msgstr[1] "±%d ár"
 #: library/WT/Individual.php:1201
 #, php-format
 msgid "“%s”"
-msgstr "\"%s\""
+msgstr "„%s“"
 
 #. I18N: %s is the name of an individual, source or other record
 #: modules_v3/user_favorites/module.php:80
 #, php-format
 msgid "“%s” has been added to your favorites."
-msgstr "\"%s\" hefur verið bætt við þín eftirlæti."
+msgstr "„%s“ hefur verið bætt við þín eftirlæti."
 
 #: includes/functions/functions_print.php:406 library/WT/Note.php:122
 msgid "…"

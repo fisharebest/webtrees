@@ -3413,7 +3413,7 @@ msgid "Charts"
 msgstr "Diagramy"
 
 #: modules_v3/clippings/clippings_ctrl.php:297
-msgid "Check access rights on this directory."
+msgid "Check the access rights on this folder."
 msgstr "Sprawdź prawa dostępu do tego katalogu."
 
 #: admin_site_upgrade.php:383
@@ -9104,7 +9104,7 @@ msgstr "Minimalny i maksymalny współczynnik powiększenia dla Mapy Google. 1 -
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
-msgid "Missing PHP temporary directory"
+msgid "Missing PHP temporary folder"
 msgstr "Brak tymczasowego katalogu PHP"
 
 #. I18N: Name of a module/report
@@ -12095,7 +12095,7 @@ msgid "Set the privacy access level for all dead individuals."
 msgstr "Ustawia poziom dostępu prywatności do danych wszystkich osób zmarłych."
 
 #: help_text.php:849
-msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> directory of the current theme."
+msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> folder of the current theme."
 msgstr "Należy wybrać <b>Tak</b> aby pokazać ikonki obok nazw faktów na stronie Fakty i dane osoby. Ikonki faktów będą widoczne pod warunkiem, że znajdują się w katalogu <i>images/facts</i> bieżącego motywu."
 
 #: help_text.php:1012
@@ -13645,7 +13645,7 @@ msgid "The size of the family tree, earliest and latest events, common names, et
 msgstr "Wielkość drzewa genealogicznego, najstarsze i najnowsze wydarzenia, najczęściej występujące nazwiska, itp."
 
 #: admin_pgv_to_wt.php:44
-msgid "The specified directory does not contain an installation of PhpGedView"
+msgid "The specified folder does not contain an installation of PhpGedView"
 msgstr "Określony katalog nie zawiera instalacji PhpGedView"
 
 #: help_text.php:279
@@ -15060,7 +15060,7 @@ msgstr "Użyj SMTP do wysyłania wiadomości"
 
 #: modules_v3/batch_update/plugins/search_replace.php:125
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr "Użyj “?” by zastąpić pojedynczy dowolny znak, lub użyj &laquo;*&raquo; by zastąpić wiele dowolnych znaków."
+msgstr "Użyj „?” by zastąpić pojedynczy dowolny znak, lub użyj &laquo;*&raquo; by zastąpić wiele dowolnych znaków."
 
 #. I18N: placeholder text for new-password field
 #: admin_users.php:386 login.php:430
@@ -15810,7 +15810,7 @@ msgstr "Wybrano plik GEDCOM z inną nazwą. Czy jest to prawidłowe?"
 
 #: addmedia.php:455
 msgid "You may enter a URL, beginning with “http://”."
-msgstr "Można podać adres URL, zaczynając od “http://”."
+msgstr "Można podać adres URL, zaczynając od „http://”."
 
 #: modules_v3/faq/help_text.php:35
 msgid "You may use HTML to format the answer and to add links to other websites."
@@ -19610,13 +19610,13 @@ msgstr "kuzyn(ka) dziesiątego stopnia"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:78
-msgid "the database connection settings in the file <b>/data/config.ini.php</b> are still correct"
-msgstr "ustawienia połączenia z bazą danych w  pliku <b>/data/config.ini.php</b> są nadal poprawne"
+msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
+msgstr "ustawienia połączenia z bazą danych w  pliku „/data/config.ini.php” są nadal poprawne"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:79
-msgid "the directory <b>/data</b> and the file <b>/data/config.ini.php</b> have access permissions that allow the webserver to read them"
-msgstr "katalog <b>/data</b> i plik <b>/data/config.ini.php</b> mają uprawnienia dostępu, które pozwalają na odczyt serwerowi"
+msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
+msgstr "katalog „/data” i plik „/data/config.ini.php” mają uprawnienia dostępu, które pozwalają na odczyt serwerowi"
 
 #: includes/functions/functions.php:793
 #, php-format

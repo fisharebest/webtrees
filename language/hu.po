@@ -1781,7 +1781,7 @@ msgstr ""
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: modules_v3/ckeditor/module.php:35
 msgid "Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes."
-msgstr "Engedélyezem a többi modulban a “WYSIWYG” szerkesztő használatát a HTML helyett."
+msgstr "Engedélyezem a többi modulban a „WYSIWYG” szerkesztő használatát a HTML helyett."
 
 #: admin_users.php:197 admin_users.php:392
 msgid "Allow this user to edit his account information"
@@ -3389,7 +3389,7 @@ msgid "Charts"
 msgstr "Grafikonok"
 
 #: modules_v3/clippings/clippings_ctrl.php:297
-msgid "Check access rights on this directory."
+msgid "Check the access rights on this folder."
 msgstr "Kérjük, ellenőrizze a könyvtár jogosultságait!"
 
 #: admin_site_upgrade.php:383
@@ -9080,7 +9080,7 @@ msgstr "A minimális és maximális zoom érték a térképben. 1 a teljes térk
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
-msgid "Missing PHP temporary directory"
+msgid "Missing PHP temporary folder"
 msgstr "Hiányzó PHP ideiglenes mappa"
 
 #. I18N: Name of a module/report
@@ -9660,7 +9660,7 @@ msgstr "Nem"
 #: admin_trees_manage.php:172
 #, php-format
 msgid "No GEDCOM files found.  You need to copy files to the “%s” folder on your server."
-msgstr "Nem található GEDCOM fájl. A fájlokat a szerveren a(z) “%s” mappába kell másolja."
+msgstr "Nem található GEDCOM fájl. A fájlokat a szerveren a(z) „%s” mappába kell másolja."
 
 #: modules_v3/googlemap/module.php:879
 msgid "No ancestors in the database."
@@ -12068,7 +12068,7 @@ msgid "Set the privacy access level for all dead individuals."
 msgstr "Elhunyt személyek megmutatása."
 
 #: help_text.php:849
-msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> directory of the current theme."
+msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> folder of the current theme."
 msgstr ""
 
 #: help_text.php:1012
@@ -13618,7 +13618,7 @@ msgid "The size of the family tree, earliest and latest events, common names, et
 msgstr "A családfa mérete, legrégebbi és legújabb események, gyakori nevek, stb."
 
 #: admin_pgv_to_wt.php:44
-msgid "The specified directory does not contain an installation of PhpGedView"
+msgid "The specified folder does not contain an installation of PhpGedView"
 msgstr "Az adott mappa nem tartalmaz PhpGedView telepítést"
 
 #: help_text.php:279
@@ -14393,7 +14393,7 @@ msgstr "Ez az oldal ideiglenesen nem elérhető."
 #: admin_trees_manage.php:137
 #, php-format
 msgid "This will delete all the genealogical data from “%s” and replace it with data from another GEDCOM file."
-msgstr "Ez kitörli az összes családfa adatot a(z) “%s” bejegyzésből és felülírja egy másik GEDCOM adataival."
+msgstr "Ez kitörli az összes családfa adatot a(z) „%s” bejegyzésből és felülírja egy másik GEDCOM adataival."
 
 #: modules_v3/googlemap/module.php:1772
 msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
@@ -14401,7 +14401,7 @@ msgstr "Ez kilistázza az összes helyet a kiválasztott GEDCOM fájlból. Alapb
 
 #: admin_trees_places.php:92
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-msgstr "Frissíteni fogja a helység nevének legmagasabb szintű részét vagy részeit. Például, “Mexico” illeszkedik “Quintana Roo, Mexico”-ra, de nem illeszkedik “Santa Fe, New Mexico”-ra."
+msgstr "Frissíteni fogja a helység nevének legmagasabb szintű részét vagy részeit. Például, „Mexico” illeszkedik „Quintana Roo, Mexico”-ra, de nem illeszkedik „Santa Fe, New Mexico”-ra."
 
 #: includes/functions/functions_print.php:1013
 #: library/WT/Date/Calendar.php:409
@@ -15029,7 +15029,7 @@ msgstr "SMTP használata levélküldéshez"
 
 #: modules_v3/batch_update/plugins/search_replace.php:125
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr "Használja a “?”-et egy karakter helyettesítésére, vagy a &laquo;*&raquo; karaktert több karakter helyettesítésére."
+msgstr "Használja a „?”-et egy karakter helyettesítésére, vagy a &laquo;*&raquo; karaktert több karakter helyettesítésére."
 
 #. I18N: placeholder text for new-password field
 #: admin_users.php:386 login.php:430
@@ -15777,7 +15777,7 @@ msgstr "A kiválasztott GEDCOMnak más neve van. Ez helyes?"
 
 #: addmedia.php:455
 msgid "You may enter a URL, beginning with “http://”."
-msgstr "Be kell írjon egy URL-t, ami “http://”-vel kezdődik."
+msgstr "Be kell írjon egy URL-t, ami „http://”-vel kezdődik."
 
 #: modules_v3/faq/help_text.php:35
 msgid "You may use HTML to format the answer and to add links to other websites."
@@ -19574,13 +19574,13 @@ msgstr "tized unokatestvér"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:78
-msgid "the database connection settings in the file <b>/data/config.ini.php</b> are still correct"
-msgstr "az adatbázis beállításai a <b>/data/config.ini.php</b> fájlban helyesnek tűnnek"
+msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
+msgstr "az adatbázis beállításai a „/data/config.ini.php” fájlban helyesnek tűnnek"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:79
-msgid "the directory <b>/data</b> and the file <b>/data/config.ini.php</b> have access permissions that allow the webserver to read them"
-msgstr "a <b>/data</b> mappa és a <b>/data/config.ini.php</b> fájl olvasható a webszerver által"
+msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
+msgstr "a „/data” mappa és a „/data/config.ini.php” fájl olvasható a webszerver által"
 
 #: includes/functions/functions.php:793
 #, php-format
@@ -19932,13 +19932,13 @@ msgstr[1] "±%d év"
 #: library/WT/Individual.php:1201
 #, php-format
 msgid "“%s”"
-msgstr ""
+msgstr "„%s”"
 
 #. I18N: %s is the name of an individual, source or other record
 #: modules_v3/user_favorites/module.php:80
 #, php-format
 msgid "“%s” has been added to your favorites."
-msgstr "%s hozzá lett adva a kedvenceihez."
+msgstr "„%s” hozzá lett adva a kedvenceihez."
 
 #: includes/functions/functions_print.php:406 library/WT/Note.php:122
 msgid "…"

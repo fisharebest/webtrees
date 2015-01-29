@@ -3360,7 +3360,7 @@ msgid "Charts"
 msgstr ""
 
 #: modules_v3/clippings/clippings_ctrl.php:297
-msgid "Check access rights on this directory."
+msgid "Check the access rights on this folder."
 msgstr ""
 
 #: admin_site_upgrade.php:383
@@ -9051,7 +9051,7 @@ msgstr "Google map　での最小と最大の拡大／縮小率、１なら最�
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
-msgid "Missing PHP temporary directory"
+msgid "Missing PHP temporary folder"
 msgstr ""
 
 #. I18N: Name of a module/report
@@ -12036,7 +12036,7 @@ msgid "Set the privacy access level for all dead individuals."
 msgstr ""
 
 #: help_text.php:849
-msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> directory of the current theme."
+msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> folder of the current theme."
 msgstr ""
 
 #: help_text.php:1012
@@ -13585,7 +13585,7 @@ msgid "The size of the family tree, earliest and latest events, common names, et
 msgstr ""
 
 #: admin_pgv_to_wt.php:44
-msgid "The specified directory does not contain an installation of PhpGedView"
+msgid "The specified folder does not contain an installation of PhpGedView"
 msgstr ""
 
 #: help_text.php:279
@@ -14992,7 +14992,7 @@ msgstr ""
 
 #: modules_v3/batch_update/plugins/search_replace.php:125
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr "単一の文字にマッチさせるなら　 “?” 　を使い、ゼロ個かそれ以上個の文字にマッチさせるなら “*” を使います。"
+msgstr "単一の文字にマッチさせるなら　 「?」 　を使い、ゼロ個かそれ以上個の文字にマッチさせるなら 「*」 を使います。"
 
 #. I18N: placeholder text for new-password field
 #: admin_users.php:386 login.php:430
@@ -19533,12 +19533,12 @@ msgstr ""
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:78
-msgid "the database connection settings in the file <b>/data/config.ini.php</b> are still correct"
+msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
 msgstr ""
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:79
-msgid "the directory <b>/data</b> and the file <b>/data/config.ini.php</b> have access permissions that allow the webserver to read them"
+msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
 msgstr ""
 
 #: includes/functions/functions.php:793
@@ -19890,7 +19890,7 @@ msgstr[0] ""
 #: library/WT/Individual.php:1201
 #, php-format
 msgid "“%s”"
-msgstr ""
+msgstr "「%s」"
 
 #. I18N: %s is the name of an individual, source or other record
 #: modules_v3/user_favorites/module.php:80

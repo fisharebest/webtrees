@@ -3388,7 +3388,7 @@ msgid "Charts"
 msgstr "Gráficos"
 
 #: modules_v3/clippings/clippings_ctrl.php:297
-msgid "Check access rights on this directory."
+msgid "Check the access rights on this folder."
 msgstr "Verifique os direitos de acesso deste diretório"
 
 #: admin_site_upgrade.php:383
@@ -9079,7 +9079,7 @@ msgstr "Fator de zoom mínimo e máximo para o Google-map. 1 é o mapa cheio, 15
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
-msgid "Missing PHP temporary directory"
+msgid "Missing PHP temporary folder"
 msgstr "Diretório temporário PHP faltante"
 
 #. I18N: Name of a module/report
@@ -12067,7 +12067,7 @@ msgid "Set the privacy access level for all dead individuals."
 msgstr "Defina o nível de acesso de privacidade para todas as pessoas falecidas."
 
 #: help_text.php:849
-msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> directory of the current theme."
+msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> folder of the current theme."
 msgstr "Defina isto para <b>Sim</b> para exibir ícones próximos aos nomes de fatos na página de Fatos Pessoais e Detalhes. Ícones de fatos serão exibidos somente se eles existirem no diretório <i>images/facts</i> do tema atual."
 
 #: help_text.php:1012
@@ -13616,7 +13616,7 @@ msgid "The size of the family tree, earliest and latest events, common names, et
 msgstr "O tamanho da árvore genealógica, eventos anteriores e posteriores, nomes comuns, etc."
 
 #: admin_pgv_to_wt.php:44
-msgid "The specified directory does not contain an installation of PhpGedView"
+msgid "The specified folder does not contain an installation of PhpGedView"
 msgstr "O diretório especificado não contém uma instalação do PhpGedView"
 
 #: help_text.php:279
@@ -19572,13 +19572,13 @@ msgstr "primo de décimo grau"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:78
-msgid "the database connection settings in the file <b>/data/config.ini.php</b> are still correct"
-msgstr "as definições da conexão da base de dados no arquivo <b>/data/config.ini.php</b> ainda estão corretas"
+msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
+msgstr "as definições da conexão da base de dados no arquivo “/data/config.ini.php” ainda estão corretas"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:79
-msgid "the directory <b>/data</b> and the file <b>/data/config.ini.php</b> have access permissions that allow the webserver to read them"
-msgstr "o diretório <b>/data</b> e o arquivo <b>/data/config.ini.php</b> tem permissões de acesso para que o servidor web possa lê-los"
+msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
+msgstr "o diretório “/data” e o arquivo “/data/config.ini.php” tem permissões de acesso para que o servidor web possa lê-los"
 
 #: includes/functions/functions.php:793
 #, php-format

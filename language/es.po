@@ -2047,7 +2047,7 @@ msgstr "¿Está seguro que quiere borrar esta historia?"
 #: library/WT/Controller/Source.php:71
 #, php-format
 msgid "Are you sure you want to delete “%s”?"
-msgstr "¿Está seguro que desea eliminar “%s”?"
+msgstr "¿Está seguro que desea eliminar «%s»?"
 
 #: modules_v3/lightbox/module.php:155
 msgid "Are you sure you want to remove links to this media object?"
@@ -3389,7 +3389,7 @@ msgid "Charts"
 msgstr "Diagramas"
 
 #: modules_v3/clippings/clippings_ctrl.php:297
-msgid "Check access rights on this directory."
+msgid "Check the access rights on this folder."
 msgstr "Compruebe los permisos de acceso en este directorio."
 
 #: admin_site_upgrade.php:383
@@ -3711,7 +3711,7 @@ msgstr "Hacer clic en este vínculo le mostrará una lista de todas las personas
 
 #: help_text.php:1139
 msgid "Clicking the “+” icon will open the GEDFact shared note assistant window.<br>Specific help will be found there.<br><br>When you click the “save” button, the ID of the shared note will be pasted here."
-msgstr "Al hacer clic en el “+” se abre la ventana del ayudante para notas compartidas de GEDFact.  El ayudante proporciona ayuda más específica.  Si hace clic en el botón «Guardar» (en el ayudante), el ID de la nota compartida se pegará en el campo."
+msgstr "Al hacer clic en el «+» se abre la ventana del ayudante para notas compartidas de GEDFact.  El ayudante proporciona ayuda más específica.  Si hace clic en el botón «Guardar» (en el ayudante), el ID de la nota compartida se pegará en el campo."
 
 #. I18N: The local time on the client/browser
 #: themes/_administration/header.php:86
@@ -5179,7 +5179,7 @@ msgstr "No sellar: no autorizado"
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:580
 #: modules_v3/batch_update/admin_batch_update.php:388
 msgid "Do not update the “last change” record"
-msgstr "No actualizar el campo “último cambio”"
+msgstr "No actualizar el campo «último cambio»"
 
 #: library/WT/Gedcom/Tag.php:1866
 msgid "Document"
@@ -5245,11 +5245,11 @@ msgstr "Dirección de correo electrónico a utilizar en el campo «From:» de lo
 
 #: help_text.php:1175
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "Cada fuente registra eventos específicos, generalmente para un rango de fechas dado y una jurisdicción geográfica determinada.  Por ejemplo, un censo registra eventos censales y los registros parroquiales registran eventos de nacimiento, matrimonio y defunción.<br><br>Seleccione los eventos registrados por esta fuente de la lista de eventos propuestos. La fecha debería indicarse en formato GEDCOM de rango de fechas, por ejemplo, <i>FROM 1900 TO 1910</i>.  La jurisdicción geográfica es el nombre de la unidad geográfica más pequeña que engloba todos los lugares mencionados en esta fuente. Por ejemplo, ”Oneida, Idaho, USA” se utilizaría como la jurisdicción para los eventos ocurridos en las distintas poblaciones del Condado de Oneida. ”Idaho, USA” sería la jurisdicción si los eventos registrados tuvieran lugar no sólo en el Condado de Oneida, sino en otros condados de Idaho."
+msgstr "Cada fuente registra eventos específicos, generalmente para un rango de fechas dado y una jurisdicción geográfica determinada.  Por ejemplo, un censo registra eventos censales y los registros parroquiales registran eventos de nacimiento, matrimonio y defunción.<br><br>Seleccione los eventos registrados por esta fuente de la lista de eventos propuestos. La fecha debería indicarse en formato GEDCOM de rango de fechas, por ejemplo, <i>FROM 1900 TO 1910</i>.  La jurisdicción geográfica es el nombre de la unidad geográfica más pequeña que engloba todos los lugares mencionados en esta fuente. Por ejemplo, »Oneida, Idaho, USA» se utilizaría como la jurisdicción para los eventos ocurridos en las distintas poblaciones del Condado de Oneida. »Idaho, USA» sería la jurisdicción si los eventos registrados tuvieran lugar no sólo en el Condado de Oneida, sino en otros condados de Idaho."
 
 #: help_text.php:1340
 msgid "Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account."
-msgstr "Cada cuenta de usuario tiene la opción de “aceptar automáticamente los cambios.”  Cuando esta opción está activada, los cambios hechos por el usuario se guardan inmediatamente.  Muchos administradores habilitan esta por su propia cuenta de usuario."
+msgstr "Cada cuenta de usuario tiene la opción de «aceptar automáticamente los cambios.»  Cuando esta opción está activada, los cambios hechos por el usuario se guardan inmediatamente.  Muchos administradores habilitan esta por su propia cuenta de usuario."
 
 #: statistics.php:127
 msgid "Earliest birth"
@@ -5700,7 +5700,7 @@ msgstr "Texto exacto"
 #: famlist.php:172 indilist.php:172
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
-msgstr "Excluir a las personas con apellido de casada “%s”"
+msgstr "Excluir a las personas con apellido de casada «%s»"
 
 #: admin_media.php:641
 msgid "Exclude subfolders"
@@ -6233,12 +6233,12 @@ msgstr "Nombre de archivo en el servidor"
 #: addmedia.php:155 addmedia.php:292 admin_media_upload.php:114
 #, php-format
 msgid "Filenames are not allowed to contain the character “%s”."
-msgstr "Los nombres de archivo no pueden contener el carácter “%s”."
+msgstr "Los nombres de archivo no pueden contener el carácter «%s»."
 
 #: addmedia.php:160 addmedia.php:297 admin_media_upload.php:119
 #, php-format
 msgid "Filenames are not allowed to have the extension “%s”."
-msgstr "Los nombres de archivo no pueden tener la extensión “%s”."
+msgstr "Los nombres de archivo no pueden tener la extensión «%s»."
 
 #: admin.php:123
 msgid "Files have been found from a previous version of webtrees.  Old files can sometimes be a security risk.  You should delete them."
@@ -7440,7 +7440,7 @@ msgstr "Incluir sitios que coincidan completamente - "
 #: famlist.php:174 indilist.php:174
 #, php-format
 msgid "Include individuals with “%s” as a married name"
-msgstr "Incluir a las personas con apellido de casada “%s”"
+msgstr "Incluir a las personas con apellido de casada «%s»"
 
 #: help_text.php:1268 modules_v3/clippings/module.php:186
 #: modules_v3/clippings/module.php:574
@@ -9080,7 +9080,7 @@ msgstr "Los factores mínimo y máximo de ampliación para el mapa Google. Un 1 
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
-msgid "Missing PHP temporary directory"
+msgid "Missing PHP temporary folder"
 msgstr "Falta el directorio temporal de PHP"
 
 #. I18N: Name of a module/report
@@ -9660,7 +9660,7 @@ msgstr "No"
 #: admin_trees_manage.php:172
 #, php-format
 msgid "No GEDCOM files found.  You need to copy files to the “%s” folder on your server."
-msgstr "No se encontraron archivos GEDCOM. Debe copiarlos al directorio “%s” en su servidor."
+msgstr "No se encontraron archivos GEDCOM. Debe copiarlos al directorio «%s» en su servidor."
 
 #: modules_v3/googlemap/module.php:879
 msgid "No ancestors in the database."
@@ -10303,12 +10303,12 @@ msgstr "PHP bloqueó el archivo por su extensión"
 #: setup.php:136
 #, php-format
 msgid "PHP extension “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
-msgstr "La extensión PHP “%1$s” está desactivada. Sin ella, no se podrán llevar a cabo las siguientes funciones: : %2$s. Pídale al administrador de su servidor que la active."
+msgstr "La extensión PHP «%1$s» está desactivada. Sin ella, no se podrán llevar a cabo las siguientes funciones: : %2$s. Pídale al administrador de su servidor que la active."
 
 #: setup.php:125
 #, php-format
 msgid "PHP extension “%s” is disabled.  You cannot install webtrees until this is enabled.  Please ask your server’s administrator to enable it."
-msgstr "La extensión PHP “%s” está desactivada. A menos que no la active, no podrá instalar webtrees. Pídale al administrador de su servidor que la active."
+msgstr "La extensión PHP «%s» está desactivada. A menos que no la active, no podrá instalar webtrees. Pídale al administrador de su servidor que la active."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:79
@@ -10323,7 +10323,7 @@ msgstr "PHPInfo"
 #: setup.php:145
 #, php-format
 msgid "PHP setting “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
-msgstr "La configuración PHP “%1$s” está desactivada. Sin ella, no se podrán llevar a cabo las siguientes funciones: : %2$s. Pídale al administrador de su servidor que la active."
+msgstr "La configuración PHP «%1$s» está desactivada. Sin ella, no se podrán llevar a cabo las siguientes funciones: : %2$s. Pídale al administrador de su servidor que la active."
 
 #: admin_site_config.php:78 help_text.php:635
 msgid "PHP time limit"
@@ -10439,7 +10439,7 @@ msgstr "Las contraseñas no coinciden."
 
 #: help_text.php:1294
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”."
-msgstr "Las contraseñas deben tener al menos 6 caracteres de largo.  Se distingue entre mayúsculas y minúsculas, por lo que “secreto” es diferente a “SECRETO”"
+msgstr "Las contraseñas deben tener al menos 6 caracteres de largo.  Se distingue entre mayúsculas y minúsculas, por lo que «secreto» es diferente a «SECRETO»"
 
 #: admin_users.php:339 edituser.php:119
 msgid "Passwords must contain at least 6 characters."
@@ -10769,7 +10769,7 @@ msgstr "Lugares en %s"
 
 #: help_text.php:330
 msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-msgstr "Lugares se deben ser introducidos de acuerdo con las normas de la genealogía.  En la genealogía, los lugares se registran con la información más específica sobre el lugar primero y luego trabajar hasta el lugar menos específica pasado, usando comas para separar los diferentes niveles de lugar.  El nivel en el que se graba la información de lugar debería representar los niveles de gobierno o de una iglesia donde se guardan los registros vitales de ese lugar.<br>br>Por ejemplo, un lugar como Salt Lake City se ingresaría como “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Vamos a examinar cada parte de este lugar.  La primera parte, “Salt Lake City”, es la ciudad o municipio donde ocurrió el evento.  En algunos países , es posible que los municipios o distritos dentro de una ciudad que son importantes tener en cuenta.  En ese caso, deben presentarse ante la ciudad.  La siguiente parte: “Salt Lake”, es el condado.  “Utah” es el Estado, y “USA” es el país.  Es importante tener en cuenta cada lugar, porque los registros genealógicos se mantienen por los gobiernos de cada nivel.<br><br>Si no se conoce el nivel de la plaza, se debe dejar un espacio entre las comas.  Supongamos que, en el ejemplo anterior, usted no sabía el condado de Salt Lake City.  A continuación, debe registrar de esta manera: “Salt Lake City, , Utah, USA”.  Supongamos que sólo se sabe que una persona nació en Utah.  Se podría introducir la información de esta manera: “, , Utah, USA”.<br><br>Usted puede utilizar el <b>Buscar Lugar</b> para ayudarle a encontrar los lugares que ya existen en la base de datos."
+msgstr "Lugares se deben ser introducidos de acuerdo con las normas de la genealogía.  En la genealogía, los lugares se registran con la información más específica sobre el lugar primero y luego trabajar hasta el lugar menos específica pasado, usando comas para separar los diferentes niveles de lugar.  El nivel en el que se graba la información de lugar debería representar los niveles de gobierno o de una iglesia donde se guardan los registros vitales de ese lugar.<br>br>Por ejemplo, un lugar como Salt Lake City se ingresaría como «Salt Lake City, Salt Lake, Utah, USA».<br><br>Vamos a examinar cada parte de este lugar.  La primera parte, «Salt Lake City», es la ciudad o municipio donde ocurrió el evento.  En algunos países , es posible que los municipios o distritos dentro de una ciudad que son importantes tener en cuenta.  En ese caso, deben presentarse ante la ciudad.  La siguiente parte: «Salt Lake», es el condado.  «Utah» es el Estado, y «USA» es el país.  Es importante tener en cuenta cada lugar, porque los registros genealógicos se mantienen por los gobiernos de cada nivel.<br><br>Si no se conoce el nivel de la plaza, se debe dejar un espacio entre las comas.  Supongamos que, en el ejemplo anterior, usted no sabía el condado de Salt Lake City.  A continuación, debe registrar de esta manera: «Salt Lake City, , Utah, USA».  Supongamos que sólo se sabe que una persona nació en Utah.  Se podría introducir la información de esta manera: «, , Utah, USA».<br><br>Usted puede utilizar el <b>Buscar Lugar</b> para ayudarle a encontrar los lugares que ya existen en la base de datos."
 
 #: modules_v3/random_media/module.php:128 themes/_administration/header.php:33
 #: themes/clouds/header.php:36 themes/colors/header.php:38
@@ -12068,7 +12068,7 @@ msgid "Set the privacy access level for all dead individuals."
 msgstr "Ajusta el nivel de acceso para toda las personas ya fallecidas."
 
 #: help_text.php:849
-msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> directory of the current theme."
+msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> folder of the current theme."
 msgstr "Fije esto a <b>Sí</b> para mostrar iconos junto a los nombres de los hechos en la página Detalles Personales.  Los iconos de hechos se mostrará sólo si existen en el directorio <i>images/facts</i> del tema actual."
 
 #: help_text.php:1012
@@ -12802,7 +12802,7 @@ msgstr "Algunos elementos no pudieron añadirse debido a restricciones de privac
 
 #: modules_v3/googlemap/help_text.php:42
 msgid "Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”."
-msgstr "Algunos nombres de lugares se puede escribir con prefijos y sufijos opcionales. Por ejemplo, “Orange” frente a “Condado de Orange”. Si el árbol genealógico contiene los nombres de lugares completos, pero la base de datos geográfica contiene los nombres cortos, entonces debe especificar una lista de los prefijos y sufijos para no tener en cuenta. Múltiples opciones deben estar separadas con punto y coma. Por ejemplo, «Condado;Condado de» o «Municipio; Mpio.; Mpio»"
+msgstr "Algunos nombres de lugares se puede escribir con prefijos y sufijos opcionales. Por ejemplo, «Orange» frente a «Condado de Orange». Si el árbol genealógico contiene los nombres de lugares completos, pero la base de datos geográfica contiene los nombres cortos, entonces debe especificar una lista de los prefijos y sufijos para no tener en cuenta. Múltiples opciones deben estar separadas con punto y coma. Por ejemplo, «Condado;Condado de» o «Municipio; Mpio.; Mpio»"
 
 #: modules_v3/family_group_report/report.xml:762
 #: modules_v3/individual_ext_report/report.xml:517
@@ -13348,17 +13348,17 @@ msgstr "El Administrador ha sido informado.  Tan pronto como le dé el permiso p
 #: action.php:60
 #, php-format
 msgid "The changes to “%s” have been accepted."
-msgstr "Los cambios en “%s” han sido aceptados."
+msgstr "Los cambios en «%s» han sido aceptados."
 
 #. I18N: %s is the name of an individual, source or other record
 #: action.php:236
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr "Los cambios en “%s” han sido rechazados."
+msgstr "Los cambios en «%s» han sido rechazados."
 
 #: modules_v3/clippings/module.php:138
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple.  Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name.  There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
-msgstr "El Carrito genealógico le permite extraer “recortes” de este árbol geneálogico y agruparlos en un solo archivo disponible para  descargar e importar a su propio programa genealógico.  El archivo descargable será en formato GEDCOM.<br><ul><li>¿Cómo se hace recortes?<br>Es veraderamente fácil.  Siempre que vea un nombre que se puede hacer clic (persona, familia, fuente, etc.), vaya a la página de detalles de ese nombre.  Ahí encontrará la opción <b>Añadir al carrito genealógico</b>.  Al hacer clic en el enlace, aparecerán distintas opciones de descarga.</li><li>¿Cómo descargar los recortes?<br>Cuando hay registros en el carro, puede descargarlos haciendo clic en el enlace <b>Descargar ahora</b>.  Siga las instrucciones y los enlaces.</li></ul>"
+msgstr "El Carrito genealógico le permite extraer «recortes» de este árbol geneálogico y agruparlos en un solo archivo disponible para  descargar e importar a su propio programa genealógico.  El archivo descargable será en formato GEDCOM.<br><ul><li>¿Cómo se hace recortes?<br>Es veraderamente fácil.  Siempre que vea un nombre que se puede hacer clic (persona, familia, fuente, etc.), vaya a la página de detalles de ese nombre.  Ahí encontrará la opción <b>Añadir al carrito genealógico</b>.  Al hacer clic en el enlace, aparecerán distintas opciones de descarga.</li><li>¿Cómo descargar los recortes?<br>Cuando hay registros en el carro, puede descargarlos haciendo clic en el enlace <b>Descargar ahora</b>.  Siga las instrucciones y los enlaces.</li></ul>"
 
 #: help_text.php:1314
 msgid "The current webtrees admin username must be the same as an existing PGV admin username"
@@ -13393,7 +13393,7 @@ msgstr ""
 #: action.php:160
 #, php-format
 msgid "The family “%s” was deleted because it only has one member."
-msgstr "La familia “%s” ha sido borrada, ya que tiene solamente un miembro."
+msgstr "La familia «%s» ha sido borrada, ya que tiene solamente un miembro."
 
 #: addmedia.php:174 admin_media_upload.php:133
 #, php-format
@@ -13528,7 +13528,7 @@ msgstr "El périodo después del nacimiento se puede fijar en la pestaña de con
 #: library/WT/Controller/GedcomRecord.php:43
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been deleted."
-msgstr "El enlace desde “%1$s” a “%2$s” ha sido borrado."
+msgstr "El enlace desde «%1$s» a «%2$s» ha sido borrado."
 
 #: addmedia.php:312 addmedia.php:339
 #, php-format
@@ -13584,7 +13584,7 @@ msgstr "Las contraseñas no coinciden."
 
 #: setup.php:357
 msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database. “wt_” is suggested, but can be anything you want."
-msgstr "Introducir un prefijo es opcional, pero recomendable. Al proporcionarle un único prefijo a los nombres de tablas, permitirá que distintos programas compartan la misma base de datos. Aunque se recomienda usar el prefijo “wt_”, el texto del mismo es libre, pudiendo elegir el que más le apetezca."
+msgstr "Introducir un prefijo es opcional, pero recomendable. Al proporcionarle un único prefijo a los nombres de tablas, permitirá que distintos programas compartan la misma base de datos. Aunque se recomienda usar el prefijo «wt_», el texto del mismo es libre, pudiendo elegir el que más le apetezca."
 
 #: admin_trees_renumber.php:237
 #, php-format
@@ -13617,7 +13617,7 @@ msgid "The size of the family tree, earliest and latest events, common names, et
 msgstr "El tamaño del árbol genealógico, eventos primeros y últimos, los nombres comunes, etc."
 
 #: admin_pgv_to_wt.php:44
-msgid "The specified directory does not contain an installation of PhpGedView"
+msgid "The specified folder does not contain an installation of PhpGedView"
 msgstr "El directorio indicado no contiene una instalación de PhpGedView."
 
 #: help_text.php:279
@@ -13981,7 +13981,7 @@ msgstr "Hay que distinguir entre mayúsculas y minúsculas. Si una base de datos
 #. I18N: Help text for the “Show chart details by default” tree configuration setting
 #: help_text.php:704
 msgid "This is the initial setting for the “show details” option on the charts."
-msgstr "Este es el ajuste inicial para la opción “mostrar detalles” en las diagramas."
+msgstr "Este es el ajuste inicial para la opción «mostrar detalles» en las diagramas."
 
 #: admin_site_upgrade.php:74
 msgid "This is the latest version of webtrees.  No upgrade is available."
@@ -14022,7 +14022,7 @@ msgstr "Es la lista de hechos GEDCOM que sus usuarios sólo pueden añadir <u>un
 #. I18N: Help text for the “Server name” site configuration setting
 #: help_text.php:764
 msgid "This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server."
-msgstr "Éste es el nombre del servidor SMTP. “localhost” significa que el servicio de correo electrónico se está ejecutando en el mismo ordenador que su servidor web."
+msgstr "Éste es el nombre del servidor SMTP. «localhost» significa que el servicio de correo electrónico se está ejecutando en el mismo ordenador que su servidor web."
 
 #: help_text.php:476
 msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the “Home page”."
@@ -14124,7 +14124,7 @@ msgstr "Debe contener al menos seis caracteres. Distingue entre mayúsculas y mi
 #. I18N: Help text for the “Sender name” site configuration setting
 #: help_text.php:754
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
-msgstr "Este nombre se usa en el campo “De”, para enviar correos electrónicos automáticos de este servidor."
+msgstr "Este nombre se usa en el campo «De», para enviar correos electrónicos automáticos de este servidor."
 
 #: note.php:73
 msgid "This note does not exist or you do not have permission to view it."
@@ -14392,7 +14392,7 @@ msgstr "Este sitio web no está disponible en este momento"
 #: admin_trees_manage.php:137
 #, php-format
 msgid "This will delete all the genealogical data from “%s” and replace it with data from another GEDCOM file."
-msgstr "Se borrarán todos los datos genealógicos de “%s” y reemplazarlos con datos de otra GEDCOM."
+msgstr "Se borrarán todos los datos genealógicos de «%s» y reemplazarlos con datos de otra GEDCOM."
 
 #: modules_v3/googlemap/module.php:1772
 msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
@@ -14524,7 +14524,7 @@ msgstr ""
 
 #: modules_v3/todo/help_text.php:34
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "Para crear nuevas tareas de investigación, primero debe agregar “la tarea de investigación” a la lista de hechos y eventos en las preferencias de los árboles genealógicos."
+msgstr "Para crear nuevas tareas de investigación, primero debe agregar «la tarea de investigación» a la lista de hechos y eventos en las preferencias de los árboles genealógicos."
 
 #: help_text.php:528
 msgid "To ensure compatibility with other genealogy applications, notes, text, and transcripts should be recorded in simple, unformatted text.  However, formatting is often desirable to aid presentation, comprehension, etc."
@@ -15028,7 +15028,7 @@ msgstr "Utilizar el servidor SMTP para mandar mensajes"
 
 #: modules_v3/batch_update/plugins/search_replace.php:125
 msgid "Use a “?” to match a single character, use “*” to match zero or more characters."
-msgstr "Use una “?” para coincidir con un solo carácter, use “*” para coincidir con cero o más caracteres."
+msgstr "Use una «?» para coincidir con un solo carácter, use «*» para coincidir con cero o más caracteres."
 
 #. I18N: placeholder text for new-password field
 #: admin_users.php:386 login.php:430
@@ -15472,7 +15472,7 @@ msgstr "Si se agregue una nueva fuente en webtrees se generará automáticamente
 
 #: help_text.php:1468
 msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
-msgstr "Al registrar una cuenta, se enviará a la dirección de correo electrónico un mensaje que contiene un enlace a una página de prueba.  Cuando el usuario hace clic en este enlace, el sistema reconoce que la dirección de correo electrónico es correcta, y el “email verificado” se selecciona automáticamente."
+msgstr "Al registrar una cuenta, se enviará a la dirección de correo electrónico un mensaje que contiene un enlace a una página de prueba.  Cuando el usuario hace clic en este enlace, el sistema reconoce que la dirección de correo electrónico es correcta, y el «email verificado» se selecciona automáticamente."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:48
 msgid "When adding a link, the ID field cannot be empty."
@@ -15508,7 +15508,7 @@ msgstr "Cuando añada un nuevo miembro a la familia, se puede dar un apellido po
 
 #: help_text.php:1331
 msgid "When you add, edit, or delete information, the changes are not saved immediately.  Instead, they are kept in a “pending” area.  These pending changes need to be reviewed by a moderator before they are accepted."
-msgstr "Cuando usted agrega, edita, o elimina información, los cambios no son guardados inmediatamente. En su lugar estos se mantienen en un área “pendiente”. Estos cambios pendientes necesitan ser revisados por un moderador antes de ser aceptados."
+msgstr "Cuando usted agrega, edita, o elimina información, los cambios no son guardados inmediatamente. En su lugar estos se mantienen en un área «pendiente». Estos cambios pendientes necesitan ser revisados por un moderador antes de ser aceptados."
 
 #: help_text.php:1129
 msgid "When you check this option, a copy of the GEDCOM file will be compressed into ZIP format before the download begins.  This will reduce its size considerably, but you will need to use a compatible Unzip program (WinZIP, for example) to decompress the transmitted GEDCOM file before you can use it.<br><br>This is a useful option for downloading large GEDCOM files.  There is a risk that the download time for the uncompressed file may exceed the maximum allowed execution time, resulting in incompletely downloaded files.  The ZIP option should reduce the download time by 75 percent."
@@ -15694,7 +15694,7 @@ msgstr "No se permiten enviar mensajes con enlaces externos."
 #. I18N: Help text for the "Default theme" site configuration setting
 #: help_text.php:985
 msgid "You can change the appearance of webtrees using “themes”.  Each theme has a different style, layout, color scheme, etc."
-msgstr "Puede cambiar la apariencia de webtrees con “temas”. Cada tema tiene su propio estilo, formato, colores, etc."
+msgstr "Puede cambiar la apariencia de webtrees con «temas». Cada tema tiene su propio estilo, formato, colores, etc."
 
 #: help_text.php:1279
 msgid "You can click this button to see whether there is another relationship path between the two individuals.  Previously found paths can be displayed again by clicking the link with the path number."
@@ -15776,7 +15776,7 @@ msgstr "Has elegido un GEDCOM con un nombre diferente. ¿Es correcto?"
 
 #: addmedia.php:455
 msgid "You may enter a URL, beginning with “http://”."
-msgstr "Puede introducir una URL, comenzando por “http://”."
+msgstr "Puede introducir una URL, comenzando por «http://»."
 
 #: modules_v3/faq/help_text.php:35
 msgid "You may use HTML to format the answer and to add links to other websites."
@@ -15849,7 +15849,7 @@ msgstr "Debe configurar una cuenta de administrador. Mediante esta cuenta podrá
 
 #: login.php:511
 msgid "You now need to review the account details, and set the “approved” status to “yes”."
-msgstr "Ahora debe revisar los detalles de la cuenta, y pone el “aprobado” estado en “sí”."
+msgstr "Ahora debe revisar los detalles de la cuenta, y pone el «aprobado» estado en «sí»."
 
 #. I18N: Help text for the “Login URL” site configuration setting
 #: help_text.php:618
@@ -15870,7 +15870,7 @@ msgstr ""
 
 #: help_text.php:1151
 msgid "You should avoid using the vertical line character “|” in your notes.  It is used internally by webtrees and may cause your note to display incorrectly."
-msgstr "No debe usar la línea vertical “|” en sus notas.  webtrees lo utiliza internamente y su nota mostrará de forma incorrecta."
+msgstr "No debe usar la línea vertical «|» en sus notas.  webtrees lo utiliza internamente y su nota mostrará de forma incorrecta."
 
 #: admin_site_upgrade.php:202
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
@@ -15884,7 +15884,7 @@ msgstr ""
 #: login.php:283 message.php:66
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
-msgstr "Debe eliminar el “%1$s” de “%2$s” e inténtelo de nuevo."
+msgstr "Debe eliminar el «%1$s» de «%2$s» e inténtelo de nuevo."
 
 #: help_text.php:1472
 msgid "You should not approve an account unless you know that the email address is correct."
@@ -15942,7 +15942,7 @@ msgstr "El administrador de su servidor le proporcionará los datos de la conexi
 
 #: modules_v3/batch_update/admin_batch_update.php:81
 msgid "Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time."
-msgstr "Su cuenta de usuario no tiene “automáticamente aprobar los cambios” activado. Sólo se podrá cambiar un registro a la vez."
+msgstr "Su cuenta de usuario no tiene «automáticamente aprobar los cambios» activado. Sólo se podrá cambiar un registro a la vez."
 
 #: library/WT/Stats.php:6271
 msgid "Yugoslavia"
@@ -19573,13 +19573,13 @@ msgstr "primo décimo"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:78
-msgid "the database connection settings in the file <b>/data/config.ini.php</b> are still correct"
-msgstr "los ajustes de conexión de la base de datos contenidos en el archivo <b>/data/config.ini.php</b> son correctos"
+msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
+msgstr "los ajustes de conexión de la base de datos contenidos en el archivo «/data/config.ini.php» son correctos"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:79
-msgid "the directory <b>/data</b> and the file <b>/data/config.ini.php</b> have access permissions that allow the webserver to read them"
-msgstr "los permisos de acceso del directorio <b>/data</b> y el archivo <b>/data/config.ini.php</b>  permiten al servidor web la lectura de los mismos"
+msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
+msgstr "los permisos de acceso del directorio «/data» y el archivo «/data/config.ini.php»  permiten al servidor web la lectura de los mismos"
 
 #: includes/functions/functions.php:793
 #, php-format
@@ -19931,7 +19931,7 @@ msgstr[1] "± %d año"
 #: library/WT/Individual.php:1201
 #, php-format
 msgid "“%s”"
-msgstr "“%s”"
+msgstr "«%s»"
 
 #. I18N: %s is the name of an individual, source or other record
 #: modules_v3/user_favorites/module.php:80
