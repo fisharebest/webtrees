@@ -92,7 +92,7 @@ case 'create': // Save the information from the “showcreateform” action
 	// Make sure the media folder exists
 	if (!is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
 		if (WT_File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
-			WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s was created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . '</span>'));
+			WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s has been created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . '</span>'));
 		} else {
 			WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . '</span>'));
 			break;
@@ -103,7 +103,7 @@ case 'create': // Save the information from the “showcreateform” action
 	if ($folderName && !is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
 		if (WT_USER_GEDCOM_ADMIN) {
 			if (WT_File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
-				WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s was created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName . '</span>'));
+				WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s has been created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName . '</span>'));
 			} else {
 				WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName . '</span>'));
 				break;
@@ -253,7 +253,7 @@ case 'update': // Save the information from the “editmedia” action
 	// Make sure the media folder exists
 	if (!is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
 		if (WT_File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
-			WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s was created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . '</span>'));
+			WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s has been created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . '</span>'));
 		} else {
 			WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . '</span>'));
 			break;
@@ -264,7 +264,7 @@ case 'update': // Save the information from the “editmedia” action
 	if ($folderName && !is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
 		if (WT_USER_GEDCOM_ADMIN) {
 			if (WT_File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
-				WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s was created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName . '</span>'));
+				WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s has been created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName . '</span>'));
 			} else {
 				WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName . '</span>'));
 				break;
@@ -336,7 +336,7 @@ case 'update': // Save the information from the “editmedia” action
 
 			if (!file_exists($newServerFile) || @md5_file($oldServerFile) == md5_file($newServerFile)) {
 				if (@rename($oldServerFile, $newServerFile)) {
-					WT_FlashMessages::addMessage(WT_I18N::translate('The media file %1$s was renamed to %2$s.', '<span class="filename">' . $oldFilename . '</span>', '<span class="filename">' . $newFilename . '</span>'));
+					WT_FlashMessages::addMessage(WT_I18N::translate('The media file %1$s has been renamed to %2$s.', '<span class="filename">' . $oldFilename . '</span>', '<span class="filename">' . $newFilename . '</span>'));
 				} else {
 					WT_FlashMessages::addMessage(WT_I18N::translate('The media file %1$s could not be renamed to %2$s.', '<span class="filename">' . $oldFilename . '</span>', '<span class="filename">' . $newFilename . '</span>'));
 				}
@@ -350,7 +350,7 @@ case 'update': // Save the information from the “editmedia” action
 		if ($oldServerThumb != $newServerThumb) {
 			if (!file_exists($newServerThumb) || @md5_file($oldServerFile) == md5_file($newServerThumb)) {
 				if (@rename($oldServerThumb, $newServerThumb)) {
-					WT_FlashMessages::addMessage(WT_I18N::translate('The thumbnail file %1$s was renamed to %2$s.', '<span class="filename">' . $oldFilename . '</span>', '<span class="filename">' . $newFilename . '</span>'));
+					WT_FlashMessages::addMessage(WT_I18N::translate('The thumbnail file %1$s has been renamed to %2$s.', '<span class="filename">' . $oldFilename . '</span>', '<span class="filename">' . $newFilename . '</span>'));
 				} else {
 					WT_FlashMessages::addMessage(WT_I18N::translate('The thumbnail file %1$s could not be renamed to %2$s.', '<span class="filename">' . $oldFilename . '</span>', '<span class="filename">' . $newFilename . '</span>'));
 				}

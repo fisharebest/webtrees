@@ -359,7 +359,7 @@ case 'general':
 			$WT_TREE->setPreference('MEDIA_DIRECTORY', $MEDIA_DIRECTORY);
 		} elseif (WT_File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
 			$WT_TREE->setPreference('MEDIA_DIRECTORY', $MEDIA_DIRECTORY);
-			WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s was created.', WT_DATA_DIR . $MEDIA_DIRECTORY));
+			WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s has been created.', WT_DATA_DIR . $MEDIA_DIRECTORY));
 		} else {
 			WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s does not exist, and it could not be created.', WT_DATA_DIR . $MEDIA_DIRECTORY));
 		}
@@ -490,7 +490,7 @@ $controller
 				value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('MAX_ALIVE_AGE')); ?>"
 				>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Age at which to assume an individual is dead” configuration setting */ WT_I18N::translate('If this individual has any events other than death, burial, or cremation more recent than this number of years, he is considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose.'); ?>
+				<?php echo /* I18N: Help text for the “Age at which to assume an individual is dead” configuration setting */ WT_I18N::translate('If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose.'); ?>
 			</p>
 		</div>
 	</div>
@@ -818,7 +818,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo radio_buttons('WORD_WRAPPED_NOTES', $no_yes, $WT_TREE->getPreference('WORD_WRAPPED_NOTES'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Add spaces where notes were wrapped” configuration setting */ WT_I18N::translate('Some genealogy programs wrap notes at word boundaries while others wrap notes anywhere.  This can cause webtrees to run words together.  Setting this to <b>Yes</b> will add a space between words where they are wrapped in the original GEDCOM during the import process. If you have already imported the file you will need to re-import it.'); ?>
+				<?php echo /* I18N: Help text for the “Add spaces where notes were wrapped” configuration setting */ WT_I18N::translate('Some genealogy programs wrap notes at word boundaries while others wrap notes anywhere.  This can cause webtrees to run words together.  Setting this to <b>Yes</b> will add a space between words where they are wrapped in the original GEDCOM during the import process.  If you have already imported the file you will need to re-import it.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -1272,7 +1272,7 @@ $controller
 	<!-- COMMON_NAMES_THRESHOLD -->
 	<div class="form-group">
 		<label class="control-label col-sm-3" for="COMMON_NAMES_THRESHOLD">
-			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Min. no. of occurrences to be a “common surname”'); ?>
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Minimum number of occurrences to be a “common surname”'); ?>
 		</label>
 		<div class="col-sm-9">
 			<input
@@ -1285,7 +1285,7 @@ $controller
 				value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('COMMON_NAMES_THRESHOLD')); ?>"
 				>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Min. no. of occurrences to be a ‘common surname’” configuration setting */ WT_I18N::translate('This is the number of times that a surname must occur before it shows up in the Common Surname list on the “Home page”.'); ?>
+				<?php echo /* I18N: Help text for the “Minimum number of occurrences to be a ‘common surname’” configuration setting */ WT_I18N::translate('This is the number of times that a surname must occur before it shows up in the Common Surname list on the “Home page”.'); ?>
 			</p>
 		</div>
 	</div>

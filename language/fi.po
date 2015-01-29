@@ -720,7 +720,7 @@ msgid "A new password has been created and emailed to %s.  You can change this p
 msgstr "Uusi salasana on luotu ja lähetetty sähköpostitse käyttäjälle %s. Voit muuttaa tuon salasanan kun kirjaudut sisään uudestaan."
 
 #: login.php:246
-msgid "A new password was requested for your user name."
+msgid "A new password has been requested for your user name."
 msgstr "Uusi salasana on pyydetty käyttäjätunnuksellesi!"
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
@@ -5239,7 +5239,7 @@ msgid "E-mail address to be used in the “From:” field of e-mails that webtre
 msgstr "Sähköpostiosoite ”From:” jota webtrees käyttää luodessaan automaattisia sähköposteja.<br><br>webtrees voi lähettää ylläpitäjille automaattisesti postia, kun muutoksia on tehty ja niitä pitää tarkistaa.webtrees lähettää lisäksi postia käyttäjille, jotka ovat pyytäneet käyttäjätilin.<br><br>Tavallisesti ”From:” kenttä, jota käytetään automaattisissa sähköposteissa, on muodossa <i>From: webtrees-noreply@sivustosi-osoite</i>, jolla halutaan korostaa (noreply) ettei postiin tarvitse vastata. Roskapostin estämiseksi, jotkut sähköpostipalvelut vaativat että ”From:” kenttään täytetään oikea ja olemassa oleva sähköpostiosoite."
 
 #: help_text.php:1175
-msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
+msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County.  “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
 msgstr "Lähdetiedoissa kuvataan tietoja ajan ja paikan suhteen. Esimerkiksi väestölaskenta kuvaa väestönlaskennan tiedot ja kirkonkirjat kuvaavat syntymä-, avioliitto- ja kuolematiedot.<br><br>Valitse tapahtumat jotka voi saada tästä tiedonlähteestä. Aika tulisi kuvata ajanjaksona <i>FROM 1900 TO 1910</i> eli alkaen - asti. Paikkatiedolla ilmoitetaan, mikä alue on kyseessä. Esimerkiksi Oulun maakunta-arkistosta saatuja tietoja koskien Oulua olisi paikkatietona ”Oulu, Oulu, FIN” (pitäjä, lääni, maa) tai esim. tieto Yhdysvalloista ”Oneida, Idaho, USA” (city, state, country)."
 
 #: help_text.php:1340
@@ -5672,7 +5672,7 @@ msgid "Events of close relatives"
 msgstr "Lähisukulaisten tapahtumat"
 
 #: help_text.php:1363
-msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
+msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the comments field to help the site administrator identify who you are on this site so that they can set the ID for you."
 msgstr "Jokaisella henkilöllä tietokannassa on oma yksilöllinen tunnus. Jos tiedät tunnuksesi, lisää se tähän. Jos et tiedä sitä tai et voinut löytää sitä yksityisyysasetusten vuoksi, toimita kommenttikenttään riittävästi tietoa itsestäsi, jotta ylläpitäjä voi tunnistaa sinut ja asettaa tunnuksen."
 
 #: help_text.php:1378
@@ -7291,7 +7291,7 @@ msgid "If this box is checked, this user will be able to edit his account inform
 msgstr "Jos tämä ruutu on rastitettu, tämä käyttäjä voi muuttaa käyttäjätietojaan. Jos ruutua ei ole rastitettu, hän ei voi muuttaa käyttäjätietojaan. Tällä tavoin voit luoda yhden käyttäjätunnuksen ja salasanan usealle käyttäjälle yhteisesti ja estää heitä muuttamasta kyttäjätietojaan."
 
 #: help_text.php:623
-msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, he is considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
+msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
 msgstr "Jos tällä henkilöllä on muita tapahtumia kuin kuolema, hautajaiset tai polttohautaus, ja ne ovat ajallisesti tapahtuneet näin monen vuoden sisällä, niin henkilön tulkitaan olevan ”elossa”. Lapsen syntymäaika tulkintaan merkiksi ”elossa” olemisesta."
 
 #: help_text.php:661
@@ -9066,11 +9066,11 @@ msgid "Military service"
 msgstr "Asepalvelus"
 
 #: admin_trees_config.php:758 help_text.php:475
-msgid "Min. no. of occurrences to be a “common surname”"
+msgid "Minimum number of occurrences to be a “common surname”"
 msgstr "”Yleinen sukunimi”, kun sukunimi esiintyy vähintään (lukumäärä)"
 
 #: modules_v3/googlemap/help_text.php:32
-msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house.  Note that 15 is only available in certain areas."
+msgid "Minimum and maximum zoom level for the Google map.  1 is the full map, 15 is single house.  Note that 15 is only available in certain areas."
 msgstr "Pienin ja suurin zoomauskerroin Google Mapsille. 1 on täysi kartta ja 15 on yksittäinen talo. Huomaa, että 15 on saatavilla vain tietyillä alueilla."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
@@ -9689,7 +9689,7 @@ msgid "No custom themes are enabled."
 msgstr "Omia teemoja ei ole käytössä."
 
 #: admin_trees_check.php:264
-msgid "No errors were found."
+msgid "No errors have been found."
 msgstr "Virheitä ei löytynyt."
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
@@ -9752,7 +9752,7 @@ msgid "No logged-in and no anonymous users"
 msgstr "Ei kirjautuneita eikä tuntemattomia käyttäjiä"
 
 #: modules_v3/googlemap/module.php:202
-msgid "No map data for this person"
+msgid "No map data for this individual"
 msgstr "Ei kartta tietoa tällä henkilöllä"
 
 #: admin_site_merge.php:106
@@ -9776,7 +9776,7 @@ msgid "No places found"
 msgstr "Paikkoja ei löytynyt"
 
 #: admin_trees_places.php:124
-msgid "No places were found."
+msgid "No places have been found."
 msgstr "Paikkoja ei löytynyt"
 
 #: admin_site_config.php:46
@@ -11412,7 +11412,7 @@ msgid "Remove link from list"
 msgstr "Poista liitos listalta"
 
 #: help_text.php:1367 timeline.php:281 timeline.php:296
-msgid "Remove person"
+msgid "Remove individual"
 msgstr "Poista henkilö"
 
 #: modules_v3/googlemap/module.php:4468
@@ -13336,7 +13336,7 @@ msgid "The administrator at the webtrees site %s has approved your application f
 msgstr "webtrees %sn ylläpitäjä on hyväksynyt pyyntösi perustaa sinulle käyttäjätilin. Voit kirjautua sisään klikkaamalla seuraavaa linkkiä: %s"
 
 #: login.php:567
-msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
+msgid "The administrator has been informed.  As soon as they give you permission to login, you can login with your user name and password."
 msgstr "Ylläpitäjä on saanut ilmoituksen. Heti kun hän on antanut sinulle oikeuden kirjautua, voit kirjautua käyttäjätunnuksella ja salasanalla."
 
 #. I18N: %s is the name of an individual, source or other record
@@ -13361,7 +13361,7 @@ msgstr "Ylläpitäjän käyttäjätunnus pitää olla sama webtrees:ssa ja PGV:s
 
 #: login.php:533
 #, php-format
-msgid "The data for the user <b>%s</b> was checked."
+msgid "The data for the user <b>%s</b> has been checked."
 msgstr "Käyttäjä %s - tiedot on tarkastettu."
 
 #: site-unavailable.php:71
@@ -13381,13 +13381,13 @@ msgid "The details of this individual are private."
 msgstr "Tämän henkilön yksityiskohdat ovat yksityisiä."
 
 #: admin_trees_merge.php:176
-msgid "The family trees were merged successfully."
+msgid "The family trees have been merged successfully."
 msgstr "Sukupuiden yhdistäminen onnistui."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:160
 #, php-format
-msgid "The family “%s” was deleted because it only has one member."
+msgid "The family “%s” has been deleted because it only has one member."
 msgstr "Perhe ”%s” on poistettu, koska siinä on vain yksi jäsen."
 
 #: addmedia.php:174 admin_media_upload.php:133
@@ -13413,18 +13413,18 @@ msgstr "Tiedostoa %s ei voitu päivittää."
 
 #: admin_site_upgrade.php:415
 #, php-format
-msgid "The file %s was created."
+msgid "The file %s has been created."
 msgstr "Tiedosto %s luotiin."
 
 #: admin_media.php:60 admin_media.php:67 admin_site_upgrade.php:463
 #: admin_site_upgrade.php:484
 #, php-format
-msgid "The file %s was deleted."
+msgid "The file %s has been deleted."
 msgstr "Tiedosto %s poistettiin."
 
 #: admin_media_upload.php:138 admin_media_upload.php:156
 #, php-format
-msgid "The file %s was uploaded."
+msgid "The file %s has been uploaded."
 msgstr "Tiedosto %s on ladattu palvelimelle."
 
 #. I18N: %s is a filename
@@ -13450,12 +13450,12 @@ msgstr "Kansio %s ei ole olemassa, ja sitä ei voi luoda."
 #: admin_media_upload.php:61 admin_media_upload.php:72
 #: admin_trees_config.php:188
 #, php-format
-msgid "The folder %s was created."
+msgid "The folder %s has been created."
 msgstr "Kansio %s on luotu."
 
 #: admin_site_upgrade.php:478
 #, php-format
-msgid "The folder %s was deleted."
+msgid "The folder %s has been deleted."
 msgstr "Kansio %s poistettiin."
 
 #: help_text.php:587
@@ -13483,7 +13483,7 @@ msgid "The following message has been sent to your webtrees user account from "
 msgstr "Seuraava viesti on lähetetty webtrees käyttäjätilillesi: "
 
 #: admin_trees_places.php:111
-msgid "The following places were changed:"
+msgid "The following places have been changed:"
 msgstr "Seuraavat paikat muuttuivat:"
 
 #: admin_trees_places.php:111
@@ -13532,7 +13532,7 @@ msgstr "Mediatiedosto %1$s ei voi nimetä uudelleen %2$s:ksi."
 
 #: addmedia.php:337
 #, php-format
-msgid "The media file %1$s was renamed to %2$s."
+msgid "The media file %1$s has been renamed to %2$s."
 msgstr "Mediatiedosto %1$s nimetty uudelleen %2$s:ksi."
 
 #: addmedia.php:344
@@ -13583,11 +13583,11 @@ msgstr "Etuliite on valinnainen, mutta suositellaan. Käytettäessä etuliitett�
 
 #: admin_trees_renumber.php:237
 #, php-format
-msgid "The record %1$s was renamed to %2$s."
+msgid "The record %1$s has been renamed to %2$s."
 msgstr "Tietue %1$s muutettiin tietueeksi %2$s."
 
 #: action.php:100
-msgid "The record was copied to the clipboard."
+msgid "The record has been copied to the clipboard."
 msgstr "Tietue kopioitu leikepöydälle"
 
 #: modules_v3/batch_update/plugins/search_replace.php:110
@@ -13599,7 +13599,7 @@ msgid "The server configuration is OK."
 msgstr "Palvelimen asetukset ovat kunnossa"
 
 #: admin_trees_renumber.php:252
-msgid "The server’s time limit was reached."
+msgid "The server’s time limit has been reached."
 msgstr "Palvelimen aikaraja on saavutettu."
 
 #: site-offline.php:77
@@ -13627,7 +13627,7 @@ msgstr "Pienoiskuvan tiedostonnimi %1$s ei voitu nimetä uudelleen %2$s:ksi."
 
 #: addmedia.php:351
 #, php-format
-msgid "The thumbnail file %1$s was renamed to %2$s."
+msgid "The thumbnail file %1$s has been renamed to %2$s."
 msgstr "Pienoiskuvan tiedostonnimi %1$s on nimetty uudelleen %2$s:ksi."
 
 #: addmedia.php:358
@@ -13934,7 +13934,7 @@ msgid "This input box lets you change that year of the calendar.  Type a year in
 msgstr "Tässä kentässä voit muuttaa kalenterivuoden.<br><br><b>Erityisominaisuuksia</b> <b>Näytä vuosi</b><dl><dt><b>Enemmän kuin yksi vuosi</b></dt><dd>Voit hakea päivämääriä vuosijakson sisällä.<br><br>Vuosijaksossa aikaalue ulottuu ensimmäisen vuoden 1. tammikuusta viimeisen vuoden 31. joulukuuta asti. Tässä muutama esimerkki vuosijaksoista:<br><br><b>1992-5</b> Kaikki tapahtumat vuodesta 1992 vuoteen 1995.<br><b>1972-89</b> Kaikki tapahtumat vuodesta 1972 vuoteen 1989.<br><b>1610-759</b> Kaikki tapahtumat vuodesta 1610 vuoteen 1759.<br><b>1880-1905</b> Kaikki tapahtumat vuodesta 1880 vuoteen 1905.<br><b>880-1105</b> Kaikki tapahtumat vuodesta 880 vuoteen 1105.<br><br>Nähdäksesi kaikki tapahtumat tietyllä vuosikymmenellä tai vuosisadalla, voit kirjoittaa <b>?</b> viimeisten numeromerkkien asemesta. Esimerkiksi <b>197?</b> kaikki tapahtumat vuosina 1970-1979 tai <b>16??</b> kaikki tapahtumat vuosina 1600-1699.<br><br>Valitsemalla vuosijakson kalenterinäkymä muuttuu vuosinäkymäksi.</dd></dl>"
 
 #: modules_v3/clippings/help_text.php:32
-msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the “Add” button."
+msgid "This input box lets you enter an individual’s ID number so they can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the “Add” button."
 msgstr "Tähän kenttään voit kirjoittaa henkilön tunnuksen lisätäksesi hänet leikekoriin. Kun hänet on lisätty, sinulle annetaan mahdollisuus linkittää kyseisen henkilön sukulaisuussuhteet leikekoriisi<br><br>Jos et tiedä henkilön tunnusta, voit suorittaa haun klikkaamalla henkilön kuvaketta lisää-painikkeen vieressä."
 
 #: help_text.php:407
@@ -15299,7 +15299,7 @@ msgstr "Näytä lisätiedot"
 
 #: medialist.php:286 modules_v3/googlemap/module.php:1322
 #: modules_v3/random_media/module.php:177
-msgid "View person"
+msgid "View individual"
 msgstr "Katso henkilöä"
 
 #: medialist.php:292 modules_v3/random_media/module.php:183

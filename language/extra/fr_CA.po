@@ -722,7 +722,7 @@ msgid "A new password has been created and emailed to %s.  You can change this p
 msgstr "Un nouveau mot de passe a été créé et a été envoyé à  %s.  Vous pouvez le modifier une fois connecté."
 
 #: login.php:246
-msgid "A new password was requested for your user name."
+msgid "A new password has been requested for your user name."
 msgstr "Un nouveau mot de passe a été demandé pour votre compte!"
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
@@ -5241,7 +5241,7 @@ msgid "E-mail address to be used in the “From:” field of e-mails that webtre
 msgstr "Adresse courriel utilisée dans le champ &laquo;De:&raquo; pour les courriels que webtrees crée automatiquement.<br><br>webtrees peut créer automatiquement des courriels pour informer les administrateurs des changements survenus. webtrees envoie également des notifications par courriel à des utilisateurs qui ont demandé un compte.<br><br>Habituellement, le champ &laquo;De:&raquo; de ces courriels automatiques est quelque chose comme <i>De: webtrees-noreply@yoursite</i> pour montrer qu’il n’y a pas de réponse nécessaire à faire à ce courriel. Pour se prémunir contre le spam ou autres abus de courriel, certains systèmes de courrier électronique exigent que le champ &laquo;De:&raquo; doive être celui d’un compte courriel valide et les messages venant de <i>webtrees-noreply</i> ne seront pas acceptés."
 
 #: help_text.php:1175
-msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
+msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County.  “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
 msgstr "Chaque source enregistre des évènements spécifiques, généralement pour un intervalle de dates données et pour un endroit de juridiction. Par exemple, un recensement enregistre des évènements de recensement et les registres religieux enregistrent des évènements de naissance, mariage, et décès.<br><br>Sélectionnez les événements enregistrés par cette source dans la liste des évènements fournis. La date doit être spécifiée selon un format d’intervalle tel que <i>FROM 1900 TO 1910</i>. L’endroit de juridiction est le nom de la plus petite juridiction qui renferme tous les endroits de plus bas niveau nommés dans cette source. Par exemple, «&nbsp;Oneida, Idaho, USA&nbsp;» sera utilisé en tant que lieu de juridiction source pour les évènements survenus dans les différentes villes du comté d’Oneida. «&nbsp;Idaho, USA&nbsp;» sera l’endroit de juridiction source si les évènements  enregistrés ont eu lieu non seulement dans le comté d’Oneida mais aussi dans les autres comtés de l’Idaho."
 
 #: help_text.php:1340
@@ -5674,7 +5674,7 @@ msgid "Events of close relatives"
 msgstr "Événements de la famille proche"
 
 #: help_text.php:1363
-msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
+msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the comments field to help the site administrator identify who you are on this site so that they can set the ID for you."
 msgstr "Chaque personne figurant dans la base est identifiée par un numéro d’ID unique sur ce site. Si vous connaissez le numéro d’ID de votre enregistrement, entrez-le ici. Si vous ne le connaissez pas ou ne pouvez pas le trouver à cause des règles de protections sur la vie privée, veuillez laisser assez de renseignements dans le champ Commentaires pour aider l’administrateur du site à vous identifier, afin de mettre à jour ce champ avec votre numéro d’ID."
 
 #: help_text.php:1378
@@ -7293,7 +7293,7 @@ msgid "If this box is checked, this user will be able to edit his account inform
 msgstr "Option pour autoriser la modification de certains paramètres du compte par l’utilisateur.<br><br>Si la case n’est <b>pas</b> cochée, les modifications seront interdites.<br><br>Cette fonction permet de créer un compte générique, utilisable par plusieurs personnes, mais en interdisant à chacun de le modifier."
 
 #: help_text.php:623
-msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, he is considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
+msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
 msgstr "Si cet individu a des évènements autres que décès, inhumation ou crémation plus récents que ce nombre d’années, il est considéré comme «&nbsp;vivant&nbsp;». Les dates de naissance des enfants sont considérées comme des évènements récents pour l’individu."
 
 #: help_text.php:661
@@ -9068,11 +9068,11 @@ msgid "Military service"
 msgstr "Service militaire"
 
 #: admin_trees_config.php:758 help_text.php:475
-msgid "Min. no. of occurrences to be a “common surname”"
+msgid "Minimum number of occurrences to be a “common surname”"
 msgstr "Min. d’occurrences d’un nom pour être dans la liste des «&nbsp;Principaux noms de familles&nbsp;»"
 
 #: modules_v3/googlemap/help_text.php:32
-msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house.  Note that 15 is only available in certain areas."
+msgid "Minimum and maximum zoom level for the Google map.  1 is the full map, 15 is single house.  Note that 15 is only available in certain areas."
 msgstr "Facteur de zoom mini et maxi applicable à la carte. 1 correspond à une vue de la carte entière, 15 permet de voir juste une maison. Notez qu’un zoom de 15 est disponible uniquement à certains endroits."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
@@ -9691,7 +9691,7 @@ msgid "No custom themes are enabled."
 msgstr "Aucun thème personnalisé est activé."
 
 #: admin_trees_check.php:264
-msgid "No errors were found."
+msgid "No errors have been found."
 msgstr "Aucune erreur trouvée"
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
@@ -9754,7 +9754,7 @@ msgid "No logged-in and no anonymous users"
 msgstr "Aucun utilisateur connecté"
 
 #: modules_v3/googlemap/module.php:202
-msgid "No map data for this person"
+msgid "No map data for this individual"
 msgstr "Aucune donnée cartographique pour cette personne"
 
 #: admin_site_merge.php:106
@@ -9778,7 +9778,7 @@ msgid "No places found"
 msgstr "Lieu introuvable"
 
 #: admin_trees_places.php:124
-msgid "No places were found."
+msgid "No places have been found."
 msgstr "Aucun lieu trouvé."
 
 #: admin_site_config.php:46
@@ -11414,7 +11414,7 @@ msgid "Remove link from list"
 msgstr "Supprimer le lien dans la liste"
 
 #: help_text.php:1367 timeline.php:281 timeline.php:296
-msgid "Remove person"
+msgid "Remove individual"
 msgstr "Personne à supprimer"
 
 #: modules_v3/googlemap/module.php:4468
@@ -13338,7 +13338,7 @@ msgid "The administrator at the webtrees site %s has approved your application f
 msgstr "L’administrateur du site webtrees %s a approuvé votre demande de compte. Vous pouvez maintenant vous connecter en y accédant à l’aide du lien suivant&nbsp;: %s"
 
 #: login.php:567
-msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
+msgid "The administrator has been informed.  As soon as they give you permission to login, you can login with your user name and password."
 msgstr "L’administrateur a été informé.<br>Vous pourrez vous connecter avec votre identifiant de connexion et votre mot de passe dès qu’il vous en aura donné l’autorisation."
 
 #. I18N: %s is the name of an individual, source or other record
@@ -13363,7 +13363,7 @@ msgstr "Le nom de l’administrateur courant webtrees doit être le même que le
 
 #: login.php:533
 #, php-format
-msgid "The data for the user <b>%s</b> was checked."
+msgid "The data for the user <b>%s</b> has been checked."
 msgstr "Les informations de l’utilisateur %s ont été contrôlées."
 
 #: site-unavailable.php:71
@@ -13383,13 +13383,13 @@ msgid "The details of this individual are private."
 msgstr "Les détails de cette personne sont privés."
 
 #: admin_trees_merge.php:176
-msgid "The family trees were merged successfully."
+msgid "The family trees have been merged successfully."
 msgstr "Les arbres généalogiques ont été fusionnés avec succès."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:160
 #, php-format
-msgid "The family “%s” was deleted because it only has one member."
+msgid "The family “%s” has been deleted because it only has one member."
 msgstr "La famille «&nbsp;%s&nbsp;» a été supprimée car elle n’avait qu’un seul membre."
 
 #: addmedia.php:174 admin_media_upload.php:133
@@ -13415,18 +13415,18 @@ msgstr "Le fichier %s n’a pas pu être mis à jour."
 
 #: admin_site_upgrade.php:415
 #, php-format
-msgid "The file %s was created."
+msgid "The file %s has been created."
 msgstr "Le fichier %s a été créé."
 
 #: admin_media.php:60 admin_media.php:67 admin_site_upgrade.php:463
 #: admin_site_upgrade.php:484
 #, php-format
-msgid "The file %s was deleted."
+msgid "The file %s has been deleted."
 msgstr "Le fichier %s a été supprimé."
 
 #: admin_media_upload.php:138 admin_media_upload.php:156
 #, php-format
-msgid "The file %s was uploaded."
+msgid "The file %s has been uploaded."
 msgstr "Le fichier %s a été téléversé."
 
 #. I18N: %s is a filename
@@ -13452,12 +13452,12 @@ msgstr "Le dossier %s n’existe pas et ne peut être créé."
 #: admin_media_upload.php:61 admin_media_upload.php:72
 #: admin_trees_config.php:188
 #, php-format
-msgid "The folder %s was created."
+msgid "The folder %s has been created."
 msgstr "Le dossier %s a été créé."
 
 #: admin_site_upgrade.php:478
 #, php-format
-msgid "The folder %s was deleted."
+msgid "The folder %s has been deleted."
 msgstr "Le dossier %s a été supprimé."
 
 #: help_text.php:587
@@ -13485,7 +13485,7 @@ msgid "The following message has been sent to your webtrees user account from "
 msgstr "Le message suivant vous a été envoyé par "
 
 #: admin_trees_places.php:111
-msgid "The following places were changed:"
+msgid "The following places have been changed:"
 msgstr "Les lieux ci-dessous ont été changés :"
 
 #: admin_trees_places.php:111
@@ -13534,7 +13534,7 @@ msgstr "Le fichier média %1$s ne peut pas être renommé en %2$s."
 
 #: addmedia.php:337
 #, php-format
-msgid "The media file %1$s was renamed to %2$s."
+msgid "The media file %1$s has been renamed to %2$s."
 msgstr "Le fichier média %1$s a été renommé avec succès en %2$s."
 
 #: addmedia.php:344
@@ -13585,11 +13585,11 @@ msgstr "Le préfixe est optionnel, mais recommandé. En donnant à vos tables un
 
 #: admin_trees_renumber.php:237
 #, php-format
-msgid "The record %1$s was renamed to %2$s."
+msgid "The record %1$s has been renamed to %2$s."
 msgstr "L’enregistrement %1$s a été renommé %2$s."
 
 #: action.php:100
-msgid "The record was copied to the clipboard."
+msgid "The record has been copied to the clipboard."
 msgstr "Enregistrement copié dans le presse-papiers"
 
 #: modules_v3/batch_update/plugins/search_replace.php:110
@@ -13601,7 +13601,7 @@ msgid "The server configuration is OK."
 msgstr "La configuration du serveur est correcte."
 
 #: admin_trees_renumber.php:252
-msgid "The server’s time limit was reached."
+msgid "The server’s time limit has been reached."
 msgstr "La durée limite du serveur a été atteinte."
 
 #: site-offline.php:77
@@ -13629,7 +13629,7 @@ msgstr "Le fichier miniature %1$s ne peut pas être renommé en %2$s."
 
 #: addmedia.php:351
 #, php-format
-msgid "The thumbnail file %1$s was renamed to %2$s."
+msgid "The thumbnail file %1$s has been renamed to %2$s."
 msgstr "Le fichier miniature %1$s a été renommé avec succès en %2$s."
 
 #: addmedia.php:358
@@ -13936,7 +13936,7 @@ msgid "This input box lets you change that year of the calendar.  Type a year in
 msgstr "Cette case vous permet de changer l’année du calendrier. Entrez une année, puis appuyez sur <b>Entrée</b> pour afficher le calendrier de cette année. <br><br><b>Fonctionnalités avancées</b> pour <b>Afficher année</b><dl><dt><b>Plus d’une année</b></dt><dd>Vous pouvez chercher une date sur un intervalle d’années<br><br>L’intervalle est considéré avec les bornes <u>incluses</u>. Ce qui signifie que la plage couverte s’étend du 1<sup>er</sup> janvier de la première date au 31 décembre de la deuxième. Par exemple&nbsp;:<br><br><b>1992-5</b> pour tous les évènements de 1992 à 1995.<br><b>1972-89</b> tous les évènements de 1972 à 1989.<br><b>1610-759</b> tous les évènements de 1610 à 1759.<br><b>1880-1905</b> tous les évènements de 1880 à 1905.<br><b>880-1105</b> tous les évènements de 880 à 1105.<br><br>Pour sélectionner une décade, vous pouvez utiliser le caractère générique <b>?</b> à la place des chiffres finaux. Par exemple&nbsp;: <b>197?</b> pour tous les évènements de 1970 à 1979 ou <b>16??</b> pour tous les événements de 1600 à 1699.</dd></dl>"
 
 #: modules_v3/clippings/help_text.php:32
-msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the “Add” button."
+msgid "This input box lets you enter an individual’s ID number so they can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the “Add” button."
 msgstr "Cette case de saisie vous permet de saisir le code d’un individu, d’une famille ou d’une source pour l’ajouter au panier.  Une fois ajouté, vous avez la possibilité d’ajouter les relations de cet individu/famille/source à votre panier.<br><br>Si vous ne connaissez pas le code, vous pouvez effectuer une recherche par nom en cliquant sur l’icône «&nbsp;choisir&nbsp;» appropriée."
 
 #: help_text.php:407
@@ -15301,7 +15301,7 @@ msgstr "Voir les notes"
 
 #: medialist.php:286 modules_v3/googlemap/module.php:1322
 #: modules_v3/random_media/module.php:177
-msgid "View person"
+msgid "View individual"
 msgstr "Afficher la personne"
 
 #: medialist.php:292 modules_v3/random_media/module.php:183

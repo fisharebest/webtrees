@@ -724,7 +724,7 @@ msgid "A new password has been created and emailed to %s.  You can change this p
 msgstr "En ny adgangskode er oprettet og sendt til %s. Du bør ændre adgangskoden efter du er logget ind."
 
 #: login.php:246
-msgid "A new password was requested for your user name."
+msgid "A new password has been requested for your user name."
 msgstr "Der blev bestilt en ny adgangskode til dit brugernavn."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
@@ -5243,7 +5243,7 @@ msgid "E-mail address to be used in the “From:” field of e-mails that webtre
 msgstr "E- mail adresse der skal bruges i &laquo;Fra:&raquo;-feltet for de e-mails som webtrees automatisk opretter.<br><br>webtrees kan automatisk oprette e-mails til at underrette administratorer om ændringer, som skal kontrolleres. webtrees sender også besked via e-mails til brugere, der har anmodet om en brugerkonto.<br><br>Normalt er &laquo;Fra:&raquo-feltet i disse automatiske e-mail udfyldt med <i>Fra: webtrees-noreply@yoursite</i> for at vise at det ikke er nødvendigt at svare på denne e-mail. For at beskytte mod spam eller anden misbrug af e-mail så kræver nogle e-mail systemer at &laquo;Fra:&raquo;-feltet indeholder en gyldig e-mail adresse, og vil ikke acceptere beskeder der blot kommer fra <i>webtrees-noreply</i>."
 
 #: help_text.php:1175
-msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
+msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County.  “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
 msgstr "Hver kilde registrerer særlige begivenheder, normalt indenfor en dato og et sted/område. For eksempel optegnelser i en folketælling eller kirkebøgernes oplysninger om begivenheder som fødsel, vielse og død.<br><br>Vælg den ønskede begivenhed fra den liste over begivenheder som webtrees indeholder. Datoen skal angives med det korrekte format fx <i>FROM 1900 TO 1910</i>. Stedet benævnes med den mest præcise placering for kilden. For eksempel vil “Oneida, Idaho, USA” angive at begivenheden skete indenfor det begræsede område Oneida County. “Idaho, USA” vil angive at begivenheden fandt sted indenfor hele staten Idaho."
 
 #: help_text.php:1340
@@ -5676,7 +5676,7 @@ msgid "Events of close relatives"
 msgstr "Begivenheder for nære slægtninge"
 
 #: help_text.php:1363
-msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
+msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the comments field to help the site administrator identify who you are on this site so that they can set the ID for you."
 msgstr "Hver person i slægtsdatabasen har et entydigt ID nr.  Hvis du kender dit eget ID nr., kan du opgive det her.  Hvis du ikke kan huske ID nummeret, eller ikke kan finde det på grund af indstillingerne for privatlivets beskyttelse, så opgiv venligst nok information i Kommentar-feltet, sål administratoren af hjemmesiden kan identificere dig, og så han/hun kan angive ID nummeret for dig."
 
 #: help_text.php:1378
@@ -7295,7 +7295,7 @@ msgid "If this box is checked, this user will be able to edit his account inform
 msgstr "Hvis denne valgmulighed er afmærket, vil brugeren have rettigheder til at ændre sin egen brugerkonto.<br><br>Hvis valget ikke er afmærket, vil brugeren ikke kunne ændre sine egne brugervalg.  Dette giver dig muligheden for at lave et fælles brugernavn og adgangskode for flere brugere og hindre dem i at ændre den fælles brugerkonto."
 
 #: help_text.php:623
-msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, he is considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
+msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
 msgstr "Hvis denne person har andre begivenheder end Død, Begravelse eller Kremering som er nyere end dette antal år, anses personen som \"levende\". Børns fødselsdatoer anses for at være sådanne begivenheder."
 
 #: help_text.php:661
@@ -9070,11 +9070,11 @@ msgid "Military service"
 msgstr "Militærtjeneste"
 
 #: admin_trees_config.php:758 help_text.php:475
-msgid "Min. no. of occurrences to be a “common surname”"
+msgid "Minimum number of occurrences to be a “common surname”"
 msgstr "Minimum antal for at blive \"almindeligt efternavn\""
 
 #: modules_v3/googlemap/help_text.php:32
-msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house.  Note that 15 is only available in certain areas."
+msgid "Minimum and maximum zoom level for the Google map.  1 is the full map, 15 is single house.  Note that 15 is only available in certain areas."
 msgstr "Minimum og maksimum zoom faktor for Google kortet. 1 er hele kortet, 15 er på husniveau. Bemærk at 15 kun er tilgængelig i bestemte områder."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
@@ -9693,7 +9693,7 @@ msgid "No custom themes are enabled."
 msgstr "Ingen brugerdefinerede temaer er aktive"
 
 #: admin_trees_check.php:264
-msgid "No errors were found."
+msgid "No errors have been found."
 msgstr "Ingen fejl fundet"
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
@@ -9756,7 +9756,7 @@ msgid "No logged-in and no anonymous users"
 msgstr "Ingen logget ind og ingen anonyme brugere"
 
 #: modules_v3/googlemap/module.php:202
-msgid "No map data for this person"
+msgid "No map data for this individual"
 msgstr "Ingen kortdata for denne person"
 
 #: admin_site_merge.php:106
@@ -9780,7 +9780,7 @@ msgid "No places found"
 msgstr "Ingen steder fundet"
 
 #: admin_trees_places.php:124
-msgid "No places were found."
+msgid "No places have been found."
 msgstr "Ingen stednavne fundet"
 
 #: admin_site_config.php:46
@@ -11416,7 +11416,7 @@ msgid "Remove link from list"
 msgstr "Fjern link fra listen"
 
 #: help_text.php:1367 timeline.php:281 timeline.php:296
-msgid "Remove person"
+msgid "Remove individual"
 msgstr "Fjern person"
 
 #: modules_v3/googlemap/module.php:4468
@@ -13340,7 +13340,7 @@ msgid "The administrator at the webtrees site %s has approved your application f
 msgstr "Administratoren på webtrees-hjemmesiden %s har godkendt din ansøgning om en konto. Du kan nu logge på via følgende link: %s"
 
 #: login.php:567
-msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
+msgid "The administrator has been informed.  As soon as they give you permission to login, you can login with your user name and password."
 msgstr "Administratoren af hjemmesiden har fået besked om din anmodning om en brugerkonto. Så snart vedkommende har godkendt din konto, kan du logge dig ind med dit brugernavn og adgangskode."
 
 #. I18N: %s is the name of an individual, source or other record
@@ -13365,7 +13365,7 @@ msgstr "Det aktuelle webtreesadministrator brugernavn skal være det samme som e
 
 #: login.php:533
 #, php-format
-msgid "The data for the user <b>%s</b> was checked."
+msgid "The data for the user <b>%s</b> has been checked."
 msgstr "Informationen om brugeren <b>%s</b> er checket."
 
 #: site-unavailable.php:71
@@ -13385,13 +13385,13 @@ msgid "The details of this individual are private."
 msgstr "Denne persons oplysninger er private."
 
 #: admin_trees_merge.php:176
-msgid "The family trees were merged successfully."
+msgid "The family trees have been merged successfully."
 msgstr "Familietræerne flettet uden fejl"
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:160
 #, php-format
-msgid "The family “%s” was deleted because it only has one member."
+msgid "The family “%s” has been deleted because it only has one member."
 msgstr "Familien \"%s\" er slette da den kun har et medlem."
 
 #: addmedia.php:174 admin_media_upload.php:133
@@ -13417,18 +13417,18 @@ msgstr "Filen %s kunne ikke opdateres"
 
 #: admin_site_upgrade.php:415
 #, php-format
-msgid "The file %s was created."
+msgid "The file %s has been created."
 msgstr "Filen %s blev dannet"
 
 #: admin_media.php:60 admin_media.php:67 admin_site_upgrade.php:463
 #: admin_site_upgrade.php:484
 #, php-format
-msgid "The file %s was deleted."
+msgid "The file %s has been deleted."
 msgstr "Filen %s blev slettet."
 
 #: admin_media_upload.php:138 admin_media_upload.php:156
 #, php-format
-msgid "The file %s was uploaded."
+msgid "The file %s has been uploaded."
 msgstr "Filen %s blev uploadet."
 
 #. I18N: %s is a filename
@@ -13454,12 +13454,12 @@ msgstr "Mappen %s eksisterer ikke og den kunne ikke oprettes."
 #: admin_media_upload.php:61 admin_media_upload.php:72
 #: admin_trees_config.php:188
 #, php-format
-msgid "The folder %s was created."
+msgid "The folder %s has been created."
 msgstr "Mappen %s blev oprettet."
 
 #: admin_site_upgrade.php:478
 #, php-format
-msgid "The folder %s was deleted."
+msgid "The folder %s has been deleted."
 msgstr "Mappen %s blev fjernet"
 
 #: help_text.php:587
@@ -13487,7 +13487,7 @@ msgid "The following message has been sent to your webtrees user account from "
 msgstr "Følgende besked blev sendt til din brugerkonto fra "
 
 #: admin_trees_places.php:111
-msgid "The following places were changed:"
+msgid "The following places have been changed:"
 msgstr "Følende sted(navne) blev ændret"
 
 #: admin_trees_places.php:111
@@ -13536,7 +13536,7 @@ msgstr "Mediefilen %1$s kunne ikke omdøbes til %2$s."
 
 #: addmedia.php:337
 #, php-format
-msgid "The media file %1$s was renamed to %2$s."
+msgid "The media file %1$s has been renamed to %2$s."
 msgstr "Mediefilen %1$s er omdøbt til %2$s."
 
 #: addmedia.php:344
@@ -13587,11 +13587,11 @@ msgstr "Det er valgfrit at bruge præfiks, men anbefalet. Ved at give tabellen e
 
 #: admin_trees_renumber.php:237
 #, php-format
-msgid "The record %1$s was renamed to %2$s."
+msgid "The record %1$s has been renamed to %2$s."
 msgstr "Posten %1$s er omdøbt til %2$s."
 
 #: action.php:100
-msgid "The record was copied to the clipboard."
+msgid "The record has been copied to the clipboard."
 msgstr "Posten er kopieret til udklipsholder"
 
 #: modules_v3/batch_update/plugins/search_replace.php:110
@@ -13603,7 +13603,7 @@ msgid "The server configuration is OK."
 msgstr "Serverens konfiguraion er OK."
 
 #: admin_trees_renumber.php:252
-msgid "The server’s time limit was reached."
+msgid "The server’s time limit has been reached."
 msgstr "Serverhukommelse er overskredet"
 
 #: site-offline.php:77
@@ -13631,7 +13631,7 @@ msgstr "Miniaturefilen %1$s kunne ikke omdøbes til %2$s."
 
 #: addmedia.php:351
 #, php-format
-msgid "The thumbnail file %1$s was renamed to %2$s."
+msgid "The thumbnail file %1$s has been renamed to %2$s."
 msgstr "Miniaturefilen %1$s er omdøbt til %2$s."
 
 #: addmedia.php:358
@@ -13938,7 +13938,7 @@ msgid "This input box lets you change that year of the calendar.  Type a year in
 msgstr "I dette felt kan du ændre årstallet for kalenderen i \"Måned\" eller listen \"År\".<br>For \"Dag\" vil årstallet ikke have nogen betydning.<dl><dt><b>Avancerede tilføjelser</b> for <b>Vis år:<br>Flere år</b></dt><dd>Flere år kan vises ved at skrive følgende i feltet år:<br>- Eks. 1: <b>1992-5</b> for alle begivenheder fra 1992 til 1995.<br>- Eks. 2: <b>1970-89</b> for alle begivenheder fra 1970 til 1989.<br>- Eks. 3: <b>1600-799</b> for alle begivenheder fra 1600 til 1799.<br>- Eks. 4: <b>1880-1905</b> for alle begivenheder fra 1880 til 1905.<br>- Eks. 5: <b>880-1105</b> for alle begivenheder fra 880 til 1105.<br><br>Du kan også bare angive begyndelsen af årstallet og få alle begivenheder, der begynder med disse cifre.<br>- Eks.: <b>197</b> for alle begivenheder fra 1970 til 1979.</dd><dt><br><b>Forkortelser</b></dt><dd>Nogle gange er man ikke sikker på, hvornår en begivenhed egentlig fandt sted. I disse tilfælde kan man anvende betegnelser som \"efter\", \"før\" og \"omkring\" foran datoen. Datoerne bliver gemt i slægtsdatabasen sammen med disse forklaringenr Når du vælger År, kan du også udføre en søgning med disse tilføjelser, med eller uden den tilhørende dato. Her er nogle eksempler på disse udtryk:<br><b>abt</b> 1800 (abt = about = omtrent)<br><b>bet</b> 1950-1959 (bet = between = mellem) skriv: bet 1950 eller bare: 1950-59<br><b>bef</b> 1950 (bef = before = før)<br><b>aft</b> 1900 (aft = after = efter)<br><br><b>NB!</b> PhpGedView vil søge efter registreringer nøjagtig som du opgiver i feltet for år. Når du søger efter \"abt 1850\", og datoen er gemt som i databasen \"abt oct 1850\", så vil denne <b>ikke</b> blive inkluderet i resultatet på skærmen. - Du kan nøjes med at angive forkortelsen uden noget årstal, for at vise alle begivenheder med datoer, der indeholder denne forkortelse.</dd></dl><b>NB!</b> For at se resultatet af at have ændret årstallet, må du derefter enten klikke på en af knapperne \"<b>Vis dag</b>\",\"<b>Vis måned</b>\" eller \"<b>Vis år</b>\", - eller et af de andre valgmuligheder."
 
 #: modules_v3/clippings/help_text.php:32
-msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the “Add” button."
+msgid "This input box lets you enter an individual’s ID number so they can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the “Add” button."
 msgstr "Her kan du vælge/skrive en persons ID nummer så han/hun kan blive overført til udklipsholderen. Når det er sket får du mulighed for at tilføje personens slægtninge.<br><br>Hvis du ikke kender en persons ID nummer kan du finde det ved at klikke på ikonet for en person og skrive personens navn. Ikonet findes ved siden af Tilføj-knappen."
 
 #: help_text.php:407
@@ -15303,7 +15303,7 @@ msgstr "Vis noter"
 
 #: medialist.php:286 modules_v3/googlemap/module.php:1322
 #: modules_v3/random_media/module.php:177
-msgid "View person"
+msgid "View individual"
 msgstr "Vis person"
 
 #: medialist.php:292 modules_v3/random_media/module.php:183

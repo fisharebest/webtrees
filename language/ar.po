@@ -837,7 +837,7 @@ msgid "A new password has been created and emailed to %s.  You can change this p
 msgstr "لقد تم إنشاء كلمة مرور جديدة وأرسلت إلى %s. يمكن تغييرها بعد تسجيل الدخول."
 
 #: login.php:246
-msgid "A new password was requested for your user name."
+msgid "A new password has been requested for your user name."
 msgstr "لقد تم طلب كلمة دخول جديدة لإسم المستخدم خاصتك"
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
@@ -5364,7 +5364,7 @@ msgid "E-mail address to be used in the “From:” field of e-mails that webtre
 msgstr "عنوان البريد الإلكتروني المستخدم كعنوان للمرسل عندما ترسل webtrees رسائل آلية للمدير أو المستخدمين."
 
 #: help_text.php:1175
-msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
+msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County.  “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
 msgstr ""
 
 #: help_text.php:1340
@@ -5797,7 +5797,7 @@ msgid "Events of close relatives"
 msgstr "أحداث متعلقة بالأقارب"
 
 #: help_text.php:1363
-msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
+msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the comments field to help the site administrator identify who you are on this site so that they can set the ID for you."
 msgstr "كل فرد له معرف شخصي خاص به في المشجر. عند معرفته يمكن إدخاله هنا. وفي حال عدم معرفته يمكن التواصل مع المدير."
 
 #: help_text.php:1378
@@ -7416,7 +7416,7 @@ msgid "If this box is checked, this user will be able to edit his account inform
 msgstr "هذا الخيار يتيح للمستخدم الإطلاع وتعديل بيانات حسابه في الموقع."
 
 #: help_text.php:623
-msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, he is considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
+msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
 msgstr "إذا كان للفرد أي أحداث سوى الوفاة أو الدفن أو الحرق لها تأريخ لاحق لهذا التأريخ سوف يعتبر الفرد ما زال على قيد الحياة."
 
 #: help_text.php:661
@@ -9191,11 +9191,11 @@ msgid "Military service"
 msgstr "خدمة عسكرية"
 
 #: admin_trees_config.php:758 help_text.php:475
-msgid "Min. no. of occurrences to be a “common surname”"
+msgid "Minimum number of occurrences to be a “common surname”"
 msgstr "عدد مرات تكرار إسم العائلة ليعتبر شائعاً"
 
 #: modules_v3/googlemap/help_text.php:32
-msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house.  Note that 15 is only available in certain areas."
+msgid "Minimum and maximum zoom level for the Google map.  1 is the full map, 15 is single house.  Note that 15 is only available in certain areas."
 msgstr "المستوى الأعلى والأدنى للتكبير والتصغير في خرائط Google. 1 يعني خريطة كاملة بينما 15 يعني منزل. المستى 15 متوفر في بعض المواقع فقط."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
@@ -9814,7 +9814,7 @@ msgid "No custom themes are enabled."
 msgstr ""
 
 #: admin_trees_check.php:264
-msgid "No errors were found."
+msgid "No errors have been found."
 msgstr "لم توجد أية أخطاء."
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
@@ -9885,7 +9885,7 @@ msgid "No logged-in and no anonymous users"
 msgstr "لا مستخدمين مسجلين ولا مجهولين"
 
 #: modules_v3/googlemap/module.php:202
-msgid "No map data for this person"
+msgid "No map data for this individual"
 msgstr "لا يوجد معلومات خريطة لهذا الفرد"
 
 #: admin_site_merge.php:106
@@ -9909,7 +9909,7 @@ msgid "No places found"
 msgstr "لم يتم العثور على أماكن"
 
 #: admin_trees_places.php:124
-msgid "No places were found."
+msgid "No places have been found."
 msgstr ""
 
 #: admin_site_config.php:46
@@ -11549,7 +11549,7 @@ msgid "Remove link from list"
 msgstr "إزالة الرابط من القائمة"
 
 #: help_text.php:1367 timeline.php:281 timeline.php:296
-msgid "Remove person"
+msgid "Remove individual"
 msgstr "إزالة الفرد"
 
 #: modules_v3/googlemap/module.php:4468
@@ -13473,7 +13473,7 @@ msgid "The administrator at the webtrees site %s has approved your application f
 msgstr "لقد تمت الموافقة على طلب حساب مستخدم في موقع webtrees %s. بالإمكان الآن الدخول بإستخدام الربط التالي: %s"
 
 #: login.php:567
-msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
+msgid "The administrator has been informed.  As soon as they give you permission to login, you can login with your user name and password."
 msgstr "لقد تم إعلام المدير. وحالما تتم الموافقة سوف تتمكن من تسجيل الدخول بإستخدام إسم المستخدم وكلمة المرور الخاصتين بك."
 
 #. I18N: %s is the name of an individual, source or other record
@@ -13498,7 +13498,7 @@ msgstr "إسم المستخدم للمدير في webtrees يجب أن يتطا�
 
 #: login.php:533
 #, php-format
-msgid "The data for the user <b>%s</b> was checked."
+msgid "The data for the user <b>%s</b> has been checked."
 msgstr "بيانات المستخدم <b>%s</b> تم فحصها."
 
 #: site-unavailable.php:71
@@ -13518,13 +13518,13 @@ msgid "The details of this individual are private."
 msgstr "تفاصيل هذا الفرد لها خصوصية"
 
 #: admin_trees_merge.php:176
-msgid "The family trees were merged successfully."
+msgid "The family trees have been merged successfully."
 msgstr ""
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:160
 #, php-format
-msgid "The family “%s” was deleted because it only has one member."
+msgid "The family “%s” has been deleted because it only has one member."
 msgstr "لقد تم حذف الأسرة %s ، لأنه لا يوجد فيها سوى فرداً واحداً."
 
 #: addmedia.php:174 admin_media_upload.php:133
@@ -13550,18 +13550,18 @@ msgstr ""
 
 #: admin_site_upgrade.php:415
 #, php-format
-msgid "The file %s was created."
+msgid "The file %s has been created."
 msgstr ""
 
 #: admin_media.php:60 admin_media.php:67 admin_site_upgrade.php:463
 #: admin_site_upgrade.php:484
 #, php-format
-msgid "The file %s was deleted."
+msgid "The file %s has been deleted."
 msgstr "تم حذف الملف %s."
 
 #: admin_media_upload.php:138 admin_media_upload.php:156
 #, php-format
-msgid "The file %s was uploaded."
+msgid "The file %s has been uploaded."
 msgstr "تم تحميل الملف %s."
 
 #. I18N: %s is a filename
@@ -13587,12 +13587,12 @@ msgstr "المجلد %s غير موجود، و قد تعذر أنشاؤه."
 #: admin_media_upload.php:61 admin_media_upload.php:72
 #: admin_trees_config.php:188
 #, php-format
-msgid "The folder %s was created."
+msgid "The folder %s has been created."
 msgstr "تم إنشاء المجلد %s."
 
 #: admin_site_upgrade.php:478
 #, php-format
-msgid "The folder %s was deleted."
+msgid "The folder %s has been deleted."
 msgstr ""
 
 #: help_text.php:587
@@ -13620,7 +13620,7 @@ msgid "The following message has been sent to your webtrees user account from "
 msgstr "لقد تم إرسال الرسالة التالية إلى حساب المستخدم لدى webtrees من "
 
 #: admin_trees_places.php:111
-msgid "The following places were changed:"
+msgid "The following places have been changed:"
 msgstr ""
 
 #: admin_trees_places.php:111
@@ -13669,7 +13669,7 @@ msgstr "لم يتم التمكن من تغيير إسم ملف الوسائط %1
 
 #: addmedia.php:337
 #, php-format
-msgid "The media file %1$s was renamed to %2$s."
+msgid "The media file %1$s has been renamed to %2$s."
 msgstr "تم تغيير إسم ملف الوسائط %1$s إلى %2$s بنجاح."
 
 #: addmedia.php:344
@@ -13720,11 +13720,11 @@ msgstr "إستخدام بادئة هو أمر إختياري، ولكن ينصح
 
 #: admin_trees_renumber.php:237
 #, php-format
-msgid "The record %1$s was renamed to %2$s."
+msgid "The record %1$s has been renamed to %2$s."
 msgstr ""
 
 #: action.php:100
-msgid "The record was copied to the clipboard."
+msgid "The record has been copied to the clipboard."
 msgstr "لقد تم نسخ السجل إلى الحافظة"
 
 #: modules_v3/batch_update/plugins/search_replace.php:110
@@ -13736,7 +13736,7 @@ msgid "The server configuration is OK."
 msgstr "تهيئة الخادم جيدة."
 
 #: admin_trees_renumber.php:252
-msgid "The server’s time limit was reached."
+msgid "The server’s time limit has been reached."
 msgstr ""
 
 #: site-offline.php:77
@@ -13764,7 +13764,7 @@ msgstr "لم يتم التمكن بتغيير إسم ملف الصور المص�
 
 #: addmedia.php:351
 #, php-format
-msgid "The thumbnail file %1$s was renamed to %2$s."
+msgid "The thumbnail file %1$s has been renamed to %2$s."
 msgstr "تم تغيير إسم ملف الصور المصغرة %1$s إلى %2$s بنجاح."
 
 #: addmedia.php:358
@@ -14079,7 +14079,7 @@ msgid "This input box lets you change that year of the calendar.  Type a year in
 msgstr ""
 
 #: modules_v3/clippings/help_text.php:32
-msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the “Add” button."
+msgid "This input box lets you enter an individual’s ]ID number so they can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the “Add” button."
 msgstr "هذه الخانة تتيح إدخال المعرف الخاص بفرد لإضافته إلى سلة المقتطفات. وبعد إضافته يمكن إختيار علاقته بالسلة.<br><br>يمكن البحث عن المعرف الخاص بالنقر على رمز الفرد بالقرب من زر الإضافة."
 
 #: help_text.php:407
@@ -15456,7 +15456,7 @@ msgstr "إظهار الملاحظات"
 
 #: medialist.php:286 modules_v3/googlemap/module.php:1322
 #: modules_v3/random_media/module.php:177
-msgid "View person"
+msgid "View individual"
 msgstr "إظهار بيانات"
 
 #: medialist.php:292 modules_v3/random_media/module.php:183

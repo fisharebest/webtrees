@@ -703,7 +703,7 @@ msgid "A new password has been created and emailed to %s.  You can change this p
 msgstr "新的密码已经被创建和发送给%s。你可以在你登录时更改密码。"
 
 #: login.php:246
-msgid "A new password was requested for your user name."
+msgid "A new password has been requested for your user name."
 msgstr "这个用户名要求输入新的密码。"
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
@@ -5220,7 +5220,7 @@ msgid "E-mail address to be used in the “From:” field of e-mails that webtre
 msgstr "E-mail地址用于webtrees自动创建电子邮件时候的邮件来自于项。<br><br>webtrees可以自动创建电子邮件通知系统管理员的需要进行审批变化。webtrees发送通知电子邮件给注册一个帐户的用户。<br><br>通常情况下，这些自动创建的电子邮件发件人是<i>webtrees-noreply@ yoursite</i>，并且暗示不用回复。为了防止垃圾邮件或其他电子邮件滥用的一些电子邮件系统需要每封邮件的有个邮件来自于项，以此确认一个有效的e-mail帐号，否则将不接受邮件，这将显然从帐户 <i>webtrees noreply</i>来了邮件。"
 
 #: help_text.php:1175
-msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
+msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County.  “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
 msgstr "每个资源记录特定的事件,一般对于一个给定的日期范围和管辖的地方。例如一个人口普查记录事件和教堂记录记录出生、结婚和死亡事件。<br><br>选择事件,记录采用这种资源的事件列表中提供的。指定的日期应该在一系列格式如<i>从1900年到1910年</i>。这个地方管辖的名称是最低的管辖权,包含所有较低级别的地方命名在这个源。例如,“奥奈达市,爱达荷州,美国“将被用作资源地税收管辖权的地方发生在各个城镇的事件在奥奈达市县。“爱达荷州,美国“将源管辖权的地方如果所记录的事件不仅发生在奥奈达市县也在其他县在爱达荷州。"
 
 #: help_text.php:1340
@@ -5653,7 +5653,7 @@ msgid "Events of close relatives"
 msgstr "近亲的事件"
 
 #: help_text.php:1363
-msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
+msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the comments field to help the site administrator identify who you are on this site so that they can set the ID for you."
 msgstr "在这个网站每个人在数据库中都有一个独特的ID号码。如果你知道你的ID,请在这里输入它。如果你不知道你的ID或找不到它,因为隐私设置,请在评论中提供足够的信息字段来帮助站点管理员确认在这个网站上你是谁,这样他可以设置为你的ID。"
 
 #: help_text.php:1378
@@ -7272,7 +7272,7 @@ msgid "If this box is checked, this user will be able to edit his account inform
 msgstr "如果这个选项选中,这个用户将能够编辑他的帐户信息。您可以为多个用户创建一个用户名和密码，虽然一般不推荐。当这个选项不选是对于共享帐户,它们无法编辑帐户信息,只有管理员可以改变这个帐户。"
 
 #: help_text.php:623
-msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, he is considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
+msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
 msgstr "如果这个人在最近这么多年内没有死亡、埋葬或火化事件,他被认为是“活着”。孩子的出生日期被认为是用于此目的的类似事件。"
 
 #: help_text.php:661
@@ -9047,11 +9047,11 @@ msgid "Military service"
 msgstr "兵役"
 
 #: admin_trees_config.php:758 help_text.php:475
-msgid "Min. no. of occurrences to be a “common surname”"
+msgid "Minimum number of occurrences to be a “common surname”"
 msgstr "常见的姓"
 
 #: modules_v3/googlemap/help_text.php:32
-msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house.  Note that 15 is only available in certain areas."
+msgid "Minimum and maximum zoom level for the Google map.  1 is the full map, 15 is single house.  Note that 15 is only available in certain areas."
 msgstr "谷歌地图最小和最大缩放因子。1是完整的地图,15是单一的房子。注意,15只提供在某些地区。"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
@@ -9670,7 +9670,7 @@ msgid "No custom themes are enabled."
 msgstr ""
 
 #: admin_trees_check.php:264
-msgid "No errors were found."
+msgid "No errors have been found."
 msgstr "没有发现错误。"
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
@@ -9731,7 +9731,7 @@ msgid "No logged-in and no anonymous users"
 msgstr "没有登录，没有匿名用户"
 
 #: modules_v3/googlemap/module.php:202
-msgid "No map data for this person"
+msgid "No map data for this individual"
 msgstr "没有这个人的地图数据"
 
 #: admin_site_merge.php:106
@@ -9755,7 +9755,7 @@ msgid "No places found"
 msgstr "没有找到地方"
 
 #: admin_trees_places.php:124
-msgid "No places were found."
+msgid "No places have been found."
 msgstr ""
 
 #: admin_site_config.php:46
@@ -11390,7 +11390,7 @@ msgid "Remove link from list"
 msgstr "从列表中删除链接"
 
 #: help_text.php:1367 timeline.php:281 timeline.php:296
-msgid "Remove person"
+msgid "Remove individual"
 msgstr "删除人"
 
 #: modules_v3/googlemap/module.php:4468
@@ -13314,7 +13314,7 @@ msgid "The administrator at the webtrees site %s has approved your application f
 msgstr "在webtrees站点%s已批准你的申请一个帐号管理员。你现在可以登录访问以下链接：%s"
 
 #: login.php:567
-msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
+msgid "The administrator has been informed.  As soon as they give you permission to login, you can login with your user name and password."
 msgstr "已经通知管理员。当他给你登录权限,您就可以用你的用户名和密码登陆。"
 
 #. I18N: %s is the name of an individual, source or other record
@@ -13339,7 +13339,7 @@ msgstr "当前webtrees管理员用户名必须与现有的PGV管理员用户名�
 
 #: login.php:533
 #, php-format
-msgid "The data for the user <b>%s</b> was checked."
+msgid "The data for the user <b>%s</b> has been checked."
 msgstr "用户<b>%s</b>数据检查。"
 
 #: site-unavailable.php:71
@@ -13359,13 +13359,13 @@ msgid "The details of this individual are private."
 msgstr "这人细节是私密的。"
 
 #: admin_trees_merge.php:176
-msgid "The family trees were merged successfully."
+msgid "The family trees have been merged successfully."
 msgstr ""
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:160
 #, php-format
-msgid "The family “%s” was deleted because it only has one member."
+msgid "The family “%s” has been deleted because it only has one member."
 msgstr "因为它只有一个成员，家庭“%s”已被删除。"
 
 #: addmedia.php:174 admin_media_upload.php:133
@@ -13391,18 +13391,18 @@ msgstr ""
 
 #: admin_site_upgrade.php:415
 #, php-format
-msgid "The file %s was created."
+msgid "The file %s has been created."
 msgstr ""
 
 #: admin_media.php:60 admin_media.php:67 admin_site_upgrade.php:463
 #: admin_site_upgrade.php:484
 #, php-format
-msgid "The file %s was deleted."
+msgid "The file %s has been deleted."
 msgstr "文件 %s 已经被删除。"
 
 #: admin_media_upload.php:138 admin_media_upload.php:156
 #, php-format
-msgid "The file %s was uploaded."
+msgid "The file %s has been uploaded."
 msgstr "文件 %s 已经上传。"
 
 #. I18N: %s is a filename
@@ -13428,12 +13428,12 @@ msgstr "文件夹 %s 不存在，不能被创建"
 #: admin_media_upload.php:61 admin_media_upload.php:72
 #: admin_trees_config.php:188
 #, php-format
-msgid "The folder %s was created."
+msgid "The folder %s has been created."
 msgstr "文件夹 %s 已经被创建"
 
 #: admin_site_upgrade.php:478
 #, php-format
-msgid "The folder %s was deleted."
+msgid "The folder %s has been deleted."
 msgstr ""
 
 #: help_text.php:587
@@ -13461,7 +13461,7 @@ msgid "The following message has been sent to your webtrees user account from "
 msgstr "下面的消息来自webtrees用户帐户: "
 
 #: admin_trees_places.php:111
-msgid "The following places were changed:"
+msgid "The following places have been changed:"
 msgstr ""
 
 #: admin_trees_places.php:111
@@ -13510,7 +13510,7 @@ msgstr "媒体文件 %1$s 不能被重命名为 %2$s。"
 
 #: addmedia.php:337
 #, php-format
-msgid "The media file %1$s was renamed to %2$s."
+msgid "The media file %1$s has been renamed to %2$s."
 msgstr "媒体文件 %1$s 成功重命名为 %2$s。"
 
 #: addmedia.php:344
@@ -13561,11 +13561,11 @@ msgstr "前缀是可选的，建议表名称为唯一的前缀，这样可以让
 
 #: admin_trees_renumber.php:237
 #, php-format
-msgid "The record %1$s was renamed to %2$s."
+msgid "The record %1$s has been renamed to %2$s."
 msgstr ""
 
 #: action.php:100
-msgid "The record was copied to the clipboard."
+msgid "The record has been copied to the clipboard."
 msgstr "记录复制到剪贴板"
 
 #: modules_v3/batch_update/plugins/search_replace.php:110
@@ -13577,7 +13577,7 @@ msgid "The server configuration is OK."
 msgstr "服务器配正常。"
 
 #: admin_trees_renumber.php:252
-msgid "The server’s time limit was reached."
+msgid "The server’s time limit has been reached."
 msgstr ""
 
 #: site-offline.php:77
@@ -13605,7 +13605,7 @@ msgstr "缩略图文件 %1$s 不能被重命名为 %2$s 。"
 
 #: addmedia.php:351
 #, php-format
-msgid "The thumbnail file %1$s was renamed to %2$s."
+msgid "The thumbnail file %1$s has been renamed to %2$s."
 msgstr "缩略图文件 %1$s 成功重命名为 %2$s 。"
 
 #: addmedia.php:358
@@ -13910,7 +13910,7 @@ msgid "This input box lets you change that year of the calendar.  Type a year in
 msgstr "该输入框让你改变日历的年份。在框里输入年份，按下<b>输入</b>更改日历年份。<br><br><b>高级功能</b>按年显示<b></b><dl><dt><b>一年以上</b></dt><dd>你可以查询日期范围为一年内。<br><br>年范围<u>包含</u>。表示日期范围包含去年年一月至去年十二月三十一号。下面是一年范围的几个例子：<br><br><b>1992-5</b>所有事件从1992到1995。<br><b>1972-89</b>所有事件从1972到1989。<br><b>1610-759</b>所有事件从1610到1759。<br><b>1880-1905</b>所有事件从1880到1905。<br><b>880-1105</b>所有事件从880到1105。<br><br>看到所有的事件在十年或一个世纪了，你可以使用<b>？</b>在最后一位的地方。例如，<b> 197？</b>所有事件从1970到1979或<b> 16？？</b>所有事件从1600到1699。<br><br>选择范围的年会改变日历年份。</dd></dl>"
 
 #: modules_v3/clippings/help_text.php:32
-msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the “Add” button."
+msgid "This input box lets you enter an individual’s ID number so they can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the “Add” button."
 msgstr "此输入框可以让你输入个人ID，并添加到收集箱。一旦添加，将建立一个关链到您的收集箱。<br><br>如果你不知道一个人的ID，您可以按个人图标旁边的添加按钮用名字搜索。"
 
 #: help_text.php:407
@@ -15272,7 +15272,7 @@ msgstr "查看记事"
 
 #: medialist.php:286 modules_v3/googlemap/module.php:1322
 #: modules_v3/random_media/module.php:177
-msgid "View person"
+msgid "View individual"
 msgstr "查看"
 
 #: medialist.php:292 modules_v3/random_media/module.php:183

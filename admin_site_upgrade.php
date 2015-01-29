@@ -416,7 +416,7 @@ echo '<li>', WT_I18N::translate('Place the site offline, by creating the file %s
 if (@file_get_contents($lock_file) != $lock_file_text) {
 	echo '<br>', WT_I18N::translate('The file %s could not be created.', '<span dir="ltr">' . $lock_file . '</span>'), $icon_failure;
 } else {
-	echo '<br>', WT_I18N::translate('The file %s was created.', '<span dir="ltr">' . $lock_file . '</span>'), $icon_success;
+	echo '<br>', WT_I18N::translate('The file %s has been created.', '<span dir="ltr">' . $lock_file . '</span>'), $icon_success;
 }
 
 echo '</li>';
@@ -465,7 +465,7 @@ echo '</li>';
 echo '<li>', WT_I18N::translate('Place the site online, by deleting the file %s…', $lock_file_html);
 
 if (WT_File::delete($lock_file)) {
-	echo '<br>', WT_I18N::translate('The file %s was deleted.', '<span dir="ltr">' . $lock_file . '</span>'), $icon_success;
+	echo '<br>', WT_I18N::translate('The file %s has been deleted.', '<span dir="ltr">' . $lock_file . '</span>'), $icon_success;
 } else {
 	echo '<br>', WT_I18N::translate('The file %s could not be deleted.', '<span dir="ltr">' . $lock_file . '</span>'), $icon_failure;
 }
@@ -480,13 +480,13 @@ echo '<li>', /* I18N: The system is about to [...] */ WT_I18N::translate('Delete
 
 reset_timeout();
 if (WT_File::delete($zip_dir)) {
-	echo '<br>', WT_I18N::translate('The folder %s was deleted.', '<span dir="auto">' . $zip_dir . '</span>'), $icon_success;
+	echo '<br>', WT_I18N::translate('The folder %s has been deleted.', '<span dir="auto">' . $zip_dir . '</span>'), $icon_success;
 } else {
 	echo '<br>', WT_I18N::translate('The folder %s could not be deleted.', '<span dir="auto">' . $zip_dir . '</span>'), $icon_failure;
 }
 
 if (WT_File::delete($zip_file)) {
-	echo '<br>', WT_I18N::translate('The file %s was deleted.', '<span dir="auto">' . $zip_file . '</span>'), $icon_success;
+	echo '<br>', WT_I18N::translate('The file %s has been deleted.', '<span dir="auto">' . $zip_file . '</span>'), $icon_success;
 } else {
 	echo '<br>', WT_I18N::translate('The file %s could not be deleted.', '<span dir="auto">' . $zip_file . '</span>'), $icon_failure;
 }

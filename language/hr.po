@@ -746,7 +746,7 @@ msgid "A new password has been created and emailed to %s.  You can change this p
 msgstr "Nova lozinka je kreirana i poslana e-malom %s. Možete promijeniti svoju lozinku nakon prijave."
 
 #: login.php:246
-msgid "A new password was requested for your user name."
+msgid "A new password has been requested for your user name."
 msgstr "Nova lozinka je zatražena za vaše korisničko ime."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
@@ -5267,7 +5267,7 @@ msgid "E-mail address to be used in the “From:” field of e-mails that webtre
 msgstr "Adrese e-pošte koje će biti u polju „From:” kada webtrees šalje e-poštu automatski.<br><br>webtrees može automatski kreirati e-poštu da obavijesti administratore o promjenama koje trebaju biti pregledane. webtrees također šalje obavijesti korisnicima koji su zatražili otvaranje računa.<br><br>Obično je „From:” polje za automatsko slanje e-pošte <i>From: webtrees-noreply@yoursite</i> da pokaže da nije potrebno odgovoriti na e-poštu. Da se obranite od spam-a i ostalih uznemiravanja e-poštom, neki sistemi zahtijevaju da „From:” polje ima valjanu adresu e-pošte i neće prihvatiti koje se predstavljanju sa <i>webtrees-noreply</i>."
 
 #: help_text.php:1175
-msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
+msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County.  “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
 msgstr "Svaki izvor bilježi određene događaje, uglavnom za određeno razdoblje i za mjesto nadležnosti. Na primjer zapisi crkve bilježe rođenja, vjenčanja i događaje smrti.<br><br>Odaberite događaj koji je zabilježen ovim izvorom iz ponuđenoga popisa događaja. Datum treba biti u formatu raspona kao <i>FROM 1900 TO 1910</i>. Mjesto nadležnosti je ime najniže nadležnosti koja obuhvaća sva mjesta niže razine navedena u tom izvoru. Na primjer, „Zagorje, Hrvatska” će biti korišteno kao mjesto izvora nadležnosti za događaj koji se dogodio u raznim gradovima u Zagorskoj županiji. „Hrvatska” bi bila mjesto izvora nadležnosti kada bi događaji bili zabilježeni ne samo u Zagorju nego i u ostalim gradovima Hrvatske."
 
 #: help_text.php:1340
@@ -5700,7 +5700,7 @@ msgid "Events of close relatives"
 msgstr "Događaji uže rodbine"
 
 #: help_text.php:1363
-msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
+msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the comments field to help the site administrator identify who you are on this site so that they can set the ID for you."
 msgstr "Svaki pojedinac u bazi podataka ima jedinstveni ID broj na ovim stranicama. Ako znate ID broj za vaš osobni zapis, molimo unesite ga ovdje. Ako ne znate svoj ID broj ili ga ne možete pronaći zbog postavka privatnosti, molimo osigurajte dovoljno informacija u polje za komentar da pomognete administratoru otkriti tko ste vi na ovim stranicama i da postavi ID broj za vas."
 
 #: help_text.php:1378
@@ -7319,7 +7319,7 @@ msgid "If this box is checked, this user will be able to edit his account inform
 msgstr "Ako je ovo uključeno, taj korisnik će imati mogućnost uređivati informacije svog računa. Iako to nije generalno preporučljivo, možete kreirati jedno korisničko ime i jednu lozinku za više korisnika. Kada je isključeno za sve korisnike sa dijeljenim računom, oni su spriječeni mijenjati postavke računa i samo administrator može vršiti promjene."
 
 #: help_text.php:623
-msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, he is considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
+msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
 msgstr "Ako pojedinac ima bilo koji događaj osim smrti, pokopa ili kremiranja, noviji od ovdje upisanoga broja godina, tada se on smatra „živ”. Datumi rođenja djece se smatraju događajima za takvu svrhu."
 
 #: help_text.php:661
@@ -9094,11 +9094,11 @@ msgid "Military service"
 msgstr "Vojna služba"
 
 #: admin_trees_config.php:758 help_text.php:475
-msgid "Min. no. of occurrences to be a “common surname”"
+msgid "Minimum number of occurrences to be a “common surname”"
 msgstr "Min. broj pojavljivanja za „Najčešće prezime”"
 
 #: modules_v3/googlemap/help_text.php:32
-msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house.  Note that 15 is only available in certain areas."
+msgid "Minimum and maximum zoom level for the Google map.  1 is the full map, 15 is single house.  Note that 15 is only available in certain areas."
 msgstr "Minimalni i maksimalni zum nivo za Google kartu. 1 je cijela karta, 15 je jedna kuća. Imajte na umu da je 15 omogućeno samo na nekim područjima."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
@@ -9717,7 +9717,7 @@ msgid "No custom themes are enabled."
 msgstr "Nisu omogućene prilagođene teme."
 
 #: admin_trees_check.php:264
-msgid "No errors were found."
+msgid "No errors have been found."
 msgstr "Nije pronađena greška."
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
@@ -9782,7 +9782,7 @@ msgid "No logged-in and no anonymous users"
 msgstr "Nema prijavljenih ni anonimnih korisnika"
 
 #: modules_v3/googlemap/module.php:202
-msgid "No map data for this person"
+msgid "No map data for this individual"
 msgstr "Nema podataka za kartu ove osobu"
 
 #: admin_site_merge.php:106
@@ -9806,7 +9806,7 @@ msgid "No places found"
 msgstr "Mjesto nije nađeno"
 
 #: admin_trees_places.php:124
-msgid "No places were found."
+msgid "No places have been found."
 msgstr "Mjesta nisu nađena."
 
 #: admin_site_config.php:46
@@ -11443,7 +11443,7 @@ msgid "Remove link from list"
 msgstr "Ukloni vezu sa popisa"
 
 #: help_text.php:1367 timeline.php:281 timeline.php:296
-msgid "Remove person"
+msgid "Remove individual"
 msgstr "Ukloni osobu"
 
 #: modules_v3/googlemap/module.php:4468
@@ -13367,7 +13367,7 @@ msgid "The administrator at the webtrees site %s has approved your application f
 msgstr "Administrator na webtrees stranici %s je odobrio vašu prijavu. Možete se prijaviti koristeći slijedeći link %s"
 
 #: login.php:567
-msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
+msgid "The administrator has been informed.  As soon as they give you permission to login, you can login with your user name and password."
 msgstr "Administrator je obaviješten. Čim vam da odobrenje za prijavu, moći ćete se prijaviti sa vašim korisničkim imenom i lozinkom."
 
 #. I18N: %s is the name of an individual, source or other record
@@ -13392,7 +13392,7 @@ msgstr "Trenutno webtrees admin korisničko ime mora biti isto kao i postojeće 
 
 #: login.php:533
 #, php-format
-msgid "The data for the user <b>%s</b> was checked."
+msgid "The data for the user <b>%s</b> has been checked."
 msgstr "Podaci za korisnika <b>%s</b> su provjereni."
 
 #: site-unavailable.php:71
@@ -13412,13 +13412,13 @@ msgid "The details of this individual are private."
 msgstr "Detalji ovog pojedinca su privatni."
 
 #: admin_trees_merge.php:176
-msgid "The family trees were merged successfully."
+msgid "The family trees have been merged successfully."
 msgstr "Obiteljska stabla su spojena uspješno."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:160
 #, php-format
-msgid "The family “%s” was deleted because it only has one member."
+msgid "The family “%s” has been deleted because it only has one member."
 msgstr "Ova obitelj „%s” je obrisana, ima samo jednog člana."
 
 #: addmedia.php:174 admin_media_upload.php:133
@@ -13444,18 +13444,18 @@ msgstr "Datoteka %s se ne može mjenjati."
 
 #: admin_site_upgrade.php:415
 #, php-format
-msgid "The file %s was created."
+msgid "The file %s has been created."
 msgstr "Datoteka %s je kreirana."
 
 #: admin_media.php:60 admin_media.php:67 admin_site_upgrade.php:463
 #: admin_site_upgrade.php:484
 #, php-format
-msgid "The file %s was deleted."
+msgid "The file %s has been deleted."
 msgstr "Datoteka %s je obrisana."
 
 #: admin_media_upload.php:138 admin_media_upload.php:156
 #, php-format
-msgid "The file %s was uploaded."
+msgid "The file %s has been uploaded."
 msgstr "Datoteka %s je promijenjena."
 
 #. I18N: %s is a filename
@@ -13481,12 +13481,12 @@ msgstr "Mapa %s ne postoji, i ne može biti kreirana."
 #: admin_media_upload.php:61 admin_media_upload.php:72
 #: admin_trees_config.php:188
 #, php-format
-msgid "The folder %s was created."
+msgid "The folder %s has been created."
 msgstr "Mapa %s je kreirana."
 
 #: admin_site_upgrade.php:478
 #, php-format
-msgid "The folder %s was deleted."
+msgid "The folder %s has been deleted."
 msgstr "Mapa %s je obrisana."
 
 #: help_text.php:587
@@ -13514,7 +13514,7 @@ msgid "The following message has been sent to your webtrees user account from "
 msgstr "Slijedeća poruka je poslana na vaš korisnički račun na webtreesu od "
 
 #: admin_trees_places.php:111
-msgid "The following places were changed:"
+msgid "The following places have been changed:"
 msgstr "Slijedeća mjesta su promijenjena:"
 
 #: admin_trees_places.php:111
@@ -13563,7 +13563,7 @@ msgstr "Medijska datoteka %1$s ne može biti preimenovana u %2$s."
 
 #: addmedia.php:337
 #, php-format
-msgid "The media file %1$s was renamed to %2$s."
+msgid "The media file %1$s has been renamed to %2$s."
 msgstr "Medijska datoteka %1$s je uspješno preimenovana u %2$s."
 
 #: addmedia.php:344
@@ -13614,11 +13614,11 @@ msgstr "Prefiks je opcionalan, ali preporučen. Davanjem prefiksa imenima tablic
 
 #: admin_trees_renumber.php:237
 #, php-format
-msgid "The record %1$s was renamed to %2$s."
+msgid "The record %1$s has been renamed to %2$s."
 msgstr "Zapis %1$s je preimenovan u %2$s."
 
 #: action.php:100
-msgid "The record was copied to the clipboard."
+msgid "The record has been copied to the clipboard."
 msgstr "Zapis kopiran u clipboard"
 
 #: modules_v3/batch_update/plugins/search_replace.php:110
@@ -13630,7 +13630,7 @@ msgid "The server configuration is OK."
 msgstr "Konfiguracija servera je u redu."
 
 #: admin_trees_renumber.php:252
-msgid "The server’s time limit was reached."
+msgid "The server’s time limit has been reached."
 msgstr "Dosegnuto je vremensko ograničenje servera."
 
 #: site-offline.php:77
@@ -13658,7 +13658,7 @@ msgstr "Datoteka sličica %1$s ne može biti preimenovana u %2$s."
 
 #: addmedia.php:351
 #, php-format
-msgid "The thumbnail file %1$s was renamed to %2$s."
+msgid "The thumbnail file %1$s has been renamed to %2$s."
 msgstr "Datoteka sličica %1$s je uspješno preimenovana u %2$s."
 
 #: addmedia.php:358
@@ -13968,7 +13968,7 @@ msgid "This input box lets you change that year of the calendar.  Type a year in
 msgstr "Ovo polje unosa vam omogućava promjenu godine kalendara. Upišite godinu i pritisnite <b>Enter</b> da promijenite kalendar na tu godinu.<br><br><b>Napredne mogućnosti</b> za <b>Predgled godina</b><dl><dt><b>Više od jedne godine</b></dt><dd>Možete pregledavati datume u razdoblju više od jedne godine.<br><br>Raspon godina je <u>uključiv</u>. Time se misli da je raspon datuma proširen od 1. siječnja početne godine do 31. prosinca zadnje upisane godine. Ovdje je nekoliko primjera raspona godina:<br><br><b>1992-5</b> za sve događaje od 1992. do 1995.<br><b>1972-89</b> za sve događaje od 1972. do 1989.<br><b>1610-759</b> za sve događaje od 1610. do 1759.<br><b>1880-1905</b> za sve događaje od 1880. do 1905.<br><br>Da bi vidjeli sve događaje u danom desetljeću ili stoljeću, koristite <b>?</b> umjesto zadnjih brojeva godine. Primjer: <b>197?</b> za sve događaje od 1970. do 1979. ili <b>16??</b> za sve događaje od 1600. do 1699.<br><br>Odabirom raspona godina promijeniti će se kalendar na godinu pregleda.</dd></dl>"
 
 #: modules_v3/clippings/help_text.php:32
-msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the “Add” button."
+msgid "This input box lets you enter an individual’s ID number so they can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the “Add” button."
 msgstr "U ovo polje unosite ID broj pojedinca koji će biti dodan u isječke. Nakon dodavanja biti će vam ponuđena opcija da povežete odnose pojedinca u vaše isječke.<br><br>Ako ne znate ID broj pojedinca, možete ga potražiti po imenu klikom na ikonu pojedinca pokraj gumba „Dodaj”."
 
 #: help_text.php:407
@@ -15337,7 +15337,7 @@ msgstr "Prikaži bilješke"
 
 #: medialist.php:286 modules_v3/googlemap/module.php:1322
 #: modules_v3/random_media/module.php:177
-msgid "View person"
+msgid "View individual"
 msgstr "Prikaži osobu"
 
 #: medialist.php:292 modules_v3/random_media/module.php:183

@@ -747,7 +747,7 @@ msgid "A new password has been created and emailed to %s.  You can change this p
 msgstr "Nové heslo bolo vygenerované a odoslané mailom na %s.  Môžete ho zmeniť po prihlásení."
 
 #: login.php:246
-msgid "A new password was requested for your user name."
+msgid "A new password has been requested for your user name."
 msgstr "Bolo zažiadané o nové heslo pre vaše uživateľské meno!"
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
@@ -5268,7 +5268,7 @@ msgid "E-mail address to be used in the “From:” field of e-mails that webtre
 msgstr "Emailová adresa, ktorá sa použije v poli &laquo;From:&raquo; (Od) pre e-maily, ktoré webtrees automaticky vytvára.<br><br>webtrees automaticky vytvára e-maily, aby upozornil administrátora na zmeny, ktoré potrebujú zrevidovať. Ďalej posiela upozornenie uživateľom, ktorý zažiadali o účet.<br><br>Obvykle pole &laquo;From:&raquo; (Od) vyzerá podobne ako <i>From: webtrees-noreply@yoursite</i>, aby ste zdôraznili, že nie je vyžadovaná žiadna odpoveď. Aby ste sa uchránili proti spamu alebo inému zneužití e-mailu, niektoré e-mailové systémy vyžadujú, aby pole &laquo;From:&raquo; zodpovedalo platnému e-mailovému účtu a neprijmú správy, ktoré sú zjavne z účtu <i>webtrees-noreply</i>."
 
 #: help_text.php:1175
-msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
+msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County.  “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
 msgstr "Každý zdroj zaznamenává určité udalosti, všeobecne pre daný časový interval a miesto (mestský obvod, farnosť). Napríklad Sčítanie zaznamenáva sčítacie udalosti a církevné záznamy uchovávajú dáta o narodeniach, svadbách a úmrtiach.<br><br>Vyberte udalosti, ktoré sú zaznamenané týmto zdrojom z poskytnutého zoznamu udalostí. Dátum by malo byť v špecifikovanom v rozsahu, napr. <i>FROM 1900 TO 1910</i>. Miesto je meno najnižšej jurisdikcie, ktorá zahrňuje všetky miesta vymenované v tomto zdroji. Napríklad „Oneida, Idaho, USA“ by bola použitá ako zdrojové miesto pre udalosti, ktoré sa staly v rôzných mestách v kraji Oneida.  „Idaho, USA“ by bolo zdrojové miesto, ak by sa udalosti stali nie len v kraji Oneida, ale i v ostatných krajoch štátu Idaho."
 
 #: help_text.php:1340
@@ -5701,7 +5701,7 @@ msgid "Events of close relatives"
 msgstr "Udalosti blízkych príbuzných"
 
 #: help_text.php:1363
-msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
+msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the comments field to help the site administrator identify who you are on this site so that they can set the ID for you."
 msgstr "Každá osoba v databáze má unikátny ID kód. Ak poznáte svoje ID, prosím vložte ho sem. Ak ho nepoznáte, alebo ho nemôžete vyhľadať z dôvodu nastavenia utajenie, napíšte do poľa Komentáre dostatok informácií, ktoré pomôžu administrátorovi identifikovať kto ste a aké máte ID. Toto ID vám potom nastaví administrátor."
 
 #: help_text.php:1378
@@ -7320,7 +7320,7 @@ msgid "If this box is checked, this user will be able to edit his account inform
 msgstr "Ak je toto políčko zaškrtnuté, potom dotyčný užívateľ bude môcť upravovať informácie o svojom účte. Ak nie je políčko zaškrtnuté, potom mu to nebude umožnené."
 
 #: help_text.php:623
-msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, he is considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
+msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
 msgstr "Ak má táto osoba nejaké iné udalosti než úmrtie, pohreb alebo kremáciu v dobe, ktorá je dlhšia ako tento počet rokov, je považovaná za „žijúcu“. V tomto prípade sa za takéto udalosti pvoažujú ja zadané dátumy narodenia dieťaťa."
 
 #: help_text.php:661
@@ -9095,11 +9095,11 @@ msgid "Military service"
 msgstr "Vojenská služba"
 
 #: admin_trees_config.php:758 help_text.php:475
-msgid "Min. no. of occurrences to be a “common surname”"
+msgid "Minimum number of occurrences to be a “common surname”"
 msgstr "Minimálny počet výskytov pre  	„najčastejšie priezviská”"
 
 #: modules_v3/googlemap/help_text.php:32
-msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house.  Note that 15 is only available in certain areas."
+msgid "Minimum and maximum zoom level for the Google map.  1 is the full map, 15 is single house.  Note that 15 is only available in certain areas."
 msgstr "Minimálny a maximálny zoom faktor pre GoogleMap. 1 = celá mapa, 15 = jednotlivý dom. Poznámka: 15 je dostupné iba pre určité oblasti."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
@@ -9718,7 +9718,7 @@ msgid "No custom themes are enabled."
 msgstr ""
 
 #: admin_trees_check.php:264
-msgid "No errors were found."
+msgid "No errors have been found."
 msgstr "Nenašli sa žiadne chyby."
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
@@ -9783,7 +9783,7 @@ msgid "No logged-in and no anonymous users"
 msgstr "Žiadny prihlásení a anonymní uživatelia"
 
 #: modules_v3/googlemap/module.php:202
-msgid "No map data for this person"
+msgid "No map data for this individual"
 msgstr "Táto osoba nemá zadané žiadne údaje, ktoré by sa dali zobraziť na mape."
 
 #: admin_site_merge.php:106
@@ -9807,7 +9807,7 @@ msgid "No places found"
 msgstr "Miesto nebolo nájdené"
 
 #: admin_trees_places.php:124
-msgid "No places were found."
+msgid "No places have been found."
 msgstr ""
 
 #: admin_site_config.php:46
@@ -11444,7 +11444,7 @@ msgid "Remove link from list"
 msgstr "Odstrániť odkaz zo zoznamu"
 
 #: help_text.php:1367 timeline.php:281 timeline.php:296
-msgid "Remove person"
+msgid "Remove individual"
 msgstr "Odstrániť osobu"
 
 #: modules_v3/googlemap/module.php:4468
@@ -13368,7 +13368,7 @@ msgid "The administrator at the webtrees site %s has approved your application f
 msgstr "Administrátor webu webtrees %s schválil vašu žiadosť na prístupový účet. Môžete se prihlásiť na nasledujúcom odkaze: %s"
 
 #: login.php:567
-msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
+msgid "The administrator has been informed.  As soon as they give you permission to login, you can login with your user name and password."
 msgstr "Administrátor bol informovaný. Akonáhle Vám dá povolenie k prihláseniu, budete sa môcť prihlásiť zadaním svojho užívateľského mena a hesla."
 
 #. I18N: %s is the name of an individual, source or other record
@@ -13393,7 +13393,7 @@ msgstr "Súčasný účet správcu webtrees musí byť rovanký ako existujúci 
 
 #: login.php:533
 #, php-format
-msgid "The data for the user <b>%s</b> was checked."
+msgid "The data for the user <b>%s</b> has been checked."
 msgstr "Údaje užívateľa %s boli skontrolované."
 
 #: site-unavailable.php:71
@@ -13413,13 +13413,13 @@ msgid "The details of this individual are private."
 msgstr "Detaily tejto osoby sú utajené."
 
 #: admin_trees_merge.php:176
-msgid "The family trees were merged successfully."
+msgid "The family trees have been merged successfully."
 msgstr ""
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:160
 #, php-format
-msgid "The family “%s” was deleted because it only has one member."
+msgid "The family “%s” has been deleted because it only has one member."
 msgstr "Rodina „%s“ bola zmazaná, keďže obsahovala len jednu osobu."
 
 #: addmedia.php:174 admin_media_upload.php:133
@@ -13445,18 +13445,18 @@ msgstr ""
 
 #: admin_site_upgrade.php:415
 #, php-format
-msgid "The file %s was created."
+msgid "The file %s has been created."
 msgstr ""
 
 #: admin_media.php:60 admin_media.php:67 admin_site_upgrade.php:463
 #: admin_site_upgrade.php:484
 #, php-format
-msgid "The file %s was deleted."
+msgid "The file %s has been deleted."
 msgstr "Súbor %s bol zmazaný."
 
 #: admin_media_upload.php:138 admin_media_upload.php:156
 #, php-format
-msgid "The file %s was uploaded."
+msgid "The file %s has been uploaded."
 msgstr "Súbor %s bol nahraný."
 
 #. I18N: %s is a filename
@@ -13482,12 +13482,12 @@ msgstr "Priečinok %s neexistuje a nemohol byť vytvorený."
 #: admin_media_upload.php:61 admin_media_upload.php:72
 #: admin_trees_config.php:188
 #, php-format
-msgid "The folder %s was created."
+msgid "The folder %s has been created."
 msgstr "Bol vytvorený priečinok: %s"
 
 #: admin_site_upgrade.php:478
 #, php-format
-msgid "The folder %s was deleted."
+msgid "The folder %s has been deleted."
 msgstr ""
 
 #: help_text.php:587
@@ -13515,7 +13515,7 @@ msgid "The following message has been sent to your webtrees user account from "
 msgstr "Táto správa bola zaslaná na váš webtrees uživateľský účet z "
 
 #: admin_trees_places.php:111
-msgid "The following places were changed:"
+msgid "The following places have been changed:"
 msgstr ""
 
 #: admin_trees_places.php:111
@@ -13564,7 +13564,7 @@ msgstr "Súbor médií %1$s nemohl byť premenovaný na %2$s."
 
 #: addmedia.php:337
 #, php-format
-msgid "The media file %1$s was renamed to %2$s."
+msgid "The media file %1$s has been renamed to %2$s."
 msgstr "Súbor médií %1$s bol úspešne premenovaný na %2$s."
 
 #: addmedia.php:344
@@ -13615,11 +13615,11 @@ msgstr "Predpona je voliteľná, ale doporučená. Nastavením unikátnej predpo
 
 #: admin_trees_renumber.php:237
 #, php-format
-msgid "The record %1$s was renamed to %2$s."
+msgid "The record %1$s has been renamed to %2$s."
 msgstr ""
 
 #: action.php:100
-msgid "The record was copied to the clipboard."
+msgid "The record has been copied to the clipboard."
 msgstr "Záznam bol skopírovaný do schránky"
 
 #: modules_v3/batch_update/plugins/search_replace.php:110
@@ -13631,7 +13631,7 @@ msgid "The server configuration is OK."
 msgstr "Konfigurácia servera je OK."
 
 #: admin_trees_renumber.php:252
-msgid "The server’s time limit was reached."
+msgid "The server’s time limit has been reached."
 msgstr ""
 
 #: site-offline.php:77
@@ -13659,7 +13659,7 @@ msgstr "Náhľad %1$s nemohl byť premenovaný na %2$s."
 
 #: addmedia.php:351
 #, php-format
-msgid "The thumbnail file %1$s was renamed to %2$s."
+msgid "The thumbnail file %1$s has been renamed to %2$s."
 msgstr "Náhľad %1$s bol úspešne premenovaný na %2$s."
 
 #: addmedia.php:358
@@ -13968,7 +13968,7 @@ msgid "This input box lets you change that year of the calendar.  Type a year in
 msgstr "Toto políčko slúži na zmenu roku v kalendári. Zadajte do políčka rok a stlačením klávesy <b>Enter</b> prejdete na kalendár požadovaného roku.<br><br><b>Rozšírené možnosti</b> pre <b>Zobraziť rok</b><dl><dt><b>Viac rokov naraz</b></dt><dd>Môžete hľadať dáta v intervale rokov.<br><br>Intervaly rokov sú <u>vrátane</u>. To znamená, že prehľadávaný interval sa začína 1. januárom prvého roku a končí 31. decembrom druhého roku. Nasleduje pár príkladov:<br><br><b>1992-5</b> pre všetky udalosti od 1.I.1992 do 31.XII.1995.<br><b>1972-89</b> pre všetky udalosti od 1.I.1972 do 31.XII.1989.<br><b>1610-759</b> pre všetky udalosti od 1.I.1610 do 31.XII.1759.<br><b>1880-1905</b> pre všetky udalosti od 1.I.1880 do 31.XII.1905.<br><b>880-1105</b> pre všetky udalosti od 1.I.880 do 31.XII.1105.<br><br>Na zobrazenie všetkých udalostí za určité desaťročie, alebo storočie použite <b>?</b> namiesto posledných číslic. Napríklad <b>197?</b> pre zobrazenie udalostí od 1.I.1970 po 31.XII.1979, alebo <b>16??</b>pre všetky udalsoti od 1.I.1600 po 31.XII.1699.<br><br>Zadaním intervalu rokov zmeníte zobrazenie kalendára na ročné.</dd></dl>"
 
 #: modules_v3/clippings/help_text.php:32
-msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the “Add” button."
+msgid "This input box lets you enter an individual’s ID number so they can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the “Add” button."
 msgstr "Toto políčko vám umožňuje zadať ID osoby, ktorým pridáte danú osobu do Schránky výstrižkov. Po pridaní dostanete možnosť, ako prepojiť danú osobu zo Schránkou výstrižkov.<br><br>Ak neznáte ID osoby, môžete ju vyhľadať podľa mena kliknutím na ikonu Panáčika vedľa tlačidla pre pridanie."
 
 #: help_text.php:407
@@ -15336,7 +15336,7 @@ msgstr "Zobraziť poznámky"
 
 #: medialist.php:286 modules_v3/googlemap/module.php:1322
 #: modules_v3/random_media/module.php:177
-msgid "View person"
+msgid "View individual"
 msgstr "Zobraziť osobu"
 
 #: medialist.php:292 modules_v3/random_media/module.php:183

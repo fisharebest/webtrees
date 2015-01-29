@@ -245,7 +245,7 @@ case 'requestpw':
 			$user,
 			WT_I18N::translate('Lost password request'),
 			WT_I18N::translate('Hello %s…', WT_Filter::escapeHtml($user->getRealName())) . WT_Mail::EOL . WT_Mail::EOL .
-			WT_I18N::translate('A new password was requested for your user name.') . WT_Mail::EOL . WT_Mail::EOL .
+			WT_I18N::translate('A new password has been requested for your user name.') . WT_Mail::EOL . WT_Mail::EOL .
 			WT_I18N::translate('Username') . ": " . WT_Filter::escapeHtml($user->getUserName()) . WT_Mail::EOL .
 			WT_I18N::translate('Password') . ": " . $user_new_pw . WT_Mail::EOL . WT_Mail::EOL .
 			WT_I18N::translate('After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password.') . WT_Mail::EOL . WT_Mail::EOL .
@@ -589,7 +589,7 @@ case 'verify_hash':
 	echo '<div id="login-register-page">';
 	echo '<h2>' . WT_I18N::translate('User verification') . '</h2>';
 	echo '<div id="user-verify">';
-	echo WT_I18N::translate('The data for the user <b>%s</b> was checked.', $user_name);
+	echo WT_I18N::translate('The data for the user <b>%s</b> has been checked.', $user_name);
 	if ($user) {
 		if ($user->checkPassword($user_password) && $user->getPreference('reg_hashcode') == $user_hashcode) {
 			WT_Mail::send(
@@ -623,7 +623,7 @@ case 'verify_hash':
 
 			echo '<br><br>' . WT_I18N::translate('You have confirmed your request to become a registered user.') . '<br><br>';
 			if ($REQUIRE_ADMIN_AUTH_REGISTRATION && !$user->getPreference('verified_by_admin')) {
-				echo WT_I18N::translate('The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password.');
+				echo WT_I18N::translate('The administrator has been informed.  As soon as they give you permission to login, you can login with your user name and password.');
 			} else {
 				echo WT_I18N::translate('You can now login with your user name and password.');
 			}

@@ -182,7 +182,7 @@ if ($tree1_id && $tree2_id != $tree1_id) {
 		)->execute(array($tree2_id, $tree1_id));
 		WT_DB::exec("UNLOCK TABLES");
 		WT_DB::commit();
-		echo '<p>', WT_I18N::translate('The family trees were merged successfully.'), '</p>';
+		echo '<p>', WT_I18N::translate('The family trees have been merged successfully.'), '</p>';
 	}
 } else {
 	echo '<form method="post">';

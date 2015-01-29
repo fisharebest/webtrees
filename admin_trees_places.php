@@ -108,7 +108,7 @@ $controller
 <?php if ($search && $replace) { ?>
 	<?php if ($changes) { ?>
 	<p>
-		<?php echo ($confirm) ? WT_I18N::translate('The following places were changed:') : WT_I18N::translate('The following places would be changed:'); ?>
+		<?php echo ($confirm) ? WT_I18N::translate('The following places have been changed:') : WT_I18N::translate('The following places would be changed:'); ?>
 	</p>
 	<ul>
 		<?php foreach ($changes as $old_place => $new_place) { ?>
@@ -121,7 +121,7 @@ $controller
 	</ul>
 	<?php } else { ?>
 	<p>
-		<?php echo WT_I18N::translate('No places were found.'); ?>
+		<?php echo WT_I18N::translate('No places have been found.'); ?>
 	</p>
 	<?php } ?>
 <?php } ?>

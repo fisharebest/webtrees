@@ -724,7 +724,7 @@ msgid "A new password has been created and emailed to %s.  You can change this p
 msgstr "Een nieuw wachtwoord is aangemaakt en naar %s  gemaild. U kunt het wachtwoord veranderen nadat u aangemeld bent."
 
 #: login.php:246
-msgid "A new password was requested for your user name."
+msgid "A new password has been requested for your user name."
 msgstr "Een nieuw wachtwoord werd aangevraagd voor uw gebruikersnaam!"
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
@@ -5243,7 +5243,7 @@ msgid "E-mail address to be used in the “From:” field of e-mails that webtre
 msgstr "E-mailadres dat wordt ingevuld in het ‘Van:’-veld van automatisch door webtrees gegenereerde e-mails.<br><br>webtrees kan automatisch e-mails maken om beheerders te informeren over wijzigingen die gecontroleerd moeten worden. webtrees stuurt ook notificatie e-mails naar gebruikers die om een account hebben verzocht.<br><br>Meestal staat in het ‘Van:’-veld van deze automatisch gegenereerde e-mail iets als <i>Van: webtrees-noreply@yoursite</i> om te laten zien dat de e-mail geen antwoord vereist. Om spam en ander e-mailmisbruik tegen te gaan vereisen sommige e-mailsystemen dat in het ‘Van:’-veld het adres van een geldig e-mailaccount wordt gebruikt. Deze e-mailsystemen accepteren geen berichten die afkomstig lijken te zijn van een account als <i>webtrees-noreply</i>."
 
 #: help_text.php:1175
-msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County. “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
+msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County.  “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
 msgstr "Elke bron legt een specifieke gebeurtenis vast, meestal voor een bepaalde tijdsperiode en een bepaald rechtsgebied. B.v. een Volkstelling legt volkstellingsgebeurtenissen vast en een kerk legt geboortes, huwelijken en overlijdens vast.<br><br>Selecteer de gebeurtenissen die worden vastgelegd door deze bron uit de beschikbare lijst met gebeurtenissen. De datum moet gespecificeerd worden in een reeksformaat, zoals <i>VAN 1900 TOT 1910</i>. Het rechtsgebied moet de naam zijn van het gebied met jurisdictie over alle plaatsen waar de bron betrekking op heeft. Een gemeente zal als rechtsgebied worden genoemd als alle gebeurtenissen in een bepaalde gemeente plaats vinden. Een provincie als het gaat over meerdere gemeenten in een provincie."
 
 #: help_text.php:1340
@@ -5676,7 +5676,7 @@ msgid "Events of close relatives"
 msgstr "Gebeurtenissen van naaste familie"
 
 #: help_text.php:1363
-msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the comments field to help the site administrator identify who you are on this site so that he can set the ID for you."
+msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the comments field to help the site administrator identify who you are on this site so that they can set the ID for you."
 msgstr "Iedere persoon in de database heeft een uniek identificatienummer, een ID. Als u uw ID van uw eigen record kent, kunt u dat hier intypen. Als u het niet kent, of u kunt het niet vinden doordat de toegang is afgeschermd door privacy-instellingen, geeft u dan voldoende informatie in het commentaarvak om u herkenbaar te maken voor de beheerder, zodat hij deze  ID voor u zal instellen."
 
 #: help_text.php:1378
@@ -7295,7 +7295,7 @@ msgid "If this box is checked, this user will be able to edit his account inform
 msgstr "Als deze optie is ingeschakeld, is de desbetreffende gebruiker in staat om zijn eigen account informatie aan te passen. Alhoewel het niet aanbevolen wordt, kunt u een enkele gebruikersnaam en wachtwoord maken voor meerdere gebruikers. Met de optie uitgeschakeld voor alle gebruikers met het gedeelde account, kunnen zij niet de account informatie aanpassen. Alleen de beheerder kan het account wijzigen."
 
 #: help_text.php:623
-msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, he is considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
+msgid "If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose."
 msgstr "Als deze persoon andere gebeurtenissen heeft dan overlijden, begrafenis of crematie die recenter zijn dan dit aantal jaren, dan wordt hij geacht in leven te zijn. Geboortedata van kinderen worden als een dergelijke gebeurtenis beschouwd."
 
 #: help_text.php:661
@@ -9070,11 +9070,11 @@ msgid "Military service"
 msgstr "Militaire dienst"
 
 #: admin_trees_config.php:758 help_text.php:475
-msgid "Min. no. of occurrences to be a “common surname”"
+msgid "Minimum number of occurrences to be a “common surname”"
 msgstr "Min. aantal om een ‘gewone achternaam’ te zijn"
 
 #: modules_v3/googlemap/help_text.php:32
-msgid "Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house.  Note that 15 is only available in certain areas."
+msgid "Minimum and maximum zoom level for the Google map.  1 is the full map, 15 is single house.  Note that 15 is only available in certain areas."
 msgstr "Minimum en maximum zoom level van de Google map. 1 is de volledige kaart, 15 is één huis. Houdt er wel rekening mee dat factor 15 alleen beschikbaar is in bepaalde gebieden."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
@@ -9693,7 +9693,7 @@ msgid "No custom themes are enabled."
 msgstr "Er zijn geen niet-standaard thema's ingeschakeld."
 
 #: admin_trees_check.php:264
-msgid "No errors were found."
+msgid "No errors have been found."
 msgstr "Geen fouten gevonden"
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
@@ -9756,7 +9756,7 @@ msgid "No logged-in and no anonymous users"
 msgstr "Niemand ingelogd en geen anonieme gebruikers"
 
 #: modules_v3/googlemap/module.php:202
-msgid "No map data for this person"
+msgid "No map data for this individual"
 msgstr "Geen kaartgegevens voor deze persoon"
 
 #: admin_site_merge.php:106
@@ -9780,7 +9780,7 @@ msgid "No places found"
 msgstr "Geen plaatsen gevonden"
 
 #: admin_trees_places.php:124
-msgid "No places were found."
+msgid "No places have been found."
 msgstr "Er werden geen plaatsen gevonden."
 
 #: admin_site_config.php:46
@@ -11416,7 +11416,7 @@ msgid "Remove link from list"
 msgstr "Verwijder de link uit de lijst"
 
 #: help_text.php:1367 timeline.php:281 timeline.php:296
-msgid "Remove person"
+msgid "Remove individual"
 msgstr "Verwijder persoon"
 
 #: modules_v3/googlemap/module.php:4468
@@ -13340,7 +13340,7 @@ msgid "The administrator at the webtrees site %s has approved your application f
 msgstr "De beheerder van de webtrees-site %s heeft uw aanvraag voor een account goedgekeurd. U kunt zich nu aanmelden door op de volgende link te klikken: %s"
 
 #: login.php:567
-msgid "The administrator has been informed.  As soon as he gives you permission to login, you can login with your user name and password."
+msgid "The administrator has been informed.  As soon as they give you permission to login, you can login with your user name and password."
 msgstr "De beheerder is geïnformeerd.<br>Zodra hij toestemming heeft verleend kunt u zich met uw gebruikersnaam en wachtwoord aanmelden."
 
 #. I18N: %s is the name of an individual, source or other record
@@ -13365,7 +13365,7 @@ msgstr "De huidige webtrees-gebruikersnaam van de beheerder moet hetzelfde zijn 
 
 #: login.php:533
 #, php-format
-msgid "The data for the user <b>%s</b> was checked."
+msgid "The data for the user <b>%s</b> has been checked."
 msgstr "De gegevens van gebruiker %s zijn gecontroleerd."
 
 #: site-unavailable.php:71
@@ -13385,13 +13385,13 @@ msgid "The details of this individual are private."
 msgstr "De details van deze persoon zijn privé."
 
 #: admin_trees_merge.php:176
-msgid "The family trees were merged successfully."
+msgid "The family trees have been merged successfully."
 msgstr "De stambomen zijn sucessvol samengevoegd."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:160
 #, php-format
-msgid "The family “%s” was deleted because it only has one member."
+msgid "The family “%s” has been deleted because it only has one member."
 msgstr "Het gezin ‘%s’ is verwijderd omdat het maar één lid had"
 
 #: addmedia.php:174 admin_media_upload.php:133
@@ -13417,18 +13417,18 @@ msgstr "Het bestand %s kon niet worden geupdate."
 
 #: admin_site_upgrade.php:415
 #, php-format
-msgid "The file %s was created."
+msgid "The file %s has been created."
 msgstr "Het bestand %s is aangemaakt."
 
 #: admin_media.php:60 admin_media.php:67 admin_site_upgrade.php:463
 #: admin_site_upgrade.php:484
 #, php-format
-msgid "The file %s was deleted."
+msgid "The file %s has been deleted."
 msgstr "Het bestand %s werd verwijderd"
 
 #: admin_media_upload.php:138 admin_media_upload.php:156
 #, php-format
-msgid "The file %s was uploaded."
+msgid "The file %s has been uploaded."
 msgstr "Het bestand %s is ge-upload"
 
 #. I18N: %s is a filename
@@ -13454,12 +13454,12 @@ msgstr "De map %s bestaat niet, en kon niet aangemaakt worden."
 #: admin_media_upload.php:61 admin_media_upload.php:72
 #: admin_trees_config.php:188
 #, php-format
-msgid "The folder %s was created."
+msgid "The folder %s has been created."
 msgstr "De map %s werd aangemaakt."
 
 #: admin_site_upgrade.php:478
 #, php-format
-msgid "The folder %s was deleted."
+msgid "The folder %s has been deleted."
 msgstr "De map %s is verwijderd."
 
 #: help_text.php:587
@@ -13487,7 +13487,7 @@ msgid "The following message has been sent to your webtrees user account from "
 msgstr "Het volgende bericht is verzonden naar uw webtrees-gebruikersaccount door "
 
 #: admin_trees_places.php:111
-msgid "The following places were changed:"
+msgid "The following places have been changed:"
 msgstr "De volgende plaatsen zijn gewijzigd:"
 
 #: admin_trees_places.php:111
@@ -13536,7 +13536,7 @@ msgstr "Het mediabestand %1$s kon niet worden hernoemd in %2$s."
 
 #: addmedia.php:337
 #, php-format
-msgid "The media file %1$s was renamed to %2$s."
+msgid "The media file %1$s has been renamed to %2$s."
 msgstr "Het mediabestand %1$s is met succes hernoemd in %2$s."
 
 #: addmedia.php:344
@@ -13587,11 +13587,11 @@ msgstr "Het voorvoegsel is optioneel, maar wel aanbevolen. Door tabelnamen een u
 
 #: admin_trees_renumber.php:237
 #, php-format
-msgid "The record %1$s was renamed to %2$s."
+msgid "The record %1$s has been renamed to %2$s."
 msgstr "Het record %1$s is hernoemd in %2$s."
 
 #: action.php:100
-msgid "The record was copied to the clipboard."
+msgid "The record has been copied to the clipboard."
 msgstr "Het record is naar het klembord gekopieerd"
 
 #: modules_v3/batch_update/plugins/search_replace.php:110
@@ -13603,7 +13603,7 @@ msgid "The server configuration is OK."
 msgstr "De server configuratie is OK."
 
 #: admin_trees_renumber.php:252
-msgid "The server’s time limit was reached."
+msgid "The server’s time limit has been reached."
 msgstr "De tijdslimiet van de server is bereikt."
 
 #: site-offline.php:77
@@ -13631,7 +13631,7 @@ msgstr "Het miniatuur bestand %1$s kon niet worden hernoemd in %2$s."
 
 #: addmedia.php:351
 #, php-format
-msgid "The thumbnail file %1$s was renamed to %2$s."
+msgid "The thumbnail file %1$s has been renamed to %2$s."
 msgstr "Het miniatuurbestand %1$s is met succes hernoemd in %2$s."
 
 #: addmedia.php:358
@@ -13938,7 +13938,7 @@ msgid "This input box lets you change that year of the calendar.  Type a year in
 msgstr "Met dit invulvak kunt u het jaar van de kalender wijzigen. Type een jaar in het vak, en druk op <b>Enter</b> om de kalender te wijzigen naar dat jaar.<br><br><b>Geavanceerde mogelijkheden</b> voor <b>Toon Jaar</b><dl><dt><b>Meer dan een jaar</b></dt><dd>U kan data zoeken in een reeks van jaren.<br><br>Jaarreeksen zijn  <u>inclusief</u>. Dit betekent dat de datum reeks zich uitstrekt van 1 Januarie van het eerste jaar van de reeks tot 31 December van het laatst vermelde jaar.<br><br>Hier zijn een paar voorbeelden van jaar reeksen:<br><br><b>1992-5</b> voor alle gebeurtenissen van 1992 tot 1995.<br><b>1972-89</b>voor alle gebeurtenissen van 1972 tot 1989.<br><b>1610-759</b> voor alle gebeurtenissen van 1610 to t1759.<br><b>1880-1905</b> voor alle gebeurtenissen van tot 1905.<br><b>880-1105</b> voor alle gebeurtenissen van 880 tot 1105.<br><br>Om alle gebeurtenissen te zien in een bepaald decade of eeuw, kan u het volgende gebruiken <b>?</b> in plaats van de laatste cijfers. Bij voorbeeld, <b>197?</b>voor alle gebeurtenissen van 1970 tot 1979 of <b>16??</b> voor alle gebeurtenissen van 1600 tot 1699.<br><br>Het selecteren van een reeks jaren wordt de kalender gewijzigd naar het jaaroverzicht.</dd></dl>"
 
 #: modules_v3/clippings/help_text.php:32
-msgid "This input box lets you enter an individual’s ID number so he can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the “Add” button."
+msgid "This input box lets you enter an individual’s ID number so they can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the “Add” button."
 msgstr "In dit invulvak kunt u het ID-nummer van een persoon invullen, zodat u deze kunt toevoegen aan uw verzameling stamboomknipsels. Eenmaal toegevoegd, krijgt u opties aangeboden om relaties van die persoon aan de verzameling toe te voegen.<br><br>Als u het ID-nummer van de betreffende persoon niet weet dan kunt u zoeken op naam door te klikken op het persoonspictogram naast de knop ‘Toevoegen’."
 
 #: help_text.php:407
@@ -15303,7 +15303,7 @@ msgstr "Notities bekijken"
 
 #: medialist.php:286 modules_v3/googlemap/module.php:1322
 #: modules_v3/random_media/module.php:177
-msgid "View person"
+msgid "View individual"
 msgstr "Toon persoon"
 
 #: medialist.php:292 modules_v3/random_media/module.php:183

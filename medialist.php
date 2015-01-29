@@ -299,7 +299,7 @@ if ($search) {
 			echo print_fact_notes($mediaobject->getGedcom(), 1);
 			echo '</div>';
 			foreach ($mediaobject->linkedIndividuals('OBJE') as $individual) {
-				echo '<a href="' . $individual->getHtmlUrl() . '">' . WT_I18N::translate('View person') . ' — ' . $individual->getFullname() . '</a><br>';
+				echo '<a href="' . $individual->getHtmlUrl() . '">' . WT_I18N::translate('View individual') . ' — ' . $individual->getFullname() . '</a><br>';
 			}
 			foreach ($mediaobject->linkedFamilies('OBJE') as $family) {
 				echo '<a href="' . $family->getHtmlUrl() . '">' . WT_I18N::translate('View family') . ' — ' . $family->getFullname() . '</a><br>';
