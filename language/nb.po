@@ -9654,8 +9654,8 @@ msgstr "Nei"
 
 #: admin_trees_manage.php:172
 #, php-format
-msgid "No GEDCOM files found.  You need to copy files to the <b>%s</b> directory on your server."
-msgstr "Ingen GEDCOM-filer funnet. Du må kopiere filene til mappen <b>%s</b> på din server."
+msgid "No GEDCOM files found.  You need to copy files to the “%s” folder on your server."
+msgstr "Ingen GEDCOM-filer funnet. Du må kopiere filene til mappen “%s” på din server."
 
 #: modules_v3/googlemap/module.php:879
 msgid "No ancestors in the database."
@@ -14386,8 +14386,8 @@ msgstr "Dette nettstedet er for øyeblikket ikke tilgjengelig"
 
 #: admin_trees_manage.php:137
 #, php-format
-msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM file."
-msgstr "Dette vil slette alle slektsdata fra <b>%s</b> og erstatte dem med data fra en annen GEDCOM."
+msgid "This will delete all the genealogical data from “%s” and replace it with data from another GEDCOM file."
+msgstr "Dette vil slette alle slektsdata fra “%s” og erstatte dem med data fra en annen GEDCOM."
 
 #: modules_v3/googlemap/module.php:1772
 msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
@@ -14395,7 +14395,7 @@ msgstr "Dette vil vise alle stedene fra den valgte slektsbasen. Som standard vil
 
 #: admin_trees_places.php:92
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-msgstr "Dette vil oppdatere det/de høyeste nivået/-er av stedsnavnet. \"Mexico\" vil for eksempel finne \"Quintana Roo, Mexico\", men ikke \"Santa Fe, New Mexico\"."
+msgstr "Dette vil oppdatere det/de høyeste nivået/-er av stedsnavnet. “Mexico” vil for eksempel finne “Quintana Roo, Mexico”, men ikke “Santa Fe, New Mexico”."
 
 #: includes/functions/functions_print.php:1013
 #: library/WT/Date/Calendar.php:409

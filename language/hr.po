@@ -9682,8 +9682,8 @@ msgstr "Ne"
 
 #: admin_trees_manage.php:172
 #, php-format
-msgid "No GEDCOM files found.  You need to copy files to the <b>%s</b> directory on your server."
-msgstr "Nije pronađena GEDCOM datoteka. Trebate kopirati datoteke u <b>%s</b> mapu vašeg servera."
+msgid "No GEDCOM files found.  You need to copy files to the “%s” folder on your server."
+msgstr "Nije pronađena GEDCOM datoteka. Trebate kopirati datoteke u “%s” mapu vašeg servera."
 
 #: modules_v3/googlemap/module.php:879
 msgid "No ancestors in the database."
@@ -14420,8 +14420,8 @@ msgstr "Ove web stranice su privremeno nedostupne"
 
 #: admin_trees_manage.php:137
 #, php-format
-msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM file."
-msgstr "Ovo će obrisati sve genealoške podatke iz <b>%s</b> i prepisati sa podacima iz drugog GEDCOM-a."
+msgid "This will delete all the genealogical data from “%s” and replace it with data from another GEDCOM file."
+msgstr "Ovo će obrisati sve genealoške podatke iz “%s” i prepisati sa podacima iz drugog GEDCOM-a."
 
 #: modules_v3/googlemap/module.php:1772
 msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"

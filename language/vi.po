@@ -9634,8 +9634,8 @@ msgstr "Không"
 
 #: admin_trees_manage.php:172
 #, php-format
-msgid "No GEDCOM files found.  You need to copy files to the <b>%s</b> directory on your server."
-msgstr "Không tìm thấy GEDCOM. Bạn cần chép file đó vào thư mục <b>%s</b> ở máy chủ của bạn."
+msgid "No GEDCOM files found.  You need to copy files to the “%s” folder on your server."
+msgstr "Không tìm thấy GEDCOM. Bạn cần chép file đó vào thư mục “%s” ở máy chủ của bạn."
 
 #: modules_v3/googlemap/module.php:879
 msgid "No ancestors in the database."
@@ -14361,8 +14361,8 @@ msgstr "Site hiện tạm thời không hoạt động"
 
 #: admin_trees_manage.php:137
 #, php-format
-msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM file."
-msgstr "Việc này sẽ xóa bỏ mọi chi tiết gia phả của <b>%s</b> và thay thế bằng số liệu từ một file GEDCOM khác."
+msgid "This will delete all the genealogical data from “%s” and replace it with data from another GEDCOM file."
+msgstr "Việc này sẽ xóa bỏ mọi chi tiết gia phả của “%s” và thay thế bằng số liệu từ một file GEDCOM khác."
 
 #: modules_v3/googlemap/module.php:1772
 msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"

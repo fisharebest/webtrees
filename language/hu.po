@@ -9659,8 +9659,8 @@ msgstr "Nem"
 
 #: admin_trees_manage.php:172
 #, php-format
-msgid "No GEDCOM files found.  You need to copy files to the <b>%s</b> directory on your server."
-msgstr "Nem található GEDCOM fájl. A fájlokat a szerveren a(z) <b>%s</b> mappába kell másolja."
+msgid "No GEDCOM files found.  You need to copy files to the “%s” folder on your server."
+msgstr "Nem található GEDCOM fájl. A fájlokat a szerveren a(z) “%s” mappába kell másolja."
 
 #: modules_v3/googlemap/module.php:879
 msgid "No ancestors in the database."
@@ -14392,8 +14392,8 @@ msgstr "Ez az oldal ideiglenesen nem elérhető."
 
 #: admin_trees_manage.php:137
 #, php-format
-msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM file."
-msgstr "Ez kitörli az összes családfa adatot a(z) <b>%s</b> bejegyzésből és felülírja egy másik GEDCOM adataival."
+msgid "This will delete all the genealogical data from “%s” and replace it with data from another GEDCOM file."
+msgstr "Ez kitörli az összes családfa adatot a(z) “%s” bejegyzésből és felülírja egy másik GEDCOM adataival."
 
 #: modules_v3/googlemap/module.php:1772
 msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
@@ -14401,7 +14401,7 @@ msgstr "Ez kilistázza az összes helyet a kiválasztott GEDCOM fájlból. Alapb
 
 #: admin_trees_places.php:92
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-msgstr "Frissíteni fogja a helység nevének legmagasabb szintű részét vagy részeit. Például, \"Mexico\" illeszkedik \"Quintana Roo, Mexico\"-ra, de nem illeszkedik \"Santa Fe, New Mexico\"-ra."
+msgstr "Frissíteni fogja a helység nevének legmagasabb szintű részét vagy részeit. Például, “Mexico” illeszkedik “Quintana Roo, Mexico”-ra, de nem illeszkedik “Santa Fe, New Mexico”-ra."
 
 #: includes/functions/functions_print.php:1013
 #: library/WT/Date/Calendar.php:409

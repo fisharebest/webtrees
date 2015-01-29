@@ -489,11 +489,6 @@ case 'block_move_up':
 	$text = WT_I18N::translate('Use these buttons to re-arrange the order of the entries within the list.  The blocks will be printed in the order in which they are listed.<br><br>Highlight the entry to be moved, and then click a button to move that entry up or down.');
 	break;
 
-case 'default_gedcom':
-	$title = WT_I18N::translate('Default family tree');
-	$text = WT_I18N::translate('This option selects the family tree that is shown to visitors when they first arrive at the site.');
-	break;
-
 case 'download_gedcom':
 	$title = WT_I18N::translate('Download family tree');
 	$text = WT_I18N::translate('This option will download the family tree to a GEDCOM file on your computer.');

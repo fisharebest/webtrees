@@ -38,7 +38,7 @@ case 'delete':
 	$gedcom_id = WT_Filter::postInteger('gedcom_id');
 	if (WT_Filter::checkCsrf() && $gedcom_id) {
 		$tree = WT_Tree::get($gedcom_id);
-		WT_FlashMessages::addMessage(WT_I18N::translate('The family tree %s was deleted.', WT_Filter::escapeHtml($tree->tree_name)), 'success');
+		WT_FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ WT_I18N::translate('The family tree “%s” has been deleted.', WT_Filter::escapeHtml($tree->tree_name)), 'success');
 		$tree->delete();
 	}
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
@@ -47,16 +47,22 @@ case 'delete':
 case 'setdefault':
 	if (WT_Filter::checkCsrf()) {
 		WT_Site::setPreference('DEFAULT_GEDCOM', WT_Filter::post('ged'));
+		WT_FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ WT_I18N::translate('The family tree “%s” will be shown to visitors when they first arrive at this website.', WT_Filter::escapeHtml($tree->tree_name)), 'success');
 	}
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
 
 	return;
 case 'new_tree':
-	$basename  = basename(WT_Filter::post('tree_name'));
+	$basename   = basename(WT_Filter::post('tree_name'));
 	$tree_title = WT_Filter::post('tree_title');
 
 	if (WT_Filter::checkCsrf() && $basename && $tree_title) {
-		WT_Tree::create($basename, $tree_title);
+		if (WT_Tree::getIdFromName($basename)) {
+			WT_FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ WT_I18N::translate('The family tree “%s” already exists.', WT_Filter::escapeHtml($basename)), 'danger');
+		} else {
+			WT_Tree::create($basename, $tree_title);
+			WT_FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ WT_I18N::translate('The family tree “%s” has been created.', WT_Filter::escapeHtml($basename)), 'success');
+		}
 	}
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?ged=' . $basename);
 
@@ -77,7 +83,7 @@ case 'replace_upload':
 
 	return;
 case 'replace_import':
-	$basename  = basename(WT_Filter::post('tree_name'));
+	$basename   = basename(WT_Filter::post('tree_name'));
 	$gedcom_id  = WT_Filter::postInteger('gedcom_id');
 	$keep_media = WT_Filter::postBool('keep_media');
 	$tree       = WT_Tree::get($gedcom_id);
@@ -95,7 +101,7 @@ case 'bulk-import':
 		$basenames  = array();
 
 		foreach ($gedcom_files as $gedcom_file) {
-			$filemtime   = filemtime($gedcom_file); // Only import files that have chandged
+			$filemtime   = filemtime($gedcom_file); // Only import files that have changed
 			$basename    = basename($gedcom_file);
 			$basenames[] = $basename;
 
@@ -103,13 +109,13 @@ case 'bulk-import':
 			if ($tree->getPreference('filemtime') != $filemtime) {
 				$tree->importGedcomFile($gedcom_file, $basename, false);
 				$tree->setPreference('filemtime', $filemtime);
-				WT_FlashMessages::addMessage(WT_I18N::translate('The GEDCOM file %s was imported', WT_Filter::escapeHtml($basename)), 'success');
+				WT_FlashMessages::addMessage(WT_I18N::translate('The GEDCOM file “%s” has been imported.', WT_Filter::escapeHtml($basename)), 'success');
 			}
 		}
 
 		foreach (WT_Tree::getAll() as $tree) {
 			if (!in_array($tree->tree_name, $basenames)) {
-				WT_FlashMessages::addMessage(WT_I18N::translate('The family tree %s was deleted.', WT_Filter::escapeHtml($tree->tree_name)), 'success');
+				WT_FlashMessages::addMessage(WT_I18N::translate('The family tree “%s” has been deleted.', WT_Filter::escapeHtml($tree->tree_name)), 'success');
 				$tree->delete();
 			}
 		}
@@ -157,7 +163,7 @@ case 'importform':
 	if (!$tree) {
 		break;
 	}
-	echo '<p>', WT_I18N::translate('This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM file.', $tree->tree_name_html), '</p>';
+	echo '<p>', /* I18N: %s is the name of a family tree */ WT_I18N::translate('This will delete all the genealogical data from “%s” and replace it with data from another GEDCOM file.', $tree->tree_name_html), '</p>';
 	// the javascript in the next line strips any path associated with the file before comparing it to the current GEDCOM name (both Chrome and IE8 include c:\fakepath\ in the filename).
 	$previous_gedcom_filename = $tree->getPreference('gedcom_filename');
 	echo '<form name="replaceform" method="post" enctype="multipart/form-data" action="', WT_SCRIPT_NAME, '" onsubmit="var newfile = document.replaceform.ged_name.value; newfile = newfile.substr(newfile.lastIndexOf(\'\\\\\')+1); if (newfile!=\'', WT_Filter::escapeHtml($previous_gedcom_filename), '\' && \'\' != \'', WT_Filter::escapeHtml($previous_gedcom_filename), '\') return confirm(\'', WT_Filter::escapeHtml(WT_I18N::translate('You have selected a GEDCOM file with a different name.  Is this correct?')), '\'); else return true;">';
@@ -192,7 +198,7 @@ case 'importform':
 			}
 			echo '</select>';
 		} else {
-			echo '<p>', WT_I18N::translate('No GEDCOM files found.  You need to copy files to the <b>%s</b> directory on your server.', WT_DATA_DIR);
+			echo '<p>', /* I18N: %s is the name of a folder */ WT_I18N::translate('No GEDCOM files found.  You need to copy files to the “%s” folder on your server.', WT_DATA_DIR);
 			echo '</form>';
 
 			return;
@@ -200,7 +206,7 @@ case 'importform':
 	}
 	echo '<br><br><input type="checkbox" name="keep_media" value="1">';
 	echo WT_I18N::translate('If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM file.');
-	echo '<br><br><input type="submit" value="', WT_I18N::translate('continue'), '">';
+	echo '<br><br><input type="submit" value="', /* I18N: A button label */ WT_I18N::translate('continue'), '">';
 	echo '</form>';
 
 	return;

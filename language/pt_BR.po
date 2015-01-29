@@ -9658,8 +9658,8 @@ msgstr "Não"
 
 #: admin_trees_manage.php:172
 #, php-format
-msgid "No GEDCOM files found.  You need to copy files to the <b>%s</b> directory on your server."
-msgstr "Nenhum arquivo GEDCOM encontrado. Você precisa copiar arquivos para o diretório <b>%s</b> em seu servidor."
+msgid "No GEDCOM files found.  You need to copy files to the “%s” folder on your server."
+msgstr "Nenhum arquivo GEDCOM encontrado. Você precisa copiar arquivos para o diretório “%s” em seu servidor."
 
 #: modules_v3/googlemap/module.php:879
 msgid "No ancestors in the database."
@@ -14390,8 +14390,8 @@ msgstr "Este site web está temporariamente indisponível"
 
 #: admin_trees_manage.php:137
 #, php-format
-msgid "This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM file."
-msgstr "Isto excluirá todos os dados genealógicos de <b>%s</b> e o substituirá com os dados de outro GEDCOM"
+msgid "This will delete all the genealogical data from “%s” and replace it with data from another GEDCOM file."
+msgstr "Isto excluirá todos os dados genealógicos de “%s” e o substituirá com os dados de outro GEDCOM"
 
 #: modules_v3/googlemap/module.php:1772
 msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
@@ -14399,7 +14399,7 @@ msgstr "Isto listará todos os locais do arquivo GEDCOM selecionado. Por padrão
 
 #: admin_trees_places.php:92
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
-msgstr "Isto atualizará a parte ou partes de mais alto nível do nome de local. Por exemplo, Brasil irá corresponder com \"Paraíba, Brasil\", mas não com \"Acre, Estados Unidos do Brasil\"."
+msgstr "Isto atualizará a parte ou partes de mais alto nível do nome de local. Por exemplo, “Brasil” irá corresponder com “Paraíba, Brasil”, mas não com “Acre, Estados Unidos do Brasil”."
 
 #: includes/functions/functions_print.php:1013
 #: library/WT/Date/Calendar.php:409
