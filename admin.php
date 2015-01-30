@@ -363,6 +363,7 @@ $old_files = array(
 	WT_ROOT . 'admin_site_other.php',
 	WT_ROOT . 'js',
 	WT_ROOT . 'library/WT/MenuBar.php',
+	WT_ROOT . 'library/WT/Query/Admin.php',
 	WT_ROOT . 'save.php',
 	WT_ROOT . 'themes/_administration/css-1.6.2',
 	WT_ROOT . 'themes/_administration/templates',
@@ -422,38 +423,66 @@ $update_available = Auth::isAdmin() && $latest_version && version_compare(WT_VER
 // Total number of users
 $total_users = User::count();
 
-// Total number of administrators
-$total_administrators = WT_DB::prepare(
-	"SELECT COUNT(*) FROM `##user_setting` WHERE setting_name='canadmin' AND setting_value=1"
-)->fetchOne();
+// Administrators
+$administrators = WT_DB::prepare(
+	"SELECT SQL_CACHE user_id, real_name FROM `##user` JOIN `##user_setting` USING (user_id) WHERE setting_name='canadmin' AND setting_value=1"
+)->fetchAll();
 
-// Total numbers of managers
-$total_managers = WT_DB::prepare(
-	"SELECT gs.setting_value, COUNT(*)" .
-	" FROM `##gedcom_setting` gs" .
-	" JOIN `##user_gedcom_setting` ugs USING (gedcom_id)" .
-	" WHERE ugs.setting_name = 'canedit' AND ugs.setting_value='admin'" .
-	" AND   gs.setting_name ='title'" .
-	" GROUP BY gedcom_id" .
-	" ORDER BY gs.setting_value"
-)->fetchAssoc();
+// Managers
+$managers = WT_DB::prepare(
+	"SELECT SQL_CACHE user_id, real_name FROM `##user` JOIN `##user_gedcom_setting` USING (user_id)" .
+	" WHERE setting_name = 'canedit' AND setting_value='admin'" .
+	" GROUP BY user_id, real_name" .
+	" ORDER BY real_name"
+)->fetchAll();
+
+// Moderators
+$moderators = WT_DB::prepare(
+	"SELECT SQL_CACHE user_id, real_name FROM `##user` JOIN `##user_gedcom_setting` USING (user_id)" .
+	" WHERE setting_name = 'canedit' AND setting_value='accept'" .
+	" GROUP BY user_id, real_name" .
+	" ORDER BY real_name"
+)->fetchAll();
 
 // Number of users who have not verified their email address
-$unverified = 1+WT_DB::prepare(
-	"SELECT COUNT(*) FROM `##user_setting` WHERE setting_name = 'verified' AND setting_value = 0"
-)->fetchOne();
+$unverified = WT_DB::prepare(
+	"SELECT SQL_CACHE user_id, real_name FROM `##user` JOIN `##user_setting` USING (user_id)" .
+	" WHERE setting_name = 'verified' AND setting_value = 0" .
+	" ORDER BY real_name"
+)->fetchAll();
 
 // Number of users whose accounts are not approved by an administrator
 $unapproved = WT_DB::prepare(
-	"SELECT COUNT(*) FROM `##user_setting` WHERE setting_name = 'verified_by_admin' AND setting_value = 0"
-)->fetchOne();
+	"SELECT SQL_CACHE user_id, real_name FROM `##user` JOIN `##user_setting` USING (user_id)" .
+	" WHERE setting_name = 'verified_by_admin' AND setting_value = 0" .
+	" ORDER BY real_name"
+)->fetchAll();
 
 // Users currently logged in
 $logged_in = WT_DB::prepare(
-	"SELECT SQL_NO_CACHE DISTINCT user_id, user_name, real_name, email" .
-	" FROM `##user`" .
-	" JOIN `##session` USING (user_id)"
+	"SELECT SQL_NO_CACHE DISTINCT user_id, real_name FROM `##user` JOIN `##session` USING (user_id)" .
+	" ORDER BY real_name"
 )->fetchAll();
+
+// Count of records
+$individuals = WT_DB::prepare(
+	"SELECT SQL_CACHE gedcom_id, COUNT(i_id) AS count FROM `##gedcom` LEFT JOIN `##individuals` ON gedcom_id = i_file GROUP BY gedcom_id"
+)->fetchAssoc();
+$families = WT_DB::prepare(
+	"SELECT SQL_CACHE gedcom_id, COUNT(f_id) AS count FROM `##gedcom` LEFT JOIN `##families` ON gedcom_id = f_file GROUP BY gedcom_id"
+)->fetchAssoc();
+$sources = WT_DB::prepare(
+	"SELECT SQL_CACHE gedcom_id, COUNT(s_id) AS count FROM `##gedcom` LEFT JOIN `##sources` ON gedcom_id = s_file GROUP BY gedcom_id"
+)->fetchAssoc();
+$media = WT_DB::prepare(
+	"SELECT SQL_CACHE gedcom_id, COUNT(m_id) AS count FROM `##gedcom` LEFT JOIN `##media` ON gedcom_id = m_file GROUP BY gedcom_id"
+)->fetchAssoc();
+$repositories = WT_DB::prepare(
+	"SELECT SQL_CACHE gedcom_id, COUNT(o_id) AS count FROM `##gedcom` LEFT JOIN `##other` ON gedcom_id = o_file AND o_type = 'REPO' GROUP BY gedcom_id"
+)->fetchAssoc();
+$changes = WT_DB::prepare(
+	"SELECT SQL_CACHE g.gedcom_id, COUNT(change_id) AS count FROM `##gedcom` AS g LEFT JOIN `##change` AS c ON g.gedcom_id = c.gedcom_id AND status = 'pending' GROUP BY g.gedcom_id"
+)->fetchAssoc();
 
 ?>
 <h1><?php echo $controller->getPageTitle(); ?></h1>
@@ -495,7 +524,7 @@ $logged_in = WT_DB::prepare(
 	</div>
 
 	<!-- USERS -->
-	<div class="panel <?php echo $unapproved ? 'panel-danger' : ($unverified ? 'panel-warning' : 'panel-primary'); ?>">
+	<div class="panel <?php echo $unapproved || $unverified ? 'panel-danger' : 'panel-primary'; ?>">
 		<div class="panel-heading" role="tab" id="users-heading">
 			<h2 class="panel-title">
 				<a data-toggle="collapse" data-parent="#accordion" href="#users-panel" aria-expanded="false" aria-controls="users-panel">
@@ -505,51 +534,99 @@ $logged_in = WT_DB::prepare(
 		</div>
 		<div id="users-panel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="users-heading">
 			<div class="panel-body">
-				<dl class="dl-horizontal">
-					<dt>
-						<?php echo WT_I18N::translate('Total number of users'); ?>
-					</dt>
-					<dd>
-						<?php echo $total_users; ?>
-					</dd>
-
-					<dt>
-						<?php echo WT_I18N::translate('Administrators'); ?>
-					</dt>
-					<dd>
-						<?php echo $total_administrators; ?>
-					</dd>
-
-					<dt>
-						<?php echo WT_I18N::translate('Not verified by the user'); ?>
-					</dt>
-					<dd>
-						<?php echo $unverified; ?>
-					</dd>
-
-					<dt>
-						<?php echo WT_I18N::translate('Not approved by an administrator'); ?>
-					</dt>
-					<dd>
-						<?php echo $unapproved; ?>
-					</dd>
-
-					<dt>
-						<?php echo WT_I18N::translate('Users logged in'); ?>
-					</dt>
-					<dd>
-						<?php foreach ($logged_in as $n =>$user): ?>
-						<?php echo $n ? WT_I18N::$list_separator : ''; ?>
-						<?php echo WT_Filter::escapeHtml($user->real_name); ?>
-						<?php endforeach; ?>
-					</dd>
-				</dl>
+				<table class="table table-condensed">
+					<caption class="sr-only">
+						<?php echo WT_I18N::translate('Users'); ?>
+					</caption>
+					<tbody>
+						<tr>
+							<th class="col-xs-3">
+								<?php echo WT_I18N::translate('Total number of users'); ?>
+							</th>
+							<td class="col-xs-9">
+								<a href="admin_users.php">
+									<?php echo WT_I18N::number($total_users); ?>
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<th>
+								<?php echo WT_I18N::translate('Administrators'); ?>
+							</th>
+							<td>
+								<?php foreach ($administrators as $n =>$user): ?>
+									<?php echo $n ? WT_I18N::$list_separator : ''; ?>
+									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>"><?php echo WT_Filter::escapeHtml($user->real_name); ?></a>
+								<?php endforeach; ?>
+							</td>
+						</tr>
+						<tr>
+							<th>
+								<?php echo WT_I18N::translate('Managers'); ?>
+							</th>
+							<td>
+								<?php foreach ($managers as $n =>$user): ?>
+									<?php echo $n ? WT_I18N::$list_separator : ''; ?>
+									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>"><?php echo WT_Filter::escapeHtml($user->real_name); ?></a>
+								<?php endforeach; ?>
+							</td>
+						</tr>
+						<tr>
+							<th>
+								<?php echo WT_I18N::translate('Moderators'); ?>
+							</th>
+							<td>
+								<?php foreach ($moderators as $n =>$user): ?>
+									<?php echo $n ? WT_I18N::$list_separator : ''; ?>
+									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>"><?php echo WT_Filter::escapeHtml($user->real_name); ?></a>
+								<?php endforeach; ?>
+							</td>
+						</tr>
+						<?php if ($unverified): ?>
+						<tr class="danger">
+							<th>
+								<?php echo WT_I18N::translate('Not verified by the user'); ?>
+							</th>
+							<td>
+								<?php foreach ($unverified as $n =>$user): ?>
+									<?php echo $n ? WT_I18N::$list_separator : ''; ?>
+									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>"><?php echo WT_Filter::escapeHtml($user->real_name); ?></a>
+								<?php endforeach; ?>
+							</td>
+						</tr>
+						<?php endif; ?>
+						<?php if ($unapproved): ?>
+						<tr class="danger">
+							<th>
+								<?php echo WT_I18N::translate('Not approved by an administrator'); ?>
+							</th>
+							<td>
+								<?php foreach ($unapproved as $n =>$user): ?>
+									<?php echo $n ? WT_I18N::$list_separator : ''; ?>
+									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>"><?php echo WT_Filter::escapeHtml($user->real_name); ?></a>
+								<?php endforeach; ?>
+							</td>
+						</tr>
+						<?php endif; ?>
+						<tr>
+							<th>
+								<?php echo WT_I18N::translate('Users logged in'); ?>
+							</th>
+							<td>
+								<?php foreach ($logged_in as $n =>$user): ?>
+								<?php echo $n ? WT_I18N::$list_separator : ''; ?>
+									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>"><?php echo WT_Filter::escapeHtml($user->real_name); ?></a>
+								<?php endforeach; ?>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
 
 	<!-- FAMILY TREES -->
-	<div class="panel panel-primary">
+	<div class="panel <?php echo array_sum($changes) ? 'panel-danger' : 'panel-primary'; ?>">
 		<div class="panel-heading" role="tab" id="trees-heading">
 			<h2 class="panel-title">
 				<a data-toggle="collapse" data-parent="#accordion" href="#trees-panel" aria-expanded="false" aria-controls="trees-panel">
@@ -559,7 +636,92 @@ $logged_in = WT_DB::prepare(
 		</div>
 		<div id="trees-panel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="trees-heading">
 			<div class="panel-body">
-				eek
+				<table class="table table-condensed">
+					<caption class="sr-only">
+						<?php echo WT_I18N::translate('Family trees'); ?>
+					</caption>
+					<thead>
+						<tr>
+							<th class="col-xs-5"><?php echo WT_I18N::translate('Family tree'); ?></th>
+							<th class="col-xs-2 text-right flip"><?php echo WT_I18N::translate('Pending changes'); ?></th>
+							<th class="col-xs-1 text-right flip"><?php echo WT_I18N::translate('Individuals'); ?></th>
+							<th class="col-xs-1 text-right flip"><?php echo WT_I18N::translate('Families'); ?></th>
+							<th class="col-xs-1 text-right flip"><?php echo WT_I18N::translate('Sources'); ?></th>
+							<th class="col-xs-1 text-right flip"><?php echo WT_I18N::translate('Repositories'); ?></th>
+							<th class="col-xs-1 text-right flip"><?php echo WT_I18N::translate('Media'); ?></th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php foreach (WT_Tree::getAll() as $tree): ?>
+						<tr class="<?php echo $changes[$tree->tree_id] ? 'danger' : '';?>">
+							<td>
+								<a href="index.php?ctype=gedcom&amp;ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
+									<?php echo WT_Filter::escapeHtml($tree->tree_title); ?>
+								</a>
+							</td>
+							<td class="text-right flip">
+								<?php if ($changes[$tree->tree_id]): ?>
+								<a onclick="window.open('edit_changes.php', '_blank', chan_window_specs); return false;" href="#">
+									<?php echo WT_I18N::number($changes[$tree->tree_id]); ?>
+								</a>
+								<?php else: ?>
+								<?php echo WT_I18N::number($changes[$tree->tree_id]); ?>
+								<?php endif; ?>
+							</td>
+							<td class="text-right flip">
+								<a href="indilist.php?ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
+									<?php echo WT_I18N::number($individuals[$tree->tree_id]); ?>
+								</a>
+								</td>
+							<td class="text-right flip">
+								<a href="famlist.php?ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
+									<?php echo WT_I18N::number($families[$tree->tree_id]); ?>
+								</a>
+								</td>
+							<td class="text-right flip">
+								<a href="sourlist.php?ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
+									<?php echo WT_I18N::number($sources[$tree->tree_id]); ?>
+								</a>
+							</td>
+							<td class="text-right flip">
+								<a href="repolist.php?ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
+									<?php echo WT_I18N::number($repositories[$tree->tree_id]); ?>
+								</a>
+							</td>
+							<td class="text-right flip">
+								<a href="medialist.php?ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
+									<?php echo WT_I18N::number($media[$tree->tree_id]); ?>
+								</a>
+							</td>
+						</tr>
+						<?php endforeach; ?>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td>
+								<?php echo WT_I18N::translate('Total'); ?>
+							</td>
+							<td class="text-right flip">
+								<?php echo WT_I18N::number(array_sum($changes)); ?>
+							</td>
+							<td class="text-right flip">
+								<?php echo WT_I18N::number(array_sum($individuals)); ?>
+							</td>
+							<td class="text-right flip">
+								<?php echo WT_I18N::number(array_sum($families)); ?>
+							</td>
+							<td class="text-right flip">
+								<?php echo WT_I18N::number(array_sum($sources)); ?>
+							</td>
+							<td class="text-right flip">
+								<?php echo WT_I18N::number(array_sum($repositories)); ?>
+							</td>
+							<td class="text-right flip">
+								<?php echo WT_I18N::number(array_sum($media)); ?>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>

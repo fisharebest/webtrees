@@ -262,11 +262,8 @@ $controller->pageHeader();
 				<div class="row<?php echo $importing ? ' hidden' : ''; ?>" id="actions<?php echo $tree->tree_id; ?>">
 					<div class="col-sm-6 col-md-3">
 						<h3>
-							<?php echo WT_I18N::translate('Family tree'); ?>
-							—
 							<a href="index.php?ctype=gedcom&ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
-								<?php echo WT_I18N::translate('View'); ?>
-								<span class="sr-only"><?php echo WT_Filter::escapeHtml($tree->tree_name); ?></span>
+								<?php echo WT_I18N::translate('Family tree'); ?>
 							</a>
 						</h3>
 						<ul class="fa-ul">
