@@ -4235,103 +4235,85 @@ header {
 	height: 98px;
 }
 
-.header-search {
-	display: inline;
-}
-
 /* ====== Secondary menu ======= */
 .secondary-menu {
 	float: right;
 	margin: 21px 10px 4px 0;
 	white-space: nowrap;
+	list-style: none;
+	padding: 1px;
 }
 
 .secondary-menu li {
 	display: inline;
 	position: relative;
-	white-space: nowrap;
 }
 
 .secondary-menu li:before {
 	content: " | ";
 }
 
-.secondary-menu li a.link {
-	font-size: 13px;
-	margin-left: 5px;
-	margin-right: 5px;
+.secondary-menu  ul li:before,
+.secondary-menu li:first-child:before {
+	content: "";
 }
 
-.secondary-menu li ul {
+.secondary-menu ul {
+	position: absolute;
 	background-color: #eee;
 	border: thin solid #aaa;
 	display: none;
+	top: 6px;
 	left: 0;
-	position: absolute;
+	list-style: none;
+	padding: 1px;
 }
 
-.secondary-menu li ul li {
+.secondary-menu ul li {
 	display: block;
 	text-align: left;
 }
 
-.secondary-menu li ul li a {
-	color: #333;
-}
-
-.secondary-menu,
-.secondary-menu li ul {
-	color: #fff;
-	list-style: none;
-	padding: 1px;
-	top: 6px;
-}
-
-/*set position of dropdown */
-.secondary-menu li:hover > ul {
-	display: block;
-}
-
-.secondary-menu li a:hover {
-	color: #f5003d;
-}
-
 .secondary-menu ul li a {
 	background-color: #fff;
+	color: #333;
 	display: block;
 	padding: 2px 5px 2px 2px;
+}
+
+.secondary-menu li:hover ul {
+	display: block;
 }
 
 .secondary-menu ul li a:hover {
 	color: #000;
 }
 
-.secondary-menu li ul li:before,
-.secondary-menu li:first-child:before {
-	content: "";
-}
-
+/* set active theme to bold */
 .secondary-menu .active {
 	font-weight: 900;
 }
 
-.search-icon {
-	vertical-align: top;
-}
-
 [dir=rtl] .secondary-menu {
-	display: block;
 	float: left;
-	margin: 21px 0 0 10px;
+	margin: 21px 0 4px 10px;
 }
 
-[dir=rtl] .secondary-menu li ul {
+[dir=rtl] .secondary-menu ul {
 	left: auto;
 	right: 0;
 }
 
-[dir=rtl] .secondary-menu li ul li {
+[dir=rtl] .secondary-menu ul li {
 	text-align: right;
+}
+
+.header-search {
+	display: inline;
+}
+
+.search-icon {
+	vertical-align: top;
 }
 
 /* ====== Primary menu ========= */
