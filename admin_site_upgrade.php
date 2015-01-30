@@ -82,7 +82,7 @@ if ($continue) {
 	echo '<p>', WT_I18N::translate('A new version of webtrees is available.'), '</p>';
 	echo '<p>', WT_I18N::translate('Depending on your server configuration, you may be able to upgrade automatically.'), '</p>';
 	echo '<p>', WT_I18N::translate('It can take several minutes to download and install the upgrade.  Be patient.'), '</p>';
-	echo '<button type="submit" name="continue" value="1">', /* I18N: %s is a version number, such as 1.2.3 */ WT_I18N::translate('Upgrade to webtrees %s', $latest_version_html), '</button>';
+	echo '<button type="submit" name="continue" value="1">', /* I18N: %s is a version number, such as 1.2.3 */ WT_I18N::translate('Upgrade to webtrees %s.', $latest_version_html), '</button>';
 	echo '</form>';
 
 	return;

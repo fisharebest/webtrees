@@ -14969,7 +14969,7 @@ msgstr "Mettre à jour de toutes façons"
 #. I18N: %s is a version number, such as 1.2.3
 #: admin.php:113 admin_site_upgrade.php:88
 #, php-format
-msgid "Upgrade to webtrees %s"
+msgid "Upgrade to webtrees %s."
 msgstr "Mettre à jour à la version %s de webtrees"
 
 #: admin_site_upgrade.php:57
