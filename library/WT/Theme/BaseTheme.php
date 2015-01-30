@@ -79,6 +79,15 @@ abstract class BaseTheme {
 	}
 
 	/**
+	 * Where are our CSS, JS and other assets?
+	 *
+	 * @return string A relative path, such as "themes/foo/"
+	 */
+	public function assetUrl() {
+		return '';
+	}
+
+	/**
 	 * Create the top of the <body>.
 	 *
 	 * @return string
@@ -179,15 +188,6 @@ abstract class BaseTheme {
 		} else {
 			return '';
 		}
-	}
-
-	/**
-	 * Where are our CSS, JS and other assets?
-	 *
-	 * @return string A relative path, such as "themes/foo/"
-	 */
-	public function assetUrl() {
-		return '';
 	}
 
 	/**
@@ -309,42 +309,6 @@ abstract class BaseTheme {
 	}
 
 	/**
-	 * Add markup to the tree title.
-	 *
-	 * @return string
-	 */
-	protected function formatTreeTitle() {
-		if ($this->tree) {
-			return '<h1 class="header-title">' . $this->tree->tree_title_html . '</h1>';
-		} else {
-			return '';
-		}
-	}
-
-	/**
-	 * Add markup to the user menu.
-	 *
-	 * @return string
-	 */
-	protected function formatSecondaryMenu() {
-		return
-			'<ul class="secondary-menu">' .
-			implode('', $this->secondaryMenu()) .
-			'</ul>';
-	}
-
-	/**
-	 * Add markup to an item in the user menu.
-	 *
-	 * @param WT_Menu $menu
-	 *
-	 * @return string
-	 */
-	protected function formatUserMenuItem(WT_Menu $menu) {
-		return $menu->getMenuAsList();
-	}
-
-	/**
 	 * Create a quick search form for the header.
 	 *
 	 * @return string
@@ -372,6 +336,42 @@ abstract class BaseTheme {
 		return
 			'<input type="search" name="query" size="15" placeholder="' . WT_I18N::translate('Search') . '">' .
 			'<input type="image" src="' . Theme::theme()->parameter('image-search') . '" alt="' . WT_I18N::translate('Search') . '">';
+	}
+
+	/**
+	 * Add markup to the tree title.
+	 *
+	 * @return string
+	 */
+	protected function formatTreeTitle() {
+		if ($this->tree) {
+			return '<h1 class="header-title">' . $this->tree->tree_title_html . '</h1>';
+		} else {
+			return '';
+		}
+	}
+
+	/**
+	 * Add markup to the secondary menu.
+	 *
+	 * @return string
+	 */
+	protected function formatSecondaryMenu() {
+		return
+			'<ul class="secondary-menu">' .
+			implode('', $this->secondaryMenu()) .
+			'</ul>';
+	}
+
+	/**
+	 * Add markup to an item in the secondary menu.
+	 *
+	 * @param WT_Menu $menu
+	 *
+	 * @return string
+	 */
+	protected function formatSecondaryMenuItem(WT_Menu $menu) {
+		return $menu->getMenuAsList();
 	}
 
 	/**
@@ -1180,8 +1180,9 @@ abstract class BaseTheme {
 	 * @return WT_Menu
 	 */
 	protected function menuHomePage() {
-		$menu                = new WT_Menu(WT_I18N::translate('Home page'), 'index.php?ctype=gedcom&amp;' . $this->tree_url, 'menu-tree');
+		$submenus            = array();
 		$ALLOW_CHANGE_GEDCOM = WT_Site::getPreference('ALLOW_CHANGE_GEDCOM') && count(WT_Tree::getAll()) > 1;
+
 		foreach (WT_Tree::getAll() as $tree) {
 			if ($tree->tree_id === WT_GED_ID || $ALLOW_CHANGE_GEDCOM) {
 				$submenu = new WT_Menu(
@@ -1189,11 +1190,17 @@ abstract class BaseTheme {
 					'index.php?ctype=gedcom&amp;ged=' . $tree->tree_name_url,
 					'menu-tree-' . $tree->tree_id // Cannot use name - it must be a CSS identifier
 				);
-				$menu->addSubmenu($submenu);
+				$submenus[] = $submenu;
 			}
 		}
 
-		return $menu;
+		if (count($submenus) > 1) {
+			$label = WT_I18N::translate('Family trees');
+		} else {
+			$label = WT_I18N::translate('Family trees');
+		}
+
+		return new WT_Menu($label, 'index.php?ctype=gedcom&amp;' . $this->tree_url, 'menu-tree', null, $submenus);
 	}
 
 	/**
@@ -1342,26 +1349,30 @@ abstract class BaseTheme {
 	}
 
 	/**
+	 * A link to the user's personal home page.
+	 *
 	 * @return WT_Menu|null
 	 */
-	protected function menuMyMenu() {
-		if (!Auth::id()) {
+	protected function menuMyPage()
+	{
+		return new WT_Menu(WT_I18N::translate('My page'), 'index.php?ctype=user&amp;' . $this->tree_url, 'menu-mypage');
+	}
+
+	/**
+	 * @return WT_Menu|null
+	 */
+	protected function menuMyPages() {
+		if (Auth::id()) {
+			return new WT_Menu(WT_I18N::translate('My pages'), null, 'menu-mymenu', null, array_filter(array(
+				$this->menuMyPage(),
+				$this->menuMyIndividualRecord(),
+				$this->menuMyPedigree(),
+				$this->menuMyAccount(),
+				$this->menuControlPanel(),
+			)));
+		} else {
 			return null;
 		}
-
-		$menu = new WT_Menu(WT_I18N::translate('My page'), 'index.php?ctype=user&amp;' . $this->tree_url, 'menu-mymenu');
-
-		$submenus = array_filter(array(
-			$this->menuMyPage(),
-			$this->menuMyAccount(),
-			$this->menuMyPedigree(),
-			$this->menuMyIndividualRecord(),
-			$this->menuControlPanel(),
-		));
-
-		$menu->setSubmenus($submenus);
-
-		return $menu;
 	}
 
 	/**
@@ -1385,21 +1396,11 @@ abstract class BaseTheme {
 	}
 
 	/**
-	 * A link to the user's personal home page.
+	 * Create a pending changes menu.
 	 *
 	 * @return WT_Menu|null
 	 */
-	protected function menuMyPage()
-	{
-		return new WT_Menu(WT_I18N::translate('My page'), 'index.php?ctype=user&amp;' . $this->tree_url, 'menu-mypage');
-	}
-
-		/**
-		 * Create a pending changes menu.
-		 *
-		 * @return WT_Menu|null
-		 */
-		protected function menuPendingChanges() {
+	protected function menuPendingChanges() {
 		if ($this->pendingChangesExist()) {
 			$menu = new WT_Menu(WT_I18N::translate('Pending changes'), '#', 'menu-pending');
 			$menu->setOnclick('window.open(\'edit_changes.php\', \'_blank\', chan_window_specs); return false;');
@@ -1681,7 +1682,6 @@ abstract class BaseTheme {
 
 			return array_filter(array_merge(array(
 				$this->menuHomePage(),
-				$this->menuMyMenu(),
 				$this->menuChart($individual),
 				$this->menuLists(),
 				$this->menuCalendar(),
@@ -1718,12 +1718,12 @@ abstract class BaseTheme {
 	protected function secondaryMenu() {
 		return array_filter(array(
 			$this->menuPendingChanges(),
-			$this->menuLogin(),
-			$this->menuMyAccount(),
-			$this->menuLogout(),
+			$this->menuMyPages(),
 			$this->menuFavorites(),
-			$this->menuLanguages(),
 			$this->menuThemes(),
+			$this->menuLanguages(),
+			$this->menuLogin(),
+			$this->menuLogout(),
 		));
 	}
 

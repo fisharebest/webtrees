@@ -175,6 +175,7 @@ class Administration extends BaseTheme {
 	/** {@inheritdoc} */
 	protected function secondaryMenu() {
 		return array_filter(array(
+			$this->menuPendingChanges(),
 			$this->menuMyPage(),
 			$this->menuLanguages(),
 			$this->menuLogout(),

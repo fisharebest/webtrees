@@ -60,7 +60,7 @@ class Fab extends BaseTheme {
 	}
 
 	/** {@inheritdoc} */
-	protected function formatUserMenuItem(WT_Menu $menu) {
+	protected function formatSecondaryMenuItem(WT_Menu $menu) {
 		return $menu->getMenuAsList();
 	}
 
