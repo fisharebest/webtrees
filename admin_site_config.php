@@ -102,7 +102,7 @@ case 'login':
 
 switch (WT_Filter::get('action')) {
 case 'site':
-	$controller->setPageTitle(WT_I18N::translate('Site preferences'));
+	$controller->setPageTitle(WT_I18N::translate('Website preferences'));
 	break;
 case 'email':
 	$controller->setPageTitle(WT_I18N::translate('Sending email'));

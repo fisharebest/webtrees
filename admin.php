@@ -665,33 +665,53 @@ $changes = WT_DB::prepare(
 									<?php echo WT_I18N::number($changes[$tree->tree_id]); ?>
 								</a>
 								<?php else: ?>
-								<?php echo WT_I18N::number($changes[$tree->tree_id]); ?>
+								-
 								<?php endif; ?>
 							</td>
 							<td class="text-right flip">
+								<?php if ($individuals[$tree->tree_id]): ?>
 								<a href="indilist.php?ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
 									<?php echo WT_I18N::number($individuals[$tree->tree_id]); ?>
 								</a>
+								<?php else: ?>
+									-
+								<?php endif; ?>
 								</td>
 							<td class="text-right flip">
+								<?php if ($families[$tree->tree_id]): ?>
 								<a href="famlist.php?ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
 									<?php echo WT_I18N::number($families[$tree->tree_id]); ?>
 								</a>
+								<?php else: ?>
+								-
+								<?php endif; ?>
 								</td>
 							<td class="text-right flip">
+								<?php if ($sources[$tree->tree_id]): ?>
 								<a href="sourlist.php?ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
 									<?php echo WT_I18N::number($sources[$tree->tree_id]); ?>
 								</a>
+								<?php else: ?>
+								-
+								<?php endif; ?>
 							</td>
 							<td class="text-right flip">
+								<?php if ($repositories[$tree->tree_id]): ?>
 								<a href="repolist.php?ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
 									<?php echo WT_I18N::number($repositories[$tree->tree_id]); ?>
 								</a>
+								<?php else: ?>
+									-
+								<?php endif; ?>
 							</td>
 							<td class="text-right flip">
+								<?php if ($media[$tree->tree_id]): ?>
 								<a href="medialist.php?ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
 									<?php echo WT_I18N::number($media[$tree->tree_id]); ?>
 								</a>
+								<?php else: ?>
+								-
+								<?php endif; ?>
 							</td>
 						</tr>
 						<?php endforeach; ?>

@@ -27,7 +27,7 @@ require './includes/session.php';
 $controller = new WT_Controller_Page;
 $controller
 	->restrictAccess(Auth::isManager())
-	->setPageTitle(WT_I18N::translate('Logs'));
+	->setPageTitle(WT_I18N::translate('Website logs'));
 
 require WT_ROOT . 'includes/functions/functions_edit.php';
 
