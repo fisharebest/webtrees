@@ -47,7 +47,7 @@ case 'delete':
 case 'setdefault':
 	if (WT_Filter::checkCsrf()) {
 		WT_Site::setPreference('DEFAULT_GEDCOM', WT_Filter::post('ged'));
-		WT_FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ WT_I18N::translate('The family tree “%s” will be shown to visitors when they first arrive at this website.', WT_Filter::escapeHtml($tree->tree_name)), 'success');
+		WT_FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ WT_I18N::translate('The family tree “%s” will be shown to visitors when they first arrive at this website.', WT_Filter::escapeHtml($WT_TREE->tree_name)), 'success');
 	}
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
 
