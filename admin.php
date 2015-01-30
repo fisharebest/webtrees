@@ -726,22 +726,6 @@ $changes = WT_DB::prepare(
 		</div>
 	</div>
 
-	<!-- XXXXX -->
-	<div class="panel panel-primary">
-		<div class="panel-heading" role="tab" id="XXXXX-heading">
-			<h2 class="panel-title">
-				<a data-toggle="collapse" data-parent="#accordion" href="#XXXXX-panel" aria-expanded="false" aria-controls="XXXXX-panel">
-					eek!
-				</a>
-			</h2>
-		</div>
-		<div id="XXXXX-panel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="XXXXX-heading">
-			<div class="panel-body">
-				eek
-			</div>
-		</div>
-	</div>
-
 	<!-- OLD FILES -->
 	<?php if (Auth::isAdmin() && $files_to_delete): ?>
 	<div class="panel panel-danger">
