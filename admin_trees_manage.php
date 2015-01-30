@@ -126,8 +126,7 @@ case 'bulk-import':
 	return;
 }
 
-// Default name for a new tree
-$default_tree_title  = WT_I18N::translate('My family tree');
+$default_tree_title  = /* I18N: Default name for a new tree */ WT_I18N::translate('My family tree');
 $default_tree_name   = 'tree';
 $default_tree_number = 1;
 $existing_trees      = WT_Tree::getNameList();
@@ -213,7 +212,7 @@ case 'importform':
 }
 
 if (!WT_Tree::getAll()) {
-	WT_FlashMessages::addMessage(WT_I18N::translate('Before you can continue, you must create a family tree.'), 'info');
+	WT_FlashMessages::addMessage(WT_I18N::translate('You need to create a family tree.'), 'info');
 }
 
 $controller->pageHeader();
@@ -248,13 +247,10 @@ $controller->pageHeader();
 			"SELECT 1 FROM `##gedcom_chunk` WHERE gedcom_id = ? AND imported = '0' LIMIT 1"
 		)->execute(array($tree->tree_id))->fetchOne();
 		if ($importing) {
-			$in_progress = WT_DB::prepare(
-				"SELECT 1 FROM `##gedcom_chunk` WHERE gedcom_id = ? AND imported = '1' LIMIT 1"
-			)->execute(array($tree->tree_id))->fetchOne();
 				?>
 				<div id="import<?php echo $tree->tree_id; ?>" class="col-xs-12">
 					<div class="progress">
-						<?php echo $in_progress ? WT_I18N::translate('Calculating…') : WT_I18N::translate('Deleting old genealogy data…'); ?>
+						<?php echo WT_I18N::translate('Calculating…'); ?>
 					</div>
 				</div>
 				<?php
@@ -307,13 +303,13 @@ $controller->pageHeader();
 							<!-- DELETE -->
 							<li>
 								<i class="fa fa-li fa-trash-o"></i>
-								<a href="#" onclick="if (confirm('<?php echo WT_Filter::escapeJs(WT_I18N::translate('Are you sure you want to delete “%s”?', $tree->tree_name)); ?>')) document.delete_form<?php echo $tree->tree_id; ?>.submit(); return false;">
+								<a href="#" onclick="if (confirm('<?php echo WT_Filter::escapeJs(WT_I18N::translate('Are you sure you want to delete “%s”?', $tree->tree_name)); ?>')) { document.delete_form<?php echo $tree->tree_id; ?>.submit(); } return false;">
 									<?php echo WT_I18N::translate('Delete'); ?>
 									<span class="sr-only">
 										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
 									</span>
 								</a>
-								<form name="delete_form<?php echo $tree->tree_id; ?>" method="POST" action="admin_trees_manage.php">
+								<form name="delete_form<?php echo $tree->tree_id; ?>" method="post">
 									<input type="hidden" name="action" value="delete">
 									<input type="hidden" name="gedcom_id" value="<?php echo $tree->tree_id; ?>">
 									<?php echo WT_Filter::getCsrf(); ?>
@@ -336,7 +332,7 @@ $controller->pageHeader();
 										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
 									</span>
 										</a>
-										<form name="defaultform<?php echo $tree->tree_id; ?>" method="POST" action="admin_trees_manage.php">
+										<form name="defaultform<?php echo $tree->tree_id; ?>" method="post">
 											<input type="hidden" name="action" value="setdefault">
 											<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
 											<?php echo WT_Filter::getCsrf(); ?>
@@ -483,7 +479,7 @@ $controller->pageHeader();
 							<!-- UPLOAD -->
 							<li>
 								<i class="fa fa-li fa-upload"></i>
-								<a href="admin_trees_manage.php?action=uploadform&amp;gedcom_id=<?php echo $tree->tree_id; ?>">
+								<a href="?action=uploadform&amp;gedcom_id=<?php echo $tree->tree_id; ?>">
 									<?php echo WT_I18N::translate('Upload'); ?>
 									<span class="sr-only">
 										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
@@ -505,7 +501,7 @@ $controller->pageHeader();
 							<!-- IMPORT -->
 							<li>
 								<i class="fa fa-li fa-file-text-o"></i>
-								<a href="admin_trees_manage.php?action=importform&amp;gedcom_id=<?php echo $tree->tree_id; ?>">
+								<a href="?action=importform&amp;gedcom_id=<?php echo $tree->tree_id; ?>">
 									<?php echo WT_I18N::translate('Import'); ?>
 									<span class="sr-only">
 										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
@@ -532,7 +528,7 @@ $controller->pageHeader();
 		</div>
 		<div id="create-a-new-family-tree" class="panel-collapse collapse<?php echo WT_Tree::getAll() ? '' : ' in'; ?>">
 			<div class="panel-body">
-				<form role="form" class="form-horizontal" method="POST" action="admin_trees_manage.php">
+				<form role="form" class="form-horizontal" method="post">
 					<?php echo WT_Filter::getCsrf(); ?>
 					<input type="hidden" name="action" value="new_tree">
 					<div class="form-group">
