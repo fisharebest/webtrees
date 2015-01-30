@@ -1363,7 +1363,7 @@ abstract class BaseTheme {
 	 */
 	protected function menuMyPages() {
 		if (Auth::id()) {
-			return new WT_Menu(WT_I18N::translate('My pages'), null, 'menu-mymenu', null, array_filter(array(
+			return new WT_Menu(WT_I18N::translate('My pages'), '#', 'menu-mymenu', null, array_filter(array(
 				$this->menuMyPage(),
 				$this->menuMyIndividualRecord(),
 				$this->menuMyPedigree(),
