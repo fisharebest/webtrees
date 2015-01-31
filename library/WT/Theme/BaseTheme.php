@@ -1591,14 +1591,20 @@ abstract class BaseTheme {
 	 */
 	public function menuThemes() {
 		if ($this->tree && !$this->isSearchEngine() && WT_Site::getPreference('ALLOW_USER_THEMES') && $this->tree->getPreference('ALLOW_THEME_DROPDOWN')) {
-			$menu = new WT_Menu(WT_I18N::translate('Theme'), '#', 'menu-theme');
+			$submenus = array();
 			foreach (Theme::installedThemes() as $theme) {
 				$submenu = new WT_Menu($theme->themeName(), get_query_url(array('theme' => $theme->themeId()), '&amp;'), 'menu-theme-' . $theme->themeId());
 				if ($theme === $this) {
 					$submenu->addClass('', '', 'active');
 				}
-				$menu->addSubmenu($submenu);
+				$submenus[] = $submenu;
 			}
+
+			usort($submenus, function(WT_Menu $x, WT_Menu $y) {
+				return WT_I18N::strcasecmp($x->getLabel(), $y->getLabel());
+			});
+
+			$menu = new WT_Menu(WT_I18N::translate('Theme'), '#', 'menu-theme', '', $submenus);
 
 			return $menu;
 		} else {
