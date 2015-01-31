@@ -787,7 +787,8 @@ class WT_Stats {
 	 * @return string
 	 */
 	public function chartSex($params = array()) {
-		global $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
+		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
+		$WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
 
 		if (isset($params[0]) && $params[0] != '') {
 			$size = strtolower($params[0]);
@@ -903,7 +904,8 @@ class WT_Stats {
 	 * @return string
 	 */
 	public function chartMortality($params = array()) {
-		global $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
+		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
+		$WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
 
 		if (isset($params[0]) && $params[0] != '') {
 			$size = strtolower($params[0]);
