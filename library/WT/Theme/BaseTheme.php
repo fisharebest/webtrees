@@ -79,6 +79,131 @@ abstract class BaseTheme {
 	}
 
 	/**
+	 * Create scripts for analytics and tracking.
+	 *
+	 * @return string
+	 */
+	public function analytics() {
+		return
+			$this->analyticsGoogleWebmaster(
+				WT_Site::getPreference('GOOGLE_WEBMASTER_ID')
+			) .
+			$this->analyticsGoogleTracker(
+				WT_Site::getPreference('GOOGLE_ANALYTICS_ID')
+			) .
+			$this->analyticsPiwikTracker(
+				WT_Site::getPreference('PIWIK_URL'),
+				WT_Site::getPreference('PIWIK_SITE_ID')
+			) .
+			$this->analyticsStatcounterTracker(
+				WT_Site::getPreference('STATCOUNTER_PROJECT_ID'),
+				WT_Site::getPreference('STATCOUNTER_SECURITY_ID')
+			);
+	}
+
+	/**
+	 * Create the verification code for Google Webmaster Tools.
+	 *
+	 * @param string $verification_id
+	 *
+	 * @return string
+	 */
+	public function analyticsBingWebmaster($verification_id) {
+		// Only need to add this in the root folder.
+		if (WT_SCRIPT_NAME === 'index.php' && $verification_id) {
+			return '<meta name="msvalidate.01" content="' . $verification_id . '">';
+		} else {
+			return '';
+		}
+	}
+
+	/**
+	 * Create the verification code for Google Webmaster Tools.
+	 *
+	 * @param string $verification_id
+	 *
+	 * @return string
+	 */
+	public function analyticsGoogleWebmaster($verification_id) {
+		// Only need to add this in the root folder.
+		if (WT_SCRIPT_NAME === 'index.php' && $verification_id) {
+			return '<meta name="google-site-verification" content="' . $verification_id . '">';
+		} else {
+			return '';
+		}
+	}
+
+	/**
+	 * Create the tracking code for Google Analytics.
+	 *
+	 * @param string $analytics_id
+	 *
+	 * @return string
+	 */
+	public function analyticsGoogleTracker($analytics_id) {
+		if ($analytics_id) {
+			return
+				'<script>' .
+				'(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){' .
+				'(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),' .
+				'm=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)' .
+				'})(window,document,"script","//www.google-analytics.com/analytics.js","ga");' .
+				'ga("create", "UA-XXXX-Y", "auto");' .
+				'ga("send", "pageview");' .
+				'</script>';
+		} else {
+			return '';
+		}
+	}
+
+	/**
+	 * Create the tracking code for Piwik Analytics.
+	 *
+	 * @param string $url     - The domain/path to Piwik
+	 * @param string $site_id - The Piwik site identifier
+	 *
+	 * @return string
+	 */
+	public function analyticsPiwikTracker($url, $site_id) {
+		if ($url && $site_id) {
+			return
+				'<script>' .
+				'var _paq=_paq||[];' .
+				'(function(){var u=(("https:"==document.location.protocol)?"https://' . $url . '/":"http://' . $url . '/");' .
+				'_paq.push(["setSiteId",' . $site_id . ']);' .
+				'_paq.push(["setTrackerUrl",u+"piwik.php"]);' .
+				'_paq.push(["trackPageView"]);' .
+				'_paq.push(["enableLinkTracking"]);' .
+				'var d=document,g=d.createElement("script"),s=d.getElementsByTagName("script")[0];g.defer=true;g.async=true;g.src=u+"piwik.js";' .
+				's.parentNode.insertBefore(g,s);})();' .
+				'</script>';
+		} else {
+			return '';
+		}
+	}
+
+	/**
+	 * Create the tracking code for Statcounter.
+	 *
+	 * @param string $project_id  - The statcounter project ID
+	 * @param string $security_id - The statcounter security ID
+	 *
+	 * @return string
+	 */
+	public function analyticsStatcounterTracker($project_id, $security_id) {
+		if ($project_id && $security_id) {
+			return
+				'<script>' .
+				'var sc_project=' . (int) $project_id . ',sc_invisible=1,sc_security="' . $security_id .
+				'",scJsHost = (("https:"===document.location.protocol)?"https://secure.":"http://www.");' .
+				'document.write("<sc"+"ript src=\'"+scJsHost+"statcounter.com/counter/counter.js\'></"+"script>");' .
+				'</script>';
+		} else {
+			return '';
+		}
+	}
+
+	/**
 	 * Where are our CSS, JS and other assets?
 	 *
 	 * @return string A relative path, such as "themes/foo/"
@@ -373,6 +498,7 @@ abstract class BaseTheme {
 			'<head>' .
 			$this->headContents($controller) .
 			$this->hookHeaderExtraContent() .
+			$this->analytics() .
 			'</head>';
 	}
 
