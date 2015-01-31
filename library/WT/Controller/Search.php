@@ -277,7 +277,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 		if (isset ($this->query)) {
 			$record = WT_GedcomRecord::getInstance($this->query);
 			if ($record && $record->canShow()) {
-				header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . $record->getRawUrl());
+				header('Location: ' . WT_BASE_URL . $record->getRawUrl());
 				exit;
 			}
 		}
@@ -349,7 +349,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 				$indi = $this->myindilist[0];
 				if ($indi->canShowName()) {
 					Zend_Session::writeClose();
-					header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . $indi->getRawUrl());
+					header('Location: ' . WT_BASE_URL . $indi->getRawUrl());
 					exit;
 				}
 			}
@@ -357,7 +357,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 				$fam = $this->myfamlist[0];
 				if ($fam->canShowName()) {
 					Zend_Session::writeClose();
-					header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . $fam->getRawUrl());
+					header('Location: ' . WT_BASE_URL . $fam->getRawUrl());
 					exit;
 				}
 			}
@@ -365,7 +365,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 				$sour = $this->mysourcelist[0];
 				if ($sour->canShowName()) {
 					Zend_Session::writeClose();
-					header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . $sour->getRawUrl());
+					header('Location: ' . WT_BASE_URL . $sour->getRawUrl());
 					exit;
 				}
 			}
@@ -373,7 +373,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 				$note = $this->mynotelist[0];
 				if ($note->canShowName()) {
 					Zend_Session::writeClose();
-					header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . $note->getRawUrl());
+					header('Location: ' . WT_BASE_URL . $note->getRawUrl());
 					exit;
 				}
 			}
@@ -565,7 +565,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 		//-- if only 1 item is returned, automatically forward to that item
 		if (count($this->myindilist) == 1 && $this->action != "replace") {
 			$indi = $this->myindilist[0];
-			header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . $indi->getRawUrl());
+			header('Location: ' . WT_BASE_URL . $indi->getRawUrl());
 			exit;
 		}
 		usort($this->myindilist, array('WT_GedcomRecord', 'compare'));

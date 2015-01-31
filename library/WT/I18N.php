@@ -190,7 +190,7 @@ class WT_I18N {
 		// The translation libraries only work with a cache.
 		$cache_options = array(
 			'automatic_serialization' => true,
-			'cache_id_prefix'         => md5(WT_SERVER_NAME . WT_SCRIPT_PATH),
+			'cache_id_prefix'         => md5(WT_BASE_URL),
 		);
 
 		if (ini_get('apc.enabled')) {

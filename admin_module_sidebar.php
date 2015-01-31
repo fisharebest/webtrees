@@ -46,7 +46,7 @@ if ($action === 'update_mods' && WT_Filter::checkCsrf()) {
 		)->execute(array($order, $module->getName()));
 	}
 
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
+	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
 
 	return;
 }

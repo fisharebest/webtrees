@@ -67,7 +67,7 @@ class CustomTheme extends WT\Theme\Webtrees {
 		try {
 			$css_files   = parent::stylesheets();
 			// Put a version number in the URL, to prevent browsers from caching old versions.
-			$css_files[] = WT_SERVER_NAME . WT_SCRIPT_PATH . 'themes/custom/custom.css';
+			$css_files[] = WT_BASE_URL . 'themes/custom/custom.css';
 		} catch (Exception $ex) {
 			// Something went wrong with our script?  Use the default behaviour instead.
 			return parent::stylesheets();

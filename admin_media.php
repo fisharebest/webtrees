@@ -580,7 +580,7 @@ $controller
 		dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 		processing: true,
 		serverSide: true,
-		ajax: "'.WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=load_json&files=' . $files . '&media_folder=' . $media_folder . '&media_path=' . $media_path . '&subfolders=' . $subfolders . '",
+		ajax: "'.WT_BASE_URL . WT_SCRIPT_NAME . '?action=load_json&files=' . $files . '&media_folder=' . $media_folder . '&media_path=' . $media_path . '&subfolders=' . $subfolders . '",
 		' . WT_I18N::datatablesI18N(array(5, 10, 20, 50, 100, 500, 1000, -1)) . ',
 		jQueryUI: true,
 		autoWidth:false,

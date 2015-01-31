@@ -48,7 +48,7 @@ case 'save':
 		$user_agent_pattern  = WT_Filter::post('user_agent_pattern');
 		$rule                = WT_Filter::post('rule', 'allow|deny|robot');
 		$comment             = WT_Filter::post('comment');
-		$user_agent_string   = $_SERVER['HTTP_USER_AGENT'];
+		$user_agent_string   = WT_Filter::server('HTTP_USER_AGENT');
 		$ip_address          = $WT_REQUEST->getClientIp();
 
 		if ($ip_address_start !== null && $ip_address_end !== null && $user_agent_pattern !== null && $rule !== null) {
@@ -92,7 +92,7 @@ case 'save':
 			}
 		}
 	}
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
+	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
 
 	return;
 
@@ -106,7 +106,7 @@ case 'delete':
 		));
 		WT_FlashMessages::addMessage(WT_I18N::translate('The website access rule has been deleted.'), 'success');
 	}
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
+	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
 
 	return;
 }
@@ -319,7 +319,7 @@ default:
 			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 			jQuery(".table-site-access-rules").dataTable({
-				ajax: "' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=load",
+				ajax: "' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=load",
 				serverSide: true,
 				' . WT_I18N::datatablesI18N() . ',
 				processing: true,
@@ -338,7 +338,7 @@ default:
 			});
 
 			jQuery(".table-unknown-site-visitors").dataTable({
-				ajax: "' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=load_unknown",
+				ajax: "' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=load_unknown",
 				serverSide: true,
 				' . WT_I18N::datatablesI18N() . ',
 				processing: true,

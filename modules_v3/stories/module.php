@@ -242,7 +242,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 				echo '</form>';
 			}
 		} else {
-			header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
+			header('Location: ' . WT_BASE_URL);
 		}
 	}
 
@@ -261,7 +261,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Tab, WT_Module_Co
 				"DELETE FROM `##block` WHERE block_id=?"
 			)->execute(array($block_id));
 		} else {
-			header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
+			header('Location: ' . WT_BASE_URL);
 			exit;
 		}
 	}

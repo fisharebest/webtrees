@@ -27,7 +27,7 @@ require './includes/session.php';
 
 // We can only import into an empty system, so deny access if we have already created a gedcom or added users.
 if (WT_GED_ID || count(User::all()) > 1) {
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
+	header('Location: ' . WT_BASE_URL);
 
 	return;
 }

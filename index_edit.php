@@ -67,7 +67,7 @@ if (
 	$gedcom_id > 0 && !Auth::isManager(WT_Tree::get($gedcom_id)) ||
 	$user_id && Auth::id() != $user_id && !Auth::isAdmin()
 ) {
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . $return_to);
+	header('Location: ' . WT_BASE_URL . $return_to);
 
 	return;
 }
@@ -154,7 +154,7 @@ if ($action === 'update') {
 			}
 		}
 	}
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . $return_to);
+	header('Location: ' . WT_BASE_URL . $return_to);
 
 	return;
 }

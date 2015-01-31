@@ -32,5 +32,5 @@ if ($mod && array_key_exists($mod, $all_modules)) {
 	$module = $all_modules[$mod];
 	$module->modAction($mod_action);
 } else {
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
+	header('Location: ' . WT_BASE_URL);
 }

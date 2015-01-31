@@ -167,7 +167,7 @@ if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYP
 		$record2_name
 	), 'success');
 
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
+	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
 
 	return;
 }

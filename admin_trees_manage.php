@@ -41,7 +41,7 @@ case 'delete':
 		WT_FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ WT_I18N::translate('The family tree “%s” has been deleted.', WT_Filter::escapeHtml($tree->tree_name)), 'success');
 		$tree->delete();
 	}
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
+	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
 
 	return;
 case 'setdefault':
@@ -49,7 +49,7 @@ case 'setdefault':
 		WT_Site::setPreference('DEFAULT_GEDCOM', WT_Filter::post('ged'));
 		WT_FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ WT_I18N::translate('The family tree “%s” will be shown to visitors when they first arrive at this website.', WT_Filter::escapeHtml($WT_TREE->tree_name)), 'success');
 	}
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
+	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
 
 	return;
 case 'new_tree':
@@ -64,7 +64,7 @@ case 'new_tree':
 			WT_FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ WT_I18N::translate('The family tree “%s” has been created.', WT_Filter::escapeHtml($basename)), 'success');
 		}
 	}
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?ged=' . $basename);
+	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?ged=' . $basename);
 
 	return;
 case 'replace_upload':
@@ -79,7 +79,7 @@ case 'replace_upload':
 			}
 		}
 	}
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
+	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
 
 	return;
 case 'replace_import':
@@ -91,7 +91,7 @@ case 'replace_import':
 	if (WT_Filter::checkCsrf() && $tree && $basename) {
 		$tree->importGedcomFile(WT_DATA_DIR . $basename, $basename, $keep_media);
 	}
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
+	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
 
 	return;
 
@@ -121,7 +121,7 @@ case 'bulk-import':
 		}
 
 	}
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
+	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
 
 	return;
 }
@@ -551,7 +551,7 @@ $controller->pageHeader();
 						<div class="col-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon">
-									<?php echo WT_SERVER_NAME, WT_SCRIPT_PATH; ?>?ged=
+									<?php echo WT_BASE_URL; ?>?ged=
 								</span>
 								<input
 									class="form-control"

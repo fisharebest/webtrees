@@ -31,7 +31,7 @@ require './includes/session.php';
 require WT_ROOT . 'includes/functions/functions_edit.php';
 // If we are already logged in, then go to the “Home page”
 if (Auth::check() && WT_GED_ID) {
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
+	header('Location: ' . WT_BASE_URL);
 
 	return;
 }
@@ -123,7 +123,7 @@ case 'login':
 		}
 
 		// Redirect to the target URL
-		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . $url);
+		header('Location: ' . WT_BASE_URL . $url);
 		// Explicitly write the session data before we exit,
 		// as it doesn’t always happen when using APC.
 		Zend_Session::writeClose();
@@ -249,7 +249,7 @@ case 'requestpw':
 			WT_I18N::translate('Username') . ": " . WT_Filter::escapeHtml($user->getUserName()) . WT_Mail::EOL .
 			WT_I18N::translate('Password') . ": " . $user_new_pw . WT_Mail::EOL . WT_Mail::EOL .
 			WT_I18N::translate('After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password.') . WT_Mail::EOL . WT_Mail::EOL .
-			'<a href="' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'login.php?ged=' . WT_GEDURL . '">' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'login.php?ged=' . WT_GEDURL . '</a>'
+			'<a href="' . WT_BASE_URL . 'login.php?ged=' . WT_GEDURL . '">' . WT_BASE_URL . 'login.php?ged=' . WT_GEDURL . '</a>'
 		);
 	}
 	// Show a success message, even if the user account does not exist.
@@ -265,7 +265,7 @@ case 'requestpw':
 
 case 'register':
 	if (!WT_Site::getPreference('USE_REGISTRATION_MODULE')) {
-		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
+		header('Location: ' . WT_BASE_URL);
 
 		return;
 	}
@@ -280,7 +280,7 @@ case 'register':
 			WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'));
 		} elseif (User::findByIdentifier($user_email)) {
 			WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate email address.  A user with that email already exists.'));
-		} elseif (preg_match('/(?!' . preg_quote(WT_SERVER_NAME, '/') . ')(((?:ftp|http|https):\/\/)[a-zA-Z0-9.-]+)/', $user_comments, $match)) {
+		} elseif (preg_match('/(?!' . preg_quote(WT_BASE_URL, '/') . ')(((?:ftp|http|https):\/\/)[a-zA-Z0-9.-]+)/', $user_comments, $match)) {
 			WT_FlashMessages::addMessage(
 				WT_I18N::translate('You are not allowed to send messages that contain external links.') . ' ' .
 				WT_I18N::translate('You should delete the “%1$s” from “%2$s” and try again.', $match[2], $match[1])
@@ -312,7 +312,7 @@ case 'register':
 			$mail1_body =
 				WT_I18N::translate('Hello administrator…') . WT_Mail::EOL . WT_Mail::EOL .
 				/* I18N: %s is a server name/URL */
-				WT_I18N::translate('A prospective user has registered with webtrees at %s.', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . WT_Filter::escapeHtml($WT_TREE->tree_title)) . WT_Mail::EOL . WT_Mail::EOL .
+				WT_I18N::translate('A prospective user has registered with webtrees at %s.', WT_BASE_URL . ' ' . WT_Filter::escapeHtml($WT_TREE->tree_title)) . WT_Mail::EOL . WT_Mail::EOL .
 				WT_I18N::translate('Username') . ' ' . WT_Filter::escapeHtml($user->getUserName()) . WT_Mail::EOL .
 				WT_I18N::translate('Real name') . ' ' . WT_Filter::escapeHtml($user->getRealName()) . WT_Mail::EOL .
 				WT_I18N::translate('Email address:') . ' ' . WT_Filter::escapeHtml($user->getEmail()) . WT_Mail::EOL .
@@ -325,7 +325,7 @@ case 'register':
 			}
 			$mail1_body .= WT_Mail::auditFooter();
 
-			$mail1_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('New registration at %s', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . $WT_TREE->tree_title);
+			$mail1_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('New registration at %s', WT_BASE_URL . ' ' . $WT_TREE->tree_title);
 			WT_I18N::init(WT_LOCALE);
 
 			echo '<div id="login-register-page">';
@@ -334,7 +334,7 @@ case 'register':
 			$mail2_body =
 				WT_I18N::translate('Hello %s…', $user->getRealName()) . WT_Mail::EOL . WT_Mail::EOL .
 				/* I18N: %1$s is the site URL and %2$s is an email address */
-				WT_I18N::translate('You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s.', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . WT_Filter::escapeHtml($WT_TREE->tree_title), $user->getEmail()) . '  ' .
+				WT_I18N::translate('You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s.', WT_BASE_URL . ' ' . WT_Filter::escapeHtml($WT_TREE->tree_title), $user->getEmail()) . '  ' .
 				WT_I18N::translate('Information about the request is shown under the link below.') . WT_Mail::EOL .
 				WT_I18N::translate('Please click on the following link and fill in the requested data to confirm your request and email address.') . WT_Mail::EOL . WT_Mail::EOL .
 				'<a href="' . WT_LOGIN_URL . "?user_name=" . WT_Filter::escapeUrl($user->getUserName()) . "&amp;user_hashcode=" . $user->getPreference('reg_hashcode') . '&amp;action=userverify">' .
@@ -344,7 +344,7 @@ case 'register':
 				WT_I18N::translate('Verification code:') . " " . $user->getPreference('reg_hashcode') . WT_Mail::EOL .
 				WT_I18N::translate('Comments') . ": " . $user->getPreference('comment') . WT_Mail::EOL .
 				WT_I18N::translate('If you didn’t request an account, you can just delete this message.') . WT_Mail::EOL;
-			$mail2_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('Your registration at %s', WT_SERVER_NAME . WT_SCRIPT_PATH);
+			$mail2_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('Your registration at %s', WT_BASE_URL);
 			$mail2_to      = $user->getEmail();
 			$mail2_from    = $WEBTREES_EMAIL;
 
@@ -510,7 +510,7 @@ case 'register':
 
 case 'userverify':
 	if (!WT_Site::getPreference('USE_REGISTRATION_MODULE')) {
-		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
+		header('Location: ' . WT_BASE_URL);
 
 		return;
 	}
@@ -548,7 +548,7 @@ case 'userverify':
 
 case 'verify_hash':
 	if (!WT_Site::getPreference('USE_REGISTRATION_MODULE')) {
-		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
+		header('Location: ' . WT_BASE_URL);
 
 		return;
 	}
@@ -573,12 +573,12 @@ case 'verify_hash':
 	}
 	$mail1_body .=
 		WT_Mail::EOL .
-		'<a href="' . WT_SERVER_NAME . WT_SCRIPT_PATH . "admin_users.php?filter=" . WT_Filter::escapeUrl($user->getUserName()) . '">' .
-		WT_SERVER_NAME . WT_SCRIPT_PATH . "admin_users.php?filter=" . WT_Filter::escapeUrl($user->getUserName()) .
+		'<a href="' . WT_BASE_URL . "admin_users.php?filter=" . WT_Filter::escapeUrl($user->getUserName()) . '">' .
+		WT_BASE_URL . "admin_users.php?filter=" . WT_Filter::escapeUrl($user->getUserName()) .
 		'</a>' .
 		WT_Mail::auditFooter();
 
-	$mail1_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('New user at %s', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . $WT_TREE->tree_title);
+	$mail1_subject = /* I18N: %s is a server name/URL */ WT_I18N::translate('New user at %s', WT_BASE_URL . ' ' . $WT_TREE->tree_title);
 
 	// Change to the new user’s language
 	WT_I18N::init($user->getPreference('language'));

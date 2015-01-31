@@ -66,7 +66,7 @@ case 'site':
 		WT_Site::setPreference('SESSION_TIME', WT_Filter::post('SESSION_TIME'));
 		WT_Site::setPreference('SERVER_URL', WT_Filter::post('SERVER_URL'));
 	}
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin.php');
+	header('Location: ' . WT_BASE_URL . 'admin.php');
 
 	return;
 case 'email':
@@ -83,7 +83,7 @@ case 'email':
 			WT_Site::setPreference('SMTP_AUTH_PASS', WT_Filter::post('SMTP_AUTH_PASS'));
 		}
 	}
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin.php');
+	header('Location: ' . WT_BASE_URL . 'admin.php');
 
 	return;
 case 'login':
@@ -95,7 +95,7 @@ case 'login':
 		WT_Site::setPreference('REQUIRE_ADMIN_AUTH_REGISTRATION', WT_Filter::post('REQUIRE_ADMIN_AUTH_REGISTRATION'));
 		WT_Site::setPreference('SHOW_REGISTER_CAUTION', WT_Filter::post('SHOW_REGISTER_CAUTION'));
 	}
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin.php');
+	header('Location: ' . WT_BASE_URL . 'admin.php');
 
 	return;
 case 'tracking':
@@ -108,7 +108,7 @@ case 'tracking':
 		WT_Site::setPreference('STATCOUNTER_PROJECT_ID', WT_Filter::post('STATCOUNTER_PROJECT_ID'));
 		WT_Site::setPreference('STATCOUNTER_SECURITY_ID', WT_Filter::post('STATCOUNTER_SECURITY_ID'));
 	}
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin.php');
+	header('Location: ' . WT_BASE_URL . 'admin.php');
 
 	return;
 }
@@ -127,7 +127,7 @@ case 'tracking':
 	$controller->setPageTitle(/* I18N: e.g. http://www.google.com/analytics */ WT_I18N::translate('Tracking and analytics'));
 	break;
 default:
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin.php');
+	header('Location: ' . WT_BASE_URL . 'admin.php');
 
 	return;
 }
@@ -267,7 +267,7 @@ $controller->pageHeader();
 			<?php echo /* I18N: A site configuration setting */ WT_I18N::translate('Website URL'); ?>
 		</label>
 		<div class="col-sm-9">
-			<?php echo select_edit_control('SERVER_URL', array(WT_SERVER_NAME . WT_SCRIPT_PATH=>WT_SERVER_NAME . WT_SCRIPT_PATH), '', WT_Site::getPreference('SERVER_URL'), 'class="form-control"'); ?>
+			<?php echo select_edit_control('SERVER_URL', array(WT_BASE_URL=>WT_BASE_URL), '', WT_Site::getPreference('SERVER_URL'), 'class="form-control"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the "Website URL" site configuration setting */ WT_I18N::translate('If your website can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL.  Requests for the other URLs will be redirected to the preferred one.'); ?>
 				<?php echo WT_I18N::translate('If you leave this setting empty, the default value will be used.'); ?>
@@ -500,7 +500,7 @@ $controller->pageHeader();
 			<div class="col-sm-9">
 				<input
 					type="text" class="form-control"
-					id="BING_WEBMASTER_ID" name="BING_WEBMASTER_ID" <?php echo WT_SCRIPT_PATH === '/' ? '' : 'disabled'; ?>
+					id="BING_WEBMASTER_ID" name="BING_WEBMASTER_ID" <?php echo dirname(parse_url(WT_BASE_URL, PHP_URL_PATH)) === '/' ? '' : 'disabled'; ?>
 					value="<?php echo WT_Filter::escapeHtml(WT_Site::getPreference('BING_WEBMASTER_ID')); ?>"
 					maxlength="255" pattern="[0-9a-zA-Z+=/_:.!-]*"
 					>
@@ -521,7 +521,7 @@ $controller->pageHeader();
 			<div class="col-sm-9">
 				<input
 					type="text" class="form-control"
-					id="GOOGLE_WEBMASTER_ID" name="GOOGLE_WEBMASTER_ID" <?php echo WT_SCRIPT_PATH === '/' ? '' : 'disabled'; ?>
+					id="GOOGLE_WEBMASTER_ID" name="GOOGLE_WEBMASTER_ID" <?php echo dirname(parse_url(WT_BASE_URL, PHP_URL_PATH)) === '/' ? '' : 'disabled'; ?>
 					value="<?php echo WT_Filter::escapeHtml(WT_Site::getPreference('GOOGLE_WEBMASTER_ID')); ?>"
 					maxlength="255" pattern="[0-9a-zA-Z+=/_:.!-]*"
 				>

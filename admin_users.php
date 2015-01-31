@@ -96,8 +96,8 @@ case 'save':
 				WT_Mail::systemMessage(
 					$WT_TREE,
 					$user,
-					WT_I18N::translate('Approval of account at %s', WT_SERVER_NAME . WT_SCRIPT_PATH),
-					WT_I18N::translate('The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s', WT_SERVER_NAME . WT_SCRIPT_PATH, WT_SERVER_NAME . WT_SCRIPT_PATH)
+					WT_I18N::translate('Approval of account at %s', WT_BASE_URL),
+					WT_I18N::translate('The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s', WT_BASE_URL, WT_BASE_URL)
 				);
 			}
 
@@ -130,7 +130,7 @@ case 'save':
 		}
 	}
 
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
+	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
 
 	return;
 }
@@ -771,7 +771,7 @@ case 'cleanup2':
 		}
 	}
 
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
+	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
 	break;
 default:
 	$controller

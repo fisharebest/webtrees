@@ -37,5 +37,5 @@ if (Auth::isManager($WT_TREE) && WT_Filter::checkCsrf()) {
 	}
 }
 
-header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin_trees_manage.php');
+header('Location: ' . WT_BASE_URL . 'admin_trees_manage.php');
 

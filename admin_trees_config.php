@@ -245,7 +245,7 @@ case 'privacy':
 	$WT_TREE->setPreference('SHOW_LIVING_NAMES', WT_Filter::post('SHOW_LIVING_NAMES'));
 	$WT_TREE->setPreference('SHOW_PRIVATE_RELATIONSHIPS', WT_Filter::post('SHOW_PRIVATE_RELATIONSHIPS'));
 
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin_trees_manage.php?ged=' . $WT_TREE->tree_name);
+	header('Location: ' . WT_BASE_URL . 'admin_trees_manage.php?ged=' . $WT_TREE->tree_name);
 
 	return;
 
@@ -377,7 +377,7 @@ case 'general':
 	}
 
 	Zend_Session::writeClose();
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin_trees_manage.php');
+	header('Location: ' . WT_BASE_URL . 'admin_trees_manage.php');
 
 	return;
 }
@@ -403,7 +403,7 @@ case 'general':
 	$controller->setPageTitle(WT_Filter::escapeHtml($WT_TREE->tree_title) . ' — ' . WT_I18N::translate('Preferences'));
 	break;
 default:
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin.php');
+	header('Location: ' . WT_BASE_URL . 'admin.php');
 
 	return;
 }
@@ -686,7 +686,7 @@ $controller
 		<div class="col-sm-9">
 			<div class="input-group">
 				<span class="input-group-addon">
-					<?php echo WT_SERVER_NAME, WT_SCRIPT_PATH; ?>?ged=
+					<?php echo WT_BASE_URL; ?>?ged=
 				</span>
 				<input
 					class="form-control"

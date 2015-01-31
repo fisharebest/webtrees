@@ -33,7 +33,7 @@ require WT_ROOT . 'includes/functions/functions_edit.php';
 
 // Need to be logged in
 if (!Auth::check()) {
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
+	header('Location: ' . WT_BASE_URL);
 
 	return;
 }
@@ -98,7 +98,7 @@ if ($form_action && WT_Filter::checkCsrf()) {
 		break;
 	}
 
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
+	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
 
 	return;
 }
