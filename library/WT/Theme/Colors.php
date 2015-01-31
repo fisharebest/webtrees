@@ -118,10 +118,16 @@ class Colors extends Clouds {
 	 * @return WT_Menu[]
 	 */
 	protected function secondaryMenu() {
-		$menubar = parent::secondaryMenu();
-		$menubar[] = $this->menuPalette();
-
-		return $menubar;
+		return array_filter(array(
+			$this->menuPendingChanges(),
+			$this->menuMyPages(),
+			$this->menuFavorites(),
+			$this->menuThemes(),
+			$this->menuPalette(),
+			$this->menuLanguages(),
+			$this->menuLogin(),
+			$this->menuLogout(),
+		));
 	}
 
 	/**
