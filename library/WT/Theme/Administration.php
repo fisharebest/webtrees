@@ -75,6 +75,7 @@ class Administration extends BaseTheme {
 			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Website preferences'), 'admin_site_config.php?action=site'),
 			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Sending email'), 'admin_site_config.php?action=email'),
 			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Login and registration'), 'admin_site_config.php?action=login'),
+			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Tracking and analytics'), 'admin_site_config.php?action=tracking'),
 			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Website logs'), 'admin_site_logs.php'),
 			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Website access rules'), 'admin_site_access.php'),
 			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Clean up data folder'), 'admin_site_clean.php'),

@@ -83,24 +83,27 @@ abstract class BaseTheme {
 	 *
 	 * @return string
 	 */
-	public function analytics() {
-		return
-			$this->analyticsGoogleWebmaster(
-				WT_Site::getPreference('GOOGLE_WEBMASTER_ID')
-			) .
-			$this->analyticsGoogleTracker(
-				WT_Site::getPreference('GOOGLE_ANALYTICS_ID')
-			) .
-			$this->analyticsPiwikTracker(
-				WT_Site::getPreference('PIWIK_URL'),
-				WT_Site::getPreference('PIWIK_SITE_ID')
-			) .
-			$this->analyticsStatcounterTracker(
-				WT_Site::getPreference('STATCOUNTER_PROJECT_ID'),
-				WT_Site::getPreference('STATCOUNTER_SECURITY_ID')
-			);
+	protected function analytics() {
+		if ($this->themeId() === '_administration') {
+			return '';
+		} else {
+			return
+				$this->analyticsGoogleWebmaster(
+					WT_Site::getPreference('GOOGLE_WEBMASTER_ID')
+				) .
+				$this->analyticsGoogleTracker(
+					WT_Site::getPreference('GOOGLE_ANALYTICS_ID')
+				) .
+				$this->analyticsPiwikTracker(
+					WT_Site::getPreference('PIWIK_URL'),
+					WT_Site::getPreference('PIWIK_SITE_ID')
+				) .
+				$this->analyticsStatcounterTracker(
+					WT_Site::getPreference('STATCOUNTER_PROJECT_ID'),
+					WT_Site::getPreference('STATCOUNTER_SECURITY_ID')
+				);
+		}
 	}
-
 	/**
 	 * Create the verification code for Google Webmaster Tools.
 	 *
@@ -108,8 +111,8 @@ abstract class BaseTheme {
 	 *
 	 * @return string
 	 */
-	public function analyticsBingWebmaster($verification_id) {
-		// Only need to add this in the root folder.
+	protected function analyticsBingWebmaster($verification_id) {
+		// Only need to add this to the home page.
 		if (WT_SCRIPT_NAME === 'index.php' && $verification_id) {
 			return '<meta name="msvalidate.01" content="' . $verification_id . '">';
 		} else {
@@ -124,8 +127,8 @@ abstract class BaseTheme {
 	 *
 	 * @return string
 	 */
-	public function analyticsGoogleWebmaster($verification_id) {
-		// Only need to add this in the root folder.
+	protected function analyticsGoogleWebmaster($verification_id) {
+		// Only need to add this to the home page.
 		if (WT_SCRIPT_NAME === 'index.php' && $verification_id) {
 			return '<meta name="google-site-verification" content="' . $verification_id . '">';
 		} else {
@@ -140,7 +143,7 @@ abstract class BaseTheme {
 	 *
 	 * @return string
 	 */
-	public function analyticsGoogleTracker($analytics_id) {
+	protected function analyticsGoogleTracker($analytics_id) {
 		if ($analytics_id) {
 			return
 				'<script>' .
@@ -164,7 +167,7 @@ abstract class BaseTheme {
 	 *
 	 * @return string
 	 */
-	public function analyticsPiwikTracker($url, $site_id) {
+	protected function analyticsPiwikTracker($url, $site_id) {
 		if ($url && $site_id) {
 			return
 				'<script>' .
@@ -190,7 +193,7 @@ abstract class BaseTheme {
 	 *
 	 * @return string
 	 */
-	public function analyticsStatcounterTracker($project_id, $security_id) {
+	protected function analyticsStatcounterTracker($project_id, $security_id) {
 		if ($project_id && $security_id) {
 			return
 				'<script>' .
