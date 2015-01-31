@@ -210,14 +210,6 @@ $path = substr($path, 0, stripos($path, WT_SCRIPT_NAME));
 
 define('WT_BASE_URL', $protocol . '://' . $host . $port . $path);
 
-// Microsoft IIS servers don’t set REQUEST_URI, so generate it for them.
-if (!isset($_SERVER['REQUEST_URI'])) {
-	$_SERVER['REQUEST_URI'] = substr($_SERVER['PHP_SELF'], 1);
-	if (isset($_SERVER['QUERY_STRING'])) {
-		$_SERVER['REQUEST_URI'] .= '?' . $_SERVER['QUERY_STRING'];
-	}
-}
-
 // Common functions - move these to classes so we can autoload them.
 require WT_ROOT . 'includes/functions/functions.php';
 require WT_ROOT . 'includes/functions/functions_db.php';

@@ -51,7 +51,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		} catch (PDOException $ex) {
 			// The schema update scripts should never fail.  If they do, there is no clean recovery.
 			WT_FlashMessages::addMessage($ex->getMessage(), 'danger');
-			header('Location: ' . WT_BASE_URL . 'site-unavailable.php');
+			header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'site-unavailable.php');
 			throw $ex;
 		}
 
@@ -4553,7 +4553,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		function delete_place(placeid) {
 			var answer=confirm('<?php echo WT_I18N::translate('Remove this location?'); ?>');
 			if (answer == true) {
-				window.location = '<?php echo $_SERVER['REQUEST_URI']; ?>&action=DeleteRecord&deleteRecord=' + placeid;
+				window.location = '<?php echo get_query_url(array('action' => 'DeleteRecord')); ?>&action=DeleteRecord&deleteRecord=' + placeid;
 			}
 		}
 		</script>
@@ -4798,7 +4798,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 			var imageNum = Math.round(bearing/22.5) % 16;
 
-			var image = new google.maps.MarkerImage('<?php echo WT_BASE_UEL . WT_MODULES_DIR; ?>googlemap/images/panda-icons/panda-' + imageNum + '.png',
+			var image = new google.maps.MarkerImage('<?php echo WT_SCRIPT_PATH . WT_MODULES_DIR; ?>googlemap/images/panda-icons/panda-' + imageNum + '.png',
 				// This marker is 50 pixels wide by 50 pixels tall.
 				new google.maps.Size(50, 50),
 				// The origin for this image is 0,0.
