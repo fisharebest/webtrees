@@ -602,7 +602,7 @@ case 'edit':
 							id="rootid<?php echo $tree->id(); ?>"
 							value="<?php echo WT_Filter::escapeHtml($tree->getUserPreference($user, 'rootid')); ?>"
 						>
-						<?php echo print_findindi_link('rootid' . $tree->id(), $tree->name); ?>
+						<?php echo print_findindi_link('rootid' . $tree->id()), '', $tree->name(); ?>
 					</td>
 					<td>
 						<input
@@ -614,7 +614,7 @@ case 'edit':
 							id="gedcomid<?php echo $tree->id(); ?>"
 							value="<?php echo WT_Filter::escapeHtml($tree->getUserPreference($user, 'gedcomid')); ?>"
 						>
-						<?php echo print_findindi_link('gedcomid' . $tree->id(), '', $tree->name); ?>
+						<?php echo print_findindi_link('gedcomid' . $tree->id(), '', $tree->name()); ?>
 					</td>
 					<td>
 						<select name="RELATIONSHIP_PATH_LENGTH<?php echo $tree->id(); ?>" id="RELATIONSHIP_PATH_LENGTH<?php echo $tree->id(); ?>" class="relpath">

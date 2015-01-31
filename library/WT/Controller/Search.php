@@ -133,7 +133,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 		// Retrieve the gedcoms to search in
 		if (count(WT_Tree::getAll()) > 1 && WT_Site::getPreference('ALLOW_CHANGE_GEDCOM')) {
 			foreach (WT_Tree::getAll() as $search_tree) {
-				$str = str_replace(array(".", "-", " "), array("_", "_", "_"), $search_tree->name);
+				$str = str_replace(array(".", "-", " "), array("_", "_", "_"), $search_tree->name());
 				if (isset ($_REQUEST["$str"]) || $topsearch) {
 					$this->search_trees[$search_tree->id()] = $search_tree;
 					$_REQUEST["$str"] = 'yes';
@@ -613,7 +613,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 					}
 					if ($datalist) {
 						usort($datalist, array('WT_GedcomRecord', 'compare'));
-						$GEDCOM = $search_tree->name;
+						$GEDCOM = $search_tree->name();
 						load_gedcom_settings($search_tree->id());
 						echo '<h3 class="indi-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->titleHtml(), '</span></a></h3>
 							<div class="indi-acc_content">',
@@ -636,7 +636,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 					}
 					if ($datalist) {
 						usort($datalist, array('WT_GedcomRecord', 'compare'));
-						$GEDCOM = $search_tree->name;
+						$GEDCOM = $search_tree->name();
 						load_gedcom_settings($search_tree->id());
 						echo '<h3 class="fam-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->titleHtml(), '</span></a></h3>
 							<div class="fam-acc_content">',
@@ -659,7 +659,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 					}
 					if ($datalist) {
 						usort($datalist, array('WT_GedcomRecord', 'compare'));
-						$GEDCOM = $search_tree->name;
+						$GEDCOM = $search_tree->name();
 						load_gedcom_settings($search_tree->id());
 						echo '<h3 class="source-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->titleHtml(), '</span></a></h3>
 							<div class="source-acc_content">',
@@ -682,7 +682,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 					}
 					if ($datalist) {
 						usort($datalist, array('WT_GedcomRecord', 'compare'));
-						$GEDCOM = $search_tree->name;
+						$GEDCOM = $search_tree->name();
 						load_gedcom_settings($search_tree->id());
 						echo '<h3 class="note-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->titleHtml(), '</span></a></h3>
 							<div class="note-acc_content">',

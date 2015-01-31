@@ -201,7 +201,7 @@ echo '<div id="search-page">
 				<div id="search_trees" class="value">';
 					//-- sorting menu by gedcom filename
 					foreach (WT_Tree::getAll() as $tree) {
-						$str = str_replace(array(".", "-", " "), array("_", "_", "_"), $tree->name);
+						$str = str_replace(array(".", "-", " "), array("_", "_", "_"), $tree->name());
 						$controller->inputFieldNames[] = "$str";
 						echo '<p><input type="checkbox" ';
 						echo isset ($_REQUEST[$str]) ? 'checked' : '';
