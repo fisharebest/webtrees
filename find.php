@@ -422,7 +422,7 @@ if ($type == "facts") {
 		$firstFact = true;
 		foreach (WT_Gedcom_Tag::getPicklistFacts() as $factId => $factName) {
 			if ($firstFact) {
-				$firstFact = FALSE;
+				$firstFact = false;
 			} else {
 				echo ',';
 			}

@@ -49,7 +49,7 @@ if (WT_Filter::post('action') === 'update_mods' && WT_Filter::checkCsrf()) {
 		}
 	}
 
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin_modules.php');
+	header('Location: ' . WT_BASE_URL . 'admin_modules.php');
 
 	return;
 }
@@ -75,7 +75,7 @@ if (WT_Filter::post('action') === 'delete' && WT_Filter::checkCsrf()) {
 
 	WT_FlashMessages::addMessage(WT_I18N::translate('The preferences for the module “%s” have been deleted.', $module_name), 'success');
 
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin_modules.php');
+	header('Location: ' . WT_BASE_URL . 'admin_modules.php');
 
 	return;
 }

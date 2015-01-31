@@ -101,7 +101,7 @@ case 'updateraw':
 
 	if (!WT_Filter::checkCsrf()) {
 		Zend_Session::writeClose();
-		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=editraw&xref=' . $xref);
+		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=editraw&xref=' . $xref);
 		
 		return;
 	}
@@ -198,7 +198,7 @@ case 'updaterawfact':
 
 	if (!WT_Filter::checkCsrf()) {
 		Zend_Session::writeClose();
-		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=editrawfact&xref=' . $xref . '&fact_id=' . $fact_id);
+		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=editrawfact&xref=' . $xref . '&fact_id=' . $fact_id);
 		
 		return;
 	}
@@ -403,7 +403,7 @@ case 'update':
 		$prev_action = WT_Filter::post('prev_action', 'add|edit|addname|editname');
 		$fact_type   = WT_Filter::post('fact_type', WT_REGEX_TAG);
 		Zend_Session::writeClose();
-		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=' . $prev_action . '&xref=' . $xref . '&fact_id=' . $fact_id . '&fact=' . $fact_type);
+		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=' . $prev_action . '&xref=' . $xref . '&fact_id=' . $fact_id . '&fact=' . $fact_type);
 		
 		return;
 	}
@@ -532,7 +532,7 @@ case 'add_child_to_family_action':
 	if (!WT_Filter::checkCsrf()) {
 		$gender = WT_Filter::get('gender', '[MFU]', 'U');
 		Zend_Session::writeClose();
-		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=add_child_to_family&xref=' . $xref . '&gender=' . $gender);
+		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=add_child_to_family&xref=' . $xref . '&gender=' . $gender);
 		
 		return;
 	}
@@ -610,7 +610,7 @@ case 'add_child_to_individual_action':
 
 	if (!WT_Filter::checkCsrf()) {
 		Zend_Session::writeClose();
-		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=add_child_to_individual&xref=' . $xref);
+		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=add_child_to_individual&xref=' . $xref);
 		
 		return;
 	}
@@ -694,7 +694,7 @@ case 'add_parent_to_individual_action':
 	if (!WT_Filter::checkCsrf()) {
 		$gender = WT_Filter::get('gender', '[MFU]', 'U');
 		Zend_Session::writeClose();
-		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=add_parent_to_individual&xref=' . $xref . '&gender=' . $gender);
+		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=add_parent_to_individual&xref=' . $xref . '&gender=' . $gender);
 		
 		return;
 	}
@@ -765,7 +765,7 @@ case 'add_unlinked_indi_action':
 
 	if (!WT_Filter::checkCsrf()) {
 		Zend_Session::writeClose();
-		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=add_unlinked_indi');
+		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=add_unlinked_indi');
 		
 		return;
 	}
@@ -831,7 +831,7 @@ case 'add_spouse_to_individual_action':
 	if (!WT_Filter::checkCsrf()) {
 		$famtag = WT_Filter::get('famtag', 'HUSB|WIFE');
 		Zend_Session::writeClose();
-		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=add_spouse_to_individual&xref=' . $xref . '&famtag=' . $famtag);
+		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=add_spouse_to_individual&xref=' . $xref . '&famtag=' . $famtag);
 		
 		return;
 	}
@@ -924,7 +924,7 @@ case 'add_spouse_to_family_action':
 	if (!WT_Filter::checkCsrf()) {
 		$famtag = WT_Filter::get('famtag', 'HUSB|WIFE');
 		Zend_Session::writeClose();
-		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=add_spouse_to_family&xref=' . $xref . '&famtag=' . $famtag);
+		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=add_spouse_to_family&xref=' . $xref . '&famtag=' . $famtag);
 		
 		return;
 	}
@@ -1035,7 +1035,7 @@ case 'linkfamaction':
 
 	if (!WT_Filter::checkCsrf()) {
 		Zend_Session::writeClose();
-		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=addfamlink&xref=' . $xref);
+		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=addfamlink&xref=' . $xref);
 		
 		return;
 	}
@@ -1149,7 +1149,7 @@ case 'linkspouseaction':
 	if (!WT_Filter::checkCsrf()) {
 		$famtag = WT_Filter::get('famtag', 'HUSB|WIFE');
 		Zend_Session::writeClose();
-		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=linkspouse&xref=' . $xref . '&famtag=' . $famtag);
+		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=linkspouse&xref=' . $xref . '&famtag=' . $famtag);
 		
 		return;
 	}
@@ -1290,7 +1290,7 @@ case 'addsourceaction':
 
 	if (!WT_Filter::checkCsrf()) {
 		Zend_Session::writeClose();
-		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=addnewsource');
+		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=addnewsource');
 		
 		return;
 	}
@@ -1396,7 +1396,7 @@ case 'addnoteaction':
 
 	if (!WT_Filter::checkCsrf()) {
 		Zend_Session::writeClose();
-		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=addnewnote');
+		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=addnewnote');
 		
 		return;
 	}
@@ -1420,7 +1420,7 @@ case 'addnoteaction_assisted':
 
 	if (!WT_Filter::checkCsrf()) {
 		Zend_Session::writeClose();
-		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=addnewnote_assisted');
+		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=addnewnote_assisted');
 		
 		return;
 	}
@@ -1506,7 +1506,7 @@ case 'editnoteaction':
 
 	if (!WT_Filter::checkCsrf()) {
 		Zend_Session::writeClose();
-		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=editnote&xref=' . $xref);
+		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=editnote&xref=' . $xref);
 		
 		return;
 	}
@@ -1597,7 +1597,7 @@ case 'addrepoaction':
 
 	if (!WT_Filter::checkCsrf()) {
 		Zend_Session::writeClose();
-		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=addnewrepository');
+		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=addnewrepository');
 		
 		return;
 	}
@@ -1788,7 +1788,7 @@ case 'reorder_media_update':
 
 	if (!WT_Filter::checkCsrf()) {
 		Zend_Session::writeClose();
-		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=reorder_media_&xref=' . $xref);
+		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=reorder_media_&xref=' . $xref);
 		
 		return;
 	}
@@ -1899,7 +1899,7 @@ case 'reorder_update':
 
 	if (!WT_Filter::checkCsrf()) {
 		Zend_Session::writeClose();
-		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=reorder_children&xref=' . $xref);
+		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=reorder_children&xref=' . $xref);
 		
 		return;
 	}
@@ -2095,7 +2095,7 @@ case 'changefamily_update':
 
 	if (!WT_Filter::checkCsrf()) {
 		Zend_Session::writeClose();
-		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=changefamily&xref=' . $xref);
+		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=changefamily&xref=' . $xref);
 		
 		return;
 	}
@@ -2263,7 +2263,7 @@ case 'reorder_fams_update':
 
 	if (!WT_Filter::checkCsrf()) {
 		Zend_Session::writeClose();
-		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=reorder_fams&xref=' . $xref);
+		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=reorder_fams&xref=' . $xref);
 		
 		return;
 	}

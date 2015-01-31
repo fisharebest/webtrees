@@ -35,10 +35,10 @@ $action  = WT_Filter::post('action');
 if ($action === 'update_mods' && WT_Filter::checkCsrf()) {
 	foreach ($modules as $module) {
 		foreach (WT_Tree::getAll() as $tree) {
-			$access_level = WT_Filter::post('access-' . $module->getName() . '-' . $tree->tree_id, WT_REGEX_INTEGER, $module->defaultAccessLevel());
+			$access_level = WT_Filter::post('access-' . $module->getName() . '-' . $tree->id(), WT_REGEX_INTEGER, $module->defaultAccessLevel());
 			WT_DB::prepare(
 				"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'menu', ?)"
-			)->execute(array($module->getName(), $tree->tree_id, $access_level));
+			)->execute(array($module->getName(), $tree->id(), $access_level));
 		}
 		$order = WT_Filter::post('order-' . $module->getName());
 		WT_DB::prepare(
@@ -46,7 +46,7 @@ if ($action === 'update_mods' && WT_Filter::checkCsrf()) {
 		)->execute(array($order, $module->getName()));
 	}
 
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
+	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
 
 	return;
 }
@@ -112,10 +112,10 @@ $controller
 							<?php foreach (WT_Tree::getAll() as $tree): ?>
 								<tr>
 									<td>
-										<?php echo $tree->tree_title_html; ?>
+										<?php echo $tree->titleHtml(); ?>
 									</td>
 									<td>
-										<?php echo edit_field_access_level('access-' . $module->getName() . '-' . $tree->tree_id, $module->getAccessLevel($tree, 'menu')); ?>
+										<?php echo edit_field_access_level('access-' . $module->getName() . '-' . $tree->id(), $module->getAccessLevel($tree, 'menu')); ?>
 									</td>
 								</tr>
 							<?php endforeach; ?>

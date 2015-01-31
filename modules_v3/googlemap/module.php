@@ -202,7 +202,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			return '<div id="' . $this->getName() . '_content">' . ob_get_clean() . '</div>';
 		} else {
 			$html = '<table class="facts_table">';
-			$html .= '<tr><td colspan="2" class="facts_value">' . WT_I18N::translate('No map data for this person');
+			$html .= '<tr><td colspan="2" class="facts_value">' . WT_I18N::translate('No map data for this individual');
 			$html .= '</td></tr>';
 			if (Auth::isAdmin()) {
 				$html .= '<tr><td class="center" colspan="2">';
@@ -337,7 +337,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 								<?php } ?>
 								</select>
 								<p>
-									<?php echo WT_I18N::translate('Minimum and maximum zoom level for the Google map. 1 is the full map, 15 is single house.  Note that 15 is only available in certain areas.'); ?>
+									<?php echo WT_I18N::translate('Minimum and maximum zoom level for the Google map.  1 is the full map, 15 is single house.  Note that 15 is only available in certain areas.'); ?>
 								</p>
 							</td>
 						</tr>
@@ -1366,7 +1366,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				// end of add image
 
 				$dataleft  = WT_Filter::escapeJs($image . $event . ' — ' . $name);
-				$datamid   = WT_Filter::escapeJs(' <span><a href="' . $person->getHtmlUrl() . '">(' . WT_I18N::translate('View person') . ')</a></span>');
+				$datamid   = WT_Filter::escapeJs(' <span><a href="' . $person->getHtmlUrl() . '">(' . WT_I18N::translate('View individual') . ')</a></span>');
 				$dataright = WT_Filter::escapeJs('<br><strong>' . WT_I18N::translate('Birth:') . '&nbsp;</strong>' . $person->getBirthDate()->display() . ' — ' . $person->getBirthPlace());
 
 				$latlongval[$i] = $this->getLatitudeAndLongitudeFromPlaceLocation($person->getBirthPlace());
@@ -1619,7 +1619,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		case 'go':
 			//Identify gedcom file
 			$trees = WT_Tree::getAll();
-			echo '<div id="gm_check_title">', $trees[$gedcom_id]->tree_title_html, '</div>';
+			echo '<div id="gm_check_title">', $trees[$gedcom_id]->titleHtml(), '</div>';
 			//Select all '2 PLAC ' tags in the file and create array
 			$place_list = array();
 			$ged_data = WT_DB::prepare("SELECT i_gedcom FROM `##individuals` WHERE i_gedcom LIKE ? AND i_file=?")
@@ -4553,7 +4553,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		function delete_place(placeid) {
 			var answer=confirm('<?php echo WT_I18N::translate('Remove this location?'); ?>');
 			if (answer == true) {
-				window.location = '<?php echo $_SERVER['REQUEST_URI']; ?>&action=DeleteRecord&deleteRecord=' + placeid;
+				window.location = '<?php echo get_query_url(array('action' => 'DeleteRecord')); ?>&action=DeleteRecord&deleteRecord=' + placeid;
 			}
 		}
 		</script>

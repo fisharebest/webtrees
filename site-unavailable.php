@@ -30,8 +30,6 @@ require 'library/autoload.php';
 // session.php won’t run until a configuration file and database connection exist...
 // This next block of code is a minimal version of session.php
 define('WT_WEBTREES', 'webtrees');
-define('WT_SERVER_NAME', '');
-define('WT_SCRIPT_PATH', '');
 define('WT_ROOT', '');
 define('WT_GED_ID', 0);
 define('WT_DATA_DIR', realpath('data') . DIRECTORY_SEPARATOR);
@@ -93,10 +91,10 @@ if (is_array($config_ini_php) && array_key_exists('dbhost', $config_ini_php) && 
 			<?php echo WT_I18N::translate('If you are the website administrator, you should check that:'); ?>
 			<ol>
 				<li>
-					<?php echo /* I18N: [you should check that:] ... */ WT_I18N::translate('the database connection settings in the file <b>/data/config.ini.php</b> are still correct'); ?>
+					<?php echo /* I18N: [you should check that:] ... */ WT_I18N::translate('the database connection settings in the file “/data/config.ini.php” are still correct'); ?>
 				</li>
 				<li>
-					<?php echo /* I18N: [you should check that:] ... */ WT_I18N::translate('the directory <b>/data</b> and the file <b>/data/config.ini.php</b> have access permissions that allow the webserver to read them'); ?>
+					<?php echo /* I18N: [you should check that:] ... */ WT_I18N::translate('the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them'); ?>
 				</li>
 				<li>
 					<?php echo /* I18N: [you should check that:] ... */ WT_I18N::translate('you can connect to the database using other applications, such as phpmyadmin'); ?>

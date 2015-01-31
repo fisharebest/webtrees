@@ -79,6 +79,143 @@ abstract class BaseTheme {
 	}
 
 	/**
+	 * Create scripts for analytics and tracking.
+	 *
+	 * @return string
+	 */
+	protected function analytics() {
+		if ($this->themeId() === '_administration') {
+			return '';
+		} else {
+			return
+				$this->analyticsGoogleWebmaster(
+					WT_Site::getPreference('GOOGLE_WEBMASTER_ID')
+				) .
+				$this->analyticsGoogleTracker(
+					WT_Site::getPreference('GOOGLE_ANALYTICS_ID')
+				) .
+				$this->analyticsPiwikTracker(
+					WT_Site::getPreference('PIWIK_URL'),
+					WT_Site::getPreference('PIWIK_SITE_ID')
+				) .
+				$this->analyticsStatcounterTracker(
+					WT_Site::getPreference('STATCOUNTER_PROJECT_ID'),
+					WT_Site::getPreference('STATCOUNTER_SECURITY_ID')
+				);
+		}
+	}
+	/**
+	 * Create the verification code for Google Webmaster Tools.
+	 *
+	 * @param string $verification_id
+	 *
+	 * @return string
+	 */
+	protected function analyticsBingWebmaster($verification_id) {
+		// Only need to add this to the home page.
+		if (WT_SCRIPT_NAME === 'index.php' && $verification_id) {
+			return '<meta name="msvalidate.01" content="' . $verification_id . '">';
+		} else {
+			return '';
+		}
+	}
+
+	/**
+	 * Create the verification code for Google Webmaster Tools.
+	 *
+	 * @param string $verification_id
+	 *
+	 * @return string
+	 */
+	protected function analyticsGoogleWebmaster($verification_id) {
+		// Only need to add this to the home page.
+		if (WT_SCRIPT_NAME === 'index.php' && $verification_id) {
+			return '<meta name="google-site-verification" content="' . $verification_id . '">';
+		} else {
+			return '';
+		}
+	}
+
+	/**
+	 * Create the tracking code for Google Analytics.
+	 *
+	 * @param string $analytics_id
+	 *
+	 * @return string
+	 */
+	protected function analyticsGoogleTracker($analytics_id) {
+		if ($analytics_id) {
+			return
+				'<script>' .
+				'(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){' .
+				'(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),' .
+				'm=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)' .
+				'})(window,document,"script","//www.google-analytics.com/analytics.js","ga");' .
+				'ga("create", "UA-XXXX-Y", "auto");' .
+				'ga("send", "pageview");' .
+				'</script>';
+		} else {
+			return '';
+		}
+	}
+
+	/**
+	 * Create the tracking code for Piwik Analytics.
+	 *
+	 * @param string $url     - The domain/path to Piwik
+	 * @param string $site_id - The Piwik site identifier
+	 *
+	 * @return string
+	 */
+	protected function analyticsPiwikTracker($url, $site_id) {
+		if ($url && $site_id) {
+			return
+				'<script>' .
+				'var _paq=_paq||[];' .
+				'(function(){var u=(("https:"==document.location.protocol)?"https://' . $url . '/":"http://' . $url . '/");' .
+				'_paq.push(["setSiteId",' . $site_id . ']);' .
+				'_paq.push(["setTrackerUrl",u+"piwik.php"]);' .
+				'_paq.push(["trackPageView"]);' .
+				'_paq.push(["enableLinkTracking"]);' .
+				'var d=document,g=d.createElement("script"),s=d.getElementsByTagName("script")[0];g.defer=true;g.async=true;g.src=u+"piwik.js";' .
+				's.parentNode.insertBefore(g,s);})();' .
+				'</script>';
+		} else {
+			return '';
+		}
+	}
+
+	/**
+	 * Create the tracking code for Statcounter.
+	 *
+	 * @param string $project_id  - The statcounter project ID
+	 * @param string $security_id - The statcounter security ID
+	 *
+	 * @return string
+	 */
+	protected function analyticsStatcounterTracker($project_id, $security_id) {
+		if ($project_id && $security_id) {
+			return
+				'<script>' .
+				'var sc_project=' . (int) $project_id . ',sc_invisible=1,sc_security="' . $security_id .
+				'",scJsHost = (("https:"===document.location.protocol)?"https://secure.":"http://www.");' .
+				'document.write("<sc"+"ript src=\'"+scJsHost+"statcounter.com/counter/counter.js\'></"+"script>");' .
+				'</script>';
+		} else {
+			return '';
+		}
+	}
+
+	/**
+	 * Where are our CSS, JS and other assets?
+	 *
+	 * @return string A relative path, such as "themes/foo/"
+	 */
+	public function assetUrl() {
+		return '';
+	}
+
+	/**
 	 * Create the top of the <body>.
 	 *
 	 * @return string
@@ -122,7 +259,7 @@ abstract class BaseTheme {
 		case 'mailto':
 			return '<a href="mailto:' . WT_Filter::escapeHtml($user->getEmail()) . '">' . WT_Filter::escapeHtml($user->getRealName()) . '</a>';
 		default:
-			return "<a href='#' onclick='message(\"" . WT_Filter::escapeJs($user->getUserName()) . "\", \"" . $method . "\", \"" . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_Filter::escapeJs(get_query_url()) . "\", \"\");return false;'>" . WT_Filter::escapeHtml($user->getRealName()) . '</a>';
+			return "<a href='#' onclick='message(\"" . WT_Filter::escapeHtml($user->getUserName()) . "\", \"" . $method . "\", \"" . WT_BASE_URL . WT_Filter::escapeHtml(get_query_url()) . "\", \"\");return false;'>" . WT_Filter::escapeHtml($user->getRealName()) . '</a>';
 		}
 	}
 
@@ -179,15 +316,6 @@ abstract class BaseTheme {
 		} else {
 			return '';
 		}
-	}
-
-	/**
-	 * Where are our CSS, JS and other assets?
-	 *
-	 * @return string A relative path, such as "themes/foo/"
-	 */
-	public function assetUrl() {
-		return '';
 	}
 
 	/**
@@ -296,55 +424,6 @@ abstract class BaseTheme {
 	}
 
 	/**
-	 * Create a pending changes link for the page footer.
-	 *
-	 * @return string
-	 */
-	protected function formatPendingChangesLink() {
-		if ($this->pendingChangesExist()) {
-			return '<div class="pending-changes-link">' . $this->pendingChangesLink() . '</div>';
-		} else {
-			return '';
-		}
-	}
-
-	/**
-	 * Add markup to the tree title.
-	 *
-	 * @return string
-	 */
-	protected function formatTreeTitle() {
-		if ($this->tree) {
-			return '<h1 class="header-title">' . $this->tree->tree_title_html . '</h1>';
-		} else {
-			return '';
-		}
-	}
-
-	/**
-	 * Add markup to the user menu.
-	 *
-	 * @return string
-	 */
-	protected function formatSecondaryMenu() {
-		return
-			'<ul class="secondary-menu">' .
-			implode('', $this->secondaryMenu()) .
-			'</ul>';
-	}
-
-	/**
-	 * Add markup to an item in the user menu.
-	 *
-	 * @param WT_Menu $menu
-	 *
-	 * @return string
-	 */
-	protected function formatUserMenuItem(WT_Menu $menu) {
-		return $menu->getMenuAsList();
-	}
-
-	/**
 	 * Create a quick search form for the header.
 	 *
 	 * @return string
@@ -354,7 +433,7 @@ abstract class BaseTheme {
 			return
 				'<form action="search.php" class="header-search" method="post" role="search">' .
 				'<input type="hidden" name="action" value="general">' .
-				'<input type="hidden" name="ged" value="' . $this->tree->tree_name_html . '">' .
+				'<input type="hidden" name="ged" value="' . $this->tree->nameHtml() . '">' .
 				'<input type="hidden" name="topsearch" value="yes">' .
 				$this->formQuickSearchFields() .
 				'</form>';
@@ -375,6 +454,42 @@ abstract class BaseTheme {
 	}
 
 	/**
+	 * Add markup to the tree title.
+	 *
+	 * @return string
+	 */
+	protected function formatTreeTitle() {
+		if ($this->tree) {
+			return '<h1 class="header-title">' . $this->tree->titleHtml() . '</h1>';
+		} else {
+			return '';
+		}
+	}
+
+	/**
+	 * Add markup to the secondary menu.
+	 *
+	 * @return string
+	 */
+	protected function formatSecondaryMenu() {
+		return
+			'<ul class="secondary-menu">' .
+			implode('', $this->secondaryMenu()) .
+			'</ul>';
+	}
+
+	/**
+	 * Add markup to an item in the secondary menu.
+	 *
+	 * @param WT_Menu $menu
+	 *
+	 * @return string
+	 */
+	protected function formatSecondaryMenuItem(WT_Menu $menu) {
+		return $menu->getMenuAsList();
+	}
+
+	/**
 	 * Create the <head> tag.
 	 *
 	 * @param WT_Controller_Page $controller The current controller
@@ -386,6 +501,7 @@ abstract class BaseTheme {
 			'<head>' .
 			$this->headContents($controller) .
 			$this->hookHeaderExtraContent() .
+			$this->analytics() .
 			'</head>';
 	}
 
@@ -419,7 +535,7 @@ abstract class BaseTheme {
 			$this->metaCanonicalUrl($controller->getCanonicalUrl());
 
 		if ($this->tree) {
-			$html .= $this->metaDescription($this->tree->getPreference('META_DESCRIPTION', html_entity_decode(strip_tags($this->tree->tree_title_html), ENT_QUOTES)));
+			$html .= $this->metaDescription($this->tree->getPreference('META_DESCRIPTION'));
 		}
 
 		// CSS files
@@ -504,7 +620,7 @@ abstract class BaseTheme {
 	public function htmlAlert($html, $level, $dismissible) {
 		if ($dismissible) {
 			return
-				'<div class="alert alert-' . $level . '" alert-dismissible role="alert">' .
+				'<div class="alert alert-' . $level . ' alert-dismissible" role="alert">' .
 				'<button type="button" class="close" data-dismiss="alert" aria-label="' . WT_I18N::translate('close') . '">' .
 				'<span aria-hidden="true">&times;</span>' .
 				'</button>' .
@@ -845,7 +961,7 @@ abstract class BaseTheme {
 	 */
 	final public function init(Zend_Session_Namespace $session, $search_engine, WT_Tree $tree = null) {
 		$this->tree          = $tree;
-		$this->tree_url      = $tree ? 'ged=' . WT_Filter::escapeUrl($tree->tree_name) : null;
+		$this->tree_url      = $tree ? 'ged=' . $tree->nameUrl() : '';
 		$this->session       = $session;
 		$this->search_engine = $search_engine;
 
@@ -1009,7 +1125,7 @@ abstract class BaseTheme {
 	}
 
 	/**
-	 * Generate a menu item for the pedigree map (googlemap module).
+	 * Generate a menu item for the interactive tree (tree module).
 	 *
 	 * @param WT_Individual $individual
 	 *
@@ -1107,6 +1223,19 @@ abstract class BaseTheme {
 	}
 
 	/**
+	 * Generate a menu item for the control panel (admin.php).
+	 *
+	 * @return WT_Menu|null
+	 */
+	protected function menuControlPanel() {
+		if (WT_USER_GEDCOM_ADMIN) {
+			return new WT_Menu(WT_I18N::translate('Control panel'), 'admin.php', 'menu-admin');
+		} else {
+			return null;
+		}
+	}
+
+	/**
 	 * Favorites menu.
 	 *
 	 * @return WT_Menu|null
@@ -1167,20 +1296,27 @@ abstract class BaseTheme {
 	 * @return WT_Menu
 	 */
 	protected function menuHomePage() {
-		$menu                = new WT_Menu(WT_I18N::translate('Home page'), 'index.php?ctype=gedcom&amp;' . $this->tree_url, 'menu-tree');
+		$submenus            = array();
 		$ALLOW_CHANGE_GEDCOM = WT_Site::getPreference('ALLOW_CHANGE_GEDCOM') && count(WT_Tree::getAll()) > 1;
+
 		foreach (WT_Tree::getAll() as $tree) {
-			if ($tree->tree_id === WT_GED_ID || $ALLOW_CHANGE_GEDCOM) {
+			if ($tree->id() === WT_GED_ID || $ALLOW_CHANGE_GEDCOM) {
 				$submenu = new WT_Menu(
-					$tree->tree_title_html,
-					'index.php?ctype=gedcom&amp;ged=' . $tree->tree_name_url,
-					'menu-tree-' . $tree->tree_id // Cannot use name - it must be a CSS identifier
+					$tree->titleHtml(),
+					'index.php?ctype=gedcom&amp;ged=' . $tree->nameUrl(),
+					'menu-tree-' . $tree->id() // Cannot use name - it must be a CSS identifier
 				);
-				$menu->addSubmenu($submenu);
+				$submenus[] = $submenu;
 			}
 		}
 
-		return $menu;
+		if (count($submenus) > 1) {
+			$label = WT_I18N::translate('Family trees');
+		} else {
+			$label = WT_I18N::translate('Family trees');
+		}
+
+		return new WT_Menu($label, 'index.php?ctype=gedcom&amp;' . $this->tree_url, 'menu-tree', null, $submenus);
 	}
 
 	/**
@@ -1303,51 +1439,29 @@ abstract class BaseTheme {
 	}
 
 	/**
-	 * A link to allow users to edit their account settings.
+	 * A link to allow users to edit their account settings (edituser.php).
 	 *
 	 * @return WT_Menu|null
 	 */
 	protected function menuMyAccount() {
 		if (Auth::check()) {
-			return new WT_Menu(WT_Filter::escapeHtml(Auth::user()->getRealName()), 'edituser.php');
+			return new WT_Menu(WT_I18N::translate('My account'), 'edituser.php');
 		} else {
 			return null;
 		}
 	}
 
 	/**
+	 * A link to the user's individual record (individual.php).
+	 *
 	 * @return WT_Menu|null
 	 */
-	protected function menuMyMenu() {
-		$showFull   = $this->tree->getPreference('PEDIGREE_FULL_DETAILS') ? 1 : 0;
-		$showLayout = $this->tree->getPreference('PEDIGREE_LAYOUT') ? 1 : 0;
-
-		if (!Auth::id()) {
+	protected function menuMyIndividualRecord() {
+		if (WT_USER_GEDCOM_ID) {
+			return new WT_Menu(WT_I18N::translate('My individual record'), 'individual.php?pid=' . WT_USER_GEDCOM_ID . '&amp;' . $this->tree_url, 'menu-myrecord');
+		} else {
 			return null;
 		}
-
-		$menu = new WT_Menu(WT_I18N::translate('My page'), 'index.php?ctype=user&amp;' . $this->tree_url, 'menu-mymenu');
-
-		$menu->addSubmenu($this->menuMyPage());
-		$menu->addSubmenu(new WT_Menu(WT_I18N::translate('My account'), 'edituser.php', 'menu-myaccount'));
-
-		if (WT_USER_GEDCOM_ID) {
-			$menu->addSubmenu(new WT_Menu(
-				WT_I18N::translate('My pedigree'),
-				'pedigree.php?' . $this->tree_url . '&amp;rootid=' . WT_USER_GEDCOM_ID . "&amp;show_full={$showFull}&amp;talloffset={$showLayout}",
-				'menu-mypedigree'
-			));
-
-			$menu->addSubmenu(new WT_Menu(
-				WT_I18N::translate('My individual record'), 'individual.php?pid=' . WT_USER_GEDCOM_ID . '&amp;' . $this->tree_url, 'menu-myrecord'
-			));
-		}
-
-		if (WT_USER_GEDCOM_ADMIN) {
-			$menu->addSubmenu(new WT_Menu(WT_I18N::translate('Control panel'), 'admin.php', 'menu-admin'));
-		}
-
-		return $menu;
 	}
 
 	/**
@@ -1360,12 +1474,49 @@ abstract class BaseTheme {
 		return new WT_Menu(WT_I18N::translate('My page'), 'index.php?ctype=user&amp;' . $this->tree_url, 'menu-mypage');
 	}
 
-		/**
-		 * Create a pending changes menu.
-		 *
-		 * @return WT_Menu|null
-		 */
-		protected function menuPendingChanges() {
+	/**
+	 * @return WT_Menu|null
+	 */
+	protected function menuMyPages() {
+		if (Auth::id()) {
+			return new WT_Menu(WT_I18N::translate('My pages'), '#', 'menu-mymenu', null, array_filter(array(
+				$this->menuMyPage(),
+				$this->menuMyIndividualRecord(),
+				$this->menuMyPedigree(),
+				$this->menuMyAccount(),
+				$this->menuControlPanel(),
+			)));
+		} else {
+			return null;
+		}
+	}
+
+	/**
+	 * A link to the user's individual record (pedigree.php).
+	 *
+	 * @return WT_Menu|null
+	 */
+	protected function menuMyPedigree() {
+		$showFull   = $this->tree->getPreference('PEDIGREE_FULL_DETAILS') ? 1 : 0;
+		$showLayout = $this->tree->getPreference('PEDIGREE_LAYOUT') ? 1 : 0;
+
+		if (WT_USER_GEDCOM_ID) {
+			return new WT_Menu(
+				WT_I18N::translate('My pedigree'),
+				'pedigree.php?' . $this->tree_url . '&amp;rootid=' . WT_USER_GEDCOM_ID . "&amp;show_full={$showFull}&amp;talloffset={$showLayout}",
+				'menu-mypedigree'
+			);
+		} else {
+			return null;
+		}
+	}
+
+	/**
+	 * Create a pending changes menu.
+	 *
+	 * @return WT_Menu|null
+	 */
+	protected function menuPendingChanges() {
 		if ($this->pendingChangesExist()) {
 			$menu = new WT_Menu(WT_I18N::translate('Pending changes'), '#', 'menu-pending');
 			$menu->setOnclick('window.open(\'edit_changes.php\', \'_blank\', chan_window_specs); return false;');
@@ -1440,14 +1591,20 @@ abstract class BaseTheme {
 	 */
 	public function menuThemes() {
 		if ($this->tree && !$this->isSearchEngine() && WT_Site::getPreference('ALLOW_USER_THEMES') && $this->tree->getPreference('ALLOW_THEME_DROPDOWN')) {
-			$menu = new WT_Menu(WT_I18N::translate('Theme'), '#', 'menu-theme');
+			$submenus = array();
 			foreach (Theme::installedThemes() as $theme) {
 				$submenu = new WT_Menu($theme->themeName(), get_query_url(array('theme' => $theme->themeId()), '&amp;'), 'menu-theme-' . $theme->themeId());
 				if ($theme === $this) {
 					$submenu->addClass('', '', 'active');
 				}
-				$menu->addSubmenu($submenu);
+				$submenus[] = $submenu;
 			}
+
+			usort($submenus, function(WT_Menu $x, WT_Menu $y) {
+				return WT_I18N::strcasecmp($x->getLabel(), $y->getLabel());
+			});
+
+			$menu = new WT_Menu(WT_I18N::translate('Theme'), '#', 'menu-theme', '', $submenus);
 
 			return $menu;
 		} else {
@@ -1614,27 +1771,6 @@ abstract class BaseTheme {
 	}
 
 	/**
-	 * Create a pending changes link.
-	 *
-	 * @return string
-	 */
-	protected function pendingChangesLink() {
-		return
-			'<a href="#" onclick="window.open(\'edit_changes.php\', \'_blank\', chan_window_specs); return false;">' .
-			$this->pendingChangesLinkText() .
-			'</a>';
-	}
-
-	/**
-	 * Text to use in the pending changes link.
-	 *
-	 * @return string
-	 */
-	protected function pendingChangesLinkText() {
-		return WT_I18N::translate('There are pending changes for you to moderate.');
-	}
-
-	/**
 	 * Generate a list of items for the main menu.
 	 *
 	 * @return WT_Menu[]
@@ -1647,7 +1783,6 @@ abstract class BaseTheme {
 
 			return array_filter(array_merge(array(
 				$this->menuHomePage(),
-				$this->menuMyMenu(),
 				$this->menuChart($individual),
 				$this->menuLists(),
 				$this->menuCalendar(),
@@ -1684,12 +1819,12 @@ abstract class BaseTheme {
 	protected function secondaryMenu() {
 		return array_filter(array(
 			$this->menuPendingChanges(),
-			$this->menuLogin(),
-			$this->menuMyAccount(),
-			$this->menuLogout(),
+			$this->menuMyPages(),
 			$this->menuFavorites(),
-			$this->menuLanguages(),
 			$this->menuThemes(),
+			$this->menuLanguages(),
+			$this->menuLogin(),
+			$this->menuLogout(),
 		));
 	}
 

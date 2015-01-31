@@ -24,7 +24,7 @@ define('WT_SCRIPT_NAME', 'admin_trees_export.php');
 require './includes/session.php';
 
 if (Auth::isManager($WT_TREE) && WT_Filter::checkCsrf()) {
-	$filename = WT_DATA_DIR . $WT_TREE->tree_name;
+	$filename = WT_DATA_DIR . $WT_TREE->name();
 	// Force a ".ged" suffix
 	if (strtolower(substr($filename, -4)) != '.ged') {
 		$filename .= '.ged';
@@ -37,5 +37,5 @@ if (Auth::isManager($WT_TREE) && WT_Filter::checkCsrf()) {
 	}
 }
 
-header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin_trees_manage.php');
+header('Location: ' . WT_BASE_URL . 'admin_trees_manage.php');
 

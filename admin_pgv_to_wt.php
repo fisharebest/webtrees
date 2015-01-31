@@ -27,7 +27,7 @@ require './includes/session.php';
 
 // We can only import into an empty system, so deny access if we have already created a gedcom or added users.
 if (WT_GED_ID || count(User::all()) > 1) {
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
+	header('Location: ' . WT_BASE_URL);
 
 	return;
 }
@@ -63,7 +63,7 @@ $PGV_SMTP_FROM_NAME              = '';
 
 if ($PGV_PATH) {
 	if (!is_dir($PGV_PATH) || !is_readable($PGV_PATH . '/config.php')) {
-		WT_FlashMessages::addMessage('The specified directory does not contain an installation of PhpGedView', 'danger');
+		WT_FlashMessages::addMessage('The specified folder does not contain an installation of PhpGedView', 'danger');
 		$PGV_PATH = null;
 	} else {
 		// Load the configuration settings

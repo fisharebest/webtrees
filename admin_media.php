@@ -57,14 +57,14 @@ if ($delete_file) {
 	if (in_array($delete_file, $disk_files)) {
 		$tmp = WT_DATA_DIR . $media_folder . $delete_file;
 		if (@unlink($tmp)) {
-			WT_FlashMessages::addMessage(WT_I18N::translate('The file %s was deleted.', $tmp));
+			WT_FlashMessages::addMessage(WT_I18N::translate('The file %s has been deleted.', $tmp));
 		} else {
 			WT_FlashMessages::addMessage(WT_I18N::translate('The file %s could not be deleted.', $tmp));
 		}
 		$tmp = WT_DATA_DIR . $media_folder . 'thumbs/' . $delete_file;
 		if (file_exists($tmp)) {
 			if (@unlink($tmp)) {
-				WT_FlashMessages::addMessage(WT_I18N::translate('The file %s was deleted.', $tmp));
+				WT_FlashMessages::addMessage(WT_I18N::translate('The file %s has been deleted.', $tmp));
 			} else {
 				WT_FlashMessages::addMessage(WT_I18N::translate('The file %s could not be deleted.', $tmp));
 			}
@@ -580,7 +580,7 @@ $controller
 		dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 		processing: true,
 		serverSide: true,
-		ajax: "'.WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=load_json&files=' . $files . '&media_folder=' . $media_folder . '&media_path=' . $media_path . '&subfolders=' . $subfolders . '",
+		ajax: "'.WT_BASE_URL . WT_SCRIPT_NAME . '?action=load_json&files=' . $files . '&media_folder=' . $media_folder . '&media_path=' . $media_path . '&subfolders=' . $subfolders . '",
 		' . WT_I18N::datatablesI18N(array(5, 10, 20, 50, 100, 500, 1000, -1)) . ',
 		jQueryUI: true,
 		autoWidth:false,

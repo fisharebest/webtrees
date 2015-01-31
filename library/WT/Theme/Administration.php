@@ -18,6 +18,7 @@
 
 namespace WT\Theme;
 
+use WT\Auth;
 use WT_I18N;
 use WT_Menu;
 use WT_Tree;
@@ -28,13 +29,19 @@ use WT_Tree;
 class Administration extends BaseTheme {
 	/** {@inheritdoc} */
 	protected function stylesheets() {
-		return array(
+		$stylesheets = array(
 			WT_FONT_AWESOME_CSS_URL,
 			WT_BOOTSTRAP_CSS_URL,
 			WT_DATATABLES_BOOTSTRAP_CSS_URL,
 			WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL,
 			$this->assetUrl() . 'style.css',
 		);
+
+		if (WT_I18N::scriptDirection(WT_I18N::languageScript(WT_LOCALE)) === 'rtl') {
+			$stylesheets[] = WT_BOOTSTRAP_RTL_CSS_URL;
+		}
+
+		return $stylesheets;
 	}
 
 	/** {@inheritdoc} */
@@ -64,12 +71,13 @@ class Administration extends BaseTheme {
 	 * @return WT_Menu
 	 */
 	protected function menuAdminSite() {
-		return new WT_Menu(/* I18N: Menu entry*/ WT_I18N::translate('Server'), '#', '', '', array(
-			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Site preferences'), 'admin_site_config.php?action=site'),
+		return new WT_Menu(/* I18N: Menu entry*/ WT_I18N::translate('Website'), '#', '', '', array(
+			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Website preferences'), 'admin_site_config.php?action=site'),
 			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Sending email'), 'admin_site_config.php?action=email'),
 			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Login and registration'), 'admin_site_config.php?action=login'),
-			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Logs'), 'admin_site_logs.php'),
-			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Site access rules'), 'admin_site_access.php'),
+			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Tracking and analytics'), 'admin_site_config.php?action=tracking'),
+			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Website logs'), 'admin_site_logs.php'),
+			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Website access rules'), 'admin_site_access.php'),
 			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Clean up data folder'), 'admin_site_clean.php'),
 			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Server information'), 'admin_site_info.php'),
 			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('README documentation'), 'admin_site_readme.php'),
@@ -80,16 +88,40 @@ class Administration extends BaseTheme {
 	 * @return WT_Menu
 	 */
 	protected function menuAdminTrees() {
-		$submenus = array(
-			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Manage family trees'), 'admin_trees_manage.php')
-		);
+		return new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Family trees'), '#', '', '', array_filter(array(
+			$this->menuAdminTreesManage(),
+			$this->menuAdminTreesSetDefault(),
+			$this->menuAdminTreesMerge(),
+		)));
+	}
 
+	/**
+	 * @return WT_Menu
+	 */
+	protected function menuAdminTreesManage() {
+		return new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Manage family trees'), 'admin_trees_manage.php');
+	}
+
+	/**
+	 * @return WT_Menu|null
+	 */
+	protected function menuAdminTreesMerge() {
 		if (count(WT_Tree::getAll()) > 1) {
-			$submenus[] = new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Set the default blocks for new family trees'), 'index_edit.php?gedcom_id=-1');
-			$submenus[] = new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Merge family trees'), 'admin_trees_merge.php');
+			return new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Merge family trees'), 'admin_trees_merge.php');
+		} else {
+			return null;
 		}
+	}
 
-		return new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Family trees'), '#', '', '', $submenus);
+	/**
+	 * @return WT_Menu|null
+	 */
+	protected function menuAdminTreesSetDefault() {
+		if (count(WT_Tree::getAll()) > 1) {
+			return new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Set the default blocks for new family trees'), 'index_edit.php?gedcom_id=-1');
+		} else {
+			return null;
+		}
 	}
 
 	/**
@@ -131,13 +163,19 @@ class Administration extends BaseTheme {
 
 	/** {@inheritdoc} */
 	protected function primaryMenu() {
-		return array(
-			$this->menuAdminSite(),
-			$this->menuAdminTrees(),
-			$this->menuAdminUsers(),
-			$this->menuAdminMedia(),
-			$this->menuAdminModules(),
-		);
+		if (Auth::isAdmin()) {
+			return array(
+				$this->menuAdminSite(),
+				$this->menuAdminTrees(),
+				$this->menuAdminUsers(),
+				$this->menuAdminMedia(),
+				$this->menuAdminModules(),
+			);
+		} else {
+			return array(
+				$this->menuAdminTrees(),
+			);
+		}
 	}
 
 	/** {@inheritdoc} */
@@ -169,6 +207,7 @@ class Administration extends BaseTheme {
 	/** {@inheritdoc} */
 	protected function secondaryMenu() {
 		return array_filter(array(
+			$this->menuPendingChanges(),
 			$this->menuMyPage(),
 			$this->menuLanguages(),
 			$this->menuLogout(),
@@ -182,7 +221,7 @@ class Administration extends BaseTheme {
 			$html .= $menu->bootstrap();
 		}
 
-		return '<div class="clearfix"><ul class="nav nav-pills small pull-right" role="menu">' . $html . '</ul></div>';
+		return '<div class="clearfix"><ul class="nav nav-pills small pull-right flip" role="menu">' . $html . '</ul></div>';
 	}
 
 	/** {@inheritdoc} */

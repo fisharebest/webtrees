@@ -49,7 +49,7 @@ case 'save':
 	if (WT_Filter::checkCsrf()) {
 		$user_id        = WT_Filter::postInteger('user_id');
 		$user           = User::find($user_id);
-		$username       = WT_Filter::post('username', WT_REGEX_USERNAME);
+		$username       = WT_Filter::post('username');
 		$real_name      = WT_Filter::post('real_name');
 		$email          = WT_Filter::postEmail('email');
 		$pass1          = WT_Filter::post('pass1', WT_REGEX_PASSWORD);
@@ -79,7 +79,7 @@ case 'save':
 			}
 		} else {
 			$user = User::find($user_id);
-			if ($user) {
+			if ($user && $username && $real_name) {
 				$user->setEmail($email);
 				$user->setUserName($username);
 				$user->setRealName($real_name);
@@ -96,8 +96,8 @@ case 'save':
 				WT_Mail::systemMessage(
 					$WT_TREE,
 					$user,
-					WT_I18N::translate('Approval of account at %s', WT_SERVER_NAME . WT_SCRIPT_PATH),
-					WT_I18N::translate('The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s', WT_SERVER_NAME . WT_SCRIPT_PATH, WT_SERVER_NAME . WT_SCRIPT_PATH)
+					WT_I18N::translate('Approval of account at %s', WT_BASE_URL),
+					WT_I18N::translate('The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s', WT_BASE_URL, WT_BASE_URL)
 				);
 			}
 
@@ -117,11 +117,11 @@ case 'save':
 			}
 
 			foreach (WT_Tree::getAll() as $tree) {
-				$tree->setUserPreference($user, 'gedcomid', WT_Filter::post('gedcomid' . $tree->tree_id, WT_REGEX_XREF));
-				$tree->setUserPreference($user, 'rootid', WT_Filter::post('rootid' . $tree->tree_id, WT_REGEX_XREF));
-				$tree->setUserPreference($user, 'canedit', WT_Filter::post('canedit' . $tree->tree_id, implode('|', array_keys($ALL_EDIT_OPTIONS))));
-				if (WT_Filter::post('gedcomid' . $tree->tree_id, WT_REGEX_XREF)) {
-					$tree->setUserPreference($user, 'RELATIONSHIP_PATH_LENGTH', WT_Filter::postInteger('RELATIONSHIP_PATH_LENGTH' . $tree->tree_id, 0, 10, 0));
+				$tree->setUserPreference($user, 'gedcomid', WT_Filter::post('gedcomid' . $tree->id(), WT_REGEX_XREF));
+				$tree->setUserPreference($user, 'rootid', WT_Filter::post('rootid' . $tree->id(), WT_REGEX_XREF));
+				$tree->setUserPreference($user, 'canedit', WT_Filter::post('canedit' . $tree->id(), implode('|', array_keys($ALL_EDIT_OPTIONS))));
+				if (WT_Filter::post('gedcomid' . $tree->id(), WT_REGEX_XREF)) {
+					$tree->setUserPreference($user, 'RELATIONSHIP_PATH_LENGTH', WT_Filter::postInteger('RELATIONSHIP_PATH_LENGTH' . $tree->id(), 0, 10, 0));
 				} else {
 					// Do not allow a path length to be set if the individual ID is not
 					$tree->setUserPreference($user, 'RELATIONSHIP_PATH_LENGTH', null);
@@ -130,7 +130,7 @@ case 'save':
 		}
 	}
 
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
+	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
 
 	return;
 }
@@ -200,10 +200,12 @@ case 'loadrows':
 		$datum[0] = '<div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-pencil"></i> <span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li><a href="?action=edit&amp;user_id=' . $user_id . '"><i class="fa fa-fw fa-pencil"></i> ' . WT_I18N::translate('Edit') . '</a></li><li class="divider"><li><a href="index_edit.php?user_id=' . $user_id . '"><i class="fa fa-fw fa-th-large"></i> ' . WT_I18N::translate('Change the blocks on this user’s “My page”') . '</a></li>' . $admin_options . '</ul></div>';
 		// $datum[1] is the user ID
 		// $datum[2] is the user name
+		$datum[2] = WT_Filter::escapeHtml($datum[2]);
 		// $datum[3] is the real name
+		$datum[3] = WT_Filter::escapeHtml($datum[3]);
 		// $datum[4] is the email address
 		if ($user_id != Auth::id()) {
-			$datum[4] = '<a href="#" onclick="return message(\'' . $datum[2] . '\', \'\', \'\');">' . $datum[4] . '</i></a>';
+			$datum[4] = '<a href="#" onclick="return message(\'' . WT_Filter::escapeHtml($datum[2]) . '\', \'\', \'\');">' . WT_Filter::escapeHtml($datum[4]) . '</i></a>';
 		}
 		// $datum[5] is the langauge
 		if (array_key_exists($datum[5], $installed_languages)) {
@@ -308,9 +310,9 @@ case 'edit':
 				<?php echo WT_I18N::translate('Username'); ?>
 			</label>
 			<div class="col-sm-9">
-				<input class="form-control" type="text" id="username" name="username" required maxlength="32" value="<?php echo WT_Filter::escapeHtml($user->getUserName()); ?>" pattern="<?php echo WT_REGEX_USERNAME; ?>">
+				<input class="form-control" type="text" id="username" name="username" required maxlength="32" value="<?php echo WT_Filter::escapeHtml($user->getUserName()); ?>">
 				<p class="small text-muted">
-					<?php echo WT_I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.'), ' ', WT_I18N::translate('Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;'); ?>
+					<?php echo WT_I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.'); ?>
 				</p>
 			</div>
 		</div>
@@ -346,7 +348,7 @@ case 'edit':
 			<div class="col-sm-9">
 				<input class="form-control" type="email" id="email" name="email" required maxlength="64" value="<?php echo WT_Filter::escapeHtml($user->getEmail()); ?>">
 				<p class="small text-muted">
-					<?php echo WT_I18N::translate('This email address will be used to send password reminders, site notifications, and messages from other family members who are registered on the site.'); ?>
+					<?php echo WT_I18N::translate('This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website.'); ?>
 				</p>
 			</div>
 		</div>
@@ -454,7 +456,7 @@ case 'edit':
 		<!-- COMMENTS -->
 		<div class="form-group">
 			<label class="control-label col-sm-3" for="comment">
-				<?php echo WT_I18N::translate('Admin comments on user'); ?>
+				<?php echo WT_I18N::translate('Administrator comments on user'); ?>
 			</label>
 			<div class="col-sm-9">
 				<textarea class="form-control" id="comment" name="comment" rows="5" maxlength="255"><?php echo WT_Filter::escapeHtml($user->getPreference('comment')); ?></textarea>
@@ -491,7 +493,7 @@ case 'edit':
 					<?php echo WT_I18N::translate('Visitor'); ?>
 				</h4>
 				<p class="small text-muted">
-					<?php echo WT_I18N::translate('Everybody has this role, including visitors to the site and search engines.'); ?>
+					<?php echo WT_I18N::translate('Everybody has this role, including visitors to the website and search engines.'); ?>
 				</p>
 				<h4>
 					<?php echo WT_I18N::translate('Member'); ?>
@@ -525,7 +527,7 @@ case 'edit':
 					<?php echo WT_I18N::translate('Administrator'); ?>
 				</h4>
 				<p class="small text-muted">
-					<?php echo WT_I18N::translate('This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users, and modules.'); ?>
+					<?php echo WT_I18N::translate('This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules.'); ?>
 				</p>
 			</div>
 		</div>
@@ -568,7 +570,7 @@ case 'edit':
 						<p class="small text-muted">
 								<?php echo WT_I18N::translate('Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations.  You specify the number of relationship steps that the user is allowed to see.'); ?>
 							<?php echo WT_I18N::translate('For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child).'); ?>
-							<?php echo WT_I18N::translate('Note: longer path lengths require a lot of calculation, which can make your site run slowly for these users.'); ?>
+							<?php echo WT_I18N::translate('Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users.'); ?>
 						</p>
 					</td>
 				</tr>
@@ -577,10 +579,10 @@ case 'edit':
 				<?php foreach (WT_Tree::getAll() as $tree): ?>
 				<tr>
 					<td>
-						<?php echo $tree->tree_title_html; ?>
+						<?php echo $tree->titleHtml(); ?>
 					</td>
 					<td>
-						<select name="canedit<?php echo $tree->tree_id; ?>">
+						<select name="canedit<?php echo $tree->id(); ?>">
 							<?php foreach ($ALL_EDIT_OPTIONS as $EDIT_OPTION => $desc): ?>
 								<option value="<?php echo $EDIT_OPTION; ?>"
 									<?php echo $EDIT_OPTION === $tree->getUserPreference($user, 'canedit') ? 'selected' : ''; ?>
@@ -593,29 +595,29 @@ case 'edit':
 					<td>
 						<input
 							data-autocomplete-type="INDI"
-							data-autocomplete-ged="<?php echo $tree->tree_name_html; ?>"
+							data-autocomplete-ged="<?php echo WT_Filter::escapeHtml($tree->name()); ?>"
 							type="text"
 							size="12"
-							name="rootid<?php echo $tree->tree_id; ?>"
-							id="rootid<?php echo $tree->tree_id; ?>"
+							name="rootid<?php echo $tree->id(); ?>"
+							id="rootid<?php echo $tree->id(); ?>"
 							value="<?php echo WT_Filter::escapeHtml($tree->getUserPreference($user, 'rootid')); ?>"
 						>
-						<?php echo print_findindi_link('rootid' . $tree->tree_id, $tree->tree_name); ?>
+						<?php echo print_findindi_link('rootid' . $tree->id(), $tree->name); ?>
 					</td>
 					<td>
 						<input
 							data-autocomplete-type="INDI"
-							data-autocomplete-ged="<?php echo $tree->tree_name_html; ?>"
+							data-autocomplete-ged="<?php echo WT_Filter::escapeHtml($tree->name()); ?>"
 							type="text"
 							size="12"
-							name="gedcomid<?php echo $tree->tree_id; ?>"
-							id="gedcomid<?php echo $tree->tree_id; ?>"
+							name="gedcomid<?php echo $tree->id(); ?>"
+							id="gedcomid<?php echo $tree->id(); ?>"
 							value="<?php echo WT_Filter::escapeHtml($tree->getUserPreference($user, 'gedcomid')); ?>"
 						>
-						<?php echo print_findindi_link('gedcomid' . $tree->tree_id, '', $tree->tree_name); ?>
+						<?php echo print_findindi_link('gedcomid' . $tree->id(), '', $tree->name); ?>
 					</td>
 					<td>
-						<select name="RELATIONSHIP_PATH_LENGTH<?php echo $tree->tree_id; ?>" id="RELATIONSHIP_PATH_LENGTH<?php echo $tree->tree_id; ?>" class="relpath">
+						<select name="RELATIONSHIP_PATH_LENGTH<?php echo $tree->id(); ?>" id="RELATIONSHIP_PATH_LENGTH<?php echo $tree->id(); ?>" class="relpath">
 							<?php for ($n = 0; $n <= 10; ++$n): ?>
 							<option value="<?php echo $n; ?>" <?php echo $tree->getUserPreference($user, 'RELATIONSHIP_PATH_LENGTH') === $n ? 'checked' : ''; ?>>
 								<?php echo $n ? $n : WT_I18N::translate('No'); ?>
@@ -769,7 +771,7 @@ case 'cleanup2':
 		}
 	}
 
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
+	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
 	break;
 default:
 	$controller

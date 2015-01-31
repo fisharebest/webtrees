@@ -1870,12 +1870,6 @@ span.link_text {
 	font-size: 1.0em;
 }
 
-#indi_header h3.person_box,
-#indi_header h3.person_boxF,
-#indi_header h3.person_boxNN {
-	border: 1px solid #2694e8;
-}
-
 #indi_header h3 .header_age {
 	padding: 5px 0 5px 5px;
 	float: right;
