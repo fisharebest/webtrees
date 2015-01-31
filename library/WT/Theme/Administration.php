@@ -102,7 +102,7 @@ class Administration extends BaseTheme {
 	}
 
 	/**
-	 * @return WT_Menu
+	 * @return WT_Menu|null
 	 */
 	protected function menuAdminTreesMerge() {
 		if (count(WT_Tree::getAll()) > 1) {
@@ -113,7 +113,7 @@ class Administration extends BaseTheme {
 	}
 
 	/**
-	 * @return WT_Menu
+	 * @return WT_Menu|null
 	 */
 	protected function menuAdminTreesSetDefault() {
 		if (count(WT_Tree::getAll()) > 1) {
