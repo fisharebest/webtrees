@@ -171,7 +171,7 @@ abstract class WT_Module {
 		$access_level = WT_DB::prepare(
 			"SELECT access_level FROM `##module_privacy` WHERE gedcom_id = :gedcom_id AND module_name = :module_name AND component = :component"
 		)->execute(array(
-			'gedcom_id'   => $tree->tree_id,
+			'gedcom_id'   => $tree->id(),
 			'module_name' => $this->getName(),
 			'component'   => $component,
 		))->fetchOne();

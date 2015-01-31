@@ -92,13 +92,13 @@ if ($tree1_id && $tree2_id != $tree1_id) {
 			WT_I18N::translate('You must renumber the records in one of the trees before you can merge them.'),
 			'</p>',
 			'<p>',
-			'<a class="current" href="admin_trees_renumber.php?ged=', $tree1->tree_name_html, '">',
-			WT_I18N::translate('Renumber family tree'), ' — ', $tree1->tree_title_html,
+			'<a class="current" href="admin_trees_renumber.php?ged=', $tree1->nameUrl(), '">',
+			WT_I18N::translate('Renumber family tree'), ' — ', $tree1->titleHtml(),
 			'</a>',
 			'</p>',
 			'<p>',
-			'<a class="current" href="admin_trees_renumber.php?ged=', $tree2->tree_name_html, '">',
-			WT_I18N::translate('Renumber family tree'), ' — ', $tree2->tree_title_html,
+			'<a class="current" href="admin_trees_renumber.php?ged=', $tree2->nameUrl(), '">',
+			WT_I18N::translate('Renumber family tree'), ' — ', $tree2->titleHtml(),
 			'</a>',
 			'</p>';
 	} else {

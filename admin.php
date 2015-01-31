@@ -653,67 +653,67 @@ $changes = WT_DB::prepare(
 					</thead>
 					<tbody>
 						<?php foreach (WT_Tree::getAll() as $tree): ?>
-						<tr class="<?php echo $changes[$tree->tree_id] ? 'danger' : '';?>">
+						<tr class="<?php echo $changes[$tree->id()] ? 'danger' : '';?>">
 							<td>
-								<a href="index.php?ctype=gedcom&amp;ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
-									<?php echo WT_Filter::escapeHtml($tree->tree_title); ?>
+								<a href="index.php?ctype=gedcom&amp;ged=<?php echo $tree->nameUrl(); ?>">
+									<?php echo $tree->titleHtml(); ?>
 								</a>
 							</td>
 							<td class="text-right flip">
-								<?php if ($changes[$tree->tree_id]): ?>
+								<?php if ($changes[$tree->id()]): ?>
 								<a onclick="window.open('edit_changes.php', '_blank', chan_window_specs); return false;" href="#">
-									<?php echo WT_I18N::number($changes[$tree->tree_id]); ?>
-									<span class="sr-only"><?php echo WT_I18N::translate('Pending changes'); ?> <?php echo WT_Filter::escapeHtml($tree->tree_title); ?></span>
+									<?php echo WT_I18N::number($changes[$tree->id()]); ?>
+									<span class="sr-only"><?php echo WT_I18N::translate('Pending changes'); ?> <?php echo $tree->titleHtml(); ?></span>
 								</a>
 								<?php else: ?>
 								-
 								<?php endif; ?>
 							</td>
 							<td class="text-right flip">
-								<?php if ($individuals[$tree->tree_id]): ?>
-								<a href="indilist.php?ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
-									<?php echo WT_I18N::number($individuals[$tree->tree_id]); ?>
-									<span class="sr-only"><?php echo WT_I18N::translate('Individuals'); ?> <?php echo WT_Filter::escapeHtml($tree->tree_title); ?></span>
+								<?php if ($individuals[$tree->id()]): ?>
+								<a href="indilist.php?ged=<?php echo $tree->nameUrl(); ?>">
+									<?php echo WT_I18N::number($individuals[$tree->id()]); ?>
+									<span class="sr-only"><?php echo WT_I18N::translate('Individuals'); ?> <?php echo $tree->titleHtml(); ?></span>
 								</a>
 								<?php else: ?>
 									-
 								<?php endif; ?>
 								</td>
 							<td class="text-right flip">
-								<?php if ($families[$tree->tree_id]): ?>
-								<a href="famlist.php?ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
-									<?php echo WT_I18N::number($families[$tree->tree_id]); ?>
-									<span class="sr-only"><?php echo WT_I18N::translate('Families'); ?> <?php echo WT_Filter::escapeHtml($tree->tree_title); ?></span>
+								<?php if ($families[$tree->id()]): ?>
+								<a href="famlist.php?ged=<?php echo $tree->nameUrl(); ?>">
+									<?php echo WT_I18N::number($families[$tree->id()]); ?>
+									<span class="sr-only"><?php echo WT_I18N::translate('Families'); ?> <?php echo $tree->titleHtml(); ?></span>
 								</a>
 								<?php else: ?>
 								-
 								<?php endif; ?>
 								</td>
 							<td class="text-right flip">
-								<?php if ($sources[$tree->tree_id]): ?>
-								<a href="sourlist.php?ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
-									<?php echo WT_I18N::number($sources[$tree->tree_id]); ?>
-									<span class="sr-only"><?php echo WT_I18N::translate('Sources'); ?> <?php echo WT_Filter::escapeHtml($tree->tree_title); ?></span>
+								<?php if ($sources[$tree->id()]): ?>
+								<a href="sourlist.php?ged=<?php echo $tree->nameUrl(); ?>">
+									<?php echo WT_I18N::number($sources[$tree->id()]); ?>
+									<span class="sr-only"><?php echo WT_I18N::translate('Sources'); ?> <?php echo $tree->titleHtml(); ?></span>
 								</a>
 								<?php else: ?>
 								-
 								<?php endif; ?>
 							</td>
 							<td class="text-right flip">
-								<?php if ($repositories[$tree->tree_id]): ?>
-								<a href="repolist.php?ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
-									<?php echo WT_I18N::number($repositories[$tree->tree_id]); ?>
-									<span class="sr-only"><?php echo WT_I18N::translate('Repositories'); ?> <?php echo WT_Filter::escapeHtml($tree->tree_title); ?></span>
+								<?php if ($repositories[$tree->id()]): ?>
+								<a href="repolist.php?ged=<?php echo $tree->nameUrl(); ?>">
+									<?php echo WT_I18N::number($repositories[$tree->id()]); ?>
+									<span class="sr-only"><?php echo WT_I18N::translate('Repositories'); ?> <?php echo $tree->titleHtml(); ?></span>
 								</a>
 								<?php else: ?>
 									-
 								<?php endif; ?>
 							</td>
 							<td class="text-right flip">
-								<?php if ($media[$tree->tree_id]): ?>
-								<a href="medialist.php?ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
-									<?php echo WT_I18N::number($media[$tree->tree_id]); ?>
-									<span class="sr-only"><?php echo WT_I18N::translate('Media objects'); ?> <?php echo WT_Filter::escapeHtml($tree->tree_title); ?></span>
+								<?php if ($media[$tree->id()]): ?>
+								<a href="medialist.php?ged=<?php echo $tree->nameUrl(); ?>">
+									<?php echo WT_I18N::number($media[$tree->id()]); ?>
+									<span class="sr-only"><?php echo WT_I18N::translate('Media objects'); ?> <?php echo $tree->titleHtml(); ?></span>
 								</a>
 								<?php else: ?>
 								-

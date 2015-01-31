@@ -38,7 +38,7 @@ case 'delete':
 	$gedcom_id = WT_Filter::postInteger('gedcom_id');
 	if (WT_Filter::checkCsrf() && $gedcom_id) {
 		$tree = WT_Tree::get($gedcom_id);
-		WT_FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ WT_I18N::translate('The family tree “%s” has been deleted.', WT_Filter::escapeHtml($tree->tree_name)), 'success');
+		WT_FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ WT_I18N::translate('The family tree “%s” has been deleted.', $tree->titleHtml()), 'success');
 		$tree->delete();
 	}
 	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
@@ -47,7 +47,7 @@ case 'delete':
 case 'setdefault':
 	if (WT_Filter::checkCsrf()) {
 		WT_Site::setPreference('DEFAULT_GEDCOM', WT_Filter::post('ged'));
-		WT_FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ WT_I18N::translate('The family tree “%s” will be shown to visitors when they first arrive at this website.', WT_Filter::escapeHtml($WT_TREE->tree_name)), 'success');
+		WT_FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ WT_I18N::translate('The family tree “%s” will be shown to visitors when they first arrive at this website.', $tree->titleHtml()), 'success');
 	}
 	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
 
@@ -114,8 +114,8 @@ case 'bulk-import':
 		}
 
 		foreach (WT_Tree::getAll() as $tree) {
-			if (!in_array($tree->tree_name, $basenames)) {
-				WT_FlashMessages::addMessage(WT_I18N::translate('The family tree “%s” has been deleted.', WT_Filter::escapeHtml($tree->tree_name)), 'success');
+			if (!in_array($tree->name(), $basenames)) {
+				WT_FlashMessages::addMessage(WT_I18N::translate('The family tree “%s” has been deleted.', $tree->titleHtml()), 'success');
 				$tree->delete();
 			}
 		}
@@ -162,11 +162,11 @@ case 'importform':
 	if (!$tree) {
 		break;
 	}
-	echo '<p>', /* I18N: %s is the name of a family tree */ WT_I18N::translate('This will delete all the genealogical data from “%s” and replace it with data from another GEDCOM file.', $tree->tree_name_html), '</p>';
+	echo '<p>', /* I18N: %s is the name of a family tree */ WT_I18N::translate('This will delete all the genealogical data from “%s” and replace it with data from another GEDCOM file.', $tree->titleHtml()), '</p>';
 	// the javascript in the next line strips any path associated with the file before comparing it to the current GEDCOM name (both Chrome and IE8 include c:\fakepath\ in the filename).
 	$previous_gedcom_filename = $tree->getPreference('gedcom_filename');
 	echo '<form name="replaceform" method="post" enctype="multipart/form-data" action="', WT_SCRIPT_NAME, '" onsubmit="var newfile = document.replaceform.ged_name.value; newfile = newfile.substr(newfile.lastIndexOf(\'\\\\\')+1); if (newfile!=\'', WT_Filter::escapeHtml($previous_gedcom_filename), '\' && \'\' != \'', WT_Filter::escapeHtml($previous_gedcom_filename), '\') return confirm(\'', WT_Filter::escapeHtml(WT_I18N::translate('You have selected a GEDCOM file with a different name.  Is this correct?')), '\'); else return true;">';
-	echo '<input type="hidden" name="gedcom_id" value="', $tree->tree_id, '">';
+	echo '<input type="hidden" name="gedcom_id" value="', $tree->id(), '">';
 	echo WT_Filter::getCsrf();
 	if (WT_Filter::get('action') == 'uploadform') {
 		echo '<input type="hidden" name="action" value="replace_upload">';
@@ -230,39 +230,39 @@ $controller->pageHeader();
 	<?php foreach (WT_Tree::GetAll() as $tree): ?>
 	<?php if (Auth::isManager($tree)): ?>
 	<div class="panel panel-default">
-		<div class="panel-heading" role="tab" id="panel-tree-<?php echo $tree->tree_id; ?>">
+		<div class="panel-heading" role="tab" id="panel-tree-<?php echo $tree->id(); ?>">
 			<h2 class="panel-title">
 				<i class="fa fa-fw fa-tree"></i>
-				<a data-toggle="collapse" data-parent="#accordion" href="#tree-<?php echo $tree->tree_id; ?>" aria-expanded="true" aria-controls="tree-<?php echo $tree->tree_id; ?>">
-					<?php echo WT_Filter::escapeHtml($tree->tree_name); ?> — <?php echo WT_Filter::escapeHtml($tree->tree_title); ?>
+				<a data-toggle="collapse" data-parent="#accordion" href="#tree-<?php echo $tree->id(); ?>" aria-expanded="true" aria-controls="tree-<?php echo $tree->id(); ?>">
+					<?php echo $tree->nameHtml(); ?> — <?php echo $tree->titleHtml(); ?>
 				</a>
 			</h2>
 		</div>
-		<div id="tree-<?php echo $tree->tree_id; ?>" class="panel-collapse collapse<?php echo $tree->tree_id === WT_GED_ID || $tree->getPreference('imported') === '0' ? ' in' : ''; ?>" role="tabpanel" aria-labelledby="panel-tree-<?php echo $tree->tree_id; ?>">
+		<div id="tree-<?php echo $tree->id(); ?>" class="panel-collapse collapse<?php echo $tree->id() === WT_GED_ID || $tree->getPreference('imported') === '0' ? ' in' : ''; ?>" role="tabpanel" aria-labelledby="panel-tree-<?php echo $tree->id(); ?>">
 			<div class="panel-body">
 				<?php
 
 		// The third row shows an optional progress bar and a list of maintenance options
 		$importing = WT_DB::prepare(
 			"SELECT 1 FROM `##gedcom_chunk` WHERE gedcom_id = ? AND imported = '0' LIMIT 1"
-		)->execute(array($tree->tree_id))->fetchOne();
+		)->execute(array($tree->id()))->fetchOne();
 		if ($importing) {
 				?>
-				<div id="import<?php echo $tree->tree_id; ?>" class="col-xs-12">
+				<div id="import<?php echo $tree->id(); ?>" class="col-xs-12">
 					<div class="progress">
 						<?php echo WT_I18N::translate('Calculating…'); ?>
 					</div>
 				</div>
 				<?php
 			$controller->addInlineJavascript(
-				'jQuery("#import' . $tree->tree_id . '").load("import.php?gedcom_id=' . $tree->tree_id . '");'
+				'jQuery("#import' . $tree->id() . '").load("import.php?gedcom_id=' . $tree->id() . '");'
 			);
 		}
 				?>
-				<div class="row<?php echo $importing ? ' hidden' : ''; ?>" id="actions<?php echo $tree->tree_id; ?>">
+				<div class="row<?php echo $importing ? ' hidden' : ''; ?>" id="actions<?php echo $tree->id(); ?>">
 					<div class="col-sm-6 col-md-3">
 						<h3>
-							<a href="index.php?ctype=gedcom&ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
+							<a href="index.php?ctype=gedcom&ged=<?php echo $tree->nameUrl(); ?>">
 								<?php echo WT_I18N::translate('Family tree'); ?>
 							</a>
 						</h3>
@@ -270,48 +270,48 @@ $controller->pageHeader();
 							<!-- PREFERENCES -->
 							<li>
 								<i class="fa fa-li fa-cogs"></i>
-								<a href="admin_trees_config.php?action=general&amp;ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
+								<a href="admin_trees_config.php?action=general&amp;ged=<?php echo $tree->nameUrl(); ?>">
 									<?php echo WT_I18N::translate('Preferences'); ?>
 									<span class="sr-only">
-										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
+										<?php echo $tree->titleHtml(); ?>
 									</span>
 								</a>
 							</li>
 							<!-- PRIVACY -->
 							<li>
 								<i class="fa fa-li fa-lock"></i>
-								<a href="admin_trees_config.php?action=privacy&amp;ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
+								<a href="admin_trees_config.php?action=privacy&amp;ged=<?php echo $tree->nameUrl(); ?>">
 									<?php echo WT_I18N::translate('Privacy'); ?>
 									<span class="sr-only">
-										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
+										<?php echo $tree->titleHtml(); ?>
 									</span>
 								</a>
 							</li>
 							<!-- HOME PAGE BLOCKS-->
 							<li>
 								<i class="fa fa-li fa-th-large"></i>
-								<a href="index_edit.php?gedcom_id=<?php echo $tree->tree_id; ?>">
+								<a href="index_edit.php?gedcom_id=<?php echo $tree->id(); ?>">
 									<?php echo WT_I18N::translate('Change the “Home page” blocks'); ?>
 									<span class="sr-only">
-										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
+										<?php echo $tree->titleHtml(); ?>
 									</span>
 								</a>
 							</li>
 							<!-- DELETE -->
 							<li>
 								<i class="fa fa-li fa-trash-o"></i>
-								<a href="#" onclick="if (confirm('<?php echo WT_Filter::escapeJs(WT_I18N::translate('Are you sure you want to delete “%s”?', $tree->tree_name)); ?>')) { document.delete_form<?php echo $tree->tree_id; ?>.submit(); } return false;">
+								<a href="#" onclick="if (confirm('<?php echo WT_Filter::escapeJs(WT_I18N::translate('Are you sure you want to delete “%s”?', $tree->nameHtml())); ?>')) { document.delete_form<?php echo $tree->id(); ?>.submit(); } return false;">
 									<?php echo WT_I18N::translate('Delete'); ?>
 									<span class="sr-only">
-										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
+										<?php echo $tree->titleHtml(); ?>
 									</span>
 								</a>
-								<form name="delete_form<?php echo $tree->tree_id; ?>" method="post">
+								<form name="delete_form<?php echo $tree->id(); ?>" method="post">
 									<input type="hidden" name="action" value="delete">
-									<input type="hidden" name="gedcom_id" value="<?php echo $tree->tree_id; ?>">
+									<input type="hidden" name="gedcom_id" value="<?php echo $tree->id(); ?>">
 									<?php echo WT_Filter::getCsrf(); ?>
 									<!-- A11Y - forms need submit buttons, but they look ugly here -->
-									<button class="sr-only" onclick="return confirm('<?php echo WT_Filter::escapeJs(WT_I18N::translate('Are you sure you want to delete “%s”?', $tree->tree_name)); ?>')" type="submit">
+									<button class="sr-only" onclick="return confirm('<?php echo WT_Filter::escapeJs(WT_I18N::translate('Are you sure you want to delete “%s”?', $tree->titleHtml())); ?>')" type="submit">
 										<?php echo WT_I18N::translate('Delete'); ?>
 									</button>
 								</form>
@@ -320,18 +320,18 @@ $controller->pageHeader();
 							<?php if (count(WT_Tree::getAll()) > 1): ?>
 								<li>
 									<i class="fa fa-li fa-star"></i>
-									<?php if ($tree->tree_name == WT_Site::getPreference('DEFAULT_GEDCOM')): ?>
+									<?php if ($tree->name() == WT_Site::getPreference('DEFAULT_GEDCOM')): ?>
 										<?php echo WT_I18N::translate('Default family tree'); ?>
 									<?php else: ?>
-										<a href="#" onclick="document.defaultform<?php echo $tree->tree_id; ?>.submit();">
+										<a href="#" onclick="document.defaultform<?php echo $tree->id(); ?>.submit();">
 											<?php echo WT_I18N::translate('Set as default'); ?>
 											<span class="sr-only">
-										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
+										<?php echo $tree->titleHtml(); ?>
 									</span>
 										</a>
-										<form name="defaultform<?php echo $tree->tree_id; ?>" method="post">
+										<form name="defaultform<?php echo $tree->id(); ?>" method="post">
 											<input type="hidden" name="action" value="setdefault">
-											<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
+											<input type="hidden" name="ged" value="<?php echo $tree->nameHtml(); ?>">
 											<?php echo WT_Filter::getCsrf(); ?>
 											<!-- A11Y - forms need submit buttons, but they look ugly here -->
 											<button class="sr-only" type="submit">
@@ -351,50 +351,50 @@ $controller->pageHeader();
 							<!-- MERGE -->
 							<li>
 								<i class="fa fa-li fa-code-fork"></i>
-								<a href="admin_site_merge.php?ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
+								<a href="admin_site_merge.php?ged=<?php echo $tree->nameUrl(); ?>">
 									<?php echo WT_I18N::translate('Merge records'); ?>
 									<span class="sr-only">
-										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
+										<?php echo $tree->titleHtml(); ?>
 									</span>
 								</a>
 							</li>
 							<!-- UPDATE PLACE NAMES -->
 							<li>
 								<i class="fa fa-li fa-map-marker"></i>
-								<a href="admin_trees_places.php?ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
+								<a href="admin_trees_places.php?ged=<?php echo $tree->nameUrl(); ?>">
 									<?php echo WT_I18N::translate('Update place names'); ?>
 									<span class="sr-only">
-										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
+										<?php echo $tree->titleHtml(); ?>
 									</span>
 								</a>
 							</li>
 							<!-- CHECK FOR ERRORS -->
 							<li>
 								<i class="fa fa-li fa-check"></i>
-								<a href="admin_trees_check.php?ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
+								<a href="admin_trees_check.php?ged=<?php echo $tree->nameUrl(); ?>">
 									<?php echo WT_I18N::translate('Check for errors'); ?>
 									<span class="sr-only">
-										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
+										<?php echo $tree->titleHtml(); ?>
 									</span>
 								</a>
 							</li>
 							<!-- RENUMBER -->
 							<li>
 								<i class="fa fa-li fa-sort-numeric-asc"></i>
-								<a href="admin_trees_renumber.php?ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
+								<a href="admin_trees_renumber.php?ged=<?php echo $tree->nameUrl(); ?>">
 									<?php echo WT_I18N::translate('Renumber'); ?>
 									<span class="sr-only">
-										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
+										<?php echo $tree->titleHtml(); ?>
 									</span>
 								</a>
 							</li>
 							<!-- CHANGES -->
 							<li>
 								<i class="fa fa-li fa-th-list"></i>
-								<a href="admin_site_change.php?gedc=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
+								<a href="admin_site_change.php?gedc=<?php echo $tree->nameUrl(); ?>">
 									<?php echo WT_I18N::translate('Changes log'); ?>
 									<span class="sr-only">
-										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
+										<?php echo $tree->titleHtml(); ?>
 									</span>
 								</a>
 							</li>
@@ -412,7 +412,7 @@ $controller->pageHeader();
 								<a href="#" onclick="add_unlinked_indi(); return false;">
 									<?php echo WT_I18N::translate('Individual'); ?>
 									<span class="sr-only">
-										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
+										<?php echo $tree->titleHtml(); ?>
 									</span>
 								</a>
 							</li>
@@ -422,7 +422,7 @@ $controller->pageHeader();
 								<a href="#" onclick="addnewsource(''); return false;">
 									<?php echo WT_I18N::translate('Source'); ?>
 									<span class="sr-only">
-										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
+										<?php echo $tree->titleHtml(); ?>
 									</span>
 								</a>
 							</li>
@@ -432,7 +432,7 @@ $controller->pageHeader();
 								<a href="#" onclick="addnewrepository(''); return false;">
 									<?php echo WT_I18N::translate('Repository'); ?>
 									<span class="sr-only">
-										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
+										<?php echo $tree->titleHtml(); ?>
 									</span>
 								</a>
 							</li>
@@ -442,7 +442,7 @@ $controller->pageHeader();
 								<a href="#" onclick="window.open('addmedia.php?action=showmediaform', '_blank', edit_window_specs); return false;">
 									<?php echo WT_I18N::translate('Media object'); ?>
 									<span class="sr-only">
-										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
+										<?php echo $tree->titleHtml(); ?>
 									</span>
 								</a>
 							</li>
@@ -451,7 +451,7 @@ $controller->pageHeader();
 								<i class="fa fa-li fa-paragraph"></i>
 								<a href="#" onclick="addnewnote(''); return false;">
 									<span class="sr-only">
-										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
+										<?php echo $tree->titleHtml(); ?>
 									</span>
 									<?php echo WT_I18N::translate('Shared note'); ?>
 								</a>
@@ -466,20 +466,20 @@ $controller->pageHeader();
 							<!-- DOWNLOAD -->
 							<li>
 								<i class="fa fa-li fa-download"></i>
-								<a href="admin_trees_download.php?ged=<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
+								<a href="admin_trees_download.php?ged=<?php echo $tree->nameUrl(); ?>">
 									<?php echo WT_I18N::translate('Download'); ?>
 									<span class="sr-only">
-										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
+										<?php echo $tree->titleHtml(); ?>
 									</span>
 								</a>
 							</li>
 							<!-- UPLOAD -->
 							<li>
 								<i class="fa fa-li fa-upload"></i>
-								<a href="?action=uploadform&amp;gedcom_id=<?php echo $tree->tree_id; ?>">
+								<a href="?action=uploadform&amp;gedcom_id=<?php echo $tree->id(); ?>">
 									<?php echo WT_I18N::translate('Upload'); ?>
 									<span class="sr-only">
-										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
+										<?php echo $tree->titleHtml(); ?>
 									</span>
 								</a>
 							</li>
@@ -487,7 +487,7 @@ $controller->pageHeader();
 							<li>
 								<form action="admin_trees_export.php" method="post">
 									<?php echo WT_Filter::getCsrf(); ?>
-									<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>">
+									<input type="hidden" name="ged" value="<?php echo $tree->nameHtml(); ?>">
 									<i class="fa fa-li fa-file-text"></i>
 									<input type="submit" class="hide"><!-- for WCAG2 -->
 									<a href="#" onclick="jQuery(this).closest('form').submit();">
@@ -498,10 +498,10 @@ $controller->pageHeader();
 							<!-- IMPORT -->
 							<li>
 								<i class="fa fa-li fa-file-text-o"></i>
-								<a href="?action=importform&amp;gedcom_id=<?php echo $tree->tree_id; ?>">
+								<a href="?action=importform&amp;gedcom_id=<?php echo $tree->id(); ?>">
 									<?php echo WT_I18N::translate('Import'); ?>
 									<span class="sr-only">
-										<?php echo WT_Filter::escapeHtml($tree->tree_name); ?>
+										<?php echo $tree->titleHtml(); ?>
 									</span>
 								</a>
 							</li>

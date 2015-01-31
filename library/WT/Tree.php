@@ -25,13 +25,9 @@ use WT\User;
  */
 class WT_Tree {
 	// Tree attributes
-	public $tree_id; // The "gedcom ID" number
-	public $tree_name; // The "gedcom name" text
-	public $tree_name_url;
-	public $tree_name_html;
-	public $tree_title; // The "gedcom title" text
-	public $tree_title_html;
-	public $imported;
+	private $id; // The tree/gedcom ID number
+	private $name; // The tree/gedcom name
+	private $title; // The tree's title
 
 	/** @var WT_Tree[] All trees that we have permission to see. */
 	private static $trees;
@@ -46,18 +42,68 @@ class WT_Tree {
 	 * Create a tree object.  This is a private constructor - it can only
 	 * be called from WT_Tree::getAll() to ensure proper initialisation.
 	 *
-	 * @param $tree_id
-	 * @param $tree_name
-	 * @param $tree_title
-	 * @param $imported
+	 * @param string $id
+	 * @param string $tree_name
+	 * @param string $tree_title
 	 */
-	private function __construct($tree_id, $tree_name, $tree_title) {
-		$this->tree_id         = $tree_id;
-		$this->tree_name       = $tree_name;
-		$this->tree_name_url   = rawurlencode($tree_name);
-		$this->tree_name_html  = WT_Filter::escapeHtml($tree_name);
-		$this->tree_title      = $tree_title;
-		$this->tree_title_html = '<span dir="auto">' . WT_Filter::escapeHtml($tree_title) . '</span>';
+	private function __construct($id, $tree_name, $tree_title) {
+		$this->id    = $id;
+		$this->name  = $tree_name;
+		$this->title = $tree_title;
+	}
+
+	/**
+	 * The ID of this tree
+	 *
+	 * @return string
+	 */
+	public function id() {
+		return $this->id;
+	}
+
+	/**
+	 * The name of this tree
+	 *
+	 * @return string
+	 */
+	public function name() {
+		return $this->name;
+	}
+
+	/**
+	 * The name of this tree
+	 *
+	 * @return string
+	 */
+	public function nameHtml() {
+		return WT_Filter::escapeHtml($this->name);
+	}
+
+	/**
+	 * The name of this tree
+	 *
+	 * @return string
+	 */
+	public function nameUrl() {
+		return WT_Filter::escapeUrl($this->name);
+	}
+
+	/**
+	 * The title of this tree
+	 *
+	 * @return string
+	 */
+	public function title() {
+		return $this->title;
+	}
+
+	/**
+	 * The title of this tree, with HTML markup
+	 *
+	 * @return string
+	 */
+	public function titleHtml() {
+		return WT_Filter::escapeHtml($this->title);
 	}
 
 	/**
@@ -72,7 +118,7 @@ class WT_Tree {
 		if ($this->preferences === null) {
 			$this->preferences = WT_DB::prepare(
 				"SELECT SQL_CACHE setting_name, setting_value FROM `##gedcom_setting` WHERE gedcom_id = ?"
-			)->execute(array($this->tree_id))->fetchAssoc();
+			)->execute(array($this->id))->fetchAssoc();
 		}
 
 		if (array_key_exists($setting_name, $this->preferences)) {
@@ -97,7 +143,7 @@ class WT_Tree {
 				WT_DB::prepare(
 					"DELETE FROM `##gedcom_setting` WHERE gedcom_id = :tree_id AND setting_name = :setting_name"
 				)->execute(array(
-					'tree_id'      => $this->tree_id,
+					'tree_id'      => $this->id,
 					'setting_name' => $setting_name,
 				));
 			} else {
@@ -105,7 +151,7 @@ class WT_Tree {
 					"REPLACE INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value)" .
 					" VALUES (:tree_id, :setting_name, LEFT(:setting_value, 255))"
 				)->execute(array(
-					'tree_id'       => $this->tree_id,
+					'tree_id'       => $this->id,
 					'setting_name'  => $setting_name,
 					'setting_value' => $setting_value,
 				));
@@ -134,7 +180,7 @@ class WT_Tree {
 		if (!array_key_exists($user->getUserId(), $this->user_preferences)) {
 			$this->user_preferences[$user->getUserId()] = WT_DB::prepare(
 				"SELECT SQL_CACHE setting_name, setting_value FROM `##user_gedcom_setting` WHERE user_id = ? AND gedcom_id = ?"
-			)->execute(array($user->getUserId(), $this->tree_id))->fetchAssoc();
+			)->execute(array($user->getUserId(), $this->id))->fetchAssoc();
 		}
 
 		if (array_key_exists($setting_name, $this->user_preferences[$user->getUserId()])) {
@@ -160,7 +206,7 @@ class WT_Tree {
 				WT_DB::prepare(
 					"DELETE FROM `##user_gedcom_setting` WHERE gedcom_id = :tree_id AND user_id = :user_id AND setting_name = :setting_name"
 				)->execute(array(
-					'tree_id'      => $this->tree_id,
+					'tree_id'      => $this->id,
 					'user_id'      => $user->getUserId(),
 					'setting_name' => $setting_name,
 				));
@@ -169,7 +215,7 @@ class WT_Tree {
 					"REPLACE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (:user_id, :tree_id, :setting_name, LEFT(:setting_value, 255))"
 				)->execute(array(
 					'user_id'       => $user->getUserId(),
-					'tree_id'       => $this->tree_id,
+					'tree_id'       => $this->id,
 					'setting_name'  => $setting_name,
 					'setting_value' => $setting_value
 				));
@@ -250,7 +296,7 @@ class WT_Tree {
 	public static function getIdList() {
 		$list = array();
 		foreach (self::getAll() as $tree) {
-			$list[$tree->tree_id] = $tree->tree_title;
+			$list[$tree->id] = $tree->title;
 		}
 
 		return $list;
@@ -265,7 +311,7 @@ class WT_Tree {
 	public static function getNameList() {
 		$list = array();
 		foreach (self::getAll() as $tree) {
-			$list[$tree->tree_name] = $tree->tree_title;
+			$list[$tree->name] = $tree->title;
 		}
 
 		return $list;
@@ -280,7 +326,7 @@ class WT_Tree {
 	 */
 	public static function getIdFromName($tree_name) {
 		foreach (self::getAll() as $tree_id => $tree) {
-			if ($tree->tree_name == $tree_name) {
+			if ($tree->name == $tree_name) {
 				return $tree_id;
 			}
 		}
@@ -295,7 +341,7 @@ class WT_Tree {
 	 * @return string
 	 */
 	public static function getNameFromId($tree_id) {
-		return self::get($tree_id)->tree_name;
+		return self::get($tree_id)->name;
 	}
 
 	/**
@@ -468,7 +514,7 @@ class WT_Tree {
 		)->execute(array($tree_id));
 
 		// Update our cache
-		self::$trees[$tree->tree_id] = $tree;
+		self::$trees[$tree->id] = $tree;
 
 		return $tree;
 	}
@@ -482,22 +528,22 @@ class WT_Tree {
 	 * @param bool $keep_media
 	 */
 	public function deleteGenealogyData($keep_media) {
-		WT_DB::prepare("DELETE FROM `##gedcom_chunk` WHERE gedcom_id = ?")->execute(array($this->tree_id));
-		WT_DB::prepare("DELETE FROM `##individuals`  WHERE i_file    = ?")->execute(array($this->tree_id));
-		WT_DB::prepare("DELETE FROM `##families`     WHERE f_file    = ?")->execute(array($this->tree_id));
-		WT_DB::prepare("DELETE FROM `##sources`      WHERE s_file    = ?")->execute(array($this->tree_id));
-		WT_DB::prepare("DELETE FROM `##other`        WHERE o_file    = ?")->execute(array($this->tree_id));
-		WT_DB::prepare("DELETE FROM `##places`       WHERE p_file    = ?")->execute(array($this->tree_id));
-		WT_DB::prepare("DELETE FROM `##placelinks`   WHERE pl_file   = ?")->execute(array($this->tree_id));
-		WT_DB::prepare("DELETE FROM `##name`         WHERE n_file    = ?")->execute(array($this->tree_id));
-		WT_DB::prepare("DELETE FROM `##dates`        WHERE d_file    = ?")->execute(array($this->tree_id));
-		WT_DB::prepare("DELETE FROM `##change`       WHERE gedcom_id = ?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE FROM `##gedcom_chunk` WHERE gedcom_id = ?")->execute(array($this->id));
+		WT_DB::prepare("DELETE FROM `##individuals`  WHERE i_file    = ?")->execute(array($this->id));
+		WT_DB::prepare("DELETE FROM `##families`     WHERE f_file    = ?")->execute(array($this->id));
+		WT_DB::prepare("DELETE FROM `##sources`      WHERE s_file    = ?")->execute(array($this->id));
+		WT_DB::prepare("DELETE FROM `##other`        WHERE o_file    = ?")->execute(array($this->id));
+		WT_DB::prepare("DELETE FROM `##places`       WHERE p_file    = ?")->execute(array($this->id));
+		WT_DB::prepare("DELETE FROM `##placelinks`   WHERE pl_file   = ?")->execute(array($this->id));
+		WT_DB::prepare("DELETE FROM `##name`         WHERE n_file    = ?")->execute(array($this->id));
+		WT_DB::prepare("DELETE FROM `##dates`        WHERE d_file    = ?")->execute(array($this->id));
+		WT_DB::prepare("DELETE FROM `##change`       WHERE gedcom_id = ?")->execute(array($this->id));
 
 		if ($keep_media) {
-			WT_DB::prepare("DELETE FROM `##link` WHERE l_file =? AND l_type<>'OBJE'")->execute(array($this->tree_id));
+			WT_DB::prepare("DELETE FROM `##link` WHERE l_file =? AND l_type<>'OBJE'")->execute(array($this->id));
 		} else {
-			WT_DB::prepare("DELETE FROM `##link`  WHERE l_file =?")->execute(array($this->tree_id));
-			WT_DB::prepare("DELETE FROM `##media` WHERE m_file =?")->execute(array($this->tree_id));
+			WT_DB::prepare("DELETE FROM `##link`  WHERE l_file =?")->execute(array($this->id));
+			WT_DB::prepare("DELETE FROM `##media` WHERE m_file =?")->execute(array($this->id));
 		}
 	}
 
@@ -506,23 +552,23 @@ class WT_Tree {
 	 */
 	public function delete() {
 		// If this is the default tree, then unset it
-		if (WT_Site::getPreference('DEFAULT_GEDCOM') === self::getNameFromId($this->tree_id)) {
+		if (WT_Site::getPreference('DEFAULT_GEDCOM') === self::getNameFromId($this->id)) {
 			WT_Site::setPreference('DEFAULT_GEDCOM', '');
 		}
 
 		$this->deleteGenealogyData(false);
 
-		WT_DB::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE gedcom_id=?")->execute(array($this->tree_id));
-		WT_DB::prepare("DELETE FROM `##block`               WHERE gedcom_id = ?")->execute(array($this->tree_id));
-		WT_DB::prepare("DELETE FROM `##user_gedcom_setting` WHERE gedcom_id = ?")->execute(array($this->tree_id));
-		WT_DB::prepare("DELETE FROM `##gedcom_setting`      WHERE gedcom_id = ?")->execute(array($this->tree_id));
-		WT_DB::prepare("DELETE FROM `##module_privacy`      WHERE gedcom_id = ?")->execute(array($this->tree_id));
-		WT_DB::prepare("DELETE FROM `##next_id`             WHERE gedcom_id = ?")->execute(array($this->tree_id));
-		WT_DB::prepare("DELETE FROM `##hit_counter`         WHERE gedcom_id = ?")->execute(array($this->tree_id));
-		WT_DB::prepare("DELETE FROM `##default_resn`        WHERE gedcom_id = ?")->execute(array($this->tree_id));
-		WT_DB::prepare("DELETE FROM `##gedcom_chunk`        WHERE gedcom_id = ?")->execute(array($this->tree_id));
-		WT_DB::prepare("DELETE FROM `##log`                 WHERE gedcom_id = ?")->execute(array($this->tree_id));
-		WT_DB::prepare("DELETE FROM `##gedcom`              WHERE gedcom_id = ?")->execute(array($this->tree_id));
+		WT_DB::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE gedcom_id=?")->execute(array($this->id));
+		WT_DB::prepare("DELETE FROM `##block`               WHERE gedcom_id = ?")->execute(array($this->id));
+		WT_DB::prepare("DELETE FROM `##user_gedcom_setting` WHERE gedcom_id = ?")->execute(array($this->id));
+		WT_DB::prepare("DELETE FROM `##gedcom_setting`      WHERE gedcom_id = ?")->execute(array($this->id));
+		WT_DB::prepare("DELETE FROM `##module_privacy`      WHERE gedcom_id = ?")->execute(array($this->id));
+		WT_DB::prepare("DELETE FROM `##next_id`             WHERE gedcom_id = ?")->execute(array($this->id));
+		WT_DB::prepare("DELETE FROM `##hit_counter`         WHERE gedcom_id = ?")->execute(array($this->id));
+		WT_DB::prepare("DELETE FROM `##default_resn`        WHERE gedcom_id = ?")->execute(array($this->id));
+		WT_DB::prepare("DELETE FROM `##gedcom_chunk`        WHERE gedcom_id = ?")->execute(array($this->id));
+		WT_DB::prepare("DELETE FROM `##log`                 WHERE gedcom_id = ?")->execute(array($this->id));
+		WT_DB::prepare("DELETE FROM `##gedcom`              WHERE gedcom_id = ?")->execute(array($this->id));
 
 		// After updating the database, we need to fetch a new (sorted) copy
 		self::$trees = null;
@@ -546,7 +592,7 @@ class WT_Tree {
 			return false;
 		}
 
-		$buffer = reformat_record_export(gedcom_header($this->tree_name));
+		$buffer = reformat_record_export(gedcom_header($this->name));
 
 		$stmt = WT_DB::prepare(
 			"SELECT i_gedcom AS gedcom FROM `##individuals` WHERE i_file = ?" .
@@ -558,7 +604,7 @@ class WT_Tree {
 			"SELECT o_gedcom AS gedcom FROM `##other`       WHERE o_file = ? AND o_type NOT IN ('HEAD', 'TRLR')" .
 			" UNION ALL " .
 			"SELECT m_gedcom AS gedcom FROM `##media`       WHERE m_file = ?"
-		)->execute(array($this->tree_id, $this->tree_id, $this->tree_id, $this->tree_id, $this->tree_id));
+		)->execute(array($this->id, $this->id, $this->id, $this->id, $this->id));
 
 		while ($row = $stmt->fetch()) {
 			$buffer .= reformat_record_export($row->gedcom);
@@ -612,13 +658,13 @@ class WT_Tree {
 			if ($pos) {
 				WT_DB::prepare(
 					"INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data) VALUES (?, ?)"
-				)->execute(array($this->tree_id, substr($file_data, 0, $pos)));
+				)->execute(array($this->id, substr($file_data, 0, $pos)));
 				$file_data = substr($file_data, $pos);
 			}
 		}
 		WT_DB::prepare(
 			"INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data) VALUES (?, ?)"
-		)->execute(array($this->tree_id, $file_data));
+		)->execute(array($this->id, $file_data));
 
 		WT_DB::commit();
 		fclose($fp);

@@ -63,7 +63,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 			$GEDCOM = WT_Site::getPreference('DEFAULT_GEDCOM');
 			if (!$GEDCOM) {
 				foreach (WT_Tree::getAll() as $tree) {
-					$GEDCOM = $tree->tree_name;
+					$GEDCOM = $tree->name();
 					break;
 				}
 			}
@@ -288,8 +288,8 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 				'<option value="__current__" ', $sel_current, '>', WT_I18N::translate('Current'), '</option>',
 				'<option value="__default__" ', $sel_default, '>', WT_I18N::translate('Default'), '</option>';
 			foreach (WT_Tree::getAll() as $tree) {
-				if ($tree->tree_name == $gedcom) {$sel = 'selected'; } else {$sel = ''; }
-				echo '<option value="', $tree->tree_name, '" ', $sel, ' dir="auto">', $tree->tree_title_html, '</option>';
+				if ($tree->name() === $gedcom) {$sel = 'selected'; } else {$sel = ''; }
+				echo '<option value="', $tree->nameHtml(), '" ', $sel, ' dir="auto">', $tree->titleHtml(), '</option>';
 			}
 			echo '</select>';
 			echo '</td></tr>';

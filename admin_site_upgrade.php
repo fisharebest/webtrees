@@ -285,7 +285,7 @@ echo '<li>', /* I18N: The system is about to [...] */ WT_I18N::translate('Export
 
 foreach (WT_Tree::getAll() as $tree) {
 	reset_timeout();
-	$filename = WT_DATA_DIR . $tree->tree_name . date('-Y-m-d') . '.ged';
+	$filename = WT_DATA_DIR . $tree->name() . date('-Y-m-d') . '.ged';
 	if ($tree->exportGedcom($filename)) {
 		echo '<br>', WT_I18N::translate('Family tree exported to %s.', '<span dir="ltr">' . $filename . '</span>'), $icon_success;
 	} else {
