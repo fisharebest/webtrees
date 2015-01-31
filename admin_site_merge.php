@@ -335,7 +335,7 @@ $controller->pageHeader();
 			</label>
 		</div>
 		<div class="col-sm-9">
-			<input data-autocomplete-type="IFRSO" type="text" name="gid1" id="gid1" maxlength="20" value="<?php echo $gid1; ?>">
+			<input data-autocomplete-type="IFSRO" type="text" name="gid1" id="gid1" maxlength="20" value="<?php echo $gid1; ?>">
 			<?php echo print_findindi_link('gid1', $WT_TREE->tree_name); ?>
 			<?php echo print_findfamily_link('gid1', $WT_TREE->tree_name); ?>
 			<?php echo print_findsource_link('gid1', $WT_TREE->tree_name); ?>
@@ -352,7 +352,7 @@ $controller->pageHeader();
 			</label>
 		</div>
 		<div class="col-sm-9">
-			<input data-autocomplete-type="IFRSO" type="text" name="gid2" id="gid2" maxlength="20" value="<?php echo $gid2; ?>" >
+			<input data-autocomplete-type="IFSRO" type="text" name="gid2" id="gid2" maxlength="20" value="<?php echo $gid2; ?>" >
 			<?php echo print_findindi_link('gid2', $WT_TREE->tree_name); ?>
 			<?php echo print_findfamily_link('gid2', $WT_TREE->tree_name); ?>
 			<?php echo print_findsource_link('gid2', $WT_TREE->tree_name); ?>
