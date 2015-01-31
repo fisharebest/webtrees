@@ -18,6 +18,7 @@
 
 namespace WT\Theme;
 
+use WT\Auth;
 use WT_I18N;
 use WT_Menu;
 use WT_Tree;
@@ -86,16 +87,40 @@ class Administration extends BaseTheme {
 	 * @return WT_Menu
 	 */
 	protected function menuAdminTrees() {
-		$submenus = array(
-			new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Manage family trees'), 'admin_trees_manage.php')
-		);
+		return new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Family trees'), '#', '', '', array_filter(array(
+			$this->menuAdminTreesManage(),
+			$this->menuAdminTreesSetDefault(),
+			$this->menuAdminTreesMerge(),
+		)));
+	}
 
+	/**
+	 * @return WT_Menu
+	 */
+	protected function menuAdminTreesManage() {
+		return new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Manage family trees'), 'admin_trees_manage.php');
+	}
+
+	/**
+	 * @return WT_Menu
+	 */
+	protected function menuAdminTreesMerge() {
 		if (count(WT_Tree::getAll()) > 1) {
-			$submenus[] = new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Set the default blocks for new family trees'), 'index_edit.php?gedcom_id=-1');
-			$submenus[] = new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Merge family trees'), 'admin_trees_merge.php');
+			return new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Merge family trees'), 'admin_trees_merge.php');
+		} else {
+			return null;
 		}
+	}
 
-		return new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Family trees'), '#', '', '', $submenus);
+	/**
+	 * @return WT_Menu
+	 */
+	protected function menuAdminTreesSetDefault() {
+		if (count(WT_Tree::getAll()) > 1) {
+			return new WT_Menu(/* I18N: Menu entry */ WT_I18N::translate('Set the default blocks for new family trees'), 'index_edit.php?gedcom_id=-1');
+		} else {
+			return null;
+		}
 	}
 
 	/**
@@ -137,13 +162,19 @@ class Administration extends BaseTheme {
 
 	/** {@inheritdoc} */
 	protected function primaryMenu() {
-		return array(
-			$this->menuAdminSite(),
-			$this->menuAdminTrees(),
-			$this->menuAdminUsers(),
-			$this->menuAdminMedia(),
-			$this->menuAdminModules(),
-		);
+		if (Auth::isAdmin()) {
+			return array(
+				$this->menuAdminSite(),
+				$this->menuAdminTrees(),
+				$this->menuAdminUsers(),
+				$this->menuAdminMedia(),
+				$this->menuAdminModules(),
+			);
+		} else {
+			return array(
+				$this->menuAdminTrees(),
+			);
+		}
 	}
 
 	/** {@inheritdoc} */
