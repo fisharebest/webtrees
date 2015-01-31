@@ -78,7 +78,7 @@ if ($search && $replace) {
 $controller = new WT_Controller_Page;
 $controller
 	->restrictAccess(Auth::isManager())
-	->setPageTitle(WT_I18N::translate('Update all the place names in a family tree') . ' — ' . WT_Filter::escapeHtml($WT_TREE->tree_title))
+	->setPageTitle(WT_I18N::translate('Update all the place names in a family tree') . ' — ' . $WT_TREE->titleHtml())
 	->pageHeader();
 ?>
 

@@ -433,7 +433,7 @@ abstract class BaseTheme {
 			return
 				'<form action="search.php" class="header-search" method="post" role="search">' .
 				'<input type="hidden" name="action" value="general">' .
-				'<input type="hidden" name="ged" value="' . $this->tree->tree_name_html . '">' .
+				'<input type="hidden" name="ged" value="' . $this->tree->nameHtml() . '">' .
 				'<input type="hidden" name="topsearch" value="yes">' .
 				$this->formQuickSearchFields() .
 				'</form>';
@@ -460,7 +460,7 @@ abstract class BaseTheme {
 	 */
 	protected function formatTreeTitle() {
 		if ($this->tree) {
-			return '<h1 class="header-title">' . $this->tree->tree_title_html . '</h1>';
+			return '<h1 class="header-title">' . $this->tree->titleHtml() . '</h1>';
 		} else {
 			return '';
 		}
@@ -535,7 +535,7 @@ abstract class BaseTheme {
 			$this->metaCanonicalUrl($controller->getCanonicalUrl());
 
 		if ($this->tree) {
-			$html .= $this->metaDescription($this->tree->getPreference('META_DESCRIPTION', html_entity_decode(strip_tags($this->tree->tree_title_html), ENT_QUOTES)));
+			$html .= $this->metaDescription($this->tree->getPreference('META_DESCRIPTION'));
 		}
 
 		// CSS files
@@ -961,7 +961,7 @@ abstract class BaseTheme {
 	 */
 	final public function init(Zend_Session_Namespace $session, $search_engine, WT_Tree $tree = null) {
 		$this->tree          = $tree;
-		$this->tree_url      = $tree ? 'ged=' . WT_Filter::escapeUrl($tree->tree_name) : null;
+		$this->tree_url      = $tree ? 'ged=' . $tree->nameUrl() : '';
 		$this->session       = $session;
 		$this->search_engine = $search_engine;
 
@@ -1300,11 +1300,11 @@ abstract class BaseTheme {
 		$ALLOW_CHANGE_GEDCOM = WT_Site::getPreference('ALLOW_CHANGE_GEDCOM') && count(WT_Tree::getAll()) > 1;
 
 		foreach (WT_Tree::getAll() as $tree) {
-			if ($tree->tree_id === WT_GED_ID || $ALLOW_CHANGE_GEDCOM) {
+			if ($tree->id() === WT_GED_ID || $ALLOW_CHANGE_GEDCOM) {
 				$submenu = new WT_Menu(
-					$tree->tree_title_html,
-					'index.php?ctype=gedcom&amp;ged=' . $tree->tree_name_url,
-					'menu-tree-' . $tree->tree_id // Cannot use name - it must be a CSS identifier
+					$tree->titleHtml(),
+					'index.php?ctype=gedcom&amp;ged=' . $tree->nameUrl(),
+					'menu-tree-' . $tree->id() // Cannot use name - it must be a CSS identifier
 				);
 				$submenus[] = $submenu;
 			}

@@ -74,7 +74,7 @@ function exists_pending_change(User $user = null, WT_Tree $tree = null) {
 			"SELECT 1" .
 			" FROM `##change`" .
 			" WHERE status='pending' AND gedcom_id=?"
-		)->execute(array($tree->tree_id))->fetchOne();
+		)->execute(array($tree->id()))->fetchOne();
 }
 
 /**

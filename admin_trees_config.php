@@ -245,7 +245,7 @@ case 'privacy':
 	$WT_TREE->setPreference('SHOW_LIVING_NAMES', WT_Filter::post('SHOW_LIVING_NAMES'));
 	$WT_TREE->setPreference('SHOW_PRIVATE_RELATIONSHIPS', WT_Filter::post('SHOW_PRIVATE_RELATIONSHIPS'));
 
-	header('Location: ' . WT_BASE_URL . 'admin_trees_manage.php?ged=' . $WT_TREE->tree_name);
+	header('Location: ' . WT_BASE_URL . 'admin_trees_manage.php?ged=' . $WT_TREE->nameUrl());
 
 	return;
 
@@ -385,7 +385,7 @@ case 'general':
 switch (WT_Filter::get('action')) {
 case 'privacy':
 	$controller
-		->setPageTitle(WT_Filter::escapeHtml($WT_TREE->tree_title) . ' — ' . WT_I18N::translate('Privacy'))
+		->setPageTitle($WT_TREE->titleHtml() . ' — ' . WT_I18N::translate('Privacy'))
 		->addInlineJavascript('
 			jQuery("#default-resn input[type=checkbox]").on("click", function() {
 				if ($(this).prop("checked")) {
@@ -400,7 +400,7 @@ case 'privacy':
 		');
 	break;
 case 'general':
-	$controller->setPageTitle(WT_Filter::escapeHtml($WT_TREE->tree_title) . ' — ' . WT_I18N::translate('Preferences'));
+	$controller->setPageTitle($WT_TREE->titleHtml() . ' — ' . WT_I18N::translate('Preferences'));
 	break;
 default:
 	header('Location: ' . WT_BASE_URL . 'admin.php');

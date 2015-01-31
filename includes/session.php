@@ -429,17 +429,17 @@ if (isset($_REQUEST['ged'])) {
 $WT_TREE = null;
 foreach (WT_Tree::getAll() as $tree) {
 	$WT_TREE = $tree;
-	if ($WT_TREE->tree_name == $GEDCOM && ($WT_TREE->getPreference('imported') || Auth::isAdmin())) {
+	if ($WT_TREE->name() == $GEDCOM && ($WT_TREE->getPreference('imported') || Auth::isAdmin())) {
 		break;
 	}
 }
 
 // These attributes of the currently-selected tree are used frequently
 if ($WT_TREE) {
-	define('WT_GEDCOM', $WT_TREE->tree_name);
-	define('WT_GED_ID', $WT_TREE->tree_id);
-	define('WT_GEDURL', $WT_TREE->tree_name_url);
-	define('WT_TREE_TITLE', WT_Filter::escapeHtml($WT_TREE->tree_title));
+	define('WT_GEDCOM', $WT_TREE->name());
+	define('WT_GED_ID', $WT_TREE->id());
+	define('WT_GEDURL', $WT_TREE->nameUrl());
+	define('WT_TREE_TITLE', $WT_TREE->titleHtml());
 	define('WT_USER_GEDCOM_ADMIN', Auth::isManager($WT_TREE));
 	define('WT_USER_CAN_ACCEPT', Auth::isModerator($WT_TREE));
 	define('WT_USER_CAN_EDIT', Auth::isEditor($WT_TREE));

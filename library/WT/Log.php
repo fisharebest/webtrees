@@ -55,7 +55,7 @@ class Log {
 					$message,
 					$WT_REQUEST->getClientIp(),
 					Auth::id(),
-					$tree ? $tree->tree_id : null
+					$tree ? $tree->id() : null
 		));
 	}
 

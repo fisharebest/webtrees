@@ -31,7 +31,7 @@ require './includes/session.php';
 $controller = new WT_Controller_Page;
 $controller
 	->restrictAccess(Auth::isManager())
-	->setPageTitle(WT_I18N::translate('Merge records') . ' — ' . WT_Filter::escapeHtml($WT_TREE->tree_title))
+	->setPageTitle(WT_I18N::translate('Merge records') . ' — ' . $WT_TREE->titleHtml())
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');
 
