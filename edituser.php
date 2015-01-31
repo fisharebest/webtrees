@@ -241,7 +241,7 @@ function checkform(frm) {
 			<div class="value">
 				<input type="email" id="form_email" name="form_email" value="<?php echo WT_Filter::escapeHtml(Auth::user()->getEmail()); ?>" size="50">
 				<p class="small text-muted">
-					<?php echo WT_I18N::translate('This email address will be used to send password reminders, site notifications, and messages from other family members who are registered on the site.'); ?>
+					<?php echo WT_I18N::translate('This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website.'); ?>
 				</p>
 			</div>
 			<?php if (WT_Site::getPreference('ALLOW_USER_THEMES')): ?>

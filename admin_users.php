@@ -348,7 +348,7 @@ case 'edit':
 			<div class="col-sm-9">
 				<input class="form-control" type="email" id="email" name="email" required maxlength="64" value="<?php echo WT_Filter::escapeHtml($user->getEmail()); ?>">
 				<p class="small text-muted">
-					<?php echo WT_I18N::translate('This email address will be used to send password reminders, site notifications, and messages from other family members who are registered on the site.'); ?>
+					<?php echo WT_I18N::translate('This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website.'); ?>
 				</p>
 			</div>
 		</div>
@@ -456,7 +456,7 @@ case 'edit':
 		<!-- COMMENTS -->
 		<div class="form-group">
 			<label class="control-label col-sm-3" for="comment">
-				<?php echo WT_I18N::translate('Admin comments on user'); ?>
+				<?php echo WT_I18N::translate('Administrator comments on user'); ?>
 			</label>
 			<div class="col-sm-9">
 				<textarea class="form-control" id="comment" name="comment" rows="5" maxlength="255"><?php echo WT_Filter::escapeHtml($user->getPreference('comment')); ?></textarea>
@@ -493,7 +493,7 @@ case 'edit':
 					<?php echo WT_I18N::translate('Visitor'); ?>
 				</h4>
 				<p class="small text-muted">
-					<?php echo WT_I18N::translate('Everybody has this role, including visitors to the site and search engines.'); ?>
+					<?php echo WT_I18N::translate('Everybody has this role, including visitors to the website and search engines.'); ?>
 				</p>
 				<h4>
 					<?php echo WT_I18N::translate('Member'); ?>
@@ -527,7 +527,7 @@ case 'edit':
 					<?php echo WT_I18N::translate('Administrator'); ?>
 				</h4>
 				<p class="small text-muted">
-					<?php echo WT_I18N::translate('This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users, and modules.'); ?>
+					<?php echo WT_I18N::translate('This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules.'); ?>
 				</p>
 			</div>
 		</div>
@@ -570,7 +570,7 @@ case 'edit':
 						<p class="small text-muted">
 								<?php echo WT_I18N::translate('Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations.  You specify the number of relationship steps that the user is allowed to see.'); ?>
 							<?php echo WT_I18N::translate('For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child).'); ?>
-							<?php echo WT_I18N::translate('Note: longer path lengths require a lot of calculation, which can make your site run slowly for these users.'); ?>
+							<?php echo WT_I18N::translate('Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users.'); ?>
 						</p>
 					</td>
 				</tr>

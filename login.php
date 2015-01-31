@@ -153,13 +153,13 @@ default:
 
 	switch (WT_Site::getPreference('WELCOME_TEXT_AUTH_MODE')) {
 	case 1:
-		echo WT_I18N::translate('<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.');
+		echo WT_I18N::translate('<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account.  You will receive an email when your application has been approved.');
 		break;
 	case 2:
-		echo WT_I18N::translate('<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.');
+		echo WT_I18N::translate('<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.');
 		break;
 	case 3:
-		echo WT_I18N::translate('<center><b>Welcome to this genealogy website</b></center><br>Access to this site is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.');
+		echo WT_I18N::translate('<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.');
 		break;
 	case 4:
 		echo '<p>', WT_Site::getPreference('WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE), '</p>';
@@ -385,9 +385,9 @@ case 'register':
 
 			echo '<div class="confirm"><p>', WT_I18N::translate('Hello %s…<br>Thank you for your registration.', $user->getRealName()), '</p><p>';
 				if ($REQUIRE_ADMIN_AUTH_REGISTRATION) {
-					echo WT_I18N::translate('We will now send a confirmation email to the address <b>%s</b>.  You must verify your account request by following instructions in the confirmation email.  If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this site, you will need to know your user name and password.', $user->getEmail());
+					echo WT_I18N::translate('We will now send a confirmation email to the address <b>%s</b>.  You must verify your account request by following instructions in the confirmation email.  If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this website, you will need to know your user name and password.', $user->getEmail());
 				} else {
-					echo WT_I18N::translate('We will now send a confirmation email to the address <b>%s</b>.  You must verify your account request by following instructions in the confirmation email.  If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this site, you will need to know your user name and password.', $user->getEmail());
+					echo WT_I18N::translate('We will now send a confirmation email to the address <b>%s</b>.  You must verify your account request by following instructions in the confirmation email.  If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this website, you will need to know your user name and password.', $user->getEmail());
 				}
 				echo '</p>
 			</div>';
@@ -408,7 +408,7 @@ case 'register':
 
 		<?php if (WT_Site::getPreference('SHOW_REGISTER_CAUTION')): ?>
 		<div id="register-text">
-			<?php echo WT_I18N::translate('<div class="largeError">Notice:</div><div class="error">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>'); ?>
+			<?php echo WT_I18N::translate('<div class="largeError">Notice:</div><div class="error">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>'); ?>
 		</div>
 		<?php endif; ?>
 		<div id="register-box">
@@ -433,7 +433,7 @@ case 'register':
 						<input type="email" id="user_email" name="user_email" required maxlength="64" value="<?php echo WT_Filter::escapeHtml($user_email); ?>">
 					</label>
 					<p class="small text-muted">
-						<?php echo WT_I18N::translate('This email address will be used to send password reminders, site notifications, and messages from other family members who are registered on the site.'); ?>
+						<?php echo WT_I18N::translate('This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website.'); ?>
 					</p>
 				</div>
 

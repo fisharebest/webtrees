@@ -445,7 +445,7 @@ $controller
 		<div class="col-sm-8">
 			<?php echo select_edit_control('REQUIRE_AUTHENTICATION', array('0' => WT_I18N::translate('Show to visitors'), '1' => WT_I18N::translate('Show to members')), null, $WT_TREE->getPreference('REQUIRE_AUTHENTICATION'), 'class="form-control"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Family tree” configuration setting */ WT_I18N::translate('Enabling this option will force all visitors to login before they can view any data on the site.'); ?>
+				<?php echo /* I18N: Help text for the “Family tree” configuration setting */ WT_I18N::translate('Enabling this option will force all visitors to login before they can view any data on the website.'); ?>
 			</p>
 			<?php if (WT_Site::getPreference('USE_REGISTRATION_MODULE')): ?>
 			<p class="small text-muted">
@@ -713,7 +713,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo select_edit_control('LANGUAGE', WT_I18N::installed_languages(), null, $WT_TREE->getPreference('LANGUAGE'), 'class="form-control"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Language” configuration setting */ WT_I18N::translate('If a visitor to the site has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines.'); ?>
+				<?php echo /* I18N: Help text for the “Language” configuration setting */ WT_I18N::translate('nnIf a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines.'); ?>
 			</p>
 		</div>
 	</div>
@@ -978,7 +978,7 @@ $controller
 				<?php endforeach; ?>
 			</select>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Genealogy contact” configuration setting */ WT_I18N::translate('The individual to contact about the genealogical data on this site.'); ?>
+				<?php echo /* I18N: Help text for the “Genealogy contact” configuration setting */ WT_I18N::translate('The individual to contact about the genealogical data on this website.'); ?>
 			</p>
 		</div>
 	</div>
@@ -1000,12 +1000,12 @@ $controller
 				<?php endforeach; ?>
 			</select>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Technical help contact” configuration setting */ WT_I18N::translate('The individual to be contacted about technical questions or errors encountered on your site.'); ?>
+				<?php echo /* I18N: Help text for the “Technical help contact” configuration setting */ WT_I18N::translate('The individual to be contacted about technical questions or errors encountered on your website.'); ?>
 			</p>
 		</div>
 	</div>
 
-	<h3><?php echo WT_I18N::translate('Web site and META tag settings'); ?></h3>
+	<h3><?php echo WT_I18N::translate('Website and META tag settings'); ?></h3>
 
 	<!-- META_TITLE -->
 	<div class="form-group">
@@ -1237,7 +1237,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo radio_buttons('SAVE_WATERMARK_IMAGE', $no_yes, $WT_TREE->getPreference('SAVE_WATERMARK_IMAGE'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Store watermarked full size images on server?” configuration setting */ WT_I18N::translate('Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server.'); ?>
+				<?php echo /* I18N: Help text for the “Store watermarked full size images on server?” configuration setting */ WT_I18N::translate('Watermarks can be slow to generate for large images.  Busy websites may prefer to generate them once and store the watermarked image on the server.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -1325,7 +1325,7 @@ $controller
 				value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('COMMON_NAMES_REMOVE')); ?>"
 				>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting */ WT_I18N::translate('If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here.  If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive</b>.  Surnames entered here will also be removed from the “Top surnames” list on the “Home page”.'); ?>
+				<?php echo /* I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting */ WT_I18N::translate('If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here.  If more than one surname is entered, they must be separated by a comma.  <b>Surnames are case-sensitive</b>.  Surnames entered here will also be removed from the “Top surnames” list on the “Home page”.'); ?>
 			</p>
 		</div>
 	</div>
@@ -1645,7 +1645,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo radio_buttons('PEDIGREE_SHOW_GENDER', $hide_show, $WT_TREE->getPreference('PEDIGREE_SHOW_GENDER'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Gender icon on charts” configuration setting */ WT_I18N::translate('This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender. The option simply removes some duplicate information from the box.'); ?>
+				<?php echo /* I18N: Help text for the “Gender icon on charts” configuration setting */ WT_I18N::translate('This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender.  The option simply removes some duplicate information from the box.'); ?>
 			</p>
 	</div>
 	</fieldset>

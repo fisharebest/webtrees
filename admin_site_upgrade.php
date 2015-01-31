@@ -41,7 +41,7 @@ $download_url_html   = '<b dir="auto"><a href="' . WT_Filter::escapeHtml($downlo
 // Show a friendly message while the site is being upgraded
 $lock_file           = __DIR__ . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'offline.txt';
 $lock_file_html      = '<span dir="ltr">' . WT_Filter::escapeHtml($lock_file) . '</span>';
-$lock_file_text      = WT_I18N::translate('This site is being upgraded.  Try again in a few minutes.') . PHP_EOL . format_timestamp(WT_TIMESTAMP) . WT_I18N::translate('UTC');
+$lock_file_text      = WT_I18N::translate('This website is being upgraded.  Try again in a few minutes.') . PHP_EOL . format_timestamp(WT_TIMESTAMP) . WT_I18N::translate('UTC');
 
 // Success/failure indicators
 $icon_success        = '<i class="icon-yes"></i>';
@@ -396,7 +396,7 @@ foreach (new RecursiveIteratorIterator($iterator) as $file) {
 		echo '<p class="error">', WT_I18N::translate('To complete the upgrade, you should install the files manually.'), '</p>';
 		echo '<p>', WT_I18N::translate('The new files are currently located in the folder %s.', '<b dir="ltr">' . $zip_dir . DIRECTORY_SEPARATOR . '</b>'), '</p>';
 		echo '<p>', WT_I18N::translate('Copy these files to the folder %s, replacing any that have the same name.', '<b dir="ltr">' . WT_ROOT . '</b>'), '</p>';
-		echo '<p>', WT_I18N::translate('To prevent visitors from accessing the site while you are in the middle of copying files, you can temporarily create a file %s on the server.  If it contains a message, it will be displayed to visitors.', '<b>' . $lock_file_html . '</b>'), '</p>';
+		echo '<p>', WT_I18N::translate('To prevent visitors from accessing the website while you are in the middle of copying files, you can temporarily create a file %s on the server.  If it contains a message, it will be displayed to visitors.', '<b>' . $lock_file_html . '</b>'), '</p>';
 
 		return;
 	}
@@ -410,7 +410,7 @@ echo '</li>';
 // This is it - take the site offline first
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<li>', WT_I18N::translate('Place the site offline, by creating the file %s…', $lock_file_html);
+echo '<li>', WT_I18N::translate('ePlace the website offline, by creating the file %s…', $lock_file_html);
 
 @file_put_contents($lock_file, $lock_file_text);
 if (@file_get_contents($lock_file) != $lock_file_text) {
@@ -462,7 +462,7 @@ echo '</li>';
 // All done - put the site back online
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<li>', WT_I18N::translate('Place the site online, by deleting the file %s…', $lock_file_html);
+echo '<li>', WT_I18N::translate('Place the website online, by deleting the file %s…', $lock_file_html);
 
 if (WT_File::delete($lock_file)) {
 	echo '<br>', WT_I18N::translate('The file %s has been deleted.', '<span dir="ltr">' . $lock_file . '</span>'), $icon_success;

@@ -65,7 +65,7 @@ case 'save':
 			))->fetchOne();
 
 			if ($oops) {
-				WT_FlashMessages::addMessage(WT_I18N::translate('You cannot create a rule which would prevent yourself from accessing the site.'), 'danger');
+				WT_FlashMessages::addMessage(WT_I18N::translate('You cannot create a rule which would prevent yourself from accessing the website.'), 'danger');
 			} elseif ($site_access_rule_id === null) {
 				WT_DB::prepare(
 					"INSERT INTO `##site_access_rule` (ip_address_start, ip_address_end, user_agent_pattern, rule, comment) VALUES (INET_ATON(:ip_address_start), INET_ATON(:ip_address_end), :user_agent_pattern, :rule, :comment)"
@@ -76,7 +76,7 @@ case 'save':
 					'rule'                => $rule,
 					'comment'             => $comment,
 				));
-				WT_FlashMessages::addMessage(WT_I18N::translate('The site access rule has been created.'), 'success');
+				WT_FlashMessages::addMessage(WT_I18N::translate('The website access rule has been created.'), 'success');
 			} else {
 				WT_DB::prepare(
 					"UPDATE `##site_access_rule` SET ip_address_start = INET_ATON(:ip_address_start), ip_address_end = INET_ATON(:ip_address_end), user_agent_pattern = :user_agent_pattern, rule = :rule, comment = :comment WHERE site_access_rule_id = :site_access_rule_id"
@@ -88,7 +88,7 @@ case 'save':
 					'comment'             => $comment,
 					'site_access_rule_id' => $site_access_rule_id,
 				));
-				WT_FlashMessages::addMessage(WT_I18N::translate('The site access rule has been updated.'), 'success');
+				WT_FlashMessages::addMessage(WT_I18N::translate('The website access rule has been updated.'), 'success');
 			}
 		}
 	}
@@ -104,7 +104,7 @@ case 'delete':
 		)->execute(array(
 			'site_access_rule_id' => $site_access_rule_id,
 		));
-		WT_FlashMessages::addMessage(WT_I18N::translate('The site access rule has been deleted.'), 'success');
+		WT_FlashMessages::addMessage(WT_I18N::translate('The website access rule has been deleted.'), 'success');
 	}
 	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
 
@@ -126,7 +126,7 @@ $controller
 	->restrictAccess(Auth::isAdmin())
 	->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 	->addExternalJavascript(WT_DATATABLES_BOOTSTRAP_JS_URL)
-	->setPageTitle(WT_I18N::translate('Site access rules'));
+	->setPageTitle(WT_I18N::translate('Website access rules'));
 
 $action = WT_Filter::get('action');
 switch ($action) {
@@ -212,9 +212,9 @@ case 'load':
 case 'edit':
 case 'create':
 	if (WT_Filter::get('action') === 'edit') {
-		$controller->setPageTitle(WT_I18N::translate('Edit a site access rule'));
+		$controller->setPageTitle(WT_I18N::translate('Edit a website access rule'));
 	} else {
-		$controller->setPageTitle(WT_I18N::translate('Create a site access rule'));
+		$controller->setPageTitle(WT_I18N::translate('Create a website access rule'));
 	}
 
 	$controller->pageHeader();
@@ -236,7 +236,7 @@ case 'create':
 	?>
 	<ol class="breadcrumb small">
 		<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
-		<li><a href="admin_site_access.php"><?php echo WT_I18N::translate('Site access rules'); ?></a></li>
+		<li><a href="admin_site_access.php"><?php echo WT_I18N::translate('Website access rules'); ?></a></li>
 		<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 	</ol>
 
@@ -364,7 +364,7 @@ default:
 
 	<h1><?php echo $controller->getPageTitle(); ?></h1>
 
-	<p><?php echo /* I18N: http://en.wikipedia.org/wiki/User_agent */ WT_I18N::translate('Restrict access to the site, using IP addresses and user-agent strings'); ?></p>
+	<p><?php echo /* I18N: http://en.wikipedia.org/wiki/User_agent */ WT_I18N::translate('Restrict access to the website, using IP addresses and user-agent strings.'); ?></p>
 
 	<table class="table table-hover table-condensed table-bordered table-site-access-rules">
 		<caption>

@@ -139,7 +139,7 @@ $controller->pageHeader();
 			<?php echo /* I18N: A site configuration setting */ WT_I18N::translate('Data folder'); ?>
 		</label>
 		<div class="col-sm-9">
-			<input type="text" class="form-control" id="INDEX_DIRECTORY" name="INDEX_DIRECTORY" value="<?php echo WT_Filter::escapeHtml(WT_Site::getPreference('INDEX_DIRECTORY')); ?>" maxlength="255">
+			<input type="text" class="form-control" dir="ltr" id="INDEX_DIRECTORY" name="INDEX_DIRECTORY" value="<?php echo WT_Filter::escapeHtml(WT_Site::getPreference('INDEX_DIRECTORY')); ?>" maxlength="255" placeholder="data/" required>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the "Data folder" site configuration setting */ WT_I18N::translate('This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc.  These files may contain private data, and should not be made available over the internet.'); ?>
 			</p>
@@ -226,7 +226,7 @@ $controller->pageHeader();
 		<div class="col-sm-9">
 			<?php echo edit_field_yes_no('ALLOW_CHANGE_GEDCOM', WT_Site::getPreference('ALLOW_CHANGE_GEDCOM')); ?>
 			<p class="small text-muted">
-				<?php /* I18N: Help text for the “Show list of family trees” site configuration setting */ WT_I18N::translate('For sites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc.'); ?>
+				<?php /* I18N: Help text for the “Show list of family trees” site configuration setting */ WT_I18N::translate('For websites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -253,7 +253,7 @@ $controller->pageHeader();
 			<div class="col-sm-9">
 				<?php echo select_edit_control('SERVER_URL', array(WT_SERVER_NAME . WT_SCRIPT_PATH=>WT_SERVER_NAME . WT_SCRIPT_PATH), '', WT_Site::getPreference('SERVER_URL'), 'class="form-control"'); ?>
 				<p class="small text-muted">
-					<?php echo /* I18N: Help text for the "Website URL" site configuration setting */ WT_I18N::translate('If your site can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL.  Requests for the other URLs will be redirected to the preferred one.'); ?>
+					<?php echo /* I18N: Help text for the "Website URL" site configuration setting */ WT_I18N::translate('If your website can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL.  Requests for the other URLs will be redirected to the preferred one.'); ?>
 					<?php echo WT_I18N::translate('If you leave this setting empty, the default value will be used.'); ?>
 				</p>
 			</div>
@@ -270,7 +270,7 @@ $controller->pageHeader();
 			<div class="col-sm-9">
 				<?php echo select_edit_control('SMTP_ACTIVE', $SMTP_ACTIVE_OPTIONS, null, WT_Site::getPreference('SMTP_ACTIVE'), 'class="form-control"'); ?>
 				<p class="small text-muted">
-					<?php echo /* I18N: Help text for the “Messages” site configuration setting */ WT_I18N::translate('webtrees needs to send emails, such as password reminders and site notifications.  To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details.'); ?>
+					<?php echo /* I18N: Help text for the “Messages” site configuration setting */ WT_I18N::translate('webtrees needs to send emails, such as password reminders and website notifications.  To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details.'); ?>
 				</p>
 			</div>
 		</div>
@@ -298,7 +298,7 @@ $controller->pageHeader();
 			<div class="col-sm-9">
 				<input type="text" class="form-control" id="SMTP_HOST" name="SMTP_HOST" value="<?php echo WT_Filter::escapeHtml(WT_Site::getPreference('SMTP_HOST')); ?>" placeholder="smtp.example.com" maxlength="255" pattern="[a-z0-9-]+(\.[a-z0-9-]+)*">
 				<p class="small text-muted">
-					<?php echo /* I18N: Help text for the “Server name” site configuration setting */ WT_I18N::translate('This is the name of the SMTP server. “localhost” means that the mail service is running on the same computer as your web server.'); ?>
+					<?php echo /* I18N: Help text for the “Server name” site configuration setting */ WT_I18N::translate('This is the name of the SMTP server.  “localhost” means that the mail service is running on the same computer as your web server.'); ?>
 				</p>
 			</div>
 		</div>
@@ -399,7 +399,7 @@ $controller->pageHeader();
 			<div class="col-sm-9">
 				<input type="text" class="form-control" id="LOGIN_URL" name="LOGIN_URL" value="<?php echo WT_Filter::escapeHtml(WT_Site::getPreference('LOGIN_URL')); ?>" maxlength="255">
 				<p class="small text-muted">
-					<?php echo /* I18N: Help text for the "Login URL" site configuration setting */ WT_I18N::translate('You only need to enter a Login URL if you want to redirect to a different site or location when your users login.  This is very useful if you need to switch from http to https when your users login.  Include the full URL to <i>login.php</i>.  For example, https://www.yourserver.com/webtrees/login.php .'); ?>
+					<?php echo /* I18N: Help text for the "Login URL" site configuration setting */ WT_I18N::translate('You only need to enter a Login URL if you want to redirect to a different website or location when your users login.  This is very useful if you need to switch from http to https when your users login.  Include the full URL to <i>login.php</i>.  For example, https://www.yourserver.com/webtrees/login.php .'); ?>
 				</p>
 			</div>
 		</div>
@@ -437,7 +437,7 @@ $controller->pageHeader();
 			<div class="col-sm-9">
 				<?php echo edit_field_yes_no('USE_REGISTRATION_MODULE', WT_Site::getPreference('USE_REGISTRATION_MODULE')); ?>
 				<p class="small text-muted">
-					<?php echo /* I18N: Help text for the “Allow visitors to request account registration” site configuration setting */ WT_I18N::translate('Gives visitors the option of registering themselves for an account on the site.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, an administrator will have to approve the registration before it becomes active.'); ?>
+					<?php echo /* I18N: Help text for the “Allow visitors to request account registration” site configuration setting */ WT_I18N::translate('Gives visitors the option of registering themselves for an account on the website.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, an administrator will have to approve the registration before it becomes active.'); ?>
 				</p>
 			</div>
 		</fieldset>

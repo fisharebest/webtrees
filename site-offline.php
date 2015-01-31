@@ -79,7 +79,7 @@ echo
 if ($offline_txt) {
 	echo $offline_txt;
 } else {
-	echo WT_I18N::translate('The site is down for maintenance.  You should <a href="index.php">try again</a> in a few minutes.');
+	echo WT_I18N::translate('This website is down for maintenance.  You should <a href="index.php">try again</a> in a few minutes.');
 }
 echo '</p>';
 echo '</div>';

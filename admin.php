@@ -585,8 +585,7 @@ $changes = WT_DB::prepare(
 								<?php endforeach; ?>
 							</td>
 						</tr>
-						<?php if ($unverified): ?>
-						<tr class="danger">
+						<tr class="<?php echo $unverified ? 'danger' : ''; ?>">
 							<th>
 								<?php echo WT_I18N::translate('Not verified by the user'); ?>
 							</th>
@@ -597,9 +596,7 @@ $changes = WT_DB::prepare(
 								<?php endforeach; ?>
 							</td>
 						</tr>
-						<?php endif; ?>
-						<?php if ($unapproved): ?>
-						<tr class="danger">
+						<tr class="<?php echo $unapproved ? 'danger' : ''; ?>">
 							<th>
 								<?php echo WT_I18N::translate('Not approved by an administrator'); ?>
 							</th>
@@ -610,7 +607,6 @@ $changes = WT_DB::prepare(
 								<?php endforeach; ?>
 							</td>
 						</tr>
-						<?php endif; ?>
 						<tr>
 							<th>
 								<?php echo WT_I18N::translate('Users logged in'); ?>

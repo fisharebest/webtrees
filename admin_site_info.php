@@ -57,6 +57,26 @@ $html  = $matches[2];
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h2 class="panel-title">
+					<?php echo WT_I18N::translate('Time'); ?>
+				</h2>
+			</div>
+			<div class="panel-body">
+				<?php echo /* I18N: The local time on the server */ WT_I18N::translate('Server time'); ?> —
+				<?php echo format_timestamp(WT_SERVER_TIMESTAMP); ?><br>
+				<?php echo /* I18N: The local time on the client/browser */ WT_I18N::translate('Client time'); ?> —
+				<?php echo format_timestamp(WT_CLIENT_TIMESTAMP); ?><br>
+				<?php echo /* I18N: Timezone - http://en.wikipedia.org/wiki/UTC */ WT_I18N::translate('UTC'); ?> —
+				<?php echo format_timestamp(WT_TIMESTAMP); ?>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h2 class="panel-title">
 					<?php echo WT_I18N::translate('PHP information'); ?>
 				</h2>
 			</div>
@@ -73,7 +93,7 @@ $html  = $matches[2];
 </div>
 
 <div class="row">
-	<div class="col-md-12">
+	<div class="col-xs-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h2 class="panel-title">
@@ -87,26 +107,6 @@ $html  = $matches[2];
 						<dd><?php echo WT_Filter::escapeHtml($value); ?></dd>
 					<?php endforeach; ?>
 				</dl>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="row">
-	<div class="col-md-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h2 class="panel-title">
-					<?php echo WT_I18N::translate('Time'); ?>
-				</h2>
-			</div>
-			<div class="panel-body">
-				<?php echo /* I18N: The local time on the server */ WT_I18N::translate('Server time'); ?> —
-				<?php echo format_timestamp(WT_SERVER_TIMESTAMP); ?><br>
-				<?php echo /* I18N: The local time on the client/browser */ WT_I18N::translate('Client time'); ?> —
-				<?php echo format_timestamp(WT_CLIENT_TIMESTAMP); ?><br>
-				<?php echo /* I18N: Timezone - http://en.wikipedia.org/wiki/UTC */ WT_I18N::translate('UTC'); ?> —
-				<?php echo format_timestamp(WT_TIMESTAMP); ?>
 			</div>
 		</div>
 	</div>

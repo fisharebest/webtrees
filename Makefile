@@ -74,7 +74,7 @@ build/webtrees: clean update
 # Remove temporary and intermediate files
 ################################################################################
 clean:
-	rm -Rf build/webtrees*
+	rm -Rf build/webtrees* language/webtrees.pot
 	find language -name "*.mo" -not -path "language/en_US.mo" -delete
 
 ################################################################################
