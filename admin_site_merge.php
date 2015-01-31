@@ -232,7 +232,7 @@ $controller->pageHeader();
 	</div>
 
 	<div class="row">
-		<div class="col-xs-6">
+		<div class="col-sm-6">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h2 class="panel-title">
@@ -273,7 +273,7 @@ $controller->pageHeader();
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-6">
+		<div class="col-sm-6">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h2 class="panel-title">
