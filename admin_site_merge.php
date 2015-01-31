@@ -27,265 +27,349 @@ use WT\Auth;
 
 define('WT_SCRIPT_NAME', 'admin_site_merge.php');
 require './includes/session.php';
-require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
 $controller = new WT_Controller_Page;
 $controller
 	->restrictAccess(Auth::isManager())
-	->setPageTitle(WT_I18N::translate('Merge records'))
+	->setPageTitle(WT_I18N::translate('Merge records') . ' — ' . WT_Filter::escapeHtml($WT_TREE->tree_title))
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
-	->addInlineJavascript('autocomplete();')
-	->pageHeader();
+	->addInlineJavascript('autocomplete();');
 
-echo '<h1>',  $controller->getPageTitle(), '</h1>';
-
-$ged    = $GEDCOM;
-$gid1   = WT_Filter::post('gid1', WT_REGEX_XREF);
-$gid2   = WT_Filter::post('gid2', WT_REGEX_XREF);
-$action = WT_Filter::post('action', 'choose|select|merge', 'choose');
-$ged1   = WT_Filter::post('ged1', null, $ged);
-$ged2   = WT_Filter::post('ged2', null, $ged);
+$gid1   = WT_Filter::post('gid1', WT_REGEX_XREF, WT_Filter::get('gid1', WT_REGEX_XREF));
+$gid2   = WT_Filter::post('gid2', WT_REGEX_XREF, WT_Filter::get('gid2', WT_REGEX_XREF));
 $keep1  = WT_Filter::postArray('keep1');
 $keep2  = WT_Filter::postArray('keep2');
 
-if ($action != 'choose') {
-	if ($gid1 == $gid2 && $ged1 == $ged2) {
-		$action = 'choose';
-		echo '<span class="error">', WT_I18N::translate('You entered the same IDs.  You cannot merge the same records.'), '</span>';
+$rec1 = WT_GedcomRecord::getInstance($gid1);
+$rec2 = WT_GedcomRecord::getInstance($gid2);
+
+if ($gid1 && !$rec1) {
+	WT_FlashMessages::addMessage(WT_I18N::translate('%1$s does not exist.', $gid1), 'danger');
+}
+
+if ($gid2 && !$rec2) {
+	WT_FlashMessages::addMessage(WT_I18N::translate('%1$s does not exist.', $gid2), 'danger');
+}
+
+if ($rec1 && $rec2 && $rec1->getXref() === $rec2->getXref()) {
+	WT_FlashMessages::addMessage(WT_I18N::translate('You entered the same IDs.  You cannot merge the same records.'), 'danger');
+}
+
+if ($rec1 && $rec2 && $rec1::RECORD_TYPE !== $rec2::RECORD_TYPE) {
+	WT_FlashMessages::addMessage(WT_I18N::translate('Records are not the same type.  Cannot merge records that are not the same type.'), 'danger');
+}
+
+// Facts found both records
+$facts = array();
+// Facts found in only one record
+$facts1 = array();
+$facts2 = array();
+
+if ($rec1) {
+	foreach ($rec1->getFacts() as $fact) {
+		if (!$fact->isPendingDeletion() && $fact->getTag() !== 'CHAN') {
+			$facts1[$fact->getFactId()] = $fact;
+		}
+	}
+}
+
+if ($rec2) {
+	foreach ($rec2->getFacts() as $fact) {
+		if (!$fact->isPendingDeletion() && $fact->getTag() !== 'CHAN') {
+			$facts2[$fact->getFactId()] = $fact;
+		}
+	}
+}
+
+foreach ($facts1 as $id1 => $fact1) {
+	foreach ($facts2 as $id2 => $fact2) {
+		if ($fact1->getFactId() === $fact2->getFactId()) {
+			$facts[] = $fact1;
+			unset($facts1[$id1]);
+			unset($facts2[$id2]);
+		}
+	}
+}
+
+if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYPE === $rec2::RECORD_TYPE && WT_Filter::post('action') === 'merge' && WT_Filter::checkCsrf()) {
+	$ids = fetch_all_links($gid2, WT_GED_ID);
+
+	// If we are not auto-accepting, then we can show a link to the pending deletion
+	if (Auth::user()->getPreference('auto_accept')) {
+		$record2_name = $rec2->getFullName();
 	} else {
-		$rec1 = WT_GedcomRecord::getInstance($gid1, WT_Tree::getIdFromName($ged1));
-		$rec2 = WT_GedcomRecord::getInstance($gid2, WT_Tree::getIdFromName($ged2));
+		$record2_name = '<a class="alert-link" href="' . $rec2->getHtmlUrl() . '">' . $rec2->getFullName() . '</a>';
+	}
 
-		if (!$rec1) {
-			echo '<span class="error">', WT_I18N::translate('Unable to find record with ID'), ':</span> ', $gid1, ', ', $ged;
-			$action = 'choose';
-		} elseif (!$rec2) {
-			echo '<span class="error">', WT_I18N::translate('Unable to find record with ID'), ':</span> ', $gid2, ', ', $ged2;
-			$action = 'choose';
-		} elseif ($rec1::RECORD_TYPE != $rec2::RECORD_TYPE) {
-			echo '<span class="error">', WT_I18N::translate('Records are not the same type.  Cannot merge records that are not the same type.'), '</span>';
-			$action = 'choose';
-		} else {
-			$facts1 = array();
-			$facts2 = array();
-			foreach ($rec1->getFacts() as $fact) {
-				if (!$fact->isPendingDeletion()) {
-					$facts1[$fact->getFactId()] = $fact;
-				}
-			}
-			foreach ($rec2->getFacts() as $fact) {
-				if (!$fact->isPendingDeletion()) {
-					$facts2[$fact->getFactId()] = $fact;
-				}
-			}
-			if ($action == 'select') {
-				echo '<div id="merge2"><h3>', WT_I18N::translate('Merge records'), '</h3>';
-				echo '<form method="post" action="admin_site_merge.php">';
-				echo WT_I18N::translate('The following facts were exactly the same in both records and will be merged automatically.'), '<br>';
-				echo '<input type="hidden" name="gid1" value="', $rec1->getXref(), '">';
-				echo '<input type="hidden" name="gid2" value="', $rec2->getXref(), '">';
-				echo '<input type="hidden" name="ged1" value="', $ged1, '">';
-				echo '<input type="hidden" name="ged2" value="', $ged2, '">';
-				echo '<input type="hidden" name="action" value="merge">';
-				$skip = array();
-				echo '<table>';
-				foreach ($facts1 as $fact_id1 => $fact1) {
-					foreach ($facts2 as $fact_id2 => $fact2) {
-						if ($fact_id1 == $fact_id2) {
-							echo '<tr><td><input type="checkbox" name="keep1[]" value="', $fact_id1, '" checked';
-							if ($ged1 != $ged2 && $fact1->getTarget()) {
-								// Don't change links when merging remote facts.
-								echo ' readonly';
-							}
-							echo '></td><td>', nl2br($fact1->getGedcom(), false), '</td></tr>';
-							$skip[] = $fact_id1;
-							unset($facts1[$fact_id1]);
-							unset($facts2[$fact_id2]);
-						}
-					}
-				}
-				if (!$skip) {
-					echo '<tr><td>', WT_I18N::translate('No matching facts found'), '</td></tr>';
-				}
-				echo '</table><br>';
-				echo WT_I18N::translate('The following facts did not match.  Select the information you would like to keep.');
-				echo '<table>';
-				echo '<tr><th>', WT_I18N::translate('Record'), ' ', $rec1->getXref(), '</th><th>', WT_I18N::translate('Record'), ' ', $rec2->getXref(), '</th></tr>';
-				echo '<tr><td>';
-				echo '<table>';
-				foreach ($facts1 as $n=>$fact1) {
-					if ($fact1->getTag() != 'CHAN') {
-						echo '<tr><td><input type="checkbox" name="keep1[]" value="', $n, '" checked';
-						if ($ged1 != $ged2 && $fact1->getTarget()) {
-							// Don't change links when merging remote facts.
-							echo ' readonly';
-						}
-						echo '></td>';
-						echo '<td>', nl2br(WT_Filter::escapeHtml($fact1->getGedcom()), false), '</td></tr>';
-					}
-				}
-				echo '</table>';
-				echo '</td><td>';
-				echo '<table>';
-				foreach ($facts2 as $n=>$fact2) {
-					if ($fact2->getTag() != 'CHAN') {
-						echo '<tr><td><input type="checkbox" name="keep2[]" value="', $n, '"';
-						if ($ged1 == $ged2 || !$fact2->getTarget()) {
-							// Don't merge links from different trees.  What would they point to!
-							echo ' checked';
-						} else {
-							echo ' readonly';
-						}
-						echo '></td>';
-						echo '<td>', nl2br(WT_Filter::escapeHtml($fact2->getGedcom()), false), '</td></tr>';
-					}
-				}
-				echo '</table>';
-				echo '</td></tr>';
-				echo '</table>';
-				echo '<input type="submit" value="', WT_I18N::translate('save'), '">';
-				echo '</form></div>';
-			} elseif ($action == 'merge') {
-				echo '<div id="merge3"><h3>', WT_I18N::translate('Merge records'), '</h3>';
-				if ($GEDCOM == $ged2) {
-					//-- replace all the records that linked to gid2
-					$ids = fetch_all_links($gid2, WT_GED_ID);
-					foreach ($ids as $id) {
-						$record = WT_GedcomRecord::getInstance($id);
-						if (!$record->isPendingDeletion()) {
-							echo WT_I18N::translate('Updating linked record'), ' ', $id, '<br>';
-							$gedcom = str_replace("@$gid2@", "@$gid1@", $record->getGedcom());
-							$gedcom = preg_replace(
-								'/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))((?:\n1.*(?:\n[2-9].*)*)*\1)/',
-								'$2',
-								$gedcom
-							);
-							$record->updateRecord($gedcom, true);
-						}
-					}
-					// Update any linked user-accounts
-					WT_DB::prepare(
-						"UPDATE `##user_gedcom_setting`" .
-						" SET setting_value=?" .
-						" WHERE gedcom_id=? AND setting_name='gedcomid' AND setting_value=?"
-					)->execute(array($gid2, WT_GED_ID, $gid1));
-
-					// Merge hit counters
-					$hits = WT_DB::prepare(
-						"SELECT page_name, SUM(page_count)" .
-						" FROM `##hit_counter`" .
-						" WHERE gedcom_id=? AND page_parameter IN (?, ?)" .
-						" GROUP BY page_name"
-					)->execute(array(WT_GED_ID, $gid1, $gid2))->fetchAssoc();
-					foreach ($hits as $page_name=>$page_count) {
-						WT_DB::prepare(
-							"UPDATE `##hit_counter` SET page_count=?" .
-							" WHERE gedcom_id=? AND page_name=? AND page_parameter=?"
-						)->execute(array($page_count, WT_GED_ID, $page_name, $gid1));
-					}
-					WT_DB::prepare(
-						"DELETE FROM `##hit_counter`" .
-						" WHERE gedcom_id=? AND page_parameter=?"
-					)->execute(array(WT_GED_ID, $gid2));
-				}
-				$gedcom = "0 @" . $rec1->getXref() . "@ " . $rec1::RECORD_TYPE;
-				foreach ($facts1 as $fact_id=>$fact) {
-					if (in_array($fact_id, $keep1)) {
-						$gedcom .= "\n" . $fact->getGedcom();
-						echo WT_I18N::translate('Adding'), " ", $fact->getTag(), ' ', WT_I18N::translate('from'), ' ', $rec1->getXref(), '<br>';
-					}
-				}
-				foreach ($facts2 as $fact_id=>$fact) {
-					if (in_array($fact_id, $keep2)) {
-						$gedcom .= "\n" . $fact->getGedcom();
-						echo WT_I18N::translate('Adding'), " ", $fact->getTag(), ' ', WT_I18N::translate('from'), ' ', $rec2->getXref(), '<br>';
-					}
-				}
-
-				$rec1->updateRecord($gedcom, true);
-				$rec2->deleteRecord();
-				echo WT_I18N::translate('GEDCOM record successfully deleted.'), '<br>';
-				echo
-					'<p>',
-						WT_I18N::translate(
-							'Record %s successfully updated.',
-							'<a href="' . $rec1->getHtmlUrl() . '">' . $rec1->getXref() . '</a>'
-						),
-					'</p';
-				$fav_count = update_favorites($gid2, $gid1);
-				if ($fav_count > 0) {
-					echo '<p>', $fav_count, ' ', WT_I18N::translate('favorites updated.'), '<p>';
-				}
-				echo '</div>';
-			}
+	foreach ($ids as $id) {
+		$record = WT_GedcomRecord::getInstance($id);
+		if (!$record->isPendingDeletion()) {
+			WT_FlashMessages::addMessage(WT_I18N::translate(
+				/* I18N: The placeholders are the names of individuals, sources, etc. */
+				'The link from “%1$s” to “%2$s” has been updated.',
+					'<a class="alert-link" href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a>',
+					$record2_name
+			), 'info');
+			$gedcom = str_replace("@$gid2@", "@$gid1@", $record->getGedcom());
+			$gedcom = preg_replace(
+				'/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))((?:\n1.*(?:\n[2-9].*)*)*\1)/',
+				'$2',
+				$gedcom
+			);
+			$record->updateRecord($gedcom, true);
 		}
 	}
+	// Update any linked user-accounts
+	WT_DB::prepare(
+		"UPDATE `##user_gedcom_setting`" .
+		" SET setting_value=?" .
+		" WHERE gedcom_id=? AND setting_name='gedcomid' AND setting_value=?"
+	)->execute(array($gid2, WT_GED_ID, $gid1));
+
+	// Merge hit counters
+	$hits = WT_DB::prepare(
+		"SELECT page_name, SUM(page_count)" .
+		" FROM `##hit_counter`" .
+		" WHERE gedcom_id=? AND page_parameter IN (?, ?)" .
+		" GROUP BY page_name"
+	)->execute(array(WT_GED_ID, $gid1, $gid2))->fetchAssoc();
+
+	foreach ($hits as $page_name=>$page_count) {
+		WT_DB::prepare(
+			"UPDATE `##hit_counter` SET page_count=?" .
+			" WHERE gedcom_id=? AND page_name=? AND page_parameter=?"
+		)->execute(array($page_count, WT_GED_ID, $page_name, $gid1));
+	}
+	WT_DB::prepare(
+		"DELETE FROM `##hit_counter`" .
+		" WHERE gedcom_id=? AND page_parameter=?"
+	)->execute(array(WT_GED_ID, $gid2));
+
+	$gedcom = "0 @" . $rec1->getXref() . "@ " . $rec1::RECORD_TYPE;
+	foreach ($facts1 as $fact_id=>$fact) {
+		if (in_array($fact_id, $keep1)) {
+			$gedcom .= "\n" . $fact->getGedcom();
+		}
+	}
+	foreach ($facts2 as $fact_id=>$fact) {
+		if (in_array($fact_id, $keep2)) {
+			$gedcom .= "\n" . $fact->getGedcom();
+		}
+	}
+
+	$rec1->updateRecord($gedcom, true);
+	$rec2->deleteRecord();
+	update_favorites($gid2, $gid1);
+	WT_FlashMessages::addMessage(WT_I18N::translate(
+	/* I18N: Records are individuals, sources, etc. */
+		'The records “%1$s” and “%2$s” have been merged.',
+		'<a class="alert-link" href="' . $rec1->getHtmlUrl() . '">' . $rec1->getFullName() . '</a>',
+		$record2_name
+	), 'success');
+
+	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
+
+	return;
 }
-if ($action == 'choose') {
-	$controller->addInlineJavascript('
-	function iopen_find(textbox, gedselect) {
-		ged = gedselect.options[gedselect.selectedIndex].value;
-		findIndi(textbox, null, ged);
-	}
-	function fopen_find(textbox, gedselect) {
-		ged = gedselect.options[gedselect.selectedIndex].value;
-		findFamily(textbox, ged);
-	}
-	function sopen_find(textbox, gedselect) {
-		ged = gedselect.options[gedselect.selectedIndex].value;
-		findSource(textbox, null, ged);
-	}
-	');
 
-	echo
-		'<div id="merge"><h3>', WT_I18N::translate('Merge records'), '</h3>
-		<form method="post" name="merge" action="admin_site_merge.php">
-		<input type="hidden" name="action" value="select">
-		<p>', WT_I18N::translate('Select two GEDCOM records to merge.  The records must be of the same type.'), '</p>
-		<table><tr>
-		<td>',
-		WT_I18N::translate('Merge to ID:'),
-		'</td><td>
-		<select name="ged" tabindex="4" onchange="jQuery(\'#gid1\').data(\'autocomplete-ged\', jQuery(this).val());"';
-	if (count(WT_Tree::getAll()) == 1) {
-		echo 'style="width:1px;visibility:hidden;"';
-	}
-	echo ' >';
-	foreach (WT_Tree::getAll() as $tree) {
-		echo '<option value="', $tree->tree_name_html, '" ';
-		if (empty($ged) && $tree->tree_id == WT_GED_ID || !empty($ged) && $ged == $tree->tree_name) {
-			echo 'selected';
-		}
-		echo ' dir="auto">', $tree->tree_title_html, '</option>';
-	}
-	echo
-		'</select>
-		<input data-autocomplete-type="INDI" type="text" name="gid1" id="gid1" value="', $gid1, '" size="10" tabindex="1" autofocus="autofocus">
-		<a href="#" onclick="iopen_find(document.merge.gid1, document.merge.ged);" tabindex="6" class="icon-button_indi" title="'.WT_I18N::translate('Find an individual') . '"></a>
-		<a href="#" onclick="fopen_find(document.merge.gid1, document.merge.ged);" tabindex="8" class="icon-button_family" title="'.WT_I18N::translate('Find a family') . '"></a>
-		<a href="#" onclick="sopen_find(document.merge.gid1, document.merge.ged);" tabindex="10" class="icon-button_source" title="'.WT_I18N::translate('Find a source') . '"></a>
-		</td></tr><tr><td>',
-		WT_I18N::translate('Merge from ID:'),
-		'</td><td>
-		<select name="ged2" tabindex="5" onchange="jQuery(\'#gid2\').data(\'autocomplete-ged\', jQuery(this).val());"';
-	if (count(WT_Tree::getAll()) == 1) {
-		echo 'style="width:1px;visibility:hidden;"';
-	}
-	echo ' >';
-	foreach (WT_Tree::getAll() as $tree) {
-		echo '<option value="', $tree->tree_name_html, '" ';
-		if (empty($ged2) && $tree->tree_id == WT_GED_ID || !empty($ged2) && $ged2 == $tree->tree_name) {
-			echo 'selected';
-		}
-		echo ' dir="auto">', $tree->tree_title_html, '</option>';
-	}
-	echo
-		'</select>
-		<input data-autocomplete-type="INDI" type="text" name="gid2" id="gid2" value="', $gid2, '" size="10" tabindex="2">
-		<a href="#" onclick="iopen_find(document.merge.gid2, document.merge.ged2);" tabindex="7" class="icon-button_indi" title="'.WT_I18N::translate('Find an individual') . '"></a>
-		<a href="#" onclick="fopen_find(document.merge.gid2, document.merge.ged2);" tabindex="9" class="icon-button_family" title="'.WT_I18N::translate('Find a family') . '"></a>
-		<a href="#" onclick="sopen_find(document.merge.gid2, document.merge.ged2);" tabindex="11" class="icon-button_source" title="'.WT_I18N::translate('Find a source') . '"></a>
-		</td></tr></table>
-		<input type="submit" value="', WT_I18N::translate('next'), '" tabindex="3">
-		</form></div>';
-}
+$controller->pageHeader();
+
+?>
+<ol class="breadcrumb small">
+	<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
+	<li><a href="admin_trees_manage.php"><?php echo WT_I18N::translate('Manage family trees'); ?></a></li>
+	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+</ol>
+<h1><?php echo $controller->getPageTitle(); ?></h1>
+
+<?php if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYPE === $rec2::RECORD_TYPE): ?>
+
+<form method="post">
+	<input type="hidden" name="action" value="merge">
+	<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
+	<?php echo WT_Filter::getCsrf(); ?>
+	<p>
+		<?php echo WT_I18N::translate('Select the facts and events to keep from both records.'); ?>
+	</p>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h2 class="panel-title">
+				<?php echo WT_I18N::translate('The following facts and events were found in both records.'); ?>
+			</h2>
+		</div>
+		<div class="panel-body">
+			<?php if ($facts): ?>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>
+							<?php echo WT_I18N::translate('Select'); ?>
+						</th>
+						<th>
+							<?php echo WT_I18N::translate('Details'); ?>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+				<?php foreach ($facts as $fact_id => $fact): ?>
+					<tr>
+						<td>
+							<input type="checkbox" name="keep1[]" value="<?php echo $fact->getFactId(); ?>" checked>
+						</td>
+						<td>
+							<div class="gedcom-data" dir="ltr"><?php echo WT_Filter::escapeHtml($fact->getGedcom()); ?></div>
+						</td>
+					</tr>
+				<?php endforeach; ?>
+				</tbody>
+			</table>
+			<?php else: ?>
+			<p>
+				<?php echo WT_I18N::translate('No matching facts found'); ?>
+			</p>
+			<?php endif; ?>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-6">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2 class="panel-title">
+						<?php echo /* I18N: the name of an individual, source, etc. */ WT_I18N::translate('The following facts and events were only found in the record of %s.', '<a href="' . $rec1->getHtmlUrl() . '">' . $rec1->getFullName()) . '</a>'; ?>
+					</h2>
+				</div>
+				<div class="panel-body">
+					<?php if ($facts): ?>
+						<table class="table">
+							<thead>
+							<tr>
+								<th>
+									<?php echo WT_I18N::translate('Select'); ?>
+								</th>
+								<th>
+									<?php echo WT_I18N::translate('Details'); ?>
+								</th>
+							</tr>
+							</thead>
+							<tbody>
+							<?php foreach ($facts1 as $fact_id => $fact): ?>
+								<tr>
+									<td>
+										<input type="checkbox" name="keep1[]" value="<?php echo $fact->getFactId(); ?>" checked>
+									</td>
+									<td>
+										<div class="gedcom-data" dir="ltr"><?php echo WT_Filter::escapeHtml($fact->getGedcom()); ?></div>
+									</td>
+								</tr>
+							<?php endforeach; ?>
+							</tbody>
+						</table>
+					<?php else: ?>
+						<p>
+							<?php echo WT_I18N::translate('No matching facts found'); ?>
+						</p>
+					<?php endif; ?>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2 class="panel-title">
+						<?php echo /* I18N: the name of an individual, source, etc. */ WT_I18N::translate('The following facts and events were only found in the record of %s.', '<a href="' . $rec2->getHtmlUrl() . '">' . $rec2->getFullName()) . '</a>'; ?>
+					</h2>
+				</div>
+				<div class="panel-body">
+					<?php if ($facts): ?>
+						<table class="table">
+							<thead>
+							<tr>
+								<th>
+									<?php echo WT_I18N::translate('Select'); ?>
+								</th>
+								<th>
+									<?php echo WT_I18N::translate('Details'); ?>
+								</th>
+							</tr>
+							</thead>
+							<tbody>
+							<?php foreach ($facts2 as $fact_id => $fact): ?>
+								<tr>
+									<td>
+										<input type="checkbox" name="keep2[]" value="<?php echo $fact->getFactId(); ?>" checked>
+									</td>
+									<td>
+										<div class="gedcom-data" dir="ltr"><?php echo WT_Filter::escapeHtml($fact->getGedcom()); ?></div>
+									</td>
+								</tr>
+							<?php endforeach; ?>
+							</tbody>
+						</table>
+					<?php else: ?>
+						<p>
+							<?php echo WT_I18N::translate('No matching facts found'); ?>
+						</p>
+					<?php endif; ?>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<button type="submit" class="btn btn-primary">
+		<i class="fa fa-check"></i>
+		<?php echo WT_I18N::translate('save'); ?>
+	</button>
+</form>
+
+<?php else: ?>
+
+<form class="form form-horizontal">
+	<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
+	<p><?php echo /* I18N: Records are indviduals, sources, etc. */ WT_I18N::translate('Select two records to merge.'); ?></p>
+
+	<div class="form-group">
+		<div class="control-label col-sm-3">
+			<label for="gid1">
+				<?php echo /* I18N: Record is an indvidual, source, etc. */ WT_I18N::translate('First record'); ?>
+			</label>
+		</div>
+		<div class="col-sm-9">
+			<input data-autocomplete-type="IFRSO" type="text" name="gid1" id="gid1" maxlength="20" value="<?php echo $gid1; ?>">
+			<?php echo print_findindi_link('gid1', $WT_TREE->tree_name); ?>
+			<?php echo print_findfamily_link('gid1', $WT_TREE->tree_name); ?>
+			<?php echo print_findsource_link('gid1', $WT_TREE->tree_name); ?>
+			<?php echo print_findrepository_link('gid1', $WT_TREE->tree_name); ?>
+			<?php echo print_findmedia_link('gid1', $WT_TREE->tree_name); ?>
+			<?php echo print_findnote_link('gid1', $WT_TREE->tree_name); ?>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="control-label col-sm-3">
+			<label for="gid2">
+				<?php echo /* I18N: Record is an indvidual, source, etc. */ WT_I18N::translate('Second record'); ?>
+			</label>
+		</div>
+		<div class="col-sm-9">
+			<input data-autocomplete-type="IFRSO" type="text" name="gid2" id="gid2" maxlength="20" value="<?php echo $gid2; ?>" >
+			<?php echo print_findindi_link('gid2', $WT_TREE->tree_name); ?>
+			<?php echo print_findfamily_link('gid2', $WT_TREE->tree_name); ?>
+			<?php echo print_findsource_link('gid2', $WT_TREE->tree_name); ?>
+			<?php echo print_findrepository_link('gid2', $WT_TREE->tree_name); ?>
+			<?php echo print_findmedia_link('gid2', $WT_TREE->tree_name); ?>
+			<?php echo print_findnote_link('gid2', $WT_TREE->tree_name); ?>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-sm-offset-3 col-sm-9">
+			<button type="submit" class="btn btn-primary">
+				<?php echo WT_I18N::translate('continue'); ?>
+			</button>
+		</div>
+	</div>
+
+</form>
+
+<?php endif; ?>
