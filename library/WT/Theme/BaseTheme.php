@@ -296,19 +296,6 @@ abstract class BaseTheme {
 	}
 
 	/**
-	 * Create a pending changes link for the page footer.
-	 *
-	 * @return string
-	 */
-	protected function formatPendingChangesLink() {
-		if ($this->pendingChangesExist()) {
-			return '<div class="pending-changes-link">' . $this->pendingChangesLink() . '</div>';
-		} else {
-			return '';
-		}
-	}
-
-	/**
 	 * Create a quick search form for the header.
 	 *
 	 * @return string
@@ -1646,27 +1633,6 @@ abstract class BaseTheme {
 	 */
 	protected function pendingChangesExist() {
 		return exists_pending_change(Auth::user(), $this->tree);
-	}
-
-	/**
-	 * Create a pending changes link.
-	 *
-	 * @return string
-	 */
-	protected function pendingChangesLink() {
-		return
-			'<a href="#" onclick="window.open(\'edit_changes.php\', \'_blank\', chan_window_specs); return false;">' .
-			$this->pendingChangesLinkText() .
-			'</a>';
-	}
-
-	/**
-	 * Text to use in the pending changes link.
-	 *
-	 * @return string
-	 */
-	protected function pendingChangesLinkText() {
-		return WT_I18N::translate('There are pending changes for you to moderate.');
 	}
 
 	/**
