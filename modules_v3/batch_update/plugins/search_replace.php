@@ -1,20 +1,20 @@
 <?php
-// webtrees: Web based Family History software
-// Copyright (C) 2014 Greg Roach
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Webtrees;
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 /**
  * Class search_replace_bu_plugin Batch Update plugin: search/replace
@@ -33,7 +33,7 @@ class search_replace_bu_plugin extends base_plugin {
 	 * @return string
 	 */
 	public function getName() {
-		return WT_I18N::translate('Search and replace');
+		return I18N::translate('Search and replace');
 	}
 
 	/**
@@ -42,7 +42,7 @@ class search_replace_bu_plugin extends base_plugin {
 	 * @return string
 	 */
 	public function getDescription() {
-		return /* I18N: Description of the “Search and replace” option of the batch update module */ WT_I18N::translate('Search and replace text, using simple searches or advanced pattern matching.');
+		return /* I18N: Description of the “Search and replace” option of the batch update module */ I18N::translate('Search and replace text, using simple searches or advanced pattern matching.');
 	}
 
 	/**
@@ -85,10 +85,10 @@ class search_replace_bu_plugin extends base_plugin {
 	 */
 	public function getOptions() {
 		parent::getOptions();
-		$this->search  = WT_Filter::get('search');
-		$this->replace = WT_Filter::get('replace');
-		$this->method  = WT_Filter::get('method', 'exact|words|wildcards|regex', 'exact');
-		$this->case    = WT_Filter::get('case', 'i');
+		$this->search  = Filter::get('search');
+		$this->replace = Filter::get('replace');
+		$this->method  = Filter::get('method', 'exact|words|wildcards|regex', 'exact');
+		$this->case    = Filter::get('case', 'i');
 
 		$this->error = '';
 		switch ($this->method) {
@@ -107,7 +107,7 @@ class search_replace_bu_plugin extends base_plugin {
 			// A valid regex on a null string returns zero.
 			// An invalid regex on a null string returns false (and throws a warning).
 			if (@preg_match('/' . $this->search . '/', null) === false) {
-				$this->error = '<br><span class="error">' . WT_I18N::translate('The regex appears to contain an error.  It can’t be used.') . '</span>';
+				$this->error = '<br><span class="error">' . I18N::translate('The regex appears to contain an error.  It can’t be used.') . '</span>';
 			}
 			break;
 		}
@@ -120,32 +120,32 @@ class search_replace_bu_plugin extends base_plugin {
 	 */
 	public function getOptionsForm() {
 		$descriptions = array(
-			'exact'     => WT_I18N::translate('Match the exact text, even if it occurs in the middle of a word.'),
-			'words'     => WT_I18N::translate('Match the exact text, unless it occurs in the middle of a word.'),
-			'wildcards' => WT_I18N::translate('Use a “?” to match a single character, use “*” to match zero or more characters.'),
-			'regex'     => /* I18N: http://en.wikipedia.org/wiki/Regular_expression */ WT_I18N::translate('Regular expressions are an advanced pattern matching technique.') . '<br>' . /* I18N: %s is a URL */ WT_I18N::translate('See %s for more information.', '<a href="http://php.net/manual/regexp.reference.php" target="_blank">php.net/manual/regexp.reference.php</a>'),
+			'exact'     => I18N::translate('Match the exact text, even if it occurs in the middle of a word.'),
+			'words'     => I18N::translate('Match the exact text, unless it occurs in the middle of a word.'),
+			'wildcards' => I18N::translate('Use a “?” to match a single character, use “*” to match zero or more characters.'),
+			'regex'     => /* I18N: http://en.wikipedia.org/wiki/Regular_expression */ I18N::translate('Regular expressions are an advanced pattern matching technique.') . '<br>' . /* I18N: %s is a URL */ I18N::translate('See %s for more information.', '<a href="http://php.net/manual/regexp.reference.php" target="_blank">php.net/manual/regexp.reference.php</a>'),
 		);
 
 		return
-			'<tr><th>' . WT_I18N::translate('Search text/pattern') . '</th>' .
+			'<tr><th>' . I18N::translate('Search text/pattern') . '</th>' .
 			'<td>' .
-			'<input name="search" size="40" value="' . WT_Filter::escapeHtml($this->search) .
+			'<input name="search" size="40" value="' . Filter::escapeHtml($this->search) .
 			'" onchange="this.form.submit();"></td></tr>' .
-			'<tr><th>' . WT_I18N::translate('Replacement text') . '</th>' .
+			'<tr><th>' . I18N::translate('Replacement text') . '</th>' .
 			'<td>' .
-			'<input name="replace" size="40" value="' . WT_Filter::escapeHtml($this->replace) .
+			'<input name="replace" size="40" value="' . Filter::escapeHtml($this->replace) .
 			'" onchange="this.form.submit();"></td></tr>' .
-			'<tr><th>' . WT_I18N::translate('Search method') . '</th>' .
+			'<tr><th>' . I18N::translate('Search method') . '</th>' .
 			'<td><select name="method" onchange="this.form.submit();">' .
-			'<option value="exact" ' . ($this->method == 'exact' ? 'selected' : '') . '>' . WT_I18N::translate('Exact text') . '</option>' .
-			'<option value="words" ' . ($this->method == 'words' ? 'selected' : '') . '>' . WT_I18N::translate('Whole words only') . '</option>' .
-			'<option value="wildcards" ' . ($this->method == 'wildcards' ? 'selected' : '') . '>' . WT_I18N::translate('Wildcards') . '</option>' .
-			'<option value="regex" ' . ($this->method == 'regex' ? 'selected' : '') . '>' . WT_I18N::translate('Regular expression') . '</option>' .
+			'<option value="exact" ' . ($this->method == 'exact' ? 'selected' : '') . '>' . I18N::translate('Exact text') . '</option>' .
+			'<option value="words" ' . ($this->method == 'words' ? 'selected' : '') . '>' . I18N::translate('Whole words only') . '</option>' .
+			'<option value="wildcards" ' . ($this->method == 'wildcards' ? 'selected' : '') . '>' . I18N::translate('Wildcards') . '</option>' .
+			'<option value="regex" ' . ($this->method == 'regex' ? 'selected' : '') . '>' . I18N::translate('Regular expression') . '</option>' .
 			'</select><br><em>' . $descriptions[$this->method] . '</em>' . $this->error . '</td></tr>' .
-			'<tr><th>' . WT_I18N::translate('Case insensitive') . '</th>' .
+			'<tr><th>' . I18N::translate('Case insensitive') . '</th>' .
 			'<td>' .
 			'<input type="checkbox" name="case" value="i" ' . ($this->case == 'i' ? 'checked' : '') . '" onchange="this.form.submit();">' .
-			'<br><em>' . WT_I18N::translate('Tick this box to match both upper and lower case letters.') . '</em></td></tr>' .
+			'<br><em>' . I18N::translate('Tick this box to match both upper and lower case letters.') . '</em></td></tr>' .
 			parent::getOptionsForm();
 	}
 }

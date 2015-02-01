@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report>
-	<Title><var var="WT_I18N::translate('Changes')" /></Title>
-	<Description><var var="WT_I18N::translate('A report of recent and pending changes.')" /></Description>
-	<Input name="changeRangeStart" lookup="DATE" type="text" default="NOW-30"><var var="WT_I18N::translate('Starting range of change dates')" /></Input>
-	<Input name="changeRangeEnd" lookup="DATE" type="text" default="NOW"><var var="WT_I18N::translate('Ending range of change dates')" /></Input>
-	<Input name="sortby" type="select" default="CHAN" options="CHAN=>WT_I18N::translate('sort by date')|NAME=>WT_I18N::translate('sort by name')|BIRT:DATE=>WT_I18N::translate('sort by date of birth')"><var var="WT_I18N::translate('Sort order')" /></Input>
-	<Input name="pending" type="select" options="yes=>WT_I18N::translate('yes')|no=>WT_I18N::translate('no')"><var var="WT_I18N::translate('Show pending changes')" /></Input>
-	<Input name="pageSize" type="select" default="A4" options="letter=>WT_I18N::translate_c('paper size','Letter')|A3=>WT_I18N::translate_c('paper size', 'A3')|A4=>WT_I18N::translate_c('paper size','A4')|legal=>WT_I18N::translate_c('paper size','Legal')"><var var="WT_I18N::translate('Page size')" /></Input>
-	<Input name="pageorient" type="select" default="landscape" options="landscape=>WT_I18N::translate('Landscape')|portrait=>WT_I18N::translate('Portrait')"><var var="WT_I18N::translate('Orientation')" /></Input>
-	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>WT_I18N::translate_c('font name', 'Arial')|dejavusans=>WT_I18N::translate_c('font name', 'DejaVu')|helvetica=>WT_I18N::translate_c('font name', 'Helvetica')"><var var="WT_I18N::translate('Font')"/></Input>
+	<Title><var var="I18N::translate('Changes')" /></Title>
+	<Description><var var="I18N::translate('A report of recent and pending changes.')" /></Description>
+	<Input name="changeRangeStart" lookup="DATE" type="text" default="NOW-30"><var var="I18N::translate('Starting range of change dates')" /></Input>
+	<Input name="changeRangeEnd" lookup="DATE" type="text" default="NOW"><var var="I18N::translate('Ending range of change dates')" /></Input>
+	<Input name="sortby" type="select" default="CHAN" options="CHAN=>I18N::translate('sort by date')|NAME=>I18N::translate('sort by name')|BIRT:DATE=>I18N::translate('sort by date of birth')"><var var="I18N::translate('Sort order')" /></Input>
+	<Input name="pending" type="select" options="yes=>I18N::translate('yes')|no=>I18N::translate('no')"><var var="I18N::translate('Show pending changes')" /></Input>
+	<Input name="pageSize" type="select" default="A4" options="letter=>I18N::translate_c('paper size','Letter')|A3=>I18N::translate_c('paper size', 'A3')|A4=>I18N::translate_c('paper size','A4')|legal=>I18N::translate_c('paper size','Legal')"><var var="I18N::translate('Page size')" /></Input>
+	<Input name="pageorient" type="select" default="landscape" options="landscape=>I18N::translate('Landscape')|portrait=>I18N::translate('Portrait')"><var var="I18N::translate('Orientation')" /></Input>
+	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>I18N::translate_c('font name', 'Arial')|dejavusans=>I18N::translate_c('font name', 'DejaVu')|helvetica=>I18N::translate_c('font name', 'Helvetica')"><var var="I18N::translate('Font')"/></Input>
 
 	<!-- Header -->
 	<Style name="header" font="$fonts" size="16" style="b" />
@@ -38,29 +38,29 @@
 
 	<Doc pageSize="$pageSize" orientation="$pageorient" >
 		<Header>
-			<Cell align="center" height="20" newline="1" style="header"><var var="WT_I18N::translate('Changes')" /></Cell>
-			<Cell align="rightrtl" newline="1" style="pagenum"><var var="WT_I18N::translate('Page')" /> <PageNum /> <var var="WT_I18N::translate('of')" /> <TotalPages /></Cell>
+			<Cell align="center" height="20" newline="1" style="header"><var var="I18N::translate('Changes')" /></Cell>
+			<Cell align="rightrtl" newline="1" style="pagenum"><var var="I18N::translate('Page')" /> <PageNum /> <var var="I18N::translate('of')" /> <TotalPages /></Cell>
 		</Header>
 
 		<Body>
 
 			<!-- Pending changes section Header -->
 			<if condition="$pending=='yes'">
-				<Cell align="center" height="20" newline="1" style="header2"><var var="WT_I18N::translate('Pending changes')" /></Cell>
+				<Cell align="center" height="20" newline="1" style="header2"><var var="I18N::translate('Pending changes')" /></Cell>
 				<SetVar name="fill" value="" />
 				<if condition="$sortby=='NAME'"><SetVar name="fill" value="#AAAAAA" /></if>
 				<TextBox bgcolor="$fill" border="1" height="12" width="$namewidth">
-					<Text style="label"><var var="WT_I18N::translate('Name')" /></Text>
+					<Text style="label"><var var="I18N::translate('Name')" /></Text>
 				</TextBox>
 
 				<TextBox border="1" height="12" width="$datewidth">
-					<Text style="label"><var var="WT_I18N::translate('Differences')" /></Text>
+					<Text style="label"><var var="I18N::translate('Differences')" /></Text>
 				</TextBox>
 
 				<SetVar name="fill" value="" />
 				<if condition="$sortby=='CHAN'"><SetVar name="fill" value="#AAAAAA" /></if>
 				<TextBox bgcolor="$fill" border="1" height="12" newline="1">
-					<Text style="label"><var var="WT_I18N::translate('Last change')" /></Text>
+					<Text style="label"><var var="I18N::translate('Last change')" /></Text>
 				</TextBox>
 
 				<!-- Pending Changes Section Data -->
@@ -81,28 +81,28 @@
 
 				</List>
 				<Cell align="rightrtl" height="25" newline="1" style="label">
-					<var var="WT_I18N::translate('Total pending changes: ')" /><ListTotal /><br />
+					<var var="I18N::translate('Total pending changes: ')" /><ListTotal /><br />
 				</Cell>
 			</if>
 
 			<!-- Recent Changes Section Header -->
-			<Cell align="center" height="20" newline="1" style="header2"><var var="WT_I18N::translate('Recent changes')" /> <var var="changeRangeStart" date="1" /> - <var var="changeRangeEnd" date="1" /></Cell>
+			<Cell align="center" height="20" newline="1" style="header2"><var var="I18N::translate('Recent changes')" /> <var var="changeRangeStart" date="1" /> - <var var="changeRangeEnd" date="1" /></Cell>
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='NAME'"><SetVar name="fill" value="#AAAAAA" /></if>
 			<TextBox bgcolor="$fill" border="1" height="12" width="$namewidth">
-				<Text style="label"><var var="WT_I18N::translate('Name')" /></Text>
+				<Text style="label"><var var="I18N::translate('Name')" /></Text>
 			</TextBox>
 
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='BIRT:DATE'"><SetVar name="fill" value="#AAAAAA" /></if>
 			<TextBox bgcolor="$fill" border="1" height="12" width="$datewidth">
-				<Text style="label"><var var="WT_I18N::translate('Birth')" /> - <var var="WT_I18N::translate('Death')" /></Text>
+				<Text style="label"><var var="I18N::translate('Birth')" /> - <var var="I18N::translate('Death')" /></Text>
 			</TextBox>
 
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='CHAN'"><SetVar name="fill" value="#AAAAAA" /></if>
 			<TextBox bgcolor="$fill" border="1" height="12" newline="1">
-				<Text style="label"><var var="WT_I18N::translate('Last change')" /></Text>
+				<Text style="label"><var var="I18N::translate('Last change')" /></Text>
 			</TextBox>
 
 			<!-- Recent Changes Section Data -->
@@ -112,7 +112,7 @@
 				</TextBox>
 
 				<TextBox height="12" width="$datewidth">
-					<Text style="text"><var var="WT_I18N::translate('Birth')" />: <GedcomValue tag="BIRT:DATE" /><br /><var var="WT_I18N::translate('Death')" />: <GedcomValue tag="DEAT:DATE" /></Text>
+					<Text style="text"><var var="I18N::translate('Birth')" />: <GedcomValue tag="BIRT:DATE" /><br /><var var="I18N::translate('Death')" />: <GedcomValue tag="DEAT:DATE" /></Text>
 				</TextBox>
 
 				<TextBox height="12" newline="1">
@@ -121,7 +121,7 @@
 			</List>
 
 			<Cell align="rightrtl" height="25" newline="1" style="label">
-				<var var="WT_I18N::translate('Total accepted changes: ')" /><ListTotal />
+				<var var="I18N::translate('Total accepted changes: ')" /><ListTotal />
 			</Cell>
 		</Body>
 		<Footer>

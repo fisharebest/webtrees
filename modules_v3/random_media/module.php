@@ -1,39 +1,33 @@
 <?php
-// webtrees: Web based Family History software
-// Copyright (C) 2015 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2010 John Finlay
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Webtrees;
 
-use WT\Auth;
-use WT\Theme;
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 /**
  * Class random_media_WT_Module
  */
-class random_media_WT_Module extends WT_Module implements WT_Module_Block {
+class random_media_WT_Module extends Module implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
-		return /* I18N: Name of a module */WT_I18N::translate('Slide show');
+		return /* I18N: Name of a module */ I18N::translate('Slide show');
 	}
 
 	/** {@inheritdoc} */
 	public function getDescription() {
-		return /* I18N: Description of the “Slide show” module */ WT_I18N::translate('Random images from the current family tree.');
+		return /* I18N: Description of the “Slide show” module */ I18N::translate('Random images from the current family tree.');
 	}
 
 	/** {@inheritdoc} */
@@ -42,11 +36,11 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$filter   = get_block_setting($block_id, 'filter', 'all');
 		$controls = get_block_setting($block_id, 'controls', '1');
-		$start    = get_block_setting($block_id, 'start', '0') || WT_Filter::getBool('start');
+		$start    = get_block_setting($block_id, 'start', '0') || Filter::getBool('start');
 
 		// We can apply the filters using SQL
 		// Do not use "ORDER BY RAND()" - it is very slow on large tables.  Use PHP::array_rand() instead.
-		$all_media = WT_DB::prepare(
+		$all_media = Database::prepare(
 			"SELECT m_id FROM `##media`" .
 			" WHERE m_file = ?" .
 			" AND m_ext  IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, '')" .
@@ -89,7 +83,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 		$random_media = null;
 		while ($all_media) {
 			$n = array_rand($all_media);
-			$media = WT_Media::getInstance($all_media[$n]);
+			$media = Media::getInstance($all_media[$n]);
 			if ($media->canShow() && !$media->isExternal()) {
 				// Check if it is linked to a suitable individual
 				foreach ($media->linkedIndividuals('OBJE') as $indi) {
@@ -110,7 +104,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 		$id = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		if ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype === 'user' && Auth::check()) {
-			$title = '<i class="icon-admin" title="' . WT_I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
+			$title = '<i class="icon-admin" title="' . I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
 		} else {
 			$title = '';
 		}
@@ -125,8 +119,8 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 					$icon_class = 'icon-media-play';
 				}
 				$content .= '<div dir="ltr" class="center" id="random_picture_controls' . $block_id . '"><br>';
-				$content .= "<a href=\"#\" onclick=\"togglePlay(); return false;\" id=\"play_stop\" class=\"" . $icon_class . "\" title=\"" . WT_I18N::translate('Play') . "/" . WT_I18N::translate('Stop') . '"></a>';
-				$content .= '<a href="#" onclick="jQuery(\'#block_' . $block_id . '\').load(\'index.php?ctype=' . $ctype . '&amp;action=ajax&amp;block_id=' . $block_id . '\');return false;" title="' . WT_I18N::translate('Next image') . '" class="icon-media-next"></a>';
+				$content .= "<a href=\"#\" onclick=\"togglePlay(); return false;\" id=\"play_stop\" class=\"" . $icon_class . "\" title=\"" . I18N::translate('Play') . "/" . I18N::translate('Stop') . '"></a>';
+				$content .= '<a href="#" onclick="jQuery(\'#block_' . $block_id . '\').load(\'index.php?ctype=' . $ctype . '&amp;action=ajax&amp;block_id=' . $block_id . '\');return false;" title="' . I18N::translate('Next image') . '" class="icon-media-next"></a>';
 				$content .= '</div><script>
 					var play = false;
 						function togglePlay() {
@@ -163,13 +157,13 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= '<br>';
 			$content .= '<a href="' . $random_media->getHtmlUrl() . '"><b>' . $random_media->getFullName() . '</b></a><br>';
 			foreach ($random_media->linkedIndividuals('OBJE') as $individual) {
-				$content .= '<a href="' . $individual->getHtmlUrl() . '">' . WT_I18N::translate('View individual') . ' — ' . $individual->getFullname() . '</a><br>';
+				$content .= '<a href="' . $individual->getHtmlUrl() . '">' . I18N::translate('View individual') . ' — ' . $individual->getFullname() . '</a><br>';
 			}
 			foreach ($random_media->linkedFamilies('OBJE') as $family) {
-				$content .= '<a href="' . $family->getHtmlUrl() . '">' . WT_I18N::translate('View family') . ' — ' . $family->getFullname() . '</a><br>';
+				$content .= '<a href="' . $family->getHtmlUrl() . '">' . I18N::translate('View family') . ' — ' . $family->getFullname() . '</a><br>';
 			}
 			foreach ($random_media->linkedSources('OBJE') as $source) {
-				$content .= '<a href="' . $source->getHtmlUrl() . '">' . WT_I18N::translate('View source') . ' — ' . $source->getFullname() . '</a><br>';
+				$content .= '<a href="' . $source->getHtmlUrl() . '">' . I18N::translate('View source') . ' — ' . $source->getFullname() . '</a><br>';
 			}
 			$content .= '<br><div class="indent">';
 			$content .= print_fact_notes($random_media->getGedcom(), "1", false);
@@ -178,7 +172,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= '</div>'; // random_picture_content
 			$content .= '</div>'; // random_picture_container
 		} else {
-			$content = WT_I18N::translate('This family tree has no images to display.');
+			$content = I18N::translate('This family tree has no images to display.');
 		}
 		if ($template) {
 			echo Theme::theme()->formatBlock($id, $title, $class, $content);
@@ -204,39 +198,39 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 
 	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
-		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
-			set_block_setting($block_id, 'filter', WT_Filter::post('filter', 'indi|event|all', 'all'));
-			set_block_setting($block_id, 'controls', WT_Filter::postBool('controls'));
-			set_block_setting($block_id, 'start', WT_Filter::postBool('start'));
-			set_block_setting($block_id, 'filter_avi', WT_Filter::postBool('filter_avi'));
-			set_block_setting($block_id, 'filter_bmp', WT_Filter::postBool('filter_bmp'));
-			set_block_setting($block_id, 'filter_gif', WT_Filter::postBool('filter_gif'));
-			set_block_setting($block_id, 'filter_jpeg', WT_Filter::postBool('filter_jpeg'));
-			set_block_setting($block_id, 'filter_mp3', WT_Filter::postBool('filter_mp3'));
-			set_block_setting($block_id, 'filter_ole', WT_Filter::postBool('filter_ole'));
-			set_block_setting($block_id, 'filter_pcx', WT_Filter::postBool('filter_pcx'));
-			set_block_setting($block_id, 'filter_pdf', WT_Filter::postBool('filter_pdf'));
-			set_block_setting($block_id, 'filter_png', WT_Filter::postBool('filter_png'));
-			set_block_setting($block_id, 'filter_tiff', WT_Filter::postBool('filter_tiff'));
-			set_block_setting($block_id, 'filter_wav', WT_Filter::postBool('filter_wav'));
-			set_block_setting($block_id, 'filter_audio', WT_Filter::postBool('filter_audio'));
-			set_block_setting($block_id, 'filter_book', WT_Filter::postBool('filter_book'));
-			set_block_setting($block_id, 'filter_card', WT_Filter::postBool('filter_card'));
-			set_block_setting($block_id, 'filter_certificate', WT_Filter::postBool('filter_certificate'));
-			set_block_setting($block_id, 'filter_coat', WT_Filter::postBool('filter_coat'));
-			set_block_setting($block_id, 'filter_document', WT_Filter::postBool('filter_document'));
-			set_block_setting($block_id, 'filter_electronic', WT_Filter::postBool('filter_electronic'));
-			set_block_setting($block_id, 'filter_fiche', WT_Filter::postBool('filter_fiche'));
-			set_block_setting($block_id, 'filter_film', WT_Filter::postBool('filter_film'));
-			set_block_setting($block_id, 'filter_magazine', WT_Filter::postBool('filter_magazine'));
-			set_block_setting($block_id, 'filter_manuscript', WT_Filter::postBool('filter_manuscript'));
-			set_block_setting($block_id, 'filter_map', WT_Filter::postBool('filter_map'));
-			set_block_setting($block_id, 'filter_newspaper', WT_Filter::postBool('filter_newspaper'));
-			set_block_setting($block_id, 'filter_other', WT_Filter::postBool('filter_other'));
-			set_block_setting($block_id, 'filter_painting', WT_Filter::postBool('filter_painting'));
-			set_block_setting($block_id, 'filter_photo', WT_Filter::postBool('filter_photo'));
-			set_block_setting($block_id, 'filter_tombstone', WT_Filter::postBool('filter_tombstone'));
-			set_block_setting($block_id, 'filter_video', WT_Filter::postBool('filter_video'));
+		if (Filter::postBool('save') && Filter::checkCsrf()) {
+			set_block_setting($block_id, 'filter', Filter::post('filter', 'indi|event|all', 'all'));
+			set_block_setting($block_id, 'controls', Filter::postBool('controls'));
+			set_block_setting($block_id, 'start', Filter::postBool('start'));
+			set_block_setting($block_id, 'filter_avi', Filter::postBool('filter_avi'));
+			set_block_setting($block_id, 'filter_bmp', Filter::postBool('filter_bmp'));
+			set_block_setting($block_id, 'filter_gif', Filter::postBool('filter_gif'));
+			set_block_setting($block_id, 'filter_jpeg', Filter::postBool('filter_jpeg'));
+			set_block_setting($block_id, 'filter_mp3', Filter::postBool('filter_mp3'));
+			set_block_setting($block_id, 'filter_ole', Filter::postBool('filter_ole'));
+			set_block_setting($block_id, 'filter_pcx', Filter::postBool('filter_pcx'));
+			set_block_setting($block_id, 'filter_pdf', Filter::postBool('filter_pdf'));
+			set_block_setting($block_id, 'filter_png', Filter::postBool('filter_png'));
+			set_block_setting($block_id, 'filter_tiff', Filter::postBool('filter_tiff'));
+			set_block_setting($block_id, 'filter_wav', Filter::postBool('filter_wav'));
+			set_block_setting($block_id, 'filter_audio', Filter::postBool('filter_audio'));
+			set_block_setting($block_id, 'filter_book', Filter::postBool('filter_book'));
+			set_block_setting($block_id, 'filter_card', Filter::postBool('filter_card'));
+			set_block_setting($block_id, 'filter_certificate', Filter::postBool('filter_certificate'));
+			set_block_setting($block_id, 'filter_coat', Filter::postBool('filter_coat'));
+			set_block_setting($block_id, 'filter_document', Filter::postBool('filter_document'));
+			set_block_setting($block_id, 'filter_electronic', Filter::postBool('filter_electronic'));
+			set_block_setting($block_id, 'filter_fiche', Filter::postBool('filter_fiche'));
+			set_block_setting($block_id, 'filter_film', Filter::postBool('filter_film'));
+			set_block_setting($block_id, 'filter_magazine', Filter::postBool('filter_magazine'));
+			set_block_setting($block_id, 'filter_manuscript', Filter::postBool('filter_manuscript'));
+			set_block_setting($block_id, 'filter_map', Filter::postBool('filter_map'));
+			set_block_setting($block_id, 'filter_newspaper', Filter::postBool('filter_newspaper'));
+			set_block_setting($block_id, 'filter_other', Filter::postBool('filter_other'));
+			set_block_setting($block_id, 'filter_painting', Filter::postBool('filter_painting'));
+			set_block_setting($block_id, 'filter_photo', Filter::postBool('filter_photo'));
+			set_block_setting($block_id, 'filter_tombstone', Filter::postBool('filter_tombstone'));
+			set_block_setting($block_id, 'filter_video', Filter::postBool('filter_video'));
 		}
 
 		require_once WT_ROOT . 'includes/functions/functions_edit.php';
@@ -244,12 +238,12 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$filter   = get_block_setting($block_id, 'filter', 'all');
 		$controls = get_block_setting($block_id, 'controls', '1');
-		$start    = get_block_setting($block_id, 'start', '0') || WT_Filter::getBool('start');
+		$start    = get_block_setting($block_id, 'start', '0') || Filter::getBool('start');
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Show only individuals, events, or all?');
+		echo I18N::translate('Show only individuals, events, or all?');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('filter', array('indi'=>WT_I18N::translate('Individuals'), 'event'=>WT_I18N::translate('Facts and events'), 'all'=>WT_I18N::translate('All')), null, $filter, '');
+		echo select_edit_control('filter', array('indi'=> I18N::translate('Individuals'), 'event'=> I18N::translate('Facts and events'), 'all'=> I18N::translate('All')), null, $filter, '');
 		echo '</td></tr>';
 
 		$filters = array(
@@ -285,7 +279,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 		);
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Filter');
+		echo I18N::translate('Filter');
 		?>
 	</td>
 	<td class="optionbox">
@@ -393,13 +387,13 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 	<?php
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Show slide show controls?');
+		echo I18N::translate('Show slide show controls?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('controls', $controls);
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Start slide show on page load?');
+		echo I18N::translate('Start slide show on page load?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('start', $start);
 		echo '</td></tr>';

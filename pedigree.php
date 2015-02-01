@@ -1,25 +1,20 @@
 <?php
-// View for the pedigree tree.
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Webtrees;
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 define('WT_SCRIPT_NAME', 'pedigree.php');
 require './includes/session.php';
@@ -30,7 +25,7 @@ define("MENU_WRAPPER", "<div id='childarrow' style='%s:%spx; top:%spx'><div><a h
 define("MENU_ITEM", "<a href='pedigree.php?rootid=%s&amp;show_full=%s&amp;PEDIGREE_GENERATIONS=%s&amp;talloffset=%s' class='%s'>%s</a>");
 define("BOX_WRAPPER", "<div class='shadow' style='%s:%spx; top:%spx; width:%spx; height:%spx'>");
 
-$controller = new WT_Controller_Pedigree;
+$controller = new PedigreeController;
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
@@ -41,24 +36,24 @@ $controller
 	<h2><?php echo $controller->getPageTitle(); ?></h2>
 
 	<form name="people" id="people" method="get" action="?">
-		<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
+		<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
 		<input type="hidden" name="show_full" value="<?php echo $controller->show_full; ?>">
 		<table class="list_table">
 			<tr>
 				<th class="descriptionbox wrap">
-					<?php echo WT_I18N::translate('Individual'); ?>
+					<?php echo I18N::translate('Individual'); ?>
 				</th>
 				<th class="descriptionbox wrap">
-					<?php echo WT_I18N::translate('Generations'); ?>
+					<?php echo I18N::translate('Generations'); ?>
 				</th>
 				<th class="descriptionbox wrap">
-					<?php echo WT_I18N::translate('Layout'); ?>
+					<?php echo I18N::translate('Layout'); ?>
 				</th>
 				<th class="descriptionbox wrap">
-					<?php echo WT_I18N::translate('Show details'); ?>
+					<?php echo I18N::translate('Show details'); ?>
 				</th>
 				<th rowspan="2" class="facts_label03">
-					<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>">
+					<input type="submit" value="<?php echo I18N::translate('View'); ?>">
 				</th>
 			</tr>
 			<tr>
@@ -71,7 +66,7 @@ $controller
 					<?php echo edit_field_integers('PEDIGREE_GENERATIONS', $controller->PEDIGREE_GENERATIONS, 3, $MAX_PEDIGREE_GENERATIONS); ?>
 				</td>
 				<td class="optionbox center">
-					<?php echo select_edit_control('talloffset', array(0 => WT_I18N::translate('Portrait'), 1 => WT_I18N::translate('Landscape'), 2 => WT_I18N::translate('Oldest at top'), 3 => WT_I18N::translate('Oldest at bottom')), null, $talloffset); ?>
+					<?php echo select_edit_control('talloffset', array(0 => I18N::translate('Portrait'), 1 => I18N::translate('Landscape'), 2 => I18N::translate('Oldest at top'), 3 => I18N::translate('Oldest at bottom')), null, $talloffset); ?>
 				</td>
 				<td class="optionbox center">
 					<input type="checkbox" value="<?php if ($controller->show_full) {
@@ -210,7 +205,7 @@ if (count($famids) > 0) {
 	printf(MENU_WRAPPER, $posn, $offsetx, $offsety, $arrow);
 
 	foreach ($famids as $family) {
-		echo '<span class="name1">', WT_I18N::translate('Family'), '</span>';
+		echo '<span class="name1">', I18N::translate('Family'), '</span>';
 		$spouse = $family->getSpouse($controller->root);
 		if ($spouse) {
 			printf(MENU_ITEM, $spouse->getXref(), $controller->show_full, $controller->PEDIGREE_GENERATIONS, $talloffset, 'name1', $spouse->getFullName());
@@ -223,13 +218,13 @@ if (count($famids) > 0) {
 	//-- echo the siblings
 	foreach ($cfamids as $family) {
 		if ($family != null) {
-			$siblings = array_filter($family->getChildren(), function(WT_Individual $item) use ($controller) {
+			$siblings = array_filter($family->getChildren(), function(Individual $item) use ($controller) {
 				return $controller->rootid != $item->getXref();
 			});
 			$num      = count($siblings);
 			if ($num) {
 				echo "<span class='name1'>";
-				echo $num > 1 ? WT_I18N::translate('Siblings') : WT_I18N::translate('Sibling');
+				echo $num > 1 ? I18N::translate('Siblings') : I18N::translate('Sibling');
 				echo "</span>";
 				foreach ($siblings as $child) {
 					printf(MENU_ITEM, $child->getXref(), $controller->show_full, $controller->PEDIGREE_GENERATIONS, $talloffset, 'name1', $child->getFullName());

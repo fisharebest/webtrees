@@ -1,25 +1,20 @@
 <?php
-// Welcome page for the administration module
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2015 webtrees development team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Webtrees;
 
-use WT\Auth;
-use WT\User;
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 define('WT_SCRIPT_NAME', 'admin.php');
 
@@ -83,7 +78,6 @@ $old_files = array(
 	WT_ROOT . 'wtinfo.php',
 	// Removed in 1.1.1
 	// Removed in 1.1.2
-	WT_ROOT . 'library/WT/TreeNav.php',
 	WT_ROOT . 'treenav.php',
 	// Removed in 1.2.0
 	WT_ROOT . 'themes/clouds/jquery',
@@ -142,7 +136,6 @@ $old_files = array(
 	// Removed in 1.2.5
 	WT_ROOT . 'includes/media_reorder_count.php',
 	WT_ROOT . 'includes/media_tab_head.php',
-	WT_ROOT . 'library/WT/JS.php',
 	WT_ROOT . 'modules_v3/clippings/index.php',
 	WT_ROOT . 'modules_v3/googlemap/css/googlemap_style.css',
 	WT_ROOT . 'modules_v3/googlemap/css/wt_v3_places_edit.css',
@@ -249,9 +242,6 @@ $old_files = array(
 	WT_ROOT . 'includes/functions/functions_privacy.php',
 	WT_ROOT . 'includes/media_reorder.php',
 	WT_ROOT . 'includes/old_messages.php',
-	WT_ROOT . 'library/WT/Event.php',
-	WT_ROOT . 'library/WT/Person.php',
-	WT_ROOT . 'library/phpmailer',
 	WT_ROOT . 'modules_v3/GEDFact_assistant/_CENS/census_note_decode.php',
 	WT_ROOT . 'modules_v3/GEDFact_assistant/_CENS/census_asst_date.php',
 	WT_ROOT . 'modules_v3/googlemap/wt_v3_googlemap.js.php',
@@ -305,10 +295,6 @@ $old_files = array(
 	WT_ROOT . 'themes/webtrees/css-1.5.1',
 	WT_ROOT . 'themes/xenea/css-1.5.1',
 	// Removed in 1.5.3
-	WT_ROOT . 'library/htmlpurifier-4.6.0',
-	//WT_ROOT.'library/Michelf', On windows, this would delete library/michelf
-	WT_ROOT . 'library/tcpdf',
-	WT_ROOT . 'library/Zend',
 	WT_ROOT . 'modules_v3/GEDFact_assistant/_CENS/census_asst_help.php',
 	WT_ROOT . 'modules_v3/googlemap/admin_places.php',
 	WT_ROOT . 'modules_v3/googlemap/defaultconfig.php',
@@ -330,7 +316,6 @@ $old_files = array(
 	// Removed in 1.6.0
 	WT_ROOT . 'downloadbackup.php',
 	WT_ROOT . 'includes/functions/functions_utf-8.php',
-	WT_ROOT . 'library/WT/Debug.php',
 	WT_ROOT . 'modules_v3/ckeditor/ckeditor-4.3.2-custom',
 	WT_ROOT . 'site-php-version.php',
 	WT_ROOT . 'themes/_administration/css-1.5.3',
@@ -362,8 +347,6 @@ $old_files = array(
 	// Removed in 1.7.0
 	WT_ROOT . 'admin_site_other.php',
 	WT_ROOT . 'js',
-	WT_ROOT . 'library/WT/MenuBar.php',
-	WT_ROOT . 'library/WT/Query/Admin.php',
 	WT_ROOT . 'save.php',
 	WT_ROOT . 'themes/_administration/css-1.6.2',
 	WT_ROOT . 'themes/_administration/templates',
@@ -398,15 +381,15 @@ $old_files = array(
 // Delete old files (if we can).
 $files_to_delete = array();
 foreach ($old_files as $file) {
-	if (file_exists($file) && !WT_File::delete($file)) {
+	if (file_exists($file) && !File::delete($file)) {
 		$files_to_delete[] = $file;
 	}
 }
 
-$controller = new WT_Controller_Page;
+$controller = new PageController;
 $controller
 	->restrictAccess(Auth::isManager())
-	->setPageTitle(WT_I18N::translate('Control panel') . ' — ' . /* I18N: A summary of the system status */ WT_I18N::translate('Dashboard'))
+	->setPageTitle(I18N::translate('Control panel') . ' — ' . /* I18N: A summary of the system status */ I18N::translate('Dashboard'))
 	->pageHeader();
 
 // Check for updates
@@ -424,12 +407,12 @@ $update_available = Auth::isAdmin() && $latest_version && version_compare(WT_VER
 $total_users = User::count();
 
 // Administrators
-$administrators = WT_DB::prepare(
+$administrators = Database::prepare(
 	"SELECT SQL_CACHE user_id, real_name FROM `##user` JOIN `##user_setting` USING (user_id) WHERE setting_name='canadmin' AND setting_value=1"
 )->fetchAll();
 
 // Managers
-$managers = WT_DB::prepare(
+$managers = Database::prepare(
 	"SELECT SQL_CACHE user_id, real_name FROM `##user` JOIN `##user_gedcom_setting` USING (user_id)" .
 	" WHERE setting_name = 'canedit' AND setting_value='admin'" .
 	" GROUP BY user_id, real_name" .
@@ -437,7 +420,7 @@ $managers = WT_DB::prepare(
 )->fetchAll();
 
 // Moderators
-$moderators = WT_DB::prepare(
+$moderators = Database::prepare(
 	"SELECT SQL_CACHE user_id, real_name FROM `##user` JOIN `##user_gedcom_setting` USING (user_id)" .
 	" WHERE setting_name = 'canedit' AND setting_value='accept'" .
 	" GROUP BY user_id, real_name" .
@@ -445,42 +428,42 @@ $moderators = WT_DB::prepare(
 )->fetchAll();
 
 // Number of users who have not verified their email address
-$unverified = WT_DB::prepare(
+$unverified = Database::prepare(
 	"SELECT SQL_CACHE user_id, real_name FROM `##user` JOIN `##user_setting` USING (user_id)" .
 	" WHERE setting_name = 'verified' AND setting_value = 0" .
 	" ORDER BY real_name"
 )->fetchAll();
 
 // Number of users whose accounts are not approved by an administrator
-$unapproved = WT_DB::prepare(
+$unapproved = Database::prepare(
 	"SELECT SQL_CACHE user_id, real_name FROM `##user` JOIN `##user_setting` USING (user_id)" .
 	" WHERE setting_name = 'verified_by_admin' AND setting_value = 0" .
 	" ORDER BY real_name"
 )->fetchAll();
 
 // Users currently logged in
-$logged_in = WT_DB::prepare(
+$logged_in = Database::prepare(
 	"SELECT SQL_NO_CACHE DISTINCT user_id, real_name FROM `##user` JOIN `##session` USING (user_id)" .
 	" ORDER BY real_name"
 )->fetchAll();
 
 // Count of records
-$individuals = WT_DB::prepare(
+$individuals = Database::prepare(
 	"SELECT SQL_CACHE gedcom_id, COUNT(i_id) AS count FROM `##gedcom` LEFT JOIN `##individuals` ON gedcom_id = i_file GROUP BY gedcom_id"
 )->fetchAssoc();
-$families = WT_DB::prepare(
+$families = Database::prepare(
 	"SELECT SQL_CACHE gedcom_id, COUNT(f_id) AS count FROM `##gedcom` LEFT JOIN `##families` ON gedcom_id = f_file GROUP BY gedcom_id"
 )->fetchAssoc();
-$sources = WT_DB::prepare(
+$sources = Database::prepare(
 	"SELECT SQL_CACHE gedcom_id, COUNT(s_id) AS count FROM `##gedcom` LEFT JOIN `##sources` ON gedcom_id = s_file GROUP BY gedcom_id"
 )->fetchAssoc();
-$media = WT_DB::prepare(
+$media = Database::prepare(
 	"SELECT SQL_CACHE gedcom_id, COUNT(m_id) AS count FROM `##gedcom` LEFT JOIN `##media` ON gedcom_id = m_file GROUP BY gedcom_id"
 )->fetchAssoc();
-$repositories = WT_DB::prepare(
+$repositories = Database::prepare(
 	"SELECT SQL_CACHE gedcom_id, COUNT(o_id) AS count FROM `##gedcom` LEFT JOIN `##other` ON gedcom_id = o_file AND o_type = 'REPO' GROUP BY gedcom_id"
 )->fetchAssoc();
-$changes = WT_DB::prepare(
+$changes = Database::prepare(
 	"SELECT SQL_CACHE g.gedcom_id, COUNT(change_id) AS count FROM `##gedcom` AS g LEFT JOIN `##change` AS c ON g.gedcom_id = c.gedcom_id AND status = 'pending' GROUP BY g.gedcom_id"
 )->fetchAssoc();
 
@@ -488,7 +471,7 @@ $changes = WT_DB::prepare(
 <h1><?php echo $controller->getPageTitle(); ?></h1>
 
 <p>
-	<?php echo WT_I18N::translate('These pages provide access to all the configuration settings and management tools for this webtrees site.'); ?>
+	<?php echo I18N::translate('These pages provide access to all the configuration settings and management tools for this webtrees site.'); ?>
 </p>
 
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -505,19 +488,19 @@ $changes = WT_DB::prepare(
 		<div id="webtrees-version-panel" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="webtrees-version-heading">
 			<div class="panel-body">
 				<p>
-					<?php echo /* I18N: %s is a URL/link to the project website */ WT_I18N::translate('Support and documentation can be found at %s.', '<a href="http://webtrees.net/">webtrees.net</a>'); ?>
+					<?php echo /* I18N: %s is a URL/link to the project website */ I18N::translate('Support and documentation can be found at %s.', '<a href="http://webtrees.net/">webtrees.net</a>'); ?>
 				</p>
 				<?php if (Auth::isAdmin()): ?>
 				<p>
 					<?php if ($latest_version === ''): ?>
-					<?php echo WT_I18N::translate('No upgrade information is available.'); ?>
+					<?php echo I18N::translate('No upgrade information is available.'); ?>
 					<?php elseif ($update_available): ?>
-					<?php echo WT_I18N::translate('A new version of webtrees is available.'); ?>
+					<?php echo I18N::translate('A new version of webtrees is available.'); ?>
 					<a href="admin_site_upgrade.php" class="error">
-						<?php echo /* I18N: %s is a version number */ WT_I18N::translate('Upgrade to webtrees %s.', WT_Filter::escapeHtml($latest_version)); ?>
+						<?php echo /* I18N: %s is a version number */ I18N::translate('Upgrade to webtrees %s.', Filter::escapeHtml($latest_version)); ?>
 					</a>
 					<?php else: ?>
-						<?php echo WT_I18N::translate('This is the latest version of webtrees.  No upgrade is available.'); ?>
+						<?php echo I18N::translate('This is the latest version of webtrees.  No upgrade is available.'); ?>
 					<?php endif; ?>
 				</p>
 				<?php endif; ?>
@@ -531,7 +514,7 @@ $changes = WT_DB::prepare(
 		<div class="panel-heading" role="tab" id="users-heading">
 			<h2 class="panel-title">
 				<a data-toggle="collapse" data-parent="#accordion" href="#users-panel" aria-expanded="false" aria-controls="users-panel">
-					<?php echo WT_I18N::translate('Users'); ?>
+					<?php echo I18N::translate('Users'); ?>
 				</a>
 			</h2>
 		</div>
@@ -539,82 +522,82 @@ $changes = WT_DB::prepare(
 			<div class="panel-body">
 				<table class="table table-condensed">
 					<caption class="sr-only">
-						<?php echo WT_I18N::translate('Users'); ?>
+						<?php echo I18N::translate('Users'); ?>
 					</caption>
 					<tbody>
 						<tr>
 							<th class="col-xs-3">
-								<?php echo WT_I18N::translate('Total number of users'); ?>
+								<?php echo I18N::translate('Total number of users'); ?>
 							</th>
 							<td class="col-xs-9">
 								<a href="admin_users.php">
-									<?php echo WT_I18N::number($total_users); ?>
+									<?php echo I18N::number($total_users); ?>
 								</a>
 							</td>
 						</tr>
 						<tr>
 							<th>
-								<?php echo WT_I18N::translate('Administrators'); ?>
+								<?php echo I18N::translate('Administrators'); ?>
 							</th>
 							<td>
 								<?php foreach ($administrators as $n => $user): ?>
-									<?php echo $n ? WT_I18N::$list_separator : ''; ?>
-									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>"><?php echo WT_Filter::escapeHtml($user->real_name); ?></a>
+									<?php echo $n ? I18N::$list_separator : ''; ?>
+									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>"><?php echo Filter::escapeHtml($user->real_name); ?></a>
 								<?php endforeach; ?>
 							</td>
 						</tr>
 						<tr>
 							<th>
-								<?php echo WT_I18N::translate('Managers'); ?>
+								<?php echo I18N::translate('Managers'); ?>
 							</th>
 							<td>
 								<?php foreach ($managers as $n => $user): ?>
-									<?php echo $n ? WT_I18N::$list_separator : ''; ?>
-									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>"><?php echo WT_Filter::escapeHtml($user->real_name); ?></a>
+									<?php echo $n ? I18N::$list_separator : ''; ?>
+									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>"><?php echo Filter::escapeHtml($user->real_name); ?></a>
 								<?php endforeach; ?>
 							</td>
 						</tr>
 						<tr>
 							<th>
-								<?php echo WT_I18N::translate('Moderators'); ?>
+								<?php echo I18N::translate('Moderators'); ?>
 							</th>
 							<td>
 								<?php foreach ($moderators as $n => $user): ?>
-									<?php echo $n ? WT_I18N::$list_separator : ''; ?>
-									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>"><?php echo WT_Filter::escapeHtml($user->real_name); ?></a>
+									<?php echo $n ? I18N::$list_separator : ''; ?>
+									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>"><?php echo Filter::escapeHtml($user->real_name); ?></a>
 								<?php endforeach; ?>
 							</td>
 						</tr>
 						<tr class="<?php echo $unverified ? 'danger' : ''; ?>">
 							<th>
-								<?php echo WT_I18N::translate('Not verified by the user'); ?>
+								<?php echo I18N::translate('Not verified by the user'); ?>
 							</th>
 							<td>
 								<?php foreach ($unverified as $n => $user): ?>
-									<?php echo $n ? WT_I18N::$list_separator : ''; ?>
-									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>"><?php echo WT_Filter::escapeHtml($user->real_name); ?></a>
+									<?php echo $n ? I18N::$list_separator : ''; ?>
+									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>"><?php echo Filter::escapeHtml($user->real_name); ?></a>
 								<?php endforeach; ?>
 							</td>
 						</tr>
 						<tr class="<?php echo $unapproved ? 'danger' : ''; ?>">
 							<th>
-								<?php echo WT_I18N::translate('Not approved by an administrator'); ?>
+								<?php echo I18N::translate('Not approved by an administrator'); ?>
 							</th>
 							<td>
 								<?php foreach ($unapproved as $n => $user): ?>
-									<?php echo $n ? WT_I18N::$list_separator : ''; ?>
-									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>"><?php echo WT_Filter::escapeHtml($user->real_name); ?></a>
+									<?php echo $n ? I18N::$list_separator : ''; ?>
+									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>"><?php echo Filter::escapeHtml($user->real_name); ?></a>
 								<?php endforeach; ?>
 							</td>
 						</tr>
 						<tr>
 							<th>
-								<?php echo WT_I18N::translate('Users logged in'); ?>
+								<?php echo I18N::translate('Users logged in'); ?>
 							</th>
 							<td>
 								<?php foreach ($logged_in as $n => $user): ?>
-								<?php echo $n ? WT_I18N::$list_separator : ''; ?>
-									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>"><?php echo WT_Filter::escapeHtml($user->real_name); ?></a>
+								<?php echo $n ? I18N::$list_separator : ''; ?>
+									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>"><?php echo Filter::escapeHtml($user->real_name); ?></a>
 								<?php endforeach; ?>
 							</td>
 						</tr>
@@ -630,7 +613,7 @@ $changes = WT_DB::prepare(
 		<div class="panel-heading" role="tab" id="trees-heading">
 			<h2 class="panel-title">
 				<a data-toggle="collapse" data-parent="#accordion" href="#trees-panel" aria-expanded="false" aria-controls="trees-panel">
-					<?php echo WT_I18N::translate('Family trees'); ?>
+					<?php echo I18N::translate('Family trees'); ?>
 				</a>
 			</h2>
 		</div>
@@ -638,21 +621,21 @@ $changes = WT_DB::prepare(
 			<div class="panel-body">
 				<table class="table table-condensed">
 					<caption class="sr-only">
-						<?php echo WT_I18N::translate('Family trees'); ?>
+						<?php echo I18N::translate('Family trees'); ?>
 					</caption>
 					<thead>
 						<tr>
-							<th class="col-xs-5"><?php echo WT_I18N::translate('Family tree'); ?></th>
-							<th class="col-xs-2 text-right flip"><?php echo WT_I18N::translate('Pending changes'); ?></th>
-							<th class="col-xs-1 text-right flip"><?php echo WT_I18N::translate('Individuals'); ?></th>
-							<th class="col-xs-1 text-right flip"><?php echo WT_I18N::translate('Families'); ?></th>
-							<th class="col-xs-1 text-right flip"><?php echo WT_I18N::translate('Sources'); ?></th>
-							<th class="col-xs-1 text-right flip"><?php echo WT_I18N::translate('Repositories'); ?></th>
-							<th class="col-xs-1 text-right flip"><?php echo WT_I18N::translate('Media'); ?></th>
+							<th class="col-xs-5"><?php echo I18N::translate('Family tree'); ?></th>
+							<th class="col-xs-2 text-right flip"><?php echo I18N::translate('Pending changes'); ?></th>
+							<th class="col-xs-1 text-right flip"><?php echo I18N::translate('Individuals'); ?></th>
+							<th class="col-xs-1 text-right flip"><?php echo I18N::translate('Families'); ?></th>
+							<th class="col-xs-1 text-right flip"><?php echo I18N::translate('Sources'); ?></th>
+							<th class="col-xs-1 text-right flip"><?php echo I18N::translate('Repositories'); ?></th>
+							<th class="col-xs-1 text-right flip"><?php echo I18N::translate('Media'); ?></th>
 						</tr>
 					</thead>
 					<tbody>
-						<?php foreach (WT_Tree::getAll() as $tree): ?>
+						<?php foreach (Tree::getAll() as $tree): ?>
 						<tr class="<?php echo $changes[$tree->id()] ? 'danger' : '';?>">
 							<td>
 								<a href="index.php?ctype=gedcom&amp;ged=<?php echo $tree->nameUrl(); ?>">
@@ -662,8 +645,8 @@ $changes = WT_DB::prepare(
 							<td class="text-right flip">
 								<?php if ($changes[$tree->id()]): ?>
 								<a onclick="window.open('edit_changes.php', '_blank', chan_window_specs); return false;" href="#">
-									<?php echo WT_I18N::number($changes[$tree->id()]); ?>
-									<span class="sr-only"><?php echo WT_I18N::translate('Pending changes'); ?> <?php echo $tree->titleHtml(); ?></span>
+									<?php echo I18N::number($changes[$tree->id()]); ?>
+									<span class="sr-only"><?php echo I18N::translate('Pending changes'); ?> <?php echo $tree->titleHtml(); ?></span>
 								</a>
 								<?php else: ?>
 								-
@@ -672,8 +655,8 @@ $changes = WT_DB::prepare(
 							<td class="text-right flip">
 								<?php if ($individuals[$tree->id()]): ?>
 								<a href="indilist.php?ged=<?php echo $tree->nameUrl(); ?>">
-									<?php echo WT_I18N::number($individuals[$tree->id()]); ?>
-									<span class="sr-only"><?php echo WT_I18N::translate('Individuals'); ?> <?php echo $tree->titleHtml(); ?></span>
+									<?php echo I18N::number($individuals[$tree->id()]); ?>
+									<span class="sr-only"><?php echo I18N::translate('Individuals'); ?> <?php echo $tree->titleHtml(); ?></span>
 								</a>
 								<?php else: ?>
 									-
@@ -682,8 +665,8 @@ $changes = WT_DB::prepare(
 							<td class="text-right flip">
 								<?php if ($families[$tree->id()]): ?>
 								<a href="famlist.php?ged=<?php echo $tree->nameUrl(); ?>">
-									<?php echo WT_I18N::number($families[$tree->id()]); ?>
-									<span class="sr-only"><?php echo WT_I18N::translate('Families'); ?> <?php echo $tree->titleHtml(); ?></span>
+									<?php echo I18N::number($families[$tree->id()]); ?>
+									<span class="sr-only"><?php echo I18N::translate('Families'); ?> <?php echo $tree->titleHtml(); ?></span>
 								</a>
 								<?php else: ?>
 								-
@@ -692,8 +675,8 @@ $changes = WT_DB::prepare(
 							<td class="text-right flip">
 								<?php if ($sources[$tree->id()]): ?>
 								<a href="sourlist.php?ged=<?php echo $tree->nameUrl(); ?>">
-									<?php echo WT_I18N::number($sources[$tree->id()]); ?>
-									<span class="sr-only"><?php echo WT_I18N::translate('Sources'); ?> <?php echo $tree->titleHtml(); ?></span>
+									<?php echo I18N::number($sources[$tree->id()]); ?>
+									<span class="sr-only"><?php echo I18N::translate('Sources'); ?> <?php echo $tree->titleHtml(); ?></span>
 								</a>
 								<?php else: ?>
 								-
@@ -702,8 +685,8 @@ $changes = WT_DB::prepare(
 							<td class="text-right flip">
 								<?php if ($repositories[$tree->id()]): ?>
 								<a href="repolist.php?ged=<?php echo $tree->nameUrl(); ?>">
-									<?php echo WT_I18N::number($repositories[$tree->id()]); ?>
-									<span class="sr-only"><?php echo WT_I18N::translate('Repositories'); ?> <?php echo $tree->titleHtml(); ?></span>
+									<?php echo I18N::number($repositories[$tree->id()]); ?>
+									<span class="sr-only"><?php echo I18N::translate('Repositories'); ?> <?php echo $tree->titleHtml(); ?></span>
 								</a>
 								<?php else: ?>
 									-
@@ -712,8 +695,8 @@ $changes = WT_DB::prepare(
 							<td class="text-right flip">
 								<?php if ($media[$tree->id()]): ?>
 								<a href="medialist.php?ged=<?php echo $tree->nameUrl(); ?>">
-									<?php echo WT_I18N::number($media[$tree->id()]); ?>
-									<span class="sr-only"><?php echo WT_I18N::translate('Media objects'); ?> <?php echo $tree->titleHtml(); ?></span>
+									<?php echo I18N::number($media[$tree->id()]); ?>
+									<span class="sr-only"><?php echo I18N::translate('Media objects'); ?> <?php echo $tree->titleHtml(); ?></span>
 								</a>
 								<?php else: ?>
 								-
@@ -725,25 +708,25 @@ $changes = WT_DB::prepare(
 					<tfoot>
 						<tr>
 							<td>
-								<?php echo WT_I18N::translate('Total'); ?>
+								<?php echo I18N::translate('Total'); ?>
 							</td>
 							<td class="text-right flip">
-								<?php echo WT_I18N::number(array_sum($changes)); ?>
+								<?php echo I18N::number(array_sum($changes)); ?>
 							</td>
 							<td class="text-right flip">
-								<?php echo WT_I18N::number(array_sum($individuals)); ?>
+								<?php echo I18N::number(array_sum($individuals)); ?>
 							</td>
 							<td class="text-right flip">
-								<?php echo WT_I18N::number(array_sum($families)); ?>
+								<?php echo I18N::number(array_sum($families)); ?>
 							</td>
 							<td class="text-right flip">
-								<?php echo WT_I18N::number(array_sum($sources)); ?>
+								<?php echo I18N::number(array_sum($sources)); ?>
 							</td>
 							<td class="text-right flip">
-								<?php echo WT_I18N::number(array_sum($repositories)); ?>
+								<?php echo I18N::number(array_sum($repositories)); ?>
 							</td>
 							<td class="text-right flip">
-								<?php echo WT_I18N::number(array_sum($media)); ?>
+								<?php echo I18N::number(array_sum($media)); ?>
 							</td>
 						</tr>
 					</tbody>
@@ -758,18 +741,18 @@ $changes = WT_DB::prepare(
 		<div class="panel-heading" role="tab" id="old-files-heading">
 			<h2 class="panel-title">
 				<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#old-files-panel" aria-expanded="false" aria-controls="old-files-panel">
-					<?php echo WT_I18N::translate('Old files found'); ?>
+					<?php echo I18N::translate('Old files found'); ?>
 				</a>
 			</h2>
 		</div>
 		<div id="old-files-panel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="old-files-heading">
 			<div class="panel-body">
 				<p>
-					<?php echo WT_I18N::translate('Files have been found from a previous version of webtrees.  Old files can sometimes be a security risk.  You should delete them.'); ?>
+					<?php echo I18N::translate('Files have been found from a previous version of webtrees.  Old files can sometimes be a security risk.  You should delete them.'); ?>
 				</p>
 				<ul class="list-unstyled">
 					<?php foreach ($files_to_delete as $file_to_delete): ?>
-						<li dir="ltr"><code><?php echo WT_Filter::escapeHtml($file_to_delete); ?></code></li>
+						<li dir="ltr"><code><?php echo Filter::escapeHtml($file_to_delete); ?></code></li>
 					<?php endforeach ?>
 				</ul>
 			</div>

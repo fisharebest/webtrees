@@ -1,32 +1,26 @@
 <?php
-// Displays the details about a shared note record.  Also shows how many people and families
-// reference this shared note.
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2009 PGV Development Team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Webtrees;
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 define('WT_SCRIPT_NAME', 'note.php');
 require './includes/session.php';
 require_once WT_ROOT . 'includes/functions/functions_print_lists.php';
 
-$controller = new WT_Controller_Note;
+$controller = new NoteController;
 
 if ($controller->record && $controller->record->canShow()) {
 	$controller->pageHeader();
@@ -34,17 +28,17 @@ if ($controller->record && $controller->record->canShow()) {
 		if (WT_USER_CAN_ACCEPT) {
 			echo
 				'<p class="ui-state-highlight">',
-				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ WT_I18N::translate(
+				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ I18N::translate(
 					'This note has been deleted.  You should review the deletion and then %1$s or %2$s it.',
-					'<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
-					'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
+					'<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translate_c('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
+					'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translate_c('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
 				),
 				' ', help_link('pending_changes'),
 				'</p>';
 		} elseif (WT_USER_CAN_EDIT) {
 			echo
 				'<p class="ui-state-highlight">',
-				WT_I18N::translate('This note has been deleted.  The deletion will need to be reviewed by a moderator.'),
+				I18N::translate('This note has been deleted.  The deletion will need to be reviewed by a moderator.'),
 				' ', help_link('pending_changes'),
 				'</p>';
 		}
@@ -52,17 +46,17 @@ if ($controller->record && $controller->record->canShow()) {
 		if (WT_USER_CAN_ACCEPT) {
 			echo
 				'<p class="ui-state-highlight">',
-				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ WT_I18N::translate(
+				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ I18N::translate(
 					'This note has been edited.  You should review the changes and then %1$s or %2$s them.',
-					'<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'accept') . '</a>',
-					'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'reject') . '</a>'
+					'<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translate_c('You should review the changes and then accept or reject them.', 'accept') . '</a>',
+					'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translate_c('You should review the changes and then accept or reject them.', 'reject') . '</a>'
 				),
 				' ', help_link('pending_changes'),
 				'</p>';
 		} elseif (WT_USER_CAN_EDIT) {
 			echo
 				'<p class="ui-state-highlight">',
-				WT_I18N::translate('This note has been edited.  The changes need to be reviewed by a moderator.'),
+				I18N::translate('This note has been edited.  The changes need to be reviewed by a moderator.'),
 				' ', help_link('pending_changes'),
 				'</p>';
 		}
@@ -70,7 +64,7 @@ if ($controller->record && $controller->record->canShow()) {
 } else {
 	http_response_code(404);
 	$controller->pageHeader();
-	echo '<p class="ui-state-error">', WT_I18N::translate('This note does not exist or you do not have permission to view it.'), '</p>';
+	echo '<p class="ui-state-error">', I18N::translate('This note does not exist or you do not have permission to view it.'), '</p>';
 	
 	return;
 }
@@ -97,10 +91,10 @@ foreach ($controller->record->getFacts() as $fact) {
 }
 
 // Legacy formatting, created by the census assistant
-if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+if (array_key_exists('GEDFact_assistant', Module::getActiveModules())) {
 	$text = GEDFact_assistant_WT_Module::formatCensusNote($controller->record);
 } else {
-	$text = WT_Filter::formatText($controller->record->getNote(), $WT_TREE);
+	$text = Filter::formatText($controller->record->getNote(), $WT_TREE);
 }
 
 ?>
@@ -110,34 +104,34 @@ if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 		<ul>
 			<li>
 				<a href="#note-edit">
-					<span><?php echo WT_I18N::translate('Details'); ?></span>
+					<span><?php echo I18N::translate('Details'); ?></span>
 				</a>
 			</li>
 			<?php if ($linked_indi) { ?>
 			<li>
 				<a href="#indi-note">
-					<span id="indisource"><?php echo WT_I18N::translate('Individuals'); ?></span>
+					<span id="indisource"><?php echo I18N::translate('Individuals'); ?></span>
 				</a>
 			</li>
 			<?php } ?>
 			<?php if ($linked_fam) { ?>
 			<li>
 				<a href="#fam-note">
-					<span id="famsource"><?php echo WT_I18N::translate('Families'); ?></span>
+					<span id="famsource"><?php echo I18N::translate('Families'); ?></span>
 				</a>
 			</li>
 			<?php } ?>
 			<?php if ($linked_obje) { ?>
 			<li>
 				<a href="#media-note">
-					<span id="mediasource"><?php echo WT_I18N::translate('Media objects'); ?></span>
+					<span id="mediasource"><?php echo I18N::translate('Media objects'); ?></span>
 				</a>
 			</li>
 			<?php } ?>
 			<?php if ($linked_sour) { ?>
 			<li>
 				<a href="#source-note">
-					<span id="notesource"><?php echo WT_I18N::translate('Sources'); ?></span>
+					<span id="notesource"><?php echo I18N::translate('Sources'); ?></span>
 				</a>
 			</li>
 			<?php } ?>
@@ -147,18 +141,18 @@ if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 				<tr>
 					<td class="descriptionbox">
 						<?php if (WT_USER_CAN_EDIT) { ?>
-							<a href="#" onclick="return edit_note('<?php echo $controller->record->getXref(); ?>')" title="<?php echo WT_I18N::translate('Edit'); ?>">
-							<i class="icon-note"></i> <?php echo WT_I18N::translate('Shared note'); ?>
+							<a href="#" onclick="return edit_note('<?php echo $controller->record->getXref(); ?>')" title="<?php echo I18N::translate('Edit'); ?>">
+							<i class="icon-note"></i> <?php echo I18N::translate('Shared note'); ?>
 							</a>
 							<div class="editfacts">
 								<div class="editlink">
-								<a class="editicon" href="#" onclick="return edit_note('<?php echo $controller->record->getXref(); ?>')" title="<?php echo WT_I18N::translate('Edit'); ?>">
-									<span class="link_text"><?php echo WT_I18N::translate('Edit'); ?></span>
+								<a class="editicon" href="#" onclick="return edit_note('<?php echo $controller->record->getXref(); ?>')" title="<?php echo I18N::translate('Edit'); ?>">
+									<span class="link_text"><?php echo I18N::translate('Edit'); ?></span>
 								</a>
 							</div>
 						<?php } else { ?>
 						<i class="icon-note"></i>
-							<?php echo WT_I18N::translate('Shared note'); ?>
+							<?php echo I18N::translate('Shared note'); ?>
 						<?php } ?>
 					</td>
 					<td class="optionbox wrap width80"><?php echo $text; ?></td>

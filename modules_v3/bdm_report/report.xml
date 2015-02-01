@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report>
-	<Title><var var="WT_I18N::translate('Vital records')" /></Title>
-	<Description><var var="WT_I18N::translate('A report of vital records for a given date or place.')" /></Description>
-	<Input name="name" lookup="NAME" type="text"><var var="WT_I18N::translate('Name')" /></Input>
-	<Input name="bdmplace" lookup="PLAC" type="text"><var var="WT_I18N::translate('Place')" /></Input>
-	<Input name="birthdate1" lookup="DATE" type="text"><var var="WT_I18N::translate('Birth date range start')" /></Input>
-	<Input name="birthdate2" lookup="DATE" type="text"><var var="WT_I18N::translate('Birth date range end')" /></Input>
-	<Input name="deathdate1" lookup="DATE" type="text"><var var="WT_I18N::translate('Death date range start')" /></Input>
-	<Input name="deathdate2" lookup="DATE" type="text"><var var="WT_I18N::translate('Death date range end')" /></Input>
-	<Input name="sortby" type="select" default="BIRT:DATE" options="NAME=>WT_I18N::translate('sort by name')|BIRT:DATE=>WT_I18N::translate('sort by date of birth')|DEAT:DATE=>WT_I18N::translate('sort by date of death')"><var var="WT_I18N::translate('Sort order')" /></Input>
-	<Input name="pageSize" type="select" default="A4" options="letter=>WT_I18N::translate_c('paper size','Letter')|A3=>WT_I18N::translate_c('paper size', 'A3')|A4=>WT_I18N::translate_c('paper size','A4')|legal=>WT_I18N::translate_c('paper size','Legal')"><var var="WT_I18N::translate('Page size')" /></Input>
-	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>WT_I18N::translate_c('font name', 'Arial')|dejavusans=>WT_I18N::translate_c('font name', 'DejaVu')|helvetica=>WT_I18N::translate_c('font name', 'Helvetica')"><var var="WT_I18N::translate('Font')"/></Input>
+	<Title><var var="I18N::translate('Vital records')" /></Title>
+	<Description><var var="I18N::translate('A report of vital records for a given date or place.')" /></Description>
+	<Input name="name" lookup="NAME" type="text"><var var="I18N::translate('Name')" /></Input>
+	<Input name="bdmplace" lookup="PLAC" type="text"><var var="I18N::translate('Place')" /></Input>
+	<Input name="birthdate1" lookup="DATE" type="text"><var var="I18N::translate('Birth date range start')" /></Input>
+	<Input name="birthdate2" lookup="DATE" type="text"><var var="I18N::translate('Birth date range end')" /></Input>
+	<Input name="deathdate1" lookup="DATE" type="text"><var var="I18N::translate('Death date range start')" /></Input>
+	<Input name="deathdate2" lookup="DATE" type="text"><var var="I18N::translate('Death date range end')" /></Input>
+	<Input name="sortby" type="select" default="BIRT:DATE" options="NAME=>I18N::translate('sort by name')|BIRT:DATE=>I18N::translate('sort by date of birth')|DEAT:DATE=>I18N::translate('sort by date of death')"><var var="I18N::translate('Sort order')" /></Input>
+	<Input name="pageSize" type="select" default="A4" options="letter=>I18N::translate_c('paper size','Letter')|A3=>I18N::translate_c('paper size', 'A3')|A4=>I18N::translate_c('paper size','A4')|legal=>I18N::translate_c('paper size','Legal')"><var var="I18N::translate('Page size')" /></Input>
+	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>I18N::translate_c('font name', 'Arial')|dejavusans=>I18N::translate_c('font name', 'DejaVu')|helvetica=>I18N::translate_c('font name', 'Helvetica')"><var var="I18N::translate('Font')"/></Input>
 
 	<!-- Header -->
 	<Style name="header" font="$fonts" size="15" style="b" />
@@ -28,7 +28,7 @@
 	<Doc pageSize="$pageSize" orientation="landscape">
 		<Header>
 			<Cell align="center" newline="1" style="header">
-				<var var="WT_I18N::translate('Vital records')" />
+				<var var="I18N::translate('Vital records')" />
 				<if condition="$name!=''">
 				    : <var var="name" /> 
 				</if>
@@ -36,14 +36,14 @@
 					: <var var="bdmplace" />
 				</if>
 			</Cell>
-			<Cell align="rightrtl" height="10" newline="1" style="pagenum"><var var="WT_I18N::translate('Page')" /> <PageNum /> <var var="WT_I18N::translate('of')" /> <TotalPages /></Cell>
+			<Cell align="rightrtl" height="10" newline="1" style="pagenum"><var var="I18N::translate('Page')" /> <PageNum /> <var var="I18N::translate('of')" /> <TotalPages /></Cell>
 			<!-- Name -->
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='NAME'">
 				<SetVar name="fill" value="#AAAAAA" />
 			</if>
 			<TextBox bgcolor="$fill" border="1" height="12" width="205">
-				<Text style="label"><var var="WT_I18N::translate('Name')" /></Text>
+				<Text style="label"><var var="I18N::translate('Name')" /></Text>
 			</TextBox>
 			<!-- Birth -->
 			<SetVar name="fill" value="" />
@@ -52,7 +52,7 @@
 			</if>
 			<TextBox bgcolor="$fill" border="1" height="12" width="165">
 				<Text style="label">
-					<var var="WT_I18N::translate('Birth')" />  
+					<var var="I18N::translate('Birth')" />
 					<if condition="$birthdate1!='' or $birthdate2!=''">
 						[
 						<if condition="$birthdate1!=''">
@@ -72,7 +72,7 @@
 				<SetVar name="fill" value="#AAAAAA" />
 			</if>
 			<TextBox bgcolor="$fill" border="1" height="12" width="165">
-				<Text style="label"><var var="WT_I18N::translate('Marriage')" /></Text>
+				<Text style="label"><var var="I18N::translate('Marriage')" /></Text>
 			</TextBox>
 			<!-- Death -->
 			<SetVar name="fill" value="" />
@@ -81,7 +81,7 @@
 			</if>
 			<TextBox bgcolor="$fill" border="1" height="12" newline="1">
 				<Text style="label">
-					<var var="WT_I18N::translate('Death')" />  
+					<var var="I18N::translate('Death')" />
 					<if condition="$deathdate1!='' or $deathdate2!=''">
 						[
 						<if condition="$deathdate1!=''">
@@ -112,9 +112,9 @@
 						<GetPersonName id="" /><br />
 					</Text>
 					<Text style="small">
-						   <var var="WT_I18N::translate('Father')" />
+						   <var var="I18N::translate('Father')" />
 						: <Gedcom id="@FAMC"><GetPersonName id="@HUSB" /></Gedcom>
-						<br />   <var var="WT_I18N::translate('Mother')" />
+						<br />   <var var="I18N::translate('Mother')" />
 						: <Gedcom id="@FAMC"><GetPersonName id="@WIFE" /></Gedcom>
 					</Text>
 				</TextBox>
@@ -126,11 +126,11 @@
 							<if condition="$moreB==1">
 								<br />
 							</if>
-							<var var="WT_I18N::translate('Date')" />
+							<var var="I18N::translate('Date')" />
 							: <GedcomValue tag="BIRT:DATE" />
-							<br />  <var var="WT_I18N::translate('Place')" />
+							<br />  <var var="I18N::translate('Place')" />
 							: <GedcomValue tag="BIRT:PLAC" />
-							<br />  <var var="WT_I18N::translate('Source')" />
+							<br />  <var var="I18N::translate('Source')" />
 							: <RepeatTag tag="BIRT:SOUR">
 								<Gedcom id="@SOUR">
 									<GedcomValue tag="TITL" />
@@ -152,18 +152,18 @@
 									<br />
 								</if>
 								<!-- todo: print the dates, places and sources of all the FAM MARR records -->
-								<var var="WT_I18N::translate('Date')" />
+								<var var="I18N::translate('Date')" />
 								: <GedcomValue tag="MARR:DATE" />
-								<br />  <var var="WT_I18N::translate('Place')" />
+								<br />  <var var="I18N::translate('Place')" />
 								: <GedcomValue tag="MARR:PLAC" />
-								<br />  <var var="WT_I18N::translate('Source')" />
+								<br />  <var var="I18N::translate('Source')" />
 								: <RepeatTag tag="MARR:SOUR">
 									<Gedcom id="@SOUR">
 										<GedcomValue tag="TITL" /> 
 									</Gedcom>
 								</RepeatTag>
 								<br />
-								<var var="WT_I18N::translate('Spouse')" />
+								<var var="I18N::translate('Spouse')" />
 								: 
 								<SetVar name="hpid" value="@HUSB"/>
 								<SetVar name="wpid" value="@WIFE"/>
@@ -186,11 +186,11 @@
 							<if condition="$moreD==1">
 								<br />
 							</if>
-							<var var="WT_I18N::translate('Date')" />
+							<var var="I18N::translate('Date')" />
 							: <GedcomValue tag="DEAT:DATE" />
-							<br />  <var var="WT_I18N::translate('Place')" />
+							<br />  <var var="I18N::translate('Place')" />
 							: <GedcomValue tag="DEAT:PLAC" />
-							<br />  <var var="WT_I18N::translate('Source')" />
+							<br />  <var var="I18N::translate('Source')" />
 							: <RepeatTag tag="DEAT:SOUR">
 								<Gedcom id="@SOUR">
 									<GedcomValue tag="TITL" /> 
@@ -204,7 +204,7 @@
 			</List>
 
 			<Cell align="rightrtl" height="24" newline="1" style="label"><br />
-				<var var="WT_I18N::translate('Total individuals')" />
+				<var var="I18N::translate('Total individuals')" />
 				: <ListTotal />
 			</Cell>
 		</Body>

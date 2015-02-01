@@ -1,7 +1,9 @@
 <?php
-// Standard theme
+namespace Webtrees;
+
+	// Standard theme
 //
-// webtrees: Web based Family History software
+// webtrees: online genealogy
 // Copyright (C) 2015 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
@@ -18,4 +20,4 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-return new WT\Theme\Webtrees;
+return new WebtreesTheme;

@@ -1,32 +1,25 @@
 <?php
-// Display a timeline chart for a group of individuals
-//
-// Use the $pids array to set which individuals to show on the chart
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Webtrees;
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 define('WT_SCRIPT_NAME', 'lifespan.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Lifespan;
+$controller = new LifespanController;
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
@@ -132,26 +125,26 @@ $people = count($controller->people);
 
 ?>
 <div id="lifespan-page">
-<h2><?php echo WT_I18N::translate('Lifespans'), help_link('lifespan_chart'); ?></h2>
+<h2><?php echo I18N::translate('Lifespans'), help_link('lifespan_chart'); ?></h2>
 	<table>
 		<tr>
 			<td>
 				<form name="people" action="?">
-					<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
+					<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
 					<table>
 						<tr>
 							<td class="person0">
-								<?php echo WT_I18N::translate('Add another individual to the chart'); ?>
+								<?php echo I18N::translate('Add another individual to the chart'); ?>
 								<br>
 								<input class="pedigree_form" data-autocomplete-type="INDI" type="text" size="5" id="newpid" name="newpid">
 								<?php print_findindi_link('newpid'); ?>
 								<br>
 								<div>
-									<?php echo WT_I18N::translate('Include the individual’s immediate family?'); ?>
+									<?php echo I18N::translate('Include the individual’s immediate family?'); ?>
 									<input type="checkbox" checked value="yes" name="addFamily">
 								</div>
 								<div>
-									<input type="submit" value="<?php echo WT_I18N::translate('Add'); ?>">
+									<input type="submit" value="<?php echo I18N::translate('Add'); ?>">
 								</div>
 							</td>
 						</tr>
@@ -160,12 +153,12 @@ $people = count($controller->people);
 			</td>
 			<td>
 				<form name="buttons" action="lifespan.php" method="get">
-					<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
+					<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
 					<table>
 						<tr>
-							<td align="center"><?php echo WT_I18N::translate('Speed'); ?></td>
-							<td align="center"><?php echo WT_I18N::translate('Begin year'); ?></td>
-							<td align="center"><?php echo WT_I18N::translate('End year'); ?></td>
+							<td align="center"><?php echo I18N::translate('Speed'); ?></td>
+							<td align="center"><?php echo I18N::translate('Begin year'); ?></td>
+							<td align="center"><?php echo I18N::translate('End year'); ?></td>
 							<td align="center"><?php echo WT_Gedcom_Tag::getLabel('PLAC'); ?></td>
 						</tr>
 						<tr>
@@ -184,17 +177,17 @@ $people = count($controller->people);
 								<input type="text" name="endYear" size="5" value="<?php echo $controller->endYear == 0 ? '' : $controller->endYear; ?>">
 							</td>
 							<td>
-								<input data-autocomplete-type="PLAC" type="text" name="place" size="15" value="<?php echo WT_Filter::escapeHtml($controller->place); ?>">
+								<input data-autocomplete-type="PLAC" type="text" name="place" size="15" value="<?php echo Filter::escapeHtml($controller->place); ?>">
 							</td>
 							<td>
-								<input type="submit" name="search" value="<?php echo WT_I18N::translate('Search'); ?>">
+								<input type="submit" name="search" value="<?php echo I18N::translate('Search'); ?>">
 							</td>
 							<td>
-								<input type="button" value="<?php echo WT_I18N::translate('Clear chart'); ?>" onclick="window.location='lifespan.php?clear=1';">
+								<input type="button" value="<?php echo I18N::translate('Clear chart'); ?>" onclick="window.location='lifespan.php?clear=1';">
 							</td>
 						</tr>
 					</table>
-					<b><?php echo WT_I18N::plural('%s individual', '%s individuals', $people, $people); ?></b>
+					<b><?php echo I18N::plural('%s individual', '%s individuals', $people, $people); ?></b>
 				</form>
 			</td>
 		</tr>

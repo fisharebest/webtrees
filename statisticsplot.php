@@ -1,37 +1,33 @@
 <?php
-// Creates some statistics out of the GEDCOM information.
-// We will start with the following possibilities
-// number of persons -> periods of 50 years from 1700-2000
-// age -> periods of 10 years (different for 0-1,1-5,5-10,10-20 etc)
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Webtrees;
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+use Zend_Session;
 
 define('WT_SCRIPT_NAME', 'statisticsplot.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Ajax;
+$controller = new AjaxController;
 
-$stats = new WT_Stats($GEDCOM);
+$stats = new Stats($GEDCOM);
 
-// Month of birth
+/**
+ * Month of birth
+ */
 function month_of_birth() {
 	global $z_axis, $months, $z_boundaries, $stats, $n1;
 
@@ -77,7 +73,9 @@ function month_of_birth() {
 	}
 }
 
-//Month of birth of first child in a relation
+/**
+ * Month of birth of first child in a relation
+ */
 function month_of_birth_of_first_child() {
 	global $z_axis, $months, $z_boundaries, $stats, $n1;
 
@@ -123,7 +121,9 @@ function month_of_birth_of_first_child() {
 	}
 }
 
-//Month of death
+/**
+ * Month of death
+ */
 function month_of_death() {
 	global $z_axis, $months, $z_boundaries, $stats, $n1;
 
@@ -169,7 +169,9 @@ function month_of_death() {
 	}
 }
 
-//Month of marriage
+/**
+ * Month of marriage
+ */
 function month_of_marriage() {
 	global $z_axis, $months, $z_boundaries, $stats, $n1;
 
@@ -200,7 +202,9 @@ function month_of_marriage() {
 	}
 }
 
-//Month of first marriage
+/**
+ * Month of first marriage
+ */
 function month_of_first_marriage() {
 	global $z_axis, $months, $z_boundaries, $stats, $n1;
 
@@ -244,12 +248,16 @@ function month_of_first_marriage() {
 	unset($indi, $fam);
 }
 
-// Months between marriage and first child
+/**
+ * Months between marriage and first child
+ */
 function months_between_marriage_and_first_child() {
 	echo 'not working yet';
 }
 
-// Age related to birth year
+/**
+ * Age related to birth year
+ */
 function lifespan_by_birth_year() {
 	global $z_axis, $z_boundaries, $stats, $n1;
 
@@ -291,7 +299,9 @@ function lifespan_by_birth_year() {
 	}
 }
 
-//Age related to death year
+/**
+ * Age related to death year
+ */
 function lifespan_by_death_year() {
 	global $z_axis, $z_boundaries, $stats, $n1;
 
@@ -333,7 +343,9 @@ function lifespan_by_death_year() {
 	}
 }
 
-//Age in year of marriage
+/**
+ * Age in year of marriage
+ */
 function age_at_marriage() {
 	global $z_axis, $z_boundaries, $stats, $n1;
 
@@ -377,7 +389,9 @@ function age_at_marriage() {
 	}
 }
 
-//Age in year of first marriage
+/**
+ * Age in year of first marriage
+ */
 function age_at_first_marriage() {
 	global $z_axis, $z_boundaries, $stats, $n1;
 
@@ -445,7 +459,9 @@ function age_at_first_marriage() {
 	unset($indi);
 }
 
-//Number of children
+/**
+ * Number of children
+ */
 function number_of_children() {
 	global $z_axis, $z_boundaries, $stats, $n1;
 
@@ -665,7 +681,7 @@ function my_plot($mytitle, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 		}
 	}
 	$title = strstr($mytitle, '|', true);
-	echo '<img src="', $imgurl, '" width="950" height="300" alt="', WT_Filter::escapeHtml($title), '" title="', WT_Filter::escapeHtml($title), '">';
+	echo '<img src="', $imgurl, '" width="950" height="300" alt="', Filter::escapeHtml($title), '" title="', Filter::escapeHtml($title), '">';
 }
 
 /**
@@ -680,11 +696,11 @@ function calculate_axis($x_axis_boundaries) {
 	if ($x_axis == 21 && $hulpar[0] == 1) {
 		$xdata[0] = 0;
 	} else if ($x_axis == 16 && $hulpar[0] == 0) {
-		$xdata[0] = WT_I18N::translate('before');
+		$xdata[0] = I18N::translate('before');
 	} else if ($x_axis == 16 && $hulpar[0] < 0) {
-		$xdata[0] = WT_I18N::translate('over') . ' ' . $hulpar[0];
+		$xdata[0] = I18N::translate('over') . ' ' . $hulpar[0];
 	} else {
-		$xdata[0] = WT_I18N::translate('less than') . ' ' . $hulpar[0];
+		$xdata[0] = I18N::translate('less than') . ' ' . $hulpar[0];
 	}
 	$x_boundaries[0] = $hulpar[0] - 1;
 	while (isset($hulpar[$i])) {
@@ -708,7 +724,7 @@ function calculate_axis($x_axis_boundaries) {
 	} else {
 		$xmax = $i;
 	}
-	$xdata[$xmax]        = WT_I18N::translate('over') . ' ' . $hulpar[$i - 1];
+	$xdata[$xmax]        = I18N::translate('over') . ' ' . $hulpar[$i - 1];
 	$x_boundaries[$xmax] = 10000;
 	$xmax                = $xmax + 1;
 	if ($xmax > 20) {
@@ -726,12 +742,12 @@ function calculate_legend($boundaries_z_axis) {
 	$hulpar = explode(',', $boundaries_z_axis);
 	$i      = 1;
 	// I18N: %d is a year
-	$date            = new WT_Date('BEF ' . $hulpar[0]);
+	$date            = new Date('BEF ' . $hulpar[0]);
 	$legend[0]       = strip_tags($date->display());
 	$z_boundaries[0] = $hulpar[0] - 1;
 	while (isset($hulpar[$i])) {
 		$i1               = $i - 1;
-		$date             = new WT_Date('BET ' . $hulpar[$i1] . ' AND ' . ($hulpar[$i] - 1));
+		$date             = new Date('BET ' . $hulpar[$i1] . ' AND ' . ($hulpar[$i] - 1));
 		$legend[$i]       = strip_tags($date->display());
 		$z_boundaries[$i] = $hulpar[$i] - 1;
 		$i++;
@@ -739,7 +755,7 @@ function calculate_legend($boundaries_z_axis) {
 	$zmax  = $i;
 	$zmax1 = $zmax - 1;
 	// I18N: %d is a year
-	$date                = new WT_Date('AFT ' . $hulpar[$zmax1]);
+	$date                = new Date('AFT ' . $hulpar[$zmax1]);
 	$legend[$zmax]       = strip_tags($date->display());
 	$z_boundaries[$zmax] = 10000;
 	$zmax                = $zmax + 1;
@@ -765,12 +781,12 @@ function set_parameters($current, $indfam, $xg, $zg, $titstr, $xt, $gx, $gz, $my
 	global $stats;
 
 	if (!function_exists($myfunc)) {
-		throw new DomainException(WT_I18N::translate('%s not implemented', $myfunc));
+		throw new \DomainException(I18N::translate('%s not implemented', $myfunc));
 	}
 
 	$monthdata = array();
 	for ($i = 0; $i < 12; ++$i) {
-		$monthdata[$i] = WT_Date_Gregorian::monthNameNominativeCase($i + 1, false);
+		$monthdata[$i] = GregorianDate::monthNameNominativeCase($i + 1, false);
 	}
 
 	$months = array('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC');
@@ -783,7 +799,7 @@ function set_parameters($current, $indfam, $xg, $zg, $titstr, $xt, $gx, $gz, $my
 		$zgiven            = $zg;
 		$title             = $titstr;
 		$xtitle            = $xt;
-		$ytitle            = WT_I18N::translate('numbers');
+		$ytitle            = I18N::translate('numbers');
 		$boundaries_x_axis = $gx;
 		$boundaries_z_axis = $gz;
 		if ($xg == true) {
@@ -799,15 +815,15 @@ function set_parameters($current, $indfam, $xg, $zg, $titstr, $xt, $gx, $gz, $my
 		if ($y_axis == 201) {
 			$percentage = false;
 			if ($current == 13 || $current == 15 || $current == 16 || $current == 21) {
-				$ytitle = WT_I18N::translate('Families');
+				$ytitle = I18N::translate('Families');
 			} elseif ($current == 14) {
-				$ytitle = WT_I18N::translate('Children');
+				$ytitle = I18N::translate('Children');
 			} else {
-				$ytitle = WT_I18N::translate('Individuals');
+				$ytitle = I18N::translate('Individuals');
 			}
 		} elseif ($y_axis == 202) {
 			$percentage = true;
-			$ytitle     = WT_I18N::translate('percentage');
+			$ytitle     = I18N::translate('percentage');
 		}
 		$male_female = false;
 		if ($z_axis == 300) {
@@ -818,12 +834,12 @@ function set_parameters($current, $indfam, $xg, $zg, $titstr, $xt, $gx, $gz, $my
 		} elseif ($z_axis == 301) {
 			$male_female = true;
 			$zgiven      = true;
-			$legend[0]   = WT_I18N::translate('Male');
-			$legend[1]   = WT_I18N::translate('Female');
+			$legend[0]   = I18N::translate('Male');
+			$legend[1]   = I18N::translate('Female');
 			$zmax        = 2;
-			$xtitle      = $xtitle . WT_I18N::translate(' per gender');
+			$xtitle      = $xtitle . I18N::translate(' per gender');
 		} elseif ($z_axis == 302) {
-			$xtitle = $xtitle . WT_I18N::translate(' per time period');
+			$xtitle = $xtitle . I18N::translate(' per time period');
 		}
 		//-- reset the data array
 		for ($i = 0; $i < $zmax; $i++) {
@@ -833,18 +849,18 @@ function set_parameters($current, $indfam, $xg, $zg, $titstr, $xt, $gx, $gz, $my
 		}
 		$myfunc();
 		if ($indfam === 'IND') {
-			$hstr = $title . '|' . WT_I18N::translate('Counts ') . ' ' . WT_I18N::number($n1) . ' ' . WT_I18N::translate('of') . ' ' . $stats->totalIndividuals();
+			$hstr = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($n1) . ' ' . I18N::translate('of') . ' ' . $stats->totalIndividuals();
 		} elseif ($x_axis == 21) {
-			$hstr = $title . '|' . WT_I18N::translate('Counts ') . ' ' . WT_I18N::number($n1) . ' ' . WT_I18N::translate('of') . ' ' . $stats->totalChildren();
+			$hstr = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($n1) . ' ' . I18N::translate('of') . ' ' . $stats->totalChildren();
 		} else {
-			$hstr = $title . '|' . WT_I18N::translate('Counts ') . ' ' . WT_I18N::number($n1) . ' ' . WT_I18N::translate('of') . ' ' . $stats->totalFamilies();
+			$hstr = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($n1) . ' ' . I18N::translate('of') . ' ' . $stats->totalFamilies();
 		}
 		my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	}
 }
 
 //-- ========= start of main program =========
-$action = WT_Filter::post('action');
+$action = Filter::post('action');
 
 if ($action === 'update') {
 	$x_axis = $_POST['x-as'];
@@ -909,7 +925,7 @@ if ($action === 'update') {
 }
 Zend_Session::writeClose();
 
-echo '<div class="statistics_chart" title="', WT_I18N::translate('Statistics plot'), '">';
+echo '<div class="statistics_chart" title="', I18N::translate('Statistics plot'), '">';
 
 //-- Set params for request out of the information for plot
 $g_xas = '1,2,3,4,5,6,7,8,9,10,11,12'; //should not be needed. but just for month
@@ -917,37 +933,37 @@ $g_xas = '1,2,3,4,5,6,7,8,9,10,11,12'; //should not be needed. but just for mont
 switch ($x_axis) {
 case '11':
 	//--------- nr, type, xgiven, zgiven, title, xtitle, ytitle, boundaries_x, boundaries-z, function
-	set_parameters(11, 'IND', true, false, WT_I18N::translate('Month of birth'), WT_I18N::translate('month'), $g_xas, $zgp, 'month_of_birth');
+	set_parameters(11, 'IND', true, false, I18N::translate('Month of birth'), I18N::translate('month'), $g_xas, $zgp, 'month_of_birth');
 	break;
 case '12':
-	set_parameters(12, 'IND', true, false, WT_I18N::translate('Month of death'), WT_I18N::translate('month'), $g_xas, $zgp, 'month_of_death');
+	set_parameters(12, 'IND', true, false, I18N::translate('Month of death'), I18N::translate('month'), $g_xas, $zgp, 'month_of_death');
 	break;
 case '13':
-	set_parameters(13, 'FAM', true, false, WT_I18N::translate('Month of marriage'), WT_I18N::translate('month'), $g_xas, $zgp, 'month_of_marriage');
+	set_parameters(13, 'FAM', true, false, I18N::translate('Month of marriage'), I18N::translate('month'), $g_xas, $zgp, 'month_of_marriage');
 	break;
 case '14':
-	set_parameters(14, 'FAM', true, false, WT_I18N::translate('Month of birth of first child in a relation'), WT_I18N::translate('month'), $g_xas, $zgp, 'month_of_birth_of_first_child');
+	set_parameters(14, 'FAM', true, false, I18N::translate('Month of birth of first child in a relation'), I18N::translate('month'), $g_xas, $zgp, 'month_of_birth_of_first_child');
 	break;
 case '15':
-	set_parameters(15, 'FAM', true, false, WT_I18N::translate('Month of first marriage'), WT_I18N::translate('month'), $g_xas, $zgp, 'month_of_first_marriage');
+	set_parameters(15, 'FAM', true, false, I18N::translate('Month of first marriage'), I18N::translate('month'), $g_xas, $zgp, 'month_of_first_marriage');
 	break;
 case '16':
-	set_parameters(16, 'FAM', false, false, WT_I18N::translate('Months between marriage and first child'), WT_I18N::translate('Months between marriage and birth of first child'), $xgm, $zgp, 'months_between_marriage_and_first_child');
+	set_parameters(16, 'FAM', false, false, I18N::translate('Months between marriage and first child'), I18N::translate('Months between marriage and birth of first child'), $xgm, $zgp, 'months_between_marriage_and_first_child');
 	break;
 case '17':
-	set_parameters(17, 'IND', false, false, WT_I18N::translate('Age related to birth year'), WT_I18N::translate('age'), $xgl, $zgp, 'lifespan_by_birth_year');
+	set_parameters(17, 'IND', false, false, I18N::translate('Age related to birth year'), I18N::translate('age'), $xgl, $zgp, 'lifespan_by_birth_year');
 	break;
 case '18':
-	set_parameters(18, 'IND', false, false, WT_I18N::translate('Age related to death year'), WT_I18N::translate('age'), $xgl, $zgp, 'lifespan_by_death_year');
+	set_parameters(18, 'IND', false, false, I18N::translate('Age related to death year'), I18N::translate('age'), $xgl, $zgp, 'lifespan_by_death_year');
 	break;
 case '19':
-	set_parameters(19, 'IND', false, false, WT_I18N::translate('Age in year of marriage'), WT_I18N::translate('age'), $xglm, $zgp, 'age_at_marriage');
+	set_parameters(19, 'IND', false, false, I18N::translate('Age in year of marriage'), I18N::translate('age'), $xglm, $zgp, 'age_at_marriage');
 	break;
 case '20':
-	set_parameters(20, 'IND', false, false, WT_I18N::translate('Age in year of first marriage'), WT_I18N::translate('age'), $xglm, $zgp, 'age_at_first_marriage');
+	set_parameters(20, 'IND', false, false, I18N::translate('Age in year of first marriage'), I18N::translate('age'), $xglm, $zgp, 'age_at_first_marriage');
 	break;
 case '21':
-	set_parameters(21, 'FAM', false, false, WT_I18N::translate('Number of children'), WT_I18N::translate('children'), $xga, $zgp, 'number_of_children');
+	set_parameters(21, 'FAM', false, false, I18N::translate('Number of children'), I18N::translate('children'), $xga, $zgp, 'number_of_children');
 	break;
 case '1':
 	echo $stats->chartDistribution(array($chart_shows, $chart_type, $surname));

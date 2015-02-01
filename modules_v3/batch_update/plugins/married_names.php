@@ -1,20 +1,20 @@
 <?php
-// webtrees: Web based Family History software
-// Copyright (C) 2014 Greg Roach
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Webtrees;
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 /**
  * Class married_names_bu_plugin Batch Update plugin: add missing 2 _MARNM records
@@ -29,7 +29,7 @@ class married_names_bu_plugin extends base_plugin {
 	 * @return string
 	 */
 	public function getName() {
-		return WT_I18N::translate('Add missing married names');
+		return I18N::translate('Add missing married names');
 	}
 
 	/**
@@ -38,7 +38,7 @@ class married_names_bu_plugin extends base_plugin {
 	 * @return string
 	 */
 	public function getDescription() {
-		return WT_I18N::translate('You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database.');
+		return I18N::translate('You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database.');
 	}
 
 	/**
@@ -131,7 +131,7 @@ class married_names_bu_plugin extends base_plugin {
 	 */
 	public function getOptions() {
 		parent::getOptions();
-		$this->surname = WT_Filter::get('surname', 'add|replace', 'replace');
+		$this->surname = Filter::get('surname', 'add|replace', 'replace');
 	}
 
 	/**
@@ -142,11 +142,11 @@ class married_names_bu_plugin extends base_plugin {
 	public function getOptionsForm() {
 		return
 			parent::getOptionsForm() .
-			'<tr valign="top"><th>' . WT_I18N::translate('Surname option') . '</th>' .
+			'<tr valign="top"><th>' . I18N::translate('Surname option') . '</th>' .
 			'<td class="optionbox"><select name="surname" onchange="reset_reload();"><option value="replace" ' .
 			($this->surname == 'replace' ? 'selected' : '') .
-			'">' . WT_I18N::translate('Wife’s surname replaced by husband’s surname') . '</option><option value="add" ' .
+			'">' . I18N::translate('Wife’s surname replaced by husband’s surname') . '</option><option value="add" ' .
 			($this->surname == 'add' ? 'selected' : '') .
-			'">' . WT_I18N::translate('Wife’s maiden surname becomes new given name') . '</option></select></td></tr>';
+			'">' . I18N::translate('Wife’s maiden surname becomes new given name') . '</option></select></td></tr>';
 	}
 }

@@ -1,26 +1,22 @@
 <?php
+namespace Webtrees;
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 // RTL Functions for use in the PDF/HTML reports
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-//
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 $SpecialChar = array(' ', '.', ',', '"', '\'', '/', '\\', '|', ':', ';', '+', '&', '#', '@', '-', '=', '*', '%', '!', '?', '$', '<', '>', "\n");
 $SpecialPar  = array('(', ')', '[', ']', '{', '}');
@@ -209,7 +205,7 @@ function spanLTRRTL($inputText, $direction = 'BOTH', $class = '') {
 			// Determine the directionality of the current UTF-8 character
 			$newState = $currentState;
 			while (true) {
-				if (WT_I18N::scriptDirection(WT_I18N::textScript($currentLetter)) === 'rtl') {
+				if (I18N::scriptDirection(I18N::textScript($currentLetter)) === 'rtl') {
 					if ($currentState == '') {
 						$newState = 'RTL';
 						break;
@@ -226,7 +222,7 @@ function spanLTRRTL($inputText, $direction = 'BOTH', $class = '') {
 						$nextLen       = $nextCharArray['length'];
 						$tempText      = substr($tempText, $nextLen);
 
-						if (WT_I18N::scriptDirection(WT_I18N::textScript($nextLetter)) === 'rtl') {
+						if (I18N::scriptDirection(I18N::textScript($nextLetter)) === 'rtl') {
 							$newState = 'RTL';
 							break 2;
 						}
@@ -364,7 +360,7 @@ function spanLTRRTL($inputText, $direction = 'BOTH', $class = '') {
 			break;
 		}
 		$textSpan = stripLRMRLM(substr($result, $lenStart + 3, $spanEnd - $lenStart - 3));
-		$langSpan = WT_I18N::textScript($textSpan);
+		$langSpan = I18N::textScript($textSpan);
 		if ($langSpan == 'Hebr' || $langSpan == 'Arab') {
 			break;
 		}

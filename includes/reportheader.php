@@ -1,31 +1,20 @@
 <?php
-// Report Header Parser
-// used by the SAX parser to generate PDF reports from the XML report file.
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Webtrees;
 
-if (!defined('WT_WEBTREES')) {
-	http_response_code(403);
-	exit;
-}
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 /**
  * element handlers array
@@ -34,13 +23,13 @@ if (!defined('WT_WEBTREES')) {
  * @global array $elementHandler
  */
 $elementHandler = array();
-$elementHandler["Report"]["start"]   = "reportStartHandler";
-$elementHandler["var"]["start"]      = "varStartHandler";
-$elementHandler["Title"]["start"]    = "titleStartHandler";
-$elementHandler["Title"]["end"]      = "titleEndHandler";
-$elementHandler["Description"]["end"] = "descriptionEndHandler";
-$elementHandler["Input"]["start"]    = "inputStartHandler";
-$elementHandler["Input"]["end"]      = "inputEndHandler";
+$elementHandler['Report']['start']   = '\\Webtrees\\reportStartHandler';
+$elementHandler['var']['start']      = '\\Webtrees\\varStartHandler';
+$elementHandler['Title']['start']    = '\\Webtrees\\titleStartHandler';
+$elementHandler['Title']['end']      = '\\Webtrees\\titleEndHandler';
+$elementHandler['Description']['end'] = '\\Webtrees\\descriptionEndHandler';
+$elementHandler['Input']['start']    = '\\Webtrees\\inputStartHandler';
+$elementHandler['Input']['end']      = '\\Webtrees\\inputEndHandler';
 
 $text = "";
 $report_array = array();
@@ -129,23 +118,29 @@ function varStartHandler($attrs) {
 			$tfact = $type;
 		}
 		$var = str_replace(array("@fact", "@desc"), array($tfact, $desc), $var);
-		if (preg_match('/^WT_I18N::number\((.+)\)$/', $var, $match)) {
-			$var = WT_I18N::number($match[1]);
-		} elseif (preg_match('/^WT_I18N::translate\(\'(.+)\'\)$/', $var, $match)) {
-			$var = WT_I18N::translate($match[1]);
-		} elseif (preg_match('/^WT_I18N::translate_c\(\'(.+)\', *\'(.+)\'\)$/', $var, $match)) {
-			$var = WT_I18N::translate_c($match[1], $match[2]);
+		if (preg_match('/^I18N::number\((.+)\)$/', $var, $match)) {
+			$var = I18N::number($match[1]);
+		} elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $var, $match)) {
+			$var = I18N::translate($match[1]);
+		} elseif (preg_match('/^I18N::translate_c\(\'(.+)\', *\'(.+)\'\)$/', $var, $match)) {
+			$var = I18N::translate_c($match[1], $match[2]);
 		}
 		$text .= $var;
 	}
 }
 
+/**
+ *
+ */
 function titleStartHandler() {
 	global $text;
 
 	$text = "";
 }
 
+/**
+ *
+ */
 function titleEndHandler() {
 	global $report_array, $text;
 
@@ -153,6 +148,9 @@ function titleEndHandler() {
 	$text = "";
 }
 
+/**
+ *
+ */
 function descriptionEndHandler() {
 	global $report_array, $text;
 
@@ -204,6 +202,9 @@ function inputStartHandler($attrs) {
 	}
 }
 
+/**
+ *
+ */
 function inputEndHandler() {
 	global $report_array, $text, $input;
 

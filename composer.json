@@ -1,21 +1,16 @@
 {
-	"autoload": {
-		"psr-0": {
-			"WT_": "library/WT/"
-		},
-		"psr-4": {
-			"WT\\": "library/WT/"
-		}
-	},
-	"config": {
-		"preferred-install": "dist",
-		"vendor-dir": "library"
-	},
+	"name": "fisharebest/webtrees",
 	"description": "webtrees online genealogy",
 	"keywords": ["webtrees", "genealogy"],
-	"license": "GPL-2.0+",
-	"minimum-stability": "stable",
-	"name": "fisharebest/webtrees",
+	"license": "GPL-3.0+",
+	"autoload": {
+		"psr-0": {
+			"WT_": "app/"
+		},
+		"psr-4": {
+			"Webtrees\\": "app/"
+		}
+	},
 	"require": {
 		"bombayworks/zendframework1": "*",
 		"ezyang/htmlpurifier": "*",

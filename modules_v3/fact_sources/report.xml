@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report>
-	<Title><var var="WT_I18N::translate('Source')" /></Title>
-	<Description><var var="WT_I18N::translate('A report of facts which are supported by a given source.')" /></Description>
-	<Input name="sid" lookup="SOUR" default="" type="text"><var var="WT_I18N::translate('Find a source')" /></Input>
-	<Input name="stype" type="select" default="facts" options="facts=>WT_I18N::translate('facts')|records=>WT_I18N::translate('records')"><var var="WT_I18N::translate('Source type')" /></Input>
-	<Input name="sortby" type="select" default="BIRT:DATE" options="NAME=>WT_I18N::translate('sort by name')|BIRT:DATE=>WT_I18N::translate('sort by date of birth')"><var var="WT_I18N::translate('Sort order')" /></Input>
-	<Input name="pageSize" type="select" default="A4" options="letter=>WT_I18N::translate_c('paper size','Letter')|A3=>WT_I18N::translate_c('paper size', 'A3')|A4=>WT_I18N::translate_c('paper size','A4')|legal=>WT_I18N::translate_c('paper size','Legal')"><var var="WT_I18N::translate('Page size')" /></Input>
-	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>WT_I18N::translate_c('font name', 'Arial')|dejavusans=>WT_I18N::translate_c('font name', 'DejaVu')|helvetica=>WT_I18N::translate_c('font name', 'Helvetica')"><var var="WT_I18N::translate('Font')"/></Input>
+	<Title><var var="I18N::translate('Source')" /></Title>
+	<Description><var var="I18N::translate('A report of facts which are supported by a given source.')" /></Description>
+	<Input name="sid" lookup="SOUR" default="" type="text"><var var="I18N::translate('Find a source')" /></Input>
+	<Input name="stype" type="select" default="facts" options="facts=>I18N::translate('facts')|records=>I18N::translate('records')"><var var="I18N::translate('Source type')" /></Input>
+	<Input name="sortby" type="select" default="BIRT:DATE" options="NAME=>I18N::translate('sort by name')|BIRT:DATE=>I18N::translate('sort by date of birth')"><var var="I18N::translate('Sort order')" /></Input>
+	<Input name="pageSize" type="select" default="A4" options="letter=>I18N::translate_c('paper size','Letter')|A3=>I18N::translate_c('paper size', 'A3')|A4=>I18N::translate_c('paper size','A4')|legal=>I18N::translate_c('paper size','Legal')"><var var="I18N::translate('Page size')" /></Input>
+	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>I18N::translate_c('font name', 'Arial')|dejavusans=>I18N::translate_c('font name', 'DejaVu')|helvetica=>I18N::translate_c('font name', 'Helvetica')"><var var="I18N::translate('Font')"/></Input>
 
 	<!-- Header -->
 	<Style name="header" font="$fonts" size="18" style="b" />
@@ -37,8 +37,8 @@
 
 	<Doc pageSize="$pageSize" orientation="landscape">
 		<Header>
-			<Cell align="center" newline="1" style="header"><var var="WT_I18N::translate('Source')" /></Cell>
-			<Cell align="rightrtl" newline="1" style="pagenum"><var var="WT_I18N::translate('Page')" /> <PageNum /> <var var="WT_I18N::translate('of')" /> <TotalPages /></Cell>
+			<Cell align="center" newline="1" style="header"><var var="I18N::translate('Source')" /></Cell>
+			<Cell align="rightrtl" newline="1" style="pagenum"><var var="I18N::translate('Page')" /> <PageNum /> <var var="I18N::translate('of')" /> <TotalPages /></Cell>
 			<!-- Source Title -->
 			<Gedcom id="$sid">
 				<Cell align="center" newline="1" style="header2"><GedcomValue tag="TITL" /></Cell>
@@ -48,7 +48,7 @@
 		<Body>
 		<if condition="$stype=='facts'">
 			<!-- List type -->
-			<Cell align="center" newline="1" style="listtype"><var var="WT_I18N::translate('Individuals')" /></Cell>
+			<Cell align="center" newline="1" style="listtype"><var var="I18N::translate('Individuals')" /></Cell>
 			<TextBox height="$vspace" newline="1" padding="0"/>
 
 			<!-- Individual Name -->
@@ -56,19 +56,19 @@
 			<if condition="$sortby=='NAME'">
 				<SetVar name="fill" value="#AAAAAA" />
 			</if>
-			<Cell bgcolor="$fill" border="1" style="list_label" width="$nameindi"><var var="WT_I18N::translate('Name')" /></Cell>
+			<Cell bgcolor="$fill" border="1" style="list_label" width="$nameindi"><var var="I18N::translate('Name')" /></Cell>
 			<!-- Birth date -->
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='BIRT:DATE'">
 				<SetVar name="fill" value="#AAAAAA" />
 			</if>
-			<Cell bgcolor="$fill" border="1" style="list_label" width="$datebirth"><var var="WT_I18N::translate('Date of birth')" /></Cell>
+			<Cell bgcolor="$fill" border="1" style="list_label" width="$datebirth"><var var="I18N::translate('Date of birth')" /></Cell>
 			<!-- Name of the fact that contains the source -->
-			<Cell border="1" style="list_label" width="$fact"><var var="WT_I18N::translate('Event')" /></Cell>
+			<Cell border="1" style="list_label" width="$fact"><var var="I18N::translate('Event')" /></Cell>
 			<!-- Date of the fact -->
-			<Cell border="1" style="list_label" width="$dateevent"><var var="WT_I18N::translate('Date')" /></Cell>
+			<Cell border="1" style="list_label" width="$dateevent"><var var="I18N::translate('Date')" /></Cell>
 			<!-- Detailed source text -->
-			<Cell border="1" newline="1" style="list_label"><var var="WT_I18N::translate('Citation details')" /></Cell>
+			<Cell border="1" newline="1" style="list_label"><var var="I18N::translate('Citation details')" /></Cell>
 			<TextBox height="$vspace" newline="1" padding="0"/>
 
 			<!-- Individual List -->
@@ -136,26 +136,26 @@
 
 			<!-- Print the list counter -->
 			<if condition="$printedsource==0">
-				<Cell align="rightrtl" newline="1" style="list_label"><var var="WT_I18N::translate('Total individuals')"/>: 0</Cell>
+				<Cell align="rightrtl" newline="1" style="list_label"><var var="I18N::translate('Total individuals')"/>: 0</Cell>
 			</if>
 			<if condition="$printedsource > 0">
 				<TextBox height="$vspace" newline="1" padding="0"/>
-				<Cell align="rightrtl" newline="1" style="list_label"><var var="WT_I18N::translate('Total individuals')"/>: <var var="printedsource" /></Cell>
+				<Cell align="rightrtl" newline="1" style="list_label"><var var="I18N::translate('Total individuals')"/>: <var var="printedsource" /></Cell>
 			</if>
 
 			<NewPage />
 			<!-- Family List -->
 			<TextBox height="$vspace" newline="1" padding="0"/>
-			<Cell align="center" newline="1" style="listtype"><var var="WT_I18N::translate('Families')" /></Cell>
+			<Cell align="center" newline="1" style="listtype"><var var="I18N::translate('Families')" /></Cell>
 			<TextBox height="$vspace" newline="1" padding="0"/>
 			<!-- Family Name -->
-			<Cell border="1" style="list_label" width="$namefam"><var var="WT_I18N::translate('Name')" /></Cell>
+			<Cell border="1" style="list_label" width="$namefam"><var var="I18N::translate('Name')" /></Cell>
 			<!-- Name of the fact that contains the source -->
-			<Cell border="1" style="list_label" width="$fact"><var var="WT_I18N::translate('Event')" /></Cell>
+			<Cell border="1" style="list_label" width="$fact"><var var="I18N::translate('Event')" /></Cell>
 			<!-- Date of the fact -->
-			<Cell bgcolor="#AAAAAA" border="1" style="list_label" width="$dateevent"><var var="WT_I18N::translate('Date')" /></Cell>
+			<Cell bgcolor="#AAAAAA" border="1" style="list_label" width="$dateevent"><var var="I18N::translate('Date')" /></Cell>
 			<!-- Detailed source text -->
-			<Cell border="1" newline="1" style="list_label"><var var="WT_I18N::translate('Citation details')" /></Cell>
+			<Cell border="1" newline="1" style="list_label"><var var="I18N::translate('Citation details')" /></Cell>
 
 			<!-- Family List -->
 			<TextBox height="$vspace" newline="1" padding="0"/>
@@ -193,13 +193,13 @@
 									<var var="@fact" />
 								</if>
 								<if condition="@MARR:TYPE=='Religious'">
-									<var var="WT_I18N::translate('Religious marriage')" />
+									<var var="I18N::translate('Religious marriage')" />
 								</if>
 								<if condition="@MARR:TYPE=='Civil'">
-									<var var="WT_I18N::translate('Civil marriage')" />
+									<var var="I18N::translate('Civil marriage')" />
 								</if>
 								<if condition="@MARR:TYPE=='Partners'">
-									<var var="WT_I18N::translate('Registered partnership')" />
+									<var var="I18N::translate('Registered partnership')" />
 								</if>
 							</if>
 							<if condition="@fact!='MARR'">
@@ -242,17 +242,17 @@
 
 			<!-- Print the list counter -->
 			<if condition="$printedsource==0">
-				<Cell align="rightrtl" newline="1" style="list_label"><var var="WT_I18N::translate('Total families')"/>: 0</Cell>
+				<Cell align="rightrtl" newline="1" style="list_label"><var var="I18N::translate('Total families')"/>: 0</Cell>
 			</if>
 			<if condition="$printedsource > 0">
 				<TextBox height="$vspace" newline="1" padding="0"/>
-				<Cell align="rightrtl" newline="1" style="list_label"><var var="WT_I18N::translate('Total families')"/>: <var var="printedsource" /></Cell>
+				<Cell align="rightrtl" newline="1" style="list_label"><var var="I18N::translate('Total families')"/>: <var var="printedsource" /></Cell>
 			</if>
 			<TextBox height="$vspace" newline="1" padding="0"/>
 		</if>
 		<if condition="$stype=='records'">
 			<!-- List type -->
-			<Cell align="center" newline="1" style="listtype"><var var="WT_I18N::translate('Individuals')" /></Cell>
+			<Cell align="center" newline="1" style="listtype"><var var="I18N::translate('Individuals')" /></Cell>
 			<TextBox height="$vspace" newline="1" padding="0"/>
 
 			<!-- Individual Name -->
@@ -260,18 +260,18 @@
 			<if condition="$sortby=='NAME'">
 				<SetVar name="fill" value="#AAAAAA" />
 			</if>
-			<Cell bgcolor="$fill" border="1" style="list_label" width="$nameindi"><var var="WT_I18N::translate('Name')" /></Cell>
+			<Cell bgcolor="$fill" border="1" style="list_label" width="$nameindi"><var var="I18N::translate('Name')" /></Cell>
 			<!-- Birth date -->
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='BIRT:DATE'">
 				<SetVar name="fill" value="#AAAAAA" />
 			</if>
-			<Cell bgcolor="$fill" border="1" style="list_label" width="$fact"><var var="WT_I18N::translate('Date of birth')" /></Cell>
-			<Cell border="1" style="list_label" width="$dateevent"><var var="WT_I18N::translate('Place of birth')" /></Cell>
-			<Cell border="1" style="list_label" width="$fact"><var var="WT_I18N::translate('Date of death')" /></Cell>
-			<Cell border="1" style="list_label" width="$dateevent"><var var="WT_I18N::translate('Place of death')" /></Cell>
+			<Cell bgcolor="$fill" border="1" style="list_label" width="$fact"><var var="I18N::translate('Date of birth')" /></Cell>
+			<Cell border="1" style="list_label" width="$dateevent"><var var="I18N::translate('Place of birth')" /></Cell>
+			<Cell border="1" style="list_label" width="$fact"><var var="I18N::translate('Date of death')" /></Cell>
+			<Cell border="1" style="list_label" width="$dateevent"><var var="I18N::translate('Place of death')" /></Cell>
 			<!-- Detailed source text -->
-			<Cell border="1" newline="1" style="list_label"><var var="WT_I18N::translate('Citation details')" /></Cell>
+			<Cell border="1" newline="1" style="list_label"><var var="I18N::translate('Citation details')" /></Cell>
 			<TextBox height="$vspace" newline="1" padding="0"/>
 
 			<!-- Individual List -->
@@ -299,25 +299,25 @@
 
 			<!-- Print the list counter -->
 			<if condition="$printedsource==0">
-				<Cell align="rightrtl" newline="1" style="list_label"><var var="WT_I18N::translate('Total individuals')"/>: 0</Cell>
+				<Cell align="rightrtl" newline="1" style="list_label"><var var="I18N::translate('Total individuals')"/>: 0</Cell>
 			</if>
 			<if condition="$printedsource > 0">
 				<TextBox height="$vspace" newline="1" padding="0"/>
-				<Cell align="rightrtl" newline="1" style="list_label"><var var="WT_I18N::translate('Total individuals')"/>: <var var="printedsource" /></Cell>
+				<Cell align="rightrtl" newline="1" style="list_label"><var var="I18N::translate('Total individuals')"/>: <var var="printedsource" /></Cell>
 			</if>
 			<NewPage />
 			<!-- Family List -->
 			<TextBox height="$vspace" newline="1" padding="0"/>
-			<Cell align="center" newline="1" style="listtype"><var var="WT_I18N::translate('Families')" /></Cell>
+			<Cell align="center" newline="1" style="listtype"><var var="I18N::translate('Families')" /></Cell>
 			<TextBox height="$vspace" newline="1" padding="0"/>
 			<!-- Family Name -->
-			<Cell border="1" style="list_label" width="$namefam"><var var="WT_I18N::translate('Name')" /></Cell>
+			<Cell border="1" style="list_label" width="$namefam"><var var="I18N::translate('Name')" /></Cell>
 			<!-- Name of the fact that contains the source -->
-			<Cell bgcolor="#AAAAAA" border="1" style="list_label" width="$dateevent"><var var="WT_I18N::translate('Date of marriage')" /></Cell>
+			<Cell bgcolor="#AAAAAA" border="1" style="list_label" width="$dateevent"><var var="I18N::translate('Date of marriage')" /></Cell>
 			<!-- Date of the fact -->
-			<Cell border="1" style="list_label" width="$fact"><var var="WT_I18N::translate('Place of marriage')" /></Cell>
+			<Cell border="1" style="list_label" width="$fact"><var var="I18N::translate('Place of marriage')" /></Cell>
 			<!-- Detailed source text -->
-			<Cell border="1" newline="1" style="list_label"><var var="WT_I18N::translate('Citation details')" /></Cell>
+			<Cell border="1" newline="1" style="list_label"><var var="I18N::translate('Citation details')" /></Cell>
 
 			<!-- Family List -->
 			<TextBox height="$vspace" newline="1" padding="0"/>
@@ -344,11 +344,11 @@
 
 			<!-- Print the list counter -->
 			<if condition="$printedsource==0">
-				<Cell align="rightrtl" newline="1" style="list_label"><var var="WT_I18N::translate('Total families')"/>: 0</Cell>
+				<Cell align="rightrtl" newline="1" style="list_label"><var var="I18N::translate('Total families')"/>: 0</Cell>
 			</if>
 			<if condition="$printedsource > 0">
 				<TextBox height="$vspace" newline="1" padding="0"/>
-				<Cell align="rightrtl" newline="1" style="list_label"><var var="WT_I18N::translate('Total families')"/>: <var var="printedsource" /></Cell>
+				<Cell align="rightrtl" newline="1" style="list_label"><var var="I18N::translate('Total families')"/>: <var var="printedsource" /></Cell>
 			</if>
 			<TextBox height="$vspace" newline="1" padding="0"/>
 		</if>

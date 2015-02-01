@@ -1,30 +1,20 @@
 <?php
-// User Account Edit Interface.
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2015 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Webtrees;
 
-use WT\Auth;
-use WT\Log;
-use WT\Theme;
-use WT\User;
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 define('WT_SCRIPT_NAME', 'edituser.php');
 require './includes/session.php';
@@ -39,26 +29,26 @@ if (!Auth::check()) {
 }
 
 // Extract form variables
-$form_action         = WT_Filter::post('form_action');
-$form_username       = WT_Filter::post('form_username');
-$form_realname       = WT_Filter::post('form_realname');
-$form_pass1          = WT_Filter::post('form_pass1', WT_REGEX_PASSWORD);
-$form_pass2          = WT_Filter::post('form_pass2', WT_REGEX_PASSWORD);
-$form_email          = WT_Filter::postEmail('form_email');
-$form_rootid         = WT_Filter::post('form_rootid', WT_REGEX_XREF);
-$form_theme          = WT_Filter::post('form_theme', implode('|', array_keys(Theme::installedThemes())));
-$form_language       = WT_Filter::post('form_language', implode('|', array_keys(WT_I18N::installed_languages())), WT_LOCALE);
-$form_contact_method = WT_Filter::post('form_contact_method');
-$form_visible_online = WT_Filter::postBool('form_visible_online');
+$form_action         = Filter::post('form_action');
+$form_username       = Filter::post('form_username');
+$form_realname       = Filter::post('form_realname');
+$form_pass1          = Filter::post('form_pass1', WT_REGEX_PASSWORD);
+$form_pass2          = Filter::post('form_pass2', WT_REGEX_PASSWORD);
+$form_email          = Filter::postEmail('form_email');
+$form_rootid         = Filter::post('form_rootid', WT_REGEX_XREF);
+$form_theme          = Filter::post('form_theme', implode('|', array_keys(Theme::installedThemes())));
+$form_language       = Filter::post('form_language', implode('|', array_keys(I18N::installed_languages())), WT_LOCALE);
+$form_contact_method = Filter::post('form_contact_method');
+$form_visible_online = Filter::postBool('form_visible_online');
 
 // Respond to form action
-if ($form_action && WT_Filter::checkCsrf()) {
+if ($form_action && Filter::checkCsrf()) {
 	switch ($form_action) {
 	case 'update':
 		if ($form_username !== Auth::user()->getUserName() && User::findByIdentifier($form_username)) {
-			WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'));
+			FlashMessages::addMessage(I18N::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'));
 		} elseif ($form_email !== Auth::user()->getEmail() && User::findByIdentifier($form_email)) {
-			WT_FlashMessages::addMessage(WT_I18N::translate('Duplicate email address.  A user with that email already exists.'));
+			FlashMessages::addMessage(I18N::translate('Duplicate email address.  A user with that email already exists.'));
 		} else {
 			// Change username
 			if ($form_username !== Auth::user()->getUserName()) {
@@ -103,37 +93,37 @@ if ($form_action && WT_Filter::checkCsrf()) {
 	return;
 }
 
-$controller = new WT_Controller_Page;
+$controller = new PageController;
 $controller
-	->setPageTitle(WT_I18N::translate('My account'))
+	->setPageTitle(I18N::translate('My account'))
 	->pageHeader()
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');
 
-$my_individual_record = WT_Individual::getInstance(WT_USER_GEDCOM_ID);
-$default_individual   = WT_Individual::getInstance(WT_USER_ROOT_ID);
+$my_individual_record = Individual::getInstance(WT_USER_GEDCOM_ID);
+$default_individual   = Individual::getInstance(WT_USER_ROOT_ID);
 
 // Form validation
 ?>
 <script>
 function checkform(frm) {
 	if (frm.form_username.value=="") {
-		alert("<?php echo WT_I18N::translate('You must enter a user name.'); ?>");
+		alert("<?php echo I18N::translate('You must enter a user name.'); ?>");
 		frm.form_username.focus();
 		return false;
 	}
 	if (frm.form_realname.value=="") {
-		alert("<?php echo WT_I18N::translate('You must enter a real name.'); ?>");
+		alert("<?php echo I18N::translate('You must enter a real name.'); ?>");
 		frm.form_realname.focus();
 		return false;
 	}
 	if (frm.form_pass1.value!=frm.form_pass2.value) {
-		alert("<?php echo WT_I18N::translate('Passwords do not match.'); ?>");
+		alert("<?php echo I18N::translate('Passwords do not match.'); ?>");
 		frm.form_pass1.focus();
 		return false;
 	}
 	if (frm.form_pass1.value.length > 0 && frm.form_pass1.value.length < 6) {
-		alert("<?php echo WT_I18N::translate('Passwords must contain at least 6 characters.'); ?>");
+		alert("<?php echo I18N::translate('Passwords must contain at least 6 characters.'); ?>");
 		frm.form_pass1.focus();
 		return false;
 	}
@@ -147,48 +137,48 @@ function checkform(frm) {
 	<form name="editform" method="post" action="?" onsubmit="return checkform(this);">
 
 		<input type="hidden" id="form_action" name="form_action" value="update">
-		<?php echo WT_Filter::getCsrf(); ?>
+		<?php echo Filter::getCsrf(); ?>
 
 		<div id="edituser-table">
 			<div class="label">
 				<label for="form_username">
-					<?php echo WT_I18N::translate('Username'); ?>
+					<?php echo I18N::translate('Username'); ?>
 				</label>
 			</div>
 			<div class="value">
-				<input type="text" id="form_username" name="form_username" value="<?php echo WT_Filter::escapeHtml(Auth::user()->getUserName()); ?>" autofocus>
+				<input type="text" id="form_username" name="form_username" value="<?php echo Filter::escapeHtml(Auth::user()->getUserName()); ?>" autofocus>
 				<p class="small text-muted">
-					<?php echo WT_I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.'); ?>
-					<?php echo WT_I18N::translate('Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;'); ?>
+					<?php echo I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.'); ?>
+					<?php echo I18N::translate('Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;'); ?>
 				</p>
 			</div>
 			<div class="label">
 				<label for="form_realname">
-					<?php echo WT_I18N::translate('Real name'); ?>
+					<?php echo I18N::translate('Real name'); ?>
 				</label>
 			</div>
 			<div class="value">
-				<input type="text" id="form_realname" name="form_realname" value="<?php echo WT_Filter::escapeHtml(Auth::user()->getRealName()); ?>">
+				<input type="text" id="form_realname" name="form_realname" value="<?php echo Filter::escapeHtml(Auth::user()->getRealName()); ?>">
 				<p class="small text-muted">
-					<?php echo WT_I18N::translate('This is your real name, as you would like it displayed on screen.'); ?>
+					<?php echo I18N::translate('This is your real name, as you would like it displayed on screen.'); ?>
 				</p>
 			</div>
 			<div class="label">
-				<?php echo WT_I18N::translate('Individual record'); ?>
+				<?php echo I18N::translate('Individual record'); ?>
 			</div>
 			<div class="value">
 				<?php if ($my_individual_record): ?>
 				<?php echo $my_individual_record->format_list('span'); ?>
 				<?php else: ?>
-					<?php echo WT_I18N::translate_c('unknown people', 'Unknown'); ?>
+					<?php echo I18N::translate_c('unknown people', 'Unknown'); ?>
 				<?php endif; ?>
 				<p class="small text-muted">
-					<?php echo WT_I18N::translate('This is a link to your own record in the family tree.  If this is the wrong individual, contact an administrator.'); ?>
+					<?php echo I18N::translate('This is a link to your own record in the family tree.  If this is the wrong individual, contact an administrator.'); ?>
 				</p>
 			</div>
 			<div class="label">
 				<label for="form_rootid">
-					<?php echo WT_I18N::translate('Default individual'); ?>
+					<?php echo I18N::translate('Default individual'); ?>
 				</label>
 			</div>
 			<div class="value">
@@ -199,35 +189,35 @@ function checkform(frm) {
 				<?php echo $default_individual->format_list('span'); ?>
 				<?php endif; ?>
 				<p class="small text-muted">
-					<?php echo WT_I18N::translate('This individual will be selected by default when viewing charts and reports.'); ?>
+					<?php echo I18N::translate('This individual will be selected by default when viewing charts and reports.'); ?>
 				</p>
 			</div>
 			<div class="label">
 				<label for="form_pass1">
-					<?php echo WT_I18N::translate('Password'); ?>
+					<?php echo I18N::translate('Password'); ?>
 				</label>
 			</div>
 			<div class="value">
 				<input type="password" id="form_pass1" name="form_pass1">
 				<p class="small text-muted">
-					<?php echo WT_I18N::translate('Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”.'); ?>
-					<?php echo WT_I18N::translate('Leave the password blank if you want to keep the current password.'); ?>
+					<?php echo I18N::translate('Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”.'); ?>
+					<?php echo I18N::translate('Leave the password blank if you want to keep the current password.'); ?>
 				</p>
 			</div>
 			<div class="label">
 				<label for="form_pass2">
-					<?php echo WT_I18N::translate('Confirm password'); ?>
+					<?php echo I18N::translate('Confirm password'); ?>
 				</label>
 			</div>
 			<div class="value">
 				<input type="password" id="form_pass2" name="form_pass2">
 				<p class="small text-muted">
-					<?php echo WT_I18N::translate('Type your password again, to make sure you have typed it correctly.'); ?>
+					<?php echo I18N::translate('Type your password again, to make sure you have typed it correctly.'); ?>
 				</p>
 			</div>
 			<div class="label">
 				<label for="form_language">
-					<?php echo WT_I18N::translate('Language'); ?>
+					<?php echo I18N::translate('Language'); ?>
 				</label>
 			</div>
 			<div class="value">
@@ -235,25 +225,25 @@ function checkform(frm) {
 			</div>
 			<div class="label">
 				<label for="form_email">
-					<?php echo WT_I18N::translate('Email address'); ?>
+					<?php echo I18N::translate('Email address'); ?>
 				</label>
 			</div>
 			<div class="value">
-				<input type="email" id="form_email" name="form_email" value="<?php echo WT_Filter::escapeHtml(Auth::user()->getEmail()); ?>" size="50">
+				<input type="email" id="form_email" name="form_email" value="<?php echo Filter::escapeHtml(Auth::user()->getEmail()); ?>" size="50">
 				<p class="small text-muted">
-					<?php echo WT_I18N::translate('This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website.'); ?>
+					<?php echo I18N::translate('This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website.'); ?>
 				</p>
 			</div>
-			<?php if (WT_Site::getPreference('ALLOW_USER_THEMES')): ?>
+			<?php if (Site::getPreference('ALLOW_USER_THEMES')): ?>
 			<div class="label">
 				<label for="form_theme">
-					<?php echo WT_I18N::translate('Theme'); ?>
+					<?php echo I18N::translate('Theme'); ?>
 				</label>
 			</div>
 			<div class="value">
 				<select id="form_theme" name="form_theme">
 					<option value="">
-						<?php echo WT_Filter::escapeHtml(/* I18N: default option in list of themes */ WT_I18N::translate('<default theme>')); ?>
+						<?php echo Filter::escapeHtml(/* I18N: default option in list of themes */ I18N::translate('<default theme>')); ?>
 					</option>
 					<?php foreach (Theme::themeNames() as $theme_id => $theme_name): ?>
 					<option value="<?php echo $theme_id; ?>" <?php echo $theme_id === Auth::user()->getPreference('theme') ? 'selected' : ''; ?>>
@@ -262,39 +252,39 @@ function checkform(frm) {
 					<?php endforeach; ?>
 				</select>
 				<p class="small text-muted">
-					<?php echo /* I18N: Help text for the "Default theme" site configuration setting */ WT_I18N::translate('You can change the appearance of webtrees using “themes”.  Each theme has a different style, layout, color scheme, etc.'); ?>
+					<?php echo /* I18N: Help text for the "Default theme" site configuration setting */ I18N::translate('You can change the appearance of webtrees using “themes”.  Each theme has a different style, layout, color scheme, etc.'); ?>
 				</p>
 			</div>
 			<?php endif; ?>
 			<div class="label">
 				<label for="form_contact_method">
-					<?php echo WT_I18N::translate('Contact method'); ?>
+					<?php echo I18N::translate('Contact method'); ?>
 				</label>
 			</div>
 			<div class="value">
 				<?php echo edit_field_contact('form_contact_method', Auth::user()->getPreference('contactmethod')); ?>
 				<p class="small text-muted">
-					<?php echo WT_I18N::translate('Site members can send each other messages.  You can choose to how these messages are sent to you, or choose not receive them at all.'); ?>
+					<?php echo I18N::translate('Site members can send each other messages.  You can choose to how these messages are sent to you, or choose not receive them at all.'); ?>
 				</p>
 			</div>
 			<div class="label">
 				<label for="form_visible_online">
-					<?php echo WT_I18N::translate('Visible to other users when online'); ?>
+					<?php echo I18N::translate('Visible to other users when online'); ?>
 				</label>
 			</div>
 			<div class="value">
 				<?php echo checkbox('form_visible_online', Auth::user()->getPreference('visibleonline')); ?>
 				<p class="small text-muted">
-					<?php echo WT_I18N::translate('This checkbox controls your visibility to other users while you’re online.  It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible.'); ?>
+					<?php echo I18N::translate('This checkbox controls your visibility to other users while you’re online.  It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible.'); ?>
 				</p>
 			</div>
 		</div>
 		<div id="edituser_submit">
-			<input type="submit" value="<?php echo WT_I18N::translate('save'); ?>">
+			<input type="submit" value="<?php echo I18N::translate('save'); ?>">
 		</div>
 		<?php if (!Auth::user()->getPreference('admin')): ?>
-		<a href="#" onclick="if (confirm('<?php echo WT_I18N::translate('Are you sure you want to delete “%s”?', WT_Filter::escapeJs(Auth::user()->getUserName())); ?>')) {jQuery('#form_action').val('delete'); document.editform.submit(); }">
-			<?php echo WT_I18N::translate('Delete your account'); ?>
+		<a href="#" onclick="if (confirm('<?php echo I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Auth::user()->getUserName())); ?>')) {jQuery('#form_action').val('delete'); document.editform.submit(); }">
+			<?php echo I18N::translate('Delete your account'); ?>
 		</a>
 		<?php endif; ?>
 	</form>

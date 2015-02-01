@@ -1,7 +1,9 @@
 <?php
-// Colors theme
+namespace Webtrees;
+
+	// Colors theme
 //
-// webtrees: Web based Family History software
+// webtrees: online genealogy
 // Copyright (C) 2015 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
@@ -19,4 +21,4 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 // PNG Icons By: Alessandro Rei; License:  GPL; www.deviantdark.com
 
-return new WT\Theme\Colors;
+return new ColorsTheme;

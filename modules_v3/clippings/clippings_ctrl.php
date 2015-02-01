@@ -1,37 +1,30 @@
 <?php
-// Controller for the Clippings Page
-//
-// NOTE THAT THIS IS NOT A PAGE CONTROLLER, AND DOES NOT EXTEND WT_CONTROLLER_BASE
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Webtrees;
 
-use WT\User;
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+use PclZip;
+use Zend_Session;
 
 require_once WT_ROOT . 'includes/functions/functions_export.php';
-require_once WT_ROOT . 'library/pclzip.lib.php';
 
 /**
  * Main controller class for the Clippings page.
  */
-class WT_Controller_Clippings {
+class ClippingsController {
 
 	var $download_data;
 	var $media_list = array();
@@ -61,18 +54,18 @@ class WT_Controller_Clippings {
 			$WT_SESSION->cart[WT_GED_ID] = array();
 		}
 
-		$this->action           = WT_Filter::get('action');
-		$this->id               = WT_Filter::get('id');
-		$convert                = WT_Filter::get('convert', 'yes|no', 'no');
-		$this->Zip              = WT_Filter::get('Zip');
-		$this->IncludeMedia     = WT_Filter::get('IncludeMedia');
-		$this->conv_path        = WT_Filter::get('conv_path');
-		$this->privatize_export = WT_Filter::get('privatize_export', 'none|visitor|user|gedadmin', 'visitor');
-		$this->level1           = WT_Filter::getInteger('level1');
-		$this->level2           = WT_Filter::getInteger('level2');
-		$this->level3           = WT_Filter::getInteger('level3');
-		$others                 = WT_Filter::get('others');
-		$this->type             = WT_Filter::get('type');
+		$this->action           = Filter::get('action');
+		$this->id               = Filter::get('id');
+		$convert                = Filter::get('convert', 'yes|no', 'no');
+		$this->Zip              = Filter::get('Zip');
+		$this->IncludeMedia     = Filter::get('IncludeMedia');
+		$this->conv_path        = Filter::get('conv_path');
+		$this->privatize_export = Filter::get('privatize_export', 'none|visitor|user|gedadmin', 'visitor');
+		$this->level1           = Filter::getInteger('level1');
+		$this->level2           = Filter::getInteger('level2');
+		$this->level3           = Filter::getInteger('level3');
+		$others                 = Filter::get('others');
+		$this->type             = Filter::get('type');
 
 		if (($this->privatize_export === 'none' || $this->privatize_export === 'none') && !WT_USER_GEDCOM_ADMIN) {
 			$this->privatize_export = 'visitor';
@@ -83,7 +76,7 @@ class WT_Controller_Clippings {
 
 		if ($this->action === 'add') {
 			if (empty($this->type) && !empty($this->id)) {
-				$obj = WT_GedcomRecord::getInstance($this->id);
+				$obj = GedcomRecord::getInstance($this->id);
 				if ($obj) {
 					$this->type = $obj::RECORD_TYPE;
 				} else {
@@ -100,7 +93,7 @@ class WT_Controller_Clippings {
 		}
 
 		if ($this->action === 'add1') {
-			$obj = WT_GedcomRecord::getInstance($this->id);
+			$obj = GedcomRecord::getInstance($this->id);
 			$this->addClipping($obj);
 			if ($this->type === 'SOUR') {
 				if ($others === 'linked') {
@@ -117,30 +110,30 @@ class WT_Controller_Clippings {
 					$this->addClipping($obj->getHusband());
 					$this->addClipping($obj->getWife());
 				} elseif ($others === "members") {
-					$this->addFamilyMembers(WT_Family::getInstance($this->id));
+					$this->addFamilyMembers(Family::getInstance($this->id));
 				} elseif ($others === "descendants") {
-					$this->addFamilyDescendancy(WT_Family::getInstance($this->id));
+					$this->addFamilyDescendancy(Family::getInstance($this->id));
 				}
 			} elseif ($this->type === 'INDI') {
 				if ($others === 'parents') {
-					foreach (WT_Individual::getInstance($this->id)->getChildFamilies() as $family) {
+					foreach (Individual::getInstance($this->id)->getChildFamilies() as $family) {
 						$this->addFamilyMembers($family);
 					}
 				} elseif ($others === 'ancestors') {
-					$this->addAncestorsToCart(WT_Individual::getInstance($this->id), $this->level1);
+					$this->addAncestorsToCart(Individual::getInstance($this->id), $this->level1);
 				} elseif ($others === 'ancestorsfamilies') {
-					$this->addAncestorsToCartFamilies(WT_Individual::getInstance($this->id), $this->level2);
+					$this->addAncestorsToCartFamilies(Individual::getInstance($this->id), $this->level2);
 				} elseif ($others === 'members') {
-					foreach (WT_Individual::getInstance($this->id)->getSpouseFamilies() as $family) {
+					foreach (Individual::getInstance($this->id)->getSpouseFamilies() as $family) {
 						$this->addFamilyMembers($family);
 					}
 				} elseif ($others === 'descendants') {
-					foreach (WT_Individual::getInstance($this->id)->getSpouseFamilies() as $family) {
+					foreach (Individual::getInstance($this->id)->getSpouseFamilies() as $family) {
 						$this->addClipping($family);
 						$this->addFamilyDescendancy($family, $this->level3);
 					}
 				}
-				uksort($WT_SESSION->cart[WT_GED_ID], array('WT_Controller_Clippings', 'compareClippings'));
+				uksort($WT_SESSION->cart[WT_GED_ID], array('\Webtrees\Controller\ClippingsController', 'compareClippings'));
 			}
 		} elseif ($this->action === 'remove') {
 			unset ($WT_SESSION->cart[WT_GED_ID][$this->id]);
@@ -152,14 +145,14 @@ class WT_Controller_Clippings {
 			$filetext   = gedcom_header(WT_GEDCOM);
 			// Include SUBM/SUBN records, if they exist
 			$subn =
-				WT_DB::prepare("SELECT o_gedcom FROM `##other` WHERE o_type=? AND o_file=?")
+				Database::prepare("SELECT o_gedcom FROM `##other` WHERE o_type=? AND o_file=?")
 				->execute(array('SUBN', WT_GED_ID))
 				->fetchOne();
 			if ($subn) {
 				$filetext .= $subn . "\n";
 			}
 			$subm =
-				WT_DB::prepare("SELECT o_gedcom FROM `##other` WHERE o_type=? AND o_file=?")
+				Database::prepare("SELECT o_gedcom FROM `##other` WHERE o_type=? AND o_file=?")
 				->execute(array('SUBM', WT_GED_ID))
 				->fetchOne();
 			if ($subm) {
@@ -186,7 +179,7 @@ class WT_Controller_Clippings {
 			}
 
 			foreach (array_keys($WT_SESSION->cart[WT_GED_ID]) as $xref) {
-				$object = WT_GedcomRecord::getInstance($xref);
+				$object = GedcomRecord::getInstance($xref);
 				// The object may have been deleted since we added it to the cart....
 				if ($object) {
 					$record = $object->privatizeGedcom($access_level);
@@ -291,7 +284,7 @@ class WT_Controller_Clippings {
 			}
 			unlink(WT_DATA_DIR . $tempFileName);
 		} else {
-			echo WT_I18N::translate('Cannot create') . " " . WT_DATA_DIR . "$tempFileName " . WT_I18N::translate('Check the access rights on this folder.') . "<br><br>";
+			echo I18N::translate('Cannot create') . " " . WT_DATA_DIR . "$tempFileName " . I18N::translate('Check the access rights on this folder.') . "<br><br>";
 		}
 	}
 
@@ -319,9 +312,9 @@ class WT_Controller_Clippings {
 	/**
 	 * Inserts a clipping into the clipping cart
 	 *
-	 * @param WT_GedcomRecord $record
+	 * @param GedcomRecord $record
 	 */
-	function addClipping(WT_GedcomRecord $record) {
+	function addClipping(GedcomRecord $record) {
 		global $WT_SESSION;
 
 		if ($record->canShowName()) {
@@ -337,10 +330,10 @@ class WT_Controller_Clippings {
 	/**
 	 * Recursive function to traverse the tree
 	 *
-	 * @param WT_Family|null $family
+	 * @param Family|null $family
 	 * @param integer        $level
 	 */
-	function addFamilyDescendancy(WT_Family $family = null, $level = PHP_INT_MAX) {
+	function addFamilyDescendancy(Family $family = null, $level = PHP_INT_MAX) {
 		if (!$family) {
 			return;
 		}
@@ -361,9 +354,9 @@ class WT_Controller_Clippings {
 	/**
 	 * Add a family, and all its members
 	 *
-	 * @param WT_Family|null $family
+	 * @param Family|null $family
 	 */
-	function addFamilyMembers(WT_Family $family = null) {
+	function addFamilyMembers(Family $family = null) {
 		if (!$family) {
 			return;
 		}
@@ -379,10 +372,10 @@ class WT_Controller_Clippings {
 	/**
 	 * Recursively add direct-line ancestors to cart
 	 *
-	 * @param WT_Individual|null $person
+	 * @param Individual|null $person
 	 * @param integer            $level
 	 */
-	function addAncestorsToCart(WT_Individual $person = null, $level = 0) {
+	function addAncestorsToCart(Individual $person = null, $level = 0) {
 		if (!$person) {
 			return;
 		}
@@ -399,10 +392,10 @@ class WT_Controller_Clippings {
 	/**
 	 * Recursively adds direct-line ancestors and their families to the cart
 	 *
-	 * @param WT_Individual|null $person
+	 * @param Individual|null $person
 	 * @param integer            $level
 	 */
-	function addAncestorsToCartFamilies(WT_Individual $person = null, $level = 0) {
+	function addAncestorsToCartFamilies(Individual $person = null, $level = 0) {
 		if (!$person) {
 			return;
 		}
@@ -424,8 +417,8 @@ class WT_Controller_Clippings {
 	 * @return integer
 	 */
 	static function compareClippings($a, $b) {
-		$a = WT_GedcomRecord::getInstance($a);
-		$b = WT_GedcomRecord::getInstance($b);
+		$a = GedcomRecord::getInstance($a);
+		$b = GedcomRecord::getInstance($b);
 		if ($a && $b) {
 			switch ($a::RECORD_TYPE) {
 			case 'INDI': $t1 = 1; break;
@@ -448,7 +441,7 @@ class WT_Controller_Clippings {
 			if ($t1 != $t2) {
 				return $t1 - $t2;
 			} else {
-				return WT_GedcomRecord::compare($a, $b);
+				return GedcomRecord::compare($a, $b);
 			}
 		} else {
 			return 0;

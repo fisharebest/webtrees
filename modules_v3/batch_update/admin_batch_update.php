@@ -1,22 +1,20 @@
 <?php
-// webtrees: Web based Family History software
-// Copyright (C) 2014 Greg Roach
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Webtrees;
 
-use WT\Auth;
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
@@ -61,9 +59,9 @@ class batch_update {
 			'<input type="hidden" name="action" value="">' . // will be set by javascript for next update
 			'<input type="hidden" name="data"   value="">' . // will be set by javascript for next update
 			'<table id="batch_update"><tr>' .
-			'<th>' . WT_I18N::translate('Family tree') . '</th>' .
-			'<td>' . select_edit_control('ged', WT_Tree::getNameList(), '', WT_GEDCOM, 'onchange="reset_reload();"') .
-			'</td></tr><tr><th>' . WT_I18N::translate('Batch update') . '</th><td><select name="plugin" onchange="reset_reload();">';
+			'<th>' . I18N::translate('Family tree') . '</th>' .
+			'<td>' . select_edit_control('ged', Tree::getNameList(), '', WT_GEDCOM, 'onchange="reset_reload();"') .
+			'</td></tr><tr><th>' . I18N::translate('Batch update') . '</th><td><select name="plugin" onchange="reset_reload();">';
 		if (!$this->plugin) {
 			$html .= '<option value="" selected></option>';
 		}
@@ -78,7 +76,7 @@ class batch_update {
 		$html .= '</td></tr>';
 
 		if (!Auth::user()->getPreference('auto_accept')) {
-			$html .= '<tr><td colspan="2" class="warning">' . WT_I18N::translate('Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time.') . '</td></tr>';
+			$html .= '<tr><td colspan="2" class="warning">' . I18N::translate('Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time.') . '</td></tr>';
 		}
 
 		// If a plugin is selected, display the details
@@ -91,12 +89,12 @@ class batch_update {
 			} else {
 				if ($this->curr_xref) {
 					// Create an object, so we can get the latest version of the name.
-					$this->record = WT_GedcomRecord::getInstance($this->curr_xref);
+					$this->record = GedcomRecord::getInstance($this->curr_xref);
 
 					$html .=
 						'</table><table id="batch_update2"><tr><td>' .
-						self::createSubmitButton(WT_I18N::translate('previous'), $this->prev_xref) .
-						self::createSubmitButton(WT_I18N::translate('next'), $this->next_xref) .
+						self::createSubmitButton(I18N::translate('previous'), $this->prev_xref) .
+						self::createSubmitButton(I18N::translate('next'), $this->next_xref) .
 						'</td><th><a href="' . $this->record->getHtmlUrl() . '">' . $this->record->getFullName() . '</a>' .
 						'</th>' .
 						'</tr><tr><td valign="top">' .
@@ -105,7 +103,7 @@ class batch_update {
 						$this->PLUGIN->getActionPreview($this->record) .
 						'</td></tr>';
 				} else {
-					$html .= '<tr><td class="accepted" colspan=2>' . WT_I18N::translate('Nothing found.') . '</td></tr>';
+					$html .= '<tr><td class="accepted" colspan=2>' . I18N::translate('Nothing found.') . '</td></tr>';
 				}
 			}
 		}
@@ -119,10 +117,10 @@ class batch_update {
 	 */
 	public function __construct() {
 		$this->plugins = self::getPluginList(); // List of available plugins
-		$this->plugin = WT_Filter::get('plugin'); // User parameters
-		$this->xref   = WT_Filter::get('xref', WT_REGEX_XREF);
-		$this->action = WT_Filter::get('action');
-		$this->data   = WT_Filter::get('data');
+		$this->plugin = Filter::get('plugin'); // User parameters
+		$this->xref   = Filter::get('xref', WT_REGEX_XREF);
+		$this->action = Filter::get('action');
+		$this->data   = Filter::get('data');
 
 		// Don't do any processing until a plugin is chosen.
 		if ($this->plugin && array_key_exists($this->plugin, $this->plugins)) {
@@ -137,9 +135,9 @@ class batch_update {
 					$newrecord = $this->PLUGIN->updateRecord($this->xref, $record);
 					if ($newrecord != $record) {
 						if ($newrecord) {
-							WT_GedcomRecord::getInstance($this->xref)->updateRecord($newrecord, $this->PLUGIN->chan);
+							GedcomRecord::getInstance($this->xref)->updateRecord($newrecord, $this->PLUGIN->chan);
 						} else {
-							WT_GedcomRecord::getInstance($this->xref)->deleteRecord();
+							GedcomRecord::getInstance($this->xref)->deleteRecord();
 						}
 					}
 				}
@@ -152,9 +150,9 @@ class batch_update {
 						$newrecord = $this->PLUGIN->updateRecord($xref, $record);
 						if ($newrecord != $record) {
 							if ($newrecord) {
-								WT_GedcomRecord::getInstance($this->xref)->updateRecord($newrecord, $this->PLUGIN->chan);
+								GedcomRecord::getInstance($this->xref)->updateRecord($newrecord, $this->PLUGIN->chan);
 							} else {
-								WT_GedcomRecord::getInstance($this->xref)->deleteRecord();
+								GedcomRecord::getInstance($this->xref)->deleteRecord();
 							}
 						}
 					}
@@ -259,7 +257,7 @@ class batch_update {
 			}
 		}
 		$this->all_xrefs =
-			WT_DB::prepare(implode(' UNION ', $sql) . ' ORDER BY 1 ASC')
+			Database::prepare(implode(' UNION ', $sql) . ' ORDER BY 1 ASC')
 			->execute($vars)
 			->fetchAssoc();
 	}
@@ -276,7 +274,7 @@ class batch_update {
 		while ($file = readdir($dir_handle)) {
 			if (substr($file, -4) == '.php') {
 				require dirname(__FILE__) . '/plugins/' . $file;
-				$class = basename($file, '.php') . '_bu_plugin';
+				$class = 'Webtrees\\' . basename($file, '.php') . '_bu_plugin';
 				$array[$class] = new $class;
 			}
 		}
@@ -315,9 +313,9 @@ class batch_update {
 	static function createSubmitButton($text, $xref, $action = '', $data = '') {
 		return
 			'<input type="submit" value="' . $text . '" onclick="' .
-			'this.form.xref.value=\'' . WT_Filter::escapeHtml($xref) . '\';' .
-			'this.form.action.value=\'' . WT_Filter::escapeHtml($action) . '\';' .
-			'this.form.data.value=\'' . WT_Filter::escapeHtml($data) . '\';' .
+			'this.form.xref.value=\'' . Filter::escapeHtml($xref) . '\';' .
+			'this.form.action.value=\'' . Filter::escapeHtml($action) . '\';' .
+			'this.form.data.value=\'' . Filter::escapeHtml($data) . '\';' .
 			'return true;"' .
 			($xref ? '' : ' disabled') . '>';
 	}
@@ -333,19 +331,19 @@ class batch_update {
 	static function getLatestRecord($xref, $type) {
 		switch ($type) {
 		case 'INDI':
-			return WT_Individual::getInstance($xref)->getGedcom();
+			return Individual::getInstance($xref)->getGedcom();
 		case 'FAM':
-			return WT_Family::getInstance($xref)->getGedcom();
+			return Family::getInstance($xref)->getGedcom();
 		case 'SOUR':
-			return WT_Source::getInstance($xref)->getGedcom();
+			return Source::getInstance($xref)->getGedcom();
 		case 'REPO':
-			return WT_Repository::getInstance($xref)->getGedcom();
+			return Repository::getInstance($xref)->getGedcom();
 		case 'OBJE':
-			return WT_Media::getInstance($xref)->getGedcom();
+			return Media::getInstance($xref)->getGedcom();
 		case 'NOTE':
-			return WT_Note::getInstance($xref)->getGedcom();
+			return Note::getInstance($xref)->getGedcom();
 		default:
-			return WT_GedcomRecord::getInstance($xref)->getGedcom();
+			return GedcomRecord::getInstance($xref)->getGedcom();
 		}
 	}
 }
@@ -375,7 +373,7 @@ class base_plugin {
 	 * Default option is just the "don't update CHAN record"
 	 */
 	function getOptions() {
-		$this->chan = WT_Filter::getBool('chan');
+		$this->chan = Filter::getBool('chan');
 	}
 
 	/**
@@ -385,10 +383,10 @@ class base_plugin {
 	 */
 	function getOptionsForm() {
 		return
-			'<tr><th>' . WT_I18N::translate('Do not update the “last change” record') . '</th>' .
+			'<tr><th>' . I18N::translate('Do not update the “last change” record') . '</th>' .
 			'<td><select name="chan" onchange="this.form.submit();">' .
-			'<option value="0" ' . ($this->chan ? '' : 'selected') . '>' . WT_I18N::translate('yes') . '</option>' .
-			'<option value="1" ' . ($this->chan ? 'selected' : '') . '>' . WT_I18N::translate('no') . '</option>' .
+			'<option value="0" ' . ($this->chan ? '' : 'selected') . '>' . I18N::translate('yes') . '</option>' .
+			'<option value="1" ' . ($this->chan ? 'selected' : '') . '>' . I18N::translate('no') . '</option>' .
 			'</select></td></tr>';
 	}
 
@@ -402,12 +400,12 @@ class base_plugin {
 	function getActionButtons($xref) {
 		if (Auth::user()->getPreference('auto_accept')) {
 			return array(
-				batch_update::createSubmitButton(WT_I18N::translate('Update'), $xref, 'update'),
-				batch_update::createSubmitButton(WT_I18N::translate('Update all'), $xref, 'update_all')
+				batch_update::createSubmitButton(I18N::translate('Update'), $xref, 'update'),
+				batch_update::createSubmitButton(I18N::translate('Update all'), $xref, 'update_all')
 			);
 		} else {
 			return array(
-				batch_update::createSubmitButton(WT_I18N::translate('Update'), $xref, 'update')
+				batch_update::createSubmitButton(I18N::translate('Update'), $xref, 'update')
 			);
 		}
 	}
@@ -415,11 +413,11 @@ class base_plugin {
 	/**
 	 * Default previewer for plugins with no custom preview.
 	 *
-	 * @param WT_GedcomRecord $record
+	 * @param GedcomRecord $record
 	 *
 	 * @return string
 	 */
-	function getActionPreview(WT_GedcomRecord $record) {
+	function getActionPreview(GedcomRecord $record) {
 		$old_lines = preg_split('/[\n]+/', $record->getGedcom());
 		$new_lines = preg_split('/[\n]+/', $this->updateRecord($record->getXref(), $record->getGedcom()));
 		// Find matching lines using longest-common-subsequence algorithm.

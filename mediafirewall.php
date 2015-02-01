@@ -1,42 +1,37 @@
 <?php
-// Media Firewall - Serves media images, after checking access
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Webtrees;
 
-use WT\Log;
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+use Zend_Session;
 
 define('WT_SCRIPT_NAME', 'mediafirewall.php');
 require './includes/session.php';
 
 Zend_Session::writeClose();
 
-$mid   = WT_Filter::get('mid', WT_REGEX_XREF);
-$thumb = WT_Filter::getBool('thumb');
-$media = WT_Media::getInstance($mid);
+$mid   = Filter::get('mid', WT_REGEX_XREF);
+$thumb = Filter::getBool('thumb');
+$media = Media::getInstance($mid);
 
 /**
  * Send a “Not found” error as an image
  */
 function send404AsImage() {
-	$error = WT_I18N::translate('The media file was not found in this family tree');
+	$error = I18N::translate('The media file was not found in this family tree');
 
 	$width  = mb_strlen($error) * 6.5 + 50;
 	$height = 60;
@@ -125,7 +120,7 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 		}
 	}
 
-	$text       = WT_I18N::reverseText($text);
+	$text       = I18N::reverseText($text);
 	$height     = imagesy($im);
 	$width      = imagesx($im);
 	$calc_angle = rad2deg(atan($height / $width));
@@ -294,7 +289,7 @@ $imgsize        = $media->getImageAttributes($which);
 $filetime       = $media->getFiletime($which);
 $filetimeHeader = gmdate('D, d M Y H:i:s', $filetime) . ' GMT';
 $expireOffset   = 3600 * 24; // tell browser to cache this image for 24 hours
-if (WT_Filter::get('cb')) {
+if (Filter::get('cb')) {
 	$expireOffset = $expireOffset * 7;
 } // if cb parameter was sent, cache for 7 days
 $expireHeader = gmdate('D, d M Y H:i:s', WT_TIMESTAMP + $expireOffset) . ' GMT';
@@ -392,7 +387,7 @@ if ($generatewatermark) {
 		// save the image, if preferences allow
 		if ($which === 'thumb' && $WT_TREE->getPreference('SAVE_WATERMARK_THUMB') || $which === 'main' && $WT_TREE->getPreference('SAVE_WATERMARK_IMAGE')) {
 			// make sure the folder exists
-			WT_File::mkdir(dirname($watermarkfile));
+			File::mkdir(dirname($watermarkfile));
 			// save the image
 			$imSendFunc($im, $watermarkfile);
 		}
@@ -404,7 +399,7 @@ if ($generatewatermark) {
 		return;
 	} else {
 		// this image is defective.  log it
-		Log::addMediaLog('Media Firewall error: >' . WT_I18N::translate('This media file is broken and cannot be watermarked') . '< in file >' . $serverFilename . '< memory used: ' . memory_get_usage());
+		Log::addMediaLog('Media Firewall error: >' . I18N::translate('This media file is broken and cannot be watermarked') . '< in file >' . $serverFilename . '< memory used: ' . memory_get_usage());
 
 		// set usewatermark to false so image will simply be passed through below
 		$usewatermark = false;

@@ -19,7 +19,7 @@ library/bombayworks/zendframework1/library/Zend/Config/        export-ignore
 library/bombayworks/zendframework1/library/Zend/Crypt/         export-ignore
 library/bombayworks/zendframework1/library/Zend/Currency/      export-ignore
 library/bombayworks/zendframework1/library/Zend/Date/          export-ignore
-library/bombayworks/zendframework1/library/Zend/Db/            export-ignore
+library/bombayworks/zendframework1/library/Zend/Database/            export-ignore
 library/bombayworks/zendframework1/library/Zend/Dojo/          export-ignore
 library/bombayworks/zendframework1/library/Zend/Dom/           export-ignore
 library/bombayworks/zendframework1/library/Zend/Feed/          export-ignore

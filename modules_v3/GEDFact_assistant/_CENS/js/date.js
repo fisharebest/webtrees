@@ -22,7 +22,7 @@ Date.$VERSION = 1.02;
 //
 // Census information about an individual
 //
-// webtrees: Web based Family History software
+// webtrees: online genealogy
 // Copyright (C) 2014 webtrees development team.
 //
 // Derived from PhpGedView

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Includes 2010 work done by John Hawthornthwaite(hagershorn1) for an ancestry report in PhpGedView -->
 <Report>
-	<Title><var var="WT_I18N::translate('Ancestors')" /></Title>
-	<Description><var var="WT_I18N::translate('A report of an individual’s ancestors, in a narrative style.')" /></Description>
-	<Input name="pid" lookup="INDI" type="text"><var var="WT_I18N::translate('Individual')" /></Input>
-	<Input name="maxgen" type="select" options="3=>WT_I18N::number(3)|4=>WT_I18N::number(4)|5=>WT_I18N::number(5)|6=>WT_I18N::number(6)|7=>WT_I18N::number(7)|8=>WT_I18N::number(8)|9=>WT_I18N::number(9)|10=>WT_I18N::number(10)|*=>WT_I18N::translate('All')"><var var="WT_I18N::translate('Generations')" /></Input>
-	<Input name="sources" type="checkbox" default="1"><var var="WT_I18N::translate('Show sources?')" /></Input>
-	<Input name="notes" type="checkbox" default="0"><var var="WT_I18N::translate('Show notes?')" /></Input>
-	<Input name="occu" type="checkbox" default="0"><var var="WT_I18N::translate('Show occupations?')" /></Input>
-	<Input name="resi" type="checkbox" default="0"><var var="WT_I18N::translate('Show residences?')" /></Input>
-	<Input name="children" type="checkbox" default="0"><var var="WT_I18N::translate('Show children of ancestors?')" /></Input>
-	<Input name="pageSize" type="select" default="A4" options="letter=>WT_I18N::translate_c('paper size','Letter')|A3=>WT_I18N::translate_c('paper size', 'A3')|A4=>WT_I18N::translate_c('paper size','A4')|legal=>WT_I18N::translate_c('paper size','Legal')"><var var="WT_I18N::translate('Page size')" /></Input>
-	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>WT_I18N::translate_c('font name', 'Arial')|dejavusans=>WT_I18N::translate_c('font name', 'DejaVu')|helvetica=>WT_I18N::translate_c('font name', 'Helvetica')"><var var="WT_I18N::translate('Font')"/></Input>
+	<Title><var var="I18N::translate('Ancestors')" /></Title>
+	<Description><var var="I18N::translate('A report of an individual’s ancestors, in a narrative style.')" /></Description>
+	<Input name="pid" lookup="INDI" type="text"><var var="I18N::translate('Individual')" /></Input>
+	<Input name="maxgen" type="select" options="3=>I18N::number(3)|4=>I18N::number(4)|5=>I18N::number(5)|6=>I18N::number(6)|7=>I18N::number(7)|8=>I18N::number(8)|9=>I18N::number(9)|10=>I18N::number(10)|*=>I18N::translate('All')"><var var="I18N::translate('Generations')" /></Input>
+	<Input name="sources" type="checkbox" default="1"><var var="I18N::translate('Show sources?')" /></Input>
+	<Input name="notes" type="checkbox" default="0"><var var="I18N::translate('Show notes?')" /></Input>
+	<Input name="occu" type="checkbox" default="0"><var var="I18N::translate('Show occupations?')" /></Input>
+	<Input name="resi" type="checkbox" default="0"><var var="I18N::translate('Show residences?')" /></Input>
+	<Input name="children" type="checkbox" default="0"><var var="I18N::translate('Show children of ancestors?')" /></Input>
+	<Input name="pageSize" type="select" default="A4" options="letter=>I18N::translate_c('paper size','Letter')|A3=>I18N::translate_c('paper size', 'A3')|A4=>I18N::translate_c('paper size','A4')|legal=>I18N::translate_c('paper size','Legal')"><var var="I18N::translate('Page size')" /></Input>
+	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>I18N::translate_c('font name', 'Arial')|dejavusans=>I18N::translate_c('font name', 'DejaVu')|helvetica=>I18N::translate_c('font name', 'Helvetica')"><var var="I18N::translate('Font')"/></Input>
 	
 	<!-- Header -->
 	<Style name="header" font="$fonts" size="14" style="b" />
@@ -49,8 +49,8 @@
 
 	<Doc pageSize="$pageSize">
 		<Header>
-			<Cell align="center" height="30" newline="1" style="header"><var var="WT_I18N::translate('Ancestors of ')" /><GetPersonName id="$pid" /></Cell>
-			<Cell align="rightrtl" newline="1" style="pagenum"><var var="WT_I18N::translate('Page')" /> <PageNum /> <var var="WT_I18N::translate('of')" /> <TotalPages /></Cell>
+			<Cell align="center" height="30" newline="1" style="header"><var var="I18N::translate('Ancestors of ')" /><GetPersonName id="$pid" /></Cell>
+			<Cell align="rightrtl" newline="1" style="pagenum"><var var="I18N::translate('Page')" /> <PageNum /> <var var="I18N::translate('of')" /> <TotalPages /></Cell>
 		</Header>
 		<Body>
 			<Relatives id="$pid" group="direct-ancestors" sortby="none" maxgen="$maxgen">
@@ -72,7 +72,7 @@
 						</TextBox>
 						<SetVar name="empty_start_value" value="$num" />
 					</if>
-					<Cell align="center" height="30" newline="1" style="subheader"><var var="WT_I18N::translate('Generation ')" /><Generation /></Cell>
+					<Cell align="center" height="30" newline="1" style="subheader"><var var="I18N::translate('Generation ')" /><Generation /></Cell>
 					<SetVar name="generation" value="@generation" />
 				</if>
 				<SetVar name="indiname" value="@NAME" />
@@ -134,8 +134,8 @@
 						<!-- Individual, birth... -->
 						<Gedcom id="BIRT">
 							<Text style="text">
-								<if condition="$gender=='m'"><var var="WT_I18N::translate_c('MALE', 'was born')" /></if>
-								<if condition="$gender=='f'"><var var="WT_I18N::translate_c('FEMALE', 'was born')" /></if>
+								<if condition="$gender=='m'"><var var="I18N::translate_c('MALE', 'was born')" /></if>
+								<if condition="$gender=='f'"><var var="I18N::translate_c('FEMALE', 'was born')" /></if>
 							</Text>
 							<if condition="$sources==1">
 								<RepeatTag tag="BIRT:SOUR">
@@ -153,15 +153,15 @@
 							</if>
 							<Text style="text">
 								<if condition="@DATE!=''"><var var=" " /> <GedcomValue tag="DATE" level="2" /></if>
-								<if condition="@PLAC!=''"><var var="WT_I18N::translate(' in ')" /> <GedcomValue tag="PLAC" level="2" /></if>
-								<if condition="(@desc=='Y') or (@DATE=='' and @PLAC=='')"><var var="WT_I18N::translate(' but the details are unknown')" /></if>. 
+								<if condition="@PLAC!=''"><var var="I18N::translate(' in ')" /> <GedcomValue tag="PLAC" level="2" /></if>
+								<if condition="(@desc=='Y') or (@DATE=='' and @PLAC=='')"><var var="I18N::translate(' but the details are unknown')" /></if>.
 							</Text>
 						</Gedcom>
 						<!-- 	Sentence 2 Individual, christened... -->
 						<Gedcom id="CHR">
 							<Text style="text">
-								<if condition="$gender=='m'"><var var="WT_I18N::translate('He was christened')" /></if>
-								<if condition="$gender=='f'"><var var="WT_I18N::translate('She was christened')" /></if>
+								<if condition="$gender=='m'"><var var="I18N::translate('He was christened')" /></if>
+								<if condition="$gender=='f'"><var var="I18N::translate('She was christened')" /></if>
 							</Text>
 							<Text style="label1">
 							<if condition="$sources==1">
@@ -181,16 +181,16 @@
 							</Text>
 							<Text style="text">
 								<if condition="@DATE!=''"><var var=" " /><GedcomValue tag="DATE" level="2" /></if>
-								<if condition="@PLAC!=''"><var var="WT_I18N::translate(' in ')" /><GedcomValue tag="PLAC" level="2" /></if>
-								<if condition="(@desc=='Y') or (@DATE=='' and @PLAC=='')"><var var="WT_I18N::translate(' but the details are unknown')" /></if>. 
+								<if condition="@PLAC!=''"><var var="I18N::translate(' in ')" /><GedcomValue tag="PLAC" level="2" /></if>
+								<if condition="(@desc=='Y') or (@DATE=='' and @PLAC=='')"><var var="I18N::translate(' but the details are unknown')" /></if>.
 							</Text>
 						</Gedcom>
 						<if condition="$occu==1">
 							<!-- 	Individual, occupation... -->
 							<RepeatTag tag="OCCU">
 								<Text style="text">
-									<if condition="$gender=='m'"><var var="WT_I18N::translate('His occupation was')" /> <GedcomValue tag="OCCU" level="1" /></if>
-									<if condition="$gender=='f'"><var var="WT_I18N::translate('Her occupation was')" /> <GedcomValue tag="OCCU" level="1" /></if>
+									<if condition="$gender=='m'"><var var="I18N::translate('His occupation was')" /> <GedcomValue tag="OCCU" level="1" /></if>
+									<if condition="$gender=='f'"><var var="I18N::translate('Her occupation was')" /> <GedcomValue tag="OCCU" level="1" /></if>
 								</Text>
 								<if condition="$sources==1">
 									<RepeatTag tag="OCCU:SOUR">
@@ -208,7 +208,7 @@
 								</if>
 								<Text style="text">
 									<if condition="@DATE!=''"><var var=" " /> <GedcomValue tag="DATE" level="2" /></if>
-									<if condition="@PLAC!=''"><var var="WT_I18N::translate(' in ')" /> <GedcomValue tag="PLAC" level="2" /></if>. 
+									<if condition="@PLAC!=''"><var var="I18N::translate(' in ')" /> <GedcomValue tag="PLAC" level="2" /></if>.
 								</Text>
 							</RepeatTag>
 						</if>
@@ -216,8 +216,8 @@
 							<!-- 	Individual, residence... -->
 							<RepeatTag tag="RESI">
 								<Text style="text"> 
-									<if condition="$gender=='m'"><var var="WT_I18N::translate('He resided at')" /> </if>
-									<if condition="$gender=='f'"><var var="WT_I18N::translate('She resided at')" /> </if>
+									<if condition="$gender=='m'"><var var="I18N::translate('He resided at')" /> </if>
+									<if condition="$gender=='f'"><var var="I18N::translate('She resided at')" /> </if>
 									<if condition="@ADDR!=''"><GedcomValue tag="RESI:ADDR" level="1" /></if>
 									<if condition="@ADDR==''"><if condition="@PLAC!=''"><GedcomValue tag="RESI:PLAC" level="1" /></if></if>
 								</Text>
@@ -254,8 +254,8 @@
 								<Gedcom id="MARR">
 									<if condition="(($spid!='') and (@DATE!='' or @PLAC!='' or @desc=='Y'))">
 										<Text style="text">
-											<if condition="$gender=='m'"><var var="WT_I18N::translate('He married')" /> </if>
-											<if condition="$gender=='f'"><var var="WT_I18N::translate('She married')" /> </if>
+											<if condition="$gender=='m'"><var var="I18N::translate('He married')" /> </if>
+											<if condition="$gender=='f'"><var var="I18N::translate('She married')" /> </if>
 										</Text>
 										<if condition="$sources==1">
 											<RepeatTag tag="MARR:SOUR">
@@ -276,8 +276,8 @@
 											<if condition="@DATE!=''"><var var=" " /> <GedcomValue tag="DATE" level="2" />
 												<if condition="@PLAC==''"> </if>
 											</if>
-											<if condition="@PLAC!=''"><var var="WT_I18N::translate(' in ')" /> <GedcomValue tag="PLAC" level="2" /></if>
-											<if condition="((@desc=='Y') or (@DATE=='' and @PLAC=='')) and ($spid=='')"><var var="WT_I18N::translate(' but the details are unknown')" /></if>. 
+											<if condition="@PLAC!=''"><var var="I18N::translate(' in ')" /> <GedcomValue tag="PLAC" level="2" /></if>
+											<if condition="((@desc=='Y') or (@DATE=='' and @PLAC=='')) and ($spid=='')"><var var="I18N::translate(' but the details are unknown')" /></if>.
 										</Text>
 									</if>
 								</Gedcom>
@@ -285,8 +285,8 @@
 						</if>
 						<Gedcom id="DEAT">
 							<Text style="text">
-								<if condition="$gender=='m'"><var var="WT_I18N::translate('He died')" /></if>
-								<if condition="$gender=='f'"><var var="WT_I18N::translate('She died')" /></if>
+								<if condition="$gender=='m'"><var var="I18N::translate('He died')" /></if>
+								<if condition="$gender=='f'"><var var="I18N::translate('She died')" /></if>
 							</Text>
 							<if condition="$sources==1">
 								<RepeatTag tag="DEAT:SOUR">
@@ -304,14 +304,14 @@
 							</if>
 							<Text style="text">
 								<if condition="@DATE!=''"><var var=" " /> <GedcomValue tag="DATE" level="2" /></if>
-								<if condition="@PLAC!=''"><var var="WT_I18N::translate(' in ')" /> <GedcomValue tag="PLAC" level="2" /></if>
-								<if condition="(@desc=='Y') or (@DATE=='' and @PLAC=='')"><var var="WT_I18N::translate(' but the details are unknown')" /></if>. 
+								<if condition="@PLAC!=''"><var var="I18N::translate(' in ')" /> <GedcomValue tag="PLAC" level="2" /></if>
+								<if condition="(@desc=='Y') or (@DATE=='' and @PLAC=='')"><var var="I18N::translate(' but the details are unknown')" /></if>.
 							</Text>
 						</Gedcom>
 						<Gedcom id="CREM">
 							<Text style="text">
-								<if condition="$gender=='m'"><var var="WT_I18N::translate('He was cremated')" /></if>
-								<if condition="$gender=='f'"><var var="WT_I18N::translate('She was cremated')" /></if>
+								<if condition="$gender=='m'"><var var="I18N::translate('He was cremated')" /></if>
+								<if condition="$gender=='f'"><var var="I18N::translate('She was cremated')" /></if>
 							</Text>
 							<if condition="$sources==1">
 								<RepeatTag tag="CREM:SOUR">
@@ -329,20 +329,20 @@
 							</if>
 							<Text style="text">
 								<if condition="@DATE!=''"><var var=" " /> <GedcomValue tag="DATE" level="2" /></if>
-								<if condition="@PLAC!=''"><var var="WT_I18N::translate(' in ')" /> <GedcomValue tag="PLAC" level="2" /></if>
-								<if condition="(@desc=='Y') or (@DATE=='' and @PLAC=='')"><var var="WT_I18N::translate(' but the details are unknown')" /></if>. 
+								<if condition="@PLAC!=''"><var var="I18N::translate(' in ')" /> <GedcomValue tag="PLAC" level="2" /></if>
+								<if condition="(@desc=='Y') or (@DATE=='' and @PLAC=='')"><var var="I18N::translate(' but the details are unknown')" /></if>.
 							</Text>
 						</Gedcom>
 						<Gedcom id="BURI">
 							<!-- Look for Level 2 CREM subordinate to BURI (should have been at Level 1) -->
 							<Text style="text">
 								<RepeatTag tag="BURI:CREM">
-									<if condition="$gender=='m'"><var var="WT_I18N::translate('He was cremated')" /></if>
-									<if condition="$gender=='f'"><var var="WT_I18N::translate('She was cremated')" /></if>. 
+									<if condition="$gender=='m'"><var var="I18N::translate('He was cremated')" /></if>
+									<if condition="$gender=='f'"><var var="I18N::translate('She was cremated')" /></if>.
 								</RepeatTag>
 								<!-- Now for the real BURI information -->
-								<if condition="$gender=='m'"><var var="WT_I18N::translate('He was buried')" /></if>
-								<if condition="$gender=='f'"><var var="WT_I18N::translate('She was buried')" /></if>
+								<if condition="$gender=='m'"><var var="I18N::translate('He was buried')" /></if>
+								<if condition="$gender=='f'"><var var="I18N::translate('She was buried')" /></if>
 							</Text>
 							<if condition="$sources==1">
 								<RepeatTag tag="BURI:SOUR">
@@ -360,8 +360,8 @@
 							</if>
 							<Text style="text">
 								<if condition="@DATE!=''"><var var=" " /> <GedcomValue tag="DATE" level="2" /></if>
-								<if condition="@PLAC!=''"><var var="WT_I18N::translate(' in ')" /> <GedcomValue tag="PLAC" level="2" /></if>
-								<if condition="(@desc=='Y') or (@DATE=='' and @PLAC=='')"><var var="WT_I18N::translate(' but the details are unknown')" /></if>. 
+								<if condition="@PLAC!=''"><var var="I18N::translate(' in ')" /> <GedcomValue tag="PLAC" level="2" /></if>
+								<if condition="(@desc=='Y') or (@DATE=='' and @PLAC=='')"><var var="I18N::translate(' but the details are unknown')" /></if>.
 							</Text>
 						</Gedcom>
 					</TextBox>
@@ -390,13 +390,13 @@
 								<if condition="$individual == $spouse">
 									<TextBox height="20" left="25" newline="1">
 										<if condition="$numberOfChildren==1">
-											<Text style="label1"><var var="WT_I18N::translate('Child of ')" /></Text>
+											<Text style="label1"><var var="I18N::translate('Child of ')" /></Text>
 										</if>
 										<if condition="$numberOfChildren>1">
-											<Text style="label1"><var var="WT_I18N::translate('Children of ')" /></Text>
+											<Text style="label1"><var var="I18N::translate('Children of ')" /></Text>
 										</if>
 										<Text style="namech"><GetPersonName id="@HUSB" /></Text>
-										<Text style="label1"> <var var="WT_I18N::translate('and')" /> </Text>
+										<Text style="label1"> <var var="I18N::translate('and')" /> </Text>
 										<Text style="namech"><GetPersonName id="@WIFE" /></Text>
 										<Text style="label1">:</Text>
 									</TextBox>
@@ -444,13 +444,13 @@
 												<Text style="label1" > <br /></Text>
 												<!-- Start BIRT -->
 												<Gedcom id="BIRT">
-													<Text style="label1" > <var var="WT_I18N::translate('Birth')" /> <GedcomValue tag="DATE" level="2"/> <GedcomValue tag="PLAC" level="2"/> <br /></Text>
+													<Text style="label1" > <var var="I18N::translate('Birth')" /> <GedcomValue tag="DATE" level="2"/> <GedcomValue tag="PLAC" level="2"/> <br /></Text>
 												</Gedcom>
 												<if condition="@SEX=='M'"><SetVar name="gender" value="male" /></if>
 												<if condition="@SEX=='F'"><SetVar name="gender" value="female" /></if>
 												<RepeatTag tag="FAMS">
 													<Gedcom id="@FAMS">
-														<Text style="label1"> <var var="WT_I18N::translate('Marriage')" /> </Text>
+														<Text style="label1"> <var var="I18N::translate('Marriage')" /> </Text>
 														<if condition="$gender=='male'"><Text style="namech"><GetPersonName id="@WIFE" /></Text></if>
 														<if condition="$gender=='female'"><Text style="namech"><GetPersonName id="@HUSB" /></Text></if>
 														<Text style="label1"><Gedcom id="MARR"><if condition="@DATE!=''"> <GedcomValue tag="DATE" level="2" /></if><if condition="@PLAC!=''"> <GedcomValue tag="PLAC" level="2" /></if></Gedcom> <br /></Text>
@@ -458,7 +458,7 @@
 												</RepeatTag>
 												<!-- End BIRT start DEAT --> 
 												<Gedcom id="DEAT">
-													<Text style="label1"> <var var="WT_I18N::translate('Death')" /> <GedcomValue tag="DATE" level="2"/> <GedcomValue tag="PLAC" level="2"/> <br /></Text>
+													<Text style="label1"> <var var="I18N::translate('Death')" /> <GedcomValue tag="DATE" level="2"/> <GedcomValue tag="PLAC" level="2"/> <br /></Text>
 												</Gedcom>
 											</TextBox>
 										</Gedcom>
@@ -476,7 +476,7 @@
 			<if condition="$source_exist==1">
 				<NewPage />
 				<TextBox width="$width" height="20" newline="1">
-					<Text style="subheader"><var var="WT_I18N::translate('Sources')" /><br /><br /></Text>
+					<Text style="subheader"><var var="I18N::translate('Sources')" /><br /><br /></Text>
 					<FootnoteTexts />
 				</TextBox>
 			</if>

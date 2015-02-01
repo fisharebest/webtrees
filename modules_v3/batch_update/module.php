@@ -1,44 +1,42 @@
 <?php
-// webtrees: Web based Family History software
-// Copyright (C) 2014 Greg Roach
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Webtrees;
 
-use WT\Auth;
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 /**
  * Class batch_update_WT_Module
  */
-class batch_update_WT_Module extends WT_Module implements WT_Module_Config {
+class batch_update_WT_Module extends Module implements ModuleConfigInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Batch update');
+		return /* I18N: Name of a module */ I18N::translate('Batch update');
 	}
 
 	/** {@inheritdoc} */
 	public function getDescription() {
-		return /* I18N: Description of the “Batch update” module */ WT_I18N::translate('Apply automatic corrections to your genealogy data.');
+		return /* I18N: Description of the “Batch update” module */ I18N::translate('Apply automatic corrections to your genealogy data.');
 	}
 
 	/** {@inheritdoc} */
 	public function modAction($mod_action) {
 		switch ($mod_action) {
 		case 'admin_batch_update':
-			$controller = new WT_Controller_Page;
+			$controller = new PageController;
 			$controller
-				->setPageTitle(WT_I18N::translate('Batch update'))
+				->setPageTitle(I18N::translate('Batch update'))
 				->restrictAccess(Auth::isAdmin())
 				->pageHeader();
 
