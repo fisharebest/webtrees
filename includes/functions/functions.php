@@ -73,7 +73,7 @@ function file_upload_error_text($error_code) {
 		return WT_I18N::translate('No file was received.  Please upload again.');
 	case UPLOAD_ERR_NO_TMP_DIR:
 		// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-		return WT_I18N::translate('nnMissing PHP temporary folder');
+		return WT_I18N::translate('Missing PHP temporary folder');
 	case UPLOAD_ERR_CANT_WRITE:
 		// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 		return WT_I18N::translate('PHP failed to write to disk');
