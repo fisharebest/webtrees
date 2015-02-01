@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-01-31 12:10+0000\n"
-"PO-Revision-Date: 2015-01-10 22:31+0100\n"
+"PO-Revision-Date: 2015-02-01 12:22+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -13,6 +13,8 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.7.4\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
@@ -1739,7 +1741,7 @@ msgstr "Alle bestaande PGV-gebruikers moeten unieke e-mailadressen hebben"
 
 #: admin_trees_config.php:639
 msgid "All facts and events"
-msgstr ""
+msgstr "Alle feiten en gebeurtenissen"
 
 #: admin_trees_config.php:1954
 msgid "All family facts"
@@ -1764,7 +1766,7 @@ msgstr "Alle personen"
 
 #: admin_trees_config.php:630
 msgid "All records"
-msgstr ""
+msgstr "Alle records"
 
 #: admin_trees_config.php:2161
 msgid "All repository facts"
@@ -2281,7 +2283,7 @@ msgstr "Gemiddeld aantal kinderen per gezin"
 
 #: admin_trees_manage.php:568
 msgid "Avoid spaces and puncutation.  A family name might be a good choice."
-msgstr ""
+msgstr "Vermijd spaties en leestekens. Een familienaam zou een goede keuze zijn."
 
 #: library/WT/Date/Jalali.php:158
 msgctxt "Abbreviation for Persian month: Azar"
@@ -2977,7 +2979,7 @@ msgstr "Bulgarije"
 
 #: admin_trees_manage.php:638
 msgid "Bulk import GEDCOM files"
-msgstr ""
+msgstr "Bulk import van GEDCOM bestanden"
 
 #. I18N: gedcom tag BURI
 #: library/WT/Gedcom/Tag.php:227 modules_v3/family_group_report/report.xml:345
@@ -3175,7 +3177,7 @@ msgstr "CKEditor™"
 
 #: admin_trees_manage.php:253
 msgid "Calculating…"
-msgstr ""
+msgstr "Berekenen…"
 
 #: library/WT/Theme/BaseTheme.php:874 library/WT/Theme/BaseTheme.php:878
 #: modules_v3/yahrzeit/module.php:267
@@ -3355,15 +3357,15 @@ msgstr "Verander de blokken op deze pagina"
 
 #: admin_users.php:200
 msgid "Change the blocks on this user’s “My page”"
-msgstr ""
+msgstr "Verander de blokken op de “Mijn pagina” van deze gebruiker"
 
 #: admin_trees_manage.php:294 index_edit.php:49
 msgid "Change the “Home page” blocks"
-msgstr ""
+msgstr "Verander de “Startpagina” blokken"
 
 #: index_edit.php:41
 msgid "Change the “My page” blocks"
-msgstr ""
+msgstr "Verander de “Mijn pagina” blokken"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: includes/functions/functions_print_lists.php:1766
@@ -3887,7 +3889,7 @@ msgstr "Contactinformatie"
 
 #: edituser.php:271
 msgid "Contact method"
-msgstr ""
+msgstr "Contactmethode"
 
 #: search_advanced.php:162 search_advanced.php:224 search_advanced.php:239
 #: search_advanced.php:261 search_advanced.php:276
@@ -3926,7 +3928,7 @@ msgstr "Vervolgd"
 #: modules_v3/faq/module.php:367 modules_v3/sitemap/module.php:281
 #: modules_v3/stories/module.php:197 modules_v3/stories/module.php:311
 msgid "Control panel"
-msgstr ""
+msgstr "Control panel"
 
 #: admin_trees_download.php:134 modules_v3/clippings/module.php:205
 #: modules_v3/clippings/module.php:598
@@ -4054,11 +4056,11 @@ msgstr "Maak een nieuwe bron aan"
 
 #: admin_site_access.php:217
 msgid "Create a website access rule"
-msgstr ""
+msgstr "Maak een nieuwe website toegangsregel aan"
 
 #: admin_trees_manage.php:645
 msgid "Create or update a family tree for every GEDCOM file in the data folder."
-msgstr ""
+msgstr "Stamboom aanmaken of bijwerken voor elk GEDCOM bestand in de data map."
 
 #: statistics.php:430
 msgid "Create your own chart"
@@ -4266,7 +4268,7 @@ msgstr "Dallas, Texas"
 #. I18N: A summary of the system status
 #: admin.php:409
 msgid "Dashboard"
-msgstr ""
+msgstr "Dashboard"
 
 #. I18N: gedcom tag DATA
 #: library/WT/Gedcom/Tag.php:343
@@ -4943,7 +4945,7 @@ msgstr "Verwijder tijdelijke bestanden…"
 
 #: admin_modules.php:93
 msgid "Delete the preferences for this module."
-msgstr ""
+msgstr "Verwijder de voorkeuren van deze module."
 
 #: library/WT/Controller/Individual.php:170
 msgid "Delete this name"
@@ -4951,7 +4953,7 @@ msgstr "Verwijder naam"
 
 #: edituser.php:297
 msgid "Delete your account"
-msgstr ""
+msgstr "Verwijder uw account"
 
 #: library/WT/Controller/Family.php:126
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?"
@@ -5358,7 +5360,7 @@ msgstr "Wijzig FAQ"
 
 #: admin_site_access.php:215
 msgid "Edit a website access rule"
-msgstr ""
+msgstr "Wijzig een website toegangsregel"
 
 #: library/WT/Controller/Media.php:149
 msgid "Edit details"
@@ -5420,7 +5422,7 @@ msgstr "Wijzig deze persoon en vervang de details door uw eigen."
 
 #: admin_users.php:257
 msgid "Edit user"
-msgstr ""
+msgstr "Wijzig gebruiker"
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:41 admin_users.php:507
@@ -6562,7 +6564,7 @@ msgstr "Frimaire"
 #. I18N: label for the start of a date range (from x to y)
 #: admin_site_change.php:293 admin_site_logs.php:252
 msgid "From"
-msgstr ""
+msgstr "Van"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:89
@@ -6658,7 +6660,7 @@ msgstr "E-mail genealogische vragen"
 #. I18N: Individuals, sources, dates, places, etc.
 #: admin_trees_manage.php:348
 msgid "Genealogy data"
-msgstr ""
+msgstr "Genealogische gegevens"
 
 #: admin_trees_config.php:661 admin_trees_config.php:1775
 msgid "General"
@@ -7318,7 +7320,7 @@ msgstr "Als twee stambomen gebruik maken van dezelfde media map, kunnen zij deze
 
 #: admin_trees_config.php:452
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account.  You will need to add their account manually."
-msgstr ""
+msgstr "Als bezoekers de stamboom niet kunnen zien, dan kunnen zij zich ook niet registreren voor een account. U zult hun account handmatig moeten toevoegen."
 
 #. I18N: Help text for the “Who can upload new media files?” configuration setting
 #: admin_trees_config.php:1146
@@ -7374,7 +7376,7 @@ msgstr "Als u een andere map kiest, moet u ook alle mediabestanden van de bestaa
 #. I18N: Help text for the “Show living individuals” configuration setting
 #: admin_trees_config.php:512
 msgid "If you show living individuals to visitors, all other privacy restrictions are ignored.  Do this only if all the data in your tree is public."
-msgstr ""
+msgstr "Als u nog levende personen toont aan bezoekers, worden alle andere privacy beperkingen genegeerd. Doe dit alleen als alle gegevens in uw stamboom publiekelijk toegankelijk zijn."
 
 #: setup.php:188
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
@@ -8219,7 +8221,7 @@ msgstr "Koppel dit media object aan een persoon"
 
 #: admin_users.php:566
 msgid "Link this user to an individual in the family tree."
-msgstr ""
+msgstr "Koppel deze gebruiker aan een persoon in de stamboom."
 
 #: inverselink.php:35 inverselink.php:70 library/WT/Controller/Family.php:215
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:78
@@ -8322,7 +8324,7 @@ msgstr "URL voor aanmelden"
 #. I18N: Menu entry
 #: admin_site_config.php:111 library/WT/Theme/Administration.php:77
 msgid "Login and registration"
-msgstr ""
+msgstr "Aanmelden en registratie"
 
 #: library/WT/Theme/BaseTheme.php:1289 modules_v3/login_block/module.php:55
 #: modules_v3/login_block/module.php:58
@@ -8452,7 +8454,7 @@ msgstr "Malta"
 #: admin_trees_places.php:87 index_edit.php:299
 #: library/WT/Theme/Administration.php:101
 msgid "Manage family trees"
-msgstr ""
+msgstr "Beheer stambomen"
 
 #: admin_media.php:511 library/WT/Controller/Media.php:62
 #: library/WT/Controller/Media.php:153 modules_v3/lightbox/module.php:135
@@ -8462,7 +8464,7 @@ msgstr "Beheer koppelingen"
 #. I18N: Menu entry
 #: library/WT/Theme/Administration.php:144
 msgid "Manage media"
-msgstr ""
+msgstr "Beheer media"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:127 admin_users.php:43 admin_users.php:521
@@ -9137,7 +9139,7 @@ msgstr "Moderator"
 
 #: admin.php:579
 msgid "Moderators"
-msgstr ""
+msgstr "Moderators"
 
 #: admin_modules.php:147
 msgid "Module"
@@ -9407,7 +9409,7 @@ msgstr "Mijn pagina"
 
 #: library/WT/Theme/BaseTheme.php:1353
 msgid "My pages"
-msgstr ""
+msgstr "Mijn pagina's"
 
 #: library/WT/Theme/BaseTheme.php:1376 modules_v3/user_welcome/module.php:48
 msgid "My pedigree"
@@ -9421,7 +9423,7 @@ msgstr "MySQL gaf de foutmelding: %s"
 
 #: admin_site_info.php:100
 msgid "MySQL variables"
-msgstr ""
+msgstr "MySQL variabelen"
 
 #: library/WT/Stats.php:6218
 msgid "Myanmar"
@@ -10936,12 +10938,12 @@ msgstr "Vooraf gedefinieerde tekst, waarin staat dat alleen familieleden een geb
 
 #: admin_trees_config.php:403 admin_trees_manage.php:274
 msgid "Preferences"
-msgstr ""
+msgstr "Voorkeuren"
 
 #: admin_modules.php:88
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
-msgstr ""
+msgstr "Voorkeuren zijn ingesteld voor de module “%s”, maar deze module bestaat niet meer."
 
 #. I18N: A configuration setting
 #: admin_users.php:436
@@ -11450,7 +11452,7 @@ msgstr "Reno, Nevada"
 
 #: admin_trees_manage.php:385
 msgid "Renumber"
-msgstr ""
+msgstr "Hernummeren"
 
 #. I18N: Renumber the records in a family tree
 #: admin_trees_merge.php:96 admin_trees_merge.php:101
@@ -11970,7 +11972,7 @@ msgstr "Naam afzender"
 #. I18N: Menu entry
 #: admin_site_config.php:108 library/WT/Theme/Administration.php:76
 msgid "Sending email"
-msgstr ""
+msgstr "E-mail versturen"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:374
@@ -12049,7 +12051,7 @@ msgstr "Plaatsbestand (CSV) op server"
 #. I18N: Menu entry
 #: admin_site_info.php:34 library/WT/Theme/Administration.php:81
 msgid "Server information"
-msgstr ""
+msgstr "Server informatie"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:296 setup.php:278
@@ -12068,7 +12070,7 @@ msgstr "Sessie verlopen"
 
 #: admin_trees_manage.php:327 admin_trees_manage.php:338
 msgid "Set as default"
-msgstr ""
+msgstr "Instellen als standaard"
 
 #: inverselink.php:153
 msgid "Set link"
@@ -12112,7 +12114,7 @@ msgstr "Kies <b>Ja</b> om pictogrammen naast namen van feiten weer te geven op d
 #. I18N: Help text for the “Use RIN number instead of GEDCOM ID” configuration setting
 #: admin_trees_config.php:795
 msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
-msgstr ""
+msgstr "Kies <b>Ja</b> om het RIN-nummer te gebruiken in plaats van het GEDCOM-ID wanneer gevraagd wordt om persoonlijke ID's in configuratiebestanden, gebruikersinstellingen en diagrammen. Dit is nuttig voor genealogieprogramma's die niet consistent GEDCOM's exporteren met hetzelfde ID gekoppeld aan een persoon, maar wel altijd hetzelfde RIN-nummer gebruiken."
 
 #. I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting
 #: admin_trees_config.php:1674
@@ -12488,12 +12490,12 @@ msgstr "Toon lijst met stambomen"
 #. I18N: A configuration setting
 #: admin_trees_config.php:502
 msgid "Show living individuals"
-msgstr ""
+msgstr "Toon levende personen"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:542
 msgid "Show names of private individuals"
-msgstr ""
+msgstr "Toon namen van privé personen"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -12627,7 +12629,7 @@ msgstr "Toon de datum en tijd van de update"
 #. I18N: A configuration setting
 #: admin_trees_config.php:438
 msgid "Show the family tree"
-msgstr ""
+msgstr "Toon de stamboom"
 
 #: famlist.php:179 indilist.php:179
 msgid "Show the list of individuals"
@@ -12747,7 +12749,7 @@ msgstr "Zus"
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: admin_users.php:441 edituser.php:277
 msgid "Site members can send each other messages.  You can choose to how these messages are sent to you, or choose not receive them at all."
-msgstr ""
+msgstr "Leden kunnen elkaar berichten sturen via de website. U kunt hier kiezen hoe de berichten aan u worden verstuurd, of ervoor kiezen om ze helemaal niet te ontvangen."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: modules_v3/sitemap/module.php:30
@@ -12790,7 +12792,7 @@ msgstr "Afmeting van de kaart (in pixels)"
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: library/WT/Theme/BaseTheme.php:76
 msgid "Skip to content"
-msgstr ""
+msgstr "Spring naar de inhoud"
 
 #: library/WT/Gedcom/Code/Rela.php:240
 msgid "Slave"
@@ -12849,7 +12851,7 @@ msgstr "Sommige genealogie programma's maken GEDCOM-bestanden die mediabestandsn
 #. I18N: Help text for the “Add spaces where notes were wrapped” configuration setting
 #: admin_trees_config.php:821
 msgid "Some genealogy programs wrap notes at word boundaries while others wrap notes anywhere.  This can cause webtrees to run words together.  Setting this to <b>Yes</b> will add a space between words where they are wrapped in the original GEDCOM during the import process.  If you have already imported the file you will need to re-import it."
-msgstr ""
+msgstr "Sommige genealogieprogramma's breken zinnen in notities af op hele woorden, terwijl andere dat op een willekeurige plaats doen. Hierdoor kan webtrees soms woorden aan elkaar plakken. Door deze instelling op <b>Ja</b> te zetten wordt tijdens het import proces een spatie toegevoegd tussen woorden waar een zin in de originele GEDCOM is afgebroken. Als u het bestand al heeft geïmporteerd, dan zult u dat opnieuw moeten doen."
 
 #: modules_v3/clippings/module.php:132
 msgid "Some items could not be added due to privacy restrictions"
@@ -13382,7 +13384,7 @@ msgstr "De FAQ-lijst is leeg"
 #: admin_trees_manage.php:112
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr ""
+msgstr "Het GEDCOM bestand “%s” is geïmporteerd."
 
 #: library/WT/Gedcom/Code/Temp.php:160
 msgid "The Hague, Netherlands"
@@ -13447,25 +13449,25 @@ msgstr "De details van deze persoon zijn privé."
 #: admin_trees_manage.php:61
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr ""
+msgstr "De stamboom “%s” bestaat al."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:64
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr ""
+msgstr "De stamboom “%s” is aangemaakt."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:41 admin_trees_manage.php:118
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr ""
+msgstr "De stamboom “%s” is verwijderd."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:50
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr ""
+msgstr "De stamboom “%s” wordt getoond aan bezoekers wanneer zij voor het eerst op deze website komen."
 
 #: admin_trees_merge.php:185
 msgid "The family trees have been merged successfully."
@@ -13628,12 +13630,12 @@ msgstr "De vereisten voor geheugen en processortijd zijn afhankelijk van het aan
 #: admin_modules.php:44
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr ""
+msgstr "De module “%s” is uitgeschakeld."
 
 #: admin_modules.php:46
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr ""
+msgstr "De module “%s” is ingeschakeld."
 
 #: admin_site_upgrade.php:397
 #, php-format
@@ -13664,7 +13666,7 @@ msgstr "De wachtwoorden komen niet overeen."
 #: admin_modules.php:76
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr ""
+msgstr "De voorkeuren voor de module “%s” zijn verwijderd."
 
 #: setup.php:379
 msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database.  “wt_” is suggested, but can be anything you want."
@@ -13736,7 +13738,7 @@ msgstr "De upgrade is compleet."
 #: admin_users.php:770
 #, php-format
 msgid "The user %s has been deleted."
-msgstr ""
+msgstr "De gebruiker %s is verwijderd."
 
 #: login.php:320
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
@@ -13768,15 +13770,15 @@ msgstr "De versie van %s is te oud"
 
 #: admin_site_access.php:79
 msgid "The website access rule has been created."
-msgstr ""
+msgstr "De website toegangsregel is aangemaakt."
 
 #: admin_site_access.php:107
 msgid "The website access rule has been deleted."
-msgstr ""
+msgstr "De website toegangsregel is verwijderd."
 
 #: admin_site_access.php:91
 msgid "The website access rule has been updated."
-msgstr ""
+msgstr "De website toegangsregel is bijgewerkt."
 
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: admin_trees_config.php:2362
@@ -13789,7 +13791,7 @@ msgstr "De webtrees ontwikkelaars zijn zeer geinteresseerd om kennis van deze fo
 
 #: admin_site_access.php:278
 msgid "The “%” character is a wildcard, and will match zero or more other characters."
-msgstr ""
+msgstr "Het “%”-teken is een wildcard die overeenkomt met nul of meer andere tekens."
 
 #: admin_modules.php:181 admin_users.php:449 edituser.php:250
 #: library/WT/Theme/BaseTheme.php:1465
@@ -13808,7 +13810,7 @@ msgstr "Keuzemenu voor het wijzigen van thema"
 
 #: admin_modules.php:155
 msgid "Themes"
-msgstr ""
+msgstr "Thema's"
 
 #: admin_site_config.php:203
 msgid "Themes can be selected at three levels: user, GEDCOM, and site.  User settings take priority over GEDCOM settings, which in turn take priority over the site setting.  Selecting “default theme” at user level will give the setting for the current GEDCOM.  Selecting “default theme” at GEDCOM level will give the site setting."
@@ -13848,8 +13850,8 @@ msgstr "Er zijn uitstaande wijzigingen die door u beoordeeld moeten worden"
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Er zijn geen wijzigingen aangebracht in de laatste 24 uur."
+msgstr[1] "Er zijn geen wijzigingen aangebracht in de laatste %s dagen."
 
 #: addmedia.php:183 admin_media_upload.php:142
 msgid "There was an error uploading your file."
@@ -14605,7 +14607,7 @@ msgstr "Titel:"
 #. I18N: label for the end of a date range (from x to y)
 #: admin_site_change.php:303 admin_site_logs.php:262
 msgid "To"
-msgstr ""
+msgstr "Tot"
 
 #: modules_v3/html/module.php:277
 msgid "To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
@@ -14641,7 +14643,7 @@ msgstr "Om de grootte van het nieuwsblok te beperken heeft de beheerder enkele a
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: admin_site_config.php:427
 msgid "To set this text for other languages, you must switch to that language, and visit this page again."
-msgstr ""
+msgstr "Om deze tekst in andere talen in te stellen, moet u naar die taal overschakelen en deze pagina opnieuw bezoeken."
 
 #: modules_v3/sitemap/module.php:316
 msgid "To tell search engines that sitemaps are available, you can use the following links."
@@ -14722,7 +14724,7 @@ msgstr "Toronto, Ontario, Canada"
 
 #: admin.php:728
 msgid "Total"
-msgstr ""
+msgstr "Totaal"
 
 #: modules_v3/change_report/report.xml:124
 msgid "Total accepted changes: "
@@ -15166,7 +15168,7 @@ msgstr "Wachtwoord gebruiken"
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1200
 msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question."
-msgstr ""
+msgstr "Gebruik silhouette afbeeldingen wanneer er geen gemarkeerde afbeelding voor een persoon bestaat. De gebruikte afbeeldingen zijn geslachtsafhankelijk."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1195
@@ -15514,7 +15516,7 @@ msgstr "We zullen nu een e-mailbevestiging sturen naar het adres <b>%s</b>. U mo
 #. I18N: Menu entry
 #: library/WT/Theme/Administration.php:74
 msgid "Website"
-msgstr ""
+msgstr "Website"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:251
@@ -15534,12 +15536,12 @@ msgstr "Website en META-tags instellingen"
 #. I18N: Menu entry
 #: admin_site_logs.php:30 library/WT/Theme/Administration.php:78
 msgid "Website logs"
-msgstr ""
+msgstr "Website logs"
 
 #. I18N: Menu entry
 #: admin_site_config.php:105 library/WT/Theme/Administration.php:75
 msgid "Website preferences"
-msgstr ""
+msgstr "Website voorkeuren"
 
 #. I18N: abbreviation for Wednesday
 #: includes/functions/functions_print.php:731 library/WT/Date/Calendar.php:383
@@ -15594,7 +15596,7 @@ msgstr "Bij het berekenen van relaties, bepaalt deze optie of door webtrees zowe
 #. I18N: Help text for the “ID settings” configuration setting
 #: admin_trees_config.php:937
 msgid "When new records are created, they are given an internal ID number.  You can specify the prefix used for each type of record."
-msgstr ""
+msgstr "Wanneer nieuwe records worden aangemaakt, krijgen deze een intern ID nummer. U kunt hier voor elk type record een voorvoegsel instellen."
 
 #: help_text.php:640
 msgid "When this option is checked, you can see all source or note records for this individual.  When this option is unchecked, source or note records that are associated with other facts for this individual will not be shown."
@@ -15835,7 +15837,7 @@ msgstr "U kunt de privacyberekening versnellen door een overlijdensdatum in te g
 
 #: admin_site_access.php:68
 msgid "You cannot create a rule which would prevent yourself from accessing the website."
-msgstr ""
+msgstr "U kunt geen regel aanmaken waarbij u zelf wordt uitgesloten van toegang tot de website."
 
 #: login.php:70
 msgid "You cannot login because your browser does not accept cookies."
@@ -15916,7 +15918,7 @@ msgstr "U moet een persoonsrecord aangeven voordat u de gebruiker kan beperken t
 
 #: admin_trees_manage.php:215
 msgid "You need to create a family tree."
-msgstr ""
+msgstr "U moet een stamboom aanmaken."
 
 #: admin_pgv_to_wt.php:1155
 msgid "You need to login again, using your PhpGedView username and password."
@@ -16460,7 +16462,7 @@ msgstr "doorgaan"
 #. I18N: Button label
 #: admin_trees_manage.php:576
 msgid "create"
-msgstr ""
+msgstr "maak"
 
 #. I18N: a program feature
 #: setup.php:138
@@ -16523,7 +16525,7 @@ msgstr "graden"
 #. I18N: Button label
 #: admin_site_clean.php:120 admin_users.php:756
 msgid "delete"
-msgstr ""
+msgstr "verwijder"
 
 #. I18N: An access rule - deny access to the site
 #: admin_site_access.php:30 admin_site_access.php:37
@@ -16555,7 +16557,7 @@ msgstr "uitschakelen"
 #: admin_site_upgrade.php:413
 #, php-format
 msgid "Place the website offline, by creating the file %s…"
-msgstr "Plaats de website offline door het bestand %s aan te maken…"
+msgstr "Plaats de website offline door het aanmaken van het bestand %s…"
 
 #: modules_v3/googlemap/module.php:4083
 msgid "east"
@@ -16572,7 +16574,7 @@ msgstr "oost"
 #: admin_trees_config.php:2235 admin_trees_config.php:2266
 #: admin_trees_config.php:2295
 msgid "edit"
-msgstr ""
+msgstr "wijzig"
 
 #: includes/functions/functions.php:703
 msgctxt "FEMALE"
@@ -16652,17 +16654,17 @@ msgstr "ex-echtgenoot"
 #: includes/functions/functions.php:880
 msgctxt "FEMALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "ex-partner"
 
 #: includes/functions/functions.php:862
 msgctxt "MALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "ex-partner"
 
 #: includes/functions/functions.php:898
 msgctxt "MALE/FEMALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "ex-partner"
 
 #: includes/functions/functions.php:903
 msgid "ex-spouse"
@@ -18700,7 +18702,7 @@ msgstr "meisjesnaam"
 
 #: admin_trees_config.php:547
 msgid "managers"
-msgstr ""
+msgstr "managers"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:95
@@ -18775,7 +18777,7 @@ msgstr[1] "maximum %d dagen"
 #: admin_trees_config.php:506 admin_trees_config.php:546
 #: admin_trees_config.php:566
 msgid "members"
-msgstr ""
+msgstr "leden"
 
 #. I18N: time format “%a” - exactly 00:00:00
 #: includes/functions/functions_date.php:86
@@ -18928,12 +18930,12 @@ msgstr "achterneef/achternicht 20e graad"
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:716
 msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-msgstr "Wanneer een bezoeker van de site geen voorkeurtaal in zijn/haar browser configuratie heeft gespecificeerd, of er is een niet-ondersteunde taal ingesteld, dan zal deze taal gebruikt worden. Deze instelling geldt voornamelijk voor zoekmachines"
+msgstr "Wanneer een bezoeker van de site geen voorkeurtaal heeft ingesteld in zijn/haar browser configuratie of een niet-ondersteunde taal heeft ingesteld, dan zal deze taal gebruikt worden. Deze instelling geldt voornamelijk voor zoekmachines."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
 msgid "Missing PHP temporary folder"
-msgstr "Ontbrekende tijdelijke PHP map"
+msgstr "Tijdelijke PHP map ontbreekt"
 
 #: admin_trees_config.php:56 admin_trees_config.php:139 admin_users.php:225
 #: admin_users.php:226 includes/functions/functions_edit.php:108
@@ -19066,7 +19068,7 @@ msgstr "percentage"
 
 #: admin_trees_config.php:1183
 msgid "pixels"
-msgstr ""
+msgstr "pixels"
 
 #. I18N: button label
 #: admin_trees_places.php:104
@@ -19938,7 +19940,7 @@ msgstr "utf8_unicode_ci"
 #: admin_trees_config.php:505 admin_trees_config.php:545
 #: admin_trees_config.php:565
 msgid "visitors"
-msgstr ""
+msgstr "bezoekers"
 
 #: modules_v3/ahnentafel_report/report.xml:138
 #: modules_v3/descendancy_report/report.xml:104
@@ -19954,7 +19956,7 @@ msgstr "is geboren"
 
 #: library/WT/Theme/Webtrees.php:101
 msgid "webtrees"
-msgstr ""
+msgstr "webtrees"
 
 #: help_text.php:456
 msgid "webtrees allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the clippings cart that you can use to export portions of your database.<br><br>You can select any of the facts from the clipboard and copy the selected fact to the individual, family, media, source, or repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a marriage fact to a source or an individual record since the marriage fact is associated only with family records.<br><br>This is very helpful when entering similar facts, such as census facts, for many individuals or families."
@@ -20084,308 +20086,3 @@ msgstr "…"
 msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
-
-#~ msgid "<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The administrator can override this option for individual users by editing the user’s account details."
-#~ msgstr "<b>Nee</b> betekent dat geautoriseerde gebruikers de details van alle levende personen kunnen zien.<br><b>Ja</b> betekent dat gebruikers alleen de privé-informatie kunnen zien van levende personen, aan wie ze verwant zijn.<br><br>Deze optie stelt de standaard in voor alle gebruikers die toegang hebben tot deze genealogische databas. De beheerder kan dit wijzigen for iedere gebruiker door de details van het gebruikersaccount te veranderen."
-
-#~ msgid "Add by ID"
-#~ msgstr "Toevoegen per ID"
-
-#~ msgid "Administration"
-#~ msgstr "Beheer"
-
-#~ msgid "Administration - place edit"
-#~ msgstr "Administratie - wijzig plaatsen"
-
-#~ msgid "Allow this user to edit his account information"
-#~ msgstr "Sta deze gebruiker toe zijn accountgegevens te wijzigen"
-
-#~ msgid "Click this link to remove the individual from the timeline."
-#~ msgstr "Klik op deze link om de persoon van de tijdlijn te verwijderen."
-
-#~ msgid "Create a new note"
-#~ msgstr "Maak een nieuwe notitie aan."
-
-#~ msgid "Create a new rule"
-#~ msgstr "Maak een nieuwe regel aan"
-
-#~ msgid "Create user"
-#~ msgstr "Gebruiker aanmaken"
-
-#~ msgid "Delete FAQ item"
-#~ msgstr "Verwijder FAQ"
-
-#~ msgid "Deleted files:"
-#~ msgstr "Verwijderde bestanden:"
-
-#~ msgid "Deleted user: "
-#~ msgstr "Gebruiker verwijderd: "
-
-#~ msgid "Deleting old genealogy data…"
-#~ msgstr "Oude genealogische data aan het verwijderen…"
-
-#~ msgid "Download ZIP file"
-#~ msgstr "Download ZIP bestand"
-
-#~ msgid "Edit account information"
-#~ msgstr "Wijzig account informatie"
-
-#~ msgid "Email"
-#~ msgstr "E-mail"
-
-#~ msgid "Enter filename"
-#~ msgstr "Voer bestandsnaam in"
-
-#~ msgid "Enter precision"
-#~ msgstr "Voer precisie in"
-
-#~ msgid "Enter zoom level"
-#~ msgstr "Voer zoom-factor in"
-
-#~ msgid "Every individual in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don’t know your ID number or could not find it because of privacy settings, please provide enough information in the comments field to help the site administrator identify who you are on this site so that they can set the ID for you."
-#~ msgstr "Iedere persoon in de database heeft een uniek identificatienummer, een ID. Als u uw ID van uw eigen record kent, kunt u dat hier intypen. Als u het niet kent, of u kunt het niet vinden doordat de toegang is afgeschermd door privacy-instellingen, geeft u dan voldoende informatie in het commentaarvak om u herkenbaar te maken voor de beheerder, zodat hij deze  ID voor u zal instellen."
-
-#~ msgid "Execution time: %1$s seconds.  Database queries: %2$s.  Memory usage: %3$s KB."
-#~ msgstr "Uitvoeringstijd: %1$s seconden. Database verzoeken: %2$s. Geheugengebruik: %3$s KB."
-
-#~ msgid "Explain why you are requesting an account."
-#~ msgstr "Leg aub uit waarom u om een gebruikersaccount verzoekt."
-
-#~ msgid "Family tree configuration"
-#~ msgstr "Stamboominstellingen"
-
-#~ msgid "For optimal display on the internet, webtrees uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
-#~ msgstr "Voor een optimale weergave op het internet, maakt webtrees gebruik van de UTF-8 karakterset. Sommige programma’s, waaronder Family Tree Maker, bieden geen ondersteuning voor het importeren van GEDCOM bestanden die zijn gecodeerd in UTF-8. Het aanvinken van deze optie converteert het bestand van <b>UTF-8</b> naar <b>ANSI (ISO-8859-1)</b>.<br><br>Het formaat dat u nodig heeft is afhankelijk van het programma dat u gebruikt om met uw gedownloade GEDCOM-bestand te werken. Als u hier niet zeker van bent, raadpleeg dan de documentatie van uw programma.<br><br>Let op: om ervoor te zorgen dat speciale tekens ongewijzigd blijven, moet u het bestand behouden in UTF-8 formaat. Het bestand zult u dan op een andere manier moeten converteren naar de methode van uw programma. Raadpleeg hiervoor de fabrikant of de maker van uw programma.<br><br>Dit <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia artikel\"><b>Wikipedia artikel</b></a> bevat uitgebreide informatie en links over UTF-8."
-
-#~ msgid "From %s to %s"
-#~ msgstr "Vanaf %s tot %s"
-
-#~ msgid "Here you can choose between two types of displaying places names in hierarchy.  If set Yes the place has short name or actual level name, if No - full name.<br><b>Examples:<br>Full name: </b>Chicago, Illinois, USA<br><b>Short name: </b>Chicago<br><b>Full name: </b>Illinois, USA<br><b>Short name: </b>Illinois"
-#~ msgstr "Hier kunt u kiezen uit twee manieren om plaatsnamen te tonen in de hiërarchie. Als u ja kiest heeft de plaats een korte naam of de feitelijke niveaunaam. Als u nee kiest, dan wordt het de volledige naam.<br><b>Voorbeelden:<br>Volledige naam:</b> Amsterdam, Noord Holland, Nederland<br><b>Korte naam:</b> Amsterdam<br><b>Volledige naam:</b> Noord Holland, Nederland<br><b>Korte naam:<br>Noord Holland"
-
-#~ msgid "Here you can choose text to appear on the login screen.  You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
-#~ msgstr "Hier kunt u de tekst kiezen voor het aanmeldscherm. U bepaalt zelf welke tekst het meest geschikt is.<br><br>U kunt er ook voor kiezen zelf een welkomstekst te maken. Raadpleeg daarvoor de helptekst bij het <b>Eigen welkomstekst</b>-veld voor meer informatie.<br><br>De vaste teksten zijn:<ul><li><b>Vaste tekst waarin staat dat alle gebruikers een gebruikersaccount kunnen aanvragen:</b><div class=\"list_value_wrap\"><center><b>Welkom bij deze genealogie website</b></center><br>Elke bezoeker met een gebruikersaccount heeft toegang tot deze site.<br><br>Heeft u een gebruikersaccount, dan kunt u zich op deze pagina aanmelden. Heeft u geen gebruikersaccount, dan kunt u er een aanvragen door op de juiste link hieronder te klikken.<br><br>Na controle van uw aanvraag zal de sitebeheerder uw account activeren. U ontvangt een e-mail als uw aanvraag is goedgekeurd</div><br></li><li><b>Vaste tekst waarin staat dat de beheerder elke aanvraag voor een gebruikersaccount zal beoordelen:</b><div class=\"list_value_wrap\"><center><b>Welkom bij deze genealogie website</b></center><br>Toegang tot deze site is voorbehouden aan geautoriseerde gebruikers.<br><br>Heeft u een gebruikersaccount, dan kunt u zich op deze pagina aanmelden. Heeft u geen gebruikersaccount, dan kunt u er een aanvragen door op de de juiste link hieronder te klikken.<br><br>Na controle van uw informatie zal de beheerder uw aanvraag voor een account  goedkeuren of afkeuren. U ontvangt een e-mail als uw aanvraag is goedgekeurd</div><br></li><li><b>Vaste tekst waarin staat dat alleen familieleden een gebruikersaccount kunnen aanvragen:</b><div class=\"list_value_wrap\"><center><b>Welkom bij deze genealogie website</b></center><br>Toegang tot deze site is voorbehouden aan <u>uitsluitend familieleden</u>.<br><br>Heeft u een gebruikersaccount, dan kunt u zich op deze pagina aanmelden. Heeft u geen gebruikersaccount, dan kunt u er een aanvragen door op de juiste link hieronder te klikken.<br><br>Na controle van uw informatie zal de beheerder uw aanvraag voor een account goedkeuren of afkeuren. U ontvangt een e-mail als uw aanvraag is goedgekeurd</div></li></ul>"
-
-#~ msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the “Approved by administrator” checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
-#~ msgstr "Als de optie <b>Gebruikers toestaan om gebruikersnamen te registreren</b> is aangezet, bepaalt deze instelling of de beheerder de registratie moet goedkeuren.<br><br>Door dit op <b>Ja</b> te zetten moeten alle nieuwe gebruikers zichzelf eerst verifiëren en daarna goedgekeurd worden door de beheerder voordat ze zich aan kunnen melden. Met de instelling <b>Nee</b> wordt het vakje ‘Goedgekeurd door beheerder’ automatisch aangezet als gebruikers hun account verifiëren. Ze kunnen zich dan meteen aanmelden, zonder tussenkomst van de beheerder."
-
-#~ msgid "If this box is checked, this user will be able to edit his account information.  Although this is not generally recommended, you can create a single user name and password for multiple users.  When this box is unchecked for all users with the shared account, they are prevented from editing the account information and only an administrator can alter that account."
-#~ msgstr "Als deze optie is ingeschakeld, is de desbetreffende gebruiker in staat om zijn eigen account informatie aan te passen. Alhoewel het niet aanbevolen wordt, kunt u een enkele gebruikersnaam en wachtwoord maken voor meerdere gebruikers. Met de optie uitgeschakeld voor alle gebruikers met het gedeelde account, kunnen zij niet de account informatie aanpassen. Alleen de beheerder kan het account wijzigen."
-
-#~ msgid "If you have opted for custom welcome text, you can type that text here.  To set this text for other languages, you must switch to that language, and visit this page again."
-#~ msgstr "Als u gekozen hebt voor een eigen welkomstekst, kunt u de tekst hier invoeren. Om deze tekst ook in andere talen in te stellen, moet u naar die taal overschakelen en deze pagina opnieuw bezoeken."
-
-#~ msgid "Leave this field empty to use the name of the family tree."
-#~ msgstr "Laat dit veld leeg om de naam van de stamboom te gebruiken."
-
-#~ msgid "Loading data from GEDCOM file: %.1f%%"
-#~ msgstr "Data laden van GEDCOM bestand: %.1f%%"
-
-#~ msgid "Logs"
-#~ msgstr "Logbestanden"
-
-#~ msgid "Mail configuration"
-#~ msgstr "Mail configuratie"
-
-#~ msgid "Move FAQ item down"
-#~ msgstr "Verplaats FAQ naar beneden"
-
-#~ msgid "Move FAQ item up"
-#~ msgstr "Verplaats FAQ omhoog"
-
-#~ msgid "Names of private individuals"
-#~ msgstr "Namen van privé personen"
-
-#~ msgid "No contact method"
-#~ msgstr "Geheel geen contact"
-
-#~ msgid "Note: “living” is defined (if no death or burial is known) as ending %d year after birth or estimated birth."
-#~ msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %d years after birth or estimated birth."
-#~ msgstr[0] "Opmerking: ‘in leven’ wordt geacht te zijn beëindigd %d jaar na geboorte of geschatte geboorte (als geen overlijden of begrafenis bekend is)."
-#~ msgstr[1] "Opmerking: ‘in leven’ wordt geacht te zijn beëindigd %d jaar na geboorte of geschatte geboorte (als geen overlijden of begrafenis bekend is)."
-
-#~ msgid "Other records"
-#~ msgstr "Andere records"
-
-#~ msgid "Pending Changes block"
-#~ msgstr "Blok met uitstaande wijzigingen"
-
-#~ msgid "Privacy options"
-#~ msgstr "Privacy opties"
-
-#~ msgid "Require visitor authentication"
-#~ msgstr "Vereist bezoekersauthenticatie"
-
-#~ msgid "Select an icon"
-#~ msgstr "Kies een pictogram"
-
-#~ msgid "Set the default blocks"
-#~ msgstr "Stel de standaard blokken in"
-
-#~ msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOM files with the same ID assigned to each individual but always use the same RIN."
-#~ msgstr "Kies <b>Ja</b> om het RIN-nummer te gebruiken in plaats van het GEDCOM-ID. Dit nummer wordt gebruikt in configuratiebestanden, gebruikersinstellingen en overzichten. Dit is nuttig voor genealogieprogramma's, die niet altijd dezelfde ID's exporteren maar wel altijd hetzelfde RIN-nummer gebruiken."
-
-#~ msgid "Show children on timeline chart"
-#~ msgstr "Toon kinderen op de tijdlijn"
-
-#~ msgid "Show couple on timeline chart"
-#~ msgstr "Toon partners op de tijdlijn"
-
-#~ msgid "Show fact icons"
-#~ msgstr "Toon feitpictogrammen"
-
-#~ msgid "Show family on timeline chart"
-#~ msgstr "Toon gezin op de tijdlijn"
-
-#~ msgid "Simple search filter"
-#~ msgstr "Eenvoudig zoekfilter"
-
-#~ msgid "Site configuration"
-#~ msgstr "Site configuratie"
-
-#~ msgid "Some genealogy programs wrap notes at word boundaries while others wrap notes anywhere.  This can cause webtrees to run words together.  Setting this to <b>Yes</b> will add a space between words where they are wrapped in the original GEDCOM file during the import process.  If you have already imported the file you will need to re-import it."
-#~ msgstr "Sommige genealogieprogramma's breken zinnen in notities af op hele woorden, terwijl andere dat willekeurig waar doen. Hierdoor kan webtrees soms woorden aan elkaar plakken. Door dit op <b>Ja</b> te zetten zal het import proces een spatie toevoegen tussen woorden waar een zin is afgebroken in de originele GEDCOM. Als u het bestand al heeft geïmporteerd, dan zult u dat opnieuw moeten doen."
-
-#~ msgid "The Favorites drop-down list shows the favorites that you have selected on your “My page”.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding favorites is available in your “My page”."
-#~ msgstr "In deze lijst zijn de personen zichtbaar die u als favorieten hebt geselecteerd op ‘Mijn pagina’.Het toont ook de favorieten die de website beheerder gekozen heeft voor de actieve stamboom.<br>Als u een favoriet kiest uit de lijst, komt u terecht op de detailpagina van deze persoon.<br><br>Meer hulp over het toevoegen van favorieten is beschikbaar op uw eigen ‘Mijn pagina‘."
-
-#~ msgid "The current webtrees admin username must be the same as an existing PGV admin username"
-#~ msgstr "De huidige webtrees-gebruikersnaam van de beheerder moet hetzelfde zijn als een bestaande PGV-beheerdersnaam."
-
-#~ msgid "The following calendars are supported:"
-#~ msgstr "De volgende kalenders worden ondersteund:"
-
-#~ msgid "The following visitors were not recognized, and were assumed to be search engines."
-#~ msgstr "De volgende bezoekers werden niet herkend en werden verondersteld zoekmachines te zijn."
-
-#~ msgid "The individual record identifies the user in each family tree.  Since a user can view the details of their individual record, this can only be set by an administrator.  If the user does not have a record in a family tree, leave it empty."
-#~ msgstr "Het persoonsrecord identificeert de gebruiker in elke stamboom. Omdat een gebruiker de details kan zien van zijn persoonsrecord, kan dit alleen worden ingesteld door een beheerder. Heeft een gebruiker geen record in de stamboom, laat dan dit veld leeg."
-
-#~ msgid "The length of time after birth can be set on the “Privacy” tab option “Age at which to assume an individual is dead”."
-#~ msgstr "De tijdsduur na geboorte kan ingesteld worden op het ‘Privacy’ tabblad met de optie ‘Leeftijd waarboven een persoon geacht wordt overleden te zijn’."
-
-#~ msgid "The specified folder does not contain an installation of PhpGedView"
-#~ msgstr "De gespecificeerde map bevat geen installatie van PhpGedView"
-
-#~ msgid "There have been no changes within the last %s days."
-#~ msgstr "Er zijn geen wijzigingen aangebracht in de laatste %s dagen."
-
-#~ msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
-#~ msgstr "Dit veld bepaalt de volgorde waarin de FAQ's getoond worden.<br><br>De nummers hoeven niet in volgorde te worden ingevoerd. Door het open laten van gaten in de nummering, kunnen later andere FAQ's hier tussen geplaatst worden. B.v. als de nummers 1, 6, 11, 16 gebruikt zijn, kunnen later FAQ's ingevoerd worden met de ontbrekende nummers. Negatieve nummers en nul zijn ook toegestaan, en kunnen gebruikt worden om FAQ's vóór de eerste FAQ te plaatsen.<br><br>Als er meer dan één FAQ hetzelfde nummer hebben, zal er maar één van deze FAQ's getoond worden."
-
-#~ msgid "This input box lets you enter an individual’s ID number so they can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the “Add” button."
-#~ msgstr "In dit invulvak kunt u het ID-nummer van een persoon invullen, zodat u deze kunt toevoegen aan uw verzameling stamboomknipsels. Eenmaal toegevoegd, krijgt u opties aangeboden om relaties van die persoon aan de verzameling toe te voegen.<br><br>Als u het ID-nummer van de betreffende persoon niet weet dan kunt u zoeken op naam door te klikken op het persoonspictogram naast de knop ‘Toevoegen’."
-
-#~ msgid "This module cannot be found.  Delete its configuration settings."
-#~ msgstr "Deze module kan niet worden gevonden. Verwijder de configuratie instellingen ervan."
-
-#~ msgid "This option creates a new family tree.  The name you give it will be used to generate URLs and filenames, so you should choose something short, simple, and avoid punctuation."
-#~ msgstr "Deze optie maakt een nieuwe stamboom aan. De naam die u het geeft, wordt gebruikt om URL's en bestandsnamen aan te maken. U moet dus iets korts en eenvoudig kiezen en leestekens vermijden."
-
-#~ msgid "This option is like webtrees internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.  This is the default contact method."
-#~ msgstr "Deze optie is gelijk aan webtrees interne berichten, met één toevoeging. Een kopie van het bericht wordt ook verzonden naar het e-mailadres dat u heeft opgegeven op de ‘Mijn Account’-pagina.  Dit is de standaard contact methode."
-
-#~ msgid "This option selects the family tree that is shown to visitors when they first arrive at the site."
-#~ msgstr "Deze optie selecteert de stamboom die aan bezoekers getoond wordt als ze de eerste keer op de site komen."
-
-#~ msgid "This option will enable all privacy settings and hide the details of living individuals, as defined or modified on the Privacy tab of each GEDCOM’s configuration page."
-#~ msgstr "Deze optie activeert alle privacy-instellingen en verbergt details van nog levende personen, zoals gedefinieerd of gewijzigd op het Privacytabblad van elke GEDCOM-instellingen pagina."
-
-#~ msgid "This option will let you delete an item from the FAQ page"
-#~ msgstr "Met deze optie kan een FAQ verwijderd worden van de FAQ-pagina"
-
-#~ msgid "This option will let you edit an item on the FAQ page."
-#~ msgstr "Met deze optie kan een FAQ gewijzigd worden op de FAQ-pagina."
-
-#~ msgid "This option will let you move an item downwards on the FAQ page.<br><br>Each time you use this option, the FAQ position number of this item is increased by one.  You can achieve the same effect by editing the item in question and changing the FAQ position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
-#~ msgstr "Gebruik deze optie om een item naar beneden te verplaatsen in de FAQ-lijst.<br><br>Iedere keer dat u deze optie gebruikt, wordt het positienummer van het item met één verhoogd. Dit zelfde effect kunt u bereiken door het bewuste item te wijzigen en het positienummer te veranderen. Als meerdere  items hetzelfde positienummer hebben, wordt slechts één van de items getoond."
-
-#~ msgid "This option will let you move an item upwards on the FAQ page.<br><br>Each time you use this option, the FAQ position number of this item is reduced by one.  You can achieve the same effect by editing the item in question and changing the FAQ position field.  When more than one FAQ item has the same position number, only one of these items will be visible."
-#~ msgstr "Gebruik deze optie om een item naar boven te verplaatsen in de FAQ-lijst.<br><br>Iedere keer dat u deze optie gebruikt, wordt het positienummer van het item met één verlaagd. Dit zelfde effect kunt u bereiken door het bewuste item te wijzigen en het positienummer te veranderen. Als meerdere  items hetzelfde positienummer hebben, wordt slechts één van de items getoond."
-
-#~ msgid "This option will remove private data from the downloaded GEDCOM file.  The file will be filtered according to the privacy settings that apply to each access level.  Privacy settings are specified on the GEDCOM configuration page."
-#~ msgstr "Deze optie verwijdert privé gegevens uit het gedownloade GEDCOM-bestand. Het bestand wordt gefilterd volgens de privacy-instellingen die horen bij de gekozen beperking. Privacy-instellingen kunnen worden ingesteld op de GEDCOM-configuratiepagina."
-
-#~ msgid "This page provides extensive information about the server on which webtrees is being hosted.  Many configuration details about the server’s software, as it relates to PHP and webtrees, can be viewed."
-#~ msgstr "Op deze pagina staat uitgebreide informatie over de server waarop webtrees draait. Veel configuratiedetails over de software op de server in relatie tot PHP en webtrees kan worden bekeken."
-
-#~ msgid "Use relationship privacy"
-#~ msgstr "Gebruik relatie privacy"
-
-#~ msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td style=\"vertical-align:middle\">This image might be used when the gender of the individual is unknown:"
-#~ msgstr "Gebruik een silhouet afbeelding als er geen gemarkeerde afbeelding bestaat voor die persoon. De gebruikte afbeeldingen zijn specifiek voor het geslacht van de persoon in kwestie<br><br><table><tr><td style=\"vertical-align:middle\">middle\">Deze afbeelding kan worden gebruikt als het geslacht van de persoon onbekend is:"
-
-#~ msgid "Users’ languages"
-#~ msgstr "Gebruikerstalen"
-
-#~ msgid "Week"
-#~ msgstr "Week"
-
-#~ msgid "When a new family record is added online in webtrees, a new ID for that family will be generated automatically.  The family ID will have this prefix."
-#~ msgstr "Als een nieuw gezinsrecord online in webtrees wordt toegevoegd, wordt automatisch een nieuw ID voor dat gezin aangemaakt. Het gezins-ID zal dit voorvoegsel hebben."
-
-#~ msgid "When a new individual record is added online in webtrees, a new ID for that individual will be generated automatically.  The individual ID will have this prefix."
-#~ msgstr "Als een nieuw persoonsrecord online wordt toegevoegd in webtrees wordt automatisch een nieuwe ID gegenereerd voor die persoon. Het persoons-ID krijgt dit voorvoegsel."
-
-#~ msgid "When a new media record is added online in webtrees, a new ID for that media will be generated automatically.  The media ID will have this prefix."
-#~ msgstr "Als er een nieuw mediarecord online in webtrees wordt toegevoegd, wordt automatisch een nieuw ID voor die media gegenereerd. Het media-ID zal dit voorvoegsel hebben."
-
-#~ msgid "When a new note record is added online in webtrees, a new ID for that note will be generated automatically.  The note ID will have this prefix."
-#~ msgstr "Als er een nieuw notitierecord online in webtrees wordt toegevoegd, wordt automatisch een nieuw ID voor die notitie gegenereerd. De notitie-ID zal dit voorvoegsel hebben."
-
-#~ msgid "When a new repository record is added online in webtrees, a new ID for that repository will be generated automatically.  The repository ID will have this prefix."
-#~ msgstr "Als een nieuw opslagplaatsrecord  online in webtrees wordt toegevoegd,  wordt automatisch een nieuw ID voor die opslagplaats gegenereerd. De opslagplaats-ID zal dit voorvoegsel hebben."
-
-#~ msgid "When a new source record is added online in webtrees, a new ID for that source will be generated automatically.  The source ID will have this prefix."
-#~ msgstr "Als een nieuw bronrecord online wordt aangemaakt in webtrees, wordt er automatisch een nieuwe ID voor die bron aangemaakt. De bron-ID zal dit voorvoegsel hebben."
-
-#~ msgid "When set to <b>Yes</b>, the following message will appear above the input fields on the “Request new user account” page:<div class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div></div>"
-#~ msgstr "Staat dit ingesteld op <b>Ja</b>, dan wordt de volgende boodschap getoond boven de invoervelden op de pagina voor het aanvragen van een nieuw gebruikersaccount: <div class=\"list_value_wrap\"><div class=\"largeError\">Belangrijk bericht:</div><div class=\"error\">Door dit formulier in te vullen en te verzenden, gaat u akkoord met:<ul><li>het respecteren van de privacy van nog levende personen op onze site en,</li><li>in het onderstaande tekstvak, uit te leggen aan wie u verwant bent of ons van informatie te voorzien over iemand die op onze site vermeld zou moeten staan.</li></ul></div></div>"
-
-#~ msgid "When this check box is checked, the chart will be printed with oldest individuals at the top.  When it is unchecked, youngest individuals will appear at the top."
-#~ msgstr "Wanneer dit selectievakje is aangevinkt wordt de weergave gepresenteerd met de oudste personen bovenaan. Als het selectievakje wordt leeggelaten zullen de jongste personen bovenaan staan."
-
-#~ msgid "When you check this option, a copy of the GEDCOM file will be compressed into ZIP format before the download begins.  This will reduce its size considerably, but you will need to use a compatible Unzip program (WinZIP, for example) to decompress the transmitted GEDCOM file before you can use it.<br><br>This is a useful option for downloading large GEDCOM files.  There is a risk that the download time for the uncompressed file may exceed the maximum allowed execution time, resulting in incompletely downloaded files.  The ZIP option should reduce the download time by 75 percent."
-#~ msgstr "Als u deze optie aanvinkt, wordt een kopie van het GEDCOM-bestand gecomprimeerd in een ZIP-bestand vóórdat de download begint. Dat zal de omvang aanzienlijk verminderen, maar u heeft een compatibel Unzipprogramma nodig (b.v. Windows, WinZIP) om het bestand uit te pakken voordat u het kunt gebruiken.<br><br>Dit is zinnig voor grote GEDCOM-bestanden. Er is een risico dat de tijd om het niet gecomprimeerde bestand te downloaden de maximaal beschikbare uitvoeringstijd overschrijdt, wat resulteert in een onvolledig bestand. De ZIP-compressie reduceert de downloadtijd met 75 procent."
-
-#~ msgid "When you click this link your clippings cart will be totally emptied.<br><br>If you don’t want to remove all individuals, families, etc. from the clippings cart, you can remove items individually by clicking the <b>Remove</b> link in the name boxes.  There is <u>no</u> confirmation dialog when you click either of these links;  the requested deletion takes place immediately."
-#~ msgstr "Wanneer u op deze link klikt, wordt uw verzameling stamboomknipsels verwijderd.<br><br>Wilt u niet alle personen, gezinnen, enz. uit uw verzameling verwijderen, dan kunt u items selectief verwijderen door op de knop <b>Verwijderen</b> in de naam-vakken te klikken. Er wordt niet om een bevestiging gevraagd als u op een van deze links klikt;  de gevraagde verwijdering vindt direct plaats."
-
-#~ msgid "With this option, the webtrees internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your “My page”.  If you have removed this block from your “My page”, you will not see any messages.  They will, however, show up as soon as you configure your “My page” to again have the Message block."
-#~ msgstr "Met deze optie wordt het interne webtrees berichten systeem gebruikt en worden er geen e-mails verstuurd. U ontvangt alleen <u>interne</u> berichten van de andere gebruikers. Wanneer een andere gebruiker u een bericht stuurt, verschijnt dat bericht in het Berichtenblok op ‘Mijn pagina’.  Als u dat blok verwijderd hebt van uw ‘Mijn pagina’ dan ziet u geen berichten. Ze zullen echter direct verschijnen als u het berichtenblok alsnog toevoegt aan uw ‘Mijn pagina’."
-
-#~ msgid "With this option, you will not receive any messages.  Even the administrator will not be able to reach you."
-#~ msgstr "Met deze optie ontvangt u op geen enkele wijze een bericht. Zelfs de beheerder zal u niet kunnen bereiken."
-
-#~ msgid "With this option, you will only receive email messages at the address you configured on your Account page.  The messaging system internal to webtrees will not be used at all, and there will never be any messages in the Message block on your “My page”."
-#~ msgstr "Met deze optie ontvangt u alleen een e-mail op het adres dat u hebt opgegeven op uw Account-pagina. Het interne berichtensysteem van webtrees wordt uitgeschakeld en er verschijnen ook geen berichten in het Berichten-blok op uw ‘Mijn pagina’."
-
-#~ msgid "You have no pending messages."
-#~ msgstr "U heeft geen ongelezen berichten."
-
-#~ msgid "You must confirm the password."
-#~ msgstr "U moet het wachtwoord nog een keer invullen om het te bevestigen"
-
-#~ msgid "You must enter a password."
-#~ msgstr "U moet een wachtwoord invullen"
-
-#~ msgid "You must enter an email address."
-#~ msgstr "U moet een e-mailadres opgeven."
-
-#~ msgid "You must export your latest GEDCOM data"
-#~ msgstr "U moet uw laatste GEDCOM-gegevens exporteren"
-
-#~ msgid "click to edit"
-#~ msgstr "Klik om te wijzigen"
-
-#~ msgid "go"
-#~ msgstr "ga"
-
-#~ msgid "masquerade"
-#~ msgstr "vermomming"
-
-#~ msgid "webtrees has several different contact methods.  The administrator determines which method will be used to contact him.  You have control over the method to be used to contact <u>you</u>.  Depending on site configuration, some of the listed methods may not be available to you."
-#~ msgstr "webtrees heeft verschillende contactmethodes.  De beheerder bepaalt welke methode wordt gebruikt om met hem in contact te komen.  U heeft controle over de manier waarop met <u>u</u> in contact gekomen kan worden.Afhankelijk van de site-instellingen zijn sommige getoonde manieren misschien niet beschikbaar voor u."
-
-#~ msgid "webtrees internal messaging"
-#~ msgstr "webtrees interne berichten systeem"
