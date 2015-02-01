@@ -16555,7 +16555,7 @@ msgstr "desactiva"
 #: admin_site_upgrade.php:413
 #, php-format
 msgid "Place the website offline, by creating the file %s…"
-msgstr ""
+msgstr "Poseu el lloc fora de línia, creant el fitxer %s…"
 
 #: modules_v3/googlemap/module.php:4083
 msgid "east"
@@ -18928,12 +18928,12 @@ msgstr "cosí/na 9è/a"
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:716
 msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-msgstr ""
+msgstr "Si un visitant del lloc no ha especificat un idioma de preferència en la seva configuració del navegador, o ha especificat un idioma no disponible, llavors aquest és l’idioma a d’utilitzar. Normalment, aquest valor s’aplica als motors de cerca."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
 msgid "Missing PHP temporary folder"
-msgstr ""
+msgstr "Manca el directori PHP temporal"
 
 #: admin_trees_config.php:56 admin_trees_config.php:139 admin_users.php:225
 #: admin_users.php:226 includes/functions/functions_edit.php:108
@@ -20166,9 +20166,6 @@ msgstr "…"
 #~ msgid "Here you can choose text to appear on the login screen.  You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
 #~ msgstr "Aquí podeu escollir el text que apareix a la pantalla d’inici de sessió. Heu de determinar quin text predefinit és el més apropiat.<br><br>També podeu optar per introduir-ne un de personalitzat. Per a més informació consulteu l’ajuda associada al camp <b>Text de benvinguda</b><br><br>Els textos predefinits són:<ul><li><b>Text predefinit que estableix que tots els visitants poden demanar un compte d’usuari:</b><div class=\"list_value_wrap\"><center><b>Us donem la benvinguda a aquest lloc web de genealogia</b></center><br>L’accés és permès a qualsevol usuari enregistrat.<br><br>Si ja disposeu d’autorització, accediu per aquesta pàgina. Si no, podeu demanar-la polsant a l’enllaç apropiat de sota.<br><br>Un cop verificada la vostra comanda, l’administrador del lloc us activarà el registre. Rebreu un correu electrònic quan la hagi estat aprovada.</div><br></li><li><b> Text predefinit que estableix que l’administrador decidirà sobre cada petició de compte:</b><div class=\"list_value_wrap\"><center><b>Benvingut a aquest lloc web de genealogia</b></center><br>L’accés és permès solament a usuaris <u>autoritzats</u>.<br><br>Si ja disposeu d’autorització, accediu per aquesta pàgina. Si no, podeu demanar-la polsant a l’enllaç apropiat de sota.<br><br>Un cop verificada la vostra informació l’administrador pot autoritzar-vos o no.  Rebreu un correu electrònic quan la comanda hagi estat aprovada.</div><br></li><li><b>Text predefinit que estableix que solament poden demanar compte els membres de la família:</b><div class=\"list_value_wrap\"><center><b>Us donem la benvinguda a aquest lloc web de genealogia</b></center><br>L’accés és permès solament a <u>membres de la família</u>.<br><br>Si ja disposeu d’autorització podeu accedir per aquesta pàgina. Si no, podeu demanar-la polsant a l’enllaç apropiat d’aquí sota.<br><br>Un cop verificada la vostra informació l’administrador pot autoritzar-ho o no.  Rebreu un correu electrònic quan la comanda hagi estat aprovada."
 
-#~ msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-#~ msgstr "Si un visitant del lloc no ha especificat un idioma de preferència en la seva configuració del navegador, o ha especificat un idioma no disponible, llavors aquest és l’idioma a d’utilitzar. Normalment, aquest valor s’aplica als motors de cerca."
-
 #~ msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the “Approved by administrator” checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
 #~ msgstr "Si hi ha activada l’opció <b>Permet als visitants demanar enregistrar-se</b> aquest paràmetre controla  si l’administrador ha d’autoritzar el registre.<br><br>Posant-ho a <b>Sí</b> fa que qualsevol nou usuari, abans de disposar d’accés, primer s’hagi d’autoverificar i desprès ésser autoritzat per un administrador. Amb aquest paràmetre a <b>No</b>, la casella <b>Usuari autoritzat per l’administrador</b> queda marcada automàticament quan un usuari confirma o verifica el seu compte, permetent la connexió immediata sense la intervenció de l’administrador."
 
@@ -20189,9 +20186,6 @@ msgstr "…"
 
 #~ msgid "Mail configuration"
 #~ msgstr "Configuració del correu"
-
-#~ msgid "Missing PHP temporary folder"
-#~ msgstr "Manca el directori PHP temporal"
 
 #~ msgid "Move FAQ item down"
 #~ msgstr "Mou l’ítem avall"
@@ -20215,9 +20209,6 @@ msgstr "…"
 
 #~ msgid "Pending Changes block"
 #~ msgstr "Bloc de Canvis Pendents"
-
-#~ msgid "Place the website offline, by creating the file %s…"
-#~ msgstr "Poseu el lloc fora de línia, creant el fitxer %s…"
 
 #~ msgid "Privacy options"
 #~ msgstr "Opcions de privadesa"

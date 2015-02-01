@@ -16523,7 +16523,7 @@ msgstr "hủy kích hoạt"
 #: admin_site_upgrade.php:413
 #, php-format
 msgid "Place the website offline, by creating the file %s…"
-msgstr ""
+msgstr "Đặt website ỏ tình trạng không trực tuyến, bằng cách tạo tập tin %s…"
 
 #: modules_v3/googlemap/module.php:4083
 msgid "east"
@@ -18893,12 +18893,12 @@ msgstr "anh em họ 9 đời"
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:716
 msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-msgstr ""
+msgstr "Nếu khách viếng website không chỉ định ra ngôn ngữ tùy thích của khách trong cấu hình trình duyệt, hoặc họ chỉ định ra một ngôn ngữ chưa được hỗ trợ, thì ngôn ngữ này sẽ được dùng. Cụ thể thiết lập này áp dụng cho máy tìm kiếm."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
 msgid "Missing PHP temporary folder"
-msgstr ""
+msgstr "Lạc thư mục tạm PHP"
 
 #: admin_trees_config.php:56 admin_trees_config.php:139 admin_users.php:225
 #: admin_users.php:226 includes/functions/functions_edit.php:108
@@ -20130,9 +20130,6 @@ msgstr "…"
 #~ msgid "Here you can choose text to appear on the login screen.  You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
 #~ msgstr "Ở đây bạn có thể chọn văn bản xuất hiện trên màn hình đăng nhập. Bạn phải quyết định văn bản định trước nào thích hợp nhất.<br><br>Bạn cũng có thể chọn văn bản chào mừng riêng. Xin vui lòng tham khảo văn bản trợ giúp liên quan đến  <b> Văn bản chào mừng riêng</b> để biết thêm thông tin<br><br>Các văn bản được xác định trước là:<ul><li><b>Văn bản xác định trước báo rằng mọi người dùng có quyền yêu cầu xin tài khoản người dùng:</b><div class=\"list_value_wrap\"><center><b>Chào mừng bạn đến với trang web gia phả này</b></center><br>Việc truy cập vào trang web này chỉ cho phép người dùng nào có tài khoản người dùng<br><br>Nếu bạn đã có một tài khoản người dùng, bạn có thể đăng nhập. Nếu bạn không có một tài khoản người dùng, bạn có thể xin một tài khoản bằng cách nhấp vào liên kết thích hợp dưới đây.<br><br>Sau khi xác minh việc xin mở tài khoản của bạn, quản trị viên trang web sẽ kích hoạt tài khoản của bạn. Bạn sẽ nhận được một email khi việc xin mở tài khoản của bạn đã được chấp thuận</div><br></li><li><b>Văn bản xác định trước báo rằng quản trị viên sẽ quyết định tùy từng trường hợp xin mở tài khoản người dùng.</b> < div class = \"list_value_wrap\"> <center> <b> Chào mừng bạn đến trang web gia phả này</b></center><br>Việc truy cập vào trang web này chỉ cho phép người dùng <u>được cho phép</u> mà thôi.<br><br>Nếu bạn đã có tài khoản tài khoản người dùng, bạn có thể bạn đăng nhập vào trang này. Nếu bạn không có một tài khoản người dùng, bạn có thể xin mở một tài khoản bằng cách nhấp vào liên kết thích hợp dưới đây<br><br>Sau khi xác minh thông tin của bạn,  người quản trị sẽ chấp thuận hoặc từ chối việc xin mở tài khoản người dùng của bạn. Bạn sẽ nhận được một tin nhắn email khi việc xin được chấp thuận</div><br></li><li></b>Văn bản xác định trước nói rằng chỉ thành viên gia đình có thể yêu cầu một tài khoản người dùng:</b> <div class = \"list_value_wrap\"> <center> <b> Chào mừng bạn đến trang web gia phả này</b></br><br><center>. Việc truy cập vào trang web này chỉ được phép <u> cho thành viên gia đình</u>.<br><br>Nếu bạn đã một tài khoản người dùng, bạn có thể đăng nhập vào site. Nếu bạn không có một tài khoản người dùng, bạn có thể xin một bằng cách nhấp vào liên kết thích hợp dưới đây.<br><br>Sau khi xác minh thông tin bạn cung cấp,  nhà quản trị site sẽ chấp thuận hoặc từ chối yêu cầu của bạn. Bạn sẽ nhận được một email khi yêu cầu được chấp thuận.</div></li></ul>"
 
-#~ msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-#~ msgstr "Nếu khách viếng website không chỉ định ra ngôn ngữ tùy thích của khách trong cấu hình trình duyệt, hoặc họ chỉ định ra một ngôn ngữ chưa được hỗ trợ, thì ngôn ngữ này sẽ được dùng. Cụ thể thiết lập này áp dụng cho máy tìm kiếm."
-
 #~ msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the “Approved by administrator” checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
 #~ msgstr "Nếu tùy chọn <b>Cho phép khách truy cập yêu cầu đăng ký tài khoản</b> được kích hoạt thiết lập này điều khiển việc quản trị viên phải chấp thuận đăng ký.<br><br>Đặt nó ở <b>Có</b> sẽ yêu cầu tất cả người dùng mới trước tiên tiên xác minh bản thân họ bởi quản trị trước khi họ có thể đăng nhập. Với thiết đặt này đặt ở <b>Không</b> hộp  kiểm <b>Người dùng đã được châp thuận bởi quản trị</b> sẽ được tự động đánh dấu kiểm khi người dùng xác mình tài khoản của họ, và cho phép đăng nhập ngay sau đó không cần can thiệp của quản trị."
 
@@ -20153,9 +20150,6 @@ msgstr "…"
 
 #~ msgid "Mail configuration"
 #~ msgstr "Cấu hình mail"
-
-#~ msgid "Missing PHP temporary folder"
-#~ msgstr "Lạc thư mục tạm PHP"
 
 #~ msgid "Move FAQ item down"
 #~ msgstr "Chuyển mục FAQ này xuống"
@@ -20178,9 +20172,6 @@ msgstr "…"
 
 #~ msgid "Pending Changes block"
 #~ msgstr "Khối Thay đổi đang chờ duyệt"
-
-#~ msgid "Place the website offline, by creating the file %s…"
-#~ msgstr "Đặt website ỏ tình trạng không trực tuyến, bằng cách tạo tập tin %s…"
 
 #~ msgid "Privacy options"
 #~ msgstr "Tùy chọn về riêng tư"

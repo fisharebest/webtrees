@@ -16555,7 +16555,7 @@ msgstr "desativar"
 #: admin_site_upgrade.php:413
 #, php-format
 msgid "Place the website offline, by creating the file %s…"
-msgstr ""
+msgstr "Deixar o site offline, criando o arquivo %s…"
 
 #: modules_v3/googlemap/module.php:4083
 msgid "east"
@@ -18928,12 +18928,12 @@ msgstr "primo de nono grau"
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:716
 msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-msgstr ""
+msgstr "Se o visitante do site não especificar um idioma preferido na configuração do seu navegador, ou ele estiver em um idioma não suportado, então este idioma será utilizado. Tipicamente, esta definição se aplica para motores de busca."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
 msgid "Missing PHP temporary folder"
-msgstr ""
+msgstr "Diretório temporário PHP faltante"
 
 #: admin_trees_config.php:56 admin_trees_config.php:139 admin_users.php:225
 #: admin_users.php:226 includes/functions/functions_edit.php:108
@@ -20166,9 +20166,6 @@ msgstr "…"
 #~ msgid "Here you can choose text to appear on the login screen.  You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
 #~ msgstr "Aqui você pode escolher o texto para aparecer na tela de login. Você deve determinar qual texto predefinido é mais adequado.<br><br>Você também pode optar por inserir o seu texto próprio de boas vindas. Por favor, consulte o texto da Ajuda associado com o <b>texto personalizado de Boas Vindas</b>para mais informações<br><br>Os textos pré-definidos são:<ul><li><b>Texto  predefinido que indica que todos os usuários podem solicitar uma conta de usuário:</b><div class=\"list_value_wrap\"><center><b> Bem-vindo a este site de Genealogia</b></center><br>O acesso a este site é permitido para cada visitante que tem uma conta de usuário.<br><br>Se você tem uma conta de usuário, você pode entrar nesta página. Se você não tem uma conta de usuário, você pode pedir uma clicando no link abaixo.<br><br>Depois de verificar a seu pedido, o administrador do site irá ativar sua conta. Você receberá um e-mail quando o seu pedido foi aprovado.</div><br></li><li><b>Texto predefinido que indica que o administrador decida sobre cada pedido de uma conta de usuário:</b>< div class = \"list_value_wrap\"><center><b>Bem-vindo a este site de Genealogia</b></center><br>O acesso a este site é permitido apenas para usuários <u>autorizados</u>.<br><br>Se você tem uma conta de usuário você pode entrar nesta página. Se você não tem uma conta de usuário, você pode pedir uma clicando no link abaixo.<br><br>Depois de verificar suas informações, o administrador irá aprovar ou recusar o seu pedido conta. Você receberá uma mensagem de e-mail quando o seu pedido foi aprovado</div><br></li><li><b>Texto predefinido que indica que apenas os membros da família podem solicitar uma conta de usuário:</b><div class=\"list_value_wrap\"><center><b>Bem-vindo a este site de Genealogia</b></center><br>O acesso a este site é permitido aos membros da família <u>apenas</u>.<br><br>Se você tem uma conta de usuário você pode entrar nesta página. Se você não tem uma conta de usuário, você pode pedir uma clicando no link abaixo.<br><br>Depois de verificar as informações fornecidas, o administrador irá aprovar ou recusar o seu pedido de uma conta. Você receberá um e-mail quando o seu pedido for aprovado.</div></li></ul>"
 
-#~ msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-#~ msgstr "Se o visitante do site não especificar um idioma preferido na configuração do seu navegador, ou ele estiver em um idioma não suportado, então este idioma será utilizado. Tipicamente, esta definição se aplica para motores de busca."
-
 #~ msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the “Approved by administrator” checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
 #~ msgstr "Se a opção <b>Permitir visitantes requerer registro de conta</b> estiver habilitada ela controla se um administrador deve aprovar o registro.<br><br>. Definindo isto para <b>Sim</b> será requerido que todos os novos usuários primeiro verifiquem a si mesmos e então ser aprovados por um administrador antes que possam se autenticar. Com esta opção definida como <b>Não</b>, a caixa <b>Usuário aprovado pelo administrador</b> será marcada automaticamente quando usuários verificarem suas contas, assim permitindo a autenticação imediata sem intervenção do administrador."
 
@@ -20189,9 +20186,6 @@ msgstr "…"
 
 #~ msgid "Mail configuration"
 #~ msgstr "Configuração de e-mail"
-
-#~ msgid "Missing PHP temporary folder"
-#~ msgstr "Diretório temporário PHP faltante"
 
 #~ msgid "Move FAQ item down"
 #~ msgstr "Mover ítem PMF para baixo"
@@ -20215,9 +20209,6 @@ msgstr "…"
 
 #~ msgid "Pending Changes block"
 #~ msgstr "Bloco de alterações pendentes"
-
-#~ msgid "Place the website offline, by creating the file %s…"
-#~ msgstr "Deixar o site offline, criando o arquivo %s…"
 
 #~ msgid "Privacy options"
 #~ msgstr "Opções de privacidade"

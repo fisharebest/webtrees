@@ -162,7 +162,7 @@ class WT_I18N {
 	/** @var string The MySQL collation sequence used by this language, typically utf8_unicode_ci */
 	public  static $collation;
 
-	/** @var string Puncutation used to separate list items, typically a comma */
+	/** @var string Punctuation used to separate list items, typically a comma */
 	public  static $list_separator;
 
 	/** @var string Text direction; ltr or rtl */

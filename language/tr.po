@@ -16519,7 +16519,7 @@ msgstr "devredişi"
 #: admin_site_upgrade.php:413
 #, php-format
 msgid "Place the website offline, by creating the file %s…"
-msgstr ""
+msgstr "%s dosyası oluşturarak siteyi çevrimdışı hale getirin…"
 
 #: modules_v3/googlemap/module.php:4083
 msgid "east"
@@ -18889,12 +18889,12 @@ msgstr "dokuzuncu kuzen"
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:716
 msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-msgstr ""
+msgstr "Eğer ziyaretçi tarayıcı ayarlarında bir dil belirtmemiş ise yada belirtilen dil desteklenmeyen bir dil ise bu dil kullanılacaktır. Genellikle, bu ayar arama motorları için de geçerlidir."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
 msgid "Missing PHP temporary folder"
-msgstr ""
+msgstr "PHP geçici dizin eksik"
 
 #: admin_trees_config.php:56 admin_trees_config.php:139 admin_users.php:225
 #: admin_users.php:226 includes/functions/functions_edit.php:108
@@ -20126,9 +20126,6 @@ msgstr "Soyisimsiz"
 #~ msgid "Here you can choose text to appear on the login screen.  You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
 #~ msgstr "Burada giriş ekranında görünmesini istediğiniz metni seçebilirsiniz. Sizin için en uygun önceden tanımlanmış olan metni belirlemeniz gerekir.<br><br>İsterseniz size özel Hoşgeldin mesajını belirleyebilirsiniz. Daha fazla bilgi için <b>Özel Hoş Geldiniz metni</b> alanına ilişkin yardım metnine bakabilirsiniz.<br><br>Önceden tanımlanmış metinler:<ul><li><b>Önceden tanımlanmış tüm kullanıcılara üye olabileceğini söyleyen metin:</br><div class=\"list_value_wrap\"><center><b>Soyağacı Web Sitesine Hoş Geldiniz</b></center><br>Bu siteye erişim için kullanıcı hesabı olan her ziyaretçiye izin verilmektedir.<br><br>Eğer bir kullanıcı hesabınız varsa bu sayfada giriş yapabilirsiniz. Eğer bir kullanıcı hesabınız yok ise aşağıdaki uygun bağlantıyı tıklayarak kayıt başvurusu yapabilirsiniz.<br><br>Kayıt sonrası mail adresinize gönderilen doğrulama maili aracılığı ile hesabınızı doğruladıktan sonra kullanıcı hesabınız yönetici tarafından onaylayacaktır. Başvurunuz kabul edildiğinde bilgilendirme mesajı mail adresinize gönderilecektir.</div><br></li><li><b>Ziyaretçiye üye olduğunda admin onayı gerektirdiğini söyleyen önceden tanımlanmış metin:</b><div class=\"list_value_wrap\"><center><b>Soyağacı Web Sitesine Hoş Geldiniz</b></center><br>Bu soyağacı web sitesine sadece <u>kayıtlı</u> kullanıcıların erişmesine izin verilmektedir.<br><br>Eğer bir kullanıcı hesabına sahip iseniz bu sayfadan giriş yapabilirsiniz.<br><br>Eğer bir kullanıcı hesabınız yok ise aşağıdaki uygun bağlantıya tıklayarak kayıt olabilirsiniz.<br><br>Kayıt sonrası mail adresine gönderilen doğrulama maili aracılığı ile hesabınızı doğruladıktan sonra kullanıcı hesabınız yönetici tarafından onaylayacak veya reddedecektir. Başvurunuz kabul edildiğinde bilgilendirme mesajı mail adresinize gönderilecektir.</div><br></li><li><b>Sadece aile üyelerinin üyeliklerine izin verildiğin söyleyen önceden tanımlanmış metin:</b><div class=\"list_value_wrap\"><center><b>Soyağacı Web Sitesine Hoş Geldiniz.</b></center><br>Bu siteye erişim için sadece <u>aile fertlerine</u> izin verilmektedir.<br><br>Eğer bir kullanıcı hesabınız varsa bu sayfada giriş yapabilirsiniz. Eğer bir kullanıcı hesabınız yok ise aşağıdaki uygun bağlantıyı tıklayarak kayıt başvurusu yapabilirsiniz.<br><br>Kayıt sonrası mail adresinize gönderilen doğrulama maili aracılığı ile hesabınızı doğruladıktan sonra kullanıcı hesabınız yönetici tarafından onaylayacak veya reddedecektir. Başvurunuz kabul edildiğinde bilgilendirme mesajı mail adresinize gönderilecektir.</div></li></ul>"
 
-#~ msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-#~ msgstr "Eğer ziyaretçi tarayıcı ayarlarında bir dil belirtmemiş ise yada belirtilen dil desteklenmeyen bir dil ise bu dil kullanılacaktır. Genellikle, bu ayar arama motorları için de geçerlidir."
-
 #~ msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the “Approved by administrator” checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
 #~ msgstr "Eğer <b>Ziyaretçilerin kayıt olmasına izin ver</b> seçeneği aktif ise, bu secenek yöneticinin kaydı onaylamasının gerekili olup olmadığını bu ayar belirler.<br><b>Bu seçenek <b>Evet</b> olarak seçildiğinde, yeni kullanıcıların giriş yapabilmesi için önce kendilerini onaylamaları, daha sonra ise yöneticinin bu kullanıcıyı onaylaması gereklidir. Bu seçenek <b>Hayır</b> olarak seçildiğinde ise, kullanıcı kendisini onayladığında \"Yönetici tarafından onaylandı\" onay kutusun otomatik olarak seçilir. Bu kullanıcı kendisini onayladıktan sonra yöneticinin onayını beklemeden doğrudan giriş yapabilmesini sağlar."
 
@@ -20143,9 +20140,6 @@ msgstr "Soyisimsiz"
 
 #~ msgid "Mail configuration"
 #~ msgstr "Email yapılandırma"
-
-#~ msgid "Missing PHP temporary folder"
-#~ msgstr "PHP geçici dizin eksik"
 
 #~ msgid "Move FAQ item down"
 #~ msgstr "SSS öğeyi aşağı taşı"
@@ -20164,9 +20158,6 @@ msgstr "Soyisimsiz"
 
 #~ msgid "Pending Changes block"
 #~ msgstr "Bekleyen Değişiklikler bloku"
-
-#~ msgid "Place the website offline, by creating the file %s…"
-#~ msgstr "%s dosyası oluşturarak siteyi çevrimdışı hale getirin…"
 
 #~ msgid "Privacy options"
 #~ msgstr "Mahremiyet seçenekleri"

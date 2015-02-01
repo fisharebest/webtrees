@@ -16590,7 +16590,7 @@ msgstr "vypnout"
 #: admin_site_upgrade.php:413
 #, php-format
 msgid "Place the website offline, by creating the file %s…"
-msgstr ""
+msgstr "Shazuji web vytvořením souboru %s…"
 
 #: modules_v3/googlemap/module.php:4083
 msgid "east"
@@ -18966,12 +18966,12 @@ msgstr "bratranec/sestřenice (z 9. kolena)"
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:716
 msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-msgstr ""
+msgstr "Pokud návštěvník webu nemá v prohlížeči nastavený preferovaný jazyk, nebo určil nepodporovaný, pak se použije tento. Typicky se toto nastavení použije pro vyhledávače."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
 msgid "Missing PHP temporary folder"
-msgstr ""
+msgstr "Chybí dočasný PHP adresář"
 
 #: admin_trees_config.php:56 admin_trees_config.php:139 admin_users.php:225
 #: admin_users.php:226 includes/functions/functions_edit.php:108
@@ -20208,9 +20208,6 @@ msgstr "…"
 #~ msgid "Here you can choose text to appear on the login screen.  You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
 #~ msgstr "Zde můžete zvolit text, který se zobrazí na přihlašovací obrazovce. Musíte určit, který předdefinovaný text je nejvhodnější.<br><br>Také můžete vložit váš vlastní uvítací text. Pro získání více informací se podívejte do nápovědy pod heslem <b>Vlastní uvítací text</b>.<br><br>Předdefinované texty jsou:<ul><li><b>Přednastavený text, který říká, že si všichni uživatelé mohou zažádat o uživatelský účet:</b><div class=\"list_value_wrap\"><center><b>Vítejte na stránce tohoto rodokmenu</b></center><br>Přístup je povolen těm uživatelům, kteří mají na této stránce účet.<br><br>Pokud máte uživatelský účet, můžete se na této stránce přihlásit. Pokud účet nemáte, můžete o něj požádat kliknutím níže na příslušný odkaz.<br><br>Po ověření vám správce účet aktivuje a vy obdržíte email, že vaše žádost byla schválena.</div><br></li><li><b>Přednastavený text, který říká, že správce rozhodne o každé žádosti o zřízení účtu:</b><div class=\"list_value_wrap\"><center><b>Vítejte na stránce tohoto rodokmenu</b></center><br>Přístup je povolen pouze <u>přihlášeným</u> uživatelům.<br><br>Pokud máte uživatelský účet, můžete se na této stránce přihlásit. Pokud účet nemáte, můžete o něj požádat kliknutím níže na příslušný odkaz.<br><br>Po ověření informací vám správce účet zamítne nebo schválí. Bude vám zaslán email, že vaše žádost byla schválena.</div><br></li><li><b>Přednastavený text, který říká, že žádat o účet mohou pouze rodinní příslušníci.</b><div class=\"list_value_wrap\"><center><b>Vítejte na stránce tohoto rodokmenu</b></center><br>Přístup je povolen pouze <u>rodinným příslušníkům</u>.<br><br>Pokud máte uživatelský účet, můžete se na této stránce přihlásit. Pokud účet nemáte, můžete o něj požádat kliknutím níže na příslušný odkaz.<br><br>Po ověření informací vám správce účet zamítne nebo schválí. Bude vám zaslán email, že vaše žádost byla schválena.</div></li></ul>"
 
-#~ msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-#~ msgstr "Pokud návštěvník webu nemá v prohlížeči nastavený preferovaný jazyk, nebo určil nepodporovaný, pak se použije tento. Typicky se toto nastavení použije pro vyhledávače."
-
 #~ msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the “Approved by administrator” checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
 #~ msgstr "Pokud volba <b>Umožnit návštěvníkům požadovat registraci</b> je povolena, toto nastavení kontroluje, zda správce musí schválit registraci.<br><br>Nastavením na <b>Ano</b> se uživatelé před přihlášením nejdřív ověří, a pak musí být schváleni správcem. Pokud je nastaveno <b>Ne</b>, políčko <b>Uživatel schválen správcem</b> se automaticky zaškrtne poté, co si uživatel ověří svůj účet, takže bude možné se rovnou přihlásit bez správcova zásahu."
 
@@ -20231,9 +20228,6 @@ msgstr "…"
 
 #~ msgid "Mail configuration"
 #~ msgstr "Konfigurace mailu"
-
-#~ msgid "Missing PHP temporary folder"
-#~ msgstr "Chybí dočasný PHP adresář"
 
 #~ msgid "Move FAQ item down"
 #~ msgstr "Posunout položku FAQ níže"
@@ -20258,9 +20252,6 @@ msgstr "…"
 
 #~ msgid "Pending Changes block"
 #~ msgstr "Blok dosud neschválených změn"
-
-#~ msgid "Place the website offline, by creating the file %s…"
-#~ msgstr "Shazuji web vytvořením souboru %s…"
 
 #~ msgid "Privacy options"
 #~ msgstr "Nastavení soukromí"

@@ -16555,7 +16555,7 @@ msgstr "נטרל"
 #: admin_site_upgrade.php:413
 #, php-format
 msgid "Place the website offline, by creating the file %s…"
-msgstr ""
+msgstr "העבר את האתר למצב לא מקוון, על-ידי יצירת הקובץ %s…"
 
 #: modules_v3/googlemap/module.php:4083
 msgid "east"
@@ -18928,12 +18928,12 @@ msgstr "דודן/דודנית מדרגה 9"
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:716
 msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-msgstr ""
+msgstr "אם מבקר באתר לא ציין שפה מועדפת בתצורת הדפדפן שלו, או שהוא ציין שפה שאינן נתמכת, אז שפה זה תהיה בשימוש. בדרך כלל, הגדרה זו חלה על מנועי חיפוש."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
 msgid "Missing PHP temporary folder"
-msgstr ""
+msgstr "חסרה תיקייה זמנית של PHP"
 
 #: admin_trees_config.php:56 admin_trees_config.php:139 admin_users.php:225
 #: admin_users.php:226 includes/functions/functions_edit.php:108
@@ -20166,9 +20166,6 @@ msgstr "…"
 #~ msgid "Here you can choose text to appear on the login screen.  You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
 #~ msgstr "כאן תוכל לבחור טקסט שיופיע על מסך הכניסה. עליך לקבוע איזה טקסט המוגדר מראש הוא המתאים ביותר.<br><br>אתה יכול גם לבחור להזין טקסט ברוכים הבאים המותאם אישית עבורך. אנא עיין בטקסט העזרה המשויך לשדה <b>טקסט ברוכים הבאים מותאם אישית</b> לקבלת מידע נוסף.<br><br>הטקסטים המוגדרים מראש הם:<ul><li><b>מלל המציין שכל המשתמשים יכולים לבקש חשבון משתמש:</b><div class=\"list_value_wrap\"><center><b>ברוכים הבאים לאתר הזה של חקר שושלת היוחסין</b></center><br>גישה לאתר זה מותרת לכל המשתמשים בעלי חשבון משתמש באתר.<br><br>אם יש לך חשבון משתמש, תוכל להתחבר למערכת באמצעות הדף הזה. אם אין לך חשבון משתמש, תוכל לבקש חשבון משתמש ע״י לחיצה על הקישור המתאים למטה.<br><br>מנהל האתר יבדוק את נתוניך ויפעיל את חשבון המשתמש שלך. תקבל דואר אלקטרוני לאחר שחשבון המשתמש שלך יאושר.</div><br></li><li><b>מלל המציין שהמנהלן הוא שיחליט אם לאשר את הבקשה לחשבון משתמש:</b><div class=\"list_value_wrap\"><center><b>ברוכים הבאים לאתר הזה של חקר שושלת היוחסין</b></center><br>גישה לאתר זה מותרת רק למשתמשים <u>מורשים.</u><br><br>אם יש לך חשבון משתמש תוכל להתחבר למערכת באמצעות הדף הזה. אם אין לך חשבון משתמש, תוכל לבקש חשבון משתמש ע״י לחיצה על הקישור למטה.<br><br>מנהל האתר יבדוק את נתוניך ויאשר או ידחה את בקשתך. תקבל דואר אלקטרוני לאחר שבקשתך תאושר.</div><br></li><li><b>מלל המציין שרק בני משפחה יכולים לבקש חשבון משתמש:</b><div class=\"list_value_wrap\"><center><b>ברוכים הבאים לאתר הזה של חקר שושלת היוחסין</b></center><br>גישה לאתר זה מותרת <u>רק לבני משפחה</u>.<br><br>אם יש לך חשבון משתמש תוכל להתחבר למערכת באמצעות הדף הזה. אם אין לך חשבון משתמש, תוכל לבקש חשבון משתמש ע״י לחיצה על הקישור המתאים למטה.<br><br>מנהל האתר יבדוק את נתוניך ויאשר או ידחה את בקשתך. תקבל דואר אלקטרוני לאחר שבקשתך תאושר.</div></li></ul>"
 
-#~ msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-#~ msgstr "אם מבקר באתר לא ציין שפה מועדפת בתצורת הדפדפן שלו, או שהוא ציין שפה שאינן נתמכת, אז שפה זה תהיה בשימוש. בדרך כלל, הגדרה זו חלה על מנועי חיפוש."
-
 #~ msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the “Approved by administrator” checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
 #~ msgstr "אם <b>אפשר למשתמשים לבקש רישום באתר</b> מופעלת, הערך הזה קובע האם המנהל חייב לאשר את הרישום.<br><br>ההגדרה  <b>כן</b> תדרוש שכל המשתמשים החדשים חייבים לאמת תחילה את עצמם ולאחר מכן יאושרו על ידי מנהל לפני שהם יכולים להתחבר לאתר. הגדרה <b>לא</b>, תיבת הסימון <b>המשתמש אושר על ידי המנהלן</b> תסומן באופן אוטומטי כאשר המשתמש מאמת את החשבון שלו, ובכך מתאפשרת כניסה מיידית לאתר לאחר מכן ללא התערבות מנהל."
 
@@ -20189,9 +20186,6 @@ msgstr "…"
 
 #~ msgid "Mail configuration"
 #~ msgstr "תצורת דוא״ל"
-
-#~ msgid "Missing PHP temporary folder"
-#~ msgstr "חסרה תיקייה זמנית של PHP"
 
 #~ msgid "Move FAQ item down"
 #~ msgstr "העבר ישות שאלות ותשובות למטה"
@@ -20215,9 +20209,6 @@ msgstr "…"
 
 #~ msgid "Pending Changes block"
 #~ msgstr "בלוק שינויים ממתינים לאישור"
-
-#~ msgid "Place the website offline, by creating the file %s…"
-#~ msgstr "העבר את האתר למצב לא מקוון, על-ידי יצירת הקובץ %s…"
 
 #~ msgid "Privacy options"
 #~ msgstr "אפשרויות הפרטיות"
