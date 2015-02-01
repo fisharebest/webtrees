@@ -19070,12 +19070,12 @@ msgstr "حفيد تاسع لسلف مشترك"
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:716
 msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-msgstr ""
+msgstr "عند زيارة الموقع دون تحديد لغة مفضلة في متصفح الإنترنت للزائر، أو كانت اللغة المحددة غير مدعومة سيتم إستخدام اللغة المختارة هنا. عادة هذا الإعداد ينطبق على محركات البحث."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
 msgid "Missing PHP temporary folder"
-msgstr ""
+msgstr "مجلد PHP المؤقت مفقود"
 
 #: admin_trees_config.php:56 admin_trees_config.php:139 admin_users.php:225
 #: admin_users.php:226 includes/functions/functions_edit.php:108
@@ -20300,9 +20300,6 @@ msgstr "…"
 #~ msgid "Here you can choose between two types of displaying places names in hierarchy.  If set Yes the place has short name or actual level name, if No - full name.<br><b>Examples:<br>Full name: </b>Chicago, Illinois, USA<br><b>Short name: </b>Chicago<br><b>Full name: </b>Illinois, USA<br><b>Short name: </b>Illinois"
 #~ msgstr "هنا يتم الإختيار بين نوعي إظهار الأماكن في التسلسل الهرمي. إذا أعد (نعم) فسيتم إستخدام الإسم الأدنى، وإن (كلا) الإسم الكامل."
 
-#~ msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-#~ msgstr "عند زيارة الموقع دون تحديد لغة مفضلة في متصفح الإنترنت للزائر، أو كانت اللغة المحددة غير مدعومة سيتم إستخدام اللغة المختارة هنا. عادة هذا الإعداد ينطبق على محركات البحث."
-
 #~ msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the “Approved by administrator” checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
 #~ msgstr "عند تفعيل هذا الخيار بإختيار <b>نعم</b>، يتطلب أن يعرف المستخدم نفسه ويصادق على طلبه ثم يوافق المدير على تسجيله قبل أن يستطيع الدخول إلى الموقع. وبإختيار <b>كلا</b> ستتم الموافقة مباشرة بمجرد المصادقة على الطلب من قبل المستخدم."
 
@@ -20323,9 +20320,6 @@ msgstr "…"
 
 #~ msgid "Mail configuration"
 #~ msgstr "تهيئة البريد"
-
-#~ msgid "Missing PHP temporary folder"
-#~ msgstr "مجلد PHP المؤقت مفقود"
 
 #~ msgid "Move FAQ item down"
 #~ msgstr "تحريك نص سؤال شائع إلى الأسفل"

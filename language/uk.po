@@ -16583,7 +16583,7 @@ msgstr "відключити"
 #: admin_site_upgrade.php:413
 #, php-format
 msgid "Place the website offline, by creating the file %s…"
-msgstr ""
+msgstr "Встановіть сайт в автономний режим, шляхом створення файлу %s…"
 
 #: modules_v3/googlemap/module.php:4083
 msgid "east"
@@ -18964,7 +18964,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
 msgid "Missing PHP temporary folder"
-msgstr ""
+msgstr "Відсутній папка для тимчасових файлів PHP"
 
 #: admin_trees_config.php:56 admin_trees_config.php:139 admin_users.php:225
 #: admin_users.php:226 includes/functions/functions_edit.php:108
@@ -20198,9 +20198,6 @@ msgstr "…"
 #~ msgid "Mail configuration"
 #~ msgstr "Налаштування пошти"
 
-#~ msgid "Missing PHP temporary folder"
-#~ msgstr "Відсутній папка для тимчасових файлів PHP"
-
 #~ msgid "Move FAQ item down"
 #~ msgstr "Зрушити ЧаВО запис вниз"
 
@@ -20224,9 +20221,6 @@ msgstr "…"
 
 #~ msgid "Pending Changes block"
 #~ msgstr "Блок очікують змін"
-
-#~ msgid "Place the website offline, by creating the file %s…"
-#~ msgstr "Встановіть сайт в автономний режим, шляхом створення файлу %s…"
 
 #~ msgid "Privacy options"
 #~ msgstr "Опції конфіденційності"

@@ -18889,7 +18889,7 @@ msgstr "ვაჩვენოთ ბიძაშვილები"
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:716
 msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-msgstr ""
+msgstr "Если посетитель сайта не указал предпочтительный язык в настройках браузера, или он указал не поддерживаемый язык, то этот язык будет использоваться по умолчанию. Как правило, этот параметр применяется для поисковых систем."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
@@ -20104,9 +20104,6 @@ msgstr ""
 
 #~ msgid "From %s to %s"
 #~ msgstr "С %s до %s"
-
-#~ msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-#~ msgstr "Если посетитель сайта не указал предпочтительный язык в настройках браузера, или он указал не поддерживаемый язык, то этот язык будет использоваться по умолчанию. Как правило, этот параметр применяется для поисковых систем."
 
 #~ msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the “Approved by administrator” checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
 #~ msgstr "Если опция <b>Разрешить посетителям запрос регистрации учетной записи</b> включена, этот параметр определяет, должен ли администратор одобрить регистрацию новой учетной записи.<br/><br/>Установка этого параметра в <b>Да</b>, означает, что, прежде чем новый пользователь сможет войти в систему, от него требуется подтверждение указанного адреса эл. почты, а затем одобрения администратора.<br/><b>Нет</b> означает что установление флажка <b>Одобрен администратором</b> произойдет автоматически, как только пользователь подтвердит правильность адреса эл. почты. В этом случае новый пользователь сможет войти в систему без проверки и подтверждения администратором."

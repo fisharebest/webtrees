@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-01-31 12:10+0000\n"
-"PO-Revision-Date: 2015-02-01 16:58+1000\n"
+"PO-Revision-Date: 2015-02-01 23:07+1000\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
@@ -9434,7 +9434,7 @@ msgstr "Mano puslapis"
 
 #: library/WT/Theme/BaseTheme.php:1353
 msgid "My pages"
-msgstr ""
+msgstr "Mano puslapiai"
 
 #: library/WT/Theme/BaseTheme.php:1376 modules_v3/user_welcome/module.php:48
 msgid "My pedigree"
@@ -9448,7 +9448,7 @@ msgstr "MySQL nurodė klaidą: %s"
 
 #: admin_site_info.php:100
 msgid "MySQL variables"
-msgstr ""
+msgstr "MySQL kintamieji"
 
 #: library/WT/Stats.php:6218
 msgid "Myanmar"
@@ -12776,7 +12776,7 @@ msgstr "Sesuo"
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: admin_users.php:441 edituser.php:277
 msgid "Site members can send each other messages.  You can choose to how these messages are sent to you, or choose not receive them at all."
-msgstr ""
+msgstr "Svetainės nariai gali siųsti vieni kitiems laiškus. Jus galite pasirinkti, kaip šie pranešimai yra siunčiami jums, arba pasirinkti negauna jų iš viso."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: modules_v3/sitemap/module.php:30
@@ -16495,7 +16495,7 @@ msgstr "tęsti"
 #. I18N: Button label
 #: admin_trees_manage.php:576
 msgid "create"
-msgstr ""
+msgstr "sukurti"
 
 #. I18N: a program feature
 #: setup.php:138
@@ -16590,7 +16590,7 @@ msgstr "išjungti"
 #: admin_site_upgrade.php:413
 #, php-format
 msgid "Place the website offline, by creating the file %s…"
-msgstr ""
+msgstr "Įdedame svetainę į neveiklia būklę sukurdami %s bylą…"
 
 #: modules_v3/googlemap/module.php:4083
 msgid "east"
@@ -18966,12 +18966,12 @@ msgstr "devintos eilės pusbrolis/pusseserė"
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:716
 msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-msgstr ""
+msgstr "Jeigu svetainės lankytojas nėra pasirinkes pageidaujamos kalbos savo naršyklės konfigūracijoje arba ta kalba nėra palaikoma, tada ši kalba bus naudota. Dažniausiai ta kalba bus naudojama paieškos sistemoms."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
 msgid "Missing PHP temporary folder"
-msgstr ""
+msgstr "Trūksta PHP laikinosios aplankos"
 
 #: admin_trees_config.php:56 admin_trees_config.php:139 admin_users.php:225
 #: admin_users.php:226 includes/functions/functions_edit.php:108
@@ -20199,9 +20199,6 @@ msgstr "…"
 #~ msgid "Here you can choose between two types of displaying places names in hierarchy.  If set Yes the place has short name or actual level name, if No - full name.<br><b>Examples:<br>Full name: </b>Chicago, Illinois, USA<br><b>Short name: </b>Chicago<br><b>Full name: </b>Illinois, USA<br><b>Short name: </b>Illinois"
 #~ msgstr "Čia galite pasirinkti tarp dviejų būdų rodyti vietovių pavadinimus hierarchijoje. Jei nustatyta Taip, vieta turi trumpą pavadinimą arba faktinio lygmens pavadinimą, jei Ne - pilną pavadinimą.<br><b>Pavyzdžiai:<br>Pilnas pavadinimas:</b> Čikaga, Ilinojus, JAV<br><b>Trumpas pavadinimas:</b> Čikaga<br><b>Pilnas pavadinimas:</b> Ilinojus, JAV<br><b>Trumpas pavadinimas:</b> Ilinojus"
 
-#~ msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-#~ msgstr "Jeigu svetainės lankytojas nėra pasirinkes pageidaujamos kalbos savo naršyklės konfigūracijoje arba ta kalba nėra palaikoma, tada ši kalba bus naudota. Dažniausiai ta kalba bus naudojama paieškos sistemoms."
-
 #~ msgid "Leave this field empty to use the name of the family tree."
 #~ msgstr "Norėdami naudoti šiuo metu veikiančios šeimos medžio pavadinimą, palikite šį lauką tuščią."
 
@@ -20213,9 +20210,6 @@ msgstr "…"
 
 #~ msgid "Mail configuration"
 #~ msgstr "Pašto konfigūravimas"
-
-#~ msgid "Missing PHP temporary folder"
-#~ msgstr "Trūksta PHP laikinojo aplanko"
 
 #~ msgid "Move FAQ item down"
 #~ msgstr "Nuleiskite DUK įrašą žemyn"
@@ -20240,9 +20234,6 @@ msgstr "…"
 
 #~ msgid "Pending Changes block"
 #~ msgstr "Laukiančių peržiūros pakeitimų blokas"
-
-#~ msgid "Place the website offline, by creating the file %s…"
-#~ msgstr "Įdedame svetainę į neveiklia būklę sukurdami %s bylą…"
 
 #~ msgid "Privacy options"
 #~ msgstr "Privatumo nustatymai"
