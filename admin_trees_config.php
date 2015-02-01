@@ -700,7 +700,7 @@ $controller
 					>
 			</div>
 			<p class="small text-muted">
-				<?php echo /* I18N: help text for family tree / GEDCOM file names */ WT_I18N::translate('Avoid spaces and puncutation.  A family name might be a good choice.'); ?>
+				<?php echo /* I18N: help text for family tree / GEDCOM file names */ WT_I18N::translate('Avoid spaces and punctuation.  A family name might be a good choice.'); ?>
 			</p>
 		</div>
 	</div>
