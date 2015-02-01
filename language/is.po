@@ -18924,12 +18924,12 @@ msgstr "níundu frændsystkini"
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:716
 msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-msgstr ""
+msgstr "Ef gestur vefsíðunnar hefur ekki tilgreint æskilegt tungumál í vafra uppsetningunni eða þeir hafa tilgreint óstudd tungumál, þá verður þetta tungumál notað. Venjulega, á þessi stilling við um leitarvélar."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
 msgid "Missing PHP temporary folder"
-msgstr ""
+msgstr "Vantar PHP tímabundið skráarsafn"
 
 #: admin_trees_config.php:56 admin_trees_config.php:139 admin_users.php:225
 #: admin_users.php:226 includes/functions/functions_edit.php:108
@@ -20144,9 +20144,6 @@ msgstr "…"
 #~ msgid "Here you can choose between two types of displaying places names in hierarchy.  If set Yes the place has short name or actual level name, if No - full name.<br><b>Examples:<br>Full name: </b>Chicago, Illinois, USA<br><b>Short name: </b>Chicago<br><b>Full name: </b>Illinois, USA<br><b>Short name: </b>Illinois"
 #~ msgstr "Hér getur þú valið á milli tveggja gerða á birtingu staðarheita í stigveldinu. Ef Já er valið þá hefur staðurinn stutt heiti eða raunverulegt stigheiti, ef Nei - Fullt heiti.<br><b>Dæmi:<br>Fullt heiti:</b>Chicago, Illinois, USA<br><b>Stutt heiti:</b>Chicago<br><b>Fullt heiti:</b>Illinois, USA<br><b>Stutt heiti:</b>Illinois"
 
-#~ msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-#~ msgstr "Ef gestur vefsíðunnar hefur ekki tilgreint æskilegt tungumál í vafra uppsetningunni eða þeir hafa tilgreint óstudd tungumál, þá verður þetta tungumál notað. Venjulega, á þessi stilling við um leitarvélar."
-
 #~ msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the “Approved by administrator” checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
 #~ msgstr "Ef þessi valkostur <b>Leyfa gestum að óska eftir skráningu reiknings</b> er virkur þá stjórnar þessi stilling því hvort að kerfisstjóri þurfi að samþykkja skráninguna.<br><br>Með því að stilla þetta á <b>Já</b> þá þurfa allir notendur fyrst að sannreyna sjálfa sig og síðan að fá samþykki kerfisstjóra áður þeir geta skráð sig inn. Með þessa stillingu á <b>Nei</b>, þá mun <b>Notandi samþykktur af kerfisstjóra</b> merkireiturinn sjálfvirkt merkjast þegar notendur staðfesta reikninga sína, sem heimilar innskráningu strax í kjölfarið án aðkomu kerfisstjóra."
 
@@ -20164,9 +20161,6 @@ msgstr "…"
 
 #~ msgid "Mail configuration"
 #~ msgstr "Tölvupóst uppsetning"
-
-#~ msgid "Missing PHP temporary folder"
-#~ msgstr "Vantar PHP tímabundið skráarsafn"
 
 #~ msgid "Move FAQ item down"
 #~ msgstr "Færa S&S atriði niður"

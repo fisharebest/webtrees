@@ -16555,7 +16555,7 @@ msgstr "uitschakelen"
 #: admin_site_upgrade.php:413
 #, php-format
 msgid "Place the website offline, by creating the file %s…"
-msgstr ""
+msgstr "Plaats de website offline door het bestand %s aan te maken…"
 
 #: modules_v3/googlemap/module.php:4083
 msgid "east"
@@ -18928,12 +18928,12 @@ msgstr "achterneef/achternicht 20e graad"
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:716
 msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-msgstr ""
+msgstr "Wanneer een bezoeker van de site geen voorkeurtaal in zijn/haar browser configuratie heeft gespecificeerd, of er is een niet-ondersteunde taal ingesteld, dan zal deze taal gebruikt worden. Deze instelling geldt voornamelijk voor zoekmachines"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
 msgid "Missing PHP temporary folder"
-msgstr ""
+msgstr "Ontbrekende tijdelijke PHP map"
 
 #: admin_trees_config.php:56 admin_trees_config.php:139 admin_users.php:225
 #: admin_users.php:226 includes/functions/functions_edit.php:108
@@ -20166,9 +20166,6 @@ msgstr "…"
 #~ msgid "Here you can choose text to appear on the login screen.  You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
 #~ msgstr "Hier kunt u de tekst kiezen voor het aanmeldscherm. U bepaalt zelf welke tekst het meest geschikt is.<br><br>U kunt er ook voor kiezen zelf een welkomstekst te maken. Raadpleeg daarvoor de helptekst bij het <b>Eigen welkomstekst</b>-veld voor meer informatie.<br><br>De vaste teksten zijn:<ul><li><b>Vaste tekst waarin staat dat alle gebruikers een gebruikersaccount kunnen aanvragen:</b><div class=\"list_value_wrap\"><center><b>Welkom bij deze genealogie website</b></center><br>Elke bezoeker met een gebruikersaccount heeft toegang tot deze site.<br><br>Heeft u een gebruikersaccount, dan kunt u zich op deze pagina aanmelden. Heeft u geen gebruikersaccount, dan kunt u er een aanvragen door op de juiste link hieronder te klikken.<br><br>Na controle van uw aanvraag zal de sitebeheerder uw account activeren. U ontvangt een e-mail als uw aanvraag is goedgekeurd</div><br></li><li><b>Vaste tekst waarin staat dat de beheerder elke aanvraag voor een gebruikersaccount zal beoordelen:</b><div class=\"list_value_wrap\"><center><b>Welkom bij deze genealogie website</b></center><br>Toegang tot deze site is voorbehouden aan geautoriseerde gebruikers.<br><br>Heeft u een gebruikersaccount, dan kunt u zich op deze pagina aanmelden. Heeft u geen gebruikersaccount, dan kunt u er een aanvragen door op de de juiste link hieronder te klikken.<br><br>Na controle van uw informatie zal de beheerder uw aanvraag voor een account  goedkeuren of afkeuren. U ontvangt een e-mail als uw aanvraag is goedgekeurd</div><br></li><li><b>Vaste tekst waarin staat dat alleen familieleden een gebruikersaccount kunnen aanvragen:</b><div class=\"list_value_wrap\"><center><b>Welkom bij deze genealogie website</b></center><br>Toegang tot deze site is voorbehouden aan <u>uitsluitend familieleden</u>.<br><br>Heeft u een gebruikersaccount, dan kunt u zich op deze pagina aanmelden. Heeft u geen gebruikersaccount, dan kunt u er een aanvragen door op de juiste link hieronder te klikken.<br><br>Na controle van uw informatie zal de beheerder uw aanvraag voor een account goedkeuren of afkeuren. U ontvangt een e-mail als uw aanvraag is goedgekeurd</div></li></ul>"
 
-#~ msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-#~ msgstr "Wanneer een bezoeker van de site geen voorkeurtaal in zijn/haar browser configuratie heeft gespecificeerd, of er is een niet-ondersteunde taal ingesteld, dan zal deze taal gebruikt worden. Deze instelling geldt voornamelijk voor zoekmachines"
-
 #~ msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the “Approved by administrator” checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
 #~ msgstr "Als de optie <b>Gebruikers toestaan om gebruikersnamen te registreren</b> is aangezet, bepaalt deze instelling of de beheerder de registratie moet goedkeuren.<br><br>Door dit op <b>Ja</b> te zetten moeten alle nieuwe gebruikers zichzelf eerst verifiëren en daarna goedgekeurd worden door de beheerder voordat ze zich aan kunnen melden. Met de instelling <b>Nee</b> wordt het vakje ‘Goedgekeurd door beheerder’ automatisch aangezet als gebruikers hun account verifiëren. Ze kunnen zich dan meteen aanmelden, zonder tussenkomst van de beheerder."
 
@@ -20189,9 +20186,6 @@ msgstr "…"
 
 #~ msgid "Mail configuration"
 #~ msgstr "Mail configuratie"
-
-#~ msgid "Missing PHP temporary folder"
-#~ msgstr "Ontbrekende tijdelijke PHP map"
 
 #~ msgid "Move FAQ item down"
 #~ msgstr "Verplaats FAQ naar beneden"
@@ -20215,9 +20209,6 @@ msgstr "…"
 
 #~ msgid "Pending Changes block"
 #~ msgstr "Blok met uitstaande wijzigingen"
-
-#~ msgid "Place the website offline, by creating the file %s…"
-#~ msgstr "Plaats de website offline door het bestand %s aan te maken…"
 
 #~ msgid "Privacy options"
 #~ msgstr "Privacy opties"

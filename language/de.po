@@ -16552,7 +16552,7 @@ msgstr "deaktivieren"
 #: admin_site_upgrade.php:413
 #, php-format
 msgid "Place the website offline, by creating the file %s…"
-msgstr ""
+msgstr "Nehmen Sie die Seite offline, indem Sie die Datei %s erzeugen."
 
 #: modules_v3/googlemap/module.php:4083
 msgid "east"
@@ -18925,12 +18925,12 @@ msgstr "Cousin/e 9. Grades"
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:716
 msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-msgstr ""
+msgstr "Diese Sprache wird genutzt, wenn im Browser des Besuchers keine oder eine nicht unterstützte Standardsprache eingetragen ist. Typischerweise dient diese Einstellung für Suchmaschinen."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
 msgid "Missing PHP temporary folder"
-msgstr ""
+msgstr "Das von PHP benötigte <i>tmp</i> Zwischenverzeichnis existiert nicht"
 
 #: admin_trees_config.php:56 admin_trees_config.php:139 admin_users.php:225
 #: admin_users.php:226 includes/functions/functions_edit.php:108
@@ -20163,9 +20163,6 @@ msgstr "…"
 #~ msgid "Here you can choose text to appear on the login screen.  You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
 #~ msgstr "Hier können Sie einen Text wählen, der auf dem Login-Bildschirm angezeigt wird. Sie müssen festlegen, welcher vordefinierte Text am besten passt.<br><br>Sie können aber auch einen eigenen, individuellen Begrüßungstext eingeben. Bitte beachten Sie für weitere Informationen die Hilfetexte, die mit dem Feld <b>individualisierter Begrüßungstext</b> verbunden sind.<br><br>Die vordefinierten Standardtexte sind:<ul><li><b>Vordefinierter Text, der erklärt, dass alle Benutzer einen Zugang anfragen können:</b><div class=\"list_value_wrap\"><center><b>Willkommen auf dieser Genealogie Webseite</b></center><br>Den Zugriff auf diese Seite erhält jeder Benutzer, der ein Benutzerkonto hat, das vom Verwalter bestätigt wurde.<br><br>Wenn Sie bereits ein Benutzerkonto haben, können Sie sich auf dieser Seite anmelden. Wenn Sie noch kein Benutzerkonto besitzen, können Sie sich registrieren, indem Sie auf den entsprechenden Link klicken.<br><br>Sobald Ihre Angaben überprüft sind, wird der Verwalter Ihr Benutzerkonto freigeben. Sie werden dann eine Bestätigungsmail erhalten.</div><br></li><li><b>Vordefinierter Text, der erklärt, dass der Verwalter über die Benutzeranfrage entscheidet:</b><div class=\"list_value_wrap\"><center><b>Willkommen auf dieser Genealogie Webseite</b></center><br>Der Zugriff auf diese Seite ist nur <u>autorisierten</u> Benutzern erlaubt.<br><br>Wenn Sie bereits ein Benutzerkonto haben, können Sie sich auf dieser Seite anmelden. Wenn Sie noch kein Benutzerkonto besitzen, können Sie sich registrieren, indem Sie auf den entsprechenden Link klicken.<br><br>Sobald Ihre Angaben überprüft sind, wird der Verwalter Ihrer Anfrage zustimmen (oder ihn ablehnen). Sie werden eine Mail mit dem Anfrageergebnis erhalten.</div><br></li><li><b>Vordefinierter Text, der erklärt, dass nur Familienmitglieder einen Zugang anfragen können:</b><div class = \"list_value_wrap\"><center><b>Willkommen auf dieser Genealogie Webseite</b></center><br>Den Zugriff auf diese Seite erhalten <u>nur Familienmitglieder</u>.<br><br>Wenn Sie bereits ein Benutzerkonto haben, können Sie sich auf dieser Seite anmelden. Wenn Sie noch kein Benutzerkonto besitzen, können Sie sich registrieren, indem Sie auf den entsprechenden Link klicken.<br><br>Sobald Ihre Angaben überprüft sind, wird der Verwalter Ihrer Anfrage zustimmen (oder ihn ablehnen).<br>Sie werden eine Mail mit dem Anfrageergebnis erhalten.</div></li></ul>"
 
-#~ msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-#~ msgstr "Diese Sprache wird genutzt, wenn im Browser des Besuchers keine oder eine nicht unterstützte Standardsprache eingetragen ist. Typischerweise dient diese Einstellung für Suchmaschinen."
-
 #~ msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the “Approved by administrator” checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
 #~ msgstr "Wenn die Option <b>Besuchern erlauben, einen Zugang anzufordern</b> auf <b>Ja</b> gestellt ist, bestimmt diese weitere Option, ob der Verwalter jede Benutzeranfrage genehmigen muss oder nicht.<br><br>Die Wahl <b>Ja</b> bestimmt, dass neue Benutzer ihre Anfrage erst bestätigen müssen. Nach dieser Bestätigung muss die Anfrage noch vom Verwalter genehmigt werden. Erst nach der dieser Genehmigung kann sich der neue Benutzer anmelden.<br><br>Die Wahl <b>Nein</b> bestimmt, dass das Kästchen <b>Vom Administrator zugelassen</b> automatisch angekreuzt ist und dass sich der neue Benutzer sofort nach der Bestätigung anmelden kann. Der Verwalter genehmigt das neue Benutzerkonto also automatisch."
 
@@ -20186,9 +20183,6 @@ msgstr "…"
 
 #~ msgid "Mail configuration"
 #~ msgstr "Mail-Konfiguration"
-
-#~ msgid "Missing PHP temporary folder"
-#~ msgstr "Das von PHP benötigte <i>tmp</i> Zwischenverzeichnis existiert nicht"
 
 #~ msgid "Move FAQ item down"
 #~ msgstr "FAQ-Eintrag nach unten verschieben"
@@ -20212,9 +20206,6 @@ msgstr "…"
 
 #~ msgid "Pending Changes block"
 #~ msgstr "Box für ausstehende Änderungen"
-
-#~ msgid "Place the website offline, by creating the file %s…"
-#~ msgstr "Nehmen Sie die Seite offline, indem Sie die Datei %s erzeugen."
 
 #~ msgid "Privacy options"
 #~ msgstr "Datenschutzeinstellungen"

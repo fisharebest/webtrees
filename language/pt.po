@@ -18929,12 +18929,12 @@ msgstr "primo de nono grau"
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:716
 msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-msgstr ""
+msgstr "Se o visitante do site não especificar um idioma preferido na configuração do seu navegador, ou ele estiver em um idioma não suportado, então este idioma será utilizado. Tipicamente, esta definição se aplica para motores de busca."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
 msgid "Missing PHP temporary folder"
-msgstr ""
+msgstr "Diretório temporário PHP faltante"
 
 #: admin_trees_config.php:56 admin_trees_config.php:139 admin_users.php:225
 #: admin_users.php:226 includes/functions/functions_edit.php:108
@@ -20134,17 +20134,11 @@ msgstr "…"
 #~ msgid "Here you can choose between two types of displaying places names in hierarchy.  If set Yes the place has short name or actual level name, if No - full name.<br><b>Examples:<br>Full name: </b>Chicago, Illinois, USA<br><b>Short name: </b>Chicago<br><b>Full name: </b>Illinois, USA<br><b>Short name: </b>Illinois"
 #~ msgstr "Você pode escolher entre dois tipos de apresentação dos nomes de locais na hierarquia. Se definir Sim o local tem nome curto ou nome de nível atual, se Não - nome completo.<br><b>Exemplo:<br>Nome completo:</b> São Paulo, São Paulo, Brasil<br><b>Nome curto:</b> São Paulo<br><b>Nome completo:</b> São Paulo, Brasil<br><b>Nome curto:</b> São Paulo"
 
-#~ msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-#~ msgstr "Se o visitante do site não especificar um idioma preferido na configuração do seu navegador, ou ele estiver em um idioma não suportado, então este idioma será utilizado. Tipicamente, esta definição se aplica para motores de busca."
-
 #~ msgid "Leave this field empty to use the name of the family tree."
 #~ msgstr "Deixe este campo vazio para usar o título do banco de dados atualmente ativo"
 
 #~ msgid "Logs"
 #~ msgstr "Históricos"
-
-#~ msgid "Missing PHP temporary folder"
-#~ msgstr "Diretório temporário PHP faltante"
 
 #~ msgid "Move FAQ item down"
 #~ msgstr "Mover ítem PMF para baixo"

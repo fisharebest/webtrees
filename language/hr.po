@@ -16588,7 +16588,7 @@ msgstr "onemogući"
 #: admin_site_upgrade.php:413
 #, php-format
 msgid "Place the website offline, by creating the file %s…"
-msgstr ""
+msgstr "Postavi web stranice offline, kreiranjem datoteke %s…"
 
 #: modules_v3/googlemap/module.php:4083
 msgid "east"
@@ -18964,12 +18964,12 @@ msgstr "Rod u devetom koljenu"
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:716
 msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-msgstr ""
+msgstr "Ako posjetitelj nema specificiran jezik u konfiguraciji svog preglednika, ili ima specificiran nepodržani jezik, ovaj jezik će biti korišten. Obično se ova postavka odnosi na pretraživače (robote)"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
 msgid "Missing PHP temporary folder"
-msgstr ""
+msgstr "Nedostaje PHP privremena mapa."
 
 #: admin_trees_config.php:56 admin_trees_config.php:139 admin_users.php:225
 #: admin_users.php:226 includes/functions/functions_edit.php:108
@@ -20203,9 +20203,6 @@ msgstr "…"
 #~ msgid "Here you can choose text to appear on the login screen.  You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
 #~ msgstr "Ovdje možete odabrati tekst koji će se pojaviti na ekranu za prijavu. Morate odrediti koji predefiniran tekst je najprikladniji.<br><br>Također možete napisati svoj tekst dobrodošlice. Pogledajte tekst pomoći povezane sa poljem <b>Prilagođeni tekst dobrodošlice</b> za više informacija.<br><br>Predefinirani tekstovi su:<li><b>Predefinirani tekst koji kaže da svi korisnici mogu zatražiti korisnički račun:</b><div class=\\\"list_value_wrap\\\"><center><b><center><b>Dobrodošli na genealošku web stranicu</b></center><br>Pristup stranici je dopušten svakome tko ima korisnički račun.<br><br>Ako imate korisnički račun možete se prijaviti na ovoj stranici. Ako nemate korisnički račun, možete se prijaviti za dobivanje jednog na prikladnom linku ispod<br><br>Nakon pregleda vaše prijave, administrator će aktivirati vaš račun. Primiti će te potvrdu aktivacije računa na vašu e-poštu.</div><br></li><li><b>Predefinirani tekst koji kaže da administrator odlučuje o svakom zahtjevu za korisnički račun:</b><div class=\\\"list_value_wrap\\\"><center><b><center><b>Dobrodošli na genealošku web stranicu</b></center><br>Pristup ovomj stranici je dozvoljen <u>registriranim</u> korisnicima.<br><br>Ako imate korisnički račun možete se prijaviti na ovoj stranici. Ako nemate račun možete ga zatražiti pomoću linka ispod.<br><br>Nakon provjere vaše prijave administrator će odobriti ili odbiti vašu prijavu. Primiti ćete obavijest e-poštom nakon pregleda prijave.</div><br></li><li><b>Predefinirani tekst koji kaže da samo članovi obitelji mogu zatražiti korisnički račun:</b><div class=\\\"list_value_wrap\\\"><center><b><center><b>Dobrodošli na genealošku web stranicu</b></center><br>Pristup stranici je dopušten <u>samo članovima obitelji</u>.<br><br>Ako imate korisnički račun možete se prijaviti na ovoj stranici. Ako nemate račun možete ga zatražiti pomoću linka ispod<br><br>Nakon provjere vaše prijave administrator će odobriti ili odbiti vašu prijavu. Primiti ćete obavijest e-poštom nakon pregleda prijave.</div></li></ul>"
 
-#~ msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-#~ msgstr "Ako posjetitelj nema specificiran jezik u konfiguraciji svog preglednika, ili ima specificiran nepodržani jezik, ovaj jezik će biti korišten. Obično se ova postavka odnosi na pretraživače (robote)"
-
 #~ msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the “Approved by administrator” checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
 #~ msgstr "Ako je opcija <b>Dopusti posjetitelju da pošalje zahtjev za registraciju računa</b> uključena, ova postavka kontrolira da li administrator mora odobriti registraciju.<br><br>Postavljanjem na <b>Da</b> zahtijevati će od svih novih korisnika da prvo potvrde sami sebe i da budu odobreni od administratora prije nego će se moći prijaviti. Sa postavkom <b>Ne</b>, „Odobreno od Administratora” će biti uključeno automatski kada korisnik potvrdi svoj račun, omogućujući mu da se odmah prijavi bez intervencije administratora."
 
@@ -20226,9 +20223,6 @@ msgstr "…"
 
 #~ msgid "Mail configuration"
 #~ msgstr "Podešavanje e-pošte"
-
-#~ msgid "Missing PHP temporary folder"
-#~ msgstr "Nedostaje PHP privremena mapa."
 
 #~ msgid "Move FAQ item down"
 #~ msgstr "Pomakni ČPP stavku dolje"
@@ -20253,9 +20247,6 @@ msgstr "…"
 
 #~ msgid "Pending Changes block"
 #~ msgstr "Blok promjena na čekanju"
-
-#~ msgid "Place the website offline, by creating the file %s…"
-#~ msgstr "Postavi web stranice offline, kreiranjem datoteke %s…"
 
 #~ msgid "Privacy options"
 #~ msgstr "Opcije privatnosti"

@@ -19004,7 +19004,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
 msgid "Missing PHP temporary folder"
-msgstr ""
+msgstr "Manjka začasni imenik za PHP"
 
 #: admin_trees_config.php:56 admin_trees_config.php:139 admin_users.php:225
 #: admin_users.php:226 includes/functions/functions_edit.php:108
@@ -20178,9 +20178,6 @@ msgstr ""
 
 #~ msgid "Leave this field empty to use the name of the family tree."
 #~ msgstr "Pusti to polje prazno za uporabo naslova trenutno aktivne baze podatkov."
-
-#~ msgid "Missing PHP temporary folder"
-#~ msgstr "Manjka začasni imenik za PHP"
 
 #~ msgid "Move FAQ item down"
 #~ msgstr "Premakni delček FAQ dol"

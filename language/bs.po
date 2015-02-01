@@ -18964,7 +18964,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
 msgid "Missing PHP temporary folder"
-msgstr ""
+msgstr "Nedostaje PHP privremeni direktorij"
 
 #: admin_trees_config.php:56 admin_trees_config.php:139 admin_users.php:225
 #: admin_users.php:226 includes/functions/functions_edit.php:108
@@ -20140,9 +20140,6 @@ msgstr "…"
 
 #~ msgid "Logs"
 #~ msgstr "Logovi"
-
-#~ msgid "Missing PHP temporary folder"
-#~ msgstr "Nedostaje PHP privremeni direktorij"
 
 #~ msgid "Move FAQ item down"
 #~ msgstr "Pomjeri stavku najčešćih pitanja i odgovora dolje"

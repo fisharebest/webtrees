@@ -16555,7 +16555,7 @@ msgstr "inaktiver"
 #: admin_site_upgrade.php:413
 #, php-format
 msgid "Place the website offline, by creating the file %s…"
-msgstr ""
+msgstr "Gjer nettstaden offline, ved å opprette fila %s…"
 
 #: modules_v3/googlemap/module.php:4083
 msgid "east"
@@ -18928,12 +18928,12 @@ msgstr "timenning"
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:716
 msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-msgstr ""
+msgstr "Om ein gjest ikkje har angjeve eit foretrekt språk i sin nettlesar, eller han har angjeve eit språk som ikke vert støtta av nettlesaren, vil dette språket verte nytta. Denne innstillinga retter seg typisk mot søkjemotorar."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
 msgid "Missing PHP temporary folder"
-msgstr ""
+msgstr "Manglande PHP temp mappe"
 
 #: admin_trees_config.php:56 admin_trees_config.php:139 admin_users.php:225
 #: admin_users.php:226 includes/functions/functions_edit.php:108
@@ -20166,9 +20166,6 @@ msgstr "…"
 #~ msgid "Here you can choose text to appear on the login screen.  You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
 #~ msgstr "Her vel du kva tekst som skal synast på innloggingssida. Du kan velje kva standardtekst som passar best for din nettstad. Du kan òg velje å skrive di eiga velkomsttekst. Sjå hjelpeteksta under <b>Eigendefinert velkomsttekst</b> for nærare informasjon.<br><br>Standardtekstene er:<ul><li><b>Standardtekst som seier at alle brukarar kan be om ein brukarkonto:</b><div class=\"list_value_wrap\"><center><b>Velkomen til desse slektssidene!</b></center><br>Nettstaden er open for alle besøkjande som har ein brukerkonto.<br><br>Har du en brukarkonto, kan du logge deg inn nedanfor. Om du ikkje har ein brukarkonto enno, kan du søkje om å få ein ved å klikke på lenka nedanfor.<br><br>Etter å ha kontrollert informasjonen i søknaden, vil administrator av nettstaden aktivere kontoen din. Du vil motta ein e-post når den er godkjend.</div><br></li><li><b>Standardtekst som seier at administrator avgjer søknader om brukarkonto:</b><div class=\"list_value_wrap\"><center><b>Velkomen til desse slektssidene!</b></center><br>Tilgang til nettstaden er avgrensa til <u>autoriserte</u> brukarar.<br><br>Har du ein brukarkonto, kan du logge deg inn nedanfor. Om du ikkje har ein brukarkonto enno, kan du søkje om å få ein ved å klikke på lenka under.<br><br>Etter å ha kontrollert informasjonen i søknaden, vil administrator av nettstaden anten godkjenne eller avslå søknaden din. Du vil motta ein e-post når søknaden er handsama.</div><br></li><li><b>Standardtekst som seier at kun familiemedlemer kan søkje om brukarkonto:</b><div class=\"list_value_wrap\"><center><b>Velkomen til desse slektssidene!</b></center><br>Tilgang til nettstaden er avgrensa til <u>familiemedlemer</u>.<br><br>Har du ein brukarkonto, kan du logge deg inn nedanfor. Om du ikkje har ein brukarkonto enno, kan du søkje om å få ein ved å klikke på lenka nedanfor.<br><br>Etter å ha kontrollert informasjonen i søknaden, vil administrator av nettstaden anten godkjenne eller avslå søknaden din. Du vil motta ein e-post når søknaden er handsama.</div></li></ul>"
 
-#~ msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-#~ msgstr "Om ein gjest ikkje har angjeve eit foretrekt språk i sin nettlesar, eller han har angjeve eit språk som ikke vert støtta av nettlesaren, vil dette språket verte nytta. Denne innstillinga retter seg typisk mot søkjemotorar."
-
 #~ msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the “Approved by administrator” checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
 #~ msgstr "Dersom valet <b>Gi besøkjande høve til å be om ein brukarkonto</b> er aktivert, vil denne innstillinga avgjere om administrator må godkjenne registreringar.<br><br>Vel du <b>Ja</b>, vil alle nye brukarar først måtte bekrefte registreringa og deretter verte godkjende av ein administrator før dei kan logge seg inn. Vel du <b>Nei</b>, vil avmerkingsboksa <b>Godkjend brukar<br>[av Admin]</b> bli aktivert automatisk når brukarar bekreftar kontoen sin. Brukarane kan deretter logge seg inn direkte utan at administrator treng å godkjenne kontoen."
 
@@ -20189,9 +20186,6 @@ msgstr "…"
 
 #~ msgid "Mail configuration"
 #~ msgstr "Innstillingar for Mail"
-
-#~ msgid "Missing PHP temporary folder"
-#~ msgstr "Manglande PHP temp mappe"
 
 #~ msgid "Move FAQ item down"
 #~ msgstr "Flytt FAQ-element nedover"
@@ -20215,9 +20209,6 @@ msgstr "…"
 
 #~ msgid "Pending Changes block"
 #~ msgstr "Ventande endringar"
-
-#~ msgid "Place the website offline, by creating the file %s…"
-#~ msgstr "Gjer nettstaden offline, ved å opprette fila %s…"
 
 #~ msgid "Privacy options"
 #~ msgstr "Personvernsinnstillingar"

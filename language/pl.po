@@ -16590,7 +16590,7 @@ msgstr "Wyłącz"
 #: admin_site_upgrade.php:413
 #, php-format
 msgid "Place the website offline, by creating the file %s…"
-msgstr ""
+msgstr "Przestaw stronę w tryb nieaktywny tworząc plik %s…"
 
 #: modules_v3/googlemap/module.php:4083
 msgid "east"
@@ -18966,12 +18966,12 @@ msgstr "kuzyn(ka) dziewiątego stopnia"
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:716
 msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-msgstr ""
+msgstr "Jeśli odwiedzający stronę nie podał preferowanego języka w konfiguracji przeglądarki lub podał język nieobsługiwany, to ten język będzie używany. Zazwyczaj to ustawienie dotyczy wyszukiwarek."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
 msgid "Missing PHP temporary folder"
-msgstr ""
+msgstr "Brak tymczasowego katalogu PHP"
 
 #: admin_trees_config.php:56 admin_trees_config.php:139 admin_users.php:225
 #: admin_users.php:226 includes/functions/functions_edit.php:108
@@ -20205,9 +20205,6 @@ msgstr "…"
 #~ msgid "Here you can choose text to appear on the login screen.  You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
 #~ msgstr "Tutaj można wybrać treść komunikatu, który pojawi się na ekranie logowania. Należy określić, który ze zdefiniowanych komunikatów będzie najlepszy.<br><br>Można także wprowadzić własną treść powitania. Więcej informacji w pomocy do pola <b>Własna treść powitania</b>.<br><br>Zdefiniowane treści powitania:<ul><li><b>Zdefiniowana treść mówiąca, że każdy może otrzymać konto użytkownika:</b><div class=\"list_value_wrap\"><center><b>Witaj na naszej stronie genealogicznej</b></center><br><br>Dostęp do tej strony mają wszystkie osoby posiadające konto użytkownika.<br>Jeżeli już masz swoje konto, zaloguj się.<br><br>Jeśli nie posiadasz jeszcze konta, załóż je klikając na odpowiedni odnośnik poniżej. Po weryfikacji danych administrator aktywuje twoje konto. Otrzymasz email z powiadomieniem o aktywacji.</div><br></li><li><b>Zdefiniowana treść mówiąca, że administrator decyduje o otwarciu konta użytkownika:</b><div class=\"list_value_wrap\"><center><b>Witaj na naszej stronie genealogicznej</b></center><br><br>Dostęp do tej strony mają tylko <b>autoryzowani</b> użytkownicy.<br>Jeżeli masz już swoje konto, zaloguj się.<br><br>Jeśli nie posiadasz jeszcze konta, załóż je klikając na odpowiedni odnośnik poniżej.<br>Po weryfikacji danych administrator przyjmie lub odrzuci twoje zgłoszenie.<br>Otrzymasz email z powiadomieniem o akceptacji.</div><br></li><li><b>Zdefiniowana treść mówiąca, że tylko członkowie rodziny mogą otrzymać konto użytkownika:</b><div class=\"list_value_wrap\"><center><b>Witaj na naszej stronie genealogicznej</b></center><br>Dostęp do tej strony mają jedynie <b>członkowie rodziny</b>. Jeżeli już masz swoje konto, zaloguj się.<br><br>Jeśli nie posiadasz jeszcze konta, załóż je klikając na odpowiedni odnośnik poniżej.<br>Po weryfikacji danych administrator przyjmie lub odrzuci twoje zgłoszenie.<br>Otrzymasz email z powiadomieniem o akceptacji.</div></li></ul>"
 
-#~ msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-#~ msgstr "Jeśli odwiedzający stronę nie podał preferowanego języka w konfiguracji przeglądarki lub podał język nieobsługiwany, to ten język będzie używany. Zazwyczaj to ustawienie dotyczy wyszukiwarek."
-
 #~ msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the “Approved by administrator” checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
 #~ msgstr "Jeśli włączona jest opcja <b>Zezwól gościom na rejestrację</b>, ta opcja określa, czy administrator musi zatwierdzać rejestrację.<br><br>Ustawienie tej opcji na <b>Tak</b> wymaga potwierdzenia swojego zgłoszenia przez nowych użytkowników, a następnie zatwierdzenia przez administratora zanim będą mogli się zalogować. Ustawienie tej opcji na <b>Nie</b> spowoduje, że pole wyboru <b>Zatwierdzony przez administratora</b> zostanie automatycznie zaznaczone kiedy użytkownicy będą potwierdzać swoje zgłoszenie, dzięki czemu będą mogli się od razu zalogować, bez interwencji administratora."
 
@@ -20228,9 +20225,6 @@ msgstr "…"
 
 #~ msgid "Mail configuration"
 #~ msgstr "Konfiguracja poczty"
-
-#~ msgid "Missing PHP temporary folder"
-#~ msgstr "Brak tymczasowego katalogu PHP"
 
 #~ msgid "Move FAQ item down"
 #~ msgstr "Przesuń element FAQ w dół"
@@ -20255,9 +20249,6 @@ msgstr "…"
 
 #~ msgid "Pending Changes block"
 #~ msgstr "Blok oczekujących zmian"
-
-#~ msgid "Place the website offline, by creating the file %s…"
-#~ msgstr "Przestaw stronę w tryb nieaktywny tworząc plik %s…"
 
 #~ msgid "Privacy options"
 #~ msgstr "Opcje prywatności"

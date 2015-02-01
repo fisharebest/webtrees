@@ -18929,7 +18929,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
 msgid "Missing PHP temporary folder"
-msgstr ""
+msgstr "פעלנדיק PHP צייַטווייַליק טעקע"
 
 #: admin_trees_config.php:56 admin_trees_config.php:139 admin_users.php:225
 #: admin_users.php:226 includes/functions/functions_edit.php:108
@@ -20113,9 +20113,6 @@ msgstr "…"
 
 #~ msgid "Mail configuration"
 #~ msgstr "פּאָסט קאַנפיגיעריישאַן"
-
-#~ msgid "Missing PHP temporary folder"
-#~ msgstr "פעלנדיק PHP צייַטווייַליק טעקע"
 
 #~ msgid "Names of private individuals"
 #~ msgstr "נעמען פון פריוואטע מענטשן"

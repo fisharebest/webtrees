@@ -16551,7 +16551,7 @@ msgstr "poista käytöstä"
 #: admin_site_upgrade.php:413
 #, php-format
 msgid "Place the website offline, by creating the file %s…"
-msgstr ""
+msgstr "Aseta sivusto offline-tilaan luomalla tiedosto %s…"
 
 #: modules_v3/googlemap/module.php:4083
 msgid "east"
@@ -18924,12 +18924,12 @@ msgstr "9. serkku"
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:716
 msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-msgstr ""
+msgstr "Jos sivuston vierailija ei ole selaimessaan valinnut oletuskieltään tai on valinnut kielen jota ei tueta, niin tätä kieltä käytetään.  Yleensä tämä asetus koskee hakukoneita."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
 msgid "Missing PHP temporary folder"
-msgstr ""
+msgstr "PHPn tilapäistiedostojen kansio puuttuu"
 
 #: admin_trees_config.php:56 admin_trees_config.php:139 admin_users.php:225
 #: admin_users.php:226 includes/functions/functions_edit.php:108
@@ -20162,9 +20162,6 @@ msgstr "…"
 #~ msgid "Here you can choose text to appear on the login screen.  You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
 #~ msgstr "Tässä valitset sisään kirjautumissivun tekstin. Sinun pitää valita valmiista teksteistä sopivin.<br><br>Voit myös valita ja kirjoittaa oman tervehdystekstisi. <b>Mukautetun tervehdystekstin</b> avusteesta saat lisäohjeita.<br><br>Valmiit tekstit ovat:<ul><li><b>Teksti joka kertoo, että kaikki voivat pyytää itselleen tunnuksen:</b><div class=\"list_value_wrap\"><center><b>Tervetuloa tähän sukututkimuksen verkkopalveluun</b></center><br>Jokaisella käyttäjällä, jolla on käyttäjätili, on pääsy tänne.<br><br>Jos sinulla on käyttäjätili, voit kirjautua tällä sivulla. Jos sinulla ei ole käyttäjätiliä, voit pyytää tilin klikkaamalla alla olevaa linkkiä.<br><br>Todennettuaan pyyntösi, ylläpitäjä aktivoi käyttäjätilisi. Saat sähköpostiviestin sen jälkeen kun pyyntösi on hyväksytty.</div><br></li><li><b>Valmis teksti, jossa kerrotaan, että ylläpitäjä päättää avataanko tunnus:</b><div class=\"list_value_wrap\"><center><b>Tervetuloa tähän sukututkimuksen verkkopalveluun.</b></center><br>Pääsy näille sivuille on sallittu vain niille käyttäjille, joille on annettu <b>käyttöoikeus</b>.<br><br>Jos sinulla on käyttäjätili, voit kirjautua järjestelmään tällä sivulla. Jos sinulla ei ole käyttäjätiliä, voit pyytää tilin klikkaamalla asianomaista linkkiä tällä sivulla.<br><br>Todennettuaan antamasi tiedot, ylläpitäjä joko hyväksyy tai hylkää pyyntösi. Tulet saamaan sähköpostiviestin kun pyyntösi on hyväksytty.</div><br></li><li><b>Valmis teksti, jossa kerrotaan, että ainoastaan sukujäsenille avataan tunnus:</b><div class=\"list_value_wrap\"><center><b>Tervetuloa tähän sukututkimuksen verkkopalveluun.</b></center><br>Pääsy näille sivuille on sallittu vain niille käyttäjille, joille on annettu <b>käyttöoikeus</b>.<br><br>Mikäli sinulla on käyttäjätili, voit kirjautua järjestelmään tällä sivulla. Mikäli sinulla ei ole käyttäjätiliä, voit pyytää tilin klikkaamalla asianomaista linkkiä tällä sivulla.<br><br>Todennettuaan antamasi tiedot, ylläpitäjä joko hyväksyy tai hylkää pyyntösi. Tulet saamaan sähköpostiviestin kun pyyntösi on hyväksytty.</div></li></ul>"
 
-#~ msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-#~ msgstr "Jos sivuston vierailija ei ole selaimessaan valinnut oletuskieltään tai on valinnut kielen jota ei tueta, niin tätä kieltä käytetään.  Yleensä tämä asetus koskee hakukoneita."
-
 #~ msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the “Approved by administrator” checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
 #~ msgstr "Kun valinta <b>Salli vieraiden tehdä käyttäjätilihakemus</b> on käytössä, tällä asetuksella päätetään pitääkö ylläpitäjän myös hyväksyä uusi hakemus.<br><br>Valitsemalla <b>Kyllä</b>, pitää uuden käyttäjän ensin vahvistaa tili (he saavat erillisen sähköpostin siihen tarkoitukseen) ja sitten ylläpitäjä hyväksyy tilin. Vasta sen jälkeen voi käyttäjä kirjautua sisään. Valitsemalla <b>Ei</b>, <b>Ylläpitäjä on hyväksynyt käyttäjän</b> asetus kuitataan automaattisesti ylläpitäjän puolesta sen jälkeen kun käyttäjä on vahvistanut tilihakemuksensa. Käyttäjä pystyy heti kirjautumaan sisään ilman ylläpitäjän toimia."
 
@@ -20185,9 +20182,6 @@ msgstr "…"
 
 #~ msgid "Mail configuration"
 #~ msgstr "Sähköpostin asetuksia"
-
-#~ msgid "Missing PHP temporary folder"
-#~ msgstr "PHPn tilapäistiedostojen kansio puuttuu"
 
 #~ msgid "Move FAQ item down"
 #~ msgstr "Siirrä kysymys alas"
@@ -20211,9 +20205,6 @@ msgstr "…"
 
 #~ msgid "Pending Changes block"
 #~ msgstr "Vireillä olevien muutosten-lohko"
-
-#~ msgid "Place the website offline, by creating the file %s…"
-#~ msgstr "Aseta sivusto offline-tilaan luomalla tiedosto %s…"
 
 #~ msgid "Privacy options"
 #~ msgstr "Yksityisyysasetukset"

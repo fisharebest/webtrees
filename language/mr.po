@@ -18929,7 +18929,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
 msgid "Missing PHP temporary folder"
-msgstr ""
+msgstr "PHP तात्पुरती निर्देशिका गहाळ"
 
 #: admin_trees_config.php:56 admin_trees_config.php:139 admin_users.php:225
 #: admin_users.php:226 includes/functions/functions_edit.php:108
@@ -20095,9 +20095,6 @@ msgstr ""
 
 #~ msgid "Mail configuration"
 #~ msgstr "मेल कॉन्फिगरेशन"
-
-#~ msgid "Missing PHP temporary folder"
-#~ msgstr "PHP तात्पुरती निर्देशिका गहाळ"
 
 #~ msgid "Move FAQ item down"
 #~ msgstr "सामान्य प्रश्न खाली हलवा"
