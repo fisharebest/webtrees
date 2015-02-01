@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-01-31 12:10+0000\n"
-"PO-Revision-Date: 2015-01-25 15:47+1000\n"
+"PO-Revision-Date: 2015-02-01 16:58+1000\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
@@ -13,6 +13,9 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 "X-Poedit-Basepath: ..\n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.7.1\n"
+"X-Poedit-Bookmarks: 3757,340,-1,-1,-1,-1,-1,-1,-1,-1\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
@@ -2305,10 +2308,6 @@ msgstr "Vidutinis vaikų skaičius šeimoje"
 msgid "Avoid spaces and puncutation.  A family name might be a good choice."
 msgstr ""
 
-#: admin_trees_config.php:703
-msgid "Avoid spaces and puncutation.  A surname might be a good choice."
-msgstr ""
-
 #: library/WT/Date/Jalali.php:158
 msgctxt "Abbreviation for Persian month: Azar"
 msgid "Azar"
@@ -3003,7 +3002,7 @@ msgstr "Bulgarija"
 
 #: admin_trees_manage.php:638
 msgid "Bulk import GEDCOM files"
-msgstr ""
+msgstr "Didmeniškai importuoti GEDCOM bylas"
 
 #. I18N: gedcom tag BURI
 #: library/WT/Gedcom/Tag.php:227 modules_v3/family_group_report/report.xml:345
@@ -3202,7 +3201,7 @@ msgstr "CKEditor™"
 
 #: admin_trees_manage.php:253
 msgid "Calculating…"
-msgstr ""
+msgstr "Apskaičiuojama…"
 
 #: library/WT/Theme/BaseTheme.php:874 library/WT/Theme/BaseTheme.php:878
 #: modules_v3/yahrzeit/module.php:267
@@ -3915,7 +3914,7 @@ msgstr "Kontaktinė informacija"
 
 #: edituser.php:271
 msgid "Contact method"
-msgstr ""
+msgstr "Susisiekimo būdas"
 
 #: search_advanced.php:162 search_advanced.php:224 search_advanced.php:239
 #: search_advanced.php:261 search_advanced.php:276
@@ -3954,7 +3953,7 @@ msgstr "Pratęsta"
 #: modules_v3/faq/module.php:367 modules_v3/sitemap/module.php:281
 #: modules_v3/stories/module.php:197 modules_v3/stories/module.php:311
 msgid "Control panel"
-msgstr ""
+msgstr "Valdymo skydas"
 
 #: admin_trees_download.php:134 modules_v3/clippings/module.php:205
 #: modules_v3/clippings/module.php:598
@@ -4082,11 +4081,11 @@ msgstr "Sukurti naują šaltinį"
 
 #: admin_site_access.php:217
 msgid "Create a website access rule"
-msgstr ""
+msgstr "Sukurti svetainės prieigos taisyklę"
 
 #: admin_trees_manage.php:645
 msgid "Create or update a family tree for every GEDCOM file in the data folder."
-msgstr ""
+msgstr "Sukurti arba atnaujinti šeimos medžius kiekvienai GEDCOM bylai duomenų aplankoje"
 
 #: statistics.php:430
 msgid "Create your own chart"
@@ -4294,7 +4293,7 @@ msgstr "Dallas, Texas"
 #. I18N: A summary of the system status
 #: admin.php:409
 msgid "Dashboard"
-msgstr ""
+msgstr "Prietaisų skydas"
 
 #. I18N: gedcom tag DATA
 #: library/WT/Gedcom/Tag.php:343
@@ -4971,7 +4970,7 @@ msgstr "Ištrinti laikinas bylas…"
 
 #: admin_modules.php:93
 msgid "Delete the preferences for this module."
-msgstr ""
+msgstr "Ištrinti šio modulio nustatymus."
 
 #: library/WT/Controller/Individual.php:170
 msgid "Delete this name"
@@ -4979,7 +4978,7 @@ msgstr "Ištrinti šį vardą"
 
 #: edituser.php:297
 msgid "Delete your account"
-msgstr ""
+msgstr "Ištrinti savo sąskaitą"
 
 #: library/WT/Controller/Family.php:126
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?"
@@ -5386,28 +5385,28 @@ msgstr "Redaguoti DUK"
 
 #: admin_site_access.php:215
 msgid "Edit a website access rule"
-msgstr ""
+msgstr "Redaguoti svetainės prieigos taisyklę"
 
 #: library/WT/Controller/Media.php:149
 msgid "Edit details"
-msgstr "Taisyti duomenis"
+msgstr "Redaguoti duomenis"
 
 #: library/WT/Controller/Individual.php:299
 msgid "Edit gender"
-msgstr "Taisyti lytį"
+msgstr "Redaguoti lytį"
 
 #: modules_v3/lightbox/module.php:129
 msgid "Edit media"
-msgstr "Taisyti laikmeną"
+msgstr "Redaguoti laikmeną"
 
 #: addmedia.php:236 addmedia.php:395 library/WT/Controller/Media.php:56
 msgid "Edit media object"
-msgstr "Taisyti medijos objektą"
+msgstr "Redaguoti medijos objektą"
 
 #: edit_interface.php:1671 includes/functions/functions_edit.php:693
 #: library/WT/Controller/Individual.php:171
 msgid "Edit name"
-msgstr "Taisyti vardą"
+msgstr "Redaguoti vardą"
 
 #: library/WT/Controller/Note.php:50
 msgid "Edit note"
@@ -5423,11 +5422,11 @@ msgstr "Redaguoti nustatymus"
 #: library/WT/Controller/Individual.php:328 library/WT/Controller/Media.php:89
 #: library/WT/Controller/Repository.php:77 library/WT/Controller/Source.php:77
 msgid "Edit raw GEDCOM"
-msgstr "Taisyti patį GEDCOM įrašą"
+msgstr "Redaguoti patį GEDCOM įrašą"
 
 #: library/WT/Controller/Repository.php:57
 msgid "Edit repository"
-msgstr "Taisyti saugyklą"
+msgstr "Redaguoti saugyklą"
 
 #: edit_interface.php:1471 edit_interface.php:1518
 #: includes/functions/functions_edit.php:412
@@ -5436,7 +5435,7 @@ msgstr "Redaguoti bendrą pastabą"
 
 #: library/WT/Controller/Source.php:57
 msgid "Edit source"
-msgstr "Taisyti šaltinį"
+msgstr "Redaguoti šaltinį"
 
 #: modules_v3/stories/module.php:93 modules_v3/stories/module.php:175
 msgid "Edit story"
@@ -5448,7 +5447,7 @@ msgstr "Redaguoti šį asmenį ir pakeisti esamus duomenis"
 
 #: admin_users.php:257
 msgid "Edit user"
-msgstr ""
+msgstr "Redaguoti vartotoją"
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:41 admin_users.php:507
@@ -6686,7 +6685,7 @@ msgstr "Genealoginio medžio kontaktas"
 #. I18N: Individuals, sources, dates, places, etc.
 #: admin_trees_manage.php:348
 msgid "Genealogy data"
-msgstr ""
+msgstr "Genealogijos duomenys"
 
 #: admin_trees_config.php:661 admin_trees_config.php:1775
 msgid "General"
@@ -8247,7 +8246,7 @@ msgstr "Susieti šį medijos objektą su asmeniu"
 
 #: admin_users.php:566
 msgid "Link this user to an individual in the family tree."
-msgstr ""
+msgstr "Susieti šį naudotoją su asmeniu šeimos medyje."
 
 #: inverselink.php:35 inverselink.php:70 library/WT/Controller/Family.php:215
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:78
@@ -8350,7 +8349,7 @@ msgstr "URL prisiregistravus"
 #. I18N: Menu entry
 #: admin_site_config.php:111 library/WT/Theme/Administration.php:77
 msgid "Login and registration"
-msgstr ""
+msgstr "Prisijungimas ir registracija"
 
 #: library/WT/Theme/BaseTheme.php:1289 modules_v3/login_block/module.php:55
 #: modules_v3/login_block/module.php:58
@@ -8480,17 +8479,17 @@ msgstr "Malta"
 #: admin_trees_places.php:87 index_edit.php:299
 #: library/WT/Theme/Administration.php:101
 msgid "Manage family trees"
-msgstr ""
+msgstr "Tvarkyti šeimos medžius"
 
 #: admin_media.php:511 library/WT/Controller/Media.php:62
 #: library/WT/Controller/Media.php:153 modules_v3/lightbox/module.php:135
 msgid "Manage links"
-msgstr "Redaguoti nuorodas"
+msgstr "Tvarkyti nuorodas"
 
 #. I18N: Menu entry
 #: library/WT/Theme/Administration.php:144
 msgid "Manage media"
-msgstr ""
+msgstr "Tvarkyti medijos objektus"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:127 admin_users.php:43 admin_users.php:521
@@ -8522,7 +8521,7 @@ msgstr ""
 #. I18N: Help text for the "Sending server name" site configuration setting
 #: admin_site_config.php:379
 msgid "Many mail servers require that the sending server identifies itself correctly, using a valid domain name."
-msgstr ""
+msgstr "Daugelis pašto serverių reikalauja, kad siunčiantis serveris identifikuoja save teisingai, naudojant teisingą domeno vardą."
 
 #. I18N: gedcom tag MAP
 #: library/WT/Gedcom/Tag.php:553 library/WT/Gedcom/Tag.php:1878
@@ -9165,7 +9164,7 @@ msgstr "Prižiūrėtojas"
 
 #: admin.php:579
 msgid "Moderators"
-msgstr ""
+msgstr "Prižiūrėtojai"
 
 #: admin_modules.php:147
 msgid "Module"
@@ -10966,12 +10965,12 @@ msgstr "Numatytasis tekstas pranešantis kad tik šeimos nariai gali reikalauti 
 
 #: admin_trees_config.php:403 admin_trees_manage.php:274
 msgid "Preferences"
-msgstr ""
+msgstr "Nustatymai"
 
 #: admin_modules.php:88
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
-msgstr ""
+msgstr "Yra nustatymų šiam moduliuj „%s“, bet šio modulio nebėra."
 
 #. I18N: A configuration setting
 #: admin_users.php:436
@@ -11480,7 +11479,7 @@ msgstr "Reno, Nevada"
 
 #: admin_trees_manage.php:385
 msgid "Renumber"
-msgstr ""
+msgstr "Pernumeruoti"
 
 #. I18N: Renumber the records in a family tree
 #: admin_trees_merge.php:96 admin_trees_merge.php:101
@@ -12000,7 +11999,7 @@ msgstr "Siuntėjo vardas"
 #. I18N: Menu entry
 #: admin_site_config.php:108 library/WT/Theme/Administration.php:76
 msgid "Sending email"
-msgstr ""
+msgstr "Siunčiame elektroninį laišką"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:374
@@ -12079,7 +12078,7 @@ msgstr "Serverio byla kurioje surašytos vietovės (CSV)"
 #. I18N: Menu entry
 #: admin_site_info.php:34 library/WT/Theme/Administration.php:81
 msgid "Server information"
-msgstr ""
+msgstr "Serverio informacija"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:296 setup.php:278
@@ -12098,7 +12097,7 @@ msgstr "Sesijos darbo laiko pabaiga"
 
 #: admin_trees_manage.php:327 admin_trees_manage.php:338
 msgid "Set as default"
-msgstr ""
+msgstr "Nustatyti kaip įprastą"
 
 #: inverselink.php:153
 msgid "Set link"
@@ -12518,12 +12517,12 @@ msgstr "Rodyti šeimos medžių sąrašą"
 #. I18N: A configuration setting
 #: admin_trees_config.php:502
 msgid "Show living individuals"
-msgstr ""
+msgstr "Rodyti gyvenančius asmenis"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:542
 msgid "Show names of private individuals"
-msgstr ""
+msgstr "Rodyti privačių asmenų vardus"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -12657,7 +12656,7 @@ msgstr "Rodyti pakeitimų datą ir laiką"
 #. I18N: A configuration setting
 #: admin_trees_config.php:438
 msgid "Show the family tree"
-msgstr ""
+msgstr "Rodyti šeimos medį"
 
 #: famlist.php:179 indilist.php:179
 msgid "Show the list of individuals"
@@ -12820,7 +12819,7 @@ msgstr "Žemėlapio dydis (pikseliais)"
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: library/WT/Theme/BaseTheme.php:76
 msgid "Skip to content"
-msgstr ""
+msgstr "Pereiti prie turinio"
 
 #: library/WT/Gedcom/Code/Rela.php:240
 msgid "Slave"
@@ -13412,7 +13411,7 @@ msgstr "DUK sąrašas yra tuščias."
 #: admin_trees_manage.php:112
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr ""
+msgstr "GEDCOM byla „%s“ buvo importuota."
 
 #: library/WT/Gedcom/Code/Temp.php:160
 msgid "The Hague, Netherlands"
@@ -13477,25 +13476,25 @@ msgstr "Šio asmens duomenys yra privatūs."
 #: admin_trees_manage.php:61
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr ""
+msgstr "Šeimos medis „%s“ jau egzistuoja."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:64
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr ""
+msgstr "Šeimos medis „%s“ buvo sukurtas."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:41 admin_trees_manage.php:118
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr ""
+msgstr "Šeimos medis „%s“ buvo ištrintas."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:50
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr ""
+msgstr "Šeimos medis „%s“ bus rodomas lankytojams, kai jie pirmą kartą atvyksta į šią svetainę."
 
 #: admin_trees_merge.php:185
 msgid "The family trees have been merged successfully."
@@ -13658,12 +13657,12 @@ msgstr "Atminties ir procesoriaus reikalavimai, priklauso nuo įrašų skaičiau
 #: admin_modules.php:44
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr ""
+msgstr "Modulis „%s“ yra išjungtas."
 
 #: admin_modules.php:46
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr ""
+msgstr "Modulis „%s“ yra įjungtas."
 
 #: admin_site_upgrade.php:397
 #, php-format
@@ -13694,7 +13693,7 @@ msgstr "Slaptažodžiai nesutampa."
 #: admin_modules.php:76
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr ""
+msgstr "Nuostatos „%s“ moduliuj buvo ištrintos."
 
 #: setup.php:379
 msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database.  “wt_” is suggested, but can be anything you want."
@@ -13767,7 +13766,7 @@ msgstr "Atnaujinimas baigtas."
 #: admin_users.php:770
 #, php-format
 msgid "The user %s has been deleted."
-msgstr ""
+msgstr "Naudotojas %s buvo ištrintas."
 
 #: login.php:320
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
@@ -13799,15 +13798,15 @@ msgstr "%s versija yra per sena"
 
 #: admin_site_access.php:79
 msgid "The website access rule has been created."
-msgstr ""
+msgstr "Svetainės prieigos taisyklė sukurta."
 
 #: admin_site_access.php:107
 msgid "The website access rule has been deleted."
-msgstr ""
+msgstr "Svetainės prieigos taisyklė ištrinta."
 
 #: admin_site_access.php:91
 msgid "The website access rule has been updated."
-msgstr ""
+msgstr "Svetainės prieigos taisyklė redeguota."
 
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: admin_trees_config.php:2362
@@ -13839,7 +13838,7 @@ msgstr "Temos išskleidžiamasis parinkiklis temų pakeitimams"
 
 #: admin_modules.php:155
 msgid "Themes"
-msgstr ""
+msgstr "Temos"
 
 #: admin_site_config.php:203
 msgid "Themes can be selected at three levels: user, GEDCOM, and site.  User settings take priority over GEDCOM settings, which in turn take priority over the site setting.  Selecting “default theme” at user level will give the setting for the current GEDCOM.  Selecting “default theme” at GEDCOM level will give the site setting."
@@ -13879,9 +13878,9 @@ msgstr "Yra nauji pataisymai laukiantys sprendimų."
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Per paskutinę %s dieną nebuvo pakeitimų."
+msgstr[1] "Per paskutines %s dienas nebuvo pakeitimų."
+msgstr[2] "Per paskutines %s dienų nebuvo pakeitimų."
 
 #: addmedia.php:183 admin_media_upload.php:142
 msgid "There was an error uploading your file."
@@ -14638,7 +14637,7 @@ msgstr "Antraštė"
 #. I18N: label for the end of a date range (from x to y)
 #: admin_site_change.php:303 admin_site_logs.php:262
 msgid "To"
-msgstr ""
+msgstr "iki"
 
 #: modules_v3/html/module.php:277
 msgid "To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
@@ -14757,11 +14756,11 @@ msgstr "Toronto, Ontario, Kanada"
 
 #: admin.php:728
 msgid "Total"
-msgstr ""
+msgstr "Iš viso"
 
 #: modules_v3/change_report/report.xml:124
 msgid "Total accepted changes: "
-msgstr "Viso priimtų pakeitimų: "
+msgstr "Iš viso priimtų pakeitimų: "
 
 #: statistics.php:111
 msgid "Total births"
@@ -14839,11 +14838,11 @@ msgstr "Iš viso vedybų"
 
 #: admin.php:547
 msgid "Total number of users"
-msgstr "Narių skaičius"
+msgstr "Visų narių skaičius"
 
 #: modules_v3/change_report/report.xml:84
 msgid "Total pending changes: "
-msgstr "Viso laukiančių pakeitimų: "
+msgstr "Iš viso nepriimptų pakeitimų: "
 
 #. I18N: A count of places
 #: modules_v3/googlemap/module.php:1812
@@ -14870,7 +14869,7 @@ msgstr "Iš viso narių"
 #. I18N: gedcom tag TRLR
 #: library/WT/Gedcom/Tag.php:841
 msgid "Trailer"
-msgstr "Trailer"
+msgstr "Priekaba"
 
 #: library/WT/Stats.php:6301
 msgid "Transylvania"
@@ -15550,18 +15549,18 @@ msgstr "Mes išsiųsime patvirtinimo laišką adresu <b>%s</b>. Jums reikės pat
 #. I18N: Menu entry
 #: library/WT/Theme/Administration.php:74
 msgid "Website"
-msgstr ""
+msgstr "Svetainė"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:251
 msgid "Website URL"
-msgstr "Tinklalapio adresas"
+msgstr "Svetainės URL:"
 
 #. I18N: Menu entry
 #: admin_site_access.php:129 admin_site_access.php:239
 #: library/WT/Theme/Administration.php:79
 msgid "Website access rules"
-msgstr "Puslapio prieigos taisyklės"
+msgstr "Svetainės prieigos taisyklės"
 
 #: admin_trees_config.php:1008
 msgid "Website and META tag settings"
@@ -15570,12 +15569,12 @@ msgstr "Svetainės ir meta žymės nustatymai"
 #. I18N: Menu entry
 #: admin_site_logs.php:30 library/WT/Theme/Administration.php:78
 msgid "Website logs"
-msgstr ""
+msgstr "Svetainės žurnalas"
 
 #. I18N: Menu entry
 #: admin_site_config.php:105 library/WT/Theme/Administration.php:75
 msgid "Website preferences"
-msgstr ""
+msgstr "Svetainės nuostatos"
 
 #. I18N: abbreviation for Wednesday
 #: includes/functions/functions_print.php:731 library/WT/Date/Calendar.php:383
@@ -15871,7 +15870,7 @@ msgstr "Jūs galite pagreitinti privatumo skaičiavimus, pridedant mirties įra�
 
 #: admin_site_access.php:68
 msgid "You cannot create a rule which would prevent yourself from accessing the website."
-msgstr ""
+msgstr "Jūs negalite sukurti taisyklės kuri neleistu jums prisijungti prie svetainės."
 
 #: login.php:70
 msgid "You cannot login because your browser does not accept cookies."
@@ -15952,7 +15951,7 @@ msgstr "Turite nurodyti priežastį atskiru įrašu, prieš galėdami apriboti n
 
 #: admin_trees_manage.php:215
 msgid "You need to create a family tree."
-msgstr ""
+msgstr "Jus turite sukurti šeimos medį."
 
 #: admin_pgv_to_wt.php:1155
 msgid "You need to login again, using your PhpGedView username and password."
@@ -16559,7 +16558,7 @@ msgstr "laipsniai"
 #. I18N: Button label
 #: admin_site_clean.php:120 admin_users.php:756
 msgid "delete"
-msgstr ""
+msgstr "ištrinti"
 
 #. I18N: An access rule - deny access to the site
 #: admin_site_access.php:30 admin_site_access.php:37
@@ -16590,7 +16589,7 @@ msgstr "išjungti"
 
 #: admin_site_upgrade.php:413
 #, php-format
-msgid "ePlace the website offline, by creating the file %s…"
+msgid "Place the website offline, by creating the file %s…"
 msgstr ""
 
 #: modules_v3/googlemap/module.php:4083
@@ -16608,7 +16607,7 @@ msgstr "rytai"
 #: admin_trees_config.php:2235 admin_trees_config.php:2266
 #: admin_trees_config.php:2295
 msgid "edit"
-msgstr ""
+msgstr "redeguoti"
 
 #: includes/functions/functions.php:703
 msgctxt "FEMALE"
@@ -16688,17 +16687,17 @@ msgstr "buves vyras"
 #: includes/functions/functions.php:880
 msgctxt "FEMALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "buvusi sugyventinė"
 
 #: includes/functions/functions.php:862
 msgctxt "MALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "buves sugiventinis"
 
 #: includes/functions/functions.php:898
 msgctxt "MALE/FEMALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "buves(usi) sugiventinis(ė)"
 
 #: includes/functions/functions.php:903
 msgid "ex-spouse"
@@ -18738,7 +18737,7 @@ msgstr "mergautinė pavardė"
 
 #: admin_trees_config.php:547
 msgid "managers"
-msgstr ""
+msgstr "tvarkytojai"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:95
@@ -18814,7 +18813,7 @@ msgstr[2] "maximum %d dienų"
 #: admin_trees_config.php:506 admin_trees_config.php:546
 #: admin_trees_config.php:566
 msgid "members"
-msgstr ""
+msgstr "nariai"
 
 #. I18N: time format “%a” - exactly 00:00:00
 #: includes/functions/functions_date.php:86
@@ -18966,12 +18965,12 @@ msgstr "devintos eilės pusbrolis/pusseserė"
 
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:716
-msgid "nnIf a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
+msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
 msgstr ""
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
-msgid "nnMissing PHP temporary folder"
+msgid "Missing PHP temporary folder"
 msgstr ""
 
 #: admin_trees_config.php:56 admin_trees_config.php:139 admin_users.php:225
@@ -19105,7 +19104,7 @@ msgstr "procentais"
 
 #: admin_trees_config.php:1183
 msgid "pixels"
-msgstr ""
+msgstr "taškai"
 
 #. I18N: button label
 #: admin_trees_places.php:104
@@ -19977,7 +19976,7 @@ msgstr "utf8_lithuanian_ci"
 #: admin_trees_config.php:505 admin_trees_config.php:545
 #: admin_trees_config.php:565
 msgid "visitors"
-msgstr ""
+msgstr "lankytojai"
 
 #: modules_v3/ahnentafel_report/report.xml:138
 #: modules_v3/descendancy_report/report.xml:104
@@ -19993,7 +19992,7 @@ msgstr "gimė"
 
 #: library/WT/Theme/Webtrees.php:101
 msgid "webtrees"
-msgstr ""
+msgstr "webtrees"
 
 #: help_text.php:456
 msgid "webtrees allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the clippings cart that you can use to export portions of your database.<br><br>You can select any of the facts from the clipboard and copy the selected fact to the individual, family, media, source, or repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a marriage fact to a source or an individual record since the marriage fact is associated only with family records.<br><br>This is very helpful when entering similar facts, such as census facts, for many individuals or families."

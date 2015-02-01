@@ -2278,10 +2278,6 @@ msgstr ""
 msgid "Avoid spaces and puncutation.  A family name might be a good choice."
 msgstr ""
 
-#: admin_trees_config.php:703
-msgid "Avoid spaces and puncutation.  A surname might be a good choice."
-msgstr ""
-
 #: library/WT/Date/Jalali.php:158
 msgctxt "Abbreviation for Persian month: Azar"
 msgid "Azar"
@@ -16553,7 +16549,7 @@ msgstr ""
 
 #: admin_site_upgrade.php:413
 #, php-format
-msgid "ePlace the website offline, by creating the file %s…"
+msgid "Place the website offline, by creating the file %s…"
 msgstr ""
 
 #: modules_v3/googlemap/module.php:4083
@@ -18926,12 +18922,12 @@ msgstr ""
 
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:716
-msgid "nnIf a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
+msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
 msgstr ""
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:76
-msgid "nnMissing PHP temporary folder"
+msgid "Missing PHP temporary folder"
 msgstr ""
 
 #: admin_trees_config.php:56 admin_trees_config.php:139 admin_users.php:225

@@ -410,7 +410,7 @@ echo '</li>';
 // This is it - take the site offline first
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<li>', WT_I18N::translate('ePlace the website offline, by creating the file %s…', $lock_file_html);
+echo '<li>', WT_I18N::translate('Place the website offline, by creating the file %s…', $lock_file_html);
 
 @file_put_contents($lock_file, $lock_file_text);
 if (@file_get_contents($lock_file) != $lock_file_text) {

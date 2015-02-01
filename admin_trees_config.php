@@ -700,7 +700,7 @@ $controller
 					>
 			</div>
 			<p class="small text-muted">
-				<?php echo WT_I18N::translate('Avoid spaces and puncutation.  A surname might be a good choice.'); ?>
+				<?php echo /* I18N: help text for family tree / GEDCOM file names */ WT_I18N::translate('Avoid spaces and puncutation.  A family name might be a good choice.'); ?>
 			</p>
 		</div>
 	</div>
@@ -713,7 +713,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo select_edit_control('LANGUAGE', WT_I18N::installed_languages(), null, $WT_TREE->getPreference('LANGUAGE'), 'class="form-control"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Language” configuration setting */ WT_I18N::translate('nnIf a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines.'); ?>
+				<?php echo /* I18N: Help text for the “Language” configuration setting */ WT_I18N::translate('If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines.'); ?>
 			</p>
 		</div>
 	</div>

@@ -151,7 +151,7 @@ abstract class BaseTheme {
 				'(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),' .
 				'm=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)' .
 				'})(window,document,"script","//www.google-analytics.com/analytics.js","ga");' .
-				'ga("create", "UA-XXXX-Y", "auto");' .
+				'ga("create", "' . $analytics_id . '", "auto");' .
 				'ga("send", "pageview");' .
 				'</script>';
 		} else {
@@ -418,6 +418,19 @@ abstract class BaseTheme {
 	protected function formatContactLinks() {
 		if ($this->tree) {
 			return '<div class="contact-links">' . $this->contactLinks() . '</div>';
+		} else {
+			return '';
+		}
+	}
+
+	/**
+	 * Create a pending changes link for the page footer.
+	 *
+	 * @return string
+	 */
+	protected function formatPendingChangesLink() {
+		if ($this->pendingChangesExist()) {
+			return '<div class="pending-changes-link">' . $this->pendingChangesLink() . '</div>';
 		} else {
 			return '';
 		}
@@ -1768,6 +1781,27 @@ abstract class BaseTheme {
 	 */
 	protected function pendingChangesExist() {
 		return exists_pending_change(Auth::user(), $this->tree);
+	}
+
+	/**
+	 * Create a pending changes link.  Some themes prefer an alert/banner to a menu.
+	 *
+	 * @return string
+	 */
+	protected function pendingChangesLink() {
+		return
+			'<a href="#" onclick="window.open(\'edit_changes.php\', \'_blank\', chan_window_specs); return false;">' .
+			$this->pendingChangesLinkText() .
+			'</a>';
+	}
+
+	/**
+	 * Text to use in the pending changes link.
+	 *
+	 * @return string
+	 */
+	protected function pendingChangesLinkText() {
+		return WT_I18N::translate('There are pending changes for you to moderate.');
 	}
 
 	/**
