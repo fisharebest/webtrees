@@ -565,7 +565,7 @@ $controller->pageHeader();
 									>
 							</div>
 							<p class="small text-muted">
-								<?php echo WT_I18N::translate('Avoid spaces and puncutation.  A family name might be a good choice.'); ?>
+								<?php echo WT_I18N::translate('Avoid spaces and punctuation.  A family name might be a good choice.'); ?>
 							</p>
 						</div>
 					</div>
