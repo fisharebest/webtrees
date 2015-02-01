@@ -2305,10 +2305,6 @@ msgstr "Prosječan broj djece po obitelji"
 msgid "Avoid spaces and puncutation.  A family name might be a good choice."
 msgstr ""
 
-#: admin_trees_config.php:703
-msgid "Avoid spaces and puncutation.  A surname might be a good choice."
-msgstr ""
-
 #: library/WT/Date/Jalali.php:158
 msgctxt "Abbreviation for Persian month: Azar"
 msgid "Azar"
