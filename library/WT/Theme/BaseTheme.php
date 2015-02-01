@@ -1784,7 +1784,7 @@ abstract class BaseTheme {
 	}
 
 	/**
-	 * Create a pending changes link.
+	 * Create a pending changes link.  Some themes prefer an alert/banner to a menu.
 	 *
 	 * @return string
 	 */
