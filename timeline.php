@@ -274,7 +274,7 @@ document.onmouseup = function () {
 						</a>
 						<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo WT_Filter::escapeHtml($pid); ?>">
 						<a href="timeline.php?<?php echo $controller->pidlinks; ?>&amp;scale=<?php echo $controller->scale; ?>&amp;remove=<?php echo $pid; ?>&amp;ged=<?php echo WT_GEDURL; ?>" >
-						<span class="details1"><?php echo WT_I18N::translate('Remove person'); ?></span></a>
+						<span class="details1"><?php echo WT_I18N::translate('Remove individual'); ?></span></a>
 						<?php if (!empty($controller->birthyears[$pid])) { ?>
 							<span class="details1"><br>
 								<?php echo /* I18N: an age indicator, which can be dragged around the screen */ WT_I18N::translate('Show an age cursor?'); ?>
@@ -289,7 +289,7 @@ document.onmouseup = function () {
 						<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo WT_Filter::escapeHtml($pid); ?>">
 						<br>
 				<a href="timeline.php?<?php echo $controller->pidlinks; ?>&amp;scale=<?php echo $controller->scale; ?>&amp;remove=<?php echo $pid; ?>&amp;ged=<?php echo WT_GEDURL; ?>" >
-							<span class="details1"><?php echo WT_I18N::translate('Remove person'); ?></span></a>
+							<span class="details1"><?php echo WT_I18N::translate('Remove individual'); ?></span></a>
 						<br>
 					<?php } ?>
 				</td>

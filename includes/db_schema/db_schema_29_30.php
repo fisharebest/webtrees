@@ -26,13 +26,21 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
+// Originally migrated from PGV, but never used.
 try {
 	WT_DB::exec("DROP TABLE `##ip_address`");
 } catch (PDOException $ex) {
 	// Already deleted?
 }
 
+// No longer used
 WT_DB::exec("DELETE FROM `##user_setting` WHERE setting_name in ('edit_account')");
+
+// https://bugs.launchpad.net/webtrees/+bug/1405672
+WT_DB::exec(
+	"UPDATE `##site_access_rule` SET user_agent_pattern = 'Mozilla/5.0 (% Konqueror/%'" .
+	" WHERE user_agent_pattern='Mozilla/5.0 (compatible; Konqueror/%'"
+);
 
 // Update the version to indicate success
 WT_Site::setPreference($schema_name, $next_version);

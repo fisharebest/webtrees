@@ -35,7 +35,7 @@ if (
 	$obj instanceof WT_Media
 ) {
 	Zend_Session::writeClose();
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . $obj->getRawUrl());
+	header('Location: ' . WT_BASE_URL . $obj->getRawUrl());
 	
 	return;
 } elseif (!$obj || !$obj->canShow()) {

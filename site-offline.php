@@ -30,8 +30,6 @@ require 'library/autoload.php';
 // session.php won’t run until a configuration file and database connection exist...
 // This next block of code is a minimal version of session.php
 define('WT_WEBTREES', 'webtrees');
-define('WT_SERVER_NAME', '');
-define('WT_SCRIPT_PATH', '');
 define('WT_ROOT', '');
 define('WT_GED_ID', 0);
 define('WT_DATA_DIR', realpath('data') . DIRECTORY_SEPARATOR);
@@ -79,7 +77,7 @@ echo
 if ($offline_txt) {
 	echo $offline_txt;
 } else {
-	echo WT_I18N::translate('The site is down for maintenance.  You should <a href="index.php">try again</a> in a few minutes.');
+	echo WT_I18N::translate('This website is down for maintenance.  You should <a href="index.php">try again</a> in a few minutes.');
 }
 echo '</p>';
 echo '</div>';

@@ -1,4 +1,4 @@
-<?PHP
+<?php
 // Special Character tables, for use by Javascript to input characters
 // that aren't on your keyboard
 //

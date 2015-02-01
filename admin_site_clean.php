@@ -32,9 +32,9 @@ if ($to_delete && WT_Filter::checkCsrf()) {
 		$is_dir = is_dir(WT_DATA_DIR . $path);
 		if (WT_File::delete(WT_DATA_DIR . $path)) {
 			if ($is_dir) {
-				WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s was deleted.', WT_Filter::escapeHtml($path)), 'success');
+				WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s has been deleted.', WT_Filter::escapeHtml($path)), 'success');
 			} else {
-				WT_FlashMessages::addMessage(WT_I18N::translate('The file %s was deleted.', WT_Filter::escapeHtml($path)), 'success');
+				WT_FlashMessages::addMessage(WT_I18N::translate('The file %s has been deleted.', WT_Filter::escapeHtml($path)), 'success');
 			}
 		} else {
 			if ($is_dir) {
@@ -45,7 +45,7 @@ if ($to_delete && WT_Filter::checkCsrf()) {
 		}
 	}
 
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME);
+	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
 
 	return;
 }

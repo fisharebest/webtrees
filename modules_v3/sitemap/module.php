@@ -79,40 +79,40 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 				if ($tree->getPreference('include_in_sitemap')) {
 					$n = WT_DB::prepare(
 						"SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id"
-					)->execute(array('tree_id' => $tree->tree_id))->fetchOne();
+					)->execute(array('tree_id' => $tree->id()))->fetchOne();
 					for ($i = 0; $i <= $n / self::RECORDS_PER_VOLUME; ++$i) {
-						$data .= '<sitemap><loc>' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap-' . $tree->tree_id . '-i-' . $i . '.xml</loc>' . $lastmod . '</sitemap>' . PHP_EOL;
+						$data .= '<sitemap><loc>' . WT_BASE_URL . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap-' . $tree->id() . '-i-' . $i . '.xml</loc>' . $lastmod . '</sitemap>' . PHP_EOL;
 					}
 					$n = WT_DB::prepare(
 						"SELECT COUNT(*) FROM `##sources` WHERE s_file = :tree_id"
-					)->execute(array('tree_id' => $tree->tree_id))->fetchOne();
+					)->execute(array('tree_id' => $tree->id()))->fetchOne();
 					if ($n) {
 						for ($i = 0; $i <= $n / self::RECORDS_PER_VOLUME; ++$i) {
-							$data .= '<sitemap><loc>' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap-' . $tree->tree_id . '-s-' . $i . '.xml</loc>' . $lastmod . '</sitemap>' . PHP_EOL;
+							$data .= '<sitemap><loc>' . WT_BASE_URL . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap-' . $tree->id() . '-s-' . $i . '.xml</loc>' . $lastmod . '</sitemap>' . PHP_EOL;
 						}
 					}
 					$n = WT_DB::prepare(
 						"SELECT COUNT(*) FROM `##other` WHERE o_file = :tree_id AND o_type = 'REPO'"
-					)->execute(array('tree_id' => $tree->tree_id))->fetchOne();
+					)->execute(array('tree_id' => $tree->id()))->fetchOne();
 					if ($n) {
 						for ($i = 0; $i <= $n / self::RECORDS_PER_VOLUME; ++$i) {
-							$data .= '<sitemap><loc>' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap-' . $tree->tree_id . '-r-' . $i . '.xml</loc>' . $lastmod . '</sitemap>' . PHP_EOL;
+							$data .= '<sitemap><loc>' . WT_BASE_URL . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap-' . $tree->id() . '-r-' . $i . '.xml</loc>' . $lastmod . '</sitemap>' . PHP_EOL;
 						}
 					}
 					$n = WT_DB::prepare(
 						"SELECT COUNT(*) FROM `##other` WHERE o_file = :tree_id AND o_type = 'NOTE'"
-					)->execute(array('tree_id' => $tree->tree_id))->fetchOne();
+					)->execute(array('tree_id' => $tree->id()))->fetchOne();
 					if ($n) {
 						for ($i = 0; $i <= $n / self::RECORDS_PER_VOLUME; ++$i) {
-							$data .= '<sitemap><loc>' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap-' . $tree->tree_id . '-n-' . $i . '.xml</loc>' . $lastmod . '</sitemap>' . PHP_EOL;
+							$data .= '<sitemap><loc>' . WT_BASE_URL . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap-' . $tree->id() . '-n-' . $i . '.xml</loc>' . $lastmod . '</sitemap>' . PHP_EOL;
 						}
 					}
 					$n = WT_DB::prepare(
 						"SELECT COUNT(*) FROM `##media` WHERE m_file = :tree_id"
-					)->execute(array('tree_id' => $tree->tree_id))->fetchOne();
+					)->execute(array('tree_id' => $tree->id()))->fetchOne();
 					if ($n) {
 						for ($i = 0; $i <= $n / self::RECORDS_PER_VOLUME; ++$i) {
-							$data .= '<sitemap><loc>' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap-' . $tree->tree_id . '-m-' . $i . '.xml</loc>' . $lastmod . '</sitemap>' . PHP_EOL;
+							$data .= '<sitemap><loc>' . WT_BASE_URL . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap-' . $tree->id() . '-m-' . $i . '.xml</loc>' . $lastmod . '</sitemap>' . PHP_EOL;
 						}
 					}
 				}
@@ -142,7 +142,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 			$data = $this->getSetting('sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.xml');
 		} else {
 			$tree = WT_Tree::get($ged_id);
-			$data = '<url><loc>' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'index.php?ctype=gedcom&amp;ged=' . $tree->tree_name_url . '</loc></url>' . PHP_EOL;
+			$data = '<url><loc>' . WT_BASE_URL . 'index.php?ctype=gedcom&amp;ged=' . $tree->nameUrl() . '</loc></url>' . PHP_EOL;
 			$records = array();
 			switch ($rec_type) {
 			case 'i':
@@ -229,7 +229,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 			foreach ($records as $record) {
 				if ($record->canShowName()) {
 					$data .= '<url>';
-					$data .= '<loc>' . WT_SERVER_NAME . WT_SCRIPT_PATH . $record->getHtmlUrl() . '</loc>';
+					$data .= '<loc>' . WT_BASE_URL . $record->getHtmlUrl() . '</loc>';
 					$chan = $record->getFirstFact('CHAN');
 					if ($chan) {
 						$date = $chan->getDate();
@@ -266,7 +266,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 		// Save the updated preferences
 		if (WT_Filter::post('action') == 'save') {
 			foreach (WT_Tree::getAll() as $tree) {
-				$tree->setPreference('include_in_sitemap', WT_Filter::postBool('include' . $tree->tree_id));
+				$tree->setPreference('include_in_sitemap', WT_Filter::postBool('include' . $tree->id()));
 			}
 			// Clear cache and force files to be regenerated
 			WT_DB::prepare(
@@ -294,12 +294,12 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 			'<form method="post" action="module.php?mod=' . $this->getName() . '&amp;mod_action=admin">',
 		'<input type="hidden" name="action" value="save">';
 		foreach (WT_Tree::getAll() as $tree) {
-			echo '<p><input type="checkbox" name="include', $tree->tree_id, '" ';
+			echo '<p><input type="checkbox" name="include', $tree->id(), '" ';
 			if ($tree->getPreference('include_in_sitemap')) {
 				echo 'checked';
 				$include_any = true;
 			}
-			echo '>', $tree->tree_title_html, '</p>';
+			echo '>', $tree->titleHtml(), '</p>';
 		}
 		echo
 		'<input type="submit" value="', WT_I18N::translate('save'), '">',
@@ -307,8 +307,8 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 		'<hr>';
 
 		if ($include_any) {
-			$site_map_url1 = WT_SERVER_NAME . WT_SCRIPT_PATH . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap.xml';
-			$site_map_url2 = rawurlencode(WT_SERVER_NAME . WT_SCRIPT_PATH . 'module.php?mod=' . $this->getName() . '&mod_action=generate&file=sitemap.xml');
+			$site_map_url1 = WT_BASE_URL . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap.xml';
+			$site_map_url2 = rawurlencode(WT_BASE_URL . 'module.php?mod=' . $this->getName() . '&mod_action=generate&file=sitemap.xml');
 			echo
 				'<p>', WT_I18N::translate('To tell search engines that sitemaps are available, you should add the following line to your robots.txt file.'), '</p>',
 				'<pre>Sitemap: ', $site_map_url1, '</pre>',

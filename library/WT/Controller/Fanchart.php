@@ -415,7 +415,7 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 			return $html . $imagemap . '<div id="fan_chart_img"><img src="' . WT_SCRIPT_NAME . '?rootid=' . $this->root->getXref() . '&amp;fan_style=' . $this->fan_style . '&amp;generations=' . $this->generations . '&amp;fan_width=' . $this->fan_width . '&amp;img=1" width="' . $fanw . '" height="' . $fanh . '" alt="' . WT_I18N::translate('Fan chart of %s', strip_tags($person->getFullName())) . '" usemap="#fanmap"></div>';
 
 		case 'png':
-			ImageStringUp($image, 1, $fanw - 10, $fanh / 3, WT_SERVER_NAME . WT_SCRIPT_PATH, $color);
+			ImageStringUp($image, 1, $fanw - 10, $fanh / 3, WT_BASE_URL, $color);
 			ob_start();
 			ImagePng($image);
 			ImageDestroy($image);

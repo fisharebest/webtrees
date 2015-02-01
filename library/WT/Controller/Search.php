@@ -133,9 +133,9 @@ class WT_Controller_Search extends WT_Controller_Page {
 		// Retrieve the gedcoms to search in
 		if (count(WT_Tree::getAll()) > 1 && WT_Site::getPreference('ALLOW_CHANGE_GEDCOM')) {
 			foreach (WT_Tree::getAll() as $search_tree) {
-				$str = str_replace(array(".", "-", " "), array("_", "_", "_"), $search_tree->tree_name);
+				$str = str_replace(array(".", "-", " "), array("_", "_", "_"), $search_tree->name());
 				if (isset ($_REQUEST["$str"]) || $topsearch) {
-					$this->search_trees[$search_tree->tree_id] = $search_tree;
+					$this->search_trees[$search_tree->id()] = $search_tree;
 					$_REQUEST["$str"] = 'yes';
 				}
 			}
@@ -277,7 +277,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 		if (isset ($this->query)) {
 			$record = WT_GedcomRecord::getInstance($this->query);
 			if ($record && $record->canShow()) {
-				header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . $record->getRawUrl());
+				header('Location: ' . WT_BASE_URL . $record->getRawUrl());
 				exit;
 			}
 		}
@@ -349,7 +349,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 				$indi = $this->myindilist[0];
 				if ($indi->canShowName()) {
 					Zend_Session::writeClose();
-					header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . $indi->getRawUrl());
+					header('Location: ' . WT_BASE_URL . $indi->getRawUrl());
 					exit;
 				}
 			}
@@ -357,7 +357,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 				$fam = $this->myfamlist[0];
 				if ($fam->canShowName()) {
 					Zend_Session::writeClose();
-					header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . $fam->getRawUrl());
+					header('Location: ' . WT_BASE_URL . $fam->getRawUrl());
 					exit;
 				}
 			}
@@ -365,7 +365,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 				$sour = $this->mysourcelist[0];
 				if ($sour->canShowName()) {
 					Zend_Session::writeClose();
-					header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . $sour->getRawUrl());
+					header('Location: ' . WT_BASE_URL . $sour->getRawUrl());
 					exit;
 				}
 			}
@@ -373,7 +373,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 				$note = $this->mynotelist[0];
 				if ($note->canShowName()) {
 					Zend_Session::writeClose();
-					header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . $note->getRawUrl());
+					header('Location: ' . WT_BASE_URL . $note->getRawUrl());
 					exit;
 				}
 			}
@@ -565,7 +565,7 @@ class WT_Controller_Search extends WT_Controller_Page {
 		//-- if only 1 item is returned, automatically forward to that item
 		if (count($this->myindilist) == 1 && $this->action != "replace") {
 			$indi = $this->myindilist[0];
-			header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . $indi->getRawUrl());
+			header('Location: ' . WT_BASE_URL . $indi->getRawUrl());
 			exit;
 		}
 		usort($this->myindilist, array('WT_GedcomRecord', 'compare'));
@@ -607,15 +607,15 @@ class WT_Controller_Search extends WT_Controller_Page {
 				foreach ($this->search_trees as $search_tree) {
 					$datalist = array();
 					foreach ($this->myindilist as $individual) {
-						if ($individual->getGedcomId() === $search_tree->tree_id) {
+						if ($individual->getGedcomId() === $search_tree->id()) {
 							$datalist[] = $individual;
 						}
 					}
 					if ($datalist) {
 						usort($datalist, array('WT_GedcomRecord', 'compare'));
-						$GEDCOM = $search_tree->tree_name;
-						load_gedcom_settings($search_tree->tree_id);
-						echo '<h3 class="indi-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->tree_title_html, '</span></a></h3>
+						$GEDCOM = $search_tree->name();
+						load_gedcom_settings($search_tree->id());
+						echo '<h3 class="indi-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->titleHtml(), '</span></a></h3>
 							<div class="indi-acc_content">',
 						format_indi_table($datalist);
 						echo '</div>'; //indi-acc_content
@@ -630,15 +630,15 @@ class WT_Controller_Search extends WT_Controller_Page {
 				foreach ($this->search_trees as $search_tree) {
 					$datalist = array();
 					foreach ($this->myfamlist as $family) {
-						if ($family->getGedcomId() === $search_tree->tree_id) {
+						if ($family->getGedcomId() === $search_tree->id()) {
 							$datalist[] = $family;
 						}
 					}
 					if ($datalist) {
 						usort($datalist, array('WT_GedcomRecord', 'compare'));
-						$GEDCOM = $search_tree->tree_name;
-						load_gedcom_settings($search_tree->tree_id);
-						echo '<h3 class="fam-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->tree_title_html, '</span></a></h3>
+						$GEDCOM = $search_tree->name();
+						load_gedcom_settings($search_tree->id());
+						echo '<h3 class="fam-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->titleHtml(), '</span></a></h3>
 							<div class="fam-acc_content">',
 						format_fam_table($datalist);
 						echo '</div>'; //fam-acc_content
@@ -653,15 +653,15 @@ class WT_Controller_Search extends WT_Controller_Page {
 				foreach ($this->search_trees as $search_tree) {
 					$datalist = array();
 					foreach ($this->mysourcelist as $source) {
-						if ($source->getGedcomId() === $search_tree->tree_id) {
+						if ($source->getGedcomId() === $search_tree->id()) {
 							$datalist[] = $source;
 						}
 					}
 					if ($datalist) {
 						usort($datalist, array('WT_GedcomRecord', 'compare'));
-						$GEDCOM = $search_tree->tree_name;
-						load_gedcom_settings($search_tree->tree_id);
-						echo '<h3 class="source-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->tree_title_html, '</span></a></h3>
+						$GEDCOM = $search_tree->name();
+						load_gedcom_settings($search_tree->id());
+						echo '<h3 class="source-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->titleHtml(), '</span></a></h3>
 							<div class="source-acc_content">',
 						format_sour_table($datalist);
 						echo '</div>'; //fam-acc_content
@@ -676,15 +676,15 @@ class WT_Controller_Search extends WT_Controller_Page {
 				foreach ($this->search_trees as $search_tree) {
 					$datalist = array();
 					foreach ($this->mynotelist as $note) {
-						if ($note->getGedcomId() === $search_tree->tree_id) {
+						if ($note->getGedcomId() === $search_tree->id()) {
 							$datalist[] = $note;
 						}
 					}
 					if ($datalist) {
 						usort($datalist, array('WT_GedcomRecord', 'compare'));
-						$GEDCOM = $search_tree->tree_name;
-						load_gedcom_settings($search_tree->tree_id);
-						echo '<h3 class="note-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->tree_title_html, '</span></a></h3>
+						$GEDCOM = $search_tree->name();
+						load_gedcom_settings($search_tree->id());
+						echo '<h3 class="note-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->titleHtml(), '</span></a></h3>
 							<div class="note-acc_content">',
 						format_note_table($datalist);
 						echo '</div>'; //note-acc_content

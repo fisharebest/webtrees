@@ -181,21 +181,21 @@ class WT_Stats {
 	 * @return string
 	 */
 	public function gedcomFilename() {
-		return $this->tree->tree_name;
+		return $this->tree->name();
 	}
 
 	/**
 	 * @return string
 	 */
 	public function gedcomID() {
-		return $this->tree->tree_id;
+		return $this->tree->id();
 	}
 
 	/**
 	 * @return string
 	 */
 	public function gedcomTitle() {
-		return $this->tree->tree_title_html;
+		return $this->tree->titleHtml();
 	}
 
 	/**
@@ -266,7 +266,7 @@ class WT_Stats {
 	public function gedcomUpdated() {
 		$row = WT_DB::prepare(
 			"SELECT SQL_CACHE d_year, d_month, d_day FROM `##dates` WHERE d_julianday1 = (SELECT MAX(d_julianday1) FROM `##dates` WHERE d_file =? AND d_fact='CHAN') LIMIT 1"
-		)->execute(array($this->tree->tree_id))->fetchOneRow();
+		)->execute(array($this->tree->id()))->fetchOneRow();
 		if ($row) {
 			$date = new WT_Date("{$row->d_day} {$row->d_month} {$row->d_year}");
 
@@ -328,7 +328,7 @@ class WT_Stats {
 	private function totalIndividualsQuery() {
 		return
 			(int) WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file = ?")
-				->execute(array($this->tree->tree_id))
+				->execute(array($this->tree->id()))
 				->fetchOne();
 	}
 
@@ -343,7 +343,7 @@ class WT_Stats {
 	 * @return integer
 	 */
 	private function totalIndisWithSourcesQuery() {
-		$rows = $this->runSql("SELECT SQL_CACHE COUNT(DISTINCT i_id) AS tot FROM `##link`, `##individuals` WHERE i_id=l_from AND i_file=l_file AND l_file=" . $this->tree->tree_id . " AND l_type='SOUR'");
+		$rows = $this->runSql("SELECT SQL_CACHE COUNT(DISTINCT i_id) AS tot FROM `##link`, `##individuals` WHERE i_id=l_from AND i_file=l_file AND l_file=" . $this->tree->id() . " AND l_type='SOUR'");
 
 		return (int) $rows[0]['tot'];
 	}
@@ -408,7 +408,7 @@ class WT_Stats {
 	private function totalFamiliesQuery() {
 		return
 			(int) WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##families` WHERE f_file=?")
-				->execute(array($this->tree->tree_id))
+				->execute(array($this->tree->id()))
 				->fetchOne();
 	}
 
@@ -423,7 +423,7 @@ class WT_Stats {
 	 * @return integer
 	 */
 	private function totalFamsWithSourcesQuery() {
-		$rows = $this->runSql("SELECT SQL_CACHE COUNT(DISTINCT f_id) AS tot FROM `##link`, `##families` WHERE f_id=l_from AND f_file=l_file AND l_file=" . $this->tree->tree_id . " AND l_type='SOUR'");
+		$rows = $this->runSql("SELECT SQL_CACHE COUNT(DISTINCT f_id) AS tot FROM `##link`, `##families` WHERE f_id=l_from AND f_file=l_file AND l_file=" . $this->tree->id() . " AND l_type='SOUR'");
 
 		return (int) $rows[0]['tot'];
 	}
@@ -489,7 +489,7 @@ class WT_Stats {
 	private function totalSourcesQuery() {
 		return
 			(int) WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##sources` WHERE s_file=?")
-				->execute(array($this->tree->tree_id))
+				->execute(array($this->tree->id()))
 				->fetchOne();
 	}
 
@@ -513,7 +513,7 @@ class WT_Stats {
 	private function totalNotesQuery() {
 		return
 			(int) WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##other` WHERE o_type='NOTE' AND o_file=?")
-				->execute(array($this->tree->tree_id))
+				->execute(array($this->tree->id()))
 				->fetchOne();
 	}
 
@@ -537,7 +537,7 @@ class WT_Stats {
 	private function totalRepositoriesQuery() {
 		return
 			(Int) WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##other` WHERE o_type='REPO' AND o_file=?")
-				->execute(array($this->tree->tree_id))
+				->execute(array($this->tree->id()))
 				->fetchOne();
 	}
 
@@ -571,7 +571,7 @@ class WT_Stats {
 			$vars = '';
 			$distinct = 'DISTINCT';
 		}
-		$vars[] = $this->tree->tree_id;
+		$vars[] = $this->tree->id();
 		$total =
 			WT_DB::prepare(
 				"SELECT SQL_CACHE COUNT({$distinct} n_surn COLLATE '" . WT_I18N::$collation . "')" .
@@ -594,7 +594,7 @@ class WT_Stats {
 	public function totalGivennames($params = array()) {
 		if ($params) {
 			$qs = implode(',', array_fill(0, count($params), '?'));
-			$params[] = $this->tree->tree_id;
+			$params[] = $this->tree->id();
 			$total =
 				WT_DB::prepare("SELECT SQL_CACHE COUNT( n_givn) FROM `##name` WHERE n_givn IN ({$qs}) AND n_file=?")
 					->execute($params)
@@ -602,7 +602,7 @@ class WT_Stats {
 		} else {
 			$total =
 				WT_DB::prepare("SELECT SQL_CACHE COUNT(DISTINCT n_givn) FROM `##name` WHERE n_givn IS NOT NULL AND n_file=?")
-					->execute(array($this->tree->tree_id))
+					->execute(array($this->tree->id()))
 					->fetchOne();
 		}
 
@@ -616,7 +616,7 @@ class WT_Stats {
 	 */
 	public function totalEvents($params = array()) {
 		$sql = "SELECT SQL_CACHE COUNT(*) AS tot FROM `##dates` WHERE d_file=?";
-		$vars = array($this->tree->tree_id);
+		$vars = array($this->tree->id());
 
 		$no_types = array('HEAD', 'CHAN');
 		if ($params) {
@@ -715,7 +715,7 @@ class WT_Stats {
 	private function totalSexMalesQuery() {
 		return
 			(int) WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_sex=?")
-				->execute(array($this->tree->tree_id, 'M'))
+				->execute(array($this->tree->id(), 'M'))
 				->fetchOne();
 	}
 
@@ -739,7 +739,7 @@ class WT_Stats {
 	private function totalSexFemalesQuery() {
 		return
 			(int) WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_sex=?")
-				->execute(array($this->tree->tree_id, 'F'))
+				->execute(array($this->tree->id(), 'F'))
 				->fetchOne();
 	}
 
@@ -763,7 +763,7 @@ class WT_Stats {
 	private function totalSexUnknownQuery() {
 		return
 			(int) WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_sex=?")
-				->execute(array($this->tree->tree_id, 'U'))
+				->execute(array($this->tree->id(), 'U'))
 				->fetchOne();
 	}
 
@@ -787,7 +787,8 @@ class WT_Stats {
 	 * @return string
 	 */
 	public function chartSex($params = array()) {
-		global $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
+		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
+		$WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
 
 		if (isset($params[0]) && $params[0] != '') {
 			$size = strtolower($params[0]);
@@ -855,7 +856,7 @@ class WT_Stats {
 	private function totalLivingQuery() {
 		return
 			(int) WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_gedcom NOT REGEXP '\\n1 (" . WT_EVENTS_DEAT . ")'")
-				->execute(array($this->tree->tree_id))
+				->execute(array($this->tree->id()))
 				->fetchOne();
 	}
 
@@ -879,7 +880,7 @@ class WT_Stats {
 	private function totalDeceasedQuery() {
 		return
 			(int) WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_gedcom REGEXP '\\n1 (" . WT_EVENTS_DEAT . ")'")
-				->execute(array($this->tree->tree_id))
+				->execute(array($this->tree->id()))
 				->fetchOne();
 	}
 
@@ -903,7 +904,8 @@ class WT_Stats {
 	 * @return string
 	 */
 	public function chartMortality($params = array()) {
-		global $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
+		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
+		$WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
 
 		if (isset($params[0]) && $params[0] != '') {
 			$size = strtolower($params[0]);
@@ -981,7 +983,7 @@ class WT_Stats {
 			return 0;
 		}
 		$sql = "SELECT SQL_CACHE COUNT(*) AS tot FROM `##media` WHERE m_file=?";
-		$vars = array($this->tree->tree_id);
+		$vars = array($this->tree->id());
 
 		if ($type != 'all') {
 			if ($type == 'unknown') {
@@ -1250,10 +1252,10 @@ class WT_Stats {
 		$rows = $this->runSql(
 			"SELECT SQL_CACHE d_year, d_type, d_fact, d_gid" .
 			" FROM `##dates`" .
-			" WHERE d_file={$this->tree->tree_id} AND d_fact IN ({$query_field}) AND d_julianday1=(" .
+			" WHERE d_file={$this->tree->id()} AND d_fact IN ({$query_field}) AND d_julianday1=(" .
 			" SELECT {$dmod}( d_julianday1 )" .
 			" FROM `##dates`" .
-			" WHERE d_file={$this->tree->tree_id} AND d_fact IN ({$query_field}) AND d_julianday1<>0 )" .
+			" WHERE d_file={$this->tree->id()} AND d_fact IN ({$query_field}) AND d_julianday1<>0 )" .
 			" LIMIT 1"
 		);
 		if (!isset($rows[0])) {
@@ -1303,12 +1305,12 @@ class WT_Stats {
 			if ($what == 'INDI') {
 				$rows =
 					WT_DB::prepare("SELECT i_gedcom AS ged FROM `##individuals` WHERE i_file=?")
-						->execute(array($this->tree->tree_id))
+						->execute(array($this->tree->id()))
 						->fetchAll();
 			} elseif ($what == 'FAM') {
 				$rows =
 					WT_DB::prepare("SELECT f_gedcom AS ged FROM `##families` WHERE f_file=?")
-						->execute(array($this->tree->tree_id))
+						->execute(array($this->tree->id()))
 						->fetchAll();
 			}
 			$placelist = array();
@@ -1348,7 +1350,7 @@ class WT_Stats {
 				$join .
 				" WHERE" .
 				" p_id={$parent} AND" .
-				" p_file={$this->tree->tree_id}" .
+				" p_file={$this->tree->id()}" .
 				" GROUP BY place"
 			);
 
@@ -1370,7 +1372,7 @@ class WT_Stats {
 				" JOIN `##placelinks` ON pl_file=p_file AND p_id=pl_p_id" .
 				$join .
 				" WHERE" .
-				" p_file={$this->tree->tree_id}" .
+				" p_file={$this->tree->id()}" .
 				" AND p_parent_id='0'" .
 				" GROUP BY country ORDER BY tot DESC, country ASC"
 			);
@@ -1385,7 +1387,7 @@ class WT_Stats {
 	private function totalPlacesQuery() {
 		return
 			(int) WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##places` WHERE p_file=?")
-				->execute(array($this->tree->tree_id))
+				->execute(array($this->tree->id()))
 				->fetchOne();
 	}
 
@@ -1586,7 +1588,7 @@ class WT_Stats {
 		foreach ($all_db_countries as $country_code => $country) {
 			$top10[] = '<li>';
 			foreach ($country as $country_name => $tot) {
-				$tmp = new WT_Place($country_name, $this->tree->tree_id);
+				$tmp = new WT_Place($country_name, $this->tree->id());
 				$place = '<a href="' . $tmp->getURL() . '" class="list_item">' . $all_countries[$country_code] . '</a>';
 				$top10[] .= $place . ' - ' . WT_I18N::number($tot);
 			}
@@ -1608,7 +1610,7 @@ class WT_Stats {
 		$i = 1;
 		arsort($places);
 		foreach ($places as $place => $count) {
-			$tmp = new WT_Place($place, $this->tree->tree_id);
+			$tmp = new WT_Place($place, $this->tree->id());
 			$place = '<a href="' . $tmp->getURL() . '" class="list_item">' . $tmp->getFullName() . '</a>';
 			$top10[] = '<li>' . $place . ' - ' . WT_I18N::number($count) . '</li>';
 			if ($i++ == 10) {
@@ -1629,7 +1631,7 @@ class WT_Stats {
 		$i = 1;
 		arsort($places);
 		foreach ($places as $place => $count) {
-			$tmp = new WT_Place($place, $this->tree->tree_id);
+			$tmp = new WT_Place($place, $this->tree->id());
 			$place = '<a href="' . $tmp->getURL() . '" class="list_item">' . $tmp->getFullName() . '</a>';
 			$top10[] = '<li>' . $place . ' - ' . WT_I18N::number($count) . '</li>';
 			if ($i++ == 10) {
@@ -1650,7 +1652,7 @@ class WT_Stats {
 		$i = 1;
 		arsort($places);
 		foreach ($places as $place => $count) {
-			$tmp = new WT_Place($place, $this->tree->tree_id);
+			$tmp = new WT_Place($place, $this->tree->id());
 			$place = '<a href="' . $tmp->getURL() . '" class="list_item">' . $tmp->getFullName() . '</a>';
 			$top10[] = '<li>' . $place . ' - ' . WT_I18N::number($count) . '</li>';
 			if ($i++ == 10) {
@@ -1682,7 +1684,7 @@ class WT_Stats {
 			$sql =
 				"SELECT SQL_CACHE FLOOR(d_year/100+1) AS century, COUNT(*) AS total FROM `##dates` " .
 				"WHERE " .
-				"d_file={$this->tree->tree_id} AND " .
+				"d_file={$this->tree->id()} AND " .
 				"d_year<>0 AND " .
 				"d_fact='BIRT' AND " .
 				"d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
@@ -1691,14 +1693,14 @@ class WT_Stats {
 				"SELECT SQL_CACHE d_month, i_sex, COUNT(*) AS total FROM `##dates` " .
 				"JOIN `##individuals` ON d_file = i_file AND d_gid = i_id " .
 				"WHERE " .
-				"d_file={$this->tree->tree_id} AND " .
+				"d_file={$this->tree->id()} AND " .
 				"d_fact='BIRT' AND " .
 				"d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
 		} else {
 			$sql =
 				"SELECT SQL_CACHE d_month, COUNT(*) AS total FROM `##dates` " .
 				"WHERE " .
-				"d_file={$this->tree->tree_id} AND " .
+				"d_file={$this->tree->id()} AND " .
 				"d_fact='BIRT' AND " .
 				"d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
 		}
@@ -1769,12 +1771,11 @@ class WT_Stats {
 		$WT_STATS_S_CHART_X    = Theme::theme()->parameter('stats-small-chart-x');
 		$WT_STATS_S_CHART_Y    = Theme::theme()->parameter('stats-small-chart-y');
 
-
 		if ($simple) {
 			$sql =
 				"SELECT SQL_CACHE FLOOR(d_year/100+1) AS century, COUNT(*) AS total FROM `##dates` " .
 				"WHERE " .
-				"d_file={$this->tree->tree_id} AND " .
+				"d_file={$this->tree->id()} AND " .
 				'd_year<>0 AND ' .
 				"d_fact='DEAT' AND " .
 				"d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
@@ -1783,14 +1784,14 @@ class WT_Stats {
 				"SELECT SQL_CACHE d_month, i_sex, COUNT(*) AS total FROM `##dates` " .
 				"JOIN `##individuals` ON d_file = i_file AND d_gid = i_id " .
 				"WHERE " .
-				"d_file={$this->tree->tree_id} AND " .
+				"d_file={$this->tree->id()} AND " .
 				"d_fact='DEAT' AND " .
 				"d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
 		} else {
 			$sql =
 				"SELECT SQL_CACHE d_month, COUNT(*) AS total FROM `##dates` " .
 				"WHERE " .
-				"d_file={$this->tree->tree_id} AND " .
+				"d_file={$this->tree->id()} AND " .
 				"d_fact='DEAT' AND " .
 				"d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
 		}
@@ -2002,7 +2003,7 @@ class WT_Stats {
 			" WHERE" .
 			" indi.i_id=birth.d_gid AND" .
 			" birth.d_gid=death.d_gid AND" .
-			" death.d_file={$this->tree->tree_id} AND" .
+			" death.d_file={$this->tree->id()} AND" .
 			" birth.d_file=death.d_file AND" .
 			" birth.d_file=indi.i_file AND" .
 			" birth.d_fact='BIRT' AND" .
@@ -2070,7 +2071,7 @@ class WT_Stats {
 			"WHERE " .
 			" indi.i_id=birth.d_gid AND " .
 			" birth.d_gid=death.d_gid AND " .
-			" death.d_file={$this->tree->tree_id} AND " .
+			" death.d_file={$this->tree->id()} AND " .
 			" birth.d_file=death.d_file AND " .
 			" birth.d_file=indi.i_file AND " .
 			" birth.d_fact='BIRT' AND " .
@@ -2154,7 +2155,7 @@ class WT_Stats {
 			" WHERE" .
 			" indi.i_id=birth.d_gid AND" .
 			" indi.i_gedcom NOT REGEXP '\\n1 (" . WT_EVENTS_DEAT . ")' AND" .
-			" birth.d_file={$this->tree->tree_id} AND" .
+			" birth.d_file={$this->tree->id()} AND" .
 			" birth.d_fact='BIRT' AND" .
 			" birth.d_file=indi.i_file AND" .
 			" birth.d_julianday1<>0" .
@@ -2219,7 +2220,7 @@ class WT_Stats {
 			"WHERE " .
 			" indi.i_id=birth.d_gid AND " .
 			" birth.d_gid=death.d_gid AND " .
-			" death.d_file=" . $this->tree->tree_id . " AND " .
+			" death.d_file=" . $this->tree->id() . " AND " .
 			" birth.d_file=death.d_file AND " .
 			" birth.d_file=indi.i_file AND " .
 			" birth.d_fact='BIRT' AND " .
@@ -2277,7 +2278,7 @@ class WT_Stats {
 				" WHERE" .
 				" indi.i_id=birth.d_gid AND" .
 				" birth.d_gid=death.d_gid AND" .
-				" death.d_file={$this->tree->tree_id} AND" .
+				" death.d_file={$this->tree->id()} AND" .
 				" birth.d_file=death.d_file AND" .
 				" birth.d_file=indi.i_file AND" .
 				" birth.d_fact='BIRT' AND" .
@@ -2373,7 +2374,7 @@ class WT_Stats {
 				" WHERE" .
 				" indi.i_id=birth.d_gid AND" .
 				" birth.d_gid=death.d_gid AND" .
-				" death.d_file={$this->tree->tree_id} AND" .
+				" death.d_file={$this->tree->id()} AND" .
 				" birth.d_file=death.d_file AND" .
 				" birth.d_file=indi.i_file AND" .
 				" birth.d_fact='BIRT' AND" .
@@ -2630,7 +2631,7 @@ class WT_Stats {
 			. ' FROM'
 			. " `##dates`"
 			. ' WHERE'
-			. " d_file={$this->tree->tree_id} AND"
+			. " d_file={$this->tree->id()} AND"
 			. " d_gid<>'HEAD' AND"
 			. " d_fact {$fact_query} AND"
 			. ' d_julianday1<>0'
@@ -2769,14 +2770,14 @@ class WT_Stats {
 		$rows = $this->runSql(
 			" SELECT SQL_CACHE fam.f_id AS famid, fam.{$sex_field}, married.d_julianday2-birth.d_julianday1 AS age, indi.i_id AS i_id" .
 			" FROM `##families` AS fam" .
-			" LEFT JOIN `##dates` AS birth ON birth.d_file = {$this->tree->tree_id}" .
-			" LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree->tree_id}" .
-			" LEFT JOIN `##individuals` AS indi ON indi.i_file = {$this->tree->tree_id}" .
+			" LEFT JOIN `##dates` AS birth ON birth.d_file = {$this->tree->id()}" .
+			" LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree->id()}" .
+			" LEFT JOIN `##individuals` AS indi ON indi.i_file = {$this->tree->id()}" .
 			" WHERE" .
 			" birth.d_gid = indi.i_id AND" .
 			" married.d_gid = fam.f_id AND" .
 			" indi.i_id = fam.{$sex_field} AND" .
-			" fam.f_file = {$this->tree->tree_id} AND" .
+			" fam.f_file = {$this->tree->id()} AND" .
 			" birth.d_fact = 'BIRT' AND" .
 			" married.d_fact = 'MARR' AND" .
 			" birth.d_julianday1 <> 0 AND" .
@@ -2847,10 +2848,10 @@ class WT_Stats {
 		$hrows = $this->runSql(
 			" SELECT SQL_CACHE DISTINCT fam.f_id AS family, MIN(husbdeath.d_julianday2-married.d_julianday1) AS age" .
 			" FROM `##families` AS fam" .
-			" LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree->tree_id}" .
-			" LEFT JOIN `##dates` AS husbdeath ON husbdeath.d_file = {$this->tree->tree_id}" .
+			" LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree->id()}" .
+			" LEFT JOIN `##dates` AS husbdeath ON husbdeath.d_file = {$this->tree->id()}" .
 			" WHERE" .
-			" fam.f_file = {$this->tree->tree_id} AND" .
+			" fam.f_file = {$this->tree->id()} AND" .
 			" husbdeath.d_gid = fam.f_husb AND" .
 			" husbdeath.d_fact = 'DEAT' AND" .
 			" married.d_gid = fam.f_id AND" .
@@ -2862,10 +2863,10 @@ class WT_Stats {
 		$wrows = $this->runSql(
 			" SELECT SQL_CACHE DISTINCT fam.f_id AS family, MIN(wifedeath.d_julianday2-married.d_julianday1) AS age" .
 			" FROM `##families` AS fam" .
-			" LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree->tree_id}" .
-			" LEFT JOIN `##dates` AS wifedeath ON wifedeath.d_file = {$this->tree->tree_id}" .
+			" LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree->id()}" .
+			" LEFT JOIN `##dates` AS wifedeath ON wifedeath.d_file = {$this->tree->id()}" .
 			" WHERE" .
-			" fam.f_file = {$this->tree->tree_id} AND" .
+			" fam.f_file = {$this->tree->id()} AND" .
 			" wifedeath.d_gid = fam.f_wife AND" .
 			" wifedeath.d_fact = 'DEAT' AND" .
 			" married.d_gid = fam.f_id AND" .
@@ -2877,10 +2878,10 @@ class WT_Stats {
 		$drows = $this->runSql(
 			" SELECT SQL_CACHE DISTINCT fam.f_id AS family, MIN(divorced.d_julianday2-married.d_julianday1) AS age" .
 			" FROM `##families` AS fam" .
-			" LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree->tree_id}" .
-			" LEFT JOIN `##dates` AS divorced ON divorced.d_file = {$this->tree->tree_id}" .
+			" LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree->id()}" .
+			" LEFT JOIN `##dates` AS divorced ON divorced.d_file = {$this->tree->id()}" .
 			" WHERE" .
-			" fam.f_file = {$this->tree->tree_id} AND" .
+			" fam.f_file = {$this->tree->id()} AND" .
 			" married.d_gid = fam.f_id AND" .
 			" married.d_fact = 'MARR' AND" .
 			" divorced.d_gid = fam.f_id AND" .
@@ -2985,10 +2986,10 @@ class WT_Stats {
 		$rows = $this->runSql(
 			" SELECT SQL_CACHE fam.f_id AS family," . $query1 .
 			" FROM `##families` AS fam" .
-			" LEFT JOIN `##dates` AS wifebirth ON wifebirth.d_file = {$this->tree->tree_id}" .
-			" LEFT JOIN `##dates` AS husbbirth ON husbbirth.d_file = {$this->tree->tree_id}" .
+			" LEFT JOIN `##dates` AS wifebirth ON wifebirth.d_file = {$this->tree->id()}" .
+			" LEFT JOIN `##dates` AS husbbirth ON husbbirth.d_file = {$this->tree->id()}" .
 			" WHERE" .
-			" fam.f_file = {$this->tree->tree_id} AND" .
+			" fam.f_file = {$this->tree->id()} AND" .
 			" husbbirth.d_gid = fam.f_husb AND" .
 			" husbbirth.d_fact = 'BIRT' AND" .
 			" wifebirth.d_gid = fam.f_wife AND" .
@@ -3059,16 +3060,16 @@ class WT_Stats {
 			" parentfamily.l_to AS id," .
 			" childbirth.d_julianday2-birth.d_julianday1 AS age" .
 			" FROM `##link` AS parentfamily" .
-			" JOIN `##link` AS childfamily ON childfamily.l_file = {$this->tree->tree_id}" .
-			" JOIN `##dates` AS birth ON birth.d_file = {$this->tree->tree_id}" .
-			" JOIN `##dates` AS childbirth ON childbirth.d_file = {$this->tree->tree_id}" .
+			" JOIN `##link` AS childfamily ON childfamily.l_file = {$this->tree->id()}" .
+			" JOIN `##dates` AS birth ON birth.d_file = {$this->tree->id()}" .
+			" JOIN `##dates` AS childbirth ON childbirth.d_file = {$this->tree->id()}" .
 			" WHERE" .
 			" birth.d_gid = parentfamily.l_to AND" .
 			" childfamily.l_to = childbirth.d_gid AND" .
 			" childfamily.l_type = 'CHIL' AND" .
 			" parentfamily.l_type = '{$sex_field}' AND" .
 			" childfamily.l_from = parentfamily.l_from AND" .
-			" parentfamily.l_file = {$this->tree->tree_id} AND" .
+			" parentfamily.l_file = {$this->tree->id()} AND" .
 			" birth.d_fact = 'BIRT' AND" .
 			" childbirth.d_fact = 'BIRT' AND" .
 			" birth.d_julianday1 <> 0 AND" .
@@ -3133,7 +3134,7 @@ class WT_Stats {
 			$sql =
 				"SELECT SQL_CACHE FLOOR(d_year/100+1) AS century, COUNT(*) AS total" .
 				" FROM `##dates`" .
-				" WHERE d_file={$this->tree->tree_id} AND d_year<>0 AND d_fact='MARR' AND d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
+				" WHERE d_file={$this->tree->id()} AND d_year<>0 AND d_fact='MARR' AND d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
 			if ($year1 >= 0 && $year2 >= 0) {
 				$sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
 			}
@@ -3146,11 +3147,11 @@ class WT_Stats {
 			$sql =
 				" SELECT SQL_CACHE fam.f_id AS fams, fam.f_husb, fam.f_wife, married.d_julianday2 AS age, married.d_month AS month, indi.i_id AS indi" .
 				" FROM `##families` AS fam" .
-				" LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree->tree_id}" .
-				" LEFT JOIN `##individuals` AS indi ON indi.i_file = {$this->tree->tree_id}" .
+				" LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree->id()}" .
+				" LEFT JOIN `##individuals` AS indi ON indi.i_file = {$this->tree->id()}" .
 				" WHERE" .
 				" married.d_gid = fam.f_id AND" .
-				" fam.f_file = {$this->tree->tree_id} AND" .
+				" fam.f_file = {$this->tree->id()} AND" .
 				" married.d_fact = 'MARR' AND" .
 				" married.d_julianday2 <> 0 AND" .
 				$years .
@@ -3160,7 +3161,7 @@ class WT_Stats {
 			$sql =
 				"SELECT SQL_CACHE d_month, COUNT(*) AS total" .
 				" FROM `##dates`" .
-				" WHERE d_file={$this->tree->tree_id} AND d_fact='MARR'";
+				" WHERE d_file={$this->tree->id()} AND d_fact='MARR'";
 			if ($year1 >= 0 && $year2 >= 0) {
 				$sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
 			}
@@ -3228,7 +3229,7 @@ class WT_Stats {
 			$sql =
 				"SELECT SQL_CACHE FLOOR(d_year/100+1) AS century, COUNT(*) AS total" .
 				" FROM `##dates`" .
-				" WHERE d_file={$this->tree->tree_id} AND d_year<>0 AND d_fact = 'DIV' AND d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
+				" WHERE d_file={$this->tree->id()} AND d_year<>0 AND d_fact = 'DIV' AND d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
 			if ($year1 >= 0 && $year2 >= 0) {
 				$sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
 			}
@@ -3241,11 +3242,11 @@ class WT_Stats {
 			$sql =
 				" SELECT SQL_CACHE fam.f_id AS fams, fam.f_husb, fam.f_wife, divorced.d_julianday2 AS age, divorced.d_month AS month, indi.i_id AS indi" .
 				" FROM `##families` AS fam" .
-				" LEFT JOIN `##dates` AS divorced ON divorced.d_file = {$this->tree->tree_id}" .
-				" LEFT JOIN `##individuals` AS indi ON indi.i_file = {$this->tree->tree_id}" .
+				" LEFT JOIN `##dates` AS divorced ON divorced.d_file = {$this->tree->id()}" .
+				" LEFT JOIN `##individuals` AS indi ON indi.i_file = {$this->tree->id()}" .
 				" WHERE" .
 				" divorced.d_gid = fam.f_id AND" .
-				" fam.f_file = {$this->tree->tree_id} AND" .
+				" fam.f_file = {$this->tree->id()} AND" .
 				" divorced.d_fact = 'DIV' AND" .
 				" divorced.d_julianday2 <> 0 AND" .
 				$years .
@@ -3254,7 +3255,7 @@ class WT_Stats {
 		} else {
 			$sql =
 				"SELECT SQL_CACHE d_month, COUNT(*) AS total FROM `##dates` " .
-				"WHERE d_file={$this->tree->tree_id} AND d_fact = 'DIV'";
+				"WHERE d_file={$this->tree->id()} AND d_fact = 'DIV'";
 			if ($year1 >= 0 && $year2 >= 0) {
 				$sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
 			}
@@ -3459,7 +3460,7 @@ class WT_Stats {
 				"JOIN `##dates` AS birth ON (birth.d_gid=fam.f_husb AND birth.d_file=fam.f_file) " .
 				"WHERE " .
 				" '{$sex}' IN ('M', 'BOTH') AND " .
-				" married.d_file={$this->tree->tree_id} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND " .
+				" married.d_file={$this->tree->id()} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND " .
 				" birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND birth.d_fact='BIRT' AND " .
 				" married.d_julianday1>birth.d_julianday1 AND birth.d_julianday1<>0 " .
 				"GROUP BY century, sex " .
@@ -3473,7 +3474,7 @@ class WT_Stats {
 				"JOIN `##dates` AS birth ON (birth.d_gid=fam.f_wife AND birth.d_file=fam.f_file) " .
 				"WHERE " .
 				" '{$sex}' IN ('F', 'BOTH') AND " .
-				" married.d_file={$this->tree->tree_id} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND " .
+				" married.d_file={$this->tree->id()} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND " .
 				" birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND birth.d_fact='BIRT' AND " .
 				" married.d_julianday1>birth.d_julianday1 AND birth.d_julianday1<>0 " .
 				" GROUP BY century, sex ORDER BY century"
@@ -3579,7 +3580,7 @@ class WT_Stats {
 				"JOIN `##dates` AS birth ON (birth.d_gid=fam.f_husb AND birth.d_file=fam.f_file) " .
 				"WHERE " .
 				" '{$sex}' IN ('M', 'BOTH') AND {$years} " .
-				" married.d_file={$this->tree->tree_id} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND " .
+				" married.d_file={$this->tree->id()} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND " .
 				" birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND birth.d_fact='BIRT' AND " .
 				" married.d_julianday1>birth.d_julianday1 AND birth.d_julianday1<>0 " .
 				"UNION ALL " .
@@ -3592,7 +3593,7 @@ class WT_Stats {
 				"JOIN `##dates` AS birth ON (birth.d_gid=fam.f_wife AND birth.d_file=fam.f_file) " .
 				"WHERE " .
 				" '{$sex}' IN ('F', 'BOTH') AND {$years} " .
-				" married.d_file={$this->tree->tree_id} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND " .
+				" married.d_file={$this->tree->id()} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND " .
 				" birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND birth.d_fact='BIRT' AND " .
 				" married.d_julianday1>birth.d_julianday1 AND birth.d_julianday1<>0 "
 			);
@@ -3898,7 +3899,7 @@ class WT_Stats {
 	 */
 	public function totalMarriedMales() {
 		$n = WT_DB::prepare("SELECT SQL_CACHE COUNT(DISTINCT f_husb) FROM `##families` WHERE f_file=? AND f_gedcom LIKE '%\\n1 MARR%'")
-			->execute(array($this->tree->tree_id))
+			->execute(array($this->tree->id()))
 			->fetchOne();
 		return WT_I18N::number($n);
 	}
@@ -3908,7 +3909,7 @@ class WT_Stats {
 	 */
 	public function totalMarriedFemales() {
 		$n = WT_DB::prepare("SELECT SQL_CACHE COUNT(DISTINCT f_wife) FROM `##families` WHERE f_file=? AND f_gedcom LIKE '%\\n1 MARR%'")
-			->execute(array($this->tree->tree_id))
+			->execute(array($this->tree->id()))
 			->fetchOne();
 		return WT_I18N::number($n);
 	}
@@ -3923,11 +3924,11 @@ class WT_Stats {
 			" SELECT SQL_CACHE f_numchil AS tot, f_id AS id" .
 			" FROM `##families`" .
 			" WHERE" .
-			" f_file={$this->tree->tree_id}" .
+			" f_file={$this->tree->id()}" .
 			" AND f_numchil = (" .
 			"  SELECT max( f_numchil )" .
 			"  FROM `##families`" .
-			"  WHERE f_file ={$this->tree->tree_id}" .
+			"  WHERE f_file ={$this->tree->id()}" .
 			" )" .
 			" LIMIT 1"
 		);
@@ -3973,7 +3974,7 @@ class WT_Stats {
 			"SELECT SQL_CACHE f_numchil AS tot, f_id AS id" .
 			" FROM `##families`" .
 			" WHERE" .
-			" f_file={$this->tree->tree_id}" .
+			" f_file={$this->tree->id()}" .
 			" ORDER BY tot DESC" .
 			" LIMIT " . $total
 		);
@@ -4038,11 +4039,11 @@ class WT_Stats {
 			" link2.l_to AS ch2," .
 			" child1.d_julianday2-child2.d_julianday2 AS age" .
 			" FROM `##link` AS link1" .
-			" LEFT JOIN `##dates` AS child1 ON child1.d_file = {$this->tree->tree_id}" .
-			" LEFT JOIN `##dates` AS child2 ON child2.d_file = {$this->tree->tree_id}" .
-			" LEFT JOIN `##link` AS link2 ON link2.l_file = {$this->tree->tree_id}" .
+			" LEFT JOIN `##dates` AS child1 ON child1.d_file = {$this->tree->id()}" .
+			" LEFT JOIN `##dates` AS child2 ON child2.d_file = {$this->tree->id()}" .
+			" LEFT JOIN `##link` AS link2 ON link2.l_file = {$this->tree->id()}" .
 			" WHERE" .
-			" link1.l_file = {$this->tree->tree_id} AND" .
+			" link1.l_file = {$this->tree->id()} AND" .
 			" link1.l_from = link2.l_from AND" .
 			" link1.l_type = 'CHIL' AND" .
 			" child1.d_gid = link1.l_to AND" .
@@ -4175,10 +4176,10 @@ class WT_Stats {
 			"  child1.d_month as d_month" .
 			$sql_sex1 .
 			"  FROM `##link` AS link1" .
-			"  LEFT JOIN `##dates` AS child1 ON child1.d_file = {$this->tree->tree_id}" .
+			"  LEFT JOIN `##dates` AS child1 ON child1.d_file = {$this->tree->id()}" .
 			$sql_sex2 .
 			"  WHERE" .
-			"  link1.l_file = {$this->tree->tree_id} AND" .
+			"  link1.l_file = {$this->tree->id()} AND" .
 			"  link1.l_type = 'CHIL' AND" .
 			"  child1.d_gid = link1.l_to AND" .
 			"  child1.d_fact = 'BIRT' AND" .
@@ -4346,7 +4347,7 @@ class WT_Stats {
 		$rows = $this->runSql(
 			" SELECT SQL_CACHE f_numchil AS tot, f_id AS id" .
 			" FROM `##families`" .
-			" WHERE f_file={$this->tree->tree_id}" .
+			" WHERE f_file={$this->tree->id()}" .
 			" ORDER BY tot DESC" .
 			" LIMIT " . $total
 		);
@@ -4380,7 +4381,7 @@ class WT_Stats {
 	 * @return string
 	 */
 	public function totalChildren() {
-		$rows = $this->runSql("SELECT SQL_CACHE SUM(f_numchil) AS tot FROM `##families` WHERE f_file={$this->tree->tree_id}");
+		$rows = $this->runSql("SELECT SQL_CACHE SUM(f_numchil) AS tot FROM `##families` WHERE f_file={$this->tree->id()}");
 
 		return WT_I18N::number($rows[0]['tot']);
 	}
@@ -4389,7 +4390,7 @@ class WT_Stats {
 	 * @return string
 	 */
 	public function averageChildren() {
-		$rows = $this->runSql("SELECT SQL_CACHE AVG(f_numchil) AS tot FROM `##families` WHERE f_file={$this->tree->tree_id}");
+		$rows = $this->runSql("SELECT SQL_CACHE AVG(f_numchil) AS tot FROM `##families` WHERE f_file={$this->tree->id()}");
 
 		return WT_I18N::number($rows[0]['tot'], 2);
 	}
@@ -4416,7 +4417,7 @@ class WT_Stats {
 				" SELECT SQL_CACHE ROUND(AVG(f_numchil),2) AS num, FLOOR(d_year/100+1) AS century" .
 				" FROM  `##families`" .
 				" JOIN  `##dates` ON (d_file = f_file AND d_gid=f_id)" .
-				" WHERE f_file = {$this->tree->tree_id}" .
+				" WHERE f_file = {$this->tree->id()}" .
 				" AND   d_julianday1<>0" .
 				" AND   d_fact = 'MARR'" .
 				" AND   d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')" .
@@ -4463,7 +4464,7 @@ class WT_Stats {
 					"(SELECT count(i_sex) AS num FROM `##link` " .
 					"LEFT OUTER JOIN `##individuals` " .
 					"ON l_from=i_id AND l_file=i_file AND i_sex='M' AND l_type='FAMC' " .
-					"JOIN `##families` ON f_file=l_file AND f_id=l_to WHERE f_file={$this->tree->tree_id} GROUP BY l_to" .
+					"JOIN `##families` ON f_file=l_file AND f_id=l_to WHERE f_file={$this->tree->id()} GROUP BY l_to" .
 					") boys" .
 					" GROUP BY num" .
 					" ORDER BY num";
@@ -4473,7 +4474,7 @@ class WT_Stats {
 					"(SELECT count(i_sex) AS num FROM `##link` " .
 					"LEFT OUTER JOIN `##individuals` " .
 					"ON l_from=i_id AND l_file=i_file AND i_sex='F' AND l_type='FAMC' " .
-					"JOIN `##families` ON f_file=l_file AND f_id=l_to WHERE f_file={$this->tree->tree_id} GROUP BY l_to" .
+					"JOIN `##families` ON f_file=l_file AND f_id=l_to WHERE f_file={$this->tree->id()} GROUP BY l_to" .
 					") girls" .
 					" GROUP BY num" .
 					" ORDER BY num";
@@ -4481,14 +4482,14 @@ class WT_Stats {
 				$sql = "SELECT SQL_CACHE f_numchil, COUNT(*) AS total FROM `##families` ";
 				if ($year1 >= 0 && $year2 >= 0) {
 					$sql .=
-						"AS fam LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree->tree_id}"
+						"AS fam LEFT JOIN `##dates` AS married ON married.d_file = {$this->tree->id()}"
 						. " WHERE"
 						. " married.d_gid = fam.f_id AND"
-						. " fam.f_file = {$this->tree->tree_id} AND"
+						. " fam.f_file = {$this->tree->id()} AND"
 						. " married.d_fact = 'MARR' AND"
 						. " married.d_year BETWEEN '{$year1}' AND '{$year2}'";
 				} else {
-					$sql .= "WHERE f_file={$this->tree->tree_id}";
+					$sql .= "WHERE f_file={$this->tree->id()}";
 				}
 				$sql .= " GROUP BY f_numchil";
 			}
@@ -4550,7 +4551,7 @@ class WT_Stats {
 		$rows = $this->runSql(
 			" SELECT SQL_CACHE COUNT(*) AS tot" .
 			" FROM  `##families`" .
-			" WHERE f_numchil = 0 AND f_file = {$this->tree->tree_id}");
+			" WHERE f_numchil = 0 AND f_file = {$this->tree->id()}");
 
 		return $rows[0]['tot'];
 	}
@@ -4578,7 +4579,7 @@ class WT_Stats {
 		$rows = $this->runSql(
 			" SELECT SQL_CACHE f_id AS family" .
 			" FROM `##families` AS fam" .
-			" WHERE f_numchil = 0 AND fam.f_file = {$this->tree->tree_id}");
+			" WHERE f_numchil = 0 AND fam.f_file = {$this->tree->id()}");
 		if (!isset($rows[0])) {
 			return '';
 		}
@@ -4647,7 +4648,7 @@ class WT_Stats {
 			" `##dates` AS married ON (married.d_file = fam.f_file AND married.d_gid = fam.f_id)" .
 			" WHERE" .
 			" f_numchil = 0 AND" .
-			" fam.f_file = {$this->tree->tree_id} AND" .
+			" fam.f_file = {$this->tree->id()} AND" .
 			$years .
 			" married.d_fact = 'MARR' AND" .
 			" married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')" .
@@ -4720,11 +4721,11 @@ class WT_Stats {
 		$rows = $this->runSql(
 			"SELECT SQL_CACHE COUNT(*) AS tot, f_id AS id" .
 			" FROM `##families`" .
-			" JOIN `##link` AS children ON children.l_file = {$this->tree->tree_id}" .
-			" JOIN `##link` AS mchildren ON mchildren.l_file = {$this->tree->tree_id}" .
-			" JOIN `##link` AS gchildren ON gchildren.l_file = {$this->tree->tree_id}" .
+			" JOIN `##link` AS children ON children.l_file = {$this->tree->id()}" .
+			" JOIN `##link` AS mchildren ON mchildren.l_file = {$this->tree->id()}" .
+			" JOIN `##link` AS gchildren ON gchildren.l_file = {$this->tree->id()}" .
 			" WHERE" .
-			" f_file={$this->tree->tree_id} AND" .
+			" f_file={$this->tree->id()} AND" .
 			" children.l_from=f_id AND" .
 			" children.l_type='CHIL' AND" .
 			" children.l_to=mchildren.l_from AND" .
@@ -4842,7 +4843,7 @@ class WT_Stats {
 	 * @return string
 	 */
 	public function getCommonSurname() {
-		$surnames = array_keys(get_top_surnames($this->tree->tree_id, 1, 1));
+		$surnames = array_keys(get_top_surnames($this->tree->id(), 1, 1));
 		return array_shift($surnames);
 	}
 
@@ -5990,7 +5991,7 @@ class WT_Stats {
 	public function totalGedcomNews() {
 		try {
 			$number = (int) WT_DB::prepare("SELECT COUNT(*) FROM `##news` WHERE gedcom_id = ?")
-				->execute(array($this->tree->tree_id))
+				->execute(array($this->tree->id()))
 				->fetchOne();
 		} catch (PDOException $ex) {
 			// The module may not be installed, so the table may not exist.

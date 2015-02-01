@@ -27,7 +27,7 @@ require './includes/session.php';
 $controller = new WT_Controller_Page;
 $controller
 	->restrictAccess(Auth::isManager())
-	->setPageTitle(WT_I18N::translate('Logs'));
+	->setPageTitle(WT_I18N::translate('Website logs'));
 
 require WT_ROOT . 'includes/functions/functions_edit.php';
 
@@ -179,7 +179,7 @@ case 'load_json':
 	header('Content-type: application/json');
 	// See http://www.datatables.net/usage/server-side
 	echo json_encode(array(
-		'draw'            => WT_Filter::getInteger('draw'), // Always an integer
+		'draw'            => WT_Filter::getInteger('draw'),
 		'recordsTotal'    => $recordsTotal,
 		'recordsFiltered' => $recordsFiltered,
 		'data'            => $data
@@ -198,7 +198,7 @@ $controller
 		jQuery(".table-site-logs").dataTable( {
 			processing: true,
 			serverSide: true,
-			ajax: "'.WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=load_json&from=' . $from . '&to=' . $to . '&type=' . $type . '&text=' . rawurlencode($text) . '&ip=' . rawurlencode($ip) . '&user=' . rawurlencode($user) . '&gedc=' . rawurlencode($gedc) . '",
+			ajax: "'.WT_BASE_URL . WT_SCRIPT_NAME . '?action=load_json&from=' . $from . '&to=' . $to . '&type=' . $type . '&text=' . rawurlencode($text) . '&ip=' . rawurlencode($ip) . '&user=' . rawurlencode($user) . '&gedc=' . rawurlencode($gedc) . '",
 			' . WT_I18N::datatablesI18N(array(10, 20, 50, 100, 500, 1000, -1)) . ',
 			sorting: [[ 0, "desc" ]],
 			pageLength: ' . Auth::user()->getPreference('admin_site_log_page_size', 20) . '

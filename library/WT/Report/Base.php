@@ -90,7 +90,7 @@ class WT_Report_Base {
 	public $title = '';
 
 	/** @var string Author of the report, the users full name */
-	public $rauthor = WT_SERVER_NAME;
+	public $rauthor = WT_BASE_URL;
 
 	/** @var string Keywords */
 	public $rkeywords = '';

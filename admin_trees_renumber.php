@@ -26,7 +26,7 @@ require './includes/session.php';
 $controller = new WT_Controller_Page;
 $controller
 	->restrictAccess(Auth::isManager())
-	->setPageTitle(WT_I18N::translate(/* I18N: Renumber the records in a family tree */ 'Renumber family tree') . ' — ' . WT_Filter::escapeHtml($WT_TREE->tree_title))
+	->setPageTitle(WT_I18N::translate(/* I18N: Renumber the records in a family tree */ 'Renumber family tree') . ' — ' . $WT_TREE->titleHtml())
 	->pageHeader();
 
 // Every XREF used by this tree and also used by some other tree
@@ -235,7 +235,7 @@ if (WT_Filter::get('go')) {
 		WT_DB::prepare(
 			"UPDATE `##link` SET l_to = ? WHERE l_to = ? AND l_file = ?"
 		)->execute(array($new_xref, $old_xref, WT_GED_ID));
-		echo '<p>', WT_I18N::translate('The record %1$s was renamed to %2$s.', $old_xref, $new_xref), '</p>';
+		echo '<p>', WT_I18N::translate('The record %1$s has been renamed to %2$s.', $old_xref, $new_xref), '</p>';
 		unset($xrefs[$old_xref]);
 		WT_DB::exec("UNLOCK TABLES");
 		WT_DB::commit();
@@ -250,7 +250,7 @@ if (WT_Filter::get('go')) {
 
 		// How much time do we have left?
 		if (microtime(true) - WT_START_TIME > ini_get('max_execution_time') - 2) {
-			echo '<p>', WT_I18N::translate('The server’s time limit was reached.'), '</p>';
+			echo '<p>', WT_I18N::translate('The server’s time limit has been reached.'), '</p>';
 			break;
 		}
 	}
@@ -271,7 +271,7 @@ echo '<p>', WT_I18N::plural(
 if ($xrefs) {
 	// We use GET (not POST) for this update operation - because we want the user to
 	// be able to press F5 to continue after a timeout.
-	echo '<form method="GET" action="', WT_SCRIPT_NAME, '">';
+	echo '<form>';
 	echo '<p>', WT_I18N::translate('You can renumber this family tree.'), '</p>';
 	echo '<button type="submit" class="btn btn-primary">';
 	echo '<i class="fa fa-check"></i> ', /* I18N: Button label */ WT_I18N::translate('continue');

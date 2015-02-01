@@ -113,6 +113,7 @@ define('WT_REGEX_INTEGER', '-?\d+');
 define('WT_REGEX_ALPHA', '[a-zA-Z]+');
 define('WT_REGEX_ALPHANUM', '[a-zA-Z0-9]+');
 define('WT_REGEX_BYTES', '[0-9]+[bBkKmMgG]?');
+define('WT_REGEX_IPV4', '\d{1,3}(\.\d{1,3}){3}');
 define('WT_REGEX_USERNAME', '[^<>"%{};]+');
 define('WT_REGEX_PASSWORD', '.{' . WT_MINIMUM_PASSWORD_LENGTH . ',}');
 
@@ -186,58 +187,28 @@ if (!ini_get('date.timezone')) {
 // 2) provide calendar conversions for the Arabic and Persian calendars
 \Fisharebest\ExtCalendar\Shim::create();
 
-// Split the request protocol://host:port/path/to/script.php?var=value into parts
-// WT_SERVER_NAME  = protocol://host:port
-// WT_SCRIPT_PATH  = /path/to/   (begins and ends with /)
-// WT_SCRIPT_NAME  = script.php  (already defined in the calling script)
+// Calculate the base URL, so we can generate absolute URLs.
 
-if (isset($_SERVER['HTTP_X_FORWARDED_PROTO'])) {
-	$protocol = $_SERVER['HTTP_X_FORWARDED_PROTO'];
-} elseif (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') {
-	$protocol = 'https';
+$protocol = WT_Filter::server('HTTP_X_FORWARDED_PROTO', 'https?', WT_Filter::server('HTTPS', null, 'off') === 'off' ? 'http' : 'https');
+
+// For CLI scripts, use localhost.
+$host = WT_Filter::server('SERVER_NAME', null, 'localhost');
+
+$port = WT_Filter::server('HTTP_X_FORWARDED_PORT', '80|443', WT_Filter::server('SERVER_PORT', null, '80'));
+
+// Ignore the default port.
+if ($protocol === 'http' && $port === '80' || $protocol === 'https' && $port === '443') {
+	$port = '';
 } else {
-	$protocol = 'http';
-}
-if (isset($_SERVER['HTTP_X_FORWARDED_PORT'])) {
-	$port = $_SERVER['HTTP_X_FORWARDED_PORT'];
-} elseif (isset($_SERVER['SERVER_PORT'])) {
-	$port = $_SERVER['SERVER_PORT'];
-} else {
-	$port = '80';
+	$port = ':' . $port;
 }
 
-define('WT_SERVER_NAME',
-	$protocol . '://' .
-	(empty($_SERVER['SERVER_NAME']) ? '' : $_SERVER['SERVER_NAME']) .
-	($protocol === 'http' && $port === '80' || $protocol === 'https' && $port === '443' ? '' : ':' . $port)
-);
+// REDIRECT_URL should be set when Apache is following a RedirectRule
+// PHP_SELF may have trailing path: /path/to/script.php/FOO/BAR
+$path = WT_Filter::server('REDIRECT_URL', null, WT_Filter::server('PHP_SELF'));
+$path = substr($path, 0, stripos($path, WT_SCRIPT_NAME));
 
-// REDIRECT_URL should be set in the case of Apache following a RedirectRule
-// SCRIPT_NAME should always be correct, but is not always present.
-// PHP_SELF should always be present, but may have trailing path: /path/to/script.php/FOO/BAR
-if (!empty($_SERVER['REDIRECT_URL'])) {
-	define('WT_SCRIPT_PATH', substr($_SERVER['REDIRECT_URL'], 0, stripos($_SERVER['REDIRECT_URL'], WT_SCRIPT_NAME)));
-} elseif (!empty($_SERVER['SCRIPT_NAME'])) {
-	define('WT_SCRIPT_PATH', substr($_SERVER['SCRIPT_NAME'], 0, stripos($_SERVER['SCRIPT_NAME'], WT_SCRIPT_NAME)));
-} elseif (!empty($_SERVER['PHP_SELF'])) {
-	define('WT_SCRIPT_PATH', substr($_SERVER['PHP_SELF'], 0, stripos($_SERVER['PHP_SELF'], WT_SCRIPT_NAME)));
-} else {
-	// No server settings - probably running as a command line script
-	define('WT_SCRIPT_PATH', '/');
-}
-
-// Microsoft IIS servers don’t set REQUEST_URI, so generate it for them.
-if (!isset($_SERVER['REQUEST_URI'])) {
-	$_SERVER['REQUEST_URI'] = substr($_SERVER['PHP_SELF'], 1);
-	if (isset($_SERVER['QUERY_STRING'])) {
-		$_SERVER['REQUEST_URI'] .= '?' . $_SERVER['QUERY_STRING'];
-	}
-}
-
-// Some browsers do not send a user-agent string
-if (!isset($_SERVER['HTTP_USER_AGENT'])) {
-	$_SERVER['HTTP_USER_AGENT'] = '';
-}
+define('WT_BASE_URL', $protocol . '://' . $host . $port . $path);
 
 // Common functions - move these to classes so we can autoload them.
 require WT_ROOT . 'includes/functions/functions.php';
@@ -284,17 +255,17 @@ if (file_exists(WT_ROOT . 'data/config.ini.php')) {
 	$dbconfig = parse_ini_file(WT_ROOT . 'data/config.ini.php');
 	// Invalid/unreadable config file?
 	if (!is_array($dbconfig)) {
-		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'site-unavailable.php');
+		header('Location: ' . WT_BASE_URL . 'site-unavailable.php');
 		exit;
 	}
 	// Down for maintenance?
 	if (file_exists(WT_ROOT . 'data/offline.txt')) {
-		header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'site-offline.php');
+		header('Location: ' . WT_BASE_URL . 'site-offline.php');
 		exit;
 	}
 } else {
 	// No config file. Set one up.
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'setup.php');
+	header('Location: ' . WT_BASE_URL . 'setup.php');
 	exit;
 }
 
@@ -310,7 +281,7 @@ try {
 	WT_DB::updateSchema(WT_ROOT . 'includes/db_schema/', 'WT_SCHEMA_VERSION', WT_SCHEMA_VERSION);
 } catch (PDOException $ex) {
 	WT_FlashMessages::addMessage($ex->getMessage(), 'danger');
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'site-unavailable.php');
+	header('Location: ' . WT_BASE_URL . 'site-unavailable.php');
 	throw $ex;
 }
 
@@ -320,7 +291,7 @@ define('WT_DATA_DIR', realpath(WT_Site::getPreference('INDEX_DIRECTORY') ? WT_Si
 
 // If we have a preferred URL (e.g. www.example.com instead of www.isp.com/~example), then redirect to it.
 $SERVER_URL = WT_Site::getPreference('SERVER_URL');
-if ($SERVER_URL && $SERVER_URL != WT_SERVER_NAME . WT_SCRIPT_PATH) {
+if ($SERVER_URL && $SERVER_URL != WT_BASE_URL) {
 	header('Location: ' . $SERVER_URL . WT_SCRIPT_NAME . (isset($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : ''), true, 301);
 	exit;
 }
@@ -342,7 +313,7 @@ $rule = WT_DB::prepare(
 	" WHERE IFNULL(INET_ATON(?), 0) BETWEEN ip_address_start AND ip_address_end" .
 	" AND ? LIKE user_agent_pattern" .
 	" ORDER BY ip_address_end LIMIT 1"
-)->execute(array($WT_REQUEST->getClientIp(), $_SERVER['HTTP_USER_AGENT']))->fetchOne();
+)->execute(array($WT_REQUEST->getClientIp(), WT_Filter::server('HTTP_USER_AGENT')))->fetchOne();
 
 switch ($rule) {
 case 'allow':
@@ -361,7 +332,7 @@ case 'unknown':
 case '':
 	WT_DB::prepare(
 		"INSERT INTO `##site_access_rule` (ip_address_start, ip_address_end, user_agent_pattern, comment) VALUES (IFNULL(INET_ATON(?), 0), IFNULL(INET_ATON(?), 4294967295), ?, '')"
-	)->execute(array($WT_REQUEST->getClientIp(), $WT_REQUEST->getClientIp(), $_SERVER['HTTP_USER_AGENT']));
+	)->execute(array($WT_REQUEST->getClientIp(), $WT_REQUEST->getClientIp(), WT_Filter::server('HTTP_USER_AGENT')));
 	$SEARCH_SPIDER = true;
 	break;
 }
@@ -418,7 +389,7 @@ $cfg = array(
 	'gc_maxlifetime'  => WT_Site::getPreference('SESSION_TIME'),
 	'gc_probability'  => 1,
 	'gc_divisor'      => 100,
-	'cookie_path'     => WT_SCRIPT_PATH,
+	'cookie_path'     => parse_url(WT_BASE_URL, PHP_URL_PATH),
 	'cookie_httponly' => true,
 );
 
@@ -458,18 +429,17 @@ if (isset($_REQUEST['ged'])) {
 $WT_TREE = null;
 foreach (WT_Tree::getAll() as $tree) {
 	$WT_TREE = $tree;
-	if ($WT_TREE->tree_name == $GEDCOM && ($WT_TREE->imported || Auth::isAdmin())) {
+	if ($WT_TREE->name() == $GEDCOM && ($WT_TREE->getPreference('imported') || Auth::isAdmin())) {
 		break;
 	}
 }
 
 // These attributes of the currently-selected tree are used frequently
 if ($WT_TREE) {
-	define('WT_GEDCOM', $WT_TREE->tree_name);
-	define('WT_GED_ID', $WT_TREE->tree_id);
-	define('WT_GEDURL', $WT_TREE->tree_name_url);
-	define('WT_TREE_TITLE', WT_Filter::escapeHtml($WT_TREE->tree_title));
-	define('WT_IMPORTED', $WT_TREE->imported);
+	define('WT_GEDCOM', $WT_TREE->name());
+	define('WT_GED_ID', $WT_TREE->id());
+	define('WT_GEDURL', $WT_TREE->nameUrl());
+	define('WT_TREE_TITLE', $WT_TREE->titleHtml());
 	define('WT_USER_GEDCOM_ADMIN', Auth::isManager($WT_TREE));
 	define('WT_USER_CAN_ACCEPT', Auth::isModerator($WT_TREE));
 	define('WT_USER_CAN_EDIT', Auth::isEditor($WT_TREE));
@@ -490,7 +460,6 @@ if ($WT_TREE) {
 	define('WT_GED_ID', null);
 	define('WT_GEDURL', '');
 	define('WT_TREE_TITLE', WT_WEBTREES);
-	define('WT_IMPORTED', false);
 	define('WT_USER_GEDCOM_ADMIN', false);
 	define('WT_USER_CAN_ACCEPT', false);
 	define('WT_USER_CAN_EDIT', false);
@@ -533,14 +502,14 @@ require WT_ROOT . 'includes/config_data.php';
 if (WT_Site::getPreference('LOGIN_URL')) {
 	define('WT_LOGIN_URL', WT_Site::getPreference('LOGIN_URL'));
 } else {
-	define('WT_LOGIN_URL', WT_SERVER_NAME . WT_SCRIPT_PATH . 'login.php');
+	define('WT_LOGIN_URL', WT_BASE_URL . 'login.php');
 }
 
 // If there is no current tree and we need one, then redirect somewhere
 if (WT_SCRIPT_NAME != 'admin_trees_manage.php' && WT_SCRIPT_NAME != 'admin_pgv_to_wt.php' && WT_SCRIPT_NAME != 'login.php' && WT_SCRIPT_NAME != 'logout.php' && WT_SCRIPT_NAME != 'import.php' && WT_SCRIPT_NAME != 'help_text.php' && WT_SCRIPT_NAME != 'message.php') {
-	if (!$WT_TREE || !WT_IMPORTED) {
+	if (!$WT_TREE || !$WT_TREE->getPreference('imported')) {
 		if (Auth::isAdmin()) {
-			header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin_trees_manage.php');
+			header('Location: ' . WT_BASE_URL . 'admin_trees_manage.php');
 		} else {
 			header('Location: ' . WT_LOGIN_URL . '?url=' . rawurlencode(WT_SCRIPT_NAME . (isset($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : '')), true, 301);
 

@@ -251,5 +251,5 @@ function warning($message) {
 }
 
 if (!$errors) {
-	echo '<p>', WT_I18N::translate('No errors were found.'), '</p>';
+	echo '<p>', WT_I18N::translate('No errors have been found.'), '</p>';
 }

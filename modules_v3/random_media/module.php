@@ -163,7 +163,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= '<br>';
 			$content .= '<a href="' . $random_media->getHtmlUrl() . '"><b>' . $random_media->getFullName() . '</b></a><br>';
 			foreach ($random_media->linkedIndividuals('OBJE') as $individual) {
-				$content .= '<a href="' . $individual->getHtmlUrl() . '">' . WT_I18N::translate('View person') . ' — ' . $individual->getFullname() . '</a><br>';
+				$content .= '<a href="' . $individual->getHtmlUrl() . '">' . WT_I18N::translate('View individual') . ' — ' . $individual->getFullname() . '</a><br>';
 			}
 			foreach ($random_media->linkedFamilies('OBJE') as $family) {
 				$content .= '<a href="' . $family->getHtmlUrl() . '">' . WT_I18N::translate('View family') . ' — ' . $family->getFullname() . '</a><br>';

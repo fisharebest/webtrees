@@ -209,7 +209,7 @@ case 'load_json':
 	header('Content-type: application/json');
 	// See http://www.datatables.net/usage/server-side
 	echo json_encode(array(
-		'draw'            => WT_Filter::getInteger('draw'), // Always an integer
+		'draw'            => WT_Filter::getInteger('draw'),
 		'recordsTotal'    => $recordsTotal,
 		'recordsFiltered' => $recordsFiltered,
 		'data'            => $data
@@ -228,7 +228,7 @@ $controller
 		jQuery(".table-site-changes").dataTable( {
 			processing: true,
 			serverSide: true,
-			ajax: "'.WT_SERVER_NAME . WT_SCRIPT_PATH . WT_SCRIPT_NAME . '?action=load_json&from=' . $from . '&to=' . $to . '&type=' . $type . '&oldged=' . rawurlencode($oldged) . '&newged=' . rawurlencode($newged) . '&xref=' . rawurlencode($xref) . '&user=' . rawurlencode($user) . '&gedc=' . rawurlencode($gedc) . '",
+			ajax: "'.WT_BASE_URL . WT_SCRIPT_NAME . '?action=load_json&from=' . $from . '&to=' . $to . '&type=' . $type . '&oldged=' . rawurlencode($oldged) . '&newged=' . rawurlencode($newged) . '&xref=' . rawurlencode($xref) . '&user=' . rawurlencode($user) . '&gedc=' . rawurlencode($gedc) . '",
 			' . WT_I18N::datatablesI18N(array(10, 20, 50, 100, 500, 1000, -1)) . ',
 			sorting: [[ 0, "desc" ]],
 			pageLength: ' . Auth::user()->getPreference('admin_site_change_page_size', 10) . ',

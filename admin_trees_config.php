@@ -245,7 +245,7 @@ case 'privacy':
 	$WT_TREE->setPreference('SHOW_LIVING_NAMES', WT_Filter::post('SHOW_LIVING_NAMES'));
 	$WT_TREE->setPreference('SHOW_PRIVATE_RELATIONSHIPS', WT_Filter::post('SHOW_PRIVATE_RELATIONSHIPS'));
 
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin_trees_manage.php?ged=' . $WT_TREE->tree_name);
+	header('Location: ' . WT_BASE_URL . 'admin_trees_manage.php?ged=' . $WT_TREE->nameUrl());
 
 	return;
 
@@ -359,7 +359,7 @@ case 'general':
 			$WT_TREE->setPreference('MEDIA_DIRECTORY', $MEDIA_DIRECTORY);
 		} elseif (WT_File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
 			$WT_TREE->setPreference('MEDIA_DIRECTORY', $MEDIA_DIRECTORY);
-			WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s was created.', WT_DATA_DIR . $MEDIA_DIRECTORY));
+			WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s has been created.', WT_DATA_DIR . $MEDIA_DIRECTORY));
 		} else {
 			WT_FlashMessages::addMessage(WT_I18N::translate('The folder %s does not exist, and it could not be created.', WT_DATA_DIR . $MEDIA_DIRECTORY));
 		}
@@ -377,7 +377,7 @@ case 'general':
 	}
 
 	Zend_Session::writeClose();
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin_trees_manage.php');
+	header('Location: ' . WT_BASE_URL . 'admin_trees_manage.php');
 
 	return;
 }
@@ -385,7 +385,7 @@ case 'general':
 switch (WT_Filter::get('action')) {
 case 'privacy':
 	$controller
-		->setPageTitle(WT_Filter::escapeHtml($WT_TREE->tree_title) . ' — ' . WT_I18N::translate('Privacy'))
+		->setPageTitle($WT_TREE->titleHtml() . ' — ' . WT_I18N::translate('Privacy'))
 		->addInlineJavascript('
 			jQuery("#default-resn input[type=checkbox]").on("click", function() {
 				if ($(this).prop("checked")) {
@@ -400,10 +400,10 @@ case 'privacy':
 		');
 	break;
 case 'general':
-	$controller->setPageTitle(WT_Filter::escapeHtml($WT_TREE->tree_title) . ' — ' . WT_I18N::translate('Preferences'));
+	$controller->setPageTitle($WT_TREE->titleHtml() . ' — ' . WT_I18N::translate('Preferences'));
 	break;
 default:
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'admin.php');
+	header('Location: ' . WT_BASE_URL . 'admin.php');
 
 	return;
 }
@@ -423,7 +423,7 @@ $controller
 
 <h1><?php echo $controller->getPageTitle(); ?></h1>
 
-<form class="form-horizontal" method="POST">
+<form class="form-horizontal" method="post">
 	<?php echo WT_Filter::getCsrf(); ?>
 	<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
 
@@ -445,7 +445,7 @@ $controller
 		<div class="col-sm-8">
 			<?php echo select_edit_control('REQUIRE_AUTHENTICATION', array('0' => WT_I18N::translate('Show to visitors'), '1' => WT_I18N::translate('Show to members')), null, $WT_TREE->getPreference('REQUIRE_AUTHENTICATION'), 'class="form-control"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Family tree” configuration setting */ WT_I18N::translate('Enabling this option will force all visitors to login before they can view any data on the site.'); ?>
+				<?php echo /* I18N: Help text for the “Family tree” configuration setting */ WT_I18N::translate('Enabling this option will force all visitors to login before they can view any data on the website.'); ?>
 			</p>
 			<?php if (WT_Site::getPreference('USE_REGISTRATION_MODULE')): ?>
 			<p class="small text-muted">
@@ -490,7 +490,7 @@ $controller
 				value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('MAX_ALIVE_AGE')); ?>"
 				>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Age at which to assume an individual is dead” configuration setting */ WT_I18N::translate('If this individual has any events other than death, burial, or cremation more recent than this number of years, he is considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose.'); ?>
+				<?php echo /* I18N: Help text for the “Age at which to assume an individual is dead” configuration setting */ WT_I18N::translate('If this individual has any events other than death, burial, or cremation more recent than this number of years, they are considered to be “alive”.  Children’s birth dates are considered to be such events for this purpose.'); ?>
 			</p>
 		</div>
 	</div>
@@ -686,7 +686,7 @@ $controller
 		<div class="col-sm-9">
 			<div class="input-group">
 				<span class="input-group-addon">
-					<?php echo WT_SERVER_NAME, WT_SCRIPT_PATH; ?>?ged=
+					<?php echo WT_BASE_URL; ?>?ged=
 				</span>
 				<input
 					class="form-control"
@@ -700,7 +700,7 @@ $controller
 					>
 			</div>
 			<p class="small text-muted">
-				<?php echo WT_I18N::translate('Avoid spaces and puncutation.  A surname might be a good choice.'); ?>
+				<?php echo /* I18N: help text for family tree / GEDCOM file names */ WT_I18N::translate('Avoid spaces and punctuation.  A family name might be a good choice.'); ?>
 			</p>
 		</div>
 	</div>
@@ -713,7 +713,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo select_edit_control('LANGUAGE', WT_I18N::installed_languages(), null, $WT_TREE->getPreference('LANGUAGE'), 'class="form-control"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Language” configuration setting */ WT_I18N::translate('If a visitor to the site has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines.'); ?>
+				<?php echo /* I18N: Help text for the “Language” configuration setting */ WT_I18N::translate('If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines.'); ?>
 			</p>
 		</div>
 	</div>
@@ -818,7 +818,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo radio_buttons('WORD_WRAPPED_NOTES', $no_yes, $WT_TREE->getPreference('WORD_WRAPPED_NOTES'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Add spaces where notes were wrapped” configuration setting */ WT_I18N::translate('Some genealogy programs wrap notes at word boundaries while others wrap notes anywhere.  This can cause webtrees to run words together.  Setting this to <b>Yes</b> will add a space between words where they are wrapped in the original GEDCOM during the import process. If you have already imported the file you will need to re-import it.'); ?>
+				<?php echo /* I18N: Help text for the “Add spaces where notes were wrapped” configuration setting */ WT_I18N::translate('Some genealogy programs wrap notes at word boundaries while others wrap notes anywhere.  This can cause webtrees to run words together.  Setting this to <b>Yes</b> will add a space between words where they are wrapped in the original GEDCOM during the import process.  If you have already imported the file you will need to re-import it.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -978,7 +978,7 @@ $controller
 				<?php endforeach; ?>
 			</select>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Genealogy contact” configuration setting */ WT_I18N::translate('The individual to contact about the genealogical data on this site.'); ?>
+				<?php echo /* I18N: Help text for the “Genealogy contact” configuration setting */ WT_I18N::translate('The individual to contact about the genealogical data on this website.'); ?>
 			</p>
 		</div>
 	</div>
@@ -1000,12 +1000,12 @@ $controller
 				<?php endforeach; ?>
 			</select>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Technical help contact” configuration setting */ WT_I18N::translate('The individual to be contacted about technical questions or errors encountered on your site.'); ?>
+				<?php echo /* I18N: Help text for the “Technical help contact” configuration setting */ WT_I18N::translate('The individual to be contacted about technical questions or errors encountered on your website.'); ?>
 			</p>
 		</div>
 	</div>
 
-	<h3><?php echo WT_I18N::translate('Web site and META tag settings'); ?></h3>
+	<h3><?php echo WT_I18N::translate('Website and META tag settings'); ?></h3>
 
 	<!-- META_TITLE -->
 	<div class="form-group">
@@ -1237,7 +1237,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo radio_buttons('SAVE_WATERMARK_IMAGE', $no_yes, $WT_TREE->getPreference('SAVE_WATERMARK_IMAGE'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Store watermarked full size images on server?” configuration setting */ WT_I18N::translate('Watermarks can be slow to generate for large images.  Busy sites may prefer to generate them once and store the watermarked image on the server.'); ?>
+				<?php echo /* I18N: Help text for the “Store watermarked full size images on server?” configuration setting */ WT_I18N::translate('Watermarks can be slow to generate for large images.  Busy websites may prefer to generate them once and store the watermarked image on the server.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -1272,7 +1272,7 @@ $controller
 	<!-- COMMON_NAMES_THRESHOLD -->
 	<div class="form-group">
 		<label class="control-label col-sm-3" for="COMMON_NAMES_THRESHOLD">
-			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Min. no. of occurrences to be a “common surname”'); ?>
+			<?php echo /* I18N: A configuration setting */ WT_I18N::translate('Minimum number of occurrences to be a “common surname”'); ?>
 		</label>
 		<div class="col-sm-9">
 			<input
@@ -1285,7 +1285,7 @@ $controller
 				value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('COMMON_NAMES_THRESHOLD')); ?>"
 				>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Min. no. of occurrences to be a ‘common surname’” configuration setting */ WT_I18N::translate('This is the number of times that a surname must occur before it shows up in the Common Surname list on the “Home page”.'); ?>
+				<?php echo /* I18N: Help text for the “Minimum number of occurrences to be a ‘common surname’” configuration setting */ WT_I18N::translate('This is the number of times that a surname must occur before it shows up in the Common Surname list on the “Home page”.'); ?>
 			</p>
 		</div>
 	</div>
@@ -1325,7 +1325,7 @@ $controller
 				value="<?php echo WT_Filter::escapeHtml($WT_TREE->getPreference('COMMON_NAMES_REMOVE')); ?>"
 				>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting */ WT_I18N::translate('If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here.  If more than one surname is entered, they must be separated by a comma. <b>Surnames are case-sensitive</b>.  Surnames entered here will also be removed from the “Top surnames” list on the “Home page”.'); ?>
+				<?php echo /* I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting */ WT_I18N::translate('If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here.  If more than one surname is entered, they must be separated by a comma.  <b>Surnames are case-sensitive</b>.  Surnames entered here will also be removed from the “Top surnames” list on the “Home page”.'); ?>
 			</p>
 		</div>
 	</div>
@@ -1645,7 +1645,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo radio_buttons('PEDIGREE_SHOW_GENDER', $hide_show, $WT_TREE->getPreference('PEDIGREE_SHOW_GENDER'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Gender icon on charts” configuration setting */ WT_I18N::translate('This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender. The option simply removes some duplicate information from the box.'); ?>
+				<?php echo /* I18N: Help text for the “Gender icon on charts” configuration setting */ WT_I18N::translate('This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender.  The option simply removes some duplicate information from the box.'); ?>
 			</p>
 	</div>
 	</fieldset>
@@ -1715,7 +1715,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo radio_buttons('SHOW_FACT_ICONS', $hide_show, $WT_TREE->getPreference('SHOW_FACT_ICONS'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Fact icons” configuration setting */ WT_I18N::translate('Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> directory of the current theme.'); ?>
+				<?php echo /* I18N: Help text for the “Fact icons” configuration setting */ WT_I18N::translate('Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> folder of the current theme.'); ?>
 			</p>
 		</div>
 	</fieldset>

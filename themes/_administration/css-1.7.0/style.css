@@ -76,7 +76,10 @@ legend {
 	font-weight: 700;
 }
 
-
+/* Raw GEDCOM data */
+.gedcom-data {
+	white-space: pre-wrap;
+}
 
 .ui-autocomplete {
 	padding: 0;

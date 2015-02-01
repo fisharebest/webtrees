@@ -335,7 +335,7 @@ class WT_GedcomRecord {
 	 * @return string
 	 */
 	public function getAbsoluteLinkUrl() {
-		return WT_SERVER_NAME . WT_SCRIPT_PATH . $this->getHtmlUrl();
+		return WT_BASE_URL . $this->getHtmlUrl();
 	}
 
 	/**

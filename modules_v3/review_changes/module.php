@@ -75,7 +75,7 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 									WT_I18N::translate('Pending changes'),
 									WT_I18N::translate('There are pending changes for you to moderate.') .
 									WT_Mail::EOL . WT_MAIL::EOL .
-									'<a href="' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'index.php?ged=' . WT_GEDURL . '">' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'index.php?ged=' . WT_GEDURL . '</a>'
+									'<a href="' . WT_BASE_URL . 'index.php?ged=' . WT_GEDURL . '">' . WT_BASE_URL . 'index.php?ged=' . WT_GEDURL . '</a>'
 								);
 								WT_I18N::init(WT_LOCALE);
 							}
