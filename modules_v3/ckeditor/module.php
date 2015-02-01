@@ -23,8 +23,6 @@
  * Class ckeditor_WT_Module
  */
 class ckeditor_WT_Module extends WT_Module {
-	const VERSION = 'ckeditor-4.4.1-custom';
-
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module.  CKEditor is a trademark.  Do not translate it?  http://ckeditor.com */ WT_I18N::translate('CKEditor™');
@@ -47,11 +45,11 @@ class ckeditor_WT_Module extends WT_Module {
 	 */
 	public static function enableEditor($controller) {
 		$controller
-			->addExternalJavascript(WT_MODULES_DIR . 'ckeditor/' . self::VERSION . '/ckeditor.js')
-			->addExternalJavascript(WT_MODULES_DIR . 'ckeditor/' . self::VERSION . '/adapters/jquery.js')
+			->addExternalJavascript(WT_CKEDITOR_BASE_URL . 'ckeditor.js')
+			->addExternalJavascript(WT_CKEDITOR_BASE_URL . 'adapters/jquery.js')
 			// Need to specify the path before we load the libary
 			->addInlineJavascript(
-				'var CKEDITOR_BASEPATH="' . WT_MODULES_DIR . 'ckeditor/' . self::VERSION . '/";',
+				'var CKEDITOR_BASEPATH="' . WT_CKEDITOR_BASE_URL . '";',
 				WT_Controller_Base::JS_PRIORITY_HIGH
 			)
 			// Activate the editor
