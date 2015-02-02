@@ -2304,7 +2304,7 @@ msgid "Average number of children per family"
 msgstr "Prosječan broj djece po obitelji"
 
 #: admin_trees_manage.php:568
-msgid "Avoid spaces and puncutation.  A family name might be a good choice."
+msgid "Avoid spaces and punctuation.  A family name might be a good choice."
 msgstr "Izbjegavajte razmake i interpunkcije. Obiteljsko ime treba biti dobar izbor."
 
 #: library/WT/Date/Jalali.php:158
