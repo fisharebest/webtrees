@@ -776,10 +776,10 @@ function update_places($gid, $ged_id, $gedrec) {
 		// For example Québec and Quebec
 		// We need a better solution that attaches multiple names to single places
 		$sql_insert_placelinks = Database::prepare(
-			"INSERT IGNORE INTO `##placelinks` (pl_p_id, pl_gid, pl_file) VALUES (?,?,?)"
+			"INSERT IGNORE INTO `##placelinks` (pl_p_id, pl_gid, pl_file) VALUES (?, ?, ?)"
 		);
 		$sql_insert_places = Database::prepare(
-			"INSERT INTO `##places` (p_place, p_parent_id, p_file, p_std_soundex, p_dm_soundex) VALUES (?,?,?,?,?)"
+			"INSERT INTO `##places` (p_place, p_parent_id, p_file, p_std_soundex, p_dm_soundex) VALUES (LEFT(?, 150), ?, ?, ?, ?)"
 		);
 		$sql_select_places = Database::prepare(
 			"SELECT p_id FROM `##places` WHERE p_file=? AND p_parent_id=? AND p_place=?"
