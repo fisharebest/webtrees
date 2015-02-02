@@ -408,7 +408,7 @@ $total_users = User::count();
 
 // Administrators
 $administrators = Database::prepare(
-	"SELECT SQL_CACHE user_id, real_name FROM `##user` JOIN `##user_setting` USING (user_id) WHERE setting_name='canadmin' AND setting_value=1"
+	"SELECT SQL_CACHE user_id, real_name FROM `##user` JOIN `##user_setting` USING (user_id) WHERE setting_name='canadmin' AND setting_value='1'"
 )->fetchAll();
 
 // Managers
@@ -430,14 +430,14 @@ $moderators = Database::prepare(
 // Number of users who have not verified their email address
 $unverified = Database::prepare(
 	"SELECT SQL_CACHE user_id, real_name FROM `##user` JOIN `##user_setting` USING (user_id)" .
-	" WHERE setting_name = 'verified' AND setting_value = 0" .
+	" WHERE setting_name = 'verified' AND setting_value = '0'" .
 	" ORDER BY real_name"
 )->fetchAll();
 
 // Number of users whose accounts are not approved by an administrator
 $unapproved = Database::prepare(
 	"SELECT SQL_CACHE user_id, real_name FROM `##user` JOIN `##user_setting` USING (user_id)" .
-	" WHERE setting_name = 'verified_by_admin' AND setting_value = 0" .
+	" WHERE setting_name = 'verified_by_admin' AND setting_value = '0'" .
 	" ORDER BY real_name"
 )->fetchAll();
 
