@@ -48,7 +48,7 @@ class ReportPdf extends ReportBase {
 	/**
 	 * A new object of the PDF class
 	 *
-	 * @var PDF
+	 * @var ReportTcpdf
 	 */
 	public $pdf;
 
@@ -146,10 +146,8 @@ class ReportPdf extends ReportBase {
 
 	/**
 	 * Create a new Cell object - ReportPdf
-
-
-*
-*@param integer $width   cell width (expressed in points)
+	 *
+	 * @param integer $width   cell width (expressed in points)
 	 * @param integer $height  cell height (expressed in points)
 	 * @param mixed   $border  Border style
 	 * @param string  $align   Text alignement
@@ -163,10 +161,8 @@ class ReportPdf extends ReportBase {
 	 * @param string  $bocolor Border color
 	 * @param string  $tcolor  Text color
 	 * @param boolean $reseth
-
-
-*
-*@return ReportPdfCell
+	 *
+	 * @return ReportPdfCell
 	 */
 	function createCell(
 		$width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth
@@ -176,9 +172,8 @@ class ReportPdf extends ReportBase {
 
 	/**
 	 * Create a new TextBox object - ReportPdf
-
 	 *
-*@param float   $width   Text box width
+	 * @param float   $width   Text box width
 	 * @param float   $height  Text box height
 	 * @param boolean $border
 	 * @param string  $bgcolor Background color code in HTML
@@ -190,9 +185,8 @@ class ReportPdf extends ReportBase {
 	 * @param boolean $fill
 	 * @param boolean $padding
 	 * @param boolean $reseth
-
 	 *
-*@return ReportPdfTextbox
+	 * @return ReportPdfTextbox
 	 */
 	function createTextBox(
 		$width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth
@@ -202,13 +196,11 @@ class ReportPdf extends ReportBase {
 
 	/**
 	 * Create a new Text object- ReportPdf
-
 	 *
-*@param string $style The name of the text style
+	 * @param string $style The name of the text style
 	 * @param string $color HTML color code
-
 	 *
-*@return ReportPdfText
+	 * @return ReportPdfText
 	 */
 	function createText($style, $color) {
 		return new ReportPdfText($style, $color);
@@ -216,12 +208,10 @@ class ReportPdf extends ReportBase {
 
 	/**
 	 * Create a new Footnote object - ReportPdf
-
 	 *
-*@param string $style Style name
-
+	 * @param string $style Style name
 	 *
-*@return ReportPdfFootnote
+	 * @return ReportPdfFootnote
 	 */
 	function createFootnote($style) {
 		return new ReportPdfFootnote($style);
@@ -229,9 +219,8 @@ class ReportPdf extends ReportBase {
 
 	/**
 	 * Create a new Page Header object - ReportPdf
-
 	 *
-*@return ReportPdfPageheader
+	 * @return ReportPdfPageheader
 	 */
 	function createPageHeader() {
 		return new ReportPdfPageheader;
@@ -239,20 +228,16 @@ class ReportPdf extends ReportBase {
 
 	/**
 	 * Create a new image object - ReportPdf
-
-
-*
-*@param string  $file  Filename
+	 *
+	 * @param string  $file  Filename
 	 * @param mixed   $x
 	 * @param mixed   $y
 	 * @param integer $w     Image width
 	 * @param integer $h     Image height
 	 * @param string  $align L:left, C:center, R:right or empty to use x/y
 	 * @param string  $ln    T:same line, N:next line
-
-
-*
-*@return ReportPdfImage
+	 *
+	 * @return ReportPdfImage
 	 */
 	function createImage($file, $x, $y, $w, $h, $align, $ln) {
 		return new ReportPdfImage($file, $x, $y, $w, $h, $align, $ln);
@@ -260,20 +245,16 @@ class ReportPdf extends ReportBase {
 
 	/**
 	 * Create a new image object from Media Object - ReportPdf
-
-
-*
-*@param Media   $mediaobject
+	 *
+	 * @param Media   $mediaobject
 	 * @param mixed   $x
 	 * @param mixed   $y
 	 * @param integer $w           Image width
 	 * @param integer $h           Image height
 	 * @param string  $align       L:left, C:center, R:right or empty to use x/y
 	 * @param string  $ln          T:same line, N:next line
-
-
-*
-*@return ReportPdfImage
+	 *
+	 * @return ReportPdfImage
 	 */
 	function createImageFromObject($mediaobject, $x, $y, $w, $h, $align, $ln) {
 		return new ReportPdfImage($mediaobject->getServerFilename('thumb'), $x, $y, $w, $h, $align, $ln);
@@ -281,17 +262,13 @@ class ReportPdf extends ReportBase {
 
 	/**
 	 * Create a new line object - ReportPdf
-
-
-*
-*@param mixed $x1
+	 *
+	 * @param mixed $x1
 	 * @param mixed $y1
 	 * @param mixed $x2
 	 * @param mixed $y2
-
-
-*
-*@return ReportPdfLine
+	 *
+	 * @return ReportPdfLine
 	 */
 	function createLine($x1, $y1, $x2, $y2) {
 		return new ReportPdfLine($x1, $y1, $x2, $y2);
@@ -300,9 +277,8 @@ class ReportPdf extends ReportBase {
 	/**
 	 * @param $tag
 	 * @param $attrs
-
 	 *
-*@return ReportPdfHtml
+	 * @return ReportPdfHtml
 	 */
 	function createHTML($tag, $attrs) {
 		return new ReportPdfHtml($tag, $attrs);

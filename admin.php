@@ -636,7 +636,7 @@ $changes = Database::prepare(
 					</thead>
 					<tbody>
 						<?php foreach (Tree::getAll() as $tree): ?>
-						<tr class="<?php echo $changes[$tree->id()] ? 'danger' : '';?>">
+						<tr class="<?php echo $changes[$tree->id()] ? 'danger' : ''; ?>">
 							<td>
 								<a href="index.php?ctype=gedcom&amp;ged=<?php echo $tree->nameUrl(); ?>">
 									<?php echo $tree->titleHtml(); ?>

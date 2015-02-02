@@ -27,23 +27,17 @@ class ReportBaseElement {
 
 	/**
 	 * Element renderer
-
-
-
-*
-*@param ReportHtml|PDF $renderer
-
-
-
-*
-*@return void
+	 *
+	  *@param ReportHtml|ReportPdf $renderer
+	 *
+	 * @return void
 	 */
 	function render($renderer) {
 		//-- to be implemented in inherited classes
 	}
 
 	/**
-	 * @param ReportHtml|PDF $renderer
+	 * @param ReportHtml|ReportPdf $renderer
 
 
 
@@ -55,7 +49,7 @@ class ReportBaseElement {
 	}
 
 	/**
-	 * @param ReportHtml|PDF $renderer
+	 * @param ReportHtml|ReportPdf $renderer
 
 
 

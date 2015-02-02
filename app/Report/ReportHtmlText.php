@@ -24,11 +24,8 @@ class ReportHtmlText extends ReportBaseText {
 	 * @param ReportHtml $renderer
 	 * @param integer        $curx
 	 * @param boolean        $attrib Is is called from a different element?
-
-
-
-*
-*@return void
+	 *
+	 * @return void
 	 */
 	function render($renderer, $curx = 0, $attrib = true) {
 
@@ -76,18 +73,11 @@ class ReportHtmlText extends ReportBaseText {
 
 	/**
 	 * Returns the height in points of the text element
-
 	 * The height is already calculated in getWidth()
-
-
-
-*
-*@param ReportHtml $html
-
-
-
-*
-*@return float
+	 *
+	 * @param ReportHtml $html
+	 *
+	 * @return float
 	 */
 	function getHeight($html) {
 		$ct = substr_count($this->text, "\n");
@@ -100,16 +90,10 @@ class ReportHtmlText extends ReportBaseText {
 
 	/**
 	 * Get the width of text and wrap it too
-
-
-
-*
-*@param ReportHtml $html
-
-
-
-*
-*@return array
+	 *
+	 * @param ReportHtml $html
+	 *
+	 * @return array
 	 */
 	function getWidth($html) {
 		// Setup the style name

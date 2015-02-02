@@ -323,10 +323,8 @@ class ReportHtml extends ReportBase {
 	 * @param $fill
 	 * @param $padding
 	 * @param $reseth
-
-
-*
-*@return ReportHtmlTextbox
+	 *
+	 * @return ReportHtmlTextbox
 	 */
 	function createTextBox($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth) {
 		return new ReportHtmlTextbox($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth);
@@ -335,9 +333,8 @@ class ReportHtml extends ReportBase {
 	/**
 	 * @param $style
 	 * @param $color
-
 	 *
-*@return ReportHtmlText
+	 * @return ReportHtmlText
 	 */
 	function createText($style, $color) {
 		return new ReportHtmlText($style, $color);
@@ -345,11 +342,8 @@ class ReportHtml extends ReportBase {
 
 	/**
 	 * @param string $style
-
-
-
-*
-*@return ReportHtmlFootnote
+	 *
+	 * @return ReportHtmlFootnote
 	 */
 	function createFootnote($style = "") {
 		return new ReportHtmlFootnote($style);
@@ -370,9 +364,8 @@ class ReportHtml extends ReportBase {
 	 * @param $h
 	 * @param $align
 	 * @param $ln
-
 	 *
-*@return ReportHtmlImage
+	 * @return ReportHtmlImage
 	 */
 	function createImage($file, $x, $y, $w, $h, $align, $ln) {
 		return new ReportHtmlImage($file, $x, $y, $w, $h, $align, $ln);
@@ -386,9 +379,8 @@ class ReportHtml extends ReportBase {
 	 * @param $h
 	 * @param $align
 	 * @param $ln
-
 	 *
-*@return ReportHtmlImage
+	 * @return ReportHtmlImage
 	 */
 	function createImageFromObject($mediaobject, $x, $y, $w, $h, $align, $ln) {
 		return new ReportHtmlImage($mediaobject->getHtmlUrlDirect('thumb'), $x, $y, $w, $h, $align, $ln);
@@ -399,9 +391,8 @@ class ReportHtml extends ReportBase {
 	 * @param $y1
 	 * @param $x2
 	 * @param $y2
-
 	 *
-*@return ReportHtmlLine
+	 * @return ReportHtmlLine
 	 */
 	function createLine($x1, $y1, $x2, $y2) {
 		return new ReportHtmlLine($x1, $y1, $x2, $y2);
@@ -410,9 +401,8 @@ class ReportHtml extends ReportBase {
 	/**
 	 * @param $tag
 	 * @param $attrs
-
 	 *
-*@return ReportHtmlHtml
+	 * @return ReportHtmlHtml
 	 */
 	function createHTML($tag, $attrs) {
 		return new ReportHtmlHtml($tag, $attrs);

@@ -36,18 +36,11 @@ class ReportHtmlFootnote extends ReportBaseFootnote {
 
 	/**
 	 * Write the Footnote text
-
 	 * Uses style name "footnote" by default
-
-
-
-*
-*@param ReportHtml $html
-
-
-
-*
-*@return void
+	 *
+	 * @param ReportHtml $html
+	 *
+	 * @return void
 	 */
 	function renderFootnote($html) {
 
@@ -67,17 +60,11 @@ class ReportHtmlFootnote extends ReportBaseFootnote {
 
 	/**
 	 * Calculates the Footnotes height
-
-
-
-*
-*@param ReportHtml $html
-	 * @param integer        $cellWidth The width of the cell to use it for text wraping
-
-
-
-*
-*@return integer       Footnote height in points
+	 *
+	 * @param ReportHtml $html
+	 * @param integer    $cellWidth The width of the cell to use it for text wraping
+	 *
+	 * @return integer   Footnote height in points
 	 */
 	function getFootnoteHeight($html, $cellWidth = 0) {
 		if ($html->getCurrentStyle() != $this->styleName) {
@@ -95,18 +82,11 @@ class ReportHtmlFootnote extends ReportBaseFootnote {
 
 	/**
 	 * Get the width of text
-
 	 * Breaks up a text into lines if needed
-
-
-
-*
-*@param ReportHtml $html
-
-
-
-*
-*@return array
+	 *
+	 * @param ReportHtml $html
+	 *
+	 * @return array
 	 */
 	function getWidth($html) {
 		// Setup the style name

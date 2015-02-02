@@ -197,19 +197,19 @@ abstract class Module {
 
 		if ($modules === null) {
 			$module_names = Database::prepare(
-				"SELECT SQL_CACHE module_name FROM `##module` WHERE status='enabled'"
+				"SELECT SQL_CACHE module_name FROM `##module` WHERE status = 'enabled'"
 			)->fetchOneColumn();
 			$modules = array();
 			foreach ($module_names as $module_name) {
 				if (file_exists(WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php')) {
 					require_once WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php';
-					$class     = 'Webtrees\\' . $module_name . '_WT_Module';
+					$class                 = 'Webtrees\\' . $module_name . '_WT_Module';
 					$modules[$module_name] = new $class;
 				} else {
 					// Module has been deleted from disk?  Disable it.
 					Log::addConfigurationLog("Module {$module_name} has been deleted from disk - disabling it");
 					Database::prepare(
-						"UPDATE `##module` SET status='disabled' WHERE module_name=?"
+						"UPDATE `##module` SET status = 'disabled' WHERE module_name = ?"
 					)->execute(array($module_name));
 				}
 			}

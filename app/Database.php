@@ -102,7 +102,7 @@ class Database {
 		}
 		// Create the underlying PDO object
 		self::$pdo = new PDO(
-			(substr($DBHOST, 0, 1) == '/' ?
+			(substr($DBHOST, 0, 1) === '/' ?
 				"mysql:unix_socket={$DBHOST};dbname={$DBNAME}" :
 				"mysql:host={$DBHOST};dbname={$DBNAME};port={$DBPORT}"
 			),
