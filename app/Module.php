@@ -249,7 +249,7 @@ abstract class Module {
 			if (file_exists(WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php')) {
 				require_once WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php';
 				$class     = 'Webtrees\\' . $module_name . '_WT_Module';
-				$interface = 'Webtrees\\' . ucfirst($component) . 'Interface';
+				$interface = 'Webtrees\\Module' . ucfirst($component) . 'Interface';
 				$module    = new $class;
 				// Check that this module is still implementing the desired interface.
 				if ($module instanceof $interface) {

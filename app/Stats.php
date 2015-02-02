@@ -2925,7 +2925,7 @@ class Stats {
 			}
 			$husb = $family->getHusband();
 			$wife = $family->getWife();
-			if (($husb->getAllDeathDates() && $wife->getAllDeathDates()) || !$husb->isDead() || !$wife->isDead()) {
+			if ($husb && $wife && ($husb->getAllDeathDates() && $wife->getAllDeathDates() || !$husb->isDead() || !$wife->isDead())) {
 				if ($family->canShow()) {
 					if ($type == 'list') {
 						$top10[] = "<li><a href=\"" . $family->getHtmlUrl() . "\">" . $family->getFullName() . "</a> (" . $age . ")" . "</li>";
@@ -5478,10 +5478,10 @@ class Stats {
 	 */
 	public function userName($params = array()) {
 		if (Auth::check()) {
-			return Auth::user()->getUserName();
+			return Filter::escapeHtml(Auth::user()->getUserName());
 		} elseif (isset($params[0]) && $params[0] != '') {
 			// if #username:visitor# was specified, then "visitor" will be returned when the user is not logged in
-			return $params[0];
+			return Filter::escapeHtml($params[0]);
 		} else {
 			return '';
 		}
@@ -5491,7 +5491,7 @@ class Stats {
 	 * @return string
 	 */
 	public function userFullName() {
-		return Auth::check() ? Auth::user()->getRealName() : '';
+		return Auth::check() ? Filter::escapeHtml(Auth::user()->getRealName()) : '';
 	}
 
 	/**
