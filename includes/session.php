@@ -333,7 +333,7 @@ case 'unknown':
 case '':
 	WT_DB::prepare(
 		"INSERT INTO `##site_access_rule` (ip_address_start, ip_address_end, user_agent_pattern, comment) VALUES (IFNULL(INET_ATON(?), 0), IFNULL(INET_ATON(?), 4294967295), ?, '')"
-	)->execute(array($WT_REQUEST->getClientIp(), $WT_REQUEST->getClientIp(), WT_Filter::server('HTTP_USER_AGENT')));
+	)->execute(array($WT_REQUEST->getClientIp(), $WT_REQUEST->getClientIp(), WT_Filter::server('HTTP_USER_AGENT', null, '')));
 	$SEARCH_SPIDER = true;
 	break;
 }
