@@ -57,9 +57,6 @@ class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleS
 		case 'index':
 			global $MAX_PEDIGREE_GENERATIONS, $controller, $WT_SESSION, $GEDCOM_MEDIA_PATH;
 
-			require_once WT_ROOT . WT_MODULES_DIR . 'clippings/clippings_ctrl.php';
-			require_once WT_ROOT . 'includes/functions/functions_export.php';
-
 			$clip_ctrl = new ClippingsController;
 
 			$controller = new PageController;

@@ -398,7 +398,6 @@ class SearchController extends PageController {
 
 		Log::addEditLog("Search And Replace old:" . $oldquery . " new:" . $this->replace);
 		// Include edit functions.
-		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
 		$adv_name_tags = preg_split("/[\s,;: ]+/", $ADVANCED_NAME_FACTS);
 		$name_tags     = array_unique(array_merge($STANDARD_NAME_FACTS, $adv_name_tags));
@@ -573,7 +572,6 @@ class SearchController extends PageController {
 	 * @return bool
 	 */
 	function printResults() {
-		require_once WT_ROOT . 'includes/functions/functions_print_lists.php';
 		global $GEDCOM;
 
 		if ($this->action == "general" || $this->action == "soundex" || $this->action == "replace") {

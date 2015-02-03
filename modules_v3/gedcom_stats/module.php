@@ -247,8 +247,6 @@ class gedcom_stats_WT_Module extends Module implements ModuleBlockInterface {
 			set_block_setting($block_id, 'stat_avg_chil', Filter::postBool('stat_avg_chil'));
 		}
 
-		require_once WT_ROOT . 'includes/functions/functions_edit.php';
-
 		$show_last_update     = get_block_setting($block_id, 'show_last_update', '1');
 		$show_common_surnames = get_block_setting($block_id, 'show_common_surnames', '1');
 		$stat_indi            = get_block_setting($block_id, 'stat_indi', '1');

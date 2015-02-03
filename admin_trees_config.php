@@ -21,7 +21,6 @@ use Zend_Session;
 define('WT_SCRIPT_NAME', 'admin_trees_config.php');
 
 require './includes/session.php';
-require WT_ROOT . 'includes/functions/functions_edit.php';
 
 $controller = new PageController;
 $controller->restrictAccess(Auth::isManager());

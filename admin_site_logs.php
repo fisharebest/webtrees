@@ -27,8 +27,6 @@ $controller
 	->restrictAccess(Auth::isManager())
 	->setPageTitle(I18N::translate('Website logs'));
 
-require WT_ROOT . 'includes/functions/functions_edit.php';
-
 $earliest = Database::prepare("SELECT DATE(MIN(log_time)) FROM `##log`")->execute(array())->fetchOne();
 $latest   = Database::prepare("SELECT DATE(MAX(log_time)) FROM `##log`")->execute(array())->fetchOne();
 

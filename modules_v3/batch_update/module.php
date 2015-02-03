@@ -16,8 +16,6 @@ namespace Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-require_once WT_ROOT . 'includes/functions/functions_edit.php';
-
 /**
  * Class batch_update_WT_Module
  */

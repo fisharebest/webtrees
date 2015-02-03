@@ -68,8 +68,6 @@ class faq_WT_Module extends Module implements ModuleMenuInterface, ModuleConfigI
 	 * Action from the configuration page
 	 */
 	private function edit() {
-		require_once WT_ROOT . 'includes/functions/functions_edit.php';
-
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
 			$block_id = Filter::postInteger('block_id');
 			if ($block_id) {
@@ -328,8 +326,6 @@ class faq_WT_Module extends Module implements ModuleMenuInterface, ModuleConfigI
 	 * Provide a form to manage the FAQs.
 	 */
 	private function config() {
-		require_once WT_ROOT . 'includes/functions/functions_edit.php';
-
 		$controller = new PageController;
 		$controller
 			->setPageTitle(I18N::translate('Frequently asked questions'))

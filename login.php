@@ -21,7 +21,7 @@ use Zend_Session;
 
 define('WT_SCRIPT_NAME', 'login.php');
 require './includes/session.php';
-require WT_ROOT . 'includes/functions/functions_edit.php';
+
 // If we are already logged in, then go to the “Home page”
 if (Auth::check() && WT_GED_ID) {
 	header('Location: ' . WT_BASE_URL);

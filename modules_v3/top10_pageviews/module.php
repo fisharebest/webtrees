@@ -121,7 +121,6 @@ class top10_pageviews_WT_Module extends Module implements ModuleBlockInterface {
 			set_block_setting($block_id, 'count_placement', Filter::post('count_placement', 'before|after', 'before'));
 			set_block_setting($block_id, 'block', Filter::postBool('block'));
 		}
-		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
 		$num             = get_block_setting($block_id, 'num', '10');
 		$count_placement = get_block_setting($block_id, 'count_placement', 'before');

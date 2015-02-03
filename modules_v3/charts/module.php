@@ -171,7 +171,6 @@ class charts_WT_Module extends Module implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
 		global $WT_TREE, $controller;
-		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
 		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
 

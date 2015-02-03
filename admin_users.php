@@ -25,8 +25,6 @@ require './includes/session.php';
 $controller = new PageController;
 $controller->restrictAccess(Auth::isAdmin());
 
-require_once WT_ROOT . 'includes/functions/functions_edit.php';
-
 // Valid values for form variables
 $ALL_EDIT_OPTIONS = array(
 	'none'  => /* I18N: Listbox entry; name of a role */ I18N::translate('Visitor'),

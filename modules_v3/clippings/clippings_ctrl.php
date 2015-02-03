@@ -19,8 +19,6 @@ namespace Webtrees;
 use PclZip;
 use Zend_Session;
 
-require_once WT_ROOT . 'includes/functions/functions_export.php';
-
 /**
  * Main controller class for the Clippings page.
  */

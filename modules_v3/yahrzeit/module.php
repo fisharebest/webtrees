@@ -238,8 +238,6 @@ class yahrzeit_WT_Module extends Module implements ModuleBlockInterface {
 			set_block_setting($block_id, 'block', Filter::postBool('block'));
 		}
 
-		require_once WT_ROOT . 'includes/functions/functions_edit.php';
-
 		$days      = get_block_setting($block_id, 'days', '7');
 		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');
 		$calendar  = get_block_setting($block_id, 'calendar', 'jewish');

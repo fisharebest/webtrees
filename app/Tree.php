@@ -582,8 +582,6 @@ class Tree {
 	 * @return bool
 	 */
 	public function exportGedcom($gedcom_file) {
-		require_once WT_ROOT . 'includes/functions/functions_export.php';
-
 		// To avoid partial trees on timeout/diskspace/etc, write to a temporary file first
 		$tmp_file = $gedcom_file . '.tmp';
 

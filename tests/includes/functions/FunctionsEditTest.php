@@ -29,7 +29,6 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function setUp() {
 		defined('WT_ROOT') || define('WT_ROOT', '');
-		require_once 'includes/functions/functions_edit.php';
 	}
 
 	/**

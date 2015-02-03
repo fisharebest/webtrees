@@ -226,8 +226,6 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 	 * A form to edit the module configuration.
 	 */
 	private function config() {
-		require WT_ROOT . 'includes/functions/functions_edit.php';
-
 		$action = Filter::post('action');
 
 		$controller = new PageController;
@@ -511,8 +509,6 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 	 * ...
 	 */
 	private function flags() {
-		require WT_ROOT . 'includes/functions/functions_edit.php';
-
 		$controller = new SimpleController;
 		$controller
 			->setPageTitle(I18N::translate('Select flag'))
@@ -1533,8 +1529,6 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 	 * ...
 	 */
 	private function adminPlaceCheck() {
-		require_once WT_ROOT . 'includes/functions/functions_edit.php';
-
 		$action    = Filter::get('action', '', 'go');
 		$gedcom_id = Filter::get('gedcom_id', null, WT_GED_ID);
 		$country   = Filter::get('country', '.+', 'XYZ');
@@ -3301,8 +3295,6 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 	 * ...
 	 */
 	private function placesEdit() {
-		require WT_ROOT . 'includes/functions/functions_edit.php';
-
 		$GM_MAX_ZOOM = $this->getSetting('GM_MAX_ZOOM');
 
 		$action     = Filter::post('action', null, Filter::get('action'));
@@ -4126,8 +4118,6 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 	 * ...
 	 */
 	private function adminPlaces() {
-		require WT_ROOT . 'includes/functions/functions_edit.php';
-
 		$action       = Filter::get('action');
 		$parent       = Filter::get('parent');
 		$inactive     = Filter::getBool('inactive');

@@ -17,9 +17,7 @@ namespace Webtrees;
  */
 
 define('WT_SCRIPT_NAME', 'admin_trees_places.php');
-
 require './includes/session.php';
-require WT_ROOT . 'includes/functions/functions_edit.php';
 
 $search  = Filter::post('search');
 $replace = Filter::post('replace');

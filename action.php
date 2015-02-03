@@ -44,7 +44,6 @@ case 'accept-changes':
 
 case 'copy-fact':
 	// Copy a fact to the clipboard
-	require WT_ROOT . 'includes/functions/functions_edit.php';
 	$xref    = Filter::post('xref', WT_REGEX_XREF);
 	$fact_id = Filter::post('fact_id');
 
@@ -84,7 +83,6 @@ case 'copy-fact':
 
 case 'paste-fact':
 	// Paste a fact from the clipboard
-	require WT_ROOT . 'includes/functions/functions_edit.php';
 	$xref    = Filter::post('xref', WT_REGEX_XREF);
 	$fact_id = Filter::post('fact_id');
 
@@ -96,7 +94,6 @@ case 'paste-fact':
 	break;
 
 case 'delete-fact':
-	require WT_ROOT . 'includes/functions/functions_edit.php';
 	$xref    = Filter::post('xref', WT_REGEX_XREF);
 	$fact_id = Filter::post('fact_id');
 
@@ -120,7 +117,6 @@ case 'delete-media':
 case 'delete-note':
 case 'delete-repository':
 case 'delete-source':
-	require WT_ROOT . 'includes/functions/functions_edit.php';
 	$record = GedcomRecord::getInstance(Filter::post('xref', WT_REGEX_XREF));
 	if ($record && WT_USER_CAN_EDIT && $record->canShow() && $record->canEdit()) {
 		// Delete links to this record
@@ -182,7 +178,6 @@ case 'masquerade':
 case 'unlink-media':
 	// Remove links from an individual and their spouse-family records to a media object.
 	// Used by the "unlink" option on the album (lightbox) tab.
-	require WT_ROOT . 'includes/functions/functions_edit.php';
 	$source = Individual::getInstance(Filter::post('source', WT_REGEX_XREF));
 	$target = Filter::post('target', WT_REGEX_XREF);
 	if ($source && $source->canShow() && $source->canEdit() && $target) {

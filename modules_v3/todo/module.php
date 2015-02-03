@@ -159,8 +159,6 @@ class todo_WT_Module extends Module implements ModuleBlockInterface {
 			set_block_setting($block_id, 'block', Filter::postBool('block'));
 		}
 
-		require_once WT_ROOT . 'includes/functions/functions_edit.php';
-
 		$show_other      = get_block_setting($block_id, 'show_other', '1');
 		$show_unassigned = get_block_setting($block_id, 'show_unassigned', '1');
 		$show_future     = get_block_setting($block_id, 'show_future', '1');

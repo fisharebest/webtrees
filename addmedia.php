@@ -18,8 +18,6 @@ namespace Webtrees;
 
 define('WT_SCRIPT_NAME', 'addmedia.php');
 require './includes/session.php';
-require_once WT_ROOT . 'includes/functions/functions_print_lists.php';
-require WT_ROOT . 'includes/functions/functions_edit.php';
 
 $pid         = Filter::get('pid', WT_REGEX_XREF, Filter::post('pid', WT_REGEX_XREF)); // edit this media object
 $linktoid    = Filter::get('linktoid', WT_REGEX_XREF, Filter::post('linktoid', WT_REGEX_XREF)); // create a new media object, linked to this record

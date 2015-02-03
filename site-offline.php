@@ -35,8 +35,6 @@ define('WT_DATA_DIR', realpath('data') . DIRECTORY_SEPARATOR);
 $WT_SESSION         = new \stdClass;
 $WT_SESSION->locale = '';
 
-require 'includes/functions/functions.php';
-
 define('WT_LOCALE', I18N::init());
 
 if (file_exists(WT_DATA_DIR . 'offline.txt')) {

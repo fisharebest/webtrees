@@ -18,7 +18,6 @@ namespace Webtrees;
 
 define('WT_SCRIPT_NAME', 'pedigree.php');
 require './includes/session.php';
-require WT_ROOT . 'includes/functions/functions_edit.php';
 
 define("ARROW_WRAPPER", "<div class='ancestorarrow' style='%s:%spx; top:%spx;'>");
 define("MENU_WRAPPER", "<div id='childarrow' style='%s:%spx; top:%spx'><div><a href='#' class='menuselect %s'></a><div id='childbox'>");

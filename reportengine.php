@@ -18,7 +18,6 @@ namespace Webtrees;
 
 define('WT_SCRIPT_NAME', 'reportengine.php');
 require './includes/session.php';
-require WT_ROOT . 'includes/functions/functions_rtl.php';
 
 $controller = new PageController;
 

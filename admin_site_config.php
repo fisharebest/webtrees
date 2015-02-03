@@ -18,7 +18,6 @@ namespace Webtrees;
 
 define('WT_SCRIPT_NAME', 'admin_site_config.php');
 require './includes/session.php';
-require WT_ROOT . 'includes/functions/functions_edit.php';
 
 $controller = new PageController;
 $controller->restrictAccess(Auth::isAdmin());

@@ -20,7 +20,6 @@ use Zend_Session;
 
 define('WT_SCRIPT_NAME', 'admin_media.php');
 require './includes/session.php';
-require WT_ROOT . 'includes/functions/functions_edit.php';
 
 // type of file/object to include
 $files = Filter::get('files', 'local|external|unused', 'local');

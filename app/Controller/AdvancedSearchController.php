@@ -638,7 +638,6 @@ class AdvancedSearchController extends SearchController {
 	 * @return bool
 	 */
 	function printResults() {
-		require_once WT_ROOT . 'includes/functions/functions_print_lists.php';
 		if ($this->myindilist) {
 			uasort($this->myindilist, 'Webtrees\GedcomRecord::compare');
 			echo format_indi_table($this->myindilist);

@@ -27,8 +27,6 @@ $controller
 	->restrictAccess(Auth::isManager())
 	->setPageTitle(I18N::translate('Changes'));
 
-require WT_ROOT . 'includes/functions/functions_edit.php';
-
 $earliest = Database::prepare("SELECT DATE(MIN(change_time)) FROM `##change`")->execute(array())->fetchOne();
 $latest   = Database::prepare("SELECT DATE(MAX(change_time)) FROM `##change`")->execute(array())->fetchOne();
 

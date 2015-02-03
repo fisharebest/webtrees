@@ -34,8 +34,6 @@ class top10_surnames_WT_Module extends Module implements ModuleBlockInterface {
 	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $WT_TREE, $ctype;
 
-		require_once WT_ROOT . 'includes/functions/functions_print_lists.php';
-
 		$COMMON_NAMES_REMOVE    = $WT_TREE->getPreference('COMMON_NAMES_REMOVE');
 		$COMMON_NAMES_THRESHOLD = $WT_TREE->getPreference('COMMON_NAMES_THRESHOLD');
 
@@ -142,8 +140,6 @@ class top10_surnames_WT_Module extends Module implements ModuleBlockInterface {
 			set_block_setting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|array|table|tagcloud', 'table'));
 			set_block_setting($block_id, 'block', Filter::postBool('block'));
 		}
-
-		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
 		$num       = get_block_setting($block_id, 'num', '10');
 		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');

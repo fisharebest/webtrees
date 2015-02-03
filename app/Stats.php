@@ -20,8 +20,6 @@ use PDO;
 use PDOException;
 use Rhumsaa\Uuid\Uuid;
 
-require_once WT_ROOT . 'includes/functions/functions_print_lists.php';
-
 /**
  * Class Stats A selection of pre-formatted statistical queries.  These are primarily
  *             used for embedded keywords on HTML blocks, but are also used elsewhere in

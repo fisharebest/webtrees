@@ -20,7 +20,6 @@ use Zend_Session;
 
 define('WT_SCRIPT_NAME', 'edit_interface.php');
 require './includes/session.php';
-require WT_ROOT . 'includes/functions/functions_edit.php';
 
 $action = Filter::post('action', null, Filter::get('action'));
 

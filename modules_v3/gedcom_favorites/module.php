@@ -237,8 +237,6 @@ class gedcom_favorites_WT_Module extends Module implements ModuleBlockInterface 
 			set_block_setting($block_id, 'block', Filter::postBool('block'));
 		}
 
-		require_once WT_ROOT . 'includes/functions/functions_edit.php';
-
 		$block = get_block_setting($block_id, 'block', '0');
 
 		echo '<tr><td class="descriptionbox wrap width33">';

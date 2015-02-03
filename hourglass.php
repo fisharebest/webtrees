@@ -18,7 +18,6 @@ namespace Webtrees;
 
 define('WT_SCRIPT_NAME', 'hourglass.php');
 require './includes/session.php';
-require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
 $controller = new HourglassController;
 $controller

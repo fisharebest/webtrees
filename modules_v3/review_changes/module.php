@@ -147,8 +147,6 @@ class review_changes_WT_Module extends Module implements ModuleBlockInterface {
 			set_block_setting($block_id, 'block', Filter::postBool('block'));
 		}
 
-		require_once WT_ROOT . 'includes/functions/functions_edit.php';
-
 		$sendmail = get_block_setting($block_id, 'sendmail', '1');
 		$days     = get_block_setting($block_id, 'days', '1');
 		$block    = get_block_setting($block_id, 'block', '1');

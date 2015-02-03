@@ -139,8 +139,6 @@ class stories_WT_Module extends Module implements ModuleTabInterface, ModuleConf
 	 * Show and process a form to edit a story.
 	 */
 	private function edit() {
-		require_once WT_ROOT . 'includes/functions/functions_edit.php';
-
 		if (WT_USER_CAN_EDIT) {
 			if (Filter::postBool('save') && Filter::checkCsrf()) {
 				$block_id = Filter::postInteger('block_id');
@@ -267,8 +265,6 @@ class stories_WT_Module extends Module implements ModuleTabInterface, ModuleConf
 	 * The admin view - list, create, edit, delete stories.
 	 */
 	private function config() {
-		require_once WT_ROOT . 'includes/functions/functions_edit.php';
-
 		$controller = new PageController;
 		$controller
 			->restrictAccess(WT_USER_GEDCOM_ADMIN)

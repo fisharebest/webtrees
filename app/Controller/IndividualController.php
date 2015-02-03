@@ -18,8 +18,6 @@ namespace Webtrees;
 
 use Zend_Session;
 
-require_once WT_ROOT . 'includes/functions/functions_print_facts.php';
-
 /**
  * Class IndividualController - Controller for the individual page
  */

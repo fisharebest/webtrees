@@ -21,7 +21,6 @@ use Zend_Session;
 
 define('WT_SCRIPT_NAME', 'admin_site_access.php');
 require './includes/session.php';
-require WT_ROOT . 'includes/functions/functions_edit.php';
 
 $rules_display = array(
 	'unknown' => I18N::translate('unknown'),

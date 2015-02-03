@@ -233,9 +233,6 @@ class random_media_WT_Module extends Module implements ModuleBlockInterface {
 			set_block_setting($block_id, 'filter_video', Filter::postBool('filter_video'));
 		}
 
-		require_once WT_ROOT . 'includes/functions/functions_edit.php';
-
-
 		$filter   = get_block_setting($block_id, 'filter', 'all');
 		$controls = get_block_setting($block_id, 'controls', '1');
 		$start    = get_block_setting($block_id, 'start', '0') || Filter::getBool('start');

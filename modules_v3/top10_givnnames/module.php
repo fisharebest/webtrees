@@ -128,8 +128,6 @@ class top10_givnnames_WT_Module extends Module implements ModuleBlockInterface {
 			set_block_setting($block_id, 'block', Filter::postBool('block'));
 		}
 
-		require_once WT_ROOT . 'includes/functions/functions_edit.php';
-
 		$num       = get_block_setting($block_id, 'num', '10');
 		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');
 		$block     = get_block_setting($block_id, 'block', '0');

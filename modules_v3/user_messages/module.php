@@ -32,8 +32,6 @@ class user_messages_WT_Module extends Module implements ModuleBlockInterface {
 
 	/** {@inheritdoc} */
 	public function getBlock($block_id, $template = true, $cfg = null) {
-		require_once WT_ROOT . 'includes/functions/functions_print_facts.php';
-
 		// Block actions
 		$action      = Filter::post('action');
 		$message_ids = Filter::postArray('message_id');
@@ -141,8 +139,6 @@ class user_messages_WT_Module extends Module implements ModuleBlockInterface {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
 			set_block_setting($block_id, 'block', Filter::postBool('block'));
 		}
-
-		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
 		$block = get_block_setting($block_id, 'block', '1');
 		echo '<tr><td class="descriptionbox wrap width33">';

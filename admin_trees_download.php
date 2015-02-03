@@ -21,7 +21,6 @@ use Zend_Session;
 
 define('WT_SCRIPT_NAME', 'admin_trees_download.php');
 require './includes/session.php';
-require WT_ROOT . 'includes/functions/functions_export.php';
 
 $controller = new PageController;
 $controller

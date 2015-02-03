@@ -28,7 +28,6 @@ class FunctionsImportTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function setUp() {
-		require_once 'includes/functions/functions_import.php';
 	}
 
 	/**

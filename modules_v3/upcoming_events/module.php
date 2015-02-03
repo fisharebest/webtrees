@@ -34,8 +34,6 @@ class upcoming_events_WT_Module extends Module implements ModuleBlockInterface {
 	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $ctype;
 
-		require_once WT_ROOT . 'includes/functions/functions_print_lists.php';
-
 		$days      = get_block_setting($block_id, 'days', '7');
 		$filter    = get_block_setting($block_id, 'filter', '1');
 		$onlyBDM   = get_block_setting($block_id, 'onlyBDM', '0');
@@ -112,8 +110,6 @@ class upcoming_events_WT_Module extends Module implements ModuleBlockInterface {
 			set_block_setting($block_id, 'sortStyle', Filter::post('sortStyle', 'alpha|anniv', 'alpha'));
 			set_block_setting($block_id, 'block', Filter::postBool('block'));
 		}
-
-		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
 		$days      = get_block_setting($block_id, 'days', '7');
 		$filter    = get_block_setting($block_id, 'filter', '1');

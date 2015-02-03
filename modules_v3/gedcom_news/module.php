@@ -159,8 +159,6 @@ class gedcom_news_WT_Module extends Module implements ModuleBlockInterface {
 			set_block_setting($block_id, 'flag', Filter::post('flag'));
 		}
 
-		require_once WT_ROOT . 'includes/functions/functions_edit.php';
-
 		$limit = get_block_setting($block_id, 'limit', 'nolimit');
 		$flag  = get_block_setting($block_id, 'flag', 0);
 
