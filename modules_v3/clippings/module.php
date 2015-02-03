@@ -22,6 +22,7 @@ use Zend_Session;
  * Class clippings_WT_Module
  */
 class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleSidebarInterface {
+
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('Clippings cart');
@@ -540,9 +541,8 @@ class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleS
 
 	/**
 	 * @param ClippingsCart $clip_ctrl
-
 	 *
-*@return string
+	 * @return string
 	 */
 	public function downloadForm(ClippingsCart $clip_ctrl) {
 		global $GEDCOM_MEDIA_PATH;

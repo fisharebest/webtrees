@@ -102,7 +102,7 @@ class top10_surnames_WT_Module extends Module implements ModuleBlockInterface {
 			break;
 		case 'table':
 		default:
-			uasort($all_surnames, 'Webtrees\top10_surnames_WT_Module', 'surnameCountSort');
+			uasort($all_surnames, 'Webtrees\top10_surnames_WT_Module::surnameCountSort');
 			$content = format_surname_table($all_surnames, 'indilist.php');
 			break;
 		}
