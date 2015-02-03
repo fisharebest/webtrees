@@ -2680,7 +2680,7 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 				$placelevels = preg_replace('/, ' . I18N::translate('unknown') . '/', ', ', $placelevels); // replace ", unknown" with ", "
 				$placelevels = substr($placelevels, 2); // remove the leading ", "
 				if ($placelevels) {
-					$batchupdate_url = 'module.php?mod=batch_update&amp;mod_action=admin_batch_update&amp;plugin=search_replace_bu_plugin&amp;method=exact&amp;ged=' . WT_GEDCOM . '&amp;search=' . urlencode($placelevels); // exact match
+					$batchupdate_url = 'module.php?mod=batch_update&amp;mod_action=admin_batch_update&amp;plugin=BatchUpdateSearchReplacePlugin&amp;method=exact&amp;ged=' . WT_GEDCOM . '&amp;search=' . urlencode($placelevels); // exact match
 					echo '&nbsp;|&nbsp;';
 					echo '<a href="' . $batchupdate_url . '">', I18N::translate('Batch update'), '</a>';
 				}

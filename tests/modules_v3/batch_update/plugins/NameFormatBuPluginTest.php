@@ -28,8 +28,6 @@ class NameFormatBuPluginTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function setUp() {
-		require_once 'modules_v3/batch_update/admin_batch_update.php'; // for class base_plugin
-		require_once 'modules_v3/batch_update/plugins/name_format.php';
 	}
 
 	/**
@@ -38,6 +36,6 @@ class NameFormatBuPluginTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetUserFullNameExists() {
-		$this->assertEquals(true, class_exists('\Webtrees\\name_format_bu_plugin'));
+		$this->assertEquals(true, class_exists('\Webtrees\\BatchUpdateNameFormatPlugin'));
 	}
 }

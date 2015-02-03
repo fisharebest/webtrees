@@ -17,16 +17,16 @@ namespace Webtrees;
  */
 
 /**
- * Class death_y_bu_plugin Batch Update plugin: add missing 1 BIRT/DEAT Y
+ * Class BatchUpdateDuplicateLinksPlugin Batch Update plugin: remove duplicate links in records
  */
-class death_y_bu_plugin extends base_plugin {
+class BatchUpdateDuplicateLinksPlugin extends BatchUpdateBasePlugin {
 	/**
 	 * User-friendly name for this plugin.
 	 *
 	 * @return string
 	 */
 	public function getName() {
-		return I18N::translate('Add missing death records');
+		return I18N::translate('Remove duplicate links');
 	}
 
 	/**
@@ -35,7 +35,16 @@ class death_y_bu_plugin extends base_plugin {
 	 * @return string
 	 */
 	public function getDescription() {
-		return I18N::translate('You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc.');
+		return I18N::translate('A common error is to have multiple links to the same record, for example listing the same child more than once in a family record.');
+	}
+
+	/**
+	 * This plugin will update all types of record.
+	 *
+	 * @return string[]
+	 */
+	public function getRecordTypesToUpdate() {
+		return array('INDI', 'FAM', 'SOUR', 'REPO', 'NOTE', 'OBJE');
 	}
 
 	/**
@@ -47,7 +56,10 @@ class death_y_bu_plugin extends base_plugin {
 	 * @return boolean
 	 */
 	public function doesRecordNeedUpdate($xref, $gedrec) {
-		return !preg_match('/\n1 (' . WT_EVENTS_DEAT . ')/', $gedrec) && Individual::getInstance($xref)->isDead();
+		return
+			preg_match('/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))(?:\n1.*(?:\n[2-9].*)*)*\1/', $gedrec) ||
+			preg_match('/(\n2.*@.+@.*(?:(?:\n[3-9].*)*))(?:\n2.*(?:\n[3-9].*)*)*\1/', $gedrec) ||
+			preg_match('/(\n3.*@.+@.*(?:(?:\n[4-9].*)*))(?:\n3.*(?:\n[4-9].*)*)*\1/', $gedrec);
 	}
 
 	/**
@@ -59,6 +71,14 @@ class death_y_bu_plugin extends base_plugin {
 	 * @return string
 	 */
 	public function updateRecord($xref, $gedrec) {
-		return $gedrec . "\n1 DEAT Y";
+		return preg_replace(
+			array(
+				'/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))((?:\n1.*(?:\n[2-9].*)*)*\1)/',
+				'/(\n2.*@.+@.*(?:(?:\n[3-9].*)*))((?:\n2.*(?:\n[3-9].*)*)*\1)/',
+				'/(\n3.*@.+@.*(?:(?:\n[4-9].*)*))((?:\n3.*(?:\n[4-9].*)*)*\1)/'
+			),
+			'$2',
+			$gedrec
+		);
 	}
 }

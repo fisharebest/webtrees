@@ -17,9 +17,9 @@ namespace Webtrees;
  */
 
 /**
- * Class married_names_bu_plugin Batch Update plugin: add missing 2 _MARNM records
+ * Class BatchUpdateMarriedNamesPlugin Batch Update plugin: add missing 2 _MARNM records
  */
-class married_names_bu_plugin extends base_plugin {
+class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin {
 	/** @var string User option: add or replace husband’s surname */
 	private $surname;
 
@@ -97,9 +97,9 @@ class married_names_bu_plugin extends base_plugin {
 		$missing_surnames = array();
 		preg_match_all('/^1 FAMS @(.+)@/m', $gedrec, $fmatch);
 		foreach ($fmatch[1] as $famid) {
-			$famrec = batch_update::getLatestRecord($famid, 'FAM');
+			$famrec = batch_update_WT_Module::getLatestRecord($famid, 'FAM');
 			if (preg_match('/^1 MARR/m', $famrec) && preg_match('/^1 HUSB @(.+)@/m', $famrec, $hmatch)) {
-				$husbrec = batch_update::getLatestRecord($hmatch[1], 'INDI');
+				$husbrec = batch_update_WT_Module::getLatestRecord($hmatch[1], 'INDI');
 				$husb_surnames = array_unique(array_merge($husb_surnames, self::surnames($hmatch[1], $husbrec)));
 			}
 		}

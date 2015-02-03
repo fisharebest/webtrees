@@ -6,7 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Webtrees\\' => array($baseDir . '/app'),
+    'Webtrees\\' => array($baseDir . '/app', $baseDir . '/modules_v3'),
     'Rhumsaa\\Uuid\\' => array($vendorDir . '/rhumsaa/uuid/src'),
     'Fisharebest\\ExtCalendar\\' => array($vendorDir . '/fisharebest/ext-calendar/src'),
 );

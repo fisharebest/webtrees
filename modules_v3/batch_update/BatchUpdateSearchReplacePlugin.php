@@ -17,9 +17,9 @@ namespace Webtrees;
  */
 
 /**
- * Class search_replace_bu_plugin Batch Update plugin: search/replace
+ * Class BatchUpdateSearchReplacePlugin Batch Update plugin: search/replace
  */
-class search_replace_bu_plugin extends base_plugin {
+class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
 	var $search = null; // Search string
 	var $replace = null; // Replace string
 	var $method = null; // simple/wildcards/regex

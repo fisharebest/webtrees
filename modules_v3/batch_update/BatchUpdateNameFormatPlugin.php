@@ -17,16 +17,16 @@ namespace Webtrees;
  */
 
 /**
- * Class duplicate_links_bu_plugin Batch Update plugin: remove duplicate links in records
+ * Class BatchUpdateNameFormatPlugin Batch Update plugin: fix spacing in names, particularly that before/after the surname slashes
  */
-class duplicate_links_bu_plugin extends base_plugin {
+class BatchUpdateNameFormatPlugin extends BatchUpdateBasePlugin {
 	/**
 	 * User-friendly name for this plugin.
 	 *
 	 * @return string
 	 */
 	public function getName() {
-		return I18N::translate('Remove duplicate links');
+		return I18N::translate('Fix name slashes and spaces');
 	}
 
 	/**
@@ -35,16 +35,7 @@ class duplicate_links_bu_plugin extends base_plugin {
 	 * @return string
 	 */
 	public function getDescription() {
-		return I18N::translate('A common error is to have multiple links to the same record, for example listing the same child more than once in a family record.');
-	}
-
-	/**
-	 * This plugin will update all types of record.
-	 *
-	 * @return string[]
-	 */
-	public function getRecordTypesToUpdate() {
-		return array('INDI', 'FAM', 'SOUR', 'REPO', 'NOTE', 'OBJE');
+		return I18N::translate('Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs.');
 	}
 
 	/**
@@ -57,9 +48,8 @@ class duplicate_links_bu_plugin extends base_plugin {
 	 */
 	public function doesRecordNeedUpdate($xref, $gedrec) {
 		return
-			preg_match('/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))(?:\n1.*(?:\n[2-9].*)*)*\1/', $gedrec) ||
-			preg_match('/(\n2.*@.+@.*(?:(?:\n[3-9].*)*))(?:\n2.*(?:\n[3-9].*)*)*\1/', $gedrec) ||
-			preg_match('/(\n3.*@.+@.*(?:(?:\n[4-9].*)*))(?:\n3.*(?:\n[4-9].*)*)*\1/', $gedrec);
+			preg_match('/^(?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*\/[^\/\n]*$/m', $gedrec) ||
+			preg_match('/^(?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*[^\/ ]\//m', $gedrec);
 	}
 
 	/**
@@ -73,11 +63,13 @@ class duplicate_links_bu_plugin extends base_plugin {
 	public function updateRecord($xref, $gedrec) {
 		return preg_replace(
 			array(
-				'/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))((?:\n1.*(?:\n[2-9].*)*)*\1)/',
-				'/(\n2.*@.+@.*(?:(?:\n[3-9].*)*))((?:\n2.*(?:\n[3-9].*)*)*\1)/',
-				'/(\n3.*@.+@.*(?:(?:\n[4-9].*)*))((?:\n3.*(?:\n[4-9].*)*)*\1)/'
+				'/^((?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*\/[^\/\n]*)$/m',
+				'/^((?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*[^\/ ])(\/)/m',
 			),
-			'$2',
+			array(
+				'$1/',
+				'$1 $2',
+			),
 			$gedrec
 		);
 	}

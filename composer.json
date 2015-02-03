@@ -5,7 +5,7 @@
 	"license": "GPL-3.0+",
 	"autoload": {
 		"psr-4": {
-			"Webtrees\\": "app/"
+			"Webtrees\\": ["app/", "modules_v3/"]
 		}
 	},
 	"require": {

@@ -28,8 +28,6 @@ class DeathYBuPluginTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function setUp() {
-		require_once 'modules_v3/batch_update/admin_batch_update.php'; // for class base_plugin
-		require_once 'modules_v3/batch_update/plugins/death_y.php';
 	}
 
 	/**
@@ -38,6 +36,6 @@ class DeathYBuPluginTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetUserFullNameExists() {
-		$this->assertEquals(true, class_exists('\Webtrees\\death_y_bu_plugin'));
+		$this->assertEquals(true, class_exists('\Webtrees\\BatchUpdateMissingDeathPlugin'));
 	}
 }

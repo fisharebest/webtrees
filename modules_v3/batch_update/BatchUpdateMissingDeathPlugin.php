@@ -17,16 +17,16 @@ namespace Webtrees;
  */
 
 /**
- * Class name_format_bu_plugin Batch Update plugin: fix spacing in names, particularly that before/after the surname slashes
+ * Class BatchUpdateMissingDeathPlugin Batch Update plugin: add missing 1 BIRT/DEAT Y
  */
-class name_format_bu_plugin extends base_plugin {
+class BatchUpdateMissingDeathPlugin extends BatchUpdateBasePlugin {
 	/**
 	 * User-friendly name for this plugin.
 	 *
 	 * @return string
 	 */
 	public function getName() {
-		return I18N::translate('Fix name slashes and spaces');
+		return I18N::translate('Add missing death records');
 	}
 
 	/**
@@ -35,7 +35,7 @@ class name_format_bu_plugin extends base_plugin {
 	 * @return string
 	 */
 	public function getDescription() {
-		return I18N::translate('Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs.');
+		return I18N::translate('You can speed up the privacy calculations by adding a death record to individuals whose death can be inferred from other dates, but who do not have a record of death, burial, cremation, etc.');
 	}
 
 	/**
@@ -47,9 +47,7 @@ class name_format_bu_plugin extends base_plugin {
 	 * @return boolean
 	 */
 	public function doesRecordNeedUpdate($xref, $gedrec) {
-		return
-			preg_match('/^(?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*\/[^\/\n]*$/m', $gedrec) ||
-			preg_match('/^(?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*[^\/ ]\//m', $gedrec);
+		return !preg_match('/\n1 (' . WT_EVENTS_DEAT . ')/', $gedrec) && Individual::getInstance($xref)->isDead();
 	}
 
 	/**
@@ -61,16 +59,6 @@ class name_format_bu_plugin extends base_plugin {
 	 * @return string
 	 */
 	public function updateRecord($xref, $gedrec) {
-		return preg_replace(
-			array(
-				'/^((?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*\/[^\/\n]*)$/m',
-				'/^((?:1 NAME|2 (?:FONE|ROMN|_MARNM|_AKA|_HEB)) [^\/\n]*[^\/ ])(\/)/m',
-			),
-			array(
-				'$1/',
-				'$1 $2',
-			),
-			$gedrec
-		);
+		return $gedrec . "\n1 DEAT Y";
 	}
 }
