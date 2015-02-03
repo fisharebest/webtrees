@@ -213,6 +213,9 @@ function reformat_record_import($rec) {
 		case 'DEATH':
 			$tag = 'DEAT';
 			break;
+		case '_DEATH_OF_SPOUSE':
+			$tag = '_DETS';
+			break;
 		case '_DEGREE':
 			$tag = '_DEG';
 			break;
@@ -321,13 +324,13 @@ function reformat_record_import($rec) {
 		case 'MARRIAGE_COUNT':
 			$tag = 'NMR';
 			break;
-		case 'MARR_CONTRACT':
+		case 'MARRIAGE_CONTRACT':
 			$tag = 'MARC';
 			break;
-		case 'MARR_LICENSE':
+		case 'MARRIAGE_LICENSE':
 			$tag = 'MARL';
 			break;
-		case 'MARR_SETTLEMENT':
+		case 'MARRIAGE_SETTLEMENT':
 			$tag = 'MARS';
 			break;
 		case 'MEDIA':
