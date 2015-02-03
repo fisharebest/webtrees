@@ -4,9 +4,6 @@
 	"keywords": ["webtrees", "genealogy"],
 	"license": "GPL-3.0+",
 	"autoload": {
-		"psr-0": {
-			"WT_": "app/"
-		},
 		"psr-4": {
 			"Webtrees\\": "app/"
 		}
