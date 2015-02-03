@@ -64,7 +64,7 @@ class top10_pageviews_WT_Module extends Module implements ModuleBlockInterface {
 			" ORDER BY page_count DESC LIMIT :limit"
 		)->execute(array(
 			'tree_id' => WT_GED_ID,
-			'limit'   => $num,
+			'limit'   => (int) $num,
 		))->FetchAssoc();
 
 
