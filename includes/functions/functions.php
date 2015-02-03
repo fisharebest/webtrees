@@ -2356,7 +2356,7 @@ function get_theme_names() {
 			}
 		}
 		$d->close();
-		uksort($themes, array('I18N', 'strcasecmp'));
+		uksort($themes, 'Webtrees\I18N::strcasecmp');
 	}
 
 	return $themes;

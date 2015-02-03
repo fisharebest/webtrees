@@ -135,7 +135,7 @@ class AdvancedSearchController extends SearchController {
 		foreach ($ofields as $field) {
 			$fields[$field] = WT_Gedcom_Tag::GetLabel($field);
 		}
-		uksort($fields, array('\Webtrees\Controller\AdvancedSearchController', 'tagSort'));
+		uksort($fields, 'Webtrees\AdvancedSearchController::tagSort');
 		return $fields;
 	}
 

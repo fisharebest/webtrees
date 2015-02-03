@@ -122,7 +122,7 @@ class BranchesController extends PageController {
 			$this->individuals[] = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		}
 		// Sort by birth date, oldest first
-		usort($this->individuals, array('Webtrees\Individual', 'compareBirthDate'));
+		usort($this->individuals, 'Webtrees\Individual::compareBirthDate');
 	}
 
 	/**

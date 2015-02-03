@@ -133,7 +133,7 @@ class ClippingsController {
 						$this->addFamilyDescendancy($family, $this->level3);
 					}
 				}
-				uksort($WT_SESSION->cart[WT_GED_ID], array('\Webtrees\Controller\ClippingsController', 'compareClippings'));
+				uksort($WT_SESSION->cart[WT_GED_ID], 'Webtrees\ClippingsController::compareClippings');
 			}
 		} elseif ($this->action === 'remove') {
 			unset ($WT_SESSION->cart[WT_GED_ID][$this->id]);
