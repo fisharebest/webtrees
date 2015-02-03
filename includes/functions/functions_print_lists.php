@@ -1738,14 +1738,14 @@ function print_changes_list($change_ids, $sort) {
 
 	switch ($sort) {
 	case 'name':
-		uasort($arr, 'event_sort_name');
+		uasort($arr, 'Webtrees\event_sort_name');
 		break;
 	case 'date_asc':
-		uasort($arr, 'event_sort');
+		uasort($arr, 'Webtrees\event_sort');
 		$arr = array_reverse($arr);
 		break;
 	case 'date_desc':
-		uasort($arr, 'event_sort');
+		uasort($arr, 'Webtrees\event_sort');
 	}
 	$html = '';
 	foreach ($arr as $value) {
