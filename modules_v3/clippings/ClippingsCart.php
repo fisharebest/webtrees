@@ -20,23 +20,41 @@ use PclZip;
 use Zend_Session;
 
 /**
- * Main controller class for the Clippings page.
+ * The clippings cart.
  */
-class ClippingsController {
+class ClippingsCart {
+	/** @var string  */
+	private $download_data;
 
-	var $download_data;
-	var $media_list = array();
-	var $addCount = 0;
-	var $privCount = 0;
-	var $type;
-	var $id;
-	var $IncludeMedia;
-	var $conv_path;
-	var $privatize_export;
-	var $Zip;
-	var $level1; // number of levels of ancestors
-	var $level2;
-	var $level3; // number of levels of descendents
+	/** @var string[] List of files to include */
+	private $media_list;
+
+	/** @var string The type of the record being added */
+	public $type;
+
+	/** @var string The XREF of the record being added */
+	public $id;
+
+	/** @var string Whether to include media files for media objects */
+	private $IncludeMedia;
+
+	/** @var string The media path (if any) to prefix to the filenames */
+	public $conv_path;
+
+	/** @var string The privacy level to apply to the download */
+	private $privatize_export;
+
+	/** @var string Whether to download as ZIP file */
+	private $Zip;
+
+	/** @var integer The number of ancestor generations (individuals) to add */
+	public $level1;
+
+	/** @var integer The number of ancestor generations (families) to add */
+	public $level2;
+
+	/** @var integer The number of descendent generations to add */
+	public $level3;
 
 	/**
 	 * Create the clippings controller
@@ -131,7 +149,7 @@ class ClippingsController {
 						$this->addFamilyDescendancy($family, $this->level3);
 					}
 				}
-				uksort($WT_SESSION->cart[WT_GED_ID], 'Webtrees\ClippingsController::compareClippings');
+				uksort($WT_SESSION->cart[WT_GED_ID], 'Webtrees\ClippingsCart::compareClippings');
 			}
 		} elseif ($this->action === 'remove') {
 			unset ($WT_SESSION->cart[WT_GED_ID][$this->id]);
@@ -240,6 +258,8 @@ class ClippingsController {
 
 			if ($this->IncludeMedia === "yes") {
 				$this->media_list = $media;
+			} else {
+				$this->media_list = array();
 			}
 			$filetext .= "0 @WEBTREES@ SOUR\n1 TITL " . WT_BASE_URL . "\n";
 			if ($user_id = $WT_TREE->getPreference('CONTACT_EMAIL')) {
@@ -371,7 +391,7 @@ class ClippingsController {
 	 * Recursively add direct-line ancestors to cart
 	 *
 	 * @param Individual|null $person
-	 * @param integer            $level
+	 * @param integer         $level
 	 */
 	function addAncestorsToCart(Individual $person = null, $level = 0) {
 		if (!$person) {

@@ -16,14 +16,6 @@ namespace Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use Webtrees\Family;
-use Webtrees\Filter;
-use Webtrees\GedcomRecord;
-use Webtrees\I18N;
-use Webtrees\Individual;
-use Webtrees\Menu;
-use Webtrees\Module;
-use Webtrees\Source;
 use Zend_Session;
 
 /**
@@ -57,7 +49,7 @@ class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleS
 		case 'index':
 			global $MAX_PEDIGREE_GENERATIONS, $controller, $WT_SESSION, $GEDCOM_MEDIA_PATH;
 
-			$clip_ctrl = new ClippingsController;
+			$clip_ctrl = new ClippingsCart;
 
 			$controller = new PageController;
 			$controller
@@ -131,10 +123,6 @@ class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleS
 					</form>
 				<?php }
 				}
-
-			if ($clip_ctrl->privCount > 0) {
-				echo "<span class=\"error\">" . I18N::translate('Some items could not be added due to privacy restrictions') . "</span><br><br>";
-			}
 
 			if (!$WT_SESSION->cart[WT_GED_ID]) {
 				if ($clip_ctrl->action != 'add') {
@@ -336,10 +324,8 @@ class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleS
 		if ($SEARCH_SPIDER) {
 			return false;
 		} else {
-			require_once WT_ROOT . WT_MODULES_DIR . 'clippings/clippings_ctrl.php';
-
 			// Creating a controller has the side effect of initialising the cart
-			new ClippingsController;
+			new ClippingsCart;
 
 			return true;
 		}
@@ -361,18 +347,16 @@ class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleS
 
 	/** {@inheritdoc} */
 	public function getSidebarAjaxContent() {
-		require_once WT_ROOT . WT_MODULES_DIR . 'clippings/clippings_ctrl.php';
-
 		global $WT_SESSION;
 
-		$clip_ctrl         = new ClippingsController;
+		$clip_ctrl         = new ClippingsCart;
 		$add               = Filter::get('add', WT_REGEX_XREF);
 		$add1              = Filter::get('add1', WT_REGEX_XREF);
 		$remove            = Filter::get('remove', WT_REGEX_XREF);
 		$others            = Filter::get('others');
-		$clip_ctrl->level1 = Filter::get('level1');
-		$clip_ctrl->level2 = Filter::get('level2');
-		$clip_ctrl->level3 = Filter::get('level3');
+		$clip_ctrl->level1 = Filter::getInteger('level1');
+		$clip_ctrl->level2 = Filter::getInteger('level2');
+		$clip_ctrl->level3 = Filter::getInteger('level3');
 		if ($add) {
 			$record = GedcomRecord::getInstance($add);
 			if ($record) {
@@ -555,11 +539,12 @@ class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleS
 	}
 
 	/**
-	 * @param ClippingsController $clip_ctrl
+	 * @param ClippingsCart $clip_ctrl
+
 	 *
-	 * @return string
+*@return string
 	 */
-	public function downloadForm(ClippingsController $clip_ctrl) {
+	public function downloadForm(ClippingsCart $clip_ctrl) {
 		global $GEDCOM_MEDIA_PATH;
 		$pid = Filter::get('pid', WT_REGEX_XREF);
 

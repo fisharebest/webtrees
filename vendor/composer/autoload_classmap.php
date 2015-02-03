@@ -298,7 +298,7 @@ return array(
     'Webtrees\\BranchesController' => $baseDir . '/app/Controller/BranchesController.php',
     'Webtrees\\CalendarDate' => $baseDir . '/app/Date/CalendarDate.php',
     'Webtrees\\ChartController' => $baseDir . '/app/Controller/ChartController.php',
-    'Webtrees\\ClippingsController' => $baseDir . '/modules_v3/clippings/clippings_ctrl.php',
+    'Webtrees\\ClippingsCart' => $baseDir . '/modules_v3/clippings/ClippingsCart.php',
     'Webtrees\\CloudsTheme' => $baseDir . '/app/Theme/CloudsTheme.php',
     'Webtrees\\ColorsTheme' => $baseDir . '/app/Theme/ColorsTheme.php',
     'Webtrees\\CompactController' => $baseDir . '/app/Controller/CompactController.php',
