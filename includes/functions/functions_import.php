@@ -922,8 +922,8 @@ function update_names($xref, $ged_id, GedcomRecord $record) {
 	static $sql_insert_name_indi = null;
 	static $sql_insert_name_other = null;
 	if (!$sql_insert_name_indi) {
-		$sql_insert_name_indi = Database::prepare("INSERT INTO `##name` (n_file,n_id,n_num,n_type,n_sort,n_full,n_surname,n_surn,n_givn,n_soundex_givn_std,n_soundex_surn_std,n_soundex_givn_dm,n_soundex_surn_dm) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
-		$sql_insert_name_other = Database::prepare("INSERT INTO `##name` (n_file,n_id,n_num,n_type,n_sort,n_full) VALUES (?,?,?,?,?,?)");
+		$sql_insert_name_indi = Database::prepare("INSERT INTO `##name` (n_file,n_id,n_num,n_type,n_sort,n_full,n_surname,n_surn,n_givn,n_soundex_givn_std,n_soundex_surn_std,n_soundex_givn_dm,n_soundex_surn_dm) VALUES (?, ?, ?, ?, LEFT(?, 255), LEFT(?, 255), LEFT(?, 255), LEFT(?, 255), ?, ?, ?, ?, ?)");
+		$sql_insert_name_other = Database::prepare("INSERT INTO `##name` (n_file,n_id,n_num,n_type,n_sort,n_full) VALUES (?, ?, ?, ?, LEFT(?, 255), LEFT(?, 255))");
 	}
 
 	foreach ($record->getAllNames() as $n=>$name) {
