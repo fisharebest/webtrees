@@ -60,8 +60,8 @@ if ($page_parameter) {
 	)->execute(array(WT_GED_ID, WT_SCRIPT_NAME, $page_parameter))->fetchOne();
 
 	// Only record one hit per session
-	if ($page_parameter && empty($WT_SESSION->SESSION_PAGE_HITS[WT_SCRIPT_NAME . $page_parameter])) {
-		$WT_SESSION->SESSION_PAGE_HITS[WT_SCRIPT_NAME . $page_parameter] = true;
+	if ($page_parameter && empty(Globals::$WT_SESSION->SESSION_PAGE_HITS[WT_SCRIPT_NAME . $page_parameter])) {
+		Globals::$WT_SESSION->SESSION_PAGE_HITS[WT_SCRIPT_NAME . $page_parameter] = true;
 		if (is_null($hitCount)) {
 			$hitCount = 1;
 			Database::prepare(

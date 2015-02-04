@@ -60,14 +60,14 @@ class ClippingsCart {
 	 * Create the clippings controller
 	 */
 	public function __construct() {
-		global $WT_TREE, $MEDIA_DIRECTORY, $WT_SESSION;
+		global $WT_TREE, $MEDIA_DIRECTORY;
 
 		// Our cart is an array of items in the session
-		if (!is_array($WT_SESSION->cart)) {
-			$WT_SESSION->cart = array();
+		if (!is_array(Globals::$WT_SESSION->cart)) {
+			Globals::$WT_SESSION->cart = array();
 		}
-		if (!array_key_exists(WT_GED_ID, $WT_SESSION->cart)) {
-			$WT_SESSION->cart[WT_GED_ID] = array();
+		if (!array_key_exists(WT_GED_ID, Globals::$WT_SESSION->cart)) {
+			Globals::$WT_SESSION->cart[WT_GED_ID] = array();
 		}
 
 		$this->action           = Filter::get('action');
@@ -149,12 +149,12 @@ class ClippingsCart {
 						$this->addFamilyDescendancy($family, $this->level3);
 					}
 				}
-				uksort($WT_SESSION->cart[WT_GED_ID], 'Webtrees\ClippingsCart::compareClippings');
+				uksort(Globals::$WT_SESSION->cart[WT_GED_ID], 'Webtrees\ClippingsCart::compareClippings');
 			}
 		} elseif ($this->action === 'remove') {
-			unset ($WT_SESSION->cart[WT_GED_ID][$this->id]);
+			unset (Globals::$WT_SESSION->cart[WT_GED_ID][$this->id]);
 		} elseif ($this->action === 'empty') {
-			$WT_SESSION->cart[WT_GED_ID] = array();
+			Globals::$WT_SESSION->cart[WT_GED_ID] = array();
 		} elseif ($this->action === 'download') {
 			$media      = array();
 			$mediacount = 0;
@@ -194,7 +194,7 @@ class ClippingsCart {
 				break;
 			}
 
-			foreach (array_keys($WT_SESSION->cart[WT_GED_ID]) as $xref) {
+			foreach (array_keys(Globals::$WT_SESSION->cart[WT_GED_ID]) as $xref) {
 				$object = GedcomRecord::getInstance($xref);
 				// The object may have been deleted since we added it to the cart....
 				if ($object) {
@@ -202,19 +202,19 @@ class ClippingsCart {
 					// Remove links to objects that aren't in the cart
 					preg_match_all('/\n1 ' . WT_REGEX_TAG . ' @(' . WT_REGEX_XREF . ')@(\n[2-9].*)*/', $record, $matches, PREG_SET_ORDER);
 					foreach ($matches as $match) {
-						if (!array_key_exists($match[1], $WT_SESSION->cart[WT_GED_ID])) {
+						if (!array_key_exists($match[1], Globals::$WT_SESSION->cart[WT_GED_ID])) {
 							$record = str_replace($match[0], '', $record);
 						}
 					}
 					preg_match_all('/\n2 ' . WT_REGEX_TAG . ' @(' . WT_REGEX_XREF . ')@(\n[3-9].*)*/', $record, $matches, PREG_SET_ORDER);
 					foreach ($matches as $match) {
-						if (!array_key_exists($match[1], $WT_SESSION->cart[WT_GED_ID])) {
+						if (!array_key_exists($match[1], Globals::$WT_SESSION->cart[WT_GED_ID])) {
 							$record = str_replace($match[0], '', $record);
 						}
 					}
 					preg_match_all('/\n3 ' . WT_REGEX_TAG . ' @(' . WT_REGEX_XREF . ')@(\n[4-9].*)*/', $record, $matches, PREG_SET_ORDER);
 					foreach ($matches as $match) {
-						if (!array_key_exists($match[1], $WT_SESSION->cart[WT_GED_ID])) {
+						if (!array_key_exists($match[1], Globals::$WT_SESSION->cart[WT_GED_ID])) {
 							$record = str_replace($match[0], '', $record);
 						}
 					}
@@ -333,14 +333,12 @@ class ClippingsCart {
 	 * @param GedcomRecord $record
 	 */
 	function addClipping(GedcomRecord $record) {
-		global $WT_SESSION;
-
 		if ($record->canShowName()) {
-			$WT_SESSION->cart[WT_GED_ID][$record->getXref()] = true;
+			Globals::$WT_SESSION->cart[WT_GED_ID][$record->getXref()] = true;
 			// Add directly linked records
 			preg_match_all('/\n\d (?:OBJE|NOTE|SOUR|REPO) @(' . WT_REGEX_XREF . ')@/', $record->getGedcom(), $matches);
 			foreach ($matches[1] as $match) {
-				$WT_SESSION->cart[WT_GED_ID][$match] = true;
+				Globals::$WT_SESSION->cart[WT_GED_ID][$match] = true;
 			}
 		}
 	}

@@ -25,7 +25,7 @@ if (strpos(ini_get('disable_functions'), 'ini_set') === false) {
 }
 
 // To embed webtrees code in other applications, we must explicitly declare any global variables that we create.
-global $WT_REQUEST, $WT_SESSION;
+global $WT_REQUEST;
 
 define('WT_SCRIPT_NAME', 'setup.php');
 define('WT_CONFIG_FILE', 'config.ini.php');
@@ -65,9 +65,9 @@ if (version_compare(PHP_VERSION, WT_REQUIRED_PHP_VERSION) < 0) {
 }
 
 $WT_REQUEST          = new Zend_Controller_Request_Http;
-$WT_SESSION          = new \stdClass;
-$WT_SESSION->locale  = null; // Needed for I18N
-$WT_SESSION->wt_user = null; // Needed for Auth
+Globals::$WT_SESSION          = new \stdClass;
+Globals::$WT_SESSION->locale  = null; // Needed for I18N
+Globals::$WT_SESSION->wt_user = null; // Needed for Auth
 define('WT_LOCALE', I18N::init(Filter::post('lang', '[@a-zA-Z_]+')));
 
 header('Content-Type: text/html; charset=UTF-8');

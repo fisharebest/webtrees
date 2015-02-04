@@ -16,14 +16,6 @@ namespace Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use Zend_Session;
-
-/**
- * Defined in session.php
- *
- * @global Zend_Session $WT_SESSION
- */
-
 define('WT_SCRIPT_NAME', 'message.php');
 require './includes/session.php';
 
@@ -73,18 +65,18 @@ if (Auth::check()) {
 // This makes it harder for spammers.
 switch ($action) {
 case 'compose':
-	$WT_SESSION->good_to_send = true;
+	Globals::$WT_SESSION->good_to_send = true;
 	break;
 case 'send':
 	// Only send messages if we've come straight from the compose page.
-	if (!$WT_SESSION->good_to_send) {
+	if (!Globals::$WT_SESSION->good_to_send) {
 		Log::addAuthenticationLog('Attempt to send a message without visiting the compose page.  Spam attack?');
 		$action = 'compose';
 	}
 	if (!Filter::checkCsrf()) {
 		$action = 'compose';
 	}
-	unset($WT_SESSION->good_to_send);
+	unset(Globals::$WT_SESSION->good_to_send);
 	break;
 }
 
