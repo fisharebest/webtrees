@@ -1,27 +1,22 @@
 <?php
-// Import-specific functions
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Webtrees;
 
-use WT\Log;
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+use PDOException;
 
 /**
  * Tidy up a gedcom record on import, so that we can access it consistently/efficiently.
@@ -218,6 +213,9 @@ function reformat_record_import($rec) {
 		case 'DEATH':
 			$tag = 'DEAT';
 			break;
+		case '_DEATH_OF_SPOUSE':
+			$tag = '_DETS';
+			break;
 		case '_DEGREE':
 			$tag = '_DEG';
 			break;
@@ -326,13 +324,13 @@ function reformat_record_import($rec) {
 		case 'MARRIAGE_COUNT':
 			$tag = 'NMR';
 			break;
-		case 'MARR_CONTRACT':
+		case 'MARRIAGE_CONTRACT':
 			$tag = 'MARC';
 			break;
-		case 'MARR_LICENSE':
+		case 'MARRIAGE_LICENSE':
 			$tag = 'MARL';
 			break;
-		case 'MARR_SETTLEMENT':
+		case 'MARRIAGE_SETTLEMENT':
 			$tag = 'MARS';
 			break;
 		case 'MEDIA':
@@ -602,19 +600,19 @@ function import_record($gedrec, $ged_id, $update) {
 	static $sql_insert_media = null;
 	static $sql_insert_other = null;
 	if (!$sql_insert_indi) {
-		$sql_insert_indi = WT_DB::prepare(
+		$sql_insert_indi = Database::prepare(
 			"INSERT INTO `##individuals` (i_id, i_file, i_rin, i_sex, i_gedcom) VALUES (?,?,?,?,?)"
 		);
-		$sql_insert_fam = WT_DB::prepare(
+		$sql_insert_fam = Database::prepare(
 			"INSERT INTO `##families` (f_id, f_file, f_husb, f_wife, f_gedcom, f_numchil) VALUES (?,?,?,?,?,?)"
 		);
-		$sql_insert_sour = WT_DB::prepare(
+		$sql_insert_sour = Database::prepare(
 			"INSERT INTO `##sources` (s_id, s_file, s_name, s_gedcom) VALUES (?,?,?,?)"
 		);
-		$sql_insert_media = WT_DB::prepare(
+		$sql_insert_media = Database::prepare(
 			"INSERT INTO `##media` (m_id, m_ext, m_type, m_titl, m_filename, m_file, m_gedcom) VALUES (?, ?, ?, ?, ?, ?, ?)"
 		);
-		$sql_insert_other = WT_DB::prepare(
+		$sql_insert_other = Database::prepare(
 			"INSERT INTO `##other` (o_id, o_file, o_type, o_gedcom) VALUES (?,?,?,?)"
 		);
 	}
@@ -638,7 +636,7 @@ function import_record($gedrec, $ged_id, $update) {
 		$type = $match[1];
 		$xref = $type; // For HEAD/TRLR, use type as pseudo XREF.
 	} else {
-		echo WT_I18N::translate('Invalid GEDCOM format'), '<br><pre>', $gedrec, '</pre>';
+		echo I18N::translate('Invalid GEDCOM format'), '<br><pre>', $gedrec, '</pre>';
 
 		return;
 	}
@@ -648,7 +646,7 @@ function import_record($gedrec, $ged_id, $update) {
 	// back in.
 	if ($keep_media && $xref) {
 		$old_linked_media =
-			WT_DB::prepare("SELECT l_to FROM `##link` WHERE l_from=? AND l_file=? AND l_type='OBJE'")
+			Database::prepare("SELECT l_to FROM `##link` WHERE l_from=? AND l_file=? AND l_type='OBJE'")
 			->execute(array($xref, $ged_id))
 			->fetchOneColumn();
 		foreach ($old_linked_media as $media_id) {
@@ -661,7 +659,7 @@ function import_record($gedrec, $ged_id, $update) {
 		// Convert inline media into media objects
 		$gedrec = convert_inline_media($ged_id, $gedrec);
 
-		$record = new WT_Individual($xref, $gedrec, null, $ged_id);
+		$record = new Individual($xref, $gedrec, null, $ged_id);
 		if ($USE_RIN && preg_match('/\n1 RIN (.+)/', $gedrec, $match)) {
 			$rin = $match[1];
 		} else {
@@ -702,7 +700,7 @@ function import_record($gedrec, $ged_id, $update) {
 		// Convert inline media into media objects
 		$gedrec = convert_inline_media($ged_id, $gedrec);
 
-		$record = new WT_Source($xref, $gedrec, null, $ged_id);
+		$record = new Source($xref, $gedrec, null, $ged_id);
 		if (preg_match('/\n1 TITL (.+)/', $gedrec, $match)) {
 			$name = $match[1];
 		} elseif (preg_match('/\n1 ABBR (.+)/', $gedrec, $match)) {
@@ -719,21 +717,21 @@ function import_record($gedrec, $ged_id, $update) {
 		// Convert inline media into media objects
 		$gedrec = convert_inline_media($ged_id, $gedrec);
 
-		$record = new WT_Repository($xref, $gedrec, null, $ged_id);
+		$record = new Repository($xref, $gedrec, null, $ged_id);
 		$sql_insert_other->execute(array($xref, $ged_id, $type, $gedrec));
 		// Update the cross-reference/index tables.
 		update_links($xref, $ged_id, $gedrec);
 		update_names($xref, $ged_id, $record);
 		break;
 	case 'NOTE':
-		$record = new WT_Note($xref, $gedrec, null, $ged_id);
+		$record = new Note($xref, $gedrec, null, $ged_id);
 		$sql_insert_other->execute(array($xref, $ged_id, $type, $gedrec));
 		// Update the cross-reference/index tables.
 		update_links($xref, $ged_id, $gedrec);
 		update_names($xref, $ged_id, $record);
 		break;
 	case 'OBJE':
-		$record = new WT_Media($xref, $gedrec, null, $ged_id);
+		$record = new Media($xref, $gedrec, null, $ged_id);
 		$sql_insert_media->execute(array($xref, $record->extension(), $record->getMediaType(), $record->title, $record->file, $ged_id, $gedrec));
 		// Update the cross-reference/index tables.
 		update_links($xref, $ged_id, $gedrec);
@@ -753,7 +751,7 @@ function import_record($gedrec, $ged_id, $update) {
 		update_links($xref, $ged_id, $gedrec);
 		break;
 	default:
-		$record = new WT_GedcomRecord($xref, $gedrec, null, $ged_id);
+		$record = new GedcomRecord($xref, $gedrec, null, $ged_id);
 		$sql_insert_other->execute(array($xref, $ged_id, $type, $gedrec));
 		// Update the cross-reference/index tables.
 		update_links($xref, $ged_id, $gedrec);
@@ -780,13 +778,13 @@ function update_places($gid, $ged_id, $gedrec) {
 		// It ignores places that utf8_unicode_ci consider to be the same (i.e. accents).
 		// For example Québec and Quebec
 		// We need a better solution that attaches multiple names to single places
-		$sql_insert_placelinks = WT_DB::prepare(
-			"INSERT IGNORE INTO `##placelinks` (pl_p_id, pl_gid, pl_file) VALUES (?,?,?)"
+		$sql_insert_placelinks = Database::prepare(
+			"INSERT IGNORE INTO `##placelinks` (pl_p_id, pl_gid, pl_file) VALUES (?, ?, ?)"
 		);
-		$sql_insert_places = WT_DB::prepare(
-			"INSERT INTO `##places` (p_place, p_parent_id, p_file, p_std_soundex, p_dm_soundex) VALUES (?,?,?,?,?)"
+		$sql_insert_places = Database::prepare(
+			"INSERT INTO `##places` (p_place, p_parent_id, p_file, p_std_soundex, p_dm_soundex) VALUES (LEFT(?, 150), ?, ?, ?, ?)"
 		);
-		$sql_select_places = WT_DB::prepare(
+		$sql_select_places = Database::prepare(
 			"SELECT p_id FROM `##places` WHERE p_file=? AND p_parent_id=? AND p_place=?"
 		);
 	}
@@ -800,7 +798,7 @@ function update_places($gid, $ged_id, $gedrec) {
 	$pt = preg_match_all("/^[2-9] PLAC (.+)/m", $gedrec, $match, PREG_SET_ORDER);
 	for ($i = 0; $i < $pt; $i++) {
 		$place = trim($match[$i][1]);
-		$lowplace = WT_I18N::strtolower($place);
+		$lowplace = I18N::strtolower($place);
 		//-- if we have already visited this place for this person then we don't need to again
 		if (isset($personplace[$lowplace])) {
 			continue;
@@ -838,10 +836,10 @@ function update_places($gid, $ged_id, $gedrec) {
 
 			//-- if we are not searching then we have to insert the place into the db
 			if (!$search) {
-				$std_soundex = WT_Soundex::russell($place);
-				$dm_soundex  = WT_Soundex::daitchMokotoff($place);
+				$std_soundex = Soundex::russell($place);
+				$dm_soundex  = Soundex::daitchMokotoff($place);
 				$sql_insert_places->execute(array($place, $parent_id, $ged_id, $std_soundex, $dm_soundex));
-				$p_id = WT_DB::getInstance()->lastInsertId();
+				$p_id = Database::getInstance()->lastInsertId();
 			}
 
 			$sql_insert_placelinks->execute(array($p_id, $gid, $ged_id));
@@ -863,7 +861,7 @@ function update_places($gid, $ged_id, $gedrec) {
 function update_dates($xref, $ged_id, $gedrec) {
 	static $sql_insert_date = null;
 	if (!$sql_insert_date) {
-		$sql_insert_date = WT_DB::prepare(
+		$sql_insert_date = Database::prepare(
 			"INSERT INTO `##dates` (d_day,d_month,d_mon,d_year,d_julianday1,d_julianday2,d_fact,d_gid,d_file,d_type) VALUES (?,?,?,?,?,?,?,?,?,?)"
 		);
 	}
@@ -874,7 +872,7 @@ function update_dates($xref, $ged_id, $gedrec) {
 			if (($fact == 'FACT' || $fact == 'EVEN') && preg_match("/\n2 TYPE ([A-Z]{3,5})/", $match[0], $tmatch)) {
 				$fact = $tmatch[1];
 			}
-			$date = new WT_Date($match[2]);
+			$date = new Date($match[2]);
 			$sql_insert_date->execute(array($date->date1->d, $date->date1->format('%O'), $date->date1->m, $date->date1->y, $date->date1->minJD, $date->date1->maxJD, $fact, $xref, $ged_id, $date->date1->format('%@')));
 			if ($date->date2) {
 				$sql_insert_date->execute(array($date->date2->d, $date->date2->format('%O'), $date->date2->m, $date->date2->y, $date->date2->minJD, $date->date2->maxJD, $fact, $xref, $ged_id, $date->date2->format('%@')));
@@ -893,7 +891,7 @@ function update_dates($xref, $ged_id, $gedrec) {
 function update_links($xref, $ged_id, $gedrec) {
 	static $sql_insert_link = null;
 	if (!$sql_insert_link) {
-		$sql_insert_link = WT_DB::prepare("INSERT INTO `##link` (l_from,l_to,l_type,l_file) VALUES (?,?,?,?)");
+		$sql_insert_link = Database::prepare("INSERT INTO `##link` (l_from,l_to,l_type,l_file) VALUES (?,?,?,?)");
 	}
 
 	if (preg_match_all('/^\d+ (' . WT_REGEX_TAG . ') @(' . WT_REGEX_XREF . ')@/m', $gedrec, $matches, PREG_SET_ORDER)) {
@@ -918,31 +916,31 @@ function update_links($xref, $ged_id, $gedrec) {
  *
  * @param string          $xref
  * @param integer         $ged_id
- * @param WT_GedcomRecord $record
+ * @param GedcomRecord $record
  */
-function update_names($xref, $ged_id, WT_GedcomRecord $record) {
+function update_names($xref, $ged_id, GedcomRecord $record) {
 	static $sql_insert_name_indi = null;
 	static $sql_insert_name_other = null;
 	if (!$sql_insert_name_indi) {
-		$sql_insert_name_indi = WT_DB::prepare("INSERT INTO `##name` (n_file,n_id,n_num,n_type,n_sort,n_full,n_surname,n_surn,n_givn,n_soundex_givn_std,n_soundex_surn_std,n_soundex_givn_dm,n_soundex_surn_dm) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
-		$sql_insert_name_other = WT_DB::prepare("INSERT INTO `##name` (n_file,n_id,n_num,n_type,n_sort,n_full) VALUES (?,?,?,?,?,?)");
+		$sql_insert_name_indi = Database::prepare("INSERT INTO `##name` (n_file,n_id,n_num,n_type,n_sort,n_full,n_surname,n_surn,n_givn,n_soundex_givn_std,n_soundex_surn_std,n_soundex_givn_dm,n_soundex_surn_dm) VALUES (?, ?, ?, ?, LEFT(?, 255), LEFT(?, 255), LEFT(?, 255), LEFT(?, 255), ?, ?, ?, ?, ?)");
+		$sql_insert_name_other = Database::prepare("INSERT INTO `##name` (n_file,n_id,n_num,n_type,n_sort,n_full) VALUES (?, ?, ?, ?, LEFT(?, 255), LEFT(?, 255))");
 	}
 
 	foreach ($record->getAllNames() as $n=>$name) {
-		if ($record instanceof WT_Individual) {
+		if ($record instanceof Individual) {
 			if ($name['givn'] == '@P.N.') {
 				$soundex_givn_std = null;
 				$soundex_givn_dm  = null;
 			} else {
-				$soundex_givn_std = WT_Soundex::russell($name['givn']);
-				$soundex_givn_dm  = WT_Soundex::daitchMokotoff($name['givn']);
+				$soundex_givn_std = Soundex::russell($name['givn']);
+				$soundex_givn_dm  = Soundex::daitchMokotoff($name['givn']);
 			}
 			if ($name['surn'] == '@N.N.') {
 				$soundex_surn_std = null;
 				$soundex_surn_dm  = null;
 			} else {
-				$soundex_surn_std = WT_Soundex::russell($name['surname']);
-				$soundex_surn_dm  = WT_Soundex::daitchMokotoff($name['surname']);
+				$soundex_surn_std = Soundex::russell($name['surname']);
+				$soundex_surn_dm  = Soundex::daitchMokotoff($name['surname']);
 			}
 			$sql_insert_name_indi->execute(array($ged_id, $xref, $n, $name['type'], $name['sort'], $name['fullNN'], $name['surname'], $name['surn'], $name['givn'], $soundex_givn_std, $soundex_surn_std, $soundex_givn_dm, $soundex_surn_dm));
 		} else {
@@ -985,10 +983,10 @@ function create_media_object($level, $gedrec, $ged_id) {
 	static $sql_insert_media = null;
 	static $sql_select_media = null;
 	if (!$sql_insert_media) {
-		$sql_insert_media = WT_DB::prepare(
+		$sql_insert_media = Database::prepare(
 			"INSERT INTO `##media` (m_id, m_ext, m_type, m_titl, m_filename, m_file, m_gedcom) VALUES (?, ?, ?, ?, ?, ?, ?)"
 		);
-		$sql_select_media = WT_DB::prepare(
+		$sql_select_media = Database::prepare(
 			"SELECT m_id FROM `##media` WHERE m_filename=? AND m_titl=? AND m_file=?"
 		);
 	}
@@ -1017,7 +1015,7 @@ function create_media_object($level, $gedrec, $ged_id) {
 		// Fix Legacy GEDCOMS
 		$gedrec = preg_replace('/\n1 FORM (.+)\n1 FILE (.+)\n1 TITL (.+)/', "\n1 FILE $2\n2 FORM $1\n2 TITL $3", $gedrec);
 		// Create new record
-		$record = new WT_Media($xref, $gedrec, null, $ged_id);
+		$record = new Media($xref, $gedrec, null, $ged_id);
 		$sql_insert_media->execute(array($xref, $record->extension(), $record->getMediaType(), $record->title, $record->file, $ged_id, $gedrec));
 	}
 
@@ -1031,7 +1029,7 @@ function create_media_object($level, $gedrec, $ged_id) {
  * @param integer $ged_id
  */
 function accept_all_changes($xref, $ged_id) {
-	$changes = WT_DB::prepare(
+	$changes = Database::prepare(
 		"SELECT change_id, gedcom_name, old_gedcom, new_gedcom" .
 		" FROM `##change` c" .
 		" JOIN `##gedcom` g USING (gedcom_id)" .
@@ -1046,7 +1044,7 @@ function accept_all_changes($xref, $ged_id) {
 			// add/update
 			update_record($change->new_gedcom, $ged_id, false);
 		}
-		WT_DB::prepare(
+		Database::prepare(
 			"UPDATE `##change`" .
 			" SET status='accepted'" .
 			" WHERE status='pending' AND xref=? AND gedcom_id=?"
@@ -1062,7 +1060,7 @@ function accept_all_changes($xref, $ged_id) {
  * @param integer $ged_id
  */
 function reject_all_changes($xref, $ged_id) {
-	WT_DB::prepare(
+	Database::prepare(
 		"UPDATE `##change`" .
 		" SET status='rejected'" .
 		" WHERE status='pending' AND xref=? AND gedcom_id=?"
@@ -1086,42 +1084,42 @@ function update_record($gedrec, $ged_id, $delete) {
 
 	// TODO deleting unlinked places can be done more efficiently in a single query
 	$placeids =
-		WT_DB::prepare("SELECT pl_p_id FROM `##placelinks` WHERE pl_gid=? AND pl_file=?")
+		Database::prepare("SELECT pl_p_id FROM `##placelinks` WHERE pl_gid=? AND pl_file=?")
 		->execute(array($gid, $ged_id))
 		->fetchOneColumn();
 
-	WT_DB::prepare("DELETE FROM `##placelinks` WHERE pl_gid=? AND pl_file=?")->execute(array($gid, $ged_id));
-	WT_DB::prepare("DELETE FROM `##dates`      WHERE d_gid =? AND d_file =?")->execute(array($gid, $ged_id));
+	Database::prepare("DELETE FROM `##placelinks` WHERE pl_gid=? AND pl_file=?")->execute(array($gid, $ged_id));
+	Database::prepare("DELETE FROM `##dates`      WHERE d_gid =? AND d_file =?")->execute(array($gid, $ged_id));
 
 	//-- delete any unlinked places
 	foreach ($placeids as $p_id) {
 		$num =
-			WT_DB::prepare("SELECT count(pl_p_id) FROM `##placelinks` WHERE pl_p_id=? AND pl_file=?")
+			Database::prepare("SELECT count(pl_p_id) FROM `##placelinks` WHERE pl_p_id=? AND pl_file=?")
 			->execute(array($p_id, $ged_id))
 			->fetchOne();
 		if ($num == 0) {
-			WT_DB::prepare("DELETE FROM `##places` WHERE p_id=? AND p_file=?")->execute(array($p_id, $ged_id));
+			Database::prepare("DELETE FROM `##places` WHERE p_id=? AND p_file=?")->execute(array($p_id, $ged_id));
 		}
 	}
 
-	WT_DB::prepare("DELETE FROM `##name` WHERE n_id=? AND n_file=?")->execute(array($gid, $ged_id));
-	WT_DB::prepare("DELETE FROM `##link` WHERE l_from=? AND l_file=?")->execute(array($gid, $ged_id));
+	Database::prepare("DELETE FROM `##name` WHERE n_id=? AND n_file=?")->execute(array($gid, $ged_id));
+	Database::prepare("DELETE FROM `##link` WHERE l_from=? AND l_file=?")->execute(array($gid, $ged_id));
 
 	switch ($type) {
 	case 'INDI':
-		WT_DB::prepare("DELETE FROM `##individuals` WHERE i_id=? AND i_file=?")->execute(array($gid, $ged_id));
+		Database::prepare("DELETE FROM `##individuals` WHERE i_id=? AND i_file=?")->execute(array($gid, $ged_id));
 		break;
 	case 'FAM':
-		WT_DB::prepare("DELETE FROM `##families` WHERE f_id=? AND f_file=?")->execute(array($gid, $ged_id));
+		Database::prepare("DELETE FROM `##families` WHERE f_id=? AND f_file=?")->execute(array($gid, $ged_id));
 		break;
 	case 'SOUR':
-		WT_DB::prepare("DELETE FROM `##sources` WHERE s_id=? AND s_file=?")->execute(array($gid, $ged_id));
+		Database::prepare("DELETE FROM `##sources` WHERE s_id=? AND s_file=?")->execute(array($gid, $ged_id));
 		break;
 	case 'OBJE':
-		WT_DB::prepare("DELETE FROM `##media` WHERE m_id=? AND m_file=?")->execute(array($gid, $ged_id));
+		Database::prepare("DELETE FROM `##media` WHERE m_id=? AND m_file=?")->execute(array($gid, $ged_id));
 		break;
 	default:
-		WT_DB::prepare("DELETE FROM `##other` WHERE o_id=? AND o_file=?")->execute(array($gid, $ged_id));
+		Database::prepare("DELETE FROM `##other` WHERE o_id=? AND o_file=?")->execute(array($gid, $ged_id));
 		break;
 	}
 

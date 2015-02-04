@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-01-31 12:10+0000\n"
-"PO-Revision-Date: 2015-02-01 23:07+1000\n"
+"PO-Revision-Date: 2015-02-02 14:47+1000\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
@@ -15,7 +15,6 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "Language-Team: \n"
 "X-Generator: Poedit 1.7.1\n"
-"X-Poedit-Bookmarks: 3757,340,-1,-1,-1,-1,-1,-1,-1,-1\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
@@ -1764,7 +1763,7 @@ msgstr "Visi esami PGV vartotojai turi turėti skirtingus elektroninio pašto ad
 
 #: admin_trees_config.php:639
 msgid "All facts and events"
-msgstr ""
+msgstr "Visi faktai ir įvykiai"
 
 #: admin_trees_config.php:1954
 msgid "All family facts"
@@ -1789,7 +1788,7 @@ msgstr "Visi asmenys"
 
 #: admin_trees_config.php:630
 msgid "All records"
-msgstr ""
+msgstr "Visi įrašai"
 
 #: admin_trees_config.php:2161
 msgid "All repository facts"
@@ -2305,8 +2304,8 @@ msgid "Average number of children per family"
 msgstr "Vidutinis vaikų skaičius šeimoje"
 
 #: admin_trees_manage.php:568
-msgid "Avoid spaces and puncutation.  A family name might be a good choice."
-msgstr ""
+msgid "Avoid spaces and punctuation.  A family name might be a good choice."
+msgstr "Vengti tarpų ir skyrybos ženklų.  Pavardė gali būti geras pasirinkimas."
 
 #: library/WT/Date/Jalali.php:158
 msgctxt "Abbreviation for Persian month: Azar"
@@ -3381,15 +3380,15 @@ msgstr "Keisti blokus šiame puslapyje"
 
 #: admin_users.php:200
 msgid "Change the blocks on this user’s “My page”"
-msgstr ""
+msgstr "Pakeisti šio vartotojo „Mano puslapis“ blokus"
 
 #: admin_trees_manage.php:294 index_edit.php:49
 msgid "Change the “Home page” blocks"
-msgstr ""
+msgstr "Pakeisti „Pirminis puslapis“ blokus"
 
 #: index_edit.php:41
 msgid "Change the “My page” blocks"
-msgstr ""
+msgstr "Pakeisti „Mano puslapis“ blokus"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: includes/functions/functions_print_lists.php:1766
@@ -6589,7 +6588,7 @@ msgstr "Frimaire"
 #. I18N: label for the start of a date range (from x to y)
 #: admin_site_change.php:293 admin_site_logs.php:252
 msgid "From"
-msgstr ""
+msgstr "Nuo"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:89
@@ -7345,7 +7344,7 @@ msgstr ""
 
 #: admin_trees_config.php:452
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account.  You will need to add their account manually."
-msgstr ""
+msgstr "Jei lankytojai negali matyti šeimos medžio, jie negalės prisiregistruoti sąskaitos.  Jūs turėsite sukurti sąskaitas rankiniu būdu."
 
 #. I18N: Help text for the “Who can upload new media files?” configuration setting
 #: admin_trees_config.php:1146
@@ -11583,7 +11582,7 @@ msgstr "Būstinė"
 
 #: index_edit.php:392
 msgid "Restore the default block layout"
-msgstr ""
+msgstr "Atstatyti įprastų blokų išdėstymą"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:367

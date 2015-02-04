@@ -1,32 +1,20 @@
 <?php
-// Census Assistant Control module for webtrees
-//
-// Census and Souce Input Area File File
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2007 to 2010 PGV Development Team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Webtrees;
 
-if (!defined('WT_WEBTREES')) {
-	http_response_code(403);
-	exit;
-}
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 ?>
 
@@ -487,7 +475,7 @@ if (!defined('WT_WEBTREES')) {
 		}
 		var cens_ctry_a = document.getElementById('censCtry');
 		var cens_ctry = cens_ctry_a.value;
-		document.getElementById('Titl').value = '<?php echo WT_I18N::translate('Census transcript'), ' - ', WT_Filter::escapeJs($wholename), ' - ', WT_I18N::translate('Household'); ?>';
+		document.getElementById('Titl').value = '<?php echo I18N::translate('Census transcript'), ' - ', Filter::escapeJs($wholename), ' - ', I18N::translate('Household'); ?>';
 		var prev = document.getElementById('prevYear');
 		prev.value = cenyear;
 	}
@@ -957,7 +945,7 @@ if (!defined('WT_WEBTREES')) {
 
 <div class="optionbox cens_sour">
 	<div class="cens_sour_country">
-		<span><?php echo WT_I18N::translate('Country'); ?><br></span>
+		<span><?php echo I18N::translate('Country'); ?><br></span>
 		<select id="censCtry" name="censCtry" >
 			<option id="UKOPT" value="UK">UK</option>
 			<option id="USOPT" value="USA">USA</option>
@@ -1021,7 +1009,7 @@ if (!defined('WT_WEBTREES')) {
 	</div>
 
 	<div class="cens_sour_year">
-		<span><?php echo WT_I18N::translate('Year'); ?><br></span>
+		<span><?php echo I18N::translate('Year'); ?><br></span>
 		<select style = "background:#ffaaaa;"
 				onchange = "if (this.options[this.selectedIndex].value!='') {
 								changeYear(this.options[this.selectedIndex].value);
@@ -1033,7 +1021,7 @@ if (!defined('WT_WEBTREES')) {
 
 	<div class="cens_sour_scs">
 		<div class="cens_sour_1">
-			<div class="cens_sour_2"><?php echo WT_I18N::translate('Title'); ?></div>
+			<div class="cens_sour_2"><?php echo I18N::translate('Title'); ?></div>
 			<input id="Titl" name="Titl" type="text" value="">
 		</div>
 		<div class="cens_sour_1">
@@ -1041,11 +1029,11 @@ if (!defined('WT_WEBTREES')) {
 			<input id="citation" name="citation" type="text" value="">
 		</div>
 		<div class="cens_sour_1">
-			<div class="cens_sour_2"><?php echo WT_I18N::translate('Place'); ?></div>
+			<div class="cens_sour_2"><?php echo I18N::translate('Place'); ?></div>
 			<input id="locality" name="locality" type="text" value="">
 		</div>
 		<div class="cens_sour_1">
-			<div class="cens_sour_2"><?php echo WT_I18N::translate('Notes'); ?></div>
+			<div class="cens_sour_2"><?php echo I18N::translate('Notes'); ?></div>
 			<input id="notes" name="notes" type="text" value="">
 		</div>
 	</div>

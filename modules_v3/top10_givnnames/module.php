@@ -1,39 +1,33 @@
 <?php
-// webtrees: Web based Family History software
-// Copyright (C) 2015 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2010 John Finlay
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Webtrees;
 
-use WT\Auth;
-use WT\Theme;
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 /**
  * Class top10_givnnames_WT_Module
  */
-class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
+class top10_givnnames_WT_Module extends Module implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
-		return /* I18N: Name of a module.  Top=Most common */ WT_I18N::translate('Top given names');
+		return /* I18N: Name of a module.  Top=Most common */ I18N::translate('Top given names');
 	}
 
 	/** {@inheritdoc} */
 	public function getDescription() {
-		return /* I18N: Description of the “Top given names” module */ WT_I18N::translate('A list of the most popular given names.');
+		return /* I18N: Description of the “Top given names” module */ I18N::translate('A list of the most popular given names.');
 	}
 
 	/** {@inheritdoc} */
@@ -52,21 +46,21 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 		}
 
-		$stats = new WT_Stats(WT_GEDCOM);
+		$stats = new Stats(WT_GEDCOM);
 
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		if ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype === 'user' && Auth::check()) {
-			$title = '<i class="icon-admin" title="' . WT_I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
+			$title = '<i class="icon-admin" title="' . I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
 		} else {
 			$title = '';
 		}
 		if ($num == 1) {
 			// I18N: i.e. most popular given name.
-			$title .= WT_I18N::translate('Top given name');
+			$title .= I18N::translate('Top given name');
 		} else {
 			// I18N: Title for a list of the most common given names, %s is a number.  Note that a separate translation exists when %s is 1
-			$title .= WT_I18N::plural('Top %s given name', 'Top %s given names', $num, WT_I18N::number($num));
+			$title .= I18N::plural('Top %s given name', 'Top %s given names', $num, I18N::number($num));
 		}
 
 		$content = '<div class="normal_inner_block">';
@@ -82,12 +76,12 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 			//List Female names
 			$totals = $stats->commonGivenFemaleTotals($params);
 			if ($totals) {
-				$content .= '<b>' . WT_I18N::translate('Females') . '</b><div class="wrap" style="' . $padding . '">' . $totals . '</div><br>';
+				$content .= '<b>' . I18N::translate('Females') . '</b><div class="wrap" style="' . $padding . '">' . $totals . '</div><br>';
 			}
 			//List Male names
 			$totals = $stats->commonGivenMaleTotals($params);
 			if ($totals) {
-				$content .= '<b>' . WT_I18N::translate('Males') . '</b><div class="wrap" style="' . $padding . '">' . $totals . '</div><br>';
+				$content .= '<b>' . I18N::translate('Males') . '</b><div class="wrap" style="' . $padding . '">' . $totals . '</div><br>';
 			}
 			break;
 		case "table": // Style 2: Tabular format.  Narrow, 2 or 3 column table, good on right side of page
@@ -128,32 +122,30 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 
 	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
-		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
-			set_block_setting($block_id, 'num', WT_Filter::postInteger('num', 1, 10000, 10));
-			set_block_setting($block_id, 'infoStyle', WT_Filter::post('infoStyle', 'list|table', 'table'));
-			set_block_setting($block_id, 'block', WT_Filter::postBool('block'));
+		if (Filter::postBool('save') && Filter::checkCsrf()) {
+			set_block_setting($block_id, 'num', Filter::postInteger('num', 1, 10000, 10));
+			set_block_setting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', 'table'));
+			set_block_setting($block_id, 'block', Filter::postBool('block'));
 		}
-
-		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
 		$num       = get_block_setting($block_id, 'num', '10');
 		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');
 		$block     = get_block_setting($block_id, 'block', '0');
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Number of items to show');
+		echo I18N::translate('Number of items to show');
 		echo '</td><td class="optionbox">';
 		echo '<input type="text" name="num" size="2" value="', $num, '">';
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Presentation style');
+		echo I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('infoStyle', array('list'=>WT_I18N::translate('list'), 'table'=>WT_I18N::translate('table')), null, $infoStyle, '');
+		echo select_edit_control('infoStyle', array('list'=> I18N::translate('list'), 'table'=> I18N::translate('table')), null, $infoStyle, '');
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
+		echo /* I18N: label for a yes/no option */ I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('block', $block);
 		echo '</td></tr>';

@@ -1,38 +1,35 @@
 <?php
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2010 John Finlay
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Webtrees;
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 /**
  * Class notes_WT_Module
  */
-class notes_WT_Module extends WT_Module implements WT_Module_Tab {
+class notes_WT_Module extends Module implements ModuleTabInterface {
 	private $facts;
 
 	/** {@inheritdoc} */
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Notes');
+		return /* I18N: Name of a module */ I18N::translate('Notes');
 	}
 
 	/** {@inheritdoc} */
 	public function getDescription() {
-		return /* I18N: Description of the “Notes” module */ WT_I18N::translate('A tab showing the notes attached to an individual.');
+		return /* I18N: Description of the “Notes” module */ I18N::translate('A tab showing the notes attached to an individual.');
 	}
 
 	/** {@inheritdoc} */
@@ -60,7 +57,7 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 		<tr>
 			<td colspan="2" class="descriptionbox rela">
 				<input id="checkbox_note2" type="checkbox" <?php echo $SHOW_LEVEL2_NOTES ? 'checked' : ''; ?> onclick="jQuery('tr.row_note2').toggle();">
-				<label for="checkbox_note2"><?php echo WT_I18N::translate('Show all notes'); ?></label>
+				<label for="checkbox_note2"><?php echo I18N::translate('Show all notes'); ?></label>
 				<?php echo help_link('show_fact_sources'); ?>
 			</td>
 		</tr>
@@ -75,7 +72,7 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 			}
 		}
 		if (!$this->getFactsWithNotes()) {
-			echo '<tr><td id="no_tab4" colspan="2" class="facts_value">', WT_I18N::translate('There are no notes for this individual.'), '</td></tr>';
+			echo '<tr><td id="no_tab4" colspan="2" class="facts_value">', I18N::translate('There are no notes for this individual.'), '</td></tr>';
 		}
 
 		// New note link
@@ -87,7 +84,7 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 				</td>
 				<td class="facts_value">
 					<a href="#" onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','NOTE'); return false;">
-						<?php echo WT_I18N::translate('Add a new note'); ?>
+						<?php echo I18N::translate('Add a new note'); ?>
 					</a>
 					<?php echo help_link('add_note'); ?>
 				</td>
@@ -98,7 +95,7 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 				</td>
 				<td class="facts_value">
 					<a href="#" onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','SHARED_NOTE'); return false;">
-						<?php echo WT_I18N::translate('Add a new shared note'); ?>
+						<?php echo I18N::translate('Add a new shared note'); ?>
 					</a>
 					<?php echo help_link('add_shared_note'); ?>
 				</td>
@@ -118,7 +115,7 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 	/**
 	 * Get all the facts for an individual which contain notes.
 	 *
-	 * @return WT_Fact[]
+	 * @return Fact[]
 	 */
 	private function getFactsWithNotes() {
 		global $controller;

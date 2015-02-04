@@ -1,5 +1,7 @@
 <?php
-// webtrees: Web based Family History software
+namespace Webtrees;
+
+// webtrees: online genealogy
 // Copyright (C) 2015 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
@@ -29,12 +31,8 @@
  *
  * Only the first two functions are required: themeId() and themeName().
  * The rest are just examples, and should be removed in actual themes.
- *
- * Many of the core classes are being moved to namespaces.  For example,
- * WT_Foo will be renamed to WT\Foo.  The object API should remain the
- * same.  Avoid unecessary type-hints to allow your
  */
-class CustomTheme extends WT\Theme\Webtrees {
+class CustomTheme extends WebtreesTheme {
 	/**
 	 * Give your theme a unique identifier.  Themes beginning with an underscore
 	 * are reserved for internal use.
@@ -68,7 +66,7 @@ class CustomTheme extends WT\Theme\Webtrees {
 			$css_files   = parent::stylesheets();
 			// Put a version number in the URL, to prevent browsers from caching old versions.
 			$css_files[] = WT_BASE_URL . 'themes/custom/custom.css';
-		} catch (Exception $ex) {
+		} catch (\Exception $ex) {
 			// Something went wrong with our script?  Use the default behaviour instead.
 			return parent::stylesheets();
 		}
@@ -86,12 +84,12 @@ class CustomTheme extends WT\Theme\Webtrees {
 			// Start with the default "Lists" menu.
 			$menu = parent::menuLists();
 			// Remove the "notes" sub-menu.
-			$submenus = array_filter($menu->getSubmenus(), function(WT_Menu $menu) {
+			$submenus = array_filter($menu->getSubmenus(), function(Menu $menu) {
 				return $menu->getId() !== 'menu-list-note';
 			});
 			// Replace the sub-menus
 			$menu->setSubmenus($submenus);
-		} catch (Exception $ex) {
+		} catch (\Exception $ex) {
 			// Something went wrong with our script?  Maybe the core code was updated?
 			// Use the default behaviour instead, so that our theme continues to work.
 			return parent::menuLists();

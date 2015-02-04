@@ -1,62 +1,58 @@
 <?php
-// Merge Two Gedcom Records
-//
-// This page will allow you to merge 2 gedcom records
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2015 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2010 PGV Development Team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Webtrees;
 
-use WT\Auth;
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
 
 define('WT_SCRIPT_NAME', 'admin_site_merge.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Page;
+$controller = new PageController;
 $controller
 	->restrictAccess(Auth::isManager())
-	->setPageTitle(WT_I18N::translate('Merge records') . ' — ' . $WT_TREE->titleHtml())
+	->setPageTitle(I18N::translate('Merge records') . ' — ' . $WT_TREE->titleHtml())
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');
 
-$gid1   = WT_Filter::post('gid1', WT_REGEX_XREF, WT_Filter::get('gid1', WT_REGEX_XREF));
-$gid2   = WT_Filter::post('gid2', WT_REGEX_XREF, WT_Filter::get('gid2', WT_REGEX_XREF));
-$keep1  = WT_Filter::postArray('keep1');
-$keep2  = WT_Filter::postArray('keep2');
-
-$rec1 = WT_GedcomRecord::getInstance($gid1);
-$rec2 = WT_GedcomRecord::getInstance($gid2);
+$gid1  = Filter::post('gid1', WT_REGEX_XREF, Filter::get('gid1', WT_REGEX_XREF));
+$gid2  = Filter::post('gid2', WT_REGEX_XREF, Filter::get('gid2', WT_REGEX_XREF));
+$keep1 = Filter::postArray('keep1');
+$keep2 = Filter::postArray('keep2');
+$rec1  = GedcomRecord::getInstance($gid1);
+$rec2  = GedcomRecord::getInstance($gid2);
 
 if ($gid1 && !$rec1) {
-	WT_FlashMessages::addMessage(WT_I18N::translate('%1$s does not exist.', $gid1), 'danger');
+	FlashMessages::addMessage(I18N::translate('%1$s does not exist.', $gid1), 'danger');
 }
 
 if ($gid2 && !$rec2) {
-	WT_FlashMessages::addMessage(WT_I18N::translate('%1$s does not exist.', $gid2), 'danger');
+	FlashMessages::addMessage(I18N::translate('%1$s does not exist.', $gid2), 'danger');
 }
 
 if ($rec1 && $rec2 && $rec1->getXref() === $rec2->getXref()) {
-	WT_FlashMessages::addMessage(WT_I18N::translate('You entered the same IDs.  You cannot merge the same records.'), 'danger');
+	FlashMessages::addMessage(I18N::translate('You entered the same IDs.  You cannot merge the same records.'), 'danger');
 }
 
 if ($rec1 && $rec2 && $rec1::RECORD_TYPE !== $rec2::RECORD_TYPE) {
-	WT_FlashMessages::addMessage(WT_I18N::translate('Records are not the same type.  Cannot merge records that are not the same type.'), 'danger');
+	FlashMessages::addMessage(I18N::translate('Records are not the same type.  Cannot merge records that are not the same type.'), 'danger');
 }
 
 // Facts found both records
@@ -91,7 +87,7 @@ foreach ($facts1 as $id1 => $fact1) {
 	}
 }
 
-if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYPE === $rec2::RECORD_TYPE && WT_Filter::post('action') === 'merge' && WT_Filter::checkCsrf()) {
+if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYPE === $rec2::RECORD_TYPE && Filter::post('action') === 'merge' && Filter::checkCsrf()) {
 	$ids = fetch_all_links($gid2, WT_GED_ID);
 
 	// If we are not auto-accepting, then we can show a link to the pending deletion
@@ -102,9 +98,9 @@ if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYP
 	}
 
 	foreach ($ids as $id) {
-		$record = WT_GedcomRecord::getInstance($id);
+		$record = GedcomRecord::getInstance($id);
 		if (!$record->isPendingDeletion()) {
-			WT_FlashMessages::addMessage(WT_I18N::translate(
+			FlashMessages::addMessage(I18N::translate(
 				/* I18N: The placeholders are the names of individuals, sources, etc. */
 				'The link from “%1$s” to “%2$s” has been updated.',
 					'<a class="alert-link" href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a>',
@@ -120,14 +116,14 @@ if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYP
 		}
 	}
 	// Update any linked user-accounts
-	WT_DB::prepare(
+	Database::prepare(
 		"UPDATE `##user_gedcom_setting`" .
 		" SET setting_value=?" .
 		" WHERE gedcom_id=? AND setting_name='gedcomid' AND setting_value=?"
 	)->execute(array($gid2, WT_GED_ID, $gid1));
 
 	// Merge hit counters
-	$hits = WT_DB::prepare(
+	$hits = Database::prepare(
 		"SELECT page_name, SUM(page_count)" .
 		" FROM `##hit_counter`" .
 		" WHERE gedcom_id=? AND page_parameter IN (?, ?)" .
@@ -135,12 +131,12 @@ if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYP
 	)->execute(array(WT_GED_ID, $gid1, $gid2))->fetchAssoc();
 
 	foreach ($hits as $page_name=>$page_count) {
-		WT_DB::prepare(
+		Database::prepare(
 			"UPDATE `##hit_counter` SET page_count=?" .
 			" WHERE gedcom_id=? AND page_name=? AND page_parameter=?"
 		)->execute(array($page_count, WT_GED_ID, $page_name, $gid1));
 	}
-	WT_DB::prepare(
+	Database::prepare(
 		"DELETE FROM `##hit_counter`" .
 		" WHERE gedcom_id=? AND page_parameter=?"
 	)->execute(array(WT_GED_ID, $gid2));
@@ -160,7 +156,7 @@ if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYP
 	$rec1->updateRecord($gedcom, true);
 	$rec2->deleteRecord();
 	update_favorites($gid2, $gid1);
-	WT_FlashMessages::addMessage(WT_I18N::translate(
+	FlashMessages::addMessage(I18N::translate(
 	/* I18N: Records are individuals, sources, etc. */
 		'The records “%1$s” and “%2$s” have been merged.',
 		'<a class="alert-link" href="' . $rec1->getHtmlUrl() . '">' . $rec1->getFullName() . '</a>',
@@ -176,8 +172,8 @@ $controller->pageHeader();
 
 ?>
 <ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
-	<li><a href="admin_trees_manage.php"><?php echo WT_I18N::translate('Manage family trees'); ?></a></li>
+	<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
+	<li><a href="admin_trees_manage.php"><?php echo I18N::translate('Manage family trees'); ?></a></li>
 	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 </ol>
 <h1><?php echo $controller->getPageTitle(); ?></h1>
@@ -186,15 +182,15 @@ $controller->pageHeader();
 
 <form method="post">
 	<input type="hidden" name="action" value="merge">
-	<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
-	<?php echo WT_Filter::getCsrf(); ?>
+	<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
+	<?php echo Filter::getCsrf(); ?>
 	<p>
-		<?php echo WT_I18N::translate('Select the facts and events to keep from both records.'); ?>
+		<?php echo I18N::translate('Select the facts and events to keep from both records.'); ?>
 	</p>
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h2 class="panel-title">
-				<?php echo WT_I18N::translate('The following facts and events were found in both records.'); ?>
+				<?php echo I18N::translate('The following facts and events were found in both records.'); ?>
 			</h2>
 		</div>
 		<div class="panel-body">
@@ -203,10 +199,10 @@ $controller->pageHeader();
 				<thead>
 					<tr>
 						<th>
-							<?php echo WT_I18N::translate('Select'); ?>
+							<?php echo I18N::translate('Select'); ?>
 						</th>
 						<th>
-							<?php echo WT_I18N::translate('Details'); ?>
+							<?php echo I18N::translate('Details'); ?>
 						</th>
 					</tr>
 				</thead>
@@ -217,7 +213,7 @@ $controller->pageHeader();
 							<input type="checkbox" name="keep1[]" value="<?php echo $fact->getFactId(); ?>" checked>
 						</td>
 						<td>
-							<div class="gedcom-data" dir="ltr"><?php echo WT_Filter::escapeHtml($fact->getGedcom()); ?></div>
+							<div class="gedcom-data" dir="ltr"><?php echo Filter::escapeHtml($fact->getGedcom()); ?></div>
 						</td>
 					</tr>
 				<?php endforeach; ?>
@@ -225,7 +221,7 @@ $controller->pageHeader();
 			</table>
 			<?php else: ?>
 			<p>
-				<?php echo WT_I18N::translate('No matching facts found'); ?>
+				<?php echo I18N::translate('No matching facts found'); ?>
 			</p>
 			<?php endif; ?>
 		</div>
@@ -236,7 +232,7 @@ $controller->pageHeader();
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h2 class="panel-title">
-						<?php echo /* I18N: the name of an individual, source, etc. */ WT_I18N::translate('The following facts and events were only found in the record of %s.', '<a href="' . $rec1->getHtmlUrl() . '">' . $rec1->getFullName()) . '</a>'; ?>
+						<?php echo /* I18N: the name of an individual, source, etc. */ I18N::translate('The following facts and events were only found in the record of %s.', '<a href="' . $rec1->getHtmlUrl() . '">' . $rec1->getFullName()) . '</a>'; ?>
 					</h2>
 				</div>
 				<div class="panel-body">
@@ -245,10 +241,10 @@ $controller->pageHeader();
 							<thead>
 							<tr>
 								<th>
-									<?php echo WT_I18N::translate('Select'); ?>
+									<?php echo I18N::translate('Select'); ?>
 								</th>
 								<th>
-									<?php echo WT_I18N::translate('Details'); ?>
+									<?php echo I18N::translate('Details'); ?>
 								</th>
 							</tr>
 							</thead>
@@ -259,7 +255,7 @@ $controller->pageHeader();
 										<input type="checkbox" name="keep1[]" value="<?php echo $fact->getFactId(); ?>" checked>
 									</td>
 									<td>
-										<div class="gedcom-data" dir="ltr"><?php echo WT_Filter::escapeHtml($fact->getGedcom()); ?></div>
+										<div class="gedcom-data" dir="ltr"><?php echo Filter::escapeHtml($fact->getGedcom()); ?></div>
 									</td>
 								</tr>
 							<?php endforeach; ?>
@@ -267,7 +263,7 @@ $controller->pageHeader();
 						</table>
 					<?php else: ?>
 						<p>
-							<?php echo WT_I18N::translate('No matching facts found'); ?>
+							<?php echo I18N::translate('No matching facts found'); ?>
 						</p>
 					<?php endif; ?>
 				</div>
@@ -277,7 +273,7 @@ $controller->pageHeader();
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h2 class="panel-title">
-						<?php echo /* I18N: the name of an individual, source, etc. */ WT_I18N::translate('The following facts and events were only found in the record of %s.', '<a href="' . $rec2->getHtmlUrl() . '">' . $rec2->getFullName()) . '</a>'; ?>
+						<?php echo /* I18N: the name of an individual, source, etc. */ I18N::translate('The following facts and events were only found in the record of %s.', '<a href="' . $rec2->getHtmlUrl() . '">' . $rec2->getFullName()) . '</a>'; ?>
 					</h2>
 				</div>
 				<div class="panel-body">
@@ -286,10 +282,10 @@ $controller->pageHeader();
 							<thead>
 							<tr>
 								<th>
-									<?php echo WT_I18N::translate('Select'); ?>
+									<?php echo I18N::translate('Select'); ?>
 								</th>
 								<th>
-									<?php echo WT_I18N::translate('Details'); ?>
+									<?php echo I18N::translate('Details'); ?>
 								</th>
 							</tr>
 							</thead>
@@ -300,7 +296,7 @@ $controller->pageHeader();
 										<input type="checkbox" name="keep2[]" value="<?php echo $fact->getFactId(); ?>" checked>
 									</td>
 									<td>
-										<div class="gedcom-data" dir="ltr"><?php echo WT_Filter::escapeHtml($fact->getGedcom()); ?></div>
+										<div class="gedcom-data" dir="ltr"><?php echo Filter::escapeHtml($fact->getGedcom()); ?></div>
 									</td>
 								</tr>
 							<?php endforeach; ?>
@@ -308,7 +304,7 @@ $controller->pageHeader();
 						</table>
 					<?php else: ?>
 						<p>
-							<?php echo WT_I18N::translate('No matching facts found'); ?>
+							<?php echo I18N::translate('No matching facts found'); ?>
 						</p>
 					<?php endif; ?>
 				</div>
@@ -318,20 +314,20 @@ $controller->pageHeader();
 
 	<button type="submit" class="btn btn-primary">
 		<i class="fa fa-check"></i>
-		<?php echo WT_I18N::translate('save'); ?>
+		<?php echo I18N::translate('save'); ?>
 	</button>
 </form>
 
 <?php else: ?>
 
 <form class="form form-horizontal">
-	<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
-	<p><?php echo /* I18N: Records are indviduals, sources, etc. */ WT_I18N::translate('Select two records to merge.'); ?></p>
+	<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
+	<p><?php echo /* I18N: Records are indviduals, sources, etc. */ I18N::translate('Select two records to merge.'); ?></p>
 
 	<div class="form-group">
 		<div class="control-label col-sm-3">
 			<label for="gid1">
-				<?php echo /* I18N: Record is an indvidual, source, etc. */ WT_I18N::translate('First record'); ?>
+				<?php echo /* I18N: Record is an indvidual, source, etc. */ I18N::translate('First record'); ?>
 			</label>
 		</div>
 		<div class="col-sm-9">
@@ -348,7 +344,7 @@ $controller->pageHeader();
 	<div class="form-group">
 		<div class="control-label col-sm-3">
 			<label for="gid2">
-				<?php echo /* I18N: Record is an indvidual, source, etc. */ WT_I18N::translate('Second record'); ?>
+				<?php echo /* I18N: Record is an indvidual, source, etc. */ I18N::translate('Second record'); ?>
 			</label>
 		</div>
 		<div class="col-sm-9">
@@ -365,7 +361,7 @@ $controller->pageHeader();
 	<div class="form-group">
 		<div class="col-sm-offset-3 col-sm-9">
 			<button type="submit" class="btn btn-primary">
-				<?php echo WT_I18N::translate('continue'); ?>
+				<?php echo I18N::translate('continue'); ?>
 			</button>
 		</div>
 	</div>

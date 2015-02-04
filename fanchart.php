@@ -1,36 +1,33 @@
 <?php
-// View for the fan chart.
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2015 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2010 PGV Development Team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Webtrees;
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+use Zend_Session;
 
 define('WT_SCRIPT_NAME', 'fanchart.php');
 require './includes/session.php';
-require WT_ROOT . 'includes/functions/functions_edit.php';
 
-$controller = new WT_Controller_Fanchart;
+$controller = new FanchartController;
 
-if (WT_Filter::getBool('img')) {
+if (Filter::getBool('img')) {
 	Zend_Session::writeClose();
 	header('Content-Type: image/png');
 	echo $controller->generateFanChart('png');
+
 	return;
 }
 
@@ -71,12 +68,12 @@ $controller
 <div id="page-fan">
 	<h2><?php echo $controller->getPageTitle(); ?></h2>
 	<form name="people" method="get" action="?">
-		<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
+		<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
 		<table class="list_table">
 			<tr>
 				<td class="descriptionbox">
 					<label for="rootid">
-						<?php echo WT_I18N::translate('Individual'); ?>
+						<?php echo I18N::translate('Individual'); ?>
 					</label>
 				</td>
 				<td class="optionbox">
@@ -85,20 +82,20 @@ $controller
 				</td>
 				<td class="descriptionbox">
 					<label for="fan_style">
-						<?php echo WT_I18N::translate('Layout'); ?>
+						<?php echo I18N::translate('Layout'); ?>
 						</label>
 				</td>
 				<td class="optionbox">
 					<?php echo select_edit_control('fan_style', $controller->getFanStyles(), null, $controller->fan_style); ?>
 				</td>
 				<td rowspan="2" class="topbottombar vmiddle">
-					<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>">
+					<input type="submit" value="<?php echo I18N::translate('View'); ?>">
 				</td>
 			</tr>
 			<tr>
 				<td class="descriptionbox">
 					<label for="generations">
-						<?php echo WT_I18N::translate('Generations'); ?>
+						<?php echo I18N::translate('Generations'); ?>
 					</label>
 				</td>
 				<td class="optionbox">
@@ -106,7 +103,7 @@ $controller
 				</td>
 				<td class="descriptionbox">
 					<label for="fan_width">
-						<?php echo WT_I18N::translate('Width'), help_link('fan_width'); ?>
+						<?php echo I18N::translate('Width'), help_link('fan_width'); ?>
 						</label>
 				</td>
 				<td class="optionbox">

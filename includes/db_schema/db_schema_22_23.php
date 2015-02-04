@@ -1,32 +1,25 @@
 <?php
+namespace Webtrees;
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 // Update the database schema from version 22-23
 // - data update for 1.4.0 media changes
-//
-// The script should assume that it can be interrupted at
-// any point, and be able to continue by re-running the script.
-// Fatal errors, however, should be allowed to throw exceptions,
-// which will be caught by the framework.
-// It shouldn't do anything that might take more than a few
-// seconds, for systems with low timeout values.
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2014 Greg Roach
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-$_cfgs = WT_DB::prepare(
+$_cfgs = Database::prepare(
 	"SELECT gs1.gedcom_id AS gedcom_id, gs1.setting_value AS media_directory, gs2.setting_value AS use_media_firewall, gs3.setting_value AS media_firewall_thumbs, gs4.setting_value AS media_firewall_rootdir" .
 	" FROM `##gedcom_setting` gs1" .
 	" LEFT JOIN `##gedcom_setting` gs2 ON (gs1.gedcom_id = gs2.gedcom_id AND gs2.setting_name='USE_MEDIA_FIREWALL')" .
@@ -62,7 +55,7 @@ foreach ($_cfgs as $_cfg) {
 				}
 			}
 			$_media_dir .= $_cfg->media_directory;
-			WT_DB::prepare(
+			Database::prepare(
 				"UPDATE `##gedcom_setting`" .
 				" SET setting_value=?" .
 				" WHERE gedcom_id=? AND setting_name='MEDIA_DIRECTORY'"
@@ -76,10 +69,10 @@ foreach ($_cfgs as $_cfg) {
 			!file_exists($WT_DATA_DIR . $_cfg->media_directory)
 		) {
 			@rename(WT_ROOT . $_cfg->media_directory, $WT_DATA_DIR . $_cfg->media_directory);
-			WT_File::delete($WT_DATA_DIR . $_cfg->media_directory . '.htaccess');
-			WT_File::delete($WT_DATA_DIR . $_cfg->media_directory . 'index.php');
-			WT_File::delete($WT_DATA_DIR . $_cfg->media_directory . 'Mediainfo.txt');
-			WT_File::delete($WT_DATA_DIR . $_cfg->media_directory . 'thumbs/Thumbsinfo.txt');
+			File::delete($WT_DATA_DIR . $_cfg->media_directory . '.htaccess');
+			File::delete($WT_DATA_DIR . $_cfg->media_directory . 'index.php');
+			File::delete($WT_DATA_DIR . $_cfg->media_directory . 'Mediainfo.txt');
+			File::delete($WT_DATA_DIR . $_cfg->media_directory . 'thumbs/Thumbsinfo.txt');
 		}
 	}
 }
@@ -87,7 +80,7 @@ foreach ($_cfgs as $_cfg) {
 unset($_cfgs, $_cfg, $_mf_dir, $_tmp_dir);
 
 // Delete old settings
-WT_DB::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('USE_MEDIA_FIREWALL', 'MEDIA_FIREWALL_THUMBS', 'MEDIA_FIREWALL_ROOTDIR')");
+Database::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('USE_MEDIA_FIREWALL', 'MEDIA_FIREWALL_THUMBS', 'MEDIA_FIREWALL_ROOTDIR')");
 
 // Update the version to indicate success
-WT_Site::setPreference($schema_name, $next_version);
+Site::setPreference($schema_name, $next_version);

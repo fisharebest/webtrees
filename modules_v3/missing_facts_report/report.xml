@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report>
-	<Title><var var="WT_I18N::translate('Missing data')" /></Title>
-	<Description><var var="WT_I18N::translate('A report of the information that is missing for an individual and their relatives.')" /></Description>
-	<Input name="pid" type="text" default="" lookup="INDI"><var var="WT_I18N::translate('Individual')"/></Input>
-	<Input name="relatives" type="select" default="direct-ancestors" options="child-family=>WT_I18N::translate('Parents and siblings')|spouse-family=>WT_I18N::translate('Spouses and children')|direct-ancestors=>WT_I18N::translate('Direct line ancestors')|ancestors=>WT_I18N::translate('Direct line ancestors and their families')|descendants=>WT_I18N::translate('Descendants')|all=>WT_I18N::translate('All')"><var var="WT_I18N::translate('Choose relatives')"/></Input>
-	<Input name="maxgen" type="select" default="*" options="1=>WT_I18N::number(1)|2=>WT_I18N::number(2)|3=>WT_I18N::number(3)|4=>WT_I18N::number(4)|5=>WT_I18N::number(5)|6=>WT_I18N::number(6)|7=>WT_I18N::number(7)|8=>WT_I18N::number(8)|9=>WT_I18N::number(9)|10=>WT_I18N::number(10)|*=>WT_I18N::translate('All')"><var var="WT_I18N::translate('Generations')"/></Input>
-	<Input name="pageSize" type="select" default="A4" options="letter=>WT_I18N::translate_c('paper size','Letter')|A3=>WT_I18N::translate_c('paper size', 'A3')|A4=>WT_I18N::translate_c('paper size','A4')|legal=>WT_I18N::translate_c('paper size','Legal')"><var var="WT_I18N::translate('Page size')" /></Input>
-	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>WT_I18N::translate_c('font name', 'Arial')|dejavusans=>WT_I18N::translate_c('font name', 'DejaVu')|helvetica=>WT_I18N::translate_c('font name', 'Helvetica')"><var var="WT_I18N::translate('Font')"/></Input>
+	<Title><var var="I18N::translate('Missing data')" /></Title>
+	<Description><var var="I18N::translate('A report of the information that is missing for an individual and their relatives.')" /></Description>
+	<Input name="pid" type="text" default="" lookup="INDI"><var var="I18N::translate('Individual')"/></Input>
+	<Input name="relatives" type="select" default="direct-ancestors" options="child-family=>I18N::translate('Parents and siblings')|spouse-family=>I18N::translate('Spouses and children')|direct-ancestors=>I18N::translate('Direct line ancestors')|ancestors=>I18N::translate('Direct line ancestors and their families')|descendants=>I18N::translate('Descendants')|all=>I18N::translate('All')"><var var="I18N::translate('Choose relatives')"/></Input>
+	<Input name="maxgen" type="select" default="*" options="1=>I18N::number(1)|2=>I18N::number(2)|3=>I18N::number(3)|4=>I18N::number(4)|5=>I18N::number(5)|6=>I18N::number(6)|7=>I18N::number(7)|8=>I18N::number(8)|9=>I18N::number(9)|10=>I18N::number(10)|*=>I18N::translate('All')"><var var="I18N::translate('Generations')"/></Input>
+	<Input name="pageSize" type="select" default="A4" options="letter=>I18N::translate_c('paper size','Letter')|A3=>I18N::translate_c('paper size', 'A3')|A4=>I18N::translate_c('paper size','A4')|legal=>I18N::translate_c('paper size','Legal')"><var var="I18N::translate('Page size')" /></Input>
+	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>I18N::translate_c('font name', 'Arial')|dejavusans=>I18N::translate_c('font name', 'DejaVu')|helvetica=>I18N::translate_c('font name', 'Helvetica')"><var var="I18N::translate('Font')"/></Input>
 	
-	<Input name="fsour" type="checkbox" default="0"><var var="WT_I18N::translate('Sources to the events')" /></Input>
-	<Input name="fbirt" type="checkbox" default="1"><var var="WT_I18N::translate('Birth')"/></Input>
-	<Input name="fbapm" type="checkbox" default="0"><var var="WT_I18N::translate('Baptism')"/> / <var var="WT_I18N::translate('Christening')"/></Input>
-	<Input name="fbarm" type="checkbox" default="0"><var var="WT_I18N::translate('Bar mitzvah')"/></Input>
-	<Input name="fbasm" type="checkbox" default="0"><var var="WT_I18N::translate('Bat mitzvah')"/></Input>
-	<Input name="fconf" type="checkbox" default="0"><var var="WT_I18N::translate('Confirmation')"/></Input>
-	<Input name="fenga" type="checkbox" default="0"><var var="WT_I18N::translate('Engagement')"/></Input>
-	<Input name="ffcom" type="checkbox" default="0"><var var="WT_I18N::translate('First communion')"/></Input>
-	<Input name="fmarb" type="checkbox" default="0"><var var="WT_I18N::translate('Marriage banns')"/></Input>
-	<Input name="fmarr" type="checkbox" default="0"><var var="WT_I18N::translate('Marriage')"/></Input>
-	<Input name="fdeat" type="checkbox" default="1"><var var="WT_I18N::translate('Death')"/></Input>
-	<Input name="fburi" type="checkbox" default="0"><var var="WT_I18N::translate('Burial')"/></Input>
-	<Input name="freli" type="checkbox" default="0"><var var="WT_I18N::translate('Religion')"/></Input>
+	<Input name="fsour" type="checkbox" default="0"><var var="I18N::translate('Sources to the events')" /></Input>
+	<Input name="fbirt" type="checkbox" default="1"><var var="I18N::translate('Birth')"/></Input>
+	<Input name="fbapm" type="checkbox" default="0"><var var="I18N::translate('Baptism')"/> / <var var="I18N::translate('Christening')"/></Input>
+	<Input name="fbarm" type="checkbox" default="0"><var var="I18N::translate('Bar mitzvah')"/></Input>
+	<Input name="fbasm" type="checkbox" default="0"><var var="I18N::translate('Bat mitzvah')"/></Input>
+	<Input name="fconf" type="checkbox" default="0"><var var="I18N::translate('Confirmation')"/></Input>
+	<Input name="fenga" type="checkbox" default="0"><var var="I18N::translate('Engagement')"/></Input>
+	<Input name="ffcom" type="checkbox" default="0"><var var="I18N::translate('First communion')"/></Input>
+	<Input name="fmarb" type="checkbox" default="0"><var var="I18N::translate('Marriage banns')"/></Input>
+	<Input name="fmarr" type="checkbox" default="0"><var var="I18N::translate('Marriage')"/></Input>
+	<Input name="fdeat" type="checkbox" default="1"><var var="I18N::translate('Death')"/></Input>
+	<Input name="fburi" type="checkbox" default="0"><var var="I18N::translate('Burial')"/></Input>
+	<Input name="freli" type="checkbox" default="0"><var var="I18N::translate('Religion')"/></Input>
 
 	<!-- Header -->
 	<Style name="header" font="$fonts" size="18" style="b"/>
@@ -46,10 +46,10 @@
 
 	<Doc pageSize="$pageSize">
 		<Header>
-			<Cell align="center" newline="1" style="header"><var var="WT_I18N::translate('Missing data')" /></Cell>
-			<Cell align="rightrtl" newline="1" style="pagenum"><var var="WT_I18N::translate('Page')"/> <PageNum/> / <TotalPages/></Cell>
-			<Cell align="center" border="1" style="list_label" width="$name"><var var="WT_I18N::translate('Name')" /></Cell>
-			<Cell align="center" border="1" newline="1" style="list_label"><var var="WT_I18N::translate('Event')" /></Cell>
+			<Cell align="center" newline="1" style="header"><var var="I18N::translate('Missing data')" /></Cell>
+			<Cell align="rightrtl" newline="1" style="pagenum"><var var="I18N::translate('Page')"/> <PageNum/> / <TotalPages/></Cell>
+			<Cell align="center" border="1" style="list_label" width="$name"><var var="I18N::translate('Name')" /></Cell>
+			<Cell align="center" border="1" newline="1" style="list_label"><var var="I18N::translate('Event')" /></Cell>
 		</Header>
 
 <!--	Start with BIRT GEDCOM tag.
@@ -74,7 +74,7 @@
 							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
-						<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Date of birth')" /></Cell>
+						<Cell newline="1" style="list_value"><var var="I18N::translate('Date of birth')" /></Cell>
 					</if>
 					<if condition="@BIRT:PLAC==''">
 						<!-- Missing event counter -->
@@ -86,7 +86,7 @@
 							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
-						<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Place of birth')" /></Cell>
+						<Cell newline="1" style="list_value"><var var="I18N::translate('Place of birth')" /></Cell>
 					</if>
 					<if condition="$fsour=='1'">
 						<!-- Total Event Counter -->
@@ -101,7 +101,7 @@
 								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
-							<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Source')" /></Cell>
+							<Cell newline="1" style="list_value"><var var="I18N::translate('Source')" /></Cell>
 						</if>
 					</if>
 				</if>
@@ -122,7 +122,7 @@
 								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
-							<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Date of baptism')" /></Cell>
+							<Cell newline="1" style="list_value"><var var="I18N::translate('Date of baptism')" /></Cell>
 						</if>
 						<if condition="@BAPM:PLAC==''">
 							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -133,7 +133,7 @@
 								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
-							<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Place of baptism')" /></Cell>
+							<Cell newline="1" style="list_value"><var var="I18N::translate('Place of baptism')" /></Cell>
 						</if>
 						<if condition="$fsour=='1'">
 							<SetVar name="nrevent" value="$nrevent + 1" />
@@ -146,7 +146,7 @@
 									<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 									<SetVar name="printname" value="1" />
 								</if>
-								<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Source')" /></Cell>
+								<Cell newline="1" style="list_value"><var var="I18N::translate('Source')" /></Cell>
 							</if>
 						</if>
 						<SetVar name="printbapm" value="1" />
@@ -163,7 +163,7 @@
 								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
-							<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Date of christening')" /></Cell>
+							<Cell newline="1" style="list_value"><var var="I18N::translate('Date of christening')" /></Cell>
 						</if>
 						<if condition="@CHR:PLAC==''">
 							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -174,7 +174,7 @@
 								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
-							<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Place of christening')" /></Cell>
+							<Cell newline="1" style="list_value"><var var="I18N::translate('Place of christening')" /></Cell>
 						</if>
 						<if condition="$fsour=='1'">
 							<SetVar name="nrevent" value="$nrevent + 1" />
@@ -187,7 +187,7 @@
 									<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 									<SetVar name="printname" value="1" />
 								</if>
-								<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Source')" /></Cell>
+								<Cell newline="1" style="list_value"><var var="I18N::translate('Source')" /></Cell>
 							</if>
 						</if>
 					</if>
@@ -205,7 +205,7 @@
 							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
-						<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Date of bar mitzvah')" /></Cell>
+						<Cell newline="1" style="list_value"><var var="I18N::translate('Date of bar mitzvah')" /></Cell>
 					</if>
 					<if condition="@BARM:PLAC==''">
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -216,7 +216,7 @@
 							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
-						<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Place of bar mitzvah')" /></Cell>
+						<Cell newline="1" style="list_value"><var var="I18N::translate('Place of bar mitzvah')" /></Cell>
 					</if>
 					<if condition="$fsour=='1'">
 						<SetVar name="nrevent" value="$nrevent + 1" />
@@ -229,7 +229,7 @@
 								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
-							<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Source')" /></Cell>
+							<Cell newline="1" style="list_value"><var var="I18N::translate('Source')" /></Cell>
 						</if>
 					</if>
 				</if>
@@ -246,7 +246,7 @@
 							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
-						<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Date of bat mitzvah')" /></Cell>
+						<Cell newline="1" style="list_value"><var var="I18N::translate('Date of bat mitzvah')" /></Cell>
 					</if>
 					<if condition="@BASM:PLAC==''">
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -257,7 +257,7 @@
 							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
-						<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Place of bat mitzvah')" /></Cell>
+						<Cell newline="1" style="list_value"><var var="I18N::translate('Place of bat mitzvah')" /></Cell>
 					</if>
 					<if condition="$fsour=='1'">
 						<SetVar name="nrevent" value="$nrevent + 1" />
@@ -270,7 +270,7 @@
 								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
-							<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Source')" /></Cell>
+							<Cell newline="1" style="list_value"><var var="I18N::translate('Source')" /></Cell>
 						</if>
 					</if>
 				</if>
@@ -287,7 +287,7 @@
 							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
-						<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Date of confirmation')" /></Cell>
+						<Cell newline="1" style="list_value"><var var="I18N::translate('Date of confirmation')" /></Cell>
 					</if>
 					<if condition="@CONF:PLAC==''">
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -298,7 +298,7 @@
 							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
-						<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Place of confirmation')" /></Cell>
+						<Cell newline="1" style="list_value"><var var="I18N::translate('Place of confirmation')" /></Cell>
 					</if>
 					<if condition="$fsour=='1'">
 						<SetVar name="nrevent" value="$nrevent + 1" />
@@ -311,7 +311,7 @@
 								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
-							<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Source')" /></Cell>
+							<Cell newline="1" style="list_value"><var var="I18N::translate('Source')" /></Cell>
 						</if>
 					</if>
 				</if>
@@ -329,7 +329,7 @@
 								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
-							<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Date of engagement')" /></Cell>
+							<Cell newline="1" style="list_value"><var var="I18N::translate('Date of engagement')" /></Cell>
 						</if>
 						<if condition="@ENGA:PLAC==''">
 							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -340,7 +340,7 @@
 								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
-							<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Place of engagement')" /></Cell>
+							<Cell newline="1" style="list_value"><var var="I18N::translate('Place of engagement')" /></Cell>
 						</if>
 						<if condition="$fsour=='1'">
 							<SetVar name="nrevent" value="$nrevent + 1" />
@@ -353,7 +353,7 @@
 									<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 									<SetVar name="printname" value="1" />
 								</if>
-								<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Source')" /></Cell>
+								<Cell newline="1" style="list_value"><var var="I18N::translate('Source')" /></Cell>
 							</if>
 						</if>
 					</Gedcom>
@@ -371,7 +371,7 @@
 							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
-						<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Date of first communion')" /></Cell>
+						<Cell newline="1" style="list_value"><var var="I18N::translate('Date of first communion')" /></Cell>
 					</if>
 					<if condition="@FCOM:PLAC==''">
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -382,7 +382,7 @@
 							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
-						<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Place of first communion')" /></Cell>
+						<Cell newline="1" style="list_value"><var var="I18N::translate('Place of first communion')" /></Cell>
 					</if>
 					<if condition="$fsour=='1'">
 						<SetVar name="nrevent" value="$nrevent + 1" />
@@ -395,7 +395,7 @@
 								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
-							<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Source')" /></Cell>
+							<Cell newline="1" style="list_value"><var var="I18N::translate('Source')" /></Cell>
 						</if>
 					</if>
 				</if>
@@ -413,7 +413,7 @@
 								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
-							<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Date of marriage banns')" /></Cell>
+							<Cell newline="1" style="list_value"><var var="I18N::translate('Date of marriage banns')" /></Cell>
 						</if>
 						<if condition="@MARB:PLAC==''">
 							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -424,7 +424,7 @@
 								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
-							<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Place of marriage banns')" /></Cell>
+							<Cell newline="1" style="list_value"><var var="I18N::translate('Place of marriage banns')" /></Cell>
 						</if>
 						<if condition="$fsour=='1'">
 							<SetVar name="nrevent" value="$nrevent + 1" />
@@ -437,7 +437,7 @@
 									<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 									<SetVar name="printname" value="1" />
 								</if>
-								<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Source')" /></Cell>
+								<Cell newline="1" style="list_value"><var var="I18N::translate('Source')" /></Cell>
 							</if>
 						</if>
 					</Gedcom>
@@ -456,7 +456,7 @@
 								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
-							<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Date of marriage')" /></Cell>
+							<Cell newline="1" style="list_value"><var var="I18N::translate('Date of marriage')" /></Cell>
 						</if>
 						<if condition="@MARR:PLAC==''">
 							<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -467,7 +467,7 @@
 								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
-							<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Place of marriage')" /></Cell>
+							<Cell newline="1" style="list_value"><var var="I18N::translate('Place of marriage')" /></Cell>
 						</if>
 						<if condition="$fsour=='1'">
 							<SetVar name="nrevent" value="$nrevent + 1" />
@@ -480,7 +480,7 @@
 									<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 									<SetVar name="printname" value="1" />
 								</if>
-								<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Source')" /></Cell>
+								<Cell newline="1" style="list_value"><var var="I18N::translate('Source')" /></Cell>
 							</if>
 						</if>
 					</Gedcom>
@@ -498,7 +498,7 @@
 							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
-						<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Date of death')" /></Cell>
+						<Cell newline="1" style="list_value"><var var="I18N::translate('Date of death')" /></Cell>
 					</if>
 					<if condition="@DEAT:PLAC==''">
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -509,7 +509,7 @@
 							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
-						<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Place of death')" /></Cell>
+						<Cell newline="1" style="list_value"><var var="I18N::translate('Place of death')" /></Cell>
 					</if>
 					<if condition="$fsour=='1'">
 						<SetVar name="nrevent" value="$nrevent + 1" />
@@ -522,7 +522,7 @@
 								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
-							<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Source')" /></Cell>
+							<Cell newline="1" style="list_value"><var var="I18N::translate('Source')" /></Cell>
 						</if>
 					</if>
 				</if>
@@ -539,7 +539,7 @@
 							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
-						<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Date of burial')" /></Cell>
+						<Cell newline="1" style="list_value"><var var="I18N::translate('Date of burial')" /></Cell>
 					</if>
 					<if condition="@BURI:PLAC==''">
 						<SetVar name="nrmissingevent" value="$nrmissingevent + 1" />
@@ -550,7 +550,7 @@
 							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
-						<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Place of burial')" /></Cell>
+						<Cell newline="1" style="list_value"><var var="I18N::translate('Place of burial')" /></Cell>
 					</if>
 					<if condition="$fsour=='1'">
 						<SetVar name="nrevent" value="$nrevent + 1" />
@@ -563,7 +563,7 @@
 								<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 								<SetVar name="printname" value="1" />
 							</if>
-							<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Source')" /></Cell>
+							<Cell newline="1" style="list_value"><var var="I18N::translate('Source')" /></Cell>
 						</if>
 					</if>
 				</if>
@@ -580,7 +580,7 @@
 							<Cell style="list_value" width="$name"><GetPersonName id="" /></Cell>
 							<SetVar name="printname" value="1" />
 						</if>
-						<Cell newline="1" style="list_value"><var var="WT_I18N::translate('Religion')" /></Cell>
+						<Cell newline="1" style="list_value"><var var="I18N::translate('Religion')" /></Cell>
 					</if>
 				</if>
 
@@ -594,8 +594,8 @@
 			</Relatives>
 
 			<TextBox height="$vspace" newline="1" padding="0"/>
-			<Cell align="rightrtl" newline="1" style="list_label"><var var="WT_I18N::translate('Total individuals')"/>: <var var="nrprinted"/> / <var var="nrrelatives"/></Cell>
-			<Cell align="rightrtl" newline="1" style="list_label"><var var="WT_I18N::translate('Total events')"/>: <var var="nrmissingevent"/> / <var var="nrevent"/></Cell>
+			<Cell align="rightrtl" newline="1" style="list_label"><var var="I18N::translate('Total individuals')"/>: <var var="nrprinted"/> / <var var="nrrelatives"/></Cell>
+			<Cell align="rightrtl" newline="1" style="list_label"><var var="I18N::translate('Total events')"/>: <var var="nrmissingevent"/> / <var var="nrevent"/></Cell>
 			<TextBox height="$vspace" newline="1" padding="0"/>
 
 		</Body>

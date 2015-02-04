@@ -1,62 +1,58 @@
 <?php
-// Change log viewer.
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2015 webtrees development team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Webtrees;
 
-use WT\Auth;
-use WT\User;
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+use PDO;
+use Zend_Session;
 
 define('WT_SCRIPT_NAME', 'admin_site_change.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Page;
+$controller = new PageController;
 $controller
 	->restrictAccess(Auth::isManager())
-	->setPageTitle(WT_I18N::translate('Changes'));
+	->setPageTitle(I18N::translate('Changes'));
 
-require WT_ROOT . 'includes/functions/functions_edit.php';
-
-$earliest = WT_DB::prepare("SELECT DATE(MIN(change_time)) FROM `##change`")->execute(array())->fetchOne();
-$latest   = WT_DB::prepare("SELECT DATE(MAX(change_time)) FROM `##change`")->execute(array())->fetchOne();
+$earliest = Database::prepare("SELECT DATE(MIN(change_time)) FROM `##change`")->execute(array())->fetchOne();
+$latest   = Database::prepare("SELECT DATE(MAX(change_time)) FROM `##change`")->execute(array())->fetchOne();
 
 // Filtering
-$action = WT_Filter::get('action');
-$from   = WT_Filter::get('from', '\d\d\d\d-\d\d-\d\d', $earliest);
-$to     = WT_Filter::get('to', '\d\d\d\d-\d\d-\d\d', $latest);
-$type   = WT_Filter::get('type', 'accepted|rejected|pending');
-$oldged = WT_Filter::get('oldged');
-$newged = WT_Filter::get('newged');
-$xref   = WT_Filter::get('xref', WT_REGEX_XREF);
-$user   = WT_Filter::get('user');
+$action = Filter::get('action');
+$from   = Filter::get('from', '\d\d\d\d-\d\d-\d\d', $earliest);
+$to     = Filter::get('to', '\d\d\d\d-\d\d-\d\d', $latest);
+$type   = Filter::get('type', 'accepted|rejected|pending');
+$oldged = Filter::get('oldged');
+$newged = Filter::get('newged');
+$xref   = Filter::get('xref', WT_REGEX_XREF);
+$user   = Filter::get('user');
 
-$search = WT_Filter::get('search');
+$search = Filter::get('search');
 $search = isset($search['value']) ? $search['value'] : null;
 
 $statuses = array(
 	''         => '',
-	'accepted' => /* I18N: the status of an edit accepted/rejected/pending */ WT_I18N::translate('accepted'),
-	'rejected' => /* I18N: the status of an edit accepted/rejected/pending */ WT_I18N::translate('rejected'),
-	'pending'  => /* I18N: the status of an edit accepted/rejected/pending */ WT_I18N::translate('pending'),
+	'accepted' => /* I18N: the status of an edit accepted/rejected/pending */ I18N::translate('accepted'),
+	'rejected' => /* I18N: the status of an edit accepted/rejected/pending */ I18N::translate('rejected'),
+	'pending'  => /* I18N: the status of an edit accepted/rejected/pending */ I18N::translate('pending'),
 );
 
 if (Auth::isAdmin()) {
 	// Administrators can see all logs
-	$gedc = WT_Filter::get('gedc');
+	$gedc = Filter::get('gedc');
 } else {
 	// Managers can only see logs relating to this gedcom
 	$gedc = WT_GEDCOM;
@@ -124,13 +120,13 @@ case 'delete':
 		" LEFT JOIN `##user`   USING (user_id)" . // user may be deleted
 		" LEFT JOIN `##gedcom` USING (gedcom_id)" . // gedcom may be deleted
 		$WHERE;
-	WT_DB::prepare($DELETE)->execute($args);
+	Database::prepare($DELETE)->execute($args);
 	break;
 case 'export':
 	Zend_Session::writeClose();
 	header('Content-Type: text/csv');
 	header('Content-Disposition: attachment; filename="webtrees-changes.csv"');
-	$rows = WT_DB::prepare($SELECT1 . $WHERE . ' ORDER BY change_id')->execute($args)->fetchAll();
+	$rows = Database::prepare($SELECT1 . $WHERE . ' ORDER BY change_id')->execute($args)->fetchAll();
 	foreach ($rows as $row) {
 		$row->old_gedcom = str_replace('"', '""', $row->old_gedcom);
 		$row->old_gedcom = str_replace("\n", '""', $row->old_gedcom);
@@ -150,9 +146,9 @@ case 'export':
 	return;
 case 'load_json':
 	Zend_Session::writeClose();
-	$start  = WT_Filter::getInteger('start');
-	$length = WT_Filter::getInteger('length');
-	$search = WT_Filter::get('search');
+	$start  = Filter::getInteger('start');
+	$length = Filter::getInteger('length');
+	$search = Filter::get('search');
 	$search = $search['value'];
 	Auth::user()->setPreference('admin_site_change_page_size', $length);
 	if ($length > 0) {
@@ -161,7 +157,7 @@ case 'load_json':
 		$LIMIT = "";
 	}
 
-	$order = WT_Filter::getArray('order');
+	$order = Filter::getArray('order');
 	if ($order) {
 		$ORDER_BY = ' ORDER BY ';
 		foreach ($order as $key => $value) {
@@ -172,14 +168,14 @@ case 'load_json':
 			// MySQL numbers columns 1, 2, 3, ...
 			switch ($value['dir']) {
 			case 'asc':
-				if (WT_Filter::getInteger('iSortCol_' . $key) == 0) {
+				if (Filter::getInteger('iSortCol_' . $key) == 0) {
 					$ORDER_BY .= 'change_id ASC '; // column 0 is "timestamp", using change_id gives the correct order for events in the same second
 				} else {
 					$ORDER_BY .= (1 + $value['column']) . ' ASC ';
 				}
 				break;
 			case 'desc':
-				if (WT_Filter::getInteger('iSortCol_' . $key) == 0) {
+				if (Filter::getInteger('iSortCol_' . $key) == 0) {
 					$ORDER_BY .= 'change_id DESC ';
 				} else {
 					$ORDER_BY .= (1 + $value['column']) . ' DESC ';
@@ -192,24 +188,24 @@ case 'load_json':
 	}
 
 	// This becomes a JSON list, not array, so need to fetch with numeric keys.
-	$data = WT_DB::prepare($SELECT1 . $WHERE . $ORDER_BY . $LIMIT)->execute($args)->fetchAll(PDO::FETCH_NUM);
+	$data = Database::prepare($SELECT1 . $WHERE . $ORDER_BY . $LIMIT)->execute($args)->fetchAll(PDO::FETCH_NUM);
 	foreach ($data as &$datum) {
-		$datum[1] = WT_I18N::translate($datum[1]);
+		$datum[1] = I18N::translate($datum[1]);
 		$datum[2] = '<a href="gedrecord.php?pid=' . $datum[2] . '&ged=' . $datum[6] . '" target="_blank">' . $datum[2] . '</a>';
-		$datum[3] = '<pre>' . WT_Filter::escapeHtml($datum[3]) . '</pre>';
-		$datum[4] = '<pre>' . WT_Filter::escapeHtml($datum[4]) . '</pre>';
-		$datum[5] = WT_Filter::escapeHtml($datum[5]);
-		$datum[6] = WT_Filter::escapeHtml($datum[6]);
+		$datum[3] = '<pre>' . Filter::escapeHtml($datum[3]) . '</pre>';
+		$datum[4] = '<pre>' . Filter::escapeHtml($datum[4]) . '</pre>';
+		$datum[5] = Filter::escapeHtml($datum[5]);
+		$datum[6] = Filter::escapeHtml($datum[6]);
 	}
 
 	// Total filtered/unfiltered rows
-	$recordsFiltered = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
-	$recordsTotal = WT_DB::prepare($SELECT2 . $WHERE)->execute($args)->fetchOne();
+	$recordsFiltered = Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
+	$recordsTotal = Database::prepare($SELECT2 . $WHERE)->execute($args)->fetchOne();
 
 	header('Content-type: application/json');
 	// See http://www.datatables.net/usage/server-side
 	echo json_encode(array(
-		'draw'            => WT_Filter::getInteger('draw'),
+		'draw'            => Filter::getInteger('draw'),
 		'recordsTotal'    => $recordsTotal,
 		'recordsFiltered' => $recordsFiltered,
 		'data'            => $data
@@ -229,7 +225,7 @@ $controller
 			processing: true,
 			serverSide: true,
 			ajax: "'.WT_BASE_URL . WT_SCRIPT_NAME . '?action=load_json&from=' . $from . '&to=' . $to . '&type=' . $type . '&oldged=' . rawurlencode($oldged) . '&newged=' . rawurlencode($newged) . '&xref=' . rawurlencode($xref) . '&user=' . rawurlencode($user) . '&gedc=' . rawurlencode($gedc) . '",
-			' . WT_I18N::datatablesI18N(array(10, 20, 50, 100, 500, 1000, -1)) . ',
+			' . I18N::datatablesI18N(array(10, 20, 50, 100, 500, 1000, -1)) . ',
 			sorting: [[ 0, "desc" ]],
 			pageLength: ' . Auth::user()->getPreference('admin_site_change_page_size', 10) . ',
 			columns: [
@@ -277,8 +273,8 @@ foreach (User::all() as $tmp_user) {
 
 ?>
 <ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
-	<li><a href="admin_trees_manage.php"><?php echo WT_I18N::translate('Manage family trees'); ?></a></li>
+	<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
+	<li><a href="admin_trees_manage.php"><?php echo I18N::translate('Manage family trees'); ?></a></li>
 	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 </ol>
 
@@ -290,81 +286,81 @@ foreach (User::all() as $tmp_user) {
 	<div class="row">
 		<div class="form-group col-xs-6 col-md-3">
 			<label for="from">
-				<?php echo /* I18N: label for the start of a date range (from x to y) */ WT_I18N::translate('From'); ?>
+				<?php echo /* I18N: label for the start of a date range (from x to y) */ I18N::translate('From'); ?>
 			</label>
 			<div class="input-group date">
-				<input type="text" autocomplete="off" class="form-control" id="from" name="from" value="<?php echo WT_Filter::escapeHtml($from); ?>">
+				<input type="text" autocomplete="off" class="form-control" id="from" name="from" value="<?php echo Filter::escapeHtml($from); ?>">
 				<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
 			</div>
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
 			<label for="to">
-				<?php /* I18N: label for the end of a date range (from x to y) */ echo WT_I18N::translate('To'); ?>
+				<?php /* I18N: label for the end of a date range (from x to y) */ echo I18N::translate('To'); ?>
 			</label>
 			<div class="input-group date">
-				<input type="text" autocomplete="off" class="form-control" id="to" name="to" value="<?php echo WT_Filter::escapeHtml($to); ?>">
+				<input type="text" autocomplete="off" class="form-control" id="to" name="to" value="<?php echo Filter::escapeHtml($to); ?>">
 				<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
 			</div>
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
 			<label for="type">
-				<?php echo WT_I18N::translate('Status'); ?>
+				<?php echo I18N::translate('Status'); ?>
 			</label>
 			<?php echo select_edit_control('type', $statuses, null, $type, 'class="form-control"'); ?>
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
 			<label for="text">
-				<?php echo WT_I18N::translate('Record'); ?>
+				<?php echo I18N::translate('Record'); ?>
 			</label>
-			<input class="form-control" type="text" id="xref" name="xref" value="<?php echo WT_Filter::escapeHtml($xref); ?>">
+			<input class="form-control" type="text" id="xref" name="xref" value="<?php echo Filter::escapeHtml($xref); ?>">
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="form-group col-xs-6 col-md-3">
 			<label for="text">
-				<?php echo WT_I18N::translate('Old data'); ?>
+				<?php echo I18N::translate('Old data'); ?>
 			</label>
-			<input class="form-control" type="text" id="oldged" name="oldged" value="<?php echo WT_Filter::escapeHtml($oldged); ?>">
+			<input class="form-control" type="text" id="oldged" name="oldged" value="<?php echo Filter::escapeHtml($oldged); ?>">
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
 			<label for="text">
-				<?php echo WT_I18N::translate('New data'); ?>
+				<?php echo I18N::translate('New data'); ?>
 			</label>
-			<input class="form-control" type="text" id="newged" name="newged" value="<?php echo WT_Filter::escapeHtml($newged); ?>">
+			<input class="form-control" type="text" id="newged" name="newged" value="<?php echo Filter::escapeHtml($newged); ?>">
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
 			<label for="user">
-				<?php echo WT_I18N::translate('User'); ?>
+				<?php echo I18N::translate('User'); ?>
 			</label>
 			<?php echo select_edit_control('user', $users_array, '', $user, 'class="form-control"'); ?>
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
 			<label for="gedc">
-				<?php echo WT_I18N::translate('Family tree'); ?>
+				<?php echo I18N::translate('Family tree'); ?>
 			</label>
-			<?php echo select_edit_control('gedc', WT_Tree::getNameList(), '', $gedc, Auth::isAdmin() ? 'class="form-control"' : 'disabled class="form-control"'); ?>
+			<?php echo select_edit_control('gedc', Tree::getNameList(), '', $gedc, Auth::isAdmin() ? 'class="form-control"' : 'disabled class="form-control"'); ?>
 		</div>
 	</div>
 
 	<div class="row text-center">
 		<button type="submit" class="btn btn-primary">
-			<?php echo WT_I18N::translate('Filter'); ?>
+			<?php echo I18N::translate('Filter'); ?>
 		</button>
 
 		<button type="submit" class="btn btn-primary" onclick="document.logs.action.value='export';return true;" <?php echo $action === 'show' ? '' : 'disabled'; ?>>
-			<?php echo WT_I18N::translate('Export'); ?>
+			<?php echo I18N::translate('Export'); ?>
 		</button>
 
 
-		<button type="submit" class="btn btn-primary" onclick="if (confirm('<?php echo WT_I18N::translate('Permanently delete these records?'); ?>')) {document.changes.action.value='delete'; return true;} else {return false;}" <?php echo $action === 'show' ? '' : 'disabled'; ?>>
-			<?php echo WT_I18N::translate('Delete'); ?>
+		<button type="submit" class="btn btn-primary" onclick="if (confirm('<?php echo I18N::translate('Permanently delete these records?'); ?>')) {document.changes.action.value='delete'; return true;} else {return false;}" <?php echo $action === 'show' ? '' : 'disabled'; ?>>
+			<?php echo I18N::translate('Delete'); ?>
 		</button>
 	</div>
 </form>
@@ -373,13 +369,13 @@ foreach (User::all() as $tmp_user) {
 <table class="table table-bordered table-condensed table-hover table-site-changes">
 	<thead>
 		<tr>
-			<th><?php echo WT_I18N::translate('Timestamp'); ?></th>
-			<th><?php echo WT_I18N::translate('Status'); ?></th>
-			<th><?php echo WT_I18N::translate('Record'); ?></th>
-			<th><?php echo WT_I18N::translate('Old data'); ?></th>
-			<th><?php echo WT_I18N::translate('New data'); ?></th>
-			<th><?php echo WT_I18N::translate('User'); ?></th>
-			<th><?php echo WT_I18N::translate('Family tree'); ?></th>
+			<th><?php echo I18N::translate('Timestamp'); ?></th>
+			<th><?php echo I18N::translate('Status'); ?></th>
+			<th><?php echo I18N::translate('Record'); ?></th>
+			<th><?php echo I18N::translate('Old data'); ?></th>
+			<th><?php echo I18N::translate('New data'); ?></th>
+			<th><?php echo I18N::translate('User'); ?></th>
+			<th><?php echo I18N::translate('Family tree'); ?></th>
 		</tr>
 	</thead>
 	<tbody>

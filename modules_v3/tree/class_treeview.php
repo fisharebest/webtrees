@@ -1,20 +1,20 @@
 <?php
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Webtrees;
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 /**
  * Class TreeView
@@ -30,36 +30,36 @@ class TreeView {
 	 */
 	function __construct($name = 'tree') {
 		$this->name = $name;
-		$this->all_partners = WT_Filter::cookie('allPartners', 'true|false', 'true');
+		$this->all_partners = Filter::cookie('allPartners', 'true|false', 'true');
 	}
 
 	/**
 	 * Draw the viewport which creates the draggable/zoomable framework
 	 * Size is set by the container, as the viewport can scale itself automatically
 	 *
-	 * @param WT_Individual $root_person  the id of the root person
-	 * @param integer       $generations number of generations to draw
+	 * @param Individual $root_person  the id of the root person
+	 * @param integer    $generations number of generations to draw
 	 *
-	 * @return string[]     HTML and Javascript
+	 * @return string[]  HTML and Javascript
 	 */
-	public function drawViewport(WT_Individual $root_person, $generations) {
+	public function drawViewport(Individual $root_person, $generations) {
 		$html = '
 			<a name="tv_content"></a>
 			<div id="' . $this->name . '_out" class="tv_out">
 				<div id="tv_tools" class="noprint">
 					<ul>
 						<li id="tvbCompact" class="tv_button">
-							<img src="' . WT_STATIC_URL . WT_MODULES_DIR . 'tree/images/compact.png" alt="' . WT_I18N::translate('Use compact layout') . '" title="' . WT_I18N::translate('Use compact layout') . '">
+							<img src="' . WT_STATIC_URL . WT_MODULES_DIR . 'tree/images/compact.png" alt="' . I18N::translate('Use compact layout') . '" title="' . I18N::translate('Use compact layout') . '">
 						</li>
 						<li id="tvbAllPartners" class="tv_button' . ($this->all_partners === 'true' ? ' tvPressed' : '') . '">
-							<a class="icon-sfamily" href="#" title="' . WT_I18N::translate('Show all spouses and ancestors') . '"></a>
+							<a class="icon-sfamily" href="#" title="' . I18N::translate('Show all spouses and ancestors') . '"></a>
 						</li>
 						<li class="tv_button" id="' . $this->name . '_loading">
 							<i class="icon-loading-small"></i>
 						</li>
 					</ul>
 				</div>
-				<h2 id="tree-title">' . WT_I18N::translate('Interactive tree of %s', $root_person->getFullName()) . '</h2>
+				<h2 id="tree-title">' . I18N::translate('Interactive tree of %s', $root_person->getFullName()) . '</h2>
 				<div id="' . $this->name . '_in" class="tv_in" dir="ltr">
 					' . $this->drawPerson($root_person, $generations, 0, null, null, true) . '
 				</div>
@@ -87,7 +87,7 @@ class TreeView {
 				$fidlist = explode(',', $jsonRequest);
 				$flist = array();
 				foreach ($fidlist as $fid) {
-					$flist[] = WT_Family::getInstance($fid);
+					$flist[] = Family::getInstance($fid);
 				}
 				$r[] = $this->drawChildren($flist, 1, true);
 				break;
@@ -95,7 +95,7 @@ class TreeView {
 				$params = explode('@', $jsonRequest);
 				$fid = $params[0];
 				$order = $params[1];
-				$f = WT_Family::getInstance($fid);
+				$f = Family::getInstance($fid);
 				if ($f->getHusband()) {
 					$r[] = $this->drawPerson($f->getHusband(), 0, 1, $f, $order);
 				} elseif ($f->getWife()) {
@@ -110,11 +110,11 @@ class TreeView {
 	/**
 	 * Get the details for a person and their life partner(s)
 	 *
-	 * @param WT_Individual $individual the individual to return the details for
+	 * @param Individual $individual the individual to return the details for
 	 *
 	 * @return string
 	 */
-	public function getDetails(WT_Individual $individual) {
+	public function getDetails(Individual $individual) {
 		$html = $this->getPersonDetails($individual, null);
 		foreach ($individual->getSpouseFamilies() as $family) {
 			$spouse = $family->getSpouse($individual);
@@ -129,14 +129,14 @@ class TreeView {
 	/**
 	 * Return the details for a person
 	 *
-	 * @param WT_Individual $individual
-	 * @param WT_Family     $family
+	 * @param Individual $individual
+	 * @param Family     $family
 	 *
 	 * @return string
 	 */
-	private function getPersonDetails(WT_Individual $individual, WT_Family $family = null) {
+	private function getPersonDetails(Individual $individual, Family $family = null) {
 		$hmtl = $this->getThumbnail($individual);
-		$hmtl .= '<a class="tv_link" href="' . $individual->getHtmlUrl() . '">' . $individual->getFullName() . '</a> <a href="module.php?mod=tree&amp;mod_action=treeview&amp;rootid=' . $individual->getXref() . '" title="' . WT_I18N::translate('Interactive tree of %s', strip_tags($individual->getFullName())) . '" class="icon-button_indi tv_link tv_treelink"></a>';
+		$hmtl .= '<a class="tv_link" href="' . $individual->getHtmlUrl() . '">' . $individual->getFullName() . '</a> <a href="module.php?mod=tree&amp;mod_action=treeview&amp;rootid=' . $individual->getXref() . '" title="' . I18N::translate('Interactive tree of %s', strip_tags($individual->getFullName())) . '" class="icon-button_indi tv_link tv_treelink"></a>';
 		foreach ($individual->getFacts(WT_EVENTS_BIRT, true) as $fact) {
 			$hmtl .= $fact->summary();
 		}
@@ -205,10 +205,10 @@ class TreeView {
 	/**
 	 * Draw a person in the tree
 	 *
-	 * @param WT_Individual $person The Person object to draw the box for
+	 * @param Individual $person The Person object to draw the box for
 	 * @param integer       $gen    The number of generations up or down to print
 	 * @param integer       $state  Whether we are going up or down the tree, -1 for descendents +1 for ancestors
-	 * @param WT_Family     $pfamily
+	 * @param Family     $pfamily
 	 * @param string        $order  first (1), last(2), unique(0), or empty. Required for drawing lines between boxes
 	 * @param boolean       $isRoot
 	 *
@@ -218,7 +218,7 @@ class TreeView {
 	 * (for "life partner") here fits much better than "spouse" or "mate"
 	 * to translate properly the modern french meaning of "conjoint"
 	 */
-	private function drawPerson(WT_Individual $person, $gen, $state, WT_Family $pfamily = null, $order = null, $isRoot = false) {
+	private function drawPerson(Individual $person, $gen, $state, Family $pfamily = null, $order = null, $isRoot = false) {
 		global $TEXT_DIRECTION;
 
 		if ($gen < 0) {
@@ -317,12 +317,12 @@ class TreeView {
 	/**
 	 * Draw a person name preceded by sex icon, with parents as tooltip
 	 *
-	 * @param WT_Individual $individual an individual
+	 * @param Individual $individual an individual
 	 * @param string        $dashed     if = 'dashed' print dashed top border to separate multiple spuses
 	 *
 	 * @return string
 	 */
-	private function drawPersonName(WT_Individual $individual, $dashed = '') {
+	private function drawPersonName(Individual $individual, $dashed = '') {
 		if ($this->all_partners === 'true') {
 			$family = $individual->getPrimaryChildFamily();
 			if ($family) {
@@ -330,19 +330,19 @@ class TreeView {
 				case 'M':
 					$title = ' title="' . strip_tags(
 						/* I18N: e.g. “Son of [father name & mother name]” */
-						WT_I18N::translate('Son of %s', $family->getFullName())
+						I18N::translate('Son of %s', $family->getFullName())
 					) . '"';
 					break;
 				case 'F':
 					$title = ' title="' . strip_tags(
 						/* I18N: e.g. “Daughter of [father name & mother name]” */
-						WT_I18N::translate('Daughter of %s', $family->getFullName())
+						I18N::translate('Daughter of %s', $family->getFullName())
 					) . '"';
 					break;
 				default:
 					$title = ' title="' . strip_tags(
 						/* I18N: e.g. “Child of [father name & mother name]” */
-						WT_I18N::translate('Child of %s', $family->getFullName())
+						I18N::translate('Child of %s', $family->getFullName())
 					) . '"';
 					break;
 				}
@@ -359,11 +359,11 @@ class TreeView {
 	/**
 	 * Get the thumbnail image for the given person
 	 *
-	 * @param WT_Individual $individual
+	 * @param Individual $individual
 	 *
 	 * @return string
 	 */
-	private function getThumbnail(WT_Individual $individual) {
+	private function getThumbnail(Individual $individual) {
 		global $SHOW_HIGHLIGHT_IMAGES;
 
 		if ($SHOW_HIGHLIGHT_IMAGES) {

@@ -1,28 +1,25 @@
 <?php
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2010 John Finlay
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Webtrees;
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 /**
  * Class family_nav_WT_Module
  */
-class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
+class family_nav_WT_Module extends Module implements ModuleSidebarInterface {
 
 	CONST TTL = "<div class='flyout2'>%s</div>";
 	CONST LNK = "<div class='flyout3' data-href='%s'>%s</div>";
@@ -30,12 +27,12 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	/** {@inheritdoc} */
 	public function getTitle() {
-		return /* I18N: Name of a module/sidebar */ WT_I18N::translate('Family navigator');
+		return /* I18N: Name of a module/sidebar */ I18N::translate('Family navigator');
 	}
 
 	/** {@inheritdoc} */
 	public function getDescription() {
-		return /* I18N: Description of the “Family navigator” module */ WT_I18N::translate('A sidebar showing an individual’s close families and relatives.');
+		return /* I18N: Description of the “Family navigator” module */ I18N::translate('A sidebar showing an individual’s close families and relatives.');
 	}
 
 	/** {@inheritdoc} */
@@ -102,19 +99,10 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	}
 
 	/**
-	 * @param $person
-	 *
-	 * @return bool
+	 * @param Family $family
+	 * @param string $title
 	 */
-	private function isPerson($person) {
-		return $person instanceof WT_Individual;
-	}
-
-	/**
-	 * @param WT_Family $family
-	 * @param string    $title
-	 */
-	private function drawFamily(WT_Family $family, $title) {
+	private function drawFamily(Family $family, $title) {
 		global $controller, $SHOW_PRIVATE_RELATIONSHIPS;
 
 		?>
@@ -130,10 +118,10 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$facts = array_merge($family->getFacts('HUSB', false, $access_level), $family->getFacts('WIFE', false, $access_level));
 		foreach ($facts as $fact) {
 			$spouse = $fact->getTarget();
-			if ($this->isPerson($spouse)) {
-				$menu = new WT_Menu(get_close_relationship_name($controller->record, $spouse));
+			if ($spouse instanceof Individual) {
+				$menu = new Menu(get_close_relationship_name($controller->record, $spouse));
 				$menu->addClass('', 'submenu flyout');
-				$menu->addSubmenu(new WT_Menu($this->getParents($spouse)));
+				$menu->addSubmenu(new Menu($this->getParents($spouse)));
 				?>
 				<tr>
 					<td class="facts_label">
@@ -154,10 +142,10 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 		foreach ($family->getFacts('CHIL', false, $access_level) as $fact) {
 			$child = $fact->getTarget();
-			if ($this->isPerson($child)) {
-				$menu = new WT_Menu(get_close_relationship_name($controller->record, $child));
+			if ($child instanceof Individual) {
+				$menu = new Menu(get_close_relationship_name($controller->record, $child));
 				$menu->addClass('', 'submenu flyout');
-				$menu->addSubmenu(new WT_Menu($this->getFamily($child)));
+				$menu->addSubmenu(new Menu($this->getFamily($child)));
 				?>
 				<tr>
 					<td class="facts_label">
@@ -184,26 +172,26 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	 * @return string
 	 */
 	private function getHTML($person, $showUnknown = false) {
-		if ($this->isPerson($person)) {
+		if ($person instanceof Individual) {
 			return sprintf(self::LNK, $person->getHtmlUrl(), $person->getFullName());
 		} elseif ($showUnknown) {
-			return sprintf(self::MSG, WT_I18N::translate('unknown'));
+			return sprintf(self::MSG, I18N::translate('unknown'));
 		} else {
 			return '';
 		}
 	}
 
 	/**
-	 * @param WT_Individual $person
+	 * @param Individual $person
 	 *
 	 * @return string
 	 */
-	private function getParents(WT_Individual $person) {
+	private function getParents(Individual $person) {
 		global $SEARCH_SPIDER;
 
 		$father = null;
 		$mother = null;
-		$html = sprintf(self::TTL, WT_I18N::translate('Parents'));
+		$html = sprintf(self::TTL, I18N::translate('Parents'));
 		$family = $person->getPrimaryChildFamily();
 		if (!$SEARCH_SPIDER && $person->canShowName() && $family !== null) {
 			$father = $family->getHusband();
@@ -212,34 +200,34 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					 $this->getHTML($mother);
 
 			// Can only have a step parent if one & only one parent found at this point
-			if ($this->isPerson($father) xor $this->isPerson($mother)) {
+			if ($father instanceof Individual xor $mother instanceof Individual) {
 				$stepParents = '';
 				foreach ($person->getChildStepFamilies() as $family) {
-					if (!$this->isPerson($father)) {
+					if (!$father instanceof Individual) {
 						$stepParents .= $this->getHTML($family->getHusband());
 					} else {
 						$stepParents .= $this->getHTML($family->getWife());
 					}
 				}
 				if ($stepParents) {
-					$relationship = $this->isPerson($father) ?
-						WT_I18N::translate_c("father’s wife", "step-mother") : WT_I18N::translate_c("mother’s husband", "step-father");
+					$relationship = $father instanceof Individual ?
+						I18N::translate_c("father’s wife", "step-mother") : I18N::translate_c("mother’s husband", "step-father");
 					$html .= sprintf(self::TTL, $relationship) . $stepParents;
 				}
 			}
 		}
-		if (!($this->isPerson($father) || $this->isPerson($mother))) {
-			$html .= sprintf(self::MSG, WT_I18N::translate_c('unknown family', 'unknown'));
+		if (!($father instanceof Individual || $mother instanceof Individual)) {
+			$html .= sprintf(self::MSG, I18N::translate_c('unknown family', 'unknown'));
 		}
 		return $html;
 	}
 
 	/**
-	 * @param WT_Individual $person
+	 * @param Individual $person
 	 *
 	 * @return string
 	 */
-	private function getFamily(WT_Individual $person) {
+	private function getFamily(Individual $person) {
 		global $SEARCH_SPIDER;
 
 		$html = '';
@@ -258,9 +246,9 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			}
 		}
 		if (!$html) {
-			$html = sprintf(self::MSG, WT_I18N::translate('none'));
+			$html = sprintf(self::MSG, I18N::translate('none'));
 		}
-		return sprintf(self::TTL, WT_I18N::translate('Family')) . $html;
+		return sprintf(self::TTL, I18N::translate('Family')) . $html;
 	}
 
 }

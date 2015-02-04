@@ -1,38 +1,38 @@
 <?php
-// Search/replace function for PLAC data
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Webtrees;
 
-use WT\Auth;
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
 
 define('WT_SCRIPT_NAME', 'admin_trees_places.php');
-
 require './includes/session.php';
-require WT_ROOT . 'includes/functions/functions_edit.php';
 
-$search  = WT_Filter::post('search');
-$replace = WT_Filter::post('replace');
-$confirm = WT_Filter::post('confirm');
+$search  = Filter::post('search');
+$replace = Filter::post('replace');
+$confirm = Filter::post('confirm');
 
 $changes = array();
 
 if ($search && $replace) {
-	$rows = WT_DB::prepare(
+	$rows = Database::prepare(
 		"SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom" .
 		" FROM `##individuals`" .
 		" LEFT JOIN `##change` ON (i_id = xref AND i_file=gedcom_id AND status='pending')" .
@@ -40,7 +40,7 @@ if ($search && $replace) {
 		" AND COALESCE(new_gedcom, i_gedcom) REGEXP CONCAT('\n2 PLAC ([^\n]*, )*', ?, '(\n|$)')"
 	)->execute(array(WT_GED_ID, $search))->fetchAll();
 	foreach ($rows as $row) {
-		$record = WT_Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		$record = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		foreach ($record->getFacts() as $fact) {
 			$old_place = $fact->getAttribute('PLAC');
 			if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
@@ -53,14 +53,14 @@ if ($search && $replace) {
 			}
 		}
 	}
-	$rows = WT_DB::prepare(
+	$rows = Database::prepare(
 		"SELECT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom" .
 		" FROM `##families`" .
 		" LEFT JOIN `##change` ON (f_id = xref AND f_file=gedcom_id AND status='pending')" .
 		" WHERE COALESCE(new_gedcom, f_gedcom) REGEXP CONCAT('\n2 PLAC ([^\n]*, )*', ?, '(\n|$)')"
 	)->execute(array($search))->fetchAll();
 	foreach ($rows as $row) {
-		$record = WT_Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		$record = Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		foreach ($record->getFacts() as $fact) {
 			$old_place = $fact->getAttribute('PLAC');
 			if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
@@ -75,53 +75,53 @@ if ($search && $replace) {
 	}
 }
 
-$controller = new WT_Controller_Page;
+$controller = new PageController;
 $controller
 	->restrictAccess(Auth::isManager())
-	->setPageTitle(WT_I18N::translate('Update all the place names in a family tree') . ' — ' . $WT_TREE->titleHtml())
+	->setPageTitle(I18N::translate('Update all the place names in a family tree') . ' — ' . $WT_TREE->titleHtml())
 	->pageHeader();
 ?>
 
 <ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
-	<li><a href="admin_trees_manage.php"><?php echo WT_I18N::translate('Manage family trees'); ?></a></li>
+	<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
+	<li><a href="admin_trees_manage.php"><?php echo I18N::translate('Manage family trees'); ?></a></li>
 	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 </ol>
 
 <h1><?php echo $controller->getPageTitle(); ?></h1>
 
 <p>
-	<?php echo WT_I18N::translate('This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”.'); ?>
+	<?php echo I18N::translate('This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”.'); ?>
 </p>
 
 <form method="post">
 	<dl>
-		<dt><label for="search"><?php echo WT_I18N::translate('Search for'); ?></label></dt>
-		<dd><input name="search" id="search" type="text" size="30" value="<?php echo WT_Filter::escapeHtml($search) ?>" required autofocus></dd>
-		<dt><label for="replace"><?php echo WT_I18N::translate('Replace with'); ?></label></dt>
-		<dd><input name="replace" id="replace" type="text" size="30" value="<?php echo WT_Filter::escapeHtml($replace) ?>" required></dd>
+		<dt><label for="search"><?php echo I18N::translate('Search for'); ?></label></dt>
+		<dd><input name="search" id="search" type="text" size="30" value="<?php echo Filter::escapeHtml($search) ?>" required autofocus></dd>
+		<dt><label for="replace"><?php echo I18N::translate('Replace with'); ?></label></dt>
+		<dd><input name="replace" id="replace" type="text" size="30" value="<?php echo Filter::escapeHtml($replace) ?>" required></dd>
 	</dl>
-	<button type="submit" value="preview"><?php echo /* I18N: button label */ WT_I18N::translate('preview'); ?></button>
-	<button type="submit" value="update" name="confirm"><?php echo /* I18N: button label */ WT_I18N::translate('update'); ?></button>
+	<button type="submit" value="preview"><?php echo /* I18N: button label */ I18N::translate('preview'); ?></button>
+	<button type="submit" value="update" name="confirm"><?php echo /* I18N: button label */ I18N::translate('update'); ?></button>
 </form>
 
 <?php if ($search && $replace) { ?>
 	<?php if ($changes) { ?>
 	<p>
-		<?php echo ($confirm) ? WT_I18N::translate('The following places have been changed:') : WT_I18N::translate('The following places would be changed:'); ?>
+		<?php echo ($confirm) ? I18N::translate('The following places have been changed:') : I18N::translate('The following places would be changed:'); ?>
 	</p>
 	<ul>
 		<?php foreach ($changes as $old_place => $new_place) { ?>
 		<li>
-			<?php echo WT_Filter::escapeHtml($old_place); ?>
+			<?php echo Filter::escapeHtml($old_place); ?>
 			&rarr;
-			<?php echo WT_Filter::escapeHtml($new_place); ?>
+			<?php echo Filter::escapeHtml($new_place); ?>
 		</li>
 		<?php } ?>
 	</ul>
 	<?php } else { ?>
 	<p>
-		<?php echo WT_I18N::translate('No places have been found.'); ?>
+		<?php echo I18N::translate('No places have been found.'); ?>
 	</p>
 	<?php } ?>
 <?php } ?>

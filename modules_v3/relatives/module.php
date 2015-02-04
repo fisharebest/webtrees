@@ -1,37 +1,33 @@
 <?php
-// webtrees: Web based Family History software
-// Copyright (C) 2015 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2010 John Finlay
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
-use WT\Theme;
+namespace Webtrees;
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 /**
  * Class relatives_WT_Module
  */
-class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
+class relatives_WT_Module extends Module implements ModuleTabInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Families');
+		return /* I18N: Name of a module */ I18N::translate('Families');
 	}
 
 	/** {@inheritdoc} */
 	public function getDescription() {
-		return /* I18N: Description of the “Families” module */ WT_I18N::translate('A tab showing the close relatives of an individual.');
+		return /* I18N: Description of the “Families” module */ I18N::translate('A tab showing the close relatives of an individual.');
 	}
 
 	/** {@inheritdoc} */
@@ -40,13 +36,13 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	}
 
 	/**
-	 * @param WT_Date $prev
-	 * @param WT_Date $next
+	 * @param Date $prev
+	 * @param Date $next
 	 * @param integer $child_number
 	 *
 	 * @return string
 	 */
-	static function ageDifference(WT_Date $prev, WT_Date $next, $child_number = 0) {
+	static function ageDifference(Date $prev, Date $next, $child_number = 0) {
 		if ($prev->isOK() && $next->isOK()) {
 			$days = $next->MaxJD() - $prev->MinJD();
 			if ($days < 0) {
@@ -61,9 +57,9 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 
 			$months = round($days * 12 / 365.25); // Approximate - we do not know the calendar
 			if (abs($months) == 12 || abs($months) >= 24) {
-				$diff .= WT_I18N::plural('%d year', '%d years', round($months / 12), round($months / 12));
+				$diff .= I18N::plural('%d year', '%d years', round($months / 12), round($months / 12));
 			} elseif ($months != 0) {
-				$diff .= WT_I18N::plural('%d month', '%d months', $months, $months);
+				$diff .= I18N::plural('%d month', '%d months', $months, $months);
 			}
 
 			return '<div class="elderdate age">' . $diff . '</div>';
@@ -72,13 +68,12 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 	}
 
-	// print parents informations
 	/**
-	 * @param WT_Family $family
-	 * @param string    $type
-	 * @param string    $label
+	 * @param Family $family
+	 * @param string $type
+	 * @param string $label
 	 */
-	function printFamily(WT_Family $family, $type, $label) {
+	function printFamily(Family $family, $type, $label) {
 		global $controller;
 		global $SHOW_PRIVATE_RELATIONSHIPS;
 
@@ -96,7 +91,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				</td>
 				<td>
 					<span class="subheaders"> <?php echo $label; ?> </span> -
-					<a href="<?php echo $family->getHtmlUrl(); ?>"><?php echo WT_I18N::translate('View family'); ?></a>
+					<a href="<?php echo $family->getHtmlUrl(); ?>"><?php echo I18N::translate('View family'); ?></a>
 				</td>
 			</tr>
 		</table>
@@ -108,7 +103,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		foreach ($family->getFacts('HUSB', false, $access_level) as $fact) {
 			$found |= !$fact->isPendingDeletion();
 			$person = $fact->getTarget();
-			if ($person instanceof WT_Individual) {
+			if ($person instanceof Individual) {
 				if ($fact->isPendingAddition()) {
 					$class = 'facts_label new';
 				} elseif ($fact->isPendingDeletion()) {
@@ -132,7 +127,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			?>
 			<tr>
 				<td class="facts_label"></td>
-				<td class="facts_value"><a href="#" onclick="return add_spouse_to_family('<?php echo $family->getXref(); ?>', 'HUSB');"><?php echo WT_I18N::translate('Add a husband to this family'); ?></a></td>
+				<td class="facts_value"><a href="#" onclick="return add_spouse_to_family('<?php echo $family->getXref(); ?>', 'HUSB');"><?php echo I18N::translate('Add a husband to this family'); ?></a></td>
 			</tr>
 			<?php
 		}
@@ -141,7 +136,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		$found = false;
 		foreach ($family->getFacts('WIFE', false, $access_level) as $fact) {
 			$person = $fact->getTarget();
-			if ($person instanceof WT_Individual) {
+			if ($person instanceof Individual) {
 				$found |= !$fact->isPendingDeletion();
 				if ($fact->isPendingAddition()) {
 					$class = 'facts_label new';
@@ -166,14 +161,14 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			?>
 			<tr>
 				<td class="facts_label"></td>
-				<td class="facts_value"><a href="#" onclick="return add_spouse_to_family('<?php echo $family->getXref(); ?>', 'WIFE');"><?php echo WT_I18N::translate('Add a wife to this family'); ?></a></td>
+				<td class="facts_value"><a href="#" onclick="return add_spouse_to_family('<?php echo $family->getXref(); ?>', 'WIFE');"><?php echo I18N::translate('Add a wife to this family'); ?></a></td>
 			</tr>
 			<?php
 		}
 
 		///// MARR /////
 		$found = false;
-		$prev = new WT_Date('');
+		$prev = new Date('');
 		foreach ($family->getFacts(WT_EVENTS_MARR) as $fact) {
 			$found |= !$fact->isPendingDeletion();
 			if ($fact->isPendingAddition()) {
@@ -206,7 +201,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				</td>
 				<td class="facts_value">
 					<a href="#" onclick="return add_new_record('<?php echo $family->getXref(); ?>', 'MARR');">
-						<?php echo WT_I18N::translate('Add marriage details'); ?>
+						<?php echo I18N::translate('Add marriage details'); ?>
 					</a>
 				</td>
 			</tr>
@@ -217,7 +212,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		$child_number = 0;
 		foreach ($family->getFacts('CHIL', false, $access_level) as $fact) {
 			$person = $fact->getTarget();
-			if ($person instanceof WT_Individual) {
+			if ($person instanceof Individual) {
 				if ($fact->isPendingAddition()) {
 					$child_number++;
 					$class = 'facts_label new';
@@ -227,7 +222,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 					$child_number++;
 					$class = 'facts_label';
 				}
-				$next = new WT_Date('');
+				$next = new Date('');
 				foreach ($person->getFacts(WT_EVENTS_BIRT) as $bfact) {
 					if ($bfact->getDate()->isOK()) {
 						$next = $bfact->getDate();
@@ -251,15 +246,15 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		// Re-order children / add a new child
 		if ($family->canEdit()) {
 			if ($type == 'FAMS') {
-				$add_child_text = WT_I18N::translate('Add a new son or daughter');
+				$add_child_text = I18N::translate('Add a new son or daughter');
 			} else {
-				$add_child_text = WT_I18N::translate('Add a new brother or sister');
+				$add_child_text = I18N::translate('Add a new brother or sister');
 			}
 			?>
 			<tr>
 				<td class="facts_label">
 					<?php if (count($family->getChildren()) > 1) { ?>
-					<a href="#" onclick="reorder_children('<?php echo $family->getXref(); ?>');tabswitch(5);"><i class="icon-media-shuffle"></i> <?php echo WT_I18N::translate('Re-order children'); ?></a>
+					<a href="#" onclick="reorder_children('<?php echo $family->getXref(); ?>');tabswitch(5);"><i class="icon-media-shuffle"></i> <?php echo I18N::translate('Re-order children'); ?></a>
 					<?php } ?>
 				</td>
 				<td class="facts_value">
@@ -292,7 +287,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		?>
 		<table class="facts_table"><tr><td class="descriptionbox rela">
 		<input id="checkbox_elder" type="checkbox" onclick="jQuery('div.elderdate').toggle();" <?php echo $SHOW_AGE_DIFF ? 'checked' : ''; ?>>
-		<label for="checkbox_elder"><?php echo WT_I18N::translate('Show date differences'); ?></label>
+		<label for="checkbox_elder"><?php echo I18N::translate('Show date differences'); ?></label>
 		</td></tr></table>
 		<?php
 		$families = $controller->record->getChildFamilies();
@@ -300,10 +295,10 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			?>
 			<table class="facts_table">
 				<tr>
-					<td class="facts_value"><a href="#" onclick="return add_parent_to_individual('<?php echo $controller->record->getXref(); ?>', 'M');"><?php echo WT_I18N::translate('Add a new father'); ?></td>
+					<td class="facts_value"><a href="#" onclick="return add_parent_to_individual('<?php echo $controller->record->getXref(); ?>', 'M');"><?php echo I18N::translate('Add a new father'); ?></td>
 				</tr>
 				<tr>
-					<td class="facts_value"><a href="#" onclick="return add_parent_to_individual('<?php echo $controller->record->getXref(); ?>', 'F');"><?php echo WT_I18N::translate('Add a new mother'); ?></a></td>
+					<td class="facts_value"><a href="#" onclick="return add_parent_to_individual('<?php echo $controller->record->getXref(); ?>', 'F');"><?php echo I18N::translate('Add a new mother'); ?></a></td>
 				</tr>
 			</table>
 			<?php
@@ -341,42 +336,42 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			if (count($families) > 1) { ?>
 			<tr>
 				<td class="facts_value">
-				<a href="#" onclick="return reorder_families('<?php echo $controller->record->getXref(); ?>');"><?php echo WT_I18N::translate('Re-order families'); ?></a>
+				<a href="#" onclick="return reorder_families('<?php echo $controller->record->getXref(); ?>');"><?php echo I18N::translate('Re-order families'); ?></a>
 				</td>
 			</tr>
 		<?php } ?>
 			<tr>
 				<td class="facts_value">
-				<a href="#" onclick="return add_famc('<?php echo $controller->record->getXref(); ?>');"><?php echo WT_I18N::translate('Link this individual to an existing family as a child'); ?></a>
+				<a href="#" onclick="return add_famc('<?php echo $controller->record->getXref(); ?>');"><?php echo I18N::translate('Link this individual to an existing family as a child'); ?></a>
 				</td>
 			</tr>
 			<?php if ($controller->record->getSex() != "F") { ?>
 			<tr>
 				<td class="facts_value">
-				<a href="#" onclick="return add_spouse_to_individual('<?php echo $controller->record->getXref(); ?>','WIFE');"><?php echo WT_I18N::translate('Add a new wife'); ?></a>
+				<a href="#" onclick="return add_spouse_to_individual('<?php echo $controller->record->getXref(); ?>','WIFE');"><?php echo I18N::translate('Add a new wife'); ?></a>
 				</td>
 			</tr>
 			<tr>
 				<td class="facts_value">
-				<a href="#" onclick="return linkspouse('<?php echo $controller->record->getXref(); ?>','WIFE');"><?php echo WT_I18N::translate('Add a wife using an existing individual'); ?></a>
+				<a href="#" onclick="return linkspouse('<?php echo $controller->record->getXref(); ?>','WIFE');"><?php echo I18N::translate('Add a wife using an existing individual'); ?></a>
 				</td>
 			</tr>
 			<?php }
 			if ($controller->record->getSex() != "M") { ?>
 			<tr>
 				<td class="facts_value">
-				<a href="#" onclick="return add_spouse_to_individual('<?php echo $controller->record->getXref(); ?>','HUSB');"><?php echo WT_I18N::translate('Add a new husband'); ?></a>
+				<a href="#" onclick="return add_spouse_to_individual('<?php echo $controller->record->getXref(); ?>','HUSB');"><?php echo I18N::translate('Add a new husband'); ?></a>
 				</td>
 			</tr>
 			<tr>
 				<td class="facts_value">
-				<a href="#" onclick="return linkspouse('<?php echo $controller->record->getXref(); ?>','HUSB');"><?php echo WT_I18N::translate('Add a husband using an existing individual'); ?></a>
+				<a href="#" onclick="return linkspouse('<?php echo $controller->record->getXref(); ?>','HUSB');"><?php echo I18N::translate('Add a husband using an existing individual'); ?></a>
 				</td>
 			</tr>
 			<?php } ?>
 			<tr>
 				<td class="facts_value">
-				<a href="#" onclick="return add_child_to_individual('<?php echo $controller->record->getXref(); ?>','U');"><?php echo WT_I18N::translate('Add a child to create a one-parent family'); ?></a>
+				<a href="#" onclick="return add_child_to_individual('<?php echo $controller->record->getXref(); ?>','U');"><?php echo I18N::translate('Add a child to create a one-parent family'); ?></a>
 				</td>
 			</tr>
 		</table>
