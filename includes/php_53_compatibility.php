@@ -16,6 +16,21 @@ namespace Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * https://php.net/date_default_timezone_get
+ * Prior to PHP 5.4, this function would attempt to guess the timezone,
+ * and emit a warning when it did this.  Suppresss the warning.
+ *
+ * @return string
+ */
+function date_default_timezone_get() {
+	$level    = error_reporting(0);
+	$timezone = \date_default_timezone_get();
+	error_reporting($level);
+
+	return $timezone;
+}
+
 // http://php.net/manual/en/security.magicquotes.disabling.php
 if (get_magic_quotes_gpc()) {
 	$_process = array(&$_GET, &$_POST, &$_COOKIE, &$_REQUEST);
@@ -73,7 +88,7 @@ if (!defined('PASSWORD_BCRYPT') && crypt("password", $hash) !== $hash) {
 }
 
 /**
- * This function was added to PHP in 5.4
+ * https://php.net/http_response_code
  *
  * @param string|null $code
  *

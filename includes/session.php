@@ -161,10 +161,8 @@ if (version_compare(PHP_VERSION, '5.4', '<')) {
 
 require WT_ROOT . 'vendor/autoload.php';
 
-// PHP requires a time zone to be set in php.ini
-if (!ini_get('date.timezone')) {
-	date_default_timezone_set(@date_default_timezone_get());
-}
+// PHP requires a time zone to be set
+date_default_timezone_set(date_default_timezone_get());
 
 // Use the patchwork/utf8 library to:
 // 1) set all PHP defaults to UTF-8
