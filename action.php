@@ -18,12 +18,6 @@ namespace Webtrees;
 
 use Zend_Session;
 
-/**
- * Defined in session.php
- *
- * @global Zend_Session $WT_SESSION
- */
-
 define('WT_SCRIPT_NAME', 'action.php');
 require './includes/session.php';
 
@@ -68,17 +62,17 @@ case 'copy-fact':
 					$type = $record::RECORD_TYPE; // paste only to the same record type
 					break;
 				}
-				if (!is_array($WT_SESSION->clipboard)) {
-					$WT_SESSION->clipboard = array();
+				if (!is_array(Globals::$WT_SESSION->clipboard)) {
+					Globals::$WT_SESSION->clipboard = array();
 				}
-				$WT_SESSION->clipboard[$fact_id] = array(
+				Globals::$WT_SESSION->clipboard[$fact_id] = array(
 					'type'   =>$type,
 					'factrec'=>$fact->getGedcom(),
 					'fact'   =>$fact->getTag()
 					);
 				// The clipboard only holds 10 facts
-				while (count($WT_SESSION->clipboard) > 10) {
-					array_shift($WT_SESSION->clipboard);
+				while (count(Globals::$WT_SESSION->clipboard) > 10) {
+					array_shift(Globals::$WT_SESSION->clipboard);
 				}
 				FlashMessages::addMessage(I18N::translate('The record has been copied to the clipboard.'));
 				break 2;
@@ -94,8 +88,8 @@ case 'paste-fact':
 
 	$record = GedcomRecord::getInstance($xref);
 
-	if ($record && $record->canEdit() && isset($WT_SESSION->clipboard[$fact_id])) {
-		$record->createFact($WT_SESSION->clipboard[$fact_id]['factrec'], true);
+	if ($record && $record->canEdit() && isset(Globals::$WT_SESSION->clipboard[$fact_id])) {
+		$record->createFact(Globals::$WT_SESSION->clipboard[$fact_id]['factrec'], true);
 	}
 	break;
 
@@ -223,7 +217,7 @@ case 'theme':
 	// Change the current theme
 	$theme = Filter::post('theme');
 	if (Site::getPreference('ALLOW_USER_THEMES') && array_key_exists($theme, Theme::themeNames())) {
-		$WT_SESSION->theme_id = $theme;
+		Globals::$WT_SESSION->theme_id = $theme;
 		// Remember our selection
 		Auth::user()->setPreference('theme', $theme);
 	} else {

@@ -184,7 +184,7 @@ class I18N {
 	 * @return string $string
 	 */
 	public static function init($locale = null) {
-		global $WT_SESSION, $WT_TREE;
+		global $WT_TREE;
 
 		// The translation libraries only work with a cache.
 		$cache_options = array(
@@ -209,9 +209,9 @@ class I18N {
 			if (array_key_exists(Filter::get('lang'), $installed_languages)) {
 				// Requested in the URL?
 				$locale = Filter::get('lang');
-			} elseif (array_key_exists($WT_SESSION->locale, $installed_languages)) {
+			} elseif (array_key_exists(Globals::$WT_SESSION->locale, $installed_languages)) {
 				// Rembered from a previous visit?
-				$locale = $WT_SESSION->locale;
+				$locale = Globals::$WT_SESSION->locale;
 			} else {
 				// Browser preference takes priority over gedcom default
 				if (empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {

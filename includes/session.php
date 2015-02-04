@@ -29,7 +29,7 @@ if (!defined('WT_SCRIPT_NAME')) {
 
 // To embed webtrees code in other applications, we must explicitly declare any global variables that we create.
 // session.php
-global $WT_REQUEST, $WT_SESSION, $WT_TREE, $GEDCOM, $SEARCH_SPIDER, $TEXT_DIRECTION;
+global $WT_REQUEST, $WT_TREE, $GEDCOM, $SEARCH_SPIDER, $TEXT_DIRECTION;
 // most pages
 global $controller;
 
@@ -379,12 +379,12 @@ Zend_Session::start($cfg);
 // Register a session “namespace” to store session data.  This is better than
 // using $_SESSION, as we can avoid clashes with other modules or applications,
 // and problems with servers that have enabled “register_globals”.
-$WT_SESSION = new Zend_Session_Namespace('WEBTREES');
+Globals::$WT_SESSION = new Zend_Session_Namespace('WEBTREES');
 
-if (!$SEARCH_SPIDER && !$WT_SESSION->initiated) {
+if (!$SEARCH_SPIDER && !Globals::$WT_SESSION->initiated) {
 	// A new session, so prevent session fixation attacks by choosing a new PHPSESSID.
 	Zend_Session::regenerateId();
-	$WT_SESSION->initiated = true;
+	Globals::$WT_SESSION->initiated = true;
 } else {
 	// An existing session
 }
@@ -398,9 +398,9 @@ define('WT_USER_NAME', Auth::id() ? Auth::user()->getUserName() : '');
 if (isset($_REQUEST['ged'])) {
 	// .... from the URL or form action
 	$GEDCOM = $_REQUEST['ged'];
-} elseif ($WT_SESSION->GEDCOM) {
+} elseif (Globals::$WT_SESSION->GEDCOM) {
 	// .... the most recently used one
-	$GEDCOM = $WT_SESSION->GEDCOM;
+	$GEDCOM = Globals::$WT_SESSION->GEDCOM;
 } else {
 	// Try the site default
 	$GEDCOM = Site::getPreference('DEFAULT_GEDCOM');
@@ -454,10 +454,10 @@ $GEDCOM = WT_GEDCOM;
 
 // With no parameters, init() looks to the environment to choose a language
 define('WT_LOCALE', I18N::init());
-$WT_SESSION->locale = I18N::$locale;
+Globals::$WT_SESSION->locale = I18N::$locale;
 
 // Set our gedcom selection as a default for the next page
-$WT_SESSION->GEDCOM = WT_GEDCOM;
+Globals::$WT_SESSION->GEDCOM = WT_GEDCOM;
 
 if (empty($WEBTREES_EMAIL)) {
 	$WEBTREES_EMAIL = 'webtrees-noreply@' . preg_replace('/^www\./i', '', $_SERVER['SERVER_NAME']);
@@ -470,7 +470,7 @@ define('WT_TIMESTAMP', (int) Database::prepare("SELECT UNIX_TIMESTAMP()")->fetch
 define('WT_SERVER_TIMESTAMP', WT_TIMESTAMP + (int) date('Z'));
 
 if (Auth::check()) {
-	define('WT_CLIENT_TIMESTAMP', WT_TIMESTAMP - $WT_SESSION->timediff);
+	define('WT_CLIENT_TIMESTAMP', WT_TIMESTAMP - Globals::$WT_SESSION->timediff);
 } else {
 	define('WT_CLIENT_TIMESTAMP', WT_SERVER_TIMESTAMP);
 }
@@ -503,15 +503,15 @@ if (WT_SCRIPT_NAME != 'admin_trees_manage.php' && WT_SCRIPT_NAME != 'admin_pgv_t
 }
 
 // Update the login time every 5 minutes
-if (WT_TIMESTAMP - $WT_SESSION->activity_time > 300) {
+if (WT_TIMESTAMP - Globals::$WT_SESSION->activity_time > 300) {
 	Auth::user()->setPreference('sessiontime', WT_TIMESTAMP);
-	$WT_SESSION->activity_time = WT_TIMESTAMP;
+	Globals::$WT_SESSION->activity_time = WT_TIMESTAMP;
 }
 
 // Set the theme
 if (substr(WT_SCRIPT_NAME, 0, 5) === 'admin' || WT_SCRIPT_NAME === 'module.php' && substr(Filter::get('mod_action'), 0, 5) === 'admin') {
 	// Administration scripts begin with “admin” and use a special administration theme
-	Theme::theme(new AdministrationTheme)->init($WT_SESSION, $SEARCH_SPIDER, $WT_TREE);
+	Theme::theme(new AdministrationTheme)->init(Globals::$WT_SESSION, $SEARCH_SPIDER, $WT_TREE);
 } else {
 	if (Site::getPreference('ALLOW_USER_THEMES')) {
 		// Requested change of theme?
@@ -520,8 +520,8 @@ if (substr(WT_SCRIPT_NAME, 0, 5) === 'admin' || WT_SCRIPT_NAME === 'module.php' 
 			$theme_id = '';
 		}
 		// Last theme used?
-		if (!$theme_id && array_key_exists($WT_SESSION->theme_id, Theme::themeNames())) {
-			$theme_id = $WT_SESSION->theme_id;
+		if (!$theme_id && array_key_exists(Globals::$WT_SESSION->theme_id, Theme::themeNames())) {
+			$theme_id = Globals::$WT_SESSION->theme_id;
 		}
 	} else {
 		$theme_id = '';
@@ -544,12 +544,12 @@ if (substr(WT_SCRIPT_NAME, 0, 5) === 'admin' || WT_SCRIPT_NAME === 'module.php' 
 	}
 	foreach (Theme::installedThemes() as $theme) {
 		if ($theme->themeId() === $theme_id) {
-			Theme::theme($theme)->init($WT_SESSION, $SEARCH_SPIDER, $WT_TREE);
+			Theme::theme($theme)->init(Globals::$WT_SESSION, $SEARCH_SPIDER, $WT_TREE);
 		}
 	}
 
 	// Remember this setting
-	$WT_SESSION->theme_id = $theme_id;
+	Globals::$WT_SESSION->theme_id = $theme_id;
 }
 
 // Page hit counter - load after theme, as we need theme formatting

@@ -48,7 +48,7 @@ class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleS
 			echo $html;
 			break;
 		case 'index':
-			global $MAX_PEDIGREE_GENERATIONS, $controller, $WT_SESSION, $GEDCOM_MEDIA_PATH;
+			global $MAX_PEDIGREE_GENERATIONS, $controller, $GEDCOM_MEDIA_PATH;
 
 			$clip_ctrl = new ClippingsCart;
 
@@ -63,7 +63,7 @@ class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleS
 			echo 'function radAncestors(elementid) {var radFamilies=document.getElementById(elementid);radFamilies.checked=true;}';
 			echo '</script>';
 
-			if (!$WT_SESSION->cart[WT_GED_ID]) {
+			if (!Globals::$WT_SESSION->cart[WT_GED_ID]) {
 				echo '<h2>', I18N::translate('Family tree clippings cart'), '</h2>';
 			}
 
@@ -125,7 +125,7 @@ class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleS
 				<?php }
 				}
 
-			if (!$WT_SESSION->cart[WT_GED_ID]) {
+			if (!Globals::$WT_SESSION->cart[WT_GED_ID]) {
 				if ($clip_ctrl->action != 'add') {
 
 					echo I18N::translate('The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple.  Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name.  There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>');
@@ -252,7 +252,7 @@ class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleS
 						<th class="list_label"><?php echo I18N::translate('Remove'); ?></th>
 					</tr>
 			<?php
-				foreach (array_keys($WT_SESSION->cart[WT_GED_ID]) as $xref) {
+				foreach (array_keys(Globals::$WT_SESSION->cart[WT_GED_ID]) as $xref) {
 					$record = GedcomRecord::getInstance($xref);
 					if ($record) {
 						switch ($record::RECORD_TYPE) {
@@ -348,7 +348,6 @@ class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleS
 
 	/** {@inheritdoc} */
 	public function getSidebarAjaxContent() {
-		global $WT_SESSION;
 
 		$clip_ctrl         = new ClippingsCart;
 		$add               = Filter::get('add', WT_REGEX_XREF);
@@ -392,9 +391,9 @@ class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleS
 				}
 			}
 		} elseif ($remove) {
-			unset ($WT_SESSION->cart[WT_GED_ID][$remove]);
+			unset (Globals::$WT_SESSION->cart[WT_GED_ID][$remove]);
 		} elseif (isset($_REQUEST['empty'])) {
-			$WT_SESSION->cart[WT_GED_ID] = array();
+			Globals::$WT_SESSION->cart[WT_GED_ID] = array();
 		} elseif (isset($_REQUEST['download'])) {
 			return $this->downloadForm($clip_ctrl);
 		}
@@ -407,17 +406,15 @@ class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleS
 	 * @return string
 	 */
 	public function getCartList() {
-		global $WT_SESSION;
-
 		// Keep track of the INDI from the parent page, otherwise it will
 		// get lost after ajax updates
 		$pid = Filter::get('pid', WT_REGEX_XREF);
 
-		if (!$WT_SESSION->cart[WT_GED_ID]) {
+		if (!Globals::$WT_SESSION->cart[WT_GED_ID]) {
 			$out = I18N::translate('Your clippings cart is empty.');
 		} else {
 			$out = '<ul>';
-			foreach (array_keys($WT_SESSION->cart[WT_GED_ID]) as $xref) {
+			foreach (array_keys(Globals::$WT_SESSION->cart[WT_GED_ID]) as $xref) {
 				$record = GedcomRecord::getInstance($xref);
 				if ($record instanceof Individual || $record instanceof Family) {
 					switch ($record::RECORD_TYPE) {
@@ -448,7 +445,7 @@ class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleS
 			$out .= '</ul>';
 		}
 
-		if ($WT_SESSION->cart[WT_GED_ID]) {
+		if (Globals::$WT_SESSION->cart[WT_GED_ID]) {
 			$out .=
 				'<br><a href="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax&amp;sb_action=clippings&amp;empty=true&amp;pid=' . $pid . '" class="remove_cart">' .
 				I18N::translate('Empty the clippings cart') .
@@ -459,7 +456,7 @@ class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleS
 				'</a>';
 		}
 		$record = Individual::getInstance($pid);
-		if ($record && !array_key_exists($record->getXref(), $WT_SESSION->cart[WT_GED_ID])) {
+		if ($record && !array_key_exists($record->getXref(), Globals::$WT_SESSION->cart[WT_GED_ID])) {
 			$out .= '<br><a href="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax&amp;sb_action=clippings&amp;add=' . $pid . '&amp;pid=' . $pid . '" class="add_cart"><i class="icon-clippings"></i> ' . I18N::translate('Add %s to the clippings cart', $record->getFullName()) . '</a>';
 		}
 		return $out;

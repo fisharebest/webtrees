@@ -436,16 +436,15 @@ class Filter {
 	 * @return string
 	 */
 	public static function getCsrfToken() {
-		global $WT_SESSION;
 
-		if ($WT_SESSION->CSRF_TOKEN === null) {
+		if (Globals::$WT_SESSION->CSRF_TOKEN === null) {
 			$charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcedfghijklmnopqrstuvwxyz0123456789';
 			for ($n = 0; $n < 32; ++$n) {
-				$WT_SESSION->CSRF_TOKEN .= substr($charset, mt_rand(0, 61), 1);
+				Globals::$WT_SESSION->CSRF_TOKEN .= substr($charset, mt_rand(0, 61), 1);
 			}
 		}
 
-		return $WT_SESSION->CSRF_TOKEN;
+		return Globals::$WT_SESSION->CSRF_TOKEN;
 	}
 
 	/**

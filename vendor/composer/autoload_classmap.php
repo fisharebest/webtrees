@@ -318,6 +318,7 @@ return array(
     'Webtrees\\GEDFact_assistant_WT_Module' => $baseDir . '/modules_v3/GEDFact_assistant/module.php',
     'Webtrees\\GedcomRecord' => $baseDir . '/app/GedcomRecord.php',
     'Webtrees\\GedcomRecordController' => $baseDir . '/app/Controller/GedcomRecordController.php',
+    'Webtrees\\Globals' => $baseDir . '/app/Globals.php',
     'Webtrees\\GregorianDate' => $baseDir . '/app/Date/GregorianDate.php',
     'Webtrees\\HijriDate' => $baseDir . '/app/Date/HijriDate.php',
     'Webtrees\\HourglassController' => $baseDir . '/app/Controller/HourglassController.php',

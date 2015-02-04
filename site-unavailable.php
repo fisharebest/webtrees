@@ -35,8 +35,8 @@ define('WT_ROOT', '');
 define('WT_GED_ID', 0);
 define('WT_DATA_DIR', realpath('data') . DIRECTORY_SEPARATOR);
 
-$WT_SESSION         = new \stdClass;
-$WT_SESSION->locale = '';
+Globals::$WT_SESSION         = new \stdClass;
+Globals::$WT_SESSION->locale = '';
 
 define('WT_LOCALE', I18N::init());
 

@@ -23,7 +23,6 @@ use Zend_Session;
 /**
  * Defined in session.php
  *
- * @global Zend_Session                 $WT_SESSION
  * @global Tree                         $WT_TREE
  * @global Zend_Controller_Request_Http $WT_REQUEST
  */
@@ -97,10 +96,10 @@ case 'login':
 		Auth::login($user);
 		Log::addAuthenticationLog('Login: ' . Auth::user()->getUserName() . '/' . Auth::user()->getRealName());
 
-		$WT_SESSION->timediff      = $timediff;
-		$WT_SESSION->locale        = Auth::user()->getPreference('language');
-		$WT_SESSION->theme_id      = Auth::user()->getPreference('theme');
-		$WT_SESSION->activity_time = WT_TIMESTAMP;
+		Globals::$WT_SESSION->timediff      = $timediff;
+		Globals::$WT_SESSION->locale        = Auth::user()->getPreference('language');
+		Globals::$WT_SESSION->theme_id      = Auth::user()->getPreference('theme');
+		Globals::$WT_SESSION->activity_time = WT_TIMESTAMP;
 
 		Auth::user()->setPreference('sessiontime', WT_TIMESTAMP);
 
@@ -275,7 +274,7 @@ case 'register':
 	$controller->setPageTitle(I18N::translate('Request new user account'));
 
 	// The form parameters are mandatory, and the validation errors are shown in the client.
-	if ($WT_SESSION->good_to_send && $user_name && $user_password01 && $user_password01 == $user_password02 && $user_realname && $user_email && $user_comments) {
+	if (Globals::$WT_SESSION->good_to_send && $user_name && $user_password01 && $user_password01 == $user_password02 && $user_realname && $user_email && $user_comments) {
 
 		// These validation errors cannot be shown in the client.
 		if (User::findByIdentifier($user_name)) {
@@ -399,7 +398,7 @@ case 'register':
 		}
 	}
 
-	$WT_SESSION->good_to_send = true;
+	Globals::$WT_SESSION->good_to_send = true;
 	$controller
 		->pageHeader()
 		->addInlineJavascript('function regex_quote(str) {return str.replace(/[\\\\.?+*()[\](){}|]/g, "\\\\$&");}');

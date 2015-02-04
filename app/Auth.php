@@ -141,9 +141,7 @@ class Auth {
 	 * @return string|null
 	 */
 	public static function id() {
-		global $WT_SESSION;
-
-		return $WT_SESSION ? $WT_SESSION->wt_user : null;
+		return Globals::$WT_SESSION ? Globals::$WT_SESSION->wt_user : null;
 	}
 
 	/**
@@ -172,9 +170,8 @@ class Auth {
 	 * @param User $user
 	 */
 	public static function login(User $user) {
-		global $WT_SESSION;
 
-		$WT_SESSION->wt_user = $user->getUserId();
+		Globals::$WT_SESSION->wt_user = $user->getUserId();
 		Zend_Session::regenerateId();
 	}
 
