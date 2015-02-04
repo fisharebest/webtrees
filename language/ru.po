@@ -57,7 +57,7 @@ msgstr " по диапазону времени"
 #: includes/functions/functions_print_facts.php:201
 #, php-format
 msgid "#%s"
-msgstr "#%s"
+msgstr "№%s"
 
 #: modules_v3/googlemap/module.php:912
 #, php-format
@@ -149,20 +149,21 @@ msgstr "%1$s Не существует. Возможно, Вы имели в в�
 msgid "%1$s does not have a link back to %2$s."
 msgstr "Нет обратной ссылки с %1$s на %2$s."
 
+# Since the second variable's units name can also change its ending depending on the number, it's better to shorten it.
 #. I18N: [...] from the .ZIP file, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:371 admin_site_upgrade.php:451
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] "%1$s файл был извлечен за %2$s секунд."
-msgstr[1] "%1$s файла было извлечено за %2$s секунд."
-msgstr[2] "%1$s файлов были извлечены за %2$s секунд."
+msgstr[0] "%1$s файл был извлечен за %2$s сек."
+msgstr[1] "%1$s файла было извлечено за %2$s сек."
+msgstr[2] "%1$s файлов были извлечены за %2$s сек."
 
 #. I18N: %1$s is an internal ID number such as R123.  %2$s and %3$s are record types, such as INDI or SOUR
 #: admin_trees_check.php:175
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr "%1$sявляется %2$s а должен быть %3$s."
+msgstr "%1$s является %2$s а должен быть %3$s."
 
 #. I18N: image dimensions, width × height
 #: admin_media.php:469 library/WT/Media.php:375
@@ -176,6 +177,7 @@ msgstr "%1$s × %2$s пикселей"
 msgid "%1$s–%2$s"
 msgstr "%1$s–%2$s"
 
+# This can't be adequately translated into Russian, as the first word's ending is dependant on its gender.
 #. I18N: A complex relationship, such as “third-cousin’s great-uncle”
 #: includes/functions/functions.php:2319
 #, php-format
@@ -1764,7 +1766,7 @@ msgstr "Все существующие пользователи PGV должн�
 
 #: admin_trees_config.php:639
 msgid "All facts and events"
-msgstr ""
+msgstr "Все факты и события"
 
 #: admin_trees_config.php:1954
 msgid "All family facts"
@@ -1789,7 +1791,7 @@ msgstr "Все персоны"
 
 #: admin_trees_config.php:630
 msgid "All records"
-msgstr ""
+msgstr "Все записи"
 
 #: admin_trees_config.php:2161
 msgid "All repository facts"
@@ -2306,7 +2308,7 @@ msgstr "Среднее число детей на семью"
 
 #: admin_trees_manage.php:568
 msgid "Avoid spaces and punctuation.  A family name might be a good choice."
-msgstr ""
+msgstr "Исключите пробелы и знаки препинания. Можно указать, например, фамилию."
 
 #: library/WT/Date/Jalali.php:158
 msgctxt "Abbreviation for Persian month: Azar"
@@ -3002,7 +3004,7 @@ msgstr "Болгария"
 
 #: admin_trees_manage.php:638
 msgid "Bulk import GEDCOM files"
-msgstr ""
+msgstr "Пакетный импорт файлов GEDCOM"
 
 #. I18N: gedcom tag BURI
 #: library/WT/Gedcom/Tag.php:227 modules_v3/family_group_report/report.xml:345
@@ -3201,7 +3203,7 @@ msgstr "CKEditor™"
 
 #: admin_trees_manage.php:253
 msgid "Calculating…"
-msgstr ""
+msgstr "Вычисляется..."
 
 #: library/WT/Theme/BaseTheme.php:874 library/WT/Theme/BaseTheme.php:878
 #: modules_v3/yahrzeit/module.php:267
@@ -3953,7 +3955,7 @@ msgstr "Продолжение"
 #: modules_v3/faq/module.php:367 modules_v3/sitemap/module.php:281
 #: modules_v3/stories/module.php:197 modules_v3/stories/module.php:311
 msgid "Control panel"
-msgstr ""
+msgstr "Панель управления"
 
 #: admin_trees_download.php:134 modules_v3/clippings/module.php:205
 #: modules_v3/clippings/module.php:598
@@ -4081,11 +4083,11 @@ msgstr "Создать новый источник"
 
 #: admin_site_access.php:217
 msgid "Create a website access rule"
-msgstr ""
+msgstr "Создать правила доступа к сайту"
 
 #: admin_trees_manage.php:645
 msgid "Create or update a family tree for every GEDCOM file in the data folder."
-msgstr ""
+msgstr "Создать или изменить семейное дерево для каждого файла GEDCOM в папке данных."
 
 #: statistics.php:430
 msgid "Create your own chart"
@@ -5385,7 +5387,7 @@ msgstr "Редактировать «ЧаВо» запись"
 
 #: admin_site_access.php:215
 msgid "Edit a website access rule"
-msgstr ""
+msgstr "Изменить правило доступа к сайту"
 
 #: library/WT/Controller/Media.php:149
 msgid "Edit details"
@@ -5447,7 +5449,7 @@ msgstr "Редактируйте запись этой персоны и зам�
 
 #: admin_users.php:257
 msgid "Edit user"
-msgstr ""
+msgstr "Редактировать данные пользователя"
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:41 admin_users.php:507
@@ -6589,7 +6591,7 @@ msgstr "Фример"
 #. I18N: label for the start of a date range (from x to y)
 #: admin_site_change.php:293 admin_site_logs.php:252
 msgid "From"
-msgstr ""
+msgstr "С"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:89
@@ -6685,7 +6687,7 @@ msgstr "По генеалогическим вопросам обращатьс�
 #. I18N: Individuals, sources, dates, places, etc.
 #: admin_trees_manage.php:348
 msgid "Genealogy data"
-msgstr ""
+msgstr "Генеалогические данные"
 
 #: admin_trees_config.php:661 admin_trees_config.php:1775
 msgid "General"
@@ -7345,7 +7347,7 @@ msgstr "Если два генеалогического дерева испол
 
 #: admin_trees_config.php:452
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account.  You will need to add their account manually."
-msgstr ""
+msgstr "Если посетители не смогут видеть семейное дерево, они не смогут зарегистрировать свою учетную запись. Вам придется добавлять их учетную запись вручную."
 
 #. I18N: Help text for the “Who can upload new media files?” configuration setting
 #: admin_trees_config.php:1146
@@ -8246,7 +8248,7 @@ msgstr "Ссылка на медиа-объект для персоны"
 
 #: admin_users.php:566
 msgid "Link this user to an individual in the family tree."
-msgstr ""
+msgstr "Свяжите данного пользователя с персоной из семейного дерева."
 
 #: inverselink.php:35 inverselink.php:70 library/WT/Controller/Family.php:215
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:78
@@ -8349,7 +8351,7 @@ msgstr "Ссылка (URL) входа"
 #. I18N: Menu entry
 #: admin_site_config.php:111 library/WT/Theme/Administration.php:77
 msgid "Login and registration"
-msgstr ""
+msgstr "Вход в систему и регистрация"
 
 #: library/WT/Theme/BaseTheme.php:1289 modules_v3/login_block/module.php:55
 #: modules_v3/login_block/module.php:58
@@ -9164,7 +9166,7 @@ msgstr "Модератор"
 
 #: admin.php:579
 msgid "Moderators"
-msgstr ""
+msgstr "Модераторы"
 
 #: admin_modules.php:147
 msgid "Module"
@@ -9434,7 +9436,7 @@ msgstr "Моя страница"
 
 #: library/WT/Theme/BaseTheme.php:1353
 msgid "My pages"
-msgstr ""
+msgstr "Мои страницы"
 
 #: library/WT/Theme/BaseTheme.php:1376 modules_v3/user_welcome/module.php:48
 msgid "My pedigree"
@@ -9448,7 +9450,7 @@ msgstr "MySQL сообщила об ошибке: %s"
 
 #: admin_site_info.php:100
 msgid "MySQL variables"
-msgstr ""
+msgstr "Переменные MySQL"
 
 #: library/WT/Stats.php:6218
 msgid "Myanmar"
@@ -10965,7 +10967,7 @@ msgstr "Только члены семьи могут запросить уче�
 
 #: admin_trees_config.php:403 admin_trees_manage.php:274
 msgid "Preferences"
-msgstr ""
+msgstr "Установки"
 
 #: admin_modules.php:88
 #, php-format
@@ -11999,7 +12001,7 @@ msgstr "Имя отправителя"
 #. I18N: Menu entry
 #: admin_site_config.php:108 library/WT/Theme/Administration.php:76
 msgid "Sending email"
-msgstr ""
+msgstr "Отправка электронного письма"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:374
@@ -12078,7 +12080,7 @@ msgstr "(CSV)-Файл на сервере с местами"
 #. I18N: Menu entry
 #: admin_site_info.php:34 library/WT/Theme/Administration.php:81
 msgid "Server information"
-msgstr ""
+msgstr "Информация о сервере"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:296 setup.php:278
@@ -12097,7 +12099,7 @@ msgstr "Время сессии истекло:"
 
 #: admin_trees_manage.php:327 admin_trees_manage.php:338
 msgid "Set as default"
-msgstr ""
+msgstr "Установить по умолчанию"
 
 #: inverselink.php:153
 msgid "Set link"
@@ -12141,7 +12143,7 @@ msgstr "Установите <b>Да</b>, чтобы отобразить зна
 #. I18N: Help text for the “Use RIN number instead of GEDCOM ID” configuration setting
 #: admin_trees_config.php:795
 msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
-msgstr ""
+msgstr "Установите <b>Да</b> для использования номера RIN вместо идентификатора GEDCOM при необходимости указания идентификатора персоны в файлах конфигурации, настройках пользователя и графиках. Это может иметь значение для генеалогических программ, в которых не всегда при экспорте GEDCOM используются одинаковые идентификаторы персон, но всегда одинаковые RIN."
 
 #. I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting
 #: admin_trees_config.php:1674
@@ -12517,12 +12519,12 @@ msgstr "Показать список родословных"
 #. I18N: A configuration setting
 #: admin_trees_config.php:502
 msgid "Show living individuals"
-msgstr ""
+msgstr "Показывать живых людей"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:542
 msgid "Show names of private individuals"
-msgstr ""
+msgstr "Показывать имена скрытых персон"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -12656,7 +12658,7 @@ msgstr "Показывать дату и время обновления"
 #. I18N: A configuration setting
 #: admin_trees_config.php:438
 msgid "Show the family tree"
-msgstr ""
+msgstr "Показывать семейное дерево"
 
 #: famlist.php:179 indilist.php:179
 msgid "Show the list of individuals"
@@ -12776,7 +12778,7 @@ msgstr "Сестра"
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: admin_users.php:441 edituser.php:277
 msgid "Site members can send each other messages.  You can choose to how these messages are sent to you, or choose not receive them at all."
-msgstr ""
+msgstr "Зарегистрированные пользователи сайта могут отправлять друг другу сообщения. Вы можете выбрать способ, которым эти сообщения будут отправляться вам, или отказаться от их получения вообще."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: modules_v3/sitemap/module.php:30
@@ -13878,9 +13880,9 @@ msgstr "Есть ожидающие изменения для модериров
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "За последний день не было никаких изменений."
+msgstr[1] "За последние %s дня не было никаких изменений."
+msgstr[2] "За последние %s дней не было никаких изменений."
 
 #: addmedia.php:183 admin_media_upload.php:142
 msgid "There was an error uploading your file."
@@ -14637,7 +14639,7 @@ msgstr "Заголовок:"
 #. I18N: label for the end of a date range (from x to y)
 #: admin_site_change.php:303 admin_site_logs.php:262
 msgid "To"
-msgstr ""
+msgstr "По"
 
 #: modules_v3/html/module.php:277
 msgid "To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
@@ -14673,7 +14675,7 @@ msgstr "Чтобы уменьшить высоту блока новостей, 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: admin_site_config.php:427
 msgid "To set this text for other languages, you must switch to that language, and visit this page again."
-msgstr ""
+msgstr "Для настройки данного текста на других языках необходимо переключиться на этот язык и вновь открыть данную страницу."
 
 #: modules_v3/sitemap/module.php:316
 msgid "To tell search engines that sitemaps are available, you can use the following links."
@@ -15870,7 +15872,7 @@ msgstr "Вы можете ускорить вычисление уровня к�
 
 #: admin_site_access.php:68
 msgid "You cannot create a rule which would prevent yourself from accessing the website."
-msgstr ""
+msgstr "Нельзя создавать правило, которое запретит вам самим доступ к веб-сайту."
 
 #: login.php:70
 msgid "You cannot login because your browser does not accept cookies."
@@ -15951,7 +15953,7 @@ msgstr "Необходимо указать персональную запис�
 
 #: admin_trees_manage.php:215
 msgid "You need to create a family tree."
-msgstr ""
+msgstr "Вам необходимо создать семейное дерево."
 
 #: admin_pgv_to_wt.php:1155
 msgid "You need to login again, using your PhpGedView username and password."
@@ -16495,7 +16497,7 @@ msgstr "Продолжить"
 #. I18N: Button label
 #: admin_trees_manage.php:576
 msgid "create"
-msgstr ""
+msgstr "Создать"
 
 #. I18N: a program feature
 #: setup.php:138
@@ -16558,7 +16560,7 @@ msgstr "градусов"
 #. I18N: Button label
 #: admin_site_clean.php:120 admin_users.php:756
 msgid "delete"
-msgstr ""
+msgstr "Удалить"
 
 #. I18N: An access rule - deny access to the site
 #: admin_site_access.php:30 admin_site_access.php:37
@@ -16607,7 +16609,7 @@ msgstr "восточная"
 #: admin_trees_config.php:2235 admin_trees_config.php:2266
 #: admin_trees_config.php:2295
 msgid "edit"
-msgstr ""
+msgstr "Изменить"
 
 #: includes/functions/functions.php:703
 msgctxt "FEMALE"
@@ -20124,6 +20126,15 @@ msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
 
+msgid "Explain why you are requesting an account."
+msgstr "Объясните, почему Вы запрашиваете учетную запись."
+
+msgid "This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site."
+msgstr "Этот адрес электронной почты будет использоваться для отправки Вам напоминания пароля, уведомлений сайта и сообщений от других членов семьи, также зарегистрированных на сайте."
+
+msgid "View person"
+msgstr "Смотреть персону"
+
 #~ msgid "<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The administrator can override this option for individual users by editing the user’s account details."
 #~ msgstr "<b>Нет</b> означает, что пользователи, прошедшие проверку подлинности, могут увидеть подробности всех живых людей. <b>Да</b> означает, что пользователи могут просматривать только личную информацию живых людей, с которыми они связаны.<br><br>Этот параметр устанавливает значение по умолчанию для всех пользователей, которые имеют доступ к этой генеалогической базе данных. Администратор может переопределить этот параметр для отдельных пользователей, путем редактирования учетной записи пользователя."
 
@@ -20186,9 +20197,6 @@ msgstr "…"
 
 #~ msgid "Execution time: %1$s seconds.  Database queries: %2$s.  Memory usage: %3$s KB."
 #~ msgstr "Время выполнения: %1$s секунд. Запросы к базе данных: %2$s. Использование памяти: %3$s КБ."
-
-#~ msgid "Explain why you are requesting an account."
-#~ msgstr "Объясните, почему Вы запрашиваете учетную запись."
 
 #~ msgid "Family tree configuration"
 #~ msgstr "Конфигурация генеалогического дерева"
