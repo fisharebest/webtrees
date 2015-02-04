@@ -17,7 +17,14 @@ namespace Webtrees;
  */
 
 use PDO;
+use Zend_Controller_Request_Http;
 use Zend_Session;
+
+/**
+ * Defined in session.php
+ *
+ * @global Zend_Controller_Request_Http $WT_REQUEST
+ */
 
 define('WT_SCRIPT_NAME', 'admin_site_access.php');
 require './includes/session.php';

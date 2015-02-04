@@ -18,6 +18,12 @@ namespace Webtrees;
 
 use Zend_Session;
 
+/**
+ * Defined in session.php
+ *
+ * @global Zend_Session $WT_SESSION
+ */
+
 define('WT_SCRIPT_NAME', 'action.php');
 require './includes/session.php';
 

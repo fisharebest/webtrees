@@ -16,8 +16,18 @@ namespace Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+
 define('WT_SCRIPT_NAME', 'addmedia.php');
 require './includes/session.php';
+
+$NO_UPDATE_CHAN      = $WT_TREE->getPreference('NO_UPDATE_CHAN');
+$MEDIA_DIRECTORY     = $WT_TREE->getPreference('MEDIA_DIRECTORY');
+$ADVANCED_NAME_FACTS = $WT_TREE->getPreference('ADVANCED_NAME_FACTS');
 
 $pid         = Filter::get('pid', WT_REGEX_XREF, Filter::post('pid', WT_REGEX_XREF)); // edit this media object
 $linktoid    = Filter::get('linktoid', WT_REGEX_XREF, Filter::post('linktoid', WT_REGEX_XREF)); // create a new media object, linked to this record

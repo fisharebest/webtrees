@@ -19,6 +19,12 @@ namespace Webtrees;
 use PDO;
 use PDOException;
 
+/**
+ * Defined in session.php
+ *
+ * @global Zend_Session $WT_SESSION
+ */
+
 define('WT_SCRIPT_NAME', 'admin_pgv_to_wt.php');
 require './includes/session.php';
 
