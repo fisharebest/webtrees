@@ -151,7 +151,7 @@ case 1:
 	$ancestors = array_filter($ancestors); // The SOSA array includes empty placeholders
 	foreach ($ancestors as $sosa => $individual) {
 		foreach ($individual->getChildFamilies() as $family) {
-			print_sosa_family($family->getXref(), $individual, $sosa);
+			print_sosa_family($family->getXref(), $individual->getXref(), $sosa);
 		}
 	}
 	echo '</div>';
