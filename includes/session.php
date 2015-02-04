@@ -103,28 +103,23 @@ define('WT_SCHEMA_VERSION', 29);
 
 // Regular expressions for validating user input, etc.
 define('WT_MINIMUM_PASSWORD_LENGTH', 6);
-
 define('WT_REGEX_XREF', '[A-Za-z0-9:_-]+');
 define('WT_REGEX_TAG', '[_A-Z][_A-Z0-9]*');
 define('WT_REGEX_INTEGER', '-?\d+');
-define('WT_REGEX_ALPHA', '[a-zA-Z]+');
-define('WT_REGEX_ALPHANUM', '[a-zA-Z0-9]+');
 define('WT_REGEX_BYTES', '[0-9]+[bBkKmMgG]?');
 define('WT_REGEX_IPV4', '\d{1,3}(\.\d{1,3}){3}');
 define('WT_REGEX_USERNAME', '[^<>"%{};]+');
 define('WT_REGEX_PASSWORD', '.{' . WT_MINIMUM_PASSWORD_LENGTH . ',}');
 
 // UTF8 representation of various characters
-define('WT_UTF8_BOM', "\xEF\xBB\xBF"); // U+FEFF
-
-// UTF8 control codes affecting the BiDirectional algorithm (see http://www.unicode.org/reports/tr9/)
-define('WT_UTF8_LRM', "\xE2\x80\x8E"); // U+200E  (Left to Right mark:  zero-width character with LTR directionality)
-define('WT_UTF8_RLM', "\xE2\x80\x8F"); // U+200F  (Right to Left mark:  zero-width character with RTL directionality)
-define('WT_UTF8_LRO', "\xE2\x80\xAD"); // U+202D  (Left to Right override: force everything following to LTR mode)
-define('WT_UTF8_RLO', "\xE2\x80\xAE"); // U+202E  (Right to Left override: force everything following to RTL mode)
-define('WT_UTF8_LRE', "\xE2\x80\xAA"); // U+202A  (Left to Right embedding: treat everything following as LTR text)
-define('WT_UTF8_RLE', "\xE2\x80\xAB"); // U+202B  (Right to Left embedding: treat everything following as RTL text)
-define('WT_UTF8_PDF', "\xE2\x80\xAC"); // U+202C  (Pop directional formatting: restore state prior to last LRO, RLO, LRE, RLE)
+define('WT_UTF8_BOM', "\xEF\xBB\xBF"); // U+FEFF (Byte order mark)
+define('WT_UTF8_LRM', "\xE2\x80\x8E"); // U+200E (Left to Right mark:  zero-width character with LTR directionality)
+define('WT_UTF8_RLM', "\xE2\x80\x8F"); // U+200F (Right to Left mark:  zero-width character with RTL directionality)
+define('WT_UTF8_LRO', "\xE2\x80\xAD"); // U+202D (Left to Right override: force everything following to LTR mode)
+define('WT_UTF8_RLO', "\xE2\x80\xAE"); // U+202E (Right to Left override: force everything following to RTL mode)
+define('WT_UTF8_LRE', "\xE2\x80\xAA"); // U+202A (Left to Right embedding: treat everything following as LTR text)
+define('WT_UTF8_RLE', "\xE2\x80\xAB"); // U+202B (Right to Left embedding: treat everything following as RTL text)
+define('WT_UTF8_PDF', "\xE2\x80\xAC"); // U+202C (Pop directional formatting: restore state prior to last LRO, RLO, LRE, RLE)
 
 // Alternatives to BMD events for lists, charts, etc.
 define('WT_EVENTS_BIRT', 'BIRT|CHR|BAPM|_BRTM|ADOP');
