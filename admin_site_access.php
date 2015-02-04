@@ -52,14 +52,14 @@ case 'save':
 		if ($ip_address_start !== null && $ip_address_end !== null && $user_agent_pattern !== null && $rule !== null) {
 			// This doesn't work with named placeholders.  The :user_agent_string parameter is not recognised...
 			$oops = $rule !== 'allow' && Database::prepare(
-				"SELECT INET_ATON(?) BETWEEN INET_ATON(?) AND INET_ATON(?)" .
-				" AND ? LIKE ?"
+				"SELECT INET_ATON(:ip_address) BETWEEN INET_ATON(:ip_address_start) AND INET_ATON(:ip_address_end)" .
+				" AND :user_agent_string LIKE :user_agent_pattern"
 			)->execute(array(
-				$ip_address,
-				$ip_address_start,
-				$ip_address_end,
-				$user_agent_string,
-				$user_agent_pattern,
+				'ip_address'         => $ip_address,
+				'ip_address_start'   => $ip_address_start,
+				'ip_address_end'     => $ip_address_end,
+				'user_agent_string'  => $user_agent_string,
+				'user_agent_pattern' => $user_agent_pattern,
 			))->fetchOne();
 
 			if ($oops) {
@@ -144,21 +144,21 @@ case 'load':
 
 	if ($search) {
 		$sql .=
-			" WHERE (INET_ATON(?) BETWEEN ip_address_start AND ip_address_end" .
-			" OR INET_NTOA(ip_address_start) LIKE CONCAT('%', ?, '%')" .
-			" OR INET_NTOA(ip_address_end) LIKE CONCAT('%', ?, '%')" .
-			" OR user_agent_pattern LIKE CONCAT('%', ?, '%')" .
-			" OR comment LIKE CONCAT('%', ?, '%'))";
-		$args[] = $search;
-		$args[] = $search;
-		$args[] = $search;
-		$args[] = $search;
-		$args[] = $search;
+			" WHERE (INET_ATON(:search_1) BETWEEN ip_address_start AND ip_address_end" .
+			" OR INET_NTOA(ip_address_start) LIKE CONCAT('%', :search_2, '%')" .
+			" OR INET_NTOA(ip_address_end) LIKE CONCAT('%', :search_3, '%')" .
+			" OR user_agent_pattern LIKE CONCAT('%', :search_4, '%')" .
+			" OR comment LIKE CONCAT('%', :search_5, '%'))";
+		$args['search_1'] = Filter::escapeLike($search);
+		$args['search_2'] = Filter::escapeLike($search);
+		$args['search_3'] = Filter::escapeLike($search);
+		$args['search_4'] = Filter::escapeLike($search);
+		$args['search_5'] = Filter::escapeLike($search);
 	}
 
 	$order = Filter::getArray('order');
+	$sql .= ' ORDER BY';
 	if ($order) {
-		$sql .= ' ORDER BY ';
 		foreach ($order as $key => $value) {
 			if ($key > 0) {
 				$sql .= ',';
@@ -167,19 +167,22 @@ case 'load':
 			// MySQL numbers columns 1, 2, 3, ...
 			switch ($value['dir']) {
 			case 'asc':
-				$sql .= (1 + $value['column']) . ' ASC ';
+				$sql .= " :col_" . $key . " ASC";
 				break;
 			case 'desc':
-				$sql .= (1 + $value['column']) . ' DESC ';
+				$sql .= " :col_" . $key . " DESC";
 				break;
 			}
+			$args['col_' . $key] = 1 + $value['column'];
 		}
 	} else {
-		$sql .= 'ORDER BY 1 ASC';
+		$sql .= ' 1 ASC';
 	}
 
 	if ($length > 0) {
-		$sql .= " LIMIT " . $start . ',' . $length;
+		$sql .= " LIMIT :length OFFSET :start";
+		$args['length'] = $length;
+		$args['start']  = $start;
 	}
 
 	// This becomes a JSON list, not a JSON array, so we need numeric keys.
