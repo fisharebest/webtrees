@@ -131,34 +131,35 @@ case 'load_json':
 		}
 
 		$order = Filter::getArray('order');
+		$SELECT1 .= " ORDER BY ";
 		if ($order) {
-			$ORDER_BY = " ORDER BY ";
 			foreach ($order as $key => $value) {
 				if ($key > 0) {
-					$ORDER_BY .= ',';
+					$SELECT1 .= ',';
 				}
 				// Datatables numbers columns 0, 1, 2, ...
 				// MySQL numbers columns 1, 2, 3, ...
 				switch ($value['dir']) {
 				case 'asc':
-					$ORDER_BY .= (1 + $value['column']) . ' ASC ';
+					$SELECT1 .= ":col_" . $key . " ASC";
 					break;
 				case 'desc':
-					$ORDER_BY .= (1 + $value['column']) . ' DESC ';
+					$SELECT1 .= ":col_" . $key . " DESC";
 					break;
 				}
+				$ARGS1['col_' . $key] = 1 + $value['column'];
 			}
 		} else {
-			$ORDER_BY = " ORDER BY 1 ASC";
+			$SELECT1 = " 1 ASC";
 		}
 
 		if ($length > 0) {
-			$LIMIT = " LIMIT " . $start . ',' . $length;
-		} else {
-			$LIMIT = "";
+			$SELECT1 .= " LIMIT :length OFFSET :start";
+			$ARGS1['length'] = $length;
+			$ARGS1['start']  = $start;
 		}
 
-		$rows = Database::prepare($SELECT1 . $ORDER_BY . $LIMIT)->execute($ARGS1)->fetchAll();
+		$rows = Database::prepare($SELECT1)->execute($ARGS1)->fetchAll();
 		// Total filtered/unfiltered rows
 		$recordsFiltered = Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
 		$recordsTotal    = Database::prepare($SELECT2)->execute($ARGS2)->fetchOne();
