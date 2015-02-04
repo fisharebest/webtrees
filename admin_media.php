@@ -92,49 +92,44 @@ case 'load_json':
 	case 'local':
 		// Filtered rows
 		$SELECT1 =
-			"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS TRIM(LEADING ? FROM m_filename) AS media_path, m_id AS xref, m_titl, m_file AS gedcom_id, m_gedcom AS gedcom" .
+			"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS TRIM(LEADING :media_path_1 FROM m_filename) AS media_path, m_id AS xref, m_titl, m_file AS gedcom_id, m_gedcom AS gedcom" .
 			" FROM  `##media`" .
 			" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
 			" JOIN  `##gedcom` USING (gedcom_id)" .
-			" WHERE setting_value=?" .
-			" AND   m_filename LIKE CONCAT(?, '%')" .
-			" AND   (SUBSTRING_INDEX(m_filename, '/', -1) LIKE CONCAT('%', ?, '%')" .
-			"  OR   m_titl LIKE CONCAT('%', ?, '%'))" .
+			" WHERE setting_value = :media_folder" .
+			" AND   m_filename LIKE CONCAT(:media_path_2, '%')" .
+			" AND   (SUBSTRING_INDEX(m_filename, '/', -1) LIKE CONCAT('%', :search_1, '%')" .
+			"  OR   m_titl LIKE CONCAT('%', :search_2, '%'))" .
 			" AND   m_filename NOT LIKE 'http://%'" .
 			" AND   m_filename NOT LIKE 'https://%'";
 		$ARGS1 = array(
-			$media_path,
-			$media_folder,
-			Filter::escapeLike($media_path),
-			Filter::escapeLike($search),
-			Filter::escapeLike($search)
+			'media_path_1' => $media_path,
+			'media_folder' => $media_folder,
+			'media_path_2' => Filter::escapeLike($media_path),
+			'search_1'     => Filter::escapeLike($search),
+			'search_2'     => Filter::escapeLike($search)
 		);
 		// Unfiltered rows
 		$SELECT2 =
 			"SELECT SQL_CACHE COUNT(*)" .
 			" FROM  `##media`" .
 			" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
-			" WHERE setting_value=?" .
-			" AND   m_filename LIKE CONCAT(?, '%')" .
+			" WHERE setting_value = :media_folder" .
+			" AND   m_filename LIKE CONCAT(:media_path_3, '%')" .
 			" AND   m_filename NOT LIKE 'http://%'" .
 			" AND   m_filename NOT LIKE 'https://%'";
 		$ARGS2 = array(
-			$media_folder,
-			$media_path
+			'media_folder' => $media_folder,
+			'media_path_3' => $media_path
 		);
 
 		if ($subfolders == 'exclude') {
-			$SELECT1 .= " AND m_filename NOT LIKE CONCAT(?, '%/%')";
-			$ARGS1[] = Filter::escapeLike($media_path);
-			$SELECT2 .= " AND m_filename NOT LIKE CONCAT(?, '%/%')";
-			$ARGS2[] = Filter::escapeLike($media_path);
+			$SELECT1 .= " AND m_filename NOT LIKE CONCAT(:media_path_4, '%/%')";
+			$ARGS1['media_path_4'] = Filter::escapeLike($media_path);
+			$SELECT2 .= " AND m_filename NOT LIKE CONCAT(:media_path_4, '%/%')";
+			$ARGS2['media_path_4'] = Filter::escapeLike($media_path);
 		}
 
-		if ($length > 0) {
-			$LIMIT = " LIMIT " . $start . ',' . $length;
-		} else {
-			$LIMIT = "";
-		}
 		$order = Filter::getArray('order');
 		if ($order) {
 			$ORDER_BY = " ORDER BY ";
@@ -155,6 +150,12 @@ case 'load_json':
 			}
 		} else {
 			$ORDER_BY = " ORDER BY 1 ASC";
+		}
+
+		if ($length > 0) {
+			$LIMIT = " LIMIT " . $start . ',' . $length;
+		} else {
+			$LIMIT = "";
 		}
 
 		$rows = Database::prepare($SELECT1 . $ORDER_BY . $LIMIT)->execute($ARGS1)->fetchAll();
@@ -179,10 +180,10 @@ case 'load_json':
 			"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS m_filename, m_id AS xref, m_titl, m_file AS gedcom_id, m_gedcom AS gedcom" .
 			" FROM  `##media`" .
 			" WHERE (m_filename LIKE 'http://%' OR m_filename LIKE 'https://%')" .
-			" AND   (m_filename LIKE CONCAT('%', ?, '%') OR m_titl LIKE CONCAT('%', ?, '%'))";
+			" AND   (m_filename LIKE CONCAT('%', :search_1, '%') OR m_titl LIKE CONCAT('%', :search_2, '%'))";
 		$ARGS1 = array(
-			Filter::escapeLike($search),
-			Filter::escapeLike($search)
+			'search_1' => Filter::escapeLike($search),
+			'search_2' => Filter::escapeLike($search)
 		);
 		// Unfiltered rows
 		$SELECT2 =
@@ -191,34 +192,36 @@ case 'load_json':
 			" WHERE (m_filename LIKE 'http://%' OR m_filename LIKE 'https://%')";
 		$ARGS2 = array();
 
-		if ($length > 0) {
-			$LIMIT = " LIMIT " . $start . ',' . $length;
-		} else {
-			$LIMIT = "";
-		}
 		$order = Filter::getArray('order');
+		$SELECT1 .= " ORDER BY ";
 		if ($order) {
-			$ORDER_BY = " ORDER BY ";
 			foreach ($order as $key => $value) {
 				if ($key > 0) {
-					$ORDER_BY .= ',';
+					$SELECT1 .= ',';
 				}
 				// Datatables numbers columns 0, 1, 2, ...
 				// MySQL numbers columns 1, 2, 3, ...
 				switch ($value['dir']) {
 				case 'asc':
-					$ORDER_BY .= (1 + $value['column']) . ' ASC ';
+					$SELECT1 .= ":col_" . $key . " ASC";
 					break;
 				case 'desc':
-					$ORDER_BY .= (1 + $value['column']) . ' DESC ';
+					$SELECT1 .= ":col_" . $key . " DESC";
 					break;
 				}
+				$ARGS1['col_' . $key] = 1 + $value['column'];
 			}
 		} else {
-			$ORDER_BY = " ORDER BY 1 ASC";
+			$SELECT1 = " 1 ASC";
 		}
 
-		$rows = Database::prepare($SELECT1 . $ORDER_BY . $LIMIT)->execute($ARGS1)->fetchAll();
+		if ($length > 0) {
+			$SELECT1 .= " LIMIT :length OFFSET :start";
+			$ARGS1['length'] = $length;
+			$ARGS1['start']  = $start;
+		}
+
+		$rows = Database::prepare($SELECT1)->execute($ARGS1)->fetchAll();
 
 		// Total filtered/unfiltered rows
 		$recordsFiltered = Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
@@ -241,8 +244,10 @@ case 'load_json':
 			"SELECT gedcom_name, gedcom_name" .
 			" FROM `##gedcom`" .
 			" JOIN `##gedcom_setting` USING (gedcom_id)" .
-			" WHERE setting_name='MEDIA_DIRECTORY' AND setting_value=?"
-		)->execute(array($media_folder))->fetchAssoc();
+			" WHERE setting_name='MEDIA_DIRECTORY' AND setting_value = :media_folder"
+		)->execute(array(
+			'media_folder' => $media_folder
+		))->fetchAssoc();
 
 		$disk_files = all_disk_files($media_folder, $media_path, $subfolders, $search);
 		$db_files   = all_media_files($media_folder, $media_path, $subfolders, $search);
@@ -286,8 +291,10 @@ case 'load_json':
 
 			// Is there a pending record for this file?
 			$exists_pending = Database::prepare(
-				"SELECT 1 FROM `##change` WHERE status='pending' AND new_gedcom LIKE CONCAT('%\n1 FILE ', ?, '\n%')"
-			)->execute(array(Filter::escapeLike($unused_file)))->fetchOne();
+				"SELECT 1 FROM `##change` WHERE status='pending' AND new_gedcom LIKE CONCAT('%\n1 FILE ', :unused_file, '\n%')"
+			)->execute(array(
+				'unused_file' => Filter::escapeLike($unused_file),
+			))->fetchOne();
 
 			// Form to create new media object in each tree
 			$create_form = '';
@@ -309,6 +316,9 @@ case 'load_json':
 			);
 		}
 		break;
+
+	default:
+		throw new \DomainException('Invalid action');
 	}
 
 	header('Content-type: application/json');
@@ -350,12 +360,14 @@ function media_paths($media_folder) {
 		"SELECT SQL_CACHE LEFT(m_filename, CHAR_LENGTH(m_filename) - CHAR_LENGTH(SUBSTRING_INDEX(m_filename, '/', -1))) AS media_path" .
 		" FROM  `##media`" .
 		" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
-		" WHERE setting_value=?" .
+		" WHERE setting_value = :media_folder" .
 		"	AND   m_filename NOT LIKE 'http://%'" .
 		" AND   m_filename NOT LIKE 'https://%'" .
 		" GROUP BY 1" .
 		" ORDER BY 1"
-	)->execute(array($media_folder))->fetchOneColumn();
+	)->execute(array(
+		'media_folder' => $media_folder,
+	))->fetchOneColumn();
 
 	if (!$media_paths || reset($media_paths) != '') {
 		// Always include a (possibly empty) top-level folder
@@ -425,22 +437,22 @@ function all_disk_files($media_folder, $media_path, $subfolders, $filter) {
  */
 function all_media_files($media_folder, $media_path, $subfolders, $filter) {
 	return Database::prepare(
-		"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS TRIM(LEADING ? FROM m_filename) AS media_path, 'OBJE' AS type, m_titl, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_filename" .
+		"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS TRIM(LEADING :media_path_1 FROM m_filename) AS media_path, 'OBJE' AS type, m_titl, m_id AS xref, m_file AS ged_id, m_gedcom AS gedrec, m_filename" .
 		" FROM  `##media`" .
 		" JOIN  `##gedcom_setting` ON (m_file = gedcom_id AND setting_name = 'MEDIA_DIRECTORY')" .
 		" JOIN  `##gedcom`         USING (gedcom_id)" .
-		" WHERE setting_value=?" .
-		" AND   m_filename LIKE CONCAT(?, '%')" .
-		" AND   (SUBSTRING_INDEX(m_filename, '/', -1) LIKE CONCAT('%', ?, '%')" .
-		"  OR   m_titl LIKE CONCAT('%', ?, '%'))" .
+		" WHERE setting_value = :media_folder" .
+		" AND   m_filename LIKE CONCAT(:media_path_2, '%')" .
+		" AND   (SUBSTRING_INDEX(m_filename, '/', -1) LIKE CONCAT('%', :filter_1, '%')" .
+		"  OR   m_titl LIKE CONCAT('%', :filter_2, '%'))" .
 		"	AND   m_filename NOT LIKE 'http://%'" .
 		" AND   m_filename NOT LIKE 'https://%'"
 	)->execute(array(
-		$media_path,
-		$media_folder,
-		Filter::escapeLike($media_path),
-		Filter::escapeLike($filter),
-		Filter::escapeLike($filter)
+		'media_path_1' => $media_path,
+		'media_folder' => $media_folder,
+		'media_path_2' => Filter::escapeLike($media_path),
+		'filter_1'     => Filter::escapeLike($filter),
+		'filter_2'     => Filter::escapeLike($filter),
 	))->fetchOneColumn();
 }
 
@@ -562,7 +574,7 @@ function mediaObjectInfo(Media $media) {
 // Start here
 ////////////////////////////////////////////////////////////////////////////////
 
-// Preserver the pagination/filtering/sorting between requests, so that the
+// Preserve the pagination/filtering/sorting between requests, so that the
 // browser’s back button works.  Pagination is dependent on the currently
 // selected folder.
 $table_id = md5($files . $media_folder . $media_path . $subfolders);
@@ -570,18 +582,16 @@ $table_id = md5($files . $media_folder . $media_path . $subfolders);
 $controller = new PageController;
 $controller
 	->restrictAccess(Auth::isAdmin())
-	->setPageTitle(I18N::translate('Media'))
+	->setPageTitle(I18N::translate('Manage media'))
 	->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 	->addExternalJavascript(WT_DATATABLES_BOOTSTRAP_JS_URL)
 	->pageHeader()
 	->addInlineJavascript('
 	jQuery("#media-table-' . $table_id . '").dataTable({
-		dom: \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 		processing: true,
 		serverSide: true,
 		ajax: "'.WT_BASE_URL . WT_SCRIPT_NAME . '?action=load_json&files=' . $files . '&media_folder=' . $media_folder . '&media_path=' . $media_path . '&subfolders=' . $subfolders . '",
 		' . I18N::datatablesI18N(array(5, 10, 20, 50, 100, 500, 1000, -1)) . ',
-		jQueryUI: true,
 		autoWidth:false,
 		pageLength: 10,
 		pagingType: "full_numbers",
@@ -604,7 +614,7 @@ $controller
 <h1><?php echo $controller->getPageTitle(); ?></h1>
 
 <form>
-	<table class="media_items">
+	<table class="table table-bordered table-condensed">
 		<thead>
 			<tr>
 				<th><?php echo I18N::translate('Media files'); ?></th>
@@ -672,7 +682,7 @@ $controller
 </form>
 <br>
 <br>
-<table class="media_table" id="media-table-<?php echo $table_id ?>">
+<table class="table table-bordered table-condensed" id="media-table-<?php echo $table_id ?>">
 	<thead>
 		<tr>
 			<th><?php echo I18N::translate('Media file'); ?></th>

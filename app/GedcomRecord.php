@@ -800,7 +800,7 @@ class GedcomRecord {
 	 *
 	 * @param string $link
 	 *
-	 * @return array
+	 * @return Individual[]
 	 */
 	public function linkedIndividuals($link) {
 		$rows = Database::prepare(
@@ -827,7 +827,7 @@ class GedcomRecord {
 	 *
 	 * @param string $link
 	 *
-	 * @return array
+	 * @return Family[]
 	 */
 	public function linkedFamilies($link) {
 		$rows = Database::prepare(
@@ -853,7 +853,7 @@ class GedcomRecord {
 	 *
 	 * @param string $link
 	 *
-	 * @return array
+	 * @return Source[]
 	 */
 	public function linkedSources($link) {
 		$rows = Database::prepare(
@@ -879,7 +879,7 @@ class GedcomRecord {
 	 *
 	 * @param string $link
 	 *
-	 * @return array
+	 * @return Media[]
 	 */
 	public function linkedMedia($link) {
 		$rows = Database::prepare(
@@ -932,7 +932,7 @@ class GedcomRecord {
 	 *
 	 * @param string $link
 	 *
-	 * @return Repository
+	 * @return Repository[]
 	 */
 	public function linkedRepositories($link) {
 		$rows = Database::prepare(
