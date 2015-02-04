@@ -261,6 +261,7 @@ return array(
     'Patchwork\\Utf8\\BestFit' => $vendorDir . '/patchwork/utf8/class/Patchwork/Utf8/BestFit.php',
     'Patchwork\\Utf8\\Bootup' => $vendorDir . '/patchwork/utf8/class/Patchwork/Utf8/Bootup.php',
     'Patchwork\\Utf8\\WindowsStreamWrapper' => $vendorDir . '/patchwork/utf8/class/Patchwork/Utf8/WindowsStreamWrapper.php',
+    'PclZip' => $vendorDir . '/pclzip/pclzip/pclzip.lib.php',
     'QRcode' => $vendorDir . '/tecnick.com/tcpdf/include/barcodes/qrcode.php',
     'Rhumsaa\\Uuid\\Console\\Application' => $vendorDir . '/rhumsaa/uuid/src/Console/Application.php',
     'Rhumsaa\\Uuid\\Console\\Command\\DecodeCommand' => $vendorDir . '/rhumsaa/uuid/src/Console/Command/DecodeCommand.php',
