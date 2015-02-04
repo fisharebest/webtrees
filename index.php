@@ -19,7 +19,8 @@ namespace Webtrees;
 /**
  * Defined in session.php
  *
- * @global Tree $WT_TREE
+ * @global string $SEARCH_SPIDER
+ * @global Tree   $WT_TREE
  */
 
 define('WT_SCRIPT_NAME', 'index.php');

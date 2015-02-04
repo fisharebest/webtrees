@@ -16,6 +16,12 @@ namespace Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * Defined in session.php
+ *
+ * @global string $GEDCOM
+ */
+
 define('WT_SCRIPT_NAME', 'inverselink.php');
 require './includes/session.php';
 

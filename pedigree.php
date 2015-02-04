@@ -16,8 +16,20 @@ namespace Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree    $WT_TREE
+ * @global string  $TEXT_DIRECTION
+ * @global integer $basexoffset
+ * @global integer $baseyoffset
+ */
+
 define('WT_SCRIPT_NAME', 'pedigree.php');
 require './includes/session.php';
+
+$MAX_PEDIGREE_GENERATIONS = $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS');
+$PEDIGREE_GENERATIONS     = $WT_TREE->getPreference('PEDIGREE_GENERATIONS');
 
 define("ARROW_WRAPPER", "<div class='ancestorarrow' style='%s:%spx; top:%spx;'>");
 define("MENU_WRAPPER", "<div id='childarrow' style='%s:%spx; top:%spx'><div><a href='#' class='menuselect %s'></a><div id='childbox'>");

@@ -512,7 +512,6 @@ if ($action == "filter") {
 		));
 
 		if ($myfamlist) {
-			$curged = $GEDCOM;
 			echo '<ul>';
 			usort($myfamlist, 'Webtrees\GedcomRecord::compare');
 			foreach ($myfamlist as $family) {

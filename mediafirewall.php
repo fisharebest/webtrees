@@ -327,9 +327,9 @@ $generatewatermark = false;
 
 if ($usewatermark) {
 	if ($which === 'thumb') {
-		$watermarkfile = WT_DATA_DIR . $MEDIA_DIRECTORY . 'watermark/' . WT_GEDCOM . '/thumb/' . $media->getFilename();
+		$watermarkfile = WT_DATA_DIR . $WT_TREE->getPreference('MEDIA_DIRECTORY') . 'watermark/' . WT_GEDCOM . '/thumb/' . $media->getFilename();
 	} else {
-		$watermarkfile = WT_DATA_DIR . $MEDIA_DIRECTORY . 'watermark/' . WT_GEDCOM . '/' . $media->getFilename();
+		$watermarkfile = WT_DATA_DIR . $WT_TREE->getPreference('MEDIA_DIRECTORY') . 'watermark/' . WT_GEDCOM . '/' . $media->getFilename();
 	}
 
 	if (!file_exists($watermarkfile)) {

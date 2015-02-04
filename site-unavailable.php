@@ -54,7 +54,7 @@ foreach (FlashMessages::getMessages() as $message) {
 $config_ini_php = parse_ini_file('data/config.ini.php');
 if (is_array($config_ini_php) && array_key_exists('dbhost', $config_ini_php) && array_key_exists('dbport', $config_ini_php) && array_key_exists('dbuser', $config_ini_php) && array_key_exists('dbpass', $config_ini_php) && array_key_exists('dbname', $config_ini_php)) {
 	try {
-		$dbh = new PDO('mysql:host=' . $config_ini_php['dbhost'] . ';port=' . $config_ini_php['dbport'] . ';dbname=' . $config_ini_php['dbname'], $config_ini_php['dbuser'], $config_ini_php['dbpass'], array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_OBJ, PDO::ATTR_CASE=>PDO::CASE_LOWER, PDO::ATTR_AUTOCOMMIT=>true));
+		new PDO('mysql:host=' . $config_ini_php['dbhost'] . ';port=' . $config_ini_php['dbport'] . ';dbname=' . $config_ini_php['dbname'], $config_ini_php['dbuser'], $config_ini_php['dbpass'], array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_OBJ, PDO::ATTR_CASE=>PDO::CASE_LOWER, PDO::ATTR_AUTOCOMMIT=>true));
 	} catch (PDOException $ex) {
 		$messages .= '<p>' . I18N::translate('The database reported the following error message:') . '</p>';
 		$messages .= '<blockquote>' . $ex->getMessage() . '</blockquote>';
@@ -75,9 +75,8 @@ if (is_array($config_ini_php) && array_key_exists('dbhost', $config_ini_php) && 
 			h1 {color: #81A9CB; font-weight:normal; text-align:center;}
 			li {line-height:2;}
 			blockquote {color:red;}
-			.content { /*margin:auto; width:800px;*/ border:1px solid gray; padding:15px; margin: 15px; border-radius:15px;}
+			.content { border:1px solid gray; padding:15px; margin: 15px; border-radius:15px;}
 			.good {color: green;}
-			.bad { color: red; }
 		</style>
 	</head>
 	<body>

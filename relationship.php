@@ -16,6 +16,14 @@ namespace Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree    $WT_TREE
+ * @global integer $bwidth
+ * @global string  $TEXT_DIRECTION
+ */
+
 define('WT_SCRIPT_NAME', 'relationship.php');
 require './includes/session.php';
 
@@ -23,7 +31,7 @@ $controller = new PageController;
 
 $pid1         = Filter::get('pid1', WT_REGEX_XREF);
 $pid2         = Filter::get('pid2', WT_REGEX_XREF);
-$show_full    = Filter::getInteger('show_full', 0, 1, $PEDIGREE_FULL_DETAILS);
+$show_full    = Filter::getInteger('show_full', 0, 1, $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS'));
 $path_to_find = Filter::getInteger('path_to_find');
 $followspouse = Filter::getBool('followspouse');
 $asc          = Filter::getBool('asc');

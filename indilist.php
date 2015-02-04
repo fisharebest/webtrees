@@ -19,7 +19,10 @@ namespace Webtrees;
 /**
  * Defined in session.php
  *
- * @global Tree $WT_TREE
+ * @global string $SEARCH_SPIDER
+ * @global string $UNKNOWN_NN
+ * @global string $UNKNOWN_PN
+ * @global Tree   $WT_TREE
  */
 
 define('WT_SCRIPT_NAME', 'indilist.php');

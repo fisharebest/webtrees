@@ -16,6 +16,12 @@ namespace Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * Defined in session.php
+ *
+ * @global string $TEXT_DIRECTION
+ */
+
 define('WT_SCRIPT_NAME', 'medialist.php');
 require './includes/session.php';
 

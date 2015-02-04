@@ -16,6 +16,12 @@ namespace Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+
 define('WT_SCRIPT_NAME', 'hourglass.php');
 require './includes/session.php';
 
@@ -58,7 +64,7 @@ $gencount = 0;
 					<?php echo I18N::translate('Generations'); ?>
 				</td>
 				<td class="optionbox">
-					<?php echo edit_field_integers('generations', $controller->generations, 2, $MAX_DESCENDANCY_GENERATIONS); ?>
+					<?php echo edit_field_integers('generations', $controller->generations, 2, $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS')); ?>
 				</td>
 				<td class="descriptionbox">
 					<?php echo I18N::translate('Show spouses'), help_link('show_spouse'); ?>

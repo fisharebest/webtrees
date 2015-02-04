@@ -16,6 +16,15 @@ namespace Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Zend_Session;
+
+/**
+ * Defined in session.php
+ *
+ * @global Zend_Session $WT_SESSION
+ * @global string       $GEDCOM
+ */
+
 define('WT_SCRIPT_NAME', 'statistics.php');
 require './includes/session.php';
 

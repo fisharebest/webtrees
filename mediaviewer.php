@@ -16,6 +16,13 @@ namespace Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+
 define('WT_SCRIPT_NAME', 'mediaviewer.php');
 require './includes/session.php';
 
@@ -97,7 +104,7 @@ echo '<div id="media-tabs">';
 					echo $tmp->displayImage();
 					if (!$tmp->isExternal()) {
 						if ($tmp->fileExists('main')) {
-							if ($SHOW_MEDIA_DOWNLOAD) {
+							if ($WT_TREE->getPreference('SHOW_MEDIA_DOWNLOAD')) {
 								echo '<p><a href="' . $tmp->getHtmlUrlDirect('main', true) . '">' . I18N::translate('Download file') . '</a></p>';
 							}
 						} else {

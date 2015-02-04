@@ -21,7 +21,10 @@ use Zend_Session;
 /**
  * Defined in session.php
  *
- * @global Tree $WT_TREE
+ * @global string       $SEARCH_SPIDER
+ * @global string       $TEXT_DIRECTION
+ * @global Zend_Session $WT_SESSION
+ * @global Tree         $WT_TREE
  */
 
 define('WT_SCRIPT_NAME', 'index_edit.php');

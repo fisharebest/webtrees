@@ -17,12 +17,15 @@ namespace Webtrees;
  */
 
 use Rhumsaa\Uuid\Uuid;
+use Zend_Controller_Request_Http;
 use Zend_Session;
 
 /**
  * Defined in session.php
  *
- * @global Tree $WT_TREE
+ * @global Zend_Session                 $WT_SESSION
+ * @global Tree                         $WT_TREE
+ * @global Zend_Controller_Request_Http $WT_REQUEST
  */
 
 define('WT_SCRIPT_NAME', 'login.php');
@@ -345,7 +348,7 @@ case 'register':
 				I18N::translate('If you didn’t request an account, you can just delete this message.') . Mail::EOL;
 			$mail2_subject = /* I18N: %s is a server name/URL */ I18N::translate('Your registration at %s', WT_BASE_URL);
 			$mail2_to      = $user->getEmail();
-			$mail2_from    = $WEBTREES_EMAIL;
+			$mail2_from    = $WT_TREE->getPreference('WEBTREES_EMAIL');
 
 			// Send user message by email only
 			Mail::send(
@@ -598,8 +601,8 @@ case 'verify_hash':
 				$webmaster->getEmail(),
 				$webmaster->getRealName(),
 				// “Reply-To:” header
-				$WEBTREES_EMAIL,
-				$WEBTREES_EMAIL,
+				$WT_TREE->getPreference('WEBTREES_EMAIL'),
+				$WT_TREE->getPreference('WEBTREES_EMAIL'),
 				// Message body
 				$mail1_subject,
 				$mail1_body
