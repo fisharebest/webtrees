@@ -16,6 +16,12 @@ namespace Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+
 define('WT_SCRIPT_NAME', 'admin_trees_places.php');
 require './includes/session.php';
 

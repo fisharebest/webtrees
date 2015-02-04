@@ -18,6 +18,12 @@ namespace Webtrees;
 
 use Zend_Session;
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+
 define('WT_SCRIPT_NAME', 'edit_interface.php');
 require './includes/session.php';
 

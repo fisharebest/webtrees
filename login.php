@@ -19,6 +19,12 @@ namespace Webtrees;
 use Rhumsaa\Uuid\Uuid;
 use Zend_Session;
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+
 define('WT_SCRIPT_NAME', 'login.php');
 require './includes/session.php';
 

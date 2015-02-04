@@ -19,6 +19,12 @@ namespace Webtrees;
 use PDO;
 use Zend_Session;
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+
 define('WT_SCRIPT_NAME', 'admin_users.php');
 require './includes/session.php';
 
