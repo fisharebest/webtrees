@@ -16,6 +16,13 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
+
 $more_links  = Filter::get('more_links');
 $exist_links = Filter::get('exist_links');
 $gid         = Filter::get('gid', WT_REGEX_XREF);
@@ -59,7 +66,7 @@ if ($action == 'choose' && $paramok) {
 		echo '<input type="hidden" name="linktoid" value="', $linktoid, '">';
 	}
 	echo '<input type="hidden" name="linkto" value="', $linkto, '">';
-	echo '<input type="hidden" name="ged" value="', $GEDCOM, '">';
+	echo '<input type="hidden" name="ged" value="', $WT_TREE->getNameHtml(), '">';
 	echo '<table class="facts_table center">';
 	echo '<tr><td class="topbottombar" colspan="2">';
 	echo I18N::translate('Link to an existing media object');

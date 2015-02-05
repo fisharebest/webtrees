@@ -355,6 +355,23 @@ class Tree {
 	}
 
 	/**
+	 * Find by name
+	 *
+	 * @param string $tree_name
+	 *
+	 * @return Tree|null
+	 */
+	public static function findByName($tree_name) {
+		foreach (self::getAll() as $tree) {
+			if ($tree->getName() == $tree_name) {
+				return $tree;
+			}
+		}
+
+		return null;
+	}
+
+	/**
 	 * Create arguments to select_edit_control()
 	 * Note - these will be escaped later
 	 *

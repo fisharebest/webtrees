@@ -190,7 +190,6 @@ function search_fams_custom($join, $where, $order) {
  * @return Individual[]
  */
 function search_indis($query, $geds, $match) {
-	global $GEDCOM;
 	// No query => no results
 	if (!$query) {
 		return array();
@@ -243,8 +242,6 @@ function search_indis($query, $geds, $match) {
  * @return Individual[]
  */
 function search_indis_names($query, $geds, $match) {
-	global $GEDCOM;
-
 	// No query => no results
 	if (!$query) {
 		return array();
@@ -444,8 +441,6 @@ function search_indis_dates($day, $month, $year, $facts) {
  * @return Family[]
  */
 function search_fams($query, $geds, $match) {
-	global $GEDCOM;
-
 	// No query => no results
 	if (!$query) {
 		return array();
@@ -500,8 +495,6 @@ function search_fams($query, $geds, $match) {
  * @return Family[]
  */
 function search_fams_names($query, $geds, $match) {
-	global $GEDCOM;
-
 	// No query => no results
 	if (!$query) {
 		return array();
@@ -540,8 +533,6 @@ function search_fams_names($query, $geds, $match) {
  * @return Source[]
  */
 function search_sources($query, $geds, $match) {
-	global $GEDCOM;
-
 	// No query => no results
 	if (!$query) {
 		return array();
@@ -596,8 +587,6 @@ function search_sources($query, $geds, $match) {
  * @return Note[]
  */
 function search_notes($query, $geds, $match) {
-	global $GEDCOM;
-
 	// No query => no results
 	if (!$query) {
 		return array();
@@ -653,8 +642,6 @@ function search_notes($query, $geds, $match) {
  * @return Repository[]
  */
 function search_repos($query, $geds, $match) {
-	global $GEDCOM;
-
 	// No query => no results
 	if (!$query) {
 		return array();

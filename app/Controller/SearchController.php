@@ -572,8 +572,6 @@ class SearchController extends PageController {
 	 * @return bool
 	 */
 	function printResults() {
-		global $GEDCOM;
-
 		if ($this->action == "general" || $this->action == "soundex" || $this->action == "replace") {
 			if ($this->myindilist || $this->myfamlist || $this->mysourcelist || $this->mynotelist) {
 				$this->addInlineJavascript('jQuery("#search-result-tabs").tabs();');

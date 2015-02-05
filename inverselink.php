@@ -19,9 +19,9 @@ namespace Fisharebest\Webtrees;
 /**
  * Defined in session.php
  *
- * @global string $GEDCOM
+ * @global Tree $WT_TREE
  */
-global $GEDCOM;
+global $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'inverselink.php');
 require './includes/session.php';
@@ -61,7 +61,7 @@ if ($linkto == 'manage' && array_key_exists('GEDFact_assistant', Module::getActi
 			echo '<input type="hidden" name="linktoid" value="', $linktoid, '">';
 		}
 		echo '<input type="hidden" name="linkto" value="', $linkto, '">';
-		echo '<input type="hidden" name="ged" value="', $GEDCOM, '">';
+		echo '<input type="hidden" name="ged" value="', $WT_TREE->getNameHtml(), '">';
 		echo '<table class="facts_table">';
 		echo '<tr><td class="topbottombar" colspan="2">';
 		echo I18N::translate('Link to an existing media object');
