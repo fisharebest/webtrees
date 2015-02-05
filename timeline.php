@@ -24,6 +24,7 @@ namespace Fisharebest\Webtrees;
  * @global integer $basexoffset
  * @global integer $baseyoffset
  */
+global $TEXT_DIRECTION, $basexoffset, $baseyoffset;
 
 define('WT_SCRIPT_NAME', 'timeline.php');
 require './includes/session.php';

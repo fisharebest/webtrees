@@ -23,6 +23,7 @@ use Zend_Session;
  *
  * @global Zend_Session $WT_SESSION
  */
+global $WT_SESSION;
 
 define('WT_SCRIPT_NAME', 'action.php');
 require './includes/session.php';

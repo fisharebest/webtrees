@@ -23,10 +23,11 @@ use Zend_Session;
 /**
  * Defined in session.php
  *
+ * @global Zend_Controller_Request_Http $WT_REQUEST
  * @global Zend_Session                 $WT_SESSION
  * @global Tree                         $WT_TREE
- * @global Zend_Controller_Request_Http $WT_REQUEST
  */
+global $WT_REQUEST, $WT_SESSION, $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'login.php');
 require './includes/session.php';

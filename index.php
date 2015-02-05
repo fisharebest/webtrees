@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees;
  * @global string $SEARCH_SPIDER
  * @global Tree   $WT_TREE
  */
+global $SEARCH_SPIDER, $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'index.php');
 require './includes/session.php';

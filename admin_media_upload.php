@@ -22,6 +22,7 @@ namespace Fisharebest\Webtrees;
  *
  * @global Tree $WT_TREE
  */
+global $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'admin_media_upload.php');
 require './includes/session.php';

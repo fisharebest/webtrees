@@ -23,6 +23,7 @@ use Zend_Session;
  *
  * @global Tree $WT_TREE
  */
+global $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'autocomplete.php');
 require './includes/session.php';

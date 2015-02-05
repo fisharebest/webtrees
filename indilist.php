@@ -24,6 +24,7 @@ namespace Fisharebest\Webtrees;
  * @global string $UNKNOWN_PN
  * @global Tree   $WT_TREE
  */
+global $SEARCH_SPIDER, $UNKNOWN_NN, $UNKNOWN_PN, $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'indilist.php');
 require './includes/session.php';

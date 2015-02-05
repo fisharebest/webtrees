@@ -19,10 +19,11 @@ namespace Fisharebest\Webtrees;
 /**
  * Defined in session.php
  *
+ * @global string  $TEXT_DIRECTION
  * @global Tree    $WT_TREE
  * @global integer $bwidth
- * @global string  $TEXT_DIRECTION
  */
+global $TEXT_DIRECTION, $WT_TREE, $bwidth;
 
 define('WT_SCRIPT_NAME', 'relationship.php');
 require './includes/session.php';

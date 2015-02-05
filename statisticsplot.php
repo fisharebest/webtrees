@@ -24,6 +24,7 @@ use Zend_Session;
  * @global Zend_Session $WT_SESSION
  * @global Tree         $WT_TREE
  */
+global $WT_SESSION, $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'statisticsplot.php');
 require './includes/session.php';

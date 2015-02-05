@@ -19,11 +19,11 @@ namespace Fisharebest\Webtrees;
 /**
  * Defined in session.php
  *
- * @global Tree    $WT_TREE
  * @global string  $TEXT_DIRECTION
+ * @global Tree    $WT_TREE
  * @global integer $basexoffset
- * @global integer $baseyoffset
  */
+global $TEXT_DIRECTION, $WT_TREE, $basexoffset;
 
 define('WT_SCRIPT_NAME', 'pedigree.php');
 require './includes/session.php';

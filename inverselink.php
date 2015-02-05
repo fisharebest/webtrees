@@ -21,6 +21,7 @@ namespace Fisharebest\Webtrees;
  *
  * @global string $GEDCOM
  */
+global $GEDCOM;
 
 define('WT_SCRIPT_NAME', 'inverselink.php');
 require './includes/session.php';
