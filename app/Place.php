@@ -151,14 +151,16 @@ class Place {
 	 * @return string
 	 */
 	public function getShortName() {
-		global $SHOW_PEDIGREE_PLACES, $SHOW_PEDIGREE_PLACES_SUFFIX;
+		global $WT_TREE;
+
+		$SHOW_PEDIGREE_PLACES = $WT_TREE->getPreference('SHOW_PEDIGREE_PLACES');
 
 		if ($SHOW_PEDIGREE_PLACES >= count($this->gedcom_place)) {
 			// A short place name - no need to abbreviate
 			return $this->getFullName();
 		} else {
 			// Abbreviate the place name, for lists
-			if ($SHOW_PEDIGREE_PLACES_SUFFIX) {
+			if ($WT_TREE->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX')) {
 				// The *last* $SHOW_PEDIGREE_PLACES components
 				$short_name = implode(self::GEDCOM_SEPARATOR, array_slice($this->gedcom_place, -$SHOW_PEDIGREE_PLACES));
 			} else {

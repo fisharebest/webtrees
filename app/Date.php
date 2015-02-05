@@ -209,7 +209,10 @@ class Date {
 	 * @return string
 	 */
 	function display($url = false, $date_format = null, $convert_calendars = true) {
-		global $TEXT_DIRECTION, $DATE_FORMAT, $CALENDAR_FORMAT;
+		global $TEXT_DIRECTION, $WT_TREE;
+
+		$CALENDAR_FORMAT = $WT_TREE->getPreference('CALENDAR_FORMAT');
+		$DATE_FORMAT     = $WT_TREE->getPreference('DATE_FORMAT');
 
 		if ($date_format === null) {
 			$date_format = $DATE_FORMAT;

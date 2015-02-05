@@ -484,7 +484,7 @@ function print_repository_record($xref) {
  * @return string HTML text
  */
 function print_fact_sources($factrec, $level) {
-	global $EXPAND_SOURCES;
+	global $WT_TREE;
 
 	$data = '';
 	$nlevel = $level + 1;
@@ -514,7 +514,7 @@ function print_fact_sources($factrec, $level) {
 				$data .= '<div class="fact_SOUR">';
 				$data .= '<span class="label">';
 				$elementID = Uuid::uuid4();
-				if ($EXPAND_SOURCES) {
+				if ($WT_TREE->getPreference('EXPAND_SOURCES')) {
 					$plusminus = 'icon-minus';
 				} else {
 					$plusminus = 'icon-plus';
@@ -527,7 +527,7 @@ function print_fact_sources($factrec, $level) {
 				$data .= '</span></div>';
 
 				$data .= "<div id=\"$elementID\"";
-				if ($EXPAND_SOURCES) {
+				if ($WT_TREE->getPreference('EXPAND_SOURCES')) {
 					$data .= ' style="display:block"';
 				}
 				$data .= ' class="source_citations">';

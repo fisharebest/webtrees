@@ -49,15 +49,12 @@ class FamilybookController extends ChartController {
 
 		parent::__construct();
 
-		$PEDIGREE_FULL_DETAILS = $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS');
-		$MAX_DESCENDANCY_GENERATIONS = $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS');
-
 		// Extract the request parameters
-		$this->show_full = Filter::getInteger('show_full', 0, 1, $PEDIGREE_FULL_DETAILS);
+		$this->show_full   = Filter::getInteger('show_full', 0, 1, $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS'));
 		$this->show_spouse = Filter::getInteger('show_spouse', 0, 1);
-		$this->descent = Filter::getInteger('descent', 0, 9, 5);
-		$this->generations = Filter::getInteger('generations', 2, $MAX_DESCENDANCY_GENERATIONS, 2);
-		$this->box_width = Filter::getInteger('box_width', 50, 300, 100);
+		$this->descent     = Filter::getInteger('descent', 0, 9, 5);
+		$this->generations = Filter::getInteger('generations', 2, $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS'), 2);
+		$this->box_width   = Filter::getInteger('box_width', 50, 300, 100);
 
 		// Box sizes are set globally in the theme.  Modify them here.
 		global $bwidth, $bheight, $Dbwidth, $bhalfheight, $Dbheight;

@@ -133,7 +133,7 @@ class SearchController extends PageController {
 				$str = str_replace(array(".", "-", " "), array("_", "_", "_"), $search_tree->getName());
 				if (isset ($_REQUEST["$str"]) || $topsearch) {
 					$this->search_trees[$search_tree->getTreeId()] = $search_tree;
-					$_REQUEST["$str"] = 'yes';
+					$_REQUEST[$str] = 'yes';
 				}
 			}
 		} else {
@@ -602,7 +602,7 @@ class SearchController extends PageController {
 				foreach ($this->search_trees as $search_tree) {
 					$datalist = array();
 					foreach ($this->myindilist as $individual) {
-						if ($individual->getTree->getTreeId() === $search_tree->getTreeId()) {
+						if ($individual->getTree()->getTreeId() === $search_tree->getTreeId()) {
 							$datalist[] = $individual;
 						}
 					}

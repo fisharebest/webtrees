@@ -42,7 +42,7 @@ class personal_facts_WT_Module extends Module implements ModuleTabInterface {
 
 	/** {@inheritdoc} */
 	public function getTabContent() {
-		global $EXPAND_RELATIVES_EVENTS, $controller;
+		global $controller;
 		$EXPAND_HISTO_EVENTS = false;
 
 		$indifacts = array();
@@ -116,7 +116,7 @@ class personal_facts_WT_Module extends Module implements ModuleTabInterface {
 		}
 
 		echo '<tr><td colspan="2" class="descriptionbox rela"><form action="?"><input id="checkbox_rela_facts" type="checkbox" ';
-		echo $EXPAND_RELATIVES_EVENTS ? 'checked' : '';
+		echo $controller->record->getTree()->getPreference('EXPAND_RELATIVES_EVENTS') ? 'checked' : '';
 		echo ' onclick="jQuery(\'tr.rela\').toggle();"><label for="checkbox_rela_facts">', I18N::translate('Events of close relatives'), '</label>';
 		if (file_exists(Site::getPreference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php')) {
 			echo ' <input id="checkbox_histo" type="checkbox" ';
@@ -136,7 +136,7 @@ class personal_facts_WT_Module extends Module implements ModuleTabInterface {
 		echo '</tbody>';
 		echo '</table>';
 
-		if (!$EXPAND_RELATIVES_EVENTS) {
+		if (!$controller->record->getTree()->getPreference('EXPAND_RELATIVES_EVENTS')) {
 			echo '<script>jQuery("tr.rela").toggle();</script>';
 		}
 		if (!$EXPAND_HISTO_EVENTS) {

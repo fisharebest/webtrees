@@ -78,9 +78,6 @@ if ($controller->record && $controller->record->canShow()) {
 	return;
 }
 
-$PEDIGREE_FULL_DETAILS = '1'; // Override GEDCOM configuration
-$show_full = '1';
-
 ?>
 <div id="family-page">
 <h2><?php echo $controller->record->getFullName(); ?></h2>

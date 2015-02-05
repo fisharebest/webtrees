@@ -48,7 +48,9 @@ class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleS
 			echo $html;
 			break;
 		case 'index':
-			global $MAX_PEDIGREE_GENERATIONS, $controller, $WT_SESSION, $WT_TREE;
+			global $controller, $WT_SESSION, $WT_TREE;
+
+			$MAX_PEDIGREE_GENERATIONS = $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS');
 
 			$clip_ctrl = new ClippingsCart;
 
@@ -471,7 +473,7 @@ class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleS
 	 * @return string
 	 */
 	public function askAddOptions(Individual $person) {
-		global $MAX_PEDIGREE_GENERATIONS;
+		$MAX_PEDIGREE_GENERATIONS = $person->getTree()->getPreference('MAX_PEDIGREE_GENERATIONS');
 
 		$out = '<h3><a href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a></h3>';
 		$out .= '<script>';

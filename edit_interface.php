@@ -545,7 +545,7 @@ case 'add_child_to_family_action':
 	$gedrec = "0 @REF@ INDI";
 	$gedrec .= addNewName();
 	$gedrec .= addNewSex();
-	if (preg_match_all('/([A-Z0-9_]+)/', $QUICK_REQUIRED_FACTS, $matches)) {
+	if (preg_match_all('/([A-Z0-9_]+)/', $WT_TREE->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 		foreach ($matches[1] as $match) {
 			$gedrec .= addNewFact($match);
 		}
@@ -637,7 +637,7 @@ case 'add_child_to_individual_action':
 	$gedcom .= addNewName();
 	$gedcom .= addNewSex();
 	$gedcom .= "\n" . WT_Gedcom_Code_Pedi::createNewFamcPedi($PEDI, $family->getXref());
-	if (preg_match_all('/([A-Z0-9_]+)/', $QUICK_REQUIRED_FACTS, $matches)) {
+	if (preg_match_all('/([A-Z0-9_]+)/', $WT_TREE->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 		foreach ($matches[1] as $match) {
 			$gedcom .= addNewFact($match);
 		}
@@ -716,7 +716,7 @@ case 'add_parent_to_individual_action':
 	$gedcom = '0 @NEW@ INDI';
 	$gedcom .= addNewName();
 	$gedcom .= addNewSex();
-	if (preg_match_all('/([A-Z0-9_]+)/', $QUICK_REQUIRED_FACTS, $matches)) {
+	if (preg_match_all('/([A-Z0-9_]+)/', $WT_TREE->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 		foreach ($matches[1] as $match) {
 			$gedcom .= addNewFact($match);
 		}
@@ -777,7 +777,7 @@ case 'add_unlinked_indi_action':
 	$gedrec = "0 @REF@ INDI";
 	$gedrec .= addNewName();
 	$gedrec .= addNewSex();
-	if (preg_match_all('/([A-Z0-9_]+)/', $QUICK_REQUIRED_FACTS, $matches)) {
+	if (preg_match_all('/([A-Z0-9_]+)/', $WT_TREE->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 		foreach ($matches[1] as $match) {
 			$gedrec .= addNewFact($match);
 		}
@@ -846,7 +846,7 @@ case 'add_spouse_to_individual_action':
 	$indi_gedcom = '0 @REF@ INDI';
 	$indi_gedcom .= addNewName();
 	$indi_gedcom .= addNewSex();
-	if (preg_match_all('/([A-Z0-9_]+)/', $QUICK_REQUIRED_FACTS, $matches)) {
+	if (preg_match_all('/([A-Z0-9_]+)/', $WT_TREE->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 		foreach ($matches[1] as $match) {
 			$indi_gedcom .= addNewFact($match);
 		}
@@ -858,7 +858,7 @@ case 'add_spouse_to_individual_action':
 	}
 
 	$fam_gedcom = '';
-	if (preg_match_all('/([A-Z0-9_]+)/', $QUICK_REQUIRED_FAMFACTS, $matches)) {
+	if (preg_match_all('/([A-Z0-9_]+)/', $WT_TREE->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
 		foreach ($matches[1] as $match) {
 			$fam_gedcom .= addNewFact($match);
 		}
@@ -936,7 +936,7 @@ case 'add_spouse_to_family_action':
 	$gedrec = "0 @REF@ INDI";
 	$gedrec .= addNewName();
 	$gedrec .= addNewSex();
-	if (preg_match_all('/([A-Z0-9_]+)/', $QUICK_REQUIRED_FACTS, $matches)) {
+	if (preg_match_all('/([A-Z0-9_]+)/', $WT_TREE->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 		foreach ($matches[1] as $match) {
 			$gedrec .= addNewFact($match);
 		}
@@ -957,7 +957,7 @@ case 'add_spouse_to_family_action':
 		$family->createFact('1 HUSB @' . $spouse->getXref() . '@', true);
 	}
 	$famrec = '';
-	if (preg_match_all('/([A-Z0-9_]+)/', $QUICK_REQUIRED_FAMFACTS, $matches)) {
+	if (preg_match_all('/([A-Z0-9_]+)/', $WT_TREE->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
 		foreach ($matches[1] as $match) {
 			$famrec .= addNewFact($match);
 		}
@@ -2307,7 +2307,7 @@ case 'reorder_fams_update':
  * @return string
  */
 function keep_chan(GedcomRecord $record = null) {
-	global $NO_UPDATE_CHAN;
+	global $WT_TREE;
 
 	if (Auth::isAdmin()) {
 		if ($record) {
@@ -2322,7 +2322,7 @@ function keep_chan(GedcomRecord $record = null) {
 			'<tr><td class="descriptionbox wrap width25">' .
 			WT_Gedcom_Tag::getLabel('CHAN') .
 			'</td><td class="optionbox wrap">' .
-			'<input type="checkbox" name="keep_chan" value="1" ' . ($NO_UPDATE_CHAN ? 'checked' : '') . '>' .
+			'<input type="checkbox" name="keep_chan" value="1" ' . ($WT_TREE->getPreference('NO_UPDATE_CHAN') ? 'checked' : '') . '>' .
 			I18N::translate('Do not update the “last change” record') .
 			help_link('no_update_CHAN') .
 			$details .
@@ -2343,8 +2343,7 @@ function keep_chan(GedcomRecord $record = null) {
  * @param string        $gender
  */
 function print_indi_form($nextaction, Individual $person = null, Family $family = null, Fact $name_fact = null, $famtag = 'CHIL', $gender = 'U') {
-	global $WT_TREE, $NPFX_accept, $bdm, $STANDARD_NAME_FACTS;
-	global $QUICK_REQUIRED_FACTS, $QUICK_REQUIRED_FAMFACTS, $controller;
+	global $WT_TREE, $NPFX_accept, $bdm, $STANDARD_NAME_FACTS, $controller;
 
 	$SURNAME_TRADITION = $WT_TREE->getPreference('SURNAME_TRADITION');
 
@@ -2760,7 +2759,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 			add_simple_tag("0 SEX");
 		}
 		$bdm = "BD";
-		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $QUICK_REQUIRED_FACTS, $matches)) {
+		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 			foreach ($matches[1] as $match) {
 				if (!in_array($match, explode('|', WT_EVENTS_DEAT))) {
 					addSimpleTags($match);
@@ -2770,13 +2769,13 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		//-- if adding a spouse add the option to add a marriage fact to the new family
 		if ($nextaction == 'add_spouse_to_individual_action' || $nextaction == 'add_spouse_to_family_action') {
 			$bdm .= "M";
-			if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $QUICK_REQUIRED_FAMFACTS, $matches)) {
+			if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
 				foreach ($matches[1] as $match) {
 					addSimpleTags($match);
 				}
 			}
 		}
-		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $QUICK_REQUIRED_FACTS, $matches)) {
+		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 			foreach ($matches[1] as $match) {
 				if (in_array($match, explode('|', WT_EVENTS_DEAT))) {
 					addSimpleTags($match);

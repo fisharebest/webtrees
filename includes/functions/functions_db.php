@@ -195,7 +195,6 @@ function search_fams_custom($join, $where, $order) {
  */
 function search_indis($query, $geds, $match) {
 	global $GEDCOM;
-
 	// No query => no results
 	if (!$query) {
 		return array();

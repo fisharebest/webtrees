@@ -88,24 +88,6 @@ function file_upload_error_text($error_code) {
  * @param integer $ged_id
  */
 function load_gedcom_settings($ged_id) {
-	$tree = Tree::get($ged_id);
-	global $CALENDAR_FORMAT;              $CALENDAR_FORMAT              = $tree->getPreference('CALENDAR_FORMAT');
-	global $DEFAULT_PEDIGREE_GENERATIONS; $DEFAULT_PEDIGREE_GENERATIONS = $tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS');
-	global $EXPAND_RELATIVES_EVENTS;      $EXPAND_RELATIVES_EVENTS      = $tree->getPreference('EXPAND_RELATIVES_EVENTS');
-	global $EXPAND_SOURCES;               $EXPAND_SOURCES               = $tree->getPreference('EXPAND_SOURCES');
-	global $FULL_SOURCES;                 $FULL_SOURCES                 = $tree->getPreference('FULL_SOURCES');
-	global $MAX_DESCENDANCY_GENERATIONS;  $MAX_DESCENDANCY_GENERATIONS  = $tree->getPreference('MAX_DESCENDANCY_GENERATIONS');
-	global $MAX_PEDIGREE_GENERATIONS;     $MAX_PEDIGREE_GENERATIONS     = $tree->getPreference('MAX_PEDIGREE_GENERATIONS');
-	global $NO_UPDATE_CHAN;               $NO_UPDATE_CHAN               = $tree->getPreference('NO_UPDATE_CHAN');
-	global $PEDIGREE_FULL_DETAILS;        $PEDIGREE_FULL_DETAILS        = $tree->getPreference('PEDIGREE_FULL_DETAILS');
-	global $PEDIGREE_LAYOUT;              $PEDIGREE_LAYOUT              = $tree->getPreference('PEDIGREE_LAYOUT');
-	global $PEDIGREE_SHOW_GENDER;         $PEDIGREE_SHOW_GENDER         = $tree->getPreference('PEDIGREE_SHOW_GENDER');
-	global $PREFER_LEVEL2_SOURCES;        $PREFER_LEVEL2_SOURCES        = $tree->getPreference('PREFER_LEVEL2_SOURCES');
-	global $QUICK_REQUIRED_FACTS;         $QUICK_REQUIRED_FACTS         = $tree->getPreference('QUICK_REQUIRED_FACTS');
-	global $QUICK_REQUIRED_FAMFACTS;      $QUICK_REQUIRED_FAMFACTS      = $tree->getPreference('QUICK_REQUIRED_FAMFACTS');
-	global $SHOW_LAST_CHANGE;             $SHOW_LAST_CHANGE             = $tree->getPreference('SHOW_LAST_CHANGE');
-	global $SHOW_PEDIGREE_PLACES;         $SHOW_PEDIGREE_PLACES         = $tree->getPreference('SHOW_PEDIGREE_PLACES');
-	global $SHOW_PEDIGREE_PLACES_SUFFIX;  $SHOW_PEDIGREE_PLACES_SUFFIX  = $tree->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX');
 }
 
 /**

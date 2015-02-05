@@ -722,7 +722,9 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 	 * ...
 	 */
 	private function pedigreeMap() {
-		global $controller, $MAX_PEDIGREE_GENERATIONS;
+		global $controller, $WT_TREE;
+
+		$MAX_PEDIGREE_GENERATIONS = $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS');
 
 		// Default is show for both of these.
 		$hideflags = Filter::getBool('hideflags');
