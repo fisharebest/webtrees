@@ -602,7 +602,7 @@ class SearchController extends PageController {
 				foreach ($this->search_trees as $search_tree) {
 					$datalist = array();
 					foreach ($this->myindilist as $individual) {
-						if ($individual->getGedcomId() === $search_tree->getTreeId()) {
+						if ($individual->getTree->getTreeId() === $search_tree->getTreeId()) {
 							$datalist[] = $individual;
 						}
 					}
@@ -625,7 +625,7 @@ class SearchController extends PageController {
 				foreach ($this->search_trees as $search_tree) {
 					$datalist = array();
 					foreach ($this->myfamlist as $family) {
-						if ($family->getGedcomId() === $search_tree->getTreeId()) {
+						if ($family->getTree->getTreeId() === $search_tree->getTreeId()) {
 							$datalist[] = $family;
 						}
 					}
@@ -648,7 +648,7 @@ class SearchController extends PageController {
 				foreach ($this->search_trees as $search_tree) {
 					$datalist = array();
 					foreach ($this->mysourcelist as $source) {
-						if ($source->getGedcomId() === $search_tree->getTreeId()) {
+						if ($source->getTree->getTreeId() === $search_tree->getTreeId()) {
 							$datalist[] = $source;
 						}
 					}
@@ -671,7 +671,7 @@ class SearchController extends PageController {
 				foreach ($this->search_trees as $search_tree) {
 					$datalist = array();
 					foreach ($this->mynotelist as $note) {
-						if ($note->getGedcomId() === $search_tree->getTreeId()) {
+						if ($note->getTree->getTreeId() === $search_tree->getTreeId()) {
 							$datalist[] = $note;
 						}
 					}

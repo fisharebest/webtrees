@@ -42,7 +42,7 @@ case 'accept-changes':
 	$record = GedcomRecord::getInstance(Filter::post('xref', WT_REGEX_XREF));
 	if ($record && WT_USER_CAN_ACCEPT && $record->canShow() && $record->canEdit()) {
 		FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ I18N::translate('The changes to “%s” have been accepted.', $record->getFullName()));
-		accept_all_changes($record->getXref(), $record->getGedcomId());
+		accept_all_changes($record->getXref(), $record->getTree()->getTreeId());
 	} else {
 		http_response_code(406);
 	}
@@ -126,7 +126,7 @@ case 'delete-source':
 	$record = GedcomRecord::getInstance(Filter::post('xref', WT_REGEX_XREF));
 	if ($record && WT_USER_CAN_EDIT && $record->canShow() && $record->canEdit()) {
 		// Delete links to this record
-		foreach (fetch_all_links($record->getXref(), $record->getGedcomId()) as $xref) {
+		foreach (fetch_all_links($record->getXref(), $record->getTree()->getTreeId()) as $xref) {
 			$linker = GedcomRecord::getInstance($xref);
 			$old_gedcom = $linker->getGedcom();
 			$new_gedcom = remove_links($old_gedcom, $record->getXref());
@@ -213,7 +213,7 @@ case 'reject-changes':
 	$record = GedcomRecord::getInstance(Filter::post('xref', WT_REGEX_XREF));
 	if ($record && WT_USER_CAN_ACCEPT && $record->canShow() && $record->canEdit()) {
 		FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ I18N::translate('The changes to “%s” have been rejected.', $record->getFullName()));
-		reject_all_changes($record->getXref(), $record->getGedcomId());
+		reject_all_changes($record->getXref(), $record->getTree()->getTreeId());
 	} else {
 		http_response_code(406);
 	}

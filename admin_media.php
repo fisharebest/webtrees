@@ -500,7 +500,7 @@ function mediaFileInfo($media_folder, $media_path, $file) {
  */
 function mediaObjectInfo(Media $media) {
 	$xref   = $media->getXref();
-	$gedcom = Tree::getNameFromId($media->getGedcomId());
+	$gedcom = $media->getTree()->getName();
 	$name   = $media->getFullName();
 
 	$html   =

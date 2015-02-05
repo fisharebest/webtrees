@@ -274,15 +274,6 @@ class GedcomRecord {
 	}
 
 	/**
-	 * Get the tree ID for this record
-	 *
-	 * @return integer
-	 */
-	public function getGedcomId() {
-		return $this->tree->getTreeId();
-	}
-
-	/**
 	 * Application code should access data via Fact objects.
 	 * This function exists to support old code.
 	 *

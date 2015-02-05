@@ -99,7 +99,7 @@ class Individual extends GedcomRecord {
 			}
 		}
 		// Consider relationship privacy (unless an admin is applying download restrictions)
-		if (WT_USER_GEDCOM_ID && WT_USER_PATH_LENGTH && $this->getGedcomId() == WT_GED_ID && $access_level = WT_USER_ACCESS_LEVEL) {
+		if (WT_USER_GEDCOM_ID && WT_USER_PATH_LENGTH && $this->tree->getTreeId() == WT_GED_ID && $access_level = WT_USER_ACCESS_LEVEL) {
 			return self::isRelated($this, WT_USER_PATH_LENGTH);
 		}
 
