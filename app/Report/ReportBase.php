@@ -3133,7 +3133,7 @@ function add_ancestors(&$list, $pid, $children = false, $generations = -1) {
  */
 function add_descendancy(&$list, $pid, $parents = false, $generations = -1) {
 	$person = Individual::getInstance($pid);
-	if ($person == null) {
+	if ($person === null) {
 		return;
 	}
 	if (!isset($list[$pid])) {

@@ -1117,14 +1117,14 @@ function utf8_wordwrap($string, $width = 75, $sep = "\n", $cut = false) {
 				$sub = mb_substr($string, 0, $width);
 			}
 			$spacepos = strrpos($sub, ' ');
-			if ($spacepos == false) {
+			if ($spacepos === false) {
 				// No space on line?
 				if ($cut) {
 					$out .= $sub . $sep;
 					$string = mb_substr($string, mb_strlen($sub));
 				} else {
 					$spacepos = strpos($string, ' ');
-					if ($spacepos == false) {
+					if ($spacepos === false) {
 						$out .= $string;
 						$string = '';
 					} else {
