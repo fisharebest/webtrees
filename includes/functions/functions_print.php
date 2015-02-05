@@ -349,7 +349,7 @@ function format_parents_age(Individual $person, Date $birth_date) {
  * @return string
  */
 function format_fact_date(Fact $event, GedcomRecord $record, $anchor, $time) {
-	global $pid, $SEARCH_SPIDER, $SHOW_PARENTS_AGE;
+	global $pid, $SEARCH_SPIDER;
 
 	$factrec = $event->getGedcom();
 	$html    = '';
@@ -380,7 +380,7 @@ function format_fact_date(Fact $event, GedcomRecord $record, $anchor, $time) {
 		}
 		$fact = $event->getTag();
 		if ($record instanceof Individual) {
-			if ($fact === 'BIRT' && $SHOW_PARENTS_AGE) {
+			if ($fact === 'BIRT' && $record->getTree()->getPreference('SHOW_PARENTS_AGE')) {
 				// age of parents at child birth
 				$html .= format_parents_age($record, $date);
 			} elseif ($fact !== 'CHAN' && $fact !== '_TODO') {

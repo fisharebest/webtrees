@@ -52,15 +52,13 @@ class CompactController extends ChartController {
 	 * @return string
 	 */
 	public function sosaIndividual($n) {
-		global $SHOW_HIGHLIGHT_IMAGES;
-
 		$indi = $this->treeid[$n];
 
 		if ($indi && $indi->canShowName()) {
 			$name = $indi->getFullName();
 			$addname = $indi->getAddName();
 
-			if ($this->show_thumbs && $SHOW_HIGHLIGHT_IMAGES) {
+			if ($this->show_thumbs && $indi->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
 				$html = $indi->displayImage();
 			} else {
 				$html = '';

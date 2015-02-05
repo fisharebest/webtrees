@@ -294,21 +294,19 @@ class Media extends GedcomRecord {
 	}
 
 	/**
-	 * generate an etag specific to this media item and the current user
+	 * Generate an etag specific to this media item and the current user
 	 *
 	 * @param string $which - specify either 'main' or 'thumb'
 	 *
 	 * @return string
 	 */
 	public function getEtag($which = 'main') {
-		// setup the etag.  use enough info so that if anything important changes, the etag won’t match
-		global $SHOW_NO_WATERMARK;
 		if ($this->isExternal()) {
 			// etag not really defined for external media
 
 			return '';
 		}
-		$etag_string = basename($this->getServerFilename($which)) . $this->getFiletime($which) . WT_GEDCOM . WT_USER_ACCESS_LEVEL . $SHOW_NO_WATERMARK;
+		$etag_string = basename($this->getServerFilename($which)) . $this->getFiletime($which) . WT_GEDCOM . WT_USER_ACCESS_LEVEL . $this->tree->getPreference('SHOW_NO_WATERMARK');
 		$etag_string = dechex(crc32($etag_string));
 
 		return $etag_string;
@@ -351,7 +349,8 @@ class Media extends GedcomRecord {
 	 * @return array
 	 */
 	public function getImageAttributes($which = 'main', $addWidth = 0, $addHeight = 0) {
-		global $THUMBNAIL_WIDTH;
+		$THUMBNAIL_WIDTH = $this->tree->getPreference('THUMBNAIL_WIDTH');
+
 		$var = $which . 'imagesize';
 		if (!empty($this->$var)) {
 			return $this->$var;

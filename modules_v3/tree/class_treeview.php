@@ -364,9 +364,7 @@ class TreeView {
 	 * @return string
 	 */
 	private function getThumbnail(Individual $individual) {
-		global $SHOW_HIGHLIGHT_IMAGES;
-
-		if ($SHOW_HIGHLIGHT_IMAGES) {
+		if ($individual->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
 			return $individual->displayImage();
 		} else {
 			return '';

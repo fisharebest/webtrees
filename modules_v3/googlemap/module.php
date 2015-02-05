@@ -945,7 +945,7 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 	 * @return string
 	 */
 	private function pedigreeMapJavascript($hideflags, $hidelines) {
-		global $controller, $SHOW_HIGHLIGHT_IMAGES, $PEDIGREE_GENERATIONS;
+		global $controller, $PEDIGREE_GENERATIONS;
 
 		// The HomeControl returns the map to the original position and style
 		$js = 'function HomeControl(controlDiv, pm_map) {' .
@@ -1350,7 +1350,7 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 				$event = '<img src="' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/sq' . $curgen . '.png" width="10" height="10"> ' .
 					'<strong>' . $relationship . '</strong>';
 				// add thumbnail image
-				if ($SHOW_HIGHLIGHT_IMAGES) {
+				if ($person->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
 					$image = $person->displayImage();
 				} else {
 					$image = '';

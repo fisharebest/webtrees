@@ -314,7 +314,7 @@ case 'edit':
 		// Other types of record do not have these lower-level records
 		break;
 	}
-	if (Auth::isAdmin() || $SHOW_GEDCOM_RECORD) {
+	if (Auth::isAdmin() || $WT_TREE->getPreference('SHOW_GEDCOM_RECORD')) {
 		echo
 			'<br><br><a href="edit_interface.php?action=editrawfact&amp;xref=', $xref, '&amp;fact_id=', $fact_id, '&amp;ged=', WT_GEDURL, '">',
 			I18N::translate('Edit raw GEDCOM'),
@@ -2343,7 +2343,7 @@ function keep_chan(GedcomRecord $record = null) {
  * @param string        $gender
  */
 function print_indi_form($nextaction, Individual $person = null, Family $family = null, Fact $name_fact = null, $famtag = 'CHIL', $gender = 'U') {
-	global $WT_TREE, $WORD_WRAPPED_NOTES, $NPFX_accept, $SHOW_GEDCOM_RECORD, $bdm, $STANDARD_NAME_FACTS;
+	global $WT_TREE, $NPFX_accept, $bdm, $STANDARD_NAME_FACTS;
 	global $QUICK_REQUIRED_FACTS, $QUICK_REQUIRED_FAMFACTS, $controller;
 
 	$SURNAME_TRADITION = $WT_TREE->getPreference('SURNAME_TRADITION');
@@ -2731,9 +2731,6 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 					if ($cmatch[1] == "CONT") {
 						$text .= "\n";
 					}
-					if ($WORD_WRAPPED_NOTES) {
-						$text .= ' ';
-					}
 					$text .= $cmatch[2];
 					$i++;
 				}
@@ -2803,7 +2800,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	}
 
 	// If we are editing an existing name, allow raw GEDCOM editing
-	if ($name_fact && (Auth::isAdmin() || $SHOW_GEDCOM_RECORD)) {
+	if ($name_fact && (Auth::isAdmin() || $WT_TREE->getPreference('SHOW_GEDCOM_RECORD'))) {
 		echo
 			'<br><br><a href="edit_interface.php?action=editrawfact&amp;xref=', $xref, '&amp;fact_id=', $name_fact->getFactId(), '&amp;ged=', WT_GEDURL, '">',
 			I18N::translate('Edit raw GEDCOM'),

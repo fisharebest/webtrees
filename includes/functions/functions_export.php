@@ -24,7 +24,7 @@ namespace Fisharebest\Webtrees;
  * @return string
  */
 function reformat_record_export($rec) {
-	global $WORD_WRAPPED_NOTES;
+	global $WT_TREE;
 
 	$newrec = '';
 	foreach (preg_split('/[\r\n]+/', $rec, -1, PREG_SPLIT_NO_EMPTY) as $line) {
@@ -39,7 +39,7 @@ function reformat_record_export($rec) {
 			do {
 				// Split after $pos chars
 				$pos = WT_GEDCOM_LINE_LENGTH;
-				if ($WORD_WRAPPED_NOTES) {
+				if ($WT_TREE->getPreference('WORD_WRAPPED_NOTES')) {
 					// Split on a space, and remove it (for compatibility with some desktop apps)
 					while ($pos && mb_substr($line, $pos - 1, 1) != ' ') {
 						--$pos;

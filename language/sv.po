@@ -12117,7 +12117,7 @@ msgstr ""
 #. I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting
 #: admin_trees_config.php:1674
 msgid "Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>An individual who has all of the ordinances done will have <b>BESP</b> printed after their name.  Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code.  For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances."
-msgstr "Om man väljer <b>Ja</b> kommer koderna för LDS förordningarna att visas i diagram rutor.<ul><li><b>B</b> - Dop</li><li><b>E</b> - Donation</li><li><b>S</b> - Försegling till make/a</li><li><b>P</b> Försegling med föräldrar</li></ul>Så en person som har fullgjort alla förordningar kommer att ha <b>BESP</b> utskrivet efter sitt namn. Om någon av förordningarna fattas kommer koderna att se ut så här <b>BE__</b> med ett _ för den missade förordningen.<br><br>Detta sätter variabeln $SHOW_LDS_AT_GLANCE i<i><u>xxx</u>.GED_priv.php</i>."
+msgstr "Om man väljer <b>Ja</b> kommer koderna för LDS förordningarna att visas i diagram rutor.<ul><li><b>B</b> - Dop</li><li><b>E</b> - Donation</li><li><b>S</b> - Försegling till make/a</li><li><b>P</b> Försegling med föräldrar</li></ul>Så en person som har fullgjort alla förordningar kommer att ha <b>BESP</b> utskrivet efter sitt namn. Om någon av förordningarna fattas kommer koderna att se ut så här <b>BE__</b> med ett _ för den missade förordningen."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: admin_trees_config.php:1785

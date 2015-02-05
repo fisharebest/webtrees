@@ -94,8 +94,6 @@ function load_gedcom_settings($ged_id) {
 	global $EXPAND_RELATIVES_EVENTS;      $EXPAND_RELATIVES_EVENTS      = $tree->getPreference('EXPAND_RELATIVES_EVENTS');
 	global $EXPAND_SOURCES;               $EXPAND_SOURCES               = $tree->getPreference('EXPAND_SOURCES');
 	global $FULL_SOURCES;                 $FULL_SOURCES                 = $tree->getPreference('FULL_SOURCES');
-	global $GEDCOM_MEDIA_PATH;            $GEDCOM_MEDIA_PATH            = $tree->getPreference('GEDCOM_MEDIA_PATH');
-	global $LANGUAGE;                     $LANGUAGE                     = $tree->getPreference('LANGUAGE');
 	global $MAX_DESCENDANCY_GENERATIONS;  $MAX_DESCENDANCY_GENERATIONS  = $tree->getPreference('MAX_DESCENDANCY_GENERATIONS');
 	global $MAX_PEDIGREE_GENERATIONS;     $MAX_PEDIGREE_GENERATIONS     = $tree->getPreference('MAX_PEDIGREE_GENERATIONS');
 	global $NO_UPDATE_CHAN;               $NO_UPDATE_CHAN               = $tree->getPreference('NO_UPDATE_CHAN');
@@ -105,25 +103,10 @@ function load_gedcom_settings($ged_id) {
 	global $PREFER_LEVEL2_SOURCES;        $PREFER_LEVEL2_SOURCES        = $tree->getPreference('PREFER_LEVEL2_SOURCES');
 	global $QUICK_REQUIRED_FACTS;         $QUICK_REQUIRED_FACTS         = $tree->getPreference('QUICK_REQUIRED_FACTS');
 	global $QUICK_REQUIRED_FAMFACTS;      $QUICK_REQUIRED_FAMFACTS      = $tree->getPreference('QUICK_REQUIRED_FAMFACTS');
-	global $SAVE_WATERMARK_IMAGE;         $SAVE_WATERMARK_IMAGE         = $tree->getPreference('SAVE_WATERMARK_IMAGE');
-	global $SAVE_WATERMARK_THUMB;         $SAVE_WATERMARK_THUMB         = $tree->getPreference('SAVE_WATERMARK_THUMB');
 	global $SHOW_AGE_DIFF;                $SHOW_AGE_DIFF                = $tree->getPreference('SHOW_AGE_DIFF');
-	global $SHOW_FACT_ICONS;              $SHOW_FACT_ICONS              = $tree->getPreference('SHOW_FACT_ICONS');
-	global $SHOW_GEDCOM_RECORD;           $SHOW_GEDCOM_RECORD           = $tree->getPreference('SHOW_GEDCOM_RECORD');
-	global $SHOW_HIGHLIGHT_IMAGES;        $SHOW_HIGHLIGHT_IMAGES        = $tree->getPreference('SHOW_HIGHLIGHT_IMAGES');
 	global $SHOW_LAST_CHANGE;             $SHOW_LAST_CHANGE             = $tree->getPreference('SHOW_LAST_CHANGE');
-	global $SHOW_LDS_AT_GLANCE;           $SHOW_LDS_AT_GLANCE           = $tree->getPreference('SHOW_LDS_AT_GLANCE');
-	global $SHOW_LEVEL2_NOTES;            $SHOW_LEVEL2_NOTES            = $tree->getPreference('SHOW_LEVEL2_NOTES');
-	global $SHOW_MEDIA_DOWNLOAD;          $SHOW_MEDIA_DOWNLOAD          = $tree->getPreference('SHOW_MEDIA_DOWNLOAD');
-	global $SHOW_NO_WATERMARK;            $SHOW_NO_WATERMARK            = $tree->getPreference('SHOW_NO_WATERMARK');
-	global $SHOW_PARENTS_AGE;             $SHOW_PARENTS_AGE             = $tree->getPreference('SHOW_PARENTS_AGE');
 	global $SHOW_PEDIGREE_PLACES;         $SHOW_PEDIGREE_PLACES         = $tree->getPreference('SHOW_PEDIGREE_PLACES');
 	global $SHOW_PEDIGREE_PLACES_SUFFIX;  $SHOW_PEDIGREE_PLACES_SUFFIX  = $tree->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX');
-	global $SHOW_RELATIVES_EVENTS;        $SHOW_RELATIVES_EVENTS        = $tree->getPreference('SHOW_RELATIVES_EVENTS');
-	global $THUMBNAIL_WIDTH;              $THUMBNAIL_WIDTH              = $tree->getPreference('THUMBNAIL_WIDTH');
-	global $USE_RIN;                      $USE_RIN                      = $tree->getPreference('USE_RIN');
-	global $WATERMARK_THUMB;              $WATERMARK_THUMB              = $tree->getPreference('WATERMARK_THUMB');
-	global $WORD_WRAPPED_NOTES;           $WORD_WRAPPED_NOTES           = $tree->getPreference('WORD_WRAPPED_NOTES');
 }
 
 /**
@@ -187,30 +170,23 @@ function get_sub_record($level, $tag, $gedrec, $num = 1) {
  * @param integer $nlevel the level of the CONT lines to get
  * @param string  $nrec   the gedcom subrecord to search in
  *
- * @return string a string with all CONT or CONC lines merged
+ * @return string a string with all CONT lines merged
  */
 function get_cont($nlevel, $nrec) {
-	global $WORD_WRAPPED_NOTES;
-	$text = "";
+	$text = '';
 
 	$subrecords = explode("\n", $nrec);
 	foreach ($subrecords as $thisSubrecord) {
-		if (substr($thisSubrecord, 0, 2) !== $nlevel . " ") {
+		if (substr($thisSubrecord, 0, 2) !== $nlevel . ' ') {
 			continue;
 		}
 		$subrecordType = substr($thisSubrecord, 2, 4);
-		if ($subrecordType == "CONT") {
-			$text .= "\n";
-		}
-		if ($subrecordType == "CONC" && $WORD_WRAPPED_NOTES) {
-			$text .= " ";
-		}
-		if ($subrecordType == "CONT" || $subrecordType == "CONC") {
-			$text .= rtrim(substr($thisSubrecord, 7));
+		if ($subrecordType === 'CONT') {
+			$text .= "\n" . substr($thisSubrecord, 7);
 		}
 	}
 
-	return rtrim($text, " ");
+	return $text;
 }
 
 /**

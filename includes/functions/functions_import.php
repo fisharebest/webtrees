@@ -26,7 +26,7 @@ use PDOException;
  * @return string
  */
 function reformat_record_import($rec) {
-	global $WORD_WRAPPED_NOTES, $GEDCOM_MEDIA_PATH;
+	global $WT_TREE;
 
 	// Strip out UTF8 formatting characters
 	$rec = str_replace(array(WT_UTF8_BOM, WT_UTF8_LRM, WT_UTF8_RLM), '', $rec);
@@ -565,6 +565,7 @@ function reformat_record_import($rec) {
 			break;
 		case 'FILE':
 			// Strip off the user-defined path prefix
+			$GEDCOM_MEDIA_PATH = $WT_TREE->getPreference('GEDCOM_MEDIA_PATH');
 			if ($GEDCOM_MEDIA_PATH && strpos($data, $GEDCOM_MEDIA_PATH) === 0) {
 				$data = substr($data, strlen($GEDCOM_MEDIA_PATH));
 			}
@@ -575,7 +576,7 @@ function reformat_record_import($rec) {
 			break;
 		case 'CONC':
 			// Merge CONC lines, to simplify access later on.
-			$newrec .= ($WORD_WRAPPED_NOTES ? ' ' : '') . $data;
+			$newrec .= ($WT_TREE->getPreference('WORD_WRAPPED_NOTES') ? ' ' : '') . $data;
 			break;
 		}
 	}

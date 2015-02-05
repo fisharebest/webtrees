@@ -173,7 +173,7 @@ class personal_facts_WT_Module extends Module implements ModuleTabInterface {
 	 * @return Fact[]
 	 */
 	private static function spouseFacts(Individual $individual, Individual $spouse) {
-		global $SHOW_RELATIVES_EVENTS;
+		$SHOW_RELATIVES_EVENTS = $individual->getTree()->getPreference('SHOW_RELATIVES_EVENTS');
 
 		$facts = array();
 		if (strstr($SHOW_RELATIVES_EVENTS, '_DEAT_SPOU')) {
@@ -207,7 +207,9 @@ class personal_facts_WT_Module extends Module implements ModuleTabInterface {
 	 * @return Fact[]
 	 */
 	private static function childFacts(Individual $person, Family $family, $option, $relation) {
-		global $controller, $SHOW_RELATIVES_EVENTS;
+		global $controller;
+
+		$SHOW_RELATIVES_EVENTS = $person->getTree()->getPreference('SHOW_RELATIVES_EVENTS');
 
 		$facts = array();
 
@@ -333,12 +335,14 @@ class personal_facts_WT_Module extends Module implements ModuleTabInterface {
 	 * Get the events of parents and grandparents.
 	 *
 	 * @param Individual $person
-	 * @param integer       $sosa
+	 * @param integer    $sosa
 	 *
 	 * @return Fact[]
 	 */
 	private static function parentFacts(Individual $person, $sosa) {
-		global $controller, $SHOW_RELATIVES_EVENTS;
+		global $controller;
+
+		$SHOW_RELATIVES_EVENTS = $person->getTree()->getPreference('SHOW_RELATIVES_EVENTS');
 
 		$facts = array();
 
@@ -436,7 +440,7 @@ class personal_facts_WT_Module extends Module implements ModuleTabInterface {
 	 * @return Fact[]
 	 */
 	private static function historicalFacts(Individual $person) {
-		global $SHOW_RELATIVES_EVENTS;
+		$SHOW_RELATIVES_EVENTS = $person->getTree()->getPreference('SHOW_RELATIVES_EVENTS');
 
 		$facts = array();
 

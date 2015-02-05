@@ -370,8 +370,6 @@ class Fact {
 	 * @return string
 	 */
 	public function summary() {
-		global $SHOW_PARENTS_AGE;
-
 		$attributes = array();
 		$target     = $this->getTarget();
 		if ($target) {
@@ -382,7 +380,7 @@ class Fact {
 				$attributes[] = '<span dir="auto">' . Filter::escapeHtml($value) . '</span>';
 			}
 			$date = $this->getDate();
-			if ($this->getTag() == 'BIRT' && $SHOW_PARENTS_AGE && $this->getParent() instanceof Individual) {
+			if ($this->getTag() == 'BIRT' && $this->getParent() instanceof Individual && $this->getParent()->getTree()->getPreference('SHOW_PARENTS_AGE')) {
 				$attributes[] = $date->display() . format_parents_age($this->getParent(), $date);
 			} else {
 				$attributes[] = $date->display();

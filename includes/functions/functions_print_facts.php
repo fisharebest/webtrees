@@ -31,7 +31,8 @@ use Rhumsaa\Uuid\Uuid;
  * @param GedcomRecord $record
  */
 function print_fact(Fact $fact, GedcomRecord $record) {
-	global $WT_TREE, $SHOW_FACT_ICONS;
+	global $WT_TREE;
+
 	static $n_chil = 0, $n_gchi = 0;
 
 	$parent = $fact->getParent();
@@ -140,7 +141,7 @@ function print_fact(Fact $fact, GedcomRecord $record) {
 	echo '<tr class="', $styleadd, '">';
 	echo '<td class="descriptionbox width20">';
 
-	if ($SHOW_FACT_ICONS) {
+	if ($WT_TREE->getPreference('SHOW_FACT_ICONS')) {
 		echo Theme::theme()->icon($fact), ' ';
 	}
 
@@ -639,7 +640,7 @@ function print_media_links($factrec, $level) {
  * @param integer $level
  */
 function print_main_sources(Fact $fact, $level) {
-	global $SHOW_FACT_ICONS;
+	global $WT_TREE;
 
 	$factrec = $fact->getGedcom();
 	$fact_id = $fact->getFactId();
@@ -697,7 +698,7 @@ function print_main_sources(Fact $fact, $level) {
 			} else
 			if ($can_edit) {
 				echo "<a onclick=\"return edit_record('$pid', '$fact_id');\" href=\"#\" title=\"", I18N::translate('Edit'), '">';
-					if ($SHOW_FACT_ICONS) {
+					if ($WT_TREE->getPreference('SHOW_FACT_ICONS')) {
 						if ($level == 1) {
 							echo '<i class="icon-source"></i> ';
 						}
@@ -881,7 +882,7 @@ function getSourceStructure($srec) {
  * @param integer $level
  */
 function print_main_notes(Fact $fact, $level) {
-	global $WT_TREE, $SHOW_FACT_ICONS;
+	global $WT_TREE;
 
 	$factrec = $fact->getGedcom();
 	$fact_id = $fact->getFactId();
@@ -919,7 +920,7 @@ function print_main_notes(Fact $fact, $level) {
 		if ($can_edit) {
 			echo '<a onclick="return edit_record(\'', $pid, '\', \'', $fact_id, '\');" href="#" title="', I18N::translate('Edit'), '">';
 			if ($level < 2) {
-				if ($SHOW_FACT_ICONS) {
+				if ($WT_TREE->getPreference('SHOW_FACT_ICONS')) {
 					echo '<i class="icon-note"></i> ';
 				}
 				if ($note) {
@@ -939,7 +940,7 @@ function print_main_notes(Fact $fact, $level) {
 			}
 		} else {
 			if ($level < 2) {
-				if ($SHOW_FACT_ICONS) {
+				if ($WT_TREE->getPreference('SHOW_FACT_ICONS')) {
 					echo '<i class="icon-note"></i> ';
 				}
 				if ($note) {
