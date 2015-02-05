@@ -1906,7 +1906,7 @@ function footnoteTextsStartHandler() {
  * XML <AgeAtDeath /> element handler
  */
 function ageAtDeathStartHandler() {
-	// TODO: This duplicates functionality in format_fact_date()
+	// This duplicates functionality in format_fact_date()
 	global $currentElement, $gedrec, $factrec;
 
 	$match = array();
