@@ -62,10 +62,6 @@ class DescendancyController extends ChartController {
 		// This is passed as a global.  A parameter would be better...
 		$show_full = $this->show_full;
 
-		if (!isset($this->personcount)) {
-			$this->personcount = 1;
-		}
-
 		// -- size of the detailed boxes based upon optional width parameter
 		$Dbwidth  = ($this->box_width * $bwidth) / 100;
 		$Dbheight = ($this->box_width * $bheight) / 100;
