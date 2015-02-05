@@ -435,7 +435,6 @@ if ($WT_TREE) {
 	} else {
 		define('WT_USER_ACCESS_LEVEL', WT_PRIV_PUBLIC);
 	}
-	load_gedcom_settings(WT_GED_ID);
 } else {
 	define('WT_GEDCOM', '');
 	define('WT_GED_ID', null);

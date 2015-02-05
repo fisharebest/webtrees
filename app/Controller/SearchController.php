@@ -608,8 +608,6 @@ class SearchController extends PageController {
 					}
 					if ($datalist) {
 						usort($datalist, __NAMESPACE__ . '\GedcomRecord::compare');
-						$GEDCOM = $search_tree->getName();
-						load_gedcom_settings($search_tree->getTreeId());
 						echo '<h3 class="indi-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->getTitleHtml(), '</span></a></h3>
 							<div class="indi-acc_content">',
 						format_indi_table($datalist);
@@ -631,8 +629,6 @@ class SearchController extends PageController {
 					}
 					if ($datalist) {
 						usort($datalist, __NAMESPACE__ . '\GedcomRecord::compare');
-						$GEDCOM = $search_tree->getName();
-						load_gedcom_settings($search_tree->getTreeId());
 						echo '<h3 class="fam-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->getTitleHtml(), '</span></a></h3>
 							<div class="fam-acc_content">',
 						format_fam_table($datalist);
@@ -641,7 +637,6 @@ class SearchController extends PageController {
 				}
 				echo '</div>'; //#searchAccordion-fam
 				$this->addInlineJavascript('jQuery("#searchAccordion-fam").accordion({heightStyle: "content", collapsible: true});');
-
 				// source results
 				echo '<div id="searchAccordion-source">';
 				// Split sources by gedcom
@@ -654,8 +649,6 @@ class SearchController extends PageController {
 					}
 					if ($datalist) {
 						usort($datalist, __NAMESPACE__ . '\GedcomRecord::compare');
-						$GEDCOM = $search_tree->getName();
-						load_gedcom_settings($search_tree->getTreeId());
 						echo '<h3 class="source-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->getTitleHtml(), '</span></a></h3>
 							<div class="source-acc_content">',
 						format_sour_table($datalist);
@@ -664,7 +657,6 @@ class SearchController extends PageController {
 				}
 				echo '</div>'; //#searchAccordion-source
 				$this->addInlineJavascript('jQuery("#searchAccordion-source").accordion({heightStyle: "content", collapsible: true});');
-
 				// note results
 				echo '<div id="searchAccordion-note">';
 				// Split notes by gedcom
@@ -678,8 +670,6 @@ class SearchController extends PageController {
 					if ($datalist) {
 						usort($datalist, __NAMESPACE__ . '\GedcomRecord::compare');
 						usort($datalist, 'Webtrees\GedcomRecord::compare');
-						$GEDCOM = $search_tree->getName();
-						load_gedcom_settings($search_tree->getTreeId());
 						echo '<h3 class="note-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->getTitleHtml(), '</span></a></h3>
 							<div class="note-acc_content">',
 						format_note_table($datalist);
@@ -688,9 +678,6 @@ class SearchController extends PageController {
 				}
 				echo '</div>'; //#searchAccordion-note
 				$this->addInlineJavascript('jQuery("#searchAccordion-note").accordion({heightStyle: "content", collapsible: true});');
-
-				$GEDCOM = WT_GEDCOM;
-				load_gedcom_settings(WT_GED_ID);
 				echo '</div>'; //#search-result-tabs
 			} elseif ($this->query || $this->firstname || $this->lastname || $this->place || $this->year) {
 				// One or more search terms were specified, but no results were found.

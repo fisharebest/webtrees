@@ -49,15 +49,6 @@ class FunctionsTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test that function load_gedcom_settings() exists in the correct namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionLoadGedcomSettingsExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\load_gedcom_settings'), true);
-	}
-
-	/**
 	 * Test that function get_sub_record() exists in the correct namespace.
 	 *
 	 * @return void

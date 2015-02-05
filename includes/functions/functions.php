@@ -81,16 +81,6 @@ function file_upload_error_text($error_code) {
 }
 
 /**
- * Load the configuration settings into global scope
- *
- * @todo some of these are used infrequently - just load them when we need them
- *
- * @param integer $ged_id
- */
-function load_gedcom_settings($ged_id) {
-}
-
-/**
  * get a gedcom subrecord
  *
  * searches a gedcom record and returns a subrecord of it.  A subrecord is defined starting at a

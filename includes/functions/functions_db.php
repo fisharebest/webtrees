@@ -217,14 +217,7 @@ function search_indis($query, $geds, $match) {
 
 	$list = array();
 	$rows = Database::prepare($sql)->fetchAll();
-	$GED_ID = WT_GED_ID;
 	foreach ($rows as $row) {
-		// Switch privacy file if necessary
-		if ($row->gedcom_id != $GED_ID) {
-			$GEDCOM = get_gedcom_from_id($row->gedcom_id);
-			load_gedcom_settings($row->gedcom_id);
-			$GED_ID = $row->gedcom_id;
-		}
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
 		$record = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		// Ignore non-genealogical data
@@ -240,11 +233,7 @@ function search_indis($query, $geds, $match) {
 		}
 		$list[] = $record;
 	}
-	// Switch privacy file if necessary
-	if ($GED_ID != WT_GED_ID) {
-		$GEDCOM = WT_GEDCOM;
-		load_gedcom_settings(WT_GED_ID);
-	}
+
 	return $list;
 }
 
@@ -277,14 +266,7 @@ function search_indis_names($query, $geds, $match) {
 
 	$list = array();
 	$rows = Database::prepare($sql)->fetchAll();
-	$GED_ID = WT_GED_ID;
 	foreach ($rows as $row) {
-		// Switch privacy file if necessary
-		if ($row->gedcom_id != $GED_ID) {
-			$GEDCOM = get_gedcom_from_id($row->gedcom_id);
-			load_gedcom_settings($row->gedcom_id);
-			$GED_ID = $row->gedcom_id;
-		}
 		$indi = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		// The individual may have private names - and the DB search may have found it.
 		if ($indi->canShowName()) {
@@ -301,11 +283,7 @@ function search_indis_names($query, $geds, $match) {
 			}
 		}
 	}
-	// Switch privacy file if necessary
-	if ($GED_ID != WT_GED_ID) {
-		$GEDCOM = WT_GEDCOM;
-		load_gedcom_settings(WT_GED_ID);
-	}
+
 	return $list;
 }
 
@@ -494,14 +472,7 @@ function search_fams($query, $geds, $match) {
 
 	$list = array();
 	$rows = Database::prepare($sql)->fetchAll();
-	$GED_ID = WT_GED_ID;
 	foreach ($rows as $row) {
-		// Switch privacy file if necessary
-		if ($row->gedcom_id != $GED_ID) {
-			$GEDCOM = get_gedcom_from_id($row->gedcom_id);
-			load_gedcom_settings($row->gedcom_id);
-			$GED_ID = $row->gedcom_id;
-		}
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
 		$record = Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		// Ignore non-genealogical data
@@ -519,11 +490,7 @@ function search_fams($query, $geds, $match) {
 		}
 		$list[] = $record;
 	}
-	// Switch privacy file if necessary
-	if ($GED_ID != WT_GED_ID) {
-		$GEDCOM = WT_GEDCOM;
-		load_gedcom_settings(WT_GED_ID);
-	}
+
 	return $list;
 }
 
@@ -557,24 +524,13 @@ function search_fams_names($query, $geds, $match) {
 
 	$list = array();
 	$rows = Database::prepare($sql)->fetchAll();
-	$GED_ID = WT_GED_ID;
 	foreach ($rows as $row) {
-		// Switch privacy file if necessary
-		if ($row->gedcom_id != $GED_ID) {
-			$GEDCOM = get_gedcom_from_id($row->gedcom_id);
-			load_gedcom_settings($row->gedcom_id);
-			$GED_ID = $row->gedcom_id;
-		}
 		$indi = Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		if ($indi->canShowName()) {
 			$list[] = $indi;
 		}
 	}
-	// Switch privacy file if necessary
-	if ($GED_ID != WT_GED_ID) {
-		$GEDCOM = WT_GEDCOM;
-		load_gedcom_settings(WT_GED_ID);
-	}
+
 	return $list;
 }
 
@@ -612,14 +568,7 @@ function search_sources($query, $geds, $match) {
 
 	$list = array();
 	$rows = Database::prepare($sql)->fetchAll();
-	$GED_ID = WT_GED_ID;
 	foreach ($rows as $row) {
-		// Switch privacy file if necessary
-		if ($row->gedcom_id != $GED_ID) {
-			$GEDCOM = get_gedcom_from_id($row->gedcom_id);
-			load_gedcom_settings($row->gedcom_id);
-			$GED_ID = $row->gedcom_id;
-		}
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
 		$record = Source::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		// Ignore non-genealogical data
@@ -637,11 +586,7 @@ function search_sources($query, $geds, $match) {
 		}
 		$list[] = $record;
 	}
-	// Switch privacy file if necessary
-	if ($GED_ID != WT_GED_ID) {
-		$GEDCOM = WT_GEDCOM;
-		load_gedcom_settings(WT_GED_ID);
-	}
+
 	return $list;
 }
 
@@ -679,14 +624,7 @@ function search_notes($query, $geds, $match) {
 
 	$list = array();
 	$rows = Database::prepare($sql)->fetchAll();
-	$GED_ID = WT_GED_ID;
 	foreach ($rows as $row) {
-		// Switch privacy file if necessary
-		if ($row->gedcom_id != $GED_ID) {
-			$GEDCOM = get_gedcom_from_id($row->gedcom_id);
-			load_gedcom_settings($row->gedcom_id);
-			$GED_ID = $row->gedcom_id;
-		}
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
 		$record = Note::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		// Ignore non-genealogical data
@@ -704,11 +642,7 @@ function search_notes($query, $geds, $match) {
 		}
 		$list[] = $record;
 	}
-	// Switch privacy file if necessary
-	if ($GED_ID != WT_GED_ID) {
-		$GEDCOM = WT_GEDCOM;
-		load_gedcom_settings(WT_GED_ID);
-	}
+
 	return $list;
 }
 
@@ -747,14 +681,7 @@ function search_repos($query, $geds, $match) {
 
 	$list   = array();
 	$rows   = Database::prepare($sql)->fetchAll();
-	$GED_ID = WT_GED_ID;
 	foreach ($rows as $row) {
-		// Switch privacy file if necessary
-		if ($row->gedcom_id != $GED_ID) {
-			$GEDCOM = get_gedcom_from_id($row->gedcom_id);
-			load_gedcom_settings($row->gedcom_id);
-			$GED_ID = $row->gedcom_id;
-		}
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
 		$record = Repository::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		// Ignore non-genealogical data
@@ -772,11 +699,7 @@ function search_repos($query, $geds, $match) {
 		}
 		$list[] = $record;
 	}
-	// Switch privacy file if necessary
-	if ($GED_ID != WT_GED_ID) {
-		$GEDCOM = WT_GEDCOM;
-		load_gedcom_settings(WT_GED_ID);
-	}
+
 	return $list;
 }
 
