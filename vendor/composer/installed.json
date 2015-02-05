@@ -465,7 +465,7 @@
         },
         "time": "2014-06-05 11:42:24",
         "type": "library",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "classmap": [
                 "pclzip.lib.php"
