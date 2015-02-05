@@ -1434,7 +1434,7 @@ function handle_updates($newged, $levelOverride = 'no') {
  * @param string $fact the new fact we are adding
  */
 function create_add_form($fact) {
-	global $tags, $emptyfacts;
+	global $tags, $emptyfacts, $WT_TREE;
 
 	$tags = array();
 
