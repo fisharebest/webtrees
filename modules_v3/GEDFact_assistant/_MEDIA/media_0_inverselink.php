@@ -167,6 +167,7 @@ if ($action == 'choose' && $paramok) {
 	echo "<sub>" . I18N::translate('Enter or search for the ID of the individual, family, or source to which this media item should be linked.') . "</sub>";
 	echo '<br><br>';
 	echo '<input type="hidden" name="idName" id="idName" size="36" value="Name of ID">';
+
 ?>
 <script>
 
@@ -195,8 +196,8 @@ if ($action == 'choose' && $paramok) {
 	var ifamily = "<?php echo I18N::translate('Family navigator'); ?>";
 	var remove = "<?php echo I18N::translate('Remove'); ?>";
 	/* ===icons === */
-	var removeLinkIcon = "<?php echo Theme::theme()->parameter('remove'); ?>";
-	var familyNavIcon = "<?php echo Theme::theme()->parameter('button_family'); ?>";
+	var removeLinkIcon = "<?php echo Theme::theme()->parameter('image-remove'); ?>";
+	var familyNavIcon = "<?php echo Theme::theme()->parameter('image-button_family'); ?>";
 
 
 var INPUT_NAME_PREFIX = 'InputCell_'; // this is being set via script
@@ -560,7 +561,7 @@ function shiftlinks() {
 		if (Auth::isAdmin()) {
 			echo "<tr><td class=\"descriptionbox wrap width25\">";
 			echo WT_Gedcom_Tag::getLabel('CHAN'), "</td><td class=\"optionbox wrap\">";
-			if ($NO_UPDATE_CHAN) {
+			if ($WT_TREE->getPreference('NO_UPDATE_CHAN')) {
 				echo "<input type=\"checkbox\" checked name=\"preserve_last_changed\">";
 			} else {
 				echo "<input type=\"checkbox\" name=\"preserve_last_changed\">";

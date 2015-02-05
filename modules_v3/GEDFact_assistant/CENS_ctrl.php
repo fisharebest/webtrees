@@ -54,10 +54,6 @@ echo '</h3>';
 		<?php
 		echo Filter::getCsrf();
 
-global $tabno, $linkToID, $SEARCH_SPIDER;
-global $SHOW_AGE_DIFF, $GEDCOM;
-global $show_full, $famid;
-
 $summary = $person->format_first_major_fact(WT_EVENTS_BIRT, 2);
 if (!($person->isDead())) {
 	// If alive display age

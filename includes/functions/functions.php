@@ -103,7 +103,6 @@ function load_gedcom_settings($ged_id) {
 	global $PREFER_LEVEL2_SOURCES;        $PREFER_LEVEL2_SOURCES        = $tree->getPreference('PREFER_LEVEL2_SOURCES');
 	global $QUICK_REQUIRED_FACTS;         $QUICK_REQUIRED_FACTS         = $tree->getPreference('QUICK_REQUIRED_FACTS');
 	global $QUICK_REQUIRED_FAMFACTS;      $QUICK_REQUIRED_FAMFACTS      = $tree->getPreference('QUICK_REQUIRED_FAMFACTS');
-	global $SHOW_AGE_DIFF;                $SHOW_AGE_DIFF                = $tree->getPreference('SHOW_AGE_DIFF');
 	global $SHOW_LAST_CHANGE;             $SHOW_LAST_CHANGE             = $tree->getPreference('SHOW_LAST_CHANGE');
 	global $SHOW_PEDIGREE_PLACES;         $SHOW_PEDIGREE_PLACES         = $tree->getPreference('SHOW_PEDIGREE_PLACES');
 	global $SHOW_PEDIGREE_PLACES_SUFFIX;  $SHOW_PEDIGREE_PLACES_SUFFIX  = $tree->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX');

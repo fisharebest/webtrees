@@ -275,7 +275,7 @@ class relatives_WT_Module extends Module implements ModuleTabInterface {
 
 	/** {@inheritdoc} */
 	public function getTabContent() {
-		global $SHOW_AGE_DIFF, $show_full, $controller;
+		global $WT_TREE, $show_full, $controller;
 
 		if (isset($show_full)) {
 			$saved_show_full = $show_full;
@@ -286,7 +286,7 @@ class relatives_WT_Module extends Module implements ModuleTabInterface {
 		ob_start();
 		?>
 		<table class="facts_table"><tr><td class="descriptionbox rela">
-		<input id="checkbox_elder" type="checkbox" onclick="jQuery('div.elderdate').toggle();" <?php echo $SHOW_AGE_DIFF ? 'checked' : ''; ?>>
+		<input id="checkbox_elder" type="checkbox" onclick="jQuery('div.elderdate').toggle();" <?php echo $WT_TREE->getPreference('SHOW_AGE_DIFF') ? 'checked' : ''; ?>>
 		<label for="checkbox_elder"><?php echo I18N::translate('Show date differences'); ?></label>
 		</td></tr></table>
 		<?php
@@ -325,7 +325,7 @@ class relatives_WT_Module extends Module implements ModuleTabInterface {
 			$this->printFamily($family, 'FAMS', $family->getFullName());
 		}
 
-		if (!$SHOW_AGE_DIFF) {
+		if (!$WT_TREE->getPreference('SHOW_AGE_DIFF')) {
 			echo '<script>jQuery("DIV.elderdate").toggle();</script>';
 		}
 
