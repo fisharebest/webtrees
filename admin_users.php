@@ -114,11 +114,11 @@ case 'save':
 			}
 
 			foreach (Tree::getAll() as $tree) {
-				$tree->setUserPreference($user, 'gedcomid', Filter::post('gedcomid' . $tree->getId(), WT_REGEX_XREF));
-				$tree->setUserPreference($user, 'rootid', Filter::post('rootid' . $tree->getId(), WT_REGEX_XREF));
-				$tree->setUserPreference($user, 'canedit', Filter::post('canedit' . $tree->getId(), implode('|', array_keys($ALL_EDIT_OPTIONS))));
-				if (Filter::post('gedcomid' . $tree->getId(), WT_REGEX_XREF)) {
-					$tree->setUserPreference($user, 'RELATIONSHIP_PATH_LENGTH', Filter::postInteger('RELATIONSHIP_PATH_LENGTH' . $tree->getId(), 0, 10, 0));
+				$tree->setUserPreference($user, 'gedcomid', Filter::post('gedcomid' . $tree->getTreeId(), WT_REGEX_XREF));
+				$tree->setUserPreference($user, 'rootid', Filter::post('rootid' . $tree->getTreeId(), WT_REGEX_XREF));
+				$tree->setUserPreference($user, 'canedit', Filter::post('canedit' . $tree->getTreeId(), implode('|', array_keys($ALL_EDIT_OPTIONS))));
+				if (Filter::post('gedcomid' . $tree->getTreeId(), WT_REGEX_XREF)) {
+					$tree->setUserPreference($user, 'RELATIONSHIP_PATH_LENGTH', Filter::postInteger('RELATIONSHIP_PATH_LENGTH' . $tree->getTreeId(), 0, 10, 0));
 				} else {
 					// Do not allow a path length to be set if the individual ID is not
 					$tree->setUserPreference($user, 'RELATIONSHIP_PATH_LENGTH', null);
@@ -588,7 +588,7 @@ case 'edit':
 						<?php echo $tree->getTitleHtml(); ?>
 					</td>
 					<td>
-						<select name="canedit<?php echo $tree->getId(); ?>">
+						<select name="canedit<?php echo $tree->getTreeId(); ?>">
 							<?php foreach ($ALL_EDIT_OPTIONS as $EDIT_OPTION => $desc): ?>
 								<option value="<?php echo $EDIT_OPTION; ?>"
 									<?php echo $EDIT_OPTION === $tree->getUserPreference($user, 'canedit') ? 'selected' : ''; ?>
@@ -604,11 +604,11 @@ case 'edit':
 							data-autocomplete-ged="<?php echo Filter::escapeHtml($tree->getName()); ?>"
 							type="text"
 							size="12"
-							name="rootid<?php echo $tree->getId(); ?>"
-							id="rootid<?php echo $tree->getId(); ?>"
+							name="rootid<?php echo $tree->getTreeId(); ?>"
+							id="rootid<?php echo $tree->getTreeId(); ?>"
 							value="<?php echo Filter::escapeHtml($tree->getUserPreference($user, 'rootid')); ?>"
 						>
-						<?php echo print_findindi_link('rootid' . $tree->getId()), '', $tree->getName(); ?>
+						<?php echo print_findindi_link('rootid' . $tree->getTreeId()), '', $tree->getName(); ?>
 					</td>
 					<td>
 						<input
@@ -616,14 +616,14 @@ case 'edit':
 							data-autocomplete-ged="<?php echo Filter::escapeHtml($tree->getName()); ?>"
 							type="text"
 							size="12"
-							name="gedcomid<?php echo $tree->getId(); ?>"
-							id="gedcomid<?php echo $tree->getId(); ?>"
+							name="gedcomid<?php echo $tree->getTreeId(); ?>"
+							id="gedcomid<?php echo $tree->getTreeId(); ?>"
 							value="<?php echo Filter::escapeHtml($tree->getUserPreference($user, 'gedcomid')); ?>"
 						>
-						<?php echo print_findindi_link('gedcomid' . $tree->getId(), '', $tree->getName()); ?>
+						<?php echo print_findindi_link('gedcomid' . $tree->getTreeId(), '', $tree->getName()); ?>
 					</td>
 					<td>
-						<select name="RELATIONSHIP_PATH_LENGTH<?php echo $tree->getId(); ?>" id="RELATIONSHIP_PATH_LENGTH<?php echo $tree->getId(); ?>" class="relpath">
+						<select name="RELATIONSHIP_PATH_LENGTH<?php echo $tree->getTreeId(); ?>" id="RELATIONSHIP_PATH_LENGTH<?php echo $tree->getTreeId(); ?>" class="relpath">
 							<?php for ($n = 0; $n <= 10; ++$n): ?>
 							<option value="<?php echo $n; ?>" <?php echo $tree->getUserPreference($user, 'RELATIONSHIP_PATH_LENGTH') === $n ? 'checked' : ''; ?>>
 								<?php echo $n ? $n : I18N::translate('No'); ?>

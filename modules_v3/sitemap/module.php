@@ -79,40 +79,40 @@ class sitemap_WT_Module extends Module implements ModuleConfigInterface {
 				if ($tree->getPreference('include_in_sitemap')) {
 					$n = Database::prepare(
 						"SELECT COUNT(*) FROM `##individuals` WHERE i_file = :tree_id"
-					)->execute(array('tree_id' => $tree->getId()))->fetchOne();
+					)->execute(array('tree_id' => $tree->getTreeId()))->fetchOne();
 					for ($i = 0; $i <= $n / self::RECORDS_PER_VOLUME; ++$i) {
-						$data .= '<sitemap><loc>' . WT_BASE_URL . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap-' . $tree->getId() . '-i-' . $i . '.xml</loc>' . $lastmod . '</sitemap>' . PHP_EOL;
+						$data .= '<sitemap><loc>' . WT_BASE_URL . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap-' . $tree->getTreeId() . '-i-' . $i . '.xml</loc>' . $lastmod . '</sitemap>' . PHP_EOL;
 					}
 					$n = Database::prepare(
 						"SELECT COUNT(*) FROM `##sources` WHERE s_file = :tree_id"
-					)->execute(array('tree_id' => $tree->getId()))->fetchOne();
+					)->execute(array('tree_id' => $tree->getTreeId()))->fetchOne();
 					if ($n) {
 						for ($i = 0; $i <= $n / self::RECORDS_PER_VOLUME; ++$i) {
-							$data .= '<sitemap><loc>' . WT_BASE_URL . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap-' . $tree->getId() . '-s-' . $i . '.xml</loc>' . $lastmod . '</sitemap>' . PHP_EOL;
+							$data .= '<sitemap><loc>' . WT_BASE_URL . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap-' . $tree->getTreeId() . '-s-' . $i . '.xml</loc>' . $lastmod . '</sitemap>' . PHP_EOL;
 						}
 					}
 					$n = Database::prepare(
 						"SELECT COUNT(*) FROM `##other` WHERE o_file = :tree_id AND o_type = 'REPO'"
-					)->execute(array('tree_id' => $tree->getId()))->fetchOne();
+					)->execute(array('tree_id' => $tree->getTreeId()))->fetchOne();
 					if ($n) {
 						for ($i = 0; $i <= $n / self::RECORDS_PER_VOLUME; ++$i) {
-							$data .= '<sitemap><loc>' . WT_BASE_URL . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap-' . $tree->getId() . '-r-' . $i . '.xml</loc>' . $lastmod . '</sitemap>' . PHP_EOL;
+							$data .= '<sitemap><loc>' . WT_BASE_URL . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap-' . $tree->getTreeId() . '-r-' . $i . '.xml</loc>' . $lastmod . '</sitemap>' . PHP_EOL;
 						}
 					}
 					$n = Database::prepare(
 						"SELECT COUNT(*) FROM `##other` WHERE o_file = :tree_id AND o_type = 'NOTE'"
-					)->execute(array('tree_id' => $tree->getId()))->fetchOne();
+					)->execute(array('tree_id' => $tree->getTreeId()))->fetchOne();
 					if ($n) {
 						for ($i = 0; $i <= $n / self::RECORDS_PER_VOLUME; ++$i) {
-							$data .= '<sitemap><loc>' . WT_BASE_URL . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap-' . $tree->getId() . '-n-' . $i . '.xml</loc>' . $lastmod . '</sitemap>' . PHP_EOL;
+							$data .= '<sitemap><loc>' . WT_BASE_URL . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap-' . $tree->getTreeId() . '-n-' . $i . '.xml</loc>' . $lastmod . '</sitemap>' . PHP_EOL;
 						}
 					}
 					$n = Database::prepare(
 						"SELECT COUNT(*) FROM `##media` WHERE m_file = :tree_id"
-					)->execute(array('tree_id' => $tree->getId()))->fetchOne();
+					)->execute(array('tree_id' => $tree->getTreeId()))->fetchOne();
 					if ($n) {
 						for ($i = 0; $i <= $n / self::RECORDS_PER_VOLUME; ++$i) {
-							$data .= '<sitemap><loc>' . WT_BASE_URL . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap-' . $tree->getId() . '-m-' . $i . '.xml</loc>' . $lastmod . '</sitemap>' . PHP_EOL;
+							$data .= '<sitemap><loc>' . WT_BASE_URL . 'module.php?mod=' . $this->getName() . '&amp;mod_action=generate&amp;file=sitemap-' . $tree->getTreeId() . '-m-' . $i . '.xml</loc>' . $lastmod . '</sitemap>' . PHP_EOL;
 						}
 					}
 				}
@@ -266,7 +266,7 @@ class sitemap_WT_Module extends Module implements ModuleConfigInterface {
 		// Save the updated preferences
 		if (Filter::post('action') == 'save') {
 			foreach (Tree::getAll() as $tree) {
-				$tree->setPreference('include_in_sitemap', Filter::postBool('include' . $tree->getId()));
+				$tree->setPreference('include_in_sitemap', Filter::postBool('include' . $tree->getTreeId()));
 			}
 			// Clear cache and force files to be regenerated
 			Database::prepare(
@@ -294,7 +294,7 @@ class sitemap_WT_Module extends Module implements ModuleConfigInterface {
 			'<form method="post" action="module.php?mod=' . $this->getName() . '&amp;mod_action=admin">',
 		'<input type="hidden" name="action" value="save">';
 		foreach (Tree::getAll() as $tree) {
-			echo '<p><input type="checkbox" name="include', $tree->getId(), '" ';
+			echo '<p><input type="checkbox" name="include', $tree->getTreeId(), '" ';
 			if ($tree->getPreference('include_in_sitemap')) {
 				echo 'checked';
 				$include_any = true;

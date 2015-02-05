@@ -74,7 +74,7 @@ class Media extends GedcomRecord {
 		$linked_ids = Database::prepare(
 			"SELECT l_from FROM `##link` WHERE l_to = ? AND l_file = ?"
 		)->execute(array(
-			$this->xref, $this->tree->getId()
+			$this->xref, $this->tree->getTreeId()
 		))->fetchOneColumn();
 		foreach ($linked_ids as $linked_id) {
 			$linked_record = GedcomRecord::getInstance($linked_id);
@@ -446,7 +446,7 @@ class Media extends GedcomRecord {
 
 		return
 			'mediafirewall.php?mid=' . $this->getXref() . $thumbstr . $downloadstr .
-			'&amp;ged=' . rawurlencode(get_gedcom_from_id($this->tree->getId())) .
+			'&amp;ged=' . rawurlencode(get_gedcom_from_id($this->tree->getTreeId())) .
 			'&amp;cb=' . $this->getEtag($which);
 	}
 

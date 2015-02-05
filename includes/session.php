@@ -418,7 +418,7 @@ foreach (Tree::getAll() as $tree) {
 // These attributes of the currently-selected tree are used frequently
 if ($WT_TREE) {
 	define('WT_GEDCOM', $WT_TREE->getName());
-	define('WT_GED_ID', $WT_TREE->getId());
+	define('WT_GED_ID', $WT_TREE->getTreeId());
 	define('WT_GEDURL', $WT_TREE->getNameUrl());
 	define('WT_TREE_TITLE', $WT_TREE->getTitleHtml());
 	define('WT_USER_GEDCOM_ADMIN', Auth::isManager($WT_TREE));

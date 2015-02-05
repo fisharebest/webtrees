@@ -63,7 +63,7 @@ class Note extends GedcomRecord {
 		$linked_ids = Database::prepare(
 			"SELECT l_from FROM `##link` WHERE l_to=? AND l_file=?"
 		)->execute(array(
-			$this->xref, $this->tree->getId()
+			$this->xref, $this->tree->getTreeId()
 		))->fetchOneColumn();
 		foreach ($linked_ids as $linked_id) {
 			$linked_record = GedcomRecord::getInstance($linked_id);

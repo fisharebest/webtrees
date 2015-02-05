@@ -166,7 +166,7 @@ case 'importform':
 	// the javascript in the next line strips any path associated with the file before comparing it to the current GEDCOM name (both Chrome and IE8 include c:\fakepath\ in the filename).
 	$previous_gedcom_filename = $tree->getPreference('gedcom_filename');
 	echo '<form name="replaceform" method="post" enctype="multipart/form-data" onsubmit="var newfile = document.replaceform.ged_name.value; newfile = newfile.substr(newfile.lastIndexOf(\'\\\\\')+1); if (newfile!=\'', Filter::escapeHtml($previous_gedcom_filename), '\' && \'\' != \'', Filter::escapeHtml($previous_gedcom_filename), '\') return confirm(\'', Filter::escapeHtml(I18N::translate('You have selected a GEDCOM file with a different name.  Is this correct?')), '\'); else return true;">';
-	echo '<input type="hidden" name="gedcom_id" value="', $tree->getId(), '">';
+	echo '<input type="hidden" name="gedcom_id" value="', $tree->getTreeId(), '">';
 	echo Filter::getCsrf();
 	if (Filter::get('action') == 'uploadform') {
 		echo '<input type="hidden" name="action" value="replace_upload">';
@@ -230,36 +230,36 @@ $controller->pageHeader();
 	<?php foreach (Tree::GetAll() as $tree): ?>
 	<?php if (Auth::isManager($tree)): ?>
 	<div class="panel panel-default">
-		<div class="panel-heading" role="tab" id="panel-tree-<?php echo $tree->getId(); ?>">
+		<div class="panel-heading" role="tab" id="panel-tree-<?php echo $tree->getTreeId(); ?>">
 			<h2 class="panel-title">
 				<i class="fa fa-fw fa-tree"></i>
-				<a data-toggle="collapse" data-parent="#accordion" href="#tree-<?php echo $tree->getId(); ?>" aria-expanded="true" aria-controls="tree-<?php echo $tree->getId(); ?>">
+				<a data-toggle="collapse" data-parent="#accordion" href="#tree-<?php echo $tree->getTreeId(); ?>" aria-expanded="true" aria-controls="tree-<?php echo $tree->getTreeId(); ?>">
 					<?php echo $tree->getNameHtml(); ?> — <?php echo $tree->getTitleHtml(); ?>
 				</a>
 			</h2>
 		</div>
-		<div id="tree-<?php echo $tree->getId(); ?>" class="panel-collapse collapse<?php echo $tree->getId() === WT_GED_ID || $tree->getPreference('imported') === '0' ? ' in' : ''; ?>" role="tabpanel" aria-labelledby="panel-tree-<?php echo $tree->getId(); ?>">
+		<div id="tree-<?php echo $tree->getTreeId(); ?>" class="panel-collapse collapse<?php echo $tree->getTreeId() === WT_GED_ID || $tree->getPreference('imported') === '0' ? ' in' : ''; ?>" role="tabpanel" aria-labelledby="panel-tree-<?php echo $tree->getTreeId(); ?>">
 			<div class="panel-body">
 				<?php
 
 		// The third row shows an optional progress bar and a list of maintenance options
 		$importing = Database::prepare(
 			"SELECT 1 FROM `##gedcom_chunk` WHERE gedcom_id = ? AND imported = '0' LIMIT 1"
-		)->execute(array($tree->getId()))->fetchOne();
+		)->execute(array($tree->getTreeId()))->fetchOne();
 		if ($importing) {
 				?>
-				<div id="import<?php echo $tree->getId(); ?>" class="col-xs-12">
+				<div id="import<?php echo $tree->getTreeId(); ?>" class="col-xs-12">
 					<div class="progress">
 						<?php echo I18N::translate('Calculating…'); ?>
 					</div>
 				</div>
 				<?php
 			$controller->addInlineJavascript(
-				'jQuery("#import' . $tree->getId() . '").load("import.php?gedcom_id=' . $tree->getId() . '");'
+				'jQuery("#import' . $tree->getTreeId() . '").load("import.php?gedcom_id=' . $tree->getTreeId() . '");'
 			);
 		}
 				?>
-				<div class="row<?php echo $importing ? ' hidden' : ''; ?>" id="actions<?php echo $tree->getId(); ?>">
+				<div class="row<?php echo $importing ? ' hidden' : ''; ?>" id="actions<?php echo $tree->getTreeId(); ?>">
 					<div class="col-sm-6 col-md-3">
 						<h3>
 							<a href="index.php?ctype=gedcom&ged=<?php echo $tree->getNameUrl(); ?>">
@@ -290,7 +290,7 @@ $controller->pageHeader();
 							<!-- HOME PAGE BLOCKS-->
 							<li>
 								<i class="fa fa-li fa-th-large"></i>
-								<a href="index_edit.php?gedcom_id=<?php echo $tree->getId(); ?>">
+								<a href="index_edit.php?gedcom_id=<?php echo $tree->getTreeId(); ?>">
 									<?php echo I18N::translate('Change the “Home page” blocks'); ?>
 									<span class="sr-only">
 										<?php echo $tree->getTitleHtml(); ?>
@@ -300,15 +300,15 @@ $controller->pageHeader();
 							<!-- DELETE -->
 							<li>
 								<i class="fa fa-li fa-trash-o"></i>
-								<a href="#" onclick="if (confirm('<?php echo Filter::escapeJs(I18N::translate('Are you sure you want to delete “%s”?', $tree->getNameHtml())); ?>')) { document.delete_form<?php echo $tree->getId(); ?>.submit(); } return false;">
+								<a href="#" onclick="if (confirm('<?php echo Filter::escapeJs(I18N::translate('Are you sure you want to delete “%s”?', $tree->getNameHtml())); ?>')) { document.delete_form<?php echo $tree->getTreeId(); ?>.submit(); } return false;">
 									<?php echo I18N::translate('Delete'); ?>
 									<span class="sr-only">
 										<?php echo $tree->getTitleHtml(); ?>
 									</span>
 								</a>
-								<form name="delete_form<?php echo $tree->getId(); ?>" method="post">
+								<form name="delete_form<?php echo $tree->getTreeId(); ?>" method="post">
 									<input type="hidden" name="action" value="delete">
-									<input type="hidden" name="gedcom_id" value="<?php echo $tree->getId(); ?>">
+									<input type="hidden" name="gedcom_id" value="<?php echo $tree->getTreeId(); ?>">
 									<?php echo Filter::getCsrf(); ?>
 									<!-- A11Y - forms need submit buttons, but they look ugly here -->
 									<button class="sr-only" onclick="return confirm('<?php echo Filter::escapeJs(I18N::translate('Are you sure you want to delete “%s”?', $tree->getTitleHtml())); ?>')" type="submit">
@@ -323,13 +323,13 @@ $controller->pageHeader();
 									<?php if ($tree->getName() == Site::getPreference('DEFAULT_GEDCOM')): ?>
 										<?php echo I18N::translate('Default family tree'); ?>
 									<?php else: ?>
-										<a href="#" onclick="document.defaultform<?php echo $tree->getId(); ?>.submit();">
+										<a href="#" onclick="document.defaultform<?php echo $tree->getTreeId(); ?>.submit();">
 											<?php echo I18N::translate('Set as default'); ?>
 											<span class="sr-only">
 										<?php echo $tree->getTitleHtml(); ?>
 									</span>
 										</a>
-										<form name="defaultform<?php echo $tree->getId(); ?>" method="post">
+										<form name="defaultform<?php echo $tree->getTreeId(); ?>" method="post">
 											<input type="hidden" name="action" value="setdefault">
 											<input type="hidden" name="ged" value="<?php echo $tree->getNameHtml(); ?>">
 											<?php echo Filter::getCsrf(); ?>
@@ -476,7 +476,7 @@ $controller->pageHeader();
 							<!-- UPLOAD -->
 							<li>
 								<i class="fa fa-li fa-upload"></i>
-								<a href="?action=uploadform&amp;gedcom_id=<?php echo $tree->getId(); ?>">
+								<a href="?action=uploadform&amp;gedcom_id=<?php echo $tree->getTreeId(); ?>">
 									<?php echo I18N::translate('Upload'); ?>
 									<span class="sr-only">
 										<?php echo $tree->getTitleHtml(); ?>
@@ -498,7 +498,7 @@ $controller->pageHeader();
 							<!-- IMPORT -->
 							<li>
 								<i class="fa fa-li fa-file-text-o"></i>
-								<a href="?action=importform&amp;gedcom_id=<?php echo $tree->getId(); ?>">
+								<a href="?action=importform&amp;gedcom_id=<?php echo $tree->getTreeId(); ?>">
 									<?php echo I18N::translate('Import'); ?>
 									<span class="sr-only">
 										<?php echo $tree->getTitleHtml(); ?>

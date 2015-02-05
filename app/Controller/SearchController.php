@@ -132,7 +132,7 @@ class SearchController extends PageController {
 			foreach (Tree::getAll() as $search_tree) {
 				$str = str_replace(array(".", "-", " "), array("_", "_", "_"), $search_tree->getName());
 				if (isset ($_REQUEST["$str"]) || $topsearch) {
-					$this->search_trees[$search_tree->getId()] = $search_tree;
+					$this->search_trees[$search_tree->getTreeId()] = $search_tree;
 					$_REQUEST["$str"] = 'yes';
 				}
 			}
@@ -602,14 +602,14 @@ class SearchController extends PageController {
 				foreach ($this->search_trees as $search_tree) {
 					$datalist = array();
 					foreach ($this->myindilist as $individual) {
-						if ($individual->getGedcomId() === $search_tree->getId()) {
+						if ($individual->getGedcomId() === $search_tree->getTreeId()) {
 							$datalist[] = $individual;
 						}
 					}
 					if ($datalist) {
 						usort($datalist, __NAMESPACE__ . '\GedcomRecord::compare');
 						$GEDCOM = $search_tree->getName();
-						load_gedcom_settings($search_tree->getId());
+						load_gedcom_settings($search_tree->getTreeId());
 						echo '<h3 class="indi-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->getTitleHtml(), '</span></a></h3>
 							<div class="indi-acc_content">',
 						format_indi_table($datalist);
@@ -625,14 +625,14 @@ class SearchController extends PageController {
 				foreach ($this->search_trees as $search_tree) {
 					$datalist = array();
 					foreach ($this->myfamlist as $family) {
-						if ($family->getGedcomId() === $search_tree->getId()) {
+						if ($family->getGedcomId() === $search_tree->getTreeId()) {
 							$datalist[] = $family;
 						}
 					}
 					if ($datalist) {
 						usort($datalist, __NAMESPACE__ . '\GedcomRecord::compare');
 						$GEDCOM = $search_tree->getName();
-						load_gedcom_settings($search_tree->getId());
+						load_gedcom_settings($search_tree->getTreeId());
 						echo '<h3 class="fam-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->getTitleHtml(), '</span></a></h3>
 							<div class="fam-acc_content">',
 						format_fam_table($datalist);
@@ -648,14 +648,14 @@ class SearchController extends PageController {
 				foreach ($this->search_trees as $search_tree) {
 					$datalist = array();
 					foreach ($this->mysourcelist as $source) {
-						if ($source->getGedcomId() === $search_tree->getId()) {
+						if ($source->getGedcomId() === $search_tree->getTreeId()) {
 							$datalist[] = $source;
 						}
 					}
 					if ($datalist) {
 						usort($datalist, __NAMESPACE__ . '\GedcomRecord::compare');
 						$GEDCOM = $search_tree->getName();
-						load_gedcom_settings($search_tree->getId());
+						load_gedcom_settings($search_tree->getTreeId());
 						echo '<h3 class="source-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->getTitleHtml(), '</span></a></h3>
 							<div class="source-acc_content">',
 						format_sour_table($datalist);
@@ -671,7 +671,7 @@ class SearchController extends PageController {
 				foreach ($this->search_trees as $search_tree) {
 					$datalist = array();
 					foreach ($this->mynotelist as $note) {
-						if ($note->getGedcomId() === $search_tree->getId()) {
+						if ($note->getGedcomId() === $search_tree->getTreeId()) {
 							$datalist[] = $note;
 						}
 					}
@@ -679,7 +679,7 @@ class SearchController extends PageController {
 						usort($datalist, __NAMESPACE__ . '\GedcomRecord::compare');
 						usort($datalist, 'Webtrees\GedcomRecord::compare');
 						$GEDCOM = $search_tree->getName();
-						load_gedcom_settings($search_tree->getId());
+						load_gedcom_settings($search_tree->getTreeId());
 						echo '<h3 class="note-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->getTitleHtml(), '</span></a></h3>
 							<div class="note-acc_content">',
 						format_note_table($datalist);

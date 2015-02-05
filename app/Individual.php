@@ -60,9 +60,7 @@ class Individual extends GedcomRecord {
 	 * {@inheritdoc}
 	 */
 	public function canShowName($access_level = WT_USER_ACCESS_LEVEL) {
-		global $SHOW_LIVING_NAMES;
-
-		return $SHOW_LIVING_NAMES >= $access_level || $this->canShow($access_level);
+		return $this->tree->getPreference('SHOW_LIVING_NAMES') >= $access_level || $this->canShow($access_level);
 	}
 
 	/**
@@ -71,11 +69,10 @@ class Individual extends GedcomRecord {
 	 * {@inheritdoc}
 	 */
 	protected function canShowByType($access_level) {
-		global $SHOW_DEAD_PEOPLE, $KEEP_ALIVE_YEARS_BIRTH, $KEEP_ALIVE_YEARS_DEATH;
-
 		// Dead people...
-		if ($SHOW_DEAD_PEOPLE >= $access_level && $this->isDead()) {
+		if ($this->tree->getPreference('SHOW_DEAD_PEOPLE') >= $access_level && $this->isDead()) {
 			$keep_alive = false;
+			$KEEP_ALIVE_YEARS_BIRTH = $this->tree->getPreference('KEEP_ALIVE_YEARS_BIRTH');
 			if ($KEEP_ALIVE_YEARS_BIRTH) {
 				preg_match_all('/\n1 (?:' . WT_EVENTS_BIRT . ').*(?:\n[2-9].*)*(?:\n2 DATE (.+))/', $this->gedcom, $matches, PREG_SET_ORDER);
 				foreach ($matches as $match) {
@@ -86,6 +83,7 @@ class Individual extends GedcomRecord {
 					}
 				}
 			}
+			$KEEP_ALIVE_YEARS_DEATH = $this->tree->getPreference('KEEP_ALIVE_YEARS_DEATH');
 			if ($KEEP_ALIVE_YEARS_DEATH) {
 				preg_match_all('/\n1 (?:' . WT_EVENTS_DEAT . ').*(?:\n[2-9].*)*(?:\n2 DATE (.+))/', $this->gedcom, $matches, PREG_SET_ORDER);
 				foreach ($matches as $match) {
@@ -186,10 +184,10 @@ class Individual extends GedcomRecord {
 
 	/** {@inheritdoc} */
 	protected function createPrivateGedcomRecord($access_level) {
-		global $SHOW_PRIVATE_RELATIONSHIPS, $SHOW_LIVING_NAMES;
+		$SHOW_PRIVATE_RELATIONSHIPS = $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
 		$rec = '0 @' . $this->xref . '@ INDI';
-		if ($SHOW_LIVING_NAMES >= $access_level) {
+		if ($this->tree->getPreference('SHOW_LIVING_NAMES') >= $access_level) {
 			// Show all the NAME tags, including subtags
 			foreach ($this->getFacts('NAME') as $fact) {
 				$rec .= "\n" . $fact->getGedcom();
@@ -253,7 +251,7 @@ class Individual extends GedcomRecord {
 	 * @return boolean
 	 */
 	public function isDead() {
-		global $MAX_ALIVE_AGE;
+		$MAX_ALIVE_AGE = $this->tree->getPreference('MAX_ALIVE_AGE');
 
 		// "1 DEAT Y" or "1 DEAT/2 DATE" or "1 DEAT/2 PLAC"
 		if (preg_match('/\n1 (?:' . WT_EVENTS_DEAT . ')(?: Y|(?:\n[2-9].+)*\n2 (DATE|PLAC) )/', $this->gedcom)) {
@@ -409,13 +407,11 @@ class Individual extends GedcomRecord {
 	 * @return string
 	 */
 	public function displayImage() {
-		global $USE_SILHOUETTE;
-
 		$media = $this->findHighlightedMedia();
 		if ($media) {
 			// Thumbnail exists - use it.
 			return $media->displayImage();
-		} elseif ($USE_SILHOUETTE) {
+		} elseif ($this->tree->getPreference('USE_SILHOUETTE')) {
 			// No thumbnail exists - use an icon
 			return '<i class="icon-silhouette-' . $this->getSex() . '"></i>';
 		} else {
@@ -600,8 +596,7 @@ class Individual extends GedcomRecord {
 				$max = array();
 				$tmp = $this->getDeathDate();
 				if ($tmp->MinJD()) {
-					global $MAX_ALIVE_AGE;
-					$min[] = $tmp->MinJD() - $MAX_ALIVE_AGE * 365;
+					$min[] = $tmp->MinJD() - $this->tree->getPreference('MAX_ALIVE_AGE') * 365;
 					$max[] = $tmp->MaxJD();
 				}
 				foreach ($this->getChildFamilies() as $family) {
@@ -683,8 +678,7 @@ class Individual extends GedcomRecord {
 			}
 			if ($this->_getEstimatedDeathDate === null) {
 				if ($this->getEstimatedBirthDate()->MinJD()) {
-					global $MAX_ALIVE_AGE;
-					$this->_getEstimatedDeathDate = $this->getEstimatedBirthDate()->AddYears($MAX_ALIVE_AGE, 'BEF');
+					$this->_getEstimatedDeathDate = $this->getEstimatedBirthDate()->AddYears($this->tree->getPreference('MAX_ALIVE_AGE'), 'BEF');
 				} else {
 					$this->_getEstimatedDeathDate = new Date(''); // always return a date object
 				}
@@ -751,7 +745,7 @@ class Individual extends GedcomRecord {
 	 * @return Family[]
 	 */
 	public function getSpouseFamilies($access_level = WT_USER_ACCESS_LEVEL) {
-		global $SHOW_PRIVATE_RELATIONSHIPS;
+		$SHOW_PRIVATE_RELATIONSHIPS = $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
 		$families = array();
 		foreach ($this->getFacts('FAMS', false, $access_level, $SHOW_PRIVATE_RELATIONSHIPS) as $fact) {
@@ -810,7 +804,7 @@ class Individual extends GedcomRecord {
 	 * @return Family[]
 	 */
 	public function getChildFamilies($access_level = WT_USER_ACCESS_LEVEL) {
-		global $SHOW_PRIVATE_RELATIONSHIPS;
+		$SHOW_PRIVATE_RELATIONSHIPS = $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
 		$families = array();
 		foreach ($this->getFacts('FAMC', false, $access_level, $SHOW_PRIVATE_RELATIONSHIPS) as $fact) {
@@ -1279,10 +1273,10 @@ class Individual extends GedcomRecord {
 	 * @return string
 	 */
 	public function getShortName() {
-		global $bwidth, $SHOW_HIGHLIGHT_IMAGES, $UNKNOWN_NN, $UNKNOWN_PN;
+		global $bwidth, $UNKNOWN_NN, $UNKNOWN_PN;
 
 		// Estimate number of characters that can fit in box. Calulates to 28 characters in webtrees theme, or 34 if no thumbnail used.
-		if ($SHOW_HIGHLIGHT_IMAGES) {
+		if ($this->tree->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
 			$char = intval(($bwidth - 40) / 6.5);
 		} else {
 			$char = ($bwidth / 6.5);

@@ -199,7 +199,7 @@ echo '<div id="search-page">
 						$controller->inputFieldNames[] = "$str";
 						echo '<p><input type="checkbox" ';
 						echo isset ($_REQUEST[$str]) ? 'checked' : '';
-						echo ' value="yes" id="checkbox_', $tree->getId(), '" name="', $str, '"><label for="checkbox_', $tree->getId(), '">', $tree->getTitleHtml(), '</label></p>', "\n";
+						echo ' value="yes" id="checkbox_', $tree->getTreeId(), '" name="', $str, '"><label for="checkbox_', $tree->getTreeId(), '">', $tree->getTitleHtml(), '</label></p>', "\n";
 					}
 				echo '</div>';
 			}

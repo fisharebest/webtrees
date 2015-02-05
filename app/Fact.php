@@ -134,9 +134,6 @@ class Fact {
 	 * @return boolean
 	 */
 	public function canShow($access_level = WT_USER_ACCESS_LEVEL) {
-		// TODO - use the privacy settings for $this->gedcom_id, not the default gedcom.
-		global $person_facts, $global_facts;
-
 		// Does this record have an explicit RESN?
 		if (strpos($this->gedcom, "\n2 RESN confidential")) {
 			return WT_PRIV_NONE >= $access_level;
@@ -149,12 +146,14 @@ class Fact {
 		}
 
 		// Does this record have a default RESN?
-		$xref = $this->parent->getXref();
-		if (isset($person_facts[$xref][$this->tag])) {
-			return $person_facts[$xref][$this->tag] >= $access_level;
+		$xref                    = $this->parent->getXref();
+		$fact_privacy            = $this->parent->getTree()->getFactPrivacy();
+		$individual_fact_privacy = $this->parent->getTree()->getIndividualFactPrivacy();
+		if (isset($individual_fact_privacy[$xref][$this->tag])) {
+			return $individual_fact_privacy[$xref][$this->tag] >= $access_level;
 		}
-		if (isset($global_facts[$this->tag])) {
-			return $global_facts[$this->tag] >= $access_level;
+		if (isset($fact_privacy[$this->tag])) {
+			return $fact_privacy[$this->tag] >= $access_level;
 		}
 
 		// No restrictions - it must be public

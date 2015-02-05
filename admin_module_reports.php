@@ -30,10 +30,10 @@ $action  = Filter::post('action');
 if ($action === 'update_mods' && Filter::checkCsrf()) {
 	foreach ($modules as $module) {
 		foreach (Tree::getAll() as $tree) {
-			$access_level = Filter::post('access-' . $module->getName() . '-' . $tree->getId(), WT_REGEX_INTEGER, $module->defaultAccessLevel());
+			$access_level = Filter::post('access-' . $module->getName() . '-' . $tree->getTreeId(), WT_REGEX_INTEGER, $module->defaultAccessLevel());
 			Database::prepare(
 				"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'report', ?)"
-			)->execute(array($module->getName(), $tree->getId(), $access_level));
+			)->execute(array($module->getName(), $tree->getTreeId(), $access_level));
 		}
 	}
 
@@ -85,7 +85,7 @@ $controller
 										<?php echo $tree->getTitleHtml(); ?>
 									</td>
 									<td>
-										<?php echo edit_field_access_level('access-' . $module->getName() . '-' . $tree->getId(), $module->getAccessLevel($tree, 'report')); ?>
+										<?php echo edit_field_access_level('access-' . $module->getName() . '-' . $tree->getTreeId(), $module->getAccessLevel($tree, 'report')); ?>
 									</td>
 								</tr>
 							<?php endforeach; ?>

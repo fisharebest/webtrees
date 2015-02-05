@@ -270,7 +270,7 @@ class GedcomRecord {
 	 * @return Tree
 	 */
 	public function getTree() {
-		return $this->xref;
+		return $this->tree;
 	}
 
 	/**
@@ -279,7 +279,7 @@ class GedcomRecord {
 	 * @return integer
 	 */
 	public function getGedcomId() {
-		return $this->tree->getId();
+		return $this->tree->getTreeId();
 	}
 
 	/**
@@ -350,12 +350,12 @@ class GedcomRecord {
 	 * @return string
 	 */
 	private function getLinkUrl($link, $separator) {
-		if ($this->tree->getId() == WT_GED_ID) {
+		if ($this->tree->getTreeId() == WT_GED_ID) {
 			return $link . $this->getXref() . $separator . 'ged=' . WT_GEDURL;
-		} elseif ($this->tree->getId() == 0) {
+		} elseif ($this->tree->getTreeId() == 0) {
 			return '#';
 		} else {
-			return $link . $this->getXref() . $separator . 'ged=' . rawurlencode(get_gedcom_from_id($this->tree->getId()));
+			return $link . $this->getXref() . $separator . 'ged=' . rawurlencode(get_gedcom_from_id($this->tree->getTreeId()));
 		}
 	}
 
@@ -367,15 +367,13 @@ class GedcomRecord {
 	 * @return boolean
 	 */
 	private function _canShow($access_level) {
-		global $person_privacy, $HIDE_LIVE_PEOPLE;
-
 		// This setting would better be called "$ENABLE_PRIVACY"
-		if (!$HIDE_LIVE_PEOPLE) {
+		if (!$this->tree->getPreference('HIDE_LIVE_PEOPLE')) {
 			return true;
 		}
 
 		// We should always be able to see our own record (unless an admin is applying download restrictions)
-		if ($this->getXref() == WT_USER_GEDCOM_ID && $this->getGedcomId() == WT_GED_ID && $access_level == WT_USER_ACCESS_LEVEL) {
+		if ($this->getXref() === WT_USER_GEDCOM_ID && $this->tree->getTreeId() === WT_GED_ID && $access_level === WT_USER_ACCESS_LEVEL) {
 			return true;
 		}
 
@@ -391,8 +389,9 @@ class GedcomRecord {
 		}
 
 		// Does this record have a default RESN?
-		if (isset($person_privacy[$this->getXref()])) {
-			return $person_privacy[$this->getXref()] >= $access_level;
+		$individual_privacy = $this->tree->getIndividualPrivacy();
+		if (isset($individual_privacy[$this->getXref()])) {
+			return $individual_privacy[$this->getXref()] >= $access_level;
 		}
 
 		// Privacy rules do not apply to admins
@@ -412,11 +411,11 @@ class GedcomRecord {
 	 * @return boolean
 	 */
 	protected function canShowByType($access_level) {
-		global $global_facts;
+		$fact_privacy = $this->tree->getFactPrivacy();
 
-		if (isset($global_facts[static::RECORD_TYPE])) {
+		if (isset($fact_privacy[static::RECORD_TYPE])) {
 			// Restriction found
-			return $global_facts[static::RECORD_TYPE] >= $access_level;
+			return $fact_privacy[static::RECORD_TYPE] >= $access_level;
 		} else {
 			// No restriction found - must be public:
 			return true;
@@ -679,7 +678,7 @@ class GedcomRecord {
 	 * @return string
 	 */
 	public function __toString() {
-		return $this->xref . '@' . $this->tree->getId();
+		return $this->xref . '@' . $this->tree->getTreeId();
 	}
 
 	/**
@@ -819,7 +818,7 @@ class GedcomRecord {
 			" LEFT JOIN `##name` ON (i_file=n_file AND i_id=n_id AND n_num=0)" .
 			" WHERE i_file=? AND l_type=? AND l_to=?" .
 			" ORDER BY n_sort COLLATE '" . I18N::$collation . "'"
-		)->execute(array($this->tree->getId(), $link, $this->xref))->fetchAll();
+		)->execute(array($this->tree->getTreeId(), $link, $this->xref))->fetchAll();
 
 		$list = array();
 		foreach ($rows as $row) {
@@ -845,7 +844,7 @@ class GedcomRecord {
 			" JOIN `##link` ON (f_file=l_file AND f_id=l_from)" .
 			" LEFT JOIN `##name` ON (f_file=n_file AND f_id=n_id AND n_num=0)" .
 			" WHERE f_file=? AND l_type=? AND l_to=?"
-		)->execute(array($this->tree->getId(), $link, $this->xref))->fetchAll();
+		)->execute(array($this->tree->getTreeId(), $link, $this->xref))->fetchAll();
 
 		$list = array();
 		foreach ($rows as $row) {
@@ -871,7 +870,7 @@ class GedcomRecord {
 				" JOIN `##link` ON (s_file=l_file AND s_id=l_from)" .
 				" WHERE s_file=? AND l_type=? AND l_to=?" .
 				" ORDER BY s_name COLLATE '" . I18N::$collation . "'"
-			)->execute(array($this->tree->getId(), $link, $this->xref))->fetchAll();
+			)->execute(array($this->tree->getTreeId(), $link, $this->xref))->fetchAll();
 
 		$list = array();
 		foreach ($rows as $row) {
@@ -897,7 +896,7 @@ class GedcomRecord {
 			" JOIN `##link` ON (m_file=l_file AND m_id=l_from)" .
 			" WHERE m_file=? AND l_type=? AND l_to=?" .
 			" ORDER BY m_titl COLLATE '" . I18N::$collation . "'"
-		)->execute(array($this->tree->getId(), $link, $this->xref))->fetchAll();
+		)->execute(array($this->tree->getTreeId(), $link, $this->xref))->fetchAll();
 
 		$list = array();
 		foreach ($rows as $row) {
@@ -924,7 +923,7 @@ class GedcomRecord {
 			" LEFT JOIN `##name` ON (o_file=n_file AND o_id=n_id AND n_num=0)" .
 			" WHERE o_file=? AND o_type='NOTE' AND l_type=? AND l_to=?" .
 			" ORDER BY n_sort COLLATE '" . I18N::$collation . "'"
-		)->execute(array($this->tree->getId(), $link, $this->xref))->fetchAll();
+		)->execute(array($this->tree->getTreeId(), $link, $this->xref))->fetchAll();
 
 		$list = array();
 		foreach ($rows as $row) {
@@ -951,7 +950,7 @@ class GedcomRecord {
 			" LEFT JOIN `##name` ON (o_file=n_file AND o_id=n_id AND n_num=0)" .
 			" WHERE o_file=? AND o_type='REPO' AND l_type=? AND l_to=?" .
 			" ORDER BY n_sort COLLATE '" . I18N::$collation . "'"
-		)->execute(array($this->tree->getId(), $link, $this->xref))->fetchAll();
+		)->execute(array($this->tree->getTreeId(), $link, $this->xref))->fetchAll();
 
 		$list = array();
 		foreach ($rows as $row) {
@@ -1180,7 +1179,7 @@ class GedcomRecord {
 			Database::prepare(
 				"INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, ?, ?)"
 			)->execute(array(
-				$this->tree->getId(),
+				$this->tree->getTreeId(),
 				$this->xref,
 				$old_gedcom,
 				$new_gedcom,
@@ -1190,7 +1189,7 @@ class GedcomRecord {
 			$this->pending = $new_gedcom;
 
 			if (Auth::user()->getPreference('auto_accept')) {
-				accept_all_changes($this->xref, $this->tree->getId());
+				accept_all_changes($this->xref, $this->tree->getTreeId());
 				$this->gedcom  = $new_gedcom;
 				$this->pending = null;
 			}
@@ -1275,7 +1274,7 @@ class GedcomRecord {
 		Database::prepare(
 			"INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, ?, ?)"
 		)->execute(array(
-			$this->tree->getId(),
+			$this->tree->getTreeId(),
 			$this->xref,
 			$this->getGedcom(),
 			$gedcom,
@@ -1287,7 +1286,7 @@ class GedcomRecord {
 
 		// Accept this pending change
 		if (Auth::user()->getPreference('auto_accept')) {
-			accept_all_changes($this->xref, $this->tree->getId());
+			accept_all_changes($this->xref, $this->tree->getTreeId());
 			$this->gedcom  = $gedcom;
 			$this->pending = null;
 		}
@@ -1305,7 +1304,7 @@ class GedcomRecord {
 		Database::prepare(
 			"INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, '', ?)"
 		)->execute(array(
-			$this->tree->getId(),
+			$this->tree->getTreeId(),
 			$this->xref,
 			$this->getGedcom(),
 			Auth::id(),
@@ -1313,7 +1312,7 @@ class GedcomRecord {
 
 		// Accept this pending change
 		if (Auth::user()->getPreference('auto_accept')) {
-			accept_all_changes($this->xref, $this->tree->getId());
+			accept_all_changes($this->xref, $this->tree->getTreeId());
 		}
 
 		// Clear the cache

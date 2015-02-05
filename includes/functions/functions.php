@@ -143,26 +143,6 @@ function load_gedcom_settings($ged_id) {
 	global $WEBMASTER_USER_ID;            $WEBMASTER_USER_ID            = $tree->getPreference('WEBMASTER_USER_ID');
 	global $WEBTREES_EMAIL;               $WEBTREES_EMAIL               = $tree->getPreference('WEBTREES_EMAIL');
 	global $WORD_WRAPPED_NOTES;           $WORD_WRAPPED_NOTES           = $tree->getPreference('WORD_WRAPPED_NOTES');
-
-	global $person_privacy; $person_privacy=array();
-	global $person_facts;   $person_facts  =array();
-	global $global_facts;   $global_facts  =array();
-
-	$rows = Database::prepare(
-		"SELECT SQL_CACHE xref, tag_type, CASE resn WHEN 'none' THEN ? WHEN 'privacy' THEN ? WHEN 'confidential' THEN ? WHEN 'hidden' THEN ? END AS resn FROM `##default_resn` WHERE gedcom_id=?"
-	)->execute(array(WT_PRIV_PUBLIC, WT_PRIV_USER, WT_PRIV_NONE, WT_PRIV_HIDE, $ged_id))->fetchAll();
-
-	foreach ($rows as $row) {
-		if ($row->xref !== null) {
-			if ($row->tag_type !== null) {
-				$person_facts[$row->xref][$row->tag_type] = (int) $row->resn;
-			} else {
-				$person_privacy[$row->xref] = (int) $row->resn;
-			}
-		} else {
-			$global_facts[$row->tag_type] = (int) $row->resn;
-		}
-	}
 }
 
 /**

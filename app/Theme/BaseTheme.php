@@ -1293,11 +1293,11 @@ abstract class BaseTheme {
 		$ALLOW_CHANGE_GEDCOM = Site::getPreference('ALLOW_CHANGE_GEDCOM') && count(Tree::getAll()) > 1;
 
 		foreach (Tree::getAll() as $tree) {
-			if ($tree->getId() === WT_GED_ID || $ALLOW_CHANGE_GEDCOM) {
+			if ($tree->getTreeId() === WT_GED_ID || $ALLOW_CHANGE_GEDCOM) {
 				$submenu = new Menu(
 					$tree->getTitleHtml(),
 					'index.php?ctype=gedcom&amp;ged=' . $tree->getNameUrl(),
-					'menu-tree-' . $tree->getId() // Cannot use name - it must be a CSS identifier
+					'menu-tree-' . $tree->getTreeId()
 				);
 				$submenus[] = $submenu;
 			}
