@@ -57,7 +57,7 @@ class Tree {
 	 *
 	 * @return integer
 	 */
-	public function id() {
+	public function getId() {
 		return $this->id;
 	}
 
@@ -66,7 +66,7 @@ class Tree {
 	 *
 	 * @return string
 	 */
-	public function name() {
+	public function getName() {
 		return $this->name;
 	}
 
@@ -75,7 +75,7 @@ class Tree {
 	 *
 	 * @return string
 	 */
-	public function nameHtml() {
+	public function getNameHtml() {
 		return Filter::escapeHtml($this->name);
 	}
 
@@ -84,7 +84,7 @@ class Tree {
 	 *
 	 * @return string
 	 */
-	public function nameUrl() {
+	public function getNameUrl() {
 		return Filter::escapeUrl($this->name);
 	}
 
@@ -93,7 +93,7 @@ class Tree {
 	 *
 	 * @return string
 	 */
-	public function title() {
+	public function getTitle() {
 		return $this->title;
 	}
 
@@ -102,7 +102,7 @@ class Tree {
 	 *
 	 * @return string
 	 */
-	public function titleHtml() {
+	public function getTitleHtml() {
 		return Filter::escapeHtml($this->title);
 	}
 

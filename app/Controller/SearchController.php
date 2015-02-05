@@ -130,9 +130,9 @@ class SearchController extends PageController {
 		// Retrieve the gedcoms to search in
 		if (count(Tree::getAll()) > 1 && Site::getPreference('ALLOW_CHANGE_GEDCOM')) {
 			foreach (Tree::getAll() as $search_tree) {
-				$str = str_replace(array(".", "-", " "), array("_", "_", "_"), $search_tree->name());
+				$str = str_replace(array(".", "-", " "), array("_", "_", "_"), $search_tree->getName());
 				if (isset ($_REQUEST["$str"]) || $topsearch) {
-					$this->search_trees[$search_tree->id()] = $search_tree;
+					$this->search_trees[$search_tree->getId()] = $search_tree;
 					$_REQUEST["$str"] = 'yes';
 				}
 			}
@@ -602,15 +602,15 @@ class SearchController extends PageController {
 				foreach ($this->search_trees as $search_tree) {
 					$datalist = array();
 					foreach ($this->myindilist as $individual) {
-						if ($individual->getGedcomId() === $search_tree->id()) {
+						if ($individual->getGedcomId() === $search_tree->getId()) {
 							$datalist[] = $individual;
 						}
 					}
 					if ($datalist) {
 						usort($datalist, __NAMESPACE__ . '\GedcomRecord::compare');
-						$GEDCOM = $search_tree->name();
-						load_gedcom_settings($search_tree->id());
-						echo '<h3 class="indi-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->titleHtml(), '</span></a></h3>
+						$GEDCOM = $search_tree->getName();
+						load_gedcom_settings($search_tree->getId());
+						echo '<h3 class="indi-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->getTitleHtml(), '</span></a></h3>
 							<div class="indi-acc_content">',
 						format_indi_table($datalist);
 						echo '</div>'; //indi-acc_content
@@ -625,15 +625,22 @@ class SearchController extends PageController {
 				foreach ($this->search_trees as $search_tree) {
 					$datalist = array();
 					foreach ($this->myfamlist as $family) {
-						if ($family->getGedcomId() === $search_tree->id()) {
+						if ($family->getGedcomId() === $search_tree->getId()) {
 							$datalist[] = $family;
 						}
 					}
 					if ($datalist) {
+<<<<<<< Updated upstream
 						usort($datalist, __NAMESPACE__ . '\GedcomRecord::compare');
 						$GEDCOM = $search_tree->name();
 						load_gedcom_settings($search_tree->id());
 						echo '<h3 class="fam-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->titleHtml(), '</span></a></h3>
+=======
+						usort($datalist, 'Webtrees\GedcomRecord::compare');
+						$GEDCOM = $search_tree->getName();
+						load_gedcom_settings($search_tree->getId());
+						echo '<h3 class="fam-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->getTitleHtml(), '</span></a></h3>
+>>>>>>> Stashed changes
 							<div class="fam-acc_content">',
 						format_fam_table($datalist);
 						echo '</div>'; //fam-acc_content
@@ -648,15 +655,22 @@ class SearchController extends PageController {
 				foreach ($this->search_trees as $search_tree) {
 					$datalist = array();
 					foreach ($this->mysourcelist as $source) {
-						if ($source->getGedcomId() === $search_tree->id()) {
+						if ($source->getGedcomId() === $search_tree->getId()) {
 							$datalist[] = $source;
 						}
 					}
 					if ($datalist) {
+<<<<<<< Updated upstream
 						usort($datalist, __NAMESPACE__ . '\GedcomRecord::compare');
 						$GEDCOM = $search_tree->name();
 						load_gedcom_settings($search_tree->id());
 						echo '<h3 class="source-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->titleHtml(), '</span></a></h3>
+=======
+						usort($datalist, 'Webtrees\GedcomRecord::compare');
+						$GEDCOM = $search_tree->getName();
+						load_gedcom_settings($search_tree->getId());
+						echo '<h3 class="source-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->getTitleHtml(), '</span></a></h3>
+>>>>>>> Stashed changes
 							<div class="source-acc_content">',
 						format_sour_table($datalist);
 						echo '</div>'; //fam-acc_content
@@ -671,15 +685,22 @@ class SearchController extends PageController {
 				foreach ($this->search_trees as $search_tree) {
 					$datalist = array();
 					foreach ($this->mynotelist as $note) {
-						if ($note->getGedcomId() === $search_tree->id()) {
+						if ($note->getGedcomId() === $search_tree->getId()) {
 							$datalist[] = $note;
 						}
 					}
 					if ($datalist) {
+<<<<<<< Updated upstream
 						usort($datalist, __NAMESPACE__ . '\GedcomRecord::compare');
 						$GEDCOM = $search_tree->name();
 						load_gedcom_settings($search_tree->id());
 						echo '<h3 class="note-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->titleHtml(), '</span></a></h3>
+=======
+						usort($datalist, 'Webtrees\GedcomRecord::compare');
+						$GEDCOM = $search_tree->getName();
+						load_gedcom_settings($search_tree->getId());
+						echo '<h3 class="note-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->getTitleHtml(), '</span></a></h3>
+>>>>>>> Stashed changes
 							<div class="note-acc_content">',
 						format_note_table($datalist);
 						echo '</div>'; //note-acc_content

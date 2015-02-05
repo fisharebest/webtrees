@@ -26,7 +26,7 @@ define('WT_SCRIPT_NAME', 'admin_trees_export.php');
 require './includes/session.php';
 
 if (Auth::isManager($WT_TREE) && Filter::checkCsrf()) {
-	$filename = WT_DATA_DIR . $WT_TREE->name();
+	$filename = WT_DATA_DIR . $WT_TREE->getName();
 	// Force a ".ged" suffix
 	if (strtolower(substr($filename, -4)) != '.ged') {
 		$filename .= '.ged';

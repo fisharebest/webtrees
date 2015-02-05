@@ -72,8 +72,10 @@ class Media extends GedcomRecord {
 	protected function canShowByType($access_level) {
 		// Hide media objects if they are attached to private records
 		$linked_ids = Database::prepare(
-			"SELECT l_from FROM `##link` WHERE l_to=? AND l_file=?"
-		)->execute(array($this->xref, $this->gedcom_id))->fetchOneColumn();
+			"SELECT l_from FROM `##link` WHERE l_to = ? AND l_file = ?"
+		)->execute(array(
+			$this->xref, $this->tree->getId()
+		))->fetchOneColumn();
 		foreach ($linked_ids as $linked_id) {
 			$linked_record = GedcomRecord::getInstance($linked_id);
 			if ($linked_record && !$linked_record->canShow($access_level)) {
@@ -444,7 +446,7 @@ class Media extends GedcomRecord {
 
 		return
 			'mediafirewall.php?mid=' . $this->getXref() . $thumbstr . $downloadstr .
-			'&amp;ged=' . rawurlencode(get_gedcom_from_id($this->gedcom_id)) .
+			'&amp;ged=' . rawurlencode(get_gedcom_from_id($this->tree->getId())) .
 			'&amp;cb=' . $this->getEtag($which);
 	}
 

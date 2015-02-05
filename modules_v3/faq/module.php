@@ -391,7 +391,7 @@ class faq_WT_Module extends Module implements ModuleMenuInterface, ModuleConfigI
 				if ($faq->gedcom_id == null) {
 					echo I18N::translate('All');
 				} else {
-					echo $trees[$faq->gedcom_id]->titleHtml();
+					echo $trees[$faq->gedcom_id]->getTitleHtml();
 				}
 				echo '</td>';
 				// NOTE: Print the edit options of the current item

@@ -57,7 +57,7 @@ class html_WT_Module extends Module implements ModuleBlockInterface {
 			$GEDCOM = Site::getPreference('DEFAULT_GEDCOM');
 			if (!$GEDCOM) {
 				foreach (Tree::getAll() as $tree) {
-					$GEDCOM = $tree->name();
+					$GEDCOM = $tree->getName();
 					break;
 				}
 			}
@@ -280,8 +280,8 @@ class html_WT_Module extends Module implements ModuleBlockInterface {
 				'<option value="__current__" ', $sel_current, '>', I18N::translate('Current'), '</option>',
 				'<option value="__default__" ', $sel_default, '>', I18N::translate('Default'), '</option>';
 			foreach (Tree::getAll() as $tree) {
-				if ($tree->name() === $gedcom) {$sel = 'selected'; } else {$sel = ''; }
-				echo '<option value="', $tree->nameHtml(), '" ', $sel, ' dir="auto">', $tree->titleHtml(), '</option>';
+				if ($tree->getName() === $gedcom) {$sel = 'selected'; } else {$sel = ''; }
+				echo '<option value="', $tree->getNameHtml(), '" ', $sel, ' dir="auto">', $tree->getTitleHtml(), '</option>';
 			}
 			echo '</select>';
 			echo '</td></tr>';

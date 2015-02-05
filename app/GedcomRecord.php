@@ -26,8 +26,8 @@ class GedcomRecord {
 	/** @var string The record identifier */
 	protected $xref;
 
-	/** @var int  The gedcom file */
-	protected $gedcom_id;
+	/** @var Tree  The family tree to which this record belongs */
+	protected $tree;
 
 	/** @var string  GEDCOM data (before any pending edits) */
 	protected $gedcom;
@@ -68,13 +68,13 @@ class GedcomRecord {
 	 * @param string      $gedcom  an empty string for new/pending records
 	 * @param string|null $pending null for a record with no pending edits,
 	 *                             empty string for records with pending deletions
-	 * @param integer     $gedcom_id
+	 * @param integer     $tree_id
 	 */
-	public function __construct($xref, $gedcom, $pending, $gedcom_id) {
+	public function __construct($xref, $gedcom, $pending, $tree_id) {
 		$this->xref      = $xref;
 		$this->gedcom    = $gedcom;
 		$this->pending   = $pending;
-		$this->gedcom_id = $gedcom_id;
+		$this->tree      = Tree::get($tree_id);
 
 		$this->parseFacts();
 	}
@@ -265,12 +265,21 @@ class GedcomRecord {
 	}
 
 	/**
+	 * Get the tree to which this record belongs
+	 *
+	 * @return Tree
+	 */
+	public function getTree() {
+		return $this->xref;
+	}
+
+	/**
 	 * Get the tree ID for this record
 	 *
 	 * @return integer
 	 */
 	public function getGedcomId() {
-		return $this->gedcom_id;
+		return $this->tree->getId();
 	}
 
 	/**
@@ -341,12 +350,12 @@ class GedcomRecord {
 	 * @return string
 	 */
 	private function getLinkUrl($link, $separator) {
-		if ($this->gedcom_id == WT_GED_ID) {
+		if ($this->tree->getId() == WT_GED_ID) {
 			return $link . $this->getXref() . $separator . 'ged=' . WT_GEDURL;
-		} elseif ($this->gedcom_id == 0) {
+		} elseif ($this->tree->getId() == 0) {
 			return '#';
 		} else {
-			return $link . $this->getXref() . $separator . 'ged=' . rawurlencode(get_gedcom_from_id($this->gedcom_id));
+			return $link . $this->getXref() . $separator . 'ged=' . rawurlencode(get_gedcom_from_id($this->tree->getId()));
 		}
 	}
 
@@ -670,7 +679,7 @@ class GedcomRecord {
 	 * @return string
 	 */
 	public function __toString() {
-		return $this->xref . '@' . $this->gedcom_id;
+		return $this->xref . '@' . $this->tree->getId();
 	}
 
 	/**
@@ -810,7 +819,7 @@ class GedcomRecord {
 			" LEFT JOIN `##name` ON (i_file=n_file AND i_id=n_id AND n_num=0)" .
 			" WHERE i_file=? AND l_type=? AND l_to=?" .
 			" ORDER BY n_sort COLLATE '" . I18N::$collation . "'"
-		)->execute(array($this->gedcom_id, $link, $this->xref))->fetchAll();
+		)->execute(array($this->tree->getId(), $link, $this->xref))->fetchAll();
 
 		$list = array();
 		foreach ($rows as $row) {
@@ -836,7 +845,7 @@ class GedcomRecord {
 			" JOIN `##link` ON (f_file=l_file AND f_id=l_from)" .
 			" LEFT JOIN `##name` ON (f_file=n_file AND f_id=n_id AND n_num=0)" .
 			" WHERE f_file=? AND l_type=? AND l_to=?"
-		)->execute(array($this->gedcom_id, $link, $this->xref))->fetchAll();
+		)->execute(array($this->tree->getId(), $link, $this->xref))->fetchAll();
 
 		$list = array();
 		foreach ($rows as $row) {
@@ -862,7 +871,7 @@ class GedcomRecord {
 				" JOIN `##link` ON (s_file=l_file AND s_id=l_from)" .
 				" WHERE s_file=? AND l_type=? AND l_to=?" .
 				" ORDER BY s_name COLLATE '" . I18N::$collation . "'"
-			)->execute(array($this->gedcom_id, $link, $this->xref))->fetchAll();
+			)->execute(array($this->tree->getId(), $link, $this->xref))->fetchAll();
 
 		$list = array();
 		foreach ($rows as $row) {
@@ -888,7 +897,7 @@ class GedcomRecord {
 			" JOIN `##link` ON (m_file=l_file AND m_id=l_from)" .
 			" WHERE m_file=? AND l_type=? AND l_to=?" .
 			" ORDER BY m_titl COLLATE '" . I18N::$collation . "'"
-		)->execute(array($this->gedcom_id, $link, $this->xref))->fetchAll();
+		)->execute(array($this->tree->getId(), $link, $this->xref))->fetchAll();
 
 		$list = array();
 		foreach ($rows as $row) {
@@ -915,7 +924,7 @@ class GedcomRecord {
 			" LEFT JOIN `##name` ON (o_file=n_file AND o_id=n_id AND n_num=0)" .
 			" WHERE o_file=? AND o_type='NOTE' AND l_type=? AND l_to=?" .
 			" ORDER BY n_sort COLLATE '" . I18N::$collation . "'"
-		)->execute(array($this->gedcom_id, $link, $this->xref))->fetchAll();
+		)->execute(array($this->tree->getId(), $link, $this->xref))->fetchAll();
 
 		$list = array();
 		foreach ($rows as $row) {
@@ -942,7 +951,7 @@ class GedcomRecord {
 			" LEFT JOIN `##name` ON (o_file=n_file AND o_id=n_id AND n_num=0)" .
 			" WHERE o_file=? AND o_type='REPO' AND l_type=? AND l_to=?" .
 			" ORDER BY n_sort COLLATE '" . I18N::$collation . "'"
-		)->execute(array($this->gedcom_id, $link, $this->xref))->fetchAll();
+		)->execute(array($this->tree->getId(), $link, $this->xref))->fetchAll();
 
 		$list = array();
 		foreach ($rows as $row) {
@@ -1171,7 +1180,7 @@ class GedcomRecord {
 			Database::prepare(
 				"INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, ?, ?)"
 			)->execute(array(
-				$this->gedcom_id,
+				$this->tree->getId(),
 				$this->xref,
 				$old_gedcom,
 				$new_gedcom,
@@ -1181,7 +1190,7 @@ class GedcomRecord {
 			$this->pending = $new_gedcom;
 
 			if (Auth::user()->getPreference('auto_accept')) {
-				accept_all_changes($this->xref, $this->gedcom_id);
+				accept_all_changes($this->xref, $this->tree->getId());
 				$this->gedcom  = $new_gedcom;
 				$this->pending = null;
 			}
@@ -1266,7 +1275,7 @@ class GedcomRecord {
 		Database::prepare(
 			"INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, ?, ?)"
 		)->execute(array(
-			$this->gedcom_id,
+			$this->tree->getId(),
 			$this->xref,
 			$this->getGedcom(),
 			$gedcom,
@@ -1278,7 +1287,7 @@ class GedcomRecord {
 
 		// Accept this pending change
 		if (Auth::user()->getPreference('auto_accept')) {
-			accept_all_changes($this->xref, $this->gedcom_id);
+			accept_all_changes($this->xref, $this->tree->getId());
 			$this->gedcom  = $gedcom;
 			$this->pending = null;
 		}
@@ -1296,7 +1305,7 @@ class GedcomRecord {
 		Database::prepare(
 			"INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, ?, '', ?)"
 		)->execute(array(
-			$this->gedcom_id,
+			$this->tree->getId(),
 			$this->xref,
 			$this->getGedcom(),
 			Auth::id(),
@@ -1304,7 +1313,7 @@ class GedcomRecord {
 
 		// Accept this pending change
 		if (Auth::user()->getPreference('auto_accept')) {
-			accept_all_changes($this->xref, $this->gedcom_id);
+			accept_all_changes($this->xref, $this->tree->getId());
 		}
 
 		// Clear the cache

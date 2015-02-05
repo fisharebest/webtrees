@@ -314,7 +314,7 @@ case 'register':
 			$mail1_body =
 				I18N::translate('Hello administrator…') . Mail::EOL . Mail::EOL .
 				/* I18N: %s is a server name/URL */
-				I18N::translate('A prospective user has registered with webtrees at %s.', WT_BASE_URL . ' ' . $WT_TREE->titleHtml()) . Mail::EOL . Mail::EOL .
+				I18N::translate('A prospective user has registered with webtrees at %s.', WT_BASE_URL . ' ' . $WT_TREE->getTitleHtml()) . Mail::EOL . Mail::EOL .
 				I18N::translate('Username') . ' ' . Filter::escapeHtml($user->getUserName()) . Mail::EOL .
 				I18N::translate('Real name') . ' ' . Filter::escapeHtml($user->getRealName()) . Mail::EOL .
 				I18N::translate('Email address:') . ' ' . Filter::escapeHtml($user->getEmail()) . Mail::EOL .
@@ -336,7 +336,7 @@ case 'register':
 			$mail2_body =
 				I18N::translate('Hello %s…', $user->getRealName()) . Mail::EOL . Mail::EOL .
 				/* I18N: %1$s is the site URL and %2$s is an email address */
-				I18N::translate('You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s.', WT_BASE_URL . ' ' . $WT_TREE->titleHtml(), $user->getEmail()) . '  ' .
+				I18N::translate('You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s.', WT_BASE_URL . ' ' . $WT_TREE->getTitleHtml(), $user->getEmail()) . '  ' .
 				I18N::translate('Information about the request is shown under the link below.') . Mail::EOL .
 				I18N::translate('Please click on the following link and fill in the requested data to confirm your request and email address.') . Mail::EOL . Mail::EOL .
 				'<a href="' . WT_LOGIN_URL . "?user_name=" . Filter::escapeUrl($user->getUserName()) . "&amp;user_hashcode=" . $user->getPreference('reg_hashcode') . '&amp;action=userverify">' .
@@ -580,7 +580,7 @@ case 'verify_hash':
 		'</a>' .
 		Mail::auditFooter();
 
-	$mail1_subject = /* I18N: %s is a server name/URL */ I18N::translate('New user at %s', WT_BASE_URL . ' ' . $WT_TREE->title());
+	$mail1_subject = /* I18N: %s is a server name/URL */ I18N::translate('New user at %s', WT_BASE_URL . ' ' . $WT_TREE->getTitle());
 
 	// Change to the new user’s language
 	I18N::init($user->getPreference('language'));

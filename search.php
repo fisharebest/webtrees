@@ -195,11 +195,11 @@ echo '<div id="search-page">
 				<div id="search_trees" class="value">';
 					//-- sorting menu by gedcom filename
 					foreach (Tree::getAll() as $tree) {
-						$str = str_replace(array(".", "-", " "), array("_", "_", "_"), $tree->name());
+						$str = str_replace(array(".", "-", " "), array("_", "_", "_"), $tree->getName());
 						$controller->inputFieldNames[] = "$str";
 						echo '<p><input type="checkbox" ';
 						echo isset ($_REQUEST[$str]) ? 'checked' : '';
-						echo ' value="yes" id="checkbox_', $tree->id(), '" name="', $str, '"><label for="checkbox_', $tree->id(), '">', $tree->titleHtml(), '</label></p>', "\n";
+						echo ' value="yes" id="checkbox_', $tree->getId(), '" name="', $str, '"><label for="checkbox_', $tree->getId(), '">', $tree->getTitleHtml(), '</label></p>', "\n";
 					}
 				echo '</div>';
 			}

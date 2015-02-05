@@ -88,7 +88,7 @@ class User {
 			"SELECT SQL_CACHE user_id" .
 			" FROM `##user_gedcom_setting`" .
 			" WHERE gedcom_id = ? AND setting_name = 'gedcomid' AND setting_value = ?"
-		)->execute(array($tree->id(), $individual->getXref()))->fetchOne();
+		)->execute(array($tree->getId(), $individual->getXref()))->fetchOne();
 
 		return self::find($user_id);
 	}

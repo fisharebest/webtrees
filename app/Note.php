@@ -62,7 +62,9 @@ class Note extends GedcomRecord {
 		// Hide notes if they are attached to private records
 		$linked_ids = Database::prepare(
 			"SELECT l_from FROM `##link` WHERE l_to=? AND l_file=?"
-		)->execute(array($this->xref, $this->gedcom_id))->fetchOneColumn();
+		)->execute(array(
+			$this->xref, $this->tree->getId()
+		))->fetchOneColumn();
 		foreach ($linked_ids as $linked_id) {
 			$linked_record = GedcomRecord::getInstance($linked_id);
 			if ($linked_record && !$linked_record->canShow($access_level)) {
