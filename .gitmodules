@@ -1,0 +1,3 @@
+[submodule "tools/vagrant"]
+	path = tools/vagrant
+	url = git@github.com:WorkingDevel/webtrees-vagrant.git
