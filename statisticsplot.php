@@ -22,7 +22,7 @@ use Zend_Session;
  * Defined in session.php
  *
  * @global Zend_Session $WT_SESSION
- * @global string       $GEDCOM
+ * @global Tree         $WT_TREE
  */
 
 define('WT_SCRIPT_NAME', 'statisticsplot.php');
@@ -30,7 +30,7 @@ require './includes/session.php';
 
 $controller = new AjaxController;
 
-$stats = new Stats($GEDCOM);
+$stats = new Stats($WT_TREE);
 
 /**
  * Month of birth
@@ -890,14 +890,14 @@ if ($action === 'update') {
 	$chart_type  = $_POST['chart_type'];
 	$surname     = $_POST['SURN'];
 
-	$WT_SESSION->statTicks[$GEDCOM]['x_axis_boundary_ages']          = $xgl;
-	$WT_SESSION->statTicks[$GEDCOM]['x_axis_boundary_ages_marriage'] = $xglm;
-	$WT_SESSION->statTicks[$GEDCOM]['x_axis_boundary_months']        = $xgm;
-	$WT_SESSION->statTicks[$GEDCOM]['x_axis_boundary_numbers']       = $xga;
-	$WT_SESSION->statTicks[$GEDCOM]['z_axis_boundary_periods']       = $zgp;
-	$WT_SESSION->statTicks[$GEDCOM]['chart_shows']                   = $chart_shows;
-	$WT_SESSION->statTicks[$GEDCOM]['chart_type']                    = $chart_type;
-	$WT_SESSION->statTicks[$GEDCOM]['SURN']                          = $surname;
+	$WT_SESSION->statTicks[$WT_TREE->getTreeId()]['x_axis_boundary_ages']          = $xgl;
+	$WT_SESSION->statTicks[$WT_TREE->getTreeId()]['x_axis_boundary_ages_marriage'] = $xglm;
+	$WT_SESSION->statTicks[$WT_TREE->getTreeId()]['x_axis_boundary_months']        = $xgm;
+	$WT_SESSION->statTicks[$WT_TREE->getTreeId()]['x_axis_boundary_numbers']       = $xga;
+	$WT_SESSION->statTicks[$WT_TREE->getTreeId()]['z_axis_boundary_periods']       = $zgp;
+	$WT_SESSION->statTicks[$WT_TREE->getTreeId()]['chart_shows']                   = $chart_shows;
+	$WT_SESSION->statTicks[$WT_TREE->getTreeId()]['chart_type']                    = $chart_type;
+	$WT_SESSION->statTicks[$WT_TREE->getTreeId()]['SURN']                          = $surname;
 
 	// Save the input variables
 	$savedInput                          = array();
@@ -912,11 +912,11 @@ if ($action === 'update') {
 	$savedInput['chart_shows']           = $chart_shows;
 	$savedInput['chart_type']            = $chart_type;
 	$savedInput['SURN']                  = $surname;
-	$WT_SESSION->statisticsplot[$GEDCOM] = $savedInput;
+	$WT_SESSION->statisticsplot[$WT_TREE->getTreeId()] = $savedInput;
 	unset($savedInput);
 } else {
 	// Recover the saved input variables
-	$savedInput  = $WT_SESSION->statisticsplot[$GEDCOM];
+	$savedInput  = $WT_SESSION->statisticsplot[$WT_TREE->getTreeId()];
 	$x_axis      = $savedInput['x_axis'];
 	$y_axis      = $savedInput['y_axis'];
 	$z_axis      = $savedInput['z_axis'];

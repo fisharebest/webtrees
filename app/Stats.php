@@ -38,10 +38,10 @@ class Stats {
 	private $_media_types = array('audio', 'book', 'card', 'certificate', 'coat', 'document', 'electronic', 'magazine', 'manuscript', 'map', 'fiche', 'film', 'newspaper', 'painting', 'photo', 'tombstone', 'video', 'other');
 
 	/**
-	 * @param string $gedcom
+	 * @param Tree $tree Generate statistics for this tree
 	 */
-	public function __construct($gedcom) {
-		$this->tree = Tree::get(get_id_from_gedcom($gedcom));
+	public function __construct(Tree $tree) {
+		$this->tree = $tree;
 	}
 
 	/**
@@ -1251,7 +1251,7 @@ class Stats {
 			return '';
 		}
 		$row = $rows[0];
-		$record = GedcomRecord::getInstance($row['d_gid']);
+		$record = GedcomRecord::getInstance($row['d_gid'], $this->tree->getTreeId());
 		switch ($type) {
 		default:
 		case 'full':
@@ -1269,7 +1269,7 @@ class Stats {
 			$result = "<a href=\"" . $record->getHtmlUrl() . "\">" . $record->getFullName() . "</a>";
 			break;
 		case 'place':
-			$fact = GedcomRecord::getInstance($row['d_gid'])->getFirstFact($row['d_fact']);
+			$fact = GedcomRecord::getInstance($row['d_gid'], $this->tree->getTreeId())->getFirstFact($row['d_fact']);
 			if ($fact) {
 				$result = format_fact_place($fact, true, true, true);
 			} else {
@@ -2007,7 +2007,7 @@ class Stats {
 			return '';
 		}
 		$row = $rows[0];
-		$person = Individual::getInstance($row['id']);
+		$person = Individual::getInstance($row['id'], $this->tree->getTreeId());
 		switch ($type) {
 		default:
 		case 'full':
@@ -2077,7 +2077,7 @@ class Stats {
 		}
 		$top10 = array();
 		foreach ($rows as $row) {
-			$person = Individual::getInstance($row['deathdate']);
+			$person = Individual::getInstance($row['deathdate'], $this->tree->getTreeId());
 			$age = $row['age'];
 			if ((int) ($age / 365.25) > 0) {
 				$age = (int) ($age / 365.25) . 'y';
@@ -2155,7 +2155,7 @@ class Stats {
 		);
 		$top10 = array();
 		foreach ($rows as $row) {
-			$person = Individual::getInstance($row['id']);
+			$person = Individual::getInstance($row['id'], $this->tree->getTreeId());
 			$age = (WT_CLIENT_JD - $row['age']);
 			if ((int) ($age / 365.25) > 0) {
 				$age = (int) ($age / 365.25) . 'y';
@@ -2631,7 +2631,7 @@ class Stats {
 			return '';
 		}
 		$row = $rows[0];
-		$record = GedcomRecord::getInstance($row['id']);
+		$record = GedcomRecord::getInstance($row['id'], $this->tree->getTreeId());
 		switch ($type) {
 		default:
 		case 'full':
@@ -2780,10 +2780,10 @@ class Stats {
 		}
 		$row = $rows[0];
 		if (isset($row['famid'])) {
-			$family = Family::getInstance($row['famid']);
+			$family = Family::getInstance($row['famid'], $this->tree->getTreeId());
 		}
 		if (isset($row['i_id'])) {
-			$person = Individual::getInstance($row['i_id']);
+			$person = Individual::getInstance($row['i_id'], $this->tree->getTreeId());
 		}
 		switch ($type) {
 		default:
@@ -2906,7 +2906,7 @@ class Stats {
 		$top10 = array();
 		$i = 0;
 		foreach ($rows as $fam => $age) {
-			$family = Family::getInstance($fam);
+			$family = Family::getInstance($fam, $this->tree->getTreeId());
 			if ($type == 'name') {
 				return $family->format_list('span', false, $family->getFullName());
 			}
@@ -2992,7 +2992,7 @@ class Stats {
 		}
 		$top10 = array();
 		foreach ($rows as $fam) {
-			$family = Family::getInstance($fam['family']);
+			$family = Family::getInstance($fam['family'], $this->tree->getTreeId());
 			if ($fam['age'] < 0) {
 				break;
 			}
@@ -3070,7 +3070,7 @@ class Stats {
 		}
 		$row = $rows[0];
 		if (isset($row['id'])) {
-			$person = Individual::getInstance($row['id']);
+			$person = Individual::getInstance($row['id'], $this->tree->getTreeId());
 		}
 		switch ($type) {
 		default:
@@ -3925,7 +3925,7 @@ class Stats {
 			return '';
 		}
 		$row = $rows[0];
-		$family = Family::getInstance($row['id']);
+		$family = Family::getInstance($row['id'], $this->tree->getTreeId());
 		switch ($type) {
 		default:
 		case 'full':
@@ -3975,7 +3975,7 @@ class Stats {
 		}
 		$top10 = array();
 		for ($c = 0; $c < $total; $c++) {
-			$family = Family::getInstance($rows[$c]['id']);
+			$family = Family::getInstance($rows[$c]['id'], $this->tree->getTreeId());
 			if ($family->canShow()) {
 				if ($type == 'list') {
 					$top10[] =
@@ -4052,9 +4052,9 @@ class Stats {
 		$top10 = array();
 		$dist  = array();
 		foreach ($rows as $fam) {
-			$family = Family::getInstance($fam['family']);
-			$child1 = Individual::getInstance($fam['ch1']);
-			$child2 = Individual::getInstance($fam['ch2']);
+			$family = Family::getInstance($fam['family'], $this->tree->getTreeId());
+			$child1 = Individual::getInstance($fam['ch1'], $this->tree->getTreeId());
+			$child2 = Individual::getInstance($fam['ch2'], $this->tree->getTreeId());
 			if ($type == 'name') {
 				if ($child1->canShow() && $child2->canShow()) {
 					$return = '<a href="' . $child2->getHtmlUrl() . '">' . $child2->getFullName() . '</a> ';
@@ -4350,7 +4350,7 @@ class Stats {
 		$chd = '';
 		$chl = array();
 		foreach ($rows as $row) {
-			$family = Family::getInstance($row['id']);
+			$family = Family::getInstance($row['id'], $this->tree->getTreeId());
 			if ($family->canShow()) {
 				if ($tot == 0) {
 					$per = 0;
@@ -4574,7 +4574,7 @@ class Stats {
 		}
 		$top10 = array();
 		foreach ($rows as $row) {
-			$family = Family::getInstance($row['family']);
+			$family = Family::getInstance($row['family'], $this->tree->getTreeId());
 			if ($family->canShow()) {
 				if ($type == 'list') {
 					$top10[] = "<li><a href=\"" . $family->getHtmlUrl() . "\">" . $family->getFullName() . "</a></li>";
@@ -4730,7 +4730,7 @@ class Stats {
 		}
 		$top10 = array();
 		foreach ($rows as $row) {
-			$family = Family::getInstance($row['id']);
+			$family = Family::getInstance($row['id'], $this->tree->getTreeId());
 			if ($family->canShow()) {
 				if ($type == 'list') {
 					$top10[] =
@@ -4972,8 +4972,6 @@ class Stats {
 	 * @return string
 	 */
 	private function commonGivenQuery($sex = 'B', $type = 'list', $show_tot = false, $params = array()) {
-		global $GEDCOM;
-
 		if (isset($params[0]) && $params[0] != '' && $params[0] >= 0) {
 			$threshold = (int) $params[0];
 		} else {
@@ -5000,7 +4998,7 @@ class Stats {
 			$sex_sql = "i_sex<>'U'";
 			break;
 		}
-		$ged_id = get_id_from_gedcom($GEDCOM);
+		$ged_id = $this->tree->getTreeId();
 
 		$rows = Database::prepare("SELECT SQL_CACHE n_givn, COUNT(*) AS num FROM `##name` JOIN `##individuals` ON (n_id=i_id AND n_file=i_file) WHERE n_file={$ged_id} AND n_type<>'_MARNM' AND n_givn NOT IN ('@P.N.', '') AND LENGTH(n_givn)>1 AND {$sex_sql} GROUP BY n_id, n_givn")
 			->fetchAll();

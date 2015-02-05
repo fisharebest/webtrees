@@ -32,7 +32,7 @@ class top10_givnnames_WT_Module extends Module implements ModuleBlockInterface {
 
 	/** {@inheritdoc} */
 	public function getBlock($block_id, $template = true, $cfg = null) {
-		global $TEXT_DIRECTION, $ctype;
+		global $TEXT_DIRECTION, $ctype, $WT_TREE;
 
 		$num       = get_block_setting($block_id, 'num', '10');
 		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');
@@ -46,7 +46,7 @@ class top10_givnnames_WT_Module extends Module implements ModuleBlockInterface {
 			}
 		}
 
-		$stats = new Stats(WT_GEDCOM);
+		$stats = new Stats($WT_TREE);
 
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';

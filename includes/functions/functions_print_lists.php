@@ -28,7 +28,7 @@ use Zend_Tag_Cloud;
  * @return string
  */
 function format_indi_table($datalist, $option = '') {
-	global $GEDCOM, $WT_TREE, $SEARCH_SPIDER, $controller, $WT_TREE;
+	global $SEARCH_SPIDER, $controller, $WT_TREE;
 
 	$table_id = 'table-indi-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 	$SHOW_EST_LIST_DATES = $WT_TREE->getPreference('SHOW_EST_LIST_DATES');
@@ -109,7 +109,7 @@ function format_indi_table($datalist, $option = '') {
 			jQuery(".loading-image").css("display", "none");
 		');
 
-	$stats = new Stats($GEDCOM);
+	$stats = new Stats($WT_TREE);
 
 	// Bad data can cause "longest life" to be huge, blowing memory limits
 	$max_age = min($WT_TREE->getPreference('MAX_ALIVE_AGE'), $stats->LongestLifeAge()) + 1;
@@ -517,7 +517,7 @@ function format_indi_table($datalist, $option = '') {
  * @return string
  */
 function format_fam_table($datalist) {
-	global $GEDCOM, $WT_TREE, $SEARCH_SPIDER, $controller;
+	global $WT_TREE, $SEARCH_SPIDER, $controller;
 
 	$table_id = 'table-fam-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 
@@ -594,7 +594,7 @@ function format_fam_table($datalist) {
 			jQuery(".loading-image").css("display", "none");
 	');
 
-	$stats = new Stats($GEDCOM);
+	$stats = new Stats($WT_TREE);
 	$max_age = max($stats->oldestMarriageMaleAge(), $stats->oldestMarriageFemaleAge()) + 1;
 
 	//-- init chart data
@@ -1644,15 +1644,15 @@ function format_surname_tagcloud($surnames, $script, $totals) {
  * @return string
  */
 function format_surname_list($surnames, $style, $totals, $script) {
-	global $GEDCOM;
+	global $WT_TREE;
 
 	$html = array();
 	foreach ($surnames as $surn => $surns) {
 		// Each surname links back to the indilist
 		if ($surn) {
-			$url = $script . '?surname=' . urlencode($surn) . '&amp;ged=' . rawurlencode($GEDCOM);
+			$url = $script . '?surname=' . urlencode($surn) . '&amp;ged=' . $WT_TREE->getNameUrl();
 		} else {
-			$url = $script . '?alpha=,&amp;ged=' . rawurlencode($GEDCOM);
+			$url = $script . '?alpha=,&amp;ged=' . $WT_TREE->getNameUrl();
 		}
 		// If all the surnames are just case variants, then merge them into one
 		// Comment out this block if you want SMITH listed separately from Smith

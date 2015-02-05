@@ -74,7 +74,7 @@ class gedcom_stats_WT_Module extends Module implements ModuleBlockInterface {
 		}
 		$title .= $this->getTitle();
 
-		$stats = new Stats(WT_GEDCOM);
+		$stats = new Stats($WT_TREE);
 
 		$content = '<b>' . WT_TREE_TITLE . '</b><br>';
 

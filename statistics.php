@@ -22,7 +22,7 @@ use Zend_Session;
  * Defined in session.php
  *
  * @global Zend_Session $WT_SESSION
- * @global string       $GEDCOM
+ * @global Tree         $WT_TREE
  */
 
 define('WT_SCRIPT_NAME', 'statistics.php');
@@ -81,7 +81,7 @@ if (!$ajax) {
 		->pageHeader()
 		->addInlineJavascript('autocomplete();')
 		->addInlineJavascript('jQuery("#loading-indicator").removeClass("loading-image");');
-	$stats = new Stats($GEDCOM);
+	$stats = new Stats($WT_TREE);
 	if ($tab == 0) {
 		echo '<fieldset>
 		<legend>', I18N::translate('Total individuals: %s', $stats->totalIndividuals()), '</legend>
@@ -506,21 +506,21 @@ if (!$ajax) {
 		if (!isset($plotnp)) {
 			$plotnp = 201;
 		}
-		if (isset($WT_SESSION->statTicks[$GEDCOM])) {
-			$x_axis_boundary_ages    = $WT_SESSION->statTicks[$GEDCOM]['x_axis_boundary_ages'];
-			$x_axis_boundary_months  = $WT_SESSION->statTicks[$GEDCOM]['x_axis_boundary_months'];
-			$x_axis_boundary_numbers = $WT_SESSION->statTicks[$GEDCOM]['x_axis_boundary_numbers'];
-			$x_axis_boundary_periods = $WT_SESSION->statTicks[$GEDCOM]['z_axis_boundary_periods'];
+		if (isset($WT_SESSION->statTicks[$WT_TREE->getTreeId()])) {
+			$x_axis_boundary_ages    = $WT_SESSION->statTicks[$WT_TREE->getTreeId()]['x_axis_boundary_ages'];
+			$x_axis_boundary_months  = $WT_SESSION->statTicks[$WT_TREE->getTreeId()]['x_axis_boundary_months'];
+			$x_axis_boundary_numbers = $WT_SESSION->statTicks[$WT_TREE->getTreeId()]['x_axis_boundary_numbers'];
+			$x_axis_boundary_periods = $WT_SESSION->statTicks[$WT_TREE->getTreeId()]['z_axis_boundary_periods'];
 		} else {
 			$x_axis_boundary_ages    = '1,5,10,20,30,40,50,60,70,80,90,100';
 			$x_axis_boundary_months  = '-24,-12,0,8,12,18,24,48';
 			$x_axis_boundary_numbers = '1,2,3,4,5,6,7,8,9,10';
 			$x_axis_boundary_periods = '1700,1750,1800,1850,1900,1950,2000';
 		}
-		if (isset($WT_SESSION->statTicks1[$GEDCOM])) {
-			$chart_shows = $WT_SESSION->statTicks1[$GEDCOM]['chart_shows'];
-			$chart_type  = $WT_SESSION->statTicks1[$GEDCOM]['chart_type'];
-			$surname     = $WT_SESSION->statTicks1[$GEDCOM]['surname'];
+		if (isset($WT_SESSION->statTicks1[$WT_TREE->getTreeId()])) {
+			$chart_shows = $WT_SESSION->statTicks1[$WT_TREE->getTreeId()]['chart_shows'];
+			$chart_type  = $WT_SESSION->statTicks1[$WT_TREE->getTreeId()]['chart_type'];
+			$surname     = $WT_SESSION->statTicks1[$WT_TREE->getTreeId()]['surname'];
 		} else {
 			$chart_shows = 'world';
 			$chart_type  = 'indi_distribution_chart';

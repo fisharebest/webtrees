@@ -509,12 +509,14 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 	 * ...
 	 */
 	private function flags() {
+		global $WT_TREE;
+
 		$controller = new SimpleController;
 		$controller
 			->setPageTitle(I18N::translate('Select flag'))
 			->pageHeader();
 
-		$stats           = new Stats(WT_GEDCOM);
+		$stats           = new Stats($WT_TREE);
 		$countries       = $stats->getAllCountries();
 		$action          = Filter::post('action');
 		$countrySelected = Filter::get('countrySelected', null, 'Countries');
@@ -2782,7 +2784,9 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 	 * @param string[] $parent
 	 */
 	private function printHowManyPeople($level, $parent) {
-		$stats = new Stats(WT_GEDCOM);
+		global $WT_TREE;
+
+		$stats = new Stats($WT_TREE);
 
 		$place_count_indi = 0;
 		$place_count_fam  = 0;
@@ -4120,6 +4124,8 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 	 * ...
 	 */
 	private function adminPlaces() {
+		global $WT_TREE;
+
 		$action       = Filter::get('action');
 		$parent       = Filter::get('parent');
 		$inactive     = Filter::getBool('inactive');
@@ -4351,7 +4357,7 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 
 		if ($action === 'ImportFile2') {
 			$country_names = array();
-			$stats = new Stats(WT_GEDCOM);
+			$stats = new Stats($WT_TREE);
 			foreach ($stats->iso3166() as $key=>$value) {
 				$country_names[$key] = I18N::translate($key);
 			}
