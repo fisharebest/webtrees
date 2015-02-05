@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -36,7 +36,7 @@ class FunctionsDateTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetAgeAtEventExists() {
-		$this->assertEquals(function_exists('\Webtrees\\get_age_at_event'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_age_at_event'), true);
 	}
 
 	/**
@@ -45,7 +45,7 @@ class FunctionsDateTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionFormatTimestampExists() {
-		$this->assertEquals(function_exists('\Webtrees\\format_timestamp'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\format_timestamp'), true);
 	}
 
 	/**
@@ -54,6 +54,6 @@ class FunctionsDateTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionTimestampToGedcomDateExists() {
-		$this->assertEquals(function_exists('\Webtrees\\timestamp_to_gedcom_date'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\timestamp_to_gedcom_date'), true);
 	}
 }

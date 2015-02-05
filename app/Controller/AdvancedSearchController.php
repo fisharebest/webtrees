@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -135,7 +135,7 @@ class AdvancedSearchController extends SearchController {
 		foreach ($ofields as $field) {
 			$fields[$field] = WT_Gedcom_Tag::GetLabel($field);
 		}
-		uksort($fields, 'Webtrees\AdvancedSearchController::tagSort');
+		uksort($fields, __NAMESPACE__ . '\AdvancedSearchController::tagSort');
 		return $fields;
 	}
 
@@ -639,7 +639,7 @@ class AdvancedSearchController extends SearchController {
 	 */
 	function printResults() {
 		if ($this->myindilist) {
-			uasort($this->myindilist, 'Webtrees\GedcomRecord::compare');
+			uasort($this->myindilist, __NAMESPACE__ . '\GedcomRecord::compare');
 			echo format_indi_table($this->myindilist);
 			return true;
 		} else {

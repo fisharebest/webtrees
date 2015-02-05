@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -126,7 +126,7 @@ class WT_Gedcom_Code_Stat {
 		foreach (self::statusCodes($tag) as $status_code) {
 			$status_names[$status_code] = self::statusName($status_code);
 		}
-		uasort($status_names, 'Webtrees\I18N::strcasecmp');
+		uasort($status_names, __NAMESPACE__ . '\I18N::strcasecmp');
 
 		return $status_names;
 	}

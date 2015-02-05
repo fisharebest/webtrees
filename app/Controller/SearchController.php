@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -564,8 +564,8 @@ class SearchController extends PageController {
 			header('Location: ' . WT_BASE_URL . $indi->getRawUrl());
 			exit;
 		}
-		usort($this->myindilist, 'Webtrees\GedcomRecord::compare');
-		usort($this->myfamlist, 'Webtrees\GedcomRecord::compare');
+		usort($this->myindilist, __NAMESPACE__ . '\GedcomRecord::compare');
+		usort($this->myfamlist, __NAMESPACE__ . '\GedcomRecord::compare');
 	}
 
 	/**
@@ -607,7 +607,7 @@ class SearchController extends PageController {
 						}
 					}
 					if ($datalist) {
-						usort($datalist, 'Webtrees\GedcomRecord::compare');
+						usort($datalist, __NAMESPACE__ . '\GedcomRecord::compare');
 						$GEDCOM = $search_tree->name();
 						load_gedcom_settings($search_tree->id());
 						echo '<h3 class="indi-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->titleHtml(), '</span></a></h3>
@@ -630,7 +630,7 @@ class SearchController extends PageController {
 						}
 					}
 					if ($datalist) {
-						usort($datalist, 'Webtrees\GedcomRecord::compare');
+						usort($datalist, __NAMESPACE__ . '\GedcomRecord::compare');
 						$GEDCOM = $search_tree->name();
 						load_gedcom_settings($search_tree->id());
 						echo '<h3 class="fam-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->titleHtml(), '</span></a></h3>
@@ -653,7 +653,7 @@ class SearchController extends PageController {
 						}
 					}
 					if ($datalist) {
-						usort($datalist, 'Webtrees\GedcomRecord::compare');
+						usort($datalist, __NAMESPACE__ . '\GedcomRecord::compare');
 						$GEDCOM = $search_tree->name();
 						load_gedcom_settings($search_tree->id());
 						echo '<h3 class="source-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->titleHtml(), '</span></a></h3>
@@ -676,7 +676,7 @@ class SearchController extends PageController {
 						}
 					}
 					if ($datalist) {
-						usort($datalist, 'Webtrees\GedcomRecord::compare');
+						usort($datalist, __NAMESPACE__ . '\GedcomRecord::compare');
 						$GEDCOM = $search_tree->name();
 						load_gedcom_settings($search_tree->id());
 						echo '<h3 class="note-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->titleHtml(), '</span></a></h3>

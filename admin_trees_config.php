@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -169,7 +169,7 @@ foreach ($tags as $tag) {
 	}
 }
 
-uasort($all_tags, 'Webtrees\I18N::strcasecmp');
+uasort($all_tags, __NAMESPACE__ . '\I18N::strcasecmp');
 
 $resns = Database::prepare(
 	"SELECT default_resn_id, tag_type, xref, resn" .

@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -149,7 +149,7 @@ class ClippingsCart {
 						$this->addFamilyDescendancy($family, $this->level3);
 					}
 				}
-				uksort($WT_SESSION->cart[WT_GED_ID], 'Webtrees\ClippingsCart::compareClippings');
+				uksort($WT_SESSION->cart[WT_GED_ID], __NAMESPACE__ . '\ClippingsCart::compareClippings');
 			}
 		} elseif ($this->action === 'remove') {
 			unset ($WT_SESSION->cart[WT_GED_ID][$this->id]);

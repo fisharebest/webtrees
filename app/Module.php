@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -79,7 +79,7 @@ abstract class Module {
 	 * @return string
 	 */
 	public function getName() {
-		return str_replace(array('Webtrees\\', '_WT_Module'), '', get_class($this));
+		return str_replace(array(__NAMESPACE__ . '\\', '_WT_Module'), '', get_class($this));
 	}
 
 	/**
@@ -203,7 +203,7 @@ abstract class Module {
 			foreach ($module_names as $module_name) {
 				if (file_exists(WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php')) {
 					require_once WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php';
-					$class                 = 'Webtrees\\' . $module_name . '_WT_Module';
+					$class                 = __NAMESPACE__ . '\\' . $module_name . '_WT_Module';
 					$modules[$module_name] = new $class;
 				} else {
 					// Module has been deleted from disk?  Disable it.
@@ -248,8 +248,8 @@ abstract class Module {
 		foreach ($module_names as $module_name) {
 			if (file_exists(WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php')) {
 				require_once WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php';
-				$class     = 'Webtrees\\' . $module_name . '_WT_Module';
-				$interface = 'Webtrees\\Module' . ucfirst($component) . 'Interface';
+				$class     = __NAMESPACE__ . '\\' . $module_name . '_WT_Module';
+				$interface = __NAMESPACE__ . '\Module' . ucfirst($component) . 'Interface';
 				$module    = new $class;
 				// Check that this module is still implementing the desired interface.
 				if ($module instanceof $interface) {
@@ -417,7 +417,7 @@ abstract class Module {
 		while (($module_name = readdir($dir)) !== false) {
 			if (preg_match('/^[a-zA-Z0-9_]+$/', $module_name) && file_exists(WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php')) {
 				require_once WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php';
-				$class                       = 'Webtrees\\' . $module_name . '_WT_Module';
+				$class                       = __NAMESPACE__ . '\\' . $module_name . '_WT_Module';
 				$module                      = new $class;
 				$modules[$module->getName()] = $module;
 				Database::prepare("INSERT IGNORE INTO `##module` (module_name, status, menu_order, sidebar_order, tab_order) VALUES (?, ?, ?, ?, ?)")

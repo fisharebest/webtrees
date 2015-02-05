@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -187,7 +187,7 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 	// apply the text
 	if ($useTTF) {
 		// if imagettftext throws errors, catch them with a custom error handler
-		set_error_handler('\Webtrees\\imagettftextErrorHandler');
+		set_error_handler(__NAMESPACE__ . '\\imagettftextErrorHandler');
 		imagettftext($im, $taille, $rotation, $pos_x, $pos_y, $textcolor, 'includes/fonts/' . $font, $text);
 		restore_error_handler();
 	}

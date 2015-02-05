@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -2224,7 +2224,7 @@ case 'reorder_fams':
 
 	$fams = $person->getSpouseFamilies();
 	if ($option == 'bymarriage') {
-		usort($fams, 'Webtrees\Family::compareMarrDate');
+		usort($fams, __NAMESPACE__ . '\Family::compareMarrDate');
 	}
 
 	?>

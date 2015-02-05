@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -36,7 +36,7 @@ class FunctionsPrintTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintPedigreePersonExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_pedigree_person'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_pedigree_person'), true);
 	}
 
 	/**
@@ -47,7 +47,7 @@ class FunctionsPrintTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintNoteRecordExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_note_record'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_note_record'), true);
 	}
 
 	/**
@@ -56,7 +56,7 @@ class FunctionsPrintTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintFactNotesExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_fact_notes'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_fact_notes'), true);
 	}
 
 	/**
@@ -65,7 +65,7 @@ class FunctionsPrintTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionHelpLinkExists() {
-		$this->assertEquals(function_exists('\Webtrees\\help_link'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\help_link'), true);
 	}
 
 	/**
@@ -74,7 +74,7 @@ class FunctionsPrintTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionWikiHelpLinkExists() {
-		$this->assertEquals(function_exists('\Webtrees\\wiki_help_link'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\wiki_help_link'), true);
 	}
 
 	/**
@@ -83,7 +83,7 @@ class FunctionsPrintTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionHighlightSearchHitsExists() {
-		$this->assertEquals(function_exists('\Webtrees\\highlight_search_hits'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\highlight_search_hits'), true);
 	}
 
 	/**
@@ -92,7 +92,7 @@ class FunctionsPrintTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionFormatAssoRelaRecordExists() {
-		$this->assertEquals(function_exists('\Webtrees\\format_asso_rela_record'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\format_asso_rela_record'), true);
 	}
 
 	/**
@@ -101,7 +101,7 @@ class FunctionsPrintTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionFormatParentsAgeExists() {
-		$this->assertEquals(function_exists('\Webtrees\\format_parents_age'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\format_parents_age'), true);
 	}
 
 	/**
@@ -110,7 +110,7 @@ class FunctionsPrintTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionFormatFactDateExists() {
-		$this->assertEquals(function_exists('\Webtrees\\format_fact_date'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\format_fact_date'), true);
 	}
 
 	/**
@@ -119,7 +119,7 @@ class FunctionsPrintTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionFormatFactPlaceExists() {
-		$this->assertEquals(function_exists('\Webtrees\\format_fact_place'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\format_fact_place'), true);
 	}
 
 	/**
@@ -128,7 +128,7 @@ class FunctionsPrintTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionCheckFactUniqueExists() {
-		$this->assertEquals(function_exists('\Webtrees\\CheckFactUnique'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\CheckFactUnique'), true);
 	}
 
 	/**
@@ -137,7 +137,7 @@ class FunctionsPrintTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintAddNewFactExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_add_new_fact'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_add_new_fact'), true);
 	}
 
 	/**
@@ -146,7 +146,7 @@ class FunctionsPrintTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionInitCalendarPopupExists() {
-		$this->assertEquals(function_exists('\Webtrees\\init_calendar_popup'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\init_calendar_popup'), true);
 	}
 
 	/**
@@ -155,7 +155,7 @@ class FunctionsPrintTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintFindindiLinkExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_findindi_link'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_findindi_link'), true);
 	}
 
 	/**
@@ -164,7 +164,7 @@ class FunctionsPrintTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintFindplaceLinkExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_findplace_link'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_findplace_link'), true);
 	}
 
 	/**
@@ -173,7 +173,7 @@ class FunctionsPrintTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintFindfamilyLinkExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_findfamily_link'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_findfamily_link'), true);
 	}
 
 	/**
@@ -182,7 +182,7 @@ class FunctionsPrintTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintSpecialcharLinkExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_specialchar_link'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_specialchar_link'), true);
 	}
 
 	/**
@@ -191,7 +191,7 @@ class FunctionsPrintTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintAutopasteLinkExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_autopaste_link'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_autopaste_link'), true);
 	}
 
 	/**
@@ -200,7 +200,7 @@ class FunctionsPrintTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintFindsourceLinkExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_findsource_link'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_findsource_link'), true);
 	}
 
 	/**
@@ -209,7 +209,7 @@ class FunctionsPrintTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintFindnoteLinkExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_findnote_link'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_findnote_link'), true);
 	}
 
 	/**
@@ -218,7 +218,7 @@ class FunctionsPrintTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintFindrepositoryLinkExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_findrepository_link'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_findrepository_link'), true);
 	}
 
 	/**
@@ -227,7 +227,7 @@ class FunctionsPrintTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintFindmediaLinkExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_findmedia_link'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_findmedia_link'), true);
 	}
 
 	/**
@@ -236,7 +236,7 @@ class FunctionsPrintTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintFindfactLinkExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_findfact_link'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_findfact_link'), true);
 	}
 
 	/**
@@ -245,6 +245,6 @@ class FunctionsPrintTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetLdsGlanceExists() {
-		$this->assertEquals(function_exists('\Webtrees\\get_lds_glance'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_lds_glance'), true);
 	}
 }

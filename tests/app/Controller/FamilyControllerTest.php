@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -37,6 +37,6 @@ class FamilyControllerTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testClassExists() {
-		$this->assertTrue(class_exists('\Webtrees\FamilyController'));
+		$this->assertTrue(class_exists(__NAMESPACE__ . '\FamilyController'));
 	}
 }

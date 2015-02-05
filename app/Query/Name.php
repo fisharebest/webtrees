@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -492,7 +492,7 @@ class WT_Query_Name {
 				$list[$family->getXref()] = $family;
 			}
 		}
-		usort($list, 'Webtrees\GedcomRecord::compare');
+		usort($list, __NAMESPACE__ . '\GedcomRecord::compare');
 		return $list;
 	}
 }

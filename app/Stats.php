@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -4802,7 +4802,7 @@ class Stats {
 		if (count($surname_list) == 0) {
 			return '';
 		}
-		uasort($surname_list, 'Webtrees\Stats::nameTotalReverseSort');
+		uasort($surname_list, __NAMESPACE__ . '\Stats::nameTotalReverseSort');
 		if ($maxtoshow > 0) {
 			$surname_list = array_slice($surname_list, 0, $maxtoshow);
 		}
@@ -4810,13 +4810,13 @@ class Stats {
 		switch ($sorting) {
 		default:
 		case 'alpha':
-			uksort($surname_list, 'Webtrees\I18N::strcasecmp');
+			uksort($surname_list, __NAMESPACE__ . '\I18N::strcasecmp');
 			break;
 		case 'count':
-			uasort($surname_list, 'Webtrees\Stats::nameTotalSort');
+			uasort($surname_list, __NAMESPACE__ . '\Stats::nameTotalSort');
 			break;
 		case 'rcount':
-			uasort($surname_list, 'Webtrees\Stats::nameTotalReverseSort');
+			uasort($surname_list, __NAMESPACE__ . '\Stats::nameTotalReverseSort');
 			break;
 		}
 
@@ -4916,7 +4916,7 @@ class Stats {
 			return '';
 		}
 		$SURNAME_TRADITION = $this->tree->getPreference('SURNAME_TRADITION');
-		uasort($surnames, 'Webtrees\Stats::nameTotalReverseSort');
+		uasort($surnames, __NAMESPACE__ . '\Stats::nameTotalReverseSort');
 		$surnames = array_slice($surnames, 0, $maxtoshow);
 		$all_surnames = array();
 		foreach (array_keys($surnames) as $n => $surname) {

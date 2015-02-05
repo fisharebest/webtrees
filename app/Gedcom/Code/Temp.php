@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -349,7 +349,7 @@ class WT_Gedcom_Code_Temp {
 		foreach (self::templeCodes() as $temple_code) {
 			$temple_names[$temple_code] = self::templeName($temple_code);
 		}
-		uasort($temple_names, 'Webtrees\I18N::strcasecmp');
+		uasort($temple_names, __NAMESPACE__ . '\I18N::strcasecmp');
 
 		return $temple_names;
 	}

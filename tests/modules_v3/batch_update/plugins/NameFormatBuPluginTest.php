@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -36,6 +36,6 @@ class NameFormatBuPluginTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetUserFullNameExists() {
-		$this->assertEquals(true, class_exists('\Webtrees\\BatchUpdateNameFormatPlugin'));
+		$this->assertEquals(true, class_exists(__NAMESPACE__ . '\\BatchUpdateNameFormatPlugin'));
 	}
 }

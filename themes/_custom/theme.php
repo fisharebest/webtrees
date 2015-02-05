@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 // webtrees: online genealogy
 // Copyright (C) 2015 webtrees development team.

@@ -15,7 +15,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * Class Log - record webtrees events in the database

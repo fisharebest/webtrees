@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -130,7 +130,7 @@ class Database {
 		if (self::$pdo instanceof PDO) {
 			return self::$instance;
 		} else {
-			throw new \Exception('Database::createInstance() must be called before \Webtrees\Database::getInstance().');
+			throw new \Exception('createInstance() must be called before getInstance().');
 		}
 	}
 

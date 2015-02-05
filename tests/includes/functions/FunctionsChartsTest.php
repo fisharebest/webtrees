@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -36,7 +36,7 @@ class FunctionsChartsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintSosaNumberExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_sosa_number'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_sosa_number'), true);
 	}
 
 	/**
@@ -45,7 +45,7 @@ class FunctionsChartsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintFamilyParentsExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_family_children'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_family_children'), true);
 	}
 
 	/**
@@ -54,7 +54,7 @@ class FunctionsChartsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintFamilyChildrenExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_family_children'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_family_children'), true);
 	}
 
 	/**
@@ -63,7 +63,7 @@ class FunctionsChartsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintSosaFamilyExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_sosa_family'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_sosa_family'), true);
 	}
 
 	/**
@@ -72,7 +72,7 @@ class FunctionsChartsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintUrlArrowExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_url_arrow'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_url_arrow'), true);
 	}
 
 	/**
@@ -81,7 +81,7 @@ class FunctionsChartsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetSosaNameExists() {
-		$this->assertEquals(function_exists('\Webtrees\\get_sosa_name'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_sosa_name'), true);
 	}
 
 	/**
@@ -90,6 +90,6 @@ class FunctionsChartsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintCousinsExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_cousins'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_cousins'), true);
 	}
 }

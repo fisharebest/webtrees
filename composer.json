@@ -19,7 +19,7 @@
 			"includes/functions/functions_rtl.php"
 			],
 		"psr-4": {
-			"Webtrees\\": ["app/", "modules_v3/"]
+			"Fisharebest\\Webtrees\\": ["app/", "modules_v3/"]
 		}
 	},
 	"require": {

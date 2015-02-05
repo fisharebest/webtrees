@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -313,8 +313,8 @@ function sort_facts(&$arr) {
 	}
 
 	//-- sort each type of array
-	usort($dated, 'Webtrees\Fact::compareDate');
-	usort($nondated, 'Webtrees\Fact::compareType');
+	usort($dated, __NAMESPACE__ . '\Fact::compareDate');
+	usort($nondated, __NAMESPACE__ . '\Fact::compareType');
 
 	//-- merge the arrays back together comparing by Facts
 	$dc = count($dated);
@@ -2356,7 +2356,7 @@ function get_theme_names() {
 			}
 		}
 		$d->close();
-		uksort($themes, 'Webtrees\I18N::strcasecmp');
+		uksort($themes, __NAMESPACE__ . '\I18N::strcasecmp');
 	}
 
 	return $themes;

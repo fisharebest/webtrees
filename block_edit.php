@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -35,7 +35,7 @@ if (
 	return;
 }
 
-$class_name = 'Webtrees\\' . $block->module_name . '_WT_Module';
+$class_name = __NAMESPACE__ . '\\' . $block->module_name . '_WT_Module';
 $block = new $class_name;
 
 $controller = new AjaxController;

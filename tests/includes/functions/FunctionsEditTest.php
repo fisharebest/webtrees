@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -37,7 +37,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionSelectEditControlExists() {
-		$this->assertEquals(function_exists('\Webtrees\\select_edit_control'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\select_edit_control'), true);
 	}
 
 	/**
@@ -47,7 +47,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionRadioButtonsExists() {
-		$this->assertEquals(function_exists('\Webtrees\\radio_buttons'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\radio_buttons'), true);
 	}
 
 	/**
@@ -56,7 +56,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionEditFieldYesNoExists() {
-		$this->assertEquals(function_exists('\Webtrees\\edit_field_yes_no'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\edit_field_yes_no'), true);
 	}
 
 	/**
@@ -65,7 +65,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionCheckboxExists() {
-		$this->assertEquals(function_exists('\Webtrees\\checkbox'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\checkbox'), true);
 	}
 
 	/**
@@ -74,7 +74,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionTwoStateCheckboxExists() {
-		$this->assertEquals(function_exists('\Webtrees\\two_state_checkbox'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\two_state_checkbox'), true);
 	}
 
 	/**
@@ -83,7 +83,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionEditLanguageCheckboxesExists() {
-		$this->assertEquals(function_exists('\Webtrees\\edit_language_checkboxes'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\edit_language_checkboxes'), true);
 	}
 
 	/**
@@ -92,7 +92,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionEditFieldAccessLevelExists() {
-		$this->assertEquals(function_exists('\Webtrees\\edit_field_access_level'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\edit_field_access_level'), true);
 	}
 
 	/**
@@ -101,7 +101,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionEditFieldResnExists() {
-		$this->assertEquals(function_exists('\Webtrees\\edit_field_resn'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\edit_field_resn'), true);
 	}
 
 	/**
@@ -110,7 +110,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionEditFieldContactExists() {
-		$this->assertEquals(function_exists('\Webtrees\\edit_field_contact'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\edit_field_contact'), true);
 	}
 
 	/**
@@ -119,7 +119,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionEditFieldLangaugeExists() {
-		$this->assertEquals(function_exists('\Webtrees\\edit_field_language'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\edit_field_language'), true);
 	}
 
 	/**
@@ -128,7 +128,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionEditFieldIntegersExists() {
-		$this->assertEquals(function_exists('\Webtrees\\edit_field_integers'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\edit_field_integers'), true);
 	}
 
 	/**
@@ -137,7 +137,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionEditFieldUsernameExists() {
-		$this->assertEquals(function_exists('\Webtrees\\edit_field_username'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\edit_field_username'), true);
 	}
 
 	/**
@@ -146,7 +146,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionEditFieldAdopExists() {
-		$this->assertEquals(function_exists('\Webtrees\\edit_field_adop'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\edit_field_adop'), true);
 	}
 
 	/**
@@ -155,7 +155,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionEditFieldPediExists() {
-		$this->assertEquals(function_exists('\Webtrees\\edit_field_pedi'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\edit_field_pedi'), true);
 	}
 
 	/**
@@ -164,7 +164,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionEditFieldNameTypeExists() {
-		$this->assertEquals(function_exists('\Webtrees\\edit_field_name_type'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\edit_field_name_type'), true);
 	}
 
 	/**
@@ -173,7 +173,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionEditFieldRelaExists() {
-		$this->assertEquals(function_exists('\Webtrees\\edit_field_rela'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\edit_field_rela'), true);
 	}
 
 	/**
@@ -182,7 +182,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionRemoveLinksExists() {
-		$this->assertEquals(function_exists('\Webtrees\\remove_links'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\remove_links'), true);
 	}
 
 	/**
@@ -191,7 +191,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintCalendarPopupExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_calendar_popup'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_calendar_popup'), true);
 	}
 
 	/**
@@ -200,7 +200,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintAddnewmediaLinkExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_addnewmedia_link'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_addnewmedia_link'), true);
 	}
 
 	/**
@@ -209,7 +209,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintAddnewrepositoryLinkExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_addnewrepository_link'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_addnewrepository_link'), true);
 	}
 
 	/**
@@ -218,7 +218,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintAddnewnoteLinkExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_addnewnote_link'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_addnewnote_link'), true);
 	}
 
 	/**
@@ -227,7 +227,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintEditnoteLinkExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_editnote_link'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_editnote_link'), true);
 	}
 
 	/**
@@ -236,7 +236,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintAddnewsourceLinkExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_addnewsource_link'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_addnewsource_link'), true);
 	}
 
 	/**
@@ -245,7 +245,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionAddSimpleTagExists() {
-		$this->assertEquals(function_exists('\Webtrees\\add_simple_tag'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\add_simple_tag'), true);
 	}
 
 	/**
@@ -254,7 +254,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintAddLayerExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_add_layer'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_add_layer'), true);
 	}
 
 	/**
@@ -263,7 +263,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionAddSimpleTagsExists() {
-		$this->assertEquals(function_exists('\Webtrees\\addSimpleTags'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\addSimpleTags'), true);
 	}
 
 	/**
@@ -272,7 +272,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionAddNewNameExists() {
-		$this->assertEquals(function_exists('\Webtrees\\addNewName'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\addNewName'), true);
 	}
 
 	/**
@@ -281,7 +281,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionAddNewSexExists() {
-		$this->assertEquals(function_exists('\Webtrees\\addNewSex'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\addNewSex'), true);
 	}
 
 	/**
@@ -290,7 +290,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionAddNewFactExists() {
-		$this->assertEquals(function_exists('\Webtrees\\addNewFact'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\addNewFact'), true);
 	}
 
 	/**
@@ -299,7 +299,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionSplitSourExists() {
-		$this->assertEquals(function_exists('\Webtrees\\splitSOUR'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\splitSOUR'), true);
 	}
 
 	/**
@@ -308,7 +308,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionUpdateSourExists() {
-		$this->assertEquals(function_exists('\Webtrees\\updateSOUR'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\updateSOUR'), true);
 	}
 
 	/**
@@ -317,7 +317,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionUpdateRestExists() {
-		$this->assertEquals(function_exists('\Webtrees\\updateRest'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\updateRest'), true);
 	}
 
 	/**
@@ -326,7 +326,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionHandleUpdatesExists() {
-		$this->assertEquals(function_exists('\Webtrees\\handle_updates'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\handle_updates'), true);
 	}
 
 	/**
@@ -335,7 +335,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionCreateAddFromExists() {
-		$this->assertEquals(function_exists('\Webtrees\\create_add_form'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\create_add_form'), true);
 	}
 
 	/**
@@ -344,7 +344,7 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionCreateEditFromExists() {
-		$this->assertEquals(function_exists('\Webtrees\\create_edit_form'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\create_edit_form'), true);
 	}
 
 	/**
@@ -353,6 +353,6 @@ class FunctionsEditTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionInsertMissingSubtagsExists() {
-		$this->assertEquals(function_exists('\Webtrees\\insert_missing_subtags'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\insert_missing_subtags'), true);
 	}
 }

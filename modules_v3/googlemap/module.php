@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -1645,7 +1645,7 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 			$place_list = preg_grep('/' . $filter . '/', $place_list);
 
 			//sort the array, limit to unique values, and count them
-			usort($place_list, 'Webtrees\I18N::strcasecmp');
+			usort($place_list, __NAMESPACE__ . '\I18N::strcasecmp');
 			$i = count($place_list);
 
 			//calculate maximum no. of levels to display

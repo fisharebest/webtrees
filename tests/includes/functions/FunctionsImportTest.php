@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -36,7 +36,7 @@ class FunctionsImportTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionReformatRecordImportExists() {
-		$this->assertEquals(function_exists('\Webtrees\\reformat_record_import'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\reformat_record_import'), true);
 	}
 
 	/**
@@ -45,7 +45,7 @@ class FunctionsImportTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionUpdateDatesExists() {
-		$this->assertEquals(function_exists('\Webtrees\\update_dates'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\update_dates'), true);
 	}
 
 	/**
@@ -54,7 +54,7 @@ class FunctionsImportTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionUpdateLinksExists() {
-		$this->assertEquals(function_exists('\Webtrees\\update_links'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\update_links'), true);
 	}
 
 	/**
@@ -63,7 +63,7 @@ class FunctionsImportTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionUpdateNamesExists() {
-		$this->assertEquals(function_exists('\Webtrees\\update_names'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\update_names'), true);
 	}
 
 	/**
@@ -72,7 +72,7 @@ class FunctionsImportTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionConvertInlineMediaExists() {
-		$this->assertEquals(function_exists('\Webtrees\\convert_inline_media'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\convert_inline_media'), true);
 	}
 
 	/**
@@ -81,7 +81,7 @@ class FunctionsImportTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionCreateMediaObjectExists() {
-		$this->assertEquals(function_exists('\Webtrees\\create_media_object'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\create_media_object'), true);
 	}
 
 	/**
@@ -90,7 +90,7 @@ class FunctionsImportTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionAcceptAllChangesExists() {
-		$this->assertEquals(function_exists('\Webtrees\\accept_all_changes'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\accept_all_changes'), true);
 	}
 
 	/**
@@ -99,7 +99,7 @@ class FunctionsImportTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionRejectAllChangesExists() {
-		$this->assertEquals(function_exists('\Webtrees\\reject_all_changes'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\reject_all_changes'), true);
 	}
 
 	/**
@@ -108,6 +108,6 @@ class FunctionsImportTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionUpdateRecordExists() {
-		$this->assertEquals(function_exists('\Webtrees\\update_record'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\update_record'), true);
 	}
 }

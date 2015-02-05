@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -64,7 +64,7 @@ if ($action === 'ajax') {
 		return;
 	}
 	if (array_key_exists($module_name, $all_blocks)) {
-		$class_name = 'Webtrees\\' . $module_name . '_WT_Module';
+		$class_name = __NAMESPACE__ . '\\' . $module_name . '_WT_Module';
 		$module     = new $class_name;
 		echo $module->getBlock($block_id);
 	}
@@ -100,7 +100,7 @@ if ($blocks['main']) {
 		echo '<div id="index_full_blocks">';
 	}
 	foreach ($blocks['main'] as $block_id => $module_name) {
-		$class_name = 'Webtrees\\' . $module_name . '_WT_Module';
+		$class_name = __NAMESPACE__ . '\\' . $module_name . '_WT_Module';
 		$module     = new $class_name;
 		if ($SEARCH_SPIDER || !$module->loadAjax()) {
 			// Load the block directly
@@ -122,7 +122,7 @@ if ($blocks['side']) {
 		echo '<div id="index_full_blocks">';
 	}
 	foreach ($blocks['side'] as $block_id => $module_name) {
-		$class_name = 'Webtrees\\' . $module_name . '_WT_Module';
+		$class_name = __NAMESPACE__ . '\\' . $module_name . '_WT_Module';
 		$module     = new $class_name;
 		if ($SEARCH_SPIDER || !$module->loadAjax()) {
 			// Load the block directly

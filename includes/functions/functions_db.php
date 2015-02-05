@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -86,7 +86,7 @@ function get_source_list($ged_id) {
 	foreach ($rows as $row) {
 		$list[] = Source::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 	}
-	usort($list, 'Webtrees\GedcomRecord::compare');
+	usort($list, __NAMESPACE__ . '\GedcomRecord::compare');
 	return $list;
 }
 
@@ -107,7 +107,7 @@ function get_repo_list($ged_id) {
 	foreach ($rows as $row) {
 		$list[] = Repository::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 	}
-	usort($list, 'Webtrees\GedcomRecord::compare');
+	usort($list, __NAMESPACE__ . '\GedcomRecord::compare');
 	return $list;
 }
 
@@ -128,7 +128,7 @@ function get_note_list($ged_id) {
 	foreach ($rows as $row) {
 		$list[] = Note::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 	}
-	usort($list, 'Webtrees\GedcomRecord::compare');
+	usort($list, __NAMESPACE__ . '\GedcomRecord::compare');
 	return $list;
 }
 
@@ -827,7 +827,7 @@ function get_common_surnames($min) {
 	if (empty($topsurns) && $min > 2) {
 		return get_common_surnames($min / 2);
 	} else {
-		uksort($topsurns, 'Webtrees\I18N::strcasecmp');
+		uksort($topsurns, __NAMESPACE__ . '\I18N::strcasecmp');
 		foreach ($topsurns as $key => $value) {
 			$topsurns[$key] = array('name' => $key, 'match' => $value);
 		}

@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -129,9 +129,9 @@ case 'setup':
 	// Make sure everything is case sensitive
 	xml_parser_set_option($xml_parser, XML_OPTION_CASE_FOLDING, false);
 	// Set the main element handler functions
-	xml_set_element_handler($xml_parser, '\\Webtrees\\startElement', '\\Webtrees\\endElement');
+	xml_set_element_handler($xml_parser, __NAMESPACE__ . '\\startElement', __NAMESPACE__ . '\\endElement');
 	// Set the character data handler
-	xml_set_character_data_handler($xml_parser, '\\Webtrees\\characterData');
+	xml_set_character_data_handler($xml_parser, __NAMESPACE__ . '\\characterData');
 
 	// Open the file
 	$fp = fopen($report, 'r');
@@ -304,59 +304,59 @@ case 'run':
 	 * @global array $elementHandler
 	 */
 	$elementHandler = array();
-	$elementHandler['AgeAtDeath']['start'] = '\\Webtrees\\ageAtDeathStartHandler';
-	$elementHandler['br']['start'] = '\\Webtrees\\brStartHandler';
-	$elementHandler['Body']['start'] = '\\Webtrees\\bodyStartHandler';
-	$elementHandler['Cell']['end'] = '\\Webtrees\\cellEndHandler';
-	$elementHandler['Cell']['start'] = '\\Webtrees\\cellStartHandler';
-	$elementHandler['Description']['end'] = '\\Webtrees\\descriptionEndHandler';
-	$elementHandler['Description']['start'] = '\\Webtrees\\descriptionStartHandler';
-	$elementHandler['Doc']['end'] = '\\Webtrees\\docEndHandler';
-	$elementHandler['Doc']['start'] = '\\Webtrees\\docStartHandler';
+	$elementHandler['AgeAtDeath']['start'] = __NAMESPACE__ . '\\ageAtDeathStartHandler';
+	$elementHandler['br']['start'] = __NAMESPACE__ . '\\brStartHandler';
+	$elementHandler['Body']['start'] = __NAMESPACE__ . '\\bodyStartHandler';
+	$elementHandler['Cell']['end'] = __NAMESPACE__ . '\\cellEndHandler';
+	$elementHandler['Cell']['start'] = __NAMESPACE__ . '\\cellStartHandler';
+	$elementHandler['Description']['end'] = __NAMESPACE__ . '\\descriptionEndHandler';
+	$elementHandler['Description']['start'] = __NAMESPACE__ . '\\descriptionStartHandler';
+	$elementHandler['Doc']['end'] = __NAMESPACE__ . '\\docEndHandler';
+	$elementHandler['Doc']['start'] = __NAMESPACE__ . '\\docStartHandler';
 	$elementHandler['Report']['end'] = '';
 	$elementHandler['Report']['start'] = '';
-	$elementHandler['Facts']['end'] = '\\Webtrees\\factsEndHandler';
-	$elementHandler['Facts']['start'] = '\\Webtrees\\factsStartHandler';
-	$elementHandler['Footer']['start'] = '\\Webtrees\\footerStartHandler';
-	$elementHandler['Footnote']['end'] = '\\Webtrees\\footnoteEndHandler';
-	$elementHandler['Footnote']['start'] = '\\Webtrees\\footnoteStartHandler';
-	$elementHandler['FootnoteTexts']['start'] = '\\Webtrees\\footnoteTextsStartHandler';
-	$elementHandler['Gedcom']['end'] = '\\Webtrees\\gedcomEndHandler';
-	$elementHandler['Gedcom']['start'] = '\\Webtrees\\gedcomStartHandler';
-	$elementHandler['GedcomValue']['start'] = '\\Webtrees\\gedcomValueStartHandler';
-	$elementHandler['Generation']['start'] = '\\Webtrees\\generationStartHandler';
-	$elementHandler['GetPersonName']['start'] = '\\Webtrees\\getPersonNameStartHandler';
-	$elementHandler['Header']['start'] = '\\Webtrees\\headerStartHandler';
-	$elementHandler['HighlightedImage']['start'] = '\\Webtrees\\highlightedImageStartHandler';
-	$elementHandler['if']['end'] = '\\Webtrees\\ifEndHandler';
-	$elementHandler['if']['start'] = '\\Webtrees\\ifStartHandler';
+	$elementHandler['Facts']['end'] = __NAMESPACE__ . '\\factsEndHandler';
+	$elementHandler['Facts']['start'] = __NAMESPACE__ . '\\factsStartHandler';
+	$elementHandler['Footer']['start'] = __NAMESPACE__ . '\\footerStartHandler';
+	$elementHandler['Footnote']['end'] = __NAMESPACE__ . '\\footnoteEndHandler';
+	$elementHandler['Footnote']['start'] = __NAMESPACE__ . '\\footnoteStartHandler';
+	$elementHandler['FootnoteTexts']['start'] = __NAMESPACE__ . '\\footnoteTextsStartHandler';
+	$elementHandler['Gedcom']['end'] = __NAMESPACE__ . '\\gedcomEndHandler';
+	$elementHandler['Gedcom']['start'] = __NAMESPACE__ . '\\gedcomStartHandler';
+	$elementHandler['GedcomValue']['start'] = __NAMESPACE__ . '\\gedcomValueStartHandler';
+	$elementHandler['Generation']['start'] = __NAMESPACE__ . '\\generationStartHandler';
+	$elementHandler['GetPersonName']['start'] = __NAMESPACE__ . '\\getPersonNameStartHandler';
+	$elementHandler['Header']['start'] = __NAMESPACE__ . '\\headerStartHandler';
+	$elementHandler['HighlightedImage']['start'] = __NAMESPACE__ . '\\highlightedImageStartHandler';
+	$elementHandler['if']['end'] = __NAMESPACE__ . '\\ifEndHandler';
+	$elementHandler['if']['start'] = __NAMESPACE__ . '\\ifStartHandler';
 	$elementHandler['Image']['start'] = 'imageStartHandler';
 	$elementHandler['Input']['end'] = '';
 	$elementHandler['Input']['start'] = '';
-	$elementHandler['Line']['start'] = '\\Webtrees\\lineStartHandler';
-	$elementHandler['List']['end'] = '\\Webtrees\\listEndHandler';
-	$elementHandler['List']['start'] = '\\Webtrees\\listStartHandler';
-	$elementHandler['ListTotal']['start'] = '\\Webtrees\\listTotalStartHandler';
-	$elementHandler['NewPage']['start'] = '\\Webtrees\\newPageStartHandler';
-	$elementHandler['Now']['start'] = '\\Webtrees\\nowStartHandler';
-	$elementHandler['PageHeader']['end'] = '\\Webtrees\\pageHeaderEndHandler';
-	$elementHandler['PageHeader']['start'] = '\\Webtrees\\pageHeaderStartHandler';
-	$elementHandler['PageNum']['start'] = '\\Webtrees\\pageNumStartHandler';
-	$elementHandler['Relatives']['end'] = '\\Webtrees\\relativesEndHandler';
-	$elementHandler['Relatives']['start'] = '\\Webtrees\\relativesStartHandler';
-	$elementHandler['RepeatTag']['end'] = '\\Webtrees\\repeatTagEndHandler';
-	$elementHandler['RepeatTag']['start'] = '\\Webtrees\\repeatTagStartHandler';
-	$elementHandler['SetVar']['start'] = '\\Webtrees\\setVarStartHandler';
-	$elementHandler['Style']['start'] = '\\Webtrees\\styleStartHandler';
-	$elementHandler['Text']['end'] = '\\Webtrees\\textEndHandler';
-	$elementHandler['Text']['start'] = '\\Webtrees\\textStartHandler';
-	$elementHandler['TextBox']['end'] = '\\Webtrees\\textBoxEndHandler';
-	$elementHandler['TextBox']['start'] = '\\Webtrees\\textBoxStartHandler';
-	$elementHandler['Title']['end'] = '\\Webtrees\\titleEndHandler';
-	$elementHandler['Title']['start'] = '\\Webtrees\\titleStartHandler';
-	$elementHandler['TotalPages']['start'] = '\\Webtrees\\totalPagesStartHandler';
-	$elementHandler['var']['start'] = '\\Webtrees\\varStartHandler';
-	$elementHandler['sp']['start'] = '\\Webtrees\\spStartHandler';
+	$elementHandler['Line']['start'] = __NAMESPACE__ . '\\lineStartHandler';
+	$elementHandler['List']['end'] = __NAMESPACE__ . '\\listEndHandler';
+	$elementHandler['List']['start'] = __NAMESPACE__ . '\\listStartHandler';
+	$elementHandler['ListTotal']['start'] = __NAMESPACE__ . '\\listTotalStartHandler';
+	$elementHandler['NewPage']['start'] = __NAMESPACE__ . '\\newPageStartHandler';
+	$elementHandler['Now']['start'] = __NAMESPACE__ . '\\nowStartHandler';
+	$elementHandler['PageHeader']['end'] = __NAMESPACE__ . '\\pageHeaderEndHandler';
+	$elementHandler['PageHeader']['start'] = __NAMESPACE__ . '\\pageHeaderStartHandler';
+	$elementHandler['PageNum']['start'] = __NAMESPACE__ . '\\pageNumStartHandler';
+	$elementHandler['Relatives']['end'] = __NAMESPACE__ . '\\relativesEndHandler';
+	$elementHandler['Relatives']['start'] = __NAMESPACE__ . '\\relativesStartHandler';
+	$elementHandler['RepeatTag']['end'] = __NAMESPACE__ . '\\repeatTagEndHandler';
+	$elementHandler['RepeatTag']['start'] = __NAMESPACE__ . '\\repeatTagStartHandler';
+	$elementHandler['SetVar']['start'] = __NAMESPACE__ . '\\setVarStartHandler';
+	$elementHandler['Style']['start'] = __NAMESPACE__ . '\\styleStartHandler';
+	$elementHandler['Text']['end'] = __NAMESPACE__ . '\\textEndHandler';
+	$elementHandler['Text']['start'] = __NAMESPACE__ . '\\textStartHandler';
+	$elementHandler['TextBox']['end'] = __NAMESPACE__ . '\\textBoxEndHandler';
+	$elementHandler['TextBox']['start'] = __NAMESPACE__ . '\\textBoxStartHandler';
+	$elementHandler['Title']['end'] = __NAMESPACE__ . '\\titleEndHandler';
+	$elementHandler['Title']['start'] = __NAMESPACE__ . '\\titleStartHandler';
+	$elementHandler['TotalPages']['start'] = __NAMESPACE__ . '\\totalPagesStartHandler';
+	$elementHandler['var']['start'] = __NAMESPACE__ . '\\varStartHandler';
+	$elementHandler['sp']['start'] = __NAMESPACE__ . '\\spStartHandler';
 
 	/**
 	 * A new object of the currently used element class
@@ -466,9 +466,9 @@ case 'run':
 	//-- make sure everything is case sensitive
 	xml_parser_set_option($xml_parser, XML_OPTION_CASE_FOLDING, false);
 	//-- set the main element handler functions
-	xml_set_element_handler($xml_parser, '\\Webtrees\\startElement', '\\Webtrees\\endElement');
+	xml_set_element_handler($xml_parser, __NAMESPACE__ . '\\startElement', __NAMESPACE__ . '\\endElement');
 	//-- set the character data handler
-	xml_set_character_data_handler($xml_parser, '\\Webtrees\\characterData');
+	xml_set_character_data_handler($xml_parser, __NAMESPACE__ . '\\characterData');
 
 	$fp = fopen($report, 'r');
 	while (($data = fread($fp, 4096))) {
