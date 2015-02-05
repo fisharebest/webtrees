@@ -52,8 +52,6 @@ class html_WT_Module extends Module implements ModuleBlockInterface {
 		case '__current__':
 			$stats = new Stats($WT_TREE);
 			break;
-		case '':
-			break;
 		case '__default__':
 			$tree_id = Tree::getIdFromName(Site::getPreference('DEFAULT_GEDCOM'));
 			if ($tree_id) {
