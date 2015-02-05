@@ -60,7 +60,7 @@ class ClippingsCart {
 	 * Create the clippings controller
 	 */
 	public function __construct() {
-		global $WT_TREE, $MEDIA_DIRECTORY, $WT_SESSION;
+		global $WT_TREE, $WT_SESSION;
 
 		// Our cart is an array of items in the session
 		if (!is_array($WT_SESSION->cart)) {
@@ -240,6 +240,7 @@ class ClippingsCart {
 						break;
 					default:
 						$ft = preg_match_all("/\n\d FILE (.+)/", $savedRecord, $match, PREG_SET_ORDER);
+						$MEDIA_DIRECTORY = $WT_TREE->getPreference('MEDIA_DIRECTORY');
 						for ($k = 0; $k < $ft; $k++) {
 							// Skip external files and non-existant files
 							if (file_exists(WT_DATA_DIR . $MEDIA_DIRECTORY . $match[$k][1])) {

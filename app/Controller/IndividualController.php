@@ -31,12 +31,12 @@ class IndividualController extends GedcomRecordController {
 	 * Startup activity
 	 */
 	function __construct() {
-		global $USE_RIN;
+		global $WT_TREE;
 
 		$xref         = Filter::get('pid', WT_REGEX_XREF);
 		$this->record = Individual::getInstance($xref);
 
-		if (!$this->record && $USE_RIN) {
+		if (!$this->record && $WT_TREE->getPreference('USE_RIN')) {
 			$rin          = find_rin_id($xref);
 			$this->record = Individual::getInstance($rin);
 		}

@@ -27,7 +27,6 @@ require './includes/session.php';
 
 $NO_UPDATE_CHAN      = $WT_TREE->getPreference('NO_UPDATE_CHAN');
 $MEDIA_DIRECTORY     = $WT_TREE->getPreference('MEDIA_DIRECTORY');
-$ADVANCED_NAME_FACTS = $WT_TREE->getPreference('ADVANCED_NAME_FACTS');
 
 $pid         = Filter::get('pid', WT_REGEX_XREF, Filter::post('pid', WT_REGEX_XREF)); // edit this media object
 $linktoid    = Filter::get('linktoid', WT_REGEX_XREF, Filter::post('linktoid', WT_REGEX_XREF)); // create a new media object, linked to this record
@@ -573,7 +572,7 @@ if (preg_match('/\n(2 TITL .*)/', $gedrec, $match)) {
 add_simple_tag($gedtitl);
 
 // 1 FILE / 2 TITL / 3 _HEB
-if (strstr($ADVANCED_NAME_FACTS, '_HEB') !== false) {
+if (strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), '_HEB') !== false) {
 	if (preg_match('/\n(3 _HEB .*)/', $gedrec, $match)) {
 		$gedtitl = $match[1];
 	} else {
@@ -583,7 +582,7 @@ if (strstr($ADVANCED_NAME_FACTS, '_HEB') !== false) {
 }
 
 // 1 FILE / 2 TITL / 3 ROMN
-if (strstr($ADVANCED_NAME_FACTS, 'ROMN') !== false) {
+if (strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), 'ROMN') !== false) {
 	if (preg_match('/\n(3 ROMN .*)/', $gedrec, $match)) {
 		$gedtitl = $match[1];
 	} else {

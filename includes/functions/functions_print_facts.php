@@ -31,7 +31,7 @@ use Rhumsaa\Uuid\Uuid;
  * @param GedcomRecord $record
  */
 function print_fact(Fact $fact, GedcomRecord $record) {
-	global $HIDE_GEDCOM_ERRORS, $SHOW_FACT_ICONS;
+	global $WT_TREE, $SHOW_FACT_ICONS;
 	static $n_chil = 0, $n_gchi = 0;
 
 	$parent = $fact->getParent();
@@ -59,7 +59,7 @@ function print_fact(Fact $fact, GedcomRecord $record) {
 		return;
 	default:
 		// Hide unrecognized/custom tags?
-		if ($HIDE_GEDCOM_ERRORS && !WT_Gedcom_Tag::isTag($fact->getTag())) {
+		if ($WT_TREE->getPreference('HIDE_GEDCOM_ERRORS') && !WT_Gedcom_Tag::isTag($fact->getTag())) {
 			return;
 		}
 		break;
@@ -431,7 +431,7 @@ function print_fact(Fact $fact, GedcomRecord $record) {
 			echo WT_Gedcom_Tag::getLabelValue($fact->getTag() . ':' . $match[1], $link);
 			break;
 		default:
-			if (!$HIDE_GEDCOM_ERRORS || WT_Gedcom_Tag::isTag($match[1])) {
+			if (!$WT_TREE->getPreference('HIDE_GEDCOM_ERRORS') || WT_Gedcom_Tag::isTag($match[1])) {
 				if (preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $match[2], $xmatch)) {
 					// Links
 					$linked_record = GedcomRecord::getInstance($xmatch[1]);
@@ -564,7 +564,7 @@ function print_fact_sources($factrec, $level) {
  * @param integer $level
  */
 function print_media_links($factrec, $level) {
-	global $SEARCH_SPIDER, $HIDE_GEDCOM_ERRORS;
+	global $SEARCH_SPIDER, $WT_TREE;
 
 	$nlevel = $level + 1;
 	if (preg_match_all("/$level OBJE @(.*)@/", $factrec, $omatch, PREG_SET_ORDER) == 0) {
@@ -625,7 +625,7 @@ function print_media_links($factrec, $level) {
 				echo '</div>'; //close div "media-display-title"
 				echo '</div>'; //close div "media-display"
 			}
-		} elseif (!$HIDE_GEDCOM_ERRORS) {
+		} elseif (!$WT_TREE->getPreference('HIDE_GEDCOM_ERRORS')) {
 			echo '<p class="ui-state-error">', $media_id, '</p>';
 		}
 		$objectNum++;

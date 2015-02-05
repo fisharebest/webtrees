@@ -28,7 +28,7 @@ use Zend_Tag_Cloud;
  * @return string
  */
 function format_indi_table($datalist, $option = '') {
-	global $GEDCOM, $SHOW_LAST_CHANGE, $SEARCH_SPIDER, $MAX_ALIVE_AGE, $controller, $WT_TREE;
+	global $GEDCOM, $SHOW_LAST_CHANGE, $SEARCH_SPIDER, $controller, $WT_TREE;
 
 	$table_id = 'table-indi-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 	$SHOW_EST_LIST_DATES = $WT_TREE->getPreference('SHOW_EST_LIST_DATES');
@@ -112,7 +112,7 @@ function format_indi_table($datalist, $option = '') {
 	$stats = new Stats($GEDCOM);
 
 	// Bad data can cause "longest life" to be huge, blowing memory limits
-	$max_age = min($MAX_ALIVE_AGE, $stats->LongestLifeAge()) + 1;
+	$max_age = min($WT_TREE->getPreference('MAX_ALIVE_AGE'), $stats->LongestLifeAge()) + 1;
 
 	// Inititialise chart data
 	$deat_by_age = array();

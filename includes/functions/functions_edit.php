@@ -1053,7 +1053,7 @@ function print_add_layer($tag, $level = 2) {
  * @param string $fact
  */
 function addSimpleTags($fact) {
-	global $ADVANCED_PLAC_FACTS, $nonplacfacts, $nondatefacts;
+	global $WT_TREE, $nonplacfacts, $nondatefacts;
 
 	// For new individuals, these facts default to "Y"
 	if ($fact == 'MARR') {
@@ -1069,7 +1069,7 @@ function addSimpleTags($fact) {
 	if (!in_array($fact, $nonplacfacts)) {
 		add_simple_tag("0 PLAC", $fact, WT_Gedcom_Tag::getLabel("{$fact}:PLAC"));
 
-		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $ADVANCED_PLAC_FACTS, $match)) {
+		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 			foreach ($match[1] as $tag) {
 				add_simple_tag("0 {$tag}", $fact, WT_Gedcom_Tag::getLabel("{$fact}:PLAC:{$tag}"));
 			}
@@ -1086,13 +1086,13 @@ function addSimpleTags($fact) {
  * @return string
  */
 function addNewName() {
-	global $ADVANCED_NAME_FACTS, $WT_TREE;
+	global $WT_TREE;
 
 	$gedrec = "\n1 NAME " . Filter::post('NAME');
 
 	$tags = array('NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX');
 
-	if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $ADVANCED_NAME_FACTS, $match)) {
+	if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_NAME_FACTS'), $match)) {
 		$tags = array_merge($tags, $match[1]);
 	}
 
@@ -1131,7 +1131,7 @@ function addNewSex() {
  * @return string
  */
 function addNewFact($fact) {
-	global $ADVANCED_PLAC_FACTS;
+	global $WT_TREE;
 
 	$FACT = Filter::post($fact);
 	$DATE = Filter::post("{$fact}_DATE");
@@ -1148,7 +1148,7 @@ function addNewFact($fact) {
 		if ($PLAC) {
 			$gedrec .= "\n2 PLAC {$PLAC}";
 
-			if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $ADVANCED_PLAC_FACTS, $match)) {
+			if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 				foreach ($match[1] as $tag) {
 					$TAG = Filter::post("{$fact}_{$tag}");
 					if ($TAG) {
@@ -1478,7 +1478,7 @@ function create_add_form($fact) {
  * @return string
  */
 function create_edit_form(GedcomRecord $record, Fact $fact) {
-	global $ADVANCED_PLAC_FACTS, $date_and_time, $FULL_SOURCES, $tags;
+	global $WT_TREE, $date_and_time, $FULL_SOURCES, $tags;
 
 	$pid = $record->getXref();
 
@@ -1513,7 +1513,7 @@ function create_edit_form(GedcomRecord $record, Fact $fact) {
 		$expected_subtags['SOUR'][] = 'QUAY';
 		$expected_subtags['DATA'][] = 'DATE';
 	}
-	if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $ADVANCED_PLAC_FACTS, $match)) {
+	if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 		$expected_subtags['PLAC'] = array_merge($match[1], $expected_subtags['PLAC']);
 	}
 
@@ -1626,7 +1626,7 @@ function create_edit_form(GedcomRecord $record, Fact $fact) {
  * @param boolean $add_date
  */
 function insert_missing_subtags($level1tag, $add_date = false) {
-	global $tags, $date_and_time, $level2_tags, $ADVANCED_PLAC_FACTS, $ADVANCED_NAME_FACTS;
+	global $tags, $date_and_time, $level2_tags, $WT_TREE;
 	global $nondatefacts, $nonplacfacts;
 
 	// handle  MARRiage TYPE
@@ -1647,9 +1647,9 @@ function insert_missing_subtags($level1tag, $add_date = false) {
 				add_simple_tag('2 ' . $key . ' ' . strtoupper(date('d M Y')), $level1tag);
 			} elseif ($level1tag == '_TODO' && $key == '_WT_USER') {
 				add_simple_tag('2 ' . $key . ' ' . Auth::user()->getUserName(), $level1tag);
-			} else if ($level1tag == 'TITL' && strstr($ADVANCED_NAME_FACTS, $key) !== false) {
+			} else if ($level1tag == 'TITL' && strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), $key) !== false) {
 				add_simple_tag('2 ' . $key, $level1tag);
-			} else if ($level1tag == 'NAME' && strstr($ADVANCED_NAME_FACTS, $key) !== false) {
+			} else if ($level1tag == 'NAME' && strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), $key) !== false) {
 				add_simple_tag('2 ' . $key, $level1tag);
 			} else if ($level1tag != 'TITL' && $level1tag != 'NAME') {
 				add_simple_tag('2 ' . $key, $level1tag);
@@ -1657,7 +1657,7 @@ function insert_missing_subtags($level1tag, $add_date = false) {
 			// Add level 3/4 tags as appropriate
 			switch ($key) {
 			case 'PLAC':
-				if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $ADVANCED_PLAC_FACTS, $match)) {
+				if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 					foreach ($match[1] as $tag) {
 						add_simple_tag("3 $tag", '', WT_Gedcom_Tag::getLabel("{$level1tag}:PLAC:{$tag}"));
 					}
@@ -1704,7 +1704,7 @@ function insert_missing_subtags($level1tag, $add_date = false) {
 			if (!in_array($tag, $tags)) {
 				add_simple_tag("2 {$tag}");
 				if ($tag === 'PLAC') {
-					if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $ADVANCED_PLAC_FACTS, $match)) {
+					if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 						foreach ($match[1] as $ptag) {
 							add_simple_tag("3 $ptag", '', WT_Gedcom_Tag::getLabel("{$level1tag}:PLAC:{$ptag}"));
 						}

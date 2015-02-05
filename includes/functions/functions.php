@@ -89,27 +89,15 @@ function file_upload_error_text($error_code) {
  */
 function load_gedcom_settings($ged_id) {
 	$tree = Tree::get($ged_id);
-	global $ADVANCED_NAME_FACTS;          $ADVANCED_NAME_FACTS          = $tree->getPreference('ADVANCED_NAME_FACTS');
-	global $ADVANCED_PLAC_FACTS;          $ADVANCED_PLAC_FACTS          = $tree->getPreference('ADVANCED_PLAC_FACTS');
 	global $CALENDAR_FORMAT;              $CALENDAR_FORMAT              = $tree->getPreference('CALENDAR_FORMAT');
-	global $CHART_BOX_TAGS;               $CHART_BOX_TAGS               = $tree->getPreference('CHART_BOX_TAGS');
-	global $CONTACT_USER_ID;              $CONTACT_USER_ID              = $tree->getPreference('CONTACT_USER_ID');
 	global $DEFAULT_PEDIGREE_GENERATIONS; $DEFAULT_PEDIGREE_GENERATIONS = $tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS');
-	global $EXPAND_NOTES;                 $EXPAND_NOTES                 = $tree->getPreference('EXPAND_NOTES');
 	global $EXPAND_RELATIVES_EVENTS;      $EXPAND_RELATIVES_EVENTS      = $tree->getPreference('EXPAND_RELATIVES_EVENTS');
 	global $EXPAND_SOURCES;               $EXPAND_SOURCES               = $tree->getPreference('EXPAND_SOURCES');
 	global $FULL_SOURCES;                 $FULL_SOURCES                 = $tree->getPreference('FULL_SOURCES');
 	global $GEDCOM_MEDIA_PATH;            $GEDCOM_MEDIA_PATH            = $tree->getPreference('GEDCOM_MEDIA_PATH');
-	global $GENERATE_UIDS;                $GENERATE_UIDS                = $tree->getPreference('GENERATE_UIDS');
-	global $HIDE_GEDCOM_ERRORS;           $HIDE_GEDCOM_ERRORS           = $tree->getPreference('HIDE_GEDCOM_ERRORS');
-	global $HIDE_LIVE_PEOPLE;             $HIDE_LIVE_PEOPLE             = $tree->getPreference('HIDE_LIVE_PEOPLE');
-	global $KEEP_ALIVE_YEARS_BIRTH;       $KEEP_ALIVE_YEARS_BIRTH       = $tree->getPreference('KEEP_ALIVE_YEARS_BIRTH');
-	global $KEEP_ALIVE_YEARS_DEATH;       $KEEP_ALIVE_YEARS_DEATH       = $tree->getPreference('KEEP_ALIVE_YEARS_DEATH');
 	global $LANGUAGE;                     $LANGUAGE                     = $tree->getPreference('LANGUAGE');
-	global $MAX_ALIVE_AGE;                $MAX_ALIVE_AGE                = $tree->getPreference('MAX_ALIVE_AGE');
 	global $MAX_DESCENDANCY_GENERATIONS;  $MAX_DESCENDANCY_GENERATIONS  = $tree->getPreference('MAX_DESCENDANCY_GENERATIONS');
 	global $MAX_PEDIGREE_GENERATIONS;     $MAX_PEDIGREE_GENERATIONS     = $tree->getPreference('MAX_PEDIGREE_GENERATIONS');
-	global $MEDIA_DIRECTORY;              $MEDIA_DIRECTORY              = $tree->getPreference('MEDIA_DIRECTORY');
 	global $NO_UPDATE_CHAN;               $NO_UPDATE_CHAN               = $tree->getPreference('NO_UPDATE_CHAN');
 	global $PEDIGREE_FULL_DETAILS;        $PEDIGREE_FULL_DETAILS        = $tree->getPreference('PEDIGREE_FULL_DETAILS');
 	global $PEDIGREE_LAYOUT;              $PEDIGREE_LAYOUT              = $tree->getPreference('PEDIGREE_LAYOUT');
@@ -117,31 +105,24 @@ function load_gedcom_settings($ged_id) {
 	global $PREFER_LEVEL2_SOURCES;        $PREFER_LEVEL2_SOURCES        = $tree->getPreference('PREFER_LEVEL2_SOURCES');
 	global $QUICK_REQUIRED_FACTS;         $QUICK_REQUIRED_FACTS         = $tree->getPreference('QUICK_REQUIRED_FACTS');
 	global $QUICK_REQUIRED_FAMFACTS;      $QUICK_REQUIRED_FAMFACTS      = $tree->getPreference('QUICK_REQUIRED_FAMFACTS');
-	global $REQUIRE_AUTHENTICATION;       $REQUIRE_AUTHENTICATION       = $tree->getPreference('REQUIRE_AUTHENTICATION');
 	global $SAVE_WATERMARK_IMAGE;         $SAVE_WATERMARK_IMAGE         = $tree->getPreference('SAVE_WATERMARK_IMAGE');
 	global $SAVE_WATERMARK_THUMB;         $SAVE_WATERMARK_THUMB         = $tree->getPreference('SAVE_WATERMARK_THUMB');
 	global $SHOW_AGE_DIFF;                $SHOW_AGE_DIFF                = $tree->getPreference('SHOW_AGE_DIFF');
-	global $SHOW_DEAD_PEOPLE;             $SHOW_DEAD_PEOPLE             = $tree->getPreference('SHOW_DEAD_PEOPLE');
 	global $SHOW_FACT_ICONS;              $SHOW_FACT_ICONS              = $tree->getPreference('SHOW_FACT_ICONS');
 	global $SHOW_GEDCOM_RECORD;           $SHOW_GEDCOM_RECORD           = $tree->getPreference('SHOW_GEDCOM_RECORD');
 	global $SHOW_HIGHLIGHT_IMAGES;        $SHOW_HIGHLIGHT_IMAGES        = $tree->getPreference('SHOW_HIGHLIGHT_IMAGES');
 	global $SHOW_LAST_CHANGE;             $SHOW_LAST_CHANGE             = $tree->getPreference('SHOW_LAST_CHANGE');
 	global $SHOW_LDS_AT_GLANCE;           $SHOW_LDS_AT_GLANCE           = $tree->getPreference('SHOW_LDS_AT_GLANCE');
 	global $SHOW_LEVEL2_NOTES;            $SHOW_LEVEL2_NOTES            = $tree->getPreference('SHOW_LEVEL2_NOTES');
-	global $SHOW_LIVING_NAMES;            $SHOW_LIVING_NAMES            = $tree->getPreference('SHOW_LIVING_NAMES');
 	global $SHOW_MEDIA_DOWNLOAD;          $SHOW_MEDIA_DOWNLOAD          = $tree->getPreference('SHOW_MEDIA_DOWNLOAD');
 	global $SHOW_NO_WATERMARK;            $SHOW_NO_WATERMARK            = $tree->getPreference('SHOW_NO_WATERMARK');
 	global $SHOW_PARENTS_AGE;             $SHOW_PARENTS_AGE             = $tree->getPreference('SHOW_PARENTS_AGE');
 	global $SHOW_PEDIGREE_PLACES;         $SHOW_PEDIGREE_PLACES         = $tree->getPreference('SHOW_PEDIGREE_PLACES');
 	global $SHOW_PEDIGREE_PLACES_SUFFIX;  $SHOW_PEDIGREE_PLACES_SUFFIX  = $tree->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX');
-	global $SHOW_PRIVATE_RELATIONSHIPS;   $SHOW_PRIVATE_RELATIONSHIPS   = $tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 	global $SHOW_RELATIVES_EVENTS;        $SHOW_RELATIVES_EVENTS        = $tree->getPreference('SHOW_RELATIVES_EVENTS');
 	global $THUMBNAIL_WIDTH;              $THUMBNAIL_WIDTH              = $tree->getPreference('THUMBNAIL_WIDTH');
 	global $USE_RIN;                      $USE_RIN                      = $tree->getPreference('USE_RIN');
-	global $USE_SILHOUETTE;               $USE_SILHOUETTE               = $tree->getPreference('USE_SILHOUETTE');
 	global $WATERMARK_THUMB;              $WATERMARK_THUMB              = $tree->getPreference('WATERMARK_THUMB');
-	global $WEBMASTER_USER_ID;            $WEBMASTER_USER_ID            = $tree->getPreference('WEBMASTER_USER_ID');
-	global $WEBTREES_EMAIL;               $WEBTREES_EMAIL               = $tree->getPreference('WEBTREES_EMAIL');
 	global $WORD_WRAPPED_NOTES;           $WORD_WRAPPED_NOTES           = $tree->getPreference('WORD_WRAPPED_NOTES');
 }
 

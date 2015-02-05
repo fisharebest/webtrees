@@ -70,7 +70,7 @@ class Family extends GedcomRecord {
 
 	/** {@inheritdoc} */
 	protected function createPrivateGedcomRecord($access_level) {
-		global $SHOW_PRIVATE_RELATIONSHIPS;
+		$SHOW_PRIVATE_RELATIONSHIPS = $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
 		$rec = '0 @' . $this->xref . '@ FAM';
 		// Just show the 1 CHIL/HUSB/WIFE tag, not any subtags, which may contain private data
@@ -185,7 +185,7 @@ class Family extends GedcomRecord {
 	 * @return Individual[]
 	 */
 	function getChildren($access_level = WT_USER_ACCESS_LEVEL) {
-		global $SHOW_PRIVATE_RELATIONSHIPS;
+		$SHOW_PRIVATE_RELATIONSHIPS = $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
 		$children = array();
 		foreach ($this->getFacts('CHIL', false, $access_level, $SHOW_PRIVATE_RELATIONSHIPS) as $fact) {

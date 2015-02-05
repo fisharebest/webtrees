@@ -381,7 +381,7 @@ class SearchController extends PageController {
 	 *  Preforms a search and replace
 	 */
 	private function searchAndReplace() {
-		global $STANDARD_NAME_FACTS, $ADVANCED_NAME_FACTS, $WT_TREE;
+		global $STANDARD_NAME_FACTS, $WT_TREE;
 
 		$this->search_trees = array(WT_GED_ID => $WT_TREE);
 		$this->srindi = 'yes';
@@ -399,7 +399,7 @@ class SearchController extends PageController {
 		Log::addEditLog("Search And Replace old:" . $oldquery . " new:" . $this->replace);
 		// Include edit functions.
 
-		$adv_name_tags = preg_split("/[\s,;: ]+/", $ADVANCED_NAME_FACTS);
+		$adv_name_tags = preg_split("/[\s,;: ]+/", $WT_TREE->getPreference('ADVANCED_NAME_FACTS'));
 		$name_tags     = array_unique(array_merge($STANDARD_NAME_FACTS, $adv_name_tags));
 		$name_tags[]   = '_MARNM';
 		foreach ($this->myindilist as $id => $record) {

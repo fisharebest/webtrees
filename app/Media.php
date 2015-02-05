@@ -135,7 +135,8 @@ class Media extends GedcomRecord {
 	 * @return string
 	 */
 	public function getServerFilename($which = 'main') {
-		global $MEDIA_DIRECTORY, $THUMBNAIL_WIDTH;
+		$MEDIA_DIRECTORY = $this->tree->getPreference('MEDIA_DIRECTORY');
+		$THUMBNAIL_WIDTH = $this->tree->getPreference('THUMBNAIL_WIDTH');
 
 		if ($this->isExternal() || !$this->file) {
 			// External image, or (in the case of corrupt GEDCOM data) no image at all
