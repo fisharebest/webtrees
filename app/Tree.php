@@ -149,7 +149,7 @@ class Tree {
 	/**
 	 * The fact-level privacy for this tree.
 	 *
-	 * @return string
+	 * @return integer[]
 	 */
 	public function getFactPrivacy() {
 		return $this->fact_privacy;
@@ -158,7 +158,7 @@ class Tree {
 	/**
 	 * The individual-level privacy for this tree.
 	 *
-	 * @return string
+	 * @return integer[]
 	 */
 	public function getIndividualPrivacy() {
 		return $this->individual_privacy;
@@ -167,7 +167,7 @@ class Tree {
 	/**
 	 * The individual-fact-level privacy for this tree.
 	 *
-	 * @return string
+	 * @return integer[][]
 	 */
 	public function getIndividualFactPrivacy() {
 		return $this->individual_fact_privacy;
