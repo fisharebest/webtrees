@@ -49,7 +49,7 @@ $controller
 						<input type="submit" value="<?php echo I18N::translate('View'); ?>">
 					</td>
 				</tr>
-				<?php if (WT_TREE->getPreference('SHOW_HIGHLIGHT_IMAGES')) { ?>
+				<?php if ($WT_TREE->getPreference('SHOW_HIGHLIGHT_IMAGES')) { ?>
 				<tr>
 					<td class="descriptionbox">
 						<?php echo I18N::translate('Show highlight images in individual boxes'); ?>
