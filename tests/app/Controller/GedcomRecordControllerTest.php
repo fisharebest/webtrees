@@ -19,7 +19,7 @@ namespace Webtrees;
 use PHPUnit_Framework_TestCase;
 
 /**
- * Test harness for the class \Webtrees\Controller\GedcomRecordController
+ * Test harness for the class GedcomRecordController
  */
 class GedcomRecordControllerTest extends PHPUnit_Framework_TestCase {
 	/**

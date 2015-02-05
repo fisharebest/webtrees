@@ -19,7 +19,7 @@ namespace Webtrees;
 use PHPUnit_Framework_TestCase;
 
 /**
- * Test harness for the class \Webtrees\Controller\AncestryController
+ * Test harness for the class AncestryController
  */
 class AncestryControllerTest extends PHPUnit_Framework_TestCase {
 	/**

@@ -19,7 +19,7 @@ namespace Webtrees;
 use PHPUnit_Framework_TestCase;
 
 /**
- * Test harness for the class \Webtrees\Controller\MediaController
+ * Test harness for the class MediaController
  */
 class MediaControllerTest extends PHPUnit_Framework_TestCase {
 	/**

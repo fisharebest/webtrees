@@ -19,7 +19,7 @@ namespace Webtrees;
 use PHPUnit_Framework_TestCase;
 
 /**
- * Test harness for the class \Webtrees\Controller\FamilybookController
+ * Test harness for the class FamilybookController
  */
 class FamilybookControllerTest extends PHPUnit_Framework_TestCase {
 	/**

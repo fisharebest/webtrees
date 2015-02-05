@@ -19,7 +19,7 @@ namespace Webtrees;
 use PHPUnit_Framework_TestCase;
 
 /**
- * Test harness for the class \Webtrees\Controller\SearchController
+ * Test harness for the class SearchController
  */
 class SearchControllerTest extends PHPUnit_Framework_TestCase {
 	/**

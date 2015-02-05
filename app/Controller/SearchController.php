@@ -19,7 +19,7 @@ namespace Webtrees;
 use Zend_Session;
 
 /**
- * Class \Webtrees\Controller\SearchController - Controller for the search page
+ * Class SearchController - Controller for the search page
  */
 class SearchController extends PageController {
 	public $action;

@@ -19,7 +19,7 @@ namespace Webtrees;
 use PHPUnit_Framework_TestCase;
 
 /**
- * Test harness for the class \Webtrees\Controller\CompactController
+ * Test harness for the class CompactController
  */
 class CompactControllerTest extends PHPUnit_Framework_TestCase {
 	/**

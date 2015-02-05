@@ -37,14 +37,6 @@ namespace Webtrees;
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use Fisharebest\ExtCalendar\GregorianCalendar;
-use Webtrees\CalendarDate;
-use Webtrees\FrenchDate;
-use Webtrees\GregorianDate;
-use Webtrees\HijriDate;
-use Webtrees\JalaliDate;
-use Webtrees\JewishDate;
-use Webtrees\JulianDate;
-use Webtrees\RomanDate;
 
 /**
  * Class Date - a representation of GEDCOM dates and date ranges

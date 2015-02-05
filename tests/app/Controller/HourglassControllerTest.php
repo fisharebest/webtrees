@@ -19,7 +19,7 @@ namespace Webtrees;
 use PHPUnit_Framework_TestCase;
 
 /**
- * Test harness for the class \Webtrees\Controller\HourglassController
+ * Test harness for the class HourglassController
  */
 class HourglassControllerTest extends PHPUnit_Framework_TestCase {
 	/**

@@ -17,7 +17,7 @@ namespace Webtrees;
  */
 
 /**
- * Class \HourglassController - Controller for the hourglass chart
+ * Class HourglassController - Controller for the hourglass chart
  */
 class HourglassController extends ChartController {
 	var $pid = "";

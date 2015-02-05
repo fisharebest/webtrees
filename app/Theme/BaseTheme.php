@@ -239,7 +239,7 @@ abstract class BaseTheme {
 		case 'mailto':
 			return '<a href="mailto:' . Filter::escapeHtml($user->getEmail()) . '">' . Filter::escapeHtml($user->getRealName()) . '</a>';
 		default:
-			return "<a href='#' onclick='message(\"" . Filter::escapeHtml($user->getUserName()) . "\", \"" . $method . "\", \"" . WT_BASE_URL . Filter::escapeHtml(\Webtrees\get_query_url()) . "\", \"\");return false;'>" . Filter::escapeHtml($user->getRealName()) . '</a>';
+			return "<a href='#' onclick='message(\"" . Filter::escapeHtml($user->getUserName()) . "\", \"" . $method . "\", \"" . WT_BASE_URL . Filter::escapeHtml(get_query_url()) . "\", \"\");return false;'>" . Filter::escapeHtml($user->getRealName()) . '</a>';
 		}
 	}
 
@@ -1321,7 +1321,7 @@ abstract class BaseTheme {
 		$menu = new Menu(I18N::translate('Language'), '#', 'menu-language');
 
 		foreach (I18N::installed_languages() as $lang => $name) {
-			$submenu = new Menu($name, \Webtrees\get_query_url(array('lang' => $lang), '&amp;'), 'menu-language-' . $lang);
+			$submenu = new Menu($name, get_query_url(array('lang' => $lang), '&amp;'), 'menu-language-' . $lang);
 			if (WT_LOCALE === $lang) {
 				$submenu->addClass('', '', 'active');
 			}
@@ -1397,7 +1397,7 @@ abstract class BaseTheme {
 		if (Auth::check() || $this->isSearchEngine() || WT_SCRIPT_NAME === 'login.php') {
 			return null;
 		} else {
-			return new Menu(I18N::translate('Login'), WT_LOGIN_URL . '?url=' . rawurlencode(\Webtrees\get_query_url()));
+			return new Menu(I18N::translate('Login'), WT_LOGIN_URL . '?url=' . rawurlencode(get_query_url()));
 		}
 	}
 
@@ -1586,7 +1586,7 @@ abstract class BaseTheme {
 		if ($this->tree && !$this->isSearchEngine() && Site::getPreference('ALLOW_USER_THEMES') && $this->tree->getPreference('ALLOW_THEME_DROPDOWN')) {
 			$submenus = array();
 			foreach (Theme::installedThemes() as $theme) {
-				$submenu = new Menu($theme->themeName(), \Webtrees\get_query_url(array('theme' => $theme->themeId()), '&amp;'), 'menu-theme-' . $theme->themeId());
+				$submenu = new Menu($theme->themeName(), get_query_url(array('theme' => $theme->themeId()), '&amp;'), 'menu-theme-' . $theme->themeId());
 				if ($theme === $this) {
 					$submenu->addClass('', '', 'active');
 				}
@@ -1760,7 +1760,7 @@ abstract class BaseTheme {
 	 * @return bool
 	 */
 	protected function pendingChangesExist() {
-		return \Webtrees\exists_pending_change(Auth::user(), $this->tree);
+		return exists_pending_change(Auth::user(), $this->tree);
 	}
 
 	/**

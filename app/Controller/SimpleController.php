@@ -17,7 +17,7 @@ namespace Webtrees;
  */
 
 /**
- * Class \Webtrees\Controller\SimpleController - Controller for all popup pages
+ * Class SimpleController - Controller for all popup pages
  */
 class SimpleController extends PageController {
 	/**

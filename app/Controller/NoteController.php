@@ -17,7 +17,7 @@ namespace Webtrees;
  */
 
 /**
- * Class \Webtrees\Controller\NoteController - Controller for the shared note page
+ * Class NoteController - Controller for the shared note page
  */
 class NoteController extends GedcomRecordController {
 	/**

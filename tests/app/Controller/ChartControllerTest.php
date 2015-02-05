@@ -19,7 +19,7 @@ namespace Webtrees;
 use PHPUnit_Framework_TestCase;
 
 /**
- * Test harness for the class \Webtrees\Controller\ChartController
+ * Test harness for the class ChartController
  */
 class ChartControllerTest extends PHPUnit_Framework_TestCase {
 	/**
