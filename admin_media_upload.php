@@ -16,7 +16,6 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 /**
  * Defined in session.php
  *
@@ -31,7 +30,7 @@ $MEDIA_DIRECTORY = $WT_TREE->getPreference('MEDIA_DIRECTORY');
 
 $controller = new PageController;
 $controller
-	->restrictAccess(Auth::isManager())
+	->restrictAccess(Auth::isManager($WT_TREE))
 	->setPageTitle(I18N::translate('Upload media files'));
 
 $action = Filter::post('action');

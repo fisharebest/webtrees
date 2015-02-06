@@ -28,7 +28,7 @@ require './includes/session.php';
 
 $controller = new PageController;
 $controller
-	->restrictAccess(Auth::isManager())
+	->restrictAccess(Auth::isManager($WT_TREE))
 	->setPageTitle(I18N::translate('Merge records') . ' — ' . $WT_TREE->getTitleHtml())
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');

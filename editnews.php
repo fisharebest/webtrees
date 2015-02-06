@@ -18,13 +18,20 @@ namespace Fisharebest\Webtrees;
 
 use PDO;
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
+
 define('WT_SCRIPT_NAME', 'editnews.php');
 require './includes/session.php';
 
 $controller = new SimpleController;
 $controller
 	->setPageTitle(I18N::translate('Add/edit a journal/news entry'))
-	->restrictAccess(Auth::isMember())
+	->restrictAccess(Auth::isMember($WT_TREE))
 	->pageHeader();
 
 $action    = Filter::get('action', 'compose|save', 'compose');

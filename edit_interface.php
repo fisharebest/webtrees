@@ -32,7 +32,7 @@ $action = Filter::post('action', null, Filter::get('action'));
 
 $controller = new SimpleController;
 $controller
-	->restrictAccess(Auth::isEditor())
+	->restrictAccess(Auth::isEditor($WT_TREE))
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();')
 	->addInlineJavascript('
@@ -750,7 +750,7 @@ case 'add_parent_to_individual_action':
 ////////////////////////////////////////////////////////////////////////////////
 case 'add_unlinked_indi':
 	$controller
-		->restrictAccess(Auth::isManager())
+		->restrictAccess(Auth::isManager($WT_TREE))
 		->setPageTitle(I18N::translate('Create a new individual'))
 		->pageHeader();
 
@@ -771,7 +771,7 @@ case 'add_unlinked_indi_action':
 	}
 
 	$controller
-		->restrictAccess(Auth::isManager())
+		->restrictAccess(Auth::isManager($WT_TREE))
 		->pageHeader();
 
 	splitSOUR();

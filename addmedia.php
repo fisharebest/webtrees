@@ -45,7 +45,7 @@ $controller = new SimpleController;
 $controller
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();')
-	->restrictAccess(Auth::isMember());
+	->restrictAccess(Auth::isMember($WT_TREE));
 
 $disp = true;
 $media = Media::getInstance($pid);

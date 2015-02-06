@@ -367,7 +367,7 @@ function format_indi_table($datalist, $option = '') {
 		//-- Birth place
 		$html .= '<td>';
 		foreach ($person->getAllBirthPlaces() as $n => $birth_place) {
-			$tmp = new Place($birth_place, WT_GED_ID);
+			$tmp = new Place($birth_place, $person->getTree());
 			if ($n) {
 				$html .= '<br>';
 			}
@@ -422,7 +422,7 @@ function format_indi_table($datalist, $option = '') {
 		//-- Death place
 		$html .= '<td>';
 		foreach ($person->getAllDeathPlaces() as $n => $death_place) {
-			$tmp = new Place($death_place, WT_GED_ID);
+			$tmp = new Place($death_place, $person->getTree());
 			if ($n) {
 				$html .= '<br>';
 			}
@@ -915,7 +915,7 @@ function format_fam_table($datalist) {
 		//-- Marriage place
 		$html .= '<td>';
 		foreach ($family->getAllMarriagePlaces() as $n => $marriage_place) {
-			$tmp = new Place($marriage_place, WT_GED_ID);
+			$tmp = new Place($marriage_place, $family->getTree());
 			if ($n) {
 				$html .= '<br>';
 			}

@@ -21,21 +21,29 @@ namespace Fisharebest\Webtrees;
  */
 class Place {
 	const GEDCOM_SEPARATOR = ', ';
-	private $gedcom_place; // e.g. array("Westminster", "London", "England")
-	private $gedcom_id; // We may have the same place in different trees
 
 	/**
-	 * @param string  $gedcom_place
-	 * @param integer $gedcom_id
+	 * @var string[] e.g. array('Westminster', 'London', 'England')
 	 */
-	public function __construct($gedcom_place, $gedcom_id) {
+	private $gedcom_place;
+
+	/**
+	 * @var Tree We may have the same place name in different trees
+	 */
+	private $tree;
+
+	/**
+	 * @param string $gedcom_place
+	 * @param Tree   $tree
+	 */
+	public function __construct($gedcom_place, $tree) {
 		if ($gedcom_place) {
 			$this->gedcom_place = explode(self::GEDCOM_SEPARATOR, $gedcom_place);
 		} else {
 			// Empty => "Top level"
 			$this->gedcom_place = array();
 		}
-		$this->gedcom_id = $gedcom_id;
+		$this->gedcom_id = $tree;
 	}
 
 	/**
@@ -60,7 +68,7 @@ class Place {
 	 * @return Place
 	 */
 	public function getParentPlace() {
-		return new Place(implode(self::GEDCOM_SEPARATOR, array_slice($this->gedcom_place, 1)), $this->gedcom_id);
+		return new Place(implode(self::GEDCOM_SEPARATOR, array_slice($this->gedcom_place, 1)), $this->tree);
 	}
 
 	/**
@@ -84,7 +92,7 @@ class Place {
 			'collation' => I18N::$collation,
 		))->fetchOneColumn();
 		foreach ($rows as $row) {
-			$children[] = new Place($row . $parent_text, $this->gedcom_id);
+			$children[] = new Place($row . $parent_text, $this->tree);
 		}
 
 		return $children;
@@ -151,16 +159,14 @@ class Place {
 	 * @return string
 	 */
 	public function getShortName() {
-		global $WT_TREE;
-
-		$SHOW_PEDIGREE_PLACES = $WT_TREE->getPreference('SHOW_PEDIGREE_PLACES');
+		$SHOW_PEDIGREE_PLACES = Tree::findById($this->gedcom_id)->getPreference('SHOW_PEDIGREE_PLACES');
 
 		if ($SHOW_PEDIGREE_PLACES >= count($this->gedcom_place)) {
 			// A short place name - no need to abbreviate
 			return $this->getFullName();
 		} else {
 			// Abbreviate the place name, for lists
-			if ($WT_TREE->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX')) {
+			if (Tree::findById($this->gedcom_id)->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX')) {
 				// The *last* $SHOW_PEDIGREE_PLACES components
 				$short_name = implode(self::GEDCOM_SEPARATOR, array_slice($this->gedcom_place, -$SHOW_PEDIGREE_PLACES));
 			} else {
@@ -187,62 +193,65 @@ class Place {
 	}
 
 	/**
-	 * @param integer $gedcom_id
+	 * @param Tree $tree
 	 *
 	 * @return string[]
 	 */
-	public static function allPlaces($gedcom_id) {
+	public static function allPlaces($tree) {
 		$places = array();
 		$rows =
 			Database::prepare(
 				"SELECT SQL_CACHE CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place)" .
 				" FROM      `##places` AS p1" .
-				" LEFT JOIN `##places` AS p2 ON (p1.p_parent_id=p2.p_id)" .
-				" LEFT JOIN `##places` AS p3 ON (p2.p_parent_id=p3.p_id)" .
-				" LEFT JOIN `##places` AS p4 ON (p3.p_parent_id=p4.p_id)" .
-				" LEFT JOIN `##places` AS p5 ON (p4.p_parent_id=p5.p_id)" .
-				" LEFT JOIN `##places` AS p6 ON (p5.p_parent_id=p6.p_id)" .
-				" LEFT JOIN `##places` AS p7 ON (p6.p_parent_id=p7.p_id)" .
-				" LEFT JOIN `##places` AS p8 ON (p7.p_parent_id=p8.p_id)" .
-				" LEFT JOIN `##places` AS p9 ON (p8.p_parent_id=p9.p_id)" .
-				" WHERE p1.p_file=?" .
+				" LEFT JOIN `##places` AS p2 ON (p1.p_parent_id =p 2.p_id)" .
+				" LEFT JOIN `##places` AS p3 ON (p2.p_parent_id = p3.p_id)" .
+				" LEFT JOIN `##places` AS p4 ON (p3.p_parent_id = p4.p_id)" .
+				" LEFT JOIN `##places` AS p5 ON (p4.p_parent_id = p5.p_id)" .
+				" LEFT JOIN `##places` AS p6 ON (p5.p_parent_id = p6.p_id)" .
+				" LEFT JOIN `##places` AS p7 ON (p6.p_parent_id = p7.p_id)" .
+				" LEFT JOIN `##places` AS p8 ON (p7.p_parent_id = p8.p_id)" .
+				" LEFT JOIN `##places` AS p9 ON (p8.p_parent_id = p9.p_id)" .
+				" WHERE p1.p_file = :tree_id" .
 				" ORDER BY CONCAT_WS(', ', p9.p_place, p8.p_place, p7.p_place, p6.p_place, p5.p_place, p4.p_place, p3.p_place, p2.p_place, p1.p_place) COLLATE '" . I18N::$collation . "'"
 			)
-			->execute(array($gedcom_id))
-			->fetchOneColumn();
+			->execute(array(
+				'tree_id' => $tree->getTreeId()
+			))->fetchOneColumn();
 		foreach ($rows as $row) {
-			$places[] = new Place($row, $gedcom_id);
+			$places[] = new Place($row, $tree);
 		}
 		return $places;
 	}
 
 	/**
 	 * @param string  $filter
-	 * @param integer $gedcom_id
+	 * @param Tree    $tree
 	 *
 	 * @return Place[]
 	 */
-	public static function findPlaces($filter, $gedcom_id) {
+	public static function findPlaces($filter, $tree) {
 		$places = array();
 		$rows =
 			Database::prepare(
 				"SELECT SQL_CACHE CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place)" .
 				" FROM      `##places` AS p1" .
-				" LEFT JOIN `##places` AS p2 ON (p1.p_parent_id=p2.p_id)" .
-				" LEFT JOIN `##places` AS p3 ON (p2.p_parent_id=p3.p_id)" .
-				" LEFT JOIN `##places` AS p4 ON (p3.p_parent_id=p4.p_id)" .
-				" LEFT JOIN `##places` AS p5 ON (p4.p_parent_id=p5.p_id)" .
-				" LEFT JOIN `##places` AS p6 ON (p5.p_parent_id=p6.p_id)" .
-				" LEFT JOIN `##places` AS p7 ON (p6.p_parent_id=p7.p_id)" .
-				" LEFT JOIN `##places` AS p8 ON (p7.p_parent_id=p8.p_id)" .
-				" LEFT JOIN `##places` AS p9 ON (p8.p_parent_id=p9.p_id)" .
-				" WHERE CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) LIKE CONCAT('%', ?, '%') AND CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) NOT LIKE CONCAT('%,%', ?, '%') AND p1.p_file=?" .
+				" LEFT JOIN `##places` AS p2 ON (p1.p_parent_id = p2.p_id)" .
+				" LEFT JOIN `##places` AS p3 ON (p2.p_parent_id = p3.p_id)" .
+				" LEFT JOIN `##places` AS p4 ON (p3.p_parent_id = p4.p_id)" .
+				" LEFT JOIN `##places` AS p5 ON (p4.p_parent_id = p5.p_id)" .
+				" LEFT JOIN `##places` AS p6 ON (p5.p_parent_id = p6.p_id)" .
+				" LEFT JOIN `##places` AS p7 ON (p6.p_parent_id = p7.p_id)" .
+				" LEFT JOIN `##places` AS p8 ON (p7.p_parent_id = p8.p_id)" .
+				" LEFT JOIN `##places` AS p9 ON (p8.p_parent_id = p9.p_id)" .
+				" WHERE CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) LIKE CONCAT('%', :filter_1, '%') AND CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) NOT LIKE CONCAT('%,%', :filter_2, '%') AND p1.p_file = :tree_id" .
 				" ORDER BY  CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) COLLATE '" . I18N::$collation . "'"
-			)
-			->execute(array($filter, preg_quote($filter), $gedcom_id))
-			->fetchOneColumn();
+			)->execute(array(
+				'filter_1' => preg_quote($filter),
+				'filter_2' => preg_quote($filter),
+				'tree_id'  => $tree->getTreeId()
+			))->fetchOneColumn();
 		foreach ($rows as $row) {
-			$places[] = new Place($row, $gedcom_id);
+			$places[] = new Place($row, $tree);
 		}
 		return $places;
 	}

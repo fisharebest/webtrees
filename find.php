@@ -16,6 +16,13 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
+
 define('WT_SCRIPT_NAME', 'find.php');
 require './includes/session.php';
 
@@ -578,9 +585,9 @@ if ($action == "filter") {
 	if ($type == "place") {
 		echo '<div id="find-output">';
 		if (!$filter || $all) {
-			$places = Place::allPlaces(WT_GED_ID);
+			$places = Place::allPlaces($WT_TREE);
 		} else {
-			$places = Place::findPlaces($filter, WT_GED_ID);
+			$places = Place::findPlaces($filter, $WT_TREE);
 		}
 		if ($places) {
 			echo '<ul>';

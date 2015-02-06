@@ -28,7 +28,7 @@ require './includes/session.php';
 
 $controller = new SimpleController;
 $controller
-	->restrictAccess(Auth::isEditor())
+	->restrictAccess(Auth::isEditor($WT_TREE))
 	->setPageTitle(I18N::translate('Link to an existing media object'))
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();')

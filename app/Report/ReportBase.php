@@ -1299,7 +1299,7 @@ function getPersonNameStartHandler($attrs) {
  */
 function gedcomValueStartHandler($attrs) {
 	// @deprecated
-	global $currentElement, $gedrec, $fact, $desc;
+	global $currentElement, $gedrec, $fact, $desc, $WT_TREE;
 
 	$id = "";
 	$match = array();
@@ -1341,7 +1341,7 @@ function gedcomValueStartHandler($attrs) {
 				$value = $tmp->display();
 				break;
 			case 'PLAC':
-				$tmp = new Place($value, WT_GED_ID);
+				$tmp = new Place($value, $WT_TREE);
 				$value = $tmp->getShortName();
 				break;
 			}

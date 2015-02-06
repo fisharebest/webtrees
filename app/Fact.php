@@ -182,7 +182,7 @@ class Fact {
 	 */
 	public function getPlace() {
 		if ($this->place === null) {
-			$this->place = new Place($this->getAttribute('PLAC'), $this->getParent()->getTree()->getTreeId());
+			$this->place = new Place($this->getAttribute('PLAC'), $this->getParent()->getTree());
 		}
 
 		return $this->place;

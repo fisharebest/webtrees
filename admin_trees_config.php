@@ -18,12 +18,19 @@ namespace Fisharebest\Webtrees;
 
 use Zend_Session;
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
+
 define('WT_SCRIPT_NAME', 'admin_trees_config.php');
 
 require './includes/session.php';
 
 $controller = new PageController;
-$controller->restrictAccess(Auth::isManager());
+$controller->restrictAccess(Auth::isManager($WT_TREE));
 
 $PRIVACY_CONSTANTS = array(
 	'none'         => I18N::translate('Show to visitors'),

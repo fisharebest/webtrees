@@ -279,7 +279,7 @@ function format_asso_rela_record(Fact $event) {
 
 			// Use same markup as WT_Gedcom_Tag::getLabelValue()
 			$asso = I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', $label, $value);
-		} elseif (!$person && Auth::isEditor()) {
+		} elseif (!$person && Auth::isEditor($event->getParent()->getTree())) {
 			$asso = WT_Gedcom_Tag::getLabelValue('ASSO', '<span class="error">' . $amatch[1] . '</span>');
 		} else {
 			$asso = '';
@@ -507,7 +507,7 @@ function format_fact_place(Fact $event, $anchor = false, $sub_records = false, $
 		if (!empty($placerec)) {
 			if (preg_match_all('/\n3 (?:_HEB|ROMN) (.+)/', $placerec, $matches)) {
 				foreach ($matches[1] as $match) {
-					$wt_place = new Place($match, WT_GED_ID);
+					$wt_place = new Place($match, $event->getParent()->getTree());
 					$html .= ' - ' . $wt_place->getFullName();
 				}
 			}
