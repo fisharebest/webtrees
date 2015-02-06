@@ -24,21 +24,21 @@ require './includes/session.php';
 Zend_Session::writeClose();
 
 header('Content-Type: text/html; charset=UTF-8');
-$person = Individual::getInstance(Filter::get('pid', WT_REGEX_XREF));
-if (!$person || !$person->canShow()) {
+$individual = Individual::getInstance(Filter::get('pid', WT_REGEX_XREF));
+if (!$individual || !$individual->canShow()) {
 	return I18N::translate('Private');
 }
 
-$facts = $person->getFacts();
-foreach ($person->getSpouseFamilies() as $family) {
+$facts = $individual->getFacts();
+foreach ($individual->getSpouseFamilies() as $family) {
 	foreach ($family->getFacts() as $fact) {
 		$facts[] = $fact;
 	}
 }
 sort_facts($facts);
 
-foreach ($facts as $event) {
-	switch ($event->getTag()) {
+foreach ($facts as $fact) {
+	switch ($fact->getTag()) {
 	case 'SEX':
 	case 'FAMS':
 	case 'FAMC':
@@ -69,11 +69,11 @@ foreach ($facts as $event) {
 		break;
 	case 'ASSO':
 		// Associates
-		echo format_asso_rela_record($event);
+		echo format_asso_rela_record($fact);
 		break;
 	default:
 		// Simple version of print_fact()
-		echo $event->summary();
+		echo $fact->summary();
 		break;
 	}
 }
