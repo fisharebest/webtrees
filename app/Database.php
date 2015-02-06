@@ -36,26 +36,8 @@ class Database {
 	/**
 	 * Prevent instantiation via new Database
 	 */
-	private final function __construct() {
+	private function __construct() {
 		self::$log = array();
-	}
-
-	/**
-	 * Prevent instantiation via clone()
-	 *
-	 * @throws \Exception
-	 */
-	public final function __clone() {
-		throw new \Exception('Database::clone() is not allowed.');
-	}
-
-	/**
-	 * Prevent instantiation via serialize()
-	 *
-	 * @throws \Exception
-	 */
-	public final function __wakeup() {
-		throw new \Exception('Database::unserialize() is not allowed.');
 	}
 
 	/**
