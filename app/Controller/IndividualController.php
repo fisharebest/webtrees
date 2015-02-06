@@ -123,8 +123,6 @@ class IndividualController extends GedcomRecordController {
 	 * @param Fact $event the event object
 	 */
 	public function printNameRecord(Fact $event) {
-		global $WT_TREE;
-
 		$factrec = $event->getGedcom();
 
 		// Create a dummy record, so we can extract the formatted NAME value from the event.
@@ -154,7 +152,7 @@ class IndividualController extends GedcomRecordController {
 		echo '<dd class="field">', $dummy->getFullName();
 		if ($this->name_count == 1) {
 			if (Auth::isAdmin()) {
-				$user = User::findByGenealogyRecord($WT_TREE, $this->record);
+				$user = User::findByGenealogyRecord($this->record);
 				if ($user) {
 					echo '<span> - <a class="warning" href="admin_users.php?filter=' . Filter::escapeHtml($user->getUserName()) . '">' . Filter::escapeHtml($user->getUserName()) . '</a></span>';
 				}

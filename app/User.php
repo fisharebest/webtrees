@@ -78,17 +78,19 @@ class User {
 	/**
 	 * Find the user with a specified genealogy record.
 	 *
-	 * @param Tree       $tree
 	 * @param Individual $individual
 	 *
 	 * @return User|null
 	 */
-	public static function findByGenealogyRecord(Tree $tree, Individual $individual) {
+	public static function findByGenealogyRecord(Individual $individual) {
 		$user_id = Database::prepare(
 			"SELECT SQL_CACHE user_id" .
 			" FROM `##user_gedcom_setting`" .
-			" WHERE gedcom_id = ? AND setting_name = 'gedcomid' AND setting_value = ?"
-		)->execute(array($tree->getTreeId(), $individual->getXref()))->fetchOne();
+			" WHERE gedcom_id = :tree_id AND setting_name = 'gedcomid' AND setting_value = :xref"
+		)->execute(array(
+			'tree_id' => $individual->getTree()->getTreeId(),
+			'xref'    => $individual->getXref()
+		))->fetchOne();
 
 		return self::find($user_id);
 	}
