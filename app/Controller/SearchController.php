@@ -23,7 +23,7 @@ use Zend_Session;
  */
 class SearchController extends PageController {
 	public $action;
-	// TODO: decide if these variables are public/private/protected (or unused)
+	// Need to decide if these variables are public/private/protected (or unused)
 	var $isPostBack = false;
 	var $srfams;
 	var $srindi;
@@ -116,7 +116,7 @@ class SearchController extends PageController {
 		$this->replacePlacesWord = Filter::postBool('replacePlacesWord');
 		$this->replaceAll        = Filter::postBool('replaceAll');
 
-		// TODO: fetch each variable independently, using appropriate validation
+		// We should fetch each variable independently, using appropriate validation
 		// Aquire all the variables values from the $_REQUEST
 		$varNames = array("isPostBack", "srfams", "srindi", "srsour", "srnote", "view", "soundex", "subaction", "nameprt", "showasso", "resultsPageNum", "resultsPerPage", "totalResults", "totalGeneralResults", "indiResultsPrinted", "famResultsPrinted", "srcResultsPrinted", "myindilist", "mysourcelist", "mynotelist", "myfamlist");
 		$this->setRequestValues($varNames);
@@ -498,7 +498,7 @@ class SearchController extends PageController {
 	/**
 	 *  Gathers results for a soundex search
 	 *
-	 *  TODO
+	 *  NOTE
 	 *  ====
 	 *  Does not search on the selected gedcoms, searches on all the gedcoms
 	 *  Does not work on first names, instead of the code, value array is used in the search
@@ -621,7 +621,7 @@ class SearchController extends PageController {
 				foreach ($this->search_trees as $search_tree) {
 					$datalist = array();
 					foreach ($this->myfamlist as $family) {
-						if ($family->getTree->getTreeId() === $search_tree->getTreeId()) {
+						if ($family->getTree()->getTreeId() === $search_tree->getTreeId()) {
 							$datalist[] = $family;
 						}
 					}
@@ -641,7 +641,7 @@ class SearchController extends PageController {
 				foreach ($this->search_trees as $search_tree) {
 					$datalist = array();
 					foreach ($this->mysourcelist as $source) {
-						if ($source->getTree->getTreeId() === $search_tree->getTreeId()) {
+						if ($source->getTree()->getTreeId() === $search_tree->getTreeId()) {
 							$datalist[] = $source;
 						}
 					}
@@ -661,7 +661,7 @@ class SearchController extends PageController {
 				foreach ($this->search_trees as $search_tree) {
 					$datalist = array();
 					foreach ($this->mynotelist as $note) {
-						if ($note->getTree->getTreeId() === $search_tree->getTreeId()) {
+						if ($note->getTree()->getTreeId() === $search_tree->getTreeId()) {
 							$datalist[] = $note;
 						}
 					}
