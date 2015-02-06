@@ -1597,11 +1597,6 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 	}
 
 	// Look for generic/pattern relationships.
-	// TODO: these are heavily based on English relationship names.
-	// We need feedback from other languages to improve this.
-	// Dutch has special names for 8 generations of great-great-..., so these need explicit naming
-	// Spanish has special names for four but also has two different numbering patterns
-
 	if (preg_match('/^((?:mot|fat|par)+)(bro|sis|sib)$/', $path, $match)) {
 		// siblings of direct ancestors
 		$up = strlen($match[1]) / 3;
@@ -2045,7 +2040,7 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 			default:
 				return I18N::translate('great-great-grandchild');
 			}
-			break;
+
 		case 5:
 			switch ($sex2) {
 			case 'M':
@@ -2055,7 +2050,7 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 			default:
 				return I18N::translate('great-great-great-grandchild');
 			}
-			break;
+
 		case 6:
 			switch ($sex2) {
 			case 'M':
@@ -2065,7 +2060,7 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 			default:
 				return I18N::translate('great ×4 grandchild');
 			}
-			break;
+
 		case 7:
 			switch ($sex2) {
 			case 'M':
@@ -2075,7 +2070,7 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 			default:
 				return I18N::translate('great ×5 grandchild');
 			}
-			break;
+
 		case 8:
 			switch ($sex2) {
 			case 'M':
@@ -2085,7 +2080,7 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 			default:
 				return I18N::translate('great ×6 grandchild');
 			}
-			break;
+
 		case 9:
 			switch ($sex2) {
 			case 'M':
@@ -2095,7 +2090,7 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 			default:
 				return I18N::translate('great ×7 grandchild');
 			}
-			break;
+
 		default:
 			// Different languages have different rules for naming generations.
 			// An English great ×12 grandson is a Danish great ×11 grandson.

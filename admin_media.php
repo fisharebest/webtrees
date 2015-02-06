@@ -425,9 +425,9 @@ function all_disk_files($media_folder, $media_path, $subfolders, $filter) {
 /**
  * Fetch a list of all files on in the database.
  *
- * @todo The subfolders parameter is not implemented.  However, as we
- *       currently use this function as an exclusion list, it is harmless
- *       to always include sub-folders.
+ * The subfolders parameter is not implemented.  However, as we
+ * currently use this function as an exclusion list, it is harmless
+ * to always include sub-folders.
  *
  * @param string $media_folder
  * @param string $media_path

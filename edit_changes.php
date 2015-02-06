@@ -225,7 +225,7 @@ if ($changed_gedcoms) {
 
 	echo
 		$output2, $output, $output2,
-		'<br><br><br><br>', // TODO use margin-bottom instead of this
+		'<br><br><br><br>',
 		'<p id="save-cancel">',
 		'<input type="button" class="cancel" value="', I18N::translate('close'), '" onclick="window.close();">',
 		'</p>';

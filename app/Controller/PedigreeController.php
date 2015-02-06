@@ -61,7 +61,7 @@ class PedigreeController extends ChartController {
 			$this->PEDIGREE_GENERATIONS = 8;
 		}
 
-		// TODO: some library functions expect this as a global.
+		// Some library functions expect this as a global.
 		// Passing a function parameter would be much better.
 		global $PEDIGREE_GENERATIONS;
 		$PEDIGREE_GENERATIONS = $this->PEDIGREE_GENERATIONS;

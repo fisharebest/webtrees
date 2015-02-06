@@ -140,7 +140,7 @@ case 'compose':
 		echo I18N::translate('When you send this message you will receive a copy sent via email to the address you provided.');
 	}
 	echo
-		'<br><br><br><br>', // TODO use margin-bottom instead of this
+		'<br><br><br><br>',
 		'<p id="save-cancel">',
 		'<input type="button" class="cancel" value="', I18N::translate('close'), '" onclick="window.close();">',
 		'</p>';

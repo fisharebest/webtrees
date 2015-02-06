@@ -95,15 +95,6 @@ echo '<script>';
 			// GEDFact_assistant ========================
 			if (window.opener.document.getElementById('addlinkQueue')) {
 				window.opener.insertRowToTable(id, name);
-				// Check if Indi, Fam or source ===================
-				/*
-				if (id.match("I")=="I") {
-					var win01 = window.opener.window.open('edit_interface.php?action=addmedia_links&noteid=newnote&pid='+id, 'win01', edit_window_specs);
-					if (window.focus) {win01.focus();}
-				} else if (id.match("F")=="F") {
-					// TODO --- alert('Opening Navigator with family id entered will come later');
-				}
-				*/
 			}
 			window.opener.<?php echo $callback; ?>(id);
 			if (window.opener.pastename) window.opener.pastename(name);

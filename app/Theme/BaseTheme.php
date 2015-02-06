@@ -628,18 +628,6 @@ abstract class BaseTheme {
 	}
 
 	/**
-	 * Add HTML markup to create a group of radio buttons
-	 *
-	 * @param string  $name        The form name of the controls
-	 * @param string  $legend      A description of the group of controls
-	 *
-	 * @return string
-	 */
-	public function htmlRadioButtons($name, $legend) {
-		return '<fieldset><legend>' . $legend . '</legend></fieldset>';
-	}
-
-	/**
 	 * Display an icon for this fact.
 	 *
 	 * @param Fact $fact

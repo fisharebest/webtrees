@@ -186,7 +186,6 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 			// Already UTF-8 so nothing to do!
 			break;
 		case 'ANSEL':
-			// TODO: fisharebest has written a mysql stored procedure that converts ANSEL to UTF-8
 		default:
 			Database::rollBack();
 			echo '<span class="error">', I18N::translate('Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported.', $charset), '</span>';
