@@ -31,23 +31,6 @@ class Soundex {
 	}
 
 	/**
-	 * @param string $algorithm
-	 * @param string $text
-	 *
-	 * @return string
-	 */
-	public static function soundex($algorithm, $text) {
-		switch ($algorithm) {
-		case 'std':
-			return self::russell($text);
-		case 'dm':
-			return self::daitchMokotoff($text);
-		default:
-			throw new \InvalidArgumentException('Bad argument to Soundex::soundex()');
-		}
-	}
-
-	/**
 	 * Is there a match between two soundex codes?
 	 *
 	 * @param string $soundex1
