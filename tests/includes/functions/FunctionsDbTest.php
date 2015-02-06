@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -36,7 +36,7 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionFetchAllLinksExists() {
-		$this->assertEquals(function_exists('\Webtrees\\fetch_all_links'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\fetch_all_links'), true);
 	}
 
 	/**
@@ -45,7 +45,7 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionExistsPendingChangeExists() {
-		$this->assertEquals(function_exists('\Webtrees\\exists_pending_change'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\exists_pending_change'), true);
 	}
 
 	/**
@@ -54,7 +54,7 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetSourceListExists() {
-		$this->assertEquals(function_exists('\Webtrees\\get_source_list'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_source_list'), true);
 	}
 
 	/**
@@ -63,7 +63,7 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetRepoListExists() {
-		$this->assertEquals(function_exists('\Webtrees\\get_repo_list'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_repo_list'), true);
 	}
 
 	/**
@@ -72,7 +72,7 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetNoteListExists() {
-		$this->assertEquals(function_exists('\Webtrees\\get_note_list'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_note_list'), true);
 	}
 
 	/**
@@ -81,7 +81,7 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionSearchIndisCustomExists() {
-		$this->assertEquals(function_exists('\Webtrees\\search_indis_custom'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\search_indis_custom'), true);
 	}
 
 	/**
@@ -90,7 +90,7 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionSearchFamsCustomExists() {
-		$this->assertEquals(function_exists('\Webtrees\\search_fams_custom'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\search_fams_custom'), true);
 	}
 
 	/**
@@ -99,7 +99,7 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionSearchIndisExists() {
-		$this->assertEquals(function_exists('\Webtrees\\search_indis'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\search_indis'), true);
 	}
 
 	/**
@@ -108,7 +108,7 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionSearchIndisNamesExists() {
-		$this->assertEquals(function_exists('\Webtrees\\search_indis_names'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\search_indis_names'), true);
 	}
 
 	/**
@@ -117,7 +117,7 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionSearchIndisSoundexExists() {
-		$this->assertEquals(function_exists('\Webtrees\\search_indis_soundex'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\search_indis_soundex'), true);
 	}
 
 	/**
@@ -126,7 +126,7 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetRecentChangesExists() {
-		$this->assertEquals(function_exists('\Webtrees\\get_recent_changes'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_recent_changes'), true);
 	}
 
 	/**
@@ -135,7 +135,7 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionSearchIndisDatesExists() {
-		$this->assertEquals(function_exists('\Webtrees\\search_indis_dates'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\search_indis_dates'), true);
 	}
 
 	/**
@@ -144,7 +144,7 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionSearchFamsExists() {
-		$this->assertEquals(function_exists('\Webtrees\\search_fams'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\search_fams'), true);
 	}
 
 	/**
@@ -153,7 +153,7 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionSearchFamsNamesExists() {
-		$this->assertEquals(function_exists('\Webtrees\\search_fams_names'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\search_fams_names'), true);
 	}
 
 	/**
@@ -162,7 +162,7 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionSearchSourcesExists() {
-		$this->assertEquals(function_exists('\Webtrees\\search_sources'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\search_sources'), true);
 	}
 
 	/**
@@ -171,7 +171,7 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionSearchNotesExists() {
-		$this->assertEquals(function_exists('\Webtrees\\search_notes'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\search_notes'), true);
 	}
 
 	/**
@@ -180,7 +180,7 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionSearchReposExists() {
-		$this->assertEquals(function_exists('\Webtrees\\search_repos'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\search_repos'), true);
 	}
 
 	/**
@@ -189,7 +189,7 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionFindRinIdExists() {
-		$this->assertEquals(function_exists('\Webtrees\\find_rin_id'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\find_rin_id'), true);
 	}
 
 	/**
@@ -198,7 +198,7 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetCommonSurnamesExists() {
-		$this->assertEquals(function_exists('\Webtrees\\get_common_surnames'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_common_surnames'), true);
 	}
 
 	/**
@@ -207,7 +207,7 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetTopSurnamesExists() {
-		$this->assertEquals(function_exists('\Webtrees\\get_top_surnames'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_top_surnames'), true);
 	}
 
 	/**
@@ -216,7 +216,7 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetAnniversaryEventsExists() {
-		$this->assertEquals(function_exists('\Webtrees\\get_anniversary_events'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_anniversary_events'), true);
 	}
 
 	/**
@@ -225,7 +225,7 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetCalendarEventsExists() {
-		$this->assertEquals(function_exists('\Webtrees\\get_calendar_events'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_calendar_events'), true);
 	}
 
 	/**
@@ -234,7 +234,7 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionIsMediaUsedInOtherGedcomExists() {
-		$this->assertEquals(function_exists('\Webtrees\\is_media_used_in_other_gedcom'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\is_media_used_in_other_gedcom'), true);
 	}
 
 	/**
@@ -243,7 +243,7 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetGedcomFromIdExists() {
-		$this->assertEquals(function_exists('\Webtrees\\get_gedcom_from_id'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_gedcom_from_id'), true);
 	}
 
 	/**
@@ -252,7 +252,7 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetIdFromGedcomExists() {
-		$this->assertEquals(function_exists('\Webtrees\\get_id_from_gedcom'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_id_from_gedcom'), true);
 	}
 
 	/**
@@ -261,7 +261,7 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetUserBlocksExists() {
-		$this->assertEquals(function_exists('\Webtrees\\get_user_blocks'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_user_blocks'), true);
 	}
 
 	/**
@@ -270,7 +270,7 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetGedcomBlocksExists() {
-		$this->assertEquals(function_exists('\Webtrees\\get_gedcom_blocks'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_gedcom_blocks'), true);
 	}
 
 	/**
@@ -279,7 +279,7 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetBlockSettingExists() {
-		$this->assertEquals(function_exists('\Webtrees\\get_block_setting'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_block_setting'), true);
 	}
 
 	/**
@@ -288,7 +288,7 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionSetBlockSettingExists() {
-		$this->assertEquals(function_exists('\Webtrees\\set_block_setting'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\set_block_setting'), true);
 	}
 
 	/**
@@ -297,7 +297,7 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionUpdateFavoritesExists() {
-		$this->assertEquals(function_exists('\Webtrees\\update_favorites'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\update_favorites'), true);
 	}
 
 	/**
@@ -306,6 +306,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetEventsListExists() {
-		$this->assertEquals(function_exists('\Webtrees\\get_events_list'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_events_list'), true);
 	}
 }

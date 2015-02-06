@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -36,7 +36,7 @@ class FunctionsPrintListsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionFormatIndiTableExists() {
-		$this->assertEquals(function_exists('\Webtrees\\format_indi_table'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\format_indi_table'), true);
 	}
 
 	/**
@@ -45,7 +45,7 @@ class FunctionsPrintListsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionFormatFamTableExists() {
-		$this->assertEquals(function_exists('\Webtrees\\format_fam_table'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\format_fam_table'), true);
 	}
 
 	/**
@@ -54,7 +54,7 @@ class FunctionsPrintListsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionFormatSourTableExists() {
-		$this->assertEquals(function_exists('\Webtrees\\format_sour_table'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\format_sour_table'), true);
 	}
 
 	/**
@@ -63,7 +63,7 @@ class FunctionsPrintListsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionFormatNoteTableExists() {
-		$this->assertEquals(function_exists('\Webtrees\\format_note_table'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\format_note_table'), true);
 	}
 
 	/**
@@ -72,7 +72,7 @@ class FunctionsPrintListsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionFormatRepoTableExists() {
-		$this->assertEquals(function_exists('\Webtrees\\format_repo_table'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\format_repo_table'), true);
 	}
 
 	/**
@@ -81,7 +81,7 @@ class FunctionsPrintListsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionFormatMediaTableExists() {
-		$this->assertEquals(function_exists('\Webtrees\\format_media_table'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\format_media_table'), true);
 	}
 
 	/**
@@ -90,7 +90,7 @@ class FunctionsPrintListsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionFormatSurnameTableExists() {
-		$this->assertEquals(function_exists('\Webtrees\\format_surname_table'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\format_surname_table'), true);
 	}
 
 	/**
@@ -99,7 +99,7 @@ class FunctionsPrintListsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionFormatSurnameTagcloudExists() {
-		$this->assertEquals(function_exists('\Webtrees\\format_surname_tagcloud'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\format_surname_tagcloud'), true);
 	}
 
 	/**
@@ -108,7 +108,7 @@ class FunctionsPrintListsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionFormatSurnameListExists() {
-		$this->assertEquals(function_exists('\Webtrees\\format_surname_list'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\format_surname_list'), true);
 	}
 
 	/**
@@ -117,7 +117,7 @@ class FunctionsPrintListsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintChangesListExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_changes_list'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_changes_list'), true);
 	}
 
 	/**
@@ -126,7 +126,7 @@ class FunctionsPrintListsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintChangesTableExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_changes_table'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_changes_table'), true);
 	}
 
 	/**
@@ -135,7 +135,7 @@ class FunctionsPrintListsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintEventsTableExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_events_table'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_events_table'), true);
 	}
 
 	/**
@@ -144,7 +144,7 @@ class FunctionsPrintListsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintEventsListExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_events_list'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_events_list'), true);
 	}
 
 	/**
@@ -153,7 +153,7 @@ class FunctionsPrintListsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintChartByAgeExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_chart_by_age'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_chart_by_age'), true);
 	}
 
 	/**
@@ -162,6 +162,6 @@ class FunctionsPrintListsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintChartByDecadeExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_chart_by_decade'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_chart_by_decade'), true);
 	}
 }

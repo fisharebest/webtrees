@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -16,12 +16,19 @@ namespace Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
+
 define('WT_SCRIPT_NAME', 'edit_changes.php');
 require './includes/session.php';
 
 $controller = new SimpleController;
 $controller
-	->restrictAccess(Auth::isModerator())
+	->restrictAccess(Auth::isModerator($WT_TREE))
 	->setPageTitle(I18N::translate('Pending changes'))
 	->pageHeader()
 	->addInlineJavascript("
@@ -225,7 +232,7 @@ if ($changed_gedcoms) {
 
 	echo
 		$output2, $output, $output2,
-		'<br><br><br><br>', // TODO use margin-bottom instead of this
+		'<br><br><br><br>',
 		'<p id="save-cancel">',
 		'<input type="button" class="cancel" value="', I18N::translate('close'), '" onclick="window.close();">',
 		'</p>';

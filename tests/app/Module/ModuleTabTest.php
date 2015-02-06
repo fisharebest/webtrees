@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -36,6 +36,6 @@ class ModuleTabTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testClassExists() {
-		$this->assertTrue(interface_exists('\Webtrees\ModuleTabInterface'));
+		$this->assertTrue(interface_exists(__NAMESPACE__ . '\ModuleTabInterface'));
 	}
 }

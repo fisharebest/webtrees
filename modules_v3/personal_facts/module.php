@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -42,7 +42,7 @@ class personal_facts_WT_Module extends Module implements ModuleTabInterface {
 
 	/** {@inheritdoc} */
 	public function getTabContent() {
-		global $EXPAND_RELATIVES_EVENTS, $controller;
+		global $controller;
 		$EXPAND_HISTO_EVENTS = false;
 
 		$indifacts = array();
@@ -116,7 +116,7 @@ class personal_facts_WT_Module extends Module implements ModuleTabInterface {
 		}
 
 		echo '<tr><td colspan="2" class="descriptionbox rela"><form action="?"><input id="checkbox_rela_facts" type="checkbox" ';
-		echo $EXPAND_RELATIVES_EVENTS ? 'checked' : '';
+		echo $controller->record->getTree()->getPreference('EXPAND_RELATIVES_EVENTS') ? 'checked' : '';
 		echo ' onclick="jQuery(\'tr.rela\').toggle();"><label for="checkbox_rela_facts">', I18N::translate('Events of close relatives'), '</label>';
 		if (file_exists(Site::getPreference('INDEX_DIRECTORY') . 'histo.' . WT_LOCALE . '.php')) {
 			echo ' <input id="checkbox_histo" type="checkbox" ';
@@ -136,7 +136,7 @@ class personal_facts_WT_Module extends Module implements ModuleTabInterface {
 		echo '</tbody>';
 		echo '</table>';
 
-		if (!$EXPAND_RELATIVES_EVENTS) {
+		if (!$controller->record->getTree()->getPreference('EXPAND_RELATIVES_EVENTS')) {
 			echo '<script>jQuery("tr.rela").toggle();</script>';
 		}
 		if (!$EXPAND_HISTO_EVENTS) {
@@ -173,7 +173,7 @@ class personal_facts_WT_Module extends Module implements ModuleTabInterface {
 	 * @return Fact[]
 	 */
 	private static function spouseFacts(Individual $individual, Individual $spouse) {
-		global $SHOW_RELATIVES_EVENTS;
+		$SHOW_RELATIVES_EVENTS = $individual->getTree()->getPreference('SHOW_RELATIVES_EVENTS');
 
 		$facts = array();
 		if (strstr($SHOW_RELATIVES_EVENTS, '_DEAT_SPOU')) {
@@ -207,7 +207,9 @@ class personal_facts_WT_Module extends Module implements ModuleTabInterface {
 	 * @return Fact[]
 	 */
 	private static function childFacts(Individual $person, Family $family, $option, $relation) {
-		global $controller, $SHOW_RELATIVES_EVENTS;
+		global $controller;
+
+		$SHOW_RELATIVES_EVENTS = $person->getTree()->getPreference('SHOW_RELATIVES_EVENTS');
 
 		$facts = array();
 
@@ -333,12 +335,14 @@ class personal_facts_WT_Module extends Module implements ModuleTabInterface {
 	 * Get the events of parents and grandparents.
 	 *
 	 * @param Individual $person
-	 * @param integer       $sosa
+	 * @param integer    $sosa
 	 *
 	 * @return Fact[]
 	 */
 	private static function parentFacts(Individual $person, $sosa) {
-		global $controller, $SHOW_RELATIVES_EVENTS;
+		global $controller;
+
+		$SHOW_RELATIVES_EVENTS = $person->getTree()->getPreference('SHOW_RELATIVES_EVENTS');
 
 		$facts = array();
 
@@ -436,7 +440,7 @@ class personal_facts_WT_Module extends Module implements ModuleTabInterface {
 	 * @return Fact[]
 	 */
 	private static function historicalFacts(Individual $person) {
-		global $SHOW_RELATIVES_EVENTS;
+		$SHOW_RELATIVES_EVENTS = $person->getTree()->getPreference('SHOW_RELATIVES_EVENTS');
 
 		$facts = array();
 

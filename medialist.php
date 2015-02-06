@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -21,6 +21,7 @@ namespace Webtrees;
  *
  * @global string $TEXT_DIRECTION
  */
+global $TEXT_DIRECTION;
 
 define('WT_SCRIPT_NAME', 'medialist.php');
 require './includes/session.php';

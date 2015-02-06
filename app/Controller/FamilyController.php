@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -83,10 +83,6 @@ class FamilyController extends GedcomRecordController {
 	 * get edit menu
 	 */
 	function getEditMenu() {
-		global $WT_TREE;
-
-		$SHOW_GEDCOM_RECORD = $WT_TREE->getPreference('SHOW_GEDCOM_RECORD');
-
 		if (!$this->record || $this->record->isPendingDeletion()) {
 			return null;
 		}
@@ -121,7 +117,7 @@ class FamilyController extends GedcomRecordController {
 		}
 
 		// edit raw
-		if (Auth::isAdmin() || WT_USER_CAN_EDIT && $SHOW_GEDCOM_RECORD) {
+		if (Auth::isAdmin() || WT_USER_CAN_EDIT && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
 			$submenu = new Menu(I18N::translate('Edit raw GEDCOM'), '#', 'menu-fam-editraw');
 			$submenu->setOnclick("return edit_raw('" . $this->record->getXref() . "');");
 			$menu->addSubmenu($submenu);

@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -19,7 +19,7 @@ namespace Webtrees;
 use PHPUnit_Framework_TestCase;
 
 /**
- * Test harness for the class \Webtrees\Controller\TimelineController
+ * Test harness for the class TimelineController
  */
 class TimelineControllerTest extends PHPUnit_Framework_TestCase {
 	/**
@@ -36,6 +36,6 @@ class TimelineControllerTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testClassExists() {
-		$this->assertTrue(class_exists('\Webtrees\TimelineController'));
+		$this->assertTrue(class_exists(__NAMESPACE__ . '\TimelineController'));
 	}
 }

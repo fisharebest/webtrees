@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,13 @@ namespace Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'compact.php');
 require './includes/session.php';
@@ -39,11 +46,11 @@ $controller
 					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
 					<?php echo print_findindi_link('rootid'); ?>
 				</td>
-					<td <?php echo $SHOW_HIGHLIGHT_IMAGES ? 'rowspan="2"' : ''; ?> class="facts_label03">
+					<td <?php echo $WT_TREE->getPreference('SHOW_HIGHLIGHT_IMAGES') ? 'rowspan="2"' : ''; ?> class="facts_label03">
 						<input type="submit" value="<?php echo I18N::translate('View'); ?>">
 					</td>
 				</tr>
-				<?php if ($SHOW_HIGHLIGHT_IMAGES) { ?>
+				<?php if ($WT_TREE->getPreference('SHOW_HIGHLIGHT_IMAGES')) { ?>
 				<tr>
 					<td class="descriptionbox">
 						<?php echo I18N::translate('Show highlight images in individual boxes'); ?>

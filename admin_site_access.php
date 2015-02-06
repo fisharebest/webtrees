@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -25,6 +25,7 @@ use Zend_Session;
  *
  * @global Zend_Controller_Request_Http $WT_REQUEST
  */
+global $WT_REQUEST;
 
 define('WT_SCRIPT_NAME', 'admin_site_access.php');
 require './includes/session.php';

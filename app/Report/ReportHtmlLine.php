@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -40,7 +40,6 @@ class ReportHtmlLine extends ReportBaseLine {
 		if ($this->y2 == '.') {
 			$this->y2 = $renderer->getY();
 		}
-		// TODO Non verticle or horizontal lines can use a series of divs absolutely positioned
 		// Vertical line
 		if ($this->x1 == $this->x2) {
 			echo "<div style=\"position:absolute;overflow:hidden;border-", $renderer->alignRTL, ":solid black 1pt;", $renderer->alignRTL, ":", $this->x1, "pt;top:", $this->y1 + 1, "pt;width:1pt;height:", $this->y2 - $this->y1, "pt;\"> </div>\n";

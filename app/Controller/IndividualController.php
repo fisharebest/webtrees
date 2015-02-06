@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -31,12 +31,12 @@ class IndividualController extends GedcomRecordController {
 	 * Startup activity
 	 */
 	function __construct() {
-		global $USE_RIN;
+		global $WT_TREE;
 
 		$xref         = Filter::get('pid', WT_REGEX_XREF);
 		$this->record = Individual::getInstance($xref);
 
-		if (!$this->record && $USE_RIN) {
+		if (!$this->record && $WT_TREE->getPreference('USE_RIN')) {
 			$rin          = find_rin_id($xref);
 			$this->record = Individual::getInstance($rin);
 		}
@@ -123,8 +123,6 @@ class IndividualController extends GedcomRecordController {
 	 * @param Fact $event the event object
 	 */
 	public function printNameRecord(Fact $event) {
-		global $WT_TREE;
-
 		$factrec = $event->getGedcom();
 
 		// Create a dummy record, so we can extract the formatted NAME value from the event.
@@ -154,7 +152,7 @@ class IndividualController extends GedcomRecordController {
 		echo '<dd class="field">', $dummy->getFullName();
 		if ($this->name_count == 1) {
 			if (Auth::isAdmin()) {
-				$user = User::findByGenealogyRecord($WT_TREE, $this->record);
+				$user = User::findByGenealogyRecord($this->record);
 				if ($user) {
 					echo '<span> - <a class="warning" href="admin_users.php?filter=' . Filter::escapeHtml($user->getUserName()) . '">' . Filter::escapeHtml($user->getUserName()) . '</a></span>';
 				}
@@ -263,10 +261,6 @@ class IndividualController extends GedcomRecordController {
 	 * get edit menu
 	 */
 	function getEditMenu() {
-		global $WT_TREE;
-
-		$SHOW_GEDCOM_RECORD = $WT_TREE->getPreference('SHOW_GEDCOM_RECORD');
-
 		if (!$this->record || $this->record->isPendingDeletion()) {
 			return null;
 		}
@@ -318,7 +312,7 @@ class IndividualController extends GedcomRecordController {
 		}
 
 		// edit raw
-		if (Auth::isAdmin() || WT_USER_CAN_EDIT && $SHOW_GEDCOM_RECORD) {
+		if (Auth::isAdmin() || WT_USER_CAN_EDIT && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
 			$submenu = new Menu(I18N::translate('Edit raw GEDCOM'), '#', 'menu-indi-editraw');
 			$submenu->setOnclick("return edit_raw('" . $this->record->getXref() . "');");
 			$menu->addSubmenu($submenu);

@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -55,6 +55,6 @@ class FunctionsMediaDbTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionHasMemoryForImageExists() {
-		$this->assertEquals(function_exists('\Webtrees\\hasMemoryForImage'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\hasMemoryForImage'), true);
 	}
 }

@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -239,7 +239,7 @@ abstract class BaseTheme {
 		case 'mailto':
 			return '<a href="mailto:' . Filter::escapeHtml($user->getEmail()) . '">' . Filter::escapeHtml($user->getRealName()) . '</a>';
 		default:
-			return "<a href='#' onclick='message(\"" . Filter::escapeHtml($user->getUserName()) . "\", \"" . $method . "\", \"" . WT_BASE_URL . Filter::escapeHtml(\Webtrees\get_query_url()) . "\", \"\");return false;'>" . Filter::escapeHtml($user->getRealName()) . '</a>';
+			return "<a href='#' onclick='message(\"" . Filter::escapeHtml($user->getUserName()) . "\", \"" . $method . "\", \"" . WT_BASE_URL . Filter::escapeHtml(get_query_url()) . "\", \"\");return false;'>" . Filter::escapeHtml($user->getRealName()) . '</a>';
 		}
 	}
 
@@ -426,7 +426,7 @@ abstract class BaseTheme {
 			return
 				'<form action="search.php" class="header-search" method="post" role="search">' .
 				'<input type="hidden" name="action" value="general">' .
-				'<input type="hidden" name="ged" value="' . $this->tree->nameHtml() . '">' .
+				'<input type="hidden" name="ged" value="' . $this->tree->getNameHtml() . '">' .
 				'<input type="hidden" name="topsearch" value="yes">' .
 				$this->formQuickSearchFields() .
 				'</form>';
@@ -453,7 +453,7 @@ abstract class BaseTheme {
 	 */
 	protected function formatTreeTitle() {
 		if ($this->tree) {
-			return '<h1 class="header-title">' . $this->tree->titleHtml() . '</h1>';
+			return '<h1 class="header-title">' . $this->tree->getTitleHtml() . '</h1>';
 		} else {
 			return '';
 		}
@@ -625,18 +625,6 @@ abstract class BaseTheme {
 				$html .
 				'</div>';
 		}
-	}
-
-	/**
-	 * Add HTML markup to create a group of radio buttons
-	 *
-	 * @param string  $name        The form name of the controls
-	 * @param string  $legend      A description of the group of controls
-	 *
-	 * @return string
-	 */
-	public function htmlRadioButtons($name, $legend) {
-		return '<fieldset><legend>' . $legend . '</legend></fieldset>';
 	}
 
 	/**
@@ -954,7 +942,7 @@ abstract class BaseTheme {
 	 */
 	final public function init(Zend_Session_Namespace $session, $search_engine, Tree $tree = null) {
 		$this->tree          = $tree;
-		$this->tree_url      = $tree ? 'ged=' . $tree->nameUrl() : '';
+		$this->tree_url      = $tree ? 'ged=' . $tree->getNameUrl() : '';
 		$this->session       = $session;
 		$this->search_engine = $search_engine;
 
@@ -1293,11 +1281,11 @@ abstract class BaseTheme {
 		$ALLOW_CHANGE_GEDCOM = Site::getPreference('ALLOW_CHANGE_GEDCOM') && count(Tree::getAll()) > 1;
 
 		foreach (Tree::getAll() as $tree) {
-			if ($tree->id() === WT_GED_ID || $ALLOW_CHANGE_GEDCOM) {
+			if ($tree->getTreeId() === WT_GED_ID || $ALLOW_CHANGE_GEDCOM) {
 				$submenu = new Menu(
-					$tree->titleHtml(),
-					'index.php?ctype=gedcom&amp;ged=' . $tree->nameUrl(),
-					'menu-tree-' . $tree->id() // Cannot use name - it must be a CSS identifier
+					$tree->getTitleHtml(),
+					'index.php?ctype=gedcom&amp;ged=' . $tree->getNameUrl(),
+					'menu-tree-' . $tree->getTreeId()
 				);
 				$submenus[] = $submenu;
 			}
@@ -1321,7 +1309,7 @@ abstract class BaseTheme {
 		$menu = new Menu(I18N::translate('Language'), '#', 'menu-language');
 
 		foreach (I18N::installed_languages() as $lang => $name) {
-			$submenu = new Menu($name, \Webtrees\get_query_url(array('lang' => $lang), '&amp;'), 'menu-language-' . $lang);
+			$submenu = new Menu($name, get_query_url(array('lang' => $lang), '&amp;'), 'menu-language-' . $lang);
 			if (WT_LOCALE === $lang) {
 				$submenu->addClass('', '', 'active');
 			}
@@ -1397,7 +1385,7 @@ abstract class BaseTheme {
 		if (Auth::check() || $this->isSearchEngine() || WT_SCRIPT_NAME === 'login.php') {
 			return null;
 		} else {
-			return new Menu(I18N::translate('Login'), WT_LOGIN_URL . '?url=' . rawurlencode(\Webtrees\get_query_url()));
+			return new Menu(I18N::translate('Login'), WT_LOGIN_URL . '?url=' . rawurlencode(get_query_url()));
 		}
 	}
 
@@ -1586,7 +1574,7 @@ abstract class BaseTheme {
 		if ($this->tree && !$this->isSearchEngine() && Site::getPreference('ALLOW_USER_THEMES') && $this->tree->getPreference('ALLOW_THEME_DROPDOWN')) {
 			$submenus = array();
 			foreach (Theme::installedThemes() as $theme) {
-				$submenu = new Menu($theme->themeName(), \Webtrees\get_query_url(array('theme' => $theme->themeId()), '&amp;'), 'menu-theme-' . $theme->themeId());
+				$submenu = new Menu($theme->themeName(), get_query_url(array('theme' => $theme->themeId()), '&amp;'), 'menu-theme-' . $theme->themeId());
 				if ($theme === $this) {
 					$submenu->addClass('', '', 'active');
 				}
@@ -1760,7 +1748,7 @@ abstract class BaseTheme {
 	 * @return bool
 	 */
 	protected function pendingChangesExist() {
-		return \Webtrees\exists_pending_change(Auth::user(), $this->tree);
+		return exists_pending_change(Auth::user(), $this->tree);
 	}
 
 	/**

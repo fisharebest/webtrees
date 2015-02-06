@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -23,6 +23,7 @@ use Zend_Session;
  *
  * @global Tree $WT_TREE
  */
+global $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'autocomplete.php');
 require './includes/session.php';
@@ -198,7 +199,7 @@ case 'OBJE':
 case 'PLAC': // Place names (with hierarchy), that include the search term
 	// Do not filter by privacy.  Place names on their own do not identify individuals.
 	$data = array();
-	foreach (Place::findPlaces($term, WT_GED_ID) as $place) {
+	foreach (Place::findPlaces($term, $WT_TREE) as $place) {
 		$data[] = $place->getGedcomName();
 	}
 	if (!$data && $WT_TREE->getPreference('GEONAMES_ACCOUNT')) {

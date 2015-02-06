@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -23,6 +23,7 @@ use Zend_Session;
  *
  * @global Zend_Session $WT_SESSION
  */
+global $WT_SESSION;
 
 define('WT_SCRIPT_NAME', 'message.php');
 require './includes/session.php';
@@ -139,7 +140,7 @@ case 'compose':
 		echo I18N::translate('When you send this message you will receive a copy sent via email to the address you provided.');
 	}
 	echo
-		'<br><br><br><br>', // TODO use margin-bottom instead of this
+		'<br><br><br><br>',
 		'<p id="save-cancel">',
 		'<input type="button" class="cancel" value="', I18N::translate('close'), '" onclick="window.close();">',
 		'</p>';

@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -70,7 +70,7 @@ if ($action == "filter") {
 	$myindilist = search_indis_names($filter_array, array(WT_GED_ID), 'AND');
 	if ($myindilist) {
 		echo "<tr><td class=\"list_value_wrap\"><ul>";
-		usort($myindilist, 'Webtrees\GedcomRecord::compare');
+		usort($myindilist, __NAMESPACE__ . '\GedcomRecord::compare');
 		foreach ($myindilist as $indi) {
 			$nam = $indi->getAllNames();
 			$wholename = rtrim($nam[0]['givn'], '*') . "&nbsp;" . $nam[0]['surname'];

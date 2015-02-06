@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -26,6 +26,7 @@ use Zend_Session;
  * @global Zend_Session $WT_SESSION
  * @global Tree         $WT_TREE
  */
+global $SEARCH_SPIDER, $TEXT_DIRECTION, $WT_SESSION, $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'index_edit.php');
 require './includes/session.php';
@@ -67,7 +68,7 @@ if ($user_id < 0 || $gedcom_id < 0 || Auth::isAdmin() && $user_id != Auth::id())
 // Only a user or an admin can edit a user’s "my page"
 if (
 	$gedcom_id < 0 && !Auth::isAdmin() ||
-	$gedcom_id > 0 && !Auth::isManager(Tree::get($gedcom_id)) ||
+	$gedcom_id > 0 && !Auth::isManager(Tree::findById($gedcom_id)) ||
 	$user_id && Auth::id() != $user_id && !Auth::isAdmin()
 ) {
 	header('Location: ' . WT_BASE_URL . $return_to);

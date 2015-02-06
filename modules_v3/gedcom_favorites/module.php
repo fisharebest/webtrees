@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -39,7 +39,7 @@ class gedcom_favorites_WT_Module extends Module implements ModuleBlockInterface 
 
 	/** {@inheritdoc} */
 	public function getBlock($block_id, $template = true, $cfg = null) {
-		global $ctype, $show_full, $PEDIGREE_FULL_DETAILS, $controller;
+		global $ctype, $controller;
 
 		self::updateSchema(); // make sure the favorites table has been created
 
@@ -93,14 +93,6 @@ class gedcom_favorites_WT_Module extends Module implements ModuleBlockInterface 
 				}
 			}
 		}
-
-		// Override GEDCOM configuration temporarily
-		if (isset($show_full)) {
-			$saveShowFull = $show_full;
-		}
-		$savePedigreeFullDetails = $PEDIGREE_FULL_DETAILS;
-		$show_full = 1;
-		$PEDIGREE_FULL_DETAILS = 1;
 
 		$userfavs = $this->getFavorites($ctype === 'user' ? Auth::id() : WT_GED_ID);
 		if (!is_array($userfavs)) {
@@ -198,13 +190,6 @@ class gedcom_favorites_WT_Module extends Module implements ModuleBlockInterface 
 			$content .= '<input type="submit" value="' . I18N::translate('Add') . '">';
 			$content .= '</form></div>';
 		}
-
-		// Restore GEDCOM configuration
-		unset($show_full);
-		if (isset($saveShowFull)) {
-			$show_full = $saveShowFull;
-		}
-		$PEDIGREE_FULL_DETAILS = $savePedigreeFullDetails;
 
 		if ($template) {
 			if ($block) {

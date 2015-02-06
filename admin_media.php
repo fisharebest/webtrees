@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -425,9 +425,9 @@ function all_disk_files($media_folder, $media_path, $subfolders, $filter) {
 /**
  * Fetch a list of all files on in the database.
  *
- * @todo The subfolders parameter is not implemented.  However, as we
- *       currently use this function as an exclusion list, it is harmless
- *       to always include sub-folders.
+ * The subfolders parameter is not implemented.  However, as we
+ * currently use this function as an exclusion list, it is harmless
+ * to always include sub-folders.
  *
  * @param string $media_folder
  * @param string $media_path
@@ -467,7 +467,9 @@ function all_media_files($media_folder, $media_path, $subfolders, $filter) {
  * @return string
  */
 function mediaFileInfo($media_folder, $media_path, $file) {
-	$html = '<b>' . Filter::escapeHtml($file) . '</b>';
+	$html = '<dl>';
+	$html .= '<dt>' . I18N::translate('Filename') . '</dt>';
+	$html .= '<dd>' . Filter::escapeHtml($file) . '</dd>';
 
 	$full_path = WT_DATA_DIR . $media_folder . $media_path . $file;
 	if ($file && file_exists($full_path)) {
@@ -475,18 +477,23 @@ function mediaFileInfo($media_folder, $media_path, $file) {
 		if ($size !== false) {
 			$size = (int) (($size + 1023) / 1024); // Round up to next KB
 			$size = /* I18N: size of file in KB */ I18N::translate('%s KB', I18N::number($size));
-			$html .= WT_Gedcom_Tag::getLabelValue('__FILE_SIZE__', $size);
+			$html .= '<dt>' . I18N::translate('File size') . '</dt>';
+			$html .= '<dd>' . $size . '</dd>';
 			$imgsize = @getimagesize($full_path);
 			if (is_array($imgsize)) {
 				$imgsize = /* I18N: image dimensions, width × height */ I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1']));
-				$html .= WT_Gedcom_Tag::getLabelValue('__IMAGE_SIZE__', $imgsize);
+				$html .= '<dt>' . I18N::translate('Image dimensions') . '</dt>';
+				$html .= '<dd>' . $imgsize . '</dd>';
 			}
+			$html .= '</dl>';
 
 		} else {
-			$html .= '<div class="error">' . I18N::translate('This media file exists, but cannot be accessed.') . '</div>';
+			$html .= '</dl>';
+			$html .= '<div class="alert alert-danger">' . I18N::translate('This media file exists, but cannot be accessed.') . '</div>';
 		}
 	} else {
-		$html .= '<div class="error">' . I18N::translate('This media file does not exist.') . '</div>';
+		$html .= '</dl>';
+		$html .= '<div class="alert alert-danger">' . I18N::translate('This media file does not exist.') . '</div>';
 	}
 	return $html;
 }
@@ -500,7 +507,7 @@ function mediaFileInfo($media_folder, $media_path, $file) {
  */
 function mediaObjectInfo(Media $media) {
 	$xref   = $media->getXref();
-	$gedcom = Tree::getNameFromId($media->getGedcomId());
+	$gedcom = $media->getTree()->getName();
 	$name   = $media->getFullName();
 
 	$html   =

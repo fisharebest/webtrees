@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -93,21 +93,21 @@ class Fact {
 		switch ($this->tag) {
 		case 'FAMC':
 		case 'FAMS':
-			return Family::getInstance($xref, $this->getParent()->getGedcomId());
+			return Family::getInstance($xref, $this->getParent()->getTree()->getTreeId());
 		case 'HUSB':
 		case 'WIFE':
 		case 'CHIL':
-			return Individual::getInstance($xref, $this->getParent()->getGedcomId());
+			return Individual::getInstance($xref, $this->getParent()->getTree()->getTreeId());
 		case 'SOUR':
-			return Source::getInstance($xref, $this->getParent()->getGedcomId());
+			return Source::getInstance($xref, $this->getParent()->getTree()->getTreeId());
 		case 'OBJE':
-			return Media::getInstance($xref, $this->getParent()->getGedcomId());
+			return Media::getInstance($xref, $this->getParent()->getTree()->getTreeId());
 		case 'REPO':
-			return Repository::getInstance($xref, $this->getParent()->getGedcomId());
+			return Repository::getInstance($xref, $this->getParent()->getTree()->getTreeId());
 		case 'NOTE':
-			return Note::getInstance($xref, $this->getParent()->getGedcomId());
+			return Note::getInstance($xref, $this->getParent()->getTree()->getTreeId());
 		default:
-			return GedcomRecord::getInstance($xref, $this->getParent()->getGedcomId());
+			return GedcomRecord::getInstance($xref, $this->getParent()->getTree()->getTreeId());
 		}
 	}
 
@@ -134,9 +134,6 @@ class Fact {
 	 * @return boolean
 	 */
 	public function canShow($access_level = WT_USER_ACCESS_LEVEL) {
-		// TODO - use the privacy settings for $this->gedcom_id, not the default gedcom.
-		global $person_facts, $global_facts;
-
 		// Does this record have an explicit RESN?
 		if (strpos($this->gedcom, "\n2 RESN confidential")) {
 			return WT_PRIV_NONE >= $access_level;
@@ -149,12 +146,14 @@ class Fact {
 		}
 
 		// Does this record have a default RESN?
-		$xref = $this->parent->getXref();
-		if (isset($person_facts[$xref][$this->tag])) {
-			return $person_facts[$xref][$this->tag] >= $access_level;
+		$xref                    = $this->parent->getXref();
+		$fact_privacy            = $this->parent->getTree()->getFactPrivacy();
+		$individual_fact_privacy = $this->parent->getTree()->getIndividualFactPrivacy();
+		if (isset($individual_fact_privacy[$xref][$this->tag])) {
+			return $individual_fact_privacy[$xref][$this->tag] >= $access_level;
 		}
-		if (isset($global_facts[$this->tag])) {
-			return $global_facts[$this->tag] >= $access_level;
+		if (isset($fact_privacy[$this->tag])) {
+			return $fact_privacy[$this->tag] >= $access_level;
 		}
 
 		// No restrictions - it must be public
@@ -183,7 +182,7 @@ class Fact {
 	 */
 	public function getPlace() {
 		if ($this->place === null) {
-			$this->place = new Place($this->getAttribute('PLAC'), $this->getParent()->getGedcomId());
+			$this->place = new Place($this->getAttribute('PLAC'), $this->getParent()->getTree());
 		}
 
 		return $this->place;
@@ -313,7 +312,7 @@ class Fact {
 		preg_match_all('/\n(2 SOUR @(' . WT_REGEX_XREF . ')@(?:\n[3-9] .*)*)/', $this->getGedcom(), $matches, PREG_SET_ORDER);
 		$citations = array();
 		foreach ($matches as $match) {
-			$source = Source::getInstance($match[2], $this->getParent()->getGedcomId());
+			$source = Source::getInstance($match[2], $this->getParent()->getTree()->getTreeId());
 			if ($source->canShow()) {
 				$citations[] = $match[1];
 			}
@@ -333,7 +332,7 @@ class Fact {
 		foreach ($matches[1] as $match) {
 			$note = preg_replace("/\n3 CONT ?/", "\n", $match);
 			if (preg_match('/@(' . WT_REGEX_XREF . ')@/', $note, $nmatch)) {
-				$note = Note::getInstance($nmatch[1], $this->getParent()->getGedcomId());
+				$note = Note::getInstance($nmatch[1], $this->getParent()->getTree()->getTreeId());
 				if ($note && $note->canShow()) {
 					// A note object
 					$notes[] = $note;
@@ -356,7 +355,7 @@ class Fact {
 		$media = array();
 		preg_match_all('/\n2 OBJE @(' . WT_REGEX_XREF . ')@/', $this->getGedcom(), $matches);
 		foreach ($matches[1] as $match) {
-			$obje = Media::getInstance($match, $this->getParent()->getGedcomId());
+			$obje = Media::getInstance($match, $this->getParent()->getTree()->getTreeId());
 			if ($obje->canShow()) {
 				$media[] = $obje;
 			}
@@ -371,8 +370,6 @@ class Fact {
 	 * @return string
 	 */
 	public function summary() {
-		global $SHOW_PARENTS_AGE;
-
 		$attributes = array();
 		$target     = $this->getTarget();
 		if ($target) {
@@ -383,7 +380,7 @@ class Fact {
 				$attributes[] = '<span dir="auto">' . Filter::escapeHtml($value) . '</span>';
 			}
 			$date = $this->getDate();
-			if ($this->getTag() == 'BIRT' && $SHOW_PARENTS_AGE && $this->getParent() instanceof Individual) {
+			if ($this->getTag() == 'BIRT' && $this->getParent() instanceof Individual && $this->getParent()->getTree()->getPreference('SHOW_PARENTS_AGE')) {
 				$attributes[] = $date->display() . format_parents_age($this->getParent(), $date);
 			} else {
 				$attributes[] = $date->display();

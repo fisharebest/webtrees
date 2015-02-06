@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -26,7 +26,7 @@ use PDOException;
  * @return string
  */
 function reformat_record_import($rec) {
-	global $WORD_WRAPPED_NOTES, $GEDCOM_MEDIA_PATH;
+	global $WT_TREE;
 
 	// Strip out UTF8 formatting characters
 	$rec = str_replace(array(WT_UTF8_BOM, WT_UTF8_LRM, WT_UTF8_RLM), '', $rec);
@@ -565,6 +565,7 @@ function reformat_record_import($rec) {
 			break;
 		case 'FILE':
 			// Strip off the user-defined path prefix
+			$GEDCOM_MEDIA_PATH = $WT_TREE->getPreference('GEDCOM_MEDIA_PATH');
 			if ($GEDCOM_MEDIA_PATH && strpos($data, $GEDCOM_MEDIA_PATH) === 0) {
 				$data = substr($data, strlen($GEDCOM_MEDIA_PATH));
 			}
@@ -575,7 +576,7 @@ function reformat_record_import($rec) {
 			break;
 		case 'CONC':
 			// Merge CONC lines, to simplify access later on.
-			$newrec .= ($WORD_WRAPPED_NOTES ? ' ' : '') . $data;
+			$newrec .= ($WT_TREE->getPreference('WORD_WRAPPED_NOTES') ? ' ' : '') . $data;
 			break;
 		}
 	}
@@ -592,7 +593,7 @@ function reformat_record_import($rec) {
  * @param boolean $update whether or not this is an updated record that has been accepted
  */
 function import_record($gedrec, $ged_id, $update) {
-	global $USE_RIN, $GENERATE_UIDS, $keep_media;
+	global $WT_TREE, $keep_media;
 
 	static $sql_insert_indi = null;
 	static $sql_insert_fam = null;
@@ -629,7 +630,7 @@ function import_record($gedrec, $ged_id, $update) {
 	if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ (' . WT_REGEX_TAG . ')/', $gedrec, $match)) {
 		list(,$xref, $type) = $match;
 		// check for a _UID, if the record doesn't have one, add one
-		if ($GENERATE_UIDS && !strpos($gedrec, "\n1 _UID ")) {
+		if ($WT_TREE->getPreference('GENERATE_UIDS') && !strpos($gedrec, "\n1 _UID ")) {
 			$gedrec .= "\n1 _UID " . WT_Gedcom_Tag::createUid();
 		}
 	} elseif (preg_match('/0 (HEAD|TRLR)/', $gedrec, $match)) {
@@ -660,7 +661,7 @@ function import_record($gedrec, $ged_id, $update) {
 		$gedrec = convert_inline_media($ged_id, $gedrec);
 
 		$record = new Individual($xref, $gedrec, null, $ged_id);
-		if ($USE_RIN && preg_match('/\n1 RIN (.+)/', $gedrec, $match)) {
+		if ($WT_TREE->getPreference('USE_RIN') && preg_match('/\n1 RIN (.+)/', $gedrec, $match)) {
 			$rin = $match[1];
 		} else {
 			$rin = $xref;

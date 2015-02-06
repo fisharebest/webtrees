@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -35,22 +35,20 @@ class AncestryController extends ChartController {
 	 * Startup activity
 	 */
 	function __construct() {
-		global $bwidth, $bheight, $pbwidth, $pbheight, $PEDIGREE_FULL_DETAILS;
-		global $DEFAULT_PEDIGREE_GENERATIONS, $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS, $OLD_PGENS, $box_width, $Dbwidth, $Dbheight;
-		global $show_full;
+		global $bwidth, $bheight, $pbwidth, $pbheight, $show_full;
+		global $PEDIGREE_GENERATIONS, $WT_TREE, $OLD_PGENS, $box_width, $Dbwidth, $Dbheight;
 
 		parent::__construct();
 
 		// Extract form parameters
-		$this->show_full      = Filter::getInteger('show_full', 0, 1, $PEDIGREE_FULL_DETAILS);
+		$this->show_full      = Filter::getInteger('show_full', 0, 1, $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS'));
 		$this->show_cousins   = Filter::getInteger('show_cousins', 0, 1);
 		$this->chart_style    = Filter::getInteger('chart_style', 0, 3);
 		$box_width            = Filter::getInteger('box_width', 50, 300, 100);
-		$PEDIGREE_GENERATIONS = Filter::getInteger('PEDIGREE_GENERATIONS', 2, $MAX_PEDIGREE_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS);
+		$PEDIGREE_GENERATIONS = Filter::getInteger('PEDIGREE_GENERATIONS', 2, $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS'), $WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
 
 		// This is passed as a global.  A parameter would be better...
 		$show_full = $this->show_full;
-
 		$OLD_PGENS = $PEDIGREE_GENERATIONS;
 
 		// -- size of the detailed boxes based upon optional width parameter

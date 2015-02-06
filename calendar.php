@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -21,6 +21,7 @@ namespace Webtrees;
  *
  * @global Tree $WT_TREE
  */
+global $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'calendar.php');
 require './includes/session.php';

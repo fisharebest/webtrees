@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,13 @@ namespace Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
 
 $more_links  = Filter::get('more_links');
 $exist_links = Filter::get('exist_links');
@@ -59,7 +66,7 @@ if ($action == 'choose' && $paramok) {
 		echo '<input type="hidden" name="linktoid" value="', $linktoid, '">';
 	}
 	echo '<input type="hidden" name="linkto" value="', $linkto, '">';
-	echo '<input type="hidden" name="ged" value="', $GEDCOM, '">';
+	echo '<input type="hidden" name="ged" value="', $WT_TREE->getNameHtml(), '">';
 	echo '<table class="facts_table center">';
 	echo '<tr><td class="topbottombar" colspan="2">';
 	echo I18N::translate('Link to an existing media object');
@@ -167,6 +174,7 @@ if ($action == 'choose' && $paramok) {
 	echo "<sub>" . I18N::translate('Enter or search for the ID of the individual, family, or source to which this media item should be linked.') . "</sub>";
 	echo '<br><br>';
 	echo '<input type="hidden" name="idName" id="idName" size="36" value="Name of ID">';
+
 ?>
 <script>
 
@@ -181,22 +189,20 @@ if ($action == 'choose' && $paramok) {
 	}
 
 	function openFamNav(id) {
-		//id=document.getElementById('gid').value;
-		if (id.match("I")=="I" || id.match("i")=="i") {
+		if (id.match("I") === "I" || id.match("i") === "i") {
 			id = id.toUpperCase();
 			winNav = window.open('edit_interface.php?action=addmedia_links&noteid=newnote&pid='+id, 'winNav', fam_nav_specs);
 			if (window.focus) {winNav.focus();}
-		} else if (id.match("F")=="F") {
+		} else if (id.match("F") === "F") {
 			id = id.toUpperCase();
-			// TODO --- alert('Opening Navigator with family id entered will come later');
 		}
 	}
 
 	var ifamily = "<?php echo I18N::translate('Family navigator'); ?>";
 	var remove = "<?php echo I18N::translate('Remove'); ?>";
 	/* ===icons === */
-	var removeLinkIcon = "<?php echo Theme::theme()->parameter('remove'); ?>";
-	var familyNavIcon = "<?php echo Theme::theme()->parameter('button_family'); ?>";
+	var removeLinkIcon = "<?php echo Theme::theme()->parameter('image-remove'); ?>";
+	var familyNavIcon = "<?php echo Theme::theme()->parameter('image-button_family'); ?>";
 
 
 var INPUT_NAME_PREFIX = 'InputCell_'; // this is being set via script
@@ -560,7 +566,7 @@ function shiftlinks() {
 		if (Auth::isAdmin()) {
 			echo "<tr><td class=\"descriptionbox wrap width25\">";
 			echo WT_Gedcom_Tag::getLabel('CHAN'), "</td><td class=\"optionbox wrap\">";
-			if ($NO_UPDATE_CHAN) {
+			if ($WT_TREE->getPreference('NO_UPDATE_CHAN')) {
 				echo "<input type=\"checkbox\" checked name=\"preserve_last_changed\">";
 			} else {
 				echo "<input type=\"checkbox\" name=\"preserve_last_changed\">";

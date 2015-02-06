@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -122,7 +122,7 @@ class BranchesController extends PageController {
 			$this->individuals[] = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		}
 		// Sort by birth date, oldest first
-		usort($this->individuals, 'Webtrees\Individual::compareBirthDate');
+		usort($this->individuals, __NAMESPACE__ . '\Individual::compareBirthDate');
 	}
 
 	/**
@@ -224,7 +224,7 @@ class BranchesController extends PageController {
 		// spouses and children
 		$spouse_families = $individual->getSpouseFamilies();
 		if ($spouse_families) {
-			usort($spouse_families, 'Webtrees\Family::compareMarrDate');
+			usort($spouse_families, __NAMESPACE__ . '\Family::compareMarrDate');
 			$fam_html = '';
 			foreach ($spouse_families as $family) {
 				$fam_html .= $indi_html; // Repeat the individual details for each spouse.

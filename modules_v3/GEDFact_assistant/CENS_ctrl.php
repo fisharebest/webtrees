@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -53,10 +53,6 @@ echo '</h3>';
 		<input id="xref" type="hidden" name="xref" value=<?php echo $xref; ?>>
 		<?php
 		echo Filter::getCsrf();
-
-global $tabno, $linkToID, $SEARCH_SPIDER;
-global $SHOW_AGE_DIFF, $GEDCOM;
-global $show_full, $famid;
 
 $summary = $person->format_first_major_fact(WT_EVENTS_BIRT, 2);
 if (!($person->isDead())) {

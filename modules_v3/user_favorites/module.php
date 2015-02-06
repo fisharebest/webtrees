@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -67,7 +67,7 @@ class user_favorites_WT_Module extends gedcom_favorites_WT_Module {
 			if (Auth::check() && $record->canShowName()) {
 				self::addFavorite(array(
 					'user_id'   => Auth::id(),
-					'gedcom_id' => $record->getGedcomId(),
+					'gedcom_id' => $record->getTree()->getTreeId(),
 					'gid'       => $record->getXref(),
 					'type'      => $record::RECORD_TYPE,
 					'url'       => null,

@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -16,6 +16,13 @@ namespace Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
+
 use PclZip;
 use Zend_Session;
 
@@ -25,7 +32,7 @@ require './includes/session.php';
 $controller = new PageController;
 $controller
 	->setPageTitle(I18N::translate('Download GEDCOM') . ' — ' . Filter::escapeHtml(WT_GEDCOM))
-	->restrictAccess(Auth::isManager());
+	->restrictAccess(Auth::isManager($WT_TREE));
 
 // Validate user parameters
 $action           = Filter::get('action', 'download');

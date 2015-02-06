@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -349,7 +349,7 @@ class I18N {
 				}
 			}
 			// Sort by the combined language/language name...
-			uasort($installed_languages, 'Webtrees\I18N::strcasecmp');
+			uasort($installed_languages, __NAMESPACE__ . '\I18N::strcasecmp');
 			foreach ($installed_languages as &$value) {
 				// The locale database doesn't have translations for certain
 				// "default" languages, such as zn_CH.

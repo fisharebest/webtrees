@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -36,7 +36,7 @@ class FunctionsPrintFactsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintFactExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_fact'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_fact'), true);
 	}
 
 	/**
@@ -45,7 +45,7 @@ class FunctionsPrintFactsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintRepositoryRecordExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_repository_record'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_repository_record'), true);
 	}
 
 	/**
@@ -54,7 +54,7 @@ class FunctionsPrintFactsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintFactSourcesExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_fact_sources'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_fact_sources'), true);
 	}
 
 	/**
@@ -63,7 +63,7 @@ class FunctionsPrintFactsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintMediaLinksExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_media_links'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_media_links'), true);
 	}
 
 	/**
@@ -72,7 +72,7 @@ class FunctionsPrintFactsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintMainSourcesExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_main_sources'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_main_sources'), true);
 	}
 
 	/**
@@ -81,7 +81,7 @@ class FunctionsPrintFactsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintSourceStructureExists() {
-		$this->assertEquals(function_exists('\Webtrees\\printSourceStructure'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\printSourceStructure'), true);
 	}
 
 	/**
@@ -90,7 +90,7 @@ class FunctionsPrintFactsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetSourceStructureExists() {
-		$this->assertEquals(function_exists('\Webtrees\\getSourceStructure'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\getSourceStructure'), true);
 	}
 
 	/**
@@ -99,7 +99,7 @@ class FunctionsPrintFactsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintMainNotesExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_main_notes'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_main_notes'), true);
 	}
 
 	/**
@@ -108,6 +108,6 @@ class FunctionsPrintFactsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionPrintMainMediaExists() {
-		$this->assertEquals(function_exists('\Webtrees\\print_main_media'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_main_media'), true);
 	}
 }

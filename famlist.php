@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -24,6 +24,7 @@ namespace Webtrees;
  * @global string $UNKNOWN_PN
  * @global Tree   $WT_TREE
  */
+global $SEARCH_SPIDER, $UNKNOWN_NN, $UNKNOWN_PN, $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'famlist.php');
 require './includes/session.php';
@@ -189,7 +190,7 @@ if ($show === 'indi' || $show === 'surn') {
 		// Show the surname list
 		switch ($WT_TREE->getPreference('SURNAME_LIST_STYLE')) {
 		case 'style1';
-			echo format_surname_list($surns, 3, true, WT_SCRIPT_NAME);
+			echo format_surname_list($surns, 3, true, WT_SCRIPT_NAME, $WT_TREE);
 			break;
 		case 'style3':
 			echo format_surname_tagcloud($surns, WT_SCRIPT_NAME, true);

@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -36,6 +36,6 @@ class DeathYBuPluginTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetUserFullNameExists() {
-		$this->assertEquals(true, class_exists('\Webtrees\\BatchUpdateMissingDeathPlugin'));
+		$this->assertEquals(true, class_exists(__NAMESPACE__ . '\\BatchUpdateMissingDeathPlugin'));
 	}
 }

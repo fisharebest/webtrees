@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -62,7 +62,9 @@ class Note extends GedcomRecord {
 		// Hide notes if they are attached to private records
 		$linked_ids = Database::prepare(
 			"SELECT l_from FROM `##link` WHERE l_to=? AND l_file=?"
-		)->execute(array($this->xref, $this->gedcom_id))->fetchOneColumn();
+		)->execute(array(
+			$this->xref, $this->tree->getTreeId()
+		))->fetchOneColumn();
 		foreach ($linked_ids as $linked_id) {
 			$linked_record = GedcomRecord::getInstance($linked_id);
 			if ($linked_record && !$linked_record->canShow($access_level)) {
@@ -97,12 +99,10 @@ class Note extends GedcomRecord {
 	 * {@inheritdoc}
 	 */
 	public function extractNames() {
-		global $WT_TREE;
-
 		$text = $this->getNote();
 
 		if ($text) {
-			switch ($WT_TREE->getPreference('FORMAT_TEXT')) {
+			switch ($this->getTree()->getPreference('FORMAT_TEXT')) {
 			case 'markdown':
 				$text = Filter::markdown($text);
 				$text = Filter::unescapeHtml($text);

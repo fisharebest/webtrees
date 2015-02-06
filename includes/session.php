@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -21,17 +21,26 @@ use Zend_Controller_Request_Http;
 use Zend_Session;
 use Zend_Session_Namespace;
 
+/**
+ * This is the bootstrap script, that is run on every request.
+ */
+
 // WT_SCRIPT_NAME is defined in each script that the user is permitted to load.
 if (!defined('WT_SCRIPT_NAME')) {
 	http_response_code(403);
 	return;
 }
 
-// To embed webtrees code in other applications, we must explicitly declare any global variables that we create.
-// session.php
-global $WT_REQUEST, $WT_SESSION, $WT_TREE, $GEDCOM, $SEARCH_SPIDER, $TEXT_DIRECTION;
-// most pages
-global $controller;
+/**
+ * We set the following globals
+ *
+ * @global boolean                      $SEARCH_SPIDER
+ * @global string                       $TEXT_DIRECTION
+ * @global Zend_Controller_Request_Http $WT_REQUEST
+ * @global Zend_Session                 $WT_SESSION
+ * @global Tree                         $WT_TREE
+ */
+global $WT_REQUEST, $WT_SESSION, $WT_TREE, $SEARCH_SPIDER, $TEXT_DIRECTION;
 
 // Identify ourself
 define('WT_WEBTREES', 'webtrees');
@@ -394,33 +403,21 @@ define('WT_USER_ID', Auth::id());
 /** @deprecated Will be removed in 1.7.0 */
 define('WT_USER_NAME', Auth::id() ? Auth::user()->getUserName() : '');
 
-// Set the active GEDCOM
-if (isset($_REQUEST['ged'])) {
-	// .... from the URL or form action
-	$GEDCOM = $_REQUEST['ged'];
-} elseif ($WT_SESSION->GEDCOM) {
-	// .... the most recently used one
-	$GEDCOM = $WT_SESSION->GEDCOM;
-} else {
-	// Try the site default
-	$GEDCOM = Site::getPreference('DEFAULT_GEDCOM');
-}
-
-// Choose the selected tree (if it exists), or any valid tree otherwise
-$WT_TREE = null;
-foreach (Tree::getAll() as $tree) {
-	$WT_TREE = $tree;
-	if ($WT_TREE->name() == $GEDCOM && ($WT_TREE->getPreference('imported') || Auth::isAdmin())) {
+// Set the tree for the page; (1) the request, (2) the session, (3) the site default, (4) any tree
+foreach (array(Filter::post('ged'), Filter::get('ged'), $WT_SESSION->GEDCOM, Site::getPreference('DEFAULT_GEDCOM')) as $tree_name) {
+	$WT_TREE = Tree::findByName($tree_name);
+	if ($WT_TREE) {
+		$WT_SESSION->GEDCOM = $tree_name;
 		break;
 	}
 }
 
 // These attributes of the currently-selected tree are used frequently
 if ($WT_TREE) {
-	define('WT_GEDCOM', $WT_TREE->name());
-	define('WT_GED_ID', $WT_TREE->id());
-	define('WT_GEDURL', $WT_TREE->nameUrl());
-	define('WT_TREE_TITLE', $WT_TREE->titleHtml());
+	define('WT_GEDCOM', $WT_TREE->getName());
+	define('WT_GED_ID', $WT_TREE->getTreeId());
+	define('WT_GEDURL', $WT_TREE->getNameUrl());
+	define('WT_TREE_TITLE', $WT_TREE->getTitleHtml());
 	define('WT_USER_GEDCOM_ADMIN', Auth::isManager($WT_TREE));
 	define('WT_USER_CAN_ACCEPT', Auth::isModerator($WT_TREE));
 	define('WT_USER_CAN_EDIT', Auth::isEditor($WT_TREE));
@@ -435,7 +432,6 @@ if ($WT_TREE) {
 	} else {
 		define('WT_USER_ACCESS_LEVEL', WT_PRIV_PUBLIC);
 	}
-	load_gedcom_settings(WT_GED_ID);
 } else {
 	define('WT_GEDCOM', '');
 	define('WT_GED_ID', null);
@@ -450,14 +446,10 @@ if ($WT_TREE) {
 	define('WT_USER_PATH_LENGTH', 0);
 	define('WT_USER_ACCESS_LEVEL', WT_PRIV_PUBLIC);
 }
-$GEDCOM = WT_GEDCOM;
 
 // With no parameters, init() looks to the environment to choose a language
 define('WT_LOCALE', I18N::init());
 $WT_SESSION->locale = I18N::$locale;
-
-// Set our gedcom selection as a default for the next page
-$WT_SESSION->GEDCOM = WT_GEDCOM;
 
 if (empty($WEBTREES_EMAIL)) {
 	$WEBTREES_EMAIL = 'webtrees-noreply@' . preg_replace('/^www\./i', '', $_SERVER['SERVER_NAME']);

@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,13 @@ namespace Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'find.php');
 require './includes/session.php';
@@ -95,15 +102,6 @@ echo '<script>';
 			// GEDFact_assistant ========================
 			if (window.opener.document.getElementById('addlinkQueue')) {
 				window.opener.insertRowToTable(id, name);
-				// Check if Indi, Fam or source ===================
-				/*
-				if (id.match("I")=="I") {
-					var win01 = window.opener.window.open('edit_interface.php?action=addmedia_links&noteid=newnote&pid='+id, 'win01', edit_window_specs);
-					if (window.focus) {win01.focus();}
-				} else if (id.match("F")=="F") {
-					// TODO --- alert('Opening Navigator with family id entered will come later');
-				}
-				*/
 			}
 			window.opener.<?php echo $callback; ?>(id);
 			if (window.opener.pastename) window.opener.pastename(name);
@@ -489,7 +487,7 @@ if ($action == "filter") {
 		$myindilist = search_indis_names($filter_array, array(WT_GED_ID), 'AND');
 		if ($myindilist) {
 			echo '<ul>';
-			usort($myindilist, 'Webtrees\GedcomRecord::compare');
+			usort($myindilist, __NAMESPACE__ . '\GedcomRecord::compare');
 			foreach ($myindilist as $indi) {
 				echo $indi->format_list('li', true);
 			}
@@ -513,7 +511,7 @@ if ($action == "filter") {
 
 		if ($myfamlist) {
 			echo '<ul>';
-			usort($myfamlist, 'Webtrees\GedcomRecord::compare');
+			usort($myfamlist, __NAMESPACE__ . '\GedcomRecord::compare');
 			foreach ($myfamlist as $family) {
 				echo $family->format_list('li', true);
 			}
@@ -587,9 +585,9 @@ if ($action == "filter") {
 	if ($type == "place") {
 		echo '<div id="find-output">';
 		if (!$filter || $all) {
-			$places = Place::allPlaces(WT_GED_ID);
+			$places = Place::allPlaces($WT_TREE);
 		} else {
-			$places = Place::findPlaces($filter, WT_GED_ID);
+			$places = Place::findPlaces($filter, $WT_TREE);
 		}
 		if ($places) {
 			echo '<ul>';
@@ -619,7 +617,7 @@ if ($action == "filter") {
 			$repo_list = get_repo_list(WT_GED_ID);
 		}
 		if ($repo_list) {
-			usort($repo_list, 'Webtrees\GedcomRecord::compare');
+			usort($repo_list, __NAMESPACE__ . '\GedcomRecord::compare');
 			echo '<ul>';
 			foreach ($repo_list as $repo) {
 				echo '<li><a href="', $repo->getHtmlUrl(), '" onclick="pasteid(\'', $repo->getXref(), '\');"><span class="list_item">', $repo->getFullName(), '</span></a></li>';
@@ -641,7 +639,7 @@ if ($action == "filter") {
 			$mynotelist = get_note_list(WT_GED_ID);
 		}
 		if ($mynotelist) {
-			usort($mynotelist, 'Webtrees\GedcomRecord::compare');
+			usort($mynotelist, __NAMESPACE__ . '\GedcomRecord::compare');
 			echo '<ul>';
 			foreach ($mynotelist as $note) {
 				echo '<li><a href="', $note->getHtmlUrl(), '" onclick="pasteid(\'', $note->getXref(), '\');"><span class="list_item">', $note->getFullName(), '</span></a></li>';
@@ -663,7 +661,7 @@ if ($action == "filter") {
 			$mysourcelist = get_source_list(WT_GED_ID);
 		}
 		if ($mysourcelist) {
-			usort($mysourcelist, 'Webtrees\GedcomRecord::compare');
+			usort($mysourcelist, __NAMESPACE__ . '\GedcomRecord::compare');
 			echo '<ul>';
 			foreach ($mysourcelist as $source) {
 				echo '<li><a href="', $source->getHtmlUrl(), '" onclick="pasteid(\'', $source->getXref(), '\', \'',

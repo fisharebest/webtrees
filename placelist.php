@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,13 @@ namespace Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'placelist.php');
 require './includes/session.php';
@@ -44,8 +51,8 @@ echo '<div id="place-hierarchy">';
 switch ($display) {
 case 'list':
 	echo '<h2>', $controller->getPageTitle(), '</h2>';
-	$list_places = Place::allPlaces(WT_GED_ID);
-	$num_places = count($list_places);
+	$list_places = Place::allPlaces($WT_TREE);
+	$num_places  = count($list_places);
 
 	if ($num_places == 0) {
 		echo '<b>', I18N::translate('No results found.'), '</b><br>';
@@ -82,7 +89,7 @@ case 'hierarchy':
 	}
 
 	// Find this place and its ID
-	$place = new Place(implode(', ', array_reverse($parent)), WT_GED_ID);
+	$place = new Place(implode(', ', array_reverse($parent)), $WT_TREE);
 	$place_id = $place->getPlaceId();
 
 	$child_places = $place->getChildPlaces();

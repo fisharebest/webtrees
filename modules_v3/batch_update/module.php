@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -305,7 +305,7 @@ class batch_update_WT_Module extends Module implements ModuleConfigInterface {
 		$dir_handle = opendir(__DIR__);
 		while ($file = readdir($dir_handle)) {
 			if (substr($file, -10) == 'Plugin.php' && $file !== 'BatchUpdateBasePlugin.php') {
-				$class = 'Webtrees\\' . basename($file, '.php');
+				$class = __NAMESPACE__ . '\\' . basename($file, '.php');
 				$plugins[$class] = new $class;
 			}
 		}

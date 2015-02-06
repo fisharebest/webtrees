@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -72,8 +72,10 @@ class Media extends GedcomRecord {
 	protected function canShowByType($access_level) {
 		// Hide media objects if they are attached to private records
 		$linked_ids = Database::prepare(
-			"SELECT l_from FROM `##link` WHERE l_to=? AND l_file=?"
-		)->execute(array($this->xref, $this->gedcom_id))->fetchOneColumn();
+			"SELECT l_from FROM `##link` WHERE l_to = ? AND l_file = ?"
+		)->execute(array(
+			$this->xref, $this->tree->getTreeId()
+		))->fetchOneColumn();
 		foreach ($linked_ids as $linked_id) {
 			$linked_record = GedcomRecord::getInstance($linked_id);
 			if ($linked_record && !$linked_record->canShow($access_level)) {
@@ -133,7 +135,8 @@ class Media extends GedcomRecord {
 	 * @return string
 	 */
 	public function getServerFilename($which = 'main') {
-		global $MEDIA_DIRECTORY, $THUMBNAIL_WIDTH;
+		$MEDIA_DIRECTORY = $this->tree->getPreference('MEDIA_DIRECTORY');
+		$THUMBNAIL_WIDTH = $this->tree->getPreference('THUMBNAIL_WIDTH');
 
 		if ($this->isExternal() || !$this->file) {
 			// External image, or (in the case of corrupt GEDCOM data) no image at all
@@ -291,21 +294,19 @@ class Media extends GedcomRecord {
 	}
 
 	/**
-	 * generate an etag specific to this media item and the current user
+	 * Generate an etag specific to this media item and the current user
 	 *
 	 * @param string $which - specify either 'main' or 'thumb'
 	 *
 	 * @return string
 	 */
 	public function getEtag($which = 'main') {
-		// setup the etag.  use enough info so that if anything important changes, the etag won’t match
-		global $SHOW_NO_WATERMARK;
 		if ($this->isExternal()) {
 			// etag not really defined for external media
 
 			return '';
 		}
-		$etag_string = basename($this->getServerFilename($which)) . $this->getFiletime($which) . WT_GEDCOM . WT_USER_ACCESS_LEVEL . $SHOW_NO_WATERMARK;
+		$etag_string = basename($this->getServerFilename($which)) . $this->getFiletime($which) . WT_GEDCOM . WT_USER_ACCESS_LEVEL . $this->tree->getPreference('SHOW_NO_WATERMARK');
 		$etag_string = dechex(crc32($etag_string));
 
 		return $etag_string;
@@ -348,7 +349,8 @@ class Media extends GedcomRecord {
 	 * @return array
 	 */
 	public function getImageAttributes($which = 'main', $addWidth = 0, $addHeight = 0) {
-		global $THUMBNAIL_WIDTH;
+		$THUMBNAIL_WIDTH = $this->tree->getPreference('THUMBNAIL_WIDTH');
+
 		$var = $which . 'imagesize';
 		if (!empty($this->$var)) {
 			return $this->$var;
@@ -444,7 +446,7 @@ class Media extends GedcomRecord {
 
 		return
 			'mediafirewall.php?mid=' . $this->getXref() . $thumbstr . $downloadstr .
-			'&amp;ged=' . rawurlencode(get_gedcom_from_id($this->gedcom_id)) .
+			'&amp;ged=' . rawurlencode(get_gedcom_from_id($this->tree->getTreeId())) .
 			'&amp;cb=' . $this->getEtag($which);
 	}
 

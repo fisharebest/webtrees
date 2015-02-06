@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -1299,7 +1299,7 @@ function getPersonNameStartHandler($attrs) {
  */
 function gedcomValueStartHandler($attrs) {
 	// @deprecated
-	global $currentElement, $gedrec, $fact, $desc;
+	global $currentElement, $gedrec, $fact, $desc, $WT_TREE;
 
 	$id = "";
 	$match = array();
@@ -1341,7 +1341,7 @@ function gedcomValueStartHandler($attrs) {
 				$value = $tmp->display();
 				break;
 			case 'PLAC':
-				$tmp = new Place($value, WT_GED_ID);
+				$tmp = new Place($value, $WT_TREE);
 				$value = $tmp->getShortName();
 				break;
 			}
@@ -1481,9 +1481,9 @@ function repeatTagEndHandler() {
 			//-- make sure everything is case sensitive
 			xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, false);
 			//-- set the main element handler functions
-			xml_set_element_handler($repeat_parser, '\\Webtrees\\startElement', '\\Webtrees\\endElement');
+			xml_set_element_handler($repeat_parser, __NAMESPACE__ . '\\startElement', __NAMESPACE__ . '\\endElement');
 			//-- set the character data handler
-			xml_set_character_data_handler($repeat_parser, '\\Webtrees\\characterData');
+			xml_set_character_data_handler($repeat_parser, __NAMESPACE__ . '\\characterData');
 			if (!xml_parse($repeat_parser, $reportxml, true)) {
 				throw new \DomainException(sprintf(
 					'RepeatTagEHandler XML error: %s at line %d',
@@ -1673,9 +1673,9 @@ function factsEndHandler() {
 			//-- make sure everything is case sensitive
 			xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, false);
 			//-- set the main element handler functions
-			xml_set_element_handler($repeat_parser, '\\Webtrees\\startElement', '\\Webtrees\\endElement');
+			xml_set_element_handler($repeat_parser, __NAMESPACE__ . '\\startElement', __NAMESPACE__ . '\\endElement');
 			//-- set the character data handler
-			xml_set_character_data_handler($repeat_parser, '\\Webtrees\\characterData');
+			xml_set_character_data_handler($repeat_parser, __NAMESPACE__ . '\\characterData');
 			if (!xml_parse($repeat_parser, $reportxml, true)) {
 				throw new \DomainException(sprintf(
 					'FactsEHandler XML error: %s at line %d',
@@ -1906,7 +1906,7 @@ function footnoteTextsStartHandler() {
  * XML <AgeAtDeath /> element handler
  */
 function ageAtDeathStartHandler() {
-	// TODO: This duplicates functionality in format_fact_date()
+	// This duplicates functionality in format_fact_date()
 	global $currentElement, $gedrec, $factrec;
 
 	$match = array();
@@ -2562,7 +2562,7 @@ function listStartHandler($attrs) {
 
 	switch ($sortby) {
 	case 'NAME':
-		uasort($list, 'Webtrees\GedcomRecord::compare');
+		uasort($list, __NAMESPACE__ . '\GedcomRecord::compare');
 		break;
 	case 'CHAN':
 		uasort($list, function(GedcomRecord $x, GedcomRecord $y) {
@@ -2570,13 +2570,13 @@ function listStartHandler($attrs) {
 		});
 		break;
 	case 'BIRT:DATE':
-		uasort($list, 'Webtrees\Individual::compareBirthDate');
+		uasort($list, __NAMESPACE__ . '\Individual::compareBirthDate');
 		break;
 	case 'DEAT:DATE':
-		uasort($list, 'Webtrees\Individual::compareDeathDate');
+		uasort($list, __NAMESPACE__ . '\Individual::compareDeathDate');
 		break;
 	case 'MARR:DATE':
-		uasort($list, 'Webtrees\Family::compareMarrDate');
+		uasort($list, __NAMESPACE__ . '\Family::compareMarrDate');
 		break;
 	default:
 		// unsorted or already sorted by SQL
@@ -2643,9 +2643,9 @@ function listEndHandler() {
 				//-- make sure everything is case sensitive
 				xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, false);
 				//-- set the main element handler functions
-				xml_set_element_handler($repeat_parser, '\\Webtrees\\startElement', '\\Webtrees\\endElement');
+				xml_set_element_handler($repeat_parser, __NAMESPACE__ . '\\startElement', __NAMESPACE__ . '\\endElement');
 				//-- set the character data handler
-				xml_set_character_data_handler($repeat_parser, '\\Webtrees\\characterData');
+				xml_set_character_data_handler($repeat_parser, __NAMESPACE__ . '\\characterData');
 				if (!xml_parse($repeat_parser, $reportxml, true)) {
 					throw new \DomainException(sprintf(
 						'ListEHandler XML error: %s at line %d',
@@ -2796,13 +2796,13 @@ function relativesStartHandler($attrs) {
 
 	switch ($sortby) {
 	case 'NAME':
-		uasort($list, 'Webtrees\GedcomRecord::compare');
+		uasort($list, __NAMESPACE__ . '\GedcomRecord::compare');
 		break;
 	case 'BIRT:DATE':
-		uasort($list, 'Webtrees\Individual::compareBirthDate');
+		uasort($list, __NAMESPACE__ . '\Individual::compareBirthDate');
 		break;
 	case 'DEAT:DATE':
-		uasort($list, 'Webtrees\Individual::compareDeathDate');
+		uasort($list, __NAMESPACE__ . '\Individual::compareDeathDate');
 		break;
 	case 'generation':
 		$newarray = array();
@@ -2887,9 +2887,9 @@ function relativesEndHandler() {
 			//-- make sure everything is case sensitive
 			xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, false);
 			//-- set the main element handler functions
-			xml_set_element_handler($repeat_parser, '\\Webtrees\\startElement', '\\Webtrees\\endElement');
+			xml_set_element_handler($repeat_parser, __NAMESPACE__ . '\\startElement', __NAMESPACE__ . '\\endElement');
 			//-- set the character data handler
-			xml_set_character_data_handler($repeat_parser, '\\Webtrees\\characterData');
+			xml_set_character_data_handler($repeat_parser, __NAMESPACE__ . '\\characterData');
 
 			if (!xml_parse($repeat_parser, $reportxml, true)) {
 				throw new \DomainException("RelativesEHandler XML error: %s at line %d", xml_error_string(xml_get_error_code($repeat_parser)), xml_get_current_line_number($repeat_parser));
@@ -3133,7 +3133,7 @@ function add_ancestors(&$list, $pid, $children = false, $generations = -1) {
  */
 function add_descendancy(&$list, $pid, $parents = false, $generations = -1) {
 	$person = Individual::getInstance($pid);
-	if ($person == null) {
+	if ($person === null) {
 		return;
 	}
 	if (!isset($list[$pid])) {

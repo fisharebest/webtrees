@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -24,7 +24,7 @@ namespace Webtrees;
  * @return string
  */
 function reformat_record_export($rec) {
-	global $WORD_WRAPPED_NOTES;
+	global $WT_TREE;
 
 	$newrec = '';
 	foreach (preg_split('/[\r\n]+/', $rec, -1, PREG_SPLIT_NO_EMPTY) as $line) {
@@ -39,7 +39,7 @@ function reformat_record_export($rec) {
 			do {
 				// Split after $pos chars
 				$pos = WT_GEDCOM_LINE_LENGTH;
-				if ($WORD_WRAPPED_NOTES) {
+				if ($WT_TREE->getPreference('WORD_WRAPPED_NOTES')) {
 					// Split on a space, and remove it (for compatibility with some desktop apps)
 					while ($pos && mb_substr($line, $pos - 1, 1) != ' ') {
 						--$pos;
@@ -170,11 +170,6 @@ function convert_media_path($rec, $path) {
  *
  */
 function export_gedcom($gedcom, $gedout, $exportOptions) {
-	global $GEDCOM;
-
-	// Temporarily switch to the specified GEDCOM
-	$oldGEDCOM = $GEDCOM;
-	$GEDCOM = $gedcom;
 	$ged_id = get_id_from_gedcom($gedcom);
 
 	switch ($exportOptions['privatize']) {
@@ -290,6 +285,4 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	fwrite($gedout, $buffer);
 	fwrite($gedout, $tmp_gedcom);
 	fwrite($gedout, '0 TRLR' . WT_EOL);
-
-	$GEDCOM = $oldGEDCOM;
 }

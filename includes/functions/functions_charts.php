@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -392,12 +392,6 @@ function print_family_children(Family $family, $childid = '', $sosa = 0, $label 
 		if (preg_match('/\n1 NCHI (\d+)/', $family->getGedcom(), $match) && $match[1] == 0) {
 			echo '<tr><td><i class="icon-childless"></i> ' . I18N::translate('This family remained childless') . '</td></tr>';
 		}
-	} else {
-		echo "<tr>";
-		print_sosa_number($sosa, $child);
-		echo "<td valign=\"top\">";
-		print_pedigree_person(Individual::getInstance($childid));
-		echo "</td></tr>";
 	}
 	echo "</table><br>";
 }
@@ -406,27 +400,27 @@ function print_family_children(Family $family, $childid = '', $sosa = 0, $label 
  * print a family with Sosa-Stradonitz numbering system
  * ($rootid=1, father=2, mother=3 ...)
  *
- * @param string $famid   family gedcom ID
- * @param string $childid tree root ID
- * @param string $sosa    starting sosa number
- * @param string $label   indi label (descendancy booklet)
- * @param string $parid   parent ID (descendancy booklet)
- * @param string $gparid  gd-parent ID (descendancy booklet)
+ * @param string  $famid   family gedcom ID
+ * @param string  $childid tree root ID
+ * @param integer $sosa    starting sosa number
+ * @param string  $label   indi label (descendancy booklet)
+ * @param string  $parid   parent ID (descendancy booklet)
+ * @param string  $gparid  gd-parent ID (descendancy booklet)
  */
-function print_sosa_family($famid, $childid, $sosa, $label = "", $parid = "", $gparid = "") {
+function print_sosa_family($famid, $childid, $sosa, $label = '', $parid = '', $gparid = '') {
 	global $pbwidth;
 
-	echo "<hr>";
-	echo "<p style='page-break-before: always;'>";
+	echo '<hr>';
+	echo '<p style="page-break-before: always;">';
 	if (!empty($famid)) {
-		echo "<a name=\"{$famid}\"></a>";
+		echo '<a name="', $famid, '"></a>';
 	}
 	print_family_parents(Family::getInstance($famid), $sosa, $label, $parid, $gparid);
-	echo "<br>";
-	echo "<table width=\"95%\"><tr><td valign=\"top\" style=\"width: " . ($pbwidth) . "px;\">";
+	echo '<br>';
+	echo '<table width="95%"><tr><td valign="top" style="width: ', $pbwidth, 'px;">';
 	print_family_children(Family::getInstance($famid), $childid, $sosa, $label);
-	echo "</td></tr></table>";
-	echo "<br>";
+	echo '</td></tr></table>';
+	echo '<br>';
 }
 
 /**

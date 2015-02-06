@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -19,11 +19,11 @@ namespace Webtrees;
 use Zend_Session;
 
 /**
- * Class \Webtrees\Controller\SearchController - Controller for the search page
+ * Class SearchController - Controller for the search page
  */
 class SearchController extends PageController {
 	public $action;
-	// TODO: decide if these variables are public/private/protected (or unused)
+	// Need to decide if these variables are public/private/protected (or unused)
 	var $isPostBack = false;
 	var $srfams;
 	var $srindi;
@@ -116,7 +116,7 @@ class SearchController extends PageController {
 		$this->replacePlacesWord = Filter::postBool('replacePlacesWord');
 		$this->replaceAll        = Filter::postBool('replaceAll');
 
-		// TODO: fetch each variable independently, using appropriate validation
+		// We should fetch each variable independently, using appropriate validation
 		// Aquire all the variables values from the $_REQUEST
 		$varNames = array("isPostBack", "srfams", "srindi", "srsour", "srnote", "view", "soundex", "subaction", "nameprt", "showasso", "resultsPageNum", "resultsPerPage", "totalResults", "totalGeneralResults", "indiResultsPrinted", "famResultsPrinted", "srcResultsPrinted", "myindilist", "mysourcelist", "mynotelist", "myfamlist");
 		$this->setRequestValues($varNames);
@@ -130,10 +130,10 @@ class SearchController extends PageController {
 		// Retrieve the gedcoms to search in
 		if (count(Tree::getAll()) > 1 && Site::getPreference('ALLOW_CHANGE_GEDCOM')) {
 			foreach (Tree::getAll() as $search_tree) {
-				$str = str_replace(array(".", "-", " "), array("_", "_", "_"), $search_tree->name());
+				$str = str_replace(array(".", "-", " "), array("_", "_", "_"), $search_tree->getName());
 				if (isset ($_REQUEST["$str"]) || $topsearch) {
-					$this->search_trees[$search_tree->id()] = $search_tree;
-					$_REQUEST["$str"] = 'yes';
+					$this->search_trees[$search_tree->getTreeId()] = $search_tree;
+					$_REQUEST[$str] = 'yes';
 				}
 			}
 		} else {
@@ -381,7 +381,7 @@ class SearchController extends PageController {
 	 *  Preforms a search and replace
 	 */
 	private function searchAndReplace() {
-		global $STANDARD_NAME_FACTS, $ADVANCED_NAME_FACTS, $WT_TREE;
+		global $STANDARD_NAME_FACTS, $WT_TREE;
 
 		$this->search_trees = array(WT_GED_ID => $WT_TREE);
 		$this->srindi = 'yes';
@@ -399,7 +399,7 @@ class SearchController extends PageController {
 		Log::addEditLog("Search And Replace old:" . $oldquery . " new:" . $this->replace);
 		// Include edit functions.
 
-		$adv_name_tags = preg_split("/[\s,;: ]+/", $ADVANCED_NAME_FACTS);
+		$adv_name_tags = preg_split("/[\s,;: ]+/", $WT_TREE->getPreference('ADVANCED_NAME_FACTS'));
 		$name_tags     = array_unique(array_merge($STANDARD_NAME_FACTS, $adv_name_tags));
 		$name_tags[]   = '_MARNM';
 		foreach ($this->myindilist as $id => $record) {
@@ -498,7 +498,7 @@ class SearchController extends PageController {
 	/**
 	 *  Gathers results for a soundex search
 	 *
-	 *  TODO
+	 *  NOTE
 	 *  ====
 	 *  Does not search on the selected gedcoms, searches on all the gedcoms
 	 *  Does not work on first names, instead of the code, value array is used in the search
@@ -564,16 +564,14 @@ class SearchController extends PageController {
 			header('Location: ' . WT_BASE_URL . $indi->getRawUrl());
 			exit;
 		}
-		usort($this->myindilist, 'Webtrees\GedcomRecord::compare');
-		usort($this->myfamlist, 'Webtrees\GedcomRecord::compare');
+		usort($this->myindilist, __NAMESPACE__ . '\GedcomRecord::compare');
+		usort($this->myfamlist, __NAMESPACE__ . '\GedcomRecord::compare');
 	}
 
 	/**
 	 * @return bool
 	 */
 	function printResults() {
-		global $GEDCOM;
-
 		if ($this->action == "general" || $this->action == "soundex" || $this->action == "replace") {
 			if ($this->myindilist || $this->myfamlist || $this->mysourcelist || $this->mynotelist) {
 				$this->addInlineJavascript('jQuery("#search-result-tabs").tabs();');
@@ -602,15 +600,13 @@ class SearchController extends PageController {
 				foreach ($this->search_trees as $search_tree) {
 					$datalist = array();
 					foreach ($this->myindilist as $individual) {
-						if ($individual->getGedcomId() === $search_tree->id()) {
+						if ($individual->getTree()->getTreeId() === $search_tree->getTreeId()) {
 							$datalist[] = $individual;
 						}
 					}
 					if ($datalist) {
-						usort($datalist, 'Webtrees\GedcomRecord::compare');
-						$GEDCOM = $search_tree->name();
-						load_gedcom_settings($search_tree->id());
-						echo '<h3 class="indi-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->titleHtml(), '</span></a></h3>
+						usort($datalist, __NAMESPACE__ . '\GedcomRecord::compare');
+						echo '<h3 class="indi-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->getTitleHtml(), '</span></a></h3>
 							<div class="indi-acc_content">',
 						format_indi_table($datalist);
 						echo '</div>'; //indi-acc_content
@@ -625,15 +621,13 @@ class SearchController extends PageController {
 				foreach ($this->search_trees as $search_tree) {
 					$datalist = array();
 					foreach ($this->myfamlist as $family) {
-						if ($family->getGedcomId() === $search_tree->id()) {
+						if ($family->getTree()->getTreeId() === $search_tree->getTreeId()) {
 							$datalist[] = $family;
 						}
 					}
 					if ($datalist) {
-						usort($datalist, 'Webtrees\GedcomRecord::compare');
-						$GEDCOM = $search_tree->name();
-						load_gedcom_settings($search_tree->id());
-						echo '<h3 class="fam-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->titleHtml(), '</span></a></h3>
+						usort($datalist, __NAMESPACE__ . '\GedcomRecord::compare');
+						echo '<h3 class="fam-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->getTitleHtml(), '</span></a></h3>
 							<div class="fam-acc_content">',
 						format_fam_table($datalist);
 						echo '</div>'; //fam-acc_content
@@ -641,22 +635,19 @@ class SearchController extends PageController {
 				}
 				echo '</div>'; //#searchAccordion-fam
 				$this->addInlineJavascript('jQuery("#searchAccordion-fam").accordion({heightStyle: "content", collapsible: true});');
-
 				// source results
 				echo '<div id="searchAccordion-source">';
 				// Split sources by gedcom
 				foreach ($this->search_trees as $search_tree) {
 					$datalist = array();
 					foreach ($this->mysourcelist as $source) {
-						if ($source->getGedcomId() === $search_tree->id()) {
+						if ($source->getTree()->getTreeId() === $search_tree->getTreeId()) {
 							$datalist[] = $source;
 						}
 					}
 					if ($datalist) {
-						usort($datalist, 'Webtrees\GedcomRecord::compare');
-						$GEDCOM = $search_tree->name();
-						load_gedcom_settings($search_tree->id());
-						echo '<h3 class="source-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->titleHtml(), '</span></a></h3>
+						usort($datalist, __NAMESPACE__ . '\GedcomRecord::compare');
+						echo '<h3 class="source-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->getTitleHtml(), '</span></a></h3>
 							<div class="source-acc_content">',
 						format_sour_table($datalist);
 						echo '</div>'; //fam-acc_content
@@ -664,22 +655,20 @@ class SearchController extends PageController {
 				}
 				echo '</div>'; //#searchAccordion-source
 				$this->addInlineJavascript('jQuery("#searchAccordion-source").accordion({heightStyle: "content", collapsible: true});');
-
 				// note results
 				echo '<div id="searchAccordion-note">';
 				// Split notes by gedcom
 				foreach ($this->search_trees as $search_tree) {
 					$datalist = array();
 					foreach ($this->mynotelist as $note) {
-						if ($note->getGedcomId() === $search_tree->id()) {
+						if ($note->getTree()->getTreeId() === $search_tree->getTreeId()) {
 							$datalist[] = $note;
 						}
 					}
 					if ($datalist) {
+						usort($datalist, __NAMESPACE__ . '\GedcomRecord::compare');
 						usort($datalist, 'Webtrees\GedcomRecord::compare');
-						$GEDCOM = $search_tree->name();
-						load_gedcom_settings($search_tree->id());
-						echo '<h3 class="note-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->titleHtml(), '</span></a></h3>
+						echo '<h3 class="note-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->getTitleHtml(), '</span></a></h3>
 							<div class="note-acc_content">',
 						format_note_table($datalist);
 						echo '</div>'; //note-acc_content
@@ -687,9 +676,6 @@ class SearchController extends PageController {
 				}
 				echo '</div>'; //#searchAccordion-note
 				$this->addInlineJavascript('jQuery("#searchAccordion-note").accordion({heightStyle: "content", collapsible: true});');
-
-				$GEDCOM = WT_GEDCOM;
-				load_gedcom_settings(WT_GED_ID);
 				echo '</div>'; //#search-result-tabs
 			} elseif ($this->query || $this->firstname || $this->lastname || $this->place || $this->year) {
 				// One or more search terms were specified, but no results were found.

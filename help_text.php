@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -60,7 +60,6 @@ case 'CAUS':
 
 case 'DATE':
 	$title = WT_Gedcom_Tag::getLabel('DATE');
-	$CALENDAR_FORMAT = null; // Don't perform conversions here - it will confuse the examples!
 	$dates = array(
 		'1900'                     =>new Date('1900'),
 		'JAN 1900'                 =>new Date('JAN 1900'),
@@ -137,7 +136,7 @@ case 'DATE':
 	);
 
 	foreach ($dates as &$date) {
-		$date = strip_tags($date->Display());
+		$date = strip_tags($date->display(false, null, false));
 	}
 	// These shortcuts work differently for different languages
 	switch (preg_replace('/[^DMY]/', '', str_replace(array('J', 'F'), array('D', 'M'), strtoupper($DATE_FORMAT)))) {

@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -23,13 +23,13 @@ namespace Webtrees;
  * @global array $elementHandler
  */
 $elementHandler = array();
-$elementHandler['Report']['start']   = '\\Webtrees\\reportStartHandler';
-$elementHandler['var']['start']      = '\\Webtrees\\varStartHandler';
-$elementHandler['Title']['start']    = '\\Webtrees\\titleStartHandler';
-$elementHandler['Title']['end']      = '\\Webtrees\\titleEndHandler';
-$elementHandler['Description']['end'] = '\\Webtrees\\descriptionEndHandler';
-$elementHandler['Input']['start']    = '\\Webtrees\\inputStartHandler';
-$elementHandler['Input']['end']      = '\\Webtrees\\inputEndHandler';
+$elementHandler['Report']['start']   = __NAMESPACE__ . '\\reportStartHandler';
+$elementHandler['var']['start']      = __NAMESPACE__ . '\\varStartHandler';
+$elementHandler['Title']['start']    = __NAMESPACE__ . '\\titleStartHandler';
+$elementHandler['Title']['end']      = __NAMESPACE__ . '\\titleEndHandler';
+$elementHandler['Description']['end'] = __NAMESPACE__ . '\\descriptionEndHandler';
+$elementHandler['Input']['start']    = __NAMESPACE__ . '\\inputStartHandler';
+$elementHandler['Input']['end']      = __NAMESPACE__ . '\\inputEndHandler';
 
 $text = "";
 $report_array = array();

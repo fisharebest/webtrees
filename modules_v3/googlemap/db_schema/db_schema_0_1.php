@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -22,8 +22,6 @@ namespace Webtrees;
 // Version 1: create the tables, as per PGV 4.2.1
 
 // Create all of the tables needed for this module
-use Webtrees\Database;
-use Webtrees\Site;
 
 Database::exec(
 	"CREATE TABLE IF NOT EXISTS `##placelocation` (" .

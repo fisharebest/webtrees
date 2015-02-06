@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -28,23 +28,6 @@ class Soundex {
 			'std' => /* I18N: http://en.wikipedia.org/wiki/Soundex */ I18N::translate('Russell'),
 			'dm'  => /* I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex */ I18N::translate('Daitch-Mokotoff'),
 		);
-	}
-
-	/**
-	 * @param string $algorithm
-	 * @param string $text
-	 *
-	 * @return string
-	 */
-	public static function soundex($algorithm, $text) {
-		switch ($algorithm) {
-		case 'std':
-			return self::russell($text);
-		case 'dm':
-			return self::daitchMokotoff($text);
-		default:
-			throw new \InvalidArgumentException('Bad argument to Soundex::soundex()');
-		}
 	}
 
 	/**

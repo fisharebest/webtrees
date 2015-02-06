@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -32,7 +32,7 @@ class html_WT_Module extends Module implements ModuleBlockInterface {
 
 	/** {@inheritdoc} */
 	public function getBlock($block_id, $template = true, $cfg = null) {
-		global $ctype, $GEDCOM;
+		global $ctype, $WT_TREE;
 
 		$title          = get_block_setting($block_id, 'title');
 		$html           = get_block_setting($block_id, 'html');
@@ -42,7 +42,7 @@ class html_WT_Module extends Module implements ModuleBlockInterface {
 
 		// Only show this block for certain languages
 		if ($languages && !in_array(WT_LOCALE, explode(',', $languages))) {
-			return;
+			return '';
 		}
 
 		/*
@@ -50,20 +50,23 @@ class html_WT_Module extends Module implements ModuleBlockInterface {
 		 */
 		switch ($gedcom) {
 		case '__current__':
-			break;
-		case '':
+			$stats = new Stats($WT_TREE);
 			break;
 		case '__default__':
-			$GEDCOM = Site::getPreference('DEFAULT_GEDCOM');
-			if (!$GEDCOM) {
-				foreach (Tree::getAll() as $tree) {
-					$GEDCOM = $tree->name();
-					break;
-				}
+			$tree_id = Tree::getIdFromName(Site::getPreference('DEFAULT_GEDCOM'));
+			if ($tree_id) {
+				$stats = new Stats(Tree::findById($tree_id));
+			} else {
+				$stats = new Stats($WT_TREE);
 			}
 			break;
 		default:
-			$GEDCOM = $gedcom;
+			$tree_id = Tree::getIdFromName($gedcom);
+			if ($tree_id) {
+				$stats = new Stats(Tree::findById($tree_id));
+			} else {
+				$stats = new Stats($WT_TREE);
+			}
 			break;
 		}
 
@@ -71,15 +74,9 @@ class html_WT_Module extends Module implements ModuleBlockInterface {
 		* Retrieve text, process embedded variables
 		*/
 		if (strpos($title, '#') !== false || strpos($html, '#') !== false) {
-			$stats = new Stats($GEDCOM);
 			$title = $stats->embedTags($title);
 			$html  = $stats->embedTags($html);
 		}
-
-		/*
-		* Restore Current GEDCOM
-		*/
-		$GEDCOM = WT_GEDCOM;
 
 		/*
 		* Start Of Output
@@ -280,8 +277,8 @@ class html_WT_Module extends Module implements ModuleBlockInterface {
 				'<option value="__current__" ', $sel_current, '>', I18N::translate('Current'), '</option>',
 				'<option value="__default__" ', $sel_default, '>', I18N::translate('Default'), '</option>';
 			foreach (Tree::getAll() as $tree) {
-				if ($tree->name() === $gedcom) {$sel = 'selected'; } else {$sel = ''; }
-				echo '<option value="', $tree->nameHtml(), '" ', $sel, ' dir="auto">', $tree->titleHtml(), '</option>';
+				if ($tree->getName() === $gedcom) {$sel = 'selected'; } else {$sel = ''; }
+				echo '<option value="', $tree->getNameHtml(), '" ', $sel, ' dir="auto">', $tree->getTitleHtml(), '</option>';
 			}
 			echo '</select>';
 			echo '</td></tr>';

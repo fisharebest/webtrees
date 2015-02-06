@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,13 @@ namespace Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'admin.php');
 
@@ -388,7 +395,7 @@ foreach ($old_files as $file) {
 
 $controller = new PageController;
 $controller
-	->restrictAccess(Auth::isManager())
+	->restrictAccess(Auth::isManager($WT_TREE))
 	->setPageTitle(I18N::translate('Control panel') . ' — ' . /* I18N: A summary of the system status */ I18N::translate('Dashboard'))
 	->pageHeader();
 
@@ -636,67 +643,67 @@ $changes = Database::prepare(
 					</thead>
 					<tbody>
 						<?php foreach (Tree::getAll() as $tree): ?>
-						<tr class="<?php echo $changes[$tree->id()] ? 'danger' : ''; ?>">
+						<tr class="<?php echo $changes[$tree->getTreeId()] ? 'danger' : ''; ?>">
 							<td>
-								<a href="index.php?ctype=gedcom&amp;ged=<?php echo $tree->nameUrl(); ?>">
-									<?php echo $tree->titleHtml(); ?>
+								<a href="index.php?ctype=gedcom&amp;ged=<?php echo $tree->getNameUrl(); ?>">
+									<?php echo $tree->getTitleHtml(); ?>
 								</a>
 							</td>
 							<td class="text-right flip">
-								<?php if ($changes[$tree->id()]): ?>
+								<?php if ($changes[$tree->getTreeId()]): ?>
 								<a onclick="window.open('edit_changes.php', '_blank', chan_window_specs); return false;" href="#">
-									<?php echo I18N::number($changes[$tree->id()]); ?>
-									<span class="sr-only"><?php echo I18N::translate('Pending changes'); ?> <?php echo $tree->titleHtml(); ?></span>
+									<?php echo I18N::number($changes[$tree->getTreeId()]); ?>
+									<span class="sr-only"><?php echo I18N::translate('Pending changes'); ?> <?php echo $tree->getTitleHtml(); ?></span>
 								</a>
 								<?php else: ?>
 								-
 								<?php endif; ?>
 							</td>
 							<td class="text-right flip">
-								<?php if ($individuals[$tree->id()]): ?>
-								<a href="indilist.php?ged=<?php echo $tree->nameUrl(); ?>">
-									<?php echo I18N::number($individuals[$tree->id()]); ?>
-									<span class="sr-only"><?php echo I18N::translate('Individuals'); ?> <?php echo $tree->titleHtml(); ?></span>
+								<?php if ($individuals[$tree->getTreeId()]): ?>
+								<a href="indilist.php?ged=<?php echo $tree->getNameUrl(); ?>">
+									<?php echo I18N::number($individuals[$tree->getTreeId()]); ?>
+									<span class="sr-only"><?php echo I18N::translate('Individuals'); ?> <?php echo $tree->getTitleHtml(); ?></span>
 								</a>
 								<?php else: ?>
 									-
 								<?php endif; ?>
 								</td>
 							<td class="text-right flip">
-								<?php if ($families[$tree->id()]): ?>
-								<a href="famlist.php?ged=<?php echo $tree->nameUrl(); ?>">
-									<?php echo I18N::number($families[$tree->id()]); ?>
-									<span class="sr-only"><?php echo I18N::translate('Families'); ?> <?php echo $tree->titleHtml(); ?></span>
+								<?php if ($families[$tree->getTreeId()]): ?>
+								<a href="famlist.php?ged=<?php echo $tree->getNameUrl(); ?>">
+									<?php echo I18N::number($families[$tree->getTreeId()]); ?>
+									<span class="sr-only"><?php echo I18N::translate('Families'); ?> <?php echo $tree->getTitleHtml(); ?></span>
 								</a>
 								<?php else: ?>
 								-
 								<?php endif; ?>
 								</td>
 							<td class="text-right flip">
-								<?php if ($sources[$tree->id()]): ?>
-								<a href="sourlist.php?ged=<?php echo $tree->nameUrl(); ?>">
-									<?php echo I18N::number($sources[$tree->id()]); ?>
-									<span class="sr-only"><?php echo I18N::translate('Sources'); ?> <?php echo $tree->titleHtml(); ?></span>
+								<?php if ($sources[$tree->getTreeId()]): ?>
+								<a href="sourlist.php?ged=<?php echo $tree->getNameUrl(); ?>">
+									<?php echo I18N::number($sources[$tree->getTreeId()]); ?>
+									<span class="sr-only"><?php echo I18N::translate('Sources'); ?> <?php echo $tree->getTitleHtml(); ?></span>
 								</a>
 								<?php else: ?>
 								-
 								<?php endif; ?>
 							</td>
 							<td class="text-right flip">
-								<?php if ($repositories[$tree->id()]): ?>
-								<a href="repolist.php?ged=<?php echo $tree->nameUrl(); ?>">
-									<?php echo I18N::number($repositories[$tree->id()]); ?>
-									<span class="sr-only"><?php echo I18N::translate('Repositories'); ?> <?php echo $tree->titleHtml(); ?></span>
+								<?php if ($repositories[$tree->getTreeId()]): ?>
+								<a href="repolist.php?ged=<?php echo $tree->getNameUrl(); ?>">
+									<?php echo I18N::number($repositories[$tree->getTreeId()]); ?>
+									<span class="sr-only"><?php echo I18N::translate('Repositories'); ?> <?php echo $tree->getTitleHtml(); ?></span>
 								</a>
 								<?php else: ?>
 									-
 								<?php endif; ?>
 							</td>
 							<td class="text-right flip">
-								<?php if ($media[$tree->id()]): ?>
-								<a href="medialist.php?ged=<?php echo $tree->nameUrl(); ?>">
-									<?php echo I18N::number($media[$tree->id()]); ?>
-									<span class="sr-only"><?php echo I18N::translate('Media objects'); ?> <?php echo $tree->titleHtml(); ?></span>
+								<?php if ($media[$tree->getTreeId()]): ?>
+								<a href="medialist.php?ged=<?php echo $tree->getNameUrl(); ?>">
+									<?php echo I18N::number($media[$tree->getTreeId()]); ?>
+									<span class="sr-only"><?php echo I18N::translate('Media objects'); ?> <?php echo $tree->getTitleHtml(); ?></span>
 								</a>
 								<?php else: ?>
 								-

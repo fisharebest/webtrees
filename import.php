@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -54,7 +54,7 @@ $row = Database::prepare(
 )->execute(array($gedcom_id))->fetchOneRow();
 
 if ($row->import_offset == $row->import_total) {
-	Tree::get($gedcom_id)->setPreference('imported', '1');
+	Tree::findById($gedcom_id)->setPreference('imported', '1');
 	// Finished?  Show the maintenance links, similar to admin_trees_manage.php
 	Database::commit();
 	$controller->addInlineJavascript(
@@ -186,7 +186,6 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 			// Already UTF-8 so nothing to do!
 			break;
 		case 'ANSEL':
-			// TODO: fisharebest has written a mysql stored procedure that converts ANSEL to UTF-8
 		default:
 			Database::rollBack();
 			echo '<span class="error">', I18N::translate('Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported.', $charset), '</span>';

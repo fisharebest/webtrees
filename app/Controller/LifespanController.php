@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -98,7 +98,7 @@ class LifespanController extends PageController {
 			$this->pids = $pids;
 		} elseif ($place) {
 			// All records found in a place
-			$wt_place    = new Place($place, WT_GED_ID);
+			$wt_place    = new Place($place, $new_person->getTree());
 			$this->pids  = Database::prepare(
 				"SELECT DISTINCT pl_gid FROM `##placelinks` WHERE pl_p_id = ? AND pl_file = ?"
 			)->execute(array($wt_place->getPlaceId(), WT_GED_ID))->fetchOneColumn();

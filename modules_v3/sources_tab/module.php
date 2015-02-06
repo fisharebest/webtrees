@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -49,14 +49,14 @@ class sources_tab_WT_Module extends Module implements ModuleTabInterface {
 
 	/** {@inheritdoc} */
 	public function getTabContent() {
-		global $SHOW_LEVEL2_NOTES, $controller;
+		global $controller, $WT_TREE;
 
 		ob_start();
 		?>
 		<table class="facts_table">
 			<tr>
 				<td colspan="2" class="descriptionbox rela">
-				<input id="checkbox_sour2" type="checkbox" <?php echo $SHOW_LEVEL2_NOTES ? 'checked' : ''; ?> onclick="jQuery('tr.row_sour2').toggle();">
+				<input id="checkbox_sour2" type="checkbox" <?php echo $WT_TREE->getPreference('SHOW_LEVEL2_NOTES') ? 'checked' : ''; ?> onclick="jQuery('tr.row_sour2').toggle();">
 				<label for="checkbox_sour2"><?php echo I18N::translate('Show all sources'), help_link('show_fact_sources'); ?></label>
 				</td>
 			</tr>
@@ -91,7 +91,7 @@ class sources_tab_WT_Module extends Module implements ModuleTabInterface {
 			?>
 		</table>
 		<?php
-		if (!$SHOW_LEVEL2_NOTES) {
+		if (!$WT_TREE->getPreference('SHOW_LEVEL2_NOTES')) {
 			echo '<script>jQuery("tr.row_sour2").toggle();</script>';
 		}
 

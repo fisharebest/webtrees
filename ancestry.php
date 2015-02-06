@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -16,8 +16,17 @@ namespace Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
+
 define('WT_SCRIPT_NAME', 'ancestry.php');
 require './includes/session.php';
+
+$MAX_PEDIGREE_GENERATIONS = $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS');
 
 $controller = new AncestryController;
 $controller
@@ -151,7 +160,7 @@ case 1:
 	$ancestors = array_filter($ancestors); // The SOSA array includes empty placeholders
 	foreach ($ancestors as $sosa => $individual) {
 		foreach ($individual->getChildFamilies() as $family) {
-			print_sosa_family($family->getXref(), $individual, $sosa);
+			print_sosa_family($family->getXref(), $individual->getXref(), $sosa);
 		}
 	}
 	echo '</div>';

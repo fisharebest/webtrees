@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -21,6 +21,7 @@ namespace Webtrees;
  *
  * @global Tree   $WT_TREE
  */
+global $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'family.php');
 require './includes/session.php';
@@ -77,9 +78,6 @@ if ($controller->record && $controller->record->canShow()) {
 	
 	return;
 }
-
-$PEDIGREE_FULL_DETAILS = '1'; // Override GEDCOM configuration
-$show_full = '1';
 
 ?>
 <div id="family-page">

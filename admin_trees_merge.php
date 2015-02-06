@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -16,12 +16,19 @@ namespace Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
+
 define('WT_SCRIPT_NAME', 'admin_trees_merge.php');
 require './includes/session.php';
 
 $controller = new PageController;
 $controller
-	->restrictAccess(Auth::isManager())
+	->restrictAccess(Auth::isManager($WT_TREE))
 	->setPageTitle(I18N::translate('Merge family trees'))
 	->pageHeader();
 
@@ -71,8 +78,8 @@ if ($tree1_id && $tree2_id != $tree1_id) {
 	))->fetchAssoc();
 
 	if ($xrefs) {
-		$tree1 = Tree::get($tree1_id);
-		$tree2 = Tree::get($tree2_id);
+		$tree1 = Tree::findById($tree1_id);
+		$tree2 = Tree::findById($tree2_id);
 		echo
 			'<p>', I18N::translate('In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”.'), '</p>',
 			'<p>',
@@ -87,13 +94,13 @@ if ($tree1_id && $tree2_id != $tree1_id) {
 			I18N::translate('You must renumber the records in one of the trees before you can merge them.'),
 			'</p>',
 			'<p>',
-			'<a class="current" href="admin_trees_renumber.php?ged=', $tree1->nameUrl(), '">',
-			I18N::translate('Renumber family tree'), ' — ', $tree1->titleHtml(),
+			'<a class="current" href="admin_trees_renumber.php?ged=', $tree1->getNameUrl(), '">',
+			I18N::translate('Renumber family tree'), ' — ', $tree1->getTitleHtml(),
 			'</a>',
 			'</p>',
 			'<p>',
-			'<a class="current" href="admin_trees_renumber.php?ged=', $tree2->nameUrl(), '">',
-			I18N::translate('Renumber family tree'), ' — ', $tree2->titleHtml(),
+			'<a class="current" href="admin_trees_renumber.php?ged=', $tree2->getNameUrl(), '">',
+			I18N::translate('Renumber family tree'), ' — ', $tree2->getTitleHtml(),
 			'</a>',
 			'</p>';
 	} else {

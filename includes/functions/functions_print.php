@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -279,7 +279,7 @@ function format_asso_rela_record(Fact $event) {
 
 			// Use same markup as WT_Gedcom_Tag::getLabelValue()
 			$asso = I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', $label, $value);
-		} elseif (!$person && Auth::isEditor()) {
+		} elseif (!$person && Auth::isEditor($event->getParent()->getTree())) {
 			$asso = WT_Gedcom_Tag::getLabelValue('ASSO', '<span class="error">' . $amatch[1] . '</span>');
 		} else {
 			$asso = '';
@@ -349,7 +349,7 @@ function format_parents_age(Individual $person, Date $birth_date) {
  * @return string
  */
 function format_fact_date(Fact $event, GedcomRecord $record, $anchor, $time) {
-	global $pid, $SEARCH_SPIDER, $SHOW_PARENTS_AGE;
+	global $pid, $SEARCH_SPIDER;
 
 	$factrec = $event->getGedcom();
 	$html    = '';
@@ -380,7 +380,7 @@ function format_fact_date(Fact $event, GedcomRecord $record, $anchor, $time) {
 		}
 		$fact = $event->getTag();
 		if ($record instanceof Individual) {
-			if ($fact === 'BIRT' && $SHOW_PARENTS_AGE) {
+			if ($fact === 'BIRT' && $record->getTree()->getPreference('SHOW_PARENTS_AGE')) {
 				// age of parents at child birth
 				$html .= format_parents_age($record, $date);
 			} elseif ($fact !== 'CHAN' && $fact !== '_TODO') {
@@ -507,7 +507,7 @@ function format_fact_place(Fact $event, $anchor = false, $sub_records = false, $
 		if (!empty($placerec)) {
 			if (preg_match_all('/\n3 (?:_HEB|ROMN) (.+)/', $placerec, $matches)) {
 				foreach ($matches[1] as $match) {
-					$wt_place = new Place($match, WT_GED_ID);
+					$wt_place = new Place($match, $event->getParent()->getTree());
 					$html .= ' - ' . $wt_place->getFullName();
 				}
 			}

@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -624,9 +624,6 @@ class CalendarDate {
 			case '%N':
 				$format = str_replace($match, $this->formatIsoWeekday(), $format);
 				break;
-			case '%S':
-				$format = str_replace($match, $this->formatOrdinalSuffix(), $format);
-				break;
 			case '%w':
 				$format = str_replace($match, $this->formatNumericWeekday(), $format);
 				break;
@@ -723,22 +720,6 @@ class CalendarDate {
 	 */
 	protected function formatIsoWeekday() {
 		return I18N::digits($this->minJD % 7 + 1);
-	}
-
-	/**
-	 * Generate the %S format for a date.
-	 *
-	 * @todo Should be functions in this class?
-	 *
-	 * @return string
-	 */
-	protected function formatOrdinalSuffix() {
-		$func = 'ordinal_suffix_' . WT_LOCALE;
-		if (function_exists($func)) {
-			return $func($this->d);
-		} else {
-			return '';
-		}
 	}
 
 	/**

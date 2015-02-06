@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -76,15 +76,6 @@ class GEDFact_assistant_WT_Module extends Module {
 					// GEDFact_assistant ========================
 					if (window.opener.document.getElementById('addlinkQueue')) {
 						window.opener.insertRowToTable(id, name);
-						// Check if Indi, Fam or source ===================
-						/*
-						if (id.match("I")=="I") {
-							var win01 = window.opener.window.open('edit_interface.php?action=addmedia_links&noteid=newnote&pid='+id, 'win01', edit_window_specs);
-							if (window.focus) {win01.focus();}
-						} else if (id.match("F")=="F") {
-							// TODO --- alert('Opening Navigator with family id entered will come later');
-						}
-						*/
 					}
 					window.opener.paste_id(id);
 					if (window.opener.pastename) {
@@ -129,7 +120,7 @@ class GEDFact_assistant_WT_Module extends Module {
 		$myindilist = search_indis_names($filter_array, array(WT_GED_ID), 'AND');
 		if ($myindilist) {
 			echo "<td class=\"list_value_wrap\"><ul>";
-			usort($myindilist, 'Webtrees\GedcomRecord::compare');
+			usort($myindilist, __NAMESPACE__ . '\GedcomRecord::compare');
 			foreach ($myindilist as $indi) {
 				$nam = Filter::escapeHtml($indi->getFullName());
 				echo "<li><a href=\"#\" onclick=\"pasterow(

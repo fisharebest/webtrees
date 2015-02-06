@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -29,13 +29,13 @@ $block = Database::prepare(
 if (
 	!$block ||
 	!array_key_exists($block->module_name, Module::getActiveBlocks(WT_GED_ID)) ||
-	$block->gedcom_id && !Auth::isManager(Tree::get($block->gedcom_id)) ||
+	$block->gedcom_id && !Auth::isManager(Tree::findById($block->gedcom_id)) ||
 	$block->user_id && $block->user_id != Auth::id() && !Auth::isAdmin()
 ) {
 	return;
 }
 
-$class_name = 'Webtrees\\' . $block->module_name . '_WT_Module';
+$class_name = __NAMESPACE__ . '\\' . $block->module_name . '_WT_Module';
 $block = new $class_name;
 
 $controller = new AjaxController;

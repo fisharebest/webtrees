@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -19,7 +19,7 @@ namespace Webtrees;
 use PHPUnit_Framework_TestCase;
 
 /**
- * Test harness for the class \Webtrees\Controller\MediaController
+ * Test harness for the class MediaController
  */
 class MediaControllerTest extends PHPUnit_Framework_TestCase {
 	/**
@@ -37,6 +37,6 @@ class MediaControllerTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testClassExists() {
-		$this->assertTrue(class_exists('\Webtrees\MediaController'));
+		$this->assertTrue(class_exists(__NAMESPACE__ . '\MediaController'));
 	}
 }

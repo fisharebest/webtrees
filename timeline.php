@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -24,6 +24,7 @@ namespace Webtrees;
  * @global integer $basexoffset
  * @global integer $baseyoffset
  */
+global $TEXT_DIRECTION, $basexoffset, $baseyoffset;
 
 define('WT_SCRIPT_NAME', 'timeline.php');
 require './includes/session.php';

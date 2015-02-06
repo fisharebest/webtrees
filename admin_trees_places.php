@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -21,6 +21,7 @@ namespace Webtrees;
  *
  * @global Tree $WT_TREE
  */
+global $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'admin_trees_places.php');
 require './includes/session.php';
@@ -77,8 +78,8 @@ if ($search && $replace) {
 
 $controller = new PageController;
 $controller
-	->restrictAccess(Auth::isManager())
-	->setPageTitle(I18N::translate('Update all the place names in a family tree') . ' — ' . $WT_TREE->titleHtml())
+	->restrictAccess(Auth::isManager($WT_TREE))
+	->setPageTitle(I18N::translate('Update all the place names in a family tree') . ' — ' . $WT_TREE->getTitleHtml())
 	->pageHeader();
 ?>
 

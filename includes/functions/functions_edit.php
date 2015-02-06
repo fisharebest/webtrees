@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -62,10 +62,6 @@ function select_edit_control($name, $values, $empty, $selected, $extra = '') {
 /**
  * Create a set of radio buttons for a form
  *
- * Although for/id are not required when the <input> is inside the <label>,
- * many assistive technologies cannot use it, and it will fail WCAG2.0
- * @link http://www.w3.org/TR/WCAG20-TECHS/F68.html
- *
  * @param string   $name      The ID for the form element
  * @param string[] $values    Array of value=>display items
  * @param string   $selected  The currently selected item
@@ -76,10 +72,9 @@ function select_edit_control($name, $values, $empty, $selected, $extra = '') {
 function radio_buttons($name, $values, $selected, $extra = '') {
 	$html = '';
 	foreach ($values as $key => $value) {
-		$id = 'input-' . Uuid::uuid4();
 		$html .=
-			'<label ' . $extra . ' for="' . $id . '">' .
-			'<input type="radio" id="' . $id . '" name="' . $name . '" value="' . Filter::escapeHtml($key) . '"';
+			'<label ' . $extra . '>' .
+			'<input type="radio" name="' . $name . '" value="' . Filter::escapeHtml($key) . '"';
 		// PHP array keys are cast to integers!  Cast them back
 		if ((string) $key === (string) $selected) {
 			$html .= ' checked';
@@ -156,9 +151,8 @@ function edit_language_checkboxes($parameter_name, $accepted_languages) {
 	foreach (array_chunk(I18N::installed_languages(), $CHUNK_SIZE, true) as $chunk) {
 		$html .= '<tr>';
 		foreach ($chunk as $locale => $language) {
-			$id = 'input-' . Uuid::uuid4();
 			$checked = in_array($locale, $accepted_languages) ? 'checked' : '';
-			$html .= sprintf('<td><label for="%s"><input type="checkbox" id="%s" name="%s[]" value="%s"%s>%s</label></td>', $id, $id, $parameter_name, $locale, $checked, $language);
+			$html .= sprintf('<td><label><input type="checkbox" name="%s[]" value="%s"%s>%s</label></td>', $parameter_name, $locale, $checked, $language);
 		}
 		$html .= '</tr>';
 	}
@@ -434,12 +428,8 @@ function print_addnewsource_link($element_id) {
  *
  * @return string
  */
-function add_simple_tag(
-	$tag, $upperlevel = '', $label = '', $extra = null,
-	Individual $person = null
-) {
-	global $tags, $emptyfacts, $main_fact, $FILE_FORM_accept, $xref, $bdm, $action;
-	global $QUICK_REQUIRED_FACTS, $QUICK_REQUIRED_FAMFACTS, $PREFER_LEVEL2_SOURCES;
+function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Individual $person = null) {
+	global $tags, $emptyfacts, $main_fact, $FILE_FORM_accept, $xref, $bdm, $action, $WT_TREE;
 
 	// Keep track of SOUR fields, so we can reference them in subsequent PAGE fields.
 	static $source_element_id;
@@ -820,20 +810,25 @@ function add_simple_tag(
 		//-- checkboxes to apply '1 SOUR' to BIRT/MARR/DEAT as '2 SOUR'
 		if ($level == 1) {
 			echo '<br>';
-			if ($PREFER_LEVEL2_SOURCES === '0') {
-				$level1_checked = '';
-				$level2_checked = '';
-			} else if ($PREFER_LEVEL2_SOURCES === '1' || $PREFER_LEVEL2_SOURCES === true) {
-				$level1_checked = '';
-				$level2_checked = 'checked';
-			} else {
+			switch ($WT_TREE->getPreference('PREFER_LEVEL2_SOURCES')) {
+			case '2': // records
 				$level1_checked = 'checked';
 				$level2_checked = '';
+				break;
+			case '1': // facts
+				$level1_checked = '';
+				$level2_checked = 'checked';
+				break;
+			case '0': // none
+			default:
+				$level1_checked = '';
+				$level2_checked = '';
+				break;
 			}
 			if (strpos($bdm, 'B') !== false) {
 				echo '&nbsp;<input type="checkbox" name="SOUR_INDI" ', $level1_checked, ' value="1">';
 				echo I18N::translate('Individual');
-				if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $QUICK_REQUIRED_FACTS, $matches)) {
+				if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 					foreach ($matches[1] as $match) {
 						if (!in_array($match, explode('|', WT_EVENTS_DEAT))) {
 							echo '&nbsp;<input type="checkbox" name="SOUR_', $match, '" ', $level2_checked, ' value="1">';
@@ -843,7 +838,7 @@ function add_simple_tag(
 				}
 			}
 			if (strpos($bdm, 'D') !== false) {
-				if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $QUICK_REQUIRED_FACTS, $matches)) {
+				if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 					foreach ($matches[1] as $match) {
 						if (in_array($match, explode('|', WT_EVENTS_DEAT))) {
 							echo '&nbsp;<input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="1">';
@@ -855,7 +850,7 @@ function add_simple_tag(
 			if (strpos($bdm, 'M') !== false) {
 				echo '&nbsp;<input type="checkbox" name="SOUR_FAM" ', $level1_checked, ' value="1">';
 				echo I18N::translate('Family');
-				if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $QUICK_REQUIRED_FAMFACTS, $matches)) {
+				if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
 					foreach ($matches[1] as $match) {
 						echo '&nbsp;<input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="1">';
 						echo WT_Gedcom_Tag::getLabel($match);
@@ -950,7 +945,7 @@ function add_simple_tag(
  * @param integer $level
  */
 function print_add_layer($tag, $level = 2) {
-	global $FULL_SOURCES, $WT_TREE;
+	global $WT_TREE;
 
 	switch ($tag) {
 	case 'SOUR':
@@ -966,7 +961,7 @@ function print_add_layer($tag, $level = 2) {
 		// 3 DATA
 		// 4 TEXT
 		add_simple_tag(($level + 2) . ' TEXT');
-		if ($FULL_SOURCES) {
+		if ($WT_TREE->getPreference('FULL_SOURCES')) {
 			// 4 DATE
 			add_simple_tag(($level + 2) . ' DATE', '', WT_Gedcom_Tag::getLabel('DATA:DATE'));
 			// 3 QUAY
@@ -1059,7 +1054,7 @@ function print_add_layer($tag, $level = 2) {
  * @param string $fact
  */
 function addSimpleTags($fact) {
-	global $ADVANCED_PLAC_FACTS, $nonplacfacts, $nondatefacts;
+	global $WT_TREE, $nonplacfacts, $nondatefacts;
 
 	// For new individuals, these facts default to "Y"
 	if ($fact == 'MARR') {
@@ -1075,7 +1070,7 @@ function addSimpleTags($fact) {
 	if (!in_array($fact, $nonplacfacts)) {
 		add_simple_tag("0 PLAC", $fact, WT_Gedcom_Tag::getLabel("{$fact}:PLAC"));
 
-		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $ADVANCED_PLAC_FACTS, $match)) {
+		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 			foreach ($match[1] as $tag) {
 				add_simple_tag("0 {$tag}", $fact, WT_Gedcom_Tag::getLabel("{$fact}:PLAC:{$tag}"));
 			}
@@ -1092,13 +1087,13 @@ function addSimpleTags($fact) {
  * @return string
  */
 function addNewName() {
-	global $ADVANCED_NAME_FACTS, $WT_TREE;
+	global $WT_TREE;
 
 	$gedrec = "\n1 NAME " . Filter::post('NAME');
 
 	$tags = array('NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX');
 
-	if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $ADVANCED_NAME_FACTS, $match)) {
+	if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_NAME_FACTS'), $match)) {
 		$tags = array_merge($tags, $match[1]);
 	}
 
@@ -1137,7 +1132,7 @@ function addNewSex() {
  * @return string
  */
 function addNewFact($fact) {
-	global $ADVANCED_PLAC_FACTS;
+	global $WT_TREE;
 
 	$FACT = Filter::post($fact);
 	$DATE = Filter::post("{$fact}_DATE");
@@ -1154,7 +1149,7 @@ function addNewFact($fact) {
 		if ($PLAC) {
 			$gedrec .= "\n2 PLAC {$PLAC}";
 
-			if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $ADVANCED_PLAC_FACTS, $match)) {
+			if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 				foreach ($match[1] as $tag) {
 					$TAG = Filter::post("{$fact}_{$tag}");
 					if ($TAG) {
@@ -1439,7 +1434,7 @@ function handle_updates($newged, $levelOverride = 'no') {
  * @param string $fact the new fact we are adding
  */
 function create_add_form($fact) {
-	global $tags, $FULL_SOURCES, $emptyfacts;
+	global $tags, $emptyfacts, $WT_TREE;
 
 	$tags = array();
 
@@ -1467,7 +1462,7 @@ function create_add_form($fact) {
 		if ($fact == 'SOUR') {
 			add_simple_tag('2 PAGE');
 			add_simple_tag('3 TEXT');
-			if ($FULL_SOURCES) {
+			if ($WT_TREE->getPreference('FULL_SOURCES')) {
 				add_simple_tag('3 DATE', '', WT_Gedcom_Tag::getLabel('DATA:DATE'));
 				add_simple_tag('2 QUAY');
 			}
@@ -1484,7 +1479,7 @@ function create_add_form($fact) {
  * @return string
  */
 function create_edit_form(GedcomRecord $record, Fact $fact) {
-	global $ADVANCED_PLAC_FACTS, $date_and_time, $FULL_SOURCES, $tags;
+	global $WT_TREE, $date_and_time, $tags;
 
 	$pid = $record->getXref();
 
@@ -1515,11 +1510,11 @@ function create_edit_form(GedcomRecord $record, Fact $fact) {
 		'PLAC'=>array('MAP'),
 		'MAP' =>array('LATI', 'LONG')
 	);
-	if ($FULL_SOURCES) {
+	if ($WT_TREE->getPreference('FULL_SOURCES')) {
 		$expected_subtags['SOUR'][] = 'QUAY';
 		$expected_subtags['DATA'][] = 'DATE';
 	}
-	if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $ADVANCED_PLAC_FACTS, $match)) {
+	if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 		$expected_subtags['PLAC'] = array_merge($match[1], $expected_subtags['PLAC']);
 	}
 
@@ -1632,7 +1627,7 @@ function create_edit_form(GedcomRecord $record, Fact $fact) {
  * @param boolean $add_date
  */
 function insert_missing_subtags($level1tag, $add_date = false) {
-	global $tags, $date_and_time, $level2_tags, $ADVANCED_PLAC_FACTS, $ADVANCED_NAME_FACTS;
+	global $tags, $date_and_time, $level2_tags, $WT_TREE;
 	global $nondatefacts, $nonplacfacts;
 
 	// handle  MARRiage TYPE
@@ -1653,9 +1648,9 @@ function insert_missing_subtags($level1tag, $add_date = false) {
 				add_simple_tag('2 ' . $key . ' ' . strtoupper(date('d M Y')), $level1tag);
 			} elseif ($level1tag == '_TODO' && $key == '_WT_USER') {
 				add_simple_tag('2 ' . $key . ' ' . Auth::user()->getUserName(), $level1tag);
-			} else if ($level1tag == 'TITL' && strstr($ADVANCED_NAME_FACTS, $key) !== false) {
+			} else if ($level1tag == 'TITL' && strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), $key) !== false) {
 				add_simple_tag('2 ' . $key, $level1tag);
-			} else if ($level1tag == 'NAME' && strstr($ADVANCED_NAME_FACTS, $key) !== false) {
+			} else if ($level1tag == 'NAME' && strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), $key) !== false) {
 				add_simple_tag('2 ' . $key, $level1tag);
 			} else if ($level1tag != 'TITL' && $level1tag != 'NAME') {
 				add_simple_tag('2 ' . $key, $level1tag);
@@ -1663,7 +1658,7 @@ function insert_missing_subtags($level1tag, $add_date = false) {
 			// Add level 3/4 tags as appropriate
 			switch ($key) {
 			case 'PLAC':
-				if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $ADVANCED_PLAC_FACTS, $match)) {
+				if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 					foreach ($match[1] as $tag) {
 						add_simple_tag("3 $tag", '', WT_Gedcom_Tag::getLabel("{$level1tag}:PLAC:{$tag}"));
 					}
@@ -1710,7 +1705,7 @@ function insert_missing_subtags($level1tag, $add_date = false) {
 			if (!in_array($tag, $tags)) {
 				add_simple_tag("2 {$tag}");
 				if ($tag === 'PLAC') {
-					if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $ADVANCED_PLAC_FACTS, $match)) {
+					if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 						foreach ($match[1] as $ptag) {
 							add_simple_tag("3 $ptag", '', WT_Gedcom_Tag::getLabel("{$level1tag}:PLAC:{$ptag}"));
 						}

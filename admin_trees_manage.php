@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -21,13 +21,14 @@ namespace Webtrees;
  *
  * @global Tree $WT_TREE
  */
+global $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'admin_trees_manage.php');
 require './includes/session.php';
 
 $controller = new PageController;
 $controller
-	->restrictAccess(Auth::isManager())
+	->restrictAccess(Auth::isManager($WT_TREE))
 	->setPageTitle(I18N::translate('Manage family trees'));
 
 $gedcom_files = glob(WT_DATA_DIR . '*.{ged,Ged,GED}', GLOB_NOSORT | GLOB_BRACE);
@@ -37,8 +38,8 @@ switch (Filter::post('action')) {
 case 'delete':
 	$gedcom_id = Filter::postInteger('gedcom_id');
 	if (Filter::checkCsrf() && $gedcom_id) {
-		$tree = Tree::get($gedcom_id);
-		FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ I18N::translate('The family tree “%s” has been deleted.', $tree->titleHtml()), 'success');
+		$tree = Tree::findById($gedcom_id);
+		FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ I18N::translate('The family tree “%s” has been deleted.', $tree->getTitleHtml()), 'success');
 		$tree->delete();
 	}
 	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
@@ -47,7 +48,7 @@ case 'delete':
 case 'setdefault':
 	if (Filter::checkCsrf()) {
 		Site::setPreference('DEFAULT_GEDCOM', Filter::post('ged'));
-		FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ I18N::translate('The family tree “%s” will be shown to visitors when they first arrive at this website.', $WT_TREE->titleHtml()), 'success');
+		FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ I18N::translate('The family tree “%s” will be shown to visitors when they first arrive at this website.', $WT_TREE->getTitleHtml()), 'success');
 	}
 	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
 
@@ -70,7 +71,7 @@ case 'new_tree':
 case 'replace_upload':
 	$gedcom_id  = Filter::postInteger('gedcom_id');
 	$keep_media = Filter::postBool('keep_media');
-	$tree       = Tree::get($gedcom_id);
+	$tree       = Tree::findById($gedcom_id);
 
 	if (Filter::checkCsrf() && $tree) {
 		foreach ($_FILES as $FILE) {
@@ -86,7 +87,7 @@ case 'replace_import':
 	$basename   = basename(Filter::post('tree_name'));
 	$gedcom_id  = Filter::postInteger('gedcom_id');
 	$keep_media = Filter::postBool('keep_media');
-	$tree       = Tree::get($gedcom_id);
+	$tree       = Tree::findById($gedcom_id);
 
 	if (Filter::checkCsrf() && $tree && $basename) {
 		$tree->importGedcomFile(WT_DATA_DIR . $basename, $basename, $keep_media);
@@ -114,8 +115,8 @@ case 'bulk-import':
 		}
 
 		foreach (Tree::getAll() as $tree) {
-			if (!in_array($tree->name(), $basenames)) {
-				FlashMessages::addMessage(I18N::translate('The family tree “%s” has been deleted.', $tree->titleHtml()), 'success');
+			if (!in_array($tree->getName(), $basenames)) {
+				FlashMessages::addMessage(I18N::translate('The family tree “%s” has been deleted.', $tree->getTitleHtml()), 'success');
 				$tree->delete();
 			}
 		}
@@ -157,16 +158,16 @@ case 'importform':
 	<h1><?php echo $controller->getPageTitle(); ?></h1>
 	<?php
 
-	$tree = Tree::get(Filter::getInteger('gedcom_id'));
+	$tree = Tree::findById(Filter::getInteger('gedcom_id'));
 	// Check it exists
 	if (!$tree) {
 		break;
 	}
-	echo '<p>', /* I18N: %s is the name of a family tree */ I18N::translate('This will delete all the genealogical data from “%s” and replace it with data from another GEDCOM file.', $tree->titleHtml()), '</p>';
+	echo '<p>', /* I18N: %s is the name of a family tree */ I18N::translate('This will delete all the genealogical data from “%s” and replace it with data from another GEDCOM file.', $tree->getTitleHtml()), '</p>';
 	// the javascript in the next line strips any path associated with the file before comparing it to the current GEDCOM name (both Chrome and IE8 include c:\fakepath\ in the filename).
 	$previous_gedcom_filename = $tree->getPreference('gedcom_filename');
 	echo '<form name="replaceform" method="post" enctype="multipart/form-data" onsubmit="var newfile = document.replaceform.ged_name.value; newfile = newfile.substr(newfile.lastIndexOf(\'\\\\\')+1); if (newfile!=\'', Filter::escapeHtml($previous_gedcom_filename), '\' && \'\' != \'', Filter::escapeHtml($previous_gedcom_filename), '\') return confirm(\'', Filter::escapeHtml(I18N::translate('You have selected a GEDCOM file with a different name.  Is this correct?')), '\'); else return true;">';
-	echo '<input type="hidden" name="gedcom_id" value="', $tree->id(), '">';
+	echo '<input type="hidden" name="gedcom_id" value="', $tree->getTreeId(), '">';
 	echo Filter::getCsrf();
 	if (Filter::get('action') == 'uploadform') {
 		echo '<input type="hidden" name="action" value="replace_upload">';
@@ -230,39 +231,39 @@ $controller->pageHeader();
 	<?php foreach (Tree::GetAll() as $tree): ?>
 	<?php if (Auth::isManager($tree)): ?>
 	<div class="panel panel-default">
-		<div class="panel-heading" role="tab" id="panel-tree-<?php echo $tree->id(); ?>">
+		<div class="panel-heading" role="tab" id="panel-tree-<?php echo $tree->getTreeId(); ?>">
 			<h2 class="panel-title">
 				<i class="fa fa-fw fa-tree"></i>
-				<a data-toggle="collapse" data-parent="#accordion" href="#tree-<?php echo $tree->id(); ?>" aria-expanded="true" aria-controls="tree-<?php echo $tree->id(); ?>">
-					<?php echo $tree->nameHtml(); ?> — <?php echo $tree->titleHtml(); ?>
+				<a data-toggle="collapse" data-parent="#accordion" href="#tree-<?php echo $tree->getTreeId(); ?>" aria-expanded="true" aria-controls="tree-<?php echo $tree->getTreeId(); ?>">
+					<?php echo $tree->getNameHtml(); ?> — <?php echo $tree->getTitleHtml(); ?>
 				</a>
 			</h2>
 		</div>
-		<div id="tree-<?php echo $tree->id(); ?>" class="panel-collapse collapse<?php echo $tree->id() === WT_GED_ID || $tree->getPreference('imported') === '0' ? ' in' : ''; ?>" role="tabpanel" aria-labelledby="panel-tree-<?php echo $tree->id(); ?>">
+		<div id="tree-<?php echo $tree->getTreeId(); ?>" class="panel-collapse collapse<?php echo $tree->getTreeId() === WT_GED_ID || $tree->getPreference('imported') === '0' ? ' in' : ''; ?>" role="tabpanel" aria-labelledby="panel-tree-<?php echo $tree->getTreeId(); ?>">
 			<div class="panel-body">
 				<?php
 
 		// The third row shows an optional progress bar and a list of maintenance options
 		$importing = Database::prepare(
 			"SELECT 1 FROM `##gedcom_chunk` WHERE gedcom_id = ? AND imported = '0' LIMIT 1"
-		)->execute(array($tree->id()))->fetchOne();
+		)->execute(array($tree->getTreeId()))->fetchOne();
 		if ($importing) {
 				?>
-				<div id="import<?php echo $tree->id(); ?>" class="col-xs-12">
+				<div id="import<?php echo $tree->getTreeId(); ?>" class="col-xs-12">
 					<div class="progress">
 						<?php echo I18N::translate('Calculating…'); ?>
 					</div>
 				</div>
 				<?php
 			$controller->addInlineJavascript(
-				'jQuery("#import' . $tree->id() . '").load("import.php?gedcom_id=' . $tree->id() . '");'
+				'jQuery("#import' . $tree->getTreeId() . '").load("import.php?gedcom_id=' . $tree->getTreeId() . '");'
 			);
 		}
 				?>
-				<div class="row<?php echo $importing ? ' hidden' : ''; ?>" id="actions<?php echo $tree->id(); ?>">
+				<div class="row<?php echo $importing ? ' hidden' : ''; ?>" id="actions<?php echo $tree->getTreeId(); ?>">
 					<div class="col-sm-6 col-md-3">
 						<h3>
-							<a href="index.php?ctype=gedcom&ged=<?php echo $tree->nameUrl(); ?>">
+							<a href="index.php?ctype=gedcom&ged=<?php echo $tree->getNameUrl(); ?>">
 								<?php echo I18N::translate('Family tree'); ?>
 							</a>
 						</h3>
@@ -270,48 +271,48 @@ $controller->pageHeader();
 							<!-- PREFERENCES -->
 							<li>
 								<i class="fa fa-li fa-cogs"></i>
-								<a href="admin_trees_config.php?action=general&amp;ged=<?php echo $tree->nameUrl(); ?>">
+								<a href="admin_trees_config.php?action=general&amp;ged=<?php echo $tree->getNameUrl(); ?>">
 									<?php echo I18N::translate('Preferences'); ?>
 									<span class="sr-only">
-										<?php echo $tree->titleHtml(); ?>
+										<?php echo $tree->getTitleHtml(); ?>
 									</span>
 								</a>
 							</li>
 							<!-- PRIVACY -->
 							<li>
 								<i class="fa fa-li fa-lock"></i>
-								<a href="admin_trees_config.php?action=privacy&amp;ged=<?php echo $tree->nameUrl(); ?>">
+								<a href="admin_trees_config.php?action=privacy&amp;ged=<?php echo $tree->getNameUrl(); ?>">
 									<?php echo I18N::translate('Privacy'); ?>
 									<span class="sr-only">
-										<?php echo $tree->titleHtml(); ?>
+										<?php echo $tree->getTitleHtml(); ?>
 									</span>
 								</a>
 							</li>
 							<!-- HOME PAGE BLOCKS-->
 							<li>
 								<i class="fa fa-li fa-th-large"></i>
-								<a href="index_edit.php?gedcom_id=<?php echo $tree->id(); ?>">
+								<a href="index_edit.php?gedcom_id=<?php echo $tree->getTreeId(); ?>">
 									<?php echo I18N::translate('Change the “Home page” blocks'); ?>
 									<span class="sr-only">
-										<?php echo $tree->titleHtml(); ?>
+										<?php echo $tree->getTitleHtml(); ?>
 									</span>
 								</a>
 							</li>
 							<!-- DELETE -->
 							<li>
 								<i class="fa fa-li fa-trash-o"></i>
-								<a href="#" onclick="if (confirm('<?php echo Filter::escapeJs(I18N::translate('Are you sure you want to delete “%s”?', $tree->nameHtml())); ?>')) { document.delete_form<?php echo $tree->id(); ?>.submit(); } return false;">
+								<a href="#" onclick="if (confirm('<?php echo Filter::escapeJs(I18N::translate('Are you sure you want to delete “%s”?', $tree->getNameHtml())); ?>')) { document.delete_form<?php echo $tree->getTreeId(); ?>.submit(); } return false;">
 									<?php echo I18N::translate('Delete'); ?>
 									<span class="sr-only">
-										<?php echo $tree->titleHtml(); ?>
+										<?php echo $tree->getTitleHtml(); ?>
 									</span>
 								</a>
-								<form name="delete_form<?php echo $tree->id(); ?>" method="post">
+								<form name="delete_form<?php echo $tree->getTreeId(); ?>" method="post">
 									<input type="hidden" name="action" value="delete">
-									<input type="hidden" name="gedcom_id" value="<?php echo $tree->id(); ?>">
+									<input type="hidden" name="gedcom_id" value="<?php echo $tree->getTreeId(); ?>">
 									<?php echo Filter::getCsrf(); ?>
 									<!-- A11Y - forms need submit buttons, but they look ugly here -->
-									<button class="sr-only" onclick="return confirm('<?php echo Filter::escapeJs(I18N::translate('Are you sure you want to delete “%s”?', $tree->titleHtml())); ?>')" type="submit">
+									<button class="sr-only" onclick="return confirm('<?php echo Filter::escapeJs(I18N::translate('Are you sure you want to delete “%s”?', $tree->getTitleHtml())); ?>')" type="submit">
 										<?php echo I18N::translate('Delete'); ?>
 									</button>
 								</form>
@@ -320,18 +321,18 @@ $controller->pageHeader();
 							<?php if (count(Tree::getAll()) > 1): ?>
 								<li>
 									<i class="fa fa-li fa-star"></i>
-									<?php if ($tree->name() == Site::getPreference('DEFAULT_GEDCOM')): ?>
+									<?php if ($tree->getName() == Site::getPreference('DEFAULT_GEDCOM')): ?>
 										<?php echo I18N::translate('Default family tree'); ?>
 									<?php else: ?>
-										<a href="#" onclick="document.defaultform<?php echo $tree->id(); ?>.submit();">
+										<a href="#" onclick="document.defaultform<?php echo $tree->getTreeId(); ?>.submit();">
 											<?php echo I18N::translate('Set as default'); ?>
 											<span class="sr-only">
-										<?php echo $tree->titleHtml(); ?>
+										<?php echo $tree->getTitleHtml(); ?>
 									</span>
 										</a>
-										<form name="defaultform<?php echo $tree->id(); ?>" method="post">
+										<form name="defaultform<?php echo $tree->getTreeId(); ?>" method="post">
 											<input type="hidden" name="action" value="setdefault">
-											<input type="hidden" name="ged" value="<?php echo $tree->nameHtml(); ?>">
+											<input type="hidden" name="ged" value="<?php echo $tree->getNameHtml(); ?>">
 											<?php echo Filter::getCsrf(); ?>
 											<!-- A11Y - forms need submit buttons, but they look ugly here -->
 											<button class="sr-only" type="submit">
@@ -351,50 +352,50 @@ $controller->pageHeader();
 							<!-- MERGE -->
 							<li>
 								<i class="fa fa-li fa-code-fork"></i>
-								<a href="admin_site_merge.php?ged=<?php echo $tree->nameUrl(); ?>">
+								<a href="admin_site_merge.php?ged=<?php echo $tree->getNameUrl(); ?>">
 									<?php echo I18N::translate('Merge records'); ?>
 									<span class="sr-only">
-										<?php echo $tree->titleHtml(); ?>
+										<?php echo $tree->getTitleHtml(); ?>
 									</span>
 								</a>
 							</li>
 							<!-- UPDATE PLACE NAMES -->
 							<li>
 								<i class="fa fa-li fa-map-marker"></i>
-								<a href="admin_trees_places.php?ged=<?php echo $tree->nameUrl(); ?>">
+								<a href="admin_trees_places.php?ged=<?php echo $tree->getNameUrl(); ?>">
 									<?php echo I18N::translate('Update place names'); ?>
 									<span class="sr-only">
-										<?php echo $tree->titleHtml(); ?>
+										<?php echo $tree->getTitleHtml(); ?>
 									</span>
 								</a>
 							</li>
 							<!-- CHECK FOR ERRORS -->
 							<li>
 								<i class="fa fa-li fa-check"></i>
-								<a href="admin_trees_check.php?ged=<?php echo $tree->nameUrl(); ?>">
+								<a href="admin_trees_check.php?ged=<?php echo $tree->getNameUrl(); ?>">
 									<?php echo I18N::translate('Check for errors'); ?>
 									<span class="sr-only">
-										<?php echo $tree->titleHtml(); ?>
+										<?php echo $tree->getTitleHtml(); ?>
 									</span>
 								</a>
 							</li>
 							<!-- RENUMBER -->
 							<li>
 								<i class="fa fa-li fa-sort-numeric-asc"></i>
-								<a href="admin_trees_renumber.php?ged=<?php echo $tree->nameUrl(); ?>">
+								<a href="admin_trees_renumber.php?ged=<?php echo $tree->getNameUrl(); ?>">
 									<?php echo I18N::translate('Renumber'); ?>
 									<span class="sr-only">
-										<?php echo $tree->titleHtml(); ?>
+										<?php echo $tree->getTitleHtml(); ?>
 									</span>
 								</a>
 							</li>
 							<!-- CHANGES -->
 							<li>
 								<i class="fa fa-li fa-th-list"></i>
-								<a href="admin_site_change.php?gedc=<?php echo $tree->nameUrl(); ?>">
+								<a href="admin_site_change.php?gedc=<?php echo $tree->getNameUrl(); ?>">
 									<?php echo I18N::translate('Changes log'); ?>
 									<span class="sr-only">
-										<?php echo $tree->titleHtml(); ?>
+										<?php echo $tree->getTitleHtml(); ?>
 									</span>
 								</a>
 							</li>
@@ -412,7 +413,7 @@ $controller->pageHeader();
 								<a href="#" onclick="add_unlinked_indi(); return false;">
 									<?php echo I18N::translate('Individual'); ?>
 									<span class="sr-only">
-										<?php echo $tree->titleHtml(); ?>
+										<?php echo $tree->getTitleHtml(); ?>
 									</span>
 								</a>
 							</li>
@@ -422,7 +423,7 @@ $controller->pageHeader();
 								<a href="#" onclick="addnewsource(''); return false;">
 									<?php echo I18N::translate('Source'); ?>
 									<span class="sr-only">
-										<?php echo $tree->titleHtml(); ?>
+										<?php echo $tree->getTitleHtml(); ?>
 									</span>
 								</a>
 							</li>
@@ -432,7 +433,7 @@ $controller->pageHeader();
 								<a href="#" onclick="addnewrepository(''); return false;">
 									<?php echo I18N::translate('Repository'); ?>
 									<span class="sr-only">
-										<?php echo $tree->titleHtml(); ?>
+										<?php echo $tree->getTitleHtml(); ?>
 									</span>
 								</a>
 							</li>
@@ -442,7 +443,7 @@ $controller->pageHeader();
 								<a href="#" onclick="window.open('addmedia.php?action=showmediaform', '_blank', edit_window_specs); return false;">
 									<?php echo I18N::translate('Media object'); ?>
 									<span class="sr-only">
-										<?php echo $tree->titleHtml(); ?>
+										<?php echo $tree->getTitleHtml(); ?>
 									</span>
 								</a>
 							</li>
@@ -451,7 +452,7 @@ $controller->pageHeader();
 								<i class="fa fa-li fa-paragraph"></i>
 								<a href="#" onclick="addnewnote(''); return false;">
 									<span class="sr-only">
-										<?php echo $tree->titleHtml(); ?>
+										<?php echo $tree->getTitleHtml(); ?>
 									</span>
 									<?php echo I18N::translate('Shared note'); ?>
 								</a>
@@ -466,20 +467,20 @@ $controller->pageHeader();
 							<!-- DOWNLOAD -->
 							<li>
 								<i class="fa fa-li fa-download"></i>
-								<a href="admin_trees_download.php?ged=<?php echo $tree->nameUrl(); ?>">
+								<a href="admin_trees_download.php?ged=<?php echo $tree->getNameUrl(); ?>">
 									<?php echo I18N::translate('Download'); ?>
 									<span class="sr-only">
-										<?php echo $tree->titleHtml(); ?>
+										<?php echo $tree->getTitleHtml(); ?>
 									</span>
 								</a>
 							</li>
 							<!-- UPLOAD -->
 							<li>
 								<i class="fa fa-li fa-upload"></i>
-								<a href="?action=uploadform&amp;gedcom_id=<?php echo $tree->id(); ?>">
+								<a href="?action=uploadform&amp;gedcom_id=<?php echo $tree->getTreeId(); ?>">
 									<?php echo I18N::translate('Upload'); ?>
 									<span class="sr-only">
-										<?php echo $tree->titleHtml(); ?>
+										<?php echo $tree->getTitleHtml(); ?>
 									</span>
 								</a>
 							</li>
@@ -487,7 +488,7 @@ $controller->pageHeader();
 							<li>
 								<form action="admin_trees_export.php" method="post">
 									<?php echo Filter::getCsrf(); ?>
-									<input type="hidden" name="ged" value="<?php echo $tree->nameHtml(); ?>">
+									<input type="hidden" name="ged" value="<?php echo $tree->getNameHtml(); ?>">
 									<i class="fa fa-li fa-file-text"></i>
 									<input type="submit" class="hide"><!-- for WCAG2 -->
 									<a href="#" onclick="jQuery(this).closest('form').submit();">
@@ -498,10 +499,10 @@ $controller->pageHeader();
 							<!-- IMPORT -->
 							<li>
 								<i class="fa fa-li fa-file-text-o"></i>
-								<a href="?action=importform&amp;gedcom_id=<?php echo $tree->id(); ?>">
+								<a href="?action=importform&amp;gedcom_id=<?php echo $tree->getTreeId(); ?>">
 									<?php echo I18N::translate('Import'); ?>
 									<span class="sr-only">
-										<?php echo $tree->titleHtml(); ?>
+										<?php echo $tree->getTitleHtml(); ?>
 									</span>
 								</a>
 							</li>

@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -36,7 +36,7 @@ class FunctionsExportTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionReformatRecordExportExists() {
-		$this->assertEquals(function_exists('\Webtrees\\reformat_record_export'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\reformat_record_export'), true);
 	}
 
 	/**
@@ -45,7 +45,7 @@ class FunctionsExportTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGedcomHeaderExists() {
-		$this->assertEquals(function_exists('\Webtrees\\gedcom_header'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\gedcom_header'), true);
 	}
 
 	/**
@@ -54,7 +54,7 @@ class FunctionsExportTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionConvertMediaPathExists() {
-		$this->assertEquals(function_exists('\Webtrees\\convert_media_path'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\convert_media_path'), true);
 	}
 
 	/**
@@ -63,6 +63,6 @@ class FunctionsExportTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionExportGedcomExists() {
-		$this->assertEquals(function_exists('\Webtrees\\export_gedcom'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\export_gedcom'), true);
 	}
 }

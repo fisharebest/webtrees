@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,13 @@ namespace Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'descendancy.php');
 require './includes/session.php';
@@ -71,7 +78,7 @@ $controller
 					<?php echo I18N::translate('Generations'); ?>
 				</td>
 				<td class="optionbox">
-					<?php echo edit_field_integers('generations', $controller->generations, 2, $MAX_DESCENDANCY_GENERATIONS); ?>
+					<?php echo edit_field_integers('generations', $controller->generations, 2, $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS')); ?>
 				</td>
 				<td class="descriptionbox">
 					<?php echo I18N::translate('Show details'); ?>

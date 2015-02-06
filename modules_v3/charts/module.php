@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -32,7 +32,7 @@ class charts_WT_Module extends Module implements ModuleBlockInterface {
 
 	/** {@inheritdoc} */
 	public function getBlock($block_id, $template = true, $cfg = null) {
-		global $WT_TREE, $ctype, $PEDIGREE_FULL_DETAILS, $show_full, $controller;
+		global $WT_TREE, $ctype, $show_full, $controller;
 
 		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
 
@@ -48,11 +48,6 @@ class charts_WT_Module extends Module implements ModuleBlockInterface {
 			}
 		}
 
-		// Override GEDCOM configuration temporarily
-		if (isset($show_full)) {
-			$saveShowFull = $show_full;
-		}
-		$savePedigreeFullDetails = $PEDIGREE_FULL_DETAILS;
 		if (!$details) {
 			$show_full = 0;
 			// Here we could adjust the block width & height to accommodate larger displays
@@ -60,7 +55,6 @@ class charts_WT_Module extends Module implements ModuleBlockInterface {
 			$show_full = 1;
 			// Here we could adjust the block width & height to accommodate larger displays
 		}
-		$PEDIGREE_FULL_DETAILS = $show_full;
 
 		$person = Individual::getInstance($pid);
 		if (!$person) {
@@ -138,13 +132,6 @@ class charts_WT_Module extends Module implements ModuleBlockInterface {
 		} else {
 			$content = I18N::translate('You must select an individual and chart type in the block configuration settings.');
 		}
-
-		// Restore GEDCOM configuration
-		unset($show_full);
-		if (isset($saveShowFull)) {
-			$show_full = $saveShowFull;
-		}
-		$PEDIGREE_FULL_DETAILS = $savePedigreeFullDetails;
 
 		if ($template) {
 			return Theme::theme()->formatBlock($id, $title, $class, $content);

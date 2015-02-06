@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -281,7 +281,7 @@ echo '<li>', /* I18N: The system is about to [...] */ I18N::translate('Export al
 
 foreach (Tree::getAll() as $tree) {
 	reset_timeout();
-	$filename = WT_DATA_DIR . $tree->name() . date('-Y-m-d') . '.ged';
+	$filename = WT_DATA_DIR . $tree->getName() . date('-Y-m-d') . '.ged';
 	if ($tree->exportGedcom($filename)) {
 		echo '<br>', I18N::translate('Family tree exported to %s.', '<span dir="ltr">' . $filename . '</span>'), $icon_success;
 	} else {

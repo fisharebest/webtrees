@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -1838,7 +1838,7 @@ class WT_Gedcom_Tag {
 		foreach ($tags as $tag) {
 			$facts[$tag] = self::getLabel($tag, null);
 		}
-		uasort($facts, 'Webtrees\I18N::strcasecmp');
+		uasort($facts, __NAMESPACE__ . '\I18N::strcasecmp');
 
 		return $facts;
 	}
@@ -1901,7 +1901,7 @@ class WT_Gedcom_Tag {
 		foreach (self::$OBJE_FILE_FORM_TYPE as $type) {
 			$values[$type] = self::getFileFormTypeValue($type);
 		}
-		uasort($values, 'Webtrees\I18N::strcasecmp');
+		uasort($values, __NAMESPACE__ . '\I18N::strcasecmp');
 
 		return $values;
 	}

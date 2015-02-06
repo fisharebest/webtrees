@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -41,11 +41,8 @@ class PedigreeController extends ChartController {
 	 * Create a pedigree controller
 	 */
 	public function __construct() {
-		global $PEDIGREE_FULL_DETAILS, $PEDIGREE_LAYOUT, $MAX_PEDIGREE_GENERATIONS;
-		global $DEFAULT_PEDIGREE_GENERATIONS;
-		global $bwidth, $bheight, $baseyoffset, $basexoffset, $byspacing, $bxspacing;
-
-		global $show_full, $talloffset;
+		global $WT_TREE;
+		global $bwidth, $bheight, $baseyoffset, $basexoffset, $byspacing, $bxspacing, $show_full, $talloffset;
 
 		parent::__construct();
 		$this->linewidth     = Theme::theme()->parameter('line-width');
@@ -54,17 +51,17 @@ class PedigreeController extends ChartController {
 		$this->shadowoffsetX = Theme::theme()->parameter('shadow-offset-x');
 		$this->shadowoffsetY = Theme::theme()->parameter('shadow-offset-y');
 
-		$this->show_full            = Filter::getInteger('show_full', 0, 1, $PEDIGREE_FULL_DETAILS);
-		$this->talloffset           = Filter::getInteger('talloffset', 0, 3, $PEDIGREE_LAYOUT);
+		$this->show_full            = Filter::getInteger('show_full', 0, 1, $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS'));
+		$this->talloffset           = Filter::getInteger('talloffset', 0, 3, $WT_TREE->getPreference('PEDIGREE_LAYOUT'));
 		$this->box_width            = Filter::getInteger('box_width', 50, 300, 100);
-		$this->PEDIGREE_GENERATIONS = Filter::getInteger('PEDIGREE_GENERATIONS', 2, $MAX_PEDIGREE_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS);
+		$this->PEDIGREE_GENERATIONS = Filter::getInteger('PEDIGREE_GENERATIONS', 2, $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS'), $WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
 
 		// With more than 8 generations, we run out of pixels on the <canvas>
 		if ($this->PEDIGREE_GENERATIONS > 8) {
 			$this->PEDIGREE_GENERATIONS = 8;
 		}
 
-		// TODO: some library functions expect this as a global.
+		// Some library functions expect this as a global.
 		// Passing a function parameter would be much better.
 		global $PEDIGREE_GENERATIONS;
 		$PEDIGREE_GENERATIONS = $this->PEDIGREE_GENERATIONS;

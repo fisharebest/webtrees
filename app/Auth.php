@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -49,18 +49,12 @@ class Auth {
 	/**
 	 * Is a user a manager of a tree?
 	 *
-	 * @param Tree|null $tree
-	 * @param User|null    $user
+	 * @param Tree      $tree
+	 * @param User|null $user
 	 *
 	 * @return boolean
 	 */
-	public static function isManager(Tree $tree = null, User $user = null) {
-		global $WT_TREE;
-
-		if ($tree === null) {
-			$tree = $WT_TREE;
-		}
-
+	public static function isManager(Tree $tree, User $user = null) {
 		if ($user === null) {
 			$user = self::user();
 		}
@@ -71,18 +65,12 @@ class Auth {
 	/**
 	 * Is a user a moderator of a tree?
 	 *
-	 * @param Tree|null $tree
-	 * @param User|null    $user
+	 * @param Tree      $tree
+	 * @param User|null $user
 	 *
 	 * @return boolean
 	 */
-	public static function isModerator(Tree $tree = null, User $user = null) {
-		global $WT_TREE;
-
-		if ($tree === null) {
-			$tree = $WT_TREE;
-		}
-
+	public static function isModerator(Tree $tree, User $user = null) {
 		if ($user === null) {
 			$user = self::user();
 		}
@@ -93,19 +81,13 @@ class Auth {
 	/**
 	 * Is a user an editor of a tree?
 	 *
-	 * @param Tree|null $tree
-	 * @param User|null    $user
+	 * @param Tree      $tree
+	 * @param User|null $user
 	 *
 	 *
 	 * @return boolean
 	 */
-	public static function isEditor(Tree $tree = null, User $user = null) {
-		global $WT_TREE;
-
-		if ($tree === null) {
-			$tree = $WT_TREE;
-		}
-
+	public static function isEditor(Tree $tree, User $user = null) {
 		if ($user === null) {
 			$user = self::user();
 		}
@@ -116,18 +98,12 @@ class Auth {
 	/**
 	 * Is a user a member of a tree?
 	 *
-	 * @param Tree|null $tree
-	 * @param User|null    $user
+	 * @param Tree      $tree
+	 * @param User|null $user
 	 *
 	 * @return boolean
 	 */
-	public static function isMember(Tree $tree = null, User $user = null) {
-		global $WT_TREE;
-
-		if ($tree === null) {
-			$tree = $WT_TREE;
-		}
-
+	public static function isMember(Tree $tree, User $user = null) {
 		if ($user === null) {
 			$user = self::user();
 		}

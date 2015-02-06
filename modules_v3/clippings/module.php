@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -48,7 +48,9 @@ class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleS
 			echo $html;
 			break;
 		case 'index':
-			global $MAX_PEDIGREE_GENERATIONS, $controller, $WT_SESSION, $GEDCOM_MEDIA_PATH;
+			global $controller, $WT_SESSION, $WT_TREE;
+
+			$MAX_PEDIGREE_GENERATIONS = $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS');
 
 			$clip_ctrl = new ClippingsCart;
 
@@ -200,8 +202,8 @@ class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleS
 
 					<tr><td class="descriptionbox width50 wrap"><?php echo I18N::translate('Add the GEDCOM media path to filenames'), help_link('GEDCOM_MEDIA_PATH'); ?></td>
 					<td class="optionbox">
-						<input type="checkbox" name="conv_path" value="<?php echo Filter::escapeHtml($GEDCOM_MEDIA_PATH); ?>">
-						<span dir="auto"><?php echo Filter::escapeHtml($GEDCOM_MEDIA_PATH); ?></span>
+						<input type="checkbox" name="conv_path" value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')); ?>">
+						<span dir="auto"><?php echo Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')); ?></span>
 					</td></tr>
 
 					<tr><td class="topbottombar" colspan="2">
@@ -471,7 +473,7 @@ class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleS
 	 * @return string
 	 */
 	public function askAddOptions(Individual $person) {
-		global $MAX_PEDIGREE_GENERATIONS;
+		$MAX_PEDIGREE_GENERATIONS = $person->getTree()->getPreference('MAX_PEDIGREE_GENERATIONS');
 
 		$out = '<h3><a href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a></h3>';
 		$out .= '<script>';
@@ -545,7 +547,8 @@ class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleS
 	 * @return string
 	 */
 	public function downloadForm(ClippingsCart $clip_ctrl) {
-		global $GEDCOM_MEDIA_PATH;
+		global $WT_TREE;
+
 		$pid = Filter::get('pid', WT_REGEX_XREF);
 
 		$out = '<script>';
@@ -593,8 +596,8 @@ class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleS
 		<tr>
 		<td class="descriptionbox width50 wrap">'. I18N::translate('Add the GEDCOM media path to filenames') . help_link('GEDCOM_MEDIA_PATH') . '</td>
 		<td class="optionbox">
-		<input type="checkbox" name="conv_path" value="' . Filter::escapeHtml($GEDCOM_MEDIA_PATH) . '">
-		<span dir="auto">' . Filter::escapeHtml($GEDCOM_MEDIA_PATH) . '</span></td>
+		<input type="checkbox" name="conv_path" value="' . Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')) . '">
+		<span dir="auto">' . Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')) . '</span></td>
 		</tr>
 
 		<input type="hidden" name="conv_path" value="'.$clip_ctrl->conv_path . '">

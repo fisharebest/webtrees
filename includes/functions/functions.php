@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -81,91 +81,6 @@ function file_upload_error_text($error_code) {
 }
 
 /**
- * Load the configuration settings into global scope
- *
- * @todo some of these are used infrequently - just load them when we need them
- *
- * @param integer $ged_id
- */
-function load_gedcom_settings($ged_id) {
-	$tree = Tree::get($ged_id);
-	global $ADVANCED_NAME_FACTS;          $ADVANCED_NAME_FACTS          = $tree->getPreference('ADVANCED_NAME_FACTS');
-	global $ADVANCED_PLAC_FACTS;          $ADVANCED_PLAC_FACTS          = $tree->getPreference('ADVANCED_PLAC_FACTS');
-	global $CALENDAR_FORMAT;              $CALENDAR_FORMAT              = $tree->getPreference('CALENDAR_FORMAT');
-	global $CHART_BOX_TAGS;               $CHART_BOX_TAGS               = $tree->getPreference('CHART_BOX_TAGS');
-	global $CONTACT_USER_ID;              $CONTACT_USER_ID              = $tree->getPreference('CONTACT_USER_ID');
-	global $DEFAULT_PEDIGREE_GENERATIONS; $DEFAULT_PEDIGREE_GENERATIONS = $tree->getPreference('DEFAULT_PEDIGREE_GENERATIONS');
-	global $EXPAND_NOTES;                 $EXPAND_NOTES                 = $tree->getPreference('EXPAND_NOTES');
-	global $EXPAND_RELATIVES_EVENTS;      $EXPAND_RELATIVES_EVENTS      = $tree->getPreference('EXPAND_RELATIVES_EVENTS');
-	global $EXPAND_SOURCES;               $EXPAND_SOURCES               = $tree->getPreference('EXPAND_SOURCES');
-	global $FULL_SOURCES;                 $FULL_SOURCES                 = $tree->getPreference('FULL_SOURCES');
-	global $GEDCOM_MEDIA_PATH;            $GEDCOM_MEDIA_PATH            = $tree->getPreference('GEDCOM_MEDIA_PATH');
-	global $GENERATE_UIDS;                $GENERATE_UIDS                = $tree->getPreference('GENERATE_UIDS');
-	global $HIDE_GEDCOM_ERRORS;           $HIDE_GEDCOM_ERRORS           = $tree->getPreference('HIDE_GEDCOM_ERRORS');
-	global $HIDE_LIVE_PEOPLE;             $HIDE_LIVE_PEOPLE             = $tree->getPreference('HIDE_LIVE_PEOPLE');
-	global $KEEP_ALIVE_YEARS_BIRTH;       $KEEP_ALIVE_YEARS_BIRTH       = $tree->getPreference('KEEP_ALIVE_YEARS_BIRTH');
-	global $KEEP_ALIVE_YEARS_DEATH;       $KEEP_ALIVE_YEARS_DEATH       = $tree->getPreference('KEEP_ALIVE_YEARS_DEATH');
-	global $LANGUAGE;                     $LANGUAGE                     = $tree->getPreference('LANGUAGE');
-	global $MAX_ALIVE_AGE;                $MAX_ALIVE_AGE                = $tree->getPreference('MAX_ALIVE_AGE');
-	global $MAX_DESCENDANCY_GENERATIONS;  $MAX_DESCENDANCY_GENERATIONS  = $tree->getPreference('MAX_DESCENDANCY_GENERATIONS');
-	global $MAX_PEDIGREE_GENERATIONS;     $MAX_PEDIGREE_GENERATIONS     = $tree->getPreference('MAX_PEDIGREE_GENERATIONS');
-	global $MEDIA_DIRECTORY;              $MEDIA_DIRECTORY              = $tree->getPreference('MEDIA_DIRECTORY');
-	global $NO_UPDATE_CHAN;               $NO_UPDATE_CHAN               = $tree->getPreference('NO_UPDATE_CHAN');
-	global $PEDIGREE_FULL_DETAILS;        $PEDIGREE_FULL_DETAILS        = $tree->getPreference('PEDIGREE_FULL_DETAILS');
-	global $PEDIGREE_LAYOUT;              $PEDIGREE_LAYOUT              = $tree->getPreference('PEDIGREE_LAYOUT');
-	global $PEDIGREE_SHOW_GENDER;         $PEDIGREE_SHOW_GENDER         = $tree->getPreference('PEDIGREE_SHOW_GENDER');
-	global $PREFER_LEVEL2_SOURCES;        $PREFER_LEVEL2_SOURCES        = $tree->getPreference('PREFER_LEVEL2_SOURCES');
-	global $QUICK_REQUIRED_FACTS;         $QUICK_REQUIRED_FACTS         = $tree->getPreference('QUICK_REQUIRED_FACTS');
-	global $QUICK_REQUIRED_FAMFACTS;      $QUICK_REQUIRED_FAMFACTS      = $tree->getPreference('QUICK_REQUIRED_FAMFACTS');
-	global $REQUIRE_AUTHENTICATION;       $REQUIRE_AUTHENTICATION       = $tree->getPreference('REQUIRE_AUTHENTICATION');
-	global $SAVE_WATERMARK_IMAGE;         $SAVE_WATERMARK_IMAGE         = $tree->getPreference('SAVE_WATERMARK_IMAGE');
-	global $SAVE_WATERMARK_THUMB;         $SAVE_WATERMARK_THUMB         = $tree->getPreference('SAVE_WATERMARK_THUMB');
-	global $SHOW_AGE_DIFF;                $SHOW_AGE_DIFF                = $tree->getPreference('SHOW_AGE_DIFF');
-	global $SHOW_DEAD_PEOPLE;             $SHOW_DEAD_PEOPLE             = $tree->getPreference('SHOW_DEAD_PEOPLE');
-	global $SHOW_FACT_ICONS;              $SHOW_FACT_ICONS              = $tree->getPreference('SHOW_FACT_ICONS');
-	global $SHOW_GEDCOM_RECORD;           $SHOW_GEDCOM_RECORD           = $tree->getPreference('SHOW_GEDCOM_RECORD');
-	global $SHOW_HIGHLIGHT_IMAGES;        $SHOW_HIGHLIGHT_IMAGES        = $tree->getPreference('SHOW_HIGHLIGHT_IMAGES');
-	global $SHOW_LAST_CHANGE;             $SHOW_LAST_CHANGE             = $tree->getPreference('SHOW_LAST_CHANGE');
-	global $SHOW_LDS_AT_GLANCE;           $SHOW_LDS_AT_GLANCE           = $tree->getPreference('SHOW_LDS_AT_GLANCE');
-	global $SHOW_LEVEL2_NOTES;            $SHOW_LEVEL2_NOTES            = $tree->getPreference('SHOW_LEVEL2_NOTES');
-	global $SHOW_LIVING_NAMES;            $SHOW_LIVING_NAMES            = $tree->getPreference('SHOW_LIVING_NAMES');
-	global $SHOW_MEDIA_DOWNLOAD;          $SHOW_MEDIA_DOWNLOAD          = $tree->getPreference('SHOW_MEDIA_DOWNLOAD');
-	global $SHOW_NO_WATERMARK;            $SHOW_NO_WATERMARK            = $tree->getPreference('SHOW_NO_WATERMARK');
-	global $SHOW_PARENTS_AGE;             $SHOW_PARENTS_AGE             = $tree->getPreference('SHOW_PARENTS_AGE');
-	global $SHOW_PEDIGREE_PLACES;         $SHOW_PEDIGREE_PLACES         = $tree->getPreference('SHOW_PEDIGREE_PLACES');
-	global $SHOW_PEDIGREE_PLACES_SUFFIX;  $SHOW_PEDIGREE_PLACES_SUFFIX  = $tree->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX');
-	global $SHOW_PRIVATE_RELATIONSHIPS;   $SHOW_PRIVATE_RELATIONSHIPS   = $tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
-	global $SHOW_RELATIVES_EVENTS;        $SHOW_RELATIVES_EVENTS        = $tree->getPreference('SHOW_RELATIVES_EVENTS');
-	global $THUMBNAIL_WIDTH;              $THUMBNAIL_WIDTH              = $tree->getPreference('THUMBNAIL_WIDTH');
-	global $USE_RIN;                      $USE_RIN                      = $tree->getPreference('USE_RIN');
-	global $USE_SILHOUETTE;               $USE_SILHOUETTE               = $tree->getPreference('USE_SILHOUETTE');
-	global $WATERMARK_THUMB;              $WATERMARK_THUMB              = $tree->getPreference('WATERMARK_THUMB');
-	global $WEBMASTER_USER_ID;            $WEBMASTER_USER_ID            = $tree->getPreference('WEBMASTER_USER_ID');
-	global $WEBTREES_EMAIL;               $WEBTREES_EMAIL               = $tree->getPreference('WEBTREES_EMAIL');
-	global $WORD_WRAPPED_NOTES;           $WORD_WRAPPED_NOTES           = $tree->getPreference('WORD_WRAPPED_NOTES');
-
-	global $person_privacy; $person_privacy=array();
-	global $person_facts;   $person_facts  =array();
-	global $global_facts;   $global_facts  =array();
-
-	$rows = Database::prepare(
-		"SELECT SQL_CACHE xref, tag_type, CASE resn WHEN 'none' THEN ? WHEN 'privacy' THEN ? WHEN 'confidential' THEN ? WHEN 'hidden' THEN ? END AS resn FROM `##default_resn` WHERE gedcom_id=?"
-	)->execute(array(WT_PRIV_PUBLIC, WT_PRIV_USER, WT_PRIV_NONE, WT_PRIV_HIDE, $ged_id))->fetchAll();
-
-	foreach ($rows as $row) {
-		if ($row->xref !== null) {
-			if ($row->tag_type !== null) {
-				$person_facts[$row->xref][$row->tag_type] = (int) $row->resn;
-			} else {
-				$person_privacy[$row->xref] = (int) $row->resn;
-			}
-		} else {
-			$global_facts[$row->tag_type] = (int) $row->resn;
-		}
-	}
-}
-
-/**
  * get a gedcom subrecord
  *
  * searches a gedcom record and returns a subrecord of it.  A subrecord is defined starting at a
@@ -226,30 +141,23 @@ function get_sub_record($level, $tag, $gedrec, $num = 1) {
  * @param integer $nlevel the level of the CONT lines to get
  * @param string  $nrec   the gedcom subrecord to search in
  *
- * @return string a string with all CONT or CONC lines merged
+ * @return string a string with all CONT lines merged
  */
 function get_cont($nlevel, $nrec) {
-	global $WORD_WRAPPED_NOTES;
-	$text = "";
+	$text = '';
 
 	$subrecords = explode("\n", $nrec);
 	foreach ($subrecords as $thisSubrecord) {
-		if (substr($thisSubrecord, 0, 2) !== $nlevel . " ") {
+		if (substr($thisSubrecord, 0, 2) !== $nlevel . ' ') {
 			continue;
 		}
 		$subrecordType = substr($thisSubrecord, 2, 4);
-		if ($subrecordType == "CONT") {
-			$text .= "\n";
-		}
-		if ($subrecordType == "CONC" && $WORD_WRAPPED_NOTES) {
-			$text .= " ";
-		}
-		if ($subrecordType == "CONT" || $subrecordType == "CONC") {
-			$text .= rtrim(substr($thisSubrecord, 7));
+		if ($subrecordType === 'CONT') {
+			$text .= "\n" . substr($thisSubrecord, 7);
 		}
 	}
 
-	return rtrim($text, " ");
+	return $text;
 }
 
 /**
@@ -313,8 +221,8 @@ function sort_facts(&$arr) {
 	}
 
 	//-- sort each type of array
-	usort($dated, 'Webtrees\Fact::compareDate');
-	usort($nondated, 'Webtrees\Fact::compareType');
+	usort($dated, __NAMESPACE__ . '\Fact::compareDate');
+	usort($nondated, __NAMESPACE__ . '\Fact::compareType');
 
 	//-- merge the arrays back together comparing by Facts
 	$dc = count($dated);
@@ -1689,11 +1597,6 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 	}
 
 	// Look for generic/pattern relationships.
-	// TODO: these are heavily based on English relationship names.
-	// We need feedback from other languages to improve this.
-	// Dutch has special names for 8 generations of great-great-..., so these need explicit naming
-	// Spanish has special names for four but also has two different numbering patterns
-
 	if (preg_match('/^((?:mot|fat|par)+)(bro|sis|sib)$/', $path, $match)) {
 		// siblings of direct ancestors
 		$up = strlen($match[1]) / 3;
@@ -2137,7 +2040,7 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 			default:
 				return I18N::translate('great-great-grandchild');
 			}
-			break;
+
 		case 5:
 			switch ($sex2) {
 			case 'M':
@@ -2147,7 +2050,7 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 			default:
 				return I18N::translate('great-great-great-grandchild');
 			}
-			break;
+
 		case 6:
 			switch ($sex2) {
 			case 'M':
@@ -2157,7 +2060,7 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 			default:
 				return I18N::translate('great ×4 grandchild');
 			}
-			break;
+
 		case 7:
 			switch ($sex2) {
 			case 'M':
@@ -2167,7 +2070,7 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 			default:
 				return I18N::translate('great ×5 grandchild');
 			}
-			break;
+
 		case 8:
 			switch ($sex2) {
 			case 'M':
@@ -2177,7 +2080,7 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 			default:
 				return I18N::translate('great ×6 grandchild');
 			}
-			break;
+
 		case 9:
 			switch ($sex2) {
 			case 'M':
@@ -2187,7 +2090,7 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 			default:
 				return I18N::translate('great ×7 grandchild');
 			}
-			break;
+
 		default:
 			// Different languages have different rules for naming generations.
 			// An English great ×12 grandson is a Danish great ×11 grandson.
@@ -2332,7 +2235,7 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
  * it searches the themes folder and reads the name from the theme_name variable
  * in the theme.php file.
  *
- * @throws Exception
+ * @throws \Exception
  *
  * @return string[] An array of theme names and their corresponding folder
  */
@@ -2356,7 +2259,7 @@ function get_theme_names() {
 			}
 		}
 		$d->close();
-		uksort($themes, 'Webtrees\I18N::strcasecmp');
+		uksort($themes, __NAMESPACE__ . '\I18N::strcasecmp');
 	}
 
 	return $themes;

@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -36,7 +36,7 @@ class FunctionsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionFetchLatestVersionExists() {
-		$this->assertEquals(function_exists('\Webtrees\\fetch_latest_version'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\fetch_latest_version'), true);
 	}
 
 	/**
@@ -45,16 +45,7 @@ class FunctionsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionFileUploadErrorTextExists() {
-		$this->assertEquals(function_exists('\Webtrees\\file_upload_error_text'), true);
-	}
-
-	/**
-	 * Test that function load_gedcom_settings() exists in the correct namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionLoadGedcomSettingsExists() {
-		$this->assertEquals(function_exists('\Webtrees\\load_gedcom_settings'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\file_upload_error_text'), true);
 	}
 
 	/**
@@ -63,7 +54,7 @@ class FunctionsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetSubRecordExists() {
-		$this->assertEquals(function_exists('\Webtrees\\get_sub_record'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_sub_record'), true);
 	}
 
 	/**
@@ -72,7 +63,7 @@ class FunctionsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetContExists() {
-		$this->assertEquals(function_exists('\Webtrees\\get_cont'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_cont'), true);
 	}
 
 	/**
@@ -81,7 +72,7 @@ class FunctionsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionEventSortExists() {
-		$this->assertEquals(function_exists('\Webtrees\\event_sort'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\event_sort'), true);
 	}
 
 	/**
@@ -90,7 +81,7 @@ class FunctionsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionEventSortNameExists() {
-		$this->assertEquals(function_exists('\Webtrees\\event_sort_name'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\event_sort_name'), true);
 	}
 
 	/**
@@ -99,7 +90,7 @@ class FunctionsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionSortFactsExists() {
-		$this->assertEquals(function_exists('\Webtrees\\sort_facts'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\sort_facts'), true);
 	}
 
 	/**
@@ -108,7 +99,7 @@ class FunctionsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetCloseRelationshipNameExists() {
-		$this->assertEquals(function_exists('\Webtrees\\get_close_relationship_name'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_close_relationship_name'), true);
 	}
 
 	/**
@@ -117,7 +108,7 @@ class FunctionsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetAssociateRelationshipNameExists() {
-		$this->assertEquals(function_exists('\Webtrees\\get_associate_relationship_name'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_associate_relationship_name'), true);
 	}
 
 	/**
@@ -126,7 +117,7 @@ class FunctionsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetRelationshipExists() {
-		$this->assertEquals(function_exists('\Webtrees\\get_relationship'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_relationship'), true);
 	}
 
 	/**
@@ -135,7 +126,7 @@ class FunctionsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetRelationshipNameExists() {
-		$this->assertEquals(function_exists('\Webtrees\\get_relationship_name'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_relationship_name'), true);
 	}
 
 	/**
@@ -144,7 +135,7 @@ class FunctionsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionCousinNameExists() {
-		$this->assertEquals(function_exists('\Webtrees\\cousin_name'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\cousin_name'), true);
 	}
 
 	/**
@@ -153,7 +144,7 @@ class FunctionsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionCousinName2Exists() {
-		$this->assertEquals(function_exists('\Webtrees\\cousin_name2'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\cousin_name2'), true);
 	}
 
 	/**
@@ -162,7 +153,7 @@ class FunctionsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetRelationshipNameFromPathExists() {
-		$this->assertEquals(function_exists('\Webtrees\\get_relationship_name_from_path'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_relationship_name_from_path'), true);
 	}
 
 	/**
@@ -171,7 +162,7 @@ class FunctionsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetQueryUrlExists() {
-		$this->assertEquals(function_exists('\Webtrees\\get_query_url'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_query_url'), true);
 	}
 
 	/**
@@ -180,7 +171,7 @@ class FunctionsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetNewXrefExists() {
-		$this->assertEquals(function_exists('\Webtrees\\get_new_xref'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_new_xref'), true);
 	}
 
 	/**
@@ -189,7 +180,7 @@ class FunctionsTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionIsFileExternalExists() {
-		$this->assertEquals(function_exists('\Webtrees\\isFileExternal'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\isFileExternal'), true);
 	}
 
 	/**
@@ -203,7 +194,7 @@ class FunctionsTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals(isFileExternal('folder/file.txt'), false);
 		$this->assertEquals(isFileExternal('folder\\file.txt'), false);
 		$this->assertEquals(isFileExternal('/folder/file.txt'), false);
-		$this->assertEquals(isFileExternal('\Webtrees\\folder\\file.txt'), false);
+		$this->assertEquals(isFileExternal('\\folder\\file.txt'), false);
 		$this->assertEquals(isFileExternal('C:\\folder\\file.txt'), false);
 	}
 }

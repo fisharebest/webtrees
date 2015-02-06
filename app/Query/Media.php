@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -78,7 +78,7 @@ class WT_Query_Media {
 	 * @param string $filter     optional search string
 	 *
 	 * @return Media[]
-	 * @throws Exception
+	 * @throws \Exception
 	 */
 	public static function mediaList($folder, $subfolders, $sort, $filter) {
 		// All files in the folder, plus external files

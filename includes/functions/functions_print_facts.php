@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -31,7 +31,6 @@ use Rhumsaa\Uuid\Uuid;
  * @param GedcomRecord $record
  */
 function print_fact(Fact $fact, GedcomRecord $record) {
-	global $HIDE_GEDCOM_ERRORS, $SHOW_FACT_ICONS;
 	static $n_chil = 0, $n_gchi = 0;
 
 	$parent = $fact->getParent();
@@ -59,7 +58,7 @@ function print_fact(Fact $fact, GedcomRecord $record) {
 		return;
 	default:
 		// Hide unrecognized/custom tags?
-		if ($HIDE_GEDCOM_ERRORS && !WT_Gedcom_Tag::isTag($fact->getTag())) {
+		if ($fact->getParent()->getTree()->getPreference('HIDE_GEDCOM_ERRORS') && !WT_Gedcom_Tag::isTag($fact->getTag())) {
 			return;
 		}
 		break;
@@ -140,7 +139,7 @@ function print_fact(Fact $fact, GedcomRecord $record) {
 	echo '<tr class="', $styleadd, '">';
 	echo '<td class="descriptionbox width20">';
 
-	if ($SHOW_FACT_ICONS) {
+	if ($fact->getParent()->getTree()->getPreference('SHOW_FACT_ICONS')) {
 		echo Theme::theme()->icon($fact), ' ';
 	}
 
@@ -431,7 +430,7 @@ function print_fact(Fact $fact, GedcomRecord $record) {
 			echo WT_Gedcom_Tag::getLabelValue($fact->getTag() . ':' . $match[1], $link);
 			break;
 		default:
-			if (!$HIDE_GEDCOM_ERRORS || WT_Gedcom_Tag::isTag($match[1])) {
+			if (!$fact->getParent()->getTree()->getPreference('HIDE_GEDCOM_ERRORS') || WT_Gedcom_Tag::isTag($match[1])) {
 				if (preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $match[2], $xmatch)) {
 					// Links
 					$linked_record = GedcomRecord::getInstance($xmatch[1]);
@@ -483,7 +482,7 @@ function print_repository_record($xref) {
  * @return string HTML text
  */
 function print_fact_sources($factrec, $level) {
-	global $EXPAND_SOURCES;
+	global $WT_TREE;
 
 	$data = '';
 	$nlevel = $level + 1;
@@ -513,7 +512,7 @@ function print_fact_sources($factrec, $level) {
 				$data .= '<div class="fact_SOUR">';
 				$data .= '<span class="label">';
 				$elementID = Uuid::uuid4();
-				if ($EXPAND_SOURCES) {
+				if ($WT_TREE->getPreference('EXPAND_SOURCES')) {
 					$plusminus = 'icon-minus';
 				} else {
 					$plusminus = 'icon-plus';
@@ -526,7 +525,7 @@ function print_fact_sources($factrec, $level) {
 				$data .= '</span></div>';
 
 				$data .= "<div id=\"$elementID\"";
-				if ($EXPAND_SOURCES) {
+				if ($WT_TREE->getPreference('EXPAND_SOURCES')) {
 					$data .= ' style="display:block"';
 				}
 				$data .= ' class="source_citations">';
@@ -564,7 +563,7 @@ function print_fact_sources($factrec, $level) {
  * @param integer $level
  */
 function print_media_links($factrec, $level) {
-	global $SEARCH_SPIDER, $HIDE_GEDCOM_ERRORS;
+	global $SEARCH_SPIDER, $WT_TREE;
 
 	$nlevel = $level + 1;
 	if (preg_match_all("/$level OBJE @(.*)@/", $factrec, $omatch, PREG_SET_ORDER) == 0) {
@@ -625,7 +624,7 @@ function print_media_links($factrec, $level) {
 				echo '</div>'; //close div "media-display-title"
 				echo '</div>'; //close div "media-display"
 			}
-		} elseif (!$HIDE_GEDCOM_ERRORS) {
+		} elseif (!$WT_TREE->getPreference('HIDE_GEDCOM_ERRORS')) {
 			echo '<p class="ui-state-error">', $media_id, '</p>';
 		}
 		$objectNum++;
@@ -639,8 +638,6 @@ function print_media_links($factrec, $level) {
  * @param integer $level
  */
 function print_main_sources(Fact $fact, $level) {
-	global $SHOW_FACT_ICONS;
-
 	$factrec = $fact->getGedcom();
 	$fact_id = $fact->getFactId();
 	$parent  = $fact->getParent();
@@ -697,7 +694,7 @@ function print_main_sources(Fact $fact, $level) {
 			} else
 			if ($can_edit) {
 				echo "<a onclick=\"return edit_record('$pid', '$fact_id');\" href=\"#\" title=\"", I18N::translate('Edit'), '">';
-					if ($SHOW_FACT_ICONS) {
+					if ($fact->getParent()->getTree()->getPreference('SHOW_FACT_ICONS')) {
 						if ($level == 1) {
 							echo '<i class="icon-source"></i> ';
 						}
@@ -881,8 +878,6 @@ function getSourceStructure($srec) {
  * @param integer $level
  */
 function print_main_notes(Fact $fact, $level) {
-	global $WT_TREE, $SHOW_FACT_ICONS;
-
 	$factrec = $fact->getGedcom();
 	$fact_id = $fact->getFactId();
 	$parent  = $fact->getParent();
@@ -919,7 +914,7 @@ function print_main_notes(Fact $fact, $level) {
 		if ($can_edit) {
 			echo '<a onclick="return edit_record(\'', $pid, '\', \'', $fact_id, '\');" href="#" title="', I18N::translate('Edit'), '">';
 			if ($level < 2) {
-				if ($SHOW_FACT_ICONS) {
+				if ($fact->getParent()->getTree()->getPreference('SHOW_FACT_ICONS')) {
 					echo '<i class="icon-note"></i> ';
 				}
 				if ($note) {
@@ -939,7 +934,7 @@ function print_main_notes(Fact $fact, $level) {
 			}
 		} else {
 			if ($level < 2) {
-				if ($SHOW_FACT_ICONS) {
+				if ($fact->getParent()->getTree()->getPreference('SHOW_FACT_ICONS')) {
 					echo '<i class="icon-note"></i> ';
 				}
 				if ($note) {
@@ -977,13 +972,13 @@ function print_main_notes(Fact $fact, $level) {
 				// If Census assistant installed, allow it to format the note
 				$text = GEDFact_assistant_WT_Module::formatCensusNote($note);
 			} else {
-				$text = Filter::formatText($note->getNote(), $WT_TREE);
+				$text = Filter::formatText($note->getNote(), $fact->getParent()->getTree());
 			}
 		} else {
 			// Inline notes
 			$nrec = get_sub_record($level, "$level NOTE", $factrec, $j + 1);
 			$text = $match[$j][1] . get_cont($level + 1, $nrec);
-			$text = Filter::formatText($text, $WT_TREE);
+			$text = Filter::formatText($text, $fact->getParent()->getTree());
 		}
 
 		echo '<td class="optionbox', $styleadd, ' wrap">';

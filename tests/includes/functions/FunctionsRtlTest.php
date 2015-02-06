@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -36,7 +36,7 @@ class FunctionsRtlTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionStripLRMRLMExists() {
-		$this->assertEquals(function_exists('\Webtrees\\stripLRMRLM'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\stripLRMRLM'), true);
 	}
 
 	/**
@@ -45,7 +45,7 @@ class FunctionsRtlTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionSpanLTRRTLExists() {
-		$this->assertEquals(function_exists('\Webtrees\\spanLTRRTL'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\spanLTRRTL'), true);
 	}
 
 	/**
@@ -54,7 +54,7 @@ class FunctionsRtlTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionStarredNameExists() {
-		$this->assertEquals(function_exists('\Webtrees\\starredName'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\starredName'), true);
 	}
 
 	/**
@@ -63,7 +63,7 @@ class FunctionsRtlTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionGetCharExists() {
-		$this->assertEquals(function_exists('\Webtrees\\getChar'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\getChar'), true);
 	}
 
 	/**
@@ -72,7 +72,7 @@ class FunctionsRtlTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionBreakCurrentSpanExists() {
-		$this->assertEquals(function_exists('\Webtrees\\breakCurrentSpan'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\breakCurrentSpan'), true);
 	}
 
 	/**
@@ -81,7 +81,7 @@ class FunctionsRtlTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionBeginCurrentSpanExists() {
-		$this->assertEquals(function_exists('\Webtrees\\beginCurrentSpan'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\beginCurrentSpan'), true);
 	}
 
 	/**
@@ -90,7 +90,7 @@ class FunctionsRtlTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionFinishCurrentSpanExists() {
-		$this->assertEquals(function_exists('\Webtrees\\finishCurrentSpan'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\finishCurrentSpan'), true);
 	}
 
 	/**
@@ -99,6 +99,6 @@ class FunctionsRtlTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFunctionUtf8WordwrapExists() {
-		$this->assertEquals(function_exists('\Webtrees\\utf8_wordwrap'), true);
+		$this->assertEquals(function_exists(__NAMESPACE__ . '\\utf8_wordwrap'), true);
 	}
 }

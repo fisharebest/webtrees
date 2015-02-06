@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -49,22 +49,18 @@ class DescendancyController extends ChartController {
 	 * Create the descendancy controller
 	 */
 	function __construct() {
-		global $bwidth, $bheight, $pbwidth, $pbheight, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS, $show_full;
+		global $bwidth, $bheight, $pbwidth, $pbheight, $WT_TREE, $show_full;
 
 		parent::__construct();
 
 		// Extract parameters from form
-		$this->show_full   = Filter::getInteger('show_full', 0, 1, $PEDIGREE_FULL_DETAILS);
+		$this->show_full   = Filter::getInteger('show_full', 0, 1, $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS'));
 		$this->chart_style = Filter::getInteger('chart_style', 0, 3, 0);
-		$this->generations = Filter::getInteger('generations', 2, $MAX_DESCENDANCY_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS);
+		$this->generations = Filter::getInteger('generations', 2, $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS'), $WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
 		$this->box_width   = Filter::getInteger('box_width', 50, 300, 100);
 
 		// This is passed as a global.  A parameter would be better...
 		$show_full = $this->show_full;
-
-		if (!isset($this->personcount)) {
-			$this->personcount = 1;
-		}
 
 		// -- size of the detailed boxes based upon optional width parameter
 		$Dbwidth  = ($this->box_width * $bwidth) / 100;

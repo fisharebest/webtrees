@@ -1,5 +1,5 @@
 <?php
-namespace Webtrees;
+namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -24,6 +24,7 @@ use PDOException;
  *
  * @global Zend_Session $WT_SESSION
  */
+global $WT_SESSION;
 
 define('WT_SCRIPT_NAME', 'admin_pgv_to_wt.php');
 require './includes/session.php';
