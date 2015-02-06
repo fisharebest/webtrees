@@ -94,11 +94,11 @@ class top10_surnames_WT_Module extends Module implements ModuleBlockInterface {
 			break;
 		case 'list':
 			uasort($all_surnames, __NAMESPACE__ . '\\top10_surnames_WT_Module::surnameCountSort');
-			$content = format_surname_list($all_surnames, '1', true, 'indilist.php');
+			$content = format_surname_list($all_surnames, '1', true, 'indilist.php', $WT_TREE);
 			break;
 		case 'array':
 			uasort($all_surnames, __NAMESPACE__ . '\\top10_surnames_WT_Module::surnameCountSort');
-			$content = format_surname_list($all_surnames, '2', true, 'indilist.php');
+			$content = format_surname_list($all_surnames, '2', true, 'indilist.php', $WT_TREE);
 			break;
 		case 'table':
 		default:

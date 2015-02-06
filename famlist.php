@@ -190,7 +190,7 @@ if ($show === 'indi' || $show === 'surn') {
 		// Show the surname list
 		switch ($WT_TREE->getPreference('SURNAME_LIST_STYLE')) {
 		case 'style1';
-			echo format_surname_list($surns, 3, true, WT_SCRIPT_NAME);
+			echo format_surname_list($surns, 3, true, WT_SCRIPT_NAME, $WT_TREE);
 			break;
 		case 'style3':
 			echo format_surname_tagcloud($surns, WT_SCRIPT_NAME, true);

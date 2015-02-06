@@ -43,7 +43,7 @@ class Place {
 			// Empty => "Top level"
 			$this->gedcom_place = array();
 		}
-		$this->gedcom_id = $tree;
+		$this->tree = $tree;
 	}
 
 	/**
@@ -57,7 +57,7 @@ class Place {
 			)->execute(array(
 				'parent_id' => $place_id,
 				'place'     => $place,
-				'tree_id'   => $this->gedcom_id,
+				'tree_id'   => $this->tree->getTreeId(),
 			))->fetchOne();
 		}
 
@@ -88,7 +88,7 @@ class Place {
 			" ORDER BY p_place COLLATE :collation"
 		)->execute(array(
 			'parent_id' => $this->getPlaceId(),
-			'tree_id'   => $this->gedcom_id,
+			'tree_id'   => $this->tree->getTreeId(),
 			'collation' => I18N::$collation,
 		))->fetchOneColumn();
 		foreach ($rows as $row) {
@@ -107,7 +107,7 @@ class Place {
 			$url .= $n ? '&amp;' : '?';
 			$url .= 'parent%5B%5D=' . rawurlencode($place);
 		}
-		$url .= '&amp;ged=' . rawurlencode(get_gedcom_from_id($this->gedcom_id));
+		$url .= '&amp;ged=' . $this->tree->getNameHtml();
 
 		return $url;
 	}
@@ -159,14 +159,14 @@ class Place {
 	 * @return string
 	 */
 	public function getShortName() {
-		$SHOW_PEDIGREE_PLACES = Tree::findById($this->gedcom_id)->getPreference('SHOW_PEDIGREE_PLACES');
+		$SHOW_PEDIGREE_PLACES = $this->tree->getPreference('SHOW_PEDIGREE_PLACES');
 
 		if ($SHOW_PEDIGREE_PLACES >= count($this->gedcom_place)) {
 			// A short place name - no need to abbreviate
 			return $this->getFullName();
 		} else {
 			// Abbreviate the place name, for lists
-			if (Tree::findById($this->gedcom_id)->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX')) {
+			if ($this->tree->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX')) {
 				// The *last* $SHOW_PEDIGREE_PLACES components
 				$short_name = implode(self::GEDCOM_SEPARATOR, array_slice($this->gedcom_place, -$SHOW_PEDIGREE_PLACES));
 			} else {

@@ -1640,19 +1640,18 @@ function format_surname_tagcloud($surnames, $script, $totals) {
  * @param integer    $style    1=bullet list, 2=semicolon-separated list, 3=tabulated list with up to 4 columns
  * @param boolean    $totals   show totals after each name
  * @param string     $script   indilist or famlist
+ * @param Tree       $tree     Link back to the individual list in this tree
  *
  * @return string
  */
-function format_surname_list($surnames, $style, $totals, $script) {
-	global $WT_TREE;
-
+function format_surname_list($surnames, $style, $totals, $script, $tree) {
 	$html = array();
 	foreach ($surnames as $surn => $surns) {
 		// Each surname links back to the indilist
 		if ($surn) {
-			$url = $script . '?surname=' . urlencode($surn) . '&amp;ged=' . $WT_TREE->getNameUrl();
+			$url = $script . '?surname=' . urlencode($surn) . '&amp;ged=' . $tree->getNameUrl();
 		} else {
-			$url = $script . '?alpha=,&amp;ged=' . $WT_TREE->getNameUrl();
+			$url = $script . '?alpha=,&amp;ged=' . $tree->getNameUrl();
 		}
 		// If all the surnames are just case variants, then merge them into one
 		// Comment out this block if you want SMITH listed separately from Smith

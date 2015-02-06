@@ -4825,7 +4825,7 @@ class Stats {
 		foreach (array_keys($surname_list) as $surname) {
 			$surnames = array_merge($surnames, WT_Query_Name::surnames($surname, '', false, false, WT_GED_ID));
 		}
-		return format_surname_list($surnames, ($type == 'list' ? 1 : 2), $show_tot, 'indilist.php');
+		return format_surname_list($surnames, ($type == 'list' ? 1 : 2), $show_tot, 'indilist.php', $this->tree);
 	}
 
 	/**
