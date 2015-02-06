@@ -166,15 +166,6 @@ class FunctionsTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test that function get_new_xref() exists in the correct namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionGetNewXrefExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_new_xref'), true);
-	}
-
-	/**
 	 * Test that function isFileExternal() exists in the correct namespace.
 	 *
 	 * @return void

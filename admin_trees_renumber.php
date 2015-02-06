@@ -83,7 +83,7 @@ if (Filter::get('go')) {
 			" `##link` WRITE," .
 			" `##user_gedcom_setting` WRITE"
 		);
-		$new_xref = get_new_xref($type, $WT_TREE);
+		$new_xref = $WT_TREE->getNewXref($type);
 		switch ($type) {
 		case 'INDI':
 			Database::prepare(
