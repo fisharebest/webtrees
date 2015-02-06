@@ -20,7 +20,12 @@ namespace Fisharebest\Webtrees;
  * Class GedcomRecordController - Base controller for all GedcomRecord controllers
  */
 class GedcomRecordController extends PageController {
-	public $record; // individual, source, repository, etc.
+	/**
+	 * A genealogy record
+	 *
+	 * @var GedcomRecord|Individual|Family|Source|Repository|Media|Note
+	 */
+	public $record;
 
 	/**
 	 * Startup activity

@@ -2240,7 +2240,7 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
  * it searches the themes folder and reads the name from the theme_name variable
  * in the theme.php file.
  *
- * @throws Exception
+ * @throws \Exception
  *
  * @return string[] An array of theme names and their corresponding folder
  */

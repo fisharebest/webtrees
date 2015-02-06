@@ -334,7 +334,7 @@ abstract class Module {
 	 * @param integer $tree_id
 	 * @param integer $access_level
 	 *
-	 * @return $controller = new ModuleReportInterface[]
+	 * @return ModuleReportInterface[]
 	 */
 	public static function getActiveReports($tree_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
 		static $reports;
@@ -352,7 +352,7 @@ abstract class Module {
 	 * @param integer $tree_id
 	 * @param integer $access_level
 	 *
-	 * @return oduleSidebarInterface[]
+	 * @return ModuleSidebarInterface[]
 	 */
 	public static function getActiveSidebars($tree_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
 		static $sidebars;
@@ -388,7 +388,7 @@ abstract class Module {
 	 * @param integer $tree_id
 	 * @param integer $access_level
 	 *
-	 * @return $controller = new ModuleThemeInterface[]
+	 * @return ModuleThemeInterface[]
 	 */
 	public static function getActiveThemes($tree_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
 		static $themes;
