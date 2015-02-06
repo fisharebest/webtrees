@@ -212,10 +212,9 @@ class Date {
 		global $TEXT_DIRECTION, $WT_TREE;
 
 		$CALENDAR_FORMAT = $WT_TREE->getPreference('CALENDAR_FORMAT');
-		$DATE_FORMAT     = $WT_TREE->getPreference('DATE_FORMAT');
 
 		if ($date_format === null) {
-			$date_format = $DATE_FORMAT;
+			$date_format = /* I18N: This is the format string for full dates.  See http://php.net/date for codes */ I18N::noop('%j %F %Y');
 		}
 
 		if ($convert_calendars) {
@@ -328,11 +327,10 @@ class Date {
 			$tmp = I18N::translate('%1$s (%2$s)', $tmp, $this->text);
 		}
 
-		// Return at least one printable character, for better formatting in tables.
-		if (strip_tags($tmp) == '') {
-			return '&nbsp;';
+		if (strip_tags($tmp) === '') {
+			return '';
 		} else {
-			return "<span class=\"date\">{$tmp}</span>";
+			return '<span class="date">' . $tmp . '</span>';
 		}
 	}
 
@@ -445,19 +443,22 @@ class Date {
 		}
 
 		switch ($format) {
-		case 0: // Years - integer only (for statistics, rather than for display)
+		case 0:
+			// Years - integer only (for statistics, rather than for display)
 			if ($jd && $d1->MinJD() && $d1->MinJD() <= $jd) {
 				return $d1->MinDate()->getAge(false, $jd, false);
 			} else {
 				return -1;
 			}
-		case 1: // Days - integer only (for sorting, rather than for display)
+		case 1:
+			// Days - integer only (for sorting, rather than for display)
 			if ($jd && $d1->MinJD()) {
 				return $jd - $d1->MinJD();
 			} else {
 				return -1;
 			}
-		case 2: // Just years, in local digits, with warning for negative/
+		case 2:
+			// Just years, in local digits, with warning for negative/
 			if ($jd && $d1->MinJD()) {
 				if ($d1->MinJD() > $jd) {
 					return '<i class="icon-warning"></i>';
@@ -469,7 +470,6 @@ class Date {
 			}
 		default:
 			throw new \InvalidArgumentException('format: ' . $format);
-			// TODO: combine GetAgeGedcom() into this function
 		}
 	}
 
