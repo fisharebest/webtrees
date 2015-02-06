@@ -31,9 +31,17 @@ require 'vendor/autoload.php';
 // session.php won’t run until a configuration file and database connection exist...
 // This next block of code is a minimal version of session.php
 define('WT_WEBTREES', 'webtrees');
+define('WT_BASE_URL', '');
 define('WT_ROOT', '');
 define('WT_GED_ID', 0);
 define('WT_DATA_DIR', realpath('data') . DIRECTORY_SEPARATOR);
+
+// No configuration file?  Start the setup wizard
+if (!file_exists(WT_DATA_DIR . 'config.ini.php')) {
+	header('Location: setup.php');
+
+	return;
+}
 
 $WT_SESSION         = new \stdClass;
 $WT_SESSION->locale = '';

@@ -36,6 +36,7 @@ require 'vendor/autoload.php';
 // session.php won’t run until a configuration file exists…
 // This next block of code is a minimal version of session.php
 define('WT_WEBTREES', 'webtrees');
+define('WT_BASE_URL', '');
 define('WT_DATA_DIR', 'data/');
 define('WT_DEBUG_SQL', false);
 define('WT_REQUIRED_MYSQL_VERSION', '5.0.13');
