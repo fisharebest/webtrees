@@ -71,8 +71,8 @@ if ($tree1_id && $tree2_id != $tree1_id) {
 	))->fetchAssoc();
 
 	if ($xrefs) {
-		$tree1 = Tree::get($tree1_id);
-		$tree2 = Tree::get($tree2_id);
+		$tree1 = Tree::findById($tree1_id);
+		$tree2 = Tree::findById($tree2_id);
 		echo
 			'<p>', I18N::translate('In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”.'), '</p>',
 			'<p>',

@@ -342,20 +342,20 @@ class Tree {
 	}
 
 	/**
-	 * Get the tree with a specific ID.
+	 * Find the tree with a specific ID.
 	 *
 	 * @param integer $tree_id
 	 *
 	 * @return Tree
 	 */
-	public static function get($tree_id) {
+	public static function findById($tree_id) {
 		$trees = self::getAll();
 
 		return $trees[$tree_id];
 	}
 
 	/**
-	 * Find by name
+	 * Find the tree with a specific name.
 	 *
 	 * @param string $tree_name
 	 *
@@ -363,7 +363,7 @@ class Tree {
 	 */
 	public static function findByName($tree_name) {
 		foreach (self::getAll() as $tree) {
-			if ($tree->getName() == $tree_name) {
+			if ($tree->getName() === $tree_name) {
 				return $tree;
 			}
 		}
@@ -425,7 +425,7 @@ class Tree {
 	 * @return string
 	 */
 	public static function getNameFromId($tree_id) {
-		return self::get($tree_id)->name;
+		return self::findById($tree_id)->name;
 	}
 
 	/**
@@ -445,12 +445,12 @@ class Tree {
 			$tree_id = Database::prepare("SELECT LAST_INSERT_ID()")->fetchOne();
 		} catch (PDOException $ex) {
 			// A tree with that name already exists?
-			return self::get(self::getIdFromName($tree_name));
+			return self::findById(self::getIdFromName($tree_name));
 		}
 
 		// Update the list of trees - to include this new one
 		self::$trees = null;
-		$tree        = self::get($tree_id);
+		$tree        = self::findById($tree_id);
 
 		$tree->setPreference('imported', '0');
 		$tree->setPreference('title', $tree_title);

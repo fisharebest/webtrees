@@ -55,7 +55,7 @@ class html_WT_Module extends Module implements ModuleBlockInterface {
 		case '__default__':
 			$tree_id = Tree::getIdFromName(Site::getPreference('DEFAULT_GEDCOM'));
 			if ($tree_id) {
-				$stats = new Stats(Tree::get($tree_id));
+				$stats = new Stats(Tree::findById($tree_id));
 			} else {
 				$stats = new Stats($WT_TREE);
 			}
@@ -63,7 +63,7 @@ class html_WT_Module extends Module implements ModuleBlockInterface {
 		default:
 			$tree_id = Tree::getIdFromName($gedcom);
 			if ($tree_id) {
-				$stats = new Stats(Tree::get($tree_id));
+				$stats = new Stats(Tree::findById($tree_id));
 			} else {
 				$stats = new Stats($WT_TREE);
 			}

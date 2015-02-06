@@ -38,7 +38,7 @@ switch (Filter::post('action')) {
 case 'delete':
 	$gedcom_id = Filter::postInteger('gedcom_id');
 	if (Filter::checkCsrf() && $gedcom_id) {
-		$tree = Tree::get($gedcom_id);
+		$tree = Tree::findById($gedcom_id);
 		FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ I18N::translate('The family tree “%s” has been deleted.', $tree->getTitleHtml()), 'success');
 		$tree->delete();
 	}
@@ -71,7 +71,7 @@ case 'new_tree':
 case 'replace_upload':
 	$gedcom_id  = Filter::postInteger('gedcom_id');
 	$keep_media = Filter::postBool('keep_media');
-	$tree       = Tree::get($gedcom_id);
+	$tree       = Tree::findById($gedcom_id);
 
 	if (Filter::checkCsrf() && $tree) {
 		foreach ($_FILES as $FILE) {
@@ -87,7 +87,7 @@ case 'replace_import':
 	$basename   = basename(Filter::post('tree_name'));
 	$gedcom_id  = Filter::postInteger('gedcom_id');
 	$keep_media = Filter::postBool('keep_media');
-	$tree       = Tree::get($gedcom_id);
+	$tree       = Tree::findById($gedcom_id);
 
 	if (Filter::checkCsrf() && $tree && $basename) {
 		$tree->importGedcomFile(WT_DATA_DIR . $basename, $basename, $keep_media);
@@ -158,7 +158,7 @@ case 'importform':
 	<h1><?php echo $controller->getPageTitle(); ?></h1>
 	<?php
 
-	$tree = Tree::get(Filter::getInteger('gedcom_id'));
+	$tree = Tree::findById(Filter::getInteger('gedcom_id'));
 	// Check it exists
 	if (!$tree) {
 		break;

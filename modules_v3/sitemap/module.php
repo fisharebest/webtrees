@@ -141,7 +141,7 @@ class sitemap_WT_Module extends Module implements ModuleConfigInterface {
 		if ($timestamp > WT_TIMESTAMP - self::CACHE_LIFE && !Auth::check()) {
 			$data = $this->getSetting('sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.xml');
 		} else {
-			$tree = Tree::get($ged_id);
+			$tree = Tree::findById($ged_id);
 			$data = '<url><loc>' . WT_BASE_URL . 'index.php?ctype=gedcom&amp;ged=' . $tree->getNameUrl() . '</loc></url>' . PHP_EOL;
 			$records = array();
 			switch ($rec_type) {

@@ -54,7 +54,7 @@ $row = Database::prepare(
 )->execute(array($gedcom_id))->fetchOneRow();
 
 if ($row->import_offset == $row->import_total) {
-	Tree::get($gedcom_id)->setPreference('imported', '1');
+	Tree::findById($gedcom_id)->setPreference('imported', '1');
 	// Finished?  Show the maintenance links, similar to admin_trees_manage.php
 	Database::commit();
 	$controller->addInlineJavascript(

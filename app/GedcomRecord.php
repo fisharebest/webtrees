@@ -74,7 +74,7 @@ class GedcomRecord {
 		$this->xref      = $xref;
 		$this->gedcom    = $gedcom;
 		$this->pending   = $pending;
-		$this->tree      = Tree::get($tree_id);
+		$this->tree      = Tree::findById($tree_id);
 
 		$this->parseFacts();
 	}
