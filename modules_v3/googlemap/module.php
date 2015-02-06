@@ -1954,8 +1954,8 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 
 		// Create the markers list array
 		$gmarks = array();
-		sort_facts($indifacts);
 		$i = 0;
+
 		foreach ($indifacts as $fact) {
 			if (!$fact->getPlace()->isEmpty()) {
 				$ctla = preg_match("/\d LATI (.*)/", $fact->getGedcom(), $match1);

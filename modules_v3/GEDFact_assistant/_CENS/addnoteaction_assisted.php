@@ -16,6 +16,13 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
+
 $newgedrec = "0 @XREF@ NOTE\n";
 
 if (isset($_REQUEST['EVEN'])) {
@@ -118,7 +125,7 @@ if (!empty($NOTE)) {
 }
 
 if ($pid_array != '') {
-	$record = GedcomRecord::createRecord($newgedrec, WT_GED_ID);
+	$record = $WT_TREE->createRecord($newgedrec);
 } else {
 	$record = '';
 	echo '<div class="indent">No individuals entered, close and try again </div>';

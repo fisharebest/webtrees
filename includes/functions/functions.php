@@ -2307,14 +2307,12 @@ function get_query_url($overwrite = null, $separator = '&') {
 /**
  * Generate a new XREF, unique across all family trees
  *
- * @param string  $type
- * @param integer $ged_id
+ * @param string $type
+ * @param Tree   $tree
  *
  * @return string
  */
-function get_new_xref($type = 'INDI', $ged_id = WT_GED_ID) {
-	global $WT_TREE;
-
+function get_new_xref($type = 'INDI', $tree) {
 	/** @var string[] Which tree preference is used for which record type */
 	static $type_to_preference = array(
 		'INDI' => 'GEDCOM_ID_PREFIX',
@@ -2326,7 +2324,7 @@ function get_new_xref($type = 'INDI', $ged_id = WT_GED_ID) {
 	);
 
 	if (array_key_exists($type, $type_to_preference)) {
-		$prefix = $WT_TREE->getPreference($type_to_preference[$type]);
+		$prefix = $tree->getPreference($type_to_preference[$type]);
 	} else {
 		// Use the first non-underscore character
 		$prefix = substr(trim($type, '_'), 0, 1);
@@ -2336,20 +2334,20 @@ function get_new_xref($type = 'INDI', $ged_id = WT_GED_ID) {
 		// Use LAST_INSERT_ID(expr) to provide a transaction-safe sequence.  See
 		// http://dev.mysql.com/doc/refman/5.6/en/information-functions.html#function_last-insert-id
 		$statement = Database::prepare(
-			"UPDATE `##next_id` SET next_id = LAST_INSERT_ID(next_id + 1) WHERE record_type = :record_type AND gedcom_id = :gedcom_id"
+			"UPDATE `##next_id` SET next_id = LAST_INSERT_ID(next_id + 1) WHERE record_type = :record_type AND gedcom_id = :tree_id"
 		);
 		$statement->execute(array(
 			'record_type' => $type,
-			'gedcom_id'   => $ged_id,
+			'tree_id'     => $tree->getTreeId(),
 		));
 
 		if ($statement->rowCount() === 0) {
 			// First time we've used this record type.
 			Database::prepare(
-				"INSERT INTO `##next_id` (gedcom_id, record_type, next_id) VALUES(:gedcom_id, :record_type, 1)"
+				"INSERT INTO `##next_id` (gedcom_id, record_type, next_id) VALUES(:tree_id, :record_type, 1)"
 			)->execute(array(
 				'record_type' => $type,
-				'gedcom_id'   => $ged_id,
+				'tree_id'     => $tree->getTreeId(),
 			));
 			$num = 1;
 		} else {
