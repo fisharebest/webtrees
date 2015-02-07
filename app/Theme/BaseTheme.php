@@ -656,7 +656,7 @@ abstract class BaseTheme {
 	 */
 	public function individualBox(Individual $individual) {
 		$personBoxClass = array_search($individual->getSex(), array('person_box' => 'M', 'person_boxF' => 'F', 'person_boxNN' => 'U'));
-		if ($this->tree->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
+		if ($individual->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
 			$thumbnail = $individual->displayImage();
 		} else {
 			$thumbnail = '';
@@ -701,7 +701,7 @@ abstract class BaseTheme {
 	 */
 	public function individualBoxLarge(Individual $individual) {
 		$personBoxClass = array_search($individual->getSex(), array('person_box' => 'M', 'person_boxF' => 'F', 'person_boxNN' => 'U'));
-		if ($this->tree->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
+		if ($individual->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
 			$thumbnail = $individual->displayImage();
 		} else {
 			$thumbnail = '';
@@ -737,7 +737,7 @@ abstract class BaseTheme {
 	 */
 	public function individualBoxSmall(Individual $individual) {
 		$personBoxClass = array_search($individual->getSex(), array('person_box' => 'M', 'person_boxF' => 'F', 'person_boxNN' => 'U'));
-		if ($this->tree->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
+		if ($individual->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
 			$thumbnail = $individual->displayImage();
 		} else {
 			$thumbnail = '';
@@ -776,7 +776,7 @@ abstract class BaseTheme {
 	protected function individualBoxFacts(Individual $individual) {
 		$html = '';
 
-		$opt_tags = preg_split('/\W/', $this->tree->getPreference('CHART_BOX_TAGS'), 0, PREG_SPLIT_NO_EMPTY);
+		$opt_tags = preg_split('/\W/', $individual->getTree()->getPreference('CHART_BOX_TAGS'), 0, PREG_SPLIT_NO_EMPTY);
 		// Show BIRT or equivalent event
 		foreach (explode('|', WT_EVENTS_BIRT) as $birttag) {
 			if (!in_array($birttag, $opt_tags)) {
@@ -827,7 +827,7 @@ abstract class BaseTheme {
 	 * @return string
 	 */
 	protected function individualBoxLdsSummary(Individual $individual) {
-		if ($this->tree->getPreference('SHOW_LDS_AT_GLANCE')) {
+		if ($individual->getTree()->getPreference('SHOW_LDS_AT_GLANCE')) {
 			$BAPL = $individual->getFacts('BAPL') ? 'B' : '_';
 			$ENDL = $individual->getFacts('ENDL') ? 'E' : '_';
 			$SLGC = $individual->getFacts('SLGC') ? 'C' : '_';
@@ -923,7 +923,7 @@ abstract class BaseTheme {
 	 * @return string
 	 */
 	protected function individualBoxSexSymbol(Individual $individual) {
-		if ($this->tree->getPreference('PEDIGREE_SHOW_GENDER')) {
+		if ($individual->getTree()->getPreference('PEDIGREE_SHOW_GENDER')) {
 			return $individual->sexImage('large');
 		} else {
 			return '';
@@ -1478,10 +1478,10 @@ abstract class BaseTheme {
 	 * @return Menu|null
 	 */
 	protected function menuMyPedigree() {
-		$showFull   = $this->tree->getPreference('PEDIGREE_FULL_DETAILS') ? 1 : 0;
-		$showLayout = $this->tree->getPreference('PEDIGREE_LAYOUT') ? 1 : 0;
-
 		if (WT_USER_GEDCOM_ID) {
+			$showFull   = $this->tree->getPreference('PEDIGREE_FULL_DETAILS') ? 1 : 0;
+			$showLayout = $this->tree->getPreference('PEDIGREE_LAYOUT') ? 1 : 0;
+
 			return new Menu(
 				I18N::translate('My pedigree'),
 				'pedigree.php?' . $this->tree_url . '&amp;rootid=' . WT_USER_GEDCOM_ID . "&amp;show_full={$showFull}&amp;talloffset={$showLayout}",
