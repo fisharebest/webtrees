@@ -98,7 +98,7 @@ class ReportBase {
 	 */
 	function setup() {
 		// Set RTL direction
-		if (I18N::textDirection() === 'rtl') {
+		if (I18N::direction() === 'rtl') {
 			$this->rtl = true;
 		}
 		// Set the Keywords

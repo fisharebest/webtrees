@@ -67,7 +67,7 @@ class top10_givnnames_WT_Module extends Module implements ModuleBlockInterface {
 		//Select List or Table
 		switch ($infoStyle) {
 		case "list": // Output style 1:  Simple list style.  Better suited to left side of page.
-			if (I18N::textDirection() === 'ltr') {
+			if (I18N::direction() === 'ltr') {
 				$padding = 'padding-left: 15px';
 			} else {
 				$padding = 'padding-right: 15px';

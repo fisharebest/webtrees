@@ -2098,7 +2098,7 @@ class Stats {
 		} else {
 			$top10 = implode(' ', $top10);
 		}
-		if (I18N::textDirection() === 'rtl') {
+		if (I18N::direction() === 'rtl') {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
 		}
 		if ($type == 'list') {
@@ -2172,7 +2172,7 @@ class Stats {
 		} else {
 			$top10 = implode(';&nbsp; ', $top10);
 		}
-		if (I18N::textDirection() === 'rtl') {
+		if (I18N::direction() === 'rtl') {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
 		}
 		if ($type === 'list') {
@@ -2935,7 +2935,7 @@ class Stats {
 		} else {
 			$top10 = implode(';&nbsp; ', $top10);
 		}
-		if (I18N::textDirection() === 'rtl') {
+		if (I18N::direction() === 'rtl') {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
 		}
 		if ($type === 'list') {
@@ -3010,7 +3010,7 @@ class Stats {
 		} else {
 			$top10 = implode(';&nbsp; ', $top10);
 		}
-		if (I18N::textDirection() === 'rtl') {
+		if (I18N::direction() === 'rtl') {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
 		}
 		if ($type === 'list') {
@@ -3983,7 +3983,7 @@ class Stats {
 		} else {
 			$top10 = implode(';&nbsp; ', $top10);
 		}
-		if (I18N::textDirection() === 'rtl') {
+		if (I18N::direction() === 'rtl') {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
 		}
 		if ($type === 'list') {
@@ -4104,7 +4104,7 @@ class Stats {
 		if ($type === 'list') {
 			$top10 = implode('', $top10);
 		}
-		if (I18N::textDirection() === 'rtl') {
+		if (I18N::direction() === 'rtl') {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
 		}
 		if ($type === 'list') {
@@ -4574,7 +4574,7 @@ class Stats {
 		} else {
 			$top10 = implode(';&nbsp; ', $top10);
 		}
-		if (I18N::textDirection() === 'rtl') {
+		if (I18N::direction() === 'rtl') {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
 		}
 		if ($type === 'list') {
@@ -4732,7 +4732,7 @@ class Stats {
 		} else {
 			$top10 = implode(';&nbsp; ', $top10);
 		}
-		if (I18N::textDirection() === 'rtl') {
+		if (I18N::direction() === 'rtl') {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
 		}
 		if ($type === 'list') {

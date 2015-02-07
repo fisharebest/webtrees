@@ -524,7 +524,7 @@ function mediaObjectInfo(Media $media) {
 	if (array_key_exists('GEDFact_assistant', Module::getActiveModules())) {
 		$html .= '<a onclick="return ilinkitem(\'' . $xref . '\', \'manage\', \'' . $gedcom . '\')" href="#">' . I18N::Translate('Manage links') . '</a>';
 	} else {
-		$classSuffix = I18N::textDirection() === 'rtl' ? '_rtl' : '';
+		$classSuffix = I18N::direction() === 'rtl' ? '_rtl' : '';
 
 		$menu = new Menu(I18N::translate('Manage links'));
 		$menu->addClass('', 'submenu');

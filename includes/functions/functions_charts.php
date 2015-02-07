@@ -327,7 +327,7 @@ function print_family_children(Family $family, $childid = '', $sosa = 0, $label 
 					if ($f > 0) {
 						echo '</tr><tr><td></td>';
 						echo '<td valign="top"';
-						if (I18N::textDirection() === 'rtl') {
+						if (I18N::direction() === 'rtl') {
 							echo ' align="left">';
 						} else {
 							echo ' align="right">';
@@ -437,10 +437,10 @@ function print_url_arrow($url, $label, $dir = 2) {
 
 	// arrow direction
 	$adir = $dir;
-	if (I18N::textDirection() === 'rtl' && $dir === 0) {
+	if (I18N::direction() === 'rtl' && $dir === 0) {
 		$adir = 1;
 	}
-	if (I18N::textDirection() === 'rtl' && $dir === 1) {
+	if (I18N::direction() === 'rtl' && $dir === 1) {
 		$adir = 0;
 	}
 
@@ -509,7 +509,7 @@ function print_cousins($famid) {
 			} else {
 				echo '<td><img width="10px" height="3px"';
 			}
-			if (I18N::textDirection() === 'ltr') {
+			if (I18N::direction() === 'ltr') {
 				echo ' style="padding-right: 2px;"';
 			} else {
 				echo ' style="padding-left: 2px;"';

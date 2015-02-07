@@ -683,7 +683,7 @@ class ReportHtml extends ReportBase {
 	 */
 	function write($text, $color = '', $useclass = true) {
 		$style = $this->getStyle($this->getCurrentStyle());
-		$htmlcode = '<span dir="'. I18N::textDirection() . '"';
+		$htmlcode = '<span dir="'. I18N::direction() . '"';
 		if ($useclass) {
 			$htmlcode .= ' class="' . $style['name'] . '"';
 		}

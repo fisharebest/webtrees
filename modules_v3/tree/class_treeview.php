@@ -245,7 +245,7 @@ class TreeView {
 
 		/* draw the person. Do NOT add person or family id as an id, since a same person could appear more than once in the tree !!! */
 		// Fixing the width for td to the box initial width when the person is the root person fix a rare bug that happen when a person without child and without known parents is the root person : an unwanted white rectangle appear at the right of the person’s boxes, otherwise.
-		$html .= '<td' . ($isRoot ? ' style="width:1px"' : '') . '><div class="tv_box' . ($isRoot ? ' rootPerson' : '') . '" dir="' . I18N::textDirection() . '" style="text-align: ' . (I18N::textDirection() === 'rtl' ? 'right' : 'left') . '; direction: ' . I18N::textDirection() . '" abbr="' . $person->getXref() . '" onclick="' . $this->name . 'Handler.expandBox(this, event);">';
+		$html .= '<td' . ($isRoot ? ' style="width:1px"' : '') . '><div class="tv_box' . ($isRoot ? ' rootPerson' : '') . '" dir="' . I18N::direction() . '" style="text-align: ' . (I18N::direction() === 'rtl' ? 'right' : 'left') . '; direction: ' . I18N::direction() . '" abbr="' . $person->getXref() . '" onclick="' . $this->name . 'Handler.expandBox(this, event);">';
 		$html .= $this->drawPersonName($person);
 		$fop = array(); // $fop is fathers of partners
 		if (!is_null($partner)) {

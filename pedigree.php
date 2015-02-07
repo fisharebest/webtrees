@@ -95,7 +95,7 @@ if ($controller->error_message) {
 	return;
 }
 
-$posn = I18N::textDirection() === 'rtl' ? 'right' : 'left';
+$posn = I18N::direction() === 'rtl' ? 'right' : 'left';
 
 echo '<div id="pedigree_chart" class="layout', $talloffset, '">';
 //-- echo the boxes
@@ -163,7 +163,7 @@ for ($i = ($controller->treesize - 1); $i >= 0; $i--) {
 		if ($i > (int) ($controller->treesize / 2) + (int) ($controller->treesize / 4)) {
 			$did++;
 		}
-		if (I18N::textDirection() === 'rtl') {
+		if (I18N::direction() === 'rtl') {
 			$arrow = 'icon-larrow';
 		} else {
 			$arrow = 'icon-rarrow';
@@ -187,7 +187,7 @@ $famids = $controller->root->getSpouseFamilies();
 $cfamids = $controller->root->getChildFamilies();
 
 if (count($famids) > 0) {
-	if (I18N::textDirection() === 'rtl') {
+	if (I18N::direction() === 'rtl') {
 		$arrow = 'icon-rarrow';
 	} else {
 		$arrow = 'icon-larrow';
@@ -263,7 +263,7 @@ $controller->addInlineJavascript('
 
 	// Draw joining lines in <canvas>
 	// Set variables
-	var textdirection = "' . I18N::textDirection() . '",
+	var textdirection = "' . I18N::direction() . '",
 		talloffset = ' . $talloffset . ',
 		canvaswidth = ' . ($canvaswidth) . ',
 		offset_x = 20,

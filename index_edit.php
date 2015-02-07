@@ -101,7 +101,7 @@ if ($can_reset && Filter::post('default') === '1') {
 // Define all the icons we're going to use
 $IconUarrow = 'icon-uarrow';
 $IconDarrow = 'icon-darrow';
-if (I18N::textDirection() === 'ltr') {
+if (I18N::direction() === 'ltr') {
 	$IconRarrow  = 'icon-rarrow';
 	$IconLarrow  = 'icon-larrow';
 	$IconRDarrow = 'icon-rdarrow';

@@ -107,7 +107,7 @@ class CompactController extends ChartController {
 		$indi = $this->treeid[$n];
 
 		$arrow_dir = substr($arrow_dir, 0, 1);
-		if (I18N::textDirection() === 'rtl') {
+		if (I18N::direction() === 'rtl') {
 			if ($arrow_dir === 'l') {
 				$arrow_dir = 'r';
 			} elseif ($arrow_dir === 'r') {

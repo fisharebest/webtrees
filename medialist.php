@@ -175,7 +175,7 @@ if ($search) {
 			echo '<', $tsection, '><tr><td colspan="2">';
 
 			echo '<table class="list_table_controls"><tr><td>';
-			if (I18N::textDirection() === 'ltr') {
+			if (I18N::direction() === 'ltr') {
 				if ($ct > $max) {
 					if ($currentPage > 1) {
 						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=0&amp;max=', $max, '" class="icon-ldarrow"></a>';
@@ -206,7 +206,7 @@ if ($search) {
 			echo '</td>';
 			echo '<td>', I18N::translate('Page %s of %s', $currentPage, $lastPage), '</td>';
 			echo '<td>';
-			if (I18N::textDirection() === 'ltr') {
+			if (I18N::direction() === 'ltr') {
 				if ($ct > $max) {
 					if ($start + $max < $ct) {
 						$newstart = $start + $count;

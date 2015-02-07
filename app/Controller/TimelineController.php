@@ -188,10 +188,10 @@ class TimelineController extends PageController {
 		$xoffset += abs($tyoffset);
 		$placements[$place] = $yoffset;
 
-		echo "<div id=\"fact$factcount\" style=\"position:absolute; " . (I18N::textDirection() === 'ltr' ? 'left: ' . ($xoffset) : 'right: ' . ($xoffset)) . 'px; top:' . ($yoffset) . "px; font-size: 8pt; height: " . ($this->bheight) . "px;\" onmousedown=\"factMouseDown(this, '" . $factcount . "', " . ($yoffset - $tyoffset) . ");\">";
+		echo "<div id=\"fact$factcount\" style=\"position:absolute; " . (I18N::direction() === 'ltr' ? 'left: ' . ($xoffset) : 'right: ' . ($xoffset)) . 'px; top:' . ($yoffset) . "px; font-size: 8pt; height: " . ($this->bheight) . "px;\" onmousedown=\"factMouseDown(this, '" . $factcount . "', " . ($yoffset - $tyoffset) . ");\">";
 		echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"cursor: hand;\"><tr><td>";
 		echo "<img src=\"" . Theme::theme()->parameter('image-hline') . "\" name=\"boxline$factcount\" id=\"boxline$factcount\" height=\"3\" align=\"left\" width=\"10\" alt=\"\" style=\"padding-";
-		if (I18N::textDirection() === 'ltr') {
+		if (I18N::direction() === 'ltr') {
 			echo 'left: 3px;">';
 		} else {
 			echo 'right: 3px;">';
@@ -246,7 +246,7 @@ class TimelineController extends PageController {
 		}
 		echo '</td></tr></table>';
 		echo '</div>';
-		if (I18N::textDirection() === 'ltr') {
+		if (I18N::direction() === 'ltr') {
 			$img  = 'image-dline2';
 			$ypos = '0%';
 		} else {
@@ -256,7 +256,7 @@ class TimelineController extends PageController {
 		$dyoffset = ($yoffset - $tyoffset) + $this->bheight / 3;
 		if ($tyoffset < 0) {
 			$dyoffset = $yoffset + $this->bheight / 3;
-			if (I18N::textDirection() === 'ltr') {
+			if (I18N::direction() === 'ltr') {
 				$img  = 'image-dline';
 				$ypos = '100%';
 			} else {
@@ -265,7 +265,7 @@ class TimelineController extends PageController {
 			}
 		}
 		// Print the diagonal line
-		echo '<div id="dbox' . $factcount . '" style="position:absolute; ' . (I18N::textDirection() === 'ltr' ? 'left: ' . ($basexoffset + 25) : 'right: ' . ($basexoffset + 25)) . 'px; top:' . ($dyoffset) . 'px; font-size: 8pt; height: ' . abs($tyoffset) . 'px; width: ' . abs($tyoffset) . 'px;';
+		echo '<div id="dbox' . $factcount . '" style="position:absolute; ' . (I18N::direction() === 'ltr' ? 'left: ' . ($basexoffset + 25) : 'right: ' . ($basexoffset + 25)) . 'px; top:' . ($dyoffset) . 'px; font-size: 8pt; height: ' . abs($tyoffset) . 'px; width: ' . abs($tyoffset) . 'px;';
 		echo ' background-image: url(\'' . Theme::theme()->parameter($img) . '\');';
 		echo ' background-position: 0% ' . $ypos . ';">';
 		echo '</div>';

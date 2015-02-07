@@ -69,7 +69,7 @@ class HourglassController extends ChartController {
 		}
 
 		//-- flip the arrows for RTL languages
-		if (I18N::textDirection() === 'ltr') {
+		if (I18N::direction() === 'ltr') {
 			$this->left_arrow = 'icon-larrow';
 			$this->right_arrow = 'icon-rarrow';
 		} else {
@@ -231,7 +231,7 @@ class HourglassController extends ChartController {
 		$pid = $person->getXref();
 		$tablealign  = 'right';
 		$otablealign = 'left';
-		if (I18N::textDirection() === 'rtl') {
+		if (I18N::direction() === 'rtl') {
 			$tablealign  = 'left';
 			$otablealign = 'right';
 		}
@@ -266,7 +266,7 @@ class HourglassController extends ChartController {
 					$person2 = $children[$i];
 					$chil = $person2->getXref();
 					echo '<tr>';
-					echo '<td id="td_', $chil, '" class="', I18N::textDirection(), '" style="text-align:', $otablealign, '">';
+					echo '<td id="td_', $chil, '" class="', I18N::direction(), '" style="text-align:', $otablealign, '">';
 					$kids = $this->printDescendency($person2, $count + 1);
 					$numkids += $kids;
 					echo '</td>';

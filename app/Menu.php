@@ -246,7 +246,7 @@ class Menu {
 
 		if ($c > 0) {
 			$submenuid = "menu{$id}_subs";
-			if (I18N::textDirection() === 'ltr') {
+			if (I18N::direction() === 'ltr') {
 				$output .= '<div style="text-align: left;">';
 			} else {
 				$output .= '<div style="text-align: right;">';
