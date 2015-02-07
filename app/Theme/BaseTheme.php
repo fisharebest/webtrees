@@ -656,7 +656,7 @@ abstract class BaseTheme {
 	 */
 	public function individualBox(Individual $individual) {
 		$personBoxClass = array_search($individual->getSex(), array('person_box' => 'M', 'person_boxF' => 'F', 'person_boxNN' => 'U'));
-		if ($this->tree->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
+		if ($individual->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
 			$thumbnail = $individual->displayImage();
 		} else {
 			$thumbnail = '';
@@ -701,7 +701,7 @@ abstract class BaseTheme {
 	 */
 	public function individualBoxLarge(Individual $individual) {
 		$personBoxClass = array_search($individual->getSex(), array('person_box' => 'M', 'person_boxF' => 'F', 'person_boxNN' => 'U'));
-		if ($this->tree->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
+		if ($individual->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
 			$thumbnail = $individual->displayImage();
 		} else {
 			$thumbnail = '';
@@ -737,7 +737,7 @@ abstract class BaseTheme {
 	 */
 	public function individualBoxSmall(Individual $individual) {
 		$personBoxClass = array_search($individual->getSex(), array('person_box' => 'M', 'person_boxF' => 'F', 'person_boxNN' => 'U'));
-		if ($this->tree->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
+		if ($individual->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
 			$thumbnail = $individual->displayImage();
 		} else {
 			$thumbnail = '';
@@ -776,7 +776,7 @@ abstract class BaseTheme {
 	protected function individualBoxFacts(Individual $individual) {
 		$html = '';
 
-		$opt_tags = preg_split('/\W/', $this->tree->getPreference('CHART_BOX_TAGS'), 0, PREG_SPLIT_NO_EMPTY);
+		$opt_tags = preg_split('/\W/', $individual->getTree()->getPreference('CHART_BOX_TAGS'), 0, PREG_SPLIT_NO_EMPTY);
 		// Show BIRT or equivalent event
 		foreach (explode('|', WT_EVENTS_BIRT) as $birttag) {
 			if (!in_array($birttag, $opt_tags)) {
@@ -827,7 +827,7 @@ abstract class BaseTheme {
 	 * @return string
 	 */
 	protected function individualBoxLdsSummary(Individual $individual) {
-		if ($this->tree->getPreference('SHOW_LDS_AT_GLANCE')) {
+		if ($individual->getTree()->getPreference('SHOW_LDS_AT_GLANCE')) {
 			$BAPL = $individual->getFacts('BAPL') ? 'B' : '_';
 			$ENDL = $individual->getFacts('ENDL') ? 'E' : '_';
 			$SLGC = $individual->getFacts('SLGC') ? 'C' : '_';
@@ -923,7 +923,7 @@ abstract class BaseTheme {
 	 * @return string
 	 */
 	protected function individualBoxSexSymbol(Individual $individual) {
-		if ($this->tree->getPreference('PEDIGREE_SHOW_GENDER')) {
+		if ($individual->getTree()->getPreference('PEDIGREE_SHOW_GENDER')) {
 			return $individual->sexImage('large');
 		} else {
 			return '';
@@ -1329,51 +1329,126 @@ abstract class BaseTheme {
 	 * @return Menu|null
 	 */
 	protected function menuLists() {
-		global $controller;
-
-		// The top level menu shows the individual list
 		$menu = new Menu(I18N::translate('Lists'), 'indilist.php?' . $this->tree_url, 'menu-list');
 
 		// Do not show empty lists
 		$row = Database::prepare(
 			"SELECT SQL_CACHE" .
-			" EXISTS(SELECT 1 FROM `##sources` WHERE s_file=?                  ) AS sour," .
-			" EXISTS(SELECT 1 FROM `##other`   WHERE o_file=? AND o_type='REPO') AS repo," .
-			" EXISTS(SELECT 1 FROM `##other`   WHERE o_file=? AND o_type='NOTE') AS note," .
-			" EXISTS(SELECT 1 FROM `##media`   WHERE m_file=?                  ) AS obje"
+			" EXISTS(SELECT 1 FROM `##sources` WHERE s_file = ?                  ) AS sour," .
+			" EXISTS(SELECT 1 FROM `##other`   WHERE o_file = ? AND o_type='REPO') AS repo," .
+			" EXISTS(SELECT 1 FROM `##other`   WHERE o_file = ? AND o_type='NOTE') AS note," .
+			" EXISTS(SELECT 1 FROM `##media`   WHERE m_file = ?                  ) AS obje"
 		)->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID))->fetchOneRow();
 
-		// Build a list of submenu items and then sort it in localized name order
-		$surname_url = '&amp;surname=' . rawurlencode($controller->getSignificantSurname());
-
 		$menulist = array(
-			new Menu(I18N::translate('Individuals'), 'indilist.php?' . $this->tree_url . $surname_url, 'menu-list-indi'),
+			$this->menuListsIndividuals(),
 		);
 
 		if (!$this->isSearchEngine()) {
-			$menulist[] = new Menu(I18N::translate('Families'), 'famlist.php?' . $this->tree_url . $surname_url, 'menu-list-fam');
-			$menulist[] = new Menu(I18N::translate('Branches'), 'branches.php?' . $this->tree_url . $surname_url, 'menu-branches');
-			$menulist[] = new Menu(I18N::translate('Place hierarchy'), 'placelist.php?' . $this->tree_url, 'menu-list-plac');
+			$menulist[] = $this->menuListsFamilies();
+			$menulist[] = $this->menuListsBranches();
+			$menulist[] = $this->menuListsPlaces();
 			if ($row->obje) {
-				$menulist[] = new Menu(I18N::translate('Media objects'), 'medialist.php?' . $this->tree_url, 'menu-list-obje');
+				$menulist[] = $this->menuListsMedia();
 			}
 			if ($row->repo) {
-				$menulist[] = new Menu(I18N::translate('Repositories'), 'repolist.php?' . $this->tree_url, 'menu-list-repo');
+				$menulist[] = $this->menuListsRepositories();
 			}
 			if ($row->sour) {
-				$menulist[] = new Menu(I18N::translate('Sources'), 'sourcelist.php?' . $this->tree_url, 'menu-list-sour');
+				$menulist[] = $this->menuListsSources();
 			}
 			if ($row->note) {
-				$menulist[] = new Menu(I18N::translate('Shared notes'), 'notelist.php?' . $this->tree_url, 'menu-list-note');
+				$menulist[] = $this->menuListsNotes();
 			}
 		}
+
 		uasort($menulist, function(Menu $x, Menu $y) {
-				return I18N::strcasecmp($x->getLabel(), $y->getLabel());
-			});
+			return I18N::strcasecmp($x->getLabel(), $y->getLabel());
+		});
 
 		$menu->setSubmenus($menulist);
 
 		return $menu;
+	}
+
+	/**
+	 * A menu for the list of branches
+	 *
+	 * @return Menu
+	 */
+	protected function menuListsBranches() {
+		global $controller;
+
+		return new Menu(I18N::translate('Branches'), 'branches.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($controller->getSignificantSurname()), 'menu-branches');
+	}
+
+	/**
+	 * A menu for the list of families
+	 *
+	 * @return Menu
+	 */
+	protected function menuListsFamilies() {
+		global $controller;
+
+		return new Menu(I18N::translate('Individuals'), 'famlist.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($controller->getSignificantSurname()), 'menu-list-fam');
+	}
+
+	/**
+	 * A menu for the list of individuals
+	 *
+	 * @return Menu
+	 */
+	protected function menuListsIndividuals() {
+		global $controller;
+
+		return new Menu(I18N::translate('Families'), 'famlist.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($controller->getSignificantSurname()), 'menu-list-indi');
+	}
+
+	/**
+	 * A menu for the list of media objects
+	 *
+	 * @return Menu
+	 */
+	protected function menuListsMedia() {
+		return new Menu(I18N::translate('Media objects'), 'medialist.php?' . $this->tree_url, 'menu-list-obje');
+	}
+
+	/**
+	 * A menu for the list of notes
+	 *
+	 * @return Menu
+	 */
+	protected function menuListsNotes() {
+		return new Menu(I18N::translate('Shared notes'), 'notelist.php?' . $this->tree_url, 'menu-list-note');
+	}
+
+	/**
+	 * A menu for the list of individuals
+	 *
+	 * @return Menu
+	 */
+	protected function menuListsPlaces() {
+		global $controller;
+
+		return new Menu(I18N::translate('Place hierarchy'), 'placelist.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($controller->getSignificantSurname()), 'menu-list-plac');
+	}
+
+	/**
+	 * A menu for the list of repositories
+	 *
+	 * @return Menu
+	 */
+	protected function menuListsRepositories() {
+		return new Menu(I18N::translate('Repositories'), 'repolist.php?' . $this->tree_url, 'menu-list-repo');
+	}
+
+	/**
+	 * A menu for the list of sources
+	 *
+	 * @return Menu
+	 */
+	protected function menuListsSources() {
+		return new Menu(I18N::translate('Sources'), 'sourcelist.php?' . $this->tree_url, 'menu-list-sour');
 	}
 
 	/**
@@ -1478,10 +1553,10 @@ abstract class BaseTheme {
 	 * @return Menu|null
 	 */
 	protected function menuMyPedigree() {
-		$showFull   = $this->tree->getPreference('PEDIGREE_FULL_DETAILS') ? 1 : 0;
-		$showLayout = $this->tree->getPreference('PEDIGREE_LAYOUT') ? 1 : 0;
-
 		if (WT_USER_GEDCOM_ID) {
+			$showFull   = $this->tree->getPreference('PEDIGREE_FULL_DETAILS') ? 1 : 0;
+			$showLayout = $this->tree->getPreference('PEDIGREE_LAYOUT') ? 1 : 0;
+
 			return new Menu(
 				I18N::translate('My pedigree'),
 				'pedigree.php?' . $this->tree_url . '&amp;rootid=' . WT_USER_GEDCOM_ID . "&amp;show_full={$showFull}&amp;talloffset={$showLayout}",
@@ -1748,7 +1823,7 @@ abstract class BaseTheme {
 	 * @return bool
 	 */
 	protected function pendingChangesExist() {
-		return exists_pending_change(Auth::user(), $this->tree);
+		return $this->tree && exists_pending_change(Auth::user(), $this->tree);
 	}
 
 	/**

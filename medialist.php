@@ -16,13 +16,6 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/**
- * Defined in session.php
- *
- * @global string $TEXT_DIRECTION
- */
-global $TEXT_DIRECTION;
-
 define('WT_SCRIPT_NAME', 'medialist.php');
 require './includes/session.php';
 
@@ -174,7 +167,7 @@ if ($search) {
 
 	if ($ct > 0) {
 		$currentPage = ((int) ($start / $max)) + 1;
-		$lastPage = (int) (($ct + $max - 1) / $max);
+		$lastPage    = (int) (($ct + $max - 1) / $max);
 
 		echo '<table class="list_table">';
 		// Display controls twice - at the top and bottom of the table
@@ -182,7 +175,7 @@ if ($search) {
 			echo '<', $tsection, '><tr><td colspan="2">';
 
 			echo '<table class="list_table_controls"><tr><td>';
-			if ($TEXT_DIRECTION === 'ltr') {
+			if (I18N::direction() === 'ltr') {
 				if ($ct > $max) {
 					if ($currentPage > 1) {
 						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=0&amp;max=', $max, '" class="icon-ldarrow"></a>';
@@ -213,7 +206,7 @@ if ($search) {
 			echo '</td>';
 			echo '<td>', I18N::translate('Page %s of %s', $currentPage, $lastPage), '</td>';
 			echo '<td>';
-			if ($TEXT_DIRECTION === 'ltr') {
+			if (I18N::direction() === 'ltr') {
 				if ($ct > $max) {
 					if ($start + $max < $ct) {
 						$newstart = $start + $count;
@@ -265,7 +258,7 @@ if ($search) {
 				echo MediaController::getMediaListMenu($mediaobject);
 			}
 			// If sorting by title, highlight the title.  If sorting by filename, highlight the filename
-			if ($sortby == 'title') {
+			if ($sortby === 'title') {
 				echo '<p><b><a href="', $mediaobject->getHtmlUrl(), '">';
 				echo $mediaobject->getFullName();
 				echo '</a></b></p>';

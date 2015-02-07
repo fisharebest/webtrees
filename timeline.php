@@ -20,11 +20,10 @@ namespace Fisharebest\Webtrees;
 /**
  * Defined in session.php
  *
- * @global string  $TEXT_DIRECTION
  * @global integer $basexoffset
  * @global integer $baseyoffset
  */
-global $TEXT_DIRECTION, $basexoffset, $baseyoffset;
+global $basexoffset, $baseyoffset;
 
 define('WT_SCRIPT_NAME', 'timeline.php');
 require './includes/session.php';
@@ -260,7 +259,7 @@ document.onmouseup = function () {
 			foreach ($controller->people as $p => $indi) {
 				$pid = $indi->getXref();
 				$col = $p % 6;
-				if ($i == $half) {
+				if ($i === $half) {
 					echo "</tr><tr>";
 				}
 				$i++;
@@ -323,11 +322,11 @@ if (count($controller->people) > 0) {
 	?>
 	<div id="timeline_chart">
 		<!-- print the timeline line image -->
-		<div id="line" style="position:absolute; <?php echo $TEXT_DIRECTION == "ltr" ? "left: " . ($basexoffset + 22) : "right: " . ($basexoffset + 22); ?>px; top: <?php echo $baseyoffset; ?>px;">
+		<div id="line" style="position:absolute; <?php echo I18N::direction() === 'ltr' ? 'left: ' . ($basexoffset + 22) : "right: " . ($basexoffset + 22); ?>px; top: <?php echo $baseyoffset; ?>px;">
 		<img src="<?php echo Theme::theme()->parameter('image-vline'); ?>" width="3" height="<?php echo ($baseyoffset + (($controller->topyear - $controller->baseyear) * $controller->scale)); ?>" alt="">
 		</div>
 		<!-- print divs for the grid -->
-		<div id="scale<?php echo $controller->baseyear; ?>" style="position:absolute; <?php echo ($TEXT_DIRECTION == "ltr" ? "left: $basexoffset" : "right: $basexoffset"); ?>px; top: <?php echo ($baseyoffset - 5); ?>px; font-size: 7pt; text-align: <?php echo ($TEXT_DIRECTION == "ltr" ? "left" : "right"); ?>;">
+		<div id="scale<?php echo $controller->baseyear; ?>" style="position:absolute; <?php echo (I18N::direction() === 'ltr' ? "left: $basexoffset" : "right: $basexoffset"); ?>px; top: <?php echo ($baseyoffset - 5); ?>px; font-size: 7pt; text-align: <?php echo (I18N::direction() === 'ltr' ? 'left' : 'right'); ?>;">
 			<?php echo $controller->baseyear . '—'; ?>
 		</div>
 		<?php
@@ -337,13 +336,13 @@ if (count($controller->people) > 0) {
 			$mod = 1;
 		}
 		for ($i = $controller->baseyear + 1; $i < $controller->topyear; $i++) {
-			if ($i % $mod == 0) {
-				echo "<div id=\"scale$i\" style=\"position:absolute; " . ($TEXT_DIRECTION == "ltr" ? "left: $basexoffset" : "right: $basexoffset") . "px; top:" . ($baseyoffset + (($i - $controller->baseyear) * $controller->scale) - $controller->scale / 2) . "px; font-size: 7pt; text-align:" . ($TEXT_DIRECTION === "ltr" ? "left" : "right") . ";\">";
+			if ($i % $mod === 0) {
+				echo "<div id=\"scale$i\" style=\"position:absolute; " . (I18N::direction() === 'ltr' ? "left: $basexoffset" : "right: $basexoffset") . "px; top:" . ($baseyoffset + (($i - $controller->baseyear) * $controller->scale) - $controller->scale / 2) . "px; font-size: 7pt; text-align:" . (I18N::direction() === 'ltr' ? 'left' : 'right') . ";\">";
 				echo $i . '—';
 				echo '</div>';
 			}
 		}
-		echo "<div id=\"scale{$controller->topyear}\" style=\"position:absolute; " . ($TEXT_DIRECTION == "ltr" ? "left: $basexoffset" : "right: $basexoffset") . "px; top:" . ($baseyoffset + (($controller->topyear - $controller->baseyear) * $controller->scale)) . "px; font-size: 7pt; text-align:" . ($TEXT_DIRECTION == "ltr" ? "left" : "right") . ";\">";
+		echo "<div id=\"scale{$controller->topyear}\" style=\"position:absolute; " . (I18N::direction() === 'ltr' ? "left: $basexoffset" : "right: $basexoffset") . "px; top:" . ($baseyoffset + (($controller->topyear - $controller->baseyear) * $controller->scale)) . "px; font-size: 7pt; text-align:" . (I18N::direction() === 'ltr' ? 'left' : 'right') . ";\">";
 		echo $controller->topyear . '—';
 		echo '</div>';
 		sort_facts($controller->indifacts);
@@ -359,7 +358,7 @@ if (count($controller->people) > 0) {
 			$ageyoffset = $baseyoffset + ($controller->bheight * $p);
 			$col        = $p % 6;
 			?>
-			<div id="agebox<?php echo $p; ?>" style="cursor:move; position:absolute; <?php echo ($TEXT_DIRECTION == "ltr" ? "left: " . ($basexoffset + 20) : "right: " . ($basexoffset + 20)); ?>px; top:<?php echo $ageyoffset; ?>px; height:<?php echo $controller->bheight; ?>px; display:none;" onmousedown="ageCursorMouseDown(this, <?php echo $p; ?>);">
+			<div id="agebox<?php echo $p; ?>" style="cursor:move; position:absolute; <?php echo (I18N::direction() === 'ltr' ? 'left: ' . ($basexoffset + 20) : 'right: ' . ($basexoffset + 20)); ?>px; top:<?php echo $ageyoffset; ?>px; height:<?php echo $controller->bheight; ?>px; display:none;" onmousedown="ageCursorMouseDown(this, <?php echo $p; ?>);">
 				<table cellspacing="0" cellpadding="0">
 					<tr>
 						<td>

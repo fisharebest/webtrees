@@ -681,23 +681,21 @@ class ReportHtml extends ReportBase {
 	 * @param string  $color HTML RGB color code (Ex: #001122)
 	 * @param boolean $useclass
 	 */
-	function write($text, $color = "", $useclass = true) {
-		global $TEXT_DIRECTION;
-
+	function write($text, $color = '', $useclass = true) {
 		$style = $this->getStyle($this->getCurrentStyle());
-		$htmlcode = "<span dir=\"$TEXT_DIRECTION\"";
+		$htmlcode = '<span dir="'. I18N::direction() . '"';
 		if ($useclass) {
-			$htmlcode .= " class=\"" . $style["name"] . "\"";
+			$htmlcode .= ' class="' . $style['name'] . '"';
 		}
 		if (!empty($color)) {
 			// Check if Text Color is set and if it’s valid HTML color
-			if (preg_match("/#?(..)(..)(..)/", $color)) {
-				$htmlcode .= " style=\"color:$color;\"";
+			if (preg_match('/#?(..)(..)(..)/', $color)) {
+				$htmlcode .= ' style="color:' . $color  . ';"';
 			}
 		}
 
-		$htmlcode .= ">$text</span>";
-		$htmlcode = str_replace(array("\n", "> ", " <"), array("<br>", ">&nbsp;", "&nbsp;<"), $htmlcode);
+		$htmlcode .= '>' . $text . '</span>';
+		$htmlcode = str_replace(array("\n", '> ', ' <'), array('<br>', '>&nbsp;', '&nbsp;<'), $htmlcode);
 		echo $htmlcode;
 	}
 

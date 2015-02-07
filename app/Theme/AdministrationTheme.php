@@ -30,7 +30,7 @@ class AdministrationTheme extends BaseTheme {
 			$this->assetUrl() . 'style.css',
 		);
 
-		if (I18N::scriptDirection(I18N::languageScript(WT_LOCALE)) === 'rtl') {
+		if (I18N::direction() === 'rtl') {
 			$stylesheets[] = WT_BOOTSTRAP_RTL_CSS_URL;
 		}
 

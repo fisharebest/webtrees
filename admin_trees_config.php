@@ -32,12 +32,6 @@ require './includes/session.php';
 $controller = new PageController;
 $controller->restrictAccess(Auth::isManager($WT_TREE));
 
-$PRIVACY_CONSTANTS = array(
-	'none'         => I18N::translate('Show to visitors'),
-	'privacy'      => I18N::translate('Show to members'),
-	'confidential' => I18N::translate('Show to managers'),
-	'hidden'       => I18N::translate('Hide from everyone')
-);
 
 $calendars = array(
 	'none'      => I18N::translate('No calendar conversion'),
@@ -53,21 +47,9 @@ $french_calendar_start = new Date('22 SEP 1792');
 $french_calendar_end = new Date('31 DEC 1805');
 $gregorian_calendar_start = new Date('15 OCT 1582');
 
-$no_yes = array(
-	0 => I18N::translate('no'),
-	1 => I18N::translate('yes'),
-);
-
 $hide_show = array(
 	0 => I18N::translate('hide'),
 	1 => I18N::translate('show'),
-);
-
-$privacy = array(
-	WT_PRIV_PUBLIC => I18N::translate('Show to visitors'),
-	WT_PRIV_USER   => I18N::translate('Show to members'),
-	WT_PRIV_NONE   => I18N::translate('Show to managers'),
-	WT_PRIV_HIDE   => I18N::translate('Hide from everyone'),
 );
 
 $surname_list_styles = array(
@@ -283,14 +265,10 @@ case 'general':
 	$WT_TREE->setPreference('GENERATE_UIDS', Filter::postBool('GENERATE_UIDS'));
 	$WT_TREE->setPreference('GEONAMES_ACCOUNT', Filter::post('GEONAMES_ACCOUNT'));
 	$WT_TREE->setPreference('HIDE_GEDCOM_ERRORS', Filter::postBool('HIDE_GEDCOM_ERRORS'));
-	$WT_TREE->setPreference('HIDE_LIVE_PEOPLE', Filter::postBool('HIDE_LIVE_PEOPLE'));
 	$WT_TREE->setPreference('INDI_FACTS_ADD', str_replace(' ', '', Filter::post('INDI_FACTS_ADD')));
 	$WT_TREE->setPreference('INDI_FACTS_QUICK', str_replace(' ', '', Filter::post('INDI_FACTS_QUICK')));
 	$WT_TREE->setPreference('INDI_FACTS_UNIQUE', str_replace(' ', '', Filter::post('INDI_FACTS_UNIQUE')));
-	$WT_TREE->setPreference('KEEP_ALIVE_YEARS_BIRTH', Filter::post('KEEP_ALIVE_YEARS_BIRTH', WT_REGEX_INTEGER, 0));
-	$WT_TREE->setPreference('KEEP_ALIVE_YEARS_DEATH', Filter::post('KEEP_ALIVE_YEARS_DEATH', WT_REGEX_INTEGER, 0));
 	$WT_TREE->setPreference('LANGUAGE', Filter::post('LANGUAGE'));
-	$WT_TREE->setPreference('MAX_ALIVE_AGE', Filter::post('MAX_ALIVE_AGE', WT_REGEX_INTEGER, 100));
 	$WT_TREE->setPreference('MAX_DESCENDANCY_GENERATIONS', Filter::post('MAX_DESCENDANCY_GENERATIONS'));
 	$WT_TREE->setPreference('MAX_PEDIGREE_GENERATIONS', Filter::post('MAX_PEDIGREE_GENERATIONS'));
 	$WT_TREE->setPreference('MEDIA_ID_PREFIX', Filter::post('MEDIA_ID_PREFIX'));
@@ -310,12 +288,10 @@ case 'general':
 	$WT_TREE->setPreference('REPO_FACTS_QUICK', str_replace(' ', '', Filter::post('REPO_FACTS_QUICK')));
 	$WT_TREE->setPreference('REPO_FACTS_UNIQUE', str_replace(' ', '', Filter::post('REPO_FACTS_UNIQUE')));
 	$WT_TREE->setPreference('REPO_ID_PREFIX', Filter::post('REPO_ID_PREFIX'));
-	$WT_TREE->setPreference('REQUIRE_AUTHENTICATION', Filter::postBool('REQUIRE_AUTHENTICATION'));
 	$WT_TREE->setPreference('SAVE_WATERMARK_IMAGE', Filter::postBool('SAVE_WATERMARK_IMAGE'));
 	$WT_TREE->setPreference('SAVE_WATERMARK_THUMB', Filter::postBool('SAVE_WATERMARK_THUMB'));
 	$WT_TREE->setPreference('SHOW_AGE_DIFF', Filter::postBool('SHOW_AGE_DIFF'));
 	$WT_TREE->setPreference('SHOW_COUNTER', Filter::postBool('SHOW_COUNTER'));
-	$WT_TREE->setPreference('SHOW_DEAD_PEOPLE', Filter::post('SHOW_DEAD_PEOPLE'));
 	$WT_TREE->setPreference('SHOW_EST_LIST_DATES', Filter::postBool('SHOW_EST_LIST_DATES'));
 	$WT_TREE->setPreference('SHOW_FACT_ICONS', Filter::postBool('SHOW_FACT_ICONS'));
 	$WT_TREE->setPreference('SHOW_GEDCOM_RECORD', Filter::postBool('SHOW_GEDCOM_RECORD'));
@@ -323,13 +299,11 @@ case 'general':
 	$WT_TREE->setPreference('SHOW_LAST_CHANGE', Filter::postBool('SHOW_LAST_CHANGE'));
 	$WT_TREE->setPreference('SHOW_LDS_AT_GLANCE', Filter::postBool('SHOW_LDS_AT_GLANCE'));
 	$WT_TREE->setPreference('SHOW_LEVEL2_NOTES', Filter::postBool('SHOW_LEVEL2_NOTES'));
-	$WT_TREE->setPreference('SHOW_LIVING_NAMES', Filter::post('SHOW_LIVING_NAMES'));
 	$WT_TREE->setPreference('SHOW_MEDIA_DOWNLOAD', Filter::postBool('SHOW_MEDIA_DOWNLOAD'));
 	$WT_TREE->setPreference('SHOW_NO_WATERMARK', Filter::post('SHOW_NO_WATERMARK'));
 	$WT_TREE->setPreference('SHOW_PARENTS_AGE', Filter::postBool('SHOW_PARENTS_AGE'));
 	$WT_TREE->setPreference('SHOW_PEDIGREE_PLACES', Filter::post('SHOW_PEDIGREE_PLACES'));
 	$WT_TREE->setPreference('SHOW_PEDIGREE_PLACES_SUFFIX', Filter::postBool('SHOW_PEDIGREE_PLACES_SUFFIX'));
-	$WT_TREE->setPreference('SHOW_PRIVATE_RELATIONSHIPS', Filter::post('SHOW_PRIVATE_RELATIONSHIPS'));
 	$WT_TREE->setPreference('SHOW_RELATIVES_EVENTS', implode(',', Filter::post('SHOW_RELATIVES_EVENTS')));
 	$WT_TREE->setPreference('SHOW_STATS', Filter::postBool('SHOW_STATS'));
 	$WT_TREE->setPreference('SOURCE_ID_PREFIX', Filter::post('SOURCE_ID_PREFIX'));
@@ -373,7 +347,6 @@ case 'general':
 			Database::prepare("UPDATE `##site_setting` SET setting_value = ? WHERE setting_name='DEFAULT_GEDCOM' AND setting_value = ?")->execute(array($gedcom, WT_GEDCOM));
 		} catch (\Exception $ex) {
 			// Probably a duplicate name.
-			$gedcom = WT_GEDCOM;
 		}
 	}
 
@@ -568,7 +541,7 @@ $controller
 			</div>
 		</div>
 		<div class="col-sm-8">
-			<?php echo select_edit_control('SHOW_PRIVATE_RELATIONSHIPS', array('0' => I18N::translate('Show to visitors'), '1' => I18N::translate('Show to members')), null, $WT_TREE->getPreference('SHOW_PRIVATE_RELATIONSHIPS'), 'class="form-control"'); ?>
+			<?php echo select_edit_control('SHOW_PRIVATE_RELATIONSHIPS', array('0' => I18N::translate('Hide from everyone'), '1' => I18N::translate('Show to members')), null, $WT_TREE->getPreference('SHOW_PRIVATE_RELATIONSHIPS'), 'class="form-control"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Show private relationships” configuration setting */ I18N::translate('This option will retain family links in private records.  This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals.'); ?>
 			</p>
@@ -1259,7 +1232,7 @@ $controller
 			<?php echo I18N::translate('Images without watermarks'); ?>
 		</label>
 		<div class="col-sm-9">
-			<?php echo select_edit_control('SHOW_NO_WATERMARK', $privacy, null, $WT_TREE->getPreference('MEDIA_UPLOAD'), 'class="form-control"'); ?>
+			<?php echo select_edit_control('SHOW_NO_WATERMARK', $privacy, null, $WT_TREE->getPreference('SHOW_NO_WATERMARK'), 'class="form-control"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Images without watermarks” configuration setting */ I18N::translate('Watermarks are optional and normally shown just to visitors.'); ?>
 			</p>

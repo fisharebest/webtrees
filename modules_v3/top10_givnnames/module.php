@@ -32,7 +32,7 @@ class top10_givnnames_WT_Module extends Module implements ModuleBlockInterface {
 
 	/** {@inheritdoc} */
 	public function getBlock($block_id, $template = true, $cfg = null) {
-		global $TEXT_DIRECTION, $ctype, $WT_TREE;
+		global $ctype, $WT_TREE;
 
 		$num       = get_block_setting($block_id, 'num', '10');
 		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');
@@ -67,18 +67,18 @@ class top10_givnnames_WT_Module extends Module implements ModuleBlockInterface {
 		//Select List or Table
 		switch ($infoStyle) {
 		case "list": // Output style 1:  Simple list style.  Better suited to left side of page.
-			if ($TEXT_DIRECTION == 'ltr') {
+			if (I18N::direction() === 'ltr') {
 				$padding = 'padding-left: 15px';
 			} else {
 				$padding = 'padding-right: 15px';
 			}
 			$params = array(1, $num, 'rcount');
-			//List Female names
+			// List Female names
 			$totals = $stats->commonGivenFemaleTotals($params);
 			if ($totals) {
 				$content .= '<b>' . I18N::translate('Females') . '</b><div class="wrap" style="' . $padding . '">' . $totals . '</div><br>';
 			}
-			//List Male names
+			// List Male names
 			$totals = $stats->commonGivenMaleTotals($params);
 			if ($totals) {
 				$content .= '<b>' . I18N::translate('Males') . '</b><div class="wrap" style="' . $padding . '">' . $totals . '</div><br>';

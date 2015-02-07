@@ -1238,7 +1238,6 @@ namespace Fisharebest\Webtrees;
  * @return void
  */
 function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
-	global $TEXT_DIRECTION;
 	global $spouselinks, $parentlinks, $step_parentlinks, $persons, $person_step, $person_parent;
 	global $natdad, $natmom, $censyear;
 
@@ -1253,7 +1252,7 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 	if ($person->canShowName()) {
 		//-- draw a box for the family popup
 
-		if ($TEXT_DIRECTION == "rtl") {
+		if (I18N::direction() === 'rtl') {
 			$spouselinks .= "<table class=\"rtlnav person_box$isF\"><tr><td align=\"right\" style=\"font-size:10px;font-weight:normal;\" class=\"name2 nowrap\">";
 			$spouselinks .= "<b>" . I18N::translate('Family') . "</b> (" . $person->getFullName() . ")<br>";
 			$parentlinks .= "<table class=\"rtlnav person_box$isF\"><tr><td align=\"right\" style=\"font-size:10px;font-weight:normal;\" class=\"name2 nowrap\">";

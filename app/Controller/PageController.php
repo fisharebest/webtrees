@@ -157,15 +157,13 @@ class PageController extends BaseController {
 	 * @return $this
 	 */
 	public function pageHeader($view = '') {
-		global $TEXT_DIRECTION;
-
 		// Give Javascript access to some PHP constants
 		$this->addInlineJavascript('
 			var WT_STATIC_URL  = "' . Filter::escapeJs(WT_STATIC_URL) . '";
 			var WT_MODULES_DIR = "' . Filter::escapeJs(WT_MODULES_DIR) . '";
 			var WT_GEDCOM      = "' . Filter::escapeJs(WT_GEDCOM) . '";
 			var WT_GED_ID      = "' . Filter::escapeJs(WT_GED_ID) . '";
-			var textDirection  = "' . Filter::escapeJs($TEXT_DIRECTION) . '";
+			var textDirection  = "' . Filter::escapeJs(I18N::direction()) . '";
 			var WT_SCRIPT_NAME = "' . Filter::escapeJs(WT_SCRIPT_NAME) . '";
 			var WT_LOCALE      = "' . Filter::escapeJs(WT_LOCALE) . '";
 			var WT_CSRF_TOKEN  = "' . Filter::escapeJs(Filter::getCsrfToken()) . '";

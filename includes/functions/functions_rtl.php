@@ -53,7 +53,6 @@ function stripLRMRLM($inputText) {
  * @return string The string with all texts encapsulated as required
  */
 function spanLTRRTL($inputText, $direction = 'BOTH', $class = '') {
-	global $TEXT_DIRECTION;
 	global $openPar, $closePar, $punctuation;
 	global $numbers, $numberPrefix, $numberPunctuation;
 	global $previousState, $currentState, $waitingText;
@@ -81,7 +80,7 @@ function spanLTRRTL($inputText, $direction = 'BOTH', $class = '') {
 	$lenEnd   = strlen($endLTR); // RTL version MUST have same length
 
 	$previousState    = '';
-	$currentState     = strtoupper($TEXT_DIRECTION);
+	$currentState     = strtoupper(I18N::direction());
 	$numberState      = false; // Set when we're inside a numeric string
 	$result           = '';
 	$waitingText      = '';
@@ -232,11 +231,11 @@ function spanLTRRTL($inputText, $direction = 'BOTH', $class = '') {
 							break 2;
 						}
 
-						if ($nextLetter == ' ') {
+						if ($nextLetter === ' ') {
 							break;
 						}
 						$nextLetter .= substr($tempText . "\n", 0, 5);
-						if ($nextLetter == '&nbsp;') {
+						if ($nextLetter === '&nbsp;') {
 							break;
 						}
 					}
@@ -263,16 +262,16 @@ function spanLTRRTL($inputText, $direction = 'BOTH', $class = '') {
 					$waitingText .= $currentLetter;
 					$workingText = substr($workingText, $currentLen);
 					while (true) {
-						if ($workingText == '') {
+						if ($workingText === '') {
 							break;
 						}
-						if (substr($workingText, 0, 1) == ' ') {
+						if (substr($workingText, 0, 1) === ' ') {
 							// Spaces following this left parenthesis inherit the following directionality too
 							$waitingText .= ' ';
 							$workingText = substr($workingText, 1);
 							continue;
 						}
-						if (substr($workingText, 0, 6) == '&nbsp;') {
+						if (substr($workingText, 0, 6) === '&nbsp;') {
 							// Spaces following this left parenthesis inherit the following directionality too
 							$waitingText .= '&nbsp;';
 							$workingText = substr($workingText, 6);
@@ -313,7 +312,7 @@ function spanLTRRTL($inputText, $direction = 'BOTH', $class = '') {
 
 			foreach ($openParDirection as $index => $value) {
 				// Since we now know the proper direction, remember it for all waiting opening parentheses
-				if ($value == '?') {
+				if ($value === '?') {
 					$openParDirection[$index] = $currentState;
 				}
 			}
@@ -324,12 +323,12 @@ function spanLTRRTL($inputText, $direction = 'BOTH', $class = '') {
 
 	// We're done.  Finish last <span> if necessary
 	if ($numberState) {
-		if ($waitingText == '') {
-			if ($currentState == 'RTL') {
+		if ($waitingText === '') {
+			if ($currentState === 'RTL') {
 				$result .= WT_UTF8_PDF;
 			}
 		} else {
-			if ($currentState == 'RTL') {
+			if ($currentState === 'RTL') {
 				$waitingText .= WT_UTF8_PDF;
 			}
 		}
@@ -338,7 +337,7 @@ function spanLTRRTL($inputText, $direction = 'BOTH', $class = '') {
 
 	// Get rid of any waiting text
 	if ($waitingText != '') {
-		if ($TEXT_DIRECTION == 'rtl' && $currentState == 'LTR') {
+		if (I18N::direction() === 'rtl' && $currentState === 'LTR') {
 			$result .= $startRTL;
 			$result .= $waitingText;
 			$result .= $endRTL;
@@ -354,14 +353,13 @@ function spanLTRRTL($inputText, $direction = 'BOTH', $class = '') {
 
 	// Move leading RTL numeric strings to following LTR text
 	// (this happens when the page direction is RTL and the original text begins with a number and is followed by LTR text)
-	while (substr($result, 0, $lenStart + 3) == $startRTL . WT_UTF8_LRE) {
+	while (substr($result, 0, $lenStart + 3) === $startRTL . WT_UTF8_LRE) {
 		$spanEnd = strpos($result, $endRTL . $startLTR);
 		if ($spanEnd === false) {
 			break;
 		}
 		$textSpan = stripLRMRLM(substr($result, $lenStart + 3, $spanEnd - $lenStart - 3));
-		$langSpan = I18N::textScript($textSpan);
-		if ($langSpan == 'Hebr' || $langSpan == 'Arab') {
+		if (I18N::scriptDirection(textScript($textSpan)) === 'rtl') {
 			break;
 		}
 		$result = $startLTR . substr($result, $lenStart, $spanEnd - $lenStart) . substr($result, $spanEnd + $lenStart + $lenEnd);
@@ -369,7 +367,7 @@ function spanLTRRTL($inputText, $direction = 'BOTH', $class = '') {
 	}
 
 	// On RTL pages, put trailing "." in RTL numeric strings into its own RTL span
-	if ($TEXT_DIRECTION == 'rtl') {
+	if (I18N::direction() === 'rtl') {
 		$result = str_replace(WT_UTF8_PDF . '.' . $endRTL, WT_UTF8_PDF . $endRTL . $startRTL . '.' . $endRTL, $result);
 	}
 
@@ -480,11 +478,9 @@ function spanLTRRTL($inputText, $direction = 'BOTH', $class = '') {
  * @return string
  */
 function starredName($textSpan, $direction) {
-	global $TEXT_DIRECTION;
-
 	// To avoid a TCPDF bug that mixes up the word order, insert those <u> and </u> tags
 	// only when page and span directions are identical.
-	if ($direction == strtoupper($TEXT_DIRECTION)) {
+	if ($direction === strtoupper(I18N::direction())) {
 		while (true) {
 			$starPos = strpos($textSpan, '*');
 			if ($starPos === false) {
@@ -589,7 +585,7 @@ function beginCurrentSpan(&$result) {
  * @param boolean $theEnd
  */
 function finishCurrentSpan(&$result, $theEnd = false) {
-	global $previousState, $currentState, $posSpanStart, $TEXT_DIRECTION, $waitingText;
+	global $previousState, $currentState, $posSpanStart, $waitingText;
 	global $startLTR, $endLTR, $startRTL, $endRTL;
 	global $numbers, $punctuation;
 
@@ -677,24 +673,24 @@ function finishCurrentSpan(&$result, $theEnd = false) {
 
 	/* ****************************** LTR text handling ******************************** */
 
-	if ($currentState == 'LTR') {
+	if ($currentState === 'LTR') {
 		// Move trailing numeric strings to the following RTL text.  Include any blanks preceding or following the numeric text too.
-		if ($TEXT_DIRECTION == 'rtl' && $previousState == 'RTL' && !$theEnd) {
+		if (I18N::direction() === 'rtl' && $previousState === 'RTL' && !$theEnd) {
 			$trailingString = '';
 			$savedSpan      = $textSpan;
-			while ($textSpan != '') {
+			while ($textSpan !== '') {
 				// Look for trailing spaces and tentatively move them
-				if (substr($textSpan, -1) == ' ') {
+				if (substr($textSpan, -1) === ' ') {
 					$trailingString = ' ' . $trailingString;
 					$textSpan       = substr($textSpan, 0, -1);
 					continue;
 				}
-				if (substr($textSpan, -6) == '&nbsp;') {
+				if (substr($textSpan, -6) === '&nbsp;') {
 					$trailingString = '&nbsp;' . $trailingString;
 					$textSpan       = substr($textSpan, 0, -1);
 					continue;
 				}
-				if (substr($textSpan, -3) != WT_UTF8_PDF) {
+				if (substr($textSpan, -3) !== WT_UTF8_PDF) {
 					// There is no trailing numeric string
 					$textSpan = $savedSpan;
 					break;
@@ -771,16 +767,16 @@ function finishCurrentSpan(&$result, $theEnd = false) {
 		$trailingID          = '';
 		$trailingSeparator   = '';
 		$leadingSeparator    = '';
-		while ($TEXT_DIRECTION == 'rtl') {
+		while (I18N::direction() === 'rtl') {
 			if (strpos($result, $startRTL) !== false) {
 				// Remove trailing blanks for inclusion in a separate LTR span
 				while ($textSpan != '') {
-					if (substr($textSpan, -1) == ' ') {
+					if (substr($textSpan, -1) === ' ') {
 						$trailingBlanks = ' ' . $trailingBlanks;
 						$textSpan       = substr($textSpan, 0, -1);
 						continue;
 					}
-					if (substr($textSpan, -6) == '&nbsp;') {
+					if (substr($textSpan, -6) === '&nbsp;') {
 						$trailingBlanks = '&nbsp;' . $trailingBlanks;
 						$textSpan       = substr($textSpan, 0, -1);
 						continue;
@@ -946,22 +942,22 @@ function finishCurrentSpan(&$result, $theEnd = false) {
 		}
 
 		// Move trailing numeric strings to the following LTR text.  Include any blanks preceding or following the numeric text too.
-		if (!$theEnd && $TEXT_DIRECTION != 'rtl') {
+		if (!$theEnd && I18N::direction() !== 'rtl') {
 			$trailingString = '';
 			$savedSpan      = $textSpan;
 			while ($textSpan != '') {
 				// Look for trailing spaces and tentatively move them
-				if (substr($textSpan, -1) == ' ') {
+				if (substr($textSpan, -1) === ' ') {
 					$trailingString = ' ' . $trailingString;
 					$textSpan       = substr($textSpan, 0, -1);
 					continue;
 				}
-				if (substr($textSpan, -6) == '&nbsp;') {
+				if (substr($textSpan, -6) === '&nbsp;') {
 					$trailingString = '&nbsp;' . $trailingString;
 					$textSpan       = substr($textSpan, 0, -1);
 					continue;
 				}
-				if (substr($textSpan, -3) != WT_UTF8_PDF) {
+				if (substr($textSpan, -3) !== WT_UTF8_PDF) {
 					// There is no trailing numeric string
 					$textSpan = $savedSpan;
 					break;
@@ -1001,7 +997,7 @@ function finishCurrentSpan(&$result, $theEnd = false) {
 			$waitingText = ' - ' . $waitingText;
 		}
 
-		while ($TEXT_DIRECTION == 'rtl') {
+		while (I18N::direction() === 'rtl') {
 			// Look for " - " preceding <RTLbr> and relocate it to the front of the string
 			$posDashString = strpos($textSpan, ' - <RTLbr>');
 			if ($posDashString === false) {
@@ -1050,7 +1046,7 @@ function finishCurrentSpan(&$result, $theEnd = false) {
 		}
 
 		// Look for trailing " -", reverse it, and relocate it to the front of the string
-		if (substr($textSpan, -2) == ' -') {
+		if (substr($textSpan, -2) === ' -') {
 			$posDashString  = strlen($textSpan) - 2;
 			$posStringStart = strrpos(substr($textSpan, 0, $posDashString), '<RTLbr>');
 			if ($posStringStart === false) {
@@ -1064,11 +1060,11 @@ function finishCurrentSpan(&$result, $theEnd = false) {
 
 		if ($countLeadingSpaces != 0) {
 			$newLength = strlen($textSpan) + $countLeadingSpaces;
-			$textSpan  = str_pad($textSpan, $newLength, ' ', ($TEXT_DIRECTION == 'rtl' ? STR_PAD_LEFT : STR_PAD_RIGHT));
+			$textSpan  = str_pad($textSpan, $newLength, ' ', (I18N::direction() === 'rtl' ? STR_PAD_LEFT : STR_PAD_RIGHT));
 		}
 		if ($countTrailingSpaces != 0) {
-			if ($TEXT_DIRECTION == 'ltr') {
-				if ($trailingBreaks == '') {
+			if (I18N::direction() === 'ltr') {
+				if ($trailingBreaks === '') {
 					// Move trailing RTL spaces to front of following LTR span
 					$newLength   = strlen($waitingText) + $countTrailingSpaces;
 					$waitingText = str_pad($waitingText, $newLength, ' ', STR_PAD_LEFT);

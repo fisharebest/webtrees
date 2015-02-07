@@ -2035,11 +2035,9 @@ class Stats {
 	 * @return string
 	 */
 	private function topTenOldestQuery($type = 'list', $sex = 'BOTH', $params = array()) {
-		global $TEXT_DIRECTION;
-
-		if ($sex == 'F') {
+		if ($sex === 'F') {
 			$sex_search = " AND i_sex='F' ";
-		} elseif ($sex == 'M') {
+		} elseif ($sex === 'M') {
 			$sex_search = " AND i_sex='M' ";
 		} else {
 			$sex_search = '';
@@ -2100,7 +2098,7 @@ class Stats {
 		} else {
 			$top10 = implode(' ', $top10);
 		}
-		if ($TEXT_DIRECTION == 'rtl') {
+		if (I18N::direction() === 'rtl') {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
 		}
 		if ($type == 'list') {
@@ -2117,8 +2115,6 @@ class Stats {
 	 * @return string
 	 */
 	private function topTenOldestAliveQuery($type = 'list', $sex = 'BOTH', $params = array()) {
-		global $TEXT_DIRECTION;
-
 		if (!WT_USER_CAN_ACCESS) {
 			return I18N::translate('This information is private and cannot be shown.');
 		}
@@ -2165,21 +2161,21 @@ class Stats {
 				$age = $age . 'd';
 			}
 			$age = get_age_at_event($age, true);
-			if ($type == 'list') {
+			if ($type === 'list') {
 				$top10[] = "<li><a href=\"" . $person->getHtmlUrl() . "\">" . $person->getFullName() . "</a> (" . $age . ")" . "</li>";
 			} else {
 				$top10[] = "<a href=\"" . $person->getHtmlUrl() . "\">" . $person->getFullName() . "</a> (" . $age . ")";
 			}
 		}
-		if ($type == 'list') {
+		if ($type === 'list') {
 			$top10 = implode('', $top10);
 		} else {
 			$top10 = implode(';&nbsp; ', $top10);
 		}
-		if ($TEXT_DIRECTION == 'rtl') {
+		if (I18N::direction() === 'rtl') {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
 		}
-		if ($type == 'list') {
+		if ($type === 'list') {
 			return '<ul>' . $top10 . '</ul>';
 		}
 		return $top10;
@@ -2192,9 +2188,9 @@ class Stats {
 	 * @return string
 	 */
 	private function averageLifespanQuery($sex = 'BOTH', $show_years = false) {
-		if ($sex == 'F') {
+		if ($sex === 'F') {
 			$sex_search = " AND i_sex='F' ";
-		} elseif ($sex == 'M') {
+		} elseif ($sex === 'M') {
 			$sex_search = " AND i_sex='M' ";
 		} else {
 			$sex_search = '';
@@ -2824,8 +2820,6 @@ class Stats {
 	 * @return string
 	 */
 	private function ageOfMarriageQuery($type = 'list', $age_dir = 'ASC', $params = array()) {
-		global $TEXT_DIRECTION;
-
 		if (isset($params[0])) {
 			$total = (int) $params[0];
 		} else {
@@ -2898,7 +2892,7 @@ class Stats {
 				$rows[$family['family']] = $family['age'];
 			}
 		}
-		if ($age_dir == 'DESC') {
+		if ($age_dir === 'DESC') {
 			arsort($rows);
 		} else {
 			asort($rows);
@@ -2907,7 +2901,7 @@ class Stats {
 		$i = 0;
 		foreach ($rows as $fam => $age) {
 			$family = Family::getInstance($fam, $this->tree->getTreeId());
-			if ($type == 'name') {
+			if ($type === 'name') {
 				return $family->format_list('span', false, $family->getFullName());
 			}
 			if ((int) ($age / 365.25) > 0) {
@@ -2918,33 +2912,33 @@ class Stats {
 				$age = $age . 'd';
 			}
 			$age = get_age_at_event($age, true);
-			if ($type == 'age') {
+			if ($type === 'age') {
 				return $age;
 			}
 			$husb = $family->getHusband();
 			$wife = $family->getWife();
 			if ($husb && $wife && ($husb->getAllDeathDates() && $wife->getAllDeathDates() || !$husb->isDead() || !$wife->isDead())) {
 				if ($family->canShow()) {
-					if ($type == 'list') {
+					if ($type === 'list') {
 						$top10[] = "<li><a href=\"" . $family->getHtmlUrl() . "\">" . $family->getFullName() . "</a> (" . $age . ")" . "</li>";
 					} else {
 						$top10[] = "<a href=\"" . $family->getHtmlUrl() . "\">" . $family->getFullName() . "</a> (" . $age . ")";
 					}
 				}
-				if (++$i == $total) {
+				if (++$i === $total) {
 					break;
 				}
 			}
 		}
-		if ($type == 'list') {
+		if ($type === 'list') {
 			$top10 = implode('', $top10);
 		} else {
 			$top10 = implode(';&nbsp; ', $top10);
 		}
-		if ($TEXT_DIRECTION == 'rtl') {
+		if (I18N::direction() === 'rtl') {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
 		}
-		if ($type == 'list') {
+		if ($type === 'list') {
 			return '<ul>' . $top10 . '</ul>';
 		}
 		return $top10;
@@ -2958,8 +2952,6 @@ class Stats {
 	 * @return string
 	 */
 	private function ageBetweenSpousesQuery($type = 'list', $age_dir = 'DESC', $params = array()) {
-		global $TEXT_DIRECTION;
-
 		if (isset($params[0])) {
 			$total = (int) $params[0];
 		} else {
@@ -3006,22 +2998,22 @@ class Stats {
 			}
 			$age = get_age_at_event($age, true);
 			if ($family->canShow()) {
-				if ($type == 'list') {
+				if ($type === 'list') {
 					$top10[] = "<li><a href=\"" . $family->getHtmlUrl() . "\">" . $family->getFullName() . "</a> (" . $age . ")" . "</li>";
 				} else {
 					$top10[] = "<a href=\"" . $family->getHtmlUrl() . "\">" . $family->getFullName() . "</a> (" . $age . ")";
 				}
 			}
 		}
-		if ($type == 'list') {
+		if ($type === 'list') {
 			$top10 = implode('', $top10);
 		} else {
 			$top10 = implode(';&nbsp; ', $top10);
 		}
-		if ($TEXT_DIRECTION == 'rtl') {
+		if (I18N::direction() === 'rtl') {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
 		}
-		if ($type == 'list') {
+		if ($type === 'list') {
 			return '<ul>' . $top10 . '</ul>';
 		}
 		return $top10;
@@ -3952,8 +3944,6 @@ class Stats {
 	 * @return string
 	 */
 	private function topTenFamilyQuery($type = 'list', $params = array()) {
-		global $TEXT_DIRECTION;
-
 		if (isset($params[0])) {
 			$total = (int) $params[0];
 		} else {
@@ -3977,7 +3967,7 @@ class Stats {
 		for ($c = 0; $c < $total; $c++) {
 			$family = Family::getInstance($rows[$c]['id'], $this->tree->getTreeId());
 			if ($family->canShow()) {
-				if ($type == 'list') {
+				if ($type === 'list') {
 					$top10[] =
 						'<li><a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> - ' .
 						I18N::plural('%s child', '%s children', $rows[$c]['tot'], I18N::number($rows[$c]['tot']));
@@ -3988,15 +3978,15 @@ class Stats {
 				}
 			}
 		}
-		if ($type == 'list') {
+		if ($type === 'list') {
 			$top10 = implode('', $top10);
 		} else {
 			$top10 = implode(';&nbsp; ', $top10);
 		}
-		if ($TEXT_DIRECTION == 'rtl') {
+		if (I18N::direction() === 'rtl') {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
 		}
-		if ($type == 'list') {
+		if ($type === 'list') {
 			return '<ul>' . $top10 . '</ul>';
 		}
 		return $top10;
@@ -4009,8 +3999,6 @@ class Stats {
 	 * @return string
 	 */
 	private function ageBetweenSiblingsQuery($type = 'list', $params = array()) {
-		global $TEXT_DIRECTION;
-
 		if (isset($params[0])) {
 			$total = (int) $params[0];
 		} else {
@@ -4113,13 +4101,13 @@ class Stats {
 				}
 			}
 		}
-		if ($type == 'list') {
+		if ($type === 'list') {
 			$top10 = implode('', $top10);
 		}
-		if ($TEXT_DIRECTION == 'rtl') {
+		if (I18N::direction() === 'rtl') {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
 		}
-		if ($type == 'list') {
+		if ($type === 'list') {
 			return '<ul>' . $top10 . '</ul>';
 		}
 		return $top10;
@@ -4558,8 +4546,6 @@ class Stats {
 	 * @return string
 	 */
 	public function noChildrenFamiliesList($params = array()) {
-		global $TEXT_DIRECTION;
-
 		if (isset($params[0]) && $params[0] != '') {
 			$type = strtolower($params[0]);
 		} else {
@@ -4588,10 +4574,10 @@ class Stats {
 		} else {
 			$top10 = implode(';&nbsp; ', $top10);
 		}
-		if ($TEXT_DIRECTION == 'rtl') {
+		if (I18N::direction() === 'rtl') {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
 		}
-		if ($type == 'list') {
+		if ($type === 'list') {
 			return '<ul>' . $top10 . '</ul>';
 		}
 
@@ -4700,8 +4686,6 @@ class Stats {
 	 * @return string
 	 */
 	private function topTenGrandFamilyQuery($type = 'list', $params = array()) {
-		global $TEXT_DIRECTION;
-
 		if (isset($params[0])) {
 			$total = (int) $params[0];
 		} else {
@@ -4732,7 +4716,7 @@ class Stats {
 		foreach ($rows as $row) {
 			$family = Family::getInstance($row['id'], $this->tree->getTreeId());
 			if ($family->canShow()) {
-				if ($type == 'list') {
+				if ($type === 'list') {
 					$top10[] =
 						'<li><a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> - ' .
 						I18N::plural('%s grandchild', '%s grandchildren', $row['tot'], I18N::number($row['tot']));
@@ -4743,15 +4727,15 @@ class Stats {
 				}
 			}
 		}
-		if ($type == 'list') {
+		if ($type === 'list') {
 			$top10 = implode('', $top10);
 		} else {
 			$top10 = implode(';&nbsp; ', $top10);
 		}
-		if ($TEXT_DIRECTION == 'rtl') {
+		if (I18N::direction() === 'rtl') {
 			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
 		}
-		if ($type == 'list') {
+		if ($type === 'list') {
 			return '<ul>' . $top10 . '</ul>';
 		}
 		return $top10;

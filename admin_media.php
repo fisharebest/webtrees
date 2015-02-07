@@ -524,8 +524,7 @@ function mediaObjectInfo(Media $media) {
 	if (array_key_exists('GEDFact_assistant', Module::getActiveModules())) {
 		$html .= '<a onclick="return ilinkitem(\'' . $xref . '\', \'manage\', \'' . $gedcom . '\')" href="#">' . I18N::Translate('Manage links') . '</a>';
 	} else {
-		global $TEXT_DIRECTION;
-		$classSuffix = $TEXT_DIRECTION == 'rtl' ? '_rtl' : '';
+		$classSuffix = I18N::direction() === 'rtl' ? '_rtl' : '';
 
 		$menu = new Menu(I18N::translate('Manage links'));
 		$menu->addClass('', 'submenu');
@@ -608,7 +607,7 @@ $controller
 		columns: [
 			{},
 			{ sortable: false },
-			{ sortable: ' . ($files == 'unused' ? 'false' : 'true') . ' }
+			{ sortable: ' . ($files === 'unused' ? 'false' : 'true') . ' }
 		]
 	});
 	');

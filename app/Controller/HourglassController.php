@@ -49,7 +49,7 @@ class HourglassController extends ChartController {
 	 * @param boolean $loadJS
 	 */
 	function __construct($rootid = '', $show_full = 1, $loadJS = true) {
-		global $bheight, $bwidth, $WT_TREE, $TEXT_DIRECTION, $show_full;
+		global $bheight, $bwidth, $WT_TREE, $show_full;
 
 		parent::__construct();
 
@@ -69,7 +69,7 @@ class HourglassController extends ChartController {
 		}
 
 		//-- flip the arrows for RTL languages
-		if ($TEXT_DIRECTION == 'ltr') {
+		if (I18N::direction() === 'ltr') {
 			$this->left_arrow = 'icon-larrow';
 			$this->right_arrow = 'icon-rarrow';
 		} else {
@@ -222,17 +222,17 @@ class HourglassController extends ChartController {
 	 * @return integer
 	 */
 	public function printDescendency($person, $count, $showNav = true) {
-		global $TEXT_DIRECTION, $bheight, $bwidth, $lastGenSecondFam;
+		global $bheight, $bwidth, $lastGenSecondFam;
 
 		if ($count > $this->dgenerations) {
 			return;
 		}
 
 		$pid = $person->getXref();
-		$tablealign = 'right';
+		$tablealign  = 'right';
 		$otablealign = 'left';
-		if ($TEXT_DIRECTION == 'rtl') {
-			$tablealign = 'left';
+		if (I18N::direction() === 'rtl') {
+			$tablealign  = 'left';
 			$otablealign = 'right';
 		}
 
@@ -266,7 +266,7 @@ class HourglassController extends ChartController {
 					$person2 = $children[$i];
 					$chil = $person2->getXref();
 					echo '<tr>';
-					echo "<td id='td_$chil' class='$TEXT_DIRECTION' style='text-align:$otablealign'>";
+					echo '<td id="td_', $chil, '" class="', I18N::direction(), '" style="text-align:', $otablealign, '">';
 					$kids = $this->printDescendency($person2, $count + 1);
 					$numkids += $kids;
 					echo '</td>';

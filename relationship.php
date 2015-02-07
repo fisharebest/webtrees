@@ -19,11 +19,10 @@ namespace Fisharebest\Webtrees;
 /**
  * Defined in session.php
  *
- * @global string  $TEXT_DIRECTION
  * @global Tree    $WT_TREE
  * @global integer $bwidth
  */
-global $TEXT_DIRECTION, $WT_TREE, $bwidth;
+global $WT_TREE, $bwidth;
 
 define('WT_SCRIPT_NAME', 'relationship.php');
 require './includes/session.php';
@@ -191,7 +190,7 @@ if ($person1 && $person2) {
 			$dmax = 0;
 			$depth = 0;
 			foreach ($node['path'] as $index=>$person) {
-				if ($node['relations'][$index] == 'father' || $node['relations'][$index] == 'mother' || $node['relations'][$index] == 'parent') {
+				if ($node['relations'][$index] === 'father' || $node['relations'][$index] === 'mother' || $node['relations'][$index] === 'parent') {
 					$depth++;
 					if ($depth > $dmax) {
 						$dmax = $depth;
@@ -200,12 +199,12 @@ if ($person1 && $person2) {
 						$asc = 1; // the first link is a parent link
 					}
 				}
-				if ($node['relations'][$index] == 'son' || $node['relations'][$index] == 'daughter' || $node['relations'][$index] == 'child') {
+				if ($node['relations'][$index] === 'son' || $node['relations'][$index] === 'daughter' || $node['relations'][$index] === 'child') {
 					$depth--;
 					if ($depth < $dmin) {
 						$dmin = $depth;
 					}
-					if ($asc == 0) {
+					if ($asc === 0) {
 						$asc = -1; // the first link is a child link
 					}
 				}
@@ -222,7 +221,7 @@ if ($person1 && $person2) {
 			$maxxoffset = -1 * $Dbwidth - 20;
 			$maxyoffset = $yoffset;
 			// Left and right get reversed on RTL pages
-			if ($TEXT_DIRECTION == 'ltr') {
+			if (I18N::direction() === 'ltr') {
 				$right_arrow = 'icon-rarrow';
 			} else {
 				$right_arrow = 'icon-larrow';
@@ -270,7 +269,7 @@ if ($person1 && $person2) {
 						$liney = $yoffset + $Dbheight;
 					}
 					// need to draw a joining line ?
-					if ($previous == 'child' && ($change_count++ % 2) == 0) {
+					if ($previous === 'child' && ($change_count++ % 2) === 0) {
 						$joinh = 3;
 						$joinw = $xs / 2 + 2;
 						$xoffset += $Dbwidth + $xs;
@@ -284,11 +283,11 @@ if ($person1 && $person2) {
 						}
 						$joinx = $xoffset - $xs;
 						$joiny = $liney - 2 - ($asc - 1) / 2 * $lh;
-						echo "<div id=\"joina", $index, "\" style=\"position:absolute; ", $TEXT_DIRECTION == 'ltr' ? 'left' : 'right', ':', $joinx + $Dbxspacing, 'px; top:', $joiny + $Dbyspacing, "px;\" align=\"center\"><img src=\"", Theme::theme()->parameter('image-hline'), "\" align=\"left\" width=\"", $joinw, "\" height=\"", $joinh, "\" alt=\"\"></div>";
+						echo "<div id=\"joina", $index, "\" style=\"position:absolute; ", I18N::direction() === 'ltr' ? 'left' : 'right', ':', $joinx + $Dbxspacing, 'px; top:', $joiny + $Dbyspacing, "px;\" align=\"center\"><img src=\"", Theme::theme()->parameter('image-hline'), "\" align=\"left\" width=\"", $joinw, "\" height=\"", $joinh, "\" alt=\"\"></div>";
 						$joinw = $xs / 2 + 2;
 						$joinx = $joinx + $xs / 2;
 						$joiny = $joiny + $asc * $lh;
-						echo "<div id=\"joinb", $index, "\" style=\"position:absolute; ", $TEXT_DIRECTION == 'ltr' ? 'left' : 'right', ':', $joinx + $Dbxspacing, 'px; top:', $joiny + $Dbyspacing, "px;\" align=\"center\"><img src=\"", Theme::theme()->parameter('image-hline'), "\" align=\"left\" width=\"", $joinw, "\" height=\"", $joinh, "\" alt=\"\"></div>";
+						echo "<div id=\"joinb", $index, "\" style=\"position:absolute; ", I18N::direction() === 'ltr' ? 'left' : 'right', ':', $joinx + $Dbxspacing, 'px; top:', $joiny + $Dbyspacing, "px;\" align=\"center\"><img src=\"", Theme::theme()->parameter('image-hline'), "\" align=\"left\" width=\"", $joinw, "\" height=\"", $joinh, "\" alt=\"\"></div>";
 					} else {
 						$change_count = '';
 					}
@@ -348,11 +347,11 @@ if ($person1 && $person2) {
 						}
 						$joinx = $xoffset - $xs;
 						$joiny = $liney - 2 + ($asc + 1) / 2 * $lh;
-						echo '<div id="joina', $index, '" style="position:absolute; ', $TEXT_DIRECTION == 'ltr' ? 'left' : 'right', ':', $joinx + $Dbxspacing, 'px; top:', $joiny + $Dbyspacing, 'px;" align="center"><img src="', Theme::theme()->parameter('image-hline'), '" align="left" width="', $joinw, '" height="', $joinh, '" alt=""></div>';
+						echo '<div id="joina', $index, '" style="position:absolute; ', I18N::direction() === 'ltr' ? 'left' : 'right', ':', $joinx + $Dbxspacing, 'px; top:', $joiny + $Dbyspacing, 'px;" align="center"><img src="', Theme::theme()->parameter('image-hline'), '" align="left" width="', $joinw, '" height="', $joinh, '" alt=""></div>';
 						$joinw = $xs / 2 + 2;
 						$joinx = $joinx + $xs / 2;
 						$joiny = $joiny - $asc * $lh;
-						echo '<div id="joinb', $index, '" style="position:absolute; ', $TEXT_DIRECTION == 'ltr' ? 'left' : 'right', ':', $joinx + $Dbxspacing, 'px; top:', $joiny + $Dbyspacing, 'px;" align="center"><img src="', Theme::theme()->parameter('image-hline'), '" align="left" width="', $joinw, '" height="', $joinh, '" alt=""></div>';
+						echo '<div id="joinb', $index, '" style="position:absolute; ', I18N::direction() === 'ltr' ? 'left' : 'right', ':', $joinx + $Dbxspacing, 'px; top:', $joiny + $Dbyspacing, 'px;" align="center"><img src="', Theme::theme()->parameter('image-hline'), '" align="left" width="', $joinw, '" height="', $joinh, '" alt=""></div>';
 					} else {
 						$change_count = '';
 					}
@@ -369,14 +368,14 @@ if ($person1 && $person2) {
 				$pyoffset = $yoffset - 2;
 
 				if ($index > 0) {
-					if ($TEXT_DIRECTION === 'rtl' && $line !== Theme::theme()->parameter('image-hline')) {
+					if (I18N::direction() === 'rtl' && $line !== Theme::theme()->parameter('image-hline')) {
 						echo '<div id="line', $index, '" style="background:none; position:absolute; right:', $plinex + $Dbxspacing, 'px; top:', $liney + $Dbyspacing, 'px; width:', $lw + $lh * 2, 'px;" align="right">';
 						echo '<img src="', $line, '" align="right" width="', $lw, '" height="', $lh, '" alt="">';
 						echo '<br>';
 						echo I18N::translate($node['relations'][$index]);
 						echo '<i class="', $arrow_img, '"></i>';
 					} else {
-						echo '<div id="line', $index, '" style="background:none; position:absolute; ', $TEXT_DIRECTION == 'ltr' ? 'left' : 'right', ':', $plinex + $Dbxspacing, 'px; top:', $liney + $Dbyspacing, 'px; width:', $lw + $lh * 2, 'px;" align="', $lh == 3 ? 'center' : 'left', '"><img src="', $line, '" align="left" width="', $lw, '" height="', $lh, '" alt="">';
+						echo '<div id="line', $index, '" style="background:none; position:absolute; ', I18N::direction() === 'ltr' ? 'left' : 'right', ':', $plinex + $Dbxspacing, 'px; top:', $liney + $Dbyspacing, 'px; width:', $lw + $lh * 2, 'px;" align="', $lh == 3 ? 'center' : 'left', '"><img src="', $line, '" align="left" width="', $lw, '" height="', $lh, '" alt="">';
 						echo '<br>';
 						echo '<i class="', $arrow_img, '"></i>';
 						if ($lh == 3) {
@@ -390,7 +389,7 @@ if ($person1 && $person2) {
 				// Determine the z-index for this box
 				$zIndex = 200 - ($colNum * $depth + $rowNum);
 
-				echo '<div style="position:absolute; ', $TEXT_DIRECTION == 'ltr' ? 'left' : 'right', ':', $pxoffset, 'px; top:', $pyoffset, 'px; width:', $Dbwidth, 'px; height:', $Dbheight, 'px; z-index:', $zIndex, ';">';
+				echo '<div style="position:absolute; ', I18N::direction() === 'ltr' ? 'left' : 'right', ':', $pxoffset, 'px; top:', $pyoffset, 'px; width:', $Dbwidth, 'px; height:', $Dbheight, 'px; z-index:', $zIndex, ';">';
 				print_pedigree_person($person);
 				echo '</div>';
 			}

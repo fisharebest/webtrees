@@ -218,7 +218,7 @@ class Menu {
 	 * @return string
 	 */
 	public function getMenu() {
-		global $menucount, $TEXT_DIRECTION;
+		global $menucount;
 
 		if (!isset($menucount)) {
 			$menucount = 0;
@@ -246,7 +246,7 @@ class Menu {
 
 		if ($c > 0) {
 			$submenuid = "menu{$id}_subs";
-			if ($TEXT_DIRECTION == 'ltr') {
+			if (I18N::direction() === 'ltr') {
 				$output .= '<div style="text-align: left;">';
 			} else {
 				$output .= '<div style="text-align: right;">';

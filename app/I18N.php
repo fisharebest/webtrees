@@ -156,16 +156,13 @@ class I18N {
 	);
 
 	/** @var string the name of the current locale, such as fr or en_GB */
-	public  static $locale;
+	public static $locale;
 
 	/** @var string The MySQL collation sequence used by this language, typically utf8_unicode_ci */
-	public  static $collation;
+	public static $collation;
 
 	/** @var string Punctuation used to separate list items, typically a comma */
-	public  static $list_separator;
-
-	/** @var string Text direction; ltr or rtl */
-	private static $dir;
+	public static $list_separator;
 
 	/** @var Zend_Cache_Core */
 	private static $cache;
@@ -292,17 +289,11 @@ class I18N {
 		global $WEEK_START; // I18N: This is the first day of the week on calendars. 0=Sunday, 1=Monday...
 		list(, $WEEK_START) = explode('=', self::noop('WEEK_START=0'));
 
-		global $TEXT_DIRECTION;
-		$TEXT_DIRECTION = self::scriptDirection(self::languageScript($locale));
 
-		self::$locale = $locale;
-		self::$dir    = $TEXT_DIRECTION;
-
-		// I18N: This punctuation is used to separate lists of items.
-		self::$list_separator = self::translate(', ');
-
-		// I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
-		self::$collation = self::translate('utf8_unicode_ci');
+		// Save the current locale, and some attributes of it
+		self::$locale         = $locale;
+		self::$list_separator = /* I18N: This punctuation is used to separate lists of items */ self::translate(', ');
+		self::$collation      = /* I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html */ self::translate('utf8_unicode_ci');
 
 		// Non-latin numbers may require non-latin digits
 		try {
@@ -340,7 +331,7 @@ class I18N {
 					// Sort by the transation of the base language, then the variant.
 					// e.g. English|British English, Portuguese|Brazilian Portuguese
 					$tmp1 = self::languageName($match[1]);
-					if ($match[1] == $match[2]) {
+					if ($match[1] === $match[2]) {
 						$tmp2 = $tmp1;
 					} else {
 						$tmp2 = self::languageName($match[2]);
@@ -353,7 +344,7 @@ class I18N {
 			foreach ($installed_languages as &$value) {
 				// The locale database doesn't have translations for certain
 				// "default" languages, such as zn_CH.
-				if (substr($value, -1) == '|') {
+				if (substr($value, -1) === '|') {
 					list($value,) = explode('|', $value);
 				} else {
 					list(,$value) = explode('|', $value);
@@ -370,10 +361,8 @@ class I18N {
 	 * @return string
 	 */
 	public static function html_markup() {
-		$localeData = Zend_Locale_Data::getList(self::$locale, 'layout');
-		$dir = $localeData['characterOrder'] == 'right-to-left' ? 'rtl' : 'ltr';
 		list($lang) = preg_split('/[-_@]/', self::$locale);
-		return 'lang="' . $lang . '" dir="' . $dir . '"';
+		return 'lang="' . $lang . '" dir="' . self::direction() . '"';
 	}
 
 	/**
@@ -433,6 +422,15 @@ class I18N {
 	}
 
 	/**
+	 * What is the direction of the current locale
+	 *
+	 * @return string "ltr" or "rtl"
+	 */
+	public static function direction() {
+		return self::scriptDirection(self::languageScript(self::$locale));
+	}
+
+	/**
 	 * Translate a string, and then substitute placeholders
 	 *
 	 * echo I18N::translate('Hello World!');
@@ -459,7 +457,7 @@ class I18N {
 		$args = func_get_args();
 		$msgid = $args[0] . "\x04" . $args[1];
 		$msgtxt = self::$translation_adapter->getAdapter()->_($msgid);
-		if ($msgtxt == $msgid) {
+		if ($msgtxt === $msgid) {
 			$msgtxt = $args[1];
 		}
 		$args[0] = $msgtxt;
@@ -543,7 +541,7 @@ class I18N {
 			$age[] = self::plural('%s day', '%s days', $match[1], self::number($match[1]));
 		}
 		// If an age is just a number of years, only show the number
-		if (count($age) == 1 && $years >= 0) {
+		if (count($age) === 1 && $years >= 0) {
 			$age = $years;
 		}
 		if ($age) {
@@ -713,7 +711,7 @@ class I18N {
 	 * @return string
 	 */
 	public static function strtoupper($string) {
-		if (self::$locale == 'tr' || self::$locale == 'az') {
+		if (self::$locale === 'tr' || self::$locale === 'az') {
 			return TurkishUtf8::strtoupper($string);
 		} else {
 			return mb_strtoupper($string);
@@ -730,7 +728,7 @@ class I18N {
 	 * @return string
 	 */
 	public static function strtolower($string) {
-		if (self::$locale == 'tr' || self::$locale == 'az') {
+		if (self::$locale === 'tr' || self::$locale === 'az') {
 			return TurkishUtf8::strtolower($string);
 		} else {
 			return mb_strtolower($string);
@@ -755,21 +753,21 @@ class I18N {
 		while ($strpos1 < $strlen1 && $strpos2 < $strlen2) {
 			$byte1 = ord($string1[$strpos1]);
 			$byte2 = ord($string2[$strpos2]);
-			if (($byte1 & 0xE0) == 0xC0) {
+			if (($byte1 & 0xE0) === 0xC0) {
 				$chr1 = $string1[$strpos1++] . $string1[$strpos1++];
-			} elseif (($byte1 & 0xF0) == 0xE0) {
+			} elseif (($byte1 & 0xF0) === 0xE0) {
 				$chr1 = $string1[$strpos1++] . $string1[$strpos1++] . $string1[$strpos1++];
 			} else {
 				$chr1 = $string1[$strpos1++];
 			}
-			if (($byte2 & 0xE0) == 0xC0) {
+			if (($byte2 & 0xE0) === 0xC0) {
 				$chr2 = $string2[$strpos2++] . $string2[$strpos2++];
-			} elseif (($byte2 & 0xF0) == 0xE0) {
+			} elseif (($byte2 & 0xF0) === 0xE0) {
 				$chr2 = $string2[$strpos2++] . $string2[$strpos2++] . $string2[$strpos2++];
 			} else {
 				$chr2 = $string2[$strpos2++];
 			}
-			if ($chr1 == $chr2) {
+			if ($chr1 === $chr2) {
 				continue;
 			}
 			// Try the local alphabet first
@@ -782,7 +780,7 @@ class I18N {
 				$offset2 = strpos(self::$alphabet_upper, $chr2);
 			}
 			if ($offset1 !== false && $offset2 !== false) {
-				if ($offset1 == $offset2) {
+				if ($offset1 === $offset2) {
 					continue;
 				} else {
 					return $offset1 - $offset2;
@@ -798,7 +796,7 @@ class I18N {
 				$offset2 = strpos(self::ALPHABET_UPPER, $chr2);
 			}
 			if ($offset1 !== false && $offset2 !== false) {
-				if ($offset1 == $offset2) {
+				if ($offset1 === $offset2) {
 					continue;
 				} else {
 					return $offset1 - $offset2;
@@ -830,7 +828,7 @@ class I18N {
 		$text = Filter::unescapeHtml($text);
 
 		// LTR text doesn't need reversing
-		if (self::scriptDirection(self::textScript($text)) == 'ltr') {
+		if (self::scriptDirection(self::textScript($text)) === 'ltr') {
 			return $text;
 		}
 
@@ -869,7 +867,7 @@ class I18N {
 		foreach ($lengths as $length) {
 			$length_menu .=
 				'<option value="' . $length . '">' .
-				($length == -1 ? /* I18N: listbox option, e.g. “10,25,50,100,all” */ self::translate('All') : self::number($length)) .
+				($length === -1 ? /* I18N: listbox option, e.g. “10,25,50,100,all” */ self::translate('All') : self::number($length)) .
 				'</option>';
 		}
 		$length_menu = '<select>' . $length_menu . '</select>';
@@ -880,7 +878,7 @@ class I18N {
 		// Which digits are used for numbers
 		$digits = Zend_Locale_Data::getContent(self::$locale, 'numberingsystem', self::$numbering_system);
 
-		if ($digits == '0123456789') {
+		if ($digits === '0123456789') {
 			$callback = '';
 		} else {
 			$callback = ',

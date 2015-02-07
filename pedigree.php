@@ -19,11 +19,10 @@ namespace Fisharebest\Webtrees;
 /**
  * Defined in session.php
  *
- * @global string  $TEXT_DIRECTION
  * @global Tree    $WT_TREE
  * @global integer $basexoffset
  */
-global $TEXT_DIRECTION, $WT_TREE, $basexoffset;
+global $WT_TREE, $basexoffset;
 
 define('WT_SCRIPT_NAME', 'pedigree.php');
 require './includes/session.php';
@@ -96,7 +95,7 @@ if ($controller->error_message) {
 	return;
 }
 
-$posn = $TEXT_DIRECTION == 'rtl' ? 'right' : 'left';
+$posn = I18N::direction() === 'rtl' ? 'right' : 'left';
 
 echo '<div id="pedigree_chart" class="layout', $talloffset, '">';
 //-- echo the boxes
@@ -164,7 +163,7 @@ for ($i = ($controller->treesize - 1); $i >= 0; $i--) {
 		if ($i > (int) ($controller->treesize / 2) + (int) ($controller->treesize / 4)) {
 			$did++;
 		}
-		if ($TEXT_DIRECTION == "rtl") {
+		if (I18N::direction() === 'rtl') {
 			$arrow = 'icon-larrow';
 		} else {
 			$arrow = 'icon-rarrow';
@@ -188,7 +187,7 @@ $famids = $controller->root->getSpouseFamilies();
 $cfamids = $controller->root->getChildFamilies();
 
 if (count($famids) > 0) {
-	if ($TEXT_DIRECTION == 'rtl') {
+	if (I18N::direction() === 'rtl') {
 		$arrow = 'icon-rarrow';
 	} else {
 		$arrow = 'icon-larrow';
@@ -228,18 +227,16 @@ if (count($famids) > 0) {
 	}
 	//-- echo the siblings
 	foreach ($cfamids as $family) {
-		if ($family != null) {
-			$siblings = array_filter($family->getChildren(), function(Individual $item) use ($controller) {
-				return $controller->rootid != $item->getXref();
-			});
-			$num      = count($siblings);
-			if ($num) {
-				echo "<span class='name1'>";
-				echo $num > 1 ? I18N::translate('Siblings') : I18N::translate('Sibling');
-				echo "</span>";
-				foreach ($siblings as $child) {
-					printf(MENU_ITEM, $child->getXref(), $controller->show_full, $controller->PEDIGREE_GENERATIONS, $talloffset, 'name1', $child->getFullName());
-				}
+		$siblings = array_filter($family->getChildren(), function(Individual $item) use ($controller) {
+			return $controller->rootid !== $item->getXref();
+		});
+		$num      = count($siblings);
+		if ($num) {
+			echo '<span class=\'name1\'>';
+			echo $num > 1 ? I18N::translate('Siblings') : I18N::translate('Sibling');
+			echo '</span>';
+			foreach ($siblings as $child) {
+				printf(MENU_ITEM, $child->getXref(), $controller->show_full, $controller->PEDIGREE_GENERATIONS, $talloffset, 'name1', $child->getFullName());
 			}
 		}
 	}
@@ -266,7 +263,7 @@ $controller->addInlineJavascript('
 
 	// Draw joining lines in <canvas>
 	// Set variables
-	var textdirection = "' . $TEXT_DIRECTION . '",
+	var textdirection = "' . I18N::direction() . '",
 		talloffset = ' . $talloffset . ',
 		canvaswidth = ' . ($canvaswidth) . ',
 		offset_x = 20,
