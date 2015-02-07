@@ -1479,7 +1479,7 @@ function create_add_form($fact) {
  * @return string
  */
 function create_edit_form(GedcomRecord $record, Fact $fact) {
-	global $WT_TREE, $date_and_time, $tags;
+	global $date_and_time, $tags;
 
 	$pid = $record->getXref();
 
@@ -1510,11 +1510,11 @@ function create_edit_form(GedcomRecord $record, Fact $fact) {
 		'PLAC'=>array('MAP'),
 		'MAP' =>array('LATI', 'LONG')
 	);
-	if ($WT_TREE->getPreference('FULL_SOURCES')) {
+	if ($record->getTree()->getPreference('FULL_SOURCES')) {
 		$expected_subtags['SOUR'][] = 'QUAY';
 		$expected_subtags['DATA'][] = 'DATE';
 	}
-	if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
+	if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $record->getTree()->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 		$expected_subtags['PLAC'] = array_merge($match[1], $expected_subtags['PLAC']);
 	}
 

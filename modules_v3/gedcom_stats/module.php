@@ -183,7 +183,7 @@ class gedcom_stats_WT_Module extends Module implements ModuleBlockInterface {
 		}
 		// NOTE: Print the most common surnames
 		if ($show_common_surnames) {
-			$surnames = get_common_surnames($WT_TREE->getPreference('COMMON_NAMES_THRESHOLD'));
+			$surnames = get_common_surnames($WT_TREE->getPreference('COMMON_NAMES_THRESHOLD'), $WT_TREE);
 			if (count($surnames) > 0) {
 				$content .= '<p><b>' . I18N::translate('Most common surnames') . '</b></p>';
 				$content .= '<div class="common_surnames">';

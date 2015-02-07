@@ -217,7 +217,7 @@ case 'create': // Save the information from the “showcreateform” action
 
 	$newged = handle_updates($newged);
 
-	$new_media = GedcomRecord::createRecord($newged, WT_GED_ID);
+	$new_media = $WT_TREE->createRecord($newged);
 	if ($linktoid) {
 		$record = GedcomRecord::getInstance($linktoid);
 		$record->createFact('1 OBJE @' . $new_media->getXref() . '@', true);

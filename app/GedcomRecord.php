@@ -1189,62 +1189,6 @@ class GedcomRecord {
 	}
 
 	/**
-	 * Create a new record from GEDCOM data.
-	 *
-	 * @param string  $gedcom
-	 * @param integer $gedcom_id
-	 *
-	 * @return GedcomRecord
-	 * @throws \Exception
-	 */
-	static public function createRecord($gedcom, $gedcom_id) {
-		if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ (' . WT_REGEX_TAG . ')/', $gedcom, $match)) {
-			$xref = $match[1];
-			$type = $match[2];
-		} else {
-			throw new \Exception('Invalid argument to GedcomRecord::createRecord(' . $gedcom . ')');
-		}
-		if (strpos("\r", $gedcom) !== false) {
-			// MSDOS line endings will break things in horrible ways
-			throw new \Exception('Evil line endings found in GedcomRecord::createRecord(' . $gedcom . ')');
-		}
-
-		// webtrees creates XREFs containing digits.  Anything else (e.g. “new”) is just a placeholder.
-		if (!preg_match('/\d/', $xref)) {
-			$xref   = get_new_xref($type);
-			$gedcom = preg_replace('/^0 @(' . WT_REGEX_XREF . ')@/', '0 @' . $xref . '@', $gedcom);
-		}
-
-		// Create a change record, if not already present
-		if (!preg_match('/\n1 CHAN/', $gedcom)) {
-			$gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->getUserName();
-		}
-
-		// Create a pending change
-		Database::prepare(
-			"INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, '', ?, ?)"
-		)->execute(array(
-			$gedcom_id,
-			$xref,
-			$gedcom,
-			Auth::id()
-		));
-
-		// Accept this pending change
-		if (Auth::user()->getPreference('auto_accept')) {
-			accept_all_changes($xref, $gedcom_id);
-		}
-
-		// Clear this record from the cache
-		self::$pending_record_cache = null;
-
-		Log::addEditLog('Create: ' . $type . ' ' . $xref);
-
-		// Return the newly created record
-		return GedcomRecord::getInstance($xref);
-	}
-
-	/**
 	 * Update this record
 	 *
 	 * @param string  $gedcom

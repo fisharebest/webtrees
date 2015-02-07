@@ -559,7 +559,7 @@ case 'add_child_to_family_action':
 	}
 
 	// Create the new child
-	$new_child = GedcomRecord::createRecord($gedrec, WT_GED_ID);
+	$new_child = $family->getTree()->createRecord($gedrec);
 
 	// Insert new child at the right place
 	$done = false;
@@ -626,7 +626,7 @@ case 'add_child_to_individual_action':
 	} else {
 		$gedcom = "0 @NEW@ FAM\n1 HUSB @" . $person->getXref() . "@";
 	}
-	$family = GedcomRecord::createRecord($gedcom, WT_GED_ID);
+	$family = $person->getTree()->createRecord($gedcom);
 
 	// Link the parent to the family
 	$person->createFact('1 FAMS @' . $family->getXref() . '@', true);
@@ -649,7 +649,7 @@ case 'add_child_to_individual_action':
 		$gedcom = updateRest($gedcom);
 	}
 
-	$child = GedcomRecord::createRecord($gedcom, WT_GED_ID);
+	$child = $person->getTree()->createRecord($gedcom);
 
 	// Link the family to the child
 	$family->createFact('1 CHIL @' . $child->getXref() . '@', true);
@@ -706,7 +706,7 @@ case 'add_parent_to_individual_action':
 
 	// Create a new family
 	$gedcom = "0 @NEW@ FAM\n1 CHIL @" . $person->getXref() . "@";
-	$family = GedcomRecord::createRecord($gedcom, WT_GED_ID);
+	$family = $person->getTree()->createRecord($gedcom);
 
 	// Link the child to the family
 	$person->createFact('1 FAMC @' . $family->getXref() . '@', true);
@@ -729,7 +729,7 @@ case 'add_parent_to_individual_action':
 	}
 	$gedcom .= "\n1 FAMS @" . $family->getXref() . "@";
 
-	$parent = GedcomRecord::createRecord($gedcom, WT_GED_ID);
+	$parent = $person->getTree()->createRecord($gedcom);
 
 	// Link the family to the child
 	if ($parent->getSex() == 'F') {
@@ -789,7 +789,7 @@ case 'add_unlinked_indi_action':
 		$gedrec = updateRest($gedrec);
 	}
 
-	$new_indi = GedcomRecord::createRecord($gedrec, WT_GED_ID);
+	$new_indi = $WT_TREE->createRecord($gedrec);
 
 	if (Filter::post('goto') == 'new') {
 		$controller->addInlineJavascript('closePopupAndReloadParent("' . $new_indi->getRawUrl() . '");');
@@ -871,12 +871,12 @@ case 'add_spouse_to_individual_action':
 	}
 
 	// Create the new spouse
-	$spouse = GedcomRecord::createRecord($indi_gedcom, WT_GED_ID);
+	$spouse = $person->getTree()->createRecord($indi_gedcom);
 	// Create a new family
 	if ($sex == 'F') {
-		$family = GedcomRecord::createRecord("0 @NEW@ FAM\n1 WIFE @" . $spouse->getXref() . "@\n1 HUSB @" . $person->getXref() . "@" . $fam_gedcom, WT_GED_ID);
+		$family = $spouse->getTree()->createRecord("0 @NEW@ FAM\n1 WIFE @" . $spouse->getXref() . "@\n1 HUSB @" . $person->getXref() . "@" . $fam_gedcom);
 	} else {
-		$family = GedcomRecord::createRecord("0 @NEW@ FAM\n1 HUSB @" . $spouse->getXref() . "@\n1 WIFE @" . $person->getXref() . "@" . $fam_gedcom, WT_GED_ID);
+		$family = $spouse->getTree()->createRecord("0 @NEW@ FAM\n1 HUSB @" . $spouse->getXref() . "@\n1 WIFE @" . $person->getXref() . "@" . $fam_gedcom);
 	}
 	// Link the spouses to the family
 	$spouse->createFact('1 FAMS @' . $family->getXref() . '@', true);
@@ -949,7 +949,7 @@ case 'add_spouse_to_family_action':
 		$gedrec = updateRest($gedrec);
 	}
 	$gedrec .= "\n1 FAMS @" . $family->getXref() . "@";
-	$spouse = GedcomRecord::createRecord($gedrec, WT_GED_ID);
+	$spouse = $family->getTree()->createRecord($gedrec);
 
 	// Update the existing family - add marriage, etc
 	if ($family->getFirstFact('HUSB')) {
@@ -1188,7 +1188,7 @@ case 'linkspouseaction':
 		$gedcom = updateRest($gedcom);
 	}
 
-	$family = GedcomRecord::createRecord($gedcom, WT_GED_ID);
+	$family = $person->getTree()->createRecord($gedcom);
 	$person->createFact('1 FAMS @' . $family->getXref() . '@', true);
 	$spouse->createFact('1 FAMS @' . $family->getXref() . '@', true);
 
@@ -1346,7 +1346,7 @@ case 'addsourceaction':
 		}
 	}
 
-	$record = GedcomRecord::createRecord($newgedrec, WT_GED_ID);
+	$record = $WT_TREE->createRecord($newgedrec);
 	$controller->addInlineJavascript('openerpasteid("' . $record->getXref() . '");');
 	break;
 
@@ -1403,7 +1403,7 @@ case 'addnoteaction':
 
 	$gedrec = '0 @XREF@ NOTE ' . preg_replace("/\r?\n/", "\n1 CONT ", Filter::post('NOTE'));
 
-	$record = GedcomRecord::createRecord($gedrec, WT_GED_ID);
+	$record = $WT_TREE->createRecord($gedrec);
 	$controller->addInlineJavascript('openerpasteid("' . $record->getXref() . '");');
 	break;
 
@@ -1640,7 +1640,7 @@ case 'addrepoaction':
 		$gedrec .= "\n1 WWW " . $WWW;
 	}
 
-	$record = GedcomRecord::createRecord($gedrec, WT_GED_ID);
+	$record = $WT_TREE->createRecord($gedrec);
 	$controller->addInlineJavascript('openerpasteid("' . $record->getXref() . '");');
 	break;
 

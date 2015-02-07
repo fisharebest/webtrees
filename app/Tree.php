@@ -751,4 +751,134 @@ class Tree {
 		Database::commit();
 		fclose($fp);
 	}
+
+	/**
+	 * Generate a new XREF, unique across all family trees
+	 *
+	 * @param string $type
+	 *
+	 * @return string
+	 */
+	public function getNewXref($type = 'INDI') {
+		/** @var string[] Which tree preference is used for which record type */
+		static $type_to_preference = array(
+			'INDI' => 'GEDCOM_ID_PREFIX',
+			'FAM'  => 'FAM_ID_PREFIX',
+			'OBJE' => 'MEDIA_ID_PREFIX',
+			'NOTE' => 'NOTE_ID_PREFIX',
+			'SOUR' => 'SOURCE_ID_PREFIX',
+			'REPO' => 'REPO_ID_PREFIX',
+		);
+
+		if (array_key_exists($type, $type_to_preference)) {
+			$prefix = $this->getPreference($type_to_preference[$type]);
+		} else {
+			// Use the first non-underscore character
+			$prefix = substr(trim($type, '_'), 0, 1);
+		}
+
+		do {
+			// Use LAST_INSERT_ID(expr) to provide a transaction-safe sequence.  See
+			// http://dev.mysql.com/doc/refman/5.6/en/information-functions.html#function_last-insert-id
+			$statement = Database::prepare(
+				"UPDATE `##next_id` SET next_id = LAST_INSERT_ID(next_id + 1) WHERE record_type = :record_type AND gedcom_id = :tree_id"
+			);
+			$statement->execute(array(
+				'record_type' => $type,
+				'tree_id'     => $this->getTreeId(),
+			));
+
+			if ($statement->rowCount() === 0) {
+				// First time we've used this record type.
+				Database::prepare(
+					"INSERT INTO `##next_id` (gedcom_id, record_type, next_id) VALUES(:tree_id, :record_type, 1)"
+				)->execute(array(
+					'record_type' => $type,
+					'tree_id'     => $this->getTreeId(),
+				));
+				$num = 1;
+			} else {
+				$num = Database::prepare("SELECT LAST_INSERT_ID()")->fetchOne();
+			}
+
+			// Records may already exist with this sequence number.
+			$already_used = Database::prepare(
+				"SELECT i_id FROM `##individuals` WHERE i_id = :i_id" .
+				" UNION ALL " .
+				"SELECT f_id FROM `##families` WHERE f_id = :f_id" .
+				" UNION ALL " .
+				"SELECT s_id FROM `##sources` WHERE s_id = :s_id" .
+				" UNION ALL " .
+				"SELECT m_id FROM `##media` WHERE m_id = :m_id" .
+				" UNION ALL " .
+				"SELECT o_id FROM `##other` WHERE o_id = :o_id" .
+				" UNION ALL " .
+				"SELECT xref FROM `##change` WHERE xref = :xref"
+			)->execute(array(
+				'i_id' => $prefix . $num,
+				'f_id' => $prefix . $num,
+				's_id' => $prefix . $num,
+				'm_id' => $prefix . $num,
+				'o_id' => $prefix . $num,
+				'xref' => $prefix . $num,
+			))->fetchOne();
+		} while ($already_used);
+
+		return $prefix . $num;
+	}
+
+	/**
+	 * Create a new record from GEDCOM data.
+	 *
+	 * @param string $gedcom
+	 *
+	 * @return GedcomRecord
+	 * @throws \Exception
+	 */
+	public function createRecord($gedcom) {
+		if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ (' . WT_REGEX_TAG . ')/', $gedcom, $match)) {
+			$xref = $match[1];
+			$type = $match[2];
+		} else {
+			throw new \Exception('Invalid argument to GedcomRecord::createRecord(' . $gedcom . ')');
+		}
+		if (strpos("\r", $gedcom) !== false) {
+			// MSDOS line endings will break things in horrible ways
+			throw new \Exception('Evil line endings found in GedcomRecord::createRecord(' . $gedcom . ')');
+		}
+
+		// webtrees creates XREFs containing digits.  Anything else (e.g. “new”) is just a placeholder.
+		if (!preg_match('/\d/', $xref)) {
+			$xref   = $this->getNewXref($type);
+			$gedcom = preg_replace('/^0 @(' . WT_REGEX_XREF . ')@/', '0 @' . $xref . '@', $gedcom);
+		}
+
+		// Create a change record, if not already present
+		if (!preg_match('/\n1 CHAN/', $gedcom)) {
+			$gedcom .= "\n1 CHAN\n2 DATE " . date('d M Y') . "\n3 TIME " . date('H:i:s') . "\n2 _WT_USER " . Auth::user()->getUserName();
+		}
+
+		// Create a pending change
+		Database::prepare(
+			"INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, '', ?, ?)"
+		)->execute(array(
+			$this->getTreeId(),
+			$xref,
+			$gedcom,
+			Auth::id()
+		));
+
+		Log::addEditLog('Create: ' . $type . ' ' . $xref);
+
+		// Accept this pending change
+		if (Auth::user()->getPreference('auto_accept')) {
+			accept_all_changes($xref, $this->getTreeId());
+			// Return the newly created record
+			return new GedcomRecord($xref, $gedcom, null, $this->getTreeId());
+		} else {
+			// Return the newly created record
+			return new GedcomRecord($xref, null, $gedcom, $this->getTreeId());
+		}
+
+	}
 }

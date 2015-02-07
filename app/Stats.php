@@ -4798,7 +4798,7 @@ class Stats {
 		} else {
 			$sorting = 'alpha';
 		}
-		$surname_list = get_common_surnames($threshold);
+		$surname_list = get_common_surnames($threshold, $this->tree);
 		if (count($surname_list) == 0) {
 			return '';
 		}
@@ -4911,7 +4911,7 @@ class Stats {
 		}
 		$sizes = explode('x', $size);
 		$tot_indi = $this->totalIndividualsQuery();
-		$surnames = get_common_surnames($threshold);
+		$surnames = get_common_surnames($threshold, $this->tree);
 		if (count($surnames) <= 0) {
 			return '';
 		}

@@ -40,33 +40,19 @@ function fetch_all_links($xref, $gedcom_id) {
 /**
  * Find out if there are any pending changes that a given user may accept.
  *
- * @param User    $user
+ * @param User $user
  * @param Tree $tree
  *
  * @return boolean
  */
-function exists_pending_change(User $user = null, Tree $tree = null) {
-	global $WT_TREE;
-
-	if ($user === null) {
-		$user = Auth::user();
-	}
-
-	if ($tree === null) {
-		$tree = $WT_TREE;
-	}
-
-	if ($user === null || $tree === null) {
-		return false;
-	}
-
+function exists_pending_change(User $user, Tree $tree) {
 	return
 		$tree->canAcceptChanges($user) &&
 		Database::prepare(
-			"SELECT 1" .
-			" FROM `##change`" .
-			" WHERE status='pending' AND gedcom_id=?"
-		)->execute(array($tree->getTreeId()))->fetchOne();
+			"SELECT 1 FROM `##change` WHERE status = 'pending' AND gedcom_id = :tree_id"
+		)->execute(array(
+			'tree_id' => $tree->getTreeId()
+		))->fetchOne();
 }
 
 /**
@@ -708,15 +694,14 @@ function find_rin_id($rin) {
  * This function returns a simple array of the most common surnames
  * found in the individuals list.
  *
- * @param integer $min the number of times a surname must occur before it is added to the array
+ * @param integer $min  The number of times a surname must occur before it is added to the array
+ * @param Tree    $tree
  *
  * @return mixed[][]
  */
-function get_common_surnames($min) {
-	global $WT_TREE;
-
-	$COMMON_NAMES_ADD    = $WT_TREE->getPreference('COMMON_NAMES_ADD');
-	$COMMON_NAMES_REMOVE = $WT_TREE->getPreference('COMMON_NAMES_REMOVE');
+function get_common_surnames($min, $tree) {
+	$COMMON_NAMES_ADD    = $tree->getPreference('COMMON_NAMES_ADD');
+	$COMMON_NAMES_REMOVE = $tree->getPreference('COMMON_NAMES_REMOVE');
 
 	$topsurns = get_top_surnames(WT_GED_ID, $min, 0);
 	foreach (explode(',', $COMMON_NAMES_ADD) as $surname) {
@@ -730,7 +715,7 @@ function get_common_surnames($min) {
 
 	//-- check if we found some, else recurse
 	if (empty($topsurns) && $min > 2) {
-		return get_common_surnames($min / 2);
+		return get_common_surnames($min / 2, $tree);
 	} else {
 		uksort($topsurns, __NAMESPACE__ . '\I18N::strcasecmp');
 		foreach ($topsurns as $key => $value) {
