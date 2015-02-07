@@ -1329,51 +1329,126 @@ abstract class BaseTheme {
 	 * @return Menu|null
 	 */
 	protected function menuLists() {
-		global $controller;
-
-		// The top level menu shows the individual list
 		$menu = new Menu(I18N::translate('Lists'), 'indilist.php?' . $this->tree_url, 'menu-list');
 
 		// Do not show empty lists
 		$row = Database::prepare(
 			"SELECT SQL_CACHE" .
-			" EXISTS(SELECT 1 FROM `##sources` WHERE s_file=?                  ) AS sour," .
-			" EXISTS(SELECT 1 FROM `##other`   WHERE o_file=? AND o_type='REPO') AS repo," .
-			" EXISTS(SELECT 1 FROM `##other`   WHERE o_file=? AND o_type='NOTE') AS note," .
-			" EXISTS(SELECT 1 FROM `##media`   WHERE m_file=?                  ) AS obje"
+			" EXISTS(SELECT 1 FROM `##sources` WHERE s_file = ?                  ) AS sour," .
+			" EXISTS(SELECT 1 FROM `##other`   WHERE o_file = ? AND o_type='REPO') AS repo," .
+			" EXISTS(SELECT 1 FROM `##other`   WHERE o_file = ? AND o_type='NOTE') AS note," .
+			" EXISTS(SELECT 1 FROM `##media`   WHERE m_file = ?                  ) AS obje"
 		)->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID))->fetchOneRow();
 
-		// Build a list of submenu items and then sort it in localized name order
-		$surname_url = '&amp;surname=' . rawurlencode($controller->getSignificantSurname());
-
 		$menulist = array(
-			new Menu(I18N::translate('Individuals'), 'indilist.php?' . $this->tree_url . $surname_url, 'menu-list-indi'),
+			$this->menuListsIndividuals(),
 		);
 
 		if (!$this->isSearchEngine()) {
-			$menulist[] = new Menu(I18N::translate('Families'), 'famlist.php?' . $this->tree_url . $surname_url, 'menu-list-fam');
-			$menulist[] = new Menu(I18N::translate('Branches'), 'branches.php?' . $this->tree_url . $surname_url, 'menu-branches');
-			$menulist[] = new Menu(I18N::translate('Place hierarchy'), 'placelist.php?' . $this->tree_url, 'menu-list-plac');
+			$menulist[] = $this->menuListsFamilies();
+			$menulist[] = $this->menuListsBranches();
+			$menulist[] = $this->menuListsPlaces();
 			if ($row->obje) {
-				$menulist[] = new Menu(I18N::translate('Media objects'), 'medialist.php?' . $this->tree_url, 'menu-list-obje');
+				$menulist[] = $this->menuListsMedia();
 			}
 			if ($row->repo) {
-				$menulist[] = new Menu(I18N::translate('Repositories'), 'repolist.php?' . $this->tree_url, 'menu-list-repo');
+				$menulist[] = $this->menuListsRepositories();
 			}
 			if ($row->sour) {
-				$menulist[] = new Menu(I18N::translate('Sources'), 'sourcelist.php?' . $this->tree_url, 'menu-list-sour');
+				$menulist[] = $this->menuListsSources();
 			}
 			if ($row->note) {
-				$menulist[] = new Menu(I18N::translate('Shared notes'), 'notelist.php?' . $this->tree_url, 'menu-list-note');
+				$menulist[] = $this->menuListsNotes();
 			}
 		}
+
 		uasort($menulist, function(Menu $x, Menu $y) {
-				return I18N::strcasecmp($x->getLabel(), $y->getLabel());
-			});
+			return I18N::strcasecmp($x->getLabel(), $y->getLabel());
+		});
 
 		$menu->setSubmenus($menulist);
 
 		return $menu;
+	}
+
+	/**
+	 * A menu for the list of branches
+	 *
+	 * @return Menu
+	 */
+	protected function menuListsBranches() {
+		global $controller;
+
+		return new Menu(I18N::translate('Branches'), 'branches.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($controller->getSignificantSurname()), 'menu-branches');
+	}
+
+	/**
+	 * A menu for the list of families
+	 *
+	 * @return Menu
+	 */
+	protected function menuListsFamilies() {
+		global $controller;
+
+		return new Menu(I18N::translate('Individuals'), 'famlist.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($controller->getSignificantSurname()), 'menu-list-fam');
+	}
+
+	/**
+	 * A menu for the list of individuals
+	 *
+	 * @return Menu
+	 */
+	protected function menuListsIndividuals() {
+		global $controller;
+
+		return new Menu(I18N::translate('Families'), 'famlist.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($controller->getSignificantSurname()), 'menu-list-indi');
+	}
+
+	/**
+	 * A menu for the list of media objects
+	 *
+	 * @return Menu
+	 */
+	protected function menuListsMedia() {
+		return new Menu(I18N::translate('Media objects'), 'medialist.php?' . $this->tree_url, 'menu-list-obje');
+	}
+
+	/**
+	 * A menu for the list of notes
+	 *
+	 * @return Menu
+	 */
+	protected function menuListsNotes() {
+		return new Menu(I18N::translate('Shared notes'), 'notelist.php?' . $this->tree_url, 'menu-list-note');
+	}
+
+	/**
+	 * A menu for the list of individuals
+	 *
+	 * @return Menu
+	 */
+	protected function menuListsPlaces() {
+		global $controller;
+
+		return new Menu(I18N::translate('Place hierarchy'), 'placelist.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($controller->getSignificantSurname()), 'menu-list-plac');
+	}
+
+	/**
+	 * A menu for the list of repositories
+	 *
+	 * @return Menu
+	 */
+	protected function menuListsRepositories() {
+		return new Menu(I18N::translate('Repositories'), 'repolist.php?' . $this->tree_url, 'menu-list-repo');
+	}
+
+	/**
+	 * A menu for the list of sources
+	 *
+	 * @return Menu
+	 */
+	protected function menuListsSources() {
+		return new Menu(I18N::translate('Sources'), 'sourcelist.php?' . $this->tree_url, 'menu-list-sour');
 	}
 
 	/**
