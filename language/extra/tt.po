@@ -560,7 +560,7 @@ msgstr ""
 
 #. I18N: Help text for the “Automatically create globally unique IDs” configuration setting
 #: admin_trees_config.php:808
-msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
+msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates.  The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
 msgstr ""
 
 #: admin_trees_manage.php:619
@@ -568,7 +568,7 @@ msgid "<b>Important note:</b> The transfer wizard is not able to assist with mov
 msgstr ""
 
 #: message.php:115
-msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
+msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
 msgstr ""
 
 #: login.php:159
@@ -835,7 +835,7 @@ msgstr "Шәхеснең якын туганнарын күрчәтүче ян-�
 
 #. I18N: Description of the “Extra information” module
 #: modules_v3/extra_info/module.php:31
-msgid "A sidebar showing non-genealogical information about an individual."
+msgid "A sidebar showing non-genealogy information about an individual."
 msgstr "Шәхескә кагылышлы, ләкин генеалогик булмаган мәгълүматны күрсәтүче ян-такта"
 
 #. I18N: Description of the “Descendants” module
@@ -10757,7 +10757,7 @@ msgid "Places in %s"
 msgstr "%s-да урнашкан урыннар"
 
 #: help_text.php:330
-msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
+msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
 msgstr ""
 
 #: library/WT/Theme/Clouds.php:74 library/WT/Theme/Fab.php:84
@@ -13343,7 +13343,7 @@ msgid "Thailand"
 msgstr ""
 
 #: help_text.php:276
-msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded.  This is how it will be displayed on screen.  It uses standard genealogical annotations to identify different parts of the name."
+msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded.  This is how it will be displayed on screen.  It uses standard genealogy annotations to identify different parts of the name."
 msgstr ""
 
 #: help_text.php:296
@@ -13563,7 +13563,7 @@ msgstr ""
 
 #. I18N: Help text for the “Genealogy contact” configuration setting
 #: admin_trees_config.php:981
-msgid "The individual to contact about the genealogical data on this website."
+msgid "The individual to contact about the genealogy data on this website."
 msgstr ""
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
@@ -14452,7 +14452,7 @@ msgstr "Сәхифә вакытлыча ябык"
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:165
 #, php-format
-msgid "This will delete all the genealogical data from “%s” and replace it with data from another GEDCOM file."
+msgid "This will delete all the genealogy data from “%s” and replace it with data from another GEDCOM file."
 msgstr ""
 
 #: modules_v3/googlemap/module.php:1817

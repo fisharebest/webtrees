@@ -779,7 +779,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo radio_buttons('GENERATE_UIDS', $no_yes, $WT_TREE->getPreference('GENERATE_UIDS'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Automatically create globally unique IDs” configuration setting */ I18N::translate('<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file.'); ?>
+				<?php echo /* I18N: Help text for the “Automatically create globally unique IDs” configuration setting */ I18N::translate('<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates.  The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -952,7 +952,7 @@ $controller
 				<?php endforeach; ?>
 			</select>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Genealogy contact” configuration setting */ I18N::translate('The individual to contact about the genealogical data on this website.'); ?>
+				<?php echo /* I18N: Help text for the “Genealogy contact” configuration setting */ I18N::translate('The individual to contact about the genealogy data on this website.'); ?>
 			</p>
 		</div>
 	</div>

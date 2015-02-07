@@ -585,7 +585,7 @@ msgstr "IX"
 
 #. I18N: Help text for the “Automatically create globally unique IDs” configuration setting
 #: admin_trees_config.php:808
-msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
+msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates.  The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
 msgstr "<b>GUID</b>, in questo contesto, è l’acronimo di «Globally Unique ID» (ovvero identificativo univoco globale).<br><br>Lo scopo dei GUID è quello di contribuire a identificare ogni persona in modo ripetibile; in tal modo le organizzazioni principali (come il Family History Center o la chiesa mormone di Salt Lake City), o anche programmi compatibili in esecuzione sul proprio server, sono in grado di determinare se hanno a che fare con la stessa persona, indipendentemente dall’origine del GEDCOM. L’obiettivo del Family History Center è quello di avere un archivio centralizzato di dati genealogici da esporre attraverso servizi web. Ciò consentirà a qualsiasi programma di accedere ai dati e di aggiornare tale archivio con le proprie informazioni.<br><br>Se non si desidera condividere questo GEDCOM con nessun altro, non è necessario che webtrees crei questi GUID; tuttavia l’unica controindicazione della creazione dei GUID è l’aumento delle dimensioni del GEDCOM."
 
 #: admin_trees_manage.php:619
@@ -593,7 +593,7 @@ msgid "<b>Important note:</b> The transfer wizard is not able to assist with mov
 msgstr "<b>Nota importante:</b> il trasferimento guidato non è in grado di gestire lo spostamento degli elementi multimediali. Al termine del trasferimento guidato sarà necessario impostare e spostare o copiare la configurazione degli oggetti multimediali e gli oggetti stessi."
 
 #: message.php:115
-msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
+msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
 msgstr "<b>Nota bene:</b> le informazioni confidenziali sulle persone viventi verranno date solamente ai parenti della famiglia e agli amici più vicini. Verrà richiesto di verificare il proprio rapporto prima di poter ricevere qualsiasi dato sensibile. A volte anche le informazioni di persone defunte possono essere confidenziali; questo perché non ci sono abbastanza dati per determinare se una persona è ancora in vita.<br><br>Prima di fare una domanda, verificare che si stanno chiedendo informazioni sulla persona giusta controllando date, luoghi e parenti stretti. Se si stanno inviando modifiche agli alberi genealogici inserire le fonti da cui sono stati ricavati i dati."
 
 #: login.php:159
@@ -860,7 +860,7 @@ msgstr "Una barra laterale che mostra le famiglie e i parenti stretti di una per
 
 #. I18N: Description of the “Extra information” module
 #: modules_v3/extra_info/module.php:31
-msgid "A sidebar showing non-genealogical information about an individual."
+msgid "A sidebar showing non-genealogy information about an individual."
 msgstr "Una barra laterale che mostra informazioni non genealogiche su una persona."
 
 #. I18N: Description of the “Descendants” module
@@ -10784,7 +10784,7 @@ msgid "Places in %s"
 msgstr "Luoghi in %s"
 
 #: help_text.php:330
-msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
+msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
 msgstr "I luoghi dovrebbero essere conformi alle regole della genealogia. In genealogia, i luoghi sono registrati con informazioni specifiche dal primo all’ultimo posto, utilizzando la virgola per separare i vari livelli dei luoghi. Il livello col quale si registra l’informazione di un luogo dovrebbe rappresentare i livelli di governo del territorio (laico e religioso) in cui sono tenuti i record anagrafici per quel posto.<br><br>Ad esempio un posto come Salt Lake City dovrebbe essere inserito come «Salt Lake City, Salt Lake, Utah, USA».<br><br>Esaminiamo ogni parte di questo luogo. La prima parte, «Salt Lake City,» è la città o il paese in cui l’evento si è verificato. In alcune nazioni, ci possono essere comuni o quartieri, all’interno di una città, che è importante annotare (e in tal caso devono essere inseriti prima della città). La parte successiva, «Salt Lake,» è la contea (provincia). «Utah» è lo stato, mentre «USA» è la nazione. È importante annotare ogni luogo, perché i governi mantengono informazioni per ogni livello.<br><br>Se un livello del luogo non è noto, si dovrebbe lasciare uno spazio tra le virgole. Se nell’esempio precedente non si conoscesse la contea di Salt Lake City, avremmo dovuto scrivere «Salt Lake City, , Utah, USA». Supponiamo di sapere solo che una persona nata nello Utah: i dati dovrebbero venire registrati così: «, , Utah, USA».<br><br>È possibile utilizzare il collegamento <b>Trova luogo</b> per essere aiutati a trovare luoghi già presenti nel database."
 
 #: library/WT/Theme/Clouds.php:74 library/WT/Theme/Fab.php:84
@@ -13370,7 +13370,7 @@ msgid "Thailand"
 msgstr "Tailandia"
 
 #: help_text.php:276
-msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded.  This is how it will be displayed on screen.  It uses standard genealogical annotations to identify different parts of the name."
+msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded.  This is how it will be displayed on screen.  It uses standard genealogy annotations to identify different parts of the name."
 msgstr "Il campo <b>nome</b> contiene il nome completo della persona, come dovrebbe essere scritto o come è stato registrato. Tale campo verrà utilizzato per la visualizzazione a video. Per identificare le varie parti del nome si utilizzano le normali annotazioni genealogiche."
 
 #: help_text.php:296
@@ -13590,7 +13590,7 @@ msgstr "La persona da contattare per questioni tecniche o errori riscontrati sul
 
 #. I18N: Help text for the “Genealogy contact” configuration setting
 #: admin_trees_config.php:981
-msgid "The individual to contact about the genealogical data on this website."
+msgid "The individual to contact about the genealogy data on this website."
 msgstr "La persona da contattare per i dati genealogici su questo sito."
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
@@ -14482,7 +14482,7 @@ msgstr "Questo sito è temporaneamente non disponibile"
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:165
 #, php-format
-msgid "This will delete all the genealogical data from “%s” and replace it with data from another GEDCOM file."
+msgid "This will delete all the genealogy data from “%s” and replace it with data from another GEDCOM file."
 msgstr "Questo cancellerà tutti i dati genealogici da «%s» e li sostituirà con i dati di un altro GEDCOM."
 
 #: modules_v3/googlemap/module.php:1817
@@ -20087,7 +20087,7 @@ msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
 
-#~ msgid "<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The administrator can override this option for individual users by editing the user’s account details."
+#~ msgid "<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogy database.  The administrator can override this option for individual users by editing the user’s account details."
 #~ msgstr "<b>No</b> significa che gli utenti autenticati possono vedere i dettagli di tutte le persone viventi. <b>Sì</b> significa che gli utenti possono visualizzare le informazioni confidenziali solamente delle persone viventi cui sono imparentati.<br><br>Questa opzione definisce il valore predefinito per tutti gli utenti che hanno accesso a questo database genealogico.  L’amministratore può modificare i dettagli degli account utente per modificare l’impostazione di ciascun utente."
 
 #~ msgid "Add by ID"

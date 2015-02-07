@@ -163,7 +163,7 @@ case 'importform':
 	if (!$tree) {
 		break;
 	}
-	echo '<p>', /* I18N: %s is the name of a family tree */ I18N::translate('This will delete all the genealogical data from “%s” and replace it with data from another GEDCOM file.', $tree->getTitleHtml()), '</p>';
+	echo '<p>', /* I18N: %s is the name of a family tree */ I18N::translate('This will delete all the genealogy data from “%s” and replace it with data from another GEDCOM file.', $tree->getTitleHtml()), '</p>';
 	// the javascript in the next line strips any path associated with the file before comparing it to the current GEDCOM name (both Chrome and IE8 include c:\fakepath\ in the filename).
 	$previous_gedcom_filename = $tree->getPreference('gedcom_filename');
 	echo '<form name="replaceform" method="post" enctype="multipart/form-data" onsubmit="var newfile = document.replaceform.ged_name.value; newfile = newfile.substr(newfile.lastIndexOf(\'\\\\\')+1); if (newfile!=\'', Filter::escapeHtml($previous_gedcom_filename), '\' && \'\' != \'', Filter::escapeHtml($previous_gedcom_filename), '\') return confirm(\'', Filter::escapeHtml(I18N::translate('You have selected a GEDCOM file with a different name.  Is this correct?')), '\'); else return true;">';
