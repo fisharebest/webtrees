@@ -28,7 +28,7 @@ require './includes/session.php';
 
 $controller = new PageController;
 $controller
-	->restrictAccess(Auth::isManager($WT_TREE))
+	->restrictAccess(!$WT_TREE || Auth::isManager($WT_TREE))
 	->setPageTitle(I18N::translate('Manage family trees'));
 
 $gedcom_files = glob(WT_DATA_DIR . '*.{ged,Ged,GED}', GLOB_NOSORT | GLOB_BRACE);
