@@ -694,15 +694,14 @@ function find_rin_id($rin) {
  * This function returns a simple array of the most common surnames
  * found in the individuals list.
  *
- * @param integer $min the number of times a surname must occur before it is added to the array
+ * @param integer $min  The number of times a surname must occur before it is added to the array
+ * @param Tree    $tree
  *
  * @return mixed[][]
  */
-function get_common_surnames($min) {
-	global $WT_TREE;
-
-	$COMMON_NAMES_ADD    = $WT_TREE->getPreference('COMMON_NAMES_ADD');
-	$COMMON_NAMES_REMOVE = $WT_TREE->getPreference('COMMON_NAMES_REMOVE');
+function get_common_surnames($min, $tree) {
+	$COMMON_NAMES_ADD    = $tree->getPreference('COMMON_NAMES_ADD');
+	$COMMON_NAMES_REMOVE = $tree->getPreference('COMMON_NAMES_REMOVE');
 
 	$topsurns = get_top_surnames(WT_GED_ID, $min, 0);
 	foreach (explode(',', $COMMON_NAMES_ADD) as $surname) {
@@ -716,7 +715,7 @@ function get_common_surnames($min) {
 
 	//-- check if we found some, else recurse
 	if (empty($topsurns) && $min > 2) {
-		return get_common_surnames($min / 2);
+		return get_common_surnames($min / 2, $tree);
 	} else {
 		uksort($topsurns, __NAMESPACE__ . '\I18N::strcasecmp');
 		foreach ($topsurns as $key => $value) {
