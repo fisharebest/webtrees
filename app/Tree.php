@@ -759,7 +759,7 @@ class Tree {
 	 *
 	 * @return string
 	 */
-	function getNewXref($type = 'INDI') {
+	public function getNewXref($type = 'INDI') {
 		/** @var string[] Which tree preference is used for which record type */
 		static $type_to_preference = array(
 			'INDI' => 'GEDCOM_ID_PREFIX',
