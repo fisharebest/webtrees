@@ -29,7 +29,7 @@
 		"ircmaxell/password-compat": "*",
 		"michelf/php-markdown": "*",
 		"patchwork/utf8": "*",
-		"pclzip/pclzip": "dev-master",
+		"pclzip/pclzip": "*",
 		"tecnick.com/tcpdf": "*",
 		"rhumsaa/uuid": "*"
 	},

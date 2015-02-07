@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "000b38c104ca50f123da1d5123478133",
+    "hash": "542685d0ebe4107f510791dcc2f67542",
     "packages": [
         {
             "name": "bombayworks/zendframework1",
@@ -312,7 +312,7 @@
         },
         {
             "name": "pclzip/pclzip",
-            "version": "dev-master",
+            "version": "2.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivanlanin/pclzip.git",
@@ -480,9 +480,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "pclzip/pclzip": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
