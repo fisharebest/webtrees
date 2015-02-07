@@ -156,13 +156,13 @@ class I18N {
 	);
 
 	/** @var string the name of the current locale, such as fr or en_GB */
-	public  static $locale;
+	public static $locale;
 
 	/** @var string The MySQL collation sequence used by this language, typically utf8_unicode_ci */
-	public  static $collation;
+	public static $collation;
 
 	/** @var string Punctuation used to separate list items, typically a comma */
-	public  static $list_separator;
+	public static $list_separator;
 
 	/** @var string Text direction; ltr or rtl */
 	private static $dir;
@@ -292,17 +292,12 @@ class I18N {
 		global $WEEK_START; // I18N: This is the first day of the week on calendars. 0=Sunday, 1=Monday...
 		list(, $WEEK_START) = explode('=', self::noop('WEEK_START=0'));
 
-		global $TEXT_DIRECTION;
-		$TEXT_DIRECTION = self::scriptDirection(self::languageScript($locale));
 
-		self::$locale = $locale;
-		self::$dir    = $TEXT_DIRECTION;
-
-		// I18N: This punctuation is used to separate lists of items.
-		self::$list_separator = self::translate(', ');
-
-		// I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
-		self::$collation = self::translate('utf8_unicode_ci');
+		// Save the current locale, and some attributes of it
+		self::$locale         = $locale;
+		self::$dir            = self::scriptDirection(self::languageScript($locale));
+		self::$list_separator = /* I18N: This punctuation is used to separate lists of items */ self::translate(', ');
+		self::$collation      = /* I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html */ self::translate('utf8_unicode_ci');
 
 		// Non-latin numbers may require non-latin digits
 		try {
@@ -430,6 +425,15 @@ class I18N {
 		return
 			/* I18N: This is a percentage, such as “32.5%”. “%s” is the number, “%%” is the percent symbol.  Some languages require a (non-breaking) space between the two, or a different symbol. */
 			self::translate('%s%%', self::number($n * 100.0, $precision));
+	}
+
+	/**
+	 * What is the direction of the current locale
+	 *
+	 * @return string "ltr" or "rtl"
+	 */
+	public static function textDirection() {
+		return self::$dir;
 	}
 
 	/**

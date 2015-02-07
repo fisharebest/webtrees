@@ -35,12 +35,11 @@ if (!defined('WT_SCRIPT_NAME')) {
  * We set the following globals
  *
  * @global boolean                      $SEARCH_SPIDER
- * @global string                       $TEXT_DIRECTION
  * @global Zend_Controller_Request_Http $WT_REQUEST
  * @global Zend_Session                 $WT_SESSION
  * @global Tree                         $WT_TREE
  */
-global $WT_REQUEST, $WT_SESSION, $WT_TREE, $SEARCH_SPIDER, $TEXT_DIRECTION;
+global $WT_REQUEST, $WT_SESSION, $WT_TREE, $SEARCH_SPIDER;
 
 // Identify ourself
 define('WT_WEBTREES', 'webtrees');
