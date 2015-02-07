@@ -328,7 +328,7 @@ case 'register':
 			}
 			$mail1_body .= Mail::auditFooter();
 
-			$mail1_subject = /* I18N: %s is a server name/URL */ I18N::translate('New registration at %s', WT_BASE_URL . ' ' . $WT_TREE->$WT_TREE->title());
+			$mail1_subject = /* I18N: %s is a server name/URL */ I18N::translate('New registration at %s', WT_BASE_URL . ' ' . $WT_TREE->title());
 			I18N::init(WT_LOCALE);
 
 			echo '<div id="login-register-page">';
