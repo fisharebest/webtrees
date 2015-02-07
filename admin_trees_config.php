@@ -1259,7 +1259,7 @@ $controller
 			<?php echo I18N::translate('Images without watermarks'); ?>
 		</label>
 		<div class="col-sm-9">
-			<?php echo select_edit_control('SHOW_NO_WATERMARK', $privacy, null, $WT_TREE->getPreference('MEDIA_UPLOAD'), 'class="form-control"'); ?>
+			<?php echo select_edit_control('SHOW_NO_WATERMARK', $privacy, null, $WT_TREE->getPreference('SHOW_NO_WATERMARK'), 'class="form-control"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Images without watermarks” configuration setting */ I18N::translate('Watermarks are optional and normally shown just to visitors.'); ?>
 			</p>
