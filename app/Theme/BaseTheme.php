@@ -1823,7 +1823,7 @@ abstract class BaseTheme {
 	 * @return bool
 	 */
 	protected function pendingChangesExist() {
-		return exists_pending_change(Auth::user(), $this->tree);
+		return $this->tree && exists_pending_change(Auth::user(), $this->tree);
 	}
 
 	/**
