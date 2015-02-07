@@ -559,7 +559,7 @@ case 'add_child_to_family_action':
 	}
 
 	// Create the new child
-	$new_child = $person->getTree()->createRecord($gedrec);
+	$new_child = $family->getTree()->createRecord($gedrec);
 
 	// Insert new child at the right place
 	$done = false;
