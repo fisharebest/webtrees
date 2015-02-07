@@ -32,12 +32,6 @@ require './includes/session.php';
 $controller = new PageController;
 $controller->restrictAccess(Auth::isManager($WT_TREE));
 
-$PRIVACY_CONSTANTS = array(
-	'none'         => I18N::translate('Show to visitors'),
-	'privacy'      => I18N::translate('Show to members'),
-	'confidential' => I18N::translate('Show to managers'),
-	'hidden'       => I18N::translate('Hide from everyone')
-);
 
 $calendars = array(
 	'none'      => I18N::translate('No calendar conversion'),
@@ -53,21 +47,9 @@ $french_calendar_start = new Date('22 SEP 1792');
 $french_calendar_end = new Date('31 DEC 1805');
 $gregorian_calendar_start = new Date('15 OCT 1582');
 
-$no_yes = array(
-	0 => I18N::translate('no'),
-	1 => I18N::translate('yes'),
-);
-
 $hide_show = array(
 	0 => I18N::translate('hide'),
 	1 => I18N::translate('show'),
-);
-
-$privacy = array(
-	WT_PRIV_PUBLIC => I18N::translate('Show to visitors'),
-	WT_PRIV_USER   => I18N::translate('Show to members'),
-	WT_PRIV_NONE   => I18N::translate('Show to managers'),
-	WT_PRIV_HIDE   => I18N::translate('Hide from everyone'),
 );
 
 $surname_list_styles = array(
@@ -373,7 +355,6 @@ case 'general':
 			Database::prepare("UPDATE `##site_setting` SET setting_value = ? WHERE setting_name='DEFAULT_GEDCOM' AND setting_value = ?")->execute(array($gedcom, WT_GEDCOM));
 		} catch (\Exception $ex) {
 			// Probably a duplicate name.
-			$gedcom = WT_GEDCOM;
 		}
 	}
 
@@ -568,7 +549,7 @@ $controller
 			</div>
 		</div>
 		<div class="col-sm-8">
-			<?php echo select_edit_control('SHOW_PRIVATE_RELATIONSHIPS', array('0' => I18N::translate('Show to visitors'), '1' => I18N::translate('Show to members')), null, $WT_TREE->getPreference('SHOW_PRIVATE_RELATIONSHIPS'), 'class="form-control"'); ?>
+			<?php echo select_edit_control('SHOW_PRIVATE_RELATIONSHIPS', array('0' => I18N::translate('Hide from everyone'), '1' => I18N::translate('Show to members')), null, $WT_TREE->getPreference('SHOW_PRIVATE_RELATIONSHIPS'), 'class="form-control"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Show private relationships” configuration setting */ I18N::translate('This option will retain family links in private records.  This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals.'); ?>
 			</p>
