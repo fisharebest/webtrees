@@ -2369,7 +2369,7 @@ dd .deletelink {
 	background-color: #fff;
 	border-color: #ddd;
 	width: 98%;
-	overflow: visible;
+	overflow: auto;
 }
 
 #sidebarAccordion {

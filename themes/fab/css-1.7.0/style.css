@@ -124,7 +124,7 @@ dt {
 }
 
 [dir=rtl] dt {
-	float: left;
+	float: right;
 	margin-right: auto;
 	margin-left: 10px;
 }
