@@ -224,15 +224,6 @@ $controller
 		});
 	');
 
-$url =
-	WT_SCRIPT_NAME . '?from=' . rawurlencode($from) .
-	'&amp;to=' . rawurlencode($to) .
-	'&amp;type=' . rawurlencode($type) .
-	'&amp;text=' . rawurlencode($text) .
-	'&amp;ip=' . rawurlencode($ip) .
-	'&amp;user=' . rawurlencode($user) .
-	'&amp;gedc=' . rawurlencode($gedc);
-
 $users_array = array();
 foreach (User::all() as $tmp_user) {
 	$users_array[$tmp_user->getUserName()] = $tmp_user->getUserName();
