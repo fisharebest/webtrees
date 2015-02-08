@@ -1932,8 +1932,8 @@ msgstr "应用自动更正你的家谱数据。"
 #: admin_trees_download.php:122 modules_v3/clippings/module.php:190
 #: modules_v3/clippings/module.php:198 modules_v3/clippings/module.php:581
 #: modules_v3/clippings/module.php:590
-msgid "Apply privacy settings?"
-msgstr "设置隐私？"
+msgid "Apply privacy settings"
+msgstr "设置隐私"
 
 #: admin_users.php:99
 #, php-format
@@ -3907,7 +3907,7 @@ msgstr ""
 
 #: admin_trees_download.php:134 modules_v3/clippings/module.php:205
 #: modules_v3/clippings/module.php:598
-msgid "Convert from UTF-8 to ANSI (ISO-8859-1)"
+msgid "Convert from UTF-8 to ISO-8859-1"
 msgstr "从UTF-8转换为ANSI(ISO-8859-1)"
 
 #: library/WT/Stats.php:6118
@@ -7327,7 +7327,7 @@ msgid "If you have a note to add to this record, this is the place to do so.<br>
 msgstr "这里记事添加到这个记录。<br><br>点击这个链接时,将打开一个新窗口,你可以输入你的记事。当你打完字,就点击下面的按钮,关闭该窗口。"
 
 #: admin_trees_manage.php:207
-msgid "If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM file."
+msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
 msgstr "如果您已经在webtrees创建了媒体对象,并脱机使用一个程序与新gedcom编辑你的gedcom,删除媒体对象,合并当前媒体对象就要勾这个选项。"
 
 #: modules_v3/recent_changes/module.php:173
@@ -14452,7 +14452,7 @@ msgstr "该网站暂时不可用"
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:165
 #, php-format
-msgid "This will delete all the genealogy data from “%s” and replace it with data from another GEDCOM file."
+msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
 msgstr "从%s删除所有的家谱资料并用另一个GEDCOM取代它的数据。"
 
 #: modules_v3/googlemap/module.php:1817
@@ -20113,8 +20113,8 @@ msgstr "缺少姓氏"
 #~ msgid "Family tree configuration"
 #~ msgstr "家谱配置"
 
-#~ msgid "For optimal display on the internet, webtrees uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
-#~ msgstr "为获得在互联网上最佳显示,webtrees 使用utf - 8字符集。一些程序,例如,家谱制造商不支持导入GEDCOM文件编码在UTF-8。检查这个箱子将会把文件从<b>UTF-8</b>到<b> ANSI(iso - 8859 - 1)</b>。<br><br>格式需要取决于你使用的程序处理你的下载文件GEDCOM。如果你不确定,请参考相关文档的程序。<br><br>注意特殊字符保持不变,你需要把文件用UTF-8编码,转换程序的方法来处理这些特殊字符被一些其他手段。咨询你的程序的制造商或作者。<br><br><a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b></b>维基百科的文章</>包含全面的信息和链接关于utf - 8。"
+#~ msgid "For optimal display on the internet, webtrees uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ISO-8859-1</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
+#~ msgstr "为获得在互联网上最佳显示,webtrees 使用utf - 8字符集。一些程序,例如,家谱制造商不支持导入GEDCOM文件编码在UTF-8。检查这个箱子将会把文件从<b>UTF-8</b>到<b> ISO-8859-1</b>。<br><br>格式需要取决于你使用的程序处理你的下载文件GEDCOM。如果你不确定,请参考相关文档的程序。<br><br>注意特殊字符保持不变,你需要把文件用UTF-8编码,转换程序的方法来处理这些特殊字符被一些其他手段。咨询你的程序的制造商或作者。<br><br><a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b></b>维基百科的文章</>包含全面的信息和链接关于utf - 8。"
 
 #~ msgid "From %s to %s"
 #~ msgstr "从 %s 到 %s"

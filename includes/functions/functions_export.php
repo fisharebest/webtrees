@@ -164,7 +164,7 @@ function convert_media_path($rec, $path) {
  * @param resource $gedout        Handle to a writable stream
  * @param string[] $exportOptions Export options are as follows:
  *                                'privatize':    which Privacy rules apply?  (none, visitor, user, manager)
- *                                'toANSI':       should the output be produced in ANSI instead of UTF-8?  (yes, no)
+ *                                'toANSI':       should the output be produced in ISO-8859-1 instead of UTF-8?  (yes, no)
  *                                'path':         what constant should prefix all media file paths?  (eg: media/  or c:\my pictures\my family
  *                                'slashes':      what folder separators apply to media file paths?  (forward, backward)
  *

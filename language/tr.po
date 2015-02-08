@@ -1927,8 +1927,8 @@ msgstr "Soyağacı verilerinize otomatik düzeltmeleri uygulayın."
 #: admin_trees_download.php:122 modules_v3/clippings/module.php:190
 #: modules_v3/clippings/module.php:198 modules_v3/clippings/module.php:581
 #: modules_v3/clippings/module.php:590
-msgid "Apply privacy settings?"
-msgstr "Mahremiyet ayarları uygula?"
+msgid "Apply privacy settings"
+msgstr "Mahremiyet ayarları uygula"
 
 #: admin_users.php:99
 #, php-format
@@ -3902,8 +3902,8 @@ msgstr ""
 
 #: admin_trees_download.php:134 modules_v3/clippings/module.php:205
 #: modules_v3/clippings/module.php:598
-msgid "Convert from UTF-8 to ANSI (ISO-8859-1)"
-msgstr "UTF-8 den ANSI (ISO-8859-1) dönüştür"
+msgid "Convert from UTF-8 to ISO-8859-1"
+msgstr "UTF-8 den ISO-8859-1 dönüştür"
 
 #: library/WT/Stats.php:6118
 msgid "Cook Islands"
@@ -7322,7 +7322,7 @@ msgid "If you have a note to add to this record, this is the place to do so.<br>
 msgstr "Bu kayda eklemek için bir notunuz var ise bu alanı kullanabilirsiniz. Bunun için<br><br>linke tıkladığınızda açılan pencerede notunuzu yazabilirsiniz. İşiniz bittiğinde aşağıdaki kutunun altındaki düğmeye tıklayarak pencereyi kapatabilirsiniz."
 
 #: admin_trees_manage.php:207
-msgid "If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM file."
+msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
 msgstr "Eğer webtrees içinde medya öğeleri oluşturdunuz  ve medya öğelerini silen harici bir program kullanarak gedcom doyanızı düzenlediniz ise yeni GEDCOM ile güncel medya öğeleri birleştirmek için bu kutuyu işaretleyin."
 
 #: modules_v3/recent_changes/module.php:173
@@ -14447,7 +14447,7 @@ msgstr "Bu web sitesi geçici olarak kullanılamıyor"
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:165
 #, php-format
-msgid "This will delete all the genealogy data from “%s” and replace it with data from another GEDCOM file."
+msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
 msgstr "Bu “%s” soyağacının tüm verileri silerek bir başka GEDCOM verileri yüklenecektir."
 
 #: modules_v3/googlemap/module.php:1817
@@ -20114,8 +20114,8 @@ msgstr "Soyisimsiz"
 #~ msgid "Family tree configuration"
 #~ msgstr "Aile ağacı yapılandırma"
 
-#~ msgid "For optimal display on the internet, webtrees uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
-#~ msgstr "İnternette en iyi görsel sonucu alabilmek için, webtrees UTF-8 karakter kümesini kullanır. Bazı programlar, örneğin Family Tree Maker UTF-8 kodlamalı GEDCOM dosyasını desteklemez. Bu kutucuğu işaretleyerek dosyayı <b>UTF-8</b> den <b>ANSI (ISO-8859-1)</b> ye dönüştürecektir.<br><br>İhtiyacınız olan format indirdiğiniz GEDCOM dosyasını kullanacağınız programa bağlıdır. Eğer emin değilseniz, kullandığınız programın dökümantasyonunu inceleyeniz.<br><br> Özel karakterlerin değişmediğinden emin olmak için dosyayı UTF-8 kodlamasında tutmalı, kullsndığınız programın formatına dönüştiriken bu özel karakterleri dikkate alan bir yöntem kullanmalısınız. Bunun için programınızın üreticisine başvurunuz.<br><br>Bu <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia makalesi\"><b>Wikipedia makalesi</b></a> UTF-8 hakkında detaylı bilgi ve bağlantılar içermektedir."
+#~ msgid "For optimal display on the internet, webtrees uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ISO-8859-1</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
+#~ msgstr "İnternette en iyi görsel sonucu alabilmek için, webtrees UTF-8 karakter kümesini kullanır. Bazı programlar, örneğin Family Tree Maker UTF-8 kodlamalı GEDCOM dosyasını desteklemez. Bu kutucuğu işaretleyerek dosyayı <b>UTF-8</b> den <b>ISO-8859-1</b> ye dönüştürecektir.<br><br>İhtiyacınız olan format indirdiğiniz GEDCOM dosyasını kullanacağınız programa bağlıdır. Eğer emin değilseniz, kullandığınız programın dökümantasyonunu inceleyeniz.<br><br> Özel karakterlerin değişmediğinden emin olmak için dosyayı UTF-8 kodlamasında tutmalı, kullsndığınız programın formatına dönüştiriken bu özel karakterleri dikkate alan bir yöntem kullanmalısınız. Bunun için programınızın üreticisine başvurunuz.<br><br>Bu <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia makalesi\"><b>Wikipedia makalesi</b></a> UTF-8 hakkında detaylı bilgi ve bağlantılar içermektedir."
 
 #~ msgid "From %s to %s"
 #~ msgstr "Buradan %s buraya %s"

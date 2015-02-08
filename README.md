@@ -240,7 +240,7 @@ over. Follow these steps to update a GEDCOM that has already been imported:
   configuration page. On the line  relating to this particular family tree (GEDCOM)
   file (or a new one) click either IMPORT or UPLOAD.
 * Take careful note of the media items option (_“If you have created media objects
-  in **webtrees**, and have edited your gedcom off-line using a program that
+  in **webtrees**, and have edited your data off-line using software that
   deletes media objects, then tick this box to merge the current media objects
   with the new GEDCOM.”_) In most cases you should leave this box **UNCHECKED**.
 * Click “SAVE”. **webtrees** will validate the GEDCOM again before importing.

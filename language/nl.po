@@ -1955,8 +1955,8 @@ msgstr "Pas automatische correcties toe op uw genealogische data."
 #: admin_trees_download.php:122 modules_v3/clippings/module.php:190
 #: modules_v3/clippings/module.php:198 modules_v3/clippings/module.php:581
 #: modules_v3/clippings/module.php:590
-msgid "Apply privacy settings?"
-msgstr "Privacy-instellingen toepassen?"
+msgid "Apply privacy settings"
+msgstr "Privacy-instellingen toepassen"
 
 #: admin_users.php:99
 #, php-format
@@ -3932,8 +3932,8 @@ msgstr "Control panel"
 
 #: admin_trees_download.php:134 modules_v3/clippings/module.php:205
 #: modules_v3/clippings/module.php:598
-msgid "Convert from UTF-8 to ANSI (ISO-8859-1)"
-msgstr "Converteer  van UTF-8 naar ANSI (ISO-8859-1)"
+msgid "Convert from UTF-8 to ISO-8859-1"
+msgstr "Converteer  van UTF-8 naar ISO-8859-1"
 
 #: library/WT/Stats.php:6118
 msgid "Cook Islands"
@@ -7352,7 +7352,7 @@ msgid "If you have a note to add to this record, this is the place to do so.<br>
 msgstr "Heeft u een notitie om aan dit record toe te voegen, dan kan dat hier.<br><br>Klik op de link en een venster zal openen waarin de tekst getypt kan worden. Is de tekst klaar, dan wordt door het klikken op <b>Opslaan<b> het venster gesloten en de tekst opgeslagen."
 
 #: admin_trees_manage.php:207
-msgid "If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM file."
+msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
 msgstr "Als u mediaobjecten hebt gecreëerd in webtrees, en uw gedcom off-line gewijzigd hebt met een programma dat mediaobjecten verwijdert, vink dan dit vakje aan om uw huidige mediaobjecten samen te voegen met het nieuwe GEDCOM bestand."
 
 #: modules_v3/recent_changes/module.php:173
@@ -14482,7 +14482,7 @@ msgstr "Deze website is tijdelijk niet beschikbaar"
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:165
 #, php-format
-msgid "This will delete all the genealogy data from “%s” and replace it with data from another GEDCOM file."
+msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
 msgstr "Dit zal alle genealogische data van ‘%s’ verwijderen en het vervangen door data van een andere GEDCOM"
 
 #: modules_v3/googlemap/module.php:1817

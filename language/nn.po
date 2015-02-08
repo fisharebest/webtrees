@@ -1955,8 +1955,8 @@ msgstr "Utfør automatiske endringar i heile databasen"
 #: admin_trees_download.php:122 modules_v3/clippings/module.php:190
 #: modules_v3/clippings/module.php:198 modules_v3/clippings/module.php:581
 #: modules_v3/clippings/module.php:590
-msgid "Apply privacy settings?"
-msgstr "Nytte innstillingar for personvern?"
+msgid "Apply privacy settings"
+msgstr "Nytte innstillingar for personvern"
 
 #: admin_users.php:99
 #, php-format
@@ -3932,8 +3932,8 @@ msgstr "Kontrollpanel"
 
 #: admin_trees_download.php:134 modules_v3/clippings/module.php:205
 #: modules_v3/clippings/module.php:598
-msgid "Convert from UTF-8 to ANSI (ISO-8859-1)"
-msgstr "Konvertere frå UTF-8 til ANSI (ISO-8859-1)"
+msgid "Convert from UTF-8 to ISO-8859-1"
+msgstr "Konvertere frå UTF-8 til ISO-8859-1"
 
 #: library/WT/Stats.php:6118
 msgid "Cook Islands"
@@ -7352,7 +7352,7 @@ msgid "If you have a note to add to this record, this is the place to do so.<br>
 msgstr "Om du vil leggje til eit notat til denne posten, er dette staden.<br><br>Klikk på lenka, og eit vindauge vil kome opp der du kan skrive inn notatet. Når du er ferdig, klikk <b>Legg til</b> og lukk vindauget."
 
 #: admin_trees_manage.php:207
-msgid "If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM file."
+msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
 msgstr "Om du har oppretta medieobjekt i webtrees, og har redigert di GEDCOM-fil i eit anna program som slettar medieobjekt, kryss av her for å flette eksisterande medieobjekt med den nye GEDCOM-fila."
 
 #: modules_v3/recent_changes/module.php:173
@@ -14482,7 +14482,7 @@ msgstr "Denne nettstaden er for augneblinken ikkje tilgjengeleg"
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:165
 #, php-format
-msgid "This will delete all the genealogy data from “%s” and replace it with data from another GEDCOM file."
+msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
 msgstr "Dette vil slette alle slektsdata frå «%s» og erstatte dei med data frå ein annan GEDCOM."
 
 #: modules_v3/googlemap/module.php:1817
@@ -20156,8 +20156,8 @@ msgstr "…"
 #~ msgid "Family tree configuration"
 #~ msgstr "Konfigurasjon av familietre"
 
-#~ msgid "For optimal display on the internet, webtrees uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
-#~ msgstr "For best mogeleg syning på nettet nyttar webtrees teiknsettet UTF-8. Nokon program, som til dømes Family Tree Maker, kan ikkje importere GEDCOM-filer i UTF-8. Om du kryssar av denne ruta, vil fila konverterast frå <b>UTF-8</b> til <b>ANSI (ISO-8859-1)</b> ved nedlasting.<br><br>Kva format du treng, avheng av kva program du skal arbeide med den nedlasta GEDCOM-fila i. Les programmet sin dokumentasjon om du er i tvil.<br><br>Merk, for at spesialteikn skal stå uforandra, må du behalde fila i UTF-8 og finne ein annan måte å konvertere den på, til eit format der ditt program kan handsame spesialteikn.  Kontakt evt. programmet sin produsent eller forfattar.<br><br>Denne <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia-artikkel\"><b>Wikipedia-artikkelen</b></a> inneheld omfattende informasjon om UTF-8, med nyttige lenker vidare til andre nettstadar."
+#~ msgid "For optimal display on the internet, webtrees uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ISO-8859-1</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
+#~ msgstr "For best mogeleg syning på nettet nyttar webtrees teiknsettet UTF-8. Nokon program, som til dømes Family Tree Maker, kan ikkje importere GEDCOM-filer i UTF-8. Om du kryssar av denne ruta, vil fila konverterast frå <b>UTF-8</b> til <b>ISO-8859-1</b> ved nedlasting.<br><br>Kva format du treng, avheng av kva program du skal arbeide med den nedlasta GEDCOM-fila i. Les programmet sin dokumentasjon om du er i tvil.<br><br>Merk, for at spesialteikn skal stå uforandra, må du behalde fila i UTF-8 og finne ein annan måte å konvertere den på, til eit format der ditt program kan handsame spesialteikn.  Kontakt evt. programmet sin produsent eller forfattar.<br><br>Denne <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia-artikkel\"><b>Wikipedia-artikkelen</b></a> inneheld omfattende informasjon om UTF-8, med nyttige lenker vidare til andre nettstadar."
 
 #~ msgid "From %s to %s"
 #~ msgstr "Frå %s til %s"

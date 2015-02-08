@@ -320,7 +320,6 @@ case 'general':
 	$WT_TREE->setPreference('WATERMARK_THUMB', Filter::postBool('WATERMARK_THUMB'));
 	$WT_TREE->setPreference('WEBMASTER_USER_ID', Filter::post('WEBMASTER_USER_ID'));
 	$WT_TREE->setPreference('WEBTREES_EMAIL', Filter::post('WEBTREES_EMAIL'));
-	$WT_TREE->setPreference('WORD_WRAPPED_NOTES', Filter::postBool('WORD_WRAPPED_NOTES'));
 	$WT_TREE->setPreference('title', Filter::post('title'));
 
 	// Only accept valid folders for MEDIA_DIRECTORY
@@ -784,19 +783,6 @@ $controller
 		</div>
 	</fieldset>
 
-	<!-- WORD_WRAPPED_NOTES -->
-	<fieldset class="form-group">
-		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Add spaces where notes were wrapped'); ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo radio_buttons('WORD_WRAPPED_NOTES', $no_yes, $WT_TREE->getPreference('WORD_WRAPPED_NOTES'), 'class="radio-inline"'); ?>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Add spaces where notes were wrapped” configuration setting */ I18N::translate('Some genealogy programs wrap notes at word boundaries while others wrap notes anywhere.  This can cause webtrees to run words together.  Setting this to <b>Yes</b> will add a space between words where they are wrapped in the original GEDCOM during the import process.  If you have already imported the file you will need to re-import it.'); ?>
-			</p>
-		</div>
-	</fieldset>
-
 	<!-- XXXXX_ID_PREFIX -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
@@ -1075,33 +1061,6 @@ $controller
 				<?php echo /* I18N: Help text for the “Media folder” configuration setting */ I18N::translate('This folder will be used to store the media files for this family tree.'); ?>
 				<?php echo /* I18N: Help text for the “Media folder” configuration setting */ I18N::translate('If you select a different folder, you must also move any media files from the existing folder to the new one.'); ?>
 				<?php echo /* I18N: Help text for the “Media folder” configuration setting */ I18N::translate('If two family trees use the same media folder, then they will be able to share media files.  If they use different media folders, then their media files will be kept separate.'); ?>
-			</p>
-		</div>
-	</div>
-
-	<!-- GEDCOM_MEDIA_PATH -->
-	<div class="form-group">
-		<label class="control-label col-sm-3" for="GEDCOM_MEDIA_PATH">
-			<?php echo /* I18N: /* I18N: A configuration setting.  A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file */ I18N::translate('GEDCOM media path'); ?>
-		</label>
-		<div class="col-sm-9">
-			<input
-				class="form-control"
-				dir="ltr"
-				id="GEDCOM_MEDIA_PATH"
-				maxlength="255"
-				name="GEDCOM_MEDIA_PATH"
-				type="text"
-				value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')); ?>"
-				>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\My_User\Genealogy\Photos\Gravestones\John_Smith.jpeg” */ I18N::translate('Some genealogy applications create GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow webtrees to find the file, the first part of the path must be removed.'); ?>
-			</p>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names; “GEDCOM media path” is a configuration setting */ I18N::translate('For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then the GEDCOM media path would be %3$s.', Html::filename('/home/fab/documents/family/photo.jpeg'), Html::filename('family/photo.jpeg'), Html::filename('/home/fab/documents/')); ?>
-			</p>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “GEDCOM media path” configuration setting */ I18N::translate('This setting is only used when you read or write GEDCOM files.'); ?>
 			</p>
 		</div>
 	</div>

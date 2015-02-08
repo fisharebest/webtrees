@@ -1955,8 +1955,8 @@ msgstr "Applica correzioni automatiche alle proprie informazioni genealogiche."
 #: admin_trees_download.php:122 modules_v3/clippings/module.php:190
 #: modules_v3/clippings/module.php:198 modules_v3/clippings/module.php:581
 #: modules_v3/clippings/module.php:590
-msgid "Apply privacy settings?"
-msgstr "Applicare le impostazioni della privacy?"
+msgid "Apply privacy settings"
+msgstr "Applicare le impostazioni della privacy"
 
 #: admin_users.php:99
 #, php-format
@@ -3932,8 +3932,8 @@ msgstr ""
 
 #: admin_trees_download.php:134 modules_v3/clippings/module.php:205
 #: modules_v3/clippings/module.php:598
-msgid "Convert from UTF-8 to ANSI (ISO-8859-1)"
-msgstr "Converti da UTF-8 ad ANSI (ISO-8859-1)"
+msgid "Convert from UTF-8 to ISO-8859-1"
+msgstr "Converti da UTF-8 ad ISO-8859-1"
 
 #: library/WT/Stats.php:6118
 msgid "Cook Islands"
@@ -7352,7 +7352,7 @@ msgid "If you have a note to add to this record, this is the place to do so.<br>
 msgstr "Questo è il punto in cui è possibile aggiungere una nota a questo record.<br><br>Basta cliccare sul collegamento: verrà aperta una finestra in cui inserire la propria nota.  Una volta inserite le informazioni, basta cliccare il pulsante sotto la casella, poi chiudere la finestra. Tutto qui."
 
 #: admin_trees_manage.php:207
-msgid "If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM file."
+msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
 msgstr "Se sono stati creati degli oggetti multimediali in webtrees, e successivamente il gedcom è stato modificato sul proprio PC con un programma che ha rimosso tali oggetti, selezionare questa casella di controllo per unire gli oggetti multimediali correnti con il nuovo GEDCOM."
 
 #: modules_v3/recent_changes/module.php:173
@@ -14482,7 +14482,7 @@ msgstr "Questo sito è temporaneamente non disponibile"
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:165
 #, php-format
-msgid "This will delete all the genealogy data from “%s” and replace it with data from another GEDCOM file."
+msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
 msgstr "Questo cancellerà tutti i dati genealogici da «%s» e li sostituirà con i dati di un altro GEDCOM."
 
 #: modules_v3/googlemap/module.php:1817
@@ -20156,8 +20156,8 @@ msgstr "…"
 #~ msgid "Family tree configuration"
 #~ msgstr "Configurazione albero genealogico"
 
-#~ msgid "For optimal display on the internet, webtrees uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
-#~ msgstr "Per una visualizzazione ottimale su internet, webtrees usa il set di caratteri UTF-8.  Alcuni programmi, come ad esempio Family Tree Maker, non supportano l’importazione di file GEDCOM codificati in UTF-8.  Se si seleziona questa casella il file verrà convertito da <b>UTF-8</b> ad <b>ANSI (ISO-8859-1)</b>.<br><br>Il formato più adatto alle proprie esigenze dipende dalla programma utilizzato per lavorare con il file GEDCOM scaricato.  In caso di incertezza, consultare la documentazione del programma.<br><br>Si noti che per mantenere invariati i caratteri speciali è necessario conservare il file in UTF-8 e convertirlo nel formato usato dal proprio programma con altre modalità: consultare al riguardo il produttore o l’autore del proprio programma.<br><br>Questo <a href=\"http://it.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Articolo di Wikipedia\"><b>articolo di Wikipedia</b></a> contiene molte informazioni e vari collegamenti sulla codifica UTF-8."
+#~ msgid "For optimal display on the internet, webtrees uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ISO-8859-1</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
+#~ msgstr "Per una visualizzazione ottimale su internet, webtrees usa il set di caratteri UTF-8.  Alcuni programmi, come ad esempio Family Tree Maker, non supportano l’importazione di file GEDCOM codificati in UTF-8.  Se si seleziona questa casella il file verrà convertito da <b>UTF-8</b> ad <b>ISO-8859-1</b>.<br><br>Il formato più adatto alle proprie esigenze dipende dalla programma utilizzato per lavorare con il file GEDCOM scaricato.  In caso di incertezza, consultare la documentazione del programma.<br><br>Si noti che per mantenere invariati i caratteri speciali è necessario conservare il file in UTF-8 e convertirlo nel formato usato dal proprio programma con altre modalità: consultare al riguardo il produttore o l’autore del proprio programma.<br><br>Questo <a href=\"http://it.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Articolo di Wikipedia\"><b>articolo di Wikipedia</b></a> contiene molte informazioni e vari collegamenti sulla codifica UTF-8."
 
 #~ msgid "From %s to %s"
 #~ msgstr "Da %s a %s"

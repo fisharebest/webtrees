@@ -698,24 +698,23 @@ class Tree {
 	 *
 	 * @param string  $path       The full path to the (possibly temporary) file.
 	 * @param string  $filename   The preferred filename, for export/download.
-	 * @param boolean $keep_media Whether to retain any existing media records
 	 *
 	 * @throws \Exception
 	 */
-	public function importGedcomFile($path, $filename, $keep_media) {
+	public function importGedcomFile($path, $filename) {
 		// Read the file in blocks of roughly 64K.  Ensure that each block
 		// contains complete gedcom records.  This will ensure we don’t split
 		// multi-byte characters, as well as simplifying the code to import
 		// each block.
 
 		$file_data = '';
-		$fp = fopen($path, 'rb');
+		$fp        = fopen($path, 'rb');
 
 		// Don’t allow the user to cancel the request.  We do not want to be left with an incomplete transaction.
 		ignore_user_abort(true);
 
 		Database::beginTransaction();
-		$this->deleteGenealogyData($keep_media);
+		$this->deleteGenealogyData($this->getPreference('keep_media'));
 		$this->setPreference('gedcom_filename', $filename);
 		$this->setPreference('imported', '0');
 

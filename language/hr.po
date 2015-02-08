@@ -1977,7 +1977,7 @@ msgstr "Primijeni automatsku korekciju na vaše genealoške podatke."
 #: admin_trees_download.php:122 modules_v3/clippings/module.php:190
 #: modules_v3/clippings/module.php:198 modules_v3/clippings/module.php:581
 #: modules_v3/clippings/module.php:590
-msgid "Apply privacy settings?"
+msgid "Apply privacy settings"
 msgstr "Postavi postavke privatnosti"
 
 #: admin_users.php:99
@@ -3956,8 +3956,8 @@ msgstr ""
 
 #: admin_trees_download.php:134 modules_v3/clippings/module.php:205
 #: modules_v3/clippings/module.php:598
-msgid "Convert from UTF-8 to ANSI (ISO-8859-1)"
-msgstr "Prevedi sa UTF-8 u ANSI (ISO-8859-1)"
+msgid "Convert from UTF-8 to ISO-8859-1"
+msgstr "Prevedi sa UTF-8 u ISO-8859-1"
 
 #: library/WT/Stats.php:6118
 msgid "Cook Islands"
@@ -7376,7 +7376,7 @@ msgid "If you have a note to add to this record, this is the place to do so.<br>
 msgstr "Ako imate bilješku koju želite dodati ovom zapisu.<br><br>Samo kliknite na link, prozor će se otvoriti, i možete upisati svoju bilješku. Kada je pisanje gotovo, kliknite na dnu prozora gumb „spremi”, zatvorite prozor, i to je sve."
 
 #: admin_trees_manage.php:207
-msgid "If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM file."
+msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
 msgstr "Ako ste kreirali medijski objekt u webrees, i uređivali svoj GEDCOM koristeći program koji briše medija objekte, uključite ovu opciju da spojite trenutne objekte sa novim GEDCOM-om."
 
 #: modules_v3/recent_changes/module.php:173
@@ -14512,7 +14512,7 @@ msgstr "Ove web stranice su privremeno nedostupne"
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:165
 #, php-format
-msgid "This will delete all the genealogy data from “%s” and replace it with data from another GEDCOM file."
+msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
 msgstr "Ovo će obrisati sve genealoške podatke iz „%s” i prepisati sa podacima iz drugog GEDCOM-a."
 
 #: modules_v3/googlemap/module.php:1817
@@ -20193,8 +20193,8 @@ msgstr "…"
 #~ msgid "Family tree configuration"
 #~ msgstr "Oblikovanje obiteljskog stabla"
 
-#~ msgid "For optimal display on the internet, webtrees uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
-#~ msgstr "Za optimalan prikaz na internetu, webtrees koristi UTF-8 kodnu stranicu. Neki programi, Family Tree Maker na primjer, ne podržava učitavanje GEDCOM datoteke kodiranu u UTF-8. Uključenjem ove opcije će konvertirati datoteku iz <b>UTF-8</b> u <b>ANSI (ISO-8859-1)</b>.<br><br> Format koji trebate ovisi o programu koji koristite za rad sa GEDCOM datokom. Ako niste sigurni, konzultirajte dokumentaciju tog programa.<br><br>Da bi posebni znakovi ostali nepromijenjeni, trebate držati datoteku u UTF-8 formatu i pretvoriti ju za svoj program a obradu tih posebnih znakova raditi nekim drugim sredstvima."
+#~ msgid "For optimal display on the internet, webtrees uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ISO-8859-1</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
+#~ msgstr "Za optimalan prikaz na internetu, webtrees koristi UTF-8 kodnu stranicu. Neki programi, Family Tree Maker na primjer, ne podržava učitavanje GEDCOM datoteke kodiranu u UTF-8. Uključenjem ove opcije će konvertirati datoteku iz <b>UTF-8</b> u <b>ISO-8859-1</b>.<br><br> Format koji trebate ovisi o programu koji koristite za rad sa GEDCOM datokom. Ako niste sigurni, konzultirajte dokumentaciju tog programa.<br><br>Da bi posebni znakovi ostali nepromijenjeni, trebate držati datoteku u UTF-8 formatu i pretvoriti ju za svoj program a obradu tih posebnih znakova raditi nekim drugim sredstvima."
 
 #~ msgid "From %s to %s"
 #~ msgstr "Od %s do %s"
