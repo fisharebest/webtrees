@@ -3327,10 +3327,7 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 				$statement->execute(array($this->getHighestIndex() + 1, $placeid, $level, $_POST['NEW_PLACE_NAME'], $_POST['LONG_CONTROL'][3] . $_POST['NEW_PLACE_LONG'], $_POST['LATI_CONTROL'][3] . $_POST['NEW_PLACE_LATI'], $_POST['NEW_ZOOM_FACTOR'], $_POST['icon']));
 			}
 
-			// autoclose window when update successful unless debug on
-			if (!WT_DEBUG) {
-				$controller->addInlineJavaScript('closePopupAndReloadParent();');
-			}
+			$controller->addInlineJavaScript('closePopupAndReloadParent();');
 			echo "<div class=\"center\"><button onclick=\"closePopupAndReloadParent();return false;\">", I18N::translate('close'), "</button></div>";
 			exit;
 		}
@@ -3345,10 +3342,7 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 				$statement->execute(array($_POST['NEW_PLACE_NAME'], $_POST['LATI_CONTROL'][3] . $_POST['NEW_PLACE_LATI'], $_POST['LONG_CONTROL'][3] . $_POST['NEW_PLACE_LONG'], $_POST['NEW_ZOOM_FACTOR'], $_POST['icon'], $placeid));
 			}
 
-			// autoclose window when update successful unless debug on
-			if (!WT_DEBUG) {
-				$controller->addInlineJavaScript('closePopupAndReloadParent();');
-			}
+			$controller->addInlineJavaScript('closePopupAndReloadParent();');
 			echo "<div class=\"center\"><button onclick=\"closePopupAndReloadParent();return false;\">", I18N::translate('close'), "</button></div>";
 			exit;
 		}

@@ -491,11 +491,6 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 		echo "<td class=\"descriptionbox wrap width25\">";
 	}
 
-
-	if (WT_DEBUG) {
-		echo $element_name, "<br>";
-	}
-
 	// tag name
 	if ($label) {
 		echo $label;
@@ -586,9 +581,6 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 
 	// value
 	echo "<td class=\"optionbox wrap\">";
-	if (WT_DEBUG) {
-		echo $tag, "<br>";
-	}
 
 	// retrieve linked NOTE
 	if ($fact == "NOTE" && $islink) {

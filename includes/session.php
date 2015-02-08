@@ -102,8 +102,8 @@ define('WT_WEBTREES_JS_URL', WT_STATIC_URL . 'assets/js-1.7.0/webtrees.js');
 define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes
 define('WT_THEMES_DIR', 'themes/');
 
-// Enable debugging output?
-define('WT_DEBUG', false);
+// Enable debugging output on development builds
+define('WT_DEBUG', strpos(WT_VERSION, 'dev') !== false);
 define('WT_DEBUG_SQL', false);
 
 // Required version of database tables/columns/indexes/etc.
@@ -151,15 +151,16 @@ define('WT_PRIV_NONE', 0); // Allows managers to access the marked information
 define('WT_PRIV_HIDE', -1); // Hide the item to all users
 
 // For performance, it is quicker to refer to files using absolute paths
-define('WT_ROOT', realpath(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR);
+define('WT_ROOT', realpath(dirname(__DIR__)) . DIRECTORY_SEPARATOR);
 
 // Keep track of time statistics, for the summary in the footer
 define('WT_START_TIME', microtime(true));
 
-// We want to know about all PHP errors
-error_reporting(E_ALL | E_STRICT);
-if (strpos(ini_get('disable_functions'), 'ini_set') === false) {
-	ini_set('display_errors', 'on');
+// We want to know about all PHP errors during development, and fewer in production.
+if (WT_DEBUG) {
+	error_reporting(E_ALL | E_STRICT | E_NOTICE | E_DEPRECATED);
+} else {
+	error_reporting(E_ALL);
 }
 
 // We use some PHP5.5 features, but need to run on older servers
@@ -208,35 +209,66 @@ $path = substr($path, 0, stripos($path, WT_SCRIPT_NAME));
 
 define('WT_BASE_URL', $protocol . '://' . $host . $port . $path);
 
-// Log errors to the database
-set_error_handler(function($errno, $errstr) {
-	static $first_error = false;
+// Convert PHP errors into exceptions
+set_error_handler(function($errno, $errstr, $errfile, $errline) {
+	if (error_reporting() & $errno) {
+		throw new \ErrorException($errstr, 0, $errno, $errfile, $errline);
+	} else {
+		return false;
+	}
+});
 
-	if (!$first_error) {
-		$first_error = true;
+set_exception_handler(function(\Exception $ex) {
+	$long_message = '';
+	$short_message = '';
 
-		$message = 'ERROR ' . $errno . ': ' . $errstr;
-		// Although debug_backtrace should always exist, PHP sometimes crashes without this check.
-		if (function_exists('debug_backtrace') && strstr($errstr, 'headers already sent by') === false) {
-			$backtraces = debug_backtrace();
-			foreach ($backtraces as $level => $backtrace) {
-				if ($level === 0) {
-					$message .= '; Error occurred on ';
+	foreach ($ex->getTrace() as $level => $frame) {
+		array_walk($frame['args'], function(&$arg) {
+			switch (gettype($arg)) {
+			case 'boolean':
+			case 'integer':
+			case 'double':
+			case 'null':
+				$arg = var_export($arg, true);
+				break;
+			case 'string':
+				if (mb_strlen($arg) > 30) {
+					$arg = substr($arg, 0, 30) . '…';
+				}
+				$arg = var_export($arg, true);
+				break;
+			case 'object':
+				$reflection = new \ReflectionClass($arg);
+				if (is_object($arg) && method_exists($arg, '__toString')) {
+					$arg = '[' . $reflection->getShortName() . ' ' . (string) $arg . ']';
 				} else {
-					$message .= '; called from ';
+					$arg = '[' . $reflection->getShortName() . ']';
 				}
-				if (isset($backtrace[$level]['line']) && isset($backtrace[$level]['file'])) {
-					$message .= 'line ' . $backtraces[$level]['line'] . ' of file ' . $backtraces[$level]['file'];
-				}
-				if ($level < count($backtraces) - 1) {
-					$message .= ' in function ' . $backtraces[$level + 1]['function'];
-				}
+				break;
+			default:
+				$arg = '[' . gettype($arg) . ']';
+				break;
 			}
+		});
+		$frame['file'] = str_replace(dirname(__DIR__), '', $frame['file']);
+		$long_message .= '#' . $level . ' ' . $frame['file'] . ':' . $frame['line'] . ' ';
+		$short_message .= '#' . $level . ' ' . $frame['file'] . ':' . $frame['line'] . ' ';
+		if ($level) {
+			$long_message .= $frame['function'] . '(' . implode(', ', $frame['args']) . ")\n";
+			$short_message .= $frame['function'] . "()<br>";
+		} else {
+			$long_message .= get_class($ex) . '("' . $ex->getMessage() . '")';
+			$short_message .= get_class($ex) . '("' . $ex->getMessage() . '")<br>';
 		}
-		Log::addErrorLog($message);
 	}
 
-	return false;
+	if (WT_DEBUG) {
+		echo $long_message;
+	} else {
+		echo $short_message;
+	}
+
+	Log::addErrorLog($long_message);
 });
 
 // Load our configuration file, so we can connect to the database

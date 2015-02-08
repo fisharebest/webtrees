@@ -75,11 +75,6 @@ class BaseController {
 	 * @return $this
 	 */
 	public function addInlineJavascript($script, $priority = self::JS_PRIORITY_NORMAL) {
-		if (WT_DEBUG) {
-			/* Show where the JS was added */
-			$backtrace = debug_backtrace();
-			$script = '/* ' . $backtrace[0]['file'] . ':' . $backtrace[0]['line'] . ' */' . PHP_EOL . $script;
-		}
 		$tmp = & $this->inline_javascript[$priority];
 		$tmp[] = $script;
 

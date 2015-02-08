@@ -72,7 +72,7 @@ if ($action === 'ajax') {
 	if (WT_DEBUG_SQL) {
 		echo Database::getQueryLog();
 	}
-	
+
 	return;
 }
 
