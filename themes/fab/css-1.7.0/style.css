@@ -1959,6 +1959,7 @@ dd .deletelink {
 
 .markdown table {
 	border-collapse: collapse;
+	font-size: 10px;
 }
 
 .markdown th {
@@ -2346,7 +2347,7 @@ dd .deletelink {
 	padding-bottom: 0;
 	margin-bottom: 0;
 	width: 98%;
-	overflow: visible;
+	overflow: auto;
 }
 
 [dir=rtl] #tabs {
