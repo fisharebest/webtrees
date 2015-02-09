@@ -334,9 +334,9 @@ case 'general':
 			$WT_TREE->setPreference('MEDIA_DIRECTORY', $MEDIA_DIRECTORY);
 		} elseif (File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
 			$WT_TREE->setPreference('MEDIA_DIRECTORY', $MEDIA_DIRECTORY);
-			FlashMessages::addMessage(I18N::translate('The folder %s has been created.', WT_DATA_DIR . $MEDIA_DIRECTORY));
+			FlashMessages::addMessage(I18N::translate('The folder %s has been created.', '<samp dir="ltr">' . WT_DATA_DIR . $MEDIA_DIRECTORY . '</samp>'), 'info');
 		} else {
-			FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', WT_DATA_DIR . $MEDIA_DIRECTORY));
+			FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', '<samp dir="ltr">' . WT_DATA_DIR . $MEDIA_DIRECTORY . '</samp>'), 'danger');
 		}
 	}
 
@@ -1098,7 +1098,7 @@ $controller
 				<?php echo /* I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\My_User\Genealogy\Photos\Gravestones\John_Smith.jpeg” */ I18N::translate('Some genealogy applications create GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow webtrees to find the file, the first part of the path must be removed.'); ?>
 			</p>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names; “GEDCOM media path” is a configuration setting */ I18N::translate('For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then the GEDCOM media path would be %3$s.', '<span class="filename">/home/fab/documents/family/photo.jpeg</span>', '<span class="filename">family/photo.jpeg</span>', '<span class="filename">/home/fab/documents/</span>'); ?>
+				<?php echo /* I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names; “GEDCOM media path” is a configuration setting */ I18N::translate('For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then the GEDCOM media path would be %3$s.', '<samp dir="ltr">/home/fab/documents/family/photo.jpeg</samp>', '<samp dir="ltr">family/photo.jpeg</samp>', '<samp dir="ltr">/home/fab/documents/</samp>'); ?>
 			</p>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “GEDCOM media path” configuration setting */ I18N::translate('This setting is only used when you read or write GEDCOM files.'); ?>

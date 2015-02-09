@@ -5756,7 +5756,7 @@ msgstr "Exportar"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:284
-msgid "Export all family trees to GEDCOM files…"
+msgid "Export all the family trees to GEDCOM files…"
 msgstr ""
 
 #: help_text.php:544
@@ -6032,7 +6032,7 @@ msgstr "Carrinho de recortes da Árvore Genealógica"
 #. I18N: %s is a filename
 #: admin_site_upgrade.php:290 admin_trees_export.php:34
 #, php-format
-msgid "Family tree exported to %s."
+msgid "The family tree has been exported to %s."
 msgstr "Árvore genealógica exportada para %s"
 
 #: admin_trees_config.php:666 admin_trees_manage.php:533

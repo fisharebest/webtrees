@@ -277,15 +277,21 @@ echo '</li>';
 // Make a backup of genealogy data
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<li>', /* I18N: The system is about to [...] */ I18N::translate('Export all family trees to GEDCOM files…');
+echo '<li>', /* I18N: The system is about to [...] */ I18N::translate('Export all the family trees to GEDCOM files…');
 
 foreach (Tree::getAll() as $tree) {
 	reset_timeout();
 	$filename = WT_DATA_DIR . $tree->getName() . date('-Y-m-d') . '.ged';
-	if ($tree->exportGedcom($filename)) {
-		echo '<br>', I18N::translate('Family tree exported to %s.', '<span dir="ltr">' . $filename . '</span>'), $icon_success;
-	} else {
-		echo '<br>', I18N::translate('Unable to create %s.  Check the permissions.', '<span dir="ltr">' . $filename . '</span>'), $icon_failure;
+
+	try {
+		// To avoid partial trees on timeout/diskspace/etc, write to a temporary file first
+		$stream = fopen($filename . '.tmp', 'w');
+		$tree->exportGedcom($stream);
+		fclose($stream);
+		rename($filename . '.tmp', $filename);
+		echo '<br>', I18N::translate('The family tree has been exported to %s.', '<span dir="ltr">' . $filename . '</span>'), $icon_success;
+	} catch (\ErrorException $ex) {
+		echo '<br>', I18N::translate('The file %s could not be created.', '<span dir="ltr">' . $filename . '</span>'), $icon_failure;
 	}
 }
 

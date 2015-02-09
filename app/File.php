@@ -91,20 +91,25 @@ class File {
 	 * @return boolean Was the file deleted
 	 */
 	public static function delete($path) {
-		// In case the file is marked read-only
-		@chmod($path, 0777);
-
 		if (is_dir($path)) {
 			$dir = opendir($path);
 			while ($dir !== false && (($file = readdir($dir)) !== false)) {
-				if ($file != '.' && $file != '..') {
+				if ($file !== '.' && $file !== '..') {
 					File::delete($path . DIRECTORY_SEPARATOR . $file);
 				}
 			}
 			closedir($dir);
-			@rmdir($path);
+			try {
+				rmdir($path);
+			} catch (\ErrorException $ex) {
+				// Continue, in case there are other files/folders that we can delete.
+			}
 		} else {
-			@unlink($path);
+			try {
+				unlink($path);
+			} catch (\ErrorException $ex) {
+				// Continue, in case there are other files/folders that we can delete.
+			}
 		}
 
 		return !file_exists($path);
@@ -124,9 +129,13 @@ class File {
 			if (dirname($path) && !is_dir(dirname($path))) {
 				File::mkdir(dirname($path));
 			}
-			@mkdir($path);
+			try {
+				mkdir($path);
 
-			return is_dir($path);
+				return true;
+			} catch (\ErrorException $ex) {
+				return false;
+			}
 		}
 	}
 }
