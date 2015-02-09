@@ -2272,6 +2272,10 @@ dd .deletelink {
 	line-height: 1.5;
 }
 
+[dir=rtl] .ui-tabs .ui-tabs-nav li {
+	float: right;
+}
+
 [dir=rtl] .ui-accordion .ui-accordion-header .ui-icon {
 	right: 0.5em;
 }
