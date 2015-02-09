@@ -65,75 +65,74 @@ if (Auth::isAdmin()) {
 	$gedc = WT_GEDCOM;
 }
 
-$query = array();
+$WHERE = " WHERE 1";
 $args = array();
 if ($search) {
-	$query[] = "(old_gedcom LIKE CONCAT('%', ?, '%') OR new_gedcom LIKE CONCAT('%', ?, '%'))";
-	$args [] = $search;
-	$args [] = $search;
+	$WHERE .= " AND (old_gedcom LIKE CONCAT('%', :search_1, '%') OR new_gedcom LIKE CONCAT('%', :search_2, '%'))";
+	$args['search_1'] = $search;
+	$args['search_2'] = $search;
 }
 if ($from) {
-	$query[] = 'change_time>=?';
-	$args [] = $from;
+	$WHERE .= " AND change_time >= :from";
+	$args['from'] = $from;
 }
 if ($to) {
-	$query[] = 'change_time<TIMESTAMPADD(DAY, 1 , ?)'; // before end of the day
-	$args [] = $to;
+	$WHERE .= " AND change_time < TIMESTAMPADD(DAY, 1 , :to)"; // before end of the day
+	$args['to'] = $to;
 }
 if ($type) {
-	$query[] = 'status=?';
-	$args [] = $type;
+	$WHERE .= " AND status = :status";
+	$args['type'] = $type;
 }
 if ($oldged) {
-	$query[] = "old_gedcom LIKE CONCAT('%', ?, '%')";
-	$args [] = $oldged;
+	$WHERE .= " AND old_gedcom LIKE CONCAT('%', :old_ged, '%')";
+	$args['old_ged'] = $oldged;
 }
 if ($newged) {
-	$query[] = "new_gedcom LIKE CONCAT('%', ?, '%')";
-	$args [] = $newged;
+	$WHERE .= " AND new_gedcom LIKE CONCAT('%', :new_ged, '%')";
+	$args['new_ged'] = $newged;
 }
 if ($xref) {
-	$query[] = "xref = ?";
-	$args [] = $xref;
+	$WHERE .= " AND xref = :xref";
+	$args['xref'] = $xref;
 }
 if ($user) {
-	$query[] = "user_name LIKE CONCAT('%', ?, '%')";
-	$args [] = $user;
+	$query[] = "AND user_name LIKE CONCAT('%', :user, '%')";
+	$args['user'] = $user;
 }
 if ($gedc) {
-	$query[] = "gedcom_name LIKE CONCAT('%', ?, '%')";
-	$args [] = $gedc;
+	$WHERE .= " AND gedcom_name LIKE CONCAT('%', :gedc, '%')";
+	$args['gedc'] = $gedc;
 }
 
-$SELECT1 =
+$SELECT_FILTERED =
 	"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS change_time, status, xref, old_gedcom, new_gedcom, IFNULL(user_name, '<none>') AS user_name, IFNULL(gedcom_name, '<none>') AS gedcom_name" .
 	" FROM `##change`" .
 	" LEFT JOIN `##user`   USING (user_id)" . // user may be deleted
-	" LEFT JOIN `##gedcom` USING (gedcom_id)"; // gedcom may be deleted
-$SELECT2 =
+	" LEFT JOIN `##gedcom` USING (gedcom_id)" . // gedcom may be deleted
+	$WHERE;
+
+$SELECT_UNFILTERED =
 	"SELECT COUNT(*) FROM `##change`" .
 	" LEFT JOIN `##user`   USING (user_id)" . // user may be deleted
 	" LEFT JOIN `##gedcom` USING (gedcom_id)"; // gedcom may be deleted
-if ($query) {
-	$WHERE = " WHERE " . implode(' AND ', $query);
-} else {
-	$WHERE = '';
-}
+
+$DELETE =
+	"DELETE `##change` FROM `##change`" .
+	" LEFT JOIN `##user`   USING (user_id)" . // user may be deleted
+	" LEFT JOIN `##gedcom` USING (gedcom_id)" . // gedcom may be deleted
+	$WHERE;
 
 switch ($action) {
 case 'delete':
-	$DELETE =
-		"DELETE `##change` FROM `##change`" .
-		" LEFT JOIN `##user`   USING (user_id)" . // user may be deleted
-		" LEFT JOIN `##gedcom` USING (gedcom_id)" . // gedcom may be deleted
-		$WHERE;
 	Database::prepare($DELETE)->execute($args);
 	break;
+
 case 'export':
 	Zend_Session::writeClose();
 	header('Content-Type: text/csv');
 	header('Content-Disposition: attachment; filename="webtrees-changes.csv"');
-	$rows = Database::prepare($SELECT1 . $WHERE . ' ORDER BY change_id')->execute($args)->fetchAll();
+	$rows = Database::prepare($SELECT_FILTERED . ' ORDER BY change_id')->execute($args)->fetchAll();
 	foreach ($rows as $row) {
 		$row->old_gedcom = str_replace('"', '""', $row->old_gedcom);
 		$row->old_gedcom = str_replace("\n", '""', $row->old_gedcom);
@@ -155,16 +154,8 @@ case 'load_json':
 	Zend_Session::writeClose();
 	$start  = Filter::getInteger('start');
 	$length = Filter::getInteger('length');
-	$search = Filter::get('search');
-	$search = $search['value'];
-	Auth::user()->setPreference('admin_site_change_page_size', $length);
-	if ($length > 0) {
-		$LIMIT = " LIMIT " . $start . ',' . $length;
-	} else {
-		$LIMIT = "";
-	}
+	$order  = Filter::getArray('order');
 
-	$order = Filter::getArray('order');
 	if ($order) {
 		$ORDER_BY = ' ORDER BY ';
 		foreach ($order as $key => $value) {
@@ -194,8 +185,17 @@ case 'load_json':
 		$ORDER_BY = 'ORDER BY 1 DESC';
 	}
 
+	if ($length) {
+		Auth::user()->setPreference('admin_site_change_page_size', $length);
+		$LIMIT = " LIMIT :limit OFFSET :offset";
+		$args['limit'] = $length;
+		$args['offset'] = $start;
+	} else {
+		$LIMIT = "";
+	}
+
 	// This becomes a JSON list, not array, so need to fetch with numeric keys.
-	$data = Database::prepare($SELECT1 . $WHERE . $ORDER_BY . $LIMIT)->execute($args)->fetchAll(PDO::FETCH_NUM);
+	$data = Database::prepare($SELECT_FILTERED . $ORDER_BY . $LIMIT)->execute($args)->fetchAll(PDO::FETCH_NUM);
 	foreach ($data as &$datum) {
 		$datum[1] = I18N::translate($datum[1]);
 		$datum[2] = '<a href="gedrecord.php?pid=' . $datum[2] . '&ged=' . $datum[6] . '" target="_blank">' . $datum[2] . '</a>';
@@ -207,7 +207,7 @@ case 'load_json':
 
 	// Total filtered/unfiltered rows
 	$recordsFiltered = Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
-	$recordsTotal = Database::prepare($SELECT2 . $WHERE)->execute($args)->fetchOne();
+	$recordsTotal = Database::prepare($SELECT_UNFILTERED)->fetchOne();
 
 	header('Content-type: application/json');
 	// See http://www.datatables.net/usage/server-side
