@@ -97,8 +97,8 @@ function applyWatermark($im) {
  * @param integer  $maxsize
  * @param string   $color
  * @param string   $font
- * @param integer  $vpos
- * @param integer  $hpos
+ * @param string   $vpos
+ * @param string   $hpos
  */
 function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 	global $useTTF;
