@@ -26,8 +26,8 @@ global $WT_TREE;
 define('WT_SCRIPT_NAME', 'calendar.php');
 require './includes/session.php';
 
-$WEEK_START      = $WT_TREE::getPreference('WEEK_START');
-$CALENDAR_FORMAT = $WT_TREE::getPreference('CALENDAR_FORMAT');
+$WEEK_START      = $WT_TREE->getPreference('WEEK_START');
+$CALENDAR_FORMAT = $WT_TREE->getPreference('CALENDAR_FORMAT');
 
 $controller = new PageController;
 $controller->setPageTitle(I18N::translate('Anniversary calendar'));
