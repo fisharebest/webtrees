@@ -22,12 +22,11 @@ use PDOException;
  * Tidy up a gedcom record on import, so that we can access it consistently/efficiently.
  *
  * @param string $rec
+ * @param Tree   $tree
  *
  * @return string
  */
-function reformat_record_import($rec) {
-	global $WT_TREE;
-
+function reformat_record_import($rec, Tree $tree) {
 	// Strip out UTF8 formatting characters
 	$rec = str_replace(array(WT_UTF8_BOM, WT_UTF8_LRM, WT_UTF8_RLM), '', $rec);
 
@@ -565,7 +564,7 @@ function reformat_record_import($rec) {
 			break;
 		case 'FILE':
 			// Strip off the user-defined path prefix
-			$GEDCOM_MEDIA_PATH = $WT_TREE->getPreference('GEDCOM_MEDIA_PATH');
+			$GEDCOM_MEDIA_PATH = $tree->getPreference('GEDCOM_MEDIA_PATH');
 			if ($GEDCOM_MEDIA_PATH && strpos($data, $GEDCOM_MEDIA_PATH) === 0) {
 				$data = substr($data, strlen($GEDCOM_MEDIA_PATH));
 			}
@@ -576,7 +575,7 @@ function reformat_record_import($rec) {
 			break;
 		case 'CONC':
 			// Merge CONC lines, to simplify access later on.
-			$newrec .= ($WT_TREE->getPreference('WORD_WRAPPED_NOTES') ? ' ' : '') . $data;
+			$newrec .= ($tree->getPreference('WORD_WRAPPED_NOTES') ? ' ' : '') . $data;
 			break;
 		}
 	}
@@ -589,11 +588,11 @@ function reformat_record_import($rec) {
  * this function will parse the given gedcom record and add it to the database
  *
  * @param string  $gedrec the raw gedcom record to parse
- * @param integer $ged_id import the record into this gedcom
+ * @param Tree    $tree import the record into this tree
  * @param boolean $update whether or not this is an updated record that has been accepted
  */
-function import_record($gedrec, $ged_id, $update) {
-	global $WT_TREE, $keep_media;
+function import_record($gedrec, $tree, $update) {
+	$ged_id = $tree->getTreeId();
 
 	static $sql_insert_indi = null;
 	static $sql_insert_fam = null;
@@ -624,13 +623,13 @@ function import_record($gedrec, $ged_id, $update) {
 	}
 
 	// Standardise gedcom format
-	$gedrec = reformat_record_import($gedrec);
+	$gedrec = reformat_record_import($gedrec, $tree);
 
 	// import different types of records
 	if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ (' . WT_REGEX_TAG . ')/', $gedrec, $match)) {
 		list(,$xref, $type) = $match;
 		// check for a _UID, if the record doesn't have one, add one
-		if ($WT_TREE->getPreference('GENERATE_UIDS') && !strpos($gedrec, "\n1 _UID ")) {
+		if ($tree->getPreference('GENERATE_UIDS') && !strpos($gedrec, "\n1 _UID ")) {
 			$gedrec .= "\n1 _UID " . WT_Gedcom_Tag::createUid();
 		}
 	} elseif (preg_match('/0 (HEAD|TRLR)/', $gedrec, $match)) {
@@ -645,7 +644,7 @@ function import_record($gedrec, $ged_id, $update) {
 	// If the user has downloaded their GEDCOM data (containing media objects) and edited it
 	// using an application which does not support (and deletes) media objects, then add them
 	// back in.
-	if ($keep_media && $xref) {
+	if ($tree->getPreference('keep_media') && $xref) {
 		$old_linked_media =
 			Database::prepare("SELECT l_to FROM `##link` WHERE l_from=? AND l_file=? AND l_type='OBJE'")
 			->execute(array($xref, $ged_id))
@@ -661,7 +660,7 @@ function import_record($gedrec, $ged_id, $update) {
 		$gedrec = convert_inline_media($ged_id, $gedrec);
 
 		$record = new Individual($xref, $gedrec, null, $ged_id);
-		if ($WT_TREE->getPreference('USE_RIN') && preg_match('/\n1 RIN (.+)/', $gedrec, $match)) {
+		if ($tree->getPreference('USE_RIN') && preg_match('/\n1 RIN (.+)/', $gedrec, $match)) {
 			$rin = $match[1];
 		} else {
 			$rin = $xref;
@@ -1125,6 +1124,6 @@ function update_record($gedrec, $ged_id, $delete) {
 	}
 
 	if (!$delete) {
-		import_record($gedrec, $ged_id, true);
+		import_record($gedrec, Tree::FindById($ged_id), true);
 	}
 }
