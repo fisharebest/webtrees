@@ -1823,7 +1823,7 @@ function ifStartHandler($attrs) {
 		$condition = str_replace("@$id", $value, $condition);
 		$i++;
 	}
-	$condition = "if ($condition) return true; else return false;";
+	$condition = "return (bool) ($condition);";
 	$ret = @eval($condition);
 	if (!$ret) {
 		$processIfs++;

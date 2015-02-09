@@ -198,11 +198,16 @@ if (!isset($_POST['lang'])) {
 // Step two - The data folder needs to be writable
 ////////////////////////////////////////////////////////////////////////////////
 
-@file_put_contents(WT_DATA_DIR . 'test.txt', 'FAB!');
-$FAB = @file_get_contents(WT_DATA_DIR . 'test.txt');
-@unlink(WT_DATA_DIR . 'test.txt');
+$text1 = uniqid();
+$text2 = '';
+try {
+	file_put_contents(WT_DATA_DIR . 'test.txt', $text1);
+	$text2 = file_get_contents(WT_DATA_DIR . 'test.txt');
+	unlink(WT_DATA_DIR . 'test.txt');
+} catch (\ErrorException $ex) {
+}
 
-if ($FAB != 'FAB!') {
+if ($text1 !== $text2) {
 	echo '<h2>', realpath(WT_DATA_DIR), '</h2>';
 	echo '<p class="bad">', I18N::translate('Oops!  webtrees was unable to create files in this folder.'), '</p>';
 	echo '<p>', I18N::translate('This usually means that you need to change the folder permissions to 777.'), '</p>';

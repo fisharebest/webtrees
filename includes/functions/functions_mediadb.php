@@ -61,10 +61,16 @@ function hasMemoryForImage($serverFilename) {
 	// find out how much memory we are already using
 	$memoryUsed = memory_get_usage();
 
-	$imgsize = @getimagesize($serverFilename);
+	try {
+		$imgsize = getimagesize($serverFilename);
+	} catch (\ErrorException $ex) {
+		// Not an image, or not a valid image?
+		$imgsize = false;
+	}
+
 	// find out how much memory this image needs for processing, probably only works for jpegs
 	// from comments on http://www.php.net/imagecreatefromjpeg
-	if (is_array($imgsize) && isset($imgsize['bits']) && (isset($imgsize['channels']))) {
+	if ($imgsize && isset($imgsize['bits']) && (isset($imgsize['channels']))) {
 		$memoryNeeded = round(($imgsize[0] * $imgsize[1] * $imgsize['bits'] * $imgsize['channels'] / 8 + Pow(2, 16)) * 1.65);
 		$memorySpare = $memoryAvailable - $memoryUsed - $memoryNeeded;
 		if ($memorySpare > 0) {

@@ -760,7 +760,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 			}
 			$a = strtolower($key);
 			$b = strtolower($value);
-			if (@strpos($a, $b) !== false || @strpos($b, $a) !== false) {
+			if ($b !== '' && strpos($a, $b) !== false || strpos($b, $a) !== false) {
 				echo 'selected';
 			}
 			echo '>', WT_Gedcom_Tag::getLabel('MARR_' . strtoupper($key)), '</option>';

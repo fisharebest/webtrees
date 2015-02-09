@@ -39,10 +39,10 @@ if (Auth::isManager($WT_TREE) && Filter::checkCsrf()) {
 		$WT_TREE->exportGedcom($stream);
 		fclose($stream);
 		rename($filename . '.tmp', $filename);
-		FlashMessages::addMessage(/* I18N: %s is a filename */ I18N::translate('The family tree has been exported to %s.', '<samp dir="ltr">' . $filename . '</samp>'), 'success');
+		FlashMessages::addMessage(/* I18N: %s is a filename */ I18N::translate('The family tree has been exported to %s.', Html::filename($filename)), 'success');
 	} catch (\ErrorException $ex) {
 		FlashMessages::addMessage(
-			I18N::translate('The file %s could not be created.', '<samp dir="ltr">' . $filename . '</samp>') . '<hr><samp dir="ltr">' . $ex->getMessage() . '</samp>',
+			I18N::translate('The file %s could not be created.', Html::filename($filename)) . '<hr><samp dir="ltr">' . $ex->getMessage() . '</samp>',
 			'danger'
 		);
 	}
