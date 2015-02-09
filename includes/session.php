@@ -223,6 +223,7 @@ set_exception_handler(function(\Exception $ex) {
 	$short_message = '';
 
 	foreach ($ex->getTrace() as $level => $frame) {
+		$frame += array('args' => array(), 'file' => 'unknown', 'line' => 'unknown');
 		array_walk($frame['args'], function(&$arg) {
 			switch (gettype($arg)) {
 			case 'boolean':
@@ -254,10 +255,10 @@ set_exception_handler(function(\Exception $ex) {
 		$long_message .= '#' . $level . ' ' . $frame['file'] . ':' . $frame['line'] . ' ';
 		$short_message .= '#' . $level . ' ' . $frame['file'] . ':' . $frame['line'] . ' ';
 		if ($level) {
-			$long_message .= $frame['function'] . '(' . implode(', ', $frame['args']) . ")\n";
+			$long_message .= $frame['function'] . '(' . implode(', ', $frame['args']) . ')' . PHP_EOL;
 			$short_message .= $frame['function'] . "()<br>";
 		} else {
-			$long_message .= get_class($ex) . '("' . $ex->getMessage() . '")';
+			$long_message .= get_class($ex) . '("' . $ex->getMessage() . '")' . PHP_EOL;
 			$short_message .= get_class($ex) . '("' . $ex->getMessage() . '")<br>';
 		}
 	}
