@@ -553,8 +553,8 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)"
 		)->fetchAll();
 	foreach ($user_gedcom_settings as $setting) {
-		@$array = unserialize($setting->u_gedcomid);
-		if (is_array($array)) {
+		try {
+			$array = unserialize($setting->u_gedcomid);
 			foreach ($array as $gedcom => $value) {
 				try {
 					Database::prepare(
@@ -564,9 +564,12 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 					// Invalid data?  Reference to non-existing tree?
 				}
 			}
+		} catch (\ErrorException $ex) {
+			// Invalid serialized data?
 		}
-		@$array = unserialize($setting->u_rootid);
-		if (is_array($array)) {
+
+		try {
+			$array = unserialize($setting->u_rootid);
 			foreach ($array as $gedcom => $value) {
 				try {
 					Database::prepare(
@@ -576,9 +579,12 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 					// Invalid data?  Reference to non-existing tree?
 				}
 			}
+		} catch (\ErrorException $ex) {
+			// Invalid serialized data?
 		}
-		@$array = unserialize($setting->u_canedit);
-		if (is_array($array)) {
+
+		try {
+			$array = unserialize($setting->u_canedit);
 			foreach ($array as $gedcom => $value) {
 				try {
 					Database::prepare(
@@ -588,6 +594,8 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 					// Invalid data?  Reference to non-existing tree?
 				}
 			}
+		} catch (\ErrorException $ex) {
+			// Invalid serialized data?
 		}
 	}
 }
