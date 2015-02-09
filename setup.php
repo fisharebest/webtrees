@@ -19,10 +19,7 @@ namespace Fisharebest\Webtrees;
 use PDOException;
 use Zend_Controller_Request_Http;
 
-error_reporting(E_ALL | E_STRICT);
-if (strpos(ini_get('disable_functions'), 'ini_set') === false) {
-	ini_set('display_errors', 'on');
-}
+error_reporting(E_ALL);
 
 // To embed webtrees code in other applications, we must explicitly declare any global variables that we create.
 global $WT_REQUEST, $WT_SESSION;
