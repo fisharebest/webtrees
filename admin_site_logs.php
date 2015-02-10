@@ -45,7 +45,6 @@ $type   = Filter::get('type', 'auth|change|config|debug|edit|error|media|search'
 $text   = Filter::get('text');
 $ip     = Filter::get('ip');
 $user   = Filter::get('user');
-
 $search = Filter::get('search');
 $search = isset($search['value']) ? $search['value'] : null;
 
@@ -57,70 +56,62 @@ if (Auth::isAdmin()) {
 	$gedc = WT_GEDCOM;
 }
 
-$query = array();
-$args = array();
+$sql_select =
+	"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS log_id, log_time, log_type, log_message, ip_address, IFNULL(user_name, '<none>') AS user_name, IFNULL(gedcom_name, '<none>') AS gedcom_name" .
+	" FROM `##log`" .
+	" LEFT JOIN `##user` USING (user_id)" . // user may be deleted
+	" LEFT JOIN `##gedcom` USING (gedcom_id)"; // gedcom may be deleted
+
+$where = " WHERE 1";
+$args  = array();
 if ($search) {
-	$query[] = "log_message LIKE CONCAT('%', ?, '%')";
-	$args [] = $search;
+	$where .= " AND log_message LIKE CONCAT('%', :search, '%')";
+	$args['search'] = $search;
 }
 if ($from) {
-	$query[] = 'log_time>=?';
-	$args [] = $from;
+	$where .= " AND log_time >= :from";
+	$args['from'] = $from;
 }
 if ($to) {
-	$query[] = 'log_time<TIMESTAMPADD(DAY, 1 , ?)'; // before end of the day
-	$args [] = $to;
+	$where .= " AND log_time < TIMESTAMPADD(DAY, 1 , :to)"; // before end of the day
+	$args['to'] = $to;
 }
 if ($type) {
-	$query[] = 'log_type=?';
-	$args [] = $type;
+	$where .= " AND log_type = :type";
+	$args['type'] = $type;
 }
 if ($text) {
-	$query[] = "log_message LIKE CONCAT('%', ?, '%')";
-	$args [] = $text;
+	$where .= " AND log_message LIKE CONCAT('%', :text, '%')";
+	$args['text'] = $text;
 }
 if ($ip) {
-	$query[] = "ip_address LIKE CONCAT('%', ?, '%')";
-	$args [] = $ip;
+	$where .= " AND ip_address LIKE CONCAT('%', :ip, '%')";
+	$args['ip'] = $ip;
 }
 if ($user) {
-	$query[] = "user_name LIKE CONCAT('%', ?, '%')";
-	$args [] = $user;
+	$where .= " AND user_name LIKE CONCAT('%', :user, '%')";
+	$args['user'] = $user;
 }
 if ($gedc) {
-	$query[] = "gedcom_name LIKE CONCAT('%', ?, '%')";
-	$args [] = $gedc;
-}
-
-$SELECT1 =
-	"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS log_time, log_type, log_message, ip_address, IFNULL(user_name, '<none>') AS user_name, IFNULL(gedcom_name, '<none>') AS gedcom_name" .
-	" FROM `##log`" .
-	" LEFT JOIN `##user`   USING (user_id)" . // user may be deleted
-	" LEFT JOIN `##gedcom` USING (gedcom_id)"; // gedcom may be deleted
-$SELECT2 =
-	"SELECT COUNT(*) FROM `##log`" .
-	" LEFT JOIN `##user`   USING (user_id)" . // user may be deleted
-	" LEFT JOIN `##gedcom` USING (gedcom_id)"; // gedcom may be deleted
-if ($query) {
-	$WHERE = " WHERE " . implode(' AND ', $query);
-} else {
-	$WHERE = '';
+	$where .= " AND gedcom_name LIKE CONCAT('%', :gedc, '%')";
+	$args['gedc'] = $gedc;
 }
 
 switch ($action) {
 case 'delete':
-	$DELETE =
+	$sql_delete =
 		"DELETE `##log` FROM `##log`" .
-		" LEFT JOIN `##user`   USING (user_id)" . // user may be deleted
-		" LEFT JOIN `##gedcom` USING (gedcom_id)" . // gedcom may be deleted
-		$WHERE;
-	Database::prepare($DELETE)->execute($args);
+		" LEFT JOIN `##user` USING (user_id)" . // user may be deleted
+		" LEFT JOIN `##gedcom` USING (gedcom_id)"; // gedcom may be deleted
+
+	Database::prepare($sql_delete . $where)->execute($args);
 	break;
+
 case 'export':
 	Zend_Session::writeClose();
 	header('Content-Type: text/csv');
 	header('Content-Disposition: attachment; filename="webtrees-logs.csv"');
-	$rows = Database::prepare($SELECT1 . $WHERE . ' ORDER BY log_id')->execute($args)->fetchAll();
+	$rows = Database::prepare($sql_select . $where . ' ORDER BY log_id')->execute($args)->fetchAll();
 	foreach ($rows as $row) {
 		echo
 			'"', $row->log_time, '",',
@@ -137,38 +128,40 @@ case 'load_json':
 	Zend_Session::writeClose();
 	$start  = Filter::getInteger('start');
 	$length = Filter::getInteger('length');
-	Auth::user()->setPreference('admin_site_log_page_size', $length);
+	$order  = Filter::getArray('order');
 
-	if ($length > 0) {
-		$LIMIT = " LIMIT " . $start . ',' . $length;
-	} else {
-		$LIMIT = "";
-	}
-
-	$order = Filter::getArray('order');
 	if ($order) {
-		$ORDER_BY = ' ORDER BY ';
+		$order_by = " ORDER BY ";
 		foreach ($order as $key => $value) {
 			if ($key > 0) {
-				$ORDER_BY .= ',';
+				$order_by .= ',';
 			}
 			// Datatables numbers columns 0, 1, 2, ...
 			// MySQL numbers columns 1, 2, 3, ...
 			switch ($value['dir']) {
 			case 'asc':
-				$ORDER_BY .= (1 + $value['column']) . ' ASC ';
+				$order_by .= (1 + $value['column']) . " ASC ";
 				break;
 			case 'desc':
-				$ORDER_BY .= (1 + $value['column']) . ' DESC ';
+				$order_by .= (1 + $value['column']) . " DESC ";
 				break;
 			}
 		}
 	} else {
-		$ORDER_BY = '1 ASC';
+		$order_by = " ORDER BY 1 ASC";
+	}
+
+	if ($length) {
+		Auth::user()->setPreference('admin_site_log_page_size', $length);
+		$limit = " LIMIT :limit OFFSET :offset";
+		$args['limit']  = $length;
+		$args['offset'] = $start;
+	} else {
+		$limit = "";
 	}
 
 	// This becomes a JSON list, not array, so need to fetch with numeric keys.
-	$data = Database::prepare($SELECT1 . $WHERE . $ORDER_BY . $LIMIT)->execute($args)->fetchAll(PDO::FETCH_NUM);
+	$data = Database::prepare($sql_select . $where . $order_by . $limit)->execute($args)->fetchAll(PDO::FETCH_NUM);
 	foreach ($data as &$datum) {
 		$datum[2] = Filter::escapeHtml($datum[2]);
 		$datum[4] = Filter::escapeHtml($datum[4]);
@@ -176,8 +169,8 @@ case 'load_json':
 	}
 
 	// Total filtered/unfiltered rows
-	$recordsFiltered = Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
-	$recordsTotal = Database::prepare($SELECT2 . $WHERE)->execute($args)->fetchOne();
+	$recordsFiltered = (int) Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
+	$recordsTotal    = (int) Database::prepare("SELECT COUNT(*) FROM `##log`")->fetchOne();
 
 	header('Content-type: application/json');
 	// See http://www.datatables.net/usage/server-side
@@ -204,7 +197,16 @@ $controller
 			ajax: "'.WT_BASE_URL . WT_SCRIPT_NAME . '?action=load_json&from=' . $from . '&to=' . $to . '&type=' . $type . '&text=' . rawurlencode($text) . '&ip=' . rawurlencode($ip) . '&user=' . rawurlencode($user) . '&gedc=' . rawurlencode($gedc) . '",
 			' . I18N::datatablesI18N(array(10, 20, 50, 100, 500, 1000, -1)) . ',
 			sorting: [[ 0, "desc" ]],
-			pageLength: ' . Auth::user()->getPreference('admin_site_log_page_size', 20) . '
+			pageLength: ' . Auth::user()->getPreference('admin_site_log_page_size', 10) . ',
+			columns: [
+			/* log_id      */ { visible: false },
+			/* Timestamp   */ { sort: 0 },
+			/* Type        */ { },
+			/* message     */ { },
+			/* IP address  */ { },
+			/* User        */ { },
+			/* Family tree */ { }
+			]
 		});
 		jQuery("#from,#to").parent("div").datetimepicker({
 			format: "YYYY-MM-DD",
@@ -223,15 +225,6 @@ $controller
 			}
 		});
 	');
-
-$url =
-	WT_SCRIPT_NAME . '?from=' . rawurlencode($from) .
-	'&amp;to=' . rawurlencode($to) .
-	'&amp;type=' . rawurlencode($type) .
-	'&amp;text=' . rawurlencode($text) .
-	'&amp;ip=' . rawurlencode($ip) .
-	'&amp;user=' . rawurlencode($user) .
-	'&amp;gedc=' . rawurlencode($gedc);
 
 $users_array = array();
 foreach (User::all() as $tmp_user) {
@@ -281,7 +274,7 @@ foreach (User::all() as $tmp_user) {
 			<label for="ip">
 				<?php echo I18N::translate('IP address'); ?>
 			</label>
-			<input class="form-control" type="text" id="ip" name="ip" value="<?php Filter::escapeHtml($ip); ?>">
+			<input class="form-control" type="text" id="ip" name="ip" value="<?php echo Filter::escapeHtml($ip); ?>">
 		</div>
 	</div>
 
@@ -330,6 +323,7 @@ foreach (User::all() as $tmp_user) {
 	</caption>
 	<thead>
 		<tr>
+			<th></th>
 			<th><?php echo I18N::translate('Timestamp'); ?></th>
 			<th><?php echo I18N::translate('Type'); ?></th>
 			<th><?php echo I18N::translate('Message'); ?></th>

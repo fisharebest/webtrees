@@ -315,10 +315,11 @@ class Stats {
 	 * @return integer
 	 */
 	private function totalIndividualsQuery() {
-		return
-			(int) Database::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file = ?")
-				->execute(array($this->tree->getTreeId()))
-				->fetchOne();
+		return (int) Database::prepare(
+			"SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file = :tree_id"
+		)->execute(array(
+			'tree_id' => $this->tree->getTreeId()
+		))->fetchOne();
 	}
 
 	/**
@@ -332,9 +333,13 @@ class Stats {
 	 * @return integer
 	 */
 	private function totalIndisWithSourcesQuery() {
-		$rows = $this->runSql("SELECT SQL_CACHE COUNT(DISTINCT i_id) AS tot FROM `##link`, `##individuals` WHERE i_id=l_from AND i_file=l_file AND l_file=" . $this->tree->getTreeId() . " AND l_type='SOUR'");
-
-		return (int) $rows[0]['tot'];
+		return (int) Database::prepare(
+			"SELECT SQL_CACHE COUNT(DISTINCT i_id)" .
+			" FROM `##individuals` JOIN `##link` ON i_id = l_from AND i_file = l_file" .
+			" WHERE l_file = :tree_id AND l_type = 'SOUR'"
+		)->execute(array(
+			'tree_id' => $this->tree->getTreeId(),
+		))->fetchOne();
 	}
 
 	/**
@@ -395,10 +400,11 @@ class Stats {
 	 * @return integer
 	 */
 	private function totalFamiliesQuery() {
-		return
-			(int) Database::prepare("SELECT SQL_CACHE COUNT(*) FROM `##families` WHERE f_file=?")
-				->execute(array($this->tree->getTreeId()))
-				->fetchOne();
+		return (int) Database::prepare(
+			"SELECT SQL_CACHE COUNT(*) FROM `##families` WHERE f_file = :tree_id"
+		)->execute(array(
+			'tree_id' => $this->tree->getTreeId()
+		))->fetchOne();
 	}
 
 	/**
@@ -412,9 +418,13 @@ class Stats {
 	 * @return integer
 	 */
 	private function totalFamsWithSourcesQuery() {
-		$rows = $this->runSql("SELECT SQL_CACHE COUNT(DISTINCT f_id) AS tot FROM `##link`, `##families` WHERE f_id=l_from AND f_file=l_file AND l_file=" . $this->tree->getTreeId() . " AND l_type='SOUR'");
-
-		return (int) $rows[0]['tot'];
+		return (int) Database::prepare(
+			"SELECT SQL_CACHE COUNT(DISTINCT f_id)" .
+			" FROM `##families` JOIN `##link` ON f_id = l_from AND f_file = l_file" .
+			" WHERE l_file = :tree_id AND l_type = 'SOUR'"
+		)->execute(array(
+			'tree_id' => $this->tree->getTreeId(),
+		))->fetchOne();
 	}
 
 	/**
@@ -476,10 +486,11 @@ class Stats {
 	 * @return integer
 	 */
 	private function totalSourcesQuery() {
-		return
-			(int) Database::prepare("SELECT SQL_CACHE COUNT(*) FROM `##sources` WHERE s_file=?")
-				->execute(array($this->tree->getTreeId()))
-				->fetchOne();
+		return (int) Database::prepare(
+			"SELECT SQL_CACHE COUNT(*) FROM `##sources` WHERE s_file = :tree_id"
+		)->execute(array(
+			'tree_id' => $this->tree->getTreeId()
+		))->fetchOne();
 	}
 
 	/**
@@ -500,10 +511,11 @@ class Stats {
 	 * @return integer
 	 */
 	private function totalNotesQuery() {
-		return
-			(int) Database::prepare("SELECT SQL_CACHE COUNT(*) FROM `##other` WHERE o_type='NOTE' AND o_file=?")
-				->execute(array($this->tree->getTreeId()))
-				->fetchOne();
+		return (int) Database::prepare(
+			"SELECT SQL_CACHE COUNT(*) FROM `##other` WHERE o_type='NOTE' AND o_file = :tree_id"
+		)->execute(array(
+			'tree_id' => $this->tree->getTreeId()
+		))->fetchOne();
 	}
 
 	/**
@@ -524,10 +536,11 @@ class Stats {
 	 * @return integer
 	 */
 	private function totalRepositoriesQuery() {
-		return
-			(Int) Database::prepare("SELECT SQL_CACHE COUNT(*) FROM `##other` WHERE o_type='REPO' AND o_file=?")
-				->execute(array($this->tree->getTreeId()))
-				->fetchOne();
+		return (int) Database::prepare(
+			"SELECT SQL_CACHE COUNT(*) FROM `##other` WHERE o_type='REPO' AND o_file = :tree_id"
+		)->execute(array(
+			'tree_id' => $this->tree->getTreeId()
+		))->fetchOne();
 	}
 
 	/**
@@ -702,10 +715,11 @@ class Stats {
 	 * @return integer
 	 */
 	private function totalSexMalesQuery() {
-		return
-			(int) Database::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_sex=?")
-				->execute(array($this->tree->getTreeId(), 'M'))
-				->fetchOne();
+		return (int) Database::prepare(
+			"SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_sex = 'M'"
+		)->execute(array(
+			'tree_id' => $this->tree->getTreeId()
+		))->fetchOne();
 	}
 
 	/**
@@ -726,10 +740,11 @@ class Stats {
 	 * @return integer
 	 */
 	private function totalSexFemalesQuery() {
-		return
-			(int) Database::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_sex=?")
-				->execute(array($this->tree->getTreeId(), 'F'))
-				->fetchOne();
+		return (int) Database::prepare(
+			"SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_sex = 'F'"
+		)->execute(array(
+			'tree_id' => $this->tree->getTreeId()
+		))->fetchOne();
 	}
 
 	/**
@@ -750,10 +765,11 @@ class Stats {
 	 * @return integer
 	 */
 	private function totalSexUnknownQuery() {
-		return
-			(int) Database::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_sex=?")
-				->execute(array($this->tree->getTreeId(), 'U'))
-				->fetchOne();
+		return (int) Database::prepare(
+			"SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_sex = 'U'"
+		)->execute(array(
+			'tree_id' => $this->tree->getTreeId()
+		))->fetchOne();
 	}
 
 	/**
@@ -838,15 +854,15 @@ class Stats {
 	 * have a DEAT record.  It will not include individuals who were born more
 	 * than MAX_ALIVE_AGE years ago, and who have no DEAT record.
 	 * A good reason to run the “Add missing DEAT records” batch-update!
-	 * However, SQL cannot provide the same logic used by Person::isDead().
 	 *
 	 * @return integer
 	 */
 	private function totalLivingQuery() {
-		return
-			(int) Database::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_gedcom NOT REGEXP '\\n1 (" . WT_EVENTS_DEAT . ")'")
-				->execute(array($this->tree->getTreeId()))
-				->fetchOne();
+		return (int) Database::prepare(
+			"SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_gedcom NOT REGEXP '\\n1 (" . WT_EVENTS_DEAT . ")'"
+		)->execute(array(
+			'tree_id' => $this->tree->getTreeId()
+		))->fetchOne();
 	}
 
 	/**
@@ -867,10 +883,11 @@ class Stats {
 	 * @return integer
 	 */
 	private function totalDeceasedQuery() {
-		return
-			(int) Database::prepare("SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file=? AND i_gedcom REGEXP '\\n1 (" . WT_EVENTS_DEAT . ")'")
-				->execute(array($this->tree->getTreeId()))
-				->fetchOne();
+		return (int) Database::prepare(
+			"SELECT SQL_CACHE COUNT(*) FROM `##individuals` WHERE i_file = :tree_id AND i_gedcom REGEXP '\\n1 (" . WT_EVENTS_DEAT . ")'"
+		)->execute(array(
+			'tree_id' => $this->tree->getTreeId()
+		))->fetchOne();
 	}
 
 	/**
@@ -1292,15 +1309,17 @@ class Stats {
 	public function statsPlaces($what = 'ALL', $fact = '', $parent = 0, $country = false) {
 		if ($fact) {
 			if ($what == 'INDI') {
-				$rows =
-					Database::prepare("SELECT i_gedcom AS ged FROM `##individuals` WHERE i_file=?")
-						->execute(array($this->tree->getTreeId()))
-						->fetchAll();
+				$rows = Database::prepare(
+					"SELECT i_gedcom AS ged FROM `##individuals` WHERE i_file = :tree_id AND i_gedcom LIKE '%\n2 PLAC %'"
+				)->execute(array(
+					'tree_id' => $this->tree->getTreeId()
+				))->fetchAll();
 			} elseif ($what == 'FAM') {
-				$rows =
-					Database::prepare("SELECT f_gedcom AS ged FROM `##families` WHERE f_file=?")
-						->execute(array($this->tree->getTreeId()))
-						->fetchAll();
+				$rows = Database::prepare(
+					"SELECT f_gedcom AS ged FROM `##families` WHERE f_file = :tree_id AND f_gedcom LIKE '%\n2 PLAC %'"
+				)->execute(array(
+					'tree_id' => $this->tree->getTreeId()
+				))->fetchAll();
 			}
 			$placelist = array();
 			foreach ($rows as $row) {
@@ -2964,31 +2983,34 @@ class Stats {
 			$query1 = ' MIN(husbbirth.d_julianday2-wifebirth.d_julianday1) AS age';
 			$query2 = ' wifebirth.d_julianday1 < husbbirth.d_julianday2 AND wifebirth.d_julianday1 <> 0';
 		}
-		$rows = $this->runSql(
-			" SELECT SQL_CACHE fam.f_id AS family," . $query1 .
+		$rows = Database::prepare(
+			"SELECT SQL_CACHE fam.f_id AS family," . $query1 .
 			" FROM `##families` AS fam" .
-			" LEFT JOIN `##dates` AS wifebirth ON wifebirth.d_file = {$this->tree->getTreeId()}" .
-			" LEFT JOIN `##dates` AS husbbirth ON husbbirth.d_file = {$this->tree->getTreeId()}" .
+			" LEFT JOIN `##dates` AS wifebirth ON wifebirth.d_file = :tree_id_1" .
+			" LEFT JOIN `##dates` AS husbbirth ON husbbirth.d_file = :tree_id_2" .
 			" WHERE" .
-			" fam.f_file = {$this->tree->getTreeId()} AND" .
+			" fam.f_file = :tree_id_3 AND" .
 			" husbbirth.d_gid = fam.f_husb AND" .
 			" husbbirth.d_fact = 'BIRT' AND" .
 			" wifebirth.d_gid = fam.f_wife AND" .
 			" wifebirth.d_fact = 'BIRT' AND" .
 			$query2 .
 			" GROUP BY family" .
-			" ORDER BY age DESC LIMIT " . $total
-		);
-		if (!isset($rows[0])) {
-			return '';
-		}
+			" ORDER BY age DESC LIMIT :limit"
+		)->execute(array(
+			'tree_id_1' => $this->tree->getTreeId(),
+			'tree_id_2' => $this->tree->getTreeId(),
+			'tree_id_3' => $this->tree->getTreeId(),
+			'limit'     => $total,
+		))->fetchAll();
+
 		$top10 = array();
 		foreach ($rows as $fam) {
-			$family = Family::getInstance($fam['family'], $this->tree->getTreeId());
-			if ($fam['age'] < 0) {
+			$family = Family::getInstance($fam->family, $this->tree->getTreeId());
+			if ($fam->age < 0) {
 				break;
 			}
-			$age = $fam['age'];
+			$age = $fam->age;
 			if ((int) ($age / 365.25) > 0) {
 				$age = (int) ($age / 365.25) . 'y';
 			} elseif ((int) ($age / 30.4375) > 0) {
@@ -2999,23 +3021,21 @@ class Stats {
 			$age = get_age_at_event($age, true);
 			if ($family->canShow()) {
 				if ($type === 'list') {
-					$top10[] = "<li><a href=\"" . $family->getHtmlUrl() . "\">" . $family->getFullName() . "</a> (" . $age . ")" . "</li>";
+					$top10[] = '<li><a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> (' . $age . ')' . "</li>";
 				} else {
-					$top10[] = "<a href=\"" . $family->getHtmlUrl() . "\">" . $family->getFullName() . "</a> (" . $age . ")";
+					$top10[] = '<a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> (' . $age . ')';
 				}
 			}
 		}
 		if ($type === 'list') {
 			$top10 = implode('', $top10);
+			if ($top10) {
+				$top10 = '<ul>' . $top10 . '</ul>';
+			}
 		} else {
-			$top10 = implode(';&nbsp; ', $top10);
+			$top10 = implode(' ', $top10);
 		}
-		if (I18N::direction() === 'rtl') {
-			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
-		}
-		if ($type === 'list') {
-			return '<ul>' . $top10 . '</ul>';
-		}
+
 		return $top10;
 	}
 
@@ -5943,7 +5963,7 @@ class Stats {
 	 */
 	public function totalUserJournal() {
 		try {
-			$number = (int) Database::prepare("SELECT COUNT(*) FROM `##news` WHERE user_id = ?")
+			$number = (int) Database::prepare("SELECT SQL_CACHE COUNT(*) FROM `##news` WHERE user_id = ?")
 				->execute(array(Auth::id()))
 				->fetchOne();
 		} catch (PDOException $ex) {
@@ -5961,7 +5981,7 @@ class Stats {
 	 */
 	public function totalGedcomNews() {
 		try {
-			$number = (int) Database::prepare("SELECT COUNT(*) FROM `##news` WHERE gedcom_id = ?")
+			$number = (int) Database::prepare("SELECT SQL_CACHE COUNT(*) FROM `##news` WHERE gedcom_id = ?")
 				->execute(array($this->tree->getTreeId()))
 				->fetchOne();
 		} catch (PDOException $ex) {

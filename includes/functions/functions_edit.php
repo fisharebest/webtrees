@@ -491,11 +491,6 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 		echo "<td class=\"descriptionbox wrap width25\">";
 	}
 
-
-	if (WT_DEBUG) {
-		echo $element_name, "<br>";
-	}
-
 	// tag name
 	if ($label) {
 		echo $label;
@@ -586,9 +581,6 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 
 	// value
 	echo "<td class=\"optionbox wrap\">";
-	if (WT_DEBUG) {
-		echo $tag, "<br>";
-	}
 
 	// retrieve linked NOTE
 	if ($fact == "NOTE" && $islink) {
@@ -768,7 +760,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 			}
 			$a = strtolower($key);
 			$b = strtolower($value);
-			if (@strpos($a, $b) !== false || @strpos($b, $a) !== false) {
+			if ($b !== '' && strpos($a, $b) !== false || strpos($b, $a) !== false) {
 				echo 'selected';
 			}
 			echo '>', WT_Gedcom_Tag::getLabel('MARR_' . strtoupper($key)), '</option>';

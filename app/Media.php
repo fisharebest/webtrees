@@ -170,58 +170,67 @@ class Media extends GedcomRecord {
 				return $file;
 			}
 			// Try to create a thumbnail automatically
-			$imgsize = getimagesize($main_file);
-			if ($imgsize[0] && $imgsize[1]) {
+
+			try {
+				$imgsize = getimagesize($main_file);
 				// Image small enough to be its own thumbnail?
 				if ($imgsize[0] < $THUMBNAIL_WIDTH) {
-					Log::addMediaLog('Thumbnail created for ' . $main_file . ' (copy of main image)');
-					@copy($main_file, $file);
+					try {
+						copy($main_file, $file);
+						Log::addMediaLog('Thumbnail created for ' . $main_file . ' (copy of main image)');
+					} catch (\ErrorException $ex) {
+						Log::addMediaLog('Thumbnail could not be created for ' . $main_file . ' (copy of main image)');
+					}
 				} else {
 					if (hasMemoryForImage($main_file)) {
-						switch ($imgsize['mime']) {
-						case 'image/png':
-							$main_image = @imagecreatefrompng($main_file);
-							break;
-						case 'image/gif':
-							$main_image = @imagecreatefromgif($main_file);
-							break;
-						case 'image/jpeg':
-							$main_image = @imagecreatefromjpeg($main_file);
-							break;
-						default:
-							return $file; // Nothing else we can do :-(
-						}
-						if ($main_image) {
-							// How big should the thumbnail be?
-							$width = $THUMBNAIL_WIDTH;
-							$height = round($imgsize[1] * ($width / $imgsize[0]));
-							$thumb_image = @imagecreatetruecolor($width, $height);
-							// Create a transparent background, instead of the default black one
-							@imagesavealpha($thumb_image, true);
-							@imagefill($thumb_image, 0, 0, imagecolorallocatealpha($thumb_image, 0, 0, 0, 127));
-							// Shrink the image
-							@imagecopyresampled($thumb_image, $main_image, 0, 0, 0, 0, $width, $height, $imgsize[0], $imgsize[1]);
+						try {
 							switch ($imgsize['mime']) {
 							case 'image/png':
-								@imagepng($thumb_image, $file);
+								$main_image = imagecreatefrompng($main_file);
 								break;
 							case 'image/gif':
-								@imagegif($thumb_image, $file);
+								$main_image = imagecreatefromgif($main_file);
 								break;
 							case 'image/jpeg':
-								@imagejpeg($thumb_image, $file);
+								$main_image = imagecreatefromjpeg($main_file);
 								break;
+							default:
+								return $file; // Nothing else we can do :-(
 							}
-							@imagedestroy($main_image);
-							@imagedestroy($thumb_image);
-							Log::addMediaLog('Thumbnail created for ' . $main_file);
-						} else {
+							if ($main_image) {
+								// How big should the thumbnail be?
+								$width       = $THUMBNAIL_WIDTH;
+								$height      = round($imgsize[1] * ($width / $imgsize[0]));
+								$thumb_image = imagecreatetruecolor($width, $height);
+								// Create a transparent background, instead of the default black one
+								imagesavealpha($thumb_image, true);
+								imagefill($thumb_image, 0, 0, imagecolorallocatealpha($thumb_image, 0, 0, 0, 127));
+								// Shrink the image
+								imagecopyresampled($thumb_image, $main_image, 0, 0, 0, 0, $width, $height, $imgsize[0], $imgsize[1]);
+								switch ($imgsize['mime']) {
+								case 'image/png':
+									imagepng($thumb_image, $file);
+									break;
+								case 'image/gif':
+									imagegif($thumb_image, $file);
+									break;
+								case 'image/jpeg':
+									imagejpeg($thumb_image, $file);
+									break;
+								}
+								imagedestroy($main_image);
+								imagedestroy($thumb_image);
+								Log::addMediaLog('Thumbnail created for ' . $main_file);
+							}
+						} catch (\ErrorException $ex) {
 							Log::addMediaLog('Failed to create thumbnail for ' . $main_file);
 						}
 					} else {
 						Log::addMediaLog('Not enough memory to create thumbnail for ' . $main_file);
 					}
 				}
+			} catch (\ErrorException $ex) {
+				// Not an image, or not a valid image?
 			}
 
 			return $file;
@@ -236,7 +245,7 @@ class Media extends GedcomRecord {
 	 * @return boolean
 	 */
 	public function fileExists($which = 'main') {
-		return @file_exists($this->getServerFilename($which));
+		return file_exists($this->getServerFilename($which));
 	}
 
 	/**
@@ -256,11 +265,10 @@ class Media extends GedcomRecord {
 	 */
 	public function getFilesize($which = 'main') {
 		$size = $this->getFilesizeraw($which);
-		if ($size) {
-			$size = (int) (($size + 1023) / 1024);
-		} // add some bytes to be sure we never return “0 KB”
-		return /* I18N: size of file in KB */
-			I18N::translate('%s KB', I18N::number($size));
+		// Round up to the nearest KB.
+		$size = (int) (($size + 1023) / 1024);
+
+		return /* I18N: size of file in KB */ I18N::translate('%s KB', I18N::number($size));
 	}
 
 	/**
@@ -271,11 +279,11 @@ class Media extends GedcomRecord {
 	 * @return integer
 	 */
 	public function getFilesizeraw($which = 'main') {
-		if ($this->fileExists($which)) {
-			return @filesize($this->getServerFilename($which));
+		try {
+			return filesize($this->getServerFilename($which));
+		} catch (\ErrorException $ex) {
+			return 0;
 		}
-
-		return 0;
 	}
 
 	/**
@@ -286,11 +294,11 @@ class Media extends GedcomRecord {
 	 * @return integer
 	 */
 	public function getFiletime($which = 'main') {
-		if ($this->fileExists($which)) {
-			return @filemtime($this->getServerFilename($which));
+		try {
+			return filemtime($this->getServerFilename($which));
+		} catch (\ErrorException $ex) {
+			return 0;
 		}
-
-		return 0;
 	}
 
 	/**
@@ -357,24 +365,30 @@ class Media extends GedcomRecord {
 		}
 		$imgsize = array();
 		if ($this->fileExists($which)) {
-			$imgsize = @getimagesize($this->getServerFilename($which)); // [0]=width [1]=height [2]=filetype ['mime']=mimetype
-			if (is_array($imgsize) && !empty($imgsize['0'])) {
-				// this is an image
-				$imgsize[0] = $imgsize[0] + 0;
-				$imgsize[1] = $imgsize[1] + 0;
-				$imgsize['adjW'] = $imgsize[0] + $addWidth; // adjusted width
-				$imgsize['adjH'] = $imgsize[1] + $addHeight; // adjusted height
-				$imageTypes = array('', 'GIF', 'JPG', 'PNG', 'SWF', 'PSD', 'BMP', 'TIFF', 'TIFF', 'JPC', 'JP2', 'JPX', 'JB2', 'SWC', 'IFF', 'WBMP', 'XBM');
-				$imgsize['ext'] = $imageTypes[0 + $imgsize[2]];
-				// this is for display purposes, always show non-adjusted info
-				$imgsize['WxH'] =
-					/* I18N: image dimensions, width × height */
-					I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1']));
-				$imgsize['imgWH'] = ' width="' . $imgsize['adjW'] . '" height="' . $imgsize['adjH'] . '" ';
-				if (($which == 'thumb') && ($imgsize['0'] > $THUMBNAIL_WIDTH)) {
-					// don’t let large images break the dislay
-					$imgsize['imgWH'] = ' width="' . $THUMBNAIL_WIDTH . '" ';
+
+			try {
+				$imgsize = getimagesize($this->getServerFilename($which));
+				if (is_array($imgsize) && !empty($imgsize['0'])) {
+					// this is an image
+					$imgsize[0]      = $imgsize[0] + 0;
+					$imgsize[1]      = $imgsize[1] + 0;
+					$imgsize['adjW'] = $imgsize[0] + $addWidth; // adjusted width
+					$imgsize['adjH'] = $imgsize[1] + $addHeight; // adjusted height
+					$imageTypes      = array('', 'GIF', 'JPG', 'PNG', 'SWF', 'PSD', 'BMP', 'TIFF', 'TIFF', 'JPC', 'JP2', 'JPX', 'JB2', 'SWC', 'IFF', 'WBMP', 'XBM');
+					$imgsize['ext']  = $imageTypes[0 + $imgsize[2]];
+					// this is for display purposes, always show non-adjusted info
+					$imgsize['WxH']   =
+						/* I18N: image dimensions, width × height */
+						I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1']));
+					$imgsize['imgWH'] = ' width="' . $imgsize['adjW'] . '" height="' . $imgsize['adjH'] . '" ';
+					if (($which == 'thumb') && ($imgsize['0'] > $THUMBNAIL_WIDTH)) {
+						// don’t let large images break the dislay
+						$imgsize['imgWH'] = ' width="' . $THUMBNAIL_WIDTH . '" ';
+					}
 				}
+			} catch (\ErrorException $ex) {
+				// Not an image, or not a valid image?
+				$imgsize = false;
 			}
 		}
 
@@ -398,8 +412,7 @@ class Media extends GedcomRecord {
 			// this is not an image, OR the file doesn’t exist OR it is a url
 			// set file type equal to the file extension - can’t use parse_url because this may not be a full url
 			$exp = explode('?', $this->file);
-			$pathinfo = pathinfo($exp[0]);
-			$imgsize['ext'] = @strtoupper($pathinfo['extension']);
+			$imgsize['ext'] = strtoupper(pathinfo($exp[0], PATHINFO_EXTENSION));
 			// all mimetypes we wish to serve with the media firewall must be added to this array.
 			$mime = array(
 				'DOC' => 'application/msword',

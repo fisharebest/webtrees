@@ -36,7 +36,6 @@ $download_url_html   = '<b dir="auto"><a href="' . Filter::escapeHtml($download_
 
 // Show a friendly message while the site is being upgraded
 $lock_file           = __DIR__ . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'offline.txt';
-$lock_file_html      = '<span dir="ltr">' . Filter::escapeHtml($lock_file) . '</span>';
 $lock_file_text      = I18N::translate('This website is being upgraded.  Try again in a few minutes.') . PHP_EOL . format_timestamp(WT_TIMESTAMP) . I18N::translate('UTC');
 
 // Success/failure indicators
@@ -277,15 +276,21 @@ echo '</li>';
 // Make a backup of genealogy data
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<li>', /* I18N: The system is about to [...] */ I18N::translate('Export all family trees to GEDCOM files…');
+echo '<li>', /* I18N: The system is about to [...] */ I18N::translate('Export all the family trees to GEDCOM files…');
 
 foreach (Tree::getAll() as $tree) {
 	reset_timeout();
 	$filename = WT_DATA_DIR . $tree->getName() . date('-Y-m-d') . '.ged';
-	if ($tree->exportGedcom($filename)) {
-		echo '<br>', I18N::translate('Family tree exported to %s.', '<span dir="ltr">' . $filename . '</span>'), $icon_success;
-	} else {
-		echo '<br>', I18N::translate('Unable to create %s.  Check the permissions.', '<span dir="ltr">' . $filename . '</span>'), $icon_failure;
+
+	try {
+		// To avoid partial trees on timeout/diskspace/etc, write to a temporary file first
+		$stream = fopen($filename . '.tmp', 'w');
+		$tree->exportGedcom($stream);
+		fclose($stream);
+		rename($filename . '.tmp', $filename);
+		echo '<br>', I18N::translate('The family tree has been exported to %s.', Html::filename($filename)), $icon_success;
+	} catch (\ErrorException $ex) {
+		echo '<br>', I18N::translate('The file %s could not be created.', Html::filename($filename)), $icon_failure;
 	}
 }
 
@@ -295,7 +300,7 @@ echo '</li>';
 // Download a .ZIP file containing the new code
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<li>', /* I18N: The system is about to [...]; %s is a URL. */ I18N::translate('Download %s…', $download_url_html);
+echo '<li>', /* I18N: The system is about to [...]; %s is a URL. */ I18N::translate('Download %s…', Html::filename($download_url_html));
 
 $zip_file   = WT_DATA_DIR . basename($download_url);
 $zip_dir    = WT_DATA_DIR . basename($download_url, '.zip');
@@ -325,7 +330,7 @@ echo '</li>';
 // file is valid, etc.
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<li>', /* I18N: The system is about to [...]; %s is a .ZIP file. */ I18N::translate('Unzip %s to a temporary folder…', basename($download_url));
+echo '<li>', /* I18N: The system is about to [...]; %s is a .ZIP file. */ I18N::translate('Unzip %s to a temporary folder…', Html::filename(basename($download_url)));
 
 File::delete($zip_dir);
 File::mkdir($zip_dir);
@@ -387,12 +392,12 @@ $iterator->setFlags(\RecursiveDirectoryIterator::SKIP_DOTS);
 foreach (new \RecursiveIteratorIterator($iterator) as $file) {
 	$file = WT_ROOT . substr($file, strlen($zip_dir) + 1);
 	if (file_exists($file) && (!is_readable($file) || !is_writable($file))) {
-		echo '<br>', I18N::translate('The file %s could not be updated.', '<span dir="ltr">' . $file . '</span>'), $icon_failure;
+		echo '<br>', I18N::translate('The file %s could not be updated.', Html::filename($file)), $icon_failure;
 		echo '</li></ul>';
 		echo '<p class="error">', I18N::translate('To complete the upgrade, you should install the files manually.'), '</p>';
-		echo '<p>', I18N::translate('The new files are currently located in the folder %s.', '<b dir="ltr">' . $zip_dir . DIRECTORY_SEPARATOR . '</b>'), '</p>';
-		echo '<p>', I18N::translate('Copy these files to the folder %s, replacing any that have the same name.', '<b dir="ltr">' . WT_ROOT . '</b>'), '</p>';
-		echo '<p>', I18N::translate('To prevent visitors from accessing the website while you are in the middle of copying files, you can temporarily create a file %s on the server.  If it contains a message, it will be displayed to visitors.', '<b>' . $lock_file_html . '</b>'), '</p>';
+		echo '<p>', I18N::translate('The new files are currently located in the folder %s.', Html::filename($zip_dir)), '</p>';
+		echo '<p>', I18N::translate('Copy these files to the folder %s, replacing any that have the same name.', Html::filename(WT_ROOT)), '</p>';
+		echo '<p>', I18N::translate('To prevent visitors from accessing the website while you are in the middle of copying files, you can temporarily create a file %s on the server.  If it contains a message, it will be displayed to visitors.', Html::filename($lock_file)), '</p>';
 
 		return;
 	}
@@ -406,13 +411,13 @@ echo '</li>';
 // This is it - take the site offline first
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<li>', I18N::translate('Place the website offline, by creating the file %s…', $lock_file_html);
+echo '<li>', I18N::translate('Place the website offline, by creating the file %s…', $lock_file);
 
-@file_put_contents($lock_file, $lock_file_text);
-if (@file_get_contents($lock_file) != $lock_file_text) {
-	echo '<br>', I18N::translate('The file %s could not be created.', '<span dir="ltr">' . $lock_file . '</span>'), $icon_failure;
-} else {
-	echo '<br>', I18N::translate('The file %s has been created.', '<span dir="ltr">' . $lock_file . '</span>'), $icon_success;
+try {
+	file_put_contents($lock_file, $lock_file_text);
+	echo '<br>', I18N::translate('The file %s has been created.', Html::filename($lock_file)), $icon_success;
+} catch (\ErrorException $ex) {
+	echo '<br>', I18N::translate('The file %s could not be created.', Html::filename($lock_file)), $icon_failure;
 }
 
 echo '</li>';
@@ -425,8 +430,12 @@ echo '<li>', /* I18N: The system is about to [...] */ I18N::translate('Copy file
 
 // The wiki tells people how to customize webtrees by modifying various files.
 // Create a backup of these, just in case the user forgot!
-@copy('App/Gedcom/Code/Rela.php', WT_DATA_DIR . 'Rela' . date('-Y-m-d') . '.php');
-@copy('App/Gedcom/Tag.php', WT_DATA_DIR . 'Tag' . date('-Y-m-d') . '.php');
+try {
+	copy('App/Gedcom/Code/Rela.php', WT_DATA_DIR . 'Rela' . date('-Y-m-d') . '.php');
+	copy('App/Gedcom/Tag.php', WT_DATA_DIR . 'Tag' . date('-Y-m-d') . '.php');
+} catch (\ErrorException $ex) {
+	// No problem if we cannot do this.
+}
 
 reset_timeout();
 $start_time = microtime(true);
@@ -441,7 +450,7 @@ if (is_array($res)) {
 	foreach ($res as $result) {
 		// Note that most of the folders will already exist, so it is not an error if we cannot create them
 		if ($result['status'] != 'ok' && !substr($result['filename'], -1) == '/') {
-			echo '<br>', I18N::translate('The file %s could not be created.', '<span dir="ltr">' . $result['filename'] . '</span>'), $icon_failure;
+			echo '<br>', I18N::translate('The file %s could not be created.', Html::filename($result['filename'])), $icon_failure;
 		}
 	}
 	echo '<br>', /* I18N: [...] from the .ZIP file, %2$s is a (fractional) number of seconds */ I18N::plural('%1$s file was extracted in %2$s seconds.', '%1$s files were extracted in %2$s seconds.', count($res), count($res), I18N::number($end_time - $start_time, 2)), $icon_success;
@@ -458,12 +467,12 @@ echo '</li>';
 // All done - put the site back online
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<li>', I18N::translate('Place the website online, by deleting the file %s…', $lock_file_html);
+echo '<li>', I18N::translate('Place the website online, by deleting the file %s…', Html::filename($lock_file));
 
 if (File::delete($lock_file)) {
-	echo '<br>', I18N::translate('The file %s has been deleted.', '<span dir="ltr">' . $lock_file . '</span>'), $icon_success;
+	echo '<br>', I18N::translate('The file %s has been deleted.', Html::filename($lock_file)), $icon_success;
 } else {
-	echo '<br>', I18N::translate('The file %s could not be deleted.', '<span dir="ltr">' . $lock_file . '</span>'), $icon_failure;
+	echo '<br>', I18N::translate('The file %s could not be deleted.', Html::filename($lock_file)), $icon_failure;
 }
 
 echo '</li>';
@@ -476,15 +485,15 @@ echo '<li>', /* I18N: The system is about to [...] */ I18N::translate('Delete te
 
 reset_timeout();
 if (File::delete($zip_dir)) {
-	echo '<br>', I18N::translate('The folder %s has been deleted.', '<span dir="auto">' . $zip_dir . '</span>'), $icon_success;
+	echo '<br>', I18N::translate('The folder %s has been deleted.', Html::filename($zip_dir)), $icon_success;
 } else {
-	echo '<br>', I18N::translate('The folder %s could not be deleted.', '<span dir="auto">' . $zip_dir . '</span>'), $icon_failure;
+	echo '<br>', I18N::translate('The folder %s could not be deleted.', Html::filename($zip_dir)), $icon_failure;
 }
 
 if (File::delete($zip_file)) {
-	echo '<br>', I18N::translate('The file %s has been deleted.', '<span dir="auto">' . $zip_file . '</span>'), $icon_success;
+	echo '<br>', I18N::translate('The file %s has been deleted.', Html::filename($zip_file)), $icon_success;
 } else {
-	echo '<br>', I18N::translate('The file %s could not be deleted.', '<span dir="auto">' . $zip_file . '</span>'), $icon_failure;
+	echo '<br>', I18N::translate('The file %s could not be deleted.', Html::filename($zip_file)), $icon_failure;
 }
 
 echo '</li>';

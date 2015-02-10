@@ -91,9 +91,9 @@ case 'create': // Save the information from the “showcreateform” action
 	// Make sure the media folder exists
 	if (!is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
 		if (File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
-			FlashMessages::addMessage(I18N::translate('The folder %s has been created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . '</span>'));
+			FlashMessages::addMessage(I18N::translate('The folder %s has been created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY)));
 		} else {
-			FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . '</span>'));
+			FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY)), 'danger');
 			break;
 		}
 	}
@@ -102,9 +102,9 @@ case 'create': // Save the information from the “showcreateform” action
 	if ($folderName && !is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
 		if (WT_USER_GEDCOM_ADMIN) {
 			if (File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
-				FlashMessages::addMessage(I18N::translate('The folder %s has been created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName . '</span>'));
+				FlashMessages::addMessage(I18N::translate('The folder %s has been created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)));
 			} else {
-				FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName . '</span>'));
+				FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)), 'danger');
 				break;
 			}
 		} else {
@@ -116,7 +116,7 @@ case 'create': // Save the information from the “showcreateform” action
 	// The media folder exists.  Now create a thumbnail folder to match it.
 	if (!is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName)) {
 		if (!File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName)) {
-			FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName . '</span>'));
+			FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName)), 'danger');
 			break;
 		}
 	}
@@ -252,9 +252,9 @@ case 'update': // Save the information from the “editmedia” action
 	// Make sure the media folder exists
 	if (!is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
 		if (File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY)) {
-			FlashMessages::addMessage(I18N::translate('The folder %s has been created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . '</span>'));
+			FlashMessages::addMessage(I18N::translate('The folder %s has been created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY)));
 		} else {
-			FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . '</span>'));
+			FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY)), 'danger');
 			break;
 		}
 	}
@@ -263,9 +263,9 @@ case 'update': // Save the information from the “editmedia” action
 	if ($folderName && !is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
 		if (WT_USER_GEDCOM_ADMIN) {
 			if (File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
-				FlashMessages::addMessage(I18N::translate('The folder %s has been created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName . '</span>'));
+				FlashMessages::addMessage(I18N::translate('The folder %s has been created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)));
 			} else {
-				FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName . '</span>'));
+				FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)), 'danger');
 				break;
 			}
 		} else {
@@ -277,7 +277,7 @@ case 'update': // Save the information from the “editmedia” action
 	// The media folder exists.  Now create a thumbnail folder to match it.
 	if (!is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName)) {
 		if (!File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName)) {
-			FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', '<span class="filename">' . WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName . '</span>'));
+			FlashMessages::addMessage(I18N::translate('The folder %s does not exist, and it could not be created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName)), 'danger');
 			break;
 		}
 	}
@@ -310,7 +310,7 @@ case 'update': // Save the information from the “editmedia” action
 
 	// Cannot rename local to external or vice-versa
 	if (isFileExternal($oldFilename) != isFileExternal($filename)) {
-		FlashMessages::addMessage(I18N::translate('The media file %1$s could not be renamed to %2$s.', '<span class="filename">' . $oldFilename . '</span>', '<span class="filename">' . $newFilename . '</span>'));
+		FlashMessages::addMessage(I18N::translate('The media file %1$s could not be renamed to %2$s.', Html::filename($oldFilename), Html::filename($newFilename)));
 		break;
 	}
 
@@ -325,7 +325,7 @@ case 'update': // Save the information from the “editmedia” action
 		$newServerThumb = $newmedia->getServerFilename('thumb');
 
 		// We could be either renaming an existing file, or updating a record (with no valid file) to point to a new file
-		if ($oldServerFile != $newServerFile) {
+		if ($oldServerFile !== $newServerFile) {
 			//-- check if the file is used in more than one gedcom
 			//-- do not allow it to be moved or renamed if it is
 			if (!$media->isExternal() && is_media_used_in_other_gedcom($media->getFilename(), WT_GED_ID)) {
@@ -333,30 +333,32 @@ case 'update': // Save the information from the “editmedia” action
 				break;
 			}
 
-			if (!file_exists($newServerFile) || @md5_file($oldServerFile) == md5_file($newServerFile)) {
-				if (@rename($oldServerFile, $newServerFile)) {
-					FlashMessages::addMessage(I18N::translate('The media file %1$s has been renamed to %2$s.', '<span class="filename">' . $oldFilename . '</span>', '<span class="filename">' . $newFilename . '</span>'));
-				} else {
-					FlashMessages::addMessage(I18N::translate('The media file %1$s could not be renamed to %2$s.', '<span class="filename">' . $oldFilename . '</span>', '<span class="filename">' . $newFilename . '</span>'));
+			if (!file_exists($newServerFile) || md5_file($oldServerFile) === md5_file($newServerFile)) {
+				try {
+					rename($oldServerFile, $newServerFile);
+					FlashMessages::addMessage(I18N::translate('The media file %1$s has been renamed to %2$s.', Html::filename($oldFilename), Html::filename($newFilename)));
+				} catch (\ErrorException $ex) {
+					FlashMessages::addMessage(I18N::translate('The media file %1$s could not be renamed to %2$s.', Html::filename($oldFilename), Html::filename($newFilename)));
 				}
 				$messages = true;
 			}
 			if (!file_exists($newServerFile)) {
-				FlashMessages::addMessage(I18N::translate('The media file %s does not exist.', '<span class="filename">' . $newFilename . '</span>'));
+				FlashMessages::addMessage(I18N::translate('The media file %s does not exist.', Html::filename($newFilename)));
 				$messages = true;
 			}
 		}
 		if ($oldServerThumb != $newServerThumb) {
-			if (!file_exists($newServerThumb) || @md5_file($oldServerFile) == md5_file($newServerThumb)) {
-				if (@rename($oldServerThumb, $newServerThumb)) {
-					FlashMessages::addMessage(I18N::translate('The thumbnail file %1$s has been renamed to %2$s.', '<span class="filename">' . $oldFilename . '</span>', '<span class="filename">' . $newFilename . '</span>'));
-				} else {
-					FlashMessages::addMessage(I18N::translate('The thumbnail file %1$s could not be renamed to %2$s.', '<span class="filename">' . $oldFilename . '</span>', '<span class="filename">' . $newFilename . '</span>'));
+			if (!file_exists($newServerThumb) || md5_file($oldServerFile) == md5_file($newServerThumb)) {
+				try {
+					rename($oldServerThumb, $newServerThumb);
+					FlashMessages::addMessage(I18N::translate('The thumbnail file %1$s has been renamed to %2$s.', Html::filename($oldFilename), Html::filename($newFilename)));
+				} catch (\ErrorException $ex) {
+					FlashMessages::addMessage(I18N::translate('The thumbnail file %1$s could not be renamed to %2$s.', Html::filename($oldFilename), Html::filename($newFilename)));
 				}
 				$messages = true;
 			}
 			if (!file_exists($newServerThumb)) {
-				FlashMessages::addMessage(I18N::translate('The thumbnail file %s does not exist.', '<span class="filename">' . $newFilename . '</span>'));
+				FlashMessages::addMessage(I18N::translate('The thumbnail file %s does not exist.', Html::filename($newFilename)));
 				$messages = true;
 			}
 		}

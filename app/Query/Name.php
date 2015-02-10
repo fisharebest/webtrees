@@ -263,15 +263,21 @@ class WT_Query_Name {
 		$sql =
 			"SELECT SQL_CACHE UPPER(LEFT(n_surn, 1)), COUNT(n_id)" .
 			" FROM `##name` " .
-			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "") .
-			" WHERE n_file={$ged_id} AND n_surn<>''" .
-			($marnm ? "" : " AND n_type!='_MARNM'");
+			($fams ? " JOIN `##link` ON n_id = l_from AND n_file = l_file AND l_type = 'FAMS' " : "") .
+			" WHERE n_file = :tree_id AND n_surn <> ''" .
+			($marnm ? "" : " AND n_type != '_MARNM'");
 
-		foreach (self::getAlphabetForLocale(WT_LOCALE) as $letter) {
-			$sql .= " AND n_surn NOT LIKE '" . $letter . "%' COLLATE " . I18N::$collation;
+		$args = array(
+			'tree_id' => $ged_id,
+		);
+
+		foreach (self::getAlphabetForLocale(WT_LOCALE) as $n => $letter) {
+			$sql .= " AND n_surn COLLATE :collate_" . $n . " NOT LIKE :letter_" . $n;
+			$args['collate_' . $n] = I18N::$collation;
+			$args['letter_' . $n] = $letter . '%';
 		}
-		$sql .= " GROUP BY LEFT(n_surn, 1) ORDER BY LEFT(n_surn, 1)='', LEFT(n_surn, 1)='@', LEFT(n_surn, 1)";
-		foreach (Database::prepare($sql)->fetchAssoc() as $alpha=>$count) {
+		$sql .= " GROUP BY LEFT(n_surn, 1) ORDER BY LEFT(n_surn, 1) = '', LEFT(n_surn, 1) = '@', LEFT(n_surn, 1)";
+		foreach (Database::prepare($sql)->execute($args)->fetchAssoc() as $alpha => $count) {
 			$alphas[$alpha] = $count;
 		}
 
@@ -279,10 +285,15 @@ class WT_Query_Name {
 		$sql =
 			"SELECT SQL_CACHE COUNT(n_id)" .
 			" FROM `##name` " .
-			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "") .
-			" WHERE n_file={$ged_id} AND n_surn=''" .
-			($marnm ? "" : " AND n_type!='_MARNM'");
-		$num_none = Database::prepare($sql)->fetchOne();
+			($fams ? " JOIN `##link` ON n_id = l_from AND n_file = l_file AND l_type = 'FAMS' " : "") .
+			" WHERE n_file = :tree_id AND n_surn = ''" .
+			($marnm ? "" : " AND n_type != '_MARNM'");
+
+		$args = array(
+			'tree_id' => $ged_id,
+		);
+
+		$num_none = Database::prepare($sql)->execute($args)->fetchOne();
 		if ($num_none) {
 			// Special code to indicate "no surname"
 			$alphas[','] = $num_none;
@@ -338,16 +349,22 @@ class WT_Query_Name {
 		$sql =
 			"SELECT SQL_CACHE UPPER(LEFT(n_givn, 1)), COUNT(DISTINCT n_id)" .
 			" FROM `##name` " .
-			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "") .
-			" WHERE n_file={$ged_id} " .
-			($marnm ? "" : " AND n_type!='_MARNM'");
+			($fams ? " JOIN `##link` ON (n_id = l_from AND n_file = l_file AND l_type = 'FAMS') " : "") .
+			" WHERE n_file = :tree_id" .
+			($marnm ? "" : " AND n_type != '_MARNM'");
+
+		$args = array(
+			'tree_id' => $ged_id,
+		);
 
 		if ($surn) {
-			$sql .= " AND n_surn=" . Database::quote($surn) . " COLLATE '" . I18N::$collation . "'";
-		} elseif ($salpha == ',') {
-			$sql .= " AND n_surn=''";
-		} elseif ($salpha == '@') {
-			$sql .= " AND n_surn='@N.N.'";
+			$sql .= " AND n_surn COLLATE :collate_1 = :surn";
+			$args['collate_1'] = I18N::$collation;
+			$args['surn'] = $surn;
+		} elseif ($salpha === ',') {
+			$sql .= " AND n_surn = ''";
+		} elseif ($salpha === '@') {
+			$sql .= " AND n_surn = '@N.N.'";
 		} elseif ($salpha) {
 			$sql .= " AND " . self::getInitialSql('n_surn', $salpha);
 		} else {
@@ -358,8 +375,9 @@ class WT_Query_Name {
 		foreach (self::getAlphabetForLocale(WT_LOCALE) as $letter) {
 			$sql .= " AND n_givn NOT LIKE '" . $letter . "%' COLLATE " . I18N::$collation;
 		}
-		$sql .= " GROUP BY LEFT(n_givn, 1) ORDER BY LEFT(n_givn, 1)='@', LEFT(n_givn, 1)='', LEFT(n_givn, 1)";
-		foreach (Database::prepare($sql)->fetchAssoc() as $alpha=>$count) {
+		$sql .= " GROUP BY LEFT(n_givn, 1) ORDER BY LEFT(n_givn, 1) = '@', LEFT(n_givn, 1) = '', LEFT(n_givn, 1)";
+
+		foreach (Database::prepare($sql)->execute($args)->fetchAssoc() as $alpha => $count) {
 			$alphas[$alpha] = $count;
 		}
 
@@ -381,30 +399,35 @@ class WT_Query_Name {
 		$sql =
 			"SELECT SQL_CACHE n2.n_surn, n1.n_surname, n1.n_id" .
 			" FROM `##name` n1 " .
-			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "") .
+			($fams ? " JOIN `##link` ON n_id = l_from AND n_file = l_file AND l_type = 'FAMS' " : "") .
 			" JOIN (SELECT n_surn, n_file FROM `##name`" .
-			" WHERE n_file={$ged_id}" .
-			($marnm ? "" : " AND n_type!='_MARNM'");
+			" WHERE n_file = :tree_id" .
+			($marnm ? "" : " AND n_type != '_MARNM'");
+
+		$args = array(
+			'tree_id' => $ged_id,
+		);
 
 		if ($surn) {
-			$sql .= " AND n_surn COLLATE '" . I18N::$collation . "' =" . Database::quote($surn);
-		} elseif ($salpha == ',') {
-			$sql .= " AND n_surn=''";
-		} elseif ($salpha == '@') {
-			$sql .= " AND n_surn='@N.N.'";
+			$sql .= " AND n_surn COLLATE :collate_1 = :surn";
+			$args['collate_1'] = I18N::$collation;
+			$args['surn'] = $surn;
+		} elseif ($salpha === ',') {
+			$sql .= " AND n_surn = ''";
+		} elseif ($salpha === '@') {
+			$sql .= " AND n_surn = '@N.N.'";
 		} elseif ($salpha) {
 			$sql .= " AND " . self::getInitialSql('n_surn', $salpha);
 		} else {
 			// All surnames
 			$sql .= " AND n_surn NOT IN ('', '@N.N.')";
 		}
-		$sql .= " GROUP BY n_surn COLLATE '" . I18N::$collation . "', n_file) n2 ON (n1.n_surn=n2.n_surn COLLATE '" . I18N::$collation . "' AND n1.n_file=n2.n_file)";
-		if (!$marnm) {
-			$sql .= " AND n_type!='_MARNM'";
-		}
+		$sql .= " GROUP BY n_surn COLLATE :collate_2, n_file) n2 ON (n1.n_surn=n2.n_surn COLLATE :collate_3 AND n1.n_file=n2.n_file)";
+		$args['collate_2'] = I18N::$collation;
+		$args['collate_3'] = I18N::$collation;
 
 		$list = array();
-		foreach (Database::prepare($sql)->fetchAll() as $row) {
+		foreach (Database::prepare($sql)->execute($args)->fetchAll() as $row) {
 			$list[I18N::strtoupper($row->n_surn)][$row->n_surname][$row->n_id] = true;
 		}
 		return $list;
@@ -429,17 +452,23 @@ class WT_Query_Name {
 		$sql =
 			"SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom, n_full " .
 			"FROM `##individuals` " .
-			"JOIN `##name` ON (n_id=i_id AND n_file=i_file) " .
-			($fams ? "JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "") .
-			"WHERE n_file={$ged_id} " .
-			($marnm ? "" : "AND n_type!='_MARNM'");
+			"JOIN `##name` ON n_id = i_id AND n_file = i_file " .
+			($fams ? "JOIN `##link` ON n_id = l_from AND n_file = l_file AND l_type = 'FAMS' " : "") .
+			"WHERE n_file = :tree_id " .
+			($marnm ? "" : "AND n_type != '_MARNM'");
+
+		$args = array(
+			'tree_id' => $ged_id,
+		);
 
 		if ($surn) {
-			$sql .= " AND n_surn COLLATE '" . I18N::$collation . "'=" . Database::quote($surn);
-		} elseif ($salpha == ',') {
-			$sql .= " AND n_surn=''";
-		} elseif ($salpha == '@') {
-			$sql .= " AND n_surn='@N.N.'";
+			$sql .= " AND n_surn COLLATE :collate_1 = :surn";
+			$args['collate_1'] = I18N::$collation;
+			$args['surn'] = $surn;
+		} elseif ($salpha === ',') {
+			$sql .= " AND n_surn = ''";
+		} elseif ($salpha === '@') {
+			$sql .= " AND n_surn = '@N.N.'";
 		} elseif ($salpha) {
 			$sql .= " AND " . self::getInitialSql('n_surn', $salpha);
 		} else {
@@ -450,10 +479,12 @@ class WT_Query_Name {
 			$sql .= " AND " . self::getInitialSql('n_givn', $galpha);
 		}
 
-		$sql .= " ORDER BY CASE n_surn WHEN '@N.N.' THEN 1 ELSE 0 END, n_surn COLLATE '" . I18N::$collation . "', CASE n_givn WHEN '@P.N.' THEN 1 ELSE 0 END, n_givn COLLATE '" . I18N::$collation . "'";
+		$sql .= " ORDER BY CASE n_surn WHEN '@N.N.' THEN 1 ELSE 0 END, n_surn COLLATE :collate_2, CASE n_givn WHEN '@P.N.' THEN 1 ELSE 0 END, n_givn COLLATE :collate_3";
+		$args['collate_2'] = I18N::$collation;
+		$args['collate_3'] = I18N::$collation;
 
 		$list = array();
-		$rows = Database::prepare($sql)->fetchAll();
+		$rows = Database::prepare($sql)->execute($args)->fetchAll();
 		foreach ($rows as $row) {
 			$person = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 			// The name from the database may be private - check the filtered list...

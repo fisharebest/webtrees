@@ -1,7 +1,7 @@
 /*! jQuery UI - v1.11.2 - 2014-12-10
 * http://jqueryui.com
 * Includes: core.css, draggable.css, resizable.css, selectable.css, sortable.css, accordion.css, autocomplete.css, button.css, datepicker.css, dialog.css, menu.css, progressbar.css, selectmenu.css, slider.css, spinner.css, tabs.css, tooltip.css, theme.css
-* To view and modify this theme, visit http://jqueryui.com/themeroller/
+* To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=inherit&fwDefault=normal&fsDefault=1.0em&cornerRadius=4px&bgColorHeader=%23fff&bgTextureHeader=flat&bgImgOpacityHeader=100&borderColorHeader=%23fff&fcHeader=%23555&iconColorHeader=%23369&bgColorContent=%23fff&bgTextureContent=flat&bgImgOpacityContent=100&borderColorContent=%23fff&fcContent=%23555&iconColorContent=%23555&bgColorDefault=%23ddd&bgTextureDefault=flat&bgImgOpacityDefault=100&borderColorDefault=%23ddd&fcDefault=%23555&iconColorDefault=%23555&bgColorHover=%23eee&bgTextureHover=flat&bgImgOpacityHover=100&borderColorHover=%23eee&fcHover=%23369&iconColorHover=%23369&bgColorActive=%23eee&bgTextureActive=flat&bgImgOpacityActive=100&borderColorActive=%23eee&fcActive=%23555&iconColorActive=%23fff&bgColorHighlight=%23fbf5d0&bgTextureHighlight=flat&bgImgOpacityHighlight=100&borderColorHighlight=%23f9dd34&fcHighlight=%23555&iconColorHighlight=%23369&bgColorError=%23fef1ec&bgTextureError=flat&bgImgOpacityError=100&borderColorError=%23cd0a0a&fcError=%23cd0a0a&iconColorError=%23cd0a0a&bgColorOverlay=%23444444&bgTextureOverlay=diagonals_thick&bgImgOpacityOverlay=15&opacityOverlay=30&bgColorShadow=%23aaaaaa&bgTextureShadow=diagonals_small&bgImgOpacityShadow=0&opacityShadow=30&thicknessShadow=0px&offsetTopShadow=4px&offsetLeftShadow=4px&cornerRadiusShadow=4px&ctl=themeroller
 * Copyright 2014 jQuery Foundation and other contributors; Licensed MIT */
 
 /* Layout helpers
@@ -812,7 +812,7 @@ button.ui-button::-moz-focus-inner {
 .ui-tabs .ui-tabs-panel {
 	display: block;
 	border-width: 0;
-	padding: 1em .4em;
+	padding: 1em 1.4em;
 	background: none;
 }
 .ui-tooltip {
@@ -831,7 +831,7 @@ body .ui-tooltip {
 ----------------------------------*/
 .ui-widget {
 	font-family: inherit;
-	font-size: 1.1em;
+	font-size: 1.0em;
 }
 .ui-widget .ui-widget {
 	font-size: 1em;
@@ -844,21 +844,21 @@ body .ui-tooltip {
 	font-size: 1em;
 }
 .ui-widget-content {
-	border: 1px solid #aaaaaa;
-	background: #ffffff url("images/ui-bg_flat_75_ffffff_40x100.png") 50% 50% repeat-x;
-	color: #222222;
+	border: 1px solid #aaa;
+	background: #fff url("images/ui-bg_flat_75_ffffff_40x100.png") 50% 50% repeat-x;
+	color: #222;
 }
 .ui-widget-content a {
-	color: #222222;
+	color: #222;
 }
 .ui-widget-header {
-	border: 1px solid #aaaaaa;
-	background: #cccccc url("images/ui-bg_highlight-soft_75_cccccc_1x100.png") 50% 50% repeat-x;
-	color: #222222;
+	border: 1px solid #aaa;
+	background: #fff url("images/ui-bg_flat_75_ffffff_40x100.png") 50% 50% repeat-x;
+	color: #222;
 	font-weight: bold;
 }
 .ui-widget-header a {
-	color: #222222;
+	color: #222;
 }
 
 /* Interaction states
@@ -869,12 +869,12 @@ body .ui-tooltip {
 	border: 1px solid #d3d3d3;
 	background: #e6e6e6 url("images/ui-bg_glass_75_e6e6e6_1x400.png") 50% 50% repeat-x;
 	font-weight: normal;
-	color: #555555;
+	color: #555;
 }
 .ui-state-default a,
 .ui-state-default a:link,
 .ui-state-default a:visited {
-	color: #555555;
+	color: #555;
 	text-decoration: none;
 }
 .ui-state-hover,
@@ -960,8 +960,6 @@ body .ui-tooltip {
 .ui-state-disabled,
 .ui-widget-content .ui-state-disabled,
 .ui-widget-header .ui-state-disabled {
-	opacity: .35;
-	filter:Alpha(Opacity=35); /* support: IE8 */
 	background-image: none;
 }
 .ui-state-disabled .ui-icon {

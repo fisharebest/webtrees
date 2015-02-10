@@ -201,7 +201,7 @@ function search_indis($query, $geds, $match) {
 	foreach ($rows as $row) {
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
 		$record = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
-		// Ignore non-genealogical data
+		// Ignore non-genealogy data
 		$gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|REFN|RESN) .*/', '', $record->getGedcom());
 		// Ignore links and tags
 		$gedrec = preg_replace('/\n\d ' . WT_REGEX_TAG . '( @' . WT_REGEX_XREF . '@)?/', '', $gedrec);
@@ -452,7 +452,7 @@ function search_fams($query, $geds, $match) {
 	foreach ($rows as $row) {
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
 		$record = Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
-		// Ignore non-genealogical data
+		// Ignore non-genealogy data
 		$gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|REFN|RESN) .*/', '', $record->getGedcom());
 		// Ignore links and tags
 		$gedrec = preg_replace('/\n\d ' . WT_REGEX_TAG . '( @' . WT_REGEX_XREF . '@)?/', '', $gedrec);
@@ -544,7 +544,7 @@ function search_sources($query, $geds, $match) {
 	foreach ($rows as $row) {
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
 		$record = Source::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
-		// Ignore non-genealogical data
+		// Ignore non-genealogy data
 		$gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|REFN|RESN) .*/', '', $record->getGedcom());
 		// Ignore links and tags
 		$gedrec = preg_replace('/\n\d ' . WT_REGEX_TAG . '( @' . WT_REGEX_XREF . '@)?/', '', $gedrec);
@@ -598,7 +598,7 @@ function search_notes($query, $geds, $match) {
 	foreach ($rows as $row) {
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
 		$record = Note::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
-		// Ignore non-genealogical data
+		// Ignore non-genealogy data
 		$gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|REFN|RESN) .*/', '', $record->getGedcom());
 		// Ignore links and tags
 		$gedrec = preg_replace('/\n\d ' . WT_REGEX_TAG . '( @' . WT_REGEX_XREF . '@)?/', '', $gedrec);
@@ -653,7 +653,7 @@ function search_repos($query, $geds, $match) {
 	foreach ($rows as $row) {
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
 		$record = Repository::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
-		// Ignore non-genealogical data
+		// Ignore non-genealogy data
 		$gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|REFN|RESN) .*/', '', $record->getGedcom());
 		// Ignore links and tags
 		$gedrec = preg_replace('/\n\d ' . WT_REGEX_TAG . '( @' . WT_REGEX_XREF . '@)?/', '', $gedrec);

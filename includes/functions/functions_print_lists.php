@@ -31,7 +31,6 @@ function format_indi_table($datalist, $option = '') {
 	global $SEARCH_SPIDER, $controller, $WT_TREE;
 
 	$table_id = 'table-indi-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
-	$SHOW_EST_LIST_DATES = $WT_TREE->getPreference('SHOW_EST_LIST_DATES');
 
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
@@ -352,7 +351,7 @@ function format_indi_table($datalist, $option = '') {
 			}
 		} else {
 			$birth_date = $person->getEstimatedBirthDate();
-			if ($SHOW_EST_LIST_DATES) {
+			if ($person->getTree()->getPreference('SHOW_EST_LIST_DATES')) {
 				$html .= $birth_date->display(!$SEARCH_SPIDER);
 			} else {
 				$html .= '&nbsp;';
@@ -398,7 +397,7 @@ function format_indi_table($datalist, $option = '') {
 			$death_date = $person->getEstimatedDeathDate();
 			// Estimated death dates are a fixed number of years after the birth date.
 			// Don't show estimates in the future.
-			if ($SHOW_EST_LIST_DATES && $death_date->MinJD() < WT_CLIENT_JD) {
+			if ($person->getTree()->getPreference('SHOW_EST_LIST_DATES') && $death_date->MinJD() < WT_CLIENT_JD) {
 				$html .= $death_date->display(!$SEARCH_SPIDER);
 			} elseif ($person->isDead()) {
 				$html .= I18N::translate('yes');
@@ -435,21 +434,10 @@ function format_indi_table($datalist, $option = '') {
 		}
 		$html .= '</td>';
 		//-- Last change
-		if ($WT_TREE->getPreference('SHOW_LAST_CHANGE')) {
-			$html .= '<td>' . $person->lastChangeTimestamp() . '</td>';
-		} else {
-			$html .= '<td></td>';
-		}
-		//-- Last change hidden sort column
-		if ($WT_TREE->getPreference('SHOW_LAST_CHANGE')) {
-			$html .= '<td>' . $person->lastChangeTimestamp(true) . '</td>';
-		} else {
-			$html .= '<td></td>';
-		}
+		$html .= '<td>' . $person->lastChangeTimestamp() . '</td>';
+		$html .= '<td>' . $person->lastChangeTimestamp(true) . '</td>';
 		//-- Sorting by gender
-		$html .= '<td>';
-		$html .= $person->getSex();
-		$html .= '</td>';
+		$html .= '<td>' . $person->getSex() . '</td>';
 		//-- Filtering by birth date
 		$html .= '<td>';
 		if (!$person->canShow() || Date::Compare($birth_date, $d100y) > 0) {
@@ -744,8 +732,8 @@ function format_fam_table($datalist) {
 						<th>' . WT_Gedcom_Tag::getLabel('PLAC') . '</th>
 						<th><i class="icon-children" title="' . I18N::translate('Children') . '"></i></th>
 					<th>NCHI</th>
-					<th' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? '' : '') . '>' . WT_Gedcom_Tag::getLabel('CHAN') . '</th>
-					<th' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? '' : '') . '>CHAN</th>
+					<th>' . WT_Gedcom_Tag::getLabel('CHAN') . '</th>
+					<th>CHAN</th>
 					<th>MARR</th>
 					<th>DEAT</th>
 					<th>TREE</th>
@@ -931,17 +919,8 @@ function format_fam_table($datalist) {
 		$nchi = $family->getNumberOfChildren();
 		$html .= '<td>' . I18N::number($nchi) . '</td><td>' . $nchi . '</td>';
 		//-- Last change
-		if ($WT_TREE->getPreference('SHOW_LAST_CHANGE')) {
-			$html .= '<td>' . $family->LastChangeTimestamp() . '</td>';
-		} else {
-			$html .= '<td></td>';
-		}
-		//-- Last change hidden sort column
-		if ($WT_TREE->getPreference('SHOW_LAST_CHANGE')) {
-			$html .= '<td>' . $family->LastChangeTimestamp(true) . '</td>';
-		} else {
-			$html .= '<td></td>';
-		}
+		$html .= '<td>' . $family->LastChangeTimestamp() . '</td>';
+		$html .= '<td>' . $family->LastChangeTimestamp(true) . '</td>';
 		//-- Sorting by marriage date
 		$html .= '<td>';
 		if (!$family->canShow() || !$mdate->isOK()) {

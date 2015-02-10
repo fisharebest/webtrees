@@ -77,8 +77,8 @@ if (!defined('PASSWORD_BCRYPT') && crypt("password", $hash) !== $hash) {
 	}
 
 	/**
-	 * @param string  $password
-	 * @param integer $hash
+	 * @param string $password
+	 * @param string $hash
 	 *
 	 * @return boolean
 	 */

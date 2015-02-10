@@ -21,7 +21,12 @@ use PDOException;
 define('WT_SCRIPT_NAME', 'import.php');
 require './includes/session.php';
 
-if (!WT_USER_GEDCOM_ADMIN) {
+// Don't use ged=XX as we want to be able to run without changing the current gedcom.
+// This will let us load several gedcoms together, or to edit one while loading another.
+$gedcom_id = Filter::getInteger('gedcom_id');
+$tree = Tree::findById($gedcom_id);
+
+if (!$tree || !Auth::isManager($tree, Auth::user())) {
 	http_response_code(403);
 
 	return;
@@ -30,10 +35,6 @@ if (!WT_USER_GEDCOM_ADMIN) {
 $controller = new AjaxController;
 $controller
 	->pageHeader();
-
-// Don't use ged=XX as we want to be able to run without changing the current gedcom.
-// This will let us load several gedcoms together, or to edit one while loading another.
-$gedcom_id = Filter::getInteger('gedcom_id');
 
 // Don't allow the user to cancel the request.  We do not want to be left
 // with an incomplete transaction.
@@ -209,7 +210,7 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 	try {
 		// Import all the records in this chunk of data
 		foreach (preg_split('/\n+(?=0)/', $data->chunk_data) as $rec) {
-			import_record($rec, $gedcom_id, false);
+			import_record($rec, $tree, false);
 		}
 		// Mark the chunk as imported
 		Database::prepare(

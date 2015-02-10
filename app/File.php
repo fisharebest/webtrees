@@ -40,46 +40,47 @@ class File {
 		$query = parse_url($url, PHP_URL_QUERY);
 
 		if (!$port) {
-			$port = parse_url($url, PHP_URL_SCHEME) == 'https' ? 443 : 80;
+			$port = parse_url($url, PHP_URL_SCHEME) === 'https' ? 443 : 80;
 		}
 
-		$scheme = $port == 443 ? 'ssl://' : '';
+		$scheme = $port === 443 ? 'ssl://' : '';
 
-		$fp = @fsockopen($scheme . $host, $port, $errno, $errstr, 5);
-		if (!$fp) {
-			return null;
-		}
+		try {
+			$fp = fsockopen($scheme . $host, $port, $errno, $errstr, 5);
 
-		fputs($fp, "GET $path?$query HTTP/1.0\r\nHost: $host\r\nConnection: Close\r\n\r\n");
+			fputs($fp, "GET $path?$query HTTP/1.0\r\nHost: $host\r\nConnection: Close\r\n\r\n");
 
-		// The first part of the response include the HTTP headers
-		$response = fread($fp, 65536);
+			// The first part of the response include the HTTP headers
+			$response = fread($fp, 65536);
 
-		// The file has moved?  Follow it.
-		if (preg_match('/^HTTP\/1.[01] 30[23].+\nLocation: ([^\r\n]+)/s', $response, $match)) {
-			fclose($fp);
+			// The file has moved?  Follow it.
+			if (preg_match('/^HTTP\/1.[01] 30[123].+\nLocation: ([^\r\n]+)/s', $response, $match)) {
+				fclose($fp);
 
-			return File::fetchUrl($match[1], $stream);
-		} else {
-			// The response includes headers, a blank line, then the content
-			$response = substr($response, strpos($response, "\r\n\r\n") + 4);
-		}
-
-		if ($stream) {
-			fwrite($stream, $response);
-			while ($tmp = fread($fp, 8192)) {
-				fwrite($stream, $tmp);
+				return File::fetchUrl($match[1], $stream);
+			} else {
+				// The response includes headers, a blank line, then the content
+				$response = substr($response, strpos($response, "\r\n\r\n") + 4);
 			}
-			fclose($fp);
 
-			return null;
-		} else {
-			while ($tmp = fread($fp, 8192)) {
-				$response .= $tmp;
+			if ($stream) {
+				fwrite($stream, $response);
+				while ($tmp = fread($fp, 8192)) {
+					fwrite($stream, $tmp);
+				}
+				fclose($fp);
+
+				return null;
+			} else {
+				while ($tmp = fread($fp, 8192)) {
+					$response .= $tmp;
+				}
+				fclose($fp);
+
+				return $response;
 			}
-			fclose($fp);
-
-			return $response;
+		} catch (\ErrorException $ex) {
+			return null;
 		}
 	}
 
@@ -91,20 +92,25 @@ class File {
 	 * @return boolean Was the file deleted
 	 */
 	public static function delete($path) {
-		// In case the file is marked read-only
-		@chmod($path, 0777);
-
 		if (is_dir($path)) {
 			$dir = opendir($path);
 			while ($dir !== false && (($file = readdir($dir)) !== false)) {
-				if ($file != '.' && $file != '..') {
+				if ($file !== '.' && $file !== '..') {
 					File::delete($path . DIRECTORY_SEPARATOR . $file);
 				}
 			}
 			closedir($dir);
-			@rmdir($path);
+			try {
+				rmdir($path);
+			} catch (\ErrorException $ex) {
+				// Continue, in case there are other files/folders that we can delete.
+			}
 		} else {
-			@unlink($path);
+			try {
+				unlink($path);
+			} catch (\ErrorException $ex) {
+				// Continue, in case there are other files/folders that we can delete.
+			}
 		}
 
 		return !file_exists($path);
@@ -124,9 +130,13 @@ class File {
 			if (dirname($path) && !is_dir(dirname($path))) {
 				File::mkdir(dirname($path));
 			}
-			@mkdir($path);
+			try {
+				mkdir($path);
 
-			return is_dir($path);
+				return true;
+			} catch (\ErrorException $ex) {
+				return false;
+			}
 		}
 	}
 }

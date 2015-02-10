@@ -19,10 +19,7 @@ namespace Fisharebest\Webtrees;
 use PDOException;
 use Zend_Controller_Request_Http;
 
-error_reporting(E_ALL | E_STRICT);
-if (strpos(ini_get('disable_functions'), 'ini_set') === false) {
-	ini_set('display_errors', 'on');
-}
+error_reporting(E_ALL);
 
 // To embed webtrees code in other applications, we must explicitly declare any global variables that we create.
 global $WT_REQUEST, $WT_SESSION;
@@ -198,11 +195,16 @@ if (!isset($_POST['lang'])) {
 // Step two - The data folder needs to be writable
 ////////////////////////////////////////////////////////////////////////////////
 
-@file_put_contents(WT_DATA_DIR . 'test.txt', 'FAB!');
-$FAB = @file_get_contents(WT_DATA_DIR . 'test.txt');
-@unlink(WT_DATA_DIR . 'test.txt');
+$text1 = uniqid();
+$text2 = '';
+try {
+	file_put_contents(WT_DATA_DIR . 'test.txt', $text1);
+	$text2 = file_get_contents(WT_DATA_DIR . 'test.txt');
+	unlink(WT_DATA_DIR . 'test.txt');
+} catch (\ErrorException $ex) {
+}
 
-if ($FAB != 'FAB!') {
+if ($text1 !== $text2) {
 	echo '<h2>', realpath(WT_DATA_DIR), '</h2>';
 	echo '<p class="bad">', I18N::translate('Oops!  webtrees was unable to create files in this folder.'), '</p>';
 	echo '<p>', I18N::translate('This usually means that you need to change the folder permissions to 777.'), '</p>';

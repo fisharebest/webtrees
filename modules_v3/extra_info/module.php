@@ -18,7 +18,7 @@ namespace Fisharebest\Webtrees;
 
 /**
  * Class extra_info_WT_Module
- * A sidebar to show non-genealogical information about an individual
+ * A sidebar to show non-genealogy information about an individual
  */
 class extra_info_WT_Module extends Module implements ModuleSidebarInterface {
 	/** {@inheritdoc} */
@@ -28,7 +28,7 @@ class extra_info_WT_Module extends Module implements ModuleSidebarInterface {
 
 	/** {@inheritdoc} */
 	public function getDescription() {
-		return /* I18N: Description of the “Extra information” module */ I18N::translate('A sidebar showing non-genealogical information about an individual.');
+		return /* I18N: Description of the “Extra information” module */ I18N::translate('A sidebar showing non-genealogy information about an individual.');
 	}
 
 	/** {@inheritdoc} */

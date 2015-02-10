@@ -55,17 +55,20 @@ if ($delete_file) {
 	$disk_files = all_disk_files($media_folder, '', 'include', '');
 	if (in_array($delete_file, $disk_files)) {
 		$tmp = WT_DATA_DIR . $media_folder . $delete_file;
-		if (@unlink($tmp)) {
-			FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', $tmp));
-		} else {
-			FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', $tmp));
+		try {
+			unlink($tmp);
+			FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', Html::filename($tmp)), 'success');
+		} catch (\ErrorException $ex) {
+			FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', Html::filename($tmp)) . '<hr><samp dir="ltr">' . $ex->getMessage() . '</samp>', 'danger');
 		}
+		// Delete any corresponding thumbnail
 		$tmp = WT_DATA_DIR . $media_folder . 'thumbs/' . $delete_file;
 		if (file_exists($tmp)) {
-			if (@unlink($tmp)) {
-				FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', $tmp));
-			} else {
-				FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', $tmp));
+			try {
+				unlink($tmp);
+				FlashMessages::addMessage(I18N::translate('The file %s has been deleted.', Html::filename($tmp)), 'success');
+			} catch (\ErrorException $ex) {
+				FlashMessages::addMessage(I18N::translate('The file %s could not be deleted.', Html::filename($tmp)) . '<hr><samp dir="ltr">' . $ex->getMessage() . '</samp>', 'danger');
 			}
 		}
 	} else {
@@ -281,12 +284,13 @@ case 'load_json':
 				$thumb_path = $full_path;
 			}
 
-			$imgsize = @getimagesize($thumb_path);
-			if ($imgsize && $imgsize[0] && $imgsize[1]) {
+			try {
+				$imgsize = getimagesize($thumb_path);
 				// We can’t create a URL (not in public_html) or use the media firewall (no such object)
 				// so just the base64-encoded image inline.
 				$img = '<img src="data:' . $imgsize['mime'] . ';base64,' . base64_encode(file_get_contents($thumb_path)) . '" class="thumbnail" ' . $imgsize[3] . '" style="max-width:100px;height:auto;">';
-			} else {
+			} catch (\ErrorException $ex) {
+				// Not an image, or not a valid image?
 				$img = '-';
 			}
 
@@ -473,21 +477,24 @@ function mediaFileInfo($media_folder, $media_path, $file) {
 
 	$full_path = WT_DATA_DIR . $media_folder . $media_path . $file;
 	if ($file && file_exists($full_path)) {
-		$size = @filesize($full_path);
-		if ($size !== false) {
+		try {
+			$size = filesize($full_path);
 			$size = (int) (($size + 1023) / 1024); // Round up to next KB
 			$size = /* I18N: size of file in KB */ I18N::translate('%s KB', I18N::number($size));
 			$html .= '<dt>' . I18N::translate('File size') . '</dt>';
 			$html .= '<dd>' . $size . '</dd>';
-			$imgsize = @getimagesize($full_path);
-			if (is_array($imgsize)) {
-				$imgsize = /* I18N: image dimensions, width × height */ I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1']));
-				$html .= '<dt>' . I18N::translate('Image dimensions') . '</dt>';
-				$html .= '<dd>' . $imgsize . '</dd>';
-			}
-			$html .= '</dl>';
 
-		} else {
+			try {
+				$imgsize = getimagesize($full_path);
+				$html .= '<dt>' . I18N::translate('Image dimensions') . '</dt>';
+				$html .= '<dd>' . /* I18N: image dimensions, width × height */
+					I18N::translate('%1$s × %2$s pixels', I18N::number($imgsize['0']), I18N::number($imgsize['1'])) . '</dd>';
+			} catch (\ErrorException $ex) {
+				// Not an image, or not a valid image?
+			}
+
+			$html .= '</dl>';
+		} catch (\ErrorException $ex) {
 			$html .= '</dl>';
 			$html .= '<div class="alert alert-danger">' . I18N::translate('This media file exists, but cannot be accessed.') . '</div>';
 		}

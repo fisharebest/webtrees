@@ -33,10 +33,18 @@ if (Auth::isManager($WT_TREE) && Filter::checkCsrf()) {
 		$filename .= '.ged';
 	}
 
-	if ($WT_TREE->exportGedcom($filename)) {
-		FlashMessages::addMessage(/* I18N: %s is a filename */ I18N::translate('Family tree exported to %s.', '<span dir="ltr">' . $filename . '</span>'), 'success');
-	} else {
-		FlashMessages::addMessage(/* I18N: %s is a filename */ I18N::translate('Unable to create %s.  Check the permissions.', $filename), 'danger');
+	try {
+		// To avoid partial trees on timeout/diskspace/etc, write to a temporary file first
+		$stream = fopen($filename . '.tmp', 'w');
+		$WT_TREE->exportGedcom($stream);
+		fclose($stream);
+		rename($filename . '.tmp', $filename);
+		FlashMessages::addMessage(/* I18N: %s is a filename */ I18N::translate('The family tree has been exported to %s.', Html::filename($filename)), 'success');
+	} catch (\ErrorException $ex) {
+		FlashMessages::addMessage(
+			I18N::translate('The file %s could not be created.', Html::filename($filename)) . '<hr><samp dir="ltr">' . $ex->getMessage() . '</samp>',
+			'danger'
+		);
 	}
 }
 

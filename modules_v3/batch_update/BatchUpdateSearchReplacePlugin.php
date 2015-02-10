@@ -105,9 +105,11 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
 			$this->regex = $this->search;
 			// Check for invalid regular expressions.
 			// A valid regex on a null string returns zero.
-			// An invalid regex on a null string returns false (and throws a warning).
-			if (@preg_match('/' . $this->search . '/', null) === false) {
-				$this->error = '<br><span class="error">' . I18N::translate('The regex appears to contain an error.  It can’t be used.') . '</span>';
+			// An invalid regex on a null string returns false and throws a warning.
+			try {
+				preg_match('/' . $this->search . '/', null);
+			} catch (\ErrorException $ex) {
+				$this->error = '<div class="alert alert-danger">' . I18N::translate('The regex appears to contain an error.  It can’t be used.') . '</div>';
 			}
 			break;
 		}
