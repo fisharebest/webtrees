@@ -2983,31 +2983,34 @@ class Stats {
 			$query1 = ' MIN(husbbirth.d_julianday2-wifebirth.d_julianday1) AS age';
 			$query2 = ' wifebirth.d_julianday1 < husbbirth.d_julianday2 AND wifebirth.d_julianday1 <> 0';
 		}
-		$rows = $this->runSql(
-			" SELECT SQL_CACHE fam.f_id AS family," . $query1 .
+		$rows = Database::prepare(
+			"SELECT SQL_CACHE fam.f_id AS family," . $query1 .
 			" FROM `##families` AS fam" .
-			" LEFT JOIN `##dates` AS wifebirth ON wifebirth.d_file = {$this->tree->getTreeId()}" .
-			" LEFT JOIN `##dates` AS husbbirth ON husbbirth.d_file = {$this->tree->getTreeId()}" .
+			" LEFT JOIN `##dates` AS wifebirth ON wifebirth.d_file = :tree_id_1" .
+			" LEFT JOIN `##dates` AS husbbirth ON husbbirth.d_file = :tree_id_2" .
 			" WHERE" .
-			" fam.f_file = {$this->tree->getTreeId()} AND" .
+			" fam.f_file = :tree_id_3 AND" .
 			" husbbirth.d_gid = fam.f_husb AND" .
 			" husbbirth.d_fact = 'BIRT' AND" .
 			" wifebirth.d_gid = fam.f_wife AND" .
 			" wifebirth.d_fact = 'BIRT' AND" .
 			$query2 .
 			" GROUP BY family" .
-			" ORDER BY age DESC LIMIT " . $total
-		);
-		if (!isset($rows[0])) {
-			return '';
-		}
+			" ORDER BY age DESC LIMIT :limit"
+		)->execute(array(
+			'tree_id_1' => $this->tree->getTreeId(),
+			'tree_id_2' => $this->tree->getTreeId(),
+			'tree_id_3' => $this->tree->getTreeId(),
+			'limit'     => $total,
+		))->fetchAll();
+
 		$top10 = array();
 		foreach ($rows as $fam) {
-			$family = Family::getInstance($fam['family'], $this->tree->getTreeId());
-			if ($fam['age'] < 0) {
+			$family = Family::getInstance($fam->family, $this->tree->getTreeId());
+			if ($fam->age < 0) {
 				break;
 			}
-			$age = $fam['age'];
+			$age = $fam->age;
 			if ((int) ($age / 365.25) > 0) {
 				$age = (int) ($age / 365.25) . 'y';
 			} elseif ((int) ($age / 30.4375) > 0) {
@@ -3018,23 +3021,21 @@ class Stats {
 			$age = get_age_at_event($age, true);
 			if ($family->canShow()) {
 				if ($type === 'list') {
-					$top10[] = "<li><a href=\"" . $family->getHtmlUrl() . "\">" . $family->getFullName() . "</a> (" . $age . ")" . "</li>";
+					$top10[] = '<li><a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> (' . $age . ')' . "</li>";
 				} else {
-					$top10[] = "<a href=\"" . $family->getHtmlUrl() . "\">" . $family->getFullName() . "</a> (" . $age . ")";
+					$top10[] = '<a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> (' . $age . ')';
 				}
 			}
 		}
 		if ($type === 'list') {
 			$top10 = implode('', $top10);
+			if ($top10) {
+				$top10 = '<ul>' . $top10 . '</ul>';
+			}
 		} else {
-			$top10 = implode(';&nbsp; ', $top10);
+			$top10 = implode(' ', $top10);
 		}
-		if (I18N::direction() === 'rtl') {
-			$top10 = str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
-		}
-		if ($type === 'list') {
-			return '<ul>' . $top10 . '</ul>';
-		}
+
 		return $top10;
 	}
 
