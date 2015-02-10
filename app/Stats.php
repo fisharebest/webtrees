@@ -1309,15 +1309,17 @@ class Stats {
 	public function statsPlaces($what = 'ALL', $fact = '', $parent = 0, $country = false) {
 		if ($fact) {
 			if ($what == 'INDI') {
-				$rows =
-					Database::prepare("SELECT i_gedcom AS ged FROM `##individuals` WHERE i_file=?")
-						->execute(array($this->tree->getTreeId()))
-						->fetchAll();
+				$rows = Database::prepare(
+					"SELECT i_gedcom AS ged FROM `##individuals` WHERE i_file = :tree_id AND i_gedcom LIKE '%\n2 PLAC %'"
+				)->execute(array(
+					'tree_id' => $this->tree->getTreeId()
+				))->fetchAll();
 			} elseif ($what == 'FAM') {
-				$rows =
-					Database::prepare("SELECT f_gedcom AS ged FROM `##families` WHERE f_file=?")
-						->execute(array($this->tree->getTreeId()))
-						->fetchAll();
+				$rows = Database::prepare(
+					"SELECT f_gedcom AS ged FROM `##families` WHERE f_file = :tree_id AND f_gedcom LIKE '%\n2 PLAC %'"
+				)->execute(array(
+					'tree_id' => $this->tree->getTreeId()
+				))->fetchAll();
 			}
 			$placelist = array();
 			foreach ($rows as $row) {
@@ -5960,7 +5962,7 @@ class Stats {
 	 */
 	public function totalUserJournal() {
 		try {
-			$number = (int) Database::prepare("SELECT COUNT(*) FROM `##news` WHERE user_id = ?")
+			$number = (int) Database::prepare("SELECT SQL_CACHE COUNT(*) FROM `##news` WHERE user_id = ?")
 				->execute(array(Auth::id()))
 				->fetchOne();
 		} catch (PDOException $ex) {
@@ -5978,7 +5980,7 @@ class Stats {
 	 */
 	public function totalGedcomNews() {
 		try {
-			$number = (int) Database::prepare("SELECT COUNT(*) FROM `##news` WHERE gedcom_id = ?")
+			$number = (int) Database::prepare("SELECT SQL_CACHE COUNT(*) FROM `##news` WHERE gedcom_id = ?")
 				->execute(array($this->tree->getTreeId()))
 				->fetchOne();
 		} catch (PDOException $ex) {
