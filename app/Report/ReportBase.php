@@ -1365,7 +1365,7 @@ function gedcomValueStartHandler($attrs) {
  */
 function repeatTagStartHandler($attrs) {
 	// @deprecated
-	global $repeats, $repeatsStack, $gedrec, $repeatBytes, $parser, $processRepeats, $fact, $desc;
+	global $repeats, $repeatsStack, $gedrec, $repeatBytes, $parser, $processRepeats, $fact, $desc, $currentElement;
 
 	$processRepeats++;
 	if ($processRepeats > 1) {
@@ -2255,7 +2255,7 @@ function lineStartHandler($attrs) {
  * @param array $attrs an array of key value pairs for the attributes
  */
 function listStartHandler($attrs) {
-	global $gedrec, $repeats, $repeatBytes, $list, $repeatsStack, $processRepeats, $parser, $vars, $sortby;
+	global $gedrec, $repeats, $repeatBytes, $list, $fact, $desc, $repeatsStack, $processRepeats, $parser, $vars, $sortby;
 
 	$processRepeats++;
 	if ($processRepeats > 1) {
@@ -2425,9 +2425,9 @@ function listStartHandler($attrs) {
 							$value = "'" . $match[1] . "'";
 						}
 					} elseif ($id == "fact") {
-						$value = "'$fact'";
+						$value = "'" . $fact . "'";
 					} elseif ($id == "desc") {
-						$value = "'$desc'";
+						$value = "'" . $desc . "'";
 					} else {
 						if (preg_match("/\d $id (.+)/", $gedrec, $match)) {
 							$value = "'" . str_replace("@", "", trim($match[1])) . "'";
@@ -3040,7 +3040,7 @@ function get_gedcom_value($tag, $level, $gedrec) {
 				}
 				$subrec = get_sub_record($level, "@ $t", $gedrec);
 				if (empty($subrec)) {
-					return;
+					return '';
 				}
 			}
 		}
