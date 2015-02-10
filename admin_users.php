@@ -134,48 +134,15 @@ case 'save':
 }
 
 switch (Filter::get('action')) {
-case 'loadrows':
+case 'load_json':
 	// Generate an AJAX/JSON response for datatables to load a block of rows
 	$search = Filter::postArray('search');
 	$search = $search['value'];
 	$start  = Filter::postInteger('start');
 	$length = Filter::postInteger('length');
+	$order  = Filter::postArray('order');
 
-	$WHERE = " WHERE u.user_id > 0";
-	$ARGS  = array();
-	if ($search) {
-		$WHERE .= " AND (" . " user_name LIKE CONCAT('%', ?, '%') OR " . " real_name LIKE CONCAT('%', ?, '%') OR " . " email     LIKE CONCAT('%', ?, '%'))";
-		$ARGS = array($search, $search, $search);
-	}
-	Auth::user()->setPreference('admin_users_page_size', $length);
-	if ($length > 0) {
-		$LIMIT = " LIMIT " . $start . ',' . $length;
-	} else {
-		$LIMIT = "";
-	}
-	$order = Filter::postArray('order');
-	if ($order) {
-		$ORDER_BY = ' ORDER BY ';
-		foreach ($order as $key => $value) {
-			if ($key > 0) {
-				$ORDER_BY .= ',';
-			}
-			// Datatables numbers columns 0, 1, 2, ...
-			// MySQL numbers columns 1, 2, 3, ...
-			switch ($value['dir']) {
-			case 'asc':
-				$ORDER_BY .= (1 + $value['column']) . ' ASC ';
-				break;
-			case 'desc':
-				$ORDER_BY .= (1 + $value['column']) . ' DESC ';
-				break;
-			}
-		}
-	} else {
-		$ORDER_BY = '1 ASC';
-	}
-
-	$sql =
+	$sql_select =
 		"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS '', u.user_id, user_name, real_name, email, us1.setting_value, us2.setting_value, us2.setting_value, us3.setting_value, us3.setting_value, us4.setting_value, us5.setting_value" .
 		" FROM `##user` u" .
 		" LEFT JOIN `##user_setting` us1 ON (u.user_id=us1.user_id AND us1.setting_name='language')" .
@@ -183,10 +150,47 @@ case 'loadrows':
 		" LEFT JOIN `##user_setting` us3 ON (u.user_id=us3.user_id AND us3.setting_name='sessiontime')" .
 		" LEFT JOIN `##user_setting` us4 ON (u.user_id=us4.user_id AND us4.setting_name='verified')" .
 		" LEFT JOIN `##user_setting` us5 ON (u.user_id=us5.user_id AND us5.setting_name='verified_by_admin')" .
-		$WHERE . $ORDER_BY . $LIMIT;
+		" WHERE u.user_id > 0";
+
+	$args  = array();
+
+	if ($search) {
+		$sql_select .= " AND (user_name LIKE CONCAT('%', :search_1, '%') OR real_name LIKE CONCAT('%', :search_2, '%') OR email LIKE CONCAT('%', :search_3, '%'))";
+		$args['search_1'] = $search;
+		$args['search_2'] = $search;
+		$args['search_3'] = $search;
+	}
+
+	if ($order) {
+		$sql_select .= " ORDER BY ";
+		foreach ($order as $key => $value) {
+			if ($key > 0) {
+				$sql_select .= ',';
+			}
+			// Datatables numbers columns 0, 1, 2, ...
+			// MySQL numbers columns 1, 2, 3, ...
+			switch ($value['dir']) {
+			case 'asc':
+				$sql_select .= (1 + $value['column']) . " ASC ";
+				break;
+			case 'desc':
+				$sql_select .= (1 + $value['column']) . " DESC ";
+				break;
+			}
+		}
+	} else {
+		$sql_select = " ORDER BY 1 ASC";
+	}
+
+	if ($length) {
+		Auth::user()->setPreference('admin_users_page_size', $length);
+		$sql_select .= " LIMIT :limit OFFSET :offset";
+		$args['limit']  = $length;
+		$args['offset'] = $start;
+	}
 
 	// This becomes a JSON list, not array, so need to fetch with numeric keys.
-	$data = Database::prepare($sql)->execute($ARGS)->fetchAll(PDO::FETCH_NUM);
+	$data = Database::prepare($sql_select)->execute($args)->fetchAll(PDO::FETCH_NUM);
 
 	$installed_languages = I18N::installed_languages();
 
@@ -236,7 +240,6 @@ case 'loadrows':
 	$recordsFiltered = (int) Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
 	$recordsTotal    = User::count();
 
-	Zend_Session::writeClose();
 	header('Content-type: application/json');
 	// See http://www.datatables.net/usage/server-side
 	echo json_encode(array(
@@ -791,7 +794,7 @@ default:
 				processing: true,
 				serverSide: true,
 				ajax: {
-					"url": "' . WT_SCRIPT_NAME . '?action=loadrows",
+					"url": "' . WT_SCRIPT_NAME . '?action=load_json",
 					"type": "POST"
 				},
 				search: {

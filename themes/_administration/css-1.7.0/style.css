@@ -73,6 +73,8 @@ legend {
 /* Raw GEDCOM data */
 .gedcom-data {
 	white-space: pre-wrap;
+	font-size: smaller;
+	max-width: 20em;
 }
 
 .ui-autocomplete {
