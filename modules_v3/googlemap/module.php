@@ -148,7 +148,7 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 	public function getTabContent() {
 		global $controller;
 
-		if ($this->checkMapData()) {
+		if ($this->checkMapData($controller->record)) {
 			ob_start();
 			echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
 			echo '<table border="0" width="100%"><tr><td>';
@@ -1814,19 +1814,33 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 	}
 
 	/**
+	 * Does an individual (or their spouse-families) have any facts with places?
+	 *
+	 * @oaram Individual $individual
+	 *
 	 * @return string
 	 */
-	private function checkMapData() {
-		global $controller;
-		$xrefs    = "'" . $controller->record->getXref() . "'";
-		$families = $controller->record->getSpouseFamilies();
-		foreach ($families as $family) {
-			$xrefs .= ", '" . $family->getXref() . "'";
+	private function checkMapData(Individual $individual) {
+		$statement = Database::prepare(
+			"SELECT COUNT(*) FROM `##placelinks` WHERE pl_gid = :xref AND pl_file = :tree_id"
+		);
+		$args = array(
+			'xref'    => $individual->getXref(),
+			'tree_id' => $individual->getTree()->getTreeId(),
+		);
+
+		if ($statement->execute($args)->fetchOne()) {
+			return true;
 		}
 
-		return Database::prepare(
-			"SELECT COUNT(*) AS tot FROM `##placelinks` WHERE pl_gid IN (" . $xrefs . ") AND pl_file=?"
-		)->execute(array(WT_GED_ID))->fetchOne();
+		foreach ($individual->getSpouseFamilies() as $family) {
+			$args['xref'] = $family->getXref();
+			if ($statement->execute($args)->fetchOne()) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	/**
