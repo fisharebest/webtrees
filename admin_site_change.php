@@ -97,7 +97,7 @@ if ($xref) {
 	$args['xref'] = $xref;
 }
 if ($user) {
-	$query[] = "AND user_name LIKE CONCAT('%', :user, '%')";
+	$WHERE .= " AND user_name LIKE CONCAT('%', :user, '%')";
 	$args['user'] = $user;
 }
 if ($gedc) {
@@ -157,7 +157,7 @@ case 'load_json':
 	$order  = Filter::getArray('order');
 
 	if ($order) {
-		$ORDER_BY = ' ORDER BY ';
+		$ORDER_BY = " ORDER BY ";
 		foreach ($order as $key => $value) {
 			if ($key > 0) {
 				$ORDER_BY .= ',';
@@ -182,7 +182,7 @@ case 'load_json':
 			}
 		}
 	} else {
-		$ORDER_BY = 'ORDER BY 1 DESC';
+		$ORDER_BY = " ORDER BY 1 DESC";
 	}
 
 	if ($length) {

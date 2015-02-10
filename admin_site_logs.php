@@ -57,70 +57,69 @@ if (Auth::isAdmin()) {
 	$gedc = WT_GEDCOM;
 }
 
-$query = array();
+$WHERE = " WHERE 1";
 $args = array();
 if ($search) {
-	$query[] = "log_message LIKE CONCAT('%', ?, '%')";
-	$args [] = $search;
+	$WHERE .= " AND log_message LIKE CONCAT('%', :search, '%')";
+	$args['search'] = $search;
 }
 if ($from) {
-	$query[] = 'log_time>=?';
-	$args [] = $from;
+	$WHERE .= " AND log_time >= :from";
+	$args['from'] = $from;
 }
 if ($to) {
-	$query[] = 'log_time<TIMESTAMPADD(DAY, 1 , ?)'; // before end of the day
-	$args [] = $to;
+	$WHERE .= " AND log_time < TIMESTAMPADD(DAY, 1 , :to)"; // before end of the day
+	$args['to'] = $to;
 }
 if ($type) {
-	$query[] = 'log_type=?';
-	$args [] = $type;
+	$WHERE .= " AND log_type = :type";
+	$args['type'] = $type;
 }
 if ($text) {
-	$query[] = "log_message LIKE CONCAT('%', ?, '%')";
-	$args [] = $text;
+	$WHERE .= " AND log_message LIKE CONCAT('%', :text, '%')";
+	$args['text'] = $text;
 }
 if ($ip) {
-	$query[] = "ip_address LIKE CONCAT('%', ?, '%')";
-	$args [] = $ip;
+	$WHERE .= " AND ip_address LIKE CONCAT('%', :ip, '%')";
+	$args['ip'] = $ip;
 }
 if ($user) {
-	$query[] = "user_name LIKE CONCAT('%', ?, '%')";
-	$args [] = $user;
+	$WHERE .= " AND user_name LIKE CONCAT('%', :user, '%')";
+	$args['user'] = $user;
 }
 if ($gedc) {
-	$query[] = "gedcom_name LIKE CONCAT('%', ?, '%')";
-	$args [] = $gedc;
+	$WHERE .= " AND gedcom_name LIKE CONCAT('%', :gedc, '%')";
+	$args['gedc'] = $gedc;
 }
 
-$SELECT1 =
+$SELECT_FILTERED =
 	"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS log_time, log_type, log_message, ip_address, IFNULL(user_name, '<none>') AS user_name, IFNULL(gedcom_name, '<none>') AS gedcom_name" .
 	" FROM `##log`" .
 	" LEFT JOIN `##user`   USING (user_id)" . // user may be deleted
-	" LEFT JOIN `##gedcom` USING (gedcom_id)"; // gedcom may be deleted
-$SELECT2 =
+	" LEFT JOIN `##gedcom` USING (gedcom_id)" . // gedcom may be deleted
+	$WHERE;
+
+$SELECT_UNFILTERED =
 	"SELECT COUNT(*) FROM `##log`" .
 	" LEFT JOIN `##user`   USING (user_id)" . // user may be deleted
 	" LEFT JOIN `##gedcom` USING (gedcom_id)"; // gedcom may be deleted
-if ($query) {
-	$WHERE = " WHERE " . implode(' AND ', $query);
-} else {
-	$WHERE = '';
-}
+
+$DELETE =
+	"DELETE `##log` FROM `##log`" .
+	" LEFT JOIN `##user`   USING (user_id)" . // user may be deleted
+	" LEFT JOIN `##gedcom` USING (gedcom_id)" . // gedcom may be deleted
+	$WHERE;
 
 switch ($action) {
 case 'delete':
-	$DELETE =
-		"DELETE `##log` FROM `##log`" .
-		" LEFT JOIN `##user`   USING (user_id)" . // user may be deleted
-		" LEFT JOIN `##gedcom` USING (gedcom_id)" . // gedcom may be deleted
-		$WHERE;
 	Database::prepare($DELETE)->execute($args);
 	break;
+
 case 'export':
 	Zend_Session::writeClose();
 	header('Content-Type: text/csv');
 	header('Content-Disposition: attachment; filename="webtrees-logs.csv"');
-	$rows = Database::prepare($SELECT1 . $WHERE . ' ORDER BY log_id')->execute($args)->fetchAll();
+	$rows = Database::prepare($SELECT_FILTERED . ' ORDER BY log_id')->execute($args)->fetchAll();
 	foreach ($rows as $row) {
 		echo
 			'"', $row->log_time, '",',
@@ -137,17 +136,10 @@ case 'load_json':
 	Zend_Session::writeClose();
 	$start  = Filter::getInteger('start');
 	$length = Filter::getInteger('length');
-	Auth::user()->setPreference('admin_site_log_page_size', $length);
+	$order  = Filter::getArray('order');
 
-	if ($length > 0) {
-		$LIMIT = " LIMIT " . $start . ',' . $length;
-	} else {
-		$LIMIT = "";
-	}
-
-	$order = Filter::getArray('order');
 	if ($order) {
-		$ORDER_BY = ' ORDER BY ';
+		$ORDER_BY = " ORDER BY ";
 		foreach ($order as $key => $value) {
 			if ($key > 0) {
 				$ORDER_BY .= ',';
@@ -164,11 +156,20 @@ case 'load_json':
 			}
 		}
 	} else {
-		$ORDER_BY = '1 ASC';
+		$ORDER_BY = " ORDER BY 1 ASC";
+	}
+
+	if ($length) {
+		Auth::user()->setPreference('admin_site_log_page_size', $length);
+		$LIMIT = " LIMIT :limit OFFSET :offset";
+		$args['limit'] = $length;
+		$args['offset'] = $start;
+	} else {
+		$LIMIT = "";
 	}
 
 	// This becomes a JSON list, not array, so need to fetch with numeric keys.
-	$data = Database::prepare($SELECT1 . $WHERE . $ORDER_BY . $LIMIT)->execute($args)->fetchAll(PDO::FETCH_NUM);
+	$data = Database::prepare($SELECT_FILTERED . $ORDER_BY . $LIMIT)->execute($args)->fetchAll(PDO::FETCH_NUM);
 	foreach ($data as &$datum) {
 		$datum[2] = Filter::escapeHtml($datum[2]);
 		$datum[4] = Filter::escapeHtml($datum[4]);
@@ -177,7 +178,7 @@ case 'load_json':
 
 	// Total filtered/unfiltered rows
 	$recordsFiltered = Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
-	$recordsTotal = Database::prepare($SELECT2 . $WHERE)->execute($args)->fetchOne();
+	$recordsTotal = Database::prepare($SELECT_UNFILTERED)->fetchOne();
 
 	header('Content-type: application/json');
 	// See http://www.datatables.net/usage/server-side
@@ -272,7 +273,7 @@ foreach (User::all() as $tmp_user) {
 			<label for="ip">
 				<?php echo I18N::translate('IP address'); ?>
 			</label>
-			<input class="form-control" type="text" id="ip" name="ip" value="<?php Filter::escapeHtml($ip); ?>">
+			<input class="form-control" type="text" id="ip" name="ip" value="<?php echo Filter::escapeHtml($ip); ?>">
 		</div>
 	</div>
 
