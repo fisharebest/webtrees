@@ -50,6 +50,9 @@ textarea:required:invalid {
 
 input{
 	border: 1px solid #ccc;
+	font-size: 14px;
+	padding: 4px;
+	border-radius: 4px;
 }
 
 [dir=rtl] input:required:valid,
@@ -1616,7 +1619,7 @@ a.showit:hover > span {
 .block {
 	background-color: #fff;
 	color: #555;
-	border: solid #555 1px;
+	border: solid #ccc 1px;
 	padding: 3px;
 	vertical-align: top;
 }
@@ -2151,7 +2154,7 @@ dd .deletelink {
 }
 
 .ui-widget {
-    font-size: 1em;
+    font-size: 14px;
 }
 
 .ui-accordion .ui-accordion-header .ui-icon {
@@ -2718,7 +2721,6 @@ dd .deletelink {
 }
 
 #search-page-table .label {
-	border-top: 1px solid #000;
 	float: left;
 	font-weight: bold;
 	padding: 5px;
@@ -2727,7 +2729,6 @@ dd .deletelink {
 
 #search-page-table .value {
 	background-color: #fff;
-	border: 1px solid #000;
 	margin: 0 0 0 185px;
 	padding: 5px;
 	white-space: nowrap;
@@ -4251,6 +4252,10 @@ header nav {
 
 .secondary-menu .active {
 	font-weight: 900;
+}
+
+.header-search input {
+	border: none;
 }
 
 /* ====== Primary menu ========= */
