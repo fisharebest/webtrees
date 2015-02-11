@@ -252,14 +252,14 @@ case 'importform':
 			</legend>
 			<div class="col-sm-9">
 				<label>
-					<input type="checkbox" name="keep_media" value="1" <?php if ($tree->getPreference('keep_media')) echo 'checked'; ?>>
+					<input type="checkbox" name="keep_media" value="1" <?php echo $tree->getPreference('keep_media') ? 'checked' : ''; ?>>
 					<?php echo /* I18N: A configuration setting */ I18N::translate('Keep media objects'); ?>
 				</label>
 				<p class="small text-muted">
 					<?php echo I18N::translate('If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file.'); ?>
 				</p>
 				<label>
-					<input type="checkbox" name="WORD_WRAPPED_NOTES" value="1" <?php if ($tree->getPreference('WORD_WRAPPED_NOTES')) echo 'checked'; ?>>
+					<input type="checkbox" name="WORD_WRAPPED_NOTES" value="1" <?php echo $tree->getPreference('WORD_WRAPPED_NOTES') ? 'checked' : ''; ?>>
 					<?php echo I18N::translate('Add spaces where long lines were wrapped'); ?>
 				</label>
 				<p class="small text-muted">
