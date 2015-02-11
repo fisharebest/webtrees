@@ -36,6 +36,6 @@ class FamilybookControllerTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testClassExists() {
-		$this->assertTrue(class_exists(__NAMESPACE__ . '\FamilybookController'));
+		$this->assertTrue(class_exists(__NAMESPACE__ . '\FamilyBookController'));
 	}
 }
