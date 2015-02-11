@@ -150,7 +150,6 @@ class batch_update_WT_Module extends Module implements ModuleConfigInterface {
 			}
 			// If we've found a record to update, get details and look for the next/prev
 			if ($this->curr_xref) {
-				$this->record = self::getLatestRecord($this->curr_xref, $this->all_xrefs[$this->curr_xref]);
 				$this->prev_xref = $this->findPrevXref($this->curr_xref);
 				$this->next_xref = $this->findNextXref($this->curr_xref);
 			}
