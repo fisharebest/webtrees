@@ -17,9 +17,9 @@ namespace Fisharebest\Webtrees;
  */
 
 /**
- * Class FamilybookController - Controller for the familybook chart
+ * Class FamilyBookController - Controller for the familybook chart
  */
-class FamilybookController extends ChartController {
+class FamilyBookController extends ChartController {
 	// Data for the view
 	public $pid;
 
@@ -87,80 +87,65 @@ class FamilybookController extends ChartController {
 	 * Prints descendency of passed in person
 	 *
 	 * @param Individual|null $person
-	 * @param integer            $count
+	 * @param integer         $generation
 	 *
 	 * @return integer
 	 */
-	private function printDescendency(Individual $person = null, $count) {
+	private function printDescendency(Individual $person = null, $generation) {
 		global $bwidth, $bheight, $show_full, $box_width; // print_pedigree_person() requires these globals.
 
-		if ($count > $this->dgenerations) {
+		if ($generation > $this->dgenerations) {
 			return 0;
 		}
+
 		$show_full = $this->show_full;
 		$box_width = $this->box_width;
+
 		echo '<table><tr><td width="', $bwidth, '">';
 		$numkids = 0;
-		$famNum = 0;
 
-		// if real person load child array
+		// Load children
+		$children = array();
 		if ($person) {
-			$sfamilies = $person->getSpouseFamilies();
-			$children = array();
-			//count is position from center to left, dgenerations is number of generations
-			if ($count < $this->dgenerations) {
-				//-- put all of the children in a common array
-				foreach ($sfamilies as $family) {
-					$famNum++;
-					$chs = $family->getChildren();
-					foreach ($chs as $child) {
+			// Count is position from center to left, dgenerations is number of generations
+			if ($generation < $this->dgenerations) {
+				// All children, from all partners
+				foreach ($person->getSpouseFamilies() as $family) {
+					foreach ($family->getChildren() as $child) {
 						$children[] = $child;
 					}
 				}
-				$ct = count($children);
 			}
-		} else {
-			$ct = 0; // set to 0 for empty boxes
 		}
-		if ($count < $this->dgenerations) {
-			if ($ct == 0) {
-				// empty boxes
-				echo '<table><tr><td>';
-				$person2 = null;
-				$kids = $this->printDescendency($person2, $count + 1);
-				$numkids += $kids;
-				echo '</td></tr></table>';
-			}
-			if ($ct > 0) {
+		if ($generation < $this->dgenerations) {
+			if ($children) {
 				// real people
 				echo '<table>';
-				for ($i = 0; $i < $ct; $i++) {
-					$person2 = $children[$i];
-					$chil = $person2->getXref();
+				foreach ($children as $i => $child) {
 					echo '<tr><td>';
-					$kids = $this->printDescendency($person2, $count + 1);
+					$kids = $this->printDescendency($child, $generation + 1);
 					$numkids += $kids;
 					echo '</td>';
-					//-- print the lines
-					if ($ct > 1) {
-						if ($i == 0) {
-							//-- adjust for the first column on left
+					// Print the lines
+					if (count($children) > 1) {
+						if ($i === 0) {
+							// Adjust for the first column on left
 							$h = round(((($bheight) * $kids) + 8) / 2); // Assumes border = 1 and padding = 3
-							//-- adjust for other vertical columns
+							//  Adjust for other vertical columns
 							if ($kids > 1) {
 								$h = ($kids - 1) * 4 + $h;
 							}
 							echo '<td class="tdbot">',
-							'<img class="tvertline" id="vline_', $chil, '" src="', Theme::theme()->parameter('image-vline'), '"  height="', $h - 1, '" alt=""></td>';
-						} else if ($i == $ct - 1) {
-							//-- adjust for the first column on left
+							'<img class="tvertline" id="vline_', $child->getXref(), '" src="', Theme::theme()->parameter('image-vline'), '"  height="', $h - 1, '" alt=""></td>';
+						} elseif ($i === count($children) - 1) {
+							// Adjust for the first column on left
 							$h = round(((($bheight) * $kids) + 8) / 2);
-							//-- adjust for other vertical columns
+							// Adjust for other vertical columns
 							if ($kids > 1) {
-								$h = ((($kids - 1) * 4) + $h);
+								$h = ($kids - 1) * 4 + $h;
 							}
 							echo '<td class="tdtop">',
-							'<img class="bvertline" id="vline_', $chil, '" src="', Theme::theme()->parameter('image-vline'), '" height="', $h + 1, '" alt=""></td>';
+							'<img class="bvertline" id="vline_', $child->getXref(), '" src="', Theme::theme()->parameter('image-vline'), '" height="', $h + 1, '" alt=""></td>';
 						} else {
 							echo '<td style="background: url(', Theme::theme()->parameter('image-vline'), ');">',
 							'<img class="spacer" src="', Theme::theme()->parameter('image-spacer'), '" alt=""></td>';
@@ -169,12 +154,17 @@ class FamilybookController extends ChartController {
 					echo '</tr>';
 				}
 				echo '</table>';
+			} else {
+				// Hidden/empty boxes - to preserve the layout
+				echo '<table><tr><td>';
+				$numkids += $this->printDescendency(null, $generation + 1);
+				echo '</td></tr></table>';
 			}
 			echo '</td>';
 			echo '<td width="', $bwidth, '">';
 		}
 
-		if ($numkids == 0) {
+		if ($numkids === 0) {
 			$numkids = 1;
 		}
 		echo '<table><tr><td>';
@@ -188,9 +178,9 @@ class FamilybookController extends ChartController {
 		}
 
 		// Print the spouse
-		if ($count == 1) {
+		if ($generation === 1) {
 			if ($this->show_spouse) {
-				foreach ($sfamilies as $family) {
+				foreach ($person->getSpouseFamilies() as $family) {
 					$spouse = $family->getSpouse($person);
 					echo '</td></tr><tr><td>';
 					//-- shrink the box for the spouses
@@ -198,14 +188,14 @@ class FamilybookController extends ChartController {
 					$temph = $bheight;
 					$bwidth -= 5;
 					print_pedigree_person($spouse);
-					$bwidth = $tempw;
+					$bwidth  = $tempw;
 					$bheight = $temph;
 					$numkids += 0.95;
 					echo '</td><td>';
 				}
 			}
 		}
-		echo "</td></tr></table>";
+		echo '</td></tr></table>';
 		echo '</td></tr>';
 		echo '</table>';
 
@@ -249,11 +239,10 @@ class FamilybookController extends ChartController {
 			echo '<table><tr><td class="tdbot">';
 			// Determine line height for two or more spouces
 			// And then adjust the vertical line for the root person only
-			$sfamilies = $person->getSpouseFamilies();
 			$famcount = 0;
 			if ($this->show_spouse) {
 				// count number of spouses
-				$famcount += count($sfamilies);
+				$famcount += count($person->getSpouseFamilies());
 			}
 			$savlh = $lh; // Save current line height
 			if ($count == 1 && $genoffset <= $famcount) {

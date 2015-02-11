@@ -26,7 +26,7 @@ global $WT_TREE;
 define('WT_SCRIPT_NAME', 'familybook.php');
 require './includes/session.php';
 
-$controller = new FamilybookController;
+$controller = new FamilyBookController;
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
