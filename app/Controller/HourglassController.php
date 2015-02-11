@@ -54,7 +54,6 @@ class HourglassController extends ChartController {
 		parent::__construct();
 
 		// Extract parameters from from
-		$this->pid         = Filter::get('rootid', WT_REGEX_XREF);
 		$this->show_full   = Filter::getInteger('show_full', 0, 1, $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS'));
 		$this->show_spouse = Filter::getInteger('show_spouse', 0, 1, 0);
 		$this->generations = Filter::getInteger('generations', 2, $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS'), 3);
@@ -63,10 +62,6 @@ class HourglassController extends ChartController {
 		$this->canLoadJS = $loadJS;
 		// This is passed as a global.  A parameter would be better...
 		$show_full = $this->show_full;
-
-		if (!empty($rootid)) {
-			$this->pid = $rootid;
-		}
 
 		//-- flip the arrows for RTL languages
 		if (I18N::direction() === 'ltr') {
@@ -91,29 +86,20 @@ class HourglassController extends ChartController {
 
 		$this->bhalfheight = (int) ($bheight / 2);
 
-		// Validate parameters
-		$this->hourPerson = Individual::getInstance($this->pid);
-		if (!$this->hourPerson) {
-			$this->hourPerson = $this->getSignificantIndividual();
-			$this->pid = $this->hourPerson->getXref();
-		}
-
-		$this->name = $this->hourPerson->getFullName();
-
 		//Checks how many generations of descendency is for the person for formatting purposes
-		$this->dgenerations = $this->maxDescendencyGenerations($this->pid, 0);
+		$this->dgenerations = $this->maxDescendencyGenerations($this->root, 0);
 		if ($this->dgenerations < 1) {
 			$this->dgenerations = 1;
 		}
 
-		$this->setPageTitle(/* I18N: %s is an individual’s name */ I18N::translate('Hourglass chart of %s', $this->name));
+		$this->setPageTitle(/* I18N: %s is an individual’s name */ I18N::translate('Hourglass chart of %s', $this->root->getFullName()));
 	}
 
 	/**
 	 * Prints pedigree of the person passed in. Which is the descendancy
 	 *
 	 * @param Individual $person ID of person to print the pedigree for
-	 * @param integer       $count  generation count, so it recursively calls itself
+	 * @param integer    $count  generation count, so it recursively calls itself
 	 */
 	public function printPersonPedigree(Individual $person, $count) {
 		global $bheight, $bwidth;
@@ -412,23 +398,19 @@ class HourglassController extends ChartController {
 	/**
 	 * Calculates number of generations a person has
 	 *
-	 * @param string  $pid   ID of person to see how far down the descendency goes
-	 * @param integer $depth Pass in 0 and it calculates how far down descendency goes
+	 * @ param Individual $individual Individual to see how far down the descendency goes
+	 * @param integer     $depth  Pass in 0 and it calculates how far down descendency goes
 	 *
 	 * @return integer Number of generations the descendency actually goes
 	 */
-	private function maxDescendencyGenerations($pid, $depth) {
+	private function maxDescendencyGenerations(Individual $individual, $depth) {
 		if ($depth > $this->generations) {
 			return $depth;
 		}
-		$person = Individual::getInstance($pid);
-		if (is_null($person)) {
-			return $depth;
-		}
 		$maxdc = $depth;
-		foreach ($person->getSpouseFamilies() as $family) {
+		foreach ($individual->getSpouseFamilies() as $family) {
 			foreach ($family->getChildren() as $child) {
-				$dc = $this->maxDescendencyGenerations($child->getXref(), $depth + 1);
+				$dc = $this->maxDescendencyGenerations($child, $depth + 1);
 				if ($dc >= $this->generations) {
 					return $dc;
 				}
@@ -485,7 +467,6 @@ class HourglassController extends ChartController {
 				});
 
 				sizeLines();
-				return '" . strip_tags($this->name) . "';
 			})();
 		";
 

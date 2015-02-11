@@ -47,7 +47,7 @@ $gencount = 0;
 					<?php echo I18N::translate('Individual'); ?>
 				</td>
 				<td class="optionbox">
-					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->pid; ?>">
+					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
 					<?php echo print_findindi_link('pid'); ?>
 				</td>
 				<td class="descriptionbox">
@@ -96,10 +96,10 @@ $gencount = 0;
 		<table>
 			<tr>
 				<td style="vertical-align:middle">
-					<?php $controller->printDescendency(Individual::getInstance($controller->pid), 1); ?>
+					<?php $controller->printDescendency($controller->root, 1); ?>
 				</td>
 				<td style="vertical-align:middle">
-					<?php $controller->printPersonPedigree(Individual::getInstance($controller->pid), 1); ?>
+					<?php $controller->printPersonPedigree($controller->root, 1); ?>
 				</td>
 			</tr>
 		</table>
