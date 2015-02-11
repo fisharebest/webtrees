@@ -267,10 +267,10 @@ $controller->addInlineJavascript('
 		talloffset = ' . $talloffset . ',
 		canvaswidth = ' . ($canvaswidth) . ',
 		offset_x = 20,
-		offset_y = ' . $controller->pbheight . '/2+' . $controller->linewidth . ',
+		offset_y = ' . $controller->pbheight . '/2+' . Theme::theme()->parameter('line-width') . ',
 		lineDrawx = new Array("' . join(array_reverse($lineDrawx), '","') . '"),
 		lineDrawy = new Array("' . join(array_reverse($lineDrawy), '","') . '"),
-		offset_x2 = ' . $controller->pbwidth . '/2+' . $controller->linewidth . ',
+		offset_x2 = ' . $controller->pbwidth . '/2+' . Theme::theme()->parameter('line-width') . ',
 		offset_y2 = ' . $controller->pbheight . '*2,
 		lineDrawx2 = new Array("' . join($lineDrawx, '","') . '"),
 		lineDrawy2 = new Array("' . join($lineDrawy, '","') . '"),
@@ -279,11 +279,11 @@ $controller->addInlineJavascript('
 
 	// Set line styles
 	ctx.strokeStyle = jQuery("#pedigree_canvas").css("color");
-	ctx.lineWidth = ' . $controller->linewidth . ';
-	ctx.shadowColor = "' . $controller->shadowcolor . '";
-	ctx.shadowBlur = ' . $controller->shadowblur . ';
-	ctx.shadowOffsetX = ' . $controller->shadowoffsetX . ';
-	ctx.shadowOffsetY = ' . $controller->shadowoffsetY . ';
+	ctx.lineWidth = ' . Theme::theme()->parameter('line-width') . ';
+	ctx.shadowColor = "' . Theme::theme()->parameter('shadow-color') . '";
+	ctx.shadowBlur = ' . Theme::theme()->parameter('shadow-blur') . ';
+	ctx.shadowOffsetX = ' . Theme::theme()->parameter('shadow-offset-x') . ';
+	ctx.shadowOffsetY = ' . Theme::theme()->parameter('shadow-offset-y') . ';
 
 	//Draw the lines
 	switch (talloffset) {
