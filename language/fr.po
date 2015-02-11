@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-01-31 12:10+0000\n"
-"PO-Revision-Date: 2014-10-16 21:02+0100\n"
+"PO-Revision-Date: 2015-02-11 11:44+0100\n"
 "Last-Translator: fisharebest <fisharebest@gmail.com>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -13,6 +13,8 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
@@ -1739,7 +1741,7 @@ msgstr "Tous les utilisateurs existants PGV doivent avoir des adresses électron
 
 #: admin_trees_config.php:639
 msgid "All facts and events"
-msgstr ""
+msgstr "Tous les faits et évènements"
 
 #: admin_trees_config.php:1954
 msgid "All family facts"
@@ -1764,7 +1766,7 @@ msgstr "Toutes les personnes"
 
 #: admin_trees_config.php:630
 msgid "All records"
-msgstr ""
+msgstr "Tous les enregistrements"
 
 #: admin_trees_config.php:2161
 msgid "All repository facts"
@@ -1953,8 +1955,8 @@ msgstr "Appliquer des corrections automatiques à vos données généalogiques."
 #: admin_trees_download.php:122 modules_v3/clippings/module.php:190
 #: modules_v3/clippings/module.php:198 modules_v3/clippings/module.php:581
 #: modules_v3/clippings/module.php:590
-msgid "Apply privacy settings?"
-msgstr "Appliquer les règles de restrictions d’accès ?"
+msgid "Apply privacy settings"
+msgstr "Appliquer les règles de restrictions d’accès"
 
 #: admin_users.php:99
 #, php-format
@@ -2281,7 +2283,7 @@ msgstr "Nombre moyen d’enfants par famille"
 
 #: admin_trees_manage.php:568
 msgid "Avoid spaces and punctuation.  A family name might be a good choice."
-msgstr ""
+msgstr "Éviter espaces et ponctuation. Un nom de famille devrait être un bon choix."
 
 #: library/WT/Date/Jalali.php:158
 msgctxt "Abbreviation for Persian month: Azar"
@@ -2977,7 +2979,7 @@ msgstr "Bulgarie"
 
 #: admin_trees_manage.php:638
 msgid "Bulk import GEDCOM files"
-msgstr ""
+msgstr "Importation de fichiers GEDCOM en masse"
 
 #. I18N: gedcom tag BURI
 #: library/WT/Gedcom/Tag.php:227 modules_v3/family_group_report/report.xml:345
@@ -3175,7 +3177,7 @@ msgstr "CKEditor™"
 
 #: admin_trees_manage.php:253
 msgid "Calculating…"
-msgstr ""
+msgstr "Calcul en cours…"
 
 #: library/WT/Theme/BaseTheme.php:874 library/WT/Theme/BaseTheme.php:878
 #: modules_v3/yahrzeit/module.php:267
@@ -3355,15 +3357,15 @@ msgstr "Changer les blocs de cette page"
 
 #: admin_users.php:200
 msgid "Change the blocks on this user’s “My page”"
-msgstr ""
+msgstr "Changer les bloc sur “Ma page” de cet utilisateur"
 
 #: admin_trees_manage.php:294 index_edit.php:49
 msgid "Change the “Home page” blocks"
-msgstr ""
+msgstr "Changer les bloc sur la “Page d’accueil”"
 
 #: index_edit.php:41
 msgid "Change the “My page” blocks"
-msgstr ""
+msgstr "Changer les bloc sur “Ma page”"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: includes/functions/functions_print_lists.php:1766
@@ -3887,7 +3889,7 @@ msgstr "Contact"
 
 #: edituser.php:271
 msgid "Contact method"
-msgstr ""
+msgstr "Méthode de contact"
 
 #: search_advanced.php:162 search_advanced.php:224 search_advanced.php:239
 #: search_advanced.php:261 search_advanced.php:276
@@ -3926,12 +3928,12 @@ msgstr "Suite"
 #: modules_v3/faq/module.php:367 modules_v3/sitemap/module.php:281
 #: modules_v3/stories/module.php:197 modules_v3/stories/module.php:311
 msgid "Control panel"
-msgstr ""
+msgstr "Panneau de contrôle"
 
 #: admin_trees_download.php:134 modules_v3/clippings/module.php:205
 #: modules_v3/clippings/module.php:598
-msgid "Convert from UTF-8 to ANSI (ISO-8859-1)"
-msgstr "Convertir du format UTF-8 au format ANSI (ISO-8859-1)&nbsp;?"
+msgid "Convert from UTF-8 to ISO-8859-1"
+msgstr "Convertir du format UTF-8 au format ISO-8859-1&nbsp;?"
 
 #: library/WT/Stats.php:6118
 msgid "Cook Islands"
@@ -4054,11 +4056,11 @@ msgstr "Créer une nouvelle source"
 
 #: admin_site_access.php:217
 msgid "Create a website access rule"
-msgstr ""
+msgstr "Créer les règles d’accès au site web"
 
 #: admin_trees_manage.php:645
 msgid "Create or update a family tree for every GEDCOM file in the data folder."
-msgstr ""
+msgstr "Créer ou mettre à jour un arbre généalogique pour chaque fichier GEDCOM du répertoire data."
 
 #: statistics.php:430
 msgid "Create your own chart"
@@ -4266,7 +4268,7 @@ msgstr "Dallas, Texas"
 #. I18N: A summary of the system status
 #: admin.php:409
 msgid "Dashboard"
-msgstr ""
+msgstr "Tableau de bord"
 
 #. I18N: gedcom tag DATA
 #: library/WT/Gedcom/Tag.php:343
@@ -4943,7 +4945,7 @@ msgstr "Supprime les fichiers temporaires…"
 
 #: admin_modules.php:93
 msgid "Delete the preferences for this module."
-msgstr ""
+msgstr "Effacer les préférences de ce module."
 
 #: library/WT/Controller/Individual.php:170
 msgid "Delete this name"
@@ -4951,7 +4953,7 @@ msgstr "Supprimer le nom"
 
 #: edituser.php:297
 msgid "Delete your account"
-msgstr ""
+msgstr "Effacer votre compte"
 
 #: library/WT/Controller/Family.php:126
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?"
@@ -5358,7 +5360,7 @@ msgstr "Modifier FAQ"
 
 #: admin_site_access.php:215
 msgid "Edit a website access rule"
-msgstr ""
+msgstr "Éditer une règle d’accès au site web"
 
 #: library/WT/Controller/Media.php:149
 msgid "Edit details"
@@ -5420,7 +5422,7 @@ msgstr "Modifier cette personne et remplacer ses informations par les vôtres"
 
 #: admin_users.php:257
 msgid "Edit user"
-msgstr ""
+msgstr "Éditer l’utilisateur"
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:41 admin_users.php:507
@@ -6562,7 +6564,7 @@ msgstr "frimaire"
 #. I18N: label for the start of a date range (from x to y)
 #: admin_site_change.php:293 admin_site_logs.php:252
 msgid "From"
-msgstr ""
+msgstr "De"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:89
@@ -6658,7 +6660,7 @@ msgstr "Adresse courriel du contact Généalogie"
 #. I18N: Individuals, sources, dates, places, etc.
 #: admin_trees_manage.php:348
 msgid "Genealogy data"
-msgstr ""
+msgstr "Données généalogiques"
 
 #: admin_trees_config.php:661 admin_trees_config.php:1775
 msgid "General"
@@ -7318,7 +7320,7 @@ msgstr "Si deux arbres généalogiques utilisent le même dossier média, alors 
 
 #: admin_trees_config.php:452
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account.  You will need to add their account manually."
-msgstr ""
+msgstr "Si les visiteurs ne peuvent pas voir l’arbre généalogique, ils ne pourront pas demander de compte. Vous devrez ajouter leur compte manuellement."
 
 #. I18N: Help text for the “Who can upload new media files?” configuration setting
 #: admin_trees_config.php:1146
@@ -7347,10 +7349,10 @@ msgstr "Si vous disposez d’un grand nombre de fichiers médias, vous pouvez le
 
 #: help_text.php:462
 msgid "If you have a note to add to this record, this is the place to do so.<br><br>Just click the link, a window will open, and you can type your note.  When you are finished typing, just click the button below the box, close the window, and that’s all."
-msgstr "Si vous avez une note à ajouter à ce disque, c’est l’endroit pour le faire.<br><br>Il suffit de cliquer sur le lien, une fenêtre s’ouvrira, et vous pouvez taper votre note. Lorsque vous avez fini de taper, cliquez simplement sur le bouton ci-dessous, fermez la fenêtre, et c’est tout."
+msgstr "Si vous avez une note à ajouter à cet enregistrement, c’est l’endroit pour le faire.<br><br>Il suffit de cliquer sur le lien, une fenêtre s’ouvrira, et vous pourrez taper votre note. Lorsque vous aurez fini de taper, cliquez simplement sur le bouton ci-dessous, fermez la fenêtre, et c’est tout."
 
 #: admin_trees_manage.php:207
-msgid "If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM file."
+msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
 msgstr "Si vous avez créé des objets médias dans webtrees, et avez modifié votre GEDCOM hors-ligne à l’aide d’un programme qui supprime les objets média, cochez cette case pour fusionner les objets média en cours avec le nouveau GEDCOM."
 
 #: modules_v3/recent_changes/module.php:173
@@ -7374,7 +7376,7 @@ msgstr "Si vous sélectionnez un dossier différent, vous devez aussi déplacer 
 #. I18N: Help text for the “Show living individuals” configuration setting
 #: admin_trees_config.php:512
 msgid "If you show living individuals to visitors, all other privacy restrictions are ignored.  Do this only if all the data in your tree is public."
-msgstr ""
+msgstr "Si vous montrez les personnes vivantes aux visiteurs, toutes les autres règles de confidentialité seront ignorées. Ne faites cela que si les données de votre arbre sont publiques."
 
 #: setup.php:188
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
@@ -8219,7 +8221,7 @@ msgstr "Relier cet objet média à un individu"
 
 #: admin_users.php:566
 msgid "Link this user to an individual in the family tree."
-msgstr ""
+msgstr "Relier cet utilisateur à un individu de l’arbre généalogique."
 
 #: inverselink.php:35 inverselink.php:70 library/WT/Controller/Family.php:215
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:78
@@ -8322,7 +8324,7 @@ msgstr "URL de connexion (login)"
 #. I18N: Menu entry
 #: admin_site_config.php:111 library/WT/Theme/Administration.php:77
 msgid "Login and registration"
-msgstr ""
+msgstr "Connexion et enregistrement"
 
 #: library/WT/Theme/BaseTheme.php:1289 modules_v3/login_block/module.php:55
 #: modules_v3/login_block/module.php:58
@@ -8452,7 +8454,7 @@ msgstr "Malte"
 #: admin_trees_places.php:87 index_edit.php:299
 #: library/WT/Theme/Administration.php:101
 msgid "Manage family trees"
-msgstr ""
+msgstr "Gérer les arbres généalogiques"
 
 #: admin_media.php:511 library/WT/Controller/Media.php:62
 #: library/WT/Controller/Media.php:153 modules_v3/lightbox/module.php:135
@@ -8462,7 +8464,7 @@ msgstr "Gérer les liens"
 #. I18N: Menu entry
 #: library/WT/Theme/Administration.php:144
 msgid "Manage media"
-msgstr ""
+msgstr "Gérer les médias"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:127 admin_users.php:43 admin_users.php:521
@@ -9137,7 +9139,7 @@ msgstr "Modérateur"
 
 #: admin.php:579
 msgid "Moderators"
-msgstr ""
+msgstr "Modérateurs"
 
 #: admin_modules.php:147
 msgid "Module"
@@ -9407,7 +9409,7 @@ msgstr "Ma page"
 
 #: library/WT/Theme/BaseTheme.php:1353
 msgid "My pages"
-msgstr ""
+msgstr "Mes pages"
 
 #: library/WT/Theme/BaseTheme.php:1376 modules_v3/user_welcome/module.php:48
 msgid "My pedigree"
@@ -9421,7 +9423,7 @@ msgstr "MySQL a donné le message d’erreur: %s"
 
 #: admin_site_info.php:100
 msgid "MySQL variables"
-msgstr ""
+msgstr "Variables MySQL"
 
 #: library/WT/Stats.php:6218
 msgid "Myanmar"
@@ -10936,12 +10938,12 @@ msgstr "Texte indiquant que seuls les membres de la famille peuvent demander un 
 
 #: admin_trees_config.php:403 admin_trees_manage.php:274
 msgid "Preferences"
-msgstr ""
+msgstr "Préférences"
 
 #: admin_modules.php:88
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
-msgstr ""
+msgstr "Des préférences ont été définies pour le module “%s”, mais celui-ci n’existe plus."
 
 #. I18N: A configuration setting
 #: admin_users.php:436
@@ -11450,7 +11452,7 @@ msgstr "Reno, Nevada"
 
 #: admin_trees_manage.php:385
 msgid "Renumber"
-msgstr ""
+msgstr "Renuméroter"
 
 #. I18N: Renumber the records in a family tree
 #: admin_trees_merge.php:96 admin_trees_merge.php:101
@@ -11970,7 +11972,7 @@ msgstr "Nom d’expéditeur"
 #. I18N: Menu entry
 #: admin_site_config.php:108 library/WT/Theme/Administration.php:76
 msgid "Sending email"
-msgstr ""
+msgstr "Envoyer un courriel"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:374
@@ -12049,7 +12051,7 @@ msgstr "Fichier du serveur contenant les lieux (CSV)"
 #. I18N: Menu entry
 #: admin_site_info.php:34 library/WT/Theme/Administration.php:81
 msgid "Server information"
-msgstr ""
+msgstr "Information sur le serveur"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:296 setup.php:278
@@ -12068,7 +12070,7 @@ msgstr "Limite de durée d’une session"
 
 #: admin_trees_manage.php:327 admin_trees_manage.php:338
 msgid "Set as default"
-msgstr ""
+msgstr "Définir par défaut"
 
 #: inverselink.php:153
 msgid "Set link"
@@ -12112,7 +12114,7 @@ msgstr "Entrez <b>Oui</b> pour afficher les icônes près des noms sur la page F
 #. I18N: Help text for the “Use RIN number instead of GEDCOM ID” configuration setting
 #: admin_trees_config.php:795
 msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
-msgstr ""
+msgstr "Cocher <b>Oui</b> pour utiliser le numéro RIN au lieu de l’identifiant GEDCOM quand une référence est demandée pour les individus, dans les fichiers de configuration, les paramètres utilisateur et les diagrammes. C’est utile avec les programmes de généalogie qui n’exportent pas systématiquement les GEDCOMs en utilisant l’identifiant affecté à chaque individu mais qui conservent toujours le numéro RIN."
 
 #. I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting
 #: admin_trees_config.php:1674
@@ -12488,12 +12490,12 @@ msgstr "Afficher la liste des arbres"
 #. I18N: A configuration setting
 #: admin_trees_config.php:502
 msgid "Show living individuals"
-msgstr ""
+msgstr "Montrer les individus vivants"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:542
 msgid "Show names of private individuals"
-msgstr ""
+msgstr "Montrer les noms des individus privés"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -12627,7 +12629,7 @@ msgstr "Afficher la date et l’heure de mise à jour"
 #. I18N: A configuration setting
 #: admin_trees_config.php:438
 msgid "Show the family tree"
-msgstr ""
+msgstr "Montrer l’arbre généalogique"
 
 #: famlist.php:179 indilist.php:179
 msgid "Show the list of individuals"
@@ -12747,7 +12749,7 @@ msgstr "Sœur"
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: admin_users.php:441 edituser.php:277
 msgid "Site members can send each other messages.  You can choose to how these messages are sent to you, or choose not receive them at all."
-msgstr ""
+msgstr "Les membres peuvent s’envoyer mutuellement des messages. Vous pouvez choisir comment ces messages vous sont envoyés, ou choisir de ne pas en recevoir."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: modules_v3/sitemap/module.php:30
@@ -12790,7 +12792,7 @@ msgstr "Taille de la carte (en pixels)"
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: library/WT/Theme/BaseTheme.php:76
 msgid "Skip to content"
-msgstr ""
+msgstr "Passer au contenu"
 
 #: library/WT/Gedcom/Code/Rela.php:240
 msgid "Slave"
@@ -12849,7 +12851,7 @@ msgstr "Certains logiciels de généalogie créent des fichiers GEDCOM qui conti
 #. I18N: Help text for the “Add spaces where notes were wrapped” configuration setting
 #: admin_trees_config.php:821
 msgid "Some genealogy programs wrap notes at word boundaries while others wrap notes anywhere.  This can cause webtrees to run words together.  Setting this to <b>Yes</b> will add a space between words where they are wrapped in the original GEDCOM during the import process.  If you have already imported the file you will need to re-import it."
-msgstr ""
+msgstr "Dans les notes, certains programmes de généalogie retournent à la ligne après un mot, d’autres le font n’importe où. Cela peut conduire webtrees à joindre des mots. Paramétrer à <b>Oui</b> ajoutera, lors de l’importation, une espace entre les mots là où se trouve un retour à la ligne dans le GEDCOM source. Si vous avez déjà importé le fichier, il faudra recommencer."
 
 #: modules_v3/clippings/module.php:132
 msgid "Some items could not be added due to privacy restrictions"
@@ -13382,7 +13384,7 @@ msgstr "FAQ vide."
 #: admin_trees_manage.php:112
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr ""
+msgstr "Le fichier GEDCOM “%s” a été importé."
 
 #: library/WT/Gedcom/Code/Temp.php:160
 msgid "The Hague, Netherlands"
@@ -13447,25 +13449,25 @@ msgstr "Les détails de cette personne sont privés."
 #: admin_trees_manage.php:61
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr ""
+msgstr "L’arbre généalogique “%s” existe déjà."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:64
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr ""
+msgstr "L’arbre généalogique “%s” a été créé."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:41 admin_trees_manage.php:118
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr ""
+msgstr "L’arbre généalogique “%s” a été supprimé."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:50
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr ""
+msgstr "L’arbre généalogique “%s” sera montré aux visiteurs lors de leur premier accès au site."
 
 #: admin_trees_merge.php:185
 msgid "The family trees have been merged successfully."
@@ -13628,12 +13630,12 @@ msgstr "La mémoire et le temps maximum d’exécution requis dépendent du nomb
 #: admin_modules.php:44
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr ""
+msgstr "Le module “%s” a été désactivé."
 
 #: admin_modules.php:46
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr ""
+msgstr "Le module “%s” a été activé."
 
 #: admin_site_upgrade.php:397
 #, php-format
@@ -13664,7 +13666,7 @@ msgstr "Les mots de passe ne correspondent pas."
 #: admin_modules.php:76
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr ""
+msgstr "Les préférences du module “%s” ont été effacées."
 
 #: setup.php:379
 msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database.  “wt_” is suggested, but can be anything you want."
@@ -13736,7 +13738,7 @@ msgstr "La mise à jour est terminée."
 #: admin_users.php:770
 #, php-format
 msgid "The user %s has been deleted."
-msgstr ""
+msgstr "L’utilisateur “%s” a été supprimé."
 
 #: login.php:320
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
@@ -13768,15 +13770,15 @@ msgstr "La version de %s est trop vieille"
 
 #: admin_site_access.php:79
 msgid "The website access rule has been created."
-msgstr ""
+msgstr "La règle d’accès au site a été créée."
 
 #: admin_site_access.php:107
 msgid "The website access rule has been deleted."
-msgstr ""
+msgstr "La règle d’accès au site a été effacée."
 
 #: admin_site_access.php:91
 msgid "The website access rule has been updated."
-msgstr ""
+msgstr "La règle d’accès au site a été mise à jour."
 
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: admin_trees_config.php:2362
@@ -13789,7 +13791,7 @@ msgstr "Les développeurs de webtrees seraient intéressés par cette erreur. Il
 
 #: admin_site_access.php:278
 msgid "The “%” character is a wildcard, and will match zero or more other characters."
-msgstr ""
+msgstr "Le caractère “%” est un joker qui correspondra à zéro ou plus caractère quelconque."
 
 #: admin_modules.php:181 admin_users.php:449 edituser.php:250
 #: library/WT/Theme/BaseTheme.php:1465
@@ -13808,7 +13810,7 @@ msgstr "Sélecteur de la liste déroulante «&nbsp;Thème&nbsp;» pour changer d
 
 #: admin_modules.php:155
 msgid "Themes"
-msgstr ""
+msgstr "Thèmes"
 
 #: admin_site_config.php:203
 msgid "Themes can be selected at three levels: user, GEDCOM, and site.  User settings take priority over GEDCOM settings, which in turn take priority over the site setting.  Selecting “default theme” at user level will give the setting for the current GEDCOM.  Selecting “default theme” at GEDCOM level will give the site setting."
@@ -13848,8 +13850,8 @@ msgstr "Il y a des changements en cours en attente de modération."
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Aucune modification depuis %s jour."
+msgstr[1] "Aucune modification depuis %s jours."
 
 #: addmedia.php:183 admin_media_upload.php:142
 msgid "There was an error uploading your file."
@@ -14480,7 +14482,7 @@ msgstr "Ce site est momentanément indisponible"
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:165
 #, php-format
-msgid "This will delete all the genealogy data from “%s” and replace it with data from another GEDCOM file."
+msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
 msgstr "Toutes les données généalogiques de “%s” seront effacées et seront remplacées par les données provenant d’un autre GEDCOM."
 
 #: modules_v3/googlemap/module.php:1817
@@ -14605,7 +14607,7 @@ msgstr "Titre"
 #. I18N: label for the end of a date range (from x to y)
 #: admin_site_change.php:303 admin_site_logs.php:262
 msgid "To"
-msgstr ""
+msgstr "à"
 
 #: modules_v3/html/module.php:277
 msgid "To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
@@ -14641,7 +14643,7 @@ msgstr "Afin de réduire la hauteur du bloc «&nbsp;Nouvelles&nbsp;», l’admin
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: admin_site_config.php:427
 msgid "To set this text for other languages, you must switch to that language, and visit this page again."
-msgstr ""
+msgstr "Pour définir ce texte dans d’autres langues, il faut sélectionner cette langue puis revenir sur cette page."
 
 #: modules_v3/sitemap/module.php:316
 msgid "To tell search engines that sitemaps are available, you can use the following links."
@@ -14722,7 +14724,7 @@ msgstr "Toronto, Ontario, Canada"
 
 #: admin.php:728
 msgid "Total"
-msgstr ""
+msgstr "Total"
 
 #: modules_v3/change_report/report.xml:124
 msgid "Total accepted changes: "
@@ -15166,7 +15168,7 @@ msgstr "Utiliser un mot de passe"
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1200
 msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question."
-msgstr ""
+msgstr "Utiliser une silhouette quand aucune image préférée n’a été définie pour cet individu. Les images utilisées comme silhouettes correspondent au genre de l’individu concerné."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1195
@@ -15514,7 +15516,7 @@ msgstr "Vous allez recevoir un message de confirmation à l’adresse <b>%s</b>.
 #. I18N: Menu entry
 #: library/WT/Theme/Administration.php:74
 msgid "Website"
-msgstr ""
+msgstr "Site web"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:251
@@ -15534,12 +15536,12 @@ msgstr "Balises META"
 #. I18N: Menu entry
 #: admin_site_logs.php:30 library/WT/Theme/Administration.php:78
 msgid "Website logs"
-msgstr ""
+msgstr "Journaux du site web"
 
 #. I18N: Menu entry
 #: admin_site_config.php:105 library/WT/Theme/Administration.php:75
 msgid "Website preferences"
-msgstr ""
+msgstr "Préférences du site web"
 
 #. I18N: abbreviation for Wednesday
 #: includes/functions/functions_print.php:731 library/WT/Date/Calendar.php:383
@@ -15594,7 +15596,7 @@ msgstr "Lors du calcul des relations, cette option permet à webtrees d’inclur
 #. I18N: Help text for the “ID settings” configuration setting
 #: admin_trees_config.php:937
 msgid "When new records are created, they are given an internal ID number.  You can specify the prefix used for each type of record."
-msgstr ""
+msgstr "Quand de nouveaux enregistrements sont créés, ils reçoivent un identifiant (ID). Vous pouvez spécifier le préfixe utilisé pour chaque type d’enregistrement."
 
 #: help_text.php:640
 msgid "When this option is checked, you can see all source or note records for this individual.  When this option is unchecked, source or note records that are associated with other facts for this individual will not be shown."
@@ -15835,7 +15837,7 @@ msgstr "Vous pouvez accélérer les calculs de la vie privée en ajoutant le dé
 
 #: admin_site_access.php:68
 msgid "You cannot create a rule which would prevent yourself from accessing the website."
-msgstr ""
+msgstr "Vous ne pouvez pas créer une règle qui vous empêcherait d’accéder vous-même au site."
 
 #: login.php:70
 msgid "You cannot login because your browser does not accept cookies."
@@ -15916,7 +15918,7 @@ msgstr "Vous devez spécifier un individu avant de pouvoir restreindre l’utili
 
 #: admin_trees_manage.php:215
 msgid "You need to create a family tree."
-msgstr ""
+msgstr "Vous devez créer un arbre généalogique."
 
 #: admin_pgv_to_wt.php:1155
 msgid "You need to login again, using your PhpGedView username and password."
@@ -16460,7 +16462,7 @@ msgstr "continuer"
 #. I18N: Button label
 #: admin_trees_manage.php:576
 msgid "create"
-msgstr ""
+msgstr "créer"
 
 #. I18N: a program feature
 #: setup.php:138
@@ -16523,7 +16525,7 @@ msgstr "degrés"
 #. I18N: Button label
 #: admin_site_clean.php:120 admin_users.php:756
 msgid "delete"
-msgstr ""
+msgstr "supprimer"
 
 #. I18N: An access rule - deny access to the site
 #: admin_site_access.php:30 admin_site_access.php:37
@@ -16572,7 +16574,7 @@ msgstr "est"
 #: admin_trees_config.php:2235 admin_trees_config.php:2266
 #: admin_trees_config.php:2295
 msgid "edit"
-msgstr ""
+msgstr "modifier"
 
 #: includes/functions/functions.php:703
 msgctxt "FEMALE"
@@ -16652,17 +16654,17 @@ msgstr "ex-époux"
 #: includes/functions/functions.php:880
 msgctxt "FEMALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "ex-partenaire"
 
 #: includes/functions/functions.php:862
 msgctxt "MALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "ex-partenaire"
 
 #: includes/functions/functions.php:898
 msgctxt "MALE/FEMALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "ex-partenaire"
 
 #: includes/functions/functions.php:903
 msgid "ex-spouse"
@@ -18700,7 +18702,7 @@ msgstr "nom à la naissance"
 
 #: admin_trees_config.php:547
 msgid "managers"
-msgstr ""
+msgstr "gestionnaires"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:95
@@ -18775,7 +18777,7 @@ msgstr[1] "maximum %d jours"
 #: admin_trees_config.php:506 admin_trees_config.php:546
 #: admin_trees_config.php:566
 msgid "members"
-msgstr ""
+msgstr "membres"
 
 #. I18N: time format “%a” - exactly 00:00:00
 #: includes/functions/functions_date.php:86
@@ -19066,7 +19068,7 @@ msgstr "pourcentage"
 
 #: admin_trees_config.php:1183
 msgid "pixels"
-msgstr ""
+msgstr "pixels"
 
 #. I18N: button label
 #: admin_trees_places.php:104
@@ -19938,7 +19940,7 @@ msgstr "utf8_unicode_ci"
 #: admin_trees_config.php:505 admin_trees_config.php:545
 #: admin_trees_config.php:565
 msgid "visitors"
-msgstr ""
+msgstr "visiteurs"
 
 #: modules_v3/ahnentafel_report/report.xml:138
 #: modules_v3/descendancy_report/report.xml:104
@@ -19954,7 +19956,7 @@ msgstr "est né"
 
 #: library/WT/Theme/Webtrees.php:101
 msgid "webtrees"
-msgstr ""
+msgstr "webtrees"
 
 #: help_text.php:456
 msgid "webtrees allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the clippings cart that you can use to export portions of your database.<br><br>You can select any of the facts from the clipboard and copy the selected fact to the individual, family, media, source, or repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a marriage fact to a source or an individual record since the marriage fact is associated only with family records.<br><br>This is very helpful when entering similar facts, such as census facts, for many individuals or families."
@@ -20154,8 +20156,8 @@ msgstr "…"
 #~ msgid "Family tree configuration"
 #~ msgstr "Configurer l’arbre généalogique"
 
-#~ msgid "For optimal display on the internet, webtrees uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
-#~ msgstr "Pour un affichage optimal sur Internet, webtrees utilise le jeu de caractères UTF-8. Certains programmes, Family Tree Maker par exemple, ne prennent pas en charge l’importation de fichiers GEDCOM codés en UTF-8. Cocher cette case vous permet de convertir le fichier d’<b>UTF-8</b> en <b>ANSI (ISO-8859-1)</b>.<br><br>Le format dont vous avez besoin dépend du programme que vous utilisez. Si vous n’êtes pas sûr, consultez la documentation de votre programme.<br><br>Notez que pour les caractères spéciaux restent inchangés, vous aurez besoin de garder le fichier en UTF-8 puis de le convertir par d’autres moyens pour votre programme. Consultez pour cela la documentation, le fabricant ou l’auteur de votre programme.<br><br>Cet <a href=\"http://fr.wikipedia.org/wiki/UTF-8\" target=\"_blank\"><b>article Wikipedia</b></a> contient des informations détaillées et des liens sur UTF-8."
+#~ msgid "For optimal display on the internet, webtrees uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ISO-8859-1</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
+#~ msgstr "Pour un affichage optimal sur Internet, webtrees utilise le jeu de caractères UTF-8. Certains programmes, Family Tree Maker par exemple, ne prennent pas en charge l’importation de fichiers GEDCOM codés en UTF-8. Cocher cette case vous permet de convertir le fichier d’<b>UTF-8</b> en <b>ISO-8859-1</b>.<br><br>Le format dont vous avez besoin dépend du programme que vous utilisez. Si vous n’êtes pas sûr, consultez la documentation de votre programme.<br><br>Notez que pour les caractères spéciaux restent inchangés, vous aurez besoin de garder le fichier en UTF-8 puis de le convertir par d’autres moyens pour votre programme. Consultez pour cela la documentation, le fabricant ou l’auteur de votre programme.<br><br>Cet <a href=\"http://fr.wikipedia.org/wiki/UTF-8\" target=\"_blank\"><b>article Wikipedia</b></a> contient des informations détaillées et des liens sur UTF-8."
 
 #~ msgid "From %s to %s"
 #~ msgstr "de %s à %s"

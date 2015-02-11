@@ -61,12 +61,36 @@ function updatePrivacyFeedback() {
 	setPrivacyFeedback("[name=SHOW_PRIVATE_RELATIONSHIPS]", "members", show_private_relationships >= 1);
 }
 
+// Onsubmit validation for the import/upload GEDCOM form
+function checkGedcomImportForm(message) {
+	var old_file = jQuery("#gedcom_filename").val();
+	var method   = jQuery("input[name=action]:checked").val();
+	var new_file = method === "replace_import" ? jQuery("#import-server-file").val() : jQuery("#import-computer-file").find(":selected").val();
+
+	// Some browsers include c:\fakepath\ in the filename.
+	new_file = new_file.replace(/.*[\/\\]/, '');
+	if (new_file !== old_file && old_file !== '') {
+		return confirm(message);
+	} else {
+		return true;
+	}
+}
+
 /**
- * Activate the privacy feedback labels.
+ * Add handlers to various screen elements
  */
 jQuery(document).ready(function() {
+	// Activate the privacy feedback labels.
 	updatePrivacyFeedback();
 	jQuery("[name=REQUIRE_AUTHENTICATION], [name=HIDE_LIVE_PEOPLE], [name=SHOW_DEAD_PEOPLE], [name=SHOW_LIVING_NAMES], [name=SHOW_PRIVATE_RELATIONSHIPS]").on("change", function () {
 		updatePrivacyFeedback();
+	});
+
+	// Import from file on server/computer
+	jQuery("#import-server-file").on("focus", function () {
+		jQuery("#import-server").prop("checked", true);
+	});
+	jQuery("#import-computer-file").on("focus", function () {
+		jQuery("#import-computer").prop("checked", true);
 	});
 });

@@ -629,7 +629,7 @@ case 'edit':
 					<td>
 						<select name="RELATIONSHIP_PATH_LENGTH<?php echo $tree->getTreeId(); ?>" id="RELATIONSHIP_PATH_LENGTH<?php echo $tree->getTreeId(); ?>" class="relpath">
 							<?php for ($n = 0; $n <= 10; ++$n): ?>
-							<option value="<?php echo $n; ?>" <?php echo $tree->getUserPreference($user, 'RELATIONSHIP_PATH_LENGTH') === $n ? 'checked' : ''; ?>>
+							<option value="<?php echo $n; ?>" <?php echo $tree->getUserPreference($user, 'RELATIONSHIP_PATH_LENGTH') == $n ? 'selected' : ''; ?>>
 								<?php echo $n ? $n : I18N::translate('No'); ?>
 							</option>
 							<?php endfor; ?>

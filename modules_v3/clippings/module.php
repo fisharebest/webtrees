@@ -182,7 +182,7 @@ class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleS
 					<td class="optionbox"><input type="checkbox" name="IncludeMedia" value="yes"></td></tr>
 
 					<?php if (WT_USER_GEDCOM_ADMIN) {	?>
-						<tr><td class="descriptionbox width50 wrap"><?php echo I18N::translate('Apply privacy settings?'), help_link('apply_privacy'); ?></td>
+						<tr><td class="descriptionbox width50 wrap"><?php echo I18N::translate('Apply privacy settings'), help_link('apply_privacy'); ?></td>
 						<td class="optionbox">
 							<input type="radio" name="privatize_export" value="none" checked> <?php echo I18N::translate('None'); ?><br>
 							<input type="radio" name="privatize_export" value="gedadmin"> <?php echo I18N::translate('Manager'); ?><br>
@@ -190,14 +190,14 @@ class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleS
 							<input type="radio" name="privatize_export" value="visitor"> <?php echo I18N::translate('Visitor'); ?>
 						</td></tr>
 					<?php } elseif (WT_USER_CAN_ACCESS) {	?>
-						<tr><td class="descriptionbox width50 wrap"><?php echo I18N::translate('Apply privacy settings?'), help_link('apply_privacy'); ?></td>
+						<tr><td class="descriptionbox width50 wrap"><?php echo I18N::translate('Apply privacy settings'), help_link('apply_privacy'); ?></td>
 						<td class="optionbox">
 							<input type="radio" name="privatize_export" value="user" checked> <?php echo I18N::translate('Member'); ?><br>
 							<input type="radio" name="privatize_export" value="visitor"> <?php echo I18N::translate('Visitor'); ?>
 						</td></tr>
 					<?php } ?>
 
-					<tr><td class="descriptionbox width50 wrap"><?php echo I18N::translate('Convert from UTF-8 to ANSI (ISO-8859-1)'), help_link('utf8_ansi'); ?></td>
+					<tr><td class="descriptionbox width50 wrap"><?php echo I18N::translate('Convert from UTF-8 to ISO-8859-1'), help_link('utf8_ansi'); ?></td>
 					<td class="optionbox"><input type="checkbox" name="convert" value="yes"></td></tr>
 
 					<tr><td class="descriptionbox width50 wrap"><?php echo I18N::translate('Add the GEDCOM media path to filenames'), help_link('GEDCOM_MEDIA_PATH'); ?></td>
@@ -573,7 +573,7 @@ class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleS
 
 		if (WT_USER_GEDCOM_ADMIN) {
 			$out .=
-				'<tr><td class="descriptionbox width50 wrap">' . I18N::translate('Apply privacy settings?') . help_link('apply_privacy') . '</td>' .
+				'<tr><td class="descriptionbox width50 wrap">' . I18N::translate('Apply privacy settings') . help_link('apply_privacy') . '</td>' .
 				'<td class="optionbox">' .
 				'	<input type="radio" name="privatize_export" value="none" checked> ' . I18N::translate('None') . '<br>' .
 				'	<input type="radio" name="privatize_export" value="gedadmin"> ' . I18N::translate('Manager') . '<br>' .
@@ -582,7 +582,7 @@ class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleS
 				'</td></tr>';
 		} elseif (WT_USER_CAN_ACCESS) {
 			$out .=
-				'<tr><td class="descriptionbox width50 wrap">' . I18N::translate('Apply privacy settings?') . help_link('apply_privacy') . '</td>' .
+				'<tr><td class="descriptionbox width50 wrap">' . I18N::translate('Apply privacy settings') . help_link('apply_privacy') . '</td>' .
 				'<td class="list_value">' .
 				'	<input type="radio" name="privatize_export" value="user" checked> ' . I18N::translate('Member') . '<br>' .
 				'	<input type="radio" name="privatize_export" value="visitor"> ' . I18N::translate('Visitor') .
@@ -590,7 +590,7 @@ class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleS
 		}
 
 		$out .= '
-		<tr><td class="descriptionbox width50 wrap">'. I18N::translate('Convert from UTF-8 to ANSI (ISO-8859-1)') . help_link('utf8_ansi') . '</td>
+		<tr><td class="descriptionbox width50 wrap">'. I18N::translate('Convert from UTF-8 to ISO-8859-1') . help_link('utf8_ansi') . '</td>
 		<td class="optionbox"><input type="checkbox" name="convert" value="yes"></td></tr>
 
 		<tr>

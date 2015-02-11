@@ -2042,8 +2042,8 @@ msgstr "تطبيق التصحيحات التلقائية لبيانات المش
 #: admin_trees_download.php:122 modules_v3/clippings/module.php:190
 #: modules_v3/clippings/module.php:198 modules_v3/clippings/module.php:581
 #: modules_v3/clippings/module.php:590
-msgid "Apply privacy settings?"
-msgstr "تطبيق إعدادات الخصوصية؟"
+msgid "Apply privacy settings"
+msgstr "تطبيق إعدادات الخصوصية"
 
 #: admin_users.php:99
 #, php-format
@@ -4028,8 +4028,8 @@ msgstr ""
 
 #: admin_trees_download.php:134 modules_v3/clippings/module.php:205
 #: modules_v3/clippings/module.php:598
-msgid "Convert from UTF-8 to ANSI (ISO-8859-1)"
-msgstr "تحويل من UTF-8 إلى ISO-8859-1) ANSI)"
+msgid "Convert from UTF-8 to ISO-8859-1"
+msgstr "تحويل من UTF-8 إلى ISO-8859-1"
 
 #: library/WT/Stats.php:6118
 msgid "Cook Islands"
@@ -7448,7 +7448,7 @@ msgid "If you have a note to add to this record, this is the place to do so.<br>
 msgstr "عند الرغبة في إضافة ملاحظة لهذا السجل، يتم ذلك بالنقر على الرابط."
 
 #: admin_trees_manage.php:207
-msgid "If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM file."
+msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
 msgstr "إن كان هناك كائنات وسائط موجودة في webtrees وتم تعديل المشجر خارج النظام ببرنامج يزيل كائنات الوسائط من المشجر، فيجب التأشير على المربع ليتم دمج كائنات الوسائط الموجودة مع المشجر الجديد."
 
 #: modules_v3/recent_changes/module.php:173
@@ -14598,7 +14598,7 @@ msgstr "تصفح الموقع متوقف مؤقتاً"
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:165
 #, php-format
-msgid "This will delete all the genealogy data from “%s” and replace it with data from another GEDCOM file."
+msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
 msgstr "هذا سيحذف جميع المعلومات من المشجر “%s” ويستبدلها بمعلومات من ملف GEDCOM آخر."
 
 #: modules_v3/googlemap/module.php:1817

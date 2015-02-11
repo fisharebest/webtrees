@@ -63,11 +63,6 @@ class charts_WT_Module extends Module implements ModuleBlockInterface {
 			$person = Individual::getInstance($pid);
 		}
 
-		if ($type != 'treenav' && $person) {
-			$chartController = new HourglassController($person->getXref(), 0, false);
-			$controller->addInlineJavascript($chartController->setupJavascript());
-		}
-
 		$id = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		if ($ctype == 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype == 'user' && Auth::check()) {
@@ -77,58 +72,63 @@ class charts_WT_Module extends Module implements ModuleBlockInterface {
 		}
 
 		if ($person) {
+			$content = '<table cellspacing="0" cellpadding="0" border="0"><tr>';
 			switch ($type) {
 			case 'pedigree':
 				$title .= I18N::translate('Pedigree of %s', $person->getFullName());
-				break;
-			case 'descendants':
-				$title .= I18N::translate('Descendants of %s', $person->getFullName());
-				break;
-			case 'hourglass':
-				$title .= I18N::translate('Hourglass chart of %s', $person->getFullName());
-				break;
-			case 'treenav':
-				$title .= I18N::translate('Interactive tree of %s', $person->getFullName());
-				break;
-			}
-			$title .= help_link('index_charts', $this->getName());
-			$content = '<table cellspacing="0" cellpadding="0" border="0"><tr>';
-			if ($type == 'descendants' || $type == 'hourglass') {
-				$content .= "<td valign=\"middle\">";
+				$chartController = new HourglassController($person->getXref(), 0, false);
+				$controller->addInlineJavascript($chartController->setupJavascript());
+				$content .= '<td valign="middle">';
 				ob_start();
-				$chartController->printDescendency($person, 1, false);
+				print_pedigree_person($person);
 				$content .= ob_get_clean();
-				$content .= "</td>";
-			}
-			if ($type == 'pedigree' || $type == 'hourglass') {
-				//-- print out the root person
-				if ($type != 'hourglass') {
-					$content .= "<td valign=\"middle\">";
-					ob_start();
-					print_pedigree_person($person);
-					$content .= ob_get_clean();
-					$content .= "</td>";
-				}
-				$content .= "<td valign=\"middle\">";
+				$content .= '</td>';
+				$content .= '<td valign="middle">';
 				ob_start();
 				$chartController->printPersonPedigree($person, 1);
 				$content .= ob_get_clean();
-				$content .= "</td>";
-			}
-			if ($type == 'treenav') {
+				$content .= '</td>';
+				break;
+			case 'descendants':
+				$title .= I18N::translate('Descendants of %s', $person->getFullName());
+				$chartController = new HourglassController($person->getXref(), 0, false);
+				$controller->addInlineJavascript($chartController->setupJavascript());
+				$content .= '<td valign="middle">';
+				ob_start();
+				$chartController->printDescendency($person, 1, false);
+				$content .= ob_get_clean();
+				$content .= '</td>';
+				break;
+			case 'hourglass':
+				$title .= I18N::translate('Hourglass chart of %s', $person->getFullName());
+				$chartController = new HourglassController($person->getXref(), 0, false);
+				$controller->addInlineJavascript($chartController->setupJavascript());
+				$content .= '<td valign="middle">';
+				ob_start();
+				$chartController->printDescendency($person, 1, false);
+				$content .= ob_get_clean();
+				$content .= '</td>';
+				$content .= '<td valign="middle">';
+				ob_start();
+				$chartController->printPersonPedigree($person, 1);
+				$content .= ob_get_clean();
+				$content .= '</td>';
+				break;
+			case 'treenav':
+				$title .= I18N::translate('Interactive tree of %s', $person->getFullName());
 				require_once WT_MODULES_DIR . 'tree/module.php';
 				require_once WT_MODULES_DIR . 'tree/class_treeview.php';
 				$mod = new tree_WT_Module;
 				$tv = new TreeView;
 				$content .= '<td>';
-
 				$content .= '<script>jQuery("head").append(\'<link rel="stylesheet" href="' . $mod->css() . '" type="text/css" />\');</script>';
 				$content .= '<script src="' . $mod->js() . '"></script>';
 				list($html, $js) = $tv->drawViewport($person, 2);
 				$content .= $html . '<script>' . $js . '</script>';
 				$content .= '</td>';
+				break;
 			}
-			$content .= "</tr></table>";
+			$content .= '</tr></table>';
 		} else {
 			$content = I18N::translate('You must select an individual and chart type in the block configuration settings.');
 		}

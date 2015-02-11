@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 use PHPUnit_Framework_TestCase;
 
 /**
- * Test harness for the class FamilybookController
+ * Test harness for the class FamilyBookController
  */
 class FamilybookControllerTest extends PHPUnit_Framework_TestCase {
 	/**
@@ -36,6 +36,6 @@ class FamilybookControllerTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testClassExists() {
-		$this->assertTrue(class_exists(__NAMESPACE__ . '\FamilybookController'));
+		$this->assertTrue(class_exists(__NAMESPACE__ . '\FamilyBookController'));
 	}
 }

@@ -27,9 +27,8 @@ header('Content-type: text/html; charset=UTF-8');
 
 Zend_Session::writeClose();
 
-// -- print html header information
-if (Filter::get('type') == 'desc') {
-	$controller->printDescendency(Individual::getInstance($controller->pid), 1, false);
+if (Filter::get('type') === 'desc') {
+	$controller->printDescendency($controller->root, 1, false);
 } else {
-	$controller->printPersonPedigree(Individual::getInstance($controller->pid), 0);
+	$controller->printPersonPedigree($controller->root, 0);
 }

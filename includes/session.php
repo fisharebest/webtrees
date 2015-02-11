@@ -443,6 +443,12 @@ foreach (array(Filter::post('ged'), Filter::get('ged'), $WT_SESSION->GEDCOM, Sit
 		break;
 	}
 }
+// No chosen tree?  Use any one.
+if (!$WT_TREE) {
+	foreach (Tree::getAll() as $WT_TREE) {
+		break;
+	}
+}
 
 // These attributes of the currently-selected tree are used frequently
 if ($WT_TREE) {

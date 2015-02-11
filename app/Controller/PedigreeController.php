@@ -41,16 +41,9 @@ class PedigreeController extends ChartController {
 	 * Create a pedigree controller
 	 */
 	public function __construct() {
-		global $WT_TREE;
-		global $bwidth, $bheight, $baseyoffset, $basexoffset, $byspacing, $bxspacing, $show_full, $talloffset;
+		global $WT_TREE, $bwidth, $bheight, $baseyoffset, $basexoffset, $byspacing, $bxspacing, $show_full, $talloffset;
 
 		parent::__construct();
-		$this->linewidth     = Theme::theme()->parameter('line-width');
-		$this->shadowcolor   = Theme::theme()->parameter('shadow-color');
-		$this->shadowblur    = Theme::theme()->parameter('shadow-blur');
-		$this->shadowoffsetX = Theme::theme()->parameter('shadow-offset-x');
-		$this->shadowoffsetY = Theme::theme()->parameter('shadow-offset-y');
-
 		$this->show_full            = Filter::getInteger('show_full', 0, 1, $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS'));
 		$this->talloffset           = Filter::getInteger('talloffset', 0, 3, $WT_TREE->getPreference('PEDIGREE_LAYOUT'));
 		$this->box_width            = Filter::getInteger('box_width', 50, 300, 100);

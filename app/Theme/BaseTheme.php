@@ -1390,7 +1390,7 @@ abstract class BaseTheme {
 	protected function menuListsFamilies() {
 		global $controller;
 
-		return new Menu(I18N::translate('Individuals'), 'famlist.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($controller->getSignificantSurname()), 'menu-list-fam');
+		return new Menu(I18N::translate('Families'), 'famlist.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($controller->getSignificantSurname()), 'menu-list-fam');
 	}
 
 	/**
@@ -1401,7 +1401,7 @@ abstract class BaseTheme {
 	protected function menuListsIndividuals() {
 		global $controller;
 
-		return new Menu(I18N::translate('Families'), 'famlist.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($controller->getSignificantSurname()), 'menu-list-indi');
+		return new Menu(I18N::translate('Individuals'), 'indilist.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($controller->getSignificantSurname()), 'menu-list-indi');
 	}
 
 	/**
