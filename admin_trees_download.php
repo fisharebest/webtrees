@@ -31,7 +31,7 @@ require './includes/session.php';
 
 $controller = new PageController;
 $controller
-	->setPageTitle(I18N::translate('Download GEDCOM') . ' — ' . Filter::escapeHtml(WT_GEDCOM))
+	->setPageTitle(I18N::translate($WT_TREE->getTitleHtml() . ' — ' . I18N::translate('Export a GEDCOM file')))
 	->restrictAccess(Auth::isManager($WT_TREE));
 
 // Validate user parameters
@@ -107,11 +107,29 @@ $controller->pageHeader();
 
 <h1><?php echo $controller->getPageTitle(); ?></h1>
 
+<form class="form form-horizontal" method="post" action="admin_trees_export.php">
+	<?php echo Filter::getCsrf(); ?>
+	<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
+
+	<div class="form-group">
+		<label for="submit-export" class="col-sm-3 control-label">
+			<?php echo I18N::translate('A file on the server'); ?>
+		</label>
+		<div class="col-sm-9">
+			<button id="submit-export" type="submit" class="btn btn-primary">
+				<?php echo /* I18N: A button label */ I18N::translate('continue'); ?>
+			</button>
+		</div>
+	</div>
+</form>
+
+<hr>
+
 <form class="form form-horizontal">
 	<input type="hidden" name="action" value="download">
 	<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 
-	<!-- EXPORT OPTIONS -->
+	<!-- DOWNLOAD OPTIONS -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
 			<?php echo I18N::translate('Export options'); ?>
@@ -133,7 +151,7 @@ $controller->pageHeader();
 				<?php echo I18N::translate('Convert from UTF-8 to ISO-8859-1'); ?>
 			</label>
 			<p class="small muted">
-				<?php echo I18N::translate('webtrees uses UTF-8 encoding for accented letters, special characters and non-latin scripts.  If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can convert the text to ISO-8859-1 encoding.'); ?>
+				<?php echo I18N::translate('webtrees uses UTF-8 encoding for accented letters, special characters and non-latin scripts.  If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding.'); ?>
 			</p>
 
 			<!-- GEDCOM_MEDIA_PATH -->
@@ -179,10 +197,15 @@ $controller->pageHeader();
 	</fieldset>
 
 	<div class="form-group">
-		<div class="col-sm-offset-3 col-sm-9">
-			<button type="submit" class="btn btn-primary">
+		<label for="submit-export" class="col-sm-3 control-label">
+			<?php echo I18N::translate('A file on your computer'); ?>
+		</label>
+		<div class="col-sm-9">
+			<button id="submit-export" type="submit" class="btn btn-primary">
 				<?php echo /* I18N: A button label */ I18N::translate('continue'); ?>
 			</button>
 		</div>
 	</div>
+</form>
+
 </form>

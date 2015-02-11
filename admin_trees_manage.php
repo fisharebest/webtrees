@@ -157,7 +157,7 @@ $default_tree_name .= $default_tree_number;
 switch (Filter::get('action')) {
 case 'importform':
 	$controller
-		->setPageTitle(I18N::translate('Import a GEDCOM file') . ' — ' . $WT_TREE->getTitleHtml())
+		->setPageTitle($WT_TREE->getTitleHtml() . ' — ' . I18N::translate('Import a GEDCOM file'))
 		->pageHeader();
 
 	?>
@@ -549,11 +549,11 @@ $controller->pageHeader();
 							<?php echo I18N::translate('GEDCOM file'); ?>
 						</h3>
 						<ul class="fa-ul">
-							<!-- DOWNLOAD -->
+							<!-- DOWNLOAD/Export -->
 							<li>
 								<i class="fa fa-li fa-download"></i>
 								<a href="admin_trees_download.php?ged=<?php echo $tree->getNameUrl(); ?>">
-									<?php echo I18N::translate('Download'); ?>
+									<?php echo I18N::translate('Export'); ?>
 									<span class="sr-only">
 										<?php echo $tree->getTitleHtml(); ?>
 									</span>
@@ -568,18 +568,6 @@ $controller->pageHeader();
 										<?php echo $tree->getTitleHtml(); ?>
 									</span>
 								</a>
-							</li>
-							<!-- EXPORT -->
-							<li>
-								<form action="admin_trees_export.php" method="post">
-									<?php echo Filter::getCsrf(); ?>
-									<input type="hidden" name="ged" value="<?php echo $tree->getNameHtml(); ?>">
-									<i class="fa fa-li fa-file-text"></i>
-									<input type="submit" class="hide"><!-- for WCAG2 -->
-									<a href="#" onclick="jQuery(this).closest('form').submit();">
-										<?php echo I18N::translate('Export'); ?>
-									</a>
-								</form>
 							</li>
 						</ul>
 					</div>
