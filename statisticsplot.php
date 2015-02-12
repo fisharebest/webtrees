@@ -16,20 +16,15 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use Zend_Session;
-
 /**
  * Defined in session.php
  *
- * @global Zend_Session $WT_SESSION
- * @global Tree         $WT_TREE
+ * @global Tree $WT_TREE
  */
-global $WT_SESSION, $WT_TREE;
+global $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'statisticsplot.php');
 require './includes/session.php';
-
-$controller = new AjaxController;
 
 $stats = new Stats($WT_TREE);
 
@@ -788,6 +783,8 @@ function set_parameters($current, $indfam, $xg, $zg, $titstr, $xt, $gx, $gz, $my
 	global $legend, $xdata, $ydata, $xmax, $zmax, $z_boundaries, $xgiven, $zgiven, $percentage, $male_female;
 	global $stats;
 
+	$myfunc = __NAMESPACE__ . '\\' . $myfunc;
+
 	if (!function_exists($myfunc)) {
 		throw new \DomainException(I18N::translate('%s not implemented', $myfunc));
 	}
@@ -810,36 +807,36 @@ function set_parameters($current, $indfam, $xg, $zg, $titstr, $xt, $gx, $gz, $my
 		$ytitle            = I18N::translate('numbers');
 		$boundaries_x_axis = $gx;
 		$boundaries_z_axis = $gz;
-		if ($xg == true) {
+		if ($xg) {
 			$xdata = $monthdata;
 			$xmax  = 12;
 		} else {
 			calculate_axis($boundaries_x_axis);
 		}
-		if ($z_axis != 300 && $z_axis != 301) {
+		if ($z_axis !== 300 && $z_axis !== 301) {
 			calculate_legend($boundaries_z_axis);
 		}
 		$percentage = false;
-		if ($y_axis == 201) {
+		if ($y_axis === 201) {
 			$percentage = false;
-			if ($current == 13 || $current == 15 || $current == 16 || $current == 21) {
+			if ($current === 13 || $current === 15 || $current === 16 || $current === 21) {
 				$ytitle = I18N::translate('Families');
-			} elseif ($current == 14) {
+			} elseif ($current === 14) {
 				$ytitle = I18N::translate('Children');
 			} else {
 				$ytitle = I18N::translate('Individuals');
 			}
-		} elseif ($y_axis == 202) {
+		} elseif ($y_axis === 202) {
 			$percentage = true;
 			$ytitle     = I18N::translate('percentage');
 		}
 		$male_female = false;
-		if ($z_axis == 300) {
+		if ($z_axis === 300) {
 			$zgiven          = false;
 			$legend[0]       = 'all';
 			$zmax            = 1;
 			$z_boundaries[0] = 100000;
-		} elseif ($z_axis == 301) {
+		} elseif ($z_axis === 301) {
 			$male_female = true;
 			$zgiven      = true;
 			$legend[0]   = I18N::translate('Male');
@@ -867,80 +864,33 @@ function set_parameters($current, $indfam, $xg, $zg, $titstr, $xt, $gx, $gz, $my
 	}
 }
 
-//-- ========= start of main program =========
-$action = Filter::post('action');
-
-if ($action === 'update') {
-	$x_axis = $_POST['x-as'];
-	$y_axis = $_POST['y-as'];
-	if (isset($_POST['z-as'])) {
-		$z_axis = $_POST['z-as'];
-	} else {
-		$z_axis = 300;
-	}
-	$xgl  = $_POST['x-axis-boundaries-ages'];
-	$xglm = $_POST['x-axis-boundaries-ages_m'];
-	$xgm  = $_POST['x-axis-boundaries-months'];
-	$xga  = $_POST['x-axis-boundaries-numbers'];
-	if (isset($_POST['z-axis-boundaries-periods'])) {
-		$zgp = $_POST['z-axis-boundaries-periods'];
-	} else {
-		$zgp = 0;
-	}
-	$chart_shows = $_POST['chart_shows'];
-	$chart_type  = $_POST['chart_type'];
-	$surname     = $_POST['SURN'];
-
-	$WT_SESSION->statTicks[$WT_TREE->getTreeId()]['x_axis_boundary_ages']          = $xgl;
-	$WT_SESSION->statTicks[$WT_TREE->getTreeId()]['x_axis_boundary_ages_marriage'] = $xglm;
-	$WT_SESSION->statTicks[$WT_TREE->getTreeId()]['x_axis_boundary_months']        = $xgm;
-	$WT_SESSION->statTicks[$WT_TREE->getTreeId()]['x_axis_boundary_numbers']       = $xga;
-	$WT_SESSION->statTicks[$WT_TREE->getTreeId()]['z_axis_boundary_periods']       = $zgp;
-	$WT_SESSION->statTicks[$WT_TREE->getTreeId()]['chart_shows']                   = $chart_shows;
-	$WT_SESSION->statTicks[$WT_TREE->getTreeId()]['chart_type']                    = $chart_type;
-	$WT_SESSION->statTicks[$WT_TREE->getTreeId()]['SURN']                          = $surname;
-
-	// Save the input variables
-	$savedInput                          = array();
-	$savedInput['x_axis']                = $x_axis;
-	$savedInput['y_axis']                = $y_axis;
-	$savedInput['z_axis']                = $z_axis;
-	$savedInput['xgl']                   = $xgl;
-	$savedInput['xglm']                  = $xglm;
-	$savedInput['xgm']                   = $xgm;
-	$savedInput['xga']                   = $xga;
-	$savedInput['zgp']                   = $zgp;
-	$savedInput['chart_shows']           = $chart_shows;
-	$savedInput['chart_type']            = $chart_type;
-	$savedInput['SURN']                  = $surname;
-	$WT_SESSION->statisticsplot[$WT_TREE->getTreeId()] = $savedInput;
-	unset($savedInput);
-} else {
-	// Recover the saved input variables
-	$savedInput  = $WT_SESSION->statisticsplot[$WT_TREE->getTreeId()];
-	$x_axis      = $savedInput['x_axis'];
-	$y_axis      = $savedInput['y_axis'];
-	$z_axis      = $savedInput['z_axis'];
-	$xgl         = $savedInput['xgl'];
-	$xglm        = $savedInput['xglm'];
-	$xgm         = $savedInput['xgm'];
-	$xga         = $savedInput['xga'];
-	$zgp         = $savedInput['zgp'];
-	$chart_shows = $savedInput['chart_shows'];
-	$chart_type  = $savedInput['chart_type'];
-	$surname     = $savedInput['SURN'];
-	unset($savedInput);
-}
-Zend_Session::writeClose();
+$x_axis      = Filter::getInteger('x-as', 1, 21, 11);
+$y_axis      = Filter::getInteger('y-as', 201, 202, 201);
+$z_axis      = Filter::getInteger('z-as', 300, 302, 302);
+$xgl         = Filter::get('x-axis-boundaries-ages');
+$xglm        = Filter::get('x-axis-boundaries-ages_m');
+$xgm         = Filter::get('x-axis-boundaries-months');
+$xga         = Filter::get('x-axis-boundaries-numbers');
+$zgp         = Filter::get('z-axis-boundaries-periods', null, '0');
+$chart_shows = Filter::get('chart_shows');
+$g_xas       = '1,2,3,4,5,6,7,8,9,10,11,12';
 
 echo '<div class="statistics_chart" title="', I18N::translate('Statistics plot'), '">';
 
-//-- Set params for request out of the information for plot
-$g_xas = '1,2,3,4,5,6,7,8,9,10,11,12'; //should not be needed. but just for month
-
 switch ($x_axis) {
+case '1':
+	echo $stats->chartDistribution(array($chart_shows, Filter::get('chart_type'), Filter::get('SURN')));
+	break;
+case '2':
+	echo $stats->chartDistribution(array($chart_shows, 'birth_distribution_chart'));
+	break;
+case '3':
+	echo $stats->chartDistribution(array($chart_shows, 'death_distribution_chart'));
+	break;
+case '4':
+	echo $stats->chartDistribution(array($chart_shows, 'marriage_distribution_chart'));
+	break;
 case '11':
-	//--------- nr, type, xgiven, zgiven, title, xtitle, ytitle, boundaries_x, boundaries-z, function
 	set_parameters(11, 'IND', true, false, I18N::translate('Month of birth'), I18N::translate('month'), $g_xas, $zgp, 'month_of_birth');
 	break;
 case '12':
@@ -972,18 +922,6 @@ case '20':
 	break;
 case '21':
 	set_parameters(21, 'FAM', false, false, I18N::translate('Number of children'), I18N::translate('children'), $xga, $zgp, 'number_of_children');
-	break;
-case '1':
-	echo $stats->chartDistribution(array($chart_shows, $chart_type, $surname));
-	break;
-case '2':
-	echo $stats->chartDistribution(array($chart_shows, 'birth_distribution_chart'));
-	break;
-case '3':
-	echo $stats->chartDistribution(array($chart_shows, 'death_distribution_chart'));
-	break;
-case '4':
-	echo $stats->chartDistribution(array($chart_shows, 'marriage_distribution_chart'));
 	break;
 default:
 	echo '<i class="icon-loading-large"></i>';
