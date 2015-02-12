@@ -67,7 +67,7 @@ if ($action == "filter") {
 
 	// Output Individual for GEDFact Assistant ======================
 	echo "<table class=\"tabs_table width90\">";
-	$myindilist = search_indis_names($filter_array, array(WT_GED_ID));
+	$myindilist = search_indis_names($filter_array, WT_GED_ID);
 	if ($myindilist) {
 		echo "<tr><td class=\"list_value_wrap\"><ul>";
 		usort($myindilist, __NAMESPACE__ . '\GedcomRecord::compare');

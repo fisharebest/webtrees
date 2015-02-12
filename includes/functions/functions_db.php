@@ -120,26 +120,24 @@ function get_note_list($ged_id) {
 
 /**
  * Search all individuals
-
  *
-*@param string[]  $query array of search terms
- * @param integer[] $tree_ids array of gedcoms to search
-
+ * @param string[]  $query    Search terms
+ * @param integer[] $tree_ids The tree to search
  *
-*@return Individual[]
+ * @return Individual[]
  */
 function search_indis(array $query, array $tree_ids) {
 	// Convert the query into a regular expression
 	$queryregex = array();
 
-	$sql = "SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom FROM `##individuals` WHERE 1";
+	$sql  = "SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom FROM `##individuals` WHERE 1";
 	$args = array();
 
 	foreach ($query as $n => $q) {
 		$queryregex[] = preg_quote(I18N::strtoupper($q), '/');
 		$sql .= " AND i_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
 		$args['collate_' . $n] = I18N::$collation;
-		$args['query_' . $n] = Filter::escapeLike($q);
+		$args['query_' . $n]   = Filter::escapeLike($q);
 	}
 
 	$sql .= " AND i_file IN (";
@@ -175,32 +173,32 @@ function search_indis(array $query, array $tree_ids) {
 /**
  * Search the names of individuals
  *
- * @param string[]  $query array of search terms
- * @param integer[] $geds  array of gedcoms to search
+ * @param string[] $query   Search terms
+ * @param integer  $tree_id The tree to search
  *
  * @return Individual[]
  */
-function search_indis_names(array $query, array $geds) {
-	// No query => no results
-	if (!$query) {
-		return array();
-	}
+function search_indis_names(array $query, $tree_id) {
+	$sql  = "SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom, n_full FROM `##individuals` JOIN `##name` ON i_id=n_id AND i_file=n_file WHERE i_file = :tree_id";
+	$args = array(
+		'tree_id' => $tree_id,
+	);
 
 	// Convert the query into a SQL expression
-	$querysql = array();
-	foreach ($query as $q) {
-		$querysql[] = "n_full LIKE " . Database::quote("%{$q}%") . " COLLATE '" . I18N::$collation . "'";
+	foreach ($query as $n => $q) {
+		$sql .= " AND n_full COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
+		$args['collate_' . $n] = I18N::$collation;
+		$args['query_' . $n]   = Filter::escapeLike($q);
 	}
-	$sql = "SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom, n_full FROM `##individuals` JOIN `##name` ON i_id=n_id AND i_file=n_file WHERE (" . implode(" AND ", $querysql) . ') AND i_file IN (' . implode(',', $geds) . ')';
 
 	$list = array();
-	$rows = Database::prepare($sql)->fetchAll();
+	$rows = Database::prepare($sql)->execute($args)->fetchAll();
 	foreach ($rows as $row) {
 		$indi = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		// The individual may have private names - and the DB search may have found it.
 		if ($indi->canShowName()) {
 			foreach ($indi->getAllNames() as $num => $name) {
-				if ($name['fullNN'] == $row->n_full) {
+				if ($name['fullNN'] === $row->n_full) {
 					$indi->setPrimaryName($num);
 					// We need to clone $indi, as we may have multiple references to the
 					// same person in this list, and the "primary name" would otherwise
@@ -367,8 +365,8 @@ function search_indis_dates($day, $month, $year, $facts) {
 /**
  * Search family records
  *
- * @param string[]  $query array of search terms
- * @param integer[] $tree_ids array of gedcoms to search
+ * @param string[]  $query    Search terms
+ * @param integer[] $tree_ids The trees to search
  *
  * @return Family[]
  */
@@ -376,14 +374,14 @@ function search_fams($query, $tree_ids) {
 	// Convert the query into a regular expression
 	$queryregex = array();
 
-	$sql = "SELECT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom FROM `##families` WHERE 1";
+	$sql  = "SELECT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom FROM `##families` WHERE 1";
 	$args = array();
 
 	foreach ($query as $n => $q) {
 		$queryregex[] = preg_quote(I18N::strtoupper($q), '/');
 		$sql .= " AND f_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
 		$args['collate_' . $n] = I18N::$collation;
-		$args['query_' . $n] = Filter::escapeLike($q);
+		$args['query_' . $n]   = Filter::escapeLike($q);
 	}
 
 	$sql .= " AND f_file IN (";
@@ -421,8 +419,8 @@ function search_fams($query, $tree_ids) {
 /**
  * Search the names of the husb/wife in a family
  *
- * @param string[]  $query array of search terms
- * @param integer[] $geds  array of gedcoms to search
+ * @param string[]  $query Search terms
+ * @param integer[] $geds  The trees to search
  *
  * @return Family[]
  */

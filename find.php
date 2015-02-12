@@ -484,7 +484,7 @@ if ($action == "filter") {
 	// Output Individual
 	if ($type == "indi") {
 		echo '<div id="find-output">';
-		$myindilist = search_indis_names($filter_array, array(WT_GED_ID));
+		$myindilist = search_indis_names($filter_array, WT_GED_ID);
 		if ($myindilist) {
 			echo '<ul>';
 			usort($myindilist, __NAMESPACE__ . '\GedcomRecord::compare');
