@@ -221,20 +221,11 @@ function search_indis_names(array $query, $tree_id) {
  * @param string    $lastname
  * @param string    $firstname
  * @param string    $place
- * @param integer[] $geds
+ * @param integer[] $tree_ids
  *
  * @return Individual[]
  */
-function search_indis_soundex($soundex, $lastname, $firstname, $place, array $geds) {
-	$sql = "SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom FROM `##individuals`";
-	if ($place) {
-		$sql .= " JOIN `##placelinks` ON (pl_file=i_file AND pl_gid=i_id)";
-		$sql .= " JOIN `##places` ON (p_file=pl_file AND pl_p_id=p_id)";
-	}
-	if ($firstname || $lastname) {
-		$sql .= " JOIN `##name` ON (i_file=n_file AND i_id=n_id)";
-			}
-	$sql .= ' WHERE i_file IN (' . implode(',', $geds) . ')';
+function search_indis_soundex($soundex, $lastname, $firstname, $place, array $tree_ids) {
 	switch ($soundex) {
 	case 'Russell':
 		$givn_sdx = Soundex::russell($firstname);
@@ -249,7 +240,7 @@ function search_indis_soundex($soundex, $lastname, $firstname, $place, array $ge
 		$field    = 'dm';
 		break;
 	default:
-		throw new \InvalidArgumentException('soundex: ' . $soundex);
+		throw new \DomainException('soundex: ' . $soundex);
 	}
 
 	// Nothing to search for?  Return nothing.
@@ -257,34 +248,81 @@ function search_indis_soundex($soundex, $lastname, $firstname, $place, array $ge
 		return array();
 	}
 
+	$sql  = "SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom FROM `##individuals`";
+	$args = array();
+
+	if ($place) {
+		$sql .= " JOIN `##placelinks` ON pl_file = i_file AND pl_gid = i_id";
+		$sql .= " JOIN `##places` ON p_file = pl_file AND pl_p_id = p_id";
+	}
+	if ($firstname || $lastname) {
+		$sql .= " JOIN `##name` ON i_file=n_file AND i_id=n_id";
+			}
+	$sql .= " AND i_file IN (";
+	foreach ($tree_ids as $n => $tree_id) {
+		$sql .= $n ? ", " : "";
+		$sql .= ":tree_id_" . $n;
+		$args['tree_id_' . $n] = $tree_id;
+	}
+	$sql .= ")";
+
 	$sql_args = array();
 	if ($firstname && $givn_sdx) {
+		$sql .= " AND (";
 		$givn_sdx = explode(':', $givn_sdx);
-		foreach ($givn_sdx as $k=>$v) {
-			$givn_sdx[$k] = "n_soundex_givn_{$field} LIKE CONCAT('%', ?, '%')";
-			$sql_args[]   = $v;
-	}
-		$sql .= ' AND (' . implode(' OR ', $givn_sdx) . ')';
-		}
-	if ($lastname && $surn_sdx) {
-		$surn_sdx = explode(':', $surn_sdx);
-		foreach ($surn_sdx as $k=>$v) {
-			$surn_sdx[$k] = "n_soundex_surn_{$field} LIKE CONCAT('%', ?, '%')";
-			$sql_args[]   = $v;
-		}
-		$sql .= ' AND (' . implode(' OR ', $surn_sdx) . ')';
+		foreach ($givn_sdx as $n => $sdx) {
+			$sql .= $n ? " OR " : "";
+			switch ($soundex) {
+			case 'Russell':
+				$sql .= "n_soundex_givn_std LIKE CONCAT('%', :given_name_" . $n . ", '%')";
+				break;
+			case 'DaitchM':
+				$sql .= "n_soundex_givn_dm LIKE CONCAT('%', :given_name_" . $n . ", '%')";
+				break;
 			}
-	if ($place && $plac_sdx) {
-		$plac_sdx = explode(':', $plac_sdx);
-		foreach ($plac_sdx as $k=>$v) {
-			$plac_sdx[$k] = "p_{$field}_soundex LIKE CONCAT('%', ?, '%')";
-			$sql_args[]   = $v;
+			$args['given_name_' . $n]   = $sdx;
 		}
-		$sql .= ' AND (' . implode(' OR ', $plac_sdx) . ')';
+		$sql .= ")";
+	}
+
+	if ($lastname && $surn_sdx) {
+		$sql .= " AND (";
+		$surn_sdx = explode(':', $surn_sdx);
+		foreach ($surn_sdx as $n => $sdx) {
+			$sql .= $n ? " OR " : "";
+			switch ($soundex) {
+			case 'Russell':
+				$sql .= "n_soundex_surn_std LIKE CONCAT('%', :surname_" . $n . ", '%')";
+				break;
+			case 'DaitchM':
+				$sql .= "n_soundex_surn_dm LIKE CONCAT('%', :surname_" . $n . ", '%')";
+				break;
+			}
+			$args['surname_' . $n]   = $sdx;
+		}
+		$sql .= ")";
+	}
+
+	if ($place && $plac_sdx) {
+		$sql .= " AND (";
+		$plac_sdx = explode(':', $plac_sdx);
+		foreach ($plac_sdx as $n => $sdx) {
+			$sql .= $n ? " OR " : "";
+			switch ($soundex) {
+			case 'Russell':
+				$sql .= "p_std_soundex LIKE CONCAT('%', :place_" . $n . ", '%')";
+				break;
+			case 'DaitchM':
+				$sql .= "p_dm_soundex LIKE CONCAT('%', :place_" . $n . ", '%')";
+				break;
+			}
+			$args['place_' . $n]   = $sdx;
+		}
+		$sql .= ")";
 	}
 
 	$list = array();
-	$rows = Database::prepare($sql)->execute($sql_args)->fetchAll();
+	$rows = Database::prepare($sql)->execute($args)->fetchAll();
 	foreach ($rows as $row) {
 		$indi = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		if ($indi->canShowName()) {
