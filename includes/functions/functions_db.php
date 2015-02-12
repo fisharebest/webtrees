@@ -457,27 +457,43 @@ function search_fams($query, $tree_ids) {
 /**
  * Search the names of the husb/wife in a family
  *
- * @param string[]  $query Search terms
- * @param integer[] $geds  The trees to search
+ * @param string[]  $query    Search terms
+ * @param integer[] $tree_ids The trees to search
  *
  * @return Family[]
  */
-function search_fams_names($query, $geds) {
+function search_fams_names($query, $tree_ids) {
 	// No query => no results
 	if (!$query) {
 		return array();
 	}
 
-	// Convert the query into a SQL expression
-	$querysql = array();
-	foreach ($query as $q) {
-		$querysql[] = "(husb.n_full LIKE " . Database::quote("%{$q}%") . " COLLATE '" . I18N::$collation . "' OR wife.n_full LIKE " . Database::quote("%{$q}%") . " COLLATE '" . I18N::$collation . "')";
+	$sql =
+		"SELECT DISTINCT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom" .
+		" FROM `##families`" .
+		" LEFT JOIN `##name` husb ON f_husb = husb.n_id AND f_file = husb.n_file" .
+		" LEFT JOIN `##name` wife ON f_wife = wife.n_id AND f_file = wife.n_file" .
+		" WHERE 1";
+	$args = array();
+
+	foreach ($query as $n => $q) {
+		$sql .= " AND (husb.n_full COLLATE :husb_collate_" . $n . " LIKE CONCAT('%', :husb_query_" . $n . ", '%') OR wife.n_full COLLATE :wife_collate_" . $n . " LIKE CONCAT('%', :wife_query_" . $n . ", '%'))";
+		$args['husb_collate_' . $n] = I18N::$collation;
+		$args['husb_query_' . $n]   = Filter::escapeLike($q);
+		$args['wife_collate_' . $n] = I18N::$collation;
+		$args['wife_query_' . $n]   = Filter::escapeLike($q);
 	}
 
-	$sql = "SELECT DISTINCT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom FROM `##families` LEFT OUTER JOIN `##name` husb ON f_husb=husb.n_id AND f_file=husb.n_file LEFT OUTER JOIN `##name` wife ON f_wife=wife.n_id AND f_file=wife.n_file WHERE (" . implode(" AND ", $querysql) . ') AND f_file IN (' . implode(',', $geds) . ')';
+	$sql .= " AND f_file IN (";
+	foreach ($tree_ids as $n => $tree_id) {
+		$sql .= $n ? ", " : "";
+		$sql .= ":tree_id_" . $n;
+		$args['tree_id_' . $n] = $tree_id;
+	}
+	$sql .= ")";
 
 	$list = array();
-	$rows = Database::prepare($sql)->fetchAll();
+	$rows = Database::prepare($sql)->execute($args)->fetchAll();
 	foreach ($rows as $row) {
 		$indi = Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		if ($indi->canShowName()) {
