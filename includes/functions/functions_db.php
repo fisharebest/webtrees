@@ -120,27 +120,38 @@ function get_note_list($ged_id) {
 
 /**
  * Search all individuals
+
  *
- * @param string[]  $query array of search terms
- * @param integer[] $geds  array of gedcoms to search
+*@param string[]  $query array of search terms
+ * @param integer[] $tree_ids array of gedcoms to search
+
  *
- * @return Individual[]
+*@return Individual[]
  */
-function search_indis(array $query, array $geds) {
-	// Convert the query into a SQL expression
-	$querysql = array();
+function search_indis(array $query, array $tree_ids) {
 	// Convert the query into a regular expression
 	$queryregex = array();
 
-	foreach ($query as $q) {
+	$sql = "SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom FROM `##individuals` WHERE 1";
+	$args = array();
+
+	foreach ($query as $n => $q) {
 		$queryregex[] = preg_quote(I18N::strtoupper($q), '/');
-		$querysql[] = "i_gedcom LIKE " . Database::quote("%{$q}%") . " COLLATE '" . I18N::$collation . "'";
+		$sql .= " AND i_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
+		$args['collate_' . $n] = I18N::$collation;
+		$args['query_' . $n] = Filter::escapeLike($q);
 	}
 
-	$sql = "SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom FROM `##individuals` WHERE (" . implode(" AND ", $querysql) . ') AND i_file IN (' . implode(',', $geds) . ')';
+	$sql .= " AND i_file IN (";
+	foreach ($tree_ids as $n => $tree_id) {
+		$sql .= $n ? ", " : "";
+		$sql .= ":tree_id_" . $n;
+		$args['tree_id_' . $n] = $tree_id;
+	}
+	$sql .= ")";
 
 	$list = array();
-	$rows = Database::prepare($sql)->fetchAll();
+	$rows = Database::prepare($sql)->execute($args)->fetchAll();
 	foreach ($rows as $row) {
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
 		$record = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
@@ -357,25 +368,34 @@ function search_indis_dates($day, $month, $year, $facts) {
  * Search family records
  *
  * @param string[]  $query array of search terms
- * @param integer[] $geds  array of gedcoms to search
+ * @param integer[] $tree_ids array of gedcoms to search
  *
  * @return Family[]
  */
-function search_fams($query, $geds) {
-	// Convert the query into a SQL expression
-	$querysql = array();
+function search_fams($query, $tree_ids) {
 	// Convert the query into a regular expression
 	$queryregex = array();
 
-	foreach ($query as $q) {
+	$sql = "SELECT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom FROM `##families` WHERE 1";
+	$args = array();
+
+	foreach ($query as $n => $q) {
 		$queryregex[] = preg_quote(I18N::strtoupper($q), '/');
-		$querysql[] = "f_gedcom LIKE " . Database::quote("%{$q}%") . " COLLATE '" . I18N::$collation . "'";
+		$sql .= " AND f_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
+		$args['collate_' . $n] = I18N::$collation;
+		$args['query_' . $n] = Filter::escapeLike($q);
 	}
 
-	$sql = "SELECT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom FROM `##families` WHERE (" . implode(" AND ", $querysql) . ') AND f_file IN (' . implode(',', $geds) . ')';
+	$sql .= " AND f_file IN (";
+	foreach ($tree_ids as $n => $tree_id) {
+		$sql .= $n ? ", " : "";
+		$sql .= ":tree_id_" . $n;
+		$args['tree_id_' . $n] = $tree_id;
+	}
+	$sql .= ")";
 
 	$list = array();
-	$rows = Database::prepare($sql)->fetchAll();
+	$rows = Database::prepare($sql)->execute($args)->fetchAll();
 	foreach ($rows as $row) {
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
 		$record = Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
