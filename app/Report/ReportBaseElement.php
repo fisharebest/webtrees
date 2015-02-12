@@ -28,7 +28,7 @@ class ReportBaseElement {
 	/**
 	 * Element renderer
 	 *
-	  *@param ReportHtml|ReportPdf $renderer
+	 * @param ReportHtml|ReportPdf $renderer
 	 *
 	 * @return void
 	 */
@@ -38,11 +38,8 @@ class ReportBaseElement {
 
 	/**
 	 * @param ReportHtml|ReportPdf $renderer
-
-
-
-*
-*@return float
+	 *
+	 * @return float
 	 */
 	function getHeight($renderer) {
 		return 0.0;
@@ -50,11 +47,8 @@ class ReportBaseElement {
 
 	/**
 	 * @param ReportHtml|ReportPdf $renderer
-
-
-
-*
-*@return float
+	 *
+	 * @return float
 	 */
 	function getWidth($renderer) {
 		return 0.0;

@@ -231,13 +231,11 @@ function search_indis_soundex($soundex, $lastname, $firstname, $place, array $tr
 		$givn_sdx = Soundex::russell($firstname);
 		$surn_sdx = Soundex::russell($lastname);
 		$plac_sdx = Soundex::russell($place);
-		$field    = 'std';
 		break;
 	case 'DaitchM':
 		$givn_sdx = Soundex::daitchMokotoff($firstname);
 		$surn_sdx = Soundex::daitchMokotoff($lastname);
 		$plac_sdx = Soundex::daitchMokotoff($place);
-		$field    = 'dm';
 		break;
 	default:
 		throw new \DomainException('soundex: ' . $soundex);
@@ -266,7 +264,6 @@ function search_indis_soundex($soundex, $lastname, $firstname, $place, array $tr
 	}
 	$sql .= ")";
 
-	$sql_args = array();
 	if ($firstname && $givn_sdx) {
 		$sql .= " AND (";
 		$givn_sdx = explode(':', $givn_sdx);
@@ -298,7 +295,7 @@ function search_indis_soundex($soundex, $lastname, $firstname, $place, array $tr
 				$sql .= "n_soundex_surn_dm LIKE CONCAT('%', :surname_" . $n . ", '%')";
 				break;
 			}
-			$args['surname_' . $n]   = $sdx;
+			$args['surname_' . $n] = $sdx;
 		}
 		$sql .= ")";
 	}
@@ -316,7 +313,7 @@ function search_indis_soundex($soundex, $lastname, $firstname, $place, array $tr
 				$sql .= "p_dm_soundex LIKE CONCAT('%', :place_" . $n . ", '%')";
 				break;
 			}
-			$args['place_' . $n]   = $sdx;
+			$args['place_' . $n] = $sdx;
 		}
 		$sql .= ")";
 	}
