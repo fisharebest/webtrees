@@ -304,40 +304,32 @@ class SearchController extends PageController {
 			$logstring = "Type: General\nQuery: " . $this->query;
 			Log::AddSearchlog($logstring, $this->search_trees);
 
+			$this->myindilist = array();
 			// Search the individuals
-			if (isset ($this->srindi)) {
-				$this->myindilist = search_indis($query_terms, array_keys($this->search_trees), 'AND');
-			} else {
-				$this->myindilist = array();
+			if (isset ($this->srindi) && $query_terms) {
+				$this->myindilist = search_indis($query_terms, array_keys($this->search_trees));
 			}
 
 			// Search the fams
-			if (isset ($this->srfams)) {
+			$this->myfamlist = array();
+			if (isset ($this->srfams) && $query_terms) {
 				$this->myfamlist = array_merge(
-					search_fams($query_terms, array_keys($this->search_trees), 'AND'),
-					search_fams_names($query_terms, array_keys($this->search_trees), 'AND')
+					search_fams($query_terms, array_keys($this->search_trees)),
+					search_fams_names($query_terms, array_keys($this->search_trees))
 				);
 				$this->myfamlist = array_unique($this->myfamlist);
-			} else {
-				$this->myfamlist = array();
 			}
 
 			// Search the sources
-			if (isset ($this->srsour)) {
-				if (!empty ($this->query)) {
-					$this->mysourcelist = search_sources($query_terms, array_keys($this->search_trees), 'AND');
-				}
-			} else {
-				$this->mysourcelist = array();
+			$this->mysourcelist = array();
+			if (isset ($this->srsour) && $query_terms) {
+				$this->mysourcelist = search_sources($query_terms, array_keys($this->search_trees));
 			}
 
 			// Search the notes
-			if (isset ($this->srnote)) {
-				if (!empty ($this->query)) {
-					$this->mynotelist = search_notes($query_terms, array_keys($this->search_trees), 'AND');
-				}
-			} else {
-				$this->mynotelist = array();
+			$this->mynotelist = array();
+			if (isset ($this->srnote) && $query_terms) {
+				$this->mynotelist = search_notes($query_terms, array_keys($this->search_trees));
 			}
 
 			// If only 1 item is returned, automatically forward to that item

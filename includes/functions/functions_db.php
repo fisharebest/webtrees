@@ -123,16 +123,10 @@ function get_note_list($ged_id) {
  *
  * @param string[]  $query array of search terms
  * @param integer[] $geds  array of gedcoms to search
- * @param string    $match AND or OR
  *
  * @return Individual[]
  */
-function search_indis($query, $geds, $match) {
-	// No query => no results
-	if (!$query) {
-		return array();
-	}
-
+function search_indis(array $query, array $geds) {
 	// Convert the query into a SQL expression
 	$querysql = array();
 	// Convert the query into a regular expression
@@ -143,10 +137,7 @@ function search_indis($query, $geds, $match) {
 		$querysql[] = "i_gedcom LIKE " . Database::quote("%{$q}%") . " COLLATE '" . I18N::$collation . "'";
 	}
 
-	$sql = "SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom FROM `##individuals` WHERE (" . implode(" {$match} ", $querysql) . ') AND i_file IN (' . implode(',', $geds) . ')';
-
-	// Group results by gedcom, to minimise switching between privacy files
-	$sql .= ' ORDER BY gedcom_id';
+	$sql = "SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom FROM `##individuals` WHERE (" . implode(" AND ", $querysql) . ') AND i_file IN (' . implode(',', $geds) . ')';
 
 	$list = array();
 	$rows = Database::prepare($sql)->fetchAll();
@@ -175,11 +166,10 @@ function search_indis($query, $geds, $match) {
  *
  * @param string[]  $query array of search terms
  * @param integer[] $geds  array of gedcoms to search
- * @param string    $match AND or OR
  *
  * @return Individual[]
  */
-function search_indis_names($query, $geds, $match) {
+function search_indis_names(array $query, array $geds) {
 	// No query => no results
 	if (!$query) {
 		return array();
@@ -190,10 +180,7 @@ function search_indis_names($query, $geds, $match) {
 	foreach ($query as $q) {
 		$querysql[] = "n_full LIKE " . Database::quote("%{$q}%") . " COLLATE '" . I18N::$collation . "'";
 	}
-	$sql = "SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom, n_full FROM `##individuals` JOIN `##name` ON i_id=n_id AND i_file=n_file WHERE (" . implode(" {$match} ", $querysql) . ') AND i_file IN (' . implode(',', $geds) . ')';
-
-	// Group results by gedcom, to minimise switching between privacy files
-	$sql .= ' ORDER BY gedcom_id';
+	$sql = "SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom, n_full FROM `##individuals` JOIN `##name` ON i_id=n_id AND i_file=n_file WHERE (" . implode(" AND ", $querysql) . ') AND i_file IN (' . implode(',', $geds) . ')';
 
 	$list = array();
 	$rows = Database::prepare($sql)->fetchAll();
@@ -229,7 +216,7 @@ function search_indis_names($query, $geds, $match) {
  *
  * @return Individual[]
  */
-function search_indis_soundex($soundex, $lastname, $firstname, $place, $geds) {
+function search_indis_soundex($soundex, $lastname, $firstname, $place, array $geds) {
 	$sql = "SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom FROM `##individuals`";
 	if ($place) {
 		$sql .= " JOIN `##placelinks` ON (pl_file=i_file AND pl_gid=i_id)";
@@ -286,9 +273,6 @@ function search_indis_soundex($soundex, $lastname, $firstname, $place, $geds) {
 		}
 		$sql .= ' AND (' . implode(' OR ', $plac_sdx) . ')';
 	}
-
-	// Group results by gedcom, to minimise switching between privacy files
-	$sql .= ' ORDER BY gedcom_id';
 
 	$list = array();
 	$rows = Database::prepare($sql)->execute($sql_args)->fetchAll();
@@ -374,16 +358,10 @@ function search_indis_dates($day, $month, $year, $facts) {
  *
  * @param string[]  $query array of search terms
  * @param integer[] $geds  array of gedcoms to search
- * @param string    $match AND or OR
  *
  * @return Family[]
  */
-function search_fams($query, $geds, $match) {
-	// No query => no results
-	if (!$query) {
-		return array();
-	}
-
+function search_fams($query, $geds) {
 	// Convert the query into a SQL expression
 	$querysql = array();
 	// Convert the query into a regular expression
@@ -394,10 +372,7 @@ function search_fams($query, $geds, $match) {
 		$querysql[] = "f_gedcom LIKE " . Database::quote("%{$q}%") . " COLLATE '" . I18N::$collation . "'";
 	}
 
-	$sql = "SELECT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom FROM `##families` WHERE (" . implode(" {$match} ", $querysql) . ') AND f_file IN (' . implode(',', $geds) . ')';
-
-	// Group results by gedcom, to minimise switching between privacy files
-	$sql .= ' ORDER BY gedcom_id';
+	$sql = "SELECT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom FROM `##families` WHERE (" . implode(" AND ", $querysql) . ') AND f_file IN (' . implode(',', $geds) . ')';
 
 	$list = array();
 	$rows = Database::prepare($sql)->fetchAll();
@@ -428,11 +403,10 @@ function search_fams($query, $geds, $match) {
  *
  * @param string[]  $query array of search terms
  * @param integer[] $geds  array of gedcoms to search
- * @param string    $match AND or OR
  *
  * @return Family[]
  */
-function search_fams_names($query, $geds, $match) {
+function search_fams_names($query, $geds) {
 	// No query => no results
 	if (!$query) {
 		return array();
@@ -444,10 +418,7 @@ function search_fams_names($query, $geds, $match) {
 		$querysql[] = "(husb.n_full LIKE " . Database::quote("%{$q}%") . " COLLATE '" . I18N::$collation . "' OR wife.n_full LIKE " . Database::quote("%{$q}%") . " COLLATE '" . I18N::$collation . "')";
 	}
 
-	$sql = "SELECT DISTINCT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom FROM `##families` LEFT OUTER JOIN `##name` husb ON f_husb=husb.n_id AND f_file=husb.n_file LEFT OUTER JOIN `##name` wife ON f_wife=wife.n_id AND f_file=wife.n_file WHERE (" . implode(" {$match} ", $querysql) . ') AND f_file IN (' . implode(',', $geds) . ')';
-
-	// Group results by gedcom, to minimise switching between privacy files
-	$sql .= ' ORDER BY gedcom_id';
+	$sql = "SELECT DISTINCT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom FROM `##families` LEFT OUTER JOIN `##name` husb ON f_husb=husb.n_id AND f_file=husb.n_file LEFT OUTER JOIN `##name` wife ON f_wife=wife.n_id AND f_file=wife.n_file WHERE (" . implode(" AND ", $querysql) . ') AND f_file IN (' . implode(',', $geds) . ')';
 
 	$list = array();
 	$rows = Database::prepare($sql)->fetchAll();
@@ -466,16 +437,10 @@ function search_fams_names($query, $geds, $match) {
  *
  * @param string[]  $query array of search terms
  * @param integer[] $geds  array of gedcoms to search
- * @param string    $match AND or OR
  *
  * @return Source[]
  */
-function search_sources($query, $geds, $match) {
-	// No query => no results
-	if (!$query) {
-		return array();
-	}
-
+function search_sources($query, $geds) {
 	// Convert the query into a SQL expression
 	$querysql = array();
 	// Convert the query into a regular expression
@@ -486,10 +451,7 @@ function search_sources($query, $geds, $match) {
 		$querysql[] = "s_gedcom LIKE " . Database::quote("%{$q}%") . " COLLATE '" . I18N::$collation . "'";
 	}
 
-	$sql = "SELECT s_id AS xref, s_file AS gedcom_id, s_gedcom AS gedcom FROM `##sources` WHERE (" . implode(" {$match} ", $querysql) . ') AND s_file IN (' . implode(',', $geds) . ')';
-
-	// Group results by gedcom, to minimise switching between privacy files
-	$sql .= ' ORDER BY gedcom_id';
+	$sql = "SELECT s_id AS xref, s_file AS gedcom_id, s_gedcom AS gedcom FROM `##sources` WHERE (" . implode(" AND ", $querysql) . ') AND s_file IN (' . implode(',', $geds) . ')';
 
 	$list = array();
 	$rows = Database::prepare($sql)->fetchAll();
@@ -520,16 +482,10 @@ function search_sources($query, $geds, $match) {
  *
  * @param string[]  $query array of search terms
  * @param integer[] $geds  array of gedcoms to search
- * @param string    $match AND or OR
  *
  * @return Note[]
  */
-function search_notes($query, $geds, $match) {
-	// No query => no results
-	if (!$query) {
-		return array();
-	}
-
+function search_notes($query, $geds) {
 	// Convert the query into a SQL expression
 	$querysql = array();
 	// Convert the query into a regular expression
@@ -540,10 +496,7 @@ function search_notes($query, $geds, $match) {
 		$querysql[] = "o_gedcom LIKE " . Database::quote("%{$q}%") . " COLLATE '" . I18N::$collation . "'";
 	}
 
-	$sql = "SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom FROM `##other` WHERE (" . implode(" {$match} ", $querysql) . ") AND o_type='NOTE' AND o_file IN (" . implode(',', $geds) . ')';
-
-	// Group results by gedcom, to minimise switching between privacy files
-	$sql .= ' ORDER BY gedcom_id';
+	$sql = "SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom FROM `##other` WHERE (" . implode(" AND ", $querysql) . ") AND o_type='NOTE' AND o_file IN (" . implode(',', $geds) . ')';
 
 	$list = array();
 	$rows = Database::prepare($sql)->fetchAll();
@@ -575,11 +528,10 @@ function search_notes($query, $geds, $match) {
  *
  * @param string[]  $query array of search terms
  * @param integer[] $geds  array of gedcoms to search
- * @param string    $match AND or OR
  *
  * @return Repository[]
  */
-function search_repos($query, $geds, $match) {
+function search_repos($query, $geds) {
 	// No query => no results
 	if (!$query) {
 		return array();
@@ -595,10 +547,7 @@ function search_repos($query, $geds, $match) {
 		$querysql[]   = "o_gedcom LIKE " . Database::quote("%{$q}%") . " COLLATE '" . I18N::$collation . "'";
 	}
 
-	$sql = "SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom FROM `##other` WHERE (" . implode(" {$match} ", $querysql) . ") AND o_type='REPO' AND o_file IN (" . implode(',', $geds) . ')';
-
-	// Group results by gedcom, to minimise switching between privacy files
-	$sql .= ' ORDER BY gedcom_id';
+	$sql = "SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom FROM `##other` WHERE (" . implode(" AND ", $querysql) . ") AND o_type='REPO' AND o_file IN (" . implode(',', $geds) . ')';
 
 	$list   = array();
 	$rows   = Database::prepare($sql)->fetchAll();

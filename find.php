@@ -484,7 +484,7 @@ if ($action == "filter") {
 	// Output Individual
 	if ($type == "indi") {
 		echo '<div id="find-output">';
-		$myindilist = search_indis_names($filter_array, array(WT_GED_ID), 'AND');
+		$myindilist = search_indis_names($filter_array, array(WT_GED_ID));
 		if ($myindilist) {
 			echo '<ul>';
 			usort($myindilist, __NAMESPACE__ . '\GedcomRecord::compare');
@@ -505,8 +505,8 @@ if ($action == "filter") {
 		// Get the famrecs with hits on names from the family table
 		// Get the famrecs with hits in the gedcom record from the family table
 		$myfamlist = array_unique(array_merge(
-			search_fams_names($filter_array, array(WT_GED_ID), 'AND'),
-			search_fams($filter_array, array(WT_GED_ID), 'AND')
+			search_fams_names($filter_array, array(WT_GED_ID)),
+			search_fams($filter_array, array(WT_GED_ID))
 		));
 
 		if ($myfamlist) {
@@ -612,7 +612,7 @@ if ($action == "filter") {
 	if ($type == "repo") {
 		echo '<div id="find-output">';
 		if ($filter) {
-			$repo_list = search_repos($filter_array, array(WT_GED_ID), 'AND');
+			$repo_list = search_repos($filter_array, array(WT_GED_ID));
 		} else {
 			$repo_list = get_repo_list(WT_GED_ID);
 		}
