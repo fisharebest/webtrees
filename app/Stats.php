@@ -2976,37 +2976,43 @@ class Stats {
 		} else {
 			$total = 10;
 		}
-		if ($age_dir == 'DESC') {
-			$query1 = ' MIN(wifebirth.d_julianday2-husbbirth.d_julianday1) AS age';
-			$query2 = ' wifebirth.d_julianday2 >= husbbirth.d_julianday1 AND husbbirth.d_julianday1 <> 0';
+		if ($age_dir === 'DESC') {
+			$sql =
+				"SELECT SQL_CACHE f_id AS xref, MIN(wife.d_julianday2-husb.d_julianday1) AS age" .
+				" FROM `##families`" .
+				" JOIN `##dates` AS wife ON wife.d_gid = f_wife AND wife.d_file = f_file" .
+				" JOIN `##dates` AS husb ON husb.d_gid = f_husb AND husb.d_file = f_file" .
+				" WHERE f_file = :tree_id" .
+				" AND husb.d_fact = 'BIRT'" .
+				" AND wife.d_fact = 'BIRT'" .
+				" AND wife.d_julianday2 >= husb.d_julianday1 AND husb.d_julianday1 <> 0" .
+				" GROUP BY xref" .
+				" ORDER BY age DESC" .
+				" LIMIT :limit";
 		} else {
-			$query1 = ' MIN(husbbirth.d_julianday2-wifebirth.d_julianday1) AS age';
-			$query2 = ' wifebirth.d_julianday1 < husbbirth.d_julianday2 AND wifebirth.d_julianday1 <> 0';
+			$sql =
+				"SELECT SQL_CACHE f_id AS xref, MIN(husb.d_julianday2-wife.d_julianday1) AS age" .
+				" FROM `##families`" .
+				" JOIN `##dates` AS wife ON wife.d_gid = f_wife AND wife.d_file = f_file" .
+				" JOIN `##dates` AS husb ON husb.d_gid = f_husb AND husb.d_file = f_file" .
+				" WHERE f_file = :tree_id" .
+				" AND husb.d_fact = 'BIRT'" .
+				" AND wife.d_fact = 'BIRT'" .
+				" AND husb.d_julianday2 >= wife.d_julianday1 AND wife.d_julianday1 <> 0" .
+				" GROUP BY xref" .
+				" ORDER BY age DESC" .
+				" LIMIT :limit";
 		}
 		$rows = Database::prepare(
-			"SELECT SQL_CACHE fam.f_id AS family," . $query1 .
-			" FROM `##families` AS fam" .
-			" LEFT JOIN `##dates` AS wifebirth ON wifebirth.d_file = :tree_id_1" .
-			" LEFT JOIN `##dates` AS husbbirth ON husbbirth.d_file = :tree_id_2" .
-			" WHERE" .
-			" fam.f_file = :tree_id_3 AND" .
-			" husbbirth.d_gid = fam.f_husb AND" .
-			" husbbirth.d_fact = 'BIRT' AND" .
-			" wifebirth.d_gid = fam.f_wife AND" .
-			" wifebirth.d_fact = 'BIRT' AND" .
-			$query2 .
-			" GROUP BY family" .
-			" ORDER BY age DESC LIMIT :limit"
+			$sql
 		)->execute(array(
-			'tree_id_1' => $this->tree->getTreeId(),
-			'tree_id_2' => $this->tree->getTreeId(),
-			'tree_id_3' => $this->tree->getTreeId(),
-			'limit'     => $total,
+			'tree_id' => $this->tree->getTreeId(),
+			'limit'   => $total,
 		))->fetchAll();
 
 		$top10 = array();
 		foreach ($rows as $fam) {
-			$family = Family::getInstance($fam->family, $this->tree->getTreeId());
+			$family = Family::getInstance($fam->xref, $this->tree->getTreeId());
 			if ($fam->age < 0) {
 				break;
 			}
