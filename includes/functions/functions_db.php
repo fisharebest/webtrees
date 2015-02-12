@@ -768,12 +768,6 @@ function get_top_surnames($ged_id, $min, $max) {
  * @return Fact[]
  */
 function get_anniversary_events($jd, $facts = '', $ged_id = WT_GED_ID) {
-	// If no facts specified, get all except these
-	$skipfacts = "CHAN,BAPL,SLGC,SLGS,ENDL,CENS,RESI,NOTE,ADDR,OBJE,SOUR,PAGE,DATA,TEXT";
-	if ($facts != '_TODO') {
-		$skipfacts .= ',_TODO';
-	}
-
 	$found_facts = array();
 	foreach (array(
 		new GregorianDate($jd),
@@ -784,123 +778,150 @@ function get_anniversary_events($jd, $facts = '', $ged_id = WT_GED_ID) {
 		new JalaliDate($jd),
 	) as $anniv) {
 		// Build a SQL where clause to match anniversaries in the appropriate calendar.
-		$where = "WHERE d_type='" . $anniv->Format('%@') . "'";
+		$ind_sql =
+			"SELECT DISTINCT 'INDI' AS type, i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact" .
+			" FROM `##dates` JOIN `##individuals` ON d_gid = i_id AND d_file = i_file" .
+			" WHERE d_type = :type AND d_file = :tree_id";
+		$fam_sql =
+			"SELECT DISTINCT 'FAM'  AS type, f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact" .
+			" FROM `##dates` JOIN `##families` ON d_gid = f_id AND d_file = f_file" .
+			" WHERE d_type = :type AND d_file = :tree_id";
+		$args = array(
+			'type'    => $anniv->Format('%@'),
+			'tree_id' => $ged_id,
+		);
+
+		$where = "";
 		// SIMPLE CASES:
 		// a) Non-hebrew anniversaries
 		// b) Hebrew months TVT, SHV, IYR, SVN, TMZ, AAV, ELL
 		if (!$anniv instanceof JewishDate || in_array($anniv->m, array(1, 5, 6, 9, 10, 11, 12, 13))) {
 			// Dates without days go on the first day of the month
 			// Dates with invalid days go on the last day of the month
-			if ($anniv->d == 1) {
-				$where .= " AND d_day<=1";
-			} else
-				if ($anniv->d == $anniv->daysInMonth()) {
-					$where .= " AND d_day>={$anniv->d}";
-				} else {
-					$where .= " AND d_day={$anniv->d}";
-				}
-			$where .= " AND d_mon={$anniv->m}";
+			if ($anniv->d === 1) {
+				$where .= " AND d_day <= 1";
+			} elseif ($anniv->d === $anniv->daysInMonth()) {
+				$where .= " AND d_day >= :day";
+				$args['day'] = $anniv->d;
+			} else {
+				$where .= " AND d_day = :day";
+				$args['day'] = $anniv->d;
+			}
+			$where .= " AND d_mon = :month";
+			$args['month'] = $anniv->m;
 		} else {
 			// SPECIAL CASES:
 			switch ($anniv->m) {
 			case 2:
 				// 29 CSH does not include 30 CSH (but would include an invalid 31 CSH if there were no 30 CSH)
-				if ($anniv->d == 1) {
-					$where .= " AND d_day<=1 AND d_mon=2";
-				} elseif ($anniv->d == 30) {
-					$where .= " AND d_day>=30 AND d_mon=2";
-				} elseif ($anniv->d == 29 && $anniv->daysInMonth() == 29) {
-					$where .= " AND (d_day=29 OR d_day>30) AND d_mon=2";
+				if ($anniv->d === 1) {
+					$where .= " AND d_day <= 1 AND d_mon = 2";
+				} elseif ($anniv->d === 30) {
+					$where .= " AND d_day >= 30 AND d_mon = 2";
+				} elseif ($anniv->d === 29 && $anniv->daysInMonth() === 29) {
+					$where .= " AND (d_day = 29 OR d_day > 30) AND d_mon = 2";
 				} else {
-					$where .= " AND d_day={$anniv->d} AND d_mon=2";
+					$where .= " AND d_day = :day AND d_mon = 2";
+					$args['day'] = $anniv->d;
 				}
 				break;
 			case 3:
 				// 1 KSL includes 30 CSH (if this year didn’t have 30 CSH)
 				// 29 KSL does not include 30 KSL (but would include an invalid 31 KSL if there were no 30 KSL)
-				if ($anniv->d == 1) {
+				if ($anniv->d === 1) {
 					$tmp = new JewishDate(array($anniv->y, 'CSH', 1));
-					if ($tmp->daysInMonth() == 29) {
-						$where .= " AND (d_day<=1 AND d_mon=3 OR d_day=30 AND d_mon=2)";
+					if ($tmp->daysInMonth() === 29) {
+						$where .= " AND (d_day <= 1 AND d_mon = 3 OR d_day = 30 AND d_mon = 2)";
 					} else {
-						$where .= " AND d_day<=1 AND d_mon=3";
+						$where .= " AND d_day <= 1 AND d_mon = 3";
 					}
-				} else
-					if ($anniv->d == 30) {
-						$where .= " AND d_day>=30 AND d_mon=3";
-					} elseif ($anniv->d == 29 && $anniv->daysInMonth() == 29) {
-						$where .= " AND (d_day=29 OR d_day>30) AND d_mon=3";
-					} else {
-						$where .= " AND d_day={$anniv->d} AND d_mon=3";
-					}
+				} elseif ($anniv->d === 30) {
+					$where .= " AND d_day >= 30 AND d_mon = 3";
+				} elseif ($anniv->d == 29 && $anniv->daysInMonth() === 29) {
+					$where .= " AND (d_day = 29 OR d_day > 30) AND d_mon = 3";
+				} else {
+					$where .= " AND d_day = :day AND d_mon = 3";
+					$args['day'] = $anniv->d;
+				}
 				break;
 			case 4:
 				// 1 TVT includes 30 KSL (if this year didn’t have 30 KSL)
-				if ($anniv->d == 1) {
+				if ($anniv->d === 1) {
 					$tmp = new JewishDate(array($anniv->y, 'KSL', 1));
-					if ($tmp->daysInMonth() == 29) {
-						$where .= " AND (d_day<=1 AND d_mon=4 OR d_day=30 AND d_mon=3)";
+					if ($tmp->daysInMonth() === 29) {
+						$where .= " AND (d_day <=1 AND d_mon = 4 OR d_day = 30 AND d_mon = 3)";
 					} else {
-						$where .= " AND d_day<=1 AND d_mon=4";
+						$where .= " AND d_day <= 1 AND d_mon = 4";
 					}
-				} else
-					if ($anniv->d == $anniv->daysInMonth()) {
-						$where .= " AND d_day>={$anniv->d} AND d_mon=4";
-					} else {
-						$where .= " AND d_day={$anniv->d} AND d_mon=4";
-					}
+				} elseif ($anniv->d === $anniv->daysInMonth()) {
+					$where .= " AND d_day >= :day AND d_mon=4";
+					$args['day'] = $anniv->d;
+				} else {
+					$where .= " AND d_day = :day AND d_mon=4";
+					$args['day'] = $anniv->d;
+				}
 				break;
 			case 7: // ADS includes ADR (non-leap)
-				if ($anniv->d == 1) {
-					$where .= " AND d_day<=1";
-				} elseif ($anniv->d == $anniv->daysInMonth()) {
-					$where .= " AND d_day>={$anniv->d}";
+				if ($anniv->d === 1) {
+					$where .= " AND d_day <= 1";
+				} elseif ($anniv->d === $anniv->daysInMonth()) {
+					$where .= " AND d_day >= :day";
+					$args['day'] = $anniv->d;
 				} else {
-					$where .= " AND d_day={$anniv->d}";
+					$where .= " AND d_day = :day";
+					$args['day'] = $anniv->d;
 				}
-				$where .= " AND (d_mon=6 AND MOD(7*d_year+1, 19)>=7 OR d_mon=7)";
+				$where .= " AND (d_mon = 6 AND MOD(7 * d_year + 1, 19) >= 7 OR d_mon = 7)";
 				break;
 			case 8: // 1 NSN includes 30 ADR, if this year is non-leap
-				if ($anniv->d == 1) {
+				if ($anniv->d === 1) {
 					if ($anniv->isLeapYear()) {
-						$where .= " AND d_day<=1 AND d_mon=8";
+						$where .= " AND d_day <= 1 AND d_mon = 8";
 					} else {
-						$where .= " AND (d_day<=1 AND d_mon=8 OR d_day=30 AND d_mon=6)";
+						$where .= " AND (d_day <= 1 AND d_mon = 8 OR d_day = 30 AND d_mon = 6)";
 					}
-				} elseif ($anniv->d == $anniv->daysInMonth()) {
-					$where .= " AND d_day>={$anniv->d} AND d_mon=8";
+				} elseif ($anniv->d === $anniv->daysInMonth()) {
+					$where .= " AND d_day >= :day AND d_mon = 8";
+					$args['day'] = $anniv->d;
 				} else {
-					$where .= " AND d_day={$anniv->d} AND d_mon=8";
+					$where .= " AND d_day = :day AND d_mon = 8";
+					$args['day'] = $anniv->d;
 				}
 				break;
 			}
 		}
 		// Only events in the past (includes dates without a year)
-		$where .= " AND d_year<={$anniv->y}";
-		// Restrict to certain types of fact
-		if (empty($facts)) {
-			$excl_facts = "'" . preg_replace('/\W+/', "','", $skipfacts) . "'";
-			$where .= " AND d_fact NOT IN ({$excl_facts})";
+		$where .= " AND d_year <= :year";
+		$args['year'] = $anniv->y;
+
+		if ($facts) {
+			// Restrict to certain types of fact
+			$where .= " AND d_fact IN (";
+			preg_match_all('/([_A-Z]+)/', $facts, $matches);
+			foreach ($matches[1] as $n => $fact) {
+				$where .= $n ? ", " : "";
+				$where .= ":fact_" . $n;
+				$args['fact_' . $n] = $fact;
+			}
+			$where .= ")";
 		} else {
-			$incl_facts = "'" . preg_replace('/\W+/', "','", $facts) . "'";
-			$where .= " AND d_fact IN ({$incl_facts})";
+			// If no facts specified, get all except these
+			$where .= " AND d_fact NOT IN ('CHAN', 'BAPL', 'SLGC', 'SLGS', 'ENDL', 'CENS', 'RESI', '_TODO')";
 		}
-		// Only get events from the current gedcom
-		$where .= " AND d_file=" . $ged_id;
+
+		$order_by = " ORDER BY d_day, d_year DESC";
 
 		// Now fetch these anniversaries
-		$ind_sql = "SELECT DISTINCT 'INDI' AS type, i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact FROM `##dates`, `##individuals` {$where} AND d_gid=i_id AND d_file=i_file ORDER BY d_day ASC, d_year DESC";
-		$fam_sql = "SELECT DISTINCT 'FAM'  AS type, f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact FROM `##dates`, `##families` {$where} AND d_gid=f_id AND d_file=f_file ORDER BY d_day ASC, d_year DESC";
-		foreach (array($ind_sql, $fam_sql) as $sql) {
-			$rows = Database::prepare($sql)->fetchAll();
+		foreach (array($ind_sql . $where . $order_by, $fam_sql . $where . $order_by) as $sql) {
+			$rows = Database::prepare($sql)->execute($args)->fetchAll();
 			foreach ($rows as $row) {
-				if ($row->type == 'INDI') {
+				if ($row->type === 'INDI') {
 					$record = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 				} else {
 					$record = Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 				}
 				$anniv_date = new Date($row->d_type . ' ' . $row->d_day . ' ' . $row->d_month . ' ' . $row->d_year);
-				foreach ($record->getFacts(str_replace(' ', '|', $facts)) as $fact) {
+				foreach ($record->getFacts() as $fact) {
 					if (($fact->getDate()->MinDate() == $anniv_date->MinDate() || $fact->getDate()->MaxDate() == $anniv_date->MinDate()) && $fact->getTag() === $row->d_fact) {
 						$fact->anniv = $row->d_year === 0 ? 0 : $anniv->y - $row->d_year;
 						$found_facts[] = $fact;
