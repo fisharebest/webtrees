@@ -683,14 +683,14 @@ class ReportHtml extends ReportBase {
 	 */
 	function write($text, $color = '', $useclass = true) {
 		$style = $this->getStyle($this->getCurrentStyle());
-		$htmlcode = '<span dir="'. I18N::direction() . '"';
+		$htmlcode = '<span dir="' . I18N::direction() . '"';
 		if ($useclass) {
 			$htmlcode .= ' class="' . $style['name'] . '"';
 		}
 		if (!empty($color)) {
 			// Check if Text Color is set and if it’s valid HTML color
 			if (preg_match('/#?(..)(..)(..)/', $color)) {
-				$htmlcode .= ' style="color:' . $color  . ';"';
+				$htmlcode .= ' style="color:' . $color . ';"';
 			}
 		}
 

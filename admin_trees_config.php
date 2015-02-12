@@ -540,7 +540,7 @@ $controller
 			</div>
 		</div>
 		<div class="col-sm-8">
-			<?php echo select_edit_control('SHOW_PRIVATE_RELATIONSHIPS', array('0' => I18N::translate('Hide from everyone'), '1' => I18N::translate('Show to members')), null, $WT_TREE->getPreference('SHOW_PRIVATE_RELATIONSHIPS'), 'class="form-control"'); ?>
+			<?php echo select_edit_control('SHOW_PRIVATE_RELATIONSHIPS', array('0' => I18N::translate('Hide from everyone'), '1' => I18N::translate('Show to visitors')), null, $WT_TREE->getPreference('SHOW_PRIVATE_RELATIONSHIPS'), 'class="form-control"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Show private relationships” configuration setting */ I18N::translate('This option will retain family links in private records.  This means that you will see empty “private” boxes on the pedigree chart and on other charts with private individuals.'); ?>
 			</p>

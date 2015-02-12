@@ -121,9 +121,9 @@ class AdvancedSearchController extends SearchController {
 		preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('INDI_FACTS_ADD'), $facts);
 		foreach ($facts[1] as $fact) {
 			if (
-				$fact!='BIRT' &&
-				$fact!='DEAT' &&
-				$fact!='ASSO' &&
+				$fact !== 'BIRT' &&
+				$fact !== 'DEAT' &&
+				$fact !== 'ASSO' &&
 				!in_array($fact, $ofields) &&
 				!in_array("{$fact}:DATE", $ofields) &&
 				!in_array("{$fact}:PLAC", $ofields)

@@ -203,7 +203,7 @@ class Place {
 			Database::prepare(
 				"SELECT SQL_CACHE CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place)" .
 				" FROM      `##places` AS p1" .
-				" LEFT JOIN `##places` AS p2 ON (p1.p_parent_id =p 2.p_id)" .
+				" LEFT JOIN `##places` AS p2 ON (p1.p_parent_id = p2.p_id)" .
 				" LEFT JOIN `##places` AS p3 ON (p2.p_parent_id = p3.p_id)" .
 				" LEFT JOIN `##places` AS p4 ON (p3.p_parent_id = p4.p_id)" .
 				" LEFT JOIN `##places` AS p5 ON (p4.p_parent_id = p5.p_id)" .
@@ -212,10 +212,11 @@ class Place {
 				" LEFT JOIN `##places` AS p8 ON (p7.p_parent_id = p8.p_id)" .
 				" LEFT JOIN `##places` AS p9 ON (p8.p_parent_id = p9.p_id)" .
 				" WHERE p1.p_file = :tree_id" .
-				" ORDER BY CONCAT_WS(', ', p9.p_place, p8.p_place, p7.p_place, p6.p_place, p5.p_place, p4.p_place, p3.p_place, p2.p_place, p1.p_place) COLLATE '" . I18N::$collation . "'"
+				" ORDER BY CONCAT_WS(', ', p9.p_place, p8.p_place, p7.p_place, p6.p_place, p5.p_place, p4.p_place, p3.p_place, p2.p_place, p1.p_place) COLLATE :collate"
 			)
 			->execute(array(
-				'tree_id' => $tree->getTreeId()
+				'tree_id' => $tree->getTreeId(),
+				'collate' => I18N::$collation,
 			))->fetchOneColumn();
 		foreach ($rows as $row) {
 			$places[] = new Place($row, $tree);

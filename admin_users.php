@@ -152,7 +152,7 @@ case 'load_json':
 		" LEFT JOIN `##user_setting` us5 ON (u.user_id=us5.user_id AND us5.setting_name='verified_by_admin')" .
 		" WHERE u.user_id > 0";
 
-	$args  = array();
+	$args = array();
 
 	if ($search) {
 		$sql_select .= " AND (user_name LIKE CONCAT('%', :search_1, '%') OR real_name LIKE CONCAT('%', :search_2, '%') OR email LIKE CONCAT('%', :search_3, '%'))";

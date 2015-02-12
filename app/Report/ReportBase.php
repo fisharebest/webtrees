@@ -2289,14 +2289,13 @@ function listStartHandler($attrs) {
 			$list[] = GedcomRecord::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		}
 		break;
-	case "individual":
-	case "family":
-		$sql_col_prefix = substr($listname, 0, 1) . "_"; // i_ for individual, f_ for family, etc.
-		$sql_join = array();
-		$sql_where = array($sql_col_prefix . "file=" . WT_GED_ID);
-		$sql_order_by = array();
+	case 'individual':
+		$sql_select   = "SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom FROM `##individuals` ";
+		$sql_join     = "";
+		$sql_where    = " WHERE i_file = " . WT_GED_ID;
+		$sql_order_by = "";
 		foreach ($attrs as $attr => $value) {
-			if ((strpos($attr, "filter") === 0) && $value) {
+			if (strpos($attr, 'filter') === 0 && $value) {
 				// Substitute global vars
 				$value = preg_replace_callback(
 					'/\$(\w+)/',
@@ -2307,106 +2306,153 @@ function listStartHandler($attrs) {
 				);
 				// Convert the various filters into SQL
 				if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
-					$sql_join[] = "JOIN `##dates` AS {$attr} ON ({$attr}.d_file={$sql_col_prefix}file AND {$attr}.d_gid={$sql_col_prefix}id)";
-					$sql_where[] = "{$attr}.d_fact='{$match[1]}'";
+					$sql_join .= " JOIN `##dates` AS {$attr} ON ({$attr}.d_file=i_file AND {$attr}.d_gid=i_id)";
+					$sql_where .= " AND {$attr}.d_fact='{$match[1]}'";
 					$date = new Date($match[3]);
 					if ($match[2] == "LTE") {
-						$sql_where[] = "{$attr}.d_julianday2<=" . $date->minJD();
+						$sql_where .= " AND {$attr}.d_julianday2<=" . $date->minJD();
 					} else {
-						$sql_where[] = "{$attr}.d_julianday1>=" . $date->minJD();
+						$sql_where[] = " AND {$attr}.d_julianday1>=" . $date->minJD();
 					}
 					if ($sortby == $match[1]) {
 						$sortby = "";
-						$sql_order_by[] = "{$attr}.d_julianday1";
+						$sql_order_by .= ($sql_order_by ? ", " : " ORDER BY ") . "{$attr}.d_julianday1";
 					}
 					unset($attrs[$attr]); // This filter has been fully processed
-				} elseif (($listname == "individual") && (preg_match('/^NAME CONTAINS (.*)$/', $value, $match))) {
+				} elseif (preg_match('/^NAME CONTAINS (.*)$/', $value, $match)) {
 					// Do nothing, unless you have to
 					if (($match[1] != "") or ($sortby == "NAME")) {
-						$sql_join[] = "JOIN `##name` AS {$attr} ON (n_file={$sql_col_prefix}file AND n_id={$sql_col_prefix}id)";
+						$sql_join .= " JOIN `##name` AS {$attr} ON (n_file=i_file AND n_id=i_id)";
 						// Search the DB only if there is any name supplied
 						if ($match[1] != "") {
 							$names = explode(" ", $match[1]);
 							foreach ($names as $name) {
-								$sql_where[] = "{$attr}.n_full LIKE " . Database::quote("%{$name}%");
+								$sql_where .= " AND {$attr}.n_full LIKE " . Database::quote("%{$name}%");
 							}
 						}
 						// Let the DB do the name sorting even when no name was entered
 						if ($sortby == "NAME") {
 							$sortby = "";
-							$sql_order_by[] = "{$attr}.n_sort";
+							$sql_order_by .= ($sql_order_by ? ", " : " ORDER BY ") . "{$attr}.n_sort";
 						}
 					}
 					unset($attrs[$attr]); // This filter has been fully processed
-				} elseif (($listname == "individual") && (preg_match('/^REGEXP \/(.+)\//', $value, $match))) {
-					$sql_where[] = "i_gedcom REGEXP '" . $match[1] . "'";
-					unset($attrs[$attr]); // This filter has been fully processed
-				} elseif (($listname == "family") && (preg_match('/^REGEXP \/(.+)\//', $value, $match))) {
-					$sql_where[] = "f_gedcom REGEXP '" . $match[1] . "'";
-					unset($attrs[$attr]); // This filter has been fully processed
-				} elseif (($listname == "family") && (preg_match('/^NAME CONTAINS (.+)$/', $value, $match))) {
-					// Eventually, family "names" will be stored in wt_name.  Until then, an extra is needed....
-					$sql_join[] = "JOIN `##link` AS {$attr}a ON ({$attr}a.l_file={$sql_col_prefix}file AND {$attr}a.l_from={$sql_col_prefix}id)";
-					$sql_join[] = "JOIN `##name` AS {$attr}b ON ({$attr}b.n_file={$sql_col_prefix}file AND n_id={$sql_col_prefix}id)";
-					$sql_where[] = "{$attr}a.l_type=IN ('HUSB, 'WIFE')";
-					$sql_where[] = "{$attr}.n_full LIKE " . Database::quote("%{$match[1]}%");
-					if ($sortby == "NAME") {
-						$sortby = "";
-						$sql_order_by[] = "{$attr}.n_sort";
-					}
+				} elseif (preg_match('/^REGEXP \/(.+)\//', $value, $match)) {
+					$sql_where .= " AND i_gedcom REGEXP '" . $match[1] . "'";
 					unset($attrs[$attr]); // This filter has been fully processed
 				} elseif (preg_match('/^(?:\w+):PLAC CONTAINS (.+)$/', $value, $match)) {
-					$sql_join[] = "JOIN `##places` AS {$attr}a ON ({$attr}a.p_file={$sql_col_prefix}file)";
-					$sql_join[] = "JOIN `##placelinks` AS {$attr}b ON ({$attr}a.p_file={$attr}b.pl_file AND {$attr}b.pl_p_id={$attr}a.p_id AND {$attr}b.pl_gid={$sql_col_prefix}id)";
-					$sql_where[] = "{$attr}a.p_place LIKE " . Database::quote("%{$match[1]}%");
-					// Don't unset this filter. This is just the first primary PLAC filter to reduce the returned list from the DB
-				} /**
-				 * General Purpose DB Filter for Individual and Family Lists
-				 * Place any other filter before these filters because they will pick up any filters that has not been processed
-				 * Also, do not unset() these two filters. These are just the first primary filters to reduce the returned list from the DB
-				 */ elseif ($listname == "individual" && preg_match('/^(\w*):*(\w*) CONTAINS (.+)$/', $value, $match)) {
+					$sql_join .= " JOIN `##places` AS {$attr}a ON ({$attr}a.p_file=i_file)";
+					$sql_join .= " JOIN `##placelinks` AS {$attr}b ON ({$attr}a.p_file={$attr}b.pl_file AND {$attr}b.pl_p_id={$attr}a.p_id AND {$attr}b.pl_gid=i_id)";
+					$sql_where .= " AND {$attr}a.p_place LIKE " . Database::quote("%{$match[1]}%");
+					// Don't unset this filter. This is just initial filtering
+				} elseif (preg_match('/^(\w*):*(\w*) CONTAINS (.+)$/', $value, $match)) {
 					$query = "";
 					// Level 1 tag
-					if ($match[1] != "") {
+					if ($match[1] !== '') {
 						$query .= "%1 {$match[1]}%";
 					}
 					// Level 2 tag
-					if ($match[2] != "") {
+					if ($match[2] !== '') {
 						$query .= "%2 {$match[2]}%";
 					}
 					// Contains what?
-					if ($match[3] != "") {
+					if ($match[3] !== '') {
 						$query .= "%{$match[3]}%";
 					}
-					$sql_where[] = "i_gedcom LIKE " . Database::quote($query);
-				} elseif ($listname == "family" && preg_match('/^(\w*):*(\w*) CONTAINS (.+)$/', $value, $match)) {
-					$query = "";
-					// Level 1 tag
-					if ($match[1] != "") {
-						$query .= "%1 {$match[1]}%";
-					}
-					// Level 2 tag
-					if ($match[2] != "") {
-						$query .= "%2 {$match[2]}%";
-					}
-					// Contains what?
-					if ($match[3] != "") {
-						$query .= "%{$match[3]}%";
-					}
-					$sql_where[] = "f_gedcom LIKE " . Database::quote($query);
-				} else {
-					// What other filters can we apply in SQL?
+					$sql_where .= " AND i_gedcom LIKE " . Database::quote($query);
+					// Don't unset this filter. This is just initial filtering
 				}
 			}
 		}
-		if ($listname == "family") {
-			$list = search_fams_custom($sql_join, $sql_where, $sql_order_by);
-		} else {
-			$list = search_indis_custom($sql_join, $sql_where, $sql_order_by);
+
+		$list = array();
+		$rows = Database::prepare(
+			$sql_select . $sql_join . $sql_where . $sql_order_by
+		)->fetchAll();
+
+		foreach ($rows as $row) {
+			$list[] = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		}
-		// Clean up the SQL queries - they will not be used again
-		unset($sql_join, $sql_where, $sql_order_by);
 		break;
+
+	case 'family':
+		$sql_select   = "SELECT DISTINCT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom FROM `##families`";
+		$sql_join     = "";
+		$sql_where    = " WHERE f_file=" . WT_GED_ID;
+		$sql_order_by = "";
+		foreach ($attrs as $attr => $value) {
+			if (strpos($attr, 'filter') === 0 && $value) {
+				// Substitute global vars
+				$value = preg_replace_callback(
+					'/\$(\w+)/',
+					function($matches) use ($vars) {
+						return $vars[$matches[1]]['id'];
+					},
+					$value
+				);
+				// Convert the various filters into SQL
+				if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
+					$sql_join .= " JOIN `##dates` AS {$attr} ON ({$attr}.d_file=f_file AND {$attr}.d_gid=f_id)";
+					$sql_where .= " AND {$attr}.d_fact='{$match[1]}'";
+					$date = new Date($match[3]);
+					if ($match[2] == "LTE") {
+						$sql_where .= " AND {$attr}.d_julianday2<=" . $date->minJD();
+					} else {
+						$sql_where .= " AND {$attr}.d_julianday1>=" . $date->minJD();
+					}
+					if ($sortby == $match[1]) {
+						$sortby = "";
+						$sql_order_by .= ($sql_order_by ? ", " : " ORDER BY ") . "{$attr}.d_julianday1";
+					}
+					unset($attrs[$attr]); // This filter has been fully processed
+				} elseif (preg_match('/^REGEXP \/(.+)\//', $value, $match)) {
+					$sql_where .= " AND f_gedcom REGEXP '" . $match[1] . "'";
+					unset($attrs[$attr]); // This filter has been fully processed
+				} elseif (preg_match('/^NAME CONTAINS (.+)$/', $value, $match)) {
+					$sql_join .= " JOIN `##link` AS {$attr}a ON ({$attr}a.l_file=f_file AND {$attr}a.l_from=f_id)";
+					$sql_join .= " JOIN `##name` AS {$attr}b ON ({$attr}b.n_file=f_file AND n_id=f_id)";
+					$sql_where .= " AND {$attr}a.l_type=IN ('HUSB, 'WIFE')";
+					$sql_where .= " AND {$attr}.n_full LIKE " . Database::quote("%{$match[1]}%");
+					if ($sortby == "NAME") {
+						$sortby = "";
+						$sql_order_by .= ($sql_order_by ? ", " : " ORDER BY ") . "{$attr}.n_sort";
+					}
+					unset($attrs[$attr]); // This filter has been fully processed
+				} elseif (preg_match('/^(?:\w+):PLAC CONTAINS (.+)$/', $value, $match)) {
+					$sql_join .= " JOIN `##places` AS {$attr}a ON ({$attr}a.p_file=f_file)";
+					$sql_join .= " JOIN `##placelinks` AS {$attr}b ON ({$attr}a.p_file={$attr}b.pl_file AND {$attr}b.pl_p_id={$attr}a.p_id AND {$attr}b.pl_gid=f_id)";
+					$sql_where .= " AND {$attr}a.p_place LIKE " . Database::quote("%{$match[1]}%");
+					// Don't unset this filter. This is just initial filtering
+				} elseif (preg_match('/^(\w*):*(\w*) CONTAINS (.+)$/', $value, $match)) {
+					$query = "";
+					// Level 1 tag
+					if ($match[1] !== '') {
+						$query .= "%1 {$match[1]}%";
+					}
+					// Level 2 tag
+					if ($match[2] !== '') {
+						$query .= "%2 {$match[2]}%";
+					}
+					// Contains what?
+					if ($match[3] !== '') {
+						$query .= "%{$match[3]}%";
+					}
+					$sql_where .= " AND f_gedcom LIKE " . Database::quote($query);
+					// Don't unset this filter. This is just initial filtering
+				}
+			}
+		}
+
+		$list = array();
+		$rows = Database::prepare(
+			$sql_select . $sql_join . $sql_where . $sql_order_by
+		)->fetchAll();
+
+		foreach ($rows as $row) {
+			$list[] = Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		}
+		break;
+
 	default:
 		throw new \DomainException('Invalid list name: ' . $listname);
 	}

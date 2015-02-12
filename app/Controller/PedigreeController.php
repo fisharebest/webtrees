@@ -46,7 +46,6 @@ class PedigreeController extends ChartController {
 		parent::__construct();
 		$this->show_full            = Filter::getInteger('show_full', 0, 1, $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS'));
 		$this->talloffset           = Filter::getInteger('talloffset', 0, 3, $WT_TREE->getPreference('PEDIGREE_LAYOUT'));
-		$this->box_width            = Filter::getInteger('box_width', 50, 300, 100);
 		$this->PEDIGREE_GENERATIONS = Filter::getInteger('PEDIGREE_GENERATIONS', 2, $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS'), $WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
 
 		// With more than 8 generations, we run out of pixels on the <canvas>
