@@ -502,28 +502,37 @@ function search_fams_names($query, $tree_ids) {
 }
 
 /**
- * Search the gedcom records of sources
+ * Search the sources
  *
- * @param string[]  $query array of search terms
- * @param integer[] $geds  array of gedcoms to search
+ * @param string[]  $query    Search terms
+ * @param integer[] $tree_ids The tree to search
  *
  * @return Source[]
  */
-function search_sources($query, $geds) {
-	// Convert the query into a SQL expression
-	$querysql = array();
+function search_sources($query, $tree_ids) {
 	// Convert the query into a regular expression
 	$queryregex = array();
 
-	foreach ($query as $q) {
+	$sql  = "SELECT s_id AS xref, s_file AS gedcom_id, s_gedcom AS gedcom FROM `##sources` WHERE 1";
+	$args = array();
+
+	foreach ($query as $n => $q) {
 		$queryregex[] = preg_quote(I18N::strtoupper($q), '/');
-		$querysql[] = "s_gedcom LIKE " . Database::quote("%{$q}%") . " COLLATE '" . I18N::$collation . "'";
+		$sql .= " AND s_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
+		$args['collate_' . $n] = I18N::$collation;
+		$args['query_' . $n]   = Filter::escapeLike($q);
 	}
 
-	$sql = "SELECT s_id AS xref, s_file AS gedcom_id, s_gedcom AS gedcom FROM `##sources` WHERE (" . implode(" AND ", $querysql) . ') AND s_file IN (' . implode(',', $geds) . ')';
+	$sql .= " AND s_file IN (";
+	foreach ($tree_ids as $n => $tree_id) {
+		$sql .= $n ? ", " : "";
+		$sql .= ":tree_id_" . $n;
+		$args['tree_id_' . $n] = $tree_id;
+	}
+	$sql .= ")";
 
 	$list = array();
-	$rows = Database::prepare($sql)->fetchAll();
+	$rows = Database::prepare($sql)->execute($args)->fetchAll();
 	foreach ($rows as $row) {
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
 		$record = Source::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
@@ -549,26 +558,35 @@ function search_sources($query, $geds) {
 /**
  * Search the shared notes
  *
- * @param string[]  $query array of search terms
- * @param integer[] $geds  array of gedcoms to search
+ * @param string[]  $query    Search terms
+ * @param integer[] $tree_ids The tree to search
  *
  * @return Note[]
  */
-function search_notes($query, $geds) {
-	// Convert the query into a SQL expression
-	$querysql = array();
+function search_notes($query, $tree_ids) {
 	// Convert the query into a regular expression
 	$queryregex = array();
 
-	foreach ($query as $q) {
+	$sql  = "SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom FROM `##other` WHERE o_type = 'NOTE'";
+	$args = array();
+
+	foreach ($query as $n => $q) {
 		$queryregex[] = preg_quote(I18N::strtoupper($q), '/');
-		$querysql[] = "o_gedcom LIKE " . Database::quote("%{$q}%") . " COLLATE '" . I18N::$collation . "'";
+		$sql .= " AND o_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
+		$args['collate_' . $n] = I18N::$collation;
+		$args['query_' . $n]   = Filter::escapeLike($q);
 	}
 
-	$sql = "SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom FROM `##other` WHERE (" . implode(" AND ", $querysql) . ") AND o_type='NOTE' AND o_file IN (" . implode(',', $geds) . ')';
+	$sql .= " AND o_file IN (";
+	foreach ($tree_ids as $n => $tree_id) {
+		$sql .= $n ? ", " : "";
+		$sql .= ":tree_id_" . $n;
+		$args['tree_id_' . $n] = $tree_id;
+	}
+	$sql .= ")";
 
 	$list = array();
-	$rows = Database::prepare($sql)->fetchAll();
+	$rows = Database::prepare($sql)->execute($args)->fetchAll();
 	foreach ($rows as $row) {
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
 		$record = Note::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
@@ -593,33 +611,37 @@ function search_notes($query, $geds) {
 
 
 /**
- * Search the gedcom records of repositories
+ * Search the repositories
  *
- * @param string[]  $query array of search terms
- * @param integer[] $geds  array of gedcoms to search
+ * @param string[]  $query    Search terms
+ * @param integer[] $tree_ids The tree to search
  *
  * @return Repository[]
  */
-function search_repos($query, $geds) {
-	// No query => no results
-	if (!$query) {
-		return array();
-	}
-
-	// Convert the query into a SQL expression
-	$querysql = array();
+function search_repos($query, $tree_ids) {
 	// Convert the query into a regular expression
 	$queryregex = array();
 
-	foreach ($query as $q) {
+	$sql  = "SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom FROM `##other` WHERE o_type = 'REPO'";
+	$args = array();
+
+	foreach ($query as $n => $q) {
 		$queryregex[] = preg_quote(I18N::strtoupper($q), '/');
-		$querysql[]   = "o_gedcom LIKE " . Database::quote("%{$q}%") . " COLLATE '" . I18N::$collation . "'";
+		$sql .= " AND o_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
+		$args['collate_' . $n] = I18N::$collation;
+		$args['query_' . $n]   = Filter::escapeLike($q);
 	}
 
-	$sql = "SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom FROM `##other` WHERE (" . implode(" AND ", $querysql) . ") AND o_type='REPO' AND o_file IN (" . implode(',', $geds) . ')';
+	$sql .= " AND o_file IN (";
+	foreach ($tree_ids as $n => $tree_id) {
+		$sql .= $n ? ", " : "";
+		$sql .= ":tree_id_" . $n;
+		$args['tree_id_' . $n] = $tree_id;
+	}
+	$sql .= ")";
 
-	$list   = array();
-	$rows   = Database::prepare($sql)->fetchAll();
+	$list = array();
+	$rows = Database::prepare($sql)->execute($args)->fetchAll();
 	foreach ($rows as $row) {
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
 		$record = Repository::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
