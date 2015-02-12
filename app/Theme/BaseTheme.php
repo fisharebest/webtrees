@@ -656,7 +656,7 @@ abstract class BaseTheme {
 	 */
 	public function individualBox(Individual $individual) {
 		$personBoxClass = array_search($individual->getSex(), array('person_box' => 'M', 'person_boxF' => 'F', 'person_boxNN' => 'U'));
-		if ($individual->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
+		if ($individual->canShow() && $individual->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
 			$thumbnail = $individual->displayImage();
 		} else {
 			$thumbnail = '';
