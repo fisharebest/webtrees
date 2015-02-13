@@ -28,6 +28,12 @@ require './includes/session.php';
 
 /**
  * Month of birth
+ *
+ * @param integer   $z_axis
+ * @param integer[] $z_boundaries
+ * @param Stats     $stats
+ *
+ * @return int
  */
 function month_of_birth($z_axis, array $z_boundaries, Stats $stats) {
 	$total = 0;
@@ -78,6 +84,12 @@ function month_of_birth($z_axis, array $z_boundaries, Stats $stats) {
 
 /**
  * Month of birth of first child in a relation
+ *
+ * @param integer   $z_axis
+ * @param integer[] $z_boundaries
+ * @param Stats     $stats
+ *
+ * @return int
  */
 function month_of_birth_of_first_child($z_axis, array $z_boundaries, Stats $stats) {
 	$total = 0;
@@ -129,6 +141,12 @@ function month_of_birth_of_first_child($z_axis, array $z_boundaries, Stats $stat
 
 /**
  * Month of death
+ *
+ * @param integer   $z_axis
+ * @param integer[] $z_boundaries
+ * @param Stats     $stats
+ *
+ * @return int
  */
 function month_of_death($z_axis, array $z_boundaries, Stats $stats) {
 	$total = 0;
@@ -180,6 +198,12 @@ function month_of_death($z_axis, array $z_boundaries, Stats $stats) {
 
 /**
  * Month of marriage
+ *
+ * @param integer   $z_axis
+ * @param integer[] $z_boundaries
+ * @param Stats     $stats
+ *
+ * @return int
  */
 function month_of_marriage($z_axis, array $z_boundaries, Stats $stats) {
 	$total = 0;
@@ -216,6 +240,12 @@ function month_of_marriage($z_axis, array $z_boundaries, Stats $stats) {
 
 /**
  * Month of first marriage
+ *
+ * @param integer   $z_axis
+ * @param integer[] $z_boundaries
+ * @param Stats     $stats
+ *
+ * @return int
  */
 function month_of_first_marriage($z_axis, array $z_boundaries, Stats $stats) {
 	$total = 0;
@@ -263,6 +293,12 @@ function month_of_first_marriage($z_axis, array $z_boundaries, Stats $stats) {
 
 /**
  * Age related to birth year
+ *
+ * @param integer   $z_axis
+ * @param integer[] $z_boundaries
+ * @param Stats     $stats
+ *
+ * @return int
  */
 function lifespan_by_birth_year($z_axis, array $z_boundaries, Stats $stats) {
 	$total = 0;
@@ -309,6 +345,12 @@ function lifespan_by_birth_year($z_axis, array $z_boundaries, Stats $stats) {
 
 /**
  * Age related to death year
+ *
+ * @param integer   $z_axis
+ * @param integer[] $z_boundaries
+ * @param Stats     $stats
+ *
+ * @return int
  */
 function lifespan_by_death_year($z_axis, array $z_boundaries, Stats $stats) {
 	$total = 0;
@@ -355,6 +397,12 @@ function lifespan_by_death_year($z_axis, array $z_boundaries, Stats $stats) {
 
 /**
  * Age in year of marriage
+ *
+ * @param integer   $z_axis
+ * @param integer[] $z_boundaries
+ * @param Stats     $stats
+ *
+ * @return int
  */
 function age_at_marriage($z_axis, array $z_boundaries, Stats $stats) {
 	$total = 0;
@@ -403,6 +451,12 @@ function age_at_marriage($z_axis, array $z_boundaries, Stats $stats) {
 
 /**
  * Age in year of first marriage
+ *
+ * @param integer   $z_axis
+ * @param integer[] $z_boundaries
+ * @param Stats     $stats
+ *
+ * @return int
  */
 function age_at_first_marriage($z_axis, array $z_boundaries, Stats $stats) {
 	$total = 0;
@@ -474,6 +528,12 @@ function age_at_first_marriage($z_axis, array $z_boundaries, Stats $stats) {
 
 /**
  * Number of children
+ *
+ * @param integer   $z_axis
+ * @param integer[] $z_boundaries
+ * @param Stats     $stats
+ *
+ * @return int
  */
 function number_of_children($z_axis, array $z_boundaries, Stats $stats) {
 	$total = 0;

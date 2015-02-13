@@ -17,7 +17,6 @@ namespace Fisharebest\Webtrees;
  */
 
 use PDO;
-use Zend_Session;
 
 /**
  * Defined in session.php
