@@ -3715,7 +3715,7 @@ class Stats {
 	 * @return string
 	 */
 	public function ageBetweenSpousesMF($params = array()) {
-		return $this->ageBetweenSpousesQuery($type = 'nolist', $age_dir = 'DESC', $params);
+		return $this->ageBetweenSpousesQuery('nolist', 'DESC', $params);
 	}
 
 	/**
@@ -3724,7 +3724,7 @@ class Stats {
 	 * @return string
 	 */
 	public function ageBetweenSpousesMFList($params = array()) {
-		return $this->ageBetweenSpousesQuery($type = 'list', $age_dir = 'DESC', $params);
+		return $this->ageBetweenSpousesQuery('list', 'DESC', $params);
 	}
 
 	/**
@@ -3733,7 +3733,7 @@ class Stats {
 	 * @return string
 	 */
 	public function ageBetweenSpousesFM($params = array()) {
-		return $this->ageBetweenSpousesQuery($type = 'nolist', $age_dir = 'ASC', $params);
+		return $this->ageBetweenSpousesQuery('nolist', 'ASC', $params);
 	}
 
 	/**
@@ -3742,7 +3742,7 @@ class Stats {
 	 * @return string
 	 */
 	public function ageBetweenSpousesFMList($params = array()) {
-		return $this->ageBetweenSpousesQuery($type = 'list', $age_dir = 'ASC', $params);
+		return $this->ageBetweenSpousesQuery('list', 'ASC', $params);
 	}
 
 	/**
