@@ -1623,7 +1623,7 @@ function format_surname_tagcloud($surnames, $script, $totals) {
  *
  * @return string
  */
-function format_surname_list($surnames, $style, $totals, $script, $tree) {
+function format_surname_list($surnames, $style, $totals, $script, Tree $tree) {
 	$html = array();
 	foreach ($surnames as $surn => $surns) {
 		// Each surname links back to the indilist
