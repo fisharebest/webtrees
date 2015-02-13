@@ -4508,7 +4508,7 @@ class Stats {
 	 * @return string
 	 */
 	public function statsChildren($params = array()) {
-		return $this->statsChildrenQuery($simple = true, $sex = 'BOTH', $year1 = -1, $year2 = -1, $params);
+		return $this->statsChildrenQuery(true, 'BOTH', -1, -1, $params);
 	}
 
 	/**
@@ -4517,7 +4517,7 @@ class Stats {
 	 * @return string
 	 */
 	public function topAgeBetweenSiblingsName($params = array()) {
-		return $this->ageBetweenSiblingsQuery($type = 'name', $params);
+		return $this->ageBetweenSiblingsQuery('name', $params);
 	}
 
 	/**
@@ -4526,7 +4526,7 @@ class Stats {
 	 * @return string
 	 */
 	public function topAgeBetweenSiblings($params = array()) {
-		return $this->ageBetweenSiblingsQuery($type = 'age', $params);
+		return $this->ageBetweenSiblingsQuery('age', $params);
 	}
 
 	/**
@@ -4535,7 +4535,7 @@ class Stats {
 	 * @return string
 	 */
 	public function topAgeBetweenSiblingsFullName($params = array()) {
-		return $this->ageBetweenSiblingsQuery($type = 'nolist', $params);
+		return $this->ageBetweenSiblingsQuery('nolist', $params);
 	}
 
 	/**
@@ -4544,7 +4544,7 @@ class Stats {
 	 * @return string
 	 */
 	public function topAgeBetweenSiblingsList($params = array()) {
-		return $this->ageBetweenSiblingsQuery($type = 'list', $params);
+		return $this->ageBetweenSiblingsQuery('list', $params);
 	}
 
 	/**
