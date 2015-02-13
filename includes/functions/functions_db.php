@@ -691,7 +691,7 @@ function find_rin_id($rin) {
  *
  * @return mixed[][]
  */
-function get_common_surnames($min, $tree) {
+function get_common_surnames($min, Tree $tree) {
 	$COMMON_NAMES_ADD    = $tree->getPreference('COMMON_NAMES_ADD');
 	$COMMON_NAMES_REMOVE = $tree->getPreference('COMMON_NAMES_REMOVE');
 
