@@ -18,11 +18,12 @@ namespace Fisharebest\Webtrees;
 
 use PDO;
 use PDOException;
+use Zend_Session_Namespace;
 
 /**
  * Defined in session.php
  *
- * @global Zend_Session $WT_SESSION
+ * @global Zend_Session_Namespace $WT_SESSION
  */
 global $WT_SESSION;
 

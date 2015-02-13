@@ -2936,7 +2936,7 @@ function relativesEndHandler() {
 			xml_set_character_data_handler($repeat_parser, __NAMESPACE__ . '\\characterData');
 
 			if (!xml_parse($repeat_parser, $reportxml, true)) {
-				throw new \DomainException("RelativesEHandler XML error: %s at line %d", xml_error_string(xml_get_error_code($repeat_parser)), xml_get_current_line_number($repeat_parser));
+				throw new \DomainException(sprintf("RelativesEHandler XML error: %s at line %d", xml_error_string(xml_get_error_code($repeat_parser)), xml_get_current_line_number($repeat_parser)));
 			}
 			xml_parser_free($repeat_parser);
 		}

@@ -16,13 +16,13 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use Zend_Session;
+use Zend_Session_Namespace;
 
 /**
  * Defined in session.php
  *
- * @global Zend_Session $WT_SESSION
- * @global Tree         $WT_TREE
+ * @global Zend_Session_Namespace $WT_SESSION
+ * @global Tree                   $WT_TREE
  */
 global $WT_SESSION, $WT_TREE;
 

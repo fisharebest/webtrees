@@ -17,13 +17,14 @@ namespace Fisharebest\Webtrees;
  */
 
 use Zend_Session;
+use Zend_Session_Namespace;
 
 /**
  * Defined in session.php
  *
- * @global string       $SEARCH_SPIDER
- * @global Zend_Session $WT_SESSION
- * @global Tree         $WT_TREE
+ * @global string                 $SEARCH_SPIDER
+ * @global Zend_Session_Namespace $WT_SESSION
+ * @global Tree                   $WT_TREE
  */
 global $SEARCH_SPIDER, $WT_SESSION, $WT_TREE;
 

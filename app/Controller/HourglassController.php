@@ -398,8 +398,8 @@ class HourglassController extends ChartController {
 	/**
 	 * Calculates number of generations a person has
 	 *
-	 * @ param Individual $individual Individual to see how far down the descendency goes
-	 * @param integer     $depth  Pass in 0 and it calculates how far down descendency goes
+	 * @param Individual $individual Individual to see how far down the descendency goes
+	 * @param integer    $depth      Pass in 0 and it calculates how far down descendency goes
 	 *
 	 * @return integer Number of generations the descendency actually goes
 	 */
