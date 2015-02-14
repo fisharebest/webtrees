@@ -424,10 +424,9 @@ abstract class BaseTheme {
 	protected function formQuickSearch() {
 		if ($this->tree) {
 			return
-				'<form action="search.php" class="header-search" method="post" role="search">' .
-				'<input type="hidden" name="action" value="general">' .
+				'<form action="search.php" class="header-search" role="search">' .
+				'<input type="hidden" name="action" value="header">' .
 				'<input type="hidden" name="ged" value="' . $this->tree->getNameHtml() . '">' .
-				'<input type="hidden" name="topsearch" value="yes">' .
 				$this->formQuickSearchFields() .
 				'</form>';
 		} else {

@@ -643,9 +643,7 @@ class AdvancedSearchController extends SearchController {
 			echo format_indi_table($this->myindilist);
 			return true;
 		} else {
-			if ($this->isPostBack) {
-				echo '<p class="ui-state-highlight">', I18N::translate('No results found.'), '</p>';
-			}
+			echo '<p class="ui-state-highlight">', I18N::translate('No results found.'), '</p>';
 			return false;
 		}
 	}

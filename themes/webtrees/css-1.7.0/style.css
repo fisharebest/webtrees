@@ -2653,8 +2653,7 @@ dd .deletelink {
 }
 
 /* ===== search.php ===== */
-#search-page h2,
-#search_submit {
+#search-page h2 {
 	margin: 20px;
 	text-align: center;
 }
