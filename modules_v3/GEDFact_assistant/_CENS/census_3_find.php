@@ -16,6 +16,8 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+global $WT_TREE;
+
 $controller = new SimpleController;
 
 $filter   = Filter::get('filter');
@@ -67,7 +69,7 @@ if ($action == "filter") {
 
 	// Output Individual for GEDFact Assistant ======================
 	echo "<table class=\"tabs_table width90\">";
-	$myindilist = search_indis_names($filter_array, WT_GED_ID);
+	$myindilist = search_indis_names($filter_array, $WT_TREE);
 	if ($myindilist) {
 		echo "<tr><td class=\"list_value_wrap\"><ul>";
 		usort($myindilist, __NAMESPACE__ . '\GedcomRecord::compare');

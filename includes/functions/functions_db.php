@@ -121,12 +121,12 @@ function get_note_list($ged_id) {
 /**
  * Search all individuals
  *
- * @param string[]  $query    Search terms
- * @param integer[] $tree_ids The tree to search
+ * @param string[] $query Search terms
+ * @param Tree[]   $trees The trees to search
  *
  * @return Individual[]
  */
-function search_indis(array $query, array $tree_ids) {
+function search_indis(array $query, array $trees) {
 	// Convert the query into a regular expression
 	$queryregex = array();
 
@@ -141,10 +141,10 @@ function search_indis(array $query, array $tree_ids) {
 	}
 
 	$sql .= " AND i_file IN (";
-	foreach ($tree_ids as $n => $tree_id) {
+	foreach ($trees as $n => $tree) {
 		$sql .= $n ? ", " : "";
 		$sql .= ":tree_id_" . $n;
-		$args['tree_id_' . $n] = $tree_id;
+		$args['tree_id_' . $n] = $tree->getTreeId();
 	}
 	$sql .= ")";
 
@@ -173,16 +173,14 @@ function search_indis(array $query, array $tree_ids) {
 /**
  * Search the names of individuals
  *
- * @param string[] $query   Search terms
- * @param integer  $tree_id The tree to search
+ * @param string[] $query Search terms
+ * @param Tree[]   $trees The trees to search
  *
  * @return Individual[]
  */
-function search_indis_names(array $query, $tree_id) {
-	$sql  = "SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom, n_full FROM `##individuals` JOIN `##name` ON i_id=n_id AND i_file=n_file WHERE i_file = :tree_id";
-	$args = array(
-		'tree_id' => $tree_id,
-	);
+function search_indis_names(array $query, array $trees) {
+	$sql  = "SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom, n_full FROM `##individuals` JOIN `##name` ON i_id=n_id AND i_file=n_file WHERE 1";
+	$args = array();
 
 	// Convert the query into a SQL expression
 	foreach ($query as $n => $q) {
@@ -191,6 +189,14 @@ function search_indis_names(array $query, $tree_id) {
 		$args['query_' . $n]   = Filter::escapeLike($q);
 	}
 
+
+	$sql .= " AND i_file IN (";
+	foreach ($trees as $n => $tree) {
+		$sql .= $n ? ", " : "";
+		$sql .= ":tree_id_" . $n;
+		$args['tree_id_' . $n] = $tree->getTreeId();
+	}
+	$sql .= ")";
 	$list = array();
 	$rows = Database::prepare($sql)->execute($args)->fetchAll();
 	foreach ($rows as $row) {
@@ -217,15 +223,15 @@ function search_indis_names(array $query, $tree_id) {
 /**
  * Search for individuals names/places using soundex
  *
- * @param string    $soundex
- * @param string    $lastname
- * @param string    $firstname
- * @param string    $place
- * @param integer[] $tree_ids
+ * @param string $soundex
+ * @param string $lastname
+ * @param string $firstname
+ * @param string $place
+ * @param Tree[] $trees
  *
  * @return Individual[]
  */
-function search_indis_soundex($soundex, $lastname, $firstname, $place, array $tree_ids) {
+function search_indis_soundex($soundex, $lastname, $firstname, $place, array $trees) {
 	switch ($soundex) {
 	case 'Russell':
 		$givn_sdx = Soundex::russell($firstname);
@@ -255,12 +261,12 @@ function search_indis_soundex($soundex, $lastname, $firstname, $place, array $tr
 	}
 	if ($firstname || $lastname) {
 		$sql .= " JOIN `##name` ON i_file=n_file AND i_id=n_id";
-			}
+	}
 	$sql .= " AND i_file IN (";
-	foreach ($tree_ids as $n => $tree_id) {
+	foreach ($trees as $n => $tree) {
 		$sql .= $n ? ", " : "";
 		$sql .= ":tree_id_" . $n;
-		$args['tree_id_' . $n] = $tree_id;
+		$args['tree_id_' . $n] = $tree->getTreeId();
 	}
 	$sql .= ")";
 
@@ -400,12 +406,12 @@ function search_indis_dates($day, $month, $year, $facts) {
 /**
  * Search family records
  *
- * @param string[]  $query    Search terms
- * @param integer[] $tree_ids The trees to search
+ * @param string[] $query Search terms
+ * @param Tree[]   $trees The trees to search
  *
  * @return Family[]
  */
-function search_fams($query, $tree_ids) {
+function search_fams(array $query, array $trees) {
 	// Convert the query into a regular expression
 	$queryregex = array();
 
@@ -420,10 +426,10 @@ function search_fams($query, $tree_ids) {
 	}
 
 	$sql .= " AND f_file IN (";
-	foreach ($tree_ids as $n => $tree_id) {
+	foreach ($trees as $n => $tree) {
 		$sql .= $n ? ", " : "";
 		$sql .= ":tree_id_" . $n;
-		$args['tree_id_' . $n] = $tree_id;
+		$args['tree_id_' . $n] = $tree->getTreeId();
 	}
 	$sql .= ")";
 
@@ -454,12 +460,12 @@ function search_fams($query, $tree_ids) {
 /**
  * Search the names of the husb/wife in a family
  *
- * @param string[]  $query    Search terms
- * @param integer[] $tree_ids The trees to search
+ * @param string[] $query Search terms
+ * @param Tree[]   $trees The trees to search
  *
  * @return Family[]
  */
-function search_fams_names($query, $tree_ids) {
+function search_fams_names(array $query, array $trees) {
 	// No query => no results
 	if (!$query) {
 		return array();
@@ -482,10 +488,10 @@ function search_fams_names($query, $tree_ids) {
 	}
 
 	$sql .= " AND f_file IN (";
-	foreach ($tree_ids as $n => $tree_id) {
+	foreach ($trees as $n => $tree) {
 		$sql .= $n ? ", " : "";
 		$sql .= ":tree_id_" . $n;
-		$args['tree_id_' . $n] = $tree_id;
+		$args['tree_id_' . $n] = $tree->getTreeId();
 	}
 	$sql .= ")";
 
@@ -504,12 +510,12 @@ function search_fams_names($query, $tree_ids) {
 /**
  * Search the sources
  *
- * @param string[]  $query    Search terms
- * @param integer[] $tree_ids The tree to search
+ * @param string[] $query Search terms
+ * @param Tree[]   $trees The tree to search
  *
  * @return Source[]
  */
-function search_sources($query, $tree_ids) {
+function search_sources($query, $trees) {
 	// Convert the query into a regular expression
 	$queryregex = array();
 
@@ -524,10 +530,10 @@ function search_sources($query, $tree_ids) {
 	}
 
 	$sql .= " AND s_file IN (";
-	foreach ($tree_ids as $n => $tree_id) {
+	foreach ($trees as $n => $tree) {
 		$sql .= $n ? ", " : "";
 		$sql .= ":tree_id_" . $n;
-		$args['tree_id_' . $n] = $tree_id;
+		$args['tree_id_' . $n] = $tree->getTreeId();
 	}
 	$sql .= ")";
 
@@ -558,12 +564,12 @@ function search_sources($query, $tree_ids) {
 /**
  * Search the shared notes
  *
- * @param string[]  $query    Search terms
- * @param integer[] $tree_ids The tree to search
+ * @param string[] $query Search terms
+ * @param Tree[]   $trees The tree to search
  *
  * @return Note[]
  */
-function search_notes($query, $tree_ids) {
+function search_notes(array $query, array $trees) {
 	// Convert the query into a regular expression
 	$queryregex = array();
 
@@ -578,10 +584,10 @@ function search_notes($query, $tree_ids) {
 	}
 
 	$sql .= " AND o_file IN (";
-	foreach ($tree_ids as $n => $tree_id) {
+	foreach ($trees as $n => $tree) {
 		$sql .= $n ? ", " : "";
 		$sql .= ":tree_id_" . $n;
-		$args['tree_id_' . $n] = $tree_id;
+		$args['tree_id_' . $n] = $tree->getTreeId();
 	}
 	$sql .= ")";
 
@@ -609,16 +615,15 @@ function search_notes($query, $tree_ids) {
 	return $list;
 }
 
-
 /**
  * Search the repositories
  *
- * @param string[]  $query    Search terms
- * @param integer[] $tree_ids The tree to search
+ * @param string[] $query Search terms
+ * @param Tree[]   $trees The trees to search
  *
  * @return Repository[]
  */
-function search_repos($query, $tree_ids) {
+function search_repos(array $query, array $trees) {
 	// Convert the query into a regular expression
 	$queryregex = array();
 
@@ -633,10 +638,10 @@ function search_repos($query, $tree_ids) {
 	}
 
 	$sql .= " AND o_file IN (";
-	foreach ($tree_ids as $n => $tree_id) {
+	foreach ($trees as $n => $tree) {
 		$sql .= $n ? ", " : "";
 		$sql .= ":tree_id_" . $n;
-		$args['tree_id_' . $n] = $tree_id;
+		$args['tree_id_' . $n] = $tree->getTreeId();
 	}
 	$sql .= ")";
 
@@ -787,7 +792,7 @@ function get_anniversary_events($jd, $facts = '', $ged_id = WT_GED_ID) {
 			" FROM `##dates` JOIN `##families` ON d_gid = f_id AND d_file = f_file" .
 			" WHERE d_type = :type AND d_file = :tree_id";
 		$args = array(
-			'type'    => $anniv->Format('%@'),
+			'type'    => $anniv->format('%@'),
 			'tree_id' => $ged_id,
 		);
 
@@ -1137,8 +1142,6 @@ function get_block_setting($block_id, $setting_name, $default_value = null) {
  * @param integer     $block_id
  * @param string      $setting_name
  * @param string|null $setting_value
- *
- * @throws Exception
  */
 function set_block_setting($block_id, $setting_name, $setting_value) {
 	if ($setting_value === null) {

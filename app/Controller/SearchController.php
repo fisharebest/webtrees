@@ -131,13 +131,13 @@ class SearchController extends PageController {
 		if (count(Tree::getAll()) > 1 && Site::getPreference('ALLOW_CHANGE_GEDCOM')) {
 			foreach (Tree::getAll() as $search_tree) {
 				$str = str_replace(array(".", "-", " "), array("_", "_", "_"), $search_tree->getName());
-				if (isset ($_REQUEST["$str"]) || $topsearch) {
-					$this->search_trees[$search_tree->getTreeId()] = $search_tree;
+				if (isset ($_REQUEST[$str]) || $topsearch) {
+					$this->search_trees[] = $search_tree;
 					$_REQUEST[$str] = 'yes';
 				}
 			}
 		} else {
-			$this->search_trees[WT_GED_ID] = $WT_TREE;
+			$this->search_trees[] = $WT_TREE;
 		}
 
 		// vars use for soundex search
@@ -307,15 +307,15 @@ class SearchController extends PageController {
 			$this->myindilist = array();
 			// Search the individuals
 			if (isset ($this->srindi) && $query_terms) {
-				$this->myindilist = search_indis($query_terms, array_keys($this->search_trees));
+				$this->myindilist = search_indis($query_terms, $this->search_trees);
 			}
 
 			// Search the fams
 			$this->myfamlist = array();
 			if (isset ($this->srfams) && $query_terms) {
 				$this->myfamlist = array_merge(
-					search_fams($query_terms, array_keys($this->search_trees)),
-					search_fams_names($query_terms, array_keys($this->search_trees))
+					search_fams($query_terms, $this->search_trees),
+					search_fams_names($query_terms, $this->search_trees)
 				);
 				$this->myfamlist = array_unique($this->myfamlist);
 			}
@@ -323,13 +323,13 @@ class SearchController extends PageController {
 			// Search the sources
 			$this->mysourcelist = array();
 			if (isset ($this->srsour) && $query_terms) {
-				$this->mysourcelist = search_sources($query_terms, array_keys($this->search_trees));
+				$this->mysourcelist = search_sources($query_terms, $this->search_trees);
 			}
 
 			// Search the notes
 			$this->mynotelist = array();
 			if (isset ($this->srnote) && $query_terms) {
-				$this->mynotelist = search_notes($query_terms, array_keys($this->search_trees));
+				$this->mynotelist = search_notes($query_terms, $this->search_trees);
 			}
 
 			// If only 1 item is returned, automatically forward to that item
@@ -377,7 +377,7 @@ class SearchController extends PageController {
 	private function searchAndReplace(Tree $tree) {
 		global $STANDARD_NAME_FACTS;
 
-		$this->search_trees = array($tree->getTreeid() => $tree);
+		$this->search_trees = array($tree);
 		$this->srindi = 'yes';
 		$this->srfams = 'yes';
 		$this->srsour = 'yes';
@@ -509,7 +509,7 @@ class SearchController extends PageController {
 	 *
 	 */
 	private function soundexSearch() {
-		if (((!empty ($this->lastname)) || (!empty ($this->firstname)) || (!empty ($this->place))) && (count($this->search_trees) > 0)) {
+		if (((!empty ($this->lastname)) || (!empty ($this->firstname)) || (!empty ($this->place))) && $this->search_trees) {
 			$logstring = "Type: Soundex\n";
 			if (!empty ($this->lastname)) {
 				$logstring .= "Last name: " . $this->lastname . "\n";
@@ -526,7 +526,7 @@ class SearchController extends PageController {
 			Log::addSearchLog($logstring, $this->search_trees);
 
 			if ($this->search_trees) {
-				$this->myindilist = search_indis_soundex($this->soundex, $this->lastname, $this->firstname, $this->place, array_keys($this->search_trees));
+				$this->myindilist = search_indis_soundex($this->soundex, $this->lastname, $this->firstname, $this->place, $this->search_trees);
 			} else {
 				$this->myindilist = array();
 			}

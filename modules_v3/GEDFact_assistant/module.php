@@ -53,6 +53,8 @@ class GEDFact_assistant_WT_Module extends Module {
 	 * ...
 	 */
 	private static function media_3_find() {
+		global $WT_TREE;
+		
 		$controller = new SimpleController;
 		$filter     = Filter::get('filter');
 		$multiple   = Filter::getBool('multiple');
@@ -117,7 +119,7 @@ class GEDFact_assistant_WT_Module extends Module {
 		$filter = trim($filter);
 		$filter_array = explode(' ', preg_replace('/ {2,}/', ' ', $filter));
 		echo "<table class=\"tabs_table width90\"><tr>";
-		$myindilist = search_indis_names($filter_array, WT_GED_ID);
+		$myindilist = search_indis_names($filter_array, $WT_TREE);
 		if ($myindilist) {
 			echo "<td class=\"list_value_wrap\"><ul>";
 			usort($myindilist, __NAMESPACE__ . '\GedcomRecord::compare');
