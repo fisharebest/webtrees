@@ -585,16 +585,16 @@ msgstr ""
 
 #. I18N: Help text for the “Automatically create globally unique IDs” configuration setting
 #: admin_trees_config.php:808
-msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
-msgstr "<b>GUID</b> in this context is an acronym for ‘Globally Unique ID’.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organisations such as the Family History Centre of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM originates.  The goal of the Family History Centre is to have a central repository of genealogical data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM."
+msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates.  The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
+msgstr "<b>GUID</b> in this context is an acronym for ‘Globally Unique ID’.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organisations such as the Family History Centre of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM originates.  The goal of the Family History Centre is to have a central repository of genealogy data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM."
 
 #: admin_trees_manage.php:619
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items.  You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
 msgstr ""
 
 #: message.php:115
-msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
-msgstr "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information about dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
+msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
+msgstr "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information about dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places and close relatives.  If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
 
 #: login.php:159
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
@@ -860,7 +860,7 @@ msgstr ""
 
 #. I18N: Description of the “Extra information” module
 #: modules_v3/extra_info/module.php:31
-msgid "A sidebar showing non-genealogical information about an individual."
+msgid "A sidebar showing non-genealogy information about an individual."
 msgstr ""
 
 #. I18N: Description of the “Descendants” module
@@ -1955,7 +1955,7 @@ msgstr ""
 #: admin_trees_download.php:122 modules_v3/clippings/module.php:190
 #: modules_v3/clippings/module.php:198 modules_v3/clippings/module.php:581
 #: modules_v3/clippings/module.php:590
-msgid "Apply privacy settings?"
+msgid "Apply privacy settings"
 msgstr ""
 
 #: admin_users.php:99
@@ -2282,7 +2282,7 @@ msgid "Average number of children per family"
 msgstr ""
 
 #: admin_trees_manage.php:568
-msgid "Avoid spaces and puncutation.  A family name might be a good choice."
+msgid "Avoid spaces and punctuation.  A family name might be a good choice."
 msgstr ""
 
 #: library/WT/Date/Jalali.php:158
@@ -3357,15 +3357,15 @@ msgstr ""
 
 #: admin_users.php:200
 msgid "Change the blocks on this user’s “My page”"
-msgstr ""
+msgstr "Change the blocks on this user’s ‘My page’"
 
 #: admin_trees_manage.php:294 index_edit.php:49
 msgid "Change the “Home page” blocks"
-msgstr ""
+msgstr "Change the ‘Home page’ blocks"
 
 #: index_edit.php:41
 msgid "Change the “My page” blocks"
-msgstr ""
+msgstr "Change the ‘My page’ blocks"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: includes/functions/functions_print_lists.php:1766
@@ -3932,7 +3932,7 @@ msgstr ""
 
 #: admin_trees_download.php:134 modules_v3/clippings/module.php:205
 #: modules_v3/clippings/module.php:598
-msgid "Convert from UTF-8 to ANSI (ISO-8859-1)"
+msgid "Convert from UTF-8 to ISO-8859-1"
 msgstr ""
 
 #: library/WT/Stats.php:6118
@@ -5757,7 +5757,7 @@ msgstr ""
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:284
-msgid "Export all family trees to GEDCOM files…"
+msgid "Export all the family trees to GEDCOM files…"
 msgstr ""
 
 #: help_text.php:544
@@ -6033,7 +6033,7 @@ msgstr ""
 #. I18N: %s is a filename
 #: admin_site_upgrade.php:290 admin_trees_export.php:34
 #, php-format
-msgid "Family tree exported to %s."
+msgid "The family tree has been exported to %s."
 msgstr ""
 
 #: admin_trees_config.php:666 admin_trees_manage.php:533
@@ -7352,8 +7352,8 @@ msgid "If you have a note to add to this record, this is the place to do so.<br>
 msgstr ""
 
 #: admin_trees_manage.php:207
-msgid "If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM file."
-msgstr "If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then tick this box to merge the current media objects with the new GEDCOM file."
+msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
+msgstr "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using software that deletes media objects, then tick this box to merge the current media objects with the new GEDCOM file."
 
 #: modules_v3/recent_changes/module.php:173
 msgid "If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty."
@@ -7423,7 +7423,7 @@ msgstr ""
 
 #: admin_trees_merge.php:82 admin_trees_renumber.php:261
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
-msgstr ""
+msgstr "In a family tree, each record has an internal reference number (called an ‘XREF’) such as ‘F123’ or ‘R14’."
 
 #: help_text.php:348
 msgid "In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur."
@@ -9705,7 +9705,7 @@ msgstr ""
 #: admin_trees_manage.php:200
 #, php-format
 msgid "No GEDCOM files found.  You need to copy files to the “%s” folder on your server."
-msgstr ""
+msgstr "No GEDCOM files found.  You need to copy files to the ‘%s’ folder on your server."
 
 #: modules_v3/googlemap/module.php:926
 msgid "No ancestors in the database."
@@ -10784,8 +10784,8 @@ msgid "Places in %s"
 msgstr ""
 
 #: help_text.php:330
-msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-msgstr "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as ‘Salt Lake City, Salt Lake, Utah, USA’.<br><br>Let’s examine each part of this place.  The first part, ‘Salt Lake City,’ is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, ‘Salt Lake,’ is the county.  ‘Utah’ is the state, and ‘USA’ is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: ‘Salt Lake City, , Utah, USA’.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: ‘, , Utah, USA’.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
+msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
+msgstr "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as ‘Salt Lake City, Salt Lake, Utah, USA’.<br><br>Let’s examine each part of this place.  The first part, ‘Salt Lake City,’ is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, ‘Salt Lake,’ is the county.  ‘Utah’ is the state, and ‘USA’ is the country.  It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: ‘Salt Lake City, , Utah, USA’.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: ‘, , Utah, USA’.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
 
 #: library/WT/Theme/Clouds.php:74 library/WT/Theme/Fab.php:84
 #: library/WT/Theme/Minimal.php:83 library/WT/Theme/Webtrees.php:62
@@ -10943,7 +10943,7 @@ msgstr ""
 #: admin_modules.php:88
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
-msgstr ""
+msgstr "Preferences exist for the module ‘%s’, but this module no longer exists."
 
 #. I18N: A configuration setting
 #: admin_users.php:436
@@ -13370,7 +13370,7 @@ msgid "Thailand"
 msgstr ""
 
 #: help_text.php:276
-msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded.  This is how it will be displayed on screen.  It uses standard genealogical annotations to identify different parts of the name."
+msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded.  This is how it will be displayed on screen.  It uses standard genealogy annotations to identify different parts of the name."
 msgstr ""
 
 #: help_text.php:296
@@ -13384,7 +13384,7 @@ msgstr ""
 #: admin_trees_manage.php:112
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr ""
+msgstr "The GEDCOM file ‘%s’ has been imported."
 
 #: library/WT/Gedcom/Code/Temp.php:160
 msgid "The Hague, Netherlands"
@@ -13449,25 +13449,25 @@ msgstr ""
 #: admin_trees_manage.php:61
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr ""
+msgstr "The family tree ‘%s’ already exists."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:64
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr ""
+msgstr "The family tree ‘%s’ has been created."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:41 admin_trees_manage.php:118
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr ""
+msgstr "The family tree ‘%s’ has been deleted."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:50
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr ""
+msgstr "The family tree ‘%s’ will be shown to visitors when they first arrive at this website."
 
 #: admin_trees_merge.php:185
 msgid "The family trees have been merged successfully."
@@ -13590,7 +13590,7 @@ msgstr ""
 
 #. I18N: Help text for the “Genealogy contact” configuration setting
 #: admin_trees_config.php:981
-msgid "The individual to contact about the genealogical data on this website."
+msgid "The individual to contact about the genealogy data on this website."
 msgstr ""
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
@@ -13630,12 +13630,12 @@ msgstr ""
 #: admin_modules.php:44
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr ""
+msgstr "The module ‘%s’ has been disabled."
 
 #: admin_modules.php:46
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr ""
+msgstr "The module ‘%s’ has been enabled."
 
 #: admin_site_upgrade.php:397
 #, php-format
@@ -13666,7 +13666,7 @@ msgstr ""
 #: admin_modules.php:76
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr ""
+msgstr "The preferences for the module ‘%s’ have been deleted."
 
 #: setup.php:379
 msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database.  “wt_” is suggested, but can be anything you want."
@@ -13791,7 +13791,7 @@ msgstr ""
 
 #: admin_site_access.php:278
 msgid "The “%” character is a wildcard, and will match zero or more other characters."
-msgstr ""
+msgstr "The ‘%’ character is a wildcard, and will match zero or more other characters."
 
 #: admin_modules.php:181 admin_users.php:449 edituser.php:250
 #: library/WT/Theme/BaseTheme.php:1465
@@ -14482,8 +14482,8 @@ msgstr ""
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:165
 #, php-format
-msgid "This will delete all the genealogical data from “%s” and replace it with data from another GEDCOM file."
-msgstr ""
+msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
+msgstr "This will delete all the genealogy data from ‘%s’ and replace it with data from a GEDCOM file."
 
 #: modules_v3/googlemap/module.php:1817
 msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
@@ -15168,7 +15168,7 @@ msgstr ""
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1200
 msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question."
-msgstr ""
+msgstr "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the sex of the individual in question."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1195
@@ -15787,7 +15787,7 @@ msgstr ""
 #. I18N: Help text for the "Default theme" site configuration setting
 #: admin_site_config.php:200 admin_trees_config.php:1072 edituser.php:265
 msgid "You can change the appearance of webtrees using “themes”.  Each theme has a different style, layout, color scheme, etc."
-msgstr "You can change the appearance of webtrees using ‘themes’.  Each theme has a different style, layout, color scheme, etc."
+msgstr "You can change the appearance of webtrees using ‘themes’.  Each theme has a different style, layout, colour scheme, etc."
 
 #: help_text.php:607
 msgid "You can click this button to see whether there is another relationship path between the two individuals.  Previously found paths can be displayed again by clicking the link with the path number."
@@ -19706,12 +19706,12 @@ msgstr ""
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:96
 msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
-msgstr ""
+msgstr "the database connection settings in the file ‘/data/config.ini.php’ are still correct"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:99
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
-msgstr ""
+msgstr "the folder ‘/data’ and the file ‘/data/config.ini.php’ have access permissions that allow the webserver to read them"
 
 #: includes/functions/functions.php:793
 #, php-format
@@ -20086,68 +20086,3 @@ msgstr ""
 msgctxt "Unknown surname"
 msgid "…"
 msgstr ""
-
-#~ msgid "Email"
-#~ msgstr "E-mail"
-
-#~ msgid "For optimal display on the internet, webtrees uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
-#~ msgstr "For optimal display on the internet, webtrees uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Ticking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
-
-#~ msgid "Here you can choose text to appear on the login screen.  You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account.  You will receive an email when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved.</div></li></ul>"
-#~ msgstr "Here you can choose text to appear on the login screen.  You must determine which predefined text is most appropriate.<br><br>You can also choose to enter your own custom Welcome text.  Please refer to the help text associated with the <b>Custom Welcome text</b> field for more information.<br><br>The predefined texts are:<ul><li><b>Predefined text that states all users can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account.  You will receive an e-mail when your application has been approved.</div><br></li><li><b>Predefined text that states admin will decide on each request for a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an e-mail message when your application has been approved.</div><br></li><li><b>Predefined text that states only family members can request a user account:</b><div class=\"list_value_wrap\"><center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an e-mail when your request is approved.</div></li></ul>"
-
-#~ msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the “Approved by administrator” checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
-#~ msgstr "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the ‘Approved by administrator’ tickbox will be ticked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
-
-#~ msgid "If this box is checked, this user will be able to edit his account information.  Although this is not generally recommended, you can create a single user name and password for multiple users.  When this box is unchecked for all users with the shared account, they are prevented from editing the account information and only an administrator can alter that account."
-#~ msgstr "If this box is ticked, this user will be able to edit his account information.  Although this is not generally recommended, you can create a single user name and password for multiple users.  When this box is unticked for all users with the shared account, they are prevented from editing the account information and only an administrator can alter that account."
-
-#~ msgid "Note: “living” is defined (if no death or burial is known) as ending %d year after birth or estimated birth."
-#~ msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %d years after birth or estimated birth."
-#~ msgstr[0] "Note: ‘living’ is defined (if no death or burial is known) as ending %d year after birth or estimated birth."
-#~ msgstr[1] "Note: ‘living’ is defined (if no death or burial is known) as ending %d years after birth or estimated birth."
-
-#~ msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOM files with the same ID assigned to each individual but always use the same RIN."
-#~ msgstr "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings and charts.  This is useful for genealogy programs that do not consistently export GEDCOM files with the same ID assigned to each individual but always use the same RIN."
-
-#~ msgid "The Favorites drop-down list shows the favorites that you have selected on your “My page”.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding favorites is available in your “My page”."
-#~ msgstr "The Favourites drop-down list shows the favourites that you have selected on your ‘My page’.  It also shows the favourites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favourites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding favourites is available in your ‘My page’."
-
-#~ msgid "The following visitors were not recognized, and were assumed to be search engines."
-#~ msgstr "The following visitors were not recognised, and were assumed to be search engines."
-
-#~ msgid "The length of time after birth can be set on the “Privacy” tab option “Age at which to assume an individual is dead”."
-#~ msgstr "The length of time after birth can be set on the ‘Privacy’ tab option ‘Age at which to assume an individual is dead’."
-
-#~ msgid "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed, and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
-#~ msgstr "This field controls the order in which the FAQ items are displayed.<br><br>You do not have to enter the numbers sequentially.  If you leave holes in the numbering scheme, you can insert other items later.  For example, if you use the numbers 1, 6, 11, 16, you can later insert items with the missing sequence numbers.  Negative numbers and zero are allowed and can be used to insert items in front of the first one.<br><br>When more than one FAQ item has the same position number, only one of these items will be visible."
-
-#~ msgid "This input box lets you enter an individual’s ID number so they can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the “Add” button."
-#~ msgstr "This input box lets you enter an individual’s ID number so they can be added to the clippings cart.  Once added you’ll be offered options to link that individual’s relations to your clippings cart.<br><br>If you do not know an individual’s ID number, you can perform a search by name by pressing the individual icon next to the ‘Add’ button."
-
-#~ msgid "This option is like webtrees internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the email address you configured on your Account page.  This is the default contact method."
-#~ msgstr "This option is like webtrees internal messaging, with one addition.  As an extra, a copy of the message will also be sent to the e-mail address you configured on your Account page.  This is the default contact method."
-
-#~ msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td style=\"vertical-align:middle\">This image might be used when the gender of the individual is unknown:"
-#~ msgstr "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the sex of the individual in question.<br><br><table><tr><td style=\"vertical-align:middle\">This image might be used when the sex of the individual is unknown:"
-
-#~ msgid "When set to <b>Yes</b>, the following message will appear above the input fields on the “Request new user account” page:<div class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div></div>"
-#~ msgstr "When set to <b>Yes</b>, the following message will appear above the input fields on the ‘Request new user account’ page:<div class=\"list_value_wrap\"><div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living people listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div></div>"
-
-#~ msgid "When this check box is checked, the chart will be printed with oldest individuals at the top.  When it is unchecked, youngest individuals will appear at the top."
-#~ msgstr "When this box is ticked, the chart will be printed with oldest people at the top.  When it is unticked, youngest people will appear at the top."
-
-#~ msgid "When you check this option, a copy of the GEDCOM file will be compressed into ZIP format before the download begins.  This will reduce its size considerably, but you will need to use a compatible Unzip program (WinZIP, for example) to decompress the transmitted GEDCOM file before you can use it.<br><br>This is a useful option for downloading large GEDCOM files.  There is a risk that the download time for the uncompressed file may exceed the maximum allowed execution time, resulting in incompletely downloaded files.  The ZIP option should reduce the download time by 75 percent."
-#~ msgstr "When you tick this option, a copy of the GEDCOM file will be compressed into ZIP format before the download begins.  This will reduce its size considerably, but you will need to use a compatible Unzip program (WinZIP, for example) to decompress the transmitted GEDCOM file before you can use it.<br><br>This is a useful option for downloading large GEDCOM files.  There is a risk that the download time for the uncompressed file may exceed the maximum allowed execution time, resulting in incompletely downloaded files.  The ZIP option should reduce the download time by 75 percent."
-
-#~ msgid "When you click this link your clippings cart will be totally emptied.<br><br>If you don’t want to remove all individuals, families, etc. from the clippings cart, you can remove items individually by clicking the <b>Remove</b> link in the name boxes.  There is <u>no</u> confirmation dialog when you click either of these links;  the requested deletion takes place immediately."
-#~ msgstr "When you click this link your clippings cart will be totally emptied.<br><br>If you don’t want to remove all people, families, etc. from the clippings cart, you can remove items individually by clicking the <b>Remove</b> link in the Name boxes.  There is <u>no</u> confirmation dialogue when you click either of these links;  the requested deletion takes place immediately."
-
-#~ msgid "With this option, the webtrees internal messaging system will be used and no emails will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your “My page”.  If you have removed this block from your “My page”, you will not see any messages.  They will, however, show up as soon as you configure your “My page” to again have the Message block."
-#~ msgstr "With this option, the webtrees internal messaging system will be used and no e-mail will be sent.  You will receive only <u>internal</u> messages from the other users.  When another site user sends you a message, that message will appear in the Message block on your ‘My page’.  If you have removed this block from your ‘My page’, you will not see any messages.  They will, however, show up as soon as you configure your ‘My page’ to again have the Message block."
-
-#~ msgid "With this option, you will only receive email messages at the address you configured on your Account page.  The messaging system internal to webtrees will not be used at all, and there will never be any messages in the Message block on your “My page”."
-#~ msgstr "With this option, you will only receive e-mail messages at the address you configured on your Account page.  The messaging system internal to webtrees will not be used at all and there will never be any messages in the Message block on your ‘My page’."
-
-#~ msgid "You must enter an email address."
-#~ msgstr "You must enter an e-mail address."

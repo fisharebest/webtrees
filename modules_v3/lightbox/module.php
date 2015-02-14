@@ -1,41 +1,35 @@
 <?php
-// webtrees: Web based Family History software
-// Copyright (C) 2015 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2010 John Finlay
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Fisharebest\Webtrees;
 
-use WT\Auth;
-use WT\Theme;
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 /**
  * Class lightbox_WT_Module
  */
-class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
+class lightbox_WT_Module extends Module implements ModuleTabInterface {
 	private $media_list;
 
 	/** {@inheritdoc} */
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Album');
+		return /* I18N: Name of a module */ I18N::translate('Album');
 	}
 
 	/** {@inheritdoc} */
 	public function getDescription() {
-		return /* I18N: Description of the “Album” module */ WT_I18N::translate('An alternative to the “media” tab, and an enhanced image viewer.');
+		return /* I18N: Description of the “Album” module */ I18N::translate('An alternative to the “media” tab, and an enhanced image viewer.');
 	}
 
 	/** {@inheritdoc} */
@@ -65,20 +59,20 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 			// Add a new media object
 			if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
 				$html .= '<span><a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&linktoid=' . $controller->record->getXref() . '\', \'_blank\', \'resizable=1,scrollbars=1,top=50,height=780,width=600\');return false;">';
-				$html .= '<img src="' . Theme::theme()->assetUrl() . 'images/image_add.png" id="head_icon" class="icon" title="' . WT_I18N::translate('Add a new media object') . '" alt="' . WT_I18N::translate('Add a new media object') . '">';
-				$html .= WT_I18N::translate('Add a new media object');
+				$html .= '<img src="' . Theme::theme()->assetUrl() . 'images/image_add.png" id="head_icon" class="icon" title="' . I18N::translate('Add a new media object') . '" alt="' . I18N::translate('Add a new media object') . '">';
+				$html .= I18N::translate('Add a new media object');
 				$html .= '</a></span>';
 				// Link to an existing item
 				$html .= '<span><a href="#" onclick="window.open(\'inverselink.php?linktoid=' . $controller->record->getXref() . '&linkto=person\', \'_blank\', \'resizable=1,scrollbars=1,top=50,height=300,width=450\');">';
-				$html .= '<img src="' . Theme::theme()->assetUrl() . 'images/image_link.png" id="head_icon" class="icon" title="' . WT_I18N::translate('Link to an existing media object') . '" alt="' . WT_I18N::translate('Link to an existing media object') . '">';
-				$html .= WT_I18N::translate('Link to an existing media object');
+				$html .= '<img src="' . Theme::theme()->assetUrl() . 'images/image_link.png" id="head_icon" class="icon" title="' . I18N::translate('Link to an existing media object') . '" alt="' . I18N::translate('Link to an existing media object') . '">';
+				$html .= I18N::translate('Link to an existing media object');
 				$html .= '</a></span>';
 			}
 			if (WT_USER_GEDCOM_ADMIN && $this->get_media()) {
 				// Popup Reorder Media
 				$html .= '<span><a href="#" onclick="reorder_media(\'' . $controller->record->getXref() . '\')">';
-				$html .= '<img src="' . Theme::theme()->assetUrl() . 'images/images.png" id="head_icon" class="icon" title="' . WT_I18N::translate('Re-order media') . '" alt="' . WT_I18N::translate('Re-order media') . '">';
-				$html .= WT_I18N::translate('Re-order media');
+				$html .= '<img src="' . Theme::theme()->assetUrl() . 'images/images.png" id="head_icon" class="icon" title="' . I18N::translate('Re-order media') . '" alt="' . I18N::translate('Re-order media') . '">';
+				$html .= I18N::translate('Re-order media');
 				$html .= '</a></span>';
 			}
 			$html .= '</td></tr></table>';
@@ -98,19 +92,19 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 			$notes    = print_fact_notes($before . $needle . $after, 1, true);
 
 			// Prepare Below Thumbnail  menu ----------------------------------------------------
-			$menu = new WT_Menu('<div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">' . $media->getFullName() . '</div>');
+			$menu = new Menu('<div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">' . $media->getFullName() . '</div>');
 			$menu->addClass('', 'submenu');
 
 			// View Notes
 			if (strpos($media->getGedcom(), "\n1 NOTE")) {
-				$submenu = new WT_Menu(WT_I18N::translate('View notes'));
+				$submenu = new Menu(I18N::translate('View notes'));
 				// Notes Tooltip ----------------------------------------------------
-				$submenu->setOnclick("modalNotes('" . WT_Filter::escapeJs($notes) . "','" . WT_I18N::translate('View notes') . "'); return false;");
+				$submenu->setOnclick("modalNotes('" . Filter::escapeJs($notes) . "','" . I18N::translate('View notes') . "'); return false;");
 				$submenu->addClass("submenuitem");
 				$menu->addSubmenu($submenu);
 			}
 			//View Details
-			$submenu = new WT_Menu(WT_I18N::translate('View details'), $media->getHtmlUrl());
+			$submenu = new Menu(I18N::translate('View details'), $media->getHtmlUrl());
 			$submenu->addClass("submenuitem");
 			$menu->addSubmenu($submenu);
 
@@ -118,7 +112,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 			foreach ($media->getFacts('SOUR') as $source_fact) {
 				$source = $source_fact->getTarget();
 				if ($source && $source->canShow()) {
-					$submenu = new WT_Menu(WT_I18N::translate('Source') . ' – ' . $source->getFullName(), $source->getHtmlUrl());
+					$submenu = new Menu(I18N::translate('Source') . ' – ' . $source->getFullName(), $source->getHtmlUrl());
 					$submenu->addClass('submenuitem');
 					$menu->addSubmenu($submenu);
 				}
@@ -126,34 +120,34 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 
 			if (WT_USER_CAN_EDIT) {
 				// Edit Media
-				$submenu = new WT_Menu(WT_I18N::translate('Edit media'));
+				$submenu = new Menu(I18N::translate('Edit media'));
 				$submenu->setOnclick("return window.open('addmedia.php?action=editmedia&amp;pid=" . $media->getXref() . "', '_blank', edit_window_specs);");
 				$submenu->addClass("submenuitem");
 				$menu->addSubmenu($submenu);
 				if (Auth::isAdmin()) {
-					if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-						$submenu = new WT_Menu(WT_I18N::translate('Manage links'));
+					if (array_key_exists('GEDFact_assistant', Module::getActiveModules())) {
+						$submenu = new Menu(I18N::translate('Manage links'));
 						$submenu->setOnclick("return window.open('inverselink.php?mediaid=" . $media->getXref() . "&amp;linkto=manage', '_blank', find_window_specs);");
 						$submenu->addClass("submenuitem");
 						$menu->addSubmenu($submenu);
 					} else {
-						$submenu = new WT_Menu(WT_I18N::translate('Link this media object to an individual'), '#', 'menu-obje-link-indi');
+						$submenu = new Menu(I18N::translate('Link this media object to an individual'), '#', 'menu-obje-link-indi');
 						$submenu->setOnclick("return ilinkitem('" . $media->getXref() . "','person');");
 						$submenu->addClass('submenuitem');
 						$menu->addSubmenu($submenu);
 
-						$submenu = new WT_Menu(WT_I18N::translate('Link this media object to a family'), '#', 'menu-obje-link-fam');
+						$submenu = new Menu(I18N::translate('Link this media object to a family'), '#', 'menu-obje-link-fam');
 						$submenu->setOnclick("return ilinkitem('" . $media->getXref() . "','family');");
 						$submenu->addClass('submenuitem');
 						$menu->addSubmenu($submenu);
 
-						$submenu = new WT_Menu(WT_I18N::translate('Link this media object to a source'), '#', 'menu-obje-link-sour');
+						$submenu = new Menu(I18N::translate('Link this media object to a source'), '#', 'menu-obje-link-sour');
 						$submenu->setOnclick("return ilinkitem('" . $media->getXref() . "','source');");
 						$submenu->addClass('submenuitem');
 						$menu->addSubmenu($submenu);
 					}
-					$submenu = new WT_Menu(WT_I18N::translate('Unlink media'));
-					$submenu->setOnclick("return unlink_media('" . WT_I18N::translate('Are you sure you want to remove links to this media object?') . "', '" . $controller->record->getXref() . "', '" . $media->getXref() . "');");
+					$submenu = new Menu(I18N::translate('Unlink media'));
+					$submenu->setOnclick("return unlink_media('" . I18N::translate('Are you sure you want to remove links to this media object?') . "', '" . $controller->record->getXref() . "', '" . $media->getXref() . "');");
 					$submenu->addClass("submenuitem");
 					$menu->addSubmenu($submenu);
 				}
@@ -171,7 +165,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 	/**
 	 * Get all facts containing media links for this person and their spouse-family records
 	 *
-	 * @return WT_Media[]
+	 * @return Media[]
 	 */
 	private function get_media() {
 		global $controller;
@@ -191,7 +185,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 				if (!$fact->isPendingDeletion()) {
 					preg_match_all('/(?:^1|\n\d) OBJE @(' . WT_REGEX_XREF . ')@/', $fact->getGedcom(), $matches);
 					foreach ($matches[1] as $match) {
-						$media = WT_Media::getInstance($match);
+						$media = Media::getInstance($match);
 						if ($media && $media->canShow()) {
 							$this->media_list[] = $media;
 						}
@@ -205,7 +199,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Tab {
 			foreach ($controller->record->getFacts('_WT_OBJE_SORT') as $fact) {
 				$wt_obje_sort[] = trim($fact->getValue(), '@');
 			}
-			usort($this->media_list, function(WT_Media $x, WT_Media $y) use ($wt_obje_sort) {
+			usort($this->media_list, function(Media $x, Media $y) use ($wt_obje_sort) {
 				return array_search($x->getXref(), $wt_obje_sort) - array_search($y->getXref(), $wt_obje_sort);
 			});
 		}

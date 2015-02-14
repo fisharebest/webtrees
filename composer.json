@@ -1,21 +1,27 @@
 {
-	"autoload": {
-		"psr-0": {
-			"WT_": "library/WT/"
-		},
-		"psr-4": {
-			"WT\\": "library/WT/"
-		}
-	},
-	"config": {
-		"preferred-install": "dist",
-		"vendor-dir": "library"
-	},
+	"name": "fisharebest/webtrees",
 	"description": "webtrees online genealogy",
 	"keywords": ["webtrees", "genealogy"],
-	"license": "GPL-2.0+",
-	"minimum-stability": "stable",
-	"name": "fisharebest/webtrees",
+	"license": "GPL-3.0+",
+	"autoload": {
+		"files": [
+			"includes/functions/functions.php",
+			"includes/functions/functions_charts.php",
+			"includes/functions/functions_date.php",
+			"includes/functions/functions_db.php",
+			"includes/functions/functions_edit.php",
+			"includes/functions/functions_export.php",
+			"includes/functions/functions_import.php",
+			"includes/functions/functions_mediadb.php",
+			"includes/functions/functions_print.php",
+			"includes/functions/functions_print_facts.php",
+			"includes/functions/functions_print_lists.php",
+			"includes/functions/functions_rtl.php"
+			],
+		"psr-4": {
+			"Fisharebest\\Webtrees\\": ["app/", "modules_v3/"]
+		}
+	},
 	"require": {
 		"bombayworks/zendframework1": "*",
 		"ezyang/htmlpurifier": "*",
@@ -23,6 +29,7 @@
 		"ircmaxell/password-compat": "*",
 		"michelf/php-markdown": "*",
 		"patchwork/utf8": "*",
+		"pclzip/pclzip": "*",
 		"tecnick.com/tcpdf": "*",
 		"rhumsaa/uuid": "*"
 	},

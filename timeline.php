@@ -1,34 +1,34 @@
 <?php
-// Display a timeline chart for a group of individuals
-//
-// Use the $pids array to set which individuals to show on the chart
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2015 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Fisharebest\Webtrees;
 
-use WT\Theme;
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+
+/**
+ * Defined in session.php
+ *
+ * @global integer $basexoffset
+ * @global integer $baseyoffset
+ */
+global $basexoffset, $baseyoffset;
 
 define('WT_SCRIPT_NAME', 'timeline.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Timeline;
+$controller = new TimelineController;
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
@@ -125,11 +125,11 @@ document.onmousemove = function (e) {
 		}
 		var yearform = document.getElementById('yearform' + personnum);
 		var ageform = document.getElementById('ageform' + personnum);
-		yearform.innerHTML = year + "      " + month + " <?php echo mb_substr(WT_I18N::translate('Month:'), 0, 1); ?>   " + day + " <?php echo mb_substr(WT_I18N::translate('Day:'), 0, 1); ?>";
+		yearform.innerHTML = year + "      " + month + " <?php echo mb_substr(I18N::translate('Month:'), 0, 1); ?>   " + day + " <?php echo mb_substr(I18N::translate('Day:'), 0, 1); ?>";
 		if (ba * yage > 1 || ba * yage < -1 || ba * yage === 0) {
-			ageform.innerHTML = (ba * yage) + " <?php echo mb_substr(WT_I18N::translate('years'), 0, 1); ?>   " + (ba * mage) + " <?php echo mb_substr(WT_I18N::translate('Month:'), 0, 1); ?>   " + (ba * dage) + " <?php echo mb_substr(WT_I18N::translate('Day:'), 0, 1); ?>";
+			ageform.innerHTML = (ba * yage) + " <?php echo mb_substr(I18N::translate('years'), 0, 1); ?>   " + (ba * mage) + " <?php echo mb_substr(I18N::translate('Month:'), 0, 1); ?>   " + (ba * dage) + " <?php echo mb_substr(I18N::translate('Day:'), 0, 1); ?>";
 		} else {
-			ageform.innerHTML = (ba * yage) + " <?php echo mb_substr(WT_I18N::translate('Year:'), 0, 1); ?>   " + (ba * mage) + " <?php echo mb_substr(WT_I18N::translate('Month:'), 0, 1); ?>   " + (ba * dage) + " <?php echo mb_substr(WT_I18N::translate('Day:'), 0, 1); ?>";
+			ageform.innerHTML = (ba * yage) + " <?php echo mb_substr(I18N::translate('Year:'), 0, 1); ?>   " + (ba * mage) + " <?php echo mb_substr(I18N::translate('Month:'), 0, 1); ?>   " + (ba * dage) + " <?php echo mb_substr(I18N::translate('Day:'), 0, 1); ?>";
 		}
 		var line = document.getElementById('ageline' + personnum);
 		var temp = newx - oldx;
@@ -243,9 +243,9 @@ document.onmouseup = function () {
 }
 
 </script>
-<h2><?php echo WT_I18N::translate('Timeline'); ?></h2>
+<h2><?php echo I18N::translate('Timeline'); ?></h2>
 <form name="people" action="?">
-	<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
+	<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
 	<table>
 		<tr>
 			<?php
@@ -259,7 +259,7 @@ document.onmouseup = function () {
 			foreach ($controller->people as $p => $indi) {
 				$pid = $indi->getXref();
 				$col = $p % 6;
-				if ($i == $half) {
+				if ($i === $half) {
 					echo "</tr><tr>";
 				}
 				$i++;
@@ -272,61 +272,61 @@ document.onmouseup = function () {
 						<a href="<?php echo $indi->getHtmlUrl(); ?>">&nbsp;<?php echo $indi->getFullName(); ?><br>
 							<?php echo $indi->getAddName(); ?><br>
 						</a>
-						<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo WT_Filter::escapeHtml($pid); ?>">
+						<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo Filter::escapeHtml($pid); ?>">
 						<a href="timeline.php?<?php echo $controller->pidlinks; ?>&amp;scale=<?php echo $controller->scale; ?>&amp;remove=<?php echo $pid; ?>&amp;ged=<?php echo WT_GEDURL; ?>" >
-						<span class="details1"><?php echo WT_I18N::translate('Remove individual'); ?></span></a>
+						<span class="details1"><?php echo I18N::translate('Remove individual'); ?></span></a>
 						<?php if (!empty($controller->birthyears[$pid])) { ?>
 							<span class="details1"><br>
-								<?php echo /* I18N: an age indicator, which can be dragged around the screen */ WT_I18N::translate('Show an age cursor?'); ?>
+								<?php echo /* I18N: an age indicator, which can be dragged around the screen */ I18N::translate('Show an age cursor?'); ?>
 								<input type="checkbox" name="agebar<?php echo $p; ?>" value="ON" onclick="jQuery('#agebox<?php echo $p; ?>').toggle();">
 							</span>
 						<?php } ?>
 						<br>
 					<?php
 					} else {
-						echo '<div class="error">', WT_I18N::translate('This information is private and cannot be shown.'), '</div>';
+						echo '<div class="error">', I18N::translate('This information is private and cannot be shown.'), '</div>';
 						?>
-						<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo WT_Filter::escapeHtml($pid); ?>">
+						<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo Filter::escapeHtml($pid); ?>">
 						<br>
 				<a href="timeline.php?<?php echo $controller->pidlinks; ?>&amp;scale=<?php echo $controller->scale; ?>&amp;remove=<?php echo $pid; ?>&amp;ged=<?php echo WT_GEDURL; ?>" >
-							<span class="details1"><?php echo WT_I18N::translate('Remove individual'); ?></span></a>
+							<span class="details1"><?php echo I18N::translate('Remove individual'); ?></span></a>
 						<br>
 					<?php } ?>
 				</td>
 			<?php } ?>
 			<td class="list_value" style="padding: 5px;" valign="top">
-				<?php echo WT_I18N::translate('Add another individual to the chart'), '<br>'; ?>
+				<?php echo I18N::translate('Add another individual to the chart'), '<br>'; ?>
 				<input class="pedigree_form" data-autocomplete-type="INDI" type="text" size="5" id="newpid" name="newpid">
 				<?php echo print_findindi_link('newpid'); ?>
 				<br>
 				<br>
 
-				<div style="text-align: center;"><input type="submit" value="<?php echo WT_I18N::translate('Add'); ?>"></div>
+				<div style="text-align: center;"><input type="submit" value="<?php echo I18N::translate('Add'); ?>"></div>
 			</td>
 			<?php
 			if (count($controller->people) > 0) {
 				$scalemod = round($controller->scale * .2) + 1;
 				?>
 				<td class="list_value" style="padding: 5px;">
-					<a href="<?php echo WT_SCRIPT_NAME . "?" . $controller->pidlinks . "scale=" . ($controller->scale + $scalemod); ?>&amp;ged=<?php echo WT_GEDURL; ?>" class="icon-zoomin" title="<?php echo WT_I18N::translate('Zoom in'); ?>"></a><br>
-					<a href="<?php echo WT_SCRIPT_NAME . "?" . $controller->pidlinks . "scale=" . ($controller->scale - $scalemod); ?>&amp;ged=<?php echo WT_GEDURL; ?>" class="icon-zoomout" title="<?php echo WT_I18N::translate('Zoom out'); ?>"></a><br>
-					<input type="button" value="<?php echo WT_I18N::translate('Clear chart'); ?>" onclick="window.location = 'timeline.php?ged=<?php echo WT_GEDURL; ?>';">
+					<a href="<?php echo WT_SCRIPT_NAME . "?" . $controller->pidlinks . "scale=" . ($controller->scale + $scalemod); ?>&amp;ged=<?php echo WT_GEDURL; ?>" class="icon-zoomin" title="<?php echo I18N::translate('Zoom in'); ?>"></a><br>
+					<a href="<?php echo WT_SCRIPT_NAME . "?" . $controller->pidlinks . "scale=" . ($controller->scale - $scalemod); ?>&amp;ged=<?php echo WT_GEDURL; ?>" class="icon-zoomout" title="<?php echo I18N::translate('Zoom out'); ?>"></a><br>
+					<input type="button" value="<?php echo I18N::translate('Clear chart'); ?>" onclick="window.location = 'timeline.php?ged=<?php echo WT_GEDURL; ?>';">
 				</td>
 			<?php } ?>
 		</tr>
 	</table>
-	<br><a href="lifespan.php?ged=<?php echo WT_GEDURL; ?>"><b><?php echo WT_I18N::translate('Show lifespans'); ?></b></a>
+	<br><a href="lifespan.php?ged=<?php echo WT_GEDURL; ?>"><b><?php echo I18N::translate('Show lifespans'); ?></b></a>
 </form>
 <?php
 if (count($controller->people) > 0) {
 	?>
 	<div id="timeline_chart">
 		<!-- print the timeline line image -->
-		<div id="line" style="position:absolute; <?php echo $TEXT_DIRECTION == "ltr" ? "left: " . ($basexoffset + 22) : "right: " . ($basexoffset + 22); ?>px; top: <?php echo $baseyoffset; ?>px;">
+		<div id="line" style="position:absolute; <?php echo I18N::direction() === 'ltr' ? 'left: ' . ($basexoffset + 22) : "right: " . ($basexoffset + 22); ?>px; top: <?php echo $baseyoffset; ?>px;">
 		<img src="<?php echo Theme::theme()->parameter('image-vline'); ?>" width="3" height="<?php echo ($baseyoffset + (($controller->topyear - $controller->baseyear) * $controller->scale)); ?>" alt="">
 		</div>
 		<!-- print divs for the grid -->
-		<div id="scale<?php echo $controller->baseyear; ?>" style="position:absolute; <?php echo ($TEXT_DIRECTION == "ltr" ? "left: $basexoffset" : "right: $basexoffset"); ?>px; top: <?php echo ($baseyoffset - 5); ?>px; font-size: 7pt; text-align: <?php echo ($TEXT_DIRECTION == "ltr" ? "left" : "right"); ?>;">
+		<div id="scale<?php echo $controller->baseyear; ?>" style="position:absolute; <?php echo (I18N::direction() === 'ltr' ? "left: $basexoffset" : "right: $basexoffset"); ?>px; top: <?php echo ($baseyoffset - 5); ?>px; font-size: 7pt; text-align: <?php echo (I18N::direction() === 'ltr' ? 'left' : 'right'); ?>;">
 			<?php echo $controller->baseyear . '—'; ?>
 		</div>
 		<?php
@@ -336,13 +336,13 @@ if (count($controller->people) > 0) {
 			$mod = 1;
 		}
 		for ($i = $controller->baseyear + 1; $i < $controller->topyear; $i++) {
-			if ($i % $mod == 0) {
-				echo "<div id=\"scale$i\" style=\"position:absolute; " . ($TEXT_DIRECTION == "ltr" ? "left: $basexoffset" : "right: $basexoffset") . "px; top:" . ($baseyoffset + (($i - $controller->baseyear) * $controller->scale) - $controller->scale / 2) . "px; font-size: 7pt; text-align:" . ($TEXT_DIRECTION === "ltr" ? "left" : "right") . ";\">";
+			if ($i % $mod === 0) {
+				echo "<div id=\"scale$i\" style=\"position:absolute; " . (I18N::direction() === 'ltr' ? "left: $basexoffset" : "right: $basexoffset") . "px; top:" . ($baseyoffset + (($i - $controller->baseyear) * $controller->scale) - $controller->scale / 2) . "px; font-size: 7pt; text-align:" . (I18N::direction() === 'ltr' ? 'left' : 'right') . ";\">";
 				echo $i . '—';
 				echo '</div>';
 			}
 		}
-		echo "<div id=\"scale{$controller->topyear}\" style=\"position:absolute; " . ($TEXT_DIRECTION == "ltr" ? "left: $basexoffset" : "right: $basexoffset") . "px; top:" . ($baseyoffset + (($controller->topyear - $controller->baseyear) * $controller->scale)) . "px; font-size: 7pt; text-align:" . ($TEXT_DIRECTION == "ltr" ? "left" : "right") . ";\">";
+		echo "<div id=\"scale{$controller->topyear}\" style=\"position:absolute; " . (I18N::direction() === 'ltr' ? "left: $basexoffset" : "right: $basexoffset") . "px; top:" . ($baseyoffset + (($controller->topyear - $controller->baseyear) * $controller->scale)) . "px; font-size: 7pt; text-align:" . (I18N::direction() === 'ltr' ? 'left' : 'right') . ";\">";
 		echo $controller->topyear . '—';
 		echo '</div>';
 		sort_facts($controller->indifacts);
@@ -358,7 +358,7 @@ if (count($controller->people) > 0) {
 			$ageyoffset = $baseyoffset + ($controller->bheight * $p);
 			$col        = $p % 6;
 			?>
-			<div id="agebox<?php echo $p; ?>" style="cursor:move; position:absolute; <?php echo ($TEXT_DIRECTION == "ltr" ? "left: " . ($basexoffset + 20) : "right: " . ($basexoffset + 20)); ?>px; top:<?php echo $ageyoffset; ?>px; height:<?php echo $controller->bheight; ?>px; display:none;" onmousedown="ageCursorMouseDown(this, <?php echo $p; ?>);">
+			<div id="agebox<?php echo $p; ?>" style="cursor:move; position:absolute; <?php echo (I18N::direction() === 'ltr' ? 'left: ' . ($basexoffset + 20) : 'right: ' . ($basexoffset + 20)); ?>px; top:<?php echo $ageyoffset; ?>px; height:<?php echo $controller->bheight; ?>px; display:none;" onmousedown="ageCursorMouseDown(this, <?php echo $p; ?>);">
 				<table cellspacing="0" cellpadding="0">
 					<tr>
 						<td>
@@ -372,12 +372,12 @@ if (count($controller->people) > 0) {
 								?>
 								<table class="person<?php echo $col; ?>" style="cursor: hand;">
 									<tr>
-										<td valign="top" width="120"><?php echo WT_I18N::translate('Year:'); ?>
+										<td valign="top" width="120"><?php echo I18N::translate('Year:'); ?>
 											<span id="yearform<?php echo $p; ?>" class="field">
 									<?php echo $tyear; ?>
 									</span>
 										</td>
-										<td valign="top" width="130">(<?php echo WT_I18N::translate('Age'); ?>
+										<td valign="top" width="130">(<?php echo I18N::translate('Age'); ?>
 											<span id="ageform<?php echo $p; ?>" class="field"><?php echo $tage; ?></span>)
 										</td>
 									</tr>

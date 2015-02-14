@@ -1,30 +1,32 @@
 <?php
-// Compact pedigree tree
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2010 PGV Development Team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Fisharebest\Webtrees;
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'compact.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Compact;
+$controller = new CompactController;
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
@@ -34,24 +36,24 @@ $controller
 <div id="compact-page">
 	<h2><?php echo $controller->getPageTitle(); ?></h2>
 	<form name="people" id="people" method="get" action="?">
-		<input type="hidden" name="ged" value="<?php echo WT_Filter::escapeHtml(WT_GEDCOM); ?>">
+		<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
 		<table class="list_table">
 			<tr>
 				<td class="descriptionbox">
-					<?php echo WT_I18N::translate('Individual'); ?>
+					<?php echo I18N::translate('Individual'); ?>
 				</td>
 				<td class="optionbox vmiddle">
 					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
 					<?php echo print_findindi_link('rootid'); ?>
 				</td>
-					<td <?php echo $SHOW_HIGHLIGHT_IMAGES ? 'rowspan="2"' : ''; ?> class="facts_label03">
-						<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>">
+					<td <?php echo $WT_TREE->getPreference('SHOW_HIGHLIGHT_IMAGES') ? 'rowspan="2"' : ''; ?> class="facts_label03">
+						<input type="submit" value="<?php echo I18N::translate('View'); ?>">
 					</td>
 				</tr>
-				<?php if ($SHOW_HIGHLIGHT_IMAGES) { ?>
+				<?php if ($WT_TREE->getPreference('SHOW_HIGHLIGHT_IMAGES')) { ?>
 				<tr>
 					<td class="descriptionbox">
-						<?php echo WT_I18N::translate('Show highlight images in individual boxes'); ?>
+						<?php echo I18N::translate('Show highlight images in individual boxes'); ?>
 					</td>
 					<td class="optionbox">
 						<input name="show_thumbs" type="checkbox" value="1" <?php echo $controller->show_thumbs ? 'checked' : ''; ?>>

@@ -1,38 +1,35 @@
 <?php
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2010 John Finlay
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Fisharebest\Webtrees;
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 /**
  * Class sources_tab_WT_Module
  */
-class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
+class sources_tab_WT_Module extends Module implements ModuleTabInterface {
 	private $facts;
 
 	/** {@inheritdoc} */
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Sources');
+		return /* I18N: Name of a module */ I18N::translate('Sources');
 	}
 
 	/** {@inheritdoc} */
 	public function getDescription() {
-		return /* I18N: Description of the “Sources” module */ WT_I18N::translate('A tab showing the sources linked to an individual.');
+		return /* I18N: Description of the “Sources” module */ I18N::translate('A tab showing the sources linked to an individual.');
 	}
 
 	/** {@inheritdoc} */
@@ -52,15 +49,15 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	/** {@inheritdoc} */
 	public function getTabContent() {
-		global $SHOW_LEVEL2_NOTES, $controller;
+		global $controller, $WT_TREE;
 
 		ob_start();
 		?>
 		<table class="facts_table">
 			<tr>
 				<td colspan="2" class="descriptionbox rela">
-				<input id="checkbox_sour2" type="checkbox" <?php echo $SHOW_LEVEL2_NOTES ? 'checked' : ''; ?> onclick="jQuery('tr.row_sour2').toggle();">
-				<label for="checkbox_sour2"><?php echo WT_I18N::translate('Show all sources'), help_link('show_fact_sources'); ?></label>
+				<input id="checkbox_sour2" type="checkbox" <?php echo $WT_TREE->getPreference('SHOW_LEVEL2_NOTES') ? 'checked' : ''; ?> onclick="jQuery('tr.row_sour2').toggle();">
+				<label for="checkbox_sour2"><?php echo I18N::translate('Show all sources'), help_link('show_fact_sources'); ?></label>
 				</td>
 			</tr>
 			<?php
@@ -72,7 +69,7 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 				}
 			}
 			if (!$this->getFactsWithSources()) {
-				echo '<tr><td id="no_tab4" colspan="2" class="facts_value">', WT_I18N::translate('There are no source citations for this individual.'), '</td></tr>';
+				echo '<tr><td id="no_tab4" colspan="2" class="facts_value">', I18N::translate('There are no source citations for this individual.'), '</td></tr>';
 			}
 
 			// New Source Link
@@ -84,7 +81,7 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 					</td>
 					<td class="facts_value">
 						<a href="#" onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','SOUR'); return false;">
-							<?php echo WT_I18N::translate('Add a new source citation'); ?>
+							<?php echo I18N::translate('Add a new source citation'); ?>
 						</a>
 						<?php echo help_link('add_source'); ?>
 					</td>
@@ -94,7 +91,7 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 			?>
 		</table>
 		<?php
-		if (!$SHOW_LEVEL2_NOTES) {
+		if (!$WT_TREE->getPreference('SHOW_LEVEL2_NOTES')) {
 			echo '<script>jQuery("tr.row_sour2").toggle();</script>';
 		}
 
@@ -104,7 +101,7 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 	/**
 	 * Get all the facts for an individual which contain sources.
 	 *
-	 * @return WT_Fact[]
+	 * @return Fact[]
 	 */
 	private function getFactsWithSources() {
 		global $controller;

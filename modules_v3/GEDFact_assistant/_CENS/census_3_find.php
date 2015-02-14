@@ -1,35 +1,30 @@
 <?php
-// Facility for Census assistant that will allow a user to search for a person
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2010 PGV Development Team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Fisharebest\Webtrees;
 
-$controller = new WT_Controller_Simple;
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
-$filter   = WT_Filter::get('filter');
-$action   = WT_Filter::get('action');
-$callback = WT_Filter::get('callback');
-$multiple = WT_Filter::getBool('multiple');
+$controller = new SimpleController;
+
+$filter   = Filter::get('filter');
+$action   = Filter::get('action');
+$callback = Filter::get('callback');
+$multiple = Filter::getBool('multiple');
 
 $controller
-	->setPageTitle(WT_I18N::translate('Find an individual'))
+	->setPageTitle(I18N::translate('Find an individual'))
 	->pageHeader();
 
 ?>
@@ -61,7 +56,7 @@ $controller
 echo "<div align=\"center\">";
 echo "<table class=\"list_table width90\" border=\"0\">";
 echo "<tr><td style=\"padding: 10px;\" valign=\"top\" class=\"facts_label03 width90\">";
-echo WT_I18N::translate('Find an individual');
+echo I18N::translate('Find an individual');
 echo "</td>";
 echo "</table>";
 echo "<br>";
@@ -72,24 +67,24 @@ if ($action == "filter") {
 
 	// Output Individual for GEDFact Assistant ======================
 	echo "<table class=\"tabs_table width90\">";
-	$myindilist = search_indis_names($filter_array, array(WT_GED_ID), 'AND');
+	$myindilist = search_indis_names($filter_array, WT_GED_ID);
 	if ($myindilist) {
 		echo "<tr><td class=\"list_value_wrap\"><ul>";
-		usort($myindilist, array('WT_GedcomRecord', 'compare'));
+		usort($myindilist, __NAMESPACE__ . '\GedcomRecord::compare');
 		foreach ($myindilist as $indi) {
 			$nam = $indi->getAllNames();
 			$wholename = rtrim($nam[0]['givn'], '*') . "&nbsp;" . $nam[0]['surname'];
 			$fulln = rtrim($nam[0]['givn'], '*') . "&nbsp;" . $nam[0]['surname'];
 			$fulln = str_replace('"', '\'', $fulln); // Replace double quotes
-			$fulln = str_replace("@N.N.", "(" . WT_I18N::translate('unknown') . ")", $fulln);
-			$fulln = str_replace("@P.N.", "(" . WT_I18N::translate('unknown') . ")", $fulln);
+			$fulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $fulln);
+			$fulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $fulln);
 			$givn  = rtrim($nam[0]['givn'], '*');
 			$surn  = $nam[0]['surname'];
 			if (isset($nam[1])) {
 				$fulmn = rtrim($nam[1]['givn'], '*') . "&nbsp;" . $nam[1]['surname'];
 				$fulmn = str_replace('"', '\'', $fulmn); // Replace double quotes
-				$fulmn = str_replace("@N.N.", "(" . WT_I18N::translate('unknown') . ")", $fulmn);
-				$fulmn = str_replace("@P.N.", "(" . WT_I18N::translate('unknown') . ")", $fulmn);
+				$fulmn = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $fulmn);
+				$fulmn = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $fulmn);
 				$marn  = $nam[1]['surname'];
 			} else {
 				$fulmn = $fulln;
@@ -124,8 +119,8 @@ if ($action == "filter") {
 					$chnam   = $child->getAllNames();
 					$chfulln = rtrim($chnam[0]['givn'], '*') . " " . $chnam[0]['surname'];
 					$chfulln = str_replace('"', "", $chfulln); // Must remove quotes completely here
-					$chfulln = str_replace("@N.N.", "(" . WT_I18N::translate('unknown') . ")", $chfulln);
-					$chfulln = str_replace("@P.N.", "(" . WT_I18N::translate('unknown') . ")", $chfulln); // Child’s Full Name
+					$chfulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $chfulln);
+					$chfulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $chfulln); // Child’s Full Name
 					$chdob   = ($child->getBirthDate()->minJD() + $child->getBirthDate()->maxJD()) / 2; // Child’s Date of Birth (Julian)
 					if (!isset($chdob)) { $chdob = ""; }
 					$chdod   = ($child->getDeathDate()->minJD() + $child->getDeathDate()->maxJD()) / 2; // Child’s Date of Death (Julian)
@@ -156,7 +151,7 @@ if ($action == "filter") {
 			echo "'" . (1901 - $indi->getbirthyear()) . "' ,"; // ~age~     - Census Date minus YOB (Preliminary)
 			echo "'" . (($indi->getDeathDate()->minJD() + $indi->getDeathDate()->maxJD()) / 2) . "' ,"; // dod       - Date of Death
 			echo "'', "; // occu      - Occupation
-			echo "'" . WT_Filter::escapeHtml($indi->getbirthplace()) . "', "; // birthpl   - Birthplace
+			echo "'" . Filter::escapeHtml($indi->getbirthplace()) . "', "; // birthpl   - Birthplace
 			echo "'" . $FBP . "', "; // fbirthpl  - Father’s Birthplace
 			echo "'" . $MBP . "', "; // mbirthpl  - Mother’s Birthplace
 			echo "'" . $chBLDarray . "'"; // chilBLD   - Array of Children (name, birthdate, deathdate)
@@ -171,10 +166,10 @@ if ($action == "filter") {
 		echo '</ul></td></tr>';
 	} else {
 		echo "<tr><td class=\"list_value_wrap\">";
-		echo WT_I18N::translate('No results found.');
+		echo I18N::translate('No results found.');
 		echo "</td></tr>";
 	}
 	echo "</table>";
 }
-echo '<button onclick="window.close();">', WT_I18N::translate('close'), '</button>';
+echo '<button onclick="window.close();">', I18N::translate('close'), '</button>';
 echo "</div>"; // Close div that centers table

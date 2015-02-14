@@ -1,28 +1,17 @@
-/*
-* Style for FAB theme
-*
-* webtrees: Web based Family History software
-* Copyright (C) 2014 webtrees development team.
-*
-* Derived from PhpGedView
-* Copyright (C) 2002 to 2009 PGV Development Team.
-*
-* Mime-type icons from http://gnome-look.org, published under GPL (v2)
-*
-* This program is free software; you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation; either version 2 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program; if not, write to the Free Software
-* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
-*/
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 /* ======== Globals ========== */
 
@@ -95,6 +84,10 @@ textarea:required:invalid {
 	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMpJREFUeNpi/P//PwMlgImBQjAMDGBBF1jFyOgBpFqAuOYPA8MOoAI4P+z//x0YJoBiARkvYWA486+k5D+IBuJqZD66WnAMogvMA9o4F6j4R3Lyf2R6IQODMVEGTAW6CoirgfjMB2/v/yB6CgNDYQ8W14IwRiB+A7rgOwNDYLChofGcrVvPgugfDAzR/yFhwUAwDJqBNj6Ulf0PooEhV4jMx+YCRvSknAeMBWDotwgwMKRzMTCcfQW0GcQHxkbNJCyxwDiaFxgAAgwAYy67YIOQ//cAAAAASUVORK5CYII=) no-repeat right top;
 }
 
+input {
+	font-size: 14px;
+}
+
 [dir=rtl] input:required:valid,
 [dir=rtl] textarea:required:valid,
 [dir=rtl] input:required:invalid,
@@ -135,7 +128,7 @@ dt {
 }
 
 [dir=rtl] dt {
-	float: left;
+	float: right;
 	margin-right: auto;
 	margin-left: 10px;
 }
@@ -1970,6 +1963,7 @@ dd .deletelink {
 
 .markdown table {
 	border-collapse: collapse;
+	font-size: 10px;
 }
 
 .markdown th {
@@ -2357,7 +2351,7 @@ dd .deletelink {
 	padding-bottom: 0;
 	margin-bottom: 0;
 	width: 98%;
-	overflow: visible;
+	overflow: auto;
 }
 
 [dir=rtl] #tabs {
@@ -2712,7 +2706,7 @@ dd .deletelink {
 	border: 1px solid #aaa;
 	border-radius: 4px;
 	margin: 20px auto 0;
-	width: 580px;
+	width: 610px;
 }
 
 #search-page-table .label {

@@ -583,7 +583,7 @@ msgstr "9:e"
 
 #. I18N: Help text for the “Automatically create globally unique IDs” configuration setting
 #: admin_trees_config.php:808
-msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
+msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates.  The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
 msgstr "<b>GUID</b> i detta sammanhang är en akronym för ”Globalt unikt ID”.<br><br>GUID är avsedda för att identifiera varje individ på ett sätt som är upprepningsbart, så att centrala organisationer som Family History Center i LDS kyrkan i Salt Lake City, eller även kompatibla program som körs på din egna server, kan avgöra om de hanterar samma enskilda individ oavsett var GEDCOM härrör.  Family History Centers mål är att ha en central lagringsplats för genealogisk data och utsätta det via webbtjänster. Detta gör att vilket som helst program kan få tillgång till datan och kan uppdatera uppgifterna inom den.<br><br>Om du inte avser att dela denna GEDCOM med någon annan, behöver du inte låta webtrees skapa dessa GUID. Att göra detta kommer dock inte att göra någon skada, utan endast öka storleken på din GEDCOM."
 
 #: admin_trees_manage.php:619
@@ -591,7 +591,7 @@ msgid "<b>Important note:</b> The transfer wizard is not able to assist with mov
 msgstr "<b>Viktig anmärkning:</b> Överföringsguiden kan inte hjälpa till med att flytta medieobjekt. Du kommer att behöva ställa in och flytta eller kopiera din media konfiguration och dina mediaobjekt separat efter överföringsguiden är klar."
 
 #: message.php:115
-msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
+msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
 msgstr "<b> Observera:</b> Privat information om levande personer kommer endast att visas för familj, släkt och nära vänner. Du kommer bli ombedd att bekräfta din relation innan du får några privata uppgifter. Ibland kan information om döda personer också vara privat. Om så är fallet är det för att det inte finns tillräcklig med information om personen för att bestämma om den lever eller ej.<br><br>Innan du frågar, kontrollera att du frågar om rätt person genom att kontrollera datum, platser och nära släktingar. Om du skickar in ändringar för släktträdet, så måste de källor som informationen kommer från, anges."
 
 #: login.php:159
@@ -858,7 +858,7 @@ msgstr "En sidopanel som visar en persons närmsta familj och släkt."
 
 #. I18N: Description of the “Extra information” module
 #: modules_v3/extra_info/module.php:31
-msgid "A sidebar showing non-genealogical information about an individual."
+msgid "A sidebar showing non-genealogy information about an individual."
 msgstr "En sidopanel som visar en persons icke-genealogiska data."
 
 #. I18N: Description of the “Descendants” module
@@ -1953,8 +1953,8 @@ msgstr "Applicera automatiska korrektioner till dina genealogiska data."
 #: admin_trees_download.php:122 modules_v3/clippings/module.php:190
 #: modules_v3/clippings/module.php:198 modules_v3/clippings/module.php:581
 #: modules_v3/clippings/module.php:590
-msgid "Apply privacy settings?"
-msgstr "Tillämpa integritetsinställningar?"
+msgid "Apply privacy settings"
+msgstr "Tillämpa integritetsinställningar"
 
 #: admin_users.php:99
 #, php-format
@@ -2280,7 +2280,7 @@ msgid "Average number of children per family"
 msgstr "Genomsnittligt antal barn per familj"
 
 #: admin_trees_manage.php:568
-msgid "Avoid spaces and puncutation.  A family name might be a good choice."
+msgid "Avoid spaces and punctuation.  A family name might be a good choice."
 msgstr ""
 
 #: library/WT/Date/Jalali.php:158
@@ -3930,8 +3930,8 @@ msgstr ""
 
 #: admin_trees_download.php:134 modules_v3/clippings/module.php:205
 #: modules_v3/clippings/module.php:598
-msgid "Convert from UTF-8 to ANSI (ISO-8859-1)"
-msgstr "Vill du konvertera från UTF-8 till ANSI(ISO-8859-1)?"
+msgid "Convert from UTF-8 to ISO-8859-1"
+msgstr "Vill du konvertera från UTF-8 till ISO-8859-1?"
 
 #: library/WT/Stats.php:6118
 msgid "Cook Islands"
@@ -5755,7 +5755,7 @@ msgstr "Exportera"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:284
-msgid "Export all family trees to GEDCOM files…"
+msgid "Export all the family trees to GEDCOM files…"
 msgstr "Exportera alla släktträd till GEDCOM-filer…"
 
 #: help_text.php:544
@@ -6031,7 +6031,7 @@ msgstr "Släktträdsurklippskorg"
 #. I18N: %s is a filename
 #: admin_site_upgrade.php:290 admin_trees_export.php:34
 #, php-format
-msgid "Family tree exported to %s."
+msgid "The family tree has been exported to %s."
 msgstr "Släktträdet har exporterats till %s"
 
 #: admin_trees_config.php:666 admin_trees_manage.php:533
@@ -7350,7 +7350,7 @@ msgid "If you have a note to add to this record, this is the place to do so.<br>
 msgstr "Om du har en anteckning att lägga till denna datapost, är du på rätt plats.<br><br>Klicka länken och ett fönster öppnas och du kan skriva din anteckning. När du har skrivit färdigt, klicka på knappen nedanför rutan och stäng fönstret."
 
 #: admin_trees_manage.php:207
-msgid "If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM file."
+msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
 msgstr "Om du skapat media objekt i webtrees, och har redigerat din gedcom off-line med ett program som tar bort media-object, då välj denna ruta för att sammanfoga de nuvarande media objekten med den nya GEDCOM-filen."
 
 #: modules_v3/recent_changes/module.php:173
@@ -10782,7 +10782,7 @@ msgid "Places in %s"
 msgstr "Orter i %s"
 
 #: help_text.php:330
-msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
+msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
 msgstr "Orter skall anges i enlighet med normerna inom släktforskning. I släktforskning bör orter registreras med den mest specifika informationen först och sedan de minst specifika sedan genom att använda kommatecken för att skilja de olika informationsnivåerna. Ortens information nivå bör motsvara förvaltning eller kyrka där viktiga uppgifterposter för den orten finns.<br>Till exempel skulle en plats som Salt Lake City skrivas som ”Salt Lake City, Salt Lake, Utah, USA”.<br>Låt oss unders??ka varje del av denna plats. Den första delen, ”Salt Lake City”, är den stad eller kommun där händelsen inträffade. I vissa länder kan det finnas kommuner eller stadsdelar inne i en stad som är viktigt att notera. I så fall bör de komma före staden. Nästa del, ”Salt Lake”, är länet. ”Utah” är staten, och ”USA” är landet. Det är viktigt att notera varje ort eftersom genealogiska register förs av regeringarna i varje nivå.<br>Om en nivå av platsen är okänd, bör du lämna ett mellanrum mellan kommatecken. Antag, i exemplet ovan, att du inte vet länet för Salt Lake City. Du borde ange den så här: ”Salt Lake City, , Utah, USA”. Antag att du bara vet att en person är född i Utah. Du skulle ange informationen så här: ”, , Utah, USA”.<br>Du kan använda <b>Sök plats</b> länken för att hjälpa dig hitta platser som redan finns i databasen."
 
 #: library/WT/Theme/Clouds.php:74 library/WT/Theme/Fab.php:84
@@ -12117,7 +12117,7 @@ msgstr ""
 #. I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting
 #: admin_trees_config.php:1674
 msgid "Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>An individual who has all of the ordinances done will have <b>BESP</b> printed after their name.  Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code.  For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances."
-msgstr "Om man väljer <b>Ja</b> kommer koderna för LDS förordningarna att visas i diagram rutor.<ul><li><b>B</b> - Dop</li><li><b>E</b> - Donation</li><li><b>S</b> - Försegling till make/a</li><li><b>P</b> Försegling med föräldrar</li></ul>Så en person som har fullgjort alla förordningar kommer att ha <b>BESP</b> utskrivet efter sitt namn. Om någon av förordningarna fattas kommer koderna att se ut så här <b>BE__</b> med ett _ för den missade förordningen.<br><br>Detta sätter variabeln $SHOW_LDS_AT_GLANCE i<i><u>xxx</u>.GED_priv.php</i>."
+msgstr "Om man väljer <b>Ja</b> kommer koderna för LDS förordningarna att visas i diagram rutor.<ul><li><b>B</b> - Dop</li><li><b>E</b> - Donation</li><li><b>S</b> - Försegling till make/a</li><li><b>P</b> Försegling med föräldrar</li></ul>Så en person som har fullgjort alla förordningar kommer att ha <b>BESP</b> utskrivet efter sitt namn. Om någon av förordningarna fattas kommer koderna att se ut så här <b>BE__</b> med ett _ för den missade förordningen."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: admin_trees_config.php:1785
@@ -13368,7 +13368,7 @@ msgid "Thailand"
 msgstr "Thailand"
 
 #: help_text.php:276
-msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded.  This is how it will be displayed on screen.  It uses standard genealogical annotations to identify different parts of the name."
+msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded.  This is how it will be displayed on screen.  It uses standard genealogy annotations to identify different parts of the name."
 msgstr "<b>Namn</b> fältet innehåller personens fulla namn, som det stavades eller som det registrerades. Detta är hur det kommer att visas på skärmen. Den använder standard genealogiska anteckningar för att identifiera olika delar av namnet."
 
 #: help_text.php:296
@@ -13588,7 +13588,7 @@ msgstr "E-mail-adress besökare kan använda för att kontakta dig angående tek
 
 #. I18N: Help text for the “Genealogy contact” configuration setting
 #: admin_trees_config.php:981
-msgid "The individual to contact about the genealogical data on this website."
+msgid "The individual to contact about the genealogy data on this website."
 msgstr "Person som kan kontaktas gällande släktuppgifter i denna sajt."
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
@@ -14480,7 +14480,7 @@ msgstr "Denna sajt är otillgänglig för tillfället"
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:165
 #, php-format
-msgid "This will delete all the genealogical data from “%s” and replace it with data from another GEDCOM file."
+msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
 msgstr "Radera all släktdata från “%s” och ersätt dem med data från annan GEDCOM."
 
 #: modules_v3/googlemap/module.php:1817
@@ -20085,7 +20085,7 @@ msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
 
-#~ msgid "<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The administrator can override this option for individual users by editing the user’s account details."
+#~ msgid "<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogy database.  The administrator can override this option for individual users by editing the user’s account details."
 #~ msgstr "Ett <b>Nej</b> innebär att registrerade användare kan se detaljerna på alla levande personer.<br><br>Ett <b>Ja</b> betyder att användare bara kan se den privata informationen för levande personer de är släkt med."
 
 #~ msgid "Add by ID"
@@ -20154,8 +20154,8 @@ msgstr "…"
 #~ msgid "Family tree configuration"
 #~ msgstr "Släktträds konfiguration"
 
-#~ msgid "For optimal display on the internet, webtrees uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
-#~ msgstr "För att bättre optimera visandet av tecken på internet använder webtrees UTF-8 teckentabell. Vissa program t.ex. Family Tree Maker, stödjer inte import av GEDCOM-filer kodade i UTF-8. Bocka denna ruta, så konverteras filen från <b>UTF-8</b> till <b>ANSI (ISO-8859-1)</b>.<br><br>Formatet du behöver beror på programmet du använder när du nedladdar GEDCOM-filer, om du inte är säker, konsultera programmets dokumentation.<br><br>För att special tecken skall lämnas oförändrade, behöver du hålla filen i UTF-8 och konvertera den till programmets metod för hantering av dessa specialtecken på annat sätt. Konsultera ditt programs tillverkare eller upphovsman.<br><br>Denna <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia artikel\"><b>Wikipedia artikel</b></a> innehåller omfattande information och länkar om UTF-8."
+#~ msgid "For optimal display on the internet, webtrees uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ISO-8859-1</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
+#~ msgstr "För att bättre optimera visandet av tecken på internet använder webtrees UTF-8 teckentabell. Vissa program t.ex. Family Tree Maker, stödjer inte import av GEDCOM-filer kodade i UTF-8. Bocka denna ruta, så konverteras filen från <b>UTF-8</b> till <b>ISO-8859-1</b>.<br><br>Formatet du behöver beror på programmet du använder när du nedladdar GEDCOM-filer, om du inte är säker, konsultera programmets dokumentation.<br><br>För att special tecken skall lämnas oförändrade, behöver du hålla filen i UTF-8 och konvertera den till programmets metod för hantering av dessa specialtecken på annat sätt. Konsultera ditt programs tillverkare eller upphovsman.<br><br>Denna <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia artikel\"><b>Wikipedia artikel</b></a> innehåller omfattande information och länkar om UTF-8."
 
 #~ msgid "From %s to %s"
 #~ msgstr "Från %s till %s"

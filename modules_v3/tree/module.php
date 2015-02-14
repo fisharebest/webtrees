@@ -1,36 +1,39 @@
 <?php
-// Copyright (C) 2014 webtrees development team
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Fisharebest\Webtrees;
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+use Zend_Session;
 
 /**
  * Class tree_WT_Module
  * Tip : you could change the number of generations loaded before ajax calls both in individual page and in treeview page to optimize speed and server load
  */
-class tree_WT_Module extends WT_Module implements WT_Module_Tab {
+class tree_WT_Module extends Module implements ModuleTabInterface {
 	var $headers; // CSS and script to include in the top of <head> section, before theme’s CSS
 	var $js; // the TreeViewHandler javascript
 
 	/** {@inheritdoc} */
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Interactive tree');
+		return /* I18N: Name of a module */ I18N::translate('Interactive tree');
 	}
 
 	/** {@inheritdoc} */
 	public function getDescription() {
-		return /* I18N: Description of the “Interactive tree” module */ WT_I18N::translate('An interactive tree, showing all the ancestors and descendants of an individual.');
+		return /* I18N: Description of the “Interactive tree” module */ I18N::translate('An interactive tree, showing all the ancestors and descendants of an individual.');
 	}
 
 	/** {@inheritdoc} */
@@ -91,7 +94,7 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 		switch ($mod_action) {
 		case 'treeview':
 			global $controller;
-			$controller = new WT_Controller_Chart;
+			$controller = new ChartController;
 			$tv = new TreeView('tv');
 			ob_start();
 
@@ -100,7 +103,7 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 			list($html, $js) = $tv->drawViewport($person, 4);
 
 			$controller
-				->setPageTitle(WT_I18N::translate('Interactive tree of %s', $person->getFullName()))
+				->setPageTitle(I18N::translate('Interactive tree of %s', $person->getFullName()))
 				->pageHeader()
 				->addExternalJavascript($this->js())
 				->addInlineJavascript($js)
@@ -117,10 +120,10 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 		case 'getDetails':
 			Zend_Session::writeClose();
 			header('Content-Type: text/html; charset=UTF-8');
-			$pid = WT_Filter::get('pid', WT_REGEX_XREF);
-			$i = WT_Filter::get('instance');
+			$pid = Filter::get('pid', WT_REGEX_XREF);
+			$i = Filter::get('instance');
 			$tv = new TreeView($i);
-			$individual = WT_Individual::getInstance($pid);
+			$individual = Individual::getInstance($pid);
 			if ($individual) {
 				echo $tv->getDetails($individual);
 			}
@@ -129,8 +132,8 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 		case 'getPersons':
 			Zend_Session::writeClose();
 			header('Content-Type: text/html; charset=UTF-8');
-			$q = WT_Filter::get('q');
-			$i = WT_Filter::get('instance');
+			$q = Filter::get('q');
+			$i = Filter::get('instance');
 			$tv = new TreeView($i);
 			echo $tv->getPersons($q);
 			break;

@@ -1,44 +1,39 @@
 <?php
-// Module Administration User Interface.
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2015 webtrees development team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Fisharebest\Webtrees;
 
-use WT\Auth;
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 define('WT_SCRIPT_NAME', 'admin_module_reports.php');
 require 'includes/session.php';
-require WT_ROOT . 'includes/functions/functions_edit.php';
 
-$controller = new WT_Controller_Page;
+$controller = new PageController;
 $controller
 	->restrictAccess(Auth::isAdmin())
-	->setPageTitle(WT_I18N::translate('Reports'));
+	->setPageTitle(I18N::translate('Reports'));
 
-$modules = WT_Module::getActiveReports(WT_GED_ID, WT_PRIV_HIDE);
-$action  = WT_Filter::post('action');
+$modules = Module::getActiveReports(WT_GED_ID, WT_PRIV_HIDE);
+$action  = Filter::post('action');
 
-if ($action === 'update_mods' && WT_Filter::checkCsrf()) {
+if ($action === 'update_mods' && Filter::checkCsrf()) {
 	foreach ($modules as $module) {
-		foreach (WT_Tree::getAll() as $tree) {
-			$access_level = WT_Filter::post('access-' . $module->getName() . '-' . $tree->id(), WT_REGEX_INTEGER, $module->defaultAccessLevel());
-			WT_DB::prepare(
+		foreach (Tree::getAll() as $tree) {
+			$access_level = Filter::post('access-' . $module->getName() . '-' . $tree->getTreeId(), WT_REGEX_INTEGER, $module->defaultAccessLevel());
+			Database::prepare(
 				"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'report', ?)"
-			)->execute(array($module->getName(), $tree->id(), $access_level));
+			)->execute(array($module->getName(), $tree->getTreeId(), $access_level));
 		}
 	}
 
@@ -52,8 +47,8 @@ $controller
 
 ?>
 <ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
-	<li><a href="admin_modules.php"><?php echo WT_I18N::translate('Module administration'); ?></a></li>
+	<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
+	<li><a href="admin_modules.php"><?php echo I18N::translate('Module administration'); ?></a></li>
 	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 </ol>
 
@@ -61,20 +56,20 @@ $controller
 
 <form method="post">
 	<input type="hidden" name="action" value="update_mods">
-	<?php echo WT_Filter::getCsrf(); ?>
+	<?php echo Filter::getCsrf(); ?>
 	<table class="table table-bordered">
 		<thead>
 		<tr>
-			<th class="col-xs-2"><?php echo WT_I18N::translate('Report'); ?></th>
-			<th class="col-xs-5"><?php echo WT_I18N::translate('Description'); ?></th>
-			<th class="col-xs-5"><?php echo WT_I18N::translate('Access level'); ?></th>
+			<th class="col-xs-2"><?php echo I18N::translate('Report'); ?></th>
+			<th class="col-xs-5"><?php echo I18N::translate('Description'); ?></th>
+			<th class="col-xs-5"><?php echo I18N::translate('Access level'); ?></th>
 		</tr>
 		</thead>
 		<tbody>
 		<?php foreach ($modules as $module_name => $module): ?>
 			<tr>
 				<td class="col-xs-2">
-					<?php if ($module instanceof WT_Module_Config): ?>
+					<?php if ($module instanceof ModuleConfigInterface): ?>
 						<a href="<?php echo $module->getConfigLink(); ?>"><?php echo $module->getTitle(); ?> <i class="fa fa-cogs"></i></a>
 					<?php else: ?>
 						<?php echo $module->getTitle(); ?>
@@ -84,13 +79,13 @@ $controller
 				<td class="col-xs-5">
 					<table class="table">
 						<tbody>
-							<?php foreach (WT_Tree::getAll() as $tree): ?>
+							<?php foreach (Tree::getAll() as $tree): ?>
 								<tr>
 									<td>
-										<?php echo $tree->titleHtml(); ?>
+										<?php echo $tree->getTitleHtml(); ?>
 									</td>
 									<td>
-										<?php echo edit_field_access_level('access-' . $module->getName() . '-' . $tree->id(), $module->getAccessLevel($tree, 'report')); ?>
+										<?php echo edit_field_access_level('access-' . $module->getName() . '-' . $tree->getTreeId(), $module->getAccessLevel($tree, 'report')); ?>
 									</td>
 								</tr>
 							<?php endforeach; ?>
@@ -103,6 +98,6 @@ $controller
 	</table>
 	<button class="btn btn-primary" type="submit">
 		<i class="fa fa-check"></i>
-		<?php echo WT_I18N::translate('save'); ?>
+		<?php echo I18N::translate('save'); ?>
 	</button>
 </form>

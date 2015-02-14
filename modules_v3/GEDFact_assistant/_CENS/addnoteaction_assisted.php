@@ -1,29 +1,27 @@
 <?php
-// Include for GEDFact Assistant - Census.
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2010 PGV Development Team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Fisharebest\Webtrees;
 
-// This file is required by the addnoteaction_assisted function in edit_interface.php
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
-//-- create a shared note record from the incoming variables
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
 
 $newgedrec = "0 @XREF@ NOTE\n";
 
@@ -127,7 +125,7 @@ if (!empty($NOTE)) {
 }
 
 if ($pid_array != '') {
-	$record = WT_GedcomRecord::createRecord($newgedrec, WT_GED_ID);
+	$record = $WT_TREE->createRecord($newgedrec);
 } else {
 	$record = '';
 	echo '<div class="indent">No individuals entered, close and try again </div>';

@@ -1,36 +1,33 @@
 <?php
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2010 John Finlay
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Fisharebest\Webtrees;
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 /**
  * Class GEDFact_assistant_WT_Module
  */
-class GEDFact_assistant_WT_Module extends WT_Module {
+class GEDFact_assistant_WT_Module extends Module {
 	/** {@inheritdoc} */
 	public function getTitle() {
-		return /* I18N: Name of a module */ WT_I18N::translate('Census assistant');
+		return /* I18N: Name of a module */ I18N::translate('Census assistant');
 	}
 
 	/** {@inheritdoc} */
 	public function getDescription() {
-		return /* I18N: Description of the “Census assistant” module */ WT_I18N::translate('An alternative way to enter census transcripts and link them to individuals.');
+		return /* I18N: Description of the “Census assistant” module */ I18N::translate('An alternative way to enter census transcripts and link them to individuals.');
 	}
 
 	/** {@inheritdoc} */
@@ -56,12 +53,12 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 	 * ...
 	 */
 	private static function media_3_find() {
-		$controller = new WT_Controller_Simple;
-		$filter     = WT_Filter::get('filter');
-		$multiple   = WT_Filter::getBool('multiple');
+		$controller = new SimpleController;
+		$filter     = Filter::get('filter');
+		$multiple   = Filter::getBool('multiple');
 
 		$controller
-			->setPageTitle(WT_I18N::translate('Find an individual'))
+			->setPageTitle(I18N::translate('Find an individual'))
 			->pageHeader();
 
 		echo '<script>';
@@ -79,15 +76,6 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 					// GEDFact_assistant ========================
 					if (window.opener.document.getElementById('addlinkQueue')) {
 						window.opener.insertRowToTable(id, name);
-						// Check if Indi, Fam or source ===================
-						/*
-						if (id.match("I")=="I") {
-							var win01 = window.opener.window.open('edit_interface.php?action=addmedia_links&noteid=newnote&pid='+id, 'win01', edit_window_specs);
-							if (window.focus) {win01.focus();}
-						} else if (id.match("F")=="F") {
-							// TODO --- alert('Opening Navigator with family id entered will come later');
-						}
-						*/
 					}
 					window.opener.paste_id(id);
 					if (window.opener.pastename) {
@@ -103,7 +91,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 					button = "";
 				}
 				if (frm.filter.value.length<2&button!="all") {
-					alert("<?php echo WT_I18N::translate('Please enter more than one character'); ?>");
+					alert("<?php echo I18N::translate('Please enter more than one character'); ?>");
 					frm.filter.focus();
 					return false;
 				}
@@ -123,18 +111,18 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		echo "</tr>";
 		echo "</table>";
 		echo "<br>";
-		echo '<button onclick="window.close();">', WT_I18N::translate('close'), '</button>';
+		echo '<button onclick="window.close();">', I18N::translate('close'), '</button>';
 		echo "<br>";
 
 		$filter = trim($filter);
 		$filter_array = explode(' ', preg_replace('/ {2,}/', ' ', $filter));
 		echo "<table class=\"tabs_table width90\"><tr>";
-		$myindilist = search_indis_names($filter_array, array(WT_GED_ID), 'AND');
+		$myindilist = search_indis_names($filter_array, WT_GED_ID);
 		if ($myindilist) {
 			echo "<td class=\"list_value_wrap\"><ul>";
-			usort($myindilist, array('WT_GedcomRecord', 'compare'));
+			usort($myindilist, __NAMESPACE__ . '\GedcomRecord::compare');
 			foreach ($myindilist as $indi) {
-				$nam = WT_Filter::escapeHtml($indi->getFullName());
+				$nam = Filter::escapeHtml($indi->getFullName());
 				echo "<li><a href=\"#\" onclick=\"pasterow(
 					'".$indi->getXref() . "' ,
 					'".$nam . "' ,
@@ -148,10 +136,10 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 				echo "</span><br><span class=\"list_item\">", $born, " ", $indi->getbirthyear(), "&nbsp;&nbsp;&nbsp;", $indi->getbirthplace(), "</span></a></li>";
 			echo "<hr>";
 			}
-			echo '</ul></td></tr><tr><td class="list_label">', WT_I18N::translate('Total individuals: %s', count($myindilist)), '</tr></td>';
+			echo '</ul></td></tr><tr><td class="list_label">', I18N::translate('Total individuals: %s', count($myindilist)), '</tr></td>';
 		} else {
 			echo "<td class=\"list_value_wrap\">";
-			echo WT_I18N::translate('No results found.');
+			echo I18N::translate('No results found.');
 			echo "</td></tr>";
 		}
 		echo "</table>";
@@ -162,17 +150,17 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 	 * ...
 	 */
 	private static function media_query_3a() {
-		$iid2 = WT_Filter::get('iid', WT_REGEX_XREF);
+		$iid2 = Filter::get('iid', WT_REGEX_XREF);
 
-		$controller = new WT_Controller_Simple;
+		$controller = new SimpleController;
 		$controller
-			->setPageTitle(WT_I18N::translate('Link to an existing media object'))
+			->setPageTitle(I18N::translate('Link to an existing media object'))
 			->pageHeader();
 
-		$record = WT_GedcomRecord::getInstance($iid2);
+		$record = GedcomRecord::getInstance($iid2);
 		if ($record) {
 			$headjs = '';
-			if ($record instanceof WT_Family) {
+			if ($record instanceof Family) {
 				if ($record->getHusband()) {
 					$headjs = $record->getHusband()->getXref();
 				} elseif ($record->getWife()) {
@@ -195,7 +183,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 			?>
 			<script>
 			function insertId() {
-				window.opener.alert('<?php echo strtoupper($iid2); ?> - <?php echo WT_I18N::translate('Not a valid individual, family, or source ID'); ?>');
+				window.opener.alert('<?php echo strtoupper($iid2); ?> - <?php echo I18N::translate('Not a valid individual, family, or source ID'); ?>');
 				window.close();
 			}
 			</script>
@@ -209,11 +197,11 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 	/**
 	 * Convert custom markup into HTML
 	 *
-	 * @param WT_Note $note
+	 * @param Note $note
 	 *
 	 * @return string
 	 */
-	public static function formatCensusNote(WT_Note $note) {
+	public static function formatCensusNote(Note $note) {
 		global $WT_TREE;
 
 		$headers = array(
@@ -269,15 +257,15 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 
 		if (preg_match('/(.*)((?:\n.*)*)\n\.start_formatted_area\.\n(.*)((?:\n.*)*)\n.end_formatted_area\.((?:\n.*)*)/', $note->getNote(), $match)) {
 			// This looks like a census-assistant shared note
-			$title     = WT_Filter::escapeHtml($match[1]);
-			$preamble  = WT_Filter::escapeHtml($match[2]);
-			$header    = WT_Filter::escapeHtml($match[3]);
-			$data      = WT_Filter::escapeHtml($match[4]);
-			$postamble = WT_Filter::escapeHtml($match[5]);
+			$title     = Filter::escapeHtml($match[1]);
+			$preamble  = Filter::escapeHtml($match[2]);
+			$header    = Filter::escapeHtml($match[3]);
+			$data      = Filter::escapeHtml($match[4]);
+			$postamble = Filter::escapeHtml($match[5]);
 
 			$fmt_headers = array();
 			foreach ($headers as $key=>$value) {
-				$fmt_headers['.b.' . $key] = '<span title="' . WT_Filter::escapeHtml($value) . '">' . $key . '</span>';
+				$fmt_headers['.b.' . $key] = '<span title="' . Filter::escapeHtml($value) . '">' . $key . '</span>';
 			}
 
 			// Substitue header labels and format as HTML
@@ -303,7 +291,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 				'<p>' . $postamble . '</p>';
 		} else {
 			// Not a census-assistant shared note - apply default formatting
-			return WT_Filter::formatText($note->getNote(), $WT_TREE);
+			return Filter::formatText($note->getNote(), $WT_TREE);
 		}
 	}
 
@@ -320,7 +308,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		global $controller;
 
 		// We do not yet support family records
-		if (!WT_GedcomRecord::getInstance($xref) instanceof WT_Individual) {
+		if (!GedcomRecord::getInstance($xref) instanceof Individual) {
 			return '';
 		}
 
@@ -347,7 +335,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 			'<br>' .
 			'<input type="hidden" name="pid_array" id="pid_array" value="">' .
 			'<a href="#" onclick="return addnewnote_assisted(document.getElementById(\'' . $element_id . '\'), \'' . $xref . '\');">' .
-			WT_I18N::translate('Create a new shared note using assistant') .
+			I18N::translate('Create a new shared note using assistant') .
 			'</a>';
 	}
 
@@ -383,7 +371,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 				<select id="selcensdate" name="selcensdate" onchange = "if (this.options[this.selectedIndex].value!=\'\') {
 										addDate(this.options[this.selectedIndex].value);
 									}">
-					<option id="defdate" value="" selected>' . WT_I18N::translate('Census date') . '</option>
+					<option id="defdate" value="" selected>' . I18N::translate('Census date') . '</option>
 					<option value=""></option>
 					<option id="UK1911" class="UK"  value="1911, 3, 02, UK">UK 1911</option>
 					<option id="UK1901" class="UK"  value="1901, 2, 31, UK">UK 1901</option>

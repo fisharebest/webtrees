@@ -1,38 +1,29 @@
 <?php
-// Individual Page
-//
-// Display all of the information about an individual
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2011 PGV Development Team.
-//
-// Sidebar controls courtesy of http://devheart.org/articles/jquery-collapsible-sidebar-layout/
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Fisharebest\Webtrees;
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 define('WT_SCRIPT_NAME', 'individual.php');
 require './includes/session.php';
-$controller = new WT_Controller_Individual;
+$controller = new IndividualController;
 $controller
 	->addExternalJavascript(WT_JQUERY_COOKIE_JS_URL); // We use this to record the sidebar state
 
 if ($controller->record && $controller->record->canShow()) {
-	if (WT_Filter::get('action') == 'ajax') {
+	if (Filter::get('action') == 'ajax') {
 		$controller->ajaxRequest();
 		
 		return;
@@ -46,17 +37,17 @@ if ($controller->record && $controller->record->canShow()) {
 		if (WT_USER_CAN_ACCEPT) {
 			echo
 				'<p class="ui-state-highlight">',
-				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ WT_I18N::translate(
+				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ I18N::translate(
 					'This individual has been deleted.  You should review the deletion and then %1$s or %2$s it.',
-					'<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
-					'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
+					'<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translate_c('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
+					'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translate_c('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
 				),
 				' ', help_link('pending_changes'),
 				'</p>';
 		} elseif (WT_USER_CAN_EDIT) {
 			echo
 				'<p class="ui-state-highlight">',
-				WT_I18N::translate('This individual has been deleted.  The deletion will need to be reviewed by a moderator.'),
+				I18N::translate('This individual has been deleted.  The deletion will need to be reviewed by a moderator.'),
 				' ', help_link('pending_changes'),
 				'</p>';
 		}
@@ -64,17 +55,17 @@ if ($controller->record && $controller->record->canShow()) {
 		if (WT_USER_CAN_ACCEPT) {
 			echo
 				'<p class="ui-state-highlight">',
-				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ WT_I18N::translate(
+				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ I18N::translate(
 					'This individual has been edited.  You should review the changes and then %1$s or %2$s them.',
-					'<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'accept') . '</a>',
-					'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'reject') . '</a>'
+					'<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translate_c('You should review the changes and then accept or reject them.', 'accept') . '</a>',
+					'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translate_c('You should review the changes and then accept or reject them.', 'reject') . '</a>'
 				),
 				' ', help_link('pending_changes'),
 				'</p>';
 		} elseif (WT_USER_CAN_EDIT) {
 			echo
 				'<p class="ui-state-highlight">',
-				WT_I18N::translate('This individual has been edited.  The changes need to be reviewed by a moderator.'),
+				I18N::translate('This individual has been edited.  The changes need to be reviewed by a moderator.'),
 				' ', help_link('pending_changes'),
 				'</p>';
 		}
@@ -83,13 +74,13 @@ if ($controller->record && $controller->record->canShow()) {
 	// Just show the name.
 	$controller->pageHeader();
 	echo '<h2>', $controller->record->getFullName(), '</h2>';
-	echo '<p class="ui-state-highlight">', WT_I18N::translate('The details of this individual are private.'), '</p>';
+	echo '<p class="ui-state-highlight">', I18N::translate('The details of this individual are private.'), '</p>';
 	
 	return;
 } else {
 	http_response_code(404);
 	$controller->pageHeader();
-	echo '<p class="ui-state-error">', WT_I18N::translate('This individual does not exist or you do not have permission to view it.'), '</p>';
+	echo '<p class="ui-state-error">', I18N::translate('This individual does not exist or you do not have permission to view it.'), '</p>';
 	
 	return;
 }
@@ -179,10 +170,10 @@ if ($controller->record->canShow()) {
 	echo '<span class="header_age">';
 	if ($bdate->isOK() && !$controller->record->isDead()) {
 		// If living display age
-		echo WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(WT_Date::GetAgeGedcom($bdate), true), $controller->record, 'span');
+		echo WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(Date::GetAgeGedcom($bdate), true), $controller->record, 'span');
 	} elseif ($bdate->isOK() && $ddate->isOK()) {
 		// If dead, show age at death
-		echo WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(WT_Date::GetAgeGedcom($bdate, $ddate), false), $controller->record, 'span');
+		echo WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(Date::GetAgeGedcom($bdate, $ddate), false), $controller->record, 'span');
 	}
 	echo '</span>';
 	// Display summary birth/death info.
@@ -242,7 +233,7 @@ echo
 	'</div>', // close #tabs
 	'</div>'; //close indi_left
 	if ($sidebar_html) {
-		echo '<div id="separator" title="' . WT_I18N::translate('Click here to open or close the sidebar') . '"></div>' . //clickable element to open/close sidebar
+		echo '<div id="separator" title="' . I18N::translate('Click here to open or close the sidebar') . '"></div>' . //clickable element to open/close sidebar
 		$sidebar_html;
 	}
 	echo '</div>'; // close #main

@@ -1,39 +1,41 @@
 <?php
-// Check a family tree for structural errors.
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2015 Greg Roach
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License or,
-// at your discretion, any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Fisharebest\Webtrees;
 
-use WT\Auth;
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'admin_trees_check.php');
 require './includes/session.php';
-require WT_ROOT . 'includes/functions/functions_edit.php';
 
-$controller = new WT_Controller_Page;
+$controller = new PageController;
 $controller
-	->restrictAccess(Auth::isManager())
-	->setPageTitle(WT_I18N::translate('Check for errors'))
+	->restrictAccess(Auth::isManager($WT_TREE))
+	->setPageTitle(I18N::translate('Check for errors'))
 	->pageHeader();
 
 // We need to work with raw GEDCOM data, as we are looking for errors
-// which may prevent the WT_GedcomRecord objects from working...
+// which may prevent the GedcomRecord objects from working...
 
-$rows = WT_DB::prepare(
+$rows = Database::prepare(
 	"SELECT i_id AS xref, 'INDI' AS type, i_gedcom AS gedrec FROM `##individuals` WHERE i_file=?" .
 	" UNION " .
 	"SELECT f_id AS xref, 'FAM'  AS type, f_gedcom AS gedrec FROM `##families`    WHERE f_file=?" .
@@ -52,7 +54,7 @@ foreach ($rows as $row) {
 
 // Need to merge pending new/changed/deleted records
 
-$rows = WT_DB::prepare(
+$rows = Database::prepare(
 	"SELECT xref, SUBSTRING_INDEX(SUBSTRING_INDEX(SUBSTRING_INDEX(CASE WHEN old_gedcom='' THEN new_gedcom ELSE old_gedcom END, '\n', 1), ' ', 3), ' ', -1) AS type, new_gedcom AS gedrec" .
 	" FROM (" .
 	"  SELECT MAX(change_id) AS change_id" .
@@ -117,10 +119,10 @@ $RECORD_LINKS = array(
 $errors = false;
 
 echo '<h1>', $controller->getPageTitle(), '</h1>';
-echo '<fieldset><legend>', WT_I18N::translate('Types of error'), '</legend>';
-echo '<p class="ui-state-error">', WT_I18N::translate('This may cause a problem for webtrees.'), '</p>';
-echo '<p class="ui-state-highlight">', WT_I18N::translate('This may cause a problem for other applications.'), '</p>';
-echo '<p class="warning-bad-data">', WT_I18N::translate('This may be a mistake in your data.'), '</p>';
+echo '<fieldset><legend>', I18N::translate('Types of error'), '</legend>';
+echo '<p class="ui-state-error">', I18N::translate('This may cause a problem for webtrees.'), '</p>';
+echo '<p class="ui-state-highlight">', I18N::translate('This may cause a problem for other applications.'), '</p>';
+echo '<p class="warning-bad-data">', I18N::translate('This may be a mistake in your data.'), '</p>';
 echo '</fieldset>';
 
 // Generate lists of all links
@@ -144,14 +146,14 @@ foreach ($all_links as $xref1 => $links) {
 				echo warning(
 					link_message($type1, $xref1, $type2, $xref2) . ' ' .
 					/* I18N: placeholders are GEDCOM XREFs, such as R123 */
-					WT_I18N::translate('%1$s does not exist.  Did you mean %2$s?', format_link($xref2), format_link($upper_links[strtoupper($xref2)]))
+					I18N::translate('%1$s does not exist.  Did you mean %2$s?', format_link($xref2), format_link($upper_links[strtoupper($xref2)]))
 				);
 			} else {
 				echo error(
 					link_message(
 						$type1, $xref1, $type2, $xref2) . ' ' .
 					/* I18N: placeholders are GEDCOM XREFs, such as R123 */
-					WT_I18N::translate('%1$s does not exist.', format_link($xref2))
+					I18N::translate('%1$s does not exist.', format_link($xref2))
 				);
 			}
 		} elseif ($type2 === 'SOUR' && $type1 === 'NOTE') {
@@ -160,19 +162,19 @@ foreach ($all_links as $xref1 => $links) {
 			// Media objects are intended to illustrate other records, facts, and source/citations.  They should not have their own sources.
 		} elseif ($type2 === 'OBJE' && $type1 === 'REPO') {
 			echo warning(
-				link_message($type1, $xref1, $type2, $xref2) . ' ' . WT_I18N::translate('This type of link is not allowed here.')
+				link_message($type1, $xref1, $type2, $xref2) . ' ' . I18N::translate('This type of link is not allowed here.')
 			);
 		} elseif (!array_key_exists($type1, $RECORD_LINKS) || !in_array($type2, $RECORD_LINKS[$type1]) || !array_key_exists($type2, $XREF_LINKS)) {
 			echo error(
 				link_message($type1, $xref1, $type2, $xref2) . ' ' .
-				WT_I18N::translate('This type of link is not allowed here.')
+				I18N::translate('This type of link is not allowed here.')
 			);
 		} elseif ($XREF_LINKS[$type2] !== $type3) {
 			// Target XREF does exist - but is invalid
 			echo error(
 				link_message($type1, $xref1, $type2, $xref2) . ' ' .
 				/* I18N: %1$s is an internal ID number such as R123.  %2$s and %3$s are record types, such as INDI or SOUR */
-				WT_I18N::translate('%1$s is a %2$s but a %3$s is expected.', format_link($xref2), format_type($type3), format_type($type2))
+				I18N::translate('%1$s is a %2$s but a %3$s is expected.', format_link($xref2), format_type($type3), format_type($type2))
 			);
 		} elseif (
 			$type2 === 'FAMC' && (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1] !== 'CHIL') ||
@@ -184,7 +186,7 @@ foreach ($all_links as $xref1 => $links) {
 			echo error(
 				link_message($type1, $xref1, $type2, $xref2) . ' ' .
 				/* I18N: %1$s and %2$s are internal ID numbers such as R123 */
-				WT_I18N::translate('%1$s does not have a link back to %2$s.', format_link($xref2), format_link($xref1))
+				I18N::translate('%1$s does not have a link back to %2$s.', format_link($xref2), format_link($xref1))
 			);
 		}
 	}
@@ -199,7 +201,7 @@ foreach ($all_links as $xref1 => $links) {
  * @return string
  */
 function link_message($type1, $xref1, $type2, $xref2) {
-	return /* I18N: The placeholders are GEDCOM XREFs and tags.  e.g. “INDI I123 contains a FAMC link to F234.” */ WT_I18N::translate(
+	return /* I18N: The placeholders are GEDCOM XREFs and tags.  e.g. “INDI I123 contains a FAMC link to F234.” */ I18N::translate(
 		'%1$s %2$s has a %3$s link to %4$s.',
 		format_type($type1),
 		format_link($xref1),
@@ -251,5 +253,5 @@ function warning($message) {
 }
 
 if (!$errors) {
-	echo '<p>', WT_I18N::translate('No errors have been found.'), '</p>';
+	echo '<p>', I18N::translate('No errors have been found.'), '</p>';
 }

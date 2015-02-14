@@ -1,123 +1,117 @@
 <?php
-// Log viewer.
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2015 webtrees development team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Fisharebest\Webtrees;
 
-use WT\Auth;
-use WT\User;
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+use PDO;
+use Zend_Session;
+
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'admin_site_logs.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Page;
+$controller = new PageController;
 $controller
-	->restrictAccess(Auth::isManager())
-	->setPageTitle(WT_I18N::translate('Website logs'));
+	->restrictAccess(Auth::isManager($WT_TREE))
+	->setPageTitle(I18N::translate('Website logs'));
 
-require WT_ROOT . 'includes/functions/functions_edit.php';
-
-$earliest = WT_DB::prepare("SELECT DATE(MIN(log_time)) FROM `##log`")->execute(array())->fetchOne();
-$latest   = WT_DB::prepare("SELECT DATE(MAX(log_time)) FROM `##log`")->execute(array())->fetchOne();
+$earliest = Database::prepare("SELECT DATE(MIN(log_time)) FROM `##log`")->execute(array())->fetchOne();
+$latest   = Database::prepare("SELECT DATE(MAX(log_time)) FROM `##log`")->execute(array())->fetchOne();
 
 // Filtering
-$action = WT_Filter::get('action');
-$from   = WT_Filter::get('from', '\d\d\d\d-\d\d-\d\d', $earliest);
-$to     = WT_Filter::get('to', '\d\d\d\d-\d\d-\d\d', $latest);
-$type   = WT_Filter::get('type', 'auth|change|config|debug|edit|error|media|search');
-$text   = WT_Filter::get('text');
-$ip     = WT_Filter::get('ip');
-$user   = WT_Filter::get('user');
-
-$search = WT_Filter::get('search');
+$action = Filter::get('action');
+$from   = Filter::get('from', '\d\d\d\d-\d\d-\d\d', $earliest);
+$to     = Filter::get('to', '\d\d\d\d-\d\d-\d\d', $latest);
+$type   = Filter::get('type', 'auth|change|config|debug|edit|error|media|search');
+$text   = Filter::get('text');
+$ip     = Filter::get('ip');
+$user   = Filter::get('user');
+$search = Filter::get('search');
 $search = isset($search['value']) ? $search['value'] : null;
 
 if (Auth::isAdmin()) {
 	// Administrators can see all logs
-	$gedc = WT_Filter::get('gedc');
+	$gedc = Filter::get('gedc');
 } else {
 	// Managers can only see logs relating to this gedcom
 	$gedc = WT_GEDCOM;
 }
 
-$query = array();
-$args = array();
+$sql_select =
+	"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS log_id, log_time, log_type, log_message, ip_address, IFNULL(user_name, '<none>') AS user_name, IFNULL(gedcom_name, '<none>') AS gedcom_name" .
+	" FROM `##log`" .
+	" LEFT JOIN `##user` USING (user_id)" . // user may be deleted
+	" LEFT JOIN `##gedcom` USING (gedcom_id)"; // gedcom may be deleted
+
+$where = " WHERE 1";
+$args  = array();
 if ($search) {
-	$query[] = "log_message LIKE CONCAT('%', ?, '%')";
-	$args [] = $search;
+	$where .= " AND log_message LIKE CONCAT('%', :search, '%')";
+	$args['search'] = $search;
 }
 if ($from) {
-	$query[] = 'log_time>=?';
-	$args [] = $from;
+	$where .= " AND log_time >= :from";
+	$args['from'] = $from;
 }
 if ($to) {
-	$query[] = 'log_time<TIMESTAMPADD(DAY, 1 , ?)'; // before end of the day
-	$args [] = $to;
+	$where .= " AND log_time < TIMESTAMPADD(DAY, 1 , :to)"; // before end of the day
+	$args['to'] = $to;
 }
 if ($type) {
-	$query[] = 'log_type=?';
-	$args [] = $type;
+	$where .= " AND log_type = :type";
+	$args['type'] = $type;
 }
 if ($text) {
-	$query[] = "log_message LIKE CONCAT('%', ?, '%')";
-	$args [] = $text;
+	$where .= " AND log_message LIKE CONCAT('%', :text, '%')";
+	$args['text'] = $text;
 }
 if ($ip) {
-	$query[] = "ip_address LIKE CONCAT('%', ?, '%')";
-	$args [] = $ip;
+	$where .= " AND ip_address LIKE CONCAT('%', :ip, '%')";
+	$args['ip'] = $ip;
 }
 if ($user) {
-	$query[] = "user_name LIKE CONCAT('%', ?, '%')";
-	$args [] = $user;
+	$where .= " AND user_name LIKE CONCAT('%', :user, '%')";
+	$args['user'] = $user;
 }
 if ($gedc) {
-	$query[] = "gedcom_name LIKE CONCAT('%', ?, '%')";
-	$args [] = $gedc;
-}
-
-$SELECT1 =
-	"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS log_time, log_type, log_message, ip_address, IFNULL(user_name, '<none>') AS user_name, IFNULL(gedcom_name, '<none>') AS gedcom_name" .
-	" FROM `##log`" .
-	" LEFT JOIN `##user`   USING (user_id)" . // user may be deleted
-	" LEFT JOIN `##gedcom` USING (gedcom_id)"; // gedcom may be deleted
-$SELECT2 =
-	"SELECT COUNT(*) FROM `##log`" .
-	" LEFT JOIN `##user`   USING (user_id)" . // user may be deleted
-	" LEFT JOIN `##gedcom` USING (gedcom_id)"; // gedcom may be deleted
-if ($query) {
-	$WHERE = " WHERE " . implode(' AND ', $query);
-} else {
-	$WHERE = '';
+	$where .= " AND gedcom_name LIKE CONCAT('%', :gedc, '%')";
+	$args['gedc'] = $gedc;
 }
 
 switch ($action) {
 case 'delete':
-	$DELETE =
+	$sql_delete =
 		"DELETE `##log` FROM `##log`" .
-		" LEFT JOIN `##user`   USING (user_id)" . // user may be deleted
-		" LEFT JOIN `##gedcom` USING (gedcom_id)" . // gedcom may be deleted
-		$WHERE;
-	WT_DB::prepare($DELETE)->execute($args);
+		" LEFT JOIN `##user` USING (user_id)" . // user may be deleted
+		" LEFT JOIN `##gedcom` USING (gedcom_id)"; // gedcom may be deleted
+
+	Database::prepare($sql_delete . $where)->execute($args);
 	break;
+
 case 'export':
 	Zend_Session::writeClose();
 	header('Content-Type: text/csv');
 	header('Content-Disposition: attachment; filename="webtrees-logs.csv"');
-	$rows = WT_DB::prepare($SELECT1 . $WHERE . ' ORDER BY log_id')->execute($args)->fetchAll();
+	$rows = Database::prepare($sql_select . $where . ' ORDER BY log_id')->execute($args)->fetchAll();
 	foreach ($rows as $row) {
 		echo
 			'"', $row->log_time, '",',
@@ -132,54 +126,56 @@ case 'export':
 	return;
 case 'load_json':
 	Zend_Session::writeClose();
-	$start  = WT_Filter::getInteger('start');
-	$length = WT_Filter::getInteger('length');
-	Auth::user()->setPreference('admin_site_log_page_size', $length);
+	$start  = Filter::getInteger('start');
+	$length = Filter::getInteger('length');
+	$order  = Filter::getArray('order');
 
-	if ($length > 0) {
-		$LIMIT = " LIMIT " . $start . ',' . $length;
-	} else {
-		$LIMIT = "";
-	}
-
-	$order = WT_Filter::getArray('order');
 	if ($order) {
-		$ORDER_BY = ' ORDER BY ';
+		$order_by = " ORDER BY ";
 		foreach ($order as $key => $value) {
 			if ($key > 0) {
-				$ORDER_BY .= ',';
+				$order_by .= ',';
 			}
 			// Datatables numbers columns 0, 1, 2, ...
 			// MySQL numbers columns 1, 2, 3, ...
 			switch ($value['dir']) {
 			case 'asc':
-				$ORDER_BY .= (1 + $value['column']) . ' ASC ';
+				$order_by .= (1 + $value['column']) . " ASC ";
 				break;
 			case 'desc':
-				$ORDER_BY .= (1 + $value['column']) . ' DESC ';
+				$order_by .= (1 + $value['column']) . " DESC ";
 				break;
 			}
 		}
 	} else {
-		$ORDER_BY = '1 ASC';
+		$order_by = " ORDER BY 1 ASC";
+	}
+
+	if ($length) {
+		Auth::user()->setPreference('admin_site_log_page_size', $length);
+		$limit = " LIMIT :limit OFFSET :offset";
+		$args['limit']  = $length;
+		$args['offset'] = $start;
+	} else {
+		$limit = "";
 	}
 
 	// This becomes a JSON list, not array, so need to fetch with numeric keys.
-	$data = WT_DB::prepare($SELECT1 . $WHERE . $ORDER_BY . $LIMIT)->execute($args)->fetchAll(PDO::FETCH_NUM);
+	$data = Database::prepare($sql_select . $where . $order_by . $limit)->execute($args)->fetchAll(PDO::FETCH_NUM);
 	foreach ($data as &$datum) {
-		$datum[2] = WT_Filter::escapeHtml($datum[2]);
-		$datum[4] = WT_Filter::escapeHtml($datum[4]);
-		$datum[5] = WT_Filter::escapeHtml($datum[5]);
+		$datum[2] = Filter::escapeHtml($datum[2]);
+		$datum[4] = Filter::escapeHtml($datum[4]);
+		$datum[5] = Filter::escapeHtml($datum[5]);
 	}
 
 	// Total filtered/unfiltered rows
-	$recordsFiltered = WT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
-	$recordsTotal = WT_DB::prepare($SELECT2 . $WHERE)->execute($args)->fetchOne();
+	$recordsFiltered = (int) Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
+	$recordsTotal    = (int) Database::prepare("SELECT COUNT(*) FROM `##log`")->fetchOne();
 
 	header('Content-type: application/json');
 	// See http://www.datatables.net/usage/server-side
 	echo json_encode(array(
-		'draw'            => WT_Filter::getInteger('draw'),
+		'draw'            => Filter::getInteger('draw'),
 		'recordsTotal'    => $recordsTotal,
 		'recordsFiltered' => $recordsFiltered,
 		'data'            => $data
@@ -199,9 +195,18 @@ $controller
 			processing: true,
 			serverSide: true,
 			ajax: "'.WT_BASE_URL . WT_SCRIPT_NAME . '?action=load_json&from=' . $from . '&to=' . $to . '&type=' . $type . '&text=' . rawurlencode($text) . '&ip=' . rawurlencode($ip) . '&user=' . rawurlencode($user) . '&gedc=' . rawurlencode($gedc) . '",
-			' . WT_I18N::datatablesI18N(array(10, 20, 50, 100, 500, 1000, -1)) . ',
+			' . I18N::datatablesI18N(array(10, 20, 50, 100, 500, 1000, -1)) . ',
 			sorting: [[ 0, "desc" ]],
-			pageLength: ' . Auth::user()->getPreference('admin_site_log_page_size', 20) . '
+			pageLength: ' . Auth::user()->getPreference('admin_site_log_page_size', 10) . ',
+			columns: [
+			/* log_id      */ { visible: false },
+			/* Timestamp   */ { sort: 0 },
+			/* Type        */ { },
+			/* message     */ { },
+			/* IP address  */ { },
+			/* User        */ { },
+			/* Family tree */ { }
+			]
 		});
 		jQuery("#from,#to").parent("div").datetimepicker({
 			format: "YYYY-MM-DD",
@@ -221,15 +226,6 @@ $controller
 		});
 	');
 
-$url =
-	WT_SCRIPT_NAME . '?from=' . rawurlencode($from) .
-	'&amp;to=' . rawurlencode($to) .
-	'&amp;type=' . rawurlencode($type) .
-	'&amp;text=' . rawurlencode($text) .
-	'&amp;ip=' . rawurlencode($ip) .
-	'&amp;user=' . rawurlencode($user) .
-	'&amp;gedc=' . rawurlencode($gedc);
-
 $users_array = array();
 foreach (User::all() as $tmp_user) {
 	$users_array[$tmp_user->getUserName()] = $tmp_user->getUserName();
@@ -237,7 +233,7 @@ foreach (User::all() as $tmp_user) {
 
 ?>
 <ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo WT_I18N::translate('Control panel'); ?></a></li>
+	<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
 	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 </ol>
 
@@ -249,73 +245,73 @@ foreach (User::all() as $tmp_user) {
 	<div class="row">
 		<div class="form-group col-xs-6 col-sm-3">
 			<label for="from">
-				<?php echo /* I18N: label for the start of a date range (from x to y) */ WT_I18N::translate('From'); ?>
+				<?php echo /* I18N: label for the start of a date range (from x to y) */ I18N::translate('From'); ?>
 			</label>
 			<div class="input-group date">
-				<input type="text" autocomplete="off" class="form-control" id="from" name="from" value="<?php echo WT_Filter::escapeHtml($from); ?>" autocomplete="off">
+				<input type="text" autocomplete="off" class="form-control" id="from" name="from" value="<?php echo Filter::escapeHtml($from); ?>" autocomplete="off">
 				<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
 			</div>
 		</div>
 
 		<div class="form-group col-xs-6 col-sm-3">
 			<label for="to">
-				<?php /* I18N: label for the end of a date range (from x to y) */ echo WT_I18N::translate('To'); ?>
+				<?php /* I18N: label for the end of a date range (from x to y) */ echo I18N::translate('To'); ?>
 			</label>
 			<div class="input-group date">
-				<input type="text" autocomplete="off" class="form-control" id="to" name="to" value="<?php echo WT_Filter::escapeHtml($to); ?>" autocomplete="off">
+				<input type="text" autocomplete="off" class="form-control" id="to" name="to" value="<?php echo Filter::escapeHtml($to); ?>" autocomplete="off">
 				<span class="input-group-addon"><span class="fa fa-calendar"></span></span>
 			</div>
 		</div>
 
 		<div class="form-group col-xs-6 col-sm-2">
 			<label for="type">
-				<?php echo WT_I18N::translate('Type'); ?>
+				<?php echo I18N::translate('Type'); ?>
 			</label>
 			<?php echo select_edit_control('type', array(''=>'', 'auth'=>'auth', 'config'=>'config', 'debug'=>'debug', 'edit'=>'edit', 'error'=>'error', 'media'=>'media', 'search'=>'search'), null, $type, 'class="form-control"'); ?>
 		</div>
 
 		<div class="form-group col-xs-6 col-sm-4">
 			<label for="ip">
-				<?php echo WT_I18N::translate('IP address'); ?>
+				<?php echo I18N::translate('IP address'); ?>
 			</label>
-			<input class="form-control" type="text" id="ip" name="ip" value="<?php WT_Filter::escapeHtml($ip); ?>">
+			<input class="form-control" type="text" id="ip" name="ip" value="<?php echo Filter::escapeHtml($ip); ?>">
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="form-group col-sm-4">
 			<label for="text">
-				<?php echo WT_I18N::translate('Message'); ?>
+				<?php echo I18N::translate('Message'); ?>
 			</label>
-			<input class="form-control" type="text" id="text" name="text" value="<?php echo WT_Filter::escapeHtml($text); ?>">
+			<input class="form-control" type="text" id="text" name="text" value="<?php echo Filter::escapeHtml($text); ?>">
 		</div>
 
 		<div class="form-group col-sm-4">
 			<label for="user">
-				<?php echo WT_I18N::translate('User'); ?>
+				<?php echo I18N::translate('User'); ?>
 			</label>
 			<?php echo select_edit_control('user', $users_array, '', $user, 'class="form-control"'); ?>
 		</div>
 
 		<div class="form-group col-sm-4">
 			<label for="gedc">
-				<?php echo WT_I18N::translate('Family tree'); ?>
+				<?php echo I18N::translate('Family tree'); ?>
 			</label>
-			<?php echo select_edit_control('gedc', WT_Tree::getNameList(), '', $gedc, Auth::isAdmin() ? 'class="form-control"' : 'disabled class="form-control"'); ?>
+			<?php echo select_edit_control('gedc', Tree::getNameList(), '', $gedc, Auth::isAdmin() ? 'class="form-control"' : 'disabled class="form-control"'); ?>
 		</div>
 	</div>
 
 	<div class="row text-center">
 		<button type="submit" class="btn btn-primary">
-			<?php echo WT_I18N::translate('Filter'); ?>
+			<?php echo I18N::translate('Filter'); ?>
 		</button>
 
 		<button type="submit" class="btn btn-primary" onclick="document.logs.action.value='export';return true;" <?php echo $action === 'show' ? '' : 'disabled'; ?>>
-			<?php echo WT_I18N::translate('Export'); ?>
+			<?php echo I18N::translate('Export'); ?>
 		</button>
 
-		<button type="submit" class="btn btn-primary" onclick="if (confirm('<?php echo WT_I18N::translate('Permanently delete these records?'); ?>')) {document.logs.action.value='delete'; return true;} else {return false;}" <?php echo $action === 'show' ? '' : 'disabled'; ?>>
-			<?php echo WT_I18N::translate('Delete'); ?>
+		<button type="submit" class="btn btn-primary" onclick="if (confirm('<?php echo I18N::translate('Permanently delete these records?'); ?>')) {document.logs.action.value='delete'; return true;} else {return false;}" <?php echo $action === 'show' ? '' : 'disabled'; ?>>
+			<?php echo I18N::translate('Delete'); ?>
 		</button>
 	</div>
 </form>
@@ -327,12 +323,13 @@ foreach (User::all() as $tmp_user) {
 	</caption>
 	<thead>
 		<tr>
-			<th><?php echo WT_I18N::translate('Timestamp'); ?></th>
-			<th><?php echo WT_I18N::translate('Type'); ?></th>
-			<th><?php echo WT_I18N::translate('Message'); ?></th>
-			<th><?php echo WT_I18N::translate('IP address'); ?></th>
-			<th><?php echo WT_I18N::translate('User'); ?></th>
-			<th><?php echo WT_I18N::translate('Family tree'); ?></th>
+			<th></th>
+			<th><?php echo I18N::translate('Timestamp'); ?></th>
+			<th><?php echo I18N::translate('Type'); ?></th>
+			<th><?php echo I18N::translate('Message'); ?></th>
+			<th><?php echo I18N::translate('IP address'); ?></th>
+			<th><?php echo I18N::translate('User'); ?></th>
+			<th><?php echo I18N::translate('Family tree'); ?></th>
 		</tr>
 	</thead>
 </table>

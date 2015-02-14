@@ -1,41 +1,36 @@
 <?php
-// webtrees: Web based Family History software
-// Copyright (C) 2015 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2010 John Finlay
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Fisharebest\Webtrees;
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 use Fisharebest\ExtCalendar\JewishCalendar;
 use Rhumsaa\Uuid\Uuid;
-use WT\Auth;
-use WT\Theme;
 
 /**
  * Class yahrzeit_WT_Module
  */
-class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
+class yahrzeit_WT_Module extends Module implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
-		return /* I18N: Name of a module.  Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar. */ WT_I18N::translate('Yahrzeiten');
+		return /* I18N: Name of a module.  Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar. */ I18N::translate('Yahrzeiten');
 	}
 
 	/** {@inheritdoc} */
 	public function getDescription() {
-		return /* I18N: Description of the “Yahrzeiten” module.  A “Hebrew death” is a death where the date is recorded in the Hebrew calendar. */ WT_I18N::translate('A list of the Hebrew death anniversaries that will occur in the near future.');
+		return /* I18N: Description of the “Yahrzeiten” module.  A “Hebrew death” is a death where the date is recorded in the Hebrew calendar. */ I18N::translate('A list of the Hebrew death anniversaries that will occur in the near future.');
 	}
 
 	/** {@inheritdoc} */
@@ -61,7 +56,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		if ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype === 'user' && Auth::check()) {
-			$title = '<i class="icon-admin" title="' . WT_I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
+			$title = '<i class="icon-admin" title="' . I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
 		} else {
 			$title = '';
 		}
@@ -76,7 +71,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 			foreach (get_anniversary_events($jd, 'DEAT _YART') as $fact) {
 				// Exact hebrew dates only
 				$date = $fact->getDate();
-				if ($date->MinDate() instanceof WT_Date_Jewish && $date->MinJD() == $date->MaxJD()) {
+				if ($date->MinDate() instanceof JewishDate && $date->MinJD() == $date->MaxJD()) {
 					$fact->jd = $jd;
 					$yahrzeits[] = $fact;
 				}
@@ -88,9 +83,9 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 
 		foreach ($yahrzeits as $yahrzeit) {
 			if ($yahrzeit->getTag() === 'DEAT') {
-				$today = new WT_Date_Jewish($yahrzeit->jd);
+				$today = new JewishDate($yahrzeit->jd);
 				$hd = $yahrzeit->getDate()->MinDate();
-				$hd1 = new WT_Date_Jewish($hd);
+				$hd1 = new JewishDate($hd);
 				$hd1->y += 1;
 				$hd1->setJdFromYmd();
 				// Special rules.  See http://www.hebcal.com/help/anniv.html
@@ -115,8 +110,8 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 					$ind = $yahrzeit->getParent();
 					$content .= "<a href=\"" . $ind->getHtmlUrl() . "\" class=\"list_item name2\">" . $ind->getFullName() . "</a>" . $ind->getSexImage();
 					$content .= "<div class=\"indent\">";
-					$content .= $yahrzeit->getDate()->Display(true);
-					$content .= ', ' . WT_I18N::translate('%s year anniversary', $yahrzeit->anniv);
+					$content .= $yahrzeit->getDate()->display(true);
+					$content .= ', ' . I18N::translate('%s year anniversary', $yahrzeit->anniv);
 					$content .= "</div>";
 				}
 			}
@@ -129,7 +124,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 				->addInlineJavascript('
 					jQuery("#'.$table_id . '").dataTable({
 						dom: \'t\',
-						' . WT_I18N::datatablesI18N() . ',
+						' . I18N::datatablesI18N() . ',
 						autoWidth: false,
 						paginate: false,
 						lengthChange: false,
@@ -158,7 +153,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= '<th>' . WT_Gedcom_Tag::getLabel('NAME') . '</th>';
 			$content .= '<th>' . WT_Gedcom_Tag::getLabel('DEAT') . '</th>';
 			$content .= '<th>DEAT</th>';
-			$content .= '<th><i class="icon-reminder" title="' . WT_I18N::translate('Anniversary') . '"></i></th>';
+			$content .= '<th><i class="icon-reminder" title="' . I18N::translate('Anniversary') . '"></i></th>';
 			$content .= '<th>' . WT_Gedcom_Tag::getLabel('_YART') . '</th>';
 			$content .= '<th>_YART</th>';
 			$content .= '</tr></thead><tbody>';
@@ -181,7 +176,8 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 					$content .= '<td>' . $ind->getSortName() . '</td>';
 
 					// death/yahrzeit event date
-					$content .= '<td>' . $yahrzeit->getDate()->Display() . '</td>';
+					$content .= '<td>' . $yahrzeit->getDate()->display() . '</td>';
+					$content .= '<td>' . $yahrzeit->getDate()->display() . '</td>';
 					$content .= '<td>' . $yahrzeit->getDate()->minJD() . '</td>'; // sortable date
 
 					// Anniversary
@@ -190,14 +186,14 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 					// upcomming yahrzeit dates
 					switch ($calendar) {
 					case 'gregorian':
-						$today = new WT_Date_Gregorian($yahrzeit->jd);
+						$today = new GregorianDate($yahrzeit->jd);
 						break;
 					case 'jewish':
 					default:
-						$today = new WT_Date_Jewish($yahrzeit->jd);
+						$today = new JewishDate($yahrzeit->jd);
 						break;
 					}
-					$td = new WT_Date($today->format('%@ %A %O %E'));
+					$td = new Date($today->format('%@ %A %O %E'));
 					$content .= '<td>' . $td->display() . '</td>';
 					$content .= '<td>' . $td->minJD() . '</td>'; // sortable date
 
@@ -236,14 +232,12 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 
 	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
-		if (WT_Filter::postBool('save') && WT_Filter::checkCsrf()) {
-			set_block_setting($block_id, 'days', WT_Filter::postInteger('days', 1, 30, 7));
-			set_block_setting($block_id, 'infoStyle', WT_Filter::post('infoStyle', 'list|table', 'table'));
-			set_block_setting($block_id, 'calendar', WT_Filter::post('calendar', 'jewish|gregorian', 'jewish'));
-			set_block_setting($block_id, 'block', WT_Filter::postBool('block'));
+		if (Filter::postBool('save') && Filter::checkCsrf()) {
+			set_block_setting($block_id, 'days', Filter::postInteger('days', 1, 30, 7));
+			set_block_setting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', 'table'));
+			set_block_setting($block_id, 'calendar', Filter::post('calendar', 'jewish|gregorian', 'jewish'));
+			set_block_setting($block_id, 'block', Filter::postBool('block'));
 		}
-
-		require_once WT_ROOT . 'includes/functions/functions_edit.php';
 
 		$days      = get_block_setting($block_id, 'days', '7');
 		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');
@@ -251,29 +245,29 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 		$block     = get_block_setting($block_id, 'block', '1');
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Number of days to show');
+		echo I18N::translate('Number of days to show');
 		echo '</td><td class="optionbox">';
 		echo '<input type="text" name="days" size="2" value="' . $days . '">';
-		echo ' <em>', WT_I18N::plural('maximum %d day', 'maximum %d days', 30, 30), '</em>';
+		echo ' <em>', I18N::plural('maximum %d day', 'maximum %d days', 30, 30), '</em>';
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Presentation style');
+		echo I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('infoStyle', array('list'=>WT_I18N::translate('list'), 'table'=>WT_I18N::translate('table')), null, $infoStyle, '');
+		echo select_edit_control('infoStyle', array('list'=> I18N::translate('list'), 'table'=> I18N::translate('table')), null, $infoStyle, '');
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Calendar');
+		echo I18N::translate('Calendar');
 		echo '</td><td class="optionbox">';
 		echo select_edit_control('calendar', array(
-			'jewish'   =>WT_Date_Jewish::calendarName(),
-			'gregorian'=>WT_Date_Gregorian::calendarName(),
+			'jewish'   => JewishDate::calendarName(),
+			'gregorian'=> GregorianDate::calendarName(),
 		), null, $calendar, '');
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for a yes/no option */ WT_I18N::translate('Add a scrollbar when block contents grow');
+		echo /* I18N: label for a yes/no option */ I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('block', $block);
 		echo '</td></tr>';

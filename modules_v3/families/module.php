@@ -1,38 +1,35 @@
 <?php
-// webtrees: Web based Family History software
-// Copyright (C) 2015 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2010 John Finlay
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Fisharebest\Webtrees;
 
-use WT\Theme;
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+use Zend_Session;
 
 /**
  * Class families_WT_Module
  */
-class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
+class families_WT_Module extends Module implements ModuleSidebarInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
-		return /* I18N: Name of a module/sidebar */ WT_I18N::translate('Family list');
+		return /* I18N: Name of a module/sidebar */ I18N::translate('Family list');
 	}
 
 	/** {@inheritdoc} */
 	public function getDescription() {
-		return /* I18N: Description of the “Families” module */ WT_I18N::translate('A sidebar showing an alphabetic list of all the families in the family tree.');
+		return /* I18N: Description of the “Families” module */ I18N::translate('A sidebar showing an alphabetic list of all the families in the family tree.');
 	}
 
 	/** {@inheritdoc} */
@@ -63,9 +60,9 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	/** {@inheritdoc} */
 	public function getSidebarAjaxContent() {
-		$alpha   = WT_Filter::get('alpha'); // All surnames beginning with this letter where "@"=unknown and ","=none
-		$surname = WT_Filter::get('surname'); // All indis with this surname.
-		$search  = WT_Filter::get('search');
+		$alpha   = Filter::get('alpha'); // All surnames beginning with this letter where "@"=unknown and ","=none
+		$surname = Filter::get('surname'); // All indis with this surname.
+		$search  = Filter::get('search');
 
 		if ($search) {
 			return $this->search($search);
@@ -135,7 +132,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		');
 		$out =
 			'<form method="post" action="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax" onsubmit="return false;">' .
-			'<input type="search" name="sb_fam_name" id="sb_fam_name" placeholder="' . WT_I18N::translate('Search') . '">' .
+			'<input type="search" name="sb_fam_name" id="sb_fam_name" placeholder="' . I18N::translate('Search') . '">' .
 			'<p>';
 		foreach ($initials as $letter=>$count) {
 			switch ($letter) {
@@ -143,7 +140,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$html = $UNKNOWN_NN;
 				break;
 			case ',':
-				$html = WT_I18N::translate('None');
+				$html = I18N::translate('None');
 				break;
 			case ' ':
 				$html = '&nbsp;';
@@ -222,7 +219,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		}
 
 		//-- search for INDI names
-		$rows = WT_DB::prepare(
+		$rows = Database::prepare(
 			"SELECT i_id AS xref" .
 			" FROM `##individuals`, `##name`" .
 			" WHERE (i_id LIKE ? OR n_sort LIKE ?)" .
@@ -249,13 +246,13 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		}
 
 		$vars[] = WT_GED_ID;
-		$rows = WT_DB::prepare("SELECT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom FROM `##families` WHERE {$where} AND f_file=?")
+		$rows = Database::prepare("SELECT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom FROM `##families` WHERE {$where} AND f_file=?")
 		->execute($vars)
 		->fetchAll();
 
 		$out = '<ul>';
 		foreach ($rows as $row) {
-			$family = WT_Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$family = Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 			if ($family->canShowName()) {
 				$out .= '<li><a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . ' ';
 				if ($family->canShow()) {

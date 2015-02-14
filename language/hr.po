@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-01-31 12:10+0000\n"
-"PO-Revision-Date: 2015-01-10 16:09+0100\n"
+"PO-Revision-Date: 2015-02-01 17:13+0100\n"
 "Last-Translator: Mic50 <mic@ergraf.eu>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
@@ -13,6 +13,8 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.7.1\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
@@ -54,7 +56,7 @@ msgstr " prema vremenskom periodu"
 #: includes/functions/functions_print_facts.php:201
 #, php-format
 msgid "#%s"
-msgstr ""
+msgstr "#%s"
 
 #: modules_v3/googlemap/module.php:912
 #, php-format
@@ -78,21 +80,21 @@ msgstr[2] "%1$d pojedinaca nedostaju koordinate mjesta rođenja: %2$s."
 #, php-format
 msgctxt "FEMALE"
 msgid "%1$d × %2$s"
-msgstr ""
+msgstr "%1$d × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:784
 #, php-format
 msgctxt "MALE"
 msgid "%1$d × %2$s"
-msgstr ""
+msgstr "%1$d × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:814
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "%1$d × %2$s"
-msgstr ""
+msgstr "%1$d × %2$s"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$d>=4
 #: includes/functions/functions.php:2301
@@ -115,12 +117,12 @@ msgstr "%1$s %2$s ima %3$s link na %4$s."
 #: includes/functions/functions_print_lists.php:1629
 #, php-format
 msgid "%1$s (%2$d)"
-msgstr ""
+msgstr "%1$s (%2$d)"
 
 #: library/WT/Controller/Individual.php:198 library/WT/Date.php:313
 #, php-format
 msgid "%1$s (%2$s)"
-msgstr ""
+msgstr "%1$s (%2$s)"
 
 #. I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:314
@@ -132,7 +134,7 @@ msgstr "%1$sKB je skinuto u %2$s sekundi."
 #: admin_trees_check.php:154
 #, php-format
 msgid "%1$s does not exist."
-msgstr "%1$s ne postoji"
+msgstr "%1$s ne postoji."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_trees_check.php:147
@@ -171,7 +173,7 @@ msgstr "%1$s × %2$s piksela"
 #: library/WT/Individual.php:518
 #, php-format
 msgid "%1$s–%2$s"
-msgstr ""
+msgstr "%1$s–%2$s"
 
 #. I18N: A complex relationship, such as “third-cousin’s great-uncle”
 #: includes/functions/functions.php:2319
@@ -182,7 +184,7 @@ msgstr "%1$s %2$s"
 #. I18N: This is the format string for the time-of-day.  See http://php.net/date for codes
 #: library/WT/I18N.php:286
 msgid "%H:%i:%s"
-msgstr ""
+msgstr "%H:%i:%s"
 
 #: library/WT/Stats.php:5374 modules_v3/logged_in/module.php:58
 #, php-format
@@ -250,7 +252,7 @@ msgstr "%s p.n.e"
 #: admin_media.php:465 library/WT/Media.php:265
 #, php-format
 msgid "%s KB"
-msgstr ""
+msgstr "%s KB"
 
 #: includes/functions/functions_charts.php:285 library/WT/Stats.php:3993
 #: library/WT/Stats.php:3997
@@ -433,7 +435,7 @@ msgstr "%s. godišnjica"
 #: library/WT/I18N.php:433
 #, php-format
 msgid "%s%%"
-msgstr ""
+msgstr "%s%%"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: library/WT/Date/Julian.php:74
@@ -496,7 +498,7 @@ msgstr "(mrtvorođeno)"
 #. I18N: This punctuation is used to separate lists of items.
 #: library/WT/I18N.php:303
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: library/WT/Stats.php:6371
 msgctxt "CENTURY"
@@ -605,7 +607,7 @@ msgstr "9."
 
 #. I18N: Help text for the “Automatically create globally unique IDs” configuration setting
 #: admin_trees_config.php:808
-msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
+msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates.  The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
 msgstr ""
 
 #: admin_trees_manage.php:619
@@ -613,7 +615,7 @@ msgid "<b>Important note:</b> The transfer wizard is not able to assist with mov
 msgstr "<b>Važna napomena:</b> Čarobnjak za prijenos nije u stanju premiještati medijske stavke. Vi trebate postaviti i premjestiti ili kopirati vašu medija konfiguraciju i objekte nakon što čarobnjak prijenosa završi."
 
 #: message.php:115
-msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
+msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
 msgstr "<b>Molim pažnju:</b> Privatne informacije o živim osobama će biti dane samo rođacima i bliskim prijateljima. Biti ćete zamoljeni da dokažete svoju srodnost prije nego vam se prenesu ikakvi podaci. U nekim slučajevima i informacije o umrlim osobama mogu biti privatne. Ako je to slučaj, to je zato što nemamo dovoljno podataka o toj osobi da bi odredili je li osoba živa ili ne.<br><br>Prije ikakvih upita, molimo da provjerite da je osoba o kojoj se raspitujete baš ta osoba koju tražite. Provjerite podatke! Ako radite promjene na genealškim podacima, molimo da priložite informacije o vašim izvorima podataka."
 
 #: login.php:159
@@ -880,7 +882,7 @@ msgstr "Bočni stupac prikazuje obitelji i rođake bliske pojedincu."
 
 #. I18N: Description of the “Extra information” module
 #: modules_v3/extra_info/module.php:31
-msgid "A sidebar showing non-genealogical information about an individual."
+msgid "A sidebar showing non-genealogy information about an individual."
 msgstr "Bočni stupac prikazuje ne-genealoške informacije o pojedincu."
 
 #. I18N: Description of the “Descendants” module
@@ -1975,7 +1977,7 @@ msgstr "Primijeni automatsku korekciju na vaše genealoške podatke."
 #: admin_trees_download.php:122 modules_v3/clippings/module.php:190
 #: modules_v3/clippings/module.php:198 modules_v3/clippings/module.php:581
 #: modules_v3/clippings/module.php:590
-msgid "Apply privacy settings?"
+msgid "Apply privacy settings"
 msgstr "Postavi postavke privatnosti"
 
 #: admin_users.php:99
@@ -2302,8 +2304,8 @@ msgid "Average number of children per family"
 msgstr "Prosječan broj djece po obitelji"
 
 #: admin_trees_manage.php:568
-msgid "Avoid spaces and puncutation.  A family name might be a good choice."
-msgstr ""
+msgid "Avoid spaces and punctuation.  A family name might be a good choice."
+msgstr "Izbjegavajte razmake i interpunkcije. Obiteljsko ime treba biti dobar izbor."
 
 #: library/WT/Date/Jalali.php:158
 msgctxt "Abbreviation for Persian month: Azar"
@@ -3198,7 +3200,7 @@ msgstr ""
 
 #: admin_trees_manage.php:253
 msgid "Calculating…"
-msgstr ""
+msgstr "Izračunavam..."
 
 #: library/WT/Theme/BaseTheme.php:874 library/WT/Theme/BaseTheme.php:878
 #: modules_v3/yahrzeit/module.php:267
@@ -3378,15 +3380,15 @@ msgstr "Promjeni blok na ovoj stranici"
 
 #: admin_users.php:200
 msgid "Change the blocks on this user’s “My page”"
-msgstr ""
+msgstr "Promjeni blokove na \"Moja stranica\" ovim korisnicima"
 
 #: admin_trees_manage.php:294 index_edit.php:49
 msgid "Change the “Home page” blocks"
-msgstr ""
+msgstr "Promjeni blokove na \"Početna stranica\""
 
 #: index_edit.php:41
 msgid "Change the “My page” blocks"
-msgstr ""
+msgstr "Promjeni blokove na \"Moja stranica\""
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: includes/functions/functions_print_lists.php:1766
@@ -3954,8 +3956,8 @@ msgstr ""
 
 #: admin_trees_download.php:134 modules_v3/clippings/module.php:205
 #: modules_v3/clippings/module.php:598
-msgid "Convert from UTF-8 to ANSI (ISO-8859-1)"
-msgstr "Prevedi sa UTF-8 u ANSI (ISO-8859-1)"
+msgid "Convert from UTF-8 to ISO-8859-1"
+msgstr "Prevedi sa UTF-8 u ISO-8859-1"
 
 #: library/WT/Stats.php:6118
 msgid "Cook Islands"
@@ -4078,11 +4080,11 @@ msgstr "Kreiraj novi izvor"
 
 #: admin_site_access.php:217
 msgid "Create a website access rule"
-msgstr ""
+msgstr "Kreiraj pristupna pravila web stranice"
 
 #: admin_trees_manage.php:645
 msgid "Create or update a family tree for every GEDCOM file in the data folder."
-msgstr ""
+msgstr "Kreiraj ili ažuriraj obiteljsko stablo za svaku GEDCOM datoteku u mapi podataka."
 
 #: statistics.php:430
 msgid "Create your own chart"
@@ -4967,7 +4969,7 @@ msgstr "Obriši privremene datoteke…"
 
 #: admin_modules.php:93
 msgid "Delete the preferences for this module."
-msgstr ""
+msgstr "Obriši postavke za ovaj modul."
 
 #: library/WT/Controller/Individual.php:170
 msgid "Delete this name"
@@ -4975,7 +4977,7 @@ msgstr "Obriši ime"
 
 #: edituser.php:297
 msgid "Delete your account"
-msgstr ""
+msgstr "Obriši svoj korisnički račun"
 
 #: library/WT/Controller/Family.php:126
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?"
@@ -5382,7 +5384,7 @@ msgstr "Uredi ČPP stavku"
 
 #: admin_site_access.php:215
 msgid "Edit a website access rule"
-msgstr ""
+msgstr "Uredi pristupna pravila web stranice"
 
 #: library/WT/Controller/Media.php:149
 msgid "Edit details"
@@ -5444,7 +5446,7 @@ msgstr "Uredite ovog pojedinca i prepišite njegove detalje sa svojima"
 
 #: admin_users.php:257
 msgid "Edit user"
-msgstr ""
+msgstr "Uredi korisnika"
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:41 admin_users.php:507
@@ -5779,7 +5781,7 @@ msgstr "Izvoz"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:284
-msgid "Export all family trees to GEDCOM files…"
+msgid "Export all the family trees to GEDCOM files…"
 msgstr "Izvezi sva obiteljska stabla u GEDCOM datoteke…"
 
 #: help_text.php:544
@@ -6055,7 +6057,7 @@ msgstr "Isječci obiteljskog stabla"
 #. I18N: %s is a filename
 #: admin_site_upgrade.php:290 admin_trees_export.php:34
 #, php-format
-msgid "Family tree exported to %s."
+msgid "The family tree has been exported to %s."
 msgstr "Obiteljsko stablo izvezeno u %s"
 
 #: admin_trees_config.php:666 admin_trees_manage.php:533
@@ -6586,7 +6588,7 @@ msgstr ""
 #. I18N: label for the start of a date range (from x to y)
 #: admin_site_change.php:293 admin_site_logs.php:252
 msgid "From"
-msgstr ""
+msgstr "Od"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:89
@@ -6682,7 +6684,7 @@ msgstr "Genealoški kontakt"
 #. I18N: Individuals, sources, dates, places, etc.
 #: admin_trees_manage.php:348
 msgid "Genealogy data"
-msgstr ""
+msgstr "Genealoški podaci"
 
 #: admin_trees_config.php:661 admin_trees_config.php:1775
 msgid "General"
@@ -7342,7 +7344,7 @@ msgstr "Ako dva obiteljska stabla koriste istu medijsku mapu, onda oni imaju mog
 
 #: admin_trees_config.php:452
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account.  You will need to add their account manually."
-msgstr ""
+msgstr "Ako posjetitelj ne vidi obiteljsko stablo, on neće biti u mogućnosti kreirati korisnički račun. Vi ćete trebati ručno kreirati njegov račun."
 
 #. I18N: Help text for the “Who can upload new media files?” configuration setting
 #: admin_trees_config.php:1146
@@ -7374,7 +7376,7 @@ msgid "If you have a note to add to this record, this is the place to do so.<br>
 msgstr "Ako imate bilješku koju želite dodati ovom zapisu.<br><br>Samo kliknite na link, prozor će se otvoriti, i možete upisati svoju bilješku. Kada je pisanje gotovo, kliknite na dnu prozora gumb „spremi”, zatvorite prozor, i to je sve."
 
 #: admin_trees_manage.php:207
-msgid "If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM file."
+msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
 msgstr "Ako ste kreirali medijski objekt u webrees, i uređivali svoj GEDCOM koristeći program koji briše medija objekte, uključite ovu opciju da spojite trenutne objekte sa novim GEDCOM-om."
 
 #: modules_v3/recent_changes/module.php:173
@@ -7398,7 +7400,7 @@ msgstr "Ako odaberete drugu mapu, morate također premjestiti sve medijske datot
 #. I18N: Help text for the “Show living individuals” configuration setting
 #: admin_trees_config.php:512
 msgid "If you show living individuals to visitors, all other privacy restrictions are ignored.  Do this only if all the data in your tree is public."
-msgstr ""
+msgstr "Ako uključite prikaz živog pojedinca posjetiteljima, sve druge restrikcije privatnosti će biti ignorirane. Napravite to samo ako su svi podaci u vašem obiteljskom stablu javni."
 
 #: setup.php:188
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
@@ -9431,7 +9433,7 @@ msgstr "Moja stranica"
 
 #: library/WT/Theme/BaseTheme.php:1353
 msgid "My pages"
-msgstr ""
+msgstr "Moje stranice"
 
 #: library/WT/Theme/BaseTheme.php:1376 modules_v3/user_welcome/module.php:48
 msgid "My pedigree"
@@ -9445,7 +9447,7 @@ msgstr "MySQL daje grešku: %s"
 
 #: admin_site_info.php:100
 msgid "MySQL variables"
-msgstr ""
+msgstr "MySQL varijable"
 
 #: library/WT/Stats.php:6218
 msgid "Myanmar"
@@ -10808,7 +10810,7 @@ msgid "Places in %s"
 msgstr "Mjesta u %s"
 
 #: help_text.php:330
-msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
+msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
 msgstr "Mjesta trebaju biti unesena prema standardu genealogije. U genealogiji, mjesta su zapisana tako da su prvo najmanja područja pa prema najvećim, koristeći zareze za odvajanje različitih nivoa. Za primjer, mjesto Zagreb treba biti upisano kao „Zagreb, Hrvatska”.<br><br>Ako pregledamo svaki dio ovog mjesta. Prvi dio „Zagreb,” je grad gdje se događaj dogodio. Drugi dio „Hrvatska” je država. Kada trebamo upisati neko manje mjesto ili selo koje nije toliko poznato a i pripada nekom većem mjestu, onda ga dodajemo ispred grada. Primjer: „Zaprešić, Zagreb, Hrvatska”. Tako se zna da se radi o Zaprešiću u blizini Zagreba, jer možda postoji još jedan Zaprešić u Hrvatskoj.<br><br>Ako je neki nivo mjesta nepoznat, ostavite samo razmak između zareza. Recimo da u gornjem primjeru, niste znali u blizini kojeg većeg grad je Zaprešić. Onda to trebate zapisati ovako: „Zaprešić, , Hrvatska”. Recimo da samo znate da je taj pojedinac rođen u Hrvatskoj. Onda upišete podatke ovako: „, , Hrvatska”.<br><br>Možete koristiti link <b>Potraži mjesto</b> kao pomoć da pronađete mjesto koje već postoji u bazi podataka."
 
 #: library/WT/Theme/Clouds.php:74 library/WT/Theme/Fab.php:84
@@ -10962,12 +10964,12 @@ msgstr "Predefinirani tekst koji navodi da samo članovi obitelji mogu zatražit
 
 #: admin_trees_config.php:403 admin_trees_manage.php:274
 msgid "Preferences"
-msgstr ""
+msgstr "Postavke"
 
 #: admin_modules.php:88
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
-msgstr ""
+msgstr "Postoje postavke za “%s” modul, ali taj modul više ne postoji."
 
 #. I18N: A configuration setting
 #: admin_users.php:436
@@ -11476,13 +11478,13 @@ msgstr ""
 
 #: admin_trees_manage.php:385
 msgid "Renumber"
-msgstr ""
+msgstr "Renumeriranje"
 
 #. I18N: Renumber the records in a family tree
 #: admin_trees_merge.php:96 admin_trees_merge.php:101
 #: admin_trees_renumber.php:29
 msgid "Renumber family tree"
-msgstr ""
+msgstr "Renumeriraj obiteljsko stablo"
 
 #: admin_trees_places.php:101 search.php:119
 msgid "Replace with"
@@ -11996,7 +11998,7 @@ msgstr "Ime pošiljaoca"
 #. I18N: Menu entry
 #: admin_site_config.php:108 library/WT/Theme/Administration.php:76
 msgid "Sending email"
-msgstr ""
+msgstr "Slanje e-pošte"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:374
@@ -12075,7 +12077,7 @@ msgstr "Server datoteka sadrži mjesta (CSV)"
 #. I18N: Menu entry
 #: admin_site_info.php:34 library/WT/Theme/Administration.php:81
 msgid "Server information"
-msgstr ""
+msgstr "Server informacije"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:296 setup.php:278
@@ -12094,7 +12096,7 @@ msgstr "Vremensko ograničenje prijave"
 
 #: admin_trees_manage.php:327 admin_trees_manage.php:338
 msgid "Set as default"
-msgstr ""
+msgstr "Postavi kao zadano"
 
 #: inverselink.php:153
 msgid "Set link"
@@ -12138,7 +12140,7 @@ msgstr "Postavite <b>Da</b> za prikaz ikone blizu imena činjenice na osobnim č
 #. I18N: Help text for the “Use RIN number instead of GEDCOM ID” configuration setting
 #: admin_trees_config.php:795
 msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
-msgstr ""
+msgstr "Postavite na <b>Da</b> za korištenje RIN broja umjesto GEDCOM ID broja koji se traži za ID pojedinca u konfiguracijskim datotekama, postavkama korisnika i grafikonima. To je korisno za genealoške programe koji nisu dosljedni kod izvoza GEDCOM datoteke pa mijenjaju ID brojeve pojedinaca ali uvijek koriste isti RIN broj."
 
 #. I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting
 #: admin_trees_config.php:1674
@@ -12514,12 +12516,12 @@ msgstr "Prikaži popis obiteljskih stabala"
 #. I18N: A configuration setting
 #: admin_trees_config.php:502
 msgid "Show living individuals"
-msgstr ""
+msgstr "Prikaži žive pojedince"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:542
 msgid "Show names of private individuals"
-msgstr ""
+msgstr "Prikaži imena privatnih pojedinaca"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -12653,7 +12655,7 @@ msgstr "Prikaži datum i vrijeme promjene"
 #. I18N: A configuration setting
 #: admin_trees_config.php:438
 msgid "Show the family tree"
-msgstr ""
+msgstr "Prikaži obiteljsko stablo"
 
 #: famlist.php:179 indilist.php:179
 msgid "Show the list of individuals"
@@ -12747,7 +12749,7 @@ msgstr "Rubna traka"
 #: admin_module_sidebar.php:30 admin_modules.php:151
 #: library/WT/Theme/Administration.php:158
 msgid "Sidebars"
-msgstr ""
+msgstr "Bočna traka"
 
 #: library/WT/Stats.php:6277
 msgid "Sierra Leone"
@@ -12773,7 +12775,7 @@ msgstr "Sestra"
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: admin_users.php:441 edituser.php:277
 msgid "Site members can send each other messages.  You can choose to how these messages are sent to you, or choose not receive them at all."
-msgstr ""
+msgstr "Članovi mogu međusobno slati poruke. Možete odabrati kako će se te poruke slati vama, ili odabrati da ih uopće ne primate."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: modules_v3/sitemap/module.php:30
@@ -12816,7 +12818,7 @@ msgstr "Veličina karte (u pikselima)"
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: library/WT/Theme/BaseTheme.php:76
 msgid "Skip to content"
-msgstr ""
+msgstr "Preskoći na sadržaj"
 
 #: library/WT/Gedcom/Code/Rela.php:240
 msgid "Slave"
@@ -12875,7 +12877,7 @@ msgstr "Neki genealoški programi kreiraju GEDCOM datoteke koje sadrže punu put
 #. I18N: Help text for the “Add spaces where notes were wrapped” configuration setting
 #: admin_trees_config.php:821
 msgid "Some genealogy programs wrap notes at word boundaries while others wrap notes anywhere.  This can cause webtrees to run words together.  Setting this to <b>Yes</b> will add a space between words where they are wrapped in the original GEDCOM during the import process.  If you have already imported the file you will need to re-import it."
-msgstr ""
+msgstr "Neki genealoški programi prelamaju redove bilježaka na kraju riječi, dok drugi prelamaju bilo gdje. To može uzrokovati da webtrees spoji rijeći zajedno. Postavljanjem ove postavke na <b>Da</b> dodaje se razmak između riječi gdje su prelomljene u originalnom GEDCOM zapisu tijekom procesa učitavanja. Ako ste već učitali datoteku, trebate ju ponovo učitati."
 
 #: modules_v3/clippings/module.php:132
 msgid "Some items could not be added due to privacy restrictions"
@@ -13236,12 +13238,12 @@ msgstr "Tradicija prezimena"
 #. I18N: In the Lithuanian surname tradition, ...
 #: admin_trees_config.php:127
 msgid "Surnames are inflected to indicate an individual’s gender and marital status."
-msgstr ""
+msgstr "Prezimena ukazuju na spol i bračno stanje pojedinca"
 
 #. I18N: In the Polish surname tradition, ...
 #: admin_trees_config.php:122
 msgid "Surnames are inflected to indicate an individual’s gender."
-msgstr ""
+msgstr "Prezimena ukazuju na spol pojedinca"
 
 #: library/WT/Gedcom/Code/Temp.php:312
 msgid "Suva, Fiji"
@@ -13394,7 +13396,7 @@ msgid "Thailand"
 msgstr ""
 
 #: help_text.php:276
-msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded.  This is how it will be displayed on screen.  It uses standard genealogical annotations to identify different parts of the name."
+msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded.  This is how it will be displayed on screen.  It uses standard genealogy annotations to identify different parts of the name."
 msgstr "Polje <b>ime</b> sadrži puno ime pojedinca, onako kako se izgovara ili kako je zapisano. Tako će biti prikazano na ekranu. Koristi se standardna genealoška zabilježba da se mogu odrediti dijelovi imena."
 
 #: help_text.php:296
@@ -13408,7 +13410,7 @@ msgstr "ČPP popis je prazan."
 #: admin_trees_manage.php:112
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr ""
+msgstr "GEDCOM  datoteka “%s” je učitana."
 
 #: library/WT/Gedcom/Code/Temp.php:160
 msgid "The Hague, Netherlands"
@@ -13473,25 +13475,25 @@ msgstr "Detalji ovog pojedinca su privatni."
 #: admin_trees_manage.php:61
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr ""
+msgstr "Obiteljsko stablo \"%s\" već postoji."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:64
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr ""
+msgstr "Obiteljsko stablo \"%s\" je kreirano."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:41 admin_trees_manage.php:118
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr ""
+msgstr "Obiteljsko stablo \"%s\" je obrisano."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:50
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr ""
+msgstr "Obiteljsko stablo \"%s\" će biti vidljivo posjetiteljima kada prvi pristupi ovoj web stranici."
 
 #: admin_trees_merge.php:185
 msgid "The family trees have been merged successfully."
@@ -13614,7 +13616,7 @@ msgstr "Pojedinac može kontaktirati o tehničkim pitanjima ili greškama na koj
 
 #. I18N: Help text for the “Genealogy contact” configuration setting
 #: admin_trees_config.php:981
-msgid "The individual to contact about the genealogical data on this website."
+msgid "The individual to contact about the genealogy data on this website."
 msgstr "Pojedinac može kontaktirati o genealoškim podacima na ovim stranicama."
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
@@ -13654,12 +13656,12 @@ msgstr "Memorija i CPU zahtjevi ovise o broju pojedinaca u vašem obiteljskom st
 #: admin_modules.php:44
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr ""
+msgstr "Modul “%s” je isključen."
 
 #: admin_modules.php:46
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr ""
+msgstr "Modul “%s” je uključen."
 
 #: admin_site_upgrade.php:397
 #, php-format
@@ -13690,7 +13692,7 @@ msgstr "Lozinke nisu iste."
 #: admin_modules.php:76
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr ""
+msgstr "Postavke za modul “%s” su obrisane."
 
 #: setup.php:379
 msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database.  “wt_” is suggested, but can be anything you want."
@@ -13763,7 +13765,7 @@ msgstr "Nadogradnja je završena."
 #: admin_users.php:770
 #, php-format
 msgid "The user %s has been deleted."
-msgstr ""
+msgstr "Korisnik %s je obrisan."
 
 #: login.php:320
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
@@ -13795,15 +13797,15 @@ msgstr "Verzija %s je previše stara"
 
 #: admin_site_access.php:79
 msgid "The website access rule has been created."
-msgstr ""
+msgstr "Pristupna pravila web stranice su kreirana."
 
 #: admin_site_access.php:107
 msgid "The website access rule has been deleted."
-msgstr ""
+msgstr "Pristupna pravila web stranice su obrisana."
 
 #: admin_site_access.php:91
 msgid "The website access rule has been updated."
-msgstr ""
+msgstr "Pristupna pravila web stranice su ažurirana."
 
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: admin_trees_config.php:2362
@@ -13816,7 +13818,7 @@ msgstr "webtrees programeri bi bili jako zainteresirani da saznaju za ovu grešk
 
 #: admin_site_access.php:278
 msgid "The “%” character is a wildcard, and will match zero or more other characters."
-msgstr ""
+msgstr "Znak “%” je zamjena za nijedno ili više znakova."
 
 #: admin_modules.php:181 admin_users.php:449 edituser.php:250
 #: library/WT/Theme/BaseTheme.php:1465
@@ -13835,7 +13837,7 @@ msgstr "Izbornik tema za promjenu teme"
 
 #: admin_modules.php:155
 msgid "Themes"
-msgstr ""
+msgstr "Teme"
 
 #: admin_site_config.php:203
 msgid "Themes can be selected at three levels: user, GEDCOM, and site.  User settings take priority over GEDCOM settings, which in turn take priority over the site setting.  Selecting “default theme” at user level will give the setting for the current GEDCOM.  Selecting “default theme” at GEDCOM level will give the site setting."
@@ -13875,9 +13877,9 @@ msgstr "Imate promjene na čekanju koje treba moderirati."
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Nije bilo promjena zadnji %s dan."
+msgstr[1] "Nije bilo promjena zadnjih %s dana."
+msgstr[2] "Nije bilo promjena zadnjih %s dana."
 
 #: addmedia.php:183 admin_media_upload.php:142
 msgid "There was an error uploading your file."
@@ -14510,7 +14512,7 @@ msgstr "Ove web stranice su privremeno nedostupne"
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:165
 #, php-format
-msgid "This will delete all the genealogical data from “%s” and replace it with data from another GEDCOM file."
+msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
 msgstr "Ovo će obrisati sve genealoške podatke iz „%s” i prepisati sa podacima iz drugog GEDCOM-a."
 
 #: modules_v3/googlemap/module.php:1817
@@ -14635,7 +14637,7 @@ msgstr "Naziv:"
 #. I18N: label for the end of a date range (from x to y)
 #: admin_site_change.php:303 admin_site_logs.php:262
 msgid "To"
-msgstr ""
+msgstr "Do"
 
 #: modules_v3/html/module.php:277
 msgid "To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
@@ -14671,7 +14673,7 @@ msgstr "Da reducira visinu bloka Novosti, administrator može sakriti neke član
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: admin_site_config.php:427
 msgid "To set this text for other languages, you must switch to that language, and visit this page again."
-msgstr ""
+msgstr "Da bi postavili ovaj tekst za drugi jezik, morate se prebaciti na taj jezik, i posjetiti stranicu ponovo."
 
 #: modules_v3/sitemap/module.php:316
 msgid "To tell search engines that sitemaps are available, you can use the following links."
@@ -15199,7 +15201,7 @@ msgstr "Koristi lozinku"
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1200
 msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question."
-msgstr ""
+msgstr "Koristi slike silueta kada nije određena slika za tog pojedinca. Korištene slike su specifične prema spolu pojedinca."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1195
@@ -15547,7 +15549,7 @@ msgstr "Sada ćemo vam poslati potvrdnu e-poštu na adresu <b>%s</b>. Vi morate 
 #. I18N: Menu entry
 #: library/WT/Theme/Administration.php:74
 msgid "Website"
-msgstr ""
+msgstr "Web stranica"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:251
@@ -15567,12 +15569,12 @@ msgstr "Postavke za web stranice i META tag"
 #. I18N: Menu entry
 #: admin_site_logs.php:30 library/WT/Theme/Administration.php:78
 msgid "Website logs"
-msgstr ""
+msgstr "Dnevnik web stranice"
 
 #. I18N: Menu entry
 #: admin_site_config.php:105 library/WT/Theme/Administration.php:75
 msgid "Website preferences"
-msgstr ""
+msgstr "Postavke web stranice"
 
 #. I18N: abbreviation for Wednesday
 #: includes/functions/functions_print.php:731 library/WT/Date/Calendar.php:383
@@ -15868,7 +15870,7 @@ msgstr "Možete ubrzati izračun privatnosti dodavanjem zapisa smrti pojedincu �
 
 #: admin_site_access.php:68
 msgid "You cannot create a rule which would prevent yourself from accessing the website."
-msgstr ""
+msgstr "Ne možete kreirati pravila koja vam ne dopuštaju pristup web stranici."
 
 #: login.php:70
 msgid "You cannot login because your browser does not accept cookies."
@@ -15949,7 +15951,7 @@ msgstr "Morate specificirati zapis pojedinca prije nego možete ograničiti kori
 
 #: admin_trees_manage.php:215
 msgid "You need to create a family tree."
-msgstr ""
+msgstr "Trebate kreirati obiteljsko stablo."
 
 #: admin_pgv_to_wt.php:1155
 msgid "You need to login again, using your PhpGedView username and password."
@@ -16493,7 +16495,7 @@ msgstr "nastavi"
 #. I18N: Button label
 #: admin_trees_manage.php:576
 msgid "create"
-msgstr ""
+msgstr "kreiraj"
 
 #. I18N: a program feature
 #: setup.php:138
@@ -16556,7 +16558,7 @@ msgstr "stupnjeva"
 #. I18N: Button label
 #: admin_site_clean.php:120 admin_users.php:756
 msgid "delete"
-msgstr ""
+msgstr "obriši"
 
 #. I18N: An access rule - deny access to the site
 #: admin_site_access.php:30 admin_site_access.php:37
@@ -16605,7 +16607,7 @@ msgstr "istok"
 #: admin_trees_config.php:2235 admin_trees_config.php:2266
 #: admin_trees_config.php:2295
 msgid "edit"
-msgstr ""
+msgstr "uredi"
 
 #: includes/functions/functions.php:703
 msgctxt "FEMALE"
@@ -18735,7 +18737,7 @@ msgstr "djevojačko prezime"
 
 #: admin_trees_config.php:547
 msgid "managers"
-msgstr ""
+msgstr "upravitelji"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:95
@@ -18811,7 +18813,7 @@ msgstr[2] "maximalno %d dana"
 #: admin_trees_config.php:506 admin_trees_config.php:546
 #: admin_trees_config.php:566
 msgid "members"
-msgstr ""
+msgstr "članovi"
 
 #. I18N: time format “%a” - exactly 00:00:00
 #: includes/functions/functions_date.php:86
@@ -19102,7 +19104,7 @@ msgstr "postotak"
 
 #: admin_trees_config.php:1183
 msgid "pixels"
-msgstr ""
+msgstr "pikseli"
 
 #. I18N: button label
 #: admin_trees_places.php:104
@@ -19974,7 +19976,7 @@ msgstr "utf8_unicode_ci"
 #: admin_trees_config.php:505 admin_trees_config.php:545
 #: admin_trees_config.php:565
 msgid "visitors"
-msgstr ""
+msgstr "posjetitelji"
 
 #: modules_v3/ahnentafel_report/report.xml:138
 #: modules_v3/descendancy_report/report.xml:104
@@ -19990,7 +19992,7 @@ msgstr "je rođen"
 
 #: library/WT/Theme/Webtrees.php:101
 msgid "webtrees"
-msgstr ""
+msgstr "webtrees"
 
 #: help_text.php:456
 msgid "webtrees allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the clippings cart that you can use to export portions of your database.<br><br>You can select any of the facts from the clipboard and copy the selected fact to the individual, family, media, source, or repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a marriage fact to a source or an individual record since the marriage fact is associated only with family records.<br><br>This is very helpful when entering similar facts, such as census facts, for many individuals or families."
@@ -20122,7 +20124,7 @@ msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
 
-#~ msgid "<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The administrator can override this option for individual users by editing the user’s account details."
+#~ msgid "<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogy database.  The administrator can override this option for individual users by editing the user’s account details."
 #~ msgstr "<b>Ne</b> znači da prijavljeni korisnici mogu vidjeti detalje od svih živih pojedinaca. <b>Da</b> znaći da korisnici mogu vidjeti samo privatne imformacije živih pojedinaca sa kojima su u rodu.<br><br>Ova opcija postavlja kao zadano za sve korisnike koji imaju pristup ovoj genealoškoj bazi podataka. Administrator može promijeniti ove postavke pojedinom korisniku u postavkama računa korisnika."
 
 #~ msgid "Add by ID"
@@ -20191,8 +20193,8 @@ msgstr "…"
 #~ msgid "Family tree configuration"
 #~ msgstr "Oblikovanje obiteljskog stabla"
 
-#~ msgid "For optimal display on the internet, webtrees uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
-#~ msgstr "Za optimalan prikaz na internetu, webtrees koristi UTF-8 kodnu stranicu. Neki programi, Family Tree Maker na primjer, ne podržava učitavanje GEDCOM datoteke kodiranu u UTF-8. Uključenjem ove opcije će konvertirati datoteku iz <b>UTF-8</b> u <b>ANSI (ISO-8859-1)</b>.<br><br> Format koji trebate ovisi o programu koji koristite za rad sa GEDCOM datokom. Ako niste sigurni, konzultirajte dokumentaciju tog programa.<br><br>Da bi posebni znakovi ostali nepromijenjeni, trebate držati datoteku u UTF-8 formatu i pretvoriti ju za svoj program a obradu tih posebnih znakova raditi nekim drugim sredstvima."
+#~ msgid "For optimal display on the internet, webtrees uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ISO-8859-1</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
+#~ msgstr "Za optimalan prikaz na internetu, webtrees koristi UTF-8 kodnu stranicu. Neki programi, Family Tree Maker na primjer, ne podržava učitavanje GEDCOM datoteke kodiranu u UTF-8. Uključenjem ove opcije će konvertirati datoteku iz <b>UTF-8</b> u <b>ISO-8859-1</b>.<br><br> Format koji trebate ovisi o programu koji koristite za rad sa GEDCOM datokom. Ako niste sigurni, konzultirajte dokumentaciju tog programa.<br><br>Da bi posebni znakovi ostali nepromijenjeni, trebate držati datoteku u UTF-8 formatu i pretvoriti ju za svoj program a obradu tih posebnih znakova raditi nekim drugim sredstvima."
 
 #~ msgid "From %s to %s"
 #~ msgstr "Od %s do %s"

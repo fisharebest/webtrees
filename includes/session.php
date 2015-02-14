@@ -1,41 +1,45 @@
 <?php
-// Startup and session logic
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2015 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2011 PGV Development Team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Fisharebest\Webtrees;
 
-use WT\Auth;
-use WT\Log;
-use WT\Theme;
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+use PDOException;
+use Zend_Controller_Request_Http;
+use Zend_Session;
+use Zend_Session_Namespace;
+
+/**
+ * This is the bootstrap script, that is run on every request.
+ */
 
 // WT_SCRIPT_NAME is defined in each script that the user is permitted to load.
 if (!defined('WT_SCRIPT_NAME')) {
 	http_response_code(403);
-	exit;
+	return;
 }
 
-// To embed webtrees code in other applications, we must explicitly declare any global variables that we create.
-// session.php
-global $WT_REQUEST, $WT_SESSION, $WT_TREE, $GEDCOM, $SEARCH_SPIDER, $TEXT_DIRECTION;
-// most pages
-global $controller;
+/**
+ * We set the following globals
+ *
+ * @global boolean                      $SEARCH_SPIDER
+ * @global Zend_Controller_Request_Http $WT_REQUEST
+ * @global Zend_Session_Namespace       $WT_SESSION
+ * @global Tree                         $WT_TREE
+ */
+global $WT_REQUEST, $WT_SESSION, $WT_TREE, $SEARCH_SPIDER;
 
 // Identify ourself
 define('WT_WEBTREES', 'webtrees');
@@ -87,6 +91,7 @@ if (getenv('USE_CDN')) {
 // We can't load these from a CDN, as these have been patched.
 define('WT_JQUERY_COLORBOX_URL', WT_STATIC_URL . 'assets/js-1.7.0/jquery.colorbox-1.5.14.js');
 define('WT_JQUERY_WHEELZOOM_URL', WT_STATIC_URL . 'assets/js-1.7.0/jquery.wheelzoom-2.0.0.js');
+define('WT_CKEDITOR_BASE_URL', WT_STATIC_URL . 'packages/ckeditor-4.4.7-custom/');
 
 // Location of our own scripts
 define('WT_ADMIN_JS_URL', WT_STATIC_URL . 'assets/js-1.7.0/admin.js');
@@ -97,8 +102,8 @@ define('WT_WEBTREES_JS_URL', WT_STATIC_URL . 'assets/js-1.7.0/webtrees.js');
 define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes
 define('WT_THEMES_DIR', 'themes/');
 
-// Enable debugging output?
-define('WT_DEBUG', false);
+// Enable debugging output on development builds
+define('WT_DEBUG', strpos(WT_VERSION, 'dev') !== false);
 define('WT_DEBUG_SQL', false);
 
 // Required version of database tables/columns/indexes/etc.
@@ -106,28 +111,23 @@ define('WT_SCHEMA_VERSION', 29);
 
 // Regular expressions for validating user input, etc.
 define('WT_MINIMUM_PASSWORD_LENGTH', 6);
-
 define('WT_REGEX_XREF', '[A-Za-z0-9:_-]+');
 define('WT_REGEX_TAG', '[_A-Z][_A-Z0-9]*');
 define('WT_REGEX_INTEGER', '-?\d+');
-define('WT_REGEX_ALPHA', '[a-zA-Z]+');
-define('WT_REGEX_ALPHANUM', '[a-zA-Z0-9]+');
 define('WT_REGEX_BYTES', '[0-9]+[bBkKmMgG]?');
 define('WT_REGEX_IPV4', '\d{1,3}(\.\d{1,3}){3}');
 define('WT_REGEX_USERNAME', '[^<>"%{};]+');
 define('WT_REGEX_PASSWORD', '.{' . WT_MINIMUM_PASSWORD_LENGTH . ',}');
 
 // UTF8 representation of various characters
-define('WT_UTF8_BOM', "\xEF\xBB\xBF"); // U+FEFF
-
-// UTF8 control codes affecting the BiDirectional algorithm (see http://www.unicode.org/reports/tr9/)
-define('WT_UTF8_LRM', "\xE2\x80\x8E"); // U+200E  (Left to Right mark:  zero-width character with LTR directionality)
-define('WT_UTF8_RLM', "\xE2\x80\x8F"); // U+200F  (Right to Left mark:  zero-width character with RTL directionality)
-define('WT_UTF8_LRO', "\xE2\x80\xAD"); // U+202D  (Left to Right override: force everything following to LTR mode)
-define('WT_UTF8_RLO', "\xE2\x80\xAE"); // U+202E  (Right to Left override: force everything following to RTL mode)
-define('WT_UTF8_LRE', "\xE2\x80\xAA"); // U+202A  (Left to Right embedding: treat everything following as LTR text)
-define('WT_UTF8_RLE', "\xE2\x80\xAB"); // U+202B  (Right to Left embedding: treat everything following as RTL text)
-define('WT_UTF8_PDF', "\xE2\x80\xAC"); // U+202C  (Pop directional formatting: restore state prior to last LRO, RLO, LRE, RLE)
+define('WT_UTF8_BOM', "\xEF\xBB\xBF"); // U+FEFF (Byte order mark)
+define('WT_UTF8_LRM', "\xE2\x80\x8E"); // U+200E (Left to Right mark:  zero-width character with LTR directionality)
+define('WT_UTF8_RLM', "\xE2\x80\x8F"); // U+200F (Right to Left mark:  zero-width character with RTL directionality)
+define('WT_UTF8_LRO', "\xE2\x80\xAD"); // U+202D (Left to Right override: force everything following to LTR mode)
+define('WT_UTF8_RLO', "\xE2\x80\xAE"); // U+202E (Right to Left override: force everything following to RTL mode)
+define('WT_UTF8_LRE', "\xE2\x80\xAA"); // U+202A (Left to Right embedding: treat everything following as LTR text)
+define('WT_UTF8_RLE', "\xE2\x80\xAB"); // U+202B (Right to Left embedding: treat everything following as RTL text)
+define('WT_UTF8_PDF', "\xE2\x80\xAC"); // U+202C (Pop directional formatting: restore state prior to last LRO, RLO, LRE, RLE)
 
 // Alternatives to BMD events for lists, charts, etc.
 define('WT_EVENTS_BIRT', 'BIRT|CHR|BAPM|_BRTM|ADOP');
@@ -151,15 +151,16 @@ define('WT_PRIV_NONE', 0); // Allows managers to access the marked information
 define('WT_PRIV_HIDE', -1); // Hide the item to all users
 
 // For performance, it is quicker to refer to files using absolute paths
-define('WT_ROOT', realpath(dirname(dirname(__FILE__))) . DIRECTORY_SEPARATOR);
+define('WT_ROOT', realpath(dirname(__DIR__)) . DIRECTORY_SEPARATOR);
 
 // Keep track of time statistics, for the summary in the footer
 define('WT_START_TIME', microtime(true));
 
-// We want to know about all PHP errors
-error_reporting(E_ALL | E_STRICT);
-if (strpos(ini_get('disable_functions'), 'ini_set') === false) {
-	ini_set('display_errors', 'on');
+// We want to know about all PHP errors during development, and fewer in production.
+if (WT_DEBUG) {
+	error_reporting(E_ALL | E_STRICT | E_NOTICE | E_DEPRECATED);
+} else {
+	error_reporting(E_ALL);
 }
 
 // We use some PHP5.5 features, but need to run on older servers
@@ -167,12 +168,10 @@ if (version_compare(PHP_VERSION, '5.4', '<')) {
 	require WT_ROOT . 'includes/php_53_compatibility.php';
 }
 
-require WT_ROOT . 'library/autoload.php';
+require WT_ROOT . 'vendor/autoload.php';
 
-// PHP requires a time zone to be set in php.ini
-if (!ini_get('date.timezone')) {
-	date_default_timezone_set(@date_default_timezone_get());
-}
+// PHP requires a time zone to be set
+date_default_timezone_set(date_default_timezone_get());
 
 // Use the patchwork/utf8 library to:
 // 1) set all PHP defaults to UTF-8
@@ -189,12 +188,12 @@ if (!ini_get('date.timezone')) {
 
 // Calculate the base URL, so we can generate absolute URLs.
 
-$protocol = WT_Filter::server('HTTP_X_FORWARDED_PROTO', 'https?', WT_Filter::server('HTTPS', null, 'off') === 'off' ? 'http' : 'https');
+$protocol = Filter::server('HTTP_X_FORWARDED_PROTO', 'https?', Filter::server('HTTPS', null, 'off') === 'off' ? 'http' : 'https');
 
 // For CLI scripts, use localhost.
-$host = WT_Filter::server('SERVER_NAME', null, 'localhost');
+$host = Filter::server('SERVER_NAME', null, 'localhost');
 
-$port = WT_Filter::server('HTTP_X_FORWARDED_PORT', '80|443', WT_Filter::server('SERVER_PORT', null, '80'));
+$port = Filter::server('HTTP_X_FORWARDED_PORT', '80|443', Filter::server('SERVER_PORT', null, '80'));
 
 // Ignore the default port.
 if ($protocol === 'http' && $port === '80' || $protocol === 'https' && $port === '443') {
@@ -205,49 +204,72 @@ if ($protocol === 'http' && $port === '80' || $protocol === 'https' && $port ===
 
 // REDIRECT_URL should be set when Apache is following a RedirectRule
 // PHP_SELF may have trailing path: /path/to/script.php/FOO/BAR
-$path = WT_Filter::server('REDIRECT_URL', null, WT_Filter::server('PHP_SELF'));
+$path = Filter::server('REDIRECT_URL', null, Filter::server('PHP_SELF'));
 $path = substr($path, 0, stripos($path, WT_SCRIPT_NAME));
 
 define('WT_BASE_URL', $protocol . '://' . $host . $port . $path);
 
-// Common functions - move these to classes so we can autoload them.
-require WT_ROOT . 'includes/functions/functions.php';
-require WT_ROOT . 'includes/functions/functions_db.php';
-require WT_ROOT . 'includes/functions/functions_print.php';
-require WT_ROOT . 'includes/functions/functions_mediadb.php';
-require WT_ROOT . 'includes/functions/functions_date.php';
-require WT_ROOT . 'includes/functions/functions_charts.php';
-require WT_ROOT . 'includes/functions/functions_import.php';
+// Convert PHP errors into exceptions
+set_error_handler(function($errno, $errstr, $errfile, $errline) {
+	if (error_reporting() & $errno) {
+		throw new \ErrorException($errstr, 0, $errno, $errfile, $errline);
+	} else {
+		return false;
+	}
+});
 
-// Log errors to the database
-set_error_handler(function($errno, $errstr) {
-	static $first_error = false;
+set_exception_handler(function(\Exception $ex) {
+	$long_message = '';
+	$short_message = '';
 
-	if (!$first_error) {
-		$first_error = true;
-
-		$message = 'ERROR ' . $errno . ': ' . $errstr;
-		// Although debug_backtrace should always exist, PHP sometimes crashes without this check.
-		if (function_exists('debug_backtrace') && strstr($errstr, 'headers already sent by') === false) {
-			$backtraces = debug_backtrace();
-			foreach ($backtraces as $level => $backtrace) {
-				if ($level === 0) {
-					$message .= '; Error occurred on ';
+	foreach ($ex->getTrace() as $level => $frame) {
+		$frame += array('args' => array(), 'file' => 'unknown', 'line' => 'unknown');
+		array_walk($frame['args'], function(&$arg) {
+			switch (gettype($arg)) {
+			case 'boolean':
+			case 'integer':
+			case 'double':
+			case 'null':
+				$arg = var_export($arg, true);
+				break;
+			case 'string':
+				if (mb_strlen($arg) > 30) {
+					$arg = substr($arg, 0, 30) . '…';
+				}
+				$arg = var_export($arg, true);
+				break;
+			case 'object':
+				$reflection = new \ReflectionClass($arg);
+				if (is_object($arg) && method_exists($arg, '__toString')) {
+					$arg = '[' . $reflection->getShortName() . ' ' . (string) $arg . ']';
 				} else {
-					$message .= '; called from ';
+					$arg = '[' . $reflection->getShortName() . ']';
 				}
-				if (isset($backtrace[$level]['line']) && isset($backtrace[$level]['file'])) {
-					$message .= 'line ' . $backtraces[$level]['line'] . ' of file ' . $backtraces[$level]['file'];
-				}
-				if ($level < count($backtraces) - 1) {
-					$message .= ' in function ' . $backtraces[$level + 1]['function'];
-				}
+				break;
+			default:
+				$arg = '[' . gettype($arg) . ']';
+				break;
 			}
+		});
+		$frame['file'] = str_replace(dirname(__DIR__), '', $frame['file']);
+		$long_message .= '#' . $level . ' ' . $frame['file'] . ':' . $frame['line'] . ' ';
+		$short_message .= '#' . $level . ' ' . $frame['file'] . ':' . $frame['line'] . ' ';
+		if ($level) {
+			$long_message .= $frame['function'] . '(' . implode(', ', $frame['args']) . ')' . PHP_EOL;
+			$short_message .= $frame['function'] . "()<br>";
+		} else {
+			$long_message .= get_class($ex) . '("' . $ex->getMessage() . '")' . PHP_EOL;
+			$short_message .= get_class($ex) . '("' . $ex->getMessage() . '")<br>';
 		}
-		Log::addErrorLog($message);
 	}
 
-	return false;
+	if (WT_DEBUG) {
+		echo $long_message;
+	} else {
+		echo $short_message;
+	}
+
+	Log::addErrorLog($long_message);
 });
 
 // Load our configuration file, so we can connect to the database
@@ -273,24 +295,24 @@ $WT_REQUEST = new Zend_Controller_Request_Http;
 
 // Connect to the database
 try {
-	WT_DB::createInstance($dbconfig['dbhost'], $dbconfig['dbport'], $dbconfig['dbname'], $dbconfig['dbuser'], $dbconfig['dbpass']);
+	Database::createInstance($dbconfig['dbhost'], $dbconfig['dbport'], $dbconfig['dbname'], $dbconfig['dbuser'], $dbconfig['dbpass']);
 	define('WT_TBLPREFIX', $dbconfig['tblpfx']);
 	unset($dbconfig);
 	// Some of the FAMILY JOIN HUSBAND JOIN WIFE queries can excede the MAX_JOIN_SIZE setting
-	WT_DB::exec("SET NAMES 'utf8' COLLATE 'utf8_unicode_ci', SQL_BIG_SELECTS=1");
-	WT_DB::updateSchema(WT_ROOT . 'includes/db_schema/', 'WT_SCHEMA_VERSION', WT_SCHEMA_VERSION);
+	Database::exec("SET NAMES 'utf8' COLLATE 'utf8_unicode_ci', SQL_BIG_SELECTS=1");
+	Database::updateSchema(WT_ROOT . 'includes/db_schema/', 'WT_SCHEMA_VERSION', WT_SCHEMA_VERSION);
 } catch (PDOException $ex) {
-	WT_FlashMessages::addMessage($ex->getMessage(), 'danger');
+	FlashMessages::addMessage($ex->getMessage(), 'danger');
 	header('Location: ' . WT_BASE_URL . 'site-unavailable.php');
 	throw $ex;
 }
 
 // The config.ini.php file must always be in a fixed location.
 // Other user files can be stored elsewhere...
-define('WT_DATA_DIR', realpath(WT_Site::getPreference('INDEX_DIRECTORY') ? WT_Site::getPreference('INDEX_DIRECTORY') : 'data') . DIRECTORY_SEPARATOR);
+define('WT_DATA_DIR', realpath(Site::getPreference('INDEX_DIRECTORY') ? Site::getPreference('INDEX_DIRECTORY') : 'data') . DIRECTORY_SEPARATOR);
 
 // If we have a preferred URL (e.g. www.example.com instead of www.isp.com/~example), then redirect to it.
-$SERVER_URL = WT_Site::getPreference('SERVER_URL');
+$SERVER_URL = Site::getPreference('SERVER_URL');
 if ($SERVER_URL && $SERVER_URL != WT_BASE_URL) {
 	header('Location: ' . $SERVER_URL . WT_SCRIPT_NAME . (isset($_SERVER['QUERY_STRING']) ? '?' . $_SERVER['QUERY_STRING'] : ''), true, 301);
 	exit;
@@ -298,22 +320,22 @@ if ($SERVER_URL && $SERVER_URL != WT_BASE_URL) {
 
 // Request more resources - if we can/want to
 if (!ini_get('safe_mode')) {
-	$memory_limit = WT_Site::getPreference('MEMORY_LIMIT');
+	$memory_limit = Site::getPreference('MEMORY_LIMIT');
 	if ($memory_limit && strpos(ini_get('disable_functions'), 'ini_set') === false) {
 		ini_set('memory_limit', $memory_limit);
 	}
-	$max_execution_time = WT_Site::getPreference('MAX_EXECUTION_TIME');
+	$max_execution_time = Site::getPreference('MAX_EXECUTION_TIME');
 	if ($max_execution_time && strpos(ini_get('disable_functions'), 'set_time_limit') === false) {
 		set_time_limit($max_execution_time);
 	}
 }
 
-$rule = WT_DB::prepare(
+$rule = Database::prepare(
 	"SELECT SQL_CACHE rule FROM `##site_access_rule`" .
 	" WHERE IFNULL(INET_ATON(?), 0) BETWEEN ip_address_start AND ip_address_end" .
 	" AND ? LIKE user_agent_pattern" .
 	" ORDER BY ip_address_end LIMIT 1"
-)->execute(array($WT_REQUEST->getClientIp(), WT_Filter::server('HTTP_USER_AGENT')))->fetchOne();
+)->execute(array($WT_REQUEST->getClientIp(), Filter::server('HTTP_USER_AGENT')))->fetchOne();
 
 switch ($rule) {
 case 'allow':
@@ -330,9 +352,9 @@ case 'unknown':
 	$SEARCH_SPIDER = true;
 	break;
 case '':
-	WT_DB::prepare(
+	Database::prepare(
 		"INSERT INTO `##site_access_rule` (ip_address_start, ip_address_end, user_agent_pattern, comment) VALUES (IFNULL(INET_ATON(?), 0), IFNULL(INET_ATON(?), 4294967295), ?, '')"
-	)->execute(array($WT_REQUEST->getClientIp(), $WT_REQUEST->getClientIp(), WT_Filter::server('HTTP_USER_AGENT')));
+	)->execute(array($WT_REQUEST->getClientIp(), $WT_REQUEST->getClientIp(), Filter::server('HTTP_USER_AGENT', null, '')));
 	$SEARCH_SPIDER = true;
 	break;
 }
@@ -349,12 +371,12 @@ session_set_save_handler(
 	},
 	// read
 	function($id) {
-		return WT_DB::prepare("SELECT session_data FROM `##session` WHERE session_id=?")->execute(array($id))->fetchOne();
+		return Database::prepare("SELECT session_data FROM `##session` WHERE session_id=?")->execute(array($id))->fetchOne();
 	},
 	// write
 	function($id, $data) use ($WT_REQUEST) {
 		// Only update the session table once per minute, unless the session data has actually changed.
-		WT_DB::prepare(
+		Database::prepare(
 			"INSERT INTO `##session` (session_id, user_id, ip_address, session_data, session_time)" .
 			" VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP - SECOND(CURRENT_TIMESTAMP))" .
 			" ON DUPLICATE KEY UPDATE" .
@@ -368,25 +390,25 @@ session_set_save_handler(
 	},
 	// destroy
 	function($id) {
-		WT_DB::prepare("DELETE FROM `##session` WHERE session_id=?")->execute(array($id));
+		Database::prepare("DELETE FROM `##session` WHERE session_id=?")->execute(array($id));
 
 		return true;
 	},
 	// gc
 	function($maxlifetime) {
-		WT_DB::prepare("DELETE FROM `##session` WHERE session_time < DATE_SUB(NOW(), INTERVAL ? SECOND)")->execute(array($maxlifetime));
+		Database::prepare("DELETE FROM `##session` WHERE session_time < DATE_SUB(NOW(), INTERVAL ? SECOND)")->execute(array($maxlifetime));
 
 		return true;
 	}
 );
 
-// Use the Zend_Session object to start the session.
+// Use the Zend_Session_Namespace object to start the session.
 // This allows all the other Zend Framework components to integrate with the session
 define('WT_SESSION_NAME', 'WT_SESSION');
 $cfg = array(
 	'name'            => WT_SESSION_NAME,
 	'cookie_lifetime' => 0,
-	'gc_maxlifetime'  => WT_Site::getPreference('SESSION_TIME'),
+	'gc_maxlifetime'  => Site::getPreference('SESSION_TIME'),
 	'gc_probability'  => 1,
 	'gc_divisor'      => 100,
 	'cookie_path'     => parse_url(WT_BASE_URL, PHP_URL_PATH),
@@ -413,33 +435,27 @@ define('WT_USER_ID', Auth::id());
 /** @deprecated Will be removed in 1.7.0 */
 define('WT_USER_NAME', Auth::id() ? Auth::user()->getUserName() : '');
 
-// Set the active GEDCOM
-if (isset($_REQUEST['ged'])) {
-	// .... from the URL or form action
-	$GEDCOM = $_REQUEST['ged'];
-} elseif ($WT_SESSION->GEDCOM) {
-	// .... the most recently used one
-	$GEDCOM = $WT_SESSION->GEDCOM;
-} else {
-	// Try the site default
-	$GEDCOM = WT_Site::getPreference('DEFAULT_GEDCOM');
+// Set the tree for the page; (1) the request, (2) the session, (3) the site default, (4) any tree
+foreach (array(Filter::post('ged'), Filter::get('ged'), $WT_SESSION->GEDCOM, Site::getPreference('DEFAULT_GEDCOM')) as $tree_name) {
+	$WT_TREE = Tree::findByName($tree_name);
+	if ($WT_TREE) {
+		$WT_SESSION->GEDCOM = $tree_name;
+		break;
+	}
 }
-
-// Choose the selected tree (if it exists), or any valid tree otherwise
-$WT_TREE = null;
-foreach (WT_Tree::getAll() as $tree) {
-	$WT_TREE = $tree;
-	if ($WT_TREE->name() == $GEDCOM && ($WT_TREE->getPreference('imported') || Auth::isAdmin())) {
+// No chosen tree?  Use any one.
+if (!$WT_TREE) {
+	foreach (Tree::getAll() as $WT_TREE) {
 		break;
 	}
 }
 
 // These attributes of the currently-selected tree are used frequently
 if ($WT_TREE) {
-	define('WT_GEDCOM', $WT_TREE->name());
-	define('WT_GED_ID', $WT_TREE->id());
-	define('WT_GEDURL', $WT_TREE->nameUrl());
-	define('WT_TREE_TITLE', $WT_TREE->titleHtml());
+	define('WT_GEDCOM', $WT_TREE->getName());
+	define('WT_GED_ID', $WT_TREE->getTreeId());
+	define('WT_GEDURL', $WT_TREE->getNameUrl());
+	define('WT_TREE_TITLE', $WT_TREE->getTitleHtml());
 	define('WT_USER_GEDCOM_ADMIN', Auth::isManager($WT_TREE));
 	define('WT_USER_CAN_ACCEPT', Auth::isModerator($WT_TREE));
 	define('WT_USER_CAN_EDIT', Auth::isEditor($WT_TREE));
@@ -454,7 +470,6 @@ if ($WT_TREE) {
 	} else {
 		define('WT_USER_ACCESS_LEVEL', WT_PRIV_PUBLIC);
 	}
-	load_gedcom_settings(WT_GED_ID);
 } else {
 	define('WT_GEDCOM', '');
 	define('WT_GED_ID', null);
@@ -469,21 +484,17 @@ if ($WT_TREE) {
 	define('WT_USER_PATH_LENGTH', 0);
 	define('WT_USER_ACCESS_LEVEL', WT_PRIV_PUBLIC);
 }
-$GEDCOM = WT_GEDCOM;
 
 // With no parameters, init() looks to the environment to choose a language
-define('WT_LOCALE', WT_I18N::init());
-$WT_SESSION->locale = WT_I18N::$locale;
-
-// Set our gedcom selection as a default for the next page
-$WT_SESSION->GEDCOM = WT_GEDCOM;
+define('WT_LOCALE', I18N::init());
+$WT_SESSION->locale = I18N::$locale;
 
 if (empty($WEBTREES_EMAIL)) {
 	$WEBTREES_EMAIL = 'webtrees-noreply@' . preg_replace('/^www\./i', '', $_SERVER['SERVER_NAME']);
 }
 
 // Note that the database/webservers may not be synchronised, so use DB time throughout.
-define('WT_TIMESTAMP', (int) WT_DB::prepare("SELECT UNIX_TIMESTAMP()")->fetchOne());
+define('WT_TIMESTAMP', (int) Database::prepare("SELECT UNIX_TIMESTAMP()")->fetchOne());
 
 // Server timezone is defined in php.ini
 define('WT_SERVER_TIMESTAMP', WT_TIMESTAMP + (int) date('Z'));
@@ -498,9 +509,12 @@ define('WT_CLIENT_JD', 2440588 + (int) (WT_CLIENT_TIMESTAMP / 86400));
 // Application configuration data - things that aren’t (yet?) user-editable
 require WT_ROOT . 'includes/config_data.php';
 
+
+
+
 // The login URL must be an absolute URL, and can be user-defined
-if (WT_Site::getPreference('LOGIN_URL')) {
-	define('WT_LOGIN_URL', WT_Site::getPreference('LOGIN_URL'));
+if (Site::getPreference('LOGIN_URL')) {
+	define('WT_LOGIN_URL', Site::getPreference('LOGIN_URL'));
 } else {
 	define('WT_LOGIN_URL', WT_BASE_URL . 'login.php');
 }
@@ -525,13 +539,13 @@ if (WT_TIMESTAMP - $WT_SESSION->activity_time > 300) {
 }
 
 // Set the theme
-if (substr(WT_SCRIPT_NAME, 0, 5) == 'admin' || WT_SCRIPT_NAME == 'module.php' && substr(WT_Filter::get('mod_action'), 0, 5) == 'admin') {
+if (substr(WT_SCRIPT_NAME, 0, 5) === 'admin' || WT_SCRIPT_NAME === 'module.php' && substr(Filter::get('mod_action'), 0, 5) === 'admin') {
 	// Administration scripts begin with “admin” and use a special administration theme
-	Theme::theme(new \WT\Theme\Administration)->init($WT_SESSION, $SEARCH_SPIDER, $WT_TREE);
+	Theme::theme(new AdministrationTheme)->init($WT_SESSION, $SEARCH_SPIDER, $WT_TREE);
 } else {
-	if (WT_Site::getPreference('ALLOW_USER_THEMES')) {
+	if (Site::getPreference('ALLOW_USER_THEMES')) {
 		// Requested change of theme?
-		$theme_id = WT_Filter::get('theme');
+		$theme_id = Filter::get('theme');
 		if (!array_key_exists($theme_id, Theme::themeNames())) {
 			$theme_id = '';
 		}
@@ -552,7 +566,7 @@ if (substr(WT_SCRIPT_NAME, 0, 5) == 'admin' || WT_SCRIPT_NAME == 'module.php' &&
 			$theme_id = $WT_TREE->getPreference('THEME_DIR');
 		}
 		if (!array_key_exists($theme_id, Theme::themeNames())) {
-			$theme_id = WT_Site::getPreference('THEME_DIR');
+			$theme_id = Site::getPreference('THEME_DIR');
 		}
 		if (!array_key_exists($theme_id, Theme::themeNames())) {
 			$theme_id = 'webtrees';
@@ -581,10 +595,10 @@ if ($SEARCH_SPIDER && !in_array(WT_SCRIPT_NAME, array(
 	'individual.php', 'family.php', 'mediaviewer.php', 'note.php', 'repo.php', 'source.php',
 ))) {
 	http_response_code(403);
-	$controller = new WT_Controller_Page;
-	$controller->setPageTitle(WT_I18N::translate('Search engine'));
+	$controller = new PageController;
+	$controller->setPageTitle(I18N::translate('Search engine'));
 	$controller->pageHeader();
-	echo '<p class="ui-state-error">', WT_I18N::translate('You do not have permission to view this page.'), '</p>';
+	echo '<p class="ui-state-error">', I18N::translate('You do not have permission to view this page.'), '</p>';
 	exit;
 }
 

@@ -57,7 +57,7 @@ msgstr " по диапазону времени"
 #: includes/functions/functions_print_facts.php:201
 #, php-format
 msgid "#%s"
-msgstr "#%s"
+msgstr "№%s"
 
 #: modules_v3/googlemap/module.php:912
 #, php-format
@@ -149,20 +149,21 @@ msgstr "%1$s Не существует. Возможно, Вы имели в в�
 msgid "%1$s does not have a link back to %2$s."
 msgstr "Нет обратной ссылки с %1$s на %2$s."
 
+# Since the second variable's units name can also change its ending depending on the number, it's better to shorten it.
 #. I18N: [...] from the .ZIP file, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:371 admin_site_upgrade.php:451
 #, php-format
 msgid "%1$s file was extracted in %2$s seconds."
 msgid_plural "%1$s files were extracted in %2$s seconds."
-msgstr[0] "%1$s файл был извлечен за %2$s секунд."
-msgstr[1] "%1$s файла было извлечено за %2$s секунд."
-msgstr[2] "%1$s файлов были извлечены за %2$s секунд."
+msgstr[0] "%1$s файл был извлечен за %2$s сек."
+msgstr[1] "%1$s файла было извлечено за %2$s сек."
+msgstr[2] "%1$s файлов были извлечены за %2$s сек."
 
 #. I18N: %1$s is an internal ID number such as R123.  %2$s and %3$s are record types, such as INDI or SOUR
 #: admin_trees_check.php:175
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr "%1$sявляется %2$s а должен быть %3$s."
+msgstr "%1$s является %2$s а должен быть %3$s."
 
 #. I18N: image dimensions, width × height
 #: admin_media.php:469 library/WT/Media.php:375
@@ -176,6 +177,7 @@ msgstr "%1$s × %2$s пикселей"
 msgid "%1$s–%2$s"
 msgstr "%1$s–%2$s"
 
+# This can't be adequately translated into Russian, as the first word's ending is dependant on its gender.
 #. I18N: A complex relationship, such as “third-cousin’s great-uncle”
 #: includes/functions/functions.php:2319
 #, php-format
@@ -608,7 +610,7 @@ msgstr "9-ый"
 
 #. I18N: Help text for the “Automatically create globally unique IDs” configuration setting
 #: admin_trees_config.php:808
-msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates.  The goal of the Family History Center is to have a central repository of genealogical data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
+msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates.  The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
 msgstr "<b>GUID</b> в данном контексте является аббревиатурой от «Глобальный Уникальный Идентификатор».<br><br>GUIDs предназначены, чтобы помочь идентифицировать каждого человека таким образом, чтобы такие центральные организации, как мормонский семейно-исторический центр LDS церкви в Солт-Лейк-Сити, или совместимые программы, которые запускаются на Вашем собственном сервере, могли определить, имеют ли они дело с одним и тем же человеком, независимо от того, откуда файл GEDCOM. Целью семейно-исторического центра является создание центрального хранилища генеалогических данных и передачи его через веб-сервисы. Это позволит любой программе дать доступ к данным и обновлять свои данные в хранилище.<br><br>Если Вы не намерены обмениваться файлами GEDCOM с кем-то еще, Вы не должны позволить webtrees создать эти идентификаторы GUIDs; Однако, это не окажет никакого вреда, кроме увеличения размера GEDCOM файла."
 
 #: admin_trees_manage.php:619
@@ -616,7 +618,7 @@ msgid "<b>Important note:</b> The transfer wizard is not able to assist with mov
 msgstr "<b>Важное Примечание:</b> Мастер переноса не в состоянии поддерживать передачу мультимедийных объектов. Вам нужно будет установить, перемещать или копировать Вашу медиа-конфигурацию и объекты отдельно после передачи мастера."
 
 #: message.php:115
-msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data."
+msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
 msgstr "<b>Обратите внимание:</b> частная информация живых людей будет даваться только родственникам и близким друзьям. Вам будет предложено проверить Ваши отношения, прежде чем Вы получите какие-либо личные данные. Иногда информация умерших людей, также может быть частной. Если это так, то это потому, что не хватает информации об этом человеке, чтобы определить, жив ли он или нет, и мы, вероятно, не имеем больше информации об этом человеке.<br><br>Прежде чем задавать вопрос, пожалуйста, убедитесь, что Вы спрашиваете о правильном человеке, проверяя даты, места и близких родственников. Если Вы вносите изменения в генеалогические данные, пожалуйста, укажите источники, где Вы получили эти данные."
 
 #: login.php:159
@@ -883,7 +885,7 @@ msgstr "Боковая панель - показывает близкие сем
 
 #. I18N: Description of the “Extra information” module
 #: modules_v3/extra_info/module.php:31
-msgid "A sidebar showing non-genealogical information about an individual."
+msgid "A sidebar showing non-genealogy information about an individual."
 msgstr "Боковая панель - показывает не генеалогическую информацию о персоне."
 
 #. I18N: Description of the “Descendants” module
@@ -1764,7 +1766,7 @@ msgstr "Все существующие пользователи PGV должн�
 
 #: admin_trees_config.php:639
 msgid "All facts and events"
-msgstr ""
+msgstr "Все факты и события"
 
 #: admin_trees_config.php:1954
 msgid "All family facts"
@@ -1789,7 +1791,7 @@ msgstr "Все персоны"
 
 #: admin_trees_config.php:630
 msgid "All records"
-msgstr ""
+msgstr "Все записи"
 
 #: admin_trees_config.php:2161
 msgid "All repository facts"
@@ -1978,8 +1980,8 @@ msgstr "Применить автоматические изменения в в
 #: admin_trees_download.php:122 modules_v3/clippings/module.php:190
 #: modules_v3/clippings/module.php:198 modules_v3/clippings/module.php:581
 #: modules_v3/clippings/module.php:590
-msgid "Apply privacy settings?"
-msgstr "Применить права доступа?"
+msgid "Apply privacy settings"
+msgstr "Применить права доступа"
 
 #: admin_users.php:99
 #, php-format
@@ -2305,8 +2307,8 @@ msgid "Average number of children per family"
 msgstr "Среднее число детей на семью"
 
 #: admin_trees_manage.php:568
-msgid "Avoid spaces and puncutation.  A family name might be a good choice."
-msgstr ""
+msgid "Avoid spaces and punctuation.  A family name might be a good choice."
+msgstr "Исключите пробелы и знаки препинания. Можно указать, например, фамилию."
 
 #: library/WT/Date/Jalali.php:158
 msgctxt "Abbreviation for Persian month: Azar"
@@ -3002,7 +3004,7 @@ msgstr "Болгария"
 
 #: admin_trees_manage.php:638
 msgid "Bulk import GEDCOM files"
-msgstr ""
+msgstr "Пакетный импорт файлов GEDCOM"
 
 #. I18N: gedcom tag BURI
 #: library/WT/Gedcom/Tag.php:227 modules_v3/family_group_report/report.xml:345
@@ -3201,7 +3203,7 @@ msgstr "CKEditor™"
 
 #: admin_trees_manage.php:253
 msgid "Calculating…"
-msgstr ""
+msgstr "Вычисляется..."
 
 #: library/WT/Theme/BaseTheme.php:874 library/WT/Theme/BaseTheme.php:878
 #: modules_v3/yahrzeit/module.php:267
@@ -3953,12 +3955,12 @@ msgstr "Продолжение"
 #: modules_v3/faq/module.php:367 modules_v3/sitemap/module.php:281
 #: modules_v3/stories/module.php:197 modules_v3/stories/module.php:311
 msgid "Control panel"
-msgstr ""
+msgstr "Панель управления"
 
 #: admin_trees_download.php:134 modules_v3/clippings/module.php:205
 #: modules_v3/clippings/module.php:598
-msgid "Convert from UTF-8 to ANSI (ISO-8859-1)"
-msgstr "Преобразовать из UTF-8 на ANSI (ISO-8859-1)"
+msgid "Convert from UTF-8 to ISO-8859-1"
+msgstr "Преобразовать из UTF-8 на ISO-8859-1"
 
 #: library/WT/Stats.php:6118
 msgid "Cook Islands"
@@ -4081,11 +4083,11 @@ msgstr "Создать новый источник"
 
 #: admin_site_access.php:217
 msgid "Create a website access rule"
-msgstr ""
+msgstr "Создать правила доступа к сайту"
 
 #: admin_trees_manage.php:645
 msgid "Create or update a family tree for every GEDCOM file in the data folder."
-msgstr ""
+msgstr "Создать или изменить семейное дерево для каждого файла GEDCOM в папке данных."
 
 #: statistics.php:430
 msgid "Create your own chart"
@@ -5385,7 +5387,7 @@ msgstr "Редактировать «ЧаВо» запись"
 
 #: admin_site_access.php:215
 msgid "Edit a website access rule"
-msgstr ""
+msgstr "Изменить правило доступа к сайту"
 
 #: library/WT/Controller/Media.php:149
 msgid "Edit details"
@@ -5447,7 +5449,7 @@ msgstr "Редактируйте запись этой персоны и зам�
 
 #: admin_users.php:257
 msgid "Edit user"
-msgstr ""
+msgstr "Редактировать данные пользователя"
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:41 admin_users.php:507
@@ -5782,7 +5784,7 @@ msgstr "Экспортировать"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:284
-msgid "Export all family trees to GEDCOM files…"
+msgid "Export all the family trees to GEDCOM files…"
 msgstr "Экспорт всех семейных деревьев в GEDCOM-файлы…"
 
 #: help_text.php:544
@@ -6058,7 +6060,7 @@ msgstr "GEDCOM-Корзина генеалогического дерева"
 #. I18N: %s is a filename
 #: admin_site_upgrade.php:290 admin_trees_export.php:34
 #, php-format
-msgid "Family tree exported to %s."
+msgid "The family tree has been exported to %s."
 msgstr "Генеалогическое дерево экспортировано в %s."
 
 #: admin_trees_config.php:666 admin_trees_manage.php:533
@@ -6589,7 +6591,7 @@ msgstr "Фример"
 #. I18N: label for the start of a date range (from x to y)
 #: admin_site_change.php:293 admin_site_logs.php:252
 msgid "From"
-msgstr ""
+msgstr "С"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:89
@@ -6685,7 +6687,7 @@ msgstr "По генеалогическим вопросам обращатьс�
 #. I18N: Individuals, sources, dates, places, etc.
 #: admin_trees_manage.php:348
 msgid "Genealogy data"
-msgstr ""
+msgstr "Генеалогические данные"
 
 #: admin_trees_config.php:661 admin_trees_config.php:1775
 msgid "General"
@@ -7345,7 +7347,7 @@ msgstr "Если два генеалогического дерева испол
 
 #: admin_trees_config.php:452
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account.  You will need to add their account manually."
-msgstr ""
+msgstr "Если посетители не смогут видеть семейное дерево, они не смогут зарегистрировать свою учетную запись. Вам придется добавлять их учетную запись вручную."
 
 #. I18N: Help text for the “Who can upload new media files?” configuration setting
 #: admin_trees_config.php:1146
@@ -7377,7 +7379,7 @@ msgid "If you have a note to add to this record, this is the place to do so.<br>
 msgstr "Здесь Вы можете добавить примечание к записи.<br><br>При нажатии на ссылку откроется новое окно, в котором можно ввести текст заметки. Далее следует нажать на кнопку ниже и закрыть окно."
 
 #: admin_trees_manage.php:207
-msgid "If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM file."
+msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
 msgstr "Если Вы создали медиаобъекты в webtrees, но ввели изменения используя программу которая удаляет медиаобъекты, то поставьте флажок, чтобы объединить медиаобъекты с новыми генеалогическим деревом."
 
 #: modules_v3/recent_changes/module.php:173
@@ -8246,7 +8248,7 @@ msgstr "Ссылка на медиа-объект для персоны"
 
 #: admin_users.php:566
 msgid "Link this user to an individual in the family tree."
-msgstr ""
+msgstr "Свяжите данного пользователя с персоной из семейного дерева."
 
 #: inverselink.php:35 inverselink.php:70 library/WT/Controller/Family.php:215
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:78
@@ -8349,7 +8351,7 @@ msgstr "Ссылка (URL) входа"
 #. I18N: Menu entry
 #: admin_site_config.php:111 library/WT/Theme/Administration.php:77
 msgid "Login and registration"
-msgstr ""
+msgstr "Вход в систему и регистрация"
 
 #: library/WT/Theme/BaseTheme.php:1289 modules_v3/login_block/module.php:55
 #: modules_v3/login_block/module.php:58
@@ -9164,7 +9166,7 @@ msgstr "Модератор"
 
 #: admin.php:579
 msgid "Moderators"
-msgstr ""
+msgstr "Модераторы"
 
 #: admin_modules.php:147
 msgid "Module"
@@ -9434,7 +9436,7 @@ msgstr "Моя страница"
 
 #: library/WT/Theme/BaseTheme.php:1353
 msgid "My pages"
-msgstr ""
+msgstr "Мои страницы"
 
 #: library/WT/Theme/BaseTheme.php:1376 modules_v3/user_welcome/module.php:48
 msgid "My pedigree"
@@ -9448,7 +9450,7 @@ msgstr "MySQL сообщила об ошибке: %s"
 
 #: admin_site_info.php:100
 msgid "MySQL variables"
-msgstr ""
+msgstr "Переменные MySQL"
 
 #: library/WT/Stats.php:6218
 msgid "Myanmar"
@@ -10811,7 +10813,7 @@ msgid "Places in %s"
 msgstr "Места в %s"
 
 #: help_text.php:330
-msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogical records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
+msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
 msgstr "Места вводится в соответствии со стандартами, принятыми в генеалогии. В генеалогии,  местонахождение мест сохраняются, поместив наиболее подробную информацию в начале, а затем, предоставляя данные, все более и более общие, при этом разделяя уровни запятыми. Уровни информации о местоположении должны отражать уровни управленческой иерархии, или церкви, в которой хранятся файлы.<br><br>Например, место, как Солт-Лейк-Сити, будут введены как «Солт-Лейк-Сити, Солт-Лейк, Юта, США».<br><br>Давайте рассмотрим каждую часть этого места.  Первая часть, «Солт-Лейк-Сити,» является город или поселок, где произошло событие. В некоторых странах, могут быть муниципалитеты и районы внутри города, который важно отметить. В этом случае, они должны указываться до имени города.  Следующая часть, «Солт-Лейк» - это графство. «Юта» - является штатом, а «США» - это страна. Важно отметить каждое местоположение, потому что генеалогические записи хранятся у правительств каждого уровня.<br><br>Если нет информации на каком-то уровне, можно оставить свободное место между запятыми. Предположим, в примере выше, Вы не знаете округа для Солт-Лейк-Сити. Вы должны записать это так: «Солт-Лейк-Сити, , Юта, США». Предположим, Вы только знаете, что человек родился в штате Юта. Вы должны ввести информацию вроде этой: «, , Юта, США».<br><br>Вы можете использовать ссвлку <b>найти место</b>, чтобы помочь Вам найти местоположение, которые уже существуют в базе данных."
 
 #: library/WT/Theme/Clouds.php:74 library/WT/Theme/Fab.php:84
@@ -10965,7 +10967,7 @@ msgstr "Только члены семьи могут запросить уче�
 
 #: admin_trees_config.php:403 admin_trees_manage.php:274
 msgid "Preferences"
-msgstr ""
+msgstr "Установки"
 
 #: admin_modules.php:88
 #, php-format
@@ -11999,7 +12001,7 @@ msgstr "Имя отправителя"
 #. I18N: Menu entry
 #: admin_site_config.php:108 library/WT/Theme/Administration.php:76
 msgid "Sending email"
-msgstr ""
+msgstr "Отправка электронного письма"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:374
@@ -12078,7 +12080,7 @@ msgstr "(CSV)-Файл на сервере с местами"
 #. I18N: Menu entry
 #: admin_site_info.php:34 library/WT/Theme/Administration.php:81
 msgid "Server information"
-msgstr ""
+msgstr "Информация о сервере"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:296 setup.php:278
@@ -12097,7 +12099,7 @@ msgstr "Время сессии истекло:"
 
 #: admin_trees_manage.php:327 admin_trees_manage.php:338
 msgid "Set as default"
-msgstr ""
+msgstr "Установить по умолчанию"
 
 #: inverselink.php:153
 msgid "Set link"
@@ -12141,7 +12143,7 @@ msgstr "Установите <b>Да</b>, чтобы отобразить зна
 #. I18N: Help text for the “Use RIN number instead of GEDCOM ID” configuration setting
 #: admin_trees_config.php:795
 msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
-msgstr ""
+msgstr "Установите <b>Да</b> для использования номера RIN вместо идентификатора GEDCOM при необходимости указания идентификатора персоны в файлах конфигурации, настройках пользователя и графиках. Это может иметь значение для генеалогических программ, в которых не всегда при экспорте GEDCOM используются одинаковые идентификаторы персон, но всегда одинаковые RIN."
 
 #. I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting
 #: admin_trees_config.php:1674
@@ -12517,12 +12519,12 @@ msgstr "Показать список родословных"
 #. I18N: A configuration setting
 #: admin_trees_config.php:502
 msgid "Show living individuals"
-msgstr ""
+msgstr "Показывать живых людей"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:542
 msgid "Show names of private individuals"
-msgstr ""
+msgstr "Показывать имена скрытых персон"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -12656,7 +12658,7 @@ msgstr "Показывать дату и время обновления"
 #. I18N: A configuration setting
 #: admin_trees_config.php:438
 msgid "Show the family tree"
-msgstr ""
+msgstr "Показывать семейное дерево"
 
 #: famlist.php:179 indilist.php:179
 msgid "Show the list of individuals"
@@ -12776,7 +12778,7 @@ msgstr "Сестра"
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: admin_users.php:441 edituser.php:277
 msgid "Site members can send each other messages.  You can choose to how these messages are sent to you, or choose not receive them at all."
-msgstr ""
+msgstr "Зарегистрированные пользователи сайта могут отправлять друг другу сообщения. Вы можете выбрать способ, которым эти сообщения будут отправляться вам, или отказаться от их получения вообще."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: modules_v3/sitemap/module.php:30
@@ -13397,7 +13399,7 @@ msgid "Thailand"
 msgstr "Таиланд"
 
 #: help_text.php:276
-msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded.  This is how it will be displayed on screen.  It uses standard genealogical annotations to identify different parts of the name."
+msgid "The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded.  This is how it will be displayed on screen.  It uses standard genealogy annotations to identify different parts of the name."
 msgstr "<b>имя</b> поле содержит индивидуальные полное имя, как пишется или как он был записан. Вот как это будет отображаться на экране. Он использует стандартные генеалогическое аннотации для выявления различных частей имени."
 
 #: help_text.php:296
@@ -13617,7 +13619,7 @@ msgstr "Электронный адрес для обращения по тех�
 
 #. I18N: Help text for the “Genealogy contact” configuration setting
 #: admin_trees_config.php:981
-msgid "The individual to contact about the genealogical data on this website."
+msgid "The individual to contact about the genealogy data on this website."
 msgstr "Персона для контакта по генеалогической информации на этом сайте."
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
@@ -13878,9 +13880,9 @@ msgstr "Есть ожидающие изменения для модериров
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "За последний день не было никаких изменений."
+msgstr[1] "За последние %s дня не было никаких изменений."
+msgstr[2] "За последние %s дней не было никаких изменений."
 
 #: addmedia.php:183 admin_media_upload.php:142
 msgid "There was an error uploading your file."
@@ -14512,7 +14514,7 @@ msgstr "Сайт временно недоступен"
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:165
 #, php-format
-msgid "This will delete all the genealogical data from “%s” and replace it with data from another GEDCOM file."
+msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
 msgstr "Это удалит все генеалогические данные из «%s» и заменит их на данные из другого GEDCOM-файла."
 
 #: modules_v3/googlemap/module.php:1817
@@ -14637,7 +14639,7 @@ msgstr "Заголовок:"
 #. I18N: label for the end of a date range (from x to y)
 #: admin_site_change.php:303 admin_site_logs.php:262
 msgid "To"
-msgstr ""
+msgstr "По"
 
 #: modules_v3/html/module.php:277
 msgid "To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
@@ -14673,7 +14675,7 @@ msgstr "Чтобы уменьшить высоту блока новостей, 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: admin_site_config.php:427
 msgid "To set this text for other languages, you must switch to that language, and visit this page again."
-msgstr ""
+msgstr "Для настройки данного текста на других языках необходимо переключиться на этот язык и вновь открыть данную страницу."
 
 #: modules_v3/sitemap/module.php:316
 msgid "To tell search engines that sitemaps are available, you can use the following links."
@@ -15870,7 +15872,7 @@ msgstr "Вы можете ускорить вычисление уровня к�
 
 #: admin_site_access.php:68
 msgid "You cannot create a rule which would prevent yourself from accessing the website."
-msgstr ""
+msgstr "Нельзя создавать правило, которое запретит вам самим доступ к веб-сайту."
 
 #: login.php:70
 msgid "You cannot login because your browser does not accept cookies."
@@ -15951,7 +15953,7 @@ msgstr "Необходимо указать персональную запис�
 
 #: admin_trees_manage.php:215
 msgid "You need to create a family tree."
-msgstr ""
+msgstr "Вам необходимо создать семейное дерево."
 
 #: admin_pgv_to_wt.php:1155
 msgid "You need to login again, using your PhpGedView username and password."
@@ -16495,7 +16497,7 @@ msgstr "Продолжить"
 #. I18N: Button label
 #: admin_trees_manage.php:576
 msgid "create"
-msgstr ""
+msgstr "Создать"
 
 #. I18N: a program feature
 #: setup.php:138
@@ -16558,7 +16560,7 @@ msgstr "градусов"
 #. I18N: Button label
 #: admin_site_clean.php:120 admin_users.php:756
 msgid "delete"
-msgstr ""
+msgstr "Удалить"
 
 #. I18N: An access rule - deny access to the site
 #: admin_site_access.php:30 admin_site_access.php:37
@@ -16607,7 +16609,7 @@ msgstr "восточная"
 #: admin_trees_config.php:2235 admin_trees_config.php:2266
 #: admin_trees_config.php:2295
 msgid "edit"
-msgstr ""
+msgstr "Изменить"
 
 #: includes/functions/functions.php:703
 msgctxt "FEMALE"
@@ -20124,7 +20126,16 @@ msgctxt "Unknown surname"
 msgid "…"
 msgstr "…"
 
-#~ msgid "<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogical database.  The administrator can override this option for individual users by editing the user’s account details."
+msgid "Explain why you are requesting an account."
+msgstr "Объясните, почему Вы запрашиваете учетную запись."
+
+msgid "This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site."
+msgstr "Этот адрес электронной почты будет использоваться для отправки Вам напоминания пароля, уведомлений сайта и сообщений от других членов семьи, также зарегистрированных на сайте."
+
+msgid "View person"
+msgstr "Смотреть персону"
+
+#~ msgid "<b>No</b> means that authenticated users can see the details of all living individuals.  <b>Yes</b> means that users can only see the private information of living individuals they are related to.<br><br>This option sets the default for all users who have access to this genealogy database.  The administrator can override this option for individual users by editing the user’s account details."
 #~ msgstr "<b>Нет</b> означает, что пользователи, прошедшие проверку подлинности, могут увидеть подробности всех живых людей. <b>Да</b> означает, что пользователи могут просматривать только личную информацию живых людей, с которыми они связаны.<br><br>Этот параметр устанавливает значение по умолчанию для всех пользователей, которые имеют доступ к этой генеалогической базе данных. Администратор может переопределить этот параметр для отдельных пользователей, путем редактирования учетной записи пользователя."
 
 #~ msgid "Add by ID"
@@ -20187,14 +20198,11 @@ msgstr "…"
 #~ msgid "Execution time: %1$s seconds.  Database queries: %2$s.  Memory usage: %3$s KB."
 #~ msgstr "Время выполнения: %1$s секунд. Запросы к базе данных: %2$s. Использование памяти: %3$s КБ."
 
-#~ msgid "Explain why you are requesting an account."
-#~ msgstr "Объясните, почему Вы запрашиваете учетную запись."
-
 #~ msgid "Family tree configuration"
 #~ msgstr "Конфигурация генеалогического дерева"
 
-#~ msgid "For optimal display on the internet, webtrees uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ANSI (ISO-8859-1)</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
-#~ msgstr "Для оптимального отображения в интернете, webtrees использует UTF-8 кодировку. Некоторые программы, например, Family Tree Maker, не поддерживают импорт GEDCOM-файлов, закодированных в UTF-8. При установке этого флажка, файл в кодировке <b>UTF-8</b> будет преобразоваться в файл кодировке <b>ANSI (ISO-8859-1)</b>.<br><br>Формат, который Вам нужен, зависит от программы, которую Вы используете для работы с Вашим загружаемым файлом GEDCOM. Если Вы не уверены какой формат файла, пожалуйста, обратитесь к документации программы.<br><br>Обратите внимание, что специальные символы остаются неизменными, необходимо сохранить файл в кодировке UTF-8 и преобразовать его для Вашей программы, методом обработки этих специальных символов с помощью других средств. Обратитесь к изготовителю программы или к автору.<br><br><a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Статья в Википедии\"><b>Статья в Википедии</b></a> содержит полную информацию и ссылки о кодировке UTF-8."
+#~ msgid "For optimal display on the internet, webtrees uses the UTF-8 character set.  Some programs, Family Tree Maker for example, do not support importing GEDCOM files encoded in UTF-8.  Checking this box will convert the file from <b>UTF-8</b> to <b>ISO-8859-1</b>.<br><br>The format you need depends on the program you use to work with your downloaded GEDCOM file.  If you aren’t sure, consult the documentation of that program.<br><br>Note that for special characters to remain unchanged, you will need to keep the file in UTF-8 and convert it to your program’s method for handling these special characters by some other means.  Consult your program’s manufacturer or author.<br><br>This <a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Wikipedia article\"><b>Wikipedia article</b></a> contains comprehensive information and links about UTF-8."
+#~ msgstr "Для оптимального отображения в интернете, webtrees использует UTF-8 кодировку. Некоторые программы, например, Family Tree Maker, не поддерживают импорт GEDCOM-файлов, закодированных в UTF-8. При установке этого флажка, файл в кодировке <b>UTF-8</b> будет преобразоваться в файл кодировке <b>ISO-8859-1</b>.<br><br>Формат, который Вам нужен, зависит от программы, которую Вы используете для работы с Вашим загружаемым файлом GEDCOM. Если Вы не уверены какой формат файла, пожалуйста, обратитесь к документации программы.<br><br>Обратите внимание, что специальные символы остаются неизменными, необходимо сохранить файл в кодировке UTF-8 и преобразовать его для Вашей программы, методом обработки этих специальных символов с помощью других средств. Обратитесь к изготовителю программы или к автору.<br><br><a href=\"http://en.wikipedia.org/wiki/UTF-8\" target=\"_blank\" title=\"Статья в Википедии\"><b>Статья в Википедии</b></a> содержит полную информацию и ссылки о кодировке UTF-8."
 
 #~ msgid "From %s to %s"
 #~ msgstr "С %s до %s"

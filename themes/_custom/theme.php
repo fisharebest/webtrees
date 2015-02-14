@@ -1,20 +1,20 @@
 <?php
-// webtrees: Web based Family History software
-// Copyright (C) 2015 webtrees development team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Fisharebest\Webtrees;
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 /**
  * Class CustomTheme - This is a template showing how to create a custom theme.
@@ -29,12 +29,8 @@
  *
  * Only the first two functions are required: themeId() and themeName().
  * The rest are just examples, and should be removed in actual themes.
- *
- * Many of the core classes are being moved to namespaces.  For example,
- * WT_Foo will be renamed to WT\Foo.  The object API should remain the
- * same.  Avoid unecessary type-hints to allow your
  */
-class CustomTheme extends WT\Theme\Webtrees {
+class CustomTheme extends WebtreesTheme {
 	/**
 	 * Give your theme a unique identifier.  Themes beginning with an underscore
 	 * are reserved for internal use.
@@ -68,7 +64,7 @@ class CustomTheme extends WT\Theme\Webtrees {
 			$css_files   = parent::stylesheets();
 			// Put a version number in the URL, to prevent browsers from caching old versions.
 			$css_files[] = WT_BASE_URL . 'themes/custom/custom.css';
-		} catch (Exception $ex) {
+		} catch (\Exception $ex) {
 			// Something went wrong with our script?  Use the default behaviour instead.
 			return parent::stylesheets();
 		}
@@ -86,12 +82,12 @@ class CustomTheme extends WT\Theme\Webtrees {
 			// Start with the default "Lists" menu.
 			$menu = parent::menuLists();
 			// Remove the "notes" sub-menu.
-			$submenus = array_filter($menu->getSubmenus(), function(WT_Menu $menu) {
+			$submenus = array_filter($menu->getSubmenus(), function(Menu $menu) {
 				return $menu->getId() !== 'menu-list-note';
 			});
 			// Replace the sub-menus
 			$menu->setSubmenus($submenus);
-		} catch (Exception $ex) {
+		} catch (\Exception $ex) {
 			// Something went wrong with our script?  Maybe the core code was updated?
 			// Use the default behaviour instead, so that our theme continues to work.
 			return parent::menuLists();
