@@ -408,14 +408,14 @@ class Tree {
 	/**
 	 * Find the ID number for a tree name
 	 *
-	 * @param integer $tree_name
+	 * @param string $tree_name
 	 *
 	 * @return integer|null
 	 */
 	public static function getIdFromName($tree_name) {
 		foreach (self::getAll() as $tree) {
 			if ($tree->name === $tree_name) {
-				return $tree->getTreeId();
+				return $tree->tree_id;
 			}
 		}
 
