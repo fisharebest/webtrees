@@ -85,12 +85,12 @@ class custom_js_WT_Module extends Module implements ModuleConfigInterface, Modul
 	public function getMenu() {
 		// We don't actually have a menu - this is just a convenient "hook" to execute
 		// code at the right time during page execution
-		global $controller;
+		global $controller, $WT_TREE;
 
 		$cjs_footer = $this->getSetting('CJS_FOOTER');
 		if (strpos($cjs_footer, '#') !== false) {
 			# parse for embedded keywords
-			$stats = new WT_Stats(WT_GEDCOM);
+			$stats = new Stats($WT_TREE);
 			$cjs_footer = $stats->embedTags($cjs_footer);
 		}
 		$controller->addInlineJavaScript($cjs_footer, BaseController::JS_PRIORITY_LOW);
