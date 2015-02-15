@@ -19,12 +19,13 @@ namespace Fisharebest\Webtrees;
 use Rhumsaa\Uuid\Uuid;
 use Zend_Controller_Request_Http;
 use Zend_Session;
+use Zend_Session_Namespace;
 
 /**
  * Defined in session.php
  *
  * @global Zend_Controller_Request_Http $WT_REQUEST
- * @global Zend_Session                 $WT_SESSION
+ * @global Zend_Session_Namespace       $WT_SESSION
  * @global Tree                         $WT_TREE
  */
 global $WT_REQUEST, $WT_SESSION, $WT_TREE;

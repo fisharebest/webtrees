@@ -110,7 +110,7 @@ class yahrzeit_WT_Module extends Module implements ModuleBlockInterface {
 					$ind = $yahrzeit->getParent();
 					$content .= "<a href=\"" . $ind->getHtmlUrl() . "\" class=\"list_item name2\">" . $ind->getFullName() . "</a>" . $ind->getSexImage();
 					$content .= "<div class=\"indent\">";
-					$content .= $yahrzeit->getDate()->Display(true);
+					$content .= $yahrzeit->getDate()->display(true);
 					$content .= ', ' . I18N::translate('%s year anniversary', $yahrzeit->anniv);
 					$content .= "</div>";
 				}
@@ -176,7 +176,8 @@ class yahrzeit_WT_Module extends Module implements ModuleBlockInterface {
 					$content .= '<td>' . $ind->getSortName() . '</td>';
 
 					// death/yahrzeit event date
-					$content .= '<td>' . $yahrzeit->getDate()->Display() . '</td>';
+					$content .= '<td>' . $yahrzeit->getDate()->display() . '</td>';
+					$content .= '<td>' . $yahrzeit->getDate()->display() . '</td>';
 					$content .= '<td>' . $yahrzeit->getDate()->minJD() . '</td>'; // sortable date
 
 					// Anniversary

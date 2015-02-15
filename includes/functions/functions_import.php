@@ -591,7 +591,7 @@ function reformat_record_import($rec, Tree $tree) {
  * @param Tree    $tree import the record into this tree
  * @param boolean $update whether or not this is an updated record that has been accepted
  */
-function import_record($gedrec, $tree, $update) {
+function import_record($gedrec, Tree $tree, $update) {
 	$ged_id = $tree->getTreeId();
 
 	static $sql_insert_indi = null;

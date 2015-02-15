@@ -36,7 +36,7 @@ if (!defined('WT_SCRIPT_NAME')) {
  *
  * @global boolean                      $SEARCH_SPIDER
  * @global Zend_Controller_Request_Http $WT_REQUEST
- * @global Zend_Session                 $WT_SESSION
+ * @global Zend_Session_Namespace       $WT_SESSION
  * @global Tree                         $WT_TREE
  */
 global $WT_REQUEST, $WT_SESSION, $WT_TREE, $SEARCH_SPIDER;
@@ -402,7 +402,7 @@ session_set_save_handler(
 	}
 );
 
-// Use the Zend_Session object to start the session.
+// Use the Zend_Session_Namespace object to start the session.
 // This allows all the other Zend Framework components to integrate with the session
 define('WT_SESSION_NAME', 'WT_SESSION');
 $cfg = array(

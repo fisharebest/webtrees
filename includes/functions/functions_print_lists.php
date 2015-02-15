@@ -344,7 +344,7 @@ function format_indi_table($datalist, $option = '') {
 				if ($num) {
 					$html .= '<br>';
 				}
-				$html .= $birth_date->Display(!$SEARCH_SPIDER);
+				$html .= $birth_date->display(!$SEARCH_SPIDER);
 			}
 			if ($birth_dates[0]->gregorianYear() >= 1550 && $birth_dates[0]->gregorianYear() < 2030 && !isset($unique_indis[$person->getXref()])) {
 				$birt_by_decade[(int) ($birth_dates[0]->gregorianYear() / 10) * 10] .= $person->getSex();
@@ -388,7 +388,7 @@ function format_indi_table($datalist, $option = '') {
 				if ($num) {
 					$html .= '<br>';
 				}
-				$html .= $death_date->Display(!$SEARCH_SPIDER);
+				$html .= $death_date->display(!$SEARCH_SPIDER);
 			}
 			if ($death_dates[0]->gregorianYear() >= 1550 && $death_dates[0]->gregorianYear() < 2030 && !isset($unique_indis[$person->getXref()])) {
 				$deat_by_decade[(int) ($death_dates[0]->gregorianYear() / 10) * 10] .= $person->getSex();
@@ -877,7 +877,7 @@ function format_fam_table($datalist) {
 				if ($n) {
 					$html .= '<br>';
 				}
-				$html .= '<div>' . $marriage_date->Display(!$SEARCH_SPIDER) . '</div>';
+				$html .= '<div>' . $marriage_date->display(!$SEARCH_SPIDER) . '</div>';
 			}
 			if ($marriage_dates[0]->gregorianYear() >= 1550 && $marriage_dates[0]->gregorianYear() < 2030) {
 				$marr_by_decade[(int) ($marriage_dates[0]->gregorianYear() / 10) * 10] .= $husb->getSex() . $wife->getSex();
@@ -1623,7 +1623,7 @@ function format_surname_tagcloud($surnames, $script, $totals) {
  *
  * @return string
  */
-function format_surname_list($surnames, $style, $totals, $script, $tree) {
+function format_surname_list($surnames, $style, $totals, $script, Tree $tree) {
 	$html = array();
 	foreach ($surnames as $surn => $surns) {
 		// Each surname links back to the indilist
@@ -1959,7 +1959,7 @@ function print_events_table($startjd, $endjd, $events = 'BIRT MARR DEAT', $only_
 		}
 		$html .= '</td>';
 		$html .= '<td>' . $record->getSortName() . '</td>';
-		$html .= '<td>' . $fact->getDate()->Display(empty($SEARCH_SPIDER)) . '</td>';
+		$html .= '<td>' . $fact->getDate()->display(empty($SEARCH_SPIDER)) . '</td>';
 		$html .= '<td>' . $n . '</td>';
 		$html .= '<td>' . I18N::number($fact->anniv) . '</td>';
 		$html .= '<td>' . $fact->anniv . '</td>';
@@ -2074,7 +2074,7 @@ function print_events_list($startjd, $endjd, $events = 'BIRT MARR DEAT', $only_l
 			$html .= $record->getSexImage();
 		}
 		$html .= '<br><div class="indent">';
-		$html .= $fact->getLabel() . ' — ' . $fact->getDate()->Display(true);
+		$html .= $fact->getLabel() . ' — ' . $fact->getDate()->display(true);
 		if ($fact->anniv) {
 			$html .= ' (' . I18N::translate('%s year anniversary', $fact->anniv) . ')';
 		}

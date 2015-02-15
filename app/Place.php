@@ -36,7 +36,7 @@ class Place {
 	 * @param string $gedcom_place
 	 * @param Tree   $tree
 	 */
-	public function __construct($gedcom_place, $tree) {
+	public function __construct($gedcom_place, Tree $tree) {
 		if ($gedcom_place) {
 			$this->gedcom_place = explode(self::GEDCOM_SEPARATOR, $gedcom_place);
 		} else {
@@ -230,7 +230,7 @@ class Place {
 	 *
 	 * @return Place[]
 	 */
-	public static function findPlaces($filter, $tree) {
+	public static function findPlaces($filter, Tree $tree) {
 		$places = array();
 		$rows =
 			Database::prepare(

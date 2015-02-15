@@ -445,9 +445,9 @@ class LifespanController extends PageController {
 					}
 					$trans = WT_Gedcom_Tag::getLabel($fact);
 					if (isset($eventinformation[$evntwdth])) {
-						$eventinformation[$evntwdth] .= '<br>' . $trans . '<br>' . strip_tags($date->Display()) . ' ' . $val->getPlace()->getFullName();
+						$eventinformation[$evntwdth] .= '<br>' . $trans . '<br>' . strip_tags($date->display()) . ' ' . $val->getPlace()->getFullName();
 					} else {
-						$eventinformation[$evntwdth] = $fact . '-fact, ' . $trans . '<br>' . strip_tags($date->Display()) . ' ' . $val->getPlace()->getFullName();
+						$eventinformation[$evntwdth] = $fact . '-fact, ' . $trans . '<br>' . strip_tags($date->display()) . ' ' . $val->getPlace()->getFullName();
 					}
 				}
 			}
