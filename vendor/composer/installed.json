@@ -272,59 +272,6 @@
         ]
     },
     {
-        "name": "bombayworks/zendframework1",
-        "version": "v1.12.10",
-        "version_normalized": "1.12.10.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/bombayworks/zendframework1.git",
-            "reference": "8d28b59c8fe820f6ed2683cc4fad6551a4576432"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/8d28b59c8fe820f6ed2683cc4fad6551a4576432",
-            "reference": "8d28b59c8fe820f6ed2683cc4fad6551a4576432",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.2.11"
-        },
-        "require-dev": {
-            "phpunit/dbunit": "1.3.*",
-            "phpunit/phpunit": "3.7.*"
-        },
-        "time": "2015-01-14 20:01:12",
-        "bin": [
-            "bin/zf.sh",
-            "bin/zf.php"
-        ],
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.12.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Zend_": "library/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "include-path": [
-            "library/"
-        ],
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "description": "Zend Framework 1",
-        "homepage": "http://framework.zend.com/",
-        "keywords": [
-            "ZF1",
-            "framework"
-        ]
-    },
-    {
         "name": "patchwork/utf8",
         "version": "v1.2.1",
         "version_normalized": "1.2.1.0",
@@ -485,6 +432,59 @@
         "keywords": [
             "php",
             "zip"
+        ]
+    },
+    {
+        "name": "bombayworks/zendframework1",
+        "version": "v1.12.11",
+        "version_normalized": "1.12.11.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/bombayworks/zendframework1.git",
+            "reference": "64447e39d4c7a08ba17d2087a89caab713804d27"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/64447e39d4c7a08ba17d2087a89caab713804d27",
+            "reference": "64447e39d4c7a08ba17d2087a89caab713804d27",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.11"
+        },
+        "require-dev": {
+            "phpunit/dbunit": "1.3.*",
+            "phpunit/phpunit": "3.7.*"
+        },
+        "time": "2015-02-11 16:00:41",
+        "bin": [
+            "bin/zf.sh",
+            "bin/zf.php"
+        ],
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.12.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Zend_": "library/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "include-path": [
+            "library/"
+        ],
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "description": "Zend Framework 1",
+        "homepage": "http://framework.zend.com/",
+        "keywords": [
+            "ZF1",
+            "framework"
         ]
     }
 ]

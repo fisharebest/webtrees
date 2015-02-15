@@ -21,7 +21,7 @@
  */
 
 /** Zend_Db_Profiler */
-// require_once 'Zend/Database/Profiler.php';
+// require_once 'Zend/Db/Profiler.php';
 
 /** Zend_Wildfire_Plugin_FirePhp */
 // require_once 'Zend/Wildfire/Plugin/FirePhp.php';

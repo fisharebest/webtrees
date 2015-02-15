@@ -142,7 +142,7 @@ class Zend_Tool_Framework_Registry implements Zend_Tool_Framework_Registry_Inter
     public function getConfig()
     {
         if ($this->_config === null) {
-            // require_once 'Zend/Tool/Framework/Client/ConfigInterface.php';
+            // require_once 'Zend/Tool/Framework/Client/Config.php';
             $this->setConfig(new Zend_Tool_Framework_Client_Config());
         }
 

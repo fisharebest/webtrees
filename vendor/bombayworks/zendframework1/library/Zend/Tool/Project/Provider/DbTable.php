@@ -160,7 +160,7 @@ class Zend_Tool_Project_Provider_DbTable
         try {
             $zendApp->bootstrap('db');
         } catch (Zend_Application_Exception $e) {
-            throw new Zend_Tool_Project_Provider_Exception('Database resource not available, you might need to configure a DbAdapter.');
+            throw new Zend_Tool_Project_Provider_Exception('Db resource not available, you might need to configure a DbAdapter.');
             return;
         }
 

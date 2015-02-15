@@ -24,7 +24,7 @@
 /** @todo Section should be removed with ZF 2.0 release as obsolete                      */
 
 /** Zend_Search_Lucene_Document_Html */
-// require_once 'Zend/Search/Lucene/Document/ReportHtml.php';
+// require_once 'Zend/Search/Lucene/Document/Html.php';
 
 /** Zend_Search_Lucene_Document_Docx */
 // require_once 'Zend/Search/Lucene/Document/Docx.php';

@@ -191,7 +191,7 @@ abstract class Zend_Search_Lucene_Search_Query
         }
 
         /** Zend_Search_Lucene_Document_Html */
-        // require_once 'Zend/Search/Lucene/Document/ReportHtml.php';
+        // require_once 'Zend/Search/Lucene/Document/Html.php';
 
         $doc = Zend_Search_Lucene_Document_Html::loadHTML($inputHTML, false, $defaultEncoding);
         $highlighter->setDocument($doc);
@@ -220,7 +220,7 @@ abstract class Zend_Search_Lucene_Search_Query
                    . iconv($encoding, 'UTF-8//IGNORE', $inputHtmlFragment) . '</body></html>';
 
         /** Zend_Search_Lucene_Document_Html */
-        // require_once 'Zend/Search/Lucene/Document/ReportHtml.php';
+        // require_once 'Zend/Search/Lucene/Document/Html.php';
 
         $doc = Zend_Search_Lucene_Document_Html::loadHTML($inputHTML);
         $highlighter->setDocument($doc);

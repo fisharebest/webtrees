@@ -224,7 +224,7 @@ class Zend_Db
             /**
              * @see Zend_Db_Exception
              */
-            // require_once 'Zend/Database/Exception.php';
+            // require_once 'Zend/Db/Exception.php';
             throw new Zend_Db_Exception('Adapter parameters must be in an array or a Zend_Config object');
         }
 
@@ -235,7 +235,7 @@ class Zend_Db
             /**
              * @see Zend_Db_Exception
              */
-            // require_once 'Zend/Database/Exception.php';
+            // require_once 'Zend/Db/Exception.php';
             throw new Zend_Db_Exception('Adapter name must be specified in a string');
         }
 
@@ -276,7 +276,7 @@ class Zend_Db
             /**
              * @see Zend_Db_Exception
              */
-            // require_once 'Zend/Database/Exception.php';
+            // require_once 'Zend/Db/Exception.php';
             throw new Zend_Db_Exception("Adapter class '$adapterName' does not extend Zend_Db_Adapter_Abstract");
         }
 

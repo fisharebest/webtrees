@@ -23,7 +23,7 @@
 /**
  * @see Zend_Markup_Renderer_Html
  */
-// require_once 'Zend/Markup/Renderer/ReportHtml.php';
+// require_once 'Zend/Markup/Renderer/Html.php';
 /**
  * @see Zend_Markup_Renderer_Html_HtmlAbstract
  */

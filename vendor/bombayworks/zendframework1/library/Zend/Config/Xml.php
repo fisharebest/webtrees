@@ -22,7 +22,7 @@
 /**
  * @see Zend_Config
  */
-// require_once 'Zend/ConfigInterface.php';
+// require_once 'Zend/Config.php';
 
 /** @see Zend_Xml_Security */
 // require_once 'Zend/Xml/Security.php';

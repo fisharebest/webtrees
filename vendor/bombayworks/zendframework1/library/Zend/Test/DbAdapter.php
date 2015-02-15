@@ -23,7 +23,7 @@
 /**
  * @see Zend_Db_Adapter_Abstract
  */
-// require_once "Zend/Database/Adapter/Abstract.php";
+// require_once "Zend/Db/Adapter/Abstract.php";
 
 /**
  * @see Zend_Test_DbStatement
@@ -33,7 +33,7 @@
 /**
  * @see Zend_Db_Profiler
  */
-// require_once 'Zend/Database/Profiler.php';
+// require_once 'Zend/Db/Profiler.php';
 
 /**
  * Testing Database Adapter which acts as a stack for SQL Results
