@@ -25,8 +25,8 @@ class RelationshipController extends PageController {
 	/**
 	 * Calculate the shortest paths - or all paths - between two individuals.
 	 *
-	 * @param Individual $indi1
-	 * @param Individual $indi2
+	 * @param Individual $individual1
+	 * @param Individual $individual2
 	 * @param boolean    $all
 	 *
 	 * @return string[][]
@@ -81,7 +81,7 @@ class RelationshipController extends PageController {
 	 *
 	 * Return an empty array, if privacy rules prevent us viewing any node.
 	 *
-	 * @param string $path
+	 * @param GedcomRecord[] $path Alternately Individual / Family
 	 *
 	 * @return string[]
 	 */
