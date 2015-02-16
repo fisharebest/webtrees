@@ -16,13 +16,6 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
-global $WT_TREE;
-
 define('WT_SCRIPT_NAME', 'source.php');
 require './includes/session.php';
 
@@ -148,7 +141,7 @@ echo '<div id="source-tabs">
 		if ($controller->record->canEdit()) {
 			print_add_new_fact($controller->record->getXref(), $facts, 'SOUR');
 			// new media
-			if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
+			if ($controller->record->getTree()->getPreference('MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
 				echo '<tr><td class="descriptionbox">';
 				echo WT_Gedcom_Tag::getLabel('OBJE');
 				echo '</td><td class="optionbox">';
