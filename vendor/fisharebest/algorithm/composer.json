@@ -1,0 +1,38 @@
+{
+	"name": "fisharebest/algorithm",
+	"description": "Implementation of standard algorithms in PHP.",
+	"type": "library",
+	"keywords": [
+		"algorithm", "dijkstra"
+	],
+	"homepage": "https://github.com/fisharebest/algorithm",
+	"license": "GPL-3.0+",
+	"authors": [{
+			"name": "Greg Roach",
+			"email": "greg@subaqua.co.uk",
+			"role": "Developer"
+	}],
+	"support": {
+			"issues": "https://github.com/fisharebest/algorithm/issues"
+	},
+	"require": {
+		"php": ">=5.3.0"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "*",
+		"satooshi/php-coveralls": "*"
+	},
+	"autoload": {
+		"psr-4": {
+			"Fisharebest\\Algorithm\\": "src/"
+		}
+	},
+	"scripts": {
+		"post-install-cmd": [
+			"composer dump-autoload --optimize"
+		],
+		"post-update-cmd": [
+			"composer dump-autoload --optimize"
+		]
+	}
+}
