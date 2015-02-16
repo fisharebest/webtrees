@@ -283,7 +283,7 @@ function search_indis_soundex($soundex, $lastname, $firstname, $place, array $tr
 				$sql .= "n_soundex_givn_dm LIKE CONCAT('%', :given_name_" . $n . ", '%')";
 				break;
 			}
-			$args['given_name_' . $n]   = $sdx;
+			$args['given_name_' . $n] = $sdx;
 		}
 		$sql .= ")";
 	}
