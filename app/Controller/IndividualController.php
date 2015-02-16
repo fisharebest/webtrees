@@ -86,10 +86,8 @@ class IndividualController extends GedcomRecordController {
 	 * Handle AJAX requests - to generate the tab content
 	 */
 	public function ajaxRequest() {
-		global $SEARCH_SPIDER;
-
 		// Search engines should not make AJAX requests
-		if ($SEARCH_SPIDER) {
+		if (Auth::isSearchEngine()) {
 			http_response_code(403);
 			exit;
 		}

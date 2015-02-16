@@ -227,8 +227,6 @@ function highlight_search_hits($string) {
  * @return string
  */
 function format_asso_rela_record(Fact $event) {
-	global $SEARCH_SPIDER;
-
 	$parent = $event->getParent();
 	// To whom is this record an assocate?
 	if ($parent instanceof Individual) {
@@ -260,7 +258,7 @@ function format_asso_rela_record(Fact $event) {
 			}
 
 			$values = array('<a href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a>');
-			if (!$SEARCH_SPIDER) {
+			if (!Auth::isSearchEngine()) {
 				foreach ($associates as $associate) {
 					$relationship_name = get_associate_relationship_name($associate, $person);
 					if (!$relationship_name) {
@@ -349,7 +347,7 @@ function format_parents_age(Individual $person, Date $birth_date) {
  * @return string
  */
 function format_fact_date(Fact $event, GedcomRecord $record, $anchor, $time) {
-	global $pid, $SEARCH_SPIDER;
+	global $pid;
 
 	$factrec = $event->getGedcom();
 	$html    = '';
@@ -373,7 +371,7 @@ function format_fact_date(Fact $event, GedcomRecord $record, $anchor, $time) {
 	// Calculated age
 	if (preg_match('/\n2 DATE (.+)/', $factrec, $match)) {
 		$date = new Date($match[1]);
-		$html .= ' ' . $date->display($anchor && !$SEARCH_SPIDER);
+		$html .= ' ' . $date->display($anchor && !Auth::isSearchEngine());
 		// time
 		if ($time && preg_match('/\n3 TIME (.+)/', $factrec, $match)) {
 			$html .= ' – <span class="date">' . $match[1] . '</span>';
@@ -488,15 +486,9 @@ function format_fact_date(Fact $event, GedcomRecord $record, $anchor, $time) {
  * @return string HTML
  */
 function format_fact_place(Fact $event, $anchor = false, $sub_records = false, $lds = false) {
-	global $SEARCH_SPIDER;
-
 	if ($anchor) {
 		// Show the full place name, for facts/events tab
-		if ($SEARCH_SPIDER) {
-			$html = $event->getPlace()->getFullName();
-		} else {
-			$html = '<a href="' . $event->getPlace()->getURL() . '">' . $event->getPlace()->getFullName() . '</a>';
-		}
+		$html = '<a href="' . $event->getPlace()->getURL() . '">' . $event->getPlace()->getFullName() . '</a>';
 	} else {
 		// Abbreviate the place name, for chart boxes
 		return ' - ' . $event->getPlace()->getShortName();

@@ -211,6 +211,11 @@ class Date {
 	function display($url = false, $date_format = null, $convert_calendars = true) {
 		global $WT_TREE;
 
+		// Search engines do not get links to the calendar pages
+		if (Auth::isSearchEngine()) {
+			$url = false;
+		}
+
 		$CALENDAR_FORMAT = $WT_TREE->getPreference('CALENDAR_FORMAT');
 
 		if ($date_format === null) {

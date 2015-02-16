@@ -212,9 +212,7 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 
 	/** {@inheritdoc} */
 	public function hasTabContent() {
-		global $SEARCH_SPIDER;
-
-		return !$SEARCH_SPIDER && (array_key_exists('googlemap', Module::getActiveModules()) || Auth::isAdmin());
+		return !Auth::isSearchEngine() && (array_key_exists('googlemap', Module::getActiveModules()) || Auth::isAdmin());
 	}
 
 	/** {@inheritdoc} */

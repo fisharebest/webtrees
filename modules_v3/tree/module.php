@@ -56,9 +56,7 @@ class tree_WT_Module extends Module implements ModuleTabInterface {
 
 	/** {@inheritdoc} */
 	public function hasTabContent() {
-		global $SEARCH_SPIDER;
-
-		return !$SEARCH_SPIDER;
+		return !Auth::isSearchEngine();
 	}
 
 	/** {@inheritdoc} */

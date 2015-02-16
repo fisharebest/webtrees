@@ -422,7 +422,7 @@ Zend_Session::start($cfg);
 // and problems with servers that have enabled “register_globals”.
 $WT_SESSION = new Zend_Session_Namespace('WEBTREES');
 
-if (!$SEARCH_SPIDER && !$WT_SESSION->initiated) {
+if (!Auth::isSearchEngine() && !$WT_SESSION->initiated) {
 	// A new session, so prevent session fixation attacks by choosing a new PHPSESSID.
 	Zend_Session::regenerateId();
 	$WT_SESSION->initiated = true;
@@ -541,7 +541,7 @@ if (WT_TIMESTAMP - $WT_SESSION->activity_time > 300) {
 // Set the theme
 if (substr(WT_SCRIPT_NAME, 0, 5) === 'admin' || WT_SCRIPT_NAME === 'module.php' && substr(Filter::get('mod_action'), 0, 5) === 'admin') {
 	// Administration scripts begin with “admin” and use a special administration theme
-	Theme::theme(new AdministrationTheme)->init($WT_SESSION, $SEARCH_SPIDER, $WT_TREE);
+	Theme::theme(new AdministrationTheme)->init($WT_SESSION, $WT_TREE);
 } else {
 	if (Site::getPreference('ALLOW_USER_THEMES')) {
 		// Requested change of theme?
@@ -574,7 +574,7 @@ if (substr(WT_SCRIPT_NAME, 0, 5) === 'admin' || WT_SCRIPT_NAME === 'module.php' 
 	}
 	foreach (Theme::installedThemes() as $theme) {
 		if ($theme->themeId() === $theme_id) {
-			Theme::theme($theme)->init($WT_SESSION, $SEARCH_SPIDER, $WT_TREE);
+			Theme::theme($theme)->init($WT_SESSION, $WT_TREE);
 		}
 	}
 
@@ -583,14 +583,14 @@ if (substr(WT_SCRIPT_NAME, 0, 5) === 'admin' || WT_SCRIPT_NAME === 'module.php' 
 }
 
 // Page hit counter - load after theme, as we need theme formatting
-if ($WT_TREE && $WT_TREE->getPreference('SHOW_COUNTER') && !$SEARCH_SPIDER) {
+if ($WT_TREE && $WT_TREE->getPreference('SHOW_COUNTER') && !Auth::isSearchEngine()) {
 	require WT_ROOT . 'includes/hitcount.php';
 } else {
 	$hitCount = '';
 }
 
 // Search engines are only allowed to see certain pages.
-if ($SEARCH_SPIDER && !in_array(WT_SCRIPT_NAME, array(
+if (Auth::isSearchEngine() && !in_array(WT_SCRIPT_NAME, array(
 	'index.php', 'indilist.php', 'module.php', 'mediafirewall.php',
 	'individual.php', 'family.php', 'mediaviewer.php', 'note.php', 'repo.php', 'source.php',
 ))) {
