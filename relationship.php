@@ -139,13 +139,13 @@ if ($person1 && $person2) {
 				case 'bro':
 				case 'sis':
 				case 'sib':
-					$table[$x+1][$y] = '<div style="background:url(' . Theme::theme()->parameter('image-hline') . ') repeat-x center; width: 65px; text-align: center"><span style="background: #fff;">' . get_relationship_name_from_path($relationships[$n], Individual::getInstance($path[$n - 1]), Individual::getInstance($path[$n + 1])) . $horizontal_arrow . '</span></div>';
+					$table[$x + 1][$y] = '<div style="background:url(' . Theme::theme()->parameter('image-hline') . ') repeat-x center; width: 65px; text-align: center"><span style="background: #fff;">' . get_relationship_name_from_path($relationships[$n], Individual::getInstance($path[$n - 1]), Individual::getInstance($path[$n + 1])) . $horizontal_arrow . '</span></div>';
 					$x += 2;
 					break;
 				case 'son':
 				case 'dau':
 				case 'chi':
-					if ($n > 2 && preg_match('/fat|mot|par/', $relationships[$n-2])) {
+					if ($n > 2 && preg_match('/fat|mot|par/', $relationships[$n - 2])) {
 						$table[$x + 1][$y - 1] = '<div style="background:url(' . Theme::theme()->parameter('image-dline2') . '); width: 65px; height: 50px; padding-top: 15px;"><div style="text-align: center; background: #fff;">' . get_relationship_name_from_path($relationships[$n], Individual::getInstance($path[$n - 1]), Individual::getInstance($path[$n + 1])) . $down_arrow . '</div></div>';
 						$x += 2;
 					} else {
@@ -157,7 +157,7 @@ if ($person1 && $person2) {
 				case 'fat':
 				case 'mot':
 				case 'par':
-					if ($n > 2 && preg_match('/son|dau|chi/', $relationships[$n-2])) {
+					if ($n > 2 && preg_match('/son|dau|chi/', $relationships[$n - 2])) {
 						$table[$x + 1][$y + 1] = '<div style="background:url(' . Theme::theme()->parameter('image-dline') . '); width: 65px; height: 65px; padding-top: 15px;"><div style="text-align: center; background: #fff;">' . get_relationship_name_from_path($relationships[$n], Individual::getInstance($path[$n - 1]), Individual::getInstance($path[$n + 1])) . $up_arrow . '</div></div>';
 						$x += 2;
 					} else {

@@ -131,7 +131,7 @@ class AdvancedSearchController extends SearchController {
 				$ofields[] = $fact;
 			}
 		}
-		$fields=array();
+		$fields = array();
 		foreach ($ofields as $field) {
 			$fields[$field] = WT_Gedcom_Tag::GetLabel($field);
 		}

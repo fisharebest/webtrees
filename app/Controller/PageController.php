@@ -74,7 +74,7 @@ class PageController extends BaseController {
 	/**
 	 * What is the preferred URL for this page?
 	 *
-	 * @param $canonical_url
+	 * @param string $canonical_url
 	 *
 	 * @return $this
 	 */
