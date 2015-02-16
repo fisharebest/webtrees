@@ -30,7 +30,7 @@ $controller = new RelationshipController;
 $pid1       = Filter::get('pid1', WT_REGEX_XREF);
 $pid2       = Filter::get('pid2', WT_REGEX_XREF);
 $show_full  = Filter::getInteger('show_full', 0, 1, $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS'));
-$find_all   = Filter::getInteger('find_all', 0, 1);
+$find_all   = Filter::getBool('find_all');
 
 $person1 = Individual::getInstance($pid1);
 $person2 = Individual::getInstance($pid2);
@@ -87,7 +87,7 @@ if ($person1 && $person2) {
 			<td class="optionbox">
 				<label>
 					<input type="radio" name="find_all" value="0" <?php echo $find_all ? '' : 'checked'; ?>>
-					<?php echo I18N::translate('Find the shortest relationships'); ?>
+					<?php echo I18N::translate('Find the closest relationships'); ?>
 				</label>
 				<br>
 				<label>
@@ -113,8 +113,8 @@ if ($person1 && $person2) {
 	foreach ($paths as $path) {
 		// Extract the relationship names between pairs of individuals
 		$relationships = $controller->oldStyleRelationshipPath($path);
-		if (!$relationships) {
-			echo "<h3>private or error</h3>";
+		if (empty($relationships)) {
+			// Cannot see one of the families/individuals, due to privacy;
 			continue;
 		}
 		echo '<h3>', I18N::translate('Relationship: %s', get_relationship_name_from_path(implode('', $relationships), $person1, $person2)), '</h3>';
