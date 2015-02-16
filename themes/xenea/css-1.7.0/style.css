@@ -3396,15 +3396,6 @@ table.table-census-assistant th {
 	position: absolute;
 }
 
-/*-- Relationship ---- */
-#relationship-page h3 {
-	margin: 20px 0 0 20px;
-}
-
-#relationship_chart {
-	margin: 0 20px;
-}
-
 /*-- timeline  --*/
 #timeline_chart {
 	position: relative;

@@ -25,6 +25,7 @@
 	"require": {
 		"bombayworks/zendframework1": "*",
 		"ezyang/htmlpurifier": "*",
+		"fisharebest/algorithm": "*",
 		"fisharebest/ext-calendar": "*",
 		"ircmaxell/password-compat": "*",
 		"michelf/php-markdown": "*",
