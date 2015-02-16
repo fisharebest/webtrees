@@ -30,7 +30,7 @@ class IndividualController extends GedcomRecordController {
 	/**
 	 * Startup activity
 	 */
-	function __construct() {
+	public function __construct() {
 		global $WT_TREE;
 
 		$xref         = Filter::get('pid', WT_REGEX_XREF);

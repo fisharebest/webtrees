@@ -60,7 +60,7 @@ class ReportBaseFootnote extends ReportBaseElement {
 	/**
 	 * @param string $style
 	 */
-	function __construct($style = "") {
+	public function __construct($style = "") {
 		$this->text = "";
 		if (!empty($style)) {
 			$this->styleName = $style;

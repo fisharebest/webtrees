@@ -28,7 +28,7 @@ class ReportBaseHtml extends ReportBaseElement {
 	 * @param $tag
 	 * @param $attrs
 	 */
-	function __construct($tag, $attrs) {
+	public function __construct($tag, $attrs) {
 		$this->tag = $tag;
 		$this->attrs = $attrs;
 

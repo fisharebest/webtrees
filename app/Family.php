@@ -30,7 +30,7 @@ class Family extends GedcomRecord {
 	private $wife;
 
 	/** {@inheritdoc} */
-	function __construct($xref, $gedcom, $pending, $gedcom_id) {
+	public function __construct($xref, $gedcom, $pending, $gedcom_id) {
 		parent::__construct($xref, $gedcom, $pending, $gedcom_id);
 
 		// Fetch husband and wife

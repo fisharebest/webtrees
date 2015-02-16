@@ -28,7 +28,7 @@ class AdvancedSearchController extends SearchController {
 	/**
 	 * Startup activity
 	 */
-	function __construct() {
+	public function __construct() {
 		parent::__construct();
 
 		$this->setPageTitle(I18N::translate('Advanced search'));

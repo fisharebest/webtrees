@@ -48,7 +48,7 @@ class DescendancyController extends ChartController {
 	/**
 	 * Create the descendancy controller
 	 */
-	function __construct() {
+	public function __construct() {
 		global $bwidth, $bheight, $pbwidth, $pbheight, $WT_TREE, $show_full;
 
 		parent::__construct();

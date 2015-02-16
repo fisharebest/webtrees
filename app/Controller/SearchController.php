@@ -74,7 +74,7 @@ class SearchController extends PageController {
 	/**
 	 * Startup activity
 	 */
-	function __construct() {
+	public function __construct() {
 		global $WT_TREE;
 
 		parent::__construct();

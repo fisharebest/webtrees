@@ -34,7 +34,7 @@ class AncestryController extends ChartController {
 	/**
 	 * Startup activity
 	 */
-	function __construct() {
+	public function __construct() {
 		global $bwidth, $bheight, $pbwidth, $pbheight, $show_full;
 		global $PEDIGREE_GENERATIONS, $WT_TREE, $OLD_PGENS, $box_width, $Dbwidth, $Dbheight;
 

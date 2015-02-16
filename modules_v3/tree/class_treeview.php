@@ -28,7 +28,7 @@ class TreeView {
 	 *
 	 * @param string $name the name of the TreeView object’s instance
 	 */
-	function __construct($name = 'tree') {
+	public function __construct($name = 'tree') {
 		$this->name = $name;
 		$this->all_partners = Filter::cookie('allPartners', 'true|false', 'true');
 	}

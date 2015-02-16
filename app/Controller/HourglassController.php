@@ -48,7 +48,7 @@ class HourglassController extends ChartController {
 	 * @param integer $show_full
 	 * @param boolean $loadJS
 	 */
-	function __construct($rootid = '', $show_full = 1, $loadJS = true) {
+	public function __construct($rootid = '', $show_full = 1, $loadJS = true) {
 		global $bheight, $bwidth, $WT_TREE, $show_full;
 
 		parent::__construct();
