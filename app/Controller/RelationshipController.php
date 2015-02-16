@@ -27,9 +27,9 @@ class RelationshipController extends PageController {
 	 *
 	 * @param Individual $indi1
 	 * @param Individual $indi2
-	 * @param boolean    $all;
+	 * @param boolean    $all
 	 *
-	 * @return string[][];
+	 * @return string[][]
 	 */
 	public function calculateRelationships(Individual $individual1, Individual $individual2, $all) {
 		$rows = Database::prepare(
@@ -83,7 +83,7 @@ class RelationshipController extends PageController {
 	 *
 	 * @param string $path
 	 *
-	 * @return array();
+	 * @return string[]
 	 */
 	public function oldStyleRelationshipPath(array $path) {
 		$spouse_codes  = array('M' => 'hus', 'F' => 'wif', 'U' => 'spo');
