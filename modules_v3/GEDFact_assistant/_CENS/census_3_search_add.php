@@ -25,10 +25,10 @@ namespace Fisharebest\Webtrees;
 		<tr>
 			<td class="optionbox" >
 				<script>
-					function findindi(persid) {
+					function findindi() {
 						var findInput = document.getElementById('personid');
-							txt = findInput.value;
-						if (txt=="") {
+						var txt = findInput.value;
+						if (txt === "") {
 							alert("<?php echo I18N::translate('You must enter a name'); ?>");
 						} else {
 							var win02 = window.open(
@@ -1274,7 +1274,6 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 
 			//-- Get Spouse’s Children’s Name, DOB, DOD --------------------------
 			$marrdate = $family->getMarriageDate();
-			$is_wife = $family->getWife();
 			if (isset($children)) {
 				$chBLDarray = Array();
 				foreach ($children as $child) {
