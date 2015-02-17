@@ -334,7 +334,7 @@ class Tree {
 				" ORDER BY g.sort_order, 3"
 			)->execute(array(Auth::id(), Auth::id()))->fetchAll();
 			foreach ($rows as $row) {
-				self::$trees[] = new self($row->tree_id, $row->tree_name, $row->tree_title);
+				self::$trees[] = new self((int) $row->tree_id, $row->tree_name, $row->tree_title);
 			}
 		}
 
