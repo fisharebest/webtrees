@@ -108,14 +108,11 @@ namespace Fisharebest\Webtrees;
 							//-- Parents Husbands Details --------------------------------------
 							$married = Date::Compare($censdate, $marrdate);
 							$nam     = $gparent->getAllNames();
-							$fulln   = rtrim($nam[0]['givn'], '*') . ' ' . $nam[0]['surname'];
-							$fulln   = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-							$fulln   = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-							$givn    = rtrim($nam[0]['givn'], '*');
-							$surn    = $nam[0]['surname'];
-							for ($i = 0; $i < count($nam); $i++) {
-								if ($nam[$i]['type'] == '_MARNM') {
-									$fulmn = rtrim($nam[$i]['givn'], '*') . ' ' . $nam[$i]['surname'];
+							$fulln   = strip_tags($nam[0]['full']);
+							$fulmn   = $fulln;
+							foreach ($nam as $n) {
+								if ($n['type'] === '_MARNM') {
+									$fulmn = strip_tags($n['full']);
 								}
 							}
 							$label = get_close_relationship_name($person, $gparent);
@@ -137,65 +134,37 @@ namespace Fisharebest\Webtrees;
 									?>
 								</td>
 								<td align="left" class="facts_value nowrap">
-									<a href='#' onclick='insertRowToTable("<?php
-											echo $gparent->getXref(); // pid = PID
-										?>", "<?php
-											echo Filter::escapeHtml($fulln); // nam = Full Name
-										?>", "<?php
-											if (isset($fulmn)) {
-												echo Filter::escapeHtml($fulln); // mnam = Full Married Name
-											} else {
-												echo Filter::escapeHtml($fulln); // mnam = Full Name
-											}
-										?>", "<?php
-											if ($person === $gparent) {
-												echo 'head';
-											} else {
-												echo Filter::escapeHtml($label);
-											}
-										?>", "<?php
-											echo $gparent->getSex(); // gend = Gender
-										?>", "<?php
-											if ($married >= 0) {
-												echo "M"; // cond = Condition (Married)
-											} else {
-												echo "S"; // cond = Condition (Single)
-											}
-										?>", "<?php
-											if ($marrdate) {
-												echo ($marrdate->minJD() + $marrdate->maxJD()) / 2; // dom = Date of Marriage (Julian)
-											}
-										?>", "<?php
-											echo ($gparent->getBirthDate()->minJD() + $gparent->getBirthDate()->maxJD()) / 2; // dob = Date of Birth (Julian)
-										?>", "<?php
-											echo $censyear - $gparent->getbirthyear(); // age = Census Date minus YOB
-										?>", "<?php
-											echo ($gparent->getDeathDate()->minJD() + $gparent->getDeathDate()->maxJD()) / 2; // dod = Date of Death (Julian)
-										?>", "<?php
-											echo ""; // occu = Occupation
-										?>", "<?php
-											echo Filter::escapeHtml($gparent->getBirthPlace()); //  birthpl = Husband Place of Birth
-										?>", "<?php
-											if (isset($HusbFBP)) {
+									<a href='#' onclick='return insertRowToTable(
+										"<?php echo $gparent->getXref(); /* pid = PID */ ?>",
+										"<?php echo $fulln; /* nam = Full Name */ ?>",
+										"<?php echo $fulmn; /* mnam = Full Married Name */ ?>",
+										"<?php echo $person === $gparent ? 'head': Filter::escapeHtml($label); ?>",
+										"<?php echo $gparent->getSex(); /* gend = Gender */ ?>",
+										"<?php echo $married >= 0 ? 'M' : 'S'; /* cond = Condition (Married) (Single) */ ?>",
+										"<?php echo $marrdate->JD(); ?>",
+										"<?php echo $gparent->getBirthDate()->JD(); ?>",
+										"<?php echo $censyear - $gparent->getbirthyear(); ?>",
+										"<?php echo $gparent->getDeathDate()->JD(); ?>",
+										"",
+										"<?php echo Filter::escapeHtml($gparent->getBirthPlace()); ?>",
+										"<?php if (isset($HusbFBP)) {
 												echo Filter::escapeHtml($HusbFBP); // fbirthpl = Husband Father’s Place of Birth
 											} else {
 												echo 'UNK, UNK, UNK, UNK'; // fbirthpl = Husband Father’s Place of Birth Not known
-											}
-										?>", "<?php
-											if (isset($HusbMBP)) {
+											} ?>",
+										"<?php if (isset($HusbMBP)) {
 												echo Filter::escapeHtml($HusbMBP); // mbirthpl = Husband Mother’s Place of Birth
 											} else {
 												echo 'UNK, UNK, UNK, UNK'; // mbirthpl = Husband Mother’s Place of Birth Not known
-											}
-										?>", "<?php
-											if (isset($chBLDarray) && $gparent->getSex() == "F") {
+											} ?>",
+										"<?php
+											if (isset($chBLDarray) && $gparent->getSex() === 'F') {
 												$chBLDarray = implode("::", $chBLDarray);
 												echo $chBLDarray; // Array of Children (name, birthdate, deathdate)
 											}
-										?>");'>
-										<?php
-											echo $gparent->getFullName(); // Full Name (Link)
-										?>
+										?>"
+									);'>
+										<?php echo $gparent->getFullName(); ?>
 									</a>
 								</td>
 							</tr>
@@ -218,25 +187,11 @@ namespace Fisharebest\Webtrees;
 							//-- Wifes Details --------------------------------------
 							$married = Date::Compare($censdate, $marrdate);
 							$nam     = $gparent->getAllNames();
-							$fulln   = rtrim($nam[0]['givn'], '*') . ' ' . $nam[0]['surname'];
-							$fulln   = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-							$fulln   = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-							$givn    = rtrim($nam[0]['givn'], '*');
-							$surn    = $nam[0]['surname'];
-							$husbnam = null;
-							// Get wifes married name if available
-							if ($cfamily && $cfamily->getHusband()) {
-								$husbnams = $cfamily->getHusband()->getAllNames();
-								if ($husbnams[0]['surname'] == "@N.N." || $husbnams[0]['surname'] == "") {
-									// if Husband or his name is not known then use wifes birth name
-									$husbnam = $nam[0]['surname'];
-								} else {
-									$husbnam = $husbnams[0]['surname'];
-								}
-							}
-							for ($i = 0; $i < count($nam); $i++) {
-								if ($nam[$i]['type'] == '_MARNM') {
-									$fulmn = rtrim($nam[$i]['givn'], '*') . ' ' . $husbnam;
+							$fulln   = strip_tags($nam[0]['full']);
+							$fulmn   = $fulln;
+							foreach ($nam as $n) {
+								if ($n['type'] === '_MARNM') {
+									$fulmn = strip_tags($n['full']);
 								}
 							}
 							$label = get_close_relationship_name($person, $gparent);
@@ -257,65 +212,35 @@ namespace Fisharebest\Webtrees;
 									?>
 								</td>
 								<td align="left" class="facts_value nowrap">
-									<a href='#' onclick='insertRowToTable("<?php
-											echo $gparent->getXref();
-										?>", "<?php
-											echo Filter::escapeHtml($fulln); // nam = Full Name
-										?>", "<?php
-											if (isset($fulmn)) {
-												echo Filter::escapeHtml($fulmn); // mnam = Full Married Name
-											} else {
-												echo Filter::escapeHtml($fulln); // mnam = Full Name
-											}
-										?>", "<?php
-											if ($person === $gparent) {
-												echo 'head';
-											} else {
-												echo Filter::escapeHtml($label);
-											}
-										?>", "<?php
-											echo $gparent->getSex(); // gend = Gender
-										?>", "<?php
-											if ($married >= 0 && isset($nam[1])) {
-												echo "M"; // cond = Condition (Married)
-											} else {
-												echo "S"; // cond = Condition (Single)
-											}
-										?>", "<?php
-											if ($marrdate) {
-												echo ($marrdate->minJD() + $marrdate->maxJD()) / 2; // dom = Date of Marriage (Julian)
-											}
-										?>", "<?php
-											echo ($gparent->getBirthDate()->minJD() + $gparent->getBirthDate()->maxJD()) / 2; // dob = Date of Birth (Julian)
-										?>", "<?php
-											echo $censyear - $gparent->getbirthyear(); // age = Census Date minus YOB
-										?>", "<?php
-											echo ($gparent->getDeathDate()->minJD() + $gparent->getDeathDate()->maxJD()) / 2; // dod = Date of Death (Julian)
-										?>", "<?php
-											echo ""; // occu = Occupation
-										?>", "<?php
-											echo Filter::escapeHtml($gparent->getBirthPlace()); //  birthpl = Wife Place of Birth
-										?>", "<?php
-											if (isset($WifeFBP)) {
+									<a href='#' onclick='return insertRowToTable(
+										"<?php echo $gparent->getXref(); ?>",
+										"<?php echo $fulln; ?>",
+										"<?php echo $fulmn; ?>",
+										"<?php echo $person === $gparent ? 'head': Filter::escapeHtml($label); ?>",
+										"<?php echo $gparent->getSex(); ?>",
+										"<?php echo $married >= 0 && isset($nam[1]) ? 'M' : 'S'; ?>",
+										"<?php echo $marrdate->JD(); ?>",
+										"<?php echo $gparent->getBirthDate()->JD(); ?>",
+										"<?php echo $censyear - $gparent->getbirthyear(); ?>",
+										"<?php echo $gparent->getDeathDate()->JD(); ?>",
+										"",
+										"<?php echo Filter::escapeHtml($gparent->getBirthPlace()); ?>",
+										"<?php if (isset($WifeFBP)) {
 												echo Filter::escapeHtml($WifeFBP); // fbirthpl = Wife Father’s Place of Birth
 											} else {
 												echo 'UNK, UNK, UNK, UNK'; // fbirthpl = Wife Father’s Place of Birth Not known
-											}
-										?>", "<?php
-											if (isset($WifeMBP)) {
+											} ?>",
+										"<?php if (isset($WifeMBP)) {
 												echo Filter::escapeHtml($WifeMBP); // mbirthpl = Wife Mother’s Place of Birth
 											} else {
 												echo 'UNK, UNK, UNK, UNK'; // mbirthpl = Wife Mother’s Place of Birth Not known
-											}
-										?>", "<?php
-											if (isset($chBLDarray) && $gparent->getSex() == "F") {
+											} ?>",
+										"<?php if (isset($chBLDarray) && $gparent->getSex() === 'F') {
 												$chBLDarray = implode("::", $chBLDarray);
 												echo $chBLDarray; // Array of Children (name, birthdate, deathdate)
-											}
-										?>");'>
-										<?php
-											echo $gparent->getFullName(); // Full Name (Link)
-										?>
+											} ?>"
+									);'>
+										<?php echo $gparent->getFullName(); ?>
 									</a>
 								</td>
 							</tr>
@@ -323,45 +248,36 @@ namespace Fisharebest\Webtrees;
 						}
 
 						//-- Parents Children -------------------
-
 						//-- Parent’s Children’s Details --------------------------------------
 						foreach ($family->getChildren() as $child) {
-
 							// Get Child’s Children’s Name DOB DOD ----
 							$chBLDarray = Array();
 							foreach ($child->getSpouseFamilies() as $childfamily) {
 								$chchildren = $childfamily->getChildren();
 								foreach ($chchildren as $chchild) {
 									$chnam   = $chchild->getAllNames();
-									$chfulln = rtrim($chnam[0]['givn'], '*') . " " . $chnam[0]['surname'];
-									$chfulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $chfulln);
-									$chfulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $chfulln);
-									$chfulln = Filter::escapeHtml($chfulln); // Child’s Full Name// Child’s Full Name
-									$chdob   = ($chchild->getBirthDate()->minJD() + $chchild->getBirthDate()->maxJD()) / 2; // Child’s Date of Birth (Julian)
-									$chdod   = ($chchild->getDeathDate()->minJD() + $chchild->getDeathDate()->maxJD()) / 2; // Child’s Date of Death (Julian)
+									$chfulln = strip_tags($chnam[0]['full']); // Child’s Full Name
+									$chdob   = $chchild->getBirthDate()->JD(); // Child’s Date of Birth (Julian)
+									$chdod   = $chchild->getDeathDate()->JD(); // Child’s Date of Death (Julian)
 									$chBLD   = ($chfulln . ", " . $chdob . ", " . $chdod);
 									array_push($chBLDarray, $chBLD);
 								}
 							}
 
 							// Get child’s marriage status ----
-							$married = "";
-							$marrdate = "";
+							$married = '';
+							$marrdate = '';
 							foreach ($child->getSpouseFamilies() as $childfamily) {
 								$marrdate = $childfamily->getMarriageDate();
 								$married = Date::Compare($censdate, $marrdate);
 							}
 							$nam   = $child->getAllNames();
-							$fulln = rtrim($nam[0]['givn'], '*') . ' ' . $nam[0]['surname'];
-							$fulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-							$fulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-							$givn  = rtrim($nam[0]['givn'], '*');
-							$surn  = $nam[0]['surname'];
-							$chfulmn = null;
+							$fulln = strip_tags($nam[0]['full']);
+							$chfulmn = $fulln;
 							$chnam = $child->getAllNames();
-							for ($i = 0; $i < count($nam); $i++) {
-								if ($chnam[$i]['type'] == '_MARNM') {
-									$chfulmn = rtrim($chnam[$i]['givn'], '*') . ' ' . $chnam[$i]['surname'];
+							foreach ($chnam as $n) {
+								if ($n['type'] === '_MARNM') {
+									$chfulmn = strip_tags($n['full']);
 								}
 							}
 							$label = get_close_relationship_name($person, $child);
@@ -383,74 +299,36 @@ namespace Fisharebest\Webtrees;
 									?>
 								</td>
 								<td align="left" class="facts_value nowrap">
-									<?php
-									if (($child->canShow())) {
-										?>
-										<a href='#' onclick='insertRowToTable("<?php
-												echo $child->getXref(); // pid = PID
-											?>", "<?php
-												echo Filter::escapeHtml($fulln); // nam = Full Name
-											?>", "<?php
-												if (isset($chfulmn)) {
-													echo Filter::escapeHtml($chfulmn); // mnam = Full Married Name
-												} else {
-													echo Filter::escapeHtml($fulln); // mnam = Full Name
-												}
-											?>", "<?php
-											if ($person === $child) {
-												echo 'head';
+									<a href='#' onclick='return insertRowToTable(
+										"<?php echo $child->getXref(); /* pid = PID */ ?>",
+										"<?php echo $fulln; /* nam = Full Name */ ?>",
+										"<?php echo $chfulmn; /* mnam = Full Married Name */ ?>",
+										"<?php echo $person === $child ? 'head' : Filter::escapeHtml($label); ?>",
+										"<?php echo $child->getSex(); ?>",
+										"<?php echo $married >= 0 ? 'M' : 'S'; ?>",
+										"<?php echo $marrdate ? $marrdate->JD() : ''; ?>",
+										"<?php echo $child->getBirthDate()->JD(); ?>",
+										"<?php echo $censyear - $child->getbirthyear(); ?>",
+										"<?php echo $child->getDeathDate()->JD(); ?>",
+										"",
+										"<?php echo Filter::escapeHtml($child->getBirthPlace()); ?>",
+										"<?php if ($family->getHusband()) {
+												echo Filter::escapeHtml($family->getHusband()->getBirthPlace()); // fbirthpl = Child Father’s Place of Birth
 											} else {
-												echo Filter::escapeHtml($label);
-											}
-											?>", "<?php
-												echo $child->getSex(); // gend = Gender
-											?>", "<?php
-												if ($married > 0) {
-													echo "M"; // cond = Condition (Married)
-												} else if ($married < 0 || ($married == "0")) {
-													echo "S"; // cond = Condition (Single)
-												}
-											?>", "<?php
-												if ($marrdate) {
-													echo ($marrdate->minJD() + $marrdate->maxJD()) / 2; // dom = Date of Marriage (Julian)
-												}
-											?>", "<?php
-												echo ($child->getBirthDate()->minJD() + $child->getBirthDate()->maxJD()) / 2; // dob = Date of Birth (Julian)
-											?>", "<?php
-												echo $censyear - $child->getbirthyear(); // age = Census Date minus YOB
-											?>", "<?php
-												echo ($child->getDeathDate()->minJD() + $child->getDeathDate()->maxJD()) / 2; // dod = Date of Death (Julian)
-											?>", "<?php
-												echo ""; // occu = Occupation
-											?>", "<?php
-												echo Filter::escapeHtml($child->getBirthPlace()); //  birthpl = Child Place of Birt
-											?>", "<?php
-												if ($family->getHusband()) {
-													echo Filter::escapeHtml($family->getHusband()->getBirthPlace()); // fbirthpl = Child Father’s Place of Birth
-												} else {
-													echo 'UNK, UNK, UNK, UNK'; // fbirthpl = Child Father’s Place of Birth Not known
-												}
-											?>", "<?php
-												if ($family->getWife()) {
-													echo Filter::escapeHtml($family->getWife()->getBirthPlace()); // mbirthpl = Child Mother’s Place of Birth
-												} else {
-													echo 'UNK, UNK, UNK, UNK'; // mbirthpl = Child Mother’s Place of Birth Not known
-												}
-											?>", "<?php
-												if (isset($chBLDarray) && $child->getSex() == "F") {
-													$chBLDarray = implode("::", $chBLDarray);
-													echo $chBLDarray; // Array of Children (name, birthdate, deathdate)
-												}
-											?>");'>
-											<?php
-												echo $child->getFullName(); // Full Name (Link)
-											?>
-										</a>
-										<?php
-									} else {
-											echo I18N::translate('Private');
-									}
-									?>
+												echo 'UNK, UNK, UNK, UNK'; // fbirthpl = Child Father’s Place of Birth Not known
+											} ?>",
+										"<?php if ($family->getWife()) {
+												echo Filter::escapeHtml($family->getWife()->getBirthPlace()); // mbirthpl = Child Mother’s Place of Birth
+											} else {
+												echo 'UNK, UNK, UNK, UNK'; // mbirthpl = Child Mother’s Place of Birth Not known
+											} ?>",
+										"<?php if (isset($chBLDarray) && $child->getSex() === 'F') {
+												$chBLDarray = implode("::", $chBLDarray);
+												echo $chBLDarray; // Array of Children (name, birthdate, deathdate)
+											} ?>"
+									);'>
+										<?php echo $child->getFullName(); ?>
+									</a>
 								</td>
 							</tr>
 							<?php
@@ -458,11 +336,9 @@ namespace Fisharebest\Webtrees;
 					}
 
 					//-- Step families ---------------------------------------------------------
-
 					//-- Build step families ---------------------------------------------------
 					foreach ($person->getChildStepFamilies() as $family) {
 						$marrdate = $family->getMarriageDate();
-
 						//-- Get Children’s Name, DOB, DOD --------------------------
 						$chBLDarray = Array();
 						foreach ($family->getChildren() as $child) {
@@ -471,8 +347,8 @@ namespace Fisharebest\Webtrees;
 							$chfulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $chfulln);
 							$chfulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $chfulln);
 							$chfulln = Filter::escapeHtml($chfulln); // Child’s Full Name
-							$chdob   = ($child->getBirthDate()->minJD() + $child->getBirthDate()->maxJD()) / 2; // Child’s Date of Birth (Julian)
-							$chdod   = ($child->getDeathDate()->minJD() + $child->getDeathDate()->maxJD()) / 2; // Child’s Date of Death (Julian)
+							$chdob   = $child->getBirthDate()->JD(); // Child’s Date of Birth (Julian)
+							$chdod   = $child->getDeathDate()->JD(); // Child’s Date of Death (Julian)
 							$chBLD   = ($chfulln . ", " . $chdob . ", " . $chdod);
 							array_push($chBLDarray, $chBLD);
 						}
@@ -485,21 +361,22 @@ namespace Fisharebest\Webtrees;
 							foreach ($gparent->getChildFamilies() as $cfamily) {
 								$phusb = $cfamily->getHusband();
 								$pwife = $cfamily->getWife();
-								if ($phusb) { $HusbFBP = $phusb->getBirthPlace(); }
-								if ($pwife) { $HusbMBP = $pwife->getBirthPlace(); }
+								if ($phusb) {
+									$HusbFBP = $phusb->getBirthPlace();
+								}
+								if ($pwife) {
+									$HusbMBP = $pwife->getBirthPlace();
+								}
 							}
 
 							//-- Step Husbands Details --------------------------------------
 							$married = Date::Compare($censdate, $marrdate);
 							$nam   = $gparent->getAllNames();
-							$fulln = rtrim($nam[0]['givn'], '*') . ' ' . $nam[0]['surname'];
-							$fulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-							$fulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-							$givn  = rtrim($nam[0]['givn'], '*');
-							$surn  = $nam[0]['surname'];
-							for ($i = 0; $i < count($nam); $i++) {
-								if ($nam[$i]['type'] == '_MARNM') {
-									$fulmn = rtrim($nam[$i]['givn'], '*') . ' ' . $nam[$i]['surname'];
+							$fulln = strip_tags($nam[0]['full']);
+							$fulmn = $fulln;
+							foreach ($nam as $n) {
+								if ($n['type'] === '_MARNM') {
+									$fulmn = strip_tags($n['full']);
 								}
 							}
 							$label = get_close_relationship_name($person, $gparent);
@@ -507,8 +384,16 @@ namespace Fisharebest\Webtrees;
 							print_pedigree_person_nav_cens($gparent->getXref(), $label, $censyear);
 							$submenu = new Menu($parentlinks);
 							$menu->addSubmenu($submenu);
-							if ($gparent->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $gparent->getDeathYear(); }
-							if ($gparent->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $gparent->getBirthYear(); }
+							if ($gparent->getDeathYear() == 0) {
+								$DeathYr = '';
+							} else {
+								$DeathYr = $gparent->getDeathYear();
+							}
+							if ($gparent->getBirthYear() == 0) {
+								$BirthYr = '';
+							} else {
+								$BirthYr = $gparent->getBirthYear();
+							}
 							?>
 							<tr>
 								<td align="left" class="linkcell optionbox">
@@ -522,65 +407,35 @@ namespace Fisharebest\Webtrees;
 									?>
 								</td>
 								<td align="left" class="facts_value nowrap">
-									<a href='#' onclick='insertRowToTable("<?php
-											echo $gparent->getXref(); // pid = PID
-										?>", "<?php
-											echo Filter::escapeHtml($fulln); // nam = Full Name
-										?>", "<?php
-											if (isset($fulmn)) {
-												echo Filter::escapeHtml($fulln); // mnam = Full Married Name
-											} else {
-												echo Filter::escapeHtml($fulln); // mnam = Full Name
-											}
-										?>", "<?php
-											if ($person === $gparent) {
-												echo 'head';
-											} else {
-												echo Filter::escapeHtml($label);
-											}
-										?>", "<?php
-											echo $gparent->getSex(); // gend = Gender
-										?>", "<?php
-											if ($married >= 0) {
-												echo "M"; // cond = Condition (Married)
-											} else {
-												echo "S"; // cond = Condition (Single)
-											}
-										?>", "<?php
-											if ($marrdate) {
-												echo ($marrdate->minJD() + $marrdate->maxJD()) / 2; // dom = Date of Marriage (Julian)
-											}
-										?>", "<?php
-											echo ($gparent->getBirthDate()->minJD() + $gparent->getBirthDate()->maxJD()) / 2; // dob = Date of Birth (Julian)
-										?>", "<?php
-											echo $censyear - $gparent->getbirthyear(); // age = Census Date minus YOB
-										?>", "<?php
-											echo ($gparent->getDeathDate()->minJD() + $gparent->getDeathDate()->maxJD()) / 2; // dod = Date of Death (Julian)
-										?>", "<?php
-											echo ""; // occu = Occupation
-										?>", "<?php
-											echo Filter::escapeHtml($gparent->getBirthPlace()); //  birthpl = Step Husband Place of Birth
-										?>", "<?php
-											if (isset($HusbFBP)) {
+									<a href='#' onclick='return insertRowToTable(
+										"<?php echo $gparent->getXref(); ?>",
+										"<?php echo $fulln; ?>",
+										"<?php echo $fulmn; ?>",
+										"<?php echo $person === $gparent ? 'head': Filter::escapeHtml($label); ?>",
+										"<?php echo $gparent->getSex(); ?>",
+										"<?php echo $married >= 0 ? 'M': 'S'; ?>",
+										"<?php echo $marrdate ? $marrdate->JD() : ''; ?>",
+										"<?php echo $gparent->getBirthDate()->JD(); ?>",
+										"<?php echo $censyear - $gparent->getbirthyear(); ?>",
+										"<?php echo $gparent->getDeathDate()->JD();?>",
+										"",
+										"<?php echo Filter::escapeHtml($gparent->getBirthPlace()); ?>",
+										"<?php if (isset($HusbFBP)) {
 												echo Filter::escapeHtml($HusbFBP); // fbirthpl = Step Husband Father’s Place of Birth
 											} else {
 												echo 'UNK, UNK, UNK, UNK'; // fbirthpl = Step Husband Father’s Place of Birth Not known
-											}
-										?>", "<?php
-											if (isset($HusbMBP)) {
+											} ?>",
+										"<?php if (isset($HusbMBP)) {
 												echo Filter::escapeHtml($HusbMBP); // mbirthpl = Step Husband Mother’s Place of Birth
 											} else {
 												echo 'UNK, UNK, UNK, UNK'; // mbirthpl = Step Husband Mother’s Place of Birth Not known
-											}
-										?>", "<?php
-											if (isset($chBLDarray) && $gparent->getSex() == "F") {
+											} ?>",
+										"<?php if (isset($chBLDarray) && $gparent->getSex() === 'F') {
 												$chBLDarray = implode("::", $chBLDarray);
 												echo $chBLDarray; // Array of Children (name, birthdate, deathdate)
-											}
-										?>");'>
-										<?php
-											echo $gparent->getFullName(); // Full Name (Link)
-										?>
+											} ?>"
+									);'>
+										<?php echo $gparent->getFullName(); ?>
 									</a>
 								</td>
 							</tr>
@@ -603,34 +458,21 @@ namespace Fisharebest\Webtrees;
 							//-- Step Wifes Details --------------------------------------
 							$married = Date::Compare($censdate, $marrdate);
 							$nam   = $gparent->getAllNames();
-							$fulln = rtrim($nam[0]['givn'], '*') . ' ' . $nam[0]['surname'];
-							$fulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-							$fulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-							$givn  = rtrim($nam[0]['givn'], '*');
-							$surn  = $nam[0]['surname'];
-							$husbnam = null;
-							// Get wifes married name if available
-							if ($cfamily && $cfamily->getHusband()) {
-								$husbnams = $cfamily->getHusband()->getAllNames();
-								if ($husbnams[0]['surname'] == "@N.N." || $husbnams[0]['surname'] == "") {
-									// if Husband or his name is not known then use wifes birth name
-									$husbnam = $nam[0]['surname'];
-								} else {
-									$husbnam = $husbnams[0]['surname'];
+							$fulln = strip_tags($nam[0]['full']);
+							$fulmn = $fulln;
+							foreach ($nam as $n) {
+								if ($n['type'] === '_MARNM') {
+									$fulmn = strip_tags($n['full']);
 								}
 							}
-							for ($i = 0; $i < count($nam); $i++) {
-								if ($nam[$i]['type'] == '_MARNM') {
-									$fulmn = rtrim($nam[$i]['givn'], '*') . ' ' . $husbnam;
-								}
-							}
+
 							$label = get_close_relationship_name($person, $gparent);
 							$menu = new Menu($label);
 							print_pedigree_person_nav_cens($gparent->getXref(), $label, $censyear);
 							$submenu = new Menu($parentlinks);
 							$menu->addSubmenu($submenu);
-							if ($gparent->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $gparent->getDeathYear(); }
-							if ($gparent->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $gparent->getBirthYear(); }
+							if ($gparent->getDeathYear() == 0) { $DeathYr = ''; } else { $DeathYr = $gparent->getDeathYear(); }
+							if ($gparent->getBirthYear() == 0) { $BirthYr = ''; } else { $BirthYr = $gparent->getBirthYear(); }
 							?>
 							<tr>
 								<td align="left" class="linkcell optionbox">
@@ -644,65 +486,35 @@ namespace Fisharebest\Webtrees;
 									?>
 								</td>
 								<td align="left" class="facts_value nowrap">
-									<a href='#' onclick='insertRowToTable("<?php
-											echo $gparent->getXref(); // pid = PID
-										?>", "<?php
-											echo Filter::escapeHtml($fulln); // nam = Full Name
-										?>", "<?php
-											if (isset($fulmn)) {
-												echo Filter::escapeHtml($fulmn); // mnam = Full Married Name
-											} else {
-												echo Filter::escapeHtml($fulln); // mnam = Full Name
-											}
-										?>", "<?php
-											if ($person === $gparent) {
-												echo 'head';
-											} else {
-												echo Filter::escapeHtml($label);
-											}
-										?>", "<?php
-											echo $gparent->getSex(); // gend = Gender
-										?>", "<?php
-											if ($married >= 0 && isset($nam[1])) {
-												echo "M"; // cond = Condition (Married)
-											} else {
-												echo "S"; // cond = Condition (Single)
-											}
-										?>", "<?php
-											if ($marrdate) {
-												echo ($marrdate->minJD() + $marrdate->maxJD()) / 2; // dom = Date of Marriage (Julian)
-											}
-										?>", "<?php
-											echo ($gparent->getBirthDate()->minJD() + $gparent->getBirthDate()->maxJD()) / 2; // dob = Date of Birth (Julian)
-										?>", "<?php
-											echo $censyear - $gparent->getbirthyear(); // age = Census Date minus YOB
-										?>", "<?php
-											echo ($gparent->getDeathDate()->minJD() + $gparent->getDeathDate()->maxJD()) / 2; // dod = Date of Death (Julian)
-										?>", "<?php
-											echo ""; // occu = Occupation
-										?>", "<?php
-											echo Filter::escapeHtml($gparent->getBirthPlace()); //  birthpl = Step Wife Place of Birth
-										?>", "<?php
-											if (isset($WifeFBP)) {
+									<a href='#' onclick='return insertRowToTable(
+										"<?php echo $gparent->getXref(); ?>",
+										"<?php echo $fulln; ?>",
+										"<?php echo $fulmn; ?>",
+										"<?php echo $person === $gparent ? 'head': Filter::escapeHtml($label); ?>",
+										"<?php echo $gparent->getSex(); ?>",
+										"<?php echo $married >= 0 && isset($nam[1]) ? 'M': 'S'; ?>",
+										"<?php echo $marrdate ? $marrdate->JD() : ''; ?>",
+										"<?php echo $gparent->getBirthDate()->JD(); ?>",
+										"<?php echo $censyear - $gparent->getbirthyear(); ?>",
+										"<?php echo $gparent->getDeathDate()->JD(); ?>",
+										"",
+										"<?php echo Filter::escapeHtml($gparent->getBirthPlace());  ?>",
+										"<?php if (isset($WifeFBP)) {
 												echo Filter::escapeHtml($WifeFBP); // fbirthpl = Step Wife Father’s Place of Birth
 											} else {
 												echo 'UNK, UNK, UNK, UNK'; // fbirthpl = Step Wife Father’s Place of Birth Not known
-											}
-										?>", "<?php
-											if (isset($WifeMBP)) {
+											} ?>",
+										"<?php if (isset($WifeMBP)) {
 												echo Filter::escapeHtml($WifeMBP); // mbirthpl = Step Wife Mother’s Place of Birth
 											} else {
 												echo 'UNK, UNK, UNK, UNK'; // mbirthpl = Step Wife Mother’s Place of Birth Not known
-											}
-										?>", "<?php
-											if (isset($chBLDarray) && $gparent->getSex() == "F") {
+											} ?>",
+										"<?php if (isset($chBLDarray) && $gparent->getSex() === 'F') {
 												$chBLDarray = implode("::", $chBLDarray);
 												echo $chBLDarray; // Array of Children (name, birthdate, deathdate)
-											}
-										?>");'>
-										<?php
-											echo $gparent->getFullName(); // Full Name (Link)
-										?>
+											} ?>"
+									);'>
+										<?php echo $gparent->getFullName(); ?>
 									</a>
 								</td>
 							</tr>
@@ -730,16 +542,11 @@ namespace Fisharebest\Webtrees;
 							}
 
 							$nam   = $child->getAllNames();
-							$fulln = rtrim($nam[0]['givn'], '*') . ' ' . $nam[0]['surname'];
-							$fulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-							$fulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-							$givn  = rtrim($nam[0]['givn'], '*');
-							$surn  = $nam[0]['surname'];
-							$chfulmn = null;
-							$chnam = $child->getAllNames();
-							for ($i = 0; $i < count($nam); $i++) {
-								if ($chnam[$i]['type'] == '_MARNM') {
-									$chfulmn = rtrim($chnam[$i]['givn'], '*') . ' ' . $chnam[$i]['surname'];
+							$fulln = strip_tags($nam[0]['full']);
+							$chfulmn   = $fulln;
+							foreach ($nam as $n) {
+								if ($n['type'] === '_MARNM') {
+									$chfulmn = strip_tags($n['full']);
 								}
 							}
 							$label = get_close_relationship_name($person, $child);
@@ -747,8 +554,16 @@ namespace Fisharebest\Webtrees;
 							print_pedigree_person_nav_cens($child->getXref(), $label, $censyear);
 							$submenu = new Menu($spouselinks);
 							$menu->addSubmenu($submenu);
-							if ($child->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $child->getDeathYear(); }
-							if ($child->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $child->getBirthYear(); }
+							if ($child->getDeathYear() == 0) {
+								$DeathYr = '';
+							} else {
+								$DeathYr = $child->getDeathYear();
+							}
+							if ($child->getBirthYear() == 0) {
+								$BirthYr = '';
+							} else {
+								$BirthYr = $child->getBirthYear();
+							}
 							?>
 							<tr>
 								<td align="left" class="linkcell optionbox">
@@ -762,70 +577,38 @@ namespace Fisharebest\Webtrees;
 									?>
 								</td>
 								<td align="left" class="facts_value nowrap">
-									<?php
-									if (($child->canShow())) {
-									?>
-									<a href='#' onclick='insertRowToTable("<?php
-											echo $child->getXref(); // pid = PID
-										?>", "<?php
-											echo Filter::escapeHtml($fulln); // nam = Full Name
-										?>", "<?php
-											if (isset($chfulmn)) {
-												echo Filter::escapeHtml($chfulmn); // mnam = Full Married Name
-											} else {
-												echo Filter::escapeHtml($fulln); // mnam = Full Name
-											}
-										?>", "<?php
-											if ($person === $child) {
-												echo 'head';
-											} else {
-												echo Filter::escapeHtml($label);
-											}
-										?>", "<?php
-											echo $child->getSex(); // gend = Gender
-										?>", "<?php
-											echo ""; // cond = Condition (Married or Single)
-										?>", "<?php
-										if ($marrdate) {
-											echo ($marrdate->minJD() + $marrdate->maxJD()) / 2; // dom = Date of Marriage (Julian)
-										}
-										?>", "<?php
-											echo ($child->getBirthDate()->minJD() + $child->getBirthDate()->maxJD()) / 2; // dob = Date of Birth (Julian)
-										?>", "<?php
-											echo $censyear - $child->getbirthyear(); // age = Census Date minus YOB
-										?>", "<?php
-											echo ($child->getDeathDate()->minJD() + $child->getDeathDate()->maxJD()) / 2; // dod = Date of Death (Julian)
-										?>", "<?php
-											echo ""; // occu = Occupation
-										?>", "<?php
-											echo Filter::escapeHtml($child->getBirthPlace()); //  birthpl = Child Place of Birth
-										?>", "<?php
-											if ($family->getHusband()) {
+									<a href='#' onclick='return insertRowToTable(
+										"<?php echo $child->getXref(); ?>",
+										"<?php echo $fulln; ?>",
+										"<?php echo $chfulmn; ?>",
+										"<?php echo $person === $child ? 'head' : Filter::escapeHtml($label); ?>",
+										"<?php echo $child->getSex(); ?>",
+										"",
+										"<?php echo $marrdate ? $marrdate->JD() : ''; ?>",
+										"<?php echo $child->getBirthDate()->JD(); ?>",
+										"<?php echo $censyear - $child->getbirthyear(); ?>",
+										"<?php echo $child->getDeathDate()->JD(); ?>",
+										"",
+										"<?php echo Filter::escapeHtml($child->getBirthPlace()); ?>",
+										"<?php if ($family->getHusband()) {
 												echo Filter::escapeHtml($family->getHusband()->getBirthPlace()); // fbirthpl = Child Father’s Place of Birth
 											} else {
 												echo 'UNK, UNK, UNK, UNK'; // fbirthpl = Child Father’s Place of Birth Not known
-											}
-										?>", "<?php
-											if ($family->getWife()) {
+											} ?>",
+										"<?php if ($family->getWife()) {
 												echo Filter::escapeHtml($family->getWife()->getBirthPlace()); // mbirthpl = Child Mother’s Place of Birth
 											} else {
 												echo 'UNK, UNK, UNK, UNK'; // mbirthpl = Child Mother’s Place of Birth Not known
-											}
-										?>", "<?php
-											if (isset($chBLDarray) && $child->getSex() == "F") {
+											} ?>",
+										"<?php
+											if (isset($chBLDarray) && $child->getSex() === 'F') {
 												$chBLDarray = implode("::", $chBLDarray);
 												echo $chBLDarray; // Array of Children (name, birthdate, deathdate)
 											}
-										?>");'>
-										<?php
-											echo $child->getFullName(); // Full Name (Link)
-										?>
+										?>"
+									);'>
+										<?php echo $child->getFullName(); ?>
 									</a>
-									<?php
-									} else {
-										echo I18N::translate('Private');
-									}
-									?>
 								</td>
 							</tr>
 							<?php
@@ -860,21 +643,22 @@ namespace Fisharebest\Webtrees;
 							foreach ($gparent->getChildFamilies() as $cfamily) {
 								$phusb = $cfamily->getHusband();
 								$pwife = $cfamily->getWife();
-								if ($phusb) { $HusbFBP = $phusb->getBirthPlace(); }
-								if ($pwife) { $HusbMBP = $pwife->getBirthPlace(); }
+								if ($phusb) {
+									$HusbFBP = $phusb->getBirthPlace();
+								}
+								if ($pwife) {
+									$HusbMBP = $pwife->getBirthPlace();
+								}
 							}
 
 							//-- Spouse Husbands Details --------------------------------------
 							$married = Date::Compare($censdate, $marrdate);
 							$nam     = $gparent->getAllNames();
-							$fulln   = rtrim($nam[0]['givn'], '*') . ' ' . $nam[0]['surname'];
-							$fulln   = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-							$fulln   = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-							$givn    = rtrim($nam[0]['givn'], '*');
-							$surn    = $nam[0]['surname'];
-							for ($i = 0; $i < count($nam); $i++) {
-								if ($nam[$i]['type'] == '_MARNM') {
-									$fulmn = rtrim($nam[$i]['givn'], '*') . ' ' . $nam[$i]['surname'];
+							$fulln   = strip_tags($nam[0]['full']);
+							$fulmn   = $fulln;
+							foreach ($nam as $n) {
+								if ($n['type'] === '_MARNM') {
+									$fulmn = strip_tags($n['full']);
 								}
 							}
 							$label = get_close_relationship_name($person, $gparent);
@@ -882,8 +666,16 @@ namespace Fisharebest\Webtrees;
 							print_pedigree_person_nav_cens($gparent->getXref(), $label, $censyear);
 							$submenu = new Menu($parentlinks);
 							$menu->addSubmenu($submenu);
-							if ($gparent->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $gparent->getDeathYear(); }
-							if ($gparent->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $gparent->getBirthYear(); }
+							if ($gparent->getDeathYear() == 0) {
+								$DeathYr = '';
+							} else {
+								$DeathYr = $gparent->getDeathYear();
+							}
+							if ($gparent->getBirthYear() == 0) {
+								$BirthYr = '';
+							} else {
+								$BirthYr = $gparent->getBirthYear();
+							}
 							?>
 							<tr class="fact_value">
 								<td align="left" class="linkcell optionbox nowrap">
@@ -897,65 +689,34 @@ namespace Fisharebest\Webtrees;
 									?>
 								</td>
 								<td align="left" class="facts_value nowrap">
-									<a href='#' onclick='insertRowToTable("<?php
-											echo $gparent->getXref(); // pid = PID
-										?>", "<?php
-											echo Filter::escapeHtml($fulln); // nam = Full Name
-										?>", "<?php
-											if (isset($fulmn)) {
-												echo Filter::escapeHtml($fulln); // mnam = Full Married Name
-											} else {
-												echo Filter::escapeHtml($fulln); // mnam = Full Name
-											}
-										?>", "<?php
-											if ($person === $gparent) {
-												echo 'head';
-											} else {
-												echo Filter::escapeHtml($label);
-											}
-										?>", "<?php
-											echo $gparent->getSex(); // gend = Gender
-										?>", "<?php
-											if ($married >= 0) {
-												echo "M"; // cond = Condition (Married)
-											} else {
-												echo "S"; // cond = Condition (Single)
-											}
-										?>", "<?php
-											if ($marrdate) {
-												echo ($marrdate->minJD() + $marrdate->maxJD()) / 2; // dom = Date of Marriage (Julian)
-											}
-										?>", "<?php
-											echo ($gparent->getBirthDate()->minJD() + $gparent->getBirthDate()->maxJD()) / 2; // dob = Date of Birth (Julian)
-										?>", "<?php
-											echo $censyear - $gparent->getbirthyear(); // age = Census Date minus YOB
-										?>", "<?php
-											echo ($gparent->getDeathDate()->minJD() + $gparent->getDeathDate()->maxJD()) / 2; // dod = Date of Death (Julian)
-										?>", "<?php
-											echo ""; // occu = Occupation
-										?>", "<?php
-											echo Filter::escapeHtml($gparent->getBirthPlace()); //  birthpl = Husband Place of Birth
-										?>", "<?php
-											if (isset($HusbFBP)) {
+									<a href='#' onclick='return insertRowToTable(
+										"<?php echo $gparent->getXref(); ?>",
+										"<?php echo $fulmn; ?>",
+										"<?php echo $person === $gparent ? 'head' : Filter::escapeHtml($label); ?>",
+										"<?php echo $gparent->getSex(); ?>",
+										"<?php echo $married >= 0 ? 'M' : 'S'; ?>",
+										"<?php echo $marrdate ? $marrdate->JD() : ''; ?>",
+										"<?php echo $gparent->getBirthDate()->JD(); ?>",
+										"<?php echo $censyear - $gparent->getbirthyear(); ?>",
+										"<?php echo $gparent->getDeathDate()->JD(); ?>",
+										"",
+										"<?php echo Filter::escapeHtml($gparent->getBirthPlace());  ?>",
+										"<?php if (isset($HusbFBP)) {
 												echo Filter::escapeHtml($HusbFBP); // fbirthpl = Husband Father’s Place of Birth
 											} else {
 												echo 'UNK, UNK, UNK, UNK'; // fbirthpl = Husband Father’s Place of Birth Not known
-											}
-										?>", "<?php
-											if (isset($HusbMBP)) {
+											} ?>",
+										"<?php if (isset($HusbMBP)) {
 												echo Filter::escapeHtml($HusbMBP); // mbirthpl = Husband Mother’s Place of Birth
 											} else {
 												echo 'UNK, UNK, UNK, UNK'; // mbirthpl = Husband Mother’s Place of Birth Not known
-											}
-										?>", "<?php
-											if (isset($chBLDarray) && $gparent->getSex() == "F") {
+											} ?>",
+										"<?php if (isset($chBLDarray) && $gparent->getSex() === 'F') {
 												$chBLDarray = implode("::", $chBLDarray);
 												echo $chBLDarray; // Array of Children (name, birthdate, deathdate)
-											}
-										?>");'>
-										<?php
-											echo $gparent->getFullName(); // Full Name (Link)
-										?>
+											} ?>"
+									);'>
+										<?php echo $gparent->getFullName(); ?>
 									</a>
 								</td>
 							<tr>
@@ -971,32 +732,22 @@ namespace Fisharebest\Webtrees;
 							foreach ($gparent->getChildFamilies() as $cfamily) {
 								$husb = $cfamily->getHusband();
 								$wife = $cfamily->getWife();
-								if ($husb) { $WifeFBP = $husb->getBirthPlace(); }
-								if ($wife) { $WifeMBP = $wife->getBirthPlace(); }
+								if ($husb) {
+									$WifeFBP = $husb->getBirthPlace();
+								}
+								if ($wife) {
+									$WifeMBP = $wife->getBirthPlace();
+								}
 							}
 
 							//-- Spouse Wifes Details --------------------------------------
 							$married = Date::Compare($censdate, $marrdate);
 							$nam     = $gparent->getAllNames();
-							$fulln   = rtrim($nam[0]['givn'], '*') . ' ' . $nam[0]['surname'];
-							$fulln   = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-							$fulln   = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-							$givn    = rtrim($nam[0]['givn'], '*');
-							$surn    = $nam[0]['surname'];
-							$husbnam = null;
-							// Get wifes married name if available
-							if ($cfamily && $cfamily->getHusband()) {
-								$husbnams = $cfamily->getHusband()->getAllNames();
-								if ($husbnams[0]['surname'] == "@N.N." || $husbnams[0]['surname'] == "") {
-									// if Husband or his name is not known then use wifes birth name
-									$husbnam = $nam[0]['surname'];
-								} else {
-									$husbnam = $husbnams[0]['surname'];
-								}
-							}
-							for ($i = 0; $i < count($nam); $i++) {
-								if ($nam[$i]['type'] == '_MARNM') {
-									$fulmn = rtrim($nam[$i]['givn'], '*') . ' ' . $husbnam;
+							$fulln   = strip_tags($nam[0]['full']);
+							$fulmn   = $fulln;
+							foreach ($nam as $n) {
+								if ($n['type'] === '_MARNM') {
+									$fulmn = strip_tags($n['full']);
 								}
 							}
 							$label = get_close_relationship_name($person, $gparent);
@@ -1004,8 +755,16 @@ namespace Fisharebest\Webtrees;
 							print_pedigree_person_nav_cens($gparent->getXref(), $label, $censyear);
 							$submenu = new Menu($parentlinks);
 							$menu->addSubmenu($submenu);
-							if ($gparent->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $gparent->getDeathYear(); }
-							if ($gparent->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $gparent->getBirthYear(); }
+							if ($gparent->getDeathYear() == 0) {
+								$DeathYr = '';
+							} else {
+								$DeathYr = $gparent->getDeathYear();
+							}
+							if ($gparent->getBirthYear() == 0) {
+								$BirthYr = '';
+							} else {
+								$BirthYr = $gparent->getBirthYear();
+							}
 							?>
 							<tr>
 								<td align="left" class="linkcell optionbox nowrap">
@@ -1019,65 +778,35 @@ namespace Fisharebest\Webtrees;
 									?>
 								</td>
 								<td align="left" class="facts_value nowrap">
-									<a href='#' onclick='insertRowToTable("<?php
-											echo $gparent->getXref(); // pid = PID
-									?>", "<?php
-										echo Filter::escapeHtml($fulln); // nam = Full Name
-									?>", "<?php
-										if (isset($fulmn)) {
-											echo Filter::escapeHtml($fulmn); // mnam = Full Married Name
-										} else {
-											echo Filter::escapeHtml($fulln); // mnam = Full Name
-										}
-									?>", "<?php
-										if ($person === $gparent) {
-											echo 'head';
-										} else {
-											echo Filter::escapeHtml($label);
-										}
-									?>", "<?php
-										echo $gparent->getSex(); // gend = Gender
-									?>", "<?php
-										if ($married >= 0 && isset($nam[1])) {
-											echo "M"; // cond = Condition (Married)
-										} else {
-											echo "S"; // cond = Condition (Single)
-										}
-									?>", "<?php
-										if ($marrdate) {
-											echo ($marrdate->minJD() + $marrdate->maxJD()) / 2; // dom = Date of Marriage (Julian)
-										}
-									?>", "<?php
-										echo ($gparent->getBirthDate()->minJD() + $gparent->getBirthDate()->maxJD()) / 2; // dob = Date of Birth (Julian)
-									?>", "<?php
-										echo $censyear - $gparent->getbirthyear(); // age = Census Date minus YOB
-									?>", "<?php
-										echo ($gparent->getDeathDate()->minJD() + $gparent->getDeathDate()->maxJD()) / 2; // dod = Date of Death (Julian)
-									?>", "<?php
-										echo ""; // occu = Occupation
-									?>", "<?php
-										echo Filter::escapeHtml($gparent->getBirthPlace()); //  birthpl = Wife Place of Birth
-									?>", "<?php
-										if (isset($WifeFBP)) {
+									<a href='#' onclick='return insertRowToTable(
+										"<?php echo $gparent->getXref(); ?>",
+										"<?php echo $fulln; ?>",
+										"<?php echo $fulmn; ?>",
+										"<?php echo $person === $gparent ? 'head' : Filter::escapeHtml($label); ?>",
+										"<?php echo $gparent->getSex(); ?>",
+										"<?php echo $married >= 0 ? 'M' : 'S'; ?>",
+										"<?php echo $marrdate ? $marrdate->JD() : ''; ?>",
+										"<?php echo $gparent->getBirthDate()->JD(); ?>",
+										"<?php echo $censyear - $gparent->getbirthyear(); ?>",
+										"<?php echo $gparent->getDeathDate()->JD(); ?>",
+										"",
+										"<?php echo Filter::escapeHtml($gparent->getBirthPlace()); ?>",
+										"<?php if (isset($WifeFBP)) {
 											echo Filter::escapeHtml($WifeFBP); // fbirthpl = Wife Father’s Place of Birth
 										} else {
 											echo 'UNK, UNK, UNK, UNK'; // fbirthpl = Wife Father’s Place of Birth Not known
-										}
-									?>", "<?php
-										if (isset($WifeMBP)) {
+										} ?>",
+										"<?php if (isset($WifeMBP)) {
 											echo Filter::escapeHtml($WifeMBP); // mbirthpl = Wife Mother’s Place of Birth
 										} else {
 											echo 'UNK, UNK, UNK, UNK'; // mbirthpl = Wife Mother’s Place of Birth Not known
-										}
-									?>", "<?php
-										if (isset($chBLDarray) && $gparent->getSex() == "F") {
+										} ?>",
+										"<?php if (isset($chBLDarray) && $gparent->getSex() === 'F') {
 											$chBLDarray = implode("::", $chBLDarray);
 											echo $chBLDarray; // Array of Children (name, birthdate, deathdate)
-										}
-									?>");'>
-									<?php
-										echo $gparent->getFullName(); // Full Name (Link)
-									?>
+										} ?>"
+									);'>
+										<?php echo $gparent->getFullName(); ?>
 									</a>
 								</td>
 							<tr> <?php
@@ -1087,11 +816,11 @@ namespace Fisharebest\Webtrees;
 						foreach ($family->getChildren() as $child) {
 
 							// Get Spouse child’s marriage status
-							$married = "";
-							$marrdate = "";
+							$married  = '';
+							$marrdate = '';
 							foreach ($child->getSpouseFamilies() as $childfamily) {
 								$marrdate = $childfamily->getMarriageDate();
-								$married = Date::Compare($censdate, $marrdate);
+								$married  = Date::Compare($censdate, $marrdate);
 							}
 
 							// Get Child’s Children
@@ -1113,16 +842,11 @@ namespace Fisharebest\Webtrees;
 
 							// Get Spouse child’s details
 							$nam   = $child->getAllNames();
-							$fulln = rtrim($nam[0]['givn'], '*') . ' ' . $nam[0]['surname'];
-							$fulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-							$fulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-							$givn  = rtrim($nam[0]['givn'], '*');
-							$surn  = $nam[0]['surname'];
-							$chfulmn = null;
-							$chnam = $child->getAllNames();
-							for ($i = 0; $i < count($nam); $i++) {
-								if ($chnam[$i]['type'] == '_MARNM') {
-									$chfulmn = rtrim($chnam[$i]['givn'], '*') . ' ' . $chnam[$i]['surname'];
+							$fulln = strip_tags($nam[0]['full']);
+							$chfulmn   = $fulln;
+							foreach ($nam as $n) {
+								if ($n['type'] === '_MARNM') {
+									$chfulmn = strip_tags($n['full']);
 								}
 							}
 							$label = get_close_relationship_name($person, $child);
@@ -1146,67 +870,35 @@ namespace Fisharebest\Webtrees;
 									<?php
 									if (($child->canShow())) {
 									?>
-									<a href='#' onclick='insertRowToTable("<?php
-											echo $child->getXref(); // pid = PID
-										?>", "<?php
-											echo Filter::escapeHtml($fulln); // nam = Full Name
-										?>", "<?php
-											if (isset($chfulmn)) {
-												echo Filter::escapeHtml($chfulmn); // mnam = Full Married Name
-											} else {
-												echo Filter::escapeHtml($fulln); // mnam = Full Name
-											}
-										?>", "<?php
-											if ($person === $child) {
-												echo 'head';
-											} else {
-												echo Filter::escapeHtml($label);
-											}
-										?>", "<?php
-											echo $child->getSex(); // gend = Gender
-										?>", "<?php
-											if ($married > 0) {
-												echo "M"; // cond = Condition (Married)
-											} else if ($married < 0 || ($married == "0")) {
-												echo "S"; // cond = Condition (Single)
-											} else {
-												echo ""; // cond = Condition (Not Known)
-											}
-										?>", "<?php
-											if ($marrdate) {
-												echo ($marrdate->minJD() + $marrdate->maxJD()) / 2; // dom = Date of Marriage (Julian)
-											}
-										?>", "<?php
-											echo ($child->getBirthDate()->minJD() + $child->getBirthDate()->maxJD()) / 2; // dob = Date of Birth (Julian)
-										?>", "<?php
-											echo $censyear - $child->getbirthyear(); //  age = Census Date minus YOB
-										?>", "<?php
-											echo ($child->getDeathDate()->minJD() + $child->getDeathDate()->maxJD()) / 2; // dod = Date of Death (Julian)
-										?>", "<?php
-											echo ""; // occu = Occupation
-										?>", "<?php
-											echo Filter::escapeHtml($child->getBirthPlace()); //  birthpl = Child Place of Birth
-										?>", "<?php
-											if ($family->getHusband()) {
+									<a href='#' onclick='return insertRowToTable(
+										"<?php echo $child->getXref(); ?>",
+										"<?php echo $fulln; ?>",
+										"<?php echo $chfulmn; ?>",
+										"<?php echo $person === $child ? 'head' : Filter::escapeHtml($label); ?>",
+										"<?php echo $child->getSex(); ?>",
+										"<?php echo $married >= 0 ? 'M' : 'S'; ?>",
+										"<?php echo $marrdate ? $marrdate->JD() : ''; ?>",
+										"<?php echo $child->getBirthDate()->JD(); ?>",
+										"<?php echo $censyear - $child->getbirthyear(); ?>",
+										"<?php echo $child->getDeathDate()->JD(); ?>",
+										"",
+										"<?php echo Filter::escapeHtml($child->getBirthPlace()); ?>",
+										"<?php if ($family->getHusband()) {
 												echo Filter::escapeHtml($family->getHusband()->getBirthPlace()); // fbirthpl = Child Father’s Place of Birth
 											} else {
 												echo 'UNK, UNK, UNK, UNK'; // fbirthpl = Child Father’s Place of Birth Not known
-											}
-										?>", "<?php
-											if ($family->getWife()) {
+											} ?>",
+										"<?php if ($family->getWife()) {
 												echo Filter::escapeHtml($family->getWife()->getBirthPlace()); // mbirthpl = Child Mother’s Place of Birth
 											} else {
 												echo 'UNK, UNK, UNK, UNK'; // mbirthpl = Child Mother’s Place of Birth Not known
-											}
-										?>", "<?php
-											if (isset($chBLDarray) && $child->getSex() == "F") {
+											} ?>",
+										"<?php if (isset($chBLDarray) && $child->getSex() === 'F') {
 												$chBLDarray = implode("::", $chBLDarray);
 												echo $chBLDarray; // Array of Children (name, birthdate, deathdate)
-											}
-										?>");'>
-										<?php
-											echo $child->getFullName(); // Full Name (Link)
-										?>
+											} ?>"
+									);'>
+										<?php echo $child->getFullName(); ?>
 									</a>
 									<?php
 								}
@@ -1215,7 +907,6 @@ namespace Fisharebest\Webtrees;
 							</tr>
 							<?php
 						}
-
 					echo "<tr><td><br></td></tr>";
 					}
 					?>
@@ -1310,66 +1001,55 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 
 					// Parent Husbands Details
 					$person_parent = 'Yes';
-					if ($husb->canShowName()) {
-						$nam   = $husb->getAllNames();
-						$fulln = rtrim($nam[0]['givn'], '*') . ' ' . $nam[0]['surname'];
-						$fulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-						$fulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-						for ($i = 0; $i < count($nam); $i++) {
-							if ($nam[$i]['type'] == '_MARNM') {
-								$fulmn = rtrim($nam[$i]['givn'], '*') . ' ' . $nam[$i]['surname'];
-							}
+					$nam   = $husb->getAllNames();
+					$fulln = strip_tags($nam[0]['full']);
+					$fulmn = $fulln;
+					foreach ($nam as $n) {
+						if ($n['type'] === '_MARNM') {
+							$fulmn = strip_tags($n['full']);
 						}
-						$parentlinks .= "<a class=\"linka\" href=\"#\" onclick=\"insertRowToTable(";
-						$parentlinks .= "'" . $husb->getXref() . "',"; // pid = PID
-						$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',"; // nam = Name
-						if (isset($fulmn)) {
-							$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',"; // mnam = Full Married Name
-						} else {
-							$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',"; // mnam = Full Name
-						}
-						if ($currpid == "Wife" || $currpid == "Husband") {
-							$parentlinks .= "'Father in Law',"; // label = 1st Gen Male Relationship
-						} else {
-							$parentlinks .= "'Grand-Father',"; // label = 2st Gen Male Relationship
-						}
-						$parentlinks .= "'" . $husb->getSex() . "',"; // sex = Gender
-						$parentlinks .= "''" . ","; // cond = Condition (Married etc)
-						if ($marrdate) {
-							$parentlinks .= "'" . (($marrdate->minJD() + $marrdate->maxJD()) / 2) . "',"; // dom = Date of Marriage (Julian)
-						}
-						$parentlinks .= "'" . (($husb->getBirthDate()->minJD() + $husb->getBirthDate()->maxJD()) / 2) . "',"; // dob = Date of Birth
-						if ($husb->getbirthyear() >= 1) {
-							$parentlinks .= "'" . ($censyear - $husb->getbirthyear()) . "',"; // age =  Census Year - Year of Birth
-						} else {
-							$parentlinks .= "''" . ","; // age =  Undefined
-						}
-						$parentlinks .= "'" . (($husb->getDeathDate()->minJD() + $husb->getDeathDate()->maxJD()) / 2) . "',"; // dod = Date of Death
-						$parentlinks .= "''" . ","; // occu  = Occupation
-						$parentlinks .= "'" . Filter::escapeHtml($husb->getBirthPlace()) . "'" . ","; // birthpl = Individuals Birthplace
-						if (isset($pHusbFBP)) {
-							$parentlinks .= "'" . Filter::escapeHtml($pHusbFBP) . "'" . ","; // fbirthpl = Fathers Birthplace
-						} else {
-							$parentlinks .= "'UNK, UNK, UNK, UNK'" . ","; // fbirthpl = Fathers Birthplace
-						}
-						if (isset($pHusbMBP)) {
-							$parentlinks .= "'" . Filter::escapeHtml($pHusbMBP) . "'" . ","; // mbirthpl = Mothers Birthplace
-						} else {
-							$parentlinks .= "'UNK, UNK, UNK, UNK'" . ","; // mbirthpl = Mothers Birthplace
-						}
-						if (isset($chBLDarray) && $husb->getSex() == "F") {
-							$chBLDarray = implode("::", $chBLDarray);
-							$parentlinks .= "'" . $chBLDarray . "'"; // Array of Children (name, birthdate, deathdate)
-						} else {
-							$parentlinks .= "''";
-						}
-						$parentlinks .= ");\">";
-						$parentlinks .= $husb->getFullName();
-						$parentlinks .= "</a>";
-					} else {
-						$parentlinks .= I18N::translate('Private');
 					}
-					$natdad = "yes";
+					$parentlinks .= "<a class=\"linka\" href=\"#\" onclick=\"return insertRowToTable(";
+					$parentlinks .= "'" . $husb->getXref() . "',"; // pid = PID
+					$parentlinks .= "'" . $fulln . "',";
+					$parentlinks .= "'" . $fulmn . "',";
+					if ($currpid === 'Wife' || $currpid === 'Husband') {
+						$parentlinks .= "'Father in Law',"; // label = 1st Gen Male Relationship
+					} else {
+						$parentlinks .= "'Grand-Father',"; // label = 2st Gen Male Relationship
+					}
+					$parentlinks .= "'" . $husb->getSex() . "',";
+					$parentlinks .= "'',";
+					$parentlinks .= "'" . $marrdate->JD() . "',";
+					$parentlinks .= "'" . $husb->getBirthDate()->JD() . "',";
+					if ($husb->getbirthyear() >= 1) {
+						$parentlinks .= "'" . ($censyear - $husb->getbirthyear()) . "',"; // age =  Census Year - Year of Birth
+					} else {
+						$parentlinks .= "''" . ","; // age =  Undefined
+					}
+					$parentlinks .= "'" . $husb->getDeathDate()->JD() . "',";
+					$parentlinks .= "'',"; // occu  = Occupation
+					$parentlinks .= "'" . Filter::escapeHtml($husb->getBirthPlace()) . "'" . ","; // birthpl = Individuals Birthplace
+					if (isset($pHusbFBP)) {
+						$parentlinks .= "'" . Filter::escapeHtml($pHusbFBP) . "'" . ","; // fbirthpl = Fathers Birthplace
+					} else {
+						$parentlinks .= "'UNK, UNK, UNK, UNK'" . ","; // fbirthpl = Fathers Birthplace
+					}
+					if (isset($pHusbMBP)) {
+						$parentlinks .= "'" . Filter::escapeHtml($pHusbMBP) . "'" . ","; // mbirthpl = Mothers Birthplace
+					} else {
+						$parentlinks .= "'UNK, UNK, UNK, UNK'" . ","; // mbirthpl = Mothers Birthplace
+					}
+					if (isset($chBLDarray) && $husb->getSex() === 'F') {
+						$chBLDarray = implode("::", $chBLDarray);
+						$parentlinks .= "'" . $chBLDarray . "'"; // Array of Children (name, birthdate, deathdate)
+					} else {
+						$parentlinks .= "''";
+					}
+					$parentlinks .= ");\">";
+					$parentlinks .= $husb->getFullName();
+					$parentlinks .= "</a>";
+					$natdad = 'yes';
 				}
 			}
 
@@ -1387,68 +1067,64 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 					}
 
 					// Parent Wifes Details
-					$person_parent = "Yes";
-					if ($wife->canShowName()) {
-						$nam   = $wife->getAllNames();
-						$fulln = rtrim($nam[0]['givn'], '*') . ' ' . $nam[0]['surname'];
-						$fulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-						$fulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $fulln);
+					$person_parent = 'Yes';
+					$nam   = $wife->getAllNames();
+					$fulln = rtrim($nam[0]['givn'], '*') . ' ' . $nam[0]['surname'];
+					$fulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $fulln);
+					$fulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $fulln);
 
-						for ($i = 0; $i < count($nam); $i++) {
-							if ($nam[$i]['type'] == '_MARNM') {
-								$fulmn = rtrim($nam[$i]['givn'], '*') . ' ' . $nam[$i]['surname'];
-							}
+					for ($i = 0; $i < count($nam); $i++) {
+						if ($nam[$i]['type'] === '_MARNM') {
+							$fulmn = rtrim($nam[$i]['givn'], '*') . ' ' . $nam[$i]['surname'];
 						}
-
-						$parentlinks .= "<a class=\"linka\" href=\"#\" onclick=\"insertRowToTable(";
-						$parentlinks .= "'" . $wife->getXref() . "',"; // pid = PID
-						$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',";
-						if (isset($fulmn)) {
-							$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulmn)) . "',";
-						} else {
-							$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',";
-						}
-						if ($currpid == "Wife" || $currpid == "Husband") {
-							$parentlinks .= "'Mother in Law',"; // label = 1st Gen Female Relationship
-						} else {
-							$parentlinks .= "'Grand-Mother',"; // label = 2st Gen Female Relationship
-						}
-						$parentlinks .= "'" . $wife->getSex() . "',"; // sex = Gender
-						$parentlinks .= "''" . ","; // cond = Condition (Married etc)
-						if ($marrdate) {
-							$parentlinks .= "'" . (($marrdate->minJD() + $marrdate->maxJD()) / 2) . "',"; // dom = Date of Marriage (Julian)
-						}
-						$parentlinks .= "'" . (($wife->getBirthDate()->minJD() + $wife->getBirthDate()->maxJD()) / 2) . "',"; // dob = Date of Birth
-						if ($wife->getbirthyear() >= 1) {
-							$parentlinks .= "'" . ($censyear - $wife->getbirthyear()) . "',"; // age =  Census Year - Year of Birth
-						} else {
-							$parentlinks .= "''" . ","; // age =  Undefined
-						}
-						$parentlinks .= "'" . (($wife->getDeathDate()->minJD() + $wife->getDeathDate()->maxJD()) / 2) . "',"; // dod = Date of Death
-						$parentlinks .= "''" . ","; // occu  = Occupation
-						$parentlinks .= "'" . Filter::escapeHtml($wife->getBirthPlace()) . "'" . ","; // birthpl = Individuals Birthplace
-						if (isset($pWifeFBP)) {
-							$parentlinks .= "'" . Filter::escapeHtml($pWifeFBP) . "'" . ","; // fbirthpl = Fathers Birthplace
-						} else {
-							$parentlinks .= "'UNK, UNK, UNK, UNK'" . ","; // fbirthpl = Fathers Birthplace Not Known
-						}
-						if (isset($pWifeMBP)) {
-							$parentlinks .= "'" . Filter::escapeHtml($pWifeMBP) . "'" . ","; // mbirthpl = Mothers Birthplace
-						} else {
-							$parentlinks .= "'UNK, UNK, UNK, UNK'" . ","; // mbirthpl = Mothers Birthplace Not Known
-						}
-						if (isset($chBLDarray) && $wife->getSex() == "F") {
-							$chBLDarray = implode("::", $chBLDarray);
-							$parentlinks .= "'" . $chBLDarray . "'"; // Array of Children (name, birthdate, deathdate)
-						} else {
-							$parentlinks .= "''";
-						}
-						$parentlinks .= ");\">";
-						$parentlinks .= $wife->getFullName();
-						$parentlinks .= "</a>";
-					} else {
-						$parentlinks .= I18N::translate('Private');
 					}
+
+					$parentlinks .= "<a class=\"linka\" href=\"#\" onclick=\"return insertRowToTable(";
+					$parentlinks .= "'" . $wife->getXref() . "',"; // pid = PID
+					$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',";
+					if (isset($fulmn)) {
+						$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulmn)) . "',";
+					} else {
+						$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',";
+					}
+					if ($currpid === 'Wife' || $currpid === 'Husband') {
+						$parentlinks .= "'Mother in Law',"; // label = 1st Gen Female Relationship
+					} else {
+						$parentlinks .= "'Grand-Mother',"; // label = 2st Gen Female Relationship
+					}
+					$parentlinks .= "'" . $wife->getSex() . "',"; // sex = Gender
+					$parentlinks .= "''" . ","; // cond = Condition (Married etc)
+					if ($marrdate) {
+						$parentlinks .= "'" . (($marrdate->minJD() + $marrdate->maxJD()) / 2) . "',"; // dom = Date of Marriage (Julian)
+					}
+					$parentlinks .= "'" . (($wife->getBirthDate()->minJD() + $wife->getBirthDate()->maxJD()) / 2) . "',"; // dob = Date of Birth
+					if ($wife->getbirthyear() >= 1) {
+						$parentlinks .= "'" . ($censyear - $wife->getbirthyear()) . "',"; // age =  Census Year - Year of Birth
+					} else {
+						$parentlinks .= "''" . ","; // age =  Undefined
+					}
+					$parentlinks .= "'" . (($wife->getDeathDate()->minJD() + $wife->getDeathDate()->maxJD()) / 2) . "',"; // dod = Date of Death
+					$parentlinks .= "''" . ","; // occu  = Occupation
+					$parentlinks .= "'" . Filter::escapeHtml($wife->getBirthPlace()) . "'" . ","; // birthpl = Individuals Birthplace
+					if (isset($pWifeFBP)) {
+						$parentlinks .= "'" . Filter::escapeHtml($pWifeFBP) . "'" . ","; // fbirthpl = Fathers Birthplace
+					} else {
+						$parentlinks .= "'UNK, UNK, UNK, UNK'" . ","; // fbirthpl = Fathers Birthplace Not Known
+					}
+					if (isset($pWifeMBP)) {
+						$parentlinks .= "'" . Filter::escapeHtml($pWifeMBP) . "'" . ","; // mbirthpl = Mothers Birthplace
+					} else {
+						$parentlinks .= "'UNK, UNK, UNK, UNK'" . ","; // mbirthpl = Mothers Birthplace Not Known
+					}
+					if (isset($chBLDarray) && $wife->getSex() === 'F') {
+						$chBLDarray = implode("::", $chBLDarray);
+						$parentlinks .= "'" . $chBLDarray . "'"; // Array of Children (name, birthdate, deathdate)
+					} else {
+						$parentlinks .= "''";
+					}
+					$parentlinks .= ");\">";
+					$parentlinks .= $wife->getFullName();
+					$parentlinks .= "</a>";
 					$natmom = 'yes';
 				}
 			}
@@ -1478,7 +1154,7 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 			}
 
 			// Step Husband
-			if ($natdad == 'yes') {
+			if ($natdad === 'yes') {
 			} else {
 				if (($husb || $children) && $husb !== $person) {
 					if ($husb) {
@@ -1493,71 +1169,67 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 						}
 						//-- Step Husband Details ------------------------------
 						$person_step = 'Yes';
-						if ($husb->canShowName()) {
-							$nam   = $husb->getAllNames();
-							$fulln = rtrim($nam[0]['givn'], '*') . ' ' . $nam[0]['surname'];
-							$fulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-							$fulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-							for ($i = 0; $i < count($nam); $i++) {
-								if ($nam[$i]['type'] == '_MARNM') {
-									$fulmn = rtrim($nam[$i]['givn'], '*') . ' ' . $nam[$i]['surname'];
-								}
+						$nam   = $husb->getAllNames();
+						$fulln = rtrim($nam[0]['givn'], '*') . ' ' . $nam[0]['surname'];
+						$fulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $fulln);
+						$fulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $fulln);
+						for ($i = 0; $i < count($nam); $i++) {
+							if ($nam[$i]['type'] === '_MARNM') {
+								$fulmn = rtrim($nam[$i]['givn'], '*') . ' ' . $nam[$i]['surname'];
 							}
-							$parentlinks .= "<a class=\"linka\" href=\"#\" onclick=\"insertRowToTable(";
-							$parentlinks .= "'" . $husb->getXref() . "',"; // pid = PID
-							$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',"; // nam = Name
-							if (isset($fulmn)) {
-								$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',"; // mnam = Full Married Name
-							} else {
-								$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',"; // mnam = Full Name
-							}
-							if ($currpid == "Wife" || $currpid == "Husband") {
-								$parentlinks .= "'Step Father-in-Law',"; // label = 1st Gen Male Relationship
-							} else {
-								$parentlinks .= "'Step Grand-Father',"; // label = 2st Gen Male Relationship
-							}
-							$parentlinks .= "'" . $husb->getSex() . "',"; // sex = Gender
-							$parentlinks .= "''" . ","; // cond = Condition (Married etc)
-							if ($marrdate) {
-								$parentlinks .= "'" . (($marrdate->minJD() + $marrdate->maxJD()) / 2) . "',"; // dom = Date of Marriage (Julian)
-							}
-							$parentlinks .= "'" . (($husb->getBirthDate()->minJD() + $husb->getBirthDate()->maxJD()) / 2) . "',"; // dob = Date of Birth
-							if ($husb->getbirthyear() >= 1) {
-								$parentlinks .= "'" . ($censyear - $husb->getbirthyear()) . "',"; // age =  Census Year - Year of Birth
-							} else {
-								$parentlinks .= "''" . ","; // age =  Undefined
-							}
-							$parentlinks .= "'" . (($husb->getDeathDate()->minJD() + $husb->getDeathDate()->maxJD()) / 2) . "',"; // dod = Date of Death
-							$parentlinks .= "''" . ","; // occu  = Occupation
-							$parentlinks .= "'" . Filter::escapeHtml($husb->getBirthPlace()) . "'" . ","; // birthpl = Individuals Birthplace
-							if (isset($pHusbFBP)) {
-								$parentlinks .= "'" . Filter::escapeHtml($pHusbFBP) . "'" . ","; // fbirthpl = Fathers Birthplace
-							} else {
-								$parentlinks .= "'UNK, UNK, UNK, UNK'" . ","; // fbirthpl = Fathers Birthplace
-							}
-							if (isset($pHusbMBP)) {
-								$parentlinks .= "'" . Filter::escapeHtml($pHusbMBP) . "'" . ","; // mbirthpl = Mothers Birthplace
-							} else {
-								$parentlinks .= "'UNK, UNK, UNK, UNK'" . ","; // mbirthpl = Mothers Birthplace
-							}
-							if (isset($chBLDarray) && $husb->getSex() == "F") {
-								$chBLDarray = implode("::", $chBLDarray);
-								$parentlinks .= "'" . $chBLDarray . "'"; // Array of Children (name, birthdate, deathdate)
-							} else {
-								$parentlinks .= "''";
-							}
-							$parentlinks .= ");\">";
-							$parentlinks .= $husb->getFullName(); // Full Name (Link)
-							$parentlinks .= "</a>";
-						} else {
-							$parentlinks .= I18N::translate('Private');
 						}
+						$parentlinks .= "<a class=\"linka\" href=\"#\" onclick=\"return insertRowToTable(";
+						$parentlinks .= "'" . $husb->getXref() . "',"; // pid = PID
+						$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',"; // nam = Name
+						if (isset($fulmn)) {
+							$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',"; // mnam = Full Married Name
+						} else {
+							$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',"; // mnam = Full Name
+						}
+						if ($currpid === 'Wife' || $currpid === 'Husband') {
+							$parentlinks .= "'Step Father-in-Law',"; // label = 1st Gen Male Relationship
+						} else {
+							$parentlinks .= "'Step Grand-Father',"; // label = 2st Gen Male Relationship
+						}
+						$parentlinks .= "'" . $husb->getSex() . "',"; // sex = Gender
+						$parentlinks .= "''" . ","; // cond = Condition (Married etc)
+						if ($marrdate) {
+							$parentlinks .= "'" . (($marrdate->minJD() + $marrdate->maxJD()) / 2) . "',"; // dom = Date of Marriage (Julian)
+						}
+						$parentlinks .= "'" . (($husb->getBirthDate()->minJD() + $husb->getBirthDate()->maxJD()) / 2) . "',"; // dob = Date of Birth
+						if ($husb->getbirthyear() >= 1) {
+							$parentlinks .= "'" . ($censyear - $husb->getbirthyear()) . "',"; // age =  Census Year - Year of Birth
+						} else {
+							$parentlinks .= "''" . ","; // age =  Undefined
+						}
+						$parentlinks .= "'" . (($husb->getDeathDate()->minJD() + $husb->getDeathDate()->maxJD()) / 2) . "',"; // dod = Date of Death
+						$parentlinks .= "''" . ","; // occu  = Occupation
+						$parentlinks .= "'" . Filter::escapeHtml($husb->getBirthPlace()) . "'" . ","; // birthpl = Individuals Birthplace
+						if (isset($pHusbFBP)) {
+							$parentlinks .= "'" . Filter::escapeHtml($pHusbFBP) . "'" . ","; // fbirthpl = Fathers Birthplace
+						} else {
+							$parentlinks .= "'UNK, UNK, UNK, UNK'" . ","; // fbirthpl = Fathers Birthplace
+						}
+						if (isset($pHusbMBP)) {
+							$parentlinks .= "'" . Filter::escapeHtml($pHusbMBP) . "'" . ","; // mbirthpl = Mothers Birthplace
+						} else {
+							$parentlinks .= "'UNK, UNK, UNK, UNK'" . ","; // mbirthpl = Mothers Birthplace
+						}
+						if (isset($chBLDarray) && $husb->getSex() === 'F') {
+							$chBLDarray = implode("::", $chBLDarray);
+							$parentlinks .= "'" . $chBLDarray . "'"; // Array of Children (name, birthdate, deathdate)
+						} else {
+							$parentlinks .= "''";
+						}
+						$parentlinks .= ");\">";
+						$parentlinks .= $husb->getFullName(); // Full Name (Link)
+						$parentlinks .= "</a>";
 					}
 				}
 			}
 
 			// Step Wife
-			if ($natmom == 'yes') {
+			if ($natmom === 'yes') {
 			} else {
 				// Wife
 				if ($wife || $children) {
@@ -1573,67 +1245,63 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 						}
 						// Step Wife Details
 						$person_step = 'Yes';
-						if ($wife->canShowName()) {
-							$nam   = $wife->getAllNames();
-							$fulln = rtrim($nam[0]['givn'], '*') . ' ' . $nam[0]['surname'];
-							$fulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-							$fulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $fulln);
+						$nam   = $wife->getAllNames();
+						$fulln = rtrim($nam[0]['givn'], '*') . ' ' . $nam[0]['surname'];
+						$fulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $fulln);
+						$fulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $fulln);
 
-							for ($i = 0; $i < count($nam); $i++) {
-								if ($nam[$i]['type'] == '_MARNM') {
-									$fulmn = rtrim($nam[$i]['givn'], '*') . ' ' . $nam[$i]['surname'];
-								}
+						for ($i = 0; $i < count($nam); $i++) {
+							if ($nam[$i]['type'] === '_MARNM') {
+								$fulmn = rtrim($nam[$i]['givn'], '*') . ' ' . $nam[$i]['surname'];
 							}
-
-							$parentlinks .= "<a class=\"linka\" href=\"#\" onclick=\"insertRowToTable(";
-							$parentlinks .= "'" . $wife->getXref() . "',"; // pid = PID
-							$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',"; // nam = Name
-							if (isset($fulmn)) {
-								$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulmn)) . "',"; // mnam = Full Married Name
-							} else {
-								$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',"; // mnam = Full Name
-							}
-							if ($currpid == "Wife" || $currpid == "Husband") {
-								$parentlinks .= "'Step Mother-in-Law',"; // label = 1st Gen Female Relationship
-							} else {
-								$parentlinks .= "'Step Grand-Mother',"; // label = 2st Gen Female Relationship
-							}
-							$parentlinks .= "'" . $wife->getSex() . "',"; // sex = Gender
-							$parentlinks .= "''" . ","; // cond = Condition (Married etc)
-							if ($marrdate) {
-								$parentlinks .= "'" . (($marrdate->minJD() + $marrdate->maxJD()) / 2) . "',"; // dom = Date of Marriage (Julian)
-							}
-							$parentlinks .= "'" . (($wife->getBirthDate()->minJD() + $wife->getBirthDate()->maxJD()) / 2) . "',"; // dob = Date of Birth
-							if ($wife->getbirthyear() >= 1) {
-								$parentlinks .= "'" . ($censyear - $wife->getbirthyear()) . "',"; // age =  Census Year - Year of Birth
-							} else {
-								$parentlinks .= "''" . ","; // age =  Undefined
-							}
-							$parentlinks .= "'" . (($wife->getDeathDate()->minJD() + $wife->getDeathDate()->maxJD()) / 2) . "',"; // dod = Date of Death
-							$parentlinks .= "''" . ","; // occu  = Occupation
-							$parentlinks .= "'" . Filter::escapeHtml($wife->getBirthPlace()) . "'" . ","; // birthpl = Individuals Birthplace
-							if (isset($pWifeFBP)) {
-								$parentlinks .= "'" . Filter::escapeHtml($pWifeFBP) . "'" . ","; // fbirthpl = Fathers Birthplace
-							} else {
-								$parentlinks .= "'UNK, UNK, UNK, UNK'" . ","; // fbirthpl = Fathers Birthplace Not Known
-							}
-							if (isset($pWifeMBP)) {
-								$parentlinks .= "'" . Filter::escapeHtml($pWifeMBP) . "'" . ","; // mbirthpl = Mothers Birthplace
-							} else {
-								$parentlinks .= "'UNK, UNK, UNK, UNK'" . ","; // mbirthpl = Mothers Birthplace Not Known
-							}
-							if (isset($chBLDarray) && $wife->getSex() == "F") {
-								$chBLDarray = implode("::", $chBLDarray);
-								$parentlinks .= "'" . $chBLDarray . "'"; // Array of Children (name, birthdate, deathdate)
-							} else {
-								$parentlinks .= "''";
-							}
-							$parentlinks .= ");\">";
-							$parentlinks .= $wife->getFullName(); // Full Name (Link)
-							$parentlinks .= "</a>";
-						} else {
-							$parentlinks .= I18N::translate('Private');
 						}
+
+						$parentlinks .= "<a class=\"linka\" href=\"#\" onclick=\"return insertRowToTable(";
+						$parentlinks .= "'" . $wife->getXref() . "',"; // pid = PID
+						$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',"; // nam = Name
+						if (isset($fulmn)) {
+							$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulmn)) . "',"; // mnam = Full Married Name
+						} else {
+							$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',"; // mnam = Full Name
+						}
+						if ($currpid === 'Wife' || $currpid === 'Husband') {
+							$parentlinks .= "'Step Mother-in-Law',"; // label = 1st Gen Female Relationship
+						} else {
+							$parentlinks .= "'Step Grand-Mother',"; // label = 2st Gen Female Relationship
+						}
+						$parentlinks .= "'" . $wife->getSex() . "',"; // sex = Gender
+						$parentlinks .= "''" . ","; // cond = Condition (Married etc)
+						if ($marrdate) {
+							$parentlinks .= "'" . (($marrdate->minJD() + $marrdate->maxJD()) / 2) . "',"; // dom = Date of Marriage (Julian)
+						}
+						$parentlinks .= "'" . (($wife->getBirthDate()->minJD() + $wife->getBirthDate()->maxJD()) / 2) . "',"; // dob = Date of Birth
+						if ($wife->getbirthyear() >= 1) {
+							$parentlinks .= "'" . ($censyear - $wife->getbirthyear()) . "',"; // age =  Census Year - Year of Birth
+						} else {
+							$parentlinks .= "''" . ","; // age =  Undefined
+						}
+						$parentlinks .= "'" . (($wife->getDeathDate()->minJD() + $wife->getDeathDate()->maxJD()) / 2) . "',"; // dod = Date of Death
+						$parentlinks .= "''" . ","; // occu  = Occupation
+						$parentlinks .= "'" . Filter::escapeHtml($wife->getBirthPlace()) . "'" . ","; // birthpl = Individuals Birthplace
+						if (isset($pWifeFBP)) {
+							$parentlinks .= "'" . Filter::escapeHtml($pWifeFBP) . "'" . ","; // fbirthpl = Fathers Birthplace
+						} else {
+							$parentlinks .= "'UNK, UNK, UNK, UNK'" . ","; // fbirthpl = Fathers Birthplace Not Known
+						}
+						if (isset($pWifeMBP)) {
+							$parentlinks .= "'" . Filter::escapeHtml($pWifeMBP) . "'" . ","; // mbirthpl = Mothers Birthplace
+						} else {
+							$parentlinks .= "'UNK, UNK, UNK, UNK'" . ","; // mbirthpl = Mothers Birthplace Not Known
+						}
+						if (isset($chBLDarray) && $wife->getSex() === 'F') {
+							$chBLDarray = implode("::", $chBLDarray);
+							$parentlinks .= "'" . $chBLDarray . "'"; // Array of Children (name, birthdate, deathdate)
+						} else {
+							$parentlinks .= "''";
+						}
+						$parentlinks .= ");\">";
+						$parentlinks .= $wife->getFullName(); // Full Name (Link)
+						$parentlinks .= "</a>";
 					}
 				}
 			}
@@ -1677,89 +1345,84 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 					}
 
 					// Spouse Details
-					if ($spouse->canShowName()) {
-						$nam   = $spouse->getAllNames();
-						$fulln = rtrim($nam[0]['givn'], '*') . ' ' . $nam[0]['surname'];
-						$fulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-						$fulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $fulln);
+					$nam   = $spouse->getAllNames();
+					$fulln = rtrim($nam[0]['givn'], '*') . ' ' . $nam[0]['surname'];
+					$fulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $fulln);
+					$fulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $fulln);
 
-						// If spouse is a wife, then get her married name or default to her birth name
-						for ($i = 0; $i < count($nam); $i++) {
-							if ($nam[$i]['type'] == '_MARNM' && $is_wife) {
-								$fulmn = rtrim($nam[$i]['givn'], '*') . ' ' . $nam[$i]['surname'];
-							} else {
-								$fulmn = $fulln;
-							}
-						}
-
-						$spouselinks .= "<a href=\"#\" onclick=\"insertRowToTable(";
-						$spouselinks .= "'" . $spouse->getXref() . "',"; // pid = PID
-						$spouselinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',";
-						if (isset($fulmn)) {
-							$spouselinks .= "'" . Filter::escapeHtml(strip_tags($fulmn)) . "',";
+					// If spouse is a wife, then get her married name or default to her birth name
+					for ($i = 0; $i < count($nam); $i++) {
+						if ($nam[$i]['type'] === '_MARNM' && $is_wife) {
+							$fulmn = rtrim($nam[$i]['givn'], '*') . ' ' . $nam[$i]['surname'];
 						} else {
-							$spouselinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',";
+							$fulmn = $fulln;
 						}
-						if ($currpid == "Son" || $currpid == "Daughter") {
-							if ($spouse->getSex() == "M") {
-								$spouselinks .= "'Son in Law',"; // label = Male Relationship
-							} else {
-								$spouselinks .= "'Daughter in Law',"; // label = Female Relationship
-							}
-						} else {
-							if ($spouse->getSex() == "M") {
-								$spouselinks .= "'Brother in Law',"; // label = Male Relationship
-							} else {
-								$spouselinks .= "'Sister in Law',"; // label = Female Relationship
-							}
-						}
-						$spouselinks .= "'" . $spouse->getSex() . "',"; // sex = Gender
-						$spouselinks .= "''" . ","; // cond = Condition (Married etc)
-						if ($marrdate) {
-							$spouselinks .= "'" . (($marrdate->minJD() + $marrdate->maxJD()) / 2) . "',";
-						}
-						$spouselinks .= "'" . (($spouse->getBirthDate()->minJD() + $spouse->getBirthDate()->maxJD()) / 2) . "',";
-						if ($spouse->getbirthyear() >= 1) {
-							$spouselinks .= "'" . ($censyear - $spouse->getbirthyear()) . "',"; // age =  Census Year - Year of Birth
-						} else {
-							$spouselinks .= "''" . ","; // age =  Undefined
-						}
-						$spouselinks .= "'" . (($spouse->getDeathDate()->minJD() + $spouse->getDeathDate()->maxJD()) / 2) . "',"; // dod = Date of Death
-						$spouselinks .= "''" . ","; // occu  = Occupation
-						$spouselinks .= "'" . Filter::escapeHtml($spouse->getBirthPlace()) . "'" . ","; // birthpl = Individuals Birthplace
-						if (isset($pSpouseFBP)) {
-							$spouselinks .= "'" . Filter::escapeHtml($pSpouseFBP) . "'" . ","; // fbirthpl = Fathers Birthplace
-						} else {
-							$spouselinks .= "'UNK, UNK, UNK, UNK'" . ","; // fbirthpl = Fathers Birthplace Not Known
-						}
-						if (isset($pSpouseMBP)) {
-							$spouselinks .= "'" . Filter::escapeHtml($pSpouseMBP) . "'" . ","; // mbirthpl = Mothers Birthplace
-						} else {
-							$spouselinks .= "'UNK, UNK, UNK, UNK'" . ","; // mbirthpl = Mothers Birthplace Not Known
-						}
-						if (isset($chBLDarray) && $spouse->getSex() == "F") {
-							$chBLDarray = implode("::", $chBLDarray);
-							$spouselinks .= "'" . $chBLDarray . "'"; // Array of Children (name, birthdate, deathdate)
-						} else {
-							$spouselinks .= "''";
-						}
-						$spouselinks .= ");\">";
-						$spouselinks .= $spouse->getFullName(); // Full Name
-						$spouselinks .= "</a>";
-					} else {
-						$spouselinks .= I18N::translate('Private');
 					}
+
+					$spouselinks .= "<a href=\"#\" onclick=\"return insertRowToTable(";
+					$spouselinks .= "'" . $spouse->getXref() . "',"; // pid = PID
+					$spouselinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',";
+					if (isset($fulmn)) {
+						$spouselinks .= "'" . Filter::escapeHtml(strip_tags($fulmn)) . "',";
+					} else {
+						$spouselinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',";
+					}
+					if ($currpid === 'Son' || $currpid === 'Daughter') {
+						if ($spouse->getSex() === 'M') {
+							$spouselinks .= "'Son in Law',"; // label = Male Relationship
+						} else {
+							$spouselinks .= "'Daughter in Law',"; // label = Female Relationship
+						}
+					} else {
+						if ($spouse->getSex() === 'M') {
+							$spouselinks .= "'Brother in Law',"; // label = Male Relationship
+						} else {
+							$spouselinks .= "'Sister in Law',"; // label = Female Relationship
+						}
+					}
+					$spouselinks .= "'" . $spouse->getSex() . "',"; // sex = Gender
+					$spouselinks .= "''" . ","; // cond = Condition (Married etc)
+					if ($marrdate) {
+						$spouselinks .= "'" . (($marrdate->minJD() + $marrdate->maxJD()) / 2) . "',";
+					}
+					$spouselinks .= "'" . (($spouse->getBirthDate()->minJD() + $spouse->getBirthDate()->maxJD()) / 2) . "',";
+					if ($spouse->getbirthyear() >= 1) {
+						$spouselinks .= "'" . ($censyear - $spouse->getbirthyear()) . "',"; // age =  Census Year - Year of Birth
+					} else {
+						$spouselinks .= "''" . ","; // age =  Undefined
+					}
+					$spouselinks .= "'" . (($spouse->getDeathDate()->minJD() + $spouse->getDeathDate()->maxJD()) / 2) . "',"; // dod = Date of Death
+					$spouselinks .= "''" . ","; // occu  = Occupation
+					$spouselinks .= "'" . Filter::escapeHtml($spouse->getBirthPlace()) . "'" . ","; // birthpl = Individuals Birthplace
+					if (isset($pSpouseFBP)) {
+						$spouselinks .= "'" . Filter::escapeHtml($pSpouseFBP) . "'" . ","; // fbirthpl = Fathers Birthplace
+					} else {
+						$spouselinks .= "'UNK, UNK, UNK, UNK'" . ","; // fbirthpl = Fathers Birthplace Not Known
+					}
+					if (isset($pSpouseMBP)) {
+						$spouselinks .= "'" . Filter::escapeHtml($pSpouseMBP) . "'" . ","; // mbirthpl = Mothers Birthplace
+					} else {
+						$spouselinks .= "'UNK, UNK, UNK, UNK'" . ","; // mbirthpl = Mothers Birthplace Not Known
+					}
+					if (isset($chBLDarray) && $spouse->getSex() === 'F') {
+						$chBLDarray = implode("::", $chBLDarray);
+						$spouselinks .= "'" . $chBLDarray . "'"; // Array of Children (name, birthdate, deathdate)
+					} else {
+						$spouselinks .= "''";
+					}
+					$spouselinks .= ");\">";
+					$spouselinks .= $spouse->getFullName(); // Full Name
 					$spouselinks .= "</a>";
 					if ($spouse->getFullName() != "") {
-						$persons = "Yes";
+						$persons = 'Yes';
 					}
 				}
 			}
 
 			// Children
-			$spouselinks .= "<ul class=\"clist\">";
+			$spouselinks .= '<ul class="clist">';
 			foreach ($children as $child) {
-				$persons = "Yes";
+				$persons = 'Yes';
 
 				// Child’s Parents
 				$gparent = Individual::getInstance($child->getXref());
@@ -1792,109 +1455,86 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 				$chhusbnam = null;
 				foreach ($child->getSpouseFamilies() as $childfamily) {
 					$marrdate = $childfamily->getMarriageDate();
-					if ($childfamily->getHusband()) {
-						$chhusbnam = $childfamily->getHusband()->getAllNames();
-					}
 				}
 				// Childs Details -------------------------
 				$spouselinks .= '<li>';
-				if ($child->canShowName()) {
-					$nam   = $child->getAllNames();
-					$fulln = rtrim($nam[0]['givn'], '*') . ' ' . $nam[0]['surname'];
-					$fulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-					$fulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-
-					// Get childs married name if available
-					$chfulmn = null;
-					$chnam = $child->getAllNames();
-					if ($chhusbnam[0]['surname'] == "@N.N." || $chhusbnam[0]['surname'] == "") {
-						// if Husband or his name is not known then use wifes birth name
-						$husbnam = $nam[0]['surname'];
-					} else {
-						$husbnam = $chhusbnam[0]['surname'];
+				$nam   = $child->getAllNames();
+				$fulln   = strip_tags($nam[0]['full']);
+				$chfulmn   = $fulln;
+				foreach ($nam as $n) {
+					if ($n['type'] === '_MARNM') {
+						$chfulmn = strip_tags($n['full']);
 					}
-					for ($i = 0; $i < count($nam); $i++) {
-						if ($chnam[$i]['type'] == '_MARNM') {
-							$chfulmn = rtrim($chnam[$i]['givn'], '*') . ' ' . $husbnam;
-						}
-					}
-
-					$spouselinks .= "<a href=\"#\" onclick=\"insertRowToTable(";
-					$spouselinks .= "'" . $child->getXref() . "',";
-					$spouselinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',"; // nam = Name
-					if (isset($chfulmn)) {
-						$spouselinks .= "'" . Filter::escapeHtml(strip_tags($chfulmn)) . "',"; // mnam = Full Married Name
-					} else {
-						$spouselinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',"; // mnam = Full Name
-					}
-					if ($currpid == "Son" || $currpid == "Daughter") {
-						if ($child->getSex() == "M") {
-							$spouselinks .= "'Grand-Son',"; // label = Male Relationship
-						} else {
-							$spouselinks .= "'Grand-Daughter',"; // label = Female Relationship
-						}
-					} else {
-						if ($child->getSex() == "M") {
-							$spouselinks .= "'Nephew',"; // label = Male Relationship
-						} else {
-							$spouselinks .= "'Niece',"; // label = Female Relationship
-						}
-					}
-					$spouselinks .= "'" . $child->getSex() . "',"; // sex = Gender
-					$spouselinks .= "''" . ","; // cond = Condition (Married etc)
-					if ($marrdate) {
-						$spouselinks .= "'" . (($marrdate->minJD() + $marrdate->maxJD()) / 2) . "',"; // dom = Date of Marriage (Julian)
-					} else {
-						$spouselinks .= "'nm'" . ",";
-					}
-					$spouselinks .= "'" . (($child->getBirthDate()->minJD() + $child->getBirthDate()->maxJD()) / 2) . "',"; // dob = Date of Birth
-					if ($child->getbirthyear() >= 1) {
-						$spouselinks .= "'" . ($censyear - $child->getbirthyear()) . "',"; // age =  Census Year - Year of Birth
-					} else {
-						$spouselinks .= "''" . ","; // age =  Undefined
-					}
-					$spouselinks .= "'" . (($child->getDeathDate()->minJD() + $child->getDeathDate()->maxJD()) / 2) . "',"; // dod = Date of Death
-					$spouselinks .= "''" . ","; // occu  = Occupation
-					$spouselinks .= "'" . Filter::escapeHtml($child->getBirthPlace()) . "'" . ","; // birthpl = Individuals Birthplace
-					if (isset($ChildFBP)) {
-						$spouselinks .= "'" . Filter::escapeHtml($ChildFBP) . "'" . ","; // fbirthpl = Fathers Birthplace
-					} else {
-						$spouselinks .= "'UNK, UNK, UNK, UNK'" . ","; // fbirthpl = Fathers Birthplace Not Known
-					}
-					if (isset($ChildMBP)) {
-						$spouselinks .= "'" . Filter::escapeHtml($ChildMBP) . "'" . ","; // mbirthpl = Mothers Birthplace
-					} else {
-						$spouselinks .= "'UNK, UNK, UNK, UNK'" . ","; // mbirthpl = Mothers Birthplace Not Known
-					}
-					if (isset($chBLDarray) && $child->getSex() == "F") {
-						$chBLDarray = implode("::", $chBLDarray);
-						$spouselinks .= "'" . $chBLDarray . "'"; // Array of Children (name, birthdate, deathdate)
-					} else {
-						$spouselinks .= "''";
-					}
-					$spouselinks .= ");\">";
-					$spouselinks .= $child->getFullName();
-					$spouselinks .= "</a>";
-					$spouselinks .= "</li>";
-				} else {
-					$spouselinks .= I18N::translate('Private');
 				}
+				$spouselinks .= "<a href=\"#\" onclick=\"return insertRowToTable(";
+				$spouselinks .= "'" . $child->getXref() . "',";
+				$spouselinks .= "'" . $fulln . "',";
+				$spouselinks .= "'" . $chfulmn . "',";
+				if ($currpid === 'Son' || $currpid === 'Daughter') {
+					if ($child->getSex() === 'M') {
+						$spouselinks .= "'Grand-Son',"; // label = Male Relationship
+					} else {
+						$spouselinks .= "'Grand-Daughter',"; // label = Female Relationship
+					}
+				} else {
+					if ($child->getSex() === 'M') {
+						$spouselinks .= "'Nephew',"; // label = Male Relationship
+					} else {
+						$spouselinks .= "'Niece',"; // label = Female Relationship
+					}
+				}
+				$spouselinks .= "'" . $child->getSex() . "',"; // sex = Gender
+				$spouselinks .= "''" . ","; // cond = Condition (Married etc)
+				if ($marrdate) {
+					$spouselinks .= "'" . (($marrdate->minJD() + $marrdate->maxJD()) / 2) . "',"; // dom = Date of Marriage (Julian)
+				} else {
+					$spouselinks .= "'nm'" . ",";
+				}
+				$spouselinks .= "'" . (($child->getBirthDate()->minJD() + $child->getBirthDate()->maxJD()) / 2) . "',"; // dob = Date of Birth
+				if ($child->getbirthyear() >= 1) {
+					$spouselinks .= "'" . ($censyear - $child->getbirthyear()) . "',"; // age =  Census Year - Year of Birth
+				} else {
+					$spouselinks .= "''" . ","; // age =  Undefined
+				}
+				$spouselinks .= "'" . (($child->getDeathDate()->minJD() + $child->getDeathDate()->maxJD()) / 2) . "',"; // dod = Date of Death
+				$spouselinks .= "''" . ","; // occu  = Occupation
+				$spouselinks .= "'" . Filter::escapeHtml($child->getBirthPlace()) . "'" . ","; // birthpl = Individuals Birthplace
+				if (isset($ChildFBP)) {
+					$spouselinks .= "'" . Filter::escapeHtml($ChildFBP) . "'" . ","; // fbirthpl = Fathers Birthplace
+				} else {
+					$spouselinks .= "'UNK, UNK, UNK, UNK'" . ","; // fbirthpl = Fathers Birthplace Not Known
+				}
+				if (isset($ChildMBP)) {
+					$spouselinks .= "'" . Filter::escapeHtml($ChildMBP) . "'" . ","; // mbirthpl = Mothers Birthplace
+				} else {
+					$spouselinks .= "'UNK, UNK, UNK, UNK'" . ","; // mbirthpl = Mothers Birthplace Not Known
+				}
+				if (isset($chBLDarray) && $child->getSex() === 'F') {
+					$chBLDarray = implode("::", $chBLDarray);
+					$spouselinks .= "'" . $chBLDarray . "'"; // Array of Children (name, birthdate, deathdate)
+				} else {
+					$spouselinks .= "''";
+				}
+				$spouselinks .= ");\">";
+				$spouselinks .= $child->getFullName();
+				$spouselinks .= "</a>";
+				$spouselinks .= "</li>";
 			}
-			$spouselinks .= "</ul>";
+			$spouselinks .= '</ul>';
 		}
-		if ($persons != 'Yes') {
+		if ($persons !== 'Yes') {
 			$spouselinks  .= '(' . I18N::translate('none') . ')</td></tr></table>';
 		} else {
 			$spouselinks  .= '</td></tr></table>';
 		}
 
-		if ($person_parent != 'Yes') {
+		if ($person_parent !== 'Yes') {
 			$parentlinks .= '(' . I18N::translate_c('unknown family', 'unknown') . ')</td></tr></table>';
 		} else {
 			$parentlinks .= '</td></tr></table>';
 		}
 
-		if ($person_step != 'Yes') {
+		if ($person_step !== 'Yes') {
 			$step_parentlinks .= '(' . I18N::translate_c('unknown family', 'unknown') . ')</td></tr></table>';
 		} else {
 			$step_parentlinks .= '</td></tr></table>';
