@@ -351,7 +351,7 @@ class Tree {
 	 */
 	public static function findById($tree_id) {
 		foreach (self::getAll() as $tree) {
-			if ($tree->tree_id === $tree_id) {
+			if ($tree->tree_id == $tree_id) {
 				return $tree;
 			}
 		}
