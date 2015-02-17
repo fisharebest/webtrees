@@ -171,23 +171,8 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 			echo '</td>';
 			echo '<td valign="top" width="30%">';
 			echo '<div id="map_content">';
-			$famids = array();
-			$families = $controller->record->getSpouseFamilies();
-			foreach ($families as $family) {
-				$famids[] = $family->getXref();
-			}
-			$indifacts = array();
-			foreach ($controller->record->getFacts() as $fact) {
-				$indifacts[] = $fact;
-			}
-			foreach ($controller->record->getSpouseFamilies() as $family) {
-				foreach ($family->getFacts() as $fact) {
-					$indifacts[] = $fact;
-				}
-			}
-			sort_facts($indifacts);
 
-			$this->buildIndividualMap($controller->record, $indifacts, $famids);
+			$this->buildIndividualMap($controller->record);
 			echo '</div>';
 			echo '</td>';
 			echo '</tr></table>';
@@ -1900,11 +1885,16 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 
 	/**
 	 * @param Individual $indi
-	 * @param Fact[]     $indifacts
-	 * @param string[]   $famids
 	 */
-	private function buildIndividualMap(Individual $indi, $indifacts, $famids) {
+	private function buildIndividualMap(Individual $indi) {
 		$GM_MAX_ZOOM = $this->getSetting('GM_MAX_ZOOM');
+
+		$indifacts = $indi->getFacts();
+		foreach ($indi->getSpouseFamilies() as $family) {
+			$indifacts = array_merge($indifacts, $family->getFacts());
+		}
+
+		sort_facts($indifacts);
 
 		// Create the markers list array
 		$gmarks = array();
@@ -1971,8 +1961,7 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 		}
 
 		// Add children to the markers list array
-		foreach ($famids as $xref) {
-			$family = Family::getInstance($xref);
+		foreach ($indi->getSpouseFamilies() as $family) {
 			foreach ($family->getChildren() as $child) {
 				$birth = $child->getFirstFact('BIRT');
 				if ($birth) {
@@ -2437,25 +2426,23 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 		// Create the normal googlemap sidebar of events and children
 		echo '<div style="overflow: auto; overflow-x: hidden; overflow-y: auto; height:', $this->getSetting('GM_YSIZE'), 'px;"><table class="facts_table">';
 
-		foreach ($location_groups as $key=>$location_group) {
-			foreach ($location_group as $gmark) {
-				echo '<tr>';
-				echo '<td class="facts_label">';
-				echo '<a href="#" onclick="myclick(\'', Filter::escapeHtml($key), '\')">', $gmark['fact_label'], '</a></td>';
-				echo '<td class="', $gmark['class'], '" style="white-space: normal">';
-				if ($gmark['info']) {
-					echo '<span class="field">', Filter::escapeHtml($gmark['info']), '</span><br>';
-				}
-				if ($gmark['name']) {
-					echo $gmark['name'], '<br>';
-				}
-				echo $gmark['place'], '<br>';
-				if ($gmark['date']) {
-					echo $gmark['date'], '<br>';
-				}
-				echo '</td>';
-				echo '</tr>';
+		foreach ($gmarks as $gmark) {
+			echo '<tr>';
+			echo '<td class="facts_label">';
+			echo '<a href="#" onclick="myclick(\'', Filter::escapeHtml($key), '\')">', $gmark['fact_label'], '</a></td>';
+			echo '<td class="', $gmark['class'], '" style="white-space: normal">';
+			if ($gmark['info']) {
+				echo '<span class="field">', Filter::escapeHtml($gmark['info']), '</span><br>';
 			}
+			if ($gmark['name']) {
+				echo $gmark['name'], '<br>';
+			}
+			echo $gmark['place'], '<br>';
+			if ($gmark['date']) {
+				echo $gmark['date'], '<br>';
+			}
+			echo '</td>';
+			echo '</tr>';
 		}
 		echo '</table></div><br>';
 	}
