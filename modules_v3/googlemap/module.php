@@ -726,10 +726,6 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 
 		$MAX_PEDIGREE_GENERATIONS = $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS');
 
-		// Default is show for both of these.
-		$hideflags = Filter::getBool('hideflags');
-		$hidelines = Filter::getBool('hidelines');
-
 		$controller = new PedigreeController;
 
 		// Start of internal configuration variables
@@ -762,12 +758,6 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 					<td class="descriptionbox wrap">
 						<?php echo I18N::translate('Generations'); ?>
 					</td>
-					<td class="descriptionbox wrap">
-						<?php echo I18N::translate('Hide flags'); ?>
-					</td>
-					<td class="descriptionbox wrap">
-						<?php echo I18N::translate('Hide lines'); ?>
-					</td>
 				</tr>
 				<tr>
 					<td class="optionbox">
@@ -787,29 +777,9 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 						?>
 						</select>
 					</td>
-					<td class="optionbox wrap">
-						<?php
-						echo '<input name="hideflags" type="checkbox" value="1" ';
-						echo $hideflags ? 'checked' : '';
-						echo '>';
-						?>
-						<p class="small text-muted">
-							<?php echo I18N::translate('Hide the flags that are configured in the googlemap module.  Usually these are for countries and states.  This serves as a visual cue that the markers around the flag are from the general area, and not the specific spot.'); ?>
-						</p>
-					</td>
-					<td class="optionbox wrap">
-						<?php
-						echo '<input name="hidelines" type="checkbox" value="1" ';
-						echo $hidelines ? 'checked' : '';
-						echo '>';
-						?>
-						<p class="small text-muted">
-							<?php echo I18N::translate('Hide the lines connecting the child to each parent if they exist on the map.'); ?>
-						</p>
-					</td>
 				</tr>
 				<tr>
-					<td class="topbottombar" colspan="5">
+					<td class="topbottombar" colspan="3">
 						<input type="submit" value="<?php echo I18N::translate('View'); ?>">
 					</td>
 				</tr>
@@ -937,16 +907,13 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 		<!-- Start of map scripts -->
 		<?php
 		echo '<script src="', $this->googleMapsScript(), '"></script>';
-		$controller->addInlineJavascript($this->pedigreeMapJavascript($hideflags, $hidelines));
+		$controller->addInlineJavascript($this->pedigreeMapJavascript());
 	}
 
 	/**
-	 * @param boolean $hideflags
-	 * @param boolean $hidelines
-	 *
 	 * @return string
 	 */
-	private function pedigreeMapJavascript($hideflags, $hidelines) {
+	private function pedigreeMapJavascript() {
 		global $controller, $PEDIGREE_GENERATIONS;
 
 		// The HomeControl returns the map to the original position and style
@@ -1335,7 +1302,6 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 		$lat        = array();
 		$lon        = array();
 		$latlongval = array();
-		$flags      = array();
 		for ($i = 0; $i < $controller->treesize; $i++) {
 			// moved up to grab the sex of the individuals
 			$person = $controller->ancestors[$i];
@@ -1368,22 +1334,6 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 					$lat[$i] = (double) str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval[$i]->pl_lati);
 					$lon[$i] = (double) str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval[$i]->pl_long);
 					if ($lat[$i] || $lon[$i]) {
-						if (!$hideflags && $latlongval[$i]->pl_icon) {
-							$flags[$i] = $latlongval[$i]->pl_icon;
-							$ffile = strrchr($latlongval[$i]->pl_icon, '/');
-							$ffile = substr($ffile, 1, strpos($ffile, '.') - 1);
-							if (empty($flags[$ffile])) {
-								$flags[$ffile] = $i; // Only generate the flag once
-								$js .= 'var point = new google.maps.LatLng(' . $lat[$i] . ',' . $lon[$i] . ');';
-								$js .= 'var Marker1_0_flag = new google.maps.MarkerImage();';
-								$js .= 'Marker1_0_flag.image = "' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/' . $flags[$i] . '";';
-								$js .= 'Marker1_0_flag.shadow = "' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/flag_shadow.png";';
-								$js .= 'Marker1_0_flag.iconSize = new google.maps.Size(25, 15);';
-								$js .= 'Marker1_0_flag.shadowSize = new google.maps.Size(35, 45);';
-								$js .= 'Marker1_0_flag.iconAnchor = new google.maps.Point(12, 15);';
-								$js .= 'var Marker1_0 = new google.maps.LatLng(point, {icon:Marker1_0_flag});';
-							}
-						}
 						$marker_number = $curgen;
 						$dups          = 0;
 						for ($k = 0; $k < $i; $k++) {
@@ -1415,18 +1365,11 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 						$js .= "var marker = createMarker(point, \"" . Filter::escapeJs($name) . "\",\"<div>" . $dataleft . $datamid . $dataright . "</div>\", \"";
 						$js .= "<div class='iwstyle'>";
 						$js .= "<a href='module.php?ged=" . WT_GEDURL . "&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=" . $person->getXref() . "&amp;PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}";
-						if ($hideflags) {
-							$js .= '&amp;hideflags=1';
-						}
-						if ($hidelines) {
-							$js .= '&amp;hidelines=1';
-						}
 						$js .= "' title='" . I18N::translate('Pedigree map') . "'>" . $dataleft . "</a>" . $datamid . $dataright . "</div>\", \"" . $marker_number . "\");";
 						// Construct the polygon lines
-						if (!$hidelines) {
-							$to_child = (intval(($i - 1) / 2)); // Draw a line from parent to child
-							if (array_key_exists($to_child, $lat) && $lat[$to_child] != 0 && $lon[$to_child] != 0) {
-								$js .= '
+						$to_child = (intval(($i - 1) / 2)); // Draw a line from parent to child
+						if (array_key_exists($to_child, $lat) && $lat[$to_child] != 0 && $lon[$to_child] != 0) {
+							$js .= '
 								var linecolor;
 								var plines;
 								var lines = [new google.maps.LatLng('.$lat[$i] . ',' . $lon[$i] . '),
@@ -1441,7 +1384,6 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 									fillOpacity: 0.1
 								});
 								plines.setMap(pm_map);';
-							}
 						}
 						// Extend and fit marker bounds
 						$js .= 'bounds.extend(point);';
@@ -1814,7 +1756,7 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 	/**
 	 * Does an individual (or their spouse-families) have any facts with places?
 	 *
-	 * @oaram Individual $individual
+	 * @param Individual $individual
 	 *
 	 * @return string
 	 */

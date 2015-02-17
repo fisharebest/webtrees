@@ -33,7 +33,9 @@ namespace Fisharebest\Webtrees;
 						} else {
 							var win02 = window.open(
 								"module.php?mod=GEDFact_assistant&mod_action=_CENS/census_3_find&callback=paste_id&action=filter&filter="+txt, "win02", "resizable=1, menubar=0, scrollbars=1, top=180, left=600, height=400, width=450 ");
-							if (window.focus) {win02.focus();}
+							if (window.focus) {
+								win02.focus();
+							}
 						}
 					}
 				</script>
