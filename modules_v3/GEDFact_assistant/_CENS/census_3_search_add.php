@@ -83,13 +83,10 @@ namespace Fisharebest\Webtrees;
 						$chBLDarray = Array();
 						foreach ($family->getChildren() as $child) {
 							$chnam   = $child->getAllNames();
-							$chfulln = rtrim($chnam[0]['givn'], '*') . " " . $chnam[0]['surname'];
-							$chfulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $chfulln);
-							$chfulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $chfulln);
-							$chfulln = Filter::escapeHtml($chfulln); // Child’s Full Name
-							$chdob   = ($child->getBirthDate()->minJD() + $child->getBirthDate()->maxJD()) / 2; // Child’s Date of Birth (Julian)
-							$chdod   = ($child->getDeathDate()->minJD() + $child->getDeathDate()->maxJD()) / 2; // Child’s Date of Death (Julian)
-							$chBLD   = ($chfulln . ", " . $chdob . ", " . $chdod);
+							$chfulln = strip_tags($chnam[0]['full']); // Child’s Full Name
+							$chdob   = $child->getBirthDate()->JD(); // Child’s Date of Birth (Julian)
+							$chdod   = $child->getDeathDate()->JD(); // Child’s Date of Death (Julian)
+							$chBLD   = $chfulln . ', ' . $chdob . ', ' . $chdod;
 							array_push($chBLDarray, $chBLD);
 						}
 
@@ -135,12 +132,12 @@ namespace Fisharebest\Webtrees;
 								</td>
 								<td align="left" class="facts_value nowrap">
 									<a href='#' onclick='return insertRowToTable(
-										"<?php echo $gparent->getXref(); /* pid = PID */ ?>",
-										"<?php echo $fulln; /* nam = Full Name */ ?>",
-										"<?php echo $fulmn; /* mnam = Full Married Name */ ?>",
+										"<?php echo $gparent->getXref(); ?>",
+										"<?php echo $fulln; ?>",
+										"<?php echo $fulmn; ?>",
 										"<?php echo $person === $gparent ? 'head': Filter::escapeHtml($label); ?>",
-										"<?php echo $gparent->getSex(); /* gend = Gender */ ?>",
-										"<?php echo $married >= 0 ? 'M' : 'S'; /* cond = Condition (Married) (Single) */ ?>",
+										"<?php echo $gparent->getSex(); ?>",
+										"<?php echo $married >= 0 ? 'M' : 'S'; ?>",
 										"<?php echo $marrdate->JD(); ?>",
 										"<?php echo $gparent->getBirthDate()->JD(); ?>",
 										"<?php echo $censyear - $gparent->getbirthyear(); ?>",
@@ -259,13 +256,13 @@ namespace Fisharebest\Webtrees;
 									$chfulln = strip_tags($chnam[0]['full']); // Child’s Full Name
 									$chdob   = $chchild->getBirthDate()->JD(); // Child’s Date of Birth (Julian)
 									$chdod   = $chchild->getDeathDate()->JD(); // Child’s Date of Death (Julian)
-									$chBLD   = ($chfulln . ", " . $chdob . ", " . $chdod);
+									$chBLD   = $chfulln . ', ' . $chdob . ', ' . $chdod;
 									array_push($chBLDarray, $chBLD);
 								}
 							}
 
 							// Get child’s marriage status ----
-							$married = '';
+							$married  = '';
 							$marrdate = '';
 							foreach ($child->getSpouseFamilies() as $childfamily) {
 								$marrdate = $childfamily->getMarriageDate();
@@ -273,11 +270,10 @@ namespace Fisharebest\Webtrees;
 							}
 							$nam   = $child->getAllNames();
 							$fulln = strip_tags($nam[0]['full']);
-							$chfulmn = $fulln;
-							$chnam = $child->getAllNames();
-							foreach ($chnam as $n) {
+							$fulmn = $fulln;
+							foreach ($nam as $n) {
 								if ($n['type'] === '_MARNM') {
-									$chfulmn = strip_tags($n['full']);
+									$fulmn = strip_tags($n['full']);
 								}
 							}
 							$label = get_close_relationship_name($person, $child);
@@ -300,9 +296,9 @@ namespace Fisharebest\Webtrees;
 								</td>
 								<td align="left" class="facts_value nowrap">
 									<a href='#' onclick='return insertRowToTable(
-										"<?php echo $child->getXref(); /* pid = PID */ ?>",
-										"<?php echo $fulln; /* nam = Full Name */ ?>",
-										"<?php echo $chfulmn; /* mnam = Full Married Name */ ?>",
+										"<?php echo $child->getXref(); ?>",
+										"<?php echo $fulln; ?>",
+										"<?php echo $fulmn; ?>",
 										"<?php echo $person === $child ? 'head' : Filter::escapeHtml($label); ?>",
 										"<?php echo $child->getSex(); ?>",
 										"<?php echo $married >= 0 ? 'M' : 'S'; ?>",
@@ -343,13 +339,10 @@ namespace Fisharebest\Webtrees;
 						$chBLDarray = Array();
 						foreach ($family->getChildren() as $child) {
 							$chnam   = $child->getAllNames();
-							$chfulln = rtrim($chnam[0]['givn'], '*') . " " . $chnam[0]['surname'];
-							$chfulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $chfulln);
-							$chfulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $chfulln);
-							$chfulln = Filter::escapeHtml($chfulln); // Child’s Full Name
+							$chfulln = strip_tags($chnam[0]['full']); // Child’s Full Name
 							$chdob   = $child->getBirthDate()->JD(); // Child’s Date of Birth (Julian)
 							$chdod   = $child->getDeathDate()->JD(); // Child’s Date of Death (Julian)
-							$chBLD   = ($chfulln . ", " . $chdob . ", " . $chdod);
+							$chBLD   = $chfulln . ', ' . $chdob . ', ' . $chdod;
 							array_push($chBLDarray, $chBLD);
 						}
 
@@ -457,9 +450,9 @@ namespace Fisharebest\Webtrees;
 
 							//-- Step Wifes Details --------------------------------------
 							$married = Date::Compare($censdate, $marrdate);
-							$nam   = $gparent->getAllNames();
-							$fulln = strip_tags($nam[0]['full']);
-							$fulmn = $fulln;
+							$nam     = $gparent->getAllNames();
+							$fulln   = strip_tags($nam[0]['full']);
+							$fulmn   = $fulln;
 							foreach ($nam as $n) {
 								if ($n['type'] === '_MARNM') {
 									$fulmn = strip_tags($n['full']);
@@ -530,23 +523,20 @@ namespace Fisharebest\Webtrees;
 								$chchildren = $childfamily->getChildren();
 								foreach ($chchildren as $chchild) {
 									$chnam   = $chchild->getAllNames();
-									$chfulln = rtrim($chnam[0]['givn'], '*') . " " . $chnam[0]['surname'];
-									$chfulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $chfulln);
-									$chfulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $chfulln);
-									$chfulln = Filter::escapeHtml($chfulln); // Child’s Full Name
-									$chdob   = ($chchild->getBirthDate()->minJD() + $chchild->getBirthDate()->maxJD()) / 2; // Child’s Date of Birth (Julian)
-									$chdod   = ($chchild->getDeathDate()->minJD() + $chchild->getDeathDate()->maxJD()) / 2; // Child’s Date of Death (Julian)
-									$chBLD   = ($chfulln . ", " . $chdob . ", " . $chdod);
+									$chfulln = strip_tags($chnam[0]['full']); // Child’s Full Name
+									$chdob   = $chchild->getBirthDate()->JD(); // Child’s Date of Birth (Julian)
+									$chdod   = $chchild->getDeathDate()->JD(); // Child’s Date of Death (Julian)
+									$chBLD   = $chfulln . ', ' . $chdob . ', ' . $chdod;
 									array_push($chBLDarray, $chBLD);
 								}
 							}
 
 							$nam   = $child->getAllNames();
-							$fulln = strip_tags($nam[0]['full']);
-							$chfulmn   = $fulln;
+							$fulln   = strip_tags($nam[0]['full']);
+							$fulmn   = $fulln;
 							foreach ($nam as $n) {
 								if ($n['type'] === '_MARNM') {
-									$chfulmn = strip_tags($n['full']);
+									$fulmn = strip_tags($n['full']);
 								}
 							}
 							$label = get_close_relationship_name($person, $child);
@@ -580,7 +570,7 @@ namespace Fisharebest\Webtrees;
 									<a href='#' onclick='return insertRowToTable(
 										"<?php echo $child->getXref(); ?>",
 										"<?php echo $fulln; ?>",
-										"<?php echo $chfulmn; ?>",
+										"<?php echo $fulmn; ?>",
 										"<?php echo $person === $child ? 'head' : Filter::escapeHtml($label); ?>",
 										"<?php echo $child->getSex(); ?>",
 										"",
@@ -625,13 +615,10 @@ namespace Fisharebest\Webtrees;
 						$chBLDarray = Array();
 						foreach ($family->getChildren() as $child) {
 							$chnam   = $child->getAllNames();
-							$chfulln = rtrim($chnam[0]['givn'], '*') . " " . $chnam[0]['surname'];
-							$chfulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $chfulln);
-							$chfulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $chfulln);
-							$chfulln = Filter::escapeHtml($chfulln); // Child’s Full Name
-							$chdob   = ($child->getBirthDate()->minJD() + $child->getBirthDate()->maxJD()) / 2; // Child’s Date of Birth (Julian)
-							$chdod   = ($child->getDeathDate()->minJD() + $child->getDeathDate()->maxJD()) / 2; // Child’s Date of Death (Julian)
-							$chBLD   = ($chfulln . ", " . $chdob . ", " . $chdod);
+							$chfulln = strip_tags($chnam[0]['full']); // Child’s Full Name
+							$chdob   = $child->getBirthDate()->JD(); // Child’s Date of Birth (Julian)
+							$chdod   = $child->getDeathDate()->JD(); // Child’s Date of Death (Julian)
+							$chBLD   = $chfulln . ', ' . $chdob . ', ' . $chdod;
 							array_push($chBLDarray, $chBLD);
 						}
 
@@ -691,6 +678,7 @@ namespace Fisharebest\Webtrees;
 								<td align="left" class="facts_value nowrap">
 									<a href='#' onclick='return insertRowToTable(
 										"<?php echo $gparent->getXref(); ?>",
+										"<?php echo $fulln; ?>",
 										"<?php echo $fulmn; ?>",
 										"<?php echo $person === $gparent ? 'head' : Filter::escapeHtml($label); ?>",
 										"<?php echo $gparent->getSex(); ?>",
@@ -829,13 +817,10 @@ namespace Fisharebest\Webtrees;
 								$chchildren = $childfamily->getChildren();
 								foreach ($chchildren as $chchild) {
 									$chnam   = $chchild->getAllNames();
-									$chfulln = rtrim($chnam[0]['givn'], '*') . " " . $chnam[0]['surname'];
-									$chfulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $chfulln);
-									$chfulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $chfulln);
-									$chfulln = Filter::escapeHtml($chfulln); // Child’s Full Name// Child’s Full Name
-									$chdob   = ($chchild->getBirthDate()->minJD() + $chchild->getBirthDate()->maxJD()) / 2; // Child’s Date of Birth (Julian)
-									$chdod   = ($chchild->getDeathDate()->minJD() + $chchild->getDeathDate()->maxJD()) / 2; // Child’s Date of Death (Julian)
-									$chBLD   = ($chfulln . ", " . $chdob . ", " . $chdod);
+									$chfulln = strip_tags($chnam[0]['full']); // Child’s Full Name// Child’s Full Name
+									$chdob   = $chchild->getBirthDate()->JD(); // Child’s Date of Birth (Julian)
+									$chdod   = $chchild->getDeathDate()->JD(); // Child’s Date of Death (Julian)
+									$chBLD   = $chfulln . ', ' . $chdob . ', ' . $chdod;
 									array_push($chBLDarray, $chBLD);
 								}
 							}
@@ -843,10 +828,10 @@ namespace Fisharebest\Webtrees;
 							// Get Spouse child’s details
 							$nam   = $child->getAllNames();
 							$fulln = strip_tags($nam[0]['full']);
-							$chfulmn   = $fulln;
+							$fulmn = $fulln;
 							foreach ($nam as $n) {
 								if ($n['type'] === '_MARNM') {
-									$chfulmn = strip_tags($n['full']);
+									$fulmn = strip_tags($n['full']);
 								}
 							}
 							$label = get_close_relationship_name($person, $child);
@@ -873,7 +858,7 @@ namespace Fisharebest\Webtrees;
 									<a href='#' onclick='return insertRowToTable(
 										"<?php echo $child->getXref(); ?>",
 										"<?php echo $fulln; ?>",
-										"<?php echo $chfulmn; ?>",
+										"<?php echo $fulmn; ?>",
 										"<?php echo $person === $child ? 'head' : Filter::escapeHtml($label); ?>",
 										"<?php echo $child->getSex(); ?>",
 										"<?php echo $married >= 0 ? 'M' : 'S'; ?>",
@@ -975,13 +960,10 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 				$chBLDarray = Array();
 				foreach ($children as $child) {
 					$chnam   = $child->getAllNames();
-					$chfulln = rtrim($chnam[0]['givn'], '*') . " " . $chnam[0]['surname'];
-					$chfulln = str_replace('"', "", $chfulln); // Must remove quotes completely here
-					$chfulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $chfulln);
-					$chfulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $chfulln);
-					$chdob   = ($child->getBirthDate()->minJD() + $child->getBirthDate()->maxJD()) / 2;
-					$chdod   = ($child->getDeathDate()->minJD() + $child->getDeathDate()->maxJD()) / 2;
-					$chBLD   = ($chfulln . ", " . $chdob . ", " . $chdod);
+					$chfulln = strip_tags($chnam[0]['full']);
+					$chdob   = $child->getBirthDate()->JD();
+					$chdod   = $child->getDeathDate()->JD();
+					$chBLD   = $chfulln . ', ' . $chdob . ', ' . $chdod;
 					array_push($chBLDarray, $chBLD);
 				}
 			}
@@ -1068,25 +1050,18 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 
 					// Parent Wifes Details
 					$person_parent = 'Yes';
-					$nam   = $wife->getAllNames();
-					$fulln = rtrim($nam[0]['givn'], '*') . ' ' . $nam[0]['surname'];
-					$fulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-					$fulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-
-					for ($i = 0; $i < count($nam); $i++) {
-						if ($nam[$i]['type'] === '_MARNM') {
-							$fulmn = rtrim($nam[$i]['givn'], '*') . ' ' . $nam[$i]['surname'];
+					$nam           = $wife->getAllNames();
+					$fulln         = strip_tags($nam[0]['full']);
+					$fulmn         = $fulln;
+					foreach ($nam as $n) {
+						if ($n['type'] === '_MARNM') {
+							$fulmn = strip_tags($n['full']);
 						}
 					}
-
 					$parentlinks .= "<a class=\"linka\" href=\"#\" onclick=\"return insertRowToTable(";
 					$parentlinks .= "'" . $wife->getXref() . "',"; // pid = PID
-					$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',";
-					if (isset($fulmn)) {
-						$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulmn)) . "',";
-					} else {
-						$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',";
-					}
+					$parentlinks .= "'" . $fulln . "',";
+					$parentlinks .= "'" . $fulmn . "',";
 					if ($currpid === 'Wife' || $currpid === 'Husband') {
 						$parentlinks .= "'Mother in Law',"; // label = 1st Gen Female Relationship
 					} else {
@@ -1142,13 +1117,10 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 				$chBLDarray = Array();
 				foreach ($children as $child) {
 					$chnam   = $child->getAllNames();
-					$chfulln = rtrim($chnam[0]['givn'], '*') . " " . $chnam[0]['surname'];
-					$chfulln = str_replace('"', "", $chfulln); // Must remove quotes completely here
-					$chfulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $chfulln);
-					$chfulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $chfulln);
-					$chdob   = ($child->getBirthDate()->minJD() + $child->getBirthDate()->maxJD()) / 2;
-					$chdod   = ($child->getDeathDate()->minJD() + $child->getDeathDate()->maxJD()) / 2;
-					$chBLD   = ($chfulln . ", " . $chdob . ", " . $chdod);
+					$chfulln = strip_tags($chnam[0]['full']);
+					$chdob   = $child->getBirthDate()->JD();
+					$chdod   = $child->getDeathDate()->JD();
+					$chBLD   = $chfulln . ', ' . $chdob . ', ' . $chdod;
 					array_push($chBLDarray, $chBLD);
 				}
 			}
@@ -1170,22 +1142,17 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 						//-- Step Husband Details ------------------------------
 						$person_step = 'Yes';
 						$nam   = $husb->getAllNames();
-						$fulln = rtrim($nam[0]['givn'], '*') . ' ' . $nam[0]['surname'];
-						$fulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-						$fulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-						for ($i = 0; $i < count($nam); $i++) {
-							if ($nam[$i]['type'] === '_MARNM') {
-								$fulmn = rtrim($nam[$i]['givn'], '*') . ' ' . $nam[$i]['surname'];
+						$fulln   = strip_tags($nam[0]['full']);
+						$fulmn   = $fulln;
+						foreach ($nam as $n) {
+							if ($n['type'] === '_MARNM') {
+								$fulmn = strip_tags($n['full']);
 							}
 						}
 						$parentlinks .= "<a class=\"linka\" href=\"#\" onclick=\"return insertRowToTable(";
 						$parentlinks .= "'" . $husb->getXref() . "',"; // pid = PID
 						$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',"; // nam = Name
-						if (isset($fulmn)) {
-							$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',"; // mnam = Full Married Name
-						} else {
-							$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',"; // mnam = Full Name
-						}
+						$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulmn)) . "',"; // nam = Name
 						if ($currpid === 'Wife' || $currpid === 'Husband') {
 							$parentlinks .= "'Step Father-in-Law',"; // label = 1st Gen Male Relationship
 						} else {
@@ -1246,24 +1213,17 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 						// Step Wife Details
 						$person_step = 'Yes';
 						$nam   = $wife->getAllNames();
-						$fulln = rtrim($nam[0]['givn'], '*') . ' ' . $nam[0]['surname'];
-						$fulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-						$fulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-
-						for ($i = 0; $i < count($nam); $i++) {
-							if ($nam[$i]['type'] === '_MARNM') {
-								$fulmn = rtrim($nam[$i]['givn'], '*') . ' ' . $nam[$i]['surname'];
+						$fulln   = strip_tags($nam[0]['full']);
+						$fulmn   = $fulln;
+						foreach ($nam as $n) {
+							if ($n['type'] === '_MARNM') {
+								$fulmn = strip_tags($n['full']);
 							}
 						}
-
 						$parentlinks .= "<a class=\"linka\" href=\"#\" onclick=\"return insertRowToTable(";
 						$parentlinks .= "'" . $wife->getXref() . "',"; // pid = PID
-						$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',"; // nam = Name
-						if (isset($fulmn)) {
-							$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulmn)) . "',"; // mnam = Full Married Name
-						} else {
-							$parentlinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',"; // mnam = Full Name
-						}
+						$parentlinks .= "'" . $fulln . "',"; // nam = Name
+						$parentlinks .= "'" . $fulmn . "',"; // nam = Name
 						if ($currpid === 'Wife' || $currpid === 'Husband') {
 							$parentlinks .= "'Step Mother-in-Law',"; // label = 1st Gen Female Relationship
 						} else {
@@ -1319,13 +1279,10 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 				$chBLDarray = Array();
 				foreach ($children as $child) {
 					$chnam   = $child->getAllNames();
-					$chfulln = rtrim($chnam[0]['givn'], '*') . " " . $chnam[0]['surname'];
-					$chfulln = str_replace('"', "", $chfulln); // Must remove quotes completely here
-					$chfulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $chfulln);
-					$chfulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $chfulln); // Child’s Full Name
-					$chdob   = ($child->getBirthDate()->minJD() + $child->getBirthDate()->maxJD()) / 2; // Child’s Date of Birth (Julian)
-					$chdod   = ($child->getDeathDate()->minJD() + $child->getDeathDate()->maxJD()) / 2; // Child’s Date of Death (Julian)
-					$chBLD   = ($chfulln . ", " . $chdob . ", " . $chdod);
+					$chfulln = strip_tags($chnam[0]['full']); // Child’s Full Name
+					$chdob   = $child->getBirthDate()->JD(); // Child’s Date of Birth (Julian)
+					$chdod   = $child->getDeathDate()->JD(); // Child’s Date of Death (Julian)
+					$chBLD   = $chfulln . ', ' . $chdob . ', ' . $chdod;
 					array_push($chBLDarray, $chBLD);
 				}
 			}
@@ -1346,27 +1303,17 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 
 					// Spouse Details
 					$nam   = $spouse->getAllNames();
-					$fulln = rtrim($nam[0]['givn'], '*') . ' ' . $nam[0]['surname'];
-					$fulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-					$fulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-
-					// If spouse is a wife, then get her married name or default to her birth name
-					for ($i = 0; $i < count($nam); $i++) {
-						if ($nam[$i]['type'] === '_MARNM' && $is_wife) {
-							$fulmn = rtrim($nam[$i]['givn'], '*') . ' ' . $nam[$i]['surname'];
-						} else {
-							$fulmn = $fulln;
+					$fulln   = strip_tags($nam[0]['full']);
+					$fulmn   = $fulln;
+					foreach ($nam as $n) {
+						if ($n['type'] === '_MARNM') {
+							$fulmn = strip_tags($n['full']);
 						}
 					}
-
 					$spouselinks .= "<a href=\"#\" onclick=\"return insertRowToTable(";
 					$spouselinks .= "'" . $spouse->getXref() . "',"; // pid = PID
-					$spouselinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',";
-					if (isset($fulmn)) {
-						$spouselinks .= "'" . Filter::escapeHtml(strip_tags($fulmn)) . "',";
-					} else {
-						$spouselinks .= "'" . Filter::escapeHtml(strip_tags($fulln)) . "',";
-					}
+					$spouselinks .= "'" . $fulln . "',";
+					$spouselinks .= "'" . $fulmn . "',";
 					if ($currpid === 'Son' || $currpid === 'Daughter') {
 						if ($spouse->getSex() === 'M') {
 							$spouselinks .= "'Son in Law',"; // label = Male Relationship
@@ -1439,13 +1386,10 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 					$chchildren = $childfamily->getChildren();
 					foreach ($chchildren as $chchild) {
 						$chnam   = $chchild->getAllNames();
-						$chfulln = rtrim($chnam[0]['givn'], '*') . " " . $chnam[0]['surname'];
-						$chfulln = str_replace('"', "", $chfulln); // Must remove quotes completely here
-						$chfulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $chfulln);
-						$chfulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $chfulln); // Child’s Full Name
-						$chdob   = ($chchild->getBirthDate()->minJD() + $chchild->getBirthDate()->maxJD()) / 2; // Child’s Date of Birth (Julian)
-						$chdod   = ($chchild->getDeathDate()->minJD() + $chchild->getDeathDate()->maxJD()) / 2; // Child’s Date of Death (Julian)
-						$chBLD   = ($chfulln . ", " . $chdob . ", " . $chdod);
+						$chfulln = strip_tags($chnam[0]['full']); // Child’s Full Name
+						$chdob   = $chchild->getBirthDate()->JD(); // Child’s Date of Birth (Julian)
+						$chdod   = $chchild->getDeathDate()->JD(); // Child’s Date of Death (Julian)
+						$chBLD   = $chfulln . ', ' . $chdob . ', ' . $chdod;
 						array_push($chBLDarray, $chBLD);
 					}
 				}
@@ -1458,18 +1402,18 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 				}
 				// Childs Details -------------------------
 				$spouselinks .= '<li>';
-				$nam   = $child->getAllNames();
+				$nam     = $child->getAllNames();
 				$fulln   = strip_tags($nam[0]['full']);
-				$chfulmn   = $fulln;
+				$fulmn   = $fulln;
 				foreach ($nam as $n) {
 					if ($n['type'] === '_MARNM') {
-						$chfulmn = strip_tags($n['full']);
+						$fulmn = strip_tags($n['full']);
 					}
 				}
 				$spouselinks .= "<a href=\"#\" onclick=\"return insertRowToTable(";
 				$spouselinks .= "'" . $child->getXref() . "',";
 				$spouselinks .= "'" . $fulln . "',";
-				$spouselinks .= "'" . $chfulmn . "',";
+				$spouselinks .= "'" . $fulmn . "',";
 				if ($currpid === 'Son' || $currpid === 'Daughter') {
 					if ($child->getSex() === 'M') {
 						$spouselinks .= "'Grand-Son',"; // label = Male Relationship
