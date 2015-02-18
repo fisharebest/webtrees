@@ -4091,6 +4091,7 @@ header h1 {
 }
 
 [dir=rtl] header h1 {
+	clear: right;
 	float: right;
 }
 
