@@ -991,7 +991,7 @@ a.showit:hover > span {
 .person_box_template a.gallery {
 	float: left;
 	height: 50px;
-	margin: 0 4px 0 0;
+	margin: 0 2px 0 0;
 	max-width: 80px;
 	width: auto;
 }
@@ -999,7 +999,7 @@ a.showit:hover > span {
 [dir=rtl] .person_box_template img,
 [dir=rtl] .person_box_template a.gallery {
 	float: right;
-	margin: 0 0 0 4px;
+	margin: 0 0 0 2px;
 }
 
 .person_box_template i[class^="icon-silhouette"] {
