@@ -49,6 +49,9 @@ class RelationshipController extends PageController {
 		$paths    = $dijkstra->shortestPaths($xref1, $xref2);
 
 		if ($all) {
+			// Only process each exclusion list once;
+			$excluded = array();
+
 			$queue = array();
 			foreach ($paths as $path) {
 				// Insert the paths into the queue, with an exclusion list.
@@ -59,6 +62,13 @@ class RelationshipController extends PageController {
 					for ($n = count($next['path']) - 2; $n >= 1; $n -= 2) {
 						$exclude = $next['exclude'];
 						$exclude[] = $next['path'][$n];
+						sort($exclude);
+						$tmp = implode('-', $exclude);
+						if (in_array($tmp, $excluded)) {
+							continue;
+						} else {
+							$excluded[] = $tmp;
+						}
 						// Add any new path to the queue
 						foreach ($dijkstra->shortestPaths($xref1, $xref2, $exclude) as $new_path) {
 							$queue[] = array('path' => $new_path, 'exclude' => $exclude);
