@@ -122,7 +122,10 @@ case 'synchronize':
 			$basename    = basename($gedcom_file);
 			$basenames[] = $basename;
 
-			$tree = Tree::create($basename, $basename);
+			$tree = Tree::findByName($basename);
+			if (!$tree) {
+				$tree = Tree::create($basename, $basename);
+			}
 			if ($tree->getPreference('filemtime') != $filemtime) {
 				$tree->importGedcomFile($gedcom_file, $basename, false);
 				$tree->setPreference('filemtime', $filemtime);
