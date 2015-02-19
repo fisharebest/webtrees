@@ -812,7 +812,7 @@ function update_places($gid, $ged_id, $gedrec) {
 
 		foreach ($secalp as $place) {
 			$place = trim($place);
-			$key = strtolower($place . "_" . $parent_id);
+			$key = strtolower(mb_substr(0, 150, $place) . "_" . $parent_id);
 			//-- if this place has already been added then we don't need to add it again
 			if (isset($placecache[$key])) {
 				$parent_id = $placecache[$key];
