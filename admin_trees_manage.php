@@ -113,10 +113,9 @@ case 'replace_import':
 
 	return;
 
-case 'bulk-import':
+case 'synchronize':
 	if (Filter::checkCsrf()) {
-		$tree_names = Tree::getNameList();
-		$basenames  = array();
+		$basenames = array();
 
 		foreach ($gedcom_files as $gedcom_file) {
 			$filemtime   = filemtime($gedcom_file); // Only import files that have changed
@@ -710,7 +709,7 @@ $controller->pageHeader();
 				</p>
 				<form method="post" class="form form-horizontal">
 					<?php echo Filter::getCsrf(); ?>
-					<input type="hidden" name="action" value="bulk-import">
+					<input type="hidden" name="action" value="synchronize">
 					<button type="submit" class="btn btn-danger">
 						<i class="fa fa-refresh"></i>
 						<?php echo /* I18N: Button label */ I18N::translate('continue'); ?>
