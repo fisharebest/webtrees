@@ -80,9 +80,9 @@ case 'replace_upload':
 		$tree->setPreference('keep_media', $keep_media);
 		$tree->setPreference('GEDCOM_MEDIA_PATH', $GEDCOM_MEDIA_PATH);
 		$tree->setPreference('WORD_WRAPPED_NOTES', $WORD_WRAPPED_NOTES);
-		if (isset($_FILES[0])) {
-			if ($_FILES[0]['error'] == 0 && is_readable($_FILES[0]['tmp_name'])) {
-				$tree->importGedcomFile($_FILES[0]['tmp_name'], $_FILES[0]['name']);
+		if (isset($_FILES['tree_name'])) {
+			if ($_FILES['tree_name']['error'] == 0 && is_readable($_FILES['tree_name']['tmp_name'])) {
+				$tree->importGedcomFile($_FILES['tree_name']['tmp_name'], $_FILES['tree_name']['name']);
 			}
 		} else {
 			FlashMessages::addMessage(I18N::translate('No GEDCOM file was received.'), 'danger');
@@ -227,6 +227,7 @@ case 'importform':
 								}
 							}
 							echo '<select name="tree_name" class="form-control" id="import-server-file">';
+							echo '<option value=""></option>';
 							sort($files);
 							foreach ($files as $gedcom_file) {
 								echo '<option value="', Filter::escapeHtml($gedcom_file), '" ';
