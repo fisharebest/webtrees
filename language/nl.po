@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-01-31 12:10+0000\n"
-"PO-Revision-Date: 2015-02-01 12:22+0100\n"
+"PO-Revision-Date: 2015-02-19 19:39+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -5501,7 +5501,7 @@ msgstr "E-mailadres:"
 
 #: admin_users.php:366
 msgid "Email verified"
-msgstr "E-mail gecontrolleerd"
+msgstr "E-mail gecontroleerd"
 
 #: library/WT/Stats.php:88
 msgid "Embedded variable"
@@ -6029,12 +6029,6 @@ msgstr "Stamboomtoegang en -instellingen"
 #: modules_v3/clippings/module.php:70 modules_v3/clippings/module.php:253
 msgid "Family tree clippings cart"
 msgstr "Stamboomknipsels"
-
-#. I18N: %s is a filename
-#: admin_site_upgrade.php:290 admin_trees_export.php:34
-#, php-format
-msgid "The family tree has been exported to %s."
-msgstr "Stamboom geëxporteerd naar %s"
 
 #: admin_trees_config.php:666 admin_trees_manage.php:533
 msgid "Family tree title"
@@ -7273,6 +7267,11 @@ msgstr "Idaho Falls, Idaho"
 #: library/WT/Gedcom/Tag.php:517
 msgid "Identification number"
 msgstr "Identificatienummer"
+
+#. I18N: Help text for the “Language” configuration setting
+#: admin_trees_config.php:716
+msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
+msgstr "Wanneer een bezoeker van de site geen voorkeurtaal heeft ingesteld in zijn/haar browser configuratie of een niet-ondersteunde taal heeft ingesteld, dan zal deze taal gebruikt worden. Deze instelling geldt voornamelijk voor zoekmachines."
 
 #: admin_users.php:376
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
@@ -9121,6 +9120,11 @@ msgstr "Minimum en maximum zoom level van de Google map. 1 is de volledige kaart
 msgid "Minimum number of occurrences to be a “common surname”"
 msgstr "Min. aantal om een ‘gewone achternaam’ te zijn"
 
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:76
+msgid "Missing PHP temporary folder"
+msgstr "Tijdelijke PHP map ontbreekt"
+
 #. I18N: Name of a module/report
 #: modules_v3/missing_facts_report/module.php:29
 #: modules_v3/missing_facts_report/report.xml:3
@@ -10763,6 +10767,11 @@ msgstr "Plaats van wijding"
 #: library/WT/Gedcom/Tag.php:733
 msgid "Place of residence"
 msgstr "Woonplaats"
+
+#: admin_site_upgrade.php:413
+#, php-format
+msgid "Place the website offline, by creating the file %s…"
+msgstr "Plaats de website offline door het aanmaken van het bestand %s…"
 
 #: admin_site_upgrade.php:465
 #, php-format
@@ -13444,6 +13453,12 @@ msgstr "De details van dit gezin zijn privé."
 #: individual.php:86
 msgid "The details of this individual are private."
 msgstr "De details van deze persoon zijn privé."
+
+#. I18N: %s is a filename
+#: admin_site_upgrade.php:290 admin_trees_export.php:34
+#, php-format
+msgid "The family tree has been exported to %s."
+msgstr "Stamboom geëxporteerd naar %s"
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:61
@@ -16554,11 +16569,6 @@ msgstr "cijfers"
 msgid "disable"
 msgstr "uitschakelen"
 
-#: admin_site_upgrade.php:413
-#, php-format
-msgid "Place the website offline, by creating the file %s…"
-msgstr "Plaats de website offline door het aanmaken van het bestand %s…"
-
 #: modules_v3/googlemap/module.php:4083
 msgid "east"
 msgstr "oost"
@@ -18926,16 +18936,6 @@ msgstr "achterneef 20e graad"
 msgctxt "MALE/FEMALE"
 msgid "ninth cousin"
 msgstr "achterneef/achternicht 20e graad"
-
-#. I18N: Help text for the “Language” configuration setting
-#: admin_trees_config.php:716
-msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-msgstr "Wanneer een bezoeker van de site geen voorkeurtaal heeft ingesteld in zijn/haar browser configuratie of een niet-ondersteunde taal heeft ingesteld, dan zal deze taal gebruikt worden. Deze instelling geldt voornamelijk voor zoekmachines."
-
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:76
-msgid "Missing PHP temporary folder"
-msgstr "Tijdelijke PHP map ontbreekt"
 
 #: admin_trees_config.php:56 admin_trees_config.php:139 admin_users.php:225
 #: admin_users.php:226 includes/functions/functions_edit.php:108
