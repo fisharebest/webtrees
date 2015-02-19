@@ -46,7 +46,7 @@ For terms of use, see http://www.unicode.org/copyright.html
 	<numbers>
 		<currencies>
 			<currency type="STD">
-				<symbol>Database</symbol>
+				<symbol>Db</symbol>
 			</currency>
 		</currencies>
 	</numbers>

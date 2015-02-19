@@ -698,21 +698,21 @@ $controller->pageHeader();
 		<div class="panel-heading">
 			<h2 class="panel-title">
 			<i class="fa fa-fw fa-refresh"></i>
-			<a data-toggle="collapse" data-parent="#accordion" href="#pgv-import-wizard">
-				<?php echo I18N::translate('Bulk import GEDCOM files'); ?>
+			<a data-toggle="collapse" data-parent="#accordion" href="#synchronize-gedcom-files">
+				<?php echo I18N::translate('Synchronize family trees with GEDCOM files'); ?>
 			</a>
 		</h2>
 		</div>
-		<div id="pgv-import-wizard" class="panel-collapse collapse">
+		<div id="synchronize-gedcom-files" class="panel-collapse collapse">
 			<div class="panel-body">
 				<p>
-					<?php echo I18N::translate('Create or update a family tree for every GEDCOM file in the data folder.'); ?>
+					<?php echo I18N::translate('Create, update, and delete a family tree for every GEDCOM file in the data folder.'); ?>
 				</p>
 				<form method="post" class="form form-horizontal">
 					<?php echo Filter::getCsrf(); ?>
 					<input type="hidden" name="action" value="bulk-import">
-					<button type="submit" class="btn btn-primary">
-						<i class="fa fa-check"></i>
+					<button type="submit" class="btn btn-danger">
+						<i class="fa fa-refresh"></i>
 						<?php echo /* I18N: Button label */ I18N::translate('continue'); ?>
 					</button>
 					<p class="small text-muted">

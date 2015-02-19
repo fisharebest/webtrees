@@ -445,9 +445,7 @@ class stories_WT_Module extends Module implements ModuleTabInterface, ModuleConf
 
 	/** {@inheritdoc} */
 	public function getMenu() {
-		global $SEARCH_SPIDER;
-
-		if ($SEARCH_SPIDER) {
+		if (Auth::isSearchEngine()) {
 			return null;
 		}
 

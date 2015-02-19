@@ -63,7 +63,7 @@ class LifespanController extends PageController {
 	/**
 	 * Startup activity
 	 */
-	function __construct() {
+	public function __construct() {
 		global $WT_SESSION;
 
 		parent::__construct();

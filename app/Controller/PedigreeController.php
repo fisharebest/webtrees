@@ -24,7 +24,10 @@ class PedigreeController extends ChartController {
 	var $name;
 	var $addname;
 	var $show_full;
-	var $talloffset;
+
+	/** @var integer Which of the layouts to display */
+	public $talloffset;
+
 	var $PEDIGREE_GENERATIONS;
 	var $pbwidth;
 	var $pbheight;
@@ -41,7 +44,7 @@ class PedigreeController extends ChartController {
 	 * Create a pedigree controller
 	 */
 	public function __construct() {
-		global $WT_TREE, $bwidth, $bheight, $baseyoffset, $basexoffset, $byspacing, $bxspacing, $show_full, $talloffset;
+		global $WT_TREE, $bwidth, $bheight, $baseyoffset, $basexoffset, $byspacing, $bxspacing, $show_full;
 
 		parent::__construct();
 		$this->show_full            = Filter::getInteger('show_full', 0, 1, $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS'));
@@ -66,7 +69,6 @@ class PedigreeController extends ChartController {
 			$this->talloffset = 0;
 		}
 		$show_full  = $this->show_full;
-		$talloffset = $this->talloffset;
 
 		if ($this->root && $this->root->canShowName()) {
 			$this->setPageTitle(

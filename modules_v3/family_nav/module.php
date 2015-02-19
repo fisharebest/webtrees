@@ -42,9 +42,7 @@ class family_nav_WT_Module extends Module implements ModuleSidebarInterface {
 
 	/** {@inheritdoc} */
 	public function hasSidebarContent() {
-		global $SEARCH_SPIDER;
-
-		return !$SEARCH_SPIDER;
+		return !Auth::isSearchEngine();
 	}
 
 	/** {@inheritdoc} */
@@ -187,13 +185,11 @@ class family_nav_WT_Module extends Module implements ModuleSidebarInterface {
 	 * @return string
 	 */
 	private function getParents(Individual $person) {
-		global $SEARCH_SPIDER;
-
 		$father = null;
 		$mother = null;
 		$html = sprintf(self::TTL, I18N::translate('Parents'));
 		$family = $person->getPrimaryChildFamily();
-		if (!$SEARCH_SPIDER && $person->canShowName() && $family !== null) {
+		if (!Auth::isSearchEngine() && $person->canShowName() && $family !== null) {
 			$father = $family->getHusband();
 			$mother = $family->getWife();
 			$html .= $this->getHTML($father) .
@@ -228,10 +224,8 @@ class family_nav_WT_Module extends Module implements ModuleSidebarInterface {
 	 * @return string
 	 */
 	private function getFamily(Individual $person) {
-		global $SEARCH_SPIDER;
-
 		$html = '';
-		if ($person->canShowName() && !$SEARCH_SPIDER) {
+		if ($person->canShowName() && !Auth::isSearchEngine()) {
 			foreach ($person->getSpouseFamilies() as $family) {
 				$spouse = $family->getSpouse($person);
 				$html .= $this->getHTML($spouse, true);

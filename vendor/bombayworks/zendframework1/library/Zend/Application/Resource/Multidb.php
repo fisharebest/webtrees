@@ -22,7 +22,7 @@
 
 // require_once 'Zend/Application/Resource/ResourceAbstract.php';
 
-// require_once 'Zend/Database/Table.php';
+// require_once 'Zend/Db/Table.php';
 
 /**
  */

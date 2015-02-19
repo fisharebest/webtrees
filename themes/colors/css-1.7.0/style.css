@@ -2771,8 +2771,7 @@ dd .deletelink {
 }
 
 /* ===== search.php ===== */
-#search-page h2,
-#search_submit {
+#search-page h2 {
 	margin: 20px;
 	text-align: center;
 }
@@ -3497,15 +3496,6 @@ table.table-census-assistant th {
 #pedigree_chart .shadow,
 .ancestorarrow {
 	position: absolute;
-}
-
-/*-- Relationship ---- */
-#relationship-page h3 {
-	margin: 20px 0 0 20px;
-}
-
-#relationship_chart {
-	margin: 0 6px;
 }
 
 /*-- timeline  --*/

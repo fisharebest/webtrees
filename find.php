@@ -484,7 +484,7 @@ if ($action == "filter") {
 	// Output Individual
 	if ($type == "indi") {
 		echo '<div id="find-output">';
-		$myindilist = search_indis_names($filter_array, WT_GED_ID);
+		$myindilist = search_indis_names($filter_array, array($WT_TREE));
 		if ($myindilist) {
 			echo '<ul>';
 			usort($myindilist, __NAMESPACE__ . '\GedcomRecord::compare');
@@ -505,8 +505,8 @@ if ($action == "filter") {
 		// Get the famrecs with hits on names from the family table
 		// Get the famrecs with hits in the gedcom record from the family table
 		$myfamlist = array_unique(array_merge(
-			search_fams_names($filter_array, array(WT_GED_ID)),
-			search_fams($filter_array, array(WT_GED_ID))
+			search_fams_names($filter_array, array($WT_TREE)),
+			search_fams($filter_array, array($WT_TREE))
 		));
 
 		if ($myfamlist) {
@@ -612,7 +612,7 @@ if ($action == "filter") {
 	if ($type == "repo") {
 		echo '<div id="find-output">';
 		if ($filter) {
-			$repo_list = search_repos($filter_array, array(WT_GED_ID));
+			$repo_list = search_repos($filter_array, array($WT_TREE));
 		} else {
 			$repo_list = get_repo_list(WT_GED_ID);
 		}
@@ -634,7 +634,7 @@ if ($action == "filter") {
 	if ($type == "note") {
 		echo '<div id="find-output">';
 		if ($filter) {
-			$mynotelist = search_notes($filter_array, array(WT_GED_ID), 'AND');
+			$mynotelist = search_notes($filter_array, array($WT_TREE));
 		} else {
 			$mynotelist = get_note_list(WT_GED_ID);
 		}
@@ -656,7 +656,7 @@ if ($action == "filter") {
 	if ($type == "source") {
 		echo '<div id="find-output">';
 		if ($filter) {
-			$mysourcelist = search_sources($filter_array, array(WT_GED_ID), 'AND');
+			$mysourcelist = search_sources($filter_array, array($WT_TREE));
 		} else {
 			$mysourcelist = get_source_list(WT_GED_ID);
 		}

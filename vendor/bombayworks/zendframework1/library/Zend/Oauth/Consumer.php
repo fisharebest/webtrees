@@ -38,7 +38,7 @@
 // require_once 'Zend/Oauth/Token/AuthorizedRequest.php';
 
 /** Zend_Oauth_Config */
-// require_once 'Zend/Oauth/ConfigInterface.php';
+// require_once 'Zend/Oauth/Config.php';
 
 /**
  * @category   Zend

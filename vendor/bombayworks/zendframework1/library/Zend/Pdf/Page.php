@@ -306,7 +306,7 @@ class Zend_Pdf_Page extends Zend_Pdf_Canvas_Abstract
 
         $this->_dictionary = $this->_objFactory->newObject(new Zend_Pdf_Element_Dictionary());
         $this->_dictionary->Type         = new Zend_Pdf_Element_Name('Page');
-        // require_once 'Zend/ReportPdf.php';
+        // require_once 'Zend/Pdf.php';
         $this->_dictionary->LastModified = new Zend_Pdf_Element_String(Zend_Pdf::pdfDate());
         $this->_dictionary->Resources    = new Zend_Pdf_Element_Dictionary();
         $this->_dictionary->MediaBox     = new Zend_Pdf_Element_Array();

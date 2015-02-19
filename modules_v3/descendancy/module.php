@@ -63,9 +63,7 @@ class descendancy_WT_Module extends Module implements ModuleSidebarInterface {
 
 	/** {@inheritdoc} */
 	public function hasSidebarContent() {
-		global $SEARCH_SPIDER;
-
-		return !$SEARCH_SPIDER;
+		return !Auth::isSearchEngine();
 	}
 
 	/** {@inheritdoc} */

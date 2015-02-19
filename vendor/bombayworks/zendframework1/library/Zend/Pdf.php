@@ -20,7 +20,7 @@
  */
 
 
-/** User land classes and interfaces turned on by Zend/ReportPdf.php file inclusion. */
+/** User land classes and interfaces turned on by Zend/Pdf.php file inclusion. */
 /** @todo Section should be removed with ZF 2.0 release as obsolete            */
 
 /** Zend_Pdf_Page */
@@ -39,7 +39,7 @@
 // require_once 'Zend/Pdf/Color/Cmyk.php';
 
 /** Zend_Pdf_Color_Html */
-// require_once 'Zend/Pdf/Color/ReportHtml.php';
+// require_once 'Zend/Pdf/Color/Html.php';
 
 /** Zend_Pdf_Image */
 // require_once 'Zend/Pdf/Image.php';

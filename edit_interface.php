@@ -1252,8 +1252,6 @@ case 'addnewsource':
 					<td class="descriptionbox wrap width25"><?php echo I18N::translate('Select events'), help_link('edit_SOUR_EVEN'); ?></td>
 					<td class="optionbox wrap"><select name="EVEN[]" multiple="multiple" size="5">
 						<?php
-						global $WT_TREE;
-
 						$parts = explode(',', $WT_TREE->getPreference('INDI_FACTS_ADD'));
 						foreach ($parts as $key) {
 							?><option value="<?php echo $key; ?>"><?php echo WT_Gedcom_Tag::getLabel($key); ?></option>

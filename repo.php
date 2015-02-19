@@ -16,13 +16,6 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
-global $WT_TREE;
-
 define('WT_SCRIPT_NAME', 'repo.php');
 require './includes/session.php';
 
@@ -130,17 +123,6 @@ echo '<div id="repo-tabs">
 		// new fact link
 		if ($controller->record->canEdit()) {
 			print_add_new_fact($controller->record->getXref(), $facts, 'REPO');
-			// new media
-			if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
-				echo '<tr><td class="descriptionbox">';
-				echo WT_Gedcom_Tag::getLabel('OBJE');
-				echo '</td><td class="optionbox">';
-				echo '<a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&amp;linktoid=', $controller->record->getXref(), '\', \'_blank\', edit_window_specs); return false;">', I18N::translate('Add a new media object'), '</a>';
-				echo help_link('OBJE');
-				echo '<br>';
-				echo '<a href="#" onclick="window.open(\'inverselink.php?linktoid=', $controller->record->getXref(), '&amp;linkto=repository\', \'_blank\', find_window_specs); return false;">', I18N::translate('Link to an existing media object'), '</a>';
-				echo '</td></tr>';
-			}
 		}
 		echo '</table>
 	</div>';

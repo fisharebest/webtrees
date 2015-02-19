@@ -23,7 +23,7 @@
 /**
  * @see Zend_Config
  */
-// require_once 'Zend/ConfigInterface.php';
+// require_once 'Zend/Config.php';
 
 
 /**

@@ -74,7 +74,7 @@ class ReportBaseImage extends ReportBaseElement {
 	 * @param string $align Placement of the image. L: left, C:center, R:right
 	 * @param string $ln    T:same line, N:next line
 	 */
-	function __construct($file, $x, $y, $w, $h, $align, $ln) {
+	public function __construct($file, $x, $y, $w, $h, $align, $ln) {
 		$this->file = $file;
 		$this->width = $w;
 		$this->height = $h;

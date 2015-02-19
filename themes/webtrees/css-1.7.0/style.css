@@ -979,7 +979,7 @@ td.descriptionbox a {
 .person_box_template a.gallery {
 	float: left;
 	height: 50px;
-	margin: 0 4px 0 0;
+	margin: 0 2px 0 0;
 	max-width: 80px;
 	width: auto;
 }
@@ -987,7 +987,7 @@ td.descriptionbox a {
 [dir=rtl] .person_box_template img,
 [dir=rtl] .person_box_template a.gallery {
 	float: right;
-	margin: 0 0 0 4px;
+	margin: 0 0 0 2px;
 }
 
 .person_box_template i[class^="icon-silhouette"] {
@@ -2653,8 +2653,7 @@ dd .deletelink {
 }
 
 /* ===== search.php ===== */
-#search-page h2,
-#search_submit {
+#search-page h2 {
 	margin: 20px;
 	text-align: center;
 }
@@ -3386,15 +3385,6 @@ table.table-census-assistant th {
 	position: absolute;
 }
 
-/*-- Relationship ---- */
-#relationship-page h3 {
-	margin: 20px 0 0 20px;
-}
-
-#relationship_chart {
-	margin: 0 6px;
-}
-
 /*-- timeline  --*/
 #timeline_chart {
 	position: relative;
@@ -4101,6 +4091,7 @@ header h1 {
 }
 
 [dir=rtl] header h1 {
+	clear: right;
 	float: right;
 }
 

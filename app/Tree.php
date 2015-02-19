@@ -334,7 +334,7 @@ class Tree {
 				" ORDER BY g.sort_order, 3"
 			)->execute(array(Auth::id(), Auth::id()))->fetchAll();
 			foreach ($rows as $row) {
-				self::$trees[$row->tree_id] = new self($row->tree_id, $row->tree_name, $row->tree_title);
+				self::$trees[] = new self((int) $row->tree_id, $row->tree_name, $row->tree_title);
 			}
 		}
 
@@ -347,11 +347,15 @@ class Tree {
 	 * @param integer $tree_id
 	 *
 	 * @return Tree
+	 * @throws \DomainException
 	 */
 	public static function findById($tree_id) {
-		$trees = self::getAll();
-
-		return $trees[$tree_id];
+		foreach (self::getAll() as $tree) {
+			if ($tree->tree_id == $tree_id) {
+				return $tree;
+			}
+		}
+		throw new \DomainException;
 	}
 
 	/**
@@ -363,7 +367,7 @@ class Tree {
 	 */
 	public static function findByName($tree_name) {
 		foreach (self::getAll() as $tree) {
-			if ($tree->getName() === $tree_name) {
+			if ($tree->name === $tree_name) {
 				return $tree;
 			}
 		}
@@ -404,14 +408,14 @@ class Tree {
 	/**
 	 * Find the ID number for a tree name
 	 *
-	 * @param integer $tree_name
+	 * @param string $tree_name
 	 *
 	 * @return integer|null
 	 */
 	public static function getIdFromName($tree_name) {
-		foreach (self::getAll() as $tree_id => $tree) {
-			if ($tree->name == $tree_name) {
-				return $tree_id;
+		foreach (self::getAll() as $tree) {
+			if ($tree->name === $tree_name) {
+				return $tree->tree_id;
 			}
 		}
 
@@ -775,7 +779,7 @@ class Tree {
 			);
 			$statement->execute(array(
 				'record_type' => $type,
-				'tree_id'     => $this->getTreeId(),
+				'tree_id'     => $this->tree_id,
 			));
 
 			if ($statement->rowCount() === 0) {
@@ -784,7 +788,7 @@ class Tree {
 					"INSERT INTO `##next_id` (gedcom_id, record_type, next_id) VALUES(:tree_id, :record_type, 1)"
 				)->execute(array(
 					'record_type' => $type,
-					'tree_id'     => $this->getTreeId(),
+					'tree_id'     => $this->tree_id,
 				));
 				$num = 1;
 			} else {
@@ -852,7 +856,7 @@ class Tree {
 		Database::prepare(
 			"INSERT INTO `##change` (gedcom_id, xref, old_gedcom, new_gedcom, user_id) VALUES (?, ?, '', ?, ?)"
 		)->execute(array(
-			$this->getTreeId(),
+			$this->tree_id,
 			$xref,
 			$gedcom,
 			Auth::id()
@@ -862,13 +866,11 @@ class Tree {
 
 		// Accept this pending change
 		if (Auth::user()->getPreference('auto_accept')) {
-			accept_all_changes($xref, $this->getTreeId());
-			// Return the newly created record
-			return new GedcomRecord($xref, $gedcom, null, $this->getTreeId());
-		} else {
-			// Return the newly created record
-			return new GedcomRecord($xref, null, $gedcom, $this->getTreeId());
+			accept_all_changes($xref, $this->tree_id);
 		}
-
+		// Return the newly created record.  Note that since GedcomRecord
+		// has a cache of pending changes, we cannot use it to create a
+		// record with a newly created pending change.
+		return GedcomRecord::getInstance($xref, $this->tree_id, $gedcom);
 	}
 }

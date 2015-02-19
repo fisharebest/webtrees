@@ -154,9 +154,7 @@ class personal_facts_WT_Module extends Module implements ModuleTabInterface {
 
 	/** {@inheritdoc} */
 	public function canLoadAjax() {
-		global $SEARCH_SPIDER;
-
-		return !$SEARCH_SPIDER; // Search engines cannot use AJAX
+		return !Auth::isSearchEngine(); // Search engines cannot use AJAX
 	}
 
 	/** {@inheritdoc} */

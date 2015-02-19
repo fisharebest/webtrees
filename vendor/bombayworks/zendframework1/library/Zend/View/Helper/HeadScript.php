@@ -31,6 +31,14 @@
  * @subpackage Helper
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @method $this appendFile($src, $type = 'text/javascript', array $attrs = array())
+ * @method $this appendScript($script, $type = 'text/javascript', array $attrs = array())
+ * @method $this offsetSetFile($index, $src, $type = 'text/javascript', array $attrs = array())
+ * @method $this offsetSetScript($index, $script, $type = 'text/javascript', array $attrs = array())
+ * @method $this prependFile($src, $type = 'text/javascript', array $attrs = array())
+ * @method $this prependScript($script, $type = 'text/javascript', array $attrs = array())
+ * @method $this setFile($src, $type = 'text/javascript', array $attrs = array())
+ * @method $this setScript($script, $type = 'text/javascript', array $attrs = array())
  */
 class Zend_View_Helper_HeadScript extends Zend_View_Helper_Placeholder_Container_Standalone
 {

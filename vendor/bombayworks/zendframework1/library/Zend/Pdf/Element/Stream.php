@@ -21,7 +21,7 @@
 
 
 /** Internally used classes */
-// require_once 'Zend/ReportPdf.php';
+// require_once 'Zend/Pdf.php';
 
 
 /** Zend_Pdf_Element */

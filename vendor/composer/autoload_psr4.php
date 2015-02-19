@@ -9,4 +9,5 @@ return array(
     'Rhumsaa\\Uuid\\' => array($vendorDir . '/rhumsaa/uuid/src'),
     'Fisharebest\\Webtrees\\' => array($baseDir . '/app', $baseDir . '/modules_v3'),
     'Fisharebest\\ExtCalendar\\' => array($vendorDir . '/fisharebest/ext-calendar/src'),
+    'Fisharebest\\Algorithm\\' => array($vendorDir . '/fisharebest/algorithm/src'),
 );

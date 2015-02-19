@@ -430,9 +430,7 @@ class faq_WT_Module extends Module implements ModuleMenuInterface, ModuleConfigI
 
 	/** {@inheritdoc} */
 	public function getMenu() {
-		global $SEARCH_SPIDER;
-
-		if ($SEARCH_SPIDER) {
+		if (Auth::isSearchEngine()) {
 			return null;
 		}
 
