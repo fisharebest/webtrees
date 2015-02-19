@@ -1722,17 +1722,43 @@ td.descriptionbox a {
 }
 
 /* Statistics block */
-.gedcom_stats_block table td {
-	vertical-align: top;
-}
+#gedcom_stats23 p {margin: 0;}
 
-.gedcom_stats_block table td td {
+.stat-table1 {
+	display: table;
+	float: left;
+	width:15%;
+	border-collapse:separate;
+	border-spacing:2px;
 	vertical-align: middle;
 }
 
-.gedcom_stats_block td .stats_value {
-	text-align: center;
+[dir=rtl] .stat-table1 {
+float: right;
 }
+
+.stat-table2 {
+	display: table;
+	float: left;
+	width:60%;
+	border-collapse:separate;
+	border-spacing:2px;
+}
+
+[dir=rtl] .stat-table2 {
+float: right;
+}
+
+.stat-row {
+	display: table-row;
+}
+.stat-cell {
+	display: table-cell;
+		vertical-align: middle;
+		text-align: center;
+}
+.left {text-align: left;}
+[dir=rtl] .left {text-align: right;}
 
 /* ==== Theme select block === */
 .theme_form ul {

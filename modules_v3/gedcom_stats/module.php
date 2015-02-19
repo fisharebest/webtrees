@@ -81,105 +81,105 @@ class gedcom_stats_WT_Module extends Module implements ModuleBlockInterface {
 		if ($show_last_update) {
 			$content .= '<div>' . /* I18N: %s is a date */ I18N::translate('This family tree was last updated on %s.', strip_tags($stats->gedcomUpdated())) . '</div>';
 		}
+/** Responsive Design */
 
-		$content .= '<table><tr><td class="width20"><table class="facts_table">';
+	$content .= '<div class="width100"><div class="stat-table1">';
 		if ($stat_indi) {
-			$content .= '<tr><td class="facts_label">' . I18N::translate('Individuals') . '</td><td class="facts_value stats_value"><a href="' . "indilist.php?surname_sublist=no&amp;ged=" . WT_GEDURL . '">' . $stats->totalIndividuals() . '</a></td></tr>';
-			$content .= '<tr><td class="facts_label">' . I18N::translate('Males') . '</td><td class="facts_value stats_value">' . $stats->totalSexMales() . '<br>' . $stats->totalSexMalesPercentage() . '</td></tr>';
-			$content .= '<tr><td class="facts_label">' . I18N::translate('Females') . '</td><td class="facts_value stats_value">' . $stats->totalSexFemales() . '<br>' . $stats->totalSexFemalesPercentage() . '</td></tr>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Individuals') .    '</div><div class="facts_value stats_value stat-cell"><a href="' . "indilist.php?surname_sublist=no&amp;ged=" . WT_GEDURL . '">' . $stats->totalIndividuals() . '</a></div></div>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Males') .          '</div><div class="facts_value stats_value stat-cell">' . $stats->totalSexMales() . '<br>' . $stats->totalSexMalesPercentage() . '</a></div></div>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Females') .        '</div><div class="facts_value stats_value stat-cell">' . $stats->totalSexFemales() . '<br>' . $stats->totalSexFemalesPercentage() . '</a></div></div>';
 		}
 		if ($stat_surname) {
-			$content .= '<tr><td class="facts_label">' . I18N::translate('Total surnames') . '</td><td class="facts_value stats_value"><a href="indilist.php?show_all=yes&amp;surname_sublist=yes&amp;ged=' . WT_GEDURL . '">' . $stats->totalSurnames() . '</a></td></tr>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Total surnames') . '</div><div class="facts_value stats_value stat-cell"><a href="indilist.php?show_all=yes&amp;surname_sublist=yes&amp;ged=' . WT_GEDURL . '">' . $stats->totalSurnames() . '</a></div></div>';
 		}
 		if ($stat_fam) {
-			$content .= '<tr><td class="facts_label">' . I18N::translate('Families') . '</td><td class="facts_value stats_value"><a href="famlist.php?ged=' . WT_GEDURL . '">' . $stats->totalFamilies() . '</a></td></tr>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Families') .       '</div><div class="facts_value stats_value stat-cell"><a href="famlist.php?ged=' . WT_GEDURL . '">' . $stats->totalFamilies() . '</a></div></div>';
 		}
 		if ($stat_sour) {
-			$content .= '<tr><td class="facts_label">' . I18N::translate('Sources') . '</td><td class="facts_value stats_value"><a href="sourcelist.php?ged=' . WT_GEDURL . '">' . $stats->totalSources() . '</a></td></tr>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Sources') .        '</div><div class="facts_value stats_value stat-cell"><a href="sourcelist.php?ged=' . WT_GEDURL . '">' . $stats->totalSources() . '</a></div></div>';
 		}
 		if ($stat_media) {
-			$content .= '<tr><td class="facts_label">' . I18N::translate('Media objects') . '</td><td class="facts_value stats_value"><a href="medialist.php?ged=' . WT_GEDURL . '">' . $stats->totalMedia() . '</a></td></tr>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Media objects') .  '</div><div class="facts_value stats_value stat-cell"><a href="medialist.php?ged=' . WT_GEDURL . '">' . $stats->totalMedia() . '</a></div></div>';
 		}
 		if ($stat_repo) {
-			$content .= '<tr><td class="facts_label">' . I18N::translate('Repositories') . '</td><td class="facts_value stats_value"><a href="repolist.php?ged=' . WT_GEDURL . '">' . $stats->totalRepositories() . '</a></td></tr>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Repositories') .   '</div><div class="facts_value stats_value stat-cell"><a href="repolist.php?ged=' . WT_GEDURL . '">' . $stats->totalRepositories() . '</a></div></div>';
 		}
 		if ($stat_events) {
-			$content .= '<tr><td class="facts_label">' . I18N::translate('Total events') . '</td><td class="facts_value stats_value">' . $stats->totalEvents() . '</td></tr>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Total events') .    '</div><div class="facts_value stats_value stat-cell">' . $stats->totalEvents() . '</div></div>';
 		}
 		if ($stat_users) {
-			$content .= '<tr><td class="facts_label">' . I18N::translate('Total users') . '</td><td class="facts_value stats_value">';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Total users') .     '</div><div class="facts_value stats_value stat-cell">';
 			if (WT_USER_GEDCOM_ADMIN) {
 				$content .= '<a href="admin_users.php">' . $stats->totalUsers() . '</a>';
 			} else {
 				$content .= $stats->totalUsers();
 			}
-			$content .= '</td></tr>';
+			$content .= '</div></div>';
 		}
 		if (!$block) {
-			$content .= '</table></td><td><table class="facts_table">';
+			$content .= '</div><div class="facts_table stat-table2">';
 		}
 		if ($stat_first_birth) {
-			$content .= '<tr><td class="facts_label">' . I18N::translate('Earliest birth year') . '</td><td class="facts_value stats_value">' . $stats->firstBirthYear() . '</td>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Earliest birth year') . '</div><div class="facts_value stats_value stat-cell">' . $stats->firstBirthYear() . '</div>';
 			if (!$block) {
-				$content .= '<td class="facts_value">' . $stats->firstBirth() . '</td>';
+				$content .= '<div class="facts_value stat-cell left">' . $stats->firstBirth() . '</div>';
 			}
-			$content .= '</tr>';
+			$content .= '</div>';
 		}
 		if ($stat_last_birth) {
-			$content .= '<tr><td class="facts_label">' . I18N::translate('Latest birth year') . '</td><td class="facts_value stats_value">' . $stats->lastBirthYear() . '</td>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Latest birth year') . '</div><div class="facts_value stats_value stat-cell">' . $stats->lastBirthYear() . '</div>';
 			if (!$block) {
-				$content .= '<td class="facts_value">' . $stats->lastBirth() . '</td>';
+				$content .= '<div class="facts_value stat-cell left">' . $stats->lastBirth() . '</div>';
 			}
-			$content .= '</tr>';
+			$content .= '</div>';
 		}
 		if ($stat_first_death) {
-			$content .= '<tr><td class="facts_label">' . I18N::translate('Earliest death year') . '</td><td class="facts_value stats_value">' . $stats->firstDeathYear() . '</td>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Earliest death year') . '</div><div class="facts_value stats_value stat-cell">' . $stats->firstDeathYear() . '</div>';
 			if (!$block) {
-				$content .= '<td class="facts_value">' . $stats->firstDeath() . '</td>';
+				$content .= '<div class="facts_value stat-cell left">' . $stats->firstDeath() . '</div>';
 			}
-			$content .= '</tr>';
+			$content .= '</div>';
 		}
 		if ($stat_last_death) {
-			$content .= '<tr><td class="facts_label">' . I18N::translate('Latest death year') . '</td><td class="facts_value stats_value">' . $stats->lastDeathYear() . '
-	</td>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Latest death year') . '</div><div class="facts_value stats_value stat-cell">' . $stats->lastDeathYear() . '</div>';
 			if (!$block) {
-				$content .= '<td class="facts_value">' . $stats->lastDeath() . '</td>';
+				$content .= '<div class="facts_value stat-cell left">' . $stats->lastDeath() . '</div>';
 			}
-			$content .= '</tr>';
+			$content .= '</div>';
 		}
 		if ($stat_long_life) {
-			$content .= '<tr><td class="facts_label">' . I18N::translate('Individual who lived the longest') . '</td><td class="facts_value stats_value">' . $stats->LongestLifeAge() . '</td>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Individual who lived the longest') . '</div><div class="facts_value stats_value stat-cell">' . $stats->LongestLifeAge() . '</div>';
 			if (!$block) {
-				$content .= '<td class="facts_value">' . $stats->LongestLife() . '</td>';
+				$content .= '<div class="facts_value stat-cell left">' . $stats->LongestLife() . '</div>';
 			}
-			$content .= '</tr>';
+			$content .= '</div>';
 		}
 		if ($stat_avg_life) {
-			$content .= '<tr><td class="facts_label">' . I18N::translate('Average age at death') . '</td><td class="facts_value stats_value">' . $stats->averageLifespan() . '</td>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Average age at death') . '</div><div class="facts_value stats_value stat-cell">' . $stats->averageLifespan() . '</div>';
 			if (!$block) {
-				$content .= '<td class="facts_value">' . I18N::translate('Males') . ':&nbsp;' . $stats->averageLifespanMale();
-				$content .= '&nbsp;&nbsp;&nbsp;' . I18N::translate('Females') . ':&nbsp;' . $stats->averageLifespanFemale() . '</td>';
+				$content .= '<div class="facts_value stat-cell left">' . I18N::translate('Males') . ':&nbsp;' . $stats->averageLifespanMale();
+				$content .= '&nbsp;&nbsp;&nbsp;' . I18N::translate('Females') . ':&nbsp;' . $stats->averageLifespanFemale() . '</div>';
 			}
-			$content .= '</tr>';
+			$content .= '</div>';
 		}
 
 		if ($stat_most_chil && !$block) {
-			$content .= '<tr><td class="facts_label">' . I18N::translate('Family with the most children') . '</td><td class="facts_value stats_value">' . $stats->largestFamilySize() . '</td>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Family with the most children') . '</div><div class="facts_value stats_value  stat-cell">' . $stats->largestFamilySize() . '</div>';
 			if (!$block) {
-				$content .= '<td class="facts_value">' . $stats->largestFamily() . '</td>';
+				$content .= '<div class="facts_value stat-cell left">' . $stats->largestFamily() . '</div>';
 			}
-			$content .= '</tr>';
+			$content .= '</div>';
 		}
 		if ($stat_avg_chil) {
-			$content .= '<tr><td class="facts_label">' . I18N::translate('Average number of children per family') . '</td><td class="facts_value stats_value">' . $stats->averageChildren() . '</td>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Average number of children per family') . '</div><div class="facts_value stats_value  stat-cell">' . $stats->averageChildren() . '</div>';
 			if (!$block) {
-				$content .= '<td class="facts_value"></td>';
+				$content .= '<div class="facts_value stat-cell left"></div>';
 			}
-			$content .= '</tr>';
+			$content .= '</div></div>';
 		}
-		$content .= '</table></td></tr></table>';
+		$content .= '</div>';
 		if ($stat_link) {
-			$content .= '<a href="statistics.php?ged=' . WT_GEDURL . '"><b>' . I18N::translate('View statistics as graphs') . '</b></a><br>';
+			$content .= '<div class="clearfloat"><a href="statistics.php?ged=' . WT_GEDURL . '"><b>' . I18N::translate('View statistics as graphs') . '</b></a></div>';
 		}
 		// NOTE: Print the most common surnames
 		if ($show_common_surnames) {
