@@ -65,7 +65,7 @@ $layouts = array(
 
 $one_to_nine = array();
 for ($n = 1; $n <= 9; ++$n) {
-	$one_to_nine[] = I18N::number($n);
+	$one_to_nine[$n] = I18N::number($n);
 }
 
 $formats = array(
