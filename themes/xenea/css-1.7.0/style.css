@@ -5188,7 +5188,7 @@ footer {
 
 	#pedigree_chart {
 		left: -30px;
-		top:  -260px;
+		top:  0;
 	}
 
 	[dir=rtl] #pedigree_chart {
