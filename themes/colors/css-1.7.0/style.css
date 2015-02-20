@@ -3286,6 +3286,10 @@ table.table-census-assistant th {
 }
 
 /* ====== Charts Styles ======== */
+#people label {
+	display:block;
+}
+
 #compact_chart,
 #fan_chart,
 .chart_common,
@@ -3488,7 +3492,7 @@ table.table-census-assistant th {
 }
 
 #pedigree-page table.list_table {
-	margin: 0 auto;
+	margin: 0 auto 20px;
 	width: 500px;
 }
 
@@ -3501,7 +3505,7 @@ table.table-census-assistant th {
 
 #pedigree_chart {
 	position: relative;
-	top: -200px;
+
 	left: 0;
 }
 
@@ -3513,7 +3517,6 @@ table.table-census-assistant th {
 #pedigree_canvas {
 	color: #81a9cb;
 	position: absolute;
-	top: 200px;
 	z-index: -1000;
 }
 

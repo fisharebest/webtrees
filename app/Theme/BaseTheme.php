@@ -741,7 +741,7 @@ abstract class BaseTheme {
 
 
 		return
-			'<div data-pid="' . $individual->getXref() . '" class="person_box_template ' . $personBoxClass . ' box-style0" style="width: ' . $this->parameter('compact-chart-box-x') . 'px; min-height: ' . $this->parameter('compact-chart-box-y') . 'px">' .
+			'<div data-pid="' . $individual->getXref() . '" class="person_box_template ' . $personBoxClass . ' iconz box-style0" style="width: ' . $this->parameter('compact-chart-box-x') . 'px; min-height: ' . $this->parameter('compact-chart-box-y') . 'px">' .
 			'<div class="compact_view">' .
 			$thumbnail .
 			'<a href="' . $individual->getHtmlUrl() . '">' .
@@ -1754,16 +1754,16 @@ abstract class BaseTheme {
 			'chart-background-u'             => 'eeeeee',
 			'chart-box-x'                    => 250,
 			'chart-box-y'                    => 80,
-			'chart-descendancy-box-x'        => 260,
-			'chart-descendancy-box-y'        => 80,
+/*			'chart-descendancy-box-x'        => 260,
+			'chart-descendancy-box-y'        => 80,*/
 			'chart-descendancy-indent'       => 15,
 			'chart-font-color'               => '000000',
 			'chart-font-name'                => WT_ROOT . 'includes/fonts/DejaVuSans.ttf',
 			'chart-font-size'                => 7,
 			'chart-offset-x'                 => 10,
 			'chart-offset-y'                 => 10,
-			'chart-spacing-x'                => 1,
-			'chart-spacing-y'                => 5,
+			'chart-spacing-x'                => 7,
+			'chart-spacing-y'                => 10,
 			'compact-chart-box-x'            => 240,
 			'compact-chart-box-y'            => 50,
 			'distribution-chart-high-values' => '555555',
