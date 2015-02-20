@@ -31,7 +31,7 @@ function print_pedigree_person(Individual $person = null, $show_full = 1) {
 	switch ($show_full) {
 	case 0:
 		if ($person) {
-		echo Theme::theme()->individualBoxSmall($person);
+			echo Theme::theme()->individualBoxSmall($person);
 		} else {
 			echo Theme::theme()->individualBoxSmallEmpty();
 		}

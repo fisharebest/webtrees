@@ -21,14 +21,14 @@ namespace Fisharebest\Webtrees;
  */
 class AncestryController extends ChartController {
 
-	/** @var int Show boxes for cousins */
+	/** @var integer Show boxes for cousins */
 	public $show_cousins;
 
-	/** @var int Determines style of chart */
+	/** @var integer Determines style of chart */
 	public $chart_style;
 
-	/** @var int Number of generations to display	 */
-	public $PEDIGREE_GENERATIONS;
+	/** @var integer Number of generations to display	 */
+	public $generations;
 
 	/**
 	 * Startup activity
@@ -39,9 +39,9 @@ class AncestryController extends ChartController {
 		parent::__construct();
 
 		// Extract form parameters
-		$this->show_cousins   = Filter::getInteger('show_cousins', 0, 1);
-		$this->chart_style    = Filter::getInteger('chart_style', 0, 3);
-		$this->PEDIGREE_GENERATIONS = Filter::getInteger('PEDIGREE_GENERATIONS', 2, $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS'), $WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
+		$this->show_cousins = Filter::getInteger('show_cousins', 0, 1);
+		$this->chart_style  = Filter::getInteger('chart_style', 0, 3);
+		$this->generations  = Filter::getInteger('PEDIGREE_GENERATIONS', 2, $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS'), $WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
 
 		if ($this->root && $this->root->canShowName()) {
 			$this->setPageTitle(
@@ -83,7 +83,7 @@ class AncestryController extends ChartController {
 		echo '</td>';
 		echo '<td>';
 		if ($sosa > 1) {
-			print_url_arrow('?rootid=' . $pid . '&amp;PEDIGREE_GENERATIONS=' . $this->PEDIGREE_GENERATIONS . '&amp;show_full=' . $this->showFull() . '&amp;chart_style=' . $this->chart_style . '&amp;ged=' . WT_GEDURL, $label, 3);
+			print_url_arrow('?rootid=' . $pid . '&amp;PEDIGREE_GENERATIONS=' . $this->generations . '&amp;show_full=' . $this->showFull() . '&amp;chart_style=' . $this->chart_style . '&amp;ged=' . WT_GEDURL, $label, 3);
 		}
 		echo '</td>';
 		echo '<td class="details1">&nbsp;<span dir="ltr" class="person_box' . (($sosa == 1) ? 'NN' : (($sosa % 2) ? 'F' : '')) . '">&nbsp;', $sosa, '&nbsp;</span>&nbsp;';

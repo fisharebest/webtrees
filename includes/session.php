@@ -601,4 +601,3 @@ if (Auth::isSearchEngine() && !in_array(WT_SCRIPT_NAME, array(
 	echo '<p class="ui-state-error">', I18N::translate('You do not have permission to view this page.'), '</p>';
 	exit;
 }
-

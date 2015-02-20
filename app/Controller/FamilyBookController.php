@@ -20,21 +20,19 @@ namespace Fisharebest\Webtrees;
  * Class FamilyBookController - Controller for the familybook chart
  */
 class FamilyBookController extends ChartController {
-	// Data for the view
-
-	/** @var int Whether to show spouse details */
+	/** @var integer Whether to show spouse details */
 	public $show_spouse;
 
-	/** @var int Number of descendancy generations to show */
+	/** @var integer Number of descendancy generations to show */
 	public $descent;
 
-	/** @var int Number of ascendancy generations to show */
+	/** @var integer Number of ascendancy generations to show */
 	public $generations;
 
-	/** @var int Number of descendancy generations that exist */
+	/** @var integer Number of descendancy generations that exist */
 	private $dgenerations;
 
-	/**	 * @var int Half height of personbox */
+	/** @var integer Half height of personbox */
 	public $bhalfheight;
 
 	/**
@@ -343,6 +341,7 @@ class FamilyBookController extends ChartController {
 
 	/**
 	 * Print empty box
+	 *
 	 * @return void
 	 */
 

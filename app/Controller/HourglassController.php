@@ -21,29 +21,30 @@ namespace Fisharebest\Webtrees;
  */
 class HourglassController extends ChartController {
 
-	/** @var int Whether to show spouse details */
+	/** @var integer Whether to show spouse details */
 	public $show_spouse;
 
-	/** @var int Number of ascendancy generations to show */
+	/** @var integer Number of ascendancy generations to show */
 	public $generations;
 
-	/** @var int Number of descendancy generations that exist */
+	/** @var integer Number of descendancy generations that exist */
 	private $dgenerations;
 
-	/**	@var int Half height of personbox */
+	/** @var integer Half height of personbox */
 	public $bhalfheight;
 
 	// Left and right get reversed on RTL pages
 	private $left_arrow;
 	private $right_arrow;
-	//  the following is an ajax variable
+
+	// The following is an ajax variable
 	var $ARID;
 
-	/** @var bool Can the Javascript be loaded by the controller */
+	/** @var boolean Can the Javascript be loaded by the controller */
 	private $canLoadJS;
 
-	CONST LINK = "<a class='%s' href='%s' data-parms='%s-%s-%s'></a>";
-	CONST SWITCH_LINK = "<a href='hourglass.php?rootid=%s&amp;show_spouse=%s&amp;show_full=%s&amp;generations=%s' class='name1'>%s</a>";
+	const LINK = "<a class='%s' href='%s' data-parms='%s-%s-%s'></a>";
+	const SWITCH_LINK = "<a href='hourglass.php?rootid=%s&amp;show_spouse=%s&amp;show_full=%s&amp;generations=%s' class='name1'>%s</a>";
 
 	/**
 	 * @param string  $rootid

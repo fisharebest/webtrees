@@ -38,26 +38,27 @@ class GedcomRecord {
 	/** @var Fact[] facts extracted from $gedcom/$pending */
 	protected $facts;
 
-	/** @var bool Can we display details of this record to WT_PRIV_PUBLIC */
-	private   $disp_public;
+	/** @var boolean Can we display details of this record to WT_PRIV_PUBLIC */
+	private $disp_public;
 
-	/** @var bool Can we display details of this record to WT_PRIV_USER */
-	private   $disp_user;
+	/** @var boolean Can we display details of this record to WT_PRIV_USER */
+	private $disp_user;
 
-	/** @var bool Can we display details of this record to WT_PRIV_NONE */
-	private   $disp_none;
+	/** @var boolean Can we display details of this record to WT_PRIV_NONE */
+	private $disp_none;
 
 	/** @var string[][] All the names of this individual */
 	protected $_getAllNames;
 
-	/** @var int Cached result */
+	/** @var integer Cached result */
 	protected $_getPrimaryName;
 
-	/** @var int Cached result */
+	/** @var integer Cached result */
 	protected $_getSecondaryName;
 
 	// Allow getInstance() to return references to existing objects
 	private static $gedcom_record_cache;
+
 	// Fetch all pending edits in one database query
 	private static $pending_record_cache;
 
@@ -71,10 +72,10 @@ class GedcomRecord {
 	 * @param integer     $tree_id
 	 */
 	public function __construct($xref, $gedcom, $pending, $tree_id) {
-		$this->xref      = $xref;
-		$this->gedcom    = $gedcom;
-		$this->pending   = $pending;
-		$this->tree      = Tree::findById($tree_id);
+		$this->xref    = $xref;
+		$this->gedcom  = $gedcom;
+		$this->pending = $pending;
+		$this->tree    = Tree::findById($tree_id);
 
 		$this->parseFacts();
 	}

@@ -23,13 +23,13 @@ use Rhumsaa\Uuid\Uuid;
  */
 class DescendancyController extends ChartController {
 
-	/** @var int Show boxes for cousins */
+	/** @var integer Show boxes for cousins */
 	public $show_cousins;
 
-	/** @var int Determines style of chart */
+	/** @var integer Determines style of chart */
 	public $chart_style;
 
-	/** @var int Number of generations to display */
+	/** @var integer Number of generations to display */
 	public $generations;
 
 	// d'Aboville numbering system [ http://www.saintclair.org/numbers/numdob.html ]

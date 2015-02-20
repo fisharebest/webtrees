@@ -1754,8 +1754,6 @@ abstract class BaseTheme {
 			'chart-background-u'             => 'eeeeee',
 			'chart-box-x'                    => 250,
 			'chart-box-y'                    => 80,
-/*			'chart-descendancy-box-x'        => 260,
-			'chart-descendancy-box-y'        => 80,*/
 			'chart-descendancy-indent'       => 15,
 			'chart-font-color'               => '000000',
 			'chart-font-name'                => WT_ROOT . 'includes/fonts/DejaVuSans.ttf',
