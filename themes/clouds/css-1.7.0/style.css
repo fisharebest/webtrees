@@ -5350,7 +5350,7 @@ footer .error {
 
 	#pedigree_chart {
 		left: -40px;
-		top:  -260px;
+		top:  0;
 	}
 
 	[dir=rtl] #pedigree_chart {
