@@ -50,9 +50,8 @@ $controller
 					<?php echo I18N::translate('Show details'); ?>
 				</td>
 				<td class="optionbox">
-					<input type="hidden" name="show_full" value="<?php echo $controller->show_full; ?>">
-					<input type="checkbox" value="<?php	if ($controller->show_full) echo "1\" checked= onclick=\"document.people.show_full.value='0';"; else echo "0\" onclick=\"document.people.show_full.value='1';"; ?>">
-				</td>
+					<?php echo two_state_checkbox("show_full",$controller->showFull());?>
+	  			</td>
 				<td rowspan="3" class="topbottombar vmiddle">
 					<input type="submit" value="<?php echo /* I18N: Submit button, on a form */ I18N::translate('View'); ?>">
 				</td>
@@ -74,10 +73,10 @@ $controller
 						?>
 					</select>
 				</td>
-				<td class="descriptionbox">
+				<td rowspan="2" class="descriptionbox">
 					<?php echo I18N::translate('Show spouses'), help_link('show_spouse'); ?>
 				</td>
-				<td class="optionbox">
+				<td rowspan="2" class="optionbox">
 					<input type="checkbox" value="1" name="show_spouse" <?php if ($controller->show_spouse) echo " checked"; ?>>
 				</td>
 			</tr>
@@ -87,12 +86,6 @@ $controller
 				</td>
 				<td class="optionbox">
 					<input type="text" size="3" name="descent" value="<?php echo $controller->descent; ?>">
-				</td>
-				<td class="descriptionbox">
-					<?php echo I18N::translate('Box width'); ?>
-				</td>
-				<td class="optionbox">
-					<input type="text" size="3" name="box_width" value="<?php echo $controller->box_width; ?>"> %
 				</td>
 			</tr>
 		</table>

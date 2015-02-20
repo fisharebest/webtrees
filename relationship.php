@@ -173,7 +173,7 @@ if ($person1 && $person2) {
 			} else {
 				$individual = Individual::getInstance($xref);
 				ob_start();
-				print_pedigree_person($individual);
+				print_pedigree_person($individual, $show_full);
 				$table[$x][$y] = ob_get_clean();
 			}
 		}

@@ -33,14 +33,11 @@ $controller
 	->addInlineJavascript('autocomplete();')
 	->setupJavascript();
 
-$gencount = 0;
-
 ?>
 <div id="hourglass-page">
 	<h2><?php echo $controller->getPageTitle(); ?></h2>
 	<form method="get" name="people" action="?">
 		<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
-		<input type="hidden" name="show_full" value="<?php echo $controller->show_full; ?>">
 		<table class="list_table">
 			<tr>
 				<td class="descriptionbox">
@@ -54,7 +51,7 @@ $gencount = 0;
 					<?php echo I18N::translate('Show details'); ?>
 				</td>
 				<td class="optionbox">
-					<input type="checkbox" value="<?php if ($controller->show_full) echo "1\" checked onclick=\"document.people.show_full.value='0';"; else echo "0\" onclick=\"document.people.show_full.value='1';"; ?>">
+					<?php echo two_state_checkbox("show_full",$controller->showFull());?>
 				</td>
 				<td rowspan="3" class="topbottombar vmiddle">
 					<input type="submit" value="<?php echo I18N::translate('View'); ?>">
@@ -72,21 +69,6 @@ $gencount = 0;
 				</td>
 				<td class="optionbox">
 					<input type="checkbox" value="1" name="show_spouse" <?php echo $controller->show_spouse ? 'checked' : ''; ?>>
-				</td>
-			</tr>
-			<tr>
-				<td class="descriptionbox">
-					<?php echo I18N::translate('Box width'); ?>
-				</td>
-				<td class="optionbox">
-					<input type="text" size="3" name="box_width" value="<?php echo $controller->box_width; ?>">
-					<b>%</b>
-				</td>
-				<td class="descriptionbox">
-					&nbsp;
-				</td>
-				<td class="optionbox">
-					&nbsp;
 				</td>
 			</tr>
 		</table>
