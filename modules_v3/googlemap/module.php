@@ -779,7 +779,7 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 						<?php
 							for ($p = 3; $p <= $MAX_PEDIGREE_GENERATIONS; $p++) {
 								echo '<option value="', $p, '" ';
-								if ($p == $controller->PEDIGREE_GENERATIONS) {
+								if ($p == $controller->generations) {
 									echo 'selected';
 								}
 								echo '>', $p, '</option>';

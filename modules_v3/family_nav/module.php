@@ -21,9 +21,9 @@ namespace Fisharebest\Webtrees;
  */
 class family_nav_WT_Module extends Module implements ModuleSidebarInterface {
 
-	CONST TTL = "<div class='flyout2'>%s</div>";
-	CONST LNK = "<div class='flyout3' data-href='%s'>%s</div>";
-	CONST MSG = "<div class='flyout4'>(%s)</div>"; // class flyout4 not used in standard themes
+	const TTL = "<div class='flyout2'>%s</div>";
+	const LNK = "<div class='flyout3' data-href='%s'>%s</div>";
+	const MSG = "<div class='flyout4'>(%s)</div>"; // class flyout4 not used in standard themes
 
 	/** {@inheritdoc} */
 	public function getTitle() {

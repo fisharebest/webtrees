@@ -24,32 +24,32 @@ class PedigreeController extends ChartController {
 	/**
 	 * Chart orientation codes
 	 */
-	CONST PORTRAIT          = 0;
-	CONST LANDSCAPE         = 1;
-	CONST OLDEST_AT_TOP     = 2;
-	CONST OLDEST_AT_BOTTOM  = 3;
+	const PORTRAIT         = 0;
+	const LANDSCAPE        = 1;
+	const OLDEST_AT_TOP    = 2;
+	const OLDEST_AT_BOTTOM = 3;
 
 	/**
 	 * Next and previous generation arrow size
 	 */
-	CONST ARROW_SIZE = 22; //pixels
+	const ARROW_SIZE = 22; //pixels
 
-	/** @var int Selected chart layout */
+	/** @var integer Selected chart layout */
 	public $orientation;
 
-	/** @var int Number of generation to display */
-	public $PEDIGREE_GENERATIONS;
+	/** @var integer Number of generation to display */
+	public $generations;
 
 	/** @var array are there ancestors for people byond the extent of the chart */
 	public $ancestors = array();
 
-	/** @var int Number of nodes in the chart */
+	/** @var integer Number of nodes in the chart */
 	public $treesize;
 
 	/** @var array Used to calculate personbox positions */
 	public $offsetarray = array();
 
-	/** @var int Vertical start position of the chart */
+	/** @var integer Vertical start position of the chart */
 	public $basexoffset;
 
 	/**
@@ -59,16 +59,16 @@ class PedigreeController extends ChartController {
 		global $WT_TREE;
 
 		parent::__construct();
-		$this->orientation          = Filter::getInteger('orientation', 0, 3, $WT_TREE->getPreference('PEDIGREE_LAYOUT'));
-		$this->PEDIGREE_GENERATIONS = Filter::getInteger('PEDIGREE_GENERATIONS', 2, $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS'), $WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
+		$this->orientation = Filter::getInteger('orientation', 0, 3, $WT_TREE->getPreference('PEDIGREE_LAYOUT'));
+		$this->generations = Filter::getInteger('PEDIGREE_GENERATIONS', 2, $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS'), $WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
 
 		$this->basexoffset = Theme::theme()->parameter('chart-offset-x');
-		$bxspacing   = Theme::theme()->parameter('chart-spacing-x');
-		$byspacing   = Theme::theme()->parameter('chart-spacing-y');
+		$bxspacing         = Theme::theme()->parameter('chart-spacing-x');
+		$byspacing         = Theme::theme()->parameter('chart-spacing-y');
 
 		// With more than 8 generations, we run out of pixels on the <canvas>
-		if ($this->PEDIGREE_GENERATIONS > 8) {
-			$this->PEDIGREE_GENERATIONS = 8;
+		if ($this->generations > 8) {
+			$this->generations = 8;
 		}
 
 		if ($this->root && $this->root->canShowName()) {
@@ -85,10 +85,10 @@ class PedigreeController extends ChartController {
 			$bxspacing += 12;
 		}
 
-		$this->treesize = pow(2, (int) ($this->PEDIGREE_GENERATIONS)) - 1;
+		$this->treesize = pow(2, (int) ($this->generations)) - 1;
 
 		// sosaAncestors() starts array at index 1 we need it to start at 0
-		$this->ancestors = array_values($this->sosaAncestors($this->PEDIGREE_GENERATIONS));
+		$this->ancestors = array_values($this->sosaAncestors($this->generations));
 
 		// -- this next section will create and position the DIV layers for the pedigree tree
 		$curgen      = 1; // -- publiciable to track which generation the algorithm is currently working on
@@ -105,7 +105,7 @@ class PedigreeController extends ChartController {
 				$curgen++;
 			}
 			//-- box position in current generation
-			$boxpos = $i - pow(2, $this->PEDIGREE_GENERATIONS - $curgen);
+			$boxpos = $i - pow(2, $this->generations - $curgen);
 			//-- offset multiple for current generation
 			if ($this->orientation < self::OLDEST_AT_TOP) {
 				$genoffset = pow(2, $curgen - $this->orientation);
@@ -121,15 +121,15 @@ class PedigreeController extends ChartController {
 			switch ($this->orientation) {
 				case self::PORTRAIT:
 					$yoffset -= $this->getBoxDimensions()->height;
-					if ($this->PEDIGREE_GENERATIONS < 6) {
-						$addxoffset    = $this->basexoffset + (10 + 60 * (5 - $this->PEDIGREE_GENERATIONS));
-						$xoffset = ($this->PEDIGREE_GENERATIONS - $curgen) * (($this->getBoxDimensions()->width + $bxspacing) / 2) + $addxoffset;
+					if ($this->generations < 6) {
+						$addxoffset    = $this->basexoffset + (10 + 60 * (5 - $this->generations));
+						$xoffset = ($this->generations - $curgen) * (($this->getBoxDimensions()->width + $bxspacing) / 2) + $addxoffset;
 					} else {
 						$addxoffset    = $this->basexoffset + 10;
-						$xoffset = ($this->PEDIGREE_GENERATIONS - $curgen) * (($this->getBoxDimensions()->width + $bxspacing) / 2) + $addxoffset;
+						$xoffset = ($this->generations - $curgen) * (($this->getBoxDimensions()->width + $bxspacing) / 2) + $addxoffset;
 					}
 					//-- compact the tree
-					if ($curgen < $this->PEDIGREE_GENERATIONS) {
+					if ($curgen < $this->generations) {
 						$parent = (int)(($i - 1) / 2);
 						if ($i % 2 == 0) {
 							$yoffset = $yoffset - (($boxspacing / 2) * ($curgen - 1));
@@ -170,16 +170,16 @@ class PedigreeController extends ChartController {
 						}
 
 					}
-					$yoffset -= (($boxspacing / 2) * pow(2, ($this->PEDIGREE_GENERATIONS - 2)) - ($boxspacing / 2));
+					$yoffset -= (($boxspacing / 2) * pow(2, ($this->generations - 2)) - ($boxspacing / 2));
 					break;
 				case self::LANDSCAPE:
-					$xoffset = self::ARROW_SIZE + $this->basexoffset + (($this->PEDIGREE_GENERATIONS - $curgen) * ($this->getBoxDimensions()->width + $bxspacing));
-					if ($this->PEDIGREE_GENERATIONS < 4) {
+					$xoffset = self::ARROW_SIZE + $this->basexoffset + (($this->generations - $curgen) * ($this->getBoxDimensions()->width + $bxspacing));
+					if ($this->generations < 4) {
 						$xoffset += 60;
 					}
 					break;
 				case self::OLDEST_AT_TOP: // x & y values are reversed in pedigree.php
-					if ($this->PEDIGREE_GENERATIONS > 3) {
+					if ($this->generations > 3) {
 						$yoffset -= $this->getBoxDimensions()->height;
 					}
 					if ($this->showFull()) {
@@ -189,13 +189,13 @@ class PedigreeController extends ChartController {
 					}
 					break;
 				case self::OLDEST_AT_BOTTOM: // x & y values are reversed in pedigree.php
-					if ($this->PEDIGREE_GENERATIONS > 3) {
+					if ($this->generations > 3) {
 						$yoffset -= $this->getBoxDimensions()->height;
 					}
 					if ($this->showFull()) {
-						$xoffset = (int) ($this->PEDIGREE_GENERATIONS - $curgen) * (($this->getBoxDimensions()->width + $bxspacing) / 2) + $this::ARROW_SIZE;
+						$xoffset = (int) ($this->generations - $curgen) * (($this->getBoxDimensions()->width + $bxspacing) / 2) + $this::ARROW_SIZE;
 					} else {
-						$xoffset = (int) ($this->PEDIGREE_GENERATIONS - $curgen) * (($this->getBoxDimensions()->width + $bxspacing) / 3) + $this::ARROW_SIZE;
+						$xoffset = (int) ($this->generations - $curgen) * (($this->getBoxDimensions()->width + $bxspacing) / 3) + $this::ARROW_SIZE;
 					}
 					break;
 			}

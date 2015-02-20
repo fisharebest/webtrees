@@ -19,17 +19,17 @@ namespace Fisharebest\Webtrees;
 /**
  * Defined in session.php
  *
- * @global Tree    $WT_TREE
+ * @global Tree $WT_TREE
  */
 global $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'pedigree.php');
 require './includes/session.php';
 
-define("ARROW_WRAPPER", "<div class='ancestorarrow' style='%s:%spx; top:%spx;'>");
-define("MENU_WRAPPER", "<div id='childarrow' style='%s:%spx; top:%spx'><div><a href='#' class='menuselect %s'></a><div id='childbox'>");
-define("MENU_ITEM", "<a href='pedigree.php?rootid=%s&amp;show_full=%s&amp;PEDIGREE_GENERATIONS=%s&amp;talloffset=%s' class='%s'>%s</a>");
-define("BOX_WRAPPER", "<div class='shadow' style='%s:%spx; top:%spx; width:%spx; height:%spx'>");
+define('ARROW_WRAPPER', '<div class="ancestorarrow" style="%s:%spx; top:%spx;">');
+define('MENU_WRAPPER', '<div id="childarrow" style="%s:%spx; top:%spx"><div><a href="#" class="menuselect %s"></a><div id="childbox">');
+define('MENU_ITEM', '<a href="pedigree.php?rootid=%s&amp;show_full=%s&amp;PEDIGREE_GENERATIONS=%s&amp;talloffset=%s" class="%s">%s</a>');
+define('BOX_WRAPPER', '<div class="shadow" style="%s:%spx; top:%spx; width:%spx; height:%spx">');
 
 $controller = new PedigreeController;
 $controller
@@ -69,7 +69,7 @@ $controller
 					<?php echo print_findindi_link('rootid'); ?>
 				</td>
 				<td class="optionbox center">
-					<?php echo edit_field_integers('PEDIGREE_GENERATIONS', $controller->PEDIGREE_GENERATIONS, 3, $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS')); ?>
+					<?php echo edit_field_integers('PEDIGREE_GENERATIONS', $controller->generations, 3, $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS')); ?>
 				</td>
 				<td class="optionbox center">
 					<?php echo select_edit_control('orientation', array(0 => I18N::translate('Portrait'), 1 => I18N::translate('Landscape'), 2 => I18N::translate('Oldest at top'), 3 => I18N::translate('Oldest at bottom')), null, $controller->orientation); ?>
@@ -129,7 +129,7 @@ for ($i = ($controller->treesize - 1); $i >= 0; $i--) {
 			if ($i > (int) ($controller->treesize / 2) + (int) ($controller->treesize / 4)) {
 				$did++;
 			}
-			printf(MENU_ITEM, $controller->ancestors[$did]->getXref(), $controller->showFull(), $controller->PEDIGREE_GENERATIONS, $controller->orientation, 'icon-uarrow noprint', '');
+			printf(MENU_ITEM, $controller->ancestors[$did]->getXref(), $controller->showFull(), $controller->generations, $controller->orientation, 'icon-uarrow noprint', '');
 			echo '</div>';
 		}
 	}
@@ -150,11 +150,11 @@ for ($i = ($controller->treesize - 1); $i >= 0; $i--) {
 		}
 		if ($controller->orientation === $controller::OLDEST_AT_BOTTOM) {
 			printf(ARROW_WRAPPER, $posn, $controller->getBoxDimensions()->width / 2, $controller->getBoxDimensions()->height + 10);
-			printf(MENU_ITEM, $controller->ancestors[$did]->getXref(), $controller->showFull(), $controller->PEDIGREE_GENERATIONS, $controller->orientation, 'icon-darrow noprint', '');
+			printf(MENU_ITEM, $controller->ancestors[$did]->getXref(), $controller->showFull(), $controller->generations, $controller->orientation, 'icon-darrow noprint', '');
 			echo '</div>';
 		} elseif ($controller->orientation < $controller::OLDEST_AT_TOP) {
 			printf(ARROW_WRAPPER, $posn, $controller->getBoxDimensions()->width + 10, $controller->getBoxDimensions()->height / 2 - 10);
-			printf(MENU_ITEM, $controller->ancestors[$did]->getXref(), $controller->showFull(), $controller->PEDIGREE_GENERATIONS, $controller->orientation, "$arrow noprint", '');
+			printf(MENU_ITEM, $controller->ancestors[$did]->getXref(), $controller->showFull(), $controller->generations, $controller->orientation, "$arrow noprint", '');
 			echo '</div>';
 		}
 	}
@@ -174,11 +174,11 @@ if (count($famids) > 0) {
 	}
 	switch ($controller->orientation) {
 		case $controller::PORTRAIT:
-			$offsetx = $controller->PEDIGREE_GENERATIONS < 6 ? $offsetx = 60 * (5 - $controller->PEDIGREE_GENERATIONS) : 0;
+			$offsetx = $controller->generations < 6 ? $offsetx = 60 * (5 - $controller->generations) : 0;
 			$offsety = $yoffset;
 			break;
 		case $controller::LANDSCAPE:
-			$offsetx = $controller->PEDIGREE_GENERATIONS < 4 ? $controller->basexoffset + 60 : $controller->basexoffset;
+			$offsetx = $controller->generations < 4 ? $controller->basexoffset + 60 : $controller->basexoffset;
 			$offsety = $yoffset;
 			break;
 		case $controller::OLDEST_AT_TOP:
@@ -198,11 +198,11 @@ if (count($famids) > 0) {
 		echo '<span class="name1">', I18N::translate('Family'), '</span>';
 		$spouse = $family->getSpouse($controller->root);
 		if ($spouse) {
-			printf(MENU_ITEM, $spouse->getXref(), $controller->showFull(), $controller->PEDIGREE_GENERATIONS, $controller->orientation, 'name1', $spouse->getFullName());
+			printf(MENU_ITEM, $spouse->getXref(), $controller->showFull(), $controller->generations, $controller->orientation, 'name1', $spouse->getFullName());
 		}
 		$children = $family->getChildren();
 		foreach ($children as $child) {
-			printf(MENU_ITEM, $child->getXref(), $controller->showFull(), $controller->PEDIGREE_GENERATIONS, $controller->orientation, 'name1', $child->getFullName());
+			printf(MENU_ITEM, $child->getXref(), $controller->showFull(), $controller->generations, $controller->orientation, 'name1', $child->getFullName());
 		}
 	}
 	//-- echo the siblings
@@ -212,11 +212,11 @@ if (count($famids) > 0) {
 		});
 		$num      = count($siblings);
 		if ($num) {
-			echo '<span class=\'name1\'>';
+			echo '<span class="name1">';
 			echo $num > 1 ? I18N::translate('Siblings') : I18N::translate('Sibling');
 			echo '</span>';
 			foreach ($siblings as $child) {
-				printf(MENU_ITEM, $child->getXref(), $controller->showFull(), $controller->PEDIGREE_GENERATIONS, $controller->orientation, 'name1', $child->getFullName());
+				printf(MENU_ITEM, $child->getXref(), $controller->showFull(), $controller->generations, $controller->orientation, 'name1', $child->getFullName());
 			}
 		}
 	}
@@ -227,9 +227,9 @@ if (count($famids) > 0) {
 }
 // calculate canvas width
 if ($controller->orientation < $controller::OLDEST_AT_TOP) {
-	$canvaswidth = $controller->PEDIGREE_GENERATIONS * ($controller->getBoxDimensions()->width + 20);
+	$canvaswidth = $controller->generations * ($controller->getBoxDimensions()->width + 20);
 } else {
-	$canvaswidth = pow(2, $controller->PEDIGREE_GENERATIONS - 1) * ($controller->getBoxDimensions()->width + 20);
+	$canvaswidth = pow(2, $controller->generations - 1) * ($controller->getBoxDimensions()->width + 20);
 }
 $chartHeight +=  Theme::theme()->parameter('chart-box-y');
 
@@ -259,7 +259,7 @@ $controller->addInlineJavascript('
 		offset_y2 = ' . $controller->getBoxDimensions()->height . '*2,
 		lineDrawx2 = new Array("' . join($lineDrawx, '","') . '"),
 		lineDrawy2 = new Array("' . join($lineDrawy, '","') . '"),
-		maxjoins = Math.pow(2,' . $controller->PEDIGREE_GENERATIONS . '),
+		maxjoins = Math.pow(2,' . $controller->generations . '),
 		ctx = jQuery("#pedigree_canvas")[0].getContext("2d");
 
 	// Set line styles

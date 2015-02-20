@@ -42,7 +42,7 @@ $controller
 		<table class="list_table">
 			<tr>
 				<td class="descriptionbox">
-					<label><?php echo I18N::translate('Individual'); ?></label>
+					<label for="rootid"><?php echo I18N::translate('Individual'); ?></label>
 				</td>
 				<td class="optionbox">
 					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
@@ -97,7 +97,7 @@ $controller
 						<?php
 							for ($i = 2; $i <= $MAX_PEDIGREE_GENERATIONS; $i++) {
 								echo '<option value="', $i, '" ';
-								if ($i == $controller->PEDIGREE_GENERATIONS) {
+								if ($i == $controller->generations) {
 									echo 'selected';
 								}
 									echo '>', I18N::number($i), '</option>';
@@ -126,7 +126,7 @@ switch ($controller->chart_style) {
 case 0:
 	// List
 	echo '<ul id="ancestry_chart" class="chart_common">';
-	$controller->printChildAscendancy($controller->root, 1, $controller->PEDIGREE_GENERATIONS - 1);
+	$controller->printChildAscendancy($controller->root, 1, $controller->generations - 1);
 	echo '</ul>';
 	echo '<br>';
 	break;
@@ -136,7 +136,7 @@ case 1:
 	// first page : show indi facts
 	print_pedigree_person($controller->root, $controller->showFull());
 	// process the tree
-	$ancestors = $controller->sosaAncestors($controller->PEDIGREE_GENERATIONS - 1);
+	$ancestors = $controller->sosaAncestors($controller->generations - 1);
 	$ancestors = array_filter($ancestors); // The SOSA array includes empty placeholders
 
 	foreach ($ancestors as $sosa => $individual) {
@@ -148,15 +148,15 @@ case 1:
 	break;
 case 2:
 	// Individual list
-	$ancestors = $controller->sosaAncestors($controller->PEDIGREE_GENERATIONS);
+	$ancestors = $controller->sosaAncestors($controller->generations);
 	$ancestors = array_filter($ancestors); // The SOSA array includes empty placeholders
 	echo '<div id="ancestry-list">', format_indi_table($ancestors, 'sosa'), '</div>';
 	break;
 case 3:
 	// Family list
-	$ancestors = $controller->sosaAncestors($controller->PEDIGREE_GENERATIONS - 1);
+	$ancestors = $controller->sosaAncestors($controller->generations - 1);
 	$ancestors = array_filter($ancestors); // The SOSA array includes empty placeholders
-	$families = array();
+	$families  = array();
 	foreach ($ancestors as $individual) {
 		foreach ($individual->getChildFamilies() as $family) {
 			$families[$family->getXref()] = $family;

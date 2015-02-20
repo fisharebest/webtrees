@@ -23,13 +23,13 @@ class ChartController extends PageController {
 	/** @var Individual Who is chart about? */
 	public $root;
 
-	/** @var bool determines the detail shown in the personbox */
+	/** @var boolean determines the detail shown in the personbox */
 	private $show_full;
 
 	/** @var string An error message, in case we cannot construct the chart */
 	public $error_message;
 
-	/** @var personbox dimensions */
+	/** @var \stdClass personbox dimensions */
 	private $box;
 	/**
 	 * Create the chart controller

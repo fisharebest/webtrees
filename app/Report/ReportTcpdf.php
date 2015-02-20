@@ -42,13 +42,13 @@ class ReportTcpdf extends TCPDF {
 	/** @var string Currently used style name */
 	public $currentStyle;
 
-	/** @var int The last cell height */
+	/** @var integer The last cell height */
 	public $lastCellHeight = 0;
 
-	/** @var int The largest font size within a TextBox to calculate the height */
+	/** @var integer The largest font size within a TextBox to calculate the height */
 	public $largestFontHeight = 0;
 
-	/** @var int The last pictures page number */
+	/** @var integer The last pictures page number */
 	public $lastpicpage = 0;
 
 	public $wt_report;
