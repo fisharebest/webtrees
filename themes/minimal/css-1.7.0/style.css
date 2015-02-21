@@ -2386,7 +2386,7 @@ dd .deletelink {
 	padding-bottom: 0;
 	margin-bottom: 0;
 	width: 98%;
-	overflow: auto;
+	overflow: visible;
 }
 
 [dir=rtl] #tabs {
