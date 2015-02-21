@@ -29,7 +29,7 @@
 /**
  * @see Zend_Db_Adapter_Abstract
  */
-// require_once 'Zend/Database/Adapter/Abstract.php';
+// require_once 'Zend/Db/Adapter/Abstract.php';
 
 /**
  * @see Zend_Auth_Result
@@ -170,7 +170,7 @@ class Zend_Auth_Adapter_DbTable implements Zend_Auth_Adapter_Interface
          * If no adapter is specified, fetch default database adapter.
          */
         if(null === $this->_zendDb) {
-            // require_once 'Zend/Database/Table/Abstract.php';
+            // require_once 'Zend/Db/Table/Abstract.php';
             $this->_zendDb = Zend_Db_Table_Abstract::getDefaultAdapter();
             if (null === $this->_zendDb) {
                 // require_once 'Zend/Auth/Adapter/Exception.php';
@@ -294,7 +294,7 @@ class Zend_Auth_Adapter_DbTable implements Zend_Auth_Adapter_Interface
     }
 
     /**
-     * getDbSelect() - Return the preauthentication Database Select object for userland select query modification
+     * getDbSelect() - Return the preauthentication Db Select object for userland select query modification
      *
      * @return Zend_Db_Select
      */

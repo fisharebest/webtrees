@@ -69,7 +69,7 @@ class Date {
 	 *
 	 * @param string $date A date in GEDCOM format
 	 */
-	function __construct($date) {
+	public function __construct($date) {
 		// Extract any explanatory text
 		if (preg_match('/^(.*) ?[(](.*)[)]/', $date, $match)) {
 			$date       = $match[1];
@@ -210,6 +210,11 @@ class Date {
 	 */
 	function display($url = false, $date_format = null, $convert_calendars = true) {
 		global $WT_TREE;
+
+		// Search engines do not get links to the calendar pages
+		if (Auth::isSearchEngine()) {
+			$url = false;
+		}
 
 		$CALENDAR_FORMAT = $WT_TREE->getPreference('CALENDAR_FORMAT');
 

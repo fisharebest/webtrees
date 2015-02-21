@@ -24,10 +24,6 @@ class FamilyController extends GedcomRecordController {
 	 * Startup activity
 	 */
 	public function __construct() {
-		global $Dbwidth, $bwidth, $pbwidth, $pbheight, $bheight;
-		$bwidth   = $Dbwidth;
-		$pbwidth  = $bwidth + 12;
-		$pbheight = $bheight + 14;
 
 		$xref         = Filter::get('famid', WT_REGEX_XREF);
 		$this->record = Family::getInstance($xref);

@@ -297,9 +297,9 @@ class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleS
 
 	/** {@inheritdoc} */
 	public function getMenu() {
-		global $SEARCH_SPIDER, $controller;
+		global $controller;
 
-		if ($SEARCH_SPIDER) {
+		if (Auth::isSearchEngine()) {
 			return null;
 		}
 		//-- main clippings menu item
@@ -322,9 +322,7 @@ class clippings_WT_Module extends Module implements ModuleMenuInterface, ModuleS
 
 	/** {@inheritdoc} */
 	public function hasSidebarContent() {
-		global $SEARCH_SPIDER;
-
-		if ($SEARCH_SPIDER) {
+		if (Auth::isSearchEngine()) {
 			return false;
 		} else {
 			// Creating a controller has the side effect of initialising the cart

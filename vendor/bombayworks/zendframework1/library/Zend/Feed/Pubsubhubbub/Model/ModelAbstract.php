@@ -21,7 +21,7 @@
 
 
 /** @see Zend_Db_Table */
-// require_once 'Zend/Database/Table.php';
+// require_once 'Zend/Db/Table.php';
 
 /**
  * @see Zend_Registry

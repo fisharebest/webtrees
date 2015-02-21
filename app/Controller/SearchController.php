@@ -22,259 +22,162 @@ use Zend_Session;
  * Class SearchController - Controller for the search page
  */
 class SearchController extends PageController {
+	/** @var string The type of search to perform */
 	public $action;
-	// Need to decide if these variables are public/private/protected (or unused)
-	var $isPostBack = false;
-	var $srfams;
-	var $srindi;
-	var $srnote;
-	var $srsour;
-	var $resultsPageNum = 0;
-	var $resultsPerPage = 50;
-	var $totalResults = -1;
-	var $totalGeneralResults = -1;
-	var $indiResultsPrinted = -1;
-	var $famResultsPrinted = -1;
-	var $srcResultsPrinted = -1;
-	var $query;
-	var $myquery = '';
-	var $soundex = 'DaitchM';
-	var $subaction = '';
-	var $nameprt = '';
-	var $showasso = 'off';
-	var $name = '';
-	var $myname;
-	var $birthdate = '';
-	var $mybirthdate;
-	var $birthplace = '';
-	var $mybirthplace;
-	var $deathdate = '';
-	var $mydeathdate;
-	var $deathplace = '';
-	var $mydeathplace;
-	var $gender = '';
-	var $mygender;
-	var $firstname = '';
-	var $lastname = '';
-	var $place = '';
-	var $year = '';
+
+	/** @var string "checked" if we are to search individuals, empty otherwise */
+	public $srindi;
+
+	/** @var string "checked" if we are to search families, empty otherwise */
+	public $srfams;
+
+	/** @var string "checked" if we are to search sources, empty otherwise */
+	public $srsour;
+
+	/** @var string "checked" if we are to search notes, empty otherwise */
+	public $srnote;
 
 	/** @var Tree[] A list of trees to search */
-	var $search_trees = array();
+	public $search_trees = array();
 
 	/** @var Individual[] Individual search results */
-	var $myindilist = array();
+	protected $myindilist = array();
 
 	/** @var Source[] Source search results */
-	var $mysourcelist = array();
+	protected $mysourcelist = array();
 
 	/** @var Family[] Family search results */
-	var $myfamlist = array();
+	protected $myfamlist = array();
 
 	/** @var Note[] Note search results */
-	var $mynotelist = array();
+	protected $mynotelist = array();
 
-	var $inputFieldNames = array();
+	/** @var string The search term(s) */
+	public $query;
+
+	/** @var string The soundex algorithm to use */
+	public $soundex;
+
+	// Need to decide if these variables are public/private/protected (or unused)
+	var $showasso = 'off';
+	var $name;
+	var $firstname;
+	var $lastname;
+	var $place;
+	var $year;
 	var $replace = '';
 	var $replaceNames = false;
 	var $replacePlaces = false;
 	var $replaceAll = false;
 	var $replacePlacesWord = false;
-	var $printplace = array();
 
 	/**
 	 * Startup activity
 	 */
-	function __construct() {
+	public function __construct() {
 		global $WT_TREE;
 
 		parent::__construct();
 
-		// $action comes from GET (menus) or POST (form submission)
-		$this->action = Filter::post('action', 'advanced|general|soundex|replace');
-		if (!$this->action) {
-			$this->action = Filter::get('action', 'advanced|general|soundex|replace', 'general');
+		// $action comes from GET (search) or POST (replace)
+		if (Filter::post('action')) {
+			$this->action            = Filter::post('action', 'replace', 'general');
+			$this->query             = Filter::post('query');
+			$this->replace           = Filter::post('replace');
+			$this->replaceNames      = Filter::post('replaceNames', 'checked', '');
+			$this->replacePlaces     = Filter::post('replacePlaces', 'checked', '');
+			$this->replacePlacesWord = Filter::post('replacePlacesWord', 'checked', '');
+			$this->replaceAll        = Filter::post('replaceAll', 'checked', '');
+		} else {
+			$this->action            = Filter::get('action', 'advanced|general|soundex|replace|header', 'general');
+			$this->query             = Filter::get('query');
+			$this->replace           = Filter::get('replace');
+			$this->replaceNames      = Filter::get('replaceNames', 'checked', '');
+			$this->replacePlaces     = Filter::get('replacePlaces', 'checked', '');
+			$this->replacePlacesWord = Filter::get('replacePlacesWord', 'checked', '');
+			$this->replaceAll        = Filter::get('replaceAll', 'checked', '');
 		}
 
-		$topsearch = Filter::postBool('topsearch');
-
-		if ($topsearch) {
-			$this->isPostBack = true;
-			$this->srfams     = 'yes';
-			$this->srindi     = 'yes';
-			$this->srsour     = 'yes';
-			$this->srnote     = 'yes';
+		// Only editors can use search/replace
+		if ($this->action === 'replace' && !Auth::isEditor($WT_TREE)) {
+			$this->action = 'general';
 		}
 
-		// Get the query
-		$this->query   = Filter::post('query', '.{2,}');
-		$this->myquery = Filter::escapeHtml($this->query);
+		$this->srindi            = Filter::get('srindi', 'checked', '');
+		$this->srfams            = Filter::get('srfams', 'checked', '');
+		$this->srsour            = Filter::get('srsour', 'checked', '');
+		$this->srnote            = Filter::get('srnote', 'checked', '');
+		$this->soundex           = Filter::get('soundex', 'DaitchM|Russell', 'DaitchM');
+		$this->showasso          = Filter::get('showasso');
+		$this->firstname         = Filter::get('firstname');
+		$this->lastname          = Filter::get('lastname');
+		$this->place             = Filter::get('place');
+		$this->year              = Filter::get('year');
+		$this->name              = Filter::get('name');
 
-		$this->replace           = Filter::post('replace');
-		$this->replaceNames      = Filter::postBool('replaceNames');
-		$this->replacePlaces     = Filter::postBool('replacePlaces');
-		$this->replacePlacesWord = Filter::postBool('replacePlacesWord');
-		$this->replaceAll        = Filter::postBool('replaceAll');
-
-		// We should fetch each variable independently, using appropriate validation
-		// Aquire all the variables values from the $_REQUEST
-		$varNames = array("isPostBack", "srfams", "srindi", "srsour", "srnote", "view", "soundex", "subaction", "nameprt", "showasso", "resultsPageNum", "resultsPerPage", "totalResults", "totalGeneralResults", "indiResultsPrinted", "famResultsPrinted", "srcResultsPrinted", "myindilist", "mysourcelist", "mynotelist", "myfamlist");
-		$this->setRequestValues($varNames);
-
-		if (!$this->isPostBack) {
-			// Enable the default gedcom for search
-			$str              = str_replace(array(".", "-", " "), array("_", "_", "_"), WT_GEDCOM);
-			$_REQUEST["$str"] = $str;
+		// If no record types specified, search individuals
+		if (!$this->srfams && !$this->srsour && !$this->srnote) {
+			$this->srindi = 'checked';
 		}
 
-		// Retrieve the gedcoms to search in
-		if (count(Tree::getAll()) > 1 && Site::getPreference('ALLOW_CHANGE_GEDCOM')) {
+		// If no replace types specifiied, replace full records
+		if (!$this->replaceNames && !$this->replacePlaces && !$this->replacePlacesWord) {
+			$this->replaceAll = 'checked';
+		}
+
+		// Trees to search
+		if (Site::getPreference('ALLOW_CHANGE_GEDCOM')) {
 			foreach (Tree::getAll() as $search_tree) {
-				$str = str_replace(array(".", "-", " "), array("_", "_", "_"), $search_tree->getName());
-				if (isset ($_REQUEST["$str"]) || $topsearch) {
-					$this->search_trees[$search_tree->getTreeId()] = $search_tree;
-					$_REQUEST[$str] = 'yes';
+				if (Filter::get('tree_' . $search_tree->getTreeId())) {
+					$this->search_trees[] = $search_tree;
 				}
 			}
+			if (!$this->search_trees) {
+				$this->search_trees[] = $WT_TREE;
+			}
 		} else {
-			$this->search_trees[WT_GED_ID] = $WT_TREE;
+			$this->search_trees[] = $WT_TREE;
 		}
 
-		// vars use for soundex search
-		$this->firstname = Filter::post('firstname');
-		$this->lastname  = Filter::post('lastname');
-		$this->place     = Filter::post('place');
-		$this->year      = Filter::post('year');
-
-		// Set the search result titles for soundex searches
-		if ($this->firstname || $this->lastname || $this->place) {
-			$this->myquery = Filter::escapeHtml(implode(' ', array($this->firstname, $this->lastname, $this->place)));
-		};
-
-		if (!empty ($_REQUEST["name"])) {
-			$this->name   = $_REQUEST["name"];
-			$this->myname = $this->name;
-		} else {
-			$this->name   = "";
-			$this->myname = "";
-		}
-		if (!empty ($_REQUEST["birthdate"])) {
-			$this->birthdate   = $_REQUEST["birthdate"];
-			$this->mybirthdate = $this->birthdate;
-		} else {
-			$this->birthdate   = "";
-			$this->mybirthdate = "";
-		}
-		if (!empty ($_REQUEST["birthplace"])) {
-			$this->birthplace   = $_REQUEST["birthplace"];
-			$this->mybirthplace = $this->birthplace;
-		} else {
-			$this->birthplace   = "";
-			$this->mybirthplace = "";
-		}
-		if (!empty ($_REQUEST["deathdate"])) {
-			$this->deathdate   = $_REQUEST["deathdate"];
-			$this->mydeathdate = $this->deathdate;
-		} else {
-			$this->deathdate   = "";
-			$this->mydeathdate = "";
-		}
-		if (!empty ($_REQUEST["deathplace"])) {
-			$this->deathplace   = $_REQUEST["deathplace"];
-			$this->mydeathplace = $this->deathplace;
-		} else {
-			$this->deathplace   = "";
-			$this->mydeathplace = "";
-		}
-		if (!empty ($_REQUEST["gender"])) {
-			$this->gender   = $_REQUEST["gender"];
-			$this->mygender = $this->gender;
-		} else {
-			$this->gender   = "";
-			$this->mygender = "";
-		}
-
-		$this->inputFieldNames[] = "action";
-		$this->inputFieldNames[] = "isPostBack";
-		$this->inputFieldNames[] = "resultsPerPage";
-		$this->inputFieldNames[] = "query";
-		$this->inputFieldNames[] = "srindi";
-		$this->inputFieldNames[] = "srfams";
-		$this->inputFieldNames[] = "srsour";
-		$this->inputFieldNames[] = "srnote";
-		$this->inputFieldNames[] = "showasso";
-		$this->inputFieldNames[] = "firstname";
-		$this->inputFieldNames[] = "lastname";
-		$this->inputFieldNames[] = "place";
-		$this->inputFieldNames[] = "year";
-		$this->inputFieldNames[] = "soundex";
-		$this->inputFieldNames[] = "nameprt";
-		$this->inputFieldNames[] = "subaction";
-		$this->inputFieldNames[] = "name";
-		$this->inputFieldNames[] = "birthdate";
-		$this->inputFieldNames[] = "birthplace";
-		$this->inputFieldNames[] = "deathdate";
-		$this->inputFieldNames[] = "deathplace";
-		$this->inputFieldNames[] = "gender";
-
-		// Get the search results based on the action
-		if ($topsearch) {
-			$this->topSearch();
-		}
 		// If we want to show associated persons, build the list
 		switch ($this->action) {
+		case 'header':
+			// We can type in an XREF into the header search, and jump straight to it.
+			// Otherwise, the header search is the same as the general search
+			if (preg_match('/' . WT_REGEX_XREF . '/', $this->query)) {
+				$record = GedcomRecord::getInstance($this->query, $WT_TREE->getTreeId());
+				if ($record && $record->canShowName()) {
+					header('Location: ' . WT_BASE_URL . $record->getRawUrl());
+					exit;
+				}
+			}
+			$this->action = 'general';
+			$this->srindi = 'checked';
+			$this->srfams = 'checked';
+			$this->srsour = 'checked';
+			$this->srnote = 'checked';
+			$this->setPageTitle(I18N::translate('General search'));
+			$this->generalSearch();
+			break;
 		case 'general':
 			$this->setPageTitle(I18N::translate('General search'));
 			$this->generalSearch();
 			break;
 		case 'soundex':
+			// Create a dummy search query to use as a title to the results list
+			$this->query = trim($this->firstname . ' ' . $this->lastname . ' ' . $this->place);
 			$this->setPageTitle(I18N::translate('Phonetic search'));
 			$this->soundexSearch();
 			break;
 		case 'replace':
-			$this->setPageTitle(I18N::translate('Search and replace'));
-			$this->searchAndReplace();
-
-			return;
-		}
-	}
-
-	/**
-	 * setRequestValues - Checks if the variable names ($varNames) are in
-	 * the $_REQUEST and if so assigns their values to
-	 * $this based on the variable name ($this->$varName).
-	 *
-	 * @param string[] $varNames - Array of variable names(strings).
-	 */
-	function setRequestValues($varNames) {
-		foreach ($varNames as $varName) {
-			if (isset ($_REQUEST[$varName])) {
-				if ($varName == 'action' && $_REQUEST[$varName] == 'replace' && !WT_USER_CAN_EDIT) {
-					$this->action = 'general';
-					continue;
-				}
-				$this->$varName = $_REQUEST[$varName];
-			}
-		}
-	}
-
-	/**
-	 * Handles searches entered in the top search box in the themes and
-	 * prepares the search to do a general search on individuals, families and sources.
-	 */
-	private function topSearch() {
-		// first set some required variables. Search only in the current tree, only in individuals.
-		$this->srindi = "yes";
-
-		// Enable the default gedcom for search
-		$str              = str_replace(array(".", "-", " "), array("_", "_", "_"), WT_GEDCOM);
-		$_REQUEST["$str"] = "yes";
-
-		// Then see if an ID is typed in. If so, we might want to jump there.
-		if (isset ($this->query)) {
-			$record = GedcomRecord::getInstance($this->query);
-			if ($record && $record->canShow()) {
-				header('Location: ' . WT_BASE_URL . $record->getRawUrl());
+			$this->search_trees = array($WT_TREE);
+			$this->srindi = 'checked';
+			$this->srfams = 'checked';
+			$this->srsour = 'checked';
+			$this->srnote = 'checked';
+			if (Filter::post('query')) {
+				$this->searchAndReplace($WT_TREE);
+				header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=replace&query=' . Filter::escapeUrl($this->query) . '&replace=' . Filter::escapeUrl($this->replace) . '&replaceAll=' . $this->replaceAll . '&replaceNames=' . $this->replaceNames . '&replacePlaces=' . $this->replacePlaces . '&replacePlacesWord=' . $this->replacePlacesWord);
 				exit;
 			}
 		}
@@ -304,32 +207,28 @@ class SearchController extends PageController {
 			$logstring = "Type: General\nQuery: " . $this->query;
 			Log::AddSearchlog($logstring, $this->search_trees);
 
-			$this->myindilist = array();
 			// Search the individuals
-			if (isset ($this->srindi) && $query_terms) {
-				$this->myindilist = search_indis($query_terms, array_keys($this->search_trees));
+			if ($this->srindi && $query_terms) {
+				$this->myindilist = search_indis($query_terms, $this->search_trees);
 			}
 
 			// Search the fams
-			$this->myfamlist = array();
-			if (isset ($this->srfams) && $query_terms) {
+			if ($this->srfams && $query_terms) {
 				$this->myfamlist = array_merge(
-					search_fams($query_terms, array_keys($this->search_trees)),
-					search_fams_names($query_terms, array_keys($this->search_trees))
+					search_fams($query_terms, $this->search_trees),
+					search_fams_names($query_terms, $this->search_trees)
 				);
 				$this->myfamlist = array_unique($this->myfamlist);
 			}
 
 			// Search the sources
-			$this->mysourcelist = array();
-			if (isset ($this->srsour) && $query_terms) {
-				$this->mysourcelist = search_sources($query_terms, array_keys($this->search_trees));
+			if ($this->srsour && $query_terms) {
+				$this->mysourcelist = search_sources($query_terms, $this->search_trees);
 			}
 
 			// Search the notes
-			$this->mynotelist = array();
-			if (isset ($this->srnote) && $query_terms) {
-				$this->mynotelist = search_notes($query_terms, array_keys($this->search_trees));
+			if ($this->srnote && $query_terms) {
+				$this->mynotelist = search_notes($query_terms, $this->search_trees);
 			}
 
 			// If only 1 item is returned, automatically forward to that item
@@ -370,17 +269,13 @@ class SearchController extends PageController {
 	}
 
 	/**
-	 *  Preforms a search and replace
+	 * Performs a search and replace
+	 *
+	 * @param Tree $tree
 	 */
-	private function searchAndReplace() {
-		global $STANDARD_NAME_FACTS, $WT_TREE;
+	private function searchAndReplace(Tree $tree) {
+		global $STANDARD_NAME_FACTS;
 
-		$this->search_trees = array(WT_GED_ID => $WT_TREE);
-		$this->srindi = 'yes';
-		$this->srfams = 'yes';
-		$this->srsour = 'yes';
-		$this->srnote = 'yes';
-		$oldquery     = $this->query;
 		$this->generalSearch();
 
 		//-- don't try to make any changes if nothing was found
@@ -388,102 +283,125 @@ class SearchController extends PageController {
 			return;
 		}
 
-		Log::addEditLog("Search And Replace old:" . $oldquery . " new:" . $this->replace);
-		// Include edit functions.
+		Log::addEditLog("Search And Replace old:" . $this->query . " new:" . $this->replace);
 
-		$adv_name_tags = preg_split("/[\s,;: ]+/", $WT_TREE->getPreference('ADVANCED_NAME_FACTS'));
-		$name_tags     = array_unique(array_merge($STANDARD_NAME_FACTS, $adv_name_tags));
-		$name_tags[]   = '_MARNM';
+		$adv_name_tags   = preg_split("/[\s,;: ]+/", $tree->getPreference('ADVANCED_NAME_FACTS'));
+		$name_tags       = array_unique(array_merge($STANDARD_NAME_FACTS, $adv_name_tags));
+		$name_tags[]     = '_MARNM';
+		$records_updated = 0;
 		foreach ($this->myindilist as $id => $record) {
-			$oldRecord = $record->getGedcom();
-			$newRecord = $oldRecord;
+			$old_record = $record->getGedcom();
+			$new_record = $old_record;
 			if ($this->replaceAll) {
-				$newRecord = preg_replace("~" . $oldquery . "~i", $this->replace, $newRecord);
+				$new_record = preg_replace("~" . $this->query . "~i", $this->replace, $new_record);
 			} else {
 				if ($this->replaceNames) {
 					foreach ($name_tags as $tag) {
-						$newRecord = preg_replace("~(\d) " . $tag . " (.*)" . $oldquery . "(.*)~i", "$1 " . $tag . " $2" . $this->replace . "$3", $newRecord);
+						$new_record = preg_replace("~(\d) " . $tag . " (.*)" . $this->query . "(.*)~i", "$1 " . $tag . " $2" . $this->replace . "$3", $new_record);
 					}
 				}
 				if ($this->replacePlaces) {
 					if ($this->replacePlacesWord) {
-						$newRecord = preg_replace('~(\d) PLAC (.*)([,\W\s])' . $oldquery . '([,\W\s])~i', "$1 PLAC $2$3" . $this->replace . "$4", $newRecord);
+						$new_record = preg_replace('~(\d) PLAC (.*)([,\W\s])' . $this->query . '([,\W\s])~i', "$1 PLAC $2$3" . $this->replace . "$4", $new_record);
 					} else {
-						$newRecord = preg_replace("~(\d) PLAC (.*)" . $oldquery . "(.*)~i", "$1 PLAC $2" . $this->replace . "$3", $newRecord);
+						$new_record = preg_replace("~(\d) PLAC (.*)" . $this->query . "(.*)~i", "$1 PLAC $2" . $this->replace . "$3", $new_record);
 					}
 				}
 			}
 			//-- if the record changed replace the record otherwise remove it from the search results
-			if ($newRecord != $oldRecord) {
-				$record->updateRecord($newRecord, true);
+			if ($new_record !== $old_record) {
+				$record->updateRecord($new_record, true);
+				$records_updated++;
 			} else {
 				unset($this->myindilist[$id]);
 			}
 		}
 
+		if ($records_updated) {
+			FlashMessages::addMessage(I18N::plural('%s individuals has been updated.', '%s individuals have been updated.', $records_updated, I18N::number($records_updated)));
+		}
+
+		$records_updated = 0;
 		foreach ($this->myfamlist as $id => $record) {
-			$oldRecord = $record->getGedcom();
-			$newRecord = $oldRecord;
+			$old_record = $record->getGedcom();
+			$new_record = $old_record;
 
 			if ($this->replaceAll) {
-				$newRecord = preg_replace("~" . $oldquery . "~i", $this->replace, $newRecord);
+				$new_record = preg_replace("~" . $this->query . "~i", $this->replace, $new_record);
 			} else {
 				if ($this->replacePlaces) {
 					if ($this->replacePlacesWord) {
-						$newRecord = preg_replace('~(\d) PLAC (.*)([,\W\s])' . $oldquery . '([,\W\s])~i', "$1 PLAC $2$3" . $this->replace . "$4", $newRecord);
+						$new_record = preg_replace('~(\d) PLAC (.*)([,\W\s])' . $this->query . '([,\W\s])~i', "$1 PLAC $2$3" . $this->replace . "$4", $new_record);
 					} else {
-						$newRecord = preg_replace("~(\d) PLAC (.*)" . $oldquery . "(.*)~i", "$1 PLAC $2" . $this->replace . "$3", $newRecord);
+						$new_record = preg_replace("~(\d) PLAC (.*)" . $this->query . "(.*)~i", "$1 PLAC $2" . $this->replace . "$3", $new_record);
 					}
 				}
 			}
 			//-- if the record changed replace the record otherwise remove it from the search results
-			if ($newRecord != $oldRecord) {
-				$record->updateRecord($newRecord, true);
+			if ($new_record !== $old_record) {
+				$record->updateRecord($new_record, true);
+				$records_updated++;
 			} else {
 				unset($this->myfamlist[$id]);
 			}
 		}
 
+		if ($records_updated) {
+			FlashMessages::addMessage(I18N::plural('%s family has been updated.', '%s families have been updated.', $records_updated, I18N::number($records_updated)));
+		}
+
+		$records_updated = 0;
 		foreach ($this->mysourcelist as $id => $record) {
-			$oldRecord = $record->getGedcom();
-			$newRecord = $oldRecord;
+			$old_record = $record->getGedcom();
+			$new_record = $old_record;
 
 			if ($this->replaceAll) {
-				$newRecord = preg_replace("~" . $oldquery . "~i", $this->replace, $newRecord);
+				$new_record = preg_replace("~" . $this->query . "~i", $this->replace, $new_record);
 			} else {
 				if ($this->replaceNames) {
-					$newRecord = preg_replace("~(\d) TITL (.*)" . $oldquery . "(.*)~i", "$1 TITL $2" . $this->replace . "$3", $newRecord);
-					$newRecord = preg_replace("~(\d) ABBR (.*)" . $oldquery . "(.*)~i", "$1 ABBR $2" . $this->replace . "$3", $newRecord);
+					$new_record = preg_replace("~(\d) TITL (.*)" . $this->query . "(.*)~i", "$1 TITL $2" . $this->replace . "$3", $new_record);
+					$new_record = preg_replace("~(\d) ABBR (.*)" . $this->query . "(.*)~i", "$1 ABBR $2" . $this->replace . "$3", $new_record);
 				}
 				if ($this->replacePlaces) {
 					if ($this->replacePlacesWord) {
-						$newRecord = preg_replace('~(\d) PLAC (.*)([,\W\s])' . $oldquery . '([,\W\s])~i', "$1 PLAC $2$3" . $this->replace . "$4", $newRecord);
+						$new_record = preg_replace('~(\d) PLAC (.*)([,\W\s])' . $this->query . '([,\W\s])~i', "$1 PLAC $2$3" . $this->replace . "$4", $new_record);
 					} else {
-						$newRecord = preg_replace("~(\d) PLAC (.*)" . $oldquery . "(.*)~i", "$1 PLAC $2" . $this->replace . "$3", $newRecord);
+						$new_record = preg_replace("~(\d) PLAC (.*)" . $this->query . "(.*)~i", "$1 PLAC $2" . $this->replace . "$3", $new_record);
 					}
 				}
 			}
 			//-- if the record changed replace the record otherwise remove it from the search results
-			if ($newRecord != $oldRecord) {
-				$record->updateRecord($newRecord, true);
+			if ($new_record !== $old_record) {
+				$record->updateRecord($new_record, true);
+				$records_updated++;
 			} else {
 				unset($this->mysourcelist[$id]);
 			}
 		}
 
+		if ($records_updated) {
+			FlashMessages::addMessage(I18N::plural('%s source has been updated.', '%s sources have been updated.', $records_updated, I18N::number($records_updated)));
+		}
+
+		$records_updated = 0;
 		foreach ($this->mynotelist as $id => $record) {
-			$oldRecord = $record->getGedcom();
-			$newRecord = $oldRecord;
+			$old_record = $record->getGedcom();
+			$new_record = $old_record;
 
 			if ($this->replaceAll) {
-				$newRecord = preg_replace("~" . $oldquery . "~i", $this->replace, $newRecord);
+				$new_record = preg_replace("~" . $this->query . "~i", $this->replace, $new_record);
 			}
 			//-- if the record changed replace the record otherwise remove it from the search results
-			if ($newRecord != $oldRecord) {
-				$record->updateRecord($newRecord, true);
+			if ($new_record != $old_record) {
+				$record->updateRecord($new_record, true);
+				$records_updated++;
 			} else {
 				unset($this->mynotelist[$id]);
 			}
+		}
+
+		if ($records_updated) {
+			FlashMessages::addMessage(I18N::plural('%s note has been updated.', '%s notes have been updated.', $records_updated, I18N::number($records_updated)));
 		}
 	}
 
@@ -507,7 +425,7 @@ class SearchController extends PageController {
 	 *
 	 */
 	private function soundexSearch() {
-		if (((!empty ($this->lastname)) || (!empty ($this->firstname)) || (!empty ($this->place))) && (count($this->search_trees) > 0)) {
+		if (((!empty ($this->lastname)) || (!empty ($this->firstname)) || (!empty ($this->place))) && $this->search_trees) {
 			$logstring = "Type: Soundex\n";
 			if (!empty ($this->lastname)) {
 				$logstring .= "Last name: " . $this->lastname . "\n";
@@ -524,7 +442,7 @@ class SearchController extends PageController {
 			Log::addSearchLog($logstring, $this->search_trees);
 
 			if ($this->search_trees) {
-				$this->myindilist = search_indis_soundex($this->soundex, $this->lastname, $this->firstname, $this->place, array_keys($this->search_trees));
+				$this->myindilist = search_indis_soundex($this->soundex, $this->lastname, $this->firstname, $this->place, $this->search_trees);
 			} else {
 				$this->myindilist = array();
 			}
@@ -564,13 +482,13 @@ class SearchController extends PageController {
 	 * @return bool
 	 */
 	function printResults() {
-		if ($this->action == "general" || $this->action == "soundex" || $this->action == "replace") {
+		if ($this->action !== 'replace' && ($this->query || $this->firstname || $this->lastname || $this->place)) {
 			if ($this->myindilist || $this->myfamlist || $this->mysourcelist || $this->mynotelist) {
 				$this->addInlineJavascript('jQuery("#search-result-tabs").tabs();');
 				$this->addInlineJavascript('jQuery("#search-result-tabs").css("visibility", "visible");');
 				$this->addInlineJavascript('jQuery(".loading-image").css("display", "none");');
 				echo '<br>';
-				echo '<div class="loading-image">&nbsp;</div>';
+				echo '<div class="loading-image"></div>';
 				echo '<div id="search-result-tabs"><ul>';
 				if ($this->myindilist) {
 					echo '<li><a href="#searchAccordion-indi"><span id="indisource">', I18N::translate('Individuals'), '</span></a></li>';
@@ -598,7 +516,7 @@ class SearchController extends PageController {
 					}
 					if ($datalist) {
 						usort($datalist, __NAMESPACE__ . '\GedcomRecord::compare');
-						echo '<h3 class="indi-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->getTitleHtml(), '</span></a></h3>
+						echo '<h3 class="indi-acc-header"><a href="#"><span class="search_item" dir="auto">', Filter::escapeHtml($this->query), '</span> @ <span>', $search_tree->getTitleHtml(), '</span></a></h3>
 							<div class="indi-acc_content">',
 						format_indi_table($datalist);
 						echo '</div>'; //indi-acc_content
@@ -619,7 +537,7 @@ class SearchController extends PageController {
 					}
 					if ($datalist) {
 						usort($datalist, __NAMESPACE__ . '\GedcomRecord::compare');
-						echo '<h3 class="fam-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->getTitleHtml(), '</span></a></h3>
+						echo '<h3 class="fam-acc-header"><a href="#"><span class="search_item" dir="auto">', Filter::escapeHtml($this->query), '</span> @ <span>', $search_tree->getTitleHtml(), '</span></a></h3>
 							<div class="fam-acc_content">',
 						format_fam_table($datalist);
 						echo '</div>'; //fam-acc_content
@@ -639,7 +557,7 @@ class SearchController extends PageController {
 					}
 					if ($datalist) {
 						usort($datalist, __NAMESPACE__ . '\GedcomRecord::compare');
-						echo '<h3 class="source-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->getTitleHtml(), '</span></a></h3>
+						echo '<h3 class="source-acc-header"><a href="#"><span class="search_item" dir="auto">', Filter::escapeHtml($this->query), '</span> @ <span>', $search_tree->getTitleHtml(), '</span></a></h3>
 							<div class="source-acc_content">',
 						format_sour_table($datalist);
 						echo '</div>'; //fam-acc_content
@@ -660,7 +578,7 @@ class SearchController extends PageController {
 					if ($datalist) {
 						usort($datalist, __NAMESPACE__ . '\GedcomRecord::compare');
 						usort($datalist, 'Webtrees\GedcomRecord::compare');
-						echo '<h3 class="note-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $search_tree->getTitleHtml(), '</span></a></h3>
+						echo '<h3 class="note-acc-header"><a href="#"><span class="search_item" dir="auto">', Filter::escapeHtml($this->query), '</span> @ <span>', $search_tree->getTitleHtml(), '</span></a></h3>
 							<div class="note-acc_content">',
 						format_note_table($datalist);
 						echo '</div>'; //note-acc_content
@@ -669,7 +587,7 @@ class SearchController extends PageController {
 				echo '</div>'; //#searchAccordion-note
 				$this->addInlineJavascript('jQuery("#searchAccordion-note").accordion({heightStyle: "content", collapsible: true});');
 				echo '</div>'; //#search-result-tabs
-			} elseif ($this->query || $this->firstname || $this->lastname || $this->place || $this->year) {
+			} else {
 				// One or more search terms were specified, but no results were found.
 				echo '<div class="warning center">' . I18N::translate('No results found.') . '</div>';
 			}

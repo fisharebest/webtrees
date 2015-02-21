@@ -19,12 +19,11 @@ namespace Fisharebest\Webtrees;
 /**
  * Defined in session.php
  *
- * @global string $SEARCH_SPIDER
  * @global string $UNKNOWN_NN
  * @global string $UNKNOWN_PN
  * @global Tree   $WT_TREE
  */
-global $SEARCH_SPIDER, $UNKNOWN_NN, $UNKNOWN_PN, $WT_TREE;
+global $UNKNOWN_NN, $UNKNOWN_PN, $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'indilist.php');
 require './includes/session.php';
@@ -153,7 +152,7 @@ foreach (WT_Query_Name::surnameAlpha($show_marnm === 'yes', false, WT_GED_ID) as
 }
 
 // Search spiders don't get the "show all" option as the other links give them everything.
-if (!$SEARCH_SPIDER) {
+if (!Auth::isSearchEngine()) {
 	if ($show_all === 'yes') {
 		$list[] = '<span class="warning">' . I18N::translate('All') . '</span>';
 	} else {
@@ -164,7 +163,7 @@ echo '<p class="center alpha_index">', join(' | ', $list), '</p>';
 
 // Search spiders don't get an option to show/hide the surname sublists,
 // nor does it make sense on the all/unknown/surname views
-if (!$SEARCH_SPIDER) {
+if (!Auth::isSearchEngine()) {
 	echo '<p class="center">';
 	if ($show !== 'none') {
 		if ($show_marnm === 'yes') {
@@ -239,7 +238,7 @@ if ($show === 'indi' || $show === 'surn') {
 					}
 				}
 				// Search spiders don't get the "show all" option as the other links give them everything.
-				if (!$SEARCH_SPIDER) {
+				if (!Auth::isSearchEngine()) {
 					if ($show_all_firstnames === 'yes') {
 						$list[] = '<span class="warning">' . I18N::translate('All') . '</span>';
 					} else {

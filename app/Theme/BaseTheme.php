@@ -31,9 +31,6 @@ abstract class BaseTheme {
 	/** @var string An escaped version of the "ged=XXX" URL parameter */
 	protected $tree_url;
 
-	/** @var boolean Are we showing a page to a search engine? */
-	protected $search_engine;
-
 	/**
 	 * Custom themes should place their initialization code in the function hookAfterInit(), not in
 	 * the constructor, as all themes get constructed - whether they are used or not.
@@ -424,10 +421,9 @@ abstract class BaseTheme {
 	protected function formQuickSearch() {
 		if ($this->tree) {
 			return
-				'<form action="search.php" class="header-search" method="post" role="search">' .
-				'<input type="hidden" name="action" value="general">' .
+				'<form action="search.php" class="header-search" role="search">' .
+				'<input type="hidden" name="action" value="header">' .
 				'<input type="hidden" name="ged" value="' . $this->tree->getNameHtml() . '">' .
-				'<input type="hidden" name="topsearch" value="yes">' .
 				$this->formQuickSearchFields() .
 				'</form>';
 		} else {
@@ -745,7 +741,7 @@ abstract class BaseTheme {
 
 
 		return
-			'<div data-pid="' . $individual->getXref() . '" class="person_box_template ' . $personBoxClass . ' box-style0" style="width: ' . $this->parameter('compact-chart-box-x') . 'px; min-height: ' . $this->parameter('compact-chart-box-y') . 'px">' .
+			'<div data-pid="' . $individual->getXref() . '" class="person_box_template ' . $personBoxClass . ' iconz box-style0" style="width: ' . $this->parameter('compact-chart-box-x') . 'px; min-height: ' . $this->parameter('compact-chart-box-y') . 'px">' .
 			'<div class="compact_view">' .
 			$thumbnail .
 			'<a href="' . $individual->getHtmlUrl() . '">' .
@@ -935,27 +931,16 @@ abstract class BaseTheme {
 	 * happens in a theme file, and we need to be able to change it.
 	 *
 	 * @param Zend_Session_Namespace $session
-	 * @param bool                   $search_engine
 	 * @param Tree|null              $tree The current tree (if there is one).
 	 *
 	 * @return void
 	 */
-	final public function init(Zend_Session_Namespace $session, $search_engine, Tree $tree = null) {
+	final public function init(Zend_Session_Namespace $session, Tree $tree = null) {
 		$this->tree          = $tree;
 		$this->tree_url      = $tree ? 'ged=' . $tree->getNameUrl() : '';
 		$this->session       = $session;
-		$this->search_engine = $search_engine;
 
 		$this->hookAfterInit();
-	}
-
-	/**
-	 * Are we generating a page for a robot (instead of a human being).
-	 *
-	 * @return boolean
-	 */
-	protected function isSearchEngine() {
-		return $this->search_engine;
 	}
 
 	/**
@@ -980,7 +965,7 @@ abstract class BaseTheme {
 	 * @return Menu
 	 */
 	protected function menuCalendar() {
-		if ($this->isSearchEngine()) {
+		if (Auth::isSearchEngine()) {
 			return new Menu(I18N::translate('Calendar'), '#', 'menu-calendar');
 		}
 
@@ -1010,7 +995,7 @@ abstract class BaseTheme {
 	 * @return Menu
 	 */
 	protected function menuChart(Individual $individual) {
-		if ($this->tree && !$this->isSearchEngine()) {
+		if ($this->tree && !Auth::isSearchEngine()) {
 			// The top level menu is the pedigree chart
 			$menu = $this->menuChartPedigree($individual);
 			$menu->setLabel(I18N::translate('Charts'));
@@ -1316,7 +1301,7 @@ abstract class BaseTheme {
 			$menu->addSubmenu($submenu);
 		}
 
-		if (count($menu->getSubmenus()) > 1 && !$this->isSearchEngine()) {
+		if (count($menu->getSubmenus()) > 1 && !Auth::isSearchEngine()) {
 			return $menu;
 		} else {
 			return null;
@@ -1344,7 +1329,7 @@ abstract class BaseTheme {
 			$this->menuListsIndividuals(),
 		);
 
-		if (!$this->isSearchEngine()) {
+		if (!Auth::isSearchEngine()) {
 			$menulist[] = $this->menuListsFamilies();
 			$menulist[] = $this->menuListsBranches();
 			$menulist[] = $this->menuListsPlaces();
@@ -1457,7 +1442,7 @@ abstract class BaseTheme {
 	 * @return Menu|null
 	 */
 	protected function menuLogin() {
-		if (Auth::check() || $this->isSearchEngine() || WT_SCRIPT_NAME === 'login.php') {
+		if (Auth::check() || Auth::isSearchEngine() || WT_SCRIPT_NAME === 'login.php') {
 			return null;
 		} else {
 			return new Menu(I18N::translate('Login'), WT_LOGIN_URL . '?url=' . rawurlencode(get_query_url()));
@@ -1589,7 +1574,7 @@ abstract class BaseTheme {
 	protected function menuReports() {
 		$active_reports = Module::getActiveReports();
 
-		if ($this->isSearchEngine() || !$active_reports) {
+		if (Auth::isSearchEngine() || !$active_reports) {
 			return new Menu(I18N::translate('Reports'), '#', 'menu-report');
 		}
 
@@ -1603,7 +1588,7 @@ abstract class BaseTheme {
 			}
 		}
 
-		if ($sub_menu && !$this->isSearchEngine()) {
+		if ($sub_menu && !Auth::isSearchEngine()) {
 			return $menu;
 		} else {
 			return null;
@@ -1616,7 +1601,7 @@ abstract class BaseTheme {
 	 * @return Menu
 	 */
 	protected function menuSearch() {
-		if ($this->isSearchEngine()) {
+		if (Auth::isSearchEngine()) {
 			return new Menu(I18N::translate('Search'), '#', 'menu-search');
 		}
 		//-- main search menu item
@@ -1646,7 +1631,7 @@ abstract class BaseTheme {
 	 * @return Menu|null
 	 */
 	public function menuThemes() {
-		if ($this->tree && !$this->isSearchEngine() && Site::getPreference('ALLOW_USER_THEMES') && $this->tree->getPreference('ALLOW_THEME_DROPDOWN')) {
+		if ($this->tree && !Auth::isSearchEngine() && Site::getPreference('ALLOW_USER_THEMES') && $this->tree->getPreference('ALLOW_THEME_DROPDOWN')) {
 			$submenus = array();
 			foreach (Theme::installedThemes() as $theme) {
 				$submenu = new Menu($theme->themeName(), get_query_url(array('theme' => $theme->themeId()), '&amp;'), 'menu-theme-' . $theme->themeId());
@@ -1769,16 +1754,14 @@ abstract class BaseTheme {
 			'chart-background-u'             => 'eeeeee',
 			'chart-box-x'                    => 250,
 			'chart-box-y'                    => 80,
-			'chart-descendancy-box-x'        => 260,
-			'chart-descendancy-box-y'        => 80,
 			'chart-descendancy-indent'       => 15,
 			'chart-font-color'               => '000000',
 			'chart-font-name'                => WT_ROOT . 'includes/fonts/DejaVuSans.ttf',
 			'chart-font-size'                => 7,
 			'chart-offset-x'                 => 10,
 			'chart-offset-y'                 => 10,
-			'chart-spacing-x'                => 1,
-			'chart-spacing-y'                => 5,
+			'chart-spacing-x'                => 7,
+			'chart-spacing-y'                => 10,
 			'compact-chart-box-x'            => 240,
 			'compact-chart-box-y'            => 50,
 			'distribution-chart-high-values' => '555555',

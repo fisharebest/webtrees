@@ -80,9 +80,9 @@ case 'replace_upload':
 		$tree->setPreference('keep_media', $keep_media);
 		$tree->setPreference('GEDCOM_MEDIA_PATH', $GEDCOM_MEDIA_PATH);
 		$tree->setPreference('WORD_WRAPPED_NOTES', $WORD_WRAPPED_NOTES);
-		if (isset($_FILES[0])) {
-			if ($_FILES[0]['error'] == 0 && is_readable($_FILES[0]['tmp_name'])) {
-				$tree->importGedcomFile($_FILES[0]['tmp_name'], $_FILES[0]['name']);
+		if (isset($_FILES['tree_name'])) {
+			if ($_FILES['tree_name']['error'] == 0 && is_readable($_FILES['tree_name']['tmp_name'])) {
+				$tree->importGedcomFile($_FILES['tree_name']['tmp_name'], $_FILES['tree_name']['name']);
 			}
 		} else {
 			FlashMessages::addMessage(I18N::translate('No GEDCOM file was received.'), 'danger');
@@ -113,17 +113,19 @@ case 'replace_import':
 
 	return;
 
-case 'bulk-import':
+case 'synchronize':
 	if (Filter::checkCsrf()) {
-		$tree_names = Tree::getNameList();
-		$basenames  = array();
+		$basenames = array();
 
 		foreach ($gedcom_files as $gedcom_file) {
 			$filemtime   = filemtime($gedcom_file); // Only import files that have changed
 			$basename    = basename($gedcom_file);
 			$basenames[] = $basename;
 
-			$tree = Tree::create($basename, $basename);
+			$tree = Tree::findByName($basename);
+			if (!$tree) {
+				$tree = Tree::create($basename, $basename);
+			}
 			if ($tree->getPreference('filemtime') != $filemtime) {
 				$tree->importGedcomFile($gedcom_file, $basename, false);
 				$tree->setPreference('filemtime', $filemtime);
@@ -225,6 +227,7 @@ case 'importform':
 								}
 							}
 							echo '<select name="tree_name" class="form-control" id="import-server-file">';
+							echo '<option value=""></option>';
 							sort($files);
 							foreach ($files as $gedcom_file) {
 								echo '<option value="', Filter::escapeHtml($gedcom_file), '" ';
@@ -698,21 +701,21 @@ $controller->pageHeader();
 		<div class="panel-heading">
 			<h2 class="panel-title">
 			<i class="fa fa-fw fa-refresh"></i>
-			<a data-toggle="collapse" data-parent="#accordion" href="#pgv-import-wizard">
-				<?php echo I18N::translate('Bulk import GEDCOM files'); ?>
+			<a data-toggle="collapse" data-parent="#accordion" href="#synchronize-gedcom-files">
+				<?php echo I18N::translate('Synchronize family trees with GEDCOM files'); ?>
 			</a>
 		</h2>
 		</div>
-		<div id="pgv-import-wizard" class="panel-collapse collapse">
+		<div id="synchronize-gedcom-files" class="panel-collapse collapse">
 			<div class="panel-body">
 				<p>
-					<?php echo I18N::translate('Create or update a family tree for every GEDCOM file in the data folder.'); ?>
+					<?php echo I18N::translate('Create, update, and delete a family tree for every GEDCOM file in the data folder.'); ?>
 				</p>
 				<form method="post" class="form form-horizontal">
 					<?php echo Filter::getCsrf(); ?>
-					<input type="hidden" name="action" value="bulk-import">
-					<button type="submit" class="btn btn-primary">
-						<i class="fa fa-check"></i>
+					<input type="hidden" name="action" value="synchronize">
+					<button type="submit" class="btn btn-danger">
+						<i class="fa fa-refresh"></i>
 						<?php echo /* I18N: Button label */ I18N::translate('continue'); ?>
 					</button>
 					<p class="small text-muted">

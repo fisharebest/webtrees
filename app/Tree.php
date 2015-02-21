@@ -334,7 +334,7 @@ class Tree {
 				" ORDER BY g.sort_order, 3"
 			)->execute(array(Auth::id(), Auth::id()))->fetchAll();
 			foreach ($rows as $row) {
-				self::$trees[$row->tree_id] = new self($row->tree_id, $row->tree_name, $row->tree_title);
+				self::$trees[] = new self((int) $row->tree_id, $row->tree_name, $row->tree_title);
 			}
 		}
 
@@ -347,11 +347,15 @@ class Tree {
 	 * @param integer $tree_id
 	 *
 	 * @return Tree
+	 * @throws \DomainException
 	 */
 	public static function findById($tree_id) {
-		$trees = self::getAll();
-
-		return $trees[$tree_id];
+		foreach (self::getAll() as $tree) {
+			if ($tree->tree_id == $tree_id) {
+				return $tree;
+			}
+		}
+		throw new \DomainException;
 	}
 
 	/**
@@ -363,7 +367,7 @@ class Tree {
 	 */
 	public static function findByName($tree_name) {
 		foreach (self::getAll() as $tree) {
-			if ($tree->getName() === $tree_name) {
+			if ($tree->name === $tree_name) {
 				return $tree;
 			}
 		}
@@ -404,14 +408,14 @@ class Tree {
 	/**
 	 * Find the ID number for a tree name
 	 *
-	 * @param integer $tree_name
+	 * @param string $tree_name
 	 *
 	 * @return integer|null
 	 */
 	public static function getIdFromName($tree_name) {
-		foreach (self::getAll() as $tree_id => $tree) {
-			if ($tree->name == $tree_name) {
-				return $tree_id;
+		foreach (self::getAll() as $tree) {
+			if ($tree->name === $tree_name) {
+				return $tree->tree_id;
 			}
 		}
 

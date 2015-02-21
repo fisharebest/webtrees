@@ -63,14 +63,9 @@ $layouts = array(
 	1 => /* I18N: page orientation */ I18N::translate('Landscape'),
 );
 
-$first_last = array(
-	'first' => /* I18N: The first entry in a list */ I18N::translate('first'),
-	'last'  => /* I18N: The last entry in a list */ I18N::translate('last'),
-);
-
 $one_to_nine = array();
 for ($n = 1; $n <= 9; ++$n) {
-	$one_to_nine[] = I18N::number($n);
+	$one_to_nine[$n] = I18N::number($n);
 }
 
 $formats = array(
@@ -121,11 +116,6 @@ $source_types = array(
 $no_yes = array(
 	0 => I18N::translate('no'),
 	1 => I18N::translate('yes'),
-);
-
-$disable_enable = array(
-	0 => I18N::translate('disable'),
-	1 => I18N::translate('enable'),
 );
 
 $PRIVACY_CONSTANTS = array(
@@ -228,6 +218,7 @@ case 'privacy':
 	$WT_TREE->setPreference('SHOW_LIVING_NAMES', Filter::post('SHOW_LIVING_NAMES'));
 	$WT_TREE->setPreference('SHOW_PRIVATE_RELATIONSHIPS', Filter::post('SHOW_PRIVATE_RELATIONSHIPS'));
 
+	FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', $WT_TREE->getTitleHtml()), 'success');
 	header('Location: ' . WT_BASE_URL . 'admin_trees_manage.php?ged=' . $WT_TREE->getNameUrl());
 
 	return;
@@ -324,7 +315,7 @@ case 'general':
 
 	// Only accept valid folders for MEDIA_DIRECTORY
 	$MEDIA_DIRECTORY = preg_replace('/[\/\\\\]+/', '/', Filter::post('MEDIA_DIRECTORY') . '/');
-	if (substr($MEDIA_DIRECTORY, 0, 1) == '/') {
+	if (substr($MEDIA_DIRECTORY, 0, 1) === '/') {
 		$MEDIA_DIRECTORY = substr($MEDIA_DIRECTORY, 1);
 	}
 
@@ -349,7 +340,7 @@ case 'general':
 		}
 	}
 
-	Zend_Session::writeClose();
+	FlashMessages::addMessage(I18N::translate('The preferences for the family tree “%s” have been updated.', $WT_TREE->getTitleHtml()), 'success');
 	header('Location: ' . WT_BASE_URL . 'admin_trees_manage.php');
 
 	return;

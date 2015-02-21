@@ -1814,17 +1814,43 @@ a.showit:hover > span {
 }
 
 /* Statistics block */
-.gedcom_stats_block table td {
-	vertical-align: top;
-}
+#gedcom_stats23 p {margin: 0;}
 
-.gedcom_stats_block table td td {
+.stat-table1 {
+	display: table;
+	float: left;
+	width:15%;
+	border-collapse:separate;
+	border-spacing:2px;
 	vertical-align: middle;
 }
 
-.gedcom_stats_block td .stats_value {
-	text-align: center;
+[dir=rtl] .stat-table1 {
+float: right;
 }
+
+.stat-table2 {
+	display: table;
+	float: left;
+	width:60%;
+	border-collapse:separate;
+	border-spacing:2px;
+}
+
+[dir=rtl] .stat-table2 {
+float: right;
+}
+
+.stat-row {
+	display: table-row;
+}
+.stat-cell {
+	display: table-cell;
+		vertical-align: middle;
+		text-align: center;
+}
+.left {text-align: left;}
+[dir=rtl] .left {text-align: right;}
 
 /* ==== Theme select block === */
 .theme_form ul {
@@ -2771,8 +2797,7 @@ dd .deletelink {
 }
 
 /* ===== search.php ===== */
-#search-page h2,
-#search_submit {
+#search-page h2 {
 	margin: 20px;
 	text-align: center;
 }
@@ -3261,6 +3286,10 @@ table.table-census-assistant th {
 }
 
 /* ====== Charts Styles ======== */
+#people label {
+	display:block;
+}
+
 #compact_chart,
 #fan_chart,
 .chart_common,
@@ -3463,7 +3492,7 @@ table.table-census-assistant th {
 }
 
 #pedigree-page table.list_table {
-	margin: 0 auto;
+	margin: 0 auto 20px;
 	width: 500px;
 }
 
@@ -3476,7 +3505,7 @@ table.table-census-assistant th {
 
 #pedigree_chart {
 	position: relative;
-	top: -200px;
+
 	left: 0;
 }
 
@@ -3488,7 +3517,6 @@ table.table-census-assistant th {
 #pedigree_canvas {
 	color: #81a9cb;
 	position: absolute;
-	top: 200px;
 	z-index: -1000;
 }
 
@@ -3497,15 +3525,6 @@ table.table-census-assistant th {
 #pedigree_chart .shadow,
 .ancestorarrow {
 	position: absolute;
-}
-
-/*-- Relationship ---- */
-#relationship-page h3 {
-	margin: 20px 0 0 20px;
-}
-
-#relationship_chart {
-	margin: 0 6px;
 }
 
 /*-- timeline  --*/
@@ -4209,7 +4228,7 @@ header h1 {
 	float: left;
 	font-size: 24px;
 	font-weight: normal;
-	margin: 16px 12px 3px;
+	margin: 14px 12px 3px;
 }
 
 [dir=rtl] header h1 {
@@ -5262,7 +5281,7 @@ footer {
 	
 	#pedigree_chart {
 		left: -40px;
-		top:  -260px;
+		top:  0;
 	}
 
 	[dir=rtl] #pedigree_chart {
@@ -5292,5 +5311,15 @@ footer {
 		left: -10px;
 		top: -60px;
 		z-index: 1;
+	}
+}
+
+@media all and (max-width: 655px) {
+	header h1 {
+    font-size: 13px;
+	}
+	.secondary-menu {
+	margin-top: 0px;
+	clear: both;
 	}
 }

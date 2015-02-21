@@ -33,7 +33,7 @@
 /**
  * @see Zend_Tool_Framework_Action_Base
  */
-// require_once 'Zend/Tool/Framework/Action/ReportBase.php';
+// require_once 'Zend/Tool/Framework/Action/Base.php';
 
 /**
  * The purpose of Zend_Tool_Framework_Provider_Signature is to derive

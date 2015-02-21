@@ -1252,8 +1252,6 @@ case 'addnewsource':
 					<td class="descriptionbox wrap width25"><?php echo I18N::translate('Select events'), help_link('edit_SOUR_EVEN'); ?></td>
 					<td class="optionbox wrap"><select name="EVEN[]" multiple="multiple" size="5">
 						<?php
-						global $WT_TREE;
-
 						$parts = explode(',', $WT_TREE->getPreference('INDI_FACTS_ADD'));
 						foreach ($parts as $key) {
 							?><option value="<?php echo $key; ?>"><?php echo WT_Gedcom_Tag::getLabel($key); ?></option>
@@ -2662,7 +2660,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 
 	// Edit the standard name fields
 	foreach ($name_fields as $tag=>$value) {
-		add_simple_tag("0 $tag $value");
+		add_simple_tag('0 ' . $tag . ' ' . $value);
 	}
 
 	// Get the advanced name fields
@@ -2673,7 +2671,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		}
 	}
 	// This is a custom tag, but webtrees uses it extensively.
-	if ($SURNAME_TRADITION == 'paternal' || $SURNAME_TRADITION == 'polish' || $SURNAME_TRADITION == 'lithuanian' || (strpos($namerec, '2 _MARNM') !== false)) {
+	if ($SURNAME_TRADITION === 'paternal' || $SURNAME_TRADITION === 'polish' || $SURNAME_TRADITION === 'lithuanian' || (strpos($namerec, '2 _MARNM') !== false)) {
 		$adv_name_fields['_MARNM'] = '';
 	}
 	if (isset($adv_name_fields['TYPE'])) {
@@ -2683,28 +2681,26 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		// Edit existing tags
 		if (preg_match_all("/2 $tag (.+)/", $namerec, $match)) {
 			foreach ($match[1] as $value) {
-				if ($tag == '_MARNM') {
+				if ($tag === '_MARNM') {
 					$mnsct      = preg_match('/\/(.+)\//', $value, $match2);
 					$marnm_surn = '';
 					if ($mnsct > 0) {
 						$marnm_surn = $match2[1];
 					}
-					add_simple_tag("2 _MARNM " . $value);
-					add_simple_tag("2 _MARNM_SURN " . $marnm_surn);
+					add_simple_tag('2 _MARNM ' . $value);
+					add_simple_tag('2 _MARNM_SURN ' . $marnm_surn);
 				} else {
-					add_simple_tag("2 $tag $value", '', WT_Gedcom_Tag::getLabel("NAME:{$tag}", $person));
+					add_simple_tag('2 ' . $tag . ' ' .  $value, '', WT_Gedcom_Tag::getLabel('NAME:' . $tag, $person));
 				}
 			}
 		}
 		// Allow a new row to be entered if there was no row provided
-		if (count($match[1]) == 0 && empty($name_fields[$tag]) || $tag != '_HEB' && $tag != 'NICK') {
-			if ($tag == '_MARNM') {
-				if (strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), '_MARNM') == false) {
-					add_simple_tag("0 _MARNM");
-					add_simple_tag("0 _MARNM_SURN $new_marnm");
-				}
+		if (count($match[1]) === 0 && empty($name_fields[$tag]) || $tag !== '_HEB' && $tag !== 'NICK') {
+			if ($tag === '_MARNM') {
+				add_simple_tag('0 _MARNM');
+				add_simple_tag('0 _MARNM_SURN ' . $new_marnm);
 			} else {
-				add_simple_tag("0 $tag", '', WT_Gedcom_Tag::getLabel("NAME:{$tag}", $person));
+				add_simple_tag('0 ' . $tag, '', WT_Gedcom_Tag::getLabel('NAME:' . $tag, $person));
 			}
 		}
 	}
@@ -2712,14 +2708,14 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	// Handle any other NAME subfields that aren’t included above (SOUR, NOTE, _CUSTOM, etc)
 	if ($namerec) {
 		$gedlines = explode("\n", $namerec); // -- find the number of lines in the record
-		$fields = explode(' ', $gedlines[0]);
-		$glevel = $fields[0];
-		$level = $glevel;
-		$type = trim($fields[1]);
-		$tags = array();
-		$i = 0;
+		$fields   = explode(' ', $gedlines[0]);
+		$glevel   = $fields[0];
+		$level    = $glevel;
+		$type     = trim($fields[1]);
+		$tags     = array();
+		$i        = 0;
 		do {
-			if ($type != 'TYPE' && !isset($name_fields[$type]) && !isset($adv_name_fields[$type])) {
+			if ($type !== 'TYPE' && !isset($name_fields[$type]) && !isset($adv_name_fields[$type])) {
 				$text = '';
 				for ($j = 2; $j < count($fields); $j++) {
 					if ($j > 2) {
@@ -2727,8 +2723,8 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 					}
 					$text .= $fields[$j];
 				}
-				while (($i + 1 < count($gedlines)) && (preg_match("/" . ($level + 1) . " (CON[CT]) ?(.*)/", $gedlines[$i + 1], $cmatch) > 0)) {
-					if ($cmatch[1] == "CONT") {
+				while (($i + 1 < count($gedlines)) && (preg_match('/' . ($level + 1) . ' (CON[CT]) ?(.*)/', $gedlines[$i + 1], $cmatch) > 0)) {
+					if ($cmatch[1] === 'CONT') {
 						$text .= "\n";
 					}
 					$text .= $cmatch[2];

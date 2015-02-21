@@ -112,6 +112,17 @@ class Auth {
 	}
 
 	/**
+	 * Is the current visitor a search engine?  The global is set in session.php
+	 *
+	 * @return boolean
+	 */
+	public static function isSearchEngine() {
+		global $SEARCH_SPIDER;
+
+		return $SEARCH_SPIDER;
+	}
+
+	/**
 	 * The ID of the authenticated user, from the current session.
 	 *
 	 * @return string|null

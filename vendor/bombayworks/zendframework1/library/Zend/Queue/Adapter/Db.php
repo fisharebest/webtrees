@@ -28,22 +28,22 @@
 /**
  * @see Zend_Db_Select
  */
-// require_once 'Zend/Database/Select.php';
+// require_once 'Zend/Db/Select.php';
 
 /**
  * @see Zend_Db
  */
-// require_once 'Zend/Database.php';
+// require_once 'Zend/Db.php';
 
 /**
  * @see Zend_Queue_Adapter_Db_Queue
  */
-// require_once 'Zend/Queue/Adapter/Database/Queue.php';
+// require_once 'Zend/Queue/Adapter/Db/Queue.php';
 
 /**
  * @see Zend_Queue_Adapter_Db_Message
  */
-// require_once 'Zend/Queue/Adapter/Database/Message.php';
+// require_once 'Zend/Queue/Adapter/Db/Message.php';
 
 /**
  * Class for using connecting to a Zend_Db-based queuing system
@@ -110,7 +110,7 @@ class Zend_Queue_Adapter_Db extends Zend_Queue_Adapter_AdapterAbstract
     }
 
     /**
-     * Initialize Database adapter using 'driverOptions' section of the _options array
+     * Initialize Db adapter using 'driverOptions' section of the _options array
      *
      * Throws an exception if the adapter cannot connect to DB.
      *

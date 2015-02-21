@@ -255,8 +255,6 @@ function sort_facts(&$arr) {
 /**
  * For close family relationships, such as the families tab and the family navigator
  * Display a tick if both individuals are the same.
- * Stop after 3 steps, because pending edits may mean that there is no longer a
- * relationship to find.
  *
  * @param Individual $person1
  * @param Individual $person2
@@ -267,7 +265,7 @@ function get_close_relationship_name(Individual $person1, Individual $person2) {
 	if ($person1 === $person2) {
 		$label = '<i class="icon-selected" title="' . I18N::translate('self') . '"></i>';
 	} else {
-		$label = get_relationship_name(get_relationship($person1, $person2, true, 3));
+		$label = get_relationship_name(get_relationship($person1, $person2));
 	}
 
 	return $label;
@@ -275,8 +273,6 @@ function get_close_relationship_name(Individual $person1, Individual $person2) {
 
 /**
  * For facts on the individual/family pages.
- * Stop after 4 steps, as distant relationships may take a long time to find.
- * Review the limit of 4 if/when the performance of the function is improved.
  *
  * @param Individual $person1
  * @param Individual $person2
@@ -287,7 +283,7 @@ function get_associate_relationship_name(Individual $person1, Individual $person
 	if ($person1 === $person2) {
 		$label = I18N::translate('self');
 	} else {
-		$label = get_relationship_name(get_relationship($person1, $person2, true, 4));
+		$label = get_relationship_name(get_relationship($person1, $person2));
 	}
 
 	return $label;
@@ -296,18 +292,21 @@ function get_associate_relationship_name(Individual $person1, Individual $person
 /**
  * Get relationship between two individuals in the gedcom
  *
- * @param Individual $person1      the person to compute the relationship from
- * @param Individual $person2      the person to compute the relatiohip to
- * @param boolean       $followspouse whether to add spouses to the path
- * @param integer       $maxlength    the maximum length of path
- * @param integer       $path_to_find which path in the relationship to find, 0 is the shortest path, 1 is the next shortest path, etc
+ * @param Individual $person1   The person to compute the relationship from
+ * @param Individual $person2   The person to compute the relatiohip to
+ * @param integer    $maxlength The maximum length of path
  *
  * @return array|bool An array of nodes on the relationship path, or false if no path found
  */
-function get_relationship(Individual $person1, Individual $person2, $followspouse = true, $maxlength = 0, $path_to_find = 0) {
+function get_relationship(Individual $person1, Individual $person2, $maxlength = 4) {
 	if ($person1 === $person2) {
 		return false;
 	}
+
+	$spouse_codes  = array('M' => 'hus', 'F' => 'wif', 'U' => 'spo');
+	$parent_codes  = array('M' => 'fat', 'F' => 'mot', 'U' => 'par');
+	$child_codes   = array('M' => 'son', 'F' => 'dau', 'U' => 'chi');
+	$sibling_codes = array('M' => 'bro', 'F' => 'sis', 'U' => 'sib');
 
 	//-- current path nodes
 	$p1nodes = array();
@@ -354,15 +353,11 @@ function get_relationship(Individual $person1, Individual $person2, $followspous
 						$node1['length']++;
 						$node1['path'][] = $spouse;
 						$node1['indi'] = $spouse;
-						$node1['relations'][] = 'parent';
+						$node1['relations'][] = $parent_codes[$spouse->getSex()];
 						$p1nodes[] = $node1;
 						if ($spouse === $person2) {
-							if ($path_to_find > 0) {
-								$path_to_find--;
-							} else {
-								$found = true;
-								$resnode = $node1;
-							}
+							$found = true;
+							$resnode = $node1;
 						} else {
 							$visited[$spouse->getXref()] = true;
 						}
@@ -374,15 +369,11 @@ function get_relationship(Individual $person1, Individual $person2, $followspous
 						$node1['length']++;
 						$node1['path'][] = $child;
 						$node1['indi'] = $child;
-						$node1['relations'][] = 'sibling';
+						$node1['relations'][] = $sibling_codes[$child->getSex()];
 						$p1nodes[] = $node1;
 						if ($child === $person2) {
-							if ($path_to_find > 0) {
-								$path_to_find--;
-							} else {
-								$found = true;
-								$resnode = $node1;
-							}
+							$found = true;
+							$resnode = $node1;
 						} else {
 							$visited[$child->getXref()] = true;
 						}
@@ -392,25 +383,19 @@ function get_relationship(Individual $person1, Individual $person2, $followspous
 			//-- check all spouses and children of this node
 			foreach ($indi->getSpouseFamilies(WT_PRIV_HIDE) as $family) {
 				$visited[$family->getXref()] = true;
-				if ($followspouse) {
-					foreach ($family->getSpouses(WT_PRIV_HIDE) as $spouse) {
-						if (!in_array($spouse->getXref(), $node1) || !isset($visited[$spouse->getXref()])) {
-							$node1 = $node;
-							$node1['length']++;
-							$node1['path'][] = $spouse;
-							$node1['indi'] = $spouse;
-							$node1['relations'][] = 'spouse';
-							$p1nodes[] = $node1;
-							if ($spouse === $person2) {
-								if ($path_to_find > 0) {
-									$path_to_find--;
-								} else {
-									$found = true;
-									$resnode = $node1;
-								}
-							} else {
-								$visited[$spouse->getXref()] = true;
-							}
+				foreach ($family->getSpouses(WT_PRIV_HIDE) as $spouse) {
+					if (!in_array($spouse->getXref(), $node1) || !isset($visited[$spouse->getXref()])) {
+						$node1 = $node;
+						$node1['length']++;
+						$node1['path'][] = $spouse;
+						$node1['indi'] = $spouse;
+						$node1['relations'][] = $spouse_codes[$spouse->getSex()];
+						$p1nodes[] = $node1;
+						if ($spouse === $person2) {
+							$found = true;
+							$resnode = $node1;
+						} else {
+							$visited[$spouse->getXref()] = true;
 						}
 					}
 				}
@@ -420,15 +405,11 @@ function get_relationship(Individual $person1, Individual $person2, $followspous
 						$node1['length']++;
 						$node1['path'][] = $child;
 						$node1['indi'] = $child;
-						$node1['relations'][] = 'child';
+						$node1['relations'][] = $child_codes[$child->getSex()];
 						$p1nodes[] = $node1;
 						if ($child === $person2) {
-							if ($path_to_find > 0) {
-								$path_to_find--;
-							} else {
-								$found = true;
-								$resnode = $node1;
-							}
+							$found = true;
+							$resnode = $node1;
 						} else {
 							$visited[$child->getXref()] = true;
 						}
@@ -437,52 +418,6 @@ function get_relationship(Individual $person1, Individual $person2, $followspous
 			}
 		}
 		unset($p1nodes[$shortest]);
-	}
-
-	// Convert generic relationships into sex-specific ones.
-	foreach ($resnode['path'] as $n => $indi) {
-		switch ($resnode['relations'][$n]) {
-		case 'parent':
-			switch ($indi->getSex()) {
-			case 'M':
-				$resnode['relations'][$n] = 'father';
-				break;
-			case 'F':
-				$resnode['relations'][$n] = 'mother';
-				break;
-			}
-			break;
-		case 'child':
-			switch ($indi->getSex()) {
-			case 'M':
-				$resnode['relations'][$n] = 'son';
-				break;
-			case 'F':
-				$resnode['relations'][$n] = 'daughter';
-				break;
-			}
-			break;
-		case 'spouse':
-			switch ($indi->getSex()) {
-			case 'M':
-				$resnode['relations'][$n] = 'husband';
-				break;
-			case 'F':
-				$resnode['relations'][$n] = 'wife';
-				break;
-			}
-			break;
-		case 'sibling':
-			switch ($indi->getSex()) {
-			case 'M':
-				$resnode['relations'][$n] = 'brother';
-				break;
-			case 'F':
-				$resnode['relations'][$n] = 'sister';
-				break;
-			}
-			break;
-		}
 	}
 
 	return $resnode;
@@ -518,13 +453,11 @@ function get_relationship_name($nodes) {
 	// This is very repetitive in English, but necessary in order to handle the
 	// complexities of other languages.
 
-	// Make each relationship parts the same length, for simpler matching.
-	$combined_path = '';
-	foreach ($path as $rel) {
-		$combined_path .= substr($rel, 0, 3);
-	}
-
-	return get_relationship_name_from_path($combined_path, $person1, $person2);
+	return get_relationship_name_from_path(
+		implode('', array_slice($nodes['relations'], 1)),
+		$nodes['path'][0],
+		$nodes['path'][count($nodes['path']) - 1]
+	);
 }
 
 /**

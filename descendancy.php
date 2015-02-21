@@ -36,7 +36,6 @@ $controller
 <div id="descendancy-page"><h2><?php echo $controller->getPageTitle(); ?></h2>
 	<form method="get" name="people" action="?">
 		<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
-		<input type="hidden" name="show_full" value="<?php echo $controller->show_full; ?>">
 		<table class="list_table">
 			<tr>
 				<td class="descriptionbox">
@@ -46,17 +45,10 @@ $controller
 					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
 					<?php echo print_findindi_link('rootid'); ?>
 				</td>
-				<td class="descriptionbox">
-					<?php echo I18N::translate('Box width'); ?>
-				</td>
-				<td class="optionbox">
-				<input type="text" size="3" name="box_width" value="<?php echo $controller->box_width; ?>">
-					<b>%</b>
-				</td>
-				<td rowspan="2" class="descriptionbox">
+				<td rowspan="3" class="descriptionbox">
 					<?php echo I18N::translate('Layout'); ?>
 				</td>
-				<td rowspan="2" class="optionbox">
+				<td rowspan="3" class="optionbox">
 					<input type="radio" name="chart_style" value="0" <?php echo $controller->chart_style == 0 ? 'checked' : ''; ?>>
 					<?php echo  I18N::translate('List'); ?>
 					<br>
@@ -69,7 +61,7 @@ $controller
 					<input type="radio" name="chart_style" value="3" <?php echo $controller->chart_style == 3 ? 'checked' : ''; ?>>
 					<?php echo I18N::translate('Families'); ?>
 				</td>
-				<td rowspan="2" class="topbottombar">
+				<td rowspan="3" class="topbottombar">
 					<input type="submit" value="<?php echo I18N::translate('View'); ?>">
 				</td>
 			</tr>
@@ -80,11 +72,13 @@ $controller
 				<td class="optionbox">
 					<?php echo edit_field_integers('generations', $controller->generations, 2, $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS')); ?>
 				</td>
+			</tr>
+			<tr>
 				<td class="descriptionbox">
 					<?php echo I18N::translate('Show details'); ?>
 				</td>
 					<td class="optionbox">
-						<input type="checkbox" value="<?php if ($controller->show_full) { echo '1" checked onclick="document.people.show_full.value=\'0\';"'; } else { echo '0" onclick="document.people.show_full.value=\'1\';"'; } ?>>
+						<?php echo two_state_checkbox('show_full', $controller->showFull()); ?>
 				</td>
 			</tr>
 		</table>

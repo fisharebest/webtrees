@@ -16,13 +16,6 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
-global $WT_TREE;
-
 define('WT_SCRIPT_NAME', 'note.php');
 require './includes/session.php';
 
@@ -100,7 +93,7 @@ foreach ($controller->record->getFacts() as $fact) {
 if (array_key_exists('GEDFact_assistant', Module::getActiveModules())) {
 	$text = GEDFact_assistant_WT_Module::formatCensusNote($controller->record);
 } else {
-	$text = Filter::formatText($controller->record->getNote(), $WT_TREE);
+	$text = Filter::formatText($controller->record->getNote(), $controller->record->getTree());
 }
 
 ?>

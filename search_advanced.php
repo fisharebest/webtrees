@@ -124,7 +124,7 @@ echo '</script>';
 <div id="search-page">
 <h2 class="center"><?php echo $controller->getPageTitle(); ?></h2>
 <?php $controller->printResults(); ?>
-<form method="post" name="searchform" onsubmit="return checknames(this);" action="search_advanced.php">
+<form name="searchform" onsubmit="return checknames(this);">
 <input type="hidden" name="action" value="<?php echo $controller->action; ?>">
 <input type="hidden" name="isPostBack" value="true">
 <table id="field_table" class="list_table" width="35%" border="0">
@@ -148,7 +148,7 @@ echo '</script>';
 			$currentFieldSearch = $controller->getField($i); // Get this field’s name and the search criterion
 			$currentField = substr($currentFieldSearch, 0, strrpos($currentFieldSearch, ':')); // Get the actual field name
 			?>
-				<input tabindex="<?php echo $i + 1; ?>" type="text" id="value<?php echo $i; ?>" name="values[<?php echo $i; ?>]" value="<?php echo Filter::escapeHtml($controller->getValue($i)); ?>"<?php echo (substr($controller->getField($i), -4) == 'PLAC') ? 'data-autocomplete-type="PLAC"' : ''; ?>>
+				<input type="text" id="value<?php echo $i; ?>" name="values[<?php echo $i; ?>]" value="<?php echo Filter::escapeHtml($controller->getValue($i)); ?>"<?php echo (substr($controller->getField($i), -4) == 'PLAC') ? 'data-autocomplete-type="PLAC"' : ''; ?>>
 			<?php if (preg_match("/^NAME:/", $currentFieldSearch) > 0) { ?>
 				<select name="fields[<?php echo $i; ?>]">
 					<option value="<?php echo $currentField; ?>:EXACT" <?php if (preg_match("/:EXACT$/", $currentFieldSearch) > 0) echo 'selected'; ?>><?php echo I18N::translate('Exact'); ?></option>
@@ -287,8 +287,6 @@ echo '</script>';
 		<div class="center" style="margin-top:10px;">
 			<a href="#" onclick="addFields();"><?php echo I18N::translate('Add more fields'); ?></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		</div>
-		<div id="search_submit">
-		<input tabindex="<?php echo $i + 1; ?>" type="submit" value="<?php echo I18N::translate('Search'); ?>">
-		</div>
+	<input type="submit" value="<?php echo I18N::translate('Search'); ?>">
 </form>
 </div>

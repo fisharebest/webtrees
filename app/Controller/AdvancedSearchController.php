@@ -28,7 +28,7 @@ class AdvancedSearchController extends SearchController {
 	/**
 	 * Startup activity
 	 */
-	function __construct() {
+	public function __construct() {
 		parent::__construct();
 
 		$this->setPageTitle(I18N::translate('Advanced search'));
@@ -131,7 +131,7 @@ class AdvancedSearchController extends SearchController {
 				$ofields[] = $fact;
 			}
 		}
-		$fields=array();
+		$fields = array();
 		foreach ($ofields as $field) {
 			$fields[$field] = WT_Gedcom_Tag::GetLabel($field);
 		}
@@ -643,9 +643,7 @@ class AdvancedSearchController extends SearchController {
 			echo format_indi_table($this->myindilist);
 			return true;
 		} else {
-			if ($this->isPostBack) {
-				echo '<p class="ui-state-highlight">', I18N::translate('No results found.'), '</p>';
-			}
+			echo '<p class="ui-state-highlight">', I18N::translate('No results found.'), '</p>';
 			return false;
 		}
 	}

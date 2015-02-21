@@ -28,7 +28,7 @@ use Zend_Tag_Cloud;
  * @return string
  */
 function format_indi_table($datalist, $option = '') {
-	global $SEARCH_SPIDER, $controller, $WT_TREE;
+	global $controller, $WT_TREE;
 
 	$table_id = 'table-indi-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 
@@ -344,7 +344,7 @@ function format_indi_table($datalist, $option = '') {
 				if ($num) {
 					$html .= '<br>';
 				}
-				$html .= $birth_date->display(!$SEARCH_SPIDER);
+				$html .= $birth_date->display(true);
 			}
 			if ($birth_dates[0]->gregorianYear() >= 1550 && $birth_dates[0]->gregorianYear() < 2030 && !isset($unique_indis[$person->getXref()])) {
 				$birt_by_decade[(int) ($birth_dates[0]->gregorianYear() / 10) * 10] .= $person->getSex();
@@ -352,7 +352,7 @@ function format_indi_table($datalist, $option = '') {
 		} else {
 			$birth_date = $person->getEstimatedBirthDate();
 			if ($person->getTree()->getPreference('SHOW_EST_LIST_DATES')) {
-				$html .= $birth_date->display(!$SEARCH_SPIDER);
+				$html .= $birth_date->display(true);
 			} else {
 				$html .= '&nbsp;';
 			}
@@ -370,12 +370,8 @@ function format_indi_table($datalist, $option = '') {
 			if ($n) {
 				$html .= '<br>';
 			}
-			if ($SEARCH_SPIDER) {
-				$html .= $tmp->getShortName();
-			} else {
-				$html .= '<a href="' . $tmp->getURL() . '" title="' . strip_tags($tmp->getFullName()) . '">';
-				$html .= highlight_search_hits($tmp->getShortName()) . '</a>';
-			}
+			$html .= '<a href="' . $tmp->getURL() . '" title="' . strip_tags($tmp->getFullName()) . '">';
+			$html .= highlight_search_hits($tmp->getShortName()) . '</a>';
 		}
 		$html .= '</td>';
 		//-- Number of children
@@ -388,7 +384,7 @@ function format_indi_table($datalist, $option = '') {
 				if ($num) {
 					$html .= '<br>';
 				}
-				$html .= $death_date->display(!$SEARCH_SPIDER);
+				$html .= $death_date->display(true);
 			}
 			if ($death_dates[0]->gregorianYear() >= 1550 && $death_dates[0]->gregorianYear() < 2030 && !isset($unique_indis[$person->getXref()])) {
 				$deat_by_decade[(int) ($death_dates[0]->gregorianYear() / 10) * 10] .= $person->getSex();
@@ -398,7 +394,7 @@ function format_indi_table($datalist, $option = '') {
 			// Estimated death dates are a fixed number of years after the birth date.
 			// Don't show estimates in the future.
 			if ($person->getTree()->getPreference('SHOW_EST_LIST_DATES') && $death_date->MinJD() < WT_CLIENT_JD) {
-				$html .= $death_date->display(!$SEARCH_SPIDER);
+				$html .= $death_date->display(true);
 			} elseif ($person->isDead()) {
 				$html .= I18N::translate('yes');
 			} else {
@@ -425,12 +421,8 @@ function format_indi_table($datalist, $option = '') {
 			if ($n) {
 				$html .= '<br>';
 			}
-			if ($SEARCH_SPIDER) {
-				$html .= $tmp->getShortName();
-			} else {
-				$html .= '<a href="' . $tmp->getURL() . '" title="' . strip_tags($tmp->getFullName()) . '">';
-				$html .= highlight_search_hits($tmp->getShortName()) . '</a>';
-			}
+			$html .= '<a href="' . $tmp->getURL() . '" title="' . strip_tags($tmp->getFullName()) . '">';
+			$html .= highlight_search_hits($tmp->getShortName()) . '</a>';
 		}
 		$html .= '</td>';
 		//-- Last change
@@ -505,7 +497,7 @@ function format_indi_table($datalist, $option = '') {
  * @return string
  */
 function format_fam_table($datalist) {
-	global $WT_TREE, $SEARCH_SPIDER, $controller;
+	global $WT_TREE, $controller;
 
 	$table_id = 'table-fam-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 
@@ -877,7 +869,7 @@ function format_fam_table($datalist) {
 				if ($n) {
 					$html .= '<br>';
 				}
-				$html .= '<div>' . $marriage_date->display(!$SEARCH_SPIDER) . '</div>';
+				$html .= '<div>' . $marriage_date->display(true) . '</div>';
 			}
 			if ($marriage_dates[0]->gregorianYear() >= 1550 && $marriage_dates[0]->gregorianYear() < 2030) {
 				$marr_by_decade[(int) ($marriage_dates[0]->gregorianYear() / 10) * 10] .= $husb->getSex() . $wife->getSex();
@@ -907,12 +899,8 @@ function format_fam_table($datalist) {
 			if ($n) {
 				$html .= '<br>';
 			}
-			if ($SEARCH_SPIDER) {
-				$html .= $tmp->getShortName();
-			} else {
-				$html .= '<a href="' . $tmp->getURL() . '" title="' . strip_tags($tmp->getFullName()) . '">';
-				$html .= highlight_search_hits($tmp->getShortName()) . '</a>';
-			}
+			$html .= '<a href="' . $tmp->getURL() . '" title="' . strip_tags($tmp->getFullName()) . '">';
+			$html .= highlight_search_hits($tmp->getShortName()) . '</a>';
 		}
 		$html .= '</td>';
 		//-- Number of children
@@ -1959,7 +1947,7 @@ function print_events_table($startjd, $endjd, $events = 'BIRT MARR DEAT', $only_
 		}
 		$html .= '</td>';
 		$html .= '<td>' . $record->getSortName() . '</td>';
-		$html .= '<td>' . $fact->getDate()->display(empty($SEARCH_SPIDER)) . '</td>';
+		$html .= '<td>' . $fact->getDate()->display(!Auth::isSearchEngine()) . '</td>';
 		$html .= '<td>' . $n . '</td>';
 		$html .= '<td>' . I18N::number($fact->anniv) . '</td>';
 		$html .= '<td>' . $fact->anniv . '</td>';

@@ -95,7 +95,7 @@ class Zend_Tool_Framework_Client_Config
                 $this->_config = new Zend_Config_Xml($configFilepath, null, array('allowModifications' => true));
                 break;
             case '.php':
-                // require_once 'Zend/ConfigInterface.php';
+                // require_once 'Zend/Config.php';
                 $this->_config = new Zend_Config(include $configFilepath, true);
                 break;
             default:

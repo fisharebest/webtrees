@@ -20,13 +20,13 @@ namespace Fisharebest\Webtrees;
  * Class FanchartController Controller for the fan chart
  */
 class FanchartController extends ChartController {
-	/** @var int Style of fanchart */
+	/** @var integer Style of fanchart */
 	public $fan_style;
 
-	/** @var int Width of fanchart (a percentage)  */
+	/** @var integer Width of fanchart (a percentage)  */
 	public $fan_width;
 
-	/** @var int Number of generations to display */
+	/** @var integer Number of generations to display */
 	public $generations;
 
 	/**

@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Datamatrix' => $vendorDir . '/tecnick.com/tcpdf/include/barcodes/datamatrix.php',
+    'Fisharebest\\Algorithm\\Dijkstra' => $vendorDir . '/fisharebest/algorithm/src/Dijkstra.php',
     'Fisharebest\\ExtCalendar\\AbstractCalendar' => $vendorDir . '/fisharebest/ext-calendar/src/AbstractCalendar.php',
     'Fisharebest\\ExtCalendar\\ArabicCalendar' => $vendorDir . '/fisharebest/ext-calendar/src/ArabicCalendar.php',
     'Fisharebest\\ExtCalendar\\CalendarInterface' => $vendorDir . '/fisharebest/ext-calendar/src/CalendarInterface.php',
@@ -83,6 +84,7 @@ return array(
     'Fisharebest\\Webtrees\\PageController' => $baseDir . '/app/Controller/PageController.php',
     'Fisharebest\\Webtrees\\PedigreeController' => $baseDir . '/app/Controller/PedigreeController.php',
     'Fisharebest\\Webtrees\\Place' => $baseDir . '/app/Place.php',
+    'Fisharebest\\Webtrees\\RelationshipController' => $baseDir . '/app/Controller/RelationshipController.php',
     'Fisharebest\\Webtrees\\ReportBase' => $baseDir . '/app/Report/ReportBase.php',
     'Fisharebest\\Webtrees\\ReportBaseCell' => $baseDir . '/app/Report/ReportBaseCell.php',
     'Fisharebest\\Webtrees\\ReportBaseElement' => $baseDir . '/app/Report/ReportBaseElement.php',

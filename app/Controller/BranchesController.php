@@ -23,10 +23,10 @@ class BranchesController extends PageController {
 	/** @var string Generate the branches for this surname */
 	private $surname;
 
-	/** @var bool Whether to use Standard phonetic matching */
+	/** @var boolean Whether to use Standard phonetic matching */
 	private $soundex_std;
 
-	/** @var bool Whether to use Daitch-Mokotov phonetic matching */
+	/** @var boolean Whether to use Daitch-Mokotov phonetic matching */
 	private $soundex_dm;
 
 	/** @var Individual[] Everyone with the selected surname */

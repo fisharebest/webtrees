@@ -583,6 +583,8 @@ function insertRowToTable(pid, nam, mnam, label, gend, cond, dom, dob, age, dod,
 		preview();
 
 	}
+
+	return false;
 }
 
 // addRowToTable - Inserts at row 'num', or appends to the end if no arguments are passed in. Don't pass in empty strings.

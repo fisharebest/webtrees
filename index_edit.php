@@ -22,11 +22,10 @@ use Zend_Session_Namespace;
 /**
  * Defined in session.php
  *
- * @global string                 $SEARCH_SPIDER
  * @global Zend_Session_Namespace $WT_SESSION
  * @global Tree                   $WT_TREE
  */
-global $SEARCH_SPIDER, $WT_SESSION, $WT_TREE;
+global $WT_SESSION, $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'index_edit.php');
 require './includes/session.php';
@@ -57,7 +56,7 @@ if ($user_id) {
 
 if ($user_id < 0 || $gedcom_id < 0 || Auth::isAdmin() && $user_id != Auth::id()) {
 	// We're doing this from an admin page.  Use the admin theme, and return there afterwards.
-	Theme::theme(new AdministrationTheme)->init($WT_SESSION, $SEARCH_SPIDER, $WT_TREE);
+	Theme::theme(new AdministrationTheme)->init($WT_SESSION, $WT_TREE);
 	$return_to = 'admin_trees_manage.php?ged=';
 } else {
 	$return_to = 'index.php';

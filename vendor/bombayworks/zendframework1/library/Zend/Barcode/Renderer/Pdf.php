@@ -24,7 +24,7 @@
 // require_once 'Zend/Barcode/Renderer/RendererAbstract.php';
 
 /** @see Zend_Pdf */
-// require_once 'Zend/ReportPdf.php';
+// require_once 'Zend/Pdf.php';
 
 /** @see Zend_Pdf_Page */
 // require_once 'Zend/Pdf/Page.php';

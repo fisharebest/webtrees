@@ -29,7 +29,7 @@
 // require_once 'Zend/Oauth/Http/Utility.php';
 
 /** Zend_Oauth_Config */
-// require_once 'Zend/Oauth/ConfigInterface.php';
+// require_once 'Zend/Oauth/Config.php';
 
 /**
  * @category   Zend
