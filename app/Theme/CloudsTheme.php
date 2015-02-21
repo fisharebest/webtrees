@@ -77,7 +77,6 @@ class CloudsTheme extends BaseTheme {
 		$parameters = array(
 			'chart-background-f'             => 'e9daf1',
 			'chart-background-m'             => 'b1cff0',
-			'chart-descendancy-box-x'        => 250,
 			'chart-spacing-x'                => 4,
 			'distribution-chart-high-values' => '95b8e0',
 			'distribution-chart-low-values'  => 'c8e7ff',

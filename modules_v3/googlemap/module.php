@@ -779,7 +779,7 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 						<?php
 							for ($p = 3; $p <= $MAX_PEDIGREE_GENERATIONS; $p++) {
 								echo '<option value="', $p, '" ';
-								if ($p == $controller->PEDIGREE_GENERATIONS) {
+								if ($p == $controller->generations) {
 									echo 'selected';
 								}
 								echo '>', $p, '</option>';
@@ -1570,7 +1570,7 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 		case 'go':
 			//Identify gedcom file
 			$trees = Tree::getAll();
-			echo '<div id="gm_check_title">', $trees[$gedcom_id]->getTitleHtml(), '</div>';
+			echo '<div id="gm_check_title">', Tree::findById($gedcom_id)->getTitleHtml(), '</div>';
 			//Select all '2 PLAC ' tags in the file and create array
 			$place_list = array();
 			$ged_data = Database::prepare("SELECT i_gedcom FROM `##individuals` WHERE i_gedcom LIKE ? AND i_file=?")

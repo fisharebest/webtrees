@@ -785,7 +785,7 @@ function update_places($gid, $ged_id, $gedrec) {
 			"INSERT INTO `##places` (p_place, p_parent_id, p_file, p_std_soundex, p_dm_soundex) VALUES (LEFT(?, 150), ?, ?, ?, ?)"
 		);
 		$sql_select_places = Database::prepare(
-			"SELECT p_id FROM `##places` WHERE p_file=? AND p_parent_id=? AND p_place=?"
+			"SELECT p_id FROM `##places` WHERE p_file = ? AND p_parent_id = ? AND p_place = LEFT(?, 150)"
 		);
 	}
 
@@ -812,7 +812,7 @@ function update_places($gid, $ged_id, $gedrec) {
 
 		foreach ($secalp as $place) {
 			$place = trim($place);
-			$key = strtolower(mb_substr(0, 150, $place) . "_" . $parent_id);
+			$key = strtolower(mb_substr($place, 0, 150) . "_" . $parent_id);
 			//-- if this place has already been added then we don't need to add it again
 			if (isset($placecache[$key])) {
 				$parent_id = $placecache[$key];

@@ -1804,12 +1804,12 @@ background-color: #fff;
 
 /* === Who is online block === */
 .logged_in_list {
-	margin: 5px 0 0;
-	padding: 0;
+	margin:      5px 0 0;
+	padding:     0;
 	line-height: 20px;
 }
 
-//* Statistics block */
+/* Statistics block */
 #gedcom_stats23 p {margin: 0;}
 
 .stat-table1 {
@@ -2519,7 +2519,7 @@ dd .deletelink {
 }
 
 #sb_family_nav_content {
-	margin-top: 0px;
+	margin-top: 0;
 }
 
 .nam a:hover {
@@ -3290,6 +3290,10 @@ table.table-census-assistant th {
 }
 
 /* ====== Charts Styles ======== */
+#people label {
+	display:block;
+}
+
 #compact_chart,
 #fan_chart,
 .chart_common,
@@ -3492,7 +3496,7 @@ table.table-census-assistant th {
 }
 
 #pedigree-page table.list_table {
-	margin: 0 auto;
+	margin: 0 auto 20px;
 	width: 500px;
 }
 
@@ -3505,7 +3509,6 @@ table.table-census-assistant th {
 
 #pedigree_chart {
 	position: relative;
-	top: -200px;
 	left: 0;
 }
 
@@ -3517,7 +3520,6 @@ table.table-census-assistant th {
 #pedigree_canvas {
 	color: #81a9cb;
 	position: absolute;
-	top: 200px;
 	z-index: -1000;
 }
 
@@ -5326,12 +5328,6 @@ footer .error {
 	background-image: url(images/user_add.png);
 }
 
-.icon-webtrees {
-	width: 100px;
-	height: 21px;
-	background-image: url(images/webtrees.png);
-}
-
 @media print {
 	header,
 	footer,
@@ -5348,7 +5344,7 @@ footer .error {
 
 	#pedigree_chart {
 		left: -40px;
-		top:  -260px;
+		top:  0;
 	}
 
 	[dir=rtl] #pedigree_chart {

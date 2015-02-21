@@ -20,26 +20,20 @@ namespace Fisharebest\Webtrees;
  * Class FamilyBookController - Controller for the familybook chart
  */
 class FamilyBookController extends ChartController {
-	// Data for the view
-	public $pid;
-
-	/** @var int Whether to show full details in the individual boxes */
-	public $show_full;
-
-	/** @var int Whether to show spouse details */
+	/** @var integer Whether to show spouse details */
 	public $show_spouse;
 
-	/** @var int Number of descendancy generations to show */
+	/** @var integer Number of descendancy generations to show */
 	public $descent;
 
-	/** @var int Number of ascendancy generations to show */
+	/** @var integer Number of ascendancy generations to show */
 	public $generations;
 
-	/** @var int Size of boxes (percentage) */
-	public $box_width;
-
-	/** @var int Number of descendancy generations that exist */
+	/** @var integer Number of descendancy generations that exist */
 	private $dgenerations;
+
+	/** @var integer Half height of personbox */
+	public $bhalfheight;
 
 	/**
 	 * Create a family-book controller
@@ -50,24 +44,11 @@ class FamilyBookController extends ChartController {
 		parent::__construct();
 
 		// Extract the request parameters
-		$this->show_full   = Filter::getInteger('show_full', 0, 1, $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS'));
 		$this->show_spouse = Filter::getInteger('show_spouse', 0, 1);
 		$this->descent     = Filter::getInteger('descent', 0, 9, 5);
 		$this->generations = Filter::getInteger('generations', 2, $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS'), 2);
-		$this->box_width   = Filter::getInteger('box_width', 50, 300, 100);
 
-		// Box sizes are set globally in the theme.  Modify them here.
-		global $bwidth, $bheight, $Dbwidth, $bhalfheight, $Dbheight;
-		$Dbwidth = $this->box_width * $bwidth / 100;
-		$bwidth = $Dbwidth;
-		$bheight = $Dbheight;
-
-		// -- adjust size of the compact box
-		if (!$this->show_full) {
-			$bwidth = $this->box_width * Theme::theme()->parameter('compact-chart-box-x') / 100;
-			$bheight = Theme::theme()->parameter('compact-chart-box-y');
-		}
-		$bhalfheight = $bheight / 2;
+		$this->bhalfheight = $this->getBoxDimensions()->height / 2;
 		if ($this->root && $this->root->canShowName()) {
 			$this->setPageTitle(
 				/* I18N: %s is an individual’s name */
@@ -77,7 +58,8 @@ class FamilyBookController extends ChartController {
 			$this->setPageTitle(I18N::translate('Family book'));
 		}
 		//Checks how many generations of descendency is for the person for formatting purposes
-		$this->dgenerations = $this->maxDescendencyGenerations($this->pid, 0);
+		$this->dgenerations = $this->maxDescendencyGenerations($this->root->getXref(), 0);
+
 		if ($this->dgenerations < 1) {
 			$this->dgenerations = 1;
 		}
@@ -92,16 +74,12 @@ class FamilyBookController extends ChartController {
 	 * @return integer
 	 */
 	private function printDescendency(Individual $person = null, $generation) {
-		global $bwidth, $bheight, $show_full, $box_width; // print_pedigree_person() requires these globals.
 
 		if ($generation > $this->dgenerations) {
 			return 0;
 		}
 
-		$show_full = $this->show_full;
-		$box_width = $this->box_width;
-
-		echo '<table><tr><td width="', $bwidth, '">';
+		echo '<table><tr><td>';
 		$numkids = 0;
 
 		// Load children
@@ -130,7 +108,7 @@ class FamilyBookController extends ChartController {
 					if (count($children) > 1) {
 						if ($i === 0) {
 							// Adjust for the first column on left
-							$h = round(((($bheight) * $kids) + 8) / 2); // Assumes border = 1 and padding = 3
+							$h = round(((($this->getBoxDimensions()->height) * $kids) + 8) / 2); // Assumes border = 1 and padding = 3
 							//  Adjust for other vertical columns
 							if ($kids > 1) {
 								$h = ($kids - 1) * 4 + $h;
@@ -139,7 +117,7 @@ class FamilyBookController extends ChartController {
 							'<img class="tvertline" id="vline_', $child->getXref(), '" src="', Theme::theme()->parameter('image-vline'), '"  height="', $h - 1, '" alt=""></td>';
 						} elseif ($i === count($children) - 1) {
 							// Adjust for the first column on left
-							$h = round(((($bheight) * $kids) + 8) / 2);
+							$h = round(((($this->getBoxDimensions()->height) * $kids) + 8) / 2);
 							// Adjust for other vertical columns
 							if ($kids > 1) {
 								$h = ($kids - 1) * 4 + $h;
@@ -161,7 +139,7 @@ class FamilyBookController extends ChartController {
 				echo '</td></tr></table>';
 			}
 			echo '</td>';
-			echo '<td width="', $bwidth, '">';
+			echo '<td>';
 		}
 
 		if ($numkids === 0) {
@@ -169,11 +147,11 @@ class FamilyBookController extends ChartController {
 		}
 		echo '<table><tr><td>';
 		if ($person) {
-			print_pedigree_person($person);
+			print_pedigree_person($person, $this->showFull());
 			echo '</td><td>',
 			'<img class="line2" src="', Theme::theme()->parameter('image-hline'), '" width="8" height="3" alt="">';
 		} else {
-			echo '<div style="width:', $bwidth + 19, 'px; height:', $bheight + 8, 'px;"></div>',
+			echo '<div style="width:', $this->getBoxDimensions()->width + 19, 'px; height:', $this->getBoxDimensions()->height + 8, 'px;"></div>',
 			'</td><td>';
 		}
 
@@ -183,13 +161,7 @@ class FamilyBookController extends ChartController {
 				foreach ($person->getSpouseFamilies() as $family) {
 					$spouse = $family->getSpouse($person);
 					echo '</td></tr><tr><td>';
-					//-- shrink the box for the spouses
-					$tempw = $bwidth;
-					$temph = $bheight;
-					$bwidth -= 5;
-					print_pedigree_person($spouse);
-					$bwidth  = $tempw;
-					$bheight = $temph;
+					print_pedigree_person($spouse, $this->showFull());
 					$numkids += 0.95;
 					echo '</td><td>';
 				}
@@ -209,25 +181,24 @@ class FamilyBookController extends ChartController {
 	 * @param integer       $count
 	 */
 	private function printPersonPedigree($person, $count) {
-		global $bheight, $bwidth, $bhalfheight;
 		if ($count >= $this->generations) {
 			return;
 		}
 
 		$genoffset = $this->generations; // handle pedigree n generations lines
 		//-- calculate how tall the lines should be
-		$lh = ($bhalfheight + 4) * pow(2, ($genoffset - $count - 1));
+		$lh = ($this->bhalfheight + 4) * pow(2, ($genoffset - $count - 1));
 		//
 		//Prints empty table columns for children w/o parents up to the max generation
 		//This allows vertical line spacing to be consistent
 		if (count($person->getChildFamilies()) == 0) {
 			echo '<table>';
-			$this->printEmptyBox($bwidth, $bheight);
+			$this->printEmptyBox($this->getBoxDimensions()->width, $this->getBoxDimensions()->height);
 
 			//-- recursively get the father’s family
 			$this->printPersonPedigree($person, $count + 1);
 			echo '</td><td></tr>';
-			$this->printEmptyBox($bwidth, $bheight);
+			$this->printEmptyBox($this->getBoxDimensions()->width, $this->getBoxDimensions()->height);
 
 			//-- recursively get the mother’s family
 			$this->printPersonPedigree($person, $count + 1);
@@ -249,7 +220,7 @@ class FamilyBookController extends ChartController {
 				$linefactor = 0;
 				// genoffset of 2 needs no adjustment
 				if ($genoffset > 2) {
-					$tblheight = $bheight + 8;
+					$tblheight = $this->getBoxDimensions()->height + 8;
 					if ($genoffset == 3) {
 						if ($famcount == 3) {
 							$linefactor = $tblheight / 2;
@@ -272,7 +243,7 @@ class FamilyBookController extends ChartController {
 						}
 					}
 				}
-				$lh = (($famcount - 1) * ($bheight + 8) - ($linefactor));
+				$lh = (($famcount - 1) * ($this->getBoxDimensions()->height + 8) - ($linefactor));
 				if ($genoffset > 5) {
 					$lh = $savlh;
 				}
@@ -283,7 +254,7 @@ class FamilyBookController extends ChartController {
 			'<td>';
 			$lh = $savlh; // restore original line height
 			//-- print the father box
-			print_pedigree_person($family->getHusband());
+			print_pedigree_person($family->getHusband(), $this->showFull());
 			echo '</td>';
 			if ($family->getHusband()) {
 				echo '<td>';
@@ -295,7 +266,7 @@ class FamilyBookController extends ChartController {
 				if ($genoffset > $count) {
 					echo '<table>';
 					for ($i = 1; $i < (pow(2, ($genoffset) - $count) / 2); $i++) {
-						$this->printEmptyBox($bwidth, $bheight);
+						$this->printEmptyBox($this->getBoxDimensions()->width, $this->getBoxDimensions()->height);
 						echo '</tr>';
 					}
 					echo '</table>';
@@ -306,7 +277,7 @@ class FamilyBookController extends ChartController {
 			'<td><img class="line4" src="', Theme::theme()->parameter('image-hline'), '" height="3"></td>',
 			'<td>';
 			//-- print the mother box
-			print_pedigree_person($family->getWife());
+			print_pedigree_person($family->getWife(), $this->showFull());
 			echo '</td>';
 			if ($family->getWife()) {
 				echo '<td>';
@@ -318,9 +289,9 @@ class FamilyBookController extends ChartController {
 				if ($count < $genoffset - 1) {
 					echo '<table>';
 					for ($i = 1; $i < (pow(2, ($genoffset - 1) - $count) / 2) + 1; $i++) {
-						$this->printEmptyBox($bwidth, $bheight);
+						$this->printEmptyBox();
 						echo '</tr>';
-						$this->printEmptyBox($bwidth, $bheight);
+						$this->printEmptyBox();
 						echo '</tr>';
 					}
 					echo '</table>';
@@ -371,28 +342,25 @@ class FamilyBookController extends ChartController {
 	/**
 	 * Print empty box
 	 *
-	 * @param integer $bwidth
-	 * @param integer $bheight
+	 * @return void
 	 */
-	private function printEmptyBox($bwidth, $bheight) {
-		echo '<tr><td><div style="width:', $bwidth + 16, 'px; height:', $bheight + 8, 'px;"></div></td><td>';
+
+	private function printEmptyBox() {
+		echo $this->showFull() ? Theme::theme()->individualBoxEmpty() : Theme::theme()->individualBoxSmallEmpty();
 	}
 
 	/**
 	 * Print a “Family Book” for an individual
 	 *
 	 * @param Individual $person
-	 * @param integer       $descent_steps
+	 * @param integer    $descent_steps
 	 */
 	public function printFamilyBook(Individual $person, $descent_steps) {
-		global $first_run;
-
 		if ($descent_steps == 0 || !$person->canShowName()) {
 			return;
 		}
 		$families = $person->getSpouseFamilies();
-		if (count($families) > 0 || empty($first_run)) {
-			$first_run = true;
+		if ($families) {
 			echo
 			'<h3>',
 			/* I18N: A title/heading. %s is an individual’s name */ I18N::translate('Family of %s', $person->getFullName()),

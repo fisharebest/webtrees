@@ -32,7 +32,7 @@ class charts_WT_Module extends Module implements ModuleBlockInterface {
 
 	/** {@inheritdoc} */
 	public function getBlock($block_id, $template = true, $cfg = null) {
-		global $WT_TREE, $ctype, $show_full, $controller;
+		global $WT_TREE, $ctype, $controller;
 
 		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
 
@@ -46,14 +46,6 @@ class charts_WT_Module extends Module implements ModuleBlockInterface {
 					$$name = $cfg[$name];
 				}
 			}
-		}
-
-		if (!$details) {
-			$show_full = 0;
-			// Here we could adjust the block width & height to accommodate larger displays
-		} else {
-			$show_full = 1;
-			// Here we could adjust the block width & height to accommodate larger displays
 		}
 
 		$person = Individual::getInstance($pid);
@@ -76,11 +68,11 @@ class charts_WT_Module extends Module implements ModuleBlockInterface {
 			switch ($type) {
 			case 'pedigree':
 				$title .= I18N::translate('Pedigree of %s', $person->getFullName());
-				$chartController = new HourglassController($person->getXref(), 0, false);
+				$chartController = new HourglassController($person->getXref(), $details, false);
 				$controller->addInlineJavascript($chartController->setupJavascript());
 				$content .= '<td valign="middle">';
 				ob_start();
-				print_pedigree_person($person);
+				print_pedigree_person($person, $details);
 				$content .= ob_get_clean();
 				$content .= '</td>';
 				$content .= '<td valign="middle">';
@@ -91,7 +83,7 @@ class charts_WT_Module extends Module implements ModuleBlockInterface {
 				break;
 			case 'descendants':
 				$title .= I18N::translate('Descendants of %s', $person->getFullName());
-				$chartController = new HourglassController($person->getXref(), 0, false);
+				$chartController = new HourglassController($person->getXref(), $details, false);
 				$controller->addInlineJavascript($chartController->setupJavascript());
 				$content .= '<td valign="middle">';
 				ob_start();
@@ -101,7 +93,7 @@ class charts_WT_Module extends Module implements ModuleBlockInterface {
 				break;
 			case 'hourglass':
 				$title .= I18N::translate('Hourglass chart of %s', $person->getFullName());
-				$chartController = new HourglassController($person->getXref(), 0, false);
+				$chartController = new HourglassController($person->getXref(), $details, false);
 				$controller->addInlineJavascript($chartController->setupJavascript());
 				$content .= '<td valign="middle">';
 				ob_start();

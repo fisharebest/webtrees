@@ -23,13 +23,22 @@ class ChartController extends PageController {
 	/** @var Individual Who is chart about? */
 	public $root;
 
+	/** @var boolean determines the detail shown in the personbox */
+	private $show_full;
+
 	/** @var string An error message, in case we cannot construct the chart */
 	public $error_message;
 
+	/** @var \stdClass personbox dimensions */
+	private $box;
 	/**
 	 * Create the chart controller
+	 *
+	 * @param int $show_full needed for use by charts module
 	 */
-	public function __construct() {
+	public function __construct($show_full = 1) {
+		global $WT_TREE;
+
 		parent::__construct();
 
 		$rootid = Filter::get('rootid', WT_REGEX_XREF);
@@ -42,6 +51,18 @@ class ChartController extends PageController {
 		if (!$this->root || !$this->root->canShowName()) {
 			http_response_code(404);
 			$this->error_message = I18N::translate('This individual does not exist or you do not have permission to view it.');
+		}
+
+		// Extract parameter from form
+		$this->show_full = $show_full && Filter::getInteger('show_full', 0, 1, $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS'));
+
+		$this->box = new \stdClass();
+		if ($this->showFull()) {
+			$this->box->width  = Theme::theme()->parameter('chart-box-x');
+			$this->box->height = Theme::theme()->parameter('chart-box-y');
+		} else {
+			$this->box->width  = Theme::theme()->parameter('compact-chart-box-x');
+			$this->box->height = Theme::theme()->parameter('compact-chart-box-y');
 		}
 	}
 
@@ -92,5 +113,21 @@ class ChartController extends PageController {
 		}
 
 		return $ancestors;
+	}
+
+	/**
+	 * Function showFull
+	 * @return bool
+	 */
+	public function showFull() {
+		return $this->show_full;
+	}
+
+	/**
+	 * Function boxDimensions
+	 * @return personbox|\stdClass
+	 */
+	public function getBoxDimensions() {
+		return $this->box;
 	}
 }

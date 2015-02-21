@@ -30,7 +30,7 @@ class Statement {
 	/** @var PDOStatement */
 	private $pdo_statement;
 
-	/** @var bool  Keep track of calls to execute(), so we can do it automatically */
+	/** @var boolean Keep track of calls to execute(), so we can do it automatically */
 	private $executed = false;
 
 	/**

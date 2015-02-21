@@ -20,51 +20,28 @@ namespace Fisharebest\Webtrees;
  * Class AncestryController - Controller for the ancestry chart
  */
 class AncestryController extends ChartController {
-	var $pid = '';
-	var $user = false;
-	var $show_cousins;
-	var $rootid;
-	var $name;
-	var $addname;
-	var $OLD_PGENS;
-	var $chart_style;
-	var $show_full;
-	var $cellwidth;
+
+	/** @var integer Show boxes for cousins */
+	public $show_cousins;
+
+	/** @var integer Determines style of chart */
+	public $chart_style;
+
+	/** @var integer Number of generations to display	 */
+	public $generations;
 
 	/**
 	 * Startup activity
 	 */
 	public function __construct() {
-		global $bwidth, $bheight, $pbwidth, $pbheight, $show_full;
-		global $PEDIGREE_GENERATIONS, $WT_TREE, $OLD_PGENS, $box_width, $Dbwidth, $Dbheight;
+		global $WT_TREE;
 
 		parent::__construct();
 
 		// Extract form parameters
-		$this->show_full      = Filter::getInteger('show_full', 0, 1, $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS'));
-		$this->show_cousins   = Filter::getInteger('show_cousins', 0, 1);
-		$this->chart_style    = Filter::getInteger('chart_style', 0, 3);
-		$box_width            = Filter::getInteger('box_width', 50, 300, 100);
-		$PEDIGREE_GENERATIONS = Filter::getInteger('PEDIGREE_GENERATIONS', 2, $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS'), $WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
-
-		// This is passed as a global.  A parameter would be better...
-		$show_full = $this->show_full;
-		$OLD_PGENS = $PEDIGREE_GENERATIONS;
-
-		// -- size of the detailed boxes based upon optional width parameter
-		$Dbwidth = ($box_width * $bwidth) / 100;
-		$Dbheight = ($box_width * $bheight) / 100;
-		$bwidth = $Dbwidth;
-		$bheight = $Dbheight;
-
-		// -- adjust size of the compact box
-		if (!$this->show_full) {
-			$bwidth = Theme::theme()->parameter('compact-chart-box-x');
-			$bheight = Theme::theme()->parameter('compact-chart-box-y');
-		}
-
-		$pbwidth = $bwidth + 12;
-		$pbheight = $bheight + 14;
+		$this->show_cousins = Filter::getInteger('show_cousins', 0, 1);
+		$this->chart_style  = Filter::getInteger('chart_style', 0, 3);
+		$this->generations  = Filter::getInteger('PEDIGREE_GENERATIONS', 2, $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS'), $WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
 
 		if ($this->root && $this->root->canShowName()) {
 			$this->setPageTitle(
@@ -73,12 +50,6 @@ class AncestryController extends ChartController {
 			);
 		} else {
 			$this->setPageTitle(I18N::translate('Ancestors'));
-		}
-
-		if (strlen($this->name) < 30) {
-			$this->cellwidth = "420";
-		} else {
-			$this->cellwidth = (strlen($this->name) * 14);
 		}
 	}
 
@@ -90,8 +61,8 @@ class AncestryController extends ChartController {
 	 * @param integer $depth the ascendancy depth to show
 	 */
 	public function printChildAscendancy($person, $sosa, $depth) {
-		global $OLD_PGENS, $pidarr, $box_width;
 
+		$pidarr = array();
 		if ($person) {
 			$pid = $person->getXref();
 			$label = I18N::translate('Ancestors of %s', $person->getFullName());
@@ -108,11 +79,11 @@ class AncestryController extends ChartController {
 			echo '<img src="', Theme::theme()->parameter('image-spacer'), '" height="3" width="2" alt="">';
 			echo '<img src="', Theme::theme()->parameter('image-hline'), '" height="3" width="', Theme::theme()->parameter('chart-descendancy-indent') - 2, '"></td><td>';
 		}
-		print_pedigree_person($person);
+		print_pedigree_person($person, $this->showFull());
 		echo '</td>';
 		echo '<td>';
 		if ($sosa > 1) {
-			print_url_arrow('?rootid=' . $pid . '&amp;PEDIGREE_GENERATIONS=' . $OLD_PGENS . '&amp;show_full=' . $this->show_full . '&amp;box_width=' . $box_width . '&amp;chart_style=' . $this->chart_style . '&amp;ged=' . WT_GEDURL, $label, 3);
+			print_url_arrow('?rootid=' . $pid . '&amp;PEDIGREE_GENERATIONS=' . $this->generations . '&amp;show_full=' . $this->showFull() . '&amp;chart_style=' . $this->chart_style . '&amp;ged=' . WT_GEDURL, $label, 3);
 		}
 		echo '</td>';
 		echo '<td class="details1">&nbsp;<span dir="ltr" class="person_box' . (($sosa == 1) ? 'NN' : (($sosa % 2) ? 'F' : '')) . '">&nbsp;', $sosa, '&nbsp;</span>&nbsp;';

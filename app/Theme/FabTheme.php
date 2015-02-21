@@ -89,7 +89,6 @@ class FabTheme extends BaseTheme {
 			'chart-background-f'             => 'e9daf1',
 			'chart-background-m'             => 'b1cff0',
 			'chart-box-x'                    => 260,
-			'chart-descendancy-box-x'        => 290,
 			'chart-spacing-x'                => 0,
 			'distribution-chart-high-values' => '9ca3d4',
 			'distribution-chart-low-values'  => 'e5e6ef',

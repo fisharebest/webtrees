@@ -601,13 +601,3 @@ if (Auth::isSearchEngine() && !in_array(WT_SCRIPT_NAME, array(
 	echo '<p class="ui-state-error">', I18N::translate('You do not have permission to view this page.'), '</p>';
 	exit;
 }
-
-// These theme globals are horribly abused.
-$bwidth       = Theme::theme()->parameter('chart-box-x');
-$bheight      = Theme::theme()->parameter('chart-box-y');
-$basexoffset  = Theme::theme()->parameter('chart-offset-x');
-$baseyoffset  = Theme::theme()->parameter('chart-offset-y');
-$bxspacing    = Theme::theme()->parameter('chart-spacing-x');
-$byspacing    = Theme::theme()->parameter('chart-spacing-y');
-$Dbwidth      = Theme::theme()->parameter('chart-descendancy-box-x');
-$Dbheight     = Theme::theme()->parameter('chart-descendancy-box-y');

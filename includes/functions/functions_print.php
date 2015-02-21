@@ -24,15 +24,14 @@ use Rhumsaa\Uuid\Uuid;
  * find and print a given individuals information for a pedigree chart
  *
  * @param Individual $person The person to print
- * @param integer    $style  the style to print the box in, 1 for smaller boxes, 2 for larger boxes
+ * @param integer    $show_full  the style to print the box in, 0 for smaller boxes, 1 for larger boxes
  */
-function print_pedigree_person(Individual $person = null, $style = 1) {
-	global $show_full;
+function print_pedigree_person(Individual $person = null, $show_full = 1) {
 
 	switch ($show_full) {
 	case 0:
 		if ($person) {
-		echo Theme::theme()->individualBoxSmall($person);
+			echo Theme::theme()->individualBoxSmall($person);
 		} else {
 			echo Theme::theme()->individualBoxSmallEmpty();
 		}
