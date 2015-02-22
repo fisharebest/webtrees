@@ -4566,15 +4566,14 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 			echo '<td>', $place['long'], '</td>';
 			echo '<td>', $place['zoom'], '</td>';
 			echo '<td>';
-			if (($place['icon'] == null) || ($place['icon'] == '')) {
-				if (($place['lati'] == null) || ($place['long'] == null) || (($place['lati'] == '0') && ($place['long'] == '0'))) {
+			if ($place['icon']) {
+				echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place['icon'], '" width="25" height="15">';
+			} else {
+				if ($place['lati'] || $place['long']) {
+					echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/mm_20_red.png">';
+				} else {
 					echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/mm_20_yellow.png">';
 				}
-				else {
-					echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/mm_20_red.png">';
-				}
-			} else {
-				echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place['icon'], '" width="25" height="15">';
 			}
 			echo '</td>';
 			echo '<td class="narrow"><a href="#" onclick="edit_place_location(', $place['place_id'], ');return false;" class="icon-edit" title="', I18N::translate('Edit'), '"></a></td>';
