@@ -2680,27 +2680,17 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 				$pl_long = str_replace(array('E', 'W', ','), array('', '-', '.'), $latlng['pl_long']); // WT_placelocation long
 
 				// Check if Streetview location parameters are stored in database
-				$placeid	= $latlng['pl_id']; // Placelocation place id
-				$sv_lat		= $latlng['sv_lati']; // StreetView Point of View Latitude
-				$sv_lng		= $latlng['sv_long']; // StreetView Point of View Longitude
-				$sv_dir		= $latlng['sv_bearing']; // StreetView Point of View Direction (degrees from North)
+				$placeid  = $latlng['pl_id']; // Placelocation place id
+				$sv_lat   = $latlng['sv_lati']; // StreetView Point of View Latitude
+				$sv_lng   = $latlng['sv_long']; // StreetView Point of View Longitude
+				$sv_dir   = $latlng['sv_bearing']; // StreetView Point of View Direction (degrees from North)
 				$sv_pitch = $latlng['sv_elevation']; // StreetView Point of View Elevation (+90 to -90 degrees (+=down, -=up)
-				$sv_zoom	= $latlng['sv_zoom']; // StreetView Point of View Zoom (0, 1, 2 or 3)
+				$sv_zoom  = $latlng['sv_zoom']; // StreetView Point of View Zoom (0, 1, 2 or 3)
 
-				// Check if Street View Lati/Long are the default of 0 or null, if so use regular Place Lati/Long to set an initial location for the panda ------------
-				if (($latlng['sv_lati'] == null && $latlng['sv_long'] == null) || ($latlng['sv_lati'] == 0 && $latlng['sv_long'] == 0)) {
+				// Check if Street View Lati/Long are the default of 0, if so use regular Place Lati/Long to set an initial location for the panda
+				if ($latlng['sv_lati'] == 0 && $latlng['sv_long'] == 0) {
 						$sv_lat = $pl_lati;
 						$sv_lng = $pl_long;
-				}
-				// Set Street View parameters to numeric value if NULL (avoids problem with Google Street View™ Pane not rendering)
-				if ($sv_dir == null) {
-					$sv_dir = 0;
-				}
-				if ($sv_pitch == null) {
-					$sv_pitch = 0;
-				}
-				if ($sv_zoom == null) {
-					$sv_zoom = 1;
 				}
 
 				?>
