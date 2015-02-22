@@ -2778,7 +2778,7 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 	 * @param boolean  $lastlevel
 	 */
 	private function printGoogleMapMarkers($place2, $level, $parent, $levelm, $linklevels, $placelevels, $lastlevel = false) {
-		if (($place2['lati'] == null) || ($place2['long'] == null) || (($place2['lati'] == '0') && ($place2['long'] == '0'))) {
+		if (!$place2['lati'] || !$place2['long']) {
 			echo 'var icon_type = new google.maps.MarkerImage();';
 			echo 'icon_type.image = "', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/marker_yellow.png";';
 			echo 'icon_type.shadow = "', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/shadow50.png";';
@@ -4019,9 +4019,9 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 			<tr>
 				<td class="descriptionbox"><?php echo WT_Gedcom_Tag::getLabel('LATI'); ?></td>
 				<td class="optionbox" colspan="2">
-					<input type="text" id="NEW_PLACE_LATI" name="NEW_PLACE_LATI" placeholder="<?php echo /* I18N: Measure of latitude/longitude */ I18N::translate('degrees') ?>" value="<?php if ($place_lati != null) echo abs($place_lati); ?>" size="20" onchange="updateMap();">
+					<input type="text" id="NEW_PLACE_LATI" name="NEW_PLACE_LATI" placeholder="<?php echo /* I18N: Measure of latitude/longitude */ I18N::translate('degrees') ?>" value="<?php echo abs($place_lati); ?>" size="20" onchange="updateMap();">
 					<select name="LATI_CONTROL" onchange="updateMap();">
-						<option value="PL_N" <?php if ($place_lati > 0) echo "selected"; echo ">", I18N::translate('north'); ?></option>
+						<option value="PL_N" <?php if ($place_lati >= 0) echo "selected"; echo ">", I18N::translate('north'); ?></option>
 						<option value="PL_S" <?php if ($place_lati < 0) echo "selected"; echo ">", I18N::translate('south'); ?></option>
 					</select>
 				</td>
@@ -4029,9 +4029,9 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 			<tr>
 				<td class="descriptionbox"><?php echo WT_Gedcom_Tag::getLabel('LONG'); ?></td>
 				<td class="optionbox" colspan="2">
-					<input type="text" id="NEW_PLACE_LONG" name="NEW_PLACE_LONG" placeholder="<?php echo I18N::translate('degrees') ?>" value="<?php if ($place_long != null) echo abs($place_long); ?>" size="20" onchange="updateMap();">
+					<input type="text" id="NEW_PLACE_LONG" name="NEW_PLACE_LONG" placeholder="<?php echo I18N::translate('degrees') ?>" value="<?php echo abs($place_long); ?>" size="20" onchange="updateMap();">
 					<select name="LONG_CONTROL" onchange="updateMap();">
-						<option value="PL_E" <?php if ($place_long > 0) echo "selected"; echo ">", I18N::translate('east'); ?></option>
+						<option value="PL_E" <?php if ($place_long >= 0) echo "selected"; echo ">", I18N::translate('east'); ?></option>
 						<option value="PL_W" <?php if ($place_long < 0) echo "selected"; echo ">", I18N::translate('west'); ?></option>
 					</select>
 				</td>
