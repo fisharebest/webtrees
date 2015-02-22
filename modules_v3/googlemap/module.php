@@ -1775,7 +1775,7 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 	 *
 	 * @param Individual $individual
 	 *
-	 * @return string
+	 * @return boolean
 	 */
 	private function checkMapData(Individual $individual) {
 		$statement = Database::prepare(
