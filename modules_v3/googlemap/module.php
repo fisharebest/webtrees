@@ -4053,15 +4053,13 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 				</td>
 				<td class="optionbox" colspan="2">
 					<div id="flagsDiv">
-		<?php
-				if (($place_icon == null) || ($place_icon == "")) { ?>
-						<a href="#" onclick="change_icon();return false;"><?php echo I18N::translate('Change flag'); ?></a>
-		<?php   }
-				else { ?>
-						<img alt="<?php echo /* I18N: The emblem of a country or region */ I18N::translate('Flag'); ?>" src="<?php echo WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place_icon; ?>">&nbsp;&nbsp;
-						<a href="#" onclick="change_icon();return false;"><?php echo I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;
-						<a href="#" onclick="remove_icon();return false;"><?php echo I18N::translate('Remove flag'); ?></a>
-		<?php   } ?>
+						<?php if ($place_icon) { ?>
+			<img alt="<?php echo /* I18N: The emblem of a country or region */ I18N::translate('Flag'); ?>" src="<?php echo WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place_icon; ?>">&nbsp;&nbsp;
+			<a href="#" onclick="change_icon();return false;"><?php echo I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;
+			<a href="#" onclick="remove_icon();return false;"><?php echo I18N::translate('Remove flag'); ?></a>
+						<?php } else { ?>
+			<a href="#" onclick="change_icon();return false;"><?php echo I18N::translate('Change flag'); ?></a>
+						<?php } ?>
 					</div>
 					<p class="small text-muted">
 						<?php echo I18N::translate('Here an icon can be set or removed.  Using this link a flag can be selected.  When this geographic location is shown, this flag will be displayed.'); ?>
