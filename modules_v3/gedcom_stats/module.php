@@ -83,7 +83,7 @@ class gedcom_stats_WT_Module extends Module implements ModuleBlockInterface {
 		}
 /** Responsive Design */
 
-	$content .= '<div class="width100"><div class="stat-table1">';
+	$content .= '<div class="stat-table1">';
 		if ($stat_indi) {
 			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Individuals') .    '</div><div class="facts_value stats_value stat-cell"><a href="' . "indilist.php?surname_sublist=no&amp;ged=" . WT_GEDURL . '">' . $stats->totalIndividuals() . '</a></div></div>';
 			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Males') .          '</div><div class="facts_value stats_value stat-cell">' . $stats->totalSexMales() . '<br>' . $stats->totalSexMalesPercentage() . '</a></div></div>';
@@ -177,7 +177,6 @@ class gedcom_stats_WT_Module extends Module implements ModuleBlockInterface {
 			}
 			$content .= '</div></div>';
 		}
-		$content .= '</div>';
 		if ($stat_link) {
 			$content .= '<div class="clearfloat"><a href="statistics.php?ged=' . WT_GEDURL . '"><b>' . I18N::translate('View statistics as graphs') . '</b></a></div>';
 		}

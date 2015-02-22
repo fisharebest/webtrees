@@ -1721,8 +1721,6 @@ a.showit:hover > span {
 }
 
 /* Statistics block */
-#gedcom_stats23 p {margin: 0;}
-
 .stat-table1 {
 	display: table;
 	float: left;
@@ -1753,8 +1751,9 @@ float: right;
 }
 .stat-cell {
 	display: table-cell;
-		vertical-align: middle;
-		text-align: center;
+	vertical-align: middle;
+	text-align: center;
+	white-space: pre-wrap;  
 }
 .left {text-align: left;}
 [dir=rtl] .left {text-align: right;}
