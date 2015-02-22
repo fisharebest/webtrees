@@ -3420,7 +3420,7 @@ table.table-census-assistant th {
 }
 
 #pedigree-page table.list_table {
-	margin: 0 auto 20px;
+	margin: 0 auto;
 	width: 500px;
 }
 
@@ -3433,12 +3433,7 @@ table.table-census-assistant th {
 
 #pedigree_chart {
 	position: relative;
-	left: 0;
-}
-
-[dir=rtl] #pedigree_chart {
-	left: auto;
-	right: 0;
+	margin: 20px auto;
 }
 
 #pedigree_canvas {
@@ -4509,17 +4504,7 @@ footer {
 		border: solid #888 1px;
 		background: #fff;
 	}
-	
-	#pedigree_chart {
-		left: -35px;
-		top:  0;
-	}
-	
-	[dir=rtl] #pedigree_chart {
-		left: auto;
-		right: -20px;
-	}
-	
+
 	#header_accordion1 {
 		width: 510px;
 	}

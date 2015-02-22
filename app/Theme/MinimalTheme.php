@@ -88,7 +88,6 @@ class MinimalTheme extends BaseTheme {
 		$parameters = array(
 			'chart-background-f'             => 'dddddd',
 			'chart-background-m'             => 'cccccc',
-			'chart-spacing-x'                => 0,
 			'distribution-chart-low-values'  => 'cccccc',
 			'distribution-chart-no-values'   => 'ffffff',
 		);
