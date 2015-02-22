@@ -4454,16 +4454,17 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 						}
 					} else {
 						$parent_id = $row->pl_id;
-						if ((isset($_POST['overwritedata'])) && ($i + 1 == count($parent))) {
-							Database::prepare("UPDATE `##placelocation` SET pl_lati=?, pl_long=?, pl_zoom=?, pl_icon=? WHERE pl_id=?")
+						if (Filter::post('overwritedata') && ($i + 1 == count($parent))) {
+							Database::prepare("UPDATE `##placelocation` SET pl_lati = ?, pl_long = ?, pl_zoom = ?, pl_icon = ? WHERE pl_id = ?")
 								->execute(array($place['lati'], $place['long'], $place['zoom'], $place['icon'], $parent_id));
 						} else {
-							if ((($row->pl_long == '0') || ($row->pl_long == null)) && (($row->pl_lati == '0') || ($row->pl_lati == null))) {
-								Database::prepare("UPDATE `##placelocation` SET pl_lati=?, pl_long=? WHERE pl_id=?")
+							// Update only if existing data is missing
+							if (!$row->pl_long && !$row->pl_lati) {
+								Database::prepare("UPDATE `##placelocation` SET pl_lati = ?, pl_long = ? WHERE pl_id = ?")
 									->execute(array($place['lati'], $place['long'], $parent_id));
 							}
-							if (empty($row->pl_icon) && !empty($place['icon'])) {
-								Database::prepare("UPDATE `##placelocation` SET pl_icon=? WHERE pl_id=?")
+							if (!$row->pl_icon && $place['icon']) {
+								Database::prepare("UPDATE `##placelocation` SET pl_icon = ? WHERE pl_id = ?")
 									->execute(array($place['icon'], $parent_id));
 							}
 						}
