@@ -745,7 +745,7 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 
 		// End of internal configuration variables
 		$controller
-			->setPageTitle(/* I18N: %s is an individual’s name */ I18N::translate('Pedigree map of %s', $controller->getPersonName()))
+			->setPageTitle(/* I18N: %s is an individual’s name */ I18N::translate('Pedigree map of %s', $controller->root->getFullName()))
 			->pageHeader()
 			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 			->addInlineJavascript('autocomplete();');
@@ -824,7 +824,7 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 				if ($latlongval[$i]) {
 					$lat[$i] = str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval[$i]->pl_lati);
 					$lon[$i] = str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval[$i]->pl_long);
-					if (($lat[$i] != null) && ($lon[$i] != null)) {
+					if ($lat[$i] && $lon[$i]) {
 						$count++;
 					} else {
 						// The place is in the table but has empty values
@@ -1881,7 +1881,7 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 	/**
 	 * @param string $place
 	 *
-	 * @return null|stdClass
+	 * @return null|\stdClass
 	 */
 	private function getLatitudeAndLongitudeFromPlaceLocation($place) {
 		$parent   = explode(',', $place);
