@@ -29,7 +29,7 @@ require './includes/session.php';
 define('ARROW_WRAPPER', '<div class="ancestorarrow" style="%s:%spx; top:%spx;">');
 define('MENU_WRAPPER', '<div id="childarrow" style="%s:%spx; top:%spx"><div><a href="#" class="menuselect %s"></a><div id="childbox">');
 define('MENU_ITEM', '<a href="pedigree.php?rootid=%s&amp;show_full=%s&amp;PEDIGREE_GENERATIONS=%s&amp;talloffset=%s" class="%s">%s</a>');
-define('BOX_WRAPPER', '<div class="shadow" style="%s:%spx; top:%spx; width:%spx; height:%spx">');
+define('BOX_WRAPPER', '<div class="shadow" style="%s:%spx; top:%spx">');
 
 $controller = new PedigreeController;
 $controller
@@ -91,12 +91,13 @@ $posn = I18N::direction() === 'rtl' ? 'right' : 'left';
 
 echo '<div id="pedigree_chart" class="layout', $controller->orientation, '">';
 //-- echo the boxes
-$curgen      = 1;
-$xoffset     = 0;
-$yoffset     = 0; // -- used to offset the position of each box as it is generated
-$chartHeight  = 0;
-$lineDrawx   = array(); // -- used to position joining lines on <canvas>
-$lineDrawy   = array(); // -- used to position joining lines on <canvas>
+$curgen    = 1;
+$xoffset   = 0;
+$yoffset   = 0; // -- used to offset the position of each box as it is generated
+$lineDrawx = array(); // -- used to position joining lines on <canvas>
+$lineDrawy = array(); // -- used to position joining lines on <canvas>
+$bxspacing = Theme::theme()->parameter('chart-spacing-x');
+$byspacing = Theme::theme()->parameter('chart-spacing-y');
 
 for ($i = ($controller->treesize - 1); $i >= 0; $i--) {
 	// set positions for joining lines
@@ -116,7 +117,6 @@ for ($i = ($controller->treesize - 1); $i >= 0; $i--) {
 		$yoffset = $controller->offsetarray[$i]["x"];
 	}
 	// -- draw the box
-	$chartHeight = max($chartHeight, $yoffset);
 
 	// Can we go back to an earlier generation?
 	$can_go_back = $curgen == 1 && $controller->ancestors[$i] && $controller->ancestors[$i]->getChildFamilies();
@@ -135,7 +135,7 @@ for ($i = ($controller->treesize - 1); $i >= 0; $i--) {
 	}
 	// beginning of box setup and display
 
-	printf(BOX_WRAPPER, $posn, $xoffset, $yoffset, $controller->getBoxDimensions()->width, $controller->getBoxDimensions()->height);
+	printf(BOX_WRAPPER, $posn, $xoffset, $yoffset);
 
 	print_pedigree_person($controller->ancestors[$i], $controller->showFull());
 	if ($can_go_back) {
@@ -149,11 +149,11 @@ for ($i = ($controller->treesize - 1); $i >= 0; $i--) {
 			$arrow = 'icon-rarrow';
 		}
 		if ($controller->orientation === $controller::OLDEST_AT_BOTTOM) {
-			printf(ARROW_WRAPPER, $posn, $controller->getBoxDimensions()->width / 2, $controller->getBoxDimensions()->height + 10);
+			printf(ARROW_WRAPPER, $posn, $controller->getBoxDimensions()->width / 2, $controller->getBoxDimensions()->height + $byspacing);
 			printf(MENU_ITEM, $controller->ancestors[$did]->getXref(), $controller->showFull(), $controller->generations, $controller->orientation, 'icon-darrow noprint', '');
 			echo '</div>';
 		} elseif ($controller->orientation < $controller::OLDEST_AT_TOP) {
-			printf(ARROW_WRAPPER, $posn, $controller->getBoxDimensions()->width + 10, $controller->getBoxDimensions()->height / 2 - 10);
+			printf(ARROW_WRAPPER, $posn, $controller->getBoxDimensions()->width + ($bxspacing * 2), $controller->getBoxDimensions()->height / 2 - $byspacing);
 			printf(MENU_ITEM, $controller->ancestors[$did]->getXref(), $controller->showFull(), $controller->generations, $controller->orientation, "$arrow noprint", '');
 			echo '</div>';
 		}
@@ -161,7 +161,7 @@ for ($i = ($controller->treesize - 1); $i >= 0; $i--) {
 	echo '</div>';
 }
 // -- echo left arrow for decendants so that we can move down the tree
-$yoffset += ($controller->getBoxDimensions()->height / 2) - 10;
+$yoffset += ($controller->getBoxDimensions()->height / 2) - $byspacing;
 $famids = $controller->root->getSpouseFamilies();
 //-- make sure there is more than 1 child in the family with parents
 $cfamids = $controller->root->getChildFamilies();
@@ -174,21 +174,19 @@ if (count($famids) > 0) {
 	}
 	switch ($controller->orientation) {
 		case $controller::PORTRAIT:
-			$offsetx = $controller->generations < 6 ? $offsetx = 60 * (5 - $controller->generations) : 0;
-			$offsety = $yoffset;
-			break;
+			//drop through
 		case $controller::LANDSCAPE:
-			$offsetx = $controller->generations < 4 ? $controller->basexoffset + 60 : $controller->basexoffset;
+			$offsetx = 0;
 			$offsety = $yoffset;
 			break;
 		case $controller::OLDEST_AT_TOP:
-			$offsetx = $xoffset - 10 + $controller->getBoxDimensions()->width / 2;
+			$offsetx = $xoffset + ($controller->getBoxDimensions()->width / 2);
 			$offsety = $yoffset + $controller->getBoxDimensions()->height / 2 + $controller::ARROW_SIZE;
 			$arrow   = 'icon-darrow';
 			break;
 		case $controller::OLDEST_AT_BOTTOM:
-			$offsetx = $xoffset - 10 + $controller->getBoxDimensions()->width / 2;
-			$offsety = $yoffset - $controller->getBoxDimensions()->height / 2 - 10;
+			$offsetx = $xoffset + ($controller->getBoxDimensions()->width / 2);
+			$offsety = $yoffset - $controller->getBoxDimensions()->height / 2 - $byspacing;
 			$arrow   = 'icon-uarrow';
 			break;
 	}
@@ -225,19 +223,18 @@ if (count($famids) > 0) {
 		'</div>',
 		'</div>'; // #childarrow
 }
-// calculate canvas width
+// calculate chart & canvas dimensions
+$max_xoffset = max(array_map(function($item) {return $item['x'];}, $controller->offsetarray));
+$max_yoffset = max(array_map(function($item) {return $item['y'];}, $controller->offsetarray));
 if ($controller->orientation < $controller::OLDEST_AT_TOP) {
-	$canvaswidth = $controller->generations * ($controller->getBoxDimensions()->width + 20);
+	$chartHeight = $max_yoffset + $byspacing + $controller->getBoxDimensions()->height;
+	$chartWidth  = $max_xoffset + $bxspacing + $controller->getBoxDimensions()->width + $controller::ARROW_SIZE;
 } else {
-	$canvaswidth = pow(2, $controller->generations - 1) * ($controller->getBoxDimensions()->width + 20);
-}
-$chartHeight +=  Theme::theme()->parameter('chart-box-y');
-
-if ($controller->orientation === $controller::OLDEST_AT_BOTTOM) {
-	$chartHeight += $controller::ARROW_SIZE;
+	$chartWidth  = $max_yoffset + $bxspacing + $controller->getBoxDimensions()->width;
+	$chartHeight = $max_xoffset + $byspacing + $controller->getBoxDimensions()->height + $controller::ARROW_SIZE;
 }
 
-echo '<canvas id="pedigree_canvas" width="' . (int) ($canvaswidth) . '" height="' . $chartHeight . '"><p>No lines between boxes? Unfortunately your browser does not support the HTML5 canvas feature.</p></canvas>';
+echo '<canvas id="pedigree_canvas" width="' . $chartWidth . '" height="' . $chartHeight . '"><p>No lines between boxes? Unfortunately your browser does not support the HTML5 canvas feature.</p></canvas>';
 echo '</div>'; //close #pedigree_chart
 echo '</div>'; //close #pedigree-page
 
@@ -245,12 +242,14 @@ echo '</div>'; //close #pedigree-page
 $controller->addInlineJavascript('
 	var WT_PEDIGREE_CHART = (function() {
 	jQuery("html").css("overflow","visible"); // workaround for chrome v37 canvas bugs
-	jQuery("#pedigree_chart").height(' . $chartHeight . ');
+	jQuery("#pedigree_chart")
+		.width(' . $chartWidth . ')
+		.height(' . $chartHeight . ');
 	// Draw joining lines in <canvas>
 	// Set variables
 	var textdirection = "' . I18N::direction() . '",
 		orientation = ' . $controller->orientation . ',
-		canvaswidth = ' . ($canvaswidth) . ',
+		canvaswidth = ' . $chartWidth . ',
 		offset_x = 20,
 		offset_y = ' . $controller->getBoxDimensions()->height . '/2+' . Theme::theme()->parameter('line-width') . ',
 		lineDrawx = new Array("' . join(array_reverse($lineDrawx), '","') . '"),

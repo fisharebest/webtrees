@@ -1804,14 +1804,12 @@ background-color: #fff;
 
 /* === Who is online block === */
 .logged_in_list {
-	margin:      5px 0 0;
-	padding:     0;
+	margin: 5px 0 0;
+	padding: 0;
 	line-height: 20px;
 }
 
 /* Statistics block */
-#gedcom_stats23 p {margin: 0;}
-
 .stat-table1 {
 	display: table;
 	float: left;
@@ -1842,8 +1840,9 @@ float: right;
 }
 .stat-cell {
 	display: table-cell;
-		vertical-align: middle;
-		text-align: center;
+	vertical-align: middle;
+	text-align: center;
+	white-space: pre-wrap;  
 }
 .left {text-align: left;}
 [dir=rtl] .left {text-align: right;}
@@ -3496,7 +3495,7 @@ table.table-census-assistant th {
 }
 
 #pedigree-page table.list_table {
-	margin: 0 auto 20px;
+	margin: 0 auto;
 	width: 500px;
 }
 
@@ -3509,12 +3508,7 @@ table.table-census-assistant th {
 
 #pedigree_chart {
 	position: relative;
-	left: 0;
-}
-
-[dir=rtl] #pedigree_chart {
-	left: auto;
-	right: 0;
+	margin: 20px auto;
 }
 
 #pedigree_canvas {
@@ -5340,16 +5334,6 @@ footer .error {
 
 	#content {
 		padding: 0;
-	}
-
-	#pedigree_chart {
-		left: -40px;
-		top:  0;
-	}
-
-	[dir=rtl] #pedigree_chart {
-		left: auto;
-		right: -20px;
 	}
 
 	#header_accordion1 {

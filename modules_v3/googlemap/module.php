@@ -745,7 +745,7 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 
 		// End of internal configuration variables
 		$controller
-			->setPageTitle(/* I18N: %s is an individual’s name */ I18N::translate('Pedigree map of %s', $controller->getPersonName()))
+			->setPageTitle(/* I18N: %s is an individual’s name */ I18N::translate('Pedigree map of %s', $controller->root->getFullName()))
 			->pageHeader()
 			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 			->addInlineJavascript('autocomplete();');
@@ -824,7 +824,7 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 				if ($latlongval[$i]) {
 					$lat[$i] = str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval[$i]->pl_lati);
 					$lon[$i] = str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval[$i]->pl_long);
-					if (($lat[$i] != null) && ($lon[$i] != null)) {
+					if ($lat[$i] && $lon[$i]) {
 						$count++;
 					} else {
 						// The place is in the table but has empty values
@@ -1775,7 +1775,7 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 	 *
 	 * @param Individual $individual
 	 *
-	 * @return string
+	 * @return boolean
 	 */
 	private function checkMapData(Individual $individual) {
 		$statement = Database::prepare(
@@ -1881,7 +1881,7 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 	/**
 	 * @param string $place
 	 *
-	 * @return null|stdClass
+	 * @return null|\stdClass
 	 */
 	private function getLatitudeAndLongitudeFromPlaceLocation($place) {
 		$parent   = explode(',', $place);
@@ -2680,27 +2680,17 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 				$pl_long = str_replace(array('E', 'W', ','), array('', '-', '.'), $latlng['pl_long']); // WT_placelocation long
 
 				// Check if Streetview location parameters are stored in database
-				$placeid	= $latlng['pl_id']; // Placelocation place id
-				$sv_lat		= $latlng['sv_lati']; // StreetView Point of View Latitude
-				$sv_lng		= $latlng['sv_long']; // StreetView Point of View Longitude
-				$sv_dir		= $latlng['sv_bearing']; // StreetView Point of View Direction (degrees from North)
+				$placeid  = $latlng['pl_id']; // Placelocation place id
+				$sv_lat   = $latlng['sv_lati']; // StreetView Point of View Latitude
+				$sv_lng   = $latlng['sv_long']; // StreetView Point of View Longitude
+				$sv_dir   = $latlng['sv_bearing']; // StreetView Point of View Direction (degrees from North)
 				$sv_pitch = $latlng['sv_elevation']; // StreetView Point of View Elevation (+90 to -90 degrees (+=down, -=up)
-				$sv_zoom	= $latlng['sv_zoom']; // StreetView Point of View Zoom (0, 1, 2 or 3)
+				$sv_zoom  = $latlng['sv_zoom']; // StreetView Point of View Zoom (0, 1, 2 or 3)
 
-				// Check if Street View Lati/Long are the default of 0 or null, if so use regular Place Lati/Long to set an initial location for the panda ------------
-				if (($latlng['sv_lati'] == null && $latlng['sv_long'] == null) || ($latlng['sv_lati'] == 0 && $latlng['sv_long'] == 0)) {
+				// Check if Street View Lati/Long are the default of 0, if so use regular Place Lati/Long to set an initial location for the panda
+				if ($latlng['sv_lati'] == 0 && $latlng['sv_long'] == 0) {
 						$sv_lat = $pl_lati;
 						$sv_lng = $pl_long;
-				}
-				// Set Street View parameters to numeric value if NULL (avoids problem with Google Street View™ Pane not rendering)
-				if ($sv_dir == null) {
-					$sv_dir = 0;
-				}
-				if ($sv_pitch == null) {
-					$sv_pitch = 0;
-				}
-				if ($sv_zoom == null) {
-					$sv_zoom = 1;
 				}
 
 				?>
@@ -2788,7 +2778,7 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 	 * @param boolean  $lastlevel
 	 */
 	private function printGoogleMapMarkers($place2, $level, $parent, $levelm, $linklevels, $placelevels, $lastlevel = false) {
-		if (($place2['lati'] == null) || ($place2['long'] == null) || (($place2['lati'] == '0') && ($place2['long'] == '0'))) {
+		if (!$place2['lati'] || !$place2['long']) {
 			echo 'var icon_type = new google.maps.MarkerImage();';
 			echo 'icon_type.image = "', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/marker_yellow.png";';
 			echo 'icon_type.shadow = "', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/shadow50.png";';
@@ -4029,9 +4019,9 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 			<tr>
 				<td class="descriptionbox"><?php echo WT_Gedcom_Tag::getLabel('LATI'); ?></td>
 				<td class="optionbox" colspan="2">
-					<input type="text" id="NEW_PLACE_LATI" name="NEW_PLACE_LATI" placeholder="<?php echo /* I18N: Measure of latitude/longitude */ I18N::translate('degrees') ?>" value="<?php if ($place_lati != null) echo abs($place_lati); ?>" size="20" onchange="updateMap();">
+					<input type="text" id="NEW_PLACE_LATI" name="NEW_PLACE_LATI" placeholder="<?php echo /* I18N: Measure of latitude/longitude */ I18N::translate('degrees') ?>" value="<?php echo abs($place_lati); ?>" size="20" onchange="updateMap();">
 					<select name="LATI_CONTROL" onchange="updateMap();">
-						<option value="PL_N" <?php if ($place_lati > 0) echo "selected"; echo ">", I18N::translate('north'); ?></option>
+						<option value="PL_N" <?php if ($place_lati >= 0) echo "selected"; echo ">", I18N::translate('north'); ?></option>
 						<option value="PL_S" <?php if ($place_lati < 0) echo "selected"; echo ">", I18N::translate('south'); ?></option>
 					</select>
 				</td>
@@ -4039,9 +4029,9 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 			<tr>
 				<td class="descriptionbox"><?php echo WT_Gedcom_Tag::getLabel('LONG'); ?></td>
 				<td class="optionbox" colspan="2">
-					<input type="text" id="NEW_PLACE_LONG" name="NEW_PLACE_LONG" placeholder="<?php echo I18N::translate('degrees') ?>" value="<?php if ($place_long != null) echo abs($place_long); ?>" size="20" onchange="updateMap();">
+					<input type="text" id="NEW_PLACE_LONG" name="NEW_PLACE_LONG" placeholder="<?php echo I18N::translate('degrees') ?>" value="<?php echo abs($place_long); ?>" size="20" onchange="updateMap();">
 					<select name="LONG_CONTROL" onchange="updateMap();">
-						<option value="PL_E" <?php if ($place_long > 0) echo "selected"; echo ">", I18N::translate('east'); ?></option>
+						<option value="PL_E" <?php if ($place_long >= 0) echo "selected"; echo ">", I18N::translate('east'); ?></option>
 						<option value="PL_W" <?php if ($place_long < 0) echo "selected"; echo ">", I18N::translate('west'); ?></option>
 					</select>
 				</td>
@@ -4063,15 +4053,13 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 				</td>
 				<td class="optionbox" colspan="2">
 					<div id="flagsDiv">
-		<?php
-				if (($place_icon == null) || ($place_icon == "")) { ?>
-						<a href="#" onclick="change_icon();return false;"><?php echo I18N::translate('Change flag'); ?></a>
-		<?php   }
-				else { ?>
-						<img alt="<?php echo /* I18N: The emblem of a country or region */ I18N::translate('Flag'); ?>" src="<?php echo WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place_icon; ?>">&nbsp;&nbsp;
-						<a href="#" onclick="change_icon();return false;"><?php echo I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;
-						<a href="#" onclick="remove_icon();return false;"><?php echo I18N::translate('Remove flag'); ?></a>
-		<?php   } ?>
+						<?php if ($place_icon) { ?>
+			<img alt="<?php echo /* I18N: The emblem of a country or region */ I18N::translate('Flag'); ?>" src="<?php echo WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place_icon; ?>">&nbsp;&nbsp;
+			<a href="#" onclick="change_icon();return false;"><?php echo I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;
+			<a href="#" onclick="remove_icon();return false;"><?php echo I18N::translate('Remove flag'); ?></a>
+						<?php } else { ?>
+			<a href="#" onclick="change_icon();return false;"><?php echo I18N::translate('Change flag'); ?></a>
+						<?php } ?>
 					</div>
 					<p class="small text-muted">
 						<?php echo I18N::translate('Here an icon can be set or removed.  Using this link a flag can be selected.  When this geographic location is shown, this flag will be displayed.'); ?>
@@ -4466,16 +4454,17 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 						}
 					} else {
 						$parent_id = $row->pl_id;
-						if ((isset($_POST['overwritedata'])) && ($i + 1 == count($parent))) {
-							Database::prepare("UPDATE `##placelocation` SET pl_lati=?, pl_long=?, pl_zoom=?, pl_icon=? WHERE pl_id=?")
+						if (Filter::post('overwritedata') && ($i + 1 == count($parent))) {
+							Database::prepare("UPDATE `##placelocation` SET pl_lati = ?, pl_long = ?, pl_zoom = ?, pl_icon = ? WHERE pl_id = ?")
 								->execute(array($place['lati'], $place['long'], $place['zoom'], $place['icon'], $parent_id));
 						} else {
-							if ((($row->pl_long == '0') || ($row->pl_long == null)) && (($row->pl_lati == '0') || ($row->pl_lati == null))) {
-								Database::prepare("UPDATE `##placelocation` SET pl_lati=?, pl_long=? WHERE pl_id=?")
+							// Update only if existing data is missing
+							if (!$row->pl_long && !$row->pl_lati) {
+								Database::prepare("UPDATE `##placelocation` SET pl_lati = ?, pl_long = ? WHERE pl_id = ?")
 									->execute(array($place['lati'], $place['long'], $parent_id));
 							}
-							if (empty($row->pl_icon) && !empty($place['icon'])) {
-								Database::prepare("UPDATE `##placelocation` SET pl_icon=? WHERE pl_id=?")
+							if (!$row->pl_icon && $place['icon']) {
+								Database::prepare("UPDATE `##placelocation` SET pl_icon = ? WHERE pl_id = ?")
 									->execute(array($place['icon'], $parent_id));
 							}
 						}
@@ -4578,15 +4567,14 @@ class googlemap_WT_Module extends Module implements ModuleConfigInterface, Modul
 			echo '<td>', $place['long'], '</td>';
 			echo '<td>', $place['zoom'], '</td>';
 			echo '<td>';
-			if (($place['icon'] == null) || ($place['icon'] == '')) {
-				if (($place['lati'] == null) || ($place['long'] == null) || (($place['lati'] == '0') && ($place['long'] == '0'))) {
+			if ($place['icon']) {
+				echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place['icon'], '" width="25" height="15">';
+			} else {
+				if ($place['lati'] || $place['long']) {
+					echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/mm_20_red.png">';
+				} else {
 					echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/mm_20_yellow.png">';
 				}
-				else {
-					echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/mm_20_red.png">';
-				}
-			} else {
-				echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place['icon'], '" width="25" height="15">';
 			}
 			echo '</td>';
 			echo '<td class="narrow"><a href="#" onclick="edit_place_location(', $place['place_id'], ');return false;" class="icon-edit" title="', I18N::translate('Edit'), '"></a></td>';

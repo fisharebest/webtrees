@@ -50,6 +50,7 @@ class tree_WT_Module extends Module implements ModuleTabInterface {
 		list($html, $js) = $tv->drawViewport($controller->record, 3);
 		return
 			'<script src="' . $this->js() . '"></script>' .
+			'<script src="' . WT_JQUERYUI_TOUCH_PUNCH_URL . '"></script>' .
 			'<script>' . $js . '</script>' .
 			$html;
 	}
@@ -104,6 +105,7 @@ class tree_WT_Module extends Module implements ModuleTabInterface {
 				->setPageTitle(I18N::translate('Interactive tree of %s', $person->getFullName()))
 				->pageHeader()
 				->addExternalJavascript($this->js())
+				->addExternalJavascript(WT_JQUERYUI_TOUCH_PUNCH_URL)
 				->addInlineJavascript($js)
 				->addInlineJavascript('
 					if (document.createStyleSheet) {
