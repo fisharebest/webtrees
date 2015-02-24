@@ -2162,43 +2162,6 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 }
 
 /**
- * get theme names
- *
- * function to get the names of all of the themes as an array
- * it searches the themes folder and reads the name from the theme_name variable
- * in the theme.php file.
- *
- * @throws \Exception
- *
- * @return string[] An array of theme names and their corresponding folder
- */
-function get_theme_names() {
-	static $themes;
-
-	if ($themes === null) {
-		$themes = array();
-		$d = dir(WT_ROOT . WT_THEMES_DIR);
-		while (false !== ($folder = $d->read())) {
-			if ($folder[0] !== '.' && $folder[0] !== '_' && is_dir(WT_ROOT . WT_THEMES_DIR . $folder) && file_exists(WT_ROOT . WT_THEMES_DIR . $folder . '/theme.php')) {
-				$themefile = implode('', file(WT_ROOT . WT_THEMES_DIR . $folder . '/theme.php'));
-				if (preg_match('/theme_name\s*=\s*"(.*)";/', $themefile, $match)) {
-					$theme_name = I18N::translate($match[1]);
-					if (array_key_exists($theme_name, $themes)) {
-						throw new \Exception('More than one theme with the same name: ' . $theme_name);
-					} else {
-						$themes[$theme_name] = $folder;
-					}
-				}
-			}
-		}
-		$d->close();
-		uksort($themes, __NAMESPACE__ . '\I18N::strcasecmp');
-	}
-
-	return $themes;
-}
-
-/**
  * Function to build an URL querystring from GET variables
  * Optionally, add/replace specified values
  *
