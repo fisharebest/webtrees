@@ -295,7 +295,7 @@ case 'general':
 	$WT_TREE->setPreference('SHOW_PARENTS_AGE', Filter::postBool('SHOW_PARENTS_AGE'));
 	$WT_TREE->setPreference('SHOW_PEDIGREE_PLACES', Filter::post('SHOW_PEDIGREE_PLACES'));
 	$WT_TREE->setPreference('SHOW_PEDIGREE_PLACES_SUFFIX', Filter::postBool('SHOW_PEDIGREE_PLACES_SUFFIX'));
-	$WT_TREE->setPreference('SHOW_RELATIVES_EVENTS', implode(',', Filter::post('SHOW_RELATIVES_EVENTS')));
+	$WT_TREE->setPreference('SHOW_RELATIVES_EVENTS', implode(',', Filter::postArray('SHOW_RELATIVES_EVENTS')));
 	$WT_TREE->setPreference('SHOW_STATS', Filter::postBool('SHOW_STATS'));
 	$WT_TREE->setPreference('SOURCE_ID_PREFIX', Filter::post('SOURCE_ID_PREFIX'));
 	$WT_TREE->setPreference('SOUR_FACTS_ADD', str_replace(' ', '', Filter::post('SOUR_FACTS_ADD')));
