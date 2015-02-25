@@ -564,7 +564,6 @@ class Tree {
 			$tree->setPreference('SURNAME_TRADITION', 'paternal');
 			break;
 		}
-		$tree->setPreference('THEME_DIR', 'webtrees');
 		$tree->setPreference('THUMBNAIL_WIDTH', '100');
 		$tree->setPreference('USE_RIN', '0');
 		$tree->setPreference('USE_SILHOUETTE', '1');
