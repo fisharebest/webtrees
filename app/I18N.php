@@ -156,7 +156,7 @@ class I18N {
 	);
 
 	/** @var string the name of the current locale, such as fr or en_GB */
-	public static $locale;
+	private static $locale;
 
 	/** @var string The MySQL collation sequence used by this language, typically utf8_unicode_ci */
 	public static $collation;
