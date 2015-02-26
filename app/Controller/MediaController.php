@@ -43,7 +43,7 @@ class MediaController extends GedcomRecordController {
 
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new Menu(I18N::translate('Edit media object'), '#', 'menu-obje-edit');
-			$submenu->setOnclick("window.open('addmedia.php?action=editmedia&pid={$this->record->getXref()}', '_blank', edit_window_specs)");
+			$submenu->setOnclick("window.open('addmedia.php?action=editmedia&amp;pid={$this->record->getXref()}', '_blank', edit_window_specs)");
 			$menu->addSubmenu($submenu);
 
 			// main link displayed on page
@@ -69,7 +69,7 @@ class MediaController extends GedcomRecordController {
 		// delete
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new Menu(I18N::translate('Delete'), '#', 'menu-obje-del');
-			$submenu->setOnclick("return delete_media('" . I18N::translate('Are you sure you want to delete “%s”?', strip_tags($this->record->getFullName())) . "', '" . $this->record->getXref() . "');");
+			$submenu->setOnclick("return delete_media('" . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJS(Filter::unescapeHtml($this->record->getFullName()))) . "', '" . $this->record->getXref() . "');");
 			$menu->addSubmenu($submenu);
 		}
 

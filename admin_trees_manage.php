@@ -389,7 +389,7 @@ $controller->pageHeader();
 							<!-- DELETE -->
 							<li>
 								<i class="fa fa-li fa-trash-o"></i>
-								<a href="#" onclick="if (confirm('<?php echo Filter::escapeJs(I18N::translate('Are you sure you want to delete “%s”?', $tree->getNameHtml())); ?>')) { document.delete_form<?php echo $tree->getTreeId(); ?>.submit(); } return false;">
+								<a href="#" onclick="if (confirm('<?php echo I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs($tree->getTitle())); ?>')) { document.delete_form<?php echo $tree->getTreeId(); ?>.submit(); } return false;">
 									<?php echo I18N::translate('Delete'); ?>
 									<span class="sr-only">
 										<?php echo $tree->getTitleHtml(); ?>
@@ -400,7 +400,7 @@ $controller->pageHeader();
 									<input type="hidden" name="gedcom_id" value="<?php echo $tree->getTreeId(); ?>">
 									<?php echo Filter::getCsrf(); ?>
 									<!-- A11Y - forms need submit buttons, but they look ugly here -->
-									<button class="sr-only" onclick="return confirm('<?php echo Filter::escapeJs(I18N::translate('Are you sure you want to delete “%s”?', $tree->getTitleHtml())); ?>')" type="submit">
+									<button class="sr-only" onclick="return confirm('<?php echo I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs($tree->getTitle())); ?>')" type="submit">
 										<?php echo I18N::translate('Delete'); ?>
 									</button>
 								</form>
