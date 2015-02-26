@@ -177,7 +177,6 @@ class yahrzeit_WT_Module extends Module implements ModuleBlockInterface {
 
 					// death/yahrzeit event date
 					$content .= '<td>' . $yahrzeit->getDate()->display() . '</td>';
-					$content .= '<td>' . $yahrzeit->getDate()->display() . '</td>';
 					$content .= '<td>' . $yahrzeit->getDate()->minJD() . '</td>'; // sortable date
 
 					// Anniversary
