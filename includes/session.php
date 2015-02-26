@@ -489,7 +489,7 @@ if ($WT_TREE) {
 
 // With no parameters, init() looks to the environment to choose a language
 define('WT_LOCALE', I18N::init());
-$WT_SESSION->locale = I18N::$locale;
+$WT_SESSION->locale = WT_LOCALE;
 
 if (empty($WEBTREES_EMAIL)) {
 	$WEBTREES_EMAIL = 'webtrees-noreply@' . preg_replace('/^www\./i', '', $_SERVER['SERVER_NAME']);
