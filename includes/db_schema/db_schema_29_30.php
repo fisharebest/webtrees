@@ -37,5 +37,13 @@ Database::exec(
 	" WHERE user_agent_pattern='Mozilla/5.0 (compatible; Konqueror/%'"
 );
 
+// Embedded variables are based on function names - which were renamed for PSR2
+Database::exec(
+	"UPDATE `##block_setting` " .
+	" JOIN `##block` USING (block_id)" .
+	" SET setting_value = REPLACE(setting_value, '#WT_VERSION#', '#webtreesVersion#')" .
+	" WHERE setting_name = 'html' AND module_name = 'html'"
+);
+
 // Update the version to indicate success
 Site::setPreference($schema_name, $next_version);

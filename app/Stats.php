@@ -176,7 +176,7 @@ class Stats {
 	/**
 	 * @return integer
 	 */
-	public function gedcomID() {
+	public function gedcomId() {
 		return $this->tree->getTreeId();
 	}
 
@@ -268,7 +268,7 @@ class Stats {
 	/**
 	 * @return string
 	 */
-	public function gedcomRootID() {
+	public function gedcomRootId() {
 		return $this->tree->getPreference('PEDIGREE_ROOT_ID');
 	}
 
@@ -5473,7 +5473,7 @@ class Stats {
 	/**
 	 * @return null|string
 	 */
-	public function userID() {
+	public function userId() {
 		return Auth::id();
 	}
 
@@ -5690,7 +5690,7 @@ class Stats {
 	/**
 	 * @return string
 	 */
-	public function WT_VERSION() {
+	public function webtreesVersion() {
 		return WT_VERSION;
 	}
 
