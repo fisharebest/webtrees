@@ -206,10 +206,14 @@ class Menu {
 	/**
 	 * Add a submenu to this menu
 	 *
-	 * @param Menu[]
+	 * @param Menu $menu
+	 *
+	 * @return $this
 	 */
 	public function addSubmenu($menu) {
 		$this->submenus[] = $menu;
+
+		return $this;
 	}
 
 	/**
