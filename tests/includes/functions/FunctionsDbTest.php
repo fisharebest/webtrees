@@ -40,15 +40,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test that function exists_pending_change() exists in the correct namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionExistsPendingChangeExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\exists_pending_change'), true);
-	}
-
-	/**
 	 * Test that function get_source_list() exists in the correct namespace.
 	 *
 	 * @return void

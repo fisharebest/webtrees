@@ -607,6 +607,20 @@ class Tree {
 	}
 
 	/**
+	 * Are there any pending edits for this tree, than need reviewing by a moderator.
+	 *
+	 * @return bool
+	 */
+	public function hasPendingEdit() {
+		return (bool) Database::prepare(
+			"SELECT 1 FROM `##change` WHERE status = 'pending' AND gedcom_id = :tree_id"
+		)->execute(array(
+			'tree_id' => $this->tree_id
+		))->fetchOne();
+	}
+
+
+	/**
 	 * Delete all the genealogy data from a tree - in preparation for importing
 	 * new data.  Optionally retain the media data, for when the user has been
 	 * editing their data offline using an application which deletes (or does not

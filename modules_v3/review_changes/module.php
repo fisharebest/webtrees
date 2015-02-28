@@ -32,7 +32,7 @@ class review_changes_WT_Module extends Module implements ModuleBlockInterface {
 
 	/** {@inheritdoc} */
 	public function getBlock($block_id, $template = true, $cfg = null) {
-		global $ctype;
+		global $ctype, $WT_TREE;
 
 		$sendmail = get_block_setting($block_id, 'sendmail', '1');
 		$days     = get_block_setting($block_id, 'days', '1');
@@ -60,7 +60,7 @@ class review_changes_WT_Module extends Module implements ModuleBlockInterface {
 				foreach (User::all() as $user) {
 					if ($user->getPreference('contactmethod') !== 'none') {
 						foreach (Tree::getAll() as $tree) {
-							if (exists_pending_change($user, $tree)) {
+							if ($tree->hasPendingEdit() && Auth::isManager($tree, $user)) {
 								I18N::init($user->getPreference('language'));
 								Mail::systemMessage(
 									$tree,
@@ -78,10 +78,10 @@ class review_changes_WT_Module extends Module implements ModuleBlockInterface {
 				Site::setPreference('LAST_CHANGE_EMAIL', WT_TIMESTAMP);
 			}
 		}
-		if (WT_USER_CAN_EDIT) {
+		if (Auth::isEditor($WT_TREE) && $WT_TREE->hasPendingEdit()) {
 			$id = $this->getName() . $block_id;
 			$class = $this->getName() . '_block';
-			if ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype === 'user' && Auth::check()) {
+			if ($ctype === 'user' || Auth::isManager($WT_TREE)) {
 				$title = '<i class="icon-admin" title="' . I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
 			} else {
 				$title = '';
@@ -89,13 +89,14 @@ class review_changes_WT_Module extends Module implements ModuleBlockInterface {
 			$title .= $this->getTitle();
 
 			$content = '';
-			if (WT_USER_CAN_ACCEPT) {
+			if (Auth::isModerator($WT_TREE)) {
 				$content .= "<a href=\"#\" onclick=\"window.open('edit_changes.php','_blank', chan_window_specs); return false;\">" . I18N::translate('There are pending changes for you to moderate.') . "</a><br>";
 			}
 			if ($sendmail == "yes") {
 				$content .= I18N::translate('Last email reminder was sent ') . format_timestamp(Site::getPreference('LAST_CHANGE_EMAIL')) . "<br>";
 				$content .= I18N::translate('Next email reminder will be sent after ') . format_timestamp(Site::getPreference('LAST_CHANGE_EMAIL') + (60 * 60 * 24 * $days)) . "<br><br>";
 			}
+			$content .= '<ul>';
 			$changes = Database::prepare(
 				"SELECT xref" .
 				" FROM  `##change`" .
@@ -106,12 +107,10 @@ class review_changes_WT_Module extends Module implements ModuleBlockInterface {
 			foreach ($changes as $change) {
 				$record = GedcomRecord::getInstance($change->xref);
 				if ($record->canShow()) {
-					$content .= '<b>' . $record->getFullName() . '</b>';
-					$content .= $block ? '<br>' : ' ';
-					$content .= '<a href="' . $record->getHtmlUrl() . '">' . I18N::translate('View the changes') . '</a>';
-					$content .= '<br>';
+					$content .= '<li><a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a></li>';
 				}
 			}
+			$content .= '</ul>';
 
 			if ($template) {
 				if ($block) {
