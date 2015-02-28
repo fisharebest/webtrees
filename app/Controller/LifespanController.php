@@ -64,7 +64,7 @@ class LifespanController extends PageController {
 	 * Startup activity
 	 */
 	public function __construct() {
-		global $WT_SESSION;
+		global $WT_SESSION, $WT_TREE;
 
 		parent::__construct();
 		$this->setPageTitle(I18N::translate('Lifespans'));
@@ -98,7 +98,7 @@ class LifespanController extends PageController {
 			$this->pids = $pids;
 		} elseif ($place) {
 			// All records found in a place
-			$wt_place    = new Place($place, $new_person->getTree());
+			$wt_place    = new Place($place, $WT_TREE);
 			$this->pids  = Database::prepare(
 				"SELECT DISTINCT pl_gid FROM `##placelinks` WHERE pl_p_id = ? AND pl_file = ?"
 			)->execute(array($wt_place->getPlaceId(), WT_GED_ID))->fetchOneColumn();
