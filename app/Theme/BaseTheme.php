@@ -1572,24 +1572,15 @@ abstract class BaseTheme {
 	 * @return Menu|null
 	 */
 	protected function menuReports() {
-		$active_reports = Module::getActiveReports();
-
-		if (Auth::isSearchEngine() || !$active_reports) {
-			return new Menu(I18N::translate('Reports'), '#', 'menu-report');
-		}
-
-		$menu = new Menu(I18N::translate('Reports'), 'reportengine.php?' . $this->tree_url, 'menu-report');
-
-		$sub_menu = false;
-		foreach ($active_reports as $report) {
+		$submenus = array();
+		foreach (Module::getActiveReports() as $report) {
 			foreach ($report->getReportMenus() as $submenu) {
-				$menu->addSubmenu($submenu);
-				$sub_menu = true;
+				$submenus[] = $submenu;
 			}
 		}
 
-		if ($sub_menu && !Auth::isSearchEngine()) {
-			return $menu;
+		if ($submenus) {
+			return new Menu(I18N::translate('Reports'), 'reportengine.php?' . $this->tree_url, 'menu-report', null, $submenus);
 		} else {
 			return null;
 		}
