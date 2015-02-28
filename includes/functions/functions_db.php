@@ -38,24 +38,6 @@ function fetch_all_links($xref, $gedcom_id) {
 }
 
 /**
- * Find out if there are any pending changes that a given user may accept.
- *
- * @param User $user
- * @param Tree $tree
- *
- * @return boolean
- */
-function exists_pending_change(User $user, Tree $tree) {
-	return
-		$tree->canAcceptChanges($user) &&
-		Database::prepare(
-			"SELECT 1 FROM `##change` WHERE status = 'pending' AND gedcom_id = :tree_id"
-		)->execute(array(
-			'tree_id' => $tree->getTreeId()
-		))->fetchOne();
-}
-
-/**
  * Get a list of all the sources.
  *
  * @param integer $ged_id

@@ -1795,7 +1795,7 @@ abstract class BaseTheme {
 	 * @return bool
 	 */
 	protected function pendingChangesExist() {
-		return $this->tree && exists_pending_change(Auth::user(), $this->tree);
+		return $this->tree && $this->tree->hasPendingEdit() && Auth::isManager($this->tree);
 	}
 
 	/**
