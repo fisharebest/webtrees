@@ -85,7 +85,7 @@ if ($controller->record && $controller->record->canShow()) {
 
 <table id="family-table" align="center" width="95%">
 	<tr valign="top">
-		<td valign="top" style="width: <?php echo $pbwidth + 30; ?>px;"><!--//List of children//-->
+		<td valign="top" style="width: <?php echo Theme::theme()->parameter('chart-box-x') + 30; ?>px;"><!--//List of children//-->
 			<?php print_family_children($controller->record); ?>
 		</td>
 		<td> <!--//parents pedigree chart and Family Details//-->
