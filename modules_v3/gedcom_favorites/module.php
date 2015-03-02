@@ -151,7 +151,7 @@ class gedcom_favorites_WT_Module extends Module implements ModuleBlockInterface 
 							if ($ctype == 'user' || WT_USER_GEDCOM_ADMIN) {
 								$content .= $removeFavourite;
 							}
-							$content .= $record->format_list('span');
+							$content .= $record->formatList('span');
 							$content .= '<br>' . $favorite['note'];
 							$content .= '</div>';
 						}

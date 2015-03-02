@@ -742,7 +742,7 @@ class GedcomRecord {
 	 *
 	 * @return string
 	 */
-	public function format_list($tag = 'li', $find = false, $name = null) {
+	public function formatList($tag = 'li', $find = false, $name = null) {
 		if (is_null($name)) {
 			$name = $this->getFullName();
 		}
@@ -774,7 +774,7 @@ class GedcomRecord {
 	 *
 	 * @return string
 	 */
-	public function format_first_major_fact($facts, $style) {
+	public function formatFirstMajorFact($facts, $style) {
 		foreach ($this->getFacts($facts, true) as $event) {
 			// Only display if it has a date or place (or both)
 			if ($event->getDate()->isOK() || !$event->getPlace()->isEmpty()) {

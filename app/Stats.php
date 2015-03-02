@@ -1273,7 +1273,7 @@ class Stats {
 		default:
 		case 'full':
 			if ($record->canShow()) {
-				$result = $record->format_list('span', false, $record->getFullName());
+				$result = $record->formatList('span', false, $record->getFullName());
 			} else {
 				$result = I18N::translate('This information is private and cannot be shown.');
 			}
@@ -2031,7 +2031,7 @@ class Stats {
 		default:
 		case 'full':
 			if ($person->canShowName()) {
-				$result = $person->format_list('span', false, $person->getFullName());
+				$result = $person->formatList('span', false, $person->getFullName());
 			} else {
 				$result = I18N::translate('This information is private and cannot be shown.');
 			}
@@ -2651,7 +2651,7 @@ class Stats {
 		default:
 		case 'full':
 			if ($record->canShow()) {
-				$result = $record->format_list('span', false, $record->getFullName());
+				$result = $record->formatList('span', false, $record->getFullName());
 			} else {
 				$result = I18N::translate('This information is private and cannot be shown.');
 			}
@@ -2804,7 +2804,7 @@ class Stats {
 		default:
 		case 'full':
 			if ($family->canShow()) {
-				$result = $family->format_list('span', false, $person->getFullName());
+				$result = $family->formatList('span', false, $person->getFullName());
 			} else {
 				$result = I18N::translate('This information is private and cannot be shown.');
 			}
@@ -2921,7 +2921,7 @@ class Stats {
 		foreach ($rows as $fam => $age) {
 			$family = Family::getInstance($fam, $this->tree->getTreeId());
 			if ($type === 'name') {
-				return $family->format_list('span', false, $family->getFullName());
+				return $family->formatList('span', false, $family->getFullName());
 			}
 			if ((int) ($age / 365.25) > 0) {
 				$age = (int) ($age / 365.25) . 'y';
@@ -3094,7 +3094,7 @@ class Stats {
 		default:
 		case 'full':
 			if ($person->canShow()) {
-				$result = $person->format_list('span', false, $person->getFullName());
+				$result = $person->formatList('span', false, $person->getFullName());
 			} else {
 				$result = I18N::translate('This information is private and cannot be shown.');
 			}
@@ -3948,7 +3948,7 @@ class Stats {
 		default:
 		case 'full':
 			if ($family->canShow()) {
-				$result = $family->format_list('span', false, $family->getFullName());
+				$result = $family->formatList('span', false, $family->getFullName());
 			} else {
 				$result = I18N::translate('This information is private and cannot be shown.');
 			}
@@ -4117,9 +4117,9 @@ class Stats {
 				}
 			} else {
 				if ($child1->canShow() && $child2->canShow()) {
-					$return = $child2->format_list('span', false, $child2->getFullName());
+					$return = $child2->formatList('span', false, $child2->getFullName());
 					$return .= "<br>" . I18N::translate('and') . "<br>";
-					$return .= $child1->format_list('span', false, $child1->getFullName());
+					$return .= $child1->formatList('span', false, $child1->getFullName());
 					$return .= "<br><a href=\"" . $family->getHtmlUrl() . "\">[" . I18N::translate('View family') . "]</a>";
 					return $return;
 				} else {

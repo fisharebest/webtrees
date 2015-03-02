@@ -379,7 +379,7 @@ class Family extends GedcomRecord {
 	/** {@inheritdoc} */
 	function formatListDetails() {
 		return
-			$this->format_first_major_fact(WT_EVENTS_MARR, 1) .
-			$this->format_first_major_fact(WT_EVENTS_DIV, 1);
+			$this->formatFirstMajorFact(WT_EVENTS_MARR, 1) .
+			$this->formatFirstMajorFact(WT_EVENTS_DIV, 1);
 	}
 }

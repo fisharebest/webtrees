@@ -2239,7 +2239,7 @@ case 'reorder_fams':
 		<?php foreach ($fams as $n=>$family) { ?>
 			<li class="facts_value" style="cursor:move;margin-bottom:2px;" id="li_<?php echo $family->getXref(); ?>">
 				<div class="name2"><?php echo $family->getFullName(); ?></div>
-				<?php echo $family->format_first_major_fact(WT_EVENTS_MARR, 2); ?>
+				<?php echo $family->formatFirstMajorFact(WT_EVENTS_MARR, 2); ?>
 				<input type="hidden" name="order[<?php echo $family->getXref(); ?>]" value="<?php echo $n; ?>">
 			</li>
 		<?php } ?>

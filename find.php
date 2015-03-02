@@ -489,7 +489,7 @@ if ($action == "filter") {
 			echo '<ul>';
 			usort($myindilist, __NAMESPACE__ . '\GedcomRecord::compare');
 			foreach ($myindilist as $indi) {
-				echo $indi->format_list('li', true);
+				echo $indi->formatList('li', true);
 			}
 			echo '</ul>
 			<p>', I18N::translate('Total individuals: %s', count($myindilist)), '</p>';
