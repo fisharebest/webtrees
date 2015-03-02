@@ -192,7 +192,9 @@ abstract class Module {
 			foreach ($module_names as $module_name) {
 				try {
 					$module = include WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php';
-					$modules[$module->getName()] = $module;
+					if ($module instanceof Module) {
+						$modules[$module->getName()] = $module;
+					}
 				} catch (\ErrorException $ex) {
 					// Module has been deleted or is broken?  Disable it.
 					Log::addConfigurationLog("Module {$module_name} is missing or broken - disabling it");
@@ -369,15 +371,16 @@ abstract class Module {
 		foreach (glob(WT_ROOT . WT_MODULES_DIR . '*/module.php') as $file) {
 			try {
 				$module = include $file;
-				$modules[$module->getName()] = $module;
-				Database::prepare("INSERT IGNORE INTO `##module` (module_name, status, menu_order, sidebar_order, tab_order) VALUES (?, ?, ?, ?, ?)")
-					->execute(array(
+				if ($module instanceof Module) {
+					$modules[$module->getName()] = $module;
+					Database::prepare("INSERT IGNORE INTO `##module` (module_name, status, menu_order, sidebar_order, tab_order) VALUES (?, ?, ?, ?, ?)")->execute(array(
 						$module->getName(),
 						$default_status,
 						$module instanceof ModuleMenuInterface ? $module->defaultMenuOrder() : null,
 						$module instanceof ModuleSidebarInterface ? $module->defaultSidebarOrder() : null,
-						$module instanceof ModuleTabInterface ? $module->defaultTabOrder() : null
+						$module instanceof ModuleTabInterface ? $module->defaultTabOrder() : null,
 					));
+				}
 				// Set the default privcy for this module.  Note that this also sets it for the
 				// default family tree, with a gedcom_id of -1
 				if ($module instanceof ModuleMenuInterface) {
