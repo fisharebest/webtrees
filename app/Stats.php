@@ -5864,8 +5864,8 @@ class Stats {
 	 * @return string
 	 */
 	public function gedcomFavorites() {
-		if (array_key_exists('gedcom_favorites', Module::getActiveModules())) {
-			$block = new gedcom_favorites_WT_Module;
+		if (Module::getModuleByName('gedcom_favorites')) {
+			$block = new FamilyTreeFavoritesModule(WT_MODULES_DIR . 'gedcom_favorites');
 
 			return $block->getBlock(0, false);
 		} else {
@@ -5877,8 +5877,8 @@ class Stats {
 	 * @return string
 	 */
 	public function userFavorites() {
-		if (Auth::check() && array_key_exists('user_favorites', Module::getActiveModules())) {
-			$block = new user_favorites_WT_Module;
+		if (Auth::check() && Module::getModuleByName('user_favorites')) {
+			$block = new UserFavoritesModule(WT_MODULES_DIR . 'gedcom_favorites');
 
 			return $block->getBlock(0, false);
 		} else {
@@ -5890,8 +5890,8 @@ class Stats {
 	 * @return integer
 	 */
 	public function totalGedcomFavorites() {
-		if (array_key_exists('gedcom_favorites', Module::getActiveModules())) {
-			return count(gedcom_favorites_WT_Module::getFavorites(WT_GED_ID));
+		if (Module::getModuleByName('gedcom_favorites')) {
+			return count(FamilyTreeFavoritesModule::getFavorites(WT_GED_ID));
 		} else {
 			return 0;
 		}
@@ -5901,8 +5901,8 @@ class Stats {
 	 * @return integer
 	 */
 	public function totalUserFavorites() {
-		if (array_key_exists('user_favorites', Module::getActiveModules())) {
-			return count(user_favorites_WT_Module::getFavorites(Auth::id()));
+		if (Module::getModuleByName('user_favorites')) {
+			return count(UserFavoritesModule::getFavorites(Auth::id()));
 		} else {
 			return 0;
 		}
@@ -5925,7 +5925,7 @@ class Stats {
 			return '';
 		}
 		$all_blocks = array();
-		foreach (Module::getActiveBlocks() as $name => $active_block) {
+		foreach (Module::getActiveBlocks($this->tree) as $name => $active_block) {
 			if ($ctype == 'user' && $active_block->isUserBlock() || $ctype == 'gedcom' && $active_block->isGedcomBlock()) {
 				$all_blocks[$name] = $active_block;
 			}
@@ -5933,7 +5933,6 @@ class Stats {
 		if (!array_key_exists($block, $all_blocks) || $block == 'html') {
 			return '';
 		}
-		$class_name = $block . '_WT_Module';
 		// Build the config array
 		array_shift($params);
 		$cfg = array();
@@ -5945,7 +5944,7 @@ class Stats {
 			$v = array_shift($bits);
 			$cfg[$v] = implode('=', $bits);
 		}
-		$block = new $class_name;
+		$block = $all_blocks[$block];
 		$block_id = Filter::getInteger('block_id');
 		$content = $block->getBlock($block_id, false, $cfg);
 		return $content;

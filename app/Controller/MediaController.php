@@ -47,7 +47,7 @@ class MediaController extends GedcomRecordController {
 			$menu->addSubmenu($submenu);
 
 			// main link displayed on page
-			if (array_key_exists('GEDFact_assistant', Module::getActiveModules())) {
+			if (Module::getModuleByName('GEDFact_assistant')) {
 				$submenu = new Menu(I18N::translate('Manage links'), '#', 'menu-obje-link');
 				$submenu->setOnclick("return ilinkitem('" . $this->record->getXref() . "','manage');");
 				$menu->addSubmenu($submenu);
@@ -81,7 +81,7 @@ class MediaController extends GedcomRecordController {
 		}
 
 		// add to favorites
-		if (array_key_exists('user_favorites', Module::getActiveModules())) {
+		if (Module::getModuleByName('user_favorites')) {
 			$submenu = new Menu(
 			/* I18N: Menu option.  Add [the current page] to the list of favorites */
 				I18N::translate('Add to favorites'),

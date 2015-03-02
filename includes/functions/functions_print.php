@@ -66,8 +66,8 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 		$note  = Note::getInstance($match[1]);
 		$label = 'SHARED_NOTE';
 		// If Census assistant installed, allow it to format the note
-		if (array_key_exists('GEDFact_assistant', Module::getActiveModules())) {
-			$html = GEDFact_assistant_WT_Module::formatCensusNote($note);
+		if (Module::getModuleByName('GEDFact_assistant')) {
+			$html = CensusAssistantModule::formatCensusNote($note);
 		} else {
 			$html = Filter::formatText($note->getNote(), $WT_TREE);
 		}

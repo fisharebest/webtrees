@@ -69,7 +69,7 @@ class SourceController extends GedcomRecordController {
 		}
 
 		// add to favorites
-		if (array_key_exists('user_favorites', Module::getActiveModules())) {
+		if (Module::getModuleByName('user_favorites')) {
 			$submenu = new Menu(
 				/* I18N: Menu option.  Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
 				'#',

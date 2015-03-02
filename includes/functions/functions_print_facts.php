@@ -966,9 +966,9 @@ function print_main_notes(Fact $fact, $level) {
 		echo '</td>';
 		if ($note) {
 			// Note objects
-			if (array_key_exists('GEDFact_assistant', Module::getActiveModules())) {
+			if (Module::getModuleByName('GEDFact_assistant')) {
 				// If Census assistant installed, allow it to format the note
-				$text = GEDFact_assistant_WT_Module::formatCensusNote($note);
+				$text = CensusAssistantModule::formatCensusNote($note);
 			} else {
 				$text = Filter::formatText($note->getNote(), $fact->getParent()->getTree());
 			}

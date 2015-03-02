@@ -1098,7 +1098,7 @@ abstract class BaseTheme {
 	 * @return Menu|null
 	 */
 	protected function menuChartInteractiveTree(Individual $individual) {
-		if (array_key_exists('tree', Module::getActiveModules())) {
+		if (Module::getModuleByName('tree')) {
 			return new Menu(I18N::translate('Interactive tree'), 'module.php?mod=tree&amp;mod_action=treeview&amp;' . $this->tree_url . '&amp;rootid=' . $individual->getXref(), 'menu-chart-tree');
 		} else {
 			return null;
@@ -1146,7 +1146,7 @@ abstract class BaseTheme {
 	 * @return Menu|null
 	 */
 	protected function menuChartPedigreeMap(Individual $individual) {
-		if (array_key_exists('googlemap', Module::getActiveModules())) {
+		if (Module::getModuleByName('googlemap')) {
 			return new Menu(I18N::translate('Pedigree map'), 'module.php?' . $this->tree_url . '&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=' . $individual->getXref(), 'menu-chart-pedigree_map');
 		} else {
 			return null;
@@ -1209,18 +1209,18 @@ abstract class BaseTheme {
 	protected function menuFavorites() {
 		global $controller;
 
-		$show_user_favorites = $this->tree && array_key_exists('user_favorites', Module::getActiveModules()) && Auth::check();
-		$show_tree_favorites = $this->tree && array_key_exists('gedcom_favorites', Module::getActiveModules());
+		$show_user_favorites = $this->tree && Module::getModuleByName('user_favorites') && Auth::check();
+		$show_tree_favorites = $this->tree && Module::getModuleByName('gedcom_favorites');
 
 		if ($show_user_favorites && $show_tree_favorites) {
 			$favorites = array_merge(
-				gedcom_favorites_WT_Module::getFavorites(WT_GED_ID),
-				user_favorites_WT_Module::getFavorites(Auth::id())
+				FamilyTreeFavoritesModule::getFavorites(WT_GED_ID),
+				UserFavoritesModule::getFavorites(Auth::id())
 			);
 		} elseif ($show_user_favorites) {
-			$favorites = user_favorites_WT_Module::getFavorites(Auth::id());
+			$favorites = UserFavoritesModule::getFavorites(Auth::id());
 		} elseif ($show_tree_favorites) {
-			$favorites = gedcom_favorites_WT_Module::getFavorites(WT_GED_ID);
+			$favorites = FamilyTreeFavoritesModule::getFavorites(WT_GED_ID);
 		} else {
 			return null;
 		}
@@ -1469,7 +1469,7 @@ abstract class BaseTheme {
 	 */
 	protected function menuModules() {
 		$menus = array();
-		foreach (Module::getActiveMenus() as $module) {
+		foreach (Module::getActiveMenus($this->tree) as $module) {
 			$menu = $module->getMenu();
 			if ($menu) {
 				$menus[] = $menu;
@@ -1573,7 +1573,7 @@ abstract class BaseTheme {
 	 */
 	protected function menuReports() {
 		$submenus = array();
-		foreach (Module::getActiveReports() as $report) {
+		foreach (Module::getActiveReports($this->tree) as $report) {
 			foreach ($report->getReportMenus() as $submenu) {
 				$submenus[] = $submenu;
 			}

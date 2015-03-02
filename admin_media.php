@@ -528,7 +528,7 @@ function mediaObjectInfo(Media $media) {
 		'<a onclick="return delete_media(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($media->getFullName()))) . '\', \'' . $media->getXref() . '\', \'' . Filter::escapeJs($gedcom) . '\');" href="#">' . I18N::Translate('Delete') . '</a>' .
 		' - ';
 
-	if (array_key_exists('GEDFact_assistant', Module::getActiveModules())) {
+	if (Module::getModuleByName('GEDFact_assistant')) {
 		$html .= '<a onclick="return ilinkitem(\'' . $xref . '\', \'manage\', \'' . $gedcom . '\')" href="#">' . I18N::Translate('Manage links') . '</a>';
 	} else {
 		$classSuffix = I18N::direction() === 'rtl' ? '_rtl' : '';

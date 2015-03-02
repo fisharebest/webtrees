@@ -738,9 +738,9 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 			echo print_specialchar_link($element_id), ' ', print_findplace_link($element_id);
 			echo '<span  onclick="jQuery(\'tr[id^=', $upperlevel, '_LATI],tr[id^=', $upperlevel, '_LONG],tr[id^=LATI],tr[id^=LONG]\').toggle(\'fast\'); return false;" class="icon-target" title="', WT_Gedcom_Tag::getLabel('LATI'), ' / ', WT_Gedcom_Tag::getLabel('LONG'), '"></span>';
 			echo '</div>';
-			if (array_key_exists('places_assistant', Module::getActiveModules())) {
-				\places_assistant_WT_Module::setup_place_subfields($element_id);
-				\places_assistant_WT_Module::print_place_subfields($element_id);
+			if (Module::getModuleByName('places_assistant')) {
+				\PlacesAssistantModule::setup_place_subfields($element_id);
+				\PlacesAssistantModule::print_place_subfields($element_id);
 			}
 		} elseif (!in_array($fact, $tmp_array)) {
 			echo print_specialchar_link($element_id);
@@ -782,8 +782,8 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 		echo print_calendar_popup($element_id);
 
 		// Allow the GEDFact_assistant module to show a census-date selector
-		if (array_key_exists('GEDFact_assistant', Module::getActiveModules())) {
-			echo GEDFact_assistant_WT_Module::censusDateSelector($action, $upperlevel, $element_id);
+		if (Module::getModuleByName('GEDFact_assistant')) {
+			echo CensusAssistantModule::censusDateSelector($action, $upperlevel, $element_id);
 		}
 		break;
 	case 'FAMC':
@@ -864,8 +864,8 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 			}
 
 			// Allow the GEDFact_assistant module to create a formatted shared note.
-			if (array_key_exists('GEDFact_assistant', Module::getActiveModules())) {
-				echo GEDFact_assistant_WT_Module::print_addnewnote_assisted_link($element_id, $xref, $action);
+			if (Module::getModuleByName('GEDFact_assistant')) {
+				echo CensusAssistantModule::print_addnewnote_assisted_link($element_id, $xref, $action);
 			}
 		}
 		break;
