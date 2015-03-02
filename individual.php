@@ -170,10 +170,10 @@ if ($controller->record->canShow()) {
 	echo '<span class="header_age">';
 	if ($bdate->isOK() && !$controller->record->isDead()) {
 		// If living display age
-		echo WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(Date::GetAgeGedcom($bdate), true), $controller->record, 'span');
+		echo WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(Date::getAgeGedcom($bdate), true), $controller->record, 'span');
 	} elseif ($bdate->isOK() && $ddate->isOK()) {
 		// If dead, show age at death
-		echo WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(Date::GetAgeGedcom($bdate, $ddate), false), $controller->record, 'span');
+		echo WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(Date::getAgeGedcom($bdate, $ddate), false), $controller->record, 'span');
 	}
 	echo '</span>';
 	// Display summary birth/death info.
