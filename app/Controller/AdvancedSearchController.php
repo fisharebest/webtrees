@@ -462,16 +462,12 @@ class AdvancedSearchController extends SearchController {
 				// *:DATE
 				$date = new Date($value);
 				if ($date->isOK()) {
-					$jd1 = $date->date1->minJD;
-					if ($date->date2) {
-						$jd2 = $date->date2->maxJD;
-					} else {
-						$jd2 = $date->date1->maxJD;
-					}
+					$jd1 = $date->minimumJulianDay();
+					$jd2 = $date->maximumJulianDay();
 					if (!empty($this->plusminus[$i])) {
 						$adjd = $this->plusminus[$i] * 365;
-						$jd1 = $jd1 - $adjd;
-						$jd2 = $jd2 + $adjd;
+						$jd1 -= $adjd;
+						$jd2 += $adjd;
 					}
 					$sql .= " AND i_d.d_fact=? AND i_d.d_julianday1>=? AND i_d.d_julianday2<=?";
 					$bind[] = $parts[0];
@@ -482,16 +478,12 @@ class AdvancedSearchController extends SearchController {
 				// FAMS:*:DATE
 				$date = new Date($value);
 				if ($date->isOK()) {
-					$jd1 = $date->date1->minJD;
-					if ($date->date2) {
-						$jd2 = $date->date2->maxJD;
-					} else {
-						$jd2 = $date->date1->maxJD;
-					}
+					$jd1 = $date->minimumJulianDay();
+					$jd2 = $date->maximumJulianDay();
 					if (!empty($this->plusminus[$i])) {
 						$adjd = $this->plusminus[$i] * 365;
-						$jd1 = $jd1 - $adjd;
-						$jd2 = $jd2 + $adjd;
+						$jd1 -= $adjd;
+						$jd2 += $adjd;
 					}
 					$sql .= " AND f_d.d_fact=? AND f_d.d_julianday1>=? AND f_d.d_julianday2<=?";
 					$bind[] = $parts[1];

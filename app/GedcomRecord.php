@@ -1045,7 +1045,7 @@ class GedcomRecord {
 
 		if ($chan) {
 			// The record does have a CHAN event
-			$d = $chan->getDate()->MinDate();
+			$d = $chan->getDate()->minimumDate();
 			if (preg_match('/\n3 TIME (\d\d):(\d\d):(\d\d)/', $chan->getGedcom(), $match)) {
 				$t = mktime((int) $match[1], (int) $match[2], (int) $match[3], (int) $d->format('%n'), (int) $d->format('%j'), (int) $d->format('%Y'));
 			} elseif (preg_match('/\n3 TIME (\d\d):(\d\d)/', $chan->getGedcom(), $match)) {

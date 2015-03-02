@@ -411,7 +411,7 @@ class Fact {
 	public static function compareDate(Fact $a, Fact $b) {
 		if ($a->getDate()->isOK() && $b->getDate()->isOK()) {
 			// If both events have dates, compare by date
-			$ret = Date::Compare($a->getDate(), $b->getDate());
+			$ret = Date::compare($a->getDate(), $b->getDate());
 
 			if ($ret == 0) {
 				// If dates are the same, compare by fact type

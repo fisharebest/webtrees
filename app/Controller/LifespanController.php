@@ -167,7 +167,7 @@ class LifespanController extends PageController {
 
 		// Sort the array in order of birth year
 		uasort($this->people, function(Individual $a, Individual $b) {
-			return Date::Compare($a->getEstimatedBirthDate(), $b->getEstimatedBirthDate());
+			return Date::compare($a->getEstimatedBirthDate(), $b->getEstimatedBirthDate());
 		});
 		//If there is people in the array posted back this if occurs
 		if (isset ($this->people[0])) {

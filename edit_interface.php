@@ -565,7 +565,7 @@ case 'add_child_to_family_action':
 	$done = false;
 	foreach ($family->getFacts('CHIL') as $fact) {
 		$old_child = $fact->getTarget();
-		if ($old_child && Date::Compare($new_child->getEstimatedBirthDate(), $old_child->getEstimatedBirthDate()) < 0) {
+		if ($old_child && Date::compare($new_child->getEstimatedBirthDate(), $old_child->getEstimatedBirthDate()) < 0) {
 			// Insert before this child
 			$family->updateFact($fact->getFactId(), '1 CHIL @' . $new_child->getXref() . "@\n" . $fact->getGedcom(), !$keep_chan);
 			$done = true;
@@ -1853,7 +1853,7 @@ case 'reorder_children':
 				foreach ($family->getChildren() as $k=>$child) {
 					$bdate = $child->getEstimatedBirthDate();
 					if ($bdate->isOK()) {
-						$sortkey = $bdate->JD();
+						$sortkey = $bdate->julianDay();
 					} else {
 						$sortkey = 1e8; // birth date missing => sort last
 					}

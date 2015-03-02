@@ -86,10 +86,10 @@ if (preg_match('/^(\d+)-(\d+)$/', $year, $match)) {
 			$year = (-$year) . ' B.C.';
 		} // need BC to parse date
 		$ged_date = new Date("{$cal} {$day} {$month} {$year}");
-		$year     = $ged_date->date1->y; // need negative year for year entry field.
+		$year     = $ged_date->minimumDate()->y; // need negative year for year entry field.
 	}
 }
-$cal_date = &$ged_date->date1;
+$cal_date = $ged_date->minimumDate();
 
 // Fill in any missing bits with todays date
 $today = $cal_date->today();
@@ -156,7 +156,7 @@ echo I18N::translate('Day'), '</td><td colspan="3" class="optionbox">';
 for ($d = 1; $d <= $days_in_month; $d++) {
 	// Format the day number using the calendar
 	$tmp   = new Date($cal_date->format("%@ {$d} %O %E"));
-	$d_fmt = $tmp->date1->format('%j');
+	$d_fmt = $tmp->minimumDate()->format('%j');
 	if ($d === $cal_date->d) {
 		echo '<span class="error">', $d_fmt, '</span>';
 	} else {
@@ -403,7 +403,7 @@ case 'month':
 	// Fetch events for each day
 	for ($jd = $cal_date->minJD; $jd <= $cal_date->maxJD; ++$jd) {
 		foreach (apply_filter(get_anniversary_events($jd, $events), $filterof, $filtersx) as $fact) {
-			$tmp = $fact->getDate()->minDate();
+			$tmp = $fact->getDate()->minimumDate();
 			if ($tmp->d >= 1 && $tmp->d <= $tmp->daysInMonth()) {
 				// If the day is valid (for its own calendar), display it in the
 				// anniversary day (for the display calendar).
@@ -418,7 +418,7 @@ case 'month':
 case 'year':
 	$cal_date->m = 0;
 	$cal_date->setJdFromYmd();
-	$found_facts = apply_filter(get_calendar_events($ged_date->MinJD(), $ged_date->MaxJD(), $events), $filterof, $filtersx);
+	$found_facts = apply_filter(get_calendar_events($ged_date->minimumJulianDay(), $ged_date->maximumJulianDay(), $events), $filterof, $filtersx);
 	// Eliminate duplicates (e.g. BET JUL 1900 AND SEP 1900 will appear twice in 1900)
 	$found_facts = array_unique($found_facts);
 	break;
@@ -549,7 +549,7 @@ case 'month':
 		} else {
 			// Format the day number using the calendar
 			$tmp   = new Date($cal_date->format("%@ {$d} %O %E"));
-			$d_fmt = $tmp->date1->format('%j');
+			$d_fmt = $tmp->minimumDate()->format('%j');
 			if ($d === $today->d && $cal_date->m === $today->m) {
 				echo '<span class="cal_day current_day">', $d_fmt, '</span>';
 			} else {

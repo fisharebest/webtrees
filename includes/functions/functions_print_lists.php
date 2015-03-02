@@ -360,7 +360,7 @@ function format_indi_table($datalist, $option = '') {
 		}
 		$html .= '</td>';
 		//-- Event date (sortable)hidden by datatables code
-		$html .= '<td>' . $birth_date->JD() . '</td>';
+		$html .= '<td>' . $birth_date->julianDay() . '</td>';
 		//-- Birth anniversary
 		$html .= '<td>' . Date::getAge($birth_dates[0], null, 2) . '</td>';
 		//-- Birth place
@@ -393,7 +393,7 @@ function format_indi_table($datalist, $option = '') {
 			$death_date = $person->getEstimatedDeathDate();
 			// Estimated death dates are a fixed number of years after the birth date.
 			// Don't show estimates in the future.
-			if ($person->getTree()->getPreference('SHOW_EST_LIST_DATES') && $death_date->MinJD() < WT_CLIENT_JD) {
+			if ($person->getTree()->getPreference('SHOW_EST_LIST_DATES') && $death_date->minimumJulianDay() < WT_CLIENT_JD) {
 				$html .= $death_date->display(true);
 			} elseif ($person->isDead()) {
 				$html .= I18N::translate('yes');
@@ -404,7 +404,7 @@ function format_indi_table($datalist, $option = '') {
 		}
 		$html .= '</td>';
 		//-- Event date (sortable)hidden by datatables code
-		$html .= '<td>' . $death_date->JD() . '</td>';
+		$html .= '<td>' . $death_date->julianDay() . '</td>';
 		//-- Death anniversary
 		$html .= '<td>' . Date::getAge($death_dates[0], null, 2) . '</td>';
 		//-- Age at death
@@ -432,7 +432,7 @@ function format_indi_table($datalist, $option = '') {
 		$html .= '<td>' . $person->getSex() . '</td>';
 		//-- Filtering by birth date
 		$html .= '<td>';
-		if (!$person->canShow() || Date::Compare($birth_date, $d100y) > 0) {
+		if (!$person->canShow() || Date::compare($birth_date, $d100y) > 0) {
 			$html .= 'Y100';
 		} else {
 			$html .= 'YES';
@@ -441,9 +441,9 @@ function format_indi_table($datalist, $option = '') {
 		//-- Filtering by death date
 		$html .= '<td>';
 		// Died in last 100 years?  Died?  Not dead?
-		if (Date::Compare($death_dates[0], $d100y) > 0) {
+		if (Date::compare($death_dates[0], $d100y) > 0) {
 			$html .= 'Y100';
-		} elseif ($death_dates[0]->minJD() || $person->isDead()) {
+		} elseif ($death_dates[0]->minimumJulianDay() || $person->isDead()) {
 			$html .= 'YES';
 		} else {
 			$html .= 'N';
@@ -885,7 +885,7 @@ function format_fam_table($datalist) {
 		//-- Event date (sortable)hidden by datatables code
 		$html .= '<td>';
 		if ($marriage_dates) {
-			$html .= $marriage_date->JD();
+			$html .= $marriage_date->julianDay();
 		} else {
 			$html .= 0;
 		}
@@ -914,7 +914,7 @@ function format_fam_table($datalist) {
 		if (!$family->canShow() || !$mdate->isOK()) {
 			$html .= 'U';
 		} else {
-			if (Date::Compare($mdate, $d100y) > 0) {
+			if (Date::compare($mdate, $d100y) > 0) {
 				$html .= 'Y100';
 			} else {
 				$html .= 'YES';

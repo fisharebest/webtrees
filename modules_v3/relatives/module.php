@@ -44,7 +44,7 @@ class relatives_WT_Module extends Module implements ModuleTabInterface {
 	 */
 	static function ageDifference(Date $prev, Date $next, $child_number = 0) {
 		if ($prev->isOK() && $next->isOK()) {
-			$days = $next->MaxJD() - $prev->MinJD();
+			$days = $next->maximumJulianDay() - $prev->minimumJulianDay();
 			if ($days < 0) {
 				// Show warning triangle if dates in reverse order
 				$diff = '<i class="icon-warning"></i> ';
