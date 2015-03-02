@@ -1940,7 +1940,7 @@ function ageAtDeathStartHandler() {
 		}
 		$value = '';
 		if (Date::compare($birth_date, $death_date) <= 0 || !$person->isDead()) {
-			$age = Date::GetAgeGedcom($birth_date, $death_date);
+			$age = Date::getAgeGedcom($birth_date, $death_date);
 			// Only show calculated age if it differs from recorded age
 			if ($age != '' && $age != "0d") {
 				if ($fact_age != '' && $fact_age != $age || $fact_age == '' && $husb_age == '' && $wife_age == '' || $husb_age != '' && $person->getSex() == 'M' && $husb_age != $age || $wife_age != '' && $person->getSex() == 'F' && $wife_age != $age

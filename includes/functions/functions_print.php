@@ -395,7 +395,7 @@ function format_fact_date(Fact $event, GedcomRecord $record, $anchor, $time) {
 				$ageText = '';
 				if ((Date::compare($date, $death_date) <= 0 || !$record->isDead()) || $fact == 'DEAT') {
 					// Before death, print age
-					$age = Date::GetAgeGedcom($birth_date, $date);
+					$age = Date::getAgeGedcom($birth_date, $date);
 					// Only show calculated age if it differs from recorded age
 					if ($age != '') {
 						if (
@@ -412,9 +412,9 @@ function format_fact_date(Fact $event, GedcomRecord $record, $anchor, $time) {
 				}
 				if ($fact != 'DEAT' && Date::compare($date, $death_date) >= 0) {
 					// After death, print time since death
-					$age = get_age_at_event(Date::GetAgeGedcom($death_date, $date), true);
+					$age = get_age_at_event(Date::getAgeGedcom($death_date, $date), true);
 					if ($age != '') {
-						if (Date::GetAgeGedcom($death_date, $date) == "0d") {
+						if (Date::getAgeGedcom($death_date, $date) == "0d") {
 							$ageText = '(' . I18N::translate('on the date of death') . ')';
 						} else {
 							$ageText = '(' . $age . ' ' . I18N::translate('after death') . ')';
@@ -436,7 +436,7 @@ function format_fact_date(Fact $event, GedcomRecord $record, $anchor, $time) {
 				$death_date = $indi->getDeathDate();
 				$ageText    = '';
 				if (Date::compare($date, $death_date) <= 0) {
-					$age = Date::GetAgeGedcom($birth_date, $date);
+					$age = Date::getAgeGedcom($birth_date, $date);
 					// Only show calculated age if it differs from recorded age
 					if ($age != '' && $age > 0) {
 						if (
