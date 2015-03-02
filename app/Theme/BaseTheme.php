@@ -594,7 +594,7 @@ abstract class BaseTheme {
 	 * @return string
 	 */
 	public function html() {
-		return '<html ' . I18N::html_markup() . '>';
+		return '<html ' . I18N::htmlAttributes() . '>';
 	}
 
 	/**
@@ -634,7 +634,7 @@ abstract class BaseTheme {
 		$icon = 'images/facts/' . $fact->getTag() . '.png';
 		$dir  = substr($this->assetUrl(), strlen(WT_STATIC_URL));
 		if (file_exists($dir . $icon)) {
-			return '<img src="' . $this->assetUrl() . $icon . '" title="' . WT_Gedcom_Tag::getLabel($fact->getTag()) . '">';
+			return '<img src="' . $this->assetUrl() . $icon . '" title="' . GedcomTag::getLabel($fact->getTag()) . '">';
 		} elseif (file_exists($dir . 'images/facts/NULL.png')) {
 			// Spacer image - for alignment - until we move to a sprite.
 			return '<img src="' . Theme::theme()->assetUrl() . 'images/facts/NULL.png">';
@@ -1098,7 +1098,7 @@ abstract class BaseTheme {
 	 * @return Menu|null
 	 */
 	protected function menuChartInteractiveTree(Individual $individual) {
-		if (array_key_exists('tree', Module::getActiveModules())) {
+		if (Module::getModuleByName('tree')) {
 			return new Menu(I18N::translate('Interactive tree'), 'module.php?mod=tree&amp;mod_action=treeview&amp;' . $this->tree_url . '&amp;rootid=' . $individual->getXref(), 'menu-chart-tree');
 		} else {
 			return null;
@@ -1146,7 +1146,7 @@ abstract class BaseTheme {
 	 * @return Menu|null
 	 */
 	protected function menuChartPedigreeMap(Individual $individual) {
-		if (array_key_exists('googlemap', Module::getActiveModules())) {
+		if (Module::getModuleByName('googlemap')) {
 			return new Menu(I18N::translate('Pedigree map'), 'module.php?' . $this->tree_url . '&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=' . $individual->getXref(), 'menu-chart-pedigree_map');
 		} else {
 			return null;
@@ -1209,18 +1209,18 @@ abstract class BaseTheme {
 	protected function menuFavorites() {
 		global $controller;
 
-		$show_user_favorites = $this->tree && array_key_exists('user_favorites', Module::getActiveModules()) && Auth::check();
-		$show_tree_favorites = $this->tree && array_key_exists('gedcom_favorites', Module::getActiveModules());
+		$show_user_favorites = $this->tree && Module::getModuleByName('user_favorites') && Auth::check();
+		$show_tree_favorites = $this->tree && Module::getModuleByName('gedcom_favorites');
 
 		if ($show_user_favorites && $show_tree_favorites) {
 			$favorites = array_merge(
-				gedcom_favorites_WT_Module::getFavorites(WT_GED_ID),
-				user_favorites_WT_Module::getFavorites(Auth::id())
+				FamilyTreeFavoritesModule::getFavorites(WT_GED_ID),
+				UserFavoritesModule::getFavorites(Auth::id())
 			);
 		} elseif ($show_user_favorites) {
-			$favorites = user_favorites_WT_Module::getFavorites(Auth::id());
+			$favorites = UserFavoritesModule::getFavorites(Auth::id());
 		} elseif ($show_tree_favorites) {
-			$favorites = gedcom_favorites_WT_Module::getFavorites(WT_GED_ID);
+			$favorites = FamilyTreeFavoritesModule::getFavorites(WT_GED_ID);
 		} else {
 			return null;
 		}
@@ -1293,7 +1293,7 @@ abstract class BaseTheme {
 	protected function menuLanguages() {
 		$menu = new Menu(I18N::translate('Language'), '#', 'menu-language');
 
-		foreach (I18N::installed_languages() as $lang => $name) {
+		foreach (I18N::installedLanguages() as $lang => $name) {
 			$submenu = new Menu($name, get_query_url(array('lang' => $lang), '&amp;'), 'menu-language-' . $lang);
 			if (WT_LOCALE === $lang) {
 				$submenu->addClass('', '', 'active');
@@ -1469,7 +1469,7 @@ abstract class BaseTheme {
 	 */
 	protected function menuModules() {
 		$menus = array();
-		foreach (Module::getActiveMenus() as $module) {
+		foreach (Module::getActiveMenus($this->tree) as $module) {
 			$menu = $module->getMenu();
 			if ($menu) {
 				$menus[] = $menu;
@@ -1572,24 +1572,15 @@ abstract class BaseTheme {
 	 * @return Menu|null
 	 */
 	protected function menuReports() {
-		$active_reports = Module::getActiveReports();
-
-		if (Auth::isSearchEngine() || !$active_reports) {
-			return new Menu(I18N::translate('Reports'), '#', 'menu-report');
-		}
-
-		$menu = new Menu(I18N::translate('Reports'), 'reportengine.php?' . $this->tree_url, 'menu-report');
-
-		$sub_menu = false;
-		foreach ($active_reports as $report) {
+		$submenus = array();
+		foreach (Module::getActiveReports($this->tree) as $report) {
 			foreach ($report->getReportMenus() as $submenu) {
-				$menu->addSubmenu($submenu);
-				$sub_menu = true;
+				$submenus[] = $submenu;
 			}
 		}
 
-		if ($sub_menu && !Auth::isSearchEngine()) {
-			return $menu;
+		if ($submenus) {
+			return new Menu(I18N::translate('Reports'), 'reportengine.php?' . $this->tree_url, 'menu-report', null, $submenus);
 		} else {
 			return null;
 		}
@@ -1804,7 +1795,7 @@ abstract class BaseTheme {
 	 * @return bool
 	 */
 	protected function pendingChangesExist() {
-		return $this->tree && exists_pending_change(Auth::user(), $this->tree);
+		return $this->tree && $this->tree->hasPendingEdit() && Auth::isManager($this->tree);
 	}
 
 	/**

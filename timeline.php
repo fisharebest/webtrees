@@ -348,7 +348,7 @@ if (count($controller->people) > 0) {
 		sort_facts($controller->indifacts);
 		$factcount = 0;
 		foreach ($controller->indifacts as $fact) {
-			$controller->print_time_fact($fact);
+			$controller->printTimeFact($fact);
 			$factcount++;
 		}
 

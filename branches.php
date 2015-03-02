@@ -33,7 +33,7 @@ $controller
 		<table class="facts_table width50">
 			<tr>
 				<td class="descriptionbox">
-					<?php echo WT_Gedcom_Tag::getLabel('SURN'); ?>
+					<?php echo GedcomTag::getLabel('SURN'); ?>
 				</td>
 				<td class="optionbox">
 					<input data-autocomplete-type="SURN" type="text" name="surname" id="SURN" value="<?php echo Filter::escapeHtml($controller->getSurname()); ?>" dir="auto">

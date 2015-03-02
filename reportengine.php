@@ -16,6 +16,13 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
+
 define('WT_SCRIPT_NAME', 'reportengine.php');
 require './includes/session.php';
 
@@ -84,7 +91,7 @@ foreach ($varnames as $name) {
 }
 
 $reports = array();
-foreach (Module::getActiveReports() as $rep) {
+foreach (Module::getActiveReports($WT_TREE) as $rep) {
 	foreach ($rep->getReportMenus() as $menu) {
 		if (preg_match('/report=(' . preg_quote(WT_MODULES_DIR, '/') . '[a-z0-9_]+\/[a-z0-9_]+\.xml)/', $menu->getLink(), $match)) {
 			$reports[$match[1]] = $menu->getLabel();
@@ -230,7 +237,7 @@ case 'setup':
 				} elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $display, $match)) {
 					$display = I18N::translate($match[1]);
 				} elseif (preg_match('/^I18N::translate_c\(\'(.+)\', *\'(.+)\'\)$/', $display, $match)) {
-					$display = I18N::translate_c($match[1], $match[2]);
+					$display = I18N::translateContext($match[1], $match[2]);
 				}
 				echo '<option value="', Filter::escapeHtml($value), '" ';
 				if ($opt[0] == $input['default']) {

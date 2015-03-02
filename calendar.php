@@ -86,10 +86,10 @@ if (preg_match('/^(\d+)-(\d+)$/', $year, $match)) {
 			$year = (-$year) . ' B.C.';
 		} // need BC to parse date
 		$ged_date = new Date("{$cal} {$day} {$month} {$year}");
-		$year     = $ged_date->date1->y; // need negative year for year entry field.
+		$year     = $ged_date->minimumDate()->y; // need negative year for year entry field.
 	}
 }
-$cal_date = &$ged_date->date1;
+$cal_date = $ged_date->minimumDate();
 
 // Fill in any missing bits with todays date
 $today = $cal_date->today();
@@ -156,7 +156,7 @@ echo I18N::translate('Day'), '</td><td colspan="3" class="optionbox">';
 for ($d = 1; $d <= $days_in_month; $d++) {
 	// Format the day number using the calendar
 	$tmp   = new Date($cal_date->format("%@ {$d} %O %E"));
-	$d_fmt = $tmp->date1->format('%j');
+	$d_fmt = $tmp->minimumDate()->format('%j');
 	if ($d === $cal_date->d) {
 		echo '<span class="error">', $d_fmt, '</span>';
 	} else {
@@ -265,62 +265,62 @@ echo '<option value="BIRT" ';
 if ($filterev === 'BIRT') {
 	echo 'selected';
 }
-echo '>', WT_Gedcom_Tag::getLabel('BIRT'), '</option>';
+echo '>', GedcomTag::getLabel('BIRT'), '</option>';
 echo '<option value="CHR" ';
 if ($filterev === 'CHR') {
 	echo 'selected';
 }
-echo '>', WT_Gedcom_Tag::getLabel('CHR'), '</option>';
+echo '>', GedcomTag::getLabel('CHR'), '</option>';
 echo '<option value="CHRA" ';
 if ($filterev === 'CHRA') {
 	echo 'selected';
 }
-echo '>', WT_Gedcom_Tag::getLabel('CHRA'), '</option>';
+echo '>', GedcomTag::getLabel('CHRA'), '</option>';
 echo '<option value="BAPM" ';
 if ($filterev === 'BAPM') {
 	echo 'selected';
 }
-echo '>', WT_Gedcom_Tag::getLabel('BAPM'), '</option>';
+echo '>', GedcomTag::getLabel('BAPM'), '</option>';
 echo '<option value="_COML" ';
 if ($filterev === '_COML') {
 	echo 'selected';
 }
-echo '>', WT_Gedcom_Tag::getLabel('_COML'), '</option>';
+echo '>', GedcomTag::getLabel('_COML'), '</option>';
 echo '<option value="MARR" ';
 if ($filterev === 'MARR') {
 	echo 'selected';
 }
-echo '>', WT_Gedcom_Tag::getLabel('MARR'), '</option>';
+echo '>', GedcomTag::getLabel('MARR'), '</option>';
 echo '<option value="_SEPR" ';
 if ($filterev === '_SEPR') {
 	echo 'selected';
 }
-echo '>', WT_Gedcom_Tag::getLabel('_SEPR'), '</option>';
+echo '>', GedcomTag::getLabel('_SEPR'), '</option>';
 echo '<option value="DIV" ';
 if ($filterev === 'DIV') {
 	echo 'selected';
 }
-echo '>', WT_Gedcom_Tag::getLabel('DIV'), '</option>';
+echo '>', GedcomTag::getLabel('DIV'), '</option>';
 echo '<option value="DEAT" ';
 if ($filterev === 'DEAT') {
 	echo 'selected';
 }
-echo '>', WT_Gedcom_Tag::getLabel('DEAT'), '</option>';
+echo '>', GedcomTag::getLabel('DEAT'), '</option>';
 echo '<option value="BURI" ';
 if ($filterev === 'BURI') {
 	echo 'selected';
 }
-echo '>', WT_Gedcom_Tag::getLabel('BURI'), '</option>';
+echo '>', GedcomTag::getLabel('BURI'), '</option>';
 echo '<option value="IMMI" ';
 if ($filterev === 'IMMI') {
 	echo 'selected';
 }
-echo '>', WT_Gedcom_Tag::getLabel('IMMI'), '</option>';
+echo '>', GedcomTag::getLabel('IMMI'), '</option>';
 echo '<option value="EMIG" ';
 if ($filterev === 'EMIG') {
 	echo 'selected';
 }
-echo '>', WT_Gedcom_Tag::getLabel('EMIG'), '</option>';
+echo '>', GedcomTag::getLabel('EMIG'), '</option>';
 echo '<option value="EVEN" ';
 if ($filterev === 'EVEN') {
 	echo 'selected';
@@ -403,7 +403,7 @@ case 'month':
 	// Fetch events for each day
 	for ($jd = $cal_date->minJD; $jd <= $cal_date->maxJD; ++$jd) {
 		foreach (apply_filter(get_anniversary_events($jd, $events), $filterof, $filtersx) as $fact) {
-			$tmp = $fact->getDate()->minDate();
+			$tmp = $fact->getDate()->minimumDate();
 			if ($tmp->d >= 1 && $tmp->d <= $tmp->daysInMonth()) {
 				// If the day is valid (for its own calendar), display it in the
 				// anniversary day (for the display calendar).
@@ -418,7 +418,7 @@ case 'month':
 case 'year':
 	$cal_date->m = 0;
 	$cal_date->setJdFromYmd();
-	$found_facts = apply_filter(get_calendar_events($ged_date->MinJD(), $ged_date->MaxJD(), $events), $filterof, $filtersx);
+	$found_facts = apply_filter(get_calendar_events($ged_date->minimumJulianDay(), $ged_date->maximumJulianDay(), $events), $filterof, $filtersx);
 	// Eliminate duplicates (e.g. BET JUL 1900 AND SEP 1900 will appear twice in 1900)
 	$found_facts = array_unique($found_facts);
 	break;
@@ -549,7 +549,7 @@ case 'month':
 		} else {
 			// Format the day number using the calendar
 			$tmp   = new Date($cal_date->format("%@ {$d} %O %E"));
-			$d_fmt = $tmp->date1->format('%j');
+			$d_fmt = $tmp->minimumDate()->format('%j');
 			if ($d === $today->d && $cal_date->m === $today->m) {
 				echo '<span class="cal_day current_day">', $d_fmt, '</span>';
 			} else {
@@ -695,7 +695,7 @@ function calendar_list_text($list, $tag1, $tag2, $show_sex_symbols) {
 				++$females;
 				break;
 			default:
-				$html .= '<i class="icon-sex_u_9x9" title="' . I18N::translate_c('unknown gender', 'Unknown') . '"></i>';
+				$html .= '<i class="icon-sex_u_9x9" title="' . I18N::translateContext('unknown gender', 'Unknown') . '"></i>';
 				break;
 			}
 		}

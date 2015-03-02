@@ -64,7 +64,7 @@ class LifespanController extends PageController {
 	 * Startup activity
 	 */
 	public function __construct() {
-		global $WT_SESSION;
+		global $WT_SESSION, $WT_TREE;
 
 		parent::__construct();
 		$this->setPageTitle(I18N::translate('Lifespans'));
@@ -98,7 +98,7 @@ class LifespanController extends PageController {
 			$this->pids = $pids;
 		} elseif ($place) {
 			// All records found in a place
-			$wt_place    = new Place($place, $new_person->getTree());
+			$wt_place    = new Place($place, $WT_TREE);
 			$this->pids  = Database::prepare(
 				"SELECT DISTINCT pl_gid FROM `##placelinks` WHERE pl_p_id = ? AND pl_file = ?"
 			)->execute(array($wt_place->getPlaceId(), WT_GED_ID))->fetchOneColumn();
@@ -167,7 +167,7 @@ class LifespanController extends PageController {
 
 		// Sort the array in order of birth year
 		uasort($this->people, function(Individual $a, Individual $b) {
-			return Date::Compare($a->getEstimatedBirthDate(), $b->getEstimatedBirthDate());
+			return Date::compare($a->getEstimatedBirthDate(), $b->getEstimatedBirthDate());
 		});
 		//If there is people in the array posted back this if occurs
 		if (isset ($this->people[0])) {
@@ -443,7 +443,7 @@ class LifespanController extends PageController {
 					if ($fact == "EVEN") {
 						$fact = $val->getAttribute('TYPE');
 					}
-					$trans = WT_Gedcom_Tag::getLabel($fact);
+					$trans = GedcomTag::getLabel($fact);
 					if (isset($eventinformation[$evntwdth])) {
 						$eventinformation[$evntwdth] .= '<br>' . $trans . '<br>' . strip_tags($date->display()) . ' ' . $val->getPlace()->getFullName();
 					} else {
@@ -465,7 +465,7 @@ class LifespanController extends PageController {
 				$indiName = $value->getFullName();
 				echo '<table><tr><td width="15"><a class="showit" href="#"><b>';
 				echo self::getAbbreviation('BIRT');
-				echo '</b><span>', $value->getSexImage(), $indiName, '<br>', WT_Gedcom_Tag::getLabel('BIRT'), ' ', strip_tags($bdate->display()), ' ', $value->getBirthPlace(), '</span></a>',
+				echo '</b><span>', $value->getSexImage(), $indiName, '<br>', GedcomTag::getLabel('BIRT'), ' ', strip_tags($bdate->display()), ' ', $value->getBirthPlace(), '</span></a>',
 				'<td align="left" width="100%"><a href="', $value->getHtmlUrl(), '">', $value->getSexImage(), $indiName, '  ', $lifespan, ' </a></td>',
 				'<td width="15">';
 				if ($value->isDead()) {
@@ -475,7 +475,7 @@ class LifespanController extends PageController {
 						if (!$deathReal) {
 							echo '*';
 						}
-						echo '</b><span>' . $value->getSexImage() . $indiName . '<br>' . WT_Gedcom_Tag::getLabel('DEAT') . ' ' . strip_tags($ddate->display()) . ' ' . $value->getDeathPlace() . '</span></a>';
+						echo '</b><span>' . $value->getSexImage() . $indiName . '<br>' . GedcomTag::getLabel('DEAT') . ' ' . strip_tags($ddate->display()) . ' ' . $value->getDeathPlace() . '</span></a>';
 					}
 				}
 				echo '</td></tr></table>';
@@ -495,7 +495,7 @@ class LifespanController extends PageController {
 					if (!$birthReal) {
 						echo '*';
 					}
-					echo '</b><span>' . $value->getSexImage() . $indiName . '<br>' . WT_Gedcom_Tag::getLabel('BIRT') . ' ' . strip_tags($bdate->display(false)) . ' ' . $value->getBirthPlace() . '</span></a></td>' . '<td align="left" width="100%"><a href="' . $value->getHtmlUrl() . '">' . $value->getSexImage() . $indiName . '</a></td>' .
+					echo '</b><span>' . $value->getSexImage() . $indiName . '<br>' . GedcomTag::getLabel('BIRT') . ' ' . strip_tags($bdate->display(false)) . ' ' . $value->getBirthPlace() . '</span></a></td>' . '<td align="left" width="100%"><a href="' . $value->getHtmlUrl() . '">' . $value->getSexImage() . $indiName . '</a></td>' .
 						'<td width="15">';
 					if ($value->isDead()) {
 						if ($deathReal || $value->isDead()) {
@@ -504,7 +504,7 @@ class LifespanController extends PageController {
 							if (!$deathReal) {
 								echo "*";
 							}
-							echo '</b><span>' . $value->getSexImage() . $indiName . '<br>' . WT_Gedcom_Tag::getLabel('DEAT') . ' ' . strip_tags($ddate->display()) . ' ' . $value->getDeathPlace() . '</span></a>';
+							echo '</b><span>' . $value->getSexImage() . $indiName . '<br>' . GedcomTag::getLabel('DEAT') . ' ' . strip_tags($ddate->display()) . ' ' . $value->getDeathPlace() . '</span></a>';
 						}
 					}
 					echo '</td></tr></table>';
@@ -514,14 +514,14 @@ class LifespanController extends PageController {
 					$indiName = $value->getFullName();
 					echo '<a class="showit" href="' . $value->getHtmlUrl() . '"><b>';
 					echo self::getAbbreviation('BIRT');
-					echo '</b><span>' . $value->getSexImage() . $indiName . '<br>' . WT_Gedcom_Tag::getLabel('BIRT') . ' ' . strip_tags($bdate->display()) . ' ' . $value->getBirthPlace() . '<br>';
+					echo '</b><span>' . $value->getSexImage() . $indiName . '<br>' . GedcomTag::getLabel('BIRT') . ' ' . strip_tags($bdate->display()) . ' ' . $value->getBirthPlace() . '<br>';
 					foreach ($eventinformation as $val) {
 						$text = explode('-fact,', $val);
 						$val  = $text[1];
 						echo $val . "<br>";
 					}
 					if ($value->isDead() && $deathReal) {
-						echo WT_Gedcom_Tag::getLabel('DEAT') . " " . strip_tags($ddate->display()) . " " . $value->getDeathPlace();
+						echo GedcomTag::getLabel('DEAT') . " " . strip_tags($ddate->display()) . " " . $value->getDeathPlace();
 					}
 					echo '</span></a>';
 					echo '</div>';
@@ -594,13 +594,13 @@ class LifespanController extends PageController {
 	private static function getAbbreviation($tag) {
 		switch ($tag) {
 		case 'BIRT':
-			return I18N::translate_c('Abbreviation for birth', 'b.');
+			return I18N::translateContext('Abbreviation for birth', 'b.');
 		case 'MARR':
-			return I18N::translate_c('Abbreviation for marriage', 'm.');
+			return I18N::translateContext('Abbreviation for marriage', 'm.');
 		case 'DEAT':
-			return I18N::translate_c('Abbreviation for death', 'd.');
+			return I18N::translateContext('Abbreviation for death', 'd.');
 		default:
-			return mb_substr(WT_Gedcom_Tag::getLabel($tag), 0, 1); // Just use the first letter of the full fact
+			return mb_substr(GedcomTag::getLabel($tag), 0, 1); // Just use the first letter of the full fact
 		}
 	}
 }

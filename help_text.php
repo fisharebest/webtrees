@@ -34,32 +34,32 @@ switch ($help) {
 	//////////////////////////////////////////////////////////////////////////////
 
 case 'ADDR':
-	$title = WT_Gedcom_Tag::getLabel('ADDR');
+	$title = GedcomTag::getLabel('ADDR');
 	$text = I18N::translate('Enter the address into the field just as you would write it on an envelope.<br><br>Leave this field blank if you do not want to include an address.');
 	break;
 
 case 'AGNC':
-	$title = WT_Gedcom_Tag::getLabel('AGNC');
+	$title = GedcomTag::getLabel('AGNC');
 	$text = I18N::translate('The organization, institution, corporation, individual, or other entity that has authority.<br><br>For example, an employer of an individual, or a church that administered rites or events, or an organization responsible for creating and/or archiving records.');
 	break;
 
 case 'ASSO_1':
-	$title = WT_Gedcom_Tag::getLabel('ASSO');
+	$title = GedcomTag::getLabel('ASSO');
 	$text = I18N::translate('An associate is another individual who was involved with this individual, such as a friend or an employer.');
 	break;
 
 case 'ASSO_2':
-	$title = WT_Gedcom_Tag::getLabel('ASSO');
+	$title = GedcomTag::getLabel('ASSO');
 	$text = I18N::translate('An associate is another individual who was involved with this fact or event, such as a witness or a priest.');
 	break;
 
 case 'CAUS':
-	$title = WT_Gedcom_Tag::getLabel('CAUS');
+	$title = GedcomTag::getLabel('CAUS');
 	$text = I18N::translate('A description of the cause of the associated event or fact, such as the cause of death.');
 	break;
 
 case 'DATE':
-	$title = WT_Gedcom_Tag::getLabel('DATE');
+	$title = GedcomTag::getLabel('DATE');
 	$dates = array(
 		'1900'                     =>new Date('1900'),
 		'JAN 1900'                 =>new Date('JAN 1900'),
@@ -241,23 +241,23 @@ case 'EMAI':
 case 'EMAIL':
 case 'EMAL':
 case '_EMAIL':
-	$title = WT_Gedcom_Tag::getLabel('EMAIL');
+	$title = GedcomTag::getLabel('EMAIL');
 	$text = I18N::translate('Enter the email address.<br><br>An example email address looks like this: <b>name@hotmail.com</b>  Leave this field blank if you do not want to include an email address.');
 	break;
 
 case 'FAX':
-	$title = WT_Gedcom_Tag::getLabel('FAX');
+	$title = GedcomTag::getLabel('FAX');
 	$text = I18N::translate('Enter the FAX number including the country and area code.<br><br>Leave this field blank if you do not want to include a FAX number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212.');
 	break;
 
 case 'FORM':
-	$title = WT_Gedcom_Tag::getLabel('FORM');
+	$title = GedcomTag::getLabel('FORM');
 	$text = I18N::translate('This is an optional field that can be used to enter the file format of the media object.  Some genealogy programs may look at this field to determine how to handle the item.  However, since media do not transfer across computer systems very well, this field is not very important.');
 	break;
 
 // This help text is used for all NAME components
 case 'NAME':
-	$title = WT_Gedcom_Tag::getLabel('NAME');
+	$title = GedcomTag::getLabel('NAME');
 	$text =
 		'<p>' .
 		I18N::translate('The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded.  This is how it will be displayed on screen.  It uses standard genealogy annotations to identify different parts of the name.') .
@@ -278,19 +278,19 @@ case 'NAME':
 	break;
 
 case 'SURN':
-	$title = WT_Gedcom_Tag::getLabel('SURN');
+	$title = GedcomTag::getLabel('SURN');
 	$text = '<p>' .
 		I18N::translate('The <b>surname</b> field contains a name that is used for sorting and grouping.  It can be different to the individual’s actual surname which is always taken from the <b>name</b> field.  This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska).  If an individual needs to be listed under more than one surname, each name should be separated by a comma.') .
 		'</p>';
 	break;
 
 case 'NOTE':
-	$title = WT_Gedcom_Tag::getLabel('NOTE');
+	$title = GedcomTag::getLabel('NOTE');
 	$text = I18N::translate('Notes are free-form text and will appear in the Fact Details section of the page.');
 	break;
 
 case 'OBJE':
-	$title = WT_Gedcom_Tag::getLabel('OBJE');
+	$title = GedcomTag::getLabel('OBJE');
 	$text =
 		'<p>' .
 		I18N::translate('A media object is a record in the family tree which contains information about a media file.  This information may include a title, a copyright notice, a transcript, privacy restrictions, etc.  The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver).') .
@@ -298,32 +298,32 @@ case 'OBJE':
 	break;
 
 case 'PAGE':
-	$title = WT_Gedcom_Tag::getLabel('PAGE');
+	$title = GedcomTag::getLabel('PAGE');
 	$text = I18N::translate('In the citation details field you would enter the page number or other information that might help someone find the information in the source.');
 	break;
 
 case 'PEDI':
-	$title = WT_Gedcom_Tag::getLabel('PEDI');
+	$title = GedcomTag::getLabel('PEDI');
 	$text = I18N::translate('A child may have more than one set of parents.  The relationship between the child and the parents can be biological, legal, or based on local culture and tradition.  If no pedigree is specified, then a biological relationship will be assumed.');
 	break;
 
 case 'PHON':
-	$title = WT_Gedcom_Tag::getLabel('PHON');
+	$title = GedcomTag::getLabel('PHON');
 	$text = I18N::translate('Enter the phone number including the country and area code.<br><br>Leave this field blank if you do not want to include a phone number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212.');
 	break;
 
 case 'PLAC':
-	$title = WT_Gedcom_Tag::getLabel('PLAC');
+	$title = GedcomTag::getLabel('PLAC');
 	$text = I18N::translate('Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database.');
 	break;
 
 case 'RELA':
-	$title = WT_Gedcom_Tag::getLabel('RELA');
+	$title = GedcomTag::getLabel('RELA');
 	$text = I18N::translate('Select a relationship name from the list.  Selecting <b>Godfather</b> means: <i>This associate is the godfather of the current individual</i>.');
 	break;
 
 case 'RESN':
-	$title = WT_Gedcom_Tag::getLabel('RESN');
+	$title = GedcomTag::getLabel('RESN');
 	$text =
 		I18N::translate('Restrictions can be added to records and/or facts.  They restrict who can view the data and who can edit it.') .
 		'<br><br>' .
@@ -331,57 +331,57 @@ case 'RESN':
 	break;
 
 case 'ROMN':
-	$title = WT_Gedcom_Tag::getLabel('ROMN');
+	$title = GedcomTag::getLabel('ROMN');
 	$text = I18N::translate('In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur.');
 	break;
 
 case 'SEX':
-	$title = WT_Gedcom_Tag::getLabel('SEX');
+	$title = GedcomTag::getLabel('SEX');
 	$text = I18N::translate('Choose the appropriate gender from the drop-down list.  The <b>unknown</b> option indicates that the gender is unknown.');
 	break;
 
 case 'SHARED_NOTE':
-	$title = WT_Gedcom_Tag::getLabel('SHARED_NOTE');
+	$title = GedcomTag::getLabel('SHARED_NOTE');
 	$text = I18N::translate('Shared notes are free-form text and will appear in the Fact Details section of the page.<br><br>Each shared note can be linked to more than one individual, family, source, or event.');
 	break;
 
 case 'SOUR':
-	$title = WT_Gedcom_Tag::getLabel('SOUR');
+	$title = GedcomTag::getLabel('SOUR');
 	$text = I18N::translate('This field allows you to change the source record that this fact’s source citation links to.  This field takes a source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank.');
 	break;
 
 case 'STAT':
-	$title = WT_Gedcom_Tag::getLabel('STAT');
+	$title = GedcomTag::getLabel('STAT');
 	$text = I18N::translate('This is an optional status field and is used mostly for LDS ordinances as they are run through the TempleReady program.');
 	break;
 
 case 'TEMP':
-	$title = WT_Gedcom_Tag::getLabel('TEMP');
+	$title = GedcomTag::getLabel('TEMP');
 	$text = I18N::translate('For LDS ordinances, this field records the temple where it was performed.');
 	break;
 
 case 'TEXT':
-	$title = WT_Gedcom_Tag::getLabel('TEXT');
+	$title = GedcomTag::getLabel('TEXT');
 	$text = I18N::translate('In this field you would enter the citation text for this source.  Examples of data may be a transcription of the text from the source, or a description of what was in the citation.');
 	break;
 
 case 'TIME':
-	$title = WT_Gedcom_Tag::getLabel('TIME');
+	$title = GedcomTag::getLabel('TIME');
 	$text = I18N::translate('Enter the time for this event in 24-hour format with leading zeroes.  Midnight is 00:00.  Examples: 04:50 13:00 20:30.');
 	break;
 
 case 'WWW':
-	$title = WT_Gedcom_Tag::getLabel('WWW');
+	$title = GedcomTag::getLabel('WWW');
 	$text = I18N::translate('Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b>.  Leave this field blank if you do not want to include a URL.');
 	break;
 
 case '_HEB':
-	$title = WT_Gedcom_Tag::getLabel('_HEB');
+	$title = GedcomTag::getLabel('_HEB');
 	$text = I18N::translate('In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters.');
 	break;
 
 case '_PRIM':
-	$title = WT_Gedcom_Tag::getLabel('_PRIM');
+	$title = GedcomTag::getLabel('_PRIM');
 	$text = I18N::translate('Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the individual’s page.');
 	break;
 
@@ -499,7 +499,7 @@ case 'edit_add_NOTE':
 case 'edit_add_SHARED_NOTE':
 	$title = I18N::translate('Add a new shared note');
 	$text = I18N::translate('Shared notes, like regular notes, are free-form text.  Unlike regular notes, each shared note can be linked to more than one individual, family, source, or fact.<br><br>By clicking the appropriate icon, you can establish a link to an existing shared note or create a new shared note and at the same time link to it.  If a link to an existing shared note has already been established, you can also edit that note’s contents.<br><ul><li><b>Link to an existing shared note</b><div style="padding-left:20px;">If you already know the ID number of the desired shared note, you can enter that number directly into the field.<br><br>When you click the <b>Find shared note</b> icon, you will be able to search the text of all existing shared notes and then choose one of them.  The ID number of the chosen note will be entered into the field automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Create a new shared note</b><div style="padding-left:20px;">When you click the <b>Create a new shared note</b> icon, a new window will open.  You can enter the text of the new note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, you will see a message with the ID number of the newly created shared note.  You should click on this message to close the editing window and also copy that new ID number directly into the ID number field.  If you just close the window, the newly created ID number will not be copied automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Edit an existing shared note</b><div style="padding-left:20px;">When you click the <b>Edit shared note</b> icon, a new window will open.  You can change the text of the existing shared note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, the text of the shared note will be updated.  You can close the window and then click the <b>Save</b> button again.<br><br>When you change the text of a shared note, your change will be reflected in all places to which that shared note is currently linked.  New links that you establish after having made your change will also use the updated text.</div></li></ul>');
-	if (array_key_exists('GEDFact_assistant', Module::getActiveModules())) {
+	if (Module::getModuleByName('GEDFact_assistant')) {
 		$text .= '<p class="warning">' . I18N::translate('You should avoid using the vertical line character “|” in your notes.  It is used internally by webtrees and may cause your note to display incorrectly.') . '</p>';
 	}
 	break;
@@ -635,29 +635,6 @@ case 'show_spouse':
 case 'upload_gedcom':
 	$title = I18N::translate('Upload family tree');
 	$text = I18N::translate('This option deletes all the genealogy data in your family tree and replaces it with data from a GEDCOM file on your computer.');
-	break;
-
-case 'upload_media':
-	$title = I18N::translate('Upload media files');
-	$text = I18N::translate('Upload one or more media files from your local computer.  Media files can be pictures, video, audio, or other formats.');
-	break;
-
-case 'upload_server_file':
-	$title = I18N::translate('Filename on server');
-	$text = I18N::translate('The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer.');
-	break;
-
-case 'upload_server_folder':
-	$title = I18N::translate('Folder name on server');
-	$text =
-		'<p>' .
-		I18N::translate('If you have a large number of media files, you can organize them into folders and subfolders.') .
-		'</p>';
-	break;
-
-case 'upload_thumbnail_file':
-	$title = I18N::translate('Thumbnail to upload');
-	$text = I18N::translate('Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording.');
 	break;
 
 case 'zip':

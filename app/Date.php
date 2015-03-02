@@ -50,19 +50,19 @@ use Fisharebest\ExtCalendar\GregorianCalendar;
  */
 class Date {
 	/** @var string Optional qualifier, such as BEF, FROM, ABT */
-	var $qual1;
+	private $qual1;
 
 	/** @var CalendarDate  The first (or only) date */
-	var $date1;
+	private $date1;
 
 	/** @var string  Optional qualifier, such as TO, AND*/
-	var $qual2;
+	private $qual2;
 
 	/** @var CalendarDate Optional second date */
-	var $date2;
+	private $date2;
 
 	/** @var string ptional text, as included with an INTerpreted date */
-	var $text;
+	private $text;
 
 	/**
 	 * Create a date, from GEDCOM data.
@@ -92,7 +92,7 @@ class Date {
 	 * When we copy a date object, we need to create copies of
 	 * its child objects.
 	 */
-	function __clone() {
+	public function __clone() {
 		$this->date1 = clone $this->date1;
 		if (is_object($this->date2)) {
 			$this->date2 = clone $this->date2;
@@ -109,7 +109,7 @@ class Date {
 	 * @return CalendarDate
 	 * @throws \DomainException
 	 */
-	static function parseDate($date) {
+	private function parseDate($date) {
 		// Valid calendar escape specified? - use it
 		if (preg_match('/^(@#D(?:GREGORIAN|JULIAN|HEBREW|HIJRI|JALALI|FRENCH R|ROMAN|JALALI)+@) ?(.*)/', $date, $match)) {
 			$cal  = $match[1];
@@ -208,7 +208,7 @@ class Date {
 	 *
 	 * @return string
 	 */
-	function display($url = false, $date_format = null, $convert_calendars = true) {
+	public function display($url = false, $date_format = null, $convert_calendars = true) {
 		global $WT_TREE;
 
 		// Search engines do not get links to the calendar pages
@@ -346,7 +346,7 @@ class Date {
 	 *
 	 * @return CalendarDate
 	 */
-	function MinDate() {
+	public function minimumDate() {
 		return $this->date1;
 	}
 
@@ -357,7 +357,7 @@ class Date {
 	 *
 	 * @return CalendarDate
 	 */
-	function MaxDate() {
+	public function maximumDate() {
 		if (is_null($this->date2)) {
 			return $this->date1;
 		} else {
@@ -370,10 +370,8 @@ class Date {
 	 *
 	 * @return integer
 	 */
-	function MinJD() {
-		$tmp = $this->MinDate();
-
-		return $tmp->minJD;
+	public function minimumJulianDay() {
+		return $this->minimumDate()->minJD;
 	}
 
 	/**
@@ -381,22 +379,20 @@ class Date {
 	 *
 	 * @return integer
 	 */
-	function MaxJD() {
-		$tmp = $this->MaxDate();
-
-		return $tmp->maxJD;
+	public function maximumJulianDay() {
+		return $this->maximumDate()->maxJD;
 	}
 
 	/**
 	 * Get the middle Julian day number from the GEDCOM date.
 	 *
-	 * For a month-only date, this would be somewhere around the 16 day.
+	 * For a month-only date, this would be somewhere around the 16th day.
 	 * For a year-only date, this would be somewhere around 1st July.
 	 *
 	 * @return integer
 	 */
-	function JD() {
-		return (int) (($this->MinJD() + $this->MaxJD()) / 2);
+	public function julianDay() {
+		return (int) (($this->minimumJulianDay() + $this->maximumJulianDay()) / 2);
 	}
 
 	/**
@@ -410,7 +406,7 @@ class Date {
 	 *
 	 * @return Date
 	 */
-	function AddYears($years, $qualifier = '') {
+	public function addYears($years, $qualifier = '') {
 		$tmp = clone $this;
 		$tmp->date1->y += $years;
 		$tmp->date1->m = 0;
@@ -433,14 +429,14 @@ class Date {
 	 * @return int|string
 	 * @throws \InvalidArgumentException
 	 */
-	static function getAge(Date $d1, Date $d2 = null, $format = 0) {
+	public static function getAge(Date $d1, Date $d2 = null, $format = 0) {
 		if ($d2) {
-			if ($d2->MaxJD() >= $d1->MinJD() && $d2->MinJD() <= $d1->MinJD()) {
+			if ($d2->maximumJulianDay() >= $d1->minimumJulianDay() && $d2->minimumJulianDay() <= $d1->minimumJulianDay()) {
 				// Overlapping dates
-				$jd = $d1->MinJD();
+				$jd = $d1->minimumJulianDay();
 			} else {
 				// Non-overlapping dates
-				$jd = $d2->MinJD();
+				$jd = $d2->minimumJulianDay();
 			}
 		} else {
 			// If second date not specified, use today’s date
@@ -450,25 +446,25 @@ class Date {
 		switch ($format) {
 		case 0:
 			// Years - integer only (for statistics, rather than for display)
-			if ($jd && $d1->MinJD() && $d1->MinJD() <= $jd) {
-				return $d1->MinDate()->getAge(false, $jd, false);
+			if ($jd && $d1->minimumJulianDay() && $d1->minimumJulianDay() <= $jd) {
+				return $d1->minimumDate()->getAge(false, $jd, false);
 			} else {
 				return -1;
 			}
 		case 1:
 			// Days - integer only (for sorting, rather than for display)
-			if ($jd && $d1->MinJD()) {
-				return $jd - $d1->MinJD();
+			if ($jd && $d1->minimumJulianDay()) {
+				return $jd - $d1->minimumJulianDay();
 			} else {
 				return -1;
 			}
 		case 2:
 			// Just years, in local digits, with warning for negative/
-			if ($jd && $d1->MinJD()) {
-				if ($d1->MinJD() > $jd) {
+			if ($jd && $d1->minimumJulianDay()) {
+				if ($d1->minimumJulianDay() > $jd) {
 					return '<i class="icon-warning"></i>';
 				} else {
-					return I18N::number($d1->MinDate()->getAge(false, $jd));
+					return I18N::number($d1->minimumDate()->getAge(false, $jd));
 				}
 			} else {
 				return '&nbsp;';
@@ -488,14 +484,14 @@ class Date {
 	 *
 	 * @return string
 	 */
-	static function GetAgeGedcom(Date $d1, Date $d2 = null, $warn_on_negative = true) {
+	public static function getAgeGedcom(Date $d1, Date $d2 = null, $warn_on_negative = true) {
 		if (is_null($d2)) {
-			return $d1->date1->GetAge(true, WT_CLIENT_JD, $warn_on_negative);
+			return $d1->date1->getAge(true, WT_CLIENT_JD, $warn_on_negative);
 		} else {
 			// If dates overlap, then can’t calculate age.
-			if (self::Compare($d1, $d2)) {
-				return $d1->date1->GetAge(true, $d2->MinJD(), $warn_on_negative);
-			} elseif (self::Compare($d1, $d2) == 0 && $d1->date1->minJD == $d2->MinJD()) {
+			if (self::compare($d1, $d2)) {
+				return $d1->date1->getAge(true, $d2->minimumJulianDay(), $warn_on_negative);
+			} elseif (self::compare($d1, $d2) == 0 && $d1->date1->minJD == $d2->minimumJulianDay()) {
 				return '0d';
 			} else {
 				return '';
@@ -516,34 +512,34 @@ class Date {
 	 *
 	 * @return integer
 	 */
-	static function Compare(Date $a, Date $b) {
+	public static function compare(Date $a, Date $b) {
 		// Get min/max JD for each date.
 		switch ($a->qual1) {
 		case 'BEF':
-			$amin = $a->MinJD() - 1;
+			$amin = $a->minimumJulianDay() - 1;
 			$amax = $amin;
 			break;
 		case 'AFT':
-			$amax = $a->MaxJD() + 1;
+			$amax = $a->maximumJulianDay() + 1;
 			$amin = $amax;
 			break;
 		default:
-			$amin = $a->MinJD();
-			$amax = $a->MaxJD();
+			$amin = $a->minimumJulianDay();
+			$amax = $a->maximumJulianDay();
 			break;
 		}
 		switch ($b->qual1) {
 		case 'BEF':
-			$bmin = $b->MinJD() - 1;
+			$bmin = $b->minimumJulianDay() - 1;
 			$bmax = $bmin;
 			break;
 		case 'AFT':
-			$bmax = $b->MaxJD() + 1;
+			$bmax = $b->maximumJulianDay() + 1;
 			$bmin = $bmax;
 			break;
 		default:
-			$bmin = $b->MinJD();
-			$bmax = $b->MaxJD();
+			$bmin = $b->minimumJulianDay();
+			$bmax = $b->maximumJulianDay();
 			break;
 		}
 		if ($amax < $bmin) {
@@ -567,8 +563,8 @@ class Date {
 	 *
 	 * @return boolean
 	 */
-	function isOK() {
-		return $this->MinJD() && $this->MaxJD();
+	public function isOK() {
+		return $this->minimumJulianDay() && $this->maximumJulianDay();
 	}
 
 	/**
@@ -579,10 +575,10 @@ class Date {
 	 *
 	 * @return integer
 	 */
-	function gregorianYear() {
+	public function gregorianYear() {
 		if ($this->isOK()) {
 			$gregorian_calendar = new GregorianCalendar;
-			list($year) = $gregorian_calendar->jdToYmd($this->JD());
+			list($year) = $gregorian_calendar->jdToYmd($this->julianDay());
 
 			return $year;
 		} else {

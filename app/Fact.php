@@ -265,7 +265,7 @@ class Fact {
 			}
 			// no break - drop into next case
 		default:
-			return WT_Gedcom_Tag::getLabel($this->tag, $this->parent);
+			return GedcomTag::getLabel($this->tag, $this->parent);
 		}
 	}
 
@@ -390,7 +390,7 @@ class Fact {
 				$attributes[] = $place;
 			}
 		}
-		$html = WT_Gedcom_Tag::getLabelValue($this->getTag(), implode(' — ', $attributes), $this->getParent());
+		$html = GedcomTag::getLabelValue($this->getTag(), implode(' — ', $attributes), $this->getParent());
 		if ($this->isPendingAddition()) {
 			return '<div class="new">' . $html . '</div>';
 		} elseif ($this->isPendingDeletion()) {
@@ -411,7 +411,7 @@ class Fact {
 	public static function compareDate(Fact $a, Fact $b) {
 		if ($a->getDate()->isOK() && $b->getDate()->isOK()) {
 			// If both events have dates, compare by date
-			$ret = Date::Compare($a->getDate(), $b->getDate());
+			$ret = Date::compare($a->getDate(), $b->getDate());
 
 			if ($ret == 0) {
 				// If dates are the same, compare by fact type

@@ -14201,7 +14201,7 @@ msgid "This message will be sent to %s"
 msgstr "Bức điện này sẽ gửi cho %s"
 
 #: setup.php:437
-msgid "This must to be at least six characters.  It is case-sensitive."
+msgid "This must be at least six characters long.  It is case-sensitive."
 msgstr "Nó phải dài ít nhất sáu ký tự. Mật khẩu phân biệt chữ hoa, chữ thường."
 
 #. I18N: Help text for the “Sender name” site configuration setting

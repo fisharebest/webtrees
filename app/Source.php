@@ -77,6 +77,6 @@ class Source extends GedcomRecord {
 
 	/** {@inheritdoc} */
 	public function extractNames() {
-		parent::_extractNames(1, 'TITL', $this->getFacts('TITL'));
+		parent::extractNamesFromFacts(1, 'TITL', $this->getFacts('TITL'));
 	}
 }

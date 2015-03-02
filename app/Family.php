@@ -207,7 +207,7 @@ class Family extends GedcomRecord {
 	 * @return integer
 	 */
 	public static function compareMarrDate(Family $x, Family $y) {
-		return Date::Compare($x->getMarriageDate(), $y->getMarriageDate());
+		return Date::compare($x->getMarriageDate(), $y->getMarriageDate());
 	}
 
 	/**
@@ -253,7 +253,7 @@ class Family extends GedcomRecord {
 	 * @return integer
 	 */
 	public function getMarriageYear() {
-		return $this->getMarriageDate()->MinDate()->y;
+		return $this->getMarriageDate()->minimumDate()->y;
 	}
 
 	/**
@@ -379,7 +379,7 @@ class Family extends GedcomRecord {
 	/** {@inheritdoc} */
 	function formatListDetails() {
 		return
-			$this->format_first_major_fact(WT_EVENTS_MARR, 1) .
-			$this->format_first_major_fact(WT_EVENTS_DIV, 1);
+			$this->formatFirstMajorFact(WT_EVENTS_MARR, 1) .
+			$this->formatFirstMajorFact(WT_EVENTS_DIV, 1);
 	}
 }

@@ -38,24 +38,6 @@ function fetch_all_links($xref, $gedcom_id) {
 }
 
 /**
- * Find out if there are any pending changes that a given user may accept.
- *
- * @param User $user
- * @param Tree $tree
- *
- * @return boolean
- */
-function exists_pending_change(User $user, Tree $tree) {
-	return
-		$tree->canAcceptChanges($user) &&
-		Database::prepare(
-			"SELECT 1 FROM `##change` WHERE status = 'pending' AND gedcom_id = :tree_id"
-		)->execute(array(
-			'tree_id' => $tree->getTreeId()
-		))->fetchOne();
-}
-
-/**
  * Get a list of all the sources.
  *
  * @param integer $ged_id
@@ -927,7 +909,7 @@ function get_anniversary_events($jd, $facts = '', $ged_id = WT_GED_ID) {
 				}
 				$anniv_date = new Date($row->d_type . ' ' . $row->d_day . ' ' . $row->d_month . ' ' . $row->d_year);
 				foreach ($record->getFacts() as $fact) {
-					if (($fact->getDate()->MinDate() == $anniv_date->MinDate() || $fact->getDate()->MaxDate() == $anniv_date->MinDate()) && $fact->getTag() === $row->d_fact) {
+					if (($fact->getDate()->minimumDate() == $anniv_date->minimumDate() || $fact->getDate()->maximumDate() == $anniv_date->minimumDate()) && $fact->getTag() === $row->d_fact) {
 						$fact->anniv = $row->d_year === 0 ? 0 : $anniv->y - $row->d_year;
 						$found_facts[] = $fact;
 					}

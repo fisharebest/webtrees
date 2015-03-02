@@ -19,7 +19,6 @@
 	position: relative;
 	overflow: hidden;
 	height: 100%;
-	width: 99%;
 	border: thin solid #CCCCCC; /* customizable */
 	min-height: 350px; /* customizable, not mandatory, but should be set to have allways something to display */
 	max-height: 10000px; /* customizable, not mandatory, but should be set not too high to limit the size of ajax requests and not too low to enable whole big trees printing */

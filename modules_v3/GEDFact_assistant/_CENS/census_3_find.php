@@ -109,7 +109,7 @@ if ($action == "filter") {
 			//-- Build Indi Spouse Family to get marriage Date ----------
 			foreach ($indi->getSpouseFamilies() as $family) {
 				$marrdate = $family->getMarriageDate();
-				$marrdate = ($marrdate->minJD() + $marrdate->maxJD()) / 2; // Julian
+				$marrdate = ($marrdate->minimumJulianDay() + $marrdate->maximumJulianDay()) / 2; // Julian
 				$children = $family->getChildren();
 			}
 			if (!isset($marrdate)) { $marrdate = ""; }
@@ -123,9 +123,9 @@ if ($action == "filter") {
 					$chfulln = str_replace('"', "", $chfulln); // Must remove quotes completely here
 					$chfulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $chfulln);
 					$chfulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $chfulln); // Child’s Full Name
-					$chdob   = ($child->getBirthDate()->minJD() + $child->getBirthDate()->maxJD()) / 2; // Child’s Date of Birth (Julian)
+					$chdob   = ($child->getBirthDate()->minimumJulianDay() + $child->getBirthDate()->maximumJulianDay()) / 2; // Child’s Date of Birth (Julian)
 					if (!isset($chdob)) { $chdob = ""; }
-					$chdod   = ($child->getDeathDate()->minJD() + $child->getDeathDate()->maxJD()) / 2; // Child’s Date of Death (Julian)
+					$chdod   = ($child->getDeathDate()->minimumJulianDay() + $child->getDeathDate()->maximumJulianDay()) / 2; // Child’s Date of Death (Julian)
 					if (!isset($chdod)) { $chdod = ""; }
 					$chBLD   = ($chfulln . ", " . $chdob . ", " . $chdod);
 					array_push($chBLDarray, $chBLD);
@@ -149,9 +149,9 @@ if ($action == "filter") {
 			echo "'" . $indi->getSex() . "', "; // gend      - Sex
 			echo "'S', "; // cond      - Marital Condition
 			echo "'" . $marrdate . "', "; // dom       - Date of Marriage
-			echo "'" . (($indi->getBirthDate()->minJD() + $indi->getBirthDate()->maxJD()) / 2) . "' ,"; // dob       - Date of Birth
+			echo "'" . (($indi->getBirthDate()->minimumJulianDay() + $indi->getBirthDate()->maximumJulianDay()) / 2) . "' ,"; // dob       - Date of Birth
 			echo "'" . (1901 - $indi->getbirthyear()) . "' ,"; // ~age~     - Census Date minus YOB (Preliminary)
-			echo "'" . (($indi->getDeathDate()->minJD() + $indi->getDeathDate()->maxJD()) / 2) . "' ,"; // dod       - Date of Death
+			echo "'" . (($indi->getDeathDate()->minimumJulianDay() + $indi->getDeathDate()->maximumJulianDay()) / 2) . "' ,"; // dod       - Date of Death
 			echo "'', "; // occu      - Occupation
 			echo "'" . Filter::escapeHtml($indi->getbirthplace()) . "', "; // birthpl   - Birthplace
 			echo "'" . $FBP . "', "; // fbirthpl  - Father’s Birthplace
@@ -160,7 +160,7 @@ if ($action == "filter") {
 			echo ");";
 			echo "return false;\">";
 			echo "<b>" . $indi->getFullName() . "</b>&nbsp;&nbsp;&nbsp;"; // Name Link
-			echo "</span><br><span class=\"list_item\">", WT_Gedcom_Tag::getLabel('BIRT', $indi), " ", $indi->getbirthyear(), "&nbsp;&nbsp;&nbsp;", $indi->getbirthplace(), "</span>";
+			echo "</span><br><span class=\"list_item\">", GedcomTag::getLabel('BIRT', $indi), " ", $indi->getbirthyear(), "&nbsp;&nbsp;&nbsp;", $indi->getbirthplace(), "</span>";
 			echo "</a>";
 			echo "</li>";
 			echo "<hr>";

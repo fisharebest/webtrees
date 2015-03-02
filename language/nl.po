@@ -14247,7 +14247,7 @@ msgid "This message will be sent to %s"
 msgstr "Dit bericht zal worden verzonden naar %s"
 
 #: setup.php:437
-msgid "This must to be at least six characters.  It is case-sensitive."
+msgid "This must be at least six characters long.  It is case-sensitive."
 msgstr "Dit moet tenminste zes karakters lang zijn. Het is hoofdletter gevoelig."
 
 #. I18N: Help text for the “Sender name” site configuration setting

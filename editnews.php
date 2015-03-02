@@ -44,8 +44,8 @@ $text      = Filter::post('text');
 
 switch ($action) {
 case 'compose':
-	if (array_key_exists('ckeditor', Module::getActiveModules())) {
-		ckeditor_WT_Module::enableEditor($controller);
+	if (Module::getModuleByName('ckeditor')) {
+		CkeditorModule::enableEditor($controller);
 	}
 
 	echo '<h3>' . I18N::translate('Add/edit a journal/news entry') . '</h3>';

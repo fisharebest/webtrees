@@ -164,7 +164,7 @@ if ($action == "upload") {
 
 $controller->pageHeader();
 
-$mediaFolders = WT_Query_Media::folderListAll();
+$mediaFolders = QueryMedia::folderListAll();
 
 // Determine file size limit
 // TODO: do we need to check post_max_size size too?
@@ -181,13 +181,16 @@ if (empty($filesize)) {
 
 <h1><?php echo $controller->getPageTitle(); ?></h1>
 
-<?php
+<p>
+	<?php echo I18N::translate('Upload one or more media files from your local computer.  Media files can be pictures, video, audio, or other formats.'); ?>
+	<?php echo I18N::translate('Maximum upload size: '), $filesize, '</p>'; ?>
+</p>
 
+<?php
 
 // Print the form
 echo '<form name="uploadmedia" enctype="multipart/form-data" method="post" action="', WT_SCRIPT_NAME, '">';
 echo '<input type="hidden" name="action" value="upload">';
-echo '<p>', I18N::translate('Upload media files'), ':&nbsp;&nbsp;', I18N::translate('Maximum upload size: '), '<span class="accepted">', $filesize, '</span></p>';
 
 // Print 5 forms for uploading images
 for ($i = 1; $i < 6; $i++) {
@@ -200,20 +203,24 @@ for ($i = 1; $i < 6; $i++) {
 	echo '<input name="mediafile', $i, '" type="file" size="40">';
 	echo '</td></tr>';
 	echo '<tr><td>';
-	echo I18N::translate('Thumbnail to upload'), help_link('upload_thumbnail_file');
+	echo I18N::translate('Thumbnail to upload');
 	echo '</td>';
 	echo '<td>';
 	echo '<input name="thumbnail', $i, '" type="file" size="40">';
+	if ($i === 1) {
+		echo '<p class="small text-muted">', I18N::translate('Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording.'), '</p>';
+	}
 	echo '</td></tr>';
 
 	if (WT_USER_GEDCOM_ADMIN) {
 		echo '<tr><td>';
-		echo I18N::translate('Filename on server'), help_link('upload_server_file');
+		echo I18N::translate('Filename on server');
 		echo '</td>';
 		echo '<td>';
 		echo '<input name="filename', $i, '" type="text" size="40">';
 		if ($i == 1) {
-			echo "<br><sub>", I18N::translate('Do not change to keep original filename.'), "</sub>";
+			echo '<p class="small text-muted">', I18N::translate('Do not change to keep original filename.'), "</p>";
+			echo '<p class="small text-muted">', I18N::translate('The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer.'), '</p>';
 		}
 		echo '</td></tr>';
 	} else {
@@ -222,7 +229,7 @@ for ($i = 1; $i < 6; $i++) {
 
 	if (WT_USER_GEDCOM_ADMIN) {
 		echo '<tr><td>';
-		echo I18N::translate('Folder name on server'), help_link('upload_server_folder');
+		echo I18N::translate('Folder name on server');
 		echo '</td>';
 		echo '<td>';
 
@@ -240,6 +247,9 @@ for ($i = 1; $i < 6; $i++) {
 			echo '<br><span dir="ltr"><input name="folder', $i, '" type="text" size="40" value=""></span>';
 		} else {
 			echo '<input name="folder', $i, '" type="hidden" value="">';
+		}
+		if ($i === 1) {
+			echo '<p class="small text-muted">', I18N::translate('If you have a large number of media files, you can organize them into folders and subfolders.'), '</p>';
 		}
 		echo '</td></tr>';
 	} else {

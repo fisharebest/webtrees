@@ -235,7 +235,7 @@ case 'load_json':
 		foreach ($rows as $row) {
 			$media = Media::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 			$data[] = array(
-				WT_Gedcom_Tag::getLabelValue('URL', $row->m_filename),
+				GedcomTag::getLabelValue('URL', $row->m_filename),
 				$media->displayImage(),
 				mediaObjectInfo($media),
 			);
@@ -310,7 +310,7 @@ case 'load_json':
 				}
 			}
 
-			$conf        = I18N::translate('Are you sure you want to delete “%s”?', $unused_file);
+			$conf        = I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs($unused_file));
 			$delete_link =
 				'<p><a onclick="if (confirm(\'' . Filter::escapeJs($conf) . '\')) jQuery.post(\'admin_media.php\',{delete:\'' . Filter::escapeJs($media_path . $unused_file) . '\',media_folder:\'' . Filter::escapeJs($media_folder) . '\'},function(){location.reload();})" href="#">' . I18N::Translate('Delete') . '</a></p>';
 
@@ -525,10 +525,10 @@ function mediaObjectInfo(Media $media) {
 		' - ' .
 		'<a onclick="window.open(\'addmedia.php?action=editmedia&amp;pid=' . $xref . '&ged=' . Filter::escapeJs($gedcom) . '\', \'_blank\', edit_window_specs)" href="#">' . I18N::Translate('Edit') . '</a>' .
 		' - ' .
-		'<a onclick="return delete_media(\'' . Filter::escapeJs(I18N::translate('Are you sure you want to delete “%s”?', strip_tags($media->getFullName()))) . '\', \'' . $media->getXref() . '\', \'' . Filter::escapeJs($gedcom) . '\');" href="#">' . I18N::Translate('Delete') . '</a>' .
+		'<a onclick="return delete_media(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($media->getFullName()))) . '\', \'' . $media->getXref() . '\', \'' . Filter::escapeJs($gedcom) . '\');" href="#">' . I18N::Translate('Delete') . '</a>' .
 		' - ';
 
-	if (array_key_exists('GEDFact_assistant', Module::getActiveModules())) {
+	if (Module::getModuleByName('GEDFact_assistant')) {
 		$html .= '<a onclick="return ilinkitem(\'' . $xref . '\', \'manage\', \'' . $gedcom . '\')" href="#">' . I18N::Translate('Manage links') . '</a>';
 	} else {
 		$classSuffix = I18N::direction() === 'rtl' ? '_rtl' : '';

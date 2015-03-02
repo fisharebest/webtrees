@@ -76,7 +76,7 @@ if ($show_all === 'yes') {
 		$show    = Filter::get('show', 'surn|indi', 'surn');
 	}
 } elseif ($surname) {
-	$alpha    = WT_Query_Name::initialLetter($surname); // so we can highlight the initial letter
+	$alpha    = QueryName::initialLetter($surname); // so we can highlight the initial letter
 	$show_all = 'no';
 	if ($surname === '@N.N.') {
 		$legend = $UNKNOWN_NN;
@@ -128,7 +128,7 @@ echo '<h2 class="center">', I18N::translate('Individuals'), '</h2>';
 
 // Print a selection list of initial letters
 $list = array();
-foreach (WT_Query_Name::surnameAlpha($show_marnm === 'yes', false, WT_GED_ID) as $letter => $count) {
+foreach (QueryName::surnameAlpha($show_marnm === 'yes', false, WT_GED_ID) as $letter => $count) {
 	switch ($letter) {
 	case '@':
 		$html = $UNKNOWN_NN;
@@ -184,7 +184,7 @@ if (!Auth::isSearchEngine()) {
 }
 
 if ($show === 'indi' || $show === 'surn') {
-	$surns = WT_Query_Name::surnames($surname, $alpha, $show_marnm === 'yes', false, WT_GED_ID);
+	$surns = QueryName::surnames($surname, $alpha, $show_marnm === 'yes', false, WT_GED_ID);
 	if ($show === 'surn') {
 		// Show the surname list
 		switch ($WT_TREE->getPreference('SURNAME_LIST_STYLE')) {
@@ -212,7 +212,7 @@ if ($show === 'indi' || $show === 'surn') {
 			$falpha              = '';
 			$show_all_firstnames = 'no';
 		} else {
-			$givn_initials = WT_Query_Name::givenAlpha($surname, $alpha, $show_marnm === 'yes', false, WT_GED_ID);
+			$givn_initials = QueryName::givenAlpha($surname, $alpha, $show_marnm === 'yes', false, WT_GED_ID);
 			// Break long lists by initial letter of given name
 			if ($surname || $show_all === 'yes') {
 				// Don't show the list until we have some filter criteria
@@ -252,7 +252,7 @@ if ($show === 'indi' || $show === 'surn') {
 			}
 		}
 		if ($show === 'indi') {
-			echo format_indi_table(WT_Query_Name::individuals($surname, $alpha, $falpha, $show_marnm === 'yes', false, WT_GED_ID));
+			echo format_indi_table(QueryName::individuals($surname, $alpha, $falpha, $show_marnm === 'yes', false, WT_GED_ID));
 		}
 	}
 }

@@ -99,7 +99,7 @@ class TimelineController extends PageController {
 				$this->pidlinks .= 'pids%5B%5D=' . $indi->getXref() . '&amp;';
 				$bdate = $indi->getBirthDate();
 				if ($bdate->isOK()) {
-					$date                                = new GregorianDate($bdate->MinDate()->minJD);
+					$date                                = new GregorianDate($bdate->minimumJulianDay());
 					$this->birthyears [$indi->getXref()] = $date->y;
 					$this->birthmonths[$indi->getXref()] = max(1, $date->m);
 					$this->birthdays  [$indi->getXref()] = max(1, $date->d);
@@ -118,7 +118,7 @@ class TimelineController extends PageController {
 						// check for a date
 						$date = $event->getDate();
 						if ($date->isOK()) {
-							$date           = new GregorianDate($date->MinDate()->minJD);
+							$date           = new GregorianDate($date->minimumJulianDay());
 							$this->baseyear = min($this->baseyear, $date->y);
 							$this->topyear  = max($this->topyear, $date->y);
 
@@ -154,13 +154,13 @@ class TimelineController extends PageController {
 	/**
 	 * @param Fact $event
 	 */
-	function print_time_fact(Fact $event) {
+	public function printTimeFact(Fact $event) {
 		global $basexoffset, $baseyoffset, $factcount, $placements;
 
 		$desc = $event->getValue();
 		// check if this is a family fact
 		$gdate    = $event->getDate();
-		$date     = $gdate->MinDate();
+		$date     = $gdate->minimumDate();
 		$date     = $date->convertToCalendar('gregorian');
 		$year     = $date->y;
 		$month    = max(1, $date->m);
@@ -219,12 +219,12 @@ class TimelineController extends PageController {
 		} elseif ($record instanceof Family) {
 			echo $gdate->display();
 			if ($record->getHusband() && $record->getHusband()->getBirthDate()->isOK()) {
-				$ageh = get_age_at_event(Date::GetAgeGedcom($record->getHusband()->getBirthDate(), $gdate), false);
+				$ageh = get_age_at_event(Date::getAgeGedcom($record->getHusband()->getBirthDate(), $gdate), false);
 			} else {
 				$ageh = null;
 			}
 			if ($record->getWife() && $record->getWife()->getBirthDate()->isOK()) {
-				$agew = get_age_at_event(Date::GetAgeGedcom($record->getWife()->getBirthDate(), $gdate), false);
+				$agew = get_age_at_event(Date::getAgeGedcom($record->getWife()->getBirthDate(), $gdate), false);
 			} else {
 				$agew = null;
 			}

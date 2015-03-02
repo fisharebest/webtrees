@@ -39,8 +39,8 @@ if ($controller->record && $controller->record->canShow()) {
 				'<p class="ui-state-highlight">',
 				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ I18N::translate(
 					'This individual has been deleted.  You should review the deletion and then %1$s or %2$s it.',
-					'<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translate_c('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
-					'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translate_c('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
+					'<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
+					'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
 				),
 				' ', help_link('pending_changes'),
 				'</p>';
@@ -57,8 +57,8 @@ if ($controller->record && $controller->record->canShow()) {
 				'<p class="ui-state-highlight">',
 				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ I18N::translate(
 					'This individual has been edited.  You should review the changes and then %1$s or %2$s them.',
-					'<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translate_c('You should review the changes and then accept or reject them.', 'accept') . '</a>',
-					'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translate_c('You should review the changes and then accept or reject them.', 'reject') . '</a>'
+					'<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'accept') . '</a>',
+					'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'reject') . '</a>'
 				),
 				' ', help_link('pending_changes'),
 				'</p>';
@@ -170,10 +170,10 @@ if ($controller->record->canShow()) {
 	echo '<span class="header_age">';
 	if ($bdate->isOK() && !$controller->record->isDead()) {
 		// If living display age
-		echo WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(Date::GetAgeGedcom($bdate), true), $controller->record, 'span');
+		echo GedcomTag::getLabelValue('AGE', get_age_at_event(Date::getAgeGedcom($bdate), true), $controller->record, 'span');
 	} elseif ($bdate->isOK() && $ddate->isOK()) {
 		// If dead, show age at death
-		echo WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(Date::GetAgeGedcom($bdate, $ddate), false), $controller->record, 'span');
+		echo GedcomTag::getLabelValue('AGE', get_age_at_event(Date::getAgeGedcom($bdate, $ddate), false), $controller->record, 'span');
 	}
 	echo '</span>';
 	// Display summary birth/death info.

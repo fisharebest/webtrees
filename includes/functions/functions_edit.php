@@ -148,7 +148,7 @@ function edit_language_checkboxes($parameter_name, $accepted_languages) {
 	$CHUNK_SIZE = 4; // Make this a constant when moved to a class
 
 	$html = '<table class="language-selection">';
-	foreach (array_chunk(I18N::installed_languages(), $CHUNK_SIZE, true) as $chunk) {
+	foreach (array_chunk(I18N::installedLanguages(), $CHUNK_SIZE, true) as $chunk) {
 		$html .= '<tr>';
 		foreach ($chunk as $locale => $language) {
 			$checked = in_array($locale, $accepted_languages) ? 'checked' : '';
@@ -230,7 +230,7 @@ function edit_field_contact($name, $selected = '', $extra = '') {
  * @return string
  */
 function edit_field_language($name, $selected = '', $extra = '') {
-	return select_edit_control($name, I18N::installed_languages(), null, $selected, $extra);
+	return select_edit_control($name, I18N::installedLanguages(), null, $selected, $extra);
 }
 
 /**
@@ -284,7 +284,7 @@ function edit_field_username($name, $selected = '', $extra = '') {
  * @return string
  */
 function edit_field_adop($name, $selected = '', $extra = '', Individual $individual = null) {
-	return select_edit_control($name, WT_Gedcom_Code_Adop::getValues($individual), null, $selected, $extra);
+	return select_edit_control($name, GedcomCodeAdop::getValues($individual), null, $selected, $extra);
 }
 
 /**
@@ -298,7 +298,7 @@ function edit_field_adop($name, $selected = '', $extra = '', Individual $individ
  * @return string
  */
 function edit_field_pedi($name, $selected = '', $extra = '', Individual $individual = null) {
-	return select_edit_control($name, WT_Gedcom_Code_Pedi::getValues($individual), '', $selected, $extra);
+	return select_edit_control($name, GedcomCodePedi::getValues($individual), '', $selected, $extra);
 }
 
 /**
@@ -312,7 +312,7 @@ function edit_field_pedi($name, $selected = '', $extra = '', Individual $individ
  * @return string
  */
 function edit_field_name_type($name, $selected = '', $extra = '', Individual $individual = null) {
-	return select_edit_control($name, WT_Gedcom_Code_Name::getValues($individual), '', $selected, $extra);
+	return select_edit_control($name, GedcomCodeName::getValues($individual), '', $selected, $extra);
 }
 
 /**
@@ -325,7 +325,7 @@ function edit_field_name_type($name, $selected = '', $extra = '', Individual $in
  * @return string
  */
 function edit_field_rela($name, $selected = '', $extra = '') {
-	$rela_codes = WT_Gedcom_Code_Rela::getValues();
+	$rela_codes = GedcomCodeRela::getValues();
 	// The user is allowed to specify values that aren't in the list.
 	if (!array_key_exists($selected, $rela_codes)) {
 		$rela_codes[$selected] = $selected;
@@ -495,9 +495,9 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 	if ($label) {
 		echo $label;
 	} elseif ($upperlevel) {
-		echo WT_Gedcom_Tag::getLabel($upperlevel . ':' . $fact);
+		echo GedcomTag::getLabel($upperlevel . ':' . $fact);
 	} else {
-		echo WT_Gedcom_Tag::getLabel($fact);
+		echo GedcomTag::getLabel($fact);
 	}
 
 // help link
@@ -604,17 +604,17 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 		}
 
 	} else if ($fact === 'TEMP') {
-		echo select_edit_control($element_name, WT_Gedcom_Code_Temp::templeNames(), I18N::translate('No temple - living ordinance'), $value);
+		echo select_edit_control($element_name, GedcomCodeTemp::templeNames(), I18N::translate('No temple - living ordinance'), $value);
 	} else if ($fact === 'ADOP') {
 		echo edit_field_adop($element_name, $value, '', $person);
 	} else if ($fact === 'PEDI') {
 		echo edit_field_pedi($element_name, $value, '', $person);
 	} else if ($fact === 'STAT') {
-		echo select_edit_control($element_name, WT_Gedcom_Code_Stat::statusNames($upperlevel), '', $value);
+		echo select_edit_control($element_name, GedcomCodeStat::statusNames($upperlevel), '', $value);
 	} else if ($fact === 'RELA') {
 		echo edit_field_rela($element_name, strtolower($value));
 	} else if ($fact === 'QUAY') {
-		echo select_edit_control($element_name, WT_Gedcom_Code_Quay::getValues(), '', $value);
+		echo select_edit_control($element_name, GedcomCodeQuay::getValues(), '', $value);
 	} else if ($fact === '_WT_USER') {
 		echo edit_field_username($element_name, $value);
 	} else if ($fact === 'RESN') {
@@ -646,15 +646,15 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 		if ($value === 'U' || empty($value)) {
 			echo 'selected';
 		}
-		echo '>', I18N::translate_c('unknown gender', 'Unknown'), '</option></select>';
+		echo '>', I18N::translateContext('unknown gender', 'Unknown'), '</option></select>';
 	} else if ($fact == 'TYPE' && $level == '3') {
 		//-- Build the selector for the Media 'TYPE' Fact
 		echo '<select name="text[]"><option selected value="" ></option>';
 		$selectedValue = strtolower($value);
-		if (!array_key_exists($selectedValue, WT_Gedcom_Tag::getFileFormTypes())) {
+		if (!array_key_exists($selectedValue, GedcomTag::getFileFormTypes())) {
 			echo '<option selected value="', Filter::escapeHtml($value), '" >', Filter::escapeHtml($value), '</option>';
 		}
-		foreach (WT_Gedcom_Tag::getFileFormTypes() as $typeName => $typeValue) {
+		foreach (GedcomTag::getFileFormTypes() as $typeName => $typeValue) {
 			echo '<option value="', $typeName, '" ';
 			if ($selectedValue == $typeName) {
 				echo 'selected';
@@ -736,11 +736,11 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 		if ($fact == 'PLAC') {
 			echo "<div id=\"", $element_id, "_pop\" style=\"display: inline;\">";
 			echo print_specialchar_link($element_id), ' ', print_findplace_link($element_id);
-			echo '<span  onclick="jQuery(\'tr[id^=', $upperlevel, '_LATI],tr[id^=', $upperlevel, '_LONG],tr[id^=LATI],tr[id^=LONG]\').toggle(\'fast\'); return false;" class="icon-target" title="', WT_Gedcom_Tag::getLabel('LATI'), ' / ', WT_Gedcom_Tag::getLabel('LONG'), '"></span>';
+			echo '<span  onclick="jQuery(\'tr[id^=', $upperlevel, '_LATI],tr[id^=', $upperlevel, '_LONG],tr[id^=LATI],tr[id^=LONG]\').toggle(\'fast\'); return false;" class="icon-target" title="', GedcomTag::getLabel('LATI'), ' / ', GedcomTag::getLabel('LONG'), '"></span>';
 			echo '</div>';
-			if (array_key_exists('places_assistant', Module::getActiveModules())) {
-				\places_assistant_WT_Module::setup_place_subfields($element_id);
-				\places_assistant_WT_Module::print_place_subfields($element_id);
+			if (Module::getModuleByName('places_assistant')) {
+				\PlacesAssistantModule::setup_place_subfields($element_id);
+				\PlacesAssistantModule::print_place_subfields($element_id);
 			}
 		} elseif (!in_array($fact, $tmp_array)) {
 			echo print_specialchar_link($element_id);
@@ -763,7 +763,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 			if ($b !== '' && strpos($a, $b) !== false || strpos($b, $a) !== false) {
 				echo 'selected';
 			}
-			echo '>', WT_Gedcom_Tag::getLabel('MARR_' . strtoupper($key)), '</option>';
+			echo '>', GedcomTag::getLabel('MARR_' . strtoupper($key)), '</option>';
 		}
 		echo "</select>";
 	}
@@ -782,8 +782,8 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 		echo print_calendar_popup($element_id);
 
 		// Allow the GEDFact_assistant module to show a census-date selector
-		if (array_key_exists('GEDFact_assistant', Module::getActiveModules())) {
-			echo GEDFact_assistant_WT_Module::censusDateSelector($action, $upperlevel, $element_id);
+		if (Module::getModuleByName('GEDFact_assistant')) {
+			echo CensusAssistantModule::censusDateSelector($action, $upperlevel, $element_id);
 		}
 		break;
 	case 'FAMC':
@@ -824,7 +824,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 					foreach ($matches[1] as $match) {
 						if (!in_array($match, explode('|', WT_EVENTS_DEAT))) {
 							echo '&nbsp;<input type="checkbox" name="SOUR_', $match, '" ', $level2_checked, ' value="1">';
-							echo WT_Gedcom_Tag::getLabel($match);
+							echo GedcomTag::getLabel($match);
 						}
 					}
 				}
@@ -834,7 +834,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 					foreach ($matches[1] as $match) {
 						if (in_array($match, explode('|', WT_EVENTS_DEAT))) {
 							echo '&nbsp;<input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="1">';
-							echo WT_Gedcom_Tag::getLabel($match);
+							echo GedcomTag::getLabel($match);
 						}
 					}
 				}
@@ -845,7 +845,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 				if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('QUICK_REQUIRED_FAMFACTS'), $matches)) {
 					foreach ($matches[1] as $match) {
 						echo '&nbsp;<input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="1">';
-						echo WT_Gedcom_Tag::getLabel($match);
+						echo GedcomTag::getLabel($match);
 					}
 				}
 			}
@@ -864,8 +864,8 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 			}
 
 			// Allow the GEDFact_assistant module to create a formatted shared note.
-			if (array_key_exists('GEDFact_assistant', Module::getActiveModules())) {
-				echo GEDFact_assistant_WT_Module::print_addnewnote_assisted_link($element_id, $xref, $action);
+			if (Module::getModuleByName('GEDFact_assistant')) {
+				echo CensusAssistantModule::addNoteWithAssistantLink($element_id, $xref, $action);
 			}
 		}
 		break;
@@ -955,7 +955,7 @@ function print_add_layer($tag, $level = 2) {
 		add_simple_tag(($level + 2) . ' TEXT');
 		if ($WT_TREE->getPreference('FULL_SOURCES')) {
 			// 4 DATE
-			add_simple_tag(($level + 2) . ' DATE', '', WT_Gedcom_Tag::getLabel('DATA:DATE'));
+			add_simple_tag(($level + 2) . ' DATE', '', GedcomTag::getLabel('DATA:DATE'));
 			// 3 QUAY
 			add_simple_tag(($level + 1) . ' QUAY');
 		}
@@ -1056,15 +1056,15 @@ function addSimpleTags($fact) {
 	}
 
 	if (!in_array($fact, $nondatefacts)) {
-		add_simple_tag("0 DATE", $fact, WT_Gedcom_Tag::getLabel("{$fact}:DATE"));
+		add_simple_tag("0 DATE", $fact, GedcomTag::getLabel("{$fact}:DATE"));
 	}
 
 	if (!in_array($fact, $nonplacfacts)) {
-		add_simple_tag("0 PLAC", $fact, WT_Gedcom_Tag::getLabel("{$fact}:PLAC"));
+		add_simple_tag("0 PLAC", $fact, GedcomTag::getLabel("{$fact}:PLAC"));
 
 		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 			foreach ($match[1] as $tag) {
-				add_simple_tag("0 {$tag}", $fact, WT_Gedcom_Tag::getLabel("{$fact}:PLAC:{$tag}"));
+				add_simple_tag("0 {$tag}", $fact, GedcomTag::getLabel("{$fact}:PLAC:{$tag}"));
 			}
 		}
 		add_simple_tag("0 MAP", $fact);
@@ -1438,7 +1438,7 @@ function create_add_form($fact) {
 	} else {
 		$tags[0] = $fact;
 		if ($fact == '_UID') {
-			$fact .= ' ' . WT_Gedcom_Tag::createUid();
+			$fact .= ' ' . GedcomTag::createUid();
 		}
 		// These new level 1 tags need to be turned into links
 		if (in_array($fact, array('ASSO'))) {
@@ -1455,7 +1455,7 @@ function create_add_form($fact) {
 			add_simple_tag('2 PAGE');
 			add_simple_tag('3 TEXT');
 			if ($WT_TREE->getPreference('FULL_SOURCES')) {
-				add_simple_tag('3 DATE', '', WT_Gedcom_Tag::getLabel('DATA:DATE'));
+				add_simple_tag('3 DATE', '', GedcomTag::getLabel('DATA:DATE'));
 				add_simple_tag('2 QUAY');
 			}
 		}
@@ -1543,17 +1543,17 @@ function create_edit_form(GedcomRecord $record, Fact $fact) {
 			$person = Individual::getInstance($pid);
 			$subrecord = $level . ' ' . $type . ' ' . $text;
 			if ($inSource && $type == "DATE") {
-				add_simple_tag($subrecord, '', WT_Gedcom_Tag::getLabel($label, $person));
+				add_simple_tag($subrecord, '', GedcomTag::getLabel($label, $person));
 			} elseif (!$inSource && $type == "DATE") {
-				add_simple_tag($subrecord, $level1type, WT_Gedcom_Tag::getLabel($label, $person));
+				add_simple_tag($subrecord, $level1type, GedcomTag::getLabel($label, $person));
 				$add_date = false;
 			} elseif ($type == 'STAT') {
-				add_simple_tag($subrecord, $level1type, WT_Gedcom_Tag::getLabel($label, $person));
+				add_simple_tag($subrecord, $level1type, GedcomTag::getLabel($label, $person));
 			} elseif ($level0type == 'REPO') {
 				$repo = Repository::getInstance($pid);
-				add_simple_tag($subrecord, $level0type, WT_Gedcom_Tag::getLabel($label, $repo));
+				add_simple_tag($subrecord, $level0type, GedcomTag::getLabel($label, $repo));
 			} else {
-				add_simple_tag($subrecord, $level0type, WT_Gedcom_Tag::getLabel($label, $person));
+				add_simple_tag($subrecord, $level0type, GedcomTag::getLabel($label, $person));
 			}
 		}
 
@@ -1570,11 +1570,11 @@ function create_edit_form(GedcomRecord $record, Fact $fact) {
 			foreach ($expected_subtags[$type] as $subtag) {
 				if (!in_array($subtag, $subtags)) {
 					if (!$inSource || $subtag != "DATA") {
-						add_simple_tag(($level + 1) . ' ' . $subtag, '', WT_Gedcom_Tag::getLabel("{$label}:{$subtag}"));
+						add_simple_tag(($level + 1) . ' ' . $subtag, '', GedcomTag::getLabel("{$label}:{$subtag}"));
 					}
 					if (!empty($expected_subtags[$subtag])) {
 						foreach ($expected_subtags[$subtag] as $subsubtag) {
-							add_simple_tag(($level + 2) . ' ' . $subsubtag, '', WT_Gedcom_Tag::getLabel("{$label}:{$subtag}:{$subsubtag}"));
+							add_simple_tag(($level + 2) . ' ' . $subsubtag, '', GedcomTag::getLabel("{$label}:{$subtag}:{$subsubtag}"));
 						}
 					}
 				}
@@ -1585,8 +1585,8 @@ function create_edit_form(GedcomRecord $record, Fact $fact) {
 		if ($level == 2 && $type == 'DATE' && in_array($level1type, $date_and_time) && !in_array('TIME', $subtags)) {
 			add_simple_tag("3 TIME"); // TIME is NOT a valid 5.5.1 tag
 		}
-		if ($level == 2 && $type == 'STAT' && WT_Gedcom_Code_Temp::isTagLDS($level1type) && !in_array('DATE', $subtags)) {
-			add_simple_tag("3 DATE", '', WT_Gedcom_Tag::getLabel('STAT:DATE'));
+		if ($level == 2 && $type == 'STAT' && GedcomCodeTemp::isTagLDS($level1type) && !in_array('DATE', $subtags)) {
+			add_simple_tag("3 DATE", '', GedcomTag::getLabel('STAT:DATE'));
 		}
 
 		$i++;
@@ -1652,7 +1652,7 @@ function insert_missing_subtags($level1tag, $add_date = false) {
 			case 'PLAC':
 				if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 					foreach ($match[1] as $tag) {
-						add_simple_tag("3 $tag", '', WT_Gedcom_Tag::getLabel("{$level1tag}:PLAC:{$tag}"));
+						add_simple_tag("3 $tag", '', GedcomTag::getLabel("{$level1tag}:PLAC:{$tag}"));
 					}
 				}
 				add_simple_tag('3 MAP');
@@ -1667,8 +1667,8 @@ function insert_missing_subtags($level1tag, $add_date = false) {
 				add_simple_tag('3 PLAC');
 				break;
 			case 'STAT':
-				if (WT_Gedcom_Code_Temp::isTagLDS($level1tag)) {
-					add_simple_tag('3 DATE', '', WT_Gedcom_Tag::getLabel('STAT:DATE'));
+				if (GedcomCodeTemp::isTagLDS($level1tag)) {
+					add_simple_tag('3 DATE', '', GedcomTag::getLabel('STAT:DATE'));
 				}
 				break;
 			case 'DATE':
@@ -1688,7 +1688,7 @@ function insert_missing_subtags($level1tag, $add_date = false) {
 				break;
 			}
 		} elseif ($key === 'DATE' && $add_date) {
-			add_simple_tag('2 DATE', $level1tag, WT_Gedcom_Tag::getLabel("{$level1tag}:DATE"));
+			add_simple_tag('2 DATE', $level1tag, GedcomTag::getLabel("{$level1tag}:DATE"));
 		}
 	}
 	// Do something (anything!) with unrecognized custom tags
@@ -1699,7 +1699,7 @@ function insert_missing_subtags($level1tag, $add_date = false) {
 				if ($tag === 'PLAC') {
 					if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 						foreach ($match[1] as $ptag) {
-							add_simple_tag("3 $ptag", '', WT_Gedcom_Tag::getLabel("{$level1tag}:PLAC:{$ptag}"));
+							add_simple_tag("3 $ptag", '', GedcomTag::getLabel("{$level1tag}:PLAC:{$ptag}"));
 						}
 					}
 					add_simple_tag('3 MAP');

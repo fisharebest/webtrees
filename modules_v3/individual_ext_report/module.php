@@ -16,39 +16,4 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/**
- * Class individual_ext_report_WT_Module
- */
-class individual_ext_report_WT_Module extends Module implements ModuleReportInterface {
-	/** {@inheritdoc} */
-	public function getTitle() {
-		// This text also appears in the .XML file - update both together
-		return /* I18N: Name of a module/report */ I18N::translate('Related families');
-	}
-
-	/** {@inheritdoc} */
-	public function getDescription() {
-		// This text also appears in the .XML file - update both together
-		return /* I18N: Description of the “Related families” */ I18N::translate('A report of the families that are closely related to an individual.');
-	}
-
-	/** {@inheritdoc} */
-	public function defaultAccessLevel() {
-		return WT_PRIV_USER;
-	}
-
-	/** {@inheritdoc} */
-	public function getReportMenus() {
-		global $controller;
-
-		$menus = array();
-		$menu = new Menu(
-			$this->getTitle(),
-			'reportengine.php?ged=' . WT_GEDURL . '&amp;action=setup&amp;report=' . WT_MODULES_DIR . $this->getName() . '/report.xml&amp;pid=' . $controller->getSignificantIndividual()->getXref(),
-			'menu-report-' . $this->getName()
-		);
-		$menus[] = $menu;
-
-		return $menus;
-	}
-}
+return new IndividualFamiliesReportModule(__DIR__);

@@ -42,7 +42,7 @@ $form_pass2          = Filter::post('form_pass2', WT_REGEX_PASSWORD);
 $form_email          = Filter::postEmail('form_email');
 $form_rootid         = Filter::post('form_rootid', WT_REGEX_XREF);
 $form_theme          = Filter::post('form_theme', implode('|', array_keys(Theme::installedThemes())));
-$form_language       = Filter::post('form_language', implode('|', array_keys(I18N::installed_languages())), WT_LOCALE);
+$form_language       = Filter::post('form_language', implode('|', array_keys(I18N::installedLanguages())), WT_LOCALE);
 $form_contact_method = Filter::post('form_contact_method');
 $form_visible_online = Filter::postBool('form_visible_online');
 
@@ -173,9 +173,9 @@ function checkform(frm) {
 			</div>
 			<div class="value">
 				<?php if ($my_individual_record): ?>
-				<?php echo $my_individual_record->format_list('span'); ?>
+				<?php echo $my_individual_record->formatList('span'); ?>
 				<?php else: ?>
-					<?php echo I18N::translate_c('unknown people', 'Unknown'); ?>
+					<?php echo I18N::translateContext('unknown people', 'Unknown'); ?>
 				<?php endif; ?>
 				<p class="small text-muted">
 					<?php echo I18N::translate('This is a link to your own record in the family tree.  If this is the wrong individual, contact an administrator.'); ?>
@@ -191,7 +191,7 @@ function checkform(frm) {
 				<?php echo print_findindi_link('form_rootid'); ?>
 				<br>
 				<?php if ($default_individual): ?>
-				<?php echo $default_individual->format_list('span'); ?>
+				<?php echo $default_individual->formatList('span'); ?>
 				<?php endif; ?>
 				<p class="small text-muted">
 					<?php echo I18N::translate('This individual will be selected by default when viewing charts and reports.'); ?>

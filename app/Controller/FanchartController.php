@@ -345,7 +345,7 @@ class FanchartController extends ChartController {
 					$html .= '</a>';
 					$html .= '<ul class="charts">';
 					$html .= '<li><a href="pedigree.php?rootid=' . $pid . '&amp;ged=' . WT_GEDURL . '" >' . I18N::translate('Pedigree') . '</a></li>';
-					if (array_key_exists('googlemap', Module::getActiveModules())) {
+					if (Module::getModuleByName('googlemap')) {
 						$html .= '<li><a href="module.php?mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=' . $pid . '&amp;ged=' . WT_GEDURL . '">' . I18N::translate('Pedigree map') . '</a></li>';
 					}
 					if (WT_USER_GEDCOM_ID && WT_USER_GEDCOM_ID != $pid) {
@@ -356,7 +356,7 @@ class FanchartController extends ChartController {
 					$html .= '<li><a href="compact.php?rootid=' . $pid . '&amp;ged=' . WT_GEDURL . '">' . I18N::translate('Compact tree') . '</a></li>';
 					$html .= '<li><a href="' . $tempURL . '">' . I18N::translate('Fan chart') . '</a></li>';
 					$html .= '<li><a href="hourglass.php?rootid=' . $pid . '&amp;ged=' . WT_GEDURL . '">' . I18N::translate('Hourglass chart') . '</a></li>';
-					if (array_key_exists('tree', Module::getActiveModules())) {
+					if (Module::getModuleByName('tree')) {
 						$html .= '<li><a href="module.php?mod=tree&amp;mod_action=treeview&amp;ged=' . WT_GEDURL . '&amp;rootid=' . $pid . '">' . I18N::translate('Interactive tree') . '</a></li>';
 					}
 					$html .= '</ul>';

@@ -114,7 +114,7 @@ if (I18N::direction() === 'ltr') {
 }
 
 $all_blocks = array();
-foreach (Module::getActiveBlocks() as $name => $block) {
+foreach (Module::getActiveBlocks($WT_TREE) as $name => $block) {
 	if ($user_id && $block->isUserBlock() || $gedcom_id && $block->isGedcomBlock()) {
 		$all_blocks[$name] = $block;
 	}

@@ -229,7 +229,7 @@ class Individual extends GedcomRecord {
 	 * @return integer
 	 */
 	public static function compareBirthDate(Individual $x, Individual $y) {
-		return Date::Compare($x->getEstimatedBirthDate(), $y->getEstimatedBirthDate());
+		return Date::compare($x->getEstimatedBirthDate(), $y->getEstimatedBirthDate());
 	}
 
 	/**
@@ -241,7 +241,7 @@ class Individual extends GedcomRecord {
 	 * @return integer
 	 */
 	public static function compareDeathDate(Individual $x, Individual $y) {
-		return Date::Compare($x->getEstimatedDeathDate(), $y->getEstimatedDeathDate());
+		return Date::compare($x->getEstimatedDeathDate(), $y->getEstimatedDeathDate());
 	}
 
 	/**
@@ -262,7 +262,7 @@ class Individual extends GedcomRecord {
 		if (preg_match_all('/\n2 DATE (.+)/', $this->gedcom, $date_matches)) {
 			foreach ($date_matches[1] as $date_match) {
 				$date = new Date($date_match);
-				if ($date->isOK() && $date->MaxJD() <= WT_CLIENT_JD - 365 * $MAX_ALIVE_AGE) {
+				if ($date->isOK() && $date->maximumJulianDay() <= WT_CLIENT_JD - 365 * $MAX_ALIVE_AGE) {
 					return true;
 				}
 			}
@@ -282,7 +282,7 @@ class Individual extends GedcomRecord {
 				preg_match_all('/\n2 DATE (.+)/', $parent->gedcom, $date_matches);
 				foreach ($date_matches[1] as $date_match) {
 					$date = new Date($date_match);
-					if ($date->isOK() && $date->MaxJD() <= WT_CLIENT_JD - 365 * ($MAX_ALIVE_AGE + 45)) {
+					if ($date->isOK() && $date->maximumJulianDay() <= WT_CLIENT_JD - 365 * ($MAX_ALIVE_AGE + 45)) {
 						return true;
 					}
 				}
@@ -295,7 +295,7 @@ class Individual extends GedcomRecord {
 			foreach ($date_matches[1] as $date_match) {
 				$date = new Date($date_match);
 				// Assume marriage occurs after age of 10
-				if ($date->isOK() && $date->MaxJD() <= WT_CLIENT_JD - 365 * ($MAX_ALIVE_AGE - 10)) {
+				if ($date->isOK() && $date->maximumJulianDay() <= WT_CLIENT_JD - 365 * ($MAX_ALIVE_AGE - 10)) {
 					return true;
 				}
 			}
@@ -306,7 +306,7 @@ class Individual extends GedcomRecord {
 				foreach ($date_matches[1] as $date_match) {
 					$date = new Date($date_match);
 					// Assume max age difference between spouses of 40 years
-					if ($date->isOK() && $date->MaxJD() <= WT_CLIENT_JD - 365 * ($MAX_ALIVE_AGE + 40)) {
+					if ($date->isOK() && $date->maximumJulianDay() <= WT_CLIENT_JD - 365 * ($MAX_ALIVE_AGE + 40)) {
 						return true;
 					}
 				}
@@ -317,7 +317,7 @@ class Individual extends GedcomRecord {
 				// Assume children born after age of 15
 				foreach ($date_matches[1] as $date_match) {
 					$date = new Date($date_match);
-					if ($date->isOK() && $date->MaxJD() <= WT_CLIENT_JD - 365 * ($MAX_ALIVE_AGE - 15)) {
+					if ($date->isOK() && $date->maximumJulianDay() <= WT_CLIENT_JD - 365 * ($MAX_ALIVE_AGE - 15)) {
 						return true;
 					}
 				}
@@ -328,7 +328,7 @@ class Individual extends GedcomRecord {
 						// Assume grandchildren born after age of 30
 						foreach ($date_matches[1] as $date_match) {
 							$date = new Date($date_match);
-							if ($date->isOK() && $date->MaxJD() <= WT_CLIENT_JD - 365 * ($MAX_ALIVE_AGE - 30)) {
+							if ($date->isOK() && $date->maximumJulianDay() <= WT_CLIENT_JD - 365 * ($MAX_ALIVE_AGE - 30)) {
 								return true;
 							}
 						}
@@ -455,7 +455,7 @@ class Individual extends GedcomRecord {
 	 * @return string the year of birth
 	 */
 	function getBirthYear() {
-		return $this->getBirthDate()->MinDate()->format('%Y');
+		return $this->getBirthDate()->minimumDate()->format('%Y');
 	}
 
 	/**
@@ -494,7 +494,7 @@ class Individual extends GedcomRecord {
 	 * @return string the year of death
 	 */
 	function getDeathYear() {
-		return $this->getDeathDate()->MinDate()->format('%Y');
+		return $this->getDeathDate()->minimumDate()->format('%Y');
 	}
 
 	/**
@@ -509,8 +509,8 @@ class Individual extends GedcomRecord {
 		return
 			/* I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920” */ I18N::translate(
 				'%1$s–%2$s',
-				'<span title="' . strip_tags($this->getBirthDate()->display()) . '">' . $this->getBirthDate()->MinDate()->format('%Y') . '</span>',
-				'<span title="' . strip_tags($this->getDeathDate()->display()) . '">' . $this->getDeathDate()->MinDate()->format('%Y') . '</span>'
+				'<span title="' . strip_tags($this->getBirthDate()->display()) . '">' . $this->getBirthDate()->minimumDate()->format('%Y') . '</span>',
+				'<span title="' . strip_tags($this->getDeathDate()->display()) . '">' . $this->getDeathDate()->minimumDate()->format('%Y') . '</span>'
 			);
 	}
 
@@ -595,57 +595,57 @@ class Individual extends GedcomRecord {
 				$min = array();
 				$max = array();
 				$tmp = $this->getDeathDate();
-				if ($tmp->MinJD()) {
-					$min[] = $tmp->MinJD() - $this->tree->getPreference('MAX_ALIVE_AGE') * 365;
-					$max[] = $tmp->MaxJD();
+				if ($tmp->isOK()) {
+					$min[] = $tmp->minimumJulianDay() - $this->tree->getPreference('MAX_ALIVE_AGE') * 365;
+					$max[] = $tmp->maximumJulianDay();
 				}
 				foreach ($this->getChildFamilies() as $family) {
 					$tmp = $family->getMarriageDate();
-					if (is_object($tmp) && $tmp->MinJD()) {
-						$min[] = $tmp->MaxJD() - 365 * 1;
-						$max[] = $tmp->MinJD() + 365 * 30;
+					if ($tmp->isOK()) {
+						$min[] = $tmp->maximumJulianDay() - 365 * 1;
+						$max[] = $tmp->minimumJulianDay() + 365 * 30;
 					}
 					if ($parent = $family->getHusband()) {
 						$tmp = $parent->getBirthDate();
-						if (is_object($tmp) && $tmp->MinJD()) {
-							$min[] = $tmp->MaxJD() + 365 * 15;
-							$max[] = $tmp->MinJD() + 365 * 65;
+						if ($tmp->isOK()) {
+							$min[] = $tmp->maximumJulianDay() + 365 * 15;
+							$max[] = $tmp->minimumJulianDay() + 365 * 65;
 						}
 					}
 					if ($parent = $family->getWife()) {
 						$tmp = $parent->getBirthDate();
-						if (is_object($tmp) && $tmp->MinJD()) {
-							$min[] = $tmp->MaxJD() + 365 * 15;
-							$max[] = $tmp->MinJD() + 365 * 45;
+						if ($tmp->isOK()) {
+							$min[] = $tmp->maximumJulianDay() + 365 * 15;
+							$max[] = $tmp->minimumJulianDay() + 365 * 45;
 						}
 					}
 					foreach ($family->getChildren() as $child) {
 						$tmp = $child->getBirthDate();
-						if ($tmp->MinJD()) {
-							$min[] = $tmp->MaxJD() - 365 * 30;
-							$max[] = $tmp->MinJD() + 365 * 30;
+						if ($tmp->isOK()) {
+							$min[] = $tmp->maximumJulianDay() - 365 * 30;
+							$max[] = $tmp->minimumJulianDay() + 365 * 30;
 						}
 					}
 				}
 				foreach ($this->getSpouseFamilies() as $family) {
 					$tmp = $family->getMarriageDate();
-					if (is_object($tmp) && $tmp->MinJD()) {
-						$min[] = $tmp->MaxJD() - 365 * 45;
-						$max[] = $tmp->MinJD() - 365 * 15;
+					if ($tmp->isOK()) {
+						$min[] = $tmp->maximumJulianDay() - 365 * 45;
+						$max[] = $tmp->minimumJulianDay() - 365 * 15;
 					}
 					$spouse = $family->getSpouse($this);
 					if ($spouse) {
 						$tmp = $spouse->getBirthDate();
-						if ($tmp->MinJD()) {
-							$min[] = $tmp->MaxJD() - 365 * 25;
-							$max[] = $tmp->MinJD() + 365 * 25;
+						if ($tmp->isOK()) {
+							$min[] = $tmp->maximumJulianDay() - 365 * 25;
+							$max[] = $tmp->minimumJulianDay() + 365 * 25;
 						}
 					}
 					foreach ($family->getChildren() as $child) {
 						$tmp = $child->getBirthDate();
-						if ($tmp->MinJD()) {
-							$min[] = $tmp->MaxJD() - 365 * ($this->getSex() == 'F' ? 45 : 65);
-							$max[] = $tmp->MinJD() - 365 * 15;
+						if ($tmp->isOK()) {
+							$min[] = $tmp->maximumJulianDay() - 365 * ($this->getSex() == 'F' ? 45 : 65);
+							$max[] = $tmp->minimumJulianDay() - 365 * 15;
 						}
 					}
 				}
@@ -677,8 +677,8 @@ class Individual extends GedcomRecord {
 				}
 			}
 			if ($this->_getEstimatedDeathDate === null) {
-				if ($this->getEstimatedBirthDate()->MinJD()) {
-					$this->_getEstimatedDeathDate = $this->getEstimatedBirthDate()->AddYears($this->tree->getPreference('MAX_ALIVE_AGE'), 'BEF');
+				if ($this->getEstimatedBirthDate()->minimumJulianDay()) {
+					$this->_getEstimatedDeathDate = $this->getEstimatedBirthDate()->addYears($this->tree->getPreference('MAX_ALIVE_AGE'), 'BEF');
 				} else {
 					$this->_getEstimatedDeathDate = new Date(''); // always return a date object
 				}
@@ -924,10 +924,10 @@ class Individual extends GedcomRecord {
 	function getChildFamilyLabel(Family $family) {
 		if (preg_match('/\n1 FAMC @' . $family->getXref() . '@(?:\n[2-9].*)*\n2 PEDI (.+)/', $this->getGedcom(), $match)) {
 			// A specified pedigree
-			return WT_Gedcom_Code_Pedi::getChildFamilyLabel($match[1]);
+			return GedcomCodePedi::getChildFamilyLabel($match[1]);
 		} else {
 			// Default (birth) pedigree
-			return WT_Gedcom_Code_Pedi::getChildFamilyLabel('');
+			return GedcomCodePedi::getChildFamilyLabel('');
 		}
 	}
 
@@ -1177,23 +1177,12 @@ class Individual extends GedcomRecord {
 		// GEDCOM nicknames should be specificied in a NICK field, or in the
 		// NAME filed, surrounded by ASCII quotes (or both).
 		if ($NICK) {
-			// NICK field found.  Add localised quotation marks.
+			// A NICK field is present.
+			$QNICK = /* I18N: Place a nickname in quotation marks */ I18N::translate('“%s”', $NICK);
 
-			// GREG 28/Jan/12 - these localised quotation marks apparently cause problems with LTR names on RTL
-			// pages and vice-versa.  Just use straight ASCII quotes.  Keep the old code, so that we keep the
-			// translations.
-			if (false) {
-				$QNICK =
-					/* I18N: Place a nickname in quotation marks */
-					I18N::translate('“%s”', $NICK);
-			} else {
-				$QNICK = '"' . $NICK . '"';
-			}
-
-			if (preg_match('/(^| |"|«|“|\'|‹|‘|„)' . preg_quote($NICK, '/') . '( |"|»|”|\'|›|’|”|$)/', $full)) {
-				// NICK present in name.  Localise ASCII quotes (but leave others).
-				// GREG 28/Jan/12 - redundant - see comment above.
-				// $full=str_replace('"'.$NICK.'"', $QNICK, $full);
+			if (strpos($full, '"' . $NICK . '"') !== false) {
+				// NICK present in name.  Localise ASCII quotes.
+				$full = str_replace('"' . $NICK . '"', $QNICK, $full);
 			} else {
 				// NICK not present in NAME.
 				$pos = strpos($full, '/');
@@ -1205,6 +1194,9 @@ class Individual extends GedcomRecord {
 					$full = substr($full, 0, $pos) . $QNICK . ' ' . substr($full, $pos);
 				}
 			}
+		} else {
+			// No NICK field - but nickname may be included in NAME (in quotes)
+			$full = preg_replace_callback('/"([^"]*)"/', function($matches) { return I18N::translate('“%s”', $matches[1]); }, $full);
 		}
 
 		// Remove slashes - they don’t get displayed
@@ -1252,7 +1244,7 @@ class Individual extends GedcomRecord {
 	 * Get an array of structures containing all the names in the record
 	 */
 	public function extractNames() {
-		$this->_extractNames(1, 'NAME', $this->getFacts('NAME', false, WT_USER_ACCESS_LEVEL, $this->canShowName()));
+		$this->extractNamesFromFacts(1, 'NAME', $this->getFacts('NAME', false, WT_USER_ACCESS_LEVEL, $this->canShowName()));
 	}
 
 	/**
@@ -1263,8 +1255,8 @@ class Individual extends GedcomRecord {
 	 */
 	function formatListDetails() {
 		return
-			$this->format_first_major_fact(WT_EVENTS_BIRT, 1) .
-			$this->format_first_major_fact(WT_EVENTS_DEAT, 1);
+			$this->formatFirstMajorFact(WT_EVENTS_BIRT, 1) .
+			$this->formatFirstMajorFact(WT_EVENTS_DEAT, 1);
 	}
 
 	/**

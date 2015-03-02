@@ -50,10 +50,10 @@ if ($reset === 'Reset') {
 }
 
 // A list of all subfolders used by this tree
-$folders = WT_Query_Media::folderList();
+$folders = QueryMedia::folderList();
 
 // A list of all media objects matching the search criteria
-$medialist = WT_Query_Media::mediaList(
+$medialist = QueryMedia::mediaList(
 	$folder,
 	$currentdironly ? 'exclude' : 'include',
 	$sortby,
@@ -266,21 +266,21 @@ if ($search) {
 				echo '<p><b><a href="', $mediaobject->getHtmlUrl(), '">';
 				echo basename($mediaobject->getFilename());
 				echo '</a></b></p>';
-				echo WT_Gedcom_Tag::getLabelValue('TITL', $mediaobject->getFullName());
+				echo GedcomTag::getLabelValue('TITL', $mediaobject->getFullName());
 			}
 			// Show file details
 			if ($mediaobject->isExternal()) {
-				echo WT_Gedcom_Tag::getLabelValue('URL', $mediaobject->getFilename());
+				echo GedcomTag::getLabelValue('URL', $mediaobject->getFilename());
 			} else {
 				if ($mediaobject->fileExists()) {
 					if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
-						echo WT_Gedcom_Tag::getLabelValue('FILE', $mediaobject->getFilename());
+						echo GedcomTag::getLabelValue('FILE', $mediaobject->getFilename());
 					}
-					echo WT_Gedcom_Tag::getLabelValue('FORM', $mediaobject->mimeType());
-					echo WT_Gedcom_Tag::getLabelValue('__FILE_SIZE__', $mediaobject->getFilesize());
+					echo GedcomTag::getLabelValue('FORM', $mediaobject->mimeType());
+					echo GedcomTag::getLabelValue('__FILE_SIZE__', $mediaobject->getFilesize());
 					$imgsize = $mediaobject->getImageAttributes();
 					if ($imgsize['WxH']) {
-						echo WT_Gedcom_Tag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
+						echo GedcomTag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
 					}
 				} else {
 					echo '<p class="ui-state-error">', /* I18N: %s is a filename */ I18N::translate('The file “%s” does not exist.', $mediaobject->getFilename()), '</p>';
