@@ -535,7 +535,7 @@ class GedcomRecord {
 	 * @param string    $fact_type
 	 * @param Fact[] $facts
 	 */
-	protected function _extractNames($level, $fact_type, $facts) {
+	protected function extractNamesFromFacts($level, $fact_type, $facts) {
 		$sublevel    = $level + 1;
 		$subsublevel = $sublevel + 1;
 		foreach ($facts as $fact) {
