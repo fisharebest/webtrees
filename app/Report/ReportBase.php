@@ -1939,7 +1939,7 @@ function ageAtDeathStartHandler() {
 			$death_date = new Date('');
 		}
 		$value = '';
-		if (Date::Compare($birth_date, $death_date) <= 0 || !$person->isDead()) {
+		if (Date::compare($birth_date, $death_date) <= 0 || !$person->isDead()) {
 			$age = Date::GetAgeGedcom($birth_date, $death_date);
 			// Only show calculated age if it differs from recorded age
 			if ($age != '' && $age != "0d") {
@@ -2310,9 +2310,9 @@ function listStartHandler($attrs) {
 					$sql_where .= " AND {$attr}.d_fact='{$match[1]}'";
 					$date = new Date($match[3]);
 					if ($match[2] == "LTE") {
-						$sql_where .= " AND {$attr}.d_julianday2<=" . $date->minJD();
+						$sql_where .= " AND {$attr}.d_julianday2<=" . $date->minimumJulianDay();
 					} else {
-						$sql_where[] = " AND {$attr}.d_julianday1>=" . $date->minJD();
+						$sql_where[] = " AND {$attr}.d_julianday1>=" . $date->minimumJulianDay();
 					}
 					if ($sortby == $match[1]) {
 						$sortby = "";
@@ -2396,9 +2396,9 @@ function listStartHandler($attrs) {
 					$sql_where .= " AND {$attr}.d_fact='{$match[1]}'";
 					$date = new Date($match[3]);
 					if ($match[2] == "LTE") {
-						$sql_where .= " AND {$attr}.d_julianday2<=" . $date->minJD();
+						$sql_where .= " AND {$attr}.d_julianday2<=" . $date->minimumJulianDay();
 					} else {
-						$sql_where .= " AND {$attr}.d_julianday1>=" . $date->minJD();
+						$sql_where .= " AND {$attr}.d_julianday1>=" . $date->minimumJulianDay();
 					}
 					if ($sortby == $match[1]) {
 						$sortby = "";
@@ -2573,7 +2573,7 @@ function listStartHandler($attrs) {
 						if ($t == "DATE") {
 							$date1 = new Date($v);
 							$date2 = new Date($val);
-							$keep = (Date::Compare($date1, $date2) >= 0);
+							$keep = (Date::compare($date1, $date2) >= 0);
 						} elseif ($val >= $v) {
 							$keep = true;
 						}
@@ -2582,7 +2582,7 @@ function listStartHandler($attrs) {
 						if ($t == "DATE") {
 							$date1 = new Date($v);
 							$date2 = new Date($val);
-							$keep = (Date::Compare($date1, $date2) <= 0);
+							$keep = (Date::compare($date1, $date2) <= 0);
 						} elseif ($val >= $v) {
 							$keep = true;
 						}

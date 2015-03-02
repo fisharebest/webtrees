@@ -106,7 +106,7 @@ class todo_WT_Module extends Module implements ModuleBlockInterface {
 				$content .= '<tr>';
 				//-- Event date (sortable)
 				$content .= '<td>'; //hidden by datables code
-				$content .= $fact->getDate()->JD();
+				$content .= $fact->getDate()->julianDay();
 				$content .= '</td>';
 				$content .= '<td class="wrap">' . $fact->getDate()->display() . '</td>';
 				$content .= '<td class="wrap"><a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a></td>';

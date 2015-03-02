@@ -99,7 +99,7 @@ class TimelineController extends PageController {
 				$this->pidlinks .= 'pids%5B%5D=' . $indi->getXref() . '&amp;';
 				$bdate = $indi->getBirthDate();
 				if ($bdate->isOK()) {
-					$date                                = new GregorianDate($bdate->MinDate()->minJD);
+					$date                                = new GregorianDate($bdate->minimumJulianDay());
 					$this->birthyears [$indi->getXref()] = $date->y;
 					$this->birthmonths[$indi->getXref()] = max(1, $date->m);
 					$this->birthdays  [$indi->getXref()] = max(1, $date->d);
@@ -118,7 +118,7 @@ class TimelineController extends PageController {
 						// check for a date
 						$date = $event->getDate();
 						if ($date->isOK()) {
-							$date           = new GregorianDate($date->MinDate()->minJD);
+							$date           = new GregorianDate($date->minimumJulianDay());
 							$this->baseyear = min($this->baseyear, $date->y);
 							$this->topyear  = max($this->topyear, $date->y);
 
@@ -160,7 +160,7 @@ class TimelineController extends PageController {
 		$desc = $event->getValue();
 		// check if this is a family fact
 		$gdate    = $event->getDate();
-		$date     = $gdate->MinDate();
+		$date     = $gdate->minimumDate();
 		$date     = $date->convertToCalendar('gregorian');
 		$year     = $date->y;
 		$month    = max(1, $date->m);

@@ -308,7 +308,7 @@ function format_parents_age(Individual $person, Date $birth_date) {
 				switch ($parent->getSex()) {
 				case 'F':
 					// Highlight mothers who die in childbirth or shortly afterwards
-					if ($deatdate->isOK() && $deatdate->MinJD() < $birth_date->MinJD() + 90) {
+					if ($deatdate->isOK() && $deatdate->MinJD() < $birth_date->minimumJulianDay() + 90) {
 						$html .= ' <span title="' . WT_Gedcom_Tag::getLabel('_DEAT_PARE', $parent) . '" class="parentdeath">' . $sex . $age . '</span>';
 					} else {
 						$html .= ' <span title="' . I18N::translate('Mother’s age') . '">' . $sex . $age . '</span>';
@@ -316,7 +316,7 @@ function format_parents_age(Individual $person, Date $birth_date) {
 					break;
 				case 'M':
 					// Highlight fathers who die before the birth
-					if ($deatdate->isOK() && $deatdate->MinJD() < $birth_date->MinJD()) {
+					if ($deatdate->isOK() && $deatdate->MinJD() < $birth_date->minimumJulianDay()) {
 						$html .= ' <span title="' . WT_Gedcom_Tag::getLabel('_DEAT_PARE', $parent) . '" class="parentdeath">' . $sex . $age . '</span>';
 					} else {
 						$html .= ' <span title="' . I18N::translate('Father’s age') . '">' . $sex . $age . '</span>';
@@ -393,7 +393,7 @@ function format_fact_date(Fact $event, GedcomRecord $record, $anchor, $time) {
 					$death_date = new Date('');
 				}
 				$ageText = '';
-				if ((Date::Compare($date, $death_date) <= 0 || !$record->isDead()) || $fact == 'DEAT') {
+				if ((Date::compare($date, $death_date) <= 0 || !$record->isDead()) || $fact == 'DEAT') {
 					// Before death, print age
 					$age = Date::GetAgeGedcom($birth_date, $date);
 					// Only show calculated age if it differs from recorded age
@@ -410,7 +410,7 @@ function format_fact_date(Fact $event, GedcomRecord $record, $anchor, $time) {
 						}
 					}
 				}
-				if ($fact != 'DEAT' && Date::Compare($date, $death_date) >= 0) {
+				if ($fact != 'DEAT' && Date::compare($date, $death_date) >= 0) {
 					// After death, print time since death
 					$age = get_age_at_event(Date::GetAgeGedcom($death_date, $date), true);
 					if ($age != '') {
@@ -435,7 +435,7 @@ function format_fact_date(Fact $event, GedcomRecord $record, $anchor, $time) {
 				$birth_date = $indi->getBirthDate();
 				$death_date = $indi->getDeathDate();
 				$ageText    = '';
-				if (Date::Compare($date, $death_date) <= 0) {
+				if (Date::compare($date, $death_date) <= 0) {
 					$age = Date::GetAgeGedcom($birth_date, $date);
 					// Only show calculated age if it differs from recorded age
 					if ($age != '' && $age > 0) {
@@ -605,7 +605,7 @@ function print_add_new_fact($id, $usedfacts, $type) {
 				// TODO use the event class to store/parse the clipboard events
 				if (preg_match('/^2 DATE (.+)/m', $fact['factrec'], $match)) {
 					$tmp = new Date($match[1]);
-					echo '; ', $tmp->minDate()->format('%Y');
+					echo '; ', $tmp->minimumDate()->format('%Y');
 				}
 				if (preg_match('/^2 PLAC ([^,\n]+)/m', $fact['factrec'], $match)) {
 					echo '; ', $match[1];

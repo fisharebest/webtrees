@@ -182,7 +182,7 @@ class personal_facts_WT_Module extends Module implements ModuleTabInterface {
 			foreach ($spouse->getFacts(WT_EVENTS_DEAT) as $fact) {
 
 				$fact_date = $fact->getDate();
-				if ($fact_date->isOK() && Date::Compare($birt_date, $fact_date) <= 0 && Date::Compare($fact_date, $deat_date) <= 0) {
+				if ($fact_date->isOK() && Date::compare($birt_date, $fact_date) <= 0 && Date::compare($fact_date, $deat_date) <= 0) {
 					// Convert the event to a close relatives event.
 					$rela_fact = clone($fact);
 					$rela_fact->setTag('_' . $fact->getTag() . '_SPOU');
@@ -254,7 +254,7 @@ class personal_facts_WT_Module extends Module implements ModuleTabInterface {
 				foreach ($child->getFacts(WT_EVENTS_BIRT) as $fact) {
 					$sgdate = $fact->getDate();
 					// Always show _BIRT_CHIL, even if the dates are not known
-					if ($option == '_CHIL' || $sgdate->isOK() && Date::Compare($birt_date, $sgdate) <= 0 && Date::Compare($sgdate, $deat_date) <= 0) {
+					if ($option == '_CHIL' || $sgdate->isOK() && Date::compare($birt_date, $sgdate) <= 0 && Date::compare($sgdate, $deat_date) <= 0) {
 						if ($option == '_GCHI' && $relation == 'dau') {
 							// Convert the event to a close relatives event.
 							$rela_fact = clone($fact);
@@ -278,7 +278,7 @@ class personal_facts_WT_Module extends Module implements ModuleTabInterface {
 			if (strpos($SHOW_RELATIVES_EVENTS, '_DEAT' . str_replace('_HSIB', '_SIBL', $option)) !== false) {
 				foreach ($child->getFacts(WT_EVENTS_DEAT) as $fact) {
 					$sgdate = $fact->getDate();
-					if ($sgdate->isOK() && Date::Compare($birt_date, $sgdate) <= 0 && Date::Compare($sgdate, $deat_date) <= 0) {
+					if ($sgdate->isOK() && Date::compare($birt_date, $sgdate) <= 0 && Date::compare($sgdate, $deat_date) <= 0) {
 						if ($option == '_GCHI' && $relation == 'dau') {
 							// Convert the event to a close relatives event.
 							$rela_fact = clone($fact);
@@ -303,7 +303,7 @@ class personal_facts_WT_Module extends Module implements ModuleTabInterface {
 				foreach ($child->getSpouseFamilies() as $sfamily) {
 					foreach ($sfamily->getFacts(WT_EVENTS_MARR) as $fact) {
 						$sgdate = $fact->getDate();
-						if ($sgdate->isOK() && Date::Compare($birt_date, $sgdate) <= 0 && Date::Compare($sgdate, $deat_date) <= 0) {
+						if ($sgdate->isOK() && Date::compare($birt_date, $sgdate) <= 0 && Date::compare($sgdate, $deat_date) <= 0) {
 							if ($option == '_GCHI' && $relation == 'dau') {
 								// Convert the event to a close relatives event.
 								$rela_fact = clone($fact);
@@ -374,7 +374,7 @@ class personal_facts_WT_Module extends Module implements ModuleTabInterface {
 				// add father/mother marriages
 				foreach ($person->getChildFamilies() as $sfamily) {
 					foreach ($sfamily->getFacts(WT_EVENTS_MARR) as $fact) {
-						if ($fact->getDate()->isOK() && Date::Compare($birt_date, $fact->getDate()) <= 0 && Date::Compare($fact->getDate(), $deat_date) <= 0) {
+						if ($fact->getDate()->isOK() && Date::compare($birt_date, $fact->getDate()) <= 0 && Date::compare($fact->getDate(), $deat_date) <= 0) {
 							// marriage of parents (to each other)
 							$rela_fact = clone($fact);
 							$rela_fact->setTag('_' . $fact->getTag() . '_FAMC');
@@ -384,7 +384,7 @@ class personal_facts_WT_Module extends Module implements ModuleTabInterface {
 				}
 				foreach ($person->getChildStepFamilies() as $sfamily) {
 					foreach ($sfamily->getFacts(WT_EVENTS_MARR) as $fact) {
-						if ($fact->getDate()->isOK() && Date::Compare($birt_date, $fact->getDate()) <= 0 && Date::Compare($fact->getDate(), $deat_date) <= 0) {
+						if ($fact->getDate()->isOK() && Date::compare($birt_date, $fact->getDate()) <= 0 && Date::compare($fact->getDate(), $deat_date) <= 0) {
 							// marriage of a parent (to another spouse)
 							// Convert the event to a close relatives event
 							$rela_fact = clone($fact);
@@ -400,7 +400,7 @@ class personal_facts_WT_Module extends Module implements ModuleTabInterface {
 			foreach ($family->getSpouses() as $parent) {
 				if (strstr($SHOW_RELATIVES_EVENTS, '_DEAT' . ($sosa == 1 ? '_PARE' : '_GPAR'))) {
 					foreach ($parent->getFacts(WT_EVENTS_DEAT) as $fact) {
-						if ($fact->getDate()->isOK() && Date::Compare($birt_date, $fact->getDate()) <= 0 && Date::Compare($fact->getDate(), $deat_date) <= 0) {
+						if ($fact->getDate()->isOK() && Date::compare($birt_date, $fact->getDate()) <= 0 && Date::compare($fact->getDate(), $deat_date) <= 0) {
 							switch ($sosa) {
 							case 1:
 								// Convert the event to a close relatives event.
@@ -457,7 +457,7 @@ class personal_facts_WT_Module extends Module implements ModuleTabInterface {
 
 					$fact = new Fact($hist, $person, 'histo');
 					$sdate = $fact->getDate();
-					if ($sdate->isOK() && Date::Compare($birt_date, $sdate) <= 0 && Date::Compare($sdate, $deat_date) <= 0) {
+					if ($sdate->isOK() && Date::compare($birt_date, $sdate) <= 0 && Date::compare($sdate, $deat_date) <= 0) {
 						$facts[] = $fact;
 					}
 				}

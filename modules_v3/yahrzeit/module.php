@@ -71,7 +71,7 @@ class yahrzeit_WT_Module extends Module implements ModuleBlockInterface {
 			foreach (get_anniversary_events($jd, 'DEAT _YART') as $fact) {
 				// Exact hebrew dates only
 				$date = $fact->getDate();
-				if ($date->MinDate() instanceof JewishDate && $date->MinJD() == $date->MaxJD()) {
+				if ($date->minimumDate() instanceof JewishDate && $date->minimumJulianDay() == $date->maximumJulianDay()) {
 					$fact->jd = $jd;
 					$yahrzeits[] = $fact;
 				}
@@ -177,7 +177,7 @@ class yahrzeit_WT_Module extends Module implements ModuleBlockInterface {
 
 					// death/yahrzeit event date
 					$content .= '<td>' . $yahrzeit->getDate()->display() . '</td>';
-					$content .= '<td>' . $yahrzeit->getDate()->minJD() . '</td>'; // sortable date
+					$content .= '<td>' . $yahrzeit->getDate()->julianDay() . '</td>'; // sortable date
 
 					// Anniversary
 					$content .= '<td>' . $yahrzeit->anniv . '</td>';
@@ -194,7 +194,7 @@ class yahrzeit_WT_Module extends Module implements ModuleBlockInterface {
 					}
 					$td = new Date($today->format('%@ %A %O %E'));
 					$content .= '<td>' . $td->display() . '</td>';
-					$content .= '<td>' . $td->minJD() . '</td>'; // sortable date
+					$content .= '<td>' . $td->julianDay() . '</td>'; // sortable date
 
 					$content .= '</tr>';
 				}
@@ -202,7 +202,7 @@ class yahrzeit_WT_Module extends Module implements ModuleBlockInterface {
 			$content .= '</tbody></table>';
 
 			break;
-		}
+		} 
 
 		if ($template) {
 			if ($block) {
