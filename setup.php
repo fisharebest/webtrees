@@ -27,6 +27,11 @@ global $WT_REQUEST, $WT_SESSION;
 define('WT_SCRIPT_NAME', 'setup.php');
 define('WT_CONFIG_FILE', 'config.ini.php');
 
+// We use some PHP5.5 features, but need to run on older servers
+if (version_compare(PHP_VERSION, '5.4', '<')) {
+	require WT_ROOT . 'includes/php_53_compatibility.php';
+}
+
 require 'vendor/autoload.php';
 
 // This script (uniquely) does not load session.php.
