@@ -590,8 +590,8 @@ class Media extends GedcomRecord {
 	public function extractNames() {
 		// Earlier gedcom versions had level 1 titles
 		// Later gedcom versions had level 2 titles
-		$this->_extractNames(2, 'TITL', $this->getFacts('FILE'));
-		$this->_extractNames(1, 'TITL', $this->getFacts('TITL'));
+		$this->extractNamesFromFacts(2, 'TITL', $this->getFacts('FILE'));
+		$this->extractNamesFromFacts(1, 'TITL', $this->getFacts('TITL'));
 	}
 
 	/** {@inheritdoc} */

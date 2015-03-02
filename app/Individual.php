@@ -1244,7 +1244,7 @@ class Individual extends GedcomRecord {
 	 * Get an array of structures containing all the names in the record
 	 */
 	public function extractNames() {
-		$this->_extractNames(1, 'NAME', $this->getFacts('NAME', false, WT_USER_ACCESS_LEVEL, $this->canShowName()));
+		$this->extractNamesFromFacts(1, 'NAME', $this->getFacts('NAME', false, WT_USER_ACCESS_LEVEL, $this->canShowName()));
 	}
 
 	/**

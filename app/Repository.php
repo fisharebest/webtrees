@@ -62,6 +62,6 @@ class Repository extends GedcomRecord {
 
 	/** {@inheritdoc} */
 	public function extractNames() {
-		parent::_extractNames(1, 'NAME', $this->getFacts('NAME'));
+		parent::extractNamesFromFacts(1, 'NAME', $this->getFacts('NAME'));
 	}
 }
