@@ -191,9 +191,9 @@ abstract class Module {
 			$modules = array();
 			foreach ($module_names as $module_name) {
 				try {
-					$module = require WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php';
+					$module = include WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php';
 					$modules[$module->getName()] = $module;
-				} catch (\Exception $ex) {
+				} catch (\ErrorException $ex) {
 					// Module has been deleted or is broken?  Disable it.
 					Log::addConfigurationLog("Module {$module_name} is missing or broken - disabling it");
 					Database::prepare(
@@ -368,7 +368,7 @@ abstract class Module {
 
 		foreach (glob(WT_ROOT . WT_MODULES_DIR . '*/module.php') as $file) {
 			try {
-				$module = require $file;
+				$module = include $file;
 				$modules[$module->getName()] = $module;
 				Database::prepare("INSERT IGNORE INTO `##module` (module_name, status, menu_order, sidebar_order, tab_order) VALUES (?, ?, ?, ?, ?)")
 					->execute(array(
