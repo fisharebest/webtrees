@@ -43,7 +43,7 @@ class IndividualController extends GedcomRecordController {
 
 		parent::__construct();
 
-		$this->tabs = Module::getActiveTabs();
+		$this->tabs = Module::getActiveTabs($this->record->getTree());
 
 		// If we can display the details, add them to the page header
 		if ($this->record && $this->record->canShow()) {
@@ -317,7 +317,7 @@ class IndividualController extends GedcomRecordController {
 		}
 
 		// add to favorites
-		if (array_key_exists('user_favorites', Module::getActiveModules())) {
+		if (Module::getModuleByName('user_favorites')) {
 			$submenu = new Menu(
 				/* I18N: Menu option.  Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
 				'#',
@@ -383,7 +383,7 @@ class IndividualController extends GedcomRecordController {
 		$html = '';
 		$active = 0;
 		$n = 0;
-		foreach (Module::getActiveSidebars() as $mod) {
+		foreach (Module::getActiveSidebars($this->record->getTree()) as $mod) {
 			if ($mod->hasSidebarContent()) {
 				$html .= '<h3 id="' . $mod->getName() . '"><a href="#">' . $mod->getTitle() . '</a></h3>';
 				$html .= '<div id="sb_content_' . $mod->getName() . '">' . $mod->getSidebarContent() . '</div>';

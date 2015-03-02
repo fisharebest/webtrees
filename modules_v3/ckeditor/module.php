@@ -16,42 +16,4 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/**
- * Class ckeditor_WT_Module
- */
-class ckeditor_WT_Module extends Module {
-	/** {@inheritdoc} */
-	public function getTitle() {
-		return /* I18N: Name of a module.  CKEditor is a trademark.  Do not translate it?  http://ckeditor.com */ I18N::translate('CKEditor™');
-	}
-
-	/** {@inheritdoc} */
-	public function getDescription() {
-		return /* I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get” */ I18N::translate('Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes.');
-	}
-
-	/**
-	 * Convert <textarea class="html-edit"> fields to CKEditor fields
-	 *
-	 * This function needs to be called *after* we have sent the page header and
-	 * before we have sent the page footer.
-	 *
-	 * @param BaseController $controller
-	 *
-	 * @return void
-	 */
-	public static function enableEditor($controller) {
-		$controller
-			->addExternalJavascript(WT_CKEDITOR_BASE_URL . 'ckeditor.js')
-			->addExternalJavascript(WT_CKEDITOR_BASE_URL . 'adapters/jquery.js')
-			// Need to specify the path before we load the libary
-			->addInlineJavascript(
-				'var CKEDITOR_BASEPATH="' . WT_CKEDITOR_BASE_URL . '";',
-				BaseController::JS_PRIORITY_HIGH
-			)
-			// Activate the editor
-			->addInlineJavascript('jQuery(".html-edit").ckeditor(function(){}, {
-				language: "' . str_replace('_', '-', strtolower(WT_LOCALE)) . '"
-			});');
-	}
-}
+return new CkeditorModule(__DIR__);

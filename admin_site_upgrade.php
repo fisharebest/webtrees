@@ -112,7 +112,7 @@ echo '</li>';
 echo '<li>', /* I18N: The system is about to [...] */ I18N::translate('Check for custom modules…');
 
 $custom_modules = false;
-foreach (Module::getActiveModules() as $module) {
+foreach (Module::getInstalledModules('disabled') as $module) {
 	switch ($module->getName()) {
 	case 'GEDFact_assistant':
 	case 'ahnentafel_report':

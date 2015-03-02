@@ -81,12 +81,7 @@ case 'list':
 	echo '<h4><a href="placelist.php?display=hierarchy">', I18N::translate('Show places in hierarchy'), '</a></h4>';
 	break;
 case 'hierarchy':
-	$all_modules = Module::getActiveModules();
-	if (array_key_exists('googlemap', $all_modules)) {
-		$gm_module = $all_modules['googlemap'];
-	} else {
-		$gm_module = null;
-	}
+	$gm_module = Module::getModuleByName('googlemap');
 
 	// Find this place and its ID
 	$place = new Place(implode(', ', array_reverse($parent)), $WT_TREE);
@@ -126,9 +121,9 @@ case 'hierarchy':
 			}
 		}
 		$gm_module->createMap($placelevels);
-	} elseif (array_key_exists('places_assistant', Module::getActiveModules())) {
+	} elseif (Module::getModuleByName('places_assistant')) {
 		// Places Assistant is a custom/add-on module that was once part of the core code.
-		\places_assistant_WT_Module::display_map($level, $parent);
+		\PlacesAssistantModule::display_map($level, $parent);
 	}
 
 	// -- echo the array

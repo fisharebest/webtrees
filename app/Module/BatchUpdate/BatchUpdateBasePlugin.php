@@ -67,12 +67,12 @@ class BatchUpdateBasePlugin {
 	function getActionButtons($xref) {
 		if (Auth::user()->getPreference('auto_accept')) {
 			return array(
-				batch_update_WT_Module::createSubmitButton(I18N::translate('Update'), $xref, 'update'),
-				batch_update_WT_Module::createSubmitButton(I18N::translate('Update all'), $xref, 'update_all')
+				BatchUpdateModule::createSubmitButton(I18N::translate('Update'), $xref, 'update'),
+				BatchUpdateModule::createSubmitButton(I18N::translate('Update all'), $xref, 'update_all')
 			);
 		} else {
 			return array(
-				batch_update_WT_Module::createSubmitButton(I18N::translate('Update'), $xref, 'update')
+				BatchUpdateModule::createSubmitButton(I18N::translate('Update'), $xref, 'update')
 			);
 		}
 	}

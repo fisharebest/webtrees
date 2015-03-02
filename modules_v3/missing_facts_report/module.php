@@ -16,37 +16,4 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/**
- * Class missing_facts_report_WT_Module
- */
-class missing_facts_report_WT_Module extends Module implements ModuleReportInterface {
-	/** {@inheritdoc} */
-	public function getTitle() {
-		// This text also appears in the .XML file - update both together
-		return /* I18N: Name of a module/report */ I18N::translate('Missing data');
-	}
-
-	/** {@inheritdoc} */
-	public function getDescription() {
-		// This text also appears in the .XML file - update both together
-		return /* I18N: Description of the “Missing data” */ I18N::translate('A report of the information that is missing for an individual and their relatives.');
-	}
-
-	/** {@inheritdoc} */
-	public function defaultAccessLevel() {
-		return WT_PRIV_USER;
-	}
-
-	/** {@inheritdoc} */
-	public function getReportMenus() {
-		$menus = array();
-		$menu = new Menu(
-			$this->getTitle(),
-			'reportengine.php?ged=' . WT_GEDURL . '&amp;action=setup&amp;report=' . WT_MODULES_DIR . $this->getName() . '/report.xml',
-			'menu-report-' . $this->getName()
-		);
-		$menus[] = $menu;
-
-		return $menus;
-	}
-}
+return new MissingFactsReportModule(__DIR__);

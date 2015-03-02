@@ -97,9 +97,9 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin {
 		$missing_surnames = array();
 		preg_match_all('/^1 FAMS @(.+)@/m', $gedrec, $fmatch);
 		foreach ($fmatch[1] as $famid) {
-			$famrec = batch_update_WT_Module::getLatestRecord($famid, 'FAM');
+			$famrec = BatchUpdateModule::getLatestRecord($famid, 'FAM');
 			if (preg_match('/^1 MARR/m', $famrec) && preg_match('/^1 HUSB @(.+)@/m', $famrec, $hmatch)) {
-				$husbrec = batch_update_WT_Module::getLatestRecord($hmatch[1], 'INDI');
+				$husbrec = BatchUpdateModule::getLatestRecord($hmatch[1], 'INDI');
 				$husb_surnames = array_unique(array_merge($husb_surnames, self::surnames($hmatch[1], $husbrec)));
 			}
 		}

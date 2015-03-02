@@ -90,8 +90,8 @@ foreach ($controller->record->getFacts() as $fact) {
 }
 
 // Legacy formatting, created by the census assistant
-if (array_key_exists('GEDFact_assistant', Module::getActiveModules())) {
-	$text = GEDFact_assistant_WT_Module::formatCensusNote($controller->record);
+if (Module::getModuleByName('GEDFact_assistant')) {
+	$text = CensusAssistantModule::formatCensusNote($controller->record);
 } else {
 	$text = Filter::formatText($controller->record->getNote(), $controller->record->getTree());
 }

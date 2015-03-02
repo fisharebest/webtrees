@@ -41,7 +41,7 @@ $linkto   = Filter::get('linkto', 'person|source|family|manage|repository|note')
 $action   = Filter::get('action', 'choose|update', 'choose');
 
 // If GedFAct_assistant/_MEDIA/ installed ======================
-if ($linkto == 'manage' && array_key_exists('GEDFact_assistant', Module::getActiveModules())) {
+if ($linkto == 'manage' && Module::getModuleByName('GEDFact_assistant')) {
 	require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/_MEDIA/media_0_inverselink.php';
 } else {
 

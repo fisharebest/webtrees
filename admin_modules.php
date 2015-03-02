@@ -152,8 +152,8 @@ $controller
 		</thead>
 		<tbody>
 		<?php
-		foreach ($modules as $module) {
-			$status = $module_status[$module->getName()];
+		foreach ($modules as $module_name => $module) {
+			$status = $module_status[$module_name];
 			echo
 			'<tr><td class="text-center">', two_state_checkbox('status-' . $module->getName(), $status === 'enabled'), '</td>',
 			'<td>';
