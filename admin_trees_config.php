@@ -921,7 +921,7 @@ $controller
 				<?php foreach (User::all() as $user): ?>
 					<?php if (Auth::isMember($WT_TREE, $user)): ?>
 						<option value="<?php echo $user->getUserId(); ?>" <?php echo $WT_TREE->getPreference('CONTACT_USER_ID') === $user->getUserId() ? 'selected' : ''; ?>>
-							<?php echo Filter::escapeHtml($user->getRealName()) . ' - ' . Filter::escapeHtml($user->getUserName()); ?>
+							<?php echo $user->getRealNameHtml() . ' - ' . Filter::escapeHtml($user->getUserName()); ?>
 						</option>
 					<?php endif; ?>
 				<?php endforeach; ?>
@@ -943,7 +943,7 @@ $controller
 				<?php foreach (User::all() as $user): ?>
 					<?php if (Auth::isMember($WT_TREE, $user)): ?>
 						<option value="<?php echo $user->getUserId(); ?>" <?php echo $WT_TREE->getPreference('WEBMASTER_USER_ID') === $user->getUserId() ? 'selected' : ''; ?>>
-							<?php echo Filter::escapeHtml($user->getRealName()) . ' - ' . Filter::escapeHtml($user->getUserName()); ?>
+							<?php echo $user->getRealNameHtml() . ' - ' . Filter::escapeHtml($user->getUserName()); ?>
 						</option>
 					<?php endif; ?>
 				<?php endforeach; ?>

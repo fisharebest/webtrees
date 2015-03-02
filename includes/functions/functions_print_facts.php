@@ -388,7 +388,7 @@ function print_fact(Fact $fact, GedcomRecord $record) {
 		case '_WT_USER':
 			$user = User::findByIdentifier($match[2]); // may not exist
 			if ($user) {
-				echo GedcomTag::getLabelValue('_WT_USER', Filter::escapeHtml($user->getRealName()));
+				echo GedcomTag::getLabelValue('_WT_USER', $user->getRealNameHtml());
 			} else {
 				echo GedcomTag::getLabelValue('_WT_USER', Filter::escapeHtml($match[2]));
 			}

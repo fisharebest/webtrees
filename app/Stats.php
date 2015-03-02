@@ -5497,7 +5497,7 @@ class Stats {
 	 * @return string
 	 */
 	public function userFullName() {
-		return Auth::check() ? Filter::escapeHtml(Auth::user()->getRealName()) : '';
+		return Auth::check() ? Auth::user()->getRealNameHtml() : '';
 	}
 
 	/**
@@ -5522,9 +5522,9 @@ class Stats {
 		case 'userid':
 			return $user->getUserId();
 		case 'username':
-			return $user->getUserName();
+			return Filter::escapeHtml($user->getUserName());
 		case 'fullname':
-			return $user->getRealName();
+			return $user->getRealNameHtml();
 		case 'regdate':
 			if (is_array($params) && isset($params[0]) && $params[0] != '') {
 				$datestamp = $params[0];
