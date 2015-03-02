@@ -295,7 +295,7 @@ case 'general':
 	$WT_TREE->setPreference('SHOW_PARENTS_AGE', Filter::postBool('SHOW_PARENTS_AGE'));
 	$WT_TREE->setPreference('SHOW_PEDIGREE_PLACES', Filter::post('SHOW_PEDIGREE_PLACES'));
 	$WT_TREE->setPreference('SHOW_PEDIGREE_PLACES_SUFFIX', Filter::postBool('SHOW_PEDIGREE_PLACES_SUFFIX'));
-	$WT_TREE->setPreference('SHOW_RELATIVES_EVENTS', implode(',', Filter::post('SHOW_RELATIVES_EVENTS')));
+	$WT_TREE->setPreference('SHOW_RELATIVES_EVENTS', implode(',', Filter::postArray('SHOW_RELATIVES_EVENTS')));
 	$WT_TREE->setPreference('SHOW_STATS', Filter::postBool('SHOW_STATS'));
 	$WT_TREE->setPreference('SOURCE_ID_PREFIX', Filter::post('SOURCE_ID_PREFIX'));
 	$WT_TREE->setPreference('SOUR_FACTS_ADD', str_replace(' ', '', Filter::post('SOUR_FACTS_ADD')));
@@ -1018,7 +1018,7 @@ $controller
 			<?php echo /* I18N: A configuration setting */ I18N::translate('Default theme'); ?>
 		</label>
 		<div class="col-sm-9">
-			<?php echo select_edit_control('THEME_DIR', get_theme_names(), I18N::translate('<default theme>'), $WT_TREE->getPreference('THEME_DIR'), 'class="form-control"'); ?>
+			<?php echo select_edit_control('THEME_DIR', Theme::themeNames(), I18N::translate('<default theme>'), $WT_TREE->getPreference('THEME_DIR'), 'class="form-control"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Default theme” configuration setting */ I18N::translate('You can change the appearance of webtrees using “themes”.  Each theme has a different style, layout, color scheme, etc.'); ?>
 			</p>

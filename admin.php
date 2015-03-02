@@ -646,6 +646,8 @@ $changes = Database::prepare(
 						<tr class="<?php echo $changes[$tree->getTreeId()] ? 'danger' : ''; ?>">
 							<td>
 								<a href="index.php?ctype=gedcom&amp;ged=<?php echo $tree->getNameUrl(); ?>">
+									<?php echo $tree->getNameHtml(); ?>
+									-
 									<?php echo $tree->getTitleHtml(); ?>
 								</a>
 							</td>
@@ -716,6 +718,8 @@ $changes = Database::prepare(
 						<tr>
 							<td>
 								<?php echo I18N::translate('Total'); ?>
+								-
+								<?php echo I18N::plural('%s family tree', '%s family trees', count(Tree::getAll()), I18N::number(count(Tree::getAll()))); ?>
 							</td>
 							<td class="text-right flip">
 								<?php echo I18N::number(array_sum($changes)); ?>
