@@ -248,7 +248,7 @@ case 'requestpw':
 			$WT_TREE,
 			$user,
 			I18N::translate('Lost password request'),
-			I18N::translate('Hello %s…', Filter::escapeHtml($user->getRealName())) . Mail::EOL . Mail::EOL .
+			I18N::translate('Hello %s…', $user->getRealNameHtml()) . Mail::EOL . Mail::EOL .
 			I18N::translate('A new password has been requested for your user name.') . Mail::EOL . Mail::EOL .
 			I18N::translate('Username') . ": " . Filter::escapeHtml($user->getUserName()) . Mail::EOL .
 			I18N::translate('Password') . ": " . $user_new_pw . Mail::EOL . Mail::EOL .
@@ -318,7 +318,7 @@ case 'register':
 				/* I18N: %s is a server name/URL */
 				I18N::translate('A prospective user has registered with webtrees at %s.', WT_BASE_URL . ' ' . $WT_TREE->getTitleHtml()) . Mail::EOL . Mail::EOL .
 				I18N::translate('Username') . ' ' . Filter::escapeHtml($user->getUserName()) . Mail::EOL .
-				I18N::translate('Real name') . ' ' . Filter::escapeHtml($user->getRealName()) . Mail::EOL .
+				I18N::translate('Real name') . ' ' . $user->getRealNameHtml() . Mail::EOL .
 				I18N::translate('Email address:') . ' ' . Filter::escapeHtml($user->getEmail()) . Mail::EOL .
 				I18N::translate('Comments') . ' ' . Filter::escapeHtml($user_comments) . Mail::EOL . Mail::EOL .
 				I18N::translate('The user has been sent an e-mail with the information necessary to confirm the access request') . Mail::EOL . Mail::EOL;
@@ -336,7 +336,7 @@ case 'register':
 
 			// Generate an email in the user’s language
 			$mail2_body =
-				I18N::translate('Hello %s…', $user->getRealName()) . Mail::EOL . Mail::EOL .
+				I18N::translate('Hello %s…', $user->getRealNameHtml()) . Mail::EOL . Mail::EOL .
 				/* I18N: %1$s is the site URL and %2$s is an email address */
 				I18N::translate('You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s.', WT_BASE_URL . ' ' . $WT_TREE->getTitleHtml(), $user->getEmail()) . '  ' .
 				I18N::translate('Information about the request is shown under the link below.') . Mail::EOL .
@@ -387,7 +387,7 @@ case 'register':
 					->execute(array($user->getEmail(), $WT_REQUEST->getClientIp(), $webmaster->getUserId(), $mail1_subject, Filter::unescapeHtml($mail1_body)));
 			}
 
-			echo '<div class="confirm"><p>', I18N::translate('Hello %s…<br>Thank you for your registration.', $user->getRealName()), '</p><p>';
+			echo '<div class="confirm"><p>', I18N::translate('Hello %s…<br>Thank you for your registration.', $user->getRealNameHtml()), '</p><p>';
 				if ($REQUIRE_ADMIN_AUTH_REGISTRATION) {
 					echo I18N::translate('We will now send a confirmation email to the address <b>%s</b>.  You must verify your account request by following instructions in the confirmation email.  If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this website, you will need to know your user name and password.', $user->getEmail());
 				} else {
@@ -566,9 +566,9 @@ case 'verify_hash':
 		I18N::translate('Hello administrator…') . Mail::EOL . Mail::EOL .
 		/* I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address */ I18N::translate(
 			'A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s).',
-			$user->getRealName(),
-			$user->getUserName(),
-			$user->getEmail()
+			$user->getRealNameHtml(),
+			Filter::escapeHtml($user->getUserName()),
+			Filter::escapeHtml($user->getEmail())
 		) . Mail::EOL . Mail::EOL;
 	if ($REQUIRE_ADMIN_AUTH_REGISTRATION && !$user->getPreference('verified_by_admin')) {
 		$mail1_body .= I18N::translate('You now need to review the account details, and set the “approved” status to “yes”.');
