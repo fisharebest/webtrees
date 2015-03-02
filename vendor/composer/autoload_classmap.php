@@ -82,7 +82,7 @@ return array(
     'Fisharebest\\Webtrees\\GedcomCodeTemp' => $baseDir . '/app/Gedcom/GedcomCodeTemp.php',
     'Fisharebest\\Webtrees\\GedcomRecord' => $baseDir . '/app/GedcomRecord.php',
     'Fisharebest\\Webtrees\\GedcomRecordController' => $baseDir . '/app/Controller/GedcomRecordController.php',
-    'Fisharebest\\Webtrees\\GoogleMapsModule' => $baseDir . '/app/Module/GoogleMapModule.php',
+    'Fisharebest\\Webtrees\\GoogleMapsModule' => $baseDir . '/app/Module/GoogleMapsModule.php',
     'Fisharebest\\Webtrees\\GedcomTag' => $baseDir . '/app/Gedcom/GedcomTag.php',
     'Fisharebest\\Webtrees\\GregorianDate' => $baseDir . '/app/Date/GregorianDate.php',
     'Fisharebest\\Webtrees\\HijriDate' => $baseDir . '/app/Date/HijriDate.php',
