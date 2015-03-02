@@ -78,7 +78,7 @@ class FamiliesModule extends Module implements ModuleSidebarInterface {
 		global $UNKNOWN_NN, $controller;
 
 		// Fetch a list of the initial letters of all surnames in the database
-		$initials = WT_Query_Name::surnameAlpha(true, false, WT_GED_ID, false);
+		$initials = QueryName::surnameAlpha(true, false, WT_GED_ID, false);
 
 		$controller->addInlineJavascript('
 			var famloadedNames = new Array();
@@ -164,7 +164,7 @@ class FamiliesModule extends Module implements ModuleSidebarInterface {
 	 * @return string
 	 */
 	public function getAlphaSurnames($alpha, $surname1 = '') {
-		$surnames = WT_Query_Name::surnames('', $alpha, true, true, WT_GED_ID);
+		$surnames = QueryName::surnames('', $alpha, true, true, WT_GED_ID);
 		$out = '<ul>';
 		foreach (array_keys($surnames) as $surname) {
 			$out .= '<li id="sb_fam_' . $surname . '" class="sb_fam_surname_li"><a href="' . $surname . '" title="' . $surname . '" alt="' . $alpha . '" class="sb_fam_surname">' . $surname . '</a>';
@@ -188,7 +188,7 @@ class FamiliesModule extends Module implements ModuleSidebarInterface {
 	 * @return string
 	 */
 	public function getSurnameFams($alpha, $surname) {
-		$families = WT_Query_Name::families($surname, $alpha, '', true, WT_GED_ID);
+		$families = QueryName::families($surname, $alpha, '', true, WT_GED_ID);
 		$out = '<ul>';
 		foreach ($families as $family) {
 			if ($family->canShowName()) {

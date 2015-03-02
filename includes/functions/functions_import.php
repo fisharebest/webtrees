@@ -630,7 +630,7 @@ function import_record($gedrec, Tree $tree, $update) {
 		list(,$xref, $type) = $match;
 		// check for a _UID, if the record doesn't have one, add one
 		if ($tree->getPreference('GENERATE_UIDS') && !strpos($gedrec, "\n1 _UID ")) {
-			$gedrec .= "\n1 _UID " . WT_Gedcom_Tag::createUid();
+			$gedrec .= "\n1 _UID " . GedcomTag::createUid();
 		}
 	} elseif (preg_match('/0 (HEAD|TRLR)/', $gedrec, $match)) {
 		$type = $match[1];

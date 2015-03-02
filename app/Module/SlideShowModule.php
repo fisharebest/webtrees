@@ -280,7 +280,7 @@ class SlideShowModule extends Module implements ModuleBlockInterface {
 		?>
 	</td>
 	<td class="optionbox">
-		<center><b><?php echo WT_Gedcom_Tag::getLabel('FORM'); ?></b></center>
+		<center><b><?php echo GedcomTag::getLabel('FORM'); ?></b></center>
 		<table class="width100">
 			<tr>
 				<td class="width33">
@@ -359,13 +359,13 @@ class SlideShowModule extends Module implements ModuleBlockInterface {
 			</tr>
 		</table>
 			<br>
-			<center><b><?php echo WT_Gedcom_Tag::getLabel('TYPE'); ?></b></center>
+			<center><b><?php echo GedcomTag::getLabel('TYPE'); ?></b></center>
 				<table class="width100">
 					<tr>
 					<?php
 					//-- Build the list of checkboxes
 					$i = 0;
-					foreach (WT_Gedcom_Tag::getFileFormTypes() as $typeName => $typeValue) {
+					foreach (GedcomTag::getFileFormTypes() as $typeName => $typeValue) {
 						$i++;
 						if ($i > 3) {
 							$i = 1;

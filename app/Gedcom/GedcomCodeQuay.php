@@ -17,9 +17,9 @@ namespace Fisharebest\Webtrees;
  */
 
 /**
- * Class WT_Gedcom_Code_Quay - Functions and logic for GEDCOM "QUAY" codes
+ * Class GedcomCodeQuay - Functions and logic for GEDCOM "QUAY" codes
  */
-class WT_Gedcom_Code_Quay {
+class GedcomCodeQuay {
 	private static $TYPES = array('3', '2', '1', '0');
 
 	/**

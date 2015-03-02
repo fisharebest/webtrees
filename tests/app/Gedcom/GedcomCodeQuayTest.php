@@ -19,9 +19,9 @@ namespace Fisharebest\Webtrees;
 use PHPUnit_Framework_TestCase;
 
 /**
- * Test harness for the class WT_Gedcom_Code_Temp
+ * Test harness for the class GedcomCodeQuay
  */
-class GedcomCodeTempTest extends PHPUnit_Framework_TestCase {
+class GedcomCodeQuayTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 *
@@ -36,6 +36,6 @@ class GedcomCodeTempTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testClassExists() {
-		$this->assertTrue(class_exists(__NAMESPACE__ . '\WT_Gedcom_Code_Temp'));
+		$this->assertTrue(class_exists(__NAMESPACE__ . '\GedcomCodeQuay'));
 	}
 }

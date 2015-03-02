@@ -83,10 +83,10 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 
 	if (strpos($text, "\n") === false) {
 		// A one-line note? strip the block-level tags, so it displays inline
-		return WT_Gedcom_Tag::getLabelValue($label, strip_tags($html, '<a><strong><em>'));
+		return GedcomTag::getLabelValue($label, strip_tags($html, '<a><strong><em>'));
 	} elseif ($WT_TREE->getPreference('EXPAND_NOTES')) {
 		// A multi-line note, and we're expanding notes by default
-		return WT_Gedcom_Tag::getLabelValue($label, $html);
+		return GedcomTag::getLabelValue($label, $html);
 	} else {
 		// A multi-line note, with an expand/collapse option
 		$element_id = Uuid::uuid4();
@@ -105,7 +105,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 		}
 		return
 			'<div class="fact_NOTE"><span class="label">' .
-			'<a href="#" onclick="expand_layer(\'' . $element_id . '\'); return false;"><i id="' . $element_id . '_img" class="icon-plus"></i></a> ' . WT_Gedcom_Tag::getLabel($label) . ':</span> ' . '<span id="' . $element_id . '-alt">' . $first_line . '</span>' .
+			'<a href="#" onclick="expand_layer(\'' . $element_id . '\'); return false;"><i id="' . $element_id . '_img" class="icon-plus"></i></a> ' . GedcomTag::getLabel($label) . ':</span> ' . '<span id="' . $element_id . '-alt">' . $first_line . '</span>' .
 			'</div>' .
 			'<div class="note-details" id="' . $element_id . '" style="display:none">' . $html . '</div>';
 	}
@@ -250,10 +250,10 @@ function format_asso_rela_record(Fact $event) {
 			// Is there a "RELA" tag
 			if (preg_match('/\n[23] RELA (.+)/', $amatch[2], $rmatch)) {
 				// Use the supplied relationship as a label
-				$label = WT_Gedcom_Code_Rela::getValue($rmatch[1], $person);
+				$label = GedcomCodeRela::getValue($rmatch[1], $person);
 			} else {
 				// Use a default label
-				$label = WT_Gedcom_Tag::getLabel('ASSO', $person);
+				$label = GedcomTag::getLabel('ASSO', $person);
 			}
 
 			$values = array('<a href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a>');
@@ -261,7 +261,7 @@ function format_asso_rela_record(Fact $event) {
 				foreach ($associates as $associate) {
 					$relationship_name = get_associate_relationship_name($associate, $person);
 					if (!$relationship_name) {
-						$relationship_name = WT_Gedcom_Tag::getLabel('RELA');
+						$relationship_name = GedcomTag::getLabel('RELA');
 					}
 
 					if ($parent instanceof Family) {
@@ -274,10 +274,10 @@ function format_asso_rela_record(Fact $event) {
 			}
 			$value = implode(' — ', $values);
 
-			// Use same markup as WT_Gedcom_Tag::getLabelValue()
+			// Use same markup as GedcomTag::getLabelValue()
 			$asso = I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', $label, $value);
 		} elseif (!$person && Auth::isEditor($event->getParent()->getTree())) {
-			$asso = WT_Gedcom_Tag::getLabelValue('ASSO', '<span class="error">' . $amatch[1] . '</span>');
+			$asso = GedcomTag::getLabelValue('ASSO', '<span class="error">' . $amatch[1] . '</span>');
 		} else {
 			$asso = '';
 		}
@@ -309,7 +309,7 @@ function format_parents_age(Individual $person, Date $birth_date) {
 				case 'F':
 					// Highlight mothers who die in childbirth or shortly afterwards
 					if ($deatdate->isOK() && $deatdate->maximumJulianDay() < $birth_date->minimumJulianDay() + 90) {
-						$html .= ' <span title="' . WT_Gedcom_Tag::getLabel('_DEAT_PARE', $parent) . '" class="parentdeath">' . $sex . $age . '</span>';
+						$html .= ' <span title="' . GedcomTag::getLabel('_DEAT_PARE', $parent) . '" class="parentdeath">' . $sex . $age . '</span>';
 					} else {
 						$html .= ' <span title="' . I18N::translate('Mother’s age') . '">' . $sex . $age . '</span>';
 					}
@@ -317,7 +317,7 @@ function format_parents_age(Individual $person, Date $birth_date) {
 				case 'M':
 					// Highlight fathers who die before the birth
 					if ($deatdate->isOK() && $deatdate->maximumJulianDay() < $birth_date->minimumJulianDay()) {
-						$html .= ' <span title="' . WT_Gedcom_Tag::getLabel('_DEAT_PARE', $parent) . '" class="parentdeath">' . $sex . $age . '</span>';
+						$html .= ' <span title="' . GedcomTag::getLabel('_DEAT_PARE', $parent) . '" class="parentdeath">' . $sex . $age . '</span>';
 					} else {
 						$html .= ' <span title="' . I18N::translate('Father’s age') . '">' . $sex . $age . '</span>';
 					}
@@ -465,7 +465,7 @@ function format_fact_date(Fact $event, GedcomRecord $record, $anchor, $time) {
 		}
 	}
 	// print gedcom ages
-	foreach (array(WT_Gedcom_Tag::getLabel('AGE') => $fact_age, WT_Gedcom_Tag::getLabel('HUSB') => $husb_age, WT_Gedcom_Tag::getLabel('WIFE') => $wife_age) as $label => $age) {
+	foreach (array(GedcomTag::getLabel('AGE') => $fact_age, GedcomTag::getLabel('HUSB') => $husb_age, GedcomTag::getLabel('WIFE') => $wife_age) as $label => $age) {
 		if ($age != '') {
 			$html .= ' <span class="label">' . $label . ':</span> <span class="age">' . get_age_at_event($age, false) . '</span>';
 		}
@@ -506,13 +506,13 @@ function format_fact_place(Fact $event, $anchor = false, $sub_records = false, $
 			$cts = preg_match('/\d LATI (.*)/', $placerec, $match);
 			if ($cts > 0) {
 				$map_lati = $match[1];
-				$html .= '<br><span class="label">' . WT_Gedcom_Tag::getLabel('LATI') . ': </span>' . $map_lati;
+				$html .= '<br><span class="label">' . GedcomTag::getLabel('LATI') . ': </span>' . $map_lati;
 			}
 			$map_long = '';
 			$cts = preg_match('/\d LONG (.*)/', $placerec, $match);
 			if ($cts > 0) {
 				$map_long = $match[1];
-				$html .= ' <span class="label">' . WT_Gedcom_Tag::getLabel('LONG') . ': </span>' . $map_long;
+				$html .= ' <span class="label">' . GedcomTag::getLabel('LONG') . ': </span>' . $map_long;
 			}
 			if ($map_lati && $map_long) {
 				$map_lati = trim(strtr($map_lati, "NSEW,�", " - -. ")); // S5,6789 ==> -5.6789
@@ -528,13 +528,13 @@ function format_fact_place(Fact $event, $anchor = false, $sub_records = false, $
 	}
 	if ($lds) {
 		if (preg_match('/2 TEMP (.*)/', $event->getGedcom(), $match)) {
-			$html .= '<br>' . I18N::translate('LDS temple') . ': ' . WT_Gedcom_Code_Temp::templeName($match[1]);
+			$html .= '<br>' . I18N::translate('LDS temple') . ': ' . GedcomCodeTemp::templeName($match[1]);
 		}
 		if (preg_match('/2 STAT (.*)/', $event->getGedcom(), $match)) {
-			$html .= '<br>' . I18N::translate('Status') . ': ' . WT_Gedcom_Code_Stat::statusName($match[1]);
+			$html .= '<br>' . I18N::translate('Status') . ': ' . GedcomCodeStat::statusName($match[1]);
 			if (preg_match('/3 DATE (.*)/', $event->getGedcom(), $match)) {
 				$date = new Date($match[1]);
-				$html .= ', ' . WT_Gedcom_Tag::getLabel('STAT:DATE') . ': ' . $date->display();
+				$html .= ', ' . GedcomTag::getLabel('STAT:DATE') . ': ' . $date->display();
 			}
 		}
 	}
@@ -601,7 +601,7 @@ function print_add_new_fact($id, $usedfacts, $type) {
 					echo '<td class="optionbox wrap"><form method="get" name="newFromClipboard" action="?" onsubmit="return false;">';
 					echo '<select id="newClipboardFact">';
 				}
-				echo '<option value="', Filter::escapeHtml($fact_id), '">', WT_Gedcom_Tag::getLabel($fact['fact']);
+				echo '<option value="', Filter::escapeHtml($fact_id), '">', GedcomTag::getLabel($fact['fact']);
 				// TODO use the event class to store/parse the clipboard events
 				if (preg_match('/^2 DATE (.+)/m', $fact['factrec'], $match)) {
 					$tmp = new Date($match[1]);
@@ -654,7 +654,7 @@ function print_add_new_fact($id, $usedfacts, $type) {
 	$quickfacts = array_intersect($quickfacts, $addfacts);
 	$translated_addfacts = array();
 	foreach ($addfacts as $addfact) {
-		$translated_addfacts[$addfact] = WT_Gedcom_Tag::getLabel($addfact);
+		$translated_addfacts[$addfact] = GedcomTag::getLabel($addfact);
 	}
 	uasort($translated_addfacts, function($x, $y) {
 		return I18N::strcasecmp(I18N::translate($x), I18N::translate($y));
@@ -677,7 +677,7 @@ function print_add_new_fact($id, $usedfacts, $type) {
 	echo '<input type="button" value="', I18N::translate('Add'), '" onclick="add_record(\'' . $id . '\', \'newfact\');">';
 	echo '<span class="quickfacts">';
 	foreach ($quickfacts as $fact) {
-		echo '<a href="#" onclick="add_new_record(\'' . $id . '\', \'' . $fact . '\');return false;">', WT_Gedcom_Tag::getLabel($fact), '</a>';
+		echo '<a href="#" onclick="add_new_record(\'' . $id . '\', \'' . $fact . '\');return false;">', GedcomTag::getLabel($fact), '</a>';
 	}
 	echo '</span></form>';
 	echo '</td></tr>';
@@ -691,18 +691,18 @@ function init_calendar_popup() {
 
 	$controller->addInlineJavascript('
 		cal_setMonthNames(
-			"' . I18N::translate_c('NOMINATIVE', 'January') . '",
-			"' . I18N::translate_c('NOMINATIVE', 'February') . '",
-			"' . I18N::translate_c('NOMINATIVE', 'March') . '",
-			"' . I18N::translate_c('NOMINATIVE', 'April') . '",
-			"' . I18N::translate_c('NOMINATIVE', 'May') . '",
-			"' . I18N::translate_c('NOMINATIVE', 'June') . '",
-			"' . I18N::translate_c('NOMINATIVE', 'July') . '",
-			"' . I18N::translate_c('NOMINATIVE', 'August') . '",
-			"' . I18N::translate_c('NOMINATIVE', 'September') . '",
-			"' . I18N::translate_c('NOMINATIVE', 'October') . '",
-			"' . I18N::translate_c('NOMINATIVE', 'November') . '",
-			"' . I18N::translate_c('NOMINATIVE', 'December') . '"
+			"' . I18N::translateContext('NOMINATIVE', 'January') . '",
+			"' . I18N::translateContext('NOMINATIVE', 'February') . '",
+			"' . I18N::translateContext('NOMINATIVE', 'March') . '",
+			"' . I18N::translateContext('NOMINATIVE', 'April') . '",
+			"' . I18N::translateContext('NOMINATIVE', 'May') . '",
+			"' . I18N::translateContext('NOMINATIVE', 'June') . '",
+			"' . I18N::translateContext('NOMINATIVE', 'July') . '",
+			"' . I18N::translateContext('NOMINATIVE', 'August') . '",
+			"' . I18N::translateContext('NOMINATIVE', 'September') . '",
+			"' . I18N::translateContext('NOMINATIVE', 'October') . '",
+			"' . I18N::translateContext('NOMINATIVE', 'November') . '",
+			"' . I18N::translateContext('NOMINATIVE', 'December') . '"
 		)
 		cal_setDayHeaders(
 			"' . I18N::translate('Sun') . '",

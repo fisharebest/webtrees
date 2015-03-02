@@ -594,7 +594,7 @@ abstract class BaseTheme {
 	 * @return string
 	 */
 	public function html() {
-		return '<html ' . I18N::html_markup() . '>';
+		return '<html ' . I18N::htmlAttributes() . '>';
 	}
 
 	/**
@@ -634,7 +634,7 @@ abstract class BaseTheme {
 		$icon = 'images/facts/' . $fact->getTag() . '.png';
 		$dir  = substr($this->assetUrl(), strlen(WT_STATIC_URL));
 		if (file_exists($dir . $icon)) {
-			return '<img src="' . $this->assetUrl() . $icon . '" title="' . WT_Gedcom_Tag::getLabel($fact->getTag()) . '">';
+			return '<img src="' . $this->assetUrl() . $icon . '" title="' . GedcomTag::getLabel($fact->getTag()) . '">';
 		} elseif (file_exists($dir . 'images/facts/NULL.png')) {
 			// Spacer image - for alignment - until we move to a sprite.
 			return '<img src="' . Theme::theme()->assetUrl() . 'images/facts/NULL.png">';
@@ -1293,7 +1293,7 @@ abstract class BaseTheme {
 	protected function menuLanguages() {
 		$menu = new Menu(I18N::translate('Language'), '#', 'menu-language');
 
-		foreach (I18N::installed_languages() as $lang => $name) {
+		foreach (I18N::installedLanguages() as $lang => $name) {
 			$submenu = new Menu($name, get_query_url(array('lang' => $lang), '&amp;'), 'menu-language-' . $lang);
 			if (WT_LOCALE === $lang) {
 				$submenu->addClass('', '', 'active');

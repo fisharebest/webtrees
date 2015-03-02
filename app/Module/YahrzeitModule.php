@@ -149,12 +149,12 @@ class YahrzeitModule extends Module implements ModuleBlockInterface {
 			$content .= '<div class="loading-image">&nbsp;</div>';
 			$content .= '<table id="' . $table_id . '" class="width100" style="visibility:hidden;">';
 			$content .= '<thead><tr>';
-			$content .= '<th>' . WT_Gedcom_Tag::getLabel('NAME') . '</th>';
-			$content .= '<th>' . WT_Gedcom_Tag::getLabel('NAME') . '</th>';
-			$content .= '<th>' . WT_Gedcom_Tag::getLabel('DEAT') . '</th>';
+			$content .= '<th>' . GedcomTag::getLabel('NAME') . '</th>';
+			$content .= '<th>' . GedcomTag::getLabel('NAME') . '</th>';
+			$content .= '<th>' . GedcomTag::getLabel('DEAT') . '</th>';
 			$content .= '<th>DEAT</th>';
 			$content .= '<th><i class="icon-reminder" title="' . I18N::translate('Anniversary') . '"></i></th>';
-			$content .= '<th>' . WT_Gedcom_Tag::getLabel('_YART') . '</th>';
+			$content .= '<th>' . GedcomTag::getLabel('_YART') . '</th>';
 			$content .= '<th>_YART</th>';
 			$content .= '</tr></thead><tbody>';
 

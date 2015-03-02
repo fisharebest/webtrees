@@ -52,7 +52,7 @@ header('Content-Type: text/html; charset=UTF-8');
 
 echo
 	'<!DOCTYPE html>',
-	'<html ', I18N::html_markup(), '>',
+	'<html ', I18N::htmlAttributes(), '>',
 	'<head>',
 	'<meta charset="UTF-8">',
 	'<title>', WT_WEBTREES, '</title>',

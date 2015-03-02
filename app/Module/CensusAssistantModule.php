@@ -38,10 +38,10 @@ class CensusAssistantModule extends Module {
 			require WT_ROOT . WT_MODULES_DIR . $this->getName() . '/_CENS/census_3_find.php';
 			break;
 		case 'media_3_find':
-			self::media_3_find();
+			self::mediaFind();
 			break;
 		case 'media_query_3a':
-			self::media_query_3a();
+			self::mediaQuery();
 			break;
 		default:
 			echo $mod_action;
@@ -52,7 +52,7 @@ class CensusAssistantModule extends Module {
 	/**
 	 * ...
 	 */
-	private static function media_3_find() {
+	private static function mediaFind() {
 		global $WT_TREE;
 		
 		$controller = new SimpleController;
@@ -134,7 +134,7 @@ class CensusAssistantModule extends Module {
 					'".$indi->getbirthplace() . "'); return false;\">
 					<b>".$indi->getFullName() . "</b>&nbsp;&nbsp;&nbsp;";
 
-				$born = WT_Gedcom_Tag::getLabel('BIRT');
+				$born = GedcomTag::getLabel('BIRT');
 				echo "</span><br><span class=\"list_item\">", $born, " ", $indi->getbirthyear(), "&nbsp;&nbsp;&nbsp;", $indi->getbirthplace(), "</span></a></li>";
 			echo "<hr>";
 			}
@@ -151,7 +151,7 @@ class CensusAssistantModule extends Module {
 	/**
 	 * ...
 	 */
-	private static function media_query_3a() {
+	private static function mediaQuery() {
 		$iid2 = Filter::get('iid', WT_REGEX_XREF);
 
 		$controller = new SimpleController;
@@ -306,7 +306,7 @@ class CensusAssistantModule extends Module {
 	 *
 	 * @return string
 	 */
-	static function print_addnewnote_assisted_link($element_id, $xref, $action) {
+	static function addNoteWithAssistantLink($element_id, $xref, $action) {
 		global $controller;
 
 		// We do not yet support family records

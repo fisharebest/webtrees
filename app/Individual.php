@@ -924,10 +924,10 @@ class Individual extends GedcomRecord {
 	function getChildFamilyLabel(Family $family) {
 		if (preg_match('/\n1 FAMC @' . $family->getXref() . '@(?:\n[2-9].*)*\n2 PEDI (.+)/', $this->getGedcom(), $match)) {
 			// A specified pedigree
-			return WT_Gedcom_Code_Pedi::getChildFamilyLabel($match[1]);
+			return GedcomCodePedi::getChildFamilyLabel($match[1]);
 		} else {
 			// Default (birth) pedigree
-			return WT_Gedcom_Code_Pedi::getChildFamilyLabel('');
+			return GedcomCodePedi::getChildFamilyLabel('');
 		}
 	}
 

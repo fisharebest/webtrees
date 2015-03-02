@@ -237,7 +237,7 @@ case 'setup':
 				} elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $display, $match)) {
 					$display = I18N::translate($match[1]);
 				} elseif (preg_match('/^I18N::translate_c\(\'(.+)\', *\'(.+)\'\)$/', $display, $match)) {
-					$display = I18N::translate_c($match[1], $match[2]);
+					$display = I18N::translateContext($match[1], $match[2]);
 				}
 				echo '<option value="', Filter::escapeHtml($value), '" ';
 				if ($opt[0] == $input['default']) {

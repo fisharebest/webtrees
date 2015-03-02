@@ -77,7 +77,7 @@ class SourcesTabModule extends Module implements ModuleTabInterface {
 				?>
 				<tr>
 					<td class="facts_label">
-						<?php echo WT_Gedcom_Tag::getLabel('SOUR'); ?>
+						<?php echo GedcomTag::getLabel('SOUR'); ?>
 					</td>
 					<td class="facts_value">
 						<a href="#" onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','SOUR'); return false;">

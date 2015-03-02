@@ -160,7 +160,7 @@ if ($action == "filter") {
 			echo ");";
 			echo "return false;\">";
 			echo "<b>" . $indi->getFullName() . "</b>&nbsp;&nbsp;&nbsp;"; // Name Link
-			echo "</span><br><span class=\"list_item\">", WT_Gedcom_Tag::getLabel('BIRT', $indi), " ", $indi->getbirthyear(), "&nbsp;&nbsp;&nbsp;", $indi->getbirthplace(), "</span>";
+			echo "</span><br><span class=\"list_item\">", GedcomTag::getLabel('BIRT', $indi), " ", $indi->getbirthyear(), "&nbsp;&nbsp;&nbsp;", $indi->getbirthplace(), "</span>";
 			echo "</a>";
 			echo "</li>";
 			echo "<hr>";

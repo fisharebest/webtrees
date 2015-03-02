@@ -19,9 +19,9 @@ namespace Fisharebest\Webtrees;
 use Rhumsaa\Uuid\Uuid;
 
 /**
- * Class WT_Gedcom_Tag - Static GEDCOM data for Tags
+ * Class GedcomTag - Static GEDCOM data for Tags
  */
-class WT_Gedcom_Tag {
+class GedcomTag {
 	/** @var string[] All tags that webtrees knows how to translate - including special/internal tags */
 	private static $ALL_TAGS = array(
 		'ABBR', 'ADDR', 'ADR1', 'ADR2', 'ADOP', 'ADOP:DATE', 'ADOP:PLAC',
@@ -595,7 +595,7 @@ class WT_Gedcom_Tag {
 			if ($record instanceof Repository) {
 				return
 					/* I18N: gedcom tag REPO:NAME */
-					I18N::translate_c('Repository', 'Name');
+					I18N::translateContext('Repository', 'Name');
 			} else {
 				return
 					/* I18N: gedcom tag NAME */
@@ -884,18 +884,18 @@ class WT_Gedcom_Tag {
 		case '_ADOP_GCH1':
 			switch ($sex) {
 			case 'M':
-				return I18N::translate_c('daughter’s son', 'Adoption of a grandson');
+				return I18N::translateContext('daughter’s son', 'Adoption of a grandson');
 			case 'F':
-				return I18N::translate_c('daughter’s daughter', 'Adoption of a granddaughter');
+				return I18N::translateContext('daughter’s daughter', 'Adoption of a granddaughter');
 			default:
 				return I18N::translate('Adoption of a grandchild');
 			}
 		case '_ADOP_GCH2':
 			switch ($sex) {
 			case 'M':
-				return I18N::translate_c('son’s son', 'Adoption of a grandson');
+				return I18N::translateContext('son’s son', 'Adoption of a grandson');
 			case 'F':
-				return I18N::translate_c('son’s daughter', 'Adoption of a granddaughter');
+				return I18N::translateContext('son’s daughter', 'Adoption of a granddaughter');
 			default:
 				return I18N::translate('Adoption of a grandchild');
 			}
@@ -922,11 +922,11 @@ class WT_Gedcom_Tag {
 			case 'M':
 				return
 					/* I18N: gedcom tag _ADPF */
-					I18N::translate_c('MALE', 'Adopted by father');
+					I18N::translateContext('MALE', 'Adopted by father');
 			case 'F':
 				return
 					/* I18N: gedcom tag _ADPF */
-					I18N::translate_c('FEMALE', 'Adopted by father');
+					I18N::translateContext('FEMALE', 'Adopted by father');
 			default:
 				return
 					/* I18N: gedcom tag _ADPF */
@@ -937,11 +937,11 @@ class WT_Gedcom_Tag {
 			case 'M':
 				return
 					/* I18N: gedcom tag _ADPM */
-					I18N::translate_c('MALE', 'Adopted by mother');
+					I18N::translateContext('MALE', 'Adopted by mother');
 			case 'F':
 				return
 					/* I18N: gedcom tag _ADPM */
-					I18N::translate_c('FEMALE', 'Adopted by mother');
+					I18N::translateContext('FEMALE', 'Adopted by mother');
 			default:
 				return
 					/* I18N: gedcom tag _ADPM */
@@ -953,11 +953,11 @@ class WT_Gedcom_Tag {
 			case 'M':
 				return
 					/* I18N: gedcom tag _AKA */
-					I18N::translate_c('MALE', 'Also known as');
+					I18N::translateContext('MALE', 'Also known as');
 			case 'F':
 				return
 					/* I18N: gedcom tag _AKA */
-					I18N::translate_c('FEMALE', 'Also known as');
+					I18N::translateContext('FEMALE', 'Also known as');
 			default:
 				return
 					/* I18N: gedcom tag _AKA */
@@ -988,18 +988,18 @@ class WT_Gedcom_Tag {
 		case '_BAPM_GCH1':
 			switch ($sex) {
 			case 'M':
-				return I18N::translate_c('daughter’s son', 'Baptism of a grandson');
+				return I18N::translateContext('daughter’s son', 'Baptism of a grandson');
 			case 'F':
-				return I18N::translate_c('daughter’s daughter', 'Baptism of a granddaughter');
+				return I18N::translateContext('daughter’s daughter', 'Baptism of a granddaughter');
 			default:
 				return I18N::translate('Baptism of a grandchild');
 			}
 		case '_BAPM_GCH2':
 			switch ($sex) {
 			case 'M':
-				return I18N::translate_c('son’s son', 'Baptism of a grandson');
+				return I18N::translateContext('son’s son', 'Baptism of a grandson');
 			case 'F':
-				return I18N::translate_c('son’s daughter', 'Baptism of a granddaughter');
+				return I18N::translateContext('son’s daughter', 'Baptism of a granddaughter');
 			default:
 				return I18N::translate('Baptism of a grandchild');
 			}
@@ -1046,18 +1046,18 @@ class WT_Gedcom_Tag {
 		case '_BIRT_GCH1':
 			switch ($sex) {
 			case 'M':
-				return I18N::translate_c('daughter’s son', 'Birth of a grandson');
+				return I18N::translateContext('daughter’s son', 'Birth of a grandson');
 			case 'F':
-				return I18N::translate_c('daughter’s daughter', 'Birth of a granddaughter');
+				return I18N::translateContext('daughter’s daughter', 'Birth of a granddaughter');
 			default:
 				return I18N::translate('Birth of a grandchild');
 			}
 		case '_BIRT_GCH2':
 			switch ($sex) {
 			case 'M':
-				return I18N::translate_c('son’s son', 'Birth of a grandson');
+				return I18N::translateContext('son’s son', 'Birth of a grandson');
 			case 'F':
-				return I18N::translate_c('son’s daughter', 'Birth of a granddaughter');
+				return I18N::translateContext('son’s daughter', 'Birth of a granddaughter');
 			default:
 				return I18N::translate('Birth of a grandchild');
 			}
@@ -1108,18 +1108,18 @@ class WT_Gedcom_Tag {
 		case '_BURI_GCH1':
 			switch ($sex) {
 			case 'M':
-				return I18N::translate_c('daughter’s son', 'Burial of a grandson');
+				return I18N::translateContext('daughter’s son', 'Burial of a grandson');
 			case 'F':
-				return I18N::translate_c('daughter’s daughter', 'Burial of a granddaughter');
+				return I18N::translateContext('daughter’s daughter', 'Burial of a granddaughter');
 			default:
 				return I18N::translate('Burial of a grandchild');
 			}
 		case '_BURI_GCH2':
 			switch ($sex) {
 			case 'M':
-				return I18N::translate_c('son’s son', 'Burial of a grandson');
+				return I18N::translateContext('son’s son', 'Burial of a grandson');
 			case 'F':
-				return I18N::translate_c('son’s daughter', 'Burial of a granddaughter');
+				return I18N::translateContext('son’s daughter', 'Burial of a granddaughter');
 			default:
 				return I18N::translate('Burial of a grandchild');
 			}
@@ -1207,18 +1207,18 @@ class WT_Gedcom_Tag {
 		case '_CHR_GCH1':
 			switch ($sex) {
 			case 'M':
-				return I18N::translate_c('daughter’s son', 'Christening of a grandson');
+				return I18N::translateContext('daughter’s son', 'Christening of a grandson');
 			case 'F':
-				return I18N::translate_c('daughter’s daughter', 'Christening of a granddaughter');
+				return I18N::translateContext('daughter’s daughter', 'Christening of a granddaughter');
 			default:
 				return I18N::translate('Christening of a grandchild');
 			}
 		case '_CHR_GCH2':
 			switch ($sex) {
 			case 'M':
-				return I18N::translate_c('son’s son', 'Christening of a grandson');
+				return I18N::translateContext('son’s son', 'Christening of a grandson');
 			case 'F':
-				return I18N::translate_c('son’s daughter', 'Christening of a granddaughter');
+				return I18N::translateContext('son’s daughter', 'Christening of a granddaughter');
 			default:
 				return I18N::translate('Christening of a grandchild');
 			}
@@ -1265,18 +1265,18 @@ class WT_Gedcom_Tag {
 		case '_CREM_GCH1':
 			switch ($sex) {
 			case 'M':
-				return I18N::translate_c('daughter’s son', 'Cremation of a grandson');
+				return I18N::translateContext('daughter’s son', 'Cremation of a grandson');
 			case 'F':
-				return I18N::translate_c('daughter’s daughter', 'Cremation of a granddaughter');
+				return I18N::translateContext('daughter’s daughter', 'Cremation of a granddaughter');
 			default:
 				return I18N::translate('Cremation of a grandchild');
 			}
 		case '_CREM_GCH2':
 			switch ($sex) {
 			case 'M':
-				return I18N::translate_c('son’s son', 'Cremation of a grandson');
+				return I18N::translateContext('son’s son', 'Cremation of a grandson');
 			case 'F':
-				return I18N::translate_c('son’s daughter', 'Cremation of a granddaughter');
+				return I18N::translateContext('son’s daughter', 'Cremation of a granddaughter');
 			default:
 				return I18N::translate('Cremation of a grandchild');
 			}
@@ -1368,18 +1368,18 @@ class WT_Gedcom_Tag {
 		case '_DEAT_GCH1':
 			switch ($sex) {
 			case 'M':
-				return I18N::translate_c('daughter’s son', 'Death of a grandson');
+				return I18N::translateContext('daughter’s son', 'Death of a grandson');
 			case 'F':
-				return I18N::translate_c('daughter’s daughter', 'Death of a granddaughter');
+				return I18N::translateContext('daughter’s daughter', 'Death of a granddaughter');
 			default:
 				return I18N::translate('Death of a grandchild');
 			}
 		case '_DEAT_GCH2':
 			switch ($sex) {
 			case 'M':
-				return I18N::translate_c('son’s son', 'Death of a grandson');
+				return I18N::translateContext('son’s son', 'Death of a grandson');
 			case 'F':
-				return I18N::translate_c('son’s daughter', 'Death of a granddaughter');
+				return I18N::translateContext('son’s daughter', 'Death of a granddaughter');
 			default:
 				return I18N::translate('Death of a grandchild');
 			}
@@ -1533,11 +1533,11 @@ class WT_Gedcom_Tag {
 			case 'M':
 				return
 					/* I18N: gedcom tag _INTE */
-					I18N::translate_c('MALE', 'Interred');
+					I18N::translateContext('MALE', 'Interred');
 			case 'F':
 				return
 					/* I18N: gedcom tag _INTE */
-					I18N::translate_c('FEMALE', 'Interred');
+					I18N::translateContext('FEMALE', 'Interred');
 			default:
 				return
 					/* I18N: gedcom tag _INTE */
@@ -1586,18 +1586,18 @@ class WT_Gedcom_Tag {
 		case '_MARR_GCH1':
 			switch ($sex) {
 			case 'M':
-				return I18N::translate_c('daughter’s son', 'Marriage of a grandson');
+				return I18N::translateContext('daughter’s son', 'Marriage of a grandson');
 			case 'F':
-				return I18N::translate_c('daughter’s daughter', 'Marriage of a granddaughter');
+				return I18N::translateContext('daughter’s daughter', 'Marriage of a granddaughter');
 			default:
 				return I18N::translate('Marriage of a grandchild');
 			}
 		case '_MARR_GCH2':
 			switch ($sex) {
 			case 'M':
-				return I18N::translate_c('son’s son', 'Marriage of a grandson');
+				return I18N::translateContext('son’s son', 'Marriage of a grandson');
 			case 'F':
-				return I18N::translate_c('son’s daughter', 'Marriage of a granddaughter');
+				return I18N::translateContext('son’s daughter', 'Marriage of a granddaughter');
 			default:
 				return I18N::translate('Marriage of a grandchild');
 			}
@@ -1683,11 +1683,11 @@ class WT_Gedcom_Tag {
 			case 'M':
 				return
 					/* I18N: gedcom tag _NMAR */
-					I18N::translate_c('MALE', 'Never married');
+					I18N::translateContext('MALE', 'Never married');
 			case 'F':
 				return
 					/* I18N: gedcom tag _NMAR */
-					I18N::translate_c('FEMALE', 'Never married');
+					I18N::translateContext('FEMALE', 'Never married');
 			default:
 				return
 					/* I18N: gedcom tag _NMAR */
@@ -1698,11 +1698,11 @@ class WT_Gedcom_Tag {
 			case 'M':
 				return
 					/* I18N: gedcom tag _NMR */
-					I18N::translate_c('MALE', 'Not married');
+					I18N::translateContext('MALE', 'Not married');
 			case 'F':
 				return
 					/* I18N: gedcom tag _NMR */
-					I18N::translate_c('FEMALE', 'Not married');
+					I18N::translateContext('FEMALE', 'Not married');
 			default:
 				return
 					/* I18N: gedcom tag _NMR */
@@ -1772,9 +1772,9 @@ class WT_Gedcom_Tag {
 		case '__BRTM_GCHI':
 			return I18N::translate('Brit milah of a grandson');
 		case '__BRTM_GCH1':
-			return I18N::translate_c('daughter’s son', 'Brit milah of a grandson');
+			return I18N::translateContext('daughter’s son', 'Brit milah of a grandson');
 		case '__BRTM_GCH2':
-			return I18N::translate_c('son’s son', 'Brit milah of a grandson');
+			return I18N::translateContext('son’s son', 'Brit milah of a grandson');
 		case '__BRTM_HSIB':
 			return I18N::translate('Brit milah of a half-brother');
 		case '__BRTM_SIBL':

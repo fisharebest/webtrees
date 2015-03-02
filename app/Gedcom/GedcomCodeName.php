@@ -17,9 +17,9 @@ namespace Fisharebest\Webtrees;
  */
 
 /**
- * Class WT_Gedcom_Code_Name - Functions and logic for GEDCOM "NAME" codes
+ * Class GedcomCodeName - Functions and logic for GEDCOM "NAME" codes
  */
-class WT_Gedcom_Code_Name {
+class GedcomCodeName {
 	/** @var string[] A list of possible types of name */
 	private static $TYPES = array('adopted', 'aka', 'birth', 'change', 'estate', 'immigrant', 'maiden', 'married', 'religious');
 
@@ -43,10 +43,10 @@ class WT_Gedcom_Code_Name {
 			switch ($sex) {
 			case 'M':
 				/* I18N: The name given to a child by its adoptive parents */
-				return I18N::translate_c('MALE', 'adopted name');
+				return I18N::translateContext('MALE', 'adopted name');
 			case 'F':
 				/* I18N: The name given to a child by its adoptive parents */
-				return I18N::translate_c('FEMALE', 'adopted name');
+				return I18N::translateContext('FEMALE', 'adopted name');
 			default:
 				/* I18N: The name given to a child by its adoptive parents */
 				return I18N::translate('adopted name');
@@ -55,10 +55,10 @@ class WT_Gedcom_Code_Name {
 			switch ($sex) {
 			case 'M':
 				/* I18N: The name by which an individual is also known.  e.g. a professional name or a stage name */
-				return I18N::translate_c('MALE', 'also known as');
+				return I18N::translateContext('MALE', 'also known as');
 			case 'F':
 				/* I18N: The name by which an individual is also known.  e.g. a professional name or a stage name */
-				return I18N::translate_c('FEMALE', 'also known as');
+				return I18N::translateContext('FEMALE', 'also known as');
 			default:
 				/* I18N: The name by which an individual is also known.  e.g. a professional name or a stage name */
 				return I18N::translate('also known as');
@@ -67,10 +67,10 @@ class WT_Gedcom_Code_Name {
 			switch ($sex) {
 			case 'M':
 				/* I18N: The name given to an individual at their birth */
-				return I18N::translate_c('MALE', 'birth name');
+				return I18N::translateContext('MALE', 'birth name');
 			case 'F':
 				/* I18N: The name given to an individual at their birth */
-				return I18N::translate_c('FEMALE', 'birth name');
+				return I18N::translateContext('FEMALE', 'birth name');
 			default:
 				/* I18N: The name given to an individual at their birth */
 				return I18N::translate('birth name');
@@ -79,10 +79,10 @@ class WT_Gedcom_Code_Name {
 			switch ($sex) {
 			case 'M':
 				/* I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise) */
-				return I18N::translate_c('MALE', 'change of name');
+				return I18N::translateContext('MALE', 'change of name');
 			case 'F':
 				/* I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise) */
-				return I18N::translate_c('FEMALE', 'change of name');
+				return I18N::translateContext('FEMALE', 'change of name');
 			default:
 				/* I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise) */
 				return I18N::translate('change of name');
@@ -91,10 +91,10 @@ class WT_Gedcom_Code_Name {
 			switch ($sex) {
 			case 'M':
 				/* I18N: A name given to an individual, from the farm or estate on which they lived or worked */
-				return I18N::translate_c('MALE', 'estate name');
+				return I18N::translateContext('MALE', 'estate name');
 			case 'F':
 				/* I18N: A name given to an individual, from the farm or estate on which they lived or worked */
-				return I18N::translate_c('FEMALE', 'estate name');
+				return I18N::translateContext('FEMALE', 'estate name');
 			default:
 				/* I18N: A name given to an individual, from the farm or estate on which they lived or worked */
 				return I18N::translate('estate name');
@@ -103,10 +103,10 @@ class WT_Gedcom_Code_Name {
 			switch ($sex) {
 			case 'M':
 				/* I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names */
-				return I18N::translate_c('MALE', 'immigration name');
+				return I18N::translateContext('MALE', 'immigration name');
 			case 'F':
 				/* I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names */
-				return I18N::translate_c('FEMALE', 'immigration name');
+				return I18N::translateContext('FEMALE', 'immigration name');
 			default:
 				/* I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names */
 				return I18N::translate('immigration name');
@@ -120,10 +120,10 @@ class WT_Gedcom_Code_Name {
 			switch ($sex) {
 			case 'M':
 				/* I18N: A name taken on marriage - usually the wife takes the husband’s surname */
-				return I18N::translate_c('MALE', 'married name');
+				return I18N::translateContext('MALE', 'married name');
 			case 'F':
 				/* I18N: A name taken on marriage - usually the wife takes the husband’s surname */
-				return I18N::translate_c('FEMALE', 'married name');
+				return I18N::translateContext('FEMALE', 'married name');
 			default:
 				/* I18N: A name taken on marriage - usually the wife takes the husband’s surname */
 				return I18N::translate('married name');
@@ -132,10 +132,10 @@ class WT_Gedcom_Code_Name {
 			switch ($sex) {
 			case 'M':
 				/* I18N: A name taken when entering a religion or a religious order */
-				return I18N::translate_c('MALE', 'religious name');
+				return I18N::translateContext('MALE', 'religious name');
 			case 'F':
 				/* I18N: A name taken when entering a religion or a religious order */
-				return I18N::translate_c('FEMALE', 'religious name');
+				return I18N::translateContext('FEMALE', 'religious name');
 			default:
 				/* I18N: A name taken when entering a religion or a religious order */
 				return I18N::translate('religious name');

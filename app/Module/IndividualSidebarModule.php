@@ -78,7 +78,7 @@ class IndividualSidebarModule extends Module implements ModuleSidebarInterface {
 		global $WT_IMAGES, $UNKNOWN_NN, $controller;
 
 		// Fetch a list of the initial letters of all surnames in the database
-		$initials = WT_Query_Name::surnameAlpha(true, false, WT_GED_ID, false);
+		$initials = QueryName::surnameAlpha(true, false, WT_GED_ID, false);
 
 		$controller->addInlineJavascript('
 			var loadedNames = new Array();
@@ -164,7 +164,7 @@ class IndividualSidebarModule extends Module implements ModuleSidebarInterface {
 	 * @return string
 	 */
 	public function getAlphaSurnames($alpha, $surname1 = '') {
-		$surnames = WT_Query_Name::surnames('', $alpha, true, false, WT_GED_ID);
+		$surnames = QueryName::surnames('', $alpha, true, false, WT_GED_ID);
 		$out = '<ul>';
 		foreach (array_keys($surnames) as $surname) {
 			$out .= '<li id="sb_indi_' . $surname . '" class="sb_indi_surname_li"><a href="' . $surname . '" title="' . $surname . '" alt="' . $alpha . '" class="sb_indi_surname">' . $surname . '</a>';
@@ -189,7 +189,7 @@ class IndividualSidebarModule extends Module implements ModuleSidebarInterface {
 	 * @return string
 	 */
 	public function getSurnameIndis($alpha, $surname) {
-		$indis = WT_Query_Name::individuals($surname, $alpha, '', true, false, WT_GED_ID);
+		$indis = QueryName::individuals($surname, $alpha, '', true, false, WT_GED_ID);
 		$out = '<ul>';
 		foreach ($indis as $person) {
 			if ($person->canShowName()) {

@@ -184,7 +184,7 @@ class RelativesTabModule extends Module implements ModuleTabInterface {
 					&nbsp;
 				</td>
 				<td class="facts_value<?php echo $class; ?>">
-					<?php echo WT_Gedcom_Tag::getLabelValue($fact->getTag(), $fact->getDate()->display() . ' — ' . $fact->getPlace()->getFullName()); ?>
+					<?php echo GedcomTag::getLabelValue($fact->getTag(), $fact->getDate()->display() . ' — ' . $fact->getPlace()->getFullName()); ?>
 				</td>
 			</tr>
 			<?php

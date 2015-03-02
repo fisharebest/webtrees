@@ -154,7 +154,7 @@ class TimelineController extends PageController {
 	/**
 	 * @param Fact $event
 	 */
-	function print_time_fact(Fact $event) {
+	public function printTimeFact(Fact $event) {
 		global $basexoffset, $baseyoffset, $factcount, $placements;
 
 		$desc = $event->getValue();

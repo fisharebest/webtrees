@@ -71,7 +71,7 @@ if (is_array($config_ini_php) && array_key_exists('dbhost', $config_ini_php) && 
 
 ?>
 <!DOCTYPE html>
-<html <?php echo I18N::html_markup(); ?>>
+<html <?php echo I18N::htmlAttributes(); ?>>
 	<head>
 		<meta charset="UTF-8">
 		<title><?php echo WT_WEBTREES; ?></title>

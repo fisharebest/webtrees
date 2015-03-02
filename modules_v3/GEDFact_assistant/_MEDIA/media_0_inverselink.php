@@ -565,7 +565,7 @@ function shiftlinks() {
 		// Admin Option CHAN log update override =======================
 		if (Auth::isAdmin()) {
 			echo "<tr><td class=\"descriptionbox wrap width25\">";
-			echo WT_Gedcom_Tag::getLabel('CHAN'), "</td><td class=\"optionbox wrap\">";
+			echo GedcomTag::getLabel('CHAN'), "</td><td class=\"optionbox wrap\">";
 			if ($WT_TREE->getPreference('NO_UPDATE_CHAN')) {
 				echo "<input type=\"checkbox\" checked name=\"preserve_last_changed\">";
 			} else {

@@ -70,7 +70,7 @@ class MediaTabModule extends Module implements ModuleTabInterface {
 			?>
 			<tr>
 				<td class="facts_label">
-					<?php echo WT_Gedcom_Tag::getLabel('OBJE'); ?>
+					<?php echo GedcomTag::getLabel('OBJE'); ?>
 				</td>
 				<td class="facts_value">
 					<a href="#" onclick="window.open('addmedia.php?action=showmediaform&amp;linktoid=<?php echo $controller->record->getXref(); ?>&amp;ged=<?php echo WT_GEDURL; ?>', '_blank', edit_window_specs); return false;">

@@ -17,13 +17,13 @@ namespace Fisharebest\Webtrees;
  */
 
 /**
- * Class WT_Query_Name - generate lists for indilist.php and famlist.php
+ * Class QueryName - generate lists for indilist.php and famlist.php
  *
  * @package   webtrees
  * @copyright (c) 2014 webtrees development team
  * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2
  */
-class WT_Query_Name {
+class QueryName {
 	/**
 	 * Get a list of initial letters, for lists of names.
 	 *

@@ -1653,7 +1653,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 			echo '</tr><tr>';
 			$cols = 0;
 			while ($cols < $max) {
-				echo '<th>', WT_Gedcom_Tag::getLabel('PLAC'), '</th><th>', I18N::translate('Latitude'), '</th><th>', I18N::translate('Longitude'), '</th>';
+				echo '<th>', GedcomTag::getLabel('PLAC'), '</th><th>', I18N::translate('Latitude'), '</th><th>', I18N::translate('Longitude'), '</th>';
 				$cols++;
 			}
 			echo '</tr>';
@@ -2700,8 +2700,8 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 
 				<?php
 				$list_latlon = (
-					WT_Gedcom_Tag::getLabel('LATI') . "<input name='sv_latiText' id='sv_latiText' type='text' style='width:42px; background:none; border:none;' value='" . $sv_lat . "'>" .
-					WT_Gedcom_Tag::getLabel('LONG') . "<input name='sv_longText' id='sv_longText' type='text' style='width:42px; background:none; border:none;' value='" . $sv_lng . "'>" .
+					GedcomTag::getLabel('LATI') . "<input name='sv_latiText' id='sv_latiText' type='text' style='width:42px; background:none; border:none;' value='" . $sv_lat . "'>" .
+					GedcomTag::getLabel('LONG') . "<input name='sv_longText' id='sv_longText' type='text' style='width:42px; background:none; border:none;' value='" . $sv_lng . "'>" .
 					/* I18N: Compass bearing (in degrees), for street-view mapping */ I18N::translate('Bearing') . "<input name='sv_bearText' id='sv_bearText' type='text' style='width:46px; background:none; border:none;' value='" . $sv_dir . "'>" .
 					/* I18N: Angle of elevation (in degrees), for street-view mapping */ I18N::translate('Elevation') . "<input name='sv_elevText' id='sv_elevText' type='text' style='width:30px; background:none; border:none;' value='" . $sv_pitch . "'>" .
 					I18N::translate('Zoom') . "<input name='sv_zoomText' id='sv_zoomText' type='text' style='width:30px; background:none; border:none;' value='" . $sv_zoom . "'>
@@ -3966,7 +3966,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 				</td>
 			</tr>
 			<tr>
-				<td class="descriptionbox"><?php echo WT_Gedcom_Tag::getLabel('PLAC'); ?></td>
+				<td class="descriptionbox"><?php echo GedcomTag::getLabel('PLAC'); ?></td>
 				<td class="optionbox"><input type="text" id="new_pl_name" name="NEW_PLACE_NAME" value="<?php echo Filter::escapeHtml($place_name); ?>" size="25" class="address_input">
 					<div id="INDI_PLAC_pop" style="display: inline;">
 					<?php echo print_specialchar_link('new_pl_name'); ?></div></td><td class="optionbox">
@@ -4017,7 +4017,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 				</td>
 			</tr>
 			<tr>
-				<td class="descriptionbox"><?php echo WT_Gedcom_Tag::getLabel('LATI'); ?></td>
+				<td class="descriptionbox"><?php echo GedcomTag::getLabel('LATI'); ?></td>
 				<td class="optionbox" colspan="2">
 					<input type="text" id="NEW_PLACE_LATI" name="NEW_PLACE_LATI" placeholder="<?php echo /* I18N: Measure of latitude/longitude */ I18N::translate('degrees') ?>" value="<?php echo abs($place_lati); ?>" size="20" onchange="updateMap();">
 					<select name="LATI_CONTROL" onchange="updateMap();">
@@ -4027,7 +4027,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 				</td>
 			</tr>
 			<tr>
-				<td class="descriptionbox"><?php echo WT_Gedcom_Tag::getLabel('LONG'); ?></td>
+				<td class="descriptionbox"><?php echo GedcomTag::getLabel('LONG'); ?></td>
 				<td class="optionbox" colspan="2">
 					<input type="text" id="NEW_PLACE_LONG" name="NEW_PLACE_LONG" placeholder="<?php echo I18N::translate('degrees') ?>" value="<?php echo abs($place_long); ?>" size="20" onchange="updateMap();">
 					<select name="LONG_CONTROL" onchange="updateMap();">
@@ -4548,9 +4548,9 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 		$placelist = $this->getPlaceListLocation($parent, $inactive);
 		echo '<div class="gm_plac_edit">';
 		echo '<table class="table table-bordered table-condensed table-hover"><tr>';
-		echo '<th>', WT_Gedcom_Tag::getLabel('PLAC'), '</th>';
-		echo '<th>', WT_Gedcom_Tag::getLabel('LATI'), '</th>';
-		echo '<th>', WT_Gedcom_Tag::getLabel('LONG'), '</th>';
+		echo '<th>', GedcomTag::getLabel('PLAC'), '</th>';
+		echo '<th>', GedcomTag::getLabel('LATI'), '</th>';
+		echo '<th>', GedcomTag::getLabel('LONG'), '</th>';
 		echo '<th>', I18N::translate('Zoom level'), '</th>';
 		echo '<th>', I18N::translate('Icon'), '</th>';
 		echo '<th>';

@@ -72,7 +72,7 @@ header('Content-Type: text/html; charset=UTF-8');
 
 ?>
 <!DOCTYPE html>
-<html <?php echo I18N::html_markup(); ?>>
+<html <?php echo I18N::htmlAttributes(); ?>>
 <head>
 	<meta charset="UTF-8">
 	<title>

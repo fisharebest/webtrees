@@ -89,12 +89,12 @@ class ResearchTaskModule extends Module implements ModuleBlockInterface {
 		$content .= '<table id="' . $table_id . '" style="visibility:hidden;">';
 		$content .= '<thead><tr>';
 		$content .= '<th>DATE</th>'; //hidden by datables code
-		$content .= '<th>' . WT_Gedcom_Tag::getLabel('DATE') . '</th>';
+		$content .= '<th>' . GedcomTag::getLabel('DATE') . '</th>';
 		$content .= '<th>' . I18N::translate('Record') . '</th>';
 		if ($show_unassigned || $show_other) {
 			$content .= '<th>' . I18N::translate('Username') . '</th>';
 		}
-		$content .= '<th>' . WT_Gedcom_Tag::getLabel('TEXT') . '</th>';
+		$content .= '<th>' . GedcomTag::getLabel('TEXT') . '</th>';
 		$content .= '</tr></thead><tbody>';
 
 		$found = false;
