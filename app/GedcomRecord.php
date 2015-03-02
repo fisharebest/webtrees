@@ -342,13 +342,7 @@ class GedcomRecord {
 	 * @return string
 	 */
 	private function getLinkUrl($link, $separator) {
-		if ($this->tree->getTreeId() == WT_GED_ID) {
-			return $link . $this->getXref() . $separator . 'ged=' . WT_GEDURL;
-		} elseif ($this->tree->getTreeId() == 0) {
-			return '#';
-		} else {
-			return $link . $this->getXref() . $separator . 'ged=' . rawurlencode(get_gedcom_from_id($this->tree->getTreeId()));
-		}
+		return $link . $this->getXref() . $separator . 'ged=' . $this->tree->getNameUrl();
 	}
 
 	/**
