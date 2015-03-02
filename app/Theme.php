@@ -36,10 +36,14 @@ class Theme {
 		if (self::$installed_themes === null) {
 			self::$installed_themes = array();
 			foreach (glob(WT_ROOT . '/themes/*/theme.php') as $theme_path) {
-				$theme = require $theme_path;
-				// Themes beginning with an underscore are reserved for special use.
-				if (substr_compare($theme->themeId(), '_', 0, 1) !== 0) {
-					self::$installed_themes[] = $theme;
+				try {
+					$theme = include $theme_path;
+					// Themes beginning with an underscore are reserved for special use.
+					if (substr_compare($theme->themeId(), '_', 0, 1) !== 0) {
+						self::$installed_themes[] = $theme;
+					}
+				} catch (\Exception $ex) {
+					// Broken theme?  Ignore it.
 				}
 			}
 		}
