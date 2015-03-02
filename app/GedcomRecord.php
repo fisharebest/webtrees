@@ -352,7 +352,7 @@ class GedcomRecord {
 	 *
 	 * @return boolean
 	 */
-	private function _canShow($access_level) {
+	private function canShowRecord($access_level) {
 		// This setting would better be called "$ENABLE_PRIVACY"
 		if (!$this->tree->getPreference('HIDE_LIVE_PEOPLE')) {
 			return true;
@@ -421,17 +421,17 @@ class GedcomRecord {
 		switch ($access_level) {
 		case WT_PRIV_PUBLIC: // visitor
 			if ($this->disp_public === null) {
-				$this->disp_public = $this->_canShow(WT_PRIV_PUBLIC);
+				$this->disp_public = $this->canShowRecord(WT_PRIV_PUBLIC);
 			}
 			return $this->disp_public;
 		case WT_PRIV_USER: // member
 			if ($this->disp_user === null) {
-				$this->disp_user = $this->_canShow(WT_PRIV_USER);
+				$this->disp_user = $this->canShowRecord(WT_PRIV_USER);
 			}
 			return $this->disp_user;
 		case WT_PRIV_NONE: // admin
 			if ($this->disp_none === null) {
-				$this->disp_none = $this->_canShow(WT_PRIV_NONE);
+				$this->disp_none = $this->canShowRecord(WT_PRIV_NONE);
 			}
 			return $this->disp_none;
 		case WT_PRIV_HIDE: // hidden from admins
