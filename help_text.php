@@ -637,29 +637,6 @@ case 'upload_gedcom':
 	$text = I18N::translate('This option deletes all the genealogy data in your family tree and replaces it with data from a GEDCOM file on your computer.');
 	break;
 
-case 'upload_media':
-	$title = I18N::translate('Upload media files');
-	$text = I18N::translate('Upload one or more media files from your local computer.  Media files can be pictures, video, audio, or other formats.');
-	break;
-
-case 'upload_server_file':
-	$title = I18N::translate('Filename on server');
-	$text = I18N::translate('The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer.');
-	break;
-
-case 'upload_server_folder':
-	$title = I18N::translate('Folder name on server');
-	$text =
-		'<p>' .
-		I18N::translate('If you have a large number of media files, you can organize them into folders and subfolders.') .
-		'</p>';
-	break;
-
-case 'upload_thumbnail_file':
-	$title = I18N::translate('Thumbnail to upload');
-	$text = I18N::translate('Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording.');
-	break;
-
 case 'zip':
 	$title = I18N::translate('Zip clippings');
 	$text = I18N::translate('Select this option as to save your clippings in a ZIP file.  For more information about ZIP files, please visit <a href="http://www.winzip.com" target="_blank">http://www.winzip.com</a>.');
