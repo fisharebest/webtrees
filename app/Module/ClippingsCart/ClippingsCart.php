@@ -239,14 +239,17 @@ class ClippingsCart {
 						$filetext .= "1 NOTE " . WT_BASE_URL . $object->getRawUrl() . "\n";
 						break;
 					default:
+						// This autoloads the PclZip library, so we can use its constants.
+						new PclZip('');
+
 						$ft = preg_match_all("/\n\d FILE (.+)/", $savedRecord, $match, PREG_SET_ORDER);
 						$MEDIA_DIRECTORY = $WT_TREE->getPreference('MEDIA_DIRECTORY');
 						for ($k = 0; $k < $ft; $k++) {
 							// Skip external files and non-existant files
 							if (file_exists(WT_DATA_DIR . $MEDIA_DIRECTORY . $match[$k][1])) {
 								$media[$mediacount] = array(
-									PCLZIP_ATT_FILE_NAME          => WT_DATA_DIR . $MEDIA_DIRECTORY . $match[$k][1],
-									PCLZIP_ATT_FILE_NEW_FULL_NAME => $match[$k][1],
+									\PCLZIP_ATT_FILE_NAME          => WT_DATA_DIR . $MEDIA_DIRECTORY . $match[$k][1],
+									\PCLZIP_ATT_FILE_NEW_FULL_NAME => $match[$k][1],
 								);
 								$mediacount++;
 							}
@@ -291,8 +294,8 @@ class ClippingsCart {
 			$comment = "Created by " . WT_WEBTREES . " " . WT_VERSION . " on " . date("d M Y") . ".";
 			$archive = new PclZip($fname);
 			// add the ged file to the root of the zip file (strip off the data folder)
-			$this->media_list[] = array(PCLZIP_ATT_FILE_NAME => WT_DATA_DIR . $tempFileName, PCLZIP_ATT_FILE_NEW_FULL_NAME => $tempFileName);
-			$v_list = $archive->create($this->media_list, PCLZIP_OPT_COMMENT, $comment);
+			$this->media_list[] = array(\PCLZIP_ATT_FILE_NAME => WT_DATA_DIR . $tempFileName, \PCLZIP_ATT_FILE_NEW_FULL_NAME => $tempFileName);
+			$v_list = $archive->create($this->media_list, \PCLZIP_OPT_COMMENT, $comment);
 			if ($v_list == 0) {
 				echo "Error : " . $archive->errorInfo(true) . "</td></tr>";
 			} else {
