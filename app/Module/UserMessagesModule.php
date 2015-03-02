@@ -87,7 +87,7 @@ class UserMessagesModule extends Module implements ModuleBlockInterface {
 				$content .= '<td class="list_value_wrap">';
 				$user = User::findByIdentifier($message->sender);
 				if ($user) {
-					$content .= '<span dir="auto">' . $user->getRealName() . '</span>';
+					$content .= $user->getRealNameHtml();
 					$content .= '  - <span dir="auto">' . $user->getEmail() . '</span>';
 				} else {
 					$content .= '<a href="mailto:' . Filter::escapeHtml($message->sender) . '">' . Filter::escapeHtml($message->sender) . '</a>';
