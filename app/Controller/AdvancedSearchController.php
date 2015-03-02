@@ -133,7 +133,7 @@ class AdvancedSearchController extends SearchController {
 		}
 		$fields = array();
 		foreach ($ofields as $field) {
-			$fields[$field] = WT_Gedcom_Tag::GetLabel($field);
+			$fields[$field] = GedcomTag::GetLabel($field);
 		}
 		uksort($fields, __NAMESPACE__ . '\AdvancedSearchController::tagSort');
 		return $fields;
@@ -150,11 +150,11 @@ class AdvancedSearchController extends SearchController {
 	public static function tagSort($x, $y) {
 		list($x1) = explode(':', $x . ':');
 		list($y1) = explode(':', $y . ':');
-		$tmp = I18N::strcasecmp(WT_Gedcom_Tag::getLabel($x1), WT_Gedcom_Tag::getLabel($y1));
+		$tmp = I18N::strcasecmp(GedcomTag::getLabel($x1), GedcomTag::getLabel($y1));
 		if ($tmp) {
 			return $tmp;
 		} else {
-			return I18N::strcasecmp(WT_Gedcom_Tag::getLabel($x), WT_Gedcom_Tag::getLabel($y));
+			return I18N::strcasecmp(GedcomTag::getLabel($x), GedcomTag::getLabel($y));
 		}
 	}
 
@@ -200,7 +200,7 @@ class AdvancedSearchController extends SearchController {
 	 * @return string
 	 */
 	function getLabel($tag) {
-		return WT_Gedcom_Tag::getLabel(preg_replace('/:(SDX|BEGINS|EXACT|CONTAINS)$/', '', $tag));
+		return GedcomTag::getLabel(preg_replace('/:(SDX|BEGINS|EXACT|CONTAINS)$/', '', $tag));
 	}
 
 	/**

@@ -340,7 +340,7 @@ case 'add':
 	check_record_access($record);
 
 	$controller
-		->setPageTitle($record->getFullName() . ' - ' . WT_Gedcom_Tag::getLabel($fact, $record))
+		->setPageTitle($record->getFullName() . ' - ' . GedcomTag::getLabel($fact, $record))
 		->pageHeader();
 
 	$level0type = $record::RECORD_TYPE;
@@ -551,7 +551,7 @@ case 'add_child_to_family_action':
 			$gedrec .= addNewFact($match);
 		}
 	}
-	$gedrec .= "\n" . WT_Gedcom_Code_Pedi::createNewFamcPedi($PEDI, $xref);
+	$gedrec .= "\n" . GedcomCodePedi::createNewFamcPedi($PEDI, $xref);
 	if (Filter::postBool('SOUR_INDI')) {
 		$gedrec = handle_updates($gedrec);
 	} else {
@@ -637,7 +637,7 @@ case 'add_child_to_individual_action':
 	$gedcom = '0 @NEW@ INDI';
 	$gedcom .= addNewName();
 	$gedcom .= addNewSex();
-	$gedcom .= "\n" . WT_Gedcom_Code_Pedi::createNewFamcPedi($PEDI, $family->getXref());
+	$gedcom .= "\n" . GedcomCodePedi::createNewFamcPedi($PEDI, $family->getXref());
 	if (preg_match_all('/([A-Z0-9_]+)/', $WT_TREE->getPreference('QUICK_REQUIRED_FACTS'), $matches)) {
 		foreach ($matches[1] as $match) {
 			$gedcom .= addNewFact($match);
@@ -1010,7 +1010,7 @@ case 'addfamlink':
 				</tr>
 				<tr>
 					<td class="facts_label">
-						<?php echo WT_Gedcom_Tag::getLabel('PEDI'); ?>
+						<?php echo GedcomTag::getLabel('PEDI'); ?>
 					</td>
 					<td class="facts_value">
 						<?php echo edit_field_pedi('PEDI', '', '', $person); ?>
@@ -1058,7 +1058,7 @@ case 'linkfamaction':
 		}
 	}
 
-	$gedcom = WT_Gedcom_Code_Pedi::createNewFamcPedi($PEDI, $famid);
+	$gedcom = GedcomCodePedi::createNewFamcPedi($PEDI, $famid);
 	$person->updateFact($fact_id, $gedcom, true);
 
 	// Only set the family->child link if it does not already exist
@@ -1222,25 +1222,25 @@ case 'addnewsource':
 			<input type="hidden" name="xref" value="newsour">
 			<?php echo Filter::getCsrf(); ?>
 			<table class="facts_table">
-				<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('TITL'); ?></td>
+				<tr><td class="descriptionbox wrap width25"><?php echo GedcomTag::getLabel('TITL'); ?></td>
 				<td class="optionbox wrap"><input type="text" data-autocomplete-type="SOUR_TITL" name="TITL" id="TITL" value="" size="60"> <?php echo print_specialchar_link('TITL'); ?></td></tr>
-				<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('ABBR'); ?></td>
+				<tr><td class="descriptionbox wrap width25"><?php echo GedcomTag::getLabel('ABBR'); ?></td>
 				<td class="optionbox wrap"><input type="text" name="ABBR" id="ABBR" value="" size="40" maxlength="255"> <?php echo print_specialchar_link('ABBR'); ?></td></tr>
 				<?php if (strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), "_HEB") !== false) { ?>
-				<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('_HEB'), help_link('_HEB'); ?></td>
+				<tr><td class="descriptionbox wrap width25"><?php echo GedcomTag::getLabel('_HEB'), help_link('_HEB'); ?></td>
 				<td class="optionbox wrap"><input type="text" name="_HEB" id="_HEB" value="" size="60"> <?php echo print_specialchar_link('_HEB'); ?></td></tr>
 				<?php } ?>
 				<?php if (strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), "ROMN") !== false) { ?>
-				<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('ROMN'), help_link('ROMN'); ?></td>
+				<tr><td class="descriptionbox wrap width25"><?php echo GedcomTag::getLabel('ROMN'), help_link('ROMN'); ?></td>
 				<td class="optionbox wrap"><input  type="text" name="ROMN" id="ROMN" value="" size="60"> <?php echo print_specialchar_link('ROMN'); ?></td></tr>
 				<?php } ?>
-				<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('AUTH'); ?></td>
+				<tr><td class="descriptionbox wrap width25"><?php echo GedcomTag::getLabel('AUTH'); ?></td>
 				<td class="optionbox wrap"><input type="text" name="AUTH" id="AUTH" value="" size="40" maxlength="255"> <?php echo print_specialchar_link('AUTH'); ?></td></tr>
-				<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('PUBL'); ?></td>
+				<tr><td class="descriptionbox wrap width25"><?php echo GedcomTag::getLabel('PUBL'); ?></td>
 				<td class="optionbox wrap"><textarea name="PUBL" id="PUBL" rows="5" cols="60"></textarea><br><?php echo print_specialchar_link('PUBL'); ?></td></tr>
-				<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('REPO'); ?></td>
+				<tr><td class="descriptionbox wrap width25"><?php echo GedcomTag::getLabel('REPO'); ?></td>
 				<td class="optionbox wrap"><input type="text" data-autocomplete-type="REPO" name="REPO" id="REPO" value="" size="10"> <?php echo print_findrepository_link('REPO'), ' ', print_addnewrepository_link('REPO'); ?></td></tr>
-				<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('CALN'); ?></td>
+				<tr><td class="descriptionbox wrap width25"><?php echo GedcomTag::getLabel('CALN'); ?></td>
 				<td class="optionbox wrap"><input type="text" name="CALN" id="CALN" value=""></td></tr>
 				<?php echo keep_chan(); ?>
 			</table>
@@ -1254,12 +1254,12 @@ case 'addnewsource':
 						<?php
 						$parts = explode(',', $WT_TREE->getPreference('INDI_FACTS_ADD'));
 						foreach ($parts as $key) {
-							?><option value="<?php echo $key; ?>"><?php echo WT_Gedcom_Tag::getLabel($key); ?></option>
+							?><option value="<?php echo $key; ?>"><?php echo GedcomTag::getLabel($key); ?></option>
 						<?php
 						}
 						$parts = explode(',', $WT_TREE->getPreference('FAM_FACTS_ADD'));
 						foreach ($parts as $key) {
-							?><option value="<?php echo $key; ?>"><?php echo WT_Gedcom_Tag::getLabel($key); ?></option>
+							?><option value="<?php echo $key; ?>"><?php echo GedcomTag::getLabel($key); ?></option>
 						<?php
 						}
 						?>
@@ -1563,22 +1563,22 @@ case 'addnewrepository':
 			<tr><td class="descriptionbox wrap width25"><?php echo I18N::translate('Repository name'); ?></td>
 			<td class="optionbox wrap"><input type="text" name="REPO_NAME" id="REPO_NAME" value="" size="40" maxlength="255"> <?php echo print_specialchar_link('REPO_NAME'); ?></td></tr>
 			<?php if (strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), "_HEB") !== false) { ?>
-			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('_HEB'), help_link('_HEB'); ?></td>
+			<tr><td class="descriptionbox wrap width25"><?php echo GedcomTag::getLabel('_HEB'), help_link('_HEB'); ?></td>
 			<td class="optionbox wrap"><input type="text" name="_HEB" id="_HEB" value="" size="40" maxlength="255"> <?php echo print_specialchar_link('_HEB'); ?></td></tr>
 			<?php } ?>
 			<?php if (strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), "ROMN") !== false) { ?>
-			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('ROMN'), help_link('ROMN'); ?></td>
+			<tr><td class="descriptionbox wrap width25"><?php echo GedcomTag::getLabel('ROMN'), help_link('ROMN'); ?></td>
 			<td class="optionbox wrap"><input type="text" name="ROMN" id="ROMN" value="" size="40" maxlength="255"> <?php echo print_specialchar_link('ROMN'); ?></td></tr>
 			<?php } ?>
-			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('ADDR'), help_link('ADDR'); ?></td>
+			<tr><td class="descriptionbox wrap width25"><?php echo GedcomTag::getLabel('ADDR'), help_link('ADDR'); ?></td>
 			<td class="optionbox wrap"><textarea name="ADDR" id="ADDR" rows="5" cols="60"></textarea><?php echo print_specialchar_link('ADDR'); ?> </td></tr>
-			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('PHON'), help_link('PHON'); ?></td>
+			<tr><td class="descriptionbox wrap width25"><?php echo GedcomTag::getLabel('PHON'), help_link('PHON'); ?></td>
 			<td class="optionbox wrap"><input type="text" name="PHON" id="PHON" value="" size="40" maxlength="255"> </td></tr>
-			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('FAX'), help_link('FAX'); ?></td>
+			<tr><td class="descriptionbox wrap width25"><?php echo GedcomTag::getLabel('FAX'), help_link('FAX'); ?></td>
 			<td class="optionbox wrap"><input type="text" name="FAX" id="FAX" value="" size="40"></td></tr>
-			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('EMAIL'), help_link('EMAIL'); ?></td>
+			<tr><td class="descriptionbox wrap width25"><?php echo GedcomTag::getLabel('EMAIL'), help_link('EMAIL'); ?></td>
 			<td class="optionbox wrap"><input type="text" name="EMAIL" id="EMAIL" value="" size="40" maxlength="255"></td></tr>
-			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('WWW'), help_link('URL'); ?></td>
+			<tr><td class="descriptionbox wrap width25"><?php echo GedcomTag::getLabel('WWW'), help_link('URL'); ?></td>
 			<td class="optionbox wrap"><input type="text" name="WWW" id="WWW" value="" size="40" maxlength="255"> </td></tr>
 			<?php echo keep_chan(); ?>
 		</table>
@@ -2311,15 +2311,15 @@ function keep_chan(GedcomRecord $record = null) {
 	if (Auth::isAdmin()) {
 		if ($record) {
 			$details =
-				WT_Gedcom_Tag::getLabelValue('DATE', $record->lastChangeTimestamp()) .
-				WT_Gedcom_Tag::getLabelValue('_WT_USER', Filter::escapeHtml($record->lastChangeUser()));
+				GedcomTag::getLabelValue('DATE', $record->lastChangeTimestamp()) .
+				GedcomTag::getLabelValue('_WT_USER', Filter::escapeHtml($record->lastChangeUser()));
 		} else {
 			$details = '';
 		}
 
 		return
 			'<tr><td class="descriptionbox wrap width25">' .
-			WT_Gedcom_Tag::getLabel('CHAN') .
+			GedcomTag::getLabel('CHAN') .
 			'</td><td class="optionbox wrap">' .
 			'<input type="checkbox" name="keep_chan" value="1" ' . ($WT_TREE->getPreference('NO_UPDATE_CHAN') ? 'checked' : '') . '>' .
 			I18N::translate('Do not update the “last change” record') .
@@ -2690,7 +2690,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 					add_simple_tag('2 _MARNM ' . $value);
 					add_simple_tag('2 _MARNM_SURN ' . $marnm_surn);
 				} else {
-					add_simple_tag('2 ' . $tag . ' ' .  $value, '', WT_Gedcom_Tag::getLabel('NAME:' . $tag, $person));
+					add_simple_tag('2 ' . $tag . ' ' .  $value, '', GedcomTag::getLabel('NAME:' . $tag, $person));
 				}
 			}
 		}
@@ -2700,7 +2700,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 				add_simple_tag('0 _MARNM');
 				add_simple_tag('0 _MARNM_SURN ' . $new_marnm);
 			} else {
-				add_simple_tag('0 ' . $tag, '', WT_Gedcom_Tag::getLabel('NAME:' . $tag, $person));
+				add_simple_tag('0 ' . $tag, '', GedcomTag::getLabel('NAME:' . $tag, $person));
 			}
 		}
 	}

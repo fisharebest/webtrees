@@ -39,13 +39,13 @@ class AlbumModule extends Module implements ModuleTabInterface {
 
 	/** {@inheritdoc} */
 	public function hasTabContent() {
-		return WT_USER_CAN_EDIT || $this->get_media();
+		return WT_USER_CAN_EDIT || $this->getMedia();
 	}
 
 
 	/** {@inheritdoc} */
 	public function isGrayedOut() {
-		return !$this->get_media();
+		return !$this->getMedia();
 	}
 
 	/** {@inheritdoc} */
@@ -68,7 +68,7 @@ class AlbumModule extends Module implements ModuleTabInterface {
 				$html .= I18N::translate('Link to an existing media object');
 				$html .= '</a></span>';
 			}
-			if (WT_USER_GEDCOM_ADMIN && $this->get_media()) {
+			if (WT_USER_GEDCOM_ADMIN && $this->getMedia()) {
 				// Popup Reorder Media
 				$html .= '<span><a href="#" onclick="reorder_media(\'' . $controller->record->getXref() . '\')">';
 				$html .= '<img src="' . Theme::theme()->assetUrl() . 'images/images.png" id="head_icon" class="icon" title="' . I18N::translate('Re-order media') . '" alt="' . I18N::translate('Re-order media') . '">';
@@ -81,7 +81,7 @@ class AlbumModule extends Module implements ModuleTabInterface {
 		// Used when sorting media on album tab page
 		$html .= '<table class="facts_table"><tr><td class="facts_value">'; // one-cell table - for presentation only
 		$html .= '<ul class="album-list">';
-		foreach ($this->get_media() as $media) {
+		foreach ($this->getMedia() as $media) {
 			//View Edit Menu ----------------------------------
 
 			//Get media item Notes
@@ -167,7 +167,7 @@ class AlbumModule extends Module implements ModuleTabInterface {
 	 *
 	 * @return Media[]
 	 */
-	private function get_media() {
+	private function getMedia() {
 		global $controller;
 
 		if ($this->media_list === null) {

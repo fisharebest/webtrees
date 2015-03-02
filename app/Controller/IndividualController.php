@@ -168,7 +168,7 @@ class IndividualController extends GedcomRecordController {
 			echo '<div>';
 				$fact = $nmatch[$i][1];
 				if ($fact != 'SOUR' && $fact != 'NOTE' && $fact != 'SPFX') {
-					echo '<dl><dt class="label">', WT_Gedcom_Tag::getLabel($fact, $this->record), '</dt>';
+					echo '<dl><dt class="label">', GedcomTag::getLabel($fact, $this->record), '</dt>';
 					echo '<dd class="field">'; // Before using dir="auto" on this field, note that Gecko treats this as an inline element but WebKit treats it as a block element
 					if (isset($nmatch[$i][2])) {
 							$name = Filter::escapeHtml($nmatch[$i][2]);
@@ -176,7 +176,7 @@ class IndividualController extends GedcomRecordController {
 							$name = preg_replace('/(\S*)\*/', '<span class="starredname">\\1</span>', $name);
 							switch ($fact) {
 							case 'TYPE':
-								echo WT_Gedcom_Code_Name::getValue($name, $this->record);
+								echo GedcomCodeName::getValue($name, $this->record);
 								break;
 							case 'SURN':
 								// The SURN field is not necessarily the surname.
@@ -246,10 +246,10 @@ class IndividualController extends GedcomRecordController {
 		case 'U':
 			echo 'unknown_gender"';
 			if ($event->canEdit()) {
-				echo ' title="', I18N::translate_c('unknown gender', 'Unknown'), ' - ', I18N::translate('Edit'), '"';
+				echo ' title="', I18N::translateContext('unknown gender', 'Unknown'), ' - ', I18N::translate('Edit'), '"';
 				echo ' onclick="edit_record(\'' . $this->record->getXref() . '\', \'' . $event->getFactId() . '\'); return false;">';
 			 } else {
-				echo ' title="', I18N::translate_c('unknown gender', 'Unknown'), '">';
+				echo ' title="', I18N::translateContext('unknown gender', 'Unknown'), '">';
 			 }
 			break;
 		}

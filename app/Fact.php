@@ -265,7 +265,7 @@ class Fact {
 			}
 			// no break - drop into next case
 		default:
-			return WT_Gedcom_Tag::getLabel($this->tag, $this->parent);
+			return GedcomTag::getLabel($this->tag, $this->parent);
 		}
 	}
 
@@ -390,7 +390,7 @@ class Fact {
 				$attributes[] = $place;
 			}
 		}
-		$html = WT_Gedcom_Tag::getLabelValue($this->getTag(), implode(' — ', $attributes), $this->getParent());
+		$html = GedcomTag::getLabelValue($this->getTag(), implode(' — ', $attributes), $this->getParent());
 		if ($this->isPendingAddition()) {
 			return '<div class="new">' . $html . '</div>';
 		} elseif ($this->isPendingDeletion()) {

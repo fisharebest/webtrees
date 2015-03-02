@@ -17,9 +17,9 @@ namespace Fisharebest\Webtrees;
  */
 
 /**
- * Class WT_Gedcom_Code_Temp - Functions and logic for GEDCOM "TEMP" codes
+ * Class GedcomCodeTemp - Functions and logic for GEDCOM "TEMP" codes
  */
-class WT_Gedcom_Code_Temp {
+class GedcomCodeTemp {
 	/**
 	 * A list of GEDCOM tags that require a TEMP subtag
 	 *

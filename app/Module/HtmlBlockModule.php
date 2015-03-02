@@ -123,7 +123,7 @@ class HtmlBlockModule extends Module implements ModuleBlockInterface {
 			set_block_setting($block_id, 'html', Filter::post('html'));
 			set_block_setting($block_id, 'show_timestamp', Filter::postBool('show_timestamp'));
 			set_block_setting($block_id, 'timestamp', Filter::post('timestamp'));
-			$languages = Filter::postArray('lang', null, array_keys(I18N::installed_languages()));
+			$languages = Filter::postArray('lang', null, array_keys(I18N::installedLanguages()));
 			set_block_setting($block_id, 'languages', implode(',', $languages));
 		}
 
@@ -243,7 +243,7 @@ class HtmlBlockModule extends Module implements ModuleBlockInterface {
 		$languages      = explode(',', get_block_setting($block_id, 'languages'));
 
 		echo '<tr><td class="descriptionbox wrap">',
-			WT_Gedcom_Tag::getLabel('TITL'),
+			GedcomTag::getLabel('TITL'),
 			'</td><td class="optionbox"><input type="text" name="title" size="30" value="', Filter::escapeHtml($title), '"></td></tr>';
 
 		// templates

@@ -265,62 +265,62 @@ echo '<option value="BIRT" ';
 if ($filterev === 'BIRT') {
 	echo 'selected';
 }
-echo '>', WT_Gedcom_Tag::getLabel('BIRT'), '</option>';
+echo '>', GedcomTag::getLabel('BIRT'), '</option>';
 echo '<option value="CHR" ';
 if ($filterev === 'CHR') {
 	echo 'selected';
 }
-echo '>', WT_Gedcom_Tag::getLabel('CHR'), '</option>';
+echo '>', GedcomTag::getLabel('CHR'), '</option>';
 echo '<option value="CHRA" ';
 if ($filterev === 'CHRA') {
 	echo 'selected';
 }
-echo '>', WT_Gedcom_Tag::getLabel('CHRA'), '</option>';
+echo '>', GedcomTag::getLabel('CHRA'), '</option>';
 echo '<option value="BAPM" ';
 if ($filterev === 'BAPM') {
 	echo 'selected';
 }
-echo '>', WT_Gedcom_Tag::getLabel('BAPM'), '</option>';
+echo '>', GedcomTag::getLabel('BAPM'), '</option>';
 echo '<option value="_COML" ';
 if ($filterev === '_COML') {
 	echo 'selected';
 }
-echo '>', WT_Gedcom_Tag::getLabel('_COML'), '</option>';
+echo '>', GedcomTag::getLabel('_COML'), '</option>';
 echo '<option value="MARR" ';
 if ($filterev === 'MARR') {
 	echo 'selected';
 }
-echo '>', WT_Gedcom_Tag::getLabel('MARR'), '</option>';
+echo '>', GedcomTag::getLabel('MARR'), '</option>';
 echo '<option value="_SEPR" ';
 if ($filterev === '_SEPR') {
 	echo 'selected';
 }
-echo '>', WT_Gedcom_Tag::getLabel('_SEPR'), '</option>';
+echo '>', GedcomTag::getLabel('_SEPR'), '</option>';
 echo '<option value="DIV" ';
 if ($filterev === 'DIV') {
 	echo 'selected';
 }
-echo '>', WT_Gedcom_Tag::getLabel('DIV'), '</option>';
+echo '>', GedcomTag::getLabel('DIV'), '</option>';
 echo '<option value="DEAT" ';
 if ($filterev === 'DEAT') {
 	echo 'selected';
 }
-echo '>', WT_Gedcom_Tag::getLabel('DEAT'), '</option>';
+echo '>', GedcomTag::getLabel('DEAT'), '</option>';
 echo '<option value="BURI" ';
 if ($filterev === 'BURI') {
 	echo 'selected';
 }
-echo '>', WT_Gedcom_Tag::getLabel('BURI'), '</option>';
+echo '>', GedcomTag::getLabel('BURI'), '</option>';
 echo '<option value="IMMI" ';
 if ($filterev === 'IMMI') {
 	echo 'selected';
 }
-echo '>', WT_Gedcom_Tag::getLabel('IMMI'), '</option>';
+echo '>', GedcomTag::getLabel('IMMI'), '</option>';
 echo '<option value="EMIG" ';
 if ($filterev === 'EMIG') {
 	echo 'selected';
 }
-echo '>', WT_Gedcom_Tag::getLabel('EMIG'), '</option>';
+echo '>', GedcomTag::getLabel('EMIG'), '</option>';
 echo '<option value="EVEN" ';
 if ($filterev === 'EVEN') {
 	echo 'selected';
@@ -695,7 +695,7 @@ function calendar_list_text($list, $tag1, $tag2, $show_sex_symbols) {
 				++$females;
 				break;
 			default:
-				$html .= '<i class="icon-sex_u_9x9" title="' . I18N::translate_c('unknown gender', 'Unknown') . '"></i>';
+				$html .= '<i class="icon-sex_u_9x9" title="' . I18N::translateContext('unknown gender', 'Unknown') . '"></i>';
 				break;
 			}
 		}

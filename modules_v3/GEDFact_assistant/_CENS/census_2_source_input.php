@@ -1025,7 +1025,7 @@ namespace Fisharebest\Webtrees;
 			<input id="Titl" name="Titl" type="text" value="">
 		</div>
 		<div class="cens_sour_1">
-			<div class="cens_sour_2"><?php echo WT_Gedcom_Tag::getLabel('PAGE'); ?></div>
+			<div class="cens_sour_2"><?php echo GedcomTag::getLabel('PAGE'); ?></div>
 			<input id="citation" name="citation" type="text" value="">
 		</div>
 		<div class="cens_sour_1">

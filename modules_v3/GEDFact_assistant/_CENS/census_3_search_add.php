@@ -1474,13 +1474,13 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 		}
 
 		if ($person_parent !== 'Yes') {
-			$parentlinks .= '(' . I18N::translate_c('unknown family', 'unknown') . ')</td></tr></table>';
+			$parentlinks .= '(' . I18N::translateContext('unknown family', 'unknown') . ')</td></tr></table>';
 		} else {
 			$parentlinks .= '</td></tr></table>';
 		}
 
 		if ($person_step !== 'Yes') {
-			$step_parentlinks .= '(' . I18N::translate_c('unknown family', 'unknown') . ')</td></tr></table>';
+			$step_parentlinks .= '(' . I18N::translateContext('unknown family', 'unknown') . ')</td></tr></table>';
 		} else {
 			$step_parentlinks .= '</td></tr></table>';
 		}

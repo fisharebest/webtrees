@@ -73,7 +73,7 @@ $formats = array(
 
 $surname_traditions = array(
 	'paternal' =>
-		I18N::translate_c('Surname tradition', 'paternal') .
+		I18N::translateContext('Surname tradition', 'paternal') .
 		' — ' . /* I18N: In the paternal surname tradition, ... */ I18N::translate('Children take their father’s surname.') .
 		' ' . /* I18N: In the paternal surname tradition, ... */ I18N::translate('Wives take their husband’s surname.'),
 	/* I18N: A system where children take their father’s surname */ 'patrilineal' =>
@@ -83,26 +83,26 @@ $surname_traditions = array(
 		I18N::translate('matrilineal') .
 		' — ' . /* I18N: In the matrilineal surname tradition, ... */ I18N::translate('Children take their mother’s surname.'),
 	'spanish' =>
-		I18N::translate_c('Surname tradition', 'Spanish') .
+		I18N::translateContext('Surname tradition', 'Spanish') .
 		' — ' . /* I18N: In the Spanish surname tradition, ... */ I18N::translate('Children take one surname from the father and one surname from the mother.'),
 	'portuguese' =>
-		I18N::translate_c('Surname tradition', 'Portuguese') .
+		I18N::translateContext('Surname tradition', 'Portuguese') .
 		' — ' . /* I18N: In the Portuguese surname tradition, ... */ I18N::translate('Children take one surname from the mother and one surname from the father.'),
 	'icelandic' =>
-		I18N::translate_c('Surname tradition', 'Icelandic') .
+		I18N::translateContext('Surname tradition', 'Icelandic') .
 		' — ' . /* I18N: In the Icelandic surname tradition, ... */ I18N::translate('Children take a patronym instead of a surname.'),
 	'polish' =>
-		I18N::translate_c('Surname tradition', 'Polish') .
+		I18N::translateContext('Surname tradition', 'Polish') .
 		' — ' . /* I18N: In the Polish surname tradition, ... */ I18N::translate('Children take their father’s surname.') .
 		' ' . /* I18N: In the Polish surname tradition, ... */ I18N::translate('Wives take their husband’s surname.') .
 		' ' . /* I18N: In the Polish surname tradition, ... */ I18N::translate('Surnames are inflected to indicate an individual’s gender.'),
 	'lithuanian' =>
-		I18N::translate_c('Surname tradition', 'Lithuanian') .
+		I18N::translateContext('Surname tradition', 'Lithuanian') .
 		' — ' . /* I18N: In the Lithuanian surname tradition, ... */ I18N::translate('Children take their father’s surname.') .
 		' ' . /* I18N: In the Lithuanian surname tradition, ... */ I18N::translate('Wives take their husband’s surname.') .
 		' ' . /* I18N: In the Lithuanian surname tradition, ... */ I18N::translate('Surnames are inflected to indicate an individual’s gender and marital status.'),
 	'none' =>
-		I18N::translate_c('Surname tradition', 'none')
+		I18N::translateContext('Surname tradition', 'none')
 );
 
 $source_types = array(
@@ -142,7 +142,7 @@ $tags = array_unique(array_merge(
 $all_tags = array();
 foreach ($tags as $tag) {
 	if ($tag) {
-		$all_tags[$tag] = WT_Gedcom_Tag::getLabel($tag);
+		$all_tags[$tag] = GedcomTag::getLabel($tag);
 	}
 }
 
@@ -159,7 +159,7 @@ $resns = Database::prepare(
 foreach ($resns as $resn) {
 	$resn->record = GedcomRecord::getInstance($resn->xref);
 	if ($resn->tag_type) {
-		$resn->tag_label = WT_Gedcom_Tag::getLabel($resn->tag_type);
+		$resn->tag_label = GedcomTag::getLabel($resn->tag_type);
 	} else {
 		$resn->tag_label = '';
 	}
@@ -673,7 +673,7 @@ $controller
 			<?php echo /* I18N: A configuration setting */ I18N::translate('Language'); ?>
 		</label>
 		<div class="col-sm-9">
-			<?php echo select_edit_control('LANGUAGE', I18N::installed_languages(), null, $WT_TREE->getPreference('LANGUAGE'), 'class="form-control"'); ?>
+			<?php echo select_edit_control('LANGUAGE', I18N::installedLanguages(), null, $WT_TREE->getPreference('LANGUAGE'), 'class="form-control"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Language” configuration setting */ I18N::translate('If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines.'); ?>
 			</p>
@@ -1411,19 +1411,19 @@ $controller
 			<div class="checkbox">
 				<label for="_BIRT_GCHI">
 					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_BIRT_GCHI" value="_BIRT_GCHI" <?php echo in_array('_BIRT_GCHI', $relatives_events) ? 'checked' : ''; ?>>
-					<?php echo WT_Gedcom_Tag::getLabel('_BIRT_GCHI'); ?>
+					<?php echo GedcomTag::getLabel('_BIRT_GCHI'); ?>
 				</label>
 			</div>
 			<div class="checkbox">
 				<label for="_BIRT_CHIL">
 					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_BIRT_CHIL" value="_BIRT_CHIL" <?php echo in_array('_BIRT_CHIL', $relatives_events) ? 'checked' : ''; ?>>
-					<?php echo WT_Gedcom_Tag::getLabel('_BIRT_CHIL'); ?>
+					<?php echo GedcomTag::getLabel('_BIRT_CHIL'); ?>
 				</label>
 			</div>
 			<div class="checkbox">
 				<label for="_BIRT_SIBL">
 					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_BIRT_SIBL" value="_BIRT_SIBL" <?php echo in_array('_BIRT_SIBL', $relatives_events) ? 'checked' : ''; ?>>
-					<?php echo WT_Gedcom_Tag::getLabel('_BIRT_SIBL'); ?>
+					<?php echo GedcomTag::getLabel('_BIRT_SIBL'); ?>
 				</label>
 			</div>
 		</div>
@@ -1431,25 +1431,25 @@ $controller
 			<div class="checkbox">
 				<label for="_MARR_GCHI">
 					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_MARR_GCHI" value="_MARR_GCHI" <?php echo in_array('_MARR_GCHI', $relatives_events) ? 'checked' : ''; ?>>
-					<?php echo WT_Gedcom_Tag::getLabel('_MARR_GCHI'); ?>
+					<?php echo GedcomTag::getLabel('_MARR_GCHI'); ?>
 				</label>
 			</div>
 			<div class="checkbox">
 				<label for="_MARR_CHIL">
 					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_MARR_CHIL" value="_MARR_CHIL" <?php echo in_array('_MARR_CHIL', $relatives_events) ? 'checked' : ''; ?>>
-					<?php echo WT_Gedcom_Tag::getLabel('_MARR_CHIL'); ?>
+					<?php echo GedcomTag::getLabel('_MARR_CHIL'); ?>
 				</label>
 			</div>
 			<div class="checkbox">
 				<label for="_MARR_SIBL">
 					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_MARR_SIBL" value="_MARR_SIBL" <?php echo in_array('_MARR_SIBL', $relatives_events) ? 'checked' : ''; ?>>
-					<?php echo WT_Gedcom_Tag::getLabel('_MARR_SIBL'); ?>
+					<?php echo GedcomTag::getLabel('_MARR_SIBL'); ?>
 				</label>
 			</div>
 			<div class="checkbox">
 				<label for="_MARR_PARE">
 					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_MARR_PARE" value="_MARR_PARE" <?php echo in_array('_MARR_PARE', $relatives_events) ? 'checked' : ''; ?>>
-					<?php echo WT_Gedcom_Tag::getLabel('_MARR_PARE'); ?>
+					<?php echo GedcomTag::getLabel('_MARR_PARE'); ?>
 				</label>
 			</div>
 		</div>
@@ -1457,37 +1457,37 @@ $controller
 			<div class="checkbox">
 				<label for="_DEAT_GCHI">
 					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_GCHI" value="_DEAT_GCHI" <?php echo in_array('_DEAT_GCHI', $relatives_events) ? 'checked' : ''; ?>>
-					<?php echo WT_Gedcom_Tag::getLabel('_DEAT_GCHI'); ?>
+					<?php echo GedcomTag::getLabel('_DEAT_GCHI'); ?>
 				</label>
 			</div>
 			<div class="checkbox">
 				<label for="_DEAT_CHIL">
 					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_CHIL" value="_DEAT_CHIL" <?php echo in_array('_DEAT_CHIL', $relatives_events) ? 'checked' : ''; ?>>
-					<?php echo WT_Gedcom_Tag::getLabel('_DEAT_CHIL'); ?>
+					<?php echo GedcomTag::getLabel('_DEAT_CHIL'); ?>
 				</label>
 			</div>
 			<div class="checkbox">
 				<label for="_DEAT_SIBL">
 					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_SIBL" value="_DEAT_SIBL" <?php echo in_array('_DEAT_SIBL', $relatives_events) ? 'checked' : ''; ?>>
-					<?php echo WT_Gedcom_Tag::getLabel('_DEAT_SIBL'); ?>
+					<?php echo GedcomTag::getLabel('_DEAT_SIBL'); ?>
 				</label>
 			</div>
 			<div class="checkbox">
 				<label for="_DEAT_PARE">
 					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_PARE" value="_DEAT_PARE" <?php echo in_array('_DEAT_PARE', $relatives_events) ? 'checked' : ''; ?>>
-					<?php echo WT_Gedcom_Tag::getLabel('_DEAT_PARE'); ?>
+					<?php echo GedcomTag::getLabel('_DEAT_PARE'); ?>
 				</label>
 			</div>
 			<div class="checkbox">
 				<label for="_DEAT_SPOU">
 					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_SPOU" value="_DEAT_SPOU" <?php echo in_array('_DEAT_SPOU', $relatives_events) ? 'checked' : ''; ?>>
-					<?php echo WT_Gedcom_Tag::getLabel('_DEAT_SPOU'); ?>
+					<?php echo GedcomTag::getLabel('_DEAT_SPOU'); ?>
 				</label>
 			</div>
 			<div class="checkbox">
 				<label for="_DEAT_GPAR">
 					<input name="SHOW_RELATIVES_EVENTS[]" type="checkbox" id="_DEAT_GPAR" value="_DEAT_GPAR" <?php echo in_array('_DEAT_GPAR', $relatives_events) ? 'checked' : ''; ?>>
-					<?php echo WT_Gedcom_Tag::getLabel('_DEAT_GPAR'); ?>
+					<?php echo GedcomTag::getLabel('_DEAT_GPAR'); ?>
 				</label>
 			</div>
 		</div>
@@ -1512,8 +1512,8 @@ $controller
 				'Show the %1$s %2$s parts of a place name.',
 				select_edit_control('SHOW_PEDIGREE_PLACES_SUFFIX',
 					array(
-						false=> I18N::translate_c('Show the [first/last] [N] parts of a place name.', 'first'),
-						true => I18N::translate_c('Show the [first/last] [N] parts of a place name.', 'last')
+						false=> I18N::translateContext('Show the [first/last] [N] parts of a place name.', 'first'),
+						true => I18N::translateContext('Show the [first/last] [N] parts of a place name.', 'last')
 					), null, $WT_TREE->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX')
 				),
 				select_edit_control('SHOW_PEDIGREE_PLACES', $one_to_nine, null, $WT_TREE->getPreference('SHOW_PEDIGREE_PLACES'))
@@ -1524,7 +1524,7 @@ $controller
 		</div>
 	</fieldset>
 
-	<h3><?php echo WT_Gedcom_Tag::getLabel('TEXT'); ?></h3>
+	<h3><?php echo GedcomTag::getLabel('TEXT'); ?></h3>
 
 	<!-- FORMAT_TEXT -->
 	<fieldset class="form-group">

@@ -17,9 +17,9 @@ namespace Fisharebest\Webtrees;
  */
 
 /**
- * Class WT_Gedcom_Code_Stat - Functions and logic for GEDCOM "STAT" codes
+ * Class GedcomCodeStat - Functions and logic for GEDCOM "STAT" codes
  */
-class WT_Gedcom_Code_Stat {
+class GedcomCodeStat {
 	/**
 	 * Get a list of status codes that can be used on a given LDS tag
 	 *
@@ -43,7 +43,7 @@ class WT_Gedcom_Code_Stat {
 			// LDS_SPOUSE_SEALING_DATE_STATUS
 			return array('CANCELED', 'COMPLETED', 'DNS', 'DNS/CAN', 'EXCLUDED', 'PRE-1970', 'SUBMITTED', 'UNCLEARED');
 		default:
-			throw new \InvalidArgumentException('Internal error - bad argument to WT_Gedcom_Code_Stat::statusCodes("' . $tag . '")');
+			throw new \InvalidArgumentException('Internal error - bad argument to GedcomCodeStat::statusCodes("' . $tag . '")');
 		}
 	}
 

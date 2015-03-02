@@ -500,7 +500,7 @@ if (!$isExternal) {
 	echo I18N::translate('Folder name on server'), help_link('upload_server_folder'), '</td><td class="optionbox wrap">';
 	//-- don’t let regular users change the location of media items
 	if ($action !== 'update' || WT_USER_GEDCOM_ADMIN) {
-		$mediaFolders = WT_Query_Media::folderList();
+		$mediaFolders = QueryMedia::folderList();
 		echo '<span dir="ltr"><select name="folder_list" onchange="document.newmedia.folder.value=this.options[this.selectedIndex].value;">';
 		echo '<option ';
 		if ($folder == '') {
@@ -629,7 +629,7 @@ if (!empty($gedrec)) {
 				add_simple_tag($sourceLevel . ' SOUR ' . $sourceSOUR);
 				add_simple_tag(($sourceLevel + 1) . ' PAGE ' . $sourcePAGE);
 				add_simple_tag(($sourceLevel + 2) . ' TEXT ' . $sourceTEXT);
-				add_simple_tag(($sourceLevel + 2) . ' DATE ' . $sourceDATE, '', WT_Gedcom_Tag::getLabel('DATA:DATE'));
+				add_simple_tag(($sourceLevel + 2) . ' DATE ' . $sourceDATE, '', GedcomTag::getLabel('DATA:DATE'));
 				add_simple_tag(($sourceLevel + 1) . ' QUAY ' . $sourceQUAY);
 				$sourceSOUR = '';
 			}
@@ -677,13 +677,13 @@ if (!empty($gedrec)) {
 		add_simple_tag($sourceLevel . ' SOUR ' . $sourceSOUR);
 		add_simple_tag(($sourceLevel + 1) . ' PAGE ' . $sourcePAGE);
 		add_simple_tag(($sourceLevel + 2) . ' TEXT ' . $sourceTEXT);
-		add_simple_tag(($sourceLevel + 2) . ' DATE ' . $sourceDATE, '', WT_Gedcom_Tag::getLabel('DATA:DATE'));
+		add_simple_tag(($sourceLevel + 2) . ' DATE ' . $sourceDATE, '', GedcomTag::getLabel('DATA:DATE'));
 		add_simple_tag(($sourceLevel + 1) . ' QUAY ' . $sourceQUAY);
 	}
 }
 if (Auth::isAdmin()) {
 	echo '<tr><td class="descriptionbox wrap width25">';
-	echo WT_Gedcom_Tag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
+	echo GedcomTag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
 	if ($NO_UPDATE_CHAN) {
 		echo '<input type="checkbox" checked name="preserve_last_changed">';
 	} else {

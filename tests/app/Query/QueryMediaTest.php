@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 use PHPUnit_Framework_TestCase;
 
 /**
- * Test harness for the class WT_Query_Media
+ * Test harness for the class QueryMedia
  */
 class QueryMediaTest extends PHPUnit_Framework_TestCase {
 	/**
@@ -36,6 +36,6 @@ class QueryMediaTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testClassExists() {
-		$this->assertTrue(class_exists(__NAMESPACE__ . '\WT_Query_Media'));
+		$this->assertTrue(class_exists(__NAMESPACE__ . '\QueryMedia'));
 	}
 }

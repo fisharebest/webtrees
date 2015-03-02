@@ -17,13 +17,13 @@ namespace Fisharebest\Webtrees;
  */
 
 /**
- * Class WT_Query_Media - generate lists of files for admin_media.php
+ * Class QueryMedia - generate lists of files for admin_media.php
  *
  * @package   webtrees
  * @copyright (c) 2014 webtrees development team
  * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2
  */
-class WT_Query_Media {
+class QueryMedia {
 	/**
 	 * Generate a list of all the folders in the current tree - for the media list.
 	 *
@@ -109,7 +109,7 @@ class WT_Query_Media {
 			$args[] = Filter::escapeLike($folder);
 			break;
 		default:
-			throw new \Exception('Bad argument (subfolders=' . $subfolders . ') in WT_Query_Media::mediaList()');
+			throw new \Exception('Bad argument (subfolders=' . $subfolders . ') in QueryMedia::mediaList()');
 		}
 
 		// Apply search terms
@@ -127,7 +127,7 @@ class WT_Query_Media {
 			$sql .= " ORDER BY m_titl";
 			break;
 		default:
-			throw new \Exception('Bad argument (sort=' . $sort . ') in WT_Query_Media::mediaList()');
+			throw new \Exception('Bad argument (sort=' . $sort . ') in QueryMedia::mediaList()');
 		}
 
 		$rows = Database::prepare($sql)->execute($args)->fetchAll();

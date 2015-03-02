@@ -235,7 +235,7 @@ case 'load_json':
 		foreach ($rows as $row) {
 			$media = Media::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 			$data[] = array(
-				WT_Gedcom_Tag::getLabelValue('URL', $row->m_filename),
+				GedcomTag::getLabelValue('URL', $row->m_filename),
 				$media->displayImage(),
 				mediaObjectInfo($media),
 			);

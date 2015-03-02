@@ -80,7 +80,7 @@ class NotesTabModule extends Module implements ModuleTabInterface {
 			?>
 			<tr>
 				<td class="facts_label">
-					<?php echo WT_Gedcom_Tag::getLabel('NOTE'); ?>
+					<?php echo GedcomTag::getLabel('NOTE'); ?>
 				</td>
 				<td class="facts_value">
 					<a href="#" onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','NOTE'); return false;">
@@ -91,7 +91,7 @@ class NotesTabModule extends Module implements ModuleTabInterface {
 			</tr>
 			<tr>
 				<td class="facts_label">
-					<?php echo WT_Gedcom_Tag::getLabel('SHARED_NOTE'); ?>
+					<?php echo GedcomTag::getLabel('SHARED_NOTE'); ?>
 				</td>
 				<td class="facts_value">
 					<a href="#" onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','SHARED_NOTE'); return false;">

@@ -159,7 +159,7 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 				}
 				set_block_setting($block_id, 'title', Filter::post('title'));
 				set_block_setting($block_id, 'story_body', Filter::post('story_body'));
-				$languages = Filter::postArray('lang', null, array_keys(I18N::installed_languages()));
+				$languages = Filter::postArray('lang', null, array_keys(I18N::installedLanguages()));
 				set_block_setting($block_id, 'languages', implode(',', $languages));
 				$this->config();
 			} else {

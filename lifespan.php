@@ -159,7 +159,7 @@ $people = count($controller->people);
 							<td align="center"><?php echo I18N::translate('Speed'); ?></td>
 							<td align="center"><?php echo I18N::translate('Begin year'); ?></td>
 							<td align="center"><?php echo I18N::translate('End year'); ?></td>
-							<td align="center"><?php echo WT_Gedcom_Tag::getLabel('PLAC'); ?></td>
+							<td align="center"><?php echo GedcomTag::getLabel('PLAC'); ?></td>
 						</tr>
 						<tr>
 							<td>

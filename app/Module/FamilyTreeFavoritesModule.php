@@ -182,7 +182,7 @@ class FamilyTreeFavoritesModule extends Module implements ModuleBlockInterface {
 			$content .= '</div>';
 			$content .= '<div class="add_fav_url">';
 			$content .= '<input type="radio" name="fav_category" value="url" onclick="jQuery(\'#url, #favtitle\').removeAttr(\'disabled\'); jQuery(\'#gid' . $uniqueID . '\').attr(\'disabled\',\'disabled\').val(\'\');">';
-			$content .= '<input type="text" name="url" id="url" size="20" value="" placeholder="' . WT_Gedcom_Tag::getLabel('URL') . '" disabled> ';
+			$content .= '<input type="text" name="url" id="url" size="20" value="" placeholder="' . GedcomTag::getLabel('URL') . '" disabled> ';
 			$content .= '<input type="text" name="favtitle" id="favtitle" size="20" value="" placeholder="' . I18N::translate('Title') . '" disabled>';
 			$content .= '<p>' . I18N::translate('Enter an optional note about this favorite') . '</p>';
 			$content .= '<textarea name="favnote" rows="6" cols="50"></textarea>';

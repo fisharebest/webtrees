@@ -69,7 +69,7 @@ class GedcomRecordController extends PageController {
 			} else {
 				// e.g. "Individual" or "Source"
 				$record = $this->record;
-				$this->setPageTitle(WT_Gedcom_Tag::getLabel($record::RECORD_TYPE));
+				$this->setPageTitle(GedcomTag::getLabel($record::RECORD_TYPE));
 			}
 		} else {
 			// No such record

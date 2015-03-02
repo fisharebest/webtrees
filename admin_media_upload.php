@@ -164,7 +164,7 @@ if ($action == "upload") {
 
 $controller->pageHeader();
 
-$mediaFolders = WT_Query_Media::folderListAll();
+$mediaFolders = QueryMedia::folderListAll();
 
 // Determine file size limit
 // TODO: do we need to check post_max_size size too?

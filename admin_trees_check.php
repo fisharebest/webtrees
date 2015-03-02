@@ -225,7 +225,7 @@ function format_link($xref) {
  * @return string
  */
 function format_type($type) {
-	return '<b title="' . strip_tags(WT_Gedcom_Tag::getLabel($type)) . '">' . $type . '</b>';
+	return '<b title="' . strip_tags(GedcomTag::getLabel($type)) . '">' . $type . '</b>';
 }
 
 /**

@@ -207,13 +207,13 @@ class FamilyNavigatorModule extends Module implements ModuleSidebarInterface {
 				}
 				if ($stepParents) {
 					$relationship = $father instanceof Individual ?
-						I18N::translate_c("father’s wife", "step-mother") : I18N::translate_c("mother’s husband", "step-father");
+						I18N::translateContext("father’s wife", "step-mother") : I18N::translateContext("mother’s husband", "step-father");
 					$html .= sprintf(self::TTL, $relationship) . $stepParents;
 				}
 			}
 		}
 		if (!($father instanceof Individual || $mother instanceof Individual)) {
-			$html .= sprintf(self::MSG, I18N::translate_c('unknown family', 'unknown'));
+			$html .= sprintf(self::MSG, I18N::translateContext('unknown family', 'unknown'));
 		}
 		return $html;
 	}

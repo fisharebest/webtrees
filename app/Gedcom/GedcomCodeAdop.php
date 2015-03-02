@@ -17,9 +17,9 @@ namespace Fisharebest\Webtrees;
  */
 
 /**
- * Class WT_Gedcom_Code_Adop - Functions and logic for GEDCOM "PEDI" codes
+ * Class GedcomCodeAdop - Functions and logic for GEDCOM "PEDI" codes
  */
-class WT_Gedcom_Code_Adop {
+class GedcomCodeAdop {
 	/** @var string[] A list of possible adoption codes */
 	private static $TYPES = array('BOTH', 'HUSB', 'WIFE');
 
@@ -42,27 +42,27 @@ class WT_Gedcom_Code_Adop {
 		case 'BOTH':
 			switch ($sex) {
 			case 'M':
-				return I18N::translate_c('MALE', 'Adopted by both parents');
+				return I18N::translateContext('MALE', 'Adopted by both parents');
 			case 'F':
-				return I18N::translate_c('FEMALE', 'Adopted by both parents');
+				return I18N::translateContext('FEMALE', 'Adopted by both parents');
 			default:
 				return I18N::translate('Adopted by both parents');
 			}
 		case 'HUSB':
 			switch ($sex) {
 			case 'M':
-				return I18N::translate_c('MALE', 'Adopted by father');
+				return I18N::translateContext('MALE', 'Adopted by father');
 			case 'F':
-				return I18N::translate_c('FEMALE', 'Adopted by father');
+				return I18N::translateContext('FEMALE', 'Adopted by father');
 			default:
 				return I18N::translate('Adopted by father');
 			}
 		case 'WIFE':
 			switch ($sex) {
 			case 'M':
-				return I18N::translate_c('MALE', 'Adopted by mother');
+				return I18N::translateContext('MALE', 'Adopted by mother');
 			case 'F':
-				return I18N::translate_c('FEMALE', 'Adopted by mother');
+				return I18N::translateContext('FEMALE', 'Adopted by mother');
 			default:
 				return I18N::translate('Adopted by mother');
 			}
