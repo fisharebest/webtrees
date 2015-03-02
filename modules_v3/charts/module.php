@@ -198,7 +198,7 @@ class charts_WT_Module extends Module implements ModuleBlockInterface {
 				echo print_findindi_link('pid');
 				$root = Individual::getInstance($pid);
 				if ($root) {
-					echo ' <span class="list_item">', $root->getFullName(), $root->format_first_major_fact(WT_EVENTS_BIRT, 1), '</span>';
+					echo ' <span class="list_item">', $root->getFullName(), $root->formatFirstMajorFact(WT_EVENTS_BIRT, 1), '</span>';
 				}
 				?>
 			</td>

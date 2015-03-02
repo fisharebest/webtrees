@@ -224,7 +224,7 @@ class stories_WT_Module extends Module implements ModuleTabInterface, ModuleConf
 				if ($xref) {
 					$person = Individual::getInstance($xref);
 					if ($person) {
-						echo ' ', $person->format_list('span');
+						echo ' ', $person->formatList('span');
 					}
 				}
 				echo '</td>';

@@ -173,7 +173,7 @@ function checkform(frm) {
 			</div>
 			<div class="value">
 				<?php if ($my_individual_record): ?>
-				<?php echo $my_individual_record->format_list('span'); ?>
+				<?php echo $my_individual_record->formatList('span'); ?>
 				<?php else: ?>
 					<?php echo I18N::translate_c('unknown people', 'Unknown'); ?>
 				<?php endif; ?>
@@ -191,7 +191,7 @@ function checkform(frm) {
 				<?php echo print_findindi_link('form_rootid'); ?>
 				<br>
 				<?php if ($default_individual): ?>
-				<?php echo $default_individual->format_list('span'); ?>
+				<?php echo $default_individual->formatList('span'); ?>
 				<?php endif; ?>
 				<p class="small text-muted">
 					<?php echo I18N::translate('This individual will be selected by default when viewing charts and reports.'); ?>

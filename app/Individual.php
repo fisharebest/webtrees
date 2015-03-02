@@ -1255,8 +1255,8 @@ class Individual extends GedcomRecord {
 	 */
 	function formatListDetails() {
 		return
-			$this->format_first_major_fact(WT_EVENTS_BIRT, 1) .
-			$this->format_first_major_fact(WT_EVENTS_DEAT, 1);
+			$this->formatFirstMajorFact(WT_EVENTS_BIRT, 1) .
+			$this->formatFirstMajorFact(WT_EVENTS_DEAT, 1);
 	}
 
 	/**
