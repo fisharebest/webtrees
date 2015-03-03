@@ -5183,6 +5183,14 @@ footer {
 	#header_accordion1 {
 		width: 500px;
 	}
+
+	#pedigree-page h2 {
+		margin: 0;
+	}
+
+	#pedigree_chart {
+		margin: 0 auto;
+	}
 	
 	#familybook_chart h3 {
 		margin-bottom: 10px;

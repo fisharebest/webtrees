@@ -28,7 +28,7 @@ require './includes/session.php';
 
 define('ARROW_WRAPPER', '<div class="ancestorarrow" style="%s:%spx; top:%spx;">');
 define('MENU_WRAPPER', '<div id="childarrow" style="%s:%spx; top:%spx"><div><a href="#" class="menuselect %s"></a><div id="childbox">');
-define('MENU_ITEM', '<a href="pedigree.php?rootid=%s&amp;show_full=%s&amp;PEDIGREE_GENERATIONS=%s&amp;talloffset=%s" class="%s">%s</a>');
+define('MENU_ITEM', '<a href="pedigree.php?rootid=%s&amp;show_full=%s&amp;PEDIGREE_GENERATIONS=%s&amp;orientation=%s" class="%s">%s</a>');
 define('BOX_WRAPPER', '<div class="shadow" style="%s:%spx; top:%spx">');
 
 $controller = new PedigreeController;
