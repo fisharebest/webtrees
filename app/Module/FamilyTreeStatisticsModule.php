@@ -175,10 +175,10 @@ class FamilyTreeStatisticsModule extends Module implements ModuleBlockInterface 
 			if (!$block) {
 				$content .= '<div class="facts_value stat-cell left"></div>';
 			}
-			$content .= '</div></div>';
+			$content .= '</div>';
 		}
 		if ($stat_link) {
-			$content .= '<div class="clearfloat"><a href="statistics.php?ged=' . WT_GEDURL . '"><b>' . I18N::translate('View statistics as graphs') . '</b></a></div>';
+			$content .= '</div><div class="clearfloat"><a href="statistics.php?ged=' . WT_GEDURL . '"><b>' . I18N::translate('View statistics as graphs') . '</b></a></div>';
 		}
 		// NOTE: Print the most common surnames
 		if ($show_common_surnames) {
@@ -196,7 +196,6 @@ class FamilyTreeStatisticsModule extends Module implements ModuleBlockInterface 
 						$i++;
 					}
 				}
-				$content .= '</div>';
 			}
 		}
 
