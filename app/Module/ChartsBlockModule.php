@@ -108,8 +108,6 @@ class ChartsBlockModule extends Module implements ModuleBlockInterface {
 				break;
 			case 'treenav':
 				$title .= I18N::translate('Interactive tree of %s', $person->getFullName());
-				require_once WT_MODULES_DIR . 'tree/module.php';
-				require_once WT_MODULES_DIR . 'tree/class_treeview.php';
 				$mod = new InteractiveTreeModule(WT_MODULES_DIR . 'tree');
 				$tv = new TreeView;
 				$content .= '<td>';

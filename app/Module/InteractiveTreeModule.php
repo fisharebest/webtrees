@@ -45,7 +45,6 @@ class InteractiveTreeModule extends Module implements ModuleTabInterface {
 	public function getTabContent() {
 		global $controller;
 
-		require_once WT_MODULES_DIR . $this->getName() . '/class_treeview.php';
 		$tv = new TreeView('tvTab');
 		list($html, $js) = $tv->drawViewport($controller->record, 3);
 		return
@@ -89,7 +88,6 @@ class InteractiveTreeModule extends Module implements ModuleTabInterface {
 
 	/** {@inheritdoc} */
 	public function modAction($mod_action) {
-		require_once WT_MODULES_DIR . $this->getName() . '/class_treeview.php';
 		switch ($mod_action) {
 		case 'treeview':
 			global $controller;
