@@ -5184,6 +5184,14 @@ footer {
 		display: none;
 	}
 
+	#pedigree-page h2 {
+		margin: 0;
+	}
+
+	#pedigree_chart {
+		margin: 0 auto;
+	}
+
 	#header_accordion1 {
 		width: 510px;
 	}

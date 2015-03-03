@@ -194,8 +194,10 @@ abstract class Module {
 					$module = include WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php';
 					if ($module instanceof Module) {
 						$modules[$module->getName()] = $module;
+					} else {
+						throw new \Exception;
 					}
-				} catch (\ErrorException $ex) {
+				} catch (\Exception $ex) {
 					// Module has been deleted or is broken?  Disable it.
 					Log::addConfigurationLog("Module {$module_name} is missing or broken - disabling it");
 					Database::prepare(
@@ -235,17 +237,16 @@ abstract class Module {
 			'access_level' => $access_level,
 		))->fetchOneColumn();
 
-		$active_modules = self::getActiveModules();
-
 		$array = array();
 		foreach ($module_names as $module_name) {
 			$interface = __NAMESPACE__ . '\Module' . ucfirst($component) . 'Interface';
-			if ($active_modules[$module_name] instanceof $interface) {
-				$array[$module_name] = $active_modules[$module_name];
+			$module = self::getModuleByName($module_name);
+			if ($module instanceof $interface) {
+				$array[$module_name] = $module;
 			}
 		}
 
-		// The order of menus/sidebars/tabs is defined by the user.  Others are sorted by name.
+		// The order of menus/sidebars/tabs is defined in the database.  Others are sorted by name.
 		if ($component !== 'menu' && $component !== 'sidebar' && $component !== 'tab') {
 			uasort($array, function(Module $x, Module $y) {
 				return I18N::strcasecmp($x->getTitle(), $y->getTitle());
@@ -433,7 +434,7 @@ abstract class Module {
 					)->execute(array($module->getName(), $module->defaultAccessLevel()));
 				}
 			} catch (\Exception $ex) {
-				// Probably an old third-party module.
+				// Old or invalid module?
 			}
 		}
 
