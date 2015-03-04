@@ -209,9 +209,9 @@ case 'load_json':
 		$datum[0] = '<div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-pencil"></i> <span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li><a href="?action=edit&amp;user_id=' . $user_id . '"><i class="fa fa-fw fa-pencil"></i> ' . I18N::translate('Edit') . '</a></li><li class="divider"><li><a href="index_edit.php?user_id=' . $user_id . '"><i class="fa fa-fw fa-th-large"></i> ' . I18N::translate('Change the blocks on this user’s “My page”') . '</a></li>' . $admin_options . '</ul></div>';
 		// $datum[1] is the user ID
 		// $datum[2] is the user name
-		$datum[2] = Filter::escapeHtml($datum[2]);
+		$datum[2] = '<span dir="auto">' . Filter::escapeHtml($datum[2]) . '</span>';
 		// $datum[3] is the real name
-		$datum[3] = Filter::escapeHtml($datum[3]);
+		$datum[3] = '<span dir="auto">' . Filter::escapeHtml($datum[3]) . '</span>';
 		// $datum[4] is the email address
 		if ($user_id != Auth::id()) {
 			$datum[4] = '<a href="#" onclick="return message(\'' . Filter::escapeHtml($datum[2]) . '\', \'\', \'\');">' . Filter::escapeHtml($datum[4]) . '</i></a>';
@@ -305,7 +305,7 @@ case 'edit':
 				<?php echo I18N::translate('Real name'); ?>
 			</label>
 			<div class="col-sm-9">
-				<input class="form-control" type="text" id="real_name" name="real_name" required maxlength="64" value="<?php echo Filter::escapeHtml($user->getRealName()); ?>" autofocus>
+				<input class="form-control" type="text" id="real_name" name="real_name" required maxlength="64" value="<?php echo Filter::escapeHtml($user->getRealName()); ?>" dir="auto">
 				<p class="small text-muted">
 					<?php echo I18N::translate('This is your real name, as you would like it displayed on screen.'); ?>
 				</p>
@@ -318,7 +318,7 @@ case 'edit':
 				<?php echo I18N::translate('Username'); ?>
 			</label>
 			<div class="col-sm-9">
-				<input class="form-control" type="text" id="username" name="username" required maxlength="32" value="<?php echo Filter::escapeHtml($user->getUserName()); ?>">
+				<input class="form-control" type="text" id="username" name="username" required maxlength="32" value="<?php echo Filter::escapeHtml($user->getUserName()); ?>" dir="auto">
 				<p class="small text-muted">
 					<?php echo I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.'); ?>
 				</p>

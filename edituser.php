@@ -151,7 +151,7 @@ function checkform(frm) {
 				</label>
 			</div>
 			<div class="value">
-				<input type="text" id="form_username" name="form_username" value="<?php echo Filter::escapeHtml(Auth::user()->getUserName()); ?>" autofocus>
+				<input type="text" id="form_username" name="form_username" value="<?php echo Filter::escapeHtml(Auth::user()->getUserName()); ?>" dir="auto">
 				<p class="small text-muted">
 					<?php echo I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.'); ?>
 					<?php echo I18N::translate('Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;'); ?>
@@ -163,7 +163,7 @@ function checkform(frm) {
 				</label>
 			</div>
 			<div class="value">
-				<input type="text" id="form_realname" name="form_realname" value="<?php echo Filter::escapeHtml(Auth::user()->getRealName()); ?>">
+				<input type="text" id="form_realname" name="form_realname" value="<?php echo Filter::escapeHtml(Auth::user()->getRealName()); ?>" dir="auto">
 				<p class="small text-muted">
 					<?php echo I18N::translate('This is your real name, as you would like it displayed on screen.'); ?>
 				</p>
