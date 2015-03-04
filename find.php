@@ -513,7 +513,7 @@ if ($action == "filter") {
 			echo '<ul>';
 			usort($myfamlist, __NAMESPACE__ . '\GedcomRecord::compare');
 			foreach ($myfamlist as $family) {
-				echo $family->format_list('li', true);
+				echo $family->formatList('li', true);
 			}
 			echo '</ul>
 			<p>', I18N::translate('Total families: %s', count($myfamlist)), '</p>';

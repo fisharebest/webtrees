@@ -1037,7 +1037,7 @@ abstract class BaseTheme {
 	 * @return Menu
 	 */
 	protected function menuChartAncestors(Individual $individual) {
-		return new Menu(I18N::translate('Ancestors'), 'ancestry.php?rootid=' . $individual->getXref() . '&amp;' . $this->tree_url, 'menu-chart-pedigree');
+		return new Menu(I18N::translate('Ancestors'), 'ancestry.php?rootid=' . $individual->getXref() . '&amp;' . $this->tree_url, 'menu-chart-ancestry');
 	}
 
 	/**
