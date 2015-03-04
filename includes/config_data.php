@@ -20,10 +20,10 @@ namespace Fisharebest\Webtrees;
 // although most of it can be altered to customise local installations.
 
 // Unknown surname
-$UNKNOWN_NN = I18N::translate_c('Unknown surname', '…');
+$UNKNOWN_NN = I18N::translateContext('Unknown surname', '…');
 
 // Unknown given name
-$UNKNOWN_PN = I18N::translate_c('Unknown given name', '…');
+$UNKNOWN_PN = I18N::translateContext('Unknown given name', '…');
 
 // NPFX tags - name prefixes
 $NPFX_accept = array(

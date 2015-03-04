@@ -16,6 +16,13 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
+
 define('WT_SCRIPT_NAME', 'block_edit.php');
 require './includes/session.php';
 
@@ -26,23 +33,23 @@ $block = Database::prepare(
 
 // Check access.  (1) the block must exist and be enabled, (2) gedcom blocks require
 // managers, (3) user blocks require the user or an admin
+$blocks = Module::getActiveBlocks($WT_TREE);
 if (
 	!$block ||
-	!array_key_exists($block->module_name, Module::getActiveBlocks(WT_GED_ID)) ||
+	!array_key_exists($block->module_name, $blocks) ||
 	$block->gedcom_id && !Auth::isManager(Tree::findById($block->gedcom_id)) ||
 	$block->user_id && $block->user_id != Auth::id() && !Auth::isAdmin()
 ) {
 	return;
 }
 
-$class_name = __NAMESPACE__ . '\\' . $block->module_name . '_WT_Module';
-$block = new $class_name;
+$block = $blocks[$block->module_name];
 
 $controller = new AjaxController;
 $controller->pageHeader();
 
-if (array_key_exists('ckeditor', Module::getActiveModules())) {
-	ckeditor_WT_Module::enableEditor($controller);
+if (Module::getModuleByName('ckeditor')) {
+	CkeditorModule::enableEditor($controller);
 }
 
 ?>

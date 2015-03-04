@@ -16,6 +16,13 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
+
 define('WT_SCRIPT_NAME', 'admin_module_blocks.php');
 require 'includes/session.php';
 
@@ -24,8 +31,9 @@ $controller
 	->restrictAccess(Auth::isAdmin())
 	->setPageTitle(I18N::translate('Blocks'));
 
-$modules = Module::getActiveBlocks(WT_GED_ID, WT_PRIV_HIDE);
 $action  = Filter::post('action');
+$modules = Module::getInstalledModules('disabled');
+$modules = array_filter($modules, function(Module $x) { return $x instanceof ModuleBlockInterface; });
 
 if ($action === 'update_mods' && Filter::checkCsrf()) {
 	foreach ($modules as $module) {

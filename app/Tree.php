@@ -564,7 +564,6 @@ class Tree {
 			$tree->setPreference('SURNAME_TRADITION', 'paternal');
 			break;
 		}
-		$tree->setPreference('THEME_DIR', 'webtrees');
 		$tree->setPreference('THUMBNAIL_WIDTH', '100');
 		$tree->setPreference('USE_RIN', '0');
 		$tree->setPreference('USE_SILHOUETTE', '1');
@@ -606,6 +605,20 @@ class Tree {
 
 		return $tree;
 	}
+
+	/**
+	 * Are there any pending edits for this tree, than need reviewing by a moderator.
+	 *
+	 * @return bool
+	 */
+	public function hasPendingEdit() {
+		return (bool) Database::prepare(
+			"SELECT 1 FROM `##change` WHERE status = 'pending' AND gedcom_id = :tree_id"
+		)->execute(array(
+			'tree_id' => $this->tree_id
+		))->fetchOne();
+	}
+
 
 	/**
 	 * Delete all the genealogy data from a tree - in preparation for importing

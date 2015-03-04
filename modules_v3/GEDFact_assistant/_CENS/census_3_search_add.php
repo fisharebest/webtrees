@@ -86,8 +86,8 @@ namespace Fisharebest\Webtrees;
 						foreach ($family->getChildren() as $child) {
 							$chnam   = $child->getAllNames();
 							$chfulln = strip_tags($chnam[0]['full']); // Child’s Full Name
-							$chdob   = $child->getBirthDate()->JD(); // Child’s Date of Birth (Julian)
-							$chdod   = $child->getDeathDate()->JD(); // Child’s Date of Death (Julian)
+							$chdob   = $child->getBirthDate()->julianDay(); // Child’s Date of Birth (Julian)
+							$chdod   = $child->getDeathDate()->julianDay(); // Child’s Date of Death (Julian)
 							$chBLD   = $chfulln . ', ' . $chdob . ', ' . $chdod;
 							array_push($chBLDarray, $chBLD);
 						}
@@ -105,7 +105,7 @@ namespace Fisharebest\Webtrees;
 							}
 
 							//-- Parents Husbands Details --------------------------------------
-							$married = Date::Compare($censdate, $marrdate);
+							$married = Date::compare($censdate, $marrdate);
 							$nam     = $gparent->getAllNames();
 							$fulln   = strip_tags($nam[0]['full']);
 							$fulmn   = $fulln;
@@ -140,10 +140,10 @@ namespace Fisharebest\Webtrees;
 										"<?php echo $person === $gparent ? 'head': Filter::escapeHtml($label); ?>",
 										"<?php echo $gparent->getSex(); ?>",
 										"<?php echo $married >= 0 ? 'M' : 'S'; ?>",
-										"<?php echo $marrdate->JD(); ?>",
-										"<?php echo $gparent->getBirthDate()->JD(); ?>",
+										"<?php echo $marrdate->julianDay(); ?>",
+										"<?php echo $gparent->getBirthDate()->julianDay(); ?>",
 										"<?php echo $censyear - $gparent->getbirthyear(); ?>",
-										"<?php echo $gparent->getDeathDate()->JD(); ?>",
+										"<?php echo $gparent->getDeathDate()->julianDay(); ?>",
 										"",
 										"<?php echo Filter::escapeHtml($gparent->getBirthPlace()); ?>",
 										"<?php if (isset($HusbFBP)) {
@@ -184,7 +184,7 @@ namespace Fisharebest\Webtrees;
 							}
 
 							//-- Wifes Details --------------------------------------
-							$married = Date::Compare($censdate, $marrdate);
+							$married = Date::compare($censdate, $marrdate);
 							$nam     = $gparent->getAllNames();
 							$fulln   = strip_tags($nam[0]['full']);
 							$fulmn   = $fulln;
@@ -218,10 +218,10 @@ namespace Fisharebest\Webtrees;
 										"<?php echo $person === $gparent ? 'head': Filter::escapeHtml($label); ?>",
 										"<?php echo $gparent->getSex(); ?>",
 										"<?php echo $married >= 0 && isset($nam[1]) ? 'M' : 'S'; ?>",
-										"<?php echo $marrdate->JD(); ?>",
-										"<?php echo $gparent->getBirthDate()->JD(); ?>",
+										"<?php echo $marrdate->julianDay(); ?>",
+										"<?php echo $gparent->getBirthDate()->julianDay(); ?>",
 										"<?php echo $censyear - $gparent->getbirthyear(); ?>",
-										"<?php echo $gparent->getDeathDate()->JD(); ?>",
+										"<?php echo $gparent->getDeathDate()->julianDay(); ?>",
 										"",
 										"<?php echo Filter::escapeHtml($gparent->getBirthPlace()); ?>",
 										"<?php if (isset($WifeFBP)) {
@@ -256,8 +256,8 @@ namespace Fisharebest\Webtrees;
 								foreach ($chchildren as $chchild) {
 									$chnam   = $chchild->getAllNames();
 									$chfulln = strip_tags($chnam[0]['full']); // Child’s Full Name
-									$chdob   = $chchild->getBirthDate()->JD(); // Child’s Date of Birth (Julian)
-									$chdod   = $chchild->getDeathDate()->JD(); // Child’s Date of Death (Julian)
+									$chdob   = $chchild->getBirthDate()->julianDay(); // Child’s Date of Birth (Julian)
+									$chdod   = $chchild->getDeathDate()->julianDay(); // Child’s Date of Death (Julian)
 									$chBLD   = $chfulln . ', ' . $chdob . ', ' . $chdod;
 									array_push($chBLDarray, $chBLD);
 								}
@@ -268,7 +268,7 @@ namespace Fisharebest\Webtrees;
 							$marrdate = '';
 							foreach ($child->getSpouseFamilies() as $childfamily) {
 								$marrdate = $childfamily->getMarriageDate();
-								$married = Date::Compare($censdate, $marrdate);
+								$married = Date::compare($censdate, $marrdate);
 							}
 							$nam   = $child->getAllNames();
 							$fulln = strip_tags($nam[0]['full']);
@@ -304,10 +304,10 @@ namespace Fisharebest\Webtrees;
 										"<?php echo $person === $child ? 'head' : Filter::escapeHtml($label); ?>",
 										"<?php echo $child->getSex(); ?>",
 										"<?php echo $married >= 0 ? 'M' : 'S'; ?>",
-										"<?php echo $marrdate ? $marrdate->JD() : ''; ?>",
-										"<?php echo $child->getBirthDate()->JD(); ?>",
+										"<?php echo $marrdate ? $marrdate->julianDay() : ''; ?>",
+										"<?php echo $child->getBirthDate()->julianDay(); ?>",
 										"<?php echo $censyear - $child->getbirthyear(); ?>",
-										"<?php echo $child->getDeathDate()->JD(); ?>",
+										"<?php echo $child->getDeathDate()->julianDay(); ?>",
 										"",
 										"<?php echo Filter::escapeHtml($child->getBirthPlace()); ?>",
 										"<?php if ($family->getHusband()) {
@@ -342,8 +342,8 @@ namespace Fisharebest\Webtrees;
 						foreach ($family->getChildren() as $child) {
 							$chnam   = $child->getAllNames();
 							$chfulln = strip_tags($chnam[0]['full']); // Child’s Full Name
-							$chdob   = $child->getBirthDate()->JD(); // Child’s Date of Birth (Julian)
-							$chdod   = $child->getDeathDate()->JD(); // Child’s Date of Death (Julian)
+							$chdob   = $child->getBirthDate()->julianDay(); // Child’s Date of Birth (Julian)
+							$chdod   = $child->getDeathDate()->julianDay(); // Child’s Date of Death (Julian)
 							$chBLD   = $chfulln . ', ' . $chdob . ', ' . $chdod;
 							array_push($chBLDarray, $chBLD);
 						}
@@ -365,7 +365,7 @@ namespace Fisharebest\Webtrees;
 							}
 
 							//-- Step Husbands Details --------------------------------------
-							$married = Date::Compare($censdate, $marrdate);
+							$married = Date::compare($censdate, $marrdate);
 							$nam   = $gparent->getAllNames();
 							$fulln = strip_tags($nam[0]['full']);
 							$fulmn = $fulln;
@@ -409,10 +409,10 @@ namespace Fisharebest\Webtrees;
 										"<?php echo $person === $gparent ? 'head': Filter::escapeHtml($label); ?>",
 										"<?php echo $gparent->getSex(); ?>",
 										"<?php echo $married >= 0 ? 'M': 'S'; ?>",
-										"<?php echo $marrdate ? $marrdate->JD() : ''; ?>",
-										"<?php echo $gparent->getBirthDate()->JD(); ?>",
+										"<?php echo $marrdate ? $marrdate->julianDay() : ''; ?>",
+										"<?php echo $gparent->getBirthDate()->julianDay(); ?>",
 										"<?php echo $censyear - $gparent->getbirthyear(); ?>",
-										"<?php echo $gparent->getDeathDate()->JD();?>",
+										"<?php echo $gparent->getDeathDate()->julianDay();?>",
 										"",
 										"<?php echo Filter::escapeHtml($gparent->getBirthPlace()); ?>",
 										"<?php if (isset($HusbFBP)) {
@@ -451,7 +451,7 @@ namespace Fisharebest\Webtrees;
 							}
 
 							//-- Step Wifes Details --------------------------------------
-							$married = Date::Compare($censdate, $marrdate);
+							$married = Date::compare($censdate, $marrdate);
 							$nam     = $gparent->getAllNames();
 							$fulln   = strip_tags($nam[0]['full']);
 							$fulmn   = $fulln;
@@ -488,10 +488,10 @@ namespace Fisharebest\Webtrees;
 										"<?php echo $person === $gparent ? 'head': Filter::escapeHtml($label); ?>",
 										"<?php echo $gparent->getSex(); ?>",
 										"<?php echo $married >= 0 && isset($nam[1]) ? 'M': 'S'; ?>",
-										"<?php echo $marrdate ? $marrdate->JD() : ''; ?>",
-										"<?php echo $gparent->getBirthDate()->JD(); ?>",
+										"<?php echo $marrdate ? $marrdate->julianDay() : ''; ?>",
+										"<?php echo $gparent->getBirthDate()->julianDay(); ?>",
 										"<?php echo $censyear - $gparent->getbirthyear(); ?>",
-										"<?php echo $gparent->getDeathDate()->JD(); ?>",
+										"<?php echo $gparent->getDeathDate()->julianDay(); ?>",
 										"",
 										"<?php echo Filter::escapeHtml($gparent->getBirthPlace());  ?>",
 										"<?php if (isset($WifeFBP)) {
@@ -526,8 +526,8 @@ namespace Fisharebest\Webtrees;
 								foreach ($chchildren as $chchild) {
 									$chnam   = $chchild->getAllNames();
 									$chfulln = strip_tags($chnam[0]['full']); // Child’s Full Name
-									$chdob   = $chchild->getBirthDate()->JD(); // Child’s Date of Birth (Julian)
-									$chdod   = $chchild->getDeathDate()->JD(); // Child’s Date of Death (Julian)
+									$chdob   = $chchild->getBirthDate()->julianDay(); // Child’s Date of Birth (Julian)
+									$chdod   = $chchild->getDeathDate()->julianDay(); // Child’s Date of Death (Julian)
 									$chBLD   = $chfulln . ', ' . $chdob . ', ' . $chdod;
 									array_push($chBLDarray, $chBLD);
 								}
@@ -576,10 +576,10 @@ namespace Fisharebest\Webtrees;
 										"<?php echo $person === $child ? 'head' : Filter::escapeHtml($label); ?>",
 										"<?php echo $child->getSex(); ?>",
 										"",
-										"<?php echo $marrdate ? $marrdate->JD() : ''; ?>",
-										"<?php echo $child->getBirthDate()->JD(); ?>",
+										"<?php echo $marrdate ? $marrdate->julianDay() : ''; ?>",
+										"<?php echo $child->getBirthDate()->julianDay(); ?>",
 										"<?php echo $censyear - $child->getbirthyear(); ?>",
-										"<?php echo $child->getDeathDate()->JD(); ?>",
+										"<?php echo $child->getDeathDate()->julianDay(); ?>",
 										"",
 										"<?php echo Filter::escapeHtml($child->getBirthPlace()); ?>",
 										"<?php if ($family->getHusband()) {
@@ -618,8 +618,8 @@ namespace Fisharebest\Webtrees;
 						foreach ($family->getChildren() as $child) {
 							$chnam   = $child->getAllNames();
 							$chfulln = strip_tags($chnam[0]['full']); // Child’s Full Name
-							$chdob   = $child->getBirthDate()->JD(); // Child’s Date of Birth (Julian)
-							$chdod   = $child->getDeathDate()->JD(); // Child’s Date of Death (Julian)
+							$chdob   = $child->getBirthDate()->julianDay(); // Child’s Date of Birth (Julian)
+							$chdod   = $child->getDeathDate()->julianDay(); // Child’s Date of Death (Julian)
 							$chBLD   = $chfulln . ', ' . $chdob . ', ' . $chdod;
 							array_push($chBLDarray, $chBLD);
 						}
@@ -641,7 +641,7 @@ namespace Fisharebest\Webtrees;
 							}
 
 							//-- Spouse Husbands Details --------------------------------------
-							$married = Date::Compare($censdate, $marrdate);
+							$married = Date::compare($censdate, $marrdate);
 							$nam     = $gparent->getAllNames();
 							$fulln   = strip_tags($nam[0]['full']);
 							$fulmn   = $fulln;
@@ -685,10 +685,10 @@ namespace Fisharebest\Webtrees;
 										"<?php echo $person === $gparent ? 'head' : Filter::escapeHtml($label); ?>",
 										"<?php echo $gparent->getSex(); ?>",
 										"<?php echo $married >= 0 ? 'M' : 'S'; ?>",
-										"<?php echo $marrdate ? $marrdate->JD() : ''; ?>",
-										"<?php echo $gparent->getBirthDate()->JD(); ?>",
+										"<?php echo $marrdate ? $marrdate->julianDay() : ''; ?>",
+										"<?php echo $gparent->getBirthDate()->julianDay(); ?>",
 										"<?php echo $censyear - $gparent->getbirthyear(); ?>",
-										"<?php echo $gparent->getDeathDate()->JD(); ?>",
+										"<?php echo $gparent->getDeathDate()->julianDay(); ?>",
 										"",
 										"<?php echo Filter::escapeHtml($gparent->getBirthPlace());  ?>",
 										"<?php if (isset($HusbFBP)) {
@@ -731,7 +731,7 @@ namespace Fisharebest\Webtrees;
 							}
 
 							//-- Spouse Wifes Details --------------------------------------
-							$married = Date::Compare($censdate, $marrdate);
+							$married = Date::compare($censdate, $marrdate);
 							$nam     = $gparent->getAllNames();
 							$fulln   = strip_tags($nam[0]['full']);
 							$fulmn   = $fulln;
@@ -775,10 +775,10 @@ namespace Fisharebest\Webtrees;
 										"<?php echo $person === $gparent ? 'head' : Filter::escapeHtml($label); ?>",
 										"<?php echo $gparent->getSex(); ?>",
 										"<?php echo $married >= 0 ? 'M' : 'S'; ?>",
-										"<?php echo $marrdate ? $marrdate->JD() : ''; ?>",
-										"<?php echo $gparent->getBirthDate()->JD(); ?>",
+										"<?php echo $marrdate ? $marrdate->julianDay() : ''; ?>",
+										"<?php echo $gparent->getBirthDate()->julianDay(); ?>",
 										"<?php echo $censyear - $gparent->getbirthyear(); ?>",
-										"<?php echo $gparent->getDeathDate()->JD(); ?>",
+										"<?php echo $gparent->getDeathDate()->julianDay(); ?>",
 										"",
 										"<?php echo Filter::escapeHtml($gparent->getBirthPlace()); ?>",
 										"<?php if (isset($WifeFBP)) {
@@ -810,7 +810,7 @@ namespace Fisharebest\Webtrees;
 							$marrdate = '';
 							foreach ($child->getSpouseFamilies() as $childfamily) {
 								$marrdate = $childfamily->getMarriageDate();
-								$married  = Date::Compare($censdate, $marrdate);
+								$married  = Date::compare($censdate, $marrdate);
 							}
 
 							// Get Child’s Children
@@ -820,8 +820,8 @@ namespace Fisharebest\Webtrees;
 								foreach ($chchildren as $chchild) {
 									$chnam   = $chchild->getAllNames();
 									$chfulln = strip_tags($chnam[0]['full']); // Child’s Full Name// Child’s Full Name
-									$chdob   = $chchild->getBirthDate()->JD(); // Child’s Date of Birth (Julian)
-									$chdod   = $chchild->getDeathDate()->JD(); // Child’s Date of Death (Julian)
+									$chdob   = $chchild->getBirthDate()->julianDay(); // Child’s Date of Birth (Julian)
+									$chdod   = $chchild->getDeathDate()->julianDay(); // Child’s Date of Death (Julian)
 									$chBLD   = $chfulln . ', ' . $chdob . ', ' . $chdod;
 									array_push($chBLDarray, $chBLD);
 								}
@@ -864,10 +864,10 @@ namespace Fisharebest\Webtrees;
 										"<?php echo $person === $child ? 'head' : Filter::escapeHtml($label); ?>",
 										"<?php echo $child->getSex(); ?>",
 										"<?php echo $married >= 0 ? 'M' : 'S'; ?>",
-										"<?php echo $marrdate ? $marrdate->JD() : ''; ?>",
-										"<?php echo $child->getBirthDate()->JD(); ?>",
+										"<?php echo $marrdate ? $marrdate->julianDay() : ''; ?>",
+										"<?php echo $child->getBirthDate()->julianDay(); ?>",
 										"<?php echo $censyear - $child->getbirthyear(); ?>",
-										"<?php echo $child->getDeathDate()->JD(); ?>",
+										"<?php echo $child->getDeathDate()->julianDay(); ?>",
 										"",
 										"<?php echo Filter::escapeHtml($child->getBirthPlace()); ?>",
 										"<?php if ($family->getHusband()) {
@@ -963,8 +963,8 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 				foreach ($children as $child) {
 					$chnam   = $child->getAllNames();
 					$chfulln = strip_tags($chnam[0]['full']);
-					$chdob   = $child->getBirthDate()->JD();
-					$chdod   = $child->getDeathDate()->JD();
+					$chdob   = $child->getBirthDate()->julianDay();
+					$chdod   = $child->getDeathDate()->julianDay();
 					$chBLD   = $chfulln . ', ' . $chdob . ', ' . $chdod;
 					array_push($chBLDarray, $chBLD);
 				}
@@ -1004,14 +1004,14 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 					}
 					$parentlinks .= "'" . $husb->getSex() . "',";
 					$parentlinks .= "'',";
-					$parentlinks .= "'" . $marrdate->JD() . "',";
-					$parentlinks .= "'" . $husb->getBirthDate()->JD() . "',";
+					$parentlinks .= "'" . $marrdate->julianDay() . "',";
+					$parentlinks .= "'" . $husb->getBirthDate()->julianDay() . "',";
 					if ($husb->getbirthyear() >= 1) {
 						$parentlinks .= "'" . ($censyear - $husb->getbirthyear()) . "',"; // age =  Census Year - Year of Birth
 					} else {
 						$parentlinks .= "''" . ","; // age =  Undefined
 					}
-					$parentlinks .= "'" . $husb->getDeathDate()->JD() . "',";
+					$parentlinks .= "'" . $husb->getDeathDate()->julianDay() . "',";
 					$parentlinks .= "'',"; // occu  = Occupation
 					$parentlinks .= "'" . Filter::escapeHtml($husb->getBirthPlace()) . "'" . ","; // birthpl = Individuals Birthplace
 					if (isset($pHusbFBP)) {
@@ -1072,15 +1072,15 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 					$parentlinks .= "'" . $wife->getSex() . "',"; // sex = Gender
 					$parentlinks .= "''" . ","; // cond = Condition (Married etc)
 					if ($marrdate) {
-						$parentlinks .= "'" . (($marrdate->minJD() + $marrdate->maxJD()) / 2) . "',"; // dom = Date of Marriage (Julian)
+						$parentlinks .= "'" . (($marrdate->minimumJulianDay() + $marrdate->maximumJulianDay()) / 2) . "',"; // dom = Date of Marriage (Julian)
 					}
-					$parentlinks .= "'" . (($wife->getBirthDate()->minJD() + $wife->getBirthDate()->maxJD()) / 2) . "',"; // dob = Date of Birth
+					$parentlinks .= "'" . (($wife->getBirthDate()->minimumJulianDay() + $wife->getBirthDate()->maximumJulianDay()) / 2) . "',"; // dob = Date of Birth
 					if ($wife->getbirthyear() >= 1) {
 						$parentlinks .= "'" . ($censyear - $wife->getbirthyear()) . "',"; // age =  Census Year - Year of Birth
 					} else {
 						$parentlinks .= "''" . ","; // age =  Undefined
 					}
-					$parentlinks .= "'" . (($wife->getDeathDate()->minJD() + $wife->getDeathDate()->maxJD()) / 2) . "',"; // dod = Date of Death
+					$parentlinks .= "'" . (($wife->getDeathDate()->minimumJulianDay() + $wife->getDeathDate()->maximumJulianDay()) / 2) . "',"; // dod = Date of Death
 					$parentlinks .= "''" . ","; // occu  = Occupation
 					$parentlinks .= "'" . Filter::escapeHtml($wife->getBirthPlace()) . "'" . ","; // birthpl = Individuals Birthplace
 					if (isset($pWifeFBP)) {
@@ -1120,8 +1120,8 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 				foreach ($children as $child) {
 					$chnam   = $child->getAllNames();
 					$chfulln = strip_tags($chnam[0]['full']);
-					$chdob   = $child->getBirthDate()->JD();
-					$chdod   = $child->getDeathDate()->JD();
+					$chdob   = $child->getBirthDate()->julianDay();
+					$chdod   = $child->getDeathDate()->julianDay();
 					$chBLD   = $chfulln . ', ' . $chdob . ', ' . $chdod;
 					array_push($chBLDarray, $chBLD);
 				}
@@ -1163,15 +1163,15 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 						$parentlinks .= "'" . $husb->getSex() . "',"; // sex = Gender
 						$parentlinks .= "''" . ","; // cond = Condition (Married etc)
 						if ($marrdate) {
-							$parentlinks .= "'" . (($marrdate->minJD() + $marrdate->maxJD()) / 2) . "',"; // dom = Date of Marriage (Julian)
+							$parentlinks .= "'" . (($marrdate->minimumJulianDay() + $marrdate->maximumJulianDay()) / 2) . "',"; // dom = Date of Marriage (Julian)
 						}
-						$parentlinks .= "'" . (($husb->getBirthDate()->minJD() + $husb->getBirthDate()->maxJD()) / 2) . "',"; // dob = Date of Birth
+						$parentlinks .= "'" . (($husb->getBirthDate()->minimumJulianDay() + $husb->getBirthDate()->maximumJulianDay()) / 2) . "',"; // dob = Date of Birth
 						if ($husb->getbirthyear() >= 1) {
 							$parentlinks .= "'" . ($censyear - $husb->getbirthyear()) . "',"; // age =  Census Year - Year of Birth
 						} else {
 							$parentlinks .= "''" . ","; // age =  Undefined
 						}
-						$parentlinks .= "'" . (($husb->getDeathDate()->minJD() + $husb->getDeathDate()->maxJD()) / 2) . "',"; // dod = Date of Death
+						$parentlinks .= "'" . (($husb->getDeathDate()->minimumJulianDay() + $husb->getDeathDate()->maximumJulianDay()) / 2) . "',"; // dod = Date of Death
 						$parentlinks .= "''" . ","; // occu  = Occupation
 						$parentlinks .= "'" . Filter::escapeHtml($husb->getBirthPlace()) . "'" . ","; // birthpl = Individuals Birthplace
 						if (isset($pHusbFBP)) {
@@ -1234,15 +1234,15 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 						$parentlinks .= "'" . $wife->getSex() . "',"; // sex = Gender
 						$parentlinks .= "''" . ","; // cond = Condition (Married etc)
 						if ($marrdate) {
-							$parentlinks .= "'" . (($marrdate->minJD() + $marrdate->maxJD()) / 2) . "',"; // dom = Date of Marriage (Julian)
+							$parentlinks .= "'" . (($marrdate->minimumJulianDay() + $marrdate->maximumJulianDay()) / 2) . "',"; // dom = Date of Marriage (Julian)
 						}
-						$parentlinks .= "'" . (($wife->getBirthDate()->minJD() + $wife->getBirthDate()->maxJD()) / 2) . "',"; // dob = Date of Birth
+						$parentlinks .= "'" . (($wife->getBirthDate()->minimumJulianDay() + $wife->getBirthDate()->maximumJulianDay()) / 2) . "',"; // dob = Date of Birth
 						if ($wife->getbirthyear() >= 1) {
 							$parentlinks .= "'" . ($censyear - $wife->getbirthyear()) . "',"; // age =  Census Year - Year of Birth
 						} else {
 							$parentlinks .= "''" . ","; // age =  Undefined
 						}
-						$parentlinks .= "'" . (($wife->getDeathDate()->minJD() + $wife->getDeathDate()->maxJD()) / 2) . "',"; // dod = Date of Death
+						$parentlinks .= "'" . (($wife->getDeathDate()->minimumJulianDay() + $wife->getDeathDate()->maximumJulianDay()) / 2) . "',"; // dod = Date of Death
 						$parentlinks .= "''" . ","; // occu  = Occupation
 						$parentlinks .= "'" . Filter::escapeHtml($wife->getBirthPlace()) . "'" . ","; // birthpl = Individuals Birthplace
 						if (isset($pWifeFBP)) {
@@ -1281,8 +1281,8 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 				foreach ($children as $child) {
 					$chnam   = $child->getAllNames();
 					$chfulln = strip_tags($chnam[0]['full']); // Child’s Full Name
-					$chdob   = $child->getBirthDate()->JD(); // Child’s Date of Birth (Julian)
-					$chdod   = $child->getDeathDate()->JD(); // Child’s Date of Death (Julian)
+					$chdob   = $child->getBirthDate()->julianDay(); // Child’s Date of Birth (Julian)
+					$chdod   = $child->getDeathDate()->julianDay(); // Child’s Date of Death (Julian)
 					$chBLD   = $chfulln . ', ' . $chdob . ', ' . $chdod;
 					array_push($chBLDarray, $chBLD);
 				}
@@ -1331,15 +1331,15 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 					$spouselinks .= "'" . $spouse->getSex() . "',"; // sex = Gender
 					$spouselinks .= "''" . ","; // cond = Condition (Married etc)
 					if ($marrdate) {
-						$spouselinks .= "'" . (($marrdate->minJD() + $marrdate->maxJD()) / 2) . "',";
+						$spouselinks .= "'" . (($marrdate->minimumJulianDay() + $marrdate->maximumJulianDay()) / 2) . "',";
 					}
-					$spouselinks .= "'" . (($spouse->getBirthDate()->minJD() + $spouse->getBirthDate()->maxJD()) / 2) . "',";
+					$spouselinks .= "'" . (($spouse->getBirthDate()->minimumJulianDay() + $spouse->getBirthDate()->maximumJulianDay()) / 2) . "',";
 					if ($spouse->getbirthyear() >= 1) {
 						$spouselinks .= "'" . ($censyear - $spouse->getbirthyear()) . "',"; // age =  Census Year - Year of Birth
 					} else {
 						$spouselinks .= "''" . ","; // age =  Undefined
 					}
-					$spouselinks .= "'" . (($spouse->getDeathDate()->minJD() + $spouse->getDeathDate()->maxJD()) / 2) . "',"; // dod = Date of Death
+					$spouselinks .= "'" . (($spouse->getDeathDate()->minimumJulianDay() + $spouse->getDeathDate()->maximumJulianDay()) / 2) . "',"; // dod = Date of Death
 					$spouselinks .= "''" . ","; // occu  = Occupation
 					$spouselinks .= "'" . Filter::escapeHtml($spouse->getBirthPlace()) . "'" . ","; // birthpl = Individuals Birthplace
 					if (isset($pSpouseFBP)) {
@@ -1388,8 +1388,8 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 					foreach ($chchildren as $chchild) {
 						$chnam   = $chchild->getAllNames();
 						$chfulln = strip_tags($chnam[0]['full']); // Child’s Full Name
-						$chdob   = $chchild->getBirthDate()->JD(); // Child’s Date of Birth (Julian)
-						$chdod   = $chchild->getDeathDate()->JD(); // Child’s Date of Death (Julian)
+						$chdob   = $chchild->getBirthDate()->julianDay(); // Child’s Date of Birth (Julian)
+						$chdod   = $chchild->getDeathDate()->julianDay(); // Child’s Date of Death (Julian)
 						$chBLD   = $chfulln . ', ' . $chdob . ', ' . $chdod;
 						array_push($chBLDarray, $chBLD);
 					}
@@ -1431,17 +1431,17 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 				$spouselinks .= "'" . $child->getSex() . "',"; // sex = Gender
 				$spouselinks .= "''" . ","; // cond = Condition (Married etc)
 				if ($marrdate) {
-					$spouselinks .= "'" . (($marrdate->minJD() + $marrdate->maxJD()) / 2) . "',"; // dom = Date of Marriage (Julian)
+					$spouselinks .= "'" . (($marrdate->minimumJulianDay() + $marrdate->maximumJulianDay()) / 2) . "',"; // dom = Date of Marriage (Julian)
 				} else {
 					$spouselinks .= "'nm'" . ",";
 				}
-				$spouselinks .= "'" . (($child->getBirthDate()->minJD() + $child->getBirthDate()->maxJD()) / 2) . "',"; // dob = Date of Birth
+				$spouselinks .= "'" . (($child->getBirthDate()->minimumJulianDay() + $child->getBirthDate()->maximumJulianDay()) / 2) . "',"; // dob = Date of Birth
 				if ($child->getbirthyear() >= 1) {
 					$spouselinks .= "'" . ($censyear - $child->getbirthyear()) . "',"; // age =  Census Year - Year of Birth
 				} else {
 					$spouselinks .= "''" . ","; // age =  Undefined
 				}
-				$spouselinks .= "'" . (($child->getDeathDate()->minJD() + $child->getDeathDate()->maxJD()) / 2) . "',"; // dod = Date of Death
+				$spouselinks .= "'" . (($child->getDeathDate()->minimumJulianDay() + $child->getDeathDate()->maximumJulianDay()) / 2) . "',"; // dod = Date of Death
 				$spouselinks .= "''" . ","; // occu  = Occupation
 				$spouselinks .= "'" . Filter::escapeHtml($child->getBirthPlace()) . "'" . ","; // birthpl = Individuals Birthplace
 				if (isset($ChildFBP)) {
@@ -1474,13 +1474,13 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 		}
 
 		if ($person_parent !== 'Yes') {
-			$parentlinks .= '(' . I18N::translate_c('unknown family', 'unknown') . ')</td></tr></table>';
+			$parentlinks .= '(' . I18N::translateContext('unknown family', 'unknown') . ')</td></tr></table>';
 		} else {
 			$parentlinks .= '</td></tr></table>';
 		}
 
 		if ($person_step !== 'Yes') {
-			$step_parentlinks .= '(' . I18N::translate_c('unknown family', 'unknown') . ')</td></tr></table>';
+			$step_parentlinks .= '(' . I18N::translateContext('unknown family', 'unknown') . ')</td></tr></table>';
 		} else {
 			$step_parentlinks .= '</td></tr></table>';
 		}

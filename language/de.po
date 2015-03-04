@@ -120,7 +120,7 @@ msgstr "%1$s (%2$s)"
 #: admin_site_upgrade.php:314
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr "%1$sKiB wurden in %2$s Sekunden heruntergeladen."
+msgstr "%1$s kB wurden in %2$s Sekunden heruntergeladen."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_trees_check.php:154
@@ -239,7 +239,7 @@ msgstr "%s v. Chr."
 #: admin_media.php:465 library/WT/Media.php:265
 #, php-format
 msgid "%s KB"
-msgstr "%s KiB"
+msgstr "%s kB"
 
 #: includes/functions/functions_charts.php:285 library/WT/Stats.php:3993
 #: library/WT/Stats.php:3997
@@ -14227,7 +14227,7 @@ msgid "This message will be sent to %s"
 msgstr "Diese Nachricht wird an %s gesendet"
 
 #: setup.php:437
-msgid "This must to be at least six characters.  It is case-sensitive."
+msgid "This must be at least six characters long.  It is case-sensitive."
 msgstr "Das Passwort muss mindestens sechs Zeichen lang sein. Groß- und Kleinschreibung werden unterschieden."
 
 #. I18N: Help text for the “Sender name” site configuration setting

@@ -201,7 +201,7 @@ class Place {
 	 *
 	 * @return string[]
 	 */
-	public static function allPlaces($tree) {
+	public static function allPlaces(Tree $tree) {
 		$places = array();
 		$rows =
 			Database::prepare(

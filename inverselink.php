@@ -41,7 +41,7 @@ $linkto   = Filter::get('linkto', 'person|source|family|manage|repository|note')
 $action   = Filter::get('action', 'choose|update', 'choose');
 
 // If GedFAct_assistant/_MEDIA/ installed ======================
-if ($linkto == 'manage' && array_key_exists('GEDFact_assistant', Module::getActiveModules())) {
+if ($linkto == 'manage' && Module::getModuleByName('GEDFact_assistant')) {
 	require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/_MEDIA/media_0_inverselink.php';
 } else {
 
@@ -97,7 +97,7 @@ if ($linkto == 'manage' && array_key_exists('GEDFact_assistant', Module::getActi
 				echo print_findindi_link('linktopid');
 			} else {
 				$record = Individual::getInstance($linktoid);
-				echo $record->format_list('span', false, $record->getFullName());
+				echo $record->formatList('span', false, $record->getFullName());
 			}
 		}
 
@@ -109,7 +109,7 @@ if ($linkto == 'manage' && array_key_exists('GEDFact_assistant', Module::getActi
 				echo print_findfamily_link('linktofamid');
 			} else {
 				$record = Family::getInstance($linktoid);
-				echo $record->format_list('span', false, $record->getFullName());
+				echo $record->formatList('span', false, $record->getFullName());
 			}
 		}
 
@@ -121,7 +121,7 @@ if ($linkto == 'manage' && array_key_exists('GEDFact_assistant', Module::getActi
 				echo print_findsource_link('linktosid');
 			} else {
 				$record = Source::getInstance($linktoid);
-				echo $record->format_list('span', false, $record->getFullName());
+				echo $record->formatList('span', false, $record->getFullName());
 			}
 		}
 		if ($linkto == "repository") {
@@ -131,7 +131,7 @@ if ($linkto == 'manage' && array_key_exists('GEDFact_assistant', Module::getActi
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktorid" size="3" value="', $linktoid, '">';
 			} else {
 				$record = Repository::getInstance($linktoid);
-				echo $record->format_list('span', false, $record->getFullName());
+				echo $record->formatList('span', false, $record->getFullName());
 			}
 		}
 
@@ -142,7 +142,7 @@ if ($linkto == 'manage' && array_key_exists('GEDFact_assistant', Module::getActi
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktonid" size="3" value="', $linktoid, '">';
 			} else {
 				$record = Note::getInstance($linktoid);
-				echo $record->format_list('span', false, $record->getFullName());
+				echo $record->formatList('span', false, $record->getFullName());
 			}
 		}
 

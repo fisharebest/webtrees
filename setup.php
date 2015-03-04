@@ -27,6 +27,11 @@ global $WT_REQUEST, $WT_SESSION;
 define('WT_SCRIPT_NAME', 'setup.php');
 define('WT_CONFIG_FILE', 'config.ini.php');
 
+// We use some PHP5.5 features, but need to run on older servers
+if (version_compare(PHP_VERSION, '5.4', '<')) {
+	require WT_ROOT . 'includes/php_53_compatibility.php';
+}
+
 require 'vendor/autoload.php';
 
 // This script (uniquely) does not load session.php.
@@ -72,7 +77,7 @@ header('Content-Type: text/html; charset=UTF-8');
 
 ?>
 <!DOCTYPE html>
-<html <?php echo I18N::html_markup(); ?>>
+<html <?php echo I18N::htmlAttributes(); ?>>
 <head>
 	<meta charset="UTF-8">
 	<title>
@@ -432,7 +437,7 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 		'</td></tr><tr><td>',
 		I18N::translate('Password'), '</td><td>',
 		'<input type="password" name="wtpass" value="', Filter::escapeHtml($_POST['wtpass']), '"></td><td>',
-		I18N::translate('This must to be at least six characters.  It is case-sensitive.'),
+		I18N::translate('This must be at least six characters long.  It is case-sensitive.'),
 		'</td></tr><tr><td>',
 		'&nbsp;', '</td><td>',
 		'<input type="password" name="wtpass2" value="', Filter::escapeHtml($_POST['wtpass2']), '"></td><td>',

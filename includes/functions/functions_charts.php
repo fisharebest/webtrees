@@ -375,10 +375,10 @@ function print_family_children(Family $family, $childid = '', $sosa = 0, $label 
 					$div  = $famids[$f]->getFirstFact('DIV');
 					if ($marr) {
 						// marriage date
-						echo $marr->getDate()->minDate()->format('%Y');
+						echo $marr->getDate()->minimumDate()->format('%Y');
 						// divorce date
 						if ($div) {
-							echo '–', $div->getDate()->minDate()->format('%Y');
+							echo '–', $div->getDate()->minimumDate()->format('%Y');
 						}
 					}
 					echo "<br><img width=\"100%\" class=\"line5\" height=\"3\" src=\"" . Theme::theme()->parameter('image-hline') . "\" alt=\"\">";

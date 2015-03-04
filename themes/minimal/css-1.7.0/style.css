@@ -202,7 +202,7 @@ header form {
 
 .person_box_template .details0, 
 .person_box_template .details1 {
-    font-size: smaller;
+    font-size: 11px;
 }
 
 .person_box {
@@ -966,6 +966,11 @@ a.showit:hover > span {
 
 .person_box_template .chart_textbox {
 	overflow: hidden;
+	font-size: 12px;
+}
+
+.person_box_template .chart_textbox .name1{
+	line-height: 1;
 }
 
 .person_box_template img,
@@ -4430,6 +4435,14 @@ footer {
 
 	#header_accordion1 {
 		width: 510px;
+	}
+
+	#pedigree-page h2 {
+		margin: 0;
+	}
+
+	#pedigree_chart {
+		margin: 0 auto;
 	}
 
 	#familybook_chart h3 {

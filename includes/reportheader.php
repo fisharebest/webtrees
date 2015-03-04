@@ -123,7 +123,7 @@ function varStartHandler($attrs) {
 		} elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $var, $match)) {
 			$var = I18N::translate($match[1]);
 		} elseif (preg_match('/^I18N::translate_c\(\'(.+)\', *\'(.+)\'\)$/', $var, $match)) {
-			$var = I18N::translate_c($match[1], $match[2]);
+			$var = I18N::translateContext($match[1], $match[2]);
 		}
 		$text .= $var;
 	}

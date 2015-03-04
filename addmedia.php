@@ -444,7 +444,9 @@ if ($gedfile == 'FILE') {
 	// Check for thumbnail generation support
 	if (WT_USER_GEDCOM_ADMIN) {
 		echo '<tr><td class="descriptionbox wrap width25">';
-		echo I18N::translate('Thumbnail to upload') . help_link('upload_thumbnail_file') . '</td><td class="optionbox wrap"><input type="file" name="thumbnail" size="40"></td></tr>';
+		echo I18N::translate('Thumbnail to upload') . '</td><td class="optionbox wrap"><input type="file" name="thumbnail" size="40">';
+		echo '<p class="sub">', I18N::translate('Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording.'), '</p>';
+		echo '</td></tr>';
 	}
 }
 
@@ -497,10 +499,10 @@ if ($gedfile == 'FILE') {
 // Box for user to choose the folder to store the image
 if (!$isExternal) {
 	echo '<tr><td class="descriptionbox wrap width25">';
-	echo I18N::translate('Folder name on server'), help_link('upload_server_folder'), '</td><td class="optionbox wrap">';
+	echo I18N::translate('Folder name on server'), '</td><td class="optionbox wrap">';
 	//-- don’t let regular users change the location of media items
 	if ($action !== 'update' || WT_USER_GEDCOM_ADMIN) {
-		$mediaFolders = WT_Query_Media::folderList();
+		$mediaFolders = QueryMedia::folderList();
 		echo '<span dir="ltr"><select name="folder_list" onchange="document.newmedia.folder.value=this.options[this.selectedIndex].value;">';
 		echo '<option ';
 		if ($folder == '') {
@@ -524,12 +526,12 @@ if (!$isExternal) {
 	if (Auth::isAdmin()) {
 		echo '<br><span dir="ltr"><input type="text" name="folder" size="40" value="', $folder, '"></span>';
 		if ($gedfile === 'FILE') {
-			echo '<p class="sub">', I18N::translate('This entry is ignored if you have entered a URL into the filename field.'), '</p>';
+			echo '<p class="small text-muted">', I18N::translate('This entry is ignored if you have entered a URL into the filename field.'), '</p>';
 		}
 	} else {
 		echo '<input name="folder" type="hidden" value="', Filter::escapeHtml($folder), '">';
 	}
-	echo '</td></tr>';
+	echo '<p class="small text-muted">', I18N::translate('If you have a large number of media files, you can organize them into folders and subfolders.'), '</p>';	echo '</td></tr>';
 } else {
 	echo '<input name="folder" type="hidden" value="">';
 }
@@ -629,7 +631,7 @@ if (!empty($gedrec)) {
 				add_simple_tag($sourceLevel . ' SOUR ' . $sourceSOUR);
 				add_simple_tag(($sourceLevel + 1) . ' PAGE ' . $sourcePAGE);
 				add_simple_tag(($sourceLevel + 2) . ' TEXT ' . $sourceTEXT);
-				add_simple_tag(($sourceLevel + 2) . ' DATE ' . $sourceDATE, '', WT_Gedcom_Tag::getLabel('DATA:DATE'));
+				add_simple_tag(($sourceLevel + 2) . ' DATE ' . $sourceDATE, '', GedcomTag::getLabel('DATA:DATE'));
 				add_simple_tag(($sourceLevel + 1) . ' QUAY ' . $sourceQUAY);
 				$sourceSOUR = '';
 			}
@@ -677,13 +679,13 @@ if (!empty($gedrec)) {
 		add_simple_tag($sourceLevel . ' SOUR ' . $sourceSOUR);
 		add_simple_tag(($sourceLevel + 1) . ' PAGE ' . $sourcePAGE);
 		add_simple_tag(($sourceLevel + 2) . ' TEXT ' . $sourceTEXT);
-		add_simple_tag(($sourceLevel + 2) . ' DATE ' . $sourceDATE, '', WT_Gedcom_Tag::getLabel('DATA:DATE'));
+		add_simple_tag(($sourceLevel + 2) . ' DATE ' . $sourceDATE, '', GedcomTag::getLabel('DATA:DATE'));
 		add_simple_tag(($sourceLevel + 1) . ' QUAY ' . $sourceQUAY);
 	}
 }
 if (Auth::isAdmin()) {
 	echo '<tr><td class="descriptionbox wrap width25">';
-	echo WT_Gedcom_Tag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
+	echo GedcomTag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
 	if ($NO_UPDATE_CHAN) {
 		echo '<input type="checkbox" checked name="preserve_last_changed">';
 	} else {

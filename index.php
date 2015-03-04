@@ -43,7 +43,7 @@ if ($ctype === 'user') {
 	$blocks = get_gedcom_blocks(WT_GED_ID);
 }
 
-$all_blocks = Module::getActiveBlocks();
+$active_blocks = Module::getActiveBlocks($WT_TREE);
 
 // The latest version is shown on the administration page.  This updates it every day.
 fetch_latest_version();
@@ -60,16 +60,10 @@ if ($action === 'ajax') {
 	} elseif (array_key_exists($block_id, $blocks['side'])) {
 		$module_name = $blocks['side'][$block_id];
 	} else {
-		
 		return;
 	}
-	if (array_key_exists($module_name, $all_blocks)) {
-		$class_name = __NAMESPACE__ . '\\' . $module_name . '_WT_Module';
-		$module     = new $class_name;
-		echo $module->getBlock($block_id);
-	}
-	if (WT_DEBUG_SQL) {
-		echo Database::getQueryLog();
+	if (array_key_exists($module_name, $active_blocks)) {
+		echo $active_blocks[$module_name]->getBlock($block_id);
 	}
 
 	return;
@@ -100,17 +94,17 @@ if ($blocks['main']) {
 		echo '<div id="index_full_blocks">';
 	}
 	foreach ($blocks['main'] as $block_id => $module_name) {
-		$class_name = __NAMESPACE__ . '\\' . $module_name . '_WT_Module';
-		$module     = new $class_name;
-		if (Auth::isSearchEngine() || !$module->loadAjax()) {
-			// Load the block directly
-			echo $module->getBlock($block_id);
-		} else {
-			// Load the block asynchronously
-			echo '<div id="block_', $block_id, '"><div class="loading-image">&nbsp;</div></div>';
-			$controller->addInlineJavascript(
-				'jQuery("#block_' . $block_id . '").load("index.php?ctype=' . $ctype . '&action=ajax&block_id=' . $block_id . '");'
-			);
+		if (array_key_exists($module_name, $active_blocks)) {
+			if (Auth::isSearchEngine() || !$active_blocks[$module_name]->loadAjax()) {
+				// Load the block directly
+				echo $active_blocks[$module_name]->getBlock($block_id);
+			} else {
+				// Load the block asynchronously
+				echo '<div id="block_', $block_id, '"><div class="loading-image">&nbsp;</div></div>';
+				$controller->addInlineJavascript(
+					'jQuery("#block_' . $block_id . '").load("index.php?ctype=' . $ctype . '&action=ajax&block_id=' . $block_id . '");'
+				);
+			}
 		}
 	}
 	echo '</div>';
@@ -122,17 +116,17 @@ if ($blocks['side']) {
 		echo '<div id="index_full_blocks">';
 	}
 	foreach ($blocks['side'] as $block_id => $module_name) {
-		$class_name = __NAMESPACE__ . '\\' . $module_name . '_WT_Module';
-		$module     = new $class_name;
-		if (Auth::isSearchEngine() || !$module->loadAjax()) {
-			// Load the block directly
-			echo $module->getBlock($block_id);
-		} else {
-			// Load the block asynchronously
-			echo '<div id="block_', $block_id, '"><div class="loading-image">&nbsp;</div></div>';
-			$controller->addInlineJavascript(
-				'jQuery("#block_' . $block_id . '").load("index.php?ctype=' . $ctype . '&action=ajax&block_id=' . $block_id . '");'
-			);
+		if (array_key_exists($module_name, $active_blocks)) {
+			if (Auth::isSearchEngine() || !$active_blocks[$module_name]->loadAjax()) {
+				// Load the block directly
+				echo $active_blocks[$module_name]->getBlock($block_id);
+			} else {
+				// Load the block asynchronously
+				echo '<div id="block_', $block_id, '"><div class="loading-image">&nbsp;</div></div>';
+				$controller->addInlineJavascript(
+					'jQuery("#block_' . $block_id . '").load("index.php?ctype=' . $ctype . '&action=ajax&block_id=' . $block_id . '");'
+				);
+			}
 		}
 	}
 	echo '</div>';

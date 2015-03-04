@@ -22,30 +22,22 @@ namespace Fisharebest\Webtrees;
  */
 abstract class Module {
 	/** @var string A user-friendly, localized name for this module */
-	private $_title;
+	private $title;
+
+	/** @var string The directory where the module is installed */
+	private $directory;
 
 	/** @var string[] A cached copy of the module settings */
 	private $settings;
 
 	/**
-	 * Create a new module
-	 */
-	public function __construct() {
-		$this->_title = $this->getTitle();
-	}
-
-	/**
-	 * Create a name for this module.
+	 * Create a new module.
 	 *
-	 * Earlier modules did not have a constructor, and hence a number of custom
-	 * modules fail to call parent::__construct().  If this happens, choose a
-	 * default name, rather than erroring.
-	 *
-	 * @return string
+	 * @param string $directory Where is this module installed
 	 */
-	public function __toString() {
-		// If a derived class has failed to call parent::__construct() then choose a default name
-		return $this->_title ? $this->_title : get_class();
+	public function __construct($directory) {
+		$this->directory = $directory;
+		$this->title     = $this->getTitle();
 	}
 
 	/**
@@ -75,12 +67,12 @@ abstract class Module {
 	}
 
 	/**
-	 * Provide a localized name for this module
+	 * Provide a unique internal name for this module
 	 *
 	 * @return string
 	 */
 	public function getName() {
-		return str_replace(array(__NAMESPACE__ . '\\', '_WT_Module'), '', get_class($this));
+		return basename($this->directory);
 	}
 
 	/**
@@ -185,40 +177,36 @@ abstract class Module {
 	/**
 	 * Get a list of all active (enabled) modules.
 	 *
-	 * @param boolean $sort Sort the module by the (localised) name
-	 *
 	 * @return Module[]
 	 */
-	public static function getActiveModules($sort = false) {
-		/** @var Module[] - We call this function several times, so cache the results. */
+	private static function getActiveModules() {
+		/** @var Module[] - Only query the database once. */
 		static $modules;
-
-		/** @var boolean - Sorting is slow, so only do it when requested. */
-		static $sorted = false;
 
 		if ($modules === null) {
 			$module_names = Database::prepare(
 				"SELECT SQL_CACHE module_name FROM `##module` WHERE status = 'enabled'"
 			)->fetchOneColumn();
+
 			$modules = array();
 			foreach ($module_names as $module_name) {
-				if (file_exists(WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php')) {
-					require_once WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php';
-					$class                 = __NAMESPACE__ . '\\' . $module_name . '_WT_Module';
-					$modules[$module_name] = new $class;
-				} else {
-					// Module has been deleted from disk?  Disable it.
-					Log::addConfigurationLog("Module {$module_name} has been deleted from disk - disabling it");
+				try {
+					$module = include WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php';
+					if ($module instanceof Module) {
+						$modules[$module->getName()] = $module;
+					} else {
+						throw new \Exception;
+					}
+				} catch (\Exception $ex) {
+					// Module has been deleted or is broken?  Disable it.
+					Log::addConfigurationLog("Module {$module_name} is missing or broken - disabling it");
 					Database::prepare(
-						"UPDATE `##module` SET status = 'disabled' WHERE module_name = ?"
-					)->execute(array($module_name));
+						"UPDATE `##module` SET status = 'disabled' WHERE module_name = :module_name"
+					)->execute(array(
+						'module_name' => $module_name
+					));
 				}
 			}
-		}
-		if ($sort && !$sorted) {
-			$sorted = uasort($modules, function(Module $x, Module $y) {
-				return I18N::strcasecmp($x->getTitle(), $y->getTitle());
-			});
 		}
 
 		return $modules;
@@ -230,42 +218,35 @@ abstract class Module {
 	 * We cannot currently use auto-loading for modules, as there may be user-defined
 	 * modules about which the auto-loader knows nothing.
 	 *
+	 * @param Tree    $tree
 	 * @param string  $component The type of module, such as "tab", "report" or "menu"
-	 * @param integer $tree_id
 	 * @param integer $access_level
 	 *
 	 * @return Module[]
 	 */
-	private static function getActiveModulesByComponent($component, $tree_id, $access_level) {
+	private static function getActiveModulesByComponent(Tree $tree, $component, $access_level) {
 		$module_names = Database::prepare(
 			"SELECT SQL_CACHE module_name" .
 			" FROM `##module`" .
 			" JOIN `##module_privacy` USING (module_name)" .
-			" WHERE gedcom_id=? AND component=? AND status='enabled' AND access_level>=?" .
+			" WHERE gedcom_id = :tree_id AND component = :component AND status = 'enabled' AND access_level >= :access_level" .
 			" ORDER BY CASE component WHEN 'menu' THEN menu_order WHEN 'sidebar' THEN sidebar_order WHEN 'tab' THEN tab_order ELSE 0 END, module_name"
-		)->execute(array($tree_id, $component, $access_level))->fetchOneColumn();
+		)->execute(array(
+			'tree_id'      => $tree->getTreeId(),
+			'component'    => $component,
+			'access_level' => $access_level,
+		))->fetchOneColumn();
 
 		$array = array();
 		foreach ($module_names as $module_name) {
-			if (file_exists(WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php')) {
-				require_once WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php';
-				$class     = __NAMESPACE__ . '\\' . $module_name . '_WT_Module';
-				$interface = __NAMESPACE__ . '\Module' . ucfirst($component) . 'Interface';
-				$module    = new $class;
-				// Check that this module is still implementing the desired interface.
-				if ($module instanceof $interface) {
-					$array[$module_name] = new $module;
-				}
-			} else {
-				// Module has been deleted from disk?  Disable it.
-				Log::addConfigurationLog("Module {$module_name} has been deleted from disk - disabling it");
-				Database::prepare(
-					"UPDATE `##module` SET status='disabled' WHERE module_name=?"
-				)->execute(array($module_name));
+			$interface = __NAMESPACE__ . '\Module' . ucfirst($component) . 'Interface';
+			$module = self::getModuleByName($module_name);
+			if ($module instanceof $interface) {
+				$array[$module_name] = $module;
 			}
 		}
 
-		// The order of some modules is defined by the user.  Others are sorted by name.
+		// The order of menus/sidebars/tabs is defined in the database.  Others are sorted by name.
 		if ($component !== 'menu' && $component !== 'sidebar' && $component !== 'tab') {
 			uasort($array, function(Module $x, Module $y) {
 				return I18N::strcasecmp($x->getTitle(), $y->getTitle());
@@ -278,127 +259,101 @@ abstract class Module {
 	/**
 	 * Get a list of modules which (a) provide a block and (b) we have permission to see.
 	 *
-	 * @param integer $tree_id
+	 * @param Tree    $tree
 	 * @param integer $access_level
 	 *
 	 * @return ModuleBlockInterface[]
 	 */
-	public static function getActiveBlocks($tree_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
-		static $blocks;
-
-		if ($blocks === null) {
-			$blocks = self::getActiveModulesByComponent('block', $tree_id, $access_level);
-		}
-
-		return $blocks;
+	public static function getActiveBlocks(Tree $tree, $access_level = WT_USER_ACCESS_LEVEL) {
+		return self::getActiveModulesByComponent($tree, 'block', $access_level);
 	}
 
 	/**
 	 * Get a list of modules which (a) provide a chart and (b) we have permission to see.
 	 *
-	 * @param integer $tree_id
+	 * @param Tree    $tree
 	 * @param integer $access_level
 	 *
 	 * @return ModuleChartInterface[]
 	 */
-	public static function getActiveCharts($tree_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
-		static $charts;
-
-		if ($charts === null) {
-			$charts = self::getActiveModulesByComponent('chart', $tree_id, $access_level);
-		}
-
-		return $charts;
+	public static function getActiveCharts(Tree $tree, $access_level = WT_USER_ACCESS_LEVEL) {
+		return self::getActiveModulesByComponent($tree, 'chart', $access_level);
 	}
 
 	/**
 	 * Get a list of modules which (a) provide a menu and (b) we have permission to see.
 	 *
-	 * @param integer $tree_id
+	 * @param Tree    $tree
 	 * @param integer $access_level
 	 *
 	 * @return ModuleMenuInterface[]
 	 */
-	public static function getActiveMenus($tree_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
-		static $menus;
-
-		if ($menus === null) {
-			$menus = self::getActiveModulesByComponent('menu', $tree_id, $access_level);
-		}
-
-		return $menus;
+	public static function getActiveMenus(Tree $tree, $access_level = WT_USER_ACCESS_LEVEL) {
+		return self::getActiveModulesByComponent($tree, 'menu', $access_level);
 	}
 
 	/**
 	 * Get a list of modules which (a) provide a report and (b) we have permission to see.
 	 *
-	 * @param integer $tree_id
+	 * @param Tree    $tree
 	 * @param integer $access_level
 	 *
 	 * @return ModuleReportInterface[]
 	 */
-	public static function getActiveReports($tree_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
-		static $reports;
-
-		if ($reports === null) {
-			$reports = self::getActiveModulesByComponent('report', $tree_id, $access_level);
-		}
-
-		return $reports;
+	public static function getActiveReports(Tree $tree, $access_level = WT_USER_ACCESS_LEVEL) {
+		return self::getActiveModulesByComponent($tree, 'report', $access_level);
 	}
 
 	/**
 	 * Get a list of modules which (a) provide a sidebar and (b) we have permission to see.
 	 *
-	 * @param integer $tree_id
+	 * @param Tree    $tree
 	 * @param integer $access_level
 	 *
 	 * @return ModuleSidebarInterface[]
 	 */
-	public static function getActiveSidebars($tree_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
-		static $sidebars;
-
-		if ($sidebars === null) {
-			$sidebars = self::getActiveModulesByComponent('sidebar', $tree_id, $access_level);
-		}
-
-		return $sidebars;
+	public static function getActiveSidebars(Tree $tree, $access_level = WT_USER_ACCESS_LEVEL) {
+		return self::getActiveModulesByComponent($tree, 'sidebar', $access_level);
 	}
 
 	/**
 	 * Get a list of modules which (a) provide a tab and (b) we have permission to see.
 	 *
-	 * @param integer $tree_id
+	 * @param Tree    $tree
 	 * @param integer $access_level
 	 *
 	 * @return ModuleTabInterface[]
 	 */
-	public static function getActiveTabs($tree_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
-		static $tabs;
-
-		if ($tabs === null) {
-			$tabs = self::getActiveModulesByComponent('tab', $tree_id, $access_level);
-		}
-
-		return $tabs;
+	public static function getActiveTabs(Tree $tree, $access_level = WT_USER_ACCESS_LEVEL) {
+		return self::getActiveModulesByComponent($tree, 'tab', $access_level);
 	}
 
 	/**
 	 * Get a list of modules which (a) provide a theme and (b) we have permission to see.
 	 *
-	 * @param integer $tree_id
+	 * @param Tree    $tree
 	 * @param integer $access_level
 	 *
 	 * @return ModuleThemeInterface[]
 	 */
-	public static function getActiveThemes($tree_id = WT_GED_ID, $access_level = WT_USER_ACCESS_LEVEL) {
-		static $themes;
+	public static function getActiveThemes(Tree $tree, $access_level = WT_USER_ACCESS_LEVEL) {
+		return self::getActiveModulesByComponent($tree, 'theme', $access_level);
+	}
 
-		if ($themes === null) {
-			$themes = self::getActiveModulesByComponent('theme', $tree_id, $access_level);
+	/**
+	 * Find a specified module, if it is currently active.
+	 *
+	 * @param string $module_name
+	 *
+	 * @return Module|null
+	 */
+	public static function getModuleByName($module_name) {
+		$modules = self::getActiveModules();
+		if (array_key_exists($module_name, $modules)) {
+			return $modules[$module_name];
+		} else {
+			return null;
 		}
-
-		return $themes;
 	}
 
 	/**
@@ -414,21 +369,19 @@ abstract class Module {
 	public static function getInstalledModules($default_status) {
 		$modules = array();
 
-		$dir = opendir(WT_ROOT . WT_MODULES_DIR);
-		while (($module_name = readdir($dir)) !== false) {
-			if (preg_match('/^[a-zA-Z0-9_]+$/', $module_name) && file_exists(WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php')) {
-				require_once WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php';
-				$class                       = __NAMESPACE__ . '\\' . $module_name . '_WT_Module';
-				$module                      = new $class;
-				$modules[$module->getName()] = $module;
-				Database::prepare("INSERT IGNORE INTO `##module` (module_name, status, menu_order, sidebar_order, tab_order) VALUES (?, ?, ?, ?, ?)")
-					->execute(array(
+		foreach (glob(WT_ROOT . WT_MODULES_DIR . '*/module.php') as $file) {
+			try {
+				$module = include $file;
+				if ($module instanceof Module) {
+					$modules[$module->getName()] = $module;
+					Database::prepare("INSERT IGNORE INTO `##module` (module_name, status, menu_order, sidebar_order, tab_order) VALUES (?, ?, ?, ?, ?)")->execute(array(
 						$module->getName(),
 						$default_status,
 						$module instanceof ModuleMenuInterface ? $module->defaultMenuOrder() : null,
 						$module instanceof ModuleSidebarInterface ? $module->defaultSidebarOrder() : null,
-						$module instanceof ModuleTabInterface ? $module->defaultTabOrder() : null
+						$module instanceof ModuleTabInterface ? $module->defaultTabOrder() : null,
 					));
+				}
 				// Set the default privcy for this module.  Note that this also sets it for the
 				// default family tree, with a gedcom_id of -1
 				if ($module instanceof ModuleMenuInterface) {
@@ -480,6 +433,8 @@ abstract class Module {
 						" FROM `##gedcom`"
 					)->execute(array($module->getName(), $module->defaultAccessLevel()));
 				}
+			} catch (\Exception $ex) {
+				// Old or invalid module?
 			}
 		}
 

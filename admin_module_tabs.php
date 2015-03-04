@@ -24,8 +24,9 @@ $controller
 	->restrictAccess(Auth::isAdmin())
 	->setPageTitle(I18N::translate('Tabs'));
 
-$modules = Module::getActiveTabs(WT_GED_ID, WT_PRIV_HIDE);
 $action  = Filter::post('action');
+$modules = Module::getInstalledModules('disabled');
+$modules = array_filter($modules, function(Module $x) { return $x instanceof ModuleTabInterface; });
 
 if ($action === 'update_mods' && Filter::checkCsrf()) {
 	foreach ($modules as $module) {

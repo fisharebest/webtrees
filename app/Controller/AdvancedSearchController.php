@@ -133,7 +133,7 @@ class AdvancedSearchController extends SearchController {
 		}
 		$fields = array();
 		foreach ($ofields as $field) {
-			$fields[$field] = WT_Gedcom_Tag::GetLabel($field);
+			$fields[$field] = GedcomTag::GetLabel($field);
 		}
 		uksort($fields, __NAMESPACE__ . '\AdvancedSearchController::tagSort');
 		return $fields;
@@ -150,11 +150,11 @@ class AdvancedSearchController extends SearchController {
 	public static function tagSort($x, $y) {
 		list($x1) = explode(':', $x . ':');
 		list($y1) = explode(':', $y . ':');
-		$tmp = I18N::strcasecmp(WT_Gedcom_Tag::getLabel($x1), WT_Gedcom_Tag::getLabel($y1));
+		$tmp = I18N::strcasecmp(GedcomTag::getLabel($x1), GedcomTag::getLabel($y1));
 		if ($tmp) {
 			return $tmp;
 		} else {
-			return I18N::strcasecmp(WT_Gedcom_Tag::getLabel($x), WT_Gedcom_Tag::getLabel($y));
+			return I18N::strcasecmp(GedcomTag::getLabel($x), GedcomTag::getLabel($y));
 		}
 	}
 
@@ -200,7 +200,7 @@ class AdvancedSearchController extends SearchController {
 	 * @return string
 	 */
 	function getLabel($tag) {
-		return WT_Gedcom_Tag::getLabel(preg_replace('/:(SDX|BEGINS|EXACT|CONTAINS)$/', '', $tag));
+		return GedcomTag::getLabel(preg_replace('/:(SDX|BEGINS|EXACT|CONTAINS)$/', '', $tag));
 	}
 
 	/**
@@ -462,16 +462,12 @@ class AdvancedSearchController extends SearchController {
 				// *:DATE
 				$date = new Date($value);
 				if ($date->isOK()) {
-					$jd1 = $date->date1->minJD;
-					if ($date->date2) {
-						$jd2 = $date->date2->maxJD;
-					} else {
-						$jd2 = $date->date1->maxJD;
-					}
+					$jd1 = $date->minimumJulianDay();
+					$jd2 = $date->maximumJulianDay();
 					if (!empty($this->plusminus[$i])) {
 						$adjd = $this->plusminus[$i] * 365;
-						$jd1 = $jd1 - $adjd;
-						$jd2 = $jd2 + $adjd;
+						$jd1 -= $adjd;
+						$jd2 += $adjd;
 					}
 					$sql .= " AND i_d.d_fact=? AND i_d.d_julianday1>=? AND i_d.d_julianday2<=?";
 					$bind[] = $parts[0];
@@ -482,16 +478,12 @@ class AdvancedSearchController extends SearchController {
 				// FAMS:*:DATE
 				$date = new Date($value);
 				if ($date->isOK()) {
-					$jd1 = $date->date1->minJD;
-					if ($date->date2) {
-						$jd2 = $date->date2->maxJD;
-					} else {
-						$jd2 = $date->date1->maxJD;
-					}
+					$jd1 = $date->minimumJulianDay();
+					$jd2 = $date->maximumJulianDay();
 					if (!empty($this->plusminus[$i])) {
 						$adjd = $this->plusminus[$i] * 365;
-						$jd1 = $jd1 - $adjd;
-						$jd2 = $jd2 + $adjd;
+						$jd1 -= $adjd;
+						$jd2 += $adjd;
 					}
 					$sql .= " AND f_d.d_fact=? AND f_d.d_julianday1>=? AND f_d.d_julianday2<=?";
 					$bind[] = $parts[1];

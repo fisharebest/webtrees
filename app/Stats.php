@@ -176,7 +176,7 @@ class Stats {
 	/**
 	 * @return integer
 	 */
-	public function gedcomID() {
+	public function gedcomId() {
 		return $this->tree->getTreeId();
 	}
 
@@ -268,7 +268,7 @@ class Stats {
 	/**
 	 * @return string
 	 */
-	public function gedcomRootID() {
+	public function gedcomRootId() {
 		return $this->tree->getPreference('PEDIGREE_ROOT_ID');
 	}
 
@@ -830,13 +830,13 @@ class Stats {
 		} elseif ($tot_u > 0) {
 			$chd = $this->arrayToExtendedEncoding(array(4095 * $tot_u / $tot, 4095 * $tot_f / $tot, 4095 * $tot_m / $tot));
 			$chl =
-				I18N::translate_c('unknown people', 'Unknown') . ' - ' . $per_u . '|' .
+				I18N::translateContext('unknown people', 'Unknown') . ' - ' . $per_u . '|' .
 				I18N::translate('Females') . ' - ' . $per_f . '|' .
 				I18N::translate('Males') . ' - ' . $per_m;
 			$chart_title =
 				I18N::translate('Males') . ' - ' . $per_m . I18N::$list_separator .
 				I18N::translate('Females') . ' - ' . $per_f . I18N::$list_separator .
-				I18N::translate_c('unknown people', 'Unknown') . ' - ' . $per_u;
+				I18N::translateContext('unknown people', 'Unknown') . ' - ' . $per_u;
 			return "<img src=\"https://chart.googleapis.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_unknown},{$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"" . $chart_title . "\" title=\"" . $chart_title . "\" />";
 		} else {
 			$chd = $this->arrayToExtendedEncoding(array(4095 * $tot_f / $tot, 4095 * $tot_m / $tot));
@@ -1221,8 +1221,8 @@ class Stats {
 		asort($media);
 		foreach ($media as $type => $count) {
 			$mediaCounts[] = round(100 * $count / $tot, 0);
-			$mediaTypes .= WT_Gedcom_Tag::getFileFormTypeValue($type) . ' - ' . I18N::number($count) . '|';
-			$chart_title .= WT_Gedcom_Tag::getFileFormTypeValue($type) . ' (' . $count . '), ';
+			$mediaTypes .= GedcomTag::getFileFormTypeValue($type) . ' - ' . I18N::number($count) . '|';
+			$chart_title .= GedcomTag::getFileFormTypeValue($type) . ' (' . $count . '), ';
 		}
 		$chart_title = substr($chart_title, 0, -2);
 		$chd = $this->arrayToExtendedEncoding($mediaCounts);
@@ -1273,7 +1273,7 @@ class Stats {
 		default:
 		case 'full':
 			if ($record->canShow()) {
-				$result = $record->format_list('span', false, $record->getFullName());
+				$result = $record->formatList('span', false, $record->getFullName());
 			} else {
 				$result = I18N::translate('This information is private and cannot be shown.');
 			}
@@ -1439,7 +1439,7 @@ class Stats {
 		}
 		// Get the country names for each language
 		$country_to_iso3166 = array();
-		foreach (I18N::installed_languages() as $code => $lang) {
+		foreach (I18N::installedLanguages() as $code => $lang) {
 			I18N::init($code);
 			$countries = $this->getAllCountries();
 			foreach ($this->iso3166() as $three => $two) {
@@ -1456,7 +1456,7 @@ class Stats {
 			$chart_title = I18N::translate('Surname distribution chart') . ': ' . $surname;
 			// Count how many people are events in each country
 			$surn_countries = array();
-			$indis = WT_Query_Name::individuals(I18N::strtoupper($surname), '', '', false, false, WT_GED_ID);
+			$indis = QueryName::individuals(I18N::strtoupper($surname), '', '', false, false, WT_GED_ID);
 			foreach ($indis as $person) {
 				if (preg_match_all('/^2 PLAC (?:.*, *)*(.*)/m', $person->getGedcom(), $matches)) {
 					// webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
@@ -1572,7 +1572,7 @@ class Stats {
 		$i = 1;
 		// Get the country names for each language
 		$country_names = array();
-		foreach (I18N::installed_languages() as $code => $lang) {
+		foreach (I18N::installedLanguages() as $code => $lang) {
 			I18N::init($code);
 			$all_countries = $this->getAllCountries();
 			foreach ($all_countries as $country_code => $country_name) {
@@ -2031,7 +2031,7 @@ class Stats {
 		default:
 		case 'full':
 			if ($person->canShowName()) {
-				$result = $person->format_list('span', false, $person->getFullName());
+				$result = $person->formatList('span', false, $person->getFullName());
 			} else {
 				$result = I18N::translate('This information is private and cannot be shown.');
 			}
@@ -2651,7 +2651,7 @@ class Stats {
 		default:
 		case 'full':
 			if ($record->canShow()) {
-				$result = $record->format_list('span', false, $record->getFullName());
+				$result = $record->formatList('span', false, $record->getFullName());
 			} else {
 				$result = I18N::translate('This information is private and cannot be shown.');
 			}
@@ -2664,7 +2664,7 @@ class Stats {
 			if (isset($eventTypes[$row['fact']])) {
 				$result = $eventTypes[$row['fact']];
 			} else {
-				$result = WT_Gedcom_Tag::getLabel($row['fact']);
+				$result = GedcomTag::getLabel($row['fact']);
 			}
 			break;
 		case 'name':
@@ -2804,7 +2804,7 @@ class Stats {
 		default:
 		case 'full':
 			if ($family->canShow()) {
-				$result = $family->format_list('span', false, $person->getFullName());
+				$result = $family->formatList('span', false, $person->getFullName());
 			} else {
 				$result = I18N::translate('This information is private and cannot be shown.');
 			}
@@ -2921,7 +2921,7 @@ class Stats {
 		foreach ($rows as $fam => $age) {
 			$family = Family::getInstance($fam, $this->tree->getTreeId());
 			if ($type === 'name') {
-				return $family->format_list('span', false, $family->getFullName());
+				return $family->formatList('span', false, $family->getFullName());
 			}
 			if ((int) ($age / 365.25) > 0) {
 				$age = (int) ($age / 365.25) . 'y';
@@ -3094,7 +3094,7 @@ class Stats {
 		default:
 		case 'full':
 			if ($person->canShow()) {
-				$result = $person->format_list('span', false, $person->getFullName());
+				$result = $person->formatList('span', false, $person->getFullName());
 			} else {
 				$result = I18N::translate('This information is private and cannot be shown.');
 			}
@@ -3948,7 +3948,7 @@ class Stats {
 		default:
 		case 'full':
 			if ($family->canShow()) {
-				$result = $family->format_list('span', false, $family->getFullName());
+				$result = $family->formatList('span', false, $family->getFullName());
 			} else {
 				$result = I18N::translate('This information is private and cannot be shown.');
 			}
@@ -4117,9 +4117,9 @@ class Stats {
 				}
 			} else {
 				if ($child1->canShow() && $child2->canShow()) {
-					$return = $child2->format_list('span', false, $child2->getFullName());
+					$return = $child2->formatList('span', false, $child2->getFullName());
 					$return .= "<br>" . I18N::translate('and') . "<br>";
-					$return .= $child1->format_list('span', false, $child1->getFullName());
+					$return .= $child1->formatList('span', false, $child1->getFullName());
 					$return .= "<br><a href=\"" . $family->getHtmlUrl() . "\">[" . I18N::translate('View family') . "]</a>";
 					return $return;
 				} else {
@@ -4684,7 +4684,7 @@ class Stats {
 		$counts[] = round(4095 * $unknown / ($max + 1));
 		$chd = $this->arrayToExtendedEncoding($counts);
 		$chm .= 't' . $unknown . ',000000,0,' . $i . ',11,1';
-		$chxl .= I18N::translate_c('unknown century', 'Unknown') . "|1:||" . I18N::translate('century') . "|2:|0|";
+		$chxl .= I18N::translateContext('unknown century', 'Unknown') . "|1:||" . I18N::translate('century') . "|2:|0|";
 		$step = $max + 1;
 		for ($d = (int) ($max + 1); $d > 0; $d--) {
 			if (($max + 1) < ($d * 10 + 1) && fmod(($max + 1), $d) == 0) {
@@ -4833,7 +4833,7 @@ class Stats {
 		// Note that we count/display SPFX SURN, but sort/group under just SURN
 		$surnames = array();
 		foreach (array_keys($surname_list) as $surname) {
-			$surnames = array_merge($surnames, WT_Query_Name::surnames($surname, '', false, false, WT_GED_ID));
+			$surnames = array_merge($surnames, QueryName::surnames($surname, '', false, false, WT_GED_ID));
 		}
 		return format_surname_list($surnames, ($type == 'list' ? 1 : 2), $show_tot, 'indilist.php', $this->tree);
 	}
@@ -4933,7 +4933,7 @@ class Stats {
 			if ($n >= $maxtoshow) {
 				break;
 			}
-			$all_surnames = array_merge($all_surnames, WT_Query_Name::surnames(I18N::strtoupper($surname), '', false, false, WT_GED_ID));
+			$all_surnames = array_merge($all_surnames, QueryName::surnames(I18N::strtoupper($surname), '', false, false, WT_GED_ID));
 		}
 		$tot = 0;
 		foreach ($surnames as $surname) {
@@ -5087,7 +5087,7 @@ class Stats {
 					});
 					jQuery("#' . $table_id . '").css("visibility", "visible");
 				');
-				$lookup = array('M' => I18N::translate('Male'), 'F' => I18N::translate('Female'), 'U' => I18N::translate_c('unknown gender', 'Unknown'), 'B' => I18N::translate('All'));
+				$lookup = array('M' => I18N::translate('Male'), 'F' => I18N::translate('Female'), 'U' => I18N::translateContext('unknown gender', 'Unknown'), 'B' => I18N::translate('All'));
 				return '<table id="' . $table_id . '" class="givn-list"><thead><tr><th class="ui-state-default" colspan="3">' . $lookup[$sex] . '</th></tr><tr><th>' . I18N::translate('Name') . '</th><th>' . I18N::translate('Count') . '</th><th>COUNT</th></tr></thead><tbody>' . implode('', $common) . '</tbody></table>';
 			case 'list':
 				return '<ul>' . implode('', $common) . '</ul>';
@@ -5473,7 +5473,7 @@ class Stats {
 	/**
 	 * @return null|string
 	 */
-	public function userID() {
+	public function userId() {
 		return Auth::id();
 	}
 
@@ -5497,7 +5497,7 @@ class Stats {
 	 * @return string
 	 */
 	public function userFullName() {
-		return Auth::check() ? Filter::escapeHtml(Auth::user()->getRealName()) : '';
+		return Auth::check() ? Auth::user()->getRealNameHtml() : '';
 	}
 
 	/**
@@ -5522,9 +5522,9 @@ class Stats {
 		case 'userid':
 			return $user->getUserId();
 		case 'username':
-			return $user->getUserName();
+			return Filter::escapeHtml($user->getUserName());
 		case 'fullname':
-			return $user->getRealName();
+			return $user->getRealNameHtml();
 		case 'regdate':
 			if (is_array($params) && isset($params[0]) && $params[0] != '') {
 				$datestamp = $params[0];
@@ -5690,7 +5690,7 @@ class Stats {
 	/**
 	 * @return string
 	 */
-	public function WT_VERSION() {
+	public function webtreesVersion() {
 		return WT_VERSION;
 	}
 
@@ -5864,8 +5864,8 @@ class Stats {
 	 * @return string
 	 */
 	public function gedcomFavorites() {
-		if (array_key_exists('gedcom_favorites', Module::getActiveModules())) {
-			$block = new gedcom_favorites_WT_Module;
+		if (Module::getModuleByName('gedcom_favorites')) {
+			$block = new FamilyTreeFavoritesModule(WT_MODULES_DIR . 'gedcom_favorites');
 
 			return $block->getBlock(0, false);
 		} else {
@@ -5877,8 +5877,8 @@ class Stats {
 	 * @return string
 	 */
 	public function userFavorites() {
-		if (Auth::check() && array_key_exists('user_favorites', Module::getActiveModules())) {
-			$block = new user_favorites_WT_Module;
+		if (Auth::check() && Module::getModuleByName('user_favorites')) {
+			$block = new UserFavoritesModule(WT_MODULES_DIR . 'gedcom_favorites');
 
 			return $block->getBlock(0, false);
 		} else {
@@ -5890,8 +5890,8 @@ class Stats {
 	 * @return integer
 	 */
 	public function totalGedcomFavorites() {
-		if (array_key_exists('gedcom_favorites', Module::getActiveModules())) {
-			return count(gedcom_favorites_WT_Module::getFavorites(WT_GED_ID));
+		if (Module::getModuleByName('gedcom_favorites')) {
+			return count(FamilyTreeFavoritesModule::getFavorites(WT_GED_ID));
 		} else {
 			return 0;
 		}
@@ -5901,8 +5901,8 @@ class Stats {
 	 * @return integer
 	 */
 	public function totalUserFavorites() {
-		if (array_key_exists('user_favorites', Module::getActiveModules())) {
-			return count(user_favorites_WT_Module::getFavorites(Auth::id()));
+		if (Module::getModuleByName('user_favorites')) {
+			return count(UserFavoritesModule::getFavorites(Auth::id()));
 		} else {
 			return 0;
 		}
@@ -5925,7 +5925,7 @@ class Stats {
 			return '';
 		}
 		$all_blocks = array();
-		foreach (Module::getActiveBlocks() as $name => $active_block) {
+		foreach (Module::getActiveBlocks($this->tree) as $name => $active_block) {
 			if ($ctype == 'user' && $active_block->isUserBlock() || $ctype == 'gedcom' && $active_block->isGedcomBlock()) {
 				$all_blocks[$name] = $active_block;
 			}
@@ -5933,7 +5933,6 @@ class Stats {
 		if (!array_key_exists($block, $all_blocks) || $block == 'html') {
 			return '';
 		}
-		$class_name = $block . '_WT_Module';
 		// Build the config array
 		array_shift($params);
 		$cfg = array();
@@ -5945,7 +5944,7 @@ class Stats {
 			$v = array_shift($bits);
 			$cfg[$v] = implode('=', $bits);
 		}
-		$block = new $class_name;
+		$block = $all_blocks[$block];
 		$block_id = Filter::getInteger('block_id');
 		$content = $block->getBlock($block_id, false, $cfg);
 		return $content;
@@ -6344,47 +6343,47 @@ class Stats {
 		// The current chart engine (Google charts) can't handle <sup></sup> markup
 		switch ($century) {
 		case 21:
-			return strip_tags(I18N::translate_c('CENTURY', '21st'));
+			return strip_tags(I18N::translateContext('CENTURY', '21st'));
 		case 20:
-			return strip_tags(I18N::translate_c('CENTURY', '20th'));
+			return strip_tags(I18N::translateContext('CENTURY', '20th'));
 		case 19:
-			return strip_tags(I18N::translate_c('CENTURY', '19th'));
+			return strip_tags(I18N::translateContext('CENTURY', '19th'));
 		case 18:
-			return strip_tags(I18N::translate_c('CENTURY', '18th'));
+			return strip_tags(I18N::translateContext('CENTURY', '18th'));
 		case 17:
-			return strip_tags(I18N::translate_c('CENTURY', '17th'));
+			return strip_tags(I18N::translateContext('CENTURY', '17th'));
 		case 16:
-			return strip_tags(I18N::translate_c('CENTURY', '16th'));
+			return strip_tags(I18N::translateContext('CENTURY', '16th'));
 		case 15:
-			return strip_tags(I18N::translate_c('CENTURY', '15th'));
+			return strip_tags(I18N::translateContext('CENTURY', '15th'));
 		case 14:
-			return strip_tags(I18N::translate_c('CENTURY', '14th'));
+			return strip_tags(I18N::translateContext('CENTURY', '14th'));
 		case 13:
-			return strip_tags(I18N::translate_c('CENTURY', '13th'));
+			return strip_tags(I18N::translateContext('CENTURY', '13th'));
 		case 12:
-			return strip_tags(I18N::translate_c('CENTURY', '12th'));
+			return strip_tags(I18N::translateContext('CENTURY', '12th'));
 		case 11:
-			return strip_tags(I18N::translate_c('CENTURY', '11th'));
+			return strip_tags(I18N::translateContext('CENTURY', '11th'));
 		case 10:
-			return strip_tags(I18N::translate_c('CENTURY', '10th'));
+			return strip_tags(I18N::translateContext('CENTURY', '10th'));
 		case  9:
-			return strip_tags(I18N::translate_c('CENTURY', '9th'));
+			return strip_tags(I18N::translateContext('CENTURY', '9th'));
 		case  8:
-			return strip_tags(I18N::translate_c('CENTURY', '8th'));
+			return strip_tags(I18N::translateContext('CENTURY', '8th'));
 		case  7:
-			return strip_tags(I18N::translate_c('CENTURY', '7th'));
+			return strip_tags(I18N::translateContext('CENTURY', '7th'));
 		case  6:
-			return strip_tags(I18N::translate_c('CENTURY', '6th'));
+			return strip_tags(I18N::translateContext('CENTURY', '6th'));
 		case  5:
-			return strip_tags(I18N::translate_c('CENTURY', '5th'));
+			return strip_tags(I18N::translateContext('CENTURY', '5th'));
 		case  4:
-			return strip_tags(I18N::translate_c('CENTURY', '4th'));
+			return strip_tags(I18N::translateContext('CENTURY', '4th'));
 		case  3:
-			return strip_tags(I18N::translate_c('CENTURY', '3rd'));
+			return strip_tags(I18N::translateContext('CENTURY', '3rd'));
 		case  2:
-			return strip_tags(I18N::translate_c('CENTURY', '2nd'));
+			return strip_tags(I18N::translateContext('CENTURY', '2nd'));
 		case  1:
-			return strip_tags(I18N::translate_c('CENTURY', '1st'));
+			return strip_tags(I18N::translateContext('CENTURY', '1st'));
 		default:
 			return ($century - 1) . '01-' . $century . '00';
 		}

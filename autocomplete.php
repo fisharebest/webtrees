@@ -53,18 +53,18 @@ case 'ASSO': // Associates of an individuals, whose name contains the search ter
 	// Filter for privacy and whether they could be alive at the right time
 	$event_date = Filter::get('extra');
 	$date       = new Date($event_date);
-	$event_jd   = $date->JD();
+	$event_jd   = $date->julianDay();
 	foreach ($rows as $row) {
 		$person = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 		if ($person->canShow()) {
 			if ($event_jd) {
 				// Exclude individuals who were born after the event.
-				$person_birth_jd = $person->getEstimatedBirthDate()->minJD();
+				$person_birth_jd = $person->getEstimatedBirthDate()->minimumJulianDay();
 				if ($person_birth_jd && $person_birth_jd > $event_jd) {
 					continue;
 				}
 				// Exclude individuals who died before the event.
-				$person_death_jd = $person->getEstimatedDeathDate()->MaxJD();
+				$person_death_jd = $person->getEstimatedDeathDate()->maximumJulianDay();
 				if ($person_death_jd && $person_death_jd < $event_jd) {
 					continue;
 				}
@@ -72,7 +72,7 @@ case 'ASSO': // Associates of an individuals, whose name contains the search ter
 			// Add the age (if we have it) or the lifespan (if we do not).
 			$label = $person->getFullName();
 			if ($event_jd && $person->getBirthDate()->isOK()) {
-				$label .= ', <span class="age">(' . I18N::translate('Age') . ' ' . $person->getBirthDate()->MinDate()->getAge(false, $event_jd) . ')</span>';
+				$label .= ', <span class="age">(' . I18N::translate('Age') . ' ' . $person->getBirthDate()->minimumDate()->getAge(false, $event_jd) . ')</span>';
 			} else {
 				$label .= ', <i>' . $person->getLifeSpan() . '</i>';
 			}

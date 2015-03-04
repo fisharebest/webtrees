@@ -72,7 +72,7 @@ if ($action === 'download') {
 		// Create a ZIP file containing the GEDCOM file.
 		$comment = "Created by " . WT_WEBTREES . " " . WT_VERSION . " on " . date("r") . ".";
 		$archive = new PclZip($temp_dir . $zip_file);
-		$v_list = $archive->add($temp_dir . $download_filename, PCLZIP_OPT_COMMENT, $comment, PCLZIP_OPT_REMOVE_PATH, $temp_dir);
+		$v_list = $archive->add($temp_dir . $download_filename, \PCLZIP_OPT_COMMENT, $comment, \PCLZIP_OPT_REMOVE_PATH, $temp_dir);
 		if ($v_list == 0) {
 			echo "Error : " . $archive->errorInfo(true);
 		} else {

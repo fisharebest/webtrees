@@ -156,7 +156,7 @@ class I18N {
 	);
 
 	/** @var string the name of the current locale, such as fr or en_GB */
-	public static $locale;
+	private static $locale;
 
 	/** @var string The MySQL collation sequence used by this language, typically utf8_unicode_ci */
 	public static $collation;
@@ -200,7 +200,7 @@ class I18N {
 		Zend_Locale::setCache(self::$cache);
 		Zend_Translate::setCache(self::$cache);
 
-		$installed_languages = self::installed_languages();
+		$installed_languages = self::installedLanguages();
 		if (is_null($locale) || !array_key_exists($locale, $installed_languages)) {
 			// Automatic locale selection.
 			if (array_key_exists(Filter::get('lang'), $installed_languages)) {
@@ -320,7 +320,7 @@ class I18N {
 	 *
 	 * @return array
 	 */
-	public static function installed_languages() {
+	public static function installedLanguages() {
 		$mo_files = glob(WT_ROOT . 'language' . DIRECTORY_SEPARATOR . '*.mo');
 		$cache_key = md5(serialize($mo_files));
 
@@ -360,7 +360,7 @@ class I18N {
 	 *
 	 * @return string
 	 */
-	public static function html_markup() {
+	public static function htmlAttributes() {
 		list($lang) = preg_split('/[-_@]/', self::$locale);
 		return 'lang="' . $lang . '" dir="' . self::direction() . '"';
 	}
@@ -453,7 +453,7 @@ class I18N {
 	 *
 	 * @return string
 	 */
-	public static function translate_c(/* var_args */) {
+	public static function translateContext(/* var_args */) {
 		$args = func_get_args();
 		$msgid = $args[0] . "\x04" . $args[1];
 		$msgtxt = self::$translation_adapter->getAdapter()->_($msgid);
@@ -508,7 +508,7 @@ class I18N {
 	 *
 	 * @return string
 	 */
-	public static function gedcom_age($string) {
+	public static function gedcomAge($string) {
 		switch ($string) {
 		case 'STILLBORN':
 			// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (stillborn)

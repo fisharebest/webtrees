@@ -313,7 +313,7 @@ if ($type == "facts") {
 	$preselDefault = array();
 	$preselCustom = array();
 	foreach ($all as $one) {
-		if (WT_Gedcom_Tag::isTag($one)) {
+		if (GedcomTag::isTag($one)) {
 			$preselDefault[] = $one;
 		} else {
 			$preselCustom[] = $one;
@@ -410,7 +410,7 @@ if ($type == "facts") {
 
 		DefaultTags=[<?php
 		$firstFact = true;
-		foreach (WT_Gedcom_Tag::getPicklistFacts() as $factId => $factName) {
+		foreach (GedcomTag::getPicklistFacts() as $factId => $factName) {
 			if ($firstFact) {
 				$firstFact = false;
 			} else {
@@ -489,7 +489,7 @@ if ($action == "filter") {
 			echo '<ul>';
 			usort($myindilist, __NAMESPACE__ . '\GedcomRecord::compare');
 			foreach ($myindilist as $indi) {
-				echo $indi->format_list('li', true);
+				echo $indi->formatList('li', true);
 			}
 			echo '</ul>
 			<p>', I18N::translate('Total individuals: %s', count($myindilist)), '</p>';
@@ -513,7 +513,7 @@ if ($action == "filter") {
 			echo '<ul>';
 			usort($myfamlist, __NAMESPACE__ . '\GedcomRecord::compare');
 			foreach ($myfamlist as $family) {
-				echo $family->format_list('li', true);
+				echo $family->formatList('li', true);
 			}
 			echo '</ul>
 			<p>', I18N::translate('Total families: %s', count($myfamlist)), '</p>';
@@ -527,7 +527,7 @@ if ($action == "filter") {
 	if ($type == "media") {
 		global $dirs;
 
-		$medialist = WT_Query_Media::mediaList('', 'include', 'title', $filter);
+		$medialist = QueryMedia::mediaList('', 'include', 'title', $filter);
 
 		echo '<div id="find-output">';
 
@@ -543,7 +543,7 @@ if ($action == "filter") {
 				}
 				if ($media->fileExists()) {
 					$imgsize = $media->getImageAttributes();
-					echo WT_Gedcom_Tag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
+					echo GedcomTag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
 				}
 				echo '<ul>';
 				$found = false;

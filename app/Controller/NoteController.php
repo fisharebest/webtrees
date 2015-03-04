@@ -50,12 +50,12 @@ class NoteController extends GedcomRecordController {
 		// delete
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new Menu(I18N::translate('Delete'), '#', 'menu-note-del');
-			$submenu->setOnclick("return delete_note('" . I18N::translate('Are you sure you want to delete “%s”?', strip_tags($this->record->getFullName())) . "', '" . $this->record->getXref() . "');");
+			$submenu->setOnclick("return delete_note('" . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJS(Filter::unescapeHtml($this->record->getFullName()))) . "', '" . $this->record->getXref() . "');");
 			$menu->addSubmenu($submenu);
 		}
 
 		// add to favorites
-		if (array_key_exists('user_favorites', Module::getActiveModules())) {
+		if (Module::getModuleByName('user_favorites')) {
 			$submenu = new Menu(
 				/* I18N: Menu option.  Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
 				'#',

@@ -112,7 +112,7 @@ echo '</li>';
 echo '<li>', /* I18N: The system is about to [...] */ I18N::translate('Check for custom modules…');
 
 $custom_modules = false;
-foreach (Module::getActiveModules() as $module) {
+foreach (Module::getInstalledModules('disabled') as $module) {
 	switch ($module->getName()) {
 	case 'GEDFact_assistant':
 	case 'ahnentafel_report':
@@ -351,9 +351,9 @@ $num_files = $res['nb'];
 reset_timeout();
 $start_time = microtime(true);
 $res = $archive->extract(
-	PCLZIP_OPT_PATH, $zip_dir,
-	PCLZIP_OPT_REMOVE_PATH, 'webtrees',
-	PCLZIP_OPT_REPLACE_NEWER
+	\PCLZIP_OPT_PATH, $zip_dir,
+	\PCLZIP_OPT_REMOVE_PATH, 'webtrees',
+	\PCLZIP_OPT_REPLACE_NEWER
 );
 $end_time = microtime(true);
 
@@ -440,9 +440,9 @@ try {
 reset_timeout();
 $start_time = microtime(true);
 $res = $archive->extract(
-	PCLZIP_OPT_PATH, WT_ROOT,
-	PCLZIP_OPT_REMOVE_PATH, 'webtrees',
-	PCLZIP_OPT_REPLACE_NEWER
+	\PCLZIP_OPT_PATH, WT_ROOT,
+	\PCLZIP_OPT_REMOVE_PATH, 'webtrees',
+	\PCLZIP_OPT_REPLACE_NEWER
 );
 $end_time = microtime(true);
 

@@ -188,7 +188,7 @@ function format_indi_table($datalist, $option = '') {
 										title="' . I18N::translate('Show individuals who died more than 100 years ago.') . '"
 										type="button"
 									>
-										' . WT_Gedcom_Tag::getLabel('DEAT') . '&gt;100
+										' . GedcomTag::getLabel('DEAT') . '&gt;100
 									</button>
 									<button
 										class="ui-state-default"
@@ -197,7 +197,7 @@ function format_indi_table($datalist, $option = '') {
 										title="' . I18N::translate('Show individuals who died within the last 100 years.') . '"
 										type="button"
 									>
-										' . WT_Gedcom_Tag::getLabel('DEAT') . '&lt;=100
+										' . GedcomTag::getLabel('DEAT') . '&lt;=100
 									</button>
 								</div>
 								<div class="btn-group">
@@ -208,7 +208,7 @@ function format_indi_table($datalist, $option = '') {
 										title="' . I18N::translate('Show individuals born more than 100 years ago.') . '"
 										type="button"
 									>
-										' . WT_Gedcom_Tag::getLabel('BIRT') . '&gt;100
+										' . GedcomTag::getLabel('BIRT') . '&gt;100
 									</button>
 									<button
 										class="ui-state-default"
@@ -217,7 +217,7 @@ function format_indi_table($datalist, $option = '') {
 										title="' . I18N::translate('Show individuals born within the last 100 years.') . '"
 										type="button"
 									>
-										' . WT_Gedcom_Tag::getLabel('BIRT') . '&lt;=100
+										' . GedcomTag::getLabel('BIRT') . '&lt;=100
 									</button>
 								</div>
 								<div class="btn-group">
@@ -244,25 +244,25 @@ function format_indi_table($datalist, $option = '') {
 						</th>
 					</tr>
 					<tr>
-						<th>' . WT_Gedcom_Tag::getLabel('GIVN') . '</th>
-						<th>' . WT_Gedcom_Tag::getLabel('SURN') . '</th>
+						<th>' . GedcomTag::getLabel('GIVN') . '</th>
+						<th>' . GedcomTag::getLabel('SURN') . '</th>
 						<th>GIVN</th>
 						<th>SURN</th>
 						<th>' . /* I18N: Abbreviation for “Sosa-Stradonitz number”.  This is an individual’s surname, so may need transliterating into non-latin alphabets. */ I18N::translate('Sosa') . '</th>
 						<th>SOSA</th>
-						<th>' . WT_Gedcom_Tag::getLabel('BIRT') . '</th>
+						<th>' . GedcomTag::getLabel('BIRT') . '</th>
 						<th>SORT_BIRT</th>
 						<th><i class="icon-reminder" title="' . I18N::translate('Anniversary') . '"></i></th>
-						<th>' . WT_Gedcom_Tag::getLabel('PLAC') . '</th>
+						<th>' . GedcomTag::getLabel('PLAC') . '</th>
 						<th><i class="icon-children" title="' . I18N::translate('Children') . '"></i></th>
 						<th>NCHI</th>
-						<th>' . WT_Gedcom_Tag::getLabel('DEAT') . '</th>
+						<th>' . GedcomTag::getLabel('DEAT') . '</th>
 						<th>SORT_DEAT</th>
 						<th><i class="icon-reminder" title="' . I18N::translate('Anniversary') . '"></i></th>
-						<th>' . WT_Gedcom_Tag::getLabel('AGE') . '</th>
+						<th>' . GedcomTag::getLabel('AGE') . '</th>
 						<th>AGE</th>
-						<th>' . WT_Gedcom_Tag::getLabel('PLAC') . '</th>
-						<th>' . WT_Gedcom_Tag::getLabel('CHAN') . '</th>
+						<th>' . GedcomTag::getLabel('PLAC') . '</th>
+						<th>' . GedcomTag::getLabel('CHAN') . '</th>
 						<th>CHAN</th>
 						<th>SEX</th>
 						<th>BIRT</th>
@@ -308,7 +308,7 @@ function format_indi_table($datalist, $option = '') {
 			if ($name['type'] == 'NAME') {
 				$title = '';
 			} else {
-				$title = 'title="' . strip_tags(WT_Gedcom_Tag::getLabel($name['type'], $person)) . '"';
+				$title = 'title="' . strip_tags(GedcomTag::getLabel($name['type'], $person)) . '"';
 			}
 			if ($num == $person->getPrimaryName()) {
 				$class = ' class="name2"';
@@ -360,7 +360,7 @@ function format_indi_table($datalist, $option = '') {
 		}
 		$html .= '</td>';
 		//-- Event date (sortable)hidden by datatables code
-		$html .= '<td>' . $birth_date->JD() . '</td>';
+		$html .= '<td>' . $birth_date->julianDay() . '</td>';
 		//-- Birth anniversary
 		$html .= '<td>' . Date::getAge($birth_dates[0], null, 2) . '</td>';
 		//-- Birth place
@@ -393,7 +393,7 @@ function format_indi_table($datalist, $option = '') {
 			$death_date = $person->getEstimatedDeathDate();
 			// Estimated death dates are a fixed number of years after the birth date.
 			// Don't show estimates in the future.
-			if ($person->getTree()->getPreference('SHOW_EST_LIST_DATES') && $death_date->MinJD() < WT_CLIENT_JD) {
+			if ($person->getTree()->getPreference('SHOW_EST_LIST_DATES') && $death_date->minimumJulianDay() < WT_CLIENT_JD) {
 				$html .= $death_date->display(true);
 			} elseif ($person->isDead()) {
 				$html .= I18N::translate('yes');
@@ -404,7 +404,7 @@ function format_indi_table($datalist, $option = '') {
 		}
 		$html .= '</td>';
 		//-- Event date (sortable)hidden by datatables code
-		$html .= '<td>' . $death_date->JD() . '</td>';
+		$html .= '<td>' . $death_date->julianDay() . '</td>';
 		//-- Death anniversary
 		$html .= '<td>' . Date::getAge($death_dates[0], null, 2) . '</td>';
 		//-- Age at death
@@ -432,7 +432,7 @@ function format_indi_table($datalist, $option = '') {
 		$html .= '<td>' . $person->getSex() . '</td>';
 		//-- Filtering by birth date
 		$html .= '<td>';
-		if (!$person->canShow() || Date::Compare($birth_date, $d100y) > 0) {
+		if (!$person->canShow() || Date::compare($birth_date, $d100y) > 0) {
 			$html .= 'Y100';
 		} else {
 			$html .= 'YES';
@@ -441,9 +441,9 @@ function format_indi_table($datalist, $option = '') {
 		//-- Filtering by death date
 		$html .= '<td>';
 		// Died in last 100 years?  Died?  Not dead?
-		if (Date::Compare($death_dates[0], $d100y) > 0) {
+		if (Date::compare($death_dates[0], $d100y) > 0) {
 			$html .= 'Y100';
-		} elseif ($death_dates[0]->minJD() || $person->isDead()) {
+		} elseif ($death_dates[0]->minimumJulianDay() || $person->isDead()) {
 			$html .= 'YES';
 		} else {
 			$html .= 'N';
@@ -663,7 +663,7 @@ function format_fam_table($datalist) {
 										class="ui-state-default"
 										title="' . I18N::translate('Show couples with an unknown marriage date.') . '"
 									>
-										' . WT_Gedcom_Tag::getLabel('MARR') . '
+										' . GedcomTag::getLabel('MARR') . '
 									</button>
 									<button
 										type="button"
@@ -672,7 +672,7 @@ function format_fam_table($datalist) {
 										class="ui-state-default"
 										title="' . I18N::translate('Show couples who married more than 100 years ago.') . '"
 									>
-										' . WT_Gedcom_Tag::getLabel('MARR') . '&gt;100
+										' . GedcomTag::getLabel('MARR') . '&gt;100
 									</button>
 									<button
 										type="button"
@@ -681,7 +681,7 @@ function format_fam_table($datalist) {
 										class="ui-state-default"
 										title="' . I18N::translate('Show couples who married within the last 100 years.') . '"
 									>
-										' . WT_Gedcom_Tag::getLabel('MARR') . '&lt;=100
+										' . GedcomTag::getLabel('MARR') . '&lt;=100
 									</button>
 									<button
 										type="button"
@@ -690,7 +690,7 @@ function format_fam_table($datalist) {
 										class="ui-state-default"
 										title="' . I18N::translate('Show divorced couples.') . '"
 									>
-										' . WT_Gedcom_Tag::getLabel('DIV') . '
+										' . GedcomTag::getLabel('DIV') . '
 									</button>
 									<button
 										type="button"
@@ -706,25 +706,25 @@ function format_fam_table($datalist) {
 						</th>
 					</tr>
 					<tr>
-						<th>' . WT_Gedcom_Tag::getLabel('GIVN') . '</th>
-						<th>' . WT_Gedcom_Tag::getLabel('SURN') . '</th>
+						<th>' . GedcomTag::getLabel('GIVN') . '</th>
+						<th>' . GedcomTag::getLabel('SURN') . '</th>
 						<th>HUSB:GIVN_SURN</th>
 						<th>HUSB:SURN_GIVN</th>
-						<th>' . WT_Gedcom_Tag::getLabel('AGE') . '</th>
+						<th>' . GedcomTag::getLabel('AGE') . '</th>
 						<th>AGE</th>
-						<th>' . WT_Gedcom_Tag::getLabel('GIVN') . '</th>
-						<th>' . WT_Gedcom_Tag::getLabel('SURN') . '</th>
+						<th>' . GedcomTag::getLabel('GIVN') . '</th>
+						<th>' . GedcomTag::getLabel('SURN') . '</th>
 						<th>WIFE:GIVN_SURN</th>
 						<th>WIFE:SURN_GIVN</th>
-						<th>' . WT_Gedcom_Tag::getLabel('AGE') . '</th>
+						<th>' . GedcomTag::getLabel('AGE') . '</th>
 						<th>AGE</th>
-						<th>' . WT_Gedcom_Tag::getLabel('MARR') . '</th>
+						<th>' . GedcomTag::getLabel('MARR') . '</th>
 						<th>MARR:DATE</th>
 						<th><i class="icon-reminder" title="' . I18N::translate('Anniversary') . '"></i></th>
-						<th>' . WT_Gedcom_Tag::getLabel('PLAC') . '</th>
+						<th>' . GedcomTag::getLabel('PLAC') . '</th>
 						<th><i class="icon-children" title="' . I18N::translate('Children') . '"></i></th>
 					<th>NCHI</th>
-					<th>' . WT_Gedcom_Tag::getLabel('CHAN') . '</th>
+					<th>' . GedcomTag::getLabel('CHAN') . '</th>
 					<th>CHAN</th>
 					<th>MARR</th>
 					<th>DEAT</th>
@@ -777,7 +777,7 @@ function format_fam_table($datalist) {
 			if ($name['type'] == 'NAME') {
 				$title = '';
 			} else {
-				$title = 'title="' . strip_tags(WT_Gedcom_Tag::getLabel($name['type'], $husb)) . '"';
+				$title = 'title="' . strip_tags(GedcomTag::getLabel($name['type'], $husb)) . '"';
 			}
 			if ($num == $husb->getPrimaryName()) {
 				$class = ' class="name2"';
@@ -822,7 +822,7 @@ function format_fam_table($datalist) {
 			if ($name['type'] == 'NAME') {
 				$title = '';
 			} else {
-				$title = 'title="' . strip_tags(WT_Gedcom_Tag::getLabel($name['type'], $wife)) . '"';
+				$title = 'title="' . strip_tags(GedcomTag::getLabel($name['type'], $wife)) . '"';
 			}
 			if ($num == $wife->getPrimaryName()) {
 				$class = ' class="name2"';
@@ -885,7 +885,7 @@ function format_fam_table($datalist) {
 		//-- Event date (sortable)hidden by datatables code
 		$html .= '<td>';
 		if ($marriage_dates) {
-			$html .= $marriage_date->JD();
+			$html .= $marriage_date->julianDay();
 		} else {
 			$html .= 0;
 		}
@@ -914,7 +914,7 @@ function format_fam_table($datalist) {
 		if (!$family->canShow() || !$mdate->isOK()) {
 			$html .= 'U';
 		} else {
-			if (Date::Compare($mdate, $d100y) > 0) {
+			if (Date::compare($mdate, $d100y) > 0) {
 				$html .= 'Y100';
 			} else {
 				$html .= 'YES';
@@ -1039,9 +1039,9 @@ function format_sour_table($datalist) {
 	$html .= '<div class="source-list">';
 	//-- table header
 	$html .= '<table id="' . $table_id . '"><thead><tr>';
-	$html .= '<th>' . WT_Gedcom_Tag::getLabel('TITL') . '</th>';
+	$html .= '<th>' . GedcomTag::getLabel('TITL') . '</th>';
 	$html .= '<th>TITL</th>';
-	$html .= '<th>' . WT_Gedcom_Tag::getLabel('AUTH') . '</th>';
+	$html .= '<th>' . GedcomTag::getLabel('AUTH') . '</th>';
 	$html .= '<th>' . I18N::translate('Individuals') . '</th>';
 	$html .= '<th>#INDI</th>';
 	$html .= '<th>' . I18N::translate('Families') . '</th>';
@@ -1050,7 +1050,7 @@ function format_sour_table($datalist) {
 	$html .= '<th>#OBJE</th>';
 	$html .= '<th>' . I18N::translate('Shared notes') . '</th>';
 	$html .= '<th>#NOTE</th>';
-	$html .= '<th' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? '' : '') . '>' . WT_Gedcom_Tag::getLabel('CHAN') . '</th>';
+	$html .= '<th' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? '' : '') . '>' . GedcomTag::getLabel('CHAN') . '</th>';
 	$html .= '<th' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? '' : '') . '>CHAN</th>';
 	$html .= '<th></th>'; //delete
 	$html .= '</tr></thead>';
@@ -1178,7 +1178,7 @@ function format_note_table($datalist) {
 	$html .= '<div class="note-list">';
 	//-- table header
 	$html .= '<table id="' . $table_id . '"><thead><tr>';
-	$html .= '<th>' . WT_Gedcom_Tag::getLabel('TITL') . '</th>';
+	$html .= '<th>' . GedcomTag::getLabel('TITL') . '</th>';
 	$html .= '<th>' . I18N::translate('Individuals') . '</th>';
 	$html .= '<th>#INDI</th>';
 	$html .= '<th>' . I18N::translate('Families') . '</th>';
@@ -1187,7 +1187,7 @@ function format_note_table($datalist) {
 	$html .= '<th>#OBJE</th>';
 	$html .= '<th>' . I18N::translate('Sources') . '</th>';
 	$html .= '<th>#SOUR</th>';
-	$html .= '<th' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? '' : '') . '>' . WT_Gedcom_Tag::getLabel('CHAN') . '</th>';
+	$html .= '<th' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? '' : '') . '>' . GedcomTag::getLabel('CHAN') . '</th>';
 	$html .= '<th' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? '' : '') . '>CHAN</th>';
 	$html .= '<th></th>'; //delete
 	$html .= '</tr></thead>';
@@ -1290,7 +1290,7 @@ function format_repo_table($repositories) {
 	$html .= '<th>' . I18N::translate('Repository name') . '</th>';
 	$html .= '<th>' . I18N::translate('Sources') . '</th>';
 	$html .= '<th>#SOUR</th>';
-	$html .= '<th' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? '' : '') . '>' . WT_Gedcom_Tag::getLabel('CHAN') . '</th>';
+	$html .= '<th' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? '' : '') . '>' . GedcomTag::getLabel('CHAN') . '</th>';
 	$html .= '<th' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? '' : '') . '>CHAN</th>';
 	$html .= '<th></th>'; //delete
 	$html .= '</tr></thead>';
@@ -1398,14 +1398,14 @@ function format_media_table($media_objects) {
 	//-- table header
 	$html .= '<table id="' . $table_id . '"><thead><tr>';
 	$html .= '<th>' . I18N::translate('Media') . '</th>';
-	$html .= '<th>' . WT_Gedcom_Tag::getLabel('TITL') . '</th>';
+	$html .= '<th>' . GedcomTag::getLabel('TITL') . '</th>';
 	$html .= '<th>' . I18N::translate('Individuals') . '</th>';
 	$html .= '<th>#INDI</th>';
 	$html .= '<th>' . I18N::translate('Families') . '</th>';
 	$html .= '<th>#FAM</th>';
 	$html .= '<th>' . I18N::translate('Sources') . '</th>';
 	$html .= '<th>#SOUR</th>';
-	$html .= '<th' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? '' : '') . '>' . WT_Gedcom_Tag::getLabel('CHAN') . '</th>';
+	$html .= '<th' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? '' : '') . '>' . GedcomTag::getLabel('CHAN') . '</th>';
 	$html .= '<th' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? '' : '') . '>CHAN</th>';
 	$html .= '</tr></thead>';
 	//-- table body
@@ -1501,7 +1501,7 @@ function format_surname_table($surnames, $script) {
 
 	$html .= '<table class="surname-list">' .
 		'<thead><tr>' .
-		'<th>' . WT_Gedcom_Tag::getLabel('SURN') . '</th>' .
+		'<th>' . GedcomTag::getLabel('SURN') . '</th>' .
 		'<th></th>' .
 		'<th>' . $col_heading . '</th>' .
 		'<th></th>' .
@@ -1785,8 +1785,8 @@ function print_changes_table($change_ids, $sort) {
 	$html .= '<thead><tr>';
 	$html .= '<th></th>';
 	$html .= '<th>' . I18N::translate('Record') . '</th>';
-	$html .= '<th>' . WT_Gedcom_Tag::getLabel('CHAN') . '</th>';
-	$html .= '<th>' . WT_Gedcom_Tag::getLabel('_WT_USER') . '</th>';
+	$html .= '<th>' . GedcomTag::getLabel('CHAN') . '</th>';
+	$html .= '<th>' . GedcomTag::getLabel('_WT_USER') . '</th>';
 	$html .= '<th>DATE</th>'; //hidden by datatables code
 	$html .= '<th>SORTNAME</th>'; //hidden by datatables code
 	$html .= '</tr></thead><tbody>';
@@ -1926,11 +1926,11 @@ function print_events_table($startjd, $endjd, $events = 'BIRT MARR DEAT', $only_
 			$html .= '<thead><tr>';
 			$html .= '<th>' . I18N::translate('Record') . '</th>';
 			$html .= '<th>NAME</th>'; //hidden by datatables code
-			$html .= '<th>' . WT_Gedcom_Tag::getLabel('DATE') . '</th>';
+			$html .= '<th>' . GedcomTag::getLabel('DATE') . '</th>';
 			$html .= '<th>DATE</th>'; //hidden by datatables code
 			$html .= '<th><i class="icon-reminder" title="' . I18N::translate('Anniversary') . '"></i></th>';
 			$html .= '<th>ANNIV</th>';
-			$html .= '<th>' . WT_Gedcom_Tag::getLabel('EVEN') . '</th>';
+			$html .= '<th>' . GedcomTag::getLabel('EVEN') . '</th>';
 			$html .= '</tr></thead><tbody>';
 		}
 

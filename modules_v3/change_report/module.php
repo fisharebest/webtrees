@@ -16,37 +16,4 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/**
- * Class change_report_WT_Module
- */
-class change_report_WT_Module extends Module implements ModuleReportInterface {
-	/** {@inheritdoc} */
-	public function getTitle() {
-		// This text also appears in the .XML file - update both together
-		return /* I18N: Name of a module/report */ I18N::translate('Changes');
-	}
-
-	/** {@inheritdoc} */
-	public function getDescription() {
-		// This text also appears in the .XML file - update both together
-		return /* I18N: Description of the “Changes” module */ I18N::translate('A report of recent and pending changes.');
-	}
-
-	/** {@inheritdoc} */
-	public function defaultAccessLevel() {
-		return WT_PRIV_USER;
-	}
-
-	/** {@inheritdoc} */
-	public function getReportMenus() {
-		$menus = array();
-		$menu = new Menu(
-			$this->getTitle(),
-			'reportengine.php?ged=' . WT_GEDURL . '&amp;action=setup&amp;report=' . WT_MODULES_DIR . $this->getName() . '/report.xml',
-			'menu-report-' . $this->getName()
-		);
-		$menus[] = $menu;
-
-		return $menus;
-	}
-}
+return new ChangeReportModule(__DIR__);

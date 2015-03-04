@@ -217,7 +217,7 @@ class BranchesController extends PageController {
 				}
 			}
 			if ($pedi && $pedi != 'birth') {
-				$indi_html = '<span class="red">' . WT_Gedcom_Code_Pedi::getValue($pedi, $individual) . '</span> ' . $indi_html;
+				$indi_html = '<span class="red">' . GedcomCodePedi::getValue($pedi, $individual) . '</span> ' . $indi_html;
 			}
 		}
 
@@ -243,9 +243,9 @@ class BranchesController extends PageController {
 					if ($marriage_year) {
 						$fam_html .= ' <a href="' . $family->getHtmlUrl() . '" title="' . strip_tags($family->getMarriageDate()->display()) . '"><i class="icon-rings"></i>' . $marriage_year . '</a>';
 					} elseif ($family->getFirstFact('MARR')) {
-						$fam_html .= ' <a href="' . $family->getHtmlUrl() . '" title="' . WT_Gedcom_Tag::getLabel('MARR') . '"><i class="icon-rings"></i></a>';
+						$fam_html .= ' <a href="' . $family->getHtmlUrl() . '" title="' . GedcomTag::getLabel('MARR') . '"><i class="icon-rings"></i></a>';
 					} elseif ($family->getFirstFact('_NMR')) {
-						$fam_html .= ' <a href="' . $family->getHtmlUrl() . '" title="' . WT_Gedcom_Tag::getLabel('_NMR') . '"><i class="icon-rings"></i></a>';
+						$fam_html .= ' <a href="' . $family->getHtmlUrl() . '" title="' . GedcomTag::getLabel('_NMR') . '"><i class="icon-rings"></i></a>';
 					}
 					$fam_html .= ' ' . $spouse->getSexImage() . '<a class="' . $sosa_class . '" href="' . $spouse->getHtmlUrl() . '">' . $spouse->getFullName() . '</a> ' . $spouse->getLifeSpan() . ' ' . $sosa_html;
 				}

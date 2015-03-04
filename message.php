@@ -118,7 +118,7 @@ case 'compose':
 	echo Filter::getCsrf();
 	echo '<table>';
 	if ($to !== 'all' && $to !== 'last_6mo' && $to !== 'never_logged') {
-		echo '<tr><td></td><td>', I18N::translate('This message will be sent to %s', '<b>' . Filter::escapeHtml($to_user->getRealName()) . '</b>'), '</td></tr>';
+		echo '<tr><td></td><td>', I18N::translate('This message will be sent to %s', '<b>' . $to_user->getRealNameHtml() . '</b>'), '</td></tr>';
 	}
 	if (!Auth::check()) {
 		echo '<tr><td valign="top" width="15%" align="right">', I18N::translate('Your name:'), '</td>';
@@ -250,7 +250,7 @@ function addMessage($message) {
 
 		if ($sender) {
 			// Message from a logged-in user
-			$copy_email = I18N::translate('You sent the following message to a webtrees user:') . ' ' . $recipient->getRealName() . Mail::EOL . Mail::EOL . $copy_email;
+			$copy_email = I18N::translate('You sent the following message to a webtrees user:') . ' ' . $recipient->getRealNameHtml() . Mail::EOL . Mail::EOL . $copy_email;
 		} else {
 			// Message from a visitor
 			$copy_email = I18N::translate('You sent the following message to a webtrees administrator:') . Mail::EOL . Mail::EOL . Mail::EOL . $copy_email;
@@ -308,7 +308,7 @@ function addMessage($message) {
 	if ($message['method'] !== 'messaging') {
 		if ($sender) {
 			$original_email = I18N::translate('The following message has been sent to your webtrees user account from ');
-			$original_email .= $sender->getRealName();
+			$original_email .= $sender->getRealNameHtml();
 		} else {
 			$original_email = I18N::translate('The following message has been sent to your webtrees user account from ');
 			if (!empty($message['from_name'])) {

@@ -208,7 +208,7 @@ echo '</script>';
 					</tr>
 					<tr>
 						<td class="list_label">
-							<?php echo WT_Gedcom_Tag::getLabel('GIVN'); ?>
+							<?php echo GedcomTag::getLabel('GIVN'); ?>
 						</td>
 						<td class="list_value">
 							<input type="text" name="values[<?php echo $j; ?>]" value="<?php echo $controller->getValue($controller->getIndex('FAMC:HUSB:NAME:GIVN:' . $fatherGivnOption)); ?>">
@@ -223,7 +223,7 @@ echo '</script>';
 					<tr>
 						<?php $j++; ?>
 						<td class="list_label">
-							<?php echo WT_Gedcom_Tag::getLabel('SURN'); ?>
+							<?php echo GedcomTag::getLabel('SURN'); ?>
 						</td>
 						<td class="list_value">
 							<input type="text" name="values[<?php echo $j; ?>]" value="<?php echo $controller->getValue($controller->getIndex('FAMC:HUSB:NAME:SURN:' . $fatherSurnOption)); ?>">
@@ -245,7 +245,7 @@ echo '</script>';
 					</tr>
 					<tr>
 						<td class="list_label">
-							<?php echo WT_Gedcom_Tag::getLabel('GIVN'); ?>
+							<?php echo GedcomTag::getLabel('GIVN'); ?>
 						</td>
 						<td class="list_value">
 							<input type="text" name="values[<?php echo $j; ?>]" value="<?php echo $controller->getValue($controller->getIndex('FAMC:WIFE:NAME:GIVN:' . $motherGivnOption)); ?>">
@@ -260,7 +260,7 @@ echo '</script>';
 					</tr>
 					<tr>
 						<td class="list_label">
-							<?php echo WT_Gedcom_Tag::getLabel('SURN'); ?>
+							<?php echo GedcomTag::getLabel('SURN'); ?>
 						</td>
 						<td class="list_value">
 							<input type="text" name="values[<?php echo $j; ?>]" value="<?php echo $controller->getValue($controller->getIndex('FAMC:WIFE:NAME:SURN:' . $motherSurnOption)); ?>">
