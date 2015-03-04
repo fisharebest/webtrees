@@ -84,7 +84,7 @@ class YahrzeitModule extends Module implements ModuleBlockInterface {
 		foreach ($yahrzeits as $yahrzeit) {
 			if ($yahrzeit->getTag() === 'DEAT') {
 				$today = new JewishDate($yahrzeit->jd);
-				$hd = $yahrzeit->getDate()->MinDate();
+				$hd = $yahrzeit->getDate()->minimumDate();
 				$hd1 = new JewishDate($hd);
 				$hd1->y += 1;
 				$hd1->setJdFromYmd();
