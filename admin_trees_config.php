@@ -1322,6 +1322,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo radio_buttons('PEDIGREE_LAYOUT', $layouts, $WT_TREE->getPreference('PEDIGREE_LAYOUT'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Default pedigree chart layout” tree configuration setting */ I18N::translate('This option indicates whether the pedigree chart should be generated in landscape or portrait mode.'); ?>
 			</p>
 		</div>
 	</fieldset>
