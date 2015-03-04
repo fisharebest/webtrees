@@ -432,7 +432,7 @@ class LifespanController extends PageController {
 				$date = $val->getDate();
 				if (!empty($date)) {
 					$fact    = $val->getTag();
-					$yearsin = $date->date1->y - $birthYear;
+					$yearsin = $date->minimumDate()->y - $birthYear;
 					if ($lifespannumeral == 0) {
 						$lifespannumeral = 1;
 					}

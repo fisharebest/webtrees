@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 global $summary, $censyear, $censdate;
 
 $censdate = new Date('31 MAR 1901');
-$censyear = $censdate->date1->y;
+$censyear = $censdate->minimumDate()->y;
 $ctry     = 'UK';
 
 // === Set $married to "Not married as we only want the Birth name here" ===
