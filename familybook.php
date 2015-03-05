@@ -74,7 +74,7 @@ $controller
 					</select>
 				</td>
 				<td rowspan="2" class="descriptionbox">
-					<?php echo I18N::translate('Show spouses'), help_link('show_spouse'); ?>
+					<?php echo I18N::translate('Show spouses'); ?>
 				</td>
 				<td rowspan="2" class="optionbox">
 					<input type="checkbox" value="1" name="show_spouse" <?php if ($controller->show_spouse) echo " checked"; ?>>
@@ -82,7 +82,7 @@ $controller
 			</tr>
 			<tr>
 				<td class="descriptionbox">
-					<?php echo I18N::translate('Descent steps'), help_link('fambook_descent'); ?>
+					<?php echo I18N::translate('Descent steps'); ?>
 				</td>
 				<td class="optionbox">
 					<input type="text" size="3" name="descent" value="<?php echo $controller->descent; ?>">

@@ -103,7 +103,7 @@ $controller
 				</td>
 				<td class="descriptionbox">
 					<label for="fan_width">
-						<?php echo I18N::translate('Width'), help_link('fan_width'); ?>
+						<?php echo I18N::translate('Width'); ?>
 						</label>
 				</td>
 				<td class="optionbox">

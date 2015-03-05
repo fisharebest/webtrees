@@ -41,7 +41,7 @@ class FanchartController extends ChartController {
 
 		// Extract the request parameters
 		$this->fan_style   = Filter::getInteger('fan_style', 2, 4, 3);
-		$this->fan_width   = Filter::getInteger('fan_width', 50, 300, 100);
+		$this->fan_width   = Filter::getInteger('fan_width', 50, 500, 100);
 		$this->generations = Filter::getInteger('generations', 2, 9, $default_generations);
 
 		if ($this->root && $this->root->canShowName()) {

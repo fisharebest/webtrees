@@ -57,7 +57,7 @@ class SourcesTabModule extends Module implements ModuleTabInterface {
 			<tr>
 				<td colspan="2" class="descriptionbox rela">
 				<input id="checkbox_sour2" type="checkbox" <?php echo $WT_TREE->getPreference('SHOW_LEVEL2_NOTES') ? 'checked' : ''; ?> onclick="jQuery('tr.row_sour2').toggle();">
-				<label for="checkbox_sour2"><?php echo I18N::translate('Show all sources'), help_link('show_fact_sources'); ?></label>
+				<label for="checkbox_sour2"><?php echo I18N::translate('Show all sources'); ?></label>
 				</td>
 			</tr>
 			<?php
@@ -83,7 +83,6 @@ class SourcesTabModule extends Module implements ModuleTabInterface {
 						<a href="#" onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','SOUR'); return false;">
 							<?php echo I18N::translate('Add a new source citation'); ?>
 						</a>
-						<?php echo help_link('add_source'); ?>
 					</td>
 				</tr>
 			<?php

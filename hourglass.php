@@ -65,7 +65,7 @@ $controller
 					<?php echo edit_field_integers('generations', $controller->generations, 2, $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS')); ?>
 				</td>
 				<td class="descriptionbox">
-					<?php echo I18N::translate('Show spouses'), help_link('show_spouse'); ?>
+					<?php echo I18N::translate('Show spouses'); ?>
 				</td>
 				<td class="optionbox">
 					<input type="checkbox" value="1" name="show_spouse" <?php echo $controller->show_spouse ? 'checked' : ''; ?>>

@@ -389,33 +389,6 @@ case '_PRIM':
 	// This section contains all the other help items.
 	//////////////////////////////////////////////////////////////////////////////
 
-case 'add_facts':
-	$title = I18N::translate('Add a fact');
-	$text = I18N::translate('Here you can add a fact to the record being edited.<br><br>First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list.');
-	$text .= '<br><br>';
-	$text .= '<b>' . I18N::translate('Add from clipboard') . '</b>';
-	$text .= '<br><br>';
-	$text .= I18N::translate('webtrees allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the clippings cart that you can use to export portions of your database.<br><br>You can select any of the facts from the clipboard and copy the selected fact to the individual, family, media, source, or repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a marriage fact to a source or an individual record since the marriage fact is associated only with family records.<br><br>This is very helpful when entering similar facts, such as census facts, for many individuals or families.');
-	break;
-
-case 'add_note':
-	// This is a general help text for multiple pages
-	$title = I18N::translate('Add a new note');
-	$text = I18N::translate('If you have a note to add to this record, this is the place to do so.<br><br>Just click the link, a window will open, and you can type your note.  When you are finished typing, just click the button below the box, close the window, and that’s all.');
-	break;
-
-case 'add_shared_note':
-	// This is a general help text for multiple pages
-	$title = I18N::translate('Add a new shared note');
-	$text = I18N::translate('When you click the <b>Add a new shared note</b> link, a new window will open.  You can choose to link to an existing shared note, or you can create a new shared note and at the same time create a link to it.');
-	break;
-
-case 'add_source':
-	// This is a general help text for multiple pages
-	$title = I18N::translate('Add a new source citation');
-	$text = I18N::translate('Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information.');
-	break;
-
 case 'annivers_year_select':
 	$title = I18N::translate('Year input box');
 	$text = I18N::translate('This input box lets you change that year of the calendar.  Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>.  This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned.  Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits.  For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>');
@@ -473,16 +446,6 @@ case 'edit_SOUR_EVEN':
 	break;
 
 
-case 'fambook_descent':
-	$title = I18N::translate('Descendant generations');
-	$text = I18N::translate('This value determines the number of descendant generations of the root individual that will be printed in hourglass format.');
-	break;
-
-case 'fan_width':
-	$title = I18N::translate('Width');
-	$text = I18N::translate('Here you can change the diagram width from 50 percent to 300 percent.  At 100 percent the output image is about 640 pixels wide.');
-	break;
-
 case 'gedcom_news_archive':
 	$title = I18N::translate('View archive');
 	$text = I18N::translate('To reduce the height of the News block, the administrator has hidden some articles.  You can reveal these hidden articles by clicking the <b>View archive</b> link.');
@@ -508,11 +471,6 @@ case 'include_media':
 	$text = I18N::translate('Select this option to include the media files associated with the records in your clippings cart.  Choosing this option will automatically zip the files during download.');
 	break;
 
-case 'no_update_CHAN':
-	$title = I18N::translate('Do not update the “last change” record');
-	$text = I18N::translate('Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, webtrees will retain the original change information instead of replacing it with that of the current session.  With this option selected, administrators also have the ability to modify or delete the information associated with the original CHAN tag.');
-	break;
-
 case 'pending_changes':
 	$title = I18N::translate('Pending changes');
 	$text =
@@ -529,26 +487,6 @@ case 'pending_changes':
 			I18N::translate('Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account.') .
 			'</p>';
 	}
-	break;
-
-case 'ppp_view_records':
-	$title = I18N::translate('View all records');
-	$text = I18N::translate('Clicking on this link will show you a list of all of the individuals and families that have events occurring in this place.  When you get to the end of a place hierarchy, which is normally a town or city, the name list will be shown automatically.');
-	break;
-
-case 'show_fact_sources':
-	$title = I18N::translate('Show all sources');
-	$text = I18N::translate('When this option is checked, you can see all source or note records for this individual.  When this option is unchecked, source or note records that are associated with other facts for this individual will not be shown.');
-	break;
-
-case 'show_spouse':
-	$title = I18N::translate('Show spouses');
-	$text = I18N::translate('By default this chart does not show spouses for the descendants because it makes the chart harder to read and understand.  Turning this option on will show spouses on the chart.');
-	break;
-
-case 'zip':
-	$title = I18N::translate('Zip clippings');
-	$text = I18N::translate('Select this option as to save your clippings in a ZIP file.  For more information about ZIP files, please visit <a href="http://www.winzip.com" target="_blank">http://www.winzip.com</a>.');
 	break;
 
 default:
