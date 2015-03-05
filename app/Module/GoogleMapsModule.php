@@ -765,14 +765,17 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 					<td class="descriptionbox wrap">
 						<?php echo I18N::translate('Individual'); ?>
 					</td>
-					<td class="descriptionbox wrap">
-						<?php echo I18N::translate('Generations'); ?>
-					</td>
-				</tr>
-				<tr>
 					<td class="optionbox">
 						<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
 						<?php echo print_findindi_link('rootid'); ?>
+					</td>
+					<td class="topbottombar" rowspan="2">
+						<input type="submit" value="<?php echo I18N::translate('View'); ?>">
+					</td>
+				</tr>
+				<tr>
+					<td class="descriptionbox wrap">
+						<?php echo I18N::translate('Generations'); ?>
 					</td>
 					<td class="optionbox">
 						<select name="PEDIGREE_GENERATIONS">
@@ -786,11 +789,6 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 							}
 						?>
 						</select>
-					</td>
-				</tr>
-				<tr>
-					<td class="topbottombar" colspan="3">
-						<input type="submit" value="<?php echo I18N::translate('View'); ?>">
 					</td>
 				</tr>
 			</table>

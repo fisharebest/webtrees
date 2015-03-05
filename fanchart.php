@@ -70,46 +70,48 @@ $controller
 	<form name="people" method="get" action="?">
 		<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
 		<table class="list_table">
-			<tr>
-				<td class="descriptionbox">
-					<label for="rootid">
-						<?php echo I18N::translate('Individual'); ?>
-					</label>
-				</td>
-				<td class="optionbox">
-					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
-					<?php echo print_findindi_link('rootid'); ?>
-				</td>
-				<td class="descriptionbox">
-					<label for="fan_style">
-						<?php echo I18N::translate('Layout'); ?>
+			<tbody>
+				<tr>
+					<td class="descriptionbox">
+						<label for="rootid">
+							<?php echo I18N::translate('Individual'); ?>
 						</label>
-				</td>
-				<td class="optionbox">
-					<?php echo select_edit_control('fan_style', $controller->getFanStyles(), null, $controller->fan_style); ?>
-				</td>
-				<td rowspan="2" class="topbottombar vmiddle">
-					<input type="submit" value="<?php echo I18N::translate('View'); ?>">
-				</td>
-			</tr>
-			<tr>
-				<td class="descriptionbox">
-					<label for="generations">
-						<?php echo I18N::translate('Generations'); ?>
-					</label>
-				</td>
-				<td class="optionbox">
-					<?php echo edit_field_integers('generations', $controller->generations, 2, 9); ?>
-				</td>
-				<td class="descriptionbox">
-					<label for="fan_width">
-						<?php echo I18N::translate('Width'); ?>
+					</td>
+					<td class="optionbox">
+						<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
+						<?php echo print_findindi_link('rootid'); ?>
+					</td>
+					<td class="descriptionbox">
+						<label for="fan_style">
+							<?php echo I18N::translate('Layout'); ?>
+							</label>
+					</td>
+					<td class="optionbox">
+						<?php echo select_edit_control('fan_style', $controller->getFanStyles(), null, $controller->fan_style); ?>
+					</td>
+					<td rowspan="2" class="topbottombar vmiddle">
+						<input type="submit" value="<?php echo I18N::translate('View'); ?>">
+					</td>
+				</tr>
+				<tr>
+					<td class="descriptionbox">
+						<label for="generations">
+							<?php echo I18N::translate('Generations'); ?>
 						</label>
-				</td>
-				<td class="optionbox">
-					<input type="text" size="3" id="fan_width" name="fan_width" value="<?php echo $controller->fan_width; ?>"> %
-				</td>
-			</tr>
+					</td>
+					<td class="optionbox">
+						<?php echo edit_field_integers('generations', $controller->generations, 2, 9); ?>
+					</td>
+					<td class="descriptionbox">
+						<label for="fan_width">
+							<?php echo I18N::translate('Zoom'); ?>
+						</label>
+					</td>
+					<td class="optionbox">
+						<input type="text" size="3" id="fan_width" name="fan_width" value="<?php echo $controller->fan_width; ?>"> %
+					</td>
+				</tr>
+			</tbody>
 		</table>
 	</form>
 <?php

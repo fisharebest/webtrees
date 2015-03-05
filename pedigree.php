@@ -45,40 +45,42 @@ $controller
 		<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
 		<input type="hidden" name="show_full" value="<?php echo $controller->showFull(); ?>">
 		<table class="list_table">
-			<tr>
-				<th class="descriptionbox wrap">
-					<?php echo I18N::translate('Individual'); ?>
-				</th>
-				<th class="descriptionbox wrap">
-					<?php echo I18N::translate('Generations'); ?>
-				</th>
-				<th class="descriptionbox wrap">
-					<?php echo I18N::translate('Layout'); ?>
-				</th>
-				<th class="descriptionbox wrap">
-					<?php echo I18N::translate('Show details'); ?>
-				</th>
-				<th rowspan="2" class="facts_label03">
-					<input type="submit" value="<?php echo I18N::translate('View'); ?>">
-				</th>
-			</tr>
-			<tr>
-				<td class="optionbox">
-					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid"
-					       size="3" value="<?php echo $controller->root->getXref(); ?>">
-					<?php echo print_findindi_link('rootid'); ?>
-				</td>
-				<td class="optionbox center">
-					<?php echo edit_field_integers('PEDIGREE_GENERATIONS', $controller->generations, 3, $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS')); ?>
-				</td>
-				<td class="optionbox center">
-					<?php echo select_edit_control('orientation', array(0 => I18N::translate('Portrait'), 1 => I18N::translate('Landscape'), 2 => I18N::translate('Oldest at top'), 3 => I18N::translate('Oldest at bottom')), null, $controller->orientation); ?>
-				</td>
-				<td class="optionbox center">
-					<?php echo two_state_checkbox("show_full", $controller->showFull());?>
-				</td>
-			</tr>
-		</table>
+			<tbody>
+				<tr>
+					<th class="descriptionbox wrap">
+						<?php echo I18N::translate('Individual'); ?>
+					</th>
+					<th class="descriptionbox wrap">
+						<?php echo I18N::translate('Generations'); ?>
+					</th>
+					<th class="descriptionbox wrap">
+						<?php echo I18N::translate('Layout'); ?>
+					</th>
+					<th class="descriptionbox wrap">
+						<?php echo I18N::translate('Show details'); ?>
+					</th>
+					<th rowspan="2" class="facts_label03">
+						<input type="submit" value="<?php echo I18N::translate('View'); ?>">
+					</th>
+				</tr>
+				<tr>
+					<td class="optionbox">
+						<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid"
+							size="3" value="<?php echo $controller->root->getXref(); ?>">
+						<?php echo print_findindi_link('rootid'); ?>
+					</td>
+					<td class="optionbox center">
+						<?php echo edit_field_integers('PEDIGREE_GENERATIONS', $controller->generations, 3, $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS')); ?>
+					</td>
+					<td class="optionbox center">
+						<?php echo select_edit_control('orientation', array(0 => I18N::translate('Portrait'), 1 => I18N::translate('Landscape'), 2 => I18N::translate('Oldest at top'), 3 => I18N::translate('Oldest at bottom')), null, $controller->orientation); ?>
+					</td>
+					<td class="optionbox center">
+						<?php echo two_state_checkbox("show_full", $controller->showFull());?>
+					</td>
+				</tr>
+			</table>
+		</tbody>
 	</form>
 <?php
 if ($controller->error_message) {
