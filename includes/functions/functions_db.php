@@ -966,8 +966,8 @@ function get_calendar_events($jd1, $jd2, $facts = '', $ged_id = WT_GED_ID) {
 				$record = Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
 			}
 			$anniv_date = new Date($row->d_type . ' ' . $row->d_day . ' ' . $row->d_month . ' ' . $row->d_year);
-			foreach ($record->getFacts(str_replace(' ', '|', $facts)) as $fact) {
-				if ($fact->getDate() == $anniv_date) {
+			foreach ($record->getFacts() as $fact) {
+				if (($fact->getDate()->minimumDate() == $anniv_date->minimumDate() || $fact->getDate()->maximumDate() == $anniv_date->minimumDate()) && $fact->getTag() === $row->d_fact) {
 					$fact->anniv = 0;
 					$found_facts[] = $fact;
 				}
