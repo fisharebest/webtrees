@@ -237,19 +237,6 @@ case 'DATE':
 		'</table>';
 	break;
 
-case 'EMAI':
-case 'EMAIL':
-case 'EMAL':
-case '_EMAIL':
-	$title = GedcomTag::getLabel('EMAIL');
-	$text = I18N::translate('Enter the email address.<br><br>An example email address looks like this: <b>name@hotmail.com</b>  Leave this field blank if you do not want to include an email address.');
-	break;
-
-case 'FAX':
-	$title = GedcomTag::getLabel('FAX');
-	$text = I18N::translate('Enter the FAX number including the country and area code.<br><br>Leave this field blank if you do not want to include a FAX number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212.');
-	break;
-
 case 'FORM':
 	$title = GedcomTag::getLabel('FORM');
 	$text = I18N::translate('This is an optional field that can be used to enter the file format of the media object.  Some genealogy programs may look at this field to determine how to handle the item.  However, since media do not transfer across computer systems very well, this field is not very important.');
@@ -284,11 +271,6 @@ case 'SURN':
 		'</p>';
 	break;
 
-case 'NOTE':
-	$title = GedcomTag::getLabel('NOTE');
-	$text = I18N::translate('Notes are free-form text and will appear in the Fact Details section of the page.');
-	break;
-
 case 'OBJE':
 	$title = GedcomTag::getLabel('OBJE');
 	$text =
@@ -305,11 +287,6 @@ case 'PAGE':
 case 'PEDI':
 	$title = GedcomTag::getLabel('PEDI');
 	$text = I18N::translate('A child may have more than one set of parents.  The relationship between the child and the parents can be biological, legal, or based on local culture and tradition.  If no pedigree is specified, then a biological relationship will be assumed.');
-	break;
-
-case 'PHON':
-	$title = GedcomTag::getLabel('PHON');
-	$text = I18N::translate('Enter the phone number including the country and area code.<br><br>Leave this field blank if you do not want to include a phone number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212.');
 	break;
 
 case 'PLAC':
@@ -333,11 +310,6 @@ case 'RESN':
 case 'ROMN':
 	$title = GedcomTag::getLabel('ROMN');
 	$text = I18N::translate('In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur.');
-	break;
-
-case 'SEX':
-	$title = GedcomTag::getLabel('SEX');
-	$text = I18N::translate('Choose the appropriate gender from the drop-down list.  The <b>unknown</b> option indicates that the gender is unknown.');
 	break;
 
 case 'SHARED_NOTE':
