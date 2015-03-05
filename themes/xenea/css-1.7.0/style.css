@@ -1428,6 +1428,7 @@ a.showit:hover > span {
 .media-list,
 .indi-list,
 .fam-list {
+	margin: 5px auto;
 	visibility: hidden;
 }
 
@@ -1740,6 +1741,7 @@ a.showit:hover > span {
 	border-collapse:separate;
 	border-spacing:2px;
 	vertical-align: middle;
+	margin-bottom: 5px;
 }
 
 [dir=rtl] .stat-table1 {
@@ -1752,6 +1754,7 @@ float: right;
 	width:60%;
 	border-collapse:separate;
 	border-spacing:2px;
+	margin-bottom: 5px;
 }
 
 [dir=rtl] .stat-table2 {
