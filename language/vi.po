@@ -10181,8 +10181,8 @@ msgid "Optional prefixes and suffixes"
 msgstr "Các tiến và hậu tố tùy chọn"
 
 #: relationship.php:91
-msgid "Options:"
-msgstr "Món lựa chọn được:"
+msgid "Options"
+msgstr "Món lựa chọn được"
 
 #: library/WT/Date/Jalali.php:151
 msgctxt "Abbreviation for Persian month: Ordibehesht"

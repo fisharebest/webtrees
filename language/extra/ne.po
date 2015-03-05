@@ -10203,8 +10203,8 @@ msgid "Optional prefixes and suffixes"
 msgstr "वैकल्पिक उपसर्ग र पत्य्य"
 
 #: relationship.php:91
-msgid "Options:"
-msgstr "विकल्प:"
+msgid "Options"
+msgstr "विकल्प"
 
 #: library/WT/Date/Jalali.php:151
 msgctxt "Abbreviation for Persian month: Ordibehesht"

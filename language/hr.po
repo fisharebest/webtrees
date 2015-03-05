@@ -10235,8 +10235,8 @@ msgid "Optional prefixes and suffixes"
 msgstr "Opcionalni prefiksi i sufiksi"
 
 #: relationship.php:91
-msgid "Options:"
-msgstr "Opcije:"
+msgid "Options"
+msgstr "Opcije"
 
 #: library/WT/Date/Jalali.php:151
 msgctxt "Abbreviation for Persian month: Ordibehesht"

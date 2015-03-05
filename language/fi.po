@@ -10203,8 +10203,8 @@ msgid "Optional prefixes and suffixes"
 msgstr "Valinnaiset etuliitteet ja päätteet"
 
 #: relationship.php:91
-msgid "Options:"
-msgstr "Asetukset:"
+msgid "Options"
+msgstr "Asetukset"
 
 #: library/WT/Date/Jalali.php:151
 msgctxt "Abbreviation for Persian month: Ordibehesht"

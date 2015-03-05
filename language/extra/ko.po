@@ -10177,7 +10177,7 @@ msgid "Optional prefixes and suffixes"
 msgstr ""
 
 #: relationship.php:91
-msgid "Options:"
+msgid "Options"
 msgstr ""
 
 #: library/WT/Date/Jalali.php:151

@@ -10229,8 +10229,8 @@ msgid "Optional prefixes and suffixes"
 msgstr "Prefixe și sufixe opționale"
 
 #: relationship.php:91
-msgid "Options:"
-msgstr "Opţiuni:"
+msgid "Options"
+msgstr "Opţiuni"
 
 #: library/WT/Date/Jalali.php:151
 msgctxt "Abbreviation for Persian month: Ordibehesht"
