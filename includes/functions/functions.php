@@ -754,7 +754,7 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 			$dob1 = $person1->getBirthDate();
 			$dob2 = $person2->getBirthDate();
 			if ($dob1->isOK() && $dob2->isOK()) {
-				if (abs($dob1->julianDay() - $dob2->julianDay()) < 2 && !$dob1->qual1 && !$dob2->qual1) {
+				if (abs($dob1->julianDay() - $dob2->julianDay()) < 2 && !$dob1->minimumDate()->d !== 0 && !$dob2->minimumDate()->d !== 0) {
 					// Exclude BEF, AFT, etc.
 					return I18N::translate('twin brother');
 				} elseif ($dob1->maximumJulianDay() < $dob2->minimumJulianDay()) {
@@ -771,7 +771,7 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 			$dob1 = $person1->getBirthDate();
 			$dob2 = $person2->getBirthDate();
 			if ($dob1->isOK() && $dob2->isOK()) {
-				if (abs($dob1->julianDay() - $dob2->julianDay()) < 2 && !$dob1->qual1 && !$dob2->qual1) {
+				if (abs($dob1->julianDay() - $dob2->julianDay()) < 2 && !$dob1->minimumDate()->d !== 0 && !$dob2->minimumDate()->d !== 0) {
 					// Exclude BEF, AFT, etc.
 					return I18N::translate('twin sister');
 				} elseif ($dob1->maximumJulianDay() < $dob2->minimumJulianDay()) {
