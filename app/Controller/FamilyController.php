@@ -180,14 +180,12 @@ class FamilyController extends GedcomRecordController {
 			echo I18N::translate('Note');
 			echo '</td><td class="optionbox">';
 			echo "<a href=\"#\" onclick=\"return add_new_record('" . $this->record->getXref() . "','NOTE');\">", I18N::translate('Add a new note'), '</a>';
-			echo help_link('add_note');
 			echo '</td></tr>';
 
 			echo '<tr><td class="descriptionbox">';
 			echo I18N::translate('Shared note');
 			echo '</td><td class="optionbox">';
 			echo "<a href=\"#\" onclick=\"return add_new_record('" . $this->record->getXref() . "','SHARED_NOTE');\">", I18N::translate('Add a new shared note'), '</a>';
-			echo help_link('add_shared_note');
 			echo '</td></tr>';
 
 			if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
@@ -205,7 +203,6 @@ class FamilyController extends GedcomRecordController {
 			echo I18N::translate('Source');
 			echo '</td><td class="optionbox">';
 			echo "<a href=\"#\" onclick=\"return add_new_record('" . $this->record->getXref() . "','SOUR');\">", I18N::translate('Add a new source citation'), '</a>';
-			echo help_link('add_source');
 			echo '</td></tr>';
 		}
 	}

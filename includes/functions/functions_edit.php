@@ -515,8 +515,6 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 		case 'NOTE':
 			if ($islink) {
 				echo help_link('edit_add_SHARED_NOTE');
-			} else {
-				echo help_link($fact);
 			}
 			break;
 		case 'NAME':
@@ -536,20 +534,13 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 		case 'AGNC':
 		case 'CAUS':
 		case 'DATE':
-		case 'EMAI':
-		case 'EMAIL':
-		case 'EMAL':
-		case '_EMAIL':
-		case 'FAX':
 		case 'OBJE':
 		case 'PAGE':
 		case 'PEDI':
-		case 'PHON':
 		case 'PLAC':
 		case 'RELA':
 		case 'RESN':
 		case 'ROMN':
-		case 'SEX':
 		case 'SOUR':
 		case 'STAT':
 		case 'SURN':

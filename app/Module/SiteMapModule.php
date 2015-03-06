@@ -234,7 +234,7 @@ class SiteMapModule extends Module implements ModuleConfigInterface {
 					if ($chan) {
 						$date = $chan->getDate();
 						if ($date->isOK()) {
-							$data .= '<lastmod>' . $date->minDate()->Format('%Y-%m-%d') . '</lastmod>';
+							$data .= '<lastmod>' . $date->minimumDate()->Format('%Y-%m-%d') . '</lastmod>';
 						}
 					}
 					$data .= '</url>' . PHP_EOL;

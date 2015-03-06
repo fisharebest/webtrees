@@ -86,8 +86,8 @@ namespace Fisharebest\Webtrees;
 						foreach ($family->getChildren() as $child) {
 							$chnam   = $child->getAllNames();
 							$chfulln = strip_tags($chnam[0]['full']); // Child’s Full Name
-							$chdob   = $child->getBirthDate()->JD(); // Child’s Date of Birth (Julian)
-							$chdod   = $child->getDeathDate()->JD(); // Child’s Date of Death (Julian)
+							$chdob   = $child->getBirthDate()->julianDay(); // Child’s Date of Birth (Julian)
+							$chdod   = $child->getDeathDate()->julianDay(); // Child’s Date of Death (Julian)
 							$chBLD   = $chfulln . ', ' . $chdob . ', ' . $chdod;
 							array_push($chBLDarray, $chBLD);
 						}
@@ -140,10 +140,10 @@ namespace Fisharebest\Webtrees;
 										"<?php echo $person === $gparent ? 'head': Filter::escapeHtml($label); ?>",
 										"<?php echo $gparent->getSex(); ?>",
 										"<?php echo $married >= 0 ? 'M' : 'S'; ?>",
-										"<?php echo $marrdate->JD(); ?>",
-										"<?php echo $gparent->getBirthDate()->JD(); ?>",
+										"<?php echo $marrdate->julianDay(); ?>",
+										"<?php echo $gparent->getBirthDate()->julianDay(); ?>",
 										"<?php echo $censyear - $gparent->getbirthyear(); ?>",
-										"<?php echo $gparent->getDeathDate()->JD(); ?>",
+										"<?php echo $gparent->getDeathDate()->julianDay(); ?>",
 										"",
 										"<?php echo Filter::escapeHtml($gparent->getBirthPlace()); ?>",
 										"<?php if (isset($HusbFBP)) {
@@ -218,10 +218,10 @@ namespace Fisharebest\Webtrees;
 										"<?php echo $person === $gparent ? 'head': Filter::escapeHtml($label); ?>",
 										"<?php echo $gparent->getSex(); ?>",
 										"<?php echo $married >= 0 && isset($nam[1]) ? 'M' : 'S'; ?>",
-										"<?php echo $marrdate->JD(); ?>",
-										"<?php echo $gparent->getBirthDate()->JD(); ?>",
+										"<?php echo $marrdate->julianDay(); ?>",
+										"<?php echo $gparent->getBirthDate()->julianDay(); ?>",
 										"<?php echo $censyear - $gparent->getbirthyear(); ?>",
-										"<?php echo $gparent->getDeathDate()->JD(); ?>",
+										"<?php echo $gparent->getDeathDate()->julianDay(); ?>",
 										"",
 										"<?php echo Filter::escapeHtml($gparent->getBirthPlace()); ?>",
 										"<?php if (isset($WifeFBP)) {
@@ -256,8 +256,8 @@ namespace Fisharebest\Webtrees;
 								foreach ($chchildren as $chchild) {
 									$chnam   = $chchild->getAllNames();
 									$chfulln = strip_tags($chnam[0]['full']); // Child’s Full Name
-									$chdob   = $chchild->getBirthDate()->JD(); // Child’s Date of Birth (Julian)
-									$chdod   = $chchild->getDeathDate()->JD(); // Child’s Date of Death (Julian)
+									$chdob   = $chchild->getBirthDate()->julianDay(); // Child’s Date of Birth (Julian)
+									$chdod   = $chchild->getDeathDate()->julianDay(); // Child’s Date of Death (Julian)
 									$chBLD   = $chfulln . ', ' . $chdob . ', ' . $chdod;
 									array_push($chBLDarray, $chBLD);
 								}
@@ -304,10 +304,10 @@ namespace Fisharebest\Webtrees;
 										"<?php echo $person === $child ? 'head' : Filter::escapeHtml($label); ?>",
 										"<?php echo $child->getSex(); ?>",
 										"<?php echo $married >= 0 ? 'M' : 'S'; ?>",
-										"<?php echo $marrdate ? $marrdate->JD() : ''; ?>",
-										"<?php echo $child->getBirthDate()->JD(); ?>",
+										"<?php echo $marrdate ? $marrdate->julianDay() : ''; ?>",
+										"<?php echo $child->getBirthDate()->julianDay(); ?>",
 										"<?php echo $censyear - $child->getbirthyear(); ?>",
-										"<?php echo $child->getDeathDate()->JD(); ?>",
+										"<?php echo $child->getDeathDate()->julianDay(); ?>",
 										"",
 										"<?php echo Filter::escapeHtml($child->getBirthPlace()); ?>",
 										"<?php if ($family->getHusband()) {
@@ -342,8 +342,8 @@ namespace Fisharebest\Webtrees;
 						foreach ($family->getChildren() as $child) {
 							$chnam   = $child->getAllNames();
 							$chfulln = strip_tags($chnam[0]['full']); // Child’s Full Name
-							$chdob   = $child->getBirthDate()->JD(); // Child’s Date of Birth (Julian)
-							$chdod   = $child->getDeathDate()->JD(); // Child’s Date of Death (Julian)
+							$chdob   = $child->getBirthDate()->julianDay(); // Child’s Date of Birth (Julian)
+							$chdod   = $child->getDeathDate()->julianDay(); // Child’s Date of Death (Julian)
 							$chBLD   = $chfulln . ', ' . $chdob . ', ' . $chdod;
 							array_push($chBLDarray, $chBLD);
 						}
@@ -409,10 +409,10 @@ namespace Fisharebest\Webtrees;
 										"<?php echo $person === $gparent ? 'head': Filter::escapeHtml($label); ?>",
 										"<?php echo $gparent->getSex(); ?>",
 										"<?php echo $married >= 0 ? 'M': 'S'; ?>",
-										"<?php echo $marrdate ? $marrdate->JD() : ''; ?>",
-										"<?php echo $gparent->getBirthDate()->JD(); ?>",
+										"<?php echo $marrdate ? $marrdate->julianDay() : ''; ?>",
+										"<?php echo $gparent->getBirthDate()->julianDay(); ?>",
 										"<?php echo $censyear - $gparent->getbirthyear(); ?>",
-										"<?php echo $gparent->getDeathDate()->JD();?>",
+										"<?php echo $gparent->getDeathDate()->julianDay();?>",
 										"",
 										"<?php echo Filter::escapeHtml($gparent->getBirthPlace()); ?>",
 										"<?php if (isset($HusbFBP)) {
@@ -488,10 +488,10 @@ namespace Fisharebest\Webtrees;
 										"<?php echo $person === $gparent ? 'head': Filter::escapeHtml($label); ?>",
 										"<?php echo $gparent->getSex(); ?>",
 										"<?php echo $married >= 0 && isset($nam[1]) ? 'M': 'S'; ?>",
-										"<?php echo $marrdate ? $marrdate->JD() : ''; ?>",
-										"<?php echo $gparent->getBirthDate()->JD(); ?>",
+										"<?php echo $marrdate ? $marrdate->julianDay() : ''; ?>",
+										"<?php echo $gparent->getBirthDate()->julianDay(); ?>",
 										"<?php echo $censyear - $gparent->getbirthyear(); ?>",
-										"<?php echo $gparent->getDeathDate()->JD(); ?>",
+										"<?php echo $gparent->getDeathDate()->julianDay(); ?>",
 										"",
 										"<?php echo Filter::escapeHtml($gparent->getBirthPlace());  ?>",
 										"<?php if (isset($WifeFBP)) {
@@ -526,8 +526,8 @@ namespace Fisharebest\Webtrees;
 								foreach ($chchildren as $chchild) {
 									$chnam   = $chchild->getAllNames();
 									$chfulln = strip_tags($chnam[0]['full']); // Child’s Full Name
-									$chdob   = $chchild->getBirthDate()->JD(); // Child’s Date of Birth (Julian)
-									$chdod   = $chchild->getDeathDate()->JD(); // Child’s Date of Death (Julian)
+									$chdob   = $chchild->getBirthDate()->julianDay(); // Child’s Date of Birth (Julian)
+									$chdod   = $chchild->getDeathDate()->julianDay(); // Child’s Date of Death (Julian)
 									$chBLD   = $chfulln . ', ' . $chdob . ', ' . $chdod;
 									array_push($chBLDarray, $chBLD);
 								}
@@ -576,10 +576,10 @@ namespace Fisharebest\Webtrees;
 										"<?php echo $person === $child ? 'head' : Filter::escapeHtml($label); ?>",
 										"<?php echo $child->getSex(); ?>",
 										"",
-										"<?php echo $marrdate ? $marrdate->JD() : ''; ?>",
-										"<?php echo $child->getBirthDate()->JD(); ?>",
+										"<?php echo $marrdate ? $marrdate->julianDay() : ''; ?>",
+										"<?php echo $child->getBirthDate()->julianDay(); ?>",
 										"<?php echo $censyear - $child->getbirthyear(); ?>",
-										"<?php echo $child->getDeathDate()->JD(); ?>",
+										"<?php echo $child->getDeathDate()->julianDay(); ?>",
 										"",
 										"<?php echo Filter::escapeHtml($child->getBirthPlace()); ?>",
 										"<?php if ($family->getHusband()) {
@@ -618,8 +618,8 @@ namespace Fisharebest\Webtrees;
 						foreach ($family->getChildren() as $child) {
 							$chnam   = $child->getAllNames();
 							$chfulln = strip_tags($chnam[0]['full']); // Child’s Full Name
-							$chdob   = $child->getBirthDate()->JD(); // Child’s Date of Birth (Julian)
-							$chdod   = $child->getDeathDate()->JD(); // Child’s Date of Death (Julian)
+							$chdob   = $child->getBirthDate()->julianDay(); // Child’s Date of Birth (Julian)
+							$chdod   = $child->getDeathDate()->julianDay(); // Child’s Date of Death (Julian)
 							$chBLD   = $chfulln . ', ' . $chdob . ', ' . $chdod;
 							array_push($chBLDarray, $chBLD);
 						}
@@ -685,10 +685,10 @@ namespace Fisharebest\Webtrees;
 										"<?php echo $person === $gparent ? 'head' : Filter::escapeHtml($label); ?>",
 										"<?php echo $gparent->getSex(); ?>",
 										"<?php echo $married >= 0 ? 'M' : 'S'; ?>",
-										"<?php echo $marrdate ? $marrdate->JD() : ''; ?>",
-										"<?php echo $gparent->getBirthDate()->JD(); ?>",
+										"<?php echo $marrdate ? $marrdate->julianDay() : ''; ?>",
+										"<?php echo $gparent->getBirthDate()->julianDay(); ?>",
 										"<?php echo $censyear - $gparent->getbirthyear(); ?>",
-										"<?php echo $gparent->getDeathDate()->JD(); ?>",
+										"<?php echo $gparent->getDeathDate()->julianDay(); ?>",
 										"",
 										"<?php echo Filter::escapeHtml($gparent->getBirthPlace());  ?>",
 										"<?php if (isset($HusbFBP)) {
@@ -775,10 +775,10 @@ namespace Fisharebest\Webtrees;
 										"<?php echo $person === $gparent ? 'head' : Filter::escapeHtml($label); ?>",
 										"<?php echo $gparent->getSex(); ?>",
 										"<?php echo $married >= 0 ? 'M' : 'S'; ?>",
-										"<?php echo $marrdate ? $marrdate->JD() : ''; ?>",
-										"<?php echo $gparent->getBirthDate()->JD(); ?>",
+										"<?php echo $marrdate ? $marrdate->julianDay() : ''; ?>",
+										"<?php echo $gparent->getBirthDate()->julianDay(); ?>",
 										"<?php echo $censyear - $gparent->getbirthyear(); ?>",
-										"<?php echo $gparent->getDeathDate()->JD(); ?>",
+										"<?php echo $gparent->getDeathDate()->julianDay(); ?>",
 										"",
 										"<?php echo Filter::escapeHtml($gparent->getBirthPlace()); ?>",
 										"<?php if (isset($WifeFBP)) {
@@ -820,8 +820,8 @@ namespace Fisharebest\Webtrees;
 								foreach ($chchildren as $chchild) {
 									$chnam   = $chchild->getAllNames();
 									$chfulln = strip_tags($chnam[0]['full']); // Child’s Full Name// Child’s Full Name
-									$chdob   = $chchild->getBirthDate()->JD(); // Child’s Date of Birth (Julian)
-									$chdod   = $chchild->getDeathDate()->JD(); // Child’s Date of Death (Julian)
+									$chdob   = $chchild->getBirthDate()->julianDay(); // Child’s Date of Birth (Julian)
+									$chdod   = $chchild->getDeathDate()->julianDay(); // Child’s Date of Death (Julian)
 									$chBLD   = $chfulln . ', ' . $chdob . ', ' . $chdod;
 									array_push($chBLDarray, $chBLD);
 								}
@@ -864,10 +864,10 @@ namespace Fisharebest\Webtrees;
 										"<?php echo $person === $child ? 'head' : Filter::escapeHtml($label); ?>",
 										"<?php echo $child->getSex(); ?>",
 										"<?php echo $married >= 0 ? 'M' : 'S'; ?>",
-										"<?php echo $marrdate ? $marrdate->JD() : ''; ?>",
-										"<?php echo $child->getBirthDate()->JD(); ?>",
+										"<?php echo $marrdate ? $marrdate->julianDay() : ''; ?>",
+										"<?php echo $child->getBirthDate()->julianDay(); ?>",
 										"<?php echo $censyear - $child->getbirthyear(); ?>",
-										"<?php echo $child->getDeathDate()->JD(); ?>",
+										"<?php echo $child->getDeathDate()->julianDay(); ?>",
 										"",
 										"<?php echo Filter::escapeHtml($child->getBirthPlace()); ?>",
 										"<?php if ($family->getHusband()) {

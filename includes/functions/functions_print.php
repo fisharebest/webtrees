@@ -94,13 +94,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 		if ($note) {
 			$first_line = '<a href="' . $note->getHtmlUrl() . '">' . $note->getFullName() . '</a>';
 		} else {
-			switch ($WT_TREE->getPreference('FORMAT_TEXT')) {
-			case 'markdown':
-				$text = Filter::markdown($text);
-				$text = html_entity_decode(strip_tags($text, '<a><strong><em>'), ENT_QUOTES, 'UTF-8');
-				break;
-			}
-			list($text) = explode("\n", $text);
+			list($text) = explode("\n", strip_tags($html));
 			$first_line = strlen($text) > 100 ? mb_substr($text, 0, 100) . I18N::translate('…') : $text;
 		}
 		return
@@ -661,7 +655,7 @@ function print_add_new_fact($id, $usedfacts, $type) {
 	});
 	echo '<tr><td class="descriptionbox">';
 	echo I18N::translate('Fact or event');
-	echo help_link('add_facts'), '</td>';
+	echo '</td>';
 	echo '<td class="optionbox wrap">';
 	echo '<form method="get" name="newfactform" action="?" onsubmit="return false;">';
 	echo '<select id="newfact" name="newfact">';

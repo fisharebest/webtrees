@@ -56,46 +56,48 @@ if ($person1 && $person2) {
 <form name="people" method="get" action="?">
 	<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
 	<table class="list_table">
-		<tr>
-			<td class="descriptionbox">
-				<?php echo I18N::translate('Individual 1'); ?>
-			</td>
-			<td class="optionbox">
-				<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid1" id="pid1" size="3" value="<?php echo $pid1; ?>">
-				<?php echo print_findindi_link('pid1'); ?>
-			</td>
-			<td class="optionbox">
-				<label>
-					<?php echo two_state_checkbox('show_full', $show_full); ?>
-					<?php echo I18N::translate('Show details'); ?>
-				</label>
-			</td>
-			<td class="optionbox vmiddle" rowspan="2">
-				<input type="submit" value="<?php echo I18N::translate('View'); ?>">
-			</td>
-		</tr>
-		<tr>
-			<td class="descriptionbox">
-				<?php echo I18N::translate('Individual 2'); ?>
-			</td>
-			<td class="optionbox">
-				<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid2" id="pid2" size="3" value="<?php echo $pid2; ?>">
-				<?php echo print_findindi_link('pid2'); ?>
-				<br>
-				<a href="#" onclick="var x = jQuery('#pid1').val(); jQuery('#pid1').val(jQuery('#pid2').val()); jQuery('#pid2').val(x); return false;"><?php /* I18N: Reverse the order of two individuals */ echo I18N::translate('Swap individuals'); ?></a>
-			</td>
-			<td class="optionbox">
-				<label>
-					<input type="radio" name="find_all" value="0" <?php echo $find_all ? '' : 'checked'; ?>>
-					<?php echo I18N::translate('Find the closest relationships'); ?>
-				</label>
-				<br>
-				<label>
-					<input type="radio" name="find_all" value="1"<?php echo $find_all ? 'checked' : ''; ?>>
-					<?php echo I18N::translate('Find all possible relationships'); ?>
-				</label>
-			</td>
-		</tr>
+		<tbody>
+			<tr>
+				<td class="descriptionbox">
+					<?php echo I18N::translate('Individual 1'); ?>
+				</td>
+				<td class="optionbox">
+					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid1" id="pid1" size="3" value="<?php echo $pid1; ?>">
+					<?php echo print_findindi_link('pid1'); ?>
+				</td>
+				<td class="optionbox">
+					<label>
+						<?php echo two_state_checkbox('show_full', $show_full); ?>
+						<?php echo I18N::translate('Show details'); ?>
+					</label>
+				</td>
+				<td class="optionbox vmiddle" rowspan="2">
+					<input type="submit" value="<?php echo I18N::translate('View'); ?>">
+				</td>
+			</tr>
+			<tr>
+				<td class="descriptionbox">
+					<?php echo I18N::translate('Individual 2'); ?>
+				</td>
+				<td class="optionbox">
+					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="pid2" id="pid2" size="3" value="<?php echo $pid2; ?>">
+					<?php echo print_findindi_link('pid2'); ?>
+					<br>
+					<a href="#" onclick="var x = jQuery('#pid1').val(); jQuery('#pid1').val(jQuery('#pid2').val()); jQuery('#pid2').val(x); return false;"><?php /* I18N: Reverse the order of two individuals */ echo I18N::translate('Swap individuals'); ?></a>
+				</td>
+				<td class="optionbox">
+					<label>
+						<input type="radio" name="find_all" value="0" <?php echo $find_all ? '' : 'checked'; ?>>
+						<?php echo I18N::translate('Find the closest relationships'); ?>
+					</label>
+					<br>
+					<label>
+						<input type="radio" name="find_all" value="1"<?php echo $find_all ? 'checked' : ''; ?>>
+						<?php echo I18N::translate('Find all possible relationships'); ?>
+					</label>
+				</td>
+			</tr>
+		</tbody>
 	</table>
 </form>
 <?php

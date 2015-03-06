@@ -479,7 +479,7 @@ class SearchController extends PageController {
 	}
 
 	/**
-	 * @return bool
+	 * Display the search results
 	 */
 	function printResults() {
 		if ($this->action !== 'replace' && ($this->query || $this->firstname || $this->lastname || $this->place)) {
@@ -490,103 +490,31 @@ class SearchController extends PageController {
 				echo '<br>';
 				echo '<div class="loading-image"></div>';
 				echo '<div id="search-result-tabs"><ul>';
-				if ($this->myindilist) {
-					echo '<li><a href="#searchAccordion-indi"><span id="indisource">', I18N::translate('Individuals'), '</span></a></li>';
+				if (!empty($this->myindilist)) {
+					echo '<li><a href="#individual-results-tab">', I18N::translate('Individuals'), '</a></li>';
 				}
-				if ($this->myfamlist) {
-					echo '<li><a href="#searchAccordion-fam"><span id="famsource">', I18N::translate('Families'), '</span></a></li>';
+				if (!empty($this->myfamlist)) {
+					echo '<li><a href="#families-results-tab">', I18N::translate('Families'), '</a></li>';
 				}
-				if ($this->mysourcelist) {
-					echo '<li><a href="#searchAccordion-source"><span id="mediasource">', I18N::translate('Sources'), '</span></a></li>';
+				if (!empty($this->mysourcelist)) {
+					echo '<li><a href="#sources-results-tab">', I18N::translate('Sources'), '</a></li>';
 				}
-				if ($this->mynotelist) {
-					echo '<li><a href="#searchAccordion-note"><span id="notesource">', I18N::translate('Notes'), '</span></a></li>';
+				if (!empty($this->mynotelist)) {
+					echo '<li><a href="#notes-results-tab">', I18N::translate('Notes'), '</a></li>';
 				}
 				echo '</ul>';
-
-				// individual results
-				echo '<div id="searchAccordion-indi">';
-				// Split individuals by tree
-				foreach ($this->search_trees as $search_tree) {
-					$datalist = array();
-					foreach ($this->myindilist as $individual) {
-						if ($individual->getTree()->getTreeId() === $search_tree->getTreeId()) {
-							$datalist[] = $individual;
-						}
-					}
-					if ($datalist) {
-						usort($datalist, __NAMESPACE__ . '\GedcomRecord::compare');
-						echo '<h3 class="indi-acc-header"><a href="#"><span class="search_item" dir="auto">', Filter::escapeHtml($this->query), '</span> @ <span>', $search_tree->getTitleHtml(), '</span></a></h3>
-							<div class="indi-acc_content">',
-						format_indi_table($datalist);
-						echo '</div>'; //indi-acc_content
-					}
+				if (!empty($this->myindilist)) {
+					echo '<div id="individual-results-tab">', format_indi_table($this->myindilist), '</div>';
 				}
-				echo '</div>';
-				$this->addInlineJavascript('jQuery("#searchAccordion-indi").accordion({heightStyle: "content", collapsible: true});');
-
-				// family results
-				echo '<div id="searchAccordion-fam">';
-				// Split families by gedcom
-				foreach ($this->search_trees as $search_tree) {
-					$datalist = array();
-					foreach ($this->myfamlist as $family) {
-						if ($family->getTree()->getTreeId() === $search_tree->getTreeId()) {
-							$datalist[] = $family;
-						}
-					}
-					if ($datalist) {
-						usort($datalist, __NAMESPACE__ . '\GedcomRecord::compare');
-						echo '<h3 class="fam-acc-header"><a href="#"><span class="search_item" dir="auto">', Filter::escapeHtml($this->query), '</span> @ <span>', $search_tree->getTitleHtml(), '</span></a></h3>
-							<div class="fam-acc_content">',
-						format_fam_table($datalist);
-						echo '</div>'; //fam-acc_content
-					}
+				if (!empty($this->myfamlist)) {
+					echo '<div id="families-results-tab">', format_fam_table($this->myfamlist), '</div>';
 				}
-				echo '</div>'; //#searchAccordion-fam
-				$this->addInlineJavascript('jQuery("#searchAccordion-fam").accordion({heightStyle: "content", collapsible: true});');
-				// source results
-				echo '<div id="searchAccordion-source">';
-				// Split sources by gedcom
-				foreach ($this->search_trees as $search_tree) {
-					$datalist = array();
-					foreach ($this->mysourcelist as $source) {
-						if ($source->getTree()->getTreeId() === $search_tree->getTreeId()) {
-							$datalist[] = $source;
-						}
-					}
-					if ($datalist) {
-						usort($datalist, __NAMESPACE__ . '\GedcomRecord::compare');
-						echo '<h3 class="source-acc-header"><a href="#"><span class="search_item" dir="auto">', Filter::escapeHtml($this->query), '</span> @ <span>', $search_tree->getTitleHtml(), '</span></a></h3>
-							<div class="source-acc_content">',
-						format_sour_table($datalist);
-						echo '</div>'; //fam-acc_content
-					}
+				if (!empty($this->mysourcelist)) {
+					echo '<div id="sources-results-tab">', format_sour_table($this->mysourcelist), '</div>';
 				}
-				echo '</div>'; //#searchAccordion-source
-				$this->addInlineJavascript('jQuery("#searchAccordion-source").accordion({heightStyle: "content", collapsible: true});');
-				// note results
-				echo '<div id="searchAccordion-note">';
-				// Split notes by gedcom
-				foreach ($this->search_trees as $search_tree) {
-					$datalist = array();
-					foreach ($this->mynotelist as $note) {
-						if ($note->getTree()->getTreeId() === $search_tree->getTreeId()) {
-							$datalist[] = $note;
-						}
-					}
-					if ($datalist) {
-						usort($datalist, __NAMESPACE__ . '\GedcomRecord::compare');
-						usort($datalist, 'Webtrees\GedcomRecord::compare');
-						echo '<h3 class="note-acc-header"><a href="#"><span class="search_item" dir="auto">', Filter::escapeHtml($this->query), '</span> @ <span>', $search_tree->getTitleHtml(), '</span></a></h3>
-							<div class="note-acc_content">',
-						format_note_table($datalist);
-						echo '</div>'; //note-acc_content
-					}
+				if (!empty($this->mynotelist)) {
+					echo '<div id="notes-results-tab">', format_note_table($this->mynotelist), '</div>';
 				}
-				echo '</div>'; //#searchAccordion-note
-				$this->addInlineJavascript('jQuery("#searchAccordion-note").accordion({heightStyle: "content", collapsible: true});');
-				echo '</div>'; //#search-result-tabs
 			} else {
 				// One or more search terms were specified, but no results were found.
 				echo '<div class="warning center">' . I18N::translate('No results found.') . '</div>';

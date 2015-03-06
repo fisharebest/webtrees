@@ -37,50 +37,52 @@ $controller
 	<form method="get" name="people" action="?">
 		<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
 		<table class="list_table">
-			<tr>
-				<td class="descriptionbox">
-					<?php	echo I18N::translate('Individual'); ?>
-				</td>
-				<td class="optionbox">
-					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
-					<?php echo print_findindi_link('rootid'); ?>
-				</td>
-				<td rowspan="3" class="descriptionbox">
-					<?php echo I18N::translate('Layout'); ?>
-				</td>
-				<td rowspan="3" class="optionbox">
-					<input type="radio" name="chart_style" value="0" <?php echo $controller->chart_style == 0 ? 'checked' : ''; ?>>
-					<?php echo  I18N::translate('List'); ?>
-					<br>
-					<input type="radio" name="chart_style" value="1" <?php echo $controller->chart_style == 1 ? 'checked' : ''; ?>>
-					<?php echo I18N::translate('Booklet'); ?>
-					<br>
-					<input type="radio" name="chart_style" value="2" <?php echo $controller->chart_style == 2 ? 'checked' : ''; ?>>
-					<?php echo I18N::translate('Individuals'); ?>
-					<br>
-					<input type="radio" name="chart_style" value="3" <?php echo $controller->chart_style == 3 ? 'checked' : ''; ?>>
-					<?php echo I18N::translate('Families'); ?>
-				</td>
-				<td rowspan="3" class="topbottombar">
-					<input type="submit" value="<?php echo I18N::translate('View'); ?>">
-				</td>
-			</tr>
-			<tr>
-				<td class="descriptionbox">
-					<?php echo I18N::translate('Generations'); ?>
-				</td>
-				<td class="optionbox">
-					<?php echo edit_field_integers('generations', $controller->generations, 2, $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS')); ?>
-				</td>
-			</tr>
-			<tr>
-				<td class="descriptionbox">
-					<?php echo I18N::translate('Show details'); ?>
-				</td>
+			<tbody>
+				<tr>
+					<td class="descriptionbox">
+						<?php	echo I18N::translate('Individual'); ?>
+					</td>
+					<td class="optionbox">
+						<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
+						<?php echo print_findindi_link('rootid'); ?>
+					</td>
+					<td rowspan="3" class="descriptionbox">
+						<?php echo I18N::translate('Layout'); ?>
+					</td>
+					<td rowspan="3" class="optionbox">
+						<input type="radio" name="chart_style" value="0" <?php echo $controller->chart_style == 0 ? 'checked' : ''; ?>>
+						<?php echo  I18N::translate('List'); ?>
+						<br>
+						<input type="radio" name="chart_style" value="1" <?php echo $controller->chart_style == 1 ? 'checked' : ''; ?>>
+						<?php echo I18N::translate('Booklet'); ?>
+						<br>
+						<input type="radio" name="chart_style" value="2" <?php echo $controller->chart_style == 2 ? 'checked' : ''; ?>>
+						<?php echo I18N::translate('Individuals'); ?>
+						<br>
+						<input type="radio" name="chart_style" value="3" <?php echo $controller->chart_style == 3 ? 'checked' : ''; ?>>
+						<?php echo I18N::translate('Families'); ?>
+					</td>
+					<td rowspan="3" class="topbottombar">
+						<input type="submit" value="<?php echo I18N::translate('View'); ?>">
+					</td>
+				</tr>
+				<tr>
+					<td class="descriptionbox">
+						<?php echo I18N::translate('Generations'); ?>
+					</td>
+					<td class="optionbox">
+						<?php echo edit_field_integers('generations', $controller->generations, 2, $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS')); ?>
+					</td>
+				</tr>
+				<tr>
+					<td class="descriptionbox">
+						<?php echo I18N::translate('Show details'); ?>
+					</td>
 					<td class="optionbox">
 						<?php echo two_state_checkbox('show_full', $controller->showFull()); ?>
-				</td>
-			</tr>
+					</td>
+				</tr>
+			</tbody>
 		</table>
 	</form>
 

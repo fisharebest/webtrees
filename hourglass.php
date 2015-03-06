@@ -39,38 +39,40 @@ $controller
 	<form method="get" name="people" action="?">
 		<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
 		<table class="list_table">
-			<tr>
-				<td class="descriptionbox">
-					<?php echo I18N::translate('Individual'); ?>
-				</td>
-				<td class="optionbox">
-					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
-					<?php echo print_findindi_link('pid'); ?>
-				</td>
-				<td class="descriptionbox">
-					<?php echo I18N::translate('Show details'); ?>
-				</td>
-				<td class="optionbox">
-					<?php echo two_state_checkbox("show_full",$controller->showFull());?>
-				</td>
-				<td rowspan="3" class="topbottombar vmiddle">
-					<input type="submit" value="<?php echo I18N::translate('View'); ?>">
-				</td>
-			</tr>
-			<tr>
-				<td class="descriptionbox" >
-					<?php echo I18N::translate('Generations'); ?>
-				</td>
-				<td class="optionbox">
-					<?php echo edit_field_integers('generations', $controller->generations, 2, $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS')); ?>
-				</td>
-				<td class="descriptionbox">
-					<?php echo I18N::translate('Show spouses'), help_link('show_spouse'); ?>
-				</td>
-				<td class="optionbox">
-					<input type="checkbox" value="1" name="show_spouse" <?php echo $controller->show_spouse ? 'checked' : ''; ?>>
-				</td>
-			</tr>
+			<tbody>
+				<tr>
+					<td class="descriptionbox">
+						<?php echo I18N::translate('Individual'); ?>
+					</td>
+					<td class="optionbox">
+						<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
+						<?php echo print_findindi_link('pid'); ?>
+					</td>
+					<td class="descriptionbox">
+						<?php echo I18N::translate('Show details'); ?>
+					</td>
+					<td class="optionbox">
+						<?php echo two_state_checkbox("show_full",$controller->showFull());?>
+					</td>
+					<td rowspan="3" class="topbottombar vmiddle">
+						<input type="submit" value="<?php echo I18N::translate('View'); ?>">
+					</td>
+				</tr>
+				<tr>
+					<td class="descriptionbox" >
+						<?php echo I18N::translate('Generations'); ?>
+					</td>
+					<td class="optionbox">
+						<?php echo edit_field_integers('generations', $controller->generations, 2, $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS')); ?>
+					</td>
+					<td class="descriptionbox">
+						<?php echo I18N::translate('Show spouses'); ?>
+					</td>
+					<td class="optionbox">
+						<input type="checkbox" value="1" name="show_spouse" <?php echo $controller->show_spouse ? 'checked' : ''; ?>>
+					</td>
+				</tr>
+			</tbody>
 		</table>
 	</form>
 

@@ -38,14 +38,15 @@ $controller
 	<form name="people" id="people" method="get" action="?">
 		<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
 		<table class="list_table">
-			<tr>
-				<td class="descriptionbox">
-					<?php echo I18N::translate('Individual'); ?>
-				</td>
-				<td class="optionbox vmiddle">
-					<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
-					<?php echo print_findindi_link('rootid'); ?>
-				</td>
+			<tbody>
+				<tr>
+					<td class="descriptionbox">
+						<?php echo I18N::translate('Individual'); ?>
+					</td>
+					<td class="optionbox vmiddle">
+						<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
+						<?php echo print_findindi_link('rootid'); ?>
+					</td>
 					<td <?php echo $WT_TREE->getPreference('SHOW_HIGHLIGHT_IMAGES') ? 'rowspan="2"' : ''; ?> class="facts_label03">
 						<input type="submit" value="<?php echo I18N::translate('View'); ?>">
 					</td>
@@ -53,14 +54,15 @@ $controller
 				<?php if ($WT_TREE->getPreference('SHOW_HIGHLIGHT_IMAGES')) { ?>
 				<tr>
 					<td class="descriptionbox">
-						<?php echo I18N::translate('Show highlight images in individual boxes'); ?>
+						<?php echo I18N::translate('Show images'); ?>
 					</td>
 					<td class="optionbox">
 						<input name="show_thumbs" type="checkbox" value="1" <?php echo $controller->show_thumbs ? 'checked' : ''; ?>>
 					</td>
 				</tr>
 				<?php } ?>
-			</table>
+			</tbody>
+		</table>
 	</form>
 	<div id="compact_chart">
 		<table width="100%" style="text-align:center;">

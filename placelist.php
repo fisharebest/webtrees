@@ -172,7 +172,6 @@ case 'hierarchy':
 			}
 			echo '>';
 			echo I18N::translate('View all records found in this place');
-			echo help_link('ppp_view_records');
 			echo '</td></tr><tr><td class="list_value" ';
 			if ($numfound > 20) {
 				echo 'colspan="3"';

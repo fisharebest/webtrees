@@ -2323,7 +2323,6 @@ function keep_chan(GedcomRecord $record = null) {
 			'</td><td class="optionbox wrap">' .
 			'<input type="checkbox" name="keep_chan" value="1" ' . ($WT_TREE->getPreference('NO_UPDATE_CHAN') ? 'checked' : '') . '>' .
 			I18N::translate('Do not update the “last change” record') .
-			help_link('no_update_CHAN') .
 			$details .
 			'</td></tr>';
 	} else {

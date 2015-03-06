@@ -10207,8 +10207,8 @@ msgid "Optional prefixes and suffixes"
 msgstr "Valfria prefix och suffix"
 
 #: relationship.php:91
-msgid "Options:"
-msgstr "Inställningar:"
+msgid "Options"
+msgstr "Inställningar"
 
 #: library/WT/Date/Jalali.php:151
 msgctxt "Abbreviation for Persian month: Ordibehesht"

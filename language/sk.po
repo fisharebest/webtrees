@@ -10234,8 +10234,8 @@ msgid "Optional prefixes and suffixes"
 msgstr "Voliteľné predpony a prípony"
 
 #: relationship.php:91
-msgid "Options:"
-msgstr "Voľby:"
+msgid "Options"
+msgstr "Voľby"
 
 #: library/WT/Date/Jalali.php:151
 msgctxt "Abbreviation for Persian month: Ordibehesht"

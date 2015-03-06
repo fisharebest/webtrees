@@ -243,7 +243,7 @@ class AdvancedSearchController extends SearchController {
 	function advancedSearch() {
 		$this->myindilist = array();
 		$fct = count($this->fields);
-		if ($fct == 0) {
+		if (!array_filter($this->values)) {
 			return;
 		}
 
@@ -626,17 +626,13 @@ class AdvancedSearchController extends SearchController {
 		}
 	}
 
-	/**
-	 * @return bool
-	 */
+	/** {@inheritdoc} */
 	function printResults() {
 		if ($this->myindilist) {
 			uasort($this->myindilist, __NAMESPACE__ . '\GedcomRecord::compare');
 			echo format_indi_table($this->myindilist);
-			return true;
-		} else {
+		} elseif (array_filter($this->values)) {
 			echo '<p class="ui-state-highlight">', I18N::translate('No results found.'), '</p>';
-			return false;
 		}
 	}
 }

@@ -175,10 +175,19 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 					<input type="hidden" name="pid" value="<?php echo $pid; ?>">
 					<table>
 					<tr><td colspan="2" class="topbottombar"><h2><?php echo I18N::translate('Download'); ?></h2></td></tr>
-					<tr><td class="descriptionbox width50 wrap"><?php echo I18N::translate('Zip file(s)'), help_link('zip'); ?></td>
-					<td class="optionbox"><input type="checkbox" name="Zip" value="yes"></td></tr>
-
-					<tr><td class="descriptionbox width50 wrap"><?php echo I18N::translate('Include media (automatically zips files)'), help_link('include_media'); ?></td>
+					<tr>
+						<td class="descriptionbox width50 wrap">
+							<?php echo I18N::translate('To reduce the size of the download, you can compress the data into a .ZIP file.  You will need to uncompress the .ZIP file before you can use it.'); ?>
+						</td>
+						<td class="optionbox wrap">
+							<input type="checkbox" name="Zip" value="yes">
+							<?php echo I18N::translate('Zip file(s)'); ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="descriptionbox width50 wrap">
+							<?php echo I18N::translate('Include media (automatically zips files)'), help_link('include_media'); ?>
+						</td>
 					<td class="optionbox"><input type="checkbox" name="IncludeMedia" value="yes"></td></tr>
 
 					<?php if (WT_USER_GEDCOM_ADMIN) {	?>
@@ -562,7 +571,7 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 		<input type="hidden" name="action" value="download">
 		<table>
 		<tr><td colspan="2" class="topbottombar"><h2>'. I18N::translate('Download') . '</h2></td></tr>
-		<tr><td class="descriptionbox width50 wrap">'. I18N::translate('Zip file(s)') . help_link('zip') . '</td>
+		<tr><td class="descriptionbox width50 wrap">'. I18N::translate('Zip file(s)') . '</td>
 		<td class="optionbox"><input type="checkbox" name="Zip" value="yes" checked></td></tr>
 
 		<tr><td class="descriptionbox width50 wrap">'. I18N::translate('Include media (automatically zips files)') . help_link('include_media') . '</td>
