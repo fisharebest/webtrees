@@ -490,29 +490,29 @@ class SearchController extends PageController {
 				echo '<br>';
 				echo '<div class="loading-image"></div>';
 				echo '<div id="search-result-tabs"><ul>';
-				if ($this->myindilist) {
+				if (!empty($this->myindilist)) {
 					echo '<li><a href="#individual-results-tab">', I18N::translate('Individuals'), '</a></li>';
 				}
-				if ($this->myfamlist) {
+				if (!empty($this->myfamlist)) {
 					echo '<li><a href="#families-results-tab">', I18N::translate('Families'), '</a></li>';
 				}
-				if ($this->mysourcelist) {
+				if (!empty($this->mysourcelist)) {
 					echo '<li><a href="#sources-results-tab">', I18N::translate('Sources'), '</a></li>';
 				}
-				if ($this->mynotelist) {
+				if (!empty($this->mynotelist)) {
 					echo '<li><a href="#notes-results-tab">', I18N::translate('Notes'), '</a></li>';
 				}
 				echo '</ul>';
-				if ($this->myindilist) {
+				if (!empty($this->myindilist)) {
 					echo '<div id="individual-results-tab">', format_indi_table($this->myindilist), '</div>';
 				}
-				if ($this->myfamlist) {
+				if (!empty($this->myfamlist)) {
 					echo '<div id="families-results-tab">', format_fam_table($this->myfamlist), '</div>';
 				}
-				if ($this->mysourcelist) {
+				if (!empty($this->mysourcelist)) {
 					echo '<div id="sources-results-tab">', format_sour_table($this->mysourcelist), '</div>';
 				}
-				if ($this->mynotelist) {
+				if (!empty($this->mynotelist)) {
 					echo '<div id="notes-results-tab">', format_note_table($this->mynotelist), '</div>';
 				}
 			} else {
