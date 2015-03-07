@@ -41,14 +41,20 @@ class PedigreeController extends ChartController {
 	/** @var integer Number of generation to display */
 	public $generations;
 
-	/** @var array are there ancestors for people byond the extent of the chart */
-	public $ancestors = array();
+	/** @var array data pertaining to each chart node */
+	public $nodes = array();
 
 	/** @var integer Number of nodes in the chart */
 	public $treesize;
 
-	/** @var array Used to calculate personbox positions */
-	public $offsetarray = array();
+	/** @var bool Are there ancestors beyond the bounds of this chart */
+	public $chartHasAncestors = false;
+
+	/** @var \stdClass Determine which arrows to use for each of the chart orientations */
+	public $arrows;
+
+	/** @var array Holds results of chart dimension calculations */
+	public $chartsize = array();
 
 	/**
 	 * Create a pedigree controller
@@ -61,8 +67,11 @@ class PedigreeController extends ChartController {
 		$this->generations = Filter::getInteger('PEDIGREE_GENERATIONS', 2, $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS'), $WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
 		$bxspacing         = Theme::theme()->parameter('chart-spacing-x');
 		$byspacing         = Theme::theme()->parameter('chart-spacing-y');
+		$curgen            = 1; // -- track which generation the algorithm is currently working on
+		$addoffset         = array();
 
 		// With more than 8 generations, we run out of pixels on the <canvas>
+		// TODO investigate adding additional canvas elements
 		if ($this->generations > 8) {
 			$this->generations = 8;
 		}
@@ -78,23 +87,51 @@ class PedigreeController extends ChartController {
 
 		$this->treesize = pow(2, $this->generations) - 1;
 
-		// sosaAncestors() starts array at index 1 we need it to start at 0
-		$this->ancestors = array_values($this->sosaAncestors($this->generations));
+		// sosaAncestors() starts array at index 1 we need to start at 0
+		$this->nodes = array_map(function ($item) {
+			return array('indi' => $item, 'x' => 0, 'y' => 0);
+		}, array_values($this->sosaAncestors($this->generations)));
+
+		//check earliest generation for any ancestors
+		for ($i = (int)ceil($this->treesize / 2); $i < $this->treesize; $i++) {
+			$this->chartHasAncestors = $this->chartHasAncestors || ($this->nodes[$i]['indi'] && $this->nodes[$i]['indi']->getChildFamilies());
+		}
+
+		$this->arrows = new \stdClass();
+		switch ($this->orientation) {
+			case self::PORTRAIT:
+				//drop through
+			case self::LANDSCAPE:
+				$this->arrows->prevGen = I18N::direction() === 'rtl' ? 'icon-larrow' : 'icon-rarrow';
+				$this->arrows->menu    = I18N::direction() === 'rtl' ? 'icon-rarrow' : 'icon-larrow';
+				$addoffset['x'] = $this->chartHasAncestors ? self::ARROW_SIZE : 0;
+				$addoffset['y'] = 0;
+				break;
+			case self::OLDEST_AT_TOP:
+				$this->arrows->prevGen = 'icon-uarrow';
+				$this->arrows->menu    = 'icon-darrow';
+				$addoffset['x']  = 0;
+				$addoffset['y'] = $this->root->getSpouseFamilies() ? self::ARROW_SIZE : 0;
+				break;
+			case self::OLDEST_AT_BOTTOM:
+				$this->arrows->prevGen = 'icon-darrow';
+				$this->arrows->menu    = 'icon-uarrow';
+				$addoffset['x']  = 0;
+				$addoffset['y'] = $this->chartHasAncestors ? self::ARROW_SIZE : 0;
+				break;
+		}
 
 		// -- this next section will create and position the DIV layers for the pedigree tree
-		$curgen      = 1; // -- track which generation the algorithm is currently working on
-		$xoffset     = 0;
-
-		if ($this->treesize < 3) {
-			$this->treesize = 3;
-		}
 		// -- loop through all of IDs in the array from last to first
 		// -- calculating the box positions
+
 		for ($i = ($this->treesize - 1); $i >= 0; $i--) {
+
 			// -- check to see if we have moved to the next generation
 			if ($i < intval($this->treesize / pow(2, $curgen))) {
 				$curgen++;
 			}
+
 			// -- box position in current generation
 			$boxpos = $i - pow(2, $this->generations - $curgen);
 			// -- offset multiple for current generation
@@ -111,7 +148,10 @@ class PedigreeController extends ChartController {
 			// -- calculate the xoffset
 			switch ($this->orientation) {
 				case self::PORTRAIT:
-					$xoffset = ($this->generations - $curgen) * (($this->getBoxDimensions()->width + ($bxspacing * 3)) / 2);
+					$xoffset = ($this->generations - $curgen) * (($this->getBoxDimensions()->width + $bxspacing) / 1.8);
+					if(!$i && $this->root->getSpouseFamilies()) {
+						$xoffset -= self::ARROW_SIZE;
+					}
 					// -- compact the tree
 					if ($curgen < $this->generations) {
 						if ($i % 2 == 0) {
@@ -161,27 +201,49 @@ class PedigreeController extends ChartController {
 						$xoffset += 10;
 					}
 					break;
-				case self::OLDEST_AT_TOP: // x & y values are reversed in pedigree.php
-					$divisor = $this->showFull() ? 2 : 3;
-					$xoffset = ($curgen-1) * (($this->getBoxDimensions()->width + $bxspacing) / $divisor) + $curgen;
+				case self::OLDEST_AT_TOP:
+					//swap x & y offsets as chart is rotated
+					$xoffset = $yoffset;
+					$yoffset = $curgen  * ($this->getBoxDimensions()->height + ($byspacing * 4));
 					break;
-				case self::OLDEST_AT_BOTTOM: // x & y values are reversed in pedigree.php
-					$divisor = $this->showFull() ? 2 : 3;
-					$xoffset = ($this->generations - $curgen) * (($this->getBoxDimensions()->width + $bxspacing) / $divisor);
+				case self::OLDEST_AT_BOTTOM:
+					//swap x & y offsets as chart is rotated
+					$xoffset = $yoffset;
+					$yoffset = ($this->generations - $curgen) * ($this->getBoxDimensions()->height + ($byspacing * 2));
+					if ($i && $this->root->getSpouseFamilies()) {
+						$yoffset += self::ARROW_SIZE;
+					}
 					break;
 			}
-			$this->offsetarray[$i]["x"] = intval($xoffset);
-			$this->offsetarray[$i]["y"] = intval($yoffset);
+			$this->nodes[$i]["x"] = intval($xoffset);
+			$this->nodes[$i]["y"] = intval($yoffset);
 		}
 
 		// find the minimum x & y offsets and deduct that number from
 		// each value in the array so that offsets start from zero
-		// could use array_column but that only works with php >= 5.5
-		$min_xoffset = min(array_map(function($item) {return $item['x'];}, $this->offsetarray)) - self::ARROW_SIZE;
-		$min_yoffset = min(array_map(function($item) {return $item['y'];}, $this->offsetarray));
-		array_walk($this->offsetarray, function(&$item) use ($min_xoffset, $min_yoffset) {
-			$item['y'] -= $min_yoffset;
+
+		$min_xoffset = min(array_map(function ($item) {
+			return $item['x'];
+		}, $this->nodes));
+		$min_yoffset = min(array_map(function ($item) {
+			return $item['y'];
+		}, $this->nodes));
+
+		array_walk($this->nodes, function (&$item) use ($min_xoffset, $min_yoffset) {
 			$item['x'] -= $min_xoffset;
+			$item['y'] -= $min_yoffset;
 		});
+
+		// calculate chart & canvas dimensions
+		$max_xoffset = max(array_map(function ($item) {
+			return $item['x'];
+		}, $this->nodes));
+		$max_yoffset = max(array_map(function ($item) {
+			return $item['y'];
+		}, $this->nodes));
+
+
+		$this->chartsize['x'] = $max_xoffset + $bxspacing + $this->getBoxDimensions()->width  + $addoffset['x'];
+		$this->chartsize['y'] = $max_yoffset + $byspacing + $this->getBoxDimensions()->height + $addoffset['y'];
 	}
 }
