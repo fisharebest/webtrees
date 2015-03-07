@@ -107,7 +107,7 @@ class DescendancyController extends ChartController {
 		echo '<td>';
 		foreach ($person->getChildFamilies() as $cfamily) {
 			foreach ($cfamily->getSpouses() as $parent) {
-				print_url_arrow('?rootid=' . $parent->getXref() . '&amp;generations=' . $this->generations . '&amp;chart_style=' . $this->chart_style . '&amp;show_full=' . $this->showFull() . '&amp;ged=' . WT_GEDURL, I18N::translate('Start at parents'), 2);
+				print_url_arrow('?rootid=' . $parent->getXref() . '&amp;generations=' . $this->generations . '&amp;chart_style=' . $this->chart_style . '&amp;show_full=' . $this->showFull() . '&amp;ged=' . $parent->getTree()->getNameUrl(), I18N::translate('Start at parents'), 2);
 				// only show the arrow for one of the parents
 				break;
 			}
@@ -186,7 +186,7 @@ class DescendancyController extends ChartController {
 		if ($spouse) {
 			foreach ($spouse->getChildFamilies() as $cfamily) {
 				foreach ($cfamily->getSpouses() as $parent) {
-					print_url_arrow('?rootid=' . $parent->getXref() . '&amp;generations=' . $this->generations . '&amp;chart_style=' . $this->chart_style . '&amp;show_full=' . $this->showFull() . '&amp;ged=' . WT_GEDURL, I18N::translate('Start at parents'), 2);
+					print_url_arrow('?rootid=' . $parent->getXref() . '&amp;generations=' . $this->generations . '&amp;chart_style=' . $this->chart_style . '&amp;show_full=' . $this->showFull() . '&amp;ged=' . $parent->getTree()->getNameUrl(), I18N::translate('Start at parents'), 2);
 					// only show the arrow for one of the parents
 					break;
 				}

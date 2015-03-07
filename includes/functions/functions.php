@@ -345,9 +345,9 @@ function get_relationship(Individual $person1, Individual $person2, $maxlength =
 		if ($maxlength == 0 || count($node['path']) <= $maxlength) {
 			$indi = $node['indi'];
 			//-- check all parents and siblings of this node
-			foreach ($indi->getChildFamilies(WT_PRIV_HIDE) as $family) {
+			foreach ($indi->getChildFamilies(Auth::PRIV_HIDE) as $family) {
 				$visited[$family->getXref()] = true;
-				foreach ($family->getSpouses(WT_PRIV_HIDE) as $spouse) {
+				foreach ($family->getSpouses(Auth::PRIV_HIDE) as $spouse) {
 					if (!isset($visited[$spouse->getXref()])) {
 						$node1 = $node;
 						$node1['length']++;
@@ -363,7 +363,7 @@ function get_relationship(Individual $person1, Individual $person2, $maxlength =
 						}
 					}
 				}
-				foreach ($family->getChildren(WT_PRIV_HIDE) as $child) {
+				foreach ($family->getChildren(Auth::PRIV_HIDE) as $child) {
 					if (!isset($visited[$child->getXref()])) {
 						$node1 = $node;
 						$node1['length']++;
@@ -381,9 +381,9 @@ function get_relationship(Individual $person1, Individual $person2, $maxlength =
 				}
 			}
 			//-- check all spouses and children of this node
-			foreach ($indi->getSpouseFamilies(WT_PRIV_HIDE) as $family) {
+			foreach ($indi->getSpouseFamilies(Auth::PRIV_HIDE) as $family) {
 				$visited[$family->getXref()] = true;
-				foreach ($family->getSpouses(WT_PRIV_HIDE) as $spouse) {
+				foreach ($family->getSpouses(Auth::PRIV_HIDE) as $spouse) {
 					if (!in_array($spouse->getXref(), $node1) || !isset($visited[$spouse->getXref()])) {
 						$node1 = $node;
 						$node1['length']++;
@@ -399,7 +399,7 @@ function get_relationship(Individual $person1, Individual $person2, $maxlength =
 						}
 					}
 				}
-				foreach ($family->getChildren(WT_PRIV_HIDE) as $child) {
+				foreach ($family->getChildren(Auth::PRIV_HIDE) as $child) {
 					if (!isset($visited[$child->getXref()])) {
 						$node1 = $node;
 						$node1['length']++;

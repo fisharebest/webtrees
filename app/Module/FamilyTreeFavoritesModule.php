@@ -39,7 +39,7 @@ class FamilyTreeFavoritesModule extends Module implements ModuleBlockInterface {
 
 	/** {@inheritdoc} */
 	public function getBlock($block_id, $template = true, $cfg = null) {
-		global $ctype, $controller;
+		global $ctype, $controller, $WT_TREE;
 
 		self::updateSchema(); // make sure the favorites table has been created
 
@@ -118,7 +118,7 @@ class FamilyTreeFavoritesModule extends Module implements ModuleBlockInterface {
 				$removeFavourite = '<a class="font9" href="index.php?ctype=' . $ctype . '&amp;action=deletefav&amp;favorite_id=' . $key . '" onclick="return confirm(\'' . I18N::translate('Are you sure you want to remove this item from your list of favorites?') . '\');">' . I18N::translate('Remove') . '</a> ';
 				if ($favorite['type'] == 'URL') {
 					$content .= '<div id="boxurl' . $key . '.0" class="person_box">';
-					if ($ctype == 'user' || WT_USER_GEDCOM_ADMIN) {
+					if ($ctype == 'user' || Auth::isManager($WT_TREE)) {
 						$content .= $removeFavourite;
 					}
 					$content .= '<a href="' . $favorite['url'] . '"><b>' . $favorite['title'] . '</b></a>';
@@ -140,7 +140,7 @@ class FamilyTreeFavoritesModule extends Module implements ModuleBlockInterface {
 								break;
 							}
 							$content .= '">';
-							if ($ctype == "user" || WT_USER_GEDCOM_ADMIN) {
+							if ($ctype == "user" || Auth::isManager($WT_TREE)) {
 								$content .= $removeFavourite;
 							}
 							$content .= Theme::theme()->individualBoxLarge($record);
@@ -148,7 +148,7 @@ class FamilyTreeFavoritesModule extends Module implements ModuleBlockInterface {
 							$content .= '</div>';
 						} else {
 							$content .= '<div id="box' . $favorite['gid'] . '.0" class="person_box">';
-							if ($ctype == 'user' || WT_USER_GEDCOM_ADMIN) {
+							if ($ctype == 'user' || Auth::isManager($WT_TREE)) {
 								$content .= $removeFavourite;
 							}
 							$content .= $record->formatList('span');
@@ -159,7 +159,7 @@ class FamilyTreeFavoritesModule extends Module implements ModuleBlockInterface {
 				}
 			}
 		}
-		if ($ctype == 'user' || WT_USER_GEDCOM_ADMIN) {
+		if ($ctype == 'user' || Auth::isManager($WT_TREE)) {
 			$uniqueID = Uuid::uuid4(); // This block can theoretically appear multiple times, so use a unique ID.
 			$content .= '<div class="add_fav_head">';
 			$content .= '<a href="#" onclick="return expand_layer(\'add_fav' . $uniqueID . '\');">' . I18N::translate('Add a new favorite') . '<i id="add_fav' . $uniqueID . '_img" class="icon-plus"></i></a>';

@@ -1042,7 +1042,7 @@ function format_sour_table($datalist) {
 					/* 10 #NOTE     */ { type: "num", visible: false },
 					/* 11 CHAN      */ { dataSort: 12, visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . ' },
 					/* 12 CHAN_sort */ { visible: false },
-					/* 13 DELETE    */ { visible: ' . (WT_USER_GEDCOM_ADMIN ? 'true' : 'false') . ', sortable: false }
+					/* 13 DELETE    */ { visible: ' . (Auth::isManager($WT_TREE) ? 'true' : 'false') . ', sortable: false }
 				],
 				displayLength: 20,
 				pagingType: "full_numbers"
@@ -1135,7 +1135,7 @@ function format_sour_table($datalist) {
 			$html .= '<td></td>';
 		}
 		//-- Delete
-		if (WT_USER_GEDCOM_ADMIN) {
+		if (Auth::isManager($WT_TREE)) {
 			$html .= '<td><div title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_source(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($source->getFullName()))) . "', '" . $source->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></div></td>';
 		} else {
 			$html .= '<td></td>';
@@ -1182,7 +1182,7 @@ function format_note_table($datalist) {
 					/*  8 #SOUR     */ { type: "num", visible: false },
 					/*  9 CHAN      */ { dataSort: 10, visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . ' },
 					/* 10 CHAN_sort */ { visible: false },
-					/* 11 DELETE    */ { visible: ' . (WT_USER_GEDCOM_ADMIN ? 'true' : 'false') . ', sortable: false }
+					/* 11 DELETE    */ { visible: ' . (Auth::isManager($WT_TREE) ? 'true' : 'false') . ', sortable: false }
 				],
 				displayLength: 20,
 				pagingType: "full_numbers"
@@ -1250,7 +1250,7 @@ function format_note_table($datalist) {
 			$html .= '<td></td>';
 		}
 		//-- Delete
-		if (WT_USER_GEDCOM_ADMIN) {
+		if (Auth::isManager($WT_TREE)) {
 			$html .= '<td><div title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_note(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($note->getFullName()))) . "', '" . $note->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></div></td>';
 		} else {
 			$html .= '<td></td>';
@@ -1298,7 +1298,7 @@ function format_repo_table($repositories) {
 					/* 2 #SOUR     */ { type: "num", visible: false },
 					/* 3 CHAN      */ { dataSort: 4, visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . ' },
 					/* 4 CHAN_sort */ { visible: false },
-					/* 5 DELETE    */ { visible: ' . (WT_USER_GEDCOM_ADMIN ? 'true' : 'false') . ', sortable: false }
+					/* 5 DELETE    */ { visible: ' . (Auth::isManager($WT_TREE) ? 'true' : 'false') . ', sortable: false }
 				],
 				displayLength: 20,
 				pagingType: "full_numbers"
@@ -1364,7 +1364,7 @@ function format_repo_table($repositories) {
 			$html .= '<td></td>';
 		}
 		//-- Delete
-		if (WT_USER_GEDCOM_ADMIN) {
+		if (Auth::isManager($WT_TREE)) {
 			$html .= '<td><div title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_repository(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($repository->getFullName()))) . "', '" . $repository->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></div></td>';
 		} else {
 			$html .= '<td></td>';
@@ -1454,7 +1454,7 @@ function format_media_table($media_objects) {
 			$html .= '<td>';
 			$html .= '<a href="' . $media_object->getHtmlUrl() . '" class="list_item name2">';
 			$html .= highlight_search_hits($name) . '</a>';
-			if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
+			if (Auth::isEditor($media_object->getTree())) {
 				$html .= '<br><a href="' . $media_object->getHtmlUrl() . '">' . basename($media_object->getFilename()) . '</a>';
 			}
 			$html .= '</td>';
@@ -1497,7 +1497,8 @@ function format_media_table($media_objects) {
  * @return string
  */
 function format_surname_table($surnames, $script) {
-	global $controller;
+	global $controller, $WT_TREE;
+
 	$html = '';
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
@@ -1537,9 +1538,9 @@ function format_surname_table($surnames, $script) {
 	foreach ($surnames as $surn => $surns) {
 		// Each surname links back to the indi/fam surname list
 		if ($surn) {
-			$url = $script . '?surname=' . rawurlencode($surn) . '&amp;ged=' . WT_GEDURL;
+			$url = $script . '?surname=' . rawurlencode($surn) . '&amp;ged=' . $WT_TREE->getNameUrl();
 		} else {
-			$url = $script . '?alpha=,&amp;ged=' . WT_GEDURL;
+			$url = $script . '?alpha=,&amp;ged=' . $WT_TREE->getNameUrl();
 		}
 		// Row counter
 		$html .= '<tr>';
@@ -1587,6 +1588,8 @@ function format_surname_table($surnames, $script) {
  * @return string
  */
 function format_surname_tagcloud($surnames, $script, $totals) {
+	global $WT_TREE;
+
 	$cloud = new Zend_Tag_Cloud(
 		array(
 			'tagDecorator'   => array(
@@ -1617,7 +1620,7 @@ function format_surname_tagcloud($surnames, $script, $totals) {
 				'weight' => count($indis),
 				'params' => array(
 					'url' => $surn ?
-						$script . '?surname=' . urlencode($surn) . '&amp;ged=' . WT_GEDURL : $script . '?alpha=,&amp;ged=' . WT_GEDURL
+						$script . '?surname=' . urlencode($surn) . '&amp;ged=' . $WT_TREE->getNameUrl() : $script . '?alpha=,&amp;ged=' . $WT_TREE->getNameUrl()
 				)
 			));
 		}

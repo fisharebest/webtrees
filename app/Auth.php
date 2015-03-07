@@ -22,13 +22,19 @@ use Zend_Session;
  * Class Auth - authentication functions
  */
 class Auth {
+	// Privacy constants
+	const PRIV_PRIVATE = 2; // Allows visitors to view the item
+	const PRIV_USER    = 1; // Allows members to access the item
+	const PRIV_NONE    = 0; // Allows managers to access the item
+	const PRIV_HIDE    = -1; // Hide the item to all users
+
 	/**
 	 * Are we currently logged in?
 	 *
 	 * @return boolean
 	 */
 	public static function check() {
-		return Auth::id() !== null;
+		return self::id() !== null;
 	}
 
 	/**
@@ -47,7 +53,7 @@ class Auth {
 	}
 
 	/**
-	 * Is a user a manager of a tree?
+	 * Is the specified/current user a manager of a tree?
 	 *
 	 * @param Tree      $tree
 	 * @param User|null $user
@@ -63,7 +69,7 @@ class Auth {
 	}
 
 	/**
-	 * Is a user a moderator of a tree?
+	 * Is the specified/current user a moderator of a tree?
 	 *
 	 * @param Tree      $tree
 	 * @param User|null $user
@@ -79,7 +85,7 @@ class Auth {
 	}
 
 	/**
-	 * Is a user an editor of a tree?
+	 * Is the specified/current user an editor of a tree?
 	 *
 	 * @param Tree      $tree
 	 * @param User|null $user
@@ -96,7 +102,7 @@ class Auth {
 	}
 
 	/**
-	 * Is a user a member of a tree?
+	 * Is the specified/current user a member of a tree?
 	 *
 	 * @param Tree      $tree
 	 * @param User|null $user
@@ -109,6 +115,28 @@ class Auth {
 		}
 
 		return self::isEditor($tree, $user) || $user && $tree->getUserPreference($user, 'canedit') === 'access';
+	}
+
+	/**
+	 * What is the specified/current user's access level within a tree?
+	 *
+	 * @param Tree      $tree
+	 * @param User|null $user
+	 *
+	 * @return boolean
+	 */
+	public static function accessLevel(Tree $tree, User $user = null) {
+		if ($user === null) {
+			$user = self::user();
+		}
+
+		if (self::isManager($tree, $user)) {
+			return self::PRIV_NONE;
+		} elseif (self::isMember($tree, $user)) {
+			return self::PRIV_USER;
+		} else {
+			return self::PRIV_PRIVATE;
+		}
 	}
 
 	/**
@@ -139,7 +167,7 @@ class Auth {
 	 * @return User
 	 */
 	public static function user() {
-		$user = User::find(Auth::id());
+		$user = User::find(self::id());
 		if ($user === null) {
 			$visitor = new \stdClass;
 			$visitor->user_id = '';

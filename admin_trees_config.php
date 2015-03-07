@@ -124,10 +124,10 @@ $PRIVACY_CONSTANTS = array(
 );
 
 $privacy = array(
-	WT_PRIV_PUBLIC => I18N::translate('Show to visitors'),
-	WT_PRIV_USER   => I18N::translate('Show to members'),
-	WT_PRIV_NONE   => I18N::translate('Show to managers'),
-	WT_PRIV_HIDE   => I18N::translate('Hide from everyone'),
+	Auth::PRIV_PRIVATE => I18N::translate('Show to visitors'),
+	Auth::PRIV_USER   => I18N::translate('Show to members'),
+	Auth::PRIV_NONE   => I18N::translate('Show to managers'),
+	Auth::PRIV_HIDE   => I18N::translate('Hide from everyone'),
 );
 
 $tags = array_unique(array_merge(
@@ -1062,8 +1062,8 @@ $controller
 			<?php echo /* I18N: A configuration setting */ I18N::translate('Who can upload new media files?'); ?>
 		</label>
 		<div class="col-sm-9">
-			<?php echo select_edit_control('MEDIA_UPLOAD', array(WT_PRIV_USER=> I18N::translate('Show to members'),
-				WT_PRIV_NONE=> I18N::translate('Show to managers'), WT_PRIV_HIDE=> I18N::translate('Hide from everyone')), null, $WT_TREE->getPreference('MEDIA_UPLOAD'), 'class="form-control"'); ?>
+			<?php echo select_edit_control('MEDIA_UPLOAD', array(Auth::PRIV_USER=> I18N::translate('Show to members'),
+				Auth::PRIV_NONE=> I18N::translate('Show to managers'), Auth::PRIV_HIDE=> I18N::translate('Hide from everyone')), null, $WT_TREE->getPreference('MEDIA_UPLOAD'), 'class="form-control"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Who can upload new media files?” configuration setting */ I18N::translate('If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only.'); ?>
 			</p>

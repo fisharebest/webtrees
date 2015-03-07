@@ -253,7 +253,7 @@ case 'requestpw':
 			I18N::translate('Username') . ": " . Filter::escapeHtml($user->getUserName()) . Mail::EOL .
 			I18N::translate('Password') . ": " . $user_new_pw . Mail::EOL . Mail::EOL .
 			I18N::translate('After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password.') . Mail::EOL . Mail::EOL .
-			'<a href="' . WT_BASE_URL . 'login.php?ged=' . WT_GEDURL . '">' . WT_BASE_URL . 'login.php?ged=' . WT_GEDURL . '</a>'
+			'<a href="' . WT_BASE_URL . 'login.php?ged=' . $WT_TREE->getNameUrl() . '">' . WT_BASE_URL . 'login.php?ged=' . $WT_TREE->getNameUrl() . '</a>'
 		);
 	}
 	// Show a success message, even if the user account does not exist.

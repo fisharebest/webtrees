@@ -70,10 +70,10 @@ class Tree {
 			"SELECT SQL_CACHE xref, tag_type, CASE resn WHEN 'none' THEN :priv_public WHEN 'privacy' THEN :priv_user WHEN 'confidential' THEN :priv_none WHEN 'hidden' THEN :priv_hide END AS resn" .
 			" FROM `##default_resn` WHERE gedcom_id = :tree_id"
 		)->execute(array(
-			'priv_public' => WT_PRIV_PUBLIC,
-			'priv_user'   => WT_PRIV_USER,
-			'priv_none'   => WT_PRIV_NONE,
-			'priv_hide'   => WT_PRIV_HIDE,
+			'priv_public' => Auth::PRIV_PRIVATE,
+			'priv_user'   => Auth::PRIV_USER,
+			'priv_none'   => Auth::PRIV_NONE,
+			'priv_hide'   => Auth::PRIV_HIDE,
 			'tree_id'     => $this->tree_id
 		))->fetchAll();
 
@@ -497,7 +497,7 @@ class Tree {
 		$tree->setPreference('MAX_PEDIGREE_GENERATIONS', '10');
 		$tree->setPreference('MEDIA_DIRECTORY', 'media/');
 		$tree->setPreference('MEDIA_ID_PREFIX', 'M');
-		$tree->setPreference('MEDIA_UPLOAD', WT_PRIV_USER);
+		$tree->setPreference('MEDIA_UPLOAD', Auth::PRIV_USER);
 		$tree->setPreference('META_DESCRIPTION', '');
 		$tree->setPreference('META_TITLE', WT_WEBTREES);
 		$tree->setPreference('NOTE_FACTS_ADD', 'SOUR,RESN');
@@ -521,16 +521,16 @@ class Tree {
 		$tree->setPreference('SAVE_WATERMARK_THUMB', '0');
 		$tree->setPreference('SHOW_AGE_DIFF', '0');
 		$tree->setPreference('SHOW_COUNTER', '1');
-		$tree->setPreference('SHOW_DEAD_PEOPLE', WT_PRIV_PUBLIC);
+		$tree->setPreference('SHOW_DEAD_PEOPLE', Auth::PRIV_PRIVATE);
 		$tree->setPreference('SHOW_EST_LIST_DATES', '0');
 		$tree->setPreference('SHOW_FACT_ICONS', '1');
 		$tree->setPreference('SHOW_GEDCOM_RECORD', '0');
 		$tree->setPreference('SHOW_HIGHLIGHT_IMAGES', '1');
 		$tree->setPreference('SHOW_LDS_AT_GLANCE', '0');
 		$tree->setPreference('SHOW_LEVEL2_NOTES', '1');
-		$tree->setPreference('SHOW_LIVING_NAMES', WT_PRIV_USER);
+		$tree->setPreference('SHOW_LIVING_NAMES', Auth::PRIV_USER);
 		$tree->setPreference('SHOW_MEDIA_DOWNLOAD', '0');
-		$tree->setPreference('SHOW_NO_WATERMARK', WT_PRIV_USER);
+		$tree->setPreference('SHOW_NO_WATERMARK', Auth::PRIV_USER);
 		$tree->setPreference('SHOW_PARENTS_AGE', '1');
 		$tree->setPreference('SHOW_PEDIGREE_PLACES', '9');
 		$tree->setPreference('SHOW_PEDIGREE_PLACES_SUFFIX', '0');

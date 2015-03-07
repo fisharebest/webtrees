@@ -39,6 +39,8 @@ class BranchesController extends PageController {
 	 * Create a branches list controller
 	 */
 	public function __construct() {
+		global $WT_TREE;
+
 		parent::__construct();
 
 		$this->surname     = Filter::get('surname');
@@ -49,7 +51,7 @@ class BranchesController extends PageController {
 			$this->setPageTitle(/* I18N: %s is a surname */
 				I18N::translate('Branches of the %s family', Filter::escapeHtml($this->surname)));
 			$this->loadIndividuals();
-			$self = Individual::getInstance(WT_USER_GEDCOM_ID);
+			$self = Individual::getInstance($WT_TREE->getUserPreference(Auth::user(), 'gedcomid'));
 			if ($self) {
 				$this->loadAncestors($self, 1);
 			}
@@ -198,7 +200,7 @@ class BranchesController extends PageController {
 		$sosa = array_search($individual, $this->ancestors, true);
 		if ($sosa) {
 			$sosa_class = 'search_hit';
-			$sosa_html  = ' <a class="details1 ' . $individual->getBoxStyle() . '" title="' . I18N::translate('Sosa') . '" href="relationship.php?pid2=' . WT_USER_ROOT_ID . '&amp;pid1=' . $individual->getXref() . '">' . $sosa . '</a>' . self::sosaGeneration($sosa);
+			$sosa_html  = ' <a class="details1 ' . $individual->getBoxStyle() . '" title="' . I18N::translate('Sosa') . '" href="relationship.php?pid2=' . $WT_TREE->getUserPreference(Auth::user(), 'rootid') . '&amp;pid1=' . $individual->getXref() . '">' . $sosa . '</a>' . self::sosaGeneration($sosa);
 		} else {
 			$sosa_class = '';
 			$sosa_html  = '';
@@ -234,7 +236,7 @@ class BranchesController extends PageController {
 					$sosa = array_search($spouse, $this->ancestors, true);
 					if ($sosa) {
 						$sosa_class = 'search_hit';
-						$sosa_html  = ' <a class="details1 ' . $spouse->getBoxStyle() . '" title="' . I18N::translate('Sosa') . '" href="relationship.php?pid2=' . WT_USER_ROOT_ID . '&amp;pid1=' . $spouse->getXref() . '"> ' . $sosa . ' </a>' . self::sosaGeneration($sosa);
+						$sosa_html  = ' <a class="details1 ' . $spouse->getBoxStyle() . '" title="' . I18N::translate('Sosa') . '" href="relationship.php?pid2=' . $WT_TREE->getUserPreference(Auth::user(), 'rootid') . '&amp;pid1=' . $spouse->getXref() . '"> ' . $sosa . ' </a>' . self::sosaGeneration($sosa);
 					} else {
 						$sosa_class = '';
 						$sosa_html  = '';

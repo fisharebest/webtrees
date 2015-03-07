@@ -16,6 +16,13 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree   $WT_TREE
+ */
+global $WT_TREE;
+
 define('WT_SCRIPT_NAME', 'medialist.php');
 require './includes/session.php';
 
@@ -26,7 +33,7 @@ $controller
 
 $search = Filter::get('search');
 $sortby = Filter::get('sortby', 'file|title', 'title');
-if (!WT_USER_CAN_EDIT && !WT_USER_CAN_ACCEPT) {
+if (!Auth::isEditor($WT_TREE)) {
 	$sortby = 'title';
 }
 $start          = Filter::getInteger('start');
@@ -75,7 +82,7 @@ $medialist = QueryMedia::mediaList(
 				<td class="optionbox wrap">
 					<?php echo select_edit_control('folder', $folders, null, $folder); ?>
 				</td>
-				<?php if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT): ?>
+				<?php if (Auth::isEditor($WT_TREE)): ?>
 				<td class="descriptionbox wrap">
 					<?php echo I18N::translate('Sort order'); ?>
 				</td>
@@ -255,7 +262,7 @@ if ($search) {
 			echo '<table><tr><td class="media-image">';
 			echo $mediaobject->displayImage();
 			echo '</td><td class="media-col list_value_wrap">';
-			if (WT_USER_CAN_EDIT) {
+			if (Auth::isEditor($WT_TREE)) {
 				echo MediaController::getMediaListMenu($mediaobject);
 			}
 			// If sorting by title, highlight the title.  If sorting by filename, highlight the filename
@@ -274,7 +281,7 @@ if ($search) {
 				echo GedcomTag::getLabelValue('URL', $mediaobject->getFilename());
 			} else {
 				if ($mediaobject->fileExists()) {
-					if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
+					if (Auth::isEditor($WT_TREE)) {
 						echo GedcomTag::getLabelValue('FILE', $mediaobject->getFilename());
 					}
 					echo GedcomTag::getLabelValue('FORM', $mediaobject->mimeType());

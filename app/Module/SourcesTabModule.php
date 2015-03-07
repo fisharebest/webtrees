@@ -39,7 +39,9 @@ class SourcesTabModule extends Module implements ModuleTabInterface {
 
 	/** {@inheritdoc} */
 	public function hasTabContent() {
-		return WT_USER_CAN_EDIT || $this->getFactsWithSources();
+		global $WT_TREE;
+
+		return Auth::isEditor($WT_TREE) || $this->getFactsWithSources();
 	}
 
 	/** {@inheritdoc} */

@@ -41,7 +41,7 @@ class MediaController extends GedcomRecordController {
 		// edit menu
 		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-obje');
 
-		if (WT_USER_CAN_EDIT) {
+		if (Auth::isEditor($this->record->getTree())) {
 			$submenu = new Menu(I18N::translate('Edit media object'), '#', 'menu-obje-edit');
 			$submenu->setOnclick("window.open('addmedia.php?action=editmedia&amp;pid={$this->record->getXref()}', '_blank', edit_window_specs)");
 			$menu->addSubmenu($submenu);
@@ -67,14 +67,14 @@ class MediaController extends GedcomRecordController {
 		}
 
 		// delete
-		if (WT_USER_CAN_EDIT) {
+		if (Auth::isEditor($this->record->getTree())) {
 			$submenu = new Menu(I18N::translate('Delete'), '#', 'menu-obje-del');
 			$submenu->setOnclick("return delete_media('" . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJS(Filter::unescapeHtml($this->record->getFullName()))) . "', '" . $this->record->getXref() . "');");
 			$menu->addSubmenu($submenu);
 		}
 
 		// edit raw
-		if (Auth::isAdmin() || WT_USER_CAN_EDIT && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
+		if (Auth::isAdmin() || Auth::isEditor($this->record->getTree()) && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
 			$submenu = new Menu(I18N::translate('Edit raw GEDCOM'), '#', 'menu-obje-editraw');
 			$submenu->setOnclick("return edit_raw('" . $this->record->getXref() . "');");
 			$menu->addSubmenu($submenu);

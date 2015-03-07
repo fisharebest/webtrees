@@ -35,7 +35,7 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 
 	/** {@inheritdoc} */
 	public function defaultAccessLevel() {
-		return WT_PRIV_USER;
+		return Auth::PRIV_USER;
 	}
 
 	/** {@inheritdoc} */
@@ -190,7 +190,7 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 						</td>
 					<td class="optionbox"><input type="checkbox" name="IncludeMedia" value="yes"></td></tr>
 
-					<?php if (WT_USER_GEDCOM_ADMIN) {	?>
+					<?php if (Auth::isManager($WT_TREE)) {	?>
 						<tr><td class="descriptionbox width50 wrap"><?php echo I18N::translate('Apply privacy settings'), help_link('apply_privacy'); ?></td>
 						<td class="optionbox">
 							<input type="radio" name="privatize_export" value="none" checked> <?php echo I18N::translate('None'); ?><br>
@@ -198,7 +198,7 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 							<input type="radio" name="privatize_export" value="user"> <?php echo I18N::translate('Member'); ?><br>
 							<input type="radio" name="privatize_export" value="visitor"> <?php echo I18N::translate('Visitor'); ?>
 						</td></tr>
-					<?php } elseif (WT_USER_CAN_ACCESS) {	?>
+					<?php } elseif (Auth::isMember($WT_TREE)) { ?>
 						<tr><td class="descriptionbox width50 wrap"><?php echo I18N::translate('Apply privacy settings'), help_link('apply_privacy'); ?></td>
 						<td class="optionbox">
 							<input type="radio" name="privatize_export" value="user" checked> <?php echo I18N::translate('Member'); ?><br>
@@ -306,15 +306,15 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 
 	/** {@inheritdoc} */
 	public function getMenu() {
-		global $controller;
+		global $controller, $WT_TREE;
 
 		if (Auth::isSearchEngine()) {
 			return null;
 		}
 		//-- main clippings menu item
-		$menu = new Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged=' . WT_GEDURL, 'menu-clippings');
+		$menu = new Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged=' . $WT_TREE->getNameUrl(), 'menu-clippings');
 		if (isset($controller->record)) {
-			$submenu = new Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged=' . WT_GEDURL, 'menu-clippingscart');
+			$submenu = new Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged=' . $WT_TREE->getNameUrl(), 'menu-clippingscart');
 			$menu->addSubmenu($submenu);
 		}
 		if (!empty($controller->record) && $controller->record->canShow()) {
@@ -578,7 +578,7 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 		<td class="optionbox"><input type="checkbox" name="IncludeMedia" value="yes" checked></td></tr>
 		';
 
-		if (WT_USER_GEDCOM_ADMIN) {
+		if (Auth::isManager($WT_TREE)) {
 			$out .=
 				'<tr><td class="descriptionbox width50 wrap">' . I18N::translate('Apply privacy settings') . help_link('apply_privacy') . '</td>' .
 				'<td class="optionbox">' .
@@ -587,7 +587,7 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 				'	<input type="radio" name="privatize_export" value="user"> ' . I18N::translate('Member') . '<br>' .
 				'	<input type="radio" name="privatize_export" value="visitor"> ' . I18N::translate('Visitor') .
 				'</td></tr>';
-		} elseif (WT_USER_CAN_ACCESS) {
+		} elseif (Auth::isMember($WT_TREE)) {
 			$out .=
 				'<tr><td class="descriptionbox width50 wrap">' . I18N::translate('Apply privacy settings') . help_link('apply_privacy') . '</td>' .
 				'<td class="list_value">' .

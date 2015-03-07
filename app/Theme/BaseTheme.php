@@ -1161,8 +1161,10 @@ abstract class BaseTheme {
 	 * @return Menu
 	 */
 	protected function menuChartRelationship(Individual $individual) {
-		if (WT_USER_GEDCOM_ID && $individual->getXref()) {
-			return new Menu(I18N::translate('Relationship to me'), 'relationship.php?pid1=' . WT_USER_GEDCOM_ID . '&amp;pid2=' . $individual->getXref() . '&amp;ged=' . $this->tree_url, 'menu-chart-relationship');
+		$gedcomid = $this->tree->getUserPreference(Auth::user(), 'gedcomid');
+
+		if ($gedcomid && $individual->getXref()) {
+			return new Menu(I18N::translate('Relationship to me'), 'relationship.php?pid1=' . $gedcomid . '&amp;pid2=' . $individual->getXref() . '&amp;ged=' . $this->tree_url, 'menu-chart-relationship');
 		} else {
 			return new Menu(I18N::translate('Relationships'), 'relationship.php?pid1=' . $individual->getXref() . '&amp;ged=' . $this->tree_url, 'menu-chart-relationship');
 		}
@@ -1194,7 +1196,7 @@ abstract class BaseTheme {
 	 * @return Menu|null
 	 */
 	protected function menuControlPanel() {
-		if (WT_USER_GEDCOM_ADMIN) {
+		if (Auth::isManager($this->tree)) {
 			return new Menu(I18N::translate('Control panel'), 'admin.php', 'menu-admin');
 		} else {
 			return null;
@@ -1498,8 +1500,10 @@ abstract class BaseTheme {
 	 * @return Menu|null
 	 */
 	protected function menuMyIndividualRecord() {
-		if (WT_USER_GEDCOM_ID) {
-			return new Menu(I18N::translate('My individual record'), 'individual.php?pid=' . WT_USER_GEDCOM_ID . '&amp;' . $this->tree_url, 'menu-myrecord');
+		$gedcomid = $this->tree->getUserPreference(Auth::user(), 'gedcomid');
+
+		if ($gedcomid) {
+			return new Menu(I18N::translate('My individual record'), 'individual.php?pid=' . $gedcomid . '&amp;' . $this->tree_url, 'menu-myrecord');
 		} else {
 			return null;
 		}
@@ -1538,13 +1542,15 @@ abstract class BaseTheme {
 	 * @return Menu|null
 	 */
 	protected function menuMyPedigree() {
-		if (WT_USER_GEDCOM_ID) {
+		$gedcomid = $this->tree->getUserPreference(Auth::user(), 'gedcomid');
+
+		if ($gedcomid) {
 			$showFull   = $this->tree->getPreference('PEDIGREE_FULL_DETAILS') ? 1 : 0;
 			$showLayout = $this->tree->getPreference('PEDIGREE_LAYOUT') ? 1 : 0;
 
 			return new Menu(
 				I18N::translate('My pedigree'),
-				'pedigree.php?' . $this->tree_url . '&amp;rootid=' . WT_USER_GEDCOM_ID . "&amp;show_full={$showFull}&amp;talloffset={$showLayout}",
+				'pedigree.php?' . $this->tree_url . '&amp;rootid=' . $gedcomid . '&amp;show_full=' . $showFull . '&amp;talloffset=' . $showLayout,
 				'menu-mypedigree'
 			);
 		} else {
@@ -1608,7 +1614,7 @@ abstract class BaseTheme {
 		$submenu = new Menu(I18N::translate('Advanced search'), 'search_advanced.php?' . $this->tree_url, 'menu-search-advanced');
 		$menu->addSubmenu($submenu);
 		//-- search_replace sub menu
-		if (WT_USER_CAN_EDIT) {
+		if (Auth::isEditor($this->tree)) {
 			$submenu = new Menu(I18N::translate('Search and replace'), 'search.php?' . $this->tree_url . '&amp;action=replace', 'menu-search-replace');
 			$menu->addSubmenu($submenu);
 		}

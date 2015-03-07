@@ -46,10 +46,10 @@ define('WT_REQUIRED_PHP_VERSION', '5.3.2');
 define('WT_MODULES_DIR', 'modules_v3/');
 define('WT_ROOT', '');
 define('WT_GED_ID', null);
-define('WT_PRIV_PUBLIC', 2);
-define('WT_PRIV_USER', 1);
-define('WT_PRIV_NONE', 0);
-define('WT_PRIV_HIDE', -1);
+define('Auth::PRIV_PRIVATE', 2);
+define('Auth::PRIV_USER', 1);
+define('Auth::PRIV_NONE', 0);
+define('Auth::PRIV_HIDE', -1);
 
 if (file_exists(WT_DATA_DIR . WT_CONFIG_FILE)) {
 	header('Location: index.php');

@@ -269,7 +269,7 @@ class IndividualController extends GedcomRecordController {
 		// will copy the first submenu - which may be edit-raw or delete.
 		// As a temporary solution, make it edit the name
 		$menu->setOnclick("return false;");
-		if (WT_USER_CAN_EDIT) {
+		if (Auth::isEditor($this->record->getTree())) {
 			foreach ($this->record->getFacts() as $fact) {
 				if ($fact->getTag() === 'NAME' && $fact->canEdit()) {
 					$menu->setOnclick("return edit_name('" . $this->record->getXref() . "', '" . $fact->getFactId() . "');");
@@ -303,14 +303,14 @@ class IndividualController extends GedcomRecordController {
 		}
 
 		// delete
-		if (WT_USER_CAN_EDIT) {
+		if (Auth::isEditor($this->record->getTree())) {
 			$submenu = new Menu(I18N::translate('Delete'), '#', 'menu-indi-del');
 			$submenu->setOnclick("return delete_individual('" . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJS(Filter::unescapeHtml($this->record->getFullName()))) . "', '" . $this->record->getXref() . "');");
 			$menu->addSubmenu($submenu);
 		}
 
 		// edit raw
-		if (Auth::isAdmin() || WT_USER_CAN_EDIT && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
+		if (Auth::isAdmin() || Auth::isEditor($this->record->getTree()) && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
 			$submenu = new Menu(I18N::translate('Edit raw GEDCOM'), '#', 'menu-indi-editraw');
 			$submenu->setOnclick("return edit_raw('" . $this->record->getXref() . "');");
 			$menu->addSubmenu($submenu);

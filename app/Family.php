@@ -137,7 +137,11 @@ class Family extends GedcomRecord {
 	}
 
 	/** {@inheritdoc} */
-	public function canShowName($access_level = WT_USER_ACCESS_LEVEL) {
+	public function canShowName($access_level = null) {
+		if ($access_level === null) {
+			$access_level = Auth::accessLevel($this->tree);
+		}
+
 		// We can always see the name (Husband-name + Wife-name), however,
 		// the name will often be "private + private"
 		return true;
@@ -161,11 +165,15 @@ class Family extends GedcomRecord {
 	/**
 	 * Get the (zero, one or two) spouses from this family.
 	 *
-	 * @param integer $access_level
+	 * @param integer|null $access_level
 	 *
 	 * @return Individual[]
 	 */
-	function getSpouses($access_level = WT_USER_ACCESS_LEVEL) {
+	function getSpouses($access_level = null) {
+		if ($access_level === null) {
+			$access_level = Auth::accessLevel($this->tree);
+		}
+
 		$spouses = array();
 		if ($this->husb && $this->husb->canShowName($access_level)) {
 			$spouses[] = $this->husb;
@@ -180,11 +188,15 @@ class Family extends GedcomRecord {
 	/**
 	 * Get a list of this family’s children.
 	 *
-	 * @param integer $access_level
+	 * @param integer|null $access_level
 	 *
 	 * @return Individual[]
 	 */
-	function getChildren($access_level = WT_USER_ACCESS_LEVEL) {
+	function getChildren($access_level = null) {
+		if ($access_level === null) {
+			$access_level = Auth::accessLevel($this->tree);
+		}
+
 		$SHOW_PRIVATE_RELATIONSHIPS = $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
 		$children = array();

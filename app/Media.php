@@ -314,7 +314,7 @@ class Media extends GedcomRecord {
 
 			return '';
 		}
-		$etag_string = basename($this->getServerFilename($which)) . $this->getFiletime($which) . WT_GEDCOM . WT_USER_ACCESS_LEVEL . $this->tree->getPreference('SHOW_NO_WATERMARK');
+		$etag_string = basename($this->getServerFilename($which)) . $this->getFiletime($which) . WT_GEDCOM . Auth::accessLevel($this->tree) . $this->tree->getPreference('SHOW_NO_WATERMARK');
 		$etag_string = dechex(crc32($etag_string));
 
 		return $etag_string;

@@ -83,7 +83,7 @@ class HtmlBlockModule extends Module implements ModuleBlockInterface {
 		*/
 		$id = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
-		if ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype === 'user' && Auth::check()) {
+		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
 			$title = '<i class="icon-admin" title="' . I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>' . $title;
 		}
 
@@ -117,6 +117,8 @@ class HtmlBlockModule extends Module implements ModuleBlockInterface {
 
 	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
+		global $WT_TREE;
+
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
 			set_block_setting($block_id, 'gedcom', Filter::post('gedcom'));
 			set_block_setting($block_id, 'title', Filter::post('title'));
@@ -156,23 +158,23 @@ class HtmlBlockModule extends Module implements ModuleBlockInterface {
 								</tr>
 								<tr>
 									<td class="facts_label">'. I18N::translate('Total surnames') . '</td>
-									<td class="facts_value" align="right"><a href="indilist.php?show_all=yes&amp;surname_sublist=yes&amp;ged='.WT_GEDURL . '">#totalSurnames#</a></td>
+									<td class="facts_value" align="right"><a href="indilist.php?show_all=yes&amp;surname_sublist=yes&amp;ged='. $WT_TREE->getNameUrl() . '">#totalSurnames#</a></td>
 								</tr>
 								<tr>
 									<td class="facts_label">'. I18N::translate('Families') . '</td>
-									<td class="facts_value" align="right"><a href="famlist.php?ged='.WT_GEDURL . '">#totalFamilies#</a></td>
+									<td class="facts_value" align="right"><a href="famlist.php?ged='. $WT_TREE->getNameUrl() . '">#totalFamilies#</a></td>
 								</tr>
 								<tr>
 									<td class="facts_label">'. I18N::translate('Sources') . '</td>
-									<td class="facts_value" align="right"><a href="sourcelist.php?ged='.WT_GEDURL . '">#totalSources#</a></td>
+									<td class="facts_value" align="right"><a href="sourcelist.php?ged='. $WT_TREE->getNameUrl() . '">#totalSources#</a></td>
 								</tr>
 								<tr>
 									<td class="facts_label">'. I18N::translate('Media objects') . '</td>
-									<td class="facts_value" align="right"><a href="medialist.php?ged='.WT_GEDURL . '">#totalMedia#</a></td>
+									<td class="facts_value" align="right"><a href="medialist.php?ged='. $WT_TREE->getNameUrl() . '">#totalMedia#</a></td>
 								</tr>
 								<tr>
 									<td class="facts_label">'. I18N::translate('Repositories') . '</td>
-									<td class="facts_value" align="right"><a href="repolist.php?ged='.WT_GEDURL . '">#totalRepositories#</a></td>
+									<td class="facts_value" align="right"><a href="repolist.php?ged='. $WT_TREE->getNameUrl() . '">#totalRepositories#</a></td>
 								</tr>
 								<tr>
 									<td class="facts_label">'. I18N::translate('Total events') . '</td>

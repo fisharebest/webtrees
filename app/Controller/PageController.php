@@ -217,11 +217,11 @@ class PageController extends BaseController {
 
 		static $individual; // Only query the DB once.
 
-		if (!$individual && WT_USER_ROOT_ID) {
-			$individual = Individual::getInstance(WT_USER_ROOT_ID);
+		if (!$individual && $WT_TREE->getUserPreference(Auth::user(), 'rootid')) {
+			$individual = Individual::getInstance($WT_TREE->getUserPreference(Auth::user(), 'rootid'));
 		}
-		if (!$individual && WT_USER_GEDCOM_ID) {
-			$individual = Individual::getInstance(WT_USER_GEDCOM_ID);
+		if (!$individual && $WT_TREE->getUserPreference(Auth::user(), 'gedcomid')) {
+			$individual = Individual::getInstance($WT_TREE->getUserPreference(Auth::user(), 'gedcomid'));
 		}
 		if (!$individual) {
 			$individual = Individual::getInstance($WT_TREE->getPreference('PEDIGREE_ROOT_ID'));

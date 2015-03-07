@@ -226,7 +226,7 @@ function print_fact(Fact $fact, GedcomRecord $record) {
 		echo '<div class="field"><a href="mailto:', Filter::escapeHtml($fact->getValue()), '">', Filter::escapeHtml($fact->getValue()), '</a></div>';
 		break;
 	case 'FILE':
-		if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
+		if (Auth::isEditor($fact->getParent()->getTree())) {
 			echo '<div class="field">', Filter::escapeHtml($fact->getValue()), '</div>';
 		}
 		break;
@@ -580,13 +580,9 @@ function print_media_links($factrec, $level) {
 				}
 				echo '<div class="media-display"><div class="media-display-image">';
 				echo $media->displayImage();
-				echo '</div>'; // close div "media-display-image"
+				echo '</div>';
 				echo '<div class="media-display-title">';
-				if (Auth::isSearchEngine()) {
-					echo $media->getFullName();
-				} else {
-					echo '<a href="mediaviewer.php?mid=', $media->getXref(), '&amp;ged=', WT_GEDURL, '">', $media->getFullName(), '</a>';
-				}
+				echo '<a href="', $media->getHtmlUrl(), '">', $media->getFullName(), '</a>';
 				// NOTE: echo the notes of the media
 				echo '<p>';
 				echo print_fact_notes($media->getGedcom(), 1);

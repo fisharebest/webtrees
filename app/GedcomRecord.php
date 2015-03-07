@@ -38,13 +38,13 @@ class GedcomRecord {
 	/** @var Fact[] facts extracted from $gedcom/$pending */
 	protected $facts;
 
-	/** @var boolean Can we display details of this record to WT_PRIV_PUBLIC */
+	/** @var boolean Can we display details of this record to Auth::PRIV_PRIVATE */
 	private $disp_public;
 
-	/** @var boolean Can we display details of this record to WT_PRIV_USER */
+	/** @var boolean Can we display details of this record to Auth::PRIV_USER */
 	private $disp_user;
 
-	/** @var boolean Can we display details of this record to WT_PRIV_NONE */
+	/** @var boolean Can we display details of this record to Auth::PRIV_NONE */
 	private $disp_none;
 
 	/** @var string[][] All the names of this individual */
@@ -140,7 +140,7 @@ class GedcomRecord {
 		}
 
 		// If we can edit, then we also need to be able to see pending records.
-		if (WT_USER_CAN_EDIT) {
+		if (Auth::isEditor(Tree::findById($gedcom_id))) {
 			if (!isset(self::$pending_record_cache[$gedcom_id])) {
 				// Fetch all pending records in one database query
 				self::$pending_record_cache[$gedcom_id] = array();
@@ -359,16 +359,16 @@ class GedcomRecord {
 		}
 
 		// We should always be able to see our own record (unless an admin is applying download restrictions)
-		if ($this->getXref() === WT_USER_GEDCOM_ID && $this->tree->getTreeId() === WT_GED_ID && $access_level === WT_USER_ACCESS_LEVEL) {
+		if ($this->getXref() === $this->tree->getUserPreference(Auth::user(), 'gedcomid') && $access_level === Auth::accessLevel($this->tree)) {
 			return true;
 		}
 
 		// Does this record have a RESN?
 		if (strpos($this->gedcom, "\n1 RESN confidential")) {
-			return WT_PRIV_NONE >= $access_level;
+			return Auth::PRIV_NONE >= $access_level;
 		}
 		if (strpos($this->gedcom, "\n1 RESN privacy")) {
-			return WT_PRIV_USER >= $access_level;
+			return Auth::PRIV_USER >= $access_level;
 		}
 		if (strpos($this->gedcom, "\n1 RESN none")) {
 			return true;
@@ -381,7 +381,7 @@ class GedcomRecord {
 		}
 
 		// Privacy rules do not apply to admins
-		if (WT_PRIV_NONE >= $access_level) {
+		if (Auth::PRIV_NONE >= $access_level) {
 			return true;
 		}
 
@@ -411,30 +411,34 @@ class GedcomRecord {
 	/**
 	 * Can the details of this record be shown?
 	 *
-	 * @param integer $access_level
+	 * @param integer|null $access_level
 	 *
 	 * @return boolean
 	 */
-	public function canShow($access_level = WT_USER_ACCESS_LEVEL) {
-		// CACHING: this function can take three different parameters,
+	public function canShow($access_level = null) {
+		if ($access_level === null) {
+			$access_level = Auth::accessLevel($this->tree);
+		}
+
+// CACHING: this function can take three different parameters,
 		// and therefore needs three different caches for the result.
 		switch ($access_level) {
-		case WT_PRIV_PUBLIC: // visitor
+		case Auth::PRIV_PRIVATE: // visitor
 			if ($this->disp_public === null) {
-				$this->disp_public = $this->canShowRecord(WT_PRIV_PUBLIC);
+				$this->disp_public = $this->canShowRecord(Auth::PRIV_PRIVATE);
 			}
 			return $this->disp_public;
-		case WT_PRIV_USER: // member
+		case Auth::PRIV_USER: // member
 			if ($this->disp_user === null) {
-				$this->disp_user = $this->canShowRecord(WT_PRIV_USER);
+				$this->disp_user = $this->canShowRecord(Auth::PRIV_USER);
 			}
 			return $this->disp_user;
-		case WT_PRIV_NONE: // admin
+		case Auth::PRIV_NONE: // admin
 			if ($this->disp_none === null) {
-				$this->disp_none = $this->canShowRecord(WT_PRIV_NONE);
+				$this->disp_none = $this->canShowRecord(Auth::PRIV_NONE);
 			}
 			return $this->disp_none;
-		case WT_PRIV_HIDE: // hidden from admins
+		case Auth::PRIV_HIDE: // hidden from admins
 			// We use this value to bypass privacy checks.  For example,
 			// when downloading data or when calculating privacy itself.
 			return true;
@@ -447,11 +451,15 @@ class GedcomRecord {
 	/**
 	 * Can the name of this record be shown?
 	 *
-	 * @param integer $access_level
+	 * @param integer|null $access_level
 	 *
 	 * @return boolean
 	 */
-	public function canShowName($access_level = WT_USER_ACCESS_LEVEL) {
+	public function canShowName($access_level = null) {
+		if ($access_level === null) {
+			$access_level = Auth::accessLevel($this->tree);
+		}
+
 		return $this->canShow($access_level);
 	}
 
@@ -461,7 +469,7 @@ class GedcomRecord {
 	 * @return boolean
 	 */
 	public function canEdit() {
-		return WT_USER_GEDCOM_ADMIN || WT_USER_CAN_EDIT && strpos($this->gedcom, "\n1 RESN locked") === false;
+		return Auth::isManager($this->tree) || Auth::isEditor($this->tree) && strpos($this->gedcom, "\n1 RESN locked") === false;
 	}
 
 	/**
@@ -473,7 +481,7 @@ class GedcomRecord {
 	 * @return string
 	 */
 	public function privatizeGedcom($access_level) {
-		if ($access_level == WT_PRIV_HIDE) {
+		if ($access_level == Auth::PRIV_HIDE) {
 			// We may need the original record, for example when downloading a GEDCOM or clippings cart
 			return $this->gedcom;
 		} elseif ($this->canShow($access_level)) {
@@ -1010,15 +1018,19 @@ class GedcomRecord {
 	/**
 	 * The facts and events for this record.
 	 *
-	 * @param string  $filter
-	 * @param boolean $sort
-	 * @param integer $access_level
-	 * @param boolean $override     Include private records, to allow us to implement $SHOW_PRIVATE_RELATIONSHIPS and $SHOW_LIVING_NAMES.
+	 * @param string       $filter
+	 * @param boolean      $sort
+	 * @param integer|null $access_level
+	 * @param boolean      $override     Include private records, to allow us to implement $SHOW_PRIVATE_RELATIONSHIPS and $SHOW_LIVING_NAMES.
 	 *
 	 * @return Fact[]
 	 */
-	public function getFacts($filter = null, $sort = false, $access_level = WT_USER_ACCESS_LEVEL, $override = false) {
-		$facts = array();
+	public function getFacts($filter = null, $sort = false, $access_level = null, $override = false) {
+		if ($access_level === null) {
+			$access_level = Auth::accessLevel($this->tree);
+		}
+
+			$facts = array();
 		if ($this->canShow($access_level) || $override) {
 			foreach ($this->facts as $fact) {
 				if (($filter == null || preg_match('/^' . $filter . '$/', $fact->getTag())) && $fact->canShow($access_level)) {
@@ -1139,7 +1151,7 @@ class GedcomRecord {
 		list($new_gedcom) = explode("\n", $old_gedcom, 2);
 
 		// Replacing (or deleting) an existing fact
-		foreach ($this->getFacts(null, false, WT_PRIV_HIDE) as $fact) {
+		foreach ($this->getFacts(null, false, Auth::PRIV_HIDE) as $fact) {
 			if (!$fact->isPendingDeletion()) {
 				if ($fact->getFactId() === $fact_id) {
 					if ($gedcom) {

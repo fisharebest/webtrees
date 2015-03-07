@@ -63,7 +63,7 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 
 	/** {@inheritdoc} */
 	public function getTabContent() {
-		global $controller;
+		global $controller, $WT_TREE;
 
 		$block_ids =
 			Database::prepare(
@@ -85,13 +85,13 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 			if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
 				$html .= '<div class="story_title descriptionbox center rela">' . get_block_setting($block_id, 'title') . '</div>';
 				$html .= '<div class="story_body optionbox">' . get_block_setting($block_id, 'story_body') . '</div>';
-				if (WT_USER_CAN_EDIT) {
+				if (Auth::isEditor($WT_TREE)) {
 					$html .= '<div class="story_edit"><a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_edit&amp;block_id=' . $block_id . '">';
 					$html .= I18N::translate('Edit story') . '</a></div>';
 				}
 			}
 		}
-		if (WT_USER_GEDCOM_ADMIN && !$html) {
+		if (Auth::isManager($WT_TREE) && !$html) {
 			$html .= '<div class="news_title center">' . $this->getTitle() . '</div>';
 			$html .= '<div><a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_edit&amp;xref=' . $controller->record->getXref() . '">';
 			$html .= I18N::translate('Add a story') . '</a></div><br>';
@@ -139,7 +139,9 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 	 * Show and process a form to edit a story.
 	 */
 	private function edit() {
-		if (WT_USER_CAN_EDIT) {
+		global $WT_TREE;
+
+		if (Auth::isEditor($WT_TREE)) {
 			if (Filter::postBool('save') && Filter::checkCsrf()) {
 				$block_id = Filter::postInteger('block_id');
 				if ($block_id) {
@@ -245,7 +247,9 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 	 * Respond to a request to delete a story.
 	 */
 	private function delete() {
-		if (WT_USER_CAN_EDIT) {
+		global $WT_TREE;
+
+		if (Auth::isEditor($WT_TREE)) {
 			$block_id = Filter::getInteger('block_id');
 
 			Database::prepare(
@@ -267,7 +271,7 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 	private function config() {
 		$controller = new PageController;
 		$controller
-			->restrictAccess(WT_USER_GEDCOM_ADMIN)
+			->restrictAccess(Auth::isAdmin())
 			->setPageTitle($this->getTitle())
 			->pageHeader()
 			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
@@ -440,7 +444,7 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 
 	/** {@inheritdoc} */
 	public function defaultAccessLevel() {
-		return WT_PRIV_HIDE;
+		return Auth::PRIV_HIDE;
 	}
 
 	/** {@inheritdoc} */

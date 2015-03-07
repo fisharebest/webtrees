@@ -60,12 +60,13 @@ function send404AsImage() {
  * before returning it back to the media firewall
  *
  * @param resource $im
+ * @param Tree     $tree
  *
  * @return resource
  */
-function applyWatermark($im) {
+function applyWatermark($im, Tree $tree) {
 	// text to watermark with
-	$word1_text = WT_TREE_TITLE;
+	$word1_text = $tree->getTitle();
 	// maximum font size for “word1” ; will be automaticaly reduced to fit in the image
 	$word1_maxsize = 100;
 	// rgb color codes for text
@@ -308,7 +309,7 @@ if ($type) {
 	// if this is not a thumbnail, or WATERMARK_THUMB is true
 	if (($which === 'main') || $WT_TREE->getPreference('WATERMARK_THUMB')) {
 		// if the user’s priv’s justify it...
-		if (WT_USER_ACCESS_LEVEL > $WT_TREE->getPreference('SHOW_NO_WATERMARK')) {
+		if (Auth::accessLevel($WT_TREE) > $WT_TREE->getPreference('SHOW_NO_WATERMARK')) {
 			// add a watermark
 			$usewatermark = true;
 		}
@@ -389,7 +390,7 @@ if ($generatewatermark) {
 
 	if (function_exists($imCreateFunc) && function_exists($imSendFunc)) {
 		$im = $imCreateFunc($serverFilename);
-		$im = applyWatermark($im);
+		$im = applyWatermark($im, $WT_TREE);
 
 		// save the image, if preferences allow
 		if ($which === 'thumb' && $WT_TREE->getPreference('SAVE_WATERMARK_THUMB') || $which === 'main' && $WT_TREE->getPreference('SAVE_WATERMARK_IMAGE')) {

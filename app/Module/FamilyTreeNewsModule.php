@@ -32,7 +32,7 @@ class FamilyTreeNewsModule extends Module implements ModuleBlockInterface {
 
 	/** {@inheritdoc} */
 	public function getBlock($block_id, $template = true, $cfg = null) {
-		global $ctype;
+		global $ctype, $WT_TREE;
 
 		switch (Filter::get('action')) {
 		case 'deletenews':
@@ -67,7 +67,7 @@ class FamilyTreeNewsModule extends Module implements ModuleBlockInterface {
 
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
-		if ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype === 'user' && Auth::check()) {
+		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
 			$title = '<i class="icon-admin" title="' . I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
 		} else {
 			$title = '';
@@ -99,13 +99,13 @@ class FamilyTreeNewsModule extends Module implements ModuleBlockInterface {
 			}
 			$content .= $news->body;
 			// Print Admin options for this News item
-			if (WT_USER_GEDCOM_ADMIN) {
+			if (Auth::isManager($WT_TREE)) {
 				$content .= '<hr>' . '<a href="#" onclick="window.open(\'editnews.php?news_id=\'+' . $news->news_id . ', \'_blank\', news_window_specs); return false;">' . I18N::translate('Edit') . '</a> | ' . '<a href="index.php?action=deletenews&amp;news_id=' . $news->news_id . '&amp;ctype=' . $ctype . '" onclick="return confirm(\'' . I18N::translate('Are you sure you want to delete this news article?') . "');\">" . I18N::translate('Delete') . '</a><br>';
 			}
 			$content .= '</div>';
 		}
 		$printedAddLink = false;
-		if (WT_USER_GEDCOM_ADMIN) {
+		if (Auth::isManager($WT_TREE)) {
 			$content .= "<a href=\"#\" onclick=\"window.open('editnews.php?gedcom_id='+WT_GED_ID, '_blank', news_window_specs); return false;\">" . I18N::translate('Add a news article') . "</a>";
 			$printedAddLink = true;
 		}

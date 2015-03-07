@@ -602,14 +602,14 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 }
 
 define('PGV_PHPGEDVIEW', true);
-define('PGV_PRIV_PUBLIC', WT_PRIV_PUBLIC);
-define('PGV_PRIV_USER', WT_PRIV_USER);
-define('PGV_PRIV_NONE', WT_PRIV_NONE);
-define('PGV_PRIV_HIDE', WT_PRIV_HIDE);
-$PRIV_PUBLIC = WT_PRIV_PUBLIC;
-$PRIV_USER = WT_PRIV_USER;
-$PRIV_NONE = WT_PRIV_NONE;
-$PRIV_HIDE = WT_PRIV_HIDE;
+define('PGV_PRIV_PUBLIC', Auth::PRIV_PRIVATE);
+define('PGV_PRIV_USER', Auth::PRIV_USER);
+define('PGV_PRIV_NONE', Auth::PRIV_NONE);
+define('PGV_PRIV_HIDE', Auth::PRIV_HIDE);
+$PRIV_PUBLIC = Auth::PRIV_PRIVATE;
+$PRIV_USER = Auth::PRIV_USER;
+$PRIV_NONE = Auth::PRIV_NONE;
+$PRIV_HIDE = Auth::PRIV_HIDE;
 
 // Old versions of PGV used a $GEDCOMS[] array.
 // New versions used a database.

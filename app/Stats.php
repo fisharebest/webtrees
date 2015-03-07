@@ -2134,7 +2134,7 @@ class Stats {
 	 * @return string
 	 */
 	private function topTenOldestAliveQuery($type = 'list', $sex = 'BOTH', $params = array()) {
-		if (!WT_USER_CAN_ACCESS) {
+		if (!Auth::isMember($this->tree)) {
 			return I18N::translate('This information is private and cannot be shown.');
 		}
 		if ($sex == 'F') {

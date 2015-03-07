@@ -74,7 +74,7 @@ if ($ctype === 'user') {
 	$controller->restrictAccess(Auth::check());
 }
 $controller
-	->setPageTitle($ctype === 'user' ? I18N::translate('My page') : WT_TREE_TITLE)
+	->setPageTitle($ctype === 'user' ? I18N::translate('My page') : $WT_TREE->getTitle())
 	->setMetaRobots('index,follow')
 	->setCanonicalUrl(WT_SCRIPT_NAME . '?ctype=' . $ctype . '&amp;ged=' . WT_GEDCOM)
 	->pageHeader()
@@ -136,7 +136,7 @@ echo '<div id="link_change_blocks">';
 
 if ($ctype === 'user') {
 	echo '<a href="index_edit.php?user_id=' . Auth::id() . '">', I18N::translate('Change the blocks on this page'), '</a>';
-} elseif ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN) {
+} elseif ($ctype === 'gedcom' && Auth::isManager($WT_TREE)) {
 	echo '<a href="index_edit.php?gedcom_id=' . WT_GED_ID . '">', I18N::translate('Change the blocks on this page'), '</a>';
 }
 
