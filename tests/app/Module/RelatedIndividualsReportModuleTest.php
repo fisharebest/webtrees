@@ -16,4 +16,26 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-return new FamiliesSidebarModule(__DIR__);
+use PHPUnit_Framework_TestCase;
+
+/**
+ * Test harness for the class RelatedIndividualsReportModule
+ */
+class RelatedIndividualsReportModuleTest extends PHPUnit_Framework_TestCase {
+	/**
+	 * Prepare the environment for these tests
+	 *
+	 * @return void
+	 */
+	public function setUp() {
+	}
+
+	/**
+	 * Test that the class exists
+	 *
+	 * @return void
+	 */
+	public function testClassExists() {
+		$this->assertTrue(class_exists(__NAMESPACE__ . '\RelatedIndividualsReportModule'));
+	}
+}

@@ -19,9 +19,9 @@ namespace Fisharebest\Webtrees;
 use Zend_Session;
 
 /**
- * Class FamiliesModule
+ * Class FamiliesSidebarModule
  */
-class FamiliesModule extends Module implements ModuleSidebarInterface {
+class FamiliesSidebarModule extends Module implements ModuleSidebarInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module/sidebar */ I18N::translate('Family list');

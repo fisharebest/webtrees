@@ -19,9 +19,9 @@ namespace Fisharebest\Webtrees;
 use PHPUnit_Framework_TestCase;
 
 /**
- * Test harness for the class ModuleTabInterface
+ * Test harness for the class CkeditorModule
  */
-class ModuleTabTest extends PHPUnit_Framework_TestCase {
+class CkeditorModuleTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 *
@@ -36,6 +36,6 @@ class ModuleTabTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testClassExists() {
-		$this->assertTrue(interface_exists(__NAMESPACE__ . '\ModuleTabInterface'));
+		$this->assertTrue(class_exists(__NAMESPACE__ . '\CkeditorModule'));
 	}
 }

@@ -19,9 +19,9 @@ namespace Fisharebest\Webtrees;
 use PHPUnit_Framework_TestCase;
 
 /**
- * Test harness for the class ModuleSidebarInterface
+ * Test harness for the class FamilyTreeFavoritesModule
  */
-class ModuleSidebarTest extends PHPUnit_Framework_TestCase {
+class FamilyTreeFavoritesModuleTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 *
@@ -36,6 +36,6 @@ class ModuleSidebarTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testClassExists() {
-		$this->assertTrue(interface_exists(__NAMESPACE__ . '\ModuleSidebarInterface'));
+		$this->assertTrue(class_exists(__NAMESPACE__ . '\FamilyTreeFavoritesModule'));
 	}
 }
