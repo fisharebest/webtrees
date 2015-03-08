@@ -171,10 +171,10 @@ function edit_language_checkboxes($parameter_name, $accepted_languages) {
  */
 function edit_field_access_level($name, $selected = '', $extra = '') {
 	$ACCESS_LEVEL = array(
-		WT_PRIV_PUBLIC=> I18N::translate('Show to visitors'),
-		WT_PRIV_USER  => I18N::translate('Show to members'),
-		WT_PRIV_NONE  => I18N::translate('Show to managers'),
-		WT_PRIV_HIDE  => I18N::translate('Hide from everyone')
+		Auth::PRIV_PRIVATE=> I18N::translate('Show to visitors'),
+		Auth::PRIV_USER  => I18N::translate('Show to members'),
+		Auth::PRIV_NONE  => I18N::translate('Show to managers'),
+		Auth::PRIV_HIDE  => I18N::translate('Hide from everyone')
 	);
 	return select_edit_control($name, $ACCESS_LEVEL, null, $selected, $extra);
 }
@@ -1007,7 +1007,7 @@ function print_add_layer($tag, $level = 2) {
 		break;
 
 	case 'OBJE':
-		if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
+		if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($WT_TREE)) {
 			echo "<a href=\"#\" onclick=\"return expand_layer('newobje');\"><i id=\"newobje_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a new media object'), '</a>';
 			echo help_link('OBJE');
 			echo '<br>';

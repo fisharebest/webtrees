@@ -86,7 +86,7 @@ class FamilyController extends GedcomRecordController {
 		// edit menu
 		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-fam');
 
-		if (WT_USER_CAN_EDIT) {
+		if (Auth::isEditor($this->record->getTree())) {
 			// edit_fam / members
 			$submenu = new Menu(I18N::translate('Change family members'), '#', 'menu-fam-change');
 			$submenu->setOnclick("return change_family_members('" . $this->record->getXref() . "');");
@@ -106,14 +106,14 @@ class FamilyController extends GedcomRecordController {
 		}
 
 		// delete
-		if (WT_USER_CAN_EDIT) {
+		if (Auth::isEditor($this->record->getTree())) {
 			$submenu = new Menu(I18N::translate('Delete'), '#', 'menu-fam-del');
 			$submenu->setOnclick("return delete_family('" . I18N::translate('Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?') . "', '" . $this->record->getXref() . "');");
 			$menu->addSubmenu($submenu);
 		}
 
 		// edit raw
-		if (Auth::isAdmin() || WT_USER_CAN_EDIT && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
+		if (Auth::isAdmin() || Auth::isEditor($this->record->getTree()) && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
 			$submenu = new Menu(I18N::translate('Edit raw GEDCOM'), '#', 'menu-fam-editraw');
 			$submenu->setOnclick("return edit_raw('" . $this->record->getXref() . "');");
 			$menu->addSubmenu($submenu);
@@ -159,7 +159,7 @@ class FamilyController extends GedcomRecordController {
 	 * Print the facts
 	 */
 	public function printFamilyFacts() {
-		global $linkToID, $WT_TREE;
+		global $linkToID;
 
 		$linkToID = $this->record->getXref(); // -- Tell addmedia.php what to link to
 
@@ -173,7 +173,7 @@ class FamilyController extends GedcomRecordController {
 			echo '<tr><td class="messagebox" colspan="2">', I18N::translate('No facts for this family.'), '</td></tr>';
 		}
 
-		if (WT_USER_CAN_EDIT) {
+		if (Auth::isEditor($this->record->getTree())) {
 			print_add_new_fact($this->record->getXref(), $indifacts, 'FAM');
 
 			echo '<tr><td class="descriptionbox">';
@@ -188,7 +188,7 @@ class FamilyController extends GedcomRecordController {
 			echo "<a href=\"#\" onclick=\"return add_new_record('" . $this->record->getXref() . "','SHARED_NOTE');\">", I18N::translate('Add a new shared note'), '</a>';
 			echo '</td></tr>';
 
-			if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
+			if ($this->record->getTree()->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($this->record->getTree())) {
 				echo '<tr><td class="descriptionbox">';
 				echo I18N::translate('Media object');
 				echo '</td><td class="optionbox">';

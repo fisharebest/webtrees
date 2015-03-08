@@ -55,7 +55,7 @@ foreach ($vars as $name => $var) {
 		case 'INDI':
 			$record = Individual::getInstance($var);
 			if ($record && $record->canShowName()) {
-				$newvars[$name]['gedcom'] = $record->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+				$newvars[$name]['gedcom'] = $record->privatizeGedcom(Auth::accessLevel($WT_TREE));
 			} else {
 				$action = 'setup';
 			}
@@ -63,7 +63,7 @@ foreach ($vars as $name => $var) {
 		case 'FAM':
 			$record = Family::getInstance($var);
 			if ($record && $record->canShowName()) {
-				$newvars[$name]['gedcom'] = $record->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+				$newvars[$name]['gedcom'] = $record->privatizeGedcom(Auth::accessLevel($WT_TREE));
 			} else {
 				$action = 'setup';
 			}
@@ -71,7 +71,7 @@ foreach ($vars as $name => $var) {
 		case 'SOUR':
 			$record = Source::getInstance($var);
 			if ($record && $record->canShowName()) {
-				$newvars[$name]['gedcom'] = $record->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+				$newvars[$name]['gedcom'] = $record->privatizeGedcom(Auth::accessLevel($WT_TREE));
 			} else {
 				$action = 'setup';
 			}

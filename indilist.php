@@ -60,19 +60,19 @@ if ($show_all === 'yes') {
 		$alpha   = '';
 		$surname = '';
 		$legend  = I18N::translate('All');
-		$url     = WT_SCRIPT_NAME . '?show_all=yes&amp;ged=' . WT_GEDURL;
+		$url     = WT_SCRIPT_NAME . '?show_all=yes&amp;ged=' . $WT_TREE->getNameUrl();
 		$show    = 'indi';
 	} elseif ($falpha) {
 		$alpha   = '';
 		$surname = '';
 		$legend  = I18N::translate('All') . ', ' . Filter::escapeHtml($falpha) . '…';
-		$url     = WT_SCRIPT_NAME . '?show_all=yes&amp;ged=' . WT_GEDURL;
+		$url     = WT_SCRIPT_NAME . '?show_all=yes&amp;ged=' . $WT_TREE->getNameUrl();
 		$show    = 'indi';
 	} else {
 		$alpha   = '';
 		$surname = '';
 		$legend  = I18N::translate('All');
-		$url     = WT_SCRIPT_NAME . '?show_all=yes' . '&amp;ged=' . WT_GEDURL;
+		$url     = WT_SCRIPT_NAME . '?show_all=yes' . '&amp;ged=' . $WT_TREE->getNameUrl();
 		$show    = Filter::get('show', 'surn|indi', 'surn');
 	}
 } elseif ($surname) {
@@ -83,39 +83,39 @@ if ($show_all === 'yes') {
 	} else {
 		$legend = Filter::escapeHtml($surname);
 	}
-	$url = WT_SCRIPT_NAME . '?surname=' . rawurlencode($surname) . '&amp;ged=' . WT_GEDURL;
+	$url = WT_SCRIPT_NAME . '?surname=' . rawurlencode($surname) . '&amp;ged=' . $WT_TREE->getNameUrl();
 	switch ($falpha) {
 	case '':
 		break;
 	case '@':
 		$legend .= ', ' . $UNKNOWN_PN;
-		$url .= '&amp;falpha=' . rawurlencode($falpha) . '&amp;ged=' . WT_GEDURL;
+		$url .= '&amp;falpha=' . rawurlencode($falpha) . '&amp;ged=' . $WT_TREE->getNameUrl();
 		break;
 	default:
 		$legend .= ', ' . Filter::escapeHtml($falpha) . '…';
-		$url .= '&amp;falpha=' . rawurlencode($falpha) . '&amp;ged=' . WT_GEDURL;
+		$url .= '&amp;falpha=' . rawurlencode($falpha) . '&amp;ged=' . $WT_TREE->getNameUrl();
 		break;
 	}
 	$show = 'indi'; // SURN list makes no sense here
 } elseif ($alpha === '@') {
 	$show_all = 'no';
 	$legend   = $UNKNOWN_NN;
-	$url      = WT_SCRIPT_NAME . '?alpha=' . rawurlencode($alpha) . '&amp;ged=' . WT_GEDURL;
+	$url      = WT_SCRIPT_NAME . '?alpha=' . rawurlencode($alpha) . '&amp;ged=' . $WT_TREE->getNameUrl();
 	$show     = 'indi'; // SURN list makes no sense here
 } elseif ($alpha === ',') {
 	$show_all = 'no';
 	$legend   = I18N::translate('None');
-	$url      = WT_SCRIPT_NAME . '?alpha=' . rawurlencode($alpha) . '&amp;ged=' . WT_GEDURL;
+	$url      = WT_SCRIPT_NAME . '?alpha=' . rawurlencode($alpha) . '&amp;ged=' . $WT_TREE->getNameUrl();
 	$show     = 'indi'; // SURN list makes no sense here
 } elseif ($alpha) {
 	$show_all = 'no';
 	$legend   = Filter::escapeHtml($alpha) . '…';
-	$url      = WT_SCRIPT_NAME . '?alpha=' . rawurlencode($alpha) . '&amp;ged=' . WT_GEDURL;
+	$url      = WT_SCRIPT_NAME . '?alpha=' . rawurlencode($alpha) . '&amp;ged=' . $WT_TREE->getNameUrl();
 	$show     = Filter::get('show', 'surn|indi', 'surn');
 } else {
 	$show_all = 'no';
 	$legend   = '…';
-	$url      = WT_SCRIPT_NAME . '?ged=' . WT_GEDURL;
+	$url      = WT_SCRIPT_NAME . '?ged=' . $WT_TREE->getNameUrl();
 	$show     = 'none'; // Don't show lists until something is chosen
 }
 $legend = '<span dir="auto">' . $legend . '</span>';
@@ -142,9 +142,9 @@ foreach (QueryName::surnameAlpha($show_marnm === 'yes', false, WT_GED_ID) as $le
 	}
 	if ($count) {
 		if ($letter == $alpha) {
-			$list[] = '<a href="' . WT_SCRIPT_NAME . '?alpha=' . rawurlencode($letter) . '&amp;ged=' . WT_GEDURL . '" class="warning" title="' . I18N::number($count) . '">' . $html . '</a>';
+			$list[] = '<a href="' . WT_SCRIPT_NAME . '?alpha=' . rawurlencode($letter) . '&amp;ged=' . $WT_TREE->getNameUrl() . '" class="warning" title="' . I18N::number($count) . '">' . $html . '</a>';
 		} else {
-			$list[] = '<a href="' . WT_SCRIPT_NAME . '?alpha=' . rawurlencode($letter) . '&amp;ged=' . WT_GEDURL . '" title="' . I18N::number($count) . '">' . $html . '</a>';
+			$list[] = '<a href="' . WT_SCRIPT_NAME . '?alpha=' . rawurlencode($letter) . '&amp;ged=' . $WT_TREE->getNameUrl() . '" title="' . I18N::number($count) . '">' . $html . '</a>';
 		}
 	} else {
 		$list[] = $html;
@@ -156,7 +156,7 @@ if (!Auth::isSearchEngine()) {
 	if ($show_all === 'yes') {
 		$list[] = '<span class="warning">' . I18N::translate('All') . '</span>';
 	} else {
-		$list[] = '<a href="' . WT_SCRIPT_NAME . '?show_all=yes' . '&amp;ged=' . WT_GEDURL . '">' . I18N::translate('All') . '</a>';
+		$list[] = '<a href="' . WT_SCRIPT_NAME . '?show_all=yes' . '&amp;ged=' . $WT_TREE->getNameUrl() . '">' . I18N::translate('All') . '</a>';
 	}
 }
 echo '<p class="center alpha_index">', join(' | ', $list), '</p>';

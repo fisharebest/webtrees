@@ -273,7 +273,7 @@ document.onmouseup = function () {
 							<?php echo $indi->getAddName(); ?><br>
 						</a>
 						<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo Filter::escapeHtml($pid); ?>">
-						<a href="timeline.php?<?php echo $controller->pidlinks; ?>&amp;scale=<?php echo $controller->scale; ?>&amp;remove=<?php echo $pid; ?>&amp;ged=<?php echo WT_GEDURL; ?>" >
+						<a href="timeline.php?<?php echo $controller->pidlinks; ?>&amp;scale=<?php echo $controller->scale; ?>&amp;remove=<?php echo $pid; ?>&amp;ged=<?php echo $WT_TREE->getNameUrl(); ?>" >
 						<span class="details1"><?php echo I18N::translate('Remove individual'); ?></span></a>
 						<?php if (!empty($controller->birthyears[$pid])) { ?>
 							<span class="details1"><br>
@@ -288,7 +288,7 @@ document.onmouseup = function () {
 						?>
 						<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo Filter::escapeHtml($pid); ?>">
 						<br>
-				<a href="timeline.php?<?php echo $controller->pidlinks; ?>&amp;scale=<?php echo $controller->scale; ?>&amp;remove=<?php echo $pid; ?>&amp;ged=<?php echo WT_GEDURL; ?>" >
+				<a href="timeline.php?<?php echo $controller->pidlinks; ?>&amp;scale=<?php echo $controller->scale; ?>&amp;remove=<?php echo $pid; ?>&amp;ged=<?php echo $WT_TREE->getNameUrl(); ?>" >
 							<span class="details1"><?php echo I18N::translate('Remove individual'); ?></span></a>
 						<br>
 					<?php } ?>
@@ -308,14 +308,14 @@ document.onmouseup = function () {
 				$scalemod = round($controller->scale * .2) + 1;
 				?>
 				<td class="list_value" style="padding: 5px;">
-					<a href="<?php echo WT_SCRIPT_NAME . "?" . $controller->pidlinks . "scale=" . ($controller->scale + $scalemod); ?>&amp;ged=<?php echo WT_GEDURL; ?>" class="icon-zoomin" title="<?php echo I18N::translate('Zoom in'); ?>"></a><br>
-					<a href="<?php echo WT_SCRIPT_NAME . "?" . $controller->pidlinks . "scale=" . ($controller->scale - $scalemod); ?>&amp;ged=<?php echo WT_GEDURL; ?>" class="icon-zoomout" title="<?php echo I18N::translate('Zoom out'); ?>"></a><br>
-					<input type="button" value="<?php echo I18N::translate('Clear chart'); ?>" onclick="window.location = 'timeline.php?ged=<?php echo WT_GEDURL; ?>';">
+					<a href="<?php echo WT_SCRIPT_NAME . "?" . $controller->pidlinks . "scale=" . ($controller->scale + $scalemod); ?>&amp;ged=<?php echo $WT_TREE->getNameUrl(); ?>" class="icon-zoomin" title="<?php echo I18N::translate('Zoom in'); ?>"></a><br>
+					<a href="<?php echo WT_SCRIPT_NAME . "?" . $controller->pidlinks . "scale=" . ($controller->scale - $scalemod); ?>&amp;ged=<?php echo $WT_TREE->getNameUrl(); ?>" class="icon-zoomout" title="<?php echo I18N::translate('Zoom out'); ?>"></a><br>
+					<input type="button" value="<?php echo I18N::translate('Clear chart'); ?>" onclick="window.location = 'timeline.php?ged=<?php echo $WT_TREE->getNameUrl(); ?>';">
 				</td>
 			<?php } ?>
 		</tr>
 	</table>
-	<br><a href="lifespan.php?ged=<?php echo WT_GEDURL; ?>"><b><?php echo I18N::translate('Show lifespans'); ?></b></a>
+	<br><a href="lifespan.php?ged=<?php echo $WT_TREE->getNameUrl(); ?>"><b><?php echo I18N::translate('Show lifespans'); ?></b></a>
 </form>
 <?php
 if (count($controller->people) > 0) {

@@ -116,7 +116,7 @@ case 'updateraw':
 	$gedcom = '0 @' . $record->getXref() . '@ ' . $record::RECORD_TYPE;
 
 	// Retain any private facts
-	foreach ($record->getFacts(null, false, WT_PRIV_HIDE) as $fact) {
+	foreach ($record->getFacts(null, false, Auth::PRIV_HIDE) as $fact) {
 		if (!in_array($fact->getFactId(), $fact_ids)) {
 			$gedcom .= "\n" . $fact->getGedcom();
 		}
@@ -317,7 +317,7 @@ case 'edit':
 	}
 	if (Auth::isAdmin() || $WT_TREE->getPreference('SHOW_GEDCOM_RECORD')) {
 		echo
-			'<br><br><a href="edit_interface.php?action=editrawfact&amp;xref=', $xref, '&amp;fact_id=', $fact_id, '&amp;ged=', WT_GEDURL, '">',
+			'<br><br><a href="edit_interface.php?action=editrawfact&amp;xref=', $xref, '&amp;fact_id=', $fact_id, '&amp;ged=', $WT_TREE->getNameUrl(), '">',
 			I18N::translate('Edit raw GEDCOM'),
 			'</a>';
 	}
@@ -2797,7 +2797,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	// If we are editing an existing name, allow raw GEDCOM editing
 	if ($name_fact && (Auth::isAdmin() || $WT_TREE->getPreference('SHOW_GEDCOM_RECORD'))) {
 		echo
-			'<br><br><a href="edit_interface.php?action=editrawfact&amp;xref=', $xref, '&amp;fact_id=', $name_fact->getFactId(), '&amp;ged=', WT_GEDURL, '">',
+			'<br><br><a href="edit_interface.php?action=editrawfact&amp;xref=', $xref, '&amp;fact_id=', $name_fact->getFactId(), '&amp;ged=', $WT_TREE->getNameUrl(), '">',
 			I18N::translate('Edit raw GEDCOM'),
 			'</a>';
 	}

@@ -262,7 +262,8 @@ class FrequentlyAskedQuestionsModule extends Module implements ModuleMenuInterfa
 	 * Show a list of FAQs
 	 */
 	private function show() {
-		global $controller;
+		global $controller, $WT_TREE;
+
 		$controller = new PageController;
 		$controller
 			->setPageTitle(I18N::translate('Frequently asked questions'))
@@ -290,7 +291,7 @@ class FrequentlyAskedQuestionsModule extends Module implements ModuleMenuInterfa
 		echo '<h2 class="center">', I18N::translate('Frequently asked questions'), '</h2>';
 		// Instructions
 		echo '<div class="faq_italic">', I18N::translate('Click on a title to go straight to it, or scroll down to read them all');
-		if (WT_USER_GEDCOM_ADMIN) {
+		if (Auth::isManager($WT_TREE)) {
 			echo '<div class="faq_edit"><a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_config">', I18N::translate('Click here to add, edit, or delete'), '</a></div>';
 		}
 		echo '</div>';

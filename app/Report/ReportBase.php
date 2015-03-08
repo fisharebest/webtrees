@@ -966,7 +966,7 @@ function gedcomStartHandler($attrs) {
 	$newgedrec = '';
 	if (count($tags) < 2) {
 		$tmp = GedcomRecord::getInstance($attrs['id']);
-		$newgedrec = $tmp ? $tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL) : '';
+		$newgedrec = $tmp ? $tmp->privatizeGedcom(Auth::accessLevel($WT_TREE)) : '';
 	}
 	if (empty($newgedrec)) {
 		$tgedrec = $gedrec;
@@ -977,14 +977,14 @@ function gedcomStartHandler($attrs) {
 					$newgedrec = $vars[$match[1]]['gedcom'];
 				} else {
 					$tmp = GedcomRecord::getInstance($match[1]);
-					$newgedrec = $tmp ? $tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL) : '';
+					$newgedrec = $tmp ? $tmp->privatizeGedcom(Auth::accessLevel($WT_TREE)) : '';
 				}
 			} else {
 				if (preg_match("/@(.+)/", $tag, $match)) {
 					$gmatch = array();
 					if (preg_match("/\d $match[1] @([^@]+)@/", $tgedrec, $gmatch)) {
 						$tmp = GedcomRecord::getInstance($gmatch[1]);
-						$newgedrec = $tmp ? $tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL) : '';
+						$newgedrec = $tmp ? $tmp->privatizeGedcom(Auth::accessLevel($WT_TREE)) : '';
 						$tgedrec = $newgedrec;
 					} else {
 						$newgedrec = '';
@@ -2536,7 +2536,7 @@ function listStartHandler($attrs) {
 	if ($filters) {
 		foreach ($list as $key => $record) {
 			foreach ($filters as $filter) {
-				if (!preg_match("/" . $filter . "/i", $record->privatizeGedcom(WT_USER_ACCESS_LEVEL))) {
+				if (!preg_match("/" . $filter . "/i", $record->privatizeGedcom(Auth::accessLevel($WT_TREE)))) {
 					unset($list[$key]);
 					break;
 				}
@@ -2547,7 +2547,7 @@ function listStartHandler($attrs) {
 		$mylist = array();
 		foreach ($list as $indi) {
 			$key = $indi->getXref();
-			$grec = $indi->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+			$grec = $indi->privatizeGedcom(Auth::accessLevel($WT_TREE));
 			$keep = true;
 			foreach ($filters2 as $filter) {
 				if ($keep) {
@@ -2680,7 +2680,7 @@ function listEndHandler() {
 		$list_private = 0;
 		foreach ($list as $record) {
 			if ($record->canShow()) {
-				$gedrec = $record->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+				$gedrec = $record->privatizeGedcom(Auth::accessLevel($WT_TREE));
 				//-- start the sax parser
 				$repeat_parser = xml_parser_create();
 				$parser = $repeat_parser;
@@ -2924,7 +2924,7 @@ function relativesEndHandler() {
 				$generation = $value->generation;
 			}
 			$tmp = GedcomRecord::getInstance($key);
-			$gedrec = $tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+			$gedrec = $tmp->privatizeGedcom(Auth::accessLevel($WT_TREE));
 			//-- start the sax parser
 			$repeat_parser = xml_parser_create();
 			$parser = $repeat_parser;

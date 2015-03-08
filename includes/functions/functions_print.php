@@ -263,7 +263,7 @@ function format_asso_rela_record(Fact $event) {
 						$relationship_name .= $associate->getSexImage();
 					}
 
-					$values[] = '<a href="relationship.php?pid1=' . $associate->getXref() . '&amp;pid2=' . $person->getXref() . '&amp;ged=' . WT_GEDURL . '">' . $relationship_name . '</a>';
+					$values[] = '<a href="relationship.php?pid1=' . $associate->getXref() . '&amp;pid2=' . $person->getXref() . '&amp;ged=' . $associate->getTree()->getNameUrl() . '">' . $relationship_name . '</a>';
 				}
 			}
 			$value = implode(' — ', $values);

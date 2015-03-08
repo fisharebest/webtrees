@@ -141,7 +141,7 @@ function print_family_parents(Family $family, $sosa = 0, $label = '', $parid = '
 	}
 	if ($hfam && ($sosa != -1)) {
 		echo '<td valign="middle" rowspan="2">';
-		print_url_arrow(($sosa == 0 ? '?famid=' . $hfam->getXref() . '&amp;ged=' . WT_GEDURL : '#' . $hfam->getXref()), $hfam->getXref(), 1);
+		print_url_arrow(($sosa == 0 ? '?famid=' . $hfam->getXref() . '&amp;ged=' . $hfam->getTree()->getNameUrl() : '#' . $hfam->getXref()), $hfam->getXref(), 1);
 		echo '</td>';
 	}
 	if ($hfam) {
@@ -232,7 +232,7 @@ function print_family_parents(Family $family, $sosa = 0, $label = '', $parid = '
 	}
 	if ($hfam && ($sosa != -1)) {
 		echo '<td valign="middle" rowspan="2">';
-		print_url_arrow(($sosa == 0 ? '?famid=' . $hfam->getXref() . '&amp;ged=' . WT_GEDURL : '#' . $hfam->getXref()), $hfam->getXref(), 1);
+		print_url_arrow(($sosa == 0 ? '?famid=' . $hfam->getXref() . '&amp;ged=' . $hfam->getTree()->getNameUrl() : '#' . $hfam->getXref()), $hfam->getXref(), 1);
 		echo '</td>';
 	}
 	if ($hfam) {
@@ -296,7 +296,7 @@ function print_family_children(Family $family, $childid = '', $sosa = 0, $label 
 	}
 	echo '</span>';
 
-	if ($sosa == 0 && WT_USER_CAN_EDIT) {
+	if ($sosa == 0 && Auth::isEditor($family->getTree())) {
 		echo '<br>';
 		echo "<a href=\"#\" onclick=\"return add_child_to_family('", $family->getXref(), "', 'U');\">" . I18N::translate('Add a child to this family') . "</a>";
 		echo ' <a class="icon-sex_m_15x15" href="#" onclick="return add_child_to_family(\'', $family->getXref(), '\', \'M\');" title="', I18N::translate('son'), '"></a>';

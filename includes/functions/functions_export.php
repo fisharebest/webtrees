@@ -174,16 +174,16 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 
 	switch ($exportOptions['privatize']) {
 	case 'gedadmin':
-		$access_level = WT_PRIV_NONE;
+		$access_level = Auth::PRIV_NONE;
 		break;
 	case 'user':
-		$access_level = WT_PRIV_USER;
+		$access_level = Auth::PRIV_USER;
 		break;
 	case 'visitor':
-		$access_level = WT_PRIV_PUBLIC;
+		$access_level = Auth::PRIV_PRIVATE;
 		break;
 	case 'none':
-		$access_level = WT_PRIV_HIDE;
+		$access_level = Auth::PRIV_HIDE;
 		break;
 	}
 

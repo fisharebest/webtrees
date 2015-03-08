@@ -34,17 +34,17 @@ class IndividualFamiliesReportModule extends Module implements ModuleReportInter
 
 	/** {@inheritdoc} */
 	public function defaultAccessLevel() {
-		return WT_PRIV_USER;
+		return Auth::PRIV_USER;
 	}
 
 	/** {@inheritdoc} */
 	public function getReportMenus() {
-		global $controller;
+		global $controller, $WT_TREE;
 
 		$menus = array();
 		$menu = new Menu(
 			$this->getTitle(),
-			'reportengine.php?ged=' . WT_GEDURL . '&amp;action=setup&amp;report=' . WT_MODULES_DIR . $this->getName() . '/report.xml&amp;pid=' . $controller->getSignificantIndividual()->getXref(),
+			'reportengine.php?ged=' . $WT_TREE->getNameUrl() . '&amp;action=setup&amp;report=' . WT_MODULES_DIR . $this->getName() . '/report.xml&amp;pid=' . $controller->getSignificantIndividual()->getXref(),
 			'menu-report-' . $this->getName()
 		);
 		$menus[] = $menu;

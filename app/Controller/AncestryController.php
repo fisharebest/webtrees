@@ -83,7 +83,7 @@ class AncestryController extends ChartController {
 		echo '</td>';
 		echo '<td>';
 		if ($sosa > 1) {
-			print_url_arrow('?rootid=' . $pid . '&amp;PEDIGREE_GENERATIONS=' . $this->generations . '&amp;show_full=' . $this->showFull() . '&amp;chart_style=' . $this->chart_style . '&amp;ged=' . WT_GEDURL, $label, 3);
+			print_url_arrow('?rootid=' . $pid . '&amp;PEDIGREE_GENERATIONS=' . $this->generations . '&amp;show_full=' . $this->showFull() . '&amp;chart_style=' . $this->chart_style . '&amp;ged=' . $person->getTree()->getNameUrl(), $label, 3);
 		}
 		echo '</td>';
 		echo '<td class="details1">&nbsp;<span dir="ltr" class="person_box' . (($sosa == 1) ? 'NN' : (($sosa % 2) ? 'F' : '')) . '">&nbsp;', $sosa, '&nbsp;</span>&nbsp;';

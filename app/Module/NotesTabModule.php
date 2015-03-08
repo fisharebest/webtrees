@@ -39,7 +39,9 @@ class NotesTabModule extends Module implements ModuleTabInterface {
 
 	/** {@inheritdoc} */
 	public function hasTabContent() {
-		return WT_USER_CAN_EDIT || $this->getFactsWithNotes();
+		global $WT_TREE;
+
+		return Auth::isEditor($WT_TREE) || $this->getFactsWithNotes();
 	}
 
 	/** {@inheritdoc} */

@@ -105,8 +105,8 @@ $controller
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');
 
-$my_individual_record = Individual::getInstance(WT_USER_GEDCOM_ID);
-$default_individual   = Individual::getInstance(WT_USER_ROOT_ID);
+$my_individual_record = Individual::getInstance($WT_TREE->getUserPreference(Auth::user(), 'gedcomid'));
+$default_individual   = Individual::getInstance($WT_TREE->getUserPreference(Auth::user(), 'rootid'));
 
 // Form validation
 ?>
@@ -186,7 +186,7 @@ function checkform(frm) {
 				</label>
 			</div>
 			<div class="value">
-				<input data-autocomplete-type="INDI" type="text" name="form_rootid" id="form_rootid" value="<?php WT_USER_ROOT_ID; ?>">
+				<input data-autocomplete-type="INDI" type="text" name="form_rootid" id="form_rootid" value="<?php $WT_TREE->getUserPreference(Auth::user(), 'rootid'); ?>">
 				<?php echo print_findindi_link('form_rootid'); ?>
 				<br>
 				<?php if ($default_individual): ?>

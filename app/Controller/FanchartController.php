@@ -335,7 +335,7 @@ class FanchartController extends ChartController {
 					// add action url
 					$pid = $person->getXref();
 					$imagemap .= '" href="#' . $pid . '"';
-					$tempURL = 'fanchart.php?rootid=' . $pid . '&amp;generations=' . $this->generations . '&amp;fan_width=' . $this->fan_width . '&amp;fan_style=' . $this->fan_style . '&amp;ged=' . WT_GEDURL;
+					$tempURL = 'fanchart.php?rootid=' . $pid . '&amp;generations=' . $this->generations . '&amp;fan_width=' . $this->fan_width . '&amp;fan_style=' . $this->fan_style . '&amp;ged=' . $person->getTree()->getNameUrl();
 					$html .= '<div id="' . $pid . '" class="fan_chart_menu">';
 					$html .= '<div class="person_box"><div class="details1">';
 					$html .= '<a href="' . $person->getHtmlUrl() . '" class="name1">' . $name;
@@ -344,20 +344,21 @@ class FanchartController extends ChartController {
 					}
 					$html .= '</a>';
 					$html .= '<ul class="charts">';
-					$html .= '<li><a href="pedigree.php?rootid=' . $pid . '&amp;ged=' . WT_GEDURL . '" >' . I18N::translate('Pedigree') . '</a></li>';
+					$html .= '<li><a href="pedigree.php?rootid=' . $pid . '&amp;ged=' . $person->getTree()->getNameUrl() . '" >' . I18N::translate('Pedigree') . '</a></li>';
 					if (Module::getModuleByName('googlemap')) {
-						$html .= '<li><a href="module.php?mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=' . $pid . '&amp;ged=' . WT_GEDURL . '">' . I18N::translate('Pedigree map') . '</a></li>';
+						$html .= '<li><a href="module.php?mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=' . $pid . '&amp;ged=' . $person->getTree()->getNameUrl() . '">' . I18N::translate('Pedigree map') . '</a></li>';
 					}
-					if (WT_USER_GEDCOM_ID && WT_USER_GEDCOM_ID != $pid) {
-						$html .= '<li><a href="relationship.php?pid1=' . WT_USER_GEDCOM_ID . '&amp;pid2=' . $pid . '&amp;ged=' . WT_GEDURL . '">' . I18N::translate('Relationship to me') . '</a></li>';
+					$gedcomid = $person->getTree()->getUserPreference(Auth::user(), 'gedcomid');
+					if ($gedcomid && $gedcomid != $pid) {
+						$html .= '<li><a href="relationship.php?pid1=' . $gedcomid . '&amp;pid2=' . $pid . '&amp;ged=' . $person->getTree()->getNameUrl() . '">' . I18N::translate('Relationship to me') . '</a></li>';
 					}
-					$html .= '<li><a href="descendancy.php?rootid=' . $pid . '&amp;ged=' . WT_GEDURL . '" >' . I18N::translate('Descendants') . '</a></li>';
-					$html .= '<li><a href="ancestry.php?rootid=' . $pid . '&amp;ged=' . WT_GEDURL . '">' . I18N::translate('Ancestors') . '</a></li>';
-					$html .= '<li><a href="compact.php?rootid=' . $pid . '&amp;ged=' . WT_GEDURL . '">' . I18N::translate('Compact tree') . '</a></li>';
+					$html .= '<li><a href="descendancy.php?rootid=' . $pid . '&amp;ged=' . $person->getTree()->getNameUrl() . '" >' . I18N::translate('Descendants') . '</a></li>';
+					$html .= '<li><a href="ancestry.php?rootid=' . $pid . '&amp;ged=' . $person->getTree()->getNameUrl() . '">' . I18N::translate('Ancestors') . '</a></li>';
+					$html .= '<li><a href="compact.php?rootid=' . $pid . '&amp;ged=' . $person->getTree()->getNameUrl() . '">' . I18N::translate('Compact tree') . '</a></li>';
 					$html .= '<li><a href="' . $tempURL . '">' . I18N::translate('Fan chart') . '</a></li>';
-					$html .= '<li><a href="hourglass.php?rootid=' . $pid . '&amp;ged=' . WT_GEDURL . '">' . I18N::translate('Hourglass chart') . '</a></li>';
+					$html .= '<li><a href="hourglass.php?rootid=' . $pid . '&amp;ged=' . $person->getTree()->getNameUrl() . '">' . I18N::translate('Hourglass chart') . '</a></li>';
 					if (Module::getModuleByName('tree')) {
-						$html .= '<li><a href="module.php?mod=tree&amp;mod_action=treeview&amp;ged=' . WT_GEDURL . '&amp;rootid=' . $pid . '">' . I18N::translate('Interactive tree') . '</a></li>';
+						$html .= '<li><a href="module.php?mod=tree&amp;mod_action=treeview&amp;ged=' . $person->getTree()->getNameUrl() . '&amp;rootid=' . $pid . '">' . I18N::translate('Interactive tree') . '</a></li>';
 					}
 					$html .= '</ul>';
 					// spouse(s) and children

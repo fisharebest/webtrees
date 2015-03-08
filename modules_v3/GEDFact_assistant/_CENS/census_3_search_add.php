@@ -127,7 +127,7 @@ namespace Fisharebest\Webtrees;
 								</td>
 								<td align="left" class="facts_value" style="text-decoration:none;" >
 									<?php
-									echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=" . $gparent->getXref() . "&amp;gedcom=" . WT_GEDURL . "\">";
+									echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=" . $gparent->getXref() . "&amp;gedcom=" . $gparent->getTree()->getNameUrl() . "\">";
 									echo $headImg2;
 									echo "</a>";
 									?>
@@ -205,7 +205,7 @@ namespace Fisharebest\Webtrees;
 								</td>
 								<td align="left" class="facts_value">
 									<?php
-									echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=" . $gparent->getXref() . "&amp;gedcom=" . WT_GEDURL . "\">";
+									echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=" . $gparent->getXref() . "&amp;gedcom=" . $gparent->getTree()->getNameUrl() . "\">";
 									echo $headImg2;
 									echo "</a>";
 									?>
@@ -291,7 +291,7 @@ namespace Fisharebest\Webtrees;
 								</td>
 								<td align="left" class="facts_value">
 									<?php
-									echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=" . $child->getXref() . "&amp;gedcom=" . WT_GEDURL . "\">";
+									echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=" . $child->getXref() . "&amp;gedcom=" . $child->getTree()->getNameUrl() . "\">";
 									echo $headImg2;
 									echo "</a>";
 									?>
@@ -396,7 +396,7 @@ namespace Fisharebest\Webtrees;
 								</td>
 								<td align="left" class="facts_value">
 									<?php
-									echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=" . $gparent->getXref() . "&amp;gedcom=" . WT_GEDURL . "\">";
+									echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=" . $gparent->getXref() . "&amp;gedcom=" . $gparent->getTree()->getNameUrl() . "\">";
 									echo $headImg2;
 									echo "</a>";
 									?>
@@ -475,7 +475,7 @@ namespace Fisharebest\Webtrees;
 								</td>
 								<td align="left" class="facts_value">
 									<?php
-									echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=" . $gparent->getXref() . "&amp;gedcom=" . WT_GEDURL . "\">";
+									echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=" . $gparent->getXref() . "&amp;gedcom=" . $gparent->getTree()->getNameUrl() . "\">";
 									echo $headImg2;
 									echo "</a>";
 									?>
@@ -563,7 +563,7 @@ namespace Fisharebest\Webtrees;
 								</td>
 								<td align="left" class="facts_value">
 									<?php
-									echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=" . $child->getXref() . "&amp;gedcom=" . WT_GEDURL . "\">";
+									echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=" . $child->getXref() . "&amp;gedcom=" . $child->getTree()->getNameUrl() . "\">";
 									echo $headImg2;
 									echo "</a>";
 									?>
@@ -672,7 +672,7 @@ namespace Fisharebest\Webtrees;
 								</td>
 								<td align="left" class="facts_value">
 									<?php
-									echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=" . $gparent->getXref() . "&amp;gedcom=" . WT_GEDURL . "\">";
+									echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=" . $gparent->getXref() . "&amp;gedcom=" . $gparent->getTree()->getNameUrl() . "\">";
 									echo $headImg2;
 									echo "</a>";
 									?>
@@ -762,7 +762,7 @@ namespace Fisharebest\Webtrees;
 								</td>
 								<td align="left" class="facts_value">
 									<?php
-									echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=" . $gparent->getXref() . "&amp;gedcom=" . WT_GEDURL . "\">";
+									echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=" . $gparent->getXref() . "&amp;gedcom=" . $gparent->getTree()->getNameUrl() . "\">";
 									echo $headImg2;
 									echo "</a>";
 									?>
@@ -848,7 +848,7 @@ namespace Fisharebest\Webtrees;
 								</td>
 								<td align="left" class="facts_value">
 									<?php
-									echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=" . $child->getXref() . "&amp;gedcom=" . WT_GEDURL . "\">";
+									echo "<a href=\"edit_interface.php?action=addnewnote_assisted&amp;noteid=newnote&amp;xref=" . $child->getXref() . "&amp;gedcom=" . $child->getTree()->getNameUrl() . "\">";
 									echo $headImg2;
 									echo "</a>";
 									?>

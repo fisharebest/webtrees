@@ -129,17 +129,21 @@ class Fact {
 	/**
 	 * Do the privacy rules allow us to display this fact to the current user
 	 *
-	 * @param integer $access_level
+	 * @param integer|null $access_level
 	 *
 	 * @return boolean
 	 */
-	public function canShow($access_level = WT_USER_ACCESS_LEVEL) {
+	public function canShow($access_level = null) {
+		if ($access_level === null) {
+			$access_level = Auth::accessLevel($this->getParent()->getTree());
+		}
+
 		// Does this record have an explicit RESN?
 		if (strpos($this->gedcom, "\n2 RESN confidential")) {
-			return WT_PRIV_NONE >= $access_level;
+			return Auth::PRIV_NONE >= $access_level;
 		}
 		if (strpos($this->gedcom, "\n2 RESN privacy")) {
-			return WT_PRIV_USER >= $access_level;
+			return Auth::PRIV_USER >= $access_level;
 		}
 		if (strpos($this->gedcom, "\n2 RESN none")) {
 			return true;
@@ -170,8 +174,8 @@ class Fact {
 		// Members cannot edit RESN, CHAN and locked records
 		return
 			$this->parent->canEdit() && !$this->isPendingDeletion() && (
-				WT_USER_GEDCOM_ADMIN ||
-				WT_USER_CAN_EDIT && strpos($this->gedcom, "\n2 RESN locked") === false && $this->getTag() != 'RESN' && $this->getTag() != 'CHAN'
+				Auth::isManager($this->parent->getTree()) ||
+				Auth::isEditor($this->parent->getTree()) && strpos($this->gedcom, "\n2 RESN locked") === false && $this->getTag() != 'RESN' && $this->getTag() != 'CHAN'
 			);
 	}
 

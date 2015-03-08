@@ -1055,6 +1055,8 @@ function get_id_from_gedcom($ged_name) {
  * @return string[][]
  */
 function get_user_blocks($user_id) {
+	global $WT_TREE;
+
 	$blocks = array('main'=>array(), 'side'=>array());
 	$rows = Database::prepare(
 		"SELECT SQL_CACHE location, block_id, module_name" .
@@ -1066,7 +1068,7 @@ function get_user_blocks($user_id) {
 		" AND   `##module_privacy`.gedcom_id=?" .
 		" AND   access_level>=?" .
 		" ORDER BY location, block_order"
-	)->execute(array($user_id, WT_GED_ID, WT_USER_ACCESS_LEVEL))->fetchAll();
+	)->execute(array($user_id, $WT_TREE->getTreeId(), Auth::accessLevel($WT_TREE)))->fetchAll();
 	foreach ($rows as $row) {
 		$blocks[$row->location][$row->block_id] = $row->module_name;
 	}
@@ -1075,8 +1077,8 @@ function get_user_blocks($user_id) {
 
 /**
  * NOTE - this function is only correct when $gedcom_id==WT_GED_ID
- * since the privacy depends on WT_USER_ACCESS_LEVEL, which depends
- * on WT_GED_ID		"SELECT SQL_CACHE location, block_id, module_name".
+ * since the privacy depends on the user access level, which depends
+ * on the tree.
  *
  * @param integer $gedcom_id
  *
@@ -1093,7 +1095,7 @@ function get_gedcom_blocks($gedcom_id) {
 		" AND   status='enabled'" .
 		" AND   access_level>=?" .
 		" ORDER BY location, block_order"
-	)->execute(array($gedcom_id, WT_USER_ACCESS_LEVEL))->fetchAll();
+	)->execute(array($gedcom_id, Auth::accessLevel(Tree::findById($gedcom_id))))->fetchAll();
 	foreach ($rows as $row) {
 		$blocks[$row->location][$row->block_id] = $row->module_name;
 	}

@@ -83,10 +83,10 @@ class ClippingsCart {
 		$others                 = Filter::get('others');
 		$this->type             = Filter::get('type');
 
-		if (($this->privatize_export === 'none' || $this->privatize_export === 'none') && !WT_USER_GEDCOM_ADMIN) {
+		if (($this->privatize_export === 'none' || $this->privatize_export === 'none') && !Auth::isManager($WT_TREE)) {
 			$this->privatize_export = 'visitor';
 		}
-		if ($this->privatize_export === 'user' && !WT_USER_CAN_ACCESS) {
+		if ($this->privatize_export === 'user' && !Auth::isMember($WT_TREE)) {
 			$this->privatize_export = 'visitor';
 		}
 
@@ -181,16 +181,16 @@ class ClippingsCart {
 
 			switch ($this->privatize_export) {
 			case 'gedadmin':
-				$access_level = WT_PRIV_NONE;
+				$access_level = Auth::PRIV_NONE;
 				break;
 			case 'user':
-				$access_level = WT_PRIV_USER;
+				$access_level = Auth::PRIV_USER;
 				break;
 			case 'visitor':
-				$access_level = WT_PRIV_PUBLIC;
+				$access_level = Auth::PRIV_PRIVATE;
 				break;
 			case 'none':
-				$access_level = WT_PRIV_HIDE;
+				$access_level = Auth::PRIV_HIDE;
 				break;
 			}
 
