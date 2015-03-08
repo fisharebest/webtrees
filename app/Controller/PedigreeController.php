@@ -29,6 +29,7 @@ class PedigreeController extends ChartController {
 	const LANDSCAPE        = 1;
 	const OLDEST_AT_TOP    = 2;
 	const OLDEST_AT_BOTTOM = 3;
+	CONST MENU_ITEM = '<a href="pedigree.php?rootid=%s&amp;show_full=%s&amp;PEDIGREE_GENERATIONS=%s&amp;orientation=%s" class="%s noprint">%s</a>';
 
 	/**
 	 * Next and previous generation arrow size
@@ -93,7 +94,7 @@ class PedigreeController extends ChartController {
 		}, array_values($this->sosaAncestors($this->generations)));
 
 		//check earliest generation for any ancestors
-		for ($i = (int)ceil($this->treesize / 2); $i < $this->treesize; $i++) {
+		for ($i = (int) ceil($this->treesize / 2); $i < $this->treesize; $i++) {
 			$this->chartHasAncestors = $this->chartHasAncestors || ($this->nodes[$i]['indi'] && $this->nodes[$i]['indi']->getChildFamilies());
 		}
 
@@ -128,7 +129,7 @@ class PedigreeController extends ChartController {
 		for ($i = ($this->treesize - 1); $i >= 0; $i--) {
 
 			// -- check to see if we have moved to the next generation
-			if ($i < intval($this->treesize / pow(2, $curgen))) {
+			if ($i < (int) ($this->treesize / pow(2, $curgen))) {
 				$curgen++;
 			}
 
@@ -159,7 +160,7 @@ class PedigreeController extends ChartController {
 						} else {
 							$yoffset = $yoffset + (($boxspacing / 2) * ($curgen - 1));
 						}
-						$parent = (int)(($i - 1) / 2);
+						$parent = (int) (($i - 1) / 2);
 						$pgen = $curgen;
 						while ($parent > 0) {
 							if ($parent % 2 == 0) {
@@ -179,7 +180,7 @@ class PedigreeController extends ChartController {
 									$yoffset = $yoffset + (($boxspacing / 2) * $temp);
 								}
 							}
-							$parent = (int)(($parent - 1) / 2);
+							$parent = (int) (($parent - 1) / 2);
 						}
 						if ($curgen > 3) {
 							$temp = 0;
@@ -215,8 +216,8 @@ class PedigreeController extends ChartController {
 					}
 					break;
 			}
-			$this->nodes[$i]["x"] = intval($xoffset);
-			$this->nodes[$i]["y"] = intval($yoffset);
+			$this->nodes[$i]["x"] = (int) $xoffset;
+			$this->nodes[$i]["y"] = (int) $yoffset;
 		}
 
 		// find the minimum x & y offsets and deduct that number from
@@ -245,5 +246,77 @@ class PedigreeController extends ChartController {
 
 		$this->chartsize['x'] = $max_xoffset + $bxspacing + $this->getBoxDimensions()->width  + $addoffset['x'];
 		$this->chartsize['y'] = $max_yoffset + $byspacing + $this->getBoxDimensions()->height + $addoffset['y'];
+	}
+
+	/**
+	 * Function get_menu
+	 * 
+	 * Build a menu for the chart root individual
+	 * 
+	 * @return string
+	 */
+	public function get_menu() {
+		$famids = $this->root->getSpouseFamilies();
+		$html = '';
+		if ($famids) {
+			$html = sprintf('<div id="childarrow"><a href="#" class="menuselect noprint %s"></a><div id="childbox">', $this->arrows->menu);
+
+			foreach ($famids as $family) {
+				$html .= '<span class="name1">' . I18N::translate('Family') . '</span>';
+				$spouse = $family->getSpouse($this->root);
+				if ($spouse) {
+					$html .= sprintf(self::MENU_ITEM, $spouse->getXref(), $this->showFull(), $this->generations, $this->orientation, 'name1', $spouse->getFullName());
+				}
+				$children = $family->getChildren();
+				foreach ($children as $child) {
+					$html .= sprintf(self::MENU_ITEM, $child->getXref(), $this->showFull(), $this->generations, $this->orientation, 'name1', $child->getFullName());
+				}
+			}
+			//-- echo the siblings
+			foreach ($this->root->getChildFamilies() as $family) {
+				$siblings = array_filter($family->getChildren(), function (Individual $item) {
+					return $this->root->getXref() !== $item->getXref();
+				});
+				$num      = count($siblings);
+				if ($num) {
+					$html .= '<span class="name1">';
+					$html .= $num > 1 ? I18N::translate('Siblings') : I18N::translate('Sibling');
+					$html .= '</span>';
+					foreach ($siblings as $child) {
+						$html .= sprintf(self::MENU_ITEM, $child->getXref(), $this->showFull(), $this->generations, $this->orientation, 'name1', $child->getFullName());
+					}
+				}
+			}
+			$html .=
+				'</div>' . // #childbox
+				'</div>'; // #childarrow
+		}
+		return $html;
+	}
+
+	/**
+	 * Function gotoPreviousGen
+	 * 
+	 * Create a link to generate a new chart based on the correct parent of the individual with this index
+	 * 
+	 * @param integer $index
+	 * @return string
+	 */
+	public function gotoPreviousGen($index) {
+		$html = '';
+		if ($this->chartHasAncestors) {
+			if ($this->nodes[$index]['indi'] && $this->nodes[$index]['indi']->getChildFamilies()) {
+				$html .= '<div class="ancestorarrow">';
+				$rootParentId = 1;
+				if ($index > (int)($this->treesize / 2) + (int)($this->treesize / 4)) {
+					$rootParentId++;
+				}
+				$html .= sprintf(self::MENU_ITEM, $this->nodes[$rootParentId]['indi']->getXref(), $this->showFull(), $this->generations, $this->orientation, $this->arrows->prevGen, '');
+				$html .= '</div>';
+			} else {
+				$html .= '<div class="spacer"></div>';
+			}
+		}
+		return $html;
 	}
 }
