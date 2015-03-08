@@ -26,78 +26,15 @@ global $WT_TREE;
 define('WT_SCRIPT_NAME', 'pedigree.php');
 require './includes/session.php';
 
-define('MENU_ITEM', '<a href="pedigree.php?rootid=%s&amp;show_full=%s&amp;PEDIGREE_GENERATIONS=%s&amp;orientation=%s" class="%s noprint">%s</a>');
-
-function get_menu() {
-	global $controller;
-
-	$famids = $controller->root->getSpouseFamilies();
-
-	$html = '';
-	if ($famids) {
-		$html = sprintf('<div id="childarrow"><a href="#" class="menuselect noprint %s"></a><div id="childbox">', $controller->arrows->menu);
-
-		foreach ($famids as $family) {
-			$html .= '<span class="name1">' . I18N::translate('Family') . '</span>';
-			$spouse = $family->getSpouse($controller->root);
-			if ($spouse) {
-				$html .= sprintf(MENU_ITEM, $spouse->getXref(), $controller->showFull(), $controller->generations, $controller->orientation, 'name1', $spouse->getFullName());
-			}
-			$children = $family->getChildren();
-			foreach ($children as $child) {
-				$html .= sprintf(MENU_ITEM, $child->getXref(), $controller->showFull(), $controller->generations, $controller->orientation, 'name1', $child->getFullName());
-			}
-		}
-		//-- echo the siblings
-		foreach ($controller->root->getChildFamilies() as $family) {
-			$siblings = array_filter($family->getChildren(), function (Individual $item) use ($controller) {
-				return $controller->root->getXref() !== $item->getXref();
-			});
-			$num      = count($siblings);
-			if ($num) {
-				$html .= '<span class="name1">';
-				$html .= $num > 1 ? I18N::translate('Siblings') : I18N::translate('Sibling');
-				$html .= '</span>';
-				foreach ($siblings as $child) {
-					$html .= sprintf(MENU_ITEM, $child->getXref(), $controller->showFull(), $controller->generations, $controller->orientation, 'name1', $child->getFullName());
-				}
-			}
-		}
-		$html .=
-			'</div>' . // #childbox
-			'</div>'; // #childarrow
-	}
-	return $html;
-}
-
-function gotoPreviousGen($index) {
-	global $controller;
-
-	$html = '';
-	if ($controller->chartHasAncestors) {
-		if ($controller->nodes[$index]['indi'] && $controller->nodes[$index]['indi']->getChildFamilies()) {
-			$html .= '<div class="ancestorarrow">';
-			$did = 1;
-			if ($index > (int)($controller->treesize / 2) + (int)($controller->treesize / 4)) {
-				$did++;
-			}
-			$html .= sprintf(MENU_ITEM, $controller->nodes[$did]['indi']->getXref(), $controller->showFull(), $controller->generations, $controller->orientation, $controller->arrows->prevGen, '');
-			$html .= '</div>';
-		} else {
-			$html .= '<div class="spacer"></div>';
-		}
-	}
-	return $html;
-}
-
 $controller = new PedigreeController;
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('
-	var WT_PEDIGREE_CHART = (function() {
+	(function() {
 		autocomplete();
-		jQuery("html").css("overflow","visible"); // workaround for chrome v37 canvas bugs
+// I dont think this is still a problem with version 41.0.2272.76 m
+//		jQuery("html").css("overflow","visible"); // workaround for chrome v37 canvas bugs
 
 		jQuery("#childarrow").on("click", ".menuselect", function(e) {
 			e.preventDefault();
@@ -128,7 +65,7 @@ $controller
 	        y1 = Math.floor(y1);
 		    x2 = Math.floor(x2);
 		    y2 = Math.floor(y2);
-			if (' . $controller->orientation . ' < ' . $controller::OLDEST_AT_TOP . ') {
+			if (' . json_encode($controller->orientation < $controller::OLDEST_AT_TOP ) . ') {
 				ctx.moveTo(x1, y1);
 				ctx.lineTo(x2, y1);
 				ctx.lineTo(x2, y2);
@@ -158,7 +95,7 @@ $controller
 			for (var i = 2; i < nodes; i+=2) {
 				p0 = jQuery("#sosa_" + i);
 				p1 = jQuery("#sosa_" + (i+1));
-				if ("' . I18N::direction() . '" === "rtl") {
+				if (' . json_encode(I18N::direction()  === "rtl") . ') {
 					addOffset = useOffset && i >= gen1Start ? offset_y * -1 : 0;
 					drawLines(
 						p0.position().left + p0.width(),
@@ -199,7 +136,6 @@ $controller
 			break;
 		}
 		ctx.stroke();
-		return "' . strip_tags($controller->root->getFullName()) . '";
 	})();
 	');
 
@@ -255,7 +191,7 @@ if ($controller->error_message) {
 }
 
 $posn         = I18N::direction() === 'rtl' ? 'right' : 'left';
-$lastgenStart = floor($controller->treesize / 2);
+$lastgenStart = (int) floor($controller->treesize / 2);
 
 echo '<div id="pedigree_chart" class="layout', $controller->orientation, '">';
 
@@ -267,11 +203,11 @@ foreach ($controller->nodes as $i => $node) {
 
 	if ($controller->orientation === $controller::OLDEST_AT_TOP) {
 		if ($i >= $lastgenStart) {
-			echo gotoPreviousGen($i);
+			echo $controller->gotoPreviousGen($i);
 		}
 	} else {
 		if(!$i) {
-			echo get_menu();
+			echo $controller->get_menu();
 		}
 	}
 
@@ -279,11 +215,11 @@ foreach ($controller->nodes as $i => $node) {
 
 	if ($controller->orientation === $controller::OLDEST_AT_TOP) {
 		if(!$i) {
-			echo get_menu();
+			echo $controller->get_menu();
 		}
 	} else {
 		if ($i >= $lastgenStart) {
-			echo gotoPreviousGen($i);
+			echo $controller->gotoPreviousGen($i);
 		}
 	}
 	echo '</div>';
