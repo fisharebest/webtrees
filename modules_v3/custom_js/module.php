@@ -17,7 +17,11 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-class custom_js_WT_Module extends Module implements ModuleConfigInterface, ModuleMenuInterface {
+class CustomJavaScriptModule extends Module implements ModuleConfigInterface, ModuleMenuInterface {
+	
+	public function __construct() {
+		parent::__construct('custom_js');		
+	}
 
 	// Extend WT_Module
 	public function getTitle() {
@@ -99,3 +103,5 @@ class custom_js_WT_Module extends Module implements ModuleConfigInterface, Modul
 	}
 
 }
+
+return new CustomJavaScriptModule;
