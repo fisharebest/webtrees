@@ -138,10 +138,6 @@ class Family extends GedcomRecord {
 
 	/** {@inheritdoc} */
 	public function canShowName($access_level = null) {
-		if ($access_level === null) {
-			$access_level = Auth::accessLevel($this->tree);
-		}
-
 		// We can always see the name (Husband-name + Wife-name), however,
 		// the name will often be "private + private"
 		return true;
