@@ -189,12 +189,9 @@ if ($action == 'choose' && $paramok) {
 	}
 
 	function openFamNav(id) {
-		if (id.match("I") === "I" || id.match("i") === "i") {
-			id = id.toUpperCase();
-			winNav = window.open('edit_interface.php?action=addmedia_links&noteid=newnote&pid='+id, 'winNav', fam_nav_specs);
-			if (window.focus) {winNav.focus();}
-		} else if (id.match("F") === "F") {
-			id = id.toUpperCase();
+		winNav = window.open('edit_interface.php?action=addmedia_links&noteid=newnote&pid='+id, 'winNav', fam_nav_specs);
+		if (window.focus) {
+			winNav.focus();
 		}
 	}
 
