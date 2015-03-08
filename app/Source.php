@@ -28,14 +28,14 @@ class Source extends GedcomRecord {
 	 * we just receive the XREF.  For bulk records (such as lists
 	 * and search results) we can receive the GEDCOM data as well.
 	 *
-	 * @param string       $xref
-	 * @param integer|null $gedcom_id
-	 * @param string|null  $gedcom
+	 * @param string      $xref
+	 * @param Tree        $tree
+	 * @param string|null $gedcom
 	 *
 	 * @return Source|null
 	 */
-	public static function getInstance($xref, $gedcom_id = WT_GED_ID, $gedcom = null) {
-		$record = parent::getInstance($xref, $gedcom_id, $gedcom);
+	public static function getInstance($xref, Tree $tree, $gedcom = null) {
+		$record = parent::getInstance($xref, $tree, $gedcom);
 
 		if ($record instanceof Source) {
 			return $record;
@@ -49,7 +49,7 @@ class Source extends GedcomRecord {
 		// Hide sources if they are attached to private repositories ...
 		preg_match_all('/\n1 REPO @(.+)@/', $this->gedcom, $matches);
 		foreach ($matches[1] as $match) {
-			$repo = Repository::getInstance($match);
+			$repo = Repository::getInstance($match, $this->tree);
 			if ($repo && !$repo->canShow($access_level)) {
 				return false;
 			}

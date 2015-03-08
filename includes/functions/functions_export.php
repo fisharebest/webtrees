@@ -78,7 +78,7 @@ function reformat_record_export($rec) {
  * @return string
  */
 function gedcom_header($gedfile) {
-	$ged_id = get_id_from_gedcom($gedfile);
+	$tree = Tree::findByName($gedfile);
 
 	// Default values for a new header
 	$HEAD = "0 HEAD";
@@ -95,7 +95,7 @@ function gedcom_header($gedfile) {
 	$SUBM = "\n1 SUBM @SUBM@\n0 @SUBM@ SUBM\n1 NAME " . Auth::user()->getUserName(); // The SUBM record is mandatory
 
 	// Preserve some values from the original header
-	$record = GedcomRecord::getInstance('HEAD');
+	$record = GedcomRecord::getInstance('HEAD', $tree);
 	if ($fact = $record->getFirstFact('PLAC')) {
 		$PLAC = "\n1 PLAC\n2 FORM " . $fact->getAttribute('FORM');
 	}
@@ -111,14 +111,14 @@ function gedcom_header($gedfile) {
 	// Link to actual SUBM/SUBN records, if they exist
 	$subn =
 		Database::prepare("SELECT o_id FROM `##other` WHERE o_type=? AND o_file=?")
-		->execute(array('SUBN', $ged_id))
+		->execute(array('SUBN', $tree->getTreeId()))
 		->fetchOne();
 	if ($subn) {
 		$SUBN = "\n1 SUBN @{$subn}@";
 	}
 	$subm =
 		Database::prepare("SELECT o_id FROM `##other` WHERE o_type=? AND o_file=?")
-		->execute(array('SUBM', $ged_id))
+		->execute(array('SUBM', $tree->getTreeId()))
 		->fetchOne();
 	if ($subm) {
 		$SUBM = "\n1 SUBM @{$subm}@";
@@ -170,7 +170,7 @@ function convert_media_path($rec, $path) {
  *
  */
 function export_gedcom($gedcom, $gedout, $exportOptions) {
-	$ged_id = get_id_from_gedcom($gedcom);
+	$tree = Tree::findByName($gedcom);
 
 	switch ($exportOptions['privatize']) {
 	case 'gedadmin':
@@ -202,13 +202,16 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	// database queries, and we wish to avoid large gaps between queries due to MySQL connection timeouts.
 	$tmp_gedcom = '';
 	$rows = Database::prepare(
-		"SELECT 'OBJE' AS type, m_id AS xref, m_file AS gedcom_id, m_gedcom AS gedcom" .
-		" FROM `##media` WHERE m_file=? ORDER BY m_id"
-	)->execute(array($ged_id))->fetchAll();
+		"SELECT m_id AS xref, m_gedcom AS gedcom" .
+		" FROM `##media` WHERE m_file = :tree_id ORDER BY m_id"
+	)->execute(array(
+		'tree_id' => $tree->getTreeId(),
+	))->fetchAll();
+
 	foreach ($rows as $row) {
-		$rec = Media::getInstance($row->xref, $row->gedcom_id, $row->gedcom)->privatizeGedcom($access_level);
+		$rec = Media::getInstance($row->xref, $tree, $row->gedcom)->privatizeGedcom($access_level);
 		$rec = convert_media_path($rec, $exportOptions['path']);
-		if ($exportOptions['toANSI'] == 'yes') {
+		if ($exportOptions['toANSI'] === 'yes') {
 			$rec = utf8_decode($rec);
 		}
 		$tmp_gedcom .= reformat_record_export($rec);
@@ -216,47 +219,56 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 
 	$rows = Database::prepare(
 		"SELECT s_id AS xref, s_file AS gedcom_id, s_gedcom AS gedcom" .
-		" FROM `##sources` WHERE s_file=? ORDER BY s_id"
-	)->execute(array($ged_id))->fetchAll();
+		" FROM `##sources` WHERE s_file = :tree_id ORDER BY s_id"
+	)->execute(array(
+		'tree_id' => $tree->getTreeId(),
+		))->fetchAll();
+
 	foreach ($rows as $row) {
-		$rec = Source::getInstance($row->xref, $row->gedcom_id, $row->gedcom)->privatizeGedcom($access_level);
-		if ($exportOptions['toANSI'] == 'yes') {
+		$rec = Source::getInstance($row->xref, $tree, $row->gedcom)->privatizeGedcom($access_level);
+		if ($exportOptions['toANSI'] === 'yes') {
 			$rec = utf8_decode($rec);
 		}
 		$tmp_gedcom .= reformat_record_export($rec);
 	}
 
 	$rows = Database::prepare(
-		"SELECT o_type AS type, o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom" .
-		" FROM `##other` WHERE o_file=? AND o_type!='HEAD' AND o_type!='TRLR' ORDER BY o_id"
-	)->execute(array($ged_id))->fetchAll();
+		"SELECT o_type AS type, o_id AS xref, o_gedcom AS gedcom" .
+		" FROM `##other` WHERE o_file = :tree_id AND o_type NOT IN ('HEAD', 'TRLR') ORDER BY o_id"
+	)->execute(array(
+		'tree_id' => $tree->getTreeId(),
+	))->fetchAll();
+
 	foreach ($rows as $row) {
 		switch ($row->type) {
 		case 'NOTE':
-			$record = Note::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$record = Note::getInstance($row->xref, $tree, $row->gedcom);
 			break;
 		case 'REPO':
-			$record = Repository::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$record = Repository::getInstance($row->xref, $tree, $row->gedcom);
 			break;
 		default:
-			$record = GedcomRecord::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$record = GedcomRecord::getInstance($row->xref, $tree, $row->gedcom);
 			break;
 		}
 
 		$rec = $record->privatizeGedcom($access_level);
-		if ($exportOptions['toANSI'] == 'yes') {
+		if ($exportOptions['toANSI'] === 'yes') {
 			$rec = utf8_decode($rec);
 		}
 		$tmp_gedcom .= reformat_record_export($rec);
 	}
 
 	$rows = Database::prepare(
-		"SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom" .
-		" FROM `##individuals` WHERE i_file=? ORDER BY i_id"
-	)->execute(array($ged_id))->fetchAll();
+		"SELECT i_id AS xref, i_gedcom AS gedcom" .
+		" FROM `##individuals` WHERE i_file = :tree_id ORDER BY i_id"
+	)->execute(array(
+		'tree_id' => $tree->getTreeId(),
+	))->fetchAll();
+
 	foreach ($rows as $row) {
-		$rec = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom)->privatizeGedcom($access_level);
-		if ($exportOptions['toANSI'] == 'yes') {
+		$rec = Individual::getInstance($row->xref, $tree, $row->gedcom)->privatizeGedcom($access_level);
+		if ($exportOptions['toANSI'] === 'yes') {
 			$rec = utf8_decode($rec);
 		}
 		$buffer .= reformat_record_export($rec);
@@ -267,12 +279,15 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	}
 
 	$rows = Database::prepare(
-		"SELECT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom" .
-		" FROM `##families` WHERE f_file=? ORDER BY f_id"
-	)->execute(array($ged_id))->fetchAll();
+		"SELECT f_id AS xref, f_gedcom AS gedcom" .
+		" FROM `##families` WHERE f_file = :tree_id ORDER BY f_id"
+	)->execute(array(
+		'tree_id' => $tree->getTreeId(),
+	))->fetchAll();
+
 	foreach ($rows as $row) {
-		$rec = Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom)->privatizeGedcom($access_level);
-		if ($exportOptions['toANSI'] == 'yes') {
+		$rec = Family::getInstance($row->xref, $tree, $row->gedcom)->privatizeGedcom($access_level);
+		if ($exportOptions['toANSI'] === 'yes') {
 			$rec = utf8_decode($rec);
 		}
 		$buffer .= reformat_record_export($rec);

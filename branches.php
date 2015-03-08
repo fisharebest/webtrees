@@ -16,9 +16,15 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
+
 define('WT_SCRIPT_NAME', 'branches.php');
 require './includes/session.php';
-
 
 $controller = new BranchesController;
 $controller
@@ -38,7 +44,7 @@ $controller
 					</td>
 					<td class="optionbox">
 						<input data-autocomplete-type="SURN" type="text" name="surname" id="SURN" value="<?php echo Filter::escapeHtml($controller->getSurname()); ?>" dir="auto">
-						<input type="hidden" name="ged" id="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
+						<input type="hidden" name="ged" id="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 						<input type="submit" value="<?php echo I18N::translate('View'); ?>">
 						<p>
 							<?php echo I18N::translate('Phonetic search'); ?>

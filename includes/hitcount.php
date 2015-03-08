@@ -16,6 +16,13 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
+
 // Only record hits for certain pages
 switch (WT_SCRIPT_NAME) {
 case 'index.php':
@@ -24,7 +31,7 @@ case 'index.php':
 		$page_parameter = 'user:' . Auth::check();
 		break;
 	case 'gedcom':
-		$page_parameter = 'gedcom:' . WT_GED_ID;
+		$page_parameter = 'gedcom:' . $WT_TREE->getTreeId();
 		break;
 	default:
 		$page_parameter = '';
@@ -57,7 +64,7 @@ if ($page_parameter) {
 	$hitCount = Database::prepare(
 		"SELECT page_count FROM `##hit_counter`" .
 		" WHERE gedcom_id=? AND page_name=? AND page_parameter=?"
-	)->execute(array(WT_GED_ID, WT_SCRIPT_NAME, $page_parameter))->fetchOne();
+	)->execute(array($WT_TREE->getTreeId(), WT_SCRIPT_NAME, $page_parameter))->fetchOne();
 
 	// Only record one hit per session
 	if ($page_parameter && empty($WT_SESSION->SESSION_PAGE_HITS[WT_SCRIPT_NAME . $page_parameter])) {
@@ -66,13 +73,13 @@ if ($page_parameter) {
 			$hitCount = 1;
 			Database::prepare(
 				"INSERT INTO `##hit_counter` (gedcom_id, page_name, page_parameter, page_count) VALUES (?, ?, ?, ?)"
-			)->execute(array(WT_GED_ID, WT_SCRIPT_NAME, $page_parameter, $hitCount));
+			)->execute(array($WT_TREE->getTreeId(), WT_SCRIPT_NAME, $page_parameter, $hitCount));
 		} else {
 			$hitCount++;
 			Database::prepare(
 				"UPDATE `##hit_counter` SET page_count=?" .
 				" WHERE gedcom_id=? AND page_name=? AND page_parameter=?"
-			)->execute(array($hitCount, WT_GED_ID, WT_SCRIPT_NAME, $page_parameter));
+			)->execute(array($hitCount, $WT_TREE->getTreeId(), WT_SCRIPT_NAME, $page_parameter));
 		}
 	}
 } else {

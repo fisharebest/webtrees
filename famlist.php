@@ -128,7 +128,7 @@ echo '<h2 class="center">', I18N::translate('Families'), '</h2>';
 
 // Print a selection list of initial letters
 $list = array();
-foreach (QueryName::surnameAlpha($show_marnm === 'yes', true, WT_GED_ID) as $letter => $count) {
+foreach (QueryName::surnameAlpha($show_marnm === 'yes', true, $WT_TREE->getTreeId()) as $letter => $count) {
 	switch ($letter) {
 	case '@':
 		$html = $UNKNOWN_NN;
@@ -184,7 +184,7 @@ if (!Auth::isSearchEngine()) {
 }
 
 if ($show === 'indi' || $show === 'surn') {
-	$surns = QueryName::surnames($surname, $alpha, $show_marnm === 'yes', true, WT_GED_ID);
+	$surns = QueryName::surnames($surname, $alpha, $show_marnm === 'yes', true, $WT_TREE->getTreeId());
 	if ($show === 'surn') {
 		// Show the surname list
 		switch ($WT_TREE->getPreference('SURNAME_LIST_STYLE')) {
@@ -212,7 +212,7 @@ if ($show === 'indi' || $show === 'surn') {
 			$falpha              = '';
 			$show_all_firstnames = 'no';
 		} else {
-			$givn_initials = QueryName::givenAlpha($surname, $alpha, $show_marnm === 'yes', true, WT_GED_ID);
+			$givn_initials = QueryName::givenAlpha($surname, $alpha, $show_marnm === 'yes', true, $WT_TREE->getTreeId());
 			// Break long lists by initial letter of given name
 			if ($surname || $show_all === 'yes') {
 				// Don't show the list until we have some filter criteria
@@ -252,7 +252,7 @@ if ($show === 'indi' || $show === 'surn') {
 			}
 		}
 		if ($show === 'indi') {
-			echo format_fam_table(QueryName::families($surname, $alpha, $falpha, $show_marnm === 'yes', WT_GED_ID));
+			echo format_fam_table(QueryName::families($surname, $alpha, $falpha, $show_marnm === 'yes', $WT_TREE->getTreeId()));
 		}
 	}
 }

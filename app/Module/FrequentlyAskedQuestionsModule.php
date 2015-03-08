@@ -68,6 +68,8 @@ class FrequentlyAskedQuestionsModule extends Module implements ModuleMenuInterfa
 	 * Action from the configuration page
 	 */
 	private function edit() {
+		global $WT_TREE;
+
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
 			$block_id = Filter::postInteger('block_id');
 			if ($block_id) {
@@ -114,7 +116,7 @@ class FrequentlyAskedQuestionsModule extends Module implements ModuleMenuInterfa
 				$block_order = Database::prepare(
 					"SELECT IFNULL(MAX(block_order)+1, 0) FROM `##block` WHERE module_name = :module_name"
 				)->execute(array('module_name' => $this->getName()))->fetchOne();
-				$gedcom_id   = WT_GED_ID;
+				$gedcom_id   = $WT_TREE->getTreeId();
 			}
 			$controller->pageHeader();
 			if (Module::getModuleByName('ckeditor')) {
@@ -283,8 +285,8 @@ class FrequentlyAskedQuestionsModule extends Module implements ModuleMenuInterfa
 			" ORDER BY block_order"
 		)->execute(array(
 			'module_name' => $this->getName(),
-			'tree_id_1'   => WT_GED_ID,
-			'tree_id_2'   => WT_GED_ID,
+			'tree_id_1'   => $WT_TREE->getTreeId(),
+			'tree_id_2'   => $WT_TREE->getTreeId(),
 		))->fetchAll();
 
 		// Define your colors for the alternating rows
@@ -327,6 +329,8 @@ class FrequentlyAskedQuestionsModule extends Module implements ModuleMenuInterfa
 	 * Provide a form to manage the FAQs.
 	 */
 	private function config() {
+		global $WT_TREE;
+
 		$controller = new PageController;
 		$controller
 			->setPageTitle(I18N::translate('Frequently asked questions'))
@@ -344,8 +348,8 @@ class FrequentlyAskedQuestionsModule extends Module implements ModuleMenuInterfa
 			" ORDER BY block_order"
 		)->execute(array(
 			'module_name' => $this->getName(),
-			'tree_id_1'   => WT_GED_ID,
-			'tree_id_2'   => WT_GED_ID,
+			'tree_id_1'   => $WT_TREE->getTreeId(),
+			'tree_id_2'   => $WT_TREE->getTreeId(),
 			))->fetchAll();
 
 		$min_block_order = Database::prepare(
@@ -374,7 +378,7 @@ class FrequentlyAskedQuestionsModule extends Module implements ModuleMenuInterfa
 			I18N::translate('Family tree'), ' ',
 			'<input type="hidden" name="mod", value="', $this->getName(), '">',
 			'<input type="hidden" name="mod_action" value="admin_config">',
-			select_edit_control('ged', Tree::getNameList(), null, WT_GEDCOM),
+			select_edit_control('ged', Tree::getNameList(), null, $WT_TREE->getNameHtml()),
 			'<input type="submit" value="', I18N::translate('show'), '">',
 			'</form></p>';
 
@@ -431,6 +435,8 @@ class FrequentlyAskedQuestionsModule extends Module implements ModuleMenuInterfa
 
 	/** {@inheritdoc} */
 	public function getMenu() {
+		global $WT_TREE;
+
 		if (Auth::isSearchEngine()) {
 			return null;
 		}
@@ -439,8 +445,8 @@ class FrequentlyAskedQuestionsModule extends Module implements ModuleMenuInterfa
 			"SELECT block_id FROM `##block` WHERE module_name = :module_name AND IFNULL(gedcom_id, :tree_id_1) = :tree_id_2"
 		)->execute(array(
 			'module_name' => $this->getName(),
-			'tree_id_1'   => WT_GED_ID,
-			'tree_id_2'   => WT_GED_ID,
+			'tree_id_1'   => $WT_TREE->getTreeId(),
+			'tree_id_2'   => $WT_TREE->getTreeId(),
 		))->fetchAll();
 
 		if (!$faqs) {

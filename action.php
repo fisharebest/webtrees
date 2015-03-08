@@ -23,8 +23,9 @@ use Zend_Session_Namespace;
  * Defined in session.php
  *
  * @global Zend_Session_Namespace $WT_SESSION
+ * @global Tree                   $WT_TREE
  */
-global $WT_SESSION;
+global $WT_SESSION, $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'action.php');
 require './includes/session.php';
@@ -41,7 +42,7 @@ if (!Filter::checkCsrf()) {
 switch (Filter::post('action')) {
 case 'accept-changes':
 	// Accept all the pending changes for a record
-	$record = GedcomRecord::getInstance(Filter::post('xref', WT_REGEX_XREF));
+	$record = GedcomRecord::getInstance(Filter::post('xref', WT_REGEX_XREF), $WT_TREE);
 	if ($record && Auth::isModerator($record->getTree()) && $record->canShow() && $record->canEdit()) {
 		FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ I18N::translate('The changes to “%s” have been accepted.', $record->getFullName()));
 		accept_all_changes($record->getXref(), $record->getTree()->getTreeId());
@@ -55,7 +56,7 @@ case 'copy-fact':
 	$xref    = Filter::post('xref', WT_REGEX_XREF);
 	$fact_id = Filter::post('fact_id');
 
-	$record = GedcomRecord::getInstance($xref);
+	$record = GedcomRecord::getInstance($xref, $WT_TREE);
 
 	if ($record && $record->canEdit()) {
 		foreach ($record->getFacts() as $fact) {
@@ -94,7 +95,7 @@ case 'paste-fact':
 	$xref    = Filter::post('xref', WT_REGEX_XREF);
 	$fact_id = Filter::post('fact_id');
 
-	$record = GedcomRecord::getInstance($xref);
+	$record = GedcomRecord::getInstance($xref, $WT_TREE);
 
 	if ($record && $record->canEdit() && isset($WT_SESSION->clipboard[$fact_id])) {
 		$record->createFact($WT_SESSION->clipboard[$fact_id]['factrec'], true);
@@ -105,7 +106,7 @@ case 'delete-fact':
 	$xref    = Filter::post('xref', WT_REGEX_XREF);
 	$fact_id = Filter::post('fact_id');
 
-	$record = GedcomRecord::getInstance($xref);
+	$record = GedcomRecord::getInstance($xref, $WT_TREE);
 	if ($record && $record->canShow() && $record->canEdit()) {
 		foreach ($record->getFacts() as $fact) {
 			if ($fact->getfactId() == $fact_id && $fact->canShow() && $fact->canEdit()) {
@@ -125,11 +126,11 @@ case 'delete-media':
 case 'delete-note':
 case 'delete-repository':
 case 'delete-source':
-	$record = GedcomRecord::getInstance(Filter::post('xref', WT_REGEX_XREF));
+	$record = GedcomRecord::getInstance(Filter::post('xref', WT_REGEX_XREF), $WT_TREE);
 	if ($record && Auth::isEditor($record->getTree()) && $record->canShow() && $record->canEdit()) {
 		// Delete links to this record
 		foreach (fetch_all_links($record->getXref(), $record->getTree()->getTreeId()) as $xref) {
-			$linker = GedcomRecord::getInstance($xref);
+			$linker = GedcomRecord::getInstance($xref, $WT_TREE);
 			$old_gedcom = $linker->getGedcom();
 			$new_gedcom = remove_links($old_gedcom, $record->getXref());
 			// fetch_all_links() does not take account of pending changes.  The links (or even the
@@ -138,12 +139,12 @@ case 'delete-source':
 				// If we have removed a link from a family to an individual, and it has only one member
 				if (preg_match('/^0 @' . WT_REGEX_XREF . '@ FAM/', $new_gedcom) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) @(' . WT_REGEX_XREF . ')@/', $new_gedcom, $match) == 1) {
 					// Delete the family
-					$family = GedcomRecord::getInstance($xref);
+					$family = GedcomRecord::getInstance($xref, $WT_TREE);
 					FlashMessages::addMessage(/* I18N: %s is the name of a family group, e.g. “Husband name + Wife name” */ I18N::translate('The family “%s” has been deleted because it only has one member.', $family->getFullName()));
 					$family->deleteRecord();
 					// Delete any remaining link to this family
 					if ($match) {
-						$relict = GedcomRecord::getInstance($match[2][0]);
+						$relict = GedcomRecord::getInstance($match[2][0], $WT_TREE);
 						$new_gedcom = $relict->getGedcom();
 						$new_gedcom = remove_links($new_gedcom, $linker->getXref());
 						$relict->updateRecord($new_gedcom, false);
@@ -186,7 +187,7 @@ case 'masquerade':
 case 'unlink-media':
 	// Remove links from an individual and their spouse-family records to a media object.
 	// Used by the "unlink" option on the album (lightbox) tab.
-	$source = Individual::getInstance(Filter::post('source', WT_REGEX_XREF));
+	$source = Individual::getInstance(Filter::post('source', WT_REGEX_XREF), $WT_TREE);
 	$target = Filter::post('target', WT_REGEX_XREF);
 	if ($source && $source->canShow() && $source->canEdit() && $target) {
 		// Consider the individual and their spouse-family records
@@ -212,7 +213,7 @@ case 'unlink-media':
 
 case 'reject-changes':
 	// Reject all the pending changes for a record
-	$record = GedcomRecord::getInstance(Filter::post('xref', WT_REGEX_XREF));
+	$record = GedcomRecord::getInstance(Filter::post('xref', WT_REGEX_XREF), $WT_TREE);
 	if ($record && $record->canEdit() && Auth::isModerator($record->getTree())) {
 		FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ I18N::translate('The changes to “%s” have been rejected.', $record->getFullName()));
 		reject_all_changes($record->getXref(), $record->getTree()->getTreeId());

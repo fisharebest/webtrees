@@ -49,11 +49,11 @@ class ChartsBlockModule extends Module implements ModuleBlockInterface {
 			}
 		}
 
-		$person = Individual::getInstance($pid);
+		$person = Individual::getInstance($pid, $WT_TREE);
 		if (!$person) {
 			$pid = $PEDIGREE_ROOT_ID;
 			set_block_setting($block_id, 'pid', $pid);
-			$person = Individual::getInstance($pid);
+			$person = Individual::getInstance($pid, $WT_TREE);
 		}
 
 		$id = $this->getName() . $block_id;
@@ -196,7 +196,7 @@ class ChartsBlockModule extends Module implements ModuleBlockInterface {
 				<input data-autocomplete-type="INDI" type="text" name="pid" id="pid" value="<?php echo $pid; ?>" size="5">
 				<?php
 				echo print_findindi_link('pid');
-				$root = Individual::getInstance($pid);
+				$root = Individual::getInstance($pid, $WT_TREE);
 				if ($root) {
 					echo ' <span class="list_item">', $root->getFullName(), $root->format_first_major_fact(WT_EVENTS_BIRT, 1), '</span>';
 				}

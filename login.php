@@ -34,7 +34,7 @@ define('WT_SCRIPT_NAME', 'login.php');
 require './includes/session.php';
 
 // If we are already logged in, then go to the “Home page”
-if (Auth::check() && WT_GED_ID) {
+if (Auth::check() && $WT_TREE) {
 	header('Location: ' . WT_BASE_URL);
 
 	return;

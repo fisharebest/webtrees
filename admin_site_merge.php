@@ -37,8 +37,8 @@ $gid1  = Filter::post('gid1', WT_REGEX_XREF, Filter::get('gid1', WT_REGEX_XREF))
 $gid2  = Filter::post('gid2', WT_REGEX_XREF, Filter::get('gid2', WT_REGEX_XREF));
 $keep1 = Filter::postArray('keep1');
 $keep2 = Filter::postArray('keep2');
-$rec1  = GedcomRecord::getInstance($gid1);
-$rec2  = GedcomRecord::getInstance($gid2);
+$rec1  = GedcomRecord::getInstance($gid1, $WT_TREE);
+$rec2  = GedcomRecord::getInstance($gid2, $WT_TREE);
 
 if ($gid1 && !$rec1) {
 	FlashMessages::addMessage(I18N::translate('%1$s does not exist.', $gid1), 'danger');
@@ -89,7 +89,7 @@ foreach ($facts1 as $id1 => $fact1) {
 }
 
 if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYPE === $rec2::RECORD_TYPE && Filter::post('action') === 'merge' && Filter::checkCsrf()) {
-	$ids = fetch_all_links($gid2, WT_GED_ID);
+	$ids = fetch_all_links($gid2, $WT_TREE->getTreeId());
 
 	// If we are not auto-accepting, then we can show a link to the pending deletion
 	if (Auth::user()->getPreference('auto_accept')) {
@@ -99,7 +99,7 @@ if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYP
 	}
 
 	foreach ($ids as $id) {
-		$record = GedcomRecord::getInstance($id);
+		$record = GedcomRecord::getInstance($id, $WT_TREE);
 		if (!$record->isPendingDeletion()) {
 			FlashMessages::addMessage(I18N::translate(
 				/* I18N: The placeholders are the names of individuals, sources, etc. */
@@ -121,7 +121,7 @@ if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYP
 		"UPDATE `##user_gedcom_setting`" .
 		" SET setting_value=?" .
 		" WHERE gedcom_id=? AND setting_name='gedcomid' AND setting_value=?"
-	)->execute(array($gid2, WT_GED_ID, $gid1));
+	)->execute(array($gid2, $WT_TREE->getTreeId(), $gid1));
 
 	// Merge hit counters
 	$hits = Database::prepare(
@@ -129,18 +129,18 @@ if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYP
 		" FROM `##hit_counter`" .
 		" WHERE gedcom_id=? AND page_parameter IN (?, ?)" .
 		" GROUP BY page_name"
-	)->execute(array(WT_GED_ID, $gid1, $gid2))->fetchAssoc();
+	)->execute(array($WT_TREE->getTreeId(), $gid1, $gid2))->fetchAssoc();
 
 	foreach ($hits as $page_name=>$page_count) {
 		Database::prepare(
 			"UPDATE `##hit_counter` SET page_count=?" .
 			" WHERE gedcom_id=? AND page_name=? AND page_parameter=?"
-		)->execute(array($page_count, WT_GED_ID, $page_name, $gid1));
+		)->execute(array($page_count, $WT_TREE->getTreeId(), $page_name, $gid1));
 	}
 	Database::prepare(
 		"DELETE FROM `##hit_counter`" .
 		" WHERE gedcom_id=? AND page_parameter=?"
-	)->execute(array(WT_GED_ID, $gid2));
+	)->execute(array($WT_TREE->getTreeId(), $gid2));
 
 	$gedcom = "0 @" . $rec1->getXref() . "@ " . $rec1::RECORD_TYPE;
 	foreach ($facts1 as $fact_id=>$fact) {
@@ -156,7 +156,7 @@ if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYP
 
 	$rec1->updateRecord($gedcom, true);
 	$rec2->deleteRecord();
-	update_favorites($gid2, $gid1);
+	update_favorites($gid2, $gid1, $WT_TREE);
 	FlashMessages::addMessage(I18N::translate(
 	/* I18N: Records are individuals, sources, etc. */
 		'The records “%1$s” and “%2$s” have been merged.',
@@ -183,7 +183,7 @@ $controller->pageHeader();
 
 <form method="post">
 	<input type="hidden" name="action" value="merge">
-	<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
+	<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 	<?php echo Filter::getCsrf(); ?>
 	<p>
 		<?php echo I18N::translate('Select the facts and events to keep from both records.'); ?>
@@ -322,7 +322,7 @@ $controller->pageHeader();
 <?php else: ?>
 
 <form class="form form-horizontal">
-	<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
+	<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 	<p><?php echo /* I18N: Records are indviduals, sources, etc. */ I18N::translate('Select two records to merge.'); ?></p>
 
 	<div class="form-group">

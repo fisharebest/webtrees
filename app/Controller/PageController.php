@@ -157,12 +157,13 @@ class PageController extends BaseController {
 	 * @return $this
 	 */
 	public function pageHeader($view = '') {
+		global $WT_TREE;
+
 		// Give Javascript access to some PHP constants
 		$this->addInlineJavascript('
 			var WT_STATIC_URL  = "' . Filter::escapeJs(WT_STATIC_URL) . '";
 			var WT_MODULES_DIR = "' . Filter::escapeJs(WT_MODULES_DIR) . '";
-			var WT_GEDCOM      = "' . Filter::escapeJs(WT_GEDCOM) . '";
-			var WT_GED_ID      = "' . Filter::escapeJs(WT_GED_ID) . '";
+			var WT_GEDCOM      = "' . Filter::escapeJs($WT_TREE->getName()) . '";
 			var textDirection  = "' . Filter::escapeJs(I18N::direction()) . '";
 			var WT_SCRIPT_NAME = "' . Filter::escapeJs(WT_SCRIPT_NAME) . '";
 			var WT_LOCALE      = "' . Filter::escapeJs(WT_LOCALE) . '";
@@ -218,24 +219,25 @@ class PageController extends BaseController {
 		static $individual; // Only query the DB once.
 
 		if (!$individual && $WT_TREE->getUserPreference(Auth::user(), 'rootid')) {
-			$individual = Individual::getInstance($WT_TREE->getUserPreference(Auth::user(), 'rootid'));
+			$individual = Individual::getInstance($WT_TREE->getUserPreference(Auth::user(), 'rootid'), $WT_TREE);
 		}
 		if (!$individual && $WT_TREE->getUserPreference(Auth::user(), 'gedcomid')) {
-			$individual = Individual::getInstance($WT_TREE->getUserPreference(Auth::user(), 'gedcomid'));
+			$individual = Individual::getInstance($WT_TREE->getUserPreference(Auth::user(), 'gedcomid'), $WT_TREE);
 		}
 		if (!$individual) {
-			$individual = Individual::getInstance($WT_TREE->getPreference('PEDIGREE_ROOT_ID'));
+			$individual = Individual::getInstance($WT_TREE->getPreference('PEDIGREE_ROOT_ID'), $WT_TREE);
 		}
 		if (!$individual) {
 			$individual = Individual::getInstance(
 				Database::prepare(
 					"SELECT MIN(i_id) FROM `##individuals` WHERE i_file=?"
-				)->execute(array(WT_GED_ID))->fetchOne()
+				)->execute(array($WT_TREE->getTreeId()))->fetchOne(),
+				$WT_TREE
 			);
 		}
 		if (!$individual) {
 			// always return a record
-			$individual = new Individual('I', '0 @I@ INDI', null, WT_GED_ID);
+			$individual = new Individual('I', '0 @I@ INDI', null, $WT_TREE);
 		}
 
 		return $individual;
@@ -259,7 +261,7 @@ class PageController extends BaseController {
 		}
 
 		// always return a record
-		return new Family('F', '0 @F@ FAM', null, WT_GED_ID);
+		return new Family('F', '0 @F@ FAM', null, $individual->getTree());
 	}
 
 	/**

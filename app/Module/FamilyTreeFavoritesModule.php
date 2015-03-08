@@ -58,11 +58,11 @@ class FamilyTreeFavoritesModule extends Module implements ModuleBlockInterface {
 			$favtitle = Filter::get('favtitle');
 
 			if ($gid) {
-				$record = GedcomRecord::getInstance($gid);
+				$record = GedcomRecord::getInstance($gid, $WT_TREE);
 				if ($record && $record->canShow()) {
 					self::addFavorite(array(
 						'user_id'   => $ctype === 'user' ? Auth::id() : null,
-						'gedcom_id' => WT_GED_ID,
+						'gedcom_id' => $WT_TREE->getTreeId(),
 						'gid'       => $record->getXref(),
 						'type'      => $record::RECORD_TYPE,
 						'url'       => null,
@@ -73,7 +73,7 @@ class FamilyTreeFavoritesModule extends Module implements ModuleBlockInterface {
 			} elseif ($url) {
 				self::addFavorite(array(
 					'user_id'   => $ctype === 'user' ? Auth::id() : null,
-					'gedcom_id' => WT_GED_ID,
+					'gedcom_id' => $WT_TREE->getTreeId(),
 					'gid'       => null,
 					'type'      => 'URL',
 					'url'       => $url,
@@ -94,7 +94,7 @@ class FamilyTreeFavoritesModule extends Module implements ModuleBlockInterface {
 			}
 		}
 
-		$userfavs = $this->getFavorites($ctype === 'user' ? Auth::id() : WT_GED_ID);
+		$userfavs = $this->getFavorites($ctype === 'user' ? Auth::id() : $WT_TREE->getTreeId());
 		if (!is_array($userfavs)) {
 			$userfavs = array();
 		}
@@ -125,7 +125,7 @@ class FamilyTreeFavoritesModule extends Module implements ModuleBlockInterface {
 					$content .= '<br>' . $favorite['note'];
 					$content .= '</div>';
 				} else {
-					$record = GedcomRecord::getInstance($favorite['gid']);
+					$record = GedcomRecord::getInstance($favorite['gid'], $WT_TREE);
 					if ($record && $record->canShow()) {
 						if ($record instanceof Individual) {
 							$content .= '<div id="box' . $favorite["gid"] . '.0" class="person_box action_header';
@@ -168,7 +168,7 @@ class FamilyTreeFavoritesModule extends Module implements ModuleBlockInterface {
 			$content .= '<form name="addfavform" method="get" action="index.php">';
 			$content .= '<input type="hidden" name="action" value="addfav">';
 			$content .= '<input type="hidden" name="ctype" value="' . $ctype . '">';
-			$content .= '<input type="hidden" name="ged" value="' . WT_GEDCOM . '">';
+			$content .= '<input type="hidden" name="ged" value="' . $WT_TREE->getNameHtml() . '">';
 			$content .= '<div class="add_fav_ref">';
 			$content .= '<input type="radio" name="fav_category" value="record" checked onclick="jQuery(\'#gid' . $uniqueID . '\').removeAttr(\'disabled\'); jQuery(\'#url, #favtitle\').attr(\'disabled\',\'disabled\').val(\'\');">';
 			$content .= '<label for="gid' . $uniqueID . '">' . I18N::translate('Enter an individual, family, or source ID') . '</label>';

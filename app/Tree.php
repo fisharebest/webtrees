@@ -884,6 +884,6 @@ class Tree {
 		// Return the newly created record.  Note that since GedcomRecord
 		// has a cache of pending changes, we cannot use it to create a
 		// record with a newly created pending change.
-		return GedcomRecord::getInstance($xref, $this->tree_id, $gedcom);
+		return GedcomRecord::getInstance($xref, $this, $gedcom);
 	}
 }

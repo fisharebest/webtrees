@@ -34,11 +34,11 @@ class IndividualController extends GedcomRecordController {
 		global $WT_TREE;
 
 		$xref         = Filter::get('pid', WT_REGEX_XREF);
-		$this->record = Individual::getInstance($xref);
+		$this->record = Individual::getInstance($xref, $WT_TREE);
 
 		if (!$this->record && $WT_TREE->getPreference('USE_RIN')) {
 			$rin          = find_rin_id($xref);
-			$this->record = Individual::getInstance($rin);
+			$this->record = Individual::getInstance($rin, $WT_TREE);
 		}
 
 		parent::__construct();
@@ -128,7 +128,7 @@ class IndividualController extends GedcomRecordController {
 			'xref',
 			"0 @xref@ INDI\n1 DEAT Y\n" . $factrec,
 			null,
-			WT_GED_ID
+			$event->getParent()->getTree()
 		);
 		$all_names = $dummy->getAllNames();
 		$primary_name = $all_names[0];

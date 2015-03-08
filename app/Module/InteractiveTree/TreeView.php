@@ -77,6 +77,8 @@ class TreeView {
 	 * @return string
 	 */
 	public function getPersons($list) {
+		global $WT_TREE;
+
 		$list = explode(';', $list);
 		$r = array();
 		foreach ($list as $jsonRequest) {
@@ -87,7 +89,7 @@ class TreeView {
 				$fidlist = explode(',', $jsonRequest);
 				$flist = array();
 				foreach ($fidlist as $fid) {
-					$flist[] = Family::getInstance($fid);
+					$flist[] = Family::getInstance($fid, $WT_TREE);
 				}
 				$r[] = $this->drawChildren($flist, 1, true);
 				break;
@@ -95,7 +97,7 @@ class TreeView {
 				$params = explode('@', $jsonRequest);
 				$fid = $params[0];
 				$order = $params[1];
-				$f = Family::getInstance($fid);
+				$f = Family::getInstance($fid, $WT_TREE);
 				if ($f->getHusband()) {
 					$r[] = $this->drawPerson($f->getHusband(), 0, 1, $f, $order);
 				} elseif ($f->getWife()) {

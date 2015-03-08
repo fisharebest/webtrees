@@ -45,7 +45,6 @@ define('WT_REQUIRED_MYSQL_VERSION', '5.0.13');
 define('WT_REQUIRED_PHP_VERSION', '5.3.2');
 define('WT_MODULES_DIR', 'modules_v3/');
 define('WT_ROOT', '');
-define('WT_GED_ID', null);
 define('Auth::PRIV_PRIVATE', 2);
 define('Auth::PRIV_USER', 1);
 define('Auth::PRIV_NONE', 0);

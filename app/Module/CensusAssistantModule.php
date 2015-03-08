@@ -152,6 +152,8 @@ class CensusAssistantModule extends Module {
 	 * ...
 	 */
 	private static function mediaQuery() {
+		global $WT_TREE;
+
 		$iid2 = Filter::get('iid', WT_REGEX_XREF);
 
 		$controller = new SimpleController;
@@ -159,7 +161,7 @@ class CensusAssistantModule extends Module {
 			->setPageTitle(I18N::translate('Link to an existing media object'))
 			->pageHeader();
 
-		$record = GedcomRecord::getInstance($iid2);
+		$record = GedcomRecord::getInstance($iid2, $WT_TREE);
 		if ($record) {
 			$headjs = '';
 			if ($record instanceof Family) {
@@ -307,10 +309,10 @@ class CensusAssistantModule extends Module {
 	 * @return string
 	 */
 	static function addNoteWithAssistantLink($element_id, $xref, $action) {
-		global $controller;
+		global $controller, $WT_TREE;
 
 		// We do not yet support family records
-		if (!GedcomRecord::getInstance($xref) instanceof Individual) {
+		if (!GedcomRecord::getInstance($xref, $WT_TREE) instanceof Individual) {
 			return '';
 		}
 

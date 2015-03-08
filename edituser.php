@@ -105,8 +105,8 @@ $controller
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');
 
-$my_individual_record = Individual::getInstance($WT_TREE->getUserPreference(Auth::user(), 'gedcomid'));
-$default_individual   = Individual::getInstance($WT_TREE->getUserPreference(Auth::user(), 'rootid'));
+$my_individual_record = Individual::getInstance($WT_TREE->getUserPreference(Auth::user(), 'gedcomid'), $WT_TREE);
+$default_individual   = Individual::getInstance($WT_TREE->getUserPreference(Auth::user(), 'rootid'), $WT_TREE);
 
 // Form validation
 ?>

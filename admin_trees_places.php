@@ -34,14 +34,14 @@ $changes = array();
 
 if ($search && $replace) {
 	$rows = Database::prepare(
-		"SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom" .
+		"SELECT i_id AS xref, i_gedcom AS gedcom" .
 		" FROM `##individuals`" .
 		" LEFT JOIN `##change` ON (i_id = xref AND i_file=gedcom_id AND status='pending')" .
 		" WHERE i_file = ?" .
 		" AND COALESCE(new_gedcom, i_gedcom) REGEXP CONCAT('\n2 PLAC ([^\n]*, )*', ?, '(\n|$)')"
-	)->execute(array(WT_GED_ID, $search))->fetchAll();
+	)->execute(array($WT_TREE->getTreeId(), $search))->fetchAll();
 	foreach ($rows as $row) {
-		$record = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		$record = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
 		foreach ($record->getFacts() as $fact) {
 			$old_place = $fact->getAttribute('PLAC');
 			if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
@@ -55,13 +55,14 @@ if ($search && $replace) {
 		}
 	}
 	$rows = Database::prepare(
-		"SELECT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom" .
+		"SELECT f_id AS xref, f_gedcom AS gedcom" .
 		" FROM `##families`" .
 		" LEFT JOIN `##change` ON (f_id = xref AND f_file=gedcom_id AND status='pending')" .
-		" WHERE COALESCE(new_gedcom, f_gedcom) REGEXP CONCAT('\n2 PLAC ([^\n]*, )*', ?, '(\n|$)')"
-	)->execute(array($search))->fetchAll();
+		" WHERE f_file = ?" .
+		" AND COALESCE(new_gedcom, f_gedcom) REGEXP CONCAT('\n2 PLAC ([^\n]*, )*', ?, '(\n|$)')"
+	)->execute(array($WT_TREE->getTreeId(), $search))->fetchAll();
 	foreach ($rows as $row) {
-		$record = Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		$record = Family::getInstance($row->xref, $WT_TREE, $row->gedcom);
 		foreach ($record->getFacts() as $fact) {
 			$old_place = $fact->getAttribute('PLAC');
 			if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {

@@ -44,7 +44,7 @@ switch ($action) {
 case 'editraw':
 	$xref = Filter::get('xref', WT_REGEX_XREF);
 
-	$record = GedcomRecord::getInstance($xref);
+	$record = GedcomRecord::getInstance($xref, $WT_TREE);
 	check_record_access($record);
 
 	$controller
@@ -60,7 +60,7 @@ case 'editraw':
 		</h4>
 		<pre>     <?php echo '0 @' . $record->getXref() . '@ ' . $record::RECORD_TYPE; ?></pre>
 		<form method="post" action="edit_interface.php">
-			<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
+			<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 			<input type="hidden" name="action" value="updateraw">
 			<input type="hidden" name="xref" value="<?php echo $xref; ?>">
 			<?php echo Filter::getCsrf(); ?>
@@ -106,7 +106,7 @@ case 'updateraw':
 		return;
 	}
 
-	$record = GedcomRecord::getInstance($xref);
+	$record = GedcomRecord::getInstance($xref, $WT_TREE);
 	check_record_access($record);
 
 	$controller
@@ -140,7 +140,7 @@ case 'editrawfact':
 	$xref    = Filter::get('xref', WT_REGEX_XREF);
 	$fact_id = Filter::get('fact_id');
 
-	$record = GedcomRecord::getInstance($xref);
+	$record = GedcomRecord::getInstance($xref, $WT_TREE);
 	check_record_access($record);
 
 	// Find the fact to edit
@@ -171,7 +171,7 @@ case 'editrawfact':
 			<?php print_specialchar_link('gedcom'); ?>
 		</h4>
 		<form method="post" action="edit_interface.php">
-			<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
+			<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 			<input type="hidden" name="action" value="updaterawfact">
 			<input type="hidden" name="xref" value="<?php echo $xref; ?>">
 			<input type="hidden" name="fact_id" value="<?php echo $fact_id; ?>">
@@ -203,7 +203,7 @@ case 'updaterawfact':
 		return;
 	}
 
-	$record = GedcomRecord::getInstance($xref);
+	$record = GedcomRecord::getInstance($xref, $WT_TREE);
 	check_record_access($record);
 
 	// Find the fact to edit
@@ -240,7 +240,7 @@ case 'edit':
 	$xref    = Filter::get('xref', WT_REGEX_XREF);
 	$fact_id = Filter::get('fact_id');
 
-	$record = GedcomRecord::getInstance($xref);
+	$record = GedcomRecord::getInstance($xref, $WT_TREE);
 	check_record_access($record);
 
 	// Find the fact to edit
@@ -267,7 +267,7 @@ case 'edit':
 	echo '<h4>', $controller->getPageTitle(), '</h4>';
 	init_calendar_popup();
 	echo '<form name="editform" method="post" action="edit_interface.php" enctype="multipart/form-data">';
-	echo '<input type="hidden" name="ged" value="', Filter::escapeHtml(WT_GEDCOM), '">';
+	echo '<input type="hidden" name="ged" value="', $WT_TREE->getNameHtml(), '">';
 	echo '<input type="hidden" name="action" value="update">';
 	echo '<input type="hidden" name="fact_id" value="', $fact_id, '">';
 	echo '<input type="hidden" name="xref" value="', $xref, '">';
@@ -336,7 +336,7 @@ case 'add':
 	$xref = Filter::get('xref', WT_REGEX_XREF);
 	$fact = Filter::get('fact', WT_REGEX_TAG);
 
-	$record = GedcomRecord::getInstance($xref);
+	$record = GedcomRecord::getInstance($xref, $WT_TREE);
 	check_record_access($record);
 
 	$controller
@@ -350,7 +350,7 @@ case 'add':
 
 	init_calendar_popup();
 	echo '<form name="addform" method="post" action="edit_interface.php" enctype="multipart/form-data">';
-	echo '<input type="hidden" name="ged" value="', Filter::escapeHtml(WT_GEDCOM), '">';
+	echo '<input type="hidden" name="ged" value="', $WT_TREE->getNameHtml(), '">';
 	echo '<input type="hidden" name="action" value="update">';
 	echo '<input type="hidden" name="xref" value="', $xref, '">';
 	echo '<input type="hidden" name="prev_action" value="add">';
@@ -408,7 +408,7 @@ case 'update':
 		return;
 	}
 
-	$record = GedcomRecord::getInstance($xref);
+	$record = GedcomRecord::getInstance($xref, $WT_TREE);
 	check_record_access($record);
 
 	// Arrays for each GEDCOM line
@@ -492,7 +492,7 @@ case 'update':
 	if ($pid_array) {
 		foreach (explode(', ', $pid_array) as $pid) {
 			if ($pid != $xref) {
-				$indi = Individual::getInstance($pid);
+				$indi = Individual::getInstance($pid, $WT_TREE);
 				if ($indi && $indi->canEdit()) {
 					$indi->updateFact($fact_id, $newged, !$keep_chan);
 				}
@@ -510,7 +510,7 @@ case 'add_child_to_family':
 	$xref   = Filter::get('xref', WT_REGEX_XREF);
 	$gender = Filter::get('gender', '[MFU]', 'U');
 
-	$family = Family::getInstance($xref);
+	$family = Family::getInstance($xref, $WT_TREE);
 	check_record_access($family);
 
 	$controller
@@ -537,7 +537,7 @@ case 'add_child_to_family_action':
 		return;
 	}
 
-	$family = Family::getInstance($xref);
+	$family = Family::getInstance($xref, $WT_TREE);
 	check_record_access($family);
 
 	$controller->pageHeader();
@@ -590,7 +590,7 @@ case 'add_child_to_family_action':
 case 'add_child_to_individual':
 	$xref = Filter::get('xref', WT_REGEX_XREF);
 
-	$person = Individual::getInstance($xref);
+	$person = Individual::getInstance($xref, $WT_TREE);
 	check_record_access($person);
 
 	$controller
@@ -615,7 +615,7 @@ case 'add_child_to_individual_action':
 		return;
 	}
 
-	$person = Individual::getInstance($xref);
+	$person = Individual::getInstance($xref, $WT_TREE);
 	check_record_access($person);
 
 	$controller->pageHeader();
@@ -668,7 +668,7 @@ case 'add_parent_to_individual':
 	$xref   = Filter::get('xref', WT_REGEX_XREF);
 	$gender = Filter::get('gender', '[MF]', 'U');
 
-	$individual = Individual::getInstance($xref);
+	$individual = Individual::getInstance($xref, $WT_TREE);
 	check_record_access($individual);
 
 	if ($gender == 'F') {
@@ -699,7 +699,7 @@ case 'add_parent_to_individual_action':
 		return;
 	}
 
-	$person = Individual::getInstance($xref);
+	$person = Individual::getInstance($xref, $WT_TREE);
 	check_record_access($person);
 
 	$controller->pageHeader();
@@ -805,7 +805,7 @@ case 'add_spouse_to_individual':
 	$famtag = Filter::get('famtag', 'HUSB|WIFE');
 	$xref   = Filter::get('xref', WT_REGEX_XREF);
 
-	$individual = Individual::getInstance($xref);
+	$individual = Individual::getInstance($xref, $WT_TREE);
 	check_record_access($individual);
 
 	if ($famtag == 'WIFE') {
@@ -836,7 +836,7 @@ case 'add_spouse_to_individual_action':
 		return;
 	}
 
-	$person = Individual::getInstance($xref);
+	$person = Individual::getInstance($xref, $WT_TREE);
 	check_record_access($person);
 
 	$controller
@@ -896,7 +896,7 @@ case 'add_spouse_to_family':
 	$xref   = Filter::get('xref', WT_REGEX_XREF);
 	$famtag = Filter::get('famtag', 'HUSB|WIFE');
 
-	$family = Family::getInstance($xref);
+	$family = Family::getInstance($xref, $WT_TREE);
 	check_record_access($family);
 
 	if ($famtag == 'WIFE') {
@@ -918,7 +918,7 @@ case 'add_spouse_to_family_action':
 	$text    = Filter::postArray('text');
 	$islink  = Filter::postArray('islink', '[01]');
 
-	$family  = Family::getInstance($xref);
+	$family  = Family::getInstance($xref, $WT_TREE);
 	check_record_access($family);
 
 	if (!Filter::checkCsrf()) {
@@ -983,7 +983,7 @@ case 'add_spouse_to_family_action':
 case 'addfamlink':
 	$xref = Filter::get('xref', WT_REGEX_XREF);
 
-	$person = Individual::getInstance($xref);
+	$person = Individual::getInstance($xref, $WT_TREE);
 	check_record_access($person);
 
 	$controller
@@ -994,7 +994,7 @@ case 'addfamlink':
 	<div id="edit_interface-page">
 		<h4><?php echo $controller->getPageTitle(); ?></h4>
 		<form method="post" name="addchildform" action="edit_interface.php">
-			<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
+			<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 			<input type="hidden" name="action" value="linkfamaction">
 			<input type="hidden" name="xref" value="<?php echo $person->getXref(); ?>">
 			<?php echo Filter::getCsrf(); ?>
@@ -1040,8 +1040,8 @@ case 'linkfamaction':
 		return;
 	}
 
-	$person = Individual::getInstance($xref);
-	$family = Family::getInstance($famid);
+	$person = Individual::getInstance($xref, $WT_TREE);
+	$family = Family::getInstance($famid, $WT_TREE);
 	check_record_access($person);
 	check_record_access($family);
 
@@ -1083,7 +1083,7 @@ case 'linkspouse':
 	$famtag = Filter::get('famtag', 'HUSB|WIFE');
 	$xref   = Filter::get('xref', WT_REGEX_XREF);
 
-	$person = Individual::getInstance($xref);
+	$person = Individual::getInstance($xref, $WT_TREE);
 	check_record_access($person);
 
 	if ($person->getSex() == 'F') {
@@ -1101,7 +1101,7 @@ case 'linkspouse':
 	<div id="edit_interface-page">
 		<h4><?php echo $controller->getPageTitle(); ?></h4>
 		<form method="post" name="addchildform" action="edit_interface.php">
-			<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
+			<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 			<input type="hidden" name="action" value="linkspouseaction">
 			<input type="hidden" name="xref" value="<?php echo $person->getXref(); ?>">
 			<input type="hidden" name="famtag" value="<?php echo $famtag; ?>">
@@ -1154,8 +1154,8 @@ case 'linkspouseaction':
 		return;
 	}
 
-	$person  = Individual::getInstance($xref);
-	$spouse  = Individual::getInstance($spid);
+	$person  = Individual::getInstance($xref, $WT_TREE);
+	$spouse  = Individual::getInstance($spid, $WT_TREE);
 	check_record_access($person);
 	check_record_access($spouse);
 
@@ -1217,7 +1217,7 @@ case 'addnewsource':
 	<div id="edit_interface-page">
 		<h4><?php echo $controller->getPageTitle(); ?></h4>
 		<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
-			<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
+			<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 			<input type="hidden" name="action" value="addsourceaction">
 			<input type="hidden" name="xref" value="newsour">
 			<?php echo Filter::getCsrf(); ?>
@@ -1361,7 +1361,7 @@ case 'addnewnote':
 		<h4><?php echo $controller->getPageTitle(); ?></h4>
 
 		<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
-			<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
+			<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 			<input type="hidden" name="action" value="addnoteaction">
 			<input type="hidden" name="noteid" value="newnote">
 			<?php echo Filter::getCsrf(); ?>
@@ -1435,7 +1435,7 @@ case 'addnoteaction_assisted':
 case 'addmedia_links':
 	$pid = Filter::get('pid', WT_REGEX_XREF);
 
-	$person = Individual::getInstance($pid);
+	$person = Individual::getInstance($pid, $WT_TREE);
 	check_record_access($person);
 
 	$controller
@@ -1446,7 +1446,7 @@ case 'addmedia_links':
 	<div id="edit_interface-page">
 		<h4><?php echo $controller->getPageTitle(); ?></h4>
 		<form method="post" action="edit_interface.php?xref=<?php echo $person->getXref(); ?>" onsubmit="findindi()">
-			<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
+			<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 			<input type="hidden" name="action" value="addmedia_links">
 			<input type="hidden" name="noteid" value="newnote">
 			<?php echo Filter::getCsrf(); ?>
@@ -1462,7 +1462,7 @@ case 'addmedia_links':
 case 'editnote':
 	$xref = Filter::get('xref', WT_REGEX_XREF);
 
-	$note = Note::getInstance($xref);
+	$note = Note::getInstance($xref, $WT_TREE);
 	check_record_access($note);
 
 	$controller
@@ -1473,7 +1473,7 @@ case 'editnote':
 	<div id="edit_interface-page">
 		<h4><?php echo $controller->getPageTitle(); ?></h4>
 		<form method="post" action="edit_interface.php">
-			<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
+			<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 			<input type="hidden" name="action" value="editnoteaction">
 			<input type="hidden" name="xref" value="<?php echo $xref; ?>">
 			<?php echo Filter::getCsrf(); ?>
@@ -1509,7 +1509,7 @@ case 'editnoteaction':
 		return;
 	}
 
-	$record = Note::getInstance($xref);
+	$record = Note::getInstance($xref, $WT_TREE);
 	check_record_access($record);
 
 	$controller
@@ -1555,7 +1555,7 @@ case 'addnewrepository':
 	echo '</script>';
 	?>
 	<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
-		<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
+		<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 		<input type="hidden" name="action" value="addrepoaction">
 		<input type="hidden" name="xref" value="newrepo">
 		<?php echo Filter::getCsrf(); ?>
@@ -1647,7 +1647,7 @@ case 'editname':
 	$xref    = Filter::get('xref', WT_REGEX_XREF);
 	$fact_id = Filter::get('fact_id');
 
-	$person = Individual::getInstance($xref);
+	$person = Individual::getInstance($xref, $WT_TREE);
 	check_record_access($person);
 
 	// Find the fact to edit
@@ -1677,7 +1677,7 @@ case 'editname':
 case 'addname':
 	$xref = Filter::get('xref', WT_REGEX_XREF);
 
-	$person = Individual::getInstance($xref);
+	$person = Individual::getInstance($xref, $WT_TREE);
 	check_record_access($person);
 
 	$controller
@@ -1693,7 +1693,7 @@ case 'addname':
 case 'reorder_media':
 	$xref = Filter::get('xref', WT_REGEX_XREF);
 
-	$person = Individual::getInstance($xref);
+	$person = Individual::getInstance($xref, $WT_TREE);
 	check_record_access($person);
 
 	$controller
@@ -1732,7 +1732,7 @@ case 'reorder_media':
 				if (!$fact->isPendingDeletion()) {
 					preg_match_all('/(?:^1|\n\d) OBJE @(' . WT_REGEX_XREF . ')@/', $fact->getGedcom(), $matches);
 					foreach ($matches[1] as $match) {
-						$media = Media::getInstance($match);
+						$media = Media::getInstance($match, $WT_TREE);
 						if (!in_array($media, $sort_obje)) {
 							$sort_obje[] = $media;
 						}
@@ -1746,7 +1746,7 @@ case 'reorder_media':
 	<div id="edit_interface-page">
 		<h4><?php echo I18N::translate('Click a row, then drag-and-drop to re-order media '); ?></h4>
 		<form name="reorder_form" method="post" action="edit_interface.php">
-			<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
+			<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 			<input type="hidden" name="action" value="reorder_media_update">
 			<input type="hidden" name="xref" value="<?php echo $xref; ?>">
 			<?php echo Filter::getCsrf(); ?>
@@ -1791,7 +1791,7 @@ case 'reorder_media_update':
 		return;
 	}
 
-	$person = Individual::getInstance($xref);
+	$person = Individual::getInstance($xref, $WT_TREE);
 	check_record_access($person);
 
 	$controller
@@ -1825,7 +1825,7 @@ case 'reorder_children':
 	$option = Filter::post('option');
 
 	$family = Family::getInstance($xref);
-	check_record_access($family);
+	check_record_access($family, $WT_TREE);
 
 	$controller
 		->addInlineJavascript('jQuery("#reorder_list").sortable({forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: "move", axis: "y"});')
@@ -1837,7 +1837,7 @@ case 'reorder_children':
 	<div id="edit_interface-page">
 		<h4><?php echo $controller->getPageTitle(); ?></h4>
 		<form name="reorder_form" method="post" action="edit_interface.php">
-			<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
+			<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 			<input type="hidden" name="action" value="reorder_update">
 			<input type="hidden" name="xref" value="<?php echo $xref; ?>">
 			<input type="hidden" name="option" value="bybirth">
@@ -1870,7 +1870,7 @@ case 'reorder_children':
 						echo ' class="facts_value new"';
 					}
 					echo ' id="li_', $id, '">';
-					echo Theme::theme()->individualBoxLarge(Individual::getInstance($id));
+					echo Theme::theme()->individualBoxLarge(Individual::getInstance($id), $WT_TREE);
 					echo '<input type="hidden" name="order[', $id, ']" value="', $i, '">';
 					echo '</li>';
 					$i++;
@@ -1902,7 +1902,7 @@ case 'reorder_update':
 		return;
 	}
 
-	$family = Family::getInstance($xref);
+	$family = Family::getInstance($xref, $WT_TREE);
 	check_record_access($family);
 
 	$controller
@@ -1939,7 +1939,7 @@ case 'reorder_update':
 case 'changefamily':
 	$xref = Filter::get('xref', WT_REGEX_XREF);
 
-	$family = Family::getInstance($xref);
+	$family = Family::getInstance($xref, $WT_TREE);
 	check_record_access($family);
 
 	$controller
@@ -1954,7 +1954,7 @@ case 'changefamily':
 		<h4><?php echo $controller->getPageTitle(); ?></h4>
 		<div id="changefam">
 			<form name="changefamform" method="post" action="edit_interface.php">
-				<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
+				<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 				<input type="hidden" name="action" value="changefamily_update">
 				<input type="hidden" name="xref" value="<?php echo $xref; ?>">
 				<?php echo Filter::getCsrf(); ?>
@@ -2107,7 +2107,7 @@ case 'changefamily_update':
 		}
 	}
 
-	$family = Family::getInstance($xref);
+	$family = Family::getInstance($xref, $WT_TREE);
 	check_record_access($family);
 
 	$controller
@@ -2120,12 +2120,12 @@ case 'changefamily_update':
 	$old_children = $family->getChildren();
 
 	// New family members
-	$new_father = Individual::getInstance($HUSB);
-	$new_mother = Individual::getInstance($WIFE);
+	$new_father = Individual::getInstance($HUSB, $WT_TREE);
+	$new_mother = Individual::getInstance($WIFE, $WT_TREE);
 	$new_children = array();
 	if (is_array($CHIL)) {
 		foreach ($CHIL as $child) {
-			$new_children[] = Individual::getInstance($child);
+			$new_children[] = Individual::getInstance($child, $WT_TREE);
 		}
 	}
 
@@ -2211,7 +2211,7 @@ case 'reorder_fams':
 	$xref   = Filter::post('xref', WT_REGEX_XREF, Filter::get('xref', WT_REGEX_XREF));
 	$option = Filter::post('option');
 
-	$person = Individual::getInstance($xref);
+	$person = Individual::getInstance($xref, $WT_TREE);
 	check_record_access($person);
 
 	$controller
@@ -2230,7 +2230,7 @@ case 'reorder_fams':
 	<div id="edit_interface-page">
 	<h4><?php echo $controller->getPageTitle(); ?></h4>
 	<form name="reorder_form" method="post" action="edit_interface.php">
-		<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
+		<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 		<input type="hidden" name="action" value="reorder_fams_update">
 		<input type="hidden" name="xref" value="<?php echo $xref; ?>">
 		<input type="hidden" name="option" value="bymarriage">
@@ -2266,7 +2266,7 @@ case 'reorder_fams_update':
 		return;
 	}
 
-	$person = Individual::getInstance($xref);
+	$person = Individual::getInstance($xref, $WT_TREE);
 	check_record_access($person);
 
 	$controller
@@ -2382,7 +2382,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	echo '<h4>', $controller->getPageTitle(), '</h4>';
 	init_calendar_popup();
 	echo '<form method="post" name="addchildform" onsubmit="return checkform();">';
-	echo '<input type="hidden" name="ged" value="', Filter::escapeHtml(WT_GEDCOM), '">';
+	echo '<input type="hidden" name="ged" value="', $WT_TREE->getNameHtml(), '">';
 	echo '<input type="hidden" name="action" value="', $nextaction, '">';
 	echo '<input type="hidden" name="fact_id" value="', $name_fact_id, '">';
 	echo '<input type="hidden" name="xref" value="', $xref, '">';

@@ -917,9 +917,9 @@ namespace Fisharebest\Webtrees;
  */
 function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 	global $spouselinks, $parentlinks, $step_parentlinks, $persons, $person_step, $person_parent;
-	global $natdad, $natmom, $censyear;
+	global $natdad, $natmom, $censyear, $WT_TREE;
 
-	$person = Individual::getInstance($pid);
+	$person = Individual::getInstance($pid, $WT_TREE);
 
 	$tmp = array('M'=>'', 'F'=>'F', 'U'=>'NN');
 	$isF = $tmp[$person->getSex()];
@@ -974,9 +974,7 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 			if ($husb || $children) {
 				if ($husb) {
 					// Parent Husbands Parents
-					$gparent = Individual::getInstance($husb->getXref());
-					$parfams = $gparent->getChildFamilies();
-					foreach ($parfams as $pfamily) {
+					foreach ($husb->getChildFamilies() as $pfamily) {
 						$phusb = $pfamily->getHusband();
 						$pwife = $pfamily->getWife();
 						if ($phusb) { $pHusbFBP = $phusb->getBirthPlace(); }
@@ -1041,9 +1039,7 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 			if ($wife || $children) {
 				if ($wife) {
 					// Parent Wifes Parents
-					$gparent = Individual::getInstance($wife->getXref());
-					$parfams = $gparent->getChildFamilies();
-					foreach ($parfams as $pfamily) {
+					foreach ($wife->getChildFamilies() as $pfamily) {
 						$pwhusb = $pfamily->getHusband();
 						$pwwife = $pfamily->getWife();
 						if ($pwhusb) { $pWifeFBP = $pwhusb->getBirthPlace(); }
@@ -1133,9 +1129,7 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 				if (($husb || $children) && $husb !== $person) {
 					if ($husb) {
 						// Step Husbands Parents
-						$gparent = Individual::getInstance($husb->getXref());
-						$parfams = $gparent->getChildFamilies();
-						foreach ($parfams as $pfamily) {
+						foreach ($husb->getChildFamilies() as $pfamily) {
 							$phusb = $pfamily->getHusband();
 							$pwife = $pfamily->getWife();
 							if ($phusb) { $pHusbFBP = $phusb->getBirthPlace(); }
@@ -1204,9 +1198,7 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 				if ($wife || $children) {
 					if ($wife) {
 						// Step Wifes Parents
-						$gparent = Individual::getInstance($wife->getXref());
-						$parfams = $gparent->getChildFamilies();
-						foreach ($parfams as $pfamily) {
+						foreach ($wife->getChildFamilies() as $pfamily) {
 							$pwhusb = $pfamily->getHusband();
 							$pwwife = $pfamily->getWife();
 							if ($pwhusb) { $pWifeFBP = $pwhusb->getBirthPlace(); }
@@ -1293,9 +1285,7 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 				if ($spouse) {
 
 					// Spouse Parents
-					$gparent = Individual::getInstance($spouse->getXref());
-					$spousefams = $gparent->getChildFamilies();
-					foreach ($spousefams as $pfamily) {
+					foreach ($spouse->getChildFamilies() as $pfamily) {
 						$phusb = $pfamily->getHusband();
 						$pwife = $pfamily->getWife();
 						if ($phusb) { $pSpouseFBP = $phusb->getBirthPlace(); }
@@ -1373,8 +1363,7 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 				$persons = 'Yes';
 
 				// Child’s Parents
-				$gparent = Individual::getInstance($child->getXref());
-				foreach ($gparent->getChildFamilies() as $family) {
+				foreach ($child->getChildFamilies() as $family) {
 					$husb = $family->getHusband();
 					$wife = $family->getWife();
 					if ($husb) { $ChildFBP = $husb->getBirthPlace(); }

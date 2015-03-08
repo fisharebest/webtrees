@@ -16,6 +16,13 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
+
 define('WT_SCRIPT_NAME', 'lifespan.php');
 require './includes/session.php';
 
@@ -130,7 +137,7 @@ $people = count($controller->people);
 		<tr>
 			<td>
 				<form name="people" action="?">
-					<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
+					<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 					<table>
 						<tr>
 							<td class="person0">
@@ -153,7 +160,7 @@ $people = count($controller->people);
 			</td>
 			<td>
 				<form name="buttons" action="lifespan.php" method="get">
-					<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
+					<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 					<table>
 						<tr>
 							<td align="center"><?php echo I18N::translate('Speed'); ?></td>

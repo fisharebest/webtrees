@@ -575,7 +575,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 
 	// retrieve linked NOTE
 	if ($fact == "NOTE" && $islink) {
-		$note1 = Note::getInstance($value);
+		$note1 = Note::getInstance($value, $WT_TREE);
 		if ($note1) {
 			$noterec = $note1->getGedcom();
 			preg_match("/$value/i", $noterec, $notematch);
@@ -880,31 +880,31 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 		switch ($fact) {
 		case 'ASSO':
 		case '_ASSO':
-			$tmp = Individual::getInstance($value);
+			$tmp = Individual::getInstance($value, $WT_TREE);
 			if ($tmp) {
 				echo ' ', $tmp->getFullname();
 			}
 			break;
 		case 'SOUR':
-			$tmp = Source::getInstance($value);
+			$tmp = Source::getInstance($value, $WT_TREE);
 			if ($tmp) {
 				echo ' ', $tmp->getFullname();
 			}
 			break;
 		case 'NOTE':
-			$tmp = Note::getInstance($value);
+			$tmp = Note::getInstance($value, $WT_TREE);
 			if ($tmp) {
 				echo ' ', $tmp->getFullname();
 			}
 			break;
 		case 'OBJE':
-			$tmp = Media::getInstance($value);
+			$tmp = Media::getInstance($value, $WT_TREE);
 			if ($tmp) {
 				echo ' ', $tmp->getFullname();
 			}
 			break;
 		case 'REPO':
-			$tmp = Repository::getInstance($value);
+			$tmp = Repository::getInstance($value, $WT_TREE);
 			if ($tmp) {
 				echo ' ', $tmp->getFullname();
 			}
@@ -1462,7 +1462,7 @@ function create_add_form($fact) {
  * @return string
  */
 function create_edit_form(GedcomRecord $record, Fact $fact) {
-	global $date_and_time, $tags;
+	global $date_and_time, $tags, $WT_TREE;
 
 	$pid = $record->getXref();
 
@@ -1531,7 +1531,7 @@ function create_edit_form(GedcomRecord $record, Fact $fact) {
 
 		if ($type != "DATA" && $type != "CONT") {
 			$tags[] = $type;
-			$person = Individual::getInstance($pid);
+			$person = Individual::getInstance($pid, $WT_TREE);
 			$subrecord = $level . ' ' . $type . ' ' . $text;
 			if ($inSource && $type == "DATE") {
 				add_simple_tag($subrecord, '', GedcomTag::getLabel($label, $person));
@@ -1541,7 +1541,7 @@ function create_edit_form(GedcomRecord $record, Fact $fact) {
 			} elseif ($type == 'STAT') {
 				add_simple_tag($subrecord, $level1type, GedcomTag::getLabel($label, $person));
 			} elseif ($level0type == 'REPO') {
-				$repo = Repository::getInstance($pid);
+				$repo = Repository::getInstance($pid, $WT_TREE);
 				add_simple_tag($subrecord, $level0type, GedcomTag::getLabel($label, $repo));
 			} else {
 				add_simple_tag($subrecord, $level0type, GedcomTag::getLabel($label, $person));

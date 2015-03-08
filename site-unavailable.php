@@ -33,7 +33,6 @@ require 'vendor/autoload.php';
 define('WT_WEBTREES', 'webtrees');
 define('WT_BASE_URL', '');
 define('WT_ROOT', '');
-define('WT_GED_ID', 0);
 define('WT_DATA_DIR', realpath('data') . DIRECTORY_SEPARATOR);
 
 // No configuration file?  Start the setup wizard

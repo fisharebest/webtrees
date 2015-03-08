@@ -24,8 +24,10 @@ class SourceController extends GedcomRecordController {
 	 * Startup activity
 	 */
 	public function __construct() {
+		global $WT_TREE;
+
 		$xref         = Filter::get('sid', WT_REGEX_XREF);
-		$this->record = Source::getInstance($xref);
+		$this->record = Source::getInstance($xref, $WT_TREE);
 
 		parent::__construct();
 	}

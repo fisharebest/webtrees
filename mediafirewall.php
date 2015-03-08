@@ -32,7 +32,7 @@ Zend_Session::writeClose();
 
 $mid   = Filter::get('mid', WT_REGEX_XREF);
 $thumb = Filter::getBool('thumb');
-$media = Media::getInstance($mid);
+$media = Media::getInstance($mid, $WT_TREE);
 
 /**
  * Send a “Not found” error as an image
@@ -329,9 +329,9 @@ $generatewatermark = false;
 
 if ($usewatermark) {
 	if ($which === 'thumb') {
-		$watermarkfile = WT_DATA_DIR . $WT_TREE->getPreference('MEDIA_DIRECTORY') . 'watermark/' . WT_GEDCOM . '/thumb/' . $media->getFilename();
+		$watermarkfile = WT_DATA_DIR . $WT_TREE->getPreference('MEDIA_DIRECTORY') . 'watermark/' . $WT_TREE->getName() . '/thumb/' . $media->getFilename();
 	} else {
-		$watermarkfile = WT_DATA_DIR . $WT_TREE->getPreference('MEDIA_DIRECTORY') . 'watermark/' . WT_GEDCOM . '/' . $media->getFilename();
+		$watermarkfile = WT_DATA_DIR . $WT_TREE->getPreference('MEDIA_DIRECTORY') . 'watermark/' . $WT_TREE->getName() . '/' . $media->getFilename();
 	}
 
 	if (!file_exists($watermarkfile)) {

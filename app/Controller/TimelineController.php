@@ -60,6 +60,8 @@ class TimelineController extends PageController {
 	 * Startup activity
 	 */
 	public function __construct() {
+		global $WT_TREE;
+
 		parent::__construct();
 
 		$this->setPageTitle(I18N::translate('Timeline'));
@@ -84,7 +86,7 @@ class TimelineController extends PageController {
 		foreach ($this->pids as $value) {
 			if ($value != $remove) {
 				$newpids[] = $value;
-				$person    = Individual::getInstance($value);
+				$person    = Individual::getInstance($value, $WT_TREE);
 				if ($person) {
 					$this->people[] = $person;
 				}
@@ -278,8 +280,10 @@ class TimelineController extends PageController {
 	 * @return Individual
 	 */
 	public function getSignificantIndividual() {
+		global $WT_TREE;
+
 		if ($this->pids) {
-			return Individual::getInstance($this->pids[0]);
+			return Individual::getInstance($this->pids[0], $WT_TREE);
 		} else {
 			return parent::getSignificantIndividual();
 		}

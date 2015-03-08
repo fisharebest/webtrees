@@ -103,9 +103,9 @@ class ReviewChangesModule extends Module implements ModuleBlockInterface {
 				" WHERE status='pending'" .
 				" AND   gedcom_id=?" .
 				" GROUP BY xref"
-			)->execute(array(WT_GED_ID))->fetchAll();
+			)->execute(array($WT_TREE->getTreeId()))->fetchAll();
 			foreach ($changes as $change) {
-				$record = GedcomRecord::getInstance($change->xref);
+				$record = GedcomRecord::getInstance($change->xref, $WT_TREE);
 				if ($record->canShow()) {
 					$content .= '<li><a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a></li>';
 				}

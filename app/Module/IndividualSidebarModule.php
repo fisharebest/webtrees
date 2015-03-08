@@ -75,10 +75,10 @@ class IndividualSidebarModule extends Module implements ModuleSidebarInterface {
 
 	/** {@inheritdoc} */
 	public function getSidebarContent() {
-		global $WT_IMAGES, $UNKNOWN_NN, $controller;
+		global $WT_IMAGES, $UNKNOWN_NN, $controller, $WT_TREE;
 
 		// Fetch a list of the initial letters of all surnames in the database
-		$initials = QueryName::surnameAlpha(true, false, WT_GED_ID, false);
+		$initials = QueryName::surnameAlpha(true, false, $WT_TREE->getTreeId(), false);
 
 		$controller->addInlineJavascript('
 			var loadedNames = new Array();
@@ -164,7 +164,9 @@ class IndividualSidebarModule extends Module implements ModuleSidebarInterface {
 	 * @return string
 	 */
 	public function getAlphaSurnames($alpha, $surname1 = '') {
-		$surnames = QueryName::surnames('', $alpha, true, false, WT_GED_ID);
+		global $WT_TREE;
+
+		$surnames = QueryName::surnames('', $alpha, true, false, $WT_TREE->getTreeId());
 		$out = '<ul>';
 		foreach (array_keys($surnames) as $surname) {
 			$out .= '<li id="sb_indi_' . $surname . '" class="sb_indi_surname_li"><a href="' . $surname . '" title="' . $surname . '" alt="' . $alpha . '" class="sb_indi_surname">' . $surname . '</a>';
@@ -189,7 +191,9 @@ class IndividualSidebarModule extends Module implements ModuleSidebarInterface {
 	 * @return string
 	 */
 	public function getSurnameIndis($alpha, $surname) {
-		$indis = QueryName::individuals($surname, $alpha, '', true, false, WT_GED_ID);
+		global $WT_TREE;
+
+		$indis = QueryName::individuals($surname, $alpha, '', true, false, $WT_TREE->getTreeId());
 		$out = '<ul>';
 		foreach ($indis as $person) {
 			if ($person->canShowName()) {
@@ -214,24 +218,27 @@ class IndividualSidebarModule extends Module implements ModuleSidebarInterface {
 	 * @return string
 	 */
 	public function search($query) {
+		global $WT_TREE;
+
+		$tree = Tree::findById($WT_TREE->getTreeId());
 		if (strlen($query) < 2) {
 			return '';
 		}
 		$rows =
 			Database::prepare(
-				"SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom" .
+				"SELECT i_id AS xref, i_gedcom AS gedcom" .
 				" FROM `##individuals`, `##name`" .
 				" WHERE (i_id LIKE ? OR n_sort LIKE ?)" .
 				" AND i_id=n_id AND i_file=n_file AND i_file=?" .
 				" ORDER BY n_sort COLLATE '" . I18N::$collation . "'" .
 				" LIMIT 50"
 			)
-			->execute(array("%{$query}%", "%{$query}%", WT_GED_ID))
+			->execute(array("%{$query}%", "%{$query}%", $WT_TREE->getTreeId()))
 			->fetchAll();
 
 		$out = '<ul>';
 		foreach ($rows as $row) {
-			$person = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$person = Individual::getInstance($row->xref, $tree, $row->gedcom);
 			if ($person->canShowName()) {
 				$out .= '<li><a href="' . $person->getHtmlUrl() . '">' . $person->getSexImage() . ' ' . $person->getFullName() . ' ';
 				if ($person->canShow()) {

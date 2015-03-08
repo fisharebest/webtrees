@@ -187,7 +187,7 @@ class AlbumModule extends Module implements ModuleTabInterface {
 				if (!$fact->isPendingDeletion()) {
 					preg_match_all('/(?:^1|\n\d) OBJE @(' . WT_REGEX_XREF . ')@/', $fact->getGedcom(), $matches);
 					foreach ($matches[1] as $match) {
-						$media = Media::getInstance($match);
+						$media = Media::getInstance($match, $controller->record->getTree());
 						if ($media && $media->canShow()) {
 							$this->media_list[] = $media;
 						}

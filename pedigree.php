@@ -144,7 +144,7 @@ $controller
 	<h2><?php echo $controller->getPageTitle(); ?></h2>
 
 	<form name="people" id="people" method="get" action="?">
-		<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
+		<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 		<input type="hidden" name="show_full" value="<?php echo $controller->showFull(); ?>">
 		<table class="list_table">
 			<tbody>

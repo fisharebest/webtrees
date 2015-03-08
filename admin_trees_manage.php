@@ -327,7 +327,7 @@ $controller->pageHeader();
 				</a>
 			</h2>
 		</div>
-		<div id="tree-<?php echo $tree->getTreeId(); ?>" class="panel-collapse collapse<?php echo $tree->getTreeId() === WT_GED_ID || $tree->getPreference('imported') === '0' ? ' in' : ''; ?>" role="tabpanel" aria-labelledby="panel-tree-<?php echo $tree->getTreeId(); ?>">
+		<div id="tree-<?php echo $tree->getTreeId(); ?>" class="panel-collapse collapse<?php echo $tree == $WT_TREE || $tree->getPreference('imported') === '0' ? ' in' : ''; ?>" role="tabpanel" aria-labelledby="panel-tree-<?php echo $tree->getTreeId(); ?>">
 			<div class="panel-body">
 				<?php
 

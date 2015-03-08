@@ -63,7 +63,7 @@ class TopPageViewsModule extends Module implements ModuleBlockInterface {
 			" WHERE gedcom_id = :tree_id AND page_name IN ('individual.php','family.php','source.php','repo.php','note.php','mediaviewer.php')" .
 			" ORDER BY page_count DESC LIMIT :limit"
 		)->execute(array(
-			'tree_id' => WT_GED_ID,
+			'tree_id' => $WT_TREE->getTreeId(),
 			'limit'   => (int) $num,
 		))->FetchAssoc();
 
@@ -74,7 +74,7 @@ class TopPageViewsModule extends Module implements ModuleBlockInterface {
 			$content .= "<table>";
 		}
 		foreach ($top10 as $id=>$count) {
-			$record = GedcomRecord::getInstance($id);
+			$record = GedcomRecord::getInstance($id, $WT_TREE);
 			if ($record && $record->canShow()) {
 				$content .= '<tr valign="top">';
 				if ($count_placement == 'before') {

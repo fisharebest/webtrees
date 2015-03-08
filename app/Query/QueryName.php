@@ -449,8 +449,9 @@ class QueryName {
 	 * @return Individual[]
 	 */
 	public static function individuals($surn, $salpha, $galpha, $marnm, $fams, $ged_id) {
+		$tree = Tree::findById($ged_id);
 		$sql =
-			"SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom, n_full " .
+			"SELECT i_id AS xref, i_gedcom AS gedcom, n_full " .
 			"FROM `##individuals` " .
 			"JOIN `##name` ON n_id = i_id AND n_file = i_file " .
 			($fams ? "JOIN `##link` ON n_id = l_from AND n_file = l_file AND l_type = 'FAMS' " : "") .
@@ -486,7 +487,7 @@ class QueryName {
 		$list = array();
 		$rows = Database::prepare($sql)->execute($args)->fetchAll();
 		foreach ($rows as $row) {
-			$person = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$person = Individual::getInstance($row->xref, $tree, $row->gedcom);
 			// The name from the database may be private - check the filtered list...
 			foreach ($person->getAllNames() as $n=>$name) {
 				if ($name['fullNN'] == $row->n_full) {

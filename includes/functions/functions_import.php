@@ -659,7 +659,7 @@ function import_record($gedrec, Tree $tree, $update) {
 		// Convert inline media into media objects
 		$gedrec = convert_inline_media($ged_id, $gedrec);
 
-		$record = new Individual($xref, $gedrec, null, $ged_id);
+		$record = new Individual($xref, $gedrec, null, $tree);
 		if ($tree->getPreference('USE_RIN') && preg_match('/\n1 RIN (.+)/', $gedrec, $match)) {
 			$rin = $match[1];
 		} else {
@@ -700,7 +700,7 @@ function import_record($gedrec, Tree $tree, $update) {
 		// Convert inline media into media objects
 		$gedrec = convert_inline_media($ged_id, $gedrec);
 
-		$record = new Source($xref, $gedrec, null, $ged_id);
+		$record = new Source($xref, $gedrec, null, $tree);
 		if (preg_match('/\n1 TITL (.+)/', $gedrec, $match)) {
 			$name = $match[1];
 		} elseif (preg_match('/\n1 ABBR (.+)/', $gedrec, $match)) {
@@ -717,21 +717,21 @@ function import_record($gedrec, Tree $tree, $update) {
 		// Convert inline media into media objects
 		$gedrec = convert_inline_media($ged_id, $gedrec);
 
-		$record = new Repository($xref, $gedrec, null, $ged_id);
+		$record = new Repository($xref, $gedrec, null, $tree);
 		$sql_insert_other->execute(array($xref, $ged_id, $type, $gedrec));
 		// Update the cross-reference/index tables.
 		update_links($xref, $ged_id, $gedrec);
 		update_names($xref, $ged_id, $record);
 		break;
 	case 'NOTE':
-		$record = new Note($xref, $gedrec, null, $ged_id);
+		$record = new Note($xref, $gedrec, null, $tree);
 		$sql_insert_other->execute(array($xref, $ged_id, $type, $gedrec));
 		// Update the cross-reference/index tables.
 		update_links($xref, $ged_id, $gedrec);
 		update_names($xref, $ged_id, $record);
 		break;
 	case 'OBJE':
-		$record = new Media($xref, $gedrec, null, $ged_id);
+		$record = new Media($xref, $gedrec, null, $tree);
 		$sql_insert_media->execute(array($xref, $record->extension(), $record->getMediaType(), $record->title, $record->file, $ged_id, $gedrec));
 		// Update the cross-reference/index tables.
 		update_links($xref, $ged_id, $gedrec);
@@ -751,7 +751,7 @@ function import_record($gedrec, Tree $tree, $update) {
 		update_links($xref, $ged_id, $gedrec);
 		break;
 	default:
-		$record = new GedcomRecord($xref, $gedrec, null, $ged_id);
+		$record = new GedcomRecord($xref, $gedrec, null, $tree);
 		$sql_insert_other->execute(array($xref, $ged_id, $type, $gedrec));
 		// Update the cross-reference/index tables.
 		update_links($xref, $ged_id, $gedrec);
@@ -1004,6 +1004,7 @@ function convert_inline_media($ged_id, $gedrec) {
 function create_media_object($level, $gedrec, $ged_id) {
 	static $sql_insert_media = null;
 	static $sql_select_media = null;
+
 	if (!$sql_insert_media) {
 		$sql_insert_media = Database::prepare(
 			"INSERT INTO `##media` (m_id, m_ext, m_type, m_titl, m_filename, m_file, m_gedcom) VALUES (?, ?, ?, ?, ?, ?, ?)"
@@ -1029,7 +1030,8 @@ function create_media_object($level, $gedrec, $ged_id) {
 	$xref = $sql_select_media->execute(array($file, $titl, $ged_id))->fetchOne();
 
 	if (!$xref) {
-		$xref = Tree::findById($ged_id)->getNewXref('OBJE');
+		$tree = Tree::findById($ged_id);
+		$xref = $tree->getNewXref('OBJE');
 		// renumber the lines
 		$gedrec = preg_replace_callback('/\n(\d+)/', function($m) use ($level) { return "\n" . ($m[1] - $level); }, $gedrec);
 		// convert to an object
@@ -1037,7 +1039,7 @@ function create_media_object($level, $gedrec, $ged_id) {
 		// Fix Legacy GEDCOMS
 		$gedrec = preg_replace('/\n1 FORM (.+)\n1 FILE (.+)\n1 TITL (.+)/', "\n1 FILE $2\n2 FORM $1\n2 TITL $3", $gedrec);
 		// Create new record
-		$record = new Media($xref, $gedrec, null, $ged_id);
+		$record = new Media($xref, $gedrec, null, $tree);
 		$sql_insert_media->execute(array($xref, $record->extension(), $record->getMediaType(), $record->title, $record->file, $ged_id, $gedrec));
 	}
 
