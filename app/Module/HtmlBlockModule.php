@@ -53,17 +53,17 @@ class HtmlBlockModule extends Module implements ModuleBlockInterface {
 			$stats = new Stats($WT_TREE);
 			break;
 		case '__default__':
-			$tree_id = Tree::getIdFromName(Site::getPreference('DEFAULT_GEDCOM'));
-			if ($tree_id) {
-				$stats = new Stats(Tree::findById($tree_id));
+			$tree = Tree::findByName(Site::getPreference('DEFAULT_GEDCOM'));
+			if ($tree) {
+				$stats = new Stats($tree);
 			} else {
 				$stats = new Stats($WT_TREE);
 			}
 			break;
 		default:
-			$tree_id = Tree::getIdFromName($gedcom);
-			if ($tree_id) {
-				$stats = new Stats(Tree::findById($tree_id));
+			$tree = Tree::findByName($gedcom);
+			if ($tree) {
+				$stats = new Stats($tree);
 			} else {
 				$stats = new Stats($WT_TREE);
 			}

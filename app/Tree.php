@@ -406,33 +406,6 @@ class Tree {
 	}
 
 	/**
-	 * Find the ID number for a tree name
-	 *
-	 * @param string $tree_name
-	 *
-	 * @return integer|null
-	 */
-	public static function getIdFromName($tree_name) {
-		foreach (self::getAll() as $tree) {
-			if ($tree->name === $tree_name) {
-				return $tree->tree_id;
-			}
-		}
-
-		return null;
-	}
-
-	/**
-	 * Find the tree name from a numeric ID.
-	 * @param integer $tree_id
-	 *
-	 * @return string
-	 */
-	public static function getNameFromId($tree_id) {
-		return self::findById($tree_id)->name;
-	}
-
-	/**
 	 * Create a new tree
 	 *
 	 * @param string $tree_name
@@ -449,7 +422,7 @@ class Tree {
 			$tree_id = Database::prepare("SELECT LAST_INSERT_ID()")->fetchOne();
 		} catch (PDOException $ex) {
 			// A tree with that name already exists?
-			return self::findById(self::getIdFromName($tree_name));
+			return self::findByName($tree_name);
 		}
 
 		// Update the list of trees - to include this new one
@@ -653,7 +626,7 @@ class Tree {
 	 */
 	public function delete() {
 		// If this is the default tree, then unset it
-		if (Site::getPreference('DEFAULT_GEDCOM') === self::getNameFromId($this->tree_id)) {
+		if (Site::getPreference('DEFAULT_GEDCOM') === $this->name) {
 			Site::setPreference('DEFAULT_GEDCOM', '');
 		}
 

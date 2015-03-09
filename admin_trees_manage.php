@@ -59,7 +59,7 @@ case 'new_tree':
 	$tree_title = Filter::post('tree_title');
 
 	if (Filter::checkCsrf() && $basename && $tree_title) {
-		if (Tree::getIdFromName($basename)) {
+		if (Tree::findByName($basename)) {
 			FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ I18N::translate('The family tree “%s” already exists.', Filter::escapeHtml($basename)), 'danger');
 		} else {
 			Tree::create($basename, $tree_title);
