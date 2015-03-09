@@ -732,11 +732,11 @@ function get_anniversary_events($jd, $facts, Tree $tree) {
 	) as $anniv) {
 		// Build a SQL where clause to match anniversaries in the appropriate calendar.
 		$ind_sql =
-			"SELECT DISTINCT 'INDI' AS type, i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact" .
+			"SELECT DISTINCT i_id AS xref, i_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact" .
 			" FROM `##dates` JOIN `##individuals` ON d_gid = i_id AND d_file = i_file" .
 			" WHERE d_type = :type AND d_file = :tree_id";
 		$fam_sql =
-			"SELECT DISTINCT 'FAM'  AS type, f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact" .
+			"SELECT DISTINCT f_id AS xref, f_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact" .
 			" FROM `##dates` JOIN `##families` ON d_gid = f_id AND d_file = f_file" .
 			" WHERE d_type = :type AND d_file = :tree_id";
 		$args = array(
@@ -865,10 +865,10 @@ function get_anniversary_events($jd, $facts, Tree $tree) {
 		$order_by = " ORDER BY d_day, d_year DESC";
 
 		// Now fetch these anniversaries
-		foreach (array($ind_sql . $where . $order_by, $fam_sql . $where . $order_by) as $sql) {
+		foreach (array('INDI' => $ind_sql . $where . $order_by, 'FAM' => $fam_sql . $where . $order_by) as $type => $sql) {
 			$rows = Database::prepare($sql)->execute($args)->fetchAll();
 			foreach ($rows as $row) {
-				if ($row->type === 'INDI') {
+				if ($type === 'INDI') {
 					$record = Individual::getInstance($row->xref, $tree, $row->gedcom);
 				} else {
 					$record = Family::getInstance($row->xref, $tree, $row->gedcom);
@@ -921,12 +921,12 @@ function get_calendar_events($jd1, $jd2, $facts, Tree $tree) {
 	$where .= " AND d_file=" . $tree->getTreeId();
 
 	// Now fetch these events
-	$ind_sql = "SELECT d_gid AS xref, i_gedcom AS gedcom, 'INDI' AS type, d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##individuals` {$where} AND d_gid=i_id AND d_file=i_file GROUP BY d_julianday1, d_gid ORDER BY d_julianday1";
-	$fam_sql = "SELECT d_gid AS xref, f_gedcom AS gedcom, 'FAM'  AS type, d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##families`    {$where} AND d_gid=f_id AND d_file=f_file GROUP BY d_julianday1, d_gid ORDER BY d_julianday1";
-	foreach (array($ind_sql, $fam_sql) as $sql) {
+	$ind_sql = "SELECT d_gid AS xref, i_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##individuals` {$where} AND d_gid=i_id AND d_file=i_file GROUP BY d_julianday1, d_gid ORDER BY d_julianday1";
+	$fam_sql = "SELECT d_gid AS xref, f_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##families`    {$where} AND d_gid=f_id AND d_file=f_file GROUP BY d_julianday1, d_gid ORDER BY d_julianday1";
+	foreach (array('INDI' => $ind_sql, 'FAM' => $fam_sql) as $type => $sql) {
 		$rows = Database::prepare($sql)->fetchAll();
 		foreach ($rows as $row) {
-			if ($row->type === 'INDI') {
+			if ($type === 'INDI') {
 				$record = Individual::getInstance($row->xref, $tree, $row->gedcom);
 			} else {
 				$record = Family::getInstance($row->xref, $tree, $row->gedcom);
@@ -940,6 +940,7 @@ function get_calendar_events($jd1, $jd2, $facts, Tree $tree) {
 			}
 		}
 	}
+
 	return $found_facts;
 }
 
@@ -958,6 +959,7 @@ function get_events_list($jd1, $jd2, $events, Tree $tree) {
 	for ($jd = $jd1; $jd <= $jd2; ++$jd) {
 		$found_facts = array_merge($found_facts, get_anniversary_events($jd, $events, $tree));
 	}
+
 	return $found_facts;
 }
 
@@ -1003,6 +1005,7 @@ function get_user_blocks($user_id) {
 	foreach ($rows as $row) {
 		$blocks[$row->location][$row->block_id] = $row->module_name;
 	}
+
 	return $blocks;
 }
 
