@@ -28,78 +28,84 @@ namespace Fisharebest\Webtrees;
 function fetch_all_links($xref, $gedcom_id) {
 	return
 		Database::prepare(
-			"SELECT l_from FROM `##link` WHERE l_file=? AND l_to=?" .
+			"SELECT l_from FROM `##link` WHERE l_file = ? AND l_to = ?" .
 			" UNION " .
-			"SELECT xref FROM `##change` WHERE status='pending' AND gedcom_id=? AND new_gedcom LIKE" .
+			"SELECT xref FROM `##change` WHERE status = 'pending' AND gedcom_id = ? AND new_gedcom LIKE" .
 			" CONCAT('%@', ?, '@%')"
-		)
-		->execute(array($gedcom_id, $xref, $gedcom_id, $xref))
-		->fetchOneColumn();
+		)->execute(array(
+			$gedcom_id,
+			$xref,
+			$gedcom_id,
+			$xref
+		))->fetchOneColumn();
 }
 
 /**
  * Get a list of all the sources.
  *
- * @param integer $ged_id
+ * @param Tree $tree
  *
  * @return Source[] array
  */
-function get_source_list($ged_id) {
-	$tree = Tree::findById($ged_id);
-	$rows =
-		Database::prepare("SELECT s_id AS xref, s_gedcom AS gedcom FROM `##sources` WHERE s_file=?")
-		->execute(array($ged_id))
-		->fetchAll();
+function get_source_list(Tree $tree) {
+	$rows = Database::prepare(
+		"SELECT s_id AS xref, s_gedcom AS gedcom FROM `##sources` WHERE s_file = :tree_id"
+	)->execute(array(
+		'tree_id' => $tree->getTreeId(),
+	))->fetchAll();
 
 	$list = array();
 	foreach ($rows as $row) {
 		$list[] = Source::getInstance($row->xref, $tree, $row->gedcom);
 	}
 	usort($list, __NAMESPACE__ . '\GedcomRecord::compare');
+
 	return $list;
 }
 
 /**
  * Get a list of all the repositories.
  *
- * @param integer $ged_id
+ * @param Tree $tree
  *
  * @return Repository[] array
  */
-function get_repo_list($ged_id) {
-	$tree = Tree::findById($ged_id);
-	$rows =
-		Database::prepare("SELECT o_id AS xref, o_gedcom AS gedcom FROM `##other` WHERE o_type='REPO' AND o_file=?")
-		->execute(array($ged_id))
-		->fetchAll();
+function get_repo_list(Tree $tree) {
+	$rows = Database::prepare(
+			"SELECT o_id AS xref, o_gedcom AS gedcom FROM `##other` WHERE o_type = 'REPO' AND o_file = ?"
+		)->execute(array(
+			$tree->getTreeId(),
+		))->fetchAll();
 
 	$list = array();
 	foreach ($rows as $row) {
 		$list[] = Repository::getInstance($row->xref, $tree, $row->gedcom);
 	}
 	usort($list, __NAMESPACE__ . '\GedcomRecord::compare');
+
 	return $list;
 }
 
 /**
  * Get a list of all the shared notes.
  *
- * @param integer $ged_id
+ * @param Tree $tree
  *
  * @return Note[] array
  */
-function get_note_list($ged_id) {
-	$tree = Tree::findById($ged_id);
-	$rows =
-		Database::prepare("SELECT o_id AS xref, o_gedcom AS gedcom FROM `##other` WHERE o_type='NOTE' AND o_file=?")
-		->execute(array($ged_id))
-		->fetchAll();
+function get_note_list(Tree $tree) {
+	$rows = Database::prepare(
+		"SELECT o_id AS xref, o_gedcom AS gedcom FROM `##other` WHERE o_type = 'NOTE' AND o_file = :tree_id"
+	)->execute(array(
+		'tree_id' => $tree->getTreeId(),
+	))->fetchAll();
 
 	$list = array();
 	foreach ($rows as $row) {
 		$list[] = Note::getInstance($row->xref, $tree, $row->gedcom);
 	}
 	usort($list, __NAMESPACE__ . '\GedcomRecord::compare');
+
 	return $list;
 }
 
@@ -972,26 +978,6 @@ function is_media_used_in_other_gedcom($file_name, $ged_id) {
 		(bool) Database::prepare("SELECT COUNT(*) FROM `##media` WHERE m_filename LIKE ? AND m_file<>?")
 		->execute(array("%{$file_name}", $ged_id))
 		->fetchOne();
-}
-
-/**
- * @param $ged_id
- *
- * @return null|string
- */
-function get_gedcom_from_id($ged_id) {
-	return Tree::findById($ged_id)->getName();
-}
-
-/**
- * Convert an (external) gedcom name to an (internal) gedcom ID.
- *
- * @param string $ged_name
- *
- * @return integer|null
- */
-function get_id_from_gedcom($ged_name) {
-	return Tree::findByName($ged_name)->getTreeId();
 }
 
 /**

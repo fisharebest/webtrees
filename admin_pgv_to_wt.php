@@ -559,9 +559,10 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 			$array = unserialize($setting->u_gedcomid);
 			foreach ($array as $gedcom => $value) {
 				try {
+					$tree_id = Tree::findByName($gedcom)->getTreeId();
 					Database::prepare(
 						"INSERT IGNORE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (?, ?, ?, ?)"
-					)->execute(array($setting->user_id, get_id_from_gedcom($gedcom), 'gedcomid', $value));
+					)->execute(array($setting->user_id, $tree_id, 'gedcomid', $value));
 				} catch (PDOException $ex) {
 					// Invalid data?  Reference to non-existing tree?
 				}
@@ -574,9 +575,10 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 			$array = unserialize($setting->u_rootid);
 			foreach ($array as $gedcom => $value) {
 				try {
+					$tree_id = Tree::findByName($gedcom)->getTreeId();
 					Database::prepare(
 						"INSERT IGNORE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (?, ?, ?, ?)"
-					)->execute(array($setting->user_id, get_id_from_gedcom($gedcom), 'rootid', $value));
+					)->execute(array($setting->user_id, $tree_id, 'rootid', $value));
 				} catch (PDOException $ex) {
 					// Invalid data?  Reference to non-existing tree?
 				}
@@ -589,9 +591,10 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 			$array = unserialize($setting->u_canedit);
 			foreach ($array as $gedcom => $value) {
 				try {
+					$tree_id = Tree::findByName($gedcom)->getTreeId();
 					Database::prepare(
 						"INSERT IGNORE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (?, ?, ?, ?)"
-					)->execute(array($setting->user_id, get_id_from_gedcom($gedcom), 'canedit', $value));
+					)->execute(array($setting->user_id, $tree_id, 'canedit', $value));
 				} catch (PDOException $ex) {
 					// Invalid data?  Reference to non-existing tree?
 				}

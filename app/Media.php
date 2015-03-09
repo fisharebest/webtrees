@@ -459,7 +459,7 @@ class Media extends GedcomRecord {
 
 		return
 			'mediafirewall.php?mid=' . $this->getXref() . $thumbstr . $downloadstr .
-			'&amp;ged=' . rawurlencode(get_gedcom_from_id($this->tree->getTreeId())) .
+			'&amp;ged=' . $this->tree->getNameHtml() .
 			'&amp;cb=' . $this->getEtag($which);
 	}
 

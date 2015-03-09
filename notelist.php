@@ -32,5 +32,5 @@ $controller->pageHeader();
 
 echo '<div id="notelist-page">',
 	'<h2>', I18N::translate('Shared notes'), '</h2>',
-	format_note_table(get_note_list($WT_TREE->getTreeId()));
+	format_note_table(get_note_list($WT_TREE));
 echo '</div>';

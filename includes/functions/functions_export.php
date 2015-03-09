@@ -73,13 +73,11 @@ function reformat_record_export($rec) {
 /**
  * Create a header for a (newly-created or already-imported) gedcom file.
  *
- * @param string $gedfile
+ * @param Tree $tree
  *
  * @return string
  */
-function gedcom_header($gedfile) {
-	$tree = Tree::findByName($gedfile);
-
+function gedcom_header(Tree $tree) {
 	// Default values for a new header
 	$HEAD = "0 HEAD";
 	$SOUR = "\n1 SOUR " . WT_WEBTREES . "\n2 NAME " . WT_WEBTREES . "\n2 VERS " . WT_VERSION;
@@ -87,7 +85,7 @@ function gedcom_header($gedfile) {
 	$DATE = "\n1 DATE " . strtoupper(date("d M Y")) . "\n2 TIME " . date("H:i:s");
 	$GEDC = "\n1 GEDC\n2 VERS 5.5.1\n2 FORM Lineage-Linked";
 	$CHAR = "\n1 CHAR UTF-8";
-	$FILE = "\n1 FILE {$gedfile}";
+	$FILE = "\n1 FILE " . $tree->getName();
 	$LANG = "";
 	$PLAC = "\n1 PLAC\n2 FORM City, County, State/Province, Country";
 	$COPR = "";
@@ -160,7 +158,7 @@ function convert_media_path($rec, $path) {
 /**
  * Export the database in GEDCOM format
  *
- * @param string   $gedcom
+ * @param Tree     $tree          Which tree to export
  * @param resource $gedout        Handle to a writable stream
  * @param string[] $exportOptions Export options are as follows:
  *                                'privatize':    which Privacy rules apply?  (none, visitor, user, manager)
@@ -169,9 +167,7 @@ function convert_media_path($rec, $path) {
  *                                'slashes':      what folder separators apply to media file paths?  (forward, backward)
  *
  */
-function export_gedcom($gedcom, $gedout, $exportOptions) {
-	$tree = Tree::findByName($gedcom);
-
+function export_gedcom(Tree $tree, $gedout, $exportOptions) {
 	switch ($exportOptions['privatize']) {
 	case 'gedadmin':
 		$access_level = Auth::PRIV_NONE;
@@ -187,7 +183,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 		break;
 	}
 
-	$head = gedcom_header($gedcom);
+	$head = gedcom_header($tree);
 	if ($exportOptions['toANSI'] == 'yes') {
 		$head = str_replace('UTF-8', 'ANSI', $head);
 		$head = utf8_decode($head);

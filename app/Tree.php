@@ -699,7 +699,7 @@ class Tree {
 			'tree_id_5' => $this->tree_id
 		));
 
-		$buffer = reformat_record_export(gedcom_header($this->name));
+		$buffer = reformat_record_export(gedcom_header($this));
 		while ($row = $stmt->fetch()) {
 			$buffer .= reformat_record_export($row->gedcom);
 			if (strlen($buffer) > 65535) {
