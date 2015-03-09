@@ -1456,7 +1456,7 @@ class Stats {
 			$chart_title = I18N::translate('Surname distribution chart') . ': ' . $surname;
 			// Count how many people are events in each country
 			$surn_countries = array();
-			$indis = QueryName::individuals(I18N::strtoupper($surname), '', '', false, false, $this->tree->getTreeId());
+			$indis = QueryName::individuals($this->tree, I18N::strtoupper($surname), '', '', false, false);
 			foreach ($indis as $person) {
 				if (preg_match_all('/^2 PLAC (?:.*, *)*(.*)/m', $person->getGedcom(), $matches)) {
 					// webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
@@ -4833,7 +4833,7 @@ class Stats {
 		// Note that we count/display SPFX SURN, but sort/group under just SURN
 		$surnames = array();
 		foreach (array_keys($surname_list) as $surname) {
-			$surnames = array_merge($surnames, QueryName::surnames($surname, '', false, false, $this->tree->getTreeId()));
+			$surnames = array_merge($surnames, QueryName::surnames($this->tree, $surname, '', false, false));
 		}
 		return format_surname_list($surnames, ($type == 'list' ? 1 : 2), $show_tot, 'indilist.php', $this->tree);
 	}
@@ -4933,7 +4933,7 @@ class Stats {
 			if ($n >= $maxtoshow) {
 				break;
 			}
-			$all_surnames = array_merge($all_surnames, QueryName::surnames(I18N::strtoupper($surname), '', false, false, $this->tree->getTreeId()));
+			$all_surnames = array_merge($all_surnames, QueryName::surnames($this->tree, I18N::strtoupper($surname), '', false, false));
 		}
 		$tot = 0;
 		foreach ($surnames as $surname) {

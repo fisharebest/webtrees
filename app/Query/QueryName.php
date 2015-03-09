@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees;
  * Class QueryName - generate lists for indilist.php and famlist.php
  *
  * @package   webtrees
- * @copyright (c) 2014 webtrees development team
+ * @copyright (c) 2015 webtrees development team
  * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2
  */
 class QueryName {
@@ -223,6 +223,7 @@ class QueryName {
 			}
 			break;
 		}
+
 		// Easy cases: the MySQL collation rules take care of it
 		return "$field LIKE CONCAT('@'," . Database::quote($letter) . ",'%') COLLATE " . I18N::$collation . " ESCAPE '@'";
 	}
@@ -230,21 +231,21 @@ class QueryName {
 	/**
 	 * Get a list of initial surname letters for indilist.php and famlist.php
 	 *
-	 * @param boolean $marnm   if set, include married names
-	 * @param boolean $fams    if set, only consider individuals with FAMS records
-	 * @param integer $ged_id  only consider individuals from this tree
-	 * @param boolean $totals  if set, count the number of names beginning with each letter
+	 * @param Tree    $tree   Find surnames from this tree
+	 * @param boolean $marnm  if set, include married names
+	 * @param boolean $fams   if set, only consider individuals with FAMS records
+	 * @param boolean $totals if set, count the number of names beginning with each letter
 	 *
 	 * @return integer[]
 	 */
-	public static function surnameAlpha($marnm, $fams, $ged_id, $totals = true) {
+	public static function surnameAlpha(Tree $tree, $marnm, $fams, $totals = true) {
 		$alphas = array();
 
 		$sql =
 			"SELECT SQL_CACHE COUNT(n_id)" .
 			" FROM `##name` " .
 			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "") .
-			" WHERE n_file={$ged_id}" .
+			" WHERE n_file=" . $tree->getTreeId() .
 			($marnm ? "" : " AND n_type!='_MARNM'");
 
 		// Fetch all the letters in our alphabet, whether or not there
@@ -268,7 +269,7 @@ class QueryName {
 			($marnm ? "" : " AND n_type != '_MARNM'");
 
 		$args = array(
-			'tree_id' => $ged_id,
+			'tree_id' => $tree->getTreeId(),
 		);
 
 		foreach (self::getAlphabetForLocale(WT_LOCALE) as $n => $letter) {
@@ -290,7 +291,7 @@ class QueryName {
 			($marnm ? "" : " AND n_type != '_MARNM'");
 
 		$args = array(
-			'tree_id' => $ged_id,
+			'tree_id' => $tree->getTreeId(),
 		);
 
 		$num_none = Database::prepare($sql)->execute($args)->fetchOne();
@@ -305,6 +306,7 @@ class QueryName {
 	/**
 	 * Get a list of initial given name letters for indilist.php and famlist.php
 	 *
+	 * @param Tree    $tree   Find names in this tree
 	 * @param string  $surn   if set, only consider people with this surname
 	 * @param string  $salpha if set, only consider surnames starting with this letter
 	 * @param boolean $marnm  if set, include married names
@@ -313,14 +315,14 @@ class QueryName {
 	 *
 	 * @return integer[]
 	 */
-	public static function givenAlpha($surn, $salpha, $marnm, $fams, $ged_id) {
+	public static function givenAlpha(Tree $tree, $surn, $salpha, $marnm, $fams) {
 		$alphas = array();
 
 		$sql =
 			"SELECT SQL_CACHE COUNT(DISTINCT n_id)" .
 			" FROM `##name`" .
 			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "") .
-			" WHERE n_file={$ged_id} " .
+			" WHERE n_file=" . $tree->getTreeId() . " " .
 			($marnm ? "" : " AND n_type!='_MARNM'");
 
 		if ($surn) {
@@ -354,7 +356,7 @@ class QueryName {
 			($marnm ? "" : " AND n_type != '_MARNM'");
 
 		$args = array(
-			'tree_id' => $ged_id,
+			'tree_id' => $tree->getTreeId(),
 		);
 
 		if ($surn) {
@@ -387,15 +389,15 @@ class QueryName {
 	/**
 	 * Get a list of actual surnames and variants, based on a "root" surname.
 	 *
+	 * @param Tree    $tree   only fetch individuals from this tree
 	 * @param string  $surn   if set, only fetch people with this surname
 	 * @param string  $salpha if set, only consider surnames starting with this letter
 	 * @param boolean $marnm  if set, include married names
 	 * @param boolean $fams   if set, only consider individuals with FAMS records
-	 * @param integer $ged_id only consider individuals from this gedcom
 	 *
 	 * @return array
 	 */
-	public static function surnames($surn, $salpha, $marnm, $fams, $ged_id) {
+	public static function surnames(Tree $tree, $surn, $salpha, $marnm, $fams) {
 		$sql =
 			"SELECT SQL_CACHE n2.n_surn, n1.n_surname, n1.n_id" .
 			" FROM `##name` n1 " .
@@ -405,7 +407,7 @@ class QueryName {
 			($marnm ? "" : " AND n_type != '_MARNM'");
 
 		$args = array(
-			'tree_id' => $ged_id,
+			'tree_id' => $tree->getTreeId(),
 		);
 
 		if ($surn) {
@@ -430,6 +432,7 @@ class QueryName {
 		foreach (Database::prepare($sql)->execute($args)->fetchAll() as $row) {
 			$list[I18N::strtoupper($row->n_surn)][$row->n_surname][$row->n_id] = true;
 		}
+
 		return $list;
 	}
 
@@ -439,17 +442,16 @@ class QueryName {
 	 * To search for unknown names, use $surn="@N.N.", $salpha="@" or $galpha="@"
 	 * To search for names with no surnames, use $salpha=","
 	 *
+	 * @param Tree    $tree   only fetch individuals from this tree
 	 * @param string  $surn   if set, only fetch people with this surname
 	 * @param string  $salpha if set, only fetch surnames starting with this letter
 	 * @param string  $galpha if set, only fetch given names starting with this letter
 	 * @param boolean $marnm  if set, include married names
 	 * @param boolean $fams   if set, only fetch individuals with FAMS records
-	 * @param integer $ged_id if set, only fetch individuals from this gedcom
 	 *
 	 * @return Individual[]
 	 */
-	public static function individuals($surn, $salpha, $galpha, $marnm, $fams, $ged_id) {
-		$tree = Tree::findById($ged_id);
+	public static function individuals(Tree $tree, $surn, $salpha, $galpha, $marnm, $fams) {
 		$sql =
 			"SELECT i_id AS xref, i_gedcom AS gedcom, n_full " .
 			"FROM `##individuals` " .
@@ -459,7 +461,7 @@ class QueryName {
 			($marnm ? "" : "AND n_type != '_MARNM'");
 
 		$args = array(
-			'tree_id' => $ged_id,
+			'tree_id' => $tree->getTreeId(),
 		);
 
 		if ($surn) {
@@ -500,6 +502,7 @@ class QueryName {
 				}
 			}
 		}
+
 		return $list;
 	}
 
@@ -509,22 +512,23 @@ class QueryName {
 	 * To search for unknown names, use $surn="@N.N.", $salpha="@" or $galpha="@"
 	 * To search for names with no surnames, use $salpha=","
 	 *
+	 * @param Tree    $tree   only fetch individuals from this tree
 	 * @param string  $surn   if set, only fetch people with this surname
 	 * @param string  $salpha if set, only fetch surnames starting with this letter
 	 * @param string  $galpha if set, only fetch given names starting with this letter
 	 * @param boolean $marnm  if set, include married names
-	 * @param integer $ged_id if set, only fetch individuals from this gedcom
 	 *
 	 * @return Family[]
 	 */
-	public static function families($surn, $salpha, $galpha, $marnm, $ged_id) {
+	public static function families(Tree $tree, $surn, $salpha, $galpha, $marnm) {
 		$list = array();
-		foreach (self::individuals($surn, $salpha, $galpha, $marnm, true, $ged_id) as $indi) {
+		foreach (self::individuals($tree, $surn, $salpha, $galpha, $marnm, true) as $indi) {
 			foreach ($indi->getSpouseFamilies() as $family) {
 				$list[$family->getXref()] = $family;
 			}
 		}
 		usort($list, __NAMESPACE__ . '\GedcomRecord::compare');
+
 		return $list;
 	}
 }

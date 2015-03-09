@@ -67,9 +67,9 @@ class FamiliesSidebarModule extends Module implements ModuleSidebarInterface {
 		if ($search) {
 			return $this->search($WT_TREE, $search);
 		} elseif ($alpha == '@' || $alpha == ',' || $surname) {
-			return $this->getSurnameFams($alpha, $surname);
+			return $this->getSurnameFams($WT_TREE, $alpha, $surname);
 		} elseif ($alpha) {
-			return $this->getAlphaSurnames($alpha, $surname);
+			return $this->getAlphaSurnames($WT_TREE, $alpha, $surname);
 		} else {
 			return '';
 		}
@@ -80,7 +80,7 @@ class FamiliesSidebarModule extends Module implements ModuleSidebarInterface {
 		global $UNKNOWN_NN, $controller, $WT_TREE;
 
 		// Fetch a list of the initial letters of all surnames in the database
-		$initials = QueryName::surnameAlpha(true, false, $WT_TREE->getTreeId(), false);
+		$initials = QueryName::surnameAlpha($WT_TREE, true, false, false);
 
 		$controller->addInlineJavascript('
 			var famloadedNames = new Array();
@@ -160,21 +160,20 @@ class FamiliesSidebarModule extends Module implements ModuleSidebarInterface {
 	}
 
 	/**
+	 * @param Tree   $tree
 	 * @param string $alpha
 	 * @param string $surname1
 	 *
 	 * @return string
 	 */
-	public function getAlphaSurnames($alpha, $surname1 = '') {
-		global $WT_TREE;
-
-		$surnames = QueryName::surnames('', $alpha, true, true, $WT_TREE->getTreeId());
+	public function getAlphaSurnames(Tree $tree, $alpha, $surname1 = '') {
+		$surnames = QueryName::surnames($tree, '', $alpha, true, true);
 		$out = '<ul>';
 		foreach (array_keys($surnames) as $surname) {
 			$out .= '<li id="sb_fam_' . $surname . '" class="sb_fam_surname_li"><a href="' . $surname . '" title="' . $surname . '" alt="' . $alpha . '" class="sb_fam_surname">' . $surname . '</a>';
 			if (!empty($surname1) && $surname1 == $surname) {
 				$out .= '<div class="name_tree_div_visible">';
-				$out .= $this->getSurnameFams($alpha, $surname1);
+				$out .= $this->getSurnameFams($tree, $alpha, $surname1);
 				$out .= '</div>';
 			} else {
 				$out .= '<div class="name_tree_div"></div>';
@@ -186,15 +185,14 @@ class FamiliesSidebarModule extends Module implements ModuleSidebarInterface {
 	}
 
 	/**
+	 * @param Tree   $tree
 	 * @param string $alpha
 	 * @param string $surname
 	 *
 	 * @return string
 	 */
-	public function getSurnameFams($alpha, $surname) {
-		global $WT_TREE;
-
-		$families = QueryName::families($surname, $alpha, '', true, $WT_TREE->getTreeId());
+	public function getSurnameFams(Tree $tree, $alpha, $surname) {
+		$families = QueryName::families($tree, $surname, $alpha, '', true);
 		$out = '<ul>';
 		foreach ($families as $family) {
 			if ($family->canShowName()) {
@@ -209,6 +207,7 @@ class FamiliesSidebarModule extends Module implements ModuleSidebarInterface {
 			}
 		}
 		$out .= '</ul>';
+
 		return $out;
 	}
 
@@ -270,6 +269,7 @@ class FamiliesSidebarModule extends Module implements ModuleSidebarInterface {
 			}
 		}
 		$out .= '</ul>';
+
 		return $out;
 	}
 }
