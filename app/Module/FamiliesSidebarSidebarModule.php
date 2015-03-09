@@ -58,12 +58,14 @@ class FamiliesSidebarModule extends Module implements ModuleSidebarInterface {
 
 	/** {@inheritdoc} */
 	public function getSidebarAjaxContent() {
+		global $WT_TREE;
+
 		$alpha   = Filter::get('alpha'); // All surnames beginning with this letter where "@"=unknown and ","=none
 		$surname = Filter::get('surname'); // All indis with this surname.
 		$search  = Filter::get('search');
 
 		if ($search) {
-			return $this->search($search);
+			return $this->search($WT_TREE, $search);
 		} elseif ($alpha == '@' || $alpha == ',' || $surname) {
 			return $this->getSurnameFams($alpha, $surname);
 		} elseif ($alpha) {
@@ -211,14 +213,12 @@ class FamiliesSidebarModule extends Module implements ModuleSidebarInterface {
 	}
 
 	/**
-	 * @param string $query
+	 * @param Tree   $tree  Search this tree
+	 * @param string $query Search for this text
 	 *
 	 * @return string
 	 */
-	public function search($query) {
-		global $WT_TREE;
-
-		$tree = Tree::findById($WT_TREE->getTreeId());
+	private function search(Tree $tree, $query) {
 		if (strlen($query) < 2) {
 			return '';
 		}
@@ -231,7 +231,7 @@ class FamiliesSidebarModule extends Module implements ModuleSidebarInterface {
 			" AND i_id=n_id AND i_file=n_file AND i_file=?" .
 			" ORDER BY n_sort"
 		)
-		->execute(array("%{$query}%", "%{$query}%", $WT_TREE->getTreeId()))
+		->execute(array("%{$query}%", "%{$query}%", $tree->getTreeId()))
 		->fetchAll();
 		$ids = array();
 		foreach ($rows as $row) {
@@ -250,7 +250,7 @@ class FamiliesSidebarModule extends Module implements ModuleSidebarInterface {
 			$vars = array_merge($vars, $ids, $ids);
 		}
 
-		$vars[] = $WT_TREE->getTreeId();
+		$vars[] = $tree->getTreeId();
 		$rows = Database::prepare("SELECT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom FROM `##families` WHERE {$where} AND f_file=?")
 		->execute($vars)
 		->fetchAll();

@@ -657,7 +657,7 @@ function import_record($gedrec, Tree $tree, $update) {
 	switch ($type) {
 	case 'INDI':
 		// Convert inline media into media objects
-		$gedrec = convert_inline_media($ged_id, $gedrec);
+		$gedrec = convert_inline_media($tree, $gedrec);
 
 		$record = new Individual($xref, $gedrec, null, $tree);
 		if ($tree->getPreference('USE_RIN') && preg_match('/\n1 RIN (.+)/', $gedrec, $match)) {
@@ -674,7 +674,7 @@ function import_record($gedrec, Tree $tree, $update) {
 		break;
 	case 'FAM':
 		// Convert inline media into media objects
-		$gedrec = convert_inline_media($ged_id, $gedrec);
+		$gedrec = convert_inline_media($tree, $gedrec);
 
 		if (preg_match('/\n1 HUSB @(' . WT_REGEX_XREF . ')@/', $gedrec, $match)) {
 			$husb = $match[1];
@@ -698,7 +698,7 @@ function import_record($gedrec, Tree $tree, $update) {
 		break;
 	case 'SOUR':
 		// Convert inline media into media objects
-		$gedrec = convert_inline_media($ged_id, $gedrec);
+		$gedrec = convert_inline_media($tree, $gedrec);
 
 		$record = new Source($xref, $gedrec, null, $tree);
 		if (preg_match('/\n1 TITL (.+)/', $gedrec, $match)) {
@@ -715,7 +715,7 @@ function import_record($gedrec, Tree $tree, $update) {
 		break;
 	case 'REPO':
 		// Convert inline media into media objects
-		$gedrec = convert_inline_media($ged_id, $gedrec);
+		$gedrec = convert_inline_media($tree, $gedrec);
 
 		$record = new Repository($xref, $gedrec, null, $tree);
 		$sql_insert_other->execute(array($xref, $ged_id, $type, $gedrec));
@@ -974,20 +974,20 @@ function update_names($xref, $ged_id, GedcomRecord $record) {
 /**
  * Extract inline media data, and convert to media objects.
  *
- * @param integer $ged_id
- * @param string  $gedrec
+ * @param Tree   $tree
+ * @param string $gedrec
  *
  * @return string
  */
-function convert_inline_media($ged_id, $gedrec) {
+function convert_inline_media(Tree $tree, $gedrec) {
 	while (preg_match('/\n1 OBJE(?:\n[2-9].+)+/', $gedrec, $match)) {
-		$gedrec = str_replace($match[0], create_media_object(1, $match[0], $ged_id), $gedrec);
+		$gedrec = str_replace($match[0], create_media_object(1, $match[0], $tree), $gedrec);
 	}
 	while (preg_match('/\n2 OBJE(?:\n[3-9].+)+/', $gedrec, $match)) {
-		$gedrec = str_replace($match[0], create_media_object(2, $match[0], $ged_id), $gedrec);
+		$gedrec = str_replace($match[0], create_media_object(2, $match[0], $tree), $gedrec);
 	}
 	while (preg_match('/\n3 OBJE(?:\n[4-9].+)+/', $gedrec, $match)) {
-		$gedrec = str_replace($match[0], create_media_object(3, $match[0], $ged_id), $gedrec);
+		$gedrec = str_replace($match[0], create_media_object(3, $match[0], $tree), $gedrec);
 	}
 	return $gedrec;
 }
@@ -997,11 +997,11 @@ function convert_inline_media($ged_id, $gedrec) {
  *
  * @param integer $level
  * @param string  $gedrec
- * @param integer $ged_id
+ * @param Tree    $tree
  *
  * @return string
  */
-function create_media_object($level, $gedrec, $ged_id) {
+function create_media_object($level, $gedrec, Tree $tree) {
 	static $sql_insert_media = null;
 	static $sql_select_media = null;
 
@@ -1027,10 +1027,9 @@ function create_media_object($level, $gedrec, $ged_id) {
 	}
 
 	// Have we already created a media object with the same title/filename?
-	$xref = $sql_select_media->execute(array($file, $titl, $ged_id))->fetchOne();
+	$xref = $sql_select_media->execute(array($file, $titl, $tree->getTreeId()))->fetchOne();
 
 	if (!$xref) {
-		$tree = Tree::findById($ged_id);
 		$xref = $tree->getNewXref('OBJE');
 		// renumber the lines
 		$gedrec = preg_replace_callback('/\n(\d+)/', function($m) use ($level) { return "\n" . ($m[1] - $level); }, $gedrec);
@@ -1040,7 +1039,7 @@ function create_media_object($level, $gedrec, $ged_id) {
 		$gedrec = preg_replace('/\n1 FORM (.+)\n1 FILE (.+)\n1 TITL (.+)/', "\n1 FILE $2\n2 FORM $1\n2 TITL $3", $gedrec);
 		// Create new record
 		$record = new Media($xref, $gedrec, null, $tree);
-		$sql_insert_media->execute(array($xref, $record->extension(), $record->getMediaType(), $record->title, $record->file, $ged_id, $gedrec));
+		$sql_insert_media->execute(array($xref, $record->extension(), $record->getMediaType(), $record->title, $record->file, $tree->getTreeId(), $gedrec));
 	}
 
 	return "\n" . $level . ' OBJE @' . $xref . '@';
@@ -1080,15 +1079,17 @@ function accept_all_changes($xref, $ged_id) {
 /**
  * Accept all pending changes for a specified record.
  *
- * @param string  $xref
- * @param integer $ged_id
+ * @param GedcomRecord $record
  */
-function reject_all_changes($xref, $ged_id) {
+function reject_all_changes(GedcomRecord $record) {
 	Database::prepare(
 		"UPDATE `##change`" .
-		" SET status='rejected'" .
-		" WHERE status='pending' AND xref=? AND gedcom_id=?"
-	)->execute(array($xref, $ged_id));
+		" SET status = 'rejected'" .
+		" WHERE status = 'pending' AND xref = :xref AND gedcom_id = :tree_id"
+	)->execute(array(
+		'xref'    => $record->getXref(),
+		'tree_id' => $record->getTree()->getTreeId(),
+	));
 }
 
 /**
