@@ -46,7 +46,7 @@ class SlideShowModule extends Module implements ModuleBlockInterface {
 			" AND m_ext  IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, '')" .
 			" AND m_type IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, '')"
 		)->execute(array(
-			WT_GED_ID,
+			$WT_TREE->getTreeId(),
 			get_block_setting($block_id, 'filter_avi', '0') ? 'avi' : null,
 			get_block_setting($block_id, 'filter_bmp', '1') ? 'bmp' : null,
 			get_block_setting($block_id, 'filter_gif', '1') ? 'gif' : null,
@@ -83,7 +83,7 @@ class SlideShowModule extends Module implements ModuleBlockInterface {
 		$random_media = null;
 		while ($all_media) {
 			$n = array_rand($all_media);
-			$media = Media::getInstance($all_media[$n]);
+			$media = Media::getInstance($all_media[$n], $WT_TREE);
 			if ($media->canShow() && !$media->isExternal()) {
 				// Check if it is linked to a suitable individual
 				foreach ($media->linkedIndividuals('OBJE') as $indi) {

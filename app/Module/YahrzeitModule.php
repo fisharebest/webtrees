@@ -68,7 +68,7 @@ class YahrzeitModule extends Module implements ModuleBlockInterface {
 		// Fetch normal anniversaries...
 		$yahrzeits = array();
 		for ($jd = $startjd - 1; $jd <= $endjd + $days; ++$jd) {
-			foreach (get_anniversary_events($jd, 'DEAT _YART') as $fact) {
+			foreach (get_anniversary_events($jd, 'DEAT _YART', $WT_TREE) as $fact) {
 				// Exact hebrew dates only
 				$date = $fact->getDate();
 				if ($date->minimumDate() instanceof JewishDate && $date->minimumJulianDay() === $date->maximumJulianDay()) {

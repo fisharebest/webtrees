@@ -614,7 +614,7 @@ if ($action == "filter") {
 		if ($filter) {
 			$repo_list = search_repos($filter_array, array($WT_TREE));
 		} else {
-			$repo_list = get_repo_list(WT_GED_ID);
+			$repo_list = get_repo_list($WT_TREE->getTreeId());
 		}
 		if ($repo_list) {
 			usort($repo_list, __NAMESPACE__ . '\GedcomRecord::compare');
@@ -636,7 +636,7 @@ if ($action == "filter") {
 		if ($filter) {
 			$mynotelist = search_notes($filter_array, array($WT_TREE));
 		} else {
-			$mynotelist = get_note_list(WT_GED_ID);
+			$mynotelist = get_note_list($WT_TREE->getTreeId());
 		}
 		if ($mynotelist) {
 			usort($mynotelist, __NAMESPACE__ . '\GedcomRecord::compare');
@@ -658,7 +658,7 @@ if ($action == "filter") {
 		if ($filter) {
 			$mysourcelist = search_sources($filter_array, array($WT_TREE));
 		} else {
-			$mysourcelist = get_source_list(WT_GED_ID);
+			$mysourcelist = get_source_list($WT_TREE->getTreeId());
 		}
 		if ($mysourcelist) {
 			usort($mysourcelist, __NAMESPACE__ . '\GedcomRecord::compare');

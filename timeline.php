@@ -245,7 +245,7 @@ document.onmouseup = function () {
 </script>
 <h2><?php echo I18N::translate('Timeline'); ?></h2>
 <form name="people" action="?">
-	<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
+	<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 	<table>
 		<tr>
 			<?php

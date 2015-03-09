@@ -63,7 +63,7 @@ class FamilyTreeNewsModule extends Module implements ModuleBlockInterface {
 		}
 		$usernews = Database::prepare(
 			"SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE gedcom_id=? ORDER BY updated DESC"
-		)->execute(array(WT_GED_ID))->fetchAll();
+		)->execute(array($WT_TREE->getTreeId()))->fetchAll();
 
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
@@ -106,7 +106,7 @@ class FamilyTreeNewsModule extends Module implements ModuleBlockInterface {
 		}
 		$printedAddLink = false;
 		if (Auth::isManager($WT_TREE)) {
-			$content .= "<a href=\"#\" onclick=\"window.open('editnews.php?gedcom_id='+WT_GED_ID, '_blank', news_window_specs); return false;\">" . I18N::translate('Add a news article') . "</a>";
+			$content .= "<a href=\"#\" onclick=\"window.open('editnews.php?gedcom_id=" . $WT_TREE->getTreeId() . "', '_blank', news_window_specs); return false;\">" . I18N::translate('Add a news article') . "</a>";
 			$printedAddLink = true;
 		}
 		if ($limit == 'date' || $limit == 'count') {

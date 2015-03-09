@@ -35,7 +35,7 @@ $controller
 ?>
 <div id="descendancy-page"><h2><?php echo $controller->getPageTitle(); ?></h2>
 	<form method="get" name="people" action="?">
-		<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
+		<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 		<table class="list_table">
 			<tbody>
 				<tr>

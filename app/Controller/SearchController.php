@@ -145,7 +145,7 @@ class SearchController extends PageController {
 			// We can type in an XREF into the header search, and jump straight to it.
 			// Otherwise, the header search is the same as the general search
 			if (preg_match('/' . WT_REGEX_XREF . '/', $this->query)) {
-				$record = GedcomRecord::getInstance($this->query, $WT_TREE->getTreeId());
+				$record = GedcomRecord::getInstance($this->query, $WT_TREE);
 				if ($record && $record->canShowName()) {
 					header('Location: ' . WT_BASE_URL . $record->getRawUrl());
 					exit;

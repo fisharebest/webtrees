@@ -88,9 +88,10 @@ class InteractiveTreeModule extends Module implements ModuleTabInterface {
 
 	/** {@inheritdoc} */
 	public function modAction($mod_action) {
+		global $controller, $WT_TREE;
+
 		switch ($mod_action) {
 		case 'treeview':
-			global $controller;
 			$controller = new ChartController;
 			$tv = new TreeView('tv');
 			ob_start();
@@ -121,7 +122,7 @@ class InteractiveTreeModule extends Module implements ModuleTabInterface {
 			$pid = Filter::get('pid', WT_REGEX_XREF);
 			$i = Filter::get('instance');
 			$tv = new TreeView($i);
-			$individual = Individual::getInstance($pid);
+			$individual = Individual::getInstance($pid, $WT_TREE);
 			if ($individual) {
 				echo $tv->getDetails($individual);
 			}

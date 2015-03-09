@@ -1216,13 +1216,13 @@ abstract class BaseTheme {
 
 		if ($show_user_favorites && $show_tree_favorites) {
 			$favorites = array_merge(
-				FamilyTreeFavoritesModule::getFavorites(WT_GED_ID),
+				FamilyTreeFavoritesModule::getFavorites($this->tree->getTreeId()),
 				UserFavoritesModule::getFavorites(Auth::id())
 			);
 		} elseif ($show_user_favorites) {
 			$favorites = UserFavoritesModule::getFavorites(Auth::id());
 		} elseif ($show_tree_favorites) {
-			$favorites = FamilyTreeFavoritesModule::getFavorites(WT_GED_ID);
+			$favorites = FamilyTreeFavoritesModule::getFavorites($this->tree->getTreeId());
 		} else {
 			return null;
 		}
@@ -1240,7 +1240,7 @@ abstract class BaseTheme {
 			case 'SOUR':
 			case 'OBJE':
 			case 'NOTE':
-				$obj = GedcomRecord::getInstance($favorite['gid']);
+				$obj = GedcomRecord::getInstance($favorite['gid'], $this->tree);
 				if ($obj && $obj->canShowName()) {
 					$submenu = new Menu($obj->getFullName(), $obj->getHtmlUrl());
 					$menu->addSubmenu($submenu);
@@ -1268,7 +1268,7 @@ abstract class BaseTheme {
 		$ALLOW_CHANGE_GEDCOM = Site::getPreference('ALLOW_CHANGE_GEDCOM') && count(Tree::getAll()) > 1;
 
 		foreach (Tree::getAll() as $tree) {
-			if ($tree->getTreeId() === WT_GED_ID || $ALLOW_CHANGE_GEDCOM) {
+			if ($tree == $this->tree || $ALLOW_CHANGE_GEDCOM) {
 				$submenu = new Menu(
 					$tree->getTitleHtml(),
 					'index.php?ctype=gedcom&amp;ged=' . $tree->getNameUrl(),
@@ -1325,7 +1325,12 @@ abstract class BaseTheme {
 			" EXISTS(SELECT 1 FROM `##other`   WHERE o_file = ? AND o_type='REPO') AS repo," .
 			" EXISTS(SELECT 1 FROM `##other`   WHERE o_file = ? AND o_type='NOTE') AS note," .
 			" EXISTS(SELECT 1 FROM `##media`   WHERE m_file = ?                  ) AS obje"
-		)->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID))->fetchOneRow();
+		)->execute(array(
+			$this->tree->getTreeId(),
+			$this->tree->getTreeId(),
+			$this->tree->getTreeId(),
+			$this->tree->getTreeId(),
+		))->fetchOneRow();
 
 		$menulist = array(
 			$this->menuListsIndividuals(),

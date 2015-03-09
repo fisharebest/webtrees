@@ -75,7 +75,7 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 			)->execute(array(
 				$this->getName(),
 				$controller->record->getXref(),
-				WT_GED_ID
+				$controller->record->getTree()->getTreeId()
 			))->fetchOneColumn();
 
 		$html = '';
@@ -119,7 +119,7 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 			)->execute(array(
 				$this->getName(),
 				$controller->record->getXref(),
-				WT_GED_ID
+				$controller->record->getTree()->getTreeId()
 			))->fetchOne();
 
 		return $count_of_stories == 0;
@@ -204,7 +204,7 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 				echo Filter::getCsrf();
 				echo '<input type="hidden" name="save" value="1">';
 				echo '<input type="hidden" name="block_id" value="', $block_id, '">';
-				echo '<input type="hidden" name="gedcom_id" value="', WT_GED_ID, '">';
+				echo '<input type="hidden" name="gedcom_id" value="', $WT_TREE->getTreeId(), '">';
 				echo '<table id="story_module">';
 				echo '<tr><th>';
 				echo I18N::translate('Story title');
@@ -224,7 +224,7 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 				echo '<input data-autocomplete-type="INDI" type="text" name="xref" id="pid" size="4" value="' . $xref . '">';
 				echo print_findindi_link('pid');
 				if ($xref) {
-					$person = Individual::getInstance($xref);
+					$person = Individual::getInstance($xref, $WT_TREE);
 					if ($person) {
 						echo ' ', $person->formatList('span');
 					}
@@ -269,6 +269,8 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 	 * The admin view - list, create, edit, delete stories.
 	 */
 	private function config() {
+		global $WT_TREE;
+
 		$controller = new PageController;
 		$controller
 			->restrictAccess(Auth::isAdmin())
@@ -301,7 +303,7 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 			" WHERE module_name=?" .
 			" AND gedcom_id=?" .
 			" ORDER BY xref"
-		)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
+		)->execute(array($this->getName(), $WT_TREE->getTreeId()))->fetchAll();
 
 		?>
 		<ol class="breadcrumb small">
@@ -318,7 +320,7 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 			</label>
 			<input type="hidden" name="mod" value="<?php echo  $this->getName(); ?>">
 			<input type="hidden" name="mod_action" value="admin_config">
-			<?php echo select_edit_control('ged', Tree::getNameList(), null, WT_GEDCOM, 'class="form-control"'); ?>
+			<?php echo select_edit_control('ged', Tree::getNameList(), null, $WT_TREE->getName(), 'class="form-control"'); ?>
 			<input type="submit" class="btn btn-primary" value="<?php echo I18N::translate('show'); ?>">
 		</form>
 
@@ -345,7 +347,7 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 						<?php echo Filter::escapeHtml(get_block_setting($story->block_id, 'title')); ?>
 					</td>
 					<td>
-						<?php if ($indi = Individual::getInstance($story->xref)): ?>
+						<?php if ($indi = Individual::getInstance($story->xref, $WT_TREE)): ?>
 						<a href="<?php echo $indi->getHtmlUrl(); ?>#stories">
 							<?php echo $indi->getFullName(); ?>
 						</a>
@@ -377,7 +379,7 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 	 * Show the list of stories
 	 */
 	private function showList() {
-		global $controller;
+		global $controller, $WT_TREE;
 
 		$controller = new PageController;
 		$controller
@@ -409,7 +411,7 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 			" WHERE module_name=?" .
 			" AND gedcom_id=?" .
 			" ORDER BY xref"
-		)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
+		)->execute(array($this->getName(), $WT_TREE->getTreeId()))->fetchAll();
 
 		echo '<h2 class="center">', I18N::translate('Stories'), '</h2>';
 		if (count($stories) > 0) {
@@ -420,7 +422,7 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 				</tr></thead>
 				<tbody>';
 			foreach ($stories as $story) {
-				$indi        = Individual::getInstance($story->xref);
+				$indi        = Individual::getInstance($story->xref, $WT_TREE);
 				$story_title = get_block_setting($story->block_id, 'title');
 				$languages   = get_block_setting($story->block_id, 'languages');
 				if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {

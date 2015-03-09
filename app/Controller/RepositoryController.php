@@ -24,8 +24,10 @@ class RepositoryController extends GedcomRecordController {
 	 * Startup activity
 	 */
 	public function __construct() {
+		global $WT_TREE;
+
 		$xref         = Filter::get('rid', WT_REGEX_XREF);
-		$this->record = Repository::getInstance($xref);
+		$this->record = Repository::getInstance($xref, $WT_TREE);
 
 		parent::__construct();
 	}

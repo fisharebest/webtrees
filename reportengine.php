@@ -53,7 +53,7 @@ foreach ($vars as $name => $var) {
 	if (!empty($type[$name])) {
 		switch ($type[$name]) {
 		case 'INDI':
-			$record = Individual::getInstance($var);
+			$record = Individual::getInstance($var, $WT_TREE);
 			if ($record && $record->canShowName()) {
 				$newvars[$name]['gedcom'] = $record->privatizeGedcom(Auth::accessLevel($WT_TREE));
 			} else {
@@ -61,7 +61,7 @@ foreach ($vars as $name => $var) {
 			}
 			break;
 		case 'FAM':
-			$record = Family::getInstance($var);
+			$record = Family::getInstance($var, $WT_TREE);
 			if ($record && $record->canShowName()) {
 				$newvars[$name]['gedcom'] = $record->privatizeGedcom(Auth::accessLevel($WT_TREE));
 			} else {
@@ -69,7 +69,7 @@ foreach ($vars as $name => $var) {
 			}
 			break;
 		case 'SOUR':
-			$record = Source::getInstance($var);
+			$record = Source::getInstance($var, $WT_TREE);
 			if ($record && $record->canShowName()) {
 				$newvars[$name]['gedcom'] = $record->privatizeGedcom(Auth::accessLevel($WT_TREE));
 			} else {

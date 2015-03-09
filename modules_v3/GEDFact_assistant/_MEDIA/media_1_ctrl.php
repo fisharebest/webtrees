@@ -23,7 +23,7 @@ if ($pid == "") {
 	echo "<br><br>";
 } else {
 
-	$person = Individual::getInstance($pid);
+	$person = Individual::getInstance($pid, $WT_TREE);
 	if ($person->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $person->getDeathYear(); }
 	if ($person->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $person->getBirthYear(); }
 
@@ -506,9 +506,9 @@ if ($pid == "") {
  */
 function print_pedigree_person_nav_media($pid) {
 	global $spouselinks, $parentlinks, $step_parentlinks, $persons, $person_step, $person_parent;
-	global $natdad, $natmom;
+	global $natdad, $natmom, $WT_TREE;
 
-	$person = Individual::getInstance($pid);
+	$person = Individual::getInstance($pid, $WT_TREE);
 
 	$tmp = array('M'=>'', 'F'=>'F', 'U'=>'NN');
 	$isF = $tmp[$person->getSex()];

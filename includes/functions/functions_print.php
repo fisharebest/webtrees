@@ -63,7 +63,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 
 	// Check if shared note (we have already checked that it exists)
 	if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ NOTE/', $nrec, $match)) {
-		$note  = Note::getInstance($match[1]);
+		$note  = Note::getInstance($match[1], $WT_TREE);
 		$label = 'SHARED_NOTE';
 		// If Census assistant installed, allow it to format the note
 		if (Module::getModuleByName('GEDFact_assistant')) {
@@ -115,7 +115,9 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
  * @return string HTML
  */
 function print_fact_notes($factrec, $level, $textOnly = false) {
-	$data = "";
+	global $WT_TREE;
+
+	$data = '';
 	$previous_spos = 0;
 	$nlevel = $level + 1;
 	$ct = preg_match_all("/$level NOTE (.*)/", $factrec, $match, PREG_SET_ORDER);
@@ -128,19 +130,19 @@ function print_fact_notes($factrec, $level, $textOnly = false) {
 		$previous_spos = $spos2;
 		$nrec = substr($factrec, $spos1, $spos2 - $spos1);
 		if (!isset($match[$j][1])) {
-			$match[$j][1] = "";
+			$match[$j][1] = '';
 		}
-		if (!preg_match("/@(.*)@/", $match[$j][1], $nmatch)) {
+		if (!preg_match('/@(.*)@/', $match[$j][1], $nmatch)) {
 			$data .= print_note_record($match[$j][1], $nlevel, $nrec, $textOnly);
 		} else {
-			$note = Note::getInstance($nmatch[1]);
+			$note = Note::getInstance($nmatch[1], $WT_TREE);
 			if ($note) {
 				if ($note->canShow()) {
 					$noterec = $note->getGedcom();
 					$nt = preg_match("/0 @$nmatch[1]@ NOTE (.*)/", $noterec, $n1match);
 					$data .= print_note_record(($nt > 0) ? $n1match[1] : "", 1, $noterec, $textOnly);
 					if (!$textOnly) {
-						if (strpos($noterec, "1 SOUR") !== false) {
+						if (strpos($noterec, '1 SOUR') !== false) {
 							$data .= print_fact_sources($noterec, 1);
 						}
 					}
@@ -239,7 +241,7 @@ function format_asso_rela_record(Fact $event) {
 	$html = '';
 	// For each ASSO record
 	foreach (array_merge($amatches1, $amatches2) as $amatch) {
-		$person = Individual::getInstance($amatch[1]);
+		$person = Individual::getInstance($amatch[1], $event->getParent()->getTree());
 		if ($person && $person->canShowName()) {
 			// Is there a "RELA" tag
 			if (preg_match('/\n[23] RELA (.+)/', $amatch[2], $rmatch)) {
@@ -424,7 +426,7 @@ function format_fact_date(Fact $event, GedcomRecord $record, $anchor, $time) {
 				}
 			}
 		} elseif ($record instanceof Family) {
-			$indi = Individual::getInstance($pid);
+			$indi = Individual::getInstance($pid, $record->getTree());
 			if ($indi) {
 				$birth_date = $indi->getBirthDate();
 				$death_date = $indi->getDeathDate();
@@ -714,12 +716,18 @@ function init_calendar_popup() {
 /**
  * @param string $element_id
  * @param string $indiname
- * @param string $ged
+ * @param Tree   $tree
  *
  * @return string
  */
-function print_findindi_link($element_id, $indiname = '', $ged = WT_GEDCOM) {
-	return '<a href="#" onclick="findIndi(document.getElementById(\'' . $element_id . '\'), document.getElementById(\'' . $indiname . '\'), \'' . Filter::escapeHtml($ged) . '\'); return false;" class="icon-button_indi" title="' . I18N::translate('Find an individual') . '"></a>';
+function print_findindi_link($element_id, $indiname = '', $tree = null) {
+	global $WT_TREE;
+
+	if ($tree === null) {
+		$tree = $WT_TREE;
+	}
+
+	return '<a href="#" onclick="findIndi(document.getElementById(\'' . $element_id . '\'), document.getElementById(\'' . $indiname . '\'), \'' . $tree->getNameHtml() . '\'); return false;" class="icon-button_indi" title="' . I18N::translate('Find an individual') . '"></a>';
 }
 
 /**

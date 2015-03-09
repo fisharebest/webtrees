@@ -18,7 +18,7 @@ namespace Fisharebest\Webtrees;
 
 $xref = Filter::get('xref', WT_REGEX_XREF);
 
-$person = Individual::getInstance($xref);
+$person = Individual::getInstance($xref, $WT_TREE);
 check_record_access($person);
 
 $controller

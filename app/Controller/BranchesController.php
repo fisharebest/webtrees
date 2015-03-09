@@ -51,7 +51,7 @@ class BranchesController extends PageController {
 			$this->setPageTitle(/* I18N: %s is a surname */
 				I18N::translate('Branches of the %s family', Filter::escapeHtml($this->surname)));
 			$this->loadIndividuals();
-			$self = Individual::getInstance($WT_TREE->getUserPreference(Auth::user(), 'gedcomid'));
+			$self = Individual::getInstance($WT_TREE->getUserPreference(Auth::user(), 'gedcomid'), $WT_TREE);
 			if ($self) {
 				$this->loadAncestors($self, 1);
 			}
@@ -91,14 +91,16 @@ class BranchesController extends PageController {
 	 * Fetch all individuals with a matching surname
 	 */
 	private function loadIndividuals() {
+		global $WT_TREE;
+
 		$sql =
-			"SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom" .
+			"SELECT DISTINCT i_id AS xref, i_gedcom AS gedcom" .
 			" FROM `##individuals`" .
 			" JOIN `##name` ON (i_id=n_id AND i_file=n_file)" .
 			" WHERE n_file = ?" .
 			" AND n_type != ?" .
 			" AND (n_surn = ? OR n_surname = ?";
-		$args = array(WT_GED_ID, '_MARNM', $this->surname, $this->surname);
+		$args = array($WT_TREE->getTreeId(), '_MARNM', $this->surname, $this->surname);
 		if ($this->soundex_std) {
 			$sdx = Soundex::russell($this->surname);
 			if ($sdx) {
@@ -121,7 +123,7 @@ class BranchesController extends PageController {
 		$rows              = Database::prepare($sql)->execute($args)->fetchAll();
 		$this->individuals = array();
 		foreach ($rows as $row) {
-			$this->individuals[] = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$this->individuals[] = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
 		}
 		// Sort by birth date, oldest first
 		usort($this->individuals, __NAMESPACE__ . '\Individual::compareBirthDate');
@@ -175,6 +177,8 @@ class BranchesController extends PageController {
 	 * @return string
 	 */
 	private function getDescendantsHtml(Individual $individual, Family $parents = null) {
+		global $WT_TREE;
+		
 		// A person has many names.  Select the one that matches the searched surname
 		$person_name = '';
 		foreach ($individual->getAllNames() as $name) {

@@ -19,9 +19,9 @@ namespace Fisharebest\Webtrees;
 use Zend_Session;
 
 /**
- * Class FamiliesModule
+ * Class FamiliesSidebarModule
  */
-class FamiliesModule extends Module implements ModuleSidebarInterface {
+class FamiliesSidebarModule extends Module implements ModuleSidebarInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module/sidebar */ I18N::translate('Family list');
@@ -75,10 +75,10 @@ class FamiliesModule extends Module implements ModuleSidebarInterface {
 
 	/** {@inheritdoc} */
 	public function getSidebarContent() {
-		global $UNKNOWN_NN, $controller;
+		global $UNKNOWN_NN, $controller, $WT_TREE;
 
 		// Fetch a list of the initial letters of all surnames in the database
-		$initials = QueryName::surnameAlpha(true, false, WT_GED_ID, false);
+		$initials = QueryName::surnameAlpha(true, false, $WT_TREE->getTreeId(), false);
 
 		$controller->addInlineJavascript('
 			var famloadedNames = new Array();
@@ -164,7 +164,9 @@ class FamiliesModule extends Module implements ModuleSidebarInterface {
 	 * @return string
 	 */
 	public function getAlphaSurnames($alpha, $surname1 = '') {
-		$surnames = QueryName::surnames('', $alpha, true, true, WT_GED_ID);
+		global $WT_TREE;
+
+		$surnames = QueryName::surnames('', $alpha, true, true, $WT_TREE->getTreeId());
 		$out = '<ul>';
 		foreach (array_keys($surnames) as $surname) {
 			$out .= '<li id="sb_fam_' . $surname . '" class="sb_fam_surname_li"><a href="' . $surname . '" title="' . $surname . '" alt="' . $alpha . '" class="sb_fam_surname">' . $surname . '</a>';
@@ -188,7 +190,9 @@ class FamiliesModule extends Module implements ModuleSidebarInterface {
 	 * @return string
 	 */
 	public function getSurnameFams($alpha, $surname) {
-		$families = QueryName::families($surname, $alpha, '', true, WT_GED_ID);
+		global $WT_TREE;
+
+		$families = QueryName::families($surname, $alpha, '', true, $WT_TREE->getTreeId());
 		$out = '<ul>';
 		foreach ($families as $family) {
 			if ($family->canShowName()) {
@@ -212,6 +216,9 @@ class FamiliesModule extends Module implements ModuleSidebarInterface {
 	 * @return string
 	 */
 	public function search($query) {
+		global $WT_TREE;
+
+		$tree = Tree::findById($WT_TREE->getTreeId());
 		if (strlen($query) < 2) {
 			return '';
 		}
@@ -224,7 +231,7 @@ class FamiliesModule extends Module implements ModuleSidebarInterface {
 			" AND i_id=n_id AND i_file=n_file AND i_file=?" .
 			" ORDER BY n_sort"
 		)
-		->execute(array("%{$query}%", "%{$query}%", WT_GED_ID))
+		->execute(array("%{$query}%", "%{$query}%", $WT_TREE->getTreeId()))
 		->fetchAll();
 		$ids = array();
 		foreach ($rows as $row) {
@@ -243,14 +250,14 @@ class FamiliesModule extends Module implements ModuleSidebarInterface {
 			$vars = array_merge($vars, $ids, $ids);
 		}
 
-		$vars[] = WT_GED_ID;
+		$vars[] = $WT_TREE->getTreeId();
 		$rows = Database::prepare("SELECT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom FROM `##families` WHERE {$where} AND f_file=?")
 		->execute($vars)
 		->fetchAll();
 
 		$out = '<ul>';
 		foreach ($rows as $row) {
-			$family = Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$family = Family::getInstance($row->xref, $tree, $row->gedcom);
 			if ($family->canShowName()) {
 				$out .= '<li><a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . ' ';
 				if ($family->canShow()) {

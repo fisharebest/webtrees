@@ -103,15 +103,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test that function search_indis_dates() exists in the correct namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionSearchIndisDatesExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\search_indis_dates'), true);
-	}
-
-	/**
 	 * Test that function search_fams() exists in the correct namespace.
 	 *
 	 * @return void

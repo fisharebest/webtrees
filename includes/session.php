@@ -446,15 +446,6 @@ if (!$WT_TREE) {
 	}
 }
 
-// These attributes of the currently-selected tree are used frequently
-if ($WT_TREE) {
-	define('WT_GEDCOM', $WT_TREE->getName());
-	define('WT_GED_ID', $WT_TREE->getTreeId());
-} else {
-	define('WT_GEDCOM', '');
-	define('WT_GED_ID', null);
-}
-
 // With no parameters, init() looks to the environment to choose a language
 define('WT_LOCALE', I18N::init());
 $WT_SESSION->locale = WT_LOCALE;
@@ -532,7 +523,7 @@ if (substr(WT_SCRIPT_NAME, 0, 5) === 'admin' || WT_SCRIPT_NAME === 'module.php' 
 		// 2) site setting
 		// 3) webtrees
 		// 4) first one found
-		if (WT_GED_ID) {
+		if ($WT_TREE) {
 			$theme_id = $WT_TREE->getPreference('THEME_DIR');
 		}
 		if (!array_key_exists($theme_id, Theme::themeNames())) {

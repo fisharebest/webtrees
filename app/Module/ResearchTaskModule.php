@@ -99,7 +99,7 @@ class ResearchTaskModule extends Module implements ModuleBlockInterface {
 
 		$found = false;
 		$end_jd = $show_future ? 99999999 : WT_CLIENT_JD;
-		foreach (get_calendar_events(0, $end_jd, '_TODO', WT_GED_ID) as $fact) {
+		foreach (get_calendar_events(0, $end_jd, '_TODO', $WT_TREE) as $fact) {
 			$record = $fact->getParent();
 			$user_name = $fact->getAttribute('_WT_USER');
 			if ($user_name === Auth::user()->getUserName() || !$user_name && $show_unassigned || $user_name && $show_other) {

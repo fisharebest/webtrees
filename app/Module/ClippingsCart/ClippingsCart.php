@@ -66,8 +66,8 @@ class ClippingsCart {
 		if (!is_array($WT_SESSION->cart)) {
 			$WT_SESSION->cart = array();
 		}
-		if (!array_key_exists(WT_GED_ID, $WT_SESSION->cart)) {
-			$WT_SESSION->cart[WT_GED_ID] = array();
+		if (!array_key_exists($WT_TREE->getTreeId(), $WT_SESSION->cart)) {
+			$WT_SESSION->cart[$WT_TREE->getTreeId()] = array();
 		}
 
 		$this->action           = Filter::get('action');
@@ -92,7 +92,7 @@ class ClippingsCart {
 
 		if ($this->action === 'add') {
 			if (empty($this->type) && !empty($this->id)) {
-				$obj = GedcomRecord::getInstance($this->id);
+				$obj = GedcomRecord::getInstance($this->id, $WT_TREE);
 				if ($obj) {
 					$this->type = $obj::RECORD_TYPE;
 				} else {
@@ -109,7 +109,7 @@ class ClippingsCart {
 		}
 
 		if ($this->action === 'add1') {
-			$obj = GedcomRecord::getInstance($this->id);
+			$obj = GedcomRecord::getInstance($this->id, $WT_TREE);
 			$this->addClipping($obj);
 			if ($this->type === 'SOUR') {
 				if ($others === 'linked') {
@@ -126,50 +126,50 @@ class ClippingsCart {
 					$this->addClipping($obj->getHusband());
 					$this->addClipping($obj->getWife());
 				} elseif ($others === "members") {
-					$this->addFamilyMembers(Family::getInstance($this->id));
+					$this->addFamilyMembers(Family::getInstance($this->id, $WT_TREE));
 				} elseif ($others === "descendants") {
-					$this->addFamilyDescendancy(Family::getInstance($this->id));
+					$this->addFamilyDescendancy(Family::getInstance($this->id, $WT_TREE));
 				}
 			} elseif ($this->type === 'INDI') {
 				if ($others === 'parents') {
-					foreach (Individual::getInstance($this->id)->getChildFamilies() as $family) {
+					foreach (Individual::getInstance($this->id, $WT_TREE)->getChildFamilies() as $family) {
 						$this->addFamilyMembers($family);
 					}
 				} elseif ($others === 'ancestors') {
-					$this->addAncestorsToCart(Individual::getInstance($this->id), $this->level1);
+					$this->addAncestorsToCart(Individual::getInstance($this->id, $WT_TREE), $this->level1);
 				} elseif ($others === 'ancestorsfamilies') {
-					$this->addAncestorsToCartFamilies(Individual::getInstance($this->id), $this->level2);
+					$this->addAncestorsToCartFamilies(Individual::getInstance($this->id, $WT_TREE), $this->level2);
 				} elseif ($others === 'members') {
-					foreach (Individual::getInstance($this->id)->getSpouseFamilies() as $family) {
+					foreach (Individual::getInstance($this->id, $WT_TREE)->getSpouseFamilies() as $family) {
 						$this->addFamilyMembers($family);
 					}
 				} elseif ($others === 'descendants') {
-					foreach (Individual::getInstance($this->id)->getSpouseFamilies() as $family) {
+					foreach (Individual::getInstance($this->id, $WT_TREE)->getSpouseFamilies() as $family) {
 						$this->addClipping($family);
 						$this->addFamilyDescendancy($family, $this->level3);
 					}
 				}
-				uksort($WT_SESSION->cart[WT_GED_ID], __NAMESPACE__ . '\ClippingsCart::compareClippings');
+				uksort($WT_SESSION->cart[$WT_TREE->getTreeId()], __NAMESPACE__ . '\ClippingsCart::compareClippings');
 			}
 		} elseif ($this->action === 'remove') {
-			unset ($WT_SESSION->cart[WT_GED_ID][$this->id]);
+			unset ($WT_SESSION->cart[$WT_TREE->getTreeId()][$this->id]);
 		} elseif ($this->action === 'empty') {
-			$WT_SESSION->cart[WT_GED_ID] = array();
+			$WT_SESSION->cart[$WT_TREE->getTreeId()] = array();
 		} elseif ($this->action === 'download') {
 			$media      = array();
 			$mediacount = 0;
-			$filetext   = gedcom_header(WT_GEDCOM);
+			$filetext   = gedcom_header($WT_TREE->getName());
 			// Include SUBM/SUBN records, if they exist
 			$subn =
 				Database::prepare("SELECT o_gedcom FROM `##other` WHERE o_type=? AND o_file=?")
-				->execute(array('SUBN', WT_GED_ID))
+				->execute(array('SUBN', $WT_TREE->getTreeId()))
 				->fetchOne();
 			if ($subn) {
 				$filetext .= $subn . "\n";
 			}
 			$subm =
 				Database::prepare("SELECT o_gedcom FROM `##other` WHERE o_type=? AND o_file=?")
-				->execute(array('SUBM', WT_GED_ID))
+				->execute(array('SUBM', $WT_TREE->getTreeId()))
 				->fetchOne();
 			if ($subm) {
 				$filetext .= $subm . "\n";
@@ -194,27 +194,27 @@ class ClippingsCart {
 				break;
 			}
 
-			foreach (array_keys($WT_SESSION->cart[WT_GED_ID]) as $xref) {
-				$object = GedcomRecord::getInstance($xref);
+			foreach (array_keys($WT_SESSION->cart[$WT_TREE->getTreeId()]) as $xref) {
+				$object = GedcomRecord::getInstance($xref, $WT_TREE);
 				// The object may have been deleted since we added it to the cart....
 				if ($object) {
 					$record = $object->privatizeGedcom($access_level);
 					// Remove links to objects that aren't in the cart
 					preg_match_all('/\n1 ' . WT_REGEX_TAG . ' @(' . WT_REGEX_XREF . ')@(\n[2-9].*)*/', $record, $matches, PREG_SET_ORDER);
 					foreach ($matches as $match) {
-						if (!array_key_exists($match[1], $WT_SESSION->cart[WT_GED_ID])) {
+						if (!array_key_exists($match[1], $WT_SESSION->cart[$WT_TREE->getTreeId()])) {
 							$record = str_replace($match[0], '', $record);
 						}
 					}
 					preg_match_all('/\n2 ' . WT_REGEX_TAG . ' @(' . WT_REGEX_XREF . ')@(\n[3-9].*)*/', $record, $matches, PREG_SET_ORDER);
 					foreach ($matches as $match) {
-						if (!array_key_exists($match[1], $WT_SESSION->cart[WT_GED_ID])) {
+						if (!array_key_exists($match[1], $WT_SESSION->cart[$WT_TREE->getTreeId()])) {
 							$record = str_replace($match[0], '', $record);
 						}
 					}
 					preg_match_all('/\n3 ' . WT_REGEX_TAG . ' @(' . WT_REGEX_XREF . ')@(\n[4-9].*)*/', $record, $matches, PREG_SET_ORDER);
 					foreach ($matches as $match) {
-						if (!array_key_exists($match[1], $WT_SESSION->cart[WT_GED_ID])) {
+						if (!array_key_exists($match[1], $WT_SESSION->cart[$WT_TREE->getTreeId()])) {
 							$record = str_replace($match[0], '', $record);
 						}
 					}
@@ -340,11 +340,11 @@ class ClippingsCart {
 		global $WT_SESSION;
 
 		if ($record->canShowName()) {
-			$WT_SESSION->cart[WT_GED_ID][$record->getXref()] = true;
+			$WT_SESSION->cart[$record->getTree()->getTreeId()][$record->getXref()] = true;
 			// Add directly linked records
 			preg_match_all('/\n\d (?:OBJE|NOTE|SOUR|REPO) @(' . WT_REGEX_XREF . ')@/', $record->getGedcom(), $matches);
 			foreach ($matches[1] as $match) {
-				$WT_SESSION->cart[WT_GED_ID][$match] = true;
+				$WT_SESSION->cart[$record->getTree()->getTreeId()][$match] = true;
 			}
 		}
 	}
@@ -439,8 +439,10 @@ class ClippingsCart {
 	 * @return integer
 	 */
 	static function compareClippings($a, $b) {
-		$a = GedcomRecord::getInstance($a);
-		$b = GedcomRecord::getInstance($b);
+		global $WT_TREE;
+
+		$a = GedcomRecord::getInstance($a, $WT_TREE);
+		$b = GedcomRecord::getInstance($b, $WT_TREE);
 		if ($a && $b) {
 			switch ($a::RECORD_TYPE) {
 			case 'INDI': $t1 = 1; break;

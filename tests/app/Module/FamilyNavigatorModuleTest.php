@@ -19,9 +19,9 @@ namespace Fisharebest\Webtrees;
 use PHPUnit_Framework_TestCase;
 
 /**
- * Test harness for the class ModuleBlockInterface
+ * Test harness for the class FamilyNavigatorModule
  */
-class ModuleBlockTest extends PHPUnit_Framework_TestCase {
+class FamilyNavigatorModuleTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 *
@@ -36,6 +36,6 @@ class ModuleBlockTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testClassExists() {
-		$this->assertTrue(interface_exists(__NAMESPACE__ . '\ModuleBlockInterface'));
+		$this->assertTrue(class_exists(__NAMESPACE__ . '\FamilyNavigatorModule'));
 	}
 }

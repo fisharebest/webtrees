@@ -24,14 +24,15 @@ use Zend_Session_Namespace;
  * Defined in session.php
  *
  * @global Zend_Session_Namespace $WT_SESSION
+ * @global Tree                   $WT_TREE
  */
-global $WT_SESSION;
+global $WT_SESSION, $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'admin_pgv_to_wt.php');
 require './includes/session.php';
 
 // We can only import into an empty system, so deny access if we have already created a gedcom or added users.
-if (WT_GED_ID || count(User::all()) > 1) {
+if ($WT_TREE || count(User::all()) > 1) {
 	header('Location: ' . WT_BASE_URL);
 
 	return;

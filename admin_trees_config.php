@@ -154,10 +154,10 @@ $resns = Database::prepare(
 	" LEFT JOIN `##name` ON (gedcom_id=n_file AND xref=n_id AND n_num=0)" .
 	" WHERE gedcom_id=?" .
 	" ORDER BY xref IS NULL, n_sort, xref, tag_type"
-)->execute(array(WT_GED_ID))->fetchAll();
+)->execute(array($WT_TREE->getTreeId()))->fetchAll();
 
 foreach ($resns as $resn) {
-	$resn->record = GedcomRecord::getInstance($resn->xref);
+	$resn->record = GedcomRecord::getInstance($resn->xref, $WT_TREE);
 	if ($resn->tag_type) {
 		$resn->tag_label = GedcomTag::getLabel($resn->tag_type);
 	} else {
@@ -193,17 +193,17 @@ case 'privacy':
 			if ($xref === '') {
 				Database::prepare(
 					"DELETE FROM `##default_resn` WHERE gedcom_id=? AND tag_type=? AND xref IS NULL"
-				)->execute(array(WT_GED_ID, $tag_type));
+				)->execute(array($WT_TREE->getTreeId(), $tag_type));
 			}
 			if ($tag_type === '') {
 				Database::prepare(
 					"DELETE FROM `##default_resn` WHERE gedcom_id=? AND xref=? AND tag_type IS NULL"
-				)->execute(array(WT_GED_ID, $xref));
+				)->execute(array($WT_TREE->getTreeId(), $xref));
 			}
 			// Add (or update) the new data
 			Database::prepare(
 				"REPLACE INTO `##default_resn` (gedcom_id, xref, tag_type, resn) VALUES (?, NULLIF(?, ''), NULLIF(?, ''), ?)"
-			)->execute(array(WT_GED_ID, $xref, $tag_type, $resn));
+			)->execute(array($WT_TREE->getTreeId(), $xref, $tag_type, $resn));
 		}
 	}
 
@@ -329,10 +329,10 @@ case 'general':
 	}
 
 	$gedcom = Filter::post('gedcom');
-	if ($gedcom && $gedcom != WT_GEDCOM) {
+	if ($gedcom && $gedcom !== $WT_TREE->getName()) {
 		try {
-			Database::prepare("UPDATE `##gedcom` SET gedcom_name = ? WHERE gedcom_id = ?")->execute(array($gedcom, WT_GED_ID));
-			Database::prepare("UPDATE `##site_setting` SET setting_value = ? WHERE setting_name='DEFAULT_GEDCOM' AND setting_value = ?")->execute(array($gedcom, WT_GEDCOM));
+			Database::prepare("UPDATE `##gedcom` SET gedcom_name = ? WHERE gedcom_id = ?")->execute(array($gedcom, $WT_TREE->getTreeId()));
+			Database::prepare("UPDATE `##site_setting` SET setting_value = ? WHERE setting_name='DEFAULT_GEDCOM' AND setting_value = ?")->execute(array($gedcom, $WT_TREE->getName()));
 		} catch (\Exception $ex) {
 			// Probably a duplicate name.
 		}
@@ -387,7 +387,7 @@ $controller
 
 <form class="form-horizontal" method="post">
 	<?php echo Filter::getCsrf(); ?>
-	<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
+	<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 
 	<?php if (Filter::get('action') === 'privacy'): ?>
 
@@ -658,7 +658,7 @@ $controller
 					name="gedcom"
 					required
 					type="text"
-					value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>"
+					value="<?php echo $WT_TREE->getNameHtml(); ?>"
 					>
 			</div>
 			<p class="small text-muted">
@@ -699,7 +699,7 @@ $controller
 				>
 				<span class="input-group-addon">
 					<?php
-					$person = Individual::getInstance($WT_TREE->getPreference('PEDIGREE_ROOT_ID'));
+					$person = Individual::getInstance($WT_TREE->getPreference('PEDIGREE_ROOT_ID'), $WT_TREE);
 					if ($person) {
 						echo $person->getFullName(), ' ', $person->getLifeSpan();
 					} else {
@@ -1616,7 +1616,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('CHART_BOX_TAGS')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('CHART_BOX_TAGS'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('CHART_BOX_TAGS'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo /* I18N: button label */ I18N::translate('edit'); ?>
 					</a>
@@ -1770,7 +1770,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('INDI_FACTS_ADD')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('INDI_FACTS_ADD'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('INDI_FACTS_ADD'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>
@@ -1799,7 +1799,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('INDI_FACTS_UNIQUE')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('INDI_FACTS_UNIQUE'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('INDI_FACTS_UNIQUE'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>
@@ -1828,7 +1828,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('QUICK_REQUIRED_FACTS')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('QUICK_REQUIRED_FACTS'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('QUICK_REQUIRED_FACTS'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>
@@ -1857,7 +1857,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('INDI_FACTS_QUICK')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('INDI_FACTS_QUICK'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('INDI_FACTS_QUICK'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>
@@ -1888,7 +1888,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('FAM_FACTS_ADD')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('FAM_FACTS_ADD'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('FAM_FACTS_ADD'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>
@@ -1917,7 +1917,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('FAM_FACTS_UNIQUE')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('FAM_FACTS_UNIQUE'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('FAM_FACTS_UNIQUE'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>
@@ -1946,7 +1946,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('QUICK_REQUIRED_FAMFACTS')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('QUICK_REQUIRED_FAMFACTS'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('QUICK_REQUIRED_FAMFACTS'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>
@@ -1975,7 +1975,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('FAM_FACTS_QUICK')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('FAM_FACTS_QUICK'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('FAM_FACTS_QUICK'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>
@@ -2006,7 +2006,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('SOUR_FACTS_ADD')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('SOUR_FACTS_ADD'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('SOUR_FACTS_ADD'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>
@@ -2035,7 +2035,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('SOUR_FACTS_UNIQUE')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('SOUR_FACTS_UNIQUE'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('SOUR_FACTS_UNIQUE'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>
@@ -2064,7 +2064,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('SOUR_FACTS_QUICK')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('SOUR_FACTS_QUICK'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('SOUR_FACTS_QUICK'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>
@@ -2095,7 +2095,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('REPO_FACTS_ADD')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('REPO_FACTS_ADD'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('REPO_FACTS_ADD'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>
@@ -2124,7 +2124,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('REPO_FACTS_UNIQUE')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('REPO_FACTS_UNIQUE'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('REPO_FACTS_UNIQUE'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>
@@ -2153,7 +2153,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('REPO_FACTS_QUICK')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('REPO_FACTS_QUICK'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('REPO_FACTS_QUICK'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>
@@ -2184,7 +2184,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('ADVANCED_NAME_FACTS')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('ADVANCED_NAME_FACTS'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('ADVANCED_NAME_FACTS'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>
@@ -2213,7 +2213,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('ADVANCED_PLAC_FACTS')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('ADVANCED_PLAC_FACTS'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('ADVANCED_PLAC_FACTS'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>

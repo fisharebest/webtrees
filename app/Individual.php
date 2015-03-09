@@ -38,14 +38,14 @@ class Individual extends GedcomRecord {
 	 * we just receive the XREF.  For bulk records (such as lists
 	 * and search results) we can receive the GEDCOM data as well.
 	 *
-	 * @param string       $xref
-	 * @param integer|null $gedcom_id
-	 * @param string|null  $gedcom
+	 * @param string      $xref
+	 * @param Tree        $tree
+	 * @param string|null $gedcom
 	 *
 	 * @return Individual|null
 	 */
-	public static function getInstance($xref, $gedcom_id = WT_GED_ID, $gedcom = null) {
-		$record = parent::getInstance($xref, $gedcom_id, $gedcom);
+	public static function getInstance($xref, Tree $tree, $gedcom = null) {
+		$record = parent::getInstance($xref, $tree, $gedcom);
 
 		if ($record instanceof Individual) {
 			return $record;
@@ -73,6 +73,8 @@ class Individual extends GedcomRecord {
 	 * {@inheritdoc}
 	 */
 	protected function canShowByType($access_level) {
+		global $WT_TREE;
+
 		// Dead people...
 		if ($this->tree->getPreference('SHOW_DEAD_PEOPLE') >= $access_level && $this->isDead()) {
 			$keep_alive = false;
@@ -105,7 +107,7 @@ class Individual extends GedcomRecord {
 		// Consider relationship privacy (unless an admin is applying download restrictions)
 		$user_path_length = $this->tree->getUserPreference(Auth::user(), 'RELATIONSHIP_PATH_LENGTH');
 		$gedcomid         = $this->tree->getUserPreference(Auth::user(), 'gedcomid');
-		if ($gedcomid && $user_path_length && $this->tree->getTreeId() == WT_GED_ID && $access_level = Auth::accessLevel($this->tree)) {
+		if ($gedcomid && $user_path_length && $this->tree->getTreeId() == $WT_TREE->getTreeId() && $access_level = Auth::accessLevel($this->tree)) {
 			return self::isRelated($this, $user_path_length);
 		}
 
@@ -124,7 +126,7 @@ class Individual extends GedcomRecord {
 	private static function isRelated(Individual $target, $distance) {
 		static $cache = null;
 
-		$user_individual = Individual::getInstance($target->tree->getUserPreference(Auth::user(), 'gedcomid'));
+		$user_individual = Individual::getInstance($target->tree->getUserPreference(Auth::user(), 'gedcomid'), $target->tree);
 		if ($user_individual) {
 			if (!$cache) {
 				$cache = array(
@@ -202,7 +204,7 @@ class Individual extends GedcomRecord {
 		// Just show the 1 FAMC/FAMS tag, not any subtags, which may contain private data
 		preg_match_all('/\n1 (?:FAMC|FAMS) @(' . WT_REGEX_XREF . ')@/', $this->gedcom, $matches, PREG_SET_ORDER);
 		foreach ($matches as $match) {
-			$rela = Family::getInstance($match[1]);
+			$rela = Family::getInstance($match[1], $this->tree);
 			if ($rela && ($SHOW_PRIVATE_RELATIONSHIPS || $rela->canShow($access_level))) {
 				$rec .= $match[0];
 			}
@@ -365,7 +367,7 @@ class Individual extends GedcomRecord {
 		// Iterate over all of the media items for the individual
 		preg_match_all('/\n(\d) OBJE @(' . WT_REGEX_XREF . ')@/', $this->getGedcom(), $matches, PREG_SET_ORDER);
 		foreach ($matches as $match) {
-			$media = Media::getInstance($match[2]);
+			$media = Media::getInstance($match[2], $this->tree);
 			if (!$media || !$media->canShow() || $media->isExternal()) {
 				continue;
 			}

@@ -16,6 +16,13 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
+
 define('WT_SCRIPT_NAME', 'repolist.php');
 require './includes/session.php';
 
@@ -25,5 +32,5 @@ $controller->pageHeader();
 
 echo '<div id="repolist-page">',
 	'<h2>', I18N::translate('Repositories'), '</h2>';
-	echo format_repo_table(get_repo_list(WT_GED_ID));
+	echo format_repo_table(get_repo_list($WT_TREE->getTreeId()));
 echo '</div>';

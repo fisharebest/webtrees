@@ -48,13 +48,13 @@ $controller
 	->restrictAccess(Auth::isMember($WT_TREE));
 
 $disp = true;
-$media = Media::getInstance($pid);
+$media = Media::getInstance($pid, $WT_TREE);
 if ($media) {
 	$disp = $media->canShow();
 }
 if ($action == 'update' || $action == 'create') {
 	if ($linktoid) {
-		$disp = GedcomRecord::getInstance($linktoid)->canShow();
+		$disp = GedcomRecord::getInstance($linktoid, $WT_TREE)->canShow();
 	}
 }
 
@@ -219,7 +219,7 @@ case 'create': // Save the information from the “showcreateform” action
 
 	$new_media = $WT_TREE->createRecord($newged);
 	if ($linktoid) {
-		$record = GedcomRecord::getInstance($linktoid);
+		$record = GedcomRecord::getInstance($linktoid, $WT_TREE);
 		$record->createFact('1 OBJE @' . $new_media->getXref() . '@', true);
 		Log::addEditLog('Media ID ' . $new_media->getXref() . " successfully added to $linktoid.");
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
@@ -320,7 +320,7 @@ case 'update': // Save the information from the “editmedia” action
 		$oldServerFile  = $media->getServerFilename('main');
 		$oldServerThumb = $media->getServerFilename('thumb');
 
-		$newmedia = new Media("xxx", "0 @xxx@ OBJE\n1 FILE " . $newFilename, null, WT_GED_ID);
+		$newmedia = new Media("xxx", "0 @xxx@ OBJE\n1 FILE " . $newFilename, null, $WT_TREE);
 		$newServerFile  = $newmedia->getServerFilename('main');
 		$newServerThumb = $newmedia->getServerFilename('thumb');
 
@@ -328,7 +328,7 @@ case 'update': // Save the information from the “editmedia” action
 		if ($oldServerFile !== $newServerFile) {
 			//-- check if the file is used in more than one gedcom
 			//-- do not allow it to be moved or renamed if it is
-			if (!$media->isExternal() && is_media_used_in_other_gedcom($media->getFilename(), WT_GED_ID)) {
+			if (!$media->isExternal() && is_media_used_in_other_gedcom($media->getFilename(), $WT_TREE->getTreeId())) {
 				FlashMessages::addMessage(I18N::translate('This file is linked to another family tree on this server.  It cannot be deleted, moved, or renamed until these links have been removed.'));
 				break;
 			}
@@ -370,13 +370,13 @@ case 'update': // Save the information from the “editmedia” action
 	$islink = array_merge(array(0), $islink);
 	$text = array_merge(array($newFilename), $text);
 
-	$record = GedcomRecord::getInstance($pid);
+	$record = GedcomRecord::getInstance($pid, $WT_TREE);
 	$newrec = "0 @$pid@ OBJE\n";
 	$newrec = handle_updates($newrec);
 	$record->updateRecord($newrec, $update_CHAN);
 
 	if ($pid && $linktoid) {
-		$record = GedcomRecord::getInstance($linktoid);
+		$record = GedcomRecord::getInstance($linktoid, $WT_TREE);
 		$record->createFact('1 OBJE @' . $pid . '@', true);
 		Log::addEditLog('Media ID ' . $pid . " successfully added to $linktoid.");
 	}
@@ -405,7 +405,7 @@ $controller->pageHeader();
 echo '<div id="addmedia-page">'; //container for media edit pop-up
 echo '<form method="post" name="newmedia" action="addmedia.php" enctype="multipart/form-data">';
 echo '<input type="hidden" name="action" value="', $action, '">';
-echo '<input type="hidden" name="ged" value="', WT_GEDCOM, '">';
+echo '<input type="hidden" name="ged" value="', $WT_TREE->getNameHtml(), '">';
 echo '<input type="hidden" name="pid" value="', $pid, '">';
 if ($linktoid) {
 	echo '<input type="hidden" name="linktoid" value="', $linktoid, '">';

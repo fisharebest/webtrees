@@ -754,11 +754,11 @@ function format_fam_table($datalist) {
 		//-- Retrieve husband and wife
 		$husb = $family->getHusband();
 		if (is_null($husb)) {
-			$husb = new Individual('H', '0 @H@ INDI', null, WT_GED_ID);
+			$husb = new Individual('H', '0 @H@ INDI', null, $family->getTree());
 		}
 		$wife = $family->getWife();
 		if (is_null($wife)) {
-			$wife = new Individual('W', '0 @W@ INDI', null, WT_GED_ID);
+			$wife = new Individual('W', '0 @W@ INDI', null, $family->getTree());
 		}
 		if (!$family->canShow()) {
 			continue;
@@ -1718,10 +1718,12 @@ function format_surname_list($surnames, $style, $totals, $script, Tree $tree) {
  * @return string
  */
 function print_changes_list($change_ids, $sort) {
+	global $WT_TREE;
+
 	$n = 0;
 	$arr = array();
 	foreach ($change_ids as $change_id) {
-		$record = GedcomRecord::getInstance($change_id);
+		$record = GedcomRecord::getInstance($change_id, $WT_TREE);
 		if (!$record || !$record->canShow()) {
 			continue;
 		}
@@ -1768,7 +1770,7 @@ function print_changes_list($change_ids, $sort) {
  * @return string
  */
 function print_changes_table($change_ids, $sort) {
-	global $controller;
+	global $controller, $WT_TREE;
 
 	$n = 0;
 	$table_id = 'table-chan-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
@@ -1822,7 +1824,7 @@ function print_changes_table($change_ids, $sort) {
 
 	//-- table body
 	foreach ($change_ids as $change_id) {
-		$record = GedcomRecord::getInstance($change_id);
+		$record = GedcomRecord::getInstance($change_id, $WT_TREE);
 		if (!$record || !$record->canShow()) {
 			continue;
 		}
@@ -1891,7 +1893,8 @@ function print_changes_table($change_ids, $sort) {
  * @return string
  */
 function print_events_table($startjd, $endjd, $events = 'BIRT MARR DEAT', $only_living = false, $sort_by = 'anniv') {
-	global $controller;
+	global $controller, $WT_TREE;
+
 	$html = '';
 	$table_id = 'table-even-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 	$controller
@@ -1924,7 +1927,7 @@ function print_events_table($startjd, $endjd, $events = 'BIRT MARR DEAT', $only_
 	$filter = 0;
 	$filtered_events = array();
 
-	foreach (get_events_list($startjd, $endjd, $events) as $fact) {
+	foreach (get_events_list($startjd, $endjd, $events, $WT_TREE) as $fact) {
 		$record = $fact->getParent();
 		//-- only living people ?
 		if ($only_living) {
@@ -2040,12 +2043,14 @@ function print_events_table($startjd, $endjd, $events = 'BIRT MARR DEAT', $only_
  * @return string
  */
 function print_events_list($startjd, $endjd, $events = 'BIRT MARR DEAT', $only_living = false, $sort_by = 'anniv') {
+	global $WT_TREE;
+
 	// Did we have any output?  Did we skip anything?
 	$output = 0;
 	$filter = 0;
 	$filtered_events = array();
 	$html = '';
-	foreach (get_events_list($startjd, $endjd, $events) as $fact) {
+	foreach (get_events_list($startjd, $endjd, $events, $WT_TREE) as $fact) {
 		$record = $fact->getParent();
 		//-- only living people ?
 		if ($only_living) {

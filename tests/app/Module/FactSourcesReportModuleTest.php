@@ -19,9 +19,9 @@ namespace Fisharebest\Webtrees;
 use PHPUnit_Framework_TestCase;
 
 /**
- * Test harness for the class ModuleMenuInterface
+ * Test harness for the class FactSourcesReportModule
  */
-class ModuleMenuTest extends PHPUnit_Framework_TestCase {
+class FactSourcesReportModuleTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 *
@@ -36,6 +36,6 @@ class ModuleMenuTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testClassExists() {
-		$this->assertTrue(interface_exists(__NAMESPACE__ . '\ModuleMenuInterface'));
+		$this->assertTrue(class_exists(__NAMESPACE__ . '\FactSourcesReportModule'));
 	}
 }

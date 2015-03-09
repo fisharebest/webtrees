@@ -47,22 +47,26 @@ class UserFavoritesModule extends FamilyTreeFavoritesModule {
 	 * @return string[][]
 	 */
 	public static function getFavorites($user_id) {
+		global $WT_TREE;
+
 		self::updateSchema(); // make sure the favorites table has been created
 
 		return
 			Database::prepare(
 				"SELECT SQL_CACHE favorite_id AS id, user_id, gedcom_id, xref AS gid, favorite_type AS type, title AS title, note AS note, url AS url" .
 				" FROM `##favorite` WHERE user_id=? AND gedcom_id=?")
-			->execute(array($user_id, WT_GED_ID))
+			->execute(array($user_id, $WT_TREE->getTreeId()))
 			->fetchAll(PDO::FETCH_ASSOC);
 	}
 
 	/** {@inheritdoc} */
 	public function modAction($modAction) {
+		global $WT_TREE;
+
 		switch ($modAction) {
 		case 'menu-add-favorite':
 			// Process the "add to user favorites" menu item on indi/fam/etc. pages
-			$record = GedcomRecord::getInstance(Filter::post('xref', WT_REGEX_XREF));
+			$record = GedcomRecord::getInstance(Filter::post('xref', WT_REGEX_XREF), $WT_TREE);
 			if (Auth::check() && $record->canShowName()) {
 				self::addFavorite(array(
 					'user_id'   => Auth::id(),

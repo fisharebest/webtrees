@@ -51,7 +51,7 @@ class GedcomRecordController extends PageController {
 			}
 			if ($broken_links) {
 				// Reload the updated family
-				$this->record = GedcomRecord::getInstance($this->record->getXref());
+				$this->record = GedcomRecord::getInstance($this->record->getXref(), $this->record->getTree());
 			}
 		}
 
@@ -62,7 +62,7 @@ class GedcomRecordController extends PageController {
 
 		// Set a page title
 		if ($this->record) {
-			$this->setCanonicalUrl($this->record->getHtmlUrl());
+			$this->setCanonicalUrl($this->record->getHtmlHtml());
 			if ($this->record->canShowName()) {
 				// e.g. "John Doe" or "1881 Census of Wales"
 				$this->setPageTitle($this->record->getFullName());

@@ -241,6 +241,8 @@ class AdvancedSearchController extends SearchController {
 	 * @return void
 	 */
 	function advancedSearch() {
+		global $WT_TREE;
+
 		$this->myindilist = array();
 		$fct = count($this->fields);
 		if (!array_filter($this->values)) {
@@ -248,7 +250,7 @@ class AdvancedSearchController extends SearchController {
 		}
 
 		// Dynamic SQL query, plus bind variables
-		$sql = "SELECT DISTINCT ind.i_id AS xref, ind.i_file AS gedcom_id, ind.i_gedcom AS gedcom FROM `##individuals` ind";
+		$sql  = 'SELECT DISTINCT ind.i_id AS xref, ind.i_gedcom AS gedcom FROM `##individuals` ind';
 		$bind = array();
 
 		// Join the following tables
@@ -344,7 +346,7 @@ class AdvancedSearchController extends SearchController {
 		}
 		// Add the where clause
 		$sql .= " WHERE ind.i_file=?";
-		$bind[] = WT_GED_ID;
+		$bind[] = $WT_TREE->getTreeId();
 		for ($i = 0; $i < $fct; $i++) {
 			$field = $this->fields[$i];
 			$value = $this->values[$i];
@@ -613,7 +615,7 @@ class AdvancedSearchController extends SearchController {
 		}
 		$rows = Database::prepare($sql)->execute($bind)->fetchAll();
 		foreach ($rows as $row) {
-			$person = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$person = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
 			// Check for XXXX:PLAC fields, which were only partially matched by SQL
 			foreach ($this->fields as $n=>$field) {
 				if ($this->values[$n] && preg_match('/^(' . WT_REGEX_TAG . '):PLAC$/', $field, $match)) {

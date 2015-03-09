@@ -192,11 +192,11 @@ case 'hierarchy':
 
 		$positions =
 			Database::prepare("SELECT DISTINCT pl_gid FROM `##placelinks` WHERE pl_p_id=? AND pl_file=?")
-			->execute(array($place_id, WT_GED_ID))
+			->execute(array($place_id, $WT_TREE->getTreeId()))
 			->fetchOneColumn();
 
 		foreach ($positions as $position) {
-			$record = GedcomRecord::getInstance($position);
+			$record = GedcomRecord::getInstance($position, $WT_TREE);
 			if ($record && $record->canShow()) {
 				if ($record instanceof Individual) {
 					$myindilist[] = $record;

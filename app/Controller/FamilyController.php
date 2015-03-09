@@ -24,9 +24,10 @@ class FamilyController extends GedcomRecordController {
 	 * Startup activity
 	 */
 	public function __construct() {
+		global $WT_TREE;
 
 		$xref         = Filter::get('famid', WT_REGEX_XREF);
-		$this->record = Family::getInstance($xref);
+		$this->record = Family::getInstance($xref, $WT_TREE);
 
 		parent::__construct();
 	}

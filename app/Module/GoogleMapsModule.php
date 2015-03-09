@@ -757,7 +757,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 		// -- print the form to change the number of displayed generations
 		?>
 		<form name="people" method="get" action="?">
-			<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
+			<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 			<input type="hidden" name="mod" value="googlemap">
 			<input type="hidden" name="mod_action" value="pedigree_map">
 			<table class="list_table" width="555">
@@ -1481,8 +1481,10 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 	 * ...
 	 */
 	private function adminPlaceCheck() {
+		global $WT_TREE;
+
 		$action    = Filter::get('action', '', 'go');
-		$gedcom_id = Filter::get('gedcom_id', null, WT_GED_ID);
+		$gedcom_id = Filter::get('gedcom_id', null, $WT_TREE->getTreeId());
 		$country   = Filter::get('country', '.+', 'XYZ');
 		$state     = Filter::get('state', '.+', 'XYZ');
 		$matching  = Filter::getBool('matching');
@@ -2534,7 +2536,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 					"SELECT p_id FROM `##places` WHERE p_parent_id = :place_id AND p_file = :tree_id AND p_place = :placename"
 				)->execute(array(
 					'place_id' => $place_id,
-					'tree_id' => WT_GED_ID,
+					'tree_id' => $WT_TREE->getTreeId(),
 					'placename' => $placename,
 				))->fetchOne();
 				if ($pl_id) {
@@ -2649,7 +2651,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 				$placelevels = preg_replace('/, ' . I18N::translate('unknown') . '/', ', ', $placelevels); // replace ", unknown" with ", "
 				$placelevels = substr($placelevels, 2); // remove the leading ", "
 				if ($placelevels) {
-					$batchupdate_url = 'module.php?mod=batch_update&amp;mod_action=admin_batch_update&amp;plugin=BatchUpdateSearchReplacePlugin&amp;method=exact&amp;ged=' . WT_GEDCOM . '&amp;search=' . urlencode($placelevels); // exact match
+					$batchupdate_url = 'module.php?mod=batch_update&amp;mod_action=admin_batch_update&amp;plugin=BatchUpdateSearchReplacePlugin&amp;method=exact&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;search=' . urlencode($placelevels); // exact match
 					echo '&nbsp;|&nbsp;';
 					echo '<a href="' . $batchupdate_url . '">', I18N::translate('Batch update'), '</a>';
 				}
@@ -4150,7 +4152,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 			$j = 0;
 			$gedcom_records =
 				Database::prepare("SELECT i_gedcom FROM `##individuals` WHERE i_file=? UNION ALL SELECT f_gedcom FROM `##families` WHERE f_file=?")
-				->execute(array(WT_GED_ID, WT_GED_ID))
+				->execute(array($WT_TREE->getTreeId(), $WT_TREE->getTreeId()))
 				->fetchOneColumn();
 			foreach ($gedcom_records as $gedrec) {
 				$i = 1;
@@ -4613,7 +4615,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 						<input type="hidden" name="mod" value="googlemap">
 						<input type="hidden" name="mod_action" value="admin_places">
 						<input type="hidden" name="action" value="ImportGedcom">
-						<?php echo select_edit_control('ged', Tree::getNameList(), null, WT_GEDCOM); ?>
+						<?php echo select_edit_control('ged', Tree::getNameList(), null, $WT_TREE->getName()); ?>
 						<input type="submit" value="<?php echo I18N::translate('Import'); ?>">
 					</form>
 				</td>
@@ -4640,7 +4642,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 						<input type="hidden" name="mod" value="googlemap">
 						<input type="hidden" name="mod_action" value="admin_places">
 						<input type="hidden" name="action" value="ExportFile">
-						<?php echo select_edit_control('parent', $where_am_i, I18N::translate('All'), WT_GED_ID); ?>
+						<?php echo select_edit_control('parent', $where_am_i, I18N::translate('All'), $WT_TREE->getTreeId()); ?>
 						<input type="submit" value="<?php echo I18N::translate('Download'); ?>">
 					</form>
 				</td>

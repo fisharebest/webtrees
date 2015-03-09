@@ -19,9 +19,9 @@ namespace Fisharebest\Webtrees;
 use PHPUnit_Framework_TestCase;
 
 /**
- * Test harness for the class ModuleChartInterface
+ * Test harness for the class BatchUpdateDuplicateLinksPlugin
  */
-class ModuleChartTest extends PHPUnit_Framework_TestCase {
+class BatchUpdateDuplicateLinksPluginTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 *
@@ -36,6 +36,6 @@ class ModuleChartTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testClassExists() {
-		$this->assertTrue(interface_exists(__NAMESPACE__ . '\ModuleChartInterface'));
+		$this->assertTrue(class_exists(__NAMESPACE__ . '\BatchUpdateDuplicateLinksPlugin'));
 	}
 }

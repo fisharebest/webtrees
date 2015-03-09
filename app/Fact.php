@@ -93,21 +93,21 @@ class Fact {
 		switch ($this->tag) {
 		case 'FAMC':
 		case 'FAMS':
-			return Family::getInstance($xref, $this->getParent()->getTree()->getTreeId());
+			return Family::getInstance($xref, $this->getParent()->getTree());
 		case 'HUSB':
 		case 'WIFE':
 		case 'CHIL':
-			return Individual::getInstance($xref, $this->getParent()->getTree()->getTreeId());
+			return Individual::getInstance($xref, $this->getParent()->getTree());
 		case 'SOUR':
-			return Source::getInstance($xref, $this->getParent()->getTree()->getTreeId());
+			return Source::getInstance($xref, $this->getParent()->getTree());
 		case 'OBJE':
-			return Media::getInstance($xref, $this->getParent()->getTree()->getTreeId());
+			return Media::getInstance($xref, $this->getParent()->getTree());
 		case 'REPO':
-			return Repository::getInstance($xref, $this->getParent()->getTree()->getTreeId());
+			return Repository::getInstance($xref, $this->getParent()->getTree());
 		case 'NOTE':
-			return Note::getInstance($xref, $this->getParent()->getTree()->getTreeId());
+			return Note::getInstance($xref, $this->getParent()->getTree());
 		default:
-			return GedcomRecord::getInstance($xref, $this->getParent()->getTree()->getTreeId());
+			return GedcomRecord::getInstance($xref, $this->getParent()->getTree());
 		}
 	}
 
@@ -316,7 +316,7 @@ class Fact {
 		preg_match_all('/\n(2 SOUR @(' . WT_REGEX_XREF . ')@(?:\n[3-9] .*)*)/', $this->getGedcom(), $matches, PREG_SET_ORDER);
 		$citations = array();
 		foreach ($matches as $match) {
-			$source = Source::getInstance($match[2], $this->getParent()->getTree()->getTreeId());
+			$source = Source::getInstance($match[2], $this->getParent()->getTree());
 			if ($source->canShow()) {
 				$citations[] = $match[1];
 			}
@@ -336,7 +336,7 @@ class Fact {
 		foreach ($matches[1] as $match) {
 			$note = preg_replace("/\n3 CONT ?/", "\n", $match);
 			if (preg_match('/@(' . WT_REGEX_XREF . ')@/', $note, $nmatch)) {
-				$note = Note::getInstance($nmatch[1], $this->getParent()->getTree()->getTreeId());
+				$note = Note::getInstance($nmatch[1], $this->getParent()->getTree());
 				if ($note && $note->canShow()) {
 					// A note object
 					$notes[] = $note;
@@ -359,7 +359,7 @@ class Fact {
 		$media = array();
 		preg_match_all('/\n2 OBJE @(' . WT_REGEX_XREF . ')@/', $this->getGedcom(), $matches);
 		foreach ($matches[1] as $match) {
-			$obje = Media::getInstance($match, $this->getParent()->getTree()->getTreeId());
+			$obje = Media::getInstance($match, $this->getParent()->getTree());
 			if ($obje->canShow()) {
 				$media[] = $obje;
 			}

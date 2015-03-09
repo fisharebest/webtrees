@@ -169,7 +169,7 @@ case 'load_json':
 
 		$data = array();
 		foreach ($rows as $row) {
-			$media = Media::getInstance($row->xref, $row->gedcom_id);
+			$media = Media::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
 			$data[] = array(
 				mediaFileInfo($media_folder, $media_path, $row->media_path),
 				$media->displayImage(),
@@ -233,7 +233,7 @@ case 'load_json':
 
 		$data = array();
 		foreach ($rows as $row) {
-			$media = Media::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$media = Media::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
 			$data[] = array(
 				GedcomTag::getLabelValue('URL', $row->m_filename),
 				$media->displayImage(),
@@ -350,7 +350,7 @@ function all_media_folders() {
 		" WHERE setting_name='MEDIA_DIRECTORY'" .
 		" GROUP BY 1" .
 		" ORDER BY 1"
-	)->execute(array(WT_GED_ID))->fetchAssoc();
+	)->execute(array())->fetchAssoc();
 }
 
 /**

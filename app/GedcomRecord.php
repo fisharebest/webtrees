@@ -69,13 +69,13 @@ class GedcomRecord {
 	 * @param string      $gedcom  an empty string for new/pending records
 	 * @param string|null $pending null for a record with no pending edits,
 	 *                             empty string for records with pending deletions
-	 * @param integer     $tree_id
+	 * @param Tree        $tree
 	 */
-	public function __construct($xref, $gedcom, $pending, $tree_id) {
+	public function __construct($xref, $gedcom, $pending, $tree) {
 		$this->xref    = $xref;
 		$this->gedcom  = $gedcom;
 		$this->pending = $pending;
-		$this->tree    = Tree::findById($tree_id);
+		$this->tree    = $tree;
 
 		$this->parseFacts();
 	}
@@ -121,40 +121,42 @@ class GedcomRecord {
 	 * we just receive the XREF.  For bulk records (such as lists
 	 * and search results) we can receive the GEDCOM data as well.
 	 *
-	 * @param string       $xref
-	 * @param integer|null $gedcom_id
-	 * @param string|null  $gedcom
+	 * @param string      $xref
+	 * @param Tree        $tree
+	 * @param string|null $gedcom
 	 *
 	 * @return GedcomRecord|null
 	 * @throws \Exception
 	 */
-	public static function getInstance($xref, $gedcom_id = WT_GED_ID, $gedcom = null) {
+	public static function getInstance($xref, Tree $tree, $gedcom = null) {
+		$tree_id = $tree->getTreeId();
+
 		// Is this record already in the cache?
-		if (isset(self::$gedcom_record_cache[$xref][$gedcom_id])) {
-			return self::$gedcom_record_cache[$xref][$gedcom_id];
+		if (isset(self::$gedcom_record_cache[$xref][$tree_id])) {
+			return self::$gedcom_record_cache[$xref][$tree_id];
 		}
 
 		// Do we need to fetch the record from the database?
 		if ($gedcom === null) {
-			$gedcom = static::fetchGedcomRecord($xref, $gedcom_id);
+			$gedcom = static::fetchGedcomRecord($xref, $tree_id);
 		}
 
 		// If we can edit, then we also need to be able to see pending records.
-		if (Auth::isEditor(Tree::findById($gedcom_id))) {
-			if (!isset(self::$pending_record_cache[$gedcom_id])) {
+		if (Auth::isEditor(Tree::findById($tree_id))) {
+			if (!isset(self::$pending_record_cache[$tree_id])) {
 				// Fetch all pending records in one database query
-				self::$pending_record_cache[$gedcom_id] = array();
+				self::$pending_record_cache[$tree_id] = array();
 				$rows = Database::prepare(
 					"SELECT xref, new_gedcom FROM `##change` WHERE status='pending' AND gedcom_id=?"
-				)->execute(array($gedcom_id))->fetchAll();
+				)->execute(array($tree_id))->fetchAll();
 				foreach ($rows as $row) {
-					self::$pending_record_cache[$gedcom_id][$row->xref] = $row->new_gedcom;
+					self::$pending_record_cache[$tree_id][$row->xref] = $row->new_gedcom;
 				}
 			}
 
-			if (isset(self::$pending_record_cache[$gedcom_id][$xref])) {
+			if (isset(self::$pending_record_cache[$tree_id][$xref])) {
 				// A pending edit exists for this record
-				$pending = self::$pending_record_cache[$gedcom_id][$xref];
+				$pending = self::$pending_record_cache[$tree_id][$xref];
 			} else {
 				$pending = null;
 			}
@@ -184,30 +186,30 @@ class GedcomRecord {
 
 		switch ($type) {
 		case 'INDI':
-			$record = new Individual($xref, $gedcom, $pending, $gedcom_id);
+			$record = new Individual($xref, $gedcom, $pending, $tree);
 			break;
 		case 'FAM':
-			$record = new Family($xref, $gedcom, $pending, $gedcom_id);
+			$record = new Family($xref, $gedcom, $pending, $tree);
 			break;
 		case 'SOUR':
-			$record = new Source($xref, $gedcom, $pending, $gedcom_id);
+			$record = new Source($xref, $gedcom, $pending, $tree);
 			break;
 		case 'OBJE':
-			$record = new Media($xref, $gedcom, $pending, $gedcom_id);
+			$record = new Media($xref, $gedcom, $pending, $tree);
 			break;
 		case 'REPO':
-			$record = new Repository($xref, $gedcom, $pending, $gedcom_id);
+			$record = new Repository($xref, $gedcom, $pending, $tree);
 			break;
 		case 'NOTE':
-			$record = new Note($xref, $gedcom, $pending, $gedcom_id);
+			$record = new Note($xref, $gedcom, $pending, $tree);
 			break;
 		default:
-			$record = new GedcomRecord($xref, $gedcom, $pending, $gedcom_id);
+			$record = new GedcomRecord($xref, $gedcom, $pending, $tree);
 			break;
 		}
 
 		// Store it in the cache
-		self::$gedcom_record_cache[$xref][$gedcom_id] = $record;
+		self::$gedcom_record_cache[$xref][$tree_id] = $record;
 
 		return $record;
 	}
@@ -806,7 +808,7 @@ class GedcomRecord {
 	 */
 	public function linkedIndividuals($link) {
 		$rows = Database::prepare(
-			"SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom" .
+			"SELECT i_id AS xref, i_gedcom AS gedcom" .
 			" FROM `##individuals`" .
 			" JOIN `##link` ON (i_file=l_file AND i_id=l_from)" .
 			" LEFT JOIN `##name` ON (i_file=n_file AND i_id=n_id AND n_num=0)" .
@@ -816,7 +818,7 @@ class GedcomRecord {
 
 		$list = array();
 		foreach ($rows as $row) {
-			$record = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$record = Individual::getInstance($row->xref, $this->tree, $row->gedcom);
 			if ($record->canShowName()) {
 				$list[] = $record;
 			}
@@ -833,7 +835,7 @@ class GedcomRecord {
 	 */
 	public function linkedFamilies($link) {
 		$rows = Database::prepare(
-			"SELECT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom" .
+			"SELECT f_id AS xref, f_gedcom AS gedcom" .
 			" FROM `##families`" .
 			" JOIN `##link` ON (f_file=l_file AND f_id=l_from)" .
 			" LEFT JOIN `##name` ON (f_file=n_file AND f_id=n_id AND n_num=0)" .
@@ -842,7 +844,7 @@ class GedcomRecord {
 
 		$list = array();
 		foreach ($rows as $row) {
-			$record = Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$record = Family::getInstance($row->xref, $this->tree, $row->gedcom);
 			if ($record->canShowName()) {
 				$list[] = $record;
 			}
@@ -859,7 +861,7 @@ class GedcomRecord {
 	 */
 	public function linkedSources($link) {
 		$rows = Database::prepare(
-				"SELECT s_id AS xref, s_file AS gedcom_id, s_gedcom AS gedcom" .
+				"SELECT s_id AS xref, s_gedcom AS gedcom" .
 				" FROM `##sources`" .
 				" JOIN `##link` ON (s_file=l_file AND s_id=l_from)" .
 				" WHERE s_file=? AND l_type=? AND l_to=?" .
@@ -868,7 +870,7 @@ class GedcomRecord {
 
 		$list = array();
 		foreach ($rows as $row) {
-			$record = Source::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$record = Source::getInstance($row->xref, $this->tree, $row->gedcom);
 			if ($record->canShowName()) {
 				$list[] = $record;
 			}
@@ -885,7 +887,7 @@ class GedcomRecord {
 	 */
 	public function linkedMedia($link) {
 		$rows = Database::prepare(
-			"SELECT m_id AS xref, m_file AS gedcom_id, m_gedcom AS gedcom" .
+			"SELECT m_id AS xref, m_gedcom AS gedcom" .
 			" FROM `##media`" .
 			" JOIN `##link` ON (m_file=l_file AND m_id=l_from)" .
 			" WHERE m_file=? AND l_type=? AND l_to=?" .
@@ -894,7 +896,7 @@ class GedcomRecord {
 
 		$list = array();
 		foreach ($rows as $row) {
-			$record = Media::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$record = Media::getInstance($row->xref, $this->tree, $row->gedcom);
 			if ($record->canShowName()) {
 				$list[] = $record;
 			}
@@ -911,7 +913,7 @@ class GedcomRecord {
 	 */
 	public function linkedNotes($link) {
 		$rows = Database::prepare(
-			"SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom" .
+			"SELECT o_id AS xref, o_gedcom AS gedcom" .
 			" FROM `##other`" .
 			" JOIN `##link` ON (o_file=l_file AND o_id=l_from)" .
 			" LEFT JOIN `##name` ON (o_file=n_file AND o_id=n_id AND n_num=0)" .
@@ -921,7 +923,7 @@ class GedcomRecord {
 
 		$list = array();
 		foreach ($rows as $row) {
-			$record = Note::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$record = Note::getInstance($row->xref, $this->tree, $row->gedcom);
 			if ($record->canShowName()) {
 				$list[] = $record;
 			}
@@ -938,7 +940,7 @@ class GedcomRecord {
 	 */
 	public function linkedRepositories($link) {
 		$rows = Database::prepare(
-			"SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom" .
+			"SELECT o_id AS xref, o_gedcom AS gedcom" .
 			" FROM `##other`" .
 			" JOIN `##link` ON (o_file=l_file AND o_id=l_from)" .
 			" LEFT JOIN `##name` ON (o_file=n_file AND o_id=n_id AND n_num=0)" .
@@ -948,7 +950,7 @@ class GedcomRecord {
 
 		$list = array();
 		foreach ($rows as $row) {
-			$record = Repository::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$record = Repository::getInstance($row->xref, $this->tree, $row->gedcom);
 			if ($record->canShowName()) {
 				$list[] = $record;
 			}
