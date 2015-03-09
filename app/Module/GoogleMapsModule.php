@@ -809,7 +809,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 		for ($i = 0; $i < ($controller->treesize); $i++) {
 			// -- check to see if we have moved to the next generation
 			if ($i + 1 >= pow(2, $curgen)) {$curgen++; }
-			$person = $controller->ancestors[$i];
+			$person = $controller->nodes[$i]['indi'];
 			if (!empty($person)) {
 				$name = $person->getFullName();
 				if ($name == I18N::translate('Private')) $priv++;
@@ -1312,7 +1312,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 		$latlongval = array();
 		for ($i = 0; $i < $controller->treesize; $i++) {
 			// moved up to grab the sex of the individuals
-			$person = $controller->ancestors[$i];
+			$person = $controller->nodes[$i]['indi'];
 			if ($person) {
 				$name = $person->getFullName();
 
