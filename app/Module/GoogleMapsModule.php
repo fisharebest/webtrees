@@ -38,6 +38,16 @@ use Zend_Session;
  * Hence, use "Google Maps™ mapping service" where appropriate.
  */
 class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTabInterface {
+
+	/** @var array of ancestors of root person */
+	private $ancestors = array();
+
+	/** @var integer Number of generation to display */
+	private $generations;
+
+	/** @var integer Number of nodes in the chart */
+	private $treesize;
+
 	/** {@inheritdoc} */
 	public function __construct($directory) {
 		parent::__construct($directory);
@@ -736,7 +746,10 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 
 		$MAX_PEDIGREE_GENERATIONS = $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS');
 
-		$controller = new PedigreeController;
+		$controller = new ChartController();
+		$this->generations = Filter::getInteger('PEDIGREE_GENERATIONS', 2, $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS'), $WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
+		$this->treesize = pow(2, $this->generations) - 1;
+		$this->ancestors = array_values($controller->sosaAncestors($this->generations));
 
 		// Start of internal configuration variables
 		// Limit this to match available number of icons.
@@ -782,7 +795,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 						<?php
 							for ($p = 3; $p <= $MAX_PEDIGREE_GENERATIONS; $p++) {
 								echo '<option value="', $p, '" ';
-								if ($p == $controller->generations) {
+								if ($p == $this->generations) {
 									echo 'selected';
 								}
 								echo '>', $p, '</option>';
@@ -806,10 +819,10 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 		$latlongval = array();
 		$lat = array();
 		$lon = array();
-		for ($i = 0; $i < ($controller->treesize); $i++) {
+		for ($i = 0; $i < ($this->treesize); $i++) {
 			// -- check to see if we have moved to the next generation
 			if ($i + 1 >= pow(2, $curgen)) {$curgen++; }
-			$person = $controller->ancestors[$i];
+			$person = $this->ancestors[$i];
 			if (!empty($person)) {
 				$name = $person->getFullName();
 				if ($name == I18N::translate('Private')) $priv++;
@@ -1310,9 +1323,9 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 		$lat        = array();
 		$lon        = array();
 		$latlongval = array();
-		for ($i = 0; $i < $controller->treesize; $i++) {
+		for ($i = 0; $i < $this->treesize; $i++) {
 			// moved up to grab the sex of the individuals
-			$person = $controller->ancestors[$i];
+			$person = $this->ancestors[$i];
 			if ($person) {
 				$name = $person->getFullName();
 
