@@ -174,7 +174,7 @@ class Media extends GedcomRecord {
 			try {
 				$imgsize = getimagesize($main_file);
 				// Image small enough to be its own thumbnail?
-				if ($imgsize[0] < $THUMBNAIL_WIDTH) {
+				if ($imgsize[0] > 0 && $imgsize[0] <= $THUMBNAIL_WIDTH) {
 					try {
 						copy($main_file, $file);
 						Log::addMediaLog('Thumbnail created for ' . $main_file . ' (copy of main image)');
