@@ -677,12 +677,12 @@ function calendar_fact_text(Fact $fact, $show_places) {
  * @return string
  */
 function calendar_list_text($list, $tag1, $tag2, $show_sex_symbols) {
-	global $males, $females;
+	global $males, $females, $WT_TREE;
 
 	$html = '';
 
 	foreach ($list as $id => $facts) {
-		$tmp = GedcomRecord::GetInstance($id);
+		$tmp = GedcomRecord::GetInstance($id, $WT_TREE);
 		$html .= $tag1 . '<a href="' . $tmp->getHtmlUrl() . '">' . $tmp->getFullName() . '</a> ';
 		if ($show_sex_symbols && $tmp instanceof Individual) {
 			switch ($tmp->getSex()) {
