@@ -33,7 +33,11 @@ class Family extends GedcomRecord {
 	public function __construct($xref, $gedcom, $pending, $tree) {
 		parent::__construct($xref, $gedcom, $pending, $tree);
 
-		// Fetch husband and wife
+		// Fetch family members
+		if (preg_match_all('/^1 (?:HUSB|WIFE|CHIL) @(.+)@/m', $gedcom . $pending, $match)) {
+			Individual::load($tree, $match[1]);
+		}
+
 		if (preg_match('/^1 HUSB @(.+)@/m', $gedcom . $pending, $match)) {
 			$this->husb = Individual::getInstance($match[1], $tree);
 		}

@@ -57,7 +57,7 @@ class GedcomRecord {
 	protected $_getSecondaryName;
 
 	// Allow getInstance() to return references to existing objects
-	private static $gedcom_record_cache;
+	protected static $gedcom_record_cache;
 
 	// Fetch all pending edits in one database query
 	private static $pending_record_cache;

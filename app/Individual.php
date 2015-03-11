@@ -55,6 +55,41 @@ class Individual extends GedcomRecord {
 	}
 
 	/**
+	 * Sometimes, we'll know in advance that we need to load a set of records.
+	 * Typically when we load families and their members.
+	 *
+	 * @param Tree  $tree
+	 * @param array $xrefs
+	 */
+	public static function load(Tree $tree, array $xrefs) {
+		$sql  = '';
+		$args = array(
+			'tree_id' => $tree->getTreeId(),
+		);
+
+		foreach (array_unique($xrefs) as $n => $xref) {
+			if (!isset(self::$gedcom_record_cache[$tree->getTreeId()][$xref])) {
+				$sql .= ($n ? ',:x' : ':x') . $n;
+				$args['x' . $n] = $xref;
+			}
+		}
+
+		if (count($args) > 1) {
+			$rows = Database::prepare(
+				"SELECT i_id AS xref, i_gedcom AS gedcom" .
+				" FROM `##individuals`" .
+				" WHERE i_file = :tree_id AND i_id IN (" . $sql . ")"
+			)->execute(
+				$args
+			)->fetchAll();
+
+			foreach ($rows as $row) {
+				self::getInstance($row->xref, $tree, $row->gedcom);
+			}
+		}
+	}
+
+	/**
 	 * Can the name of this record be shown?
 	 *
 	 * {@inheritdoc}
