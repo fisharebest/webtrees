@@ -45,5 +45,28 @@ Database::exec(
 	" WHERE setting_name = 'html' AND module_name = 'html'"
 );
 
+// Language settings have changed from locale (en_GB) to language tag (en-GB)
+Database::exec(
+	"UPDATE `##gedcom_setting` " .
+	" SET setting_value = REPLACE(setting_value, '_', '-')" .
+	" WHERE setting_name = 'language'"
+);
+Database::exec(
+	"UPDATE `##site_setting` " .
+	" SET setting_value = REPLACE(setting_value, '_', '-')" .
+	" WHERE setting_name = 'language'"
+);
+Database::exec(
+	"UPDATE `##user_setting` " .
+	" SET setting_value = REPLACE(setting_value, '_', '-')" .
+	" WHERE setting_name = 'language'"
+);
+Database::exec(
+	"UPDATE `##block_setting` " .
+	" SET setting_value = REPLACE(setting_value, '_', '-')" .
+	" WHERE setting_name = 'languages'"
+);
+
+
 // Update the version to indicate success
 Site::setPreference($schema_name, $next_version);

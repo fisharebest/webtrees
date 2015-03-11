@@ -673,7 +673,13 @@ $controller
 			<?php echo /* I18N: A configuration setting */ I18N::translate('Language'); ?>
 		</label>
 		<div class="col-sm-9">
-			<?php echo select_edit_control('LANGUAGE', I18N::installedLanguages(), null, $WT_TREE->getPreference('LANGUAGE'), 'class="form-control"'); ?>
+			<select id="LANGUAGE" name="LANGUAGE" class="form-control">
+				<?php foreach (I18N::activeLocales() as $locale): ?>
+					<option value="<?php echo $locale->languageTag(); ?>" <?php echo $WT_TREE->getPreference('LANGUAGE') === $locale->languageTag() ? 'selected' : ''; ?>>
+						<?php echo $locale->endonym(); ?>
+					</option>
+				<?php endforeach; ?>
+			</select>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Language” configuration setting */ I18N::translate('If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines.'); ?>
 			</p>

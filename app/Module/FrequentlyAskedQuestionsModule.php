@@ -93,7 +93,7 @@ class FrequentlyAskedQuestionsModule extends Module implements ModuleMenuInterfa
 			set_block_setting($block_id, 'header', Filter::post('header'));
 			set_block_setting($block_id, 'faqbody', Filter::post('faqbody'));
 
-			$languages = Filter::postArray('lang', null, array_keys(I18N::installedLanguages()));
+			$languages = Filter::postArray('lang');
 			set_block_setting($block_id, 'languages', implode(',', $languages));
 			$this->config();
 		} else {

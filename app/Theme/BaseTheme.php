@@ -1295,9 +1295,10 @@ abstract class BaseTheme {
 	protected function menuLanguages() {
 		$menu = new Menu(I18N::translate('Language'), '#', 'menu-language');
 
-		foreach (I18N::installedLanguages() as $lang => $name) {
-			$submenu = new Menu($name, get_query_url(array('lang' => $lang), '&amp;'), 'menu-language-' . $lang);
-			if (WT_LOCALE === $lang) {
+		foreach (I18N::activeLocales() as $locale) {
+			$language_tag = $locale->languageTag();
+			$submenu = new Menu($locale->endonym(), get_query_url(array('lang' => $language_tag), '&amp;'), 'menu-language-' . $language_tag);
+			if (WT_LOCALE === $language_tag) {
 				$submenu->addClass('', '', 'active');
 			}
 			$menu->addSubmenu($submenu);

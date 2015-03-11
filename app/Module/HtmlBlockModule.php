@@ -125,7 +125,7 @@ class HtmlBlockModule extends Module implements ModuleBlockInterface {
 			set_block_setting($block_id, 'html', Filter::post('html'));
 			set_block_setting($block_id, 'show_timestamp', Filter::postBool('show_timestamp'));
 			set_block_setting($block_id, 'timestamp', Filter::post('timestamp'));
-			$languages = Filter::postArray('lang', null, array_keys(I18N::installedLanguages()));
+			$languages = Filter::postArray('lang');
 			set_block_setting($block_id, 'languages', implode(',', $languages));
 		}
 

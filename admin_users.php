@@ -52,7 +52,7 @@ case 'save':
 		$pass1          = Filter::post('pass1', WT_REGEX_PASSWORD);
 		$pass2          = Filter::post('pass2', WT_REGEX_PASSWORD);
 		$theme          = Filter::post('theme', implode('|', array_keys(Theme::installedThemes())), '');
-		$language       = Filter::post('language', implode('|', array_keys(I18N::installedLanguages())), WT_LOCALE);
+		$language       = Filter::post('language');
 		$contact_method = Filter::post('contact_method');
 		$comment        = Filter::post('comment');
 		$auto_accept    = Filter::postBool('auto_accept');
@@ -191,7 +191,10 @@ case 'load_json':
 	// This becomes a JSON list, not array, so need to fetch with numeric keys.
 	$data = Database::prepare($sql_select)->execute($args)->fetchAll(PDO::FETCH_NUM);
 
-	$installed_languages = I18N::installedLanguages();
+	$installed_languages = array();
+	foreach (I18N::installedLocales() as $locale) {
+		$installed_languages[$locale->languageTag()] = $locale->endonym();
+	}
 
 	// Reformat various columns for display
 	foreach ($data as &$datum) {
@@ -399,7 +402,13 @@ case 'edit':
 				<?php echo /* I18N: A configuration setting */ I18N::translate('Language'); ?>
 			</label>
 			<div class="col-sm-9">
-				<?php echo select_edit_control('language', I18N::installedLanguages(), null, $user->getPreference('language', WT_LOCALE), 'class="form-control"'); ?>
+				<select id="language" name="language" class="form-control">
+					<?php foreach (I18N::installedLocales() as $locale): ?>
+						<option value="<?php echo $locale->languageTag(); ?>" <?php echo $user->getPreference('language', WT_LOCALE) === $locale->languageTag() ? 'selected' : ''; ?>>
+							<?php echo $locale->endonym(); ?>
+						</option>
+					<?php endforeach; ?>
+				</select>
 			</div>
 		</div>
 

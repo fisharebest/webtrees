@@ -802,7 +802,7 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'ca'));
 		break;
 	case 'english-uk':
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'en_GB'));
+		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'en-GB'));
 		break;
 	case 'polish':
 		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'pl'));
@@ -859,7 +859,7 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'ru'));
 		break;
 	default:
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'en_US'));
+		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'en-US'));
 		break;
 	}
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'MAX_ALIVE_AGE', $MAX_ALIVE_AGE));

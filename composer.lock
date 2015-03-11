@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "32d402bd09151198895b11be00e60610",
+    "hash": "08e3c0d3e5d0a5ab5ee0472b5017ad8e",
     "packages": [
         {
             "name": "bombayworks/zendframework1",
@@ -205,6 +205,55 @@
                 "shamsi"
             ],
             "time": "2014-10-31 19:49:13"
+        },
+        {
+            "name": "fisharebest/localization",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fisharebest/localization.git",
+                "reference": "87f51e225a9f1e1f9505294e41d60a445a53f4f2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fisharebest/localization/zipball/87f51e225a9f1e1f9505294e41d60a445a53f4f2",
+                "reference": "87f51e225a9f1e1f9505294e41d60a445a53f4f2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "*",
+                "satooshi/php-coveralls": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Fisharebest\\Localization\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Roach",
+                    "email": "fisharebest@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A lightweight implementation of the Unicode Common Locale Data Repository (CLDR).",
+            "homepage": "https://github.com/fisharebest/localization",
+            "keywords": [
+                "i18n",
+                "l10n",
+                "locale",
+                "localization",
+                "unicode"
+            ],
+            "time": "2015-03-12 10:57:39"
         },
         {
             "name": "ircmaxell/password-compat",

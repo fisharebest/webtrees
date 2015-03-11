@@ -47,66 +47,6 @@
         ]
     },
     {
-        "name": "fisharebest/ext-calendar",
-        "version": "1.3.0",
-        "version_normalized": "1.3.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/fisharebest/ext-calendar.git",
-            "reference": "1498941b9b83222312bb957b5a425df075421443"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/fisharebest/ext-calendar/zipball/1498941b9b83222312bb957b5a425df075421443",
-            "reference": "1498941b9b83222312bb957b5a425df075421443",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "*",
-            "satooshi/php-coveralls": "*"
-        },
-        "time": "2014-10-31 19:49:13",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Fisharebest\\ExtCalendar\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-3.0+"
-        ],
-        "authors": [
-            {
-                "name": "Greg Roach",
-                "email": "fisharebest@gmail.com",
-                "role": "Developer"
-            }
-        ],
-        "description": "Implementation of the Arabic (Hijri), French, Gregorian, Jewish, Julian and Persian (Jalali) calendars.  Optional PHP shims for servers without the ext/calendar extension.",
-        "homepage": "https://github.com/fisharebest/ext-calendar",
-        "keywords": [
-            "Jalali",
-            "arabic",
-            "calendar",
-            "ext-calendar",
-            "french",
-            "gregorian",
-            "hebrew",
-            "hijri",
-            "jewish",
-            "julian",
-            "julian day",
-            "julian day number",
-            "persian",
-            "shamsi"
-        ]
-    },
-    {
         "name": "ircmaxell/password-compat",
         "version": "v1.0.4",
         "version_normalized": "1.0.4.0",
@@ -435,54 +375,6 @@
         ]
     },
     {
-        "name": "fisharebest/algorithm",
-        "version": "1.0.0",
-        "version_normalized": "1.0.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/fisharebest/algorithm.git",
-            "reference": "ddfbf31e7b1ef49f227409a41261770ed3fb467b"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/fisharebest/algorithm/zipball/ddfbf31e7b1ef49f227409a41261770ed3fb467b",
-            "reference": "ddfbf31e7b1ef49f227409a41261770ed3fb467b",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "*",
-            "satooshi/php-coveralls": "*"
-        },
-        "time": "2015-02-15 21:38:53",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Fisharebest\\Algorithm\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-3.0+"
-        ],
-        "authors": [
-            {
-                "name": "Greg Roach",
-                "email": "greg@subaqua.co.uk",
-                "role": "Developer"
-            }
-        ],
-        "description": "Implementation of standard algorithms in PHP.",
-        "homepage": "https://github.com/fisharebest/algorithm",
-        "keywords": [
-            "Algorithm",
-            "dijkstra"
-        ]
-    },
-    {
         "name": "michelf/php-markdown",
         "version": "1.5.0",
         "version_normalized": "1.5.0.0",
@@ -533,6 +425,165 @@
         "homepage": "https://michelf.ca/projects/php-markdown/",
         "keywords": [
             "markdown"
+        ]
+    },
+    {
+        "name": "fisharebest/algorithm",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fisharebest/algorithm.git",
+            "reference": "ddfbf31e7b1ef49f227409a41261770ed3fb467b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fisharebest/algorithm/zipball/ddfbf31e7b1ef49f227409a41261770ed3fb467b",
+            "reference": "ddfbf31e7b1ef49f227409a41261770ed3fb467b",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "*",
+            "satooshi/php-coveralls": "*"
+        },
+        "time": "2015-02-15 21:38:53",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Fisharebest\\Algorithm\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-3.0+"
+        ],
+        "authors": [
+            {
+                "name": "Greg Roach",
+                "email": "greg@subaqua.co.uk",
+                "role": "Developer"
+            }
+        ],
+        "description": "Implementation of standard algorithms in PHP.",
+        "homepage": "https://github.com/fisharebest/algorithm",
+        "keywords": [
+            "Algorithm",
+            "dijkstra"
+        ]
+    },
+    {
+        "name": "fisharebest/ext-calendar",
+        "version": "1.3.0",
+        "version_normalized": "1.3.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fisharebest/ext-calendar.git",
+            "reference": "1498941b9b83222312bb957b5a425df075421443"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fisharebest/ext-calendar/zipball/1498941b9b83222312bb957b5a425df075421443",
+            "reference": "1498941b9b83222312bb957b5a425df075421443",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "*",
+            "satooshi/php-coveralls": "*"
+        },
+        "time": "2014-10-31 19:49:13",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Fisharebest\\ExtCalendar\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-3.0+"
+        ],
+        "authors": [
+            {
+                "name": "Greg Roach",
+                "email": "fisharebest@gmail.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "Implementation of the Arabic (Hijri), French, Gregorian, Jewish, Julian and Persian (Jalali) calendars.  Optional PHP shims for servers without the ext/calendar extension.",
+        "homepage": "https://github.com/fisharebest/ext-calendar",
+        "keywords": [
+            "Jalali",
+            "arabic",
+            "calendar",
+            "ext-calendar",
+            "french",
+            "gregorian",
+            "hebrew",
+            "hijri",
+            "jewish",
+            "julian",
+            "julian day",
+            "julian day number",
+            "persian",
+            "shamsi"
+        ]
+    },
+    {
+        "name": "fisharebest/localization",
+        "version": "1.1.0",
+        "version_normalized": "1.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fisharebest/localization.git",
+            "reference": "87f51e225a9f1e1f9505294e41d60a445a53f4f2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fisharebest/localization/zipball/87f51e225a9f1e1f9505294e41d60a445a53f4f2",
+            "reference": "87f51e225a9f1e1f9505294e41d60a445a53f4f2",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "*",
+            "satooshi/php-coveralls": "*"
+        },
+        "time": "2015-03-12 10:57:39",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Fisharebest\\Localization\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-3.0+"
+        ],
+        "authors": [
+            {
+                "name": "Greg Roach",
+                "email": "fisharebest@gmail.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "A lightweight implementation of the Unicode Common Locale Data Repository (CLDR).",
+        "homepage": "https://github.com/fisharebest/localization",
+        "keywords": [
+            "i18n",
+            "l10n",
+            "locale",
+            "localization",
+            "unicode"
         ]
     }
 ]
