@@ -1735,7 +1735,7 @@ msgstr "Alle vorhandenen PGV-Benutzer müssen eine eindeutige E-Mail-Adresse hab
 
 #: admin_trees_config.php:639
 msgid "All facts and events"
-msgstr ""
+msgstr "Alle Tatsachen und Ereignisse"
 
 #: admin_trees_config.php:1954
 msgid "All family facts"
@@ -1760,7 +1760,7 @@ msgstr "Alle Personen"
 
 #: admin_trees_config.php:630
 msgid "All records"
-msgstr ""
+msgstr "Alle Datensätze"
 
 #: admin_trees_config.php:2161
 msgid "All repository facts"
@@ -2277,7 +2277,7 @@ msgstr "Durchschnittsanzahl von Kindern pro Familie"
 
 #: admin_trees_manage.php:568
 msgid "Avoid spaces and punctuation.  A family name might be a good choice."
-msgstr ""
+msgstr "Vermeiden sie Leezeichen und Satzzeichen. Ein Familienname wäre eine gute Wahl"
 
 #: library/WT/Date/Jalali.php:158
 msgctxt "Abbreviation for Persian month: Azar"
@@ -3171,7 +3171,7 @@ msgstr "CKEditor™"
 
 #: admin_trees_manage.php:253
 msgid "Calculating…"
-msgstr ""
+msgstr "Berechnung läuft…"
 
 #: library/WT/Theme/BaseTheme.php:874 library/WT/Theme/BaseTheme.php:878
 #: modules_v3/yahrzeit/module.php:267
@@ -3351,15 +3351,15 @@ msgstr "Blöcke auf der Seite ändern"
 
 #: admin_users.php:200
 msgid "Change the blocks on this user’s “My page”"
-msgstr ""
+msgstr "Blöcke auf der “Mein webtrees” Seite dieses Users ändern"
 
 #: admin_trees_manage.php:294 index_edit.php:49
 msgid "Change the “Home page” blocks"
-msgstr ""
+msgstr "Blöcke auf der Startseite ändern"
 
 #: index_edit.php:41
 msgid "Change the “My page” blocks"
-msgstr ""
+msgstr "Blöcke auf der “Mein webtrees” Seite ändern"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: includes/functions/functions_print_lists.php:1766
@@ -3883,7 +3883,7 @@ msgstr "Kontakt Information"
 
 #: edituser.php:271
 msgid "Contact method"
-msgstr ""
+msgstr "Kontaktmöglichkeit"
 
 #: search_advanced.php:162 search_advanced.php:224 search_advanced.php:239
 #: search_advanced.php:261 search_advanced.php:276
@@ -4050,11 +4050,11 @@ msgstr "Neue Quelle erstellen"
 
 #: admin_site_access.php:217
 msgid "Create a website access rule"
-msgstr ""
+msgstr "Erstelle eine Webseiten Zugriffsregel"
 
 #: admin_trees_manage.php:645
 msgid "Create or update a family tree for every GEDCOM file in the data folder."
-msgstr ""
+msgstr "Erstelle oder aktualisiere einen Stammbaum für jede GEDCOM Datei im Datenordner"
 
 #: statistics.php:430
 msgid "Create your own chart"
@@ -4939,7 +4939,7 @@ msgstr "Lösche temporäre Dateien…"
 
 #: admin_modules.php:93
 msgid "Delete the preferences for this module."
-msgstr ""
+msgstr "Lösche die Vorlieben für dieses Modul."
 
 #: library/WT/Controller/Individual.php:170
 msgid "Delete this name"
@@ -4947,7 +4947,7 @@ msgstr "Lösche Name"
 
 #: edituser.php:297
 msgid "Delete your account"
-msgstr ""
+msgstr "Lösche deinen Account"
 
 #: library/WT/Controller/Family.php:126
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?"
@@ -5354,7 +5354,7 @@ msgstr "FAQ-Eintrag bearbeiten"
 
 #: admin_site_access.php:215
 msgid "Edit a website access rule"
-msgstr ""
+msgstr "Bearbeite eine Webseiten Zugriffsregel"
 
 #: library/WT/Controller/Media.php:149
 msgid "Edit details"
@@ -5416,7 +5416,7 @@ msgstr "Diese Person bearbeiten und deren Details mit Ihren eigenen ersetzen."
 
 #: admin_users.php:257
 msgid "Edit user"
-msgstr ""
+msgstr "Benutzer bearbeiten"
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:41 admin_users.php:507
@@ -6558,7 +6558,7 @@ msgstr "Frimaire"
 #. I18N: label for the start of a date range (from x to y)
 #: admin_site_change.php:293 admin_site_logs.php:252
 msgid "From"
-msgstr ""
+msgstr "Von"
 
 #. I18N: a month in the French republican calendar
 #: library/WT/Date/French.php:89
@@ -6654,7 +6654,7 @@ msgstr "Ihre Kontakt Mail-Adresse für genealogische Fragen"
 #. I18N: Individuals, sources, dates, places, etc.
 #: admin_trees_manage.php:348
 msgid "Genealogy data"
-msgstr ""
+msgstr "Genealogische Daten"
 
 #: admin_trees_config.php:661 admin_trees_config.php:1775
 msgid "General"
@@ -7314,7 +7314,7 @@ msgstr "Wenn zwei Familienbäume dasselbe Medienverzeichnis verwenden, können s
 
 #: admin_trees_config.php:452
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account.  You will need to add their account manually."
-msgstr ""
+msgstr "Wenn Besucher den Stammbaum nicht sehen dürfen, werden sie sich keinen Account erstellen lassen können. Sie werden ihre Accouns dann manuell erstellen müssen."
 
 #. I18N: Help text for the “Who can upload new media files?” configuration setting
 #: admin_trees_config.php:1146
@@ -7370,7 +7370,7 @@ msgstr "Wenn Sie ein anderes Verzeichnis wählen, müssen Sie auch alle Medienda
 #. I18N: Help text for the “Show living individuals” configuration setting
 #: admin_trees_config.php:512
 msgid "If you show living individuals to visitors, all other privacy restrictions are ignored.  Do this only if all the data in your tree is public."
-msgstr ""
+msgstr "Wenn Sie lebende Personen für Besucher sichtbar schalten, werden alle Privatsphäreeinstellungen ignoriert. Tun Sie dies nur, wenn alle Daten ihres Stammbaum öffentlich sind."
 
 #: setup.php:188
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
@@ -8215,7 +8215,7 @@ msgstr "Verlinke dieses Medienobjekt mit einer Person"
 
 #: admin_users.php:566
 msgid "Link this user to an individual in the family tree."
-msgstr ""
+msgstr "Diesen Benutzer mit einer Person im Stammbaum verbinden."
 
 #: inverselink.php:35 inverselink.php:70 library/WT/Controller/Family.php:215
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:78
@@ -8318,7 +8318,7 @@ msgstr "Login URL"
 #. I18N: Menu entry
 #: admin_site_config.php:111 library/WT/Theme/Administration.php:77
 msgid "Login and registration"
-msgstr ""
+msgstr "Anmeldung und Registrierung"
 
 #: library/WT/Theme/BaseTheme.php:1289 modules_v3/login_block/module.php:55
 #: modules_v3/login_block/module.php:58
@@ -8448,7 +8448,7 @@ msgstr "Malta"
 #: admin_trees_places.php:87 index_edit.php:299
 #: library/WT/Theme/Administration.php:101
 msgid "Manage family trees"
-msgstr ""
+msgstr "Stammbäume verwalten"
 
 #: admin_media.php:511 library/WT/Controller/Media.php:62
 #: library/WT/Controller/Media.php:153 modules_v3/lightbox/module.php:135
@@ -8458,7 +8458,7 @@ msgstr "Verbindungen bearbeiten"
 #. I18N: Menu entry
 #: library/WT/Theme/Administration.php:144
 msgid "Manage media"
-msgstr ""
+msgstr "Medien verwalten"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:127 admin_users.php:43 admin_users.php:521
@@ -9133,7 +9133,7 @@ msgstr "Moderator"
 
 #: admin.php:579
 msgid "Moderators"
-msgstr ""
+msgstr "Moderatoren"
 
 #: admin_modules.php:147
 msgid "Module"
@@ -9403,7 +9403,7 @@ msgstr "Mein webtrees"
 
 #: library/WT/Theme/BaseTheme.php:1353
 msgid "My pages"
-msgstr ""
+msgstr "Meine Seiten"
 
 #: library/WT/Theme/BaseTheme.php:1376 modules_v3/user_welcome/module.php:48
 msgid "My pedigree"
@@ -9417,7 +9417,7 @@ msgstr "MySQL lieferte den Fehler: %s"
 
 #: admin_site_info.php:100
 msgid "MySQL variables"
-msgstr ""
+msgstr "MySQL Variablen"
 
 #: library/WT/Stats.php:6218
 msgid "Myanmar"
@@ -10932,12 +10932,12 @@ msgstr "Vordefinierter Text, der erklärt, dass nur Familienmitglieder einen Zug
 
 #: admin_trees_config.php:403 admin_trees_manage.php:274
 msgid "Preferences"
-msgstr ""
+msgstr "Vorlieben"
 
 #: admin_modules.php:88
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
-msgstr ""
+msgstr "Für das Modul “%s” existieren Vorlieben, aber das Modul existiert nicht mehr."
 
 #. I18N: A configuration setting
 #: admin_users.php:436
@@ -11446,7 +11446,7 @@ msgstr "Reno, Nevada"
 
 #: admin_trees_manage.php:385
 msgid "Renumber"
-msgstr ""
+msgstr "Neu nummerieren"
 
 #. I18N: Renumber the records in a family tree
 #: admin_trees_merge.php:96 admin_trees_merge.php:101
@@ -11966,7 +11966,7 @@ msgstr "Absender"
 #. I18N: Menu entry
 #: admin_site_config.php:108 library/WT/Theme/Administration.php:76
 msgid "Sending email"
-msgstr ""
+msgstr "Sende Email"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:374
@@ -12045,7 +12045,7 @@ msgstr "Serverdatei mit den Orten (CSV)"
 #. I18N: Menu entry
 #: admin_site_info.php:34 library/WT/Theme/Administration.php:81
 msgid "Server information"
-msgstr ""
+msgstr "Server Information"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:296 setup.php:278
@@ -12064,7 +12064,7 @@ msgstr "Sitzung abgelaufen"
 
 #: admin_trees_manage.php:327 admin_trees_manage.php:338
 msgid "Set as default"
-msgstr ""
+msgstr "Als Standard setzen"
 
 #: inverselink.php:153
 msgid "Set link"
@@ -12108,7 +12108,7 @@ msgstr "Die Wahl <b>Ja</b> bedeutet, dass webtrees Ereignis-Symbole auf der «Pe
 #. I18N: Help text for the “Use RIN number instead of GEDCOM ID” configuration setting
 #: admin_trees_config.php:795
 msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
-msgstr ""
+msgstr "Die Wahl <b>Yes</b> bedeutet, dass webtrees RIN Nummern anstelle von GEDCOM IDs bei Configurationsdateien, Benutzereinstellungen und Diagrammen verwenden wird. Dies kann für genealogische Programme sinnvoll sein, die in den exportieren GEDCOM Dateien jeder Person die selbe RIN vergibt, anstelle einer GEDCOM ID."
 
 #. I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting
 #: admin_trees_config.php:1674
@@ -12484,12 +12484,12 @@ msgstr "Liste der Stammbäume anzeigen"
 #. I18N: A configuration setting
 #: admin_trees_config.php:502
 msgid "Show living individuals"
-msgstr ""
+msgstr "Zeige lebende Personen"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:542
 msgid "Show names of private individuals"
-msgstr ""
+msgstr "Zeige Name privater Personen"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -12623,7 +12623,7 @@ msgstr "Zeige das Datum und die Zeit der Aktualisierung"
 #. I18N: A configuration setting
 #: admin_trees_config.php:438
 msgid "Show the family tree"
-msgstr ""
+msgstr "Zeige den Stammbaum"
 
 #: famlist.php:179 indilist.php:179
 msgid "Show the list of individuals"
@@ -12744,7 +12744,7 @@ msgstr "Schwester"
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: admin_users.php:441 edituser.php:277
 msgid "Site members can send each other messages.  You can choose to how these messages are sent to you, or choose not receive them at all."
-msgstr ""
+msgstr "Benutzer können sich untereinander Nachrichten schreiben. Sie können wählen, wie diese Nachrichen an Sie geschickt werden oder ob Sie überhaupt Nachrichten empfangen möchten."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: modules_v3/sitemap/module.php:30
@@ -12787,7 +12787,7 @@ msgstr "Größe der Karte (in Pixel)"
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: library/WT/Theme/BaseTheme.php:76
 msgid "Skip to content"
-msgstr ""
+msgstr "Weiter zu Hauptseite"
 
 #: library/WT/Gedcom/Code/Rela.php:240
 msgid "Slave"
@@ -13379,7 +13379,7 @@ msgstr "Die FAQ Liste ist leer."
 #: admin_trees_manage.php:112
 #, php-format
 msgid "The GEDCOM file “%s” has been imported."
-msgstr ""
+msgstr "Die GEDCOM Datei “%s” wurde importiert."
 
 #: library/WT/Gedcom/Code/Temp.php:160
 msgid "The Hague, Netherlands"
@@ -13444,25 +13444,25 @@ msgstr "Die Details dieser Person sind nicht öffentlich."
 #: admin_trees_manage.php:61
 #, php-format
 msgid "The family tree “%s” already exists."
-msgstr ""
+msgstr "Der Stammbaum “%s” existiert bereits."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:64
 #, php-format
 msgid "The family tree “%s” has been created."
-msgstr ""
+msgstr "Der Stammbaum “%s” wurde erstellt."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:41 admin_trees_manage.php:118
 #, php-format
 msgid "The family tree “%s” has been deleted."
-msgstr ""
+msgstr "Der Stammbaum “%s” wurde gelöscht."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:50
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
-msgstr ""
+msgstr "Der Stammbaum “%s” wird Besuchern gezeigt, wenn sie zum ersten Mal auf die Webseite kommen."
 
 #: admin_trees_merge.php:185
 msgid "The family trees have been merged successfully."
@@ -13625,12 +13625,12 @@ msgstr "Die Speicher- und CPU-Zeit-Anforderungen sind abhängig von der Anzahl d
 #: admin_modules.php:44
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr ""
+msgstr "Das Modul “%s” wurde deaktiviert."
 
 #: admin_modules.php:46
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr ""
+msgstr "Das Modul “%s” wurde aktiviert."
 
 #: admin_site_upgrade.php:397
 #, php-format
@@ -13661,7 +13661,7 @@ msgstr "Die Passwörter stimmen nicht überein."
 #: admin_modules.php:76
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr ""
+msgstr "Die Vorlieben für das Modul “%s” wurden gelöscht."
 
 #: setup.php:379
 msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database.  “wt_” is suggested, but can be anything you want."
@@ -13733,7 +13733,7 @@ msgstr "Die Aktualisierung ist abgeschlossen."
 #: admin_users.php:770
 #, php-format
 msgid "The user %s has been deleted."
-msgstr ""
+msgstr "Der Benutzer “%s” wurde gelöscht."
 
 #: login.php:320
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
@@ -13765,15 +13765,15 @@ msgstr "Die Version von %s ist zu alt."
 
 #: admin_site_access.php:79
 msgid "The website access rule has been created."
-msgstr ""
+msgstr "Die Webseiten Zugriffsregel wurde erstellt."
 
 #: admin_site_access.php:107
 msgid "The website access rule has been deleted."
-msgstr ""
+msgstr "Die Webseiten Zugriffsregel wurde gelöscht."
 
 #: admin_site_access.php:91
 msgid "The website access rule has been updated."
-msgstr ""
+msgstr "Die Webseiten Zugriffsregel wurde bearbeitet."
 
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: admin_trees_config.php:2362
@@ -13786,7 +13786,7 @@ msgstr "Die webtrees Entwickler sind sehr daran interessiert aus diesen Fehler z
 
 #: admin_site_access.php:278
 msgid "The “%” character is a wildcard, and will match zero or more other characters."
-msgstr ""
+msgstr "Das “%” Zeichen ist ein Platzhalter für kein, ein oder mehrere Zeichen."
 
 #: admin_modules.php:181 admin_users.php:449 edituser.php:250
 #: library/WT/Theme/BaseTheme.php:1465
@@ -13805,7 +13805,7 @@ msgstr "Auswahl eines Themas"
 
 #: admin_modules.php:155
 msgid "Themes"
-msgstr ""
+msgstr "Themen"
 
 #: admin_site_config.php:203
 msgid "Themes can be selected at three levels: user, GEDCOM, and site.  User settings take priority over GEDCOM settings, which in turn take priority over the site setting.  Selecting “default theme” at user level will give the setting for the current GEDCOM.  Selecting “default theme” at GEDCOM level will give the site setting."
@@ -13845,8 +13845,8 @@ msgstr "Es warten ausstehende Änderungen auf deine Moderation"
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Es gab keine Veränderungen in den letzen 24 Stunden."
+msgstr[1] "Es gab keine Veränderungen in den letzen %s Tagen."
 
 #: addmedia.php:183 admin_media_upload.php:142
 msgid "There was an error uploading your file."
@@ -14602,7 +14602,7 @@ msgstr "Titel"
 #. I18N: label for the end of a date range (from x to y)
 #: admin_site_change.php:303 admin_site_logs.php:262
 msgid "To"
-msgstr ""
+msgstr "An"
 
 #: modules_v3/html/module.php:277
 msgid "To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
@@ -14638,7 +14638,7 @@ msgstr "Zum Reduzieren der Höhe des Neuigkeiten Blocks sind mehrere Notizen ver
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: admin_site_config.php:427
 msgid "To set this text for other languages, you must switch to that language, and visit this page again."
-msgstr ""
+msgstr "Um diesen Text in eine andere Sprache zu übersetzen, müssen Sie zu dieser Sprache wechseln und diese Seite erneut aufrufen."
 
 #: modules_v3/sitemap/module.php:316
 msgid "To tell search engines that sitemaps are available, you can use the following links."
@@ -14719,7 +14719,7 @@ msgstr "Toronto, Ontario, Kanada"
 
 #: admin.php:728
 msgid "Total"
-msgstr ""
+msgstr "Insgesamt"
 
 #: modules_v3/change_report/report.xml:124
 msgid "Total accepted changes: "
@@ -15163,7 +15163,7 @@ msgstr "Passwort verwenden"
 #. I18N: Help text for the “Use silhouettes” configuration setting
 #: admin_trees_config.php:1200
 msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question."
-msgstr ""
+msgstr "Silhouetten werden angezeigt, wenn zu einer Person kein hervorgehobenes Bild eingestellt wurde. Die Silhouetten sind geschlechtsspezifisch."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1195
@@ -15511,7 +15511,7 @@ msgstr "Ihnen wird nun eine Bestätigungsmail an die Adresse <b>%s</b> geschickt
 #. I18N: Menu entry
 #: library/WT/Theme/Administration.php:74
 msgid "Website"
-msgstr ""
+msgstr "Webseite"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:251
@@ -15531,12 +15531,12 @@ msgstr "Webseiten und META Tags Einstellungen"
 #. I18N: Menu entry
 #: admin_site_logs.php:30 library/WT/Theme/Administration.php:78
 msgid "Website logs"
-msgstr ""
+msgstr "Webseiten Logs"
 
 #. I18N: Menu entry
 #: admin_site_config.php:105 library/WT/Theme/Administration.php:75
 msgid "Website preferences"
-msgstr ""
+msgstr "Webseiten Vorlieben"
 
 #. I18N: abbreviation for Wednesday
 #: includes/functions/functions_print.php:731 library/WT/Date/Calendar.php:383
@@ -15591,7 +15591,7 @@ msgstr "Für die Berechnung von Verwandschaftsgraden bestimmt diese Option, ob w
 #. I18N: Help text for the “ID settings” configuration setting
 #: admin_trees_config.php:937
 msgid "When new records are created, they are given an internal ID number.  You can specify the prefix used for each type of record."
-msgstr ""
+msgstr "Wenn ein neuer Eintrag erstellt wird, bekommt dieser eine interne ID Nummer. Sie können entscheiden, welchen Präfix jede ID für jeden Typen erhält."
 
 #: help_text.php:640
 msgid "When this option is checked, you can see all source or note records for this individual.  When this option is unchecked, source or note records that are associated with other facts for this individual will not be shown."
@@ -15832,7 +15832,7 @@ msgstr "Wenn für eine Person noch kein Datensatz für das Todes-, Begräbnis- o
 
 #: admin_site_access.php:68
 msgid "You cannot create a rule which would prevent yourself from accessing the website."
-msgstr ""
+msgstr "Sie können keine Regel erstellen, durch die Sie sich selber von der Webseite aussperren würden."
 
 #: login.php:70
 msgid "You cannot login because your browser does not accept cookies."
@@ -15913,7 +15913,7 @@ msgstr "Sie müssen einen Personendatensatz zuordnen, bevor Sie einen Benutzer a
 
 #: admin_trees_manage.php:215
 msgid "You need to create a family tree."
-msgstr ""
+msgstr "Sie müssen einen Stammbaum erstellen."
 
 #: admin_pgv_to_wt.php:1155
 msgid "You need to login again, using your PhpGedView username and password."
@@ -16457,7 +16457,7 @@ msgstr "Weiter"
 #. I18N: Button label
 #: admin_trees_manage.php:576
 msgid "create"
-msgstr ""
+msgstr "erstellen"
 
 #. I18N: a program feature
 #: setup.php:138
@@ -16520,7 +16520,7 @@ msgstr "Grad"
 #. I18N: Button label
 #: admin_site_clean.php:120 admin_users.php:756
 msgid "delete"
-msgstr ""
+msgstr "löschen"
 
 #. I18N: An access rule - deny access to the site
 #: admin_site_access.php:30 admin_site_access.php:37
@@ -16569,7 +16569,7 @@ msgstr "östlich"
 #: admin_trees_config.php:2235 admin_trees_config.php:2266
 #: admin_trees_config.php:2295
 msgid "edit"
-msgstr ""
+msgstr "bearbeiten"
 
 #: includes/functions/functions.php:703
 msgctxt "FEMALE"
@@ -16649,21 +16649,21 @@ msgstr "Ex-Mann"
 #: includes/functions/functions.php:880
 msgctxt "FEMALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "Ex-Partnerin"
 
 #: includes/functions/functions.php:862
 msgctxt "MALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "Ex-Partner"
 
 #: includes/functions/functions.php:898
 msgctxt "MALE/FEMALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "Ex-Partner"
 
 #: includes/functions/functions.php:903
 msgid "ex-spouse"
-msgstr "ex-Ehepartner"
+msgstr "Ex-Ehepartner"
 
 #: includes/functions/functions.php:885
 msgid "ex-wife"
@@ -18697,7 +18697,7 @@ msgstr "Mädchenname"
 
 #: admin_trees_config.php:547
 msgid "managers"
-msgstr ""
+msgstr "Verwalter"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:95
@@ -18772,7 +18772,7 @@ msgstr[1] "maximal %d Tage"
 #: admin_trees_config.php:506 admin_trees_config.php:546
 #: admin_trees_config.php:566
 msgid "members"
-msgstr ""
+msgstr "Benutzer"
 
 #. I18N: time format “%a” - exactly 00:00:00
 #: includes/functions/functions_date.php:86
@@ -19063,7 +19063,7 @@ msgstr "Prozentzahl"
 
 #: admin_trees_config.php:1183
 msgid "pixels"
-msgstr ""
+msgstr "Pixel"
 
 #. I18N: button label
 #: admin_trees_places.php:104
@@ -19935,7 +19935,7 @@ msgstr "utf8_unicode_ci"
 #: admin_trees_config.php:505 admin_trees_config.php:545
 #: admin_trees_config.php:565
 msgid "visitors"
-msgstr ""
+msgstr "Besucher"
 
 #: modules_v3/ahnentafel_report/report.xml:138
 #: modules_v3/descendancy_report/report.xml:104
@@ -19951,7 +19951,7 @@ msgstr "wurde geboren"
 
 #: library/WT/Theme/Webtrees.php:101
 msgid "webtrees"
-msgstr ""
+msgstr "webtrees"
 
 #: help_text.php:456
 msgid "webtrees allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the clippings cart that you can use to export portions of your database.<br><br>You can select any of the facts from the clipboard and copy the selected fact to the individual, family, media, source, or repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a marriage fact to a source or an individual record since the marriage fact is associated only with family records.<br><br>This is very helpful when entering similar facts, such as census facts, for many individuals or families."
