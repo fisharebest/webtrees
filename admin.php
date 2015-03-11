@@ -474,6 +474,23 @@ $changes = Database::prepare(
 	"SELECT SQL_CACHE g.gedcom_id, COUNT(change_id) AS count FROM `##gedcom` AS g LEFT JOIN `##change` AS c ON g.gedcom_id = c.gedcom_id AND status = 'pending' GROUP BY g.gedcom_id"
 )->fetchAssoc();
 
+// Server warnings
+$server_warnings = array();
+if (
+	version_compare(PHP_VERSION, '5.4', '<') && date('Y-m-d') >= '2014-08-14' ||
+	version_compare(PHP_VERSION, '5.5', '<') && date('Y-m-d') >= '2015-09-14' ||
+	version_compare(PHP_VERSION, '5.6', '<') && date('Y-m-d') >= '2016-06-20' ||
+	version_compare(PHP_VERSION, '5.7', '<') && date('Y-m-d') >= '2017-08-28'
+) {
+	$server_warnings[] = I18N::translate('Your web server is using PHP version %s, which is no longer receiving security updates.  You should upgrade to a later version as soon as possible.', PHP_VERSION);
+} elseif (
+	version_compare(PHP_VERSION, '5.5', '<') && date('Y-m-d') >= '2014-09-14' ||
+	version_compare(PHP_VERSION, '5.6', '<') && date('Y-m-d') >= '2015-06-20' ||
+	version_compare(PHP_VERSION, '5.7', '<') && date('Y-m-d') >= '2016-08-28'
+) {
+	$server_warnings[] = I18N::translate('Your web server is using PHP version %s, which is no longer maintained.  You should upgrade to a later version.', PHP_VERSION);
+} else
+
 ?>
 <h1><?php echo $controller->getPageTitle(); ?></h1>
 
@@ -482,6 +499,28 @@ $changes = Database::prepare(
 </p>
 
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+	<!-- SERVER WARNINGS -->
+	<?php if ($server_warnings): ?>
+		<div class="panel panel-danger">
+			<div class="panel-heading" role="tab" id="server-heading">
+				<h2 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#server-panel" aria-expanded="true" aria-controls="server-panel">
+						<?php echo I18N::translate('Server information'); ?>
+					</a>
+				</h2>
+			</div>
+			<div id="server-panel" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="server-heading">
+				<div class="panel-body">
+					<?php foreach ($server_warnings as $server_warning): ?>
+					<p>
+						<?php echo $server_warning; ?>
+					</p>
+					<?php endforeach; ?>
+				</div>
+			</div>
+		</div>
+	<?php endif; ?>
 
 	<!-- WEBTREES VERSION -->
 	<div class="panel <?php echo Auth::isAdmin() && $update_available ? 'panel-danger' : 'panel-primary'; ?>">
