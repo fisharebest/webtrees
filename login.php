@@ -593,57 +593,46 @@ case 'verify_hash':
 	echo '<div id="login-register-page">';
 	echo '<h2>' . I18N::translate('User verification') . '</h2>';
 	echo '<div id="user-verify">';
-	echo I18N::translate('The data for the user <b>%s</b> has been checked.', $user_name);
-	if ($user) {
-		if ($user->checkPassword($user_password) && $user->getPreference('reg_hashcode') == $user_hashcode) {
-			Mail::send(
-			// “From:” header
-				$WT_TREE,
-				// “To:” header
-				$webmaster->getEmail(),
-				$webmaster->getRealName(),
-				// “Reply-To:” header
-				$WT_TREE->getPreference('WEBTREES_EMAIL'),
-				$WT_TREE->getPreference('WEBTREES_EMAIL'),
-				// Message body
-				$mail1_subject,
-				$mail1_body
-			);
-			$mail1_method = $webmaster->getPreference('CONTACT_METHOD');
-			if ($mail1_method != 'messaging3' && $mail1_method != 'mailto' && $mail1_method != 'none') {
-				Database::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
-					->execute(array($user_name, $WT_REQUEST->getClientIp(), $webmaster->getUserId(), $mail1_subject, Filter::unescapeHtml($mail1_body)));
-			}
+	if ($user && $user->checkPassword($user_password) && $user->getPreference('reg_hashcode') === $user_hashcode) {
+		Mail::send(
+		// “From:” header
+			$WT_TREE,
+			// “To:” header
+			$webmaster->getEmail(),
+			$webmaster->getRealName(),
+			// “Reply-To:” header
+			$WT_TREE->getPreference('WEBTREES_EMAIL'),
+			$WT_TREE->getPreference('WEBTREES_EMAIL'),
+			// Message body
+			$mail1_subject,
+			$mail1_body
+		);
+		$mail1_method = $webmaster->getPreference('CONTACT_METHOD');
+		if ($mail1_method != 'messaging3' && $mail1_method != 'mailto' && $mail1_method != 'none') {
+			Database::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
+				->execute(array($user_name, $WT_REQUEST->getClientIp(), $webmaster->getUserId(), $mail1_subject, Filter::unescapeHtml($mail1_body)));
+		}
 
-			$user
-				->setPreference('verified', '1')
-				->setPreference('reg_timestamp', date('U'))
-				->deletePreference('reg_hashcode');
+		$user
+			->setPreference('verified', '1')
+			->setPreference('reg_timestamp', date('U'))
+			->deletePreference('reg_hashcode');
 
-			if (!$REQUIRE_ADMIN_AUTH_REGISTRATION) {
-				$user->setPreference('verified_by_admin', '1');
-			}
-			Log::addAuthenticationLog('User ' . $user_name . ' verified their email address');
+		if (!$REQUIRE_ADMIN_AUTH_REGISTRATION) {
+			$user->setPreference('verified_by_admin', '1');
+		}
+		Log::addAuthenticationLog('User ' . $user_name . ' verified their email address');
 
-			echo '<br><br>' . I18N::translate('You have confirmed your request to become a registered user.') . '<br><br>';
-			if ($REQUIRE_ADMIN_AUTH_REGISTRATION && !$user->getPreference('verified_by_admin')) {
-				echo I18N::translate('The administrator has been informed.  As soon as they give you permission to login, you can login with your user name and password.');
-			} else {
-				echo I18N::translate('You can now login with your user name and password.');
-			}
-			echo '<br><br>';
+		echo '<p>', I18N::translate('You have confirmed your request to become a registered user.'), '</p>';
+		if ($REQUIRE_ADMIN_AUTH_REGISTRATION && !$user->getPreference('verified_by_admin')) {
+			echo '<p>', I18N::translate('The administrator has been informed.  As soon as they give you permission to login, you can login with your user name and password.'), '</p>';
 		} else {
-			Log::addAuthenticationLog('User ' . $user_name . ' failed to verify their email address');
-			echo '<br><br>';
-			echo '<span class="warning">';
-			echo I18N::translate('Data was not correct, please try again');
-			echo '</span><br><br>';
+			echo '<p>', I18N::translate('You can now login with your user name and password.'), '</p>';
 		}
 	} else {
-		echo '<br><br>';
-		echo '<span class="warning">';
+		echo '<p class="warning">';
 		echo I18N::translate('Could not verify the information you entered.  Please try again or contact the site administrator for more information.');
-		echo '</span>';
+		echo '</p>';
 	}
 	echo '</div>';
 	echo '</div>';
