@@ -3,13 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-12 21:11+0000\n"
-"PO-Revision-Date: 2013-08-02 18:53+0000\n"
-"Last-Translator: KosherJava <Unknown>\n"
+"PO-Revision-Date: 2015-03-12 22:05+0100\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"Language-Team: Yiddish "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/yi/>\n"
 "Language: yi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.3-dev\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
 #: modules_v3/ahnentafel_report/report.xml:185
@@ -292,8 +295,8 @@ msgstr[1] ""
 #, php-format
 msgid "%s grandchild"
 msgid_plural "%s grandchildren"
-msgstr[0] "%s sאייניקל"
-msgstr[1] "% sאייניקלאך"
+msgstr[0] "%s אייניקל"
+msgstr[1] "%s אייניקלאך"
 
 #: app/I18N.php:519
 #, php-format
@@ -1286,7 +1289,7 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:101
 #: app/Module/ClippingsCartModule.php:519
 msgid "Add just this individual."
-msgstr "לייג נאָר דעם מענטש"
+msgstr "לייג נאָר דעם מענטש."
 
 #: app/Module/ClippingsCartModule.php:122
 #: app/Module/ClippingsCartModule.php:540
@@ -4447,7 +4450,7 @@ msgstr "טאָג רעגיסטרירט"
 
 #: app/Module/UserMessagesModule.php:79
 msgid "Date sent"
-msgstr "טאָג געשיקט:"
+msgstr "טאָג געשיקט"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:747
@@ -6904,7 +6907,7 @@ msgstr "ער איז געווען פאַרברענען"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:55
 msgid "Head of household"
-msgstr "הויפּט פון הויזגעזינד:"
+msgstr "הויפּט פון הויזגעזינד"
 
 #. I18N: gedcom tag HEAD
 #: app/Gedcom/GedcomTag.php:509
@@ -6934,7 +6937,7 @@ msgstr "הײך"
 #: login.php:251 login.php:339
 #, php-format
 msgid "Hello %s…"
-msgstr "שאָלעם אַלייכעם %s"
+msgstr "שאָלעם אַלייכעם %s…"
 
 #: login.php:390
 #, php-format
@@ -7392,11 +7395,11 @@ msgstr "יאָכיד"
 
 #: relationship.php:62
 msgid "Individual 1"
-msgstr "מענטש 1:"
+msgstr "מענטש 1"
 
 #: relationship.php:80
 msgid "Individual 2"
-msgstr "מענטש 2:"
+msgstr "מענטש 2"
 
 #: admin_trees_config.php:792
 msgid "Individual ID prefix"
@@ -8059,7 +8062,7 @@ msgstr "לימא, פערו"
 
 #: app/Module/FamilyTreeNewsModule.php:163
 msgid "Limit"
-msgstr "באַגרענעצן:"
+msgstr "באַגרענעצן"
 
 #. I18N: Limit display by [age/number]
 #: app/Module/FamilyTreeNewsModule.php:154
@@ -8739,7 +8742,7 @@ msgstr ""
 #. I18N: Label for search field
 #: find.php:191
 msgid "Media contains"
-msgstr "מידיאַ איז כּולל:"
+msgstr "מידיאַ איז כּולל"
 
 #: admin_media.php:702 admin_media_upload.php:198
 msgid "Media file"
@@ -9325,7 +9328,7 @@ msgstr "נאָמען"
 #. I18N: Label for search field
 #: find.php:155 find.php:172
 msgid "Name contains"
-msgstr "נאָמען כּולל:"
+msgstr "נאָמען כּולל"
 
 #: app/Gedcom/GedcomTag.php:607
 msgid "Name in Hebrew"
@@ -9894,7 +9897,7 @@ msgstr "נומער פון פאַמיליעס אָן קינדער"
 #: app/Module/ClippingsCartModule.php:524
 #: app/Module/ClippingsCartModule.php:527
 msgid "Number of generations"
-msgstr "נומער פון דורות:"
+msgstr "נומער פון דורות"
 
 #: app/Module/FamilyTreeNewsModule.php:159
 msgid "Number of items"
@@ -10480,7 +10483,7 @@ msgstr "פּלאַץ אָפאַלטן"
 #. I18N: Label for search field
 #: find.php:211
 msgid "Place contains"
-msgstr "פּלאַץ איז כּולל:"
+msgstr "פּלאַץ איז כּולל"
 
 #: app/Module/TopPageViewsModule.php:136
 msgid "Place counts before or after name?"
@@ -10660,7 +10663,7 @@ msgstr "ביטע אַרייַן אַ אָנזאָג ונטערטעניק."
 
 #: message.php:58
 msgid "Please enter a valid email address."
-msgstr "ביטע אַרייַן אַ גילטיק בליצפּאָסט אַדרעס"
+msgstr "ביטע אַרייַן אַ גילטיק בליצפּאָסט אַדרעס."
 
 #: app/Module/CensusAssistantModule.php:96 find.php:115 search.php:34
 #: search.php:46
@@ -11353,7 +11356,7 @@ msgstr ""
 #. I18N: Label for search field
 #: find.php:230
 msgid "Repository contains"
-msgstr "רעפּאָסיטאָרי איז כּולל:"
+msgstr "רעפּאָסיטאָרי איז כּולל"
 
 #: edit_interface.php:1563 includes/functions/functions_print_lists.php:1315
 msgid "Repository name"
@@ -12809,7 +12812,7 @@ msgstr ""
 #. I18N: Label for search field
 #: find.php:269
 msgid "Source contains"
-msgstr "מקור כּולל:"
+msgstr "מקור כּולל"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:2265 modules_v3/fact_sources/report.xml:6
@@ -13013,7 +13016,7 @@ msgstr ""
 
 #: app/Module/UserMessagesModule.php:78 message.php:127
 msgid "Subject"
-msgstr "‫ענין:"
+msgstr "‫ענין"
 
 #. I18N: gedcom tag SUBN
 #: app/Gedcom/GedcomTag.php:811
@@ -13675,12 +13678,12 @@ msgstr ""
 #: admin_pgv_to_wt.php:107
 #, php-format
 msgid "The version of %s is too new."
-msgstr "די ווערסיע פון %s איז צו נייַ"
+msgstr "די ווערסיע פון %s איז צו נייַ."
 
 #: admin_pgv_to_wt.php:104
 #, php-format
 msgid "The version of %s is too old."
-msgstr "די ווערסיע פון% s איז צו אַלט"
+msgstr "די ווערסיע פון% s איז צו אַלט."
 
 #: admin_site_access.php:85
 msgid "The website access rule has been created."
@@ -13897,7 +13900,7 @@ msgstr ""
 #: app/Module/HtmlBlockModule.php:142
 #, php-format
 msgid "This family tree was last updated on %s."
-msgstr "דעם פאמיליע בוים איז לעצט דערהייַנטיקט אויף %s"
+msgstr "דעם פאמיליע בוים איז לעצט דערהייַנטיקט אויף %s."
 
 #: help_text.php:322
 msgid "This field allows you to change the source record that this fact’s source citation links to.  This field takes a source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank."
@@ -14585,7 +14588,7 @@ msgstr[1] ""
 #. I18N: i.e. most popular given name.
 #: app/Module/TopGivenNamesModule.php:60
 msgid "Top given name"
-msgstr "די מערסט פּאָפּולאַר געגעבן נאָמען."
+msgstr "די מערסט פּאָפּולאַר געגעבן נאָמען"
 
 #. I18N: Name of a module.  Top=Most common
 #: app/Module/TopGivenNamesModule.php:25 statistics.php:199
