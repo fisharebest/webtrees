@@ -3,13 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-12 21:11+0000\n"
-"PO-Revision-Date: 2012-07-23 17:22+0000\n"
-"Last-Translator: Janis <samuray@gign.lv>\n"
+"PO-Revision-Date: 2015-03-12 21:48+0100\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"Language-Team: Latvian "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/lv/>\n"
 "Language: lv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2;\n"
+"X-Generator: Weblate 2.3-dev\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
 #: modules_v3/ahnentafel_report/report.xml:185
@@ -774,7 +777,7 @@ msgstr ""
 #. I18N: Description of the “Most visited pages” module
 #: app/Module/TopPageViewsModule.php:30
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr "Saraksts ar lapām, kuras tikušas apskatītas visvairāk reižu"
+msgstr "Saraksts ar lapām, kuras tikušas apskatītas visvairāk reižu."
 
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:30
@@ -848,7 +851,7 @@ msgstr ""
 #: app/Module/FamilyGroupReportModule.php:32
 #: modules_v3/family_group_report/report.xml:4
 msgid "A report of family members and their details."
-msgstr "Ģimenes locekļu pārskats un detaļas"
+msgstr "Ģimenes locekļu pārskats un detaļas."
 
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:32 modules_v3/death_report/report.xml:4
@@ -4474,7 +4477,7 @@ msgstr ""
 
 #: app/Module/UserMessagesModule.php:79
 msgid "Date sent"
-msgstr "Sūtīšanas datums:"
+msgstr "Sūtīšanas datums"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:747
@@ -8086,7 +8089,7 @@ msgstr ""
 
 #: app/Module/FamilyTreeNewsModule.php:163
 msgid "Limit"
-msgstr "Limits:"
+msgstr "Limits"
 
 #. I18N: Limit display by [age/number]
 #: app/Module/FamilyTreeNewsModule.php:154
@@ -9604,7 +9607,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:911
 msgid "No ancestors in the database."
-msgstr "Datubāzē nav priekšteču"
+msgstr "Datubāzē nav priekšteču."
 
 #: admin_trees_config.php:35
 msgid "No calendar conversion"
@@ -11088,7 +11091,7 @@ msgstr ""
 #. I18N: Description of the “Slide show” module
 #: app/Module/SlideShowModule.php:30
 msgid "Random images from the current family tree."
-msgstr "Tekošā ģimenes koka bildes nejaušā secībā"
+msgstr "Tekošā ģimenes koka bildes nejaušā secībā."
 
 #: app/Controller/FamilyController.php:103
 #: app/Module/RelativesTabModule.php:256 edit_interface.php:1833
@@ -13042,7 +13045,7 @@ msgstr ""
 
 #: app/Module/UserMessagesModule.php:78 message.php:127
 msgid "Subject"
-msgstr "Temats:"
+msgstr "Temats"
 
 #. I18N: gedcom tag SUBN
 #: app/Gedcom/GedcomTag.php:811
@@ -13768,11 +13771,11 @@ msgstr ""
 #: app/Module/ExtraInformationModule.php:58
 #: app/Module/IndividualFactsTabModule.php:115
 msgid "There are no facts for this individual."
-msgstr "Nav ievadīts neviens fakts par šo personu"
+msgstr "Nav ievadīts neviens fakts par šo personu."
 
 #: app/Module/MediaTabModule.php:68
 msgid "There are no media objects for this individual."
-msgstr "Šai personai nav multimedija objektu"
+msgstr "Šai personai nav multimedija objektu."
 
 #: app/Module/NotesTabModule.php:76
 msgid "There are no notes for this individual."
@@ -18623,6 +18626,7 @@ msgid "maximum %d day"
 msgid_plural "maximum %d days"
 msgstr[0] "maks. %d diena"
 msgstr[1] "maks. %d dienas"
+msgstr[2] ""
 
 #: admin_trees_config.php:404 admin_trees_config.php:428
 #: admin_trees_config.php:468 admin_trees_config.php:508
