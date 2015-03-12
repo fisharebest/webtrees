@@ -3,13 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-12 21:11+0000\n"
-"PO-Revision-Date: 2013-08-04 17:00+0000\n"
-"Last-Translator: Hisakuni NOGAMI <Unknown>\n"
+"PO-Revision-Date: 2015-03-12 21:56+0100\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"Language-Team: Japanese "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 2.3-dev\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
 #: modules_v3/ahnentafel_report/report.xml:185
@@ -722,7 +725,7 @@ msgstr ""
 #. I18N: Description of the “Most visited pages” module
 #: app/Module/TopPageViewsModule.php:30
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr "一番回数多く見られたページのリスト"
+msgstr "一番回数多く見られたページのリスト。"
 
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:30
@@ -790,13 +793,13 @@ msgstr ""
 
 #: modules_v3/fact_sources/report.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr "与えられた資料で支持された事実のレポート"
+msgstr "与えられた資料で支持された事実のレポート。"
 
 #. I18N: Description of the “Family” module
 #: app/Module/FamilyGroupReportModule.php:32
 #: modules_v3/family_group_report/report.xml:4
 msgid "A report of family members and their details."
-msgstr "家族構成員とその詳細のレポート"
+msgstr "家族構成員とその詳細のレポート。"
 
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:32 modules_v3/death_report/report.xml:4
@@ -877,7 +880,7 @@ msgstr ""
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:35
 msgid "A sidebar showing an individual’s close families and relatives."
-msgstr "個人の近い家族と親戚を表示するサイドバー"
+msgstr "個人の近い家族と親戚を表示するサイドバー。"
 
 #. I18N: Description of the “Extra information” module
 #: app/Module/ExtraInformationModule.php:31
@@ -897,12 +900,12 @@ msgstr ""
 #. I18N: Description of the “Facts and events” module
 #: app/Module/IndividualFactsTabModule.php:30
 msgid "A tab showing the facts and events of an individual."
-msgstr "個人の事実とイベントを表示するタブ"
+msgstr "個人の事実とイベントを表示するタブ。"
 
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:32
 msgid "A tab showing the media objects linked to an individual."
-msgstr "個人にリンクした画像オブジェクトを表示するタブ"
+msgstr "個人にリンクした画像オブジェクトを表示するタブ。"
 
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:32
@@ -1823,7 +1826,7 @@ msgstr ""
 #. I18N: Description of the “Login” module
 #: modules_v3/login_block/LoginBlockModule.php:30
 msgid "An alternative way to login and logout."
-msgstr "ログインとログアウトの、また別の手段"
+msgstr "ログインとログアウトの、また別の手段。"
 
 #. I18N: Description of the “Theme change” module
 #: app/Module/ThemeSelectModule.php:30
@@ -1938,7 +1941,7 @@ msgstr ""
 #. I18N: Description of the “Batch update” module
 #: app/Module/BatchUpdateModule.php:63
 msgid "Apply automatic corrections to your genealogy data."
-msgstr "貴方の家系データへの自動修正適用"
+msgstr "貴方の家系データへの自動修正適用。"
 
 #: admin_trees_download.php:173 app/Module/ClippingsCartModule.php:194
 #: app/Module/ClippingsCartModule.php:202
@@ -3646,7 +3649,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:81
 #, php-format
 msgid "Click %s to choose individual as head of family."
-msgstr "家族の長として　%s をクリックして選択"
+msgstr "家族の長として　%s をクリックして選択。"
 
 #: edit_interface.php:1747
 msgid "Click a row, then drag-and-drop to re-order media "
@@ -3675,7 +3678,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:69
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:80
 msgid "Click to choose individual as head of family."
-msgstr "家族の長としての人をクリックして選択"
+msgstr "家族の長としての人をクリックして選択。"
 
 #: help_text.php:386
 msgid "Clicking the “+” icon will open the GEDFact shared note assistant window.<br>Specific help will be found there.<br><br>When you click the “save” button, the ID of the shared note will be pasted here."
@@ -3755,7 +3758,7 @@ msgstr ""
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:30
 msgid "Communicate directly with other users, using private messages."
-msgstr "プライベートメッセージを用いて、他のユーザへの直接通信"
+msgstr "プライベートメッセージを用いて、他のユーザへの直接通信。"
 
 #: app/Stats.php:6117
 msgid "Comoros"
@@ -3927,7 +3930,7 @@ msgstr ""
 
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:38
 msgid "Correct NAME records of the form “John/DOE/” or “John /DOE”, as produced by older genealogy programs."
-msgstr "旧式の家系図プログラムが作った、 'John/DOE/' とか'John /DOE'　の形を持つNAMEレコードの修正"
+msgstr "旧式の家系図プログラムが作った、 'John/DOE/' とか'John /DOE'　の形を持つNAMEレコードの修正。"
 
 #: app/Stats.php:6119
 msgid "Costa Rica"
@@ -9548,7 +9551,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:911
 msgid "No ancestors in the database."
-msgstr "データベースに祖先なし"
+msgstr "データベースに祖先なし。"
 
 #: admin_trees_config.php:35
 msgid "No calendar conversion"
@@ -12478,7 +12481,7 @@ msgstr ""
 #. I18N: Description of the “Google Maps™” module
 #: app/Module/GoogleMapsModule.php:95
 msgid "Show the location of places and events using the Google Maps™ mapping service."
-msgstr "Google Maps™ サービスを用いて場所とイベントの位置を表示"
+msgstr "Google Maps™ サービスを用いて場所とイベントの位置を表示。"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:151
 #: app/Module/HtmlBlockModule.php:309 app/Module/StoriesModule.php:220
@@ -13484,7 +13487,7 @@ msgstr ""
 
 #: mediafirewall.php:41
 msgid "The media file was not found in this family tree"
-msgstr "この家系図には画像ファイルが見当たりません。"
+msgstr "この家系図には画像ファイルが見当たりません"
 
 #: admin_media_upload.php:223
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
@@ -14076,7 +14079,7 @@ msgstr ""
 
 #: mediafirewall.php:410
 msgid "This media file is broken and cannot be watermarked"
-msgstr "このメディアファイルは壊れており電子透かしを付けられません。"
+msgstr "このメディアファイルは壊れており電子透かしを付けられません"
 
 #: mediaviewer.php:73
 msgid "This media object does not exist or you do not have permission to view it."
@@ -14208,7 +14211,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:2847
 msgid "This place has no coordinates"
-msgstr "この場所はまだ座標がありません。"
+msgstr "この場所はまだ座標がありません"
 
 #: help_text.php:442
 msgid "This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc."
