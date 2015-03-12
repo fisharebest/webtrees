@@ -3,18 +3,19 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-12 21:11+0000\n"
-"PO-Revision-Date: \n"
-"Last-Translator: Meliza <meliza@amitys.com>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2015-03-12 22:16+0100\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"Language-Team: Hebrew "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.3-dev\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Generator: Poedit 1.7.4\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
@@ -11851,7 +11852,7 @@ msgstr "שם השולח"
 #. I18N: Menu entry
 #: admin_site_config.php:135 app/Theme/AdministrationTheme.php:69
 msgid "Sending email"
-msgstr " שולח דוא״ל"
+msgstr "שולח דוא״ל"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:407
@@ -11993,7 +11994,11 @@ msgstr "קבע את זה כ<b>כן</b> כדי להציג סמלים ליד שמ�
 #. I18N: Help text for the “Use RIN number instead of GEDCOM ID” configuration setting
 #: admin_trees_config.php:763
 msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
-msgstr "הגדר כ<b>כן</ b> כדי להשתמש במספר RIN במקום מספר מזהה של GEDCOM כשמבקשים מספר מזהה של אדם עבור קבצי תצורה, הגדרות משתמש ותרשימים. זה שימושי עבור תוכניות חקר שושלת יוחסין שלא מיוצאות באופן עקבי עם אותו מספר מזהה של GEDCOM לכל אדם, אבל תמיד משתמשות באותו RIN."
+msgstr ""
+"הגדר כ<b>כן</b> כדי להשתמש במספר RIN במקום מספר מזהה של GEDCOM כשמבקשים מספר "
+"מזהה של אדם עבור קבצי תצורה, הגדרות משתמש ותרשימים. זה שימושי עבור תוכניות "
+"חקר שושלת יוחסין שלא מיוצאות באופן עקבי עם אותו מספר מזהה של GEDCOM לכל אדם, "
+"אבל תמיד משתמשות באותו RIN."
 
 #. I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting
 #: admin_trees_config.php:1603
@@ -13316,7 +13321,7 @@ msgstr "עגלת גזירי העץ מאפשרת לקיחת קטעים (”גזי
 #: login.php:596
 #, php-format
 msgid "The data for the user <b>%s</b> has been checked."
-msgstr "הנתונים על המשתמש <span dir=\"ltr\"><b>%s</b></span> נבדקו."
+msgstr "הנתונים על המשתמש <b>%s</b> נבדקו."
 
 #: site-unavailable.php:66
 msgid "The database reported the following error message:"
@@ -14378,7 +14383,9 @@ msgstr "אתר האינטרנט הזה אינו זמין באופן זמני."
 #: admin_trees_manage.php:183
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
-msgstr "פעולה זו ימחק את כל נתוני חקר שושלת יוחסין מן “%s” ויחליף אותו עם נתונים קובץ GEDCOM. "
+msgstr ""
+"פעולה זו ימחק את כל נתוני חקר שושלת יוחסין מן “%s” ויחליף אותו עם נתונים "
+"קובץ GEDCOM."
 
 #: app/Module/GoogleMapsModule.php:1781
 msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
