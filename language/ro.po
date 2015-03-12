@@ -3,13 +3,17 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-12 21:11+0000\n"
-"PO-Revision-Date: 2013-08-04 18:19+0000\n"
-"Last-Translator: Nagy Ákos <Unknown>\n"
-"Language: \n"
+"PO-Revision-Date: 2015-03-12 22:11+0100\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"Language-Team: Romanian "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/ro/>\n"
+"Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n == 1 ? 0: (((n % 100 > 19) || ((n % 100 == 0) && (n != 0))) ? 2: 1));\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2;\n"
+"X-Generator: Weblate 2.3-dev\n"
 "X-Poedit-Language: Romanian\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -727,7 +731,7 @@ msgstr ""
 #. I18N: Description of the “Home page” module
 #: app/Module/WelcomeBlockModule.php:30
 msgid "A greeting message for site visitors."
-msgstr "Un mesaj de întâmpinare pentru vizitatori"
+msgstr "Un mesaj de întâmpinare pentru vizitatori."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:30
@@ -747,7 +751,7 @@ msgstr "O listă a înregistrărilor care au fost modificate recent."
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:32
 msgid "A list of tasks and activities that are linked to the family tree."
-msgstr "O listă a sarcinilor şi activităţilor legate de arborele de familie"
+msgstr "O listă a sarcinilor şi activităţilor legate de arborele de familie."
 
 #. I18N: Description of the “Yahrzeiten” module.  A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:33
@@ -823,19 +827,19 @@ msgstr ""
 #: app/Module/PedigreeReportModule.php:32
 #: modules_v3/pedigree_report/report.xml:4
 msgid "A report of an individual’s ancestors, formatted as a tree."
-msgstr "Un raport al strămoşilor unui individ, formatat ca un arbore"
+msgstr "Un raport al strămoşilor unui individ, formatat ca un arbore."
 
 #. I18N: Description of the “Ancestors” module
 #: app/Module/AhnentafelReportModule.php:32
 #: modules_v3/ahnentafel_report/report.xml:5
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr "Un raport ce enumeră strămoşii unui individ"
+msgstr "Un raport ce enumeră strămoşii unui individ."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyReportModule.php:32
 #: modules_v3/descendancy_report/report.xml:4
 msgid "A report of an individual’s descendants, in a narrative style."
-msgstr "Un raport ce enumeră descendenţii unui individ"
+msgstr "Un raport ce enumeră descendenţii unui individ."
 
 #. I18N: Description of the “Individual” module
 #: app/Module/IndividualReportModule.php:32
@@ -1300,7 +1304,7 @@ msgstr ""
 
 #: includes/functions/functions_print.php:596
 msgid "Add from clipboard"
-msgstr "Adaugă din clipboard:"
+msgstr "Adaugă din clipboard"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:23
 msgid "Add individuals"
@@ -1878,12 +1882,12 @@ msgstr ""
 #. I18N: Description of the “Login” module
 #: modules_v3/login_block/LoginBlockModule.php:30
 msgid "An alternative way to login and logout."
-msgstr "Un mod alternativ de autentificare şi deconectare"
+msgstr "Un mod alternativ de autentificare şi deconectare."
 
 #. I18N: Description of the “Theme change” module
 #: app/Module/ThemeSelectModule.php:30
 msgid "An alternative way to select a new theme."
-msgstr "Un mod alternativ de a selecta o nouă temă"
+msgstr "Un mod alternativ de a selecta o nouă temă."
 
 #: help_text.php:53
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
@@ -2051,7 +2055,7 @@ msgstr ""
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:418
 msgid "Are you sure you want to delete this FAQ entry?"
-msgstr "Sunteţi sigur(ă) că doriţi să ştergeţi intrarea FAQ"
+msgstr "Sunteţi sigur(ă) că doriţi să ştergeţi intrarea FAQ?"
 
 #: app/Controller/IndividualController.php:160
 #: includes/functions/functions_print_facts.php:175
@@ -2831,7 +2835,7 @@ msgstr ""
 
 #: message.php:135
 msgid "Body"
-msgstr "Conţinut:"
+msgstr "Conţinut"
 
 #: app/Gedcom/GedcomCodeTemp.php:102
 msgid "Bogota, Colombia"
@@ -3704,7 +3708,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:81
 #, php-format
 msgid "Click %s to choose individual as head of family."
-msgstr "Click pe %s ca să alegi persoana ca fiind Cap de familie"
+msgstr "Click pe %s ca să alegi persoana ca fiind Cap de familie."
 
 #: edit_interface.php:1747
 msgid "Click a row, then drag-and-drop to re-order media "
@@ -3733,7 +3737,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:69
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:80
 msgid "Click to choose individual as head of family."
-msgstr "Dă click ca să selectezi persoana care este Capul de familiei"
+msgstr "Dă click ca să selectezi persoana care este Capul de familiei."
 
 #: help_text.php:386
 msgid "Clicking the “+” icon will open the GEDFact shared note assistant window.<br>Specific help will be found there.<br><br>When you click the “save” button, the ID of the shared note will be pasted here."
@@ -4476,7 +4480,7 @@ msgstr ""
 
 #: app/Module/UserMessagesModule.php:79
 msgid "Date sent"
-msgstr "Data trimiterii:"
+msgstr "Data trimiterii"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:747
@@ -6933,7 +6937,7 @@ msgstr ""
 
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:55
 msgid "Head of household"
-msgstr "Capul familiei:"
+msgstr "Capul familiei"
 
 #. I18N: gedcom tag HEAD
 #: app/Gedcom/GedcomTag.php:509
@@ -8088,12 +8092,12 @@ msgstr ""
 
 #: app/Module/FamilyTreeNewsModule.php:163
 msgid "Limit"
-msgstr "Limita:"
+msgstr "Limita"
 
 #. I18N: Limit display by [age/number]
 #: app/Module/FamilyTreeNewsModule.php:154
 msgid "Limit display by"
-msgstr "Limitează afişarea după:"
+msgstr "Limitează afişarea după"
 
 #: app/Module/RelativesTabModule.php:344 edit_interface.php:990
 #: edit_interface.php:1049
@@ -8768,7 +8772,7 @@ msgstr ""
 #. I18N: Label for search field
 #: find.php:191
 msgid "Media contains"
-msgstr "Media conţine:"
+msgstr "Media conţine"
 
 #: admin_media.php:702 admin_media_upload.php:198
 msgid "Media file"
@@ -9354,7 +9358,7 @@ msgstr ""
 #. I18N: Label for search field
 #: find.php:155 find.php:172
 msgid "Name contains"
-msgstr "Numele conţine:"
+msgstr "Numele conţine"
 
 #: app/Gedcom/GedcomTag.php:607
 msgid "Name in Hebrew"
@@ -10175,7 +10179,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:4320
 msgid "Overwrite existing coordinates."
-msgstr "Suprascrie coordonatele existente"
+msgstr "Suprascrie coordonatele existente."
 
 #: statistics.php:73
 msgid "Own charts"
@@ -10511,7 +10515,7 @@ msgstr "Verificări locuri"
 #. I18N: Label for search field
 #: find.php:211
 msgid "Place contains"
-msgstr "Locul conţine:"
+msgstr "Locul conţine"
 
 #: app/Module/TopPageViewsModule.php:136
 msgid "Place counts before or after name?"
@@ -11384,7 +11388,7 @@ msgstr ""
 #. I18N: Label for search field
 #: find.php:230
 msgid "Repository contains"
-msgstr "Depozitul conţine:"
+msgstr "Depozitul conţine"
 
 #: edit_interface.php:1563 includes/functions/functions_print_lists.php:1315
 msgid "Repository name"
@@ -11780,7 +11784,7 @@ msgstr ""
 
 #: statistics.php:499
 msgid "Select chart type"
-msgstr "de-a lungul axei X:"
+msgstr ""
 
 #: edit_interface.php:1252
 msgid "Select events"
@@ -12081,7 +12085,7 @@ msgstr "Notă comună"
 #. I18N: Label for search field
 #: find.php:250
 msgid "Shared note contains"
-msgstr "Nota comună conţine:"
+msgstr "Nota comună conţine"
 
 #: app/Theme/BaseTheme.php:1415
 #: includes/functions/functions_print_lists.php:1068 notelist.php:30
@@ -12840,7 +12844,7 @@ msgstr ""
 #. I18N: Label for search field
 #: find.php:269
 msgid "Source contains"
-msgstr "Sursa conţine:"
+msgstr "Sursa conţine"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:2265 modules_v3/fact_sources/report.xml:6
@@ -13044,7 +13048,7 @@ msgstr "Subdiviziune"
 
 #: app/Module/UserMessagesModule.php:78 message.php:127
 msgid "Subject"
-msgstr "Subiect:"
+msgstr "Subiect"
 
 #. I18N: gedcom tag SUBN
 #: app/Gedcom/GedcomTag.php:811
@@ -13618,7 +13622,7 @@ msgstr ""
 
 #: action.php:86
 msgid "The record has been copied to the clipboard."
-msgstr "Înregistrează ce s-a copiat în clipboard"
+msgstr "Înregistrează ce s-a copiat în clipboard."
 
 #. I18N: Records are individuals, sources, etc.
 #: admin_site_merge.php:162
@@ -15257,7 +15261,7 @@ msgstr ""
 
 #: login.php:348 login.php:543
 msgid "Verification code"
-msgstr "Codul de verificare:"
+msgstr "Codul de verificare"
 
 #: admin_users.php:853
 msgid "Verified"
