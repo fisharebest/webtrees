@@ -152,7 +152,7 @@ if ($type == "indi") {
 	<input type="hidden" name="callback" value="'.$callback . '">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="type" value="indi">
-	<span>', I18N::translate('Name contains:'), '&nbsp;</span>
+	<span>', /* I18N: Label for search field */ I18N::translate('Name contains'), '&nbsp;</span>
 	<input type="text" name="filter" value="';
 	if ($filter) {
 		echo $filter;
@@ -169,7 +169,7 @@ if ($type == "fam") {
 	<input type="hidden" name="callback" value="'.$callback . '">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="type" value="fam">
-	<span>', I18N::translate('Name contains:'), '&nbsp;</span>
+	<span>', I18N::translate('Name contains'), '&nbsp;</span>
 	<input type="text" name="filter" value="';
 	if ($filter) {
 		echo $filter;
@@ -188,7 +188,7 @@ if ($type == 'media') {
 	<input type="hidden" name="type" value="media">
 	<input type="hidden" name="callback" value="', $callback, '">
 	<input type="hidden" name="subclick">
-	<span>', I18N::translate('Media contains:'), '</span>
+	<span>', /* I18N: Label for search field */ I18N::translate('Media contains'), '</span>
 	<input type="text" name="filter" value="';
 	if ($filter) {
 		echo $filter;
@@ -208,7 +208,7 @@ if ($type == "place") {
 	<input type="hidden" name="type" value="place">
 	<input type="hidden" name="callback" value="', $callback, '">
 	<input type="hidden" name="subclick">
-	<span>', I18N::translate('Place contains:'), '</span>
+	<span>', /* I18N: Label for search field */ I18N::translate('Place contains'), '</span>
 	<input type="text" name="filter" value="';
 	if ($filter) {
 		echo $filter;
@@ -227,7 +227,7 @@ if ($type == "repo") {
 	<input type="hidden" name="type" value="repo">
 	<input type="hidden" name="callback" value="', $callback, '">
 	<input type="hidden" name="subclick">
-	<span>', I18N::translate('Repository contains:'), '</span>
+	<span>', /* I18N: Label for search field */ I18N::translate('Repository contains'), '</span>
 	<input type="text" name="filter" value="';
 	if ($filter) {
 		echo $filter;
@@ -247,7 +247,7 @@ if ($type == "note") {
 	<input type="hidden" name="type" value="note">
 	<input type="hidden" name="callback" value="', $callback, '">
 	<input type="hidden" name="subclick">
-	<span>', I18N::translate('Shared note contains:'), '</span>
+	<span>', /* I18N: Label for search field */ I18N::translate('Shared note contains'), '</span>
 	<input type="text" name="filter" value="';
 	if ($filter) {
 		echo $filter;
@@ -266,7 +266,7 @@ if ($type == "source") {
 	<input type="hidden" name="type" value="source">
 	<input type="hidden" name="callback" value="', $callback, '">
 	<input type="hidden" name="subclick">
-	<span>', I18N::translate('Source contains:'), '</span>
+	<span>', /* I18N: Label for search field */ I18N::translate('Source contains'), '</span>
 	<input type="text" name="filter" value="';
 	if ($filter) {
 		echo $filter;

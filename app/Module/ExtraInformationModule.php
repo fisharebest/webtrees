@@ -64,7 +64,7 @@ class ExtraInformationModule extends Module implements ModuleSidebarInterface {
 		if ($WT_TREE->getPreference('SHOW_COUNTER')) {
 			$hitCount = 0;
 			require WT_ROOT . 'includes/hitcount.php';
-			echo '<div id="hitcounter">', I18N::translate('Hit count:'), ' ', $hitCount, '</div>';
+			echo '<div id="hitcounter">', I18N::translate('Page views'), ' ', $hitCount, '</div>';
 		}
 		return strip_tags(ob_get_clean(), '<a><div><span>');
 	}

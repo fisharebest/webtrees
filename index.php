@@ -141,7 +141,7 @@ if ($ctype === 'user') {
 }
 
 if ($WT_TREE->getPreference('SHOW_COUNTER')) {
-	echo '<span>' . I18N::translate('Hit count:') . ' ' . $hitCount . '</span>';
+	echo '<span>' . /* I18N: The number of [...] */ I18N::translate('Page views') . ' ' . $hitCount . '</span>';
 }
 
 echo '</div></div>';

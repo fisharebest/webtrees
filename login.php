@@ -319,7 +319,7 @@ case 'register':
 				I18N::translate('A prospective user has registered with webtrees at %s.', WT_BASE_URL . ' ' . $WT_TREE->getTitleHtml()) . Mail::EOL . Mail::EOL .
 				I18N::translate('Username') . ' ' . Filter::escapeHtml($user->getUserName()) . Mail::EOL .
 				I18N::translate('Real name') . ' ' . $user->getRealNameHtml() . Mail::EOL .
-				I18N::translate('Email address:') . ' ' . Filter::escapeHtml($user->getEmail()) . Mail::EOL .
+				I18N::translate('Email address') . ' ' . Filter::escapeHtml($user->getEmail()) . Mail::EOL .
 				I18N::translate('Comments') . ' ' . Filter::escapeHtml($user_comments) . Mail::EOL . Mail::EOL .
 				I18N::translate('The user has been sent an e-mail with the information necessary to confirm the access request') . Mail::EOL . Mail::EOL;
 			if ($REQUIRE_ADMIN_AUTH_REGISTRATION) {
@@ -344,9 +344,9 @@ case 'register':
 				'<a href="' . WT_LOGIN_URL . "?user_name=" . Filter::escapeUrl($user->getUserName()) . "&amp;user_hashcode=" . $user->getPreference('reg_hashcode') . '&amp;action=userverify">' .
 				WT_LOGIN_URL . "?user_name=" . Filter::escapeUrl($user->getUserName()) . "&user_hashcode=" . urlencode($user->getPreference('reg_hashcode')) . "&action=userverify" .
 				'</a>' . Mail::EOL . Mail::EOL .
-				I18N::translate('Username') . " " . Filter::escapeHtml($user->getUserName()) . Mail::EOL .
-				I18N::translate('Verification code:') . " " . $user->getPreference('reg_hashcode') . Mail::EOL .
-				I18N::translate('Comments') . ": " . $user->getPreference('comment') . Mail::EOL .
+				I18N::translate('Username') . " - " . Filter::escapeHtml($user->getUserName()) . Mail::EOL .
+				I18N::translate('Verification code') . " - " . $user->getPreference('reg_hashcode') . Mail::EOL .
+				I18N::translate('Comments') . " - " . $user->getPreference('comment') . Mail::EOL .
 				I18N::translate('If you didn’t request an account, you can just delete this message.') . Mail::EOL;
 			$mail2_subject = /* I18N: %s is a server name/URL */ I18N::translate('Your registration at %s', WT_BASE_URL);
 			$mail2_to      = $user->getEmail();
@@ -540,7 +540,7 @@ case 'userverify':
 			<input type="password" id="user_password" name="user_password" value="" autofocus>
 			</div>
 			<div>
-			<label for="user_hashcode">', I18N::translate('Verification code:'), '</label>
+			<label for="user_hashcode">', I18N::translate('Verification code'), '</label>
 			<input type="text" id="user_hashcode" name="user_hashcode" value="', $user_hashcode, '">
 			</div>
 			<div>

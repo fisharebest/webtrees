@@ -52,7 +52,7 @@ echo '</script>';
 // Header of assistant window =====================================================
 echo '<div class="cens_header">';
 echo '<div class="cens_header_left">';
-echo I18N::translate('Head of household:');
+echo I18N::translate('Head of household');
 echo ' ', $wholename;
 echo '</div>';
 if ($summary) {
