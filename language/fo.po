@@ -3,13 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-12 21:11+0000\n"
-"PO-Revision-Date: 2013-08-04 16:28+0000\n"
-"Last-Translator: Gunleif Joensen <Unknown>\n"
+"PO-Revision-Date: 2015-03-12 21:42+0100\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"Language-Team: Faroese "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/fo/>\n"
 "Language: fo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.3-dev\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
 #: modules_v3/ahnentafel_report/report.xml:185
@@ -2097,7 +2100,7 @@ msgstr ""
 
 #: statistics.php:598
 msgid "Asia"
-msgstr "Asia"
+msgstr ""
 
 #. I18N: gedcom tag ASSO
 #. I18N: gedcom tag _ASSO
@@ -3234,7 +3237,7 @@ msgstr ""
 
 #: statistics.php:604
 msgid "Categories"
-msgstr "Bólkar:"
+msgstr "Bólkar"
 
 #. I18N: gedcom tag CAUS
 #: app/Gedcom/GedcomTag.php:243
@@ -10660,7 +10663,7 @@ msgstr ""
 
 #: message.php:58
 msgid "Please enter a valid email address."
-msgstr "Vinarliga skriva inn eina gilduga t-post adressu"
+msgstr "Vinarliga skriva inn eina gilduga t-post adressu."
 
 #: app/Module/CensusAssistantModule.php:96 find.php:115 search.php:34
 #: search.php:46
@@ -13014,7 +13017,7 @@ msgstr ""
 
 #: app/Module/UserMessagesModule.php:78 message.php:127
 msgid "Subject"
-msgstr "Evni:"
+msgstr "Evni"
 
 #. I18N: gedcom tag SUBN
 #: app/Gedcom/GedcomTag.php:811
