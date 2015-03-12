@@ -229,7 +229,7 @@ class I18N {
 		self::$list_separator = /* I18N: This punctuation is used to separate lists of items */ self::translate(', ');
 		self::$collation      = /* I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html */ self::translate('utf8_unicode_ci');
 
-		return $locale->getLanguageTag();
+		return self::$locale->languageTag();
 	}
 
 	/**

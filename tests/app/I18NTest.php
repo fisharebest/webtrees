@@ -31,6 +31,8 @@ class I18NTest extends PHPUnit_Framework_TestCase {
 		\Patchwork\Utf8\Bootup::initAll();
 		\Patchwork\Utf8\Bootup::filterRequestUri();
 		\Patchwork\Utf8\Bootup::filterRequestInputs();
+		define('WT_DATA_DIR', 'data/');
+		I18N::init('en-US');
 	}
 
 	/**
@@ -111,35 +113,13 @@ class I18NTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test I18N::languageName()
-	 *
-	 * @return void
-	 */
-	public function testUnknownLanguageName() {
-		if (class_exists('\Locale')) {
-			$this->assertSame('English (India)', I18N::languageName('en-IN'));
-		} else {
-			$this->assertSame('en-IN', I18N::languageName('en-IN'));
-		}
-	}
-
-	/**
 	 * Test I18N::languageScript()
 	 *
 	 * @return void
 	 */
-	public function testKnownLanguageScript() {
+	public function testLanguageScript() {
 		$this->assertSame('Arab', I18N::languageScript('ar'));
 		$this->assertSame('Latn', I18N::languageScript('de'));
 		$this->assertSame('Grek', I18N::languageScript('el'));
-	}
-
-	/**
-	 * Test I18N::languageScript()
-	 *
-	 * @return void
-	 */
-	public function testUnknownLanguageScript() {
-		$this->assertSame('Latn', I18N::languageScript('zz'));
 	}
 }
