@@ -3,13 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-12 21:11+0000\n"
-"PO-Revision-Date: 2013-08-04 16:37+0000\n"
-"Last-Translator: Kilik G <kgkingaran774@gmail.com>\n"
+"PO-Revision-Date: 2015-03-12 21:44+0100\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"Language-Team: Malay "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/ms/>\n"
 "Language: ms\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 2.3-dev\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
 #: modules_v3/ahnentafel_report/report.xml:185
@@ -11407,7 +11410,8 @@ msgstr ""
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:376
 msgid "Restrict access to the website, using IP addresses and user-agent strings."
-msgstr "Sekat akses ke laman web, menggunakan alamat IP dan rentetan ejen pengguna"
+msgstr ""
+"Sekat akses ke laman web, menggunakan alamat IP dan rentetan ejen pengguna."
 
 #: admin_users.php:569
 msgid "Restrict to immediate family"
@@ -18954,7 +18958,7 @@ msgstr ""
 #. I18N: http://en.wikipedia.org/wiki/Web_crawler
 #: admin_site_access.php:37 admin_site_access.php:44
 msgid "robot"
-msgstr "robot"
+msgstr ""
 
 #. I18N: button label
 #: addmedia.php:704 admin_module_blocks.php:109 admin_module_menus.php:127
