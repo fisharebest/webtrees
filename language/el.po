@@ -3,13 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-12 21:11+0000\n"
-"PO-Revision-Date: 2013-06-03 12:51+0000\n"
-"Last-Translator: Yiannis <ycathome@gmail.com>\n"
+"PO-Revision-Date: 2015-03-12 22:18+0100\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"Language-Team: Greek "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/el/>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.3-dev\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
@@ -7181,7 +7184,7 @@ msgstr ""
 #. I18N: Help text for the “Names to add to common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1236
 msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list.  It can be added here manually.  If more than one surname is entered, they must be separated by a comma.  <b>Surnames are case-sensitive.</b>"
-msgstr "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list. It can be added here manually. If more than one surname is entered, they must be separated by a comma. Surnames are case-sensitive."
+msgstr ""
 
 #: help_text.php:255
 #, php-format
@@ -7269,7 +7272,7 @@ msgstr ""
 #. I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1256
 msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here.  If more than one surname is entered, they must be separated by a comma.  <b>Surnames are case-sensitive</b>.  Surnames entered here will also be removed from the “Top surnames” list on the “Home page”."
-msgstr "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here. If more than one surname is entered, they must be separated by a comma. Surnames are case-sensitive."
+msgstr ""
 
 #: setup.php:187
 msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page.  Otherwise, you will need to contact your server’s administrator."
@@ -12001,7 +12004,7 @@ msgstr ""
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: admin_trees_config.php:1714
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
-msgstr "Setting this to yes will place links on individuals, sources, and families allowing users to bring up another window with the raw GEDCOM taken right out of the GEDCOM file."
+msgstr ""
 
 #: setup.php:98
 msgid "Setup wizard for webtrees"
@@ -13315,7 +13318,7 @@ msgstr ""
 #: login.php:596
 #, php-format
 msgid "The data for the user <b>%s</b> has been checked."
-msgstr "Τα δεδομένα για τον χρήστη %s ελέγχθηκαν."
+msgstr "Τα δεδομένα για τον χρήστη <b>%s</b> ελέγχθηκαν."
 
 #: site-unavailable.php:66
 msgid "The database reported the following error message:"
