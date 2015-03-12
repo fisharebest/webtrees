@@ -3,13 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-12 21:11+0000\n"
-"PO-Revision-Date: 2013-08-04 17:48+0000\n"
-"Last-Translator: saurab limbu <saurablimbu@gmail.com>\n"
+"PO-Revision-Date: 2015-03-12 22:09+0100\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"Language-Team: Nepali "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/ne/>\n"
 "Language: ne\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.3-dev\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
 #: modules_v3/ahnentafel_report/report.xml:185
@@ -729,7 +732,7 @@ msgstr ""
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:30
 msgid "A list of the anniversaries that occur today."
-msgstr "आजको दिनमा पर्ने वार्षिकीहरुको सूची"
+msgstr "आजको दिनमा पर्ने वार्षिकीहरुको सूची।"
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:30
@@ -744,12 +747,12 @@ msgstr ""
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:30
 msgid "A list of the most popular surnames."
-msgstr "धेरै प्रचलित थरहरुको सुची"
+msgstr "धेरै प्रचलित थरहरुको सुची।"
 
 #. I18N: Description of the “Most visited pages” module
 #: app/Module/TopPageViewsModule.php:30
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr "धेरै पटक हेरिएको पानाहरुको सुची"
+msgstr "धेरै पटक हेरिएको पानाहरुको सुची।"
 
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:30
@@ -823,7 +826,7 @@ msgstr ""
 #: app/Module/FamilyGroupReportModule.php:32
 #: modules_v3/family_group_report/report.xml:4
 msgid "A report of family members and their details."
-msgstr "परिवर सदस्यको बिवरण र उनीहरुको बृस्तित जानकारी"
+msgstr "परिवर सदस्यको बिवरण र उनीहरुको बृस्तित जानकारी।"
 
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:32 modules_v3/death_report/report.xml:4
@@ -839,7 +842,7 @@ msgstr ""
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:32 modules_v3/birth_report/report.xml:4
 msgid "A report of individuals who were born in a given time or place."
-msgstr "उल्लेखित समय र मितिमा जन्मीएका ब्यक्तिहरुका प्रतिबेदन"
+msgstr "उल्लेखित समय र मितिमा जन्मीएका ब्यक्तिहरुका प्रतिबेदन।"
 
 #. I18N: Description of the “Cemeteries” module
 #: app/Module/CemeteryReportModule.php:32
@@ -1850,12 +1853,12 @@ msgstr ""
 #. I18N: Description of the “Login” module
 #: modules_v3/login_block/LoginBlockModule.php:30
 msgid "An alternative way to login and logout."
-msgstr "लगीन र लगआउट गर्ने अर्को तरिका"
+msgstr "लगीन र लगआउट गर्ने अर्को तरिका।"
 
 #. I18N: Description of the “Theme change” module
 #: app/Module/ThemeSelectModule.php:30
 msgid "An alternative way to select a new theme."
-msgstr "नया थिम छान्न वैकल्पिक उपाय"
+msgstr "नया थिम छान्न वैकल्पिक उपाय।"
 
 #: help_text.php:53
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
@@ -1878,7 +1881,7 @@ msgstr ""
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:36
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
-msgstr "एक व्याक्तिको सम्पूण पूर्वज र सन्नतीहरु देखाइएको पारस्परिक वृक्ष"
+msgstr "एक व्याक्तिको सम्पूण पूर्वज र सन्नतीहरु देखाइएको पारस्परिक वृक्ष।"
 
 #: setup.php:937
 msgid "An unexpected database error occurred."
@@ -2047,7 +2050,7 @@ msgstr ""
 
 #: app/Module/StoriesModule.php:366
 msgid "Are you sure you want to delete this story?"
-msgstr "के तपाई यो कथा मेट्न निश्चित हुनुहुन्छ ।"
+msgstr "के तपाई यो कथा मेट्न निश्चित हुनुहुन्छ ?"
 
 #: admin_media.php:313 admin_media.php:528 admin_site_access.php:202
 #: admin_trees_manage.php:392 admin_trees_manage.php:403 admin_users.php:206
@@ -3234,7 +3237,7 @@ msgstr "कातालोनिया"
 
 #: statistics.php:604
 msgid "Categories"
-msgstr "कोटि:"
+msgstr "कोटि"
 
 #. I18N: gedcom tag CAUS
 #: app/Gedcom/GedcomTag.php:243
@@ -3784,7 +3787,7 @@ msgstr ""
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:30
 msgid "Communicate directly with other users, using private messages."
-msgstr "व्याक्तिगत खबर पठाएर सोझै अरु प्रयोगकर्ताहरु सँग सम्पर्क गर्नुहोस्"
+msgstr "व्याक्तिगत खबर पठाएर सोझै अरु प्रयोगकर्ताहरु सँग सम्पर्क गर्नुहोस्।"
 
 #: app/Stats.php:6117
 msgid "Comoros"
@@ -4880,7 +4883,7 @@ msgstr "मेट्नुहोस्"
 
 #: app/Module/GoogleMapsModule.php:4312
 msgid "Delete all existing geographic data before importing the file."
-msgstr "फाईल भित्र्याउन पहिले रहेको सबै  भोगोलिक आँकडाहरु मेटाऊ"
+msgstr "फाईल भित्र्याउन पहिले रहेको सबै  भोगोलिक आँकडाहरु मेटाऊ।"
 
 #. I18N: Menu entry
 #: admin_users.php:666 app/Theme/AdministrationTheme.php:129
@@ -7221,7 +7224,9 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:4557
 msgid "If you have a large number of inactive places, it can be slow to generate the list."
-msgstr "यदि तपाई सँग ठूलो मात्रामा निष्क्रिय स्थानहरु छन भने सुची बनाउन ढिलाइ हुनसक्छ"
+msgstr ""
+"यदि तपाई सँग ठूलो मात्रामा निष्क्रिय स्थानहरु छन भने सुची बनाउन ढिलाइ "
+"हुनसक्छ।"
 
 #: addmedia.php:534 admin_media_upload.php:252
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
@@ -8059,7 +8064,7 @@ msgstr ""
 
 #: app/Module/FamilyTreeNewsModule.php:163
 msgid "Limit"
-msgstr "सीमा:"
+msgstr "सीमा"
 
 #. I18N: Limit display by [age/number]
 #: app/Module/FamilyTreeNewsModule.php:154
@@ -8134,7 +8139,7 @@ msgstr ""
 
 #: app/I18N.php:840 app/I18N.php:841
 msgid "Loading…"
-msgstr "लोड भईरहेको छ"
+msgstr "लोड भईरहेको छ…"
 
 #. I18N: “Local files” are stored on this computer
 #: admin_media.php:643
@@ -9840,7 +9845,7 @@ msgstr ""
 
 #: app/Module/BatchUpdateModule.php:214
 msgid "Nothing found."
-msgstr "केही भेटिएन"
+msgstr "केही भेटिएन।"
 
 #: app/Date/CalendarDate.php:336
 msgctxt "Abbreviation for November"
@@ -10320,7 +10325,7 @@ msgstr "पासवर्ड"
 
 #: admin_users.php:71 edituser.php:126
 msgid "Passwords do not match."
-msgstr "पासवर्ड मिलेन"
+msgstr "पासवर्ड मिलेन।"
 
 #: edituser.php:207 login.php:468
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”."
@@ -10660,7 +10665,7 @@ msgstr ""
 
 #: message.php:58
 msgid "Please enter a valid email address."
-msgstr "कृपया वैद्य ई-मेल भर्नुहोस"
+msgstr "कृपया वैद्य ई-मेल भर्नुहोस।"
 
 #: app/Module/CensusAssistantModule.php:96 find.php:115 search.php:34
 #: search.php:46
@@ -11393,7 +11398,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:4958 medialist.php:157
 msgid "Reset"
-msgstr "फेरि मिलाउनुहोला ।"
+msgstr "फेरि मिलाउनुहोला"
 
 #. I18N: gedcom tag RESI
 #: app/Gedcom/GedcomTag.php:729
@@ -12391,7 +12396,7 @@ msgstr "जन्महरु,मृत्युहरु र विवाहह
 #: app/Module/OnThisDayModule.php:118
 #: app/Module/UpcomingAnniversariesModule.php:129
 msgid "Show only events of living individuals?"
-msgstr "बाच्ने व्यात्तिहरुको मात्र घट्नक्रमहरु देखाऊ"
+msgstr "बाच्ने व्यात्तिहरुको मात्र घट्नक्रमहरु देखाऊ?"
 
 #: includes/functions/functions_print_lists.php:150
 msgid "Show only females."
@@ -12403,7 +12408,7 @@ msgstr ""
 
 #: app/Module/SlideShowModule.php:241
 msgid "Show only individuals, events, or all?"
-msgstr "व्याक्तिहरु,घट्नाहरु अथवा सबै देखाऊ"
+msgstr "व्याक्तिहरु,घट्नाहरु अथवा सबै देखाऊ?"
 
 #: includes/functions/functions_print_lists.php:141
 msgid "Show only males."
@@ -12464,7 +12469,7 @@ msgstr ""
 
 #: app/Module/SlideShowModule.php:387
 msgid "Show slide show controls?"
-msgstr "स्लाईड दृश्यको नियन्त्रक देखाऊ"
+msgstr "स्लाईड दृश्यको नियन्त्रक देखाऊ?"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
@@ -12795,7 +12800,7 @@ msgstr ""
 #: modules_v3/missing_facts_report/report.xml:525
 #: modules_v3/missing_facts_report/report.xml:566
 msgid "Source"
-msgstr "स्रोत:"
+msgstr "स्रोत"
 
 #: admin_trees_config.php:826
 msgid "Source ID prefix"
@@ -13013,7 +13018,7 @@ msgstr ""
 
 #: app/Module/UserMessagesModule.php:78 message.php:127
 msgid "Subject"
-msgstr "विषय:"
+msgstr "विषय"
 
 #. I18N: gedcom tag SUBN
 #: app/Gedcom/GedcomTag.php:811
@@ -13746,7 +13751,7 @@ msgstr ""
 
 #: app/Module/NotesTabModule.php:76
 msgid "There are no notes for this individual."
-msgstr "यो व्याक्तिको लागि टिप्पणीहरु छैन"
+msgstr "यो व्याक्तिको लागि टिप्पणीहरु छैन।"
 
 #: admin_site_upgrade.php:103
 msgid "There are no pending changes."
