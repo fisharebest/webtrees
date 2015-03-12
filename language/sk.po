@@ -3,13 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-12 21:11+0000\n"
-"PO-Revision-Date: 2013-07-18 11:54+0000\n"
-"Last-Translator: Ladislav Rosival <Unknown>\n"
-"Language: \n"
+"PO-Revision-Date: 2015-03-12 22:52+0100\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"Language-Team: Slovak "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/sk/>\n"
+"Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 2.3-dev\n"
 "X-Poedit-Language: Slovak\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -282,7 +285,7 @@ msgstr[1] "%s dni"
 msgstr[2] "%s dní"
 
 #: app/I18N.php:516
-#, fuzzy, php-format
+#, php-format
 msgid "%s day ago"
 msgid_plural "%s days ago"
 msgstr[0] "včera"
@@ -377,7 +380,7 @@ msgstr[1] "%s mesiace"
 msgstr[2] "%s mesiacov"
 
 #: app/I18N.php:513
-#, fuzzy, php-format
+#, php-format
 msgid "%s month ago"
 msgid_plural "%s months ago"
 msgstr[0] "pred mesiacom"
@@ -468,11 +471,11 @@ msgstr[1] "%s rokov"
 msgstr[2] "%s rokov"
 
 #: app/I18N.php:510
-#, fuzzy, php-format
+#, php-format
 msgid "%s year ago"
 msgid_plural "%s years ago"
 msgstr[0] "pred rokom"
-msgstr[1] "%s years ago"
+msgstr[1] "pred %s rokmi"
 msgstr[2] "pred %s rokmi"
 
 #: app/Module/YahrzeitModule.php:114 calendar.php:660
@@ -687,7 +690,13 @@ msgstr "<prednastavená téma>"
 
 #: login.php:415
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-msgstr "<div class=\"largeError\">Upozornenie:</div><div class=\"error\">Vyplnením a odoslaním formulára súhlasíte, že:<ul><li>budete chrániť súkromie žijúcich ľudí zobrazených na tomto webe</li><li>v dole uvedenom rámčeku vysvetlíte, ku ktorej osobe z rodokmeňa ste v akom príbuzenskom vzťahu alebo nám poskytnete informácie o niekom, kto by mal byť uvedený na našom webe.</li></ul></div></div>"
+msgstr ""
+"<div class=\"largeError\">Upozornenie:</div><div class=\"error\">Vyplnením a "
+"odoslaním formulára súhlasíte, že:<ul><li>budete chrániť súkromie žijúcich "
+"ľudí zobrazených na tomto webe</li><li>v dole uvedenom rámčeku vysvetlíte, "
+"ku ktorej osobe z rodokmeňa ste v akom príbuzenskom vzťahu alebo nám "
+"poskytnete informácie o niekom, kto by mal byť uvedený na našom "
+"webe.</li></ul></div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”.  Some languages may need to change the punctuation.
 #: app/Gedcom/GedcomTag.php:1814 includes/functions/functions_print.php:274
@@ -3395,7 +3404,7 @@ msgstr "Zmeny"
 
 #. I18N: title for list of recent changes
 #: app/Module/RecentChangesModule.php:68
-#, fuzzy, php-format
+#, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "Zmenené za posledný deň"
