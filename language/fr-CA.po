@@ -3,13 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-12 21:11+0000\n"
-"PO-Revision-Date: 2013-05-15 03:25+0000\n"
-"Last-Translator: Jacqueline Gazaille <Unknown>\n"
-"Language: fr_CA\n"
+"PO-Revision-Date: 2015-03-12 22:29+0100\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"Language-Team: French (Canada) "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/fr-CA/>\n"
+"Language: fr-CA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 2.3-dev\n"
 "X-Poedit-Country: CANADA\n"
 "X-Poedit-Language: French\n"
 
@@ -11747,7 +11750,10 @@ msgstr "Sélectionner un fichier CSV contenant les lieux dans la liste des fichi
 
 #: help_text.php:299
 msgid "Select a relationship name from the list.  Selecting <b>Godfather</b> means: <i>This associate is the godfather of the current individual</i>."
-msgstr "Choisir dans la liste le lien entre les deux personnes.<br>Exemple&nbsp;: en choisissant «&nbsp;Parrain&nbsp;», cela signifie que la personne associée est le parrain de l’individu sélectionné."
+msgstr ""
+"Choisir dans la liste le lien entre les deux personnes.  Exemple&nbsp;: en "
+"choisissant «&nbsp;Parrain&nbsp;», cela signifie que la personne associée "
+"est le parrain de l’individu sélectionné."
 
 #: statistics.php:499
 msgid "Select chart type"
