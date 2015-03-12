@@ -3,13 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-12 21:11+0000\n"
-"PO-Revision-Date: 2013-08-04 17:04+0000\n"
-"Last-Translator: fisharebest <fisharebest@gmail.com>\n"
-"Language: \n"
+"PO-Revision-Date: 2015-03-12 22:00+0100\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"Language-Team: Chinese (Traditional) "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/zh-Hant/>\n"
+"Language: zh-Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 2.3-dev\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
 #: modules_v3/ahnentafel_report/report.xml:185
@@ -134,7 +137,7 @@ msgstr ""
 #: admin_site_merge.php:44 admin_site_merge.php:48 admin_trees_check.php:156
 #, php-format
 msgid "%1$s does not exist."
-msgstr "%1$s不存在,"
+msgstr "%1$s不存在."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_trees_check.php:149
@@ -159,7 +162,7 @@ msgstr[0] ""
 #: admin_trees_check.php:177
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr "%1$s是一個%2$s 但預期值是%3$s"
+msgstr "%1$s是一個%2$s 但預期值是%3$s."
 
 #. I18N: image dimensions, width × height
 #: admin_media.php:491 app/Media.php:382
@@ -1855,7 +1858,7 @@ msgstr ""
 
 #: setup.php:937
 msgid "An unexpected database error occurred."
-msgstr "資料庫發生不可預期的錯誤"
+msgstr "資料庫發生不可預期的錯誤."
 
 #. I18N: Name of a module/report
 #: app/Controller/AncestryController.php:52
@@ -3396,7 +3399,7 @@ msgstr ""
 
 #: setup.php:269 setup.php:341
 msgid "Check the settings and try again."
-msgstr "檢查設定然後重試"
+msgstr "檢查設定然後重試."
 
 #: setup.php:156
 msgid "Checking server capacity"
@@ -5128,7 +5131,7 @@ msgstr ""
 
 #: addmedia.php:461 addmedia.php:489 admin_media_upload.php:222
 msgid "Do not change to keep original filename."
-msgstr "保持原有檔名不要修改"
+msgstr "保持原有檔名不要修改."
 
 #: app/Module/GoogleMapsModule.php:4316
 msgid "Do not create new locations, just import coordinates for existing locations."
@@ -8710,7 +8713,7 @@ msgstr ""
 #. I18N: Label for search field
 #: find.php:191
 msgid "Media contains"
-msgstr "媒體包含:"
+msgstr "媒體包含"
 
 #: admin_media.php:702 admin_media_upload.php:198
 msgid "Media file"
@@ -9574,7 +9577,7 @@ msgstr ""
 
 #: admin_trees_check.php:256
 msgid "No errors have been found."
-msgstr "沒有發現錯誤"
+msgstr "沒有發現錯誤."
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: includes/functions/functions_print_lists.php:2013
@@ -9627,7 +9630,7 @@ msgstr ""
 
 #: relationship.php:198
 msgid "No link between the two individuals could be found."
-msgstr "無法發現這二個人有關連"
+msgstr "無法發現這二個人有關連."
 
 #: app/Stats.php:5369
 msgid "No logged-in and no anonymous users"
@@ -9643,7 +9646,7 @@ msgstr ""
 
 #: addmedia.php:164 addmedia.php:302 admin_media_upload.php:123
 msgid "No media file was provided."
-msgstr "沒有提供媒體檔"
+msgstr "沒有提供媒體檔."
 
 #: app/Module/FamilyTreeNewsModule.php:79
 msgid "No news articles have been submitted."
@@ -10449,7 +10452,7 @@ msgstr ""
 #. I18N: Label for search field
 #: find.php:211
 msgid "Place contains"
-msgstr "地點包含:"
+msgstr "地點包含"
 
 #: app/Module/TopPageViewsModule.php:136
 msgid "Place counts before or after name?"
@@ -11376,7 +11379,7 @@ msgstr ""
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:376
 msgid "Restrict access to the website, using IP addresses and user-agent strings."
-msgstr "使用IP位址, 使用者代理字串限制存取網站"
+msgstr "使用IP位址, 使用者代理字串限制存取網站."
 
 #: admin_users.php:569
 msgid "Restrict to immediate family"
@@ -13399,7 +13402,7 @@ msgstr "資料夾%s 不存在, 它也不能被新增."
 #: admin_trees_config.php:325
 #, php-format
 msgid "The folder %s has been created."
-msgstr "已新增資料夾 %s"
+msgstr "已新增資料夾 %s."
 
 #: admin_site_clean.php:31 admin_site_upgrade.php:488
 #, php-format
@@ -13741,7 +13744,7 @@ msgstr[0] ""
 
 #: addmedia.php:182 admin_media_upload.php:142
 msgid "There was an error uploading your file."
-msgstr "當你在上傳檔案時發生一個錯誤"
+msgstr "當你在上傳檔案時發生一個錯誤."
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:88
@@ -14056,15 +14059,15 @@ msgstr "這是你顯示在螢幕上的的真實姓名。"
 
 #: admin_trees_check.php:125
 msgid "This may be a mistake in your data."
-msgstr "這該為的的資料錯誤"
+msgstr "這該為的的資料錯誤."
 
 #: admin_trees_check.php:124
 msgid "This may cause a problem for other applications."
-msgstr "這將導致其他應用程序出錯"
+msgstr "這將導致其他應用程序出錯."
 
 #: admin_trees_check.php:123
 msgid "This may cause a problem for webtrees."
-msgstr "這將導致webtrees出錯"
+msgstr "這將導致webtrees出錯."
 
 #: admin_media.php:503
 msgid "This media file does not exist."
@@ -14226,7 +14229,7 @@ msgstr "此存儲庫已被刪除。刪除將需要審閱人進行審查。"
 #: repo.php:38
 #, php-format
 msgid "This repository has been deleted.  You should review the deletion and then %1$s or %2$s it."
-msgstr "此存儲庫已被刪除。你應該審閱刪除,然後%1$s或%2$s"
+msgstr "此存儲庫已被刪除。你應該審閱刪除,然後%1$s或%2$s."
 
 #: repo.php:65
 msgid "This repository has been edited.  The changes need to be reviewed by a moderator."
@@ -14293,7 +14296,7 @@ msgstr "此來源已被刪除。刪除將需要審閱人進行審查。"
 #: source.php:38
 #, php-format
 msgid "This source has been deleted.  You should review the deletion and then %1$s or %2$s it."
-msgstr "此來源已被刪除。你應該審閱這刪除操作以及%1$s或%2$s"
+msgstr "此來源已被刪除。你應該審閱這刪除操作以及%1$s或%2$s."
 
 #: source.php:65
 msgid "This source has been edited.  The changes need to be reviewed by a moderator."
@@ -14355,7 +14358,7 @@ msgstr ""
 
 #: addmedia.php:133 admin_media_upload.php:100
 msgid "Thumbnail files must contain images."
-msgstr "縮圖必須是圖片"
+msgstr "縮圖必須是圖片."
 
 #: admin_trees_config.php:1092
 msgid "Thumbnail images"
@@ -15699,7 +15702,7 @@ msgstr ""
 
 #: setup.php:215
 msgid "You must change this before you can continue."
-msgstr "你必須先修改然後才可以繼續"
+msgstr "你必須先修改然後才可以繼續."
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:32
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:46
@@ -15838,7 +15841,7 @@ msgstr ""
 
 #: setup.php:277
 msgid "Your server’s administrator will provide you with the connection details."
-msgstr "你的伺服器管理員將提供你連線細節資訊"
+msgstr "你的伺服器管理員將提供你連線細節資訊."
 
 #: app/Module/BatchUpdateModule.php:187
 msgid "Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time."
@@ -19675,7 +19678,7 @@ msgstr ""
 #: setup.php:276
 #, php-format
 msgid "webtrees needs a MySQL database, version %s or later."
-msgstr "webtrees需要MySQL資料庫 版本為%s以上"
+msgstr "webtrees需要MySQL資料庫 版本為%s以上."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: admin_site_config.php:306
