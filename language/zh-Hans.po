@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2015-03-12 21:11+0000\n"
+"POT-Creation-Date: 2015-03-13 10:03+0000\n"
 "PO-Revision-Date: 2013-04-02 19:56+0000\n"
 "Last-Translator: fisharebest <fisharebest@gmail.com>\n"
 "Language: \n"
@@ -55,10 +55,6 @@ msgstr " 每个性别"
 #: statisticsplot.php:1356
 msgid " per time period"
 msgstr " 每个时间段"
-
-#: admin_trees_download.php:34
-msgid " — "
-msgstr ""
 
 #. I18N: Abbreviation for "number %s"
 #: includes/functions/functions_print_facts.php:187
@@ -749,7 +745,7 @@ msgid "A new password has been requested for your user name."
 msgstr "这个用户名要求输入新的密码。"
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
-#: login.php:568
+#: login.php:567
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr "新用户在 (%1$s) 申请了一个帐户 (%2$s) ，验证电子邮件地址 (%3$s)."
@@ -3748,7 +3744,7 @@ msgstr "每页列数"
 msgid "Comment"
 msgstr "评论"
 
-#: login.php:323 login.php:349 login.php:490
+#: login.php:323 login.php:349 login.php:489
 msgid "Comments"
 msgstr "备注"
 
@@ -3809,7 +3805,7 @@ msgstr "串联"
 msgid "Configure"
 msgstr "配置"
 
-#: admin_users.php:347 edituser.php:213 login.php:474
+#: admin_users.php:347 edituser.php:213 login.php:473
 msgid "Confirm password"
 msgstr "确认密码"
 
@@ -3942,7 +3938,7 @@ msgstr "哥斯达黎加"
 msgid "Cote d’Ivoire"
 msgstr "科特迪瓦"
 
-#: login.php:645
+#: login.php:633
 msgid "Could not verify the information you entered.  Please try again or contact the site administrator for more information."
 msgstr "无法验证您输入的信息。请确认后再试一次。"
 
@@ -4235,10 +4231,6 @@ msgstr "资料"
 #: admin_site_config.php:172
 msgid "Data folder"
 msgstr "数据文件夹"
-
-#: login.php:639
-msgid "Data was not correct, please try again"
-msgstr "数据不正确,请再试一次"
 
 #: setup.php:371
 msgid "Database and table names"
@@ -4947,7 +4939,7 @@ msgstr "描述"
 msgid "Description META tag"
 msgstr "描述元标记"
 
-#: login.php:457
+#: login.php:456
 msgid "Desired password"
 msgstr "所需的密码"
 
@@ -5652,7 +5644,7 @@ msgid "Execution statistics"
 msgstr "执行统计"
 
 #. I18N: placeholder text for registration-comments field
-#: login.php:494
+#: login.php:493
 msgid "Explain why you are requesting an account."
 msgstr "说明你为什么要申请一个帐户。"
 
@@ -6143,11 +6135,6 @@ msgstr "文件大小"
 #: includes/functions/functions.php:58
 msgid "File successfully uploaded"
 msgstr "文件成功上传"
-
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:65
-msgid "The file was only partially uploaded.  Please try again."
-msgstr "文件只是部分上传,请再试一次"
 
 #. I18N: gedcom tag FILE
 #: admin_media.php:475 app/Gedcom/GedcomTag.php:485
@@ -6917,7 +6904,7 @@ msgstr "你好 %s …"
 msgid "Hello %s…<br>Thank you for your registration."
 msgstr "你好 %s …<br>谢谢你的注册。"
 
-#: login.php:317 login.php:566
+#: login.php:317 login.php:565
 msgid "Hello administrator…"
 msgstr "你好管理员……"
 
@@ -7184,8 +7171,8 @@ msgid "If you are the website administrator, you should check that:"
 msgstr "如果你是网站管理员,你应该检查:"
 
 #: site-unavailable.php:109
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
-msgstr "如果你不能自己解决问题,你可以在<a href=\"http://webtrees.net\">webtrees.net</a>论坛寻求帮助"
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
+msgstr ""
 
 #: admin_trees_manage.php:269
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -8961,11 +8948,6 @@ msgstr "谷歌地图最小和最大缩放因子。1是完整的地图,15是单�
 msgid "Minimum number of occurrences to be a “common surname”"
 msgstr "常见的姓"
 
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:71
-msgid "The PHP temporary folder is missing."
-msgstr "丢失PHP临时目录"
-
 #. I18N: Name of a module/report
 #: app/Module/MissingFactsReportModule.php:26
 #: modules_v3/missing_facts_report/report.xml:3
@@ -9444,7 +9426,7 @@ msgid "New registration at %s"
 msgstr "在家 %s 新登记"
 
 #. I18N: %s is a server name/URL
-#: login.php:585
+#: login.php:584
 #, php-format
 msgid "New user at %s"
 msgstr "新用户在 %s 验证"
@@ -10287,7 +10269,7 @@ msgstr "父母的年龄"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:381 admin_users.php:334 edituser.php:201
-#: login.php:188 login.php:254 login.php:539
+#: login.php:188 login.php:254 login.php:538
 #: modules_v3/login_block/LoginBlockModule.php:67 setup.php:437
 msgid "Password"
 msgstr "密码"
@@ -10296,7 +10278,7 @@ msgstr "密码"
 msgid "Passwords do not match."
 msgstr "密码不匹配。"
 
-#: edituser.php:207 login.php:468
+#: edituser.php:207 login.php:467
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”."
 msgstr "密码必须至少6个字符长,是区分大小写的,因此,“secret”是不同的“SECRET”。"
 
@@ -11781,7 +11763,7 @@ msgctxt "MALE"
 msgid "Seller"
 msgstr "男卖方"
 
-#: app/Module/UserMessagesModule.php:72 login.php:547 message.php:136
+#: app/Module/UserMessagesModule.php:72 login.php:546 message.php:136
 msgid "Send"
 msgstr "发送"
 
@@ -13256,12 +13238,17 @@ msgstr "媒体查看器可以显示一个链接，点击后，将下载的媒体
 msgid "The PGV to webtrees wizard is an automated process to assist administrators make the move from a PGV installation to a new webtrees one.  It will transfer all PGV GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:"
 msgstr "PGV到webtrees向导是一个协助管理员从PGV安装到一个新的webtrees自动化的过程。它将所有的PGV GEDCOM和其他数据库信息直接输入到你的新webtrees数据库。下列要求："
 
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:71
+msgid "The PHP temporary folder is missing."
+msgstr "丢失PHP临时目录"
+
 #: admin_users.php:97
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s"
 msgstr "在webtrees站点%s已批准你的申请一个帐号管理员。你现在可以登录访问以下链接：%s"
 
-#: login.php:630
+#: login.php:627
 msgid "The administrator has been informed.  As soon as they give you permission to login, you can login with your user name and password."
 msgstr "已经通知管理员。当他给你登录权限,您就可以用你的用户名和密码登陆。"
 
@@ -13280,11 +13267,6 @@ msgstr "更改“%s”被拒绝。"
 #: app/Module/ClippingsCartModule.php:133
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple.  Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name.  There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
 msgstr "收集箱，您可以从这个家谱的提取物（“收集箱”），并将其捆绑成一个文件，下载并随后导入到自己的家谱程序。可下载的文件记录在GEDCOM格式。的<br><ul><li>如何使用收集箱？<br>这是很简单的。每当你看到一个可点击的名称（个人，家庭，或源），你可以去该名称的详细信息“页面”。在那里，你会的看到<b>添加到收集箱</b>选项。当您单击该链接，你将有几个选项进行下载。</li><li>如何下载？<br>一旦您有您的购物车中的项目，你可以将它们下载只要通过点击<b>立即下载</b>链接。按照说明和链接操作就可以。</li></ul>"
-
-#: login.php:596
-#, php-format
-msgid "The data for the user <b>%s</b> has been checked."
-msgstr "用户<b>%s</b>数据检查。"
 
 #: site-unavailable.php:66
 msgid "The database reported the following error message:"
@@ -13379,6 +13361,11 @@ msgstr "文件 %s 已经被删除。"
 #, php-format
 msgid "The file %s has been uploaded."
 msgstr "文件 %s 已经上传。"
+
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:65
+msgid "The file was only partially uploaded.  Please try again."
+msgstr "文件只是部分上传,请再试一次"
 
 #. I18N: %s is a filename
 #: medialist.php:294 mediaviewer.php:111
@@ -13621,6 +13608,11 @@ msgstr[0] ""
 #: admin_site_upgrade.php:502
 msgid "The upgrade is complete."
 msgstr ""
+
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:62
+msgid "The uploaded file exceeds the allowed size."
+msgstr "上传的文件超过允许的大小"
 
 #: admin_users.php:788
 #, php-format
@@ -14768,11 +14760,11 @@ msgid "Type of place markers in Place Hierarchy"
 msgstr "地方标列表类型"
 
 #. I18N: placeholder text for repeat-password field
-#: admin_users.php:350 login.php:479
+#: admin_users.php:350 login.php:478
 msgid "Type the password again."
 msgstr "再次输入密码"
 
-#: edituser.php:219 login.php:484 setup.php:443
+#: edituser.php:219 login.php:483 setup.php:443
 msgid "Type your password again, to make sure you have typed it correctly."
 msgstr "再次输入您的密码,以确保你输入的是否正确。"
 
@@ -14958,11 +14950,6 @@ msgstr "上传媒体文件"
 msgid "Upload one or more media files from your local computer.  Media files can be pictures, video, audio, or other formats."
 msgstr "从您的本地计算机上上传一个或多个媒体文件。媒体文件可以是图片，视频，音频，或其他格式。"
 
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:62
-msgid "The uploaded file exceeds the allowed size."
-msgstr "上传的文件超过允许的大小"
-
 #: app/Stats.php:6308
 msgid "Uruguay"
 msgstr "乌拉圭"
@@ -14989,7 +14976,7 @@ msgid "Use a “?” to match a single character, use “*” to match zero or m
 msgstr "使用'？'匹配一个字符，使用“*”匹配零个或多个字符。"
 
 #. I18N: placeholder text for new-password field
-#: admin_users.php:337 login.php:462
+#: admin_users.php:337 login.php:461
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
@@ -15040,7 +15027,7 @@ msgstr "使用这些按钮来重新排列列表中的条目顺序。模块将按
 msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the individual’s page."
 msgstr "使用此框的确定该媒体项目是突出为主要项目。突出显示的图像是一个将被用在图表上的个人网页。"
 
-#: login.php:500
+#: login.php:499
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site.  You can also use this to enter any other comments you may have for the site administrator."
 msgstr "使用此字段告诉网站管理员为什么您申请帐户，你与本网站上家谱的关系。您也可以使用此输入你可能对网站管理员有其他意见。"
 
@@ -15072,7 +15059,7 @@ msgstr "没有被管理员确认的用户"
 msgid "User options"
 msgstr "用户选项"
 
-#: login.php:527 login.php:533 login.php:590 login.php:594
+#: login.php:526 login.php:532 login.php:589 login.php:593
 msgid "User verification"
 msgstr "用户验证"
 
@@ -15084,7 +15071,7 @@ msgstr "用户代理字符串"
 #. I18N: A site configuration setting
 #: admin_site_config.php:368 admin_users.php:321 admin_users.php:845
 #: app/Module/ResearchTaskModule.php:95 edituser.php:150 login.php:183
-#: login.php:253 login.php:320 login.php:347 login.php:535
+#: login.php:253 login.php:320 login.php:347 login.php:534
 #: modules_v3/login_block/LoginBlockModule.php:62
 msgid "Username"
 msgstr "用户名"
@@ -15096,11 +15083,6 @@ msgstr "用户名或电子邮件地址"
 #: admin_users.php:326 edituser.php:156 login.php:450
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
 msgstr "用户名是大小写不敏感而忽略重音字母，使““chloe”, “chloë”, and “Chloe”被认为是相同的。"
-
-#: login.php:451
-#, php-format
-msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
-msgstr "用户名不能包含下列字符：&lt；p&gt；&quot; %% { } ;"
 
 #. I18N: Menu entry
 #: admin.php:563 admin.php:571 app/Theme/AdministrationTheme.php:125
@@ -15187,7 +15169,7 @@ msgstr "第六月"
 msgid "Veracruz, Mexico"
 msgstr "韦拉克鲁斯州，墨西哥"
 
-#: login.php:348 login.php:543
+#: login.php:348 login.php:542
 msgid "Verification code"
 msgstr "验证码："
 
@@ -15634,7 +15616,7 @@ msgstr "您可以下载从 %s 的GEDCOM规格的副本。"
 msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
 msgstr "您可以更容易地搜索已婚妇女如果记录他们的婚姻名。<br>但是不是所有的女人需要随丈夫的姓，所以要当心输入不正确的信息到你的数据库中。"
 
-#: login.php:632
+#: login.php:629
 msgid "You can now login with your user name and password."
 msgstr "您可以使用您的用户名和密码登录。"
 
@@ -15674,7 +15656,7 @@ msgstr "你不能登陆，你的浏览器不支持COOKIES"
 msgid "You do not have permission to view this page."
 msgstr "您没有权限浏览这个页面。"
 
-#: login.php:576
+#: login.php:575
 msgid "You do not have to take any action; the user can now login."
 msgstr "用户现在可以登录。"
 
@@ -15682,7 +15664,7 @@ msgstr "用户现在可以登录。"
 msgid "You entered the same IDs.  You cannot merge the same records."
 msgstr "您输入相同的ID。不能合并相同的记录。"
 
-#: login.php:628
+#: login.php:625
 msgid "You have confirmed your request to become a registered user."
 msgstr "您的申请通过。"
 
@@ -15755,7 +15737,7 @@ msgstr "你要用你的PhpGedView用户和密码登陆。"
 msgid "You need to set up an administrator account.  This account can control all aspects of this webtrees installation.  Please choose a strong password."
 msgstr "您需要设置一个管理员帐户。此帐户可以控制这个webtrees安装的各个方面。请选择一个强密码。"
 
-#: login.php:574
+#: login.php:573
 msgid "You now need to review the account details, and set the “approved” status to “yes”."
 msgstr "您需要审批帐户的详细资料，并设置“批准”的状态为'是'。"
 
@@ -16282,7 +16264,7 @@ msgstr "紧凑列表"
 #: admin_trees_download.php:120 admin_trees_download.php:205
 #: admin_trees_manage.php:293 admin_trees_manage.php:719
 #: admin_trees_merge.php:200 admin_trees_renumber.php:280 login.php:219
-#: login.php:507 modules_v3/login_block/LoginBlockModule.php:93
+#: login.php:506 modules_v3/login_block/LoginBlockModule.php:93
 #: reportengine.php:127 reportengine.php:282 setup.php:190 setup.php:216
 #: setup.php:298 setup.php:384 setup.php:451
 msgid "continue"
@@ -19858,6 +19840,9 @@ msgstr "缺少姓氏"
 #~ msgid "Create user"
 #~ msgstr "创建用户"
 
+#~ msgid "Data was not correct, please try again"
+#~ msgstr "数据不正确,请再试一次"
+
 #~ msgctxt "font name"
 #~ msgid "DejaVu"
 #~ msgstr "既视"
@@ -19988,6 +19973,9 @@ msgstr "缺少姓氏"
 
 #~ msgid "If this box is checked, this user will be able to edit his account information.  Although this is not generally recommended, you can create a single user name and password for multiple users.  When this box is unchecked for all users with the shared account, they are prevented from editing the account information and only an administrator can alter that account."
 #~ msgstr "如果这个选项选中,这个用户将能够编辑他的帐户信息。您可以为多个用户创建一个用户名和密码，虽然一般不推荐。当这个选项不选是对于共享帐户,它们无法编辑帐户信息,只有管理员可以改变这个帐户。"
+
+#~ msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
+#~ msgstr "如果你不能自己解决问题,你可以在<a href=\"http://webtrees.net\">webtrees.net</a>论坛寻求帮助"
 
 #~ msgid "If you have a note to add to this record, this is the place to do so.<br><br>Just click the link, a window will open, and you can type your note.  When you are finished typing, just click the button below the box, close the window, and that’s all."
 #~ msgstr "这里记事添加到这个记录。<br><br>点击这个链接时,将打开一个新窗口,你可以输入你的记事。当你打完字,就点击下面的按钮,关闭该窗口。"
@@ -20136,6 +20124,9 @@ msgstr "缺少姓氏"
 #~ msgid "The current webtrees admin username must be the same as an existing PGV admin username"
 #~ msgstr "当前webtrees管理员用户名必须与现有的PGV管理员用户名相同"
 
+#~ msgid "The data for the user <b>%s</b> has been checked."
+#~ msgstr "用户<b>%s</b>数据检查。"
+
 #~ msgid "The following calendars are supported:"
 #~ msgstr "支持以下日历："
 
@@ -20240,6 +20231,9 @@ msgstr "缺少姓氏"
 
 #~ msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td style=\"vertical-align:middle\">This image might be used when the gender of the individual is unknown:"
 #~ msgstr "使用轮廓图像时没有突出那个已被指定人能代表人性别的图像。<br><br><table><tr><td style=\"vertical-align:middle\">middle\">当性别不详这个图像可能被用："
+
+#~ msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
+#~ msgstr "用户名不能包含下列字符：&lt；p&gt；&quot; %% { } ;"
 
 #~ msgid "Users’ languages"
 #~ msgstr "用户的语言"

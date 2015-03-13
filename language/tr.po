@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2015-03-12 21:11+0000\n"
+"POT-Creation-Date: 2015-03-13 10:03+0000\n"
 "PO-Revision-Date: 2013-03-17 18:33+0000\n"
 "Last-Translator: Adem GENÇ <Unknown>\n"
 "Language: tr\n"
@@ -50,10 +50,6 @@ msgstr " her cinsiyet"
 #: statisticsplot.php:1356
 msgid " per time period"
 msgstr " her zaman dönemi"
-
-#: admin_trees_download.php:34
-msgid " — "
-msgstr ""
 
 #. I18N: Abbreviation for "number %s"
 #: includes/functions/functions_print_facts.php:187
@@ -744,7 +740,7 @@ msgid "A new password has been requested for your user name."
 msgstr "Kullanıcı adınız için yeni bir şifre talep ettiniz."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
-#: login.php:568
+#: login.php:567
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr "Yeni bir kullanıcı (Adı: %1$s) bir hesap açtı (Kullanıcı Adı: %2$s) ve (E-posta: %3$s) adresi ile üyeliğini doğruladı."
@@ -3743,7 +3739,7 @@ msgstr "Sayfa başına sütun"
 msgid "Comment"
 msgstr "Yorum"
 
-#: login.php:323 login.php:349 login.php:490
+#: login.php:323 login.php:349 login.php:489
 msgid "Comments"
 msgstr "Kendinizi Tanıtın:"
 
@@ -3804,7 +3800,7 @@ msgstr "Birleştirme"
 msgid "Configure"
 msgstr "Yapılandırma"
 
-#: admin_users.php:347 edituser.php:213 login.php:474
+#: admin_users.php:347 edituser.php:213 login.php:473
 msgid "Confirm password"
 msgstr "Şifre tekrarı"
 
@@ -3937,7 +3933,7 @@ msgstr "Kosta Rika"
 msgid "Cote d’Ivoire"
 msgstr "Fildişi Sahili"
 
-#: login.php:645
+#: login.php:633
 msgid "Could not verify the information you entered.  Please try again or contact the site administrator for more information."
 msgstr "Girdiğiniz bilgiler doğrulanamadı. Lütfen yeniden deneyin yada daha fazla bilgi için site yöneticisine başvurun."
 
@@ -4230,10 +4226,6 @@ msgstr "Veri"
 #: admin_site_config.php:172
 msgid "Data folder"
 msgstr "Veri klasörünü"
-
-#: login.php:639
-msgid "Data was not correct, please try again"
-msgstr "Verileriniz geçerli değildi, lütfen tekrar deneyin"
 
 #: setup.php:371
 msgid "Database and table names"
@@ -4942,7 +4934,7 @@ msgstr "Açıklama"
 msgid "Description META tag"
 msgstr "META etiket açıklama"
 
-#: login.php:457
+#: login.php:456
 msgid "Desired password"
 msgstr "Şifre"
 
@@ -5647,7 +5639,7 @@ msgid "Execution statistics"
 msgstr "Yürütme istatistiklerini"
 
 #. I18N: placeholder text for registration-comments field
-#: login.php:494
+#: login.php:493
 msgid "Explain why you are requesting an account."
 msgstr "Lütfen kendinizi tanıtın, kimsiniz?"
 
@@ -6138,11 +6130,6 @@ msgstr "Dosya boyutu"
 #: includes/functions/functions.php:58
 msgid "File successfully uploaded"
 msgstr "Dosya başarıyla yüklendi"
-
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:65
-msgid "The file was only partially uploaded.  Please try again."
-msgstr "Dosya sadece kısmen yüklendi, lütfen tekrar deneyin"
 
 #. I18N: gedcom tag FILE
 #: admin_media.php:475 app/Gedcom/GedcomTag.php:485
@@ -6912,7 +6899,7 @@ msgstr "Merhaba %s …"
 msgid "Hello %s…<br>Thank you for your registration."
 msgstr "Merhaba %s …<br>Kaydolduğunuz için teşekkür ederiz."
 
-#: login.php:317 login.php:566
+#: login.php:317 login.php:565
 msgid "Hello administrator…"
 msgstr "Merhaba Yönetici…"
 
@@ -7179,8 +7166,8 @@ msgid "If you are the website administrator, you should check that:"
 msgstr "Eğer web sitesi yöneticisi iseniz bunu denetlemeniz gerekir:"
 
 #: site-unavailable.php:109
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
-msgstr "Eğer sorunu kendiniz çözemez iseniz <a href=\"http://webtrees.net\">webtrees.net</a> forumlarından yardım alablirsiniz."
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
+msgstr ""
 
 #: admin_trees_manage.php:269
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -8956,11 +8943,6 @@ msgstr "Google haritası için minimum ve maksimum zoom seviyesi. 1 haritanın t
 msgid "Minimum number of occurrences to be a “common surname”"
 msgstr "En çok kullanılan “Ortak Soyadı” için en az sayı"
 
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:71
-msgid "The PHP temporary folder is missing."
-msgstr "PHP geçici dizin eksik"
-
 #. I18N: Name of a module/report
 #: app/Module/MissingFactsReportModule.php:26
 #: modules_v3/missing_facts_report/report.xml:3
@@ -9439,7 +9421,7 @@ msgid "New registration at %s"
 msgstr "%s sitede yeni kullanıcı kaydolmuştur"
 
 #. I18N: %s is a server name/URL
-#: login.php:585
+#: login.php:584
 #, php-format
 msgid "New user at %s"
 msgstr "%s kullanıcı kendini onayladı"
@@ -10282,7 +10264,7 @@ msgstr "Ebeveynin yaşı"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:381 admin_users.php:334 edituser.php:201
-#: login.php:188 login.php:254 login.php:539
+#: login.php:188 login.php:254 login.php:538
 #: modules_v3/login_block/LoginBlockModule.php:67 setup.php:437
 msgid "Password"
 msgstr "Şifre"
@@ -10291,7 +10273,7 @@ msgstr "Şifre"
 msgid "Passwords do not match."
 msgstr "Şifreler birbiriyle uymuyor."
 
-#: edituser.php:207 login.php:468
+#: edituser.php:207 login.php:467
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”."
 msgstr "Şifreniz en az 6 karaker uzunluğunda olmalıdır, şifre BÜYÜK ve küçük karakterlere duyarlıdır. örnek \"s3CR#t\" ile \"S3CR#t\" faklıdır."
 
@@ -11776,7 +11758,7 @@ msgctxt "MALE"
 msgid "Seller"
 msgstr "Satıcı"
 
-#: app/Module/UserMessagesModule.php:72 login.php:547 message.php:136
+#: app/Module/UserMessagesModule.php:72 login.php:546 message.php:136
 msgid "Send"
 msgstr "Gönder"
 
@@ -13251,12 +13233,17 @@ msgstr "Medya görüntüleyici, tıklandığında medya dosyasını lokal bilgis
 msgid "The PGV to webtrees wizard is an automated process to assist administrators make the move from a PGV installation to a new webtrees one.  It will transfer all PGV GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:"
 msgstr ""
 
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:71
+msgid "The PHP temporary folder is missing."
+msgstr "PHP geçici dizin eksik"
+
 #: admin_users.php:97
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s"
 msgstr "Soyağacı %s web sitedeki üyelik hesabınız yönetici tarafında onaylanmıştır. Şimdi kullanıcı adınız ve şifreniz ile %s web siteye giderek giriş yapabilirsiniz. (NOT: şifre BÜYÜK ve küçük harflere duyarlıdır kaydolma sırasında verdiğiniz gibi giriniz.)"
 
-#: login.php:630
+#: login.php:627
 msgid "The administrator has been informed.  As soon as they give you permission to login, you can login with your user name and password."
 msgstr "<b>Son adım olarak üyeliğinizi onayladığınızı söyleyen bir mesaj Yöneticiye gönderilmiştir.<br>Yönetici üyeliğinizi kontrol edip onayladığında siteye giriş yapabileceğinizi söyleyen ikinci email mesajı aldıktan sonra Kullanıcı adı ve şifrenizi kullanarak siteye giriş yapabilirsiniz.</b>"
 
@@ -13275,11 +13262,6 @@ msgstr "“%s” değişiklikler reddedildi."
 #: app/Module/ClippingsCartModule.php:133
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple.  Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name.  There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
 msgstr "Küpürler Sepeti bu aile soyağacının içinde size ait soyunuzu veya istediğiniz bölümleri (\\\"kupürleri\\\") kendi soyağacı programınızda kullanmanız için tek dosya içine zip formatında indirmenize izin veriyor. İndirilecek dosya GEDCOM formatında kaydedilecektir.<br><ul><li>Kupürler nasıl alınır?<br>Bu gerçekten çok basittir. ID kimlik numaraları bilmiyorsanız (birey, aile veya kaynak) ikonları tıklatıp açılan sayfada isim girip aradığınızda detaylı bilgiler sayfada listelenecektir ve aradığınız ismi tıklayın. <b>Kupürleri Sepete Ekle</b> seçeneğinde göreceksiniz. Ekle butonu tıkladığınızda indirmeye eklemek için bir kaç seçenek sunacaktır.</li><li>Nasıl indirilir?<br>Kupürleri taşıma alanına eklediğinizde <b>Şimdi İndir</b> linki göreceksiniz ve tıklayıp indirebileceksiniz. Talimatları ve linkleri izleyin.</li></ul>"
-
-#: login.php:596
-#, php-format
-msgid "The data for the user <b>%s</b> has been checked."
-msgstr "Kullanıcı adı <b>%s</b> üyelik verileriniz kontrol edildi."
 
 #: site-unavailable.php:66
 msgid "The database reported the following error message:"
@@ -13374,6 +13356,11 @@ msgstr "%s dosya silindi."
 #, php-format
 msgid "The file %s has been uploaded."
 msgstr "%s dosya yüklendi."
+
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:65
+msgid "The file was only partially uploaded.  Please try again."
+msgstr "Dosya sadece kısmen yüklendi, lütfen tekrar deneyin"
 
 #. I18N: %s is a filename
 #: medialist.php:294 mediaviewer.php:111
@@ -13616,6 +13603,11 @@ msgstr[0] "Her iki soy ağacında aynı “XREF” değerini taşıyan %1$s kay�
 #: admin_site_upgrade.php:502
 msgid "The upgrade is complete."
 msgstr "Güncelleme tamamlandı."
+
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:62
+msgid "The uploaded file exceeds the allowed size."
+msgstr "Yüklenen dosya izin verilen boyuttan büyük"
 
 #: admin_users.php:788
 #, php-format
@@ -14763,11 +14755,11 @@ msgid "Type of place markers in Place Hierarchy"
 msgstr "Hiyerarşi Yerlerde yer işaretlemeleri tipi"
 
 #. I18N: placeholder text for repeat-password field
-#: admin_users.php:350 login.php:479
+#: admin_users.php:350 login.php:478
 msgid "Type the password again."
 msgstr "Parolayı tekrar yazın."
 
-#: edituser.php:219 login.php:484 setup.php:443
+#: edituser.php:219 login.php:483 setup.php:443
 msgid "Type your password again, to make sure you have typed it correctly."
 msgstr "Doğru yazdığınızdan emin olmak için şifrenizi tekrar yazın."
 
@@ -14953,11 +14945,6 @@ msgstr "Medya dosyaları yükle"
 msgid "Upload one or more media files from your local computer.  Media files can be pictures, video, audio, or other formats."
 msgstr "Lokal bilgisayarınızdan bir yada daha fazla medya dosyası yükleyin. Medya dosyası; resim, video, ses, yada baska formatlarda olabilir."
 
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:62
-msgid "The uploaded file exceeds the allowed size."
-msgstr "Yüklenen dosya izin verilen boyuttan büyük"
-
 #: app/Stats.php:6308
 msgid "Uruguay"
 msgstr "Uruguay"
@@ -14984,7 +14971,7 @@ msgid "Use a “?” to match a single character, use “*” to match zero or m
 msgstr "Tek bir karakteri eşleştirmek için &laquo;?&raquo; kullan, sıfır veya daha fazla karakterleri eşleştirmek için &laquo;*&raquo; kullan."
 
 #. I18N: placeholder text for new-password field
-#: admin_users.php:337 login.php:462
+#: admin_users.php:337 login.php:461
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
@@ -15035,7 +15022,7 @@ msgstr "Bu düğmeyi kullanarak listelenen üğelerin sıralamasını düzenleye
 msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the individual’s page."
 msgstr "Bu alanı kullanarak bu medya öğesinin kişi için vurgulanan öncelikli olarak işaretleyebilirsiniz. Vurgulanan resim kişinin sayfasında ve grafiklerde kullanılacaktır."
 
-#: login.php:500
+#: login.php:499
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site.  You can also use this to enter any other comments you may have for the site administrator."
 msgstr "Buradaki soyağacıyla ilgili olup olmadığını site yöneticinin anlayabileceği veya tanıyabileceği şeklinde kendinizi tanıtan detaylı bilgi yazılması gerekiyor, Bu soyağacı sitesi yöneticisi aynı soydan olduğu için sizi kolayca tanıyabilecektir dedeniz ve anne baba isimleri yazarak kendinizi detaylı anlatmış olabilirsiniz."
 
@@ -15067,7 +15054,7 @@ msgstr "Yönetici kullanıcıyı onaylamadı."
 msgid "User options"
 msgstr "Kullanıcı seçenekleri"
 
-#: login.php:527 login.php:533 login.php:590 login.php:594
+#: login.php:526 login.php:532 login.php:589 login.php:593
 msgid "User verification"
 msgstr "Üyelik onaylama"
 
@@ -15079,7 +15066,7 @@ msgstr "Kullanıcı aracısı dizesi"
 #. I18N: A site configuration setting
 #: admin_site_config.php:368 admin_users.php:321 admin_users.php:845
 #: app/Module/ResearchTaskModule.php:95 edituser.php:150 login.php:183
-#: login.php:253 login.php:320 login.php:347 login.php:535
+#: login.php:253 login.php:320 login.php:347 login.php:534
 #: modules_v3/login_block/LoginBlockModule.php:62
 msgid "Username"
 msgstr "Kullanıcı Adı:"
@@ -15091,11 +15078,6 @@ msgstr "Kullanıcı adı veya email adresi"
 #: admin_users.php:326 edituser.php:156 login.php:450
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
 msgstr "Kullanıcı adlarında büyük harflere duyarlı değildir ve aksanlı harfleri yok sayar böylece “chloe”, “chloë”, ve “Chloe” aynı olacak şekilde kabul edilir."
-
-#: login.php:451
-#, php-format
-msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
-msgstr "Kullanıcı adlarında bu karakterler içeremez: &lt; &gt; &quot; %% { } ;"
 
 #. I18N: Menu entry
 #: admin.php:563 admin.php:571 app/Theme/AdministrationTheme.php:125
@@ -15182,7 +15164,7 @@ msgstr "Ventôse"
 msgid "Veracruz, Mexico"
 msgstr "Veracruz, Meksika"
 
-#: login.php:348 login.php:543
+#: login.php:348 login.php:542
 msgid "Verification code"
 msgstr "Doğrulama kodu:"
 
@@ -15629,7 +15611,7 @@ msgstr "GEDCOM tanımlamalarını %s 'dan indirebilirsiniz."
 msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
 msgstr "Tüm kadınların evlilik adlarını kaydederek evli kadınları aramada daha kolay bulunmasını sağlayabilirsiniz.<br>Ancak tüm kadınlar kocalarının soyadını almazlar, bundan dolayı veritabanınıza yanlış bilgileri kaydetmekten kaçının."
 
-#: login.php:632
+#: login.php:629
 msgid "You can now login with your user name and password."
 msgstr "Şimdi kullanıcı adı ve şifre ile giriş yapabilirsiniz."
 
@@ -15669,7 +15651,7 @@ msgstr "Tarayıcınız çerezleri kabul etmediği için giriş yapılamıyor."
 msgid "You do not have permission to view this page."
 msgstr "Bu sayfayı görmek için izniniz yok."
 
-#: login.php:576
+#: login.php:575
 msgid "You do not have to take any action; the user can now login."
 msgstr "Herhangi bir işlem yapmanıza gerek yok; kullanıcı şimdi giriş yapabilir."
 
@@ -15677,7 +15659,7 @@ msgstr "Herhangi bir işlem yapmanıza gerek yok; kullanıcı şimdi giriş yapa
 msgid "You entered the same IDs.  You cannot merge the same records."
 msgstr "Aynı IDleri girdiniz. Aynı kayıtlar birleştirilmez."
 
-#: login.php:628
+#: login.php:625
 msgid "You have confirmed your request to become a registered user."
 msgstr "Kayıtlı bir kullanıcı olma isteğiniz onaylanmıştır."
 
@@ -15750,7 +15732,7 @@ msgstr "PhpGedView kullanıcı adınızı ve şifrenizi kullanarak tekrar giriş
 msgid "You need to set up an administrator account.  This account can control all aspects of this webtrees installation.  Please choose a strong password."
 msgstr "Bir yönetici hesabı oluşturmanız gerekiyor. Bu hesap ile bu webtrees kurulumunun tüm kontrolunu sağlarsınız. Lütfen güçlü bir şifre belirleyin."
 
-#: login.php:574
+#: login.php:573
 msgid "You now need to review the account details, and set the “approved” status to “yes”."
 msgstr "Şimdi hesap bilgilerini gözden geçirmek ve onaylamak için \"Onaylandı\" alanını \"evet\" olarak ayarlayın."
 
@@ -16277,7 +16259,7 @@ msgstr "kompakt liste"
 #: admin_trees_download.php:120 admin_trees_download.php:205
 #: admin_trees_manage.php:293 admin_trees_manage.php:719
 #: admin_trees_merge.php:200 admin_trees_renumber.php:280 login.php:219
-#: login.php:507 modules_v3/login_block/LoginBlockModule.php:93
+#: login.php:506 modules_v3/login_block/LoginBlockModule.php:93
 #: reportengine.php:127 reportengine.php:282 setup.php:190 setup.php:216
 #: setup.php:298 setup.php:384 setup.php:451
 msgid "continue"
@@ -19856,6 +19838,9 @@ msgstr "Soyisimsiz"
 #~ msgid "Create user"
 #~ msgstr "Kullanıcı Oluştur"
 
+#~ msgid "Data was not correct, please try again"
+#~ msgstr "Verileriniz geçerli değildi, lütfen tekrar deneyin"
+
 #~ msgctxt "font name"
 #~ msgid "DejaVu"
 #~ msgstr "DejaVu"
@@ -19987,6 +19972,9 @@ msgstr "Soyisimsiz"
 #~ msgid "If the option <b>Allow visitors to request account registration</b> is enabled this setting controls whether the admin must approve the registration.<br><br>Setting this to <b>Yes</b> will require that all new users first verify themselves and then be approved by an admin before they can login.  With this setting on <b>No</b>, the “Approved by administrator” checkbox will be checked automatically when users verify their account, thus allowing an immediate login afterwards without admin intervention."
 #~ msgstr "Eğer <b>Ziyaretçilerin kayıt olmasına izin ver</b> seçeneği aktif ise, bu secenek yöneticinin kaydı onaylamasının gerekili olup olmadığını bu ayar belirler.<br><b>Bu seçenek <b>Evet</b> olarak seçildiğinde, yeni kullanıcıların giriş yapabilmesi için önce kendilerini onaylamaları, daha sonra ise yöneticinin bu kullanıcıyı onaylaması gereklidir. Bu seçenek <b>Hayır</b> olarak seçildiğinde ise, kullanıcı kendisini onayladığında \"Yönetici tarafından onaylandı\" onay kutusun otomatik olarak seçilir. Bu kullanıcı kendisini onayladıktan sonra yöneticinin onayını beklemeden doğrudan giriş yapabilmesini sağlar."
 
+#~ msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
+#~ msgstr "Eğer sorunu kendiniz çözemez iseniz <a href=\"http://webtrees.net\">webtrees.net</a> forumlarından yardım alablirsiniz."
+
 #~ msgid "If you have a note to add to this record, this is the place to do so.<br><br>Just click the link, a window will open, and you can type your note.  When you are finished typing, just click the button below the box, close the window, and that’s all."
 #~ msgstr "Bu kayda eklemek için bir notunuz var ise bu alanı kullanabilirsiniz. Bunun için<br><br>linke tıkladığınızda açılan pencerede notunuzu yazabilirsiniz. İşiniz bittiğinde aşağıdaki kutunun altındaki düğmeye tıklayarak pencereyi kapatabilirsiniz."
 
@@ -20115,6 +20103,9 @@ msgstr "Soyisimsiz"
 #~ msgid "The Favorites drop-down list shows the favorites that you have selected on your “My page”.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding favorites is available in your “My page”."
 #~ msgstr "Favoriler açılır listesi, sizin kişisel (Benim Sayfam) sayfanız da seçtiğiniz favorileri listeler. Ayrıca yöneticinin aktif GEDCOM aile ağacı için seçtiği favoriler de burada listelenir. Listedeki her hangi bir favori nesnesine tıkladığınızda doğrudan o kişinin bilgi sayfasına yönlendirilirsiniz.<br><br>Favori ekleme ile ilgili daha fazla yardımı kişisel sayfanızda (Benim Sayfam) bulabilirsiniz."
 
+#~ msgid "The data for the user <b>%s</b> has been checked."
+#~ msgstr "Kullanıcı adı <b>%s</b> üyelik verileriniz kontrol edildi."
+
 #~ msgid "The following calendars are supported:"
 #~ msgstr "Aşağıdaki takvimler desteklenir:"
 
@@ -20207,6 +20198,9 @@ msgstr "Soyisimsiz"
 
 #~ msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td style=\"vertical-align:middle\">This image might be used when the gender of the individual is unknown:"
 #~ msgstr "Vurgulanan resim belirtilmeyen bireyler için silüet resim kullan. Bireyin cinsiyetine göre farklı silüet resmi kullanılır.<br><br><table><tr><td style=\"vertical-align:middle\">Bireyin cinsiyeti bilinmeyen durumlarda bu resim kullanılabilir:"
+
+#~ msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
+#~ msgstr "Kullanıcı adlarında bu karakterler içeremez: &lt; &gt; &quot; %% { } ;"
 
 #~ msgid "Users’ languages"
 #~ msgstr "Kullanıcıların kullandıkları lisanlar"
