@@ -57,6 +57,13 @@ msgstr " /vyrai-moterys"
 msgid " per time period"
 msgstr " per laiko tarpą"
 
+<<<<<<< HEAD
+=======
+#: admin_trees_download.php:34
+msgid " — "
+msgstr " — "
+
+>>>>>>> translate.webtrees.net Lithuanian -  95.9% - 3805 of 3966
 #. I18N: Abbreviation for "number %s"
 #: includes/functions/functions_print_facts.php:187
 #: includes/functions/functions_print_facts.php:192
@@ -290,17 +297,17 @@ msgstr[2] "prieš %s dienas"
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s šeima buvo redeguota."
+msgstr[1] "%s šeimos buvo redeguotos."
+msgstr[2] "%s šeimos buvo redeguotos."
 
 #: admin.php:761
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s šeimos medis"
+msgstr[1] "%s šeimos medžiai"
+msgstr[2] "%s šeimos medžių"
 
 #: app/Stats.php:4748 app/Stats.php:4752
 #, php-format
@@ -338,9 +345,9 @@ msgstr[2] "%s asmenų yra viešai nerodomi."
 #, php-format
 msgid "%s individuals has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s asmuo buvo redeguotas."
+msgstr[1] "%s asmenys buvo redeguoti."
+msgstr[2] "%s asmenų buvo redeguoti."
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:122
@@ -385,9 +392,9 @@ msgstr[2] "prieš %s mėnesius"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s pastaba buvo redeguota."
+msgstr[1] "%s pastabos buvo redeguotos."
+msgstr[2] "%s pastabų buvo redeguota."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: includes/functions/functions.php:2108
@@ -413,9 +420,9 @@ msgstr[2] "prieš %s sekundžių"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s šaltinis buvo redeguotas."
+msgstr[1] "%s šaltiniai buvo redeguoti."
+msgstr[2] "%s šaltinių buvo redeguota."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2124
