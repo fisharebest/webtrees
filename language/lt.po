@@ -3,18 +3,20 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-12 21:11+0000\n"
-"PO-Revision-Date: 2015-02-02 14:47+1000\n"
+"PO-Revision-Date: 2015-03-13 05:43+0100\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
-"Language-Team: \n"
+"Language-Team: Lithuanian "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/lt/>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"(n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 2.3-dev\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
 "X-Poedit-Basepath: ..\n"
-"X-Generator: Poedit 1.7.1\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
@@ -747,7 +749,7 @@ msgstr "Dažniausiai užduodamų klausimų ir atsakymų į juos sąrašas."
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:33
 msgid "A list of records that have been updated recently."
-msgstr "Sąrašas įrašų, kurie buvo neseniai įkelti"
+msgstr "Sąrašas įrašų, kurie buvo neseniai įkelti."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:32
@@ -1305,7 +1307,7 @@ msgstr "Į diagramą įtraukti kitą asmenį"
 
 #: includes/functions/functions_print.php:596
 msgid "Add from clipboard"
-msgstr "Pridėti iš laikinos atminties:"
+msgstr "Pridėti iš laikinos atminties"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:23
 msgid "Add individuals"
@@ -1703,7 +1705,7 @@ msgstr "Amžius pirmųjų vedybų metais"
 #: includes/functions/functions_print_lists.php:982 statistics.php:258
 #: statistics.php:524 statisticsplot.php:1225
 msgid "Age in year of marriage"
-msgstr "Amžius vedybų metu."
+msgstr "Amžius vedybų metu"
 
 #: app/Module/FamilyTreeNewsModule.php:158
 msgid "Age of item"
@@ -1932,7 +1934,7 @@ msgstr "Protėvių interesai"
 
 #: modules_v3/ahnentafel_report/report.xml:52
 msgid "Ancestors of "
-msgstr "Protėviai"
+msgstr "Protėviai "
 
 #. I18N: %s is an individual’s name
 #: app/Controller/AncestryController.php:49
@@ -2836,7 +2838,7 @@ msgstr "Mėlyna kaip jūra"
 
 #: message.php:135
 msgid "Body"
-msgstr "Tekstas:"
+msgstr "Tekstas"
 
 #: app/Gedcom/GedcomCodeTemp.php:102
 msgid "Bogota, Colombia"
@@ -3268,7 +3270,7 @@ msgstr "Katalonija"
 
 #: statistics.php:604
 msgid "Categories"
-msgstr "Kategorijos:"
+msgstr "Kategorijos"
 
 #. I18N: gedcom tag CAUS
 #: app/Gedcom/GedcomTag.php:243
@@ -3714,7 +3716,7 @@ msgstr "Paspauskite %s, kad pasirinkti asmenį kaip šeimos galvą."
 
 #: edit_interface.php:1747
 msgid "Click a row, then drag-and-drop to re-order media"
-msgstr "Paspauskite eilutę, tuomet nutempkite į perrikiuotą mediją "
+msgstr "Paspauskite eilutę, tuomet nutempkite perrikiuotą mediją"
 
 #: admin_trees_manage.php:690
 msgid "Click here for PhpGedView to webtrees transfer wizard"
@@ -3734,7 +3736,9 @@ msgstr "Spauskite VARDAS kad pridėti asmenį į Įtraukiamų Nuorodų sąrašą
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:295
 msgid "Click on a title to go straight to it, or scroll down to read them all."
-msgstr "Paspauskite ant pavadinimo, kad patektumėte tiesiai į jį, arba slinkite žemyn, kad perskaityti visą"
+msgstr ""
+"Paspaude ant pavadinimo pateksite tiesiai ten, arba slinkite žemyn "
+"perskaityti visus."
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:69
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:80
@@ -4297,7 +4301,7 @@ msgstr "Duomenų aplankas"
 
 #: login.php:639
 msgid "Data was not correct, please try again"
-msgstr "Suvesti blogi duomenys, bandykite dar kartą."
+msgstr "Suvesti blogi duomenys, bandykite dar kartą"
 
 #: setup.php:371
 msgid "Database and table names"
@@ -4482,7 +4486,7 @@ msgstr "Registracijos data"
 
 #: app/Module/UserMessagesModule.php:79
 msgid "Date sent"
-msgstr "Siuntimo data:"
+msgstr "Išsiuntimo data"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:747
@@ -5401,7 +5405,7 @@ msgstr "Redaguoti istoriją"
 
 #: app/Tree.php:562
 msgid "Edit this individual and replace their details with your own."
-msgstr "Redaguoti šį asmenį ir pakeisti esamus duomenis"
+msgstr "Redaguoti šį asmenį ir pakeisti esamus duomenis savais."
 
 #: admin_users.php:268
 msgid "Edit user"
@@ -5975,7 +5979,7 @@ msgstr "Šeimos navigatorius"
 #. I18N: Description of the “GEDCOM News” module
 #: app/Module/FamilyTreeNewsModule.php:30
 msgid "Family news and site announcements."
-msgstr "Šeimos naujienos ir tinklalapio pranešimai"
+msgstr "Šeimos naujienos ir tinklalapio pranešimai."
 
 #. I18N: A title/heading. %s is an individual’s name
 #: app/Controller/FamilyBookController.php:368
@@ -6206,7 +6210,7 @@ msgstr "Byla sėkmingai nusiųsta"
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
 msgid "The file was only partially uploaded.  Please try again."
-msgstr "Nusiųsta tik dalis bylos, bandykite iš naujo"
+msgstr "Nusiųsta tik dalis bylos. Bandykite iš naujo."
 
 #. I18N: gedcom tag FILE
 #: admin_media.php:475 app/Gedcom/GedcomTag.php:485
@@ -6939,7 +6943,7 @@ msgstr "Jis buvo kremuotas"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:55
 msgid "Head of household"
-msgstr "Namų ūkio galva:"
+msgstr "Namų ūkio galva"
 
 #. I18N: gedcom tag HEAD
 #: app/Gedcom/GedcomTag.php:509
@@ -6974,7 +6978,7 @@ msgstr "Sveiki %s …"
 #: login.php:390
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr "Sveiki %s …<br>Ačiū už registravimąsi"
+msgstr "Sveiki %s…<br>Ačiū už prisiregistravimą."
 
 #: login.php:317 login.php:566
 msgid "Hello administrator…"
@@ -7244,7 +7248,9 @@ msgstr "Jei Jūs esate tinklapio administratorius, turėtumėte tai peržiūrėt
 
 #: site-unavailable.php:109
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
-msgstr "Jei negalite išspręsti problemos pats, galite prašyti pagalbos forume <a href=\"http://webtrees.net\">webtrees.net</a>"
+msgstr ""
+"Jei negalite išspręsti problemos pats, galite prašyti pagalbos forume <a "
+"href=\"http://webtrees.net\">webtrees.net</a>."
 
 #: admin_trees_manage.php:269
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -8094,12 +8100,12 @@ msgstr "Lima, Peru"
 
 #: app/Module/FamilyTreeNewsModule.php:163
 msgid "Limit"
-msgstr "Apribojimas:"
+msgstr "Apribojimas"
 
 #. I18N: Limit display by [age/number]
 #: app/Module/FamilyTreeNewsModule.php:154
 msgid "Limit display by"
-msgstr "Apriboti:"
+msgstr "Apriboti"
 
 #: app/Module/RelativesTabModule.php:344 edit_interface.php:990
 #: edit_interface.php:1049
@@ -8439,7 +8445,10 @@ msgstr "Kovo"
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1547
 msgid "Markdown is a simple system of formatting, used on websites such as Wikipedia.  It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc."
-msgstr "Markdown yra paprasta formatavimo sistema, naudojama svetainių kaip Wikipedia. Ji naudoja neįkyrius skyrybos ženklus kurti antraštes ir papunkčius, paryškintus ir kursyvus raštus, sąrašus, lenteles ir tt"
+msgstr ""
+"Markdown yra paprasta formatavimo sistema, naudojama svetainių kaip "
+"Wikipedia. Ji naudoja neįkyrius skyrybos ženklus kurti antraštes ir "
+"papunkčius, paryškintus ir kursyvus raštus, sąrašus, lenteles ir tt."
 
 #. I18N: gedcom tag MARR
 #: app/Gedcom/GedcomTag.php:573 modules_v3/ahnentafel_report/report.xml:453
@@ -8774,7 +8783,7 @@ msgstr "Medijos ID priešdėlis"
 #. I18N: Label for search field
 #: find.php:191
 msgid "Media contains"
-msgstr "Medija turi:"
+msgstr "Medija turi"
 
 #: admin_media.php:702 admin_media_upload.php:198
 msgid "Media file"
@@ -9023,7 +9032,7 @@ msgstr "Min. kiekis atitikimų, esančių su „bendromis pavardėmis“"
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
 msgid "The PHP temporary folder is missing."
-msgstr "Trūksta PHP laikinosios aplankos"
+msgstr "Trūksta PHP laikinosios aplankos."
 
 #. I18N: Name of a module/report
 #: app/Module/MissingFactsReportModule.php:26
@@ -9360,7 +9369,7 @@ msgstr "Saugykla"
 #. I18N: Label for search field
 #: find.php:155 find.php:172
 msgid "Name contains"
-msgstr "Varde yra:"
+msgstr "Varde yra"
 
 #: app/Gedcom/GedcomTag.php:607
 msgid "Name in Hebrew"
@@ -9630,11 +9639,11 @@ msgstr "Nėra kontakto"
 
 #: admin_site_upgrade.php:204
 msgid "No custom modules are enabled."
-msgstr "Nėra įjungtų nestandartinių modulių"
+msgstr "Nėra įjungtų nestandartinių modulių."
 
 #: admin_site_upgrade.php:268
 msgid "No custom themes are enabled."
-msgstr "Nėra įjungtų nestandartinių temų"
+msgstr "Nėra įjungtų nestandartinių temų."
 
 #: admin_trees_check.php:256
 msgid "No errors have been found."
@@ -9877,7 +9886,7 @@ msgstr "Valymui nieko nerasta"
 
 #: app/Module/BatchUpdateModule.php:214
 msgid "Nothing found."
-msgstr "Nieko nerasta"
+msgstr "Nieko nerasta."
 
 #: app/Date/CalendarDate.php:336
 msgctxt "Abbreviation for November"
@@ -9931,7 +9940,7 @@ msgstr "Šeimų be vaikų skaičius"
 #: app/Module/ClippingsCartModule.php:524
 #: app/Module/ClippingsCartModule.php:527
 msgid "Number of generations"
-msgstr "Kartų skaičius:"
+msgstr "Kartų skaičius"
 
 #: app/Module/FamilyTreeNewsModule.php:159
 msgid "Number of items"
@@ -10096,7 +10105,7 @@ msgstr "Oi!  Žiniatinklio serveris negali užmegzti ryšio su duomenų bazės s
 
 #: setup.php:213
 msgid "Oops!  webtrees was unable to create files in this folder."
-msgstr "Oops! webtrees negalėjo šioje aplankoje sukurti bylos"
+msgstr "Oops! webtrees negalėjo šioje aplankoje sukurti bylos."
 
 #: includes/functions/functions_print.php:518
 msgid "OpenStreetMap™"
@@ -10215,7 +10224,7 @@ msgstr "PGV versija privalo būti 4.2.3, arba bet kuri SVN iki #%s"
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:77
 msgid "PHP blocked the file because of its extension."
-msgstr "Dėl failo plėtinio PHP užblokavo jį"
+msgstr "PHP užblokavo bylą dėl jos priesagos."
 
 #: setup.php:140
 #, php-format
@@ -10230,7 +10239,7 @@ msgstr "PHP išplėtimas „%s“ yra išjungtas. Jūs negalite įdiegti kilmės
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:74
 msgid "PHP failed to write to disk."
-msgstr "PHP nepavyko įrašyti į diską"
+msgstr "PHP nepavyko įrašyti į diską."
 
 #: admin_site_info.php:71
 msgid "PHP information"
@@ -10477,7 +10486,7 @@ msgstr "PhpGedView galimai įkurtas vienoje iš šių aplankų:"
 
 #: admin_pgv_to_wt.php:94
 msgid "PhpGedView must use the same database as webtrees."
-msgstr "PhpGedView turi naudoti tą pačią duomenų bazę kaip ir webtrees"
+msgstr "PhpGedView turi naudoti tą pačią duomenų bazę kaip ir webtrees."
 
 #: admin_pgv_to_wt.php:44 admin_trees_manage.php:662
 msgid "PhpGedView to webtrees transfer wizard"
@@ -10517,7 +10526,7 @@ msgstr "Vietovių patikrinimas"
 #. I18N: Label for search field
 #: find.php:211
 msgid "Place contains"
-msgstr "Vietovė randasi:"
+msgstr "Vietovėje yra"
 
 #: app/Module/TopPageViewsModule.php:136
 msgid "Place counts before or after name?"
@@ -10702,7 +10711,7 @@ msgstr "Įveskite egzistuojantį elektroninio pašto adresą."
 #: app/Module/CensusAssistantModule.php:96 find.php:115 search.php:34
 #: search.php:46
 msgid "Please enter more than one character."
-msgstr "Prašome suvesti daugiau negu vieną simbolį"
+msgstr "Prašome įvesti daugiau negu vieną simbolį."
 
 #: message.php:104
 msgid "Please enter some message text before sending."
@@ -11390,7 +11399,7 @@ msgstr "Informacijos šaltinio ID priešdėlis"
 #. I18N: Label for search field
 #: find.php:230
 msgid "Repository contains"
-msgstr "Saugykla turi:"
+msgstr "Saugykloje yra"
 
 #: edit_interface.php:1563 includes/functions/functions_print_lists.php:1315
 msgid "Repository name"
@@ -11444,7 +11453,9 @@ msgstr "Atstatyti įprastų blokų išdėstymą"
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:376
 msgid "Restrict access to the website, using IP addresses and user-agent strings."
-msgstr "Apriboti prieigą prie svetainės, naudojant IP adresus ir naudotojo agento eilutes"
+msgstr ""
+"Apriboti prieigą prie svetainės, naudojant IP adresus ir naudotojo agento "
+"eilutes."
 
 #: admin_users.php:569
 msgid "Restrict to immediate family"
@@ -11761,7 +11772,7 @@ msgstr ""
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:128
 #, php-format
 msgid "See %s for more information."
-msgstr "Surask daugiau informacijos čia: %s"
+msgstr "Surask daugiau informacijos čia: %s."
 
 #: admin_site_merge.php:203 admin_site_merge.php:245 admin_site_merge.php:286
 msgid "Select"
@@ -11782,11 +11793,13 @@ msgstr "Pasirinkite byla iš sąrašo serveryje, kuriame yra vietovės ir ji yra
 
 #: help_text.php:299
 msgid "Select a relationship name from the list.  Selecting <b>Godfather</b> means: <i>This associate is the godfather of the current individual</i>."
-msgstr "Pasirinkite santykių vardą iš sąrašo. Pasirinkus <b>Krikštatėvis</ b>, reiškia: <i>Šis bendradarbis yra šio asmens krikštatėvis</ i>."
+msgstr ""
+"Pasirinkite santykių vardą iš sąrašo. Pasirinkus <b>Krikštatėvis</b>, "
+"reiškia: <i>Šis bendradarbis yra šio asmens krikštatėvis</i>."
 
 #: statistics.php:499
 msgid "Select chart type"
-msgstr "Pasirinkite diagramos tipą:"
+msgstr "Pasirinkite diagramos tipą"
 
 #: edit_interface.php:1252
 msgid "Select events"
@@ -12087,7 +12100,7 @@ msgstr "Bendrai naudojama pastaba"
 #. I18N: Label for search field
 #: find.php:250
 msgid "Shared note contains"
-msgstr "Bendrai naudojamas pastabas sudaro:"
+msgstr "Bendrai naudojamoję pastaboję yra"
 
 #: app/Theme/BaseTheme.php:1415
 #: includes/functions/functions_print_lists.php:1068 notelist.php:30
@@ -12846,7 +12859,7 @@ msgstr ""
 #. I18N: Label for search field
 #: find.php:269
 msgid "Source contains"
-msgstr "Šaltinis turi:"
+msgstr "Šaltinyję yra"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:2265 modules_v3/fact_sources/report.xml:6
@@ -13050,7 +13063,7 @@ msgstr "Žemesnis lygmuo"
 
 #: app/Module/UserMessagesModule.php:78 message.php:127
 msgid "Subject"
-msgstr "Tema:"
+msgstr "Tema"
 
 #. I18N: gedcom tag SUBN
 #: app/Gedcom/GedcomTag.php:811
@@ -13123,12 +13136,12 @@ msgstr "Pavardžių tradicija"
 #. I18N: In the Lithuanian surname tradition, ...
 #: admin_trees_config.php:103
 msgid "Surnames are inflected to indicate an individual’s gender and marital status."
-msgstr "Pavardės keičiasi pagal asmens lytį ir šeimyninę padėtį"
+msgstr "Pavardės keičiasi pagal asmens lytį ir šeimyninę padėtį."
 
 #. I18N: In the Polish surname tradition, ...
 #: admin_trees_config.php:98
 msgid "Surnames are inflected to indicate an individual’s gender."
-msgstr "Pavardės keičiasi pagal asmens lytį"
+msgstr "Pavardės keičiasi pagal asmens lytį."
 
 #: app/Gedcom/GedcomCodeTemp.php:312
 msgid "Suva, Fiji"
@@ -13430,7 +13443,7 @@ msgstr "Byla %s negali bųti įkelta."
 #: admin_site_upgrade.php:418
 #, php-format
 msgid "The file %s has been created."
-msgstr "Byla %s sukurta"
+msgstr "Byla %s sukurta."
 
 #: admin_media.php:60 admin_media.php:69 admin_site_clean.php:33
 #: admin_site_upgrade.php:473 admin_site_upgrade.php:494
@@ -13552,7 +13565,7 @@ msgstr "Medijos byla %s neegzistuoja."
 
 #: mediafirewall.php:41
 msgid "The media file was not found in this family tree."
-msgstr "Medijos failas nebuvo rastas šios šeimos medyje"
+msgstr "Medijos byla nebuvo rasta šiame šeimos medyje."
 
 #: admin_media_upload.php:223
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
@@ -13624,7 +13637,7 @@ msgstr "Įrašas %1$s buvo pervadintas į %2$s."
 
 #: action.php:86
 msgid "The record has been copied to the clipboard."
-msgstr "Įrašas nukopijuotas į laikiną atmintį"
+msgstr "Įrašas nukopijuotas į laikiną atmintį."
 
 #. I18N: Records are individuals, sources, etc.
 #: admin_site_merge.php:162
@@ -13694,7 +13707,9 @@ msgstr "Naudotojas %s buvo ištrintas."
 
 #: login.php:324
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
-msgstr "Naudotojas išsiuntė el.laišką su informacija, kuri būtina prieigos prašymo patvirtinimui"
+msgstr ""
+"Naudotojas išsiuntė el.laišką su informacija, kuri būtina prieigos prašymo "
+"patvirtinimui."
 
 #. I18N: Help text for the "Username" site configuration setting
 #: admin_site_config.php:373
@@ -13713,12 +13728,12 @@ msgstr ""
 #: admin_pgv_to_wt.php:107
 #, php-format
 msgid "The version of %s is too new."
-msgstr "%s versija yra per nauja"
+msgstr "%s versija yra per nauja."
 
 #: admin_pgv_to_wt.php:104
 #, php-format
 msgid "The version of %s is too old."
-msgstr "%s versija yra per sena"
+msgstr "%s versija yra per sena."
 
 #: admin_site_access.php:85
 msgid "The website access rule has been created."
@@ -13919,9 +13934,15 @@ msgstr "Ši šeima liko bevaikė"
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] "Šis šeimos medžis turi %1$s įrašą su tais pačiais „XREF“ numeriais kitame šeimos medyje."
-msgstr[1] "Šis šeimos medžis turi %1$s įrašus su tais pačiais „XREF“ numeriais kitame šeimos medyje."
-msgstr[2] "Šis šeimos medžis turi %1$s įrašų su tais pačiais „XREF“ numeriais kitame šeimos medyje."
+msgstr[0] ""
+"Šis šeimos medžis turi %s įrašą su tais pačiais „XREF“ numeriais kitame "
+"šeimos medyje."
+msgstr[1] ""
+"Šis šeimos medžis turi %s įrašus su tais pačiais „XREF“ numeriais kitame "
+"šeimos medyje."
+msgstr[2] ""
+"Šis šeimos medžis turi %s įrašų su tais pačiais „XREF“ numeriais kitame "
+"šeimos medyje."
 
 #: app/Module/SlideShowModule.php:175
 msgid "This family tree has no images to display."
@@ -14150,7 +14171,7 @@ msgstr "Ši medijos byla egzistuoja, bet negali būti atverta."
 
 #: mediafirewall.php:410
 msgid "This media file is broken and cannot be watermarked."
-msgstr "Šis medijos failas yra sugadintas ir negali būti pažymėtas vandens ženklu"
+msgstr "Ši medijos byla yra sugedusi ir negali būti pažymėta vandens ženklu."
 
 #: mediaviewer.php:73
 msgid "This media object does not exist or you do not have permission to view it."
@@ -14416,7 +14437,10 @@ msgstr "Tai ištrins visus genealoginius duomenis iš „%s“ ir pakeis duomeni
 
 #: app/Module/GoogleMapsModule.php:1781
 msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables."
-msgstr "Šis sąrašas visų vietovių iš pasirinkto GEDCOM failo. Pagal nutylėjimą čia nebus įtrauktos vietovės, kurios visiškai sutampa tarp GEDCOM failų ir Google žemėlapio lentelių"
+msgstr ""
+"Šis sąrašas visų vietovių iš pasirinkto GEDCOM failo. Pagal numatytuosius "
+"nustatymus čia nebus įtrauktos vietovės, kurios visiškai sutampa tarp GEDCOM "
+"failų ir Google žemėlapio lentelių."
 
 #: admin_trees_places.php:96
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
@@ -14748,7 +14772,7 @@ msgstr "Iš viso nepriimptų pakeitimų: "
 #: app/Module/GoogleMapsModule.php:1776
 #, php-format
 msgid "Total places: %s"
-msgstr "Iš viso %s vietovių."
+msgstr "Iš viso %s vietovių"
 
 #: find.php:672
 #, php-format
@@ -14843,7 +14867,7 @@ msgstr "Vietovių žymeklių tipas vietovių hierarchijoje"
 #. I18N: placeholder text for repeat-password field
 #: admin_users.php:350 login.php:479
 msgid "Type the password again."
-msgstr "Įrašykite slaptažodi dar vieną kartą"
+msgstr "Įrašykite slaptažodi dar vieną kartą."
 
 #: edituser.php:219 login.php:484 setup.php:443
 msgid "Type your password again, to make sure you have typed it correctly."
@@ -15008,7 +15032,7 @@ msgstr "Vistiek atnaujink"
 #: admin.php:546 admin_site_upgrade.php:80
 #, php-format
 msgid "Upgrade to webtrees %s."
-msgstr "Naujinti į webtrees %s"
+msgstr "Atnaujinti į webtrees %s."
 
 #: admin_site_upgrade.php:53
 msgid "Upgrade wizard"
@@ -15034,7 +15058,7 @@ msgstr "Įkelkite vieną ar daugiau bylų iš jūsų vietinio kompiuterio. Medij
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:62
 msgid "The uploaded file exceeds the allowed size."
-msgstr "Siunčiama byla viršijo maksimalų leistiną dydį"
+msgstr "Siunčiama byla viršijo maksimaliai leistiną dydį."
 
 #: app/Stats.php:6308
 msgid "Uruguay"
@@ -15264,7 +15288,7 @@ msgstr "Veracruz, Meksika"
 
 #: login.php:348 login.php:543
 msgid "Verification code"
-msgstr "Patvirtinimo kodas:"
+msgstr "Patvirtinimo kodas"
 
 #: admin_users.php:853
 msgid "Verified"
@@ -15299,7 +15323,7 @@ msgstr "Rodyti"
 
 #: placelist.php:174
 msgid "View all records found in this place"
-msgstr "Rodyti visus įrašus rastus šioje vietovėje."
+msgstr "Rodyti visus įrašus rastus šioje vietovėje"
 
 #: app/Module/FamilyTreeNewsModule.php:116 help_text.php:422
 msgid "View archive"
@@ -15440,7 +15464,7 @@ msgstr "Svetainė"
 #. I18N: A site configuration setting
 #: admin_site_config.php:284
 msgid "Website URL"
-msgstr "Svetainės URL:"
+msgstr "Svetainės URL"
 
 #. I18N: Menu entry
 #: admin_site_access.php:135 admin_site_access.php:248
@@ -15697,7 +15721,9 @@ msgstr "Jums neleidžiama siųsti laiškus, kurie turi išorines nuorodas."
 #. I18N: Help text for the "Default theme" site configuration setting
 #: admin_site_config.php:233 admin_trees_config.php:1027 edituser.php:259
 msgid "You can change the appearance of webtrees using “themes”.  Each theme has a different style, layout, color scheme, etc."
-msgstr "Jūs galite pakeisti webtrees išvaizdą naudojant „Temas“. Kiekviena tema turi skirtingą stilių, išdėstymą, spalvų schemą, ir tt"
+msgstr ""
+"Jūs galite pakeisti webtrees išvaizdą naudojant „Temas“. Kiekviena tema turi "
+"skirtingą stilių, išdėstymą, spalvų schemą, ir tt."
 
 #. I18N: %s is a URL
 #: help_text.php:412
@@ -15800,7 +15826,7 @@ msgstr "Turite įvesti informaciją į visus administratoriaus abonento laukus."
 
 #: edit_interface.php:1548
 msgid "You must provide a repository name."
-msgstr "Jūs turite pateikti saugyklos pavadinimą"
+msgstr "Jūs turite pateikti saugyklos pavadinimą."
 
 #: edit_interface.php:1210
 msgid "You must provide a source title"
