@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-03-13 05:43+0100\n"
+"PO-Revision-Date: 2015-03-13 10:57+0100\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
-"Language-Team: Lithuanian <http://translate.webtrees.net/projects/webtrees/webtrees/lt/>\n"
+"Language-Team: Lithuanian "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/lt/>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"(n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 2.3-dev\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -454,7 +456,7 @@ msgstr[2] "%s savaitės"
 #: admin_trees_download.php:164
 #, php-format
 msgid "%s will be prepended to media filenames."
-msgstr ""
+msgstr "%s bus pridėtas pradžioje medijos bylos vardų."
 
 #: app/I18N.php:457 includes/functions/functions_date.php:42
 #, php-format
@@ -714,11 +716,11 @@ msgstr "Įvykio ar fakto aprašymas, pavyzdžiui įrašas apie mirties priežast
 
 #: admin_trees_download.php:116 admin_trees_manage.php:209
 msgid "A file on the server"
-msgstr ""
+msgstr "Byla ant serverio"
 
 #: admin_trees_download.php:201 admin_trees_manage.php:198
 msgid "A file on your computer"
-msgstr ""
+msgstr "Byla ant jūsų komputerio"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:30
@@ -1364,7 +1366,7 @@ msgstr "Įtraukti įrašą apie tėvus kartu su šeimos įrašu."
 
 #: admin_trees_manage.php:266
 msgid "Add spaces where long lines were wrapped"
-msgstr ""
+msgstr "Pridėti tarpus kur ilgos eilės buvo perkeltos"
 
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: admin_trees_download.php:161 app/Module/ClippingsCartModule.php:212
@@ -3845,7 +3847,7 @@ msgstr "Baigta; data nežinoma"
 
 #: admin_trees_download.php:142
 msgid "Compress the GEDCOM file"
-msgstr ""
+msgstr "Suslėgti GEDCOM bylą"
 
 #. I18N: gedcom tag CONC
 #: app/Gedcom/GedcomTag.php:303
@@ -4076,6 +4078,8 @@ msgstr "Sukurk savo diagramą"
 #: admin_trees_manage.php:712
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
 msgstr ""
+"Sukurti, atnaujinti ir ištrinti šeimos medžius kiekvienai GEDCOM bylai data "
+"aplankoje."
 
 #. I18N: gedcom tag CREM
 #: app/Gedcom/GedcomTag.php:331 modules_v3/family_group_report/report.xml:309
@@ -5714,7 +5718,7 @@ msgstr "Eksportuoti"
 
 #: admin_trees_download.php:34
 msgid "Export a GEDCOM file"
-msgstr ""
+msgstr "Eksportuoti GEDCOM bylą"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:279
@@ -5723,7 +5727,7 @@ msgstr "Eksportuoti visus šeimos medžius į GEDCOM bylas…"
 
 #: admin_trees_download.php:135
 msgid "Export options"
-msgstr ""
+msgstr "Eksportavimo nuostatai"
 
 #. I18N: A configuration setting.  ... [who were] born in the last XX years or died in the last YY years
 #: admin_trees_config.php:483
@@ -6264,7 +6268,7 @@ msgstr "Rasti specialų simbolį"
 
 #: relationship.php:96
 msgid "Find all possible relationships"
-msgstr ""
+msgstr "Rasti visus galimus giminystės ryšius"
 
 #: app/Module/CensusAssistantModule.php:63 find.php:55
 #: includes/functions/functions_print.php:730
@@ -6275,7 +6279,7 @@ msgstr "Rasti individą"
 
 #: relationship.php:91
 msgid "Find the closest relationships"
-msgstr ""
+msgstr "Rasti arčiausią giminystės ryšį"
 
 #: app/Stats.php:6141
 msgid "Finland"
@@ -6293,7 +6297,7 @@ msgstr "Pirmasis įvykis"
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:331
 msgid "First record"
-msgstr ""
+msgstr "Pirmas įrašas"
 
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:29
 msgid "Fix name slashes and spaces"
@@ -6368,6 +6372,8 @@ msgstr ""
 #, php-format
 msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
 msgstr ""
+"Pavyzdžiui, jei GEDCOM byloje yra %1$s ir webtrees tikisi surasti %2$s "
+"medijos aplankos varde, tada jums reikės pašalinti %3$s."
 
 #: admin_users.php:590
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
@@ -7215,6 +7221,9 @@ msgstr ""
 #: admin_trees_config.php:1058
 msgid "If two family trees use the same media folder, then they will be able to share media files.  If they use different media folders, then their media files will be kept separate."
 msgstr ""
+"Jeigu du šeimos medžia naudoja tą pačią medijos aplanką, tada jie galės "
+"dalintis medijos bylas. Jeigu jie naudos skirtingas medijos aplankas, tada "
+"jų medijos bylos bus laikomos atskirai."
 
 #: admin_trees_config.php:414
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account.  You will need to add their account manually."
@@ -7232,6 +7241,8 @@ msgstr "Jei Jūs esate tinklapio administratorius, turėtumėte tai peržiūrėt
 #: site-unavailable.php:109
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
 msgstr ""
+"Jei negalite išspręsti problemos patys, galite paprašyti pagalbos forumuose <"
+"a href=\"http://webtrees.net\">webtrees.net</a>"
 
 #: admin_trees_manage.php:269
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -7270,11 +7281,16 @@ msgstr ""
 #: admin_trees_config.php:1057
 msgid "If you select a different folder, you must also move any media files from the existing folder to the new one."
 msgstr ""
+"Jei norite pasirinkti kitą aplanką, jūs taip pat turite perkelti visas "
+"medijos bylas iš esamos aplankos į naują."
 
 #. I18N: Help text for the “Show living individuals” configuration setting
 #: admin_trees_config.php:474
 msgid "If you show living individuals to visitors, all other privacy restrictions are ignored.  Do this only if all the data in your tree is public."
 msgstr ""
+"Jeigu jus rodote gyvus asmenis lankytojams, visi kiti privatumo apribojimai "
+"yra ignoruojami. Tai darykite tik tada, jei visi jūsų medžio duomenys yra "
+"vieši."
 
 #: setup.php:185
 msgid "If you try to exceed these limits, you may experience server time-outs and blank pages."
@@ -7283,6 +7299,8 @@ msgstr "Jei bandysite viršyti šias ribas, gali pasireikšti serverio darbo per
 #: admin_site_config.php:507
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatcially."
 msgstr ""
+"Jei naudojate vieną iš šių stebėjimo ir analizės paslaugų, webtrees gali "
+"pridėti sekimo kodus automatiškai."
 
 #. I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1256
