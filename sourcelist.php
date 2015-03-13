@@ -32,5 +32,5 @@ $controller->pageHeader();
 
 echo '<div id="sourcelist-page">',
 	'<h2>', I18N::translate('Sources'), '</h2>';
-	echo format_sour_table(get_source_list($WT_TREE->getTreeId()));
+	echo format_sour_table(get_source_list($WT_TREE));
 echo '</div>';

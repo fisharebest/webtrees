@@ -423,16 +423,6 @@ case 'gedcom_news_archive':
 	$text = I18N::translate('To reduce the height of the News block, the administrator has hidden some articles.  You can reveal these hidden articles by clicking the <b>View archive</b> link.');
 	break;
 
-case 'gedcom_news_flag':
-	$title = I18N::translate('Limit:');
-	$text = I18N::translate('Enter the limiting value here.<br><br>If you have opted to limit the news article display according to age, any article older than the number of days entered here will be hidden from view.  If you have opted to limit the news article display by number, only the specified number of recent articles, ordered by age, will be shown.  The remaining articles will be hidden from view.<br><br>Zeros entered here will disable the limit, causing all news articles to be shown.');
-	break;
-
-case 'gedcom_news_limit':
-	$title = I18N::translate('Limit display by:');
-	$text = I18N::translate('You can limit the number of news articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles.');
-	break;
-
 case 'google_chart_surname':
 	$title = I18N::translate('Surname');
 	$text = I18N::translate('The number of occurrences of the specified name will be shown on the map.  If you leave this field empty, the most common surname will be used.');

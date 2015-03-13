@@ -1,0 +1,20 @@
+<?php namespace Fisharebest\Localization;
+
+/**
+ * Class ScriptModi - Representation of the Modi, Moḍī script.
+ *
+ * @author    Greg Roach <fisharebest@gmail.com>
+ * @copyright (c) 2015 Greg Roach
+ * @license   GPLv3+
+ */
+class ScriptModi extends Script {
+	/** {@inheritdoc} */
+	public function code() {
+		return 'Modi';
+	}
+
+	/** {@inheritdoc} */
+	public function number() {
+		return '323';
+	}
+}

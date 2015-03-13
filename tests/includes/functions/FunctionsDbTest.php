@@ -202,24 +202,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test that function get_gedcom_from_id() exists in the correct namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionGetGedcomFromIdExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_gedcom_from_id'), true);
-	}
-
-	/**
-	 * Test that function get_id_from_gedcom() exists in the correct namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionGetIdFromGedcomExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_id_from_gedcom'), true);
-	}
-
-	/**
 	 * Test that function get_user_blocks() exists in the correct namespace.
 	 *
 	 * @return void

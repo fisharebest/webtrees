@@ -148,7 +148,7 @@ function edit_language_checkboxes($parameter_name, $accepted_languages) {
 	$CHUNK_SIZE = 4; // Make this a constant when moved to a class
 
 	$html = '<table class="language-selection">';
-	foreach (array_chunk(I18N::installedLanguages(), $CHUNK_SIZE, true) as $chunk) {
+	foreach (array_chunk(I18N::preferedLanguages(), $CHUNK_SIZE, true) as $chunk) {
 		$html .= '<tr>';
 		foreach ($chunk as $locale => $language) {
 			$checked = in_array($locale, $accepted_languages) ? 'checked' : '';
@@ -230,7 +230,12 @@ function edit_field_contact($name, $selected = '', $extra = '') {
  * @return string
  */
 function edit_field_language($name, $selected = '', $extra = '') {
-	return select_edit_control($name, I18N::installedLanguages(), null, $selected, $extra);
+	$languages = array();
+	foreach (I18N::activeLocales() as $locale) {
+		$languages[$locale->languageTag()] = $locale->endonym();
+	}
+
+	return select_edit_control($name, $languages, null, $selected, $extra);
 }
 
 /**

@@ -22,24 +22,6 @@ require './includes/session.php';
 $controller = new PageController;
 $controller->restrictAccess(Auth::isAdmin());
 
-// Lists of options for <select> controls.
-$SMTP_SSL_OPTIONS = array(
-	'none'=> I18N::translate('none'),
-	/* I18N: Secure Sockets Layer - a secure communications protocol*/ 'ssl'=> I18N::translate('ssl'),
-	/* I18N: Transport Layer Security - a secure communications protocol */ 'tls'=> I18N::translate('tls'),
-);
-$SMTP_ACTIVE_OPTIONS = array(
-	'internal'=> I18N::translate('Use PHP mail to send messages'),
-	'external'=> I18N::translate('Use SMTP to send messages'),
-);
-$WELCOME_TEXT_AUTH_MODE_OPTIONS = array(
-	0 => I18N::translate('No predefined text'),
-	1 => I18N::translate('Predefined text that states all users can request a user account'),
-	2 => I18N::translate('Predefined text that states admin will decide on each request for a user account'),
-	3 => I18N::translate('Predefined text that states only family members can request a user account'),
-	4 => I18N::translate('Choose user defined welcome text typed below'),
-);
-
 switch (Filter::post('action')) {
 case 'site':
 	if (Filter::checkCsrf()) {
@@ -59,10 +41,12 @@ case 'site':
 		Site::setPreference('ALLOW_CHANGE_GEDCOM', Filter::postBool('ALLOW_CHANGE_GEDCOM'));
 		Site::setPreference('SESSION_TIME', Filter::post('SESSION_TIME'));
 		Site::setPreference('SERVER_URL', Filter::post('SERVER_URL'));
+		FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 	}
 	header('Location: ' . WT_BASE_URL . 'admin.php');
 
 	return;
+
 case 'email':
 	if (Filter::checkCsrf()) {
 		Site::setPreference('SMTP_ACTIVE', Filter::post('SMTP_ACTIVE'));
@@ -76,6 +60,7 @@ case 'email':
 		if (Filter::post('SMTP_AUTH_PASS')) {
 			Site::setPreference('SMTP_AUTH_PASS', Filter::post('SMTP_AUTH_PASS'));
 		}
+		FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 	}
 	header('Location: ' . WT_BASE_URL . 'admin.php');
 
@@ -88,10 +73,12 @@ case 'login':
 		Site::setPreference('USE_REGISTRATION_MODULE', Filter::post('USE_REGISTRATION_MODULE'));
 		Site::setPreference('REQUIRE_ADMIN_AUTH_REGISTRATION', Filter::post('REQUIRE_ADMIN_AUTH_REGISTRATION'));
 		Site::setPreference('SHOW_REGISTER_CAUTION', Filter::post('SHOW_REGISTER_CAUTION'));
+		FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 	}
 	header('Location: ' . WT_BASE_URL . 'admin.php');
 
 	return;
+
 case 'tracking':
 	if (Filter::checkCsrf()) {
 		Site::setPreference('BING_WEBMASTER_ID', Filter::post('BING_WEBMASTER_ID'));
@@ -101,10 +88,43 @@ case 'tracking':
 		Site::setPreference('PIWIK_SITE_ID', Filter::post('PIWIK_SITE_ID'));
 		Site::setPreference('STATCOUNTER_PROJECT_ID', Filter::post('STATCOUNTER_PROJECT_ID'));
 		Site::setPreference('STATCOUNTER_SECURITY_ID', Filter::post('STATCOUNTER_SECURITY_ID'));
+		FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 	}
 	header('Location: ' . WT_BASE_URL . 'admin.php');
 
 	return;
+
+case 'languages':
+	if (Filter::checkCsrf()) {
+		Site::setPreference('LANGUAGES', implode(',', Filter::postArray('LANGUAGES')));
+		FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
+	}
+	header('Location: ' . WT_BASE_URL . 'admin.php');
+
+	return;
+}
+
+// Lists of options for <select> controls.
+$SMTP_SSL_OPTIONS = array(
+	'none'=> I18N::translate('none'),
+	/* I18N: Secure Sockets Layer - a secure communications protocol*/ 'ssl'=> I18N::translate('ssl'),
+	/* I18N: Transport Layer Security - a secure communications protocol */ 'tls'=> I18N::translate('tls'),
+);
+$SMTP_ACTIVE_OPTIONS = array(
+	'internal'=> I18N::translate('Use PHP mail to send messages'),
+	'external'=> I18N::translate('Use SMTP to send messages'),
+);
+$WELCOME_TEXT_AUTH_MODE_OPTIONS = array(
+	0 => I18N::translate('No predefined text'),
+	1 => I18N::translate('Predefined text that states all users can request a user account'),
+	2 => I18N::translate('Predefined text that states admin will decide on each request for a user account'),
+	3 => I18N::translate('Predefined text that states only family members can request a user account'),
+	4 => I18N::translate('Choose user defined welcome text typed below'),
+);
+
+$language_tags = array();
+foreach (I18N::activeLocales() as $locale) {
+	$language_tags[] = $locale->languageTag();
 }
 
 switch (Filter::get('action')) {
@@ -119,6 +139,9 @@ case 'login':
 	break;
 case 'tracking':
 	$controller->setPageTitle(/* I18N: e.g. http://www.google.com/analytics */ I18N::translate('Tracking and analytics'));
+	break;
+case 'languages':
+	$controller->setPageTitle(I18N::translate('Languages'));
 	break;
 default:
 	header('Location: ' . WT_BASE_URL . 'admin.php');
@@ -393,7 +416,8 @@ $controller->pageHeader();
 
 	<div class="form-group">
 		<div class="col-sm-offset-3 col-sm-9">
-			<?php echo Theme::theme()->htmlAlert(I18N::translate('To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]'), 'info', false); ?>
+			<p class="small text-muted">
+				<?php echo Theme::theme()->htmlAlert(I18N::translate('To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]'), 'info', false); ?>
 			</p>
 		</div>
 	</div>
@@ -590,6 +614,29 @@ $controller->pageHeader();
 				</p>
 			</div>
 		</div>
+
+	<?php elseif (Filter::get('action') === 'languages'): ?>
+		<input type="hidden" name="action" value="languages">
+
+		<p>
+			<?php echo I18N::translate('Select the languages that will be shown in menus.'); ?>
+		</p>
+
+		<fieldset class="form-group">
+			<legend class="col-sm-3 control-label">
+				<?php echo /* I18N: A site configuration setting */ I18N::translate('Language'); ?>
+			</legend>
+			<div class="col-sm-9" style="columns: 4 150px;-moz-columns: 4 150px;-webkit-columns: 4 150px;">
+				<?php foreach (I18N::installedLocales() as $locale): ?>
+					<div>
+						<label title="<?php echo $locale->languageTag(); ?>">
+							<input type="checkbox" name="LANGUAGES[]" value="<?php echo $locale->languageTag(); ?>" <?php echo in_array($locale->languageTag(), $language_tags) ? 'checked' : ''; ?>>
+							<?php echo $locale->endonym(); ?>
+						</label>
+					</div>
+				<?php endforeach; ?>
+			</div>
+		</fieldset>
 
 	<?php endif; ?>
 	<div class="form-group">

@@ -174,7 +174,7 @@ class Media extends GedcomRecord {
 			try {
 				$imgsize = getimagesize($main_file);
 				// Image small enough to be its own thumbnail?
-				if ($imgsize[0] < $THUMBNAIL_WIDTH) {
+				if ($imgsize[0] > 0 && $imgsize[0] <= $THUMBNAIL_WIDTH) {
 					try {
 						copy($main_file, $file);
 						Log::addMediaLog('Thumbnail created for ' . $main_file . ' (copy of main image)');
@@ -459,7 +459,7 @@ class Media extends GedcomRecord {
 
 		return
 			'mediafirewall.php?mid=' . $this->getXref() . $thumbstr . $downloadstr .
-			'&amp;ged=' . rawurlencode(get_gedcom_from_id($this->tree->getTreeId())) .
+			'&amp;ged=' . $this->tree->getNameHtml() .
 			'&amp;cb=' . $this->getEtag($which);
 	}
 

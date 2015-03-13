@@ -53,17 +53,17 @@ class HtmlBlockModule extends Module implements ModuleBlockInterface {
 			$stats = new Stats($WT_TREE);
 			break;
 		case '__default__':
-			$tree_id = Tree::getIdFromName(Site::getPreference('DEFAULT_GEDCOM'));
-			if ($tree_id) {
-				$stats = new Stats(Tree::findById($tree_id));
+			$tree = Tree::findByName(Site::getPreference('DEFAULT_GEDCOM'));
+			if ($tree) {
+				$stats = new Stats($tree);
 			} else {
 				$stats = new Stats($WT_TREE);
 			}
 			break;
 		default:
-			$tree_id = Tree::getIdFromName($gedcom);
-			if ($tree_id) {
-				$stats = new Stats(Tree::findById($tree_id));
+			$tree = Tree::findByName($gedcom);
+			if ($tree) {
+				$stats = new Stats($tree);
 			} else {
 				$stats = new Stats($WT_TREE);
 			}
@@ -125,7 +125,7 @@ class HtmlBlockModule extends Module implements ModuleBlockInterface {
 			set_block_setting($block_id, 'html', Filter::post('html'));
 			set_block_setting($block_id, 'show_timestamp', Filter::postBool('show_timestamp'));
 			set_block_setting($block_id, 'timestamp', Filter::post('timestamp'));
-			$languages = Filter::postArray('lang', null, array_keys(I18N::installedLanguages()));
+			$languages = Filter::postArray('lang');
 			set_block_setting($block_id, 'languages', implode(',', $languages));
 		}
 

@@ -216,7 +216,7 @@ case 'reject-changes':
 	$record = GedcomRecord::getInstance(Filter::post('xref', WT_REGEX_XREF), $WT_TREE);
 	if ($record && $record->canEdit() && Auth::isModerator($record->getTree())) {
 		FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ I18N::translate('The changes to “%s” have been rejected.', $record->getFullName()));
-		reject_all_changes($record->getXref(), $record->getTree()->getTreeId());
+		reject_all_changes($record);
 	} else {
 		http_response_code(406);
 	}

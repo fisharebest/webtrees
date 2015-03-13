@@ -142,13 +142,15 @@ class GedcomRecord {
 		}
 
 		// If we can edit, then we also need to be able to see pending records.
-		if (Auth::isEditor(Tree::findById($tree_id))) {
+		if (Auth::isEditor($tree)) {
 			if (!isset(self::$pending_record_cache[$tree_id])) {
 				// Fetch all pending records in one database query
 				self::$pending_record_cache[$tree_id] = array();
 				$rows = Database::prepare(
-					"SELECT xref, new_gedcom FROM `##change` WHERE status='pending' AND gedcom_id=?"
-				)->execute(array($tree_id))->fetchAll();
+					"SELECT xref, new_gedcom FROM `##change` WHERE status = 'pending' AND gedcom_id = :tree_id ORDER BY change_id"
+				)->execute(array(
+					'tree_id' => $tree_id
+				))->fetchAll();
 				foreach ($rows as $row) {
 					self::$pending_record_cache[$tree_id][$row->xref] = $row->new_gedcom;
 				}

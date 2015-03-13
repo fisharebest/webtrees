@@ -58,16 +58,18 @@ class IndividualSidebarModule extends Module implements ModuleSidebarInterface {
 
 	/** {@inheritdoc} */
 	public function getSidebarAjaxContent() {
+		global $WT_TREE;
+		
 		$alpha   = Filter::get('alpha'); // All surnames beginning with this letter where "@"=unknown and ","=none
 		$surname = Filter::get('surname'); // All indis with this surname.
 		$search  = Filter::get('search');
 
 		if ($search) {
-			return $this->search($search);
+			return $this->search($WT_TREE, $search);
 		} elseif ($alpha == '@' || $alpha == ',' || $surname) {
-			return $this->getSurnameIndis($alpha, $surname);
+			return $this->getSurnameIndis($WT_TREE, $alpha, $surname);
 		} elseif ($alpha) {
-			return $this->getAlphaSurnames($alpha, $surname);
+			return $this->getAlphaSurnames($WT_TREE, $alpha, $surname);
 		} else {
 			return '';
 		}
@@ -78,7 +80,7 @@ class IndividualSidebarModule extends Module implements ModuleSidebarInterface {
 		global $WT_IMAGES, $UNKNOWN_NN, $controller, $WT_TREE;
 
 		// Fetch a list of the initial letters of all surnames in the database
-		$initials = QueryName::surnameAlpha(true, false, $WT_TREE->getTreeId(), false);
+		$initials = QueryName::surnameAlpha($WT_TREE, true, false, false);
 
 		$controller->addInlineJavascript('
 			var loadedNames = new Array();
@@ -158,15 +160,16 @@ class IndividualSidebarModule extends Module implements ModuleSidebarInterface {
 	}
 
 	/**
+	 * @param Tree   $tree
 	 * @param string $alpha
 	 * @param string $surname1
 	 *
 	 * @return string
 	 */
-	public function getAlphaSurnames($alpha, $surname1 = '') {
+	private function getAlphaSurnames(Tree $tree, $alpha, $surname1 = '') {
 		global $WT_TREE;
 
-		$surnames = QueryName::surnames('', $alpha, true, false, $WT_TREE->getTreeId());
+		$surnames = QueryName::surnames($WT_TREE, '', $alpha, true, false);
 		$out = '<ul>';
 		foreach (array_keys($surnames) as $surname) {
 			$out .= '<li id="sb_indi_' . $surname . '" class="sb_indi_surname_li"><a href="' . $surname . '" title="' . $surname . '" alt="' . $alpha . '" class="sb_indi_surname">' . $surname . '</a>';
@@ -185,15 +188,14 @@ class IndividualSidebarModule extends Module implements ModuleSidebarInterface {
 	}
 
 	/**
+	 * @param Tree   $tree
 	 * @param string $alpha
 	 * @param string $surname
 	 *
 	 * @return string
 	 */
-	public function getSurnameIndis($alpha, $surname) {
-		global $WT_TREE;
-
-		$indis = QueryName::individuals($surname, $alpha, '', true, false, $WT_TREE->getTreeId());
+	private function getSurnameIndis(Tree $tree, $alpha, $surname) {
+		$indis = QueryName::individuals($tree, $surname, $alpha, '', true, false);
 		$out = '<ul>';
 		foreach ($indis as $person) {
 			if ($person->canShowName()) {
@@ -213,14 +215,12 @@ class IndividualSidebarModule extends Module implements ModuleSidebarInterface {
 	}
 
 	/**
-	 * @param string $query
+	 * @param Tree   $tree  Search this tree
+	 * @param string $query Search for this text
 	 *
 	 * @return string
 	 */
-	public function search($query) {
-		global $WT_TREE;
-
-		$tree = Tree::findById($WT_TREE->getTreeId());
+	private function search(Tree $tree, $query) {
 		if (strlen($query) < 2) {
 			return '';
 		}
@@ -233,7 +233,7 @@ class IndividualSidebarModule extends Module implements ModuleSidebarInterface {
 				" ORDER BY n_sort COLLATE '" . I18N::$collation . "'" .
 				" LIMIT 50"
 			)
-			->execute(array("%{$query}%", "%{$query}%", $WT_TREE->getTreeId()))
+			->execute(array("%{$query}%", "%{$query}%", $tree->getTreeId()))
 			->fetchAll();
 
 		$out = '<ul>';

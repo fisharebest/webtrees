@@ -41,8 +41,8 @@ $form_pass1          = Filter::post('form_pass1', WT_REGEX_PASSWORD);
 $form_pass2          = Filter::post('form_pass2', WT_REGEX_PASSWORD);
 $form_email          = Filter::postEmail('form_email');
 $form_rootid         = Filter::post('form_rootid', WT_REGEX_XREF);
-$form_theme          = Filter::post('form_theme', implode('|', array_keys(Theme::installedThemes())));
-$form_language       = Filter::post('form_language', implode('|', array_keys(I18N::installedLanguages())), WT_LOCALE);
+$form_theme          = Filter::post('form_theme');
+$form_language       = Filter::post('form_language');
 $form_contact_method = Filter::post('form_contact_method');
 $form_visible_online = Filter::postBool('form_visible_online');
 

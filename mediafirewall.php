@@ -38,7 +38,7 @@ $media = Media::getInstance($mid, $WT_TREE);
  * Send a “Not found” error as an image
  */
 function send404AsImage() {
-	$error = I18N::translate('The media file was not found in this family tree');
+	$error = I18N::translate('The media file was not found in this family tree.');
 
 	$width  = mb_strlen($error) * 6.5 + 50;
 	$height = 60;
@@ -407,7 +407,7 @@ if ($generatewatermark) {
 		return;
 	} else {
 		// this image is defective.  log it
-		Log::addMediaLog('Media Firewall error: >' . I18N::translate('This media file is broken and cannot be watermarked') . '< in file >' . $serverFilename . '< memory used: ' . memory_get_usage());
+		Log::addMediaLog('Media Firewall error: >' . I18N::translate('This media file is broken and cannot be watermarked.') . '< in file >' . $serverFilename . '< memory used: ' . memory_get_usage());
 
 		// set usewatermark to false so image will simply be passed through below
 		$usewatermark = false;

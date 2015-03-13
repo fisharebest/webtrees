@@ -151,7 +151,7 @@ class FamilyTreeNewsModule extends Module implements ModuleBlockInterface {
 
 		echo
 			'<tr><td class="descriptionbox wrap width33">',
-			I18N::translate('Limit display by:'), help_link('gedcom_news_limit'),
+			/* I18N: Limit display by [age/number] */ I18N::translate('Limit display by'),
 			'</td><td class="optionbox"><select name="limit"><option value="nolimit" ',
 			($limit == 'nolimit' ? 'selected' : '') . ">",
 			I18N::translate('No limit') . "</option>",
@@ -160,7 +160,7 @@ class FamilyTreeNewsModule extends Module implements ModuleBlockInterface {
 			'</select></td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo I18N::translate('Limit:'), help_link('gedcom_news_flag');
+		echo I18N::translate('Limit');
 		echo '</td><td class="optionbox"><input type="text" name="flag" size="4" maxlength="4" value="' . $flag . '"></td></tr>';
 	}
 }

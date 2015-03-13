@@ -32,5 +32,5 @@ $controller->pageHeader();
 
 echo '<div id="repolist-page">',
 	'<h2>', I18N::translate('Repositories'), '</h2>';
-	echo format_repo_table(get_repo_list($WT_TREE->getTreeId()));
+	echo format_repo_table(get_repo_list($WT_TREE));
 echo '</div>';

@@ -121,10 +121,10 @@ case 'compose':
 		echo '<tr><td></td><td>', I18N::translate('This message will be sent to %s', '<b>' . $to_user->getRealNameHtml() . '</b>'), '</td></tr>';
 	}
 	if (!Auth::check()) {
-		echo '<tr><td valign="top" width="15%" align="right">', I18N::translate('Your name:'), '</td>';
-		echo '<td><input type="text" name="from_name" size="40" value="', Filter::escapeHtml($from_name), '"></td></tr><tr><td valign="top" align="right">', I18N::translate('Email address:'), '</td><td><input type="email" name="from_email" size="40" value="', Filter::escapeHtml($from_email), '"><br>', I18N::translate('Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be used in any other way besides responding to this inquiry.'), '<br><br></td></tr>';
+		echo '<tr><td valign="top" width="15%" align="right">', I18N::translate('Your name'), '</td>';
+		echo '<td><input type="text" name="from_name" size="40" value="', Filter::escapeHtml($from_name), '"></td></tr><tr><td valign="top" align="right">', I18N::translate('Email address'), '</td><td><input type="email" name="from_email" size="40" value="', Filter::escapeHtml($from_email), '"><br>', I18N::translate('Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be used in any other way besides responding to this inquiry.'), '<br><br></td></tr>';
 	}
-	echo '<tr><td align="right">', I18N::translate('Subject:'), '</td>';
+	echo '<tr><td align="right">', I18N::translate('Subject'), '</td>';
 	echo '<td>';
 	echo '<input type="hidden" name="action" value="send">';
 	echo '<input type="hidden" name="to" value="', Filter::escapeHtml($to), '">';
@@ -132,7 +132,7 @@ case 'compose':
 	echo '<input type="hidden" name="method" value="', $method, '">';
 	echo '<input type="hidden" name="url" value="', Filter::escapeHtml($url), '">';
 	echo '<input type="text" name="subject" size="50" value="', Filter::escapeHtml($subject), '"><br></td></tr>';
-	echo '<tr><td valign="top" align="right">', I18N::translate('Body:'), '<br></td><td><textarea name="body" cols="50" rows="7">', Filter::escapeHtml($body), '</textarea><br></td></tr>';
+	echo '<tr><td valign="top" align="right">', I18N::translate('Body'), '<br></td><td><textarea name="body" cols="50" rows="7">', Filter::escapeHtml($body), '</textarea><br></td></tr>';
 	echo '<tr><td></td><td><input type="submit" value="', I18N::translate('Send'), '"></td></tr>';
 	echo '</table>';
 	echo '</form>';
@@ -275,8 +275,8 @@ function addMessage($message) {
 	I18N::init($recipient->getPreference('language'));
 	if (isset($message['from_name'])) {
 		$message['body'] =
-			I18N::translate('Your name:') . ' ' . $message['from_name'] . Mail::EOL .
-			I18N::translate('Email address:') . ' ' . $message['from_email'] . Mail::EOL . Mail::EOL .
+			I18N::translate('Your name') . ' ' . $message['from_name'] . Mail::EOL .
+			I18N::translate('Email address') . ' ' . $message['from_email'] . Mail::EOL . Mail::EOL .
 			$message['body'];
 	}
 

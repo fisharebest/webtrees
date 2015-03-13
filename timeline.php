@@ -16,14 +16,8 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-/**
- * Defined in session.php
- *
- * @global integer $basexoffset
- * @global integer $baseyoffset
- */
-global $basexoffset, $baseyoffset;
+$basexoffset = 0;
+$baseyoffset = 0;
 
 define('WT_SCRIPT_NAME', 'timeline.php');
 require './includes/session.php';

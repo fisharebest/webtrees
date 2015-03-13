@@ -16,13 +16,10 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Localization\Locale;
 use Patchwork\TurkishUtf8;
 use Zend_Cache;
 use Zend_Cache_Core;
-use Zend_Locale;
-use Zend_Locale_Data;
-use Zend_Locale_Exception;
-use Zend_Locale_Format;
 use Zend_Registry;
 use Zend_Translate;
 
@@ -30,6 +27,9 @@ use Zend_Translate;
  * Class I18N - Functions to support internationalization (i18n) functionality.
  */
 class I18N {
+	/** @var Locale The current locale (e.g. LocaleEnGb) */
+	private static $locale;
+
 	// Digits are always rendered LTR, even in RTL text.
 	const DIGITS = '0123456789٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹';
 
@@ -90,74 +90,6 @@ class I18N {
 		'’' => '‘',
 	);
 
-	/** @var string[] The names of all currently supported languages */
-	private static $language_data = array(
-		'af' => array('Latn', 'Afrikaans'),
-		'ar' => array('Arab', 'العربية'),
-		'bg' => array('Cyrl', 'български'),
-		'bs' => array('Latn', 'bosanski'),
-		'ca' => array('Latn', 'català'),
-		'cs' => array('Latn', 'čeština'),
-		'da' => array('Latn', 'dansk'),
-		'de' => array('Latn', 'Deutsch'),
-		'dv' => array('Thaa', 'ދިވެހިބަސް'),
-		'el' => array('Grek', 'Ελληνικά'),
-		'en' => array('Latn', 'English'),
-		'en-AU' => array('Latn', 'Australian English'),
-		'en-GB' => array('Latn', 'British English'),
-		'en-US' => array('Latn', 'U.S. English'),
-		'es' => array('Latn', 'español'),
-		'et' => array('Latn', 'eesti'),
-		'fa' => array('Arab', 'فارسی'),
-		'fi' => array('Latn', 'suomi'),
-		'fo' => array('Latn', 'føroyskt'),
-		'fr' => array('Latn', 'français'),
-		'fr-CA' => array('Latn', 'français canadien'),
-		'gl' => array('Latn', 'galego'),
-		'haw' => array('Latn', 'ʻŌlelo Hawaiʻi'),
-		'he' => array('Hebr', 'עברית'),
-		'hr' => array('Latn', 'hrvatski'),
-		'hu' => array('Latn', 'magyar'),
-		'id' => array('Latn', 'Bahasa Indonesia'),
-		'is' => array('Latn', 'íslenska'),
-		'it' => array('Latn', 'italiano'),
-		'ja' => array('Kana', '日本語'),
-		'ka' => array('Geor', 'ქართული'),
-		'ko' => array('Kore', '한국어'),
-		'lt' => array('Latn', 'lietuvių'),
-		'lv' => array('Latn', 'latviešu'),
-		'mi' => array('Latn', 'Māori'),
-		'mr' => array('Mymr', 'मराठी'),
-		'ms' => array('Latn', 'Bahasa Melayu'),
-		'nb' => array('Latn', 'norsk bokmål'),
-		'ne' => array('Deva', 'नेपाली'),
-		'nl' => array('Latn', 'Nederlands'),
-		'nn' => array('Latn', 'nynorsk'),
-		'oc' => array('Latn', 'occitan'),
-		'pl' => array('Latn', 'polski'),
-		'pt' => array('Latn', 'português'),
-		'pt-BR' => array('Latn', 'português do Brasil'),
-		'ro' => array('Latn', 'română'),
-		'ru' => array('Cyrl', 'русский'),
-		'sk' => array('Latn', 'slovenčina'),
-		'sl' => array('Latn', 'slovenščina'),
-		'sr' => array('Cyrl', 'Српски'),
-		'sr-Latn' => array('Latn', 'srpski'),
-		'sv' => array('Latn', 'svenska'),
-		'ta' => array('Taml', 'தமிழ்'),
-		'tr' => array('Latn', 'Türkçe'),
-		'tt' => array('Cyrl', 'Татар'),
-		'uk' => array('Cyrl', 'українська'),
-		'vi' => array('Latn', 'Tiếng Việt'),
-		'yi' => array('Hebr', 'ייִדיש'),
-		'zh' => array('Hans', '中文'),
-		'zh-CN' => array('Hans', '简体中文'),
-		'zh-TW' => array('Hant', '繁體中文'),
-	);
-
-	/** @var string the name of the current locale, such as fr or en_GB */
-	private static $locale;
-
 	/** @var string The MySQL collation sequence used by this language, typically utf8_unicode_ci */
 	public static $collation;
 
@@ -166,9 +98,6 @@ class I18N {
 
 	/** @var Zend_Cache_Core */
 	private static $cache;
-
-	/** @var string The numbering system used by this language; typically latin digits */
-	private static $numbering_system;
 
 	/** @var Zend_Translate */
 	private static $translation_adapter;
@@ -197,16 +126,20 @@ class I18N {
 			self::$cache = Zend_Cache::factory('Core', 'Zend_Cache_Backend_BlackHole', $cache_options, array(), false, true);
 		}
 
-		Zend_Locale::setCache(self::$cache);
 		Zend_Translate::setCache(self::$cache);
 
-		$installed_languages = self::installedLanguages();
-		if (is_null($locale) || !array_key_exists($locale, $installed_languages)) {
+
+		$installed_locales = array();
+		foreach (self::installedLocales() as $installed_locale) {
+			$installed_locales[$installed_locale->languageTag()] = $installed_locale->endonym();
+		}
+
+		if (is_null($locale) || !array_key_exists($locale, $installed_locales)) {
 			// Automatic locale selection.
-			if (array_key_exists(Filter::get('lang'), $installed_languages)) {
+			if (array_key_exists(Filter::get('lang'), $installed_locales)) {
 				// Requested in the URL?
 				$locale = Filter::get('lang');
-			} elseif (array_key_exists($WT_SESSION->locale, $installed_languages)) {
+			} elseif (array_key_exists($WT_SESSION->locale, $installed_locales)) {
 				// Rembered from a previous visit?
 				$locale = $WT_SESSION->locale;
 			} else {
@@ -236,12 +169,12 @@ class I18N {
 					}
 				}
 				// Ensure there is a fallback.
-				if (!array_key_exists('en_US', $prefs2)) {
-					$prefs2['en_US'] = 0.01;
+				if (!array_key_exists('en-US', $prefs2)) {
+					$prefs2['en-US'] = 0.01;
 				}
 				arsort($prefs2);
 				foreach (array_keys($prefs2) as $pref) {
-					if (array_key_exists($pref, $installed_languages)) {
+					if (array_key_exists($pref, $installed_locales)) {
 						$locale = $pref;
 						break;
 					}
@@ -291,19 +224,12 @@ class I18N {
 
 
 		// Save the current locale, and some attributes of it
-		self::$locale         = $locale;
+		self::$locale = Locale::create($locale);
+
 		self::$list_separator = /* I18N: This punctuation is used to separate lists of items */ self::translate(', ');
 		self::$collation      = /* I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html */ self::translate('utf8_unicode_ci');
 
-		// Non-latin numbers may require non-latin digits
-		try {
-			self::$numbering_system = Zend_Locale_Data::getContent($locale, 'defaultnumberingsystem');
-		} catch (Zend_Locale_Exception $ex) {
-			// The latest CLDR database omits some languges such as Tatar (tt)
-			self::$numbering_system = 'latin';
-		}
-
-		return $locale;
+		return self::$locale->languageTag();
 	}
 
 	/**
@@ -316,43 +242,55 @@ class I18N {
 	}
 
 	/**
-	 * Check which languages are installed
+	 * The prefered locales for this site, or a default list if no preference.
 	 *
-	 * @return array
+	 * @return Locale[]
 	 */
-	public static function installedLanguages() {
-		$mo_files = glob(WT_ROOT . 'language' . DIRECTORY_SEPARATOR . '*.mo');
-		$cache_key = md5(serialize($mo_files));
+	public static function activeLocales() {
+		$code_list = Site::getPreference('LANGUAGES');
 
-		if (!($installed_languages = self::$cache->load($cache_key))) {
-			$installed_languages = array();
-			foreach ($mo_files as $mo_file) {
-				if (preg_match('/^(([a-z][a-z][a-z]?)([-_][A-Z][A-Z])?([-_][A-Za-z]+)*)\.mo$/', basename($mo_file), $match)) {
-					// Sort by the transation of the base language, then the variant.
-					// e.g. English|British English, Portuguese|Brazilian Portuguese
-					$tmp1 = self::languageName($match[1]);
-					if ($match[1] === $match[2]) {
-						$tmp2 = $tmp1;
-					} else {
-						$tmp2 = self::languageName($match[2]);
-					}
-					$installed_languages[$match[1]] = $tmp2 . '|' . $tmp1;
-				}
-			}
-			// Sort by the combined language/language name...
-			uasort($installed_languages, __NAMESPACE__ . '\I18N::strcasecmp');
-			foreach ($installed_languages as &$value) {
-				// The locale database doesn't have translations for certain
-				// "default" languages, such as zn_CH.
-				if (substr($value, -1) === '|') {
-					list($value,) = explode('|', $value);
-				} else {
-					list(,$value) = explode('|', $value);
-				}
-			}
-			self::$cache->save($installed_languages, $cache_key);
+		if ($code_list) {
+			$codes = explode(',', $code_list);
+		} else {
+			$codes = array(
+				'ar', 'bg', 'bs', 'ca', 'cs', 'da', 'de', 'el', 'en-GB', 'en-US', 'es',
+				'et', 'fi', 'fr', 'he', 'hr', 'hu', 'is', 'it', 'ka', 'lt', 'mr', 'nb',
+				'nl', 'nn', 'pl', 'pt', 'ru', 'sk', 'sv', 'tr', 'uk', 'vi', 'zh-Hans',
+			);
 		}
-		return $installed_languages;
+
+		$locales = array();
+		foreach ($codes as $code) {
+			if (file_exists(WT_ROOT . 'language/' . $code . '.mo')) {
+				try {
+					$locales[] = Locale::create($code);
+				} catch (\Exception $ex) {
+					// No such locale exists?
+				}
+			}
+		}
+		usort($locales, '\Fisharebest\Localization\Locale::compare');
+
+		return $locales;
+	}
+
+	/**
+	 * All locales for which a translation file exists.
+	 *
+	 * @return Locale[]
+	 */
+	public static function installedLocales() {
+		$locales = array();
+		foreach (glob(WT_ROOT . 'language/*.mo') as $file) {
+			try {
+				$locales[] = Locale::create(basename($file, '.mo'));
+			} catch (\Exception $ex) {
+				// No such locale exists?
+			}
+		}
+		usort($locales, '\Fisharebest\Localization\Locale::compare');
+
+		return $locales;
 	}
 
 	/**
@@ -361,8 +299,7 @@ class I18N {
 	 * @return string
 	 */
 	public static function htmlAttributes() {
-		list($lang) = preg_split('/[-_@]/', self::$locale);
-		return 'lang="' . $lang . '" dir="' . self::direction() . '"';
+		return self::$locale->htmlAttributes();
 	}
 
 	/**
@@ -379,10 +316,7 @@ class I18N {
 	 * @return string
 	 */
 	public static function number($n, $precision = 0) {
-		// Add "punctuation" and convert digits
-		$n = Zend_Locale_Format::toNumber($n, array('locale'=>WT_LOCALE, 'precision'=>$precision));
-		$n = self::digits($n);
-		return $n;
+		return self::$locale->number(round($n, $precision));
 	}
 
 	/**
@@ -395,11 +329,7 @@ class I18N {
 	 * @return string
 	 */
 	public static function digits($n) {
-		if (self::$numbering_system != 'latn') {
-			return Zend_Locale_Format::convertNumerals($n, 'latn', self::$numbering_system);
-		} else {
-			return $n;
-		}
+		return self::$locale->digits($n);
 	}
 
 	/**
@@ -427,7 +357,7 @@ class I18N {
 	 * @return string "ltr" or "rtl"
 	 */
 	public static function direction() {
-		return self::scriptDirection(self::languageScript(self::$locale));
+		return self::$locale->direction();
 	}
 
 	/**
@@ -603,15 +533,7 @@ class I18N {
 	 * @return string
 	 */
 	public static function languageName($locale) {
-		$language_tag = str_replace(array('_', '@'), '-', $locale);
-
-		if (array_key_exists($language_tag, self::$language_data)) {
-			return self::$language_data[$language_tag][1];
-		} elseif (class_exists('\Locale')) {
-			return \Locale::getDisplayName($locale, $locale);
-		} else {
-			return $locale;
-		}
+		return Locale::create($locale)->endonym();
 	}
 
 	/**
@@ -622,13 +544,7 @@ class I18N {
 	 * @return string
 	 */
 	public static function languageScript($locale) {
-		$language_tag = str_replace(array('_', '@'), '-', $locale);
-
-		if (array_key_exists($language_tag, self::$language_data)) {
-			return self::$language_data[$language_tag][0];
-		} else {
-			return 'Latn';
-		}
+		return Locale::create($locale)->script()->code();
 	}
 
 	/**
@@ -711,7 +627,7 @@ class I18N {
 	 * @return string
 	 */
 	public static function strtoupper($string) {
-		if (self::$locale === 'tr' || self::$locale === 'az') {
+		if (self::$locale->language()->code() === 'tr' || self::$locale->language()->code() === 'az') {
 			return TurkishUtf8::strtoupper($string);
 		} else {
 			return mb_strtoupper($string);
@@ -728,7 +644,7 @@ class I18N {
 	 * @return string
 	 */
 	public static function strtolower($string) {
-		if (self::$locale === 'tr' || self::$locale === 'az') {
+		if (self::$locale->language()->code() === 'tr' || self::$locale->language()->code() === 'az') {
 			return TurkishUtf8::strtolower($string);
 		} else {
 			return mb_strtolower($string);
@@ -873,40 +789,36 @@ class I18N {
 		$length_menu = '<select>' . $length_menu . '</select>';
 		$length_menu = /* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ self::translate('Display %s', $length_menu);
 
-		// Which symbol is used for separating numbers into groups
-		$symbols = Zend_Locale_Data::getList(self::$locale, 'symbols');
-		// Which digits are used for numbers
-		$digits = Zend_Locale_Data::getContent(self::$locale, 'numberingsystem', self::$numbering_system);
-
+		$digits = self::$locale->digits('0123456789');
 		if ($digits === '0123456789') {
 			$callback = '';
 		} else {
 			$callback = ',
 				"infoCallback": function(oSettings, iStart, iEnd, iMax, iTotal, sPre) {
 					return sPre
-						.replace(/0/g, "'.mb_substr($digits, 0, 1) . '")
-						.replace(/1/g, "'.mb_substr($digits, 1, 1) . '")
-						.replace(/2/g, "'.mb_substr($digits, 2, 1) . '")
-						.replace(/3/g, "'.mb_substr($digits, 3, 1) . '")
-						.replace(/4/g, "'.mb_substr($digits, 4, 1) . '")
-						.replace(/5/g, "'.mb_substr($digits, 5, 1) . '")
-						.replace(/6/g, "'.mb_substr($digits, 6, 1) . '")
-						.replace(/7/g, "'.mb_substr($digits, 7, 1) . '")
-						.replace(/8/g, "'.mb_substr($digits, 8, 1) . '")
-						.replace(/9/g, "'.mb_substr($digits, 9, 1) . '");
+						.replace(/0/g, "' . mb_substr($digits, 0, 1) . '")
+						.replace(/1/g, "' . mb_substr($digits, 1, 1) . '")
+						.replace(/2/g, "' . mb_substr($digits, 2, 1) . '")
+						.replace(/3/g, "' . mb_substr($digits, 3, 1) . '")
+						.replace(/4/g, "' . mb_substr($digits, 4, 1) . '")
+						.replace(/5/g, "' . mb_substr($digits, 5, 1) . '")
+						.replace(/6/g, "' . mb_substr($digits, 6, 1) . '")
+						.replace(/7/g, "' . mb_substr($digits, 7, 1) . '")
+						.replace(/8/g, "' . mb_substr($digits, 8, 1) . '")
+						.replace(/9/g, "' . mb_substr($digits, 9, 1) . '");
 				},
 				"formatNumber": function(iIn) {
 					return String(iIn)
-						.replace(/0/g, "'.mb_substr($digits, 0, 1) . '")
-						.replace(/1/g, "'.mb_substr($digits, 1, 1) . '")
-						.replace(/2/g, "'.mb_substr($digits, 2, 1) . '")
-						.replace(/3/g, "'.mb_substr($digits, 3, 1) . '")
-						.replace(/4/g, "'.mb_substr($digits, 4, 1) . '")
-						.replace(/5/g, "'.mb_substr($digits, 5, 1) . '")
-						.replace(/6/g, "'.mb_substr($digits, 6, 1) . '")
-						.replace(/7/g, "'.mb_substr($digits, 7, 1) . '")
-						.replace(/8/g, "'.mb_substr($digits, 8, 1) . '")
-						.replace(/9/g, "'.mb_substr($digits, 9, 1) . '");
+						.replace(/0/g, "' . mb_substr($digits, 0, 1) . '")
+						.replace(/1/g, "' . mb_substr($digits, 1, 1) . '")
+						.replace(/2/g, "' . mb_substr($digits, 2, 1) . '")
+						.replace(/3/g, "' . mb_substr($digits, 3, 1) . '")
+						.replace(/4/g, "' . mb_substr($digits, 4, 1) . '")
+						.replace(/5/g, "' . mb_substr($digits, 5, 1) . '")
+						.replace(/6/g, "' . mb_substr($digits, 6, 1) . '")
+						.replace(/7/g, "' . mb_substr($digits, 7, 1) . '")
+						.replace(/8/g, "' . mb_substr($digits, 8, 1) . '")
+						.replace(/9/g, "' . mb_substr($digits, 9, 1) . '");
 				}
 			';
 		}
@@ -924,7 +836,6 @@ class I18N {
 			' "infoEmpty":      "' . self::translate('Showing %1$s to %2$s of %3$s', 0, 0, 0) . '",' .
 			' "infoFiltered":   "' . /* I18N: %s is a placeholder for a number */ self::translate('(filtered from %s total entries)', '_MAX_') . '",' .
 			' "infoPostfix":    "",' .
-			' "infoThousands":  "' . $symbols['group'] . '",' .
 			' "lengthMenu":     "' . Filter::escapeJs($length_menu) . '",' .
 			' "loadingRecords": "' . self::translate('Loading…') . '",' .
 			' "processing":     "' . self::translate('Loading…') . '",' .

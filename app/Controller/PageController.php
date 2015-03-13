@@ -141,6 +141,7 @@ class PageController extends BaseController {
 			Theme::theme()->footerContainer() .
 			$this->getJavascript() .
 			Theme::theme()->hookFooterExtraJavascript() .
+			(WT_DEBUG_SQL ? Database::getQueryLog() : '') .
 			'</body>' .
 			'</html>' . PHP_EOL .
 			'<!-- webtrees: ' . WT_VERSION . ' -->' .

@@ -63,7 +63,7 @@ class TopSurnamesModule extends Module implements ModuleBlockInterface {
 		$all_surnames = array();
 		$i            = 0;
 		foreach (array_keys($top_surnames) as $top_surname) {
-			$all_surnames = array_merge($all_surnames, QueryName::surnames($top_surname, '', false, false, $WT_TREE->getTreeId()));
+			$all_surnames = array_merge($all_surnames, QueryName::surnames($WT_TREE, $top_surname, '', false, false));
 			if (++$i == $num) {
 				break;
 			}

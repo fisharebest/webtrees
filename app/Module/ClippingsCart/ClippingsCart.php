@@ -158,7 +158,7 @@ class ClippingsCart {
 		} elseif ($this->action === 'download') {
 			$media      = array();
 			$mediacount = 0;
-			$filetext   = gedcom_header($WT_TREE->getName());
+			$filetext   = gedcom_header($WT_TREE);
 			// Include SUBM/SUBN records, if they exist
 			$subn =
 				Database::prepare("SELECT o_gedcom FROM `##other` WHERE o_type=? AND o_file=?")
