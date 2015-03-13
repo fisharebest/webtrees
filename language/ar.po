@@ -6452,7 +6452,7 @@ msgstr "هذا الحقل لتحديد المعبد الذي تمت فيه مر�
 #. I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names
 #: admin_trees_manage.php:285
 #, php-format
-msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then the you would need to remove %3$s."
+msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
 msgstr ""
 
 #: admin_users.php:590
