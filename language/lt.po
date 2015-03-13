@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-03-13 10:57+0100\n"
+"PO-Revision-Date: 2015-03-13 11:49+0100\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
 "Language-Team: Lithuanian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/lt/>\n"
@@ -7335,7 +7335,7 @@ msgstr "Importuoti"
 
 #: admin_trees_manage.php:162
 msgid "Import a GEDCOM file"
-msgstr ""
+msgstr "Importuoti GEDCOM bylą"
 
 #: app/Module/GoogleMapsModule.php:4624
 msgid "Import all places from a family tree"
@@ -7343,7 +7343,7 @@ msgstr "Idėti visas vietoves iš šeimos medžio"
 
 #: admin_trees_manage.php:254
 msgid "Import options"
-msgstr ""
+msgstr "Importavimo nustatymai"
 
 #: admin_trees_merge.php:84 admin_trees_renumber.php:264
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
@@ -7815,7 +7815,7 @@ msgstr "Palikti nuorodą sąraše"
 #. I18N: A configuration setting
 #: admin_trees_manage.php:259
 msgid "Keep media objects"
-msgstr ""
+msgstr "Saugoti medijos objektus"
 
 #: app/Stats.php:6186
 msgid "Kenya"
@@ -7958,7 +7958,7 @@ msgstr "Kalba"
 #. I18N: Menu entry
 #: admin_site_config.php:144 app/Theme/AdministrationTheme.php:71
 msgid "Languages"
-msgstr ""
+msgstr "Kalbos"
 
 #: app/Stats.php:6193
 msgid "Laos"
@@ -9604,11 +9604,11 @@ msgstr "Ne"
 
 #: admin_trees_manage.php:88 admin_trees_manage.php:109
 msgid "No GEDCOM file was received."
-msgstr ""
+msgstr "GEDCOM byla nebuvo gauta."
 
 #: admin_trees_manage.php:240
 msgid "No GEDCOM files found."
-msgstr ""
+msgstr "Jokių GEDCOM bylų nebuvo rasta."
 
 #: app/Module/GoogleMapsModule.php:911
 msgid "No ancestors in the database."
@@ -11319,7 +11319,7 @@ msgstr "Ištrinti nuorodą iš sąrašo"
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: admin_trees_manage.php:272
 msgid "Remove the GEDCOM media path from filenames"
-msgstr ""
+msgstr "Ištrinti GEDCOM medijos aplankos vardą iš bylos vardų"
 
 #: app/Module/GoogleMapsModule.php:4521
 msgid "Remove this location?"
@@ -11342,7 +11342,7 @@ msgstr "Pernumeruoti šeimos medį"
 #. I18N: button label
 #: search.php:217
 msgid "Replace"
-msgstr ""
+msgstr "Pakeisti"
 
 #: admin_trees_places.php:103 search.php:162
 msgid "Replace with"
@@ -11745,7 +11745,7 @@ msgstr "Seattle, Vašingtonas"
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:348
 msgid "Second record"
-msgstr ""
+msgstr "Antras įrašas"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:394
@@ -11755,7 +11755,7 @@ msgstr "Saugus sujungimas"
 #. I18N: A site configuration setting
 #: admin_site_config.php:608
 msgid "Security code"
-msgstr ""
+msgstr "Apsaugos kodas"
 
 #. I18N: %s is a URL
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:128
@@ -11765,12 +11765,12 @@ msgstr "Surask daugiau informacijos čia: %s."
 
 #: admin_site_merge.php:203 admin_site_merge.php:245 admin_site_merge.php:286
 msgid "Select"
-msgstr ""
+msgstr "Pasirinkti"
 
 #. I18N: A configuration setting
 #: admin_trees_manage.php:192
 msgid "Select a GEDCOM file to import"
-msgstr ""
+msgstr "Pasirinkti GEDCOM bylą importavimui"
 
 #: includes/functions/functions_edit.php:368 reportengine.php:261
 msgid "Select a date"
@@ -11815,7 +11815,7 @@ msgstr ""
 
 #: admin_site_config.php:622
 msgid "Select the languages that will be shown in menus."
-msgstr ""
+msgstr "Pasirinkti kalbas kurios bus rodomos meniu."
 
 #: app/Module/FamilyTreeStatisticsModule.php:281
 msgid "Select the stats to show in this block"
@@ -11828,7 +11828,7 @@ msgstr "Pasirinkite šią paranką jeigu norite prisegti medijos bylas prijungta
 #. I18N: Records are indviduals, sources, etc.
 #: admin_site_merge.php:326
 msgid "Select two records to merge."
-msgstr ""
+msgstr "Pasirinkti du įrašus suliejimui."
 
 #: app/Gedcom/GedcomCodeRela.php:222
 msgid "Seller"
