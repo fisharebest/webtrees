@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-12 21:11+0000\n"
-"PO-Revision-Date: 2015-03-13 21:20+0100\n"
+"PO-Revision-Date: 2015-03-13 21:26+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
@@ -19792,6 +19792,9 @@ msgstr "webtrees שולחת מיילים ללא אחסון"
 #: admin_trees_download.php:154
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-latin scripts.  If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
 msgstr ""
+"webtrees משתמש בקידוד UTF-8 לאותיות מודגשות לטיניות, לתווים מיוחדים ולסימנים "
+"שאינם לטיניים. אם אתה רוצה להשתמש בקובץ ה-GEDCOM הזה עם תוכנה גנאלוגית שאינה "
+"תומכת UTF-8, עלך ליצור אותו באמצעות קידוד ISO-8859-1."
 
 #: includes/functions/functions_print.php:185
 msgid "webtrees wiki"
