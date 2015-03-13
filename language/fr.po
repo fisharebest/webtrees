@@ -60,7 +60,7 @@ msgstr " / par période de temps"
 
 #: admin_trees_download.php:34
 msgid " — "
-msgstr ""
+msgstr " —"
 
 #. I18N: Abbreviation for "number %s"
 #: includes/functions/functions_print_facts.php:187
@@ -81,12 +81,8 @@ msgstr[1] "%1$d individus affichés, sur le total normal de %2$d, pour %3$d gén
 #, php-format
 msgid "%1$d individual is missing birthplace map coordinates: %2$s."
 msgid_plural "%1$d individuals are missing birthplace map coordinates: %2$s."
-msgstr[0] ""
-"%1$d individu n’est pas affiché sur la carte car les coordonnées du lieu de "
-"naissance ne sont pas définies&nbsp;: %2$s."
-msgstr[1] ""
-"%1$d individus ne sont pas affichés sur la carte car les coordonnées du lieu "
-"de naissance ne sont pas définies&nbsp;: %2$s."
+msgstr[0] "%1$d individu n’est pas affiché sur la carte car les coordonnées du lieu de naissance ne sont pas définies&nbsp;: %2$s."
+msgstr[1] "%1$d individus ne sont pas affichés sur la carte car les coordonnées du lieu de naissance ne sont pas définies&nbsp;: %2$s."
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:635
@@ -289,15 +285,15 @@ msgstr[1] "il y a %s jours"
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s famille a été mise à jour."
+msgstr[1] "%s familles ont été mises à jour."
 
 #: admin.php:761
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s arbre généalogique"
+msgstr[1] "%s arbres généalogiques"
 
 #: app/Stats.php:4748 app/Stats.php:4752
 #, php-format
@@ -331,8 +327,8 @@ msgstr[1] "%s personnes sont privées."
 #, php-format
 msgid "%s individuals has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s individu a été mis à jour."
+msgstr[1] "%s individus ont été mis à jour."
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:122
@@ -373,8 +369,8 @@ msgstr[1] "il y a %s mois"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s note a été mise à jour."
+msgstr[1] "%s notes ont été mises à jour."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: includes/functions/functions.php:2108
@@ -399,8 +395,8 @@ msgstr[1] "il y a %s secondes"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s note a été mise à jour."
+msgstr[1] "%s notes ont été mises à jour."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2124
@@ -438,7 +434,7 @@ msgstr[1] "%s semaines"
 #: admin_trees_download.php:164
 #, php-format
 msgid "%s will be prepended to media filenames."
-msgstr ""
+msgstr "%s sera ajouté devant les noms de fichiers médias. "
 
 #: app/I18N.php:457 includes/functions/functions_date.php:42
 #, php-format
@@ -696,11 +692,11 @@ msgstr "Une description de la cause de l’évènement ou du fait associé, comm
 
 #: admin_trees_download.php:116 admin_trees_manage.php:209
 msgid "A file on the server"
-msgstr ""
+msgstr "Un fichier sur le serveur"
 
 #: admin_trees_download.php:201 admin_trees_manage.php:198
 msgid "A file on your computer"
-msgstr ""
+msgstr "Un fichier sur votre ordinateur"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:30
@@ -1346,7 +1342,7 @@ msgstr "Ajouter les parents avec cette famille."
 
 #: admin_trees_manage.php:266
 msgid "Add spaces where long lines were wrapped"
-msgstr ""
+msgstr "Ajouter des espaces là où des retours à la ligne ont été faits "
 
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: admin_trees_download.php:161 app/Module/ClippingsCartModule.php:212
@@ -1870,9 +1866,7 @@ msgstr "Un autre façon de sélectionner un nouveau thème."
 
 #: help_text.php:53
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
-msgstr ""
-"Un associé est un autre individu qui est en relation avec ce fait ou cet "
-"événement, tel un témoin ou un prêtre."
+msgstr "Un associé est un autre individu qui est en relation avec ce fait ou cet événement, tel un témoin ou un prêtre."
 
 #: help_text.php:48
 msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
@@ -3350,15 +3344,15 @@ msgstr "Changer les blocs de cette page"
 
 #: admin_users.php:212
 msgid "Change the blocks on this user’s “My page”"
-msgstr "Changer les bloc sur “Ma page” de cet utilisateur"
+msgstr "Changer les blocs sur “Ma page” de cet utilisateur"
 
 #: admin_trees_manage.php:383 index_edit.php:52
 msgid "Change the “Home page” blocks"
-msgstr "Changer les bloc sur la “Page d’accueil”"
+msgstr "Changer les blocs sur la “Page d’accueil”"
 
 #: index_edit.php:44
 msgid "Change the “My page” blocks"
-msgstr "Changer les bloc sur “Ma page”"
+msgstr "Changer les blocs sur “Ma page”"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: includes/functions/functions_print_lists.php:1757
@@ -3827,7 +3821,7 @@ msgstr "Terminé; date inconnue"
 
 #: admin_trees_download.php:142
 msgid "Compress the GEDCOM file"
-msgstr ""
+msgstr "Compacter le fichier GEDCOM"
 
 #. I18N: gedcom tag CONC
 #: app/Gedcom/GedcomTag.php:303
@@ -4057,7 +4051,7 @@ msgstr "Créez votre propre graphique"
 
 #: admin_trees_manage.php:712
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
-msgstr ""
+msgstr "Crée, met à jour et efface un arbre généalogique pour chaque GEDCOM du répertoire des données."
 
 #. I18N: gedcom tag CREM
 #: app/Gedcom/GedcomTag.php:331 modules_v3/family_group_report/report.xml:309
@@ -5700,7 +5694,7 @@ msgstr "Exporter"
 
 #: admin_trees_download.php:34
 msgid "Export a GEDCOM file"
-msgstr ""
+msgstr "Exporte un fichier GEDCOM"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:279
@@ -5709,7 +5703,7 @@ msgstr "Exporte tous les arbres vers des fichiers GEDCOM…"
 
 #: admin_trees_download.php:135
 msgid "Export options"
-msgstr ""
+msgstr "Exporte les options"
 
 #. I18N: A configuration setting.  ... [who were] born in the last XX years or died in the last YY years
 #: admin_trees_config.php:483
@@ -6255,7 +6249,7 @@ msgstr "Rechercher un caractère spécial"
 
 #: relationship.php:96
 msgid "Find all possible relationships"
-msgstr ""
+msgstr "Trouver toutes les parentés possibles"
 
 #: app/Module/CensusAssistantModule.php:63 find.php:55
 #: includes/functions/functions_print.php:730
@@ -6266,7 +6260,7 @@ msgstr "Rechercher une personne"
 
 #: relationship.php:91
 msgid "Find the closest relationships"
-msgstr ""
+msgstr "Trouver la plus proche parenté"
 
 #: app/Stats.php:6141
 msgid "Finland"
@@ -6284,7 +6278,7 @@ msgstr "Premier évènement"
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:331
 msgid "First record"
-msgstr ""
+msgstr "Premier enregistrement"
 
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:29
 msgid "Fix name slashes and spaces"
@@ -6358,7 +6352,7 @@ msgstr "Pour des ordinations SDJ (Eglise de Jésus-Christ des saints des dernier
 #: admin_trees_manage.php:285
 #, php-format
 msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then the you would need to remove %3$s."
-msgstr ""
+msgstr "Par exemple, si le fichier GEDCOM contient %1$s et que webtrees s’attend à trouver %2$s dans le répertoire des médias, il vous faudra enlever %3$s."
 
 #: admin_users.php:590
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
@@ -6754,7 +6748,7 @@ msgstr "Google Maps™"
 #: app/Module/GoogleMapsModule.php:1521 app/Module/GoogleMapsModule.php:2658
 #: app/Module/GoogleMapsModule.php:4147
 msgid "Google Maps™ preferences"
-msgstr "Préférences GoogleMaps™"
+msgstr "Préférences Google Maps™"
 
 #. I18N: http://en.wikipedia.org/wiki/Google_street_view
 #: app/Module/GoogleMapsModule.php:323 app/Module/GoogleMapsModule.php:2417
@@ -7022,7 +7016,7 @@ msgstr "Masquer à tout le monde"
 
 #: app/Module/GoogleMapsModule.php:492
 msgid "Hide the flags that are configured in the googlemap module.  Usually these are for countries and states.  This serves as a visual cue that the markers around the flag are from the general area, and not the specific spot."
-msgstr "Masquer les drapeaux qui sont configurés dans le module GoogleMap. Habituellement ce sont les pays et les États. Cela sert de repère visuel que les marqueurs autour du drapeau sont de la région de général, et non pas d’accompagnement spécifiques."
+msgstr "Masquer les drapeaux qui sont configurés dans le module Google Maps. Habituellement ce sont les pays et les États. Cela sert de repère visuel que les marqueurs autour du drapeau sont de la région de général, et non pas d’accompagnement spécifiques."
 
 #: app/Stats.php:1555
 msgid "Highest population"
@@ -7226,7 +7220,7 @@ msgstr "Si vous ne pouvez pas résoudre le problème vous-même, vous pouvez dem
 
 #: admin_trees_manage.php:269
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
-msgstr ""
+msgstr "Si vous avez créé ce fichier GEDCOM avec un logiciel de généalogie qui ignore les espaces lorsqu’il coupe les lignes trop longues, sélectionnez cette option pour réinsérer les espaces manquantes."
 
 #: login.php:350
 msgid "If you didn’t request an account, you can just delete this message."
@@ -7273,7 +7267,7 @@ msgstr "Si vous essayez de dépasser ces limites, vous pouvez faire face à des 
 
 #: admin_site_config.php:507
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatcially."
-msgstr ""
+msgstr "Si vous utilisez un des services de suivi et d’analyse de trafic suivants, webtrees peut ajouter les codes de suivi automatiquement."
 
 #. I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1256
@@ -7308,7 +7302,7 @@ msgstr "Importer"
 
 #: admin_trees_manage.php:162
 msgid "Import a GEDCOM file"
-msgstr ""
+msgstr "Importer un fichier GEDCOM"
 
 #: app/Module/GoogleMapsModule.php:4624
 msgid "Import all places from a family tree"
@@ -7316,7 +7310,7 @@ msgstr "Importer tous les lieux d’un arbre généalogique"
 
 #: admin_trees_manage.php:254
 msgid "Import options"
-msgstr ""
+msgstr "Importer les options"
 
 #: admin_trees_merge.php:84 admin_trees_renumber.php:264
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
@@ -7788,7 +7782,7 @@ msgstr "Garder le lien dans la liste"
 #. I18N: A configuration setting
 #: admin_trees_manage.php:259
 msgid "Keep media objects"
-msgstr ""
+msgstr "Conserver les objets médias"
 
 #: app/Stats.php:6186
 msgid "Kenya"
@@ -7931,7 +7925,7 @@ msgstr "Langage"
 #. I18N: Menu entry
 #: admin_site_config.php:144 app/Theme/AdministrationTheme.php:71
 msgid "Languages"
-msgstr ""
+msgstr "Langages"
 
 #: app/Stats.php:6193
 msgid "Laos"
@@ -9582,11 +9576,11 @@ msgstr "Non"
 
 #: admin_trees_manage.php:88 admin_trees_manage.php:109
 msgid "No GEDCOM file was received."
-msgstr ""
+msgstr "Aucun fichier GEDCOM n’a été reçu."
 
 #: admin_trees_manage.php:240
 msgid "No GEDCOM files found."
-msgstr ""
+msgstr "Aucun fichier GEDCOM n’a été trouvé."
 
 #: app/Module/GoogleMapsModule.php:911
 msgid "No ancestors in the database."
@@ -10264,7 +10258,7 @@ msgstr "Dimensions de la page"
 #. I18N: The number of [...]
 #: app/Module/ExtraInformationModule.php:67 index.php:144
 msgid "Page views"
-msgstr ""
+msgstr "Pages vues"
 
 #: app/Gedcom/GedcomTag.php:1888
 msgid "Painting"
@@ -11295,7 +11289,7 @@ msgstr "Supprimer le lien dans la liste"
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: admin_trees_manage.php:272
 msgid "Remove the GEDCOM media path from filenames"
-msgstr ""
+msgstr "Retirer le chemin des fichiers médias du GEDCOM"
 
 #: app/Module/GoogleMapsModule.php:4521
 msgid "Remove this location?"
@@ -11318,7 +11312,7 @@ msgstr "Renumérote l’arbre généalogique"
 #. I18N: button label
 #: search.php:217
 msgid "Replace"
-msgstr ""
+msgstr "Remplacer"
 
 #: admin_trees_places.php:103 search.php:162
 msgid "Replace with"
@@ -11420,9 +11414,7 @@ msgstr "Restaurer la mise en page des blocs par défaut"
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:376
 msgid "Restrict access to the website, using IP addresses and user-agent strings."
-msgstr ""
-"Restreindre l’accès au site en utilisant les adresses IP et les chaînes user-"
-"agent."
+msgstr "Restreindre l’accès au site en utilisant les adresses IP et les chaînes user-agent."
 
 #: admin_users.php:569
 msgid "Restrict to immediate family"
@@ -11443,7 +11435,7 @@ msgstr "Valeur résultante"
 
 #: statistics.php:632
 msgid "Results"
-msgstr ""
+msgstr "Résultats"
 
 #. I18N: gedcom tag RETI
 #: app/Gedcom/GedcomTag.php:741
@@ -11723,7 +11715,7 @@ msgstr "Seattle, Washington"
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:348
 msgid "Second record"
-msgstr ""
+msgstr "Second enregistrement"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:394
@@ -11733,7 +11725,7 @@ msgstr "SSL requis"
 #. I18N: A site configuration setting
 #: admin_site_config.php:608
 msgid "Security code"
-msgstr ""
+msgstr "Code de sécurité"
 
 #. I18N: %s is a URL
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:128
@@ -11743,12 +11735,12 @@ msgstr "Voir %s pour plus d’information."
 
 #: admin_site_merge.php:203 admin_site_merge.php:245 admin_site_merge.php:286
 msgid "Select"
-msgstr ""
+msgstr "Choisir"
 
 #. I18N: A configuration setting
 #: admin_trees_manage.php:192
 msgid "Select a GEDCOM file to import"
-msgstr ""
+msgstr "Choisir un fichier GEDCOM à importer"
 
 #: includes/functions/functions_edit.php:368 reportengine.php:261
 msgid "Select a date"
@@ -11760,10 +11752,7 @@ msgstr "Sélectionnez dans la liste des fichiers déjà sur le serveur un fichie
 
 #: help_text.php:299
 msgid "Select a relationship name from the list.  Selecting <b>Godfather</b> means: <i>This associate is the godfather of the current individual</i>."
-msgstr ""
-"Choisir dans la liste le lien entre les deux personnes.  Exemple&nbsp;: en "
-"choisissant «&nbsp;Parrain&nbsp;», cela signifie que la personne associée "
-"est le parrain de l’individu sélectionné."
+msgstr "Choisir dans la liste le lien entre les deux personnes.  Exemple&nbsp;: en choisissant «&nbsp;Parrain&nbsp;», cela signifie que la personne associée est le parrain de l’individu sélectionné."
 
 #: statistics.php:499
 msgid "Select chart type"
@@ -11792,11 +11781,11 @@ msgstr "Sélectionnez l’intervalle de décompte désiré"
 
 #: admin_site_merge.php:189
 msgid "Select the facts and events to keep from both records."
-msgstr ""
+msgstr "Choisir les faits et événements à conserver dans les deux enregistrements."
 
 #: admin_site_config.php:622
 msgid "Select the languages that will be shown in menus."
-msgstr ""
+msgstr "Choisir les langages qui apparaîtront dans les menus."
 
 #: app/Module/FamilyTreeStatisticsModule.php:281
 msgid "Select the stats to show in this block"
@@ -11809,7 +11798,7 @@ msgstr "Choisissez cette option pour inclure les fichiers média liés aux enreg
 #. I18N: Records are indviduals, sources, etc.
 #: admin_site_merge.php:326
 msgid "Select two records to merge."
-msgstr ""
+msgstr "Choisir deux enregistrements à fusionner."
 
 #: app/Gedcom/GedcomCodeRela.php:222
 msgid "Seller"
@@ -12339,7 +12328,7 @@ msgstr "Compteur du nombre d’accès aux pages du site."
 
 #: compact.php:57
 msgid "Show images"
-msgstr ""
+msgstr "Montrer les images"
 
 #: app/Module/GoogleMapsModule.php:4549
 msgid "Show inactive places"
@@ -12633,7 +12622,7 @@ msgstr "Sœur"
 #: admin_site_config.php:557 admin_site_config.php:573
 #: admin_site_config.php:598
 msgid "Site identification code"
-msgstr ""
+msgstr "Code d’identification du site"
 
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: admin_users.php:459 edituser.php:271
@@ -12643,12 +12632,12 @@ msgstr "Les membres peuvent s’envoyer mutuellement des messages. Vous pouvez c
 #. I18N: A site configuration setting
 #: admin_site_config.php:515 admin_site_config.php:536
 msgid "Site verification code"
-msgstr ""
+msgstr "Code de vérification du site"
 
 #. I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting
 #: admin_site_config.php:526 admin_site_config.php:547
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
-msgstr ""
+msgstr "Les codes de vérification de site ne fonctionnent pas quand webtrees est installé dans un sous-répertoire."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:30
@@ -12745,7 +12734,7 @@ msgstr "Somalie"
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #: admin_trees_manage.php:284
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow webtrees to find the file, the first part of the path must be removed."
-msgstr ""
+msgstr "Certains logiciels de généalogie créent des fichiers GEDCOM avec des noms de fichiers médias qui incluent leurs chemins complets. Ces chemins n’existent pas sur le serveur web. Pour permettre à webtrees de trouver les fichiers, la première partie du chemin doit être enlevée."
 
 #: app/Module/GoogleMapsModule.php:429
 msgid "Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”."
@@ -13122,7 +13111,7 @@ msgstr "Îles Svalbard et Jan Mayen"
 #. I18N: Reverse the order of two individuals
 #: relationship.php:86
 msgid "Swap individuals"
-msgstr ""
+msgstr "Intervertir les individus"
 
 #: app/Stats.php:6286
 msgid "Swaziland"
@@ -13142,7 +13131,7 @@ msgstr "Sydney, Australie"
 
 #: admin_trees_manage.php:705
 msgid "Synchronize family trees with GEDCOM files"
-msgstr ""
+msgstr "Synchroniser les arbres généalogiques et les fichiers GEDCOM"
 
 #: app/Stats.php:6288
 msgid "Syrian Arab Republic"
@@ -13461,13 +13450,13 @@ msgstr "Le dossier peut être spécifié par une URL complète (ex. /home/user_n
 
 #: admin_site_merge.php:194
 msgid "The following facts and events were found in both records."
-msgstr ""
+msgstr "On trouve les faits et événements suivants dans les deux enregistrements."
 
 #. I18N: the name of an individual, source, etc.
 #: admin_site_merge.php:236 admin_site_merge.php:277
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr ""
+msgstr "On ne trouve les faits et événements suivants que dans l’enregistrement de %s."
 
 #: setup.php:174
 msgid "The following list shows typical requirements."
@@ -13514,7 +13503,7 @@ msgstr "Le lien de «&nbsp;%1$s&nbsp;» à «&nbsp;%2$s&nbsp;» a été supprim�
 #: admin_site_merge.php:106
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr ""
+msgstr "Le lien entre « %1$s » et « %2$s » a été mis à jour."
 
 #: addmedia.php:313 addmedia.php:341
 #, php-format
@@ -13582,7 +13571,7 @@ msgstr "Les mots de passe ne correspondent pas."
 #: admin_trees_config.php:219 admin_trees_config.php:341
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr ""
+msgstr "Les préférences pour l’arbre généalogique « %s » ont été mises à jour."
 
 #: admin_modules.php:71
 #, php-format
@@ -13592,7 +13581,7 @@ msgstr "Les préférences du module “%s” ont été effacées."
 #: app/Module/GoogleMapsModule.php:265
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr ""
+msgstr "Les préférences pour le module « %s » ont été mises à jour."
 
 #: setup.php:381
 msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database.  “wt_” is suggested, but can be anything you want."
@@ -13611,7 +13600,7 @@ msgstr "Enregistrement copié dans le presse-papiers."
 #: admin_site_merge.php:162
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr ""
+msgstr "Les enregistrements « %1$s » et « %2$s » ont été fusionnés."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:112
 msgid "The regex appears to contain an error.  It can’t be used."
@@ -13715,12 +13704,12 @@ msgstr "La règle d’accès au site a été mise à jour."
 #: admin_site_config.php:44 admin_site_config.php:63 admin_site_config.php:76
 #: admin_site_config.php:91 admin_site_config.php:100
 msgid "The website preferences have been updated."
-msgstr ""
+msgstr "Les préférences du site web ont été mises à jour."
 
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: admin_trees_config.php:2291
 msgid "The website www.geonames.org provides a large database of place names.  This can be searched when entering new places.  To use this feature, you must register for a free account at www.geonames.org and provide the username."
-msgstr "Ce site Internet www.geonames.org contient une importante base de données de noms de lieux. Celle-ci peut être interrogée lors de l’ajout de nouveaux lieux. Afin d’utiliser cette fonctionnalité, vous devez ouvrir un compte gratuit sur www.geonames.org et fournir le nom d’utilisateur."
+msgstr "Le site Internet www.geonames.org contient une importante base de données de noms de lieux. Celle-ci peut être interrogée lors de l’ajout de nouveaux lieux. Afin d’utiliser cette fonctionnalité, vous devez ouvrir un compte gratuit sur www.geonames.org et fournir le nom d’utilisateur."
 
 #: setup.php:939
 msgid "The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem."
@@ -13751,7 +13740,7 @@ msgstr "Thèmes"
 
 #: admin_site_config.php:236
 msgid "Themes can be selected at three levels: user, family tree, and website.  User settings take priority over family tree settings, which in turn take priority over the website setting.  Selecting “default theme” at one level will use the theme at the next level."
-msgstr ""
+msgstr "On peut choisir les thèmes à trois niveaux : utilisateur, arbre généalogique, site web. Les préférences de l’utilisateur l’emportent sur celles de l’arbre généalogiques qui elles-mêmes l’emportent sur celles du site généalogique. En choisissant « thème par défaut » à un niveau, on utilisera le thème du niveau inférieur."
 
 #: app/Module/ExtraInformationModule.php:58
 #: app/Module/IndividualFactsTabModule.php:115
@@ -14394,7 +14383,7 @@ msgstr "Toutes les données généalogiques de “%s” seront effacées et sero
 
 #: app/Module/GoogleMapsModule.php:1781
 msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables."
-msgstr "Ceci listera tous les lieux du fichier GEDCOM sélectionné. Par défaut ceci N’INCLURA PAS les endroits qui correspondent totalement avec les tables de GoogleMap"
+msgstr "Ceci listera tous les lieux du fichier GEDCOM sélectionné. Par défaut ceci N’INCLURA PAS les endroits qui correspondent totalement avec les tables de Google Maps"
 
 #: admin_trees_places.php:96
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
@@ -14545,7 +14534,7 @@ msgstr "Afin de réduire la hauteur du bloc «&nbsp;Nouvelles&nbsp;», l’admin
 
 #: admin_trees_download.php:145 app/Module/ClippingsCartModule.php:180
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file.  You will need to uncompress the .ZIP file before you can use it."
-msgstr ""
+msgstr "Pour réduire le volume du téléchargement, on peut compacter les données dans un fichier .ZIP. Il faudra décompacter le fichier .ZIP avant de l’utiliser."
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: admin_site_config.php:461
@@ -14747,12 +14736,12 @@ msgstr "Utilisateurs"
 #. I18N: Menu entry
 #: admin_site_config.php:141 app/Theme/AdministrationTheme.php:72
 msgid "Tracking and analytics"
-msgstr ""
+msgstr "Suivi et analyse de trafic"
 
 #: admin_site_config.php:563 admin_site_config.php:588
 #: admin_site_config.php:613
 msgid "Tracking and analytics are not added to the control panel."
-msgstr ""
+msgstr "Le suivi et l’analyse de trafic ne sont pas ajoutés au panneau de contrôle."
 
 #. I18N: gedcom tag TRLR
 #: app/Gedcom/GedcomTag.php:841
@@ -15902,12 +15891,12 @@ msgstr "Votre compte utilisateur ne peut pas «&nbsp;approuver automatiquement l
 #: admin.php:491
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer maintained.  You should upgrade to a later version."
-msgstr ""
+msgstr "Votre serveur web utilise PHP version %s qui n’est plus mis à jour. Vous devriez passer à une version plus récente."
 
 #: admin.php:485
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates.  You should upgrade to a later version as soon as possible."
-msgstr ""
+msgstr "Votre serveur web utilise PHP version %s qui ne reçoit plus de mises à jour de sécurité. Vous devriez passer à une version plus récente dès que possible."
 
 #: app/Stats.php:6323
 msgid "Yugoslavia"
@@ -19751,7 +19740,7 @@ msgstr "webtrees envoie des courriels sans stockage"
 
 #: admin_trees_download.php:154
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-latin scripts.  If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
-msgstr ""
+msgstr "webtrees utilise l’encodage UTF-8 pour les lettres accentuées, les caractères spéciaux et les écritures autres que latines. Si vous voulez utiliser ce GEDCOM avec un logiciel de généalogie qui ne supporte pas UTF-8, créez-le avec l’encodage ISO-8859-1."
 
 #: includes/functions/functions_print.php:185
 msgid "webtrees wiki"
