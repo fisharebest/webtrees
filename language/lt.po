@@ -7297,7 +7297,7 @@ msgid "If you try to exceed these limits, you may experience server time-outs an
 msgstr "Jei bandysite viršyti šias ribas, gali pasireikšti serverio darbo pertrūkimai ir matyti tuščius/baltus puslapius."
 
 #: admin_site_config.php:507
-msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatcially."
+msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr ""
 "Jei naudojate vieną iš šių stebėjimo ir analizės paslaugų, webtrees gali "
 "pridėti sekimo kodus automatiškai."

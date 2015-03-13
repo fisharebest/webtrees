@@ -7221,7 +7221,7 @@ msgid "If you try to exceed these limits, you may experience server time-outs an
 msgstr ""
 
 #: admin_site_config.php:507
-msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatcially."
+msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr ""
 
 #. I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting
