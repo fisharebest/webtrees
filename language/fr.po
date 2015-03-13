@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-03-12 23:24+0100\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: French <http://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
+"PO-Revision-Date: 2015-03-13 10:38+0100\n"
+"Last-Translator: Michel Rivière <gustine@laposte.net>\n"
+"Language-Team: French "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -7203,6 +7204,8 @@ msgstr "Si vous êtes l’administrateur du site, vous devez vérifier que&nbsp;
 #: site-unavailable.php:109
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
 msgstr ""
+"Si vous ne pouvez pas résoudre vous-même le problème, vous pouvez demander "
+"de l’aide sur les forums à <a href=\"http://webtrees.net\">webtrees.net</a>"
 
 #: admin_trees_manage.php:269
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
