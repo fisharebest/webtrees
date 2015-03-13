@@ -192,50 +192,50 @@ msgstr "%G:%i:%s"
 
 #: app/Module/LoggedInUsersModule.php:51 app/Stats.php:5372
 #, php-format
-msgid "%d anonymous logged-in user"
-msgid_plural "%d anonymous logged-in users"
-msgstr[0] "משתמש אלמוני %d מחובר"
-msgstr[1] "%d משתמשים אלמוניים מחוברים"
+msgid "%s anonymous logged-in user"
+msgid_plural "%s anonymous logged-in users"
+msgstr[0] "משתמש אלמוני %s מחובר"
+msgstr[1] "%s משתמשים אלמוניים מחוברים"
 
 #: app/Module/LoggedInUsersModule.php:57 app/Stats.php:5382
 #, php-format
-msgid "%d logged-in user"
-msgid_plural "%d logged-in users"
-msgstr[0] "משתמש מחובר %d"
-msgstr[1] "%d משתמשים מחוברים"
+msgid "%s logged-in user"
+msgid_plural "%s logged-in users"
+msgstr[0] "משתמש מחובר %s"
+msgstr[1] "%s משתמשים מחוברים"
 
 #: app/Module/RelativesTabModule.php:62
 #, php-format
-msgid "%d month"
-msgid_plural "%d months"
+msgid "%s month"
+msgid_plural "%s months"
 msgstr[0] "חודש אחד"
-msgstr[1] "%d חודשים"
+msgstr[1] "%s חודשים"
 
 #: app/Module/RelativesTabModule.php:60
 #, php-format
-msgid "%d year"
-msgid_plural "%d years"
+msgid "%s year"
+msgid_plural "%s years"
 msgstr[0] "שנה אחת"
-msgstr[1] "%d שנים"
+msgstr[1] "%s שנים"
 
 #: includes/functions/functions.php:555
 #, php-format
 msgctxt "FEMALE"
-msgid "%d × cousin"
-msgstr "דודנית מדרגה %d"
+msgid "%s × cousin"
+msgstr "דודנית מדרגה %s"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:520
 #, php-format
 msgctxt "MALE"
-msgid "%d × cousin"
-msgstr "דודן מדרגה %d"
+msgid "%s × cousin"
+msgstr "דודן מדרגה %s"
 
 #: includes/functions/functions.php:590
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%d × cousin"
-msgstr "דודן/דודנית מדרגה %d"
+msgid "%s × cousin"
+msgstr "דודן/דודנית מדרגה %s"
 
 #. I18N: This is the format string for full dates.  See http://php.net/date for codes
 #: app/Date.php:222 app/I18N.php:212
@@ -14349,8 +14349,8 @@ msgstr "שרת זה אינו תומך בהורדה מאובטחת באמצעות
 
 #: setup.php:183
 #, php-format
-msgid "This server’s memory limit is %d MB and its CPU time limit is %d seconds."
-msgstr "מגבלת זיכרון של שרת זה היא %d מגה-בית, ומגבלת זמן  ה-CPU היא %d שניות."
+msgid "This server’s memory limit is %s MB and its CPU time limit is %s seconds."
+msgstr "מגבלת זיכרון של שרת זה היא %s מגה-בית, ומגבלת זמן  ה-CPU היא %s שניות."
 
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: admin_trees_config.php:1632
@@ -17029,146 +17029,146 @@ msgstr "אישה של נכד"
 #: includes/functions/functions.php:1639 includes/functions/functions.php:1654
 #: includes/functions/functions.php:1667
 #, php-format
-msgid "great ×%d aunt"
-msgstr "דודה מדרגה %d"
+msgid "great ×%s aunt"
+msgstr "דודה מדרגה %s"
 
 #: includes/functions/functions.php:1641 includes/functions/functions.php:1656
 #: includes/functions/functions.php:1669
 #, php-format
-msgid "great ×%d aunt/uncle"
-msgstr "דוד/דודה מדרגה %d"
+msgid "great ×%s aunt/uncle"
+msgstr "דוד/דודה מדרגה %s"
 
 #: includes/functions/functions.php:2042 includes/functions/functions.php:2057
 #, php-format
-msgid "great ×%d grandchild"
-msgstr "נכד/נכדה מדרגה %d"
+msgid "great ×%s grandchild"
+msgstr "נכד/נכדה מדרגה %s"
 
 #: includes/functions/functions.php:2040 includes/functions/functions.php:2055
 #, php-format
-msgid "great ×%d granddaughter"
-msgstr "נכדה מדרגה %d"
+msgid "great ×%s granddaughter"
+msgstr "נכדה מדרגה %s"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1912 includes/functions/functions.php:1922
 #: includes/functions/functions.php:1932 includes/functions/functions.php:1942
 #: includes/functions/functions.php:1954
 #, php-format
-msgid "great ×%d grandfather"
-msgstr "סבא מדרגה %d"
+msgid "great ×%s grandfather"
+msgstr "סבא מדרגה %s"
 
 #: includes/functions/functions.php:1914 includes/functions/functions.php:1924
 #: includes/functions/functions.php:1934 includes/functions/functions.php:1944
 #: includes/functions/functions.php:1956
 #, php-format
-msgid "great ×%d grandmother"
-msgstr "סבתא מדרגה %d"
+msgid "great ×%s grandmother"
+msgstr "סבתא מדרגה %s"
 
 #: includes/functions/functions.php:1916 includes/functions/functions.php:1926
 #: includes/functions/functions.php:1936 includes/functions/functions.php:1946
 #: includes/functions/functions.php:1958
 #, php-format
-msgid "great ×%d grandparent"
-msgstr "סבא/סבתא מדרגה %d"
+msgid "great ×%s grandparent"
+msgstr "סבא/סבתא מדרגה %s"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:2038 includes/functions/functions.php:2053
 #, php-format
-msgid "great ×%d grandson"
-msgstr "נכד מדרגה %d"
+msgid "great ×%s grandson"
+msgstr "נכד מדרגה %s"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1823 includes/functions/functions.php:1836
 #, php-format
-msgid "great ×%d nephew"
-msgstr "אחיין מדרגה %d"
+msgid "great ×%s nephew"
+msgstr "אחיין מדרגה %s"
 
 #: includes/functions/functions.php:1797
 #, php-format
-msgctxt "(a man’s) brother’s great ×(%d-1) grandson"
-msgid "great ×%d nephew"
-msgstr "אחיין מדרגה %d"
+msgctxt "(a man’s) brother’s great ×(%s-1) grandson"
+msgid "great ×%s nephew"
+msgstr "אחיין מדרגה %s"
 
 #: includes/functions/functions.php:1799
 #, php-format
-msgctxt "(a man’s) sister’s great ×(%d-1) grandson"
-msgid "great ×%d nephew"
-msgstr "אחיין מדרגה %d"
+msgctxt "(a man’s) sister’s great ×(%s-1) grandson"
+msgid "great ×%s nephew"
+msgstr "אחיין מדרגה %s"
 
 #: includes/functions/functions.php:1801
 #, php-format
-msgctxt "(a woman’s) great ×%d nephew"
-msgid "great ×%d nephew"
-msgstr "אחיין מדרגה %d"
+msgctxt "(a woman’s) great ×%s nephew"
+msgid "great ×%s nephew"
+msgstr "אחיין מדרגה %s"
 
 #: includes/functions/functions.php:1827 includes/functions/functions.php:1840
 #, php-format
-msgid "great ×%d nephew/niece"
-msgstr "אחיין/ית מדרגה %d"
+msgid "great ×%s nephew/niece"
+msgstr "אחיין/ית מדרגה %s"
 
 #: includes/functions/functions.php:1813
 #, php-format
-msgctxt "(a man’s) brother’s great ×(%d-1) grandchild"
-msgid "great ×%d nephew/niece"
-msgstr "אחיין/ית מדרגה %d"
+msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
+msgid "great ×%s nephew/niece"
+msgstr "אחיין/ית מדרגה %s"
 
 #: includes/functions/functions.php:1815
 #, php-format
-msgctxt "(a man’s) sister’s great ×(%d-1) grandchild"
-msgid "great ×%d nephew/niece"
-msgstr "אחיין/ית מדרגה %d"
+msgctxt "(a man’s) sister’s great ×(%s-1) grandchild"
+msgid "great ×%s nephew/niece"
+msgstr "אחיין/ית מדרגה %s"
 
 #: includes/functions/functions.php:1817
 #, php-format
-msgctxt "(a woman’s) great ×%d nephew/niece"
-msgid "great ×%d nephew/niece"
-msgstr "אחיין/ית מדרגה %d"
+msgctxt "(a woman’s) great ×%s nephew/niece"
+msgid "great ×%s nephew/niece"
+msgstr "אחיין/ית מדרגה %s"
 
 #: includes/functions/functions.php:1825 includes/functions/functions.php:1838
 #, php-format
-msgid "great ×%d niece"
-msgstr "אחיינית מדרגה %d"
+msgid "great ×%s niece"
+msgstr "אחיינית מדרגה %s"
 
 #: includes/functions/functions.php:1805
 #, php-format
-msgctxt "(a man’s) brother’s great ×(%d-1) granddaughter"
-msgid "great ×%d niece"
-msgstr "אחיינית מדרגה %d"
+msgctxt "(a man’s) brother’s great ×(%s-1) granddaughter"
+msgid "great ×%s niece"
+msgstr "אחיינית מדרגה %s"
 
 #: includes/functions/functions.php:1807
 #, php-format
-msgctxt "(a man’s) sister’s great ×(%d-1) granddaughter"
-msgid "great ×%d niece"
-msgstr "אחיינית מדרגה %d"
+msgctxt "(a man’s) sister’s great ×(%s-1) granddaughter"
+msgid "great ×%s niece"
+msgstr "אחיינית מדרגה %s"
 
 #: includes/functions/functions.php:1809
 #, php-format
-msgctxt "(a woman’s) great ×%d niece"
-msgid "great ×%d niece"
-msgstr "אחיינית מדרגה %d"
+msgctxt "(a woman’s) great ×%s niece"
+msgid "great ×%s niece"
+msgstr "אחיינית מדרגה %s"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1637 includes/functions/functions.php:1665
 #, php-format
-msgid "great ×%d uncle"
-msgstr "דוד מדרגה %d"
+msgid "great ×%s uncle"
+msgstr "דוד מדרגה %s"
 
 #: includes/functions/functions.php:1647
 #, php-format
-msgctxt "great ×(%d-1) grandfather’s brother"
-msgid "great ×%d uncle"
-msgstr "דוד מדרגה %d"
+msgctxt "great ×(%s-1) grandfather’s brother"
+msgid "great ×%s uncle"
+msgstr "דוד מדרגה %s"
 
 #: includes/functions/functions.php:1649
 #, php-format
-msgctxt "great ×(%d-1) grandmother’s brother"
-msgid "great ×%d uncle"
-msgstr "דוד מדרגה %d"
+msgctxt "great ×(%s-1) grandmother’s brother"
+msgid "great ×%s uncle"
+msgstr "דוד מדרגה %s"
 
 #: includes/functions/functions.php:1651
 #, php-format
-msgctxt "great ×(%d-1) grandparent’s brother"
-msgid "great ×%d uncle"
-msgstr "דוד מדרגה %d"
+msgctxt "great ×(%s-1) grandparent’s brother"
+msgid "great ×%s uncle"
+msgstr "דוד מדרגה %s"
 
 #: includes/functions/functions.php:1579
 msgid "great ×4 aunt"
@@ -18618,10 +18618,10 @@ msgstr "מקסימום"
 #: app/Module/UpcomingAnniversariesModule.php:125
 #: app/Module/YahrzeitModule.php:250
 #, php-format
-msgid "maximum %d day"
-msgid_plural "maximum %d days"
+msgid "maximum %s day"
+msgid_plural "maximum %s days"
 msgstr[0] "לכל היותר יום אחד"
-msgstr[1] "לכל היותר %d ימים"
+msgstr[1] "לכל היותר %s ימים"
 
 #: admin_trees_config.php:404 admin_trees_config.php:428
 #: admin_trees_config.php:468 admin_trees_config.php:508
@@ -20138,10 +20138,10 @@ msgstr "…"
 #~ msgid "No other link between the two individuals could be found."
 #~ msgstr "לא נמצא קשר אחר בין שני האנשים."
 
-#~ msgid "Note: “living” is defined (if no death or burial is known) as ending %d year after birth or estimated birth."
-#~ msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %d years after birth or estimated birth."
+#~ msgid "Note: “living” is defined (if no death or burial is known) as ending %s year after birth or estimated birth."
+#~ msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %s years after birth or estimated birth."
 #~ msgstr[0] "הערה: ”חיים” מוגדר (אם מוות או קבורה אינם ידועים) שנה לאחר לידה או לידה משוערת."
-#~ msgstr[1] "הערה: ”חיים” מוגדר (אם מוות או קבורה אינם ידועים) %d שנים לאחר לידה או לידה משוערת."
+#~ msgstr[1] "הערה: ”חיים” מוגדר (אם מוות או קבורה אינם ידועים) %s שנים לאחר לידה או לידה משוערת."
 
 #~ msgid "Notes are free-form text and will appear in the Fact Details section of the page."
 #~ msgstr "הערות הן מלל במבנה חופשי ותופענה בחלק הדף של פירוט העובדה."

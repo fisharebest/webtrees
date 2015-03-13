@@ -130,7 +130,7 @@ class RecentChangesModule extends Module implements ModuleBlockInterface {
 		echo I18N::translate('Number of days to show');
 		echo '</td><td class="optionbox">';
 		echo '<input type="text" name="days" size="2" value="', $days, '">';
-		echo ' <em>', I18N::plural('maximum %d day', 'maximum %d days', self::MAX_DAYS, self::MAX_DAYS), '</em>';
+		echo ' <em>', I18N::plural('maximum %s day', 'maximum %s days', I18N::number(self::MAX_DAYS), I18N::number(self::MAX_DAYS)), '</em>';
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';

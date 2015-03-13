@@ -187,51 +187,51 @@ msgstr "%H:%i:%s"
 
 #: app/Module/LoggedInUsersModule.php:51 app/Stats.php:5372
 #, php-format
-msgid "%d anonymous logged-in user"
-msgid_plural "%d anonymous logged-in users"
-msgstr[0] "%d 匿名登录的用户"
+msgid "%s anonymous logged-in user"
+msgid_plural "%s anonymous logged-in users"
+msgstr[0] "%s 匿名登录的用户"
 
 #: app/Module/LoggedInUsersModule.php:57 app/Stats.php:5382
 #, php-format
-msgid "%d logged-in user"
-msgid_plural "%d logged-in users"
-msgstr[0] "%d 登录的用户"
+msgid "%s logged-in user"
+msgid_plural "%s logged-in users"
+msgstr[0] "%s 登录的用户"
 
 #: app/Module/RelativesTabModule.php:62
 #, php-format
-msgid "%d month"
-msgid_plural "%d months"
-msgstr[0] "%d 月"
+msgid "%s month"
+msgid_plural "%s months"
+msgstr[0] "%s 月"
 
 #: app/Module/RelativesTabModule.php:60
 #, php-format
-msgid "%d year"
-msgid_plural "%d years"
-msgstr[0] "%d 年"
+msgid "%s year"
+msgid_plural "%s years"
+msgstr[0] "%s 年"
 
 #: includes/functions/functions.php:555
 #, php-format
 msgctxt "FEMALE"
-msgid "%d × cousin"
-msgstr "隔 %d 代的表兄（妹）"
+msgid "%s × cousin"
+msgstr "隔 %s 代的表兄（妹）"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:520
 #, php-format
 msgctxt "MALE"
-msgid "%d × cousin"
-msgstr "隔 %d 代的堂（表）兄妹"
+msgid "%s × cousin"
+msgstr "隔 %s 代的堂（表）兄妹"
 
 #: includes/functions/functions.php:590
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%d × cousin"
-msgstr "隔 %d 代的堂（表）兄(妹)"
+msgid "%s × cousin"
+msgstr "隔 %s 代的堂（表）兄(妹)"
 
 #. I18N: This is the format string for full dates.  See http://php.net/date for codes
 #: app/Date.php:222 app/I18N.php:212
 msgid "%j %F %Y"
-msgstr "%Y年 %m月 %d日"
+msgstr "%Y年 %m月 %s日"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: app/Stats.php:6341
@@ -14270,8 +14270,8 @@ msgstr ""
 
 #: setup.php:183
 #, php-format
-msgid "This server’s memory limit is %d MB and its CPU time limit is %d seconds."
-msgstr "这个服务器的内存限制是 %d MB和它的CPU时间限制是 %d 秒。"
+msgid "This server’s memory limit is %s MB and its CPU time limit is %s seconds."
+msgstr "这个服务器的内存限制是 %s MB和它的CPU时间限制是 %s 秒。"
 
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: admin_trees_config.php:1632
@@ -16942,146 +16942,146 @@ msgstr "孙媳"
 #: includes/functions/functions.php:1639 includes/functions/functions.php:1654
 #: includes/functions/functions.php:1667
 #, php-format
-msgid "great ×%d aunt"
-msgstr "距 %d 代的阿姨"
+msgid "great ×%s aunt"
+msgstr "距 %s 代的阿姨"
 
 #: includes/functions/functions.php:1641 includes/functions/functions.php:1656
 #: includes/functions/functions.php:1669
 #, php-format
-msgid "great ×%d aunt/uncle"
-msgstr "距 %d 代的阿姨/叔叔"
+msgid "great ×%s aunt/uncle"
+msgstr "距 %s 代的阿姨/叔叔"
 
 #: includes/functions/functions.php:2042 includes/functions/functions.php:2057
 #, php-format
-msgid "great ×%d grandchild"
-msgstr "距 %d 代的孙子"
+msgid "great ×%s grandchild"
+msgstr "距 %s 代的孙子"
 
 #: includes/functions/functions.php:2040 includes/functions/functions.php:2055
 #, php-format
-msgid "great ×%d granddaughter"
-msgstr "距 %d 代的孙女"
+msgid "great ×%s granddaughter"
+msgstr "距 %s 代的孙女"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1912 includes/functions/functions.php:1922
 #: includes/functions/functions.php:1932 includes/functions/functions.php:1942
 #: includes/functions/functions.php:1954
 #, php-format
-msgid "great ×%d grandfather"
-msgstr "距 %d 代的祖父"
+msgid "great ×%s grandfather"
+msgstr "距 %s 代的祖父"
 
 #: includes/functions/functions.php:1914 includes/functions/functions.php:1924
 #: includes/functions/functions.php:1934 includes/functions/functions.php:1944
 #: includes/functions/functions.php:1956
 #, php-format
-msgid "great ×%d grandmother"
-msgstr "距 %d 代的祖母"
+msgid "great ×%s grandmother"
+msgstr "距 %s 代的祖母"
 
 #: includes/functions/functions.php:1916 includes/functions/functions.php:1926
 #: includes/functions/functions.php:1936 includes/functions/functions.php:1946
 #: includes/functions/functions.php:1958
 #, php-format
-msgid "great ×%d grandparent"
-msgstr "距 %d 代的祖父母"
+msgid "great ×%s grandparent"
+msgstr "距 %s 代的祖父母"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:2038 includes/functions/functions.php:2053
 #, php-format
-msgid "great ×%d grandson"
-msgstr "距 %d 代的孙子"
+msgid "great ×%s grandson"
+msgstr "距 %s 代的孙子"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1823 includes/functions/functions.php:1836
 #, php-format
-msgid "great ×%d nephew"
-msgstr "%d 代侄子"
+msgid "great ×%s nephew"
+msgstr "%s 代侄子"
 
 #: includes/functions/functions.php:1797
 #, php-format
-msgctxt "(a man’s) brother’s great ×(%d-1) grandson"
-msgid "great ×%d nephew"
-msgstr "%d 代侄子"
+msgctxt "(a man’s) brother’s great ×(%s-1) grandson"
+msgid "great ×%s nephew"
+msgstr "%s 代侄子"
 
 #: includes/functions/functions.php:1799
 #, php-format
-msgctxt "(a man’s) sister’s great ×(%d-1) grandson"
-msgid "great ×%d nephew"
-msgstr "距 %d 代的外甥子"
+msgctxt "(a man’s) sister’s great ×(%s-1) grandson"
+msgid "great ×%s nephew"
+msgstr "距 %s 代的外甥子"
 
 #: includes/functions/functions.php:1801
 #, php-format
-msgctxt "(a woman’s) great ×%d nephew"
-msgid "great ×%d nephew"
-msgstr "距 %d 代的侄子"
+msgctxt "(a woman’s) great ×%s nephew"
+msgid "great ×%s nephew"
+msgstr "距 %s 代的侄子"
 
 #: includes/functions/functions.php:1827 includes/functions/functions.php:1840
 #, php-format
-msgid "great ×%d nephew/niece"
-msgstr "距 %d 代的侄子/侄女"
+msgid "great ×%s nephew/niece"
+msgstr "距 %s 代的侄子/侄女"
 
 #: includes/functions/functions.php:1813
 #, php-format
-msgctxt "(a man’s) brother’s great ×(%d-1) grandchild"
-msgid "great ×%d nephew/niece"
-msgstr "%d 代侄子/侄女"
+msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
+msgid "great ×%s nephew/niece"
+msgstr "%s 代侄子/侄女"
 
 #: includes/functions/functions.php:1815
 #, php-format
-msgctxt "(a man’s) sister’s great ×(%d-1) grandchild"
-msgid "great ×%d nephew/niece"
-msgstr "距 %d 代的外甥子/外甥女"
+msgctxt "(a man’s) sister’s great ×(%s-1) grandchild"
+msgid "great ×%s nephew/niece"
+msgstr "距 %s 代的外甥子/外甥女"
 
 #: includes/functions/functions.php:1817
 #, php-format
-msgctxt "(a woman’s) great ×%d nephew/niece"
-msgid "great ×%d nephew/niece"
-msgstr "距 %d 代的侄子/侄女"
+msgctxt "(a woman’s) great ×%s nephew/niece"
+msgid "great ×%s nephew/niece"
+msgstr "距 %s 代的侄子/侄女"
 
 #: includes/functions/functions.php:1825 includes/functions/functions.php:1838
 #, php-format
-msgid "great ×%d niece"
-msgstr "距 %d 代的外甥女"
+msgid "great ×%s niece"
+msgstr "距 %s 代的外甥女"
 
 #: includes/functions/functions.php:1805
 #, php-format
-msgctxt "(a man’s) brother’s great ×(%d-1) granddaughter"
-msgid "great ×%d niece"
-msgstr "%d 代侄女"
+msgctxt "(a man’s) brother’s great ×(%s-1) granddaughter"
+msgid "great ×%s niece"
+msgstr "%s 代侄女"
 
 #: includes/functions/functions.php:1807
 #, php-format
-msgctxt "(a man’s) sister’s great ×(%d-1) granddaughter"
-msgid "great ×%d niece"
-msgstr "距 %d 代的外甥女"
+msgctxt "(a man’s) sister’s great ×(%s-1) granddaughter"
+msgid "great ×%s niece"
+msgstr "距 %s 代的外甥女"
 
 #: includes/functions/functions.php:1809
 #, php-format
-msgctxt "(a woman’s) great ×%d niece"
-msgid "great ×%d niece"
-msgstr "距 %d 代的侄女"
+msgctxt "(a woman’s) great ×%s niece"
+msgid "great ×%s niece"
+msgstr "距 %s 代的侄女"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1637 includes/functions/functions.php:1665
 #, php-format
-msgid "great ×%d uncle"
-msgstr "距 %d 代的叔叔"
+msgid "great ×%s uncle"
+msgstr "距 %s 代的叔叔"
 
 #: includes/functions/functions.php:1647
 #, php-format
-msgctxt "great ×(%d-1) grandfather’s brother"
-msgid "great ×%d uncle"
-msgstr "距 %d 代的叔叔"
+msgctxt "great ×(%s-1) grandfather’s brother"
+msgid "great ×%s uncle"
+msgstr "距 %s 代的叔叔"
 
 #: includes/functions/functions.php:1649
 #, php-format
-msgctxt "great ×(%d-1) grandmother’s brother"
-msgid "great ×%d uncle"
-msgstr "距 %d 代的叔叔"
+msgctxt "great ×(%s-1) grandmother’s brother"
+msgid "great ×%s uncle"
+msgstr "距 %s 代的叔叔"
 
 #: includes/functions/functions.php:1651
 #, php-format
-msgctxt "great ×(%d-1) grandparent’s brother"
-msgid "great ×%d uncle"
-msgstr "距 %d 代的叔叔"
+msgctxt "great ×(%s-1) grandparent’s brother"
+msgid "great ×%s uncle"
+msgstr "距 %s 代的叔叔"
 
 #: includes/functions/functions.php:1579
 msgid "great ×4 aunt"
@@ -18530,9 +18530,9 @@ msgstr "最大"
 #: app/Module/UpcomingAnniversariesModule.php:125
 #: app/Module/YahrzeitModule.php:250
 #, php-format
-msgid "maximum %d day"
-msgid_plural "maximum %d days"
-msgstr[0] "最大 %d 天"
+msgid "maximum %s day"
+msgid_plural "maximum %s days"
+msgstr[0] "最大 %s 天"
 
 #: admin_trees_config.php:404 admin_trees_config.php:428
 #: admin_trees_config.php:468 admin_trees_config.php:508
@@ -20036,9 +20036,9 @@ msgstr "缺少姓氏"
 #~ msgid "No other link between the two individuals could be found."
 #~ msgstr "两个人之间没有其他的关系可以找到。"
 
-#~ msgid "Note: “living” is defined (if no death or burial is known) as ending %d year after birth or estimated birth."
-#~ msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %d years after birth or estimated birth."
-#~ msgstr[0] "注:“活着”的定义是如果没有死亡和埋葬做为出生或估计出生后%d年后的结果。"
+#~ msgid "Note: “living” is defined (if no death or burial is known) as ending %s year after birth or estimated birth."
+#~ msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %s years after birth or estimated birth."
+#~ msgstr[0] "注:“活着”的定义是如果没有死亡和埋葬做为出生或估计出生后%s年后的结果。"
 
 #~ msgid "Notes are free-form text and will appear in the Fact Details section of the page."
 #~ msgstr "记事是自由格式的文本,也会出现在事实细节部分的页面。"

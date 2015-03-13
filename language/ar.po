@@ -202,66 +202,66 @@ msgstr "%h:%i:%s%A"
 
 #: app/Module/LoggedInUsersModule.php:51 app/Stats.php:5372
 #, php-format
-msgid "%d anonymous logged-in user"
-msgid_plural "%d anonymous logged-in users"
+msgid "%s anonymous logged-in user"
+msgid_plural "%s anonymous logged-in users"
 msgstr[0] "لا يوجد أي مستخدماً مسجلاً مجهولاً"
 msgstr[1] "مستخدماً واحد مسجلاً مجهول"
 msgstr[2] "إثنين مستخدمين مسجلين مجهولين"
-msgstr[3] "%d مستخدمين مسجلين مجهولين"
-msgstr[4] "%d مستخدماُ مسجلاً مجهولاً"
-msgstr[5] "%d مستخدماُ مسجلاً مجهولاً"
+msgstr[3] "%s مستخدمين مسجلين مجهولين"
+msgstr[4] "%s مستخدماُ مسجلاً مجهولاً"
+msgstr[5] "%s مستخدماُ مسجلاً مجهولاً"
 
 #: app/Module/LoggedInUsersModule.php:57 app/Stats.php:5382
 #, php-format
-msgid "%d logged-in user"
-msgid_plural "%d logged-in users"
+msgid "%s logged-in user"
+msgid_plural "%s logged-in users"
 msgstr[0] "لا يوجد أي مستخدماً مسجلاً"
 msgstr[1] "مستخدماً مسجلاً واحداً"
 msgstr[2] "إثنين مستخدمين مسجلين"
-msgstr[3] "%d مستخدمين مسجلين"
-msgstr[4] "%d مستخدماً مسجلاً"
-msgstr[5] "%d مستخدماً مسجلاً"
+msgstr[3] "%s مستخدمين مسجلين"
+msgstr[4] "%s مستخدماً مسجلاً"
+msgstr[5] "%s مستخدماً مسجلاً"
 
 #: app/Module/RelativesTabModule.php:62
 #, php-format
-msgid "%d month"
-msgid_plural "%d months"
-msgstr[0] "%d شهراً"
+msgid "%s month"
+msgid_plural "%s months"
+msgstr[0] "%s شهراً"
 msgstr[1] "شهراً واحداً"
 msgstr[2] "شهران"
-msgstr[3] "%d أشهر"
-msgstr[4] "%d شهراً"
-msgstr[5] "%d شهراً"
+msgstr[3] "%s أشهر"
+msgstr[4] "%s شهراً"
+msgstr[5] "%s شهراً"
 
 #: app/Module/RelativesTabModule.php:60
 #, php-format
-msgid "%d year"
-msgid_plural "%d years"
-msgstr[0] "%d أعوام"
+msgid "%s year"
+msgid_plural "%s years"
+msgstr[0] "%s أعوام"
 msgstr[1] "عاماً واحداً"
 msgstr[2] "عامان"
-msgstr[3] "%d أعوام"
-msgstr[4] "%d عاماً"
-msgstr[5] "%d عاماً"
+msgstr[3] "%s أعوام"
+msgstr[4] "%s عاماً"
+msgstr[5] "%s عاماً"
 
 #: includes/functions/functions.php:555
 #, php-format
 msgctxt "FEMALE"
-msgid "%d × cousin"
-msgstr "حفيدة %d لسلف مشترك"
+msgid "%s × cousin"
+msgstr "حفيدة %s لسلف مشترك"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:520
 #, php-format
 msgctxt "MALE"
-msgid "%d × cousin"
-msgstr "حفيد %d لسلف مشترك"
+msgid "%s × cousin"
+msgstr "حفيد %s لسلف مشترك"
 
 #: includes/functions/functions.php:590
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%d × cousin"
-msgstr "حفيد %d لسلف مشترك"
+msgid "%s × cousin"
+msgstr "حفيد %s لسلف مشترك"
 
 #. I18N: This is the format string for full dates.  See http://php.net/date for codes
 #: app/Date.php:222 app/I18N.php:212
@@ -14440,8 +14440,8 @@ msgstr ""
 
 #: setup.php:183
 #, php-format
-msgid "This server’s memory limit is %d MB and its CPU time limit is %d seconds."
-msgstr "حد ذاكرة الخادم هو %dم.ب. وحد زمن إستخدام المعالج المركزي هو %d ثانية."
+msgid "This server’s memory limit is %s MB and its CPU time limit is %s seconds."
+msgstr "حد ذاكرة الخادم هو %sم.ب. وحد زمن إستخدام المعالج المركزي هو %s ثانية."
 
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: admin_trees_config.php:1632
@@ -17132,146 +17132,146 @@ msgstr "زوجة إبن إبن"
 #: includes/functions/functions.php:1639 includes/functions/functions.php:1654
 #: includes/functions/functions.php:1667
 #, php-format
-msgid "great ×%d aunt"
-msgstr "أخت جد-أب %d"
+msgid "great ×%s aunt"
+msgstr "أخت جد-أب %s"
 
 #: includes/functions/functions.php:1641 includes/functions/functions.php:1656
 #: includes/functions/functions.php:1669
 #, php-format
-msgid "great ×%d aunt/uncle"
-msgstr "أخ/أخت جد-أب %d"
+msgid "great ×%s aunt/uncle"
+msgstr "أخ/أخت جد-أب %s"
 
 #: includes/functions/functions.php:2042 includes/functions/functions.php:2057
 #, php-format
-msgid "great ×%d grandchild"
-msgstr "حفيد %d"
+msgid "great ×%s grandchild"
+msgstr "حفيد %s"
 
 #: includes/functions/functions.php:2040 includes/functions/functions.php:2055
 #, php-format
-msgid "great ×%d granddaughter"
-msgstr "حفيدة %d"
+msgid "great ×%s granddaughter"
+msgstr "حفيدة %s"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1912 includes/functions/functions.php:1922
 #: includes/functions/functions.php:1932 includes/functions/functions.php:1942
 #: includes/functions/functions.php:1954
 #, php-format
-msgid "great ×%d grandfather"
-msgstr "أب جد %d"
+msgid "great ×%s grandfather"
+msgstr "أب جد %s"
 
 #: includes/functions/functions.php:1914 includes/functions/functions.php:1924
 #: includes/functions/functions.php:1934 includes/functions/functions.php:1944
 #: includes/functions/functions.php:1956
 #, php-format
-msgid "great ×%d grandmother"
-msgstr "أم جد %d"
+msgid "great ×%s grandmother"
+msgstr "أم جد %s"
 
 #: includes/functions/functions.php:1916 includes/functions/functions.php:1926
 #: includes/functions/functions.php:1936 includes/functions/functions.php:1946
 #: includes/functions/functions.php:1958
 #, php-format
-msgid "great ×%d grandparent"
-msgstr "والد جد %d"
+msgid "great ×%s grandparent"
+msgstr "والد جد %s"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:2038 includes/functions/functions.php:2053
 #, php-format
-msgid "great ×%d grandson"
-msgstr "حفيد %d"
+msgid "great ×%s grandson"
+msgstr "حفيد %s"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1823 includes/functions/functions.php:1836
 #, php-format
-msgid "great ×%d nephew"
-msgstr "إبن حفيد %d لأخ/لأخت"
+msgid "great ×%s nephew"
+msgstr "إبن حفيد %s لأخ/لأخت"
 
 #: includes/functions/functions.php:1797
 #, php-format
-msgctxt "(a man’s) brother’s great ×(%d-1) grandson"
-msgid "great ×%d nephew"
-msgstr "إبن حفيد %d لأخ"
+msgctxt "(a man’s) brother’s great ×(%s-1) grandson"
+msgid "great ×%s nephew"
+msgstr "إبن حفيد %s لأخ"
 
 #: includes/functions/functions.php:1799
 #, php-format
-msgctxt "(a man’s) sister’s great ×(%d-1) grandson"
-msgid "great ×%d nephew"
-msgstr "إبن حفيد %d لأخت"
+msgctxt "(a man’s) sister’s great ×(%s-1) grandson"
+msgid "great ×%s nephew"
+msgstr "إبن حفيد %s لأخت"
 
 #: includes/functions/functions.php:1801
 #, php-format
-msgctxt "(a woman’s) great ×%d nephew"
-msgid "great ×%d nephew"
-msgstr "إبن حفيد %d لأخ/أخت"
+msgctxt "(a woman’s) great ×%s nephew"
+msgid "great ×%s nephew"
+msgstr "إبن حفيد %s لأخ/أخت"
 
 #: includes/functions/functions.php:1827 includes/functions/functions.php:1840
 #, php-format
-msgid "great ×%d nephew/niece"
-msgstr "ولد حفيد %d لأخ/لأخت"
+msgid "great ×%s nephew/niece"
+msgstr "ولد حفيد %s لأخ/لأخت"
 
 #: includes/functions/functions.php:1813
 #, php-format
-msgctxt "(a man’s) brother’s great ×(%d-1) grandchild"
-msgid "great ×%d nephew/niece"
-msgstr "ولد حفيد %d لأخ"
+msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
+msgid "great ×%s nephew/niece"
+msgstr "ولد حفيد %s لأخ"
 
 #: includes/functions/functions.php:1815
 #, php-format
-msgctxt "(a man’s) sister’s great ×(%d-1) grandchild"
-msgid "great ×%d nephew/niece"
-msgstr "ولد حفيد %d لأخت"
+msgctxt "(a man’s) sister’s great ×(%s-1) grandchild"
+msgid "great ×%s nephew/niece"
+msgstr "ولد حفيد %s لأخت"
 
 #: includes/functions/functions.php:1817
 #, php-format
-msgctxt "(a woman’s) great ×%d nephew/niece"
-msgid "great ×%d nephew/niece"
-msgstr "ولد حفيد %d لأخ/لأخت"
+msgctxt "(a woman’s) great ×%s nephew/niece"
+msgid "great ×%s nephew/niece"
+msgstr "ولد حفيد %s لأخ/لأخت"
 
 #: includes/functions/functions.php:1825 includes/functions/functions.php:1838
 #, php-format
-msgid "great ×%d niece"
-msgstr "بنت حفيد %d لأخ/لأخت"
+msgid "great ×%s niece"
+msgstr "بنت حفيد %s لأخ/لأخت"
 
 #: includes/functions/functions.php:1805
 #, php-format
-msgctxt "(a man’s) brother’s great ×(%d-1) granddaughter"
-msgid "great ×%d niece"
-msgstr "بنت حفيد %d لأخ"
+msgctxt "(a man’s) brother’s great ×(%s-1) granddaughter"
+msgid "great ×%s niece"
+msgstr "بنت حفيد %s لأخ"
 
 #: includes/functions/functions.php:1807
 #, php-format
-msgctxt "(a man’s) sister’s great ×(%d-1) granddaughter"
-msgid "great ×%d niece"
-msgstr "بنت حفيد %d لأخت"
+msgctxt "(a man’s) sister’s great ×(%s-1) granddaughter"
+msgid "great ×%s niece"
+msgstr "بنت حفيد %s لأخت"
 
 #: includes/functions/functions.php:1809
 #, php-format
-msgctxt "(a woman’s) great ×%d niece"
-msgid "great ×%d niece"
-msgstr "بنت حفيد %d لأخ/لأخت"
+msgctxt "(a woman’s) great ×%s niece"
+msgid "great ×%s niece"
+msgstr "بنت حفيد %s لأخ/لأخت"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1637 includes/functions/functions.php:1665
 #, php-format
-msgid "great ×%d uncle"
-msgstr "أخ جد-أب %d"
+msgid "great ×%s uncle"
+msgstr "أخ جد-أب %s"
 
 #: includes/functions/functions.php:1647
 #, php-format
-msgctxt "great ×(%d-1) grandfather’s brother"
-msgid "great ×%d uncle"
-msgstr "أخ جد-أب %d"
+msgctxt "great ×(%s-1) grandfather’s brother"
+msgid "great ×%s uncle"
+msgstr "أخ جد-أب %s"
 
 #: includes/functions/functions.php:1649
 #, php-format
-msgctxt "great ×(%d-1) grandmother’s brother"
-msgid "great ×%d uncle"
-msgstr "أخ جد-أم %d"
+msgctxt "great ×(%s-1) grandmother’s brother"
+msgid "great ×%s uncle"
+msgstr "أخ جد-أم %s"
 
 #: includes/functions/functions.php:1651
 #, php-format
-msgctxt "great ×(%d-1) grandparent’s brother"
-msgid "great ×%d uncle"
-msgstr "أخ جد-والد %d"
+msgctxt "great ×(%s-1) grandparent’s brother"
+msgid "great ×%s uncle"
+msgstr "أخ جد-والد %s"
 
 #: includes/functions/functions.php:1579
 msgid "great ×4 aunt"
@@ -18725,14 +18725,14 @@ msgstr "الأقصى"
 #: app/Module/UpcomingAnniversariesModule.php:125
 #: app/Module/YahrzeitModule.php:250
 #, php-format
-msgid "maximum %d day"
-msgid_plural "maximum %d days"
+msgid "maximum %s day"
+msgid_plural "maximum %s days"
 msgstr[0] "لا يوجد"
 msgstr[1] "يوماً واحد بحد أقصى"
 msgstr[2] "يومان بحد أقصى"
-msgstr[3] "%d أيام بحد أقصى"
-msgstr[4] "%d يوماً بحد أقصى"
-msgstr[5] "%d يوماً بحد أقصى"
+msgstr[3] "%s أيام بحد أقصى"
+msgstr[4] "%s يوماً بحد أقصى"
+msgstr[5] "%s يوماً بحد أقصى"
 
 #: admin_trees_config.php:404 admin_trees_config.php:428
 #: admin_trees_config.php:468 admin_trees_config.php:508
@@ -20227,14 +20227,14 @@ msgstr "…"
 #~ msgid "No other link between the two individuals could be found."
 #~ msgstr "لم يتم العثور على مسار آخر للقرابة"
 
-#~ msgid "Note: “living” is defined (if no death or burial is known) as ending %d year after birth or estimated birth."
-#~ msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %d years after birth or estimated birth."
+#~ msgid "Note: “living” is defined (if no death or burial is known) as ending %s year after birth or estimated birth."
+#~ msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %s years after birth or estimated birth."
 #~ msgstr[0] "على قيد الحياة يعرف كذلك (عند عدم معرفة الوفاة أو الدفن)"
 #~ msgstr[1] "على قيد الحياة يعرف كذلك (عند عدم معرفة الوفاة أو الدفن) بمرور عاماً واحداً بعد الميلاد."
 #~ msgstr[2] "على قيد الحياة يعرف كذلك (عند عدم معرفة الوفاة أو الدفن) بمرور عامين بعد الميلاد."
-#~ msgstr[3] "على قيد الحياة يعرف كذلك (عند عدم معرفة الوفاة أو الدفن) بمرور %d أعوام بعد الميلاد."
-#~ msgstr[4] "على قيد الحياة يعرف كذلك (عند عدم معرفة الوفاة أو الدفن) بمرور %d عاماً بعد الميلاد."
-#~ msgstr[5] "على قيد الحياة يعرف كذلك (عند عدم معرفة الوفاة أو الدفن) بمرور %d عام بعد الميلاد."
+#~ msgstr[3] "على قيد الحياة يعرف كذلك (عند عدم معرفة الوفاة أو الدفن) بمرور %s أعوام بعد الميلاد."
+#~ msgstr[4] "على قيد الحياة يعرف كذلك (عند عدم معرفة الوفاة أو الدفن) بمرور %s عاماً بعد الميلاد."
+#~ msgstr[5] "على قيد الحياة يعرف كذلك (عند عدم معرفة الوفاة أو الدفن) بمرور %s عام بعد الميلاد."
 
 #~ msgid "Notes are free-form text and will appear in the Fact Details section of the page."
 #~ msgstr "الملاحظات هي لوضع نص غير مقيد وسوف تظهر في قسم تفاصيل المعلومات."

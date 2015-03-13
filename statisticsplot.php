@@ -812,7 +812,6 @@ function calculate_legend($boundaries_z_axis) {
 	// calculate the legend values
 	$hulpar = explode(',', $boundaries_z_axis);
 	$i      = 1;
-	// I18N: %d is a year
 	$date            = new Date('BEF ' . $hulpar[0]);
 	$legend[0]       = strip_tags($date->display());
 	$z_boundaries[0] = $hulpar[0] - 1;
@@ -825,7 +824,6 @@ function calculate_legend($boundaries_z_axis) {
 	}
 	$zmax  = $i;
 	$zmax1 = $zmax - 1;
-	// I18N: %d is a year
 	$date                = new Date('AFT ' . $hulpar[$zmax1]);
 	$legend[$zmax]       = strip_tags($date->display());
 	$z_boundaries[$zmax] = 10000;

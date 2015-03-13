@@ -182,46 +182,46 @@ msgstr "%g:%i:%s %a"
 
 #: app/Module/LoggedInUsersModule.php:51 app/Stats.php:5372
 #, php-format
-msgid "%d anonymous logged-in user"
-msgid_plural "%d anonymous logged-in users"
-msgstr[0] "%d ანონიმური მომხმარებელი"
+msgid "%s anonymous logged-in user"
+msgid_plural "%s anonymous logged-in users"
+msgstr[0] "%s ანონიმური მომხმარებელი"
 
 #: app/Module/LoggedInUsersModule.php:57 app/Stats.php:5382
 #, php-format
-msgid "%d logged-in user"
-msgid_plural "%d logged-in users"
-msgstr[0] "%d დარეგისტრირებული იუზერი"
+msgid "%s logged-in user"
+msgid_plural "%s logged-in users"
+msgstr[0] "%s დარეგისტრირებული იუზერი"
 
 #: app/Module/RelativesTabModule.php:62
 #, php-format
-msgid "%d month"
-msgid_plural "%d months"
-msgstr[0] "%d თვე"
+msgid "%s month"
+msgid_plural "%s months"
+msgstr[0] "%s თვე"
 
 #: app/Module/RelativesTabModule.php:60
 #, php-format
-msgid "%d year"
-msgid_plural "%d years"
-msgstr[0] "%d წელი"
+msgid "%s year"
+msgid_plural "%s years"
+msgstr[0] "%s წელი"
 
 #: includes/functions/functions.php:555
 #, php-format
 msgctxt "FEMALE"
-msgid "%d × cousin"
-msgstr "(%d+1)-тиюродная сестра"
+msgid "%s × cousin"
+msgstr "(%s+1)-тиюродная сестра"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:520
 #, php-format
 msgctxt "MALE"
-msgid "%d × cousin"
-msgstr "(%d+1)-тиюродная сестра"
+msgid "%s × cousin"
+msgstr "(%s+1)-тиюродная сестра"
 
 #: includes/functions/functions.php:590
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%d × cousin"
-msgstr "(%d+1)-тиюродная сестра"
+msgid "%s × cousin"
+msgstr "(%s+1)-тиюродная сестра"
 
 #. I18N: This is the format string for full dates.  See http://php.net/date for codes
 #: app/Date.php:222 app/I18N.php:212
@@ -288,7 +288,7 @@ msgstr[0] "%s საათის წინ"
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
-msgstr[0] "%d პერსონა"
+msgstr[0] "%s პერსონა"
 
 #: app/Module/GoogleMapsModule.php:907
 #, php-format
@@ -1245,7 +1245,7 @@ msgstr "ჩანაწერი კოპირებულია ბუფე�
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:23
 msgid "Add individuals"
-msgstr "%d პერსონა"
+msgstr "%s პერსონა"
 
 #: app/Module/ClippingsCartModule.php:84
 #: app/Module/ClippingsCartModule.php:503
@@ -14265,8 +14265,8 @@ msgstr ""
 
 #: setup.php:183
 #, php-format
-msgid "This server’s memory limit is %d MB and its CPU time limit is %d seconds."
-msgstr "Этот сервер имеет следующие качества:<br/> memory limit = %dMB (рабочая память для скриптов)<br/>CPU time limit = %d c. (максимальное время для исполнения скрипта)"
+msgid "This server’s memory limit is %s MB and its CPU time limit is %s seconds."
+msgstr "Этот сервер имеет следующие качества:<br/> memory limit = %sMB (рабочая память для скриптов)<br/>CPU time limit = %s c. (максимальное время для исполнения скрипта)"
 
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: admin_trees_config.php:1632
@@ -16937,145 +16937,145 @@ msgstr "რძალი (შვილიშვილის ცოლი)"
 #: includes/functions/functions.php:1639 includes/functions/functions.php:1654
 #: includes/functions/functions.php:1667
 #, php-format
-msgid "great ×%d aunt"
-msgstr "%dх დიდი ბაბუა"
+msgid "great ×%s aunt"
+msgstr "%sх დიდი ბაბუა"
 
 #: includes/functions/functions.php:1641 includes/functions/functions.php:1656
 #: includes/functions/functions.php:1669
 #, php-format
-msgid "great ×%d aunt/uncle"
+msgid "great ×%s aunt/uncle"
 msgstr "მამიდა/ბიძია მამის მხრიდან"
 
 #: includes/functions/functions.php:2042 includes/functions/functions.php:2057
 #, php-format
-msgid "great ×%d grandchild"
+msgid "great ×%s grandchild"
 msgstr "пра-внук/внучка"
 
 #: includes/functions/functions.php:2040 includes/functions/functions.php:2055
 #, php-format
-msgid "great ×%d granddaughter"
+msgid "great ×%s granddaughter"
 msgstr "пра(х7) внучка"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1912 includes/functions/functions.php:1922
 #: includes/functions/functions.php:1932 includes/functions/functions.php:1942
 #: includes/functions/functions.php:1954
 #, php-format
-msgid "great ×%d grandfather"
-msgstr "%dх დიდი ბაბუა"
+msgid "great ×%s grandfather"
+msgstr "%sх დიდი ბაბუა"
 
 #: includes/functions/functions.php:1914 includes/functions/functions.php:1924
 #: includes/functions/functions.php:1934 includes/functions/functions.php:1944
 #: includes/functions/functions.php:1956
 #, php-format
-msgid "great ×%d grandmother"
-msgstr "%dх დიდი ბებია"
+msgid "great ×%s grandmother"
+msgstr "%sх დიდი ბებია"
 
 #: includes/functions/functions.php:1916 includes/functions/functions.php:1926
 #: includes/functions/functions.php:1936 includes/functions/functions.php:1946
 #: includes/functions/functions.php:1958
 #, php-format
-msgid "great ×%d grandparent"
+msgid "great ×%s grandparent"
 msgstr "пра(х7)-дед/бабушка"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:2038 includes/functions/functions.php:2053
 #, php-format
-msgid "great ×%d grandson"
+msgid "great ×%s grandson"
 msgstr "правнук"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1823 includes/functions/functions.php:1836
 #, php-format
-msgid "great ×%d nephew"
-msgstr "%dх დიდი ბაბუა"
+msgid "great ×%s nephew"
+msgstr "%sх დიდი ბაბუა"
 
 #: includes/functions/functions.php:1797
 #, php-format
-msgctxt "(a man’s) brother’s great ×(%d-1) grandson"
-msgid "great ×%d nephew"
-msgstr "%dх დიდი ბაბუა"
+msgctxt "(a man’s) brother’s great ×(%s-1) grandson"
+msgid "great ×%s nephew"
+msgstr "%sх დიდი ბაბუა"
 
 #: includes/functions/functions.php:1799
 #, php-format
-msgctxt "(a man’s) sister’s great ×(%d-1) grandson"
-msgid "great ×%d nephew"
-msgstr "%dх დიდი ბაბუა"
+msgctxt "(a man’s) sister’s great ×(%s-1) grandson"
+msgid "great ×%s nephew"
+msgstr "%sх დიდი ბაბუა"
 
 #: includes/functions/functions.php:1801
 #, php-format
-msgctxt "(a woman’s) great ×%d nephew"
-msgid "great ×%d nephew"
-msgstr "%dх დიდი ბაბუა"
+msgctxt "(a woman’s) great ×%s nephew"
+msgid "great ×%s nephew"
+msgstr "%sх დიდი ბაბუა"
 
 #: includes/functions/functions.php:1827 includes/functions/functions.php:1840
 #, php-format
-msgid "great ×%d nephew/niece"
+msgid "great ×%s nephew/niece"
 msgstr "правнучатый племянник/племянница"
 
 #: includes/functions/functions.php:1813
 #, php-format
-msgctxt "(a man’s) brother’s great ×(%d-1) grandchild"
-msgid "great ×%d nephew/niece"
+msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
+msgid "great ×%s nephew/niece"
 msgstr "правнучатый племянник/племянница"
 
 #: includes/functions/functions.php:1815
 #, php-format
-msgctxt "(a man’s) sister’s great ×(%d-1) grandchild"
-msgid "great ×%d nephew/niece"
+msgctxt "(a man’s) sister’s great ×(%s-1) grandchild"
+msgid "great ×%s nephew/niece"
 msgstr "правнучатый племянник/племянница"
 
 #: includes/functions/functions.php:1817
 #, php-format
-msgctxt "(a woman’s) great ×%d nephew/niece"
-msgid "great ×%d nephew/niece"
+msgctxt "(a woman’s) great ×%s nephew/niece"
+msgid "great ×%s nephew/niece"
 msgstr "правнучатый племянник/племянница"
 
 #: includes/functions/functions.php:1825 includes/functions/functions.php:1838
 #, php-format
-msgid "great ×%d niece"
+msgid "great ×%s niece"
 msgstr ""
 
 #: includes/functions/functions.php:1805
 #, php-format
-msgctxt "(a man’s) brother’s great ×(%d-1) granddaughter"
-msgid "great ×%d niece"
+msgctxt "(a man’s) brother’s great ×(%s-1) granddaughter"
+msgid "great ×%s niece"
 msgstr ""
 
 #: includes/functions/functions.php:1807
 #, php-format
-msgctxt "(a man’s) sister’s great ×(%d-1) granddaughter"
-msgid "great ×%d niece"
+msgctxt "(a man’s) sister’s great ×(%s-1) granddaughter"
+msgid "great ×%s niece"
 msgstr ""
 
 #: includes/functions/functions.php:1809
 #, php-format
-msgctxt "(a woman’s) great ×%d niece"
-msgid "great ×%d niece"
+msgctxt "(a woman’s) great ×%s niece"
+msgid "great ×%s niece"
 msgstr ""
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1637 includes/functions/functions.php:1665
 #, php-format
-msgid "great ×%d uncle"
+msgid "great ×%s uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1647
 #, php-format
-msgctxt "great ×(%d-1) grandfather’s brother"
-msgid "great ×%d uncle"
+msgctxt "great ×(%s-1) grandfather’s brother"
+msgid "great ×%s uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1649
 #, php-format
-msgctxt "great ×(%d-1) grandmother’s brother"
-msgid "great ×%d uncle"
+msgctxt "great ×(%s-1) grandmother’s brother"
+msgid "great ×%s uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1651
 #, php-format
-msgctxt "great ×(%d-1) grandparent’s brother"
-msgid "great ×%d uncle"
+msgctxt "great ×(%s-1) grandparent’s brother"
+msgid "great ×%s uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1579
@@ -17096,11 +17096,11 @@ msgstr "пра(х7) внучка"
 
 #: includes/functions/functions.php:1870
 msgid "great ×4 grandfather"
-msgstr "%dх დიდი ბაბუა"
+msgstr "%sх დიდი ბაბუა"
 
 #: includes/functions/functions.php:1872
 msgid "great ×4 grandmother"
-msgstr "%dх დიდი ბებია"
+msgstr "%sх დიდი ბებია"
 
 #: includes/functions/functions.php:1874
 msgid "great ×4 grandparent"
@@ -17188,11 +17188,11 @@ msgstr "пра(х7) внучка"
 
 #: includes/functions/functions.php:1879
 msgid "great ×5 grandfather"
-msgstr "%dх დიდი ბაბუა"
+msgstr "%sх დიდი ბაბუა"
 
 #: includes/functions/functions.php:1881
 msgid "great ×5 grandmother"
-msgstr "%dх დიდი ბებია"
+msgstr "%sх დიდი ბებია"
 
 #: includes/functions/functions.php:1883
 msgid "great ×5 grandparent"
@@ -17280,11 +17280,11 @@ msgstr "пра(х7) внучка"
 
 #: includes/functions/functions.php:1888
 msgid "great ×6 grandfather"
-msgstr "%dх დიდი ბაბუა"
+msgstr "%sх დიდი ბაბუა"
 
 #: includes/functions/functions.php:1890
 msgid "great ×6 grandmother"
-msgstr "%dх დიდი ბებია"
+msgstr "%sх დიდი ბებია"
 
 #: includes/functions/functions.php:1892
 msgid "great ×6 grandparent"
@@ -17327,11 +17327,11 @@ msgstr "пра(х7) внучка"
 
 #: includes/functions/functions.php:1897
 msgid "great ×7 grandfather"
-msgstr "%dх დიდი ბაბუა"
+msgstr "%sх დიდი ბაბუა"
 
 #: includes/functions/functions.php:1899
 msgid "great ×7 grandmother"
-msgstr "%dх დიდი ბებია"
+msgstr "%sх დიდი ბებია"
 
 #: includes/functions/functions.php:1901
 msgid "great ×7 grandparent"
@@ -18525,9 +18525,9 @@ msgstr "მაქსიმუმი"
 #: app/Module/UpcomingAnniversariesModule.php:125
 #: app/Module/YahrzeitModule.php:250
 #, php-format
-msgid "maximum %d day"
-msgid_plural "maximum %d days"
-msgstr[0] "მაქსიმალურად %d დღე"
+msgid "maximum %s day"
+msgid_plural "maximum %s days"
+msgstr[0] "მაქსიმალურად %s დღე"
 
 #: admin_trees_config.php:404 admin_trees_config.php:428
 #: admin_trees_config.php:468 admin_trees_config.php:508
@@ -19184,18 +19184,18 @@ msgstr ""
 #: includes/functions/functions.php:535
 msgctxt "FEMALE"
 msgid "sixth cousin"
-msgstr "(%d+1)-тиюродная сестра"
+msgstr "(%s+1)-тиюродная сестра"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:490
 msgctxt "MALE"
 msgid "sixth cousin"
-msgstr "(%d+1)-тиюродная сестра"
+msgstr "(%s+1)-тиюродная сестра"
 
 #: includes/functions/functions.php:570
 msgctxt "MALE/FEMALE"
 msgid "sixth cousin"
-msgstr "(%d+1)-тиюродная сестра"
+msgstr "(%s+1)-тиюродная сестра"
 
 #: app/Module/GoogleMapsModule.php:2041 app/Module/GoogleMapsModule.php:2071
 #: edit_interface.php:2039 includes/functions/functions.php:747
@@ -19744,7 +19744,7 @@ msgstr "უმცროსი და"
 #, php-format
 msgid "±%s year"
 msgid_plural "±%s years"
-msgstr[0] "%d წელი"
+msgstr[0] "%s წელი"
 
 #. I18N: Place a nickname in quotation marks
 #: app/Individual.php:1197 app/Individual.php:1215
@@ -19968,9 +19968,9 @@ msgstr ""
 #~ msgid "No contact method"
 #~ msgstr "არ მსურს შეტყობინებების მიღება"
 
-#~ msgid "Note: “living” is defined (if no death or burial is known) as ending %d year after birth or estimated birth."
-#~ msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %d years after birth or estimated birth."
-#~ msgstr[0] "Примечание: \"живой\" определяется (если факт о смерти или захоронения не известен), после %d года после рождения или примерного рождения."
+#~ msgid "Note: “living” is defined (if no death or burial is known) as ending %s year after birth or estimated birth."
+#~ msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %s years after birth or estimated birth."
+#~ msgstr[0] "Примечание: \"живой\" определяется (если факт о смерти или захоронения не известен), после %s года после рождения или примерного рождения."
 
 #~ msgid "Notes are free-form text and will appear in the Fact Details section of the page."
 #~ msgstr "Примечание - это текст в свободном стиле, который будет отображаться в подробностях факта."

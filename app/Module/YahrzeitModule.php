@@ -247,7 +247,7 @@ class YahrzeitModule extends Module implements ModuleBlockInterface {
 		echo I18N::translate('Number of days to show');
 		echo '</td><td class="optionbox">';
 		echo '<input type="text" name="days" size="2" value="' . $days . '">';
-		echo ' <em>', I18N::plural('maximum %d day', 'maximum %d days', 30, 30), '</em>';
+		echo ' <em>', I18N::plural('maximum %s day', 'maximum %s days', 30, I18N::number(30)), '</em>';
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
