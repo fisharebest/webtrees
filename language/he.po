@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-12 21:11+0000\n"
-"PO-Revision-Date: 2015-03-13 17:37+0100\n"
+"PO-Revision-Date: 2015-03-13 21:20+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
@@ -281,15 +281,15 @@ msgstr[1] "לפני %s ימים"
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "משפחה %s עודכנה."
+msgstr[1] "%s משפחות עודכנו."
 
 #: admin.php:761
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "עץ משפחה %s"
+msgstr[1] "%s עצי משפחה"
 
 #: app/Stats.php:4748 app/Stats.php:4752
 #, php-format
@@ -323,8 +323,8 @@ msgstr[1] "%s אנשים פרטיים."
 #, php-format
 msgid "%s individuals has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "אדם %s עודכן."
+msgstr[1] "%s אנשים עודכנו."
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:122
@@ -365,8 +365,8 @@ msgstr[1] "לפני %s חודשים"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "הערה %s עודכנה."
+msgstr[1] "%s הערות עודכנו."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: includes/functions/functions.php:2108
@@ -391,8 +391,8 @@ msgstr[1] "לפני %s שניות"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "מקור %s עודכן."
+msgstr[1] "%s מקורות עודכנו."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2124
@@ -430,7 +430,7 @@ msgstr[1] "%s שבועות"
 #: admin_trees_download.php:164
 #, php-format
 msgid "%s will be prepended to media filenames."
-msgstr ""
+msgstr "%s יתווסף בתחילת שמות של קובצי מדיה."
 
 #: app/I18N.php:457 includes/functions/functions_date.php:42
 #, php-format
@@ -688,11 +688,11 @@ msgstr "תאור של סיבה לאירוע או עובדה של שותפות, �
 
 #: admin_trees_download.php:116 admin_trees_manage.php:209
 msgid "A file on the server"
-msgstr ""
+msgstr "קובץ על השרת"
 
 #: admin_trees_download.php:201 admin_trees_manage.php:198
 msgid "A file on your computer"
-msgstr ""
+msgstr "קובץ על המחשב שלך"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:30
@@ -1338,7 +1338,7 @@ msgstr "הוסף רשומות הורים לרשומת המשפחה הזו."
 
 #: admin_trees_manage.php:266
 msgid "Add spaces where long lines were wrapped"
-msgstr ""
+msgstr "הוסף רווח במקום ששורות ארוכות התגלגלו"
 
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: admin_trees_download.php:161 app/Module/ClippingsCartModule.php:212
@@ -3817,7 +3817,7 @@ msgstr "הושלם; תאריך לא ידוע"
 
 #: admin_trees_download.php:142
 msgid "Compress the GEDCOM file"
-msgstr ""
+msgstr "דחס את קובץ ה-GEDCOM"
 
 #. I18N: gedcom tag CONC
 #: app/Gedcom/GedcomTag.php:303
@@ -4047,7 +4047,7 @@ msgstr "צור תרשים אישי"
 
 #: admin_trees_manage.php:712
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
-msgstr ""
+msgstr "צור, עדכן ומחק עץ משפחה עבור כל קובץ GEDCOM שקיים בתיקית הנתונים."
 
 #. I18N: gedcom tag CREM
 #: app/Gedcom/GedcomTag.php:331 modules_v3/family_group_report/report.xml:309
@@ -5686,7 +5686,7 @@ msgstr "ייצא"
 
 #: admin_trees_download.php:34
 msgid "Export a GEDCOM file"
-msgstr ""
+msgstr "ייבא קובץ GEDCOM"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:279
@@ -5695,7 +5695,7 @@ msgstr "ייצא את כל עצי המשפחה לקבצי GEDCOM…"
 
 #: admin_trees_download.php:135
 msgid "Export options"
-msgstr ""
+msgstr "אפשרויות יצוא"
 
 #. I18N: A configuration setting.  ... [who were] born in the last XX years or died in the last YY years
 #: admin_trees_config.php:483
@@ -6239,7 +6239,7 @@ msgstr "מצא סימן מיוחד"
 
 #: relationship.php:96
 msgid "Find all possible relationships"
-msgstr ""
+msgstr "מצא את כל היחסים האפשריים"
 
 #: app/Module/CensusAssistantModule.php:63 find.php:55
 #: includes/functions/functions_print.php:730
@@ -6250,7 +6250,7 @@ msgstr "מצא אדם"
 
 #: relationship.php:91
 msgid "Find the closest relationships"
-msgstr ""
+msgstr "מצא את היחסים הקרובים ביותר"
 
 #: app/Stats.php:6141
 msgid "Finland"
@@ -6268,7 +6268,7 @@ msgstr "אירוע ראשון"
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:331
 msgid "First record"
-msgstr ""
+msgstr "רשומה ראשונה"
 
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:29
 msgid "Fix name slashes and spaces"
@@ -6343,6 +6343,8 @@ msgstr "עבור חוק המורמונים (LDS ordinances), השדה רושם �
 #, php-format
 msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
 msgstr ""
+"למשל, אם קובץ GEDCOM מכיל %1$s ו-webtrees מצפה למצוא %2$s בתיקיית מדיה, אז "
+"עלך למחוק את %3$s."
 
 #: admin_users.php:590
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
@@ -7211,10 +7213,14 @@ msgstr "אם אתה מנהלן האתר, אתה צריך לבדוק ש:"
 #: site-unavailable.php:109
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
 msgstr ""
+"אם אתה לא יכול לפתור את הבעיה בעצמך, אתה יכול לבקש עזרה בפורומים ב-<a href=\""
+"http://webtrees.net\">webtrees.net</a>"
 
 #: admin_trees_manage.php:269
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
 msgstr ""
+"אם יצרת את קובץ ה-GEDCOM הזה באמצעות תוכנת גנאלוגה שמשמיטה רווחים בזמן חלוקת "
+"שורות ארוכות, בחר באפשרות זו כדי להכניס את הרווחים החסרים."
 
 #: login.php:350
 msgid "If you didn’t request an account, you can just delete this message."
@@ -7262,6 +7268,8 @@ msgstr "אם תנסה לחרוג מגבולות אלו, ייתכן שתתקל ב
 #: admin_site_config.php:507
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr ""
+"אם אתה משתמש באחד משירותי המעקב והניתוח הבאים, webtrees יכול להוסיף קודי "
+"המעקב באופן אוטומטי."
 
 #. I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1256
@@ -7296,7 +7304,7 @@ msgstr "ייבא"
 
 #: admin_trees_manage.php:162
 msgid "Import a GEDCOM file"
-msgstr ""
+msgstr "ייבא קובץ GEDCOM"
 
 #: app/Module/GoogleMapsModule.php:4624
 msgid "Import all places from a family tree"
@@ -7304,7 +7312,7 @@ msgstr "ייבא את כל המקומות מעץ משפחה"
 
 #: admin_trees_manage.php:254
 msgid "Import options"
-msgstr ""
+msgstr "אפשרויות יבוא"
 
 #: admin_trees_merge.php:84 admin_trees_renumber.php:264
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
@@ -7776,7 +7784,7 @@ msgstr "שמור קישור ברשימה"
 #. I18N: A configuration setting
 #: admin_trees_manage.php:259
 msgid "Keep media objects"
-msgstr ""
+msgstr "שמור ישויות מדיה"
 
 #: app/Stats.php:6186
 msgid "Kenya"
@@ -7919,7 +7927,7 @@ msgstr "שפה"
 #. I18N: Menu entry
 #: admin_site_config.php:144 app/Theme/AdministrationTheme.php:71
 msgid "Languages"
-msgstr ""
+msgstr "שפות"
 
 #: app/Stats.php:6193
 msgid "Laos"
@@ -9565,11 +9573,11 @@ msgstr "לא"
 
 #: admin_trees_manage.php:88 admin_trees_manage.php:109
 msgid "No GEDCOM file was received."
-msgstr ""
+msgstr "שום קובץ GEDCOM לא התקבל."
 
 #: admin_trees_manage.php:240
 msgid "No GEDCOM files found."
-msgstr ""
+msgstr "שום קבצי GEDCOM לא התקבלו."
 
 #: app/Module/GoogleMapsModule.php:911
 msgid "No ancestors in the database."
@@ -10249,7 +10257,7 @@ msgstr "גודל הדף"
 #. I18N: The number of [...]
 #: app/Module/ExtraInformationModule.php:67 index.php:144
 msgid "Page views"
-msgstr ""
+msgstr "צוגות דף"
 
 #: app/Gedcom/GedcomTag.php:1888
 msgid "Painting"
@@ -11280,7 +11288,7 @@ msgstr "הסר קישור מרשימה"
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: admin_trees_manage.php:272
 msgid "Remove the GEDCOM media path from filenames"
-msgstr ""
+msgstr "הסר את נתיב המדיה של ה-GEDCOM משמות קבצים"
 
 #: app/Module/GoogleMapsModule.php:4521
 msgid "Remove this location?"
@@ -11303,7 +11311,7 @@ msgstr "מספר מחדש עץ משפחה"
 #. I18N: button label
 #: search.php:217
 msgid "Replace"
-msgstr ""
+msgstr "החלף"
 
 #: admin_trees_places.php:103 search.php:162
 msgid "Replace with"
@@ -11706,7 +11714,7 @@ msgstr "סיאטל, וושינגטון"
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:348
 msgid "Second record"
-msgstr ""
+msgstr "רשומה שנייה"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:394
@@ -11716,7 +11724,7 @@ msgstr "חיבור מאובטח"
 #. I18N: A site configuration setting
 #: admin_site_config.php:608
 msgid "Security code"
-msgstr ""
+msgstr "קוד אבטחה"
 
 #. I18N: %s is a URL
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:128
@@ -11726,12 +11734,12 @@ msgstr "לקבלת מידע נוסף ראה %s."
 
 #: admin_site_merge.php:203 admin_site_merge.php:245 admin_site_merge.php:286
 msgid "Select"
-msgstr ""
+msgstr "בחר"
 
 #. I18N: A configuration setting
 #: admin_trees_manage.php:192
 msgid "Select a GEDCOM file to import"
-msgstr ""
+msgstr "בחר קובץ GEDCOM ליבוא"
 
 #: includes/functions/functions_edit.php:368 reportengine.php:261
 msgid "Select a date"
@@ -11772,11 +11780,11 @@ msgstr "בחר את מרווח המנייה הרצוי"
 
 #: admin_site_merge.php:189
 msgid "Select the facts and events to keep from both records."
-msgstr ""
+msgstr "בחר את העובדות והאירועים שיש לשמור משתי הרשומות."
 
 #: admin_site_config.php:622
 msgid "Select the languages that will be shown in menus."
-msgstr ""
+msgstr "בחר את השפות שתוצגנה בתפריטים."
 
 #: app/Module/FamilyTreeStatisticsModule.php:281
 msgid "Select the stats to show in this block"
@@ -11789,7 +11797,7 @@ msgstr "בחר בברירה הזו כדי לכלול קבצי מדיה הקשו�
 #. I18N: Records are indviduals, sources, etc.
 #: admin_site_merge.php:326
 msgid "Select two records to merge."
-msgstr ""
+msgstr "בחר שתי רשומות למזוג."
 
 #: app/Gedcom/GedcomCodeRela.php:222
 msgid "Seller"
@@ -12319,7 +12327,7 @@ msgstr "הצג מוני פגיעה בדפי פורטל ובדפים האישיי
 
 #: compact.php:57
 msgid "Show images"
-msgstr ""
+msgstr "הראה תמונות"
 
 #: app/Module/GoogleMapsModule.php:4549
 msgid "Show inactive places"
@@ -12613,7 +12621,7 @@ msgstr "אחות"
 #: admin_site_config.php:557 admin_site_config.php:573
 #: admin_site_config.php:598
 msgid "Site identification code"
-msgstr ""
+msgstr "קוד זיהוי אתר"
 
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: admin_users.php:459 edituser.php:271
@@ -12623,12 +12631,12 @@ msgstr "חברי אתר יכולים לשלוח אחד לשני הודעות. ב
 #. I18N: A site configuration setting
 #: admin_site_config.php:515 admin_site_config.php:536
 msgid "Site verification code"
-msgstr ""
+msgstr "קוד אימות אתר"
 
 #. I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting
 #: admin_site_config.php:526 admin_site_config.php:547
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
-msgstr ""
+msgstr "קודי אימות של אתר אינם עובדים כאשר webtrees מותקן בתיקיית משנה."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:30
@@ -12726,6 +12734,9 @@ msgstr "סומליה"
 #: admin_trees_manage.php:284
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow webtrees to find the file, the first part of the path must be removed."
 msgstr ""
+"חלק מתוכנות הגנאלוגיה יוצרות קבצי GEDCOM המכילים קבצי מדיה עם נתיבים מלאים. "
+"נתיבים אלה לא יהיו קיימים בשרת האינטרנט. כדי לאפשר ל-webtrees למצוא את "
+"הקובץ, יש להסיר את החלק הראשון של השביל."
 
 #: app/Module/GoogleMapsModule.php:429
 msgid "Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”."
@@ -12761,7 +12772,7 @@ msgstr "סדר המיון"
 #: app/Controller/BranchesController.php:243
 #: includes/functions/functions_print_lists.php:251
 msgid "Sosa"
-msgstr "Sosa"
+msgstr "סוסה (Sosa)"
 
 #: search_advanced.php:157 search_advanced.php:219 search_advanced.php:234
 #: search_advanced.php:256 search_advanced.php:271
@@ -13102,7 +13113,7 @@ msgstr "איי סבאלברד ויאן מאיין"
 #. I18N: Reverse the order of two individuals
 #: relationship.php:86
 msgid "Swap individuals"
-msgstr ""
+msgstr "החלף אנשים"
 
 #: app/Stats.php:6286
 msgid "Swaziland"
@@ -13122,7 +13133,7 @@ msgstr "סידני, אוסטרליה"
 
 #: admin_trees_manage.php:705
 msgid "Synchronize family trees with GEDCOM files"
-msgstr ""
+msgstr "לסנכרן עצי משפחה עם קבצי GEDCOM"
 
 #: app/Stats.php:6288
 msgid "Syrian Arab Republic"
@@ -13446,13 +13457,13 @@ msgstr "ניתן להגדיר את התיקייה במלואה (למשל /home/u
 
 #: admin_site_merge.php:194
 msgid "The following facts and events were found in both records."
-msgstr ""
+msgstr "העובדות והאירועים הבאים נמצאו בשתי הרשומות."
 
 #. I18N: the name of an individual, source, etc.
 #: admin_site_merge.php:236 admin_site_merge.php:277
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr ""
+msgstr "העובדות והאירועים הבאים נמצאו ברשומה של %s."
 
 #: setup.php:174
 msgid "The following list shows typical requirements."
@@ -13499,7 +13510,7 @@ msgstr "הקישור מ-”%1$s” ל-”%2$s” נמחק."
 #: admin_site_merge.php:106
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr ""
+msgstr "הקישור מ-“%1$s” ל-“%2$s” עודכן."
 
 #: addmedia.php:313 addmedia.php:341
 #, php-format
@@ -13567,7 +13578,7 @@ msgstr "הסיסמאות אינן מתאימות."
 #: admin_trees_config.php:219 admin_trees_config.php:341
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr ""
+msgstr "ההעדפות של עץ המשפחה “%s“ עודכנו."
 
 #: admin_modules.php:71
 #, php-format
@@ -13577,7 +13588,7 @@ msgstr "ההעדפות למודול %s נמחקו."
 #: app/Module/GoogleMapsModule.php:265
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr ""
+msgstr "ההעדפות של מודול “%s“ עודכנו."
 
 #: setup.php:381
 msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database.  “wt_” is suggested, but can be anything you want."
@@ -13596,7 +13607,7 @@ msgstr "הרשומה הועתקה ללוח הגזירים."
 #: admin_site_merge.php:162
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr ""
+msgstr "רשומות “%1$s” ו-“%2$s” מוזגו."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:112
 msgid "The regex appears to contain an error.  It can’t be used."
@@ -13707,7 +13718,7 @@ msgstr "חוק גישה לאתר עודכן."
 #: admin_site_config.php:44 admin_site_config.php:63 admin_site_config.php:76
 #: admin_site_config.php:91 admin_site_config.php:100
 msgid "The website preferences have been updated."
-msgstr ""
+msgstr "העדפות האתר עודכנו."
 
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: admin_trees_config.php:2291
@@ -13744,6 +13755,9 @@ msgstr "עיצובים"
 #: admin_site_config.php:236
 msgid "Themes can be selected at three levels: user, family tree, and website.  User settings take priority over family tree settings, which in turn take priority over the website setting.  Selecting “default theme” at one level will use the theme at the next level."
 msgstr ""
+"ניתן לבחור עיצובים בשלוש רמות: משתמש, עץ משפחה ואתר אינטרנט. הגדרות משתמש "
+"מקבלות עדיפות על פני הגדרות עץ משפחה, אשר מקבלות עדיפה על פני הגדרת האתר. "
+"בחירת \"עיצוב ברירת מחדל\" ברמה אחת תשתמש כעיצוב ברמה הבאה."
 
 #: app/Module/ExtraInformationModule.php:58
 #: app/Module/IndividualFactsTabModule.php:115
@@ -14242,7 +14256,9 @@ msgstr "אפשרות זו קובעת אם להציג או לא להציג באו
 #. I18N: Help text for the “Automatically expand list of events of close relatives” configuration setting
 #: admin_trees_config.php:1407
 msgid "This option controls whether or not to automatically expand the <i>Events of close relatives</i> list."
-msgstr "אפשרות זו קובעת אם להרחיב או לא להרחיב  באופן אוטומטי את רשימת ה<i>אירועים של קרובי משפחה</i>."
+msgstr ""
+"אפשרות זו קובעת אם להרחיב או לא להרחיב באופן אוטומטי את רשימת ה<i>אירועים של "
+"קרובי משפחה</i>."
 
 #. I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting
 #: admin_trees_config.php:1590
@@ -14572,6 +14588,8 @@ msgstr "מנהל המערכת החביא כתבות אחדות, כדי להקט�
 #: admin_trees_download.php:145 app/Module/ClippingsCartModule.php:180
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file.  You will need to uncompress the .ZIP file before you can use it."
 msgstr ""
+"כדי להקטין את נפח ההורדה, אתה יכול לדחוס את הנתונים לקובץ זיפ. עליך לבטל את "
+"הדחיסה של קובץ הזיפ לפני שתוכל להשתמש בו."
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: admin_site_config.php:461
@@ -14773,12 +14791,12 @@ msgstr "סה״כ משתמשים"
 #. I18N: Menu entry
 #: admin_site_config.php:141 app/Theme/AdministrationTheme.php:72
 msgid "Tracking and analytics"
-msgstr ""
+msgstr "מעקב וניתוח"
 
 #: admin_site_config.php:563 admin_site_config.php:588
 #: admin_site_config.php:613
 msgid "Tracking and analytics are not added to the control panel."
-msgstr ""
+msgstr "מעקב וניתוח אינם מתווספים ללוח בקרה."
 
 #. I18N: gedcom tag TRLR
 #: app/Gedcom/GedcomTag.php:841
@@ -15921,11 +15939,15 @@ msgstr "למשתמש שלך לא מופעל ”אישור אוטומטי של ש
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer maintained.  You should upgrade to a later version."
 msgstr ""
+"שרת האינטרנט שלך משתמש בגרסת PHP %s, אשר לו נתמכת יותר. עלך לשדרג לגרסה "
+"מתקדמת יותר."
 
 #: admin.php:485
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates.  You should upgrade to a later version as soon as possible."
 msgstr ""
+"שרת האינטרנט שלך משתמש בגרסת PHP %s, שכבר לא מקבלת עדכוני אבטחה. עלך לשדרג "
+"לגרסה מתקדמת יותר בהקדם."
 
 #: app/Stats.php:6323
 msgid "Yugoslavia"
