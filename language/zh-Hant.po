@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-03-12 22:00+0100\n"
+"PO-Revision-Date: 2015-03-13 21:36+0100\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Chinese (Traditional) <http://translate.webtrees.net/projects/webtrees/webtrees/zh-Hant/>\n"
+"Language-Team: Chinese (Traditional) "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/zh-Hant/>\n"
 "Language: zh-Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -10612,7 +10613,7 @@ msgstr ""
 #: app/Module/CensusAssistantModule.php:96 find.php:115 search.php:34
 #: search.php:46
 msgid "Please enter more than one character."
-msgstr "請至少輸入一個字元"
+msgstr "請至少輸入一個字元。"
 
 #: message.php:104
 msgid "Please enter some message text before sending."
@@ -13467,7 +13468,7 @@ msgstr ""
 
 #: mediafirewall.php:41
 msgid "The media file was not found in this family tree."
-msgstr "在這家族中找不到這個媒體檔"
+msgstr "在這家族中找不到這個媒體檔。"
 
 #: admin_media_upload.php:223
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
@@ -14064,7 +14065,7 @@ msgstr ""
 
 #: mediafirewall.php:410
 msgid "This media file is broken and cannot be watermarked."
-msgstr "這個媒體檔已毀損, 無法作浮水印"
+msgstr "這個媒體檔已毀損, 無法作浮水印。"
 
 #: mediaviewer.php:73
 msgid "This media object does not exist or you do not have permission to view it."
@@ -15698,7 +15699,7 @@ msgstr "您必須輸入管理員帳戶欄位。"
 
 #: edit_interface.php:1548
 msgid "You must provide a repository name."
-msgstr "您必須提供一個存儲庫名稱"
+msgstr "您必須提供一個存儲庫名稱。"
 
 #: edit_interface.php:1210
 msgid "You must provide a source title"
