@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-03-13 17:56+0100\n"
+"PO-Revision-Date: 2015-03-13 21:55+0100\n"
 "Last-Translator: Jacqueline Gazaille <gazaillegen@gmail.com>\n"
 "Language-Team: French (Canada) "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/fr-CA/>\n"
@@ -425,7 +425,7 @@ msgstr[1] "%s semaines"
 #: admin_trees_download.php:164
 #, php-format
 msgid "%s will be prepended to media filenames."
-msgstr "%s précédera le nom des fichiers média."
+msgstr "%s précédera les noms des fichiers médias."
 
 #: app/I18N.php:457 includes/functions/functions_date.php:42
 #, php-format
@@ -6346,6 +6346,8 @@ msgstr "Pour des ordinations SDJ (Eglise de Jésus-Christ des saints des dernier
 #, php-format
 msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
 msgstr ""
+"Par exemple, si le fichier GEDCOM contient %1$s et que webtrees s’attend à "
+"trouver %2$s dans le dossier media, alors vous devrez enlever %3$s."
 
 #: admin_users.php:590
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
@@ -7793,7 +7795,7 @@ msgstr "Garder le lien dans la liste"
 #. I18N: A configuration setting
 #: admin_trees_manage.php:259
 msgid "Keep media objects"
-msgstr ""
+msgstr "Conserver les objets médias"
 
 #: app/Stats.php:6186
 msgid "Kenya"
