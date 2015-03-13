@@ -204,13 +204,6 @@ msgid_plural "%s months"
 msgstr[0] "%s kuukausi"
 msgstr[1] "%s kuukautta"
 
-#: app/Module/RelativesTabModule.php:60
-#, php-format
-msgid "%s year"
-msgid_plural "%s years"
-msgstr[0] "%s vuosi"
-msgstr[1] "%s vuotta"
-
 #: includes/functions/functions.php:555
 #, php-format
 msgctxt "FEMALE"

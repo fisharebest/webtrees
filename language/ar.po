@@ -530,17 +530,6 @@ msgstr[5] "%s أسبوعاً"
 msgid "%s will be prepended to media filenames."
 msgstr ""
 
-#: app/I18N.php:457 includes/functions/functions_date.php:42
-#, php-format
-msgid "%s year"
-msgid_plural "%s years"
-msgstr[0] "%s أعوام"
-msgstr[1] "عاماً واحداً"
-msgstr[2] "عامان"
-msgstr[3] "%s  أعوام"
-msgstr[4] "%s عاماً"
-msgstr[5] "%s عاماً"
-
 #: app/I18N.php:510
 #, php-format
 msgid "%s year ago"

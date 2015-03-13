@@ -206,13 +206,6 @@ msgid_plural "%s months"
 msgstr[0] ""
 msgstr[1] ""
 
-#: app/Module/RelativesTabModule.php:60
-#, php-format
-msgid "%s year"
-msgid_plural "%s years"
-msgstr[0] "%s година"
-msgstr[1] "%s години"
-
 #: includes/functions/functions.php:555
 #, php-format
 msgctxt "FEMALE"
@@ -338,14 +331,6 @@ msgstr[1] "Имате %s съобщения"
 #, php-format
 msgid "%s minute ago"
 msgid_plural "%s minutes ago"
-msgstr[0] ""
-msgstr[1] ""
-
-#. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-#: app/I18N.php:463 includes/functions/functions_date.php:47
-#, php-format
-msgid "%s month"
-msgid_plural "%s months"
 msgstr[0] ""
 msgstr[1] ""
 

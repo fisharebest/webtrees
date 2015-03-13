@@ -212,14 +212,6 @@ msgstr[0] "%s місяць"
 msgstr[1] "%s місяця"
 msgstr[2] "%s місяців"
 
-#: app/Module/RelativesTabModule.php:60
-#, php-format
-msgid "%s year"
-msgid_plural "%s years"
-msgstr[0] "%s рік"
-msgstr[1] "%s року"
-msgstr[2] "%s років"
-
 #: includes/functions/functions.php:555
 #, php-format
 msgctxt "FEMALE"

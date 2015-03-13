@@ -223,15 +223,6 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: app/Module/RelativesTabModule.php:60
-#, php-format
-msgid "%s year"
-msgid_plural "%s years"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-
 #: includes/functions/functions.php:555
 #, php-format
 msgctxt "FEMALE"

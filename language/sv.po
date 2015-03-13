@@ -208,13 +208,6 @@ msgid_plural "%s months"
 msgstr[0] "%s månad"
 msgstr[1] "%s månader"
 
-#: app/Module/RelativesTabModule.php:60
-#, php-format
-msgid "%s year"
-msgid_plural "%s years"
-msgstr[0] "%s år"
-msgstr[1] "%s år"
-
 #: includes/functions/functions.php:555
 #, php-format
 msgctxt "FEMALE"
