@@ -19756,8 +19756,8 @@ msgstr ""
 #: search_advanced.php:107 search_advanced.php:111 search_advanced.php:115
 #: search_advanced.php:166 search_advanced.php:167 search_advanced.php:168
 #, fuzzy, php-format
-msgid "±%d year"
-msgid_plural "±%d years"
+msgid "±%s year"
+msgid_plural "±%s years"
 msgstr[0] "&plusmn;%d ел"
 
 #. I18N: Place a nickname in quotation marks

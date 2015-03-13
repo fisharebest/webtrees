@@ -19782,10 +19782,10 @@ msgstr "nuorempi sisko"
 #: search_advanced.php:107 search_advanced.php:111 search_advanced.php:115
 #: search_advanced.php:166 search_advanced.php:167 search_advanced.php:168
 #, php-format
-msgid "±%d year"
-msgid_plural "±%d years"
-msgstr[0] "±%d vuosi"
-msgstr[1] "±%d vuotta"
+msgid "±%s year"
+msgid_plural "±%s years"
+msgstr[0] "±%s vuosi"
+msgstr[1] "±%s vuotta"
 
 #. I18N: Place a nickname in quotation marks
 #: app/Individual.php:1197 app/Individual.php:1215

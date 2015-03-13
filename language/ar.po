@@ -19947,14 +19947,14 @@ msgstr "شقيقة أصغر"
 #: search_advanced.php:107 search_advanced.php:111 search_advanced.php:115
 #: search_advanced.php:166 search_advanced.php:167 search_advanced.php:168
 #, php-format
-msgid "±%d year"
-msgid_plural "±%d years"
+msgid "±%s year"
+msgid_plural "±%s years"
 msgstr[0] "لا يوجد"
 msgstr[1] "± عام واحد"
 msgstr[2] "± عامان"
-msgstr[3] "±%d أعوام"
-msgstr[4] "±%d عاماً"
-msgstr[5] "±%d عاماً"
+msgstr[3] "±%s أعوام"
+msgstr[4] "±%s عاماً"
+msgstr[5] "±%s عاماً"
 
 #. I18N: Place a nickname in quotation marks
 #: app/Individual.php:1197 app/Individual.php:1215

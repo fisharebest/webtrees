@@ -103,16 +103,15 @@ echo '<script>';
 		sel.appendChild(opt);
 		opt = document.createElement('option');
 		opt.value='';
-		/* The translation strings use HTML entities, but javascript does not.  See bug 687980 */
-		opt.text='<?php echo html_entity_decode(I18N::plural('±%d year', '±%d years', 2, 2), ENT_COMPAT, 'UTF-8'); ?>';
+		opt.text='<?php echo html_entity_decode(I18N::plural('±%s year', '±%s years', 2, I18N::number(2)), ENT_COMPAT, 'UTF-8'); ?>';
 		sel.appendChild(opt);
 		opt = document.createElement('option');
 		opt.value='5';
-		opt.text='<?php echo html_entity_decode(I18N::plural('±%d year', '±%d years', 5, 5), ENT_COMPAT, 'UTF-8'); ?>';
+		opt.text='<?php echo html_entity_decode(I18N::plural('±%s year', '±%s years', 5, I18N::number(5)), ENT_COMPAT, 'UTF-8'); ?>';
 		sel.appendChild(opt);
 		opt = document.createElement('option');
 		opt.value='10';
-		opt.text='<?php echo html_entity_decode(I18N::plural('±%d year', '±%d years', 10, 10), ENT_COMPAT, 'UTF-8'); ?>';
+		opt.text='<?php echo html_entity_decode(I18N::plural('±%s year', '±%s years', 10, I18N::number(10)), ENT_COMPAT, 'UTF-8'); ?>';
 		sel.appendChild(opt);
 		var spc = document.createTextNode(' ');
 		elm.appendChild(spc);
@@ -163,9 +162,9 @@ echo '</script>';
 				?>
 				<select name="plusminus[<?php echo $i; ?>]">
 					<option value=""><?php echo I18N::translate('Exact date'); ?></option>
-					<option value="2" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i] == 2) echo 'selected'; ?>><?php echo I18N::plural('±%d year', '±%d years', 2, 2); ?></option>
-					<option value="5" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i] == 5) echo 'selected'; ?>><?php echo I18N::plural('±%d year', '±%d years', 5, 5); ?></option>
-					<option value="10" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i] == 10) echo 'selected'; ?>><?php echo I18N::plural('±%d year', '±%d years', 10, 10); ?></option>
+					<option value="2" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i] == 2) echo 'selected'; ?>><?php echo I18N::plural('±%s year', '±%s years', 2, I18N::number(2)); ?></option>
+					<option value="5" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i] == 5) echo 'selected'; ?>><?php echo I18N::plural('±%s year', '±%s years', 5, I18N::number(5)); ?></option>
+					<option value="10" <?php if (!empty($controller->plusminus[$i]) && $controller->plusminus[$i] == 10) echo 'selected'; ?>><?php echo I18N::plural('±%s year', '±%s years', 10, I18N::number(10)); ?></option>
 				</select>
 			<?php } ?>
 		</td>
