@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-03-12 21:44+0100\n"
+"POT-Creation-Date: 2015-03-12 21:11+0000\n"
+"PO-Revision-Date: 2015-03-13 09:42+0100\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: English (Australia) <http://translate.webtrees.net/projects/webtrees/webtrees/en-AU/>\n"
 "Language: en-AU\n"
@@ -3697,7 +3697,7 @@ msgstr ""
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:295
 msgid "Click on a title to go straight to it, or scroll down to read them all."
-msgstr "Click on a title to go straight to it or scroll down to read them all"
+msgstr ""
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:69
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:80
@@ -13650,7 +13650,7 @@ msgstr ""
 
 #: login.php:324
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
-msgstr "The user has been sent an email with the information necessary to confirm the access request"
+msgstr ""
 
 #. I18N: Help text for the "Username" site configuration setting
 #: admin_site_config.php:373
