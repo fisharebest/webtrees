@@ -3,13 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2012-02-16 05:45+0000\n"
-"Last-Translator: Ravil Nugmanov <Unknown>\n"
-"Language: \n"
+"PO-Revision-Date: 2015-03-13 18:41+0100\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"Language-Team: Tatar "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/tt/>\n"
+"Language: tt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 2.3-dev\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
 #: modules_v3/ahnentafel_report/report.xml:185
@@ -42,14 +45,14 @@ msgstr " бу урында: "
 #: statisticsplot.php:1204 statisticsplot.php:1254 statisticsplot.php:1304
 #: statisticsplot.php:1354
 msgid " per gender"
-msgstr " per gender"
+msgstr ""
 
 #: statisticsplot.php:898 statisticsplot.php:948 statisticsplot.php:1002
 #: statisticsplot.php:1052 statisticsplot.php:1106 statisticsplot.php:1156
 #: statisticsplot.php:1206 statisticsplot.php:1256 statisticsplot.php:1306
 #: statisticsplot.php:1356
 msgid " per time period"
-msgstr " per time period"
+msgstr ""
 
 #. I18N: Abbreviation for "number %s"
 #: includes/functions/functions_print_facts.php:187
@@ -297,7 +300,7 @@ msgstr[1] ""
 #, php-format
 msgid "%s individual is private."
 msgid_plural "%s individuals are private."
-msgstr[0] "%s шәхес хосусый (яшерен)"
+msgstr[0] "%s шәхес хосусый (яшерен)."
 
 #: app/Controller/SearchController.php:321
 #, php-format
@@ -666,22 +669,24 @@ msgstr ""
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:30
 msgid "A greeting message and useful links for a user."
-msgstr "Сәлам сүзе һәм кулланучы өчен файдалы сылтамалар"
+msgstr "Сәлам сүзе һәм кулланучы өчен файдалы сылтамалар."
 
 #. I18N: Description of the “Home page” module
 #: app/Module/WelcomeBlockModule.php:30
 msgid "A greeting message for site visitors."
-msgstr "Сәхифәгә керүчеләрне сәлам сүзе"
+msgstr "Сәхифәгә керүчеләрне сәлам сүзе."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:30
 msgid "A list of changes that need moderator approval, and email notifications."
-msgstr "Модератор тарафыннан раслау көтүче үзгәрешләр һәм электрон почта буенча искәртүләр исемлеге"
+msgstr ""
+"Модератор тарафыннан раслау көтүче үзгәрешләр һәм электрон почта буенча "
+"искәртүләр исемлеге."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:30
 msgid "A list of frequently asked questions and answers."
-msgstr "Сораулар һәм җаваплар"
+msgstr "Сораулар һәм җаваплар."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:33
@@ -691,42 +696,42 @@ msgstr "Күптән түгел яңартылган язмалар."
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:32
 msgid "A list of tasks and activities that are linked to the family tree."
-msgstr "Шәҗәрәгә бәйләнешле эшлисе эшләр исемлеге"
+msgstr "Шәҗәрәгә бәйләнешле эшлисе эшләр исемлеге."
 
 #. I18N: Description of the “Yahrzeiten” module.  A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:33
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr "Якын киләчәктә буласы еврейлардагы үлгәннәрнең ниндидер юбилейлары"
+msgstr "Якын киләчәктә буласы еврейлардагы үлгәннәрнең ниндидер юбилейлары."
 
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:30
 msgid "A list of the anniversaries that occur today."
-msgstr "Бүгенге юбилейлар"
+msgstr "Бүгенге юбилейлар."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:30
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr "Якын киләчәктәге истәлекле даталар"
+msgstr "Якын киләчәктәге истәлекле даталар."
 
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:30
 msgid "A list of the most popular given names."
-msgstr "Иң еш очраган исемнәр исемлеге"
+msgstr "Иң еш очраган исемнәр исемлеге."
 
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:30
 msgid "A list of the most popular surnames."
-msgstr "Иң популяр фамилияләр"
+msgstr "Иң популяр фамилияләр."
 
 #. I18N: Description of the “Most visited pages” module
 #: app/Module/TopPageViewsModule.php:30
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr "Иң күп тапкыр каралган битләр исемлеге"
+msgstr "Иң күп тапкыр каралган битләр исемлеге."
 
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:30
 msgid "A list of users and visitors who are currently online."
-msgstr "Он-лайн кулланучылар"
+msgstr "Он-лайн кулланучылар."
 
 #: help_text.php:278
 msgid "A media object is a record in the family tree which contains information about a media file.  This information may include a title, a copyright notice, a transcript, privacy restrictions, etc.  The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
@@ -740,7 +745,7 @@ msgstr ""
 
 #: login.php:252
 msgid "A new password has been requested for your user name."
-msgstr "Сезнең кулланучы исеме өчен серсүзне үзгәртүне сорап мөрәҗәгать алынды"
+msgstr "Сезнең кулланучы исеме өчен серсүзне үзгәртүне сорап мөрәҗәгать алынды."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: login.php:567
@@ -767,13 +772,13 @@ msgstr ""
 #: app/Module/PedigreeReportModule.php:32
 #: modules_v3/pedigree_report/report.xml:4
 msgid "A report of an individual’s ancestors, formatted as a tree."
-msgstr "Шәхеснең ата-бабалары турындагы отчет, агач рәвешендә"
+msgstr "Шәхеснең ата-бабалары турындагы отчет, агач рәвешендә."
 
 #. I18N: Description of the “Ancestors” module
 #: app/Module/AhnentafelReportModule.php:32
 #: modules_v3/ahnentafel_report/report.xml:5
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr "Шәхеснең ата-бабалары турында язма отчет"
+msgstr "Шәхеснең ата-бабалары турында язма отчет."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyReportModule.php:32
