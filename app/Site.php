@@ -25,7 +25,7 @@ class Site {
 	 *
 	 * @var array
 	 */
-	static $setting = null;
+	private static $settings = null;
 
 	/**
 	 * Get the site’s configuration settings
@@ -37,18 +37,18 @@ class Site {
 	public static function getPreference($setting_name) {
 		// There are lots of settings, and we need to fetch lots of them on every page
 		// so it is quicker to fetch them all in one go.
-		if (self::$setting === null) {
-			self::$setting = Database::prepare(
+		if (self::$settings === null) {
+			self::$settings = Database::prepare(
 				"SELECT SQL_CACHE setting_name, setting_value FROM `##site_setting`"
 			)->fetchAssoc();
 		}
 
 		// A setting that hasn't yet been set?
-		if (!array_key_exists($setting_name, self::$setting)) {
-			self::$setting[$setting_name] = null;
+		if (!array_key_exists($setting_name, self::$settings)) {
+			self::$settings[$setting_name] = null;
 		}
 
-		return self::$setting[$setting_name];
+		return self::$settings[$setting_name];
 	}
 
 	/**
@@ -78,7 +78,7 @@ class Site {
 				));
 			}
 
-			self::$setting[$setting_name] = $setting_value;
+			self::$settings[$setting_name] = $setting_value;
 
 			Log::addConfigurationLog('Site setting "' . $setting_name . '" set to "' . $setting_value . '"');
 		}

@@ -88,6 +88,8 @@ class BatchUpdateModule extends Module implements ModuleConfigInterface {
 	 * @return string
 	 */
 	function main() {
+		global $WT_TREE;
+
 		$this->plugins = $this->getPluginList(); // List of available plugins
 		$this->plugin  = Filter::get('plugin'); // User parameters
 		$this->xref    = Filter::get('xref', WT_REGEX_XREF);
@@ -107,9 +109,9 @@ class BatchUpdateModule extends Module implements ModuleConfigInterface {
 					$newrecord = $this->PLUGIN->updateRecord($this->xref, $record);
 					if ($newrecord != $record) {
 						if ($newrecord) {
-							GedcomRecord::getInstance($this->xref)->updateRecord($newrecord, $this->PLUGIN->chan);
+							GedcomRecord::getInstance($this->xref, $WT_TREE)->updateRecord($newrecord, $this->PLUGIN->chan);
 						} else {
-							GedcomRecord::getInstance($this->xref)->deleteRecord();
+							GedcomRecord::getInstance($this->xref, $WT_TREE)->deleteRecord();
 						}
 					}
 				}
@@ -122,9 +124,9 @@ class BatchUpdateModule extends Module implements ModuleConfigInterface {
 						$newrecord = $this->PLUGIN->updateRecord($xref, $record);
 						if ($newrecord != $record) {
 							if ($newrecord) {
-								GedcomRecord::getInstance($this->xref)->updateRecord($newrecord, $this->PLUGIN->chan);
+								GedcomRecord::getInstance($this->xref, $WT_TREE)->updateRecord($newrecord, $this->PLUGIN->chan);
 							} else {
-								GedcomRecord::getInstance($this->xref)->deleteRecord();
+								GedcomRecord::getInstance($this->xref, $WT_TREE)->deleteRecord();
 							}
 						}
 					}
@@ -166,7 +168,7 @@ class BatchUpdateModule extends Module implements ModuleConfigInterface {
 			'<input type="hidden" name="data"   value="">' . // will be set by javascript for next update
 			'<table id="batch_update"><tr>' .
 			'<th>' . I18N::translate('Family tree') . '</th>' .
-			'<td>' . select_edit_control('ged', Tree::getNameList(), '', WT_GEDCOM, 'onchange="reset_reload();"') .
+			'<td>' . select_edit_control('ged', Tree::getNameList(), '', $WT_TREE->getName(), 'onchange="reset_reload();"') .
 			'</td></tr><tr><th>' . I18N::translate('Batch update') . '</th><td><select name="plugin" onchange="reset_reload();">';
 		if (!$this->plugin) {
 			$html .= '<option value="" selected></option>';
@@ -195,7 +197,7 @@ class BatchUpdateModule extends Module implements ModuleConfigInterface {
 			} else {
 				if ($this->curr_xref) {
 					// Create an object, so we can get the latest version of the name.
-					$this->record = GedcomRecord::getInstance($this->curr_xref);
+					$this->record = GedcomRecord::getInstance($this->curr_xref, $WT_TREE);
 
 					$html .=
 						'</table><table id="batch_update2"><tr><td>' .
@@ -260,31 +262,33 @@ class BatchUpdateModule extends Module implements ModuleConfigInterface {
 	 * Generate a list of all XREFs.
 	 */
 	private function getAllXrefs() {
+		global $WT_TREE;
+
 		$sql = array();
 		$vars = array();
 		foreach ($this->PLUGIN->getRecordTypesToUpdate() as $type) {
 			switch ($type) {
 			case 'INDI':
 				$sql[] = "SELECT i_id, 'INDI' FROM `##individuals` WHERE i_file=?";
-				$vars[] = WT_GED_ID;
+				$vars[] = $WT_TREE->getTreeId();
 				break;
 			case 'FAM':
 				$sql[] = "SELECT f_id, 'FAM' FROM `##families` WHERE f_file=?";
-				$vars[] = WT_GED_ID;
+				$vars[] = $WT_TREE->getTreeId();
 				break;
 			case 'SOUR':
 				$sql[] = "SELECT s_id, 'SOUR' FROM `##sources` WHERE s_file=?";
-				$vars[] = WT_GED_ID;
+				$vars[] = $WT_TREE->getTreeId();
 				break;
 			case 'OBJE':
 				$sql[] = "SELECT m_id, 'OBJE' FROM `##media` WHERE m_file=?";
-				$vars[] = WT_GED_ID;
+				$vars[] = $WT_TREE->getTreeId();
 				break;
 			default:
 				$sql[] = "SELECT o_id, ? FROM `##other` WHERE o_type=? AND o_file=?";
 				$vars[] = $type;
 				$vars[] = $type;
-				$vars[] = WT_GED_ID;
+				$vars[] = $WT_TREE->getTreeId();
 				break;
 			}
 		}
@@ -359,21 +363,23 @@ class BatchUpdateModule extends Module implements ModuleConfigInterface {
 	 * @return string
 	 */
 	public static function getLatestRecord($xref, $type) {
+		global $WT_TREE;
+
 		switch ($type) {
 		case 'INDI':
-			return Individual::getInstance($xref)->getGedcom();
+			return Individual::getInstance($xref, $WT_TREE)->getGedcom();
 		case 'FAM':
-			return Family::getInstance($xref)->getGedcom();
+			return Family::getInstance($xref, $WT_TREE)->getGedcom();
 		case 'SOUR':
-			return Source::getInstance($xref)->getGedcom();
+			return Source::getInstance($xref, $WT_TREE)->getGedcom();
 		case 'REPO':
-			return Repository::getInstance($xref)->getGedcom();
+			return Repository::getInstance($xref, $WT_TREE)->getGedcom();
 		case 'OBJE':
-			return Media::getInstance($xref)->getGedcom();
+			return Media::getInstance($xref, $WT_TREE)->getGedcom();
 		case 'NOTE':
-			return Note::getInstance($xref)->getGedcom();
+			return Note::getInstance($xref, $WT_TREE)->getGedcom();
 		default:
-			return GedcomRecord::getInstance($xref)->getGedcom();
+			return GedcomRecord::getInstance($xref, $WT_TREE)->getGedcom();
 		}
 	}
 

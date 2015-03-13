@@ -68,7 +68,7 @@ class ReviewChangesModule extends Module implements ModuleBlockInterface {
 									I18N::translate('Pending changes'),
 									I18N::translate('There are pending changes for you to moderate.') .
 									Mail::EOL . Mail::EOL .
-									'<a href="' . WT_BASE_URL . 'index.php?ged=' . WT_GEDURL . '">' . WT_BASE_URL . 'index.php?ged=' . WT_GEDURL . '</a>'
+									'<a href="' . WT_BASE_URL . 'index.php?ged=' . $WT_TREE->getNameUrl() . '">' . WT_BASE_URL . 'index.php?ged=' . $WT_TREE->getNameUrl() . '</a>'
 								);
 								I18N::init(WT_LOCALE);
 							}
@@ -103,9 +103,9 @@ class ReviewChangesModule extends Module implements ModuleBlockInterface {
 				" WHERE status='pending'" .
 				" AND   gedcom_id=?" .
 				" GROUP BY xref"
-			)->execute(array(WT_GED_ID))->fetchAll();
+			)->execute(array($WT_TREE->getTreeId()))->fetchAll();
 			foreach ($changes as $change) {
-				$record = GedcomRecord::getInstance($change->xref);
+				$record = GedcomRecord::getInstance($change->xref, $WT_TREE);
 				if ($record->canShow()) {
 					$content .= '<li><a href="' . $record->getHtmlUrl() . '">' . $record->getFullName() . '</a></li>';
 				}

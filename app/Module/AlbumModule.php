@@ -39,7 +39,9 @@ class AlbumModule extends Module implements ModuleTabInterface {
 
 	/** {@inheritdoc} */
 	public function hasTabContent() {
-		return WT_USER_CAN_EDIT || $this->getMedia();
+		global $WT_TREE;
+
+		return Auth::isEditor($WT_TREE) || $this->getMedia();
 	}
 
 
@@ -54,10 +56,10 @@ class AlbumModule extends Module implements ModuleTabInterface {
 
 		$html = '<div id="' . $this->getName() . '_content">';
 		//Show Lightbox-Album header Links
-		if (WT_USER_CAN_EDIT) {
+		if (Auth::isEditor($WT_TREE)) {
 			$html .= '<table class="facts_table"><tr><td class="descriptionbox rela">';
 			// Add a new media object
-			if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
+			if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($WT_TREE)) {
 				$html .= '<span><a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&linktoid=' . $controller->record->getXref() . '\', \'_blank\', \'resizable=1,scrollbars=1,top=50,height=780,width=600\');return false;">';
 				$html .= '<img src="' . Theme::theme()->assetUrl() . 'images/image_add.png" id="head_icon" class="icon" title="' . I18N::translate('Add a new media object') . '" alt="' . I18N::translate('Add a new media object') . '">';
 				$html .= I18N::translate('Add a new media object');
@@ -68,7 +70,7 @@ class AlbumModule extends Module implements ModuleTabInterface {
 				$html .= I18N::translate('Link to an existing media object');
 				$html .= '</a></span>';
 			}
-			if (WT_USER_GEDCOM_ADMIN && $this->getMedia()) {
+			if (Auth::isManager($WT_TREE) && $this->getMedia()) {
 				// Popup Reorder Media
 				$html .= '<span><a href="#" onclick="reorder_media(\'' . $controller->record->getXref() . '\')">';
 				$html .= '<img src="' . Theme::theme()->assetUrl() . 'images/images.png" id="head_icon" class="icon" title="' . I18N::translate('Re-order media') . '" alt="' . I18N::translate('Re-order media') . '">';
@@ -118,7 +120,7 @@ class AlbumModule extends Module implements ModuleTabInterface {
 				}
 			}
 
-			if (WT_USER_CAN_EDIT) {
+			if (Auth::isEditor($media->getTree())) {
 				// Edit Media
 				$submenu = new Menu(I18N::translate('Edit media'));
 				$submenu->setOnclick("return window.open('addmedia.php?action=editmedia&amp;pid=" . $media->getXref() . "', '_blank', edit_window_specs);");
@@ -185,7 +187,7 @@ class AlbumModule extends Module implements ModuleTabInterface {
 				if (!$fact->isPendingDeletion()) {
 					preg_match_all('/(?:^1|\n\d) OBJE @(' . WT_REGEX_XREF . ')@/', $fact->getGedcom(), $matches);
 					foreach ($matches[1] as $match) {
-						$media = Media::getInstance($match);
+						$media = Media::getInstance($match, $controller->record->getTree());
 						if ($media && $media->canShow()) {
 							$this->media_list[] = $media;
 						}

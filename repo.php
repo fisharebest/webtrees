@@ -16,6 +16,13 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree   $WT_TREE
+ */
+global $WT_TREE;
+
 define('WT_SCRIPT_NAME', 'repo.php');
 require './includes/session.php';
 
@@ -24,7 +31,7 @@ $controller = new RepositoryController;
 if ($controller->record && $controller->record->canShow()) {
 	$controller->pageHeader();
 	if ($controller->record->isPendingDeletion()) {
-		if (WT_USER_CAN_ACCEPT) {
+		if (Auth::isModerator($controller->record->getTree())) {
 			echo
 				'<p class="ui-state-highlight">',
 				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ I18N::translate(
@@ -34,7 +41,7 @@ if ($controller->record && $controller->record->canShow()) {
 				),
 				' ', help_link('pending_changes'),
 				'</p>';
-		} elseif (WT_USER_CAN_EDIT) {
+		} elseif (Auth::isEditor($controller->record->getTree())) {
 			echo
 				'<p class="ui-state-highlight">',
 				I18N::translate('This repository has been deleted.  The deletion will need to be reviewed by a moderator.'),
@@ -42,7 +49,7 @@ if ($controller->record && $controller->record->canShow()) {
 				'</p>';
 		}
 	} elseif ($controller->record->isPendingAddtion()) {
-		if (WT_USER_CAN_ACCEPT) {
+		if (Auth::isModerator($controller->record->getTree())) {
 			echo
 				'<p class="ui-state-highlight">',
 				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ I18N::translate(
@@ -52,7 +59,7 @@ if ($controller->record && $controller->record->canShow()) {
 				),
 				' ', help_link('pending_changes'),
 				'</p>';
-		} elseif (WT_USER_CAN_EDIT) {
+		} elseif (Auth::isEditor($controller->record->getTree())) {
 			echo
 				'<p class="ui-state-highlight">',
 				I18N::translate('This repository has been edited.  The changes need to be reviewed by a moderator.'),

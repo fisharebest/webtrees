@@ -237,19 +237,6 @@ case 'DATE':
 		'</table>';
 	break;
 
-case 'EMAI':
-case 'EMAIL':
-case 'EMAL':
-case '_EMAIL':
-	$title = GedcomTag::getLabel('EMAIL');
-	$text = I18N::translate('Enter the email address.<br><br>An example email address looks like this: <b>name@hotmail.com</b>  Leave this field blank if you do not want to include an email address.');
-	break;
-
-case 'FAX':
-	$title = GedcomTag::getLabel('FAX');
-	$text = I18N::translate('Enter the FAX number including the country and area code.<br><br>Leave this field blank if you do not want to include a FAX number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212.');
-	break;
-
 case 'FORM':
 	$title = GedcomTag::getLabel('FORM');
 	$text = I18N::translate('This is an optional field that can be used to enter the file format of the media object.  Some genealogy programs may look at this field to determine how to handle the item.  However, since media do not transfer across computer systems very well, this field is not very important.');
@@ -284,11 +271,6 @@ case 'SURN':
 		'</p>';
 	break;
 
-case 'NOTE':
-	$title = GedcomTag::getLabel('NOTE');
-	$text = I18N::translate('Notes are free-form text and will appear in the Fact Details section of the page.');
-	break;
-
 case 'OBJE':
 	$title = GedcomTag::getLabel('OBJE');
 	$text =
@@ -305,11 +287,6 @@ case 'PAGE':
 case 'PEDI':
 	$title = GedcomTag::getLabel('PEDI');
 	$text = I18N::translate('A child may have more than one set of parents.  The relationship between the child and the parents can be biological, legal, or based on local culture and tradition.  If no pedigree is specified, then a biological relationship will be assumed.');
-	break;
-
-case 'PHON':
-	$title = GedcomTag::getLabel('PHON');
-	$text = I18N::translate('Enter the phone number including the country and area code.<br><br>Leave this field blank if you do not want to include a phone number.  For example, a number in Germany might be +49 25859 56 76 89 and a number in USA or Canada might be +1 888 555-1212.');
 	break;
 
 case 'PLAC':
@@ -333,11 +310,6 @@ case 'RESN':
 case 'ROMN':
 	$title = GedcomTag::getLabel('ROMN');
 	$text = I18N::translate('In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur.');
-	break;
-
-case 'SEX':
-	$title = GedcomTag::getLabel('SEX');
-	$text = I18N::translate('Choose the appropriate gender from the drop-down list.  The <b>unknown</b> option indicates that the gender is unknown.');
 	break;
 
 case 'SHARED_NOTE':
@@ -386,80 +358,8 @@ case '_PRIM':
 	break;
 
 	//////////////////////////////////////////////////////////////////////////////
-	// This section contains an entry for every configuration item
-	//////////////////////////////////////////////////////////////////////////////
-
-case 'CHECK_MARRIAGE_RELATIONS':
-	$title = I18N::translate('Check relationships by marriage');
-	$text = I18N::translate('When calculating relationships, this option controls whether webtrees will include spouses/partners as well as blood relatives.');
-	break;
-
-case 'MAX_DESCENDANCY_GENERATIONS':
-	$title = I18N::translate('Maximum descendancy generations');
-	$text = I18N::translate('Set the maximum number of generations to display on descendancy charts.');
-	break;
-
-case 'PEDIGREE_LAYOUT':
-	$title = /* I18N: A site configuration setting */ I18N::translate('Default pedigree chart layout');
-	$text = /* I18N: Help text for the “Default pedigree chart layout” tree configuration setting */ I18N::translate('This option indicates whether the pedigree chart should be generated in landscape or portrait mode.');
-	break;
-
-case 'PEDIGREE_SHOW_GENDER':
-	$title = I18N::translate('Gender icon on charts');
-	$text = I18N::translate('This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender.  The option simply removes some duplicate information from the box.');
-	break;
-
-case 'SHOW_EST_LIST_DATES':
-	$title = I18N::translate('Estimated dates for birth and death');
-	$text = I18N::translate('This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known.');
-
-	break;
-
-case 'SHOW_MEDIA_DOWNLOAD':
-	$title = I18N::translate('Show download link in media viewer');
-	$text = I18N::translate('The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons.');
-	break;
-
-case 'SHOW_PARENTS_AGE':
-	$title = I18N::translate('Show age of parents next to child’s birthdate');
-	$text = I18N::translate('This option controls whether or not to show age of father and mother next to child’s birthdate on charts.');
-	break;
-
-case 'THUMBNAIL_WIDTH':
-	$title = I18N::translate('Width of generated thumbnails');
-	$text = I18N::translate('This is the width (in pixels) that the program will use when automatically generating thumbnails.  The default setting is 100.');
-	break;
-
-	//////////////////////////////////////////////////////////////////////////////
 	// This section contains all the other help items.
 	//////////////////////////////////////////////////////////////////////////////
-
-case 'add_facts':
-	$title = I18N::translate('Add a fact');
-	$text = I18N::translate('Here you can add a fact to the record being edited.<br><br>First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list.');
-	$text .= '<br><br>';
-	$text .= '<b>' . I18N::translate('Add from clipboard') . '</b>';
-	$text .= '<br><br>';
-	$text .= I18N::translate('webtrees allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the clippings cart that you can use to export portions of your database.<br><br>You can select any of the facts from the clipboard and copy the selected fact to the individual, family, media, source, or repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a marriage fact to a source or an individual record since the marriage fact is associated only with family records.<br><br>This is very helpful when entering similar facts, such as census facts, for many individuals or families.');
-	break;
-
-case 'add_note':
-	// This is a general help text for multiple pages
-	$title = I18N::translate('Add a new note');
-	$text = I18N::translate('If you have a note to add to this record, this is the place to do so.<br><br>Just click the link, a window will open, and you can type your note.  When you are finished typing, just click the button below the box, close the window, and that’s all.');
-	break;
-
-case 'add_shared_note':
-	// This is a general help text for multiple pages
-	$title = I18N::translate('Add a new shared note');
-	$text = I18N::translate('When you click the <b>Add a new shared note</b> link, a new window will open.  You can choose to link to an existing shared note, or you can create a new shared note and at the same time create a link to it.');
-	break;
-
-case 'add_source':
-	// This is a general help text for multiple pages
-	$title = I18N::translate('Add a new source citation');
-	$text = I18N::translate('Here you can add a source <b>Citation</b> to this record.<br><br>Just click the link, a window will open, and you can choose the source from the list (Find ID) or create a new source and then add the citation.<br><br>Adding sources is an important part of genealogy because it allows other researchers to verify where you obtained your information.');
-	break;
 
 case 'annivers_year_select':
 	$title = I18N::translate('Year input box');
@@ -474,11 +374,6 @@ case 'block_move_right':
 case 'block_move_up':
 	$title = I18N::translate('Move list entries');
 	$text = I18N::translate('Use these buttons to re-arrange the order of the entries within the list.  The blocks will be printed in the order in which they are listed.<br><br>Highlight the entry to be moved, and then click a button to move that entry up or down.');
-	break;
-
-case 'download_gedcom':
-	$title = I18N::translate('Download family tree');
-	$text = I18N::translate('This option will download the family tree to a GEDCOM file on your computer.');
 	break;
 
 case 'edit_add_ASSO':
@@ -517,50 +412,15 @@ case 'edit_edit_raw':
 		/* I18N: %s is a URL */ I18N::translate('You can download a copy of the GEDCOM specification from %s.', '<a href="http://wiki.webtrees.net/w/images-en/Ged551-5.pdf">http://wiki.webtrees.net/w/images-en/Ged551-5.pdf</a>');
 	break;
 
-case 'edit_merge':
-	$title = I18N::translate('Merge records');
-	$text = I18N::translate('This page will allow you to merge two GEDCOM records from the same GEDCOM file.<br><br>This is useful for individuals who have merged GEDCOMs and now have many individuals, families, and sources that are the same.<br><br>The page consists of three steps.<br><ol><li>You enter two GEDCOM IDs.  The IDs <u>must</u> be of the same type.  You cannot merge an individual and a family or family and source, for example.<br>In the <b>Merge To ID:</b> field enter the ID of the record you want to be the new record after the merge is complete.<br>In the <b>Merge From ID:</b> field enter the ID of the record whose information will be merged into the Merge To ID: record.  This record will be deleted after the Merge.</li><li>You select what facts you want to keep from the two records when they are merged.  Just click the checkboxes next to the ones you want to keep.</li><li>You inspect the results of the merge, just like with all other changes made online.</li></ol>Someone with Accept rights will have to authorize your changes to make them permanent.');
-	break;
-
 case 'edit_SOUR_EVEN':
 	$title = I18N::translate('Associate events with this source');
 	$text = I18N::translate('Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County.  “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho.');
 	break;
 
-case 'export_gedcom':
-	$title = I18N::translate('Export family tree');
-	$text =
-		'<p>' .
-		I18N::translate('This option will save the family tree to a GEDCOM file on the server.') .
-		'</p><p>' .
-		/* I18N: %s is a folder name */
-		I18N::translate('GEDCOM files are stored in the %s folder.', '<b dir="auto">' . WT_DATA_DIR . '</b>') .
-		'</p>';
-	break;
-
-case 'fambook_descent':
-	$title = I18N::translate('Descendant generations');
-	$text = I18N::translate('This value determines the number of descendant generations of the root individual that will be printed in hourglass format.');
-	break;
-
-case 'fan_width':
-	$title = I18N::translate('Width');
-	$text = I18N::translate('Here you can change the diagram width from 50 percent to 300 percent.  At 100 percent the output image is about 640 pixels wide.');
-	break;
 
 case 'gedcom_news_archive':
 	$title = I18N::translate('View archive');
 	$text = I18N::translate('To reduce the height of the News block, the administrator has hidden some articles.  You can reveal these hidden articles by clicking the <b>View archive</b> link.');
-	break;
-
-case 'gedcom_news_flag':
-	$title = I18N::translate('Limit:');
-	$text = I18N::translate('Enter the limiting value here.<br><br>If you have opted to limit the news article display according to age, any article older than the number of days entered here will be hidden from view.  If you have opted to limit the news article display by number, only the specified number of recent articles, ordered by age, will be shown.  The remaining articles will be hidden from view.<br><br>Zeros entered here will disable the limit, causing all news articles to be shown.');
-	break;
-
-case 'gedcom_news_limit':
-	$title = I18N::translate('Limit display by:');
-	$text = I18N::translate('You can limit the number of news articles displayed, thereby reducing the height of the GEDCOM News block.<br><br>This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles.');
 	break;
 
 case 'google_chart_surname':
@@ -568,35 +428,9 @@ case 'google_chart_surname':
 	$text = I18N::translate('The number of occurrences of the specified name will be shown on the map.  If you leave this field empty, the most common surname will be used.');
 	break;
 
-case 'import_gedcom':
-	$title = I18N::translate('Import family tree');
-	$text =
-		'<p>' .
-		I18N::translate('This option deletes all the genealogy data in your family tree and replaces it with data from a GEDCOM file on the server.') .
-		'</p><p>' .
-		/* I18N: %s is a folder name */
-		I18N::translate('GEDCOM files are stored in the %s folder.', '<b dir="auto">' . WT_DATA_DIR . '</b>') .
-		'</p>';
-	break;
-
 case 'include_media':
 	$title = I18N::translate('Include media (automatically zips files)');
 	$text = I18N::translate('Select this option to include the media files associated with the records in your clippings cart.  Choosing this option will automatically zip the files during download.');
-	break;
-
-case 'lifespan_chart':
-	$title = I18N::translate('Lifespans');
-	$text = I18N::translate('On this chart you can display one or more individuals along a horizontal timeline.  This chart allows you to see how the lives of different individuals overlapped.<br><br>You can add individuals to the chart individually or by family groups by their IDs.  The previous list will be remembered as you add more individuals to the chart.  You can clear the chart at any time with the <b>Clear chart</b> button.<br><br>You can also add individuals to the chart by searching for them by date range or locality.');
-	break;
-
-case 'next_path':
-	$title = I18N::translate('Find the next relationship path');
-	$text = I18N::translate('You can click this button to see whether there is another relationship path between the two individuals.  Previously found paths can be displayed again by clicking the link with the path number.');
-	break;
-
-case 'no_update_CHAN':
-	$title = I18N::translate('Do not update the “last change” record');
-	$text = I18N::translate('Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, webtrees will retain the original change information instead of replacing it with that of the current session.  With this option selected, administrators also have the ability to modify or delete the information associated with the original CHAN tag.');
 	break;
 
 case 'pending_changes':
@@ -615,31 +449,6 @@ case 'pending_changes':
 			I18N::translate('Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account.') .
 			'</p>';
 	}
-	break;
-
-case 'ppp_view_records':
-	$title = I18N::translate('View all records');
-	$text = I18N::translate('Clicking on this link will show you a list of all of the individuals and families that have events occurring in this place.  When you get to the end of a place hierarchy, which is normally a town or city, the name list will be shown automatically.');
-	break;
-
-case 'show_fact_sources':
-	$title = I18N::translate('Show all sources');
-	$text = I18N::translate('When this option is checked, you can see all source or note records for this individual.  When this option is unchecked, source or note records that are associated with other facts for this individual will not be shown.');
-	break;
-
-case 'show_spouse':
-	$title = I18N::translate('Show spouses');
-	$text = I18N::translate('By default this chart does not show spouses for the descendants because it makes the chart harder to read and understand.  Turning this option on will show spouses on the chart.');
-	break;
-
-case 'upload_gedcom':
-	$title = I18N::translate('Upload family tree');
-	$text = I18N::translate('This option deletes all the genealogy data in your family tree and replaces it with data from a GEDCOM file on your computer.');
-	break;
-
-case 'zip':
-	$title = I18N::translate('Zip clippings');
-	$text = I18N::translate('Select this option as to save your clippings in a ZIP file.  For more information about ZIP files, please visit <a href="http://www.winzip.com" target="_blank">http://www.winzip.com</a>.');
 	break;
 
 default:

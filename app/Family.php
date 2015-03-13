@@ -30,15 +30,15 @@ class Family extends GedcomRecord {
 	private $wife;
 
 	/** {@inheritdoc} */
-	public function __construct($xref, $gedcom, $pending, $gedcom_id) {
-		parent::__construct($xref, $gedcom, $pending, $gedcom_id);
+	public function __construct($xref, $gedcom, $pending, $tree) {
+		parent::__construct($xref, $gedcom, $pending, $tree);
 
 		// Fetch husband and wife
 		if (preg_match('/^1 HUSB @(.+)@/m', $gedcom . $pending, $match)) {
-			$this->husb = Individual::getInstance($match[1], $gedcom_id);
+			$this->husb = Individual::getInstance($match[1], $tree);
 		}
 		if (preg_match('/^1 WIFE @(.+)@/m', $gedcom . $pending, $match)) {
-			$this->wife = Individual::getInstance($match[1], $gedcom_id);
+			$this->wife = Individual::getInstance($match[1], $tree);
 		}
 
 		// Make sure husb/wife are the right way round.
@@ -52,14 +52,14 @@ class Family extends GedcomRecord {
 	 * we just receive the XREF.  For bulk records (such as lists
 	 * and search results) we can receive the GEDCOM data as well.
 	 *
-	 * @param string       $xref
-	 * @param integer|null $gedcom_id
-	 * @param string|null  $gedcom
+	 * @param string      $xref
+	 * @param Tree        $tree
+	 * @param string|null $gedcom
 	 *
 	 * @return Family|null
 	 */
-	public static function getInstance($xref, $gedcom_id = WT_GED_ID, $gedcom = null) {
-		$record = parent::getInstance($xref, $gedcom_id, $gedcom);
+	public static function getInstance($xref, Tree $tree, $gedcom = null) {
+		$record = parent::getInstance($xref, $tree, $gedcom);
 
 		if ($record instanceof Family) {
 			return $record;
@@ -76,7 +76,7 @@ class Family extends GedcomRecord {
 		// Just show the 1 CHIL/HUSB/WIFE tag, not any subtags, which may contain private data
 		preg_match_all('/\n1 (?:CHIL|HUSB|WIFE) @(' . WT_REGEX_XREF . ')@/', $this->gedcom, $matches, PREG_SET_ORDER);
 		foreach ($matches as $match) {
-			$rela = Individual::getInstance($match[1]);
+			$rela = Individual::getInstance($match[1], $this->tree);
 			if ($rela && ($SHOW_PRIVATE_RELATIONSHIPS || $rela->canShow($access_level))) {
 				$rec .= $match[0];
 			}
@@ -127,7 +127,7 @@ class Family extends GedcomRecord {
 		// Hide a family if any member is private
 		preg_match_all('/\n1 (?:CHIL|HUSB|WIFE) @(' . WT_REGEX_XREF . ')@/', $this->gedcom, $matches);
 		foreach ($matches[1] as $match) {
-			$person = Individual::getInstance($match);
+			$person = Individual::getInstance($match, $this->tree);
 			if ($person && !$person->canShow($access_level)) {
 				return false;
 			}
@@ -137,7 +137,7 @@ class Family extends GedcomRecord {
 	}
 
 	/** {@inheritdoc} */
-	public function canShowName($access_level = WT_USER_ACCESS_LEVEL) {
+	public function canShowName($access_level = null) {
 		// We can always see the name (Husband-name + Wife-name), however,
 		// the name will often be "private + private"
 		return true;
@@ -161,11 +161,15 @@ class Family extends GedcomRecord {
 	/**
 	 * Get the (zero, one or two) spouses from this family.
 	 *
-	 * @param integer $access_level
+	 * @param integer|null $access_level
 	 *
 	 * @return Individual[]
 	 */
-	function getSpouses($access_level = WT_USER_ACCESS_LEVEL) {
+	function getSpouses($access_level = null) {
+		if ($access_level === null) {
+			$access_level = Auth::accessLevel($this->tree);
+		}
+
 		$spouses = array();
 		if ($this->husb && $this->husb->canShowName($access_level)) {
 			$spouses[] = $this->husb;
@@ -180,11 +184,15 @@ class Family extends GedcomRecord {
 	/**
 	 * Get a list of this family’s children.
 	 *
-	 * @param integer $access_level
+	 * @param integer|null $access_level
 	 *
 	 * @return Individual[]
 	 */
-	function getChildren($access_level = WT_USER_ACCESS_LEVEL) {
+	function getChildren($access_level = null) {
+		if ($access_level === null) {
+			$access_level = Auth::accessLevel($this->tree);
+		}
+
 		$SHOW_PRIVATE_RELATIONSHIPS = $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
 		$children = array();

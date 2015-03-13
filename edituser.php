@@ -41,8 +41,8 @@ $form_pass1          = Filter::post('form_pass1', WT_REGEX_PASSWORD);
 $form_pass2          = Filter::post('form_pass2', WT_REGEX_PASSWORD);
 $form_email          = Filter::postEmail('form_email');
 $form_rootid         = Filter::post('form_rootid', WT_REGEX_XREF);
-$form_theme          = Filter::post('form_theme', implode('|', array_keys(Theme::installedThemes())));
-$form_language       = Filter::post('form_language', implode('|', array_keys(I18N::installedLanguages())), WT_LOCALE);
+$form_theme          = Filter::post('form_theme');
+$form_language       = Filter::post('form_language');
 $form_contact_method = Filter::post('form_contact_method');
 $form_visible_online = Filter::postBool('form_visible_online');
 
@@ -105,8 +105,8 @@ $controller
 	->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 	->addInlineJavascript('autocomplete();');
 
-$my_individual_record = Individual::getInstance(WT_USER_GEDCOM_ID);
-$default_individual   = Individual::getInstance(WT_USER_ROOT_ID);
+$my_individual_record = Individual::getInstance($WT_TREE->getUserPreference(Auth::user(), 'gedcomid'), $WT_TREE);
+$default_individual   = Individual::getInstance($WT_TREE->getUserPreference(Auth::user(), 'rootid'), $WT_TREE);
 
 // Form validation
 ?>
@@ -151,10 +151,9 @@ function checkform(frm) {
 				</label>
 			</div>
 			<div class="value">
-				<input type="text" id="form_username" name="form_username" value="<?php echo Filter::escapeHtml(Auth::user()->getUserName()); ?>" autofocus>
+				<input type="text" id="form_username" name="form_username" value="<?php echo Filter::escapeHtml(Auth::user()->getUserName()); ?>" dir="auto">
 				<p class="small text-muted">
 					<?php echo I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.'); ?>
-					<?php echo I18N::translate('Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;'); ?>
 				</p>
 			</div>
 			<div class="label">
@@ -163,7 +162,7 @@ function checkform(frm) {
 				</label>
 			</div>
 			<div class="value">
-				<input type="text" id="form_realname" name="form_realname" value="<?php echo Filter::escapeHtml(Auth::user()->getRealName()); ?>">
+				<input type="text" id="form_realname" name="form_realname" value="<?php echo Filter::escapeHtml(Auth::user()->getRealName()); ?>" dir="auto">
 				<p class="small text-muted">
 					<?php echo I18N::translate('This is your real name, as you would like it displayed on screen.'); ?>
 				</p>
@@ -187,7 +186,7 @@ function checkform(frm) {
 				</label>
 			</div>
 			<div class="value">
-				<input data-autocomplete-type="INDI" type="text" name="form_rootid" id="form_rootid" value="<?php WT_USER_ROOT_ID; ?>">
+				<input data-autocomplete-type="INDI" type="text" name="form_rootid" id="form_rootid" value="<?php $WT_TREE->getUserPreference(Auth::user(), 'rootid'); ?>">
 				<?php echo print_findindi_link('form_rootid'); ?>
 				<br>
 				<?php if ($default_individual): ?>

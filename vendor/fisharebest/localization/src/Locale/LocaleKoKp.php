@@ -1,0 +1,15 @@
+<?php namespace Fisharebest\Localization;
+
+/**
+ * Class LocaleKoKp
+ *
+ * @author        Greg Roach <fisharebest@gmail.com>
+ * @copyright (c) 2015 Greg Roach
+ * @license       GPLv3+
+ */
+class LocaleKoKp extends LocaleKo {
+	/** {@inheritdoc} */
+	public function territory() {
+		return new TerritoryKp;
+	}
+}

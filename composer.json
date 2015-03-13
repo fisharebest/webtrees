@@ -27,6 +27,7 @@
 		"ezyang/htmlpurifier": "*",
 		"fisharebest/algorithm": "*",
 		"fisharebest/ext-calendar": "*",
+		"fisharebest/localization": "*",
 		"ircmaxell/password-compat": "*",
 		"michelf/php-markdown": "*",
 		"patchwork/utf8": "*",

@@ -24,14 +24,15 @@ use Zend_Session_Namespace;
  * Defined in session.php
  *
  * @global Zend_Session_Namespace $WT_SESSION
+ * @global Tree                   $WT_TREE
  */
-global $WT_SESSION;
+global $WT_SESSION, $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'admin_pgv_to_wt.php');
 require './includes/session.php';
 
 // We can only import into an empty system, so deny access if we have already created a gedcom or added users.
-if (WT_GED_ID || count(User::all()) > 1) {
+if ($WT_TREE || count(User::all()) > 1) {
 	header('Location: ' . WT_BASE_URL);
 
 	return;
@@ -558,9 +559,10 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 			$array = unserialize($setting->u_gedcomid);
 			foreach ($array as $gedcom => $value) {
 				try {
+					$tree_id = Tree::findByName($gedcom)->getTreeId();
 					Database::prepare(
 						"INSERT IGNORE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (?, ?, ?, ?)"
-					)->execute(array($setting->user_id, get_id_from_gedcom($gedcom), 'gedcomid', $value));
+					)->execute(array($setting->user_id, $tree_id, 'gedcomid', $value));
 				} catch (PDOException $ex) {
 					// Invalid data?  Reference to non-existing tree?
 				}
@@ -573,9 +575,10 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 			$array = unserialize($setting->u_rootid);
 			foreach ($array as $gedcom => $value) {
 				try {
+					$tree_id = Tree::findByName($gedcom)->getTreeId();
 					Database::prepare(
 						"INSERT IGNORE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (?, ?, ?, ?)"
-					)->execute(array($setting->user_id, get_id_from_gedcom($gedcom), 'rootid', $value));
+					)->execute(array($setting->user_id, $tree_id, 'rootid', $value));
 				} catch (PDOException $ex) {
 					// Invalid data?  Reference to non-existing tree?
 				}
@@ -588,9 +591,10 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 			$array = unserialize($setting->u_canedit);
 			foreach ($array as $gedcom => $value) {
 				try {
+					$tree_id = Tree::findByName($gedcom)->getTreeId();
 					Database::prepare(
 						"INSERT IGNORE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (?, ?, ?, ?)"
-					)->execute(array($setting->user_id, get_id_from_gedcom($gedcom), 'canedit', $value));
+					)->execute(array($setting->user_id, $tree_id, 'canedit', $value));
 				} catch (PDOException $ex) {
 					// Invalid data?  Reference to non-existing tree?
 				}
@@ -602,14 +606,14 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 }
 
 define('PGV_PHPGEDVIEW', true);
-define('PGV_PRIV_PUBLIC', WT_PRIV_PUBLIC);
-define('PGV_PRIV_USER', WT_PRIV_USER);
-define('PGV_PRIV_NONE', WT_PRIV_NONE);
-define('PGV_PRIV_HIDE', WT_PRIV_HIDE);
-$PRIV_PUBLIC = WT_PRIV_PUBLIC;
-$PRIV_USER = WT_PRIV_USER;
-$PRIV_NONE = WT_PRIV_NONE;
-$PRIV_HIDE = WT_PRIV_HIDE;
+define('PGV_PRIV_PUBLIC', Auth::PRIV_PRIVATE);
+define('PGV_PRIV_USER', Auth::PRIV_USER);
+define('PGV_PRIV_NONE', Auth::PRIV_NONE);
+define('PGV_PRIV_HIDE', Auth::PRIV_HIDE);
+$PRIV_PUBLIC = Auth::PRIV_PRIVATE;
+$PRIV_USER = Auth::PRIV_USER;
+$PRIV_NONE = Auth::PRIV_NONE;
+$PRIV_HIDE = Auth::PRIV_HIDE;
 
 // Old versions of PGV used a $GEDCOMS[] array.
 // New versions used a database.
@@ -798,7 +802,7 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'ca'));
 		break;
 	case 'english-uk':
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'en_GB'));
+		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'en-GB'));
 		break;
 	case 'polish':
 		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'pl'));
@@ -855,7 +859,7 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'ru'));
 		break;
 	default:
-		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'en_US'));
+		$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'LANGUAGE', 'en-US'));
 		break;
 	}
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'MAX_ALIVE_AGE', $MAX_ALIVE_AGE));

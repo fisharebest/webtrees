@@ -38,13 +38,13 @@ class GedcomRecord {
 	/** @var Fact[] facts extracted from $gedcom/$pending */
 	protected $facts;
 
-	/** @var boolean Can we display details of this record to WT_PRIV_PUBLIC */
+	/** @var boolean Can we display details of this record to Auth::PRIV_PRIVATE */
 	private $disp_public;
 
-	/** @var boolean Can we display details of this record to WT_PRIV_USER */
+	/** @var boolean Can we display details of this record to Auth::PRIV_USER */
 	private $disp_user;
 
-	/** @var boolean Can we display details of this record to WT_PRIV_NONE */
+	/** @var boolean Can we display details of this record to Auth::PRIV_NONE */
 	private $disp_none;
 
 	/** @var string[][] All the names of this individual */
@@ -69,13 +69,13 @@ class GedcomRecord {
 	 * @param string      $gedcom  an empty string for new/pending records
 	 * @param string|null $pending null for a record with no pending edits,
 	 *                             empty string for records with pending deletions
-	 * @param integer     $tree_id
+	 * @param Tree        $tree
 	 */
-	public function __construct($xref, $gedcom, $pending, $tree_id) {
+	public function __construct($xref, $gedcom, $pending, $tree) {
 		$this->xref    = $xref;
 		$this->gedcom  = $gedcom;
 		$this->pending = $pending;
-		$this->tree    = Tree::findById($tree_id);
+		$this->tree    = $tree;
 
 		$this->parseFacts();
 	}
@@ -121,40 +121,44 @@ class GedcomRecord {
 	 * we just receive the XREF.  For bulk records (such as lists
 	 * and search results) we can receive the GEDCOM data as well.
 	 *
-	 * @param string       $xref
-	 * @param integer|null $gedcom_id
-	 * @param string|null  $gedcom
+	 * @param string      $xref
+	 * @param Tree        $tree
+	 * @param string|null $gedcom
 	 *
 	 * @return GedcomRecord|null
 	 * @throws \Exception
 	 */
-	public static function getInstance($xref, $gedcom_id = WT_GED_ID, $gedcom = null) {
+	public static function getInstance($xref, Tree $tree, $gedcom = null) {
+		$tree_id = $tree->getTreeId();
+
 		// Is this record already in the cache?
-		if (isset(self::$gedcom_record_cache[$xref][$gedcom_id])) {
-			return self::$gedcom_record_cache[$xref][$gedcom_id];
+		if (isset(self::$gedcom_record_cache[$xref][$tree_id])) {
+			return self::$gedcom_record_cache[$xref][$tree_id];
 		}
 
 		// Do we need to fetch the record from the database?
 		if ($gedcom === null) {
-			$gedcom = static::fetchGedcomRecord($xref, $gedcom_id);
+			$gedcom = static::fetchGedcomRecord($xref, $tree_id);
 		}
 
 		// If we can edit, then we also need to be able to see pending records.
-		if (WT_USER_CAN_EDIT) {
-			if (!isset(self::$pending_record_cache[$gedcom_id])) {
+		if (Auth::isEditor($tree)) {
+			if (!isset(self::$pending_record_cache[$tree_id])) {
 				// Fetch all pending records in one database query
-				self::$pending_record_cache[$gedcom_id] = array();
+				self::$pending_record_cache[$tree_id] = array();
 				$rows = Database::prepare(
-					"SELECT xref, new_gedcom FROM `##change` WHERE status='pending' AND gedcom_id=?"
-				)->execute(array($gedcom_id))->fetchAll();
+					"SELECT xref, new_gedcom FROM `##change` WHERE status = 'pending' AND gedcom_id = :tree_id ORDER BY change_id"
+				)->execute(array(
+					'tree_id' => $tree_id
+				))->fetchAll();
 				foreach ($rows as $row) {
-					self::$pending_record_cache[$gedcom_id][$row->xref] = $row->new_gedcom;
+					self::$pending_record_cache[$tree_id][$row->xref] = $row->new_gedcom;
 				}
 			}
 
-			if (isset(self::$pending_record_cache[$gedcom_id][$xref])) {
+			if (isset(self::$pending_record_cache[$tree_id][$xref])) {
 				// A pending edit exists for this record
-				$pending = self::$pending_record_cache[$gedcom_id][$xref];
+				$pending = self::$pending_record_cache[$tree_id][$xref];
 			} else {
 				$pending = null;
 			}
@@ -184,30 +188,30 @@ class GedcomRecord {
 
 		switch ($type) {
 		case 'INDI':
-			$record = new Individual($xref, $gedcom, $pending, $gedcom_id);
+			$record = new Individual($xref, $gedcom, $pending, $tree);
 			break;
 		case 'FAM':
-			$record = new Family($xref, $gedcom, $pending, $gedcom_id);
+			$record = new Family($xref, $gedcom, $pending, $tree);
 			break;
 		case 'SOUR':
-			$record = new Source($xref, $gedcom, $pending, $gedcom_id);
+			$record = new Source($xref, $gedcom, $pending, $tree);
 			break;
 		case 'OBJE':
-			$record = new Media($xref, $gedcom, $pending, $gedcom_id);
+			$record = new Media($xref, $gedcom, $pending, $tree);
 			break;
 		case 'REPO':
-			$record = new Repository($xref, $gedcom, $pending, $gedcom_id);
+			$record = new Repository($xref, $gedcom, $pending, $tree);
 			break;
 		case 'NOTE':
-			$record = new Note($xref, $gedcom, $pending, $gedcom_id);
+			$record = new Note($xref, $gedcom, $pending, $tree);
 			break;
 		default:
-			$record = new GedcomRecord($xref, $gedcom, $pending, $gedcom_id);
+			$record = new GedcomRecord($xref, $gedcom, $pending, $tree);
 			break;
 		}
 
 		// Store it in the cache
-		self::$gedcom_record_cache[$xref][$gedcom_id] = $record;
+		self::$gedcom_record_cache[$xref][$tree_id] = $record;
 
 		return $record;
 	}
@@ -359,16 +363,16 @@ class GedcomRecord {
 		}
 
 		// We should always be able to see our own record (unless an admin is applying download restrictions)
-		if ($this->getXref() === WT_USER_GEDCOM_ID && $this->tree->getTreeId() === WT_GED_ID && $access_level === WT_USER_ACCESS_LEVEL) {
+		if ($this->getXref() === $this->tree->getUserPreference(Auth::user(), 'gedcomid') && $access_level === Auth::accessLevel($this->tree)) {
 			return true;
 		}
 
 		// Does this record have a RESN?
 		if (strpos($this->gedcom, "\n1 RESN confidential")) {
-			return WT_PRIV_NONE >= $access_level;
+			return Auth::PRIV_NONE >= $access_level;
 		}
 		if (strpos($this->gedcom, "\n1 RESN privacy")) {
-			return WT_PRIV_USER >= $access_level;
+			return Auth::PRIV_USER >= $access_level;
 		}
 		if (strpos($this->gedcom, "\n1 RESN none")) {
 			return true;
@@ -381,7 +385,7 @@ class GedcomRecord {
 		}
 
 		// Privacy rules do not apply to admins
-		if (WT_PRIV_NONE >= $access_level) {
+		if (Auth::PRIV_NONE >= $access_level) {
 			return true;
 		}
 
@@ -411,30 +415,34 @@ class GedcomRecord {
 	/**
 	 * Can the details of this record be shown?
 	 *
-	 * @param integer $access_level
+	 * @param integer|null $access_level
 	 *
 	 * @return boolean
 	 */
-	public function canShow($access_level = WT_USER_ACCESS_LEVEL) {
-		// CACHING: this function can take three different parameters,
+	public function canShow($access_level = null) {
+		if ($access_level === null) {
+			$access_level = Auth::accessLevel($this->tree);
+		}
+
+// CACHING: this function can take three different parameters,
 		// and therefore needs three different caches for the result.
 		switch ($access_level) {
-		case WT_PRIV_PUBLIC: // visitor
+		case Auth::PRIV_PRIVATE: // visitor
 			if ($this->disp_public === null) {
-				$this->disp_public = $this->canShowRecord(WT_PRIV_PUBLIC);
+				$this->disp_public = $this->canShowRecord(Auth::PRIV_PRIVATE);
 			}
 			return $this->disp_public;
-		case WT_PRIV_USER: // member
+		case Auth::PRIV_USER: // member
 			if ($this->disp_user === null) {
-				$this->disp_user = $this->canShowRecord(WT_PRIV_USER);
+				$this->disp_user = $this->canShowRecord(Auth::PRIV_USER);
 			}
 			return $this->disp_user;
-		case WT_PRIV_NONE: // admin
+		case Auth::PRIV_NONE: // admin
 			if ($this->disp_none === null) {
-				$this->disp_none = $this->canShowRecord(WT_PRIV_NONE);
+				$this->disp_none = $this->canShowRecord(Auth::PRIV_NONE);
 			}
 			return $this->disp_none;
-		case WT_PRIV_HIDE: // hidden from admins
+		case Auth::PRIV_HIDE: // hidden from admins
 			// We use this value to bypass privacy checks.  For example,
 			// when downloading data or when calculating privacy itself.
 			return true;
@@ -447,11 +455,15 @@ class GedcomRecord {
 	/**
 	 * Can the name of this record be shown?
 	 *
-	 * @param integer $access_level
+	 * @param integer|null $access_level
 	 *
 	 * @return boolean
 	 */
-	public function canShowName($access_level = WT_USER_ACCESS_LEVEL) {
+	public function canShowName($access_level = null) {
+		if ($access_level === null) {
+			$access_level = Auth::accessLevel($this->tree);
+		}
+
 		return $this->canShow($access_level);
 	}
 
@@ -461,7 +473,7 @@ class GedcomRecord {
 	 * @return boolean
 	 */
 	public function canEdit() {
-		return WT_USER_GEDCOM_ADMIN || WT_USER_CAN_EDIT && strpos($this->gedcom, "\n1 RESN locked") === false;
+		return Auth::isManager($this->tree) || Auth::isEditor($this->tree) && strpos($this->gedcom, "\n1 RESN locked") === false;
 	}
 
 	/**
@@ -473,7 +485,7 @@ class GedcomRecord {
 	 * @return string
 	 */
 	public function privatizeGedcom($access_level) {
-		if ($access_level == WT_PRIV_HIDE) {
+		if ($access_level == Auth::PRIV_HIDE) {
 			// We may need the original record, for example when downloading a GEDCOM or clippings cart
 			return $this->gedcom;
 		} elseif ($this->canShow($access_level)) {
@@ -798,7 +810,7 @@ class GedcomRecord {
 	 */
 	public function linkedIndividuals($link) {
 		$rows = Database::prepare(
-			"SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom" .
+			"SELECT i_id AS xref, i_gedcom AS gedcom" .
 			" FROM `##individuals`" .
 			" JOIN `##link` ON (i_file=l_file AND i_id=l_from)" .
 			" LEFT JOIN `##name` ON (i_file=n_file AND i_id=n_id AND n_num=0)" .
@@ -808,7 +820,7 @@ class GedcomRecord {
 
 		$list = array();
 		foreach ($rows as $row) {
-			$record = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$record = Individual::getInstance($row->xref, $this->tree, $row->gedcom);
 			if ($record->canShowName()) {
 				$list[] = $record;
 			}
@@ -825,7 +837,7 @@ class GedcomRecord {
 	 */
 	public function linkedFamilies($link) {
 		$rows = Database::prepare(
-			"SELECT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom" .
+			"SELECT f_id AS xref, f_gedcom AS gedcom" .
 			" FROM `##families`" .
 			" JOIN `##link` ON (f_file=l_file AND f_id=l_from)" .
 			" LEFT JOIN `##name` ON (f_file=n_file AND f_id=n_id AND n_num=0)" .
@@ -834,7 +846,7 @@ class GedcomRecord {
 
 		$list = array();
 		foreach ($rows as $row) {
-			$record = Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$record = Family::getInstance($row->xref, $this->tree, $row->gedcom);
 			if ($record->canShowName()) {
 				$list[] = $record;
 			}
@@ -851,7 +863,7 @@ class GedcomRecord {
 	 */
 	public function linkedSources($link) {
 		$rows = Database::prepare(
-				"SELECT s_id AS xref, s_file AS gedcom_id, s_gedcom AS gedcom" .
+				"SELECT s_id AS xref, s_gedcom AS gedcom" .
 				" FROM `##sources`" .
 				" JOIN `##link` ON (s_file=l_file AND s_id=l_from)" .
 				" WHERE s_file=? AND l_type=? AND l_to=?" .
@@ -860,7 +872,7 @@ class GedcomRecord {
 
 		$list = array();
 		foreach ($rows as $row) {
-			$record = Source::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$record = Source::getInstance($row->xref, $this->tree, $row->gedcom);
 			if ($record->canShowName()) {
 				$list[] = $record;
 			}
@@ -877,7 +889,7 @@ class GedcomRecord {
 	 */
 	public function linkedMedia($link) {
 		$rows = Database::prepare(
-			"SELECT m_id AS xref, m_file AS gedcom_id, m_gedcom AS gedcom" .
+			"SELECT m_id AS xref, m_gedcom AS gedcom" .
 			" FROM `##media`" .
 			" JOIN `##link` ON (m_file=l_file AND m_id=l_from)" .
 			" WHERE m_file=? AND l_type=? AND l_to=?" .
@@ -886,7 +898,7 @@ class GedcomRecord {
 
 		$list = array();
 		foreach ($rows as $row) {
-			$record = Media::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$record = Media::getInstance($row->xref, $this->tree, $row->gedcom);
 			if ($record->canShowName()) {
 				$list[] = $record;
 			}
@@ -903,7 +915,7 @@ class GedcomRecord {
 	 */
 	public function linkedNotes($link) {
 		$rows = Database::prepare(
-			"SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom" .
+			"SELECT o_id AS xref, o_gedcom AS gedcom" .
 			" FROM `##other`" .
 			" JOIN `##link` ON (o_file=l_file AND o_id=l_from)" .
 			" LEFT JOIN `##name` ON (o_file=n_file AND o_id=n_id AND n_num=0)" .
@@ -913,7 +925,7 @@ class GedcomRecord {
 
 		$list = array();
 		foreach ($rows as $row) {
-			$record = Note::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$record = Note::getInstance($row->xref, $this->tree, $row->gedcom);
 			if ($record->canShowName()) {
 				$list[] = $record;
 			}
@@ -930,7 +942,7 @@ class GedcomRecord {
 	 */
 	public function linkedRepositories($link) {
 		$rows = Database::prepare(
-			"SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom" .
+			"SELECT o_id AS xref, o_gedcom AS gedcom" .
 			" FROM `##other`" .
 			" JOIN `##link` ON (o_file=l_file AND o_id=l_from)" .
 			" LEFT JOIN `##name` ON (o_file=n_file AND o_id=n_id AND n_num=0)" .
@@ -940,7 +952,7 @@ class GedcomRecord {
 
 		$list = array();
 		foreach ($rows as $row) {
-			$record = Repository::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$record = Repository::getInstance($row->xref, $this->tree, $row->gedcom);
 			if ($record->canShowName()) {
 				$list[] = $record;
 			}
@@ -1010,15 +1022,19 @@ class GedcomRecord {
 	/**
 	 * The facts and events for this record.
 	 *
-	 * @param string  $filter
-	 * @param boolean $sort
-	 * @param integer $access_level
-	 * @param boolean $override     Include private records, to allow us to implement $SHOW_PRIVATE_RELATIONSHIPS and $SHOW_LIVING_NAMES.
+	 * @param string       $filter
+	 * @param boolean      $sort
+	 * @param integer|null $access_level
+	 * @param boolean      $override     Include private records, to allow us to implement $SHOW_PRIVATE_RELATIONSHIPS and $SHOW_LIVING_NAMES.
 	 *
 	 * @return Fact[]
 	 */
-	public function getFacts($filter = null, $sort = false, $access_level = WT_USER_ACCESS_LEVEL, $override = false) {
-		$facts = array();
+	public function getFacts($filter = null, $sort = false, $access_level = null, $override = false) {
+		if ($access_level === null) {
+			$access_level = Auth::accessLevel($this->tree);
+		}
+
+			$facts = array();
 		if ($this->canShow($access_level) || $override) {
 			foreach ($this->facts as $fact) {
 				if (($filter == null || preg_match('/^' . $filter . '$/', $fact->getTag())) && $fact->canShow($access_level)) {
@@ -1139,7 +1155,7 @@ class GedcomRecord {
 		list($new_gedcom) = explode("\n", $old_gedcom, 2);
 
 		// Replacing (or deleting) an existing fact
-		foreach ($this->getFacts(null, false, WT_PRIV_HIDE) as $fact) {
+		foreach ($this->getFacts(null, false, Auth::PRIV_HIDE) as $fact) {
 			if (!$fact->isPendingDeletion()) {
 				if ($fact->getFactId() === $fact_id) {
 					if ($gedcom) {

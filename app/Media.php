@@ -31,8 +31,8 @@ class Media extends GedcomRecord {
 	public $file;
 
 	/** {@inheritdoc} */
-	public function __construct($xref, $gedcom, $pending, $gedcom_id) {
-		parent::__construct($xref, $gedcom, $pending, $gedcom_id);
+	public function __construct($xref, $gedcom, $pending, $tree) {
+		parent::__construct($xref, $gedcom, $pending, $tree);
 
 		// TODO get this data from Fact objects
 		if (preg_match('/\n1 FILE (.+)/', $gedcom . $pending, $match)) {
@@ -52,14 +52,14 @@ class Media extends GedcomRecord {
 	 * we just receive the XREF.  For bulk records (such as lists
 	 * and search results) we can receive the GEDCOM data as well.
 	 *
-	 * @param string       $xref
-	 * @param integer|null $gedcom_id
-	 * @param string|null  $gedcom
+	 * @param string      $xref
+	 * @param Tree        $tree
+	 * @param string|null $gedcom
 	 *
 	 * @return null|Media
 	 */
-	public static function getInstance($xref, $gedcom_id = WT_GED_ID, $gedcom = null) {
-		$record = parent::getInstance($xref, $gedcom_id, $gedcom);
+	public static function getInstance($xref, Tree $tree, $gedcom = null) {
+		$record = parent::getInstance($xref, $tree, $gedcom);
 
 		if ($record instanceof Media) {
 			return $record;
@@ -77,7 +77,7 @@ class Media extends GedcomRecord {
 			$this->xref, $this->tree->getTreeId()
 		))->fetchOneColumn();
 		foreach ($linked_ids as $linked_id) {
-			$linked_record = GedcomRecord::getInstance($linked_id);
+			$linked_record = GedcomRecord::getInstance($linked_id, $this->tree);
 			if ($linked_record && !$linked_record->canShow($access_level)) {
 				return false;
 			}
@@ -174,7 +174,7 @@ class Media extends GedcomRecord {
 			try {
 				$imgsize = getimagesize($main_file);
 				// Image small enough to be its own thumbnail?
-				if ($imgsize[0] < $THUMBNAIL_WIDTH) {
+				if ($imgsize[0] > 0 && $imgsize[0] <= $THUMBNAIL_WIDTH) {
 					try {
 						copy($main_file, $file);
 						Log::addMediaLog('Thumbnail created for ' . $main_file . ' (copy of main image)');
@@ -314,7 +314,7 @@ class Media extends GedcomRecord {
 
 			return '';
 		}
-		$etag_string = basename($this->getServerFilename($which)) . $this->getFiletime($which) . WT_GEDCOM . WT_USER_ACCESS_LEVEL . $this->tree->getPreference('SHOW_NO_WATERMARK');
+		$etag_string = basename($this->getServerFilename($which)) . $this->getFiletime($which) . $this->tree->getName() . Auth::accessLevel($this->tree) . $this->tree->getPreference('SHOW_NO_WATERMARK');
 		$etag_string = dechex(crc32($etag_string));
 
 		return $etag_string;
@@ -459,7 +459,7 @@ class Media extends GedcomRecord {
 
 		return
 			'mediafirewall.php?mid=' . $this->getXref() . $thumbstr . $downloadstr .
-			'&amp;ged=' . rawurlencode(get_gedcom_from_id($this->tree->getTreeId())) .
+			'&amp;ged=' . $this->tree->getNameHtml() .
 			'&amp;cb=' . $this->getEtag($which);
 	}
 

@@ -16,9 +16,15 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
+
 define('WT_SCRIPT_NAME', 'branches.php');
 require './includes/session.php';
-
 
 $controller = new BranchesController;
 $controller
@@ -31,25 +37,27 @@ $controller
 	<h2><?php echo $controller->getPageTitle(); ?></h2>
 	<form name="surnlist" id="surnlist" action="branches.php">
 		<table class="facts_table width50">
-			<tr>
-				<td class="descriptionbox">
-					<?php echo GedcomTag::getLabel('SURN'); ?>
-				</td>
-				<td class="optionbox">
-					<input data-autocomplete-type="SURN" type="text" name="surname" id="SURN" value="<?php echo Filter::escapeHtml($controller->getSurname()); ?>" dir="auto">
-					<input type="hidden" name="ged" id="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
-					<input type="submit" value="<?php echo I18N::translate('View'); ?>">
-					<p>
-						<?php echo I18N::translate('Phonetic search'); ?>
-					</p>
-					<p>
-						<input type="checkbox" name="soundex_std" id="soundex_std" value="1" <?php echo $controller->getSoundexStd() ? 'checked' : ''; ?>>
-						<label for="soundex_std"><?php echo I18N::translate('Russell'); ?></label>
-						<input type="checkbox" name="soundex_dm" id="soundex_dm" value="1" <?php echo $controller->getSoundexDm() ? 'checked' : ''; ?>>
-						<label for="soundex_dm"><?php echo I18N::translate('Daitch-Mokotoff'); ?></label>
-					</p>
-				</td>
-			</tr>
+			<tbody>
+				<tr>
+					<td class="descriptionbox">
+						<?php echo GedcomTag::getLabel('SURN'); ?>
+					</td>
+					<td class="optionbox">
+						<input data-autocomplete-type="SURN" type="text" name="surname" id="SURN" value="<?php echo Filter::escapeHtml($controller->getSurname()); ?>" dir="auto">
+						<input type="hidden" name="ged" id="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
+						<input type="submit" value="<?php echo I18N::translate('View'); ?>">
+						<p>
+							<?php echo I18N::translate('Phonetic search'); ?>
+						</p>
+						<p>
+							<input type="checkbox" name="soundex_std" id="soundex_std" value="1" <?php echo $controller->getSoundexStd() ? 'checked' : ''; ?>>
+							<label for="soundex_std"><?php echo I18N::translate('Russell'); ?></label>
+							<input type="checkbox" name="soundex_dm" id="soundex_dm" value="1" <?php echo $controller->getSoundexDm() ? 'checked' : ''; ?>>
+							<label for="soundex_dm"><?php echo I18N::translate('Daitch-Mokotoff'); ?></label>
+						</p>
+					</td>
+				</tr>
+			</tbody>
 		</table>
 	</form>
 	<ol>

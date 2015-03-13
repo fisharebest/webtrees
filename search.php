@@ -31,7 +31,7 @@ function checknames(frm) {
 	action = "<?php echo $controller->action; ?>";
 	if (action === "general") {
 		if (frm.query.value.length<2) {
-			alert("<?php echo I18N::translate('Please enter more than one character'); ?>");
+			alert("<?php echo I18N::translate('Please enter more than one character.'); ?>");
 			frm.query.focus();
 			return false;
 		}
@@ -43,7 +43,7 @@ function checknames(frm) {
 
 		if (year == "") {
 			if (fname.length < 2 && lname.length < 2 && place.length < 2) {
-				alert("<?php echo I18N::translate('Please enter more than one character'); ?>");
+				alert("<?php echo I18N::translate('Please enter more than one character.'); ?>");
 				return false;
 			}
 		}

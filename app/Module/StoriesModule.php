@@ -63,7 +63,7 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 
 	/** {@inheritdoc} */
 	public function getTabContent() {
-		global $controller;
+		global $controller, $WT_TREE;
 
 		$block_ids =
 			Database::prepare(
@@ -75,7 +75,7 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 			)->execute(array(
 				$this->getName(),
 				$controller->record->getXref(),
-				WT_GED_ID
+				$controller->record->getTree()->getTreeId()
 			))->fetchOneColumn();
 
 		$html = '';
@@ -85,13 +85,13 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 			if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
 				$html .= '<div class="story_title descriptionbox center rela">' . get_block_setting($block_id, 'title') . '</div>';
 				$html .= '<div class="story_body optionbox">' . get_block_setting($block_id, 'story_body') . '</div>';
-				if (WT_USER_CAN_EDIT) {
+				if (Auth::isEditor($WT_TREE)) {
 					$html .= '<div class="story_edit"><a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_edit&amp;block_id=' . $block_id . '">';
 					$html .= I18N::translate('Edit story') . '</a></div>';
 				}
 			}
 		}
-		if (WT_USER_GEDCOM_ADMIN && !$html) {
+		if (Auth::isManager($WT_TREE) && !$html) {
 			$html .= '<div class="news_title center">' . $this->getTitle() . '</div>';
 			$html .= '<div><a href="module.php?mod=' . $this->getName() . '&amp;mod_action=admin_edit&amp;xref=' . $controller->record->getXref() . '">';
 			$html .= I18N::translate('Add a story') . '</a></div><br>';
@@ -119,7 +119,7 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 			)->execute(array(
 				$this->getName(),
 				$controller->record->getXref(),
-				WT_GED_ID
+				$controller->record->getTree()->getTreeId()
 			))->fetchOne();
 
 		return $count_of_stories == 0;
@@ -139,7 +139,9 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 	 * Show and process a form to edit a story.
 	 */
 	private function edit() {
-		if (WT_USER_CAN_EDIT) {
+		global $WT_TREE;
+
+		if (Auth::isEditor($WT_TREE)) {
 			if (Filter::postBool('save') && Filter::checkCsrf()) {
 				$block_id = Filter::postInteger('block_id');
 				if ($block_id) {
@@ -159,7 +161,7 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 				}
 				set_block_setting($block_id, 'title', Filter::post('title'));
 				set_block_setting($block_id, 'story_body', Filter::post('story_body'));
-				$languages = Filter::postArray('lang', null, array_keys(I18N::installedLanguages()));
+				$languages = Filter::postArray('lang');
 				set_block_setting($block_id, 'languages', implode(',', $languages));
 				$this->config();
 			} else {
@@ -202,7 +204,7 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 				echo Filter::getCsrf();
 				echo '<input type="hidden" name="save" value="1">';
 				echo '<input type="hidden" name="block_id" value="', $block_id, '">';
-				echo '<input type="hidden" name="gedcom_id" value="', WT_GED_ID, '">';
+				echo '<input type="hidden" name="gedcom_id" value="', $WT_TREE->getTreeId(), '">';
 				echo '<table id="story_module">';
 				echo '<tr><th>';
 				echo I18N::translate('Story title');
@@ -222,9 +224,9 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 				echo '<input data-autocomplete-type="INDI" type="text" name="xref" id="pid" size="4" value="' . $xref . '">';
 				echo print_findindi_link('pid');
 				if ($xref) {
-					$person = Individual::getInstance($xref);
+					$person = Individual::getInstance($xref, $WT_TREE);
 					if ($person) {
-						echo ' ', $person->format_list('span');
+						echo ' ', $person->formatList('span');
 					}
 				}
 				echo '</td>';
@@ -245,7 +247,9 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 	 * Respond to a request to delete a story.
 	 */
 	private function delete() {
-		if (WT_USER_CAN_EDIT) {
+		global $WT_TREE;
+
+		if (Auth::isEditor($WT_TREE)) {
 			$block_id = Filter::getInteger('block_id');
 
 			Database::prepare(
@@ -265,9 +269,11 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 	 * The admin view - list, create, edit, delete stories.
 	 */
 	private function config() {
+		global $WT_TREE;
+
 		$controller = new PageController;
 		$controller
-			->restrictAccess(WT_USER_GEDCOM_ADMIN)
+			->restrictAccess(Auth::isAdmin())
 			->setPageTitle($this->getTitle())
 			->pageHeader()
 			->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
@@ -297,7 +303,7 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 			" WHERE module_name=?" .
 			" AND gedcom_id=?" .
 			" ORDER BY xref"
-		)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
+		)->execute(array($this->getName(), $WT_TREE->getTreeId()))->fetchAll();
 
 		?>
 		<ol class="breadcrumb small">
@@ -314,7 +320,7 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 			</label>
 			<input type="hidden" name="mod" value="<?php echo  $this->getName(); ?>">
 			<input type="hidden" name="mod_action" value="admin_config">
-			<?php echo select_edit_control('ged', Tree::getNameList(), null, WT_GEDCOM, 'class="form-control"'); ?>
+			<?php echo select_edit_control('ged', Tree::getNameList(), null, $WT_TREE->getName(), 'class="form-control"'); ?>
 			<input type="submit" class="btn btn-primary" value="<?php echo I18N::translate('show'); ?>">
 		</form>
 
@@ -341,7 +347,7 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 						<?php echo Filter::escapeHtml(get_block_setting($story->block_id, 'title')); ?>
 					</td>
 					<td>
-						<?php if ($indi = Individual::getInstance($story->xref)): ?>
+						<?php if ($indi = Individual::getInstance($story->xref, $WT_TREE)): ?>
 						<a href="<?php echo $indi->getHtmlUrl(); ?>#stories">
 							<?php echo $indi->getFullName(); ?>
 						</a>
@@ -373,7 +379,7 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 	 * Show the list of stories
 	 */
 	private function showList() {
-		global $controller;
+		global $controller, $WT_TREE;
 
 		$controller = new PageController;
 		$controller
@@ -405,7 +411,7 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 			" WHERE module_name=?" .
 			" AND gedcom_id=?" .
 			" ORDER BY xref"
-		)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
+		)->execute(array($this->getName(), $WT_TREE->getTreeId()))->fetchAll();
 
 		echo '<h2 class="center">', I18N::translate('Stories'), '</h2>';
 		if (count($stories) > 0) {
@@ -416,7 +422,7 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 				</tr></thead>
 				<tbody>';
 			foreach ($stories as $story) {
-				$indi        = Individual::getInstance($story->xref);
+				$indi        = Individual::getInstance($story->xref, $WT_TREE);
 				$story_title = get_block_setting($story->block_id, 'title');
 				$languages   = get_block_setting($story->block_id, 'languages');
 				if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
@@ -440,7 +446,7 @@ class StoriesModule extends Module implements ModuleTabInterface, ModuleConfigIn
 
 	/** {@inheritdoc} */
 	public function defaultAccessLevel() {
-		return WT_PRIV_HIDE;
+		return Auth::PRIV_HIDE;
 	}
 
 	/** {@inheritdoc} */

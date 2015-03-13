@@ -63,13 +63,13 @@ if (!$ajax) {
 	echo '<div id="statistics-page"><h2>', I18N::translate('Statistics'), '</h2>',
 	'<div id="statistics_chart">',
 	'<ul>',
-	'<li><a href="statistics.php?ged=', WT_GEDURL, '&amp;ajax=1&amp;tab=0">',
+	'<li><a href="statistics.php?ged=', $WT_TREE->getNameUrl(), '&amp;ajax=1&amp;tab=0">',
 	'<span id="stats-indi">', I18N::translate('Individuals'), '</span></a></li>',
-	'<li><a href="statistics.php?ged=', WT_GEDURL, '&amp;ajax=1&amp;tab=1">',
+	'<li><a href="statistics.php?ged=', $WT_TREE->getNameUrl(), '&amp;ajax=1&amp;tab=1">',
 	'<span id="stats-fam">', I18N::translate('Families'), '</span></a></li>',
-	'<li><a href="statistics.php?ged=', WT_GEDURL, '&amp;ajax=1&amp;tab=2">',
+	'<li><a href="statistics.php?ged=', $WT_TREE->getNameUrl(), '&amp;ajax=1&amp;tab=2">',
 	'<span id="stats-other">', I18N::translate('Others'), '</span></a></li>',
-	'<li><a href="statistics.php?ged=', WT_GEDURL, '&amp;ajax=1&amp;tab=3">',
+	'<li><a href="statistics.php?ged=', $WT_TREE->getNameUrl(), '&amp;ajax=1&amp;tab=3">',
 	'<span id="stats-own">', I18N::translate('Own charts'), '</span></a></li>',
 	'</ul>',
 	'<div id="loading-indicator" style="margin:auto;width:100%;"></div>',
@@ -496,7 +496,7 @@ if (!$ajax) {
 		echo '<input type="hidden" name="action" value="update">';
 		echo '<table width="100%">';
 		echo '<tr>
-			<td class="descriptionbox width25 wrap">', I18N::translate('Select chart type:'), '</td>
+			<td class="descriptionbox width25 wrap">', I18N::translate('Select chart type'), '</td>
 			<td class="optionbox">
 			<input type="radio" id="stat_11" name="x-as" value="11" checked';
 		echo " onclick=\"{statusEnable('z_sex'); statusHide('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusHide('map_opt');}";
@@ -601,7 +601,7 @@ if (!$ajax) {
 			</select>
 			</div>
 			</td>
-			<td class="descriptionbox width20 wrap" id="axes">', I18N::translate('Categories:'), '</td>
+			<td class="descriptionbox width20 wrap" id="axes">', I18N::translate('Categories'), '</td>
 			<td class="optionbox width30" id="zyaxes">
 			<input type="radio" id="z_none" name="z-as" value="300" ';
 		echo " onclick=\"statusDisable('z-axis-boundaries-periods');";
@@ -629,7 +629,7 @@ if (!$ajax) {
 		I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 10, I18N::digits(1940), I18N::number(10)), '</option>
 			</select>
 			<br><br>';
-		echo I18N::translate('results:'), '<br>';
+		echo I18N::translate('Results'), '<br>';
 		echo '<input type="radio" id="y_num" name="y-as" value="201" checked';
 		echo '><label for="y_num">', I18N::translate('numbers'), '</label><br>';
 		echo '<input type="radio" id="y_perc" name="y-as" value="202" ';

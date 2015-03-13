@@ -53,7 +53,7 @@ if (Auth::isAdmin()) {
 	$gedc = Filter::get('gedc');
 } else {
 	// Managers can only see logs relating to this gedcom
-	$gedc = WT_GEDCOM;
+	$gedc = $WT_TREE->getName();
 }
 
 $sql_select =

@@ -136,18 +136,18 @@ class SiteMapModule extends Module implements ModuleConfigInterface {
 	 * @param string $volume
 	 */
 	private function generateFile($ged_id, $rec_type, $volume) {
+		$tree = Tree::findById($ged_id);
 		// Check the cache
 		$timestamp = $this->getSetting('sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.timestamp');
 		if ($timestamp > WT_TIMESTAMP - self::CACHE_LIFE && !Auth::check()) {
 			$data = $this->getSetting('sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.xml');
 		} else {
-			$tree = Tree::findById($ged_id);
 			$data = '<url><loc>' . WT_BASE_URL . 'index.php?ctype=gedcom&amp;ged=' . $tree->getNameUrl() . '</loc></url>' . PHP_EOL;
 			$records = array();
 			switch ($rec_type) {
 			case 'i':
 				$rows = Database::prepare(
-					"SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom" .
+					"SELECT i_id AS xref, i_gedcom AS gedcom" .
 					" FROM `##individuals`" .
 					" WHERE i_file = :tree_id" .
 					" ORDER BY i_id" .
@@ -158,12 +158,12 @@ class SiteMapModule extends Module implements ModuleConfigInterface {
 					'offset'  => self::RECORDS_PER_VOLUME * $volume,
 				))->fetchAll();
 				foreach ($rows as $row) {
-					$records[] = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+					$records[] = Individual::getInstance($row->xref, $tree, $row->gedcom);
 				}
 				break;
 			case 's':
 				$rows = Database::prepare(
-					"SELECT s_id AS xref, s_file AS gedcom_id, s_gedcom AS gedcom" .
+					"SELECT s_id AS xref, s_gedcom AS gedcom" .
 					" FROM `##sources`" .
 					" WHERE s_file = :tree_id" .
 					" ORDER BY s_id" .
@@ -174,12 +174,12 @@ class SiteMapModule extends Module implements ModuleConfigInterface {
 					'offset'  => self::RECORDS_PER_VOLUME * $volume,
 				))->fetchAll();
 				foreach ($rows as $row) {
-					$records[] = Source::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+					$records[] = Source::getInstance($row->xref, $tree, $row->gedcom);
 				}
 				break;
 			case 'r':
 				$rows = Database::prepare(
-					"SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom" .
+					"SELECT o_id AS xref, o_gedcom AS gedcom" .
 					" FROM `##other`" .
 					" WHERE o_file = :tree_id AND o_type = 'REPO'" .
 					" ORDER BY o_id" .
@@ -190,12 +190,12 @@ class SiteMapModule extends Module implements ModuleConfigInterface {
 					'offset'  => self::RECORDS_PER_VOLUME * $volume,
 				))->fetchAll();
 				foreach ($rows as $row) {
-					$records[] = Repository::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+					$records[] = Repository::getInstance($row->xref, $tree, $row->gedcom);
 				}
 				break;
 			case 'n':
 				$rows = Database::prepare(
-					"SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom" .
+					"SELECT o_id AS xref, o_gedcom AS gedcom" .
 					" FROM `##other`" .
 					" WHERE o_file = :tree_id AND o_type = 'NOTE'" .
 					" ORDER BY o_id" .
@@ -206,12 +206,12 @@ class SiteMapModule extends Module implements ModuleConfigInterface {
 					'offset'  => self::RECORDS_PER_VOLUME * $volume,
 				))->fetchAll();
 				foreach ($rows as $row) {
-					$records[] = Note::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+					$records[] = Note::getInstance($row->xref, $tree, $row->gedcom);
 				}
 				break;
 			case 'm':
 				$rows = Database::prepare(
-					"SELECT m_id AS xref, m_file AS gedcom_id, m_gedcom AS gedcom" .
+					"SELECT m_id AS xref, m_gedcom AS gedcom" .
 					" FROM `##media`" .
 					" WHERE m_file = :tree_id" .
 					" ORDER BY m_id" .
@@ -222,7 +222,7 @@ class SiteMapModule extends Module implements ModuleConfigInterface {
 					'offset'  => self::RECORDS_PER_VOLUME * $volume,
 				))->fetchAll();
 				foreach ($rows as $row) {
-					$records[] = Media::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+					$records[] = Media::getInstance($row->xref, $tree, $row->gedcom);
 				}
 				break;
 			}
@@ -234,7 +234,7 @@ class SiteMapModule extends Module implements ModuleConfigInterface {
 					if ($chan) {
 						$date = $chan->getDate();
 						if ($date->isOK()) {
-							$data .= '<lastmod>' . $date->minDate()->Format('%Y-%m-%d') . '</lastmod>';
+							$data .= '<lastmod>' . $date->minimumDate()->Format('%Y-%m-%d') . '</lastmod>';
 						}
 					}
 					$data .= '</url>' . PHP_EOL;

@@ -18,12 +18,19 @@ namespace Fisharebest\Webtrees;
 
 use Zend_Session;
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
+
 define('WT_SCRIPT_NAME', 'gedrecord.php');
 require './includes/session.php';
 
 $controller = new PageController;
 
-$obj = GedcomRecord::getInstance(Filter::get('pid', WT_REGEX_XREF));
+$obj = GedcomRecord::getInstance(Filter::get('pid', WT_REGEX_XREF), $WT_TREE);
 
 if (
 	$obj instanceof Individual ||

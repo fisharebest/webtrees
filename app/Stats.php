@@ -195,7 +195,7 @@ class Stats {
 		$version = '';
 		$source  = '';
 
-		$head = GedcomRecord::getInstance('HEAD');
+		$head = GedcomRecord::getInstance('HEAD', $this->tree);
 		$sour = $head->getFirstFact('SOUR');
 		if ($sour) {
 			$source  = $sour->getValue();
@@ -238,7 +238,7 @@ class Stats {
 	 * @return string
 	 */
 	public function gedcomDate() {
-		$head = GedcomRecord::getInstance('HEAD');
+		$head = GedcomRecord::getInstance('HEAD', $this->tree);
 		$fact = $head->getFirstFact('DATE');
 		if ($fact) {
 			$date = new Date($fact->getValue());
@@ -1268,7 +1268,7 @@ class Stats {
 			return '';
 		}
 		$row = $rows[0];
-		$record = GedcomRecord::getInstance($row['d_gid'], $this->tree->getTreeId());
+		$record = GedcomRecord::getInstance($row['d_gid'], $this->tree);
 		switch ($type) {
 		default:
 		case 'full':
@@ -1286,7 +1286,7 @@ class Stats {
 			$result = "<a href=\"" . $record->getHtmlUrl() . "\">" . $record->getFullName() . "</a>";
 			break;
 		case 'place':
-			$fact = GedcomRecord::getInstance($row['d_gid'], $this->tree->getTreeId())->getFirstFact($row['d_fact']);
+			$fact = GedcomRecord::getInstance($row['d_gid'], $this->tree)->getFirstFact($row['d_fact']);
 			if ($fact) {
 				$result = format_fact_place($fact, true, true, true);
 			} else {
@@ -1439,8 +1439,8 @@ class Stats {
 		}
 		// Get the country names for each language
 		$country_to_iso3166 = array();
-		foreach (I18N::installedLanguages() as $code => $lang) {
-			I18N::init($code);
+		foreach (I18N::activeLocales() as $locale) {
+			I18N::init($locale->getLanguageTag());
 			$countries = $this->getAllCountries();
 			foreach ($this->iso3166() as $three => $two) {
 				$country_to_iso3166[$three] = $two;
@@ -1456,7 +1456,7 @@ class Stats {
 			$chart_title = I18N::translate('Surname distribution chart') . ': ' . $surname;
 			// Count how many people are events in each country
 			$surn_countries = array();
-			$indis = QueryName::individuals(I18N::strtoupper($surname), '', '', false, false, WT_GED_ID);
+			$indis = QueryName::individuals($this->tree, I18N::strtoupper($surname), '', '', false, false);
 			foreach ($indis as $person) {
 				if (preg_match_all('/^2 PLAC (?:.*, *)*(.*)/m', $person->getGedcom(), $matches)) {
 					// webtrees uses 3 letter country codes and localised country names, but google uses 2 letter codes.
@@ -1572,8 +1572,8 @@ class Stats {
 		$i = 1;
 		// Get the country names for each language
 		$country_names = array();
-		foreach (I18N::installedLanguages() as $code => $lang) {
-			I18N::init($code);
+		foreach (I18N::activeLocales() as $locale) {
+			I18N::init($locale->languageTag());
 			$all_countries = $this->getAllCountries();
 			foreach ($all_countries as $country_code => $country_name) {
 				$country_names[$country_name] = $country_code;
@@ -2026,7 +2026,7 @@ class Stats {
 			return '';
 		}
 		$row = $rows[0];
-		$person = Individual::getInstance($row['id'], $this->tree->getTreeId());
+		$person = Individual::getInstance($row['id'], $this->tree);
 		switch ($type) {
 		default:
 		case 'full':
@@ -2094,7 +2094,7 @@ class Stats {
 		}
 		$top10 = array();
 		foreach ($rows as $row) {
-			$person = Individual::getInstance($row['deathdate'], $this->tree->getTreeId());
+			$person = Individual::getInstance($row['deathdate'], $this->tree);
 			$age = $row['age'];
 			if ((int) ($age / 365.25) > 0) {
 				$age = (int) ($age / 365.25) . 'y';
@@ -2134,7 +2134,7 @@ class Stats {
 	 * @return string
 	 */
 	private function topTenOldestAliveQuery($type = 'list', $sex = 'BOTH', $params = array()) {
-		if (!WT_USER_CAN_ACCESS) {
+		if (!Auth::isMember($this->tree)) {
 			return I18N::translate('This information is private and cannot be shown.');
 		}
 		if ($sex == 'F') {
@@ -2170,7 +2170,7 @@ class Stats {
 		);
 		$top10 = array();
 		foreach ($rows as $row) {
-			$person = Individual::getInstance($row['id'], $this->tree->getTreeId());
+			$person = Individual::getInstance($row['id'], $this->tree);
 			$age = (WT_CLIENT_JD - $row['age']);
 			if ((int) ($age / 365.25) > 0) {
 				$age = (int) ($age / 365.25) . 'y';
@@ -2646,7 +2646,7 @@ class Stats {
 			return '';
 		}
 		$row = $rows[0];
-		$record = GedcomRecord::getInstance($row['id'], $this->tree->getTreeId());
+		$record = GedcomRecord::getInstance($row['id'], $this->tree);
 		switch ($type) {
 		default:
 		case 'full':
@@ -2795,10 +2795,10 @@ class Stats {
 		}
 		$row = $rows[0];
 		if (isset($row['famid'])) {
-			$family = Family::getInstance($row['famid'], $this->tree->getTreeId());
+			$family = Family::getInstance($row['famid'], $this->tree);
 		}
 		if (isset($row['i_id'])) {
-			$person = Individual::getInstance($row['i_id'], $this->tree->getTreeId());
+			$person = Individual::getInstance($row['i_id'], $this->tree);
 		}
 		switch ($type) {
 		default:
@@ -2919,7 +2919,7 @@ class Stats {
 		$top10 = array();
 		$i = 0;
 		foreach ($rows as $fam => $age) {
-			$family = Family::getInstance($fam, $this->tree->getTreeId());
+			$family = Family::getInstance($fam, $this->tree);
 			if ($type === 'name') {
 				return $family->formatList('span', false, $family->getFullName());
 			}
@@ -3012,7 +3012,7 @@ class Stats {
 
 		$top10 = array();
 		foreach ($rows as $fam) {
-			$family = Family::getInstance($fam->xref, $this->tree->getTreeId());
+			$family = Family::getInstance($fam->xref, $this->tree);
 			if ($fam->age < 0) {
 				break;
 			}
@@ -3088,7 +3088,7 @@ class Stats {
 		}
 		$row = $rows[0];
 		if (isset($row['id'])) {
-			$person = Individual::getInstance($row['id'], $this->tree->getTreeId());
+			$person = Individual::getInstance($row['id'], $this->tree);
 		}
 		switch ($type) {
 		default:
@@ -3943,7 +3943,7 @@ class Stats {
 			return '';
 		}
 		$row = $rows[0];
-		$family = Family::getInstance($row['id'], $this->tree->getTreeId());
+		$family = Family::getInstance($row['id'], $this->tree);
 		switch ($type) {
 		default:
 		case 'full':
@@ -3991,7 +3991,7 @@ class Stats {
 		}
 		$top10 = array();
 		for ($c = 0; $c < $total; $c++) {
-			$family = Family::getInstance($rows[$c]['id'], $this->tree->getTreeId());
+			$family = Family::getInstance($rows[$c]['id'], $this->tree);
 			if ($family->canShow()) {
 				if ($type === 'list') {
 					$top10[] =
@@ -4066,9 +4066,9 @@ class Stats {
 		$top10 = array();
 		$dist  = array();
 		foreach ($rows as $fam) {
-			$family = Family::getInstance($fam['family'], $this->tree->getTreeId());
-			$child1 = Individual::getInstance($fam['ch1'], $this->tree->getTreeId());
-			$child2 = Individual::getInstance($fam['ch2'], $this->tree->getTreeId());
+			$family = Family::getInstance($fam['family'], $this->tree);
+			$child1 = Individual::getInstance($fam['ch1'], $this->tree);
+			$child2 = Individual::getInstance($fam['ch2'], $this->tree);
 			if ($type == 'name') {
 				if ($child1->canShow() && $child2->canShow()) {
 					$return = '<a href="' . $child2->getHtmlUrl() . '">' . $child2->getFullName() . '</a> ';
@@ -4364,7 +4364,7 @@ class Stats {
 		$chd = '';
 		$chl = array();
 		foreach ($rows as $row) {
-			$family = Family::getInstance($row['id'], $this->tree->getTreeId());
+			$family = Family::getInstance($row['id'], $this->tree);
 			if ($family->canShow()) {
 				if ($tot == 0) {
 					$per = 0;
@@ -4586,7 +4586,7 @@ class Stats {
 		}
 		$top10 = array();
 		foreach ($rows as $row) {
-			$family = Family::getInstance($row['family'], $this->tree->getTreeId());
+			$family = Family::getInstance($row['family'], $this->tree);
 			if ($family->canShow()) {
 				if ($type == 'list') {
 					$top10[] = "<li><a href=\"" . $family->getHtmlUrl() . "\">" . $family->getFullName() . "</a></li>";
@@ -4740,7 +4740,7 @@ class Stats {
 		}
 		$top10 = array();
 		foreach ($rows as $row) {
-			$family = Family::getInstance($row['id'], $this->tree->getTreeId());
+			$family = Family::getInstance($row['id'], $this->tree);
 			if ($family->canShow()) {
 				if ($type === 'list') {
 					$top10[] =
@@ -4833,7 +4833,7 @@ class Stats {
 		// Note that we count/display SPFX SURN, but sort/group under just SURN
 		$surnames = array();
 		foreach (array_keys($surname_list) as $surname) {
-			$surnames = array_merge($surnames, QueryName::surnames($surname, '', false, false, WT_GED_ID));
+			$surnames = array_merge($surnames, QueryName::surnames($this->tree, $surname, '', false, false));
 		}
 		return format_surname_list($surnames, ($type == 'list' ? 1 : 2), $show_tot, 'indilist.php', $this->tree);
 	}
@@ -4933,7 +4933,7 @@ class Stats {
 			if ($n >= $maxtoshow) {
 				break;
 			}
-			$all_surnames = array_merge($all_surnames, QueryName::surnames(I18N::strtoupper($surname), '', false, false, WT_GED_ID));
+			$all_surnames = array_merge($all_surnames, QueryName::surnames($this->tree, I18N::strtoupper($surname), '', false, false));
 		}
 		$tot = 0;
 		foreach ($surnames as $surname) {
@@ -5712,7 +5712,7 @@ class Stats {
 		if ($page_name === null) {
 			// index.php?ctype=gedcom
 			$page_name = 'index.php';
-			$page_parameter = 'gedcom:' . get_id_from_gedcom($page_parameter ? $page_parameter : WT_GEDCOM);
+			$page_parameter = 'gedcom:' . ($page_parameter ? Tree::findByName($page_parameter)->getTreeId() : $this->tree->getTreeId());
 		} elseif ($page_name == 'index.php') {
 			// index.php?ctype=user
 			$user = User::findByIdentifier($page_parameter);
@@ -5724,7 +5724,7 @@ class Stats {
 		$count = Database::prepare(
 			"SELECT SQL_NO_CACHE page_count FROM `##hit_counter`" .
 			" WHERE gedcom_id=? AND page_name=? AND page_parameter=?"
-		)->execute(array(WT_GED_ID, $page_name, $page_parameter))->fetchOne();
+		)->execute(array($this->tree->getTreeId(), $page_name, $page_parameter))->fetchOne();
 		return '<span class="hit-counter">' . I18N::number($count) . '</span>';
 	}
 
@@ -5891,7 +5891,7 @@ class Stats {
 	 */
 	public function totalGedcomFavorites() {
 		if (Module::getModuleByName('gedcom_favorites')) {
-			return count(FamilyTreeFavoritesModule::getFavorites(WT_GED_ID));
+			return count(FamilyTreeFavoritesModule::getFavorites($this->tree->getTreeId()));
 		} else {
 			return 0;
 		}

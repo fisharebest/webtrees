@@ -93,7 +93,7 @@ class CensusAssistantModule extends Module {
 					button = "";
 				}
 				if (frm.filter.value.length<2&button!="all") {
-					alert("<?php echo I18N::translate('Please enter more than one character'); ?>");
+					alert("<?php echo I18N::translate('Please enter more than one character.'); ?>");
 					frm.filter.focus();
 					return false;
 				}
@@ -152,6 +152,8 @@ class CensusAssistantModule extends Module {
 	 * ...
 	 */
 	private static function mediaQuery() {
+		global $WT_TREE;
+
 		$iid2 = Filter::get('iid', WT_REGEX_XREF);
 
 		$controller = new SimpleController;
@@ -159,7 +161,7 @@ class CensusAssistantModule extends Module {
 			->setPageTitle(I18N::translate('Link to an existing media object'))
 			->pageHeader();
 
-		$record = GedcomRecord::getInstance($iid2);
+		$record = GedcomRecord::getInstance($iid2, $WT_TREE);
 		if ($record) {
 			$headjs = '';
 			if ($record instanceof Family) {
@@ -185,7 +187,7 @@ class CensusAssistantModule extends Module {
 			?>
 			<script>
 			function insertId() {
-				window.opener.alert('<?php echo strtoupper($iid2); ?> - <?php echo I18N::translate('Not a valid individual, family, or source ID'); ?>');
+				window.opener.alert('<?php echo $iid2; ?> - <?php echo I18N::translate('Not a valid individual, family, or source ID'); ?>');
 				window.close();
 			}
 			</script>
@@ -307,10 +309,10 @@ class CensusAssistantModule extends Module {
 	 * @return string
 	 */
 	static function addNoteWithAssistantLink($element_id, $xref, $action) {
-		global $controller;
+		global $controller, $WT_TREE;
 
 		// We do not yet support family records
-		if (!GedcomRecord::getInstance($xref) instanceof Individual) {
+		if (!GedcomRecord::getInstance($xref, $WT_TREE) instanceof Individual) {
 			return '';
 		}
 

@@ -38,14 +38,14 @@ class Individual extends GedcomRecord {
 	 * we just receive the XREF.  For bulk records (such as lists
 	 * and search results) we can receive the GEDCOM data as well.
 	 *
-	 * @param string       $xref
-	 * @param integer|null $gedcom_id
-	 * @param string|null  $gedcom
+	 * @param string      $xref
+	 * @param Tree        $tree
+	 * @param string|null $gedcom
 	 *
 	 * @return Individual|null
 	 */
-	public static function getInstance($xref, $gedcom_id = WT_GED_ID, $gedcom = null) {
-		$record = parent::getInstance($xref, $gedcom_id, $gedcom);
+	public static function getInstance($xref, Tree $tree, $gedcom = null) {
+		$record = parent::getInstance($xref, $tree, $gedcom);
 
 		if ($record instanceof Individual) {
 			return $record;
@@ -59,7 +59,11 @@ class Individual extends GedcomRecord {
 	 *
 	 * {@inheritdoc}
 	 */
-	public function canShowName($access_level = WT_USER_ACCESS_LEVEL) {
+	public function canShowName($access_level = null) {
+		if ($access_level === null) {
+			$access_level = Auth::accessLevel($this->tree);
+		}
+
 		return $this->tree->getPreference('SHOW_LIVING_NAMES') >= $access_level || $this->canShow($access_level);
 	}
 
@@ -69,6 +73,8 @@ class Individual extends GedcomRecord {
 	 * {@inheritdoc}
 	 */
 	protected function canShowByType($access_level) {
+		global $WT_TREE;
+
 		// Dead people...
 		if ($this->tree->getPreference('SHOW_DEAD_PEOPLE') >= $access_level && $this->isDead()) {
 			$keep_alive = false;
@@ -99,12 +105,14 @@ class Individual extends GedcomRecord {
 			}
 		}
 		// Consider relationship privacy (unless an admin is applying download restrictions)
-		if (WT_USER_GEDCOM_ID && WT_USER_PATH_LENGTH && $this->tree->getTreeId() == WT_GED_ID && $access_level = WT_USER_ACCESS_LEVEL) {
-			return self::isRelated($this, WT_USER_PATH_LENGTH);
+		$user_path_length = $this->tree->getUserPreference(Auth::user(), 'RELATIONSHIP_PATH_LENGTH');
+		$gedcomid         = $this->tree->getUserPreference(Auth::user(), 'gedcomid');
+		if ($gedcomid && $user_path_length && $this->tree->getTreeId() == $WT_TREE->getTreeId() && $access_level = Auth::accessLevel($this->tree)) {
+			return self::isRelated($this, $user_path_length);
 		}
 
 		// No restriction found - show living people to members only:
-		return WT_PRIV_USER >= $access_level;
+		return Auth::PRIV_USER >= $access_level;
 	}
 
 	/**
@@ -118,14 +126,14 @@ class Individual extends GedcomRecord {
 	private static function isRelated(Individual $target, $distance) {
 		static $cache = null;
 
-		$user_individual = Individual::getInstance(WT_USER_GEDCOM_ID);
+		$user_individual = Individual::getInstance($target->tree->getUserPreference(Auth::user(), 'gedcomid'), $target->tree);
 		if ($user_individual) {
 			if (!$cache) {
 				$cache = array(
 					0 => array($user_individual),
 					1 => array(),
 				);
-				foreach ($user_individual->getFacts('FAM[CS]', false, WT_PRIV_HIDE) as $fact) {
+				foreach ($user_individual->getFacts('FAM[CS]', false, Auth::PRIV_HIDE) as $fact) {
 					$family = $fact->getTarget();
 					if ($family) {
 						$cache[1][] = $family;
@@ -153,7 +161,7 @@ class Individual extends GedcomRecord {
 				if ($n % 2 == 0) {
 					// Add FAM->INDI links
 					foreach ($cache[$n - 1] as $family) {
-						foreach ($family->getFacts('HUSB|WIFE|CHIL', false, WT_PRIV_HIDE) as $fact) {
+						foreach ($family->getFacts('HUSB|WIFE|CHIL', false, Auth::PRIV_HIDE) as $fact) {
 							$individual = $fact->getTarget();
 							// Don’t backtrack
 							if ($individual && !in_array($individual, $cache[$n - 2], true)) {
@@ -167,7 +175,7 @@ class Individual extends GedcomRecord {
 				} else {
 					// Add INDI->FAM links
 					foreach ($cache[$n - 1] as $individual) {
-						foreach ($individual->getFacts('FAM[CS]', false, WT_PRIV_HIDE) as $fact) {
+						foreach ($individual->getFacts('FAM[CS]', false, Auth::PRIV_HIDE) as $fact) {
 							$family = $fact->getTarget();
 							// Don’t backtrack
 							if ($family && !in_array($family, $cache[$n - 2], true)) {
@@ -196,7 +204,7 @@ class Individual extends GedcomRecord {
 		// Just show the 1 FAMC/FAMS tag, not any subtags, which may contain private data
 		preg_match_all('/\n1 (?:FAMC|FAMS) @(' . WT_REGEX_XREF . ')@/', $this->gedcom, $matches, PREG_SET_ORDER);
 		foreach ($matches as $match) {
-			$rela = Family::getInstance($match[1]);
+			$rela = Family::getInstance($match[1], $this->tree);
 			if ($rela && ($SHOW_PRIVATE_RELATIONSHIPS || $rela->canShow($access_level))) {
 				$rec .= $match[0];
 			}
@@ -276,8 +284,8 @@ class Individual extends GedcomRecord {
 		// If we found no conclusive dates then check the dates of close relatives.
 
 		// Check parents (birth and adopted)
-		foreach ($this->getChildFamilies(WT_PRIV_HIDE) as $family) {
-			foreach ($family->getSpouses(WT_PRIV_HIDE) as $parent) {
+		foreach ($this->getChildFamilies(Auth::PRIV_HIDE) as $family) {
+			foreach ($family->getSpouses(Auth::PRIV_HIDE) as $parent) {
 				// Assume parents are no more than 45 years older than their children
 				preg_match_all('/\n2 DATE (.+)/', $parent->gedcom, $date_matches);
 				foreach ($date_matches[1] as $date_match) {
@@ -290,7 +298,7 @@ class Individual extends GedcomRecord {
 		}
 
 		// Check spouses
-		foreach ($this->getSpouseFamilies(WT_PRIV_HIDE) as $family) {
+		foreach ($this->getSpouseFamilies(Auth::PRIV_HIDE) as $family) {
 			preg_match_all('/\n2 DATE (.+)/', $family->gedcom, $date_matches);
 			foreach ($date_matches[1] as $date_match) {
 				$date = new Date($date_match);
@@ -312,7 +320,7 @@ class Individual extends GedcomRecord {
 				}
 			}
 			// Check child dates
-			foreach ($family->getChildren(WT_PRIV_HIDE) as $child) {
+			foreach ($family->getChildren(Auth::PRIV_HIDE) as $child) {
 				preg_match_all('/\n2 DATE (.+)/', $child->gedcom, $date_matches);
 				// Assume children born after age of 15
 				foreach ($date_matches[1] as $date_match) {
@@ -322,8 +330,8 @@ class Individual extends GedcomRecord {
 					}
 				}
 				// Check grandchildren
-				foreach ($child->getSpouseFamilies(WT_PRIV_HIDE) as $child_family) {
-					foreach ($child_family->getChildren(WT_PRIV_HIDE) as $grandchild) {
+				foreach ($child->getSpouseFamilies(Auth::PRIV_HIDE) as $child_family) {
+					foreach ($child_family->getChildren(Auth::PRIV_HIDE) as $grandchild) {
 						preg_match_all('/\n2 DATE (.+)/', $grandchild->gedcom, $date_matches);
 						// Assume grandchildren born after age of 30
 						foreach ($date_matches[1] as $date_match) {
@@ -359,7 +367,7 @@ class Individual extends GedcomRecord {
 		// Iterate over all of the media items for the individual
 		preg_match_all('/\n(\d) OBJE @(' . WT_REGEX_XREF . ')@/', $this->getGedcom(), $matches, PREG_SET_ORDER);
 		foreach ($matches as $match) {
-			$media = Media::getInstance($match[2]);
+			$media = Media::getInstance($match[2], $this->tree);
 			if (!$media || !$media->canShow() || $media->isExternal()) {
 				continue;
 			}
@@ -740,11 +748,15 @@ class Individual extends GedcomRecord {
 	/**
 	 * Get a list of this individual’s spouse families
 	 *
-	 * @param integer $access_level
+	 * @param integer|null $access_level
 	 *
 	 * @return Family[]
 	 */
-	public function getSpouseFamilies($access_level = WT_USER_ACCESS_LEVEL) {
+	public function getSpouseFamilies($access_level = null) {
+		if ($access_level === null) {
+			$access_level = Auth::accessLevel($this->tree);
+		}
+
 		$SHOW_PRIVATE_RELATIONSHIPS = $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
 		$families = array();
@@ -799,11 +811,15 @@ class Individual extends GedcomRecord {
 	/**
 	 * Get a list of this individual’s child families (i.e. their parents).
 	 *
-	 * @param integer $access_level
+	 * @param integer|null $access_level
 	 *
 	 * @return Family[]
 	 */
-	public function getChildFamilies($access_level = WT_USER_ACCESS_LEVEL) {
+	public function getChildFamilies($access_level = null) {
+		if ($access_level === null) {
+			$access_level = Auth::accessLevel($this->tree);
+		}
+
 		$SHOW_PRIVATE_RELATIONSHIPS = $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
 		$families = array();
@@ -1244,7 +1260,7 @@ class Individual extends GedcomRecord {
 	 * Get an array of structures containing all the names in the record
 	 */
 	public function extractNames() {
-		$this->extractNamesFromFacts(1, 'NAME', $this->getFacts('NAME', false, WT_USER_ACCESS_LEVEL, $this->canShowName()));
+		$this->extractNamesFromFacts(1, 'NAME', $this->getFacts('NAME', false, Auth::accessLevel($this->tree), $this->canShowName()));
 	}
 
 	/**

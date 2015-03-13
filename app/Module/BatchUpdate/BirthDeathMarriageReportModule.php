@@ -34,15 +34,17 @@ class BirthDeathMarriageReportModule extends Module implements ModuleReportInter
 
 	/** {@inheritdoc} */
 	public function defaultAccessLevel() {
-		return WT_PRIV_PUBLIC;
+		return Auth::PRIV_PRIVATE;
 	}
 
 	/** {@inheritdoc} */
 	public function getReportMenus() {
+		global $WT_TREE;
+
 		$menus = array();
 		$menu = new Menu(
 			$this->getTitle(),
-			'reportengine.php?ged=' . WT_GEDURL . '&amp;action=setup&amp;report=' . WT_MODULES_DIR . $this->getName() . '/report.xml',
+			'reportengine.php?ged=' . $WT_TREE->getNameUrl() . '&amp;action=setup&amp;report=' . WT_MODULES_DIR . $this->getName() . '/report.xml',
 			'menu-report-' . $this->getName()
 		);
 		$menus[] = $menu;

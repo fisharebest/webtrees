@@ -45,7 +45,7 @@ $rows = Database::prepare(
 	"SELECT m_id AS xref, 'OBJE' AS type, m_gedcom AS gedrec FROM `##media`       WHERE m_file=?" .
 	" UNION " .
 	"SELECT o_id AS xref, o_type AS type, o_gedcom AS gedrec FROM `##other`       WHERE o_file=? AND o_type NOT IN ('HEAD', 'TRLR')"
-)->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID))->fetchAll();
+)->execute(array($WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId()))->fetchAll();
 
 $records = array();
 foreach ($rows as $row) {
@@ -63,7 +63,7 @@ $rows = Database::prepare(
 	"  GROUP BY xref" .
 	" ) AS t1" .
 	" JOIN `##change` t2 USING (change_id)"
-)->execute(array(WT_GED_ID))->fetchAll();
+)->execute(array($WT_TREE->getTreeId()))->fetchAll();
 
 foreach ($rows as $row) {
 	if ($row->gedrec) {

@@ -59,7 +59,7 @@ case 'new_tree':
 	$tree_title = Filter::post('tree_title');
 
 	if (Filter::checkCsrf() && $basename && $tree_title) {
-		if (Tree::getIdFromName($basename)) {
+		if (Tree::findByName($basename)) {
 			FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ I18N::translate('The family tree “%s” already exists.', Filter::escapeHtml($basename)), 'danger');
 		} else {
 			Tree::create($basename, $tree_title);
@@ -327,7 +327,7 @@ $controller->pageHeader();
 				</a>
 			</h2>
 		</div>
-		<div id="tree-<?php echo $tree->getTreeId(); ?>" class="panel-collapse collapse<?php echo $tree->getTreeId() === WT_GED_ID || $tree->getPreference('imported') === '0' ? ' in' : ''; ?>" role="tabpanel" aria-labelledby="panel-tree-<?php echo $tree->getTreeId(); ?>">
+		<div id="tree-<?php echo $tree->getTreeId(); ?>" class="panel-collapse collapse<?php echo $tree == $WT_TREE || $tree->getPreference('imported') === '0' ? ' in' : ''; ?>" role="tabpanel" aria-labelledby="panel-tree-<?php echo $tree->getTreeId(); ?>">
 			<div class="panel-body">
 				<?php
 

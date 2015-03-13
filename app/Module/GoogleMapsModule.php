@@ -38,6 +38,16 @@ use Zend_Session;
  * Hence, use "Google Maps™ mapping service" where appropriate.
  */
 class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTabInterface {
+
+	/** @var array of ancestors of root person */
+	private $ancestors = array();
+
+	/** @var integer Number of generation to display */
+	private $generations;
+
+	/** @var integer Number of nodes in the chart */
+	private $treesize;
+
 	/** {@inheritdoc} */
 	public function __construct($directory) {
 		parent::__construct($directory);
@@ -736,7 +746,10 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 
 		$MAX_PEDIGREE_GENERATIONS = $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS');
 
-		$controller = new PedigreeController;
+		$controller = new ChartController();
+		$this->generations = Filter::getInteger('PEDIGREE_GENERATIONS', 2, $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS'), $WT_TREE->getPreference('DEFAULT_PEDIGREE_GENERATIONS'));
+		$this->treesize = pow(2, $this->generations) - 1;
+		$this->ancestors = array_values($controller->sosaAncestors($this->generations));
 
 		// Start of internal configuration variables
 		// Limit this to match available number of icons.
@@ -757,7 +770,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 		// -- print the form to change the number of displayed generations
 		?>
 		<form name="people" method="get" action="?">
-			<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
+			<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 			<input type="hidden" name="mod" value="googlemap">
 			<input type="hidden" name="mod_action" value="pedigree_map">
 			<table class="list_table" width="555">
@@ -765,32 +778,30 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 					<td class="descriptionbox wrap">
 						<?php echo I18N::translate('Individual'); ?>
 					</td>
-					<td class="descriptionbox wrap">
-						<?php echo I18N::translate('Generations'); ?>
-					</td>
-				</tr>
-				<tr>
 					<td class="optionbox">
 						<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
 						<?php echo print_findindi_link('rootid'); ?>
+					</td>
+					<td class="topbottombar" rowspan="2">
+						<input type="submit" value="<?php echo I18N::translate('View'); ?>">
+					</td>
+				</tr>
+				<tr>
+					<td class="descriptionbox wrap">
+						<?php echo I18N::translate('Generations'); ?>
 					</td>
 					<td class="optionbox">
 						<select name="PEDIGREE_GENERATIONS">
 						<?php
 							for ($p = 3; $p <= $MAX_PEDIGREE_GENERATIONS; $p++) {
 								echo '<option value="', $p, '" ';
-								if ($p == $controller->generations) {
+								if ($p == $this->generations) {
 									echo 'selected';
 								}
 								echo '>', $p, '</option>';
 							}
 						?>
 						</select>
-					</td>
-				</tr>
-				<tr>
-					<td class="topbottombar" colspan="3">
-						<input type="submit" value="<?php echo I18N::translate('View'); ?>">
 					</td>
 				</tr>
 			</table>
@@ -808,10 +819,10 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 		$latlongval = array();
 		$lat = array();
 		$lon = array();
-		for ($i = 0; $i < ($controller->treesize); $i++) {
+		for ($i = 0; $i < ($this->treesize); $i++) {
 			// -- check to see if we have moved to the next generation
 			if ($i + 1 >= pow(2, $curgen)) {$curgen++; }
-			$person = $controller->ancestors[$i];
+			$person = $this->ancestors[$i];
 			if (!empty($person)) {
 				$name = $person->getFullName();
 				if ($name == I18N::translate('Private')) $priv++;
@@ -1312,9 +1323,9 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 		$lat        = array();
 		$lon        = array();
 		$latlongval = array();
-		for ($i = 0; $i < $controller->treesize; $i++) {
+		for ($i = 0; $i < $this->treesize; $i++) {
 			// moved up to grab the sex of the individuals
-			$person = $controller->ancestors[$i];
+			$person = $this->ancestors[$i];
 			if ($person) {
 				$name = $person->getFullName();
 
@@ -1337,7 +1348,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 
 				$dataleft  = Filter::escapeJs($image . $event . ' — ' . $name);
 				$datamid   = Filter::escapeJs(' <span><a href="' . $person->getHtmlUrl() . '">(' . I18N::translate('View individual') . ')</a></span>');
-				$dataright = Filter::escapeJs('<br><strong>' . I18N::translate('Birth:') . '&nbsp;</strong>' . $person->getBirthDate()->display() . ' — ' . $person->getBirthPlace());
+				$dataright = Filter::escapeJs($person->getFirstFact('BIRT')->summary());
 
 				$latlongval[$i] = $this->getLatitudeAndLongitudeFromPlaceLocation($person->getBirthPlace());
 				if ($latlongval[$i]) {
@@ -1374,7 +1385,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 						$js .= 'var point = new google.maps.LatLng(' . $lat[$i] . ',' . $lon[$i] . ');';
 						$js .= "var marker = createMarker(point, \"" . Filter::escapeJs($name) . "\",\"<div>" . $dataleft . $datamid . $dataright . "</div>\", \"";
 						$js .= "<div class='iwstyle'>";
-						$js .= "<a href='module.php?ged=" . WT_GEDURL . "&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=" . $person->getXref() . "&amp;PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}";
+						$js .= "<a href='module.php?ged=" . $person->getTree()->getNameUrl() . "&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=" . $person->getXref() . "&amp;PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}";
 						$js .= "' title='" . I18N::translate('Pedigree map') . "'>" . $dataleft . "</a>" . $datamid . $dataright . "</div>\", \"" . $marker_number . "\");";
 						// Construct the polygon lines
 						$to_child = (intval(($i - 1) / 2)); // Draw a line from parent to child
@@ -1483,8 +1494,10 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 	 * ...
 	 */
 	private function adminPlaceCheck() {
+		global $WT_TREE;
+
 		$action    = Filter::get('action', '', 'go');
-		$gedcom_id = Filter::get('gedcom_id', null, WT_GED_ID);
+		$gedcom_id = Filter::get('gedcom_id', null, $WT_TREE->getTreeId());
 		$country   = Filter::get('country', '.+', 'XYZ');
 		$state     = Filter::get('state', '.+', 'XYZ');
 		$matching  = Filter::getBool('matching');
@@ -1765,7 +1778,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 		default:
 			// Do not run until user selects a gedcom/place/etc.
 			// Instead, show some useful help info.
-			echo '<div class="gm_check_top accepted">', I18N::translate('This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables'), '</div>';
+			echo '<div class="gm_check_top accepted">', I18N::translate('This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables.'), '</div>';
 			break;
 		}
 	}
@@ -2536,7 +2549,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 					"SELECT p_id FROM `##places` WHERE p_parent_id = :place_id AND p_file = :tree_id AND p_place = :placename"
 				)->execute(array(
 					'place_id' => $place_id,
-					'tree_id' => WT_GED_ID,
+					'tree_id' => $WT_TREE->getTreeId(),
 					'placename' => $placename,
 				))->fetchOne();
 				if ($pl_id) {
@@ -2651,7 +2664,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 				$placelevels = preg_replace('/, ' . I18N::translate('unknown') . '/', ', ', $placelevels); // replace ", unknown" with ", "
 				$placelevels = substr($placelevels, 2); // remove the leading ", "
 				if ($placelevels) {
-					$batchupdate_url = 'module.php?mod=batch_update&amp;mod_action=admin_batch_update&amp;plugin=BatchUpdateSearchReplacePlugin&amp;method=exact&amp;ged=' . WT_GEDCOM . '&amp;search=' . urlencode($placelevels); // exact match
+					$batchupdate_url = 'module.php?mod=batch_update&amp;mod_action=admin_batch_update&amp;plugin=BatchUpdateSearchReplacePlugin&amp;method=exact&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;search=' . urlencode($placelevels); // exact match
 					echo '&nbsp;|&nbsp;';
 					echo '<a href="' . $batchupdate_url . '">', I18N::translate('Batch update'), '</a>';
 				}
@@ -4152,7 +4165,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 			$j = 0;
 			$gedcom_records =
 				Database::prepare("SELECT i_gedcom FROM `##individuals` WHERE i_file=? UNION ALL SELECT f_gedcom FROM `##families` WHERE f_file=?")
-				->execute(array(WT_GED_ID, WT_GED_ID))
+				->execute(array($WT_TREE->getTreeId(), $WT_TREE->getTreeId()))
 				->fetchOneColumn();
 			foreach ($gedcom_records as $gedrec) {
 				$i = 1;
@@ -4615,7 +4628,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 						<input type="hidden" name="mod" value="googlemap">
 						<input type="hidden" name="mod_action" value="admin_places">
 						<input type="hidden" name="action" value="ImportGedcom">
-						<?php echo select_edit_control('ged', Tree::getNameList(), null, WT_GEDCOM); ?>
+						<?php echo select_edit_control('ged', Tree::getNameList(), null, $WT_TREE->getName()); ?>
 						<input type="submit" value="<?php echo I18N::translate('Import'); ?>">
 					</form>
 				</td>
@@ -4642,7 +4655,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 						<input type="hidden" name="mod" value="googlemap">
 						<input type="hidden" name="mod_action" value="admin_places">
 						<input type="hidden" name="action" value="ExportFile">
-						<?php echo select_edit_control('parent', $where_am_i, I18N::translate('All'), WT_GED_ID); ?>
+						<?php echo select_edit_control('parent', $where_am_i, I18N::translate('All'), $WT_TREE->getTreeId()); ?>
 						<input type="submit" value="<?php echo I18N::translate('Download'); ?>">
 					</form>
 				</td>

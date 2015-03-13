@@ -24,8 +24,10 @@ class NoteController extends GedcomRecordController {
 	 * Startup activity
 	 */
 	public function __construct() {
+		global $WT_TREE;
+
 		$xref         = Filter::get('nid', WT_REGEX_XREF);
-		$this->record = Note::getInstance($xref);
+		$this->record = Note::getInstance($xref, $WT_TREE);
 
 		parent::__construct();
 	}
@@ -41,14 +43,14 @@ class NoteController extends GedcomRecordController {
 		// edit menu
 		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-note');
 
-		if (WT_USER_CAN_EDIT) {
+		if (Auth::isEditor($this->record->getTree())) {
 			$submenu = new Menu(I18N::translate('Edit note'), '#', 'menu-note-edit');
 			$submenu->setOnclick('return edit_note(\'' . $this->record->getXref() . '\');');
 			$menu->addSubmenu($submenu);
 		}
 
 		// delete
-		if (WT_USER_CAN_EDIT) {
+		if (Auth::isEditor($this->record->getTree())) {
 			$submenu = new Menu(I18N::translate('Delete'), '#', 'menu-note-del');
 			$submenu->setOnclick("return delete_note('" . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJS(Filter::unescapeHtml($this->record->getFullName()))) . "', '" . $this->record->getXref() . "');");
 			$menu->addSubmenu($submenu);

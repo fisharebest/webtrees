@@ -90,7 +90,7 @@ function characterData($parser, $data) {
 function reportStartHandler($attrs) {
 	global $report_array;
 
-	$access = WT_PRIV_PUBLIC;
+	$access = Auth::PRIV_PRIVATE;
 	if (isset($attrs["access"])) {
 		if (isset($$attrs["access"])) {
 			$access = $$attrs["access"];

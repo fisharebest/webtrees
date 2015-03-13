@@ -32,15 +32,18 @@ class UserWelcomeModule extends Module implements ModuleBlockInterface {
 
 	/** {@inheritdoc} */
 	public function getBlock($block_id, $template = true, $cfg = null) {
+		global $WT_TREE;
+
 		$id = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		$title = '<span dir="auto">' . /* I18N: A greeting; %s is the user’s name */ I18N::translate('Welcome %s', Auth::user()->getRealNameHtml()) . '</span>';
 		$content = '<table><tr>';
 		$content .= '<td><a href="edituser.php"><i class="icon-mypage"></i><br>' . I18N::translate('My account') . '</a></td>';
 
-		if (WT_USER_GEDCOM_ID) {
-			$content .= '<td><a href="pedigree.php?rootid=' . WT_USER_GEDCOM_ID . '&amp;ged=' . WT_GEDURL . '"><i class="icon-pedigree"></i><br>' . I18N::translate('My pedigree') . '</a></td>';
-			$content .= '<td><a href="individual.php?pid=' . WT_USER_GEDCOM_ID . '&amp;ged=' . WT_GEDURL . '"><i class="icon-indis"></i><br>' . I18N::translate('My individual record') . '</a></td>';
+		$gedcomid = $WT_TREE->getUserPreference(Auth::user(), 'gedcomid');
+		if ($gedcomid) {
+			$content .= '<td><a href="pedigree.php?rootid=' . $gedcomid . '&amp;ged=' . $WT_TREE->getNameUrl() . '"><i class="icon-pedigree"></i><br>' . I18N::translate('My pedigree') . '</a></td>';
+			$content .= '<td><a href="individual.php?pid=' . $gedcomid . '&amp;ged=' . $WT_TREE->getNameUrl() . '"><i class="icon-indis"></i><br>' . I18N::translate('My individual record') . '</a></td>';
 		}
 		$content .= '</tr></table>';
 

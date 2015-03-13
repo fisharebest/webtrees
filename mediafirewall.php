@@ -32,13 +32,13 @@ Zend_Session::writeClose();
 
 $mid   = Filter::get('mid', WT_REGEX_XREF);
 $thumb = Filter::getBool('thumb');
-$media = Media::getInstance($mid);
+$media = Media::getInstance($mid, $WT_TREE);
 
 /**
  * Send a “Not found” error as an image
  */
 function send404AsImage() {
-	$error = I18N::translate('The media file was not found in this family tree');
+	$error = I18N::translate('The media file was not found in this family tree.');
 
 	$width  = mb_strlen($error) * 6.5 + 50;
 	$height = 60;
@@ -60,12 +60,13 @@ function send404AsImage() {
  * before returning it back to the media firewall
  *
  * @param resource $im
+ * @param Tree     $tree
  *
  * @return resource
  */
-function applyWatermark($im) {
+function applyWatermark($im, Tree $tree) {
 	// text to watermark with
-	$word1_text = WT_TREE_TITLE;
+	$word1_text = $tree->getTitle();
 	// maximum font size for “word1” ; will be automaticaly reduced to fit in the image
 	$word1_maxsize = 100;
 	// rgb color codes for text
@@ -308,7 +309,7 @@ if ($type) {
 	// if this is not a thumbnail, or WATERMARK_THUMB is true
 	if (($which === 'main') || $WT_TREE->getPreference('WATERMARK_THUMB')) {
 		// if the user’s priv’s justify it...
-		if (WT_USER_ACCESS_LEVEL > $WT_TREE->getPreference('SHOW_NO_WATERMARK')) {
+		if (Auth::accessLevel($WT_TREE) > $WT_TREE->getPreference('SHOW_NO_WATERMARK')) {
 			// add a watermark
 			$usewatermark = true;
 		}
@@ -328,9 +329,9 @@ $generatewatermark = false;
 
 if ($usewatermark) {
 	if ($which === 'thumb') {
-		$watermarkfile = WT_DATA_DIR . $WT_TREE->getPreference('MEDIA_DIRECTORY') . 'watermark/' . WT_GEDCOM . '/thumb/' . $media->getFilename();
+		$watermarkfile = WT_DATA_DIR . $WT_TREE->getPreference('MEDIA_DIRECTORY') . 'watermark/' . $WT_TREE->getName() . '/thumb/' . $media->getFilename();
 	} else {
-		$watermarkfile = WT_DATA_DIR . $WT_TREE->getPreference('MEDIA_DIRECTORY') . 'watermark/' . WT_GEDCOM . '/' . $media->getFilename();
+		$watermarkfile = WT_DATA_DIR . $WT_TREE->getPreference('MEDIA_DIRECTORY') . 'watermark/' . $WT_TREE->getName() . '/' . $media->getFilename();
 	}
 
 	if (!file_exists($watermarkfile)) {
@@ -389,7 +390,7 @@ if ($generatewatermark) {
 
 	if (function_exists($imCreateFunc) && function_exists($imSendFunc)) {
 		$im = $imCreateFunc($serverFilename);
-		$im = applyWatermark($im);
+		$im = applyWatermark($im, $WT_TREE);
 
 		// save the image, if preferences allow
 		if ($which === 'thumb' && $WT_TREE->getPreference('SAVE_WATERMARK_THUMB') || $which === 'main' && $WT_TREE->getPreference('SAVE_WATERMARK_IMAGE')) {
@@ -406,7 +407,7 @@ if ($generatewatermark) {
 		return;
 	} else {
 		// this image is defective.  log it
-		Log::addMediaLog('Media Firewall error: >' . I18N::translate('This media file is broken and cannot be watermarked') . '< in file >' . $serverFilename . '< memory used: ' . memory_get_usage());
+		Log::addMediaLog('Media Firewall error: >' . I18N::translate('This media file is broken and cannot be watermarked.') . '< in file >' . $serverFilename . '< memory used: ' . memory_get_usage());
 
 		// set usewatermark to false so image will simply be passed through below
 		$usewatermark = false;

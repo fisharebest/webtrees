@@ -35,7 +35,7 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 
 	/** {@inheritdoc} */
 	public function defaultAccessLevel() {
-		return WT_PRIV_USER;
+		return Auth::PRIV_USER;
 	}
 
 	/** {@inheritdoc} */
@@ -65,12 +65,12 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 			echo 'function radAncestors(elementid) {var radFamilies=document.getElementById(elementid);radFamilies.checked=true;}';
 			echo '</script>';
 
-			if (!$WT_SESSION->cart[WT_GED_ID]) {
+			if (!$WT_SESSION->cart[$WT_TREE->getTreeId()]) {
 				echo '<h2>', I18N::translate('Family tree clippings cart'), '</h2>';
 			}
 
 			if ($clip_ctrl->action == 'add') {
-				$person = GedcomRecord::getInstance($clip_ctrl->id);
+				$person = GedcomRecord::getInstance($clip_ctrl->id, $WT_TREE);
 				echo '<h3><a href="', $person->getHtmlUrl(), '">' . $person->getFullName(), '</a></h3>';
 				if ($clip_ctrl->type === 'FAM') { ?>
 					<form action="module.php" method="get">
@@ -101,12 +101,12 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 						<tr><td class="optionbox"><input type="radio" name="others" checked value="none"><?php echo I18N::translate('Add just this individual.'); ?></td></tr>
 						<tr><td class="optionbox"><input type="radio" name="others" value="parents"><?php echo I18N::translate('Add this individual, his parents, and siblings.'); ?></td></tr>
 						<tr><td class="optionbox"><input type="radio" name="others" value="ancestors" id="ancestors"><?php echo I18N::translate('Add this individual and his direct line ancestors.'); ?><br>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo I18N::translate('Number of generations:'); ?> <input type="text" size="5" name="level1" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('ancestors');"></td></tr>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo I18N::translate('Number of generations'); ?> <input type="text" size="5" name="level1" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('ancestors');"></td></tr>
 						<tr><td class="optionbox"><input type="radio" name="others" value="ancestorsfamilies" id="ancestorsfamilies"><?php echo I18N::translate('Add this individual, his direct line ancestors, and their families.'); ?><br >
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo I18N::translate('Number of generations:'); ?> <input type="text" size="5" name="level2" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('ancestorsfamilies');"></td></tr>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo I18N::translate('Number of generations'); ?> <input type="text" size="5" name="level2" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('ancestorsfamilies');"></td></tr>
 						<tr><td class="optionbox"><input type="radio" name="others" value="members"><?php echo I18N::translate('Add this individual, his spouse, and children.'); ?></td></tr>
 						<tr><td class="optionbox"><input type="radio" name="others" value="descendants" id="descendants"><?php echo I18N::translate('Add this individual, his spouse, and all descendants.'); ?><br >
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo I18N::translate('Number of generations:'); ?> <input type="text" size="5" name="level3" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('descendants');"></td></tr>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo I18N::translate('Number of generations'); ?> <input type="text" size="5" name="level3" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('descendants');"></td></tr>
 						<tr><td class="topbottombar"><input type="submit" value="<?php echo I18N::translate('Continue adding'); ?>">
 					</table>
 					</form>
@@ -127,7 +127,7 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 				<?php }
 				}
 
-			if (!$WT_SESSION->cart[WT_GED_ID]) {
+			if (!$WT_SESSION->cart[$WT_TREE->getTreeId()]) {
 				if ($clip_ctrl->action != 'add') {
 
 					echo I18N::translate('The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple.  Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name.  There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>');
@@ -175,13 +175,22 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 					<input type="hidden" name="pid" value="<?php echo $pid; ?>">
 					<table>
 					<tr><td colspan="2" class="topbottombar"><h2><?php echo I18N::translate('Download'); ?></h2></td></tr>
-					<tr><td class="descriptionbox width50 wrap"><?php echo I18N::translate('Zip file(s)'), help_link('zip'); ?></td>
-					<td class="optionbox"><input type="checkbox" name="Zip" value="yes"></td></tr>
-
-					<tr><td class="descriptionbox width50 wrap"><?php echo I18N::translate('Include media (automatically zips files)'), help_link('include_media'); ?></td>
+					<tr>
+						<td class="descriptionbox width50 wrap">
+							<?php echo I18N::translate('To reduce the size of the download, you can compress the data into a .ZIP file.  You will need to uncompress the .ZIP file before you can use it.'); ?>
+						</td>
+						<td class="optionbox wrap">
+							<input type="checkbox" name="Zip" value="yes">
+							<?php echo I18N::translate('Zip file(s)'); ?>
+						</td>
+					</tr>
+					<tr>
+						<td class="descriptionbox width50 wrap">
+							<?php echo I18N::translate('Include media (automatically zips files)'), help_link('include_media'); ?>
+						</td>
 					<td class="optionbox"><input type="checkbox" name="IncludeMedia" value="yes"></td></tr>
 
-					<?php if (WT_USER_GEDCOM_ADMIN) {	?>
+					<?php if (Auth::isManager($WT_TREE)) {	?>
 						<tr><td class="descriptionbox width50 wrap"><?php echo I18N::translate('Apply privacy settings'), help_link('apply_privacy'); ?></td>
 						<td class="optionbox">
 							<input type="radio" name="privatize_export" value="none" checked> <?php echo I18N::translate('None'); ?><br>
@@ -189,7 +198,7 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 							<input type="radio" name="privatize_export" value="user"> <?php echo I18N::translate('Member'); ?><br>
 							<input type="radio" name="privatize_export" value="visitor"> <?php echo I18N::translate('Visitor'); ?>
 						</td></tr>
-					<?php } elseif (WT_USER_CAN_ACCESS) {	?>
+					<?php } elseif (Auth::isMember($WT_TREE)) { ?>
 						<tr><td class="descriptionbox width50 wrap"><?php echo I18N::translate('Apply privacy settings'), help_link('apply_privacy'); ?></td>
 						<td class="optionbox">
 							<input type="radio" name="privatize_export" value="user" checked> <?php echo I18N::translate('Member'); ?><br>
@@ -254,8 +263,8 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 						<th class="list_label"><?php echo I18N::translate('Remove'); ?></th>
 					</tr>
 			<?php
-				foreach (array_keys($WT_SESSION->cart[WT_GED_ID]) as $xref) {
-					$record = GedcomRecord::getInstance($xref);
+				foreach (array_keys($WT_SESSION->cart[$WT_TREE->getTreeId()]) as $xref) {
+					$record = GedcomRecord::getInstance($xref, $WT_TREE);
 					if ($record) {
 						switch ($record::RECORD_TYPE) {
 						case 'INDI': $icon = 'icon-indis'; break;
@@ -297,15 +306,15 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 
 	/** {@inheritdoc} */
 	public function getMenu() {
-		global $controller;
+		global $controller, $WT_TREE;
 
 		if (Auth::isSearchEngine()) {
 			return null;
 		}
 		//-- main clippings menu item
-		$menu = new Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged=' . WT_GEDURL, 'menu-clippings');
+		$menu = new Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged=' . $WT_TREE->getNameUrl(), 'menu-clippings');
 		if (isset($controller->record)) {
-			$submenu = new Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged=' . WT_GEDURL, 'menu-clippingscart');
+			$submenu = new Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged=' . $WT_TREE->getNameUrl(), 'menu-clippingscart');
 			$menu->addSubmenu($submenu);
 		}
 		if (!empty($controller->record) && $controller->record->canShow()) {
@@ -348,7 +357,7 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 
 	/** {@inheritdoc} */
 	public function getSidebarAjaxContent() {
-		global $WT_SESSION;
+		global $WT_SESSION, $WT_TREE;
 
 		$clip_ctrl         = new ClippingsCart;
 		$add               = Filter::get('add', WT_REGEX_XREF);
@@ -359,14 +368,14 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 		$clip_ctrl->level2 = Filter::getInteger('level2');
 		$clip_ctrl->level3 = Filter::getInteger('level3');
 		if ($add) {
-			$record = GedcomRecord::getInstance($add);
+			$record = GedcomRecord::getInstance($add, $WT_TREE);
 			if ($record) {
 				$clip_ctrl->id   = $record->getXref();
 				$clip_ctrl->type = $record::RECORD_TYPE;
 				$clip_ctrl->addClipping($record);
 			}
 		} elseif ($add1) {
-			$record = Individual::getInstance($add1);
+			$record = Individual::getInstance($add1, $WT_TREE);
 			if ($record) {
 				$clip_ctrl->id = $record->getXref();
 				$clip_ctrl->type = $record::RECORD_TYPE;
@@ -392,9 +401,9 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 				}
 			}
 		} elseif ($remove) {
-			unset ($WT_SESSION->cart[WT_GED_ID][$remove]);
+			unset ($WT_SESSION->cart[$WT_TREE->getTreeId()][$remove]);
 		} elseif (isset($_REQUEST['empty'])) {
-			$WT_SESSION->cart[WT_GED_ID] = array();
+			$WT_SESSION->cart[$WT_TREE->getTreeId()] = array();
 		} elseif (isset($_REQUEST['download'])) {
 			return $this->downloadForm($clip_ctrl);
 		}
@@ -407,18 +416,18 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 	 * @return string
 	 */
 	public function getCartList() {
-		global $WT_SESSION;
+		global $WT_SESSION, $WT_TREE;
 
 		// Keep track of the INDI from the parent page, otherwise it will
 		// get lost after ajax updates
 		$pid = Filter::get('pid', WT_REGEX_XREF);
 
-		if (!$WT_SESSION->cart[WT_GED_ID]) {
+		if (!$WT_SESSION->cart[$WT_TREE->getTreeId()]) {
 			$out = I18N::translate('Your clippings cart is empty.');
 		} else {
 			$out = '<ul>';
-			foreach (array_keys($WT_SESSION->cart[WT_GED_ID]) as $xref) {
-				$record = GedcomRecord::getInstance($xref);
+			foreach (array_keys($WT_SESSION->cart[$WT_TREE->getTreeId()]) as $xref) {
+				$record = GedcomRecord::getInstance($xref, $WT_TREE);
 				if ($record instanceof Individual || $record instanceof Family) {
 					switch ($record::RECORD_TYPE) {
 					case 'INDI':
@@ -448,7 +457,7 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 			$out .= '</ul>';
 		}
 
-		if ($WT_SESSION->cart[WT_GED_ID]) {
+		if ($WT_SESSION->cart[$WT_TREE->getTreeId()]) {
 			$out .=
 				'<br><a href="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax&amp;sb_action=clippings&amp;empty=true&amp;pid=' . $pid . '" class="remove_cart">' .
 				I18N::translate('Empty the clippings cart') .
@@ -458,8 +467,8 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 				I18N::translate('Download') .
 				'</a>';
 		}
-		$record = Individual::getInstance($pid);
-		if ($record && !array_key_exists($record->getXref(), $WT_SESSION->cart[WT_GED_ID])) {
+		$record = Individual::getInstance($pid, $WT_TREE);
+		if ($record && !array_key_exists($record->getXref(), $WT_SESSION->cart[$WT_TREE->getTreeId()])) {
 			$out .= '<br><a href="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax&amp;sb_action=clippings&amp;add=' . $pid . '&amp;pid=' . $pid . '" class="add_cart"><i class="icon-clippings"></i> ' . I18N::translate('Add %s to the clippings cart', $record->getFullName()) . '</a>';
 		}
 		return $out;
@@ -510,12 +519,12 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 		<li><input type="radio" name="others" checked value="none">'. I18N::translate('Add just this individual.') . '</li>
 		<li><input type="radio" name="others" value="parents">'. I18N::translate('Add this individual, his parents, and siblings.') . '</li>
 		<li><input type="radio" name="others" value="ancestors" id="ancestors">'. I18N::translate('Add this individual and his direct line ancestors.') . '<br>
-				'. I18N::translate('Number of generations:') . '<input type="text" size="4" name="level1" value="' . $MAX_PEDIGREE_GENERATIONS . '" onfocus="radAncestors(\'ancestors\');"></li>
+				'. I18N::translate('Number of generations') . '<input type="text" size="4" name="level1" value="' . $MAX_PEDIGREE_GENERATIONS . '" onfocus="radAncestors(\'ancestors\');"></li>
 		<li><input type="radio" name="others" value="ancestorsfamilies" id="ancestorsfamilies">'. I18N::translate('Add this individual, his direct line ancestors, and their families.') . '<br>
-				'. I18N::translate('Number of generations:') . ' <input type="text" size="4" name="level2" value="' . $MAX_PEDIGREE_GENERATIONS . '" onfocus="radAncestors(\'ancestorsfamilies\');"></li>
+				'. I18N::translate('Number of generations') . ' <input type="text" size="4" name="level2" value="' . $MAX_PEDIGREE_GENERATIONS . '" onfocus="radAncestors(\'ancestorsfamilies\');"></li>
 		<li><input type="radio" name="others" value="members">'. I18N::translate('Add this individual, his spouse, and children.') . '</li>
 		<li><input type="radio" name="others" value="descendants" id="descendants">'. I18N::translate('Add this individual, his spouse, and all descendants.') . '<br >
-				'. I18N::translate('Number of generations:') . ' <input type="text" size="4" name="level3" value="' . $MAX_PEDIGREE_GENERATIONS . '" onfocus="radAncestors(\'descendants\');"></li>
+				'. I18N::translate('Number of generations') . ' <input type="text" size="4" name="level3" value="' . $MAX_PEDIGREE_GENERATIONS . '" onfocus="radAncestors(\'descendants\');"></li>
 		</ul>
 		<input type="submit" value="'. I18N::translate('Continue adding') . '">
 		</form>';
@@ -562,14 +571,14 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 		<input type="hidden" name="action" value="download">
 		<table>
 		<tr><td colspan="2" class="topbottombar"><h2>'. I18N::translate('Download') . '</h2></td></tr>
-		<tr><td class="descriptionbox width50 wrap">'. I18N::translate('Zip file(s)') . help_link('zip') . '</td>
+		<tr><td class="descriptionbox width50 wrap">'. I18N::translate('Zip file(s)') . '</td>
 		<td class="optionbox"><input type="checkbox" name="Zip" value="yes" checked></td></tr>
 
 		<tr><td class="descriptionbox width50 wrap">'. I18N::translate('Include media (automatically zips files)') . help_link('include_media') . '</td>
 		<td class="optionbox"><input type="checkbox" name="IncludeMedia" value="yes" checked></td></tr>
 		';
 
-		if (WT_USER_GEDCOM_ADMIN) {
+		if (Auth::isManager($WT_TREE)) {
 			$out .=
 				'<tr><td class="descriptionbox width50 wrap">' . I18N::translate('Apply privacy settings') . help_link('apply_privacy') . '</td>' .
 				'<td class="optionbox">' .
@@ -578,7 +587,7 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 				'	<input type="radio" name="privatize_export" value="user"> ' . I18N::translate('Member') . '<br>' .
 				'	<input type="radio" name="privatize_export" value="visitor"> ' . I18N::translate('Visitor') .
 				'</td></tr>';
-		} elseif (WT_USER_CAN_ACCESS) {
+		} elseif (Auth::isMember($WT_TREE)) {
 			$out .=
 				'<tr><td class="descriptionbox width50 wrap">' . I18N::translate('Apply privacy settings') . help_link('apply_privacy') . '</td>' .
 				'<td class="list_value">' .

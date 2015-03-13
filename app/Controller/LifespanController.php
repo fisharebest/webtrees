@@ -88,7 +88,7 @@ class LifespanController extends PageController {
 		$beginYear = Filter::getInteger('beginYear', 0, $this->currentYear + 100, 0);
 		$endYear   = Filter::getInteger('endYear', 0, $this->currentYear + 100, 0);
 
-		$new_person = Individual::getInstance($newpid);
+		$new_person = Individual::getInstance($newpid, $WT_TREE);
 
 		if ($clear) {
 			// Empty list
@@ -101,7 +101,7 @@ class LifespanController extends PageController {
 			$wt_place    = new Place($place, $WT_TREE);
 			$this->pids  = Database::prepare(
 				"SELECT DISTINCT pl_gid FROM `##placelinks` WHERE pl_p_id = ? AND pl_file = ?"
-			)->execute(array($wt_place->getPlaceId(), WT_GED_ID))->fetchOneColumn();
+			)->execute(array($wt_place->getPlaceId(), $WT_TREE->getTreeId()))->fetchOneColumn();
 			$this->place = $place;
 		} else {
 			// Modify an existing list of records
@@ -132,7 +132,7 @@ class LifespanController extends PageController {
 			foreach ($this->pids as $key => $value) {
 				if ($value != $remove) {
 					$this->pids[$key] = $value;
-					$person           = Individual::getInstance($value);
+					$person           = Individual::getInstance($value, $WT_TREE);
 					// list of linked records includes families as well as individuals.
 					if ($person) {
 						$bdate = $person->getEstimatedBirthDate();
@@ -432,7 +432,7 @@ class LifespanController extends PageController {
 				$date = $val->getDate();
 				if (!empty($date)) {
 					$fact    = $val->getTag();
-					$yearsin = $date->date1->y - $birthYear;
+					$yearsin = $date->minimumDate()->y - $birthYear;
 					if ($lifespannumeral == 0) {
 						$lifespannumeral = 1;
 					}
@@ -562,6 +562,8 @@ class LifespanController extends PageController {
 	 * @return Individual[]
 	 */
 	private static function searchIndividualsInYearRange($startyear, $endyear) {
+		global $WT_TREE;
+
 		// At present, the lifespan chart is driven by Gregorian years.
 		// We ought to allow it to work with other calendars...
 		$gregorian_calendar = new GregorianCalendar;
@@ -574,11 +576,11 @@ class LifespanController extends PageController {
 			" FROM `##individuals`" .
 			" JOIN `##dates` ON i_id=d_gid AND i_file=d_file" .
 			" WHERE i_file=? AND d_julianday1 BETWEEN ? AND ?"
-		)->execute(array(WT_GED_ID, $startjd, $endjd))->fetchAll();
+		)->execute(array($WT_TREE->getTreeId(), $startjd, $endjd))->fetchAll();
 
 		$list = array();
 		foreach ($rows as $row) {
-			$list[] = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$list[] = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
 		}
 
 		return $list;

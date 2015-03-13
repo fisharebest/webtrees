@@ -62,8 +62,8 @@ abstract class Module {
 	 * @return integer
 	 */
 	public function defaultAccessLevel() {
-		// Returns one of: WT_PRIV_HIDE, WT_PRIV_PUBLIC, WT_PRIV_USER, WT_PRIV_ADMIN
-		return WT_PRIV_PUBLIC;
+		// Returns one of: Auth::PRIV_HIDE, Auth::PRIV_PRIVATE, Auth::PRIV_USER, WT_PRIV_ADMIN
+		return Auth::PRIV_PRIVATE;
 	}
 
 	/**
@@ -194,8 +194,10 @@ abstract class Module {
 					$module = include WT_ROOT . WT_MODULES_DIR . $module_name . '/module.php';
 					if ($module instanceof Module) {
 						$modules[$module->getName()] = $module;
+					} else {
+						throw new \Exception;
 					}
-				} catch (\ErrorException $ex) {
+				} catch (\Exception $ex) {
 					// Module has been deleted or is broken?  Disable it.
 					Log::addConfigurationLog("Module {$module_name} is missing or broken - disabling it");
 					Database::prepare(
@@ -216,13 +218,12 @@ abstract class Module {
 	 * We cannot currently use auto-loading for modules, as there may be user-defined
 	 * modules about which the auto-loader knows nothing.
 	 *
-	 * @param Tree    $tree
-	 * @param string  $component The type of module, such as "tab", "report" or "menu"
-	 * @param integer $access_level
+	 * @param Tree   $tree
+	 * @param string $component The type of module, such as "tab", "report" or "menu"
 	 *
 	 * @return Module[]
 	 */
-	private static function getActiveModulesByComponent(Tree $tree, $component, $access_level) {
+	private static function getActiveModulesByComponent(Tree $tree, $component) {
 		$module_names = Database::prepare(
 			"SELECT SQL_CACHE module_name" .
 			" FROM `##module`" .
@@ -232,20 +233,19 @@ abstract class Module {
 		)->execute(array(
 			'tree_id'      => $tree->getTreeId(),
 			'component'    => $component,
-			'access_level' => $access_level,
+			'access_level' => Auth::accessLevel($tree),
 		))->fetchOneColumn();
-
-		$active_modules = self::getActiveModules();
 
 		$array = array();
 		foreach ($module_names as $module_name) {
 			$interface = __NAMESPACE__ . '\Module' . ucfirst($component) . 'Interface';
-			if ($active_modules[$module_name] instanceof $interface) {
-				$array[$module_name] = $active_modules[$module_name];
+			$module = self::getModuleByName($module_name);
+			if ($module instanceof $interface) {
+				$array[$module_name] = $module;
 			}
 		}
 
-		// The order of menus/sidebars/tabs is defined by the user.  Others are sorted by name.
+		// The order of menus/sidebars/tabs is defined in the database.  Others are sorted by name.
 		if ($component !== 'menu' && $component !== 'sidebar' && $component !== 'tab') {
 			uasort($array, function(Module $x, Module $y) {
 				return I18N::strcasecmp($x->getTitle(), $y->getTitle());
@@ -258,85 +258,78 @@ abstract class Module {
 	/**
 	 * Get a list of modules which (a) provide a block and (b) we have permission to see.
 	 *
-	 * @param Tree    $tree
-	 * @param integer $access_level
+	 * @param Tree $tree
 	 *
 	 * @return ModuleBlockInterface[]
 	 */
-	public static function getActiveBlocks(Tree $tree, $access_level = WT_USER_ACCESS_LEVEL) {
-		return self::getActiveModulesByComponent($tree, 'block', $access_level);
+	public static function getActiveBlocks(Tree $tree) {
+		return self::getActiveModulesByComponent($tree, 'block');
 	}
 
 	/**
 	 * Get a list of modules which (a) provide a chart and (b) we have permission to see.
 	 *
-	 * @param Tree    $tree
-	 * @param integer $access_level
+	 * @param Tree $tree
 	 *
 	 * @return ModuleChartInterface[]
 	 */
-	public static function getActiveCharts(Tree $tree, $access_level = WT_USER_ACCESS_LEVEL) {
-		return self::getActiveModulesByComponent($tree, 'chart', $access_level);
+	public static function getActiveCharts(Tree $tree) {
+		return self::getActiveModulesByComponent($tree, 'chart');
 	}
 
 	/**
 	 * Get a list of modules which (a) provide a menu and (b) we have permission to see.
 	 *
-	 * @param Tree    $tree
-	 * @param integer $access_level
+	 * @param Tree $tree
 	 *
 	 * @return ModuleMenuInterface[]
 	 */
-	public static function getActiveMenus(Tree $tree, $access_level = WT_USER_ACCESS_LEVEL) {
-		return self::getActiveModulesByComponent($tree, 'menu', $access_level);
+	public static function getActiveMenus(Tree $tree) {
+		return self::getActiveModulesByComponent($tree, 'menu');
 	}
 
 	/**
 	 * Get a list of modules which (a) provide a report and (b) we have permission to see.
 	 *
-	 * @param Tree    $tree
-	 * @param integer $access_level
+	 * @param Tree $tree
 	 *
 	 * @return ModuleReportInterface[]
 	 */
-	public static function getActiveReports(Tree $tree, $access_level = WT_USER_ACCESS_LEVEL) {
-		return self::getActiveModulesByComponent($tree, 'report', $access_level);
+	public static function getActiveReports(Tree $tree) {
+		return self::getActiveModulesByComponent($tree, 'report');
 	}
 
 	/**
 	 * Get a list of modules which (a) provide a sidebar and (b) we have permission to see.
 	 *
-	 * @param Tree    $tree
-	 * @param integer $access_level
+	 * @param Tree $tree
 	 *
 	 * @return ModuleSidebarInterface[]
 	 */
-	public static function getActiveSidebars(Tree $tree, $access_level = WT_USER_ACCESS_LEVEL) {
-		return self::getActiveModulesByComponent($tree, 'sidebar', $access_level);
+	public static function getActiveSidebars(Tree $tree) {
+		return self::getActiveModulesByComponent($tree, 'sidebar');
 	}
 
 	/**
 	 * Get a list of modules which (a) provide a tab and (b) we have permission to see.
 	 *
-	 * @param Tree    $tree
-	 * @param integer $access_level
+	 * @param Tree $tree
 	 *
 	 * @return ModuleTabInterface[]
 	 */
-	public static function getActiveTabs(Tree $tree, $access_level = WT_USER_ACCESS_LEVEL) {
-		return self::getActiveModulesByComponent($tree, 'tab', $access_level);
+	public static function getActiveTabs(Tree $tree) {
+		return self::getActiveModulesByComponent($tree, 'tab');
 	}
 
 	/**
 	 * Get a list of modules which (a) provide a theme and (b) we have permission to see.
 	 *
-	 * @param Tree    $tree
-	 * @param integer $access_level
+	 * @param Tree $tree
 	 *
 	 * @return ModuleThemeInterface[]
 	 */
-	public static function getActiveThemes(Tree $tree, $access_level = WT_USER_ACCESS_LEVEL) {
-		return self::getActiveModulesByComponent($tree, 'theme', $access_level);
+	public static function getActiveThemes(Tree $tree) {
+		return self::getActiveModulesByComponent($tree, 'theme');
 	}
 
 	/**
@@ -433,7 +426,7 @@ abstract class Module {
 					)->execute(array($module->getName(), $module->defaultAccessLevel()));
 				}
 			} catch (\Exception $ex) {
-				// Probably an old third-party module.
+				// Old or invalid module?
 			}
 		}
 

@@ -59,22 +59,22 @@ function file_upload_error_text($error_code) {
 	case UPLOAD_ERR_INI_SIZE:
 	case UPLOAD_ERR_FORM_SIZE:
 		// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-		return I18N::translate('Uploaded file exceeds the allowed size');
+		return I18N::translate('The uploaded file exceeds the allowed size.');
 	case UPLOAD_ERR_PARTIAL:
 		// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-		return I18N::translate('File was only partially uploaded, please try again');
+		return I18N::translate('THe file was only partially uploaded.  Please try again.');
 	case UPLOAD_ERR_NO_FILE:
 		// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-		return I18N::translate('No file was received.  Please upload again.');
+		return I18N::translate('No file was received.  Please try again.');
 	case UPLOAD_ERR_NO_TMP_DIR:
 		// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-		return I18N::translate('Missing PHP temporary folder');
+		return I18N::translate('THe PHP temporary folder is missing.');
 	case UPLOAD_ERR_CANT_WRITE:
 		// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-		return I18N::translate('PHP failed to write to disk');
+		return I18N::translate('PHP failed to write to disk.');
 	case UPLOAD_ERR_EXTENSION:
 		// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-		return I18N::translate('PHP blocked file by extension');
+		return I18N::translate('PHP blocked the file because of its extension.');
 	default:
 		return 'Error: ' . $error_code;
 	}
@@ -345,9 +345,9 @@ function get_relationship(Individual $person1, Individual $person2, $maxlength =
 		if ($maxlength == 0 || count($node['path']) <= $maxlength) {
 			$indi = $node['indi'];
 			//-- check all parents and siblings of this node
-			foreach ($indi->getChildFamilies(WT_PRIV_HIDE) as $family) {
+			foreach ($indi->getChildFamilies(Auth::PRIV_HIDE) as $family) {
 				$visited[$family->getXref()] = true;
-				foreach ($family->getSpouses(WT_PRIV_HIDE) as $spouse) {
+				foreach ($family->getSpouses(Auth::PRIV_HIDE) as $spouse) {
 					if (!isset($visited[$spouse->getXref()])) {
 						$node1 = $node;
 						$node1['length']++;
@@ -363,7 +363,7 @@ function get_relationship(Individual $person1, Individual $person2, $maxlength =
 						}
 					}
 				}
-				foreach ($family->getChildren(WT_PRIV_HIDE) as $child) {
+				foreach ($family->getChildren(Auth::PRIV_HIDE) as $child) {
 					if (!isset($visited[$child->getXref()])) {
 						$node1 = $node;
 						$node1['length']++;
@@ -381,9 +381,9 @@ function get_relationship(Individual $person1, Individual $person2, $maxlength =
 				}
 			}
 			//-- check all spouses and children of this node
-			foreach ($indi->getSpouseFamilies(WT_PRIV_HIDE) as $family) {
+			foreach ($indi->getSpouseFamilies(Auth::PRIV_HIDE) as $family) {
 				$visited[$family->getXref()] = true;
-				foreach ($family->getSpouses(WT_PRIV_HIDE) as $spouse) {
+				foreach ($family->getSpouses(Auth::PRIV_HIDE) as $spouse) {
 					if (!in_array($spouse->getXref(), $node1) || !isset($visited[$spouse->getXref()])) {
 						$node1 = $node;
 						$node1['length']++;
@@ -399,7 +399,7 @@ function get_relationship(Individual $person1, Individual $person2, $maxlength =
 						}
 					}
 				}
-				foreach ($family->getChildren(WT_PRIV_HIDE) as $child) {
+				foreach ($family->getChildren(Auth::PRIV_HIDE) as $child) {
 					if (!isset($visited[$child->getXref()])) {
 						$node1 = $node;
 						$node1['length']++;
@@ -754,7 +754,7 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 			$dob1 = $person1->getBirthDate();
 			$dob2 = $person2->getBirthDate();
 			if ($dob1->isOK() && $dob2->isOK()) {
-				if (abs($dob1->julianDay() - $dob2->julianDay()) < 2 && !$dob1->qual1 && !$dob2->qual1) {
+				if (abs($dob1->julianDay() - $dob2->julianDay()) < 2 && !$dob1->minimumDate()->d !== 0 && !$dob2->minimumDate()->d !== 0) {
 					// Exclude BEF, AFT, etc.
 					return I18N::translate('twin brother');
 				} elseif ($dob1->maximumJulianDay() < $dob2->minimumJulianDay()) {
@@ -771,7 +771,7 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 			$dob1 = $person1->getBirthDate();
 			$dob2 = $person2->getBirthDate();
 			if ($dob1->isOK() && $dob2->isOK()) {
-				if (abs($dob1->julianDay() - $dob2->julianDay()) < 2 && !$dob1->qual1 && !$dob2->qual1) {
+				if (abs($dob1->julianDay() - $dob2->julianDay()) < 2 && !$dob1->minimumDate()->d !== 0 && !$dob2->minimumDate()->d !== 0) {
 					// Exclude BEF, AFT, etc.
 					return I18N::translate('twin sister');
 				} elseif ($dob1->maximumJulianDay() < $dob2->minimumJulianDay()) {
@@ -788,7 +788,7 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 			$dob1 = $person1->getBirthDate();
 			$dob2 = $person2->getBirthDate();
 			if ($dob1->isOK() && $dob2->isOK()) {
-				if (abs($dob1->julianDay() - $dob2->julianDay()) < 2 && !$dob1->qual1 && !$dob2->qual1) {
+				if (abs($dob1->julianDay() - $dob2->julianDay()) < 2 && !$dob1->minimumDate()->d !== 0 && !$dob2->minimumDate()->d !== 0) {
 					// Exclude BEF, AFT, etc.
 					return I18N::translate('twin sibling');
 				} elseif ($dob1->maximumJulianDay() < $dob2->minimumJulianDay()) {

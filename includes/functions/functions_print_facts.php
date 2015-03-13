@@ -226,7 +226,7 @@ function print_fact(Fact $fact, GedcomRecord $record) {
 		echo '<div class="field"><a href="mailto:', Filter::escapeHtml($fact->getValue()), '">', Filter::escapeHtml($fact->getValue()), '</a></div>';
 		break;
 	case 'FILE':
-		if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
+		if (Auth::isEditor($fact->getParent()->getTree())) {
 			echo '<div class="field">', Filter::escapeHtml($fact->getValue()), '</div>';
 		}
 		break;
@@ -286,7 +286,7 @@ function print_fact(Fact $fact, GedcomRecord $record) {
 			break;
 		default:
 			if (preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $fact->getValue(), $match)) {
-				$target = GedcomRecord::getInstance($match[1]);
+				$target = GedcomRecord::getInstance($match[1], $fact->getParent()->getTree());
 				if ($target) {
 					echo '<div><a href="', $target->getHtmlUrl(), '">', $target->getFullName(), '</a></div>';
 				} else {
@@ -375,7 +375,7 @@ function print_fact(Fact $fact, GedcomRecord $record) {
 			}
 			break;
 		case 'FAMC': // 0 INDI / 1 ADOP / 2 FAMC / 3 ADOP
-			$family = Family::getInstance(str_replace('@', '', $match[2]));
+			$family = Family::getInstance(str_replace('@', '', $match[2]), $fact->getParent()->getTree());
 			if ($family) {
 				echo GedcomTag::getLabelValue('FAM', '<a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a>');
 				if (preg_match('/\n3 ADOP (HUSB|WIFE|BOTH)/', $fact->getGedcom(), $match)) {
@@ -433,7 +433,7 @@ function print_fact(Fact $fact, GedcomRecord $record) {
 			if (!$fact->getParent()->getTree()->getPreference('HIDE_GEDCOM_ERRORS') || GedcomTag::isTag($match[1])) {
 				if (preg_match('/^@(' . WT_REGEX_XREF . ')@$/', $match[2], $xmatch)) {
 					// Links
-					$linked_record = GedcomRecord::getInstance($xmatch[1]);
+					$linked_record = GedcomRecord::getInstance($xmatch[1], $fact->getParent()->getTree());
 					if ($linked_record) {
 						$link = '<a href="' . $linked_record->getHtmlUrl() . '">' . $linked_record->getFullName() . '</a>';
 						echo GedcomTag::getLabelValue($fact->getTag() . ':' . $match[1], $link);
@@ -462,7 +462,9 @@ function print_fact(Fact $fact, GedcomRecord $record) {
  * @param string $xref the Gedcom Xref ID of the repository to print
  */
 function print_repository_record($xref) {
-	$repository = Repository::getInstance($xref);
+	global $WT_TREE;
+
+	$repository = Repository::getInstance($xref, $WT_TREE);
 	if ($repository && $repository->canShow()) {
 		echo '<a class="field" href="', $repository->getHtmlUrl(), '">', $repository->getFullName(), '</a><br>';
 		echo '<br>';
@@ -499,7 +501,7 @@ function print_fact_sources($factrec, $level) {
 	$spos2 = 0;
 	for ($j = 0; $j < $ct; $j++) {
 		$sid = $match[$j][1];
-		$source = Source::getInstance($sid);
+		$source = Source::getInstance($sid, $WT_TREE);
 		if ($source) {
 			if ($source->canShow()) {
 				$spos1 = strpos($factrec, "$level SOUR @" . $sid . "@", $spos2);
@@ -572,7 +574,7 @@ function print_media_links($factrec, $level) {
 	$objectNum = 0;
 	while ($objectNum < count($omatch)) {
 		$media_id = $omatch[$objectNum][1];
-		$media = Media::getInstance($media_id);
+		$media = Media::getInstance($media_id, $WT_TREE);
 		if ($media) {
 			if ($media->canShow()) {
 				if ($objectNum > 0) {
@@ -580,13 +582,9 @@ function print_media_links($factrec, $level) {
 				}
 				echo '<div class="media-display"><div class="media-display-image">';
 				echo $media->displayImage();
-				echo '</div>'; // close div "media-display-image"
+				echo '</div>';
 				echo '<div class="media-display-title">';
-				if (Auth::isSearchEngine()) {
-					echo $media->getFullName();
-				} else {
-					echo '<a href="mediaviewer.php?mid=', $media->getXref(), '&amp;ged=', WT_GEDURL, '">', $media->getFullName(), '</a>';
-				}
+				echo '<a href="', $media->getHtmlUrl(), '">', $media->getFullName(), '</a>';
 				// NOTE: echo the notes of the media
 				echo '<p>';
 				echo print_fact_notes($media->getGedcom(), 1);
@@ -599,7 +597,7 @@ function print_media_links($factrec, $level) {
 				//-- print spouse name for marriage events
 				$ct = preg_match("/WT_SPOUSE: (.*)/", $factrec, $match);
 				if ($ct > 0) {
-					$spouse = Individual::getInstance($match[1]);
+					$spouse = Individual::getInstance($match[1], $media->getTree());
 					if ($spouse) {
 						echo '<a href="', $spouse->getHtmlUrl(), '">';
 						echo $spouse->getFullName();
@@ -608,7 +606,7 @@ function print_media_links($factrec, $level) {
 					$ct = preg_match("/WT_FAMILY_ID: (.*)/", $factrec, $match);
 					if ($ct > 0) {
 						$famid = trim($match[1]);
-						$family = Family::getInstance($famid);
+						$family = Family::getInstance($famid, $spouse->getTree());
 						if ($family) {
 							if ($spouse) {
 								echo " - ";
@@ -664,7 +662,7 @@ function print_main_sources(Fact $fact, $level) {
 			$spos2 = strlen($factrec);
 		}
 		$srec = substr($factrec, $spos1, $spos2 - $spos1);
-		$source = Source::getInstance($sid);
+		$source = Source::getInstance($sid, $fact->getParent()->getTree());
 		// Allow access to "1 SOUR @non_existent_source@", so it can be corrected/deleted
 		if (!$source || $source->canShow()) {
 			if ($level > 1) {
@@ -896,7 +894,7 @@ function print_main_notes(Fact $fact, $level) {
 	for ($j = 0; $j < $ct; $j++) {
 		// Note object, or inline note?
 		if (preg_match("/$level NOTE @(.*)@/", $match[$j][0], $nmatch)) {
-			$note = Note::getInstance($nmatch[1]);
+			$note = Note::getInstance($nmatch[1], $fact->getParent()->getTree());
 			if ($note && !$note->canShow()) {
 				continue;
 			}
@@ -944,7 +942,7 @@ function print_main_notes(Fact $fact, $level) {
 			$factlines = explode("\n", $factrec); // 1 BIRT Y\n2 NOTE ...
 			$factwords = explode(" ", $factlines[0]); // 1 BIRT Y
 			$factname = $factwords[1]; // BIRT
-			$parent = GedcomRecord::getInstance($pid);
+			$parent = GedcomRecord::getInstance($pid, $fact->getParent()->getTree());
 			if ($factname == 'EVEN' || $factname == 'FACT') {
 				// Add ' EVEN' to provide sensible output for an event with an empty TYPE record
 				$ct = preg_match("/2 TYPE (.*)/", $factrec, $ematch);
@@ -1040,7 +1038,7 @@ function print_main_media(Fact $fact, $level) {
 	// -- find source for each fact
 	preg_match_all('/(?:^|\n)' . $level . ' OBJE @(.*)@/', $factrec, $matches);
 	foreach ($matches[1] as $xref) {
-		$media = Media::getInstance($xref);
+		$media = Media::getInstance($xref, $fact->getParent()->getTree());
 		// Allow access to "1 OBJE @non_existent_source@", so it can be corrected/deleted
 		if (!$media || $media->canShow()) {
 			if ($level > 1) {

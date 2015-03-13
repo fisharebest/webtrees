@@ -16,6 +16,13 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree   $WT_TREE
+ */
+global $WT_TREE;
+
 define('WT_SCRIPT_NAME', 'medialist.php');
 require './includes/session.php';
 
@@ -26,7 +33,7 @@ $controller
 
 $search = Filter::get('search');
 $sortby = Filter::get('sortby', 'file|title', 'title');
-if (!WT_USER_CAN_EDIT && !WT_USER_CAN_ACCEPT) {
+if (!Auth::isEditor($WT_TREE)) {
 	$sortby = 'title';
 }
 $start          = Filter::getInteger('start');
@@ -67,91 +74,92 @@ $medialist = QueryMedia::mediaList(
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="search" value="yes">
 	<table class="list_table">
-		<tr>
-			<td class="descriptionbox wrap">
-				<?php echo I18N::translate('Folder'); ?>
-			</td>
-			<td class="optionbox wrap">
-				<?php echo select_edit_control('folder', $folders, null, $folder); ?>
-			</td>
-			<?php
-			if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
-				echo '<td class="descriptionbox wrap">';
-				echo I18N::translate('Sort order');
-				echo '</td><td class="optionbox wrap">';
-				echo '<select name="sortby">';
-				echo '<option value="title" ', ($sortby == 'title') ? 'selected' : '', '>';
-				echo /* I18N: An option in a list-box */ I18N::translate('sort by title');
-				echo '</option>';
-				echo '<option value="file" ', ($sortby == 'file') ? 'selected' : '', '>';
-				echo /* I18N: An option in a list-box */ I18N::translate('sort by filename');
-				echo '</option>';
-				echo '</select>';
-				echo '</td>';
-			} else {
-				echo '<td class="descriptionbox wrap"></td>';
-				echo '<td class="optionbox wrap"></td>';
-			}
-			?>
-		</tr>
-		<tr>
-			<td class="descriptionbox wrap">
-				<?php echo /* I18N: Label for check-box */ I18N::translate('Include subfolders'); ?>
-			</td>
-			<td class="optionbox wrap">
-				<input type="checkbox" id="subdirs" name="subdirs" <?php echo $currentdironly ? '' : 'checked'; ?>>
-			</td>
-			<td class="descriptionbox wrap">
-				<?php echo I18N::translate('Media objects per page'); ?>
-			</td>
-			<td class="optionbox wrap">
-				<select name="max">
-					<?php
-					foreach (array('10', '20', '30', '40', '50', '75', '100', '125', '150', '200') as $selectEntry) {
-						echo '<option value="', $selectEntry, '" ';
-						if ($selectEntry == $max) {
-							echo 'selected';
+		<tbody>
+			<tr>
+				<td class="descriptionbox wrap">
+					<?php echo I18N::translate('Folder'); ?>
+				</td>
+				<td class="optionbox wrap">
+					<?php echo select_edit_control('folder', $folders, null, $folder); ?>
+				</td>
+				<?php if (Auth::isEditor($WT_TREE)): ?>
+				<td class="descriptionbox wrap">
+					<?php echo I18N::translate('Sort order'); ?>
+				</td>
+				<td class="optionbox wrap">
+					<select name="sortby">
+						<option value="title" <?php echo $sortby === 'title' ? 'selected' : ''; ?>>
+							<?php echo /* I18N: An option in a list-box */ I18N::translate('sort by title'); ?>
+						</option>
+						<option value="file" <?php echo $sortby === 'file' ? 'selected' : ''; ?>>
+							<?php echo /* I18N: An option in a list-box */ I18N::translate('sort by filename'); ?>
+						</option>
+					</select>
+				</td>
+				<?php else: ?>
+					<td class="descriptionbox wrap"></td>
+					<td class="optionbox wrap"></td>
+				<?php endif; ?>
+			</tr>
+			<tr>
+				<td class="descriptionbox wrap">
+					<?php echo /* I18N: Label for check-box */ I18N::translate('Include subfolders'); ?>
+				</td>
+				<td class="optionbox wrap">
+					<input type="checkbox" id="subdirs" name="subdirs" <?php echo $currentdironly ? '' : 'checked'; ?>>
+				</td>
+				<td class="descriptionbox wrap">
+					<?php echo I18N::translate('Media objects per page'); ?>
+				</td>
+				<td class="optionbox wrap">
+					<select name="max">
+						<?php
+						foreach (array('10', '20', '30', '40', '50', '75', '100', '125', '150', '200') as $selectEntry) {
+							echo '<option value="', $selectEntry, '" ';
+							if ($selectEntry == $max) {
+								echo 'selected';
+							}
+							echo '>', $selectEntry, '</option>';
 						}
-						echo '>', $selectEntry, '</option>';
-					}
-					?>
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<td class="descriptionbox wrap">
-				<?php echo I18N::translate('Search filters'); ?>
-			</td>
-			<td class="optionbox wrap">
-				<input id="filter" name="filter" value="<?php echo Filter::escapeHtml($filter); ?>" size="14" dir="auto">
-			</td>
-			<td class="descriptionbox wrap">
-				<?php echo I18N::translate('Columns per page'); ?>
-			</td>
-			<td class="optionbox wrap">
-				<select name="columns">
-					<?php
-					foreach (array('1', '2') as $selectEntry) {
-						echo '<option value="', $selectEntry, '" ';
-						if ($selectEntry == $columns) {
-							echo 'selected';
+						?>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="descriptionbox wrap">
+					<?php echo I18N::translate('Search filters'); ?>
+				</td>
+				<td class="optionbox wrap">
+					<input id="filter" name="filter" value="<?php echo Filter::escapeHtml($filter); ?>" size="14" dir="auto">
+				</td>
+				<td class="descriptionbox wrap">
+					<?php echo I18N::translate('Columns per page'); ?>
+				</td>
+				<td class="optionbox wrap">
+					<select name="columns">
+						<?php
+						foreach (array('1', '2') as $selectEntry) {
+							echo '<option value="', $selectEntry, '" ';
+							if ($selectEntry == $columns) {
+								echo 'selected';
+							}
+							echo '>', $selectEntry, '</option>';
 						}
-						echo '>', $selectEntry, '</option>';
-					}
-					?>
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<td class="descriptionbox wrap">
-			</td>
-			<td class="optionbox wrap">
-				<input type="submit" name="apply_filter" value="<?php echo I18N::translate('Search'); ?>">
-				<input type="submit" name="reset" value="<?php echo I18N::translate('Reset'); ?>">
-			</td>
-			<td class="descriptionbox wrap"></td>
-			<td class="optionbox wrap"></td>
-		</tr>
+						?>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="descriptionbox wrap">
+				</td>
+				<td class="optionbox wrap">
+					<input type="submit" name="apply_filter" value="<?php echo I18N::translate('Search'); ?>">
+					<input type="submit" name="reset" value="<?php echo I18N::translate('Reset'); ?>">
+				</td>
+				<td class="descriptionbox wrap"></td>
+				<td class="optionbox wrap"></td>
+			</tr>
+		</tbody>
 	</table>
 </form>
 
@@ -254,7 +262,7 @@ if ($search) {
 			echo '<table><tr><td class="media-image">';
 			echo $mediaobject->displayImage();
 			echo '</td><td class="media-col list_value_wrap">';
-			if (WT_USER_CAN_EDIT) {
+			if (Auth::isEditor($WT_TREE)) {
 				echo MediaController::getMediaListMenu($mediaobject);
 			}
 			// If sorting by title, highlight the title.  If sorting by filename, highlight the filename
@@ -273,7 +281,7 @@ if ($search) {
 				echo GedcomTag::getLabelValue('URL', $mediaobject->getFilename());
 			} else {
 				if ($mediaobject->fileExists()) {
-					if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
+					if (Auth::isEditor($WT_TREE)) {
 						echo GedcomTag::getLabelValue('FILE', $mediaobject->getFilename());
 					}
 					echo GedcomTag::getLabelValue('FORM', $mediaobject->mimeType());

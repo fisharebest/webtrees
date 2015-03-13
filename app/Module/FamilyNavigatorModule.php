@@ -112,7 +112,7 @@ class FamilyNavigatorModule extends Module implements ModuleSidebarInterface {
 			</td>
 		</tr>
 		<?php
-		$access_level = $SHOW_PRIVATE_RELATIONSHIPS ? WT_PRIV_HIDE : WT_USER_ACCESS_LEVEL;
+		$access_level = $SHOW_PRIVATE_RELATIONSHIPS ? Auth::PRIV_HIDE : Auth::accessLevel($family->getTree());
 		$facts = array_merge($family->getFacts('HUSB', false, $access_level), $family->getFacts('WIFE', false, $access_level));
 		foreach ($facts as $fact) {
 			$spouse = $fact->getTarget();

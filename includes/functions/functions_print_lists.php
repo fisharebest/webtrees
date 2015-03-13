@@ -754,11 +754,11 @@ function format_fam_table($datalist) {
 		//-- Retrieve husband and wife
 		$husb = $family->getHusband();
 		if (is_null($husb)) {
-			$husb = new Individual('H', '0 @H@ INDI', null, WT_GED_ID);
+			$husb = new Individual('H', '0 @H@ INDI', null, $family->getTree());
 		}
 		$wife = $family->getWife();
 		if (is_null($wife)) {
-			$wife = new Individual('W', '0 @W@ INDI', null, WT_GED_ID);
+			$wife = new Individual('W', '0 @W@ INDI', null, $family->getTree());
 		}
 		if (!$family->canShow()) {
 			continue;
@@ -998,6 +998,23 @@ function format_fam_table($datalist) {
  */
 function format_sour_table($datalist) {
 	global $WT_TREE, $controller;
+
+	// Count the number of linked records.  These numbers include private records.
+	// It is not good to bypass privacy, but many servers do not have the resources
+	// to process privacy for every record in the tree
+	$count_individuals = Database::prepare(
+		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##individuals` JOIN `##link` ON l_from = i_id AND l_file = i_file AND l_type = 'SOUR' GROUP BY l_to, l_file"
+	)->fetchAssoc();
+	$count_families = Database::prepare(
+		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##families` JOIN `##link` ON l_from = f_id AND l_file = f_file AND l_type = 'SOUR' GROUP BY l_to, l_file"
+	)->fetchAssoc();
+	$count_media = Database::prepare(
+		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##media` JOIN `##link` ON l_from = m_id AND l_file = m_file AND l_type = 'SOUR' GROUP BY l_to, l_file"
+	)->fetchAssoc();
+	$count_notes = Database::prepare(
+		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##other` JOIN `##link` ON l_from = o_id AND l_file = o_file AND o_type = 'NOTE' AND l_type = 'SOUR' GROUP BY l_to, l_file"
+	)->fetchAssoc();
+
 	$html = '';
 	$table_id = 'table-sour-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 	$controller
@@ -1025,7 +1042,7 @@ function format_sour_table($datalist) {
 					/* 10 #NOTE     */ { type: "num", visible: false },
 					/* 11 CHAN      */ { dataSort: 12, visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . ' },
 					/* 12 CHAN_sort */ { visible: false },
-					/* 13 DELETE    */ { visible: ' . (WT_USER_GEDCOM_ADMIN ? 'true' : 'false') . ', sortable: false }
+					/* 13 DELETE    */ { visible: ' . (Auth::isManager($WT_TREE) ? 'true' : 'false') . ', sortable: false }
 				],
 				displayLength: 20,
 				pagingType: "full_numbers"
@@ -1092,17 +1109,18 @@ function format_sour_table($datalist) {
 			$author = '';
 		}
 		$html .= '<td>' . highlight_search_hits($author) . '</td>';
+		$key = $source->getXref() . '@' . $source->getTree()->getTreeId();
 		//-- Linked INDIs
-		$num = count($source->linkedIndividuals('SOUR'));
+		$num = array_key_exists($key, $count_individuals) ? $count_individuals[$key] : 0;
 		$html .= '<td>' . I18N::number($num) . '</td><td>' . $num . '</td>';
 		//-- Linked FAMs
-		$num = count($source->linkedfamilies('SOUR'));
+		$num = array_key_exists($key, $count_families) ? $count_families[$key] : 0;
 		$html .= '<td>' . I18N::number($num) . '</td><td>' . $num . '</td>';
 		//-- Linked OBJEcts
-		$num = count($source->linkedMedia('SOUR'));
+		$num = array_key_exists($key, $count_media) ? $count_media[$key] : 0;
 		$html .= '<td>' . I18N::number($num) . '</td><td>' . $num . '</td>';
 		//-- Linked NOTEs
-		$num = count($source->linkedNotes('SOUR'));
+		$num = array_key_exists($key, $count_notes) ? $count_notes[$key] : 0;
 		$html .= '<td>' . I18N::number($num) . '</td><td>' . $num . '</td>';
 		//-- Last change
 		if ($WT_TREE->getPreference('SHOW_LAST_CHANGE')) {
@@ -1117,7 +1135,7 @@ function format_sour_table($datalist) {
 			$html .= '<td></td>';
 		}
 		//-- Delete
-		if (WT_USER_GEDCOM_ADMIN) {
+		if (Auth::isManager($WT_TREE)) {
 			$html .= '<td><div title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_source(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($source->getFullName()))) . "', '" . $source->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></div></td>';
 		} else {
 			$html .= '<td></td>';
@@ -1164,7 +1182,7 @@ function format_note_table($datalist) {
 					/*  8 #SOUR     */ { type: "num", visible: false },
 					/*  9 CHAN      */ { dataSort: 10, visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . ' },
 					/* 10 CHAN_sort */ { visible: false },
-					/* 11 DELETE    */ { visible: ' . (WT_USER_GEDCOM_ADMIN ? 'true' : 'false') . ', sortable: false }
+					/* 11 DELETE    */ { visible: ' . (Auth::isManager($WT_TREE) ? 'true' : 'false') . ', sortable: false }
 				],
 				displayLength: 20,
 				pagingType: "full_numbers"
@@ -1232,7 +1250,7 @@ function format_note_table($datalist) {
 			$html .= '<td></td>';
 		}
 		//-- Delete
-		if (WT_USER_GEDCOM_ADMIN) {
+		if (Auth::isManager($WT_TREE)) {
 			$html .= '<td><div title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_note(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($note->getFullName()))) . "', '" . $note->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></div></td>';
 		} else {
 			$html .= '<td></td>';
@@ -1254,6 +1272,13 @@ function format_note_table($datalist) {
 function format_repo_table($repositories) {
 	global $WT_TREE, $controller;
 
+	// Count the number of linked records.  These numbers include private records.
+	// It is not good to bypass privacy, but many servers do not have the resources
+	// to process privacy for every record in the tree
+	$count_sources = Database::prepare(
+		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##sources` JOIN `##link` ON l_from = s_id AND l_file = s_file AND l_type = 'REPO' GROUP BY l_to, l_file"
+	)->fetchAssoc();
+
 	$html = '';
 	$table_id = 'table-repo-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 	$controller
@@ -1273,7 +1298,7 @@ function format_repo_table($repositories) {
 					/* 2 #SOUR     */ { type: "num", visible: false },
 					/* 3 CHAN      */ { dataSort: 4, visible: ' . ($WT_TREE->getPreference('SHOW_LAST_CHANGE') ? 'true' : 'false') . ' },
 					/* 4 CHAN_sort */ { visible: false },
-					/* 5 DELETE    */ { visible: ' . (WT_USER_GEDCOM_ADMIN ? 'true' : 'false') . ', sortable: false }
+					/* 5 DELETE    */ { visible: ' . (Auth::isManager($WT_TREE) ? 'true' : 'false') . ', sortable: false }
 				],
 				displayLength: 20,
 				pagingType: "full_numbers"
@@ -1322,8 +1347,9 @@ function format_repo_table($repositories) {
 			}
 		}
 		$html .= '</td>';
+		$key = $repository->getXref() . '@' . $repository->getTree()->getTreeId();
 		//-- Linked SOURces
-		$num = count($repository->linkedSources('REPO'));
+		$num = array_key_exists($key, $count_sources) ? $count_sources[$key] : 0;
 		$html .= '<td>' . I18N::number($num) . '</td><td>' . $num . '</td>';
 		//-- Last change
 		if ($WT_TREE->getPreference('SHOW_LAST_CHANGE')) {
@@ -1338,7 +1364,7 @@ function format_repo_table($repositories) {
 			$html .= '<td></td>';
 		}
 		//-- Delete
-		if (WT_USER_GEDCOM_ADMIN) {
+		if (Auth::isManager($WT_TREE)) {
 			$html .= '<td><div title="' . I18N::translate('Delete') . '" class="deleteicon" onclick="return delete_repository(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($repository->getFullName()))) . "', '" . $repository->getXref() . '\');"><span class="link_text">' . I18N::translate('Delete') . '</span></div></td>';
 		} else {
 			$html .= '<td></td>';
@@ -1428,7 +1454,7 @@ function format_media_table($media_objects) {
 			$html .= '<td>';
 			$html .= '<a href="' . $media_object->getHtmlUrl() . '" class="list_item name2">';
 			$html .= highlight_search_hits($name) . '</a>';
-			if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
+			if (Auth::isEditor($media_object->getTree())) {
 				$html .= '<br><a href="' . $media_object->getHtmlUrl() . '">' . basename($media_object->getFilename()) . '</a>';
 			}
 			$html .= '</td>';
@@ -1471,7 +1497,8 @@ function format_media_table($media_objects) {
  * @return string
  */
 function format_surname_table($surnames, $script) {
-	global $controller;
+	global $controller, $WT_TREE;
+
 	$html = '';
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
@@ -1511,9 +1538,9 @@ function format_surname_table($surnames, $script) {
 	foreach ($surnames as $surn => $surns) {
 		// Each surname links back to the indi/fam surname list
 		if ($surn) {
-			$url = $script . '?surname=' . rawurlencode($surn) . '&amp;ged=' . WT_GEDURL;
+			$url = $script . '?surname=' . rawurlencode($surn) . '&amp;ged=' . $WT_TREE->getNameUrl();
 		} else {
-			$url = $script . '?alpha=,&amp;ged=' . WT_GEDURL;
+			$url = $script . '?alpha=,&amp;ged=' . $WT_TREE->getNameUrl();
 		}
 		// Row counter
 		$html .= '<tr>';
@@ -1561,6 +1588,8 @@ function format_surname_table($surnames, $script) {
  * @return string
  */
 function format_surname_tagcloud($surnames, $script, $totals) {
+	global $WT_TREE;
+
 	$cloud = new Zend_Tag_Cloud(
 		array(
 			'tagDecorator'   => array(
@@ -1591,7 +1620,7 @@ function format_surname_tagcloud($surnames, $script, $totals) {
 				'weight' => count($indis),
 				'params' => array(
 					'url' => $surn ?
-						$script . '?surname=' . urlencode($surn) . '&amp;ged=' . WT_GEDURL : $script . '?alpha=,&amp;ged=' . WT_GEDURL
+						$script . '?surname=' . urlencode($surn) . '&amp;ged=' . $WT_TREE->getNameUrl() : $script . '?alpha=,&amp;ged=' . $WT_TREE->getNameUrl()
 				)
 			));
 		}
@@ -1689,10 +1718,12 @@ function format_surname_list($surnames, $style, $totals, $script, Tree $tree) {
  * @return string
  */
 function print_changes_list($change_ids, $sort) {
+	global $WT_TREE;
+
 	$n = 0;
 	$arr = array();
 	foreach ($change_ids as $change_id) {
-		$record = GedcomRecord::getInstance($change_id);
+		$record = GedcomRecord::getInstance($change_id, $WT_TREE);
 		if (!$record || !$record->canShow()) {
 			continue;
 		}
@@ -1739,7 +1770,7 @@ function print_changes_list($change_ids, $sort) {
  * @return string
  */
 function print_changes_table($change_ids, $sort) {
-	global $controller;
+	global $controller, $WT_TREE;
 
 	$n = 0;
 	$table_id = 'table-chan-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
@@ -1793,7 +1824,7 @@ function print_changes_table($change_ids, $sort) {
 
 	//-- table body
 	foreach ($change_ids as $change_id) {
-		$record = GedcomRecord::getInstance($change_id);
+		$record = GedcomRecord::getInstance($change_id, $WT_TREE);
 		if (!$record || !$record->canShow()) {
 			continue;
 		}
@@ -1862,7 +1893,8 @@ function print_changes_table($change_ids, $sort) {
  * @return string
  */
 function print_events_table($startjd, $endjd, $events = 'BIRT MARR DEAT', $only_living = false, $sort_by = 'anniv') {
-	global $controller;
+	global $controller, $WT_TREE;
+
 	$html = '';
 	$table_id = 'table-even-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 	$controller
@@ -1895,7 +1927,7 @@ function print_events_table($startjd, $endjd, $events = 'BIRT MARR DEAT', $only_
 	$filter = 0;
 	$filtered_events = array();
 
-	foreach (get_events_list($startjd, $endjd, $events) as $fact) {
+	foreach (get_events_list($startjd, $endjd, $events, $WT_TREE) as $fact) {
 		$record = $fact->getParent();
 		//-- only living people ?
 		if ($only_living) {
@@ -2011,12 +2043,14 @@ function print_events_table($startjd, $endjd, $events = 'BIRT MARR DEAT', $only_
  * @return string
  */
 function print_events_list($startjd, $endjd, $events = 'BIRT MARR DEAT', $only_living = false, $sort_by = 'anniv') {
+	global $WT_TREE;
+
 	// Did we have any output?  Did we skip anything?
 	$output = 0;
 	$filter = 0;
 	$filtered_events = array();
 	$html = '';
-	foreach (get_events_list($startjd, $endjd, $events) as $fact) {
+	foreach (get_events_list($startjd, $endjd, $events, $WT_TREE) as $fact) {
 		$record = $fact->getParent();
 		//-- only living people ?
 		if ($only_living) {

@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 global $summary, $censyear, $censdate;
 
 $censdate = new Date('31 MAR 1901');
-$censyear = $censdate->date1->y;
+$censyear = $censdate->minimumDate()->y;
 $ctry     = 'UK';
 
 // === Set $married to "Not married as we only want the Birth name here" ===
@@ -52,7 +52,7 @@ echo '</script>';
 // Header of assistant window =====================================================
 echo '<div class="cens_header">';
 echo '<div class="cens_header_left">';
-echo I18N::translate('Head of household:');
+echo I18N::translate('Head of household');
 echo ' ', $wholename;
 echo '</div>';
 if ($summary) {
