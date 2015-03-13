@@ -321,7 +321,7 @@ case 'register':
 				I18N::translate('Real name') . ' ' . $user->getRealNameHtml() . Mail::EOL .
 				I18N::translate('Email address') . ' ' . Filter::escapeHtml($user->getEmail()) . Mail::EOL .
 				I18N::translate('Comments') . ' ' . Filter::escapeHtml($user_comments) . Mail::EOL . Mail::EOL .
-				I18N::translate('The user has been sent an e-mail with the information necessary to confirm the access request') . Mail::EOL . Mail::EOL;
+				I18N::translate('The user has been sent an e-mail with the information necessary to confirm the access request.') . Mail::EOL . Mail::EOL;
 			if ($REQUIRE_ADMIN_AUTH_REGISTRATION) {
 				$mail1_body .= I18N::translate('You will be informed by e-mail when this prospective user has confirmed the request.  You can then complete the process by activating the user name.  The new user will not be able to login until you activate the account.');
 			} else {
@@ -448,7 +448,6 @@ case 'register':
 					</label>
 					<p class="small text-muted">
 						<?php echo I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.'); ?>
-						<?php echo I18N::translate('Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;'); ?>
 					</p>
 				</div>
 

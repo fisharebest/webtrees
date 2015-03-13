@@ -3649,7 +3649,7 @@ msgid "Click %s to choose individual as head of family."
 msgstr "დაკლიკეთ %s რათა ამოირჩიოთ პერსონა როგორც ოჯახის მეთაური."
 
 #: edit_interface.php:1747
-msgid "Click a row, then drag-and-drop to re-order media "
+msgid "Click a row, then drag-and-drop to re-order media"
 msgstr ""
 
 #: admin_trees_manage.php:690
@@ -3669,7 +3669,7 @@ msgid "Click name to add individual to add links list."
 msgstr "Поиск персоны для включения в список добавляемых связей."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:295
-msgid "Click on a title to go straight to it, or scroll down to read them all"
+msgid "Click on a title to go straight to it, or scroll down to read them all."
 msgstr "Нажмите на название, чтобы перейти к нему или прокрутите вниз, чтобы прочитать всё"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:69
@@ -5336,7 +5336,7 @@ msgid "Edit story"
 msgstr "ისტორიის რედაქტირება"
 
 #: app/Tree.php:562
-msgid "Edit this individual and replace their details with your own"
+msgid "Edit this individual and replace their details with your own."
 msgstr ""
 
 #: admin_users.php:268
@@ -6141,7 +6141,7 @@ msgstr "ფაილი წარმატებით აიტვირთა"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
-msgid "File was only partially uploaded, please try again"
+msgid "THe file was only partially uploaded.  Please try again."
 msgstr "ფაილი ნაწილობრიც აიტვირთა. სცადეთ კიდევ."
 
 #. I18N: gedcom tag FILE
@@ -7179,7 +7179,7 @@ msgid "If you are the website administrator, you should check that:"
 msgstr ""
 
 #: site-unavailable.php:109
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
 msgstr ""
 
 #: admin_trees_manage.php:269
@@ -8958,7 +8958,7 @@ msgstr "მინ. რაოდენობა დამთხვევის \"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
-msgid "Missing PHP temporary folder"
+msgid "THe PHP temporary folder is missing."
 msgstr ""
 
 #. I18N: Name of a module/report
@@ -9618,7 +9618,7 @@ msgstr "მონაცემთა ბაზაში ამ ოჯახის
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:68
-msgid "No file was received.  Please upload again."
+msgid "No file was received.  Please try again."
 msgstr ""
 
 #: app/Module/FamilyTreeNewsModule.php:157
@@ -10146,7 +10146,7 @@ msgstr ""
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:77
-msgid "PHP blocked file by extension"
+msgid "PHP blocked the file because of its extension."
 msgstr ""
 
 #: setup.php:140
@@ -10161,7 +10161,7 @@ msgstr ""
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:74
-msgid "PHP failed to write to disk"
+msgid "PHP failed to write to disk."
 msgstr ""
 
 #: admin_site_info.php:71
@@ -10633,7 +10633,7 @@ msgstr "Ошибка в эл.адресе (e-mail). Введите правил�
 
 #: app/Module/CensusAssistantModule.php:96 find.php:115 search.php:34
 #: search.php:46
-msgid "Please enter more than one character"
+msgid "Please enter more than one character."
 msgstr ""
 
 #: message.php:104
@@ -13483,8 +13483,8 @@ msgid "The media file %s does not exist."
 msgstr "ფაილი “%s” არ არსებობს."
 
 #: mediafirewall.php:41
-msgid "The media file was not found in this family tree"
-msgstr "The media file was not found in this family tree"
+msgid "The media file was not found in this family tree."
+msgstr ""
 
 #: admin_media_upload.php:223
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
@@ -13623,7 +13623,7 @@ msgid "The user %s has been deleted."
 msgstr ""
 
 #: login.php:324
-msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
+msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
 msgstr ""
 
 #. I18N: Help text for the "Username" site configuration setting
@@ -13722,7 +13722,7 @@ msgstr "ცვლილებების მოდერირება"
 
 #: app/Module/ResearchTaskModule.php:125
 msgid "There are no research tasks in this family tree."
-msgstr "The media file was not found in this family tree"
+msgstr ""
 
 #: app/Module/SourcesTabModule.php:74
 msgid "There are no source citations for this individual."
@@ -14075,7 +14075,7 @@ msgid "This media file exists, but cannot be accessed."
 msgstr "მედია ფაილი დაზიანებულია"
 
 #: mediafirewall.php:410
-msgid "This media file is broken and cannot be watermarked"
+msgid "This media file is broken and cannot be watermarked."
 msgstr "მედია ფაილი დაზიანებულია"
 
 #: mediaviewer.php:73
@@ -14341,7 +14341,7 @@ msgid "This will delete all the genealogy data from “%s” and replace it with
 msgstr "Это удалит все генеалогические данные из “%s” и заменит их на данные из другого GEDCOM-файла."
 
 #: app/Module/GoogleMapsModule.php:1781
-msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
+msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables."
 msgstr ""
 
 #: admin_trees_places.php:96
@@ -14955,7 +14955,7 @@ msgstr ""
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:62
-msgid "Uploaded file exceeds the allowed size"
+msgid "The uploaded file exceeds the allowed size."
 msgstr "ფაილის ზომა აჭარბებს დაშვებულს."
 
 #: app/Stats.php:6308
@@ -15719,7 +15719,7 @@ msgid "You must enter all the administrator account fields."
 msgstr "Вам нужно заполнить все поля в учётной записи администратора."
 
 #: edit_interface.php:1548
-msgid "You must provide a repository name"
+msgid "You must provide a repository name."
 msgstr "უნდა მიუთითოთ არქივის დასახელება"
 
 #: edit_interface.php:1210

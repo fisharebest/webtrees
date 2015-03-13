@@ -112,7 +112,7 @@ echo '<script>';
 		if (document.forms[0].subclick) button = document.forms[0].subclick.value;
 		else button = "";
 		if (frm.filter.value.length<2&button!="all") {
-			alert("<?php echo I18N::translate('Please enter more than one character'); ?>");
+			alert("<?php echo I18N::translate('Please enter more than one character.'); ?>");
 			frm.filter.focus();
 			return false;
 		}

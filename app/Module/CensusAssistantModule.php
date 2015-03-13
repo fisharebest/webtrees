@@ -93,7 +93,7 @@ class CensusAssistantModule extends Module {
 					button = "";
 				}
 				if (frm.filter.value.length<2&button!="all") {
-					alert("<?php echo I18N::translate('Please enter more than one character'); ?>");
+					alert("<?php echo I18N::translate('Please enter more than one character.'); ?>");
 					frm.filter.focus();
 					return false;
 				}
@@ -187,7 +187,7 @@ class CensusAssistantModule extends Module {
 			?>
 			<script>
 			function insertId() {
-				window.opener.alert('<?php echo strtoupper($iid2); ?> - <?php echo I18N::translate('Not a valid individual, family, or source ID'); ?>');
+				window.opener.alert('<?php echo $iid2; ?> - <?php echo I18N::translate('Not a valid individual, family, or source ID'); ?>');
 				window.close();
 			}
 			</script>

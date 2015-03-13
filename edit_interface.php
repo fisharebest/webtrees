@@ -1545,7 +1545,7 @@ case 'addnewrepository':
 	?>
 		function check_form(frm) {
 			if (frm.NAME.value=="") {
-				alert('<?php echo I18N::translate('You must provide a repository name'); ?>');
+				alert('<?php echo I18N::translate('You must provide a repository name.'); ?>');
 				frm.NAME.focus();
 				return false;
 			}
@@ -1744,7 +1744,7 @@ case 'reorder_media':
 
 	?>
 	<div id="edit_interface-page">
-		<h4><?php echo I18N::translate('Click a row, then drag-and-drop to re-order media '); ?></h4>
+		<h4><?php echo I18N::translate('Click a row, then drag-and-drop to re-order media'); ?></h4>
 		<form name="reorder_form" method="post" action="edit_interface.php">
 			<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 			<input type="hidden" name="action" value="reorder_media_update">

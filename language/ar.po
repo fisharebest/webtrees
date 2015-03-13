@@ -3799,7 +3799,7 @@ msgid "Click %s to choose individual as head of family."
 msgstr "نقر %s لإختيار الفرد كرب أسرة."
 
 #: edit_interface.php:1747
-msgid "Click a row, then drag-and-drop to re-order media "
+msgid "Click a row, then drag-and-drop to re-order media"
 msgstr "نقر على صف لسحبه ومن ثم إفلاته في الموضع المختار "
 
 #: admin_trees_manage.php:690
@@ -3819,7 +3819,7 @@ msgid "Click name to add individual to add links list."
 msgstr "نقر على الإسم لإضافة فرد إلى قائمة إضافة الروابط."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:295
-msgid "Click on a title to go straight to it, or scroll down to read them all"
+msgid "Click on a title to go straight to it, or scroll down to read them all."
 msgstr "نقر على العنوان للذهاب إليه مباشرة، أو إنتقال إلى الأسفل لقراءة الجميع"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:69
@@ -5486,7 +5486,7 @@ msgid "Edit story"
 msgstr "تعديل الرواية"
 
 #: app/Tree.php:562
-msgid "Edit this individual and replace their details with your own"
+msgid "Edit this individual and replace their details with your own."
 msgstr "تعديل معلومات هذا الفرد وإستبدالها بتفاصيل أخرى"
 
 #: admin_users.php:268
@@ -6291,7 +6291,7 @@ msgstr "تم تحميل الملف بنجاح"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
-msgid "File was only partially uploaded, please try again"
+msgid "THe file was only partially uploaded.  Please try again."
 msgstr "لقد تم تحميل الملف جزئياً، لطفاً أعادة المحاولة مرة أخرى"
 
 #. I18N: gedcom tag FILE
@@ -7329,7 +7329,7 @@ msgid "If you are the website administrator, you should check that:"
 msgstr "إن كنت مدير الموقع فعليك تفحص التالي:"
 
 #: site-unavailable.php:109
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
 msgstr "في حالة عدم التمكن من تجاوز هذه المشكلة، يمكن التواصل في منتدى <a href=\"http://webtrees.net\">webtrees.net</a>"
 
 #: admin_trees_manage.php:269
@@ -9108,7 +9108,7 @@ msgstr "عدد مرات تكرار إسم العائلة ليعتبر شائعا
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
-msgid "Missing PHP temporary folder"
+msgid "THe PHP temporary folder is missing."
 msgstr "مجلد PHP المؤقت مفقود"
 
 #. I18N: Name of a module/report
@@ -9778,7 +9778,7 @@ msgstr "لا يوجد معلومات لهذه الأسرة"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:68
-msgid "No file was received.  Please upload again."
+msgid "No file was received.  Please try again."
 msgstr "لم يتم إستلام ملف، لطفاً محاولة الرفع مرة أخرى."
 
 #: app/Module/FamilyTreeNewsModule.php:157
@@ -10306,7 +10306,7 @@ msgstr "يجب أن تكون نسخة PGV 4.2.3 أو نسخة تطوير إلى 
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:77
-msgid "PHP blocked file by extension"
+msgid "PHP blocked the file because of its extension."
 msgstr "PHP منعت الملف بالتمديد"
 
 #: setup.php:140
@@ -10321,7 +10321,7 @@ msgstr "إمتداد PHP “%s” غير مفعل. ولا يمكن تنصيب we
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:74
-msgid "PHP failed to write to disk"
+msgid "PHP failed to write to disk."
 msgstr "لم تتمكن PHP من الكتابة على القرص"
 
 #: admin_site_info.php:71
@@ -10793,7 +10793,7 @@ msgstr "لطفاً إدخال عنوان بريد إلكتروني صحيح."
 
 #: app/Module/CensusAssistantModule.php:96 find.php:115 search.php:34
 #: search.php:46
-msgid "Please enter more than one character"
+msgid "Please enter more than one character."
 msgstr "لطفاً إدخال أكثر من حرف واحد"
 
 #: message.php:104
@@ -13643,7 +13643,7 @@ msgid "The media file %s does not exist."
 msgstr "ملف الوسائط %s غير موجود."
 
 #: mediafirewall.php:41
-msgid "The media file was not found in this family tree"
+msgid "The media file was not found in this family tree."
 msgstr "لم يتم العثور على ملف الوسائط في هذا المشجر"
 
 #: admin_media_upload.php:223
@@ -13788,7 +13788,7 @@ msgid "The user %s has been deleted."
 msgstr ""
 
 #: login.php:324
-msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
+msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
 msgstr "لقد تم إرسال رسالة للمستخدم تحتوي على المعلومات الضرورية لتأكيد طلبه."
 
 #. I18N: Help text for the "Username" site configuration setting
@@ -14250,7 +14250,7 @@ msgid "This media file exists, but cannot be accessed."
 msgstr "ملف الوسائط موجود ولكن لا يمكن الوصول اليه."
 
 #: mediafirewall.php:410
-msgid "This media file is broken and cannot be watermarked"
+msgid "This media file is broken and cannot be watermarked."
 msgstr "ملف الوسائط منقطع ولا يمكن دمج علامة مائية معه"
 
 #: mediaviewer.php:73
@@ -14516,7 +14516,7 @@ msgid "This will delete all the genealogy data from “%s” and replace it with
 msgstr "هذا سيحذف جميع المعلومات من المشجر “%s” ويستبدلها بمعلومات من ملف GEDCOM آخر."
 
 #: app/Module/GoogleMapsModule.php:1781
-msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
+msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables."
 msgstr "ستم إدراج جميع الأماكن من ملف الـ GEDCOM المختار. وإفتراضياً هذا لن يتضمن الأماكن الغير متطابقة مع جداول أماكن خرائط Google."
 
 #: admin_trees_places.php:96
@@ -15140,7 +15140,7 @@ msgstr "تحميل ملف وسائط أو أكثر من الجهاز. ملف ا�
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:62
-msgid "Uploaded file exceeds the allowed size"
+msgid "The uploaded file exceeds the allowed size."
 msgstr "تجاوز الملف المحمل الحجم المتاح للتحميل"
 
 #: app/Stats.php:6308
@@ -15909,7 +15909,7 @@ msgid "You must enter all the administrator account fields."
 msgstr "يجب إدخال جميع حقول إعدادات المدير."
 
 #: edit_interface.php:1548
-msgid "You must provide a repository name"
+msgid "You must provide a repository name."
 msgstr "يجب إدخال إسم للمستودع"
 
 #: edit_interface.php:1210

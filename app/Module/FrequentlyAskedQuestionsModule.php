@@ -292,7 +292,7 @@ class FrequentlyAskedQuestionsModule extends Module implements ModuleMenuInterfa
 		// Define your colors for the alternating rows
 		echo '<h2 class="center">', I18N::translate('Frequently asked questions'), '</h2>';
 		// Instructions
-		echo '<div class="faq_italic">', I18N::translate('Click on a title to go straight to it, or scroll down to read them all');
+		echo '<div class="faq_italic">', I18N::translate('Click on a title to go straight to it, or scroll down to read them all.');
 		if (Auth::isManager($WT_TREE)) {
 			echo '<div class="faq_edit"><a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_config">', I18N::translate('Click here to add, edit, or delete'), '</a></div>';
 		}

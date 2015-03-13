@@ -3678,7 +3678,7 @@ msgid "Click %s to choose individual as head of family."
 msgstr "Smellið %s til að velja persónu sem höfuð fjölskyldu."
 
 #: edit_interface.php:1747
-msgid "Click a row, then drag-and-drop to re-order media "
+msgid "Click a row, then drag-and-drop to re-order media"
 msgstr "Smellið á röð, dragið síðan og sleppið til að endurraða miðlum "
 
 #: admin_trees_manage.php:690
@@ -3698,7 +3698,7 @@ msgid "Click name to add individual to add links list."
 msgstr "Smellið á nafn til að bæta persónu við krækjulista."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:295
-msgid "Click on a title to go straight to it, or scroll down to read them all"
+msgid "Click on a title to go straight to it, or scroll down to read them all."
 msgstr "Smellið á heiti til að fara beint þangað eða skrunið niður til að lesa þau öll"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:69
@@ -5365,7 +5365,7 @@ msgid "Edit story"
 msgstr "Breyta sögu"
 
 #: app/Tree.php:562
-msgid "Edit this individual and replace their details with your own"
+msgid "Edit this individual and replace their details with your own."
 msgstr "Breyta þessum einstaklingi og skipta út þeirra upplýsingum með þínum eigin"
 
 #: admin_users.php:268
@@ -6170,7 +6170,7 @@ msgstr "Skrá giftusamlega hlaðið inn"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
-msgid "File was only partially uploaded, please try again"
+msgid "THe file was only partially uploaded.  Please try again."
 msgstr "Skrá var aðeins að hluta hlaðið inn, vinsamlega reynið aftur"
 
 #. I18N: gedcom tag FILE
@@ -7208,7 +7208,7 @@ msgid "If you are the website administrator, you should check that:"
 msgstr "Ef þú ert vefstjóri þá ættir þú að athuga að:"
 
 #: site-unavailable.php:109
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
 msgstr "Ef þú getur ekki lagfært vandamálið sjálfur, þá getur þú óskað eftir aðstoð á umræðuvefnum <a href=\"http://webtrees.net\">webtrees.net</a>"
 
 #: admin_trees_manage.php:269
@@ -8987,7 +8987,7 @@ msgstr "Lágmarksfjöldi tilfella til að teljast „algengt eftirnafn“"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
-msgid "Missing PHP temporary folder"
+msgid "THe PHP temporary folder is missing."
 msgstr "Vantar PHP tímabundið skráarsafn"
 
 #. I18N: Name of a module/report
@@ -9649,7 +9649,7 @@ msgstr "Engar staðreyndir fyrir þessa fjöldskyldu"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:68
-msgid "No file was received.  Please upload again."
+msgid "No file was received.  Please try again."
 msgstr "Engin skrá var móttekin. Vinsamlega hlaðið inn aftur."
 
 #: app/Module/FamilyTreeNewsModule.php:157
@@ -10177,7 +10177,7 @@ msgstr "PGV verður að vera útgáfa 4.2.3 eða hvaða SVN upp að #%s"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:77
-msgid "PHP blocked file by extension"
+msgid "PHP blocked the file because of its extension."
 msgstr "PHP útilokaði skrá eftir endingu hennar"
 
 #: setup.php:140
@@ -10192,7 +10192,7 @@ msgstr "PHP viðauki „%s“ er óvirkur. Þú getur ekki sett upp webtrees fyr
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:74
-msgid "PHP failed to write to disk"
+msgid "PHP failed to write to disk."
 msgstr "PHP tókst ekki að skrifa á disk"
 
 #: admin_site_info.php:71
@@ -10664,7 +10664,7 @@ msgstr "Vinsamlega sláið inn gilt netfang."
 
 #: app/Module/CensusAssistantModule.php:96 find.php:115 search.php:34
 #: search.php:46
-msgid "Please enter more than one character"
+msgid "Please enter more than one character."
 msgstr "Vinsamlega sláið inn fleiri en einn bókstaf"
 
 #: message.php:104
@@ -13514,7 +13514,7 @@ msgid "The media file %s does not exist."
 msgstr "Miðilsskrá %s er ekki til."
 
 #: mediafirewall.php:41
-msgid "The media file was not found in this family tree"
+msgid "The media file was not found in this family tree."
 msgstr "Miðilsskráin fannst ekki í þessu fjölskyldutré"
 
 #: admin_media_upload.php:223
@@ -13655,7 +13655,7 @@ msgid "The user %s has been deleted."
 msgstr ""
 
 #: login.php:324
-msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
+msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
 msgstr "Notandinn hefur fengið tölvupóst með nauðsynlegar upplýsingar til að staðfesta aðgangsbeiðnina"
 
 #. I18N: Help text for the "Username" site configuration setting
@@ -14109,7 +14109,7 @@ msgid "This media file exists, but cannot be accessed."
 msgstr ""
 
 #: mediafirewall.php:410
-msgid "This media file is broken and cannot be watermarked"
+msgid "This media file is broken and cannot be watermarked."
 msgstr "Þessi miðilsskrá er skemmd og ekki er hægt að vatnsmerkja hana"
 
 #: mediaviewer.php:73
@@ -14375,7 +14375,7 @@ msgid "This will delete all the genealogy data from “%s” and replace it with
 msgstr "Þetta mun eyða öllum ættfræðigögnum frá „%s“ og skipta þeim út með gögnum frá öðrum GEDCOM."
 
 #: app/Module/GoogleMapsModule.php:1781
-msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
+msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables."
 msgstr "Þetta mun lista alla staðina frá valinni GEDCOM skrá. Sjálfgefið er að þetta mun EKKI INNIFELA staði sem eru að fullu samhæfðir á milli GEDCOM skrárinnar og GoogleMap taflanna."
 
 #: admin_trees_places.php:96
@@ -14991,7 +14991,7 @@ msgstr "Flytjið inn eina eða fleiri miðilsskrár frá staðbundinni tölvu þ
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:62
-msgid "Uploaded file exceeds the allowed size"
+msgid "The uploaded file exceeds the allowed size."
 msgstr "Innhlaðin skrá yfir leyfilegri stærð"
 
 #: app/Stats.php:6308
@@ -15756,7 +15756,7 @@ msgid "You must enter all the administrator account fields."
 msgstr "Þú verður að slá inn í alla reiti kerfisstjóra reikningsins."
 
 #: edit_interface.php:1548
-msgid "You must provide a repository name"
+msgid "You must provide a repository name."
 msgstr "Þú verður að útvega geymsluheiti"
 
 #: edit_interface.php:1210

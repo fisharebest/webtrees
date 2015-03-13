@@ -3713,7 +3713,7 @@ msgid "Click %s to choose individual as head of family."
 msgstr "Paspauskite %s, kad pasirinkti asmenį kaip šeimos galvą."
 
 #: edit_interface.php:1747
-msgid "Click a row, then drag-and-drop to re-order media "
+msgid "Click a row, then drag-and-drop to re-order media"
 msgstr "Paspauskite eilutę, tuomet nutempkite į perrikiuotą mediją "
 
 #: admin_trees_manage.php:690
@@ -3733,7 +3733,7 @@ msgid "Click name to add individual to add links list."
 msgstr "Spauskite VARDAS kad pridėti asmenį į Įtraukiamų Nuorodų sąrašą."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:295
-msgid "Click on a title to go straight to it, or scroll down to read them all"
+msgid "Click on a title to go straight to it, or scroll down to read them all."
 msgstr "Paspauskite ant pavadinimo, kad patektumėte tiesiai į jį, arba slinkite žemyn, kad perskaityti visą"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:69
@@ -5400,7 +5400,7 @@ msgid "Edit story"
 msgstr "Redaguoti istoriją"
 
 #: app/Tree.php:562
-msgid "Edit this individual and replace their details with your own"
+msgid "Edit this individual and replace their details with your own."
 msgstr "Redaguoti šį asmenį ir pakeisti esamus duomenis"
 
 #: admin_users.php:268
@@ -6205,7 +6205,7 @@ msgstr "Byla sėkmingai nusiųsta"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
-msgid "File was only partially uploaded, please try again"
+msgid "THe file was only partially uploaded.  Please try again."
 msgstr "Nusiųsta tik dalis bylos, bandykite iš naujo"
 
 #. I18N: gedcom tag FILE
@@ -7243,7 +7243,7 @@ msgid "If you are the website administrator, you should check that:"
 msgstr "Jei Jūs esate tinklapio administratorius, turėtumėte tai peržiūrėti:"
 
 #: site-unavailable.php:109
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
 msgstr "Jei negalite išspręsti problemos pats, galite prašyti pagalbos forume <a href=\"http://webtrees.net\">webtrees.net</a>"
 
 #: admin_trees_manage.php:269
@@ -9022,7 +9022,7 @@ msgstr "Min. kiekis atitikimų, esančių su „bendromis pavardėmis“"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
-msgid "Missing PHP temporary folder"
+msgid "THe PHP temporary folder is missing."
 msgstr "Trūksta PHP laikinosios aplankos"
 
 #. I18N: Name of a module/report
@@ -9686,7 +9686,7 @@ msgstr "Faktų apie šią šeimą nėra."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:68
-msgid "No file was received.  Please upload again."
+msgid "No file was received.  Please try again."
 msgstr "Negauta bylos. Siųskite iš naujo."
 
 #: app/Module/FamilyTreeNewsModule.php:157
@@ -10214,7 +10214,7 @@ msgstr "PGV versija privalo būti 4.2.3, arba bet kuri SVN iki #%s"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:77
-msgid "PHP blocked file by extension"
+msgid "PHP blocked the file because of its extension."
 msgstr "Dėl failo plėtinio PHP užblokavo jį"
 
 #: setup.php:140
@@ -10229,7 +10229,7 @@ msgstr "PHP išplėtimas „%s“ yra išjungtas. Jūs negalite įdiegti kilmės
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:74
-msgid "PHP failed to write to disk"
+msgid "PHP failed to write to disk."
 msgstr "PHP nepavyko įrašyti į diską"
 
 #: admin_site_info.php:71
@@ -10701,7 +10701,7 @@ msgstr "Įveskite egzistuojantį elektroninio pašto adresą."
 
 #: app/Module/CensusAssistantModule.php:96 find.php:115 search.php:34
 #: search.php:46
-msgid "Please enter more than one character"
+msgid "Please enter more than one character."
 msgstr "Prašome suvesti daugiau negu vieną simbolį"
 
 #: message.php:104
@@ -13551,7 +13551,7 @@ msgid "The media file %s does not exist."
 msgstr "Medijos byla %s neegzistuoja."
 
 #: mediafirewall.php:41
-msgid "The media file was not found in this family tree"
+msgid "The media file was not found in this family tree."
 msgstr "Medijos failas nebuvo rastas šios šeimos medyje"
 
 #: admin_media_upload.php:223
@@ -13693,7 +13693,7 @@ msgid "The user %s has been deleted."
 msgstr "Naudotojas %s buvo ištrintas."
 
 #: login.php:324
-msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
+msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
 msgstr "Naudotojas išsiuntė el.laišką su informacija, kuri būtina prieigos prašymo patvirtinimui"
 
 #. I18N: Help text for the "Username" site configuration setting
@@ -14149,7 +14149,7 @@ msgid "This media file exists, but cannot be accessed."
 msgstr "Ši medijos byla egzistuoja, bet negali būti atverta."
 
 #: mediafirewall.php:410
-msgid "This media file is broken and cannot be watermarked"
+msgid "This media file is broken and cannot be watermarked."
 msgstr "Šis medijos failas yra sugadintas ir negali būti pažymėtas vandens ženklu"
 
 #: mediaviewer.php:73
@@ -14415,7 +14415,7 @@ msgid "This will delete all the genealogy data from “%s” and replace it with
 msgstr "Tai ištrins visus genealoginius duomenis iš „%s“ ir pakeis duomenimis iš kito GEDCOM."
 
 #: app/Module/GoogleMapsModule.php:1781
-msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
+msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables."
 msgstr "Šis sąrašas visų vietovių iš pasirinkto GEDCOM failo. Pagal nutylėjimą čia nebus įtrauktos vietovės, kurios visiškai sutampa tarp GEDCOM failų ir Google žemėlapio lentelių"
 
 #: admin_trees_places.php:96
@@ -15033,7 +15033,7 @@ msgstr "Įkelkite vieną ar daugiau bylų iš jūsų vietinio kompiuterio. Medij
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:62
-msgid "Uploaded file exceeds the allowed size"
+msgid "The uploaded file exceeds the allowed size."
 msgstr "Siunčiama byla viršijo maksimalų leistiną dydį"
 
 #: app/Stats.php:6308
@@ -15799,7 +15799,7 @@ msgid "You must enter all the administrator account fields."
 msgstr "Turite įvesti informaciją į visus administratoriaus abonento laukus."
 
 #: edit_interface.php:1548
-msgid "You must provide a repository name"
+msgid "You must provide a repository name."
 msgstr "Jūs turite pateikti saugyklos pavadinimą"
 
 #: edit_interface.php:1210

@@ -3678,7 +3678,7 @@ msgid "Click %s to choose individual as head of family."
 msgstr "Valitse %s perheen päähenkilöksi."
 
 #: edit_interface.php:1747
-msgid "Click a row, then drag-and-drop to re-order media "
+msgid "Click a row, then drag-and-drop to re-order media"
 msgstr "Klikkaa riviä, ja sitten vedä ja pudota lajitellaksesi media "
 
 #: admin_trees_manage.php:690
@@ -3698,7 +3698,7 @@ msgid "Click name to add individual to add links list."
 msgstr "Valitse henkilön lisättäväksi yhteyksien luontilistaan"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:295
-msgid "Click on a title to go straight to it, or scroll down to read them all"
+msgid "Click on a title to go straight to it, or scroll down to read them all."
 msgstr "Valitsemalla eli klikkaamalla otsikkoa siirryt suoraan kyseiseen kysymykseen ja vastaukseen tai vierittämällä listaa, voit lukea kaikki"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:69
@@ -5365,7 +5365,7 @@ msgid "Edit story"
 msgstr "Muokkaa tarinaa"
 
 #: app/Tree.php:562
-msgid "Edit this individual and replace their details with your own"
+msgid "Edit this individual and replace their details with your own."
 msgstr "Muokkaa henkilötiedot, korvaa sinun tiedoilla"
 
 #: admin_users.php:268
@@ -6170,7 +6170,7 @@ msgstr "Tiedoston lataaminen palvelimelle onnistui"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
-msgid "File was only partially uploaded, please try again"
+msgid "THe file was only partially uploaded.  Please try again."
 msgstr "Tiedosto latautui vain osittain, yritä uudelleen"
 
 #. I18N: gedcom tag FILE
@@ -7208,7 +7208,7 @@ msgid "If you are the website administrator, you should check that:"
 msgstr "Jos olet web-sivuston ylläpitäjä, tarkista:"
 
 #: site-unavailable.php:109
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
 msgstr "Jos et pysty ratkomaan ongelmaa, kokeile jos saisit apua forumista <a href=\"http://webtrees.net\">webtrees.net</a>"
 
 #: admin_trees_manage.php:269
@@ -8987,7 +8987,7 @@ msgstr "”Yleinen sukunimi”, kun sukunimi esiintyy vähintään (lukumäärä
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
-msgid "Missing PHP temporary folder"
+msgid "THe PHP temporary folder is missing."
 msgstr "PHPn tilapäistiedostojen kansio puuttuu"
 
 #. I18N: Name of a module/report
@@ -9649,7 +9649,7 @@ msgstr "Ei tietoja tästä perheestä"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:68
-msgid "No file was received.  Please upload again."
+msgid "No file was received.  Please try again."
 msgstr "Yhtään tiedostoa ei vastaanotettu. Yritä uudelleen"
 
 #: app/Module/FamilyTreeNewsModule.php:157
@@ -10177,7 +10177,7 @@ msgstr "PGV pitää olla versio 4.2.3 tai jokin sen SVN päivityksistä #%s asti
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:77
-msgid "PHP blocked file by extension"
+msgid "PHP blocked the file because of its extension."
 msgstr "PHP estetty tiedostopäätteen perusteella"
 
 #: setup.php:140
@@ -10192,7 +10192,7 @@ msgstr "PHP ominaisuus ”%s” ei ole käytössä. webtreesiä ei voida asentaa
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:74
-msgid "PHP failed to write to disk"
+msgid "PHP failed to write to disk."
 msgstr "PHP ei voinut kirjoittaa levylle"
 
 #: admin_site_info.php:71
@@ -10664,7 +10664,7 @@ msgstr "Huom! Anna hyväksyttävä sähköpostiosoite."
 
 #: app/Module/CensusAssistantModule.php:96 find.php:115 search.php:34
 #: search.php:46
-msgid "Please enter more than one character"
+msgid "Please enter more than one character."
 msgstr "Anna enemmän kuin yksi merkki"
 
 #: message.php:104
@@ -13514,7 +13514,7 @@ msgid "The media file %s does not exist."
 msgstr "Mediatiedosto %s ei olemassa."
 
 #: mediafirewall.php:41
-msgid "The media file was not found in this family tree"
+msgid "The media file was not found in this family tree."
 msgstr "Mediatiedosto ei löytynyt tässä sukupuussa"
 
 #: admin_media_upload.php:223
@@ -13655,7 +13655,7 @@ msgid "The user %s has been deleted."
 msgstr ""
 
 #: login.php:324
-msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
+msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
 msgstr "Käyttäjälle on lähetetty ohjeita sähköpostilla, hänen pitää vahvistaa käyttäjätilipyyntönsä"
 
 #. I18N: Help text for the "Username" site configuration setting
@@ -14109,7 +14109,7 @@ msgid "This media file exists, but cannot be accessed."
 msgstr "Tämä mediatiedosto on olemassa, mutta sitä ei voi käyttää."
 
 #: mediafirewall.php:410
-msgid "This media file is broken and cannot be watermarked"
+msgid "This media file is broken and cannot be watermarked."
 msgstr "Tämä mediatiedosto on rikkonainen eikä siihen voi laittaa vesileimaa"
 
 #: mediaviewer.php:73
@@ -14375,7 +14375,7 @@ msgid "This will delete all the genealogy data from “%s” and replace it with
 msgstr "Tämä poistaa kaikki sukututkimustiedot ”%s” sta ja korvaa ne toisen GEDCOMin tiedoilla."
 
 #: app/Module/GoogleMapsModule.php:1781
-msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
+msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables."
 msgstr "Tämä listaa kaikki paikat valitusta GEDCOM-tiedostosta. Oletuksena tämä ei sisällytä paikkoja, joilla on täysi vastaavuus GEDCOM tiedoston ja Google Mapsin taulujen välillä"
 
 #: admin_trees_places.php:96
@@ -14991,7 +14991,7 @@ msgstr "Lataa palvelimelle yksi tai useampia tiedostoja omalta tietokoneeltasi. 
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:62
-msgid "Uploaded file exceeds the allowed size"
+msgid "The uploaded file exceeds the allowed size."
 msgstr "Ladattu tiedosto ylittää sallitun enimmäiskoon"
 
 #: app/Stats.php:6308
@@ -15756,7 +15756,7 @@ msgid "You must enter all the administrator account fields."
 msgstr "Täytä kaikki ylläpitäjän tilitiedot."
 
 #: edit_interface.php:1548
-msgid "You must provide a repository name"
+msgid "You must provide a repository name."
 msgstr "Sinun pitää antaa tietovarastolle nimen"
 
 #: edit_interface.php:1210

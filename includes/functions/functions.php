@@ -59,22 +59,22 @@ function file_upload_error_text($error_code) {
 	case UPLOAD_ERR_INI_SIZE:
 	case UPLOAD_ERR_FORM_SIZE:
 		// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-		return I18N::translate('Uploaded file exceeds the allowed size');
+		return I18N::translate('The uploaded file exceeds the allowed size.');
 	case UPLOAD_ERR_PARTIAL:
 		// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-		return I18N::translate('File was only partially uploaded, please try again');
+		return I18N::translate('THe file was only partially uploaded.  Please try again.');
 	case UPLOAD_ERR_NO_FILE:
 		// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-		return I18N::translate('No file was received.  Please upload again.');
+		return I18N::translate('No file was received.  Please try again.');
 	case UPLOAD_ERR_NO_TMP_DIR:
 		// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-		return I18N::translate('Missing PHP temporary folder');
+		return I18N::translate('THe PHP temporary folder is missing.');
 	case UPLOAD_ERR_CANT_WRITE:
 		// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-		return I18N::translate('PHP failed to write to disk');
+		return I18N::translate('PHP failed to write to disk.');
 	case UPLOAD_ERR_EXTENSION:
 		// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-		return I18N::translate('PHP blocked file by extension');
+		return I18N::translate('PHP blocked the file because of its extension.');
 	default:
 		return 'Error: ' . $error_code;
 	}

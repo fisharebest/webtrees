@@ -3682,7 +3682,7 @@ msgid "Click %s to choose individual as head of family."
 msgstr "Clique em %s para escolher a pessoa como Chefe de família"
 
 #: edit_interface.php:1747
-msgid "Click a row, then drag-and-drop to re-order media "
+msgid "Click a row, then drag-and-drop to re-order media"
 msgstr "Clique em uma linha, arraste e solte para reordenar as mídias "
 
 #: admin_trees_manage.php:690
@@ -3702,7 +3702,7 @@ msgid "Click name to add individual to add links list."
 msgstr "Cique no Nome para adicionar a pessoa para a lista Adicionar Links"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:295
-msgid "Click on a title to go straight to it, or scroll down to read them all"
+msgid "Click on a title to go straight to it, or scroll down to read them all."
 msgstr "Clique no título para ir direto a ele, ou desloque-se para ler todos"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:69
@@ -5369,7 +5369,7 @@ msgid "Edit story"
 msgstr "Alterar estória"
 
 #: app/Tree.php:562
-msgid "Edit this individual and replace their details with your own"
+msgid "Edit this individual and replace their details with your own."
 msgstr "Editar esta pessoa e substituir os detalhes com os seus próprios"
 
 #: admin_users.php:268
@@ -6174,7 +6174,7 @@ msgstr "Arquivo enviado com sucesso"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
-msgid "File was only partially uploaded, please try again"
+msgid "THe file was only partially uploaded.  Please try again."
 msgstr "Arquivo foi enviado parcialmente, por favor tente novamente"
 
 #. I18N: gedcom tag FILE
@@ -7212,7 +7212,7 @@ msgid "If you are the website administrator, you should check that:"
 msgstr "Se você é o administrador do site, você deveria verificar isso:"
 
 #: site-unavailable.php:109
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
 msgstr "Se você não puder resolver o problema sozinho, você pode pedir por ajuda nos fóruns em <a href=\"http://webtrees.net\">webtrees.net</a>"
 
 #: admin_trees_manage.php:269
@@ -8991,7 +8991,7 @@ msgstr "Número mínimo de ocorrências para ser um \"sobrenome comum\""
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
-msgid "Missing PHP temporary folder"
+msgid "THe PHP temporary folder is missing."
 msgstr "Diretório temporário PHP faltante"
 
 #. I18N: Name of a module/report
@@ -9653,7 +9653,7 @@ msgstr "Não existem fatos para esta família"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:68
-msgid "No file was received.  Please upload again."
+msgid "No file was received.  Please try again."
 msgstr "Nenhum arquivo foi recebido. Por favor envie novamente."
 
 #: app/Module/FamilyTreeNewsModule.php:157
@@ -10181,7 +10181,7 @@ msgstr "O PGV deve estar na versão 4.2.3, ou qualquer SVN acima da #%s"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:77
-msgid "PHP blocked file by extension"
+msgid "PHP blocked the file because of its extension."
 msgstr "PHP bloqueou o arquivo pela extensão"
 
 #: setup.php:140
@@ -10196,7 +10196,7 @@ msgstr "A extensão PHP \"%s\" está desabilitada. Você não pode instalar webt
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:74
-msgid "PHP failed to write to disk"
+msgid "PHP failed to write to disk."
 msgstr "PHP falhou ao escrever no disco"
 
 #: admin_site_info.php:71
@@ -10668,7 +10668,7 @@ msgstr "Por favor informe um endereço de e-mail válido."
 
 #: app/Module/CensusAssistantModule.php:96 find.php:115 search.php:34
 #: search.php:46
-msgid "Please enter more than one character"
+msgid "Please enter more than one character."
 msgstr "Por favor informe mais que um caracter"
 
 #: message.php:104
@@ -13518,7 +13518,7 @@ msgid "The media file %s does not exist."
 msgstr "O arquivo de mídia %s não existe."
 
 #: mediafirewall.php:41
-msgid "The media file was not found in this family tree"
+msgid "The media file was not found in this family tree."
 msgstr "O arquivo de mídia não foi encontrado nesta árvore genealógica"
 
 #: admin_media_upload.php:223
@@ -13659,7 +13659,7 @@ msgid "The user %s has been deleted."
 msgstr ""
 
 #: login.php:324
-msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
+msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
 msgstr "O usuário enviou um e-mail com as informações necessárias para confirmar o pedido de acesso"
 
 #. I18N: Help text for the "Username" site configuration setting
@@ -14113,7 +14113,7 @@ msgid "This media file exists, but cannot be accessed."
 msgstr "Este arquivo de mídia existe, mas não pode ser acessado."
 
 #: mediafirewall.php:410
-msgid "This media file is broken and cannot be watermarked"
+msgid "This media file is broken and cannot be watermarked."
 msgstr "Este arquivo de mídia está danificado e não pode receber a marca d'água"
 
 #: mediaviewer.php:73
@@ -14379,7 +14379,7 @@ msgid "This will delete all the genealogy data from “%s” and replace it with
 msgstr "Isto excluirá todos os dados genealógicos de “%s” e o substituirá com os dados de outro GEDCOM"
 
 #: app/Module/GoogleMapsModule.php:1781
-msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
+msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables."
 msgstr "Isto listará todos os locais do arquivo GEDCOM selecionado. Por padrão isto NÃO INCLUI locais que são totalmente correspondentes entre o arquivo GEDCOM e as tabelas do GoogleMap"
 
 #: admin_trees_places.php:96
@@ -14995,7 +14995,7 @@ msgstr "Enviar um ou mais arquivos de mídia de seu computador local. Os arquivo
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:62
-msgid "Uploaded file exceeds the allowed size"
+msgid "The uploaded file exceeds the allowed size."
 msgstr "O arquivo a ser enviado excede o tamanho permitido"
 
 #: app/Stats.php:6308
@@ -15760,7 +15760,7 @@ msgid "You must enter all the administrator account fields."
 msgstr "Você deve colocar todos os campos de conta de administrador."
 
 #: edit_interface.php:1548
-msgid "You must provide a repository name"
+msgid "You must provide a repository name."
 msgstr "Você deve fornecer um nome ao repositório"
 
 #: edit_interface.php:1210

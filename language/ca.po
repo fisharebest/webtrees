@@ -3682,7 +3682,7 @@ msgid "Click %s to choose individual as head of family."
 msgstr "Polseu %s per escollir aquesta persona com a Cap de Família"
 
 #: edit_interface.php:1747
-msgid "Click a row, then drag-and-drop to re-order media "
+msgid "Click a row, then drag-and-drop to re-order media"
 msgstr "Per a reordenar els ítems multimèdia, polseu sobre una fila i arrossegueu-la fins al nou lloc. "
 
 #: admin_trees_manage.php:690
@@ -3702,7 +3702,7 @@ msgid "Click name to add individual to add links list."
 msgstr "Polseu el nom per afegir la persona a la llista d’enllaços."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:295
-msgid "Click on a title to go straight to it, or scroll down to read them all"
+msgid "Click on a title to go straight to it, or scroll down to read them all."
 msgstr "Polseu al títol per anar-hi directament o desplaceu-vos cap avall per a llegir-les totes"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:69
@@ -5369,7 +5369,7 @@ msgid "Edit story"
 msgstr "Editeu la història"
 
 #: app/Tree.php:562
-msgid "Edit this individual and replace their details with your own"
+msgid "Edit this individual and replace their details with your own."
 msgstr "Editeu aquesta persona i substituiu llurs detalls amb els vostres propis"
 
 #: admin_users.php:268
@@ -6174,7 +6174,7 @@ msgstr "S’ha carregat correctament el fitxer"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
-msgid "File was only partially uploaded, please try again"
+msgid "THe file was only partially uploaded.  Please try again."
 msgstr "Fitxer parcialment carregat. Torneu-hi."
 
 #. I18N: gedcom tag FILE
@@ -7212,7 +7212,7 @@ msgid "If you are the website administrator, you should check that:"
 msgstr "Si sou l’administrador del lloc web, heu de comprovar que:"
 
 #: site-unavailable.php:109
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
 msgstr "Si no podeu resoldre el problema vos mateix, podeu demanar ajuda als fòrums de <a href=\"http://webtrees.net\">webtrees.net</a>"
 
 #: admin_trees_manage.php:269
@@ -8991,7 +8991,7 @@ msgstr "Mínim nombre de coincidències per considerar-lo un «cognom habitual»
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
-msgid "Missing PHP temporary folder"
+msgid "THe PHP temporary folder is missing."
 msgstr "Manca el directori PHP temporal"
 
 #. I18N: Name of a module/report
@@ -9653,7 +9653,7 @@ msgstr "No hi ha esdeveniments per a aquesta família."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:68
-msgid "No file was received.  Please upload again."
+msgid "No file was received.  Please try again."
 msgstr "No s’ha rebut el fitxer. Torneu-lo a carregar."
 
 #: app/Module/FamilyTreeNewsModule.php:157
@@ -10181,7 +10181,7 @@ msgstr "PGV ha d’ésser versió 4.2.3, o qualsevol SVN fins el #%s"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:77
-msgid "PHP blocked file by extension"
+msgid "PHP blocked the file because of its extension."
 msgstr "PHP ha bloquejat el fitxer per llur extensió"
 
 #: setup.php:140
@@ -10196,7 +10196,7 @@ msgstr "L’extension PHP «%s» és desactivada.  No podeu instalar webtrees me
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:74
-msgid "PHP failed to write to disk"
+msgid "PHP failed to write to disk."
 msgstr "Error PHP en escriure al disc"
 
 #: admin_site_info.php:71
@@ -10668,7 +10668,7 @@ msgstr "Entreu una adreça vàlida de correu electrònic."
 
 #: app/Module/CensusAssistantModule.php:96 find.php:115 search.php:34
 #: search.php:46
-msgid "Please enter more than one character"
+msgid "Please enter more than one character."
 msgstr "Cal que entreu més d’un caràcter"
 
 #: message.php:104
@@ -13518,7 +13518,7 @@ msgid "The media file %s does not exist."
 msgstr "El fitxer multimèdia %s no existeix"
 
 #: mediafirewall.php:41
-msgid "The media file was not found in this family tree"
+msgid "The media file was not found in this family tree."
 msgstr "No s’ha trobat el fitxer multimèdia en aquest arbre genealògic"
 
 #: admin_media_upload.php:223
@@ -13659,7 +13659,7 @@ msgid "The user %s has been deleted."
 msgstr ""
 
 #: login.php:324
-msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
+msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
 msgstr "S’ha enviat un correu electrònic a l’usuari ha amb la informació necessària per a confirmar la sol·licitud d’accés"
 
 #. I18N: Help text for the "Username" site configuration setting
@@ -14113,7 +14113,7 @@ msgid "This media file exists, but cannot be accessed."
 msgstr "Aquest fitxer multimèdia existeix, però no s’hi pot accedir."
 
 #: mediafirewall.php:410
-msgid "This media file is broken and cannot be watermarked"
+msgid "This media file is broken and cannot be watermarked."
 msgstr "Fitxer multimèdia incomplet. No pot posar-s’hi marca d’aigua"
 
 #: mediaviewer.php:73
@@ -14379,7 +14379,7 @@ msgid "This will delete all the genealogy data from “%s” and replace it with
 msgstr "Això esborrarà totes les dades genealògiques de «%s» i les substituirà per les d’un altre GEDCOM."
 
 #: app/Module/GoogleMapsModule.php:1781
-msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
+msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables."
 msgstr "Aixó llistarà tots els indrets del fitxer GEDCOM seleccionat. Per defecte NO S’INCLOURAN aquells que coincideixen completament entre el fitxer GEDCOM i les taules GoogleMap"
 
 #: admin_trees_places.php:96
@@ -14995,7 +14995,7 @@ msgstr "Pugeu un o més fitxers multimèdia des del vostre ordinador local. Pode
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:62
-msgid "Uploaded file exceeds the allowed size"
+msgid "The uploaded file exceeds the allowed size."
 msgstr "El fitxer carregat excedeix el volum permès"
 
 #: app/Stats.php:6308
@@ -15760,7 +15760,7 @@ msgid "You must enter all the administrator account fields."
 msgstr "Heu d’entrar tots els camps del compte de l’administrador."
 
 #: edit_interface.php:1548
-msgid "You must provide a repository name"
+msgid "You must provide a repository name."
 msgstr "Heu de donar un nom de l’arxiu"
 
 #: edit_interface.php:1210

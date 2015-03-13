@@ -3682,7 +3682,7 @@ msgid "Click %s to choose individual as head of family."
 msgstr "Välj %s till familjens huvudperson."
 
 #: edit_interface.php:1747
-msgid "Click a row, then drag-and-drop to re-order media "
+msgid "Click a row, then drag-and-drop to re-order media"
 msgstr "Klicka på en rad och sen drag-och-släpp för att ordna om media "
 
 #: admin_trees_manage.php:690
@@ -3702,7 +3702,7 @@ msgid "Click name to add individual to add links list."
 msgstr "Klicka på namn för att lägga till person till ”Lägg till Länklista”."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:295
-msgid "Click on a title to go straight to it, or scroll down to read them all"
+msgid "Click on a title to go straight to it, or scroll down to read them all."
 msgstr "Klicka på en rubrik för att gå direkt till den eller rulla ner för att läsa dem alla"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:69
@@ -5369,7 +5369,7 @@ msgid "Edit story"
 msgstr "Redigera berättelse"
 
 #: app/Tree.php:562
-msgid "Edit this individual and replace their details with your own"
+msgid "Edit this individual and replace their details with your own."
 msgstr "Ersätt denna persons uppgifter med dina egna."
 
 #: admin_users.php:268
@@ -6174,7 +6174,7 @@ msgstr "Filen laddades upp utan problem"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
-msgid "File was only partially uploaded, please try again"
+msgid "THe file was only partially uploaded.  Please try again."
 msgstr "Filen blev endast delvis uppladdad, var god försök igen"
 
 #. I18N: gedcom tag FILE
@@ -7212,7 +7212,7 @@ msgid "If you are the website administrator, you should check that:"
 msgstr "Om du är sajtadministratör, kontrollera att:"
 
 #: site-unavailable.php:109
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
 msgstr "Om du inte kan lösa problemet själv, kanske du kan få hjälp från forumet vid <a href=\"http://webtrees.net\">webtrees.net</a>"
 
 #: admin_trees_manage.php:269
@@ -8991,7 +8991,7 @@ msgstr "Minimi antal förekomst för att bli ”vanligt efternamn”"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
-msgid "Missing PHP temporary folder"
+msgid "THe PHP temporary folder is missing."
 msgstr "PHP:s temporära katalog saknas"
 
 #. I18N: Name of a module/report
@@ -9653,7 +9653,7 @@ msgstr "Inga fakta om denna familj."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:68
-msgid "No file was received.  Please upload again."
+msgid "No file was received.  Please try again."
 msgstr "Ingen fil mottogs. Ladda upp filen igen."
 
 #: app/Module/FamilyTreeNewsModule.php:157
@@ -10181,7 +10181,7 @@ msgstr "PGV måste vara version 4.2.3, eller någon av dess SVN uppdatering upp 
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:77
-msgid "PHP blocked file by extension"
+msgid "PHP blocked the file because of its extension."
 msgstr "PHP blockad på grund av filändelsen"
 
 #: setup.php:140
@@ -10196,7 +10196,7 @@ msgstr "PHP-filändelse ”%1$s” är inaktiv. Du kan inte installera webtrees 
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:74
-msgid "PHP failed to write to disk"
+msgid "PHP failed to write to disk."
 msgstr "PHP kunde inte skriva till skivan"
 
 #: admin_site_info.php:71
@@ -10668,7 +10668,7 @@ msgstr "Obs! Skriv in en giltig e-postadress."
 
 #: app/Module/CensusAssistantModule.php:96 find.php:115 search.php:34
 #: search.php:46
-msgid "Please enter more than one character"
+msgid "Please enter more than one character."
 msgstr "Var vänlig och skriv in mer än ett tecken"
 
 #: message.php:104
@@ -13518,7 +13518,7 @@ msgid "The media file %s does not exist."
 msgstr "Media filen %s finns inte."
 
 #: mediafirewall.php:41
-msgid "The media file was not found in this family tree"
+msgid "The media file was not found in this family tree."
 msgstr "Media filen hittades inte i detta släktträd"
 
 #: admin_media_upload.php:223
@@ -13659,7 +13659,7 @@ msgid "The user %s has been deleted."
 msgstr ""
 
 #: login.php:324
-msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
+msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
 msgstr "Nödvändig information för att bekräfta förfrågan om användarkonto har sänts till användaren via e-post."
 
 #. I18N: Help text for the "Username" site configuration setting
@@ -14113,7 +14113,7 @@ msgid "This media file exists, but cannot be accessed."
 msgstr "Denna media fil finns, men kan inte nås."
 
 #: mediafirewall.php:410
-msgid "This media file is broken and cannot be watermarked"
+msgid "This media file is broken and cannot be watermarked."
 msgstr "Media filen är trasig och kan inte vattenstämplas"
 
 #: mediaviewer.php:73
@@ -14379,7 +14379,7 @@ msgid "This will delete all the genealogy data from “%s” and replace it with
 msgstr "Radera all släktdata från “%s” och ersätt dem med data från annan GEDCOM."
 
 #: app/Module/GoogleMapsModule.php:1781
-msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
+msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables."
 msgstr "Detta kommer att lista alla platserna från den valda GEDCOM-filen. Som standard kommer den INTE ATT INKLUDERA platser som helt överensstämmer mellan GEDCOM-filen och Google Maps-tabellerna."
 
 #: admin_trees_places.php:96
@@ -14995,7 +14995,7 @@ msgstr "Ladda upp en eller flera media filer från din lokala dator. Media filer
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:62
-msgid "Uploaded file exceeds the allowed size"
+msgid "The uploaded file exceeds the allowed size."
 msgstr "Uppladdad fil överskrider max tillåtna storlek"
 
 #: app/Stats.php:6308
@@ -15760,7 +15760,7 @@ msgid "You must enter all the administrator account fields."
 msgstr "Fyll i alla fält för administratörskontot."
 
 #: edit_interface.php:1548
-msgid "You must provide a repository name"
+msgid "You must provide a repository name."
 msgstr "Du måste ange ett arkivnamn"
 
 #: edit_interface.php:1210

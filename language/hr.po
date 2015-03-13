@@ -3713,7 +3713,7 @@ msgid "Click %s to choose individual as head of family."
 msgstr "Kliknite %s za izbor osobe kao glavu obitelji."
 
 #: edit_interface.php:1747
-msgid "Click a row, then drag-and-drop to re-order media "
+msgid "Click a row, then drag-and-drop to re-order media"
 msgstr "Kliknite na red te presložite povlačeći "
 
 #: admin_trees_manage.php:690
@@ -3733,7 +3733,7 @@ msgid "Click name to add individual to add links list."
 msgstr "Kliknite ime za dodavanje pojedinca na dodani popis linkova."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:295
-msgid "Click on a title to go straight to it, or scroll down to read them all"
+msgid "Click on a title to go straight to it, or scroll down to read them all."
 msgstr "Kliknite na naslov ili se pomaknite prema dolje kako bi ih sve pročitali"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:69
@@ -5400,7 +5400,7 @@ msgid "Edit story"
 msgstr "Uredite priču"
 
 #: app/Tree.php:562
-msgid "Edit this individual and replace their details with your own"
+msgid "Edit this individual and replace their details with your own."
 msgstr "Uredite ovog pojedinca i prepišite njegove detalje sa svojima"
 
 #: admin_users.php:268
@@ -6205,7 +6205,7 @@ msgstr "Datoteka uspješno učitana"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
-msgid "File was only partially uploaded, please try again"
+msgid "THe file was only partially uploaded.  Please try again."
 msgstr "Datoteka je samo djelomično učitana, molimo pokušajte ponovno"
 
 #. I18N: gedcom tag FILE
@@ -7243,7 +7243,7 @@ msgid "If you are the website administrator, you should check that:"
 msgstr "Ako ste vi administrator web stranica, trebali bi provjeriti ovo:"
 
 #: site-unavailable.php:109
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
 msgstr "Ako sami ne možete riješiti problem, možete zatražiti pomoć na forumu <a href=\"http://webtrees.net\">webtrees.net</a>"
 
 #: admin_trees_manage.php:269
@@ -9022,7 +9022,7 @@ msgstr "Min. broj pojavljivanja za „Najčešće prezime”"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
-msgid "Missing PHP temporary folder"
+msgid "THe PHP temporary folder is missing."
 msgstr "Nedostaje PHP privremena mapa."
 
 #. I18N: Name of a module/report
@@ -9686,7 +9686,7 @@ msgstr "Nema činjenica za ovu obitelj"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:68
-msgid "No file was received.  Please upload again."
+msgid "No file was received.  Please try again."
 msgstr "Nijedna datoteka nije primljena. Molimo učitajte ponovno."
 
 #: app/Module/FamilyTreeNewsModule.php:157
@@ -10214,7 +10214,7 @@ msgstr "PGV mora viti verzija 4.2.3 ili bilo koji SVN do #%s"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:77
-msgid "PHP blocked file by extension"
+msgid "PHP blocked the file because of its extension."
 msgstr "PHP blokirao datoteku sa proširenjem"
 
 #: setup.php:140
@@ -10229,7 +10229,7 @@ msgstr "PHP proširenje „%1$s” je isključeno. Ne možete instalirati webtre
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:74
-msgid "PHP failed to write to disk"
+msgid "PHP failed to write to disk."
 msgstr "PHP nije uspio pisati na disk"
 
 #: admin_site_info.php:71
@@ -10701,7 +10701,7 @@ msgstr "Molim unesite valjanu adresu e-pošte"
 
 #: app/Module/CensusAssistantModule.php:96 find.php:115 search.php:34
 #: search.php:46
-msgid "Please enter more than one character"
+msgid "Please enter more than one character."
 msgstr "Molimo unesite više od jednog slova"
 
 #: message.php:104
@@ -13551,7 +13551,7 @@ msgid "The media file %s does not exist."
 msgstr "Medijska datoteka %s ne postoji."
 
 #: mediafirewall.php:41
-msgid "The media file was not found in this family tree"
+msgid "The media file was not found in this family tree."
 msgstr "Medijski podatak nije pronađen u ovom obiteljskom stablu"
 
 #: admin_media_upload.php:223
@@ -13693,7 +13693,7 @@ msgid "The user %s has been deleted."
 msgstr "Korisnik %s je obrisan."
 
 #: login.php:324
-msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
+msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
 msgstr "Korisniku je poslana e-pošta sa informacijama potrebnim da potvrdi pristupni zahtjev"
 
 #. I18N: Help text for the "Username" site configuration setting
@@ -14150,7 +14150,7 @@ msgid "This media file exists, but cannot be accessed."
 msgstr "Ova medijska datoteka postoji, ali nije dostupna."
 
 #: mediafirewall.php:410
-msgid "This media file is broken and cannot be watermarked"
+msgid "This media file is broken and cannot be watermarked."
 msgstr "Ova medijska datoteka je oštećena i ne može biti ugrađen vodeni žig."
 
 #: mediaviewer.php:73
@@ -14416,7 +14416,7 @@ msgid "This will delete all the genealogy data from “%s” and replace it with
 msgstr "Ovo će obrisati sve genealoške podatke iz „%s” i prepisati sa podacima iz drugog GEDCOM-a."
 
 #: app/Module/GoogleMapsModule.php:1781
-msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
+msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables."
 msgstr "Ovo će prikazati sva mjesta iz označene GEDCOM datoteke. Prema zadanom ovo NEĆE UKLJUČITI mjesta koja su potpuno usklađena između GEDCOM datoteke i GoogleMap tablica"
 
 #: admin_trees_places.php:96
@@ -15034,7 +15034,7 @@ msgstr "Učitajte jednu ili više medijskih datoteka sa vašeg računala. Medijs
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:62
-msgid "Uploaded file exceeds the allowed size"
+msgid "The uploaded file exceeds the allowed size."
 msgstr "Učitana datoteka prelazi dozvoljenu veličinu"
 
 #: app/Stats.php:6308
@@ -15800,7 +15800,7 @@ msgid "You must enter all the administrator account fields."
 msgstr "Morate upisati sva polja administratorskog računa."
 
 #: edit_interface.php:1548
-msgid "You must provide a repository name"
+msgid "You must provide a repository name."
 msgstr "Morate priložiti ime mjesta čuvanja"
 
 #: edit_interface.php:1210

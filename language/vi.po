@@ -3653,7 +3653,7 @@ msgid "Click %s to choose individual as head of family."
 msgstr "Nhấp vào %s để chọn người Trưởng gia đình."
 
 #: edit_interface.php:1747
-msgid "Click a row, then drag-and-drop to re-order media "
+msgid "Click a row, then drag-and-drop to re-order media"
 msgstr "Nhấp vào dòng, rồi kéo-thả để sắp lại file nghe nhìn "
 
 #: admin_trees_manage.php:690
@@ -3673,7 +3673,7 @@ msgid "Click name to add individual to add links list."
 msgstr "Nhấp vào tên để thêm người đó và Danh sách thêm liên kết."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:295
-msgid "Click on a title to go straight to it, or scroll down to read them all"
+msgid "Click on a title to go straight to it, or scroll down to read them all."
 msgstr "Nhấp vào tiêu đề để đến thẳng nó, hay cuộn xuống để đọc hết"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:69
@@ -5340,7 +5340,7 @@ msgid "Edit story"
 msgstr "Sửa chuyện"
 
 #: app/Tree.php:562
-msgid "Edit this individual and replace their details with your own"
+msgid "Edit this individual and replace their details with your own."
 msgstr "Sửa người này và thay thế chi tiết của họ bằng chi tiết của bạn"
 
 #: admin_users.php:268
@@ -6145,7 +6145,7 @@ msgstr "Tập tin gửi lên tốt đẹp"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
-msgid "File was only partially uploaded, please try again"
+msgid "THe file was only partially uploaded.  Please try again."
 msgstr "Tập tin chỉ gửi lên nửa chừng, xin làm lại"
 
 #. I18N: gedcom tag FILE
@@ -7183,7 +7183,7 @@ msgid "If you are the website administrator, you should check that:"
 msgstr "Nếu bạn là quản trị site, phải phải kiểm tra:"
 
 #: site-unavailable.php:109
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
 msgstr "Nếu bạn không thể giải quyết vấn đề, bạn có thể yêu cầu hỗ trợ trên diễn đàn tại <a href=\"http://webtrees.net\">webtrees.net</a>"
 
 #: admin_trees_manage.php:269
@@ -8962,7 +8962,7 @@ msgstr "Số lần tối thiểu để xem là “họ phổ biến”"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
-msgid "Missing PHP temporary folder"
+msgid "THe PHP temporary folder is missing."
 msgstr "Lạc thư mục tạm PHP"
 
 #. I18N: Name of a module/report
@@ -9622,7 +9622,7 @@ msgstr "Không có sự kiện cho gia đình này"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:68
-msgid "No file was received.  Please upload again."
+msgid "No file was received.  Please try again."
 msgstr "Không nhận được file nào. Xin gửi lại"
 
 #: app/Module/FamilyTreeNewsModule.php:157
@@ -10150,7 +10150,7 @@ msgstr "PGV phải có version 4.2.3, hoặc bất kỳ bản phát triển SVN 
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:77
-msgid "PHP blocked file by extension"
+msgid "PHP blocked the file because of its extension."
 msgstr "PHP khóa file bằng đuôi"
 
 #: setup.php:140
@@ -10165,7 +10165,7 @@ msgstr "Phần mở rộng PHP “%s” đang đặt ở chế độ không kíc
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:74
-msgid "PHP failed to write to disk"
+msgid "PHP failed to write to disk."
 msgstr "PHP không viết vào đĩa được"
 
 #: admin_site_info.php:71
@@ -10637,7 +10637,7 @@ msgstr "Xin cho vào một địa chỉ thư điện tử hợp lệ."
 
 #: app/Module/CensusAssistantModule.php:96 find.php:115 search.php:34
 #: search.php:46
-msgid "Please enter more than one character"
+msgid "Please enter more than one character."
 msgstr "Hã nhập nhiều hơn một ký tự"
 
 #: message.php:104
@@ -13487,7 +13487,7 @@ msgid "The media file %s does not exist."
 msgstr "File nghe nhìn %s không tồn tại."
 
 #: mediafirewall.php:41
-msgid "The media file was not found in this family tree"
+msgid "The media file was not found in this family tree."
 msgstr "File nghe nhìn không tìm thấy trong nhánh gia đình này"
 
 #: admin_media_upload.php:223
@@ -13627,7 +13627,7 @@ msgid "The user %s has been deleted."
 msgstr ""
 
 #: login.php:324
-msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
+msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
 msgstr "Người dùng đã được gửi email với thông tin cần thiết để xác nhận yêu cầu muốn truy cập"
 
 #. I18N: Help text for the "Username" site configuration setting
@@ -14079,7 +14079,7 @@ msgid "This media file exists, but cannot be accessed."
 msgstr "Tập tin đa phương tiện này đã có, nhưng không thể truy cập."
 
 #: mediafirewall.php:410
-msgid "This media file is broken and cannot be watermarked"
+msgid "This media file is broken and cannot be watermarked."
 msgstr "File nghe nhìn này bị hư và không thể tạo hình chìm"
 
 #: mediaviewer.php:73
@@ -14345,7 +14345,7 @@ msgid "This will delete all the genealogy data from “%s” and replace it with
 msgstr "Việc này sẽ xóa bỏ mọi chi tiết gia phả của “%s” và thay thế bằng số liệu từ một file GEDCOM khác."
 
 #: app/Module/GoogleMapsModule.php:1781
-msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
+msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables."
 msgstr "Chức năng này liệt kê mọi địa điểm từ file GEDCOM được chọn. Mặc đình điều này không gồm các địa điểm thỏa mãn hoàn toàn giữa file GEDCOM và bảng GoogleMap"
 
 #: admin_trees_places.php:96
@@ -14959,7 +14959,7 @@ msgstr "Tải một hai nhiều hình/phim từ máy cục bộ của bạn lên
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:62
-msgid "Uploaded file exceeds the allowed size"
+msgid "The uploaded file exceeds the allowed size."
 msgstr "Tập tin đã gửi lên quá hạn chế lượng"
 
 #: app/Stats.php:6308
@@ -15723,7 +15723,7 @@ msgid "You must enter all the administrator account fields."
 msgstr "Bạn phải nhập tất cả các trường của tài khoản quản trị"
 
 #: edit_interface.php:1548
-msgid "You must provide a repository name"
+msgid "You must provide a repository name."
 msgstr "Bạn phải cung cấp tên kho dữ liệu"
 
 #: edit_interface.php:1210

@@ -3654,7 +3654,7 @@ msgid "Click %s to choose individual as head of family."
 msgstr "单击 %s 择的人担任家主"
 
 #: edit_interface.php:1747
-msgid "Click a row, then drag-and-drop to re-order media "
+msgid "Click a row, then drag-and-drop to re-order media"
 msgstr "点击一行,然后拖拽重排媒体 "
 
 #: admin_trees_manage.php:690
@@ -3674,7 +3674,7 @@ msgid "Click name to add individual to add links list."
 msgstr "点击名称添加人添加链接列表。"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:295
-msgid "Click on a title to go straight to it, or scroll down to read them all"
+msgid "Click on a title to go straight to it, or scroll down to read them all."
 msgstr "点击一个标题,直接下拉或向下滚动阅读所有"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:69
@@ -5341,7 +5341,7 @@ msgid "Edit story"
 msgstr "编辑故事"
 
 #: app/Tree.php:562
-msgid "Edit this individual and replace their details with your own"
+msgid "Edit this individual and replace their details with your own."
 msgstr "编辑这个个体和用你自己的细节替换他们的"
 
 #: admin_users.php:268
@@ -6146,7 +6146,7 @@ msgstr "文件成功上传"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
-msgid "File was only partially uploaded, please try again"
+msgid "THe file was only partially uploaded.  Please try again."
 msgstr "文件只是部分上传,请再试一次"
 
 #. I18N: gedcom tag FILE
@@ -7184,7 +7184,7 @@ msgid "If you are the website administrator, you should check that:"
 msgstr "如果你是网站管理员,你应该检查:"
 
 #: site-unavailable.php:109
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
 msgstr "如果你不能自己解决问题,你可以在<a href=\"http://webtrees.net\">webtrees.net</a>论坛寻求帮助"
 
 #: admin_trees_manage.php:269
@@ -8963,7 +8963,7 @@ msgstr "常见的姓"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
-msgid "Missing PHP temporary folder"
+msgid "THe PHP temporary folder is missing."
 msgstr "丢失PHP临时目录"
 
 #. I18N: Name of a module/report
@@ -9623,7 +9623,7 @@ msgstr "这个家庭没有事件。"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:68
-msgid "No file was received.  Please upload again."
+msgid "No file was received.  Please try again."
 msgstr "没有接收到的文件。请重新上传。"
 
 #: app/Module/FamilyTreeNewsModule.php:157
@@ -10151,7 +10151,7 @@ msgstr "PGV必须版本4.2.3，或更高"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:77
-msgid "PHP blocked file by extension"
+msgid "PHP blocked the file because of its extension."
 msgstr "PHP阻止的文件扩展"
 
 #: setup.php:140
@@ -10166,7 +10166,7 @@ msgstr "PHP扩展 \"%s\"是禁用的。如果不启用不能安装webtrees。请
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:74
-msgid "PHP failed to write to disk"
+msgid "PHP failed to write to disk."
 msgstr "PHP未能写入磁盘"
 
 #: admin_site_info.php:71
@@ -10638,7 +10638,7 @@ msgstr "请输入一个有效的电子邮件地址。"
 
 #: app/Module/CensusAssistantModule.php:96 find.php:115 search.php:34
 #: search.php:46
-msgid "Please enter more than one character"
+msgid "Please enter more than one character."
 msgstr "请输入多于一个字符"
 
 #: message.php:104
@@ -13488,7 +13488,7 @@ msgid "The media file %s does not exist."
 msgstr "媒体文件 %s 并不存在。"
 
 #: mediafirewall.php:41
-msgid "The media file was not found in this family tree"
+msgid "The media file was not found in this family tree."
 msgstr "这个家谱中没有媒体文件"
 
 #: admin_media_upload.php:223
@@ -13628,7 +13628,7 @@ msgid "The user %s has been deleted."
 msgstr ""
 
 #: login.php:324
-msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
+msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
 msgstr "已经将包含需要确认访问请求信息发送邮件给用户"
 
 #. I18N: Help text for the "Username" site configuration setting
@@ -14080,7 +14080,7 @@ msgid "This media file exists, but cannot be accessed."
 msgstr "此媒体文件存在，但不能访问。"
 
 #: mediafirewall.php:410
-msgid "This media file is broken and cannot be watermarked"
+msgid "This media file is broken and cannot be watermarked."
 msgstr "此媒体文件坏了，不能被水印"
 
 #: mediaviewer.php:73
@@ -14346,7 +14346,7 @@ msgid "This will delete all the genealogy data from “%s” and replace it with
 msgstr "从%s删除所有的家谱资料并用另一个GEDCOM取代它的数据。"
 
 #: app/Module/GoogleMapsModule.php:1781
-msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
+msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables."
 msgstr "这将从选定的GEDCOM文件中列出所有的地方。在默认情况下这将不包括地方完全匹配GEDCOM之间的文件和GoogleMap表"
 
 #: admin_trees_places.php:96
@@ -14960,7 +14960,7 @@ msgstr "从您的本地计算机上上传一个或多个媒体文件。媒体文
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:62
-msgid "Uploaded file exceeds the allowed size"
+msgid "The uploaded file exceeds the allowed size."
 msgstr "上传的文件超过允许的大小"
 
 #: app/Stats.php:6308
@@ -15724,7 +15724,7 @@ msgid "You must enter all the administrator account fields."
 msgstr "您必须输入管理员帐户字段。"
 
 #: edit_interface.php:1548
-msgid "You must provide a repository name"
+msgid "You must provide a repository name."
 msgstr "您必须提供一个存储库名称"
 
 #: edit_interface.php:1210

@@ -3714,7 +3714,7 @@ msgid "Click %s to choose individual as head of family."
 msgstr "%s zvolit osobu jako hlavu rodiny."
 
 #: edit_interface.php:1747
-msgid "Click a row, then drag-and-drop to re-order media "
+msgid "Click a row, then drag-and-drop to re-order media"
 msgstr "Klikni na řádek, poté přetáhni. Média se přeřadí. "
 
 #: admin_trees_manage.php:690
@@ -3734,7 +3734,7 @@ msgid "Click name to add individual to add links list."
 msgstr "Kliknutím na jméno přidáte osobu do seznamu pro přidávání odkazů ."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:295
-msgid "Click on a title to go straight to it, or scroll down to read them all"
+msgid "Click on a title to go straight to it, or scroll down to read them all."
 msgstr "Klikněte na název nebo rolujte myší dolů"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:69
@@ -5401,7 +5401,7 @@ msgid "Edit story"
 msgstr "Upravit příběh"
 
 #: app/Tree.php:562
-msgid "Edit this individual and replace their details with your own"
+msgid "Edit this individual and replace their details with your own."
 msgstr "Upravit tuto osobu a nahradit její údaje vlastními"
 
 #: admin_users.php:268
@@ -6206,7 +6206,7 @@ msgstr "Soubor byl úspěšně nahrán"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
-msgid "File was only partially uploaded, please try again"
+msgid "THe file was only partially uploaded.  Please try again."
 msgstr "Soubor byl nahrán jen částečně, prosím zkuste to znovu"
 
 #. I18N: gedcom tag FILE
@@ -7244,7 +7244,7 @@ msgid "If you are the website administrator, you should check that:"
 msgstr "Pokud jste webový správce, měl byste zkontrolovat toto:"
 
 #: site-unavailable.php:109
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
 msgstr "Pokud nedokážete vyřešit problém sami, můžete se zeptat na fóru <a href=\"http://webtrees.net\">webtrees.net</a>"
 
 #: admin_trees_manage.php:269
@@ -9023,7 +9023,7 @@ msgstr "Min. počet výskytů pro „běžné příjmení“"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
-msgid "Missing PHP temporary folder"
+msgid "THe PHP temporary folder is missing."
 msgstr "Chybí dočasný PHP adresář"
 
 #. I18N: Name of a module/report
@@ -9687,7 +9687,7 @@ msgstr "Žádné údaje k této rodině"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:68
-msgid "No file was received.  Please upload again."
+msgid "No file was received.  Please try again."
 msgstr "Žádný soubor dodán. Nahrajte jej znovu"
 
 #: app/Module/FamilyTreeNewsModule.php:157
@@ -10215,7 +10215,7 @@ msgstr "PGV musí být ve verzi 4.2.3 nebo z SVN až po #%s"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:77
-msgid "PHP blocked file by extension"
+msgid "PHP blocked the file because of its extension."
 msgstr "Soubor blokován podle přípony (PHP)"
 
 #: setup.php:140
@@ -10230,7 +10230,7 @@ msgstr "Rozšíření PHP „%s“ je deaktivováno. Dokud nebude aktivní, nebu
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:74
-msgid "PHP failed to write to disk"
+msgid "PHP failed to write to disk."
 msgstr "Selhal PHP zápis na disk"
 
 #: admin_site_info.php:71
@@ -10702,7 +10702,7 @@ msgstr "Prosím zadejte platnou e-mailovou adresu."
 
 #: app/Module/CensusAssistantModule.php:96 find.php:115 search.php:34
 #: search.php:46
-msgid "Please enter more than one character"
+msgid "Please enter more than one character."
 msgstr "Prosím vložte více než jeden znak"
 
 #: message.php:104
@@ -13552,7 +13552,7 @@ msgid "The media file %s does not exist."
 msgstr "Soubor médií %s neexistuje."
 
 #: mediafirewall.php:41
-msgid "The media file was not found in this family tree"
+msgid "The media file was not found in this family tree."
 msgstr "Soubor médií nebyl nalezen v tomto rodinném stromě."
 
 #: admin_media_upload.php:223
@@ -13694,7 +13694,7 @@ msgid "The user %s has been deleted."
 msgstr ""
 
 #: login.php:324
-msgid "The user has been sent an e-mail with the information necessary to confirm the access request"
+msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
 msgstr "Uživateli byl odeslán email s informacemi nutnými pro potvrzení žádosti o přístup."
 
 #. I18N: Help text for the "Username" site configuration setting
@@ -14150,7 +14150,7 @@ msgid "This media file exists, but cannot be accessed."
 msgstr "Tento mediální soubor existuje, ale nelze jej číst."
 
 #: mediafirewall.php:410
-msgid "This media file is broken and cannot be watermarked"
+msgid "This media file is broken and cannot be watermarked."
 msgstr "Tento soubor médií není v pořádku a nemůže být označen vodoznakem."
 
 #: mediaviewer.php:73
@@ -14416,7 +14416,7 @@ msgid "This will delete all the genealogy data from “%s” and replace it with
 msgstr "Vymaže všechna rodokmenová data z „%s“ a nahradí je daty z jiného GEDCOMu."
 
 #: app/Module/GoogleMapsModule.php:1781
-msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables"
+msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables."
 msgstr "Tímto vypíšete všechna míst z vybraného souboru GEDCOM. Standardně to NEZAHRNE místa, která se shodují v souboru GEDCOM a tabulkách GoogleMap."
 
 #: admin_trees_places.php:96
@@ -15034,7 +15034,7 @@ msgstr "Nahrát jeden nebo více souborů medií z lokálního počítače. Soub
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:62
-msgid "Uploaded file exceeds the allowed size"
+msgid "The uploaded file exceeds the allowed size."
 msgstr "Nahraný soubor přesáhl povolenou velikost"
 
 #: app/Stats.php:6308
@@ -15800,7 +15800,7 @@ msgid "You must enter all the administrator account fields."
 msgstr "Musíte vložit všechny údaje o správcovském účtu."
 
 #: edit_interface.php:1548
-msgid "You must provide a repository name"
+msgid "You must provide a repository name."
 msgstr "Musíte zadat jméno repozitáře"
 
 #: edit_interface.php:1210
