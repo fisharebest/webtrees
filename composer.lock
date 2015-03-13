@@ -208,16 +208,16 @@
         },
         {
             "name": "fisharebest/localization",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fisharebest/localization.git",
-                "reference": "87f51e225a9f1e1f9505294e41d60a445a53f4f2"
+                "reference": "c19967654681ebf5d5ed768319de7c944d94ce77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fisharebest/localization/zipball/87f51e225a9f1e1f9505294e41d60a445a53f4f2",
-                "reference": "87f51e225a9f1e1f9505294e41d60a445a53f4f2",
+                "url": "https://api.github.com/repos/fisharebest/localization/zipball/c19967654681ebf5d5ed768319de7c944d94ce77",
+                "reference": "c19967654681ebf5d5ed768319de7c944d94ce77",
                 "shasum": ""
             },
             "require": {
@@ -253,7 +253,7 @@
                 "localization",
                 "unicode"
             ],
-            "time": "2015-03-12 10:57:39"
+            "time": "2015-03-13 08:24:08"
         },
         {
             "name": "ircmaxell/password-compat",

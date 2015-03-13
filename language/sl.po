@@ -2,17 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2015-03-12 21:11+0000\n"
+"POT-Creation-Date: 2015-03-13 10:03+0000\n"
 "PO-Revision-Date: 2015-03-12 22:02+0100\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Slovenian "
-"<http://translate.webtrees.net/projects/webtrees/webtrees/sl/>\n"
+"Language-Team: Slovenian <http://translate.webtrees.net/projects/webtrees/webtrees/sl/>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
-"n%100==4 ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3;\n"
 "X-Generator: Weblate 2.3-dev\n"
 "X-Poedit-Language: Slovenian\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -59,10 +57,6 @@ msgstr " po spolu"
 #: statisticsplot.php:1356
 msgid " per time period"
 msgstr " na časovno obdobje"
-
-#: admin_trees_download.php:34
-msgid " — "
-msgstr ""
 
 #. I18N: Abbreviation for "number %s"
 #: includes/functions/functions_print_facts.php:187
@@ -834,7 +828,7 @@ msgid "A new password has been requested for your user name."
 msgstr "Novo geslo je bilo zahtevano za vaše uporabniško ime."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
-#: login.php:568
+#: login.php:567
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr ""
@@ -3839,7 +3833,7 @@ msgstr ""
 msgid "Comment"
 msgstr "Komentar"
 
-#: login.php:323 login.php:349 login.php:490
+#: login.php:323 login.php:349 login.php:489
 msgid "Comments"
 msgstr "Komentarji"
 
@@ -3900,7 +3894,7 @@ msgstr ""
 msgid "Configure"
 msgstr "Konfiguriraj"
 
-#: admin_users.php:347 edituser.php:213 login.php:474
+#: admin_users.php:347 edituser.php:213 login.php:473
 msgid "Confirm password"
 msgstr ""
 
@@ -4033,7 +4027,7 @@ msgstr "Kostarika"
 msgid "Cote d’Ivoire"
 msgstr ""
 
-#: login.php:645
+#: login.php:633
 msgid "Could not verify the information you entered.  Please try again or contact the site administrator for more information."
 msgstr "Vpisanih podatkov ni bilo mogoče preverite. Za podrobnejše informacije se obrnite na upravitelja strani."
 
@@ -4326,10 +4320,6 @@ msgstr "Podatki"
 #: admin_site_config.php:172
 msgid "Data folder"
 msgstr ""
-
-#: login.php:639
-msgid "Data was not correct, please try again"
-msgstr "Podatki niso pravi. Poskusite še enkrat"
 
 #: setup.php:371
 msgid "Database and table names"
@@ -5038,7 +5028,7 @@ msgstr "Opis"
 msgid "Description META tag"
 msgstr "META oznaka opisa"
 
-#: login.php:457
+#: login.php:456
 msgid "Desired password"
 msgstr "Željeno geslo"
 
@@ -5743,7 +5733,7 @@ msgid "Execution statistics"
 msgstr ""
 
 #. I18N: placeholder text for registration-comments field
-#: login.php:494
+#: login.php:493
 msgid "Explain why you are requesting an account."
 msgstr ""
 
@@ -6235,11 +6225,6 @@ msgstr ""
 msgid "File successfully uploaded"
 msgstr "Datoteka je bila uspešno naložena"
 
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:65
-msgid "THe file was only partially uploaded.  Please try again."
-msgstr "Datoteka je bila le delno naložena. Poskusite ponovno"
-
 #. I18N: gedcom tag FILE
 #: admin_media.php:475 app/Gedcom/GedcomTag.php:485
 msgid "Filename"
@@ -6411,7 +6396,7 @@ msgstr ""
 #. I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names
 #: admin_trees_manage.php:285
 #, php-format
-msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then the you would need to remove %3$s."
+msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
 msgstr ""
 
 #: admin_users.php:590
@@ -7008,7 +6993,7 @@ msgstr "Zdravo, %s …"
 msgid "Hello %s…<br>Thank you for your registration."
 msgstr "Zdravo, %s …<br>Zahvaljujemo se, da ste se registrirali."
 
-#: login.php:317 login.php:566
+#: login.php:317 login.php:565
 msgid "Hello administrator…"
 msgstr "Zdravo, upravljalec …"
 
@@ -7275,7 +7260,7 @@ msgid "If you are the website administrator, you should check that:"
 msgstr ""
 
 #: site-unavailable.php:109
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
 msgstr ""
 
 #: admin_trees_manage.php:269
@@ -9052,11 +9037,6 @@ msgstr ""
 msgid "Minimum number of occurrences to be a “common surname”"
 msgstr ""
 
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:71
-msgid "THe PHP temporary folder is missing."
-msgstr "Manjka začasni imenik za PHP"
-
 #. I18N: Name of a module/report
 #: app/Module/MissingFactsReportModule.php:26
 #: modules_v3/missing_facts_report/report.xml:3
@@ -9535,7 +9515,7 @@ msgid "New registration at %s"
 msgstr "Nova registracija na strežniku %s"
 
 #. I18N: %s is a server name/URL
-#: login.php:585
+#: login.php:584
 #, php-format
 msgid "New user at %s"
 msgstr "Nov uporabnik na strežniku %s"
@@ -10384,7 +10364,7 @@ msgstr "Starost roditelja"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:381 admin_users.php:334 edituser.php:201
-#: login.php:188 login.php:254 login.php:539
+#: login.php:188 login.php:254 login.php:538
 #: modules_v3/login_block/LoginBlockModule.php:67 setup.php:437
 msgid "Password"
 msgstr "Geslo"
@@ -10393,7 +10373,7 @@ msgstr "Geslo"
 msgid "Passwords do not match."
 msgstr "Gesli se ne ujemata."
 
-#: edituser.php:207 login.php:468
+#: edituser.php:207 login.php:467
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”."
 msgstr ""
 
@@ -10850,9 +10830,7 @@ msgstr ""
 
 #: admin_site_config.php:120
 msgid "Predefined text that states admin will decide on each request for a user account"
-msgstr ""
-"Prednastavljeno besedilo, ki trdi, da bo upravitelj odločil o vsaki zahtevi "
-"za uporabniški račun"
+msgstr "Prednastavljeno besedilo, ki trdi, da bo upravitelj odločil o vsaki zahtevi za uporabniški račun"
 
 #: admin_site_config.php:119
 msgid "Predefined text that states all users can request a user account"
@@ -10860,9 +10838,7 @@ msgstr "Prednastavljeno besedilo, ki trdi, da morajo vsi uporabniki zahtevati up
 
 #: admin_site_config.php:121
 msgid "Predefined text that states only family members can request a user account"
-msgstr ""
-"Prednastavljeno besedilo, ki trdi, da lahko le družinski člani zaprosijo za "
-"uporabnški račun"
+msgstr "Prednastavljeno besedilo, ki trdi, da lahko le družinski člani zaprosijo za uporabnški račun"
 
 #: admin_trees_config.php:365 admin_trees_manage.php:363
 msgid "Preferences"
@@ -11882,7 +11858,7 @@ msgctxt "MALE"
 msgid "Seller"
 msgstr ""
 
-#: app/Module/UserMessagesModule.php:72 login.php:547 message.php:136
+#: app/Module/UserMessagesModule.php:72 login.php:546 message.php:136
 msgid "Send"
 msgstr "Pošlji"
 
@@ -13357,12 +13333,17 @@ msgstr ""
 msgid "The PGV to webtrees wizard is an automated process to assist administrators make the move from a PGV installation to a new webtrees one.  It will transfer all PGV GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:"
 msgstr ""
 
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:71
+msgid "The PHP temporary folder is missing."
+msgstr "Manjka začasni imenik za PHP"
+
 #: admin_users.php:97
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s"
 msgstr ""
 
-#: login.php:630
+#: login.php:627
 msgid "The administrator has been informed.  As soon as they give you permission to login, you can login with your user name and password."
 msgstr "Upravitelj je prejel obvestilo. Ko vam bo dal dovoljenje za prijavo, se boste lahko prijavljali sami s svojim uporabniškim imenom in geslom."
 
@@ -13381,11 +13362,6 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:133
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple.  Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name.  There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
 msgstr ""
-
-#: login.php:596
-#, php-format
-msgid "The data for the user <b>%s</b> has been checked."
-msgstr "Podatki za uporabnika z imenom <b>%s</b> so preverjeni."
 
 #: site-unavailable.php:66
 msgid "The database reported the following error message:"
@@ -13480,6 +13456,11 @@ msgstr ""
 #, php-format
 msgid "The file %s has been uploaded."
 msgstr ""
+
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:65
+msgid "The file was only partially uploaded.  Please try again."
+msgstr "Datoteka je bila le delno naložena. Poskusite ponovno"
 
 #. I18N: %s is a filename
 #: medialist.php:294 mediaviewer.php:111
@@ -13725,6 +13706,11 @@ msgstr[3] ""
 #: admin_site_upgrade.php:502
 msgid "The upgrade is complete."
 msgstr ""
+
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:62
+msgid "The uploaded file exceeds the allowed size."
+msgstr "Naložena datoteka presega dovojeno velikost"
 
 #: admin_users.php:788
 #, php-format
@@ -14884,11 +14870,11 @@ msgid "Type of place markers in Place Hierarchy"
 msgstr "Tip markerjev v hieriarhiji lokacij"
 
 #. I18N: placeholder text for repeat-password field
-#: admin_users.php:350 login.php:479
+#: admin_users.php:350 login.php:478
 msgid "Type the password again."
 msgstr ""
 
-#: edituser.php:219 login.php:484 setup.php:443
+#: edituser.php:219 login.php:483 setup.php:443
 msgid "Type your password again, to make sure you have typed it correctly."
 msgstr ""
 
@@ -15074,11 +15060,6 @@ msgstr ""
 msgid "Upload one or more media files from your local computer.  Media files can be pictures, video, audio, or other formats."
 msgstr ""
 
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:62
-msgid "The uploaded file exceeds the allowed size."
-msgstr "Naložena datoteka presega dovojeno velikost"
-
 #: app/Stats.php:6308
 msgid "Uruguay"
 msgstr "Uruguaj"
@@ -15105,7 +15086,7 @@ msgid "Use a “?” to match a single character, use “*” to match zero or m
 msgstr ""
 
 #. I18N: placeholder text for new-password field
-#: admin_users.php:337 login.php:462
+#: admin_users.php:337 login.php:461
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
@@ -15159,7 +15140,7 @@ msgstr ""
 msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the individual’s page."
 msgstr ""
 
-#: login.php:500
+#: login.php:499
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site.  You can also use this to enter any other comments you may have for the site administrator."
 msgstr ""
 
@@ -15191,7 +15172,7 @@ msgstr "Uporabnika ni potrdil upravitelj."
 msgid "User options"
 msgstr ""
 
-#: login.php:527 login.php:533 login.php:590 login.php:594
+#: login.php:526 login.php:532 login.php:589 login.php:593
 msgid "User verification"
 msgstr "Preverjanje uporabnika"
 
@@ -15203,7 +15184,7 @@ msgstr ""
 #. I18N: A site configuration setting
 #: admin_site_config.php:368 admin_users.php:321 admin_users.php:845
 #: app/Module/ResearchTaskModule.php:95 edituser.php:150 login.php:183
-#: login.php:253 login.php:320 login.php:347 login.php:535
+#: login.php:253 login.php:320 login.php:347 login.php:534
 #: modules_v3/login_block/LoginBlockModule.php:62
 msgid "Username"
 msgstr "Uporabniško ime"
@@ -15214,11 +15195,6 @@ msgstr ""
 
 #: admin_users.php:326 edituser.php:156 login.php:450
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr ""
-
-#: login.php:451
-#, php-format
-msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
 msgstr ""
 
 #. I18N: Menu entry
@@ -15306,7 +15282,7 @@ msgstr ""
 msgid "Veracruz, Mexico"
 msgstr ""
 
-#: login.php:348 login.php:543
+#: login.php:348 login.php:542
 msgid "Verification code"
 msgstr "Koda za preverjanje"
 
@@ -15753,7 +15729,7 @@ msgstr ""
 msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
 msgstr ""
 
-#: login.php:632
+#: login.php:629
 msgid "You can now login with your user name and password."
 msgstr "Zdaj se lahko prijavite s svojim uporabniškim imenom in geslom."
 
@@ -15793,7 +15769,7 @@ msgstr ""
 msgid "You do not have permission to view this page."
 msgstr ""
 
-#: login.php:576
+#: login.php:575
 msgid "You do not have to take any action; the user can now login."
 msgstr "Ni vam več treba posredovati. Uporabnik se lahko sam prijavi."
 
@@ -15801,7 +15777,7 @@ msgstr "Ni vam več treba posredovati. Uporabnik se lahko sam prijavi."
 msgid "You entered the same IDs.  You cannot merge the same records."
 msgstr "Vpisali ste isto ID-številko. Ne morete spojiti istih zapisov."
 
-#: login.php:628
+#: login.php:625
 msgid "You have confirmed your request to become a registered user."
 msgstr "Potrdili ste zahtevek za registriranega uporabnika."
 
@@ -15874,7 +15850,7 @@ msgstr ""
 msgid "You need to set up an administrator account.  This account can control all aspects of this webtrees installation.  Please choose a strong password."
 msgstr ""
 
-#: login.php:574
+#: login.php:573
 msgid "You now need to review the account details, and set the “approved” status to “yes”."
 msgstr ""
 
@@ -16401,7 +16377,7 @@ msgstr ""
 #: admin_trees_download.php:120 admin_trees_download.php:205
 #: admin_trees_manage.php:293 admin_trees_manage.php:719
 #: admin_trees_merge.php:200 admin_trees_renumber.php:280 login.php:219
-#: login.php:507 modules_v3/login_block/LoginBlockModule.php:93
+#: login.php:506 modules_v3/login_block/LoginBlockModule.php:93
 #: reportengine.php:127 reportengine.php:282 setup.php:190 setup.php:216
 #: setup.php:298 setup.php:384 setup.php:451
 msgid "continue"
@@ -19950,6 +19926,9 @@ msgstr ""
 #~ msgid "Create user"
 #~ msgstr "Ustvari uporabnika"
 
+#~ msgid "Data was not correct, please try again"
+#~ msgstr "Podatki niso pravi. Poskusite še enkrat"
+
 #~ msgid "Delete FAQ item"
 #~ msgstr "Izbriši FAQ delček"
 
@@ -20045,6 +20024,9 @@ msgstr ""
 
 #~ msgid "Some items could not be added due to privacy restrictions"
 #~ msgstr "Nekaterih podatkov ni bilo mogoče vključiti zaradi omejitev zasebnosti"
+
+#~ msgid "The data for the user <b>%s</b> has been checked."
+#~ msgstr "Podatki za uporabnika z imenom <b>%s</b> so preverjeni."
 
 #~ msgid "The following facts did not match.  Select the information you would like to keep."
 #~ msgstr "Naslednja dejstva se ne ujamajo. Izberite podatek, ki bi ga radi obdržali."

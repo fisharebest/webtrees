@@ -31,7 +31,7 @@ require './includes/session.php';
 
 $controller = new PageController;
 $controller
-	->setPageTitle(I18N::translate($WT_TREE->getTitleHtml() . ' — ' . I18N::translate('Export a GEDCOM file')))
+	->setPageTitle(I18N::translate($WT_TREE->getTitleHtml()) . ' — ' . I18N::translate('Export a GEDCOM file'))
 	->restrictAccess(Auth::isManager($WT_TREE));
 
 // Validate user parameters

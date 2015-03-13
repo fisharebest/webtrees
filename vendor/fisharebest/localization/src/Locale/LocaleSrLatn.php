@@ -9,6 +9,16 @@
  */
 class LocaleSrLatn extends LocaleSr {
 	/** {@inheritdoc} */
+	public function endonym() {
+		return 'srpski';
+	}
+
+	/** {@inheritdoc} */
+	protected function endonymSortable() {
+		return 'SRPSKI';
+	}
+
+	/** {@inheritdoc} */
 	public function script() {
 		return new ScriptLatn();
 	}

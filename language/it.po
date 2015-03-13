@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2015-03-12 21:11+0000\n"
+"POT-Creation-Date: 2015-03-13 10:03+0000\n"
 "PO-Revision-Date: 2013-05-13 06:38+0000\n"
 "Last-Translator: Michele Locati <mlocati@gmail.com>\n"
 "Language: it\n"
@@ -56,10 +56,6 @@ msgstr " per sesso"
 #: statisticsplot.php:1356
 msgid " per time period"
 msgstr " per periodo di tempo"
-
-#: admin_trees_download.php:34
-msgid " — "
-msgstr ""
 
 #. I18N: Abbreviation for "number %s"
 #: includes/functions/functions_print_facts.php:187
@@ -777,7 +773,7 @@ msgid "A new password has been requested for your user name."
 msgstr "Una nuova password è stata richiesta per il proprio nome utente."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
-#: login.php:568
+#: login.php:567
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr "Un nuovo utente (%1$s) ha richiesto un account (%2$s) e ha verificato un indirizzo di posta elettronica (%3$s)."
@@ -3778,7 +3774,7 @@ msgstr "Colonne per pagina"
 msgid "Comment"
 msgstr "Commento"
 
-#: login.php:323 login.php:349 login.php:490
+#: login.php:323 login.php:349 login.php:489
 msgid "Comments"
 msgstr "Commenti"
 
@@ -3839,7 +3835,7 @@ msgstr "Concatenazione"
 msgid "Configure"
 msgstr "Configura"
 
-#: admin_users.php:347 edituser.php:213 login.php:474
+#: admin_users.php:347 edituser.php:213 login.php:473
 msgid "Confirm password"
 msgstr "Conferma password"
 
@@ -3972,7 +3968,7 @@ msgstr "Costa Rica"
 msgid "Cote d’Ivoire"
 msgstr "Costa d’Avorio"
 
-#: login.php:645
+#: login.php:633
 msgid "Could not verify the information you entered.  Please try again or contact the site administrator for more information."
 msgstr "Impossibile verificare le informazioni immesse. Riprovare oppure contattare l’amministratore del sito per ulteriori informazioni."
 
@@ -4265,10 +4261,6 @@ msgstr "Dati"
 #: admin_site_config.php:172
 msgid "Data folder"
 msgstr "Cartella dati"
-
-#: login.php:639
-msgid "Data was not correct, please try again"
-msgstr "I dati non erano corretti: riprovare"
 
 #: setup.php:371
 msgid "Database and table names"
@@ -4977,7 +4969,7 @@ msgstr "Descrizione"
 msgid "Description META tag"
 msgstr "Tag META della descrizione (description)"
 
-#: login.php:457
+#: login.php:456
 msgid "Desired password"
 msgstr "Password desiderata"
 
@@ -5682,7 +5674,7 @@ msgid "Execution statistics"
 msgstr "Statistiche di esecuzione"
 
 #. I18N: placeholder text for registration-comments field
-#: login.php:494
+#: login.php:493
 msgid "Explain why you are requesting an account."
 msgstr "Indicare il motivo per cui si sta chiedendo un account."
 
@@ -6174,11 +6166,6 @@ msgstr "Dimensioni del file"
 msgid "File successfully uploaded"
 msgstr "File caricato correttamente"
 
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:65
-msgid "THe file was only partially uploaded.  Please try again."
-msgstr "Il file è stato caricato solo parzialmente, riprovare"
-
 #. I18N: gedcom tag FILE
 #: admin_media.php:475 app/Gedcom/GedcomTag.php:485
 msgid "Filename"
@@ -6350,7 +6337,7 @@ msgstr "Questo campo registra il tempio in cui sono avvenute le investiture morm
 #. I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names
 #: admin_trees_manage.php:285
 #, php-format
-msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then the you would need to remove %3$s."
+msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
 msgstr ""
 
 #: admin_users.php:590
@@ -6947,7 +6934,7 @@ msgstr "Ciao %s…."
 msgid "Hello %s…<br>Thank you for your registration."
 msgstr "Grazie per la registrazione, %s…"
 
-#: login.php:317 login.php:566
+#: login.php:317 login.php:565
 msgid "Hello administrator…"
 msgstr "Ciao Amministratore…"
 
@@ -7214,8 +7201,8 @@ msgid "If you are the website administrator, you should check that:"
 msgstr "L’amministratore del sito dovrebbe verificare che:"
 
 #: site-unavailable.php:109
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
-msgstr "Se non si riesce a risolvere il problema da soli è possibile chiedere aiuto nel forum all’indirizzo <a href=\"http://webtrees.net\">webtrees.net</a>"
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
+msgstr ""
 
 #: admin_trees_manage.php:269
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -8991,11 +8978,6 @@ msgstr "I fattori di zoom minimo e massimo per la mappa di Google. 1 corrisponde
 msgid "Minimum number of occurrences to be a “common surname”"
 msgstr "Numero minimo di ricorrenze per essere un «cognome comune»"
 
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:71
-msgid "THe PHP temporary folder is missing."
-msgstr "Cartella temporanea PHP non trovata"
-
 #. I18N: Name of a module/report
 #: app/Module/MissingFactsReportModule.php:26
 #: modules_v3/missing_facts_report/report.xml:3
@@ -9474,7 +9456,7 @@ msgid "New registration at %s"
 msgstr "Nuova registrazione a %s"
 
 #. I18N: %s is a server name/URL
-#: login.php:585
+#: login.php:584
 #, php-format
 msgid "New user at %s"
 msgstr "Nuovo utente a %s"
@@ -10319,7 +10301,7 @@ msgstr "Età dei genitori"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:381 admin_users.php:334 edituser.php:201
-#: login.php:188 login.php:254 login.php:539
+#: login.php:188 login.php:254 login.php:538
 #: modules_v3/login_block/LoginBlockModule.php:67 setup.php:437
 msgid "Password"
 msgstr "Password"
@@ -10328,7 +10310,7 @@ msgstr "Password"
 msgid "Passwords do not match."
 msgstr "Le due password non corrispondono."
 
-#: edituser.php:207 login.php:468
+#: edituser.php:207 login.php:467
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”."
 msgstr "Le password devono essere lunghe almeno 6 caratteri, e si fa distinzione tra maiuscole e minuscole: «segreto» è differente da «SEGRETO»."
 
@@ -11813,7 +11795,7 @@ msgctxt "MALE"
 msgid "Seller"
 msgstr "Venditore"
 
-#: app/Module/UserMessagesModule.php:72 login.php:547 message.php:136
+#: app/Module/UserMessagesModule.php:72 login.php:546 message.php:136
 msgid "Send"
 msgstr "Invia"
 
@@ -13288,12 +13270,17 @@ msgstr "Il visualizzatore multimediale può mostrare un collegamento che, se cli
 msgid "The PGV to webtrees wizard is an automated process to assist administrators make the move from a PGV installation to a new webtrees one.  It will transfer all PGV GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:"
 msgstr "Il trasferimento guidato da PGV a webtrees è un processo automatizzato che facilita la migrazione da PGV ad una nuova installazione di webtrees. Tutti i GEDCOM, nonché altre informazioni presenti nel database, verranno trasferiti da PGV direttamente nel proprio nuovo database di webtrees. Devono essere soddisfatti i seguenti requisiti:"
 
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:71
+msgid "The PHP temporary folder is missing."
+msgstr "Cartella temporanea PHP non trovata"
+
 #: admin_users.php:97
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s"
 msgstr "L’amministratore del sito %s ha approvato la richiesta di accesso. Ora è possibile accedere seguendo questo collegamento: %s"
 
-#: login.php:630
+#: login.php:627
 msgid "The administrator has been informed.  As soon as they give you permission to login, you can login with your user name and password."
 msgstr "L’amministratore è stato informato. Appena darà l’autorizzazione, sarà possibile collegarsi col proprio nome utente e la propria password."
 
@@ -13312,11 +13299,6 @@ msgstr "Le modifiche a «%s» sono state rifiutate."
 #: app/Module/ClippingsCartModule.php:133
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple.  Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name.  There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
 msgstr "Il Carrello ritagli permette di prendere estratti («ritagli») da questo albero genealogico e raggrupparli in un singolo file da scaricare e importare nel proprio programma di genealogia. Il file scaricabile viene salvato in formato GEDCOM.<br><ul><li>Come prendere i ritagli?<br>Questo è veramente semplice; ogni volta che viene mostrato un nome cliccabile (persona, famiglia o fonte) si può andare alla pagina dei dettagli di quel nome. Lì ci sarà l’opzione <b>Aggiungi al Carrello ritagli</b>. Quando si fa clic su quel collegamento saranno disponibili varie opzioni per il download.</li><li>Come scaricare?<br>Una volta che ci saranno elementi nel proprio carrello sarà possibile scaricarli semplicemente cliccando sul collegamento <b>Scarica ora</b>. Seguire le istruzioni e i collegamenti.</li></ul>"
-
-#: login.php:596
-#, php-format
-msgid "The data for the user <b>%s</b> has been checked."
-msgstr "Le informazioni dell’utente <b>%s</b> sono state verificate."
 
 #: site-unavailable.php:66
 msgid "The database reported the following error message:"
@@ -13411,6 +13393,11 @@ msgstr "Il file %s  è stato eliminato."
 #, php-format
 msgid "The file %s has been uploaded."
 msgstr "Il file %s è stato caricato."
+
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:65
+msgid "The file was only partially uploaded.  Please try again."
+msgstr "Il file è stato caricato solo parzialmente, riprovare"
 
 #. I18N: %s is a filename
 #: medialist.php:294 mediaviewer.php:111
@@ -13654,6 +13641,11 @@ msgstr[1] "I due alberi genealogici hanno %1$s record che usano lo stesso «XREF
 #: admin_site_upgrade.php:502
 msgid "The upgrade is complete."
 msgstr "L’aggiornamento è stato completato."
+
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:62
+msgid "The uploaded file exceeds the allowed size."
+msgstr "I file caricati superano la dimensione massima consentita"
 
 #: admin_users.php:788
 #, php-format
@@ -14805,11 +14797,11 @@ msgid "Type of place markers in Place Hierarchy"
 msgstr "Tipo dei segnalibri nella gerarchia dei luoghi"
 
 #. I18N: placeholder text for repeat-password field
-#: admin_users.php:350 login.php:479
+#: admin_users.php:350 login.php:478
 msgid "Type the password again."
 msgstr "Inserire nuovamente la password."
 
-#: edituser.php:219 login.php:484 setup.php:443
+#: edituser.php:219 login.php:483 setup.php:443
 msgid "Type your password again, to make sure you have typed it correctly."
 msgstr "Inserire nuovamente la propria password per assicurarsi di averla digitata correttamente."
 
@@ -14995,11 +14987,6 @@ msgstr "Carica file multimediali"
 msgid "Upload one or more media files from your local computer.  Media files can be pictures, video, audio, or other formats."
 msgstr "Permette di caricare uno o più file multimediali dal proprio computer locale.  I file multimediali possono essere immagini, video, brani audio o altri formati."
 
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:62
-msgid "The uploaded file exceeds the allowed size."
-msgstr "I file caricati superano la dimensione massima consentita"
-
 #: app/Stats.php:6308
 msgid "Uruguay"
 msgstr "Uruguay"
@@ -15026,7 +15013,7 @@ msgid "Use a “?” to match a single character, use “*” to match zero or m
 msgstr "Utilizza un «?» per indicare un singolo carattere, &laquo;*&raquo; per indicare zero o più caratteri."
 
 #. I18N: placeholder text for new-password field
-#: admin_users.php:337 login.php:462
+#: admin_users.php:337 login.php:461
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
@@ -15078,7 +15065,7 @@ msgstr "Usa questi pulsanti per riordinare l’ordine delle voci all’interno d
 msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the individual’s page."
 msgstr "Utilizzare questo campo per segnalare che questo elemento multimediale è quello  evidenziato o principale per la persona cui è associato. L’immagine evidenziata è quella che verrà utilizzata sui grafici e sulla pagina della persona."
 
-#: login.php:500
+#: login.php:499
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site.  You can also use this to enter any other comments you may have for the site administrator."
 msgstr "Usare questo campo per descrivere all’amministratore del sito il motivo per cui si richieste un account utente e in che relazione si è con la genealogia presente in questo sito.  È possibile usare questo campo anche per inserire altri commenti indirizzati all’amministratore del sito."
 
@@ -15110,7 +15097,7 @@ msgstr "Utente non verificato dall’amministratore."
 msgid "User options"
 msgstr "Opzioni relative agli utenti"
 
-#: login.php:527 login.php:533 login.php:590 login.php:594
+#: login.php:526 login.php:532 login.php:589 login.php:593
 msgid "User verification"
 msgstr "Verifica utente"
 
@@ -15122,7 +15109,7 @@ msgstr "Stringa user-agent"
 #. I18N: A site configuration setting
 #: admin_site_config.php:368 admin_users.php:321 admin_users.php:845
 #: app/Module/ResearchTaskModule.php:95 edituser.php:150 login.php:183
-#: login.php:253 login.php:320 login.php:347 login.php:535
+#: login.php:253 login.php:320 login.php:347 login.php:534
 #: modules_v3/login_block/LoginBlockModule.php:62
 msgid "Username"
 msgstr "Nome utente"
@@ -15134,11 +15121,6 @@ msgstr "Nome utente o indirizzo email"
 #: admin_users.php:326 edituser.php:156 login.php:450
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
 msgstr "Nei nomi utente non si fa distinzione tra maiuscole e minuscole, e le lettere accentate vengono ignorate: così ad esempio «chloe», «chloë» e «Chloe» sono considerate uguali."
-
-#: login.php:451
-#, php-format
-msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
-msgstr "I nomi utente non possono contenere i seguenti caratteri: &lt; &gt; &quot; %% { } ;"
 
 #. I18N: Menu entry
 #: admin.php:563 admin.php:571 app/Theme/AdministrationTheme.php:125
@@ -15225,7 +15207,7 @@ msgstr "Ventose"
 msgid "Veracruz, Mexico"
 msgstr "Veracruz, Messico"
 
-#: login.php:348 login.php:543
+#: login.php:348 login.php:542
 msgid "Verification code"
 msgstr "Codice di verifica:"
 
@@ -15672,7 +15654,7 @@ msgstr "È possibile scaricare una copia delle specifiche GEDCOM all’indirizzo
 msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
 msgstr "Si può rendere più facile la ricerca di donne sposate registrando il loro nome coniugale.<br>Tuttavia non tutte le donne prendono il cognome del marito, quindi prestare attenzione a non introdurre dati errati nel proprio database."
 
-#: login.php:632
+#: login.php:629
 msgid "You can now login with your user name and password."
 msgstr "Ora è possibile collegarsi con il proprio nome utente e la propria password."
 
@@ -15712,7 +15694,7 @@ msgstr "Non è possibile effettuare l’accesso in quanto il browser non accetta
 msgid "You do not have permission to view this page."
 msgstr "Non si ha il permesso di vedere questa pagina."
 
-#: login.php:576
+#: login.php:575
 msgid "You do not have to take any action; the user can now login."
 msgstr "Non è necessario intraprendere alcuna azione, l’utente può effettuare l’accesso."
 
@@ -15720,7 +15702,7 @@ msgstr "Non è necessario intraprendere alcuna azione, l’utente può effettuar
 msgid "You entered the same IDs.  You cannot merge the same records."
 msgstr "Hai inserito la stessa ID. Non è possibile unire lo stesso record."
 
-#: login.php:628
+#: login.php:625
 msgid "You have confirmed your request to become a registered user."
 msgstr "Hai confermato la richiesta per diventare un utente registrato."
 
@@ -15793,7 +15775,7 @@ msgstr "È necessario effettuare nuovamente la procedura di accesso, utilizzando
 msgid "You need to set up an administrator account.  This account can control all aspects of this webtrees installation.  Please choose a strong password."
 msgstr "È necessario definire un utente amministratore che può controllare ogni aspetto di questa installazione di webtrees; pertanto si consiglia di utilizzare una password sicura."
 
-#: login.php:574
+#: login.php:573
 msgid "You now need to review the account details, and set the “approved” status to “yes”."
 msgstr "È ora necessario esaminare i dettagli dell’account utente e impostare lo stato «approvato» a «sì»."
 
@@ -16320,7 +16302,7 @@ msgstr "elenco compatto"
 #: admin_trees_download.php:120 admin_trees_download.php:205
 #: admin_trees_manage.php:293 admin_trees_manage.php:719
 #: admin_trees_merge.php:200 admin_trees_renumber.php:280 login.php:219
-#: login.php:507 modules_v3/login_block/LoginBlockModule.php:93
+#: login.php:506 modules_v3/login_block/LoginBlockModule.php:93
 #: reportengine.php:127 reportengine.php:282 setup.php:190 setup.php:216
 #: setup.php:298 setup.php:384 setup.php:451
 msgid "continue"
@@ -19903,6 +19885,9 @@ msgstr "…"
 #~ msgid "Create user"
 #~ msgstr "Crea un utente"
 
+#~ msgid "Data was not correct, please try again"
+#~ msgstr "I dati non erano corretti: riprovare"
+
 #~ msgctxt "font name"
 #~ msgid "DejaVu"
 #~ msgstr "DejaVu"
@@ -20036,6 +20021,9 @@ msgstr "…"
 
 #~ msgid "If this box is checked, this user will be able to edit his account information.  Although this is not generally recommended, you can create a single user name and password for multiple users.  When this box is unchecked for all users with the shared account, they are prevented from editing the account information and only an administrator can alter that account."
 #~ msgstr "Se questa casella è selezionata, l’utente potrà modificare le informazioni del proprio account utente.  Sebbene non sia generalmente consigliato, è possibile creare un nome utente (e relativa password) condiviso da più utenti.  Quando questa casella è deselezionata per tutti gli utenti che usano l’account condiviso, tali utenti non potranno modificare le informazioni dell’account (e solo un amministratore potrà farlo)."
+
+#~ msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
+#~ msgstr "Se non si riesce a risolvere il problema da soli è possibile chiedere aiuto nel forum all’indirizzo <a href=\"http://webtrees.net\">webtrees.net</a>"
 
 #~ msgid "If you have a note to add to this record, this is the place to do so.<br><br>Just click the link, a window will open, and you can type your note.  When you are finished typing, just click the button below the box, close the window, and that’s all."
 #~ msgstr "Questo è il punto in cui è possibile aggiungere una nota a questo record.<br><br>Basta cliccare sul collegamento: verrà aperta una finestra in cui inserire la propria nota.  Una volta inserite le informazioni, basta cliccare il pulsante sotto la casella, poi chiudere la finestra. Tutto qui."
@@ -20185,6 +20173,9 @@ msgstr "…"
 #~ msgid "The current webtrees admin username must be the same as an existing PGV admin username"
 #~ msgstr "Il nome dell’account dell’amministratore attuale in webtrees deve coincidere con il nome utente di un amministratore di PGV"
 
+#~ msgid "The data for the user <b>%s</b> has been checked."
+#~ msgstr "Le informazioni dell’utente <b>%s</b> sono state verificate."
+
 #~ msgid "The following calendars are supported:"
 #~ msgstr "Sono supportati i seguenti calendari:"
 
@@ -20289,6 +20280,9 @@ msgstr "…"
 
 #~ msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td style=\"vertical-align:middle\">This image might be used when the gender of the individual is unknown:"
 #~ msgstr "Usare le immagini silhouette quando non è stata specificata nessuna immagine in evidenza per una persona è stato specificato.  Le immagini utilizzate sono specifiche per il sesso della persona in esame.<br><br><table><tr><td style=\"vertical-align:middle\">middle\">Questa immagine potrebbe essere usata quando il sesso della persona non è noto:"
+
+#~ msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
+#~ msgstr "I nomi utente non possono contenere i seguenti caratteri: &lt; &gt; &quot; %% { } ;"
 
 #~ msgid "Users’ languages"
 #~ msgstr "Lingue degli utenti"

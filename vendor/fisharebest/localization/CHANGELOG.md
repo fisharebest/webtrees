@@ -1,6 +1,9 @@
 CHANGE LOG
 ==========
 
+## 1.1.1 (2015-03-13)
+ - Fix endonym (sr-Latn)
+
 ## 1.1.0 (2015-03-12)
  - Add Divehi (dv)
  - Add Maori (mi)
