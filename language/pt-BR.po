@@ -3,13 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2014-09-01 19:12-0300\n"
+"PO-Revision-Date: 2015-03-13 20:21+0100\n"
 "Last-Translator: Alan Benazzi <alan.benazzi@gmail.com>\n"
-"Language: pt\n"
+"Language-Team: Portuguese (Brazil) "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/pt-BR/>\n"
+"Language: pt-BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.3-dev\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -768,7 +771,7 @@ msgstr "Uma nova senha foi criada e enviada para %s. Você pode alterar essa sen
 
 #: login.php:252
 msgid "A new password has been requested for your user name."
-msgstr "Uma nova senha foi solicitada para o seu nome de usuário!"
+msgstr "Uma nova senha foi solicitada para o seu nome de usuário."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: login.php:567
@@ -3362,10 +3365,10 @@ msgstr "Alterações"
 
 #. I18N: title for list of recent changes
 #: app/Module/RecentChangesModule.php:68
-#, fuzzy, php-format
+#, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] "Alterações no último dia"
+msgstr[0] "Alterações no último %s dia"
 msgstr[1] "Alterações nos últimos %s dias"
 
 #: admin_trees_manage.php:484
@@ -3679,7 +3682,7 @@ msgstr "Clique em %s para escolher a pessoa como Chefe de família"
 
 #: edit_interface.php:1747
 msgid "Click a row, then drag-and-drop to re-order media"
-msgstr "Clique em uma linha, arraste e solte para reordenar as mídias "
+msgstr "Clique em uma linha, arraste e solte para reordenar as mídias"
 
 #: admin_trees_manage.php:690
 msgid "Click here for PhpGedView to webtrees transfer wizard"
@@ -3910,7 +3913,7 @@ msgstr ""
 #: admin_trees_download.php:151 app/Module/ClippingsCartModule.php:209
 #: app/Module/ClippingsCartModule.php:600
 msgid "Convert from UTF-8 to ISO-8859-1"
-msgstr "Converter o arquivo GEDCOM do formato UTF-8 para ISO-8859-1?"
+msgstr "Converter de UTF-8 para ISO-8859-1"
 
 #: app/Stats.php:6115
 msgid "Cook Islands"
@@ -7168,7 +7171,11 @@ msgstr "Se uma pessoa não é conhecida por seu primeiro nome, o nome preferido 
 #. I18N: Help text for the “Names to add to common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1236
 msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list.  It can be added here manually.  If more than one surname is entered, they must be separated by a comma.  <b>Surnames are case-sensitive.</b>"
-msgstr "Se o número de vezes que um certo sobrenome ocorre é mais baixo que o limite, ele não aparecerá na lista. Ele pode ser adicionado aqui manualmente. Se mais que um sobrenome é inserido, eles devem ser separados por vírgula. <b>Sobrenomes são sensíveis à capitalização<b/>"
+msgstr ""
+"Se o número de vezes que um certo sobrenome ocorre é mais baixo que o "
+"limite, ele não aparecerá na lista. Ele pode ser adicionado aqui "
+"manualmente. Se mais que um sobrenome é inserido, eles devem ser separados "
+"por vírgula. <b>Sobrenomes são sensíveis à capitalização.</b>"
 
 #: help_text.php:255
 #, php-format
@@ -12238,7 +12245,7 @@ msgstr "Exibir sobrenomes mais comuns?"
 
 #: includes/functions/functions_print_lists.php:700
 msgid "Show couples where either partner married more than once."
-msgstr "Mostrar casais em que um dos parceiros foi casados ​​mais de uma vez."
+msgstr "Mostrar casais em que um dos parceiros foi casados mais de uma vez."
 
 #: includes/functions/functions_print_lists.php:615
 msgid "Show couples where only the female partner is deceased."
@@ -12271,7 +12278,7 @@ msgstr "Exibir diferença de datas"
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:268
 msgid "Show date of last update?"
-msgstr "Exibir data da última atualização"
+msgstr "Exibir data da última atualização?"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:424
@@ -12377,7 +12384,7 @@ msgstr "Exibir apenas Nascimentos, Falecimentos e Casamentos?"
 #: app/Module/OnThisDayModule.php:118
 #: app/Module/UpcomingAnniversariesModule.php:129
 msgid "Show only events of living individuals?"
-msgstr "Exibir somente eventos dos Vivos."
+msgstr "Exibir somente eventos das pessoas vivas?"
 
 #: includes/functions/functions_print_lists.php:150
 msgid "Show only females."
@@ -13286,13 +13293,13 @@ msgstr "O Administrador será informado e tão logo ele dê permissão, você po
 #: action.php:47
 #, php-format
 msgid "The changes to “%s” have been accepted."
-msgstr "As alterações para \"% s\" foram aceitas."
+msgstr "As alterações para \"%s\" foram aceitas."
 
 #. I18N: %s is the name of an individual, source or other record
 #: action.php:218
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr "As alterações para \"% s\" foram rejeitadas."
+msgstr "As alterações para \"%s\" foram rejeitadas."
 
 #: app/Module/ClippingsCartModule.php:133
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple.  Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name.  There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
@@ -13933,7 +13940,9 @@ msgstr "ESta pessoa foi excluída. Você deveria revisar esta exclusão e então
 
 #: individual.php:75
 msgid "This individual has been edited.  The changes need to be reviewed by a moderator."
-msgstr "Essa pessoa foi  editada. As mudanças precisam ser analisadas ​​por um moderador."
+msgstr ""
+"Essa pessoa foi  editada. As mudanças precisam ser analisadas por um "
+"moderador."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: individual.php:66
@@ -15480,7 +15489,7 @@ msgstr "Quando um usuário é associado a um registro individual em uma árvore 
 
 #: admin_pgv_to_wt.php:165
 msgid "Where is your PhpGedView installation?"
-msgstr "Onde está sua instalação do PhpGedView"
+msgstr "Onde está sua instalação do PhpGedView?"
 
 #: app/Module/SiteMapModule.php:293
 msgid "Which family trees should be included in the sitemaps?"
