@@ -6177,7 +6177,7 @@ msgstr "Η Αποστολή Αρχείου ολοκληρώθηκε με επι�
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
-msgid "THe file was only partially uploaded.  Please try again."
+msgid "The file was only partially uploaded.  Please try again."
 msgstr ""
 
 #. I18N: gedcom tag FILE
@@ -8994,7 +8994,7 @@ msgstr "Ελάχ. αρ. καταχωρήσεων για να θεωρείται 
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
-msgid "THe PHP temporary folder is missing."
+msgid "The PHP temporary folder is missing."
 msgstr ""
 
 #. I18N: Name of a module/report

@@ -6170,7 +6170,7 @@ msgstr "Datei wurde erfolgreich auf Ihren Server hochgeladen"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
-msgid "THe file was only partially uploaded.  Please try again."
+msgid "The file was only partially uploaded.  Please try again."
 msgstr "Die Datei wurde nur teilweise hochgeladen. Bitte versuchen Sie es erneut."
 
 #. I18N: gedcom tag FILE
@@ -8987,7 +8987,7 @@ msgstr "Minimale Anzahl von Vorkommen, um ein »Häufiger Nachname« zu sein"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
-msgid "THe PHP temporary folder is missing."
+msgid "The PHP temporary folder is missing."
 msgstr "Das von PHP benötigte <i>tmp</i> Zwischenverzeichnis existiert nicht"
 
 #. I18N: Name of a module/report

@@ -6170,7 +6170,7 @@ msgstr ""
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
-msgid "THe file was only partially uploaded.  Please try again."
+msgid "The file was only partially uploaded.  Please try again."
 msgstr ""
 
 #. I18N: gedcom tag FILE
@@ -8987,7 +8987,7 @@ msgstr "\"सामान्य आडनाव\" आढळण्याची �
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
-msgid "THe PHP temporary folder is missing."
+msgid "The PHP temporary folder is missing."
 msgstr "PHP तात्पुरती निर्देशिका गहाळ"
 
 #. I18N: Name of a module/report

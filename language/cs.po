@@ -6206,7 +6206,7 @@ msgstr "Soubor byl úspěšně nahrán"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
-msgid "THe file was only partially uploaded.  Please try again."
+msgid "The file was only partially uploaded.  Please try again."
 msgstr "Soubor byl nahrán jen částečně, prosím zkuste to znovu"
 
 #. I18N: gedcom tag FILE
@@ -9023,7 +9023,7 @@ msgstr "Min. počet výskytů pro „běžné příjmení“"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
-msgid "THe PHP temporary folder is missing."
+msgid "The PHP temporary folder is missing."
 msgstr "Chybí dočasný PHP adresář"
 
 #. I18N: Name of a module/report

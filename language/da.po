@@ -6174,7 +6174,7 @@ msgstr "Filen er uploadet"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
-msgid "THe file was only partially uploaded.  Please try again."
+msgid "The file was only partially uploaded.  Please try again."
 msgstr "Filen blev kun uploadet delvist, forsøg igen"
 
 #. I18N: gedcom tag FILE
@@ -8991,7 +8991,7 @@ msgstr "Minimum antal for at blive \"almindeligt efternavn\""
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
-msgid "THe PHP temporary folder is missing."
+msgid "The PHP temporary folder is missing."
 msgstr "Manglende midlertidig PHP mappe"
 
 #. I18N: Name of a module/report

@@ -6146,7 +6146,7 @@ msgstr "文件成功上传"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
-msgid "THe file was only partially uploaded.  Please try again."
+msgid "The file was only partially uploaded.  Please try again."
 msgstr "文件只是部分上传,请再试一次"
 
 #. I18N: gedcom tag FILE
@@ -8963,7 +8963,7 @@ msgstr "常见的姓"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
-msgid "THe PHP temporary folder is missing."
+msgid "The PHP temporary folder is missing."
 msgstr "丢失PHP临时目录"
 
 #. I18N: Name of a module/report

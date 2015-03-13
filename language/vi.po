@@ -6145,7 +6145,7 @@ msgstr "Tập tin gửi lên tốt đẹp"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
-msgid "THe file was only partially uploaded.  Please try again."
+msgid "The file was only partially uploaded.  Please try again."
 msgstr "Tập tin chỉ gửi lên nửa chừng, xin làm lại"
 
 #. I18N: gedcom tag FILE
@@ -8962,7 +8962,7 @@ msgstr "Số lần tối thiểu để xem là “họ phổ biến”"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
-msgid "THe PHP temporary folder is missing."
+msgid "The PHP temporary folder is missing."
 msgstr "Lạc thư mục tạm PHP"
 
 #. I18N: Name of a module/report

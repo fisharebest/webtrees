@@ -6175,7 +6175,7 @@ msgstr "Fichier téléversé avec succès"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
-msgid "THe file was only partially uploaded.  Please try again."
+msgid "The file was only partially uploaded.  Please try again."
 msgstr "Fichier reçu partiellement. Veuillez recommencer."
 
 #. I18N: gedcom tag FILE
@@ -8992,7 +8992,7 @@ msgstr "Min. d’occurrences d’un nom pour être dans la liste des «&nbsp;Pri
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
-msgid "THe PHP temporary folder is missing."
+msgid "The PHP temporary folder is missing."
 msgstr "Répertoire temporaire PHP manquant"
 
 #. I18N: Name of a module/report

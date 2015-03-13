@@ -6205,7 +6205,7 @@ msgstr "Datoteka uspješno učitana"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
-msgid "THe file was only partially uploaded.  Please try again."
+msgid "The file was only partially uploaded.  Please try again."
 msgstr "Datoteka je samo djelomično učitana, molimo pokušajte ponovno"
 
 #. I18N: gedcom tag FILE
@@ -9022,7 +9022,7 @@ msgstr "Min. broj pojavljivanja za „Najčešće prezime”"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
-msgid "THe PHP temporary folder is missing."
+msgid "The PHP temporary folder is missing."
 msgstr "Nedostaje PHP privremena mapa."
 
 #. I18N: Name of a module/report

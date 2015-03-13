@@ -6177,7 +6177,7 @@ msgstr "הקובץ הועלה בהצלחה"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
-msgid "THe file was only partially uploaded.  Please try again."
+msgid "The file was only partially uploaded.  Please try again."
 msgstr "הקובץ עלה חלקית, נסה שנית."
 
 #. I18N: gedcom tag FILE
@@ -8994,7 +8994,7 @@ msgstr "הכמות המינימאלית של מקרים כדי להיכלל ב-�
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
-msgid "THe PHP temporary folder is missing."
+msgid "The PHP temporary folder is missing."
 msgstr "חסרה תיקייה זמנית של PHP"
 
 #. I18N: Name of a module/report

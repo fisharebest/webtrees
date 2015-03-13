@@ -6237,7 +6237,7 @@ msgstr "Datoteka je bila uspešno naložena"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
-msgid "THe file was only partially uploaded.  Please try again."
+msgid "The file was only partially uploaded.  Please try again."
 msgstr "Datoteka je bila le delno naložena. Poskusite ponovno"
 
 #. I18N: gedcom tag FILE
@@ -9054,7 +9054,7 @@ msgstr ""
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
-msgid "THe PHP temporary folder is missing."
+msgid "The PHP temporary folder is missing."
 msgstr "Manjka začasni imenik za PHP"
 
 #. I18N: Name of a module/report

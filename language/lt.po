@@ -6205,7 +6205,7 @@ msgstr "Byla sėkmingai nusiųsta"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
-msgid "THe file was only partially uploaded.  Please try again."
+msgid "The file was only partially uploaded.  Please try again."
 msgstr "Nusiųsta tik dalis bylos, bandykite iš naujo"
 
 #. I18N: gedcom tag FILE
@@ -9022,7 +9022,7 @@ msgstr "Min. kiekis atitikimų, esančių su „bendromis pavardėmis“"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
-msgid "THe PHP temporary folder is missing."
+msgid "The PHP temporary folder is missing."
 msgstr "Trūksta PHP laikinosios aplankos"
 
 #. I18N: Name of a module/report
