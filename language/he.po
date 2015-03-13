@@ -58,13 +58,6 @@ msgstr " למגדר"
 msgid " per time period"
 msgstr " בתקופת זמן"
 
-<<<<<<< HEAD
-=======
-#: admin_trees_download.php:34
-msgid " — "
-msgstr " — "
-
->>>>>>> translate.webtrees.net Hebrew -  98.5% - 3910 of 3966
 #. I18N: Abbreviation for "number %s"
 #: includes/functions/functions_print_facts.php:187
 #: includes/functions/functions_print_facts.php:192

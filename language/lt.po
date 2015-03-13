@@ -57,13 +57,6 @@ msgstr " /vyrai-moterys"
 msgid " per time period"
 msgstr " per laiko tarpą"
 
-<<<<<<< HEAD
-=======
-#: admin_trees_download.php:34
-msgid " — "
-msgstr " — "
-
->>>>>>> translate.webtrees.net Lithuanian -  95.9% - 3805 of 3966
 #. I18N: Abbreviation for "number %s"
 #: includes/functions/functions_print_facts.php:187
 #: includes/functions/functions_print_facts.php:192
