@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-03-12 21:41+0100\n"
+"PO-Revision-Date: 2015-03-14 21:33+0100\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Afrikaans <http://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
+"Language-Team: Afrikaans "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/af/>\n"
 "Language: af\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -14090,7 +14091,7 @@ msgstr ""
 
 #: mediafirewall.php:410
 msgid "This media file is broken and cannot be watermarked."
-msgstr "Hierdie medialêer is gebreek en kan nie gewatermerk word nie"
+msgstr "Hierdie medialêer is gebreek en kan nie gewatermerk word nie."
 
 #: mediaviewer.php:73
 msgid "This media object does not exist or you do not have permission to view it."
@@ -15727,7 +15728,7 @@ msgstr ""
 
 #: edit_interface.php:1548
 msgid "You must provide a repository name."
-msgstr "U moet 'n bewaarpleknaam verskaf"
+msgstr "U moet 'n bewaarpleknaam verskaf."
 
 #: edit_interface.php:1210
 msgid "You must provide a source title"
