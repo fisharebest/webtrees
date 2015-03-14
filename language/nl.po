@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-03-14 10:26+0100\n"
+"PO-Revision-Date: 2015-03-14 11:42+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
@@ -422,7 +422,7 @@ msgstr[1] "%s weken"
 #: admin_trees_download.php:164
 #, php-format
 msgid "%s will be prepended to media filenames."
-msgstr ""
+msgstr "%s wordt toegevoegd aan het begin van bestandsnamen."
 
 #: app/I18N.php:510
 #, php-format
@@ -12001,7 +12001,16 @@ msgstr "Kies <b>Ja</b> om het RIN-nummer te gebruiken in plaats van het GEDCOM-I
 #. I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting
 #: admin_trees_config.php:1603
 msgid "Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>An individual who has all of the ordinances done will have <b>BESP</b> printed after their name.  Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code.  For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances."
-msgstr "Als deze optie is ingeschakeld, worden de codes voor LDS-rituelen getoond in de overzichtsvakken van personen.<ul><li><b>B</b> - LDS Doop (<b>B</b>aptism)</li><li><b>E</b> - LDS begiftiging (<b>E</b>ndowed)</li><li><b>S</b> - LDS ega verzegeling (sealed to <b>S</b>pouse)</li><li><b>P</b> - LDS kind verzegeling (sealed to <b>P</b>arents)</li></ul>Een persoon waarbij al deze rituelen hebben plaatsgevonden, heeft \"<b>BESP</b>\" afgedrukt achter de naam. Als een van de rituelen ontbreekt, wordt de code getoond als bijvoorbeeld \"<b>BE__</b>\" met _ voor het ontbrekende ritueel."
+msgstr ""
+"Als deze optie is ingeschakeld, worden de codes voor LDS-rituelen getoond in "
+"de overzichtsvakken van personen.<ul><li><b>B</b> - LDS Doop "
+"(<b>B</b>aptism)</li><li><b>E</b> - LDS Begiftiging "
+"(<b>E</b>ndowed)</li><li><b>S</b> - LDS Eega-verzegeling (sealed to "
+"<b>S</b>pouse)</li><li><b>P</b> - LDS Kind-verzegeling (sealed to "
+"<b>P</b>arents)</li></ul>Een persoon waarbij al deze rituelen hebben "
+"plaatsgevonden, heeft <b>BESP</b> afgedrukt achter de naam. Als een van de "
+"rituelen ontbreekt, wordt de code getoond als bijvoorbeeld <b>BE__</b> met _ "
+"voor het ontbrekende ritueel."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: admin_trees_config.php:1714
