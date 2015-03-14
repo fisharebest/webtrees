@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-03-14 11:42+0100\n"
+"PO-Revision-Date: 2015-03-14 14:14+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
@@ -998,7 +998,7 @@ msgstr "Afkorting"
 
 #: app/Stats.php:6063
 msgid "Acadia"
-msgstr "Acadia"
+msgstr "Acadië"
 
 #: edit_changes.php:174 edit_changes.php:182
 msgid "Accept"
@@ -2473,7 +2473,7 @@ msgstr "Begint met"
 
 #: app/Stats.php:6091
 msgid "Belarus"
-msgstr "Belarus"
+msgstr "Wit-Rusland"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:62
@@ -3374,7 +3374,7 @@ msgstr "Kanaaleilanden"
 #. I18N: gedcom tag CHAR
 #: app/Gedcom/GedcomTag.php:271
 msgid "Character set"
-msgstr "Character set"
+msgstr "Tekenreeks"
 
 #: admin_modules.php:174
 msgid "Chart"
@@ -7820,7 +7820,7 @@ msgstr "Khordad"
 
 #: app/Gedcom/GedcomCodeTemp.php:182
 msgid "Kiev, Ukraine"
-msgstr "Kiev, Ukraine"
+msgstr "Kiev, Oekraïne"
 
 #: app/Stats.php:6189
 msgid "Kiribati"
@@ -7852,7 +7852,7 @@ msgstr "Kislev"
 
 #: app/Gedcom/GedcomCodeTemp.php:184
 msgid "Kona, Hawaii"
-msgstr "Kona, Hawaii"
+msgstr "Kona, Hawaï"
 
 #: app/Stats.php:6191
 msgid "Korea"
@@ -7902,7 +7902,7 @@ msgstr "LDS Tempel"
 
 #: app/Gedcom/GedcomCodeTemp.php:166
 msgid "Laie, Hawaii"
-msgstr "Laie, Hawaii"
+msgstr "Laie, Hawaï"
 
 #. I18N: page orientation
 #: admin_trees_config.php:61 modules_v3/change_report/report.xml:10
@@ -8038,7 +8038,7 @@ msgstr "Nivo"
 
 #: app/Stats.php:6195
 msgid "Liberia"
-msgstr "Liberia"
+msgstr "Liberië"
 
 #: app/Stats.php:6196
 msgid "Libya"
@@ -8224,7 +8224,7 @@ msgstr "Lengtegraad"
 
 #: app/Gedcom/GedcomCodeTemp.php:186
 msgid "Los Angeles, California"
-msgstr "Los Angeles, California"
+msgstr "Los Angeles, Californië"
 
 #: login.php:213 login.php:229 login.php:250
 #: modules_v3/login_block/LoginBlockModule.php:87
@@ -8809,7 +8809,7 @@ msgstr "Medische conditie"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:68
 msgid "Mediterranio"
-msgstr "Mediterranio"
+msgstr "Mediterraan"
 
 #: setup.php:178
 msgid "Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds"
@@ -9474,7 +9474,7 @@ msgstr "Nieuwe gebruiker op %s"
 
 #: app/Gedcom/GedcomCodeTemp.php:232
 msgid "Newport Beach, California"
-msgstr "Newport Beach, California"
+msgstr "Newport Beach, Californië"
 
 #. I18N: Name of a module
 #: app/Module/FamilyTreeNewsModule.php:25
@@ -9929,7 +9929,7 @@ msgstr "Verpleger"
 
 #: app/Gedcom/GedcomCodeTemp.php:240
 msgid "Oakland, California"
-msgstr "Oakland, California"
+msgstr "Oakland, Californië"
 
 #: app/Gedcom/GedcomCodeTemp.php:242
 msgid "Oaxaca, Mexico"
@@ -11135,7 +11135,7 @@ msgstr "Records zijn niet van hetzelfde type en kunnen daarom niet worden sameng
 
 #: app/Gedcom/GedcomCodeTemp.php:272
 msgid "Redlands, California"
-msgstr "Redlands, California"
+msgstr "Redlands, Californië"
 
 #: app/Module/GoogleMapsModule.php:964 app/Module/GoogleMapsModule.php:2316
 #: app/Module/GoogleMapsModule.php:3694
@@ -11499,7 +11499,7 @@ msgstr "Rwanda"
 
 #: admin_site_config.php:324
 msgid "SMTP mail server"
-msgstr "SMTP mail server"
+msgstr "SMTP e-mailserver"
 
 #: app/Gedcom/GedcomCodeTemp.php:278
 msgid "Sacramento, California"
@@ -11568,7 +11568,7 @@ msgstr "San Antonio, Texas"
 
 #: app/Gedcom/GedcomCodeTemp.php:286
 msgid "San Diego, California"
-msgstr "San Diego, California"
+msgstr "San Diego, Californië"
 
 #: app/Gedcom/GedcomCodeTemp.php:296
 msgid "San Jose, Costa Rica"
@@ -11580,7 +11580,7 @@ msgstr "San Marino"
 
 #: app/Gedcom/GedcomCodeTemp.php:282
 msgid "Santiago, Chile"
-msgstr "Santiago, Chile"
+msgstr "Santiago, Chili"
 
 #: app/Gedcom/GedcomCodeTemp.php:288
 msgid "Santo Domingo, Dominican Republic"
