@@ -345,14 +345,6 @@ msgid_plural "%s minutes ago"
 msgstr[0] "%s minuto fa"
 msgstr[1] "%s minuti fa"
 
-#. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-#: app/I18N.php:463 includes/functions/functions_date.php:47
-#, php-format
-msgid "%s month"
-msgid_plural "%s months"
-msgstr[0] "%s mese"
-msgstr[1] "%s mesi"
-
 #: app/I18N.php:513
 #, php-format
 msgid "%s month ago"

@@ -208,14 +208,6 @@ msgstr[0] "%s prijavljeni korisnik"
 msgstr[1] "%s prijavljena korisnika"
 msgstr[2] "%s prijavljenih korisnika"
 
-#: app/Module/RelativesTabModule.php:62
-#, php-format
-msgid "%s month"
-msgid_plural "%s months"
-msgstr[0] "%s mjesec"
-msgstr[1] "%s mjeseca"
-msgstr[2] "%s mjeseci"
-
 #: includes/functions/functions.php:555
 #, php-format
 msgctxt "FEMALE"

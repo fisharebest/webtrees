@@ -326,13 +326,6 @@ msgid "%s minute ago"
 msgid_plural "%s minutes ago"
 msgstr[0] ""
 
-#. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-#: app/I18N.php:463 includes/functions/functions_date.php:47
-#, php-format
-msgid "%s month"
-msgid_plural "%s months"
-msgstr[0] ""
-
 #: app/I18N.php:513
 #, php-format
 msgid "%s month ago"
@@ -19772,8 +19765,7 @@ msgstr ""
 #, fuzzy, php-format
 msgid "±%s year"
 msgid_plural "±%s years"
-msgstr[0] "&plusmn;%s ел"
-msgstr[0] "±sd ел"
+msgstr[0] "±%s ел"
 
 #. I18N: Place a nickname in quotation marks
 #: app/Individual.php:1197 app/Individual.php:1215

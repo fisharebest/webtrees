@@ -197,13 +197,6 @@ msgid_plural "%s logged-in users"
 msgstr[0] "%s kirjautunut käyttäjä"
 msgstr[1] "%s  kirjautunutta käyttäjää"
 
-#: app/Module/RelativesTabModule.php:62
-#, php-format
-msgid "%s month"
-msgid_plural "%s months"
-msgstr[0] "%s kuukausi"
-msgstr[1] "%s kuukautta"
-
 #: includes/functions/functions.php:555
 #, php-format
 msgctxt "FEMALE"

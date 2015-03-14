@@ -209,14 +209,6 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: app/Module/RelativesTabModule.php:62
-#, php-format
-msgid "%s month"
-msgid_plural "%s months"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-
 #: app/Module/RelativesTabModule.php:60
 #, php-format
 msgid "%s year"

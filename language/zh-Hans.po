@@ -197,12 +197,6 @@ msgid "%s logged-in user"
 msgid_plural "%s logged-in users"
 msgstr[0] "%s 登录的用户"
 
-#: app/Module/RelativesTabModule.php:62
-#, php-format
-msgid "%s month"
-msgid_plural "%s months"
-msgstr[0] "%s 月"
-
 #: includes/functions/functions.php:555
 #, php-format
 msgctxt "FEMALE"

@@ -222,17 +222,6 @@ msgstr[3] "%s مستخدمين مسجلين"
 msgstr[4] "%s مستخدماً مسجلاً"
 msgstr[5] "%s مستخدماً مسجلاً"
 
-#: app/Module/RelativesTabModule.php:62
-#, php-format
-msgid "%s month"
-msgid_plural "%s months"
-msgstr[0] "%s شهراً"
-msgstr[1] "شهراً واحداً"
-msgstr[2] "شهران"
-msgstr[3] "%s أشهر"
-msgstr[4] "%s شهراً"
-msgstr[5] "%s شهراً"
-
 #: app/Module/RelativesTabModule.php:60
 #, php-format
 msgid "%s year"

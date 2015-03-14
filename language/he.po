@@ -204,13 +204,6 @@ msgid_plural "%s logged-in users"
 msgstr[0] "משתמש מחובר %s"
 msgstr[1] "%s משתמשים מחוברים"
 
-#: app/Module/RelativesTabModule.php:62
-#, php-format
-msgid "%s month"
-msgid_plural "%s months"
-msgstr[0] "חודש אחד"
-msgstr[1] "%s חודשים"
-
 #: includes/functions/functions.php:555
 #, php-format
 msgctxt "FEMALE"

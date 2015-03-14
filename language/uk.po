@@ -352,15 +352,6 @@ msgstr[0] "%s хвилину тому"
 msgstr[1] "%s хвилини тому"
 msgstr[2] "%s хвилин тому"
 
-#. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-#: app/I18N.php:463 includes/functions/functions_date.php:47
-#, php-format
-msgid "%s month"
-msgid_plural "%s months"
-msgstr[0] "%s місяць"
-msgstr[1] "%s місяці"
-msgstr[2] "%s місяців"
-
 #: app/I18N.php:513
 #, php-format
 msgid "%s month ago"

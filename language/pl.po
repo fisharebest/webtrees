@@ -207,14 +207,6 @@ msgstr[0] "%s zalogowany użytkownik"
 msgstr[1] "%s zalogowanych użytkowników"
 msgstr[2] "%s zalogowanych użytkowników"
 
-#: app/Module/RelativesTabModule.php:62
-#, php-format
-msgid "%s month"
-msgid_plural "%s months"
-msgstr[0] "%s miesiąc"
-msgstr[1] "%s miesiące"
-msgstr[2] "%s miesięcy"
-
 #: includes/functions/functions.php:555
 #, php-format
 msgctxt "FEMALE"

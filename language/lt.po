@@ -360,15 +360,6 @@ msgstr[0] "prieš %s minutę"
 msgstr[1] "prieš %s minutes"
 msgstr[2] "prieš %s minutčių"
 
-#. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-#: app/I18N.php:463 includes/functions/functions_date.php:47
-#, php-format
-msgid "%s month"
-msgid_plural "%s months"
-msgstr[0] "%s mėnuo"
-msgstr[1] "%s mėnesiai"
-msgstr[2] "%s mėnesių"
-
 #: app/I18N.php:513
 #, php-format
 msgid "%s month ago"

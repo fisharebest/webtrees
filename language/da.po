@@ -201,13 +201,6 @@ msgid_plural "%s logged-in users"
 msgstr[0] "%s bruger"
 msgstr[1] "%s brugere"
 
-#: app/Module/RelativesTabModule.php:62
-#, php-format
-msgid "%s month"
-msgid_plural "%s months"
-msgstr[0] "%s måned"
-msgstr[1] "%s måneder"
-
 #: app/Module/RelativesTabModule.php:60
 #, php-format
 msgid "%s year"

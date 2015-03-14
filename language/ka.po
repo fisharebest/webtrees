@@ -192,12 +192,6 @@ msgid "%s logged-in user"
 msgid_plural "%s logged-in users"
 msgstr[0] "%s დარეგისტრირებული იუზერი"
 
-#: app/Module/RelativesTabModule.php:62
-#, php-format
-msgid "%s month"
-msgid_plural "%s months"
-msgstr[0] "%s თვე"
-
 #: includes/functions/functions.php:555
 #, php-format
 msgctxt "FEMALE"
