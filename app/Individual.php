@@ -1192,27 +1192,16 @@ class Individual extends GedcomRecord {
 
 		// GEDCOM nicknames should be specificied in a NICK field, or in the
 		// NAME filed, surrounded by ASCII quotes (or both).
-		if ($NICK) {
-			// A NICK field is present.
-			$QNICK = /* I18N: Place a nickname in quotation marks */ I18N::translate('“%s”', $NICK);
-
-			if (strpos($full, '"' . $NICK . '"') !== false) {
-				// NICK present in name.  Localise ASCII quotes.
-				$full = str_replace('"' . $NICK . '"', $QNICK, $full);
+		if ($NICK && strpos($full, '"' . $NICK . '"') === false) {
+			// A NICK field is present, but not included in the NAME.
+			$pos = strpos($full, '/');
+			if ($pos === false) {
+				// No surname - just append it
+				$full .= ' "' . $NICK . '"';
 			} else {
-				// NICK not present in NAME.
-				$pos = strpos($full, '/');
-				if ($pos === false) {
-					// No surname - append it
-					$full .= ' ' . $QNICK;
-				} else {
-					// Insert before surname
-					$full = substr($full, 0, $pos) . $QNICK . ' ' . substr($full, $pos);
-				}
+				// Insert before surname
+				$full = substr($full, 0, $pos) . '"' . $NICK . '" ' . substr($full, $pos);
 			}
-		} else {
-			// No NICK field - but nickname may be included in NAME (in quotes)
-			$full = preg_replace_callback('/"([^"]*)"/', function($matches) { return I18N::translate('“%s”', $matches[1]); }, $full);
 		}
 
 		// Remove slashes - they don’t get displayed
@@ -1221,15 +1210,14 @@ class Individual extends GedcomRecord {
 		$fullNN = str_replace('/', '', $full);
 
 		// Insert placeholders for any missing/unknown names
-		if (strpos($full, '@N.N.') !== false) {
-			$full = str_replace('@N.N.', $UNKNOWN_NN, $full);
-		}
-		if (strpos($full, '@P.N.') !== false) {
-			$full = str_replace('@P.N.', $UNKNOWN_PN, $full);
-		}
+		$full = str_replace('@N.N.', $UNKNOWN_NN, $full);
+		$full = str_replace('@P.N.', $UNKNOWN_PN, $full);
+		// Localise quotation marks around the nickname
+		$full = preg_replace_callback('/"([^"]*)"/', function($matches) { return I18N::translate('“%s”', $matches[1]); }, $full);
+		// Format for display
 		$full = '<span class="NAME" dir="auto" translate="no">' . preg_replace('/\/([^\/]*)\//', '<span class="SURN">$1</span>', Filter::escapeHtml($full)) . '</span>';
 
-		// The standards say you should use a suffix of '*' for preferred name
+		// A suffix of “*” indicates a preferred name
 		$full = preg_replace('/([^ >]*)\*/', '<span class="starredname">\\1</span>', $full);
 
 		// Remove prefered-name indicater - they don’t go in the database
