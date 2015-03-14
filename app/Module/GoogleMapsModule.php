@@ -2536,6 +2536,8 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 	 * @return integer
 	 */
 	private function getPlaceId($place) {
+		global $WT_TREE;
+
 		$par      = explode(',', $place);
 		$par      = array_reverse($par);
 		$place_id = 0;
@@ -2615,7 +2617,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 	 * @param string $placelevels
 	 */
 	public function createMap($placelevels) {
-		global $level, $levelm, $plzoom, $controller;
+		global $level, $levelm, $plzoom, $controller, $WT_TREE;
 
 		$STREETVIEW = $this->getSetting('GM_USE_STREETVIEW');
 		$parent = Filter::getArray('parent');
@@ -4610,7 +4612,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 		<table id="gm_manage">
 			<tr>
 				<td>
-					<?php echo I18N::translate(Add a new geographic location'); ?>
+					<?php echo I18N::translate('Add a new geographic location'); ?>
 				</td>
 				<td>
 					<form action="?" onsubmit="add_place_location(this.parent_id.options[this.parent_id.selectedIndex].value); return false;">
