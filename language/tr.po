@@ -3,13 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2013-03-17 18:33+0000\n"
-"Last-Translator: Adem GENÇ <Unknown>\n"
+"PO-Revision-Date: 2015-03-14 14:45+0100\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"Language-Team: Turkish "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 2.3-dev\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
 #: modules_v3/ahnentafel_report/report.xml:185
@@ -980,7 +983,7 @@ msgstr "Erişim seviyesi"
 
 #: admin_users.php:371
 msgid "Account approval and email verification"
-msgstr "Hesap onaylama ve mail doğrulama."
+msgstr "Hesap onaylama ve mail doğrulama"
 
 #: app/Gedcom/GedcomCodeTemp.php:78
 msgid "Accra, Ghana"
@@ -1083,7 +1086,7 @@ msgstr "%s sepete ekle"
 
 #: app/Module/RelativesTabModule.php:373 edit_interface.php:597
 msgid "Add a child to create a one-parent family"
-msgstr "Tek ebeveyn 'li bir aile oluşturmak için bir çocuk ekle."
+msgstr "Tek ebeveyn 'li bir aile oluşturmak için bir çocuk ekle"
 
 #: app/Controller/FamilyController.php:97
 #: includes/functions/functions_charts.php:301
@@ -1298,7 +1301,7 @@ msgstr ""
 #: admin_trees_download.php:161 app/Module/ClippingsCartModule.php:212
 #: app/Module/ClippingsCartModule.php:604
 msgid "Add the GEDCOM media path to filenames"
-msgstr "GEDCOM medya dosyası yolunu dosya adlarına ekle."
+msgstr "GEDCOM medya dosyası yolunu dosya adlarına ekle"
 
 #: app/Module/ClippingsCartModule.php:103
 #: app/Module/ClippingsCartModule.php:521
@@ -1360,7 +1363,7 @@ msgstr "Resim önizlemelerine filigran ekle?"
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:30
 msgid "Add your own text and graphics."
-msgstr "HTML destekli kendi metin ve grafikleri ekleyebileceğiniz blok"
+msgstr "HTML destekli kendi metin ve grafikleri ekleyebileceğiniz blok."
 
 #: editnews.php:33 editnews.php:51
 msgid "Add/edit a journal/news entry"
@@ -1705,11 +1708,11 @@ msgstr "Tümü"
 
 #: admin_trees_manage.php:679
 msgid "All changes in PGV must be accepted"
-msgstr "PGV deki bütün değişiklikler onaylanmalı."
+msgstr "PGV deki bütün değişiklikler onaylanmalı"
 
 #: admin_trees_manage.php:682
 msgid "All existing PGV users must have distinct email addresses"
-msgstr "Tüm mevcut PGV kullanıcıları farklı email adresine sahip ollmalı."
+msgstr "Tüm mevcut PGV kullanıcıları farklı email adresine sahip ollmalı"
 
 #: admin_trees_config.php:601
 msgid "All facts and events"
@@ -2760,7 +2763,7 @@ msgstr "Mavi Bahri"
 
 #: message.php:135
 msgid "Body"
-msgstr "Mesaj:"
+msgstr "Mesaj"
 
 #: app/Gedcom/GedcomCodeTemp.php:102
 msgid "Bogota, Colombia"
@@ -3190,7 +3193,7 @@ msgstr "Katalonya"
 
 #: statistics.php:604
 msgid "Categories"
-msgstr "Kategoriler:"
+msgstr "Kategoriler"
 
 #. I18N: gedcom tag CAUS
 #: app/Gedcom/GedcomTag.php:243
@@ -3318,7 +3321,7 @@ msgstr "Değişenler"
 
 #. I18N: title for list of recent changes
 #: app/Module/RecentChangesModule.php:68
-#, fuzzy, php-format
+#, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "Son %s gün içindeki değişiklikler"
@@ -3634,7 +3637,7 @@ msgstr "Ailenin Reisi olarak seçilecek %s kişiyi tıklayın."
 
 #: edit_interface.php:1747
 msgid "Click a row, then drag-and-drop to re-order media"
-msgstr "Medyayı tekrar sıralamak için bir satır tıklayın sonra sürükle-ve-bırak "
+msgstr "Medyayı tekrar sıralamak için bir satır tıklayın sonra sürükle-ve-bırak"
 
 #: admin_trees_manage.php:690
 msgid "Click here for PhpGedView to webtrees transfer wizard"
@@ -3654,7 +3657,9 @@ msgstr "Link Listesine Eklemek için eklenecek kişi Adını tıkla."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:295
 msgid "Click on a title to go straight to it, or scroll down to read them all."
-msgstr "Doğrudan bir başlığa gitmek için başlığı tıklayın, veya hepsini okumak için aşağıya doğru ilerleyin"
+msgstr ""
+"Doğrudan bir başlığa gitmek için başlığı tıklayın, veya hepsini okumak için "
+"aşağıya doğru ilerleyin."
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:69
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:80
@@ -3729,7 +3734,7 @@ msgstr "Yorum"
 
 #: login.php:323 login.php:349 login.php:489
 msgid "Comments"
-msgstr "Kendinizi Tanıtın:"
+msgstr "Kendinizi Tanıtın"
 
 #. I18N: gedcom tag _COML
 #: app/Gedcom/GedcomTag.php:1246
@@ -3887,7 +3892,7 @@ msgstr "Kopyala"
 #: admin_trees_merge.php:193
 #, php-format
 msgid "Copy all the records from %1$s into %2$s."
-msgstr "%1$s daki bütün kayıtları %2$s. ya kopyala"
+msgstr "%1$s daki bütün kayıtları %2$s ya kopyala."
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:429
@@ -3955,7 +3960,7 @@ msgstr "ilçe"
 
 #: admin_media.php:309
 msgid "Create"
-msgstr "Oluştur."
+msgstr "Oluştur"
 
 #: admin_trees_manage.php:589
 msgid "Create a new family tree"
@@ -4398,7 +4403,7 @@ msgstr "Üyelik tarihi"
 
 #: app/Module/UserMessagesModule.php:79
 msgid "Date sent"
-msgstr "Gönderme Tarihi:"
+msgstr "Gönderme Tarihi"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:747
@@ -4900,7 +4905,7 @@ msgstr "Zürriyet Nema"
 
 #: modules_v3/descendancy_report/report.xml:39
 msgid "Descendants of "
-msgstr "Soyu"
+msgstr "Soyu "
 
 #. I18N: %s is an individual’s name
 #: app/Controller/DescendancyController.php:54
@@ -5189,7 +5194,11 @@ msgstr "Her kaynak, genellikle belirli bir tarih aralığı için ve bir olay ye
 
 #: help_text.php:449
 msgid "Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account."
-msgstr "Her bir kullanıcı hesabı için \"Değişiklikleri otomatik olarak onayla\" seçeneği vardır. Bu seçenek seçildiğinde, kullanıcı tarafından yapılan değişiklikler doğrudan kaydedilir. Birçok yönetici kendi kullanıcı hesapları için bu seçeneği seçerler. "
+msgstr ""
+"Her bir kullanıcı hesabı için \"Değişiklikleri otomatik olarak onayla\" "
+"seçeneği vardır. Bu seçenek seçildiğinde, kullanıcı tarafından yapılan "
+"değişiklikler doğrudan kaydedilir. Birçok yönetici kendi kullanıcı hesapları "
+"için bu seçeneği seçerler."
 
 #: statistics.php:127
 msgid "Earliest birth"
@@ -5629,7 +5638,7 @@ msgstr "Yürütme istatistiklerini"
 #. I18N: placeholder text for registration-comments field
 #: login.php:493
 msgid "Explain why you are requesting an account."
-msgstr "Lütfen kendinizi tanıtın, kimsiniz?"
+msgstr "Lütfen kendinizi tanıtın, kimsiniz."
 
 #: admin_site_change.php:346 admin_site_logs.php:310
 #: admin_trees_manage.php:559
@@ -5891,7 +5900,7 @@ msgstr "Aile Navigasyonu"
 #. I18N: Description of the “GEDCOM News” module
 #: app/Module/FamilyTreeNewsModule.php:30
 msgid "Family news and site announcements."
-msgstr "Aile haberleri ve site duyuruları için blok"
+msgstr "Aile haberleri ve site duyuruları için blok."
 
 #. I18N: A title/heading. %s is an individual’s name
 #: app/Controller/FamilyBookController.php:368
@@ -6850,7 +6859,7 @@ msgstr "o yakıldı"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:55
 msgid "Head of household"
-msgstr "Ev Halkın Başkanı:"
+msgstr "Ev Halkın Başkanı"
 
 #. I18N: gedcom tag HEAD
 #: app/Gedcom/GedcomTag.php:509
@@ -8005,12 +8014,12 @@ msgstr "Lima, Peru"
 
 #: app/Module/FamilyTreeNewsModule.php:163
 msgid "Limit"
-msgstr "Kota:"
+msgstr "Kota"
 
 #. I18N: Limit display by [age/number]
 #: app/Module/FamilyTreeNewsModule.php:154
 msgid "Limit display by"
-msgstr "Olarak göstermeyi kısıtla:"
+msgstr "Olarak göstermeyi kısıtla"
 
 #: app/Module/RelativesTabModule.php:344 edit_interface.php:990
 #: edit_interface.php:1049
@@ -8685,7 +8694,7 @@ msgstr "Medya ID öneki"
 #. I18N: Label for search field
 #: find.php:191
 msgid "Media contains"
-msgstr "Medya içerikleri:"
+msgstr "Medya içerikleri"
 
 #: admin_media.php:702 admin_media_upload.php:198
 msgid "Media file"
@@ -8826,7 +8835,7 @@ msgstr "Cıva"
 #. I18N: Menu entry
 #: admin_trees_merge.php:32 app/Theme/AdministrationTheme.php:104
 msgid "Merge family trees"
-msgstr "Aile ağaçlarını birleştir."
+msgstr "Aile ağaçlarını birleştir"
 
 #: admin_site_merge.php:32 admin_trees_manage.php:444
 msgid "Merge records"
@@ -9266,7 +9275,7 @@ msgstr "Adı"
 #. I18N: Label for search field
 #: find.php:155 find.php:172
 msgid "Name contains"
-msgstr "Adı:"
+msgstr "Adı"
 
 #: app/Gedcom/GedcomTag.php:607
 msgid "Name in Hebrew"
@@ -9833,7 +9842,7 @@ msgstr "Çocuklar olmadan aile sayısı"
 #: app/Module/ClippingsCartModule.php:524
 #: app/Module/ClippingsCartModule.php:527
 msgid "Number of generations"
-msgstr "Nesillerin sayısı:"
+msgstr "Nesillerin sayısı"
 
 #: app/Module/FamilyTreeNewsModule.php:159
 msgid "Number of items"
@@ -10117,12 +10126,14 @@ msgstr "PGV versiyonu 4.2.3 yada #%s kadar herhangi bir SVN olmalı"
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:77
 msgid "PHP blocked the file because of its extension."
-msgstr "PHP uzanti ile dosyayı engelledi"
+msgstr "PHP uzanti ile dosyayı engelledi."
 
 #: setup.php:140
 #, php-format
 msgid "PHP extension “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
-msgstr "PHP uzantısı \"%1$s\" devredişidir. Bunsuz aşağıdaki özellikler çalışmaz: %2$s. Etkinleştirmek için sunucunuzun yöneticisine başvurun"
+msgstr ""
+"PHP uzantısı \"%1$s\" devredişidir. Bunsuz aşağıdaki özellikler çalışmaz: %2$"
+"s. Etkinleştirmek için sunucunuzun yöneticisine başvurun."
 
 #: setup.php:129
 #, php-format
@@ -10132,7 +10143,7 @@ msgstr "PHP uzantısı \"%s\" devredişidir. Bu etkinleştirilene kadar webtrees
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:74
 msgid "PHP failed to write to disk."
-msgstr "PHP diske yazmakta başarız"
+msgstr "PHP diske yazmakta başarız."
 
 #: admin_site_info.php:71
 msgid "PHP information"
@@ -10379,7 +10390,7 @@ msgstr "PhpGedView bu klasörlerden birine kurulmalı:"
 
 #: admin_pgv_to_wt.php:94
 msgid "PhpGedView must use the same database as webtrees."
-msgstr "PhpGedView ile webtrees aynı veritabanı kullanması gerekir"
+msgstr "PhpGedView ile webtrees aynı veritabanı kullanması gerekir."
 
 #: admin_pgv_to_wt.php:44 admin_trees_manage.php:662
 msgid "PhpGedView to webtrees transfer wizard"
@@ -10419,7 +10430,7 @@ msgstr "Yerleri Kontrol Et"
 #. I18N: Label for search field
 #: find.php:211
 msgid "Place contains"
-msgstr "Aranacak Yer:"
+msgstr "Aranacak Yer"
 
 #: app/Module/TopPageViewsModule.php:136
 msgid "Place counts before or after name?"
@@ -10591,7 +10602,7 @@ msgstr "Üyelik işlemi tamamlamak için lütfen aşağıdaki linki tıklayıp i
 
 #: search.php:53
 msgid "Please enter a given name, surname, or place in addition to the year"
-msgstr "Lütfen Yıl için ek olarak bir Verilen adı, Soyadı yada Yer giriniz."
+msgstr "Lütfen Yıl için ek olarak bir Verilen adı, Soyadı yada Yer giriniz"
 
 #: message.php:99
 msgid "Please enter a message subject."
@@ -10604,7 +10615,7 @@ msgstr "Lütfen geçerli bir email adresi girin."
 #: app/Module/CensusAssistantModule.php:96 find.php:115 search.php:34
 #: search.php:46
 msgid "Please enter more than one character."
-msgstr "Lütfen birden fazla karakter giriniz"
+msgstr "Lütfen birden fazla karakter giriniz."
 
 #: message.php:104
 msgid "Please enter some message text before sending."
@@ -11022,7 +11033,7 @@ msgstr "Medyaları tekrar sırala"
 #: admin_users.php:308 admin_users.php:846 edituser.php:161 login.php:321
 #: login.php:426
 msgid "Real name"
-msgstr "Gerçek adı:"
+msgstr "Gerçek adı"
 
 #. I18N: Name of a module
 #: app/Module/RecentChangesModule.php:28
@@ -11239,7 +11250,7 @@ msgstr ""
 #: admin_trees_merge.php:98 admin_trees_merge.php:103
 #: admin_trees_renumber.php:32
 msgid "Renumber family tree"
-msgstr "soyağacını yeniden numaralandır."
+msgstr "soyağacını yeniden numaralandır"
 
 #. I18N: button label
 #: search.php:217
@@ -11292,7 +11303,7 @@ msgstr "Havuz ID öneki"
 #. I18N: Label for search field
 #: find.php:230
 msgid "Repository contains"
-msgstr "Havuz içerikleri:"
+msgstr "Havuz içerikleri"
 
 #: edit_interface.php:1563 includes/functions/functions_print_lists.php:1315
 msgid "Repository name"
@@ -11346,7 +11357,9 @@ msgstr ""
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:376
 msgid "Restrict access to the website, using IP addresses and user-agent strings."
-msgstr "IP adresleri ve kullanıcı aracısı dizeleri kullanılarak siteye erişimi kısıtlayın"
+msgstr ""
+"IP adresleri ve kullanıcı aracısı dizeleri kullanılarak siteye erişimi "
+"kısıtlayın."
 
 #: admin_users.php:569
 msgid "Restrict to immediate family"
@@ -11688,7 +11701,7 @@ msgstr "Listeden ilişki adını seçiniz. Listeden <b>Vaftiz baba</b> seçmenin
 
 #: statistics.php:499
 msgid "Select chart type"
-msgstr "Çizelge tipi seç:"
+msgstr "Çizelge tipi seç"
 
 #: edit_interface.php:1252
 msgid "Select events"
@@ -11989,7 +12002,7 @@ msgstr "Paylaşılan not"
 #. I18N: Label for search field
 #: find.php:250
 msgid "Shared note contains"
-msgstr "Paylaşılan Not içerikleri:"
+msgstr "Paylaşılan Not içerikleri"
 
 #: app/Theme/BaseTheme.php:1415
 #: includes/functions/functions_print_lists.php:1068 notelist.php:30
@@ -12268,7 +12281,7 @@ msgstr "Aktif olmayan yerleri göster"
 
 #: includes/functions/functions_print_lists.php:208
 msgid "Show individuals born more than 100 years ago."
-msgstr "Son 100 yıldan önce doğmuş kişileri göster"
+msgstr "Son 100 yıldan önce doğmuş kişileri göster."
 
 #: includes/functions/functions_print_lists.php:217
 msgid "Show individuals born within the last 100 years."
@@ -12579,7 +12592,11 @@ msgstr "Siteharitaları"
 #. I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: app/Module/SiteMapModule.php:291
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling.  All major search engines support sitemaps.  For more information, see <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
-msgstr "Site Haritaları, taranabilir sayfalar hakkında bir Web sitesinde arama motorları söylemek yöneticileri için bir yoldur. Tüm büyük arama motorları, Site Haritalarını destekler. Daha fazla bilgi için bkz: www.sitemaps.org."
+msgstr ""
+"Site Haritaları, taranabilir sayfalar hakkında bir Web sitesinde arama "
+"motorları söylemek yöneticileri için bir yoldur. Tüm büyük arama motorları, "
+"Site Haritalarını destekler. Daha fazla bilgi için bkz: <a href=\""
+"http://www.sitemaps.org/tr/\">www.sitemaps.org</a>."
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:131
@@ -12748,7 +12765,7 @@ msgstr "Kaynak alıntıları kaynakta bulunan (birincil, ikinci, vb.) veri kalit
 #. I18N: Label for search field
 #: find.php:269
 msgid "Source contains"
-msgstr "Kaynak içerkleri:"
+msgstr "Kaynak içerkleri"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:2265 modules_v3/fact_sources/report.xml:6
@@ -12952,7 +12969,7 @@ msgstr "Alt bölüm"
 
 #: app/Module/UserMessagesModule.php:78 message.php:127
 msgid "Subject"
-msgstr "Konu:"
+msgstr "Konu"
 
 #. I18N: gedcom tag SUBN
 #: app/Gedcom/GedcomTag.php:811
@@ -13224,7 +13241,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
 msgid "The PHP temporary folder is missing."
-msgstr "PHP geçici dizin eksik"
+msgstr "PHP geçici dizin eksik."
 
 #: admin_users.php:97
 #, php-format
@@ -13233,7 +13250,11 @@ msgstr "Soyağacı %s web sitedeki üyelik hesabınız yönetici tarafında onay
 
 #: login.php:627
 msgid "The administrator has been informed.  As soon as they give you permission to login, you can login with your user name and password."
-msgstr "<b>Son adım olarak üyeliğinizi onayladığınızı söyleyen bir mesaj Yöneticiye gönderilmiştir.<br>Yönetici üyeliğinizi kontrol edip onayladığında siteye giriş yapabileceğinizi söyleyen ikinci email mesajı aldıktan sonra Kullanıcı adı ve şifrenizi kullanarak siteye giriş yapabilirsiniz.</b>"
+msgstr ""
+"Son adım olarak üyeliğinizi onayladığınızı söyleyen bir mesaj Yöneticiye "
+"gönderilmiştir.  Yönetici üyeliğinizi kontrol edip onayladığında siteye "
+"giriş yapabileceğinizi söyleyen ikinci email mesajı aldıktan sonra Kullanıcı "
+"adı ve şifrenizi kullanarak siteye giriş yapabilirsiniz."
 
 #. I18N: %s is the name of an individual, source or other record
 #: action.php:47
@@ -13348,7 +13369,7 @@ msgstr "%s dosya yüklendi."
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
 msgid "The file was only partially uploaded.  Please try again."
-msgstr "Dosya sadece kısmen yüklendi, lütfen tekrar deneyin"
+msgstr "Dosya sadece kısmen yüklendi, lütfen tekrar deneyin."
 
 #. I18N: %s is a filename
 #: medialist.php:294 mediaviewer.php:111
@@ -13409,7 +13430,7 @@ msgstr "Aşağıdaki konumlar değiştirildi:"
 
 #: admin_trees_places.php:113
 msgid "The following places would be changed:"
-msgstr "Aşağıdaki konumlar değiştirilecek."
+msgstr "Aşağıdaki konumlar değiştirilecek:"
 
 #: admin_site_access.php:380
 msgid "The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access)."
@@ -13459,7 +13480,7 @@ msgstr "Medya %s dosyası mevcut değil."
 
 #: mediafirewall.php:41
 msgid "The media file was not found in this family tree."
-msgstr "Bu aile ağacında medya dosyası bulunamadı"
+msgstr "Bu aile ağacında medya dosyası bulunamadı."
 
 #: admin_media_upload.php:223
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
@@ -13531,7 +13552,7 @@ msgstr "%1$s kaydı %2$s olarak değiştirildi."
 
 #: action.php:86
 msgid "The record has been copied to the clipboard."
-msgstr "Panoya kopyalanan kayıt"
+msgstr "Panoya kopyalanan kayıt."
 
 #. I18N: Records are individuals, sources, etc.
 #: admin_site_merge.php:162
@@ -13586,7 +13607,7 @@ msgstr "Saniye olarak webtrees in tekrar otutum açmak gerekmeden oturumu açık
 #, php-format
 msgid "The two family trees have %1$s record which uses the same “XREF”."
 msgid_plural "The two family trees have %1$s records which use the same “XREF”."
-msgstr[0] "Her iki soy ağacında aynı “XREF” değerini taşıyan %1$s kayıt var. "
+msgstr[0] "Her iki soy ağacında aynı “XREF” değerini taşıyan %1$s kayıt var."
 
 #: admin_site_upgrade.php:502
 msgid "The upgrade is complete."
@@ -13595,7 +13616,7 @@ msgstr "Güncelleme tamamlandı."
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:62
 msgid "The uploaded file exceeds the allowed size."
-msgstr "Yüklenen dosya izin verilen boyuttan büyük"
+msgstr "Yüklenen dosya izin verilen boyuttan büyük."
 
 #: admin_users.php:788
 #, php-format
@@ -13623,12 +13644,12 @@ msgstr ""
 #: admin_pgv_to_wt.php:107
 #, php-format
 msgid "The version of %s is too new."
-msgstr "%s sürümü çok yeni"
+msgstr "%s sürümü çok yeni."
 
 #: admin_pgv_to_wt.php:104
 #, php-format
 msgid "The version of %s is too old."
-msgstr "%s sürümü çok eski"
+msgstr "%s sürümü çok eski."
 
 #: admin_site_access.php:85
 msgid "The website access rule has been created."
@@ -13749,7 +13770,9 @@ msgstr "Thermidor"
 
 #: admin.php:498
 msgid "These pages provide access to all the configuration settings and management tools for this webtrees site."
-msgstr "Bu sayfa bu webtrees sitesi için tüm yapılandırma ayarlarını ve yönetim araçlarına erişim sağlar"
+msgstr ""
+"Bu sayfa bu webtrees sitesi için tüm yapılandırma ayarlarını ve yönetim "
+"araçlarına erişim sağlar."
 
 #. I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII
 #: import.php:149
@@ -13806,7 +13829,7 @@ msgstr "Bu aile silindi. Silineni bir moderatör tarafından gözden geçirilmes
 #: family.php:38
 #, php-format
 msgid "This family has been deleted.  You should review the deletion and then %1$s or %2$s it."
-msgstr "Bu aile silindi. Silineni gözden geçirdikten sonra %1$s veya %2$s"
+msgstr "Bu aile silindi. Silineni gözden geçirdikten sonra %1$s veya %2$s."
 
 #: family.php:65
 msgid "This family has been edited.  The changes need to be reviewed by a moderator."
@@ -13816,7 +13839,8 @@ msgstr "Bu aile düzenlendi. Değişiklikleri bir moderatör tarafından gözden
 #: family.php:56
 #, php-format
 msgid "This family has been edited.  You should review the changes and then %1$s or %2$s them."
-msgstr "Bu aile düzenlendi. Değişiklikleri gözden geçirdikten sonra %1$s veya %2$s"
+msgstr ""
+"Bu aile düzenlendi. Değişiklikleri gözden geçirdikten sonra %1$s veya %2$s."
 
 #: includes/functions/functions_charts.php:406
 #: includes/functions/functions_charts.php:543
@@ -13827,7 +13851,9 @@ msgstr "Bu aile çocuksuz kaldı"
 #, php-format
 msgid "This family tree has %s record which uses the same “XREF” as another family tree."
 msgid_plural "This family tree has %s records which use the same “XREF” as another family tree."
-msgstr[0] "Bu soy ağacında bulunan %1$s kayıt başka bir soy ağacında bulunan “XREF” değerini taşıyor. "
+msgstr[0] ""
+"Bu soy ağacında bulunan %s kayıt başka bir soy ağacında bulunan “XREF” "
+"değerini taşıyor."
 
 #: app/Module/SlideShowModule.php:175
 msgid "This family tree has no images to display."
@@ -13879,7 +13905,7 @@ msgstr "Bu birey siindi. Silineni bir moderatör tarafından gözden geçirilmes
 #: individual.php:48
 #, php-format
 msgid "This individual has been deleted.  You should review the deletion and then %1$s or %2$s it."
-msgstr "Bu birey silindi. Silineni gözden geçirdikten sonra %1$s veya %2$s"
+msgstr "Bu birey silindi. Silineni gözden geçirdikten sonra %1$s veya %2$s."
 
 #: individual.php:75
 msgid "This individual has been edited.  The changes need to be reviewed by a moderator."
@@ -13889,7 +13915,8 @@ msgstr "Bu birey düzenlendi. Değişiklikleri bir moderatör tarafından gözde
 #: individual.php:66
 #, php-format
 msgid "This individual has been edited.  You should review the changes and then %1$s or %2$s them."
-msgstr "Bu birey düzenlendi. Değişiklikleri gözden geçirdikten sonra %1$s veya %2$s"
+msgstr ""
+"Bu birey düzenlendi. Değişiklikleri gözden geçirdikten sonra %1$s veya %2$s."
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: admin_trees_config.php:718 admin_users.php:579 edituser.php:196
@@ -14056,7 +14083,7 @@ msgstr "Bu medya dosyası mevcut, ancak erişilemez."
 
 #: mediafirewall.php:410
 msgid "This media file is broken and cannot be watermarked."
-msgstr "Bu medya dosyası bozuk ve filigranlaşmaz"
+msgstr "Bu medya dosyası bozuk ve filigranlaşmaz."
 
 #: mediaviewer.php:73
 msgid "This media object does not exist or you do not have permission to view it."
@@ -14070,7 +14097,8 @@ msgstr "Bu medya öğesi silindi. Silineni bir moderatör tarafından gözden ge
 #: mediaviewer.php:38
 #, php-format
 msgid "This media object has been deleted.  You should review the deletion and then %1$s or %2$s it."
-msgstr "Bu medya öğesi silindi. Silineni gözden geçirdikten sonra %1$s veya %2$s"
+msgstr ""
+"Bu medya öğesi silindi. Silineni gözden geçirdikten sonra %1$s veya %2$s."
 
 #: mediaviewer.php:65
 msgid "This media object has been edited.  The changes need to be reviewed by a moderator."
@@ -14080,7 +14108,9 @@ msgstr "Bu medya öğesi düzenlendi. Değişiklikleri bir moderatör tarafında
 #: mediaviewer.php:56
 #, php-format
 msgid "This media object has been edited.  You should review the changes and then %1$s or %2$s them."
-msgstr "Bu medya öğesi düzenlendi. DDeğişiklikleri gözden geçirdikten sonra %1$s veya %2$s"
+msgstr ""
+"Bu medya öğesi düzenlendi. DDeğişiklikleri gözden geçirdikten sonra %1$s "
+"veya %2$s."
 
 #: admin_media.php:581 find.php:573
 msgid "This media object is not linked to any other record."
@@ -14093,7 +14123,7 @@ msgstr "Bu mesaj aşağıdaki URL görüntülerken gönderildi: "
 #: message.php:121
 #, php-format
 msgid "This message will be sent to %s"
-msgstr "Bu mesaj %s kullanıcıya gönderilecek."
+msgstr "Bu mesaj %s kullanıcıya gönderilecek"
 
 #: setup.php:439
 msgid "This must be at least six characters long.  It is case-sensitive."
@@ -14116,7 +14146,7 @@ msgstr "Bu not silindi. Silineni bir moderatör tarafından gözden geçirilmesi
 #: note.php:38
 #, php-format
 msgid "This note has been deleted.  You should review the deletion and then %1$s or %2$s it."
-msgstr "Bu not silindi. Silineni gözden geçirdikten sonra %1$s veya %2$s"
+msgstr "Bu not silindi. Silineni gözden geçirdikten sonra %1$s veya %2$s."
 
 #: note.php:65
 msgid "This note has been edited.  The changes need to be reviewed by a moderator."
@@ -14126,7 +14156,8 @@ msgstr "Bu not düzenlendi. Değişiklikleri bir moderatör tarafından gözden 
 #: note.php:56
 #, php-format
 msgid "This note has been edited.  You should review the changes and then %1$s or %2$s them."
-msgstr "Bu not düzenlendi. Değişiklikleri gözden geçirdikten sonra %1$s veya %2$s"
+msgstr ""
+"Bu not düzenlendi. Değişiklikleri gözden geçirdikten sonra %1$s veya %2$s."
 
 #. I18N: Help text for the “Show all notes and source references on notes and sources tabs” configuration setting
 #: admin_trees_config.php:1686
@@ -14192,7 +14223,10 @@ msgstr "Bu yer için hiçbir koordinatlar yok"
 
 #: help_text.php:442
 msgid "This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc."
-msgstr "Bu süreç, site sahibinin yeni bilgilerin sitenin standartları ve kurallarına (verinin uygun kaynak ve diğer gerekli bigileri icermesi v.b.) uygun girildiğinden emin olmasını sağlar. "
+msgstr ""
+"Bu süreç, site sahibinin yeni bilgilerin sitenin standartları ve kurallarına "
+"(verinin uygun kaynak ve diğer gerekli bigileri icermesi v.b.) uygun "
+"girildiğinden emin olmasını sağlar."
 
 #: repo.php:73
 msgid "This repository does not exist or you do not have permission to view it."
@@ -14206,7 +14240,7 @@ msgstr "Bu havuz silindi. Silineni bir moderatör tarafından gözden geçirilme
 #: repo.php:38
 #, php-format
 msgid "This repository has been deleted.  You should review the deletion and then %1$s or %2$s it."
-msgstr "Bu havuz silindi. Silineni gözden geçirdikten sonra %1$s veya %2$s"
+msgstr "Bu havuz silindi. Silineni gözden geçirdikten sonra %1$s veya %2$s."
 
 #: repo.php:65
 msgid "This repository has been edited.  The changes need to be reviewed by a moderator."
@@ -14216,7 +14250,8 @@ msgstr "Bu havuz düzenlendi. Değişiklikleri bir moderatör tarafından gözde
 #: repo.php:56
 #, php-format
 msgid "This repository has been edited.  You should review the changes and then %1$s or %2$s them."
-msgstr "Bu havuz düzenlendi. Değişiklikleri gözden geçirdikten sonra %1$s veya %2$s"
+msgstr ""
+"Bu havuz düzenlendi. Değişiklikleri gözden geçirdikten sonra %1$s veya %2$s."
 
 #: admin_users.php:534
 msgid "This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users."
@@ -14273,7 +14308,7 @@ msgstr "Bu kaynak silindi. Silineni bir moderatör tarafından gözden geçirilm
 #: source.php:38
 #, php-format
 msgid "This source has been deleted.  You should review the deletion and then %1$s or %2$s it."
-msgstr "Bu kaynak siindi. Silineni gözden geçirdikten sonra %1$s veya %2$s"
+msgstr "Bu kaynak siindi. Silineni gözden geçirdikten sonra %1$s veya %2$s."
 
 #: source.php:65
 msgid "This source has been edited.  The changes need to be reviewed by a moderator."
@@ -14283,7 +14318,8 @@ msgstr "Bu kaynak düzenlendi. Değişiklikleri bir moderatör tarafından gözd
 #: source.php:56
 #, php-format
 msgid "This source has been edited.  You should review the changes and then %1$s or %2$s them."
-msgstr "Bu kaynak düzenlendi. Değişiklikleri gözden geçirdikten sonra %1$s veya %2$s"
+msgstr ""
+"Bu kaynak düzenlendi. Değişiklikleri gözden geçirdikten sonra %1$s veya %2$s."
 
 #: app/Module/GoogleMapsModule.php:419
 msgid "This specifies the precision of the different levels when entering new geographic locations.  For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits."
@@ -14910,7 +14946,7 @@ msgstr "Her halükarda güncelle"
 #: admin.php:546 admin_site_upgrade.php:80
 #, php-format
 msgid "Upgrade to webtrees %s."
-msgstr "webtrees %s sürüme yükseltin"
+msgstr "webtrees %s sürüme yükseltin."
 
 #: admin_site_upgrade.php:53
 msgid "Upgrade wizard"
@@ -15057,7 +15093,7 @@ msgstr "Kullanıcı aracısı dizesi"
 #: login.php:253 login.php:320 login.php:347 login.php:534
 #: modules_v3/login_block/LoginBlockModule.php:62
 msgid "Username"
-msgstr "Kullanıcı Adı:"
+msgstr "Kullanıcı Adı"
 
 #: login.php:215 modules_v3/login_block/LoginBlockModule.php:89
 msgid "Username or email address"
@@ -15154,7 +15190,7 @@ msgstr "Veracruz, Meksika"
 
 #: login.php:348 login.php:542
 msgid "Verification code"
-msgstr "Doğrulama kodu:"
+msgstr "Doğrulama kodu"
 
 #: admin_users.php:853
 msgid "Verified"
@@ -15690,7 +15726,7 @@ msgstr "Tüm yönetici hesabı alanları girmeniz gerekir."
 
 #: edit_interface.php:1548
 msgid "You must provide a repository name."
-msgstr "Havuzun adını belirtmelisiniz"
+msgstr "Havuzun adını belirtmelisiniz."
 
 #: edit_interface.php:1210
 msgid "You must provide a source title"
