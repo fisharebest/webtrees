@@ -199,13 +199,6 @@ msgid_plural "%s logged-in users"
 msgstr[0] ""
 msgstr[1] ""
 
-#: app/Module/RelativesTabModule.php:62
-#, php-format
-msgid "%s month"
-msgid_plural "%s months"
-msgstr[0] "%s חודש"
-msgstr[1] "%s חדשים"
-
 #: app/Module/RelativesTabModule.php:60
 #, php-format
 msgid "%s year"
@@ -342,12 +335,12 @@ msgstr[0] "%s מינוט צוריק"
 msgstr[1] "%s מינוט צוריק"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-#: app/I18N.php:463 includes/functions/functions_date.php:47
+#: app/I18N.php:463 includes/functions/functions_date.php:47 app/Module/RelativesTabModule.php:62
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s חודש"
+msgstr[1] "%s חדשים"
 
 #: app/I18N.php:513
 #, php-format

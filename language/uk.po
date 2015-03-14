@@ -204,14 +204,6 @@ msgstr[0] "%s зареєстрований користувач"
 msgstr[1] "%s зареєстрованих користувачів"
 msgstr[2] "%s зареєстрованих користувачів"
 
-#: app/Module/RelativesTabModule.php:62
-#, php-format
-msgid "%s month"
-msgid_plural "%s months"
-msgstr[0] "%s місяць"
-msgstr[1] "%s місяця"
-msgstr[2] "%s місяців"
-
 #: includes/functions/functions.php:555
 #, php-format
 msgctxt "FEMALE"
@@ -353,7 +345,7 @@ msgstr[1] "%s хвилини тому"
 msgstr[2] "%s хвилин тому"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-#: app/I18N.php:463 includes/functions/functions_date.php:47
+#: app/I18N.php:463 includes/functions/functions_date.php:47 app/Module/RelativesTabModule.php:62
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"

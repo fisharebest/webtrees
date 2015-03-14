@@ -208,14 +208,6 @@ msgstr[0] "%s prijavljeni korisnik"
 msgstr[1] "%s prijavljena korisnika"
 msgstr[2] "%s prijavljenih korisnika"
 
-#: app/Module/RelativesTabModule.php:62
-#, php-format
-msgid "%s month"
-msgid_plural "%s months"
-msgstr[0] "%s mjesec"
-msgstr[1] "%s mjeseca"
-msgstr[2] "%s mjeseci"
-
 #: includes/functions/functions.php:555
 #, php-format
 msgctxt "FEMALE"
@@ -357,7 +349,7 @@ msgstr[1] "Prije %s minute"
 msgstr[2] "Prije %s minuta"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-#: app/I18N.php:463 includes/functions/functions_date.php:47
+#: app/I18N.php:463 includes/functions/functions_date.php:47 app/Module/RelativesTabModule.php:62
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
