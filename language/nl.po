@@ -3,18 +3,19 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-02-19 19:39+0100\n"
+"PO-Revision-Date: 2015-03-14 11:42+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
-"Language-Team: \n"
+"Language-Team: Dutch "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.3-dev\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
-"X-Generator: Poedit 1.7.4\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
@@ -66,51 +67,51 @@ msgstr "#%s"
 
 #: app/Module/GoogleMapsModule.php:897
 #, php-format
-msgid "%1$d individual displayed, out of the normal total of %2$d, from %3$d generations."
-msgid_plural "%1$d individuals displayed, out of the normal total of %2$d, from %3$d generations."
-msgstr[0] "%1$d persoon getoond, uit het normale aantal %2$d, uit %3$d generaties."
-msgstr[1] "%1$d personen getoond, uit het normale aantal van %2$d, uit %3$d generaties."
+msgid "$1$s individual displayed, out of the normal total of $2$s, from $3$s generations."
+msgid_plural "$1$s individuals displayed, out of the normal total of $2$s, from $3$s generations."
+msgstr[0] "$1$s persoon getoond, uit het normale aantal $2$s, uit $3$s generaties."
+msgstr[1] "$1$s personen getoond, uit het normale aantal van $2$s, uit $3$s generaties."
 
-#. I18N: %1$d is a count of individuals, %2$s is a list of their names
+#. I18N: $1$s is a count of individuals, %2$s is a list of their names
 #: app/Module/GoogleMapsModule.php:914
 #, php-format
-msgid "%1$d individual is missing birthplace map coordinates: %2$s."
-msgid_plural "%1$d individuals are missing birthplace map coordinates: %2$s."
-msgstr[0] "Voor %1$d persoon ontbreken de map coördinaten van de geboorteplaats: %2$s."
-msgstr[1] "Voor %1$d personen ontbreken de map coördinaten van de geboorteplaats: %2$s."
+msgid "$1$s individual is missing birthplace map coordinates: %2$s."
+msgid_plural "$1$s individuals are missing birthplace map coordinates: %2$s."
+msgstr[0] "Voor $1$s persoon ontbreken de map coördinaten van de geboorteplaats: %2$s."
+msgstr[1] "Voor $1$s personen ontbreken de map coördinaten van de geboorteplaats: %2$s."
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:635
 #, php-format
 msgctxt "FEMALE"
-msgid "%1$d × %2$s"
-msgstr "%1$d × %2$s"
+msgid "$1$s × %2$s"
+msgstr "$1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:620
 #, php-format
 msgctxt "MALE"
-msgid "%1$d × %2$s"
-msgstr "%1$d × %2$s"
+msgid "$1$s × %2$s"
+msgstr "$1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:650
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%1$d × %2$s"
-msgstr "%1$d × %2$s"
+msgid "$1$s × %2$s"
+msgstr "$1$s × %2$s"
 
-#. I18N: %1$s=“fifth cousin”, etc., %2$d>=4
+#. I18N: %1$s=“fifth cousin”, etc., $2$s>=4
 #: includes/functions/functions.php:2132
 #, php-format
-msgid "%1$s %2$d times removed ascending"
-msgstr "%1$s (%2$d generaties hoger)"
+msgid "%1$s $2$s times removed ascending"
+msgstr "%1$s ($2$s generaties hoger)"
 
-#. I18N: %1$s=“fifth cousin”, etc., %2$d>=4
+#. I18N: %1$s=“fifth cousin”, etc., $2$s>=4
 #: includes/functions/functions.php:2135
 #, php-format
-msgid "%1$s %2$d times removed descending"
-msgstr "%1$s (%2$d generaties lager)"
+msgid "%1$s $2$s times removed descending"
+msgstr "%1$s ($2$s generaties lager)"
 
 #. I18N: The placeholders are GEDCOM XREFs and tags.  e.g. “INDI I123 contains a FAMC link to F234.”
 #: admin_trees_check.php:205
@@ -120,8 +121,8 @@ msgstr "%1$s %2$s heeft een  %3$s koppeling naar %4$s."
 
 #: includes/functions/functions_print_lists.php:1619
 #, php-format
-msgid "%1$s (%2$d)"
-msgstr "%1$s (%2$d)"
+msgid "%1$s ($2$s)"
+msgstr "%1$s ($2$s)"
 
 #: app/Controller/IndividualController.php:188 app/Date.php:332
 #, php-format
@@ -280,15 +281,15 @@ msgstr[1] "%s dagen geleden"
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s familie is bijgewerkt."
+msgstr[1] "%s families zijn bijgewerkt."
 
 #: admin.php:761
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s stamboom"
+msgstr[1] "%s stambomen"
 
 #: app/Stats.php:4748 app/Stats.php:4752
 #, php-format
@@ -322,8 +323,8 @@ msgstr[1] "%s personen zijn privé."
 #, php-format
 msgid "%s individuals has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s persoon is bijgewerkt."
+msgstr[1] "%s personen zijn bijgewerkt."
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:122
@@ -345,14 +346,6 @@ msgid_plural "%s minutes ago"
 msgstr[0] "%s minuut geleden"
 msgstr[1] "%s minuten geleden"
 
-#. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-#: app/I18N.php:463 includes/functions/functions_date.php:47
-#, php-format
-msgid "%s month"
-msgid_plural "%s months"
-msgstr[0] "%s maand"
-msgstr[1] "%s maanden"
-
 #: app/I18N.php:513
 #, php-format
 msgid "%s month ago"
@@ -364,8 +357,8 @@ msgstr[1] "%s maanden geleden"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s notitie is bijgewerkt."
+msgstr[1] "%s notities zijn bijgewerkt."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: includes/functions/functions.php:2108
@@ -390,8 +383,8 @@ msgstr[1] "%s seconden geleden"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s bron is bijgewerkt."
+msgstr[1] "%s bronnen zijn bijgewerkt."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2124
@@ -429,7 +422,7 @@ msgstr[1] "%s weken"
 #: admin_trees_download.php:164
 #, php-format
 msgid "%s will be prepended to media filenames."
-msgstr ""
+msgstr "%s wordt toegevoegd aan het begin van bestandsnamen."
 
 #: app/I18N.php:510
 #, php-format
@@ -454,13 +447,13 @@ msgstr "%s%%"
 #: app/Date/JulianDate.php:74
 #, php-format
 msgid "%s&nbsp;BCE"
-msgstr "%s&nbsp;v.o.j."
+msgstr "%s&nbsp;v.C."
 
 #. I18N: CE=Common Era, for Julian years > 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:77 app/Date/JulianDate.php:80
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr "%s&nbsp;A.D."
+msgstr "%s&nbsp;n.C."
 
 #. I18N: first/default option in a drop-down listbox
 #: app/Module/GoogleMapsModule.php:1547 app/Module/GoogleMapsModule.php:1563
@@ -660,7 +653,8 @@ msgstr "<span class=\"label\">%1$s:</span> <span class=\"field\" dir=\"auto\">%2
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:153
 msgid "A FAQ item can be displayed on just one of the family trees, or on all the family trees."
-msgstr "Een FAQ item kan getoond worden voor één stamboom, of voor alle stambomen"
+msgstr ""
+"Een FAQ item kan getoond worden voor één stamboom of voor alle stambomen."
 
 #: help_text.php:289
 msgid "A child may have more than one set of parents.  The relationship between the child and the parents can be biological, legal, or based on local culture and tradition.  If no pedigree is specified, then a biological relationship will be assumed."
@@ -680,11 +674,11 @@ msgstr "Een beschrijving van de oorzaak van deze gebeurtenis of dit feit, zoals 
 
 #: admin_trees_download.php:116 admin_trees_manage.php:209
 msgid "A file on the server"
-msgstr ""
+msgstr "Een bestand op de server"
 
 #: admin_trees_download.php:201 admin_trees_manage.php:198
 msgid "A file on your computer"
-msgstr ""
+msgstr "Een bestand op uw computer"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:30
@@ -724,7 +718,7 @@ msgstr "Een lijst van Yahrzeiten (herdenking van overledene) die in de nabije to
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:30
 msgid "A list of the anniversaries that occur today."
-msgstr "Een lijst van alle gedenkdagen die vandaag plaats vinden"
+msgstr "Een lijst van alle gedenkdagen die vandaag plaats vinden."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:30
@@ -763,7 +757,7 @@ msgstr "Een nieuw wachtwoord is aangemaakt en naar %s  gemaild. U kunt het wacht
 
 #: login.php:252
 msgid "A new password has been requested for your user name."
-msgstr "Een nieuw wachtwoord werd aangevraagd voor uw gebruikersnaam!"
+msgstr "Een nieuw wachtwoord is aangevraagd voor uw gebruikersnaam."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: login.php:567
@@ -796,7 +790,7 @@ msgstr "Een rapport van de voorouders van een persoon, weergegeven in een boomst
 #: app/Module/AhnentafelReportModule.php:32
 #: modules_v3/ahnentafel_report/report.xml:5
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr "Een verhalend rapport van de voorouders van een persoon"
+msgstr "Een verhalend rapport van de voorouders van een persoon."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyReportModule.php:32
@@ -818,7 +812,7 @@ msgstr "Een rapport van feiten/gebeurtenissen die door een bepaalde bron worden 
 #: app/Module/FamilyGroupReportModule.php:32
 #: modules_v3/family_group_report/report.xml:4
 msgid "A report of family members and their details."
-msgstr "Een rapport van gezinsleden met hun details"
+msgstr "Een rapport van gezinsleden met hun details."
 
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:32 modules_v3/death_report/report.xml:4
@@ -1112,7 +1106,7 @@ msgstr "Toevoegen"
 
 #: app/Module/GoogleMapsModule.php:4613
 msgid "Add  a new geographic location"
-msgstr "Voeg een nieuwe geografische locatie toe."
+msgstr "Voeg een nieuwe geografische locatie toe"
 
 #: app/Module/ClippingsCartModule.php:472
 #, php-format
@@ -1134,7 +1128,7 @@ msgstr "Voeg een feit/gebeurtenis toe"
 
 #: app/Module/RelativesTabModule.php:129
 msgid "Add a husband to this family"
-msgstr "Voeg een echtgenoot toe aan dit gezin."
+msgstr "Voeg een echtgenoot toe aan dit gezin"
 
 #: app/Module/RelativesTabModule.php:367 edit_interface.php:1090
 #: edit_interface.php:1163
@@ -1249,7 +1243,7 @@ msgstr "Voeg een verhaal toe"
 
 #: app/Module/RelativesTabModule.php:163
 msgid "Add a wife to this family"
-msgstr "Voeg echtgenote toe aan dit gezin."
+msgstr "Voeg echtgenote toe aan dit gezin"
 
 #: app/Module/RelativesTabModule.php:355 edit_interface.php:1093
 #: edit_interface.php:1165
@@ -1330,13 +1324,13 @@ msgstr "Voeg de records van de ouders samen met dit gezinsrecord toe."
 
 #: admin_trees_manage.php:266
 msgid "Add spaces where long lines were wrapped"
-msgstr ""
+msgstr "Voeg spaties toe waar lange regels afgebroken zijn"
 
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: admin_trees_download.php:161 app/Module/ClippingsCartModule.php:212
 #: app/Module/ClippingsCartModule.php:604
 msgid "Add the GEDCOM media path to filenames"
-msgstr "Voeg het GEDCOM media pad toe aan bestandsnamen."
+msgstr "Voeg het GEDCOM media pad toe aan bestandsnamen"
 
 #: app/Module/ClippingsCartModule.php:103
 #: app/Module/ClippingsCartModule.php:521
@@ -2083,7 +2077,13 @@ msgstr "Aruba"
 
 #: app/Module/HtmlBlockModule.php:293
 msgid "As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically.  These special fields are marked with <b>#</b> characters.  For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database.  Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme."
-msgstr "Naast het gebruik van de gereedschapsbalk om HTML formattering toe te passen, kunnen databasevelden ingevoegd worden, welke automatisch worden bijgewerkt. Deze speciale velden zijn gemarkeerd met <b>#</b> tekens. B.v. <b>#totalFamilies#</b> zal vervangen worden door het actuele aantal families in de database. Gevorderde gebruikers willen mogelijk CSS classes aan hun tekst toevoegen, zodat de layout bij het huidig gekozen thema past"
+msgstr ""
+"Naast het gebruik van de gereedschapsbalk om HTML formattering toe te "
+"passen, kunt u databasevelden invoegen die automatisch worden bijgewerkt. "
+"Deze speciale velden zijn gemarkeerd met <b>#</b> tekens. Bijvoorbeeld "
+"<b>#totalFamilies#</b> wordt vervangen door het actuele aantal families in "
+"de database. Gevorderde gebruikers kunnen CSS classes aan hun tekst "
+"toevoegen, zodat de layout past bij het gekozen thema."
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:61
@@ -2798,7 +2798,7 @@ msgstr "Zeeblauw"
 
 #: message.php:135
 msgid "Body"
-msgstr "Inhoud:"
+msgstr "Inhoud"
 
 #: app/Gedcom/GedcomCodeTemp.php:102
 msgid "Bogota, Colombia"
@@ -3229,7 +3229,7 @@ msgstr "Catalonië"
 
 #: statistics.php:604
 msgid "Categories"
-msgstr "Categorieën:"
+msgstr "Categorieën"
 
 #. I18N: gedcom tag CAUS
 #: app/Gedcom/GedcomTag.php:243
@@ -3469,7 +3469,7 @@ msgstr "Kinderen van "
 #. I18N: In the Icelandic surname tradition, ...
 #: admin_trees_config.php:93
 msgid "Children take a patronym instead of a surname."
-msgstr "Kinderen krijgen een patroniem in plaats van een achternaam"
+msgstr "Kinderen krijgen een patroniem in plaats van een achternaam."
 
 #. I18N: In the Spanish surname tradition, ...
 #: admin_trees_config.php:87
@@ -3488,12 +3488,12 @@ msgstr "Kinderen krijgen één achternaam van de moeder, en één van de vader."
 #: admin_trees_config.php:77 admin_trees_config.php:81
 #: admin_trees_config.php:96 admin_trees_config.php:101
 msgid "Children take their father’s surname."
-msgstr "Kinderen krijgen hun vaders achternaam"
+msgstr "Kinderen krijgen hun vaders achternaam."
 
 #. I18N: In the matrilineal surname tradition, ...
 #: admin_trees_config.php:84
 msgid "Children take their mother’s surname."
-msgstr "Kinderen krijgen hun moeders achternaam"
+msgstr "Kinderen krijgen hun moeders achternaam."
 
 #: app/Stats.php:6109
 msgid "Chile"
@@ -3655,7 +3655,7 @@ msgstr "Ambtenaar Burgerlijke Stand"
 #. I18N: Menu entry
 #: admin_site_clean.php:52 app/Theme/AdministrationTheme.php:75
 msgid "Clean up data folder"
-msgstr "Ruim de data map op."
+msgstr "Ruim de data map op"
 
 #: lifespan.php:193 timeline.php:307
 msgid "Clear chart"
@@ -3674,7 +3674,7 @@ msgstr "Klik %s om de persoon als hoofd van de familie te kiezen."
 
 #: edit_interface.php:1747
 msgid "Click a row, then drag-and-drop to re-order media"
-msgstr "Klik op een rij, sleep en laat los om mutimedia volgorde te wijzigen "
+msgstr "Klik op een rij, sleep en laat los om de media volgorde te wijzigen"
 
 #: admin_trees_manage.php:690
 msgid "Click here for PhpGedView to webtrees transfer wizard"
@@ -3682,7 +3682,7 @@ msgstr "Klik hier voor de PhpGedView naar webtrees overstapwizard"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:297
 msgid "Click here to add, edit, or delete"
-msgstr "Klik hier om toe te voegen, te wijzigen of te verwijderen."
+msgstr "Klik hier om toe te voegen, te wijzigen of te verwijderen"
 
 #: individual.php:243
 msgid "Click here to open or close the sidebar"
@@ -3694,7 +3694,9 @@ msgstr "Klik op de naam om een persoon toe te voegen aan de ‘Voeg koppelingen 
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:295
 msgid "Click on a title to go straight to it, or scroll down to read them all."
-msgstr "Klik op een titel om er direct naartoe te gaan, of scroll naar beneden om ze allemaal te lezen"
+msgstr ""
+"Klik op een titel om er direct naartoe te gaan of scroll naar beneden om "
+"alles te lezen."
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:69
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:80
@@ -3809,7 +3811,7 @@ msgstr "Voltooid; datum onbekend"
 
 #: admin_trees_download.php:142
 msgid "Compress the GEDCOM file"
-msgstr ""
+msgstr "Comprimeer het GEDCOM bestand"
 
 #. I18N: gedcom tag CONC
 #: app/Gedcom/GedcomTag.php:303
@@ -4003,11 +4005,11 @@ msgstr "Maak een nieuwe stamboom"
 
 #: edit_interface.php:754
 msgid "Create a new individual"
-msgstr "Maak een nieuwe persoon aan."
+msgstr "Maak een nieuwe persoon aan"
 
 #: addmedia.php:74 addmedia.php:392 includes/functions/functions_edit.php:378
 msgid "Create a new media object"
-msgstr "Maak een nieuw media object aan."
+msgstr "Maak een nieuw media object aan"
 
 #: edit_interface.php:1538 edit_interface.php:1604
 #: includes/functions/functions_edit.php:387
@@ -4040,6 +4042,8 @@ msgstr "Stel uw eigen diagram samen"
 #: admin_trees_manage.php:712
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
 msgstr ""
+"Stamboom aanmaken, bijwerken of verwijderen voor elk GEDCOM bestand in de "
+"data map."
 
 #. I18N: gedcom tag CREM
 #: app/Gedcom/GedcomTag.php:331 modules_v3/family_group_report/report.xml:309
@@ -4438,7 +4442,7 @@ msgstr "Datum geregistreerd"
 
 #: app/Module/UserMessagesModule.php:79
 msgid "Date sent"
-msgstr "Datum verzonden:"
+msgstr "Datum verzonden"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:747
@@ -5113,7 +5117,7 @@ msgstr "Toon alles"
 #. I18N: Description of the “Favorites” module
 #: app/Module/FamilyTreeFavoritesModule.php:37
 msgid "Display and manage a family tree’s favorite pages."
-msgstr "Toon en beheer de pagina met favorieten van de stamboom"
+msgstr "Toon en beheer de pagina met favorieten van de stamboom."
 
 #. I18N: Description of the “Favorites” module
 #: app/Module/UserFavoritesModule.php:29
@@ -5650,7 +5654,7 @@ msgstr "Exacte tekst"
 #: famlist.php:170 indilist.php:170
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
-msgstr "Sluit personen met ‘%s’ als huwelijksnaam uit."
+msgstr "Sluit personen met  “%s” als huwelijksnaam uit"
 
 #: admin_media.php:682
 msgid "Exclude subfolders"
@@ -5669,7 +5673,7 @@ msgstr "Uitvoeringsstatistieken"
 #. I18N: placeholder text for registration-comments field
 #: login.php:493
 msgid "Explain why you are requesting an account."
-msgstr ""
+msgstr "Leg aub uit waarom u om een gebruikersaccount verzoekt."
 
 #: admin_site_change.php:346 admin_site_logs.php:310
 #: admin_trees_manage.php:559
@@ -5678,7 +5682,7 @@ msgstr "Exporteer"
 
 #: admin_trees_download.php:34
 msgid "Export a GEDCOM file"
-msgstr ""
+msgstr "Exporteer een GEDCOM bestand"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:279
@@ -5687,7 +5691,7 @@ msgstr "Exporteer alle stambomen naar GEDCOM bestanden…"
 
 #: admin_trees_download.php:135
 msgid "Export options"
-msgstr ""
+msgstr "Export opties"
 
 #. I18N: A configuration setting.  ... [who were] born in the last XX years or died in the last YY years
 #: admin_trees_config.php:483
@@ -5931,7 +5935,7 @@ msgstr "Gezinsnavigator"
 #. I18N: Description of the “GEDCOM News” module
 #: app/Module/FamilyTreeNewsModule.php:30
 msgid "Family news and site announcements."
-msgstr "Familienieuws en site-aankondigingen"
+msgstr "Familienieuws en site-aankondigingen."
 
 #. I18N: A title/heading. %s is an individual’s name
 #: app/Controller/FamilyBookController.php:368
@@ -6228,7 +6232,7 @@ msgstr "Vind een speciaal letterteken"
 
 #: relationship.php:96
 msgid "Find all possible relationships"
-msgstr ""
+msgstr "Vind alle mogelijke relaties"
 
 #: app/Module/CensusAssistantModule.php:63 find.php:55
 #: includes/functions/functions_print.php:730
@@ -6239,7 +6243,7 @@ msgstr "Zoek een persoon"
 
 #: relationship.php:91
 msgid "Find the closest relationships"
-msgstr ""
+msgstr "Vind de dichtstbijzijnde relatie"
 
 #: app/Stats.php:6141
 msgid "Finland"
@@ -6257,7 +6261,7 @@ msgstr "Eerste gebeurtenis"
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:331
 msgid "First record"
-msgstr ""
+msgstr "Eerste record"
 
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:29
 msgid "Fix name slashes and spaces"
@@ -6332,6 +6336,8 @@ msgstr "Vul hier de Tempel in, waar het LDS-verordening heeft plaatsgevonden."
 #, php-format
 msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
 msgstr ""
+"Als het GEDCOM bestand bijvoorbeeld %1$s bevat maar webtrees verwacht %2$s "
+"in the media map te vinden, dan moet u %3$s verwijderen."
 
 #: admin_users.php:590
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
@@ -6577,7 +6583,7 @@ msgstr "Algemeen zoeken"
 #. I18N: Description of the “Sitemaps” module
 #: app/Module/SiteMapModule.php:35
 msgid "Generate sitemap files for search engines."
-msgstr "Genereer sitemap bestanden voor zoekmachines"
+msgstr "Genereer sitemap bestanden voor zoekmachines."
 
 #. I18N: This is a report footer. %s is the name of the application.
 #: app/Report/ReportBase.php:108
@@ -6890,7 +6896,7 @@ msgstr "Hij is gecremeerd"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:55
 msgid "Head of household"
-msgstr "Hoofd huishouding:"
+msgstr "Hoofd huishouding"
 
 #. I18N: gedcom tag HEAD
 #: app/Gedcom/GedcomTag.php:509
@@ -7163,7 +7169,12 @@ msgstr "Als een persoon niet bekend was met zijn eerste voornaam, moet de verkoz
 #. I18N: Help text for the “Names to add to common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1236
 msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list.  It can be added here manually.  If more than one surname is entered, they must be separated by a comma.  <b>Surnames are case-sensitive.</b>"
-msgstr "Als het aantal malen dat een achternaam in de genealogie voorkomt lager is dan de drempelwaarde, zal de naam niet in de lijst met Meest voorkomende achternamen verschijnen. De achternaam kan dan hier handmatig worden toegevoegd. Als er meer namen worden opgegeven, moeten ze met een komma worden gescheiden.<br>Let op: de opgegeven namen zijn hoofdlettergevoelig!"
+msgstr ""
+"Als het aantal malen dat een achternaam in de genealogie voorkomt lager is "
+"dan de drempelwaarde, verschijnt de naam niet op de lijst. De achternaam kan "
+"dan hier handmatig worden toegevoegd. Als er meer namen worden opgegeven, "
+"moeten ze met een komma worden gescheiden.<b>Achternamen zijn "
+"hoofdlettergevoelig.</b>"
 
 #: help_text.php:255
 #, php-format
@@ -7196,10 +7207,15 @@ msgstr "Bent u de websitebeheerder, controleer dan of:"
 #: site-unavailable.php:109
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
 msgstr ""
+"Als u het probleem niet zelf kunt oplossen, dan kunt u om hulp vragen in het "
+"forum van <a href=\"http://webtrees.net\">webtrees.net</a>"
 
 #: admin_trees_manage.php:269
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
 msgstr ""
+"Als u dit GEDCOM bestand hebt aangemaakt met genealogie software dat spaties "
+"weglaat bij het splitsen van lange regels, selecteer dan deze optie om de "
+"ontbrekende spaties weer toe te voegen."
 
 #: login.php:350
 msgid "If you didn’t request an account, you can just delete this message."
@@ -7247,6 +7263,8 @@ msgstr "Als u probeert deze waarden te overschrijden, kan dat leiden tot server 
 #: admin_site_config.php:507
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr ""
+"Als u een van de volgende tracking en analytics diensten gebruikt, kan "
+"webtrees de tracking code automatisch toevoegen."
 
 #. I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1256
@@ -7281,15 +7299,15 @@ msgstr "Importeer"
 
 #: admin_trees_manage.php:162
 msgid "Import a GEDCOM file"
-msgstr ""
+msgstr "Een GEDCOM bestand importeren"
 
 #: app/Module/GoogleMapsModule.php:4624
 msgid "Import all places from a family tree"
-msgstr "Importeer alle plaatsen van een stamboom."
+msgstr "Importeer alle plaatsen van een stamboom"
 
 #: admin_trees_manage.php:254
 msgid "Import options"
-msgstr ""
+msgstr "Import opties"
 
 #: admin_trees_merge.php:84 admin_trees_renumber.php:264
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
@@ -7516,7 +7534,7 @@ msgstr "Bijgezet"
 
 #: import.php:113
 msgid "Invalid GEDCOM file - no header record found."
-msgstr "Ongeldig GEDCOM-bestand - geen headerrecord gevonden"
+msgstr "Ongeldig GEDCOM-bestand - geen headerrecord gevonden."
 
 #: includes/functions/functions_import.php:639
 msgid "Invalid GEDCOM format"
@@ -7761,7 +7779,7 @@ msgstr "Bewaar de link in de lijst"
 #. I18N: A configuration setting
 #: admin_trees_manage.php:259
 msgid "Keep media objects"
-msgstr ""
+msgstr "Media objects behouden"
 
 #: app/Stats.php:6186
 msgid "Kenya"
@@ -7904,7 +7922,7 @@ msgstr "Taal"
 #. I18N: Menu entry
 #: admin_site_config.php:144 app/Theme/AdministrationTheme.php:71
 msgid "Languages"
-msgstr ""
+msgstr "Talen"
 
 #: app/Stats.php:6193
 msgid "Laos"
@@ -8045,12 +8063,12 @@ msgstr "Lima, Peru"
 
 #: app/Module/FamilyTreeNewsModule.php:163
 msgid "Limit"
-msgstr "Beperking:"
+msgstr "Beperking"
 
 #. I18N: Limit display by [age/number]
 #: app/Module/FamilyTreeNewsModule.php:154
 msgid "Limit display by"
-msgstr "Beperk het aantal artikelen door:"
+msgstr "Beperk de weergave door"
 
 #: app/Module/RelativesTabModule.php:344 edit_interface.php:990
 #: edit_interface.php:1049
@@ -8725,7 +8743,7 @@ msgstr "Voorvoegsel media-ID"
 #. I18N: Label for search field
 #: find.php:191
 msgid "Media contains"
-msgstr "Media bevat:"
+msgstr "Media bevat"
 
 #: admin_media.php:702 admin_media_upload.php:198
 msgid "Media file"
@@ -8795,7 +8813,7 @@ msgstr "Mediterranio"
 
 #: setup.php:178
 msgid "Medium systems (5,000 individuals): 32–64 MB, 20–40 seconds"
-msgstr "Middelmaat systemen (5000 personen): 32-64 MB, 20-40 seconden."
+msgstr "Gemiddelde systemen (5000 personen): 32-64 MB, 20-40 seconden"
 
 #: app/Date/JalaliDate.php:156
 msgctxt "Abbreviation for Persian month: Mehr"
@@ -9306,7 +9324,7 @@ msgstr "Naam"
 #. I18N: Label for search field
 #: find.php:155 find.php:172
 msgid "Name contains"
-msgstr "Naam bevat:"
+msgstr "Naam bevat"
 
 #: app/Gedcom/GedcomTag.php:607
 msgid "Name in Hebrew"
@@ -9550,15 +9568,15 @@ msgstr "Nee"
 
 #: admin_trees_manage.php:88 admin_trees_manage.php:109
 msgid "No GEDCOM file was received."
-msgstr ""
+msgstr "Er is geen GEDCOM bestand ontvangen."
 
 #: admin_trees_manage.php:240
 msgid "No GEDCOM files found."
-msgstr ""
+msgstr "Geen GEDCOM bestanden gevonden."
 
 #: app/Module/GoogleMapsModule.php:911
 msgid "No ancestors in the database."
-msgstr "Geen voorouders in de database"
+msgstr "Geen voorouders in de database."
 
 #: admin_trees_config.php:35
 msgid "No calendar conversion"
@@ -9584,7 +9602,7 @@ msgstr "Er zijn geen niet-standaard thema's ingeschakeld."
 
 #: admin_trees_check.php:256
 msgid "No errors have been found."
-msgstr "Geen fouten gevonden"
+msgstr "Er zijn geen fouten gevonden."
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: includes/functions/functions_print_lists.php:2013
@@ -9626,7 +9644,7 @@ msgstr[1] "Er zijn geen gebeurtenissen voor levende personen in de komende %s da
 
 #: app/Controller/FamilyController.php:174
 msgid "No facts for this family."
-msgstr "Geen feiten/gebeurtenissen voor dit gezin"
+msgstr "Geen feiten voor dit gezin."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:68
@@ -9683,7 +9701,7 @@ msgstr "Geen records om te tonen"
 #: find.php:579 find.php:606 find.php:628 find.php:650 find.php:674
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:171 placelist.php:58
 msgid "No results found."
-msgstr "Niets gevonden"
+msgstr "Geen resultaten gevonden."
 
 #: includes/functions/functions_edit.php:603
 msgid "No temple - living ordinance"
@@ -9875,7 +9893,7 @@ msgstr "Aantal gezinnen zonder kinderen"
 #: app/Module/ClippingsCartModule.php:524
 #: app/Module/ClippingsCartModule.php:527
 msgid "Number of generations"
-msgstr "Aantal generaties:"
+msgstr "Aantal generaties"
 
 #: app/Module/FamilyTreeNewsModule.php:159
 msgid "Number of items"
@@ -10159,7 +10177,7 @@ msgstr "PGV moet versie 4.2.3, of willekeurige SVN tot aan #%s zijn"
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:77
 msgid "PHP blocked the file because of its extension."
-msgstr "PHP heeft het bestand tegengehouden vanwege de extensie"
+msgstr "PHP heeft het bestand geblokkeerd vanwege de extensie."
 
 #: setup.php:140
 #, php-format
@@ -10174,7 +10192,7 @@ msgstr "De PHP extensie ‘%s’ is uitgeschakeld. U kunt webtrees niet installe
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:74
 msgid "PHP failed to write to disk."
-msgstr "PHP kon niet schrijven op schijf"
+msgstr "PHP kon niet schrijven naar de schijf."
 
 #: admin_site_info.php:71
 msgid "PHP information"
@@ -10183,7 +10201,10 @@ msgstr "PHP informatie"
 #: setup.php:149
 #, php-format
 msgid "PHP setting “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
-msgstr "PHP instelling ‘%1$s’ is uitgezet. Zonder dat, werken de volgende kenmerken niet: %2$s. Vraag de beheerder van uw server dit in te schakelen"
+msgstr ""
+"PHP instelling “%1$s” is uitgeschakeld. Zonder deze instelling werken de "
+"volgende kenmerken niet: %2$s. Vraag de beheerder van uw server om dit in te "
+"schakelen."
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:209
@@ -10232,7 +10253,7 @@ msgstr "Paginaformaat"
 #. I18N: The number of [...]
 #: app/Module/ExtraInformationModule.php:67 index.php:144
 msgid "Page views"
-msgstr ""
+msgstr "Pageviews"
 
 #: app/Gedcom/GedcomTag.php:1888
 msgid "Painting"
@@ -10421,7 +10442,7 @@ msgstr "Mogelijk is PhpGedView geïnstalleerd in een van deze mappen:"
 
 #: admin_pgv_to_wt.php:94
 msgid "PhpGedView must use the same database as webtrees."
-msgstr "PhpGedView moet dezelfde database gebruiken als webtrees"
+msgstr "PhpGedView moet dezelfde database gebruiken als webtrees."
 
 #: admin_pgv_to_wt.php:44 admin_trees_manage.php:662
 msgid "PhpGedView to webtrees transfer wizard"
@@ -10637,16 +10658,16 @@ msgstr "Vul, behalve het jaartal, ook een voornaam, achternaam of plaatsnaam in"
 
 #: message.php:99
 msgid "Please enter a message subject."
-msgstr "Vul onderwerp van het bericht in"
+msgstr "Vul het onderwerp van het bericht in."
 
 #: message.php:58
 msgid "Please enter a valid email address."
-msgstr "Voer een geldig e-mailadres in"
+msgstr "Voer een geldig e-mailadres in."
 
 #: app/Module/CensusAssistantModule.php:96 find.php:115 search.php:34
 #: search.php:46
 msgid "Please enter more than one character."
-msgstr "Voer meer dan één leesteken in"
+msgstr "Voer meer dan één leesteken in."
 
 #: message.php:104
 msgid "Please enter some message text before sending."
@@ -10764,7 +10785,9 @@ msgstr "Vooraf gedefinieerde tekst waarin staat dat de beheerder beslist over ie
 
 #: admin_site_config.php:119
 msgid "Predefined text that states all users can request a user account"
-msgstr "Vooraf gedefinieerde tekst waarin staat dat alle bezoekers een gebruikersaccount kunnen aanvragen."
+msgstr ""
+"Vooraf gedefinieerde tekst waarin staat dat alle bezoekers een "
+"gebruikersaccount kunnen aanvragen"
 
 #: admin_site_config.php:121
 msgid "Predefined text that states only family members can request a user account"
@@ -10827,7 +10850,9 @@ msgstr "Privacy"
 
 #: admin_trees_config.php:538 admin_trees_config.php:559
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
-msgstr "Privacy beperkingen- deze worden toegepast op records en gebeurtenissen die geen GEDCOM RESN tag hebben."
+msgstr ""
+"Privacy beperkingen - deze worden toegepast op records en feiten zonder "
+"GEDCOM RESN tag"
 
 #: app/Controller/GedcomRecordController.php:76 app/GedcomRecord.php:517
 #: app/GedcomRecord.php:595 app/GedcomRecord.php:717 app/Individual.php:1321
@@ -11263,7 +11288,7 @@ msgstr "Verwijder de link uit de lijst"
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: admin_trees_manage.php:272
 msgid "Remove the GEDCOM media path from filenames"
-msgstr ""
+msgstr "Verwijder het GEDCOM media pad uit de bestandsnamen"
 
 #: app/Module/GoogleMapsModule.php:4521
 msgid "Remove this location?"
@@ -11286,7 +11311,7 @@ msgstr "Stamboom hernummeren"
 #. I18N: button label
 #: search.php:217
 msgid "Replace"
-msgstr ""
+msgstr "Vervang"
 
 #: admin_trees_places.php:103 search.php:162
 msgid "Replace with"
@@ -11334,7 +11359,7 @@ msgstr "Voorvoegsel opslagplaats-ID"
 #. I18N: Label for search field
 #: find.php:230
 msgid "Repository contains"
-msgstr "Opslagplaats bevat:"
+msgstr "Opslagplaats bevat"
 
 #: edit_interface.php:1563 includes/functions/functions_print_lists.php:1315
 msgid "Repository name"
@@ -11388,7 +11413,9 @@ msgstr "Herstel de standaard weergave voor blokken"
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:376
 msgid "Restrict access to the website, using IP addresses and user-agent strings."
-msgstr "Toegangsbeperking middels het gebruik van IP-adressen en gebruikers-tekenreeksen"
+msgstr ""
+"Beperk de toegang tot de website door gebruik te maken van IP-adressen en "
+"gebruikers-tekenreeksen."
 
 #: admin_users.php:569
 msgid "Restrict to immediate family"
@@ -11660,7 +11687,7 @@ msgstr "Zoek filters"
 
 #: admin_trees_places.php:101 search.php:73 search.php:156
 msgid "Search for"
-msgstr "Zoek naar:"
+msgstr "Zoek naar"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:41
 msgid "Search for individuals to add to add Links list."
@@ -11689,7 +11716,7 @@ msgstr "Seattle, Washington"
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:348
 msgid "Second record"
-msgstr ""
+msgstr "Tweede record"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:394
@@ -11699,7 +11726,7 @@ msgstr "Beveiligde verbinding"
 #. I18N: A site configuration setting
 #: admin_site_config.php:608
 msgid "Security code"
-msgstr ""
+msgstr "Beveiligingscode"
 
 #. I18N: %s is a URL
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:128
@@ -11709,12 +11736,12 @@ msgstr "Zie %s voor meer informatie."
 
 #: admin_site_merge.php:203 admin_site_merge.php:245 admin_site_merge.php:286
 msgid "Select"
-msgstr ""
+msgstr "Selecteer"
 
 #. I18N: A configuration setting
 #: admin_trees_manage.php:192
 msgid "Select a GEDCOM file to import"
-msgstr ""
+msgstr "Selecteer een GEDCOM bestand om te importeren"
 
 #: includes/functions/functions_edit.php:368 reportengine.php:261
 msgid "Select a date"
@@ -11730,7 +11757,7 @@ msgstr "Selecteer een soort relatie uit de lijst. Het selecteren van <b>Peetvade
 
 #: statistics.php:499
 msgid "Select chart type"
-msgstr "Kies het diagramtype:"
+msgstr "Kies het diagram type"
 
 #: edit_interface.php:1252
 msgid "Select events"
@@ -11756,10 +11783,11 @@ msgstr "Kies het gewenste interval"
 #: admin_site_merge.php:189
 msgid "Select the facts and events to keep from both records."
 msgstr ""
+"Selecteer de feiten en gebeurtenissen van beide records die u wilt behouden."
 
 #: admin_site_config.php:622
 msgid "Select the languages that will be shown in menus."
-msgstr ""
+msgstr "Selecteer de talen die u wilt tonen in de menus."
 
 #: app/Module/FamilyTreeStatisticsModule.php:281
 msgid "Select the stats to show in this block"
@@ -11772,7 +11800,7 @@ msgstr "Selecteer deze optie om de mediabestanden die bij uw stamboomknipsels ho
 #. I18N: Records are indviduals, sources, etc.
 #: admin_site_merge.php:326
 msgid "Select two records to merge."
-msgstr ""
+msgstr "Selecteer twee records om samen te voegen."
 
 #: app/Gedcom/GedcomCodeRela.php:222
 msgid "Seller"
@@ -11973,12 +12001,24 @@ msgstr "Kies <b>Ja</b> om het RIN-nummer te gebruiken in plaats van het GEDCOM-I
 #. I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting
 #: admin_trees_config.php:1603
 msgid "Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>An individual who has all of the ordinances done will have <b>BESP</b> printed after their name.  Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code.  For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances."
-msgstr "Als deze optie is ingeschakeld, worden de codes voor LDS-rituelen getoond in de overzichtsvakken van personen.<ul><li><b>B</b> - LDS Doop (<b>B</b>aptism)</li><li><b>E</b> - LDS begiftiging (<b>E</b>ndowed)</li><li><b>S</b> - LDS ega verzegeling (sealed to <b>S</b>pouse)</li><li><b>P</b> - LDS kind verzegeling (sealed to <b>P</b>arents)</li></ul>Een persoon waarbij al deze rituelen hebben plaatsgevonden, heeft \"<b>BESP</b>\" afgedrukt achter de naam. Als een van de rituelen ontbreekt, wordt de code getoond als bijvoorbeeld \"<b>BE__</b>\" met _ voor het ontbrekende ritueel."
+msgstr ""
+"Als deze optie is ingeschakeld, worden de codes voor LDS-rituelen getoond in "
+"de overzichtsvakken van personen.<ul><li><b>B</b> - LDS Doop "
+"(<b>B</b>aptism)</li><li><b>E</b> - LDS Begiftiging "
+"(<b>E</b>ndowed)</li><li><b>S</b> - LDS Eega-verzegeling (sealed to "
+"<b>S</b>pouse)</li><li><b>P</b> - LDS Kind-verzegeling (sealed to "
+"<b>P</b>arents)</li></ul>Een persoon waarbij al deze rituelen hebben "
+"plaatsgevonden, heeft <b>BESP</b> afgedrukt achter de naam. Als een van de "
+"rituelen ontbreekt, wordt de code getoond als bijvoorbeeld <b>BE__</b> met _ "
+"voor het ontbrekende ritueel."
 
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: admin_trees_config.php:1714
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
-msgstr "Door deze optie op 'ja' te zetten worden er op personen, gezinnen en bronnen, links geplaatst die gebruikers een nieuw venster geven met de gegevens uit het GEDCOM-bestand."
+msgstr ""
+"Door deze optie op <b>Ja</b> te zetten worden er op personen, gezinnen en "
+"bronnen, links geplaatst die gebruikers een nieuw venster geven met de "
+"gegevens uit het GEDCOM-bestand."
 
 #: setup.php:98
 msgid "Setup wizard for webtrees"
@@ -12031,7 +12071,7 @@ msgstr "Gedeelde notitie"
 #. I18N: Label for search field
 #: find.php:250
 msgid "Shared note contains"
-msgstr "Gedeelde Notitie bevat:"
+msgstr "Gedeelde notitie bevat"
 
 #: app/Theme/BaseTheme.php:1415
 #: includes/functions/functions_print_lists.php:1068 notelist.php:30
@@ -12302,7 +12342,7 @@ msgstr "Toon de bezoekersteller op Mijn pagina, de Genealogie-infopagina en op d
 
 #: compact.php:57
 msgid "Show images"
-msgstr ""
+msgstr "Toon afbeeldingen"
 
 #: app/Module/GoogleMapsModule.php:4549
 msgid "Show inactive places"
@@ -12468,7 +12508,7 @@ msgstr "Toon statistiekendiagrammen"
 #: admin_trees_config.php:1519
 #, php-format
 msgid "Show the %1$s %2$s parts of a place name."
-msgstr "Toon de %1$s %2$s delen van een plaatsnaam"
+msgstr "Toon de %1$s %2$s delen van een plaatsnaam."
 
 #: app/Module/HtmlBlockModule.php:302
 msgid "Show the date and time of update"
@@ -12596,7 +12636,7 @@ msgstr "Zus"
 #: admin_site_config.php:557 admin_site_config.php:573
 #: admin_site_config.php:598
 msgid "Site identification code"
-msgstr ""
+msgstr "Website identificatie code"
 
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: admin_users.php:459 edituser.php:271
@@ -12606,12 +12646,14 @@ msgstr "Leden kunnen elkaar berichten sturen via de website. U kunt hier kiezen 
 #. I18N: A site configuration setting
 #: admin_site_config.php:515 admin_site_config.php:536
 msgid "Site verification code"
-msgstr ""
+msgstr "Website verificatie code"
 
 #. I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting
 #: admin_site_config.php:526 admin_site_config.php:547
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
 msgstr ""
+"Website verificatie codes werken niet wanneer webtrees is geïnstalleerd in "
+"een subfolder."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:30
@@ -12709,6 +12751,10 @@ msgstr "Somalië"
 #: admin_trees_manage.php:284
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow webtrees to find the file, the first part of the path must be removed."
 msgstr ""
+"Sommige genealogie programma's maken GEDCOM-bestanden die mediabestandsnamen "
+"bevatten met volledige pad namen. Deze paden bestaan niet op de web-server. "
+"Om het webtrees mogelijk te maken deze bestanden te vinden, moet het eerste "
+"deel van het pad worden verwijderd."
 
 #: app/Module/GoogleMapsModule.php:429
 msgid "Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”."
@@ -12790,7 +12836,7 @@ msgstr "Bronvermeldingen kunnen velden bevatten om de kwaliteit van de gegevens 
 #. I18N: Label for search field
 #: find.php:269
 msgid "Source contains"
-msgstr "Bron bevat:"
+msgstr "Bron bevat"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:2265 modules_v3/fact_sources/report.xml:6
@@ -12994,7 +13040,7 @@ msgstr "Onderverdeling"
 
 #: app/Module/UserMessagesModule.php:78 message.php:127
 msgid "Subject"
-msgstr "Onderwerp:"
+msgstr "Onderwerp"
 
 #. I18N: gedcom tag SUBN
 #: app/Gedcom/GedcomTag.php:811
@@ -13004,7 +13050,7 @@ msgstr "Aanlevering"
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/Gedcom/GedcomCodeStat.php:107
 msgid "Submitted but not yet cleared"
-msgstr "Ingediend, maar nog niet gecontroleerd en vrijgegeven."
+msgstr "Ingediend, maar nog niet vrijgegeven"
 
 #. I18N: gedcom tag SUBM
 #: app/Gedcom/GedcomTag.php:807
@@ -13067,12 +13113,15 @@ msgstr "Achternaamtraditie"
 #. I18N: In the Lithuanian surname tradition, ...
 #: admin_trees_config.php:103
 msgid "Surnames are inflected to indicate an individual’s gender and marital status."
-msgstr "Achternamen worden verbogen om het geslacht en de huwelijkse status van een persoon weer te geven"
+msgstr ""
+"Achternamen worden verbogen om het geslacht en de burgerlijke staat van een "
+"persoon aan te geven."
 
 #. I18N: In the Polish surname tradition, ...
 #: admin_trees_config.php:98
 msgid "Surnames are inflected to indicate an individual’s gender."
-msgstr "Achternamen worden verbogen om het geslacht van een persoon weer te geven"
+msgstr ""
+"Achternamen worden verbogen om het geslacht van een persoon aan te geven."
 
 #: app/Gedcom/GedcomCodeTemp.php:312
 msgid "Suva, Fiji"
@@ -13085,7 +13134,7 @@ msgstr "Svalbard en Jan Mayen Eilanden"
 #. I18N: Reverse the order of two individuals
 #: relationship.php:86
 msgid "Swap individuals"
-msgstr ""
+msgstr "Verwissel personen"
 
 #: app/Stats.php:6286
 msgid "Swaziland"
@@ -13105,7 +13154,7 @@ msgstr "Sydney, Australië"
 
 #: admin_trees_manage.php:705
 msgid "Synchronize family trees with GEDCOM files"
-msgstr ""
+msgstr "Synchroniseer stambomen met GEDCOM bestanden"
 
 #: app/Stats.php:6288
 msgid "Syrian Arab Republic"
@@ -13243,7 +13292,7 @@ msgstr "Het  <b>achternaam</b> veld bevat een naam die gebruikt owrdt voor het s
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:389
 msgid "The FAQ list is empty."
-msgstr "De FAQ-lijst is leeg"
+msgstr "De FAQ-lijst is leeg."
 
 #: admin_trees_manage.php:132
 #, php-format
@@ -13266,7 +13315,7 @@ msgstr "De PGV-naar-webtrees wizard is een geautomatiseerd proces om beheerders 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
 msgid "The PHP temporary folder is missing."
-msgstr "Tijdelijke PHP map ontbreekt"
+msgstr "De PHP tijdelijke map ontbreekt."
 
 #: admin_users.php:97
 #, php-format
@@ -13313,7 +13362,7 @@ msgstr "De details van deze persoon zijn privé."
 #: admin_site_upgrade.php:291 admin_trees_export.php:42
 #, php-format
 msgid "The family tree has been exported to %s."
-msgstr "Stamboom geëxporteerd naar %s"
+msgstr "De stamboom is geëxporteerd naar %s."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:63
@@ -13347,7 +13396,7 @@ msgstr "De stambomen zijn sucessvol samengevoegd."
 #: action.php:143
 #, php-format
 msgid "The family “%s” has been deleted because it only has one member."
-msgstr "Het gezin ‘%s’ is verwijderd omdat het maar één lid had"
+msgstr "Het gezin “%s” is verwijderd omdat het maar één lid had."
 
 #: addmedia.php:174 admin_media_upload.php:133
 #, php-format
@@ -13380,12 +13429,12 @@ msgstr "Het bestand %s is aangemaakt."
 #: admin_site_upgrade.php:473 admin_site_upgrade.php:494
 #, php-format
 msgid "The file %s has been deleted."
-msgstr "Het bestand %s werd verwijderd"
+msgstr "Het bestand %s is verwijderd."
 
 #: admin_media_upload.php:138 admin_media_upload.php:156
 #, php-format
 msgid "The file %s has been uploaded."
-msgstr "Het bestand %s is ge-upload"
+msgstr "Het bestand %s is geüpload."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
@@ -13429,13 +13478,15 @@ msgstr "De map kan volledig worden gespecifieerd (b.v. /home/user_name/webtrees_
 
 #: admin_site_merge.php:194
 msgid "The following facts and events were found in both records."
-msgstr ""
+msgstr "De volgende feiten en gebeurtenissen zijn in beide records gevonden."
 
 #. I18N: the name of an individual, source, etc.
 #: admin_site_merge.php:236 admin_site_merge.php:277
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
 msgstr ""
+"De volgende feiten en gebeurtenissen zijn alleen gevonden in het record van "
+"%s."
 
 #: setup.php:174
 msgid "The following list shows typical requirements."
@@ -13482,7 +13533,7 @@ msgstr "De koppeling tussen ‘%1$s’ en ‘%2$s’ is verwijderd."
 #: admin_site_merge.php:106
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr ""
+msgstr "De koppeling tussen “%1$s” en “%2$s” is bijgewerkt."
 
 #: addmedia.php:313 addmedia.php:341
 #, php-format
@@ -13501,7 +13552,7 @@ msgstr "Het mediabestand %s bestaat niet."
 
 #: mediafirewall.php:41
 msgid "The media file was not found in this family tree."
-msgstr "Het mediabestand werd niet gevonden in deze stamboom"
+msgstr "Het mediabestand is niet gevonden in deze stamboom."
 
 #: admin_media_upload.php:223
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
@@ -13550,7 +13601,7 @@ msgstr "De wachtwoorden komen niet overeen."
 #: admin_trees_config.php:219 admin_trees_config.php:341
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr ""
+msgstr "De voorkeuren voor stamboom “%s” zijn bijgewerkt."
 
 #: admin_modules.php:71
 #, php-format
@@ -13560,7 +13611,7 @@ msgstr "De voorkeuren voor de module “%s” zijn verwijderd."
 #: app/Module/GoogleMapsModule.php:265
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr ""
+msgstr "De voorkeuren voor module “%s” zijn bijgewerkt."
 
 #: setup.php:381
 msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database.  “wt_” is suggested, but can be anything you want."
@@ -13573,13 +13624,13 @@ msgstr "Het record %1$s is hernoemd in %2$s."
 
 #: action.php:86
 msgid "The record has been copied to the clipboard."
-msgstr "Het record is naar het klembord gekopieerd"
+msgstr "Het record is naar het klembord gekopieerd."
 
 #. I18N: Records are individuals, sources, etc.
 #: admin_site_merge.php:162
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr ""
+msgstr "De records “%1$s” and “%2$s” zijn samengevoegd."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:112
 msgid "The regex appears to contain an error.  It can’t be used."
@@ -13596,7 +13647,9 @@ msgstr "De tijdslimiet van de server is bereikt."
 #. I18N: Description of “Statistics” module
 #: app/Module/FamilyTreeStatisticsModule.php:30
 msgid "The size of the family tree, earliest and latest events, common names, etc."
-msgstr "De grootte van de stamboom, vroegste en laatste gebeurtenissen, gemeenschappelijke namen, etc"
+msgstr ""
+"De grootte van de stamboom, vroegste en laatste gebeurtenissen, "
+"gemeenschappelijke namen etc."
 
 #: help_text.php:253
 #, php-format
@@ -13666,12 +13719,12 @@ msgstr "Deze waarde wordt geplaatst in de meta-tag voor de omschrijving van de p
 #: admin_pgv_to_wt.php:107
 #, php-format
 msgid "The version of %s is too new."
-msgstr "De versie van %s is te nieuw"
+msgstr "De versie van %s is te nieuw."
 
 #: admin_pgv_to_wt.php:104
 #, php-format
 msgid "The version of %s is too old."
-msgstr "De versie van %s is te oud"
+msgstr "De versie van %s is te oud."
 
 #: admin_site_access.php:85
 msgid "The website access rule has been created."
@@ -13688,12 +13741,16 @@ msgstr "De website toegangsregel is bijgewerkt."
 #: admin_site_config.php:44 admin_site_config.php:63 admin_site_config.php:76
 #: admin_site_config.php:91 admin_site_config.php:100
 msgid "The website preferences have been updated."
-msgstr ""
+msgstr "De website voorkeuren zijn bijgewerkt."
 
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: admin_trees_config.php:2291
 msgid "The website www.geonames.org provides a large database of place names.  This can be searched when entering new places.  To use this feature, you must register for a free account at www.geonames.org and provide the username."
-msgstr "De website www.geonames.org bevat een uitgebreide database met plaatsnamen. Deze database kan doorzocht worden bij het invoeren van een nieuwe plaatsnaam. Om hiervan gebruik te kunnen maken, moet u zich eerst (gratis) registreren op www.geonames.org. Daarna kunt u de gebruikersnaam hier invoeren. "
+msgstr ""
+"De website www.geonames.org bevat een uitgebreide database met plaatsnamen. "
+"Deze database kan doorzocht worden bij het invoeren van nieuwe plaatsnamen. "
+"Om hiervan gebruik te kunnen maken, moet u zich eerst (gratis) registreren "
+"op www.geonames.org. Daarna kunt u de gebruikersnaam hier invoeren."
 
 #: setup.php:939
 msgid "The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem."
@@ -13725,6 +13782,11 @@ msgstr "Thema's"
 #: admin_site_config.php:236
 msgid "Themes can be selected at three levels: user, family tree, and website.  User settings take priority over family tree settings, which in turn take priority over the website setting.  Selecting “default theme” at one level will use the theme at the next level."
 msgstr ""
+"Thema’s kunnen worden geselecteerd op drie niveau’s: gebruiker, stamboom en "
+"website. Gebruikersinstellingen hebben voorrang op stamboominstellingen, die "
+"op hun beurt voorrang hebben op de website instelling. Het selecteren van “"
+"standaard thema” op één niveau zorgt ervoor dat dit thema ook op het "
+"volgende niveau wordt gebruikt."
 
 #: app/Module/ExtraInformationModule.php:58
 #: app/Module/IndividualFactsTabModule.php:115
@@ -13754,7 +13816,7 @@ msgstr "Er zijn geen bronvermeldingen voor deze persoon."
 #: app/Module/ReviewChangesModule.php:69 app/Module/ReviewChangesModule.php:93
 #: app/Theme/BaseTheme.php:1831
 msgid "There are pending changes for you to moderate."
-msgstr "Er zijn uitstaande wijzigingen die door u beoordeeld moeten worden"
+msgstr "Er zijn uitstaande wijzigingen die u moet beoordelen."
 
 #: app/Module/RecentChangesModule.php:73
 #, php-format
@@ -14008,7 +14070,12 @@ msgstr "Dit is de lijst met GEDCOM-feiten/gebeurtenissen die uw gebruikers kunne
 #. I18N: Help text for the “All individual facts” configuration setting
 #: admin_trees_config.php:1786
 msgid "This is the list of GEDCOM facts that your users can add to individuals.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique individual facts” list."
-msgstr "Dit is de lijst met GEDCOM-feiten/gebeurtenissen die uw gebruikers kunnen koppelen aan personen. U kunt de lijst aanpassen door namen van feiten/gebeurtenissen, zelfs eigengemaakte, te verwijderen of toe te voegen. Namen van feiten/gebeurtenissen die in deze lijst voorkomen mogen niet ook voorkomen in de lijst ‘Unieke feiten/gebeurtenissen voor personen’"
+msgstr ""
+"Dit is de lijst met GEDCOM-feiten/gebeurtenissen die uw gebruikers kunnen "
+"koppelen aan personen. U kunt de lijst aanpassen door namen van feiten/"
+"gebeurtenissen, zelfs eigengemaakte, te verwijderen of toe te voegen. Namen "
+"van feiten/gebeurtenissen die in deze lijst voorkomen mogen niet ook "
+"voorkomen in de lijst ‘Unieke feiten/gebeurtenissen voor personen’."
 
 #. I18N: Help text for the “All repository facts” configuration setting
 #: admin_trees_config.php:2111
@@ -14089,7 +14156,7 @@ msgstr "Dit kan problemen voor andere toepassingen veroorzaken."
 
 #: admin_trees_check.php:123
 msgid "This may cause a problem for webtrees."
-msgstr "Dit kan problemen voor webtrees veroorzaken"
+msgstr "Dit kan leiden tot een probleem voor webtrees."
 
 #: admin_media.php:503
 msgid "This media file does not exist."
@@ -14101,7 +14168,8 @@ msgstr "Dit media betand bestaat, maar is niet toegankelijk."
 
 #: mediafirewall.php:410
 msgid "This media file is broken and cannot be watermarked."
-msgstr "Dit mediabestand is corrupt en kan niet worden voorzien van een watermerk"
+msgstr ""
+"Dit mediabestand is corrupt en kan niet worden voorzien van een watermerk."
 
 #: mediaviewer.php:73
 msgid "This media object does not exist or you do not have permission to view it."
@@ -14225,7 +14293,9 @@ msgstr "Deze optie toont de namen (maar geen andere details) van privé personen
 
 #: app/Module/GoogleMapsModule.php:503
 msgid "This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers."
-msgstr "Deze opties laten u kiezen om de lengte-en breedtegraad te tonen in het pop-up venster dat gekoppeld is aan de markers in de kaart"
+msgstr ""
+"Deze opties bepalen of de lengte -en breedtegraad getoond wordt in het pop-"
+"up venster dat gekoppeld is aan de markers op de kaart."
 
 #: help_text.php:410
 msgid "This page allows you to bypass the usual forms, and edit the underlying data directly.  It is an advanced option, and you should not use it unless you understand the GEDCOM format.  If you make a mistake here, it can be difficult to fix."
@@ -14273,7 +14343,11 @@ msgstr "Deze rol heeft alle rechten van de rol van manager in alle stambomen. Da
 
 #: admin_users.php:528
 msgid "This role has all the permissions of the member role, plus permission to add/change/delete data.  Any changes will need to be approved by a moderator, unless the user has the “automatically accept changes” option enabled."
-msgstr "Deze rol heeft alle rechten van een lid, plus het recht om gegevens toe te voegen, te wijzigen en te verwijderen. Elke wijziging moet worden goedgekeurd door een moderator, tenzij bij de gebruiker ‘Accepteer wijzigingen van gebruiker automatisch’ is ingeschakeld"
+msgstr ""
+"Deze rol heeft alle rechten van een lid, plus het recht om gegevens toe te "
+"voegen, te wijzigen of te verwijderen. Elke wijziging moet worden "
+"goedgekeurd door een moderator, tenzij bij de gebruiker de optie “accepteer "
+"wijzigingen automatisch” is ingeschakeld."
 
 #: admin_users.php:542
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
@@ -14341,7 +14415,7 @@ msgstr "Deze tekst zal worden toegevoegd aan elke pagina titel. Het zal worden g
 
 #: admin_trees_check.php:165 admin_trees_check.php:170
 msgid "This type of link is not allowed here."
-msgstr "Dit soort koppeling is hier niet toegestaan"
+msgstr "Dit type koppeling is hier niet toegestaan."
 
 #: setup.php:214
 msgid "This usually means that you need to change the folder permissions to 777."
@@ -14353,7 +14427,9 @@ msgstr "Deze website wordt geupdate. Probeer het over een paar minuten opnieuw."
 
 #: site-offline.php:76
 msgid "This website is down for maintenance.  You should <a href=\"index.php\">try again</a> in a few minutes."
-msgstr "De site is gesloten voor onderhoud. U moet het over een paar minuten <a href=\"index.php\">opnieuw proberen</a>"
+msgstr ""
+"De site is gesloten voor onderhoud. Over een paar minuten kunt u het<a href="
+"\"index.php\">opnieuw proberen</a>."
 
 #: site-offline.php:70 site-unavailable.php:90
 msgid "This website is temporarily unavailable"
@@ -14363,7 +14439,9 @@ msgstr "Deze website is tijdelijk niet beschikbaar"
 #: admin_trees_manage.php:183
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
-msgstr "Dit zal alle genealogische data van ‘%s’ verwijderen en het vervangen door data van een andere GEDCOM"
+msgstr ""
+"Hiermee worden alle genealogische gegevens van “%s” verwijderd en vervangen "
+"door de gegevens van een GEDCOM bestand."
 
 #: app/Module/GoogleMapsModule.php:1781
 msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables."
@@ -14519,6 +14597,9 @@ msgstr "Om de grootte van het nieuwsblok te beperken heeft de beheerder enkele a
 #: admin_trees_download.php:145 app/Module/ClippingsCartModule.php:180
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file.  You will need to uncompress the .ZIP file before you can use it."
 msgstr ""
+"Om de grootte van het downloadbestand te verkleinen, kunt u de gegevens "
+"comprimeren in een .ZIP bestand. U moet het .ZIP bestand decomprimeren "
+"voordat u het kunt gebruiken."
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: admin_site_config.php:461
@@ -14720,12 +14801,12 @@ msgstr "Totaal aantal gebruikers"
 #. I18N: Menu entry
 #: admin_site_config.php:141 app/Theme/AdministrationTheme.php:72
 msgid "Tracking and analytics"
-msgstr ""
+msgstr "Tracking en analytics"
 
 #: admin_site_config.php:563 admin_site_config.php:588
 #: admin_site_config.php:613
 msgid "Tracking and analytics are not added to the control panel."
-msgstr ""
+msgstr "Tracking en analytics worden niet toegevoegd aan het controle paneel."
 
 #. I18N: gedcom tag TRLR
 #: app/Gedcom/GedcomTag.php:841
@@ -14792,7 +14873,7 @@ msgstr "Type plaatsmarkering in de Plaatshiërarchie"
 #. I18N: placeholder text for repeat-password field
 #: admin_users.php:350 login.php:478
 msgid "Type the password again."
-msgstr "Typ het wachtwoord nogmaals"
+msgstr "Typ het wachtwoord nogmaals."
 
 #: edituser.php:219 login.php:483 setup.php:443
 msgid "Type your password again, to make sure you have typed it correctly."
@@ -14957,7 +15038,7 @@ msgstr "Toch upgraden"
 #: admin.php:546 admin_site_upgrade.php:80
 #, php-format
 msgid "Upgrade to webtrees %s."
-msgstr "Upgraden naar webtrees %s"
+msgstr "Upgraden naar webtrees %s."
 
 #: admin_site_upgrade.php:53
 msgid "Upgrade wizard"
@@ -15010,8 +15091,8 @@ msgstr "Gebruik een  ‘?’ om een overeenkomst te vinden met één enkel lette
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
-msgstr[0] "Gebruik tenminste %s letterteken"
-msgstr[1] "Gebruik tenminste %s lettertekens"
+msgstr[0] "Gebruik tenminste %s leesteken."
+msgstr[1] "Gebruik tenminste %s leestekens."
 
 #: modules_v3/family_group_report/report.xml:13
 #: modules_v3/individual_ext_report/report.xml:14
@@ -15020,7 +15101,7 @@ msgstr "Gebruik kleuren"
 
 #: app/Module/InteractiveTree/TreeView.php:52
 msgid "Use compact layout"
-msgstr "Compacte weergave."
+msgstr "Compacte weergave"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:2252
@@ -15202,7 +15283,7 @@ msgstr "Veracruz, Mexico"
 
 #: login.php:348 login.php:542
 msgid "Verification code"
-msgstr "Verificatiecode:"
+msgstr "Verificatiecode"
 
 #: admin_users.php:853
 msgid "Verified"
@@ -15586,7 +15667,7 @@ msgstr "Getuige"
 #: admin_trees_config.php:78 admin_trees_config.php:97
 #: admin_trees_config.php:102
 msgid "Wives take their husband’s surname."
-msgstr "Echtgenotes krijgen de achternaam van hun echtgenoten"
+msgstr "Echtgenotes krijgen de achternaam van hun echtgenoten."
 
 #: statistics.php:595
 msgid "World"
@@ -15738,7 +15819,7 @@ msgstr "U moet alle velden van het beheerdersaccount invullen."
 
 #: edit_interface.php:1548
 msgid "You must provide a repository name."
-msgstr "U moet een naam voor de opslagplaats opgeven"
+msgstr "U moet een naam voor de opslagplaats opgeven."
 
 #: edit_interface.php:1210
 msgid "You must provide a source title"
@@ -15775,7 +15856,12 @@ msgstr "U moet nu de account details nakijken, en de \"goedgekeurd\" status op \
 #. I18N: Help text for the "Login URL" site configuration setting
 #: admin_site_config.php:436
 msgid "You only need to enter a Login URL if you want to redirect to a different website or location when your users login.  This is very useful if you need to switch from http to https when your users login.  Include the full URL to <i>login.php</i>.  For example, https://www.yourserver.com/webtrees/login.php ."
-msgstr "U hoeft alleen een Aanmeld-URL in te voeren als u wilt omleiden naar een andere site of locatie als uw gebruikers inloggen. Dat is erg handig als u wilt omschakelen van http naar https als uw gebruikers aanmelden. Voer de volledige URL in bij <i>login.php</i>. Bij voorbeeld: https://www.yourserver.com/webtrees/login.php"
+msgstr ""
+"U hoeft alleen een Aanmeld-URL in te voeren als u wilt omleiden naar een "
+"andere site of locatie wanneer uw gebruikers zich aanmelden. Dat is erg "
+"handig als u wilt omschakelen van http naar https wanneer uw gebruikers zich "
+"aanmelden. Voer de volledige URL in bij <i>login.php</i>. Bijvoorbeeld: "
+"https://www.yourserver.com/webtrees/login.php."
 
 #: message.php:256
 msgid "You sent the following message to a webtrees administrator:"
@@ -15809,7 +15895,8 @@ msgstr "Verwijder de ‘%1$s’ uit ‘%2$s’ en probeer het opnieuw."
 
 #: admin_users.php:390
 msgid "You should not approve an account unless you know that the email address is correct."
-msgstr "U moet geen account goedkeuren, tenzij u weet dat het e-mailadres goed is"
+msgstr ""
+"U moet geen account goedkeuren, tenzij u weet dat het e-mailadres klopt."
 
 #: login.php:328
 msgid "You will be informed by e-mail when this prospective user has confirmed the request.  After this, the user will be able to login without any action on your part."
@@ -15866,11 +15953,15 @@ msgstr "In uw gebruikersaccount is de optie ‘wijzigingen automatisch goedkeure
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer maintained.  You should upgrade to a later version."
 msgstr ""
+"Uw web server gebruikt PHP versie %s, dat niet langer wordt onderhouden. U "
+"zult moeten upgraden naar een nieuwere versie."
 
 #: admin.php:485
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates.  You should upgrade to a later version as soon as possible."
 msgstr ""
+"Uw web server gebruikt PHP versie %s dat niet langer beveiligingsupdates "
+"ontvangt. U moet zo snel mogelijk upgraden naar een nieuwere  versie."
 
 #: app/Stats.php:6323
 msgid "Yugoslavia"
@@ -16127,7 +16218,7 @@ msgstr "geboortenaam"
 #: admin_trees_config.php:490
 #, php-format
 msgid "born in the last %1$s years or died in the last %2$s years"
-msgstr "geboren in de laatste %1$s jaar of gestorven in de laatste %2$s jaar."
+msgstr "geboren in de laatste %1$s jaar of gestorven in de laatste %2$s jaar"
 
 #: includes/functions/functions.php:768
 msgid "brother"
@@ -19494,7 +19585,9 @@ msgstr "achterneef/achternicht 22e graad"
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:99
 msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
-msgstr "de database verbindingsinstellingen in het bestand ‘/data/config.ini.php’  nog steeds juist zijn."
+msgstr ""
+"de instellingen voor de database verbinding in het bestand "
+"“/data/config.ini.php”  nog steeds juist zijn"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:102
@@ -19715,6 +19808,10 @@ msgstr "webtrees stuurt e-mails zonder ze te bewaren"
 #: admin_trees_download.php:154
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-latin scripts.  If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
 msgstr ""
+"webtrees gebruikt UTF-8 codering voor geaccentueerde letters, speciale "
+"karakters en niet-latijns schrift. Als u dit GEDCOM bestand wilt gebruiken "
+"met genealogie software dat geen UTF-8 ondersteunt, kunt u het aanmaken met "
+"ISO-8859-1 codering."
 
 #: includes/functions/functions_print.php:185
 msgid "webtrees wiki"

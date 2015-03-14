@@ -894,10 +894,10 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 		if (isset($curgen)) {
 			$total = pow(2, $curgen) - 1;
 			echo I18N::plural(
-				'%1$d individual displayed, out of the normal total of %2$d, from %3$d generations.',
-				'%1$d individuals displayed, out of the normal total of %2$d, from %3$d generations.',
+				'$1$s individual displayed, out of the normal total of $2$s, from $3$s generations.',
+				'$1$s individuals displayed, out of the normal total of $2$s, from $3$s generations.',
 				$count,
-				$count, $total, $curgen
+				I18N::number($count), I18N::number($total), I18N::number($curgen)
 			), '<br>';
 			echo '</td>';
 			echo '</tr>';
@@ -910,10 +910,10 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 				if ($miscount == 0) {
 					echo I18N::translate('No ancestors in the database.'), "<br>";
 				} else {
-					echo /* I18N: %1$d is a count of individuals, %2$s is a list of their names */ I18N::plural(
-						'%1$d individual is missing birthplace map coordinates: %2$s.',
-						'%1$d individuals are missing birthplace map coordinates: %2$s.',
-						$miscount, $miscount, $missing),
+					echo /* I18N: $1$s is a count of individuals, %2$s is a list of their names */ I18N::plural(
+						'$1$s individual is missing birthplace map coordinates: %2$s.',
+						'$1$s individuals are missing birthplace map coordinates: %2$s.',
+						$miscount, I18N::number($miscount), I18N::number($missing)),
 						'<br>';
 				}
 			}

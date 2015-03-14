@@ -158,10 +158,10 @@ $controller->pageHeader();
 			<?php if ($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')): ?>
 			<label>
 				<input type="checkbox" name="conv_path" value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')); ?>">
-				<?php echo /* I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file */ I18N::translate('Add the GEDCOM media path to filenames'); ?>
+				<?php echo /* I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file */ I18N::translate('Add the GEDCOM media path to filenames'); ?>
 			</label>
 			<p>
-				<?php echo /* I18N: %s is the name of a folder. */ I18N::translate('%s will be prepended to media filenames.', '<code dir="ltr">' . Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')) . '</code>'); ?>
+				<?php echo /* I18N: %s is the name of a folder. */ I18N::translate('Media filenames will be prefixed by %s.', '<code dir="ltr">' . Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')) . '</code>'); ?>
 			</p>
 			<?php endif; ?>
 		</div>

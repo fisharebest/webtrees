@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2015-03-13 10:03+0000\n"
+"POT-Creation-Date: 2015-03-14 08:17+0000\n"
 "PO-Revision-Date: 2015-03-12 22:21+0100\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: Bulgarian <http://translate.webtrees.net/projects/webtrees/webtrees/bg/>\n"
@@ -39,17 +39,17 @@ msgstr " но подробностите са неизведстни"
 msgid " in "
 msgstr " в "
 
+#: statisticsplot.php:894 statisticsplot.php:944 statisticsplot.php:998
+#: statisticsplot.php:1048 statisticsplot.php:1102 statisticsplot.php:1152
+#: statisticsplot.php:1202 statisticsplot.php:1252 statisticsplot.php:1302
+#: statisticsplot.php:1352
+msgid " per gender"
+msgstr ""
+
 #: statisticsplot.php:896 statisticsplot.php:946 statisticsplot.php:1000
 #: statisticsplot.php:1050 statisticsplot.php:1104 statisticsplot.php:1154
 #: statisticsplot.php:1204 statisticsplot.php:1254 statisticsplot.php:1304
 #: statisticsplot.php:1354
-msgid " per gender"
-msgstr ""
-
-#: statisticsplot.php:898 statisticsplot.php:948 statisticsplot.php:1002
-#: statisticsplot.php:1052 statisticsplot.php:1106 statisticsplot.php:1156
-#: statisticsplot.php:1206 statisticsplot.php:1256 statisticsplot.php:1306
-#: statisticsplot.php:1356
 msgid " per time period"
 msgstr ""
 
@@ -62,50 +62,50 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:897
 #, php-format
-msgid "%1$d individual displayed, out of the normal total of %2$d, from %3$d generations."
-msgid_plural "%1$d individuals displayed, out of the normal total of %2$d, from %3$d generations."
-msgstr[0] "%1$d показан индивид от общо %2$d, от %3$d поколения."
-msgstr[1] "%1$d показани индивиди от общо %2$d, от %3$d поколения."
+msgid "$1$s individual displayed, out of the normal total of $2$s, from $3$s generations."
+msgid_plural "$1$s individuals displayed, out of the normal total of $2$s, from $3$s generations."
+msgstr[0] "$1$s показан индивид от общо $2$s, от $3$s поколения."
+msgstr[1] "$1$s показани индивиди от общо $2$s, от $3$s поколения."
 
-#. I18N: %1$d is a count of individuals, %2$s is a list of their names
+#. I18N: $1$s is a count of individuals, %2$s is a list of their names
 #: app/Module/GoogleMapsModule.php:914
 #, php-format
-msgid "%1$d individual is missing birthplace map coordinates: %2$s."
-msgid_plural "%1$d individuals are missing birthplace map coordinates: %2$s."
-msgstr[0] "%1$d лице без географски координати на родното място: %2$s."
-msgstr[1] "%1$d лица без географски координати на родното място: %2$s."
+msgid "$1$s individual is missing birthplace map coordinates: %2$s."
+msgid_plural "$1$s individuals are missing birthplace map coordinates: %2$s."
+msgstr[0] "$1$s лице без географски координати на родното място: %2$s."
+msgstr[1] "$1$s лица без географски координати на родното място: %2$s."
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:635
 #, php-format
 msgctxt "FEMALE"
-msgid "%1$d × %2$s"
+msgid "$1$s × %2$s"
 msgstr ""
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:620
 #, php-format
 msgctxt "MALE"
-msgid "%1$d × %2$s"
+msgid "$1$s × %2$s"
 msgstr ""
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:650
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%1$d × %2$s"
+msgid "$1$s × %2$s"
 msgstr ""
 
-#. I18N: %1$s=“fifth cousin”, etc., %2$d>=4
+#. I18N: %1$s=“fifth cousin”, etc., $2$s>=4
 #: includes/functions/functions.php:2132
 #, php-format
-msgid "%1$s %2$d times removed ascending"
+msgid "%1$s $2$s times removed ascending"
 msgstr ""
 
-#. I18N: %1$s=“fifth cousin”, etc., %2$d>=4
+#. I18N: %1$s=“fifth cousin”, etc., $2$s>=4
 #: includes/functions/functions.php:2135
 #, php-format
-msgid "%1$s %2$d times removed descending"
+msgid "%1$s $2$s times removed descending"
 msgstr ""
 
 #. I18N: The placeholders are GEDCOM XREFs and tags.  e.g. “INDI I123 contains a FAMC link to F234.”
@@ -116,7 +116,7 @@ msgstr ""
 
 #: includes/functions/functions_print_lists.php:1619
 #, php-format
-msgid "%1$s (%2$d)"
+msgid "%1$s ($2$s)"
 msgstr ""
 
 #: app/Controller/IndividualController.php:188 app/Date.php:332
@@ -185,46 +185,6 @@ msgstr ""
 msgid "%H:%i:%s"
 msgstr ""
 
-#: app/Module/LoggedInUsersModule.php:51 app/Stats.php:5372
-#, php-format
-msgid "%s anonymous logged-in user"
-msgid_plural "%s anonymous logged-in users"
-msgstr[0] "%s анонимен потребител"
-msgstr[1] "%s анонимени потребители"
-
-#: app/Module/LoggedInUsersModule.php:57 app/Stats.php:5382
-#, php-format
-msgid "%s logged-in user"
-msgid_plural "%s logged-in users"
-msgstr[0] "%s потребител"
-msgstr[1] "%s  потребители"
-
-#: app/Module/RelativesTabModule.php:62
-#, php-format
-msgid "%s month"
-msgid_plural "%s months"
-msgstr[0] ""
-msgstr[1] ""
-
-#: includes/functions/functions.php:555
-#, php-format
-msgctxt "FEMALE"
-msgid "%s × cousin"
-msgstr ""
-
-#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
-#: includes/functions/functions.php:520
-#, php-format
-msgctxt "MALE"
-msgid "%s × cousin"
-msgstr ""
-
-#: includes/functions/functions.php:590
-#, php-format
-msgctxt "MALE/FEMALE"
-msgid "%s × cousin"
-msgstr ""
-
 #. I18N: This is the format string for full dates.  See http://php.net/date for codes
 #: app/Date.php:222 app/I18N.php:212
 msgid "%j %F %Y"
@@ -241,6 +201,13 @@ msgstr ""
 #, php-format
 msgid "%s KB"
 msgstr ""
+
+#: app/Module/LoggedInUsersModule.php:51 app/Stats.php:5372
+#, php-format
+msgid "%s anonymous logged-in user"
+msgid_plural "%s anonymous logged-in users"
+msgstr[0] "%s анонимен потребител"
+msgstr[1] "%s анонимени потребители"
 
 #: app/Stats.php:3999 app/Stats.php:4003
 #: includes/functions/functions_charts.php:295
@@ -320,6 +287,13 @@ msgstr[1] ""
 msgid "%s is disabled on this server.  You cannot install webtrees until it is enabled.  Please ask your server’s administrator to enable it."
 msgstr ""
 
+#: app/Module/LoggedInUsersModule.php:57 app/Stats.php:5382
+#, php-format
+msgid "%s logged-in user"
+msgid_plural "%s logged-in users"
+msgstr[0] "%s потребител"
+msgstr[1] "%s  потребители"
+
 #: app/Module/UserMessagesModule.php:58
 #, php-format
 msgid "%s message"
@@ -331,6 +305,15 @@ msgstr[1] "Имате %s съобщения"
 #, php-format
 msgid "%s minute ago"
 msgid_plural "%s minutes ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
+#: app/I18N.php:463 app/Module/RelativesTabModule.php:62
+#: includes/functions/functions_date.php:47
+#, php-format
+msgid "%s month"
+msgid_plural "%s months"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -406,13 +389,8 @@ msgid_plural "%s weeks"
 msgstr[0] ""
 msgstr[1] ""
 
-#. I18N: %s is the name of a folder.
-#: admin_trees_download.php:164
-#, php-format
-msgid "%s will be prepended to media filenames."
-msgstr ""
-
-#: app/I18N.php:457 includes/functions/functions_date.php:42
+#: app/I18N.php:457 app/Module/RelativesTabModule.php:60
+#: includes/functions/functions_date.php:42
 #, php-format
 msgid "%s year"
 msgid_plural "%s years"
@@ -431,6 +409,25 @@ msgstr[1] "преди %s години"
 #, php-format
 msgid "%s year anniversary"
 msgstr "%s годишен юбилей"
+
+#: includes/functions/functions.php:555
+#, php-format
+msgctxt "FEMALE"
+msgid "%s × cousin"
+msgstr ""
+
+#. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
+#: includes/functions/functions.php:520
+#, php-format
+msgctxt "MALE"
+msgid "%s × cousin"
+msgstr ""
+
+#: includes/functions/functions.php:590
+#, php-format
+msgctxt "MALE/FEMALE"
+msgid "%s × cousin"
+msgstr ""
 
 #. I18N: This is a percentage, such as “32.5%”. “%s” is the number, “%%” is the percent symbol.  Some languages require a (non-breaking) space between the two, or a different symbol.
 #: app/I18N.php:351
@@ -1292,7 +1289,7 @@ msgstr "Добави липсващи записи за смърт"
 msgid "Add missing married names"
 msgstr "Добави липсващи, придобити по брак имена"
 
-#: search_advanced.php:288
+#: search_advanced.php:287
 msgid "Add more fields"
 msgstr "Добави още полета"
 
@@ -1320,7 +1317,7 @@ msgstr "Добави записи на родителите заедно със 
 msgid "Add spaces where long lines were wrapped"
 msgstr ""
 
-#. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
+#. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: admin_trees_download.php:161 app/Module/ClippingsCartModule.php:212
 #: app/Module/ClippingsCartModule.php:604
 msgid "Add the GEDCOM media path to filenames"
@@ -1646,12 +1643,12 @@ msgstr "Възрастова разлика между съпруга и съп�
 msgid "Age difference"
 msgstr "Възрастови разлики"
 
-#: statistics.php:527 statisticsplot.php:1275
+#: statistics.php:527 statisticsplot.php:1273
 msgid "Age in year of first marriage"
 msgstr "Възраст в годината на първи брак"
 
 #: includes/functions/functions_print_lists.php:982 statistics.php:258
-#: statistics.php:524 statisticsplot.php:1225
+#: statistics.php:524 statisticsplot.php:1223
 msgid "Age in year of marriage"
 msgstr "Възраст в годината на брак"
 
@@ -1664,12 +1661,12 @@ msgstr "Възраст на обекта"
 msgid "Age of parents next to child’s birthdate"
 msgstr ""
 
-#: statistics.php:518 statisticsplot.php:1125
+#: statistics.php:518 statisticsplot.php:1123
 msgid "Age related to birth year"
 msgstr "Възраст относително годината на раждане"
 
 #: includes/functions/functions_print_lists.php:482 statistics.php:521
-#: statisticsplot.php:1175
+#: statisticsplot.php:1173
 msgid "Age related to death year"
 msgstr "Възраст относително годината на смърт"
 
@@ -2454,8 +2451,8 @@ msgstr "Посока"
 msgid "Begin year"
 msgstr "Начална година"
 
-#: search_advanced.php:155 search_advanced.php:217 search_advanced.php:232
-#: search_advanced.php:254 search_advanced.php:269
+#: search_advanced.php:154 search_advanced.php:216 search_advanced.php:231
+#: search_advanced.php:253 search_advanced.php:268
 msgid "Begins with"
 msgstr "Започва с"
 
@@ -3441,7 +3438,7 @@ msgstr "Дете на %s"
 #: includes/functions/functions_print_lists.php:257
 #: includes/functions/functions_print_lists.php:725
 #: modules_v3/family_group_report/report.xml:752
-#: modules_v3/relative_ext_report/report.xml:120 statisticsplot.php:1033
+#: modules_v3/relative_ext_report/report.xml:120 statisticsplot.php:1031
 msgid "Children"
 msgstr "Деца"
 
@@ -3845,8 +3842,8 @@ msgstr "Информаця за контакт"
 msgid "Contact method"
 msgstr ""
 
-#: search_advanced.php:156 search_advanced.php:218 search_advanced.php:233
-#: search_advanced.php:255 search_advanced.php:270
+#: search_advanced.php:155 search_advanced.php:217 search_advanced.php:232
+#: search_advanced.php:254 search_advanced.php:269
 msgid "Contains"
 msgstr "Съдържа"
 
@@ -3970,10 +3967,10 @@ msgstr "Страни"
 msgid "Country"
 msgstr "Страна"
 
-#: statisticsplot.php:907 statisticsplot.php:957 statisticsplot.php:1011
-#: statisticsplot.php:1061 statisticsplot.php:1115 statisticsplot.php:1165
-#: statisticsplot.php:1215 statisticsplot.php:1265 statisticsplot.php:1315
-#: statisticsplot.php:1365
+#: statisticsplot.php:905 statisticsplot.php:955 statisticsplot.php:1009
+#: statisticsplot.php:1059 statisticsplot.php:1113 statisticsplot.php:1163
+#: statisticsplot.php:1213 statisticsplot.php:1263 statisticsplot.php:1313
+#: statisticsplot.php:1363
 msgid "Counts "
 msgstr ""
 
@@ -5622,12 +5619,12 @@ msgstr "Събития на близки роднини"
 msgid "Everybody has this role, including visitors to the website and search engines."
 msgstr ""
 
-#: search_advanced.php:154 search_advanced.php:216 search_advanced.php:231
-#: search_advanced.php:253 search_advanced.php:268
+#: search_advanced.php:153 search_advanced.php:215 search_advanced.php:230
+#: search_advanced.php:252 search_advanced.php:267
 msgid "Exact"
 msgstr "Съвпада точно"
 
-#: search_advanced.php:102 search_advanced.php:165
+#: search_advanced.php:102 search_advanced.php:164
 msgid "Exact date"
 msgstr "Точна дата"
 
@@ -5843,8 +5840,8 @@ msgstr ""
 #: includes/functions/functions_print_lists.php:1430 mediaviewer.php:137
 #: modules_v3/fact_sources/report.xml:149
 #: modules_v3/fact_sources/report.xml:311 note.php:126 placelist.php:223
-#: search.php:90 source.php:101 statistics.php:69 statisticsplot.php:983
-#: statisticsplot.php:1087 statisticsplot.php:1337
+#: search.php:90 source.php:101 statistics.php:69 statisticsplot.php:981
+#: statisticsplot.php:1085 statisticsplot.php:1335
 msgid "Families"
 msgstr "Семейства"
 
@@ -6051,7 +6048,7 @@ msgstr ""
 #: modules_v3/family_group_report/report.xml:721
 #: modules_v3/individual_ext_report/report.xml:234
 #: modules_v3/individual_report/report.xml:236
-#: modules_v3/relative_ext_report/report.xml:61 search_advanced.php:206
+#: modules_v3/relative_ext_report/report.xml:61 search_advanced.php:205
 msgid "Father"
 msgstr "Баща"
 
@@ -6114,10 +6111,10 @@ msgstr "Февруари"
 #: app/Controller/IndividualController.php:240
 #: app/Controller/IndividualController.php:243 app/Stats.php:5090
 #: calendar.php:694 includes/functions/functions_edit.php:641
-#: statisticsplot.php:894 statisticsplot.php:944 statisticsplot.php:998
-#: statisticsplot.php:1048 statisticsplot.php:1102 statisticsplot.php:1152
-#: statisticsplot.php:1202 statisticsplot.php:1252 statisticsplot.php:1302
-#: statisticsplot.php:1352
+#: statisticsplot.php:892 statisticsplot.php:942 statisticsplot.php:996
+#: statisticsplot.php:1046 statisticsplot.php:1100 statisticsplot.php:1150
+#: statisticsplot.php:1200 statisticsplot.php:1250 statisticsplot.php:1300
+#: statisticsplot.php:1350
 msgid "Female"
 msgstr "Жена"
 
@@ -7416,9 +7413,9 @@ msgstr "Най-голяма продължителност на живота"
 #: includes/functions/functions_print_lists.php:1526 indilist.php:124
 #: indilist.php:127 mediaviewer.php:134 modules_v3/fact_sources/report.xml:51
 #: modules_v3/fact_sources/report.xml:255 note.php:119 placelist.php:220
-#: search.php:85 source.php:98 statistics.php:67 statisticsplot.php:879
-#: statisticsplot.php:929 statisticsplot.php:1137 statisticsplot.php:1187
-#: statisticsplot.php:1237 statisticsplot.php:1287
+#: search.php:85 source.php:98 statistics.php:67 statisticsplot.php:877
+#: statisticsplot.php:927 statisticsplot.php:1135 statisticsplot.php:1185
+#: statisticsplot.php:1235 statisticsplot.php:1285
 msgid "Individuals"
 msgstr "Индивиди"
 
@@ -8265,10 +8262,10 @@ msgstr ""
 #: app/Controller/IndividualController.php:231
 #: app/Controller/IndividualController.php:234 app/Stats.php:5090
 #: calendar.php:690 includes/functions/functions_edit.php:637
-#: statisticsplot.php:893 statisticsplot.php:943 statisticsplot.php:997
-#: statisticsplot.php:1047 statisticsplot.php:1101 statisticsplot.php:1151
-#: statisticsplot.php:1201 statisticsplot.php:1251 statisticsplot.php:1301
-#: statisticsplot.php:1351
+#: statisticsplot.php:891 statisticsplot.php:941 statisticsplot.php:995
+#: statisticsplot.php:1045 statisticsplot.php:1099 statisticsplot.php:1149
+#: statisticsplot.php:1199 statisticsplot.php:1249 statisticsplot.php:1299
+#: statisticsplot.php:1349
 msgid "Male"
 msgstr "Мъж"
 
@@ -8723,6 +8720,12 @@ msgstr "Мултимедиен файл"
 msgid "Media file to upload"
 msgstr "Мултимедиен файл за аплоуд"
 
+#. I18N: %s is the name of a folder.
+#: admin_trees_download.php:164
+#, php-format
+msgid "Media filenames will be prefixed by %s."
+msgstr ""
+
 #: admin_media.php:634 admin_trees_config.php:1063
 msgid "Media files"
 msgstr ""
@@ -9038,23 +9041,23 @@ msgstr ""
 msgid "Month"
 msgstr "Месец"
 
-#: statistics.php:503 statisticsplot.php:867
+#: statistics.php:503 statisticsplot.php:865
 msgid "Month of birth"
 msgstr "Месец на раждане"
 
-#: app/Stats.php:4273 statistics.php:515 statisticsplot.php:1021
+#: app/Stats.php:4273 statistics.php:515 statisticsplot.php:1019
 msgid "Month of birth of first child in a relation"
 msgstr "Месец на раждане на първо дете във връзка"
 
-#: statistics.php:506 statisticsplot.php:917
+#: statistics.php:506 statisticsplot.php:915
 msgid "Month of death"
 msgstr "Месец на смърт"
 
-#: statistics.php:512 statisticsplot.php:1075
+#: statistics.php:512 statisticsplot.php:1073
 msgid "Month of first marriage"
 msgstr "Месец на първи брак"
 
-#: statistics.php:509 statisticsplot.php:971
+#: statistics.php:509 statisticsplot.php:969
 msgid "Month of marriage"
 msgstr "Месец на брак"
 
@@ -9140,7 +9143,7 @@ msgstr "Най-често разглеждани страници"
 #: modules_v3/family_group_report/report.xml:728
 #: modules_v3/individual_ext_report/report.xml:270
 #: modules_v3/individual_report/report.xml:272
-#: modules_v3/relative_ext_report/report.xml:62 search_advanced.php:243
+#: modules_v3/relative_ext_report/report.xml:62 search_advanced.php:242
 msgid "Mother"
 msgstr "Майка"
 
@@ -9842,7 +9845,7 @@ msgstr ""
 
 #. I18N: gedcom tag NCHI
 #: app/Gedcom/GedcomTag.php:623 app/Stats.php:4457 app/Stats.php:4459
-#: statistics.php:530 statisticsplot.php:1325
+#: statistics.php:530 statisticsplot.php:1323
 msgid "Number of children"
 msgstr "Деца"
 
@@ -11624,7 +11627,7 @@ msgstr ""
 #: medialist.php:156
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:45
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:63 search.php:140
-#: search.php:185 search.php:303 search_advanced.php:290
+#: search.php:185 search.php:303 search_advanced.php:289
 msgid "Search"
 msgstr "Търси"
 
@@ -12734,8 +12737,8 @@ msgstr "Подреждане"
 msgid "Sosa"
 msgstr ""
 
-#: search_advanced.php:157 search_advanced.php:219 search_advanced.php:234
-#: search_advanced.php:256 search_advanced.php:271
+#: search_advanced.php:156 search_advanced.php:218 search_advanced.php:233
+#: search_advanced.php:255 search_advanced.php:270
 msgid "Sounds like"
 msgstr "Звучи като"
 
@@ -12918,7 +12921,7 @@ msgstr "Област"
 msgid "Statistics"
 msgstr "Статистика"
 
-#: statisticsplot.php:845
+#: statisticsplot.php:843
 msgid "Statistics plot"
 msgstr ""
 
@@ -15981,8 +15984,8 @@ msgstr ""
 msgid "after death"
 msgstr ""
 
-#: statisticsplot.php:1126 statisticsplot.php:1176 statisticsplot.php:1226
-#: statisticsplot.php:1276
+#: statisticsplot.php:1124 statisticsplot.php:1174 statisticsplot.php:1224
+#: statisticsplot.php:1274
 msgid "age"
 msgstr ""
 
@@ -16241,7 +16244,7 @@ msgstr "променено име"
 msgid "child"
 msgstr "дете"
 
-#: statisticsplot.php:1326
+#: statisticsplot.php:1324
 msgid "children"
 msgstr "деца"
 
@@ -16959,6 +16962,11 @@ msgctxt "son’s son’s wife"
 msgid "grandson’s wife"
 msgstr ""
 
+#: includes/functions/functions.php:1813
+msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
+msgid "great ×% nephew/niece"
+msgstr ""
+
 #: includes/functions/functions.php:1639 includes/functions/functions.php:1654
 #: includes/functions/functions.php:1667
 #, php-format
@@ -17035,12 +17043,6 @@ msgstr ""
 
 #: includes/functions/functions.php:1827 includes/functions/functions.php:1840
 #, php-format
-msgid "great ×%s nephew/niece"
-msgstr ""
-
-#: includes/functions/functions.php:1813
-#, php-format
-msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
 msgstr ""
 
@@ -18576,8 +18578,8 @@ msgstr ""
 msgid "minimum"
 msgstr "минимум"
 
-#: statisticsplot.php:868 statisticsplot.php:918 statisticsplot.php:972
-#: statisticsplot.php:1022 statisticsplot.php:1076
+#: statisticsplot.php:866 statisticsplot.php:916 statisticsplot.php:970
+#: statisticsplot.php:1020 statisticsplot.php:1074
 msgid "month"
 msgstr ""
 
@@ -18747,10 +18749,10 @@ msgstr ""
 msgid "north"
 msgstr "север"
 
-#: statistics.php:634 statisticsplot.php:869 statisticsplot.php:919
-#: statisticsplot.php:973 statisticsplot.php:1023 statisticsplot.php:1077
-#: statisticsplot.php:1127 statisticsplot.php:1177 statisticsplot.php:1227
-#: statisticsplot.php:1277 statisticsplot.php:1327
+#: statistics.php:634 statisticsplot.php:867 statisticsplot.php:917
+#: statisticsplot.php:971 statisticsplot.php:1021 statisticsplot.php:1075
+#: statisticsplot.php:1125 statisticsplot.php:1175 statisticsplot.php:1225
+#: statisticsplot.php:1275 statisticsplot.php:1325
 msgid "numbers"
 msgstr "в числа"
 
@@ -18765,10 +18767,10 @@ msgstr "в числа"
 #: modules_v3/individual_report/report.xml:85
 #: modules_v3/marriage_report/report.xml:28
 #: modules_v3/occupation_report/report.xml:35
-#: modules_v3/relative_ext_report/report.xml:41 statisticsplot.php:907
-#: statisticsplot.php:957 statisticsplot.php:1011 statisticsplot.php:1061
-#: statisticsplot.php:1115 statisticsplot.php:1165 statisticsplot.php:1215
-#: statisticsplot.php:1265 statisticsplot.php:1315 statisticsplot.php:1365
+#: modules_v3/relative_ext_report/report.xml:41 statisticsplot.php:905
+#: statisticsplot.php:955 statisticsplot.php:1009 statisticsplot.php:1059
+#: statisticsplot.php:1113 statisticsplot.php:1163 statisticsplot.php:1213
+#: statisticsplot.php:1263 statisticsplot.php:1313 statisticsplot.php:1363
 msgid "of"
 msgstr ""
 
@@ -18838,10 +18840,10 @@ msgstr ""
 msgid "pending"
 msgstr ""
 
-#: statistics.php:636 statisticsplot.php:882 statisticsplot.php:932
-#: statisticsplot.php:986 statisticsplot.php:1036 statisticsplot.php:1090
-#: statisticsplot.php:1140 statisticsplot.php:1190 statisticsplot.php:1240
-#: statisticsplot.php:1290 statisticsplot.php:1340
+#: statistics.php:636 statisticsplot.php:880 statisticsplot.php:930
+#: statisticsplot.php:984 statisticsplot.php:1034 statisticsplot.php:1088
+#: statisticsplot.php:1138 statisticsplot.php:1188 statisticsplot.php:1238
+#: statisticsplot.php:1288 statisticsplot.php:1338
 msgid "percentage"
 msgstr "в проценти"
 
@@ -19766,8 +19768,8 @@ msgstr ""
 msgid "younger sister"
 msgstr ""
 
-#: search_advanced.php:107 search_advanced.php:111 search_advanced.php:115
-#: search_advanced.php:166 search_advanced.php:167 search_advanced.php:168
+#: search_advanced.php:106 search_advanced.php:110 search_advanced.php:114
+#: search_advanced.php:165 search_advanced.php:166 search_advanced.php:167
 #, php-format
 msgid "±%s year"
 msgid_plural "±%s years"
