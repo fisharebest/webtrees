@@ -3,13 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2013-05-13 06:38+0000\n"
-"Last-Translator: Michele Locati <mlocati@gmail.com>\n"
+"PO-Revision-Date: 2015-03-14 14:58+0100\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"Language-Team: Italian "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.3-dev\n"
 "X-Language: it_IT\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -3349,7 +3352,7 @@ msgstr "Aggiornamenti"
 
 #. I18N: title for list of recent changes
 #: app/Module/RecentChangesModule.php:68
-#, fuzzy, php-format
+#, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "Modifiche nell’ultimo giorno"
@@ -14213,7 +14216,12 @@ msgstr "Questa opzione consente di mantenere i legami familiari in record privat
 #. I18N: Help text for the “Show names of private individuals” configuration setting
 #: admin_trees_config.php:515
 msgid "This option will show the names (but no other details) of private individuals.  Individuals are private if they are still alive or if a privacy restriction has been added to their individual record.  To hide a specific name, add a privacy restriction to that name record."
-msgstr "Questa opzione permetterà di visualizzare i nomi (ma non altri dettagli) delle persone confidenziali. Le persone sono confidenziali se ​​se sono ancora in vita o se è stata aggiunta al loro record una restrizione della privacy. Per nascondere un nome specifico aggiungere una limitazione della privacy al record di quel nome."
+msgstr ""
+"Questa opzione permetterà di visualizzare i nomi (ma non altri dettagli) "
+"delle persone confidenziali. Le persone sono confidenziali se se sono ancora "
+"in vita o se è stata aggiunta al loro record una restrizione della privacy. "
+"Per nascondere un nome specifico aggiungere una limitazione della privacy al "
+"record di quel nome."
 
 #: app/Module/GoogleMapsModule.php:503
 msgid "This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers."
