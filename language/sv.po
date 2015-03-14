@@ -3,13 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: \n"
-"Last-Translator: Meliza <meliza@amitys.com>\n"
+"PO-Revision-Date: 2015-03-14 22:09+0100\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"Language-Team: Swedish "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.3-dev\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -102,13 +105,13 @@ msgstr "$1$s × %2$s"
 #: includes/functions/functions.php:2132
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr "%1$s är $2$s %s generationer mera"
+msgstr "%1$s är %2$ sgenerationer mera"
 
 #. I18N: %1$s=“fifth cousin”, etc., $2$s>=4
 #: includes/functions/functions.php:2135
 #, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr "%1$s är $2$s %s generationer mindre"
+msgstr "%1$s är %2$s generationer mindre"
 
 #. I18N: The placeholders are GEDCOM XREFs and tags.  e.g. “INDI I123 contains a FAMC link to F234.”
 #: admin_trees_check.php:205
@@ -651,7 +654,9 @@ msgstr "Ett barn kan ha fler än ett set av föräldrar. Förhållandet mellan b
 
 #: app/Module/BatchUpdate/BatchUpdateDuplicateLinksPlugin.php:38
 msgid "A common error is to have multiple links to the same record, for example listing the same child more than once in a family record."
-msgstr "Ett vanligt fel är att ha flera länkar till samma datapost, t.ex. samma barn förekommer mer än en gång i familjedataposten"
+msgstr ""
+"Ett vanligt fel är att ha flera länkar till samma datapost, t.ex. samma barn "
+"förekommer mer än en gång i familjedataposten."
 
 #: setup.php:372
 msgid "A database server can store many separate databases.  You need to select an existing database (created by your server’s administrator) or create a new one (if your database user account has sufficient privileges)."
@@ -851,7 +856,7 @@ msgstr "En rapport om de familjer som är närstående till en person."
 #. I18N: Description of the “Source” module
 #: app/Module/FactSourcesReportModule.php:32
 msgid "A report of the information provided by a source."
-msgstr "En rapport om den information som getts av en specifik källa"
+msgstr "En rapport om den information som getts av en specifik källa."
 
 #. I18N: Description of the “Missing data”
 #: app/Module/MissingFactsReportModule.php:32
@@ -10152,7 +10157,9 @@ msgstr "PHP-filändelse ”%1$s” är inaktiv. Utan den kan följande egenskape
 #: setup.php:129
 #, php-format
 msgid "PHP extension “%s” is disabled.  You cannot install webtrees until this is enabled.  Please ask your server’s administrator to enable it."
-msgstr "PHP-filändelse ”%1$s” är inaktiv. Du kan inte installera webtrees förrän den är aktiv. Be din server-administratör aktivera den."
+msgstr ""
+"PHP-filändelse ”%s” är inaktiv. Du kan inte installera webtrees förrän den "
+"är aktiv. Be din server-administratör aktivera den."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:74
