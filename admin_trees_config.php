@@ -520,9 +520,9 @@ $controller
 	<!-- SHOW_PRIVATE_RELATIONSHIPS -->
 	<div class="form-group">
 		<div class="control-label col-sm-4">
-			<div>
+			<label for="SHOW_PRIVATE_RELATIONSHIPS">
 				<?php echo /* I18N: A configuration setting */ I18N::translate('Show private relationships'); ?>
-			</div>
+			</label>
 			<div class="hidden-xs">
 				<span class="label visitors"><i class="fa fa-fw"></i> <?php echo I18N::translate('visitors'); ?></span>
 				<span class="label members"><i class="fa fa-fw"></i><?php echo I18N::translate('members'); ?></span>
