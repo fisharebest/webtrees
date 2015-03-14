@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-03-14 14:58+0100\n"
+"PO-Revision-Date: 2015-03-14 22:07+0100\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: Italian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/it/>\n"
@@ -13234,7 +13234,14 @@ msgstr "Il campo <b>nome</b> contiene il nome completo della persona, come dovre
 
 #: help_text.php:270
 msgid "The <b>surname</b> field contains a name that is used for sorting and grouping.  It can be different to the individual’s actual surname which is always taken from the <b>name</b> field.  This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska).  If an individual needs to be listed under more than one surname, each name should be separated by a comma."
-msgstr "Il campo <b>cognome<b> contiene un nome che viene utilizzato per l’ordinamento e il raggruppamento. Può essere diverso dal cognome reale della persona, che è sempre preso dal campo <b>nome</b>. Questo campo può essere utilizzato per ordinare i cognomi con o senza un prefisso (Gogh / van Gogh) e per raggruppare variazioni ortografiche o inflessioni (Kowalski / Kowalska). Se una persona deve essere elencata sotto più di un cognome, separare ciascun nome con una virgola."
+msgstr ""
+"Il campo <b>cognome</b> contiene un nome che viene utilizzato per l’"
+"ordinamento e il raggruppamento. Può essere diverso dal cognome reale della "
+"persona, che è sempre preso dal campo <b>nome</b>. Questo campo può essere "
+"utilizzato per ordinare i cognomi con o senza un prefisso (Gogh / van Gogh) "
+"e per raggruppare variazioni ortografiche o inflessioni (Kowalski / Kowalska)"
+". Se una persona deve essere elencata sotto più di un cognome, separare "
+"ciascun nome con una virgola."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:389
 msgid "The FAQ list is empty."
