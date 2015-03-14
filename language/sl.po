@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-03-12 22:02+0100\n"
+"PO-Revision-Date: 2015-03-14 21:38+0100\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Slovenian <http://translate.webtrees.net/projects/webtrees/webtrees/sl/>\n"
+"Language-Team: Slovenian "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/sl/>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3;\n"
 "X-Generator: Weblate 2.3-dev\n"
 "X-Poedit-Language: Slovenian\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -3722,7 +3724,7 @@ msgstr ""
 
 #: edit_interface.php:1747
 msgid "Click a row, then drag-and-drop to re-order media"
-msgstr "Klikni na vrstico, nato povleci-in-spusti za razvrstitev fotografij "
+msgstr "Klikni na vrstico, nato povleci-in-spusti za razvrstitev fotografij"
 
 #: admin_trees_manage.php:690
 msgid "Click here for PhpGedView to webtrees transfer wizard"
@@ -10211,7 +10213,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:77
 msgid "PHP blocked the file because of its extension."
-msgstr "PHP je zvrnil datoteko po končnici"
+msgstr "PHP je zvrnil datoteko po končnici."
 
 #: setup.php:140
 #, php-format
@@ -10226,7 +10228,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:74
 msgid "PHP failed to write to disk."
-msgstr "PHP ne more pisati na disk"
+msgstr "PHP ne more pisati na disk."
 
 #: admin_site_info.php:71
 msgid "PHP information"
@@ -10698,7 +10700,7 @@ msgstr "Vnesite delujoč e-poštni naslov."
 #: app/Module/CensusAssistantModule.php:96 find.php:115 search.php:34
 #: search.php:46
 msgid "Please enter more than one character."
-msgstr "Napiši več kot eno črko"
+msgstr "Napiši več kot eno črko."
 
 #: message.php:104
 msgid "Please enter some message text before sending."
@@ -13318,7 +13320,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
 msgid "The PHP temporary folder is missing."
-msgstr "Manjka začasni imenik za PHP"
+msgstr "Manjka začasni imenik za PHP."
 
 #: admin_users.php:97
 #, php-format
@@ -13442,7 +13444,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
 msgid "The file was only partially uploaded.  Please try again."
-msgstr "Datoteka je bila le delno naložena. Poskusite ponovno"
+msgstr "Datoteka je bila le delno naložena. Poskusite ponovno."
 
 #. I18N: %s is a filename
 #: medialist.php:294 mediaviewer.php:111
@@ -13692,7 +13694,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:62
 msgid "The uploaded file exceeds the allowed size."
-msgstr "Naložena datoteka presega dovojeno velikost"
+msgstr "Naložena datoteka presega dovojeno velikost."
 
 #: admin_users.php:788
 #, php-format
@@ -14159,7 +14161,8 @@ msgstr ""
 
 #: mediafirewall.php:410
 msgid "This media file is broken and cannot be watermarked."
-msgstr "Datoteka fotografije je okvarjena, zato je ne morete označiti z vodnim žigom"
+msgstr ""
+"Datoteka fotografije je okvarjena, zato je ne morete označiti z vodnim žigom."
 
 #: mediaviewer.php:73
 msgid "This media object does not exist or you do not have permission to view it."
@@ -14425,7 +14428,9 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:1781
 msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables."
-msgstr "To je seznam vseh mest iz izbrane GEDCOM datoteke. Ptivzeto ta NE VKLJUČUJE mesta, ki popolnoma ustrezajo med GEDCOM datoteko in tabelami GoogleMap"
+msgstr ""
+"To je seznam vseh mest iz izbrane GEDCOM datoteke. Ptivzeto ta NE VKLJUČUJE "
+"mesta, ki popolnoma ustrezajo med GEDCOM datoteko in tabelami GoogleMap."
 
 #: admin_trees_places.php:96
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
