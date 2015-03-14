@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-03-14 14:48+0100\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2015-03-14 20:48+0100\n"
+"Last-Translator: Michel Rivière <gustine@laposte.net>\n"
 "Language-Team: French "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
 "Language: fr\n"
@@ -4470,7 +4470,7 @@ msgstr "Jour non spécifié"
 
 #: timeline.php:122 timeline.php:124 timeline.php:126
 msgid "Day:"
-msgstr "Jour"
+msgstr "Jour :"
 
 #: app/Stats.php:945 app/Stats.php:947
 #: includes/functions/functions_print_lists.php:182
@@ -9076,7 +9076,7 @@ msgstr "Mois du mariage"
 
 #: timeline.php:122 timeline.php:124 timeline.php:126
 msgid "Month:"
-msgstr "Mois"
+msgstr "Mois :"
 
 #: app/Gedcom/GedcomCodeTemp.php:220
 msgid "Monticello, Utah"
@@ -11174,7 +11174,7 @@ msgstr "Parenté élargie"
 #. I18N: gedcom tag RELA
 #: app/Gedcom/GedcomTag.php:717
 msgid "Relationship"
-msgstr "Parenté"
+msgstr "Relation"
 
 #. I18N: gedcom tag _FREL
 #: app/Gedcom/GedcomTag.php:1502
@@ -11198,7 +11198,7 @@ msgstr "Lien avec les parents"
 #: relationship.php:122
 #, php-format
 msgid "Relationship: %s"
-msgstr "Parenté: %s"
+msgstr "Parenté : %s"
 
 #: app/Theme/BaseTheme.php:1169
 #: includes/functions/functions_print_lists.php:336 relationship.php:49
@@ -13273,7 +13273,13 @@ msgstr "Le diaporama (Media Viewer) peut montrer un lien qui, lorsqu’on clique
 
 #: admin_trees_manage.php:669
 msgid "The PGV to webtrees wizard is an automated process to assist administrators make the move from a PGV installation to a new webtrees one.  It will transfer all PGV GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:"
-msgstr "L’assistant de conversion de PGV à webtrees est un processus automatisé afin d’aider les administrateurs à faire le transfert d’une installation PGV vers une installation webtrees. Cet assistant transférera tous les GEDCOMs sous PGV ainsi que toutes autres informations de la base de données directement vers votre nouvelle base de données sous webtrees. Les conditions suivantes sont requises:"
+msgstr ""
+"L’assistant de conversion de PGV à webtrees est un processus automatisé afin "
+"d’aider les administrateurs à faire le transfert d’une installation PGV vers "
+"une installation webtrees. Cet assistant transférera tous les GEDCOMs sous "
+"PGV ainsi que toutes autres informations de la base de données directement "
+"vers votre nouvelle base de données sous webtrees. Les conditions suivantes "
+"sont requises&nbsp;:"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
@@ -13307,7 +13313,7 @@ msgstr "Le panier vous permet de prendre des extraits de cet arbre familial et d
 
 #: site-unavailable.php:66
 msgid "The database reported the following error message:"
-msgstr "La base de données rapporte le message d’erreur suivant:"
+msgstr "La base de données rapporte le message d’erreur suivant :"
 
 #: admin_trees_config.php:1312
 msgid "The date and time of the last update"
@@ -15633,7 +15639,7 @@ msgstr "Zone de saisie de l’année"
 
 #: timeline.php:126 timeline.php:369
 msgid "Year:"
-msgstr "Année"
+msgstr "Année :"
 
 #: app/Stats.php:6322
 msgid "Yemen"
@@ -15802,11 +15808,11 @@ msgstr "Vous avez seulement besoin d’entrer dans une URL de connexion si vous 
 
 #: message.php:256
 msgid "You sent the following message to a webtrees administrator:"
-msgstr "Vous avez envoyé le message suivant à l’administrateur webtrees"
+msgstr "Vous avez envoyé le message suivant à l’administrateur webtrees :"
 
 #: message.php:253
 msgid "You sent the following message to a webtrees user:"
-msgstr "Vous avez envoyé le message suivant à l’utilisateur webtrees"
+msgstr "Vous avez envoyé le message suivant à l’utilisateur webtrees :"
 
 #: admin_site_upgrade.php:97
 msgid "You should accept or reject all pending changes before upgrading."
