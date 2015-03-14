@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-03-14 14:28+0100\n"
-"Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
+"PO-Revision-Date: 2015-03-14 14:59+0100\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: Dutch "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
@@ -12663,7 +12663,11 @@ msgstr "Sitemaps"
 #. I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: app/Module/SiteMapModule.php:291
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling.  All major search engines support sitemaps.  For more information, see <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
-msgstr "Sitemaps zijn een manier om webmasters aan zoekmachines te laten weten welke pagina's op een website beschikbaar zijn om te doorzoeken. Alle grote zoekmachines ondersteunen sitemaps. Voor meer informatie, zie <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
+msgstr ""
+"Sitemaps zijn een manier om webmasters aan zoekmachines te laten weten welke "
+"pagina's op een website beschikbaar zijn om te doorzoeken. Alle grote "
+"zoekmachines ondersteunen sitemaps. Voor meer informatie, zie <a href=\""
+"http://www.sitemaps.org/nl/\">www.sitemaps.org</a>."
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:131
