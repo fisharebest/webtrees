@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-03-12 22:14+0100\n"
+"PO-Revision-Date: 2015-03-14 21:37+0100\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Galician <http://translate.webtrees.net/projects/webtrees/webtrees/gl/>\n"
+"Language-Team: Galician "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/gl/>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3682,7 +3683,7 @@ msgstr ""
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:295
 msgid "Click on a title to go straight to it, or scroll down to read them all."
-msgstr "Prema no título para ir directo a el, ou desprácese ata lelos todos"
+msgstr "Prema no título para ir directo a el, ou desprácese ata lelos todos."
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:69
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:80
@@ -5345,7 +5346,7 @@ msgstr "Editar historia"
 
 #: app/Tree.php:562
 msgid "Edit this individual and replace their details with your own."
-msgstr "Editar este individuo e substituír os detalles cos seus propios"
+msgstr "Editar este individuo e substituír os detalles cos seus propios."
 
 #: admin_users.php:268
 msgid "Edit user"
@@ -10634,7 +10635,7 @@ msgstr ""
 #: app/Module/CensusAssistantModule.php:96 find.php:115 search.php:34
 #: search.php:46
 msgid "Please enter more than one character."
-msgstr "Por favor, introduza máis dun carácter"
+msgstr "Por favor, introduza máis dun carácter."
 
 #: message.php:104
 msgid "Please enter some message text before sending."
@@ -13489,7 +13490,7 @@ msgstr ""
 
 #: mediafirewall.php:41
 msgid "The media file was not found in this family tree."
-msgstr "O arquivo multimedia non foi atopado nesta árbore xenealóxica"
+msgstr "O arquivo multimedia non foi atopado nesta árbore xenealóxica."
 
 #: admin_media_upload.php:223
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
@@ -14089,7 +14090,8 @@ msgstr ""
 
 #: mediafirewall.php:410
 msgid "This media file is broken and cannot be watermarked."
-msgstr "Este ficheiro multimedia está roto e non se lle pode poñer marca de auga"
+msgstr ""
+"Este ficheiro multimedia está roto e non se lle pode poñer marca de auga."
 
 #: mediaviewer.php:73
 msgid "This media object does not exist or you do not have permission to view it."
@@ -14355,7 +14357,10 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:1781
 msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables."
-msgstr "Isto incluirá todas as localizaciósn do ficheiro GEDCOM seleccionado. Por defecto este NON INCLUIRÁ lugares que son totalmente coincidentes entre o arquivo GEDCOM e as táboas de GoogleMap"
+msgstr ""
+"Isto incluirá todas as localizaciósn do ficheiro GEDCOM seleccionado. Por "
+"defecto este NON INCLUIRÁ lugares que son totalmente coincidentes entre o "
+"arquivo GEDCOM e as táboas de GoogleMap."
 
 #: admin_trees_places.php:96
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
@@ -15726,7 +15731,7 @@ msgstr ""
 
 #: edit_interface.php:1548
 msgid "You must provide a repository name."
-msgstr "Debe proporcionar un nome de repositorio"
+msgstr "Debe proporcionar un nome de repositorio."
 
 #: edit_interface.php:1210
 msgid "You must provide a source title"
