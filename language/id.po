@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-03-12 21:59+0100\n"
+"PO-Revision-Date: 2015-03-14 21:35+0100\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Indonesian <http://translate.webtrees.net/projects/webtrees/webtrees/id/>\n"
+"Language-Team: Indonesian "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3641,7 +3642,7 @@ msgstr ""
 
 #: edit_interface.php:1747
 msgid "Click a row, then drag-and-drop to re-order media"
-msgstr "Klik sebuah baris, kemudian seret dan lepas untuk menyusunkembali media "
+msgstr "Klik sebuah baris, kemudian seret dan lepas untuk menyusunkembali media"
 
 #: admin_trees_manage.php:690
 msgid "Click here for PhpGedView to webtrees transfer wizard"
@@ -10124,7 +10125,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:77
 msgid "PHP blocked the file because of its extension."
-msgstr "PHP mencegah berkas berdasarkan ekstensi"
+msgstr "PHP mencegah berkas berdasarkan ekstensi."
 
 #: setup.php:140
 #, php-format
@@ -10139,7 +10140,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:74
 msgid "PHP failed to write to disk."
-msgstr "PHP gagal menulis ke kandar"
+msgstr "PHP gagal menulis ke kandar."
 
 #: admin_site_info.php:71
 msgid "PHP information"
@@ -10611,7 +10612,7 @@ msgstr "Silakan masukkan alamat email yang benar."
 #: app/Module/CensusAssistantModule.php:96 find.php:115 search.php:34
 #: search.php:46
 msgid "Please enter more than one character."
-msgstr "Silakan masukkan lebih dari satu karakter"
+msgstr "Silakan masukkan lebih dari satu karakter."
 
 #: message.php:104
 msgid "Please enter some message text before sending."
@@ -12640,7 +12641,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Gedcom/GedcomTag.php:1728 app/Module/SlideShowModule.php:25
 msgid "Slide show"
-msgstr "Slide show"
+msgstr ""
 
 #: app/Stats.php:6283
 msgid "Slovakia"
@@ -13232,7 +13233,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
 msgid "The PHP temporary folder is missing."
-msgstr "Kehilangan direktori sementara PHP"
+msgstr "Kehilangan direktori sementara PHP."
 
 #: admin_users.php:97
 #, php-format
@@ -13356,7 +13357,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
 msgid "The file was only partially uploaded.  Please try again."
-msgstr "Berkas hanya diunggah sebagian, silakan coba lagi"
+msgstr "Berkas hanya diunggah sebagian, silakan coba lagi."
 
 #. I18N: %s is a filename
 #: medialist.php:294 mediaviewer.php:111
@@ -13467,7 +13468,7 @@ msgstr ""
 
 #: mediafirewall.php:41
 msgid "The media file was not found in this family tree."
-msgstr "Berkas media tidak di temukan di silsilah keluarga ini"
+msgstr "Berkas media tidak di temukan di silsilah keluarga ini."
 
 #: admin_media_upload.php:223
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
@@ -13603,7 +13604,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:62
 msgid "The uploaded file exceeds the allowed size."
-msgstr "Berkas yang diunggah melampaui ukuran yang diperbolehkan"
+msgstr "Berkas yang diunggah melampaui ukuran yang diperbolehkan."
 
 #: admin_users.php:788
 #, php-format
@@ -14064,7 +14065,7 @@ msgstr ""
 
 #: mediafirewall.php:410
 msgid "This media file is broken and cannot be watermarked."
-msgstr "Berkas media ini rusak dan tidak dapat di-watermark-kan"
+msgstr "Berkas media ini rusak dan tidak dapat di-watermark-kan."
 
 #: mediaviewer.php:73
 msgid "This media object does not exist or you do not have permission to view it."
