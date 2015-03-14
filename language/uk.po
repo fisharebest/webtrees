@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-03-12 22:22+0100\n"
+"PO-Revision-Date: 2015-03-14 22:01+0100\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Ukrainian <http://translate.webtrees.net/projects/webtrees/webtrees/uk/>\n"
+"Language-Team: Ukrainian "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 2.3-dev\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
@@ -3149,9 +3151,9 @@ msgstr ""
 #, php-format
 msgid "By default, your server allows scripts to run for %s second."
 msgid_plural "By default, your server allows scripts to run for %s seconds."
-msgstr[0] "По замовчуванню сервер дозволяє виконувати скрипти% s секунду."
-msgstr[1] "За замовчуванням сервер дозволяє виконувати скрипти% s секунди."
-msgstr[2] "За замовчуванням сервер дозволяє виконувати скрипти% s секунд."
+msgstr[0] "По замовчуванню сервер дозволяє виконувати скрипти %s секунду."
+msgstr[1] "За замовчуванням сервер дозволяє виконувати скрипти %s секунди."
+msgstr[2] "За замовчуванням сервер дозволяє виконувати скрипти %s секунд."
 
 #. I18N: %s is an amount of memory, such as 32MB
 #: admin_site_config.php:199
@@ -13514,7 +13516,7 @@ msgstr "Медіафайл %1$s успішно перейменовано в %2$
 #: addmedia.php:346
 #, php-format
 msgid "The media file %s does not exist."
-msgstr "Медіафайл% s не існує."
+msgstr "Медіафайл %s не існує."
 
 #: mediafirewall.php:41
 msgid "The media file was not found in this family tree."
@@ -15441,7 +15443,7 @@ msgstr "Вага"
 #: app/Module/UserWelcomeModule.php:39
 #, php-format
 msgid "Welcome %s"
-msgstr "Ласкаво просимо% s"
+msgstr "Ласкаво просимо %s"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:444
