@@ -3,13 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2013-01-18 11:22+0000\n"
-"Last-Translator: Gudjon Sigurdsson <Unknown>\n"
+"PO-Revision-Date: 2015-03-14 22:03+0100\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"Language-Team: Icelandic "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/is/>\n"
 "Language: is\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.3-dev\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
 #: modules_v3/ahnentafel_report/report.xml:185
@@ -7150,7 +7153,11 @@ msgstr ""
 #. I18N: Help text for the “Names to add to common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1236
 msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list.  It can be added here manually.  If more than one surname is entered, they must be separated by a comma.  <b>Surnames are case-sensitive.</b>"
-msgstr "Ef fjöldi skipta sem ákveðið eftirnafn kemur fyrir er lægri en þröskuldurinn, þá mun hann ekki birtast í listanum. Það er hægt að bæta honum við hér handvirkt. Ef meira en eitt eftirnafn er slegið inn, þá þarf að aðgreina þau með kommu. <b>Eftirnöfn eru stafstaða næm."
+msgstr ""
+"Ef fjöldi skipta sem ákveðið eftirnafn kemur fyrir er lægri en "
+"þröskuldurinn, þá mun hann ekki birtast í listanum. Það er hægt að bæta "
+"honum við hér handvirkt. Ef meira en eitt eftirnafn er slegið inn, þá þarf "
+"að aðgreina þau með kommu. <b>Eftirnöfn eru stafstaða næm.</b>"
 
 #: help_text.php:255
 #, php-format
