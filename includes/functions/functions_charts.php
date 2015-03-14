@@ -128,7 +128,7 @@ function print_family_parents(Family $family, $sosa = 0, $label = '', $parid = '
 				print_sosa_number(trim(substr($label, 0, -3), ".") . ".");
 			}
 			echo "<td valign=\"top\">";
-			print_pedigree_person($hfam->getHusband()->getXref(), $show_full);
+			print_pedigree_person($hfam->getHusband(), $show_full);
 			echo "</td></tr></table>";
 		} elseif ($hfam && !$hfam->getHusband()) {
 			// Empty box for grandfather
