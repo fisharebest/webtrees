@@ -3,13 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2014-11-24 21:34+0200\n"
-"Last-Translator: Meliza <meliza@amitys.com>\n"
+"PO-Revision-Date: 2015-03-14 15:10+0100\n"
+"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
+"Language-Team: Finnish "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.3-dev\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
 #: modules_v3/ahnentafel_report/report.xml:185
@@ -676,7 +679,7 @@ msgstr ""
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:30
 msgid "A greeting message and useful links for a user."
-msgstr "Tervehdysviesti ja käyttäjälle hyödyllisiä linkkejä"
+msgstr "Tervehdysviesti ja käyttäjälle hyödyllisiä linkkejä."
 
 #. I18N: Description of the “Home page” module
 #: app/Module/WelcomeBlockModule.php:30
@@ -711,7 +714,7 @@ msgstr "Luettelo lähitulevaisuudessa tapahtuvista juutalaisista kuoleman vuosip
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:30
 msgid "A list of the anniversaries that occur today."
-msgstr "Tämän päivän merkkitapahtumat"
+msgstr "Tämän päivän merkkitapahtumat."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:30
@@ -750,7 +753,7 @@ msgstr "Uusi salasana on luotu ja lähetetty sähköpostitse käyttäjälle %s. 
 
 #: login.php:252
 msgid "A new password has been requested for your user name."
-msgstr "Uusi salasana on pyydetty käyttäjätunnuksellesi!"
+msgstr "Uusi salasana on pyydetty käyttäjätunnuksellesi."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: login.php:567
