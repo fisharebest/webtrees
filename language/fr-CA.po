@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-03-13 23:07+0100\n"
-"Last-Translator: Jacqueline Gazaille <gazaillegen@gmail.com>\n"
+"PO-Revision-Date: 2015-03-14 14:49+0100\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: French (Canada) "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/fr-CA/>\n"
 "Language: fr-CA\n"
@@ -12661,7 +12661,12 @@ msgstr "Plan du site"
 #. I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: app/Module/SiteMapModule.php:291
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling.  All major search engines support sitemaps.  For more information, see <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
-msgstr "Les cartes du site sont une façon pour les administrateurs de dire aux moteurs de recherche quelles pages du site sont disponibles au référencement. Tous les moteurs de recherche majeurs reconnaissent les cartes du site. Pour de plus amples informations, voir <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
+msgstr ""
+"Les cartes du site sont une façon pour les administrateurs de dire aux "
+"moteurs de recherche quelles pages du site sont disponibles au "
+"référencement. Tous les moteurs de recherche majeurs reconnaissent les "
+"cartes du site. Pour de plus amples informations, voir <a href=\""
+"http://www.sitemaps.org/fr/\">www.sitemaps.org</a>."
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:131
