@@ -4610,7 +4610,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 		<table id="gm_manage">
 			<tr>
 				<td>
-					<?php echo I18N::translate('Add  a new geographic location'); ?>
+					<?php echo I18N::translate(Add a new geographic location'); ?>
 				</td>
 				<td>
 					<form action="?" onsubmit="add_place_location(this.parent_id.options[this.parent_id.selectedIndex].value); return false;">

@@ -99,13 +99,13 @@ msgstr ""
 #. I18N: %1$s=“fifth cousin”, etc., $2$s>=4
 #: includes/functions/functions.php:2132
 #, php-format
-msgid "%1$s $2$s times removed ascending"
+msgid "%1$s %2$s times removed ascending"
 msgstr ""
 
 #. I18N: %1$s=“fifth cousin”, etc., $2$s>=4
 #: includes/functions/functions.php:2135
 #, php-format
-msgid "%1$s $2$s times removed descending"
+msgid "%1$s %2$s times removed descending"
 msgstr ""
 
 #. I18N: The placeholders are GEDCOM XREFs and tags.  e.g. “INDI I123 contains a FAMC link to F234.”
@@ -1100,7 +1100,7 @@ msgid "Add"
 msgstr ""
 
 #: app/Module/GoogleMapsModule.php:4613
-msgid "Add  a new geographic location"
+msgid "Add a new geographic location"
 msgstr ""
 
 #: app/Module/ClippingsCartModule.php:472

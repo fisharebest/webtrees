@@ -2129,10 +2129,10 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 			default:
 				if ($up > $down) {
 					/* I18N: %1$s=“fifth cousin”, etc., $2$s>=4 */
-					return I18N::translate('%1$s $2$s times removed ascending', cousin_name($cousin, $sex2), I18N::number($removed));
+					return I18N::translate('%1$s %2$s times removed ascending', cousin_name($cousin, $sex2), I18N::number($removed));
 				} else {
 					/* I18N: %1$s=“fifth cousin”, etc., $2$s>=4 */
-					return I18N::translate('%1$s $2$s times removed descending', cousin_name($cousin, $sex2), I18N::number($removed));
+					return I18N::translate('%1$s %2$s times removed descending', cousin_name($cousin, $sex2), I18N::number($removed));
 				}
 			}
 		}
