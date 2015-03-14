@@ -3,13 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2013-08-04 16:29+0000\n"
-"Last-Translator: balu <buguca@gmail.com>\n"
+"PO-Revision-Date: 2015-03-14 22:00+0100\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"Language-Team: Georgian "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/ka/>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 2.3-dev\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
 #: modules_v3/ahnentafel_report/report.xml:185
@@ -118,7 +121,7 @@ msgstr "%1$s ($2$s)"
 #: app/Controller/IndividualController.php:188 app/Date.php:332
 #, php-format
 msgid "%1$s (%2$s)"
-msgstr "%1$s ($2$s)"
+msgstr "%1$s (%2$s)"
 
 #. I18N: %1$s is a number of KB, %2$s is a (fractional) number of seconds
 #: admin_site_upgrade.php:315
@@ -583,7 +586,20 @@ msgstr "მე-9"
 #. I18N: Help text for the “Automatically create globally unique IDs” configuration setting
 #: admin_trees_config.php:776
 msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates.  The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
-msgstr "<b> GUID </ b> в данном контексте является аббревиатурой от «глобальный уникальный идентификатор». <br /> <br /> GUID, предназначены для выявления каждой персоны таким образом, что повторяется, так что центральные организации, такие как Центр Семейной Истории, или церковь Мормонов в Солт-Лейк-Сити, или даже совместных программ, работающих на своём ​​собственном сервере, могли иметь дело с тем же человеком, независимо от того, где находится GEDCOM. Цель Центра Истории Семьи является наличие центрального репозитория генеалогических данных и их предоставление через веб-сервисы. Это позволит любой программе, имеющей доступ к информации,  обновлять свои данные в ней. <br /> <br /> Если вы не намерены поделиться этим GEDCOM с кем-либо, вы не должны разрешать <b> webtrees </ b > создать эти идентификаторы GUID; однако это не навредит вам, не учитывая увеличение размера вашего файла GEDCOM."
+msgstr ""
+"<b> GUID </ b> в данном контексте является аббревиатурой от «глобальный "
+"уникальный идентификатор». <br /> <br /> GUID, предназначены для выявления "
+"каждой персоны таким образом, что повторяется, так что центральные "
+"организации, такие как Центр Семейной Истории, или церковь Мормонов в "
+"Солт-Лейк-Сити, или даже совместных программ, работающих на своём "
+"собственном сервере, могли иметь дело с тем же человеком, независимо от "
+"того, где находится GEDCOM. Цель Центра Истории Семьи является наличие "
+"центрального репозитория генеалогических данных и их предоставление через "
+"веб-сервисы. Это позволит любой программе, имеющей доступ к информации,  "
+"обновлять свои данные в ней. <br /> <br /> Если вы не намерены поделиться "
+"этим GEDCOM с кем-либо, вы не должны разрешать <b> webtrees </ b > создать "
+"эти идентификаторы GUID; однако это не навредит вам, не учитывая увеличение "
+"размера вашего файла GEDCOM."
 
 #: admin_trees_manage.php:686
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items.  You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
@@ -13316,18 +13332,18 @@ msgstr ""
 #: admin_site_upgrade.php:453 admin_trees_export.php:45
 #, php-format
 msgid "The file %s could not be created."
-msgstr "Файл %s не может быть скопирован из  %s"
+msgstr ""
 
 #: admin_media.php:62 admin_media.php:71 admin_site_clean.php:39
 #: admin_site_upgrade.php:475 admin_site_upgrade.php:496
 #, php-format
 msgid "The file %s could not be deleted."
-msgstr "Файл %s не может быть скопирован из  %s"
+msgstr ""
 
 #: admin_site_upgrade.php:395
 #, php-format
 msgid "The file %s could not be updated."
-msgstr "Файл %s не может быть скопирован из  %s"
+msgstr ""
 
 #: admin_site_upgrade.php:418
 #, php-format
