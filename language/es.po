@@ -3,13 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2013-06-07 03:40+0000\n"
-"Last-Translator: Wes Groleau <Webmaster@Lang-Learn.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2015-03-14 14:56+0100\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"Language-Team: Spanish "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/es/>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.3-dev\n"
 "X-Poedit-Language: Spanish\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -320,8 +323,8 @@ msgstr "%s está deshabilitada en este servidor. No se puede instalar webtrees h
 #, php-format
 msgid "%s message"
 msgid_plural "%s messages"
-msgstr[0] "mensaje"
-msgstr[1] "mensajes"
+msgstr[0] "%s mensaje"
+msgstr[1] "%s mensajes"
 
 #: app/I18N.php:522
 #, php-format
@@ -1865,7 +1868,9 @@ msgstr ""
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:36
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
-msgstr "Un árbol interactivo, que muestra todos los antepasados ​​y los descendientes de una persona."
+msgstr ""
+"Un árbol interactivo, que muestra todos los antepasados y los descendientes "
+"de una persona."
 
 #: setup.php:937
 msgid "An unexpected database error occurred."
@@ -3666,7 +3671,8 @@ msgstr "Haga clic en %s para elegir a la persona como cabeza de familia."
 
 #: edit_interface.php:1747
 msgid "Click a row, then drag-and-drop to re-order media"
-msgstr "Haga clic en una fila y luego arrastre y suelte para reordenar los objetos "
+msgstr ""
+"Haga clic en una fila y luego arrastre y suelte para reordenar los objetos"
 
 #: admin_trees_manage.php:690
 msgid "Click here for PhpGedView to webtrees transfer wizard"
@@ -5082,7 +5088,7 @@ msgstr "Ascendientes en linea directa"
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Direct line ancestors and their families"
-msgstr "Antepasados de línea ​​directa y sus familias"
+msgstr "Antepasados de línea directa y sus familias"
 
 #: admin_site_upgrade.php:197
 msgid "Disable these modules"
@@ -7252,7 +7258,11 @@ msgstr "Si la política de seguridad de su servidor lo permite, podrá solicitar
 #. I18N: Help text for the "Website URL" site configuration setting
 #: admin_site_config.php:289
 msgid "If your website can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL.  Requests for the other URLs will be redirected to the preferred one."
-msgstr "Si se puede accesar su sitio con dos URL o más, por ejemplo <tt>http://www.ejemplo.es/webtrees/</tt> y <tt>http://webtrees.ejemplo.es/</tt>, puede especificar la dirección preferida. Las solicitudes de las otras URL será redirigido a la preferida."
+msgstr ""
+"Si se puede accesar su sitio con dos URL o más, por ejemplo "
+"<b>http://www.ejemplo.es/webtrees/</b> y <b>http://webtrees.ejemplo.es/</b>, "
+"puede especificar la dirección preferida. Las solicitudes de las otras URL "
+"será redirigido a la preferida."
 
 #: admin_media.php:489 app/Gedcom/GedcomTag.php:1786
 msgid "Image dimensions"
@@ -10012,7 +10022,7 @@ msgstr "Omán"
 #. I18N: Name of a module
 #: app/Module/OnThisDayModule.php:25
 msgid "On this day"
-msgstr "En esta fecha …"
+msgstr "En esta fecha"
 
 #: calendar.php:142
 msgid "On this day…"
@@ -12217,7 +12227,7 @@ msgstr "Mostrar detalles de la carta por defecto"
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors?"
-msgstr "Mostrar a los niños de los antepasados​​?"
+msgstr "Mostrar a los niños de los antepasados?"
 
 #: app/Module/FamilyTreeStatisticsModule.php:274
 msgid "Show common surnames?"
@@ -13846,7 +13856,9 @@ msgstr "Esta familia ha sido borrada. Debes revisar su borrado y luego %1$s o %2
 
 #: family.php:65
 msgid "This family has been edited.  The changes need to be reviewed by a moderator."
-msgstr "Esta familia ha sido editado. Los cambios tendrán que ser aprobados ​​por un moderador."
+msgstr ""
+"Esta familia ha sido editado. Los cambios tendrán que ser aprobados por un "
+"moderador."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: family.php:56
@@ -13920,7 +13932,9 @@ msgstr "Esta persona ha sido eliminada.  Debe revisar la eliminación y entonce
 
 #: individual.php:75
 msgid "This individual has been edited.  The changes need to be reviewed by a moderator."
-msgstr "Esta persona ha sido editado.  Los cambios deben ser revisados ​​por un moderador."
+msgstr ""
+"Esta persona ha sido editado.  Los cambios deben ser revisados por un "
+"moderador."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: individual.php:66
@@ -15002,8 +15016,8 @@ msgstr "Use una «?» para coincidir con un solo carácter, use «*» para coinc
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
-msgstr[0] "Use por lo menos 1 carácter."
-msgstr[1] "Use por lo menos 4 caracteres."
+msgstr[0] "Use por lo menos %s carácter."
+msgstr[1] "Use por lo menos %s caracteres."
 
 #: modules_v3/family_group_report/report.xml:13
 #: modules_v3/individual_ext_report/report.xml:14
