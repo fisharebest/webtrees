@@ -210,14 +210,6 @@ msgstr[0] "%s prisijungęs naudotojas"
 msgstr[1] "%s prisijungę naudotojai"
 msgstr[2] "%s prisijungusių naudotojų"
 
-#: app/Module/RelativesTabModule.php:62
-#, php-format
-msgid "%s month"
-msgid_plural "%s months"
-msgstr[0] "%s mėnesis"
-msgstr[1] "%s mėnesiai"
-msgstr[2] "%s mėnesių"
-
 #: includes/functions/functions.php:555
 #, php-format
 msgctxt "FEMALE"
@@ -361,7 +353,7 @@ msgstr[1] "prieš %s minutes"
 msgstr[2] "prieš %s minutčių"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-#: app/I18N.php:463 includes/functions/functions_date.php:47
+#: app/I18N.php:463 includes/functions/functions_date.php:47 app/Module/RelativesTabModule.php:62
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
