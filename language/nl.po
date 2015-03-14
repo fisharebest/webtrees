@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-03-14 14:14+0100\n"
+"PO-Revision-Date: 2015-03-14 14:28+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
@@ -10390,7 +10390,7 @@ msgstr "Deze records permanent verwijderen?"
 
 #: app/Gedcom/GedcomCodeTemp.php:256
 msgid "Perth, Australia"
-msgstr "Perth, Australia"
+msgstr "Perth, Australië"
 
 #: app/Stats.php:6245
 msgid "Peru"
@@ -14628,7 +14628,7 @@ msgstr "Tokelau"
 
 #: app/Gedcom/GedcomCodeTemp.php:324
 msgid "Tokyo, Japan"
-msgstr "Tokyo, Japan"
+msgstr "Tokio, Japan"
 
 #: app/Gedcom/GedcomTag.php:1884
 msgid "Tombstone"
@@ -14815,7 +14815,7 @@ msgstr "Trailer"
 
 #: app/Stats.php:6298
 msgid "Transylvania"
-msgstr "Transylvania"
+msgstr "Transsylvanië"
 
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:162
@@ -14895,7 +14895,7 @@ msgstr "URL"
 
 #: app/Stats.php:6307
 msgid "US Minor Outlying Islands"
-msgstr "US Minor Outlying Islands"
+msgstr "Kleine afgelegen eilanden van de VS"
 
 #: app/Stats.php:6315
 msgid "US Virgin Islands"
@@ -15425,7 +15425,7 @@ msgstr "Voogd"
 
 #: app/Gedcom/GedcomCodeTemp.php:334
 msgid "Washington, DC"
-msgstr "Washington, DC"
+msgstr "Washington D.C."
 
 #: admin_trees_config.php:1145
 msgid "Watermarks"
