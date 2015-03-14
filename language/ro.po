@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-03-12 22:11+0100\n"
+"PO-Revision-Date: 2015-03-14 21:49+0100\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Romanian <http://translate.webtrees.net/projects/webtrees/webtrees/ro/>\n"
+"Language-Team: Romanian "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/ro/>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2;\n"
 "X-Generator: Weblate 2.3-dev\n"
 "X-Poedit-Language: Romanian\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -3373,11 +3375,12 @@ msgstr "Modificări"
 
 #. I18N: title for list of recent changes
 #: app/Module/RecentChangesModule.php:68
-#, fuzzy, php-format
+#, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "Modificări în ultima zi"
 msgstr[1] "Modificări în ultimele %s zile"
+msgstr[2] ""
 
 #: admin_trees_manage.php:484
 msgid "Changes log"
@@ -9399,7 +9402,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:106
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:553
 msgid "Navigator"
-msgstr "Navigator"
+msgstr ""
 
 #: app/Module/GoogleMapsModule.php:393 app/Module/GoogleMapsModule.php:4022
 msgid "Neighborhood"
@@ -10664,7 +10667,7 @@ msgstr "Vă rugăm introduceţi o adresă de email validă."
 #: app/Module/CensusAssistantModule.php:96 find.php:115 search.php:34
 #: search.php:46
 msgid "Please enter more than one character."
-msgstr "Vă rugăm introduceţi mai mult de un caracter"
+msgstr "Vă rugăm introduceţi mai mult de un caracter."
 
 #: message.php:104
 msgid "Please enter some message text before sending."
@@ -13408,7 +13411,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
 msgid "The file was only partially uploaded.  Please try again."
-msgstr "Fişierul a fost uploadat doar parţial, vă rugăm încercaţi din nou"
+msgstr "Fişierul a fost uploadat doar parţial, vă rugăm încercaţi din nou."
 
 #. I18N: %s is a filename
 #: medialist.php:294 mediaviewer.php:111
@@ -13519,7 +13522,7 @@ msgstr ""
 
 #: mediafirewall.php:41
 msgid "The media file was not found in this family tree."
-msgstr "Fişierul media nu a fost găsit în acest arbore de familie"
+msgstr "Fişierul media nu a fost găsit în acest arbore de familie."
 
 #: admin_media_upload.php:223
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
@@ -13657,7 +13660,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:62
 msgid "The uploaded file exceeds the allowed size."
-msgstr "Fişierul uploadat depăşeşte limita permisă"
+msgstr "Fişierul uploadat depăşeşte limita permisă."
 
 #: admin_users.php:788
 #, php-format
@@ -14122,7 +14125,7 @@ msgstr ""
 
 #: mediafirewall.php:410
 msgid "This media file is broken and cannot be watermarked."
-msgstr "Acest fişier media este corupt şi nu poate fi aplicat watermark"
+msgstr "Acest fişier media este corupt şi nu poate fi aplicat watermark."
 
 #: mediaviewer.php:73
 msgid "This media object does not exist or you do not have permission to view it."
@@ -14388,7 +14391,10 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:1781
 msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables."
-msgstr "Această opţiune va afişa  toate locurile din GEDCOM-ul selectat. Implicit, aceasta NU VA INCLUDE locuri care sunt potrivite perfect intre fişierul GEDCOM si tabelele GoogleMap"
+msgstr ""
+"Această opţiune va afişa  toate locurile din GEDCOM-ul selectat. Implicit, "
+"aceasta NU VA INCLUDE locuri care sunt potrivite perfect intre fişierul "
+"GEDCOM si tabelele GoogleMap."
 
 #: admin_trees_places.php:96
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
@@ -15623,7 +15629,7 @@ msgstr ""
 #. I18N: Name of a module.  Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #: app/Module/YahrzeitModule.php:28
 msgid "Yahrzeiten"
-msgstr "Yahrzeiten"
+msgstr ""
 
 #: app/Theme/BaseTheme.php:984 calendar.php:194
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1012
