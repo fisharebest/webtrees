@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2015-03-12 21:11+0000\n"
+"POT-Creation-Date: 2015-03-13 10:03+0000\n"
 "PO-Revision-Date: 2014-02-13 17:05+0100\n"
 "Last-Translator: Balázs Németh <jobbara.artalmatlan@gmail.com>\n"
 "Language: hu\n"
@@ -55,10 +55,6 @@ msgstr " / személy"
 #: statisticsplot.php:1356
 msgid " per time period"
 msgstr " / időszak"
-
-#: admin_trees_download.php:34
-msgid " — "
-msgstr ""
 
 #. I18N: Abbreviation for "number %s"
 #: includes/functions/functions_print_facts.php:187
@@ -194,50 +190,50 @@ msgstr "%g:%i:%s %a"
 
 #: app/Module/LoggedInUsersModule.php:51 app/Stats.php:5372
 #, php-format
-msgid "%d anonymous logged-in user"
-msgid_plural "%d anonymous logged-in users"
-msgstr[0] "%d névtelen felhasználó"
-msgstr[1] "%d névtelen felhasználó"
+msgid "%s anonymous logged-in user"
+msgid_plural "%s anonymous logged-in users"
+msgstr[0] "%s névtelen felhasználó"
+msgstr[1] "%s névtelen felhasználó"
 
 #: app/Module/LoggedInUsersModule.php:57 app/Stats.php:5382
 #, php-format
-msgid "%d logged-in user"
-msgid_plural "%d logged-in users"
-msgstr[0] "%d belépett felhasználó"
-msgstr[1] "%d belépett felhasználó"
+msgid "%s logged-in user"
+msgid_plural "%s logged-in users"
+msgstr[0] "%s belépett felhasználó"
+msgstr[1] "%s belépett felhasználó"
 
 #: app/Module/RelativesTabModule.php:62
 #, php-format
-msgid "%d month"
-msgid_plural "%d months"
-msgstr[0] "%d hónap"
-msgstr[1] "%d hónap"
+msgid "%s month"
+msgid_plural "%s months"
+msgstr[0] "%s hónap"
+msgstr[1] "%s hónap"
 
 #: app/Module/RelativesTabModule.php:60
 #, php-format
-msgid "%d year"
-msgid_plural "%d years"
-msgstr[0] "%d év"
-msgstr[1] "%d év"
+msgid "%s year"
+msgid_plural "%s years"
+msgstr[0] "%s év"
+msgstr[1] "%s év"
 
 #: includes/functions/functions.php:555
 #, php-format
 msgctxt "FEMALE"
-msgid "%d × cousin"
-msgstr "%d × unokatestvér"
+msgid "%s × cousin"
+msgstr "%s × unokatestvér"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:520
 #, php-format
 msgctxt "MALE"
-msgid "%d × cousin"
-msgstr "%d × unokatestvér"
+msgid "%s × cousin"
+msgstr "%s × unokatestvér"
 
 #: includes/functions/functions.php:590
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%d × cousin"
-msgstr "%d × unokatestvér"
+msgid "%s × cousin"
+msgstr "%s × unokatestvér"
 
 #. I18N: This is the format string for full dates.  See http://php.net/date for codes
 #: app/Date.php:222 app/I18N.php:212
@@ -433,13 +429,6 @@ msgstr[1] ""
 #, php-format
 msgid "%s will be prepended to media filenames."
 msgstr ""
-
-#: app/I18N.php:457 includes/functions/functions_date.php:42
-#, php-format
-msgid "%s year"
-msgid_plural "%s years"
-msgstr[0] ""
-msgstr[1] ""
 
 #: app/I18N.php:510
 #, php-format
@@ -776,7 +765,7 @@ msgid "A new password has been requested for your user name."
 msgstr "Az Ön felhasználónevéhez új jelszót igényeltek!"
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
-#: login.php:568
+#: login.php:567
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr "Egy új felhasználó (%1$s) egy fiókért (%2$s) folyamodott és igazolta az e-mail-címét (%3$s)."
@@ -3777,7 +3766,7 @@ msgstr "Oszlopok oldalanként"
 msgid "Comment"
 msgstr "Megjegyzés"
 
-#: login.php:323 login.php:349 login.php:490
+#: login.php:323 login.php:349 login.php:489
 msgid "Comments"
 msgstr "Megjegyzések"
 
@@ -3838,7 +3827,7 @@ msgstr "Láncolás"
 msgid "Configure"
 msgstr "Beállítás"
 
-#: admin_users.php:347 edituser.php:213 login.php:474
+#: admin_users.php:347 edituser.php:213 login.php:473
 msgid "Confirm password"
 msgstr "Jelszó még egyszer"
 
@@ -3971,7 +3960,7 @@ msgstr "Costa Rica"
 msgid "Cote d’Ivoire"
 msgstr "Elefántcsontpart"
 
-#: login.php:645
+#: login.php:633
 msgid "Could not verify the information you entered.  Please try again or contact the site administrator for more information."
 msgstr "Nem lehetett ellenőrizni a megadott információt. Kérem lépjen vissza, és próbálja meg újra."
 
@@ -4264,10 +4253,6 @@ msgstr "Adat"
 #: admin_site_config.php:172
 msgid "Data folder"
 msgstr "Adatfájlok mappája"
-
-#: login.php:639
-msgid "Data was not correct, please try again"
-msgstr "Hibás adat!<br>Kérem próbálja újra!"
 
 #: setup.php:371
 msgid "Database and table names"
@@ -4976,7 +4961,7 @@ msgstr "Leírás"
 msgid "Description META tag"
 msgstr "\"Leírás\" META tag"
 
-#: login.php:457
+#: login.php:456
 msgid "Desired password"
 msgstr "Válasszon jelszót"
 
@@ -5681,7 +5666,7 @@ msgid "Execution statistics"
 msgstr "Végrehajtási statisztikák"
 
 #. I18N: placeholder text for registration-comments field
-#: login.php:494
+#: login.php:493
 msgid "Explain why you are requesting an account."
 msgstr "Írd le, miért folyamodsz felhasználói fiókhoz."
 
@@ -6173,11 +6158,6 @@ msgstr ""
 msgid "File successfully uploaded"
 msgstr "Az állomány feltöltése sikeresen befejeződött"
 
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:65
-msgid "THe file was only partially uploaded.  Please try again."
-msgstr "Az állomány csak részben töltődött fel, kérem próbálja meg újra"
-
 #. I18N: gedcom tag FILE
 #: admin_media.php:475 app/Gedcom/GedcomTag.php:485
 msgid "Filename"
@@ -6349,7 +6329,7 @@ msgstr ""
 #. I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names
 #: admin_trees_manage.php:285
 #, php-format
-msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then the you would need to remove %3$s."
+msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
 msgstr ""
 
 #: admin_users.php:590
@@ -6946,7 +6926,7 @@ msgstr "Kedves %s …"
 msgid "Hello %s…<br>Thank you for your registration."
 msgstr "Kedves %s!<br>Köszönjük a regisztrációt"
 
-#: login.php:317 login.php:566
+#: login.php:317 login.php:565
 msgid "Hello administrator…"
 msgstr "Kedves Adminisztrátor!"
 
@@ -7213,8 +7193,8 @@ msgid "If you are the website administrator, you should check that:"
 msgstr "Ha Ön a weblap karbantartója, ellenőrizze ezeket:"
 
 #: site-unavailable.php:109
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
-msgstr "Ha nem tudja megoldani a problémát, segítséget kérhet a következő fórumon: <a href=\"http://webtrees.net\">webtrees.net</a>"
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
+msgstr ""
 
 #: admin_trees_manage.php:269
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -7264,7 +7244,7 @@ msgid "If you try to exceed these limits, you may experience server time-outs an
 msgstr "Ha ezeket a korlátokat megpróbálja túllépni, hosszabb várakozási időre és üres oldalakra számíthat."
 
 #: admin_site_config.php:507
-msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatcially."
+msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr ""
 
 #. I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting
@@ -8990,11 +8970,6 @@ msgstr "A minimális és maximális zoom érték a térképben. 1 a teljes térk
 msgid "Minimum number of occurrences to be a “common surname”"
 msgstr "Események min. száma \"közös vezetéknévhez\""
 
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:71
-msgid "THe PHP temporary folder is missing."
-msgstr "Hiányzó PHP ideiglenes mappa"
-
 #. I18N: Name of a module/report
 #: app/Module/MissingFactsReportModule.php:26
 #: modules_v3/missing_facts_report/report.xml:3
@@ -9473,7 +9448,7 @@ msgid "New registration at %s"
 msgstr "Új regisztráció a(z) %s szerveren"
 
 #. I18N: %s is a server name/URL
-#: login.php:585
+#: login.php:584
 #, php-format
 msgid "New user at %s"
 msgstr "Új ellenőrzés a(z) %s szerveren"
@@ -10318,7 +10293,7 @@ msgstr "Szülők életkora"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:381 admin_users.php:334 edituser.php:201
-#: login.php:188 login.php:254 login.php:539
+#: login.php:188 login.php:254 login.php:538
 #: modules_v3/login_block/LoginBlockModule.php:67 setup.php:437
 msgid "Password"
 msgstr "Jelszó"
@@ -10327,7 +10302,7 @@ msgstr "Jelszó"
 msgid "Passwords do not match."
 msgstr "A jelszavak nem egyeznek"
 
-#: edituser.php:207 login.php:468
+#: edituser.php:207 login.php:467
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”."
 msgstr ""
 
@@ -11812,7 +11787,7 @@ msgctxt "MALE"
 msgid "Seller"
 msgstr "Eladó"
 
-#: app/Module/UserMessagesModule.php:72 login.php:547 message.php:136
+#: app/Module/UserMessagesModule.php:72 login.php:546 message.php:136
 msgid "Send"
 msgstr "Elküld"
 
@@ -13288,12 +13263,17 @@ msgstr ""
 msgid "The PGV to webtrees wizard is an automated process to assist administrators make the move from a PGV installation to a new webtrees one.  It will transfer all PGV GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:"
 msgstr ""
 
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:71
+msgid "The PHP temporary folder is missing."
+msgstr "Hiányzó PHP ideiglenes mappa"
+
 #: admin_users.php:97
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s"
 msgstr "%s webtrees oldal karbantartója jóváhagyta a felhasználói fiókigénylését. Most már beléphet a következő linken: %s"
 
-#: login.php:630
+#: login.php:627
 msgid "The administrator has been informed.  As soon as they give you permission to login, you can login with your user name and password."
 msgstr "Az adminisztrátort értesítettük. Amint ő megadja az engedélyt a bejelentkezéshez, be tud majd jelentkezni a felhasználónevével és jelszavával."
 
@@ -13312,11 +13292,6 @@ msgstr "A „%s”-t illető módosítások elutasításra kerültek."
 #: app/Module/ClippingsCartModule.php:133
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple.  Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name.  There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
 msgstr "A Hulladékkosár lehetővé teszi kivonatok létrehozását bejegyzésekből, amelyek később letölthetőek lesznek és beimportálhatóak más családfa programokba. A letölthető fájl GEDCOM formátumú lesz."
-
-#: login.php:596
-#, php-format
-msgid "The data for the user <b>%s</b> has been checked."
-msgstr "A <b>%s</b> felhasználó adatait leellenőriztük."
 
 #: site-unavailable.php:66
 msgid "The database reported the following error message:"
@@ -13411,6 +13386,11 @@ msgstr ""
 #, php-format
 msgid "The file %s has been uploaded."
 msgstr "A  „%s” fájl sikeresen feltöltődött."
+
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:65
+msgid "The file was only partially uploaded.  Please try again."
+msgstr "Az állomány csak részben töltődött fel, kérem próbálja meg újra"
 
 #. I18N: %s is a filename
 #: medialist.php:294 mediaviewer.php:111
@@ -13654,6 +13634,11 @@ msgstr[1] ""
 #: admin_site_upgrade.php:502
 msgid "The upgrade is complete."
 msgstr ""
+
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:62
+msgid "The uploaded file exceeds the allowed size."
+msgstr "A feltölteni kívánt állomány elérte a maximális méretet"
 
 #: admin_users.php:788
 #, php-format
@@ -14313,8 +14298,8 @@ msgstr ""
 
 #: setup.php:183
 #, php-format
-msgid "This server’s memory limit is %d MB and its CPU time limit is %d seconds."
-msgstr "A szerver memóriakorlátja %dMB és a processzoridő korlát %d másodperc."
+msgid "This server’s memory limit is %s MB and its CPU time limit is %s seconds."
+msgstr "A szerver memóriakorlátja %sMB és a processzoridő korlát %s másodperc."
 
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: admin_trees_config.php:1632
@@ -14805,11 +14790,11 @@ msgid "Type of place markers in Place Hierarchy"
 msgstr "Helyjelölők a Helyhierarchia térképen"
 
 #. I18N: placeholder text for repeat-password field
-#: admin_users.php:350 login.php:479
+#: admin_users.php:350 login.php:478
 msgid "Type the password again."
 msgstr "Add be újra a jelszót."
 
-#: edituser.php:219 login.php:484 setup.php:443
+#: edituser.php:219 login.php:483 setup.php:443
 msgid "Type your password again, to make sure you have typed it correctly."
 msgstr "Írja be megint a jelszavát, ellenőrizve annak helyességét."
 
@@ -14995,11 +14980,6 @@ msgstr "Média állomány feltöltése"
 msgid "Upload one or more media files from your local computer.  Media files can be pictures, video, audio, or other formats."
 msgstr ""
 
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:62
-msgid "The uploaded file exceeds the allowed size."
-msgstr "A feltölteni kívánt állomány elérte a maximális méretet"
-
 #: app/Stats.php:6308
 msgid "Uruguay"
 msgstr "Uruguay"
@@ -15026,7 +15006,7 @@ msgid "Use a “?” to match a single character, use “*” to match zero or m
 msgstr "Használja a „?”-et egy karakter helyettesítésére, vagy a &laquo;*&raquo; karaktert több karakter helyettesítésére."
 
 #. I18N: placeholder text for new-password field
-#: admin_users.php:337 login.php:462
+#: admin_users.php:337 login.php:461
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
@@ -15078,7 +15058,7 @@ msgstr ""
 msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the individual’s page."
 msgstr ""
 
-#: login.php:500
+#: login.php:499
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site.  You can also use this to enter any other comments you may have for the site administrator."
 msgstr "Ebben a mezőben írhatja meg az adminisztrátornak, hogy miért szeretne az oldalhoz hozzáférést, és hogy milyen kapcsolatban van ezzel a családfakutató oldallal. Ide egyéb közlendőt is írhat az adminisztrátornak."
 
@@ -15110,7 +15090,7 @@ msgstr "A felhasználót nem ellenőrizte az adminisztrátor."
 msgid "User options"
 msgstr "Felhasználói opciók"
 
-#: login.php:527 login.php:533 login.php:590 login.php:594
+#: login.php:526 login.php:532 login.php:589 login.php:593
 msgid "User verification"
 msgstr "Felhasználó ellenőrzése"
 
@@ -15122,7 +15102,7 @@ msgstr "böngésző-azonosító"
 #. I18N: A site configuration setting
 #: admin_site_config.php:368 admin_users.php:321 admin_users.php:845
 #: app/Module/ResearchTaskModule.php:95 edituser.php:150 login.php:183
-#: login.php:253 login.php:320 login.php:347 login.php:535
+#: login.php:253 login.php:320 login.php:347 login.php:534
 #: modules_v3/login_block/LoginBlockModule.php:62
 msgid "Username"
 msgstr "Felhasználónév"
@@ -15133,11 +15113,6 @@ msgstr "Falhasználónév vagy e-mail cím"
 
 #: admin_users.php:326 edituser.php:156 login.php:450
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr ""
-
-#: login.php:451
-#, php-format
-msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
 msgstr ""
 
 #. I18N: Menu entry
@@ -15225,7 +15200,7 @@ msgstr "Szél hava"
 msgid "Veracruz, Mexico"
 msgstr "Veracruz, Mexikó"
 
-#: login.php:348 login.php:543
+#: login.php:348 login.php:542
 msgid "Verification code"
 msgstr "Ellenőrző kód:"
 
@@ -15672,7 +15647,7 @@ msgstr ""
 msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
 msgstr "Könnyebbé válik a keresés egy házas nő után, ha beírja a házasság utáni nevét.<br>Bár nem minden nő veszi fel a férje nevét a házasságkötéskor, tehát figyeljen, hogy nem írjon be hibás adatokat az adatbázisba."
 
-#: login.php:632
+#: login.php:629
 msgid "You can now login with your user name and password."
 msgstr "Most már be tud jelentkezni a felhasználó nevével és a kódjával."
 
@@ -15712,7 +15687,7 @@ msgstr "Nem tudsz bejelentkezni, mert a böngésződ nem engedi a HTTP-sütiket.
 msgid "You do not have permission to view this page."
 msgstr "Nincs kellő jogosultságod, hogy ezt az oldalt megjelenítsük."
 
-#: login.php:576
+#: login.php:575
 msgid "You do not have to take any action; the user can now login."
 msgstr "Nem kell mást csinálnia, a felhasználó most már be tud jelentkezni."
 
@@ -15720,7 +15695,7 @@ msgstr "Nem kell mást csinálnia, a felhasználó most már be tud jelentkezni.
 msgid "You entered the same IDs.  You cannot merge the same records."
 msgstr "Ön ugyanazt az azonosítót adta meg mindkétszer. Egy rekord nem fűzhető össze saját magával."
 
-#: login.php:628
+#: login.php:625
 msgid "You have confirmed your request to become a registered user."
 msgstr "Önt regisztrált felhasználóként azonosítottuk."
 
@@ -15793,7 +15768,7 @@ msgstr "Újra be kell jelentkezned a PhpGedView felhasználóneveddel és jelsza
 msgid "You need to set up an administrator account.  This account can control all aspects of this webtrees installation.  Please choose a strong password."
 msgstr "Be kell állítson egy rendszergazda fiókot. Ezen keresztül kezelheti ezen webtrees telepítés beállításait. Kérem erős jelszót válasszon."
 
-#: login.php:574
+#: login.php:573
 msgid "You now need to review the account details, and set the “approved” status to “yes”."
 msgstr "Ellenőrizned kell a fiók részleteit és az engedélyezési státuszt „igen”-re kell állítanod."
 
@@ -16320,7 +16295,7 @@ msgstr "kompakt lista"
 #: admin_trees_download.php:120 admin_trees_download.php:205
 #: admin_trees_manage.php:293 admin_trees_manage.php:719
 #: admin_trees_merge.php:200 admin_trees_renumber.php:280 login.php:219
-#: login.php:507 modules_v3/login_block/LoginBlockModule.php:93
+#: login.php:506 modules_v3/login_block/LoginBlockModule.php:93
 #: reportengine.php:127 reportengine.php:282 setup.php:190 setup.php:216
 #: setup.php:298 setup.php:384 setup.php:451
 msgid "continue"
@@ -16999,146 +16974,146 @@ msgstr "fiúunoka felesége"
 #: includes/functions/functions.php:1639 includes/functions/functions.php:1654
 #: includes/functions/functions.php:1667
 #, php-format
-msgid "great ×%d aunt"
-msgstr "%d. nagynéni"
+msgid "great ×%s aunt"
+msgstr "%s. nagynéni"
 
 #: includes/functions/functions.php:1641 includes/functions/functions.php:1656
 #: includes/functions/functions.php:1669
 #, php-format
-msgid "great ×%d aunt/uncle"
-msgstr "%d. nagynéni/bácsi"
+msgid "great ×%s aunt/uncle"
+msgstr "%s. nagynéni/bácsi"
 
 #: includes/functions/functions.php:2042 includes/functions/functions.php:2057
 #, php-format
-msgid "great ×%d grandchild"
-msgstr "%d. unoka"
+msgid "great ×%s grandchild"
+msgstr "%s. unoka"
 
 #: includes/functions/functions.php:2040 includes/functions/functions.php:2055
 #, php-format
-msgid "great ×%d granddaughter"
-msgstr "%d. unoka"
+msgid "great ×%s granddaughter"
+msgstr "%s. unoka"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1912 includes/functions/functions.php:1922
 #: includes/functions/functions.php:1932 includes/functions/functions.php:1942
 #: includes/functions/functions.php:1954
 #, php-format
-msgid "great ×%d grandfather"
-msgstr "%d. felmenő"
+msgid "great ×%s grandfather"
+msgstr "%s. felmenő"
 
 #: includes/functions/functions.php:1914 includes/functions/functions.php:1924
 #: includes/functions/functions.php:1934 includes/functions/functions.php:1944
 #: includes/functions/functions.php:1956
 #, php-format
-msgid "great ×%d grandmother"
-msgstr "%d. felmenő"
+msgid "great ×%s grandmother"
+msgstr "%s. felmenő"
 
 #: includes/functions/functions.php:1916 includes/functions/functions.php:1926
 #: includes/functions/functions.php:1936 includes/functions/functions.php:1946
 #: includes/functions/functions.php:1958
 #, php-format
-msgid "great ×%d grandparent"
-msgstr "%d. felmenő"
+msgid "great ×%s grandparent"
+msgstr "%s. felmenő"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:2038 includes/functions/functions.php:2053
 #, php-format
-msgid "great ×%d grandson"
-msgstr "%d. unoka"
+msgid "great ×%s grandson"
+msgstr "%s. unoka"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1823 includes/functions/functions.php:1836
 #, php-format
-msgid "great ×%d nephew"
-msgstr "testvér %d. unokája"
+msgid "great ×%s nephew"
+msgstr "testvér %s. unokája"
 
 #: includes/functions/functions.php:1797
 #, php-format
-msgctxt "(a man’s) brother’s great ×(%d-1) grandson"
-msgid "great ×%d nephew"
-msgstr "testvér %d. unokája"
+msgctxt "(a man’s) brother’s great ×(%s-1) grandson"
+msgid "great ×%s nephew"
+msgstr "testvér %s. unokája"
 
 #: includes/functions/functions.php:1799
 #, php-format
-msgctxt "(a man’s) sister’s great ×(%d-1) grandson"
-msgid "great ×%d nephew"
-msgstr "testvér %d. unokája"
+msgctxt "(a man’s) sister’s great ×(%s-1) grandson"
+msgid "great ×%s nephew"
+msgstr "testvér %s. unokája"
 
 #: includes/functions/functions.php:1801
 #, php-format
-msgctxt "(a woman’s) great ×%d nephew"
-msgid "great ×%d nephew"
-msgstr "testvér %d. unokája"
+msgctxt "(a woman’s) great ×%s nephew"
+msgid "great ×%s nephew"
+msgstr "testvér %s. unokája"
 
 #: includes/functions/functions.php:1827 includes/functions/functions.php:1840
 #, php-format
-msgid "great ×%d nephew/niece"
-msgstr "testvér %d. unokája"
+msgid "great ×%s nephew/niece"
+msgstr "testvér %s. unokája"
 
 #: includes/functions/functions.php:1813
 #, php-format
-msgctxt "(a man’s) brother’s great ×(%d-1) grandchild"
-msgid "great ×%d nephew/niece"
-msgstr "testvér %d. unokája"
+msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
+msgid "great ×%s nephew/niece"
+msgstr "testvér %s. unokája"
 
 #: includes/functions/functions.php:1815
 #, php-format
-msgctxt "(a man’s) sister’s great ×(%d-1) grandchild"
-msgid "great ×%d nephew/niece"
-msgstr "testvér %d. unokája"
+msgctxt "(a man’s) sister’s great ×(%s-1) grandchild"
+msgid "great ×%s nephew/niece"
+msgstr "testvér %s. unokája"
 
 #: includes/functions/functions.php:1817
 #, php-format
-msgctxt "(a woman’s) great ×%d nephew/niece"
-msgid "great ×%d nephew/niece"
-msgstr "testvér %d. unokája"
+msgctxt "(a woman’s) great ×%s nephew/niece"
+msgid "great ×%s nephew/niece"
+msgstr "testvér %s. unokája"
 
 #: includes/functions/functions.php:1825 includes/functions/functions.php:1838
 #, php-format
-msgid "great ×%d niece"
-msgstr "testvér %d. unokája"
+msgid "great ×%s niece"
+msgstr "testvér %s. unokája"
 
 #: includes/functions/functions.php:1805
 #, php-format
-msgctxt "(a man’s) brother’s great ×(%d-1) granddaughter"
-msgid "great ×%d niece"
-msgstr "testvér %d. unokája"
+msgctxt "(a man’s) brother’s great ×(%s-1) granddaughter"
+msgid "great ×%s niece"
+msgstr "testvér %s. unokája"
 
 #: includes/functions/functions.php:1807
 #, php-format
-msgctxt "(a man’s) sister’s great ×(%d-1) granddaughter"
-msgid "great ×%d niece"
-msgstr "testvér %d. unokája"
+msgctxt "(a man’s) sister’s great ×(%s-1) granddaughter"
+msgid "great ×%s niece"
+msgstr "testvér %s. unokája"
 
 #: includes/functions/functions.php:1809
 #, php-format
-msgctxt "(a woman’s) great ×%d niece"
-msgid "great ×%d niece"
-msgstr "testvér %d. unokája"
+msgctxt "(a woman’s) great ×%s niece"
+msgid "great ×%s niece"
+msgstr "testvér %s. unokája"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1637 includes/functions/functions.php:1665
 #, php-format
-msgid "great ×%d uncle"
-msgstr "%d. nagybácsi"
+msgid "great ×%s uncle"
+msgstr "%s. nagybácsi"
 
 #: includes/functions/functions.php:1647
 #, php-format
-msgctxt "great ×(%d-1) grandfather’s brother"
-msgid "great ×%d uncle"
-msgstr "%d. nagybácsi"
+msgctxt "great ×(%s-1) grandfather’s brother"
+msgid "great ×%s uncle"
+msgstr "%s. nagybácsi"
 
 #: includes/functions/functions.php:1649
 #, php-format
-msgctxt "great ×(%d-1) grandmother’s brother"
-msgid "great ×%d uncle"
-msgstr "%d. nagybácsi"
+msgctxt "great ×(%s-1) grandmother’s brother"
+msgid "great ×%s uncle"
+msgstr "%s. nagybácsi"
 
 #: includes/functions/functions.php:1651
 #, php-format
-msgctxt "great ×(%d-1) grandparent’s brother"
-msgid "great ×%d uncle"
-msgstr "%d. nagybácsi"
+msgctxt "great ×(%s-1) grandparent’s brother"
+msgid "great ×%s uncle"
+msgstr "%s. nagybácsi"
 
 #: includes/functions/functions.php:1579
 msgid "great ×4 aunt"
@@ -18588,10 +18563,10 @@ msgstr "maximum"
 #: app/Module/UpcomingAnniversariesModule.php:125
 #: app/Module/YahrzeitModule.php:250
 #, php-format
-msgid "maximum %d day"
-msgid_plural "maximum %d days"
-msgstr[0] "maximum %d nap"
-msgstr[1] "maximum %d nap"
+msgid "maximum %s day"
+msgid_plural "maximum %s days"
+msgstr[0] "maximum %s nap"
+msgstr[1] "maximum %s nap"
 
 #: admin_trees_config.php:404 admin_trees_config.php:428
 #: admin_trees_config.php:468 admin_trees_config.php:508
@@ -19806,10 +19781,10 @@ msgstr "húg"
 #: search_advanced.php:107 search_advanced.php:111 search_advanced.php:115
 #: search_advanced.php:166 search_advanced.php:167 search_advanced.php:168
 #, php-format
-msgid "±%d year"
-msgid_plural "±%d years"
-msgstr[0] "±%d év"
-msgstr[1] "±%d év"
+msgid "±%s year"
+msgid_plural "±%s years"
+msgstr[0] "±%s év"
+msgstr[1] "±%s év"
 
 #. I18N: Place a nickname in quotation marks
 #: app/Individual.php:1197 app/Individual.php:1215
@@ -19897,6 +19872,9 @@ msgstr "…"
 #~ msgid "Create user"
 #~ msgstr "Felhasználó létrehozása"
 
+#~ msgid "Data was not correct, please try again"
+#~ msgstr "Hibás adat!<br>Kérem próbálja újra!"
+
 #~ msgctxt "font name"
 #~ msgid "DejaVu"
 #~ msgstr "DejaVu"
@@ -19982,6 +19960,9 @@ msgstr "…"
 
 #~ msgid "Hit count"
 #~ msgstr "Számláló:"
+
+#~ msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
+#~ msgstr "Ha nem tudja megoldani a problémát, segítséget kérhet a következő fórumon: <a href=\"http://webtrees.net\">webtrees.net</a>"
 
 #~ msgid "Leave this field empty to use the name of the family tree."
 #~ msgstr "Kérjük, hagyja üresen ezt a mezőt, ha az aktuális GEDCOM-állomány címét szeretné itt használni."
@@ -20098,6 +20079,9 @@ msgstr "…"
 
 #~ msgid "The Favorites drop-down list shows the favorites that you have selected on your “My page”.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that individual.<br><br>More help about adding favorites is available in your “My page”."
 #~ msgstr "A Kedvenceim lenyíló-listája az Ön által a személyes oldalon kiválasztott Kedvenceket tünteti föl. Szintén itt láthatók az oldal adminisztrátora által az aktív GEDCOM-állományból kiválasztott személyeket.<br>Az egyik Kedvencre kattintva közvetlenül elérhető az adott Személyes adatlap.<br>Kedvencek hozzáadásáról további segítséget kaphat az Ön személyes oldalán."
+
+#~ msgid "The data for the user <b>%s</b> has been checked."
+#~ msgstr "A <b>%s</b> felhasználó adatait leellenőriztük."
 
 #~ msgid "The following facts did not match.  Select the information you would like to keep."
 #~ msgstr "A következő események nem egyeznek meg. Kérjük jelölje ki, hogy melyik információt tartsuk meg."

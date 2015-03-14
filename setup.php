@@ -180,7 +180,7 @@ if (!isset($_POST['lang'])) {
 		I18N::translate('Large systems (50,000 individuals): 64–128 MB, 40–80 seconds'),
 		'</p>',
 		($memory_limit < 32 || $max_execution_time > 0 && $max_execution_time < 20) ? '<p class="bad">' : '<p class="good">',
-		I18N::translate('This server’s memory limit is %d MB and its CPU time limit is %d seconds.', $memory_limit, $max_execution_time),
+		I18N::translate('This server’s memory limit is %s MB and its CPU time limit is %s seconds.', I18N::number($memory_limit), I18N::number($max_execution_time)),
 		'</p><p>',
 		I18N::translate('If you try to exceed these limits, you may experience server time-outs and blank pages.'),
 		'</p><p>',

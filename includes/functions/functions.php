@@ -62,13 +62,13 @@ function file_upload_error_text($error_code) {
 		return I18N::translate('The uploaded file exceeds the allowed size.');
 	case UPLOAD_ERR_PARTIAL:
 		// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-		return I18N::translate('THe file was only partially uploaded.  Please try again.');
+		return I18N::translate('The file was only partially uploaded.  Please try again.');
 	case UPLOAD_ERR_NO_FILE:
 		// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 		return I18N::translate('No file was received.  Please try again.');
 	case UPLOAD_ERR_NO_TMP_DIR:
 		// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-		return I18N::translate('THe PHP temporary folder is missing.');
+		return I18N::translate('The PHP temporary folder is missing.');
 	case UPLOAD_ERR_CANT_WRITE:
 		// I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 		return I18N::translate('PHP failed to write to disk.');
@@ -517,7 +517,7 @@ function cousin_name($n, $sex) {
 			return I18N::translateContext('MALE', 'fifteenth cousin');
 		default:
 			/* I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers. */
-			return I18N::translateContext('MALE', '%d × cousin', $n);
+			return I18N::translateContext('MALE', '%s × cousin', I18N::number($n));
 		}
 	case 'F':
 		switch ($n) {
@@ -552,7 +552,7 @@ function cousin_name($n, $sex) {
 		case 15:
 			return I18N::translateContext('FEMALE', 'fifteenth cousin');
 		default:
-			return I18N::translateContext('FEMALE', '%d × cousin', $n);
+			return I18N::translateContext('FEMALE', '%s × cousin', I18N::number($n));
 		}
 	default:
 		switch ($n) {
@@ -587,7 +587,7 @@ function cousin_name($n, $sex) {
 		case 15:
 			return I18N::translateContext('MALE/FEMALE', 'fifteenth cousin');
 		default:
-			return I18N::translateContext('MALE/FEMALE', '%d × cousin', $n);
+			return I18N::translateContext('MALE/FEMALE', '%s × cousin', I18N::number($n));
 		}
 	}
 }
@@ -1634,26 +1634,26 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 			case 'da':
 				switch ($sex2) {
 				case 'M':
-					return I18N::translate('great ×%d uncle', $up - 4);
+					return I18N::translate('great ×%s uncle', I18N::number($up - 4));
 				case 'F':
-					return I18N::translate('great ×%d aunt', $up - 4);
+					return I18N::translate('great ×%s aunt', I18N::number($up - 4));
 				default:
-					return I18N::translate('great ×%d aunt/uncle', $up - 4);
+					return I18N::translate('great ×%s aunt/uncle', I18N::number($up - 4));
 				}
 			case 'pl':
 				switch ($sex2) {
 				case 'M':
 					if ($bef_last === 'fat') {
-						return I18N::translateContext('great ×(%d-1) grandfather’s brother', 'great ×%d uncle', $up - 2);
+						return I18N::translateContext('great ×(%s-1) grandfather’s brother', 'great ×%s uncle', I18N::number($up - 2));
 					} elseif ($bef_last === 'mot') {
-						return I18N::translateContext('great ×(%d-1) grandmother’s brother', 'great ×%d uncle', $up - 2);
+						return I18N::translateContext('great ×(%s-1) grandmother’s brother', 'great ×%s uncle', I18N::number($up - 2));
 					} else {
-						return I18N::translateContext('great ×(%d-1) grandparent’s brother', 'great ×%d uncle', $up - 2);
+						return I18N::translateContext('great ×(%s-1) grandparent’s brother', 'great ×%s uncle', I18N::number($up - 2));
 					}
 				case 'F':
-					return I18N::translate('great ×%d aunt', $up - 2);
+					return I18N::translate('great ×%s aunt', I18N::number($up - 2));
 				default:
-					return I18N::translate('great ×%d aunt/uncle', $up - 2);
+					return I18N::translate('great ×%s aunt/uncle', I18N::number($up - 2));
 				}
 			case 'it': // Source: Michele Locati
 			case 'en_AU':
@@ -1661,12 +1661,12 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 			case 'en_US':
 			default:
 				switch ($sex2) {
-				case 'M': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
-					return I18N::translate('great ×%d uncle', $up - 1);
+				case 'M': // I18N: if you need a different number for %s, contact the developers, as a code-change is required
+					return I18N::translate('great ×%s uncle', I18N::number($up - 1));
 				case 'F':
-					return I18N::translate('great ×%d aunt', $up - 1);
+					return I18N::translate('great ×%s aunt', I18N::number($up - 1));
 				default:
-					return I18N::translate('great ×%d aunt/uncle', $up - 1);
+					return I18N::translate('great ×%s aunt/uncle', I18N::number($up - 1));
 				}
 			}
 		}
@@ -1794,37 +1794,37 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 				switch ($sex2) {
 				case 'M':
 					if ($first === 'bro' && $sex1 === 'M') {
-						return I18N::translateContext('(a man’s) brother’s great ×(%d-1) grandson', 'great ×%d nephew', $down - 3);
+						return I18N::translateContext('(a man’s) brother’s great ×(%s-1) grandson', 'great ×%s nephew', I18N::number($down - 3));
 					} elseif ($first === 'sis' && $sex1 === 'M') {
-						return I18N::translateContext('(a man’s) sister’s great ×(%d-1) grandson', 'great ×%d nephew', $down - 3);
+						return I18N::translateContext('(a man’s) sister’s great ×(%s-1) grandson', 'great ×%s nephew', I18N::number($down - 3));
 					} else {
-						return I18N::translateContext('(a woman’s) great ×%d nephew', 'great ×%d nephew', $down - 3);
+						return I18N::translateContext('(a woman’s) great ×%s nephew', 'great ×%s nephew', I18N::number($down - 3));
 					}
 				case 'F':
 					if ($first === 'bro' && $sex1 === 'M') {
-						return I18N::translateContext('(a man’s) brother’s great ×(%d-1) granddaughter', 'great ×%d niece', $down - 3);
+						return I18N::translateContext('(a man’s) brother’s great ×(%s-1) granddaughter', 'great ×%s niece', I18N::number($down - 3));
 					} elseif ($first === 'sis' && $sex1 === 'M') {
-						return I18N::translateContext('(a man’s) sister’s great ×(%d-1) granddaughter', 'great ×%d niece', $down - 3);
+						return I18N::translateContext('(a man’s) sister’s great ×(%s-1) granddaughter', 'great ×%s niece', I18N::number($down - 3));
 					} else {
-						return I18N::translateContext('(a woman’s) great ×%d niece', 'great ×%d niece', $down - 3);
+						return I18N::translateContext('(a woman’s) great ×%s niece', 'great ×%s niece', I18N::number($down - 3));
 					}
 				default:
 					if ($first === 'bro' && $sex1 === 'M') {
-						return I18N::translateContext('(a man’s) brother’s great ×(%d-1) grandchild', 'great ×%d nephew/niece', $down - 3);
+						return I18N::translateContext('(a man’s) brother’s great ×(%s-1) grandchild', 'great ×% nephew/niece', I18N::number($down - 3));
 					} elseif ($first === 'sis' && $sex1 === 'M') {
-						return I18N::translateContext('(a man’s) sister’s great ×(%d-1) grandchild', 'great ×%d nephew/niece', $down - 3);
+						return I18N::translateContext('(a man’s) sister’s great ×(%s-1) grandchild', 'great ×%s nephew/niece', I18N::number($down - 3));
 					} else {
-						return I18N::translateContext('(a woman’s) great ×%d nephew/niece', 'great ×%d nephew/niece', $down - 3);
+						return I18N::translateContext('(a woman’s) great ×%s nephew/niece', 'great ×%s nephew/niece', I18N::number($down - 3));
 					}
 				}
 			case 'he': // Source: Meliza Amity
 				switch ($sex2) {
 				case 'M':
-					return I18N::translate('great ×%d nephew', $down - 1);
+					return I18N::translate('great ×%s nephew', I18N::number($down - 1));
 				case 'F':
-					return I18N::translate('great ×%d niece', $down - 1);
+					return I18N::translate('great ×%s niece', I18N::number($down - 1));
 				default:
-					return I18N::translate('great ×%d nephew/niece', $down - 1);
+					return I18N::translate('great ×%s nephew/niece', I18N::number($down - 1));
 				}
 			case 'it': // Source: Michele Locati.
 			case 'en_AU':
@@ -1832,12 +1832,12 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 			case 'en_US':
 			default:
 				switch ($sex2) {
-				case 'M': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
-					return I18N::translate('great ×%d nephew', $down - 2);
+				case 'M': // I18N: if you need a different number for %s, contact the developers, as a code-change is required
+					return I18N::translate('great ×%s nephew', I18N::number($down - 2));
 				case 'F':
-					return I18N::translate('great ×%d niece', $down - 2);
+					return I18N::translate('great ×%s niece', I18N::number($down - 2));
 				default:
-					return I18N::translate('great ×%d nephew/niece', $down - 2);
+					return I18N::translate('great ×%s nephew/niece', I18N::number($down - 2));
 				}
 			}
 		}
@@ -1909,53 +1909,53 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 			case 'da': // Source: Patrick Sorensen
 				switch ($sex2) {
 				case 'M':
-					return I18N::translate('great ×%d grandfather', $up - 3);
+					return I18N::translate('great ×%s grandfather', I18N::number($up - 3));
 				case 'F':
-					return I18N::translate('great ×%d grandmother', $up - 3);
+					return I18N::translate('great ×%s grandmother', I18N::number($up - 3));
 				default:
-					return I18N::translate('great ×%d grandparent', $up - 3);
+					return I18N::translate('great ×%s grandparent', I18N::number($up - 3));
 				}
 			case 'it': // Source: Michele Locati
 			case 'es': // Source: Wes Groleau
 				switch ($sex2) {
 				case 'M':
-					return I18N::translate('great ×%d grandfather', $up);
+					return I18N::translate('great ×%s grandfather', I18N::number($up));
 				case 'F':
-					return I18N::translate('great ×%d grandmother', $up);
+					return I18N::translate('great ×%s grandmother', I18N::number($up));
 				default:
-					return I18N::translate('great ×%d grandparent', $up);
+					return I18N::translate('great ×%s grandparent', I18N::number($up));
 				}
 			case 'fr': // Source: Jacqueline Tetreault
 			case 'fr_CA':
 				switch ($sex2) {
 				case 'M':
-					return I18N::translate('great ×%d grandfather', $up - 1);
+					return I18N::translate('great ×%s grandfather', I18N::number($up - 1));
 				case 'F':
-					return I18N::translate('great ×%d grandmother', $up - 1);
+					return I18N::translate('great ×%s grandmother', I18N::number($up - 1));
 				default:
-					return I18N::translate('great ×%d grandparent', $up - 1);
+					return I18N::translate('great ×%s grandparent', I18N::number($up - 1));
 				}
 			case 'nn': // Source: Hogne Røed Nilsen (https://bugs.launchpad.net/webtrees/+bug/1168553)
 			case 'nb':
 				switch ($sex2) {
-				case 'M': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
-					return I18N::translate('great ×%d grandfather', $up - 3);
+				case 'M': // I18N: if you need a different number for %s, contact the developers, as a code-change is required
+					return I18N::translate('great ×%s grandfather', I18N::number($up - 3));
 				case 'F':
-					return I18N::translate('great ×%d grandmother', $up - 3);
+					return I18N::translate('great ×%s grandmother', I18N::number($up - 3));
 				default:
-					return I18N::translate('great ×%d grandparent', $up - 3);
+					return I18N::translate('great ×%s grandparent', I18N::number($up - 3));
 				}
 			case 'en_AU':
 			case 'en_GB':
 			case 'en_US':
 			default:
 				switch ($sex2) {
-				case 'M': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
-					return I18N::translate('great ×%d grandfather', $up - 2);
+				case 'M': // I18N: if you need a different number for %s, contact the developers, as a code-change is required
+					return I18N::translate('great ×%s grandfather', I18N::number($up - 2));
 				case 'F':
-					return I18N::translate('great ×%d grandmother', $up - 2);
+					return I18N::translate('great ×%s grandmother', I18N::number($up - 2));
 				default:
-					return I18N::translate('great ×%d grandparent', $up - 2);
+					return I18N::translate('great ×%s grandparent', I18N::number($up - 2));
 				}
 			}
 		}
@@ -2035,11 +2035,11 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 			case 'da': // Source: Patrick Sorensen
 				switch ($sex2) {
 				case 'M':
-					return I18N::translate('great ×%d grandson', $up - 3);
+					return I18N::translate('great ×%s grandson', I18N::number($up - 3));
 				case 'F':
-					return I18N::translate('great ×%d granddaughter', $up - 3);
+					return I18N::translate('great ×%s granddaughter', I18N::number($up - 3));
 				default:
-					return I18N::translate('great ×%d grandchild', $up - 3);
+					return I18N::translate('great ×%s grandchild', I18N::number($up - 3));
 				}
 			case 'it': // Source: Michele Locati
 			case 'es': // Source: Wes Groleau (adding doesn’t change behavior, but needs to be better researched)
@@ -2049,12 +2049,12 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 			default:
 				switch ($sex2) {
 
-				case 'M': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
-					return I18N::translate('great ×%d grandson', $up - 2);
+				case 'M': // I18N: if you need a different number for %s, contact the developers, as a code-change is required
+					return I18N::translate('great ×%s grandson', I18N::number($up - 2));
 				case 'F':
-					return I18N::translate('great ×%d granddaughter', $up - 2);
+					return I18N::translate('great ×%s granddaughter', I18N::number($up - 2));
 				default:
-					return I18N::translate('great ×%d grandchild', $up - 2);
+					return I18N::translate('great ×%s grandchild', I18N::number(up - 2));
 				}
 			}
 		}

@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-12 21:11+0000\n"
-"PO-Revision-Date: 2015-03-12 22:16+0100\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2015-03-13 21:26+0100\n"
+"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
 "Language: he\n"
@@ -57,10 +57,6 @@ msgstr " למגדר"
 #: statisticsplot.php:1356
 msgid " per time period"
 msgstr " בתקופת זמן"
-
-#: admin_trees_download.php:34
-msgid " — "
-msgstr ""
 
 #. I18N: Abbreviation for "number %s"
 #: includes/functions/functions_print_facts.php:187
@@ -196,50 +192,43 @@ msgstr "%G:%i:%s"
 
 #: app/Module/LoggedInUsersModule.php:51 app/Stats.php:5372
 #, php-format
-msgid "%d anonymous logged-in user"
-msgid_plural "%d anonymous logged-in users"
-msgstr[0] "משתמש אלמוני %d מחובר"
-msgstr[1] "%d משתמשים אלמוניים מחוברים"
+msgid "%s anonymous logged-in user"
+msgid_plural "%s anonymous logged-in users"
+msgstr[0] "משתמש אלמוני %s מחובר"
+msgstr[1] "%s משתמשים אלמוניים מחוברים"
 
 #: app/Module/LoggedInUsersModule.php:57 app/Stats.php:5382
 #, php-format
-msgid "%d logged-in user"
-msgid_plural "%d logged-in users"
-msgstr[0] "משתמש מחובר %d"
-msgstr[1] "%d משתמשים מחוברים"
+msgid "%s logged-in user"
+msgid_plural "%s logged-in users"
+msgstr[0] "משתמש מחובר %s"
+msgstr[1] "%s משתמשים מחוברים"
 
 #: app/Module/RelativesTabModule.php:62
 #, php-format
-msgid "%d month"
-msgid_plural "%d months"
+msgid "%s month"
+msgid_plural "%s months"
 msgstr[0] "חודש אחד"
-msgstr[1] "%d חודשים"
-
-#: app/Module/RelativesTabModule.php:60
-#, php-format
-msgid "%d year"
-msgid_plural "%d years"
-msgstr[0] "שנה אחת"
-msgstr[1] "%d שנים"
+msgstr[1] "%s חודשים"
 
 #: includes/functions/functions.php:555
 #, php-format
 msgctxt "FEMALE"
-msgid "%d × cousin"
-msgstr "דודנית מדרגה %d"
+msgid "%s × cousin"
+msgstr "דודנית מדרגה %s"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:520
 #, php-format
 msgctxt "MALE"
-msgid "%d × cousin"
-msgstr "דודן מדרגה %d"
+msgid "%s × cousin"
+msgstr "דודן מדרגה %s"
 
 #: includes/functions/functions.php:590
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%d × cousin"
-msgstr "דודן/דודנית מדרגה %d"
+msgid "%s × cousin"
+msgstr "דודן/דודנית מדרגה %s"
 
 #. I18N: This is the format string for full dates.  See http://php.net/date for codes
 #: app/Date.php:222 app/I18N.php:212
@@ -285,15 +274,15 @@ msgstr[1] "לפני %s ימים"
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "משפחה %s עודכנה."
+msgstr[1] "%s משפחות עודכנו."
 
 #: admin.php:761
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "עץ משפחה %s"
+msgstr[1] "%s עצי משפחה"
 
 #: app/Stats.php:4748 app/Stats.php:4752
 #, php-format
@@ -327,8 +316,8 @@ msgstr[1] "%s אנשים פרטיים."
 #, php-format
 msgid "%s individuals has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "אדם %s עודכן."
+msgstr[1] "%s אנשים עודכנו."
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:122
@@ -369,8 +358,8 @@ msgstr[1] "לפני %s חודשים"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "הערה %s עודכנה."
+msgstr[1] "%s הערות עודכנו."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: includes/functions/functions.php:2108
@@ -395,8 +384,8 @@ msgstr[1] "לפני %s שניות"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "מקור %s עודכן."
+msgstr[1] "%s מקורות עודכנו."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2124
@@ -434,7 +423,7 @@ msgstr[1] "%s שבועות"
 #: admin_trees_download.php:164
 #, php-format
 msgid "%s will be prepended to media filenames."
-msgstr ""
+msgstr "%s יתווסף בתחילת שמות של קובצי מדיה."
 
 #: app/I18N.php:457 includes/functions/functions_date.php:42
 #, php-format
@@ -692,11 +681,11 @@ msgstr "תאור של סיבה לאירוע או עובדה של שותפות, �
 
 #: admin_trees_download.php:116 admin_trees_manage.php:209
 msgid "A file on the server"
-msgstr ""
+msgstr "קובץ על השרת"
 
 #: admin_trees_download.php:201 admin_trees_manage.php:198
 msgid "A file on your computer"
-msgstr ""
+msgstr "קובץ על המחשב שלך"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:30
@@ -716,7 +705,7 @@ msgstr "רשימת שינויים עבורם נדרש אישור מפקח, וה�
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:30
 msgid "A list of frequently asked questions and answers."
-msgstr "רשימת שאלות ותשובות נפוצות"
+msgstr "רשימת שאלות ותשובות נפוצות."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:33
@@ -778,7 +767,7 @@ msgid "A new password has been requested for your user name."
 msgstr "קיבלנו בקשה לסיסמה חדשה עבור קוד המשתמש שלך."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
-#: login.php:568
+#: login.php:567
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr "משתמש חדש (%1$s) ביקש חשבון (%2$s) ואימת את כתובת הדוא״ל (%3$s)."
@@ -911,12 +900,12 @@ msgstr "סרגל צדדי המציג רשימה אלפביתית של כל הא�
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:35
 msgid "A sidebar showing an individual’s close families and relatives."
-msgstr "סרגל צד"
+msgstr "סרגל צדדי המראה משפחות קרובות וקרובי משפחה של אדם."
 
 #. I18N: Description of the “Extra information” module
 #: app/Module/ExtraInformationModule.php:31
 msgid "A sidebar showing non-genealogy information about an individual."
-msgstr "סרגל צדדי המציג נתונים שהם אינם של חקר שושלת יוחסין עבור אדם"
+msgstr "סרגל צדדי המציג נתונים שהם אינם של חקר שושלת יוחסין עבור אדם."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyModule.php:34
@@ -931,7 +920,7 @@ msgstr "לשונית המציגה קרובי משפחה של אדם."
 #. I18N: Description of the “Facts and events” module
 #: app/Module/IndividualFactsTabModule.php:30
 msgid "A tab showing the facts and events of an individual."
-msgstr "לשונית המראה עובדות ואירועים של אדם"
+msgstr "לשונית המראה עובדות ואירועים של אדם."
 
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:32
@@ -1342,7 +1331,7 @@ msgstr "הוסף רשומות הורים לרשומת המשפחה הזו."
 
 #: admin_trees_manage.php:266
 msgid "Add spaces where long lines were wrapped"
-msgstr ""
+msgstr "הוסף רווח במקום ששורות ארוכות התגלגלו"
 
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: admin_trees_download.php:161 app/Module/ClippingsCartModule.php:212
@@ -2046,7 +2035,7 @@ msgstr "האם באמת למחוק את כניסת היומן הזו?"
 
 #: app/Module/UserMessagesModule.php:63 app/Module/UserMessagesModule.php:105
 msgid "Are you sure you want to delete this message?  It cannot be retrieved later."
-msgstr ".האם באמת למחוק הודעה זו? לא ניתן להחזיר אותה לאחר המחיקה"
+msgstr "האם באמת למחוק הודעה זו? לא ניתן להחזיר אותה לאחר המחיקה."
 
 #: app/Module/FamilyTreeNewsModule.php:103
 msgid "Are you sure you want to delete this news article?"
@@ -2075,7 +2064,7 @@ msgstr "האם באמת למחוק קישור זה לישות מדיה?"
 
 #: app/Module/FamilyTreeFavoritesModule.php:118
 msgid "Are you sure you want to remove this item from your list of favorites?"
-msgstr "?האם באמת למחוק אדם זה מרשימת המועדפים שלך"
+msgstr "האם באמת למחוק אדם זה מרשימת המועדפים שלך?"
 
 #: edit_changes.php:229
 msgid "Are you sure you want to undo all the changes to this family tree?"
@@ -2810,7 +2799,7 @@ msgstr "כחול ים"
 
 #: message.php:135
 msgid "Body"
-msgstr "גוף:"
+msgstr "גוף"
 
 #: app/Gedcom/GedcomCodeTemp.php:102
 msgid "Bogota, Colombia"
@@ -3138,7 +3127,7 @@ msgstr "קונה"
 #. I18N: Help text for the "Port number" site configuration setting
 #: admin_site_config.php:347
 msgid "By default, SMTP works on port 25."
-msgstr "בדרך כלל SMTP משתמש בפורט‏ 25"
+msgstr "כברירת מחדל, SMTP משתמש בפורט‏ 25."
 
 #: app/Module/GoogleMapsModule.php:4555
 msgid "By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used."
@@ -3241,7 +3230,7 @@ msgstr "קטלוניה"
 
 #: statistics.php:604
 msgid "Categories"
-msgstr "סוגים:"
+msgstr "סוגים"
 
 #. I18N: gedcom tag CAUS
 #: app/Gedcom/GedcomTag.php:243
@@ -3531,7 +3520,7 @@ msgstr "בחר את התמונה הממוזערת שברצונך להעלות. �
 
 #: admin_site_config.php:122
 msgid "Choose user defined welcome text typed below"
-msgstr "בחר מלל ברוכים הבאים שיוקלד למטה."
+msgstr "בחר מלל ברוכים הבאים שהוקלד למטה"
 
 #: addmedia.php:511 admin_media_upload.php:238
 msgid "Choose: "
@@ -3686,7 +3675,7 @@ msgstr "הקש על %s כדי לבחור אדם כראש משפחה."
 
 #: edit_interface.php:1747
 msgid "Click a row, then drag-and-drop to re-order media"
-msgstr "הקלק על שורה, אח״כ ”גרור ושחרר” כדי לשנות את סדר המדיה "
+msgstr "הקלק על שורה, אח״כ ”גרור ושחרר” כדי לשנות את סדר המדיה"
 
 #: admin_trees_manage.php:690
 msgid "Click here for PhpGedView to webtrees transfer wizard"
@@ -3706,7 +3695,7 @@ msgstr "הקש על שם כדי להוסיף אדם לרשימת הוסף קיש
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:295
 msgid "Click on a title to go straight to it, or scroll down to read them all."
-msgstr "לחץ על כותרת כדי ללכת ישר אליה, או גלול מטה כדי לקרוא את כולן"
+msgstr "לחץ על כותרת כדי ללכת ישר אליה, או גלול מטה כדי לקרוא את כולן."
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:69
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:80
@@ -3779,7 +3768,7 @@ msgstr "עמודות לדף"
 msgid "Comment"
 msgstr "הערה"
 
-#: login.php:323 login.php:349 login.php:490
+#: login.php:323 login.php:349 login.php:489
 msgid "Comments"
 msgstr "הערות"
 
@@ -3821,7 +3810,7 @@ msgstr "הושלם; תאריך לא ידוע"
 
 #: admin_trees_download.php:142
 msgid "Compress the GEDCOM file"
-msgstr ""
+msgstr "דחס את קובץ ה-GEDCOM"
 
 #. I18N: gedcom tag CONC
 #: app/Gedcom/GedcomTag.php:303
@@ -3840,7 +3829,7 @@ msgstr "שרשור"
 msgid "Configure"
 msgstr "עצב"
 
-#: admin_users.php:347 edituser.php:213 login.php:474
+#: admin_users.php:347 edituser.php:213 login.php:473
 msgid "Confirm password"
 msgstr "אישור סיסמה"
 
@@ -3917,7 +3906,7 @@ msgstr "לוח בקרה"
 #: admin_trees_download.php:151 app/Module/ClippingsCartModule.php:209
 #: app/Module/ClippingsCartModule.php:600
 msgid "Convert from UTF-8 to ISO-8859-1"
-msgstr "הסב מ-UTF-8 ל-ISO-8859-1?"
+msgstr "הסב מ-UTF-8 ל-ISO-8859-1"
 
 #: app/Stats.php:6115
 msgid "Cook Islands"
@@ -3973,7 +3962,7 @@ msgstr "קוסטה ריקה"
 msgid "Cote d’Ivoire"
 msgstr "חוף השנהב"
 
-#: login.php:645
+#: login.php:633
 msgid "Could not verify the information you entered.  Please try again or contact the site administrator for more information."
 msgstr "לא ניתן לאמת את המידע שהכנסת. נסה שנית או התקשר עם מנהל האתר למידע נוסף."
 
@@ -4051,7 +4040,7 @@ msgstr "צור תרשים אישי"
 
 #: admin_trees_manage.php:712
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
-msgstr ""
+msgstr "צור, עדכן ומחק עץ משפחה עבור כל קובץ GEDCOM שקיים בתיקית הנתונים."
 
 #. I18N: gedcom tag CREM
 #: app/Gedcom/GedcomTag.php:331 modules_v3/family_group_report/report.xml:309
@@ -4267,10 +4256,6 @@ msgstr "נתונים"
 msgid "Data folder"
 msgstr "תיקיית נתונים"
 
-#: login.php:639
-msgid "Data was not correct, please try again"
-msgstr "הנתונים אינם נכונים, נסה שנית"
-
 #: setup.php:371
 msgid "Database and table names"
 msgstr "מאגר מידע וטבלאות"
@@ -4454,7 +4439,7 @@ msgstr "תאריך הרשמה"
 
 #: app/Module/UserMessagesModule.php:79
 msgid "Date sent"
-msgstr "תאריך שליחה:"
+msgstr "תאריך שליחה"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:747
@@ -4887,7 +4872,7 @@ msgstr "מחק"
 
 #: app/Module/GoogleMapsModule.php:4312
 msgid "Delete all existing geographic data before importing the file."
-msgstr "מחק את כל הנתונים הגיאוגרפיים הקיימים לפני ייבוא​​ הקובץ."
+msgstr "מחק את כל הנתונים הגיאוגרפיים הקיימים לפני ייבוא הקובץ."
 
 #. I18N: Menu entry
 #: admin_users.php:666 app/Theme/AdministrationTheme.php:129
@@ -4978,7 +4963,7 @@ msgstr "תאור"
 msgid "Description META tag"
 msgstr "תג מטה של תאור"
 
-#: login.php:457
+#: login.php:456
 msgid "Desired password"
 msgstr "סיסמה רצויה"
 
@@ -5142,7 +5127,7 @@ msgstr "הצג קואורדינטות של המפה"
 
 #: app/Module/GoogleMapsModule.php:487
 msgid "Display short placenames"
-msgstr "הצג שמות מקוצרים של מקומות?"
+msgstr "הצג שמות מקוצרים של מקומות"
 
 #. I18N: gedcom tag DIV
 #: app/Gedcom/GedcomTag.php:375
@@ -5373,7 +5358,7 @@ msgstr "ערוך סיפור"
 
 #: app/Tree.php:562
 msgid "Edit this individual and replace their details with your own."
-msgstr "ערוך את האדם הזה והחלף פרטים שלהם עם שלך"
+msgstr "ערוך את האדם הזה והחלף פרטים שלהם עם שלך."
 
 #: admin_users.php:268
 msgid "Edit user"
@@ -5683,7 +5668,7 @@ msgid "Execution statistics"
 msgstr "הצג סטטיסטיקות של העיבוד"
 
 #. I18N: placeholder text for registration-comments field
-#: login.php:494
+#: login.php:493
 msgid "Explain why you are requesting an account."
 msgstr "הסבר מדוע אתה מבקש חשבון."
 
@@ -5694,7 +5679,7 @@ msgstr "ייצא"
 
 #: admin_trees_download.php:34
 msgid "Export a GEDCOM file"
-msgstr ""
+msgstr "ייבא קובץ GEDCOM"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:279
@@ -5703,7 +5688,7 @@ msgstr "ייצא את כל עצי המשפחה לקבצי GEDCOM…"
 
 #: admin_trees_download.php:135
 msgid "Export options"
-msgstr ""
+msgstr "אפשרויות יצוא"
 
 #. I18N: A configuration setting.  ... [who were] born in the last XX years or died in the last YY years
 #: admin_trees_config.php:483
@@ -5750,7 +5735,10 @@ msgstr "היכן רואים את השאלה והתשובה"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:371
 msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors.  Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
-msgstr "שאלות ותשובות הן רשימות של שאלות ותשובות, אשר מאפשרות לך להסביר את הכללים , מדיניות, ונהלים של האתר למבקרים שלך. השאלות נוגעות בדרך כלל לפרטיות, זכויות יוצרים, חשבונות המשתמשים, תוכן בלתי מתאים, דרישה למקורות, וכו׳"
+msgstr ""
+"שאלות ותשובות הן רשימות של שאלות ותשובות, אשר מאפשרות לך להסביר את הכללים , "
+"מדיניות, ונהלים של האתר למבקרים שלך. השאלות נוגעות בדרך כלל לפרטיות, זכויות "
+"יוצרים, חשבונות המשתמשים, תוכן בלתי מתאים, דרישה למקורות, וכו׳."
 
 #. I18N: gedcom tag FACT
 #: app/Gedcom/GedcomTag.php:437
@@ -6175,11 +6163,6 @@ msgstr "גודל הקובץ"
 msgid "File successfully uploaded"
 msgstr "הקובץ הועלה בהצלחה"
 
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:65
-msgid "THe file was only partially uploaded.  Please try again."
-msgstr "הקובץ עלה חלקית, נסה שנית."
-
 #. I18N: gedcom tag FILE
 #: admin_media.php:475 app/Gedcom/GedcomTag.php:485
 msgid "Filename"
@@ -6249,7 +6232,7 @@ msgstr "מצא סימן מיוחד"
 
 #: relationship.php:96
 msgid "Find all possible relationships"
-msgstr ""
+msgstr "מצא את כל היחסים האפשריים"
 
 #: app/Module/CensusAssistantModule.php:63 find.php:55
 #: includes/functions/functions_print.php:730
@@ -6260,7 +6243,7 @@ msgstr "מצא אדם"
 
 #: relationship.php:91
 msgid "Find the closest relationships"
-msgstr ""
+msgstr "מצא את היחסים הקרובים ביותר"
 
 #: app/Stats.php:6141
 msgid "Finland"
@@ -6278,7 +6261,7 @@ msgstr "אירוע ראשון"
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:331
 msgid "First record"
-msgstr ""
+msgstr "רשומה ראשונה"
 
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:29
 msgid "Fix name slashes and spaces"
@@ -6351,8 +6334,10 @@ msgstr "עבור חוק המורמונים (LDS ordinances), השדה רושם �
 #. I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names
 #: admin_trees_manage.php:285
 #, php-format
-msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then the you would need to remove %3$s."
+msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
 msgstr ""
+"למשל, אם קובץ GEDCOM מכיל %1$s ו-webtrees מצפה למצוא %2$s בתיקיית מדיה, אז "
+"עלך למחוק את %3$s."
 
 #: admin_users.php:590
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
@@ -6373,7 +6358,9 @@ msgstr "לעזרה טכנית או שאלות בקשר לחקר שושלת יו�
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:262
 msgid "For websites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
-msgstr "לאתרים עם יותר מעץ משפחה אחד, תציג אפשרות זו רשימה של עצי משפחה בתפריט הראשי, בדפי החיפוש, וכו׳"
+msgstr ""
+"לאתרים עם יותר מעץ משפחה אחד, תציג אפשרות זו רשימה של עצי משפחה בתפריט "
+"הראשי, בדפי החיפוש, וכו׳."
 
 #. I18N: gedcom tag FORM
 #: app/Gedcom/GedcomTag.php:493 help_text.php:162 help_text.php:174
@@ -6948,7 +6935,7 @@ msgstr "שלום <span dir=\"ltr\">%s</span> …"
 msgid "Hello %s…<br>Thank you for your registration."
 msgstr "שלום <span dir=\"ltr\">%s</span> …<br>תודה שנרשמת."
 
-#: login.php:317 login.php:566
+#: login.php:317 login.php:565
 msgid "Hello administrator…"
 msgstr "שלום מנהל המערכת …"
 
@@ -7159,7 +7146,9 @@ msgstr "אם מבקר באתר לא ציין שפה מועדפת בתצורת ה
 
 #: admin_users.php:387
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
-msgstr "אם מנהל מערכת יוצר חשבון משתמש, דוא״ל של האימות לא נשלח, ואת הדוא״ל יש לוודא באופן ידני"
+msgstr ""
+"אם מנהל מערכת יוצר חשבון משתמש, דוא״ל של האימות לא נשלח, ואת הדוא״ל יש לוודא "
+"באופן ידני."
 
 #: help_text.php:259
 #, php-format
@@ -7215,12 +7204,16 @@ msgid "If you are the website administrator, you should check that:"
 msgstr "אם אתה מנהלן האתר, אתה צריך לבדוק ש:"
 
 #: site-unavailable.php:109
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
-msgstr "אם לא תוכל לפתור את הבעיה בעצמך, תוכל לבקש עזרה בפורומים ב-<a href=\"http://webtrees.net\">webtrees.net</a>"
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
+msgstr ""
+"אם אתה לא יכול לפתור את הבעיה בעצמך, אתה יכול לבקש עזרה בפורומים ב-<a href=\""
+"http://webtrees.net\">webtrees.net</a>"
 
 #: admin_trees_manage.php:269
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
 msgstr ""
+"אם יצרת את קובץ ה-GEDCOM הזה באמצעות תוכנת גנאלוגה שמשמיטה רווחים בזמן חלוקת "
+"שורות ארוכות, בחר באפשרות זו כדי להכניס את הרווחים החסרים."
 
 #: login.php:350
 msgid "If you didn’t request an account, you can just delete this message."
@@ -7266,8 +7259,10 @@ msgid "If you try to exceed these limits, you may experience server time-outs an
 msgstr "אם תנסה לחרוג מגבולות אלו, ייתכן שתתקל בפסק הזמן של השרת ובדפים ריקים."
 
 #: admin_site_config.php:507
-msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatcially."
+msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr ""
+"אם אתה משתמש באחד משירותי המעקב והניתוח הבאים, webtrees יכול להוסיף קודי "
+"המעקב באופן אוטומטי."
 
 #. I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1256
@@ -7302,7 +7297,7 @@ msgstr "ייבא"
 
 #: admin_trees_manage.php:162
 msgid "Import a GEDCOM file"
-msgstr ""
+msgstr "ייבא קובץ GEDCOM"
 
 #: app/Module/GoogleMapsModule.php:4624
 msgid "Import all places from a family tree"
@@ -7310,7 +7305,7 @@ msgstr "ייבא את כל המקומות מעץ משפחה"
 
 #: admin_trees_manage.php:254
 msgid "Import options"
-msgstr ""
+msgstr "אפשרויות יבוא"
 
 #: admin_trees_merge.php:84 admin_trees_renumber.php:264
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
@@ -7782,7 +7777,7 @@ msgstr "שמור קישור ברשימה"
 #. I18N: A configuration setting
 #: admin_trees_manage.php:259
 msgid "Keep media objects"
-msgstr ""
+msgstr "שמור ישויות מדיה"
 
 #: app/Stats.php:6186
 msgid "Kenya"
@@ -7925,7 +7920,7 @@ msgstr "שפה"
 #. I18N: Menu entry
 #: admin_site_config.php:144 app/Theme/AdministrationTheme.php:71
 msgid "Languages"
-msgstr ""
+msgstr "שפות"
 
 #: app/Stats.php:6193
 msgid "Laos"
@@ -8066,12 +8061,12 @@ msgstr "לימה, פרו"
 
 #: app/Module/FamilyTreeNewsModule.php:163
 msgid "Limit"
-msgstr "גבול:"
+msgstr "גבול"
 
 #. I18N: Limit display by [age/number]
 #: app/Module/FamilyTreeNewsModule.php:154
 msgid "Limit display by"
-msgstr "הגבל את התצוגה לפי:"
+msgstr "הגבל את התצוגה לפי"
 
 #: app/Module/RelativesTabModule.php:344 edit_interface.php:990
 #: edit_interface.php:1049
@@ -8746,7 +8741,7 @@ msgstr "קידומת קוד זיהוי של מדיה"
 #. I18N: Label for search field
 #: find.php:191
 msgid "Media contains"
-msgstr "מדיה מכילה:"
+msgstr "מדיה מכילה"
 
 #: admin_media.php:702 admin_media_upload.php:198
 msgid "Media file"
@@ -8991,11 +8986,6 @@ msgstr "מינימום ומקסימום ההגדלה במפה של גוגל. 1 �
 #: admin_trees_config.php:1203
 msgid "Minimum number of occurrences to be a “common surname”"
 msgstr "הכמות המינימאלית של מקרים כדי להיכלל ב-”שמות המשפחה השכיחים”"
-
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:71
-msgid "THe PHP temporary folder is missing."
-msgstr "חסרה תיקייה זמנית של PHP"
 
 #. I18N: Name of a module/report
 #: app/Module/MissingFactsReportModule.php:26
@@ -9332,7 +9322,7 @@ msgstr "שם"
 #. I18N: Label for search field
 #: find.php:155 find.php:172
 msgid "Name contains"
-msgstr "השם מכיל:"
+msgstr "השם מכיל"
 
 #: app/Gedcom/GedcomTag.php:607
 msgid "Name in Hebrew"
@@ -9475,7 +9465,7 @@ msgid "New registration at %s"
 msgstr "רישום חדש ב-%s"
 
 #. I18N: %s is a server name/URL
-#: login.php:585
+#: login.php:584
 #, php-format
 msgid "New user at %s"
 msgstr "משתמש חדש ב-%s"
@@ -9576,11 +9566,11 @@ msgstr "לא"
 
 #: admin_trees_manage.php:88 admin_trees_manage.php:109
 msgid "No GEDCOM file was received."
-msgstr ""
+msgstr "שום קובץ GEDCOM לא התקבל."
 
 #: admin_trees_manage.php:240
 msgid "No GEDCOM files found."
-msgstr ""
+msgstr "שום קבצי GEDCOM לא התקבלו."
 
 #: app/Module/GoogleMapsModule.php:911
 msgid "No ancestors in the database."
@@ -9756,7 +9746,9 @@ msgstr "אי נורפוק"
 
 #: admin_users.php:426
 msgid "Normally, any changes made to a family tree need to be approved by a moderator.  This option allows a user to make changes without needing a moderator’s approval."
-msgstr "בדרך כלל, כל שינוי שנעשה לעץ המשפחה צריך להיות מאושר על ידי מפקח. אפשרות זו מאפשרת למשתמש לבצע שינויים ללא צורך באישור מפקח"
+msgstr ""
+"בדרך כלל, כל שינוי שנעשה לעץ המשפחה צריך להיות מאושר על ידי מפקח. אפשרות זו "
+"מאפשרת למשתמש לבצע שינויים ללא צורך באישור מפקח."
 
 #: app/Stats.php:6251
 msgid "North Korea"
@@ -9901,7 +9893,7 @@ msgstr "מספר המשפחות ללא ילדים"
 #: app/Module/ClippingsCartModule.php:524
 #: app/Module/ClippingsCartModule.php:527
 msgid "Number of generations"
-msgstr "מספר דורות:"
+msgstr "מספר דורות"
 
 #: app/Module/FamilyTreeNewsModule.php:159
 msgid "Number of items"
@@ -10185,7 +10177,7 @@ msgstr "PGV חייבת להיות גירסה 4.2.3, או SVN עד ל-#%s"
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:77
 msgid "PHP blocked the file because of its extension."
-msgstr "PHP חסם קובץ לפי סיומת"
+msgstr "PHP חסם את הקובץ בגלל הסיומת."
 
 #: setup.php:140
 #, php-format
@@ -10200,7 +10192,7 @@ msgstr "סיומת  PHP ”%s” אינה פעילה. אינך יכול להתק
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:74
 msgid "PHP failed to write to disk."
-msgstr "PHP נכשל בכתיבה לדיסק"
+msgstr "PHP נכשל בכתיבה לדיסק."
 
 #: admin_site_info.php:71
 msgid "PHP information"
@@ -10258,7 +10250,7 @@ msgstr "גודל הדף"
 #. I18N: The number of [...]
 #: app/Module/ExtraInformationModule.php:67 index.php:144
 msgid "Page views"
-msgstr ""
+msgstr "צוגות דף"
 
 #: app/Gedcom/GedcomTag.php:1888
 msgid "Painting"
@@ -10320,7 +10312,7 @@ msgstr "גיל ההורה"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:381 admin_users.php:334 edituser.php:201
-#: login.php:188 login.php:254 login.php:539
+#: login.php:188 login.php:254 login.php:538
 #: modules_v3/login_block/LoginBlockModule.php:67 setup.php:437
 msgid "Password"
 msgstr "סיסמה"
@@ -10329,7 +10321,7 @@ msgstr "סיסמה"
 msgid "Passwords do not match."
 msgstr "הסיסמאות אינן תואמות."
 
-#: edituser.php:207 login.php:468
+#: edituser.php:207 login.php:467
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”."
 msgstr "הסיסמאות צריכות להיות לפחות באורך 6 תוים ובאותיות לועזיות. אותיות גדולות וקטנות הן לא אותו דבר, כך ש-”secret” שונה מ-”SECRET”."
 
@@ -10447,7 +10439,7 @@ msgstr "יתכן ש-PhpGedView הותקן באחת התיקיות הבאות:"
 
 #: admin_pgv_to_wt.php:94
 msgid "PhpGedView must use the same database as webtrees."
-msgstr "PhpGedView חייבת להשתמש בשרת מאגר מידע הזהה ל-webtrees"
+msgstr "PhpGedView חייבת להשתמש בשרת מאגר מידע הזהה לזה של webtrees."
 
 #: admin_pgv_to_wt.php:44 admin_trees_manage.php:662
 msgid "PhpGedView to webtrees transfer wizard"
@@ -10487,7 +10479,7 @@ msgstr "בדיקת מקום"
 #. I18N: Label for search field
 #: find.php:211
 msgid "Place contains"
-msgstr "מקום מכיל:"
+msgstr "מקום מכיל"
 
 #: app/Module/TopPageViewsModule.php:136
 msgid "Place counts before or after name?"
@@ -10663,7 +10655,7 @@ msgstr "הכנס בבקשה שם פרטי, שם משפחה או מקום בנו�
 
 #: message.php:99
 msgid "Please enter a message subject."
-msgstr "הכנס נושא להודעתך"
+msgstr "אנא הכנס נושא להודעתך."
 
 #: message.php:58
 msgid "Please enter a valid email address."
@@ -10672,7 +10664,7 @@ msgstr "אנא הקלד כתובת דוא״ל חוקית."
 #: app/Module/CensusAssistantModule.php:96 find.php:115 search.php:34
 #: search.php:46
 msgid "Please enter more than one character."
-msgstr "נא הכנס יותר מתו אחד"
+msgstr "נא הכנס יותר מתו אחד."
 
 #: message.php:104
 msgid "Please enter some message text before sending."
@@ -11289,7 +11281,7 @@ msgstr "הסר קישור מרשימה"
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: admin_trees_manage.php:272
 msgid "Remove the GEDCOM media path from filenames"
-msgstr ""
+msgstr "הסר את נתיב המדיה של ה-GEDCOM משמות קבצים"
 
 #: app/Module/GoogleMapsModule.php:4521
 msgid "Remove this location?"
@@ -11312,7 +11304,7 @@ msgstr "מספר מחדש עץ משפחה"
 #. I18N: button label
 #: search.php:217
 msgid "Replace"
-msgstr ""
+msgstr "החלף"
 
 #: admin_trees_places.php:103 search.php:162
 msgid "Replace with"
@@ -11360,7 +11352,7 @@ msgstr "קידומת קוד זיהוי של מאגר"
 #. I18N: Label for search field
 #: find.php:230
 msgid "Repository contains"
-msgstr "מאגר מכיל:"
+msgstr "המאגר מכיל"
 
 #: edit_interface.php:1563 includes/functions/functions_print_lists.php:1315
 msgid "Repository name"
@@ -11414,7 +11406,7 @@ msgstr "שחזר את מבנה ברירת המחדל של הבלוקים"
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:376
 msgid "Restrict access to the website, using IP addresses and user-agent strings."
-msgstr "הגבל את הגישה לאתר באמצעות כתובות IP ומחרוזות סוכן משתמש"
+msgstr "הגבל את הגישה לאתר באמצעות כתובות IP ומחרוזות סוכן משתמש."
 
 #: admin_users.php:569
 msgid "Restrict to immediate family"
@@ -11715,7 +11707,7 @@ msgstr "סיאטל, וושינגטון"
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:348
 msgid "Second record"
-msgstr ""
+msgstr "רשומה שנייה"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:394
@@ -11725,7 +11717,7 @@ msgstr "חיבור מאובטח"
 #. I18N: A site configuration setting
 #: admin_site_config.php:608
 msgid "Security code"
-msgstr ""
+msgstr "קוד אבטחה"
 
 #. I18N: %s is a URL
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:128
@@ -11735,12 +11727,12 @@ msgstr "לקבלת מידע נוסף ראה %s."
 
 #: admin_site_merge.php:203 admin_site_merge.php:245 admin_site_merge.php:286
 msgid "Select"
-msgstr ""
+msgstr "בחר"
 
 #. I18N: A configuration setting
 #: admin_trees_manage.php:192
 msgid "Select a GEDCOM file to import"
-msgstr ""
+msgstr "בחר קובץ GEDCOM ליבוא"
 
 #: includes/functions/functions_edit.php:368 reportengine.php:261
 msgid "Select a date"
@@ -11756,7 +11748,7 @@ msgstr "בחר שם קשר מהרשימה. אם בוחרים <b>סנדק</b>, ה
 
 #: statistics.php:499
 msgid "Select chart type"
-msgstr "בחר סוג תרשים:"
+msgstr "בחר סוג תרשים"
 
 #: edit_interface.php:1252
 msgid "Select events"
@@ -11781,11 +11773,11 @@ msgstr "בחר את מרווח המנייה הרצוי"
 
 #: admin_site_merge.php:189
 msgid "Select the facts and events to keep from both records."
-msgstr ""
+msgstr "בחר את העובדות והאירועים שיש לשמור משתי הרשומות."
 
 #: admin_site_config.php:622
 msgid "Select the languages that will be shown in menus."
-msgstr ""
+msgstr "בחר את השפות שתוצגנה בתפריטים."
 
 #: app/Module/FamilyTreeStatisticsModule.php:281
 msgid "Select the stats to show in this block"
@@ -11798,7 +11790,7 @@ msgstr "בחר בברירה הזו כדי לכלול קבצי מדיה הקשו�
 #. I18N: Records are indviduals, sources, etc.
 #: admin_site_merge.php:326
 msgid "Select two records to merge."
-msgstr ""
+msgstr "בחר שתי רשומות למזוג."
 
 #: app/Gedcom/GedcomCodeRela.php:222
 msgid "Seller"
@@ -11814,7 +11806,7 @@ msgctxt "MALE"
 msgid "Seller"
 msgstr "מוכר"
 
-#: app/Module/UserMessagesModule.php:72 login.php:547 message.php:136
+#: app/Module/UserMessagesModule.php:72 login.php:546 message.php:136
 msgid "Send"
 msgstr "שלח"
 
@@ -11994,11 +11986,7 @@ msgstr "קבע את זה כ<b>כן</b> כדי להציג סמלים ליד שמ�
 #. I18N: Help text for the “Use RIN number instead of GEDCOM ID” configuration setting
 #: admin_trees_config.php:763
 msgid "Set to <b>Yes</b> to use the RIN number instead of the GEDCOM ID when asked for individual IDs in configuration files, user settings, and charts.  This is useful for genealogy programs that do not consistently export GEDCOMs with the same ID assigned to each individual but always use the same RIN."
-msgstr ""
-"הגדר כ<b>כן</b> כדי להשתמש במספר RIN במקום מספר מזהה של GEDCOM כשמבקשים מספר "
-"מזהה של אדם עבור קבצי תצורה, הגדרות משתמש ותרשימים. זה שימושי עבור תוכניות "
-"חקר שושלת יוחסין שלא מיוצאות באופן עקבי עם אותו מספר מזהה של GEDCOM לכל אדם, "
-"אבל תמיד משתמשות באותו RIN."
+msgstr "הגדר כ<b>כן</b> כדי להשתמש במספר RIN במקום מספר מזהה של GEDCOM כשמבקשים מספר מזהה של אדם עבור קבצי תצורה, הגדרות משתמש ותרשימים. זה שימושי עבור תוכניות חקר שושלת יוחסין שלא מיוצאות באופן עקבי עם אותו מספר מזהה של GEDCOM לכל אדם, אבל תמיד משתמשות באותו RIN."
 
 #. I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting
 #: admin_trees_config.php:1603
@@ -12061,7 +12049,7 @@ msgstr "הערה משותפת"
 #. I18N: Label for search field
 #: find.php:250
 msgid "Shared note contains"
-msgstr "ההערה המשותפת מכילה:"
+msgstr "ההערה המשותפת מכילה"
 
 #: app/Theme/BaseTheme.php:1415
 #: includes/functions/functions_print_lists.php:1068 notelist.php:30
@@ -12332,7 +12320,7 @@ msgstr "הצג מוני פגיעה בדפי פורטל ובדפים האישיי
 
 #: compact.php:57
 msgid "Show images"
-msgstr ""
+msgstr "הראה תמונות"
 
 #: app/Module/GoogleMapsModule.php:4549
 msgid "Show inactive places"
@@ -12422,7 +12410,7 @@ msgstr "הראה רק זכרים."
 
 #: find.php:464
 msgid "Show only the selected tags"
-msgstr "הצג רק תגים נבחרים:"
+msgstr "הצג רק תגים נבחרים"
 
 #: includes/functions/functions_print_lists.php:279
 #: includes/functions/functions_print_lists.php:740
@@ -12475,7 +12463,7 @@ msgstr "הראה סטטיסטיקת של ריצה ושאילתות של מסדי
 
 #: app/Module/SlideShowModule.php:387
 msgid "Show slide show controls?"
-msgstr "הצג בקרת מצגת שקופיות."
+msgstr "הצג בקרת מצגת שקופיות?"
 
 #: modules_v3/ahnentafel_report/report.xml:8
 #: modules_v3/descendancy_report/report.xml:7
@@ -12626,7 +12614,7 @@ msgstr "אחות"
 #: admin_site_config.php:557 admin_site_config.php:573
 #: admin_site_config.php:598
 msgid "Site identification code"
-msgstr ""
+msgstr "קוד זיהוי אתר"
 
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: admin_users.php:459 edituser.php:271
@@ -12636,12 +12624,12 @@ msgstr "חברי אתר יכולים לשלוח אחד לשני הודעות. ב
 #. I18N: A site configuration setting
 #: admin_site_config.php:515 admin_site_config.php:536
 msgid "Site verification code"
-msgstr ""
+msgstr "קוד אימות אתר"
 
 #. I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting
 #: admin_site_config.php:526 admin_site_config.php:547
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
-msgstr ""
+msgstr "קודי אימות של אתר אינם עובדים כאשר webtrees מותקן בתיקיית משנה."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:30
@@ -12739,6 +12727,9 @@ msgstr "סומליה"
 #: admin_trees_manage.php:284
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow webtrees to find the file, the first part of the path must be removed."
 msgstr ""
+"חלק מתוכנות הגנאלוגיה יוצרות קבצי GEDCOM המכילים קבצי מדיה עם נתיבים מלאים. "
+"נתיבים אלה לא יהיו קיימים בשרת האינטרנט. כדי לאפשר ל-webtrees למצוא את "
+"הקובץ, יש להסיר את החלק הראשון של השביל."
 
 #: app/Module/GoogleMapsModule.php:429
 msgid "Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”."
@@ -12774,7 +12765,7 @@ msgstr "סדר המיון"
 #: app/Controller/BranchesController.php:243
 #: includes/functions/functions_print_lists.php:251
 msgid "Sosa"
-msgstr "Sosa"
+msgstr "סוסה (Sosa)"
 
 #: search_advanced.php:157 search_advanced.php:219 search_advanced.php:234
 #: search_advanced.php:256 search_advanced.php:271
@@ -12820,7 +12811,7 @@ msgstr "ציטוטים של מקור יכולים לכלול שדות אשר מ�
 #. I18N: Label for search field
 #: find.php:269
 msgid "Source contains"
-msgstr "מקור מכיל:"
+msgstr "מקור מכיל"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:2265 modules_v3/fact_sources/report.xml:6
@@ -13024,7 +13015,7 @@ msgstr "תת חלוקה"
 
 #: app/Module/UserMessagesModule.php:78 message.php:127
 msgid "Subject"
-msgstr "נושא:"
+msgstr "נושא"
 
 #. I18N: gedcom tag SUBN
 #: app/Gedcom/GedcomTag.php:811
@@ -13115,7 +13106,7 @@ msgstr "איי סבאלברד ויאן מאיין"
 #. I18N: Reverse the order of two individuals
 #: relationship.php:86
 msgid "Swap individuals"
-msgstr ""
+msgstr "החלף אנשים"
 
 #: app/Stats.php:6286
 msgid "Swaziland"
@@ -13135,7 +13126,7 @@ msgstr "סידני, אוסטרליה"
 
 #: admin_trees_manage.php:705
 msgid "Synchronize family trees with GEDCOM files"
-msgstr ""
+msgstr "לסנכרן עצי משפחה עם קבצי GEDCOM"
 
 #: app/Stats.php:6288
 msgid "Syrian Arab Republic"
@@ -13293,12 +13284,17 @@ msgstr "מציג מדיה יכול להראות קישור, שלחיצה עלי�
 msgid "The PGV to webtrees wizard is an automated process to assist administrators make the move from a PGV installation to a new webtrees one.  It will transfer all PGV GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:"
 msgstr "אשף PGV ל-webtrees הוא תהליך אוטומטי שמסייע למנהלי מערכת לבצע את המעבר מהתקנת PGV אל התקנת webtrees חדשה. הוא יעביר את כל המידע של GEDCOM PGV ומסדי נתונים אחרים ישירות למסד הנתונים החדש שלך של webtrees. הדרישות הבאות נחוצות:"
 
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:71
+msgid "The PHP temporary folder is missing."
+msgstr "חסרה תיקייה זמנית של PHP."
+
 #: admin_users.php:97
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s"
 msgstr "מנהל באתר webtrees %s אישר את בקשתך לחשבון משתמש. כעת אתה יכול להתחבר באמצעות הקישור הבא: %s"
 
-#: login.php:630
+#: login.php:627
 msgid "The administrator has been informed.  As soon as they give you permission to login, you can login with your user name and password."
 msgstr "הודעה נשלחה למנהל המערכת. תוכל להתחבר עם קוד המשתמש והסיסמה שלך לאחר שמנהל המערכת ייתן את אישורו."
 
@@ -13317,11 +13313,6 @@ msgstr "השינויים ל-”%s” נדחו."
 #: app/Module/ClippingsCartModule.php:133
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple.  Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name.  There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
 msgstr "עגלת גזירי העץ מאפשרת לקיחת קטעים (”גזירות”) מעץ משפחה זה וקשירתם ביחד בקובץ אחד להורדה ולאחר מכן לייבא לתוכנת חקר שושלת יוחסין שלך. הקובץ שיורד הוא במבנה GEDCOM.<br><ul><li>איך גוזרים?<br>הפעולה קלה. בכל מקום שתראה שם שניתן ללחוץ עליו (אדם, משפחה או מקור) תוכל לעבור לדף מפורט של השם הזה. משם תיראה אפשרות  <b>הוסף לעגלת גזירים</b>. לחיצה על קישור זה תעביר אותך לדף עם מספר אפשרויות הורדה.</li><li>איך מורידים?<br>אחרי שיש לך פריטים בעגלה, תוכל להוריד אותם ע״י לחיצה על הקישור <b>הורד עכשיו</b>. יש לעקוב אחר ההנחיות והקישורים.</li></ul>"
-
-#: login.php:596
-#, php-format
-msgid "The data for the user <b>%s</b> has been checked."
-msgstr "הנתונים על המשתמש <b>%s</b> נבדקו."
 
 #: site-unavailable.php:66
 msgid "The database reported the following error message:"
@@ -13417,6 +13408,11 @@ msgstr "הקובץ %s נמחק."
 msgid "The file %s has been uploaded."
 msgstr "הקובץ %s הועלה."
 
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:65
+msgid "The file was only partially uploaded.  Please try again."
+msgstr "הקובץ עלה חלקית, נסה שנית."
+
 #. I18N: %s is a filename
 #: medialist.php:294 mediaviewer.php:111
 #, php-format
@@ -13441,7 +13437,7 @@ msgstr "תיקייה %s אינה קיימת, ולא ניתן ליצור אותה
 #: admin_trees_config.php:325
 #, php-format
 msgid "The folder %s has been created."
-msgstr "תיקייה %s נוצרה"
+msgstr "תיקייה %s נוצרה."
 
 #: admin_site_clean.php:31 admin_site_upgrade.php:488
 #, php-format
@@ -13454,13 +13450,13 @@ msgstr "ניתן להגדיר את התיקייה במלואה (למשל /home/u
 
 #: admin_site_merge.php:194
 msgid "The following facts and events were found in both records."
-msgstr ""
+msgstr "העובדות והאירועים הבאים נמצאו בשתי הרשומות."
 
 #. I18N: the name of an individual, source, etc.
 #: admin_site_merge.php:236 admin_site_merge.php:277
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr ""
+msgstr "העובדות והאירועים הבאים נמצאו ברשומה של %s."
 
 #: setup.php:174
 msgid "The following list shows typical requirements."
@@ -13507,7 +13503,7 @@ msgstr "הקישור מ-”%1$s” ל-”%2$s” נמחק."
 #: admin_site_merge.php:106
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr ""
+msgstr "הקישור מ-“%1$s” ל-“%2$s” עודכן."
 
 #: addmedia.php:313 addmedia.php:341
 #, php-format
@@ -13526,7 +13522,7 @@ msgstr "קובץ המדיה <span dir=\"ltr\">%s</span> אינו קיים."
 
 #: mediafirewall.php:41
 msgid "The media file was not found in this family tree."
-msgstr "קובץ המדיה לא נימצא בעץ המשפחה הזה"
+msgstr "קובץ המדיה לא נימצא בעץ המשפחה הזה."
 
 #: admin_media_upload.php:223
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
@@ -13561,7 +13557,7 @@ msgstr "הארגון, מוסד, חברה, אדם או ישות אחרת בעלת
 
 #: setup.php:417
 msgid "The password needs to be at least six characters long."
-msgstr "אורך הסיסמה לפחות 6 תווים"
+msgstr "אורך הסיסמה לפחות 6 תווים."
 
 #. I18N: Help text for the "Password" site configuration setting
 #: admin_site_config.php:386
@@ -13570,12 +13566,12 @@ msgstr "הסיסמה הנדרשת לאימות עם שרת SMTP."
 
 #: setup.php:419
 msgid "The passwords do not match."
-msgstr "הסיסמאות אינן מתאימות"
+msgstr "הסיסמאות אינן מתאימות."
 
 #: admin_trees_config.php:219 admin_trees_config.php:341
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr ""
+msgstr "ההעדפות של עץ המשפחה “%s“ עודכנו."
 
 #: admin_modules.php:71
 #, php-format
@@ -13585,7 +13581,7 @@ msgstr "ההעדפות למודול %s נמחקו."
 #: app/Module/GoogleMapsModule.php:265
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr ""
+msgstr "ההעדפות של מודול “%s“ עודכנו."
 
 #: setup.php:381
 msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database.  “wt_” is suggested, but can be anything you want."
@@ -13598,13 +13594,13 @@ msgstr "הרשומה%1$s  שונתה ל-%2$s."
 
 #: action.php:86
 msgid "The record has been copied to the clipboard."
-msgstr "הרשומה הועתקה ללוח הגזירים"
+msgstr "הרשומה הועתקה ללוח הגזירים."
 
 #. I18N: Records are individuals, sources, etc.
 #: admin_site_merge.php:162
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr ""
+msgstr "רשומות “%1$s” ו-“%2$s” מוזגו."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:112
 msgid "The regex appears to contain an error.  It can’t be used."
@@ -13621,7 +13617,7 @@ msgstr "הגעת למגבלת הזמן של השרת."
 #. I18N: Description of “Statistics” module
 #: app/Module/FamilyTreeStatisticsModule.php:30
 msgid "The size of the family tree, earliest and latest events, common names, etc."
-msgstr "גודל עץ המשפחה, אירועים מוקדמים ומאוחרים, שמות שכיחים, וכו׳"
+msgstr "גודל עץ המשפחה, אירועים מוקדמים ומאוחרים, שמות שכיחים, וכו׳."
 
 #: help_text.php:253
 #, php-format
@@ -13631,7 +13627,7 @@ msgstr "שם המשפחה מוקף בלוכסנים: <%s>יוחנן פאולוס
 #: addmedia.php:356
 #, php-format
 msgid "The thumbnail file %1$s could not be renamed to %2$s."
-msgstr "לא ניתן לשנות השם של קובץ המזערי %1$s ל-%2$s"
+msgstr "לא ניתן לשנות השם של קובץ המזערי %1$s ל-%2$s."
 
 #: addmedia.php:354
 #, php-format
@@ -13641,12 +13637,14 @@ msgstr "השם של קובץ המזערי %1$s שונה בהצלחה ל-%2$s."
 #: addmedia.php:361
 #, php-format
 msgid "The thumbnail file %s does not exist."
-msgstr "תמונה ממוזערת <span dir=\"ltr\">%s</span> אינה קיימת"
+msgstr "תמונה ממוזערת <span dir=\"ltr\">%s</span> אינה קיימת."
 
 #. I18N: Help text for the “Session timeout” site configuration setting
 #: admin_site_config.php:275
 msgid "The time in seconds that a webtrees session remains active before requiring a login.  The default is 7200, which is 2 hours."
-msgstr "הזמן בשניות שמושב webtrees נשאר פעיל לפני שנדרש להתחבר שנית. ברירת המחדל היא 7200, שהם 2 שעות."
+msgstr ""
+"הזמן בשניות שמושב webtrees נשאר פעיל לפני שנדרש להתחבר שנית.  ברירת המחדל "
+"היא 7200, שהם 2 שעות."
 
 #. I18N: An XREF is the identification number used in GEDCOM files.
 #: admin_trees_merge.php:88
@@ -13659,6 +13657,11 @@ msgstr[1] "בשני עצי המשפחה יש %1$s  רשומות המשתמשות
 #: admin_site_upgrade.php:502
 msgid "The upgrade is complete."
 msgstr "השדרוג הושלם."
+
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:62
+msgid "The uploaded file exceeds the allowed size."
+msgstr "קובץ ההעלאה גדול מהמותר."
 
 #: admin_users.php:788
 #, php-format
@@ -13686,12 +13689,12 @@ msgstr "הערך בתג ”מטה של התיאור” בכותרת הדף ה-HT
 #: admin_pgv_to_wt.php:107
 #, php-format
 msgid "The version of %s is too new."
-msgstr "הגירסה של %s היא חדשה מידי"
+msgstr "הגירסה של %s חדשה מידי."
 
 #: admin_pgv_to_wt.php:104
 #, php-format
 msgid "The version of %s is too old."
-msgstr "הגירסה של %s היא ישנה מידי"
+msgstr "הגירסה של %s ישנה מידי."
 
 #: admin_site_access.php:85
 msgid "The website access rule has been created."
@@ -13708,7 +13711,7 @@ msgstr "חוק גישה לאתר עודכן."
 #: admin_site_config.php:44 admin_site_config.php:63 admin_site_config.php:76
 #: admin_site_config.php:91 admin_site_config.php:100
 msgid "The website preferences have been updated."
-msgstr ""
+msgstr "העדפות האתר עודכנו."
 
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: admin_trees_config.php:2291
@@ -13745,6 +13748,9 @@ msgstr "עיצובים"
 #: admin_site_config.php:236
 msgid "Themes can be selected at three levels: user, family tree, and website.  User settings take priority over family tree settings, which in turn take priority over the website setting.  Selecting “default theme” at one level will use the theme at the next level."
 msgstr ""
+"ניתן לבחור עיצובים בשלוש רמות: משתמש, עץ משפחה ואתר אינטרנט. הגדרות משתמש "
+"מקבלות עדיפות על פני הגדרות עץ משפחה, אשר מקבלות עדיפה על פני הגדרת האתר. "
+"בחירת \"עיצוב ברירת מחדל\" ברמה אחת תשתמש כעיצוב ברמה הבאה."
 
 #: app/Module/ExtraInformationModule.php:58
 #: app/Module/IndividualFactsTabModule.php:115
@@ -14023,42 +14029,72 @@ msgstr "זו הגירסה העדכנית ביותר של webtrees. אין שדר
 #. I18N: Help text for the “All family facts” configuration setting
 #: admin_trees_config.php:1904
 msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique family facts” list."
-msgstr "זוהי הרשימה של עובדות קובץ GEDCOM שהמשתמשים יכולים להוסיף למשפחות. אתה יכול לשנות רשימה זו על ידי הסרת או הוספת שמות עובדות לפי הצורך. שם עובדה שמופיע ברשימה זו לא יכול להופיע גם ברשימת <i>עובדות משפחתיות ייחודיות</i>."
+msgstr ""
+"זוהי הרשימה של עובדות קובץ GEDCOM שהמשתמשים יכולים להוסיף למשפחות. אתה יכול "
+"לשנות רשימה זו על ידי הסרת או הוספת שמות עובדות לפי הצורך. שם עובדה שמופיע "
+"ברשימה זו לא יכול להופיע גם ברשימת ”עובדות משפחתיות ייחודיות”."
 
 #. I18N: Help text for the “All individual facts” configuration setting
 #: admin_trees_config.php:1786
 msgid "This is the list of GEDCOM facts that your users can add to individuals.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique individual facts” list."
-msgstr "זוהי הרשימה של עובדות קובץ GEDCOM שהמשתמשים יכולים להוסיף לאנשים. אתה יכול לשנות רשימה זו על ידי הסרת או הוספת שמות עובדות לפי הצורך. שם עובדה שמופיע ברשימה זו לא יכול להופיע גם ברשימת <i>עובדות אישיות ייחודיות</i>."
+msgstr ""
+"זוהי הרשימה של עובדות קובץ GEDCOM שהמשתמשים יכולים להוסיף לאנשים. אתה יכול "
+"לשנות רשימה זו על ידי הסרת או הוספת שמות עובדות לפי הצורך. שם עובדה שמופיע "
+"ברשימה זו לא יכול להופיע גם ברשימת ”עובדות אישיות ייחודיות”."
 
 #. I18N: Help text for the “All repository facts” configuration setting
 #: admin_trees_config.php:2111
 msgid "This is the list of GEDCOM facts that your users can add to repositories.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique repository facts” list."
-msgstr "זוהי הרשימה של עובדות של קובץ GEDCOM שהמשתמשים שלך יכולים להוסיף למאגרים. אתה יכול לשנות רשימה זו על ידי הסרה או הוספת שמות של עובדות, אפילו תגים מותאמים , לפי הצורך. עובדה ששמה מופיעה ברשימה זו לא יכולה להופיע גם ברשימת <i>עובדות הייחודיות של המאגר</i>"
+msgstr ""
+"זוהי הרשימה של עובדות של קובץ GEDCOM שהמשתמשים שלך יכולים להוסיף למאגרים. "
+"אתה יכול לשנות רשימה זו על ידי הסרה או הוספת שמות של עובדות, אפילו תגים "
+"מותאמים , לפי הצורך. עובדה ששמה מופיעה ברשימה זו לא יכולה להופיע גם ברשימת ”"
+"עובדות הייחודיות של המאגר”."
 
 #. I18N: Help text for the “All source facts” configuration setting
 #: admin_trees_config.php:2022
 msgid "This is the list of GEDCOM facts that your users can add to sources.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique source facts” list."
-msgstr "זוהי הרשימה של עובדות קובץ GEDCOM שהמשתמשים יכולים להוסיף למקורות. אתה יכול לשנות רשימה זו על ידי הסרת או הוספת שמות עובדות לפי הצורך. שם עובדה שמופיע ברשימה זו לא יכול להופיע גם ברשימת <i>עובדות ייחודיות של מקורות</i>"
+msgstr ""
+"זוהי הרשימה של עובדות קובץ GEDCOM שהמשתמשים יכולים להוסיף למקורות. אתה יכול "
+"לשנות רשימה זו על ידי הסרת או הוספת שמות עובדות, אפילו עובדות מותאמות, לפי "
+"הצורך. שם עובדה שמופיע ברשימה זו לא יכול להופיע גם ברשימת ”עובדות ייחודיות "
+"של מקורות”."
 
 #. I18N: Help text for the “Unique family facts” configuration setting
 #: admin_trees_config.php:1933
 msgid "This is the list of GEDCOM facts that your users can only add once to families.  For example, if MARR is in this list, users will not be able to add more than one MARR record to a family.  Fact names that appear in this list must not also appear in the “All family facts” list."
-msgstr "זוהי הרשימה של עובדות בקובץ GEDCOM שהמשתמשים יכולים להוסיף <u>פעם אחת</u> למשפחות. לדוגמה, אם MARR הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת MARR אחת למשפחה. שמות עובדה שמופיעים ברשימה זו לא יכולים להופיע גם ברשימה <i>הוסף עובדות למשפחה</i>."
+msgstr ""
+"זוהי הרשימה של עובדות בקובץ GEDCOM שהמשתמשים יכולים להוסיף פעם אחת למשפחות. "
+"לדוגמה, אם MARR הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת MARR אחת "
+"למשפחה. שמות עובדה שמופיעים ברשימה זו לא יכולים להופיע גם ברשימה ”הוסף "
+"עובדות למשפחה”."
 
 #. I18N: Help text for the “Unique individual facts” configuration setting
 #: admin_trees_config.php:1815
 msgid "This is the list of GEDCOM facts that your users can only add once to individuals.  For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual.  Fact names that appear in this list must not also appear in the “All individual facts” list."
-msgstr "זוהי הרשימה של עובדות בקובץ GEDCOM שהמשתמשים יכולים להוסיף <u>פעם אחת</u> לאדם. לדוגמה, אם BIRT הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת BIRT אחת לאדם. שמות עובדות שמופיעים ברשימה זו לא יכולים להופיע גם ברשימה  <i>הוסף עובדות לאדם</i>."
+msgstr ""
+"זוהי הרשימה של עובדות בקובץ GEDCOM שהמשתמשים יכולים להוסיף פעם אחת לאדם. "
+"לדוגמה, אם BIRT הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת BIRT אחת "
+"לאדם. שמות עובדות שמופיעים ברשימה זו לא יכולים להופיע גם ברשימה ”הוסף עובדות "
+"לאדם”."
 
 #. I18N: Help text for the “Unique repository facts” configuration setting
 #: admin_trees_config.php:2140
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories.  For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository.  Fact names that appear in this list must not also appear in the “All repository facts” list."
-msgstr "זוהי הרשימה של עובדות בקובץ GEDCOM שהמשתמשים יכולים להוסיף <u>פעם אחת</u> למאגר. לדוגמה, אם NAME הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת NAME אחת למאגר. שמות עובדה שמופיעים ברשימה זו לא יכולים להופיע גם ברשימה <i>הוסף עובדות למאגר</i>."
+msgstr ""
+"זוהי הרשימה של עובדות בקובץ GEDCOM שהמשתמשים יכולים להוסיף פעם אחת למאגר. "
+"לדוגמה, אם NAME הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת NAME אחת "
+"למאגר. שמות עובדה שמופיעים ברשימה זו לא יכולים להופיע גם ברשימה ”הוסף עובדות "
+"למאגר”."
 
 #. I18N: Help text for the “Unique source facts” configuration setting
 #: admin_trees_config.php:2051
 msgid "This is the list of GEDCOM facts that your users can only add once to sources.  For example, if TITL is in this list, users will not be able to add more than one TITL record to a source.  Fact names that appear in this list must not also appear in the “All source facts” list."
-msgstr "זוהי הרשימה של עובדות בקובץ GEDCOM שהמשתמשים יכולים להוסיף <u>פעם אחת</u> למקורות. לדוגמה, אם TITL הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת TITL אחת למקור. שמות עובדה שמופיעים ברשימה זו לא יכולים להופיע גם ברשימה <i>הוסף עובדות למקור</i>."
+msgstr ""
+"זוהי הרשימה של עובדות בקובץ GEDCOM שהמשתמשים יכולים להוסיף פעם אחת למקורות. "
+"לדוגמה, אם TITL הוא ברשימה זו, המשתמשים לא יוכלו להוסיף יותר מרשומת TITL אחת "
+"למקור. שמות עובדה שמופיעים ברשימה זו לא יכולים להופיע גם ברשימה ”הוסף עובדות "
+"למקור”."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: admin_site_config.php:334
@@ -14068,7 +14104,9 @@ msgstr "זהו השם של שרת ה- SMTP.   משמעות ”localhost” הי�
 #. I18N: Help text for the “Minimum number of occurrences to be a ‘common surname’” configuration setting
 #: admin_trees_config.php:1216
 msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the “Home page”."
-msgstr "זהו מספר הפעמים המינימלי ששם משפחה חייב להופיע כדי שהוא יופיע ברשימת שמות המשפחה השכיחים על דף הבית."
+msgstr ""
+"זהו מספר הפעמים המינימלי ששם משפחה חייב להופיע כדי שהוא יופיע ברשימת שמות "
+"המשפחה השכיחים על ”דף הבית”."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: admin_trees_config.php:1991
@@ -14121,7 +14159,7 @@ msgstr "קובץ מדיה זה קיים, אבל לא ניתן לגשת אליו.
 
 #: mediafirewall.php:410
 msgid "This media file is broken and cannot be watermarked."
-msgstr "קובץ המדיה הזה פגום ואינו ניתן לסמן אותו בסימן מים"
+msgstr "קובץ המדיה הזה פגום ואינו ניתן לסמן אותו בסימן מים."
 
 #: mediaviewer.php:73
 msgid "This media object does not exist or you do not have permission to view it."
@@ -14211,7 +14249,9 @@ msgstr "אפשרות זו קובעת אם להציג או לא להציג באו
 #. I18N: Help text for the “Automatically expand list of events of close relatives” configuration setting
 #: admin_trees_config.php:1407
 msgid "This option controls whether or not to automatically expand the <i>Events of close relatives</i> list."
-msgstr "אפשרות זו קובעת אם להרחיב או לא להרחיב  באופן אוטומטי את רשימת ה<i>אירועים של קרובי משפחה</i>."
+msgstr ""
+"אפשרות זו קובעת אם להרחיב או לא להרחיב באופן אוטומטי את רשימת ה<i>אירועים של "
+"קרובי משפחה</i>."
 
 #. I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting
 #: admin_trees_config.php:1590
@@ -14318,8 +14358,8 @@ msgstr "שרת זה אינו תומך בהורדה מאובטחת באמצעות
 
 #: setup.php:183
 #, php-format
-msgid "This server’s memory limit is %d MB and its CPU time limit is %d seconds."
-msgstr "מגבלת זיכרון של שרת זה היא %d מגה-בית, ומגבלת זמן  ה-CPU היא %d שניות."
+msgid "This server’s memory limit is %s MB and its CPU time limit is %s seconds."
+msgstr "מגבלת זיכרון של שרת זה היא %s מגה-בית, ומגבלת זמן  ה-CPU היא %s שניות."
 
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: admin_trees_config.php:1632
@@ -14377,19 +14417,19 @@ msgstr "האתר מושבת לצורך תחזוקה. עליך <a href=\"index.ph
 
 #: site-offline.php:70 site-unavailable.php:90
 msgid "This website is temporarily unavailable"
-msgstr "אתר האינטרנט הזה אינו זמין באופן זמני."
+msgstr "אתר האינטרנט הזה אינו זמין באופן זמני"
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:183
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
-msgstr ""
-"פעולה זו ימחק את כל נתוני חקר שושלת יוחסין מן “%s” ויחליף אותו עם נתונים "
-"קובץ GEDCOM."
+msgstr "פעולה זו ימחק את כל נתוני חקר שושלת יוחסין מן “%s” ויחליף אותו עם נתונים קובץ GEDCOM."
 
 #: app/Module/GoogleMapsModule.php:1781
 msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables."
-msgstr "זה יבנה רשימה של כל המקומות מקובץ ה-GEDCOM הנבחר. לפי ברירת מחדל זה <b>אינו</b> כולל מקומות עם התאמה מלאה בין קובץ ה-GEDCOM וטבלאות מפת גוגל"
+msgstr ""
+"זה יבנה רשימה של כל המקומות מקובץ ה-GEDCOM הנבחר. לפי ברירת מחדל זה "
+"<b>אינו</b> כולל מקומות עם התאמה מלאה בין קובץ ה-GEDCOM וטבלאות מפת גוגל."
 
 #: admin_trees_places.php:96
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
@@ -14541,6 +14581,8 @@ msgstr "מנהל המערכת החביא כתבות אחדות, כדי להקט�
 #: admin_trees_download.php:145 app/Module/ClippingsCartModule.php:180
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file.  You will need to uncompress the .ZIP file before you can use it."
 msgstr ""
+"כדי להקטין את נפח ההורדה, אתה יכול לדחוס את הנתונים לקובץ זיפ. עליך לבטל את "
+"הדחיסה של קובץ הזיפ לפני שתוכל להשתמש בו."
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: admin_site_config.php:461
@@ -14742,12 +14784,12 @@ msgstr "סה״כ משתמשים"
 #. I18N: Menu entry
 #: admin_site_config.php:141 app/Theme/AdministrationTheme.php:72
 msgid "Tracking and analytics"
-msgstr ""
+msgstr "מעקב וניתוח"
 
 #: admin_site_config.php:563 admin_site_config.php:588
 #: admin_site_config.php:613
 msgid "Tracking and analytics are not added to the control panel."
-msgstr ""
+msgstr "מעקב וניתוח אינם מתווספים ללוח בקרה."
 
 #. I18N: gedcom tag TRLR
 #: app/Gedcom/GedcomTag.php:841
@@ -14812,11 +14854,11 @@ msgid "Type of place markers in Place Hierarchy"
 msgstr "סוג מראי מקומות בהיררכית המקומות"
 
 #. I18N: placeholder text for repeat-password field
-#: admin_users.php:350 login.php:479
+#: admin_users.php:350 login.php:478
 msgid "Type the password again."
 msgstr "הקלד שנית את הסיסמה."
 
-#: edituser.php:219 login.php:484 setup.php:443
+#: edituser.php:219 login.php:483 setup.php:443
 msgid "Type your password again, to make sure you have typed it correctly."
 msgstr "הקלד את הסיסמה שנית, כדי לוודא שהקלדת אותה כראוי."
 
@@ -14979,7 +15021,7 @@ msgstr "שדרג בכל מקרה"
 #: admin.php:546 admin_site_upgrade.php:80
 #, php-format
 msgid "Upgrade to webtrees %s."
-msgstr "שדרוג ל-webtrees %s"
+msgstr "שדרוג ל-webtrees %s."
 
 #: admin_site_upgrade.php:53
 msgid "Upgrade wizard"
@@ -15001,11 +15043,6 @@ msgstr "העלה קבצי מדיה"
 #: admin_media_upload.php:185
 msgid "Upload one or more media files from your local computer.  Media files can be pictures, video, audio, or other formats."
 msgstr "העלה אחד או יותר קבצי מדיה מהמחשב המקומי שלך. קבצי מדיה יכולים להיות תמונות, וידאו, אודיו, או פורמטים אחרים."
-
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:62
-msgid "The uploaded file exceeds the allowed size."
-msgstr "קובץ ההעלאה גדול מהמותר"
 
 #: app/Stats.php:6308
 msgid "Uruguay"
@@ -15033,7 +15070,7 @@ msgid "Use a “?” to match a single character, use “*” to match zero or m
 msgstr "השתמש ב-”?” כדי להתאים תו בודד, השתמש ב-”*” כדי להתאים אפס או יותר תוים."
 
 #. I18N: placeholder text for new-password field
-#: admin_users.php:337 login.php:462
+#: admin_users.php:337 login.php:461
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
@@ -15085,7 +15122,7 @@ msgstr "השתמש בכפתורים הללו כדי לשנות את הסדר ש�
 msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the individual’s page."
 msgstr "השתמש בשדה זה כדי לסמן שפריט המדיה הזה הינו המודגש או העיקרי עבור האדם אליו הוא מחובר. התמונה העיקרית היא התמונה שמשתמשים בה בתרשימים ובדף האישי."
 
-#: login.php:500
+#: login.php:499
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site.  You can also use this to enter any other comments you may have for the site administrator."
 msgstr "השתמש בשדה זה כדי להסביר למנהל האתר מדוע אתה מבקש חשבון משתמש ומה הקשר שלך לחקר שושלת יוחסין המוצג באתר זה. תוכל גם להוסיף כל הערה נוספת הנראית לך עבור מנהל המערכת."
 
@@ -15117,7 +15154,7 @@ msgstr "המשתמש לא אושר ע״י המנהלן."
 msgid "User options"
 msgstr "אפשרויות משתמש"
 
-#: login.php:527 login.php:533 login.php:590 login.php:594
+#: login.php:526 login.php:532 login.php:589 login.php:593
 msgid "User verification"
 msgstr "אמות משתמש"
 
@@ -15129,7 +15166,7 @@ msgstr "מחרוזת סוכן משתמש"
 #. I18N: A site configuration setting
 #: admin_site_config.php:368 admin_users.php:321 admin_users.php:845
 #: app/Module/ResearchTaskModule.php:95 edituser.php:150 login.php:183
-#: login.php:253 login.php:320 login.php:347 login.php:535
+#: login.php:253 login.php:320 login.php:347 login.php:534
 #: modules_v3/login_block/LoginBlockModule.php:62
 msgid "Username"
 msgstr "שם משתמש"
@@ -15141,11 +15178,6 @@ msgstr "שם משתמש או כתובת דוא״ל"
 #: admin_users.php:326 edituser.php:156 login.php:450
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
 msgstr "בשם משתמש לא מתיחסים לאותיות לועזיות גדולות וקטנות, כך ש-”chloe”, ”chloë”, ו-”Chloe” הן אותו דבר."
-
-#: login.php:451
-#, php-format
-msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
-msgstr "שם משתמש לא יכול לכלול את הסימנים הבאים: &lt; &gt; &quot; %% { } ;"
 
 #. I18N: Menu entry
 #: admin.php:563 admin.php:571 app/Theme/AdministrationTheme.php:125
@@ -15232,9 +15264,9 @@ msgstr "ונטוז"
 msgid "Veracruz, Mexico"
 msgstr "ורקרוז, מקסיקו"
 
-#: login.php:348 login.php:543
+#: login.php:348 login.php:542
 msgid "Verification code"
-msgstr "קוד האמות:"
+msgstr "קוד האמות"
 
 #: admin_users.php:853
 msgid "Verified"
@@ -15376,7 +15408,7 @@ msgstr "חניך"
 
 #: app/Gedcom/GedcomCodeTemp.php:334
 msgid "Washington, DC"
-msgstr "וושינגטון די. סי."
+msgstr "וושינגטון די סי"
 
 #: admin_trees_config.php:1145
 msgid "Watermarks"
@@ -15486,7 +15518,9 @@ msgstr "בעת יצירת רשומות חדשות, הן מקבלות מספר מ
 #. I18N: Help text for the “Date differences” configuration setting
 #: admin_trees_config.php:1699
 msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
-msgstr "כאשר אפשרות זו נבחרת, webtrees יחשב את הבדלי הגיל בין אחים, ילדים, בני זוג וכו׳"
+msgstr ""
+"כאשר אפשרות זו נבחרת, webtrees יחשב את הבדלי הגיל בין אחים, ילדים, בני זוג "
+"וכו׳."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2244
@@ -15499,7 +15533,7 @@ msgstr "כאשר אתה מוסיף, עורך או מוחק נתונים, השי�
 
 #: message.php:140
 msgid "When you send this message you will receive a copy sent via email to the address you provided."
-msgstr "לאחר שליחת הודעה זו, תקבל עותק בדואר האלקטרוני לכתובת שמסרת לנו"
+msgstr "לאחר שליחת הודעה זו, תקבל עותק בדואר האלקטרוני לכתובת שמסרת לנו."
 
 #: admin_users.php:589
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations.  You specify the number of relationship steps that the user is allowed to see."
@@ -15679,7 +15713,7 @@ msgstr "תוכל להוריד עותק של המפרט ה-GEDCOM מ%s."
 msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
 msgstr "תוכל להקל על חיפוש של נשים נשואות ע״י רישום שם הנישואין שלהן.<br>אך לא כל הנשים משתמשות בשם המשפחה של בעליהן, כך שיש להיזהר לא להוסיף נתונים שגויים לקובץ ה-GEDCOM שלך."
 
-#: login.php:632
+#: login.php:629
 msgid "You can now login with your user name and password."
 msgstr "תוכל עכשיו להתחבר עם קוד המשתמש והסיסמה שלך."
 
@@ -15719,7 +15753,7 @@ msgstr "אינך יכול להתחבר כי הדפדפן שלך אינו מקב�
 msgid "You do not have permission to view this page."
 msgstr "אין לך הרשאה לראות את העמוד הזה."
 
-#: login.php:576
+#: login.php:575
 msgid "You do not have to take any action; the user can now login."
 msgstr "לא נדרשת פעולה מצידך; המשתמש יכול עכשיו להתחבר."
 
@@ -15727,7 +15761,7 @@ msgstr "לא נדרשת פעולה מצידך; המשתמש יכול עכשיו 
 msgid "You entered the same IDs.  You cannot merge the same records."
 msgstr "הכנסת קוד זיהוי זהה. לא ניתן למזג רשומה זהה."
 
-#: login.php:628
+#: login.php:625
 msgid "You have confirmed your request to become a registered user."
 msgstr "אישרת את בקשתך להפוך למשתמש רשום."
 
@@ -15762,7 +15796,7 @@ msgstr "עליך להזין שם אמתי."
 
 #: edituser.php:116
 msgid "You must enter a user name."
-msgstr ".יש למלא שם משתמש"
+msgstr "יש למלא שם משתמש."
 
 #: setup.php:421
 msgid "You must enter all the administrator account fields."
@@ -15770,7 +15804,7 @@ msgstr "עליך להזין את כל שדות חשבון מנהל המערכת.
 
 #: edit_interface.php:1548
 msgid "You must provide a repository name."
-msgstr "עליך לספק שם מאגר"
+msgstr "עליך לספק שם מאגר."
 
 #: edit_interface.php:1210
 msgid "You must provide a source title"
@@ -15800,7 +15834,7 @@ msgstr "עליך להתחבר שנית, כאשר אתה משתמש בשם המש
 msgid "You need to set up an administrator account.  This account can control all aspects of this webtrees installation.  Please choose a strong password."
 msgstr "עליך להגדיר את חשבון מנהל המערכת. חשבון זה שולט בכל האספקטים של התקנת webtrees זו. נא לבחור סיסמה חזקה."
 
-#: login.php:574
+#: login.php:573
 msgid "You now need to review the account details, and set the “approved” status to “yes”."
 msgstr "עליך לבדוק את פרטי החשבון, ולהגדיר את המעמד ”אושר” ל-”כן”."
 
@@ -15841,7 +15875,7 @@ msgstr "עליך למחוק את ה-”%1$s” מ-”%2$s” ולנסות שוב
 
 #: admin_users.php:390
 msgid "You should not approve an account unless you know that the email address is correct."
-msgstr "אם מנהלן המערכת יוצר חשבון משתמש, דוא״ל של האימות לא נשלח, ואת הדוא״ל יש לוודא באופן ידני"
+msgstr "אין לאשר חשבון משתמש, אלא אם וידאת שהדוא״ל נכון."
 
 #: login.php:328
 msgid "You will be informed by e-mail when this prospective user has confirmed the request.  After this, the user will be able to login without any action on your part."
@@ -15898,11 +15932,15 @@ msgstr "למשתמש שלך לא מופעל ”אישור אוטומטי של ש
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer maintained.  You should upgrade to a later version."
 msgstr ""
+"שרת האינטרנט שלך משתמש בגרסת PHP %s, אשר לו נתמכת יותר. עלך לשדרג לגרסה "
+"מתקדמת יותר."
 
 #: admin.php:485
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates.  You should upgrade to a later version as soon as possible."
 msgstr ""
+"שרת האינטרנט שלך משתמש בגרסת PHP %s, שכבר לא מקבלת עדכוני אבטחה. עלך לשדרג "
+"לגרסה מתקדמת יותר בהקדם."
 
 #: app/Stats.php:6323
 msgid "Yugoslavia"
@@ -15939,7 +15977,7 @@ msgstr "הגדל כאן"
 
 #: app/Theme/BaseTheme.php:664 app/Theme/BaseTheme.php:709
 msgid "Zoom in/out on this box."
-msgstr "קרב / הרחק"
+msgstr "קרב/הרחק בתיבה זו."
 
 #: app/Module/GoogleMapsModule.php:4054 app/Module/GoogleMapsModule.php:4128
 #: app/Module/GoogleMapsModule.php:4567
@@ -16327,7 +16365,7 @@ msgstr "רשימה קומפקטית"
 #: admin_trees_download.php:120 admin_trees_download.php:205
 #: admin_trees_manage.php:293 admin_trees_manage.php:719
 #: admin_trees_merge.php:200 admin_trees_renumber.php:280 login.php:219
-#: login.php:507 modules_v3/login_block/LoginBlockModule.php:93
+#: login.php:506 modules_v3/login_block/LoginBlockModule.php:93
 #: reportengine.php:127 reportengine.php:282 setup.php:190 setup.php:216
 #: setup.php:298 setup.php:384 setup.php:451
 msgid "continue"
@@ -16911,7 +16949,7 @@ msgstr "מגדר"
 #. I18N: button label
 #: edit_interface.php:2808
 msgid "go to new individual"
-msgstr "לך לאדם חדש."
+msgstr "לך לאדם חדש"
 
 #: includes/functions/functions.php:814
 msgctxt "child’s child"
@@ -17006,146 +17044,146 @@ msgstr "אישה של נכד"
 #: includes/functions/functions.php:1639 includes/functions/functions.php:1654
 #: includes/functions/functions.php:1667
 #, php-format
-msgid "great ×%d aunt"
-msgstr "דודה מדרגה %d"
+msgid "great ×%s aunt"
+msgstr "דודה מדרגה %s"
 
 #: includes/functions/functions.php:1641 includes/functions/functions.php:1656
 #: includes/functions/functions.php:1669
 #, php-format
-msgid "great ×%d aunt/uncle"
-msgstr "דוד/דודה מדרגה %d"
+msgid "great ×%s aunt/uncle"
+msgstr "דוד/דודה מדרגה %s"
 
 #: includes/functions/functions.php:2042 includes/functions/functions.php:2057
 #, php-format
-msgid "great ×%d grandchild"
-msgstr "נכד/נכדה מדרגה %d"
+msgid "great ×%s grandchild"
+msgstr "נכד/נכדה מדרגה %s"
 
 #: includes/functions/functions.php:2040 includes/functions/functions.php:2055
 #, php-format
-msgid "great ×%d granddaughter"
-msgstr "נכדה מדרגה %d"
+msgid "great ×%s granddaughter"
+msgstr "נכדה מדרגה %s"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1912 includes/functions/functions.php:1922
 #: includes/functions/functions.php:1932 includes/functions/functions.php:1942
 #: includes/functions/functions.php:1954
 #, php-format
-msgid "great ×%d grandfather"
-msgstr "סבא מדרגה %d"
+msgid "great ×%s grandfather"
+msgstr "סבא מדרגה %s"
 
 #: includes/functions/functions.php:1914 includes/functions/functions.php:1924
 #: includes/functions/functions.php:1934 includes/functions/functions.php:1944
 #: includes/functions/functions.php:1956
 #, php-format
-msgid "great ×%d grandmother"
-msgstr "סבתא מדרגה %d"
+msgid "great ×%s grandmother"
+msgstr "סבתא מדרגה %s"
 
 #: includes/functions/functions.php:1916 includes/functions/functions.php:1926
 #: includes/functions/functions.php:1936 includes/functions/functions.php:1946
 #: includes/functions/functions.php:1958
 #, php-format
-msgid "great ×%d grandparent"
-msgstr "סבא/סבתא מדרגה %d"
+msgid "great ×%s grandparent"
+msgstr "סבא/סבתא מדרגה %s"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:2038 includes/functions/functions.php:2053
 #, php-format
-msgid "great ×%d grandson"
-msgstr "נכד מדרגה %d"
+msgid "great ×%s grandson"
+msgstr "נכד מדרגה %s"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1823 includes/functions/functions.php:1836
 #, php-format
-msgid "great ×%d nephew"
-msgstr "אחיין מדרגה %d"
+msgid "great ×%s nephew"
+msgstr "אחיין מדרגה %s"
 
 #: includes/functions/functions.php:1797
 #, php-format
-msgctxt "(a man’s) brother’s great ×(%d-1) grandson"
-msgid "great ×%d nephew"
-msgstr "אחיין מדרגה %d"
+msgctxt "(a man’s) brother’s great ×(%s-1) grandson"
+msgid "great ×%s nephew"
+msgstr "אחיין מדרגה %s"
 
 #: includes/functions/functions.php:1799
 #, php-format
-msgctxt "(a man’s) sister’s great ×(%d-1) grandson"
-msgid "great ×%d nephew"
-msgstr "אחיין מדרגה %d"
+msgctxt "(a man’s) sister’s great ×(%s-1) grandson"
+msgid "great ×%s nephew"
+msgstr "אחיין מדרגה %s"
 
 #: includes/functions/functions.php:1801
 #, php-format
-msgctxt "(a woman’s) great ×%d nephew"
-msgid "great ×%d nephew"
-msgstr "אחיין מדרגה %d"
+msgctxt "(a woman’s) great ×%s nephew"
+msgid "great ×%s nephew"
+msgstr "אחיין מדרגה %s"
 
 #: includes/functions/functions.php:1827 includes/functions/functions.php:1840
 #, php-format
-msgid "great ×%d nephew/niece"
-msgstr "אחיין/ית מדרגה %d"
+msgid "great ×%s nephew/niece"
+msgstr "אחיין/ית מדרגה %s"
 
 #: includes/functions/functions.php:1813
 #, php-format
-msgctxt "(a man’s) brother’s great ×(%d-1) grandchild"
-msgid "great ×%d nephew/niece"
-msgstr "אחיין/ית מדרגה %d"
+msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
+msgid "great ×%s nephew/niece"
+msgstr "אחיין/ית מדרגה %s"
 
 #: includes/functions/functions.php:1815
 #, php-format
-msgctxt "(a man’s) sister’s great ×(%d-1) grandchild"
-msgid "great ×%d nephew/niece"
-msgstr "אחיין/ית מדרגה %d"
+msgctxt "(a man’s) sister’s great ×(%s-1) grandchild"
+msgid "great ×%s nephew/niece"
+msgstr "אחיין/ית מדרגה %s"
 
 #: includes/functions/functions.php:1817
 #, php-format
-msgctxt "(a woman’s) great ×%d nephew/niece"
-msgid "great ×%d nephew/niece"
-msgstr "אחיין/ית מדרגה %d"
+msgctxt "(a woman’s) great ×%s nephew/niece"
+msgid "great ×%s nephew/niece"
+msgstr "אחיין/ית מדרגה %s"
 
 #: includes/functions/functions.php:1825 includes/functions/functions.php:1838
 #, php-format
-msgid "great ×%d niece"
-msgstr "אחיינית מדרגה %d"
+msgid "great ×%s niece"
+msgstr "אחיינית מדרגה %s"
 
 #: includes/functions/functions.php:1805
 #, php-format
-msgctxt "(a man’s) brother’s great ×(%d-1) granddaughter"
-msgid "great ×%d niece"
-msgstr "אחיינית מדרגה %d"
+msgctxt "(a man’s) brother’s great ×(%s-1) granddaughter"
+msgid "great ×%s niece"
+msgstr "אחיינית מדרגה %s"
 
 #: includes/functions/functions.php:1807
 #, php-format
-msgctxt "(a man’s) sister’s great ×(%d-1) granddaughter"
-msgid "great ×%d niece"
-msgstr "אחיינית מדרגה %d"
+msgctxt "(a man’s) sister’s great ×(%s-1) granddaughter"
+msgid "great ×%s niece"
+msgstr "אחיינית מדרגה %s"
 
 #: includes/functions/functions.php:1809
 #, php-format
-msgctxt "(a woman’s) great ×%d niece"
-msgid "great ×%d niece"
-msgstr "אחיינית מדרגה %d"
+msgctxt "(a woman’s) great ×%s niece"
+msgid "great ×%s niece"
+msgstr "אחיינית מדרגה %s"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1637 includes/functions/functions.php:1665
 #, php-format
-msgid "great ×%d uncle"
-msgstr "דוד מדרגה %d"
+msgid "great ×%s uncle"
+msgstr "דוד מדרגה %s"
 
 #: includes/functions/functions.php:1647
 #, php-format
-msgctxt "great ×(%d-1) grandfather’s brother"
-msgid "great ×%d uncle"
-msgstr "דוד מדרגה %d"
+msgctxt "great ×(%s-1) grandfather’s brother"
+msgid "great ×%s uncle"
+msgstr "דוד מדרגה %s"
 
 #: includes/functions/functions.php:1649
 #, php-format
-msgctxt "great ×(%d-1) grandmother’s brother"
-msgid "great ×%d uncle"
-msgstr "דוד מדרגה %d"
+msgctxt "great ×(%s-1) grandmother’s brother"
+msgid "great ×%s uncle"
+msgstr "דוד מדרגה %s"
 
 #: includes/functions/functions.php:1651
 #, php-format
-msgctxt "great ×(%d-1) grandparent’s brother"
-msgid "great ×%d uncle"
-msgstr "דוד מדרגה %d"
+msgctxt "great ×(%s-1) grandparent’s brother"
+msgid "great ×%s uncle"
+msgstr "דוד מדרגה %s"
 
 #: includes/functions/functions.php:1579
 msgid "great ×4 aunt"
@@ -18595,10 +18633,10 @@ msgstr "מקסימום"
 #: app/Module/UpcomingAnniversariesModule.php:125
 #: app/Module/YahrzeitModule.php:250
 #, php-format
-msgid "maximum %d day"
-msgid_plural "maximum %d days"
+msgid "maximum %s day"
+msgid_plural "maximum %s days"
 msgstr[0] "לכל היותר יום אחד"
-msgstr[1] "לכל היותר %d ימים"
+msgstr[1] "לכל היותר %s ימים"
 
 #: admin_trees_config.php:404 admin_trees_config.php:428
 #: admin_trees_config.php:468 admin_trees_config.php:508
@@ -19747,10 +19785,13 @@ msgstr "webtrees שולחת מיילים ללא אחסון"
 #: admin_trees_download.php:154
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-latin scripts.  If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
 msgstr ""
+"webtrees משתמש בקידוד UTF-8 לאותיות מודגשות לטיניות, לתווים מיוחדים ולסימנים "
+"שאינם לטיניים. אם אתה רוצה להשתמש בקובץ ה-GEDCOM הזה עם תוכנה גנאלוגית שאינה "
+"תומכת UTF-8, עלך ליצור אותו באמצעות קידוד ISO-8859-1."
 
 #: includes/functions/functions_print.php:185
 msgid "webtrees wiki"
-msgstr "webtrees wiki"
+msgstr "webtrees ויקיפדיה של"
 
 #: admin_trees_manage.php:673
 msgid "webtrees’ database must be on the same server as PGV’s"
@@ -19813,10 +19854,10 @@ msgstr "אחות צעירה"
 #: search_advanced.php:107 search_advanced.php:111 search_advanced.php:115
 #: search_advanced.php:166 search_advanced.php:167 search_advanced.php:168
 #, php-format
-msgid "±%d year"
-msgid_plural "±%d years"
+msgid "±%s year"
+msgid_plural "±%s years"
 msgstr[0] "± שנה"
-msgstr[1] "± %d שנים"
+msgstr[1] "± %s שנים"
 
 #. I18N: Place a nickname in quotation marks
 #: app/Individual.php:1197 app/Individual.php:1215
@@ -19915,6 +19956,9 @@ msgstr "…"
 
 #~ msgid "Create user"
 #~ msgstr "בנה משתמש"
+
+#~ msgid "Data was not correct, please try again"
+#~ msgstr "הנתונים אינם נכונים, נסה שנית"
 
 #~ msgctxt "font name"
 #~ msgid "DejaVu"
@@ -20050,6 +20094,9 @@ msgstr "…"
 #~ msgid "If this box is checked, this user will be able to edit his account information.  Although this is not generally recommended, you can create a single user name and password for multiple users.  When this box is unchecked for all users with the shared account, they are prevented from editing the account information and only an administrator can alter that account."
 #~ msgstr "אם התיבה מסומנת, המשתמש יכול לערוך את חשבון המשתמש שלו. למרות שבדרך כלל לא מומלץ, תוכל להגדיר שם משתמש וסיסמה יחידים עבור מספר משתמשים. אם התיבה של כל המשתמשים של החשבון המשותף אינה מסומנת, הם מנועים מעריכת נתוני החשבון ורק מנהל מערכת יכול לשנות את נתוני החשבון המשותף."
 
+#~ msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
+#~ msgstr "אם לא תוכל לפתור את הבעיה בעצמך, תוכל לבקש עזרה בפורומים ב-<a href=\"http://webtrees.net\">webtrees.net</a>"
+
 #~ msgid "If you have a note to add to this record, this is the place to do so.<br><br>Just click the link, a window will open, and you can type your note.  When you are finished typing, just click the button below the box, close the window, and that’s all."
 #~ msgstr "אם ברצונך להוסיף הערה לרשומה זו, כאן המקום.<br><br>לחץ על הקישור, יפתח חלון ותוכל להקליד את הערתך. כאשר סיימת להקליד את ההערה, לחץ על הכפתור מתחת לתיבה, סגור את החלון, וזה הכל."
 
@@ -20109,10 +20156,10 @@ msgstr "…"
 #~ msgid "No other link between the two individuals could be found."
 #~ msgstr "לא נמצא קשר אחר בין שני האנשים."
 
-#~ msgid "Note: “living” is defined (if no death or burial is known) as ending %d year after birth or estimated birth."
-#~ msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %d years after birth or estimated birth."
+#~ msgid "Note: “living” is defined (if no death or burial is known) as ending %s year after birth or estimated birth."
+#~ msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %s years after birth or estimated birth."
 #~ msgstr[0] "הערה: ”חיים” מוגדר (אם מוות או קבורה אינם ידועים) שנה לאחר לידה או לידה משוערת."
-#~ msgstr[1] "הערה: ”חיים” מוגדר (אם מוות או קבורה אינם ידועים) %d שנים לאחר לידה או לידה משוערת."
+#~ msgstr[1] "הערה: ”חיים” מוגדר (אם מוות או קבורה אינם ידועים) %s שנים לאחר לידה או לידה משוערת."
 
 #~ msgid "Notes are free-form text and will appear in the Fact Details section of the page."
 #~ msgstr "הערות הן מלל במבנה חופשי ותופענה בחלק הדף של פירוט העובדה."
@@ -20200,6 +20247,9 @@ msgstr "…"
 
 #~ msgid "The current webtrees admin username must be the same as an existing PGV admin username"
 #~ msgstr "שם המשתמש הנוכחי של המנהלן ב-webtrees חייב להיות זהה לשם המשתמש של מנהלן קיים ב-PGV"
+
+#~ msgid "The data for the user <b>%s</b> has been checked."
+#~ msgstr "הנתונים על המשתמש <b>%s</b> נבדקו."
 
 #~ msgid "The following calendars are supported:"
 #~ msgstr "לוחות השנה הבאים נתמכים:"
@@ -20305,6 +20355,9 @@ msgstr "…"
 
 #~ msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td style=\"vertical-align:middle\">This image might be used when the gender of the individual is unknown:"
 #~ msgstr "השתמש בתמונות צללית כאשר תמונה מודגשת עבור אותו אדם לא צוינה. התמונות הן ספציפיות למגדרו של האדם המדובר.<br><br><table><tr><td style=\"vertical-align:middle\">תמונה זו עשויה לשמש כאשר מינו של האדם אינו ידוע:"
+
+#~ msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
+#~ msgstr "שם משתמש לא יכול לכלול את הסימנים הבאים: &lt; &gt; &quot; %% { } ;"
 
 #~ msgid "Users’ languages"
 #~ msgstr "שפות המשתמשים"

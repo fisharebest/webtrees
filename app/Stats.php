@@ -5369,7 +5369,7 @@ class Stats {
 			return I18N::translate('No logged-in and no anonymous users');
 		}
 		if ($NumAnonymous > 0) {
-			$content .= '<b>' . I18N::plural('%d anonymous logged-in user', '%d anonymous logged-in users', $NumAnonymous, $NumAnonymous) . '</b>';
+			$content .= '<b>' . I18N::plural('%s anonymous logged-in user', '%s anonymous logged-in users', $NumAnonymous, I18N::number($NumAnonymous)) . '</b>';
 		}
 		if ($LoginUsers > 0) {
 			if ($NumAnonymous) {
@@ -5379,7 +5379,7 @@ class Stats {
 					$content .= " " . I18N::translate('and') . " ";
 				}
 			}
-			$content .= '<b>' . I18N::plural('%d logged-in user', '%d logged-in users', $LoginUsers, $LoginUsers) . '</b>';
+			$content .= '<b>' . I18N::plural('%s logged-in user', '%s logged-in users', $LoginUsers, I18N::number($LoginUsers)) . '</b>';
 			if ($type == 'list') {
 				$content .= '<ul>';
 			} else {

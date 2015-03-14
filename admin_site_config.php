@@ -504,7 +504,7 @@ $controller->pageHeader();
 	<input type="hidden" name="action" value="tracking">
 
 		<p>
-			<?php echo I18N::translate('If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatcially.'); ?>
+			<?php echo I18N::translate('If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically.'); ?>
 		</p>
 
 		<h2><a href="https://http://www.bing.com/toolbox/webmaster/">Bing Webmaster Tools</a></h2>

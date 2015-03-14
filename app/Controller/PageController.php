@@ -164,7 +164,7 @@ class PageController extends BaseController {
 		$this->addInlineJavascript('
 			var WT_STATIC_URL  = "' . Filter::escapeJs(WT_STATIC_URL) . '";
 			var WT_MODULES_DIR = "' . Filter::escapeJs(WT_MODULES_DIR) . '";
-			var WT_GEDCOM      = "' . Filter::escapeJs($WT_TREE->getName()) . '";
+			var WT_GEDCOM      = "' . Filter::escapeJs($WT_TREE ? $WT_TREE->getName() : '') . '";
 			var textDirection  = "' . Filter::escapeJs(I18N::direction()) . '";
 			var WT_SCRIPT_NAME = "' . Filter::escapeJs(WT_SCRIPT_NAME) . '";
 			var WT_LOCALE      = "' . Filter::escapeJs(WT_LOCALE) . '";

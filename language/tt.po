@@ -2,14 +2,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2015-03-12 21:11+0000\n"
-"PO-Revision-Date: 2012-02-16 05:45+0000\n"
-"Last-Translator: Ravil Nugmanov <Unknown>\n"
-"Language: \n"
+"POT-Creation-Date: 2015-03-13 10:03+0000\n"
+"PO-Revision-Date: 2015-03-13 19:18+0100\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"Language-Team: Tatar "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/tt/>\n"
+"Language: tt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 2.3-dev\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
 #: modules_v3/ahnentafel_report/report.xml:185
@@ -42,17 +45,13 @@ msgstr " бу урында: "
 #: statisticsplot.php:1204 statisticsplot.php:1254 statisticsplot.php:1304
 #: statisticsplot.php:1354
 msgid " per gender"
-msgstr " per gender"
+msgstr ""
 
 #: statisticsplot.php:898 statisticsplot.php:948 statisticsplot.php:1002
 #: statisticsplot.php:1052 statisticsplot.php:1106 statisticsplot.php:1156
 #: statisticsplot.php:1206 statisticsplot.php:1256 statisticsplot.php:1306
 #: statisticsplot.php:1356
 msgid " per time period"
-msgstr " per time period"
-
-#: admin_trees_download.php:34
-msgid " — "
 msgstr ""
 
 #. I18N: Abbreviation for "number %s"
@@ -186,45 +185,45 @@ msgstr ""
 
 #: app/Module/LoggedInUsersModule.php:51 app/Stats.php:5372
 #, php-format
-msgid "%d anonymous logged-in user"
-msgid_plural "%d anonymous logged-in users"
-msgstr[0] "%d аноним кулланучы"
+msgid "%s anonymous logged-in user"
+msgid_plural "%s anonymous logged-in users"
+msgstr[0] "%s аноним кулланучы"
 
 #: app/Module/LoggedInUsersModule.php:57 app/Stats.php:5382
 #, php-format
-msgid "%d logged-in user"
-msgid_plural "%d logged-in users"
-msgstr[0] "%d кулланучы"
+msgid "%s logged-in user"
+msgid_plural "%s logged-in users"
+msgstr[0] "%s кулланучы"
 
 #: app/Module/RelativesTabModule.php:62
 #, php-format
-msgid "%d month"
-msgid_plural "%d months"
-msgstr[0] "%d ай"
+msgid "%s month"
+msgid_plural "%s months"
+msgstr[0] "%s ай"
 
 #: app/Module/RelativesTabModule.php:60
 #, php-format
-msgid "%d year"
-msgid_plural "%d years"
-msgstr[0] "%d ел"
+msgid "%s year"
+msgid_plural "%s years"
+msgstr[0] "%s ел"
 
 #: includes/functions/functions.php:555
 #, php-format
 msgctxt "FEMALE"
-msgid "%d × cousin"
+msgid "%s × cousin"
 msgstr ""
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:520
 #, php-format
 msgctxt "MALE"
-msgid "%d × cousin"
+msgid "%s × cousin"
 msgstr ""
 
 #: includes/functions/functions.php:590
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%d × cousin"
+msgid "%s × cousin"
 msgstr ""
 
 #. I18N: This is the format string for full dates.  See http://php.net/date for codes
@@ -301,7 +300,7 @@ msgstr[1] ""
 #, php-format
 msgid "%s individual is private."
 msgid_plural "%s individuals are private."
-msgstr[0] "%s шәхес хосусый (яшерен)"
+msgstr[0] "%s шәхес хосусый (яшерен)."
 
 #: app/Controller/SearchController.php:321
 #, php-format
@@ -406,12 +405,6 @@ msgstr[0] ""
 #, php-format
 msgid "%s will be prepended to media filenames."
 msgstr ""
-
-#: app/I18N.php:457 includes/functions/functions_date.php:42
-#, php-format
-msgid "%s year"
-msgid_plural "%s years"
-msgstr[0] ""
 
 #: app/I18N.php:510
 #, php-format
@@ -670,22 +663,24 @@ msgstr ""
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:30
 msgid "A greeting message and useful links for a user."
-msgstr "Сәлам сүзе һәм кулланучы өчен файдалы сылтамалар"
+msgstr "Сәлам сүзе һәм кулланучы өчен файдалы сылтамалар."
 
 #. I18N: Description of the “Home page” module
 #: app/Module/WelcomeBlockModule.php:30
 msgid "A greeting message for site visitors."
-msgstr "Сәхифәгә керүчеләрне сәлам сүзе"
+msgstr "Сәхифәгә керүчеләрне сәлам сүзе."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:30
 msgid "A list of changes that need moderator approval, and email notifications."
-msgstr "Модератор тарафыннан раслау көтүче үзгәрешләр һәм электрон почта буенча искәртүләр исемлеге"
+msgstr ""
+"Модератор тарафыннан раслау көтүче үзгәрешләр һәм электрон почта буенча "
+"искәртүләр исемлеге."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:30
 msgid "A list of frequently asked questions and answers."
-msgstr "Сораулар һәм җаваплар"
+msgstr "Сораулар һәм җаваплар."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:33
@@ -695,42 +690,42 @@ msgstr "Күптән түгел яңартылган язмалар."
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:32
 msgid "A list of tasks and activities that are linked to the family tree."
-msgstr "Шәҗәрәгә бәйләнешле эшлисе эшләр исемлеге"
+msgstr "Шәҗәрәгә бәйләнешле эшлисе эшләр исемлеге."
 
 #. I18N: Description of the “Yahrzeiten” module.  A “Hebrew death” is a death where the date is recorded in the Hebrew calendar.
 #: app/Module/YahrzeitModule.php:33
 msgid "A list of the Hebrew death anniversaries that will occur in the near future."
-msgstr "Якын киләчәктә буласы еврейлардагы үлгәннәрнең ниндидер юбилейлары"
+msgstr "Якын киләчәктә буласы еврейлардагы үлгәннәрнең ниндидер юбилейлары."
 
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:30
 msgid "A list of the anniversaries that occur today."
-msgstr "Бүгенге юбилейлар"
+msgstr "Бүгенге юбилейлар."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:30
 msgid "A list of the anniversaries that will occur in the near future."
-msgstr "Якын киләчәктәге истәлекле даталар"
+msgstr "Якын киләчәктәге истәлекле даталар."
 
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:30
 msgid "A list of the most popular given names."
-msgstr "Иң еш очраган исемнәр исемлеге"
+msgstr "Иң еш очраган исемнәр исемлеге."
 
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:30
 msgid "A list of the most popular surnames."
-msgstr "Иң популяр фамилияләр"
+msgstr "Иң популяр фамилияләр."
 
 #. I18N: Description of the “Most visited pages” module
 #: app/Module/TopPageViewsModule.php:30
 msgid "A list of the pages that have been viewed the most number of times."
-msgstr "Иң күп тапкыр каралган битләр исемлеге"
+msgstr "Иң күп тапкыр каралган битләр исемлеге."
 
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:30
 msgid "A list of users and visitors who are currently online."
-msgstr "Он-лайн кулланучылар"
+msgstr "Он-лайн кулланучылар."
 
 #: help_text.php:278
 msgid "A media object is a record in the family tree which contains information about a media file.  This information may include a title, a copyright notice, a transcript, privacy restrictions, etc.  The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
@@ -744,10 +739,10 @@ msgstr ""
 
 #: login.php:252
 msgid "A new password has been requested for your user name."
-msgstr "Сезнең кулланучы исеме өчен серсүзне үзгәртүне сорап мөрәҗәгать алынды"
+msgstr "Сезнең кулланучы исеме өчен серсүзне үзгәртүне сорап мөрәҗәгать алынды."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
-#: login.php:568
+#: login.php:567
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr ""
@@ -771,97 +766,98 @@ msgstr ""
 #: app/Module/PedigreeReportModule.php:32
 #: modules_v3/pedigree_report/report.xml:4
 msgid "A report of an individual’s ancestors, formatted as a tree."
-msgstr "Шәхеснең ата-бабалары турындагы отчет, агач рәвешендә"
+msgstr "Шәхеснең ата-бабалары турындагы отчет, агач рәвешендә."
 
 #. I18N: Description of the “Ancestors” module
 #: app/Module/AhnentafelReportModule.php:32
 #: modules_v3/ahnentafel_report/report.xml:5
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr "Шәхеснең ата-бабалары турында язма отчет"
+msgstr "Шәхеснең ата-бабалары турында язма отчет."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyReportModule.php:32
 #: modules_v3/descendancy_report/report.xml:4
 msgid "A report of an individual’s descendants, in a narrative style."
-msgstr "Шәхеснең балалары буенча отчет (текст рәвешендә)"
+msgstr "Шәхеснең балалары буенча отчет (текст рәвешендә)."
 
 #. I18N: Description of the “Individual” module
 #: app/Module/IndividualReportModule.php:32
 #: modules_v3/individual_report/report.xml:4
 msgid "A report of an individual’s details."
-msgstr "Шәхеснең тәфсилле мәгълүматлары буенча отчет"
+msgstr "Шәхеснең тәфсилле мәгълүматлары буенча отчет."
 
 #: modules_v3/fact_sources/report.xml:4
 msgid "A report of facts which are supported by a given source."
-msgstr "Бирелгән чыганакка нигезләнгән фактлар отчеты"
+msgstr "Бирелгән чыганакка нигезләнгән фактлар отчеты."
 
 #. I18N: Description of the “Family” module
 #: app/Module/FamilyGroupReportModule.php:32
 #: modules_v3/family_group_report/report.xml:4
 msgid "A report of family members and their details."
-msgstr "Гаилә членнары һәм аларның мәгълүмәтләре"
+msgstr "Гаилә членнары һәм аларның мәгълүмәтләре."
 
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:32 modules_v3/death_report/report.xml:4
 msgid "A report of individuals who died in a given time or place."
-msgstr "Бирелгән вакытта яки урында вафат булучылар буенча отчет"
+msgstr "Бирелгән вакытта яки урында вафат булучылар буенча отчет."
 
 #. I18N: Description of the “Occupations” module
 #: app/Module/OccupationReportModule.php:32
 #: modules_v3/occupation_report/report.xml:4
 msgid "A report of individuals who had a given occupation."
-msgstr "Бирелгән эштә эшләгән шәхесләр буенча отчет"
+msgstr "Бирелгән эштә эшләгән шәхесләр буенча отчет."
 
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:32 modules_v3/birth_report/report.xml:4
 msgid "A report of individuals who were born in a given time or place."
-msgstr "Бирелгән вакыт яки урында туган шәхесләр исемлеге"
+msgstr "Бирелгән вакыт яки урында туган шәхесләр исемлеге."
 
 #. I18N: Description of the “Cemeteries” module
 #: app/Module/CemeteryReportModule.php:32
 #: modules_v3/cemetery_report/report.xml:4
 msgid "A report of individuals who were buried in a given place."
-msgstr "Бирелгән урында күмелгән шәхесләр отчеты"
+msgstr "Бирелгән урында күмелгән шәхесләр отчеты."
 
 #. I18N: Description of the “Marriages” module
 #: app/Module/MarriageReportModule.php:32
 #: modules_v3/marriage_report/report.xml:4
 msgid "A report of individuals who were married in a given time or place."
-msgstr "Бирелгән вакытта яки урында өйләнешүчеләр буенча отчет"
+msgstr "Бирелгән вакытта яки урында өйләнешүчеләр буенча отчет."
 
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:32 modules_v3/change_report/report.xml:4
 msgid "A report of recent and pending changes."
-msgstr "Кптән түгелге һәм тәмамланмаган үзгәрешләр отчеты"
+msgstr "Кптән түгелге һәм тәмамланмаган үзгәрешләр отчеты."
 
 #. I18N: Description of the “Related families”
 #: app/Module/IndividualFamiliesReportModule.php:32
 #: modules_v3/individual_ext_report/report.xml:4
 msgid "A report of the families that are closely related to an individual."
-msgstr "Шәхеснең якын туганнарының гаиләләре буенча отчет"
+msgstr "Шәхеснең якын туганнарының гаиләләре буенча отчет."
 
 #. I18N: Description of the “Related individuals” module
 #: app/Module/RelatedIndividualsReportModule.php:32
 #: modules_v3/relative_ext_report/report.xml:4
 msgid "A report of the individuals that are closely related to an individual."
-msgstr "Шәхеснең якын туганнары буенча отчет"
+msgstr "Шәхеснең якын туганнары буенча отчет."
 
 #. I18N: Description of the “Source” module
 #: app/Module/FactSourcesReportModule.php:32
 msgid "A report of the information provided by a source."
-msgstr "Чыганакта күрсәтелгән мәгълүматлар буенча отчет"
+msgstr "Чыганакта күрсәтелгән мәгълүматлар буенча отчет."
 
 #. I18N: Description of the “Missing data”
 #: app/Module/MissingFactsReportModule.php:32
 #: modules_v3/missing_facts_report/report.xml:4
 msgid "A report of the information that is missing for an individual and their relatives."
-msgstr "Мәгълүматлары кертелеп бетмәгән шәхесләр һәм аларның туганнары буенча отчет"
+msgstr ""
+"Мәгълүматлары кертелеп бетмәгән шәхесләр һәм аларның туганнары буенча отчет."
 
 #. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
 #: app/Module/BatchUpdate/BirthDeathMarriageReportModule.php:32
 #: modules_v3/bdm_report/report.xml:4
 msgid "A report of vital records for a given date or place."
-msgstr "Бирелгән дата яки урындагы мөһим вакыйгалар буенча отчет"
+msgstr "Бирелгән дата яки урындагы мөһим вакыйгалар буенча отчет."
 
 #: admin_users.php:505
 msgid "A role is a set of access rights, which give permission to view data, change configuration settings, etc.  Access rights are assigned to roles, and roles are granted to users.  Each family tree can assign different access to each role, and users can have a different role in each family tree."
@@ -870,27 +866,28 @@ msgstr ""
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarSidebarModule.php:32
 msgid "A sidebar showing an alphabetic list of all the families in the family tree."
-msgstr "Шәҗәрәдәге гаиләләрне алфавит тәртибендә күрсәтүче ян-такта"
+msgstr "Шәҗәрәдәге гаиләләрне алфавит тәртибендә күрсәтүче ян-такта."
 
 #. I18N: Description of “Individuals” module
 #: app/Module/IndividualSidebarModule.php:32
 msgid "A sidebar showing an alphabetic list of all the individuals in the family tree."
-msgstr "Шәҗәрәдәге барлык шәхеслзрне алфавит тәртибендә күрсәтүче ян-такта"
+msgstr "Шәҗәрәдәге барлык шәхеслзрне алфавит тәртибендә күрсәтүче ян-такта."
 
 #. I18N: Description of the “Family navigator” module
 #: app/Module/FamilyNavigatorModule.php:35
 msgid "A sidebar showing an individual’s close families and relatives."
-msgstr "Шәхеснең якын туганнарын күрчәтүче ян-такта"
+msgstr "Шәхеснең якын туганнарын күрчәтүче ян-такта."
 
 #. I18N: Description of the “Extra information” module
 #: app/Module/ExtraInformationModule.php:31
 msgid "A sidebar showing non-genealogy information about an individual."
-msgstr "Шәхескә кагылышлы, ләкин генеалогик булмаган мәгълүматны күрсәтүче ян-такта"
+msgstr ""
+"Шәхескә кагылышлы, ләкин генеалогик булмаган мәгълүматны күрсәтүче ян-такта."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyModule.php:34
 msgid "A sidebar showing the descendants of an individual."
-msgstr "Шәхеснең балаларын күрсәтүче ян-такта"
+msgstr "Шәхеснең балаларын күрсәтүче ян-такта."
 
 #. I18N: Description of the “Families” module
 #: app/Module/RelativesTabModule.php:30
@@ -900,17 +897,17 @@ msgstr "Шәхеснең якын туганнарын күрсәтүче өле
 #. I18N: Description of the “Facts and events” module
 #: app/Module/IndividualFactsTabModule.php:30
 msgid "A tab showing the facts and events of an individual."
-msgstr "Шәхеснең фактларын һәм вакыйгаларын күрсәтә торган блок"
+msgstr "Шәхеснең фактларын һәм вакыйгаларын күрсәтә торган блок."
 
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:32
 msgid "A tab showing the media objects linked to an individual."
-msgstr "Шәхеснең медиа обьектларын күрсәтә торган блок"
+msgstr "Шәхеснең медиа обьектларын күрсәтә торган блок."
 
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:32
 msgid "A tab showing the notes attached to an individual."
-msgstr "Шәхескә кагылышлы искәрмәләрне күрсәтүче блок"
+msgstr "Шәхескә кагылышлы искәрмәләрне күрсәтүче блок."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourcesTabModule.php:32
@@ -1267,7 +1264,7 @@ msgstr "Бу шәхескә генә кагылышлы язма өстәргә.
 #: app/Module/ClippingsCartModule.php:122
 #: app/Module/ClippingsCartModule.php:540
 msgid "Add just this source."
-msgstr "Шушы чыганакны гына өстәргә"
+msgstr "Шушы чыганакны гына өстәргә."
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:157
 msgid "Add links"
@@ -1292,7 +1289,7 @@ msgstr "Яңа графа өстәргә"
 #. I18N: Description of the “Stories” module
 #: app/Module/StoriesModule.php:30
 msgid "Add narrative stories to individuals in the family tree."
-msgstr "Шәҗәрәдәге шәхесләр турындагы хикәяләр / кызыклы хәлләр өстәргә"
+msgstr "Шәҗәрәдәге шәхесләр турындагы хикәяләр / кызыклы хәлләр өстәргә."
 
 #: app/Module/ClippingsCartModule.php:87
 #: app/Module/ClippingsCartModule.php:506
@@ -1347,7 +1344,7 @@ msgstr "Бу шәхес, аның хәләл җефете һәм балалар�
 #: app/Module/ClippingsCartModule.php:123
 #: app/Module/ClippingsCartModule.php:541
 msgid "Add this source and families/individuals linked to it."
-msgstr "Шушы чыганакны һәм аңа бәйләнешле гаиләләрне/шәхесләрне өстәргә"
+msgstr "Шушы чыганакны һәм аңа бәйләнешле гаиләләрне/шәхесләрне өстәргә."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:968
@@ -1603,7 +1600,9 @@ msgstr ""
 
 #: login.php:255
 msgid "After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
-msgstr "Серсүзне үзгәртү өчен, системага кергәннән соң “Минем бит” менюсыннан “Минем хисап язмасы” пунктын сайлагыз"
+msgstr ""
+"Серсүзне үзгәртү өчен, системага кергәннән соң “Минем бит” менюсыннан “Минем "
+"хисап язмасы” пунктын сайлагыз."
 
 #. I18N: gedcom tag AGE
 #: app/Controller/TimelineController.php:236
@@ -1811,12 +1810,14 @@ msgstr ""
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:32
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr "\"Медиа\" блогына альтернатив блок, һәм мөмкинлекләре киңәйтелгән сурәт күрсәткеч"
+msgstr ""
+"\"Медиа\" блогына альтернатив блок, һәм мөмкинлекләре киңәйтелгән сурәт "
+"күрсәткеч."
 
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php:30
 msgid "An alternative way to display charts."
-msgstr "Сызымнарны күрсәтенең башка ысулы"
+msgstr "Сызымнарны күрсәтенең башка ысулы."
 
 #. I18N: Description of the “Census assistant” module
 #: app/Module/CensusAssistantModule.php:30
@@ -1826,12 +1827,12 @@ msgstr "Халыкны исәпкә алу язмаларын кертүнең �
 #. I18N: Description of the “Login” module
 #: modules_v3/login_block/LoginBlockModule.php:30
 msgid "An alternative way to login and logout."
-msgstr "Системага керү һәм чыгуның өстәмә юлы"
+msgstr "Системага керү һәм чыгуның өстәмә юлы."
 
 #. I18N: Description of the “Theme change” module
 #: app/Module/ThemeSelectModule.php:30
 msgid "An alternative way to select a new theme."
-msgstr "Яңа бизәлешне сайлауның алтернатив ысулы"
+msgstr "Яңа бизәлешне сайлауның алтернатив ысулы."
 
 #: help_text.php:53
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
@@ -1844,7 +1845,7 @@ msgstr ""
 #. I18N: Description of the “Edit” module
 #: app/Module/PageMenuModule.php:30
 msgid "An edit menu for individuals, families, sources, etc."
-msgstr "Шәхесләр, гаиләләр, чыганаклар һ.б. үзгәртү менюсы"
+msgstr "Шәхесләр, гаиләләр, чыганаклар һ.б. үзгәртү менюсы."
 
 #: admin_site_upgrade.php:342 admin_site_upgrade.php:364
 #: admin_site_upgrade.php:374 admin_site_upgrade.php:458
@@ -1854,7 +1855,7 @@ msgstr ""
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:36
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
-msgstr "Шәхеснең барлык ата-бабаларын һәм балаларын күрсәтүче интерактив агач"
+msgstr "Шәхеснең барлык ата-бабаларын һәм балаларын күрсәтүче интерактив агач."
 
 #: setup.php:937
 msgid "An unexpected database error occurred."
@@ -1941,7 +1942,7 @@ msgstr ""
 #. I18N: Description of the “Batch update” module
 #: app/Module/BatchUpdateModule.php:63
 msgid "Apply automatic corrections to your genealogy data."
-msgstr "Генеалогик мәгълүматларга автомат төзәтүләрне кулланырга"
+msgstr "Генеалогик мәгълүматларга автомат төзәтүләрне кулланырга."
 
 #: admin_trees_download.php:173 app/Module/ClippingsCartModule.php:194
 #: app/Module/ClippingsCartModule.php:202
@@ -2779,7 +2780,7 @@ msgstr "Зәңгәр Диңгез"
 
 #: message.php:135
 msgid "Body"
-msgstr "Эчтәлек:"
+msgstr "Эчтәлек"
 
 #: app/Gedcom/GedcomCodeTemp.php:102
 msgid "Bogota, Colombia"
@@ -3107,7 +3108,7 @@ msgstr ""
 #. I18N: Help text for the "Port number" site configuration setting
 #: admin_site_config.php:347
 msgid "By default, SMTP works on port 25."
-msgstr "Алдан килешенгән SMTP порт номеры 25 була"
+msgstr "Алдан килешенгән SMTP порт номеры 25 була."
 
 #: app/Module/GoogleMapsModule.php:4555
 msgid "By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used."
@@ -3210,7 +3211,7 @@ msgstr ""
 
 #: statistics.php:604
 msgid "Categories"
-msgstr "Категорияләр:"
+msgstr "Категорияләр"
 
 #. I18N: gedcom tag CAUS
 #: app/Gedcom/GedcomTag.php:243
@@ -3338,7 +3339,7 @@ msgstr "Үзгәрешләр"
 
 #. I18N: title for list of recent changes
 #: app/Module/RecentChangesModule.php:68
-#, fuzzy, php-format
+#, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "Соңгы %s көн үзгәрешләре"
@@ -3650,7 +3651,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:81
 #, php-format
 msgid "Click %s to choose individual as head of family."
-msgstr "Шәхесне Гаилә башлыгы буларак күрсәтү өчен, монда чиертегез: %s"
+msgstr "Шәхесне Гаилә башлыгы буларак күрсәтү өчен, монда чиертегез: %s."
 
 #: edit_interface.php:1747
 msgid "Click a row, then drag-and-drop to re-order media"
@@ -3670,7 +3671,9 @@ msgstr ""
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:84
 msgid "Click name to add individual to add links list."
-msgstr "Берәр шәхесне Бәйләнеш Өстәү Исемлегенә кертер өчен, Исем төймәсенә чиертегез"
+msgstr ""
+"Берәр шәхесне Бәйләнеш Өстәү Исемлегенә кертер өчен, Исем төймәсенә "
+"чиертегез."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:295
 msgid "Click on a title to go straight to it, or scroll down to read them all."
@@ -3679,7 +3682,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:69
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:80
 msgid "Click to choose individual as head of family."
-msgstr "Гаилә башлыгы буларак сайланган шәхес язмасына чиертегез"
+msgstr "Гаилә башлыгы буларак сайланган шәхес язмасына чиертегез."
 
 #: help_text.php:386
 msgid "Clicking the “+” icon will open the GEDFact shared note assistant window.<br>Specific help will be found there.<br><br>When you click the “save” button, the ID of the shared note will be pasted here."
@@ -3747,7 +3750,7 @@ msgstr ""
 msgid "Comment"
 msgstr "Комментар"
 
-#: login.php:323 login.php:349 login.php:490
+#: login.php:323 login.php:349 login.php:489
 msgid "Comments"
 msgstr "Искәрмәләр"
 
@@ -3759,7 +3762,7 @@ msgstr "Законлы никах"
 #. I18N: Description of the “Messages” module
 #: app/Module/UserMessagesModule.php:30
 msgid "Communicate directly with other users, using private messages."
-msgstr "Башка кулланучылар белән турыдан-туры, хосусый хәбәрләр аша аралашу"
+msgstr "Башка кулланучылар белән турыдан-туры, хосусый хәбәрләр аша аралашу."
 
 #: app/Stats.php:6117
 msgid "Comoros"
@@ -3808,7 +3811,7 @@ msgstr ""
 msgid "Configure"
 msgstr "Көйләргә"
 
-#: admin_users.php:347 edituser.php:213 login.php:474
+#: admin_users.php:347 edituser.php:213 login.php:473
 msgid "Confirm password"
 msgstr "Серсүзне раслагыз"
 
@@ -3941,9 +3944,11 @@ msgstr ""
 msgid "Cote d’Ivoire"
 msgstr ""
 
-#: login.php:645
+#: login.php:633
 msgid "Could not verify the information you entered.  Please try again or contact the site administrator for more information."
-msgstr "Сез керткән мәгълүматлар тикшерүне үтә алмады. Тагын бер кат кертеп карагыз, яки сайт администраторына мөрәҗәгать итегез"
+msgstr ""
+"Сез керткән мәгълүматлар тикшерүне үтә алмады. Тагын бер кат кертеп карагыз, "
+"яки сайт администраторына мөрәҗәгать итегез."
 
 #: app/Stats.php:5091
 msgid "Count"
@@ -4235,10 +4240,6 @@ msgstr "Мәгълүматлар"
 msgid "Data folder"
 msgstr ""
 
-#: login.php:639
-msgid "Data was not correct, please try again"
-msgstr "Мәгълүматлар дөрес түгел, төзәтеп тагын кертеп карагыз"
-
 #: setup.php:371
 msgid "Database and table names"
 msgstr ""
@@ -4422,7 +4423,7 @@ msgstr ""
 
 #: app/Module/UserMessagesModule.php:79
 msgid "Date sent"
-msgstr "Җибәрелү датасы:"
+msgstr "Җибәрелү датасы"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:747
@@ -4946,7 +4947,7 @@ msgstr "Тасвирлама"
 msgid "Description META tag"
 msgstr ""
 
-#: login.php:457
+#: login.php:456
 msgid "Desired password"
 msgstr "Серсүз сайлагыз"
 
@@ -5097,12 +5098,12 @@ msgstr "Барысын да күрсәтергә"
 #. I18N: Description of the “Favorites” module
 #: app/Module/FamilyTreeFavoritesModule.php:37
 msgid "Display and manage a family tree’s favorite pages."
-msgstr "Нәсел агачының фаворит битләрен күрсәтергә һәм көйләргә"
+msgstr "Нәсел агачының фаворит битләрен күрсәтергә һәм көйләргә."
 
 #. I18N: Description of the “Favorites” module
 #: app/Module/UserFavoritesModule.php:29
 msgid "Display and manage a user’s favorite pages."
-msgstr "Кулланучының фаворит битләрен күрсәтергә / көйләргә"
+msgstr "Кулланучының фаворит битләрен күрсәтергә / көйләргә."
 
 #: app/Module/GoogleMapsModule.php:498
 msgid "Display map coordinates"
@@ -5110,7 +5111,7 @@ msgstr "Карта Координаталарын Күрсәтергә"
 
 #: app/Module/GoogleMapsModule.php:487
 msgid "Display short placenames"
-msgstr "Урыннарның кыскартылган исемнәрен күрсәтергә."
+msgstr "Урыннарның кыскартылган исемнәрен күрсәтергә"
 
 #. I18N: gedcom tag DIV
 #: app/Gedcom/GedcomTag.php:375
@@ -5337,11 +5338,11 @@ msgstr ""
 
 #: app/Module/StoriesModule.php:90 app/Module/StoriesModule.php:172
 msgid "Edit story"
-msgstr "Хикәяне үзгәртергә."
+msgstr "Хикәяне үзгәртергә"
 
 #: app/Tree.php:562
 msgid "Edit this individual and replace their details with your own."
-msgstr "Шәхес турындагы мәгълүматларга үзгәрешләр кертергә"
+msgstr "Шәхес турындагы мәгълүматларга үзгәрешләр кертергә."
 
 #: admin_users.php:268
 msgid "Edit user"
@@ -5651,7 +5652,7 @@ msgid "Execution statistics"
 msgstr ""
 
 #. I18N: placeholder text for registration-comments field
-#: login.php:494
+#: login.php:493
 msgid "Explain why you are requesting an account."
 msgstr ""
 
@@ -5915,7 +5916,7 @@ msgstr "Гаилә навигаторы"
 #. I18N: Description of the “GEDCOM News” module
 #: app/Module/FamilyTreeNewsModule.php:30
 msgid "Family news and site announcements."
-msgstr "Гаилә яңалыклары һәм сайт белдерүләре"
+msgstr "Гаилә яңалыклары һәм сайт белдерүләре."
 
 #. I18N: A title/heading. %s is an individual’s name
 #: app/Controller/FamilyBookController.php:368
@@ -5989,7 +5990,7 @@ msgstr ""
 
 #: app/Theme/BaseTheme.php:899
 msgid "Family with spouse"
-msgstr "Гаиләсе (хәләл җефет белән):"
+msgstr "Гаиләсе (хәләл җефет белән)"
 
 #: app/Module/FamilyTreeStatisticsModule.php:167
 #: app/Module/FamilyTreeStatisticsModule.php:379
@@ -6141,11 +6142,6 @@ msgstr "Файлның зурлыгы"
 
 #: includes/functions/functions.php:58
 msgid "File successfully uploaded"
-msgstr ""
-
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:65
-msgid "THe file was only partially uploaded.  Please try again."
 msgstr ""
 
 #. I18N: gedcom tag FILE
@@ -6319,7 +6315,7 @@ msgstr ""
 #. I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names
 #: admin_trees_manage.php:285
 #, php-format
-msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then the you would need to remove %3$s."
+msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
 msgstr ""
 
 #: admin_users.php:590
@@ -6328,15 +6324,18 @@ msgstr ""
 
 #: app/Theme/BaseTheme.php:262
 msgid "For help with genealogy questions contact"
-msgstr "Нәсел агачы мәгълүматлар базасы буенча сораулар белән түбәндәге адреска мөрәҗәгать итегез:"
+msgstr ""
+"Нәсел агачы мәгълүматлар базасы буенча сораулар белән түбәндәге адреска "
+"мөрәҗәгать итегез"
 
 #: app/Theme/BaseTheme.php:273
 msgid "For technical support and information contact"
-msgstr "Ярдәм һәм өстәмә мәгълүмат өчен түбәндәге адрес буенча мөрәҗәгать итегез:"
+msgstr ""
+"Ярдәм һәм өстәмә мәгълүмат өчен түбәндәге адрес буенча мөрәҗәгать итегез"
 
 #: app/Theme/BaseTheme.php:251
 msgid "For technical support or genealogy questions, please contact"
-msgstr "Сайтка кагылышлы сораулар белән түбәндәге адреска мөрәҗәгать итегез:"
+msgstr "Сайтка кагылышлы сораулар белән түбәндәге адреска мөрәҗәгать итегез"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:262
@@ -6651,7 +6650,7 @@ msgstr ""
 
 #: search.php:233
 msgid "Given name"
-msgstr "Исеме, әтисенең исеме:"
+msgstr "Исеме, әтисенең исеме"
 
 #. I18N: gedcom tag GIVN
 #: app/Gedcom/GedcomTag.php:501
@@ -6879,7 +6878,7 @@ msgstr "Крематорийда яндырылган"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:55
 msgid "Head of household"
-msgstr "Йорт хуҗасы:"
+msgstr "Йорт хуҗасы"
 
 #. I18N: gedcom tag HEAD
 #: app/Gedcom/GedcomTag.php:509
@@ -6916,7 +6915,7 @@ msgstr ""
 msgid "Hello %s…<br>Thank you for your registration."
 msgstr ""
 
-#: login.php:317 login.php:566
+#: login.php:317 login.php:565
 msgid "Hello administrator…"
 msgstr "Исәнмесез, администратор…"
 
@@ -7183,7 +7182,7 @@ msgid "If you are the website administrator, you should check that:"
 msgstr ""
 
 #: site-unavailable.php:109
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
 msgstr ""
 
 #: admin_trees_manage.php:269
@@ -7234,7 +7233,7 @@ msgid "If you try to exceed these limits, you may experience server time-outs an
 msgstr ""
 
 #: admin_site_config.php:507
-msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatcially."
+msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr ""
 
 #. I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting
@@ -7339,7 +7338,7 @@ msgstr ""
 
 #: lifespan.php:150
 msgid "Include the individual’s immediate family?"
-msgstr "Шәхеснең гаиләсендәге туганнарын да өстәргә"
+msgstr "Шәхеснең гаиләсендәге туганнарын да өстәргә?"
 
 #: app/Stats.php:6173
 msgid "India"
@@ -8034,12 +8033,12 @@ msgstr ""
 
 #: app/Module/FamilyTreeNewsModule.php:163
 msgid "Limit"
-msgstr "Чик:"
+msgstr "Чик"
 
 #. I18N: Limit display by [age/number]
 #: app/Module/FamilyTreeNewsModule.php:154
 msgid "Limit display by"
-msgstr "Күрсәтелгән белдерүләр саны чиге:"
+msgstr "Күрсәтелгән белдерүләр саны чиге"
 
 #: app/Module/RelativesTabModule.php:344 edit_interface.php:990
 #: edit_interface.php:1049
@@ -8123,7 +8122,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:4500
 msgid "Location not removed: this location contains sub-locations"
-msgstr "Урын бетерелмәде - аның түбәнрәк дәрәҗәле урыннары бар."
+msgstr "Урын бетерелмәде - аның түбәнрәк дәрәҗәле урыннары бар"
 
 #: app/Gedcom/GedcomCodeRela.php:177
 msgid "Lodger"
@@ -8607,7 +8606,7 @@ msgstr "Өйләнешкән гасыр буенча"
 #: app/Gedcom/GedcomTag.php:1557 modules_v3/cemetery_report/report.xml:7
 #: modules_v3/death_report/report.xml:10
 msgid "Married name"
-msgstr "Фамилия в браке:"
+msgstr "Фамилия в браке"
 
 #: app/Gedcom/GedcomTag.php:1563
 msgid "Married surname"
@@ -8632,7 +8631,7 @@ msgstr "Текст тәңгәл булсын, хәтта сүз уртасынд
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:126
 msgid "Match the exact text, unless it occurs in the middle of a word."
-msgstr "Текст тәңгәл булсын, суз уртасында булганнан кала"
+msgstr "Текст тәңгәл булсын, суз уртасында булганнан кала."
 
 #: app/Stats.php:6220
 msgid "Mauritania"
@@ -8714,7 +8713,7 @@ msgstr ""
 #. I18N: Label for search field
 #: find.php:191
 msgid "Media contains"
-msgstr "Медиа исеменә бу кергән:"
+msgstr "Медиа исеменә бу кергән"
 
 #: admin_media.php:702 admin_media_upload.php:198
 msgid "Media file"
@@ -8958,11 +8957,6 @@ msgstr "Google Map картасын кимендә (минимум) һәм кү�
 #. I18N: A configuration setting
 #: admin_trees_config.php:1203
 msgid "Minimum number of occurrences to be a “common surname”"
-msgstr ""
-
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:71
-msgid "THe PHP temporary folder is missing."
 msgstr ""
 
 #. I18N: Name of a module/report
@@ -9289,18 +9283,18 @@ msgstr ""
 #: modules_v3/occupation_report/report.xml:40
 #: modules_v3/relative_ext_report/report.xml:47
 msgid "Name"
-msgstr "Фамилиясе, исеме, әтисенең исеме:"
+msgstr "Фамилиясе, исеме, әтисенең исеме"
 
 #. I18N: gedcom tag REPO:NAME
 #: app/Gedcom/GedcomTag.php:598
 msgctxt "Repository"
 msgid "Name"
-msgstr "Фамилиясе, исеме, әтисенең исеме:"
+msgstr "Фамилиясе, исеме, әтисенең исеме"
 
 #. I18N: Label for search field
 #: find.php:155 find.php:172
 msgid "Name contains"
-msgstr "Исемгә болар кергән:"
+msgstr "Исемгә болар кергән"
 
 #: app/Gedcom/GedcomTag.php:607
 msgid "Name in Hebrew"
@@ -9443,7 +9437,7 @@ msgid "New registration at %s"
 msgstr ""
 
 #. I18N: %s is a server name/URL
-#: login.php:585
+#: login.php:584
 #, php-format
 msgid "New user at %s"
 msgstr ""
@@ -9552,7 +9546,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:911
 msgid "No ancestors in the database."
-msgstr "Мәгълүматлар базасында ата-бабалары табылмады"
+msgstr "Мәгълүматлар базасында ата-бабалары табылмады."
 
 #: admin_trees_config.php:35
 msgid "No calendar conversion"
@@ -9597,17 +9591,17 @@ msgstr "Бүген вакыйгалар юк."
 #: includes/functions/functions_print_lists.php:2010
 #: includes/functions/functions_print_lists.php:2125
 msgid "No events exist for tomorrow."
-msgstr "Иртәгә вакыйгалар юк"
+msgstr "Иртәгә вакыйгалар юк."
 
 #: includes/functions/functions_print_lists.php:2002
 #: includes/functions/functions_print_lists.php:2117
 msgid "No events for living individuals exist for today."
-msgstr "Бүген исән шәхесләргә кагылышлы вакыйгалар юк"
+msgstr "Бүген исән шәхесләргә кагылышлы вакыйгалар юк."
 
 #: includes/functions/functions_print_lists.php:2017
 #: includes/functions/functions_print_lists.php:2132
 msgid "No events for living individuals exist for tomorrow."
-msgstr "Исән шәхесләр өчен иртәгә вакыйгалар юк"
+msgstr "Исән шәхесләр өчен иртәгә вакыйгалар юк."
 
 #. I18N: translation for %s==1 is unused; it is translated separately as “tomorrow”
 #: includes/functions/functions_print_lists.php:2020
@@ -9619,7 +9613,7 @@ msgstr[0] ""
 
 #: app/Controller/FamilyController.php:174
 msgid "No facts for this family."
-msgstr "Бу гаилә буенча мәгълүмат юк"
+msgstr "Бу гаилә буенча мәгълүмат юк."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:68
@@ -9676,7 +9670,7 @@ msgstr "Күрсәтерлек язмалар юк"
 #: find.php:579 find.php:606 find.php:628 find.php:650 find.php:674
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:171 placelist.php:58
 msgid "No results found."
-msgstr "Эзләү нәтиҗәсез булды"
+msgstr "Эзләү нәтиҗәсез булды."
 
 #: includes/functions/functions_edit.php:603
 msgid "No temple - living ordinance"
@@ -9814,7 +9808,7 @@ msgstr ""
 
 #: app/Module/BatchUpdateModule.php:214
 msgid "Nothing found."
-msgstr "Берни табылмады"
+msgstr "Берни табылмады."
 
 #: app/Date/CalendarDate.php:336
 msgctxt "Abbreviation for November"
@@ -9868,7 +9862,7 @@ msgstr "Балалары булмаган гаиләләр саны"
 #: app/Module/ClippingsCartModule.php:524
 #: app/Module/ClippingsCartModule.php:527
 msgid "Number of generations"
-msgstr "Буыннар саны:"
+msgstr "Буыннар саны"
 
 #: app/Module/FamilyTreeNewsModule.php:159
 msgid "Number of items"
@@ -10287,22 +10281,22 @@ msgstr "Әти-әнисенең яше"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:381 admin_users.php:334 edituser.php:201
-#: login.php:188 login.php:254 login.php:539
+#: login.php:188 login.php:254 login.php:538
 #: modules_v3/login_block/LoginBlockModule.php:67 setup.php:437
 msgid "Password"
-msgstr "Серсүз:"
+msgstr "Серсүз"
 
 #: admin_users.php:71 edituser.php:126
 msgid "Passwords do not match."
 msgstr "Серсүзләр аерыла."
 
-#: edituser.php:207 login.php:468
+#: edituser.php:207 login.php:467
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”."
 msgstr ""
 
 #: edituser.php:131
 msgid "Passwords must contain at least 6 characters."
-msgstr "Серсүз ким дигәндә 6 хәрефтән торырга тиеш"
+msgstr "Серсүз ким дигәндә 6 хәрефтән торырга тиеш."
 
 #. I18N: Name of a report
 #: app/Controller/FanchartController.php:347
@@ -10454,7 +10448,7 @@ msgstr "Урыннарны Тикшерү"
 #. I18N: Label for search field
 #: find.php:211
 msgid "Place contains"
-msgstr "Урын исеменә түбәндәгеләр кергән:"
+msgstr "Урын исеменә түбәндәгеләр кергән"
 
 #: app/Module/TopPageViewsModule.php:136
 msgid "Place counts before or after name?"
@@ -10639,11 +10633,11 @@ msgstr "Электрон адрес дөрес түгел, төзәтеп кер
 #: app/Module/CensusAssistantModule.php:96 find.php:115 search.php:34
 #: search.php:46
 msgid "Please enter more than one character."
-msgstr "Бердән күбрәк хәреф кертегез"
+msgstr "Бердән күбрәк хәреф кертегез."
 
 #: message.php:104
 msgid "Please enter some message text before sending."
-msgstr "Хәбәрнең эчтәлеген кертегез"
+msgstr "Хәбәрнең эчтәлеген кертегез."
 
 #: message.php:125
 msgid "Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be used in any other way besides responding to this inquiry."
@@ -11033,7 +11027,7 @@ msgstr ""
 #. I18N: Description of the “Slide show” module
 #: app/Module/SlideShowModule.php:30
 msgid "Random images from the current family tree."
-msgstr "Агымдагы гаилә агачыннан очраклы сүрәт"
+msgstr "Агымдагы гаилә агачыннан очраклы сүрәт."
 
 #: app/Controller/FamilyController.php:103
 #: app/Module/RelativesTabModule.php:256 edit_interface.php:1833
@@ -11327,7 +11321,7 @@ msgstr ""
 #. I18N: Label for search field
 #: find.php:230
 msgid "Repository contains"
-msgstr "Репозиторий исеменә түбәндәгеләр кергән:"
+msgstr "Репозиторий исеменә түбәндәгеләр кергән"
 
 #: edit_interface.php:1563 includes/functions/functions_print_lists.php:1315
 msgid "Repository name"
@@ -11657,7 +11651,7 @@ msgstr ""
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:41
 msgid "Search for individuals to add to add Links list."
-msgstr "Өстәләсе Бәйләнешләр Исемлегенә өстәр өчен, Кешеләрне Эзләргә"
+msgstr "Өстәләсе Бәйләнешләр Исемлегенә өстәр өчен, Кешеләрне Эзләргә."
 
 #: app/Module/GoogleMapsModule.php:3986
 msgid "Search globally"
@@ -11723,7 +11717,7 @@ msgstr ""
 
 #: statistics.php:499
 msgid "Select chart type"
-msgstr "Сызым төрен сайлагыз:"
+msgstr "Сызым төрен сайлагыз"
 
 #: edit_interface.php:1252
 msgid "Select events"
@@ -11781,7 +11775,7 @@ msgctxt "MALE"
 msgid "Seller"
 msgstr ""
 
-#: app/Module/UserMessagesModule.php:72 login.php:547 message.php:136
+#: app/Module/UserMessagesModule.php:72 login.php:546 message.php:136
 msgid "Send"
 msgstr "Җибәрергә"
 
@@ -12024,7 +12018,7 @@ msgstr "Ачык Искәрмә"
 #. I18N: Label for search field
 #: find.php:250
 msgid "Shared note contains"
-msgstr "Искәрмәгә түбәндәгеләр кергән:"
+msgstr "Искәрмәгә түбәндәгеләр кергән"
 
 #: app/Theme/BaseTheme.php:1415
 #: includes/functions/functions_print_lists.php:1068 notelist.php:30
@@ -12192,7 +12186,7 @@ msgstr ""
 
 #: placelist.php:237
 msgid "Show all places in a list"
-msgstr "Географик урыннарны таблица рәвешендә күрсәтергә."
+msgstr "Географик урыннарны таблица рәвешендә күрсәтергә"
 
 #: app/Module/SourcesTabModule.php:62
 msgid "Show all sources"
@@ -12465,7 +12459,7 @@ msgstr ""
 
 #: app/Module/HtmlBlockModule.php:302
 msgid "Show the date and time of update"
-msgstr "Үзгәрешнең көнен һәм вакытын күрсәтергә."
+msgstr "Үзгәрешнең көнен һәм вакытын күрсәтергә"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:400
@@ -12483,12 +12477,14 @@ msgstr ""
 #. I18N: Description of the “Google Maps™” module
 #: app/Module/GoogleMapsModule.php:95
 msgid "Show the location of places and events using the Google Maps™ mapping service."
-msgstr "Географик урыннарны һәм вакыйгалар булган урыннырны Google Maps™ картасында күрсәтү"
+msgstr ""
+"Географик урыннарны һәм вакыйгалар булган урыннырны Google Maps™ картасында "
+"күрсәтү."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:151
 #: app/Module/HtmlBlockModule.php:309 app/Module/StoriesModule.php:220
 msgid "Show this block for which languages?"
-msgstr "Бу блокны нинди телләр өчен күрсәтергә"
+msgstr "Бу блокны нинди телләр өчен күрсәтергә?"
 
 #: admin_trees_config.php:122 admin_trees_config.php:129
 #: admin_trees_config.php:1072 includes/functions/functions_edit.php:176
@@ -12783,7 +12779,7 @@ msgstr ""
 #. I18N: Label for search field
 #: find.php:269
 msgid "Source contains"
-msgstr "Чыганакка түбәндәгеләр кергән:"
+msgstr "Чыганакка түбәндәгеләр кергән"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:2265 modules_v3/fact_sources/report.xml:6
@@ -12987,7 +12983,7 @@ msgstr "Республика/Өлкә"
 
 #: app/Module/UserMessagesModule.php:78 message.php:127
 msgid "Subject"
-msgstr "Тема:"
+msgstr "Тема"
 
 #. I18N: gedcom tag SUBN
 #: app/Gedcom/GedcomTag.php:811
@@ -13256,12 +13252,17 @@ msgstr ""
 msgid "The PGV to webtrees wizard is an automated process to assist administrators make the move from a PGV installation to a new webtrees one.  It will transfer all PGV GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:"
 msgstr ""
 
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:71
+msgid "The PHP temporary folder is missing."
+msgstr ""
+
 #: admin_users.php:97
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s"
 msgstr ""
 
-#: login.php:630
+#: login.php:627
 msgid "The administrator has been informed.  As soon as they give you permission to login, you can login with your user name and password."
 msgstr "Администратор хәбәрдар. Ул рөхсәт бирүгә, Сез системага керә алачаксыз (кулланучы исемен һәм серсүзне җыеп)."
 
@@ -13279,11 +13280,6 @@ msgstr ""
 
 #: app/Module/ClippingsCartModule.php:133
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple.  Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name.  There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
-msgstr ""
-
-#: login.php:596
-#, php-format
-msgid "The data for the user <b>%s</b> has been checked."
 msgstr ""
 
 #: site-unavailable.php:66
@@ -13380,11 +13376,16 @@ msgstr ""
 msgid "The file %s has been uploaded."
 msgstr ""
 
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:65
+msgid "The file was only partially uploaded.  Please try again."
+msgstr ""
+
 #. I18N: %s is a filename
 #: medialist.php:294 mediaviewer.php:111
 #, php-format
 msgid "The file “%s” does not exist."
-msgstr "\"%s\" исемле файлны табып булмады"
+msgstr "\"%s\" исемле файлны табып булмады."
 
 #: admin_site_clean.php:37 admin_site_upgrade.php:490
 #, php-format
@@ -13489,7 +13490,7 @@ msgstr ""
 
 #: mediafirewall.php:41
 msgid "The media file was not found in this family tree."
-msgstr "Бу нәсел агачында медиа файл табылмады"
+msgstr "Бу нәсел агачында медиа файл табылмады."
 
 #: admin_media_upload.php:223
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
@@ -13533,7 +13534,7 @@ msgstr ""
 
 #: setup.php:419
 msgid "The passwords do not match."
-msgstr "Серсүзләр тәңгәл түгел"
+msgstr "Серсүзләр тәңгәл түгел."
 
 #: admin_trees_config.php:219 admin_trees_config.php:341
 #, php-format
@@ -13622,6 +13623,11 @@ msgstr[0] ""
 msgid "The upgrade is complete."
 msgstr ""
 
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:62
+msgid "The uploaded file exceeds the allowed size."
+msgstr ""
+
 #: admin_users.php:788
 #, php-format
 msgid "The user %s has been deleted."
@@ -13638,7 +13644,7 @@ msgstr ""
 
 #: login.php:81 login.php:86
 msgid "The username or password is incorrect."
-msgstr "Куланучы исеме яки серсүз дөрес түгел"
+msgstr "Куланучы исеме яки серсүз дөрес түгел."
 
 #. I18N: Help text for the “Description META tag” configuration setting
 #: admin_trees_config.php:1000
@@ -13736,7 +13742,7 @@ msgstr "Бу шәхес буенча чыганак цитаталары юк."
 #: app/Module/ReviewChangesModule.php:69 app/Module/ReviewChangesModule.php:93
 #: app/Theme/BaseTheme.php:1831
 msgid "There are pending changes for you to moderate."
-msgstr "Сезнең карап чыгуыгыз соралган үзгәрешләр бар"
+msgstr "Сезнең карап чыгуыгыз соралган үзгәрешләр бар."
 
 #: app/Module/RecentChangesModule.php:73
 #, php-format
@@ -13925,7 +13931,8 @@ msgstr ""
 #: app/Stats.php:2809 app/Stats.php:3099 app/Stats.php:3953 app/Stats.php:4079
 #: app/Stats.php:4126 gedrecord.php:49 timeline.php:281
 msgid "This information is private and cannot be shown."
-msgstr "Бу шәхес турындагы тәфсилле мәгълүмат шәхсән (теләсә кем өчен ачык түгел); <br>"
+msgstr ""
+"Бу шәхес турындагы тәфсилле мәгълүмат шәхсән (теләсә кем өчен ачык түгел)."
 
 #: help_text.php:366
 msgid "This input box lets you change that year of the calendar.  Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>.  This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned.  Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits.  For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
@@ -14081,7 +14088,7 @@ msgstr ""
 
 #: mediafirewall.php:410
 msgid "This media file is broken and cannot be watermarked."
-msgstr "Бу медиа файл җимерек, мөһер куеп булмый"
+msgstr "Бу медиа файл җимерек, мөһер куеп булмый."
 
 #: mediaviewer.php:73
 msgid "This media object does not exist or you do not have permission to view it."
@@ -14122,7 +14129,7 @@ msgstr "Хәбәр %s адресына җибәреләчәк"
 
 #: setup.php:439
 msgid "This must be at least six characters long.  It is case-sensitive."
-msgstr "Кимендә 6 хәреф булырга тиеш. Кечкенә хәрефләр баш хәрефләрдән аерыла"
+msgstr "Кимендә 6 хәреф булырга тиеш. Кечкенә хәрефләр баш хәрефләрдән аерыла."
 
 #. I18N: Help text for the “Sender name” site configuration setting
 #: admin_site_config.php:319
@@ -14278,7 +14285,7 @@ msgstr ""
 
 #: setup.php:183
 #, php-format
-msgid "This server’s memory limit is %d MB and its CPU time limit is %d seconds."
+msgid "This server’s memory limit is %s MB and its CPU time limit is %s seconds."
 msgstr ""
 
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
@@ -14475,7 +14482,9 @@ msgstr ""
 
 #: app/Module/ResearchTaskModule.php:171
 msgid "To create new research tasks, you must first add “research task” to the list of facts and events in the family tree’s preferences."
-msgstr "Яңа тикшеренү эшләре өстәп булсын өчен, башта шәҗәрә көйләнешләндә фактлар һәм вакыйгалар исемлегенә Тикшеренү Эшләрен өстәргә кирәк"
+msgstr ""
+"Яңа тикшеренү эшләре өстәп булсын өчен, башта шәҗәрә көйләнешләндә фактлар "
+"һәм вакыйгалар исемлегенә Тикшеренү Эшләрен өстәргә кирәк."
 
 #. I18N: Help text for the “Format text and notes” configuration setting
 #: admin_trees_config.php:1544
@@ -14766,14 +14775,14 @@ msgstr "Вид"
 
 #: app/Module/GoogleMapsModule.php:477
 msgid "Type of place markers in Place Hierarchy"
-msgstr "Урыннар Иерархиясендәге тамгалар төре."
+msgstr "Урыннар Иерархиясендәге тамгалар төре"
 
 #. I18N: placeholder text for repeat-password field
-#: admin_users.php:350 login.php:479
+#: admin_users.php:350 login.php:478
 msgid "Type the password again."
 msgstr ""
 
-#: edituser.php:219 login.php:484 setup.php:443
+#: edituser.php:219 login.php:483 setup.php:443
 msgid "Type your password again, to make sure you have typed it correctly."
 msgstr ""
 
@@ -14826,7 +14835,7 @@ msgstr ""
 
 #: admin_trees_config.php:712
 msgid "Unable to find record with ID"
-msgstr "Язманы табып булмый, ID номеры:"
+msgstr "Язманы табып булмый, ID номеры"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/Gedcom/GedcomCodeStat.php:111
@@ -14959,11 +14968,6 @@ msgstr "Медиа файллар төяргә"
 msgid "Upload one or more media files from your local computer.  Media files can be pictures, video, audio, or other formats."
 msgstr ""
 
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:62
-msgid "The uploaded file exceeds the allowed size."
-msgstr ""
-
 #: app/Stats.php:6308
 msgid "Uruguay"
 msgstr ""
@@ -14990,7 +14994,7 @@ msgid "Use a “?” to match a single character, use “*” to match zero or m
 msgstr "Бер хәрефне туры китерер өчен, &laquo;?&raquo; тамгасын кулланыгыз, ноль яки күбрәк хәрефләр өчен &laquo;*&raquo; тамгасын."
 
 #. I18N: placeholder text for new-password field
-#: admin_users.php:337 login.php:462
+#: admin_users.php:337 login.php:461
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
@@ -15042,7 +15046,7 @@ msgstr ""
 msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the individual’s page."
 msgstr ""
 
-#: login.php:500
+#: login.php:499
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site.  You can also use this to enter any other comments you may have for the site administrator."
 msgstr ""
 
@@ -15074,7 +15078,7 @@ msgstr ""
 msgid "User options"
 msgstr ""
 
-#: login.php:527 login.php:533 login.php:590 login.php:594
+#: login.php:526 login.php:532 login.php:589 login.php:593
 msgid "User verification"
 msgstr "Кулланучыны тикшерү"
 
@@ -15086,7 +15090,7 @@ msgstr ""
 #. I18N: A site configuration setting
 #: admin_site_config.php:368 admin_users.php:321 admin_users.php:845
 #: app/Module/ResearchTaskModule.php:95 edituser.php:150 login.php:183
-#: login.php:253 login.php:320 login.php:347 login.php:535
+#: login.php:253 login.php:320 login.php:347 login.php:534
 #: modules_v3/login_block/LoginBlockModule.php:62
 msgid "Username"
 msgstr "Кулланучының исеме"
@@ -15097,11 +15101,6 @@ msgstr "Кулланучы исеме яки электрон адрес"
 
 #: admin_users.php:326 edituser.php:156 login.php:450
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr ""
-
-#: login.php:451
-#, php-format
-msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
 msgstr ""
 
 #. I18N: Menu entry
@@ -15189,9 +15188,9 @@ msgstr ""
 msgid "Veracruz, Mexico"
 msgstr ""
 
-#: login.php:348 login.php:543
+#: login.php:348 login.php:542
 msgid "Verification code"
-msgstr "Раслау коды:"
+msgstr "Раслау коды"
 
 #: admin_users.php:853
 msgid "Verified"
@@ -15407,7 +15406,7 @@ msgstr "Вес"
 #: app/Module/UserWelcomeModule.php:39
 #, php-format
 msgid "Welcome %s"
-msgstr "Сәлам, %s!"
+msgstr "Сәлам %s"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:444
@@ -15456,7 +15455,8 @@ msgstr ""
 
 #: message.php:140
 msgid "When you send this message you will receive a copy sent via email to the address you provided."
-msgstr "Хәбәр җибәрелгәч, аның күчермәсе Сез күрсәткән электрон адреска да җибәрелер"
+msgstr ""
+"Хәбәр җибәрелгәч, аның күчермәсе Сез күрсәткән электрон адреска да җибәрелер."
 
 #: admin_users.php:589
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations.  You specify the number of relationship steps that the user is allowed to see."
@@ -15617,7 +15617,7 @@ msgstr ""
 
 #: login.php:289 message.php:65
 msgid "You are not allowed to send messages that contain external links."
-msgstr "Тышкы сылтамалары булган хәбәрләр җибәрергә ярамый"
+msgstr "Тышкы сылтамалары булган хәбәрләр җибәрергә ярамый."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting
@@ -15636,9 +15636,10 @@ msgstr ""
 msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
 msgstr "Кияүдәге хатын-кызларны эзләү ансатрак булсын өчен, кияүдәге фамилияләрен дә кертү отышлы. <br>Ләкин барлык очракларда да хатыны ире фамилиясен ала торган булмаганга, игътибарлы булыгыз."
 
-#: login.php:632
+#: login.php:629
 msgid "You can now login with your user name and password."
-msgstr "Хәзер Сез үзегезнең кулланучы исеме һәм серсүз белән Системага керә аласыз"
+msgstr ""
+"Хәзер Сез үзегезнең кулланучы исеме һәм серсүз белән Системага керә аласыз."
 
 #: admin_site_upgrade.php:197
 msgid "You can re-enable these modules after the upgrade."
@@ -15676,15 +15677,15 @@ msgstr ""
 msgid "You do not have permission to view this page."
 msgstr ""
 
-#: login.php:576
+#: login.php:575
 msgid "You do not have to take any action; the user can now login."
-msgstr "Сезгә берни эшлисе юк, кулланучы хәзер системага керә ала"
+msgstr "Сезгә берни эшлисе юк, кулланучы хәзер системага керә ала."
 
 #: admin_site_merge.php:52
 msgid "You entered the same IDs.  You cannot merge the same records."
 msgstr "Нәкъ шундый ук ID номеры керттегез. Бер үк төрле язмаларны берләштереп булмый."
 
-#: login.php:628
+#: login.php:625
 msgid "You have confirmed your request to become a registered user."
 msgstr "Сез теркәлгән кулланучы булырга теләвегезне расладыгыз."
 
@@ -15715,7 +15716,7 @@ msgstr "Исемне кертүегез сорала"
 
 #: edituser.php:121
 msgid "You must enter a real name."
-msgstr "Чын исемегезне кертегез"
+msgstr "Чын исемегезне кертегез."
 
 #: edituser.php:116
 msgid "You must enter a user name."
@@ -15757,7 +15758,7 @@ msgstr ""
 msgid "You need to set up an administrator account.  This account can control all aspects of this webtrees installation.  Please choose a strong password."
 msgstr ""
 
-#: login.php:574
+#: login.php:573
 msgid "You now need to review the account details, and set the “approved” status to “yes”."
 msgstr ""
 
@@ -16284,7 +16285,7 @@ msgstr "кыскача исемлек"
 #: admin_trees_download.php:120 admin_trees_download.php:205
 #: admin_trees_manage.php:293 admin_trees_manage.php:719
 #: admin_trees_merge.php:200 admin_trees_renumber.php:280 login.php:219
-#: login.php:507 modules_v3/login_block/LoginBlockModule.php:93
+#: login.php:506 modules_v3/login_block/LoginBlockModule.php:93
 #: reportengine.php:127 reportengine.php:282 setup.php:190 setup.php:216
 #: setup.php:298 setup.php:384 setup.php:451
 msgid "continue"
@@ -16317,7 +16318,7 @@ msgstr "кызы"
 
 #: modules_v3/descendancy_report/report.xml:224
 msgid "daughter of"
-msgstr "бу шәхеснең кызы:"
+msgstr "бу шәхеснең кызы"
 
 #: includes/functions/functions.php:824
 msgctxt "child’s wife"
@@ -16963,145 +16964,145 @@ msgstr "улының улының хатыны"
 #: includes/functions/functions.php:1639 includes/functions/functions.php:1654
 #: includes/functions/functions.php:1667
 #, php-format
-msgid "great ×%d aunt"
+msgid "great ×%s aunt"
 msgstr ""
 
 #: includes/functions/functions.php:1641 includes/functions/functions.php:1656
 #: includes/functions/functions.php:1669
 #, php-format
-msgid "great ×%d aunt/uncle"
+msgid "great ×%s aunt/uncle"
 msgstr ""
 
 #: includes/functions/functions.php:2042 includes/functions/functions.php:2057
 #, php-format
-msgid "great ×%d grandchild"
+msgid "great ×%s grandchild"
 msgstr ""
 
 #: includes/functions/functions.php:2040 includes/functions/functions.php:2055
 #, php-format
-msgid "great ×%d granddaughter"
+msgid "great ×%s granddaughter"
 msgstr ""
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1912 includes/functions/functions.php:1922
 #: includes/functions/functions.php:1932 includes/functions/functions.php:1942
 #: includes/functions/functions.php:1954
 #, php-format
-msgid "great ×%d grandfather"
+msgid "great ×%s grandfather"
 msgstr ""
 
 #: includes/functions/functions.php:1914 includes/functions/functions.php:1924
 #: includes/functions/functions.php:1934 includes/functions/functions.php:1944
 #: includes/functions/functions.php:1956
 #, php-format
-msgid "great ×%d grandmother"
+msgid "great ×%s grandmother"
 msgstr ""
 
 #: includes/functions/functions.php:1916 includes/functions/functions.php:1926
 #: includes/functions/functions.php:1936 includes/functions/functions.php:1946
 #: includes/functions/functions.php:1958
 #, php-format
-msgid "great ×%d grandparent"
+msgid "great ×%s grandparent"
 msgstr ""
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:2038 includes/functions/functions.php:2053
 #, php-format
-msgid "great ×%d grandson"
+msgid "great ×%s grandson"
 msgstr ""
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1823 includes/functions/functions.php:1836
 #, php-format
-msgid "great ×%d nephew"
+msgid "great ×%s nephew"
 msgstr ""
 
 #: includes/functions/functions.php:1797
 #, php-format
-msgctxt "(a man’s) brother’s great ×(%d-1) grandson"
-msgid "great ×%d nephew"
+msgctxt "(a man’s) brother’s great ×(%s-1) grandson"
+msgid "great ×%s nephew"
 msgstr ""
 
 #: includes/functions/functions.php:1799
 #, php-format
-msgctxt "(a man’s) sister’s great ×(%d-1) grandson"
-msgid "great ×%d nephew"
+msgctxt "(a man’s) sister’s great ×(%s-1) grandson"
+msgid "great ×%s nephew"
 msgstr ""
 
 #: includes/functions/functions.php:1801
 #, php-format
-msgctxt "(a woman’s) great ×%d nephew"
-msgid "great ×%d nephew"
+msgctxt "(a woman’s) great ×%s nephew"
+msgid "great ×%s nephew"
 msgstr ""
 
 #: includes/functions/functions.php:1827 includes/functions/functions.php:1840
 #, php-format
-msgid "great ×%d nephew/niece"
+msgid "great ×%s nephew/niece"
 msgstr ""
 
 #: includes/functions/functions.php:1813
 #, php-format
-msgctxt "(a man’s) brother’s great ×(%d-1) grandchild"
-msgid "great ×%d nephew/niece"
+msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
+msgid "great ×%s nephew/niece"
 msgstr ""
 
 #: includes/functions/functions.php:1815
 #, php-format
-msgctxt "(a man’s) sister’s great ×(%d-1) grandchild"
-msgid "great ×%d nephew/niece"
+msgctxt "(a man’s) sister’s great ×(%s-1) grandchild"
+msgid "great ×%s nephew/niece"
 msgstr ""
 
 #: includes/functions/functions.php:1817
 #, php-format
-msgctxt "(a woman’s) great ×%d nephew/niece"
-msgid "great ×%d nephew/niece"
+msgctxt "(a woman’s) great ×%s nephew/niece"
+msgid "great ×%s nephew/niece"
 msgstr ""
 
 #: includes/functions/functions.php:1825 includes/functions/functions.php:1838
 #, php-format
-msgid "great ×%d niece"
+msgid "great ×%s niece"
 msgstr ""
 
 #: includes/functions/functions.php:1805
 #, php-format
-msgctxt "(a man’s) brother’s great ×(%d-1) granddaughter"
-msgid "great ×%d niece"
+msgctxt "(a man’s) brother’s great ×(%s-1) granddaughter"
+msgid "great ×%s niece"
 msgstr ""
 
 #: includes/functions/functions.php:1807
 #, php-format
-msgctxt "(a man’s) sister’s great ×(%d-1) granddaughter"
-msgid "great ×%d niece"
+msgctxt "(a man’s) sister’s great ×(%s-1) granddaughter"
+msgid "great ×%s niece"
 msgstr ""
 
 #: includes/functions/functions.php:1809
 #, php-format
-msgctxt "(a woman’s) great ×%d niece"
-msgid "great ×%d niece"
+msgctxt "(a woman’s) great ×%s niece"
+msgid "great ×%s niece"
 msgstr ""
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1637 includes/functions/functions.php:1665
 #, php-format
-msgid "great ×%d uncle"
+msgid "great ×%s uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1647
 #, php-format
-msgctxt "great ×(%d-1) grandfather’s brother"
-msgid "great ×%d uncle"
+msgctxt "great ×(%s-1) grandfather’s brother"
+msgid "great ×%s uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1649
 #, php-format
-msgctxt "great ×(%d-1) grandmother’s brother"
-msgid "great ×%d uncle"
+msgctxt "great ×(%s-1) grandmother’s brother"
+msgid "great ×%s uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1651
 #, php-format
-msgctxt "great ×(%d-1) grandparent’s brother"
-msgid "great ×%d uncle"
+msgctxt "great ×(%s-1) grandparent’s brother"
+msgid "great ×%s uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1579
@@ -18473,7 +18474,7 @@ msgstr ""
 
 #: statisticsplot.php:774
 msgid "less than"
-msgstr "моңа караганда әзрәк:"
+msgstr "моңа караганда әзрәк"
 
 #. I18N: Layout option for lists of surnames
 #: admin_trees_config.php:54 app/Module/OnThisDayModule.php:132
@@ -18552,9 +18553,9 @@ msgstr "максимум"
 #: app/Module/UpcomingAnniversariesModule.php:125
 #: app/Module/YahrzeitModule.php:250
 #, php-format
-msgid "maximum %d day"
-msgid_plural "maximum %d days"
-msgstr[0] "Иң күбе %d көн"
+msgid "maximum %s day"
+msgid_plural "maximum %s days"
+msgstr[0] "Иң күбе %s көн"
 
 #: admin_trees_config.php:404 admin_trees_config.php:428
 #: admin_trees_config.php:468 admin_trees_config.php:508
@@ -19232,7 +19233,7 @@ msgstr "улы"
 
 #: modules_v3/descendancy_report/report.xml:293
 msgid "son of"
-msgstr "бу шәхеснең улы:"
+msgstr "бу шәхеснең улы"
 
 #: includes/functions/functions.php:818
 msgctxt "child’s husband"
@@ -19769,9 +19770,10 @@ msgstr ""
 #: search_advanced.php:107 search_advanced.php:111 search_advanced.php:115
 #: search_advanced.php:166 search_advanced.php:167 search_advanced.php:168
 #, fuzzy, php-format
-msgid "±%d year"
-msgid_plural "±%d years"
-msgstr[0] "&plusmn;%d ел"
+msgid "±%s year"
+msgid_plural "±%s years"
+msgstr[0] "&plusmn;%s ел"
+msgstr[0] "±sd ел"
 
 #. I18N: Place a nickname in quotation marks
 #: app/Individual.php:1197 app/Individual.php:1215
@@ -19783,7 +19785,7 @@ msgstr ""
 #: app/Module/UserFavoritesModule.php:80
 #, php-format
 msgid "“%s” has been added to your favorites."
-msgstr "“%s” сезнең фаворитларга өстәлде"
+msgstr "“%s” сезнең фаворитларга өстәлде."
 
 #: app/Note.php:113 includes/functions/functions_print.php:98
 msgid "…"
@@ -19816,6 +19818,9 @@ msgstr ""
 
 #~ msgid "Create user"
 #~ msgstr "Кулланучы өстәргә"
+
+#~ msgid "Data was not correct, please try again"
+#~ msgstr "Мәгълүматлар дөрес түгел, төзәтеп тагын кертеп карагыз"
 
 #~ msgid "Descent steps"
 #~ msgstr "Балалары буыннары саны"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2015-03-12 21:11+0000\n"
+"POT-Creation-Date: 2015-03-13 10:03+0000\n"
 "PO-Revision-Date: 2014-11-24 21:34+0200\n"
 "Last-Translator: Meliza <meliza@amitys.com>\n"
 "Language: fi\n"
@@ -50,10 +50,6 @@ msgstr " / sukupuoli"
 #: statisticsplot.php:1356
 msgid " per time period"
 msgstr " aikajaksoa kohti"
-
-#: admin_trees_download.php:34
-msgid " — "
-msgstr ""
 
 #. I18N: Abbreviation for "number %s"
 #: includes/functions/functions_print_facts.php:187
@@ -189,50 +185,43 @@ msgstr "%H:%i:%s"
 
 #: app/Module/LoggedInUsersModule.php:51 app/Stats.php:5372
 #, php-format
-msgid "%d anonymous logged-in user"
-msgid_plural "%d anonymous logged-in users"
-msgstr[0] "%d tuntematon käyttäjä"
-msgstr[1] "%d tuntematonta käyttäjää"
+msgid "%s anonymous logged-in user"
+msgid_plural "%s anonymous logged-in users"
+msgstr[0] "%s tuntematon käyttäjä"
+msgstr[1] "%s tuntematonta käyttäjää"
 
 #: app/Module/LoggedInUsersModule.php:57 app/Stats.php:5382
 #, php-format
-msgid "%d logged-in user"
-msgid_plural "%d logged-in users"
-msgstr[0] "%d kirjautunut käyttäjä"
-msgstr[1] "%d  kirjautunutta käyttäjää"
+msgid "%s logged-in user"
+msgid_plural "%s logged-in users"
+msgstr[0] "%s kirjautunut käyttäjä"
+msgstr[1] "%s  kirjautunutta käyttäjää"
 
 #: app/Module/RelativesTabModule.php:62
 #, php-format
-msgid "%d month"
-msgid_plural "%d months"
-msgstr[0] "%d kuukausi"
-msgstr[1] "%d kuukautta"
-
-#: app/Module/RelativesTabModule.php:60
-#, php-format
-msgid "%d year"
-msgid_plural "%d years"
-msgstr[0] "%d vuosi"
-msgstr[1] "%d vuotta"
+msgid "%s month"
+msgid_plural "%s months"
+msgstr[0] "%s kuukausi"
+msgstr[1] "%s kuukautta"
 
 #: includes/functions/functions.php:555
 #, php-format
 msgctxt "FEMALE"
-msgid "%d × cousin"
-msgstr "%d. serkku"
+msgid "%s × cousin"
+msgstr "%s. serkku"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:520
 #, php-format
 msgctxt "MALE"
-msgid "%d × cousin"
-msgstr "%d. serkku"
+msgid "%s × cousin"
+msgstr "%s. serkku"
 
 #: includes/functions/functions.php:590
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%d × cousin"
-msgstr "%d. serkku"
+msgid "%s × cousin"
+msgstr "%s. serkku"
 
 #. I18N: This is the format string for full dates.  See http://php.net/date for codes
 #: app/Date.php:222 app/I18N.php:212
@@ -771,7 +760,7 @@ msgid "A new password has been requested for your user name."
 msgstr "Uusi salasana on pyydetty käyttäjätunnuksellesi!"
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
-#: login.php:568
+#: login.php:567
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr "Uusi käyttäjä (%1$s) on pyytänyt käyttäjätilin (%2$s) ja on vahvistanut sähköpostiosoitteen (%3$s)."
@@ -3772,7 +3761,7 @@ msgstr "Sarakkeita sivulla"
 msgid "Comment"
 msgstr "Huomautus"
 
-#: login.php:323 login.php:349 login.php:490
+#: login.php:323 login.php:349 login.php:489
 msgid "Comments"
 msgstr "Huomautukset"
 
@@ -3833,7 +3822,7 @@ msgstr "Ketjuuntuminen"
 msgid "Configure"
 msgstr "Määritä"
 
-#: admin_users.php:347 edituser.php:213 login.php:474
+#: admin_users.php:347 edituser.php:213 login.php:473
 msgid "Confirm password"
 msgstr "Salasana uudestaan"
 
@@ -3966,7 +3955,7 @@ msgstr "Costa Rica"
 msgid "Cote d’Ivoire"
 msgstr "Norsunluurannikko"
 
-#: login.php:645
+#: login.php:633
 msgid "Could not verify the information you entered.  Please try again or contact the site administrator for more information."
 msgstr "Täyttämiäsi tietoja ei voitu vahvistaa. Yritä uudelleen."
 
@@ -4259,10 +4248,6 @@ msgstr "Tiedot"
 #: admin_site_config.php:172
 msgid "Data folder"
 msgstr "Tietokansio"
-
-#: login.php:639
-msgid "Data was not correct, please try again"
-msgstr "Tiedot eivät ole oikeita. Yritä uudelleen"
 
 #: setup.php:371
 msgid "Database and table names"
@@ -4971,7 +4956,7 @@ msgstr "Kuvaus"
 msgid "Description META tag"
 msgstr "Kuvaus META tunniste (tag)"
 
-#: login.php:457
+#: login.php:456
 msgid "Desired password"
 msgstr "Toivottu salasana"
 
@@ -5676,7 +5661,7 @@ msgid "Execution statistics"
 msgstr "Suoritustilastot"
 
 #. I18N: placeholder text for registration-comments field
-#: login.php:494
+#: login.php:493
 msgid "Explain why you are requesting an account."
 msgstr "Selitä, miksi pyydät tilin."
 
@@ -6168,11 +6153,6 @@ msgstr "Tiedostokoko"
 msgid "File successfully uploaded"
 msgstr "Tiedoston lataaminen palvelimelle onnistui"
 
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:65
-msgid "THe file was only partially uploaded.  Please try again."
-msgstr "Tiedosto latautui vain osittain, yritä uudelleen"
-
 #. I18N: gedcom tag FILE
 #: admin_media.php:475 app/Gedcom/GedcomTag.php:485
 msgid "Filename"
@@ -6344,7 +6324,7 @@ msgstr "Temppeli, jossa MAP-uskonnollinen toimitus suoritettiin."
 #. I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names
 #: admin_trees_manage.php:285
 #, php-format
-msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then the you would need to remove %3$s."
+msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
 msgstr ""
 
 #: admin_users.php:590
@@ -6941,7 +6921,7 @@ msgstr "Hei %s…"
 msgid "Hello %s…<br>Thank you for your registration."
 msgstr "Hei %s…<br>Kiitos rekisteröinnistäsi"
 
-#: login.php:317 login.php:566
+#: login.php:317 login.php:565
 msgid "Hello administrator…"
 msgstr "Hei hallinnoitsija…"
 
@@ -7208,8 +7188,8 @@ msgid "If you are the website administrator, you should check that:"
 msgstr "Jos olet web-sivuston ylläpitäjä, tarkista:"
 
 #: site-unavailable.php:109
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
-msgstr "Jos et pysty ratkomaan ongelmaa, kokeile jos saisit apua forumista <a href=\"http://webtrees.net\">webtrees.net</a>"
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
+msgstr ""
 
 #: admin_trees_manage.php:269
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -7259,7 +7239,7 @@ msgid "If you try to exceed these limits, you may experience server time-outs an
 msgstr "Jos ylität näitä rajoituksia, voi keskeytyä suoritettava työ tai saat tyhjiä sivuja."
 
 #: admin_site_config.php:507
-msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatcially."
+msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr ""
 
 #. I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting
@@ -8985,11 +8965,6 @@ msgstr "Pienin ja suurin zoomauskerroin Google Mapsille. 1 on täysi kartta ja 1
 msgid "Minimum number of occurrences to be a “common surname”"
 msgstr "”Yleinen sukunimi”, kun sukunimi esiintyy vähintään (lukumäärä)"
 
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:71
-msgid "THe PHP temporary folder is missing."
-msgstr "PHPn tilapäistiedostojen kansio puuttuu"
-
 #. I18N: Name of a module/report
 #: app/Module/MissingFactsReportModule.php:26
 #: modules_v3/missing_facts_report/report.xml:3
@@ -9468,7 +9443,7 @@ msgid "New registration at %s"
 msgstr "Uusi kirjoittautuminen koneella %s"
 
 #. I18N: %s is a server name/URL
-#: login.php:585
+#: login.php:584
 #, php-format
 msgid "New user at %s"
 msgstr "Uusi vahvistus koneella %s"
@@ -10313,7 +10288,7 @@ msgstr "Vanhempien ikä"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:381 admin_users.php:334 edituser.php:201
-#: login.php:188 login.php:254 login.php:539
+#: login.php:188 login.php:254 login.php:538
 #: modules_v3/login_block/LoginBlockModule.php:67 setup.php:437
 msgid "Password"
 msgstr "Salasana"
@@ -10322,7 +10297,7 @@ msgstr "Salasana"
 msgid "Passwords do not match."
 msgstr "Salasana ei täsmää."
 
-#: edituser.php:207 login.php:468
+#: edituser.php:207 login.php:467
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”."
 msgstr "Salasanan tulee olla vähintään 6 merkkiä pitkä ja isot ja pienet kirjaimet ovat tärkeitä, niin että ”SALAINEN” ei ole sama kuin ”salainen”."
 
@@ -11807,7 +11782,7 @@ msgctxt "MALE"
 msgid "Seller"
 msgstr "Myyjä"
 
-#: app/Module/UserMessagesModule.php:72 login.php:547 message.php:136
+#: app/Module/UserMessagesModule.php:72 login.php:546 message.php:136
 msgid "Send"
 msgstr "Lähetä"
 
@@ -13282,12 +13257,17 @@ msgstr "Media katsoja voi näyttää linkin jonka napsauttaminen lataa mediatied
 msgid "The PGV to webtrees wizard is an automated process to assist administrators make the move from a PGV installation to a new webtrees one.  It will transfer all PGV GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:"
 msgstr "PhpGedView (PGV) aineiston siirtäminen webtrees:lle siirtovelho on automaattinen prosessi, jonka on tarkoitettu auttaa ylläpitäjiä siirrossa. Se siirtää kaikki PGV GEDCOM sekä tietokantatiedot suoraan uuteen webtrees tietokantaan. Seuraavat vaatimukset ovat välttämättömiä:"
 
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:71
+msgid "The PHP temporary folder is missing."
+msgstr "PHPn tilapäistiedostojen kansio puuttuu"
+
 #: admin_users.php:97
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s"
 msgstr "webtrees %sn ylläpitäjä on hyväksynyt pyyntösi perustaa sinulle käyttäjätilin. Voit kirjautua sisään klikkaamalla seuraavaa linkkiä: %s"
 
-#: login.php:630
+#: login.php:627
 msgid "The administrator has been informed.  As soon as they give you permission to login, you can login with your user name and password."
 msgstr "Ylläpitäjä on saanut ilmoituksen. Heti kun hän on antanut sinulle oikeuden kirjautua, voit kirjautua käyttäjätunnuksella ja salasanalla."
 
@@ -13306,11 +13286,6 @@ msgstr "”%s” - muutokset on hylätty."
 #: app/Module/ClippingsCartModule.php:133
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple.  Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name.  There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
 msgstr "Leikekori mahdollistaa tietojen ”leikkeiden” tallentamisen tästä sukupuusta leikekoriin ja liittämään ne yhdeksi GEDCOM-tiedostoksi omalle työasemallesi latausta varten, jonka jälkeen voit omalla sukututkimusohjelmalla jatkaa käsittelyä.<br><ul><li>Kuinka leike tehdään?<br>Tämä on helppoa. Aina kun näet klikattavissa olevan nimen (henkilön, perheen tai paikan) voit mennä kyseiselle sivulle. Siellä näet vaihtoehdon ”Lisää leikekoriin”. Klikkaamalla linkkiä avautuu sivu, jossa on monta vaihtoehtoa tiedoston siirtämiseen.</li><li>Miten ladataan?<br>Kun sinulla on haluamasi tiedot leikekorissa klikkaa <b>”Lataa nyt</b>”-linkkiä. Seuraa ohjeita ja linkkejä.</li></ul>"
-
-#: login.php:596
-#, php-format
-msgid "The data for the user <b>%s</b> has been checked."
-msgstr "Käyttäjä %s - tiedot on tarkastettu."
 
 #: site-unavailable.php:66
 msgid "The database reported the following error message:"
@@ -13405,6 +13380,11 @@ msgstr "Tiedosto %s poistettiin."
 #, php-format
 msgid "The file %s has been uploaded."
 msgstr "Tiedosto %s on ladattu palvelimelle."
+
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:65
+msgid "The file was only partially uploaded.  Please try again."
+msgstr "Tiedosto latautui vain osittain, yritä uudelleen"
 
 #. I18N: %s is a filename
 #: medialist.php:294 mediaviewer.php:111
@@ -13648,6 +13628,11 @@ msgstr[1] "Molemmissa sukupuissa on %1$s tietuetta joilla on sama ”XREF”."
 #: admin_site_upgrade.php:502
 msgid "The upgrade is complete."
 msgstr "Päivitys on valmis."
+
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:62
+msgid "The uploaded file exceeds the allowed size."
+msgstr "Ladattu tiedosto ylittää sallitun enimmäiskoon"
 
 #: admin_users.php:788
 #, php-format
@@ -14307,8 +14292,8 @@ msgstr "Tämä palvelin ei tue turvallista latausta käyttämällä HTTPS:ää."
 
 #: setup.php:183
 #, php-format
-msgid "This server’s memory limit is %d MB and its CPU time limit is %d seconds."
-msgstr "Palvelimen muistirajoitus on %dMB ja CPU suoritusaikarajoitus on %d sekuntia."
+msgid "This server’s memory limit is %s MB and its CPU time limit is %s seconds."
+msgstr "Palvelimen muistirajoitus on %sMB ja CPU suoritusaikarajoitus on %s sekuntia."
 
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: admin_trees_config.php:1632
@@ -14799,11 +14784,11 @@ msgid "Type of place markers in Place Hierarchy"
 msgstr "Paikkahierarkian paikkamerkkien tyyppi"
 
 #. I18N: placeholder text for repeat-password field
-#: admin_users.php:350 login.php:479
+#: admin_users.php:350 login.php:478
 msgid "Type the password again."
 msgstr "Kirjoita salasana uudelleen."
 
-#: edituser.php:219 login.php:484 setup.php:443
+#: edituser.php:219 login.php:483 setup.php:443
 msgid "Type your password again, to make sure you have typed it correctly."
 msgstr "Kirjoita salasanasi uudelleen varmistaaksesi, että kirjoitit sen oikein."
 
@@ -14989,11 +14974,6 @@ msgstr "Lataa mediatiedostoja palvelimelle"
 msgid "Upload one or more media files from your local computer.  Media files can be pictures, video, audio, or other formats."
 msgstr "Lataa palvelimelle yksi tai useampia tiedostoja omalta tietokoneeltasi. Mediatiedosto voi olla kuva-, video-, ääni- tai muunmuotoisia."
 
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:62
-msgid "The uploaded file exceeds the allowed size."
-msgstr "Ladattu tiedosto ylittää sallitun enimmäiskoon"
-
 #: app/Stats.php:6308
 msgid "Uruguay"
 msgstr "Uruguay"
@@ -15020,7 +15000,7 @@ msgid "Use a “?” to match a single character, use “*” to match zero or m
 msgstr "Käytä ”?” täsmätäksesi yhden erillisen merkin, käytä ”*” täsmätäksesi nolla tai useampia merkkejä."
 
 #. I18N: placeholder text for new-password field
-#: admin_users.php:337 login.php:462
+#: admin_users.php:337 login.php:461
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
@@ -15072,7 +15052,7 @@ msgstr "Käytä näitä painikkeita muuttaaksesi luettelon järjestystä. Lohkot
 msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the individual’s page."
 msgstr "Käytä tätä kenttää viestittämään että tämä mediakohde on liitetyn henkilön korostettu tai ensisijainen kohde. Korostettu kuva on kuva, jota käytetään kaavioissa ja henkilösivulla."
 
-#: login.php:500
+#: login.php:499
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site.  You can also use this to enter any other comments you may have for the site administrator."
 msgstr "Käytä tätä kenttää kertoaksesi ylläpitäjälle miksi haluat käyttäjätilin ja kuinka olet sukua tämän sivuston henkilöille. Voit lisätä tähän myös muita huomautuksia, joita sinulla on ylläpitäjälle."
 
@@ -15104,7 +15084,7 @@ msgstr "Ylläpito ei ole vahvistanut käyttäjää."
 msgid "User options"
 msgstr "Käyttäjäasetukset"
 
-#: login.php:527 login.php:533 login.php:590 login.php:594
+#: login.php:526 login.php:532 login.php:589 login.php:593
 msgid "User verification"
 msgstr "Käyttäjävahvistus"
 
@@ -15116,7 +15096,7 @@ msgstr "Käyttäjän selaimen tunnistetiedot"
 #. I18N: A site configuration setting
 #: admin_site_config.php:368 admin_users.php:321 admin_users.php:845
 #: app/Module/ResearchTaskModule.php:95 edituser.php:150 login.php:183
-#: login.php:253 login.php:320 login.php:347 login.php:535
+#: login.php:253 login.php:320 login.php:347 login.php:534
 #: modules_v3/login_block/LoginBlockModule.php:62
 msgid "Username"
 msgstr "Käyttäjätunnus"
@@ -15128,11 +15108,6 @@ msgstr "Käyttäjätunnus tai sähköpostiosoite"
 #: admin_users.php:326 edituser.php:156 login.php:450
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
 msgstr "Käyttäjätunnuksen kirjoittamisella isoilla ja pienillä kirjaimilla ei ole merkitystä ja lisäksi aksentti- eli tarkekirjaimia ei huomioida, esimerkiksi  ”väinö”, ”vaino” ja ”Väinö” tulkitaan samaksi."
-
-#: login.php:451
-#, php-format
-msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
-msgstr "Käyttäjätunnuksessa ei saa käyttää seuraavia erikoismerkkejä: &lt; &gt; &quot; %% { } ;"
 
 #. I18N: Menu entry
 #: admin.php:563 admin.php:571 app/Theme/AdministrationTheme.php:125
@@ -15219,7 +15194,7 @@ msgstr "Ventôse"
 msgid "Veracruz, Mexico"
 msgstr "Veracruz, Meksiko"
 
-#: login.php:348 login.php:543
+#: login.php:348 login.php:542
 msgid "Verification code"
 msgstr "Vahvistuskoodi:"
 
@@ -15666,7 +15641,7 @@ msgstr "Voit ladata itsellesi kopion GEDCOM erittelystä sivulla %s."
 msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
 msgstr "On helpompi etsiä avioituneita naisia merkitsemällä heidän avionimensä.<br>Kaikki naiset eivät kuitenkaan ota aviomiehensä sukunimeä, joten huolehdi oikeiden tietojen syöttämisestä GEDCOM-tiedostoosi."
 
-#: login.php:632
+#: login.php:629
 msgid "You can now login with your user name and password."
 msgstr "Voit nyt kirjautua järjestelmään käyttäjätunnuksellasi ja salasanallasi."
 
@@ -15706,7 +15681,7 @@ msgstr "Et voi kirjautua koska selaimesi ei hyväksy evästeitä."
 msgid "You do not have permission to view this page."
 msgstr "Sinulla ei ole lupaa katsella tätä sivua."
 
-#: login.php:576
+#: login.php:575
 msgid "You do not have to take any action; the user can now login."
 msgstr "Sinun ei tarvitse tehdä mitään; käyttäjä voi nyt kirjautua."
 
@@ -15714,7 +15689,7 @@ msgstr "Sinun ei tarvitse tehdä mitään; käyttäjä voi nyt kirjautua."
 msgid "You entered the same IDs.  You cannot merge the same records."
 msgstr "Kirjoitit saman tunnuksen. Et voi yhdistää samoja tietueita."
 
-#: login.php:628
+#: login.php:625
 msgid "You have confirmed your request to become a registered user."
 msgstr "Sinut on tunnistettu rekisteröidyksi käyttäjäksi."
 
@@ -15787,7 +15762,7 @@ msgstr "Sinun täytyy kirjautua uudelleen käyttäen PhpGedViewn käyttäjätunn
 msgid "You need to set up an administrator account.  This account can control all aspects of this webtrees installation.  Please choose a strong password."
 msgstr "Pitää luoda ylläpitäjän tili, jolla ohjataan kaikki vaihtoehdot webtrees asennuksessa. Valitse riittävän vahva salasana."
 
-#: login.php:574
+#: login.php:573
 msgid "You now need to review the account details, and set the “approved” status to “yes”."
 msgstr "Sinun pitää nyt tarkastaa käyttäjätilin tiedot ja vaihtaa asetus ”hyväksytty” tilaan ”kyllä”."
 
@@ -16314,7 +16289,7 @@ msgstr "tiivistetty lista"
 #: admin_trees_download.php:120 admin_trees_download.php:205
 #: admin_trees_manage.php:293 admin_trees_manage.php:719
 #: admin_trees_merge.php:200 admin_trees_renumber.php:280 login.php:219
-#: login.php:507 modules_v3/login_block/LoginBlockModule.php:93
+#: login.php:506 modules_v3/login_block/LoginBlockModule.php:93
 #: reportengine.php:127 reportengine.php:282 setup.php:190 setup.php:216
 #: setup.php:298 setup.php:384 setup.php:451
 msgid "continue"
@@ -16993,146 +16968,146 @@ msgstr "pojanpojanvaimo"
 #: includes/functions/functions.php:1639 includes/functions/functions.php:1654
 #: includes/functions/functions.php:1667
 #, php-format
-msgid "great ×%d aunt"
-msgstr "täti ×%d polven takaa"
+msgid "great ×%s aunt"
+msgstr "täti ×%s polven takaa"
 
 #: includes/functions/functions.php:1641 includes/functions/functions.php:1656
 #: includes/functions/functions.php:1669
 #, php-format
-msgid "great ×%d aunt/uncle"
-msgstr "täti/setä ×%d polven takaa"
+msgid "great ×%s aunt/uncle"
+msgstr "täti/setä ×%s polven takaa"
 
 #: includes/functions/functions.php:2042 includes/functions/functions.php:2057
 #, php-format
-msgid "great ×%d grandchild"
-msgstr "lapsenlapsi ×%d:nnessä sukupolvessa"
+msgid "great ×%s grandchild"
+msgstr "lapsenlapsi ×%s:nnessä sukupolvessa"
 
 #: includes/functions/functions.php:2040 includes/functions/functions.php:2055
 #, php-format
-msgid "great ×%d granddaughter"
-msgstr "lapsentytär ×%d:nnessä sukupolvessa"
+msgid "great ×%s granddaughter"
+msgstr "lapsentytär ×%s:nnessä sukupolvessa"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1912 includes/functions/functions.php:1922
 #: includes/functions/functions.php:1932 includes/functions/functions.php:1942
 #: includes/functions/functions.php:1954
 #, php-format
-msgid "great ×%d grandfather"
-msgstr "isoisä ×%d polven takaa"
+msgid "great ×%s grandfather"
+msgstr "isoisä ×%s polven takaa"
 
 #: includes/functions/functions.php:1914 includes/functions/functions.php:1924
 #: includes/functions/functions.php:1934 includes/functions/functions.php:1944
 #: includes/functions/functions.php:1956
 #, php-format
-msgid "great ×%d grandmother"
-msgstr "isoäiti ×%d polven takaa"
+msgid "great ×%s grandmother"
+msgstr "isoäiti ×%s polven takaa"
 
 #: includes/functions/functions.php:1916 includes/functions/functions.php:1926
 #: includes/functions/functions.php:1936 includes/functions/functions.php:1946
 #: includes/functions/functions.php:1958
 #, php-format
-msgid "great ×%d grandparent"
-msgstr "isovanhempi ×%d polven takaa"
+msgid "great ×%s grandparent"
+msgstr "isovanhempi ×%s polven takaa"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:2038 includes/functions/functions.php:2053
 #, php-format
-msgid "great ×%d grandson"
-msgstr "lapsenpoika ×%d:nnessä sukupolvessa"
+msgid "great ×%s grandson"
+msgstr "lapsenpoika ×%s:nnessä sukupolvessa"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1823 includes/functions/functions.php:1836
 #, php-format
-msgid "great ×%d nephew"
-msgstr "poika %d:ssa alenevassa polvessa"
+msgid "great ×%s nephew"
+msgstr "poika %s:ssa alenevassa polvessa"
 
 #: includes/functions/functions.php:1797
 #, php-format
-msgctxt "(a man’s) brother’s great ×(%d-1) grandson"
-msgid "great ×%d nephew"
-msgstr "sisarenpoika %d:nnessa alenevassa polvessa"
+msgctxt "(a man’s) brother’s great ×(%s-1) grandson"
+msgid "great ×%s nephew"
+msgstr "sisarenpoika %s:nnessa alenevassa polvessa"
 
 #: includes/functions/functions.php:1799
 #, php-format
-msgctxt "(a man’s) sister’s great ×(%d-1) grandson"
-msgid "great ×%d nephew"
-msgstr "sisarenpoika %d:nnessa alenevassa polvessa"
+msgctxt "(a man’s) sister’s great ×(%s-1) grandson"
+msgid "great ×%s nephew"
+msgstr "sisarenpoika %s:nnessa alenevassa polvessa"
 
 #: includes/functions/functions.php:1801
 #, php-format
-msgctxt "(a woman’s) great ×%d nephew"
-msgid "great ×%d nephew"
-msgstr "sisarenpoika %d:nnessa alenevassa polvessa"
+msgctxt "(a woman’s) great ×%s nephew"
+msgid "great ×%s nephew"
+msgstr "sisarenpoika %s:nnessa alenevassa polvessa"
 
 #: includes/functions/functions.php:1827 includes/functions/functions.php:1840
 #, php-format
-msgid "great ×%d nephew/niece"
-msgstr "lapsi %d:ssa alenevassa polvessa"
+msgid "great ×%s nephew/niece"
+msgstr "lapsi %s:ssa alenevassa polvessa"
 
 #: includes/functions/functions.php:1813
 #, php-format
-msgctxt "(a man’s) brother’s great ×(%d-1) grandchild"
-msgid "great ×%d nephew/niece"
-msgstr "sisarentytär/-poika %d:nnessa alenevassa polvessa"
+msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
+msgid "great ×%s nephew/niece"
+msgstr "sisarentytär/-poika %s:nnessa alenevassa polvessa"
 
 #: includes/functions/functions.php:1815
 #, php-format
-msgctxt "(a man’s) sister’s great ×(%d-1) grandchild"
-msgid "great ×%d nephew/niece"
-msgstr "sisarentytär/-poika %d:nnessa alenevassa polvessa"
+msgctxt "(a man’s) sister’s great ×(%s-1) grandchild"
+msgid "great ×%s nephew/niece"
+msgstr "sisarentytär/-poika %s:nnessa alenevassa polvessa"
 
 #: includes/functions/functions.php:1817
 #, php-format
-msgctxt "(a woman’s) great ×%d nephew/niece"
-msgid "great ×%d nephew/niece"
-msgstr "sisarentytär/-poika %d:nnessa alenevassa polvessa"
+msgctxt "(a woman’s) great ×%s nephew/niece"
+msgid "great ×%s nephew/niece"
+msgstr "sisarentytär/-poika %s:nnessa alenevassa polvessa"
 
 #: includes/functions/functions.php:1825 includes/functions/functions.php:1838
 #, php-format
-msgid "great ×%d niece"
-msgstr "tytär %d:ssa alenevassa polvessa"
+msgid "great ×%s niece"
+msgstr "tytär %s:ssa alenevassa polvessa"
 
 #: includes/functions/functions.php:1805
 #, php-format
-msgctxt "(a man’s) brother’s great ×(%d-1) granddaughter"
-msgid "great ×%d niece"
-msgstr "sisarentytär %d:nnessa alenevassa polvessa"
+msgctxt "(a man’s) brother’s great ×(%s-1) granddaughter"
+msgid "great ×%s niece"
+msgstr "sisarentytär %s:nnessa alenevassa polvessa"
 
 #: includes/functions/functions.php:1807
 #, php-format
-msgctxt "(a man’s) sister’s great ×(%d-1) granddaughter"
-msgid "great ×%d niece"
-msgstr "sisarentytär %d:nnessa alenevassa polvessa"
+msgctxt "(a man’s) sister’s great ×(%s-1) granddaughter"
+msgid "great ×%s niece"
+msgstr "sisarentytär %s:nnessa alenevassa polvessa"
 
 #: includes/functions/functions.php:1809
 #, php-format
-msgctxt "(a woman’s) great ×%d niece"
-msgid "great ×%d niece"
-msgstr "sisarentytär %d:nnessa alenevassa polvessa"
+msgctxt "(a woman’s) great ×%s niece"
+msgid "great ×%s niece"
+msgstr "sisarentytär %s:nnessa alenevassa polvessa"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1637 includes/functions/functions.php:1665
 #, php-format
-msgid "great ×%d uncle"
-msgstr "setä ×%d polven takaa"
+msgid "great ×%s uncle"
+msgstr "setä ×%s polven takaa"
 
 #: includes/functions/functions.php:1647
 #, php-format
-msgctxt "great ×(%d-1) grandfather’s brother"
-msgid "great ×%d uncle"
-msgstr "setä ×%d polven takaa"
+msgctxt "great ×(%s-1) grandfather’s brother"
+msgid "great ×%s uncle"
+msgstr "setä ×%s polven takaa"
 
 #: includes/functions/functions.php:1649
 #, php-format
-msgctxt "great ×(%d-1) grandmother’s brother"
-msgid "great ×%d uncle"
-msgstr "setä ×%d polven takaa"
+msgctxt "great ×(%s-1) grandmother’s brother"
+msgid "great ×%s uncle"
+msgstr "setä ×%s polven takaa"
 
 #: includes/functions/functions.php:1651
 #, php-format
-msgctxt "great ×(%d-1) grandparent’s brother"
-msgid "great ×%d uncle"
-msgstr "setä ×%d polven takaa"
+msgctxt "great ×(%s-1) grandparent’s brother"
+msgid "great ×%s uncle"
+msgstr "setä ×%s polven takaa"
 
 #: includes/functions/functions.php:1579
 msgid "great ×4 aunt"
@@ -18582,10 +18557,10 @@ msgstr "enintään"
 #: app/Module/UpcomingAnniversariesModule.php:125
 #: app/Module/YahrzeitModule.php:250
 #, php-format
-msgid "maximum %d day"
-msgid_plural "maximum %d days"
+msgid "maximum %s day"
+msgid_plural "maximum %s days"
 msgstr[0] "enintään päivä"
-msgstr[1] "enintään %d päivää"
+msgstr[1] "enintään %s päivää"
 
 #: admin_trees_config.php:404 admin_trees_config.php:428
 #: admin_trees_config.php:468 admin_trees_config.php:508
@@ -19800,10 +19775,10 @@ msgstr "nuorempi sisko"
 #: search_advanced.php:107 search_advanced.php:111 search_advanced.php:115
 #: search_advanced.php:166 search_advanced.php:167 search_advanced.php:168
 #, php-format
-msgid "±%d year"
-msgid_plural "±%d years"
-msgstr[0] "±%d vuosi"
-msgstr[1] "±%d vuotta"
+msgid "±%s year"
+msgid_plural "±%s years"
+msgstr[0] "±%s vuosi"
+msgstr[1] "±%s vuotta"
 
 #. I18N: Place a nickname in quotation marks
 #: app/Individual.php:1197 app/Individual.php:1215
@@ -19896,6 +19871,9 @@ msgstr "…"
 
 #~ msgid "Create user"
 #~ msgstr "Luo käyttäjä"
+
+#~ msgid "Data was not correct, please try again"
+#~ msgstr "Tiedot eivät ole oikeita. Yritä uudelleen"
 
 #~ msgctxt "font name"
 #~ msgid "DejaVu"
@@ -20031,6 +20009,9 @@ msgstr "…"
 #~ msgid "If this box is checked, this user will be able to edit his account information.  Although this is not generally recommended, you can create a single user name and password for multiple users.  When this box is unchecked for all users with the shared account, they are prevented from editing the account information and only an administrator can alter that account."
 #~ msgstr "Jos tämä ruutu on rastitettu, tämä käyttäjä voi muuttaa käyttäjätietojaan. Jos ruutua ei ole rastitettu, hän ei voi muuttaa käyttäjätietojaan. Tällä tavoin voit luoda yhden käyttäjätunnuksen ja salasanan usealle käyttäjälle yhteisesti ja estää heitä muuttamasta kyttäjätietojaan."
 
+#~ msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
+#~ msgstr "Jos et pysty ratkomaan ongelmaa, kokeile jos saisit apua forumista <a href=\"http://webtrees.net\">webtrees.net</a>"
+
 #~ msgid "If you have a note to add to this record, this is the place to do so.<br><br>Just click the link, a window will open, and you can type your note.  When you are finished typing, just click the button below the box, close the window, and that’s all."
 #~ msgstr "Jos sinulla on lisätietoa tähän tietueeseen, lisää se tässä.<br><br>Klikkaa linkkiä ja uusi ikkuna avautuu, ja voit kirjoittaa lisätietosi. Kun olet valmis, klikkaa painiketta ikkunan alapuolella ja sulje ikkuna."
 
@@ -20090,10 +20071,10 @@ msgstr "…"
 #~ msgid "No other link between the two individuals could be found."
 #~ msgstr "Muita linkkejä henkilöiden välillä ei löytynyt."
 
-#~ msgid "Note: “living” is defined (if no death or burial is known) as ending %d year after birth or estimated birth."
-#~ msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %d years after birth or estimated birth."
-#~ msgstr[0] "Huom.: ”elossa” tarkoittaa (jos kuolema- tai hautausaika ei tiedossa) laskien %d vuotta syntymän tai arvioidun syntymän ajankohdasta."
-#~ msgstr[1] "Huom.: ”elossa” tarkoittaa (jos kuolema- tai hautausaika ei tiedossa) laskien %d vuotta syntymän tai arvioidun syntymän ajankohdasta."
+#~ msgid "Note: “living” is defined (if no death or burial is known) as ending %s year after birth or estimated birth."
+#~ msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %s years after birth or estimated birth."
+#~ msgstr[0] "Huom.: ”elossa” tarkoittaa (jos kuolema- tai hautausaika ei tiedossa) laskien %s vuotta syntymän tai arvioidun syntymän ajankohdasta."
+#~ msgstr[1] "Huom.: ”elossa” tarkoittaa (jos kuolema- tai hautausaika ei tiedossa) laskien %s vuotta syntymän tai arvioidun syntymän ajankohdasta."
 
 #~ msgid "Notes are free-form text and will appear in the Fact Details section of the page."
 #~ msgstr "Lisätiedot ovat vapaata tekstiä ja näkyvät sivulla tiedon yksityiskohdissa."
@@ -20178,6 +20159,9 @@ msgstr "…"
 
 #~ msgid "The current webtrees admin username must be the same as an existing PGV admin username"
 #~ msgstr "Ylläpitäjän käyttäjätunnus pitää olla sama webtrees:ssa ja PGV:ssa"
+
+#~ msgid "The data for the user <b>%s</b> has been checked."
+#~ msgstr "Käyttäjä %s - tiedot on tarkastettu."
 
 #~ msgid "The following calendars are supported:"
 #~ msgstr "Seuraavia kalentereita tuetaan:"
@@ -20283,6 +20267,9 @@ msgstr "…"
 
 #~ msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td style=\"vertical-align:middle\">This image might be used when the gender of the individual is unknown:"
 #~ msgstr "Käytä varjokuvaa kun henkilöllä ei ole korostettua kuvaa. Varjokuva on erilainen sukupuolen mukaan.<br><br><table><tr><td style=\"vertical-align:middle\">Tätä kuvaa voidaan käyttää kun henkilön sukupuoli ei ole tiedossa:"
+
+#~ msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
+#~ msgstr "Käyttäjätunnuksessa ei saa käyttää seuraavia erikoismerkkejä: &lt; &gt; &quot; %% { } ;"
 
 #~ msgid "Users’ languages"
 #~ msgstr "Käyttäjien kielet"

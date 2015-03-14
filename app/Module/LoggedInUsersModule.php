@@ -48,13 +48,13 @@ class LoggedInUsersModule extends Module implements ModuleBlockInterface {
 		$count_logged_in = count($logged_in);
 		$content .= '<div class="logged_in_count">';
 		if ($anonymous) {
-			$content .= I18N::plural('%d anonymous logged-in user', '%d anonymous logged-in users', $anonymous, $anonymous);
+			$content .= I18N::plural('%s anonymous logged-in user', '%s anonymous logged-in users', $anonymous, I18N::number($anonymous));
 			if ($count_logged_in) {
 				$content .= '&nbsp;|&nbsp;';
 			}
 		}
 		if ($count_logged_in) {
-			$content .= I18N::plural('%d logged-in user', '%d logged-in users', $count_logged_in, $count_logged_in);
+			$content .= I18N::plural('%s logged-in user', '%s logged-in users', $count_logged_in, I18N::number($count_logged_in));
 		}
 		$content .= '</div>';
 		$content .= '<div class="logged_in_list">';

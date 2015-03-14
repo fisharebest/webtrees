@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2015-03-12 21:11+0000\n"
+"POT-Creation-Date: 2015-03-13 10:03+0000\n"
 "PO-Revision-Date: 2013-08-04 16:29+0000\n"
 "Last-Translator: balu <buguca@gmail.com>\n"
 "Language: ka\n"
@@ -50,10 +50,6 @@ msgstr "სქესის მიხედვით"
 #: statisticsplot.php:1356
 msgid " per time period"
 msgstr "დროის დიაპაზონი"
-
-#: admin_trees_download.php:34
-msgid " — "
-msgstr ""
 
 #. I18N: Abbreviation for "number %s"
 #: includes/functions/functions_print_facts.php:187
@@ -186,46 +182,40 @@ msgstr "%g:%i:%s %a"
 
 #: app/Module/LoggedInUsersModule.php:51 app/Stats.php:5372
 #, php-format
-msgid "%d anonymous logged-in user"
-msgid_plural "%d anonymous logged-in users"
-msgstr[0] "%d ანონიმური მომხმარებელი"
+msgid "%s anonymous logged-in user"
+msgid_plural "%s anonymous logged-in users"
+msgstr[0] "%s ანონიმური მომხმარებელი"
 
 #: app/Module/LoggedInUsersModule.php:57 app/Stats.php:5382
 #, php-format
-msgid "%d logged-in user"
-msgid_plural "%d logged-in users"
-msgstr[0] "%d დარეგისტრირებული იუზერი"
+msgid "%s logged-in user"
+msgid_plural "%s logged-in users"
+msgstr[0] "%s დარეგისტრირებული იუზერი"
 
 #: app/Module/RelativesTabModule.php:62
 #, php-format
-msgid "%d month"
-msgid_plural "%d months"
-msgstr[0] "%d თვე"
-
-#: app/Module/RelativesTabModule.php:60
-#, php-format
-msgid "%d year"
-msgid_plural "%d years"
-msgstr[0] "%d წელი"
+msgid "%s month"
+msgid_plural "%s months"
+msgstr[0] "%s თვე"
 
 #: includes/functions/functions.php:555
 #, php-format
 msgctxt "FEMALE"
-msgid "%d × cousin"
-msgstr "(%d+1)-тиюродная сестра"
+msgid "%s × cousin"
+msgstr "(%s+1)-тиюродная сестра"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:520
 #, php-format
 msgctxt "MALE"
-msgid "%d × cousin"
-msgstr "(%d+1)-тиюродная сестра"
+msgid "%s × cousin"
+msgstr "(%s+1)-тиюродная сестра"
 
 #: includes/functions/functions.php:590
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%d × cousin"
-msgstr "(%d+1)-тиюродная сестра"
+msgid "%s × cousin"
+msgstr "(%s+1)-тиюродная сестра"
 
 #. I18N: This is the format string for full dates.  See http://php.net/date for codes
 #: app/Date.php:222 app/I18N.php:212
@@ -292,7 +282,7 @@ msgstr[0] "%s საათის წინ"
 #, php-format
 msgid "%s individual"
 msgid_plural "%s individuals"
-msgstr[0] "%d პერსონა"
+msgstr[0] "%s პერსონა"
 
 #: app/Module/GoogleMapsModule.php:907
 #, php-format
@@ -744,7 +734,7 @@ msgid "A new password has been requested for your user name."
 msgstr ""
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
-#: login.php:568
+#: login.php:567
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr ""
@@ -1249,7 +1239,7 @@ msgstr "ჩანაწერი კოპირებულია ბუფე�
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:23
 msgid "Add individuals"
-msgstr "%d პერსონა"
+msgstr "%s პერსონა"
 
 #: app/Module/ClippingsCartModule.php:84
 #: app/Module/ClippingsCartModule.php:503
@@ -3743,7 +3733,7 @@ msgstr "Столбцов на странице"
 msgid "Comment"
 msgstr "კომენტარები"
 
-#: login.php:323 login.php:349 login.php:490
+#: login.php:323 login.php:349 login.php:489
 msgid "Comments"
 msgstr "კომენტარები"
 
@@ -3804,7 +3794,7 @@ msgstr "საკონტაქტო ინფორმაცია"
 msgid "Configure"
 msgstr "კონფიგურაცია"
 
-#: admin_users.php:347 edituser.php:213 login.php:474
+#: admin_users.php:347 edituser.php:213 login.php:473
 msgid "Confirm password"
 msgstr "პაროლის დადასტურება"
 
@@ -3937,7 +3927,7 @@ msgstr "კოსტა რიკა"
 msgid "Cote d’Ivoire"
 msgstr "სპილოს ძვლის კუნძულები"
 
-#: login.php:645
+#: login.php:633
 msgid "Could not verify the information you entered.  Please try again or contact the site administrator for more information."
 msgstr ""
 
@@ -4230,10 +4220,6 @@ msgstr "მონაცემები"
 #: admin_site_config.php:172
 msgid "Data folder"
 msgstr ""
-
-#: login.php:639
-msgid "Data was not correct, please try again"
-msgstr "მონაცემები არაკორექტულია! <br /> სცადეთ კიდევ ერთხელ!"
 
 #: setup.php:371
 msgid "Database and table names"
@@ -4942,7 +4928,7 @@ msgstr "Приметы"
 msgid "Description META tag"
 msgstr "Мета тег Description"
 
-#: login.php:457
+#: login.php:456
 msgid "Desired password"
 msgstr "ამოირჩიეთ პაროლი"
 
@@ -5647,7 +5633,7 @@ msgid "Execution statistics"
 msgstr "Статистики исполнения скрипта"
 
 #. I18N: placeholder text for registration-comments field
-#: login.php:494
+#: login.php:493
 msgid "Explain why you are requesting an account."
 msgstr ""
 
@@ -6139,11 +6125,6 @@ msgstr "ფაილის ზომა"
 msgid "File successfully uploaded"
 msgstr "ფაილი წარმატებით აიტვირთა"
 
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:65
-msgid "THe file was only partially uploaded.  Please try again."
-msgstr "ფაილი ნაწილობრიც აიტვირთა. სცადეთ კიდევ."
-
 #. I18N: gedcom tag FILE
 #: admin_media.php:475 app/Gedcom/GedcomTag.php:485
 msgid "Filename"
@@ -6315,7 +6296,7 @@ msgstr ""
 #. I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names
 #: admin_trees_manage.php:285
 #, php-format
-msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then the you would need to remove %3$s."
+msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
 msgstr ""
 
 #: admin_users.php:590
@@ -6912,7 +6893,7 @@ msgstr "გამარჯობათ, %s..."
 msgid "Hello %s…<br>Thank you for your registration."
 msgstr "მოგესალმებით,  %s...<br /> მოხარულები ვართ რომ დაგვიკავშირდით"
 
-#: login.php:317 login.php:566
+#: login.php:317 login.php:565
 msgid "Hello administrator…"
 msgstr "მოგესალმებით, ადმინისტრატორო..."
 
@@ -7179,7 +7160,7 @@ msgid "If you are the website administrator, you should check that:"
 msgstr ""
 
 #: site-unavailable.php:109
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
 msgstr ""
 
 #: admin_trees_manage.php:269
@@ -7230,7 +7211,7 @@ msgid "If you try to exceed these limits, you may experience server time-outs an
 msgstr ""
 
 #: admin_site_config.php:507
-msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatcially."
+msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr ""
 
 #. I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting
@@ -8956,11 +8937,6 @@ msgstr ""
 msgid "Minimum number of occurrences to be a “common surname”"
 msgstr "მინ. რაოდენობა დამთხვევის \"გავრცელებული გვარები\""
 
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:71
-msgid "THe PHP temporary folder is missing."
-msgstr ""
-
 #. I18N: Name of a module/report
 #: app/Module/MissingFactsReportModule.php:26
 #: modules_v3/missing_facts_report/report.xml:3
@@ -9439,7 +9415,7 @@ msgid "New registration at %s"
 msgstr ""
 
 #. I18N: %s is a server name/URL
-#: login.php:585
+#: login.php:584
 #, php-format
 msgid "New user at %s"
 msgstr "ახალი ჩანაწერის ფაქტები"
@@ -10282,7 +10258,7 @@ msgstr "მშობლის ასაკი:"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:381 admin_users.php:334 edituser.php:201
-#: login.php:188 login.php:254 login.php:539
+#: login.php:188 login.php:254 login.php:538
 #: modules_v3/login_block/LoginBlockModule.php:67 setup.php:437
 msgid "Password"
 msgstr "პაროლი"
@@ -10291,7 +10267,7 @@ msgstr "პაროლი"
 msgid "Passwords do not match."
 msgstr "სხვადასხვა პაროლი."
 
-#: edituser.php:207 login.php:468
+#: edituser.php:207 login.php:467
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”."
 msgstr "Пароль должен быть не менее 6 символов с учетом заглавными и строчных букв. Таким образом \"secret\" не рассматривается как \"SECRET\"."
 
@@ -11776,7 +11752,7 @@ msgctxt "MALE"
 msgid "Seller"
 msgstr "გამყიდველი მამაკაცი"
 
-#: app/Module/UserMessagesModule.php:72 login.php:547 message.php:136
+#: app/Module/UserMessagesModule.php:72 login.php:546 message.php:136
 msgid "Send"
 msgstr "გავგზავნოთ"
 
@@ -13251,12 +13227,17 @@ msgstr ""
 msgid "The PGV to webtrees wizard is an automated process to assist administrators make the move from a PGV installation to a new webtrees one.  It will transfer all PGV GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:"
 msgstr ""
 
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:71
+msgid "The PHP temporary folder is missing."
+msgstr ""
+
 #: admin_users.php:97
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s"
 msgstr ""
 
-#: login.php:630
+#: login.php:627
 msgid "The administrator has been informed.  As soon as they give you permission to login, you can login with your user name and password."
 msgstr ""
 
@@ -13275,11 +13256,6 @@ msgstr "ცვლილებები “%s” უარყოფილია."
 #: app/Module/ClippingsCartModule.php:133
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple.  Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name.  There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
 msgstr ""
-
-#: login.php:596
-#, php-format
-msgid "The data for the user <b>%s</b> has been checked."
-msgstr "იუზერის მონაცემები %s შემოწმებულია."
 
 #: site-unavailable.php:66
 msgid "The database reported the following error message:"
@@ -13374,6 +13350,11 @@ msgstr ""
 #, php-format
 msgid "The file %s has been uploaded."
 msgstr "მედიაფაილის ამორჩევა"
+
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:65
+msgid "The file was only partially uploaded.  Please try again."
+msgstr "ფაილი ნაწილობრიც აიტვირთა. სცადეთ კიდევ."
 
 #. I18N: %s is a filename
 #: medialist.php:294 mediaviewer.php:111
@@ -13616,6 +13597,11 @@ msgstr[0] ""
 #: admin_site_upgrade.php:502
 msgid "The upgrade is complete."
 msgstr "მედიაკატალოგი დაზიანებულია"
+
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:62
+msgid "The uploaded file exceeds the allowed size."
+msgstr "ფაილის ზომა აჭარბებს დაშვებულს."
 
 #: admin_users.php:788
 #, php-format
@@ -14273,8 +14259,8 @@ msgstr ""
 
 #: setup.php:183
 #, php-format
-msgid "This server’s memory limit is %d MB and its CPU time limit is %d seconds."
-msgstr "Этот сервер имеет следующие качества:<br/> memory limit = %dMB (рабочая память для скриптов)<br/>CPU time limit = %d c. (максимальное время для исполнения скрипта)"
+msgid "This server’s memory limit is %s MB and its CPU time limit is %s seconds."
+msgstr "Этот сервер имеет следующие качества:<br/> memory limit = %sMB (рабочая память для скриптов)<br/>CPU time limit = %s c. (максимальное время для исполнения скрипта)"
 
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: admin_trees_config.php:1632
@@ -14763,11 +14749,11 @@ msgid "Type of place markers in Place Hierarchy"
 msgstr ""
 
 #. I18N: placeholder text for repeat-password field
-#: admin_users.php:350 login.php:479
+#: admin_users.php:350 login.php:478
 msgid "Type the password again."
 msgstr "პაროლი კიდევ ერთხელ."
 
-#: edituser.php:219 login.php:484 setup.php:443
+#: edituser.php:219 login.php:483 setup.php:443
 msgid "Type your password again, to make sure you have typed it correctly."
 msgstr "Повторите пароль, чтобы убедить в правильности набранного пароля."
 
@@ -14953,11 +14939,6 @@ msgstr "მედია ფაილების ატვირთვა"
 msgid "Upload one or more media files from your local computer.  Media files can be pictures, video, audio, or other formats."
 msgstr ""
 
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:62
-msgid "The uploaded file exceeds the allowed size."
-msgstr "ფაილის ზომა აჭარბებს დაშვებულს."
-
 #: app/Stats.php:6308
 msgid "Uruguay"
 msgstr "ურუგვაი"
@@ -14984,7 +14965,7 @@ msgid "Use a “?” to match a single character, use “*” to match zero or m
 msgstr ""
 
 #. I18N: placeholder text for new-password field
-#: admin_users.php:337 login.php:462
+#: admin_users.php:337 login.php:461
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
@@ -15035,7 +15016,7 @@ msgstr ""
 msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the individual’s page."
 msgstr ""
 
-#: login.php:500
+#: login.php:499
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site.  You can also use this to enter any other comments you may have for the site administrator."
 msgstr ""
 
@@ -15067,7 +15048,7 @@ msgstr "იუზერების ადმინისტრირება"
 msgid "User options"
 msgstr "იუზერის პარამეტრები"
 
-#: login.php:527 login.php:533 login.php:590 login.php:594
+#: login.php:526 login.php:532 login.php:589 login.php:593
 msgid "User verification"
 msgstr "იუზერის შემოწმება"
 
@@ -15079,7 +15060,7 @@ msgstr "Строка User-agent"
 #. I18N: A site configuration setting
 #: admin_site_config.php:368 admin_users.php:321 admin_users.php:845
 #: app/Module/ResearchTaskModule.php:95 edituser.php:150 login.php:183
-#: login.php:253 login.php:320 login.php:347 login.php:535
+#: login.php:253 login.php:320 login.php:347 login.php:534
 #: modules_v3/login_block/LoginBlockModule.php:62
 msgid "Username"
 msgstr "მომხმარებლის სახელი"
@@ -15090,11 +15071,6 @@ msgstr "იუზერის სახელი ან ელფოსტის
 
 #: admin_users.php:326 edituser.php:156 login.php:450
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
-msgstr ""
-
-#: login.php:451
-#, php-format
-msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
 msgstr ""
 
 #. I18N: Menu entry
@@ -15182,7 +15158,7 @@ msgstr ""
 msgid "Veracruz, Mexico"
 msgstr "Веракрус, Мексика"
 
-#: login.php:348 login.php:543
+#: login.php:348 login.php:542
 msgid "Verification code"
 msgstr "საკონტროლო კოდი:"
 
@@ -15629,7 +15605,7 @@ msgstr ""
 msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
 msgstr ""
 
-#: login.php:632
+#: login.php:629
 msgid "You can now login with your user name and password."
 msgstr ""
 
@@ -15669,7 +15645,7 @@ msgstr ""
 msgid "You do not have permission to view this page."
 msgstr "Это примечание не существует или у Вас нет прав для просмотра."
 
-#: login.php:576
+#: login.php:575
 msgid "You do not have to take any action; the user can now login."
 msgstr ""
 
@@ -15677,7 +15653,7 @@ msgstr ""
 msgid "You entered the same IDs.  You cannot merge the same records."
 msgstr ""
 
-#: login.php:628
+#: login.php:625
 msgid "You have confirmed your request to become a registered user."
 msgstr "თქვენ ცნობილი ხართ როგორც დარეგისტრირებული იუზერი."
 
@@ -15750,7 +15726,7 @@ msgstr ""
 msgid "You need to set up an administrator account.  This account can control all aspects of this webtrees installation.  Please choose a strong password."
 msgstr ""
 
-#: login.php:574
+#: login.php:573
 msgid "You now need to review the account details, and set the “approved” status to “yes”."
 msgstr ""
 
@@ -16277,7 +16253,7 @@ msgstr "კომპაქტური სია"
 #: admin_trees_download.php:120 admin_trees_download.php:205
 #: admin_trees_manage.php:293 admin_trees_manage.php:719
 #: admin_trees_merge.php:200 admin_trees_renumber.php:280 login.php:219
-#: login.php:507 modules_v3/login_block/LoginBlockModule.php:93
+#: login.php:506 modules_v3/login_block/LoginBlockModule.php:93
 #: reportengine.php:127 reportengine.php:282 setup.php:190 setup.php:216
 #: setup.php:298 setup.php:384 setup.php:451
 msgid "continue"
@@ -16955,145 +16931,145 @@ msgstr "რძალი (შვილიშვილის ცოლი)"
 #: includes/functions/functions.php:1639 includes/functions/functions.php:1654
 #: includes/functions/functions.php:1667
 #, php-format
-msgid "great ×%d aunt"
-msgstr "%dх დიდი ბაბუა"
+msgid "great ×%s aunt"
+msgstr "%sх დიდი ბაბუა"
 
 #: includes/functions/functions.php:1641 includes/functions/functions.php:1656
 #: includes/functions/functions.php:1669
 #, php-format
-msgid "great ×%d aunt/uncle"
+msgid "great ×%s aunt/uncle"
 msgstr "მამიდა/ბიძია მამის მხრიდან"
 
 #: includes/functions/functions.php:2042 includes/functions/functions.php:2057
 #, php-format
-msgid "great ×%d grandchild"
+msgid "great ×%s grandchild"
 msgstr "пра-внук/внучка"
 
 #: includes/functions/functions.php:2040 includes/functions/functions.php:2055
 #, php-format
-msgid "great ×%d granddaughter"
+msgid "great ×%s granddaughter"
 msgstr "пра(х7) внучка"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1912 includes/functions/functions.php:1922
 #: includes/functions/functions.php:1932 includes/functions/functions.php:1942
 #: includes/functions/functions.php:1954
 #, php-format
-msgid "great ×%d grandfather"
-msgstr "%dх დიდი ბაბუა"
+msgid "great ×%s grandfather"
+msgstr "%sх დიდი ბაბუა"
 
 #: includes/functions/functions.php:1914 includes/functions/functions.php:1924
 #: includes/functions/functions.php:1934 includes/functions/functions.php:1944
 #: includes/functions/functions.php:1956
 #, php-format
-msgid "great ×%d grandmother"
-msgstr "%dх დიდი ბებია"
+msgid "great ×%s grandmother"
+msgstr "%sх დიდი ბებია"
 
 #: includes/functions/functions.php:1916 includes/functions/functions.php:1926
 #: includes/functions/functions.php:1936 includes/functions/functions.php:1946
 #: includes/functions/functions.php:1958
 #, php-format
-msgid "great ×%d grandparent"
+msgid "great ×%s grandparent"
 msgstr "пра(х7)-дед/бабушка"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:2038 includes/functions/functions.php:2053
 #, php-format
-msgid "great ×%d grandson"
+msgid "great ×%s grandson"
 msgstr "правнук"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1823 includes/functions/functions.php:1836
 #, php-format
-msgid "great ×%d nephew"
-msgstr "%dх დიდი ბაბუა"
+msgid "great ×%s nephew"
+msgstr "%sх დიდი ბაბუა"
 
 #: includes/functions/functions.php:1797
 #, php-format
-msgctxt "(a man’s) brother’s great ×(%d-1) grandson"
-msgid "great ×%d nephew"
-msgstr "%dх დიდი ბაბუა"
+msgctxt "(a man’s) brother’s great ×(%s-1) grandson"
+msgid "great ×%s nephew"
+msgstr "%sх დიდი ბაბუა"
 
 #: includes/functions/functions.php:1799
 #, php-format
-msgctxt "(a man’s) sister’s great ×(%d-1) grandson"
-msgid "great ×%d nephew"
-msgstr "%dх დიდი ბაბუა"
+msgctxt "(a man’s) sister’s great ×(%s-1) grandson"
+msgid "great ×%s nephew"
+msgstr "%sх დიდი ბაბუა"
 
 #: includes/functions/functions.php:1801
 #, php-format
-msgctxt "(a woman’s) great ×%d nephew"
-msgid "great ×%d nephew"
-msgstr "%dх დიდი ბაბუა"
+msgctxt "(a woman’s) great ×%s nephew"
+msgid "great ×%s nephew"
+msgstr "%sх დიდი ბაბუა"
 
 #: includes/functions/functions.php:1827 includes/functions/functions.php:1840
 #, php-format
-msgid "great ×%d nephew/niece"
+msgid "great ×%s nephew/niece"
 msgstr "правнучатый племянник/племянница"
 
 #: includes/functions/functions.php:1813
 #, php-format
-msgctxt "(a man’s) brother’s great ×(%d-1) grandchild"
-msgid "great ×%d nephew/niece"
+msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
+msgid "great ×%s nephew/niece"
 msgstr "правнучатый племянник/племянница"
 
 #: includes/functions/functions.php:1815
 #, php-format
-msgctxt "(a man’s) sister’s great ×(%d-1) grandchild"
-msgid "great ×%d nephew/niece"
+msgctxt "(a man’s) sister’s great ×(%s-1) grandchild"
+msgid "great ×%s nephew/niece"
 msgstr "правнучатый племянник/племянница"
 
 #: includes/functions/functions.php:1817
 #, php-format
-msgctxt "(a woman’s) great ×%d nephew/niece"
-msgid "great ×%d nephew/niece"
+msgctxt "(a woman’s) great ×%s nephew/niece"
+msgid "great ×%s nephew/niece"
 msgstr "правнучатый племянник/племянница"
 
 #: includes/functions/functions.php:1825 includes/functions/functions.php:1838
 #, php-format
-msgid "great ×%d niece"
+msgid "great ×%s niece"
 msgstr ""
 
 #: includes/functions/functions.php:1805
 #, php-format
-msgctxt "(a man’s) brother’s great ×(%d-1) granddaughter"
-msgid "great ×%d niece"
+msgctxt "(a man’s) brother’s great ×(%s-1) granddaughter"
+msgid "great ×%s niece"
 msgstr ""
 
 #: includes/functions/functions.php:1807
 #, php-format
-msgctxt "(a man’s) sister’s great ×(%d-1) granddaughter"
-msgid "great ×%d niece"
+msgctxt "(a man’s) sister’s great ×(%s-1) granddaughter"
+msgid "great ×%s niece"
 msgstr ""
 
 #: includes/functions/functions.php:1809
 #, php-format
-msgctxt "(a woman’s) great ×%d niece"
-msgid "great ×%d niece"
+msgctxt "(a woman’s) great ×%s niece"
+msgid "great ×%s niece"
 msgstr ""
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1637 includes/functions/functions.php:1665
 #, php-format
-msgid "great ×%d uncle"
+msgid "great ×%s uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1647
 #, php-format
-msgctxt "great ×(%d-1) grandfather’s brother"
-msgid "great ×%d uncle"
+msgctxt "great ×(%s-1) grandfather’s brother"
+msgid "great ×%s uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1649
 #, php-format
-msgctxt "great ×(%d-1) grandmother’s brother"
-msgid "great ×%d uncle"
+msgctxt "great ×(%s-1) grandmother’s brother"
+msgid "great ×%s uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1651
 #, php-format
-msgctxt "great ×(%d-1) grandparent’s brother"
-msgid "great ×%d uncle"
+msgctxt "great ×(%s-1) grandparent’s brother"
+msgid "great ×%s uncle"
 msgstr ""
 
 #: includes/functions/functions.php:1579
@@ -17114,11 +17090,11 @@ msgstr "пра(х7) внучка"
 
 #: includes/functions/functions.php:1870
 msgid "great ×4 grandfather"
-msgstr "%dх დიდი ბაბუა"
+msgstr "%sх დიდი ბაბუა"
 
 #: includes/functions/functions.php:1872
 msgid "great ×4 grandmother"
-msgstr "%dх დიდი ბებია"
+msgstr "%sх დიდი ბებია"
 
 #: includes/functions/functions.php:1874
 msgid "great ×4 grandparent"
@@ -17206,11 +17182,11 @@ msgstr "пра(х7) внучка"
 
 #: includes/functions/functions.php:1879
 msgid "great ×5 grandfather"
-msgstr "%dх დიდი ბაბუა"
+msgstr "%sх დიდი ბაბუა"
 
 #: includes/functions/functions.php:1881
 msgid "great ×5 grandmother"
-msgstr "%dх დიდი ბებია"
+msgstr "%sх დიდი ბებია"
 
 #: includes/functions/functions.php:1883
 msgid "great ×5 grandparent"
@@ -17298,11 +17274,11 @@ msgstr "пра(х7) внучка"
 
 #: includes/functions/functions.php:1888
 msgid "great ×6 grandfather"
-msgstr "%dх დიდი ბაბუა"
+msgstr "%sх დიდი ბაბუა"
 
 #: includes/functions/functions.php:1890
 msgid "great ×6 grandmother"
-msgstr "%dх დიდი ბებია"
+msgstr "%sх დიდი ბებია"
 
 #: includes/functions/functions.php:1892
 msgid "great ×6 grandparent"
@@ -17345,11 +17321,11 @@ msgstr "пра(х7) внучка"
 
 #: includes/functions/functions.php:1897
 msgid "great ×7 grandfather"
-msgstr "%dх დიდი ბაბუა"
+msgstr "%sх დიდი ბაბუა"
 
 #: includes/functions/functions.php:1899
 msgid "great ×7 grandmother"
-msgstr "%dх დიდი ბებია"
+msgstr "%sх დიდი ბებია"
 
 #: includes/functions/functions.php:1901
 msgid "great ×7 grandparent"
@@ -18543,9 +18519,9 @@ msgstr "მაქსიმუმი"
 #: app/Module/UpcomingAnniversariesModule.php:125
 #: app/Module/YahrzeitModule.php:250
 #, php-format
-msgid "maximum %d day"
-msgid_plural "maximum %d days"
-msgstr[0] "მაქსიმალურად %d დღე"
+msgid "maximum %s day"
+msgid_plural "maximum %s days"
+msgstr[0] "მაქსიმალურად %s დღე"
 
 #: admin_trees_config.php:404 admin_trees_config.php:428
 #: admin_trees_config.php:468 admin_trees_config.php:508
@@ -19202,18 +19178,18 @@ msgstr ""
 #: includes/functions/functions.php:535
 msgctxt "FEMALE"
 msgid "sixth cousin"
-msgstr "(%d+1)-тиюродная сестра"
+msgstr "(%s+1)-тиюродная сестра"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:490
 msgctxt "MALE"
 msgid "sixth cousin"
-msgstr "(%d+1)-тиюродная сестра"
+msgstr "(%s+1)-тиюродная сестра"
 
 #: includes/functions/functions.php:570
 msgctxt "MALE/FEMALE"
 msgid "sixth cousin"
-msgstr "(%d+1)-тиюродная сестра"
+msgstr "(%s+1)-тиюродная сестра"
 
 #: app/Module/GoogleMapsModule.php:2041 app/Module/GoogleMapsModule.php:2071
 #: edit_interface.php:2039 includes/functions/functions.php:747
@@ -19760,9 +19736,9 @@ msgstr "უმცროსი და"
 #: search_advanced.php:107 search_advanced.php:111 search_advanced.php:115
 #: search_advanced.php:166 search_advanced.php:167 search_advanced.php:168
 #, php-format
-msgid "±%d year"
-msgid_plural "±%d years"
-msgstr[0] "%d წელი"
+msgid "±%s year"
+msgid_plural "±%s years"
+msgstr[0] "%s წელი"
 
 #. I18N: Place a nickname in quotation marks
 #: app/Individual.php:1197 app/Individual.php:1215
@@ -19846,6 +19822,9 @@ msgstr ""
 
 #~ msgid "Create user"
 #~ msgstr "ახალი იუზერის შექმნა"
+
+#~ msgid "Data was not correct, please try again"
+#~ msgstr "მონაცემები არაკორექტულია! <br /> სცადეთ კიდევ ერთხელ!"
 
 #~ msgctxt "font name"
 #~ msgid "DejaVu"
@@ -19983,9 +19962,9 @@ msgstr ""
 #~ msgid "No contact method"
 #~ msgstr "არ მსურს შეტყობინებების მიღება"
 
-#~ msgid "Note: “living” is defined (if no death or burial is known) as ending %d year after birth or estimated birth."
-#~ msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %d years after birth or estimated birth."
-#~ msgstr[0] "Примечание: \"живой\" определяется (если факт о смерти или захоронения не известен), после %d года после рождения или примерного рождения."
+#~ msgid "Note: “living” is defined (if no death or burial is known) as ending %s year after birth or estimated birth."
+#~ msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %s years after birth or estimated birth."
+#~ msgstr[0] "Примечание: \"живой\" определяется (если факт о смерти или захоронения не известен), после %s года после рождения или примерного рождения."
 
 #~ msgid "Notes are free-form text and will appear in the Fact Details section of the page."
 #~ msgstr "Примечание - это текст в свободном стиле, который будет отображаться в подробностях факта."
@@ -20043,6 +20022,9 @@ msgstr ""
 
 #~ msgid "The current webtrees admin username must be the same as an existing PGV admin username"
 #~ msgstr "Текущее имя администратора <b>webtrees</b> должно быть таким же, как существующее имя администратора PGV"
+
+#~ msgid "The data for the user <b>%s</b> has been checked."
+#~ msgstr "იუზერის მონაცემები %s შემოწმებულია."
 
 #~ msgid "The following calendars are supported:"
 #~ msgstr "აქვს მხარდაჭერა შემდეგი კალენდრების:"

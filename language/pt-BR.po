@@ -2,14 +2,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2015-03-12 21:11+0000\n"
-"PO-Revision-Date: 2014-09-01 19:12-0300\n"
+"POT-Creation-Date: 2015-03-13 10:03+0000\n"
+"PO-Revision-Date: 2015-03-13 20:21+0100\n"
 "Last-Translator: Alan Benazzi <alan.benazzi@gmail.com>\n"
-"Language: pt\n"
+"Language-Team: Portuguese (Brazil) "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/pt-BR/>\n"
+"Language: pt-BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.3-dev\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -54,10 +57,6 @@ msgstr " por gênero"
 #: statisticsplot.php:1356
 msgid " per time period"
 msgstr " por período de tempo"
-
-#: admin_trees_download.php:34
-msgid " — "
-msgstr ""
 
 #. I18N: Abbreviation for "number %s"
 #: includes/functions/functions_print_facts.php:187
@@ -193,50 +192,43 @@ msgstr "%G:%i:%s"
 
 #: app/Module/LoggedInUsersModule.php:51 app/Stats.php:5372
 #, php-format
-msgid "%d anonymous logged-in user"
-msgid_plural "%d anonymous logged-in users"
-msgstr[0] "%d usuário anônimo conectado"
-msgstr[1] "%d usuários anônimos conectados"
+msgid "%s anonymous logged-in user"
+msgid_plural "%s anonymous logged-in users"
+msgstr[0] "%s usuário anônimo conectado"
+msgstr[1] "%s usuários anônimos conectados"
 
 #: app/Module/LoggedInUsersModule.php:57 app/Stats.php:5382
 #, php-format
-msgid "%d logged-in user"
-msgid_plural "%d logged-in users"
-msgstr[0] "%d usuário conectado"
-msgstr[1] "%d usuários conectados"
+msgid "%s logged-in user"
+msgid_plural "%s logged-in users"
+msgstr[0] "%s usuário conectado"
+msgstr[1] "%s usuários conectados"
 
 #: app/Module/RelativesTabModule.php:62
 #, php-format
-msgid "%d month"
-msgid_plural "%d months"
-msgstr[0] "%d mês"
-msgstr[1] "%d meses"
-
-#: app/Module/RelativesTabModule.php:60
-#, php-format
-msgid "%d year"
-msgid_plural "%d years"
-msgstr[0] "%d ano"
-msgstr[1] "%d anos"
+msgid "%s month"
+msgid_plural "%s months"
+msgstr[0] "%s mês"
+msgstr[1] "%s meses"
 
 #: includes/functions/functions.php:555
 #, php-format
 msgctxt "FEMALE"
-msgid "%d × cousin"
-msgstr "prima de %dº grau"
+msgid "%s × cousin"
+msgstr "prima de %sº grau"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:520
 #, php-format
 msgctxt "MALE"
-msgid "%d × cousin"
-msgstr "primo de %dº grau"
+msgid "%s × cousin"
+msgstr "primo de %sº grau"
 
 #: includes/functions/functions.php:590
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%d × cousin"
-msgstr "primo de %dº grau"
+msgid "%s × cousin"
+msgstr "primo de %sº grau"
 
 #. I18N: This is the format string for full dates.  See http://php.net/date for codes
 #: app/Date.php:222 app/I18N.php:212
@@ -772,10 +764,10 @@ msgstr "Uma nova senha foi criada e enviada para %s. Você pode alterar essa sen
 
 #: login.php:252
 msgid "A new password has been requested for your user name."
-msgstr "Uma nova senha foi solicitada para o seu nome de usuário!"
+msgstr "Uma nova senha foi solicitada para o seu nome de usuário."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
-#: login.php:568
+#: login.php:567
 #, php-format
 msgid "A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s)."
 msgstr "Um novo usuário (%1$s) solicitou uma conta (%2$s) e verificou um endereço de e-mail (%3$s)."
@@ -3366,10 +3358,10 @@ msgstr "Alterações"
 
 #. I18N: title for list of recent changes
 #: app/Module/RecentChangesModule.php:68
-#, fuzzy, php-format
+#, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
-msgstr[0] "Alterações no último dia"
+msgstr[0] "Alterações no último %s dia"
 msgstr[1] "Alterações nos últimos %s dias"
 
 #: admin_trees_manage.php:484
@@ -3683,7 +3675,7 @@ msgstr "Clique em %s para escolher a pessoa como Chefe de família"
 
 #: edit_interface.php:1747
 msgid "Click a row, then drag-and-drop to re-order media"
-msgstr "Clique em uma linha, arraste e solte para reordenar as mídias "
+msgstr "Clique em uma linha, arraste e solte para reordenar as mídias"
 
 #: admin_trees_manage.php:690
 msgid "Click here for PhpGedView to webtrees transfer wizard"
@@ -3776,7 +3768,7 @@ msgstr "Colunas por página"
 msgid "Comment"
 msgstr "Comentário"
 
-#: login.php:323 login.php:349 login.php:490
+#: login.php:323 login.php:349 login.php:489
 msgid "Comments"
 msgstr "Comentários"
 
@@ -3837,7 +3829,7 @@ msgstr "Concatenação"
 msgid "Configure"
 msgstr "Configurar"
 
-#: admin_users.php:347 edituser.php:213 login.php:474
+#: admin_users.php:347 edituser.php:213 login.php:473
 msgid "Confirm password"
 msgstr "Confirmar senha"
 
@@ -3914,7 +3906,7 @@ msgstr ""
 #: admin_trees_download.php:151 app/Module/ClippingsCartModule.php:209
 #: app/Module/ClippingsCartModule.php:600
 msgid "Convert from UTF-8 to ISO-8859-1"
-msgstr "Converter o arquivo GEDCOM do formato UTF-8 para ISO-8859-1?"
+msgstr "Converter de UTF-8 para ISO-8859-1"
 
 #: app/Stats.php:6115
 msgid "Cook Islands"
@@ -3970,7 +3962,7 @@ msgstr "Costa Rica"
 msgid "Cote d’Ivoire"
 msgstr "Costa do Marfim"
 
-#: login.php:645
+#: login.php:633
 msgid "Could not verify the information you entered.  Please try again or contact the site administrator for more information."
 msgstr "Não foi possível verificar as informações.  Por favor retorne e tente novamente."
 
@@ -4263,10 +4255,6 @@ msgstr "Dados"
 #: admin_site_config.php:172
 msgid "Data folder"
 msgstr "Pasta de dados"
-
-#: login.php:639
-msgid "Data was not correct, please try again"
-msgstr "Dados incorretos!<br>Por favor tente novamente!"
 
 #: setup.php:371
 msgid "Database and table names"
@@ -4975,7 +4963,7 @@ msgstr "Descrição"
 msgid "Description META tag"
 msgstr "Palavras-chave para descrição"
 
-#: login.php:457
+#: login.php:456
 msgid "Desired password"
 msgstr "Senha"
 
@@ -5680,7 +5668,7 @@ msgid "Execution statistics"
 msgstr "Estatísticas de execução"
 
 #. I18N: placeholder text for registration-comments field
-#: login.php:494
+#: login.php:493
 msgid "Explain why you are requesting an account."
 msgstr "Explique porque você está pedindo uma conta."
 
@@ -6172,11 +6160,6 @@ msgstr "Tamanho do arquivo"
 msgid "File successfully uploaded"
 msgstr "Arquivo enviado com sucesso"
 
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:65
-msgid "THe file was only partially uploaded.  Please try again."
-msgstr "Arquivo foi enviado parcialmente, por favor tente novamente"
-
 #. I18N: gedcom tag FILE
 #: admin_media.php:475 app/Gedcom/GedcomTag.php:485
 msgid "Filename"
@@ -6348,7 +6331,7 @@ msgstr "Para LDS ordinances, este campo guarda o Templo onde ocorreu a cerimôni
 #. I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names
 #: admin_trees_manage.php:285
 #, php-format
-msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then the you would need to remove %3$s."
+msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
 msgstr ""
 
 #: admin_users.php:590
@@ -6945,7 +6928,7 @@ msgstr "Oi %s …"
 msgid "Hello %s…<br>Thank you for your registration."
 msgstr "Olá %s …<br>Obrigado por seu registro"
 
-#: login.php:317 login.php:566
+#: login.php:317 login.php:565
 msgid "Hello administrator…"
 msgstr "Olá Administrador …"
 
@@ -7181,7 +7164,11 @@ msgstr "Se uma pessoa não é conhecida por seu primeiro nome, o nome preferido 
 #. I18N: Help text for the “Names to add to common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1236
 msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list.  It can be added here manually.  If more than one surname is entered, they must be separated by a comma.  <b>Surnames are case-sensitive.</b>"
-msgstr "Se o número de vezes que um certo sobrenome ocorre é mais baixo que o limite, ele não aparecerá na lista. Ele pode ser adicionado aqui manualmente. Se mais que um sobrenome é inserido, eles devem ser separados por vírgula. <b>Sobrenomes são sensíveis à capitalização<b/>"
+msgstr ""
+"Se o número de vezes que um certo sobrenome ocorre é mais baixo que o "
+"limite, ele não aparecerá na lista. Ele pode ser adicionado aqui "
+"manualmente. Se mais que um sobrenome é inserido, eles devem ser separados "
+"por vírgula. <b>Sobrenomes são sensíveis à capitalização.</b>"
 
 #: help_text.php:255
 #, php-format
@@ -7212,8 +7199,8 @@ msgid "If you are the website administrator, you should check that:"
 msgstr "Se você é o administrador do site, você deveria verificar isso:"
 
 #: site-unavailable.php:109
-msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
-msgstr "Se você não puder resolver o problema sozinho, você pode pedir por ajuda nos fóruns em <a href=\"http://webtrees.net\">webtrees.net</a>"
+msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
+msgstr ""
 
 #: admin_trees_manage.php:269
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
@@ -7263,7 +7250,7 @@ msgid "If you try to exceed these limits, you may experience server time-outs an
 msgstr "Se você tentar exceder estes limites, você pode ter erros no servidor e páginas em branco."
 
 #: admin_site_config.php:507
-msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatcially."
+msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr ""
 
 #. I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting
@@ -8989,11 +8976,6 @@ msgstr "Fator de zoom mínimo e máximo para o Google-map. 1 é o mapa cheio, 15
 msgid "Minimum number of occurrences to be a “common surname”"
 msgstr "Número mínimo de ocorrências para ser um \"sobrenome comum\""
 
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:71
-msgid "THe PHP temporary folder is missing."
-msgstr "Diretório temporário PHP faltante"
-
 #. I18N: Name of a module/report
 #: app/Module/MissingFactsReportModule.php:26
 #: modules_v3/missing_facts_report/report.xml:3
@@ -9472,7 +9454,7 @@ msgid "New registration at %s"
 msgstr "Novo registro em %s"
 
 #. I18N: %s is a server name/URL
-#: login.php:585
+#: login.php:584
 #, php-format
 msgid "New user at %s"
 msgstr "Nova verificação em %s"
@@ -10317,7 +10299,7 @@ msgstr "Idade dos pais"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:381 admin_users.php:334 edituser.php:201
-#: login.php:188 login.php:254 login.php:539
+#: login.php:188 login.php:254 login.php:538
 #: modules_v3/login_block/LoginBlockModule.php:67 setup.php:437
 msgid "Password"
 msgstr "Senha"
@@ -10326,7 +10308,7 @@ msgstr "Senha"
 msgid "Passwords do not match."
 msgstr "Senhas não são iguais."
 
-#: edituser.php:207 login.php:468
+#: edituser.php:207 login.php:467
 msgid "Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”."
 msgstr "Senhas devem ter no mínimo 6 caracteres de comprimento e diferenciam maiúsculas e minúsculas, assim \"senha\" é diferente de \"SENHA\"."
 
@@ -11811,7 +11793,7 @@ msgctxt "MALE"
 msgid "Seller"
 msgstr "Vendedor"
 
-#: app/Module/UserMessagesModule.php:72 login.php:547 message.php:136
+#: app/Module/UserMessagesModule.php:72 login.php:546 message.php:136
 msgid "Send"
 msgstr "Enviar"
 
@@ -12256,7 +12238,7 @@ msgstr "Exibir sobrenomes mais comuns?"
 
 #: includes/functions/functions_print_lists.php:700
 msgid "Show couples where either partner married more than once."
-msgstr "Mostrar casais em que um dos parceiros foi casados ​​mais de uma vez."
+msgstr "Mostrar casais em que um dos parceiros foi casados mais de uma vez."
 
 #: includes/functions/functions_print_lists.php:615
 msgid "Show couples where only the female partner is deceased."
@@ -12289,7 +12271,7 @@ msgstr "Exibir diferença de datas"
 #. I18N: label for yes/no option
 #: app/Module/FamilyTreeStatisticsModule.php:268
 msgid "Show date of last update?"
-msgstr "Exibir data da última atualização"
+msgstr "Exibir data da última atualização?"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:424
@@ -12395,7 +12377,7 @@ msgstr "Exibir apenas Nascimentos, Falecimentos e Casamentos?"
 #: app/Module/OnThisDayModule.php:118
 #: app/Module/UpcomingAnniversariesModule.php:129
 msgid "Show only events of living individuals?"
-msgstr "Exibir somente eventos dos Vivos."
+msgstr "Exibir somente eventos das pessoas vivas?"
 
 #: includes/functions/functions_print_lists.php:150
 msgid "Show only females."
@@ -13286,12 +13268,17 @@ msgstr "O Visualizador de Mídia pode exibir um link qual, quando clicado baixar
 msgid "The PGV to webtrees wizard is an automated process to assist administrators make the move from a PGV installation to a new webtrees one.  It will transfer all PGV GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:"
 msgstr "O assistente do PGV para o webtrees é um processo automático para ajudar administradores a moverem de uma instalação PGV para uma nova instalação webtrees. Ele irá transferir todos os PGV GEDCOM e outras informações da base de dados diretamente para sua nova base de dados webtrees. Os seguintes requisitos são necessários:"
 
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:71
+msgid "The PHP temporary folder is missing."
+msgstr "Diretório temporário PHP faltante"
+
 #: admin_users.php:97
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s"
 msgstr "O administrador do site webtrees %s aprovou sua solicitação de conta. Agora você pode se conectar acessando o seguinte link: %s"
 
-#: login.php:630
+#: login.php:627
 msgid "The administrator has been informed.  As soon as they give you permission to login, you can login with your user name and password."
 msgstr "O Administrador será informado e tão logo ele dê permissão, você poderá acessar o site usando seu nome de usuário e senha."
 
@@ -13299,22 +13286,17 @@ msgstr "O Administrador será informado e tão logo ele dê permissão, você po
 #: action.php:47
 #, php-format
 msgid "The changes to “%s” have been accepted."
-msgstr "As alterações para \"% s\" foram aceitas."
+msgstr "As alterações para \"%s\" foram aceitas."
 
 #. I18N: %s is the name of an individual, source or other record
 #: action.php:218
 #, php-format
 msgid "The changes to “%s” have been rejected."
-msgstr "As alterações para \"% s\" foram rejeitadas."
+msgstr "As alterações para \"%s\" foram rejeitadas."
 
 #: app/Module/ClippingsCartModule.php:133
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple.  Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name.  There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
 msgstr "O Carrinho de Recortes permite tirar extratos (\"recortes\") a partir desta árvore genealógica e empacotá-los em um único arquivo para baixar e posterior importação para o seu programa de genealogia. O arquivo é gravado em formato GEDCOM.<br><ul><li>Como fazer recortes?<br>Isto é realmente simples. Sempre que você vir um nome \"clicável\" (pessoa, família ou fonte), você pode ir para a página Detalhes do mesmo nome. Lá você vai ver o <b>Adicionar ao Carrinho de Recortes</b>. Quando você clica nesse link, você terá várias opções para download.</li><li>Como fazer o download?<br>Depois de ter colocado itens no seu carrinho, você pode baixá-los apenas clicando no link <b>Baixar Agora</b>. Siga as instruções e links.</li></ul>"
-
-#: login.php:596
-#, php-format
-msgid "The data for the user <b>%s</b> has been checked."
-msgstr "Os dados do Usuário <b>%s</b> foram validados."
 
 #: site-unavailable.php:66
 msgid "The database reported the following error message:"
@@ -13409,6 +13391,11 @@ msgstr "O arquivo %s foi excluído."
 #, php-format
 msgid "The file %s has been uploaded."
 msgstr "Foi realizado o upload do arquivo %s."
+
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:65
+msgid "The file was only partially uploaded.  Please try again."
+msgstr "Arquivo foi enviado parcialmente, por favor tente novamente"
 
 #. I18N: %s is a filename
 #: medialist.php:294 mediaviewer.php:111
@@ -13652,6 +13639,11 @@ msgstr[1] ""
 #: admin_site_upgrade.php:502
 msgid "The upgrade is complete."
 msgstr "A atualização está completa."
+
+#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
+#: includes/functions/functions.php:62
+msgid "The uploaded file exceeds the allowed size."
+msgstr "O arquivo a ser enviado excede o tamanho permitido"
 
 #: admin_users.php:788
 #, php-format
@@ -13941,7 +13933,9 @@ msgstr "ESta pessoa foi excluída. Você deveria revisar esta exclusão e então
 
 #: individual.php:75
 msgid "This individual has been edited.  The changes need to be reviewed by a moderator."
-msgstr "Essa pessoa foi  editada. As mudanças precisam ser analisadas ​​por um moderador."
+msgstr ""
+"Essa pessoa foi  editada. As mudanças precisam ser analisadas por um "
+"moderador."
 
 #. I18N: %1$s is “accept”, %2$s is “reject”.  These are links.
 #: individual.php:66
@@ -14311,8 +14305,8 @@ msgstr "Este servidor não suporta downloads seguros usando HTTPS."
 
 #: setup.php:183
 #, php-format
-msgid "This server’s memory limit is %d MB and its CPU time limit is %d seconds."
-msgstr "O limite de memória do servidor é de  %dMB e o limite de tempo de processamento é de %d segundos."
+msgid "This server’s memory limit is %s MB and its CPU time limit is %s seconds."
+msgstr "O limite de memória do servidor é de  %sMB e o limite de tempo de processamento é de %s segundos."
 
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: admin_trees_config.php:1632
@@ -14803,11 +14797,11 @@ msgid "Type of place markers in Place Hierarchy"
 msgstr "Tipo de marcadores de local na Hierarquia de Local"
 
 #. I18N: placeholder text for repeat-password field
-#: admin_users.php:350 login.php:479
+#: admin_users.php:350 login.php:478
 msgid "Type the password again."
 msgstr "Digite a senha novamente."
 
-#: edituser.php:219 login.php:484 setup.php:443
+#: edituser.php:219 login.php:483 setup.php:443
 msgid "Type your password again, to make sure you have typed it correctly."
 msgstr "Digite sua senha novamente, para ter certeza que digitou corretamente."
 
@@ -14993,11 +14987,6 @@ msgstr "Enviar arquivos de mídia"
 msgid "Upload one or more media files from your local computer.  Media files can be pictures, video, audio, or other formats."
 msgstr "Enviar um ou mais arquivos de mídia de seu computador local. Os arquivos de mídia podem ser imagens, vídeo, áudio, ou outros formatos."
 
-#. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
-#: includes/functions/functions.php:62
-msgid "The uploaded file exceeds the allowed size."
-msgstr "O arquivo a ser enviado excede o tamanho permitido"
-
 #: app/Stats.php:6308
 msgid "Uruguay"
 msgstr "Uruguai"
@@ -15024,7 +15013,7 @@ msgid "Use a “?” to match a single character, use “*” to match zero or m
 msgstr "Use “?” para coincidir um único caracter e &laquo;*&raquo; par coincidir zero um mais caracteres."
 
 #. I18N: placeholder text for new-password field
-#: admin_users.php:337 login.php:462
+#: admin_users.php:337 login.php:461
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
@@ -15076,7 +15065,7 @@ msgstr "Use estes botões para reorganizar a ordem dos ítens dentro da lista. O
 msgid "Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the individual’s page."
 msgstr "Use este campo para informar que esta mídia é a de destaque para esta pessoa. A imagem de destaque é a que é usada nos gráficos en na página da Pessoa."
 
-#: login.php:500
+#: login.php:499
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site.  You can also use this to enter any other comments you may have for the site administrator."
 msgstr "Use este campo para informar ao Administrador as razões para seu acesso à árvore e qual seu relacionamento com as pessoas deste site. Pode ser utilizado também para qualquer outro comentário pessoal ao Administrador."
 
@@ -15108,7 +15097,7 @@ msgstr "Usuário não verificado pelo administrador."
 msgid "User options"
 msgstr "Opções do Usuário"
 
-#: login.php:527 login.php:533 login.php:590 login.php:594
+#: login.php:526 login.php:532 login.php:589 login.php:593
 msgid "User verification"
 msgstr "Validação de Usuário"
 
@@ -15120,7 +15109,7 @@ msgstr "User-agent string"
 #. I18N: A site configuration setting
 #: admin_site_config.php:368 admin_users.php:321 admin_users.php:845
 #: app/Module/ResearchTaskModule.php:95 edituser.php:150 login.php:183
-#: login.php:253 login.php:320 login.php:347 login.php:535
+#: login.php:253 login.php:320 login.php:347 login.php:534
 #: modules_v3/login_block/LoginBlockModule.php:62
 msgid "Username"
 msgstr "Usuário"
@@ -15132,11 +15121,6 @@ msgstr "Nome de usuário ou endereço de email"
 #: admin_users.php:326 edituser.php:156 login.php:450
 msgid "Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same."
 msgstr "Nomes de usuários são insensíveis ao caso e ignora letras acentuadas, de modo que \"chloe\", \"chloë\", e \"Chloe\" são considerados o mesmo."
-
-#: login.php:451
-#, php-format
-msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
-msgstr "Usuário não pode conter os seguintes caracteres: &lt; &gt; &quot; %% { } ;"
 
 #. I18N: Menu entry
 #: admin.php:563 admin.php:571 app/Theme/AdministrationTheme.php:125
@@ -15223,7 +15207,7 @@ msgstr "Ventoso"
 msgid "Veracruz, Mexico"
 msgstr "Veracruz, México"
 
-#: login.php:348 login.php:543
+#: login.php:348 login.php:542
 msgid "Verification code"
 msgstr "Código de validação"
 
@@ -15498,7 +15482,7 @@ msgstr "Quando um usuário é associado a um registro individual em uma árvore 
 
 #: admin_pgv_to_wt.php:165
 msgid "Where is your PhpGedView installation?"
-msgstr "Onde está sua instalação do PhpGedView"
+msgstr "Onde está sua instalação do PhpGedView?"
 
 #: app/Module/SiteMapModule.php:293
 msgid "Which family trees should be included in the sitemaps?"
@@ -15670,7 +15654,7 @@ msgstr "Você pode baixar uma cópia da especificação GEDCOM de %s."
 msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
 msgstr "Você pode fazer com que a busca por mulheres casadas registrando seu nome de casada.<br>Entretanto nem todas as mulheres levam o sobrenome de seus maridos, então tenha cuidado para não incluir informação incorreta em sua base de dados."
 
-#: login.php:632
+#: login.php:629
 msgid "You can now login with your user name and password."
 msgstr "Sua conta foi desbloqueada, informe Nome de Usuário/Senha e entre no site."
 
@@ -15710,7 +15694,7 @@ msgstr "Você não pode se conectar porque seu navegador não aceita cookies."
 msgid "You do not have permission to view this page."
 msgstr "Você não têm permissão para visualizar essa página."
 
-#: login.php:576
+#: login.php:575
 msgid "You do not have to take any action; the user can now login."
 msgstr "Conta ativada, o usuário já pode acessar o site."
 
@@ -15718,7 +15702,7 @@ msgstr "Conta ativada, o usuário já pode acessar o site."
 msgid "You entered the same IDs.  You cannot merge the same records."
 msgstr "Você informou os mesmos IDs. Consolidação funciona somente com IDs diferentes."
 
-#: login.php:628
+#: login.php:625
 msgid "You have confirmed your request to become a registered user."
 msgstr "Você foi identificado como um usuário registrado."
 
@@ -15791,7 +15775,7 @@ msgstr "Você precisa se autenticar novamente, usando seu usuário e senha do Ph
 msgid "You need to set up an administrator account.  This account can control all aspects of this webtrees installation.  Please choose a strong password."
 msgstr "Você precisa definir uma conta de administrador. Esta conta pode controlar todos os aspectos desta instalação do webtrees. Por favor escolha uma senha forte."
 
-#: login.php:574
+#: login.php:573
 msgid "You now need to review the account details, and set the “approved” status to “yes”."
 msgstr "Agora você precisa rever os detalhes da conta, e definir o status \"aprovado\" para \"sim\"."
 
@@ -16318,7 +16302,7 @@ msgstr "lista compacta"
 #: admin_trees_download.php:120 admin_trees_download.php:205
 #: admin_trees_manage.php:293 admin_trees_manage.php:719
 #: admin_trees_merge.php:200 admin_trees_renumber.php:280 login.php:219
-#: login.php:507 modules_v3/login_block/LoginBlockModule.php:93
+#: login.php:506 modules_v3/login_block/LoginBlockModule.php:93
 #: reportengine.php:127 reportengine.php:282 setup.php:190 setup.php:216
 #: setup.php:298 setup.php:384 setup.php:451
 msgid "continue"
@@ -16997,146 +16981,146 @@ msgstr "esposa do neto"
 #: includes/functions/functions.php:1639 includes/functions/functions.php:1654
 #: includes/functions/functions.php:1667
 #, php-format
-msgid "great ×%d aunt"
-msgstr "tia %d°-avó"
+msgid "great ×%s aunt"
+msgstr "tia %s°-avó"
 
 #: includes/functions/functions.php:1641 includes/functions/functions.php:1656
 #: includes/functions/functions.php:1669
 #, php-format
-msgid "great ×%d aunt/uncle"
-msgstr "tio(a) ×%d avô(ó)"
+msgid "great ×%s aunt/uncle"
+msgstr "tio(a) ×%s avô(ó)"
 
 #: includes/functions/functions.php:2042 includes/functions/functions.php:2057
 #, php-format
-msgid "great ×%d grandchild"
-msgstr "%d° neto"
+msgid "great ×%s grandchild"
+msgstr "%s° neto"
 
 #: includes/functions/functions.php:2040 includes/functions/functions.php:2055
 #, php-format
-msgid "great ×%d granddaughter"
-msgstr "%d° neta"
+msgid "great ×%s granddaughter"
+msgstr "%s° neta"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1912 includes/functions/functions.php:1922
 #: includes/functions/functions.php:1932 includes/functions/functions.php:1942
 #: includes/functions/functions.php:1954
 #, php-format
-msgid "great ×%d grandfather"
-msgstr "%d° avô"
+msgid "great ×%s grandfather"
+msgstr "%s° avô"
 
 #: includes/functions/functions.php:1914 includes/functions/functions.php:1924
 #: includes/functions/functions.php:1934 includes/functions/functions.php:1944
 #: includes/functions/functions.php:1956
 #, php-format
-msgid "great ×%d grandmother"
-msgstr "%d° avó"
+msgid "great ×%s grandmother"
+msgstr "%s° avó"
 
 #: includes/functions/functions.php:1916 includes/functions/functions.php:1926
 #: includes/functions/functions.php:1936 includes/functions/functions.php:1946
 #: includes/functions/functions.php:1958
 #, php-format
-msgid "great ×%d grandparent"
-msgstr "%d° avô"
+msgid "great ×%s grandparent"
+msgstr "%s° avô"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:2038 includes/functions/functions.php:2053
 #, php-format
-msgid "great ×%d grandson"
-msgstr "×%d neto"
+msgid "great ×%s grandson"
+msgstr "×%s neto"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1823 includes/functions/functions.php:1836
 #, php-format
-msgid "great ×%d nephew"
-msgstr "sobrinho %d°-neto"
+msgid "great ×%s nephew"
+msgstr "sobrinho %s°-neto"
 
 #: includes/functions/functions.php:1797
 #, php-format
-msgctxt "(a man’s) brother’s great ×(%d-1) grandson"
-msgid "great ×%d nephew"
-msgstr "sobrinho %d° neto"
+msgctxt "(a man’s) brother’s great ×(%s-1) grandson"
+msgid "great ×%s nephew"
+msgstr "sobrinho %s° neto"
 
 #: includes/functions/functions.php:1799
 #, php-format
-msgctxt "(a man’s) sister’s great ×(%d-1) grandson"
-msgid "great ×%d nephew"
-msgstr "sobrinho %d° neto"
+msgctxt "(a man’s) sister’s great ×(%s-1) grandson"
+msgid "great ×%s nephew"
+msgstr "sobrinho %s° neto"
 
 #: includes/functions/functions.php:1801
 #, php-format
-msgctxt "(a woman’s) great ×%d nephew"
-msgid "great ×%d nephew"
-msgstr "sobrinho %d° neto"
+msgctxt "(a woman’s) great ×%s nephew"
+msgid "great ×%s nephew"
+msgstr "sobrinho %s° neto"
 
 #: includes/functions/functions.php:1827 includes/functions/functions.php:1840
 #, php-format
-msgid "great ×%d nephew/niece"
-msgstr "sobrinho(a) %d° neto(a)"
+msgid "great ×%s nephew/niece"
+msgstr "sobrinho(a) %s° neto(a)"
 
 #: includes/functions/functions.php:1813
 #, php-format
-msgctxt "(a man’s) brother’s great ×(%d-1) grandchild"
-msgid "great ×%d nephew/niece"
-msgstr "sobrinho(a) %d° neto(a)"
+msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
+msgid "great ×%s nephew/niece"
+msgstr "sobrinho(a) %s° neto(a)"
 
 #: includes/functions/functions.php:1815
 #, php-format
-msgctxt "(a man’s) sister’s great ×(%d-1) grandchild"
-msgid "great ×%d nephew/niece"
-msgstr "sobrinho(a) %d° neto(a)"
+msgctxt "(a man’s) sister’s great ×(%s-1) grandchild"
+msgid "great ×%s nephew/niece"
+msgstr "sobrinho(a) %s° neto(a)"
 
 #: includes/functions/functions.php:1817
 #, php-format
-msgctxt "(a woman’s) great ×%d nephew/niece"
-msgid "great ×%d nephew/niece"
-msgstr "sobrinho(a) %d° neto(a)"
+msgctxt "(a woman’s) great ×%s nephew/niece"
+msgid "great ×%s nephew/niece"
+msgstr "sobrinho(a) %s° neto(a)"
 
 #: includes/functions/functions.php:1825 includes/functions/functions.php:1838
 #, php-format
-msgid "great ×%d niece"
-msgstr "sobrinha %d°-neta"
+msgid "great ×%s niece"
+msgstr "sobrinha %s°-neta"
 
 #: includes/functions/functions.php:1805
 #, php-format
-msgctxt "(a man’s) brother’s great ×(%d-1) granddaughter"
-msgid "great ×%d niece"
-msgstr "sobrinha %d° neta"
+msgctxt "(a man’s) brother’s great ×(%s-1) granddaughter"
+msgid "great ×%s niece"
+msgstr "sobrinha %s° neta"
 
 #: includes/functions/functions.php:1807
 #, php-format
-msgctxt "(a man’s) sister’s great ×(%d-1) granddaughter"
-msgid "great ×%d niece"
-msgstr "sobrinha %d° neta"
+msgctxt "(a man’s) sister’s great ×(%s-1) granddaughter"
+msgid "great ×%s niece"
+msgstr "sobrinha %s° neta"
 
 #: includes/functions/functions.php:1809
 #, php-format
-msgctxt "(a woman’s) great ×%d niece"
-msgid "great ×%d niece"
-msgstr "sobrinha %d° neta"
+msgctxt "(a woman’s) great ×%s niece"
+msgid "great ×%s niece"
+msgstr "sobrinha %s° neta"
 
-#. I18N: if you need a different number for %d, contact the developers, as a code-change is required
+#. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: includes/functions/functions.php:1637 includes/functions/functions.php:1665
 #, php-format
-msgid "great ×%d uncle"
-msgstr "tio %d°-avô"
+msgid "great ×%s uncle"
+msgstr "tio %s°-avô"
 
 #: includes/functions/functions.php:1647
 #, php-format
-msgctxt "great ×(%d-1) grandfather’s brother"
-msgid "great ×%d uncle"
-msgstr "tio ×%d avô"
+msgctxt "great ×(%s-1) grandfather’s brother"
+msgid "great ×%s uncle"
+msgstr "tio ×%s avô"
 
 #: includes/functions/functions.php:1649
 #, php-format
-msgctxt "great ×(%d-1) grandmother’s brother"
-msgid "great ×%d uncle"
-msgstr "tia ×%d avó"
+msgctxt "great ×(%s-1) grandmother’s brother"
+msgid "great ×%s uncle"
+msgstr "tia ×%s avó"
 
 #: includes/functions/functions.php:1651
 #, php-format
-msgctxt "great ×(%d-1) grandparent’s brother"
-msgid "great ×%d uncle"
-msgstr "tio ×%d avô"
+msgctxt "great ×(%s-1) grandparent’s brother"
+msgid "great ×%s uncle"
+msgstr "tio ×%s avô"
 
 #: includes/functions/functions.php:1579
 msgid "great ×4 aunt"
@@ -18586,10 +18570,10 @@ msgstr "máximo"
 #: app/Module/UpcomingAnniversariesModule.php:125
 #: app/Module/YahrzeitModule.php:250
 #, php-format
-msgid "maximum %d day"
-msgid_plural "maximum %d days"
-msgstr[0] "máximo de %d dia"
-msgstr[1] "máximo de %d dias"
+msgid "maximum %s day"
+msgid_plural "maximum %s days"
+msgstr[0] "máximo de %s dia"
+msgstr[1] "máximo de %s dias"
 
 #: admin_trees_config.php:404 admin_trees_config.php:428
 #: admin_trees_config.php:468 admin_trees_config.php:508
@@ -19804,10 +19788,10 @@ msgstr "irmã mais nova"
 #: search_advanced.php:107 search_advanced.php:111 search_advanced.php:115
 #: search_advanced.php:166 search_advanced.php:167 search_advanced.php:168
 #, php-format
-msgid "±%d year"
-msgid_plural "±%d years"
-msgstr[0] "±%d ano"
-msgstr[1] "±%d anos"
+msgid "±%s year"
+msgid_plural "±%s years"
+msgstr[0] "±%s ano"
+msgstr[1] "±%s anos"
 
 #. I18N: Place a nickname in quotation marks
 #: app/Individual.php:1197 app/Individual.php:1215
@@ -19900,6 +19884,9 @@ msgstr "…"
 
 #~ msgid "Create user"
 #~ msgstr "Criar usuário"
+
+#~ msgid "Data was not correct, please try again"
+#~ msgstr "Dados incorretos!<br>Por favor tente novamente!"
 
 #~ msgctxt "font name"
 #~ msgid "DejaVu"
@@ -20035,6 +20022,9 @@ msgstr "…"
 #~ msgid "If this box is checked, this user will be able to edit his account information.  Although this is not generally recommended, you can create a single user name and password for multiple users.  When this box is unchecked for all users with the shared account, they are prevented from editing the account information and only an administrator can alter that account."
 #~ msgstr "Se esta caixa estiver marcada, este usuário será capaz de alterar as informações de sua conta. Embora isto não seja recomendado, você pode criar um único usuário e senha para múltiplos usuários. Quando esta caixa estiver desmarcada para todos os usuários com uma conta compartilhada, eles serão impedidos de alterar as informações de sua conta e somente o adminstrador poderá realizar estas alterações."
 
+#~ msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>."
+#~ msgstr "Se você não puder resolver o problema sozinho, você pode pedir por ajuda nos fóruns em <a href=\"http://webtrees.net\">webtrees.net</a>"
+
 #~ msgid "If you have a note to add to this record, this is the place to do so.<br><br>Just click the link, a window will open, and you can type your note.  When you are finished typing, just click the button below the box, close the window, and that’s all."
 #~ msgstr "Se você tiver uma nota a acrescentar a este registro, este é o lugar para isso.<br><br>Basta clicar no link, uma janela será aberta, e você pode digitar a sua nota. Quando você terminar de digitar, basta clicar no botão abaixo da caixa, fechar a janela, e isso é tudo."
 
@@ -20094,10 +20084,10 @@ msgstr "…"
 #~ msgid "No other link between the two individuals could be found."
 #~ msgstr "Nenhuma ligação foi localizada entre estas duas pessoas."
 
-#~ msgid "Note: “living” is defined (if no death or burial is known) as ending %d year after birth or estimated birth."
-#~ msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %d years after birth or estimated birth."
-#~ msgstr[0] "Nota: “vivo” é definido (se não é conhecido falecimento ou sepultamento) como findo %d ano após o nascimento ou estimativa de nascimento."
-#~ msgstr[1] "Nota: “vivo” é definido (se não é conhecido falecimento ou sepultamento) como findo %d anos após o nascimento ou estimativa de nascimento."
+#~ msgid "Note: “living” is defined (if no death or burial is known) as ending %s year after birth or estimated birth."
+#~ msgid_plural "Note: “living” is defined (if no death or burial is known) as ending %s years after birth or estimated birth."
+#~ msgstr[0] "Nota: “vivo” é definido (se não é conhecido falecimento ou sepultamento) como findo %s ano após o nascimento ou estimativa de nascimento."
+#~ msgstr[1] "Nota: “vivo” é definido (se não é conhecido falecimento ou sepultamento) como findo %s anos após o nascimento ou estimativa de nascimento."
 
 #~ msgid "Notes are free-form text and will appear in the Fact Details section of the page."
 #~ msgstr "Notas é um texto livre que é exibido na seção Detalhes do Fato."
@@ -20182,6 +20172,9 @@ msgstr "…"
 
 #~ msgid "The current webtrees admin username must be the same as an existing PGV admin username"
 #~ msgstr "O usuário administrador atual do webtrees deve ser o mesmo do usuário existente no PGV"
+
+#~ msgid "The data for the user <b>%s</b> has been checked."
+#~ msgstr "Os dados do Usuário <b>%s</b> foram validados."
 
 #~ msgid "The following calendars are supported:"
 #~ msgstr "Os seguintes calendários são suportados:"
@@ -20287,6 +20280,9 @@ msgstr "…"
 
 #~ msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question.<br><br><table><tr><td style=\"vertical-align:middle\">This image might be used when the gender of the individual is unknown:"
 #~ msgstr "Usar imagens de silhueta quando não existir imagem de destaque especificada para a pessoa. As imagens usadas são específicas para o gênero da pessoa em questão.<br><br><table><tr><td style=\"vertical-align:middle\">middle\">Esta imagem pode ser usada quando o gênero da pessoa é desconhecido:"
+
+#~ msgid "Usernames may not contain the following characters: &lt; &gt; &quot; %% { } ;"
+#~ msgstr "Usuário não pode conter os seguintes caracteres: &lt; &gt; &quot; %% { } ;"
 
 #~ msgid "Users’ languages"
 #~ msgstr "Idioma dos usuários"
