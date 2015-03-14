@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-03-13 22:41+0100\n"
+"PO-Revision-Date: 2015-03-14 09:11+0100\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
 "Language-Team: Lithuanian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/lt/>\n"
@@ -10509,7 +10509,7 @@ msgstr "Puslapio dydis"
 #. I18N: The number of [...]
 #: app/Module/ExtraInformationModule.php:67 index.php:144
 msgid "Page views"
-msgstr ""
+msgstr "Puslapis matytas"
 
 #: app/Gedcom/GedcomTag.php:1888
 msgid "Painting"
@@ -12628,7 +12628,7 @@ msgstr "Rodyti skaitliukus ant portalo ir asmenų puslapių."
 
 #: compact.php:57
 msgid "Show images"
-msgstr ""
+msgstr "Rodyti vaizdus"
 
 #: app/Module/GoogleMapsModule.php:4549
 msgid "Show inactive places"
@@ -12936,7 +12936,7 @@ msgstr "Sesuo"
 #: admin_site_config.php:557 admin_site_config.php:573
 #: admin_site_config.php:598
 msgid "Site identification code"
-msgstr ""
+msgstr "Svetainės identifikacijos kodas"
 
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: admin_users.php:459 edituser.php:271
@@ -12948,12 +12948,14 @@ msgstr ""
 #. I18N: A site configuration setting
 #: admin_site_config.php:515 admin_site_config.php:536
 msgid "Site verification code"
-msgstr ""
+msgstr "Svetainės verifikacijos kodas"
 
 #. I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting
 #: admin_site_config.php:526 admin_site_config.php:547
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
 msgstr ""
+"Svetainės verifikacijos kodas neveiks jeigu webtrees yra įdeigtas "
+"poaplankoje."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:30
@@ -13432,7 +13434,7 @@ msgstr "Svalbardas ir Jan Mayenas"
 #. I18N: Reverse the order of two individuals
 #: relationship.php:86
 msgid "Swap individuals"
-msgstr ""
+msgstr "Sukeisti asmenis"
 
 #: app/Stats.php:6286
 msgid "Swaziland"
