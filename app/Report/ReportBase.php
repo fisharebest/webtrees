@@ -952,7 +952,7 @@ function totalPagesStartHandler() {
  * @return void
  */
 function gedcomStartHandler($attrs) {
-	global $vars, $gedrec, $gedrecStack, $processGedcoms, $fact, $desc, $ged_level;
+	global $vars, $gedrec, $gedrecStack, $processGedcoms, $fact, $desc, $ged_level, $WT_TREE;
 
 	if ($processGedcoms > 0) {
 		$processGedcoms++;
@@ -1848,13 +1848,13 @@ function ifEndHandler() {
  * @param array $attrs an array of key value pairs for the attributes
  */
 function footnoteStartHandler($attrs) {
-	global $printData, $printDataStack, $currentElement, $footnoteElement, $processFootnote, $gedrec, $ReportRoot;
+	global $printData, $printDataStack, $currentElement, $footnoteElement, $processFootnote, $gedrec, $ReportRoot, $WT_TREE;
 
 	$id = "";
 	if (preg_match("/[0-9] (.+) @(.+)@/", $gedrec, $match)) {
 		$id = $match[2];
 	}
-	$record = GedcomRecord::GetInstance($id);
+	$record = GedcomRecord::GetInstance($id, $WT_TREE);
 	if ($record && $record->canShow()) {
 		array_push($printDataStack, $printData);
 		$printData = true;
@@ -2680,7 +2680,7 @@ function listEndHandler() {
 		$list_private = 0;
 		foreach ($list as $record) {
 			if ($record->canShow()) {
-				$gedrec = $record->privatizeGedcom(Auth::accessLevel($WT_TREE));
+				$gedrec = $record->privatizeGedcom(Auth::accessLevel($record->getTree()));
 				//-- start the sax parser
 				$repeat_parser = xml_parser_create();
 				$parser = $repeat_parser;
