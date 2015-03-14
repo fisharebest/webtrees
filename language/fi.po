@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-03-14 15:10+0100\n"
+"PO-Revision-Date: 2015-03-14 16:00+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Finnish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
@@ -774,7 +774,7 @@ msgstr "Yksityisalue, jossa voi tallentaa muistiinpanoja tai pitää päiväkirj
 #: login.php:319
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
-msgstr "Mahdollinen käyttäjä on rekisteröitynyt webtreesiin, %s"
+msgstr "Mahdollinen käyttäjä on rekisteröitynyt webtrees sivustolle %s."
 
 #. I18N: Description of the “Pedigree” module
 #: app/Module/PedigreeReportModule.php:32
@@ -841,7 +841,7 @@ msgstr "Raportti henkilöistä, jotka menivät naimisiin tiettyyn aikaan tai tie
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:32 modules_v3/change_report/report.xml:4
 msgid "A report of recent and pending changes."
-msgstr "Viimeisten ja vireillä olevien muutosten raportti"
+msgstr "Viimeisten ja vireillä olevien muutosten raportti."
 
 #. I18N: Description of the “Related families”
 #: app/Module/IndividualFamiliesReportModule.php:32
@@ -1129,7 +1129,7 @@ msgstr "Lisää aviomies perheeseen"
 #: app/Module/RelativesTabModule.php:367 edit_interface.php:1090
 #: edit_interface.php:1163
 msgid "Add a husband using an existing individual"
-msgstr "Liitä mies puolisoksi käyttäen tiedostossa olevaa henkilöä."
+msgstr "Liitä mies puolisoksi käyttäen tiedostossa olevaa henkilöä"
 
 #: help_text.php:380 includes/functions/functions_edit.php:969
 #: includes/functions/functions_edit.php:974
@@ -1244,7 +1244,7 @@ msgstr "Lisää vaimo perheeseen"
 #: app/Module/RelativesTabModule.php:355 edit_interface.php:1093
 #: edit_interface.php:1165
 msgid "Add a wife using an existing individual"
-msgstr "Liitä vaimo käyttäen tiedostossa olevaa henkilöä."
+msgstr "Liitä vaimo käyttäen tiedostossa olevaa henkilöä"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:113
 #: app/Module/FrequentlyAskedQuestionsModule.php:385
@@ -2788,7 +2788,7 @@ msgstr "meren sininen"
 
 #: message.php:135
 msgid "Body"
-msgstr "Viesti:"
+msgstr "Viesti"
 
 #: app/Gedcom/GedcomCodeTemp.php:102
 msgid "Bogota, Colombia"
@@ -3219,7 +3219,7 @@ msgstr "Katalonia"
 
 #: statistics.php:604
 msgid "Categories"
-msgstr "Luokat:"
+msgstr "Luokat"
 
 #. I18N: gedcom tag CAUS
 #: app/Gedcom/GedcomTag.php:243
@@ -3410,7 +3410,7 @@ msgstr "Tarkista tämän kansion käyttöoikeudet."
 
 #: setup.php:269 setup.php:341
 msgid "Check the settings and try again."
-msgstr "Tarkista asetukset ja yritä uudestaan"
+msgstr "Tarkista asetukset ja yritä uudestaan."
 
 #: setup.php:156
 msgid "Checking server capacity"
@@ -3664,7 +3664,7 @@ msgstr "Valitse %s perheen päähenkilöksi."
 
 #: edit_interface.php:1747
 msgid "Click a row, then drag-and-drop to re-order media"
-msgstr "Klikkaa riviä, ja sitten vedä ja pudota lajitellaksesi media "
+msgstr "Klikkaa riviä, ja sitten vedä ja pudota lajitellaksesi media"
 
 #: admin_trees_manage.php:690
 msgid "Click here for PhpGedView to webtrees transfer wizard"
@@ -3680,11 +3680,13 @@ msgstr "Klikkaa tästä avataksesi tai sulkeaksesi sivupalkin"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:84
 msgid "Click name to add individual to add links list."
-msgstr "Valitse henkilön lisättäväksi yhteyksien luontilistaan"
+msgstr "Valitse henkilön nimi lisättäväksi yhteyksien luontilistaan."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:295
 msgid "Click on a title to go straight to it, or scroll down to read them all."
-msgstr "Valitsemalla eli klikkaamalla otsikkoa siirryt suoraan kyseiseen kysymykseen ja vastaukseen tai vierittämällä listaa, voit lukea kaikki"
+msgstr ""
+"Valitsemalla eli klikkaamalla otsikkoa siirryt suoraan kyseiseen kysymykseen "
+"ja vastaukseen tai vierittämällä listaa, voit lukea kaikki."
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:69
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:80
@@ -4428,7 +4430,7 @@ msgstr "Rekisteröintipäivä"
 
 #: app/Module/UserMessagesModule.php:79
 msgid "Date sent"
-msgstr "Luontiaika:"
+msgstr "Luontiaika"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:747
@@ -5347,7 +5349,7 @@ msgstr "Muokkaa tarinaa"
 
 #: app/Tree.php:562
 msgid "Edit this individual and replace their details with your own."
-msgstr "Muokkaa henkilötiedot, korvaa sinun tiedoilla"
+msgstr "Muokkaa henkilötiedot, korvaa sinun tiedoilla."
 
 #: admin_users.php:268
 msgid "Edit user"
@@ -5921,7 +5923,7 @@ msgstr "Perhe navigaattori"
 #. I18N: Description of the “GEDCOM News” module
 #: app/Module/FamilyTreeNewsModule.php:30
 msgid "Family news and site announcements."
-msgstr "Perheuutiset ja sukupuun ilmoitukset"
+msgstr "Perheuutiset ja sukupuun ilmoitukset."
 
 #. I18N: A title/heading. %s is an individual’s name
 #: app/Controller/FamilyBookController.php:368
@@ -6325,19 +6327,22 @@ msgstr ""
 
 #: admin_users.php:590
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
-msgstr "Esimerkki: kun asetat hyppyjen määräksi 2, niin henkilö näkee lapsenlapsen (lapsi->lapsi), tädin (äiti->sisko), tytärpuolen (aviopuoliso->lapsi). Kaukaisemmat sukulaiset eivät näy esim: serkku (isä->veli->lapsi)"
+msgstr ""
+"Esimerkki: kun asetat hyppyjen määräksi 2, niin henkilö näkee lapsenlapsen "
+"(lapsi->lapsi), tädin (äiti->sisko), tytärpuolen (aviopuoliso->lapsi). "
+"Kaukaisemmat sukulaiset eivät näy esim: serkku (isä->veli->lapsi)."
 
 #: app/Theme/BaseTheme.php:262
 msgid "For help with genealogy questions contact"
-msgstr "Sukuasioissa ota yhteys:"
+msgstr "Sukuasioissa ota yhteys"
 
 #: app/Theme/BaseTheme.php:273
 msgid "For technical support and information contact"
-msgstr "Teknisissä asioissa ota yhteys:"
+msgstr "Teknisissä asioissa ota yhteys"
 
 #: app/Theme/BaseTheme.php:251
 msgid "For technical support or genealogy questions, please contact"
-msgstr "Teknisissä tai sukuasioissa ota yhteys:"
+msgstr "Teknisissä tai sukuasioissa ota yhteys"
 
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:262
@@ -6667,7 +6672,7 @@ msgstr "Sallii käyttäjien valita teeman vaihtoehtolistasta.<br><br>Tämä vali
 #. I18N: Help text for the “Allow users to select their own theme” site configuration setting
 #: admin_site_config.php:249
 msgid "Gives users the option of selecting their own theme."
-msgstr "Sallii käyttäjäkohtaisen teeman valinnan"
+msgstr "Sallii käyttäjäkohtaisen teeman valinnan."
 
 #. I18N: Help text for the “Allow visitors to request account registration” site configuration setting
 #: admin_site_config.php:474
@@ -6855,7 +6860,7 @@ msgstr "Hän kuoli"
 #: modules_v3/ahnentafel_report/report.xml:257
 #: modules_v3/descendancy_report/report.xml:171
 msgid "He married"
-msgstr "Puoliso:"
+msgstr "Puoliso"
 
 #: modules_v3/ahnentafel_report/report.xml:219
 msgid "He resided at"
@@ -6880,7 +6885,7 @@ msgstr "Hänet polttohaudattiin"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:55
 msgid "Head of household"
-msgstr "Pää:"
+msgstr "Perheenpää"
 
 #. I18N: gedcom tag HEAD
 #: app/Gedcom/GedcomTag.php:509
@@ -6915,7 +6920,7 @@ msgstr "Hei %s…"
 #: login.php:390
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr "Hei %s…<br>Kiitos rekisteröinnistäsi"
+msgstr "Hei %s…<br>Kiitos rekisteröinnistäsi."
 
 #: login.php:317 login.php:565
 msgid "Hello administrator…"
@@ -7241,7 +7246,11 @@ msgstr ""
 #. I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1256
 msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here.  If more than one surname is entered, they must be separated by a comma.  <b>Surnames are case-sensitive</b>.  Surnames entered here will also be removed from the “Top surnames” list on the “Home page”."
-msgstr "Jos haluat poistaa sukunimen Yleisimpien sukunimien luettelosta, muuttamatta kynnysarvoa, voit lisät sukunimen tänne. Jos useampia sukunimiä halutaan mukaan, erota ne pilkkuilla. <b>Isoilla ja pienillä kirjaimilla on suuri merkitys sukunimien käsittelyssä.</b>"
+msgstr ""
+"Jos haluat poistaa sukunimen Yleisimpien sukunimien luettelosta, muuttamatta "
+"kynnysarvoa, voit lisät sukunimen tänne. Jos useampia sukunimiä halutaan "
+"mukaan, erota ne pilkkuilla. <b>Isoilla ja pienillä kirjaimilla on suuri "
+"merkitys sukunimien käsittelyssä</b>."
 
 #: setup.php:187
 msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page.  Otherwise, you will need to contact your server’s administrator."
@@ -7618,7 +7627,7 @@ msgstr "Johannesburg, Etelä-Afrikka"
 #. I18N: This should be a common/default/placeholder name of an individual.  Put slashes around the surname.
 #: app/Tree.php:561
 msgid "John /DOE/"
-msgstr "Nimen esitystapa. Kauttamerkki / sukunimen edessä ja takana."
+msgstr "Matti /Meikäläinen/"
 
 #: app/Stats.php:6183
 msgid "Jordan"
@@ -8035,17 +8044,17 @@ msgstr "Lima, Peru"
 
 #: app/Module/FamilyTreeNewsModule.php:163
 msgid "Limit"
-msgstr "Rajoitus:"
+msgstr "Rajoitus"
 
 #. I18N: Limit display by [age/number]
 #: app/Module/FamilyTreeNewsModule.php:154
 msgid "Limit display by"
-msgstr "Rajoita näyttö seuraavasti:"
+msgstr "Rajoita näyttö seuraavasti"
 
 #: app/Module/RelativesTabModule.php:344 edit_interface.php:990
 #: edit_interface.php:1049
 msgid "Link this individual to an existing family as a child"
-msgstr "Liitä tämä henkilö lapseksi sivustolla olevaan perheeseen."
+msgstr "Liitä tämä henkilö lapseksi sivustolla olevaan perheeseen"
 
 #: admin_media.php:543 app/Controller/MediaController.php:61
 #: app/Controller/MediaController.php:150 app/Module/AlbumModule.php:141
@@ -8633,7 +8642,7 @@ msgstr "Täsmää tarkasti teksti, vaikka se esiintyisi keskellä sanaa."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:126
 msgid "Match the exact text, unless it occurs in the middle of a word."
-msgstr "Täsmää tarkka teksti, ellei se esiinny keskellä sanaa"
+msgstr "Täsmää tarkka teksti, ellei se esiinny keskellä sanaa."
 
 #: app/Stats.php:6220
 msgid "Mauritania"
@@ -8715,7 +8724,7 @@ msgstr "Mediatunnuksen etuliite"
 #. I18N: Label for search field
 #: find.php:191
 msgid "Media contains"
-msgstr "Media sisältää:"
+msgstr "Media sisältää"
 
 #: admin_media.php:702 admin_media_upload.php:198
 msgid "Media file"
@@ -9130,7 +9139,7 @@ msgstr "Yleensä sivuston asennus tehdään käyttäen localhostia. Silloin sinu
 
 #: setup.php:286
 msgid "Most sites are configured to use the default value of 3306."
-msgstr "Yleensä sivuston asennus tehdään käyttäen oletusarvo 3306"
+msgstr "Yleensä sivuston asennus tehdään käyttäen oletusarvoa 3306."
 
 #. I18N: Name of a module
 #: app/Module/TopPageViewsModule.php:25
@@ -9296,7 +9305,7 @@ msgstr "Nimi"
 #. I18N: Label for search field
 #: find.php:155 find.php:172
 msgid "Name contains"
-msgstr "Nimi sisältää:"
+msgstr "Nimi sisältää"
 
 #: app/Gedcom/GedcomTag.php:607
 msgid "Name in Hebrew"
@@ -9616,12 +9625,12 @@ msgstr[1] "Ei elävien henkilöiden tapahtumia tulevien %s päivän aikana."
 
 #: app/Controller/FamilyController.php:174
 msgid "No facts for this family."
-msgstr "Ei tietoja tästä perheestä"
+msgstr "Ei tietoja tästä perheestä."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:68
 msgid "No file was received.  Please try again."
-msgstr "Yhtään tiedostoa ei vastaanotettu. Yritä uudelleen"
+msgstr "Yhtään tiedostoa ei vastaanotettu. Yritä uudelleen."
 
 #: app/Module/FamilyTreeNewsModule.php:157
 msgid "No limit"
@@ -9641,7 +9650,7 @@ msgstr "Ei kartta tietoa tällä henkilöllä"
 
 #: admin_site_merge.php:225 admin_site_merge.php:267 admin_site_merge.php:308
 msgid "No matching facts found"
-msgstr "Yhtäpitäviä tietoja ei löytynyt."
+msgstr "Yhtäpitäviä tietoja ei löytynyt"
 
 #: addmedia.php:164 addmedia.php:302 admin_media_upload.php:123
 msgid "No media file was provided."
@@ -9657,7 +9666,7 @@ msgstr "Paikkoja ei löytynyt"
 
 #: admin_trees_places.php:126
 msgid "No places have been found."
-msgstr "Paikkoja ei löytynyt"
+msgstr "Paikkoja ei löytynyt."
 
 #: admin_site_config.php:118
 msgid "No predefined text"
@@ -9865,7 +9874,7 @@ msgstr "Lapsettomien perheiden lukumäärä"
 #: app/Module/ClippingsCartModule.php:524
 #: app/Module/ClippingsCartModule.php:527
 msgid "Number of generations"
-msgstr "Sukupolvien lukumäärä:"
+msgstr "Sukupolvien lukumäärä"
 
 #: app/Module/FamilyTreeNewsModule.php:159
 msgid "Number of items"
@@ -10149,7 +10158,7 @@ msgstr "PGV pitää olla versio 4.2.3 tai jokin sen SVN päivityksistä #%s asti
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:77
 msgid "PHP blocked the file because of its extension."
-msgstr "PHP estetty tiedostopäätteen perusteella"
+msgstr "PHP esti tiedoston tiedostopäätteen perusteella."
 
 #: setup.php:140
 #, php-format
@@ -10164,7 +10173,7 @@ msgstr "PHP ominaisuus ”%s” ei ole käytössä. webtreesiä ei voida asentaa
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:74
 msgid "PHP failed to write to disk."
-msgstr "PHP ei voinut kirjoittaa levylle"
+msgstr "PHP ei voinut kirjoittaa levylle."
 
 #: admin_site_info.php:71
 msgid "PHP information"
@@ -10451,7 +10460,7 @@ msgstr "Paikkojen tarkistus"
 #. I18N: Label for search field
 #: find.php:211
 msgid "Place contains"
-msgstr "Paikan nimi sisältää:"
+msgstr "Paikan nimi sisältää"
 
 #: app/Module/TopPageViewsModule.php:136
 msgid "Place counts before or after name?"
@@ -10623,7 +10632,7 @@ msgstr "Klikkaa alla olevaa linkkiä, täytä tiedot ja varmista tilisi ja sähk
 
 #: search.php:53
 msgid "Please enter a given name, surname, or place in addition to the year"
-msgstr "Anna vuosiluvun lisäksi etunimi, sukunimi tai paikka."
+msgstr "Anna vuosiluvun lisäksi etunimi, sukunimi tai paikka"
 
 #: message.php:99
 msgid "Please enter a message subject."
@@ -10636,7 +10645,7 @@ msgstr "Huom! Anna hyväksyttävä sähköpostiosoite."
 #: app/Module/CensusAssistantModule.php:96 find.php:115 search.php:34
 #: search.php:46
 msgid "Please enter more than one character."
-msgstr "Anna enemmän kuin yksi merkki"
+msgstr "Anna enemmän kuin yksi merkki."
 
 #: message.php:104
 msgid "Please enter some message text before sending."
@@ -10758,7 +10767,9 @@ msgstr "Esivalmistettu teksti, kaikki voivat anoa käyttäjätilin itselleen"
 
 #: admin_site_config.php:121
 msgid "Predefined text that states only family members can request a user account"
-msgstr "Esivalmistettu teksti, joka määrää että käyttäjätilin voi anoa ainoastaan sukupuussa oleva henkilö."
+msgstr ""
+"Esivalmistettu teksti, joka määrää että käyttäjätilin voi anoa ainoastaan "
+"sukupuussa oleva henkilö"
 
 #: admin_trees_config.php:365 admin_trees_manage.php:363
 msgid "Preferences"
@@ -11136,7 +11147,7 @@ msgstr "Rekisteriviranomainen"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:145
 msgid "Regular expression"
-msgstr "Säännölliset lauseke "
+msgstr "Säännöllinen lauseke"
 
 #. I18N: http://en.wikipedia.org/wiki/Regular_expression
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:128
@@ -11324,7 +11335,7 @@ msgstr "Tietovarastotunnuksen etuliite"
 #. I18N: Label for search field
 #: find.php:230
 msgid "Repository contains"
-msgstr "Tietovarasto sisältää:"
+msgstr "Tietovarasto sisältää"
 
 #: edit_interface.php:1563 includes/functions/functions_print_lists.php:1315
 msgid "Repository name"
@@ -11378,7 +11389,9 @@ msgstr ""
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:376
 msgid "Restrict access to the website, using IP addresses and user-agent strings."
-msgstr "Rajoita pääsy sivustolle IP osoitteiden ja käyttäjän selaimen tunnistetietojen perusteella"
+msgstr ""
+"Rajoita pääsy sivustolle IP osoitteiden ja käyttäjän selaimen "
+"tunnistetietojen perusteella."
 
 #: admin_users.php:569
 msgid "Restrict to immediate family"
@@ -11720,7 +11733,7 @@ msgstr "Valitse suhteen nimi luettelosta. <b>Kummisetä</b> valinta merkitsee, e
 
 #: statistics.php:499
 msgid "Select chart type"
-msgstr "Valitse käyrän tyyppi:"
+msgstr "Valitse kaavion tyyppi"
 
 #: edit_interface.php:1252
 msgid "Select events"
@@ -11793,11 +11806,14 @@ msgstr "Lähetä viesti kaikille käyttäjille"
 
 #: admin_users_bulk.php:45
 msgid "Send a message to users who have never logged in"
-msgstr "Lähetä viesti käyttäjille, jotka eivät koskaan ole kirjautuneet."
+msgstr ""
+"Lähetä viesti käyttäjille, jotka eivät koskaan ole kirjautuneet sivustolle"
 
 #: admin_users_bulk.php:50
 msgid "Send a message to users who have not logged in for 6 months"
-msgstr "Lähetä viesti käyttäjille, jotka eivät ole kirjautuneet 6 kuukauteen."
+msgstr ""
+"Lähetä viesti käyttäjille, jotka eivät ole kirjautuneet sivustolle 6 "
+"kuukauteen"
 
 #. I18N: Menu entry
 #: admin_users_bulk.php:25 app/Theme/AdministrationTheme.php:128
@@ -12021,7 +12037,7 @@ msgstr "Jaettu lisätieto"
 #. I18N: Label for search field
 #: find.php:250
 msgid "Shared note contains"
-msgstr "Jaettu lisätieto sisältää:"
+msgstr "Jaettu lisätieto sisältää"
 
 #: app/Theme/BaseTheme.php:1415
 #: includes/functions/functions_print_lists.php:1068 notelist.php:30
@@ -12100,7 +12116,7 @@ msgstr "Hän kuoli"
 #: modules_v3/ahnentafel_report/report.xml:258
 #: modules_v3/descendancy_report/report.xml:240
 msgid "She married"
-msgstr "Puoliso:"
+msgstr "Puoliso"
 
 #: modules_v3/ahnentafel_report/report.xml:220
 msgid "She resided at"
@@ -12288,7 +12304,7 @@ msgstr "Näytä korostetut kuvat henkilöalueilla"
 #. I18N: Help text for the “Hit counters” configuration setting
 #: admin_trees_config.php:1740
 msgid "Show hit counters on Portal and Individual pages."
-msgstr "Näytä luetut laskurit Henkilösivuilla, Etusivulla ja Omalla Sivullani"
+msgstr "Näytä luetut laskurit Henkilösivuilla, Etusivulla ja Omalla Sivullani."
 
 #: compact.php:57
 msgid "Show images"
@@ -12366,7 +12382,7 @@ msgstr "Näytä vain elossa olevien henkilöiden tapahtumat?"
 
 #: includes/functions/functions_print_lists.php:150
 msgid "Show only females."
-msgstr "Näytä vain naiset"
+msgstr "Näytä vain naiset."
 
 #: includes/functions/functions_print_lists.php:159
 msgid "Show only individuals for whom the gender is not known."
@@ -12378,7 +12394,7 @@ msgstr "Näytetäänkö ainoastaan henkilöt, tapahtumat vai kaikki?"
 
 #: includes/functions/functions_print_lists.php:141
 msgid "Show only males."
-msgstr "Näytä vain miehet"
+msgstr "Näytä vain miehet."
 
 #: find.php:464
 msgid "Show only the selected tags"
@@ -12410,19 +12426,19 @@ msgstr "Näytä piilotetut sukulaiset"
 
 #: search.php:109 search.php:273
 msgid "Show related individuals/families"
-msgstr "Näytä sukulaishenkilöt ja -perheet."
+msgstr "Näytä sukulaishenkilöt ja -perheet"
 
 #: app/Module/ResearchTaskModule.php:178
 msgid "Show research tasks that are assigned to other users"
-msgstr "Näytä muille käyttäjille määritetyt tutkimustehtävät."
+msgstr "Näytä muille käyttäjille määritetyt tutkimustehtävät"
 
 #: app/Module/ResearchTaskModule.php:184
 msgid "Show research tasks that are not assigned to any user"
-msgstr "Näytä tutkimus tehtäviä, joita ei ole määritetty yhdellekään käyttäjälle."
+msgstr "Näytä tutkimustehtävät, joita ei ole määritetty yhdellekään käyttäjälle"
 
 #: app/Module/ResearchTaskModule.php:190
 msgid "Show research tasks that have a date in the future"
-msgstr "Näytä tutkimustehtävät, joiden aika on tulevaisuudessa."
+msgstr "Näytä tutkimustehtävät, joiden päivämäärä on tulevaisuudessa"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences?"
@@ -12780,7 +12796,7 @@ msgstr "Lähdetietoviitteet voivat myös sisältää tietoa lähdetiedon luotett
 #. I18N: Label for search field
 #: find.php:269
 msgid "Source contains"
-msgstr "Lähde sisältää:"
+msgstr "Lähde sisältää"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:2265 modules_v3/fact_sources/report.xml:6
@@ -12984,7 +13000,7 @@ msgstr "Maanosa"
 
 #: app/Module/UserMessagesModule.php:78 message.php:127
 msgid "Subject"
-msgstr "Aihe:"
+msgstr "Aihe"
 
 #. I18N: gedcom tag SUBN
 #: app/Gedcom/GedcomTag.php:811
@@ -13256,7 +13272,7 @@ msgstr "PhpGedView (PGV) aineiston siirtäminen webtrees:lle siirtovelho on auto
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
 msgid "The PHP temporary folder is missing."
-msgstr "PHPn tilapäistiedostojen kansio puuttuu"
+msgstr "PHPn tilapäistiedostojen kansio puuttuu."
 
 #: admin_users.php:97
 #, php-format
@@ -13380,7 +13396,7 @@ msgstr "Tiedosto %s on ladattu palvelimelle."
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
 msgid "The file was only partially uploaded.  Please try again."
-msgstr "Tiedosto latautui vain osittain, yritä uudelleen"
+msgstr "Tiedosto latautui vain osittain, yritä uudelleen."
 
 #. I18N: %s is a filename
 #: medialist.php:294 mediaviewer.php:111
@@ -13491,7 +13507,7 @@ msgstr "Mediatiedosto %s ei olemassa."
 
 #: mediafirewall.php:41
 msgid "The media file was not found in this family tree."
-msgstr "Mediatiedosto ei löytynyt tässä sukupuussa"
+msgstr "Mediatiedosto ei löytynyt tässä sukupuussa."
 
 #: admin_media_upload.php:223
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
@@ -13563,7 +13579,7 @@ msgstr "Tietue %1$s muutettiin tietueeksi %2$s."
 
 #: action.php:86
 msgid "The record has been copied to the clipboard."
-msgstr "Tietue kopioitu leikepöydälle"
+msgstr "Tietue kopioitu leikepöydälle."
 
 #. I18N: Records are individuals, sources, etc.
 #: admin_site_merge.php:162
@@ -13577,7 +13593,7 @@ msgstr "Normaalimuodossa on virhe.  Sitä ei voi käyttää."
 
 #: setup.php:154
 msgid "The server configuration is OK."
-msgstr "Palvelimen asetukset ovat kunnossa"
+msgstr "Palvelimen asetukset ovat kunnossa."
 
 #: admin_trees_renumber.php:256
 msgid "The server’s time limit has been reached."
@@ -13628,7 +13644,7 @@ msgstr "Päivitys on valmis."
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:62
 msgid "The uploaded file exceeds the allowed size."
-msgstr "Ladattu tiedosto ylittää sallitun enimmäiskoon"
+msgstr "Ladattu tiedosto ylittää sallitun enimmäiskoon."
 
 #: admin_users.php:788
 #, php-format
@@ -13637,7 +13653,9 @@ msgstr ""
 
 #: login.php:324
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
-msgstr "Käyttäjälle on lähetetty ohjeita sähköpostilla, hänen pitää vahvistaa käyttäjätilipyyntönsä"
+msgstr ""
+"Käyttäjälle on lähetetty ohjeita sähköpostilla, hänen pitää vahvistaa "
+"käyttäjätilipyyntönsä."
 
 #. I18N: Help text for the "Username" site configuration setting
 #: admin_site_config.php:373
@@ -13656,12 +13674,12 @@ msgstr "Teksti joka lisätään meta-kuvaustunnisteeksi (tag) kun rakennetaan HT
 #: admin_pgv_to_wt.php:107
 #, php-format
 msgid "The version of %s is too new."
-msgstr "%s versio on liian uusi"
+msgstr "%s versio on liian uusi."
 
 #: admin_pgv_to_wt.php:104
 #, php-format
 msgid "The version of %s is too old."
-msgstr "%s versio on liian vanha"
+msgstr "%s versio on liian vanha."
 
 #: admin_site_access.php:85
 msgid "The website access rule has been created."
@@ -13739,7 +13757,7 @@ msgstr "Tässä sukupuussa ei ole tutkimustehtäviä."
 
 #: app/Module/SourcesTabModule.php:74
 msgid "There are no source citations for this individual."
-msgstr "Tällä henkilöllä ei ole lähdetietoviitteitä"
+msgstr "Tällä henkilöllä ei ole lähdetietoviitteitä."
 
 #: app/Module/ReviewChangesModule.php:69 app/Module/ReviewChangesModule.php:93
 #: app/Theme/BaseTheme.php:1831
@@ -13866,7 +13884,7 @@ msgstr[1] "Tässä sukupuussa on %s tietuetta joilla on sama ”XREF” kuin toi
 
 #: app/Module/SlideShowModule.php:175
 msgid "This family tree has no images to display."
-msgstr "Tässä sukupuussa ei ole näytettäviä kuvia"
+msgstr "Tässä sukupuussa ei ole näytettäviä kuvia."
 
 #. I18N: do not translate the #keywords#
 #: app/Module/HtmlBlockModule.php:137
@@ -13993,42 +14011,77 @@ msgstr "Tämä on uusin webtrees versio. Päivitystä ei ole saatavana."
 #. I18N: Help text for the “All family facts” configuration setting
 #: admin_trees_config.php:1904
 msgid "This is the list of GEDCOM facts that your users can add to families.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique family facts” list."
-msgstr "Luettelo GEDCOM tietoaihetunnisteista, joita käyttäjäsi voivat käyttää perhetietojen kirjaamiseen. Luetteloon voi lisätä tai siitä voi poistaa tietoaiheita, jopa erikoistietoja. Tietoaiheet tässä luettelossa eivät saa toistua <i>Yksilölliset perhetiedot</i> luettelossa."
+msgstr ""
+"Luettelo GEDCOM tietoaihetunnisteista, joita käyttäjäsi voivat käyttää "
+"perhetietojen kirjaamiseen. Luetteloon voi lisätä tai siitä voi poistaa "
+"tietoaiheita, jopa erikoistietoja. Tietoaiheet tässä luettelossa eivät saa "
+"toistua ”Yksilölliset perhetiedot” luettelossa."
 
 #. I18N: Help text for the “All individual facts” configuration setting
 #: admin_trees_config.php:1786
 msgid "This is the list of GEDCOM facts that your users can add to individuals.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique individual facts” list."
-msgstr "Tämä on luettelo GEDCOM tietoaihetunnisteista, joita käyttäjäsi voi lisätä henkilötiedoiksi. Luetteloon voi lisätä tai siitä voi poistaa tietoaihetunnisteita, jopa erikoistietoja. Tietoaihetunnisteet tässä luettelossa eivät saa toistua <i>Yksilölliset henkilötiedot</i> luettelossa."
+msgstr ""
+"Tämä on luettelo GEDCOM tietoaihetunnisteista, joita käyttäjäsi voi lisätä "
+"henkilötiedoiksi. Luetteloon voi lisätä tai siitä voi poistaa "
+"tietoaihetunnisteita, jopa erikoistietoja. Tietoaihetunnisteet tässä "
+"luettelossa eivät saa toistua ”Yksilölliset henkilötiedot” luettelossa."
 
 #. I18N: Help text for the “All repository facts” configuration setting
 #: admin_trees_config.php:2111
 msgid "This is the list of GEDCOM facts that your users can add to repositories.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique repository facts” list."
-msgstr "Tämä on pilkkumerkein (,) erotettu luettelo GEDCOM tietotunnisteita, joita käyttäjäsi voivat lisätä tietovarastoon. Voit muokata luetteloa tarvittaessa lisäämällä tai poistamalla tiedon nimen, jopa erikoistietoja. Tietotunnisteet tässä listassa eivät saa toistua <i>Yksilölliset tietovaraston tietotunnisteet</i> luettelossa."
+msgstr ""
+"Tämä on pilkkumerkein (,) erotettu luettelo GEDCOM tietotunnisteita, joita "
+"käyttäjäsi voivat lisätä tietovarastoon. Voit muokata luetteloa tarvittaessa "
+"lisäämällä tai poistamalla tiedon nimen, jopa erikoistietoja. "
+"Tietotunnisteet tässä listassa eivät saa toistua ”Yksilölliset tietovaraston "
+"tietotunnisteet” luettelossa."
 
 #. I18N: Help text for the “All source facts” configuration setting
 #: admin_trees_config.php:2022
 msgid "This is the list of GEDCOM facts that your users can add to sources.  You can modify this list by removing or adding fact names, even custom ones, as necessary.  Fact names that appear in this list must not also appear in the “Unique source facts” list."
-msgstr "Tämä on luettelo GEDCOM tietoaiheista, joita käyttäjät voivat lisätä lähdetiedoiksi. Voit muokata luetteloa tarvittaessa lisäämällä tai poistamalla tietojen nimet, jopa erikoistiedot. Luettelon tietoaiheet eivät saa toistua <i>Yksilöllisissä tiedoissa</i>"
+msgstr ""
+"Tämä on luettelo GEDCOM tietoaiheista, joita käyttäjät voivat lisätä "
+"lähdetiedoiksi. Voit muokata luetteloa tarvittaessa lisäämällä tai "
+"poistamalla tietojen nimet, jopa erikoistiedot. Luettelon tietoaiheet eivät "
+"saa toistua ”Yksilöllisissä tiedoissa”."
 
 #. I18N: Help text for the “Unique family facts” configuration setting
 #: admin_trees_config.php:1933
 msgid "This is the list of GEDCOM facts that your users can only add once to families.  For example, if MARR is in this list, users will not be able to add more than one MARR record to a family.  Fact names that appear in this list must not also appear in the “All family facts” list."
-msgstr "Luettelo GEDCOM tietoaihetunnisteista, joita käyttäjä voi lisätä perhetiedoiksi ainoastaan kerran. Esimerkiksi, jos MARR on tässä luettelossa, niin käyttäjät voivat lisätä ainoastaan yhden MARR (avioliitto) tiedon perheelle.  Tietoaihetunnisteet tässä luettelossa eivät saa toistua <i>Perhe, lisää tietoja</i> listassa"
+msgstr ""
+"Luettelo GEDCOM tietoaihetunnisteista, joita käyttäjä voi lisätä "
+"perhetiedoiksi ainoastaan kerran. Esimerkiksi, jos MARR on tässä "
+"luettelossa, niin käyttäjät voivat lisätä ainoastaan yhden MARR (avioliitto) "
+"tiedon perheelle.  Tietoaihetunnisteet tässä luettelossa eivät saa toistua ”"
+"Kaikki perhetiedot” listassa."
 
 #. I18N: Help text for the “Unique individual facts” configuration setting
 #: admin_trees_config.php:1815
 msgid "This is the list of GEDCOM facts that your users can only add once to individuals.  For example, if BIRT is in this list, users will not be able to add more than one BIRT record to an individual.  Fact names that appear in this list must not also appear in the “All individual facts” list."
-msgstr "Luettelo GEDCOM tietoaiheista, joita käyttäjä voi lisätä ainoastaan kerran. Esimerkiksi, jos BIRT (syntymä) on tässä luettelossa, niin käyttäjät voivat lisätä ainoastaan yhden BIRT tiedon henkilölle. Tietoaihetunnisteet tässä luettelossa eivät saa toistua <i>Henkilö - lisää tietoja</i> luettelossa."
+msgstr ""
+"Luettelo GEDCOM tietoaiheista, joita käyttäjä voi lisätä ainoastaan kerran. "
+"Esimerkiksi, jos BIRT (syntymä) on tässä luettelossa, niin käyttäjät voivat "
+"lisätä ainoastaan yhden BIRT tiedon henkilölle. Tietoaihetunnisteet tässä "
+"luettelossa eivät saa toistua ”Kaikki henkilötieto”-luettelossa."
 
 #. I18N: Help text for the “Unique repository facts” configuration setting
 #: admin_trees_config.php:2140
 msgid "This is the list of GEDCOM facts that your users can only add once to repositories.  For example, if NAME is in this list, users will not be able to add more than one NAME record to a repository.  Fact names that appear in this list must not also appear in the “All repository facts” list."
-msgstr "Tämä on luettelo GEDCOM tietoaihetunnisteita, joita käyttäjäsi voi käyttää vain kerran tietovarastossa. Esimerkiksi, jos NAME (nimi) on tässä luettelossa, niin vain yksi NAME tietue voidaan lisätä tietovarastoon. Tietotunnisteet tässä luettelossa ei saa toistua <i>Tietovarasto - lisää tietoaiheet</i> luettelossa"
+msgstr ""
+"Tämä on luettelo GEDCOM tietoaihetunnisteita, joita käyttäjäsi voi käyttää "
+"vain kerran tietovarastossa. Esimerkiksi, jos NAME (nimi) on tässä "
+"luettelossa, niin vain yksi NAME tietue voidaan lisätä tietovarastoon. "
+"Tietotunnisteet tässä luettelossa eivät saa toistua ”Tietovarasto - lisää "
+"tietoaiheet” luettelossa."
 
 #. I18N: Help text for the “Unique source facts” configuration setting
 #: admin_trees_config.php:2051
 msgid "This is the list of GEDCOM facts that your users can only add once to sources.  For example, if TITL is in this list, users will not be able to add more than one TITL record to a source.  Fact names that appear in this list must not also appear in the “All source facts” list."
-msgstr "Tämä on luettelo GEDCOM tietoja, joita käyttäjäsi voi lisätä vain <u>kerran</u> lähdetiedoksi. Esimerkiksi, jos TITL (otsikko) on luettelossa, niin se voi esiintyä vain kerran TITL tietueena lähdetiedoissa. Tieto tässä luettelossa ei saa toistua <i>Lähdetieto, lisää aiheita</i> luettelossa."
+msgstr ""
+"Tämä on luettelo GEDCOM tietoja, joita käyttäjäsi voi lisätä vain "
+"<u>kerran</u> lähdetiedoksi. Esimerkiksi, jos TITL (otsikko) on luettelossa, "
+"niin se voi esiintyä vain kerran TITL tietueena lähdetiedoissa. Tieto tässä "
+"luettelossa ei saa toistua ”Kaikki lähdetieto” luettelossa."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: admin_site_config.php:334
@@ -14091,7 +14144,7 @@ msgstr "Tämä mediatiedosto on olemassa, mutta sitä ei voi käyttää."
 
 #: mediafirewall.php:410
 msgid "This media file is broken and cannot be watermarked."
-msgstr "Tämä mediatiedosto on rikkonainen eikä siihen voi laittaa vesileimaa"
+msgstr "Tämä mediatiedosto on rikkonainen eikä siihen voi laittaa vesileimaa."
 
 #: mediaviewer.php:73
 msgid "This media object does not exist or you do not have permission to view it."
@@ -14357,7 +14410,10 @@ msgstr "Tämä poistaa kaikki sukututkimustiedot ”%s” sta ja korvaa ne toise
 
 #: app/Module/GoogleMapsModule.php:1781
 msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables."
-msgstr "Tämä listaa kaikki paikat valitusta GEDCOM-tiedostosta. Oletuksena tämä ei sisällytä paikkoja, joilla on täysi vastaavuus GEDCOM tiedoston ja Google Mapsin taulujen välillä"
+msgstr ""
+"Tämä listaa kaikki paikat valitusta GEDCOM-tiedostosta. Oletuksena tämä ei "
+"sisällytä paikkoja, joilla on täysi vastaavuus GEDCOM tiedoston ja Google "
+"Mapsin taulujen välillä."
 
 #: admin_trees_places.php:96
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
@@ -14947,7 +15003,7 @@ msgstr "Päivitä joka tapauksessa"
 #: admin.php:546 admin_site_upgrade.php:80
 #, php-format
 msgid "Upgrade to webtrees %s."
-msgstr "Päivitä versioon webtrees %s"
+msgstr "Päivitä webtrees versioon %s."
 
 #: admin_site_upgrade.php:53
 msgid "Upgrade wizard"
@@ -15192,7 +15248,7 @@ msgstr "Veracruz, Meksiko"
 
 #: login.php:348 login.php:542
 msgid "Verification code"
-msgstr "Vahvistuskoodi:"
+msgstr "Vahvistuskoodi"
 
 #: admin_users.php:853
 msgid "Verified"
@@ -15287,7 +15343,7 @@ msgstr "Näkyy online-tilassa"
 #. I18N: A configuration setting
 #: admin_users.php:441 edituser.php:276
 msgid "Visible to other users when online"
-msgstr "Näkyvissä muille käyttäjille online-tilassa."
+msgstr "Näkyvissä muille käyttäjille online-tilassa"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:194 admin_users.php:36 admin_users.php:511
@@ -15444,7 +15500,9 @@ msgstr ""
 #. I18N: Help text for the “Date differences” configuration setting
 #: admin_trees_config.php:1699
 msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
-msgstr "Kun tämä vaihtoehto on valittu, webtrees laskee ikäerot sisarusten, lasten, puolisoiden jne. välillä"
+msgstr ""
+"Kun tämä vaihtoehto on valittu, webtrees laskee ikäerot sisarusten, lasten, "
+"puolisoiden jne. välillä."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2244
@@ -15728,7 +15786,7 @@ msgstr "Täytä kaikki ylläpitäjän tilitiedot."
 
 #: edit_interface.php:1548
 msgid "You must provide a repository name."
-msgstr "Sinun pitää antaa tietovarastolle nimen"
+msgstr "Sinun pitää antaa tietovarastolle nimi."
 
 #: edit_interface.php:1210
 msgid "You must provide a source title"
@@ -15811,7 +15869,7 @@ msgstr "Sinulle ilmoitetaan sähköpostilla milloin mahdollinen uusi käyttäjä
 
 #: setup.php:435
 msgid "You will use this to login to webtrees."
-msgstr "Tarvitaan sisään kirjautumiseen"
+msgstr "Tarvitaan sisään kirjautumiseen."
 
 #: statistics.php:284
 msgid "Youngest father"
@@ -15897,7 +15955,7 @@ msgstr "Zoomaa lähemmäksi tänne"
 
 #: app/Theme/BaseTheme.php:664 app/Theme/BaseTheme.php:709
 msgid "Zoom in/out on this box."
-msgstr "Suurenna/pienennä"
+msgstr "Suurenna/pienennä tässä laatikossa."
 
 #: app/Module/GoogleMapsModule.php:4054 app/Module/GoogleMapsModule.php:4128
 #: app/Module/GoogleMapsModule.php:4567
@@ -16318,7 +16376,7 @@ msgstr "tytär"
 
 #: modules_v3/descendancy_report/report.xml:224
 msgid "daughter of"
-msgstr "vanhemmat:"
+msgstr "vanhemmat"
 
 #: includes/functions/functions.php:824
 msgctxt "child’s wife"
@@ -19234,7 +19292,7 @@ msgstr "poika"
 
 #: modules_v3/descendancy_report/report.xml:293
 msgid "son of"
-msgstr "vanhemmat:"
+msgstr "vanhemmat"
 
 #: includes/functions/functions.php:818
 msgctxt "child’s husband"
@@ -19484,7 +19542,8 @@ msgstr "10. serkku"
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:99
 msgid "the database connection settings in the file “/data/config.ini.php” are still correct"
-msgstr "tietokantayhteysasetukset tiedostossa ”/data/config.ini.php” ovat oikein."
+msgstr ""
+"tietokantayhteysasetukset tiedostossa ”/data/config.ini.php” ovat oikein"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:102
@@ -19786,7 +19845,7 @@ msgstr "”%s”"
 #: app/Module/UserFavoritesModule.php:80
 #, php-format
 msgid "“%s” has been added to your favorites."
-msgstr "”%s” on lisätty sinun suosikkeihisi"
+msgstr "”%s” on lisätty sinun suosikkeihisi."
 
 #: app/Note.php:113 includes/functions/functions_print.php:98
 msgid "…"
