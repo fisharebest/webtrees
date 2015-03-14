@@ -60,51 +60,51 @@ msgstr "#%s"
 
 #: app/Module/GoogleMapsModule.php:897
 #, php-format
-msgid "%1$d individual displayed, out of the normal total of %2$d, from %3$d generations."
-msgid_plural "%1$d individuals displayed, out of the normal total of %2$d, from %3$d generations."
-msgstr[0] "%1$d einstaklingur birtur af venjulegum fjölda af %2$d, frá %3$d kynslóðum."
-msgstr[1] "%1$d einstaklingar birtir af venjulegum fjölda af %2$d, frá %3$d kynslóðum."
+msgid "$1$s individual displayed, out of the normal total of $2$s, from $3$s generations."
+msgid_plural "$1$s individuals displayed, out of the normal total of $2$s, from $3$s generations."
+msgstr[0] "$1$s einstaklingur birtur af venjulegum fjölda af $2$s, frá $3$s kynslóðum."
+msgstr[1] "$1$s einstaklingar birtir af venjulegum fjölda af $2$s, frá $3$s kynslóðum."
 
-#. I18N: %1$d is a count of individuals, %2$s is a list of their names
+#. I18N: $1$s is a count of individuals, %2$s is a list of their names
 #: app/Module/GoogleMapsModule.php:914
 #, php-format
-msgid "%1$d individual is missing birthplace map coordinates: %2$s."
-msgid_plural "%1$d individuals are missing birthplace map coordinates: %2$s."
-msgstr[0] "%1$d einstakling vantar staðsetningarhnit fæðingarstaðarkorts: %2$s."
-msgstr[1] "%1$d einstaklinga vantar staðsetningarhnit fæðingarstaðarkorts: %2$s."
+msgid "$1$s individual is missing birthplace map coordinates: %2$s."
+msgid_plural "$1$s individuals are missing birthplace map coordinates: %2$s."
+msgstr[0] "$1$s einstakling vantar staðsetningarhnit fæðingarstaðarkorts: %2$s."
+msgstr[1] "$1$s einstaklinga vantar staðsetningarhnit fæðingarstaðarkorts: %2$s."
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:635
 #, php-format
 msgctxt "FEMALE"
-msgid "%1$d × %2$s"
-msgstr "%1$d × %2$s"
+msgid "$1$s × %2$s"
+msgstr "$1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:620
 #, php-format
 msgctxt "MALE"
-msgid "%1$d × %2$s"
-msgstr "%1$d × %2$s"
+msgid "$1$s × %2$s"
+msgstr "$1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:650
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%1$d × %2$s"
-msgstr "%1$d × %2$s"
+msgid "$1$s × %2$s"
+msgstr "$1$s × %2$s"
 
-#. I18N: %1$s=“fifth cousin”, etc., %2$d>=4
+#. I18N: %1$s=“fifth cousin”, etc., $2$s>=4
 #: includes/functions/functions.php:2132
 #, php-format
-msgid "%1$s %2$d times removed ascending"
-msgstr "%1$s %2$d sinnum fjarlægð hækkandi"
+msgid "%1$s $2$s times removed ascending"
+msgstr "%1$s $2$s sinnum fjarlægð hækkandi"
 
-#. I18N: %1$s=“fifth cousin”, etc., %2$d>=4
+#. I18N: %1$s=“fifth cousin”, etc., $2$s>=4
 #: includes/functions/functions.php:2135
 #, php-format
-msgid "%1$s %2$d times removed descending"
-msgstr "%1$s %2$d sinnum fjarlægð lækkandi"
+msgid "%1$s $2$s times removed descending"
+msgstr "%1$s $2$s sinnum fjarlægð lækkandi"
 
 #. I18N: The placeholders are GEDCOM XREFs and tags.  e.g. “INDI I123 contains a FAMC link to F234.”
 #: admin_trees_check.php:205
@@ -114,8 +114,8 @@ msgstr "%1$s %2$s hefur %3$s krækju í %4$s."
 
 #: includes/functions/functions_print_lists.php:1619
 #, php-format
-msgid "%1$s (%2$d)"
-msgstr "%1$s (%2$d)"
+msgid "%1$s ($2$s)"
+msgstr "%1$s ($2$s)"
 
 #: app/Controller/IndividualController.php:188 app/Date.php:332
 #, php-format

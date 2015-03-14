@@ -64,49 +64,49 @@ msgstr "#%s"
 
 #: app/Module/GoogleMapsModule.php:897
 #, php-format
-msgid "%1$d individual displayed, out of the normal total of %2$d, from %3$d generations."
-msgid_plural "%1$d individuals displayed, out of the normal total of %2$d, from %3$d generations."
-msgstr[0] "%1$d người, trong tổng số là %2$d, từ  %3$d thế hệ."
+msgid "$1$s individual displayed, out of the normal total of $2$s, from $3$s generations."
+msgid_plural "$1$s individuals displayed, out of the normal total of $2$s, from $3$s generations."
+msgstr[0] "$1$s người, trong tổng số là $2$s, từ  $3$s thế hệ."
 
-#. I18N: %1$d is a count of individuals, %2$s is a list of their names
+#. I18N: $1$s is a count of individuals, %2$s is a list of their names
 #: app/Module/GoogleMapsModule.php:914
 #, php-format
-msgid "%1$d individual is missing birthplace map coordinates: %2$s."
-msgid_plural "%1$d individuals are missing birthplace map coordinates: %2$s."
-msgstr[0] "%1$d người không có tọa độ bản đồ nơi sinh: %2$s."
+msgid "$1$s individual is missing birthplace map coordinates: %2$s."
+msgid_plural "$1$s individuals are missing birthplace map coordinates: %2$s."
+msgstr[0] "$1$s người không có tọa độ bản đồ nơi sinh: %2$s."
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:635
 #, php-format
 msgctxt "FEMALE"
-msgid "%1$d × %2$s"
-msgstr "%1$d × %2$s"
+msgid "$1$s × %2$s"
+msgstr "$1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:620
 #, php-format
 msgctxt "MALE"
-msgid "%1$d × %2$s"
-msgstr "%1$d × %2$s"
+msgid "$1$s × %2$s"
+msgstr "$1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:650
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "%1$d × %2$s"
-msgstr "%1$d × %2$s"
+msgid "$1$s × %2$s"
+msgstr "$1$s × %2$s"
 
-#. I18N: %1$s=“fifth cousin”, etc., %2$d>=4
+#. I18N: %1$s=“fifth cousin”, etc., $2$s>=4
 #: includes/functions/functions.php:2132
 #, php-format
-msgid "%1$s %2$d times removed ascending"
-msgstr "%1$s %2$d đời lên"
+msgid "%1$s $2$s times removed ascending"
+msgstr "%1$s $2$s đời lên"
 
-#. I18N: %1$s=“fifth cousin”, etc., %2$d>=4
+#. I18N: %1$s=“fifth cousin”, etc., $2$s>=4
 #: includes/functions/functions.php:2135
 #, php-format
-msgid "%1$s %2$d times removed descending"
-msgstr "%1$s %2$d đời xuống"
+msgid "%1$s $2$s times removed descending"
+msgstr "%1$s $2$s đời xuống"
 
 #. I18N: The placeholders are GEDCOM XREFs and tags.  e.g. “INDI I123 contains a FAMC link to F234.”
 #: admin_trees_check.php:205
@@ -116,8 +116,8 @@ msgstr "%1$s %2$s có một %3$s liên kết đến %4$s."
 
 #: includes/functions/functions_print_lists.php:1619
 #, php-format
-msgid "%1$s (%2$d)"
-msgstr "%1$s (%2$d)"
+msgid "%1$s ($2$s)"
+msgstr "%1$s ($2$s)"
 
 #: app/Controller/IndividualController.php:188 app/Date.php:332
 #, php-format
