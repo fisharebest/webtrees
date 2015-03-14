@@ -202,13 +202,6 @@ msgid_plural "%s logged-in users"
 msgstr[0] "%s usuario en sesión"
 msgstr[1] "%s usuarios en sesión"
 
-#: app/Module/RelativesTabModule.php:62
-#, php-format
-msgid "%s month"
-msgid_plural "%s months"
-msgstr[0] "%s mes"
-msgstr[1] "%s meses"
-
 #: includes/functions/functions.php:555
 #, php-format
 msgctxt "FEMALE"
@@ -338,7 +331,7 @@ msgstr[0] "hace %s minuto"
 msgstr[1] "hace %s minutos"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-#: app/I18N.php:463 includes/functions/functions_date.php:47
+#: app/I18N.php:463 includes/functions/functions_date.php:47 app/Module/RelativesTabModule.php:62
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"

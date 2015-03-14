@@ -202,14 +202,6 @@ msgstr[0] "%s prijavljeni korisnik"
 msgstr[1] "%s prijavljeni korisnici"
 msgstr[2] "%s prijavljenih korisnika"
 
-#: app/Module/RelativesTabModule.php:62
-#, php-format
-msgid "%s month"
-msgid_plural "%s months"
-msgstr[0] "%s mjesec"
-msgstr[1] "%s mjeseci"
-msgstr[2] "%s mjeseci"
-
 #: app/Module/RelativesTabModule.php:60
 #, php-format
 msgid "%s year"
@@ -359,13 +351,13 @@ msgstr[1] ""
 msgstr[2] ""
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-#: app/I18N.php:463 includes/functions/functions_date.php:47
+#: app/I18N.php:463 includes/functions/functions_date.php:47 app/Module/RelativesTabModule.php:62
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s mjesec"
+msgstr[1] "%s mjeseci"
+msgstr[2] "%s mjeseci"
 
 #: app/I18N.php:513
 #, php-format

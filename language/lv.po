@@ -204,14 +204,6 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: app/Module/RelativesTabModule.php:62
-#, php-format
-msgid "%s month"
-msgid_plural "%s months"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-
 #: includes/functions/functions.php:555
 #, php-format
 msgctxt "FEMALE"
@@ -351,7 +343,7 @@ msgstr[1] ""
 msgstr[2] ""
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-#: app/I18N.php:463 includes/functions/functions_date.php:47
+#: app/I18N.php:463 includes/functions/functions_date.php:47 app/Module/RelativesTabModule.php:62
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"

@@ -196,12 +196,6 @@ msgid "%s logged-in user"
 msgid_plural "%s logged-in users"
 msgstr[0] "%s người dung đang đăng nhập"
 
-#: app/Module/RelativesTabModule.php:62
-#, php-format
-msgid "%s month"
-msgid_plural "%s months"
-msgstr[0] "%s tháng"
-
 #: includes/functions/functions.php:555
 #, php-format
 msgctxt "FEMALE"
@@ -319,7 +313,7 @@ msgid_plural "%s minutes ago"
 msgstr[0] "%s phút qua"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-#: app/I18N.php:463 includes/functions/functions_date.php:47
+#: app/I18N.php:463 includes/functions/functions_date.php:47 app/Module/RelativesTabModule.php:62
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
