@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-03-14 09:11+0100\n"
+"PO-Revision-Date: 2015-03-15 08:05+0100\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
 "Language-Team: Lithuanian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/lt/>\n"
@@ -13450,7 +13450,7 @@ msgstr "Sydney, Australija"
 
 #: admin_trees_manage.php:705
 msgid "Synchronize family trees with GEDCOM files"
-msgstr ""
+msgstr "Sinchronizuoti šeimos medžius su GEDCOM bylomis"
 
 #: app/Stats.php:6288
 msgid "Syrian Arab Republic"
@@ -13798,13 +13798,13 @@ msgstr ""
 
 #: admin_site_merge.php:194
 msgid "The following facts and events were found in both records."
-msgstr ""
+msgstr "Sekantys faktai ir įvykiai buvo rasti abiejuose įrašuose."
 
 #. I18N: the name of an individual, source, etc.
 #: admin_site_merge.php:236 admin_site_merge.php:277
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr ""
+msgstr "Sekantys faktai ir įvykiai buvo rasti tik %s įraše."
 
 #: setup.php:174
 msgid "The following list shows typical requirements."
@@ -13855,7 +13855,7 @@ msgstr "Nuoroda iš „%1$s“ į „%2$s“ buvo pašalinta."
 #: admin_site_merge.php:106
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr ""
+msgstr "Nuoroda nuo „%1$s“ į „%2$s“ buvo atnaujinta."
 
 #: addmedia.php:313 addmedia.php:341
 #, php-format
