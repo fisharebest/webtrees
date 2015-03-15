@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-03-15 08:05+0100\n"
+"PO-Revision-Date: 2015-03-15 08:17+0100\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
 "Language-Team: Lithuanian <http://translate.webtrees.net/projects/webtrees/webtrees/lt/>\n"
 "Language: lt\n"
@@ -13571,7 +13571,7 @@ msgstr "Slaptažodžiai nesutampa."
 #: admin_trees_config.php:219 admin_trees_config.php:341
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr ""
+msgstr "„%s“ šeimos medžio nustatymai buvo atnaujinti."
 
 #: admin_modules.php:71
 #, php-format
@@ -13581,7 +13581,7 @@ msgstr "Nuostatos „%s“ moduliuj buvo ištrintos."
 #: app/Module/GoogleMapsModule.php:265
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr ""
+msgstr "„%s“ modulio nustatymai buvo atnaujinti."
 
 #: setup.php:381
 msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database.  “wt_” is suggested, but can be anything you want."
@@ -13600,7 +13600,7 @@ msgstr "Įrašas nukopijuotas į laikiną atmintį."
 #: admin_site_merge.php:162
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr ""
+msgstr "Įrašai „%1$s“ ir „%2$s“ buvo sujungti."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:112
 msgid "The regex appears to contain an error.  It can’t be used."
@@ -13710,7 +13710,7 @@ msgstr "Svetainės prieigos taisyklė redeguota."
 #: admin_site_config.php:44 admin_site_config.php:63 admin_site_config.php:76
 #: admin_site_config.php:91 admin_site_config.php:100
 msgid "The website preferences have been updated."
-msgstr ""
+msgstr "Svetainės nustatymai buvo atnaujinti."
 
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: admin_trees_config.php:2291
@@ -13998,6 +13998,8 @@ msgstr ""
 #: edituser.php:180
 msgid "This is a link to your own record in the family tree.  If this is the wrong individual, contact an administrator."
 msgstr ""
+"Tai yra nuoroda į jūsų įrašą šeimos medyje. Jeigu tai yra neteisingas asmens "
+"įrašas prašome susisiekti su administratorium."
 
 #: help_text.php:242
 msgid "This is an optional field that can be used to enter the file format of the media object.  Some genealogy programs may look at this field to determine how to handle the item.  However, since media do not transfer across computer systems very well, this field is not very important."
