@@ -665,7 +665,7 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 		return '<span class="error">' . $path . '</span>';
 	}
 	// The path does not include the starting person.  In some languages, the
-	// translation for a man’s (relative) is different to a woman’s (relative),
+	// translation for a man’s (relative) is different from a woman’s (relative),
 	// due to inflection.
 	$sex1 = $person1 ? $person1->getSex() : 'U';
 

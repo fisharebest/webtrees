@@ -336,7 +336,7 @@ case 'edit':
 			<div class="col-sm-9">
 				<input class="form-control" type="password" id="pass1" name="pass1" pattern = "<?php echo WT_REGEX_PASSWORD; ?>" placeholder="<?php echo I18N::plural('Use at least %s character.', 'Use at least %s characters.', WT_MINIMUM_PASSWORD_LENGTH, I18N::number(WT_MINIMUM_PASSWORD_LENGTH)); ?>" <?php echo $user->getUserId() ? '' : 'required'; ?> onchange="form.pass2.pattern = regex_quote(this.value);">
 				<p class="small text-muted">
-					<?php echo I18N::translate('Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”.'); ?>
+					<?php echo I18N::translate('Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”.'); ?>
 				</p>
 			</div>
 		</div>

@@ -464,7 +464,7 @@ case 'register':
 						>
 					</label>
 					<p class="small text-muted">
-						<?php echo I18N::translate('Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”.'); ?>
+						<?php echo I18N::translate('Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”.'); ?>
 					</p>
 				</div>
 
