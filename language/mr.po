@@ -1514,7 +1514,7 @@ msgstr ""
 
 #: app/Gedcom/GedcomTag.php:880
 msgid "Adoption of a granddaughter"
-msgstr "नात दत्तक घेणे."
+msgstr "नात दत्तक घेणे"
 
 #: app/Gedcom/GedcomTag.php:889
 msgctxt "daughter’s daughter"
@@ -10807,7 +10807,7 @@ msgstr ""
 
 #: modules_v3/family_group_report/report.xml:10
 msgid "Print basic events when blank?"
-msgstr "जेव्हा रिक्त जागा असेल त्यावेळी मूलभूत प्रसंग छापा"
+msgstr "जेव्हा रिक्त जागा असेल त्यावेळी मूलभूत प्रसंग छापा?"
 
 #: admin_trees_config.php:350 admin_trees_manage.php:373
 msgid "Privacy"
@@ -12093,7 +12093,7 @@ msgstr "ती "
 
 #: modules_v3/ahnentafel_report/report.xml:289
 msgid "She died"
-msgstr "त्या निवर्तल्या."
+msgstr "त्या निवर्तल्या"
 
 #: modules_v3/ahnentafel_report/report.xml:258
 #: modules_v3/descendancy_report/report.xml:240
@@ -12372,7 +12372,7 @@ msgstr "ज्यांचे लिंग नोंदलेले नाही
 
 #: app/Module/SlideShowModule.php:241
 msgid "Show only individuals, events, or all?"
-msgstr "फक्त व्यक्ती, घटना अथवा सर्व दाखवा"
+msgstr "फक्त व्यक्ती, घटना अथवा सर्व दाखवा?"
 
 #: includes/functions/functions_print_lists.php:141
 msgid "Show only males."
