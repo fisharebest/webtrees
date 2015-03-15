@@ -62,47 +62,47 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:897
 #, php-format
-msgid "$1$s individual displayed, out of the normal total of $2$s, from $3$s generations."
-msgid_plural "$1$s individuals displayed, out of the normal total of $2$s, from $3$s generations."
+msgid "%1$s individual displayed, out of the normal total of %2$s, from %3$s generations."
+msgid_plural "%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations."
 msgstr[0] ""
 msgstr[1] ""
 
-#. I18N: $1$s is a count of individuals, %2$s is a list of their names
+#. I18N: %1$s is a count of individuals, %2$s is a list of their names
 #: app/Module/GoogleMapsModule.php:914
 #, php-format
-msgid "$1$s individual is missing birthplace map coordinates: %2$s."
-msgid_plural "$1$s individuals are missing birthplace map coordinates: %2$s."
-msgstr[0] "$1$s individual is missing birthplace map co-ordinates: %2$s."
-msgstr[1] "$1$s individuals are missing birthplace map co-ordinates: %2$s."
+msgid "%1$s individual is missing birthplace map coordinates: %2$s."
+msgid_plural "%1$s individuals are missing birthplace map coordinates: %2$s."
+msgstr[0] "%1$s individual is missing birthplace map co-ordinates: %2$s."
+msgstr[1] "%1$s individuals are missing birthplace map co-ordinates: %2$s."
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:635
 #, php-format
 msgctxt "FEMALE"
-msgid "$1$s × %2$s"
+msgid "%1$s × %2$s"
 msgstr ""
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:620
 #, php-format
 msgctxt "MALE"
-msgid "$1$s × %2$s"
+msgid "%1$s × %2$s"
 msgstr ""
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:650
 #, php-format
 msgctxt "MALE/FEMALE"
-msgid "$1$s × %2$s"
+msgid "%1$s × %2$s"
 msgstr ""
 
-#. I18N: %1$s=“fifth cousin”, etc., $2$s>=4
+#. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: includes/functions/functions.php:2132
 #, php-format
 msgid "%1$s %2$s times removed ascending"
 msgstr ""
 
-#. I18N: %1$s=“fifth cousin”, etc., $2$s>=4
+#. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: includes/functions/functions.php:2135
 #, php-format
 msgid "%1$s %2$s times removed descending"
@@ -115,10 +115,6 @@ msgid "%1$s %2$s has a %3$s link to %4$s."
 msgstr ""
 
 #: includes/functions/functions_print_lists.php:1619
-#, php-format
-msgid "%1$s ($2$s)"
-msgstr ""
-
 #: app/Controller/IndividualController.php:188 app/Date.php:332
 #, php-format
 msgid "%1$s (%2$s)"

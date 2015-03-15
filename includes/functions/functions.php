@@ -617,7 +617,7 @@ function cousin_name2($n, $sex, $relation) {
 		case  5:
 			return I18N::translateContext('MALE', 'fifth %s', $relation);
 		default: // I18N: A Spanish relationship name, such as third great-nephew
-			return I18N::translateContext('MALE', '$1$s × %2$s', I18N::number($n), $relation);
+			return I18N::translateContext('MALE', '%1$s × %2$s', I18N::number($n), $relation);
 		}
 	case 'F':
 		switch ($n) {
@@ -632,7 +632,7 @@ function cousin_name2($n, $sex, $relation) {
 		case  5:
 			return I18N::translateContext('FEMALE', 'fifth %s', $relation);
 		default: // I18N: A Spanish relationship name, such as third great-nephew
-			return I18N::translateContext('FEMALE', '$1$s × %2$s', I18N::number($n), $relation);
+			return I18N::translateContext('FEMALE', '%1$s × %2$s', I18N::number($n), $relation);
 		}
 	default:
 		switch ($n) {
@@ -647,7 +647,7 @@ function cousin_name2($n, $sex, $relation) {
 		case  5:
 			return I18N::translateContext('MALE/FEMALE', 'fifth %s', $relation);
 		default: // I18N: A Spanish relationship name, such as third great-nephew
-			return I18N::translateContext('MALE/FEMALE', '$1$s × %2$s', I18N::number($n), $relation);
+			return I18N::translateContext('MALE/FEMALE', '%1$s × %2$s', I18N::number($n), $relation);
 		}
 	}
 }
@@ -2128,10 +2128,10 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 				}
 			default:
 				if ($up > $down) {
-					/* I18N: %1$s=“fifth cousin”, etc., $2$s>=4 */
+					/* I18N: %1$s=“fifth cousin”, etc., %2$s>=4 */
 					return I18N::translate('%1$s %2$s times removed ascending', cousin_name($cousin, $sex2), I18N::number($removed));
 				} else {
-					/* I18N: %1$s=“fifth cousin”, etc., $2$s>=4 */
+					/* I18N: %1$s=“fifth cousin”, etc., %2$s>=4 */
 					return I18N::translate('%1$s %2$s times removed descending', cousin_name($cousin, $sex2), I18N::number($removed));
 				}
 			}
