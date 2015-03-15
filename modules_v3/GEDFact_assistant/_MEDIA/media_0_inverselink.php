@@ -34,7 +34,7 @@ $controller
 
 $paramok = true;
 if (!empty($linktoid)) {
-	$paramok = GedcomRecord::getInstance($linktoid)->canShow();
+	$paramok = GedcomRecord::getInstance($linktoid, $WT_TREE)->canShow();
 }
 
 if ($action == 'choose' && $paramok) {
@@ -76,7 +76,7 @@ if ($action == 'choose' && $paramok) {
 		//-- Get the title of this existing Media item
 		$title =
 			Database::prepare("SELECT m_titl FROM `##media` where m_id=? AND m_file=?")
-			->execute(array($mediaid, WT_GED_ID))
+			->execute(array($mediaid, $WT_TREE->getTreeId()))
 			->fetchOne();
 		if ($title) {
 			echo '<b>', $title, '</b>';
@@ -87,9 +87,9 @@ if ($action == 'choose' && $paramok) {
 		//-- Get the filename of this existing Media item
 		$filename =
 			Database::prepare("SELECT m_filename FROM `##media` where m_id=? AND m_file=?")
-			->execute(array($mediaid, WT_GED_ID))
+			->execute(array($mediaid, $WT_TREE->getTreeId()))
 			->fetchOne();
-		$media = Media::getInstance($mediaid);
+		$media = Media::getInstance($mediaid, $WT_TREE);
 		echo $media->displayImage();
 		echo '</td></tr></table>';
 		echo '</td></tr>';
@@ -159,7 +159,7 @@ if ($action == 'choose' && $paramok) {
 	if ($linktoid == "") {
 		// ----
 	} else {
-		$record = Individual::getInstance($linktoid);
+		$record = Individual::getInstance($linktoid, $WT_TREE);
 		echo '<b>', $record->getFullName(), '</b>';
 	}
 	echo '<table><tr><td>';
@@ -189,12 +189,9 @@ if ($action == 'choose' && $paramok) {
 	}
 
 	function openFamNav(id) {
-		if (id.match("I") === "I" || id.match("i") === "i") {
-			id = id.toUpperCase();
-			winNav = window.open('edit_interface.php?action=addmedia_links&noteid=newnote&pid='+id, 'winNav', fam_nav_specs);
-			if (window.focus) {winNav.focus();}
-		} else if (id.match("F") === "F") {
-			id = id.toUpperCase();
+		winNav = window.open('edit_interface.php?action=addmedia_links&noteid=newnote&pid='+id, 'winNav', fam_nav_specs);
+		if (window.focus) {
+			winNav.focus();
 		}
 	}
 
@@ -571,7 +568,7 @@ function shiftlinks() {
 			} else {
 				echo "<input type=\"checkbox\" name=\"preserve_last_changed\">";
 			}
-			echo I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
+			echo I18N::translate('Do not update the “last change” record');
 			echo "</td></tr>";
 		}
 		?>
@@ -588,7 +585,7 @@ function shiftlinks() {
 	// Unlink records indicated by radio button =========
 	if ($exist_links) {
 		foreach (explode(',', $exist_links) as $remLinkId) {
-			$indi = GedcomRecord::getInstance($remLinkId);
+			$indi = GedcomRecord::getInstance($remLinkId, $WT_TREE);
 			$indi->removeLinks($mediaid, $update_CHAN != 'no_change');
 		}
 	}
@@ -597,7 +594,7 @@ function shiftlinks() {
 		// array_unique() because parseAddLinks() may includes the gid field, even
 		// when it is also in the list.
 		foreach (array_unique(explode(',', $more_links)) as $addLinkId) {
-			$indi = GedcomRecord::getInstance($addLinkId);
+			$indi = GedcomRecord::getInstance($addLinkId, $WT_TREE);
 			$indi->createFact('1 OBJE @' . $mediaid . '@', $update_CHAN != 'no_change');
 		}
 	}

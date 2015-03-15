@@ -1,0 +1,20 @@
+<?php namespace Fisharebest\Localization;
+
+/**
+ * Class ScriptHung - Representation of the Old Hungarian (Hungarian Runic) script.
+ *
+ * @author    Greg Roach <fisharebest@gmail.com>
+ * @copyright (c) 2015 Greg Roach
+ * @license   GPLv3+
+ */
+class ScriptHung extends Script {
+	/** {@inheritdoc} */
+	public function code() {
+		return 'Hung';
+	}
+
+	/** {@inheritdoc} */
+	public function number() {
+		return '176';
+	}
+}

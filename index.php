@@ -40,7 +40,7 @@ if (Auth::check()) {
 if ($ctype === 'user') {
 	$blocks = get_user_blocks(Auth::id());
 } else {
-	$blocks = get_gedcom_blocks(WT_GED_ID);
+	$blocks = get_gedcom_blocks($WT_TREE->getTreeId());
 }
 
 $active_blocks = Module::getActiveBlocks($WT_TREE);
@@ -74,9 +74,9 @@ if ($ctype === 'user') {
 	$controller->restrictAccess(Auth::check());
 }
 $controller
-	->setPageTitle($ctype === 'user' ? I18N::translate('My page') : WT_TREE_TITLE)
+	->setPageTitle($ctype === 'user' ? I18N::translate('My page') : $WT_TREE->getTitle())
 	->setMetaRobots('index,follow')
-	->setCanonicalUrl(WT_SCRIPT_NAME . '?ctype=' . $ctype . '&amp;ged=' . WT_GEDCOM)
+	->setCanonicalUrl(WT_SCRIPT_NAME . '?ctype=' . $ctype . '&amp;ged=' . $WT_TREE->getNameHtml())
 	->pageHeader()
 	// By default jQuery modifies AJAX URLs to disable caching, causing JS libraries to be loaded many times.
 	->addInlineJavascript('jQuery.ajaxSetup({cache:true});');
@@ -136,12 +136,12 @@ echo '<div id="link_change_blocks">';
 
 if ($ctype === 'user') {
 	echo '<a href="index_edit.php?user_id=' . Auth::id() . '">', I18N::translate('Change the blocks on this page'), '</a>';
-} elseif ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN) {
-	echo '<a href="index_edit.php?gedcom_id=' . WT_GED_ID . '">', I18N::translate('Change the blocks on this page'), '</a>';
+} elseif ($ctype === 'gedcom' && Auth::isManager($WT_TREE)) {
+	echo '<a href="index_edit.php?gedcom_id=' . $WT_TREE->getTreeId() . '">', I18N::translate('Change the blocks on this page'), '</a>';
 }
 
 if ($WT_TREE->getPreference('SHOW_COUNTER')) {
-	echo '<span>' . I18N::translate('Hit count:') . ' ' . $hitCount . '</span>';
+	echo '<span>' . /* I18N: The number of [...] */ I18N::translate('Page views') . ' ' . $hitCount . '</span>';
 }
 
 echo '</div></div>';

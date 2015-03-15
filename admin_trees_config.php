@@ -124,10 +124,10 @@ $PRIVACY_CONSTANTS = array(
 );
 
 $privacy = array(
-	WT_PRIV_PUBLIC => I18N::translate('Show to visitors'),
-	WT_PRIV_USER   => I18N::translate('Show to members'),
-	WT_PRIV_NONE   => I18N::translate('Show to managers'),
-	WT_PRIV_HIDE   => I18N::translate('Hide from everyone'),
+	Auth::PRIV_PRIVATE => I18N::translate('Show to visitors'),
+	Auth::PRIV_USER   => I18N::translate('Show to members'),
+	Auth::PRIV_NONE   => I18N::translate('Show to managers'),
+	Auth::PRIV_HIDE   => I18N::translate('Hide from everyone'),
 );
 
 $tags = array_unique(array_merge(
@@ -154,10 +154,10 @@ $resns = Database::prepare(
 	" LEFT JOIN `##name` ON (gedcom_id=n_file AND xref=n_id AND n_num=0)" .
 	" WHERE gedcom_id=?" .
 	" ORDER BY xref IS NULL, n_sort, xref, tag_type"
-)->execute(array(WT_GED_ID))->fetchAll();
+)->execute(array($WT_TREE->getTreeId()))->fetchAll();
 
 foreach ($resns as $resn) {
-	$resn->record = GedcomRecord::getInstance($resn->xref);
+	$resn->record = GedcomRecord::getInstance($resn->xref, $WT_TREE);
 	if ($resn->tag_type) {
 		$resn->tag_label = GedcomTag::getLabel($resn->tag_type);
 	} else {
@@ -193,17 +193,17 @@ case 'privacy':
 			if ($xref === '') {
 				Database::prepare(
 					"DELETE FROM `##default_resn` WHERE gedcom_id=? AND tag_type=? AND xref IS NULL"
-				)->execute(array(WT_GED_ID, $tag_type));
+				)->execute(array($WT_TREE->getTreeId(), $tag_type));
 			}
 			if ($tag_type === '') {
 				Database::prepare(
 					"DELETE FROM `##default_resn` WHERE gedcom_id=? AND xref=? AND tag_type IS NULL"
-				)->execute(array(WT_GED_ID, $xref));
+				)->execute(array($WT_TREE->getTreeId(), $xref));
 			}
 			// Add (or update) the new data
 			Database::prepare(
 				"REPLACE INTO `##default_resn` (gedcom_id, xref, tag_type, resn) VALUES (?, NULLIF(?, ''), NULLIF(?, ''), ?)"
-			)->execute(array(WT_GED_ID, $xref, $tag_type, $resn));
+			)->execute(array($WT_TREE->getTreeId(), $xref, $tag_type, $resn));
 		}
 	}
 
@@ -329,10 +329,10 @@ case 'general':
 	}
 
 	$gedcom = Filter::post('gedcom');
-	if ($gedcom && $gedcom != WT_GEDCOM) {
+	if ($gedcom && $gedcom !== $WT_TREE->getName()) {
 		try {
-			Database::prepare("UPDATE `##gedcom` SET gedcom_name = ? WHERE gedcom_id = ?")->execute(array($gedcom, WT_GED_ID));
-			Database::prepare("UPDATE `##site_setting` SET setting_value = ? WHERE setting_name='DEFAULT_GEDCOM' AND setting_value = ?")->execute(array($gedcom, WT_GEDCOM));
+			Database::prepare("UPDATE `##gedcom` SET gedcom_name = ? WHERE gedcom_id = ?")->execute(array($gedcom, $WT_TREE->getTreeId()));
+			Database::prepare("UPDATE `##site_setting` SET setting_value = ? WHERE setting_name='DEFAULT_GEDCOM' AND setting_value = ?")->execute(array($gedcom, $WT_TREE->getName()));
 		} catch (\Exception $ex) {
 			// Probably a duplicate name.
 		}
@@ -387,7 +387,7 @@ $controller
 
 <form class="form-horizontal" method="post">
 	<?php echo Filter::getCsrf(); ?>
-	<input type="hidden" name="ged" value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>">
+	<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
 
 	<?php if (Filter::get('action') === 'privacy'): ?>
 
@@ -520,9 +520,9 @@ $controller
 	<!-- SHOW_PRIVATE_RELATIONSHIPS -->
 	<div class="form-group">
 		<div class="control-label col-sm-4">
-			<div>
+			<label for="SHOW_PRIVATE_RELATIONSHIPS">
 				<?php echo /* I18N: A configuration setting */ I18N::translate('Show private relationships'); ?>
-			</div>
+			</label>
 			<div class="hidden-xs">
 				<span class="label visitors"><i class="fa fa-fw"></i> <?php echo I18N::translate('visitors'); ?></span>
 				<span class="label members"><i class="fa fa-fw"></i><?php echo I18N::translate('members'); ?></span>
@@ -658,7 +658,7 @@ $controller
 					name="gedcom"
 					required
 					type="text"
-					value="<?php echo Filter::escapeHtml(WT_GEDCOM); ?>"
+					value="<?php echo $WT_TREE->getNameHtml(); ?>"
 					>
 			</div>
 			<p class="small text-muted">
@@ -673,7 +673,13 @@ $controller
 			<?php echo /* I18N: A configuration setting */ I18N::translate('Language'); ?>
 		</label>
 		<div class="col-sm-9">
-			<?php echo select_edit_control('LANGUAGE', I18N::installedLanguages(), null, $WT_TREE->getPreference('LANGUAGE'), 'class="form-control"'); ?>
+			<select id="LANGUAGE" name="LANGUAGE" class="form-control">
+				<?php foreach (I18N::activeLocales() as $locale): ?>
+					<option value="<?php echo $locale->languageTag(); ?>" <?php echo $WT_TREE->getPreference('LANGUAGE') === $locale->languageTag() ? 'selected' : ''; ?>>
+						<?php echo $locale->endonym(); ?>
+					</option>
+				<?php endforeach; ?>
+			</select>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Language” configuration setting */ I18N::translate('If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines.'); ?>
 			</p>
@@ -699,7 +705,7 @@ $controller
 				>
 				<span class="input-group-addon">
 					<?php
-					$person = Individual::getInstance($WT_TREE->getPreference('PEDIGREE_ROOT_ID'));
+					$person = Individual::getInstance($WT_TREE->getPreference('PEDIGREE_ROOT_ID'), $WT_TREE);
 					if ($person) {
 						echo $person->getFullName(), ' ', $person->getLifeSpan();
 					} else {
@@ -1062,8 +1068,8 @@ $controller
 			<?php echo /* I18N: A configuration setting */ I18N::translate('Who can upload new media files?'); ?>
 		</label>
 		<div class="col-sm-9">
-			<?php echo select_edit_control('MEDIA_UPLOAD', array(WT_PRIV_USER=> I18N::translate('Show to members'),
-				WT_PRIV_NONE=> I18N::translate('Show to managers'), WT_PRIV_HIDE=> I18N::translate('Hide from everyone')), null, $WT_TREE->getPreference('MEDIA_UPLOAD'), 'class="form-control"'); ?>
+			<?php echo select_edit_control('MEDIA_UPLOAD', array(Auth::PRIV_USER=> I18N::translate('Show to members'),
+				Auth::PRIV_NONE=> I18N::translate('Show to managers'), Auth::PRIV_HIDE=> I18N::translate('Hide from everyone')), null, $WT_TREE->getPreference('MEDIA_UPLOAD'), 'class="form-control"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Who can upload new media files?” configuration setting */ I18N::translate('If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only.'); ?>
 			</p>
@@ -1322,6 +1328,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo radio_buttons('PEDIGREE_LAYOUT', $layouts, $WT_TREE->getPreference('PEDIGREE_LAYOUT'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Default pedigree chart layout” tree configuration setting */ I18N::translate('This option indicates whether the pedigree chart should be generated in landscape or portrait mode.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -1615,7 +1622,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('CHART_BOX_TAGS')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('CHART_BOX_TAGS'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('CHART_BOX_TAGS'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo /* I18N: button label */ I18N::translate('edit'); ?>
 					</a>
@@ -1769,7 +1776,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('INDI_FACTS_ADD')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('INDI_FACTS_ADD'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('INDI_FACTS_ADD'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>
@@ -1798,7 +1805,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('INDI_FACTS_UNIQUE')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('INDI_FACTS_UNIQUE'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('INDI_FACTS_UNIQUE'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>
@@ -1827,7 +1834,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('QUICK_REQUIRED_FACTS')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('QUICK_REQUIRED_FACTS'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('QUICK_REQUIRED_FACTS'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>
@@ -1856,7 +1863,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('INDI_FACTS_QUICK')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('INDI_FACTS_QUICK'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('INDI_FACTS_QUICK'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>
@@ -1887,7 +1894,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('FAM_FACTS_ADD')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('FAM_FACTS_ADD'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('FAM_FACTS_ADD'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>
@@ -1916,7 +1923,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('FAM_FACTS_UNIQUE')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('FAM_FACTS_UNIQUE'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('FAM_FACTS_UNIQUE'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>
@@ -1945,7 +1952,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('QUICK_REQUIRED_FAMFACTS')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('QUICK_REQUIRED_FAMFACTS'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('QUICK_REQUIRED_FAMFACTS'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>
@@ -1974,7 +1981,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('FAM_FACTS_QUICK')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('FAM_FACTS_QUICK'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('FAM_FACTS_QUICK'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>
@@ -2005,7 +2012,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('SOUR_FACTS_ADD')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('SOUR_FACTS_ADD'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('SOUR_FACTS_ADD'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>
@@ -2034,7 +2041,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('SOUR_FACTS_UNIQUE')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('SOUR_FACTS_UNIQUE'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('SOUR_FACTS_UNIQUE'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>
@@ -2063,7 +2070,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('SOUR_FACTS_QUICK')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('SOUR_FACTS_QUICK'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('SOUR_FACTS_QUICK'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>
@@ -2094,7 +2101,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('REPO_FACTS_ADD')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('REPO_FACTS_ADD'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('REPO_FACTS_ADD'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>
@@ -2123,7 +2130,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('REPO_FACTS_UNIQUE')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('REPO_FACTS_UNIQUE'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('REPO_FACTS_UNIQUE'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>
@@ -2152,7 +2159,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('REPO_FACTS_QUICK')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('REPO_FACTS_QUICK'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('REPO_FACTS_QUICK'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>
@@ -2183,7 +2190,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('ADVANCED_NAME_FACTS')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('ADVANCED_NAME_FACTS'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('ADVANCED_NAME_FACTS'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>
@@ -2212,7 +2219,7 @@ $controller
 					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('ADVANCED_PLAC_FACTS')); ?>"
 					>
 				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('ADVANCED_PLAC_FACTS'), '<?php echo WT_GEDCOM ?>');">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('ADVANCED_PLAC_FACTS'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
 						<i class="fa fa-pencil"></i>
 						<?php echo I18N::translate('edit'); ?>
 					</a>

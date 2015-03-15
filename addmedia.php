@@ -48,17 +48,17 @@ $controller
 	->restrictAccess(Auth::isMember($WT_TREE));
 
 $disp = true;
-$media = Media::getInstance($pid);
+$media = Media::getInstance($pid, $WT_TREE);
 if ($media) {
 	$disp = $media->canShow();
 }
 if ($action == 'update' || $action == 'create') {
 	if ($linktoid) {
-		$disp = GedcomRecord::getInstance($linktoid)->canShow();
+		$disp = GedcomRecord::getInstance($linktoid, $WT_TREE)->canShow();
 	}
 }
 
-if (!WT_USER_CAN_EDIT || !$disp) {
+if (!Auth::isEditor($WT_TREE) || !$disp) {
 	$controller
 		->pageHeader()
 		->addInlineJavascript('closePopupAndReloadParent();');
@@ -100,7 +100,7 @@ case 'create': // Save the information from the “showcreateform” action
 
 	// Managers can create new media paths (subfolders).  Users must use existing folders.
 	if ($folderName && !is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
-		if (WT_USER_GEDCOM_ADMIN) {
+		if (Auth::isManager($WT_TREE)) {
 			if (File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
 				FlashMessages::addMessage(I18N::translate('The folder %s has been created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)));
 			} else {
@@ -219,7 +219,7 @@ case 'create': // Save the information from the “showcreateform” action
 
 	$new_media = $WT_TREE->createRecord($newged);
 	if ($linktoid) {
-		$record = GedcomRecord::getInstance($linktoid);
+		$record = GedcomRecord::getInstance($linktoid, $WT_TREE);
 		$record->createFact('1 OBJE @' . $new_media->getXref() . '@', true);
 		Log::addEditLog('Media ID ' . $new_media->getXref() . " successfully added to $linktoid.");
 		$controller->addInlineJavascript('closePopupAndReloadParent();');
@@ -261,7 +261,7 @@ case 'update': // Save the information from the “editmedia” action
 
 	// Managers can create new media paths (subfolders).  Users must use existing folders.
 	if ($folderName && !is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
-		if (WT_USER_GEDCOM_ADMIN) {
+		if (Auth::isManager($WT_TREE)) {
 			if (File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
 				FlashMessages::addMessage(I18N::translate('The folder %s has been created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)));
 			} else {
@@ -320,7 +320,7 @@ case 'update': // Save the information from the “editmedia” action
 		$oldServerFile  = $media->getServerFilename('main');
 		$oldServerThumb = $media->getServerFilename('thumb');
 
-		$newmedia = new Media("xxx", "0 @xxx@ OBJE\n1 FILE " . $newFilename, null, WT_GED_ID);
+		$newmedia = new Media("xxx", "0 @xxx@ OBJE\n1 FILE " . $newFilename, null, $WT_TREE);
 		$newServerFile  = $newmedia->getServerFilename('main');
 		$newServerThumb = $newmedia->getServerFilename('thumb');
 
@@ -328,7 +328,7 @@ case 'update': // Save the information from the “editmedia” action
 		if ($oldServerFile !== $newServerFile) {
 			//-- check if the file is used in more than one gedcom
 			//-- do not allow it to be moved or renamed if it is
-			if (!$media->isExternal() && is_media_used_in_other_gedcom($media->getFilename(), WT_GED_ID)) {
+			if (!$media->isExternal() && is_media_used_in_other_gedcom($media->getFilename(), $WT_TREE->getTreeId())) {
 				FlashMessages::addMessage(I18N::translate('This file is linked to another family tree on this server.  It cannot be deleted, moved, or renamed until these links have been removed.'));
 				break;
 			}
@@ -370,13 +370,13 @@ case 'update': // Save the information from the “editmedia” action
 	$islink = array_merge(array(0), $islink);
 	$text = array_merge(array($newFilename), $text);
 
-	$record = GedcomRecord::getInstance($pid);
+	$record = GedcomRecord::getInstance($pid, $WT_TREE);
 	$newrec = "0 @$pid@ OBJE\n";
 	$newrec = handle_updates($newrec);
 	$record->updateRecord($newrec, $update_CHAN);
 
 	if ($pid && $linktoid) {
-		$record = GedcomRecord::getInstance($linktoid);
+		$record = GedcomRecord::getInstance($linktoid, $WT_TREE);
 		$record->createFact('1 OBJE @' . $pid . '@', true);
 		Log::addEditLog('Media ID ' . $pid . " successfully added to $linktoid.");
 	}
@@ -405,7 +405,7 @@ $controller->pageHeader();
 echo '<div id="addmedia-page">'; //container for media edit pop-up
 echo '<form method="post" name="newmedia" action="addmedia.php" enctype="multipart/form-data">';
 echo '<input type="hidden" name="action" value="', $action, '">';
-echo '<input type="hidden" name="ged" value="', WT_GEDCOM, '">';
+echo '<input type="hidden" name="ged" value="', $WT_TREE->getNameHtml(), '">';
 echo '<input type="hidden" name="pid" value="', $pid, '">';
 if ($linktoid) {
 	echo '<input type="hidden" name="linktoid" value="', $linktoid, '">';
@@ -442,7 +442,7 @@ if ($gedfile == 'FILE') {
 	echo '<tr><td class="descriptionbox wrap width25">';
 	echo I18N::translate('Media file to upload') . '</td><td class="optionbox wrap"><input type="file" name="mediafile" onchange="updateFormat(this.value);" size="40"></td></tr>';
 	// Check for thumbnail generation support
-	if (WT_USER_GEDCOM_ADMIN) {
+	if (Auth::isManager($WT_TREE)) {
 		echo '<tr><td class="descriptionbox wrap width25">';
 		echo I18N::translate('Thumbnail to upload') . '</td><td class="optionbox wrap"><input type="file" name="thumbnail" size="40">';
 		echo '<p class="sub">', I18N::translate('Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording.'), '</p>';
@@ -453,7 +453,7 @@ if ($gedfile == 'FILE') {
 // Filename on server
 $isExternal = isFileExternal($gedfile);
 if ($gedfile == 'FILE') {
-	if (WT_USER_GEDCOM_ADMIN) {
+	if (Auth::isManager($WT_TREE)) {
 		add_simple_tag(
 			"1 $gedfile",
 			'',
@@ -481,7 +481,7 @@ if ($gedfile == 'FILE') {
 	echo I18N::translate('Filename on server'), help_link('upload_server_file');
 	echo '</td>';
 	echo '<td class="optionbox wrap wrap">';
-	if (WT_USER_GEDCOM_ADMIN) {
+	if (Auth::isManager($WT_TREE)) {
 		echo '<input name="filename" type="text" value="' . Filter::escapeHtml($fileName) . '" size="40"';
 		if ($isExternal) {
 			echo '>';
@@ -501,7 +501,7 @@ if (!$isExternal) {
 	echo '<tr><td class="descriptionbox wrap width25">';
 	echo I18N::translate('Folder name on server'), '</td><td class="optionbox wrap">';
 	//-- don’t let regular users change the location of media items
-	if ($action !== 'update' || WT_USER_GEDCOM_ADMIN) {
+	if ($action !== 'update' || Auth::isManager($WT_TREE)) {
 		$mediaFolders = QueryMedia::folderList();
 		echo '<span dir="ltr"><select name="folder_list" onchange="document.newmedia.folder.value=this.options[this.selectedIndex].value;">';
 		echo '<option ';
@@ -691,7 +691,7 @@ if (Auth::isAdmin()) {
 	} else {
 		echo '<input type="checkbox" name="preserve_last_changed">';
 	}
-	echo I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN'), '<br>';
+	echo I18N::translate('Do not update the “last change” record'), '<br>';
 	echo '</td></tr>';
 }
 echo '</table>';

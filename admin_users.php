@@ -52,7 +52,7 @@ case 'save':
 		$pass1          = Filter::post('pass1', WT_REGEX_PASSWORD);
 		$pass2          = Filter::post('pass2', WT_REGEX_PASSWORD);
 		$theme          = Filter::post('theme', implode('|', array_keys(Theme::installedThemes())), '');
-		$language       = Filter::post('language', implode('|', array_keys(I18N::installedLanguages())), WT_LOCALE);
+		$language       = Filter::post('language');
 		$contact_method = Filter::post('contact_method');
 		$comment        = Filter::post('comment');
 		$auto_accept    = Filter::postBool('auto_accept');
@@ -191,7 +191,10 @@ case 'load_json':
 	// This becomes a JSON list, not array, so need to fetch with numeric keys.
 	$data = Database::prepare($sql_select)->execute($args)->fetchAll(PDO::FETCH_NUM);
 
-	$installed_languages = I18N::installedLanguages();
+	$installed_languages = array();
+	foreach (I18N::installedLocales() as $locale) {
+		$installed_languages[$locale->languageTag()] = $locale->endonym();
+	}
 
 	// Reformat various columns for display
 	foreach ($data as &$datum) {
@@ -333,7 +336,7 @@ case 'edit':
 			<div class="col-sm-9">
 				<input class="form-control" type="password" id="pass1" name="pass1" pattern = "<?php echo WT_REGEX_PASSWORD; ?>" placeholder="<?php echo I18N::plural('Use at least %s character.', 'Use at least %s characters.', WT_MINIMUM_PASSWORD_LENGTH, I18N::number(WT_MINIMUM_PASSWORD_LENGTH)); ?>" <?php echo $user->getUserId() ? '' : 'required'; ?> onchange="form.pass2.pattern = regex_quote(this.value);">
 				<p class="small text-muted">
-					<?php echo 'Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”.'; ?>
+					<?php echo I18N::translate('Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”.'); ?>
 				</p>
 			</div>
 		</div>
@@ -399,7 +402,13 @@ case 'edit':
 				<?php echo /* I18N: A configuration setting */ I18N::translate('Language'); ?>
 			</label>
 			<div class="col-sm-9">
-				<?php echo select_edit_control('language', I18N::installedLanguages(), null, $user->getPreference('language', WT_LOCALE), 'class="form-control"'); ?>
+				<select id="language" name="language" class="form-control">
+					<?php foreach (I18N::installedLocales() as $locale): ?>
+						<option value="<?php echo $locale->languageTag(); ?>" <?php echo $user->getPreference('language', WT_LOCALE) === $locale->languageTag() ? 'selected' : ''; ?>>
+							<?php echo $locale->endonym(); ?>
+						</option>
+					<?php endforeach; ?>
+				</select>
 			</div>
 		</div>
 
@@ -611,7 +620,7 @@ case 'edit':
 							id="rootid<?php echo $tree->getTreeId(); ?>"
 							value="<?php echo Filter::escapeHtml($tree->getUserPreference($user, 'rootid')); ?>"
 						>
-						<?php echo print_findindi_link('rootid' . $tree->getTreeId()), '', $tree->getName(); ?>
+						<?php echo print_findindi_link('rootid' . $tree->getTreeId(), '', $tree); ?>
 					</td>
 					<td>
 						<input
@@ -623,7 +632,7 @@ case 'edit':
 							id="gedcomid<?php echo $tree->getTreeId(); ?>"
 							value="<?php echo Filter::escapeHtml($tree->getUserPreference($user, 'gedcomid')); ?>"
 						>
-						<?php echo print_findindi_link('gedcomid' . $tree->getTreeId(), '', $tree->getName()); ?>
+						<?php echo print_findindi_link('gedcomid' . $tree->getTreeId(), '', $tree); ?>
 					</td>
 					<td>
 						<select name="RELATIONSHIP_PATH_LENGTH<?php echo $tree->getTreeId(); ?>" id="RELATIONSHIP_PATH_LENGTH<?php echo $tree->getTreeId(); ?>" class="relpath">

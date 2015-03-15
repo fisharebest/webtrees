@@ -50,7 +50,7 @@ class TopSurnamesModule extends Module implements ModuleBlockInterface {
 		}
 
 		// This next function is a bit out of date, and doesn't cope well with surname variants
-		$top_surnames = get_top_surnames(WT_GED_ID, $COMMON_NAMES_THRESHOLD, $num);
+		$top_surnames = get_top_surnames($WT_TREE->getTreeId(), $COMMON_NAMES_THRESHOLD, $num);
 
 		// Remove names found in the "Remove Names" list
 		if ($COMMON_NAMES_REMOVE) {
@@ -63,7 +63,7 @@ class TopSurnamesModule extends Module implements ModuleBlockInterface {
 		$all_surnames = array();
 		$i            = 0;
 		foreach (array_keys($top_surnames) as $top_surname) {
-			$all_surnames = array_merge($all_surnames, QueryName::surnames($top_surname, '', false, false, WT_GED_ID));
+			$all_surnames = array_merge($all_surnames, QueryName::surnames($WT_TREE, $top_surname, '', false, false));
 			if (++$i == $num) {
 				break;
 			}
@@ -73,7 +73,7 @@ class TopSurnamesModule extends Module implements ModuleBlockInterface {
 		}
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
-		if ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype === 'user' && Auth::check()) {
+		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
 			$title = '<i class="icon-admin" title="' . I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
 		} else {
 			$title = '';

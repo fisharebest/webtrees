@@ -90,7 +90,7 @@ case 'undoall':
 		"UPDATE `##change`" .
 		" SET status='rejected'" .
 		" WHERE status='pending' AND gedcom_id=?"
-	)->execute(array(WT_GED_ID));
+	)->execute(array($WT_TREE->getTreeId()));
 	break;
 case 'acceptall':
 	$changes = Database::prepare(
@@ -99,7 +99,7 @@ case 'acceptall':
 		" JOIN `##gedcom` g USING (gedcom_id)" .
 		" WHERE c.status='pending' AND gedcom_id=?" .
 		" ORDER BY change_id"
-	)->execute(array(WT_GED_ID))->fetchAll();
+	)->execute(array($WT_TREE->getTreeId()))->fetchAll();
 	foreach ($changes as $change) {
 		if (empty($change->new_gedcom)) {
 			// delete
@@ -136,28 +136,29 @@ if ($changed_gedcoms) {
 	$prev_xref = null;
 	$prev_gedcom_id = null;
 	foreach ($changes as $change) {
+		$tree = Tree::findById($change->gedcom_id);
 		preg_match('/^0 @' . WT_REGEX_XREF . '@ (' . WT_REGEX_TAG . ')/', $change->old_gedcom . $change->new_gedcom, $match);
 		switch ($match[1]) {
 		case 'INDI':
-			$record = new Individual($change->xref, $change->old_gedcom, $change->new_gedcom, $change->gedcom_id);
+			$record = new Individual($change->xref, $change->old_gedcom, $change->new_gedcom, $tree);
 			break;
 		case 'FAM':
-			$record = new Family($change->xref, $change->old_gedcom, $change->new_gedcom, $change->gedcom_id);
+			$record = new Family($change->xref, $change->old_gedcom, $change->new_gedcom, $tree);
 			break;
 		case 'SOUR':
-			$record = new Source($change->xref, $change->old_gedcom, $change->new_gedcom, $change->gedcom_id);
+			$record = new Source($change->xref, $change->old_gedcom, $change->new_gedcom, $tree);
 			break;
 		case 'REPO':
-			$record = new Repository($change->xref, $change->old_gedcom, $change->new_gedcom, $change->gedcom_id);
+			$record = new Repository($change->xref, $change->old_gedcom, $change->new_gedcom, $tree);
 			break;
 		case 'OBJE':
-			$record = new Media($change->xref, $change->old_gedcom, $change->new_gedcom, $change->gedcom_id);
+			$record = new Media($change->xref, $change->old_gedcom, $change->new_gedcom, $tree);
 			break;
 		case 'NOTE':
-			$record = new Note($change->xref, $change->old_gedcom, $change->new_gedcom, $change->gedcom_id);
+			$record = new Note($change->xref, $change->old_gedcom, $change->new_gedcom, $tree);
 			break;
 		default:
-			$record = new GedcomRecord($change->xref, $change->old_gedcom, $change->new_gedcom, $change->gedcom_id);
+			$record = new GedcomRecord($change->xref, $change->old_gedcom, $change->new_gedcom, $tree);
 			break;
 		}
 		if ($change->xref != $prev_xref || $change->gedcom_id != $prev_gedcom_id) {

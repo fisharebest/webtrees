@@ -67,7 +67,7 @@ if ($action == "upload") {
 
 			// Managers can create new media paths (subfolders).  Users must use existing folders.
 			if ($folderName && !is_dir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
-				if (WT_USER_GEDCOM_ADMIN) {
+				if (Auth::isManager($WT_TREE)) {
 					if (File::mkdir(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)) {
 						FlashMessages::addMessage(I18N::translate('The folder %s has been created.', Html::filename(WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName)));
 					} else {
@@ -212,7 +212,7 @@ for ($i = 1; $i < 6; $i++) {
 	}
 	echo '</td></tr>';
 
-	if (WT_USER_GEDCOM_ADMIN) {
+	if (Auth::isManager($WT_TREE)) {
 		echo '<tr><td>';
 		echo I18N::translate('Filename on server');
 		echo '</td>';
@@ -227,7 +227,7 @@ for ($i = 1; $i < 6; $i++) {
 		echo '<tr style="display:none;"><td><input type="hidden" name="filename', $i, '" value=""></td></tr>';
 	}
 
-	if (WT_USER_GEDCOM_ADMIN) {
+	if (Auth::isManager($WT_TREE)) {
 		echo '<tr><td>';
 		echo I18N::translate('Folder name on server');
 		echo '</td>';

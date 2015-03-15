@@ -35,10 +35,11 @@ class ChartsBlockModule extends Module implements ModuleBlockInterface {
 		global $WT_TREE, $ctype, $controller;
 
 		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
+		$gedcomid         = $WT_TREE->getUserPreference(Auth::user(), 'gedcomid');
 
 		$details = get_block_setting($block_id, 'details', '0');
 		$type    = get_block_setting($block_id, 'type', 'pedigree');
-		$pid     = get_block_setting($block_id, 'pid', Auth::check() ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
+		$pid     = get_block_setting($block_id, 'pid', Auth::check() ? ($gedcomid ? $gedcomid : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
 		if ($cfg) {
 			foreach (array('details', 'type', 'pid', 'block') as $name) {
@@ -48,16 +49,16 @@ class ChartsBlockModule extends Module implements ModuleBlockInterface {
 			}
 		}
 
-		$person = Individual::getInstance($pid);
+		$person = Individual::getInstance($pid, $WT_TREE);
 		if (!$person) {
 			$pid = $PEDIGREE_ROOT_ID;
 			set_block_setting($block_id, 'pid', $pid);
-			$person = Individual::getInstance($pid);
+			$person = Individual::getInstance($pid, $WT_TREE);
 		}
 
 		$id = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
-		if ($ctype == 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype == 'user' && Auth::check()) {
+		if ($ctype == 'gedcom' && Auth::isManager($WT_TREE) || $ctype == 'user' && Auth::check()) {
 			$title = '<i class="icon-admin" title="' . I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
 		} else {
 			$title = '';
@@ -150,6 +151,7 @@ class ChartsBlockModule extends Module implements ModuleBlockInterface {
 		global $WT_TREE, $controller;
 
 		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
+		$gedcomid         = $WT_TREE->getUserPreference(Auth::user(), 'gedcomid');
 
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
 			set_block_setting($block_id, 'details', Filter::postBool('details'));
@@ -159,7 +161,7 @@ class ChartsBlockModule extends Module implements ModuleBlockInterface {
 
 		$details = get_block_setting($block_id, 'details', '0');
 		$type    = get_block_setting($block_id, 'type', 'pedigree');
-		$pid     = get_block_setting($block_id, 'pid', Auth::check() ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
+		$pid     = get_block_setting($block_id, 'pid', Auth::check() ? ($gedcomid ? $gedcomid : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
 		$controller
 			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
@@ -194,7 +196,7 @@ class ChartsBlockModule extends Module implements ModuleBlockInterface {
 				<input data-autocomplete-type="INDI" type="text" name="pid" id="pid" value="<?php echo $pid; ?>" size="5">
 				<?php
 				echo print_findindi_link('pid');
-				$root = Individual::getInstance($pid);
+				$root = Individual::getInstance($pid, $WT_TREE);
 				if ($root) {
 					echo ' <span class="list_item">', $root->getFullName(), $root->format_first_major_fact(WT_EVENTS_BIRT, 1), '</span>';
 				}

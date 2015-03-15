@@ -45,11 +45,10 @@ define('WT_REQUIRED_MYSQL_VERSION', '5.0.13');
 define('WT_REQUIRED_PHP_VERSION', '5.3.2');
 define('WT_MODULES_DIR', 'modules_v3/');
 define('WT_ROOT', '');
-define('WT_GED_ID', null);
-define('WT_PRIV_PUBLIC', 2);
-define('WT_PRIV_USER', 1);
-define('WT_PRIV_NONE', 0);
-define('WT_PRIV_HIDE', -1);
+define('Auth::PRIV_PRIVATE', 2);
+define('Auth::PRIV_USER', 1);
+define('Auth::PRIV_NONE', 0);
+define('Auth::PRIV_HIDE', -1);
 
 if (file_exists(WT_DATA_DIR . WT_CONFIG_FILE)) {
 	header('Location: index.php');
@@ -181,7 +180,7 @@ if (!isset($_POST['lang'])) {
 		I18N::translate('Large systems (50,000 individuals): 64–128 MB, 40–80 seconds'),
 		'</p>',
 		($memory_limit < 32 || $max_execution_time > 0 && $max_execution_time < 20) ? '<p class="bad">' : '<p class="good">',
-		I18N::translate('This server’s memory limit is %d MB and its CPU time limit is %d seconds.', $memory_limit, $max_execution_time),
+		I18N::translate('This server’s memory limit is %s MB and its CPU time limit is %s seconds.', I18N::number($memory_limit), I18N::number($max_execution_time)),
 		'</p><p>',
 		I18N::translate('If you try to exceed these limits, you may experience server time-outs and blank pages.'),
 		'</p><p>',

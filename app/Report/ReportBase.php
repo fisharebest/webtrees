@@ -952,7 +952,7 @@ function totalPagesStartHandler() {
  * @return void
  */
 function gedcomStartHandler($attrs) {
-	global $vars, $gedrec, $gedrecStack, $processGedcoms, $fact, $desc, $ged_level;
+	global $vars, $gedrec, $gedrecStack, $processGedcoms, $fact, $desc, $ged_level, $WT_TREE;
 
 	if ($processGedcoms > 0) {
 		$processGedcoms++;
@@ -965,8 +965,8 @@ function gedcomStartHandler($attrs) {
 	$tags = explode(":", $tag);
 	$newgedrec = '';
 	if (count($tags) < 2) {
-		$tmp = GedcomRecord::getInstance($attrs['id']);
-		$newgedrec = $tmp ? $tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL) : '';
+		$tmp = GedcomRecord::getInstance($attrs['id'], $WT_TREE);
+		$newgedrec = $tmp ? $tmp->privatizeGedcom(Auth::accessLevel($WT_TREE)) : '';
 	}
 	if (empty($newgedrec)) {
 		$tgedrec = $gedrec;
@@ -976,15 +976,15 @@ function gedcomStartHandler($attrs) {
 				if (isset($vars[$match[1]]['gedcom'])) {
 					$newgedrec = $vars[$match[1]]['gedcom'];
 				} else {
-					$tmp = GedcomRecord::getInstance($match[1]);
-					$newgedrec = $tmp ? $tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL) : '';
+					$tmp = GedcomRecord::getInstance($match[1], $WT_TREE);
+					$newgedrec = $tmp ? $tmp->privatizeGedcom(Auth::accessLevel($WT_TREE)) : '';
 				}
 			} else {
 				if (preg_match("/@(.+)/", $tag, $match)) {
 					$gmatch = array();
 					if (preg_match("/\d $match[1] @([^@]+)@/", $tgedrec, $gmatch)) {
-						$tmp = GedcomRecord::getInstance($gmatch[1]);
-						$newgedrec = $tmp ? $tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL) : '';
+						$tmp = GedcomRecord::getInstance($gmatch[1], $WT_TREE);
+						$newgedrec = $tmp ? $tmp->privatizeGedcom(Auth::accessLevel($WT_TREE)) : '';
 						$tgedrec = $newgedrec;
 					} else {
 						$newgedrec = '';
@@ -1213,7 +1213,7 @@ function textEndHandler() {
  */
 function getPersonNameStartHandler($attrs) {
 	// @deprecated
-	global $currentElement, $vars, $gedrec;
+	global $currentElement, $vars, $gedrec, $WT_TREE;
 
 	$id = "";
 	$match = array();
@@ -1238,7 +1238,7 @@ function getPersonNameStartHandler($attrs) {
 		}
 	}
 	if (!empty($id)) {
-		$record = GedcomRecord::getInstance($id);
+		$record = GedcomRecord::getInstance($id, $WT_TREE);
 		if (is_null($record)) {
 			return;
 		}
@@ -1563,7 +1563,7 @@ function varStartHandler($attrs) {
  */
 function factsStartHandler($attrs) {
 	// @deprecated
-	global $repeats, $repeatsStack, $gedrec, $parser, $repeatBytes, $processRepeats, $vars;
+	global $repeats, $repeatsStack, $gedrec, $parser, $repeatBytes, $processRepeats, $vars, $WT_TREE;
 
 	$processRepeats++;
 	if ($processRepeats > 1) {
@@ -1587,7 +1587,7 @@ function factsStartHandler($attrs) {
 		$tag = $vars[$match[1]]['id'];
 	}
 
-	$record = GedcomRecord::getInstance($id);
+	$record = GedcomRecord::getInstance($id, $WT_TREE);
 	if (empty($attrs['diff']) && !empty($id)) {
 		$facts = $record->getFacts();
 		sort_facts($facts);
@@ -1848,13 +1848,13 @@ function ifEndHandler() {
  * @param array $attrs an array of key value pairs for the attributes
  */
 function footnoteStartHandler($attrs) {
-	global $printData, $printDataStack, $currentElement, $footnoteElement, $processFootnote, $gedrec, $ReportRoot;
+	global $printData, $printDataStack, $currentElement, $footnoteElement, $processFootnote, $gedrec, $ReportRoot, $WT_TREE;
 
 	$id = "";
 	if (preg_match("/[0-9] (.+) @(.+)@/", $gedrec, $match)) {
 		$id = $match[2];
 	}
-	$record = GedcomRecord::GetInstance($id);
+	$record = GedcomRecord::GetInstance($id, $WT_TREE);
 	if ($record && $record->canShow()) {
 		array_push($printDataStack, $printData);
 		$printData = true;
@@ -1905,11 +1905,11 @@ function footnoteTextsStartHandler() {
  */
 function ageAtDeathStartHandler() {
 	// This duplicates functionality in format_fact_date()
-	global $currentElement, $gedrec, $factrec;
+	global $currentElement, $gedrec, $factrec, $WT_TREE;
 
 	$match = array();
 	if (preg_match("/0 @(.+)@/", $gedrec, $match)) {
-		$person = Individual::getInstance($match[1]);
+		$person = Individual::getInstance($match[1], $WT_TREE);
 		// Recorded age
 		if (preg_match('/\n2 AGE (.+)/', $factrec, $match)) {
 			$fact_age = $match[1];
@@ -1982,7 +1982,7 @@ function spStartHandler() {
  * @param array $attrs an array of key value pairs for the attributes
  */
 function highlightedImageStartHandler($attrs) {
-	global $gedrec, $wt_report, $ReportRoot;
+	global $gedrec, $wt_report, $ReportRoot, $WT_TREE;
 
 	$id = '';
 	$match = array();
@@ -2035,7 +2035,7 @@ function highlightedImageStartHandler($attrs) {
 		$height = (int) $attrs['height'];
 	}
 
-	$person = Individual::getInstance($id);
+	$person = Individual::getInstance($id, $WT_TREE);
 	$mediaobject = $person->findHighlightedMedia();
 	if ($mediaobject) {
 		$attributes = $mediaobject->getImageAttributes('thumb');
@@ -2081,7 +2081,7 @@ function highlightedImageStartHandler($attrs) {
  * @param array $attrs an array of key value pairs for the attributes
  */
 function imageStartHandler($attrs) {
-	global $gedrec, $wt_report, $ReportRoot;
+	global $gedrec, $wt_report, $ReportRoot, $WT_TREE;
 
 	// mixed Position the top corner of this box on the page. the default is the current position
 	$top = '.';
@@ -2135,7 +2135,7 @@ function imageStartHandler($attrs) {
 	if ($file == "@FILE") {
 		$match = array();
 		if (preg_match("/\d OBJE @(.+)@/", $gedrec, $match)) {
-			$mediaobject = Media::getInstance($match[1], WT_GED_ID);
+			$mediaobject = Media::getInstance($match[1], $WT_TREE);
 			$attributes = $mediaobject->getImageAttributes('thumb');
 			if (in_array(
 					$attributes['ext'],
@@ -2255,7 +2255,7 @@ function lineStartHandler($attrs) {
  * @param array $attrs an array of key value pairs for the attributes
  */
 function listStartHandler($attrs) {
-	global $gedrec, $repeats, $repeatBytes, $list, $fact, $desc, $repeatsStack, $processRepeats, $parser, $vars, $sortby;
+	global $gedrec, $repeats, $repeatBytes, $list, $fact, $desc, $repeatsStack, $processRepeats, $parser, $vars, $sortby, $WT_TREE;
 
 	$processRepeats++;
 	if ($processRepeats > 1) {
@@ -2282,17 +2282,17 @@ function listStartHandler($attrs) {
 	switch ($listname) {
 	case "pending":
 		$rows = Database::prepare(
-			"SELECT xref, gedcom_id, CASE new_gedcom WHEN '' THEN old_gedcom ELSE new_gedcom END AS gedcom" . " FROM `##change`" . " WHERE (xref, change_id) IN (" . "  SELECT xref, MAX(change_id)" . "   FROM `##change`" . "   WHERE status='pending' AND gedcom_id=?" . "   GROUP BY xref" . " )"
-		)->execute(array(WT_GED_ID))->fetchAll();
+			"SELECT xref, CASE new_gedcom WHEN '' THEN old_gedcom ELSE new_gedcom END AS gedcom" . " FROM `##change`" . " WHERE (xref, change_id) IN (" . "  SELECT xref, MAX(change_id)" . "   FROM `##change`" . "   WHERE status='pending' AND gedcom_id=?" . "   GROUP BY xref" . " )"
+		)->execute(array($WT_TREE->getTreeId()))->fetchAll();
 		$list = array();
 		foreach ($rows as $row) {
-			$list[] = GedcomRecord::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$list[] = GedcomRecord::getInstance($row->xref, $WT_TREE, $row->gedcom);
 		}
 		break;
 	case 'individual':
-		$sql_select   = "SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom FROM `##individuals` ";
+		$sql_select   = "SELECT DISTINCT i_id AS xref, i_gedcom AS gedcom FROM `##individuals` ";
 		$sql_join     = "";
-		$sql_where    = " WHERE i_file = " . WT_GED_ID;
+		$sql_where    = " WHERE i_file = " . $WT_TREE->getTreeId();
 		$sql_order_by = "";
 		foreach ($attrs as $attr => $value) {
 			if (strpos($attr, 'filter') === 0 && $value) {
@@ -2371,14 +2371,14 @@ function listStartHandler($attrs) {
 		)->fetchAll();
 
 		foreach ($rows as $row) {
-			$list[] = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$list[] = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
 		}
 		break;
 
 	case 'family':
-		$sql_select   = "SELECT DISTINCT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom FROM `##families`";
+		$sql_select   = "SELECT DISTINCT f_id AS xref, f_gedcom AS gedcom FROM `##families`";
 		$sql_join     = "";
-		$sql_where    = " WHERE f_file=" . WT_GED_ID;
+		$sql_where    = " WHERE f_file=" . $WT_TREE->getTreeId();
 		$sql_order_by = "";
 		foreach ($attrs as $attr => $value) {
 			if (strpos($attr, 'filter') === 0 && $value) {
@@ -2449,7 +2449,7 @@ function listStartHandler($attrs) {
 		)->fetchAll();
 
 		foreach ($rows as $row) {
-			$list[] = Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$list[] = Family::getInstance($row->xref, $WT_TREE, $row->gedcom);
 		}
 		break;
 
@@ -2536,7 +2536,7 @@ function listStartHandler($attrs) {
 	if ($filters) {
 		foreach ($list as $key => $record) {
 			foreach ($filters as $filter) {
-				if (!preg_match("/" . $filter . "/i", $record->privatizeGedcom(WT_USER_ACCESS_LEVEL))) {
+				if (!preg_match("/" . $filter . "/i", $record->privatizeGedcom(Auth::accessLevel($WT_TREE)))) {
 					unset($list[$key]);
 					break;
 				}
@@ -2547,7 +2547,7 @@ function listStartHandler($attrs) {
 		$mylist = array();
 		foreach ($list as $indi) {
 			$key = $indi->getXref();
-			$grec = $indi->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+			$grec = $indi->privatizeGedcom(Auth::accessLevel($WT_TREE));
 			$keep = true;
 			foreach ($filters2 as $filter) {
 				if ($keep) {
@@ -2680,7 +2680,7 @@ function listEndHandler() {
 		$list_private = 0;
 		foreach ($list as $record) {
 			if ($record->canShow()) {
-				$gedrec = $record->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+				$gedrec = $record->privatizeGedcom(Auth::accessLevel($record->getTree()));
 				//-- start the sax parser
 				$repeat_parser = xml_parser_create();
 				$parser = $repeat_parser;
@@ -2737,7 +2737,7 @@ function listTotalStartHandler() {
  * @param array $attrs an array of key value pairs for the attributes
  */
 function relativesStartHandler($attrs) {
-	global $repeats, $repeatBytes, $list, $repeatsStack, $processRepeats, $parser, $vars, $sortby;
+	global $repeats, $repeatBytes, $list, $repeatsStack, $processRepeats, $parser, $vars, $sortby, $WT_TREE;
 
 	$processRepeats++;
 	if ($processRepeats > 1) {
@@ -2781,7 +2781,7 @@ function relativesStartHandler($attrs) {
 	}
 
 	$list = array();
-	$person = Individual::getInstance($id);
+	$person = Individual::getInstance($id, $WT_TREE);
 	if (!empty($person)) {
 		$list[$id] = $person;
 		switch ($group) {
@@ -2876,7 +2876,7 @@ function relativesStartHandler($attrs) {
  * XML </ Relatives> end element handler
  */
 function relativesEndHandler() {
-	global $list, $repeats, $repeatsStack, $repeatBytes, $parser, $parserStack, $report, $gedrec, $processRepeats, $list_total, $list_private, $generation;
+	global $list, $repeats, $repeatsStack, $repeatBytes, $parser, $parserStack, $report, $gedrec, $processRepeats, $list_total, $list_private, $generation, $WT_TREE;
 
 	$processRepeats--;
 	if ($processRepeats > 0) {
@@ -2923,8 +2923,8 @@ function relativesEndHandler() {
 			if (isset($value->generation)) {
 				$generation = $value->generation;
 			}
-			$tmp = GedcomRecord::getInstance($key);
-			$gedrec = $tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+			$tmp = GedcomRecord::getInstance($key, $WT_TREE);
+			$gedrec = $tmp->privatizeGedcom(Auth::accessLevel($WT_TREE));
 			//-- start the sax parser
 			$repeat_parser = xml_parser_create();
 			$parser = $repeat_parser;
@@ -3056,6 +3056,8 @@ function descriptionEndHandler() {
  * @return string the value of a gedcom tag from the given gedcom record
  */
 function get_gedcom_value($tag, $level, $gedrec) {
+	global $WT_TREE;
+
 	if (empty($gedrec)) {
 		return '';
 	}
@@ -3103,7 +3105,7 @@ function get_gedcom_value($tag, $level, $gedrec) {
 	if ($ct > 0) {
 		$value = trim($match[1]);
 		if ($t == 'NOTE' && preg_match('/^@(.+)@$/', $value, $match)) {
-			$note = Note::getInstance($match[1]);
+			$note = Note::getInstance($match[1], $WT_TREE);
 			if ($note) {
 				$value = $note->getNote();
 			} else {
@@ -3128,6 +3130,8 @@ function get_gedcom_value($tag, $level, $gedrec) {
  * @param integer  $generations
  */
 function add_ancestors(&$list, $pid, $children = false, $generations = -1) {
+	global $WT_TREE;
+
 	$genlist = array($pid);
 	$list[$pid]->generation = 1;
 	while (count($genlist) > 0) {
@@ -3135,7 +3139,7 @@ function add_ancestors(&$list, $pid, $children = false, $generations = -1) {
 		if (strpos($id, 'empty') === 0) {
 			continue; // id can be something like “empty7”
 		}
-		$person = Individual::getInstance($id);
+		$person = Individual::getInstance($id, $WT_TREE);
 		foreach ($person->getChildFamilies() as $family) {
 			$husband = $family->getHusband();
 			$wife = $family->getWife();
@@ -3176,7 +3180,9 @@ function add_ancestors(&$list, $pid, $children = false, $generations = -1) {
  * @param integer  $generations
  */
 function add_descendancy(&$list, $pid, $parents = false, $generations = -1) {
-	$person = Individual::getInstance($pid);
+	global $WT_TREE;
+
+	$person = Individual::getInstance($pid, $WT_TREE);
 	if ($person === null) {
 		return;
 	}

@@ -39,7 +39,9 @@ class MediaTabModule extends Module implements ModuleTabInterface {
 
 	/** {@inheritdoc} */
 	public function hasTabContent() {
-		return WT_USER_CAN_EDIT || $this->getFactsWithMedia();
+		global $WT_TREE;
+
+		return Auth::isEditor($WT_TREE) || $this->getFactsWithMedia();
 	}
 
 	/** {@inheritdoc} */
@@ -66,19 +68,19 @@ class MediaTabModule extends Module implements ModuleTabInterface {
 			echo '<tr><td id="no_tab4" colspan="2" class="facts_value">', I18N::translate('There are no media objects for this individual.'), '</td></tr>';
 		}
 		// New media link
-		if ($controller->record->canEdit() && $WT_TREE->getPreference('MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
+		if ($controller->record->canEdit() && $WT_TREE->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($controller->record->getTree())) {
 			?>
 			<tr>
 				<td class="facts_label">
 					<?php echo GedcomTag::getLabel('OBJE'); ?>
 				</td>
 				<td class="facts_value">
-					<a href="#" onclick="window.open('addmedia.php?action=showmediaform&amp;linktoid=<?php echo $controller->record->getXref(); ?>&amp;ged=<?php echo WT_GEDURL; ?>', '_blank', edit_window_specs); return false;">
+					<a href="#" onclick="window.open('addmedia.php?action=showmediaform&amp;linktoid=<?php echo $controller->record->getXref(); ?>&amp;ged=<?php echo $controller->record->getTree()->getNameUrl(); ?>', '_blank', edit_window_specs); return false;">
 						<?php echo I18N::translate('Add a new media object'); ?>
 					</a>
 					<?php echo help_link('OBJE'); ?>
 					<br>
-					<a href="#" onclick="window.open('inverselink.php?linktoid=<?php echo $controller->record->getXref(); ?>&amp;ged=<?php echo WT_GEDURL; ?>&amp;linkto=person', '_blank', find_window_specs); return false;">
+					<a href="#" onclick="window.open('inverselink.php?linktoid=<?php echo $controller->record->getXref(); ?>&amp;ged=<?php echo $WT_TREE->getNameUrl(); ?>&amp;linkto=person', '_blank', find_window_specs); return false;">
 						<?php echo I18N::translate('Link to an existing media object'); ?>
 					</a>
 				</td>

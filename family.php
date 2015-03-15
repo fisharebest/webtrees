@@ -31,7 +31,7 @@ $controller = new FamilyController;
 if ($controller->record && $controller->record->canShow()) {
 	$controller->pageHeader();
 	if ($controller->record->isPendingDeletion()) {
-		if (WT_USER_CAN_ACCEPT) {
+		if (Auth::isModerator($controller->record->getTree())) {
 			echo
 				'<p class="ui-state-highlight">',
 				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ I18N::translate(
@@ -41,7 +41,7 @@ if ($controller->record && $controller->record->canShow()) {
 				),
 				' ', help_link('pending_changes'),
 				'</p>';
-		} elseif (WT_USER_CAN_EDIT) {
+		} elseif (Auth::isEditor($controller->record->getTree())) {
 			echo
 				'<p class="ui-state-highlight">',
 				I18N::translate('This family has been deleted.  The deletion will need to be reviewed by a moderator.'),
@@ -49,7 +49,7 @@ if ($controller->record && $controller->record->canShow()) {
 				'</p>';
 		}
 	} elseif ($controller->record->isPendingAddtion()) {
-		if (WT_USER_CAN_ACCEPT) {
+		if (Auth::isModerator($controller->record->getTree())) {
 			echo
 				'<p class="ui-state-highlight">',
 				/* I18N: %1$s is “accept”, %2$s is “reject”.  These are links. */ I18N::translate(
@@ -59,7 +59,7 @@ if ($controller->record && $controller->record->canShow()) {
 				),
 				' ', help_link('pending_changes'),
 				'</p>';
-		} elseif (WT_USER_CAN_EDIT) {
+		} elseif (Auth::isEditor($controller->record->getTree())) {
 			echo
 				'<p class="ui-state-highlight">',
 				I18N::translate('This family has been edited.  The changes need to be reviewed by a moderator.'),
@@ -98,7 +98,7 @@ if ($controller->record && $controller->record->canShow()) {
 					<td colspan="2">
 						<?php
 						print_family_parents($controller->record);
-						if (WT_USER_CAN_EDIT) {
+						if (Auth::isEditor($controller->record->getTree())) {
 							$husb = $controller->record->getHusband();
 							if (!$husb) {
 								echo '<a href="#" onclick="return add_spouse_to_family(\'', $controller->record->getXref(), '\', \'HUSB\');">', I18N::translate('Add a new father'), '</a><br>';

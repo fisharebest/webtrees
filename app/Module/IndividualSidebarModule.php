@@ -58,16 +58,18 @@ class IndividualSidebarModule extends Module implements ModuleSidebarInterface {
 
 	/** {@inheritdoc} */
 	public function getSidebarAjaxContent() {
+		global $WT_TREE;
+		
 		$alpha   = Filter::get('alpha'); // All surnames beginning with this letter where "@"=unknown and ","=none
 		$surname = Filter::get('surname'); // All indis with this surname.
 		$search  = Filter::get('search');
 
 		if ($search) {
-			return $this->search($search);
+			return $this->search($WT_TREE, $search);
 		} elseif ($alpha == '@' || $alpha == ',' || $surname) {
-			return $this->getSurnameIndis($alpha, $surname);
+			return $this->getSurnameIndis($WT_TREE, $alpha, $surname);
 		} elseif ($alpha) {
-			return $this->getAlphaSurnames($alpha, $surname);
+			return $this->getAlphaSurnames($WT_TREE, $alpha, $surname);
 		} else {
 			return '';
 		}
@@ -75,10 +77,10 @@ class IndividualSidebarModule extends Module implements ModuleSidebarInterface {
 
 	/** {@inheritdoc} */
 	public function getSidebarContent() {
-		global $WT_IMAGES, $UNKNOWN_NN, $controller;
+		global $WT_IMAGES, $UNKNOWN_NN, $controller, $WT_TREE;
 
 		// Fetch a list of the initial letters of all surnames in the database
-		$initials = QueryName::surnameAlpha(true, false, WT_GED_ID, false);
+		$initials = QueryName::surnameAlpha($WT_TREE, true, false, false);
 
 		$controller->addInlineJavascript('
 			var loadedNames = new Array();
@@ -158,13 +160,16 @@ class IndividualSidebarModule extends Module implements ModuleSidebarInterface {
 	}
 
 	/**
+	 * @param Tree   $tree
 	 * @param string $alpha
 	 * @param string $surname1
 	 *
 	 * @return string
 	 */
-	public function getAlphaSurnames($alpha, $surname1 = '') {
-		$surnames = QueryName::surnames('', $alpha, true, false, WT_GED_ID);
+	private function getAlphaSurnames(Tree $tree, $alpha, $surname1 = '') {
+		global $WT_TREE;
+
+		$surnames = QueryName::surnames($WT_TREE, '', $alpha, true, false);
 		$out = '<ul>';
 		foreach (array_keys($surnames) as $surname) {
 			$out .= '<li id="sb_indi_' . $surname . '" class="sb_indi_surname_li"><a href="' . $surname . '" title="' . $surname . '" alt="' . $alpha . '" class="sb_indi_surname">' . $surname . '</a>';
@@ -183,13 +188,14 @@ class IndividualSidebarModule extends Module implements ModuleSidebarInterface {
 	}
 
 	/**
+	 * @param Tree   $tree
 	 * @param string $alpha
 	 * @param string $surname
 	 *
 	 * @return string
 	 */
-	public function getSurnameIndis($alpha, $surname) {
-		$indis = QueryName::individuals($surname, $alpha, '', true, false, WT_GED_ID);
+	private function getSurnameIndis(Tree $tree, $alpha, $surname) {
+		$indis = QueryName::individuals($tree, $surname, $alpha, '', true, false);
 		$out = '<ul>';
 		foreach ($indis as $person) {
 			if ($person->canShowName()) {
@@ -209,29 +215,30 @@ class IndividualSidebarModule extends Module implements ModuleSidebarInterface {
 	}
 
 	/**
-	 * @param string $query
+	 * @param Tree   $tree  Search this tree
+	 * @param string $query Search for this text
 	 *
 	 * @return string
 	 */
-	public function search($query) {
+	private function search(Tree $tree, $query) {
 		if (strlen($query) < 2) {
 			return '';
 		}
 		$rows =
 			Database::prepare(
-				"SELECT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom" .
+				"SELECT i_id AS xref, i_gedcom AS gedcom" .
 				" FROM `##individuals`, `##name`" .
 				" WHERE (i_id LIKE ? OR n_sort LIKE ?)" .
 				" AND i_id=n_id AND i_file=n_file AND i_file=?" .
 				" ORDER BY n_sort COLLATE '" . I18N::$collation . "'" .
 				" LIMIT 50"
 			)
-			->execute(array("%{$query}%", "%{$query}%", WT_GED_ID))
+			->execute(array("%{$query}%", "%{$query}%", $tree->getTreeId()))
 			->fetchAll();
 
 		$out = '<ul>';
 		foreach ($rows as $row) {
-			$person = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$person = Individual::getInstance($row->xref, $tree, $row->gedcom);
 			if ($person->canShowName()) {
 				$out .= '<li><a href="' . $person->getHtmlUrl() . '">' . $person->getSexImage() . ' ' . $person->getFullName() . ' ';
 				if ($person->canShow()) {

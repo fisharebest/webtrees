@@ -18,13 +18,20 @@ namespace Fisharebest\Webtrees;
 
 use Zend_Session;
 
+/**
+ * Defined in session.php
+ *
+ * @global Tree $WT_TREE
+ */
+global $WT_TREE;
+
 define('WT_SCRIPT_NAME', 'expand_view.php');
 require './includes/session.php';
 
 Zend_Session::writeClose();
 
 header('Content-Type: text/html; charset=UTF-8');
-$individual = Individual::getInstance(Filter::get('pid', WT_REGEX_XREF));
+$individual = Individual::getInstance(Filter::get('pid', WT_REGEX_XREF), $WT_TREE);
 if (!$individual || !$individual->canShow()) {
 	return I18N::translate('Private');
 }

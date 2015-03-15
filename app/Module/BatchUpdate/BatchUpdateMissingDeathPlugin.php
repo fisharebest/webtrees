@@ -47,7 +47,9 @@ class BatchUpdateMissingDeathPlugin extends BatchUpdateBasePlugin {
 	 * @return boolean
 	 */
 	public function doesRecordNeedUpdate($xref, $gedrec) {
-		return !preg_match('/\n1 (' . WT_EVENTS_DEAT . ')/', $gedrec) && Individual::getInstance($xref)->isDead();
+		global $WT_TREE;
+
+		return !preg_match('/\n1 (' . WT_EVENTS_DEAT . ')/', $gedrec) && Individual::getInstance($xref, $WT_TREE)->isDead();
 	}
 
 	/**

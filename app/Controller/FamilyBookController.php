@@ -312,10 +312,12 @@ class FamilyBookController extends ChartController {
 	 * @return integer
 	 */
 	private function maxDescendencyGenerations($pid, $depth) {
+		global $WT_TREE;
+
 		if ($depth > $this->generations) {
 			return $depth;
 		}
-		$person = Individual::getInstance($pid);
+		$person = Individual::getInstance($pid, $WT_TREE);
 		if (is_null($person)) {
 			return $depth;
 		}

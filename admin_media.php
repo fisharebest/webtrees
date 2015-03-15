@@ -169,7 +169,7 @@ case 'load_json':
 
 		$data = array();
 		foreach ($rows as $row) {
-			$media = Media::getInstance($row->xref, $row->gedcom_id);
+			$media = Media::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
 			$data[] = array(
 				mediaFileInfo($media_folder, $media_path, $row->media_path),
 				$media->displayImage(),
@@ -233,7 +233,7 @@ case 'load_json':
 
 		$data = array();
 		foreach ($rows as $row) {
-			$media = Media::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$media = Media::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
 			$data[] = array(
 				GedcomTag::getLabelValue('URL', $row->m_filename),
 				$media->displayImage(),
@@ -350,7 +350,7 @@ function all_media_folders() {
 		" WHERE setting_name='MEDIA_DIRECTORY'" .
 		" GROUP BY 1" .
 		" ORDER BY 1"
-	)->execute(array(WT_GED_ID))->fetchAssoc();
+	)->execute(array())->fetchAssoc();
 }
 
 /**
@@ -517,41 +517,24 @@ function mediaObjectInfo(Media $media) {
 	$gedcom = $media->getTree()->getName();
 	$name   = $media->getFullName();
 
-	$html   =
-		'<b>' . $name . '</b>' .
-		'<div><i>' . Filter::escapeHtml($media->getNote()) . '</i></div>' .
-		'<br>' .
-		'<a href="' . $media->getHtmlUrl() . '">' . I18N::translate('View') . '</a>' .
-		' - ' .
-		'<a onclick="window.open(\'addmedia.php?action=editmedia&amp;pid=' . $xref . '&ged=' . Filter::escapeJs($gedcom) . '\', \'_blank\', edit_window_specs)" href="#">' . I18N::Translate('Edit') . '</a>' .
-		' - ' .
-		'<a onclick="return delete_media(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($media->getFullName()))) . '\', \'' . $media->getXref() . '\', \'' . Filter::escapeJs($gedcom) . '\');" href="#">' . I18N::Translate('Delete') . '</a>' .
-		' - ';
+	$html =
+		'<div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-pencil"></i> <span class="caret"></span></button><ul class="dropdown-menu" role="menu">' .
+		'<li><a href="#" onclick="window.open(\'addmedia.php?action=editmedia&amp;pid=' . $xref . '&ged=' . Filter::escapeJs($gedcom) . '\', \'_blank\', edit_window_specs);"><i class="fa fa-fw fa-pencil"></i> ' . I18N::translate('Edit') . '</a></li>' .
+		'<li><a href="#" onclick="return delete_media(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($media->getFullName()))) . '\', \'' . $media->getXref() . '\', \'' . Filter::escapeJs($gedcom) . '\');"><i class="fa fa-fw fa-trash-o"></i> ' . I18N::translate('Delete') . '</a></li>' .
+		'<li><a href="#" onclick="return ilinkitem(\'' . $media->getXref(). '\', \'person\', WT_GEDCOM)"><i class="fa fa-fw fa-link"></i> ' . I18N::translate('Link this media object to an individual') . '</a></li>' .
+		'<li><a href="#" onclick="return ilinkitem(\'' . $media->getXref(). '\', \'family\', WT_GEDCOM)"><i class="fa fa-fw fa-link"></i> ' . I18N::translate('Link this media object to a family') . '</a></li>' .
+		'<li><a href="#" onclick="return ilinkitem(\'' . $media->getXref(). '\', \'source\', WT_GEDCOM)"><i class="fa fa-fw fa-link"></i> ' . I18N::translate('Link this media object to a source') . '</a></li>';
 
 	if (Module::getModuleByName('GEDFact_assistant')) {
-		$html .= '<a onclick="return ilinkitem(\'' . $xref . '\', \'manage\', \'' . $gedcom . '\')" href="#">' . I18N::Translate('Manage links') . '</a>';
-	} else {
-		$classSuffix = I18N::direction() === 'rtl' ? '_rtl' : '';
-
-		$menu = new Menu(I18N::translate('Manage links'));
-		$menu->addClass('', 'submenu');
-		$submenu = new Menu(I18N::translate('Link this media object to an individual'));
-		$submenu->addClass("submenuitem" . $classSuffix);
-		$submenu->setOnclick("return ilinkitem('$xref', 'person', '$gedcom')");
-		$menu->addSubmenu($submenu);
-
-		$submenu = new Menu(I18N::translate('Link this media object to a family'));
-		$submenu->addClass("submenuitem" . $classSuffix);
-		$submenu->setOnclick("return ilinkitem('$xref', 'family', '$gedcom')");
-		$menu->addSubmenu($submenu);
-
-		$submenu = new Menu(I18N::translate('Link this media object to a source'));
-		$submenu->addClass("submenuitem" . $classSuffix);
-		$submenu->setOnclick("return ilinkitem('$xref', 'source', '$gedcom')");
-		$menu->addSubmenu($submenu);
-		$html .= '<div style="display:inline-block;">' . $menu->getMenu() . '</div>';
+		$html .= '<li><a href="#" onclick="return ilinkitem(\'' . $media->getXref(). '\', \'manage\', WT_GEDCOM)"><i class="fa fa-fw fa-link"></i> ' . I18N::translate('Manage links') . '</a></li>';
 	}
-	$html .= '<br><br>';
+
+	$html .=
+		'</ul></div> ' .
+		'<b><a href="' . $media->getHtmlUrl() . '">' . $media->getFullName() . '</a></b>' .
+		'<div><i>' . Filter::escapeHtml($media->getNote()) . '</i></div>';
+
+	$html .= '<br>';
 
 	$linked = array();
 	foreach ($media->linkedIndividuals('OBJE') as $link) {
@@ -578,7 +561,7 @@ function mediaObjectInfo(Media $media) {
 		}
 		$html .= '</ul>';
 	} else {
-		$html .= '<div class="error">' . I18N::translate('This media object is not linked to any other record.') . '</div>';
+		$html .= '<div class="alert alert-danger">' . I18N::translate('This media object is not linked to any other record.') . '</div>';
 	}
 
 	return $html;

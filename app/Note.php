@@ -28,14 +28,14 @@ class Note extends GedcomRecord {
 	 * we just receive the XREF.  For bulk records (such as lists
 	 * and search results) we can receive the GEDCOM data as well.
 	 *
-	 * @param string       $xref
-	 * @param integer|null $gedcom_id
-	 * @param string|null  $gedcom
+	 * @param string      $xref
+	 * @param Tree        $tree
+	 * @param string|null $gedcom
 	 *
 	 * @return Note|null
 	 */
-	public static function getInstance($xref, $gedcom_id = WT_GED_ID, $gedcom = null) {
-		$record = parent::getInstance($xref, $gedcom_id, $gedcom);
+	public static function getInstance($xref, Tree $tree, $gedcom = null) {
+		$record = parent::getInstance($xref, $tree, $gedcom);
 
 		if ($record instanceof Note) {
 			return $record;
@@ -66,7 +66,7 @@ class Note extends GedcomRecord {
 			$this->xref, $this->tree->getTreeId()
 		))->fetchOneColumn();
 		foreach ($linked_ids as $linked_id) {
-			$linked_record = GedcomRecord::getInstance($linked_id);
+			$linked_record = GedcomRecord::getInstance($linked_id, $this->tree);
 			if ($linked_record && !$linked_record->canShow($access_level)) {
 				return false;
 			}

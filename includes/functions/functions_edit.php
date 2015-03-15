@@ -148,7 +148,7 @@ function edit_language_checkboxes($parameter_name, $accepted_languages) {
 	$CHUNK_SIZE = 4; // Make this a constant when moved to a class
 
 	$html = '<table class="language-selection">';
-	foreach (array_chunk(I18N::installedLanguages(), $CHUNK_SIZE, true) as $chunk) {
+	foreach (array_chunk(I18N::preferedLanguages(), $CHUNK_SIZE, true) as $chunk) {
 		$html .= '<tr>';
 		foreach ($chunk as $locale => $language) {
 			$checked = in_array($locale, $accepted_languages) ? 'checked' : '';
@@ -171,10 +171,10 @@ function edit_language_checkboxes($parameter_name, $accepted_languages) {
  */
 function edit_field_access_level($name, $selected = '', $extra = '') {
 	$ACCESS_LEVEL = array(
-		WT_PRIV_PUBLIC=> I18N::translate('Show to visitors'),
-		WT_PRIV_USER  => I18N::translate('Show to members'),
-		WT_PRIV_NONE  => I18N::translate('Show to managers'),
-		WT_PRIV_HIDE  => I18N::translate('Hide from everyone')
+		Auth::PRIV_PRIVATE=> I18N::translate('Show to visitors'),
+		Auth::PRIV_USER  => I18N::translate('Show to members'),
+		Auth::PRIV_NONE  => I18N::translate('Show to managers'),
+		Auth::PRIV_HIDE  => I18N::translate('Hide from everyone')
 	);
 	return select_edit_control($name, $ACCESS_LEVEL, null, $selected, $extra);
 }
@@ -230,7 +230,12 @@ function edit_field_contact($name, $selected = '', $extra = '') {
  * @return string
  */
 function edit_field_language($name, $selected = '', $extra = '') {
-	return select_edit_control($name, I18N::installedLanguages(), null, $selected, $extra);
+	$languages = array();
+	foreach (I18N::activeLocales() as $locale) {
+		$languages[$locale->languageTag()] = $locale->endonym();
+	}
+
+	return select_edit_control($name, $languages, null, $selected, $extra);
 }
 
 /**
@@ -515,8 +520,6 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 		case 'NOTE':
 			if ($islink) {
 				echo help_link('edit_add_SHARED_NOTE');
-			} else {
-				echo help_link($fact);
 			}
 			break;
 		case 'NAME':
@@ -536,20 +539,13 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 		case 'AGNC':
 		case 'CAUS':
 		case 'DATE':
-		case 'EMAI':
-		case 'EMAIL':
-		case 'EMAL':
-		case '_EMAIL':
-		case 'FAX':
 		case 'OBJE':
 		case 'PAGE':
 		case 'PEDI':
-		case 'PHON':
 		case 'PLAC':
 		case 'RELA':
 		case 'RESN':
 		case 'ROMN':
-		case 'SEX':
 		case 'SOUR':
 		case 'STAT':
 		case 'SURN':
@@ -584,7 +580,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 
 	// retrieve linked NOTE
 	if ($fact == "NOTE" && $islink) {
-		$note1 = Note::getInstance($value);
+		$note1 = Note::getInstance($value, $WT_TREE);
 		if ($note1) {
 			$noterec = $note1->getGedcom();
 			preg_match("/$value/i", $noterec, $notematch);
@@ -889,31 +885,31 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 		switch ($fact) {
 		case 'ASSO':
 		case '_ASSO':
-			$tmp = Individual::getInstance($value);
+			$tmp = Individual::getInstance($value, $WT_TREE);
 			if ($tmp) {
 				echo ' ', $tmp->getFullname();
 			}
 			break;
 		case 'SOUR':
-			$tmp = Source::getInstance($value);
+			$tmp = Source::getInstance($value, $WT_TREE);
 			if ($tmp) {
 				echo ' ', $tmp->getFullname();
 			}
 			break;
 		case 'NOTE':
-			$tmp = Note::getInstance($value);
+			$tmp = Note::getInstance($value, $WT_TREE);
 			if ($tmp) {
 				echo ' ', $tmp->getFullname();
 			}
 			break;
 		case 'OBJE':
-			$tmp = Media::getInstance($value);
+			$tmp = Media::getInstance($value, $WT_TREE);
 			if ($tmp) {
 				echo ' ', $tmp->getFullname();
 			}
 			break;
 		case 'REPO':
-			$tmp = Repository::getInstance($value);
+			$tmp = Repository::getInstance($value, $WT_TREE);
 			if ($tmp) {
 				echo ' ', $tmp->getFullname();
 			}
@@ -1016,7 +1012,7 @@ function print_add_layer($tag, $level = 2) {
 		break;
 
 	case 'OBJE':
-		if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
+		if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($WT_TREE)) {
 			echo "<a href=\"#\" onclick=\"return expand_layer('newobje');\"><i id=\"newobje_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a new media object'), '</a>';
 			echo help_link('OBJE');
 			echo '<br>';
@@ -1471,7 +1467,7 @@ function create_add_form($fact) {
  * @return string
  */
 function create_edit_form(GedcomRecord $record, Fact $fact) {
-	global $date_and_time, $tags;
+	global $date_and_time, $tags, $WT_TREE;
 
 	$pid = $record->getXref();
 
@@ -1540,7 +1536,7 @@ function create_edit_form(GedcomRecord $record, Fact $fact) {
 
 		if ($type != "DATA" && $type != "CONT") {
 			$tags[] = $type;
-			$person = Individual::getInstance($pid);
+			$person = Individual::getInstance($pid, $WT_TREE);
 			$subrecord = $level . ' ' . $type . ' ' . $text;
 			if ($inSource && $type == "DATE") {
 				add_simple_tag($subrecord, '', GedcomTag::getLabel($label, $person));
@@ -1550,7 +1546,7 @@ function create_edit_form(GedcomRecord $record, Fact $fact) {
 			} elseif ($type == 'STAT') {
 				add_simple_tag($subrecord, $level1type, GedcomTag::getLabel($label, $person));
 			} elseif ($level0type == 'REPO') {
-				$repo = Repository::getInstance($pid);
+				$repo = Repository::getInstance($pid, $WT_TREE);
 				add_simple_tag($subrecord, $level0type, GedcomTag::getLabel($label, $repo));
 			} else {
 				add_simple_tag($subrecord, $level0type, GedcomTag::getLabel($label, $person));

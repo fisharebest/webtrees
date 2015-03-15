@@ -32,7 +32,7 @@ class UpcomingAnniversariesModule extends Module implements ModuleBlockInterface
 
 	/** {@inheritdoc} */
 	public function getBlock($block_id, $template = true, $cfg = null) {
-		global $ctype;
+		global $ctype, $WT_TREE;
 
 		$days      = get_block_setting($block_id, 'days', '7');
 		$filter    = get_block_setting($block_id, 'filter', '1');
@@ -54,7 +54,7 @@ class UpcomingAnniversariesModule extends Module implements ModuleBlockInterface
 
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
-		if ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype === 'user' && Auth::check()) {
+		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
 			$title = '<i class="icon-admin" title="' . I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
 		} else {
 			$title = '';
@@ -122,7 +122,7 @@ class UpcomingAnniversariesModule extends Module implements ModuleBlockInterface
 		echo I18N::translate('Number of days to show');
 		echo '</td><td class="optionbox">';
 		echo '<input type="text" name="days" size="2" value="', $days, '">';
-		echo ' <em>', I18N::plural('maximum %d day', 'maximum %d days', 30, 30), '</em>';
+		echo ' <em>', I18N::plural('maximum %s day', 'maximum %s days', 30, I18N::number(30)), '</em>';
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';

@@ -74,13 +74,13 @@ function print_family_parents(Family $family, $sosa = 0, $label = '', $parid = '
 	if ($husb) {
 		echo '<a name="', $husb->getXref(), '"></a>';
 	} else {
-		$husb = new Individual('M', "0 @M@ INDI\n1 SEX M", null, WT_GED_ID);
+		$husb = new Individual('M', "0 @M@ INDI\n1 SEX M", null, $family->getTree());
 	}
 	$wife = $family->getWife();
 	if ($wife) {
 		echo '<a name="', $wife->getXref(), '"></a>';
 	} else {
-		$wife = new Individual('F', "0 @F@ INDI\n1 SEX F", null, WT_GED_ID);
+		$wife = new Individual('F', "0 @F@ INDI\n1 SEX F", null, $family->getTree());
 	}
 
 	if ($sosa) {
@@ -128,7 +128,7 @@ function print_family_parents(Family $family, $sosa = 0, $label = '', $parid = '
 				print_sosa_number(trim(substr($label, 0, -3), ".") . ".");
 			}
 			echo "<td valign=\"top\">";
-			print_pedigree_person(Individual::getInstance($hfam->getHusband()->getXref()), $show_full);
+			print_pedigree_person($hfam->getHusband(), $show_full);
 			echo "</td></tr></table>";
 		} elseif ($hfam && !$hfam->getHusband()) {
 			// Empty box for grandfather
@@ -141,7 +141,7 @@ function print_family_parents(Family $family, $sosa = 0, $label = '', $parid = '
 	}
 	if ($hfam && ($sosa != -1)) {
 		echo '<td valign="middle" rowspan="2">';
-		print_url_arrow(($sosa == 0 ? '?famid=' . $hfam->getXref() . '&amp;ged=' . WT_GEDURL : '#' . $hfam->getXref()), $hfam->getXref(), 1);
+		print_url_arrow(($sosa == 0 ? '?famid=' . $hfam->getXref() . '&amp;ged=' . $hfam->getTree()->getNameUrl() : '#' . $hfam->getXref()), $hfam->getXref(), 1);
 		echo '</td>';
 	}
 	if ($hfam) {
@@ -156,7 +156,7 @@ function print_family_parents(Family $family, $sosa = 0, $label = '', $parid = '
 				print_sosa_number(trim(substr($label, 0, -3), ".") . ".");
 			}
 			echo '<td valign="top">';
-			print_pedigree_person(Individual::getInstance($hfam->getWife()->getXref()), $show_full);
+			print_pedigree_person($hfam->getWife(), $show_full);
 			echo '</td></tr></table>';
 		} elseif ($hfam && !$hfam->getWife()) {
 			// Empty box for grandmother
@@ -219,7 +219,7 @@ function print_family_parents(Family $family, $sosa = 0, $label = '', $parid = '
 				print_sosa_number(trim(substr($label, 0, -3), ".") . ".");
 			}
 			echo "<td valign=\"top\">";
-			print_pedigree_person(Individual::getInstance($hfam->getHusband()->getXref()), $show_full);
+			print_pedigree_person($hfam->getHusband(), $show_full);
 			echo "</td></tr></table>";
 		} elseif ($hfam && !$hfam->getHusband()) {
 			// Empty box for grandfather
@@ -232,7 +232,7 @@ function print_family_parents(Family $family, $sosa = 0, $label = '', $parid = '
 	}
 	if ($hfam && ($sosa != -1)) {
 		echo '<td valign="middle" rowspan="2">';
-		print_url_arrow(($sosa == 0 ? '?famid=' . $hfam->getXref() . '&amp;ged=' . WT_GEDURL : '#' . $hfam->getXref()), $hfam->getXref(), 1);
+		print_url_arrow(($sosa == 0 ? '?famid=' . $hfam->getXref() . '&amp;ged=' . $hfam->getTree()->getNameUrl() : '#' . $hfam->getXref()), $hfam->getXref(), 1);
 		echo '</td>';
 	}
 	if ($hfam) {
@@ -247,7 +247,7 @@ function print_family_parents(Family $family, $sosa = 0, $label = '', $parid = '
 				print_sosa_number(trim(substr($label, 0, -3), ".") . ".");
 			}
 			echo "<td valign=\"top\">";
-			print_pedigree_person(Individual::getInstance($hfam->getWife()->getXref()), $show_full);
+			print_pedigree_person($hfam->getWife(), $show_full);
 			echo "</td></tr></table>";
 		} elseif ($hfam && !$hfam->getWife()) {
 			// Empty box for grandmother
@@ -296,7 +296,7 @@ function print_family_children(Family $family, $childid = '', $sosa = 0, $label 
 	}
 	echo '</span>';
 
-	if ($sosa == 0 && WT_USER_CAN_EDIT) {
+	if ($sosa == 0 && Auth::isEditor($family->getTree())) {
 		echo '<br>';
 		echo "<a href=\"#\" onclick=\"return add_child_to_family('", $family->getXref(), "', 'U');\">" . I18N::translate('Add a child to this family') . "</a>";
 		echo ' <a class="icon-sex_m_15x15" href="#" onclick="return add_child_to_family(\'', $family->getXref(), '\', \'M\');" title="', I18N::translate('son'), '"></a>';
@@ -423,16 +423,17 @@ function print_family_children(Family $family, $childid = '', $sosa = 0, $label 
  * @param integer $show_full large or small box
  */
 function print_sosa_family($famid, $childid, $sosa, $label = '', $parid = '', $gparid = '', $show_cousins = 0, $show_full = 1) {
+	global $WT_TREE;
 
 	echo '<hr>';
 	echo '<p style="page-break-before: always;">';
 	if (!empty($famid)) {
 		echo '<a name="', $famid, '"></a>';
 	}
-	print_family_parents(Family::getInstance($famid), $sosa, $label, $parid, $gparid, $show_full);
+	print_family_parents(Family::getInstance($famid, $WT_TREE), $sosa, $label, $parid, $gparid, $show_full);
 	echo '<br>';
 	echo '<table><tr><td valign="top">';
-	print_family_children(Family::getInstance($famid), $childid, $sosa, $label, $show_cousins, $show_full);
+	print_family_children(Family::getInstance($famid, $WT_TREE), $childid, $sosa, $label, $show_cousins, $show_full);
 	echo '</td></tr></table>';
 	echo '<br>';
 }
@@ -495,6 +496,7 @@ function get_sosa_name($sosa) {
  * @param integer $show_full large or small box
  */
 function print_cousins($famid, $show_full = 1) {
+	global $WT_TREE;
 
 	if ($show_full) {
 		$bheight = Theme::theme()->parameter('chart-box-y');
@@ -502,7 +504,7 @@ function print_cousins($famid, $show_full = 1) {
 		$bheight = Theme::theme()->parameter('compact-chart-box-y');
 	}
 
-	$family = Family::getInstance($famid);
+	$family = Family::getInstance($famid, $WT_TREE);
 	$fchildren = $family->getChildren();
 
 	$kids = count($fchildren);

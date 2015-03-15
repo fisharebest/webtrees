@@ -32,7 +32,7 @@ class TopPageViewsModule extends Module implements ModuleBlockInterface {
 
 	/** {@inheritdoc} */
 	public function getBlock($block_id, $template = true, $cfg = null) {
-		global $ctype;
+		global $ctype, $WT_TREE;
 
 		$num             = get_block_setting($block_id, 'num', '10');
 		$count_placement = get_block_setting($block_id, 'count_placement', 'before');
@@ -48,7 +48,7 @@ class TopPageViewsModule extends Module implements ModuleBlockInterface {
 
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
-		if ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype === 'user' && Auth::check()) {
+		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
 			$title = '<i class="icon-admin" title="' . I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
 		} else {
 			$title = '';
@@ -63,7 +63,7 @@ class TopPageViewsModule extends Module implements ModuleBlockInterface {
 			" WHERE gedcom_id = :tree_id AND page_name IN ('individual.php','family.php','source.php','repo.php','note.php','mediaviewer.php')" .
 			" ORDER BY page_count DESC LIMIT :limit"
 		)->execute(array(
-			'tree_id' => WT_GED_ID,
+			'tree_id' => $WT_TREE->getTreeId(),
 			'limit'   => (int) $num,
 		))->FetchAssoc();
 
@@ -74,7 +74,7 @@ class TopPageViewsModule extends Module implements ModuleBlockInterface {
 			$content .= "<table>";
 		}
 		foreach ($top10 as $id=>$count) {
-			$record = GedcomRecord::getInstance($id);
+			$record = GedcomRecord::getInstance($id, $WT_TREE);
 			if ($record && $record->canShow()) {
 				$content .= '<tr valign="top">';
 				if ($count_placement == 'before') {

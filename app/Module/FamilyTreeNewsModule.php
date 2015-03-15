@@ -32,7 +32,7 @@ class FamilyTreeNewsModule extends Module implements ModuleBlockInterface {
 
 	/** {@inheritdoc} */
 	public function getBlock($block_id, $template = true, $cfg = null) {
-		global $ctype;
+		global $ctype, $WT_TREE;
 
 		switch (Filter::get('action')) {
 		case 'deletenews':
@@ -63,11 +63,11 @@ class FamilyTreeNewsModule extends Module implements ModuleBlockInterface {
 		}
 		$usernews = Database::prepare(
 			"SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE gedcom_id=? ORDER BY updated DESC"
-		)->execute(array(WT_GED_ID))->fetchAll();
+		)->execute(array($WT_TREE->getTreeId()))->fetchAll();
 
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
-		if ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype === 'user' && Auth::check()) {
+		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
 			$title = '<i class="icon-admin" title="' . I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
 		} else {
 			$title = '';
@@ -99,14 +99,14 @@ class FamilyTreeNewsModule extends Module implements ModuleBlockInterface {
 			}
 			$content .= $news->body;
 			// Print Admin options for this News item
-			if (WT_USER_GEDCOM_ADMIN) {
+			if (Auth::isManager($WT_TREE)) {
 				$content .= '<hr>' . '<a href="#" onclick="window.open(\'editnews.php?news_id=\'+' . $news->news_id . ', \'_blank\', news_window_specs); return false;">' . I18N::translate('Edit') . '</a> | ' . '<a href="index.php?action=deletenews&amp;news_id=' . $news->news_id . '&amp;ctype=' . $ctype . '" onclick="return confirm(\'' . I18N::translate('Are you sure you want to delete this news article?') . "');\">" . I18N::translate('Delete') . '</a><br>';
 			}
 			$content .= '</div>';
 		}
 		$printedAddLink = false;
-		if (WT_USER_GEDCOM_ADMIN) {
-			$content .= "<a href=\"#\" onclick=\"window.open('editnews.php?gedcom_id='+WT_GED_ID, '_blank', news_window_specs); return false;\">" . I18N::translate('Add a news article') . "</a>";
+		if (Auth::isManager($WT_TREE)) {
+			$content .= "<a href=\"#\" onclick=\"window.open('editnews.php?gedcom_id=" . $WT_TREE->getTreeId() . "', '_blank', news_window_specs); return false;\">" . I18N::translate('Add a news article') . "</a>";
 			$printedAddLink = true;
 		}
 		if ($limit == 'date' || $limit == 'count') {
@@ -151,7 +151,7 @@ class FamilyTreeNewsModule extends Module implements ModuleBlockInterface {
 
 		echo
 			'<tr><td class="descriptionbox wrap width33">',
-			I18N::translate('Limit display by:'), help_link('gedcom_news_limit'),
+			/* I18N: Limit display by [age/number] */ I18N::translate('Limit display by'),
 			'</td><td class="optionbox"><select name="limit"><option value="nolimit" ',
 			($limit == 'nolimit' ? 'selected' : '') . ">",
 			I18N::translate('No limit') . "</option>",
@@ -160,7 +160,7 @@ class FamilyTreeNewsModule extends Module implements ModuleBlockInterface {
 			'</select></td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo I18N::translate('Limit:'), help_link('gedcom_news_flag');
+		echo I18N::translate('Limit');
 		echo '</td><td class="optionbox"><input type="text" name="flag" size="4" maxlength="4" value="' . $flag . '"></td></tr>';
 	}
 }

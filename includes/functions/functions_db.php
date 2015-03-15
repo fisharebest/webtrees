@@ -28,75 +28,84 @@ namespace Fisharebest\Webtrees;
 function fetch_all_links($xref, $gedcom_id) {
 	return
 		Database::prepare(
-			"SELECT l_from FROM `##link` WHERE l_file=? AND l_to=?" .
+			"SELECT l_from FROM `##link` WHERE l_file = ? AND l_to = ?" .
 			" UNION " .
-			"SELECT xref FROM `##change` WHERE status='pending' AND gedcom_id=? AND new_gedcom LIKE" .
+			"SELECT xref FROM `##change` WHERE status = 'pending' AND gedcom_id = ? AND new_gedcom LIKE" .
 			" CONCAT('%@', ?, '@%')"
-		)
-		->execute(array($gedcom_id, $xref, $gedcom_id, $xref))
-		->fetchOneColumn();
+		)->execute(array(
+			$gedcom_id,
+			$xref,
+			$gedcom_id,
+			$xref
+		))->fetchOneColumn();
 }
 
 /**
  * Get a list of all the sources.
  *
- * @param integer $ged_id
+ * @param Tree $tree
  *
  * @return Source[] array
  */
-function get_source_list($ged_id) {
-	$rows =
-		Database::prepare("SELECT s_id AS xref, s_file AS gedcom_id, s_gedcom AS gedcom FROM `##sources` WHERE s_file=?")
-		->execute(array($ged_id))
-		->fetchAll();
+function get_source_list(Tree $tree) {
+	$rows = Database::prepare(
+		"SELECT s_id AS xref, s_gedcom AS gedcom FROM `##sources` WHERE s_file = :tree_id"
+	)->execute(array(
+		'tree_id' => $tree->getTreeId(),
+	))->fetchAll();
 
 	$list = array();
 	foreach ($rows as $row) {
-		$list[] = Source::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		$list[] = Source::getInstance($row->xref, $tree, $row->gedcom);
 	}
 	usort($list, __NAMESPACE__ . '\GedcomRecord::compare');
+
 	return $list;
 }
 
 /**
  * Get a list of all the repositories.
  *
- * @param integer $ged_id
+ * @param Tree $tree
  *
  * @return Repository[] array
  */
-function get_repo_list($ged_id) {
-	$rows =
-		Database::prepare("SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom FROM `##other` WHERE o_type='REPO' AND o_file=?")
-		->execute(array($ged_id))
-		->fetchAll();
+function get_repo_list(Tree $tree) {
+	$rows = Database::prepare(
+			"SELECT o_id AS xref, o_gedcom AS gedcom FROM `##other` WHERE o_type = 'REPO' AND o_file = ?"
+		)->execute(array(
+			$tree->getTreeId(),
+		))->fetchAll();
 
 	$list = array();
 	foreach ($rows as $row) {
-		$list[] = Repository::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		$list[] = Repository::getInstance($row->xref, $tree, $row->gedcom);
 	}
 	usort($list, __NAMESPACE__ . '\GedcomRecord::compare');
+
 	return $list;
 }
 
 /**
  * Get a list of all the shared notes.
  *
- * @param integer $ged_id
+ * @param Tree $tree
  *
  * @return Note[] array
  */
-function get_note_list($ged_id) {
-	$rows =
-		Database::prepare("SELECT o_id AS xref, o_file AS gedcom_id, o_gedcom AS gedcom FROM `##other` WHERE o_type='NOTE' AND o_file=?")
-		->execute(array($ged_id))
-		->fetchAll();
+function get_note_list(Tree $tree) {
+	$rows = Database::prepare(
+		"SELECT o_id AS xref, o_gedcom AS gedcom FROM `##other` WHERE o_type = 'NOTE' AND o_file = :tree_id"
+	)->execute(array(
+		'tree_id' => $tree->getTreeId(),
+	))->fetchAll();
 
 	$list = array();
 	foreach ($rows as $row) {
-		$list[] = Note::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		$list[] = Note::getInstance($row->xref, $tree, $row->gedcom);
 	}
 	usort($list, __NAMESPACE__ . '\GedcomRecord::compare');
+
 	return $list;
 }
 
@@ -134,7 +143,7 @@ function search_indis(array $query, array $trees) {
 	$rows = Database::prepare($sql)->execute($args)->fetchAll();
 	foreach ($rows as $row) {
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
-		$record = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		$record = Individual::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
 		// Ignore non-genealogy data
 		$gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|REFN|RESN) .*/', '', $record->getGedcom());
 		// Ignore links and tags
@@ -182,7 +191,7 @@ function search_indis_names(array $query, array $trees) {
 	$list = array();
 	$rows = Database::prepare($sql)->execute($args)->fetchAll();
 	foreach ($rows as $row) {
-		$indi = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		$indi = Individual::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
 		// The individual may have private names - and the DB search may have found it.
 		if ($indi->canShowName()) {
 			foreach ($indi->getAllNames() as $num => $name) {
@@ -309,7 +318,7 @@ function search_indis_soundex($soundex, $lastname, $firstname, $place, array $tr
 	$list = array();
 	$rows = Database::prepare($sql)->execute($args)->fetchAll();
 	foreach ($rows as $row) {
-		$indi = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		$indi = Individual::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
 		if ($indi->canShowName()) {
 			$list[] = $indi;
 		}
@@ -327,62 +336,17 @@ function search_indis_soundex($soundex, $lastname, $firstname, $place, array $tr
  * @return string[] List of XREFs of records with changes
  */
 function get_recent_changes($jd = 0, $allgeds = false) {
+	global $WT_TREE;
+
 	$sql = "SELECT d_gid FROM `##dates` WHERE d_fact='CHAN' AND d_julianday1>=?";
 	$vars = array($jd);
 	if (!$allgeds) {
 		$sql .= " AND d_file=?";
-		$vars[] = WT_GED_ID;
+		$vars[] = $WT_TREE->getTreeId();
 	}
 	$sql .= " ORDER BY d_julianday1 DESC";
 
 	return Database::prepare($sql)->execute($vars)->fetchOneColumn();
-}
-
-/**
- * Seach for individuals with events on a given day.
- *
- * @param integer $day
- * @param integer $month
- * @param integer $year
- * @param string  $facts
- *
- * @return Individual[]
- */
-function search_indis_dates($day, $month, $year, $facts) {
-	$sql = "SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom FROM `##individuals` JOIN `##dates` ON i_id=d_gid AND i_file=d_file WHERE i_file=?";
-	$vars = array(WT_GED_ID);
-	if ($day) {
-		$sql .= " AND d_day=?";
-		$vars[] = $day;
-	}
-	if ($month) {
-		$sql .= " AND d_month=?";
-		$vars[] = $month;
-	}
-	if ($year) {
-		$sql .= " AND d_year=?";
-		$vars[] = $year;
-	}
-	if ($facts) {
-		$facts = preg_split('/[, ;]+/', $facts);
-		foreach ($facts as $key=>$value) {
-			if ($value[0] == '!') {
-				$facts[$key] = "d_fact!=?";
-				$vars[] = substr($value, 1);
-			} else {
-				$facts[$key] = "d_fact=?";
-				$vars[] = $value;
-			}
-		}
-		$sql .= ' AND ' . implode(' AND ', $facts);
-	}
-
-	$list = array();
-	$rows = Database::prepare($sql)->execute($vars)->fetchAll();
-	foreach ($rows as $row) {
-		$list[] = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
-	}
-	return $list;
 }
 
 /**
@@ -419,7 +383,7 @@ function search_fams(array $query, array $trees) {
 	$rows = Database::prepare($sql)->execute($args)->fetchAll();
 	foreach ($rows as $row) {
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
-		$record = Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		$record = Family::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
 		// Ignore non-genealogy data
 		$gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|REFN|RESN) .*/', '', $record->getGedcom());
 		// Ignore links and tags
@@ -480,7 +444,7 @@ function search_fams_names(array $query, array $trees) {
 	$list = array();
 	$rows = Database::prepare($sql)->execute($args)->fetchAll();
 	foreach ($rows as $row) {
-		$indi = Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		$indi = Family::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
 		if ($indi->canShowName()) {
 			$list[] = $indi;
 		}
@@ -523,7 +487,7 @@ function search_sources($query, $trees) {
 	$rows = Database::prepare($sql)->execute($args)->fetchAll();
 	foreach ($rows as $row) {
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
-		$record = Source::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		$record = Source::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
 		// Ignore non-genealogy data
 		$gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|REFN|RESN) .*/', '', $record->getGedcom());
 		// Ignore links and tags
@@ -577,7 +541,7 @@ function search_notes(array $query, array $trees) {
 	$rows = Database::prepare($sql)->execute($args)->fetchAll();
 	foreach ($rows as $row) {
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
-		$record = Note::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		$record = Note::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
 		// Ignore non-genealogy data
 		$gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|REFN|RESN) .*/', '', $record->getGedcom());
 		// Ignore links and tags
@@ -631,7 +595,7 @@ function search_repos(array $query, array $trees) {
 	$rows = Database::prepare($sql)->execute($args)->fetchAll();
 	foreach ($rows as $row) {
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
-		$record = Repository::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+		$record = Repository::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
 		// Ignore non-genealogy data
 		$gedrec = preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|REFN|RESN) .*/', '', $record->getGedcom());
 		// Ignore links and tags
@@ -659,9 +623,11 @@ function search_repos(array $query, array $trees) {
  * @return string
  */
 function find_rin_id($rin) {
+	global $WT_TREE;
+
 	$xref =
 		Database::prepare("SELECT i_id FROM `##individuals` WHERE i_rin=? AND i_file=?")
-		->execute(array($rin, WT_GED_ID))
+		->execute(array($rin, $WT_TREE->getTreeId()))
 		->fetchOne();
 
 	return $xref ? $xref : $rin;
@@ -682,7 +648,7 @@ function get_common_surnames($min, Tree $tree) {
 	$COMMON_NAMES_ADD    = $tree->getPreference('COMMON_NAMES_ADD');
 	$COMMON_NAMES_REMOVE = $tree->getPreference('COMMON_NAMES_REMOVE');
 
-	$topsurns = get_top_surnames(WT_GED_ID, $min, 0);
+	$topsurns = get_top_surnames($tree->getTreeId(), $min, 0);
 	foreach (explode(',', $COMMON_NAMES_ADD) as $surname) {
 		if ($surname && !array_key_exists($surname, $topsurns)) {
 			$topsurns[$surname] = $min;
@@ -748,13 +714,13 @@ function get_top_surnames($ged_id, $min, $max) {
  * Get a list of events whose anniversary occured on a given julian day.
  * Used on the on-this-day/upcoming blocks and the day/month calendar views.
  *
- * @param integer $jd      the julian day
- * @param string  $facts   restrict the search to just these facts or leave blank for all
- * @param integer $ged_id  the id of the gedcom to search
+ * @param integer $jd    the julian day
+ * @param string  $facts restrict the search to just these facts or leave blank for all
+ * @param Tree    $tree  the tree to search
  *
  * @return Fact[]
  */
-function get_anniversary_events($jd, $facts = '', $ged_id = WT_GED_ID) {
+function get_anniversary_events($jd, $facts, Tree $tree) {
 	$found_facts = array();
 	foreach (array(
 		new GregorianDate($jd),
@@ -766,16 +732,16 @@ function get_anniversary_events($jd, $facts = '', $ged_id = WT_GED_ID) {
 	) as $anniv) {
 		// Build a SQL where clause to match anniversaries in the appropriate calendar.
 		$ind_sql =
-			"SELECT DISTINCT 'INDI' AS type, i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact" .
+			"SELECT DISTINCT i_id AS xref, i_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact" .
 			" FROM `##dates` JOIN `##individuals` ON d_gid = i_id AND d_file = i_file" .
 			" WHERE d_type = :type AND d_file = :tree_id";
 		$fam_sql =
-			"SELECT DISTINCT 'FAM'  AS type, f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact" .
+			"SELECT DISTINCT f_id AS xref, f_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact" .
 			" FROM `##dates` JOIN `##families` ON d_gid = f_id AND d_file = f_file" .
 			" WHERE d_type = :type AND d_file = :tree_id";
 		$args = array(
 			'type'    => $anniv->format('%@'),
-			'tree_id' => $ged_id,
+			'tree_id' => $tree->getTreeId(),
 		);
 
 		$where = "";
@@ -899,13 +865,13 @@ function get_anniversary_events($jd, $facts = '', $ged_id = WT_GED_ID) {
 		$order_by = " ORDER BY d_day, d_year DESC";
 
 		// Now fetch these anniversaries
-		foreach (array($ind_sql . $where . $order_by, $fam_sql . $where . $order_by) as $sql) {
+		foreach (array('INDI' => $ind_sql . $where . $order_by, 'FAM' => $fam_sql . $where . $order_by) as $type => $sql) {
 			$rows = Database::prepare($sql)->execute($args)->fetchAll();
 			foreach ($rows as $row) {
-				if ($row->type === 'INDI') {
-					$record = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+				if ($type === 'INDI') {
+					$record = Individual::getInstance($row->xref, $tree, $row->gedcom);
 				} else {
-					$record = Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+					$record = Family::getInstance($row->xref, $tree, $row->gedcom);
 				}
 				$anniv_date = new Date($row->d_type . ' ' . $row->d_day . ' ' . $row->d_month . ' ' . $row->d_year);
 				foreach ($record->getFacts() as $fact) {
@@ -927,11 +893,11 @@ function get_anniversary_events($jd, $facts = '', $ged_id = WT_GED_ID) {
  * @param integer $jd1    the start range of julian day
  * @param integer $jd2    the end range of julian day
  * @param string  $facts  restrict the search to just these facts or leave blank for all
- * @param integer $ged_id the id of the gedcom to search
+ * @param Tree    $tree   the tree to search
  *
  * @return Fact[]
  */
-function get_calendar_events($jd1, $jd2, $facts = '', $ged_id = WT_GED_ID) {
+function get_calendar_events($jd1, $jd2, $facts, Tree $tree) {
 	// If no facts specified, get all except these
 	$skipfacts = "CHAN,BAPL,SLGC,SLGS,ENDL,CENS,RESI,NOTE,ADDR,OBJE,SOUR,PAGE,DATA,TEXT";
 	if ($facts != '_TODO') {
@@ -952,28 +918,29 @@ function get_calendar_events($jd1, $jd2, $facts = '', $ged_id = WT_GED_ID) {
 		$where .= " AND d_fact IN ({$incl_facts})";
 	}
 	// Only get events from the current gedcom
-	$where .= " AND d_file=" . $ged_id;
+	$where .= " AND d_file=" . $tree->getTreeId();
 
 	// Now fetch these events
-	$ind_sql = "SELECT d_gid AS xref, i_file AS gedcom_id, i_gedcom AS gedcom, 'INDI' AS type, d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##individuals` {$where} AND d_gid=i_id AND d_file=i_file GROUP BY d_julianday1, d_gid ORDER BY d_julianday1";
-	$fam_sql = "SELECT d_gid AS xref, f_file AS gedcom_id, f_gedcom AS gedcom, 'FAM'  AS type, d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##families`    {$where} AND d_gid=f_id AND d_file=f_file GROUP BY d_julianday1, d_gid ORDER BY d_julianday1";
-	foreach (array($ind_sql, $fam_sql) as $sql) {
+	$ind_sql = "SELECT d_gid AS xref, i_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##individuals` {$where} AND d_gid=i_id AND d_file=i_file GROUP BY d_julianday1, d_gid ORDER BY d_julianday1";
+	$fam_sql = "SELECT d_gid AS xref, f_gedcom AS gedcom, d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##families`    {$where} AND d_gid=f_id AND d_file=f_file GROUP BY d_julianday1, d_gid ORDER BY d_julianday1";
+	foreach (array('INDI' => $ind_sql, 'FAM' => $fam_sql) as $type => $sql) {
 		$rows = Database::prepare($sql)->fetchAll();
 		foreach ($rows as $row) {
-			if ($row->type == 'INDI') {
-				$record = Individual::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			if ($type === 'INDI') {
+				$record = Individual::getInstance($row->xref, $tree, $row->gedcom);
 			} else {
-				$record = Family::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+				$record = Family::getInstance($row->xref, $tree, $row->gedcom);
 			}
 			$anniv_date = new Date($row->d_type . ' ' . $row->d_day . ' ' . $row->d_month . ' ' . $row->d_year);
-			foreach ($record->getFacts(str_replace(' ', '|', $facts)) as $fact) {
-				if ($fact->getDate() == $anniv_date) {
+			foreach ($record->getFacts() as $fact) {
+				if (($fact->getDate()->minimumDate() == $anniv_date->minimumDate() || $fact->getDate()->maximumDate() == $anniv_date->minimumDate()) && $fact->getTag() === $row->d_fact) {
 					$fact->anniv = 0;
 					$found_facts[] = $fact;
 				}
 			}
 		}
 	}
+
 	return $found_facts;
 }
 
@@ -983,14 +950,16 @@ function get_calendar_events($jd1, $jd2, $facts = '', $ged_id = WT_GED_ID) {
  * @param integer $jd1
  * @param integer $jd2
  * @param string  $events
+ * @param Tree    $tree
  *
  * @return Fact[]
  */
-function get_events_list($jd1, $jd2, $events = '') {
+function get_events_list($jd1, $jd2, $events, Tree $tree) {
 	$found_facts = array();
 	for ($jd = $jd1; $jd <= $jd2; ++$jd) {
-		$found_facts = array_merge($found_facts, get_anniversary_events($jd, $events));
+		$found_facts = array_merge($found_facts, get_anniversary_events($jd, $events, $tree));
 	}
+
 	return $found_facts;
 }
 
@@ -1014,47 +983,13 @@ function is_media_used_in_other_gedcom($file_name, $ged_id) {
 }
 
 /**
- * @param $ged_id
- *
- * @return null|string
- */
-function get_gedcom_from_id($ged_id) {
-	// No need to look up the default gedcom
-	if (defined('WT_GED_ID') && defined('WT_GEDCOM') && $ged_id == WT_GED_ID) {
-		return WT_GEDCOM;
-	}
-
-	return
-		Database::prepare("SELECT SQL_CACHE gedcom_name FROM `##gedcom` WHERE gedcom_id=?")
-		->execute(array($ged_id))
-		->fetchOne();
-}
-
-/**
- * Convert an (external) gedcom name to an (internal) gedcom ID.
- *
- * @param string $ged_name
- *
- * @return integer|null
- */
-function get_id_from_gedcom($ged_name) {
-	// No need to look up the default gedcom
-	if (defined('WT_GED_ID') && defined('WT_GEDCOM') && $ged_name == WT_GEDCOM) {
-		return WT_GED_ID;
-	}
-
-	return
-		Database::prepare("SELECT SQL_CACHE gedcom_id FROM `##gedcom` WHERE gedcom_name=?")
-		->execute(array($ged_name))
-		->fetchOne();
-}
-
-/**
  * @param integer $user_id
  *
  * @return string[][]
  */
 function get_user_blocks($user_id) {
+	global $WT_TREE;
+
 	$blocks = array('main'=>array(), 'side'=>array());
 	$rows = Database::prepare(
 		"SELECT SQL_CACHE location, block_id, module_name" .
@@ -1066,34 +1001,42 @@ function get_user_blocks($user_id) {
 		" AND   `##module_privacy`.gedcom_id=?" .
 		" AND   access_level>=?" .
 		" ORDER BY location, block_order"
-	)->execute(array($user_id, WT_GED_ID, WT_USER_ACCESS_LEVEL))->fetchAll();
+	)->execute(array($user_id, $WT_TREE->getTreeId(), Auth::accessLevel($WT_TREE)))->fetchAll();
 	foreach ($rows as $row) {
 		$blocks[$row->location][$row->block_id] = $row->module_name;
 	}
+
 	return $blocks;
 }
 
 /**
- * NOTE - this function is only correct when $gedcom_id==WT_GED_ID
- * since the privacy depends on WT_USER_ACCESS_LEVEL, which depends
- * on WT_GED_ID		"SELECT SQL_CACHE location, block_id, module_name".
+ * Get the blocks for the specified tree
  *
  * @param integer $gedcom_id
  *
  * @return string[][]
  */
 function get_gedcom_blocks($gedcom_id) {
+	if ($gedcom_id < 0) {
+		$access_level = Auth::PRIV_NONE;
+	} else {
+		$access_level = Auth::accessLevel(Tree::findById($gedcom_id));
+	}
+
 	$blocks = array('main'=>array(), 'side'=>array());
 	$rows = Database::prepare(
 		"SELECT SQL_CACHE location, block_id, module_name" .
 		" FROM  `##block`" .
 		" JOIN  `##module` USING (module_name)" .
 		" JOIN  `##module_privacy` USING (module_name, gedcom_id)" .
-		" WHERE gedcom_id=?" .
+		" WHERE gedcom_id = :tree_id" .
 		" AND   status='enabled'" .
-		" AND   access_level>=?" .
+		" AND   access_level >= :access_level" .
 		" ORDER BY location, block_order"
-	)->execute(array($gedcom_id, WT_USER_ACCESS_LEVEL))->fetchAll();
+	)->execute(array(
+		'tree_id'       => $gedcom_id,
+		'access_level'  => $access_level,
+	))->fetchAll();
 	foreach ($rows as $row) {
 		$blocks[$row->location][$row->block_id] = $row->module_name;
 	}
@@ -1138,15 +1081,15 @@ function set_block_setting($block_id, $setting_name, $setting_value) {
 /**
  * Update favorites after merging records.
  *
- * @param string  $xref_from
- * @param string  $xref_to
- * @param integer $ged_id
+ * @param string $xref_from
+ * @param string $xref_to
+ * @param Tree   $tree
  *
  * @return integer
  */
-function update_favorites($xref_from, $xref_to, $ged_id = WT_GED_ID) {
+function update_favorites($xref_from, $xref_to, Tree $tree) {
 	return
 		Database::prepare("UPDATE `##favorite` SET xref=? WHERE xref=? AND gedcom_id=?")
-		->execute(array($xref_to, $xref_from, $ged_id))
+		->execute(array($xref_to, $xref_from, $tree->getTreeId()))
 		->rowCount();
 }

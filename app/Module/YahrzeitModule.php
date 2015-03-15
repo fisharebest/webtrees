@@ -35,7 +35,7 @@ class YahrzeitModule extends Module implements ModuleBlockInterface {
 
 	/** {@inheritdoc} */
 	public function getBlock($block_id, $template = true, $cfg = null) {
-		global $ctype, $controller;
+		global $ctype, $controller, $WT_TREE;
 
 		$days      = get_block_setting($block_id, 'days', '7');
 		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');
@@ -55,7 +55,7 @@ class YahrzeitModule extends Module implements ModuleBlockInterface {
 
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
-		if ($ctype === 'gedcom' && WT_USER_GEDCOM_ADMIN || $ctype === 'user' && Auth::check()) {
+		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
 			$title = '<i class="icon-admin" title="' . I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
 		} else {
 			$title = '';
@@ -68,7 +68,7 @@ class YahrzeitModule extends Module implements ModuleBlockInterface {
 		// Fetch normal anniversaries...
 		$yahrzeits = array();
 		for ($jd = $startjd - 1; $jd <= $endjd + $days; ++$jd) {
-			foreach (get_anniversary_events($jd, 'DEAT _YART') as $fact) {
+			foreach (get_anniversary_events($jd, 'DEAT _YART', $WT_TREE) as $fact) {
 				// Exact hebrew dates only
 				$date = $fact->getDate();
 				if ($date->minimumDate() instanceof JewishDate && $date->minimumJulianDay() === $date->maximumJulianDay()) {
@@ -247,7 +247,7 @@ class YahrzeitModule extends Module implements ModuleBlockInterface {
 		echo I18N::translate('Number of days to show');
 		echo '</td><td class="optionbox">';
 		echo '<input type="text" name="days" size="2" value="' . $days . '">';
-		echo ' <em>', I18N::plural('maximum %d day', 'maximum %d days', 30, 30), '</em>';
+		echo ' <em>', I18N::plural('maximum %s day', 'maximum %s days', 30, I18N::number(30)), '</em>';
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';

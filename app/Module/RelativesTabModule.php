@@ -57,9 +57,9 @@ class RelativesTabModule extends Module implements ModuleTabInterface {
 
 			$months = round($days * 12 / 365.25); // Approximate - we do not know the calendar
 			if (abs($months) == 12 || abs($months) >= 24) {
-				$diff .= I18N::plural('%d year', '%d years', round($months / 12), round($months / 12));
+				$diff .= I18N::plural('%s year', '%s years', round($months / 12), I18N::number(round($months / 12)));
 			} elseif ($months != 0) {
-				$diff .= I18N::plural('%d month', '%d months', $months, $months);
+				$diff .= I18N::plural('%s month', '%s months', $months, I18N::number($months));
 			}
 
 			return '<div class="elderdate age">' . $diff . '</div>';
@@ -75,12 +75,11 @@ class RelativesTabModule extends Module implements ModuleTabInterface {
 	 */
 	function printFamily(Family $family, $type, $label) {
 		global $controller;
-		global $SHOW_PRIVATE_RELATIONSHIPS;
 
-		if ($SHOW_PRIVATE_RELATIONSHIPS) {
-			$access_level = WT_PRIV_HIDE;
+		if ($family->getTree()->getPreference('SHOW_PRIVATE_RELATIONSHIPS')) {
+			$access_level = Auth::PRIV_HIDE;
 		} else {
-			$access_level = WT_USER_ACCESS_LEVEL;
+			$access_level = Auth::accessLevel($family->getTree());
 		}
 
 		?>

@@ -259,7 +259,7 @@ class Date {
 						$d2tmp = '';
 					}
 				}
-				// If the date is different to the unconverted date, add it to the date string.
+				// If the date is different from the unconverted date, add it to the date string.
 				if ($d1 != $d1tmp && $d1tmp !== '') {
 					if ($url) {
 						if ($CALENDAR_FORMAT !== 'none') {

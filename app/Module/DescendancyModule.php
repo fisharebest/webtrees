@@ -36,6 +36,8 @@ class DescendancyModule extends Module implements ModuleSidebarInterface {
 
 	/** {@inheritdoc} */
 	public function modAction($modAction) {
+		global $WT_TREE;
+
 		Zend_Session::writeClose();
 		header('Content-Type: text/html; charset=UTF-8');
 
@@ -45,7 +47,7 @@ class DescendancyModule extends Module implements ModuleSidebarInterface {
 			echo $this->search($search);
 			break;
 		case 'descendants':
-			$individual = Individual::getInstance(Filter::get('xref', WT_REGEX_XREF));
+			$individual = Individual::getInstance(Filter::get('xref', WT_REGEX_XREF), $WT_TREE);
 			if ($individual) {
 				echo $this->loadSpouses($individual, 1);
 			}
@@ -168,6 +170,8 @@ class DescendancyModule extends Module implements ModuleSidebarInterface {
 	 * @return string
 	 */
 	public function search($query) {
+		global $WT_TREE;
+
 		if (strlen($query) < 2) {
 			return '';
 		}
@@ -178,12 +182,12 @@ class DescendancyModule extends Module implements ModuleSidebarInterface {
 			" AND i_id=n_id AND i_file=n_file AND i_file=?" .
 			" ORDER BY n_sort"
 		)
-			->execute(array("%{$query}%", "%{$query}%", WT_GED_ID))
+			->execute(array("%{$query}%", "%{$query}%", $WT_TREE->getTreeId()))
 			->fetchAll();
 
 		$out = '';
 		foreach ($rows as $row) {
-			$person = Individual::getInstance($row->xref);
+			$person = Individual::getInstance($row->xref, $WT_TREE);
 			if ($person->canShowName()) {
 				$out .= $this->getPersonLi($person);
 			}

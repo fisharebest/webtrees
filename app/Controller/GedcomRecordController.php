@@ -51,7 +51,7 @@ class GedcomRecordController extends PageController {
 			}
 			if ($broken_links) {
 				// Reload the updated family
-				$this->record = GedcomRecord::getInstance($this->record->getXref());
+				$this->record = GedcomRecord::getInstance($this->record->getXref(), $this->record->getTree());
 			}
 		}
 

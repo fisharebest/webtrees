@@ -146,12 +146,6 @@ define('WT_GEDCOM_LINE_LENGTH', 255 - strlen(WT_EOL)); // Characters, not bytes
 // Used in Google charts
 define('WT_GOOGLE_CHART_ENCODING', 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-.');
 
-// Privacy constants
-define('WT_PRIV_PUBLIC', 2); // Allows visitors to view the marked information
-define('WT_PRIV_USER', 1); // Allows members to access the marked information
-define('WT_PRIV_NONE', 0); // Allows managers to access the marked information
-define('WT_PRIV_HIDE', -1); // Hide the item to all users
-
 // For performance, it is quicker to refer to files using absolute paths
 define('WT_ROOT', realpath(dirname(__DIR__)) . DIRECTORY_SEPARATOR);
 
@@ -452,41 +446,6 @@ if (!$WT_TREE) {
 	}
 }
 
-// These attributes of the currently-selected tree are used frequently
-if ($WT_TREE) {
-	define('WT_GEDCOM', $WT_TREE->getName());
-	define('WT_GED_ID', $WT_TREE->getTreeId());
-	define('WT_GEDURL', $WT_TREE->getNameUrl());
-	define('WT_TREE_TITLE', $WT_TREE->getTitleHtml());
-	define('WT_USER_GEDCOM_ADMIN', Auth::isManager($WT_TREE));
-	define('WT_USER_CAN_ACCEPT', Auth::isModerator($WT_TREE));
-	define('WT_USER_CAN_EDIT', Auth::isEditor($WT_TREE));
-	define('WT_USER_CAN_ACCESS', Auth::isMember($WT_TREE));
-	define('WT_USER_GEDCOM_ID', $WT_TREE->getUserPreference(Auth::user(), 'gedcomid'));
-	define('WT_USER_ROOT_ID', $WT_TREE->getUserPreference(Auth::user(), 'rootid') ? $WT_TREE->getUserPreference(Auth::user(), 'rootid') : WT_USER_GEDCOM_ID);
-	define('WT_USER_PATH_LENGTH', $WT_TREE->getUserPreference(Auth::user(), 'RELATIONSHIP_PATH_LENGTH'));
-	if (WT_USER_GEDCOM_ADMIN) {
-		define('WT_USER_ACCESS_LEVEL', WT_PRIV_NONE);
-	} elseif (WT_USER_CAN_ACCESS) {
-		define('WT_USER_ACCESS_LEVEL', WT_PRIV_USER);
-	} else {
-		define('WT_USER_ACCESS_LEVEL', WT_PRIV_PUBLIC);
-	}
-} else {
-	define('WT_GEDCOM', '');
-	define('WT_GED_ID', null);
-	define('WT_GEDURL', '');
-	define('WT_TREE_TITLE', WT_WEBTREES);
-	define('WT_USER_GEDCOM_ADMIN', false);
-	define('WT_USER_CAN_ACCEPT', false);
-	define('WT_USER_CAN_EDIT', false);
-	define('WT_USER_CAN_ACCESS', false);
-	define('WT_USER_GEDCOM_ID', '');
-	define('WT_USER_ROOT_ID', '');
-	define('WT_USER_PATH_LENGTH', 0);
-	define('WT_USER_ACCESS_LEVEL', WT_PRIV_PUBLIC);
-}
-
 // With no parameters, init() looks to the environment to choose a language
 define('WT_LOCALE', I18N::init());
 $WT_SESSION->locale = WT_LOCALE;
@@ -564,7 +523,7 @@ if (substr(WT_SCRIPT_NAME, 0, 5) === 'admin' || WT_SCRIPT_NAME === 'module.php' 
 		// 2) site setting
 		// 3) webtrees
 		// 4) first one found
-		if (WT_GED_ID) {
+		if ($WT_TREE) {
 			$theme_id = $WT_TREE->getPreference('THEME_DIR');
 		}
 		if (!array_key_exists($theme_id, Theme::themeNames())) {

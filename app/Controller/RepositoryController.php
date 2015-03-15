@@ -24,8 +24,10 @@ class RepositoryController extends GedcomRecordController {
 	 * Startup activity
 	 */
 	public function __construct() {
+		global $WT_TREE;
+
 		$xref         = Filter::get('rid', WT_REGEX_XREF);
-		$this->record = Repository::getInstance($xref);
+		$this->record = Repository::getInstance($xref, $WT_TREE);
 
 		parent::__construct();
 	}
@@ -41,7 +43,7 @@ class RepositoryController extends GedcomRecordController {
 		// edit menu
 		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-repo');
 
-		if (WT_USER_CAN_EDIT) {
+		if (Auth::isEditor($this->record->getTree())) {
 			$fact = $this->record->getFirstFact('NAME');
 			$submenu = new Menu(I18N::translate('Edit repository'), '#', 'menu-repo-edit');
 			if ($fact) {
@@ -55,14 +57,14 @@ class RepositoryController extends GedcomRecordController {
 		}
 
 		// delete
-		if (WT_USER_CAN_EDIT) {
+		if (Auth::isEditor($this->record->getTree())) {
 			$submenu = new Menu(I18N::translate('Delete'), '#', 'menu-repo-del');
 			$submenu->setOnclick("return delete_repository('" . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJS(Filter::unescapeHtml($this->record->getFullName()))) . "', '" . $this->record->getXref() . "');");
 			$menu->addSubmenu($submenu);
 		}
 
 		// edit raw
-		if (Auth::isAdmin() || WT_USER_CAN_EDIT && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
+		if (Auth::isAdmin() || Auth::isEditor($this->record->getTree()) && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
 			$submenu = new Menu(I18N::translate('Edit raw GEDCOM'), '#', 'menu-repo-editraw');
 			$submenu->setOnclick("return edit_raw('" . $this->record->getXref() . "');");
 			$menu->addSubmenu($submenu);

@@ -30,6 +30,8 @@ class QueryMedia {
 	 * @return string[]
 	 */
 	public static function folderList() {
+		global $WT_TREE;
+
 		$folders = Database::prepare(
 			"SELECT SQL_CACHE LEFT(m_filename, CHAR_LENGTH(m_filename) - CHAR_LENGTH(SUBSTRING_INDEX(m_filename, '/', -1))) AS media_path" .
 			" FROM  `##media`" .
@@ -38,7 +40,7 @@ class QueryMedia {
 			" AND   m_filename NOT LIKE 'https://%'" .
 			" GROUP BY 1" .
 			" ORDER BY 1"
-		)->execute(array(WT_GED_ID))->fetchOneColumn();
+		)->execute(array($WT_TREE->getTreeId()))->fetchOneColumn();
 
 		if (!$folders || reset($folders) != '') {
 			array_unshift($folders, '');
@@ -81,13 +83,15 @@ class QueryMedia {
 	 * @throws \Exception
 	 */
 	public static function mediaList($folder, $subfolders, $sort, $filter) {
+		global $WT_TREE;
+
 		// All files in the folder, plus external files
 		$sql =
-			"SELECT m_id AS xref, m_file AS gedcom_id, m_gedcom AS gedcom" .
+			"SELECT m_id AS xref, m_gedcom AS gedcom" .
 			" FROM `##media`" .
 			" WHERE m_file=?";
 		$args = array(
-			WT_GED_ID,
+			$WT_TREE->getTreeId(),
 		);
 
 		// Only show external files when we are looking at the root folder
@@ -133,7 +137,7 @@ class QueryMedia {
 		$rows = Database::prepare($sql)->execute($args)->fetchAll();
 		$list = array();
 		foreach ($rows as $row) {
-			$media = Media::getInstance($row->xref, $row->gedcom_id, $row->gedcom);
+			$media = Media::getInstance($row->xref, $WT_TREE, $row->gedcom);
 			if ($media->canShow()) {
 				$list[] = $media;
 			}

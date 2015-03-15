@@ -59,7 +59,7 @@ case 'new_tree':
 	$tree_title = Filter::post('tree_title');
 
 	if (Filter::checkCsrf() && $basename && $tree_title) {
-		if (Tree::getIdFromName($basename)) {
+		if (Tree::findByName($basename)) {
 			FlashMessages::addMessage(/* I18N: %s is the name of a family tree */ I18N::translate('The family tree “%s” already exists.', Filter::escapeHtml($basename)), 'danger');
 		} else {
 			Tree::create($basename, $tree_title);
@@ -282,7 +282,7 @@ case 'importform':
 					>
 				<p class="small text-muted">
 					<?php echo /* I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg” */ I18N::translate('Some genealogy software creates GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow webtrees to find the file, the first part of the path must be removed.'); ?>
-					<?php echo /* I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names */ I18N::translate('For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then the you would need to remove %3$s.', '<code>C:\\Documents\\family\\photo.jpeg</code>', '<code>family\\photo.jpeg</code>', '<code>C:\\Documents\\</code>'); ?>
+					<?php echo /* I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names */ I18N::translate('For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s.', '<code>C:\\Documents\\family\\photo.jpeg</code>', '<code>family\\photo.jpeg</code>', '<code>C:\\Documents\\</code>'); ?>
 				</p>
 			</fieldset>
 		</div>
@@ -327,7 +327,7 @@ $controller->pageHeader();
 				</a>
 			</h2>
 		</div>
-		<div id="tree-<?php echo $tree->getTreeId(); ?>" class="panel-collapse collapse<?php echo $tree->getTreeId() === WT_GED_ID || $tree->getPreference('imported') === '0' ? ' in' : ''; ?>" role="tabpanel" aria-labelledby="panel-tree-<?php echo $tree->getTreeId(); ?>">
+		<div id="tree-<?php echo $tree->getTreeId(); ?>" class="panel-collapse collapse<?php echo $tree == $WT_TREE || $tree->getPreference('imported') === '0' ? ' in' : ''; ?>" role="tabpanel" aria-labelledby="panel-tree-<?php echo $tree->getTreeId(); ?>">
 			<div class="panel-body">
 				<?php
 

@@ -112,7 +112,7 @@ echo '<script>';
 		if (document.forms[0].subclick) button = document.forms[0].subclick.value;
 		else button = "";
 		if (frm.filter.value.length<2&button!="all") {
-			alert("<?php echo I18N::translate('Please enter more than one character'); ?>");
+			alert("<?php echo I18N::translate('Please enter more than one character.'); ?>");
 			frm.filter.focus();
 			return false;
 		}
@@ -152,7 +152,7 @@ if ($type == "indi") {
 	<input type="hidden" name="callback" value="'.$callback . '">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="type" value="indi">
-	<span>', I18N::translate('Name contains:'), '&nbsp;</span>
+	<span>', /* I18N: Label for search field */ I18N::translate('Name contains'), '&nbsp;</span>
 	<input type="text" name="filter" value="';
 	if ($filter) {
 		echo $filter;
@@ -169,7 +169,7 @@ if ($type == "fam") {
 	<input type="hidden" name="callback" value="'.$callback . '">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="type" value="fam">
-	<span>', I18N::translate('Name contains:'), '&nbsp;</span>
+	<span>', I18N::translate('Name contains'), '&nbsp;</span>
 	<input type="text" name="filter" value="';
 	if ($filter) {
 		echo $filter;
@@ -188,7 +188,7 @@ if ($type == 'media') {
 	<input type="hidden" name="type" value="media">
 	<input type="hidden" name="callback" value="', $callback, '">
 	<input type="hidden" name="subclick">
-	<span>', I18N::translate('Media contains:'), '</span>
+	<span>', /* I18N: Label for search field */ I18N::translate('Media contains'), '</span>
 	<input type="text" name="filter" value="';
 	if ($filter) {
 		echo $filter;
@@ -208,7 +208,7 @@ if ($type == "place") {
 	<input type="hidden" name="type" value="place">
 	<input type="hidden" name="callback" value="', $callback, '">
 	<input type="hidden" name="subclick">
-	<span>', I18N::translate('Place contains:'), '</span>
+	<span>', /* I18N: Label for search field */ I18N::translate('Place contains'), '</span>
 	<input type="text" name="filter" value="';
 	if ($filter) {
 		echo $filter;
@@ -227,7 +227,7 @@ if ($type == "repo") {
 	<input type="hidden" name="type" value="repo">
 	<input type="hidden" name="callback" value="', $callback, '">
 	<input type="hidden" name="subclick">
-	<span>', I18N::translate('Repository contains:'), '</span>
+	<span>', /* I18N: Label for search field */ I18N::translate('Repository contains'), '</span>
 	<input type="text" name="filter" value="';
 	if ($filter) {
 		echo $filter;
@@ -247,7 +247,7 @@ if ($type == "note") {
 	<input type="hidden" name="type" value="note">
 	<input type="hidden" name="callback" value="', $callback, '">
 	<input type="hidden" name="subclick">
-	<span>', I18N::translate('Shared note contains:'), '</span>
+	<span>', /* I18N: Label for search field */ I18N::translate('Shared note contains'), '</span>
 	<input type="text" name="filter" value="';
 	if ($filter) {
 		echo $filter;
@@ -266,7 +266,7 @@ if ($type == "source") {
 	<input type="hidden" name="type" value="source">
 	<input type="hidden" name="callback" value="', $callback, '">
 	<input type="hidden" name="subclick">
-	<span>', I18N::translate('Source contains:'), '</span>
+	<span>', /* I18N: Label for search field */ I18N::translate('Source contains'), '</span>
 	<input type="text" name="filter" value="';
 	if ($filter) {
 		echo $filter;
@@ -614,7 +614,7 @@ if ($action == "filter") {
 		if ($filter) {
 			$repo_list = search_repos($filter_array, array($WT_TREE));
 		} else {
-			$repo_list = get_repo_list(WT_GED_ID);
+			$repo_list = get_repo_list($WT_TREE);
 		}
 		if ($repo_list) {
 			usort($repo_list, __NAMESPACE__ . '\GedcomRecord::compare');
@@ -636,7 +636,7 @@ if ($action == "filter") {
 		if ($filter) {
 			$mynotelist = search_notes($filter_array, array($WT_TREE));
 		} else {
-			$mynotelist = get_note_list(WT_GED_ID);
+			$mynotelist = get_note_list($WT_TREE);
 		}
 		if ($mynotelist) {
 			usort($mynotelist, __NAMESPACE__ . '\GedcomRecord::compare');
@@ -658,7 +658,7 @@ if ($action == "filter") {
 		if ($filter) {
 			$mysourcelist = search_sources($filter_array, array($WT_TREE));
 		} else {
-			$mysourcelist = get_source_list(WT_GED_ID);
+			$mysourcelist = get_source_list($WT_TREE);
 		}
 		if ($mysourcelist) {
 			usort($mysourcelist, __NAMESPACE__ . '\GedcomRecord::compare');

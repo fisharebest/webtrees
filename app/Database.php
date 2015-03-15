@@ -151,22 +151,17 @@ class Database {
 			}
 			$stack = '<abbr title="' . Filter::escapeHtml(implode(" / ", $trace)) . '">' . (count(self::$log) + 1) . '</abbr>';
 			// Bind variables
-			$query2 = '';
 			foreach ($bind_variables as $key => $value) {
 				if (is_null($value)) {
-					$bind_variables[$key] = '[NULL]';
+					$value = 'NULL';
+				} elseif (!is_integer($value)) {
+					$value = '\'' . $value . '\'';
 				}
-			}
-			foreach (str_split(Filter::escapeHtml($query)) as $char) {
-				if ($char == '?') {
-					$query2 .= '<abbr title="' . Filter::escapeHtml(array_shift($bind_variables)) . '">' . $char . '</abbr>';
+				if (is_integer($key)) {
+					$query = preg_replace('/\?/', $value, $query, 1);
 				} else {
-					$query2 .= $char;
+					$query = str_replace(':' . $key, $value, $query);
 				}
-			}
-			// Highlight embedded literal strings.
-			if (preg_match('/[\'"]/', $query)) {
-				$query2 = '<span style="background-color:yellow;">' . $query2 . '</span>';
 			}
 			// Highlight slow queries
 			$microtime *= 1000; // convert to milliseconds
@@ -179,7 +174,7 @@ class Database {
 			} else {
 				$microtime = sprintf('%.3f', $microtime);
 			}
-			self::$log[] = "<tr><td>{$stack}</td><td>{$query2}</td><td>{$rows}</td><td>{$microtime}</td></tr>";
+			self::$log[] = "<tr><td>{$stack}</td><td>{$query}</td><td>{$rows}</td><td>{$microtime}</td></tr>";
 		} else {
 			// Just log query count for statistics
 			self::$log[] = true;
@@ -201,7 +196,7 @@ class Database {
 	 * @return string
 	 */
 	public static function getQueryLog() {
-		$html = '<table border="1"><col span="3"><col align="char"><thead><tr><th>#</th><th>Query</th><th>Rows</th><th>Time (ms)</th></tr></thead><tbody>' . implode('', self::$log) . '</tbody></table>';
+		$html = '<table border="1" style="table-layout: fixed; width: 960px;word-wrap: break-word;"><col span="3"><col align="char"><thead><tr><th>#</th><th style="width: 800px;">Query</th><th>Rows</th><th>Time (ms)</th></tr></thead><tbody>' . implode('', self::$log) . '</tbody></table>';
 		self::$log = array();
 
 		return $html;

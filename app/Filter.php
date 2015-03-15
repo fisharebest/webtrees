@@ -426,7 +426,16 @@ class Filter {
 	 * @return null|string
 	 */
 	public static function server($variable, $regexp = null, $default = null) {
-		return self::input(INPUT_SERVER, $variable, $regexp, $default);
+		// On some servers, variables that are present in $_SERVER cannot be
+		// found via filter_input(INPUT_SERVER).  Instead, they are found via
+		// filter_input(INPUT_ENV).  Since we cannot rely on filter_input(),
+		// we must use the superglobal directly.
+		if (array_key_exists($variable, $_SERVER) && ($regexp === null || preg_match('/^(' . $regexp . ')$/',
+$_SERVER[$variable]))) {
+			return $_SERVER[$variable];
+		} else {
+			return $default;
+		}
 	}
 
 	/**

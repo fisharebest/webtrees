@@ -37,14 +37,14 @@ class PageMenuModule extends Module implements ModuleMenuInterface {
 
 	/** {@inheritdoc} */
 	public function getMenu() {
-		global $controller;
+		global $controller, $WT_TREE;
 
 		$menu = null;
 		if (empty($controller)) {
 			return null;
 		}
 
-		if (WT_USER_CAN_EDIT && method_exists($controller, 'getEditMenu')) {
+		if (Auth::isEditor($WT_TREE) && method_exists($controller, 'getEditMenu')) {
 			$menu = $controller->getEditMenu();
 		}
 		return $menu;

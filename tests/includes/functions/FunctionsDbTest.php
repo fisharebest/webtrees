@@ -103,15 +103,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test that function search_indis_dates() exists in the correct namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionSearchIndisDatesExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\search_indis_dates'), true);
-	}
-
-	/**
 	 * Test that function search_fams() exists in the correct namespace.
 	 *
 	 * @return void
@@ -208,24 +199,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function testFunctionIsMediaUsedInOtherGedcomExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\is_media_used_in_other_gedcom'), true);
-	}
-
-	/**
-	 * Test that function get_gedcom_from_id() exists in the correct namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionGetGedcomFromIdExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_gedcom_from_id'), true);
-	}
-
-	/**
-	 * Test that function get_id_from_gedcom() exists in the correct namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionGetIdFromGedcomExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_id_from_gedcom'), true);
 	}
 
 	/**
