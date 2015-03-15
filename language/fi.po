@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-15 13:56+0100\n"
+"PO-Revision-Date: 2015-03-15 14:14+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Finnish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
@@ -3729,7 +3729,7 @@ msgstr "Colonia Juarez, Meksiko"
 
 #: app/Gedcom/GedcomCodeTemp.php:132
 msgid "Columbia River, Washington"
-msgstr "Columbia River, Washington"
+msgstr "Columbia, Washington"
 
 #: app/Gedcom/GedcomCodeTemp.php:126
 msgid "Columbia, South Carolina"
@@ -6789,7 +6789,7 @@ msgstr "Guatemala"
 
 #: app/Gedcom/GedcomCodeTemp.php:156
 msgid "Guatemala City, Guatemala"
-msgstr "Guatemala City, Guatemala"
+msgstr "Guatemala, Guatemala"
 
 #: app/Gedcom/GedcomCodeTemp.php:158
 msgid "Guayaquil, Ecuador"
