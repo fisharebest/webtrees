@@ -80,7 +80,7 @@ msgstr "%1$s %2$s generasjonar tilbake"
 #: includes/functions/functions.php:2135
 #, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr "%1$s og %2$s generasjoner fram"
+msgstr "%1$s og %2$s generasjonar fram"
 
 #: app/Controller/IndividualController.php:188 app/Date.php:332
 #: includes/functions/functions_print_lists.php:1619
@@ -194,7 +194,7 @@ msgstr "%j. %F %Y"
 #: app/Stats.php:6341
 #, php-format
 msgid "%s BCE"
-msgstr "%s Fvt."
+msgstr "%s Fvt"
 
 #. I18N: size of file in KB
 #: admin_media.php:483 app/Media.php:271
