@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-03-14 22:10+0100\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2015-03-15 08:26+0100\n"
+"Last-Translator: Łukasz Wileński <lukas.the.best@poczta.fm>\n"
 "Language-Team: Polish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/pl/>\n"
 "Language: pl\n"
@@ -27,7 +27,7 @@ msgstr ""
 #: modules_v3/ahnentafel_report/report.xml:333
 #: modules_v3/ahnentafel_report/report.xml:364
 msgid " but the details are unknown"
-msgstr ", ale szczegóły są nieznane"
+msgstr " , ale szczegóły są nieznane"
 
 #: modules_v3/ahnentafel_report/report.xml:156
 #: modules_v3/ahnentafel_report/report.xml:184
@@ -3693,7 +3693,9 @@ msgstr "Kliknij %s aby wybrać Głowę rodziny."
 
 #: edit_interface.php:1747
 msgid "Click a row, then drag-and-drop to re-order media"
-msgstr "Należy kliknąć ramkę, a następnie „przeciągnąć i upuścić”, aby uporządkować multimedia "
+msgstr ""
+"Należy kliknąć ramkę, a następnie „przeciągnąć i upuścić”, aby uporządkować "
+"multimedia"
 
 #: admin_trees_manage.php:690
 msgid "Click here for PhpGedView to webtrees transfer wizard"
@@ -12569,7 +12571,6 @@ msgstr "Pokazano %1$s - %2$s z %3$s"
 #: app/Controller/FanchartController.php:385
 #: app/Controller/HourglassController.php:362
 #: app/Controller/PedigreeController.php:283
-#, fuzzy
 msgid "Sibling"
 msgstr "Rodzeństwo"
 
@@ -15688,9 +15689,10 @@ msgid "You can re-enable these themes after the upgrade."
 msgstr "Można włączyć dane motywy ponownie po zakończeniu aktualizacji."
 
 #: admin_trees_renumber.php:265
-#, fuzzy
 msgid "You can renumber the records in a family tree, so that these internal reference numbers are not duplicated in any other family tree."
-msgstr "Możesz zmienić numerację wpisów w drzewie genealogicznym by wewnętrzne numery identyfikacyjne nie były powielane w każdym innym drzewie genealogicznym."
+msgstr ""
+"Można zmienić numerację wpisów w drzewie genealogicznym by wewnętrzne numery "
+"identyfikacyjne nie były powielane w każdym innym drzewie genealogicznym."
 
 #: admin_trees_renumber.php:278
 msgid "You can renumber this family tree."
