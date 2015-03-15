@@ -190,7 +190,7 @@ msgstr "%j. %F %Y"
 #: app/Stats.php:6341
 #, php-format
 msgid "%s BCE"
-msgstr "%s Fvt."
+msgstr "%s Fvt"
 
 #. I18N: size of file in KB
 #: admin_media.php:483 app/Media.php:271
@@ -389,7 +389,7 @@ msgstr[1] "%s uker"
 #: admin_trees_download.php:164
 #, php-format
 msgid "%s will be prepended to media filenames."
-msgstr "%s vil legges i begynnelsen av filnavn."
+msgstr "%s vil legges til i begynnelsen av filnavn."
 
 #: app/I18N.php:457 includes/functions/functions_date.php:42
 #, php-format
