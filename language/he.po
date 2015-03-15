@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-12 21:11+0000\n"
-"PO-Revision-Date: 2015-03-13 21:26+0100\n"
+"PO-Revision-Date: 2015-03-15 07:01+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
@@ -105,13 +105,13 @@ msgstr "%2$s מדרגה $1$s"
 #: includes/functions/functions.php:2132
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr "%1$s מוזח/ת  $2$s פעמים למעלה"
+msgstr "%1$s מוזח/ת %2$s פעמים למעלה"
 
 #. I18N: %1$s=“fifth cousin”, etc., $2$s>=4
 #: includes/functions/functions.php:2135
 #, php-format
 msgid "%1$s %2$s times removed descending"
-msgstr "%1$s מוזח/ת  $2$s פעמים למטה"
+msgstr "%1$s מוזח/ת %2$s פעמים למטה"
 
 #. I18N: The placeholders are GEDCOM XREFs and tags.  e.g. “INDI I123 contains a FAMC link to F234.”
 #: admin_trees_check.php:205
@@ -1142,7 +1142,9 @@ msgstr "הוסף שותף חדש"
 
 #: help_text.php:381
 msgid "Add a new associate allows you to link a fact with an associated individual in the website.  This is one way in which you might record that someone was the godfather of another individual."
-msgstr "הוסף שותף חדש מאפשר לקשור עובדה לאדם שותף באתר. כך למשל תוכל לציין שמישהו היה סנדק של מישהו אחר ."
+msgstr ""
+"הוסף שותף חדש מאפשר לקשור עובדה לאדם שותף באתר. כך למשל תוכל לציין שמישהו "
+"היה סנדק של מישהו אחר."
 
 #: app/Module/RelativesTabModule.php:250
 msgid "Add a new brother or sister"
@@ -5215,7 +5217,16 @@ msgstr "שם משתמש כפול. משתמש עם שם משתמש זה מוגד�
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:914
 msgid "E-mail address to be used in the “From:” field of e-mails that webtrees creates automatically.<br><br>webtrees can automatically create e-mails to notify administrators of changes that need to be reviewed.  webtrees also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-msgstr "כתובת דואר אלקטרוני לשימוש בשדה ”מאת:” של דואר אלקטרוני ש-webtrees  יוצר באופן אוטומטי.<br><br>webtrees יכול באופן אוטומטי ליצור הודעות דואר אלקטרוני כדי ליידע את המנהלים על שינויים שיש לבדוק. webtrees שולחת גם הודעה בדואר אלקטרוני למשתמשים שבקשו חשבון.<br><br>בדרך כלל, שדה ”מאת:” של הדואר האלקטרוני שנוצר באופן אוטומטי הוא משהו כמו <i>From: webtrees-noreply@yoursite</i> כדי להראות שלא נדרשת תגובה לדואר האלקטרוני . כדי להתגונן מפני דואר זבל או פגיעות דואר אלקטרוני אחרות, חלק ממערכות הדואר האלקטרוני דורשות ששדה ”מאת:” של כל הודעה,  תשקף חשבון דואר תקף ולא תקבלנה הודעות שהן כנראה מחשבון <i>webtrees-noreply</i>."
+msgstr ""
+"כתובת דואר אלקטרוני לשימוש בשדה ”מאת:” של דואר אלקטרוני ש-webtrees  יוצר "
+"באופן אוטומטי.<br><br>webtrees יכול באופן אוטומטי ליצור הודעות דואר אלקטרוני "
+"כדי ליידע את המנהלים על שינויים שיש לבדוק. webtrees שולחת גם הודעה בדואר "
+"אלקטרוני למשתמשים שבקשו חשבון.<br><br>בדרך כלל, שדה ”מאת:” של הדואר "
+"האלקטרוני שנוצר באופן אוטומטי הוא משהו כמו <i>From: webtrees-"
+"noreply@yoursite</i> כדי להראות שלא נדרשת תגובה לדואר האלקטרוני. כדי להתגונן "
+"מפני דואר זבל או פגיעות דואר אלקטרוני אחרות, חלק ממערכות הדואר האלקטרוני "
+"דורשות ששדה ”מאת:” של כל הודעה,  תשקף חשבון דואר תקף ולא תקבלנה הודעות שהן "
+"כנראה מחשבון <i>webtrees-noreply</i>."
 
 #: help_text.php:417
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County.  “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
@@ -6921,12 +6932,12 @@ msgstr "גובה"
 #: login.php:251 login.php:339
 #, php-format
 msgid "Hello %s…"
-msgstr "שלום <span dir=\"ltr\">%s</span> …"
+msgstr "שלום <span dir=\"ltr\">%s</span>…"
 
 #: login.php:390
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr "שלום <span dir=\"ltr\">%s</span> …<br>תודה שנרשמת."
+msgstr "שלום <span dir=\"ltr\">%s</span>…<br>תודה שנרשמת."
 
 #: login.php:317 login.php:565
 msgid "Hello administrator…"
@@ -7269,7 +7280,11 @@ msgstr "אם מדיניות האבטחה של השרת שלך מאפשרת, תו
 #. I18N: Help text for the "Website URL" site configuration setting
 #: admin_site_config.php:289
 msgid "If your website can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL.  Requests for the other URLs will be redirected to the preferred one."
-msgstr "אם לאתר שלך ניתן להגיע באמצעות יותר מקישור URL אחד, כגון <b>http://www.example.com/webtrees/</b> ו-<b>http://webtrees.example.com/</b>, תוכל לציין את כתובת האתר המועדפת. בקשות לכתובות האחרות תהיינה מנותבות לכתובת המועדפת."
+msgstr ""
+"אם לאתר שלך ניתן להגיע באמצעות יותר מקישור URL אחד, כגון <b><span dir=\"ltr\""
+">http://www.example.com/webtrees/</span></b> ו-<b><span dir=\"ltr\""
+">http://webtrees.example.com/</span></b>, תוכל לציין את כתובת האתר המועדפת. "
+"בקשות לכתובות האחרות תהיינה מנותבות לכתובת המועדפת."
 
 #: admin_media.php:489 app/Gedcom/GedcomTag.php:1786
 msgid "Image dimensions"
@@ -13439,7 +13454,9 @@ msgstr "התיקייה %s נמחקה."
 
 #: admin_site_config.php:186
 msgid "The folder can be specified in full (e.g. /home/user_name/webtrees_data/) or relative to the installation folder (e.g. ../../webtrees_data/)."
-msgstr "ניתן להגדיר את התיקייה במלואה (למשל /home/user_name/webtrees_data/) או ביחס לתיקית ההתקנה (למשל ../../webtrees_data/)."
+msgstr ""
+"ניתן להגדיר את התיקייה במלואה (למשל /home/user_name/webtrees_data/) או ביחס "
+"לתיקית ההתקנה (למשל <span dir=\"ltr\">../../webtrees_data/</span>)."
 
 #: admin_site_merge.php:194
 msgid "The following facts and events were found in both records."
@@ -14584,7 +14601,7 @@ msgstr "כדי להגדיר את הטקסט הזה עבור שפה אחרת, ע�
 
 #: app/Module/SiteMapModule.php:316
 msgid "To tell search engines that sitemaps are available, you can use the following links."
-msgstr "כדי להודיע למנועי חיפוש שמפות האתר זמינות, ניתן להשתמש בקישורים הבאים ."
+msgstr "כדי להודיע למנועי חיפוש שמפות האתר זמינות, ניתן להשתמש בקישורים הבאים."
 
 #: app/Module/SiteMapModule.php:313
 msgid "To tell search engines that sitemaps are available, you should add the following line to your robots.txt file."
@@ -15067,8 +15084,8 @@ msgstr "השתמש ב-”?” כדי להתאים תו בודד, השתמש ב-�
 #, php-format
 msgid "Use at least %s character."
 msgid_plural "Use at least %s characters."
-msgstr[0] "השתמש לפחות בתו אחד ."
-msgstr[1] "השתמש לפחות ב-%s תוים ."
+msgstr[0] "השתמש לפחות בתו אחד."
+msgstr[1] "השתמש לפחות ב-%s תוים."
 
 #: modules_v3/family_group_report/report.xml:13
 #: modules_v3/individual_ext_report/report.xml:14
