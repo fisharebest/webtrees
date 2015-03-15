@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-03-14 16:00+0100\n"
+"PO-Revision-Date: 2015-03-15 07:42+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Finnish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
@@ -14062,7 +14062,7 @@ msgstr ""
 "Luettelo GEDCOM tietoaiheista, joita käyttäjä voi lisätä ainoastaan kerran. "
 "Esimerkiksi, jos BIRT (syntymä) on tässä luettelossa, niin käyttäjät voivat "
 "lisätä ainoastaan yhden BIRT tiedon henkilölle. Tietoaihetunnisteet tässä "
-"luettelossa eivät saa toistua ”Kaikki henkilötieto”-luettelossa."
+"luettelossa eivät saa toistua ”Kaikki henkilötiedot”-luettelossa."
 
 #. I18N: Help text for the “Unique repository facts” configuration setting
 #: admin_trees_config.php:2140
@@ -14071,8 +14071,8 @@ msgstr ""
 "Tämä on luettelo GEDCOM tietoaihetunnisteita, joita käyttäjäsi voi käyttää "
 "vain kerran tietovarastossa. Esimerkiksi, jos NAME (nimi) on tässä "
 "luettelossa, niin vain yksi NAME tietue voidaan lisätä tietovarastoon. "
-"Tietotunnisteet tässä luettelossa eivät saa toistua ”Tietovarasto - lisää "
-"tietoaiheet” luettelossa."
+"Tietotunnisteet tässä luettelossa eivät saa toistua ”Kaikki "
+"tietovarastotiedot” luettelossa."
 
 #. I18N: Help text for the “Unique source facts” configuration setting
 #: admin_trees_config.php:2051
@@ -14081,7 +14081,7 @@ msgstr ""
 "Tämä on luettelo GEDCOM tietoja, joita käyttäjäsi voi lisätä vain "
 "<u>kerran</u> lähdetiedoksi. Esimerkiksi, jos TITL (otsikko) on luettelossa, "
 "niin se voi esiintyä vain kerran TITL tietueena lähdetiedoissa. Tieto tässä "
-"luettelossa ei saa toistua ”Kaikki lähdetieto” luettelossa."
+"luettelossa ei saa toistua ”Kaikki lähdetiedot” luettelossa."
 
 #. I18N: Help text for the “Server name” site configuration setting
 #: admin_site_config.php:334
