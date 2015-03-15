@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-03-15 07:42+0100\n"
+"PO-Revision-Date: 2015-03-15 07:54+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Finnish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
@@ -259,15 +259,15 @@ msgstr[1] "%s päivää sitten"
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s perhe on päivitetty."
+msgstr[1] "%s perhettä on päivitetty."
 
 #: admin.php:761
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s sukupuu"
+msgstr[1] "%s sukupuuta"
 
 #: app/Stats.php:4748 app/Stats.php:4752
 #, php-format
@@ -301,8 +301,8 @@ msgstr[1] "%s henkilöä ovat yksityissuojattuja."
 #, php-format
 msgid "%s individuals has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s henkilö on päivitetty."
+msgstr[1] "%s henkilöä on päivitetty."
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:122
@@ -343,8 +343,8 @@ msgstr[1] "%s kuukautta sitten"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s lisätieto on päivitetty."
+msgstr[1] "%s lisätietoa on päivitetty."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: includes/functions/functions.php:2108
@@ -369,8 +369,8 @@ msgstr[1] "%s sekunteja sitten"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s lähde on päivitetty."
+msgstr[1] "%s lähdettä on päivitetty."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2124
@@ -1737,7 +1737,7 @@ msgstr "Kaikilla PGV käyttäjillä pitää olla yksilölliset sähköpostiosoit
 
 #: admin_trees_config.php:601
 msgid "All facts and events"
-msgstr ""
+msgstr "Kaikki tiedot ja tapahtumat"
 
 #: admin_trees_config.php:1883
 msgid "All family facts"
@@ -1762,7 +1762,7 @@ msgstr "Kaikki henkilöt"
 
 #: admin_trees_config.php:592
 msgid "All records"
-msgstr ""
+msgstr "Kaikki tietueet"
 
 #: admin_trees_config.php:2090
 msgid "All repository facts"
@@ -7280,7 +7280,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:4624
 msgid "Import all places from a family tree"
-msgstr "Tuo kaikki sijainnit sukupuusta"
+msgstr "Tuo kaikki paikat sukupuusta"
 
 #: admin_trees_manage.php:254
 msgid "Import options"
