@@ -691,11 +691,11 @@ msgstr "Opis przyczyny związanej z wydarzeniem lub faktem, na przykład przyczy
 
 #: admin_trees_download.php:116 admin_trees_manage.php:209
 msgid "A file on the server"
-msgstr ""
+msgstr "Plik na serwerze"
 
 #: admin_trees_download.php:201 admin_trees_manage.php:198
 msgid "A file on your computer"
-msgstr ""
+msgstr "Plik na komputerze"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:30
@@ -1716,7 +1716,7 @@ msgstr "Album"
 
 #: app/Gedcom/GedcomCodeTemp.php:84
 msgid "Albuquerque, New Mexico"
-msgstr "Albuquerque, New Mexico"
+msgstr "Albuquerque, Nowy Meksyk"
 
 #: app/Stats.php:6131
 msgid "Algeria"
@@ -2780,7 +2780,7 @@ msgstr "Liczba urodzeń według wieku"
 
 #: app/Gedcom/GedcomCodeTemp.php:100
 msgid "Bismarck, North Dakota"
-msgstr "Bismarck, North Dakota"
+msgstr "Bismarck, Północna Dakota"
 
 #. I18N: gedcom tag BLES
 #: app/Gedcom/GedcomTag.php:215
@@ -2809,11 +2809,11 @@ msgstr "Blue Marine"
 
 #: message.php:135
 msgid "Body"
-msgstr "Treść:"
+msgstr "Treść"
 
 #: app/Gedcom/GedcomCodeTemp.php:102
 msgid "Bogota, Colombia"
-msgstr "Bogota, Colombia"
+msgstr "Bogota, Kolumbia"
 
 #: app/Gedcom/GedcomCodeTemp.php:104
 msgid "Boise, Idaho"
@@ -3709,7 +3709,9 @@ msgstr "Kliknij imię i nazwisko osoby aby dodać ją do listy powiązań."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:295
 msgid "Click on a title to go straight to it, or scroll down to read them all."
-msgstr "Kliknij na tytuł, aby przejść bezpośrednio do odpowiedzi, lub przewiń w dół, aby przeczytać wszystkie"
+msgstr ""
+"Kliknij na tytuł, aby przejść bezpośrednio do odpowiedzi, lub przewiń w dół, "
+"aby przeczytać wszystkie."
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:69
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:80
@@ -3766,7 +3768,7 @@ msgstr "Columbia River, Washington"
 
 #: app/Gedcom/GedcomCodeTemp.php:126
 msgid "Columbia, South Carolina"
-msgstr "Columbia, South Carolina"
+msgstr "Columbia, Południowa Karolina"
 
 #: app/Gedcom/GedcomCodeTemp.php:128
 msgid "Columbus, Ohio"
@@ -3824,7 +3826,7 @@ msgstr "Zakończone; data nieznana"
 
 #: admin_trees_download.php:142
 msgid "Compress the GEDCOM file"
-msgstr ""
+msgstr "Spakuj plik GEDCOM"
 
 #. I18N: gedcom tag CONC
 #: app/Gedcom/GedcomTag.php:303
@@ -4253,7 +4255,7 @@ msgstr "Daitch-Mokotoff"
 
 #: app/Gedcom/GedcomCodeTemp.php:134
 msgid "Dallas, Texas"
-msgstr "Dallas, Texas"
+msgstr "Dallas, Teksas"
 
 #. I18N: A summary of the system status
 #: admin.php:399
@@ -4453,7 +4455,7 @@ msgstr "Data rejestracji"
 
 #: app/Module/UserMessagesModule.php:79
 msgid "Date sent"
-msgstr "Data wysłania:"
+msgstr "Data wysłania"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:747
@@ -5373,7 +5375,7 @@ msgstr "Edytuj historię"
 
 #: app/Tree.php:562
 msgid "Edit this individual and replace their details with your own."
-msgstr "Edytuj tę osobę i zastąp jej dane swoimi"
+msgstr "Edytuj tę osobę i zastąp jej dane swoimi."
 
 #: admin_users.php:268
 msgid "Edit user"
@@ -5694,7 +5696,7 @@ msgstr "Eksportuj"
 
 #: admin_trees_download.php:34
 msgid "Export a GEDCOM file"
-msgstr ""
+msgstr "Eksportuj plik GEDCOM"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:279
@@ -5703,7 +5705,7 @@ msgstr "Eksportowanie wszystkich drzew genealogicznych do plików GEDCOM…"
 
 #: admin_trees_download.php:135
 msgid "Export options"
-msgstr ""
+msgstr "Opcje eksportu"
 
 #. I18N: A configuration setting.  ... [who were] born in the last XX years or died in the last YY years
 #: admin_trees_config.php:483
@@ -6446,7 +6448,7 @@ msgstr "Często zadawane pytania"
 
 #: app/Gedcom/GedcomCodeTemp.php:150
 msgid "Fresno, California"
-msgstr "Fresno, California"
+msgstr "Fresno, Kalifornia"
 
 #. I18N: abbreviation for Friday
 #: app/Date/CalendarDate.php:385 includes/functions/functions_print.php:709
@@ -6941,7 +6943,7 @@ msgstr "Witaj %s …"
 #: login.php:390
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr "Witaj %s …<br>Dziękujemy za rejestrację"
+msgstr "Witaj %s …<br>Dziękujemy za rejestrację."
 
 #: login.php:317 login.php:565
 msgid "Hello administrator…"
@@ -7086,7 +7088,7 @@ msgstr "Gospodarstwo domowe"
 
 #: app/Gedcom/GedcomCodeTemp.php:174
 msgid "Houston, Texas"
-msgstr "Houston, Texas"
+msgstr "Houston, Teksas"
 
 #: app/Stats.php:6171
 msgid "Hungary"
@@ -7297,7 +7299,7 @@ msgstr "Importuj"
 
 #: admin_trees_manage.php:162
 msgid "Import a GEDCOM file"
-msgstr ""
+msgstr "Importuj plik GEDCOM"
 
 #: app/Module/GoogleMapsModule.php:4626
 msgid "Import all places from a family tree"
@@ -7305,7 +7307,7 @@ msgstr "Importuj wszystkie miejsca z drzewa genealogicznego"
 
 #: admin_trees_manage.php:254
 msgid "Import options"
-msgstr ""
+msgstr "Opcje importu"
 
 #: admin_trees_merge.php:84 admin_trees_renumber.php:264
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
@@ -7850,7 +7852,7 @@ msgstr "kislew"
 
 #: app/Gedcom/GedcomCodeTemp.php:184
 msgid "Kona, Hawaii"
-msgstr "Kona, Hawaii"
+msgstr "Kona, Hawaje"
 
 #: app/Stats.php:6191
 msgid "Korea"
@@ -7900,7 +7902,7 @@ msgstr "Świątynia Mormońska"
 
 #: app/Gedcom/GedcomCodeTemp.php:166
 msgid "Laie, Hawaii"
-msgstr "Laie, Hawaii"
+msgstr "Laie, Hawaje"
 
 #. I18N: page orientation
 #: admin_trees_config.php:61 modules_v3/change_report/report.xml:10
@@ -7920,7 +7922,7 @@ msgstr "Język"
 #. I18N: Menu entry
 #: admin_site_config.php:144 app/Theme/AdministrationTheme.php:71
 msgid "Languages"
-msgstr ""
+msgstr "Języki"
 
 #: app/Stats.php:6193
 msgid "Laos"
@@ -8061,12 +8063,12 @@ msgstr "Lima, Peru"
 
 #: app/Module/FamilyTreeNewsModule.php:163
 msgid "Limit"
-msgstr "Ograniczenie:"
+msgstr "Ograniczenie"
 
 #. I18N: Limit display by [age/number]
 #: app/Module/FamilyTreeNewsModule.php:154
 msgid "Limit display by"
-msgstr "Ogranicz wyświetlanie:"
+msgstr "Ogranicz wyświetlanie"
 
 #: app/Module/RelativesTabModule.php:344 edit_interface.php:990
 #: edit_interface.php:1049
@@ -8222,7 +8224,7 @@ msgstr "Długość"
 
 #: app/Gedcom/GedcomCodeTemp.php:186
 msgid "Los Angeles, California"
-msgstr "Los Angeles, California"
+msgstr "Los Angeles, Kalifornia"
 
 #: login.php:213 login.php:229 login.php:250
 #: modules_v3/login_block/LoginBlockModule.php:87
@@ -8239,7 +8241,7 @@ msgstr "Mała liczba osób"
 
 #: app/Gedcom/GedcomCodeTemp.php:196
 msgid "Lubbock, Texas"
-msgstr "Lubbock, Texas"
+msgstr "Lubbock, Teksas"
 
 #: app/Stats.php:6202
 msgid "Luxembourg"
@@ -8741,7 +8743,7 @@ msgstr "Przedrostek multimediów"
 #. I18N: Label for search field
 #: find.php:191
 msgid "Media contains"
-msgstr "Obiekt multimedialny zawiera:"
+msgstr "Obiekt multimedialny zawiera"
 
 #: admin_media.php:685 admin_media_upload.php:198
 msgid "Media file"
@@ -8788,7 +8790,7 @@ msgstr "Multimedia"
 
 #: medialist.php:174
 msgid "Media objects found"
-msgstr "Znalezionych obiektów multimedialnych:"
+msgstr "Znalezionych obiektów multimedialnych"
 
 #: medialist.php:112
 msgid "Media objects per page"
@@ -9328,7 +9330,7 @@ msgstr "Nazwa"
 #. I18N: Label for search field
 #: find.php:155 find.php:172
 msgid "Name contains"
-msgstr "Nazwa zawiera:"
+msgstr "Nazwa zawiera"
 
 #: app/Gedcom/GedcomTag.php:607
 msgid "Name in Hebrew"
@@ -9478,7 +9480,7 @@ msgstr "Nowy użytkownik na %s"
 
 #: app/Gedcom/GedcomCodeTemp.php:232
 msgid "Newport Beach, California"
-msgstr "Newport Beach, California"
+msgstr "Newport Beach, Kalifornia"
 
 #. I18N: Name of a module
 #: app/Module/FamilyTreeNewsModule.php:25
@@ -9675,7 +9677,7 @@ msgstr "Brak danych o mapie dla tej osoby"
 
 #: admin_site_merge.php:225 admin_site_merge.php:267 admin_site_merge.php:308
 msgid "No matching facts found"
-msgstr "Nie znaleziono zgodnych faktów."
+msgstr "Nie znaleziono zgodnych faktów"
 
 #: addmedia.php:164 addmedia.php:302 admin_media_upload.php:123
 msgid "No media file was provided."
@@ -9899,7 +9901,7 @@ msgstr "Liczba bezdzietnych rodzin"
 #: app/Module/ClippingsCartModule.php:524
 #: app/Module/ClippingsCartModule.php:527
 msgid "Number of generations"
-msgstr "Liczba pokoleń:"
+msgstr "Liczba pokoleń"
 
 #: app/Module/FamilyTreeNewsModule.php:159
 msgid "Number of items"
@@ -9935,7 +9937,7 @@ msgstr "Pielęgniarz"
 
 #: app/Gedcom/GedcomCodeTemp.php:240
 msgid "Oakland, California"
-msgstr "Oakland, California"
+msgstr "Oakland, Kalifornia"
 
 #: app/Gedcom/GedcomCodeTemp.php:242
 msgid "Oaxaca, Mexico"
@@ -10183,7 +10185,7 @@ msgstr "PGV musi być w wersji 4.2.3, lub SVN do wersji %s"
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:77
 msgid "PHP blocked the file because of its extension."
-msgstr "PHP zablokowało plik przez rozszerzenie"
+msgstr "PHP zablokowało plik z powodu jego rozszerzenia."
 
 #: setup.php:140
 #, php-format
@@ -10198,7 +10200,7 @@ msgstr "Rozszerzenie PHP „%s” jest wyłączone. Nie można zainstalować web
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:74
 msgid "PHP failed to write to disk."
-msgstr "PHP nie może zapisać na dysku"
+msgstr "PHP nie może zapisać na dysku."
 
 #: admin_site_info.php:71
 msgid "PHP information"
@@ -10445,7 +10447,7 @@ msgstr "PhpGedView może być zainstalowany w jednym z następujących folderów
 
 #: admin_pgv_to_wt.php:94
 msgid "PhpGedView must use the same database as webtrees."
-msgstr "PhpGedView musi używać tej samej bazy danych co webtrees"
+msgstr "PhpGedView musi używać tej samej bazy danych co webtrees."
 
 #: admin_pgv_to_wt.php:44 admin_trees_manage.php:662
 msgid "PhpGedView to webtrees transfer wizard"
@@ -10485,7 +10487,7 @@ msgstr "Sprawdź miejsca"
 #. I18N: Label for search field
 #: find.php:211
 msgid "Place contains"
-msgstr "Miejsce zawiera:"
+msgstr "Miejsce zawiera"
 
 #: app/Module/TopPageViewsModule.php:136
 msgid "Place counts before or after name?"
@@ -10670,7 +10672,7 @@ msgstr "Podaj prawidłowy adres email."
 #: app/Module/CensusAssistantModule.php:96 find.php:115 search.php:34
 #: search.php:46
 msgid "Please enter more than one character."
-msgstr "Wprowadź więcej niż jeden znak"
+msgstr "Wprowadź więcej niż jeden znak."
 
 #: message.php:104
 msgid "Please enter some message text before sending."
@@ -11310,7 +11312,7 @@ msgstr "Zmienić numerację drzewa genealogicznego"
 #. I18N: button label
 #: search.php:217
 msgid "Replace"
-msgstr ""
+msgstr "Zamień"
 
 #: admin_trees_places.php:103 search.php:162
 msgid "Replace with"
@@ -11358,7 +11360,7 @@ msgstr "Przedrostek repozytorium"
 #. I18N: Label for search field
 #: find.php:230
 msgid "Repository contains"
-msgstr "Repozytorium zawiera:"
+msgstr "Repozytorium zawiera"
 
 #: edit_interface.php:1563 includes/functions/functions_print_lists.php:1315
 msgid "Repository name"
@@ -11412,7 +11414,9 @@ msgstr "Przywróć domyślny układ bloków"
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:376
 msgid "Restrict access to the website, using IP addresses and user-agent strings."
-msgstr "Ograniczenie dostępu do witryny za pomocą adresów IP i identyfikatora przeglądarki (UAString)"
+msgstr ""
+"Ograniczenie dostępu do witryny za pomocą adresów IP i identyfikatora "
+"przeglądarki (UAString)."
 
 #: admin_users.php:569
 msgid "Restrict to immediate family"
@@ -11723,7 +11727,7 @@ msgstr "Bezpieczne połączenie"
 #. I18N: A site configuration setting
 #: admin_site_config.php:608
 msgid "Security code"
-msgstr ""
+msgstr "Kod bezpieczeństwa"
 
 #. I18N: %s is a URL
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:128
@@ -12055,7 +12059,7 @@ msgstr "Wspólna notatka"
 #. I18N: Label for search field
 #: find.php:250
 msgid "Shared note contains"
-msgstr "Wspólna notatka zawiera:"
+msgstr "Wspólna notatka zawiera"
 
 #: app/Theme/BaseTheme.php:1415
 #: includes/functions/functions_print_lists.php:1068 notelist.php:30
@@ -12326,7 +12330,7 @@ msgstr "Wyświetlaj liczniki odwiedzin na stronie głównej i stronach informacj
 
 #: compact.php:57
 msgid "Show images"
-msgstr ""
+msgstr "Pokaż zdjęcia"
 
 #: app/Module/GoogleMapsModule.php:4551
 msgid "Show inactive places"
@@ -12400,7 +12404,7 @@ msgstr "Tylko wydarzenia dla osób żyjących"
 
 #: includes/functions/functions_print_lists.php:150
 msgid "Show only females."
-msgstr "Pokaż tylko kobiety"
+msgstr "Pokaż tylko kobiety."
 
 #: includes/functions/functions_print_lists.php:159
 msgid "Show only individuals for whom the gender is not known."
@@ -12412,7 +12416,7 @@ msgstr "Pokazać osoby, wydarzenia, czy wszystko?"
 
 #: includes/functions/functions_print_lists.php:141
 msgid "Show only males."
-msgstr "Pokaż tylko mężczyzn"
+msgstr "Pokaż tylko mężczyzn."
 
 #: find.php:464
 msgid "Show only the selected tags"
@@ -12630,7 +12634,7 @@ msgstr "Użytkownicy strony mogą wysyłać sobie wiadomości. Można wybrać w 
 #. I18N: A site configuration setting
 #: admin_site_config.php:515 admin_site_config.php:536
 msgid "Site verification code"
-msgstr ""
+msgstr "Kod weryfikacyjny witryny"
 
 #. I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting
 #: admin_site_config.php:526 admin_site_config.php:547
@@ -12814,7 +12818,7 @@ msgstr "Opisy źródeł mogą zawierać pola Jakości danych oraz Daty wpisu w o
 #. I18N: Label for search field
 #: find.php:269
 msgid "Source contains"
-msgstr "Źródło zawiera:"
+msgstr "Źródło zawiera"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:2265 modules_v3/fact_sources/report.xml:6
@@ -13018,7 +13022,7 @@ msgstr "Region"
 
 #: app/Module/UserMessagesModule.php:78 message.php:127
 msgid "Subject"
-msgstr "Temat:"
+msgstr "Temat"
 
 #. I18N: gedcom tag SUBN
 #: app/Gedcom/GedcomTag.php:811
@@ -13290,7 +13294,7 @@ msgstr "Kreator transferu PGV do webtrees jest zautomatyzowanym procesem, który
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
 msgid "The PHP temporary folder is missing."
-msgstr "Brak tymczasowego katalogu PHP"
+msgstr "Brak tymczasowego katalogu PHP."
 
 #: admin_users.php:97
 #, php-format
@@ -13414,7 +13418,7 @@ msgstr "Plik %s został wgrany."
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
 msgid "The file was only partially uploaded.  Please try again."
-msgstr "Plik został wgrany tylko częściowo, spróbuj ponownie"
+msgstr "Plik został wgrany tylko częściowo, spróbuj ponownie."
 
 #. I18N: %s is a filename
 #: medialist.php:294 mediaviewer.php:111
@@ -13525,7 +13529,7 @@ msgstr "Plik multimedialny %s nie istnieje."
 
 #: mediafirewall.php:41
 msgid "The media file was not found in this family tree."
-msgstr "Nie znaleziono pliku multimedialnego w drzewie genealogicznym"
+msgstr "Nie znaleziono pliku multimedialnego w drzewie genealogicznym."
 
 #: admin_media_upload.php:223
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
@@ -13597,7 +13601,7 @@ msgstr "Wpis %1$s został zmieniony na %2$s."
 
 #: action.php:86
 msgid "The record has been copied to the clipboard."
-msgstr "Wpis skopiowany do schowka"
+msgstr "Wpis skopiowany do schowka."
 
 #. I18N: Records are individuals, sources, etc.
 #: admin_site_merge.php:162
@@ -13663,7 +13667,7 @@ msgstr "Aktualizacja zakończona."
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:62
 msgid "The uploaded file exceeds the allowed size."
-msgstr "Wielkość wgrywanego pliku przekracza dozwolony rozmiar"
+msgstr "Wielkość wgrywanego pliku przekracza dozwolony rozmiar."
 
 #: admin_users.php:788
 #, php-format
@@ -13691,12 +13695,12 @@ msgstr "Wartość znacznika META opisu (Description) w nagłówku HTML strony. P
 #: admin_pgv_to_wt.php:107
 #, php-format
 msgid "The version of %s is too new."
-msgstr "Wersja %s jest za nowa"
+msgstr "Wersja %s jest za nowa."
 
 #: admin_pgv_to_wt.php:104
 #, php-format
 msgid "The version of %s is too old."
-msgstr "Wersja %s jest za stara"
+msgstr "Wersja %s jest za stara."
 
 #: admin_site_access.php:85
 msgid "The website access rule has been created."
@@ -14128,7 +14132,7 @@ msgstr "Ten plik multimedialny istnieje, ale nie jest dostępny."
 
 #: mediafirewall.php:410
 msgid "This media file is broken and cannot be watermarked."
-msgstr "Te multimedia są uszkodzone i nie mogą być zaznaczone znakiem wodnym"
+msgstr "Te multimedia są uszkodzone i nie mogą być zaznaczone znakiem wodnym."
 
 #: mediaviewer.php:73
 msgid "This media object does not exist or you do not have permission to view it."
@@ -14165,7 +14169,7 @@ msgstr "Ta wiadomość została wysłana podczas przeglądania następującego a
 #: message.php:121
 #, php-format
 msgid "This message will be sent to %s"
-msgstr "Tą wiadomość otrzyma %s."
+msgstr "Tą wiadomość otrzyma %s"
 
 #: setup.php:439
 msgid "This must be at least six characters long.  It is case-sensitive."
@@ -14986,7 +14990,7 @@ msgstr "Mimo to aktualizuj"
 #: admin.php:546 admin_site_upgrade.php:80
 #, php-format
 msgid "Upgrade to webtrees %s."
-msgstr "Aktualizacja webtrees do wersji %s"
+msgstr "Aktualizacja webtrees do wersji %s."
 
 #: admin_site_upgrade.php:53
 msgid "Upgrade wizard"
@@ -15232,7 +15236,7 @@ msgstr "Veracruz, Meksyk"
 
 #: login.php:348 login.php:542
 msgid "Verification code"
-msgstr "Kod weryfikacyjny:"
+msgstr "Kod weryfikacyjny"
 
 #: admin_users.php:853
 msgid "Verified"
@@ -15769,7 +15773,7 @@ msgstr "Należy wypełnić wszystkie pola konta administratora."
 
 #: edit_interface.php:1548
 msgid "You must provide a repository name."
-msgstr "Należy podać nazwę repozytorium"
+msgstr "Należy podać nazwę repozytorium."
 
 #: edit_interface.php:1210
 msgid "You must provide a source title"
@@ -15938,7 +15942,7 @@ msgstr "Powiększ tutaj"
 
 #: app/Theme/BaseTheme.php:664 app/Theme/BaseTheme.php:709
 msgid "Zoom in/out on this box."
-msgstr "Powiększ/pomniejsz tę ramkę"
+msgstr "Powiększ/pomniejsz tę ramkę."
 
 #: app/Module/GoogleMapsModule.php:4056 app/Module/GoogleMapsModule.php:4130
 #: app/Module/GoogleMapsModule.php:4569
