@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-14 22:11+0100\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Norwegian Bokmål <http://translate.webtrees.net/projects/webtrees/webtrees/nb/>\n"
+"PO-Revision-Date: 2015-03-16 04:28+0100\n"
+"Last-Translator: H R Nilsen <hrnwebtrees@yahoo.com>\n"
+"Language-Team: Norwegian Bokmål "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/nb/>\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -607,7 +608,20 @@ msgstr "9."
 #. I18N: Help text for the “Automatically create globally unique IDs” configuration setting
 #: admin_trees_config.php:776
 msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates.  The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
-msgstr "<b>GUID</b> er i denne sammenheng en forkortelse for «Globalt Unik ID» («Globally Unique ID»).<br><br>Tanken med GUID er at alle verdens individer skal kunne identifiseres på en gjentagbar måte, slik at sentrale organisasjoner som f.eks. LDS-kirkens Familiehistoriesenter i Salt Lake City, eller for den saks skyld andre kompatible slektsprogrammer på din egen computer, kan avgjøre om det dreier seg om samme person, uansett hvor GEDCOM-filen kommer fra. Familiehistoriesenterets mål er å føre et sentralt register over genealogiske data som så kan gjøres tilgjengelig gjennom nettjenester, så et hvilket som helst program kan få adgang til registerets data og avstemme sine egne data mot dem.<br><br>Hvis du ikke har planer om å dele din GEDCOM-fil med andre på denne måten, trenger du ikke å la webtrees opprette disse GUID-ene; på den annen side gjør det heller ingen skade, utover at det øker størrelsen på din GEDCOM-fil en smule."
+msgstr ""
+"<b>GUID</b> er i denne sammenheng en forkortelse for «Globalt Unik ID» («"
+"Globally Unique ID»).<br><br>Tanken med GUID er at alle verdens individer "
+"skal kunne identifiseres på en gjentagbar måte, slik at sentrale "
+"organisasjoner som f.eks. LDS-kirkens Familiehistoriesenter i Salt Lake "
+"City, eller for den saks skyld andre kompatible slektsprogrammer på din egen "
+"datamaskin, kan avgjøre om det dreier seg om samme person, uansett hvor "
+"GEDCOM-filen kommer fra. Familiehistoriesenterets mål er å føre et sentralt "
+"register over genealogiske data som så kan gjøres tilgjengelig gjennom "
+"nettjenester, så et hvilket som helst program kan få adgang til registerets "
+"data og avstemme sine egne data mot dem.<br><br>Hvis du ikke har planer om å "
+"dele din GEDCOM-fil med andre på denne måten, trenger du ikke å la webtrees "
+"opprette disse GUID-ene; på den annen side gjør det heller ingen skade, "
+"utover at det øker størrelsen på din GEDCOM-fil en smule."
 
 #: admin_trees_manage.php:686
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items.  You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
@@ -8722,7 +8736,7 @@ msgstr "Medie ID prefiks"
 #. I18N: Label for search field
 #: find.php:191
 msgid "Media contains"
-msgstr "Media inneholder:"
+msgstr "Media inneholder"
 
 #: admin_media.php:685 admin_media_upload.php:198
 msgid "Media file"
@@ -8736,7 +8750,7 @@ msgstr "Mediefil for opplasting"
 #: admin_trees_download.php:164
 #, php-format
 msgid "Media filenames will be prefixed by %s."
-msgstr ""
+msgstr "Mediefiler vil få lagt til %s i begynnelsen av filnavnet."
 
 #: admin_media.php:617 admin_trees_config.php:1063
 msgid "Media files"
@@ -11173,7 +11187,7 @@ msgstr "Nære slektninger"
 #. I18N: gedcom tag RELA
 #: app/Gedcom/GedcomTag.php:717
 msgid "Relationship"
-msgstr "Forbindelse"
+msgstr "Slektskap"
 
 #. I18N: gedcom tag _FREL
 #: app/Gedcom/GedcomTag.php:1502
@@ -14055,7 +14069,9 @@ msgstr "Dette er listen med GEDCOMfakta som brukerne dine kan legge til <u>en ga
 #. I18N: Help text for the “Server name” site configuration setting
 #: admin_site_config.php:334
 msgid "This is the name of the SMTP server.  “localhost” means that the mail service is running on the same computer as your web server."
-msgstr "Dette er navnet på SMTP-serveren. 'localhost' betyr, at mailserveren kjører på samme computer som din webserver."
+msgstr ""
+"Dette er navnet på SMTP-serveren. 'localhost' betyr, at mailserveren kjører "
+"på samme datamaskin som din webserver."
 
 #. I18N: Help text for the “Minimum number of occurrences to be a ‘common surname’” configuration setting
 #: admin_trees_config.php:1216
@@ -14992,7 +15008,9 @@ msgstr "Last opp mediefiler"
 
 #: admin_media_upload.php:185
 msgid "Upload one or more media files from your local computer.  Media files can be pictures, video, audio, or other formats."
-msgstr "Last opp en eller flere mediefiler fra din egen computer. Mediefiler kan være bilder, video, lyd eller andre formater."
+msgstr ""
+"Last opp en eller flere mediefiler fra din egen datamaskin. Mediefiler kan "
+"være bilder, video, lyd eller andre formater."
 
 #: app/Stats.php:6308
 msgid "Uruguay"
