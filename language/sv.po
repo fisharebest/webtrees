@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-14 22:09+0100\n"
+"PO-Revision-Date: 2015-03-16 09:01+0100\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Swedish <http://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
+"Language-Team: Swedish "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -74,7 +75,7 @@ msgstr "%1$s %2$s har en %3$s-länk till %4$s."
 #: includes/functions/functions.php:2132
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr "%1$s är %2$ sgenerationer mera"
+msgstr "%1$s är %2$s generationer mera"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: includes/functions/functions.php:2135
