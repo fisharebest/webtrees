@@ -1,6 +1,9 @@
 CHANGE LOG
 ==========
 
+## 1.1.2 (2015-03-15)
+ - Do not suppress the script in the language tag for zh-Hans
+
 ## 1.1.1 (2015-03-13)
  - Fix endonym (sr-Latn)
 

@@ -101,7 +101,7 @@ class FamilyNavigatorModule extends Module implements ModuleSidebarInterface {
 	 * @param string $title
 	 */
 	private function drawFamily(Family $family, $title) {
-		global $controller, $SHOW_PRIVATE_RELATIONSHIPS;
+		global $controller;
 
 		?>
 		<tr>
@@ -112,54 +112,46 @@ class FamilyNavigatorModule extends Module implements ModuleSidebarInterface {
 			</td>
 		</tr>
 		<?php
-		$access_level = $SHOW_PRIVATE_RELATIONSHIPS ? Auth::PRIV_HIDE : Auth::accessLevel($family->getTree());
-		$facts = array_merge($family->getFacts('HUSB', false, $access_level), $family->getFacts('WIFE', false, $access_level));
-		foreach ($facts as $fact) {
-			$spouse = $fact->getTarget();
-			if ($spouse instanceof Individual) {
-				$menu = new Menu(get_close_relationship_name($controller->record, $spouse));
-				$menu->addClass('', 'submenu flyout');
-				$menu->addSubmenu(new Menu($this->getParents($spouse)));
-				?>
-				<tr>
-					<td class="facts_label">
-						<?php echo $menu->getMenu(); ?>
-					</td>
-					<td class="center <?php echo $controller->getPersonStyle($spouse); ?> nam">
-						<a class="famnav_link" href="<?php echo $spouse->getHtmlUrl(); ?>">
-							<?php echo $spouse->getFullName(); ?>
-						</a>
-						<div class="font9">
-							<?php echo $spouse->getLifeSpan(); ?>
-						</div>
-					</td>
-				</tr>
-				<?php
-			}
+		foreach ($family->getSpouses() as $spouse) {
+			$menu = new Menu(get_close_relationship_name($controller->record, $spouse));
+			$menu->addClass('', 'submenu flyout');
+			$menu->addSubmenu(new Menu($this->getParents($spouse)));
+			?>
+			<tr>
+				<td class="facts_label">
+					<?php echo $menu->getMenu(); ?>
+				</td>
+				<td class="center <?php echo $controller->getPersonStyle($spouse); ?> nam">
+					<a class="famnav_link" href="<?php echo $spouse->getHtmlUrl(); ?>">
+						<?php echo $spouse->getFullName(); ?>
+					</a>
+					<div class="font9">
+						<?php echo $spouse->getLifeSpan(); ?>
+					</div>
+				</td>
+			</tr>
+		<?php
 		}
 
-		foreach ($family->getFacts('CHIL', false, $access_level) as $fact) {
-			$child = $fact->getTarget();
-			if ($child instanceof Individual) {
-				$menu = new Menu(get_close_relationship_name($controller->record, $child));
-				$menu->addClass('', 'submenu flyout');
-				$menu->addSubmenu(new Menu($this->getFamily($child)));
-				?>
-				<tr>
-					<td class="facts_label">
-						<?php echo $menu->getMenu(); ?>
-					</td>
-					<td class="center <?php echo $controller->getPersonStyle($child); ?> nam">
-						<a class="famnav_link" href="<?php echo $child->getHtmlUrl(); ?>">
-							<?php echo $child->getFullName(); ?>
-						</a>
-						<div class="font9">
-							<?php echo $child->getLifeSpan(); ?>
-						</div>
-					</td>
-				</tr>
-				<?php
-			}
+		foreach ($family->getChildren() as $child) {
+			$menu = new Menu(get_close_relationship_name($controller->record, $child));
+			$menu->addClass('', 'submenu flyout');
+			$menu->addSubmenu(new Menu($this->getFamily($child)));
+			?>
+			<tr>
+				<td class="facts_label">
+					<?php echo $menu->getMenu(); ?>
+				</td>
+				<td class="center <?php echo $controller->getPersonStyle($child); ?> nam">
+					<a class="famnav_link" href="<?php echo $child->getHtmlUrl(); ?>">
+						<?php echo $child->getFullName(); ?>
+					</a>
+					<div class="font9">
+						<?php echo $child->getLifeSpan(); ?>
+					</div>
+				</td>
+			</tr>
+		<?php
 		}
 	}
 

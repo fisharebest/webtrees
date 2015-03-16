@@ -415,7 +415,7 @@ class I18N {
 	 *
 	 * echo self::plural('There is an error', 'There are errors', $num_errors);
 	 * echo self::plural('There is one error', 'There are %s errors', $num_errors);
-	 * echo self::plural('There is $1$s %2$s cat', 'There are $1$s %2$s cats', $num, $num, $colour);
+	 * echo self::plural('There is %1$s %2$s cat', 'There are %1$s %2$s cats', $num, $num, $colour);
 	 *
 	 * @return string
 	 */

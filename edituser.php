@@ -204,7 +204,7 @@ function checkform(frm) {
 			<div class="value">
 				<input type="password" id="form_pass1" name="form_pass1">
 				<p class="small text-muted">
-					<?php echo I18N::translate('Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”.'); ?>
+					<?php echo I18N::translate('Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different from “SECRET”.'); ?>
 					<?php echo I18N::translate('Leave the password blank if you want to keep the current password.'); ?>
 				</p>
 			</div>

@@ -1616,7 +1616,7 @@ function format_surname_tagcloud($surnames, $script, $totals) {
 	foreach ($surnames as $surn => $surns) {
 		foreach ($surns as $spfxsurn => $indis) {
 			$cloud->appendTag(array(
-				'title'  => $totals ? I18N::translate('%1$s ($2$s)', '<span dir="auto">' . $spfxsurn . '</span>', I18N::number(count($indis))) : $spfxsurn,
+				'title'  => $totals ? I18N::translate('%1$s (%2$s)', '<span dir="auto">' . $spfxsurn . '</span>', I18N::number(count($indis))) : $spfxsurn,
 				'weight' => count($indis),
 				'params' => array(
 					'url' => $surn ?

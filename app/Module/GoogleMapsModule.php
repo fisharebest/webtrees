@@ -894,8 +894,8 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 		if (isset($curgen)) {
 			$total = pow(2, $curgen) - 1;
 			echo I18N::plural(
-				'$1$s individual displayed, out of the normal total of $2$s, from $3$s generations.',
-				'$1$s individuals displayed, out of the normal total of $2$s, from $3$s generations.',
+				'%1$s individual displayed, out of the normal total of %2$s, from %3$s generations.',
+				'%1$s individuals displayed, out of the normal total of %2$s, from %3$s generations.',
 				$count,
 				I18N::number($count), I18N::number($total), I18N::number($curgen)
 			), '<br>';
@@ -910,9 +910,9 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 				if ($miscount == 0) {
 					echo I18N::translate('No ancestors in the database.'), "<br>";
 				} else {
-					echo /* I18N: $1$s is a count of individuals, %2$s is a list of their names */ I18N::plural(
-						'$1$s individual is missing birthplace map coordinates: %2$s.',
-						'$1$s individuals are missing birthplace map coordinates: %2$s.',
+					echo /* I18N: %1$s is a count of individuals, %2$s is a list of their names */ I18N::plural(
+						'%1$s individual is missing birthplace map coordinates: %2$s.',
+						'%1$s individuals are missing birthplace map coordinates: %2$s.',
 						$miscount, I18N::number($miscount), I18N::number($missing)),
 						'<br>';
 				}
@@ -2536,6 +2536,8 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 	 * @return integer
 	 */
 	private function getPlaceId($place) {
+		global $WT_TREE;
+
 		$par      = explode(',', $place);
 		$par      = array_reverse($par);
 		$place_id = 0;
@@ -2615,7 +2617,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 	 * @param string $placelevels
 	 */
 	public function createMap($placelevels) {
-		global $level, $levelm, $plzoom, $controller;
+		global $level, $levelm, $plzoom, $controller, $WT_TREE;
 
 		$STREETVIEW = $this->getSetting('GM_USE_STREETVIEW');
 		$parent = Filter::getArray('parent');
@@ -4610,7 +4612,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 		<table id="gm_manage">
 			<tr>
 				<td>
-					<?php echo I18N::translate('Add  a new geographic location'); ?>
+					<?php echo I18N::translate('Add a new geographic location'); ?>
 				</td>
 				<td>
 					<form action="?" onsubmit="add_place_location(this.parent_id.options[this.parent_id.selectedIndex].value); return false;">
