@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-16 09:02+0100\n"
+"PO-Revision-Date: 2015-03-16 17:36+0100\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: Ukrainian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/uk/>\n"
@@ -140,7 +140,7 @@ msgstr[2] "У %1$s персон відсутня інформація про м�
 #: admin_trees_check.php:177
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr "%1$s является %2$s а повинен бути %3$s"
+msgstr "%1$s является %2$s а повинен бути %3$s."
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:635
@@ -712,7 +712,7 @@ msgstr "Список змін, які очікують перевірку мод
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:30
 msgid "A list of frequently asked questions and answers."
-msgstr "Список поширених запитань і відповідей. (ЧаВо)"
+msgstr "Список поширених запитань і відповідей (ЧаВо)."
 
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:33
@@ -732,7 +732,7 @@ msgstr "Список Єврейських пам'ятних дат, які ві�
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:30
 msgid "A list of the anniversaries that occur today."
-msgstr "Список річниць в цей день"
+msgstr "Список річниць в цей день."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:30
@@ -742,7 +742,7 @@ msgstr "Список річниць в найближчому майбутньо
 #. I18N: Description of the “Top given names” module
 #: app/Module/TopGivenNamesModule.php:30
 msgid "A list of the most popular given names."
-msgstr "Список найпопулярніших імен"
+msgstr "Список найпопулярніших імен."
 
 #. I18N: Description of the “Top surnames” module
 #: app/Module/TopSurnamesModule.php:30
@@ -771,7 +771,7 @@ msgstr ""
 
 #: login.php:252
 msgid "A new password has been requested for your user name."
-msgstr "Для Вашого ім'я користувача зроблений запит на новий пароль!"
+msgstr "Для Вашого ім'я користувача зроблений запит на новий пароль."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: login.php:567
@@ -826,7 +826,7 @@ msgstr "Список фактів, наведених у джерелі."
 #: app/Module/FamilyGroupReportModule.php:32
 #: modules_v3/family_group_report/report.xml:4
 msgid "A report of family members and their details."
-msgstr "Звіт про членів сім'ї та їх деталях"
+msgstr "Звіт про членів сім'ї та їх деталях."
 
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:32 modules_v3/death_report/report.xml:4
@@ -859,7 +859,7 @@ msgstr "Звіт про людей уклали шлюб в заданий ча�
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:32 modules_v3/change_report/report.xml:4
 msgid "A report of recent and pending changes."
-msgstr "Звіт останніх і очікують змін"
+msgstr "Звіт останніх і очікують змін."
 
 #. I18N: Description of the “Related families”
 #: app/Module/IndividualFamiliesReportModule.php:32
@@ -1248,7 +1248,7 @@ msgstr "Додати новину"
 #: app/Module/UpcomingAnniversariesModule.php:156
 #: app/Module/UserMessagesModule.php:145 app/Module/YahrzeitModule.php:269
 msgid "Add a scrollbar when block contents grow"
-msgstr "Додати смугу прокрутки, коли вміст блоку збільшиться."
+msgstr "Додати смугу прокрутки, коли вміст блоку збільшиться"
 
 #: app/Module/StoriesModule.php:97 app/Module/StoriesModule.php:179
 #: app/Module/StoriesModule.php:330
@@ -1406,7 +1406,7 @@ msgstr "Додати водяний знак на мініатюри?"
 #. I18N: Description of the “HTML” module
 #: app/Module/HtmlBlockModule.php:30
 msgid "Add your own text and graphics."
-msgstr "Додати свій особистий текст і графіки"
+msgstr "Додати свій особистий текст і графіки."
 
 #: editnews.php:33 editnews.php:51
 msgid "Add/edit a journal/news entry"
@@ -1858,7 +1858,7 @@ msgstr "Альтернативний спосіб для входу і вихо�
 #. I18N: Description of the “Theme change” module
 #: app/Module/ThemeSelectModule.php:30
 msgid "An alternative way to select a new theme."
-msgstr "Альтернативний метод вибору теми"
+msgstr "Альтернативний метод вибору теми."
 
 #: help_text.php:53
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
@@ -2806,7 +2806,7 @@ msgstr "Блакитна хвиля"
 
 #: message.php:135
 msgid "Body"
-msgstr "Текст:"
+msgstr "Текст"
 
 #: app/Gedcom/GedcomCodeTemp.php:102
 msgid "Bogota, Colombia"
@@ -3238,7 +3238,7 @@ msgstr "Каталонія"
 
 #: statistics.php:604
 msgid "Categories"
-msgstr "Категорії:"
+msgstr "Категорії"
 
 #. I18N: gedcom tag CAUS
 #: app/Gedcom/GedcomTag.php:243
@@ -3489,7 +3489,7 @@ msgstr "Діти переймають одне прізвище батька і 
 #. I18N: In the Portuguese surname tradition, ...
 #: admin_trees_config.php:90
 msgid "Children take one surname from the mother and one surname from the father."
-msgstr "Діти переймають одне прізвище матері та одну батька"
+msgstr "Діти переймають одне прізвище матері та одну батька."
 
 #. I18N: In the paternal surname tradition, ...
 #. I18N: In the patrilineal surname tradition, ...
@@ -3684,7 +3684,8 @@ msgstr "Натисніть на %s щоб вибрати персону як г�
 
 #: edit_interface.php:1747
 msgid "Click a row, then drag-and-drop to re-order media"
-msgstr "Клацніть мишею по рядку, потім перетягніть, щоб пересортувати медиаоб'єкти. "
+msgstr ""
+"Клацніть мишею по рядку, потім перетягніть, щоб пересортувати медиаоб'єкти"
 
 #: admin_trees_manage.php:690
 msgid "Click here for PhpGedView to webtrees transfer wizard"
@@ -3692,7 +3693,7 @@ msgstr "Відкрити асистент для трансферу з PhpGedVie
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:297
 msgid "Click here to add, edit, or delete"
-msgstr "Натисніть для додавання, редагування або видалення."
+msgstr "Натисніть для додавання, редагування або видалення"
 
 #: individual.php:243
 msgid "Click here to open or close the sidebar"
@@ -3704,7 +3705,9 @@ msgstr "Клацніть мишею по імені, щоб включити п�
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:295
 msgid "Click on a title to go straight to it, or scroll down to read them all."
-msgstr "Натисніть на назву, щоб перейти до нього або прокрутіть униз, щоб прочитати все"
+msgstr ""
+"Натисніть на назву, щоб перейти до нього або прокрутіть униз, щоб прочитати "
+"все."
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:69
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:80
@@ -4448,7 +4451,7 @@ msgstr "Дата реєстрації"
 
 #: app/Module/UserMessagesModule.php:79
 msgid "Date sent"
-msgstr "Дата відправки:"
+msgstr "Дата відправки"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:747
@@ -5758,7 +5761,7 @@ msgstr "Факт 1"
 
 #: app/Gedcom/GedcomTag.php:1488
 msgid "Fact 10"
-msgstr "Fact 10"
+msgstr "Факт 10"
 
 #: app/Gedcom/GedcomTag.php:1490
 msgid "Fact 11"
@@ -6673,7 +6676,7 @@ msgstr "Гібралтар"
 
 #: search.php:233
 msgid "Given name"
-msgstr "Ім'я, по батькові:"
+msgstr "Ім'я, по батькові"
 
 #. I18N: gedcom tag GIVN
 #: app/Gedcom/GedcomTag.php:501
@@ -6779,7 +6782,7 @@ msgstr "Гренландія"
 #. I18N: The gregorian calendar
 #: app/Date/GregorianDate.php:37
 msgid "Gregorian"
-msgstr "Григоріанськии?"
+msgstr "Григоріанськии"
 
 #: app/Stats.php:6160
 msgid "Grenada"
@@ -6901,7 +6904,7 @@ msgstr "Він був кремований"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:55
 msgid "Head of household"
-msgstr "Глава сім'ї:"
+msgstr "Глава сім'ї"
 
 #. I18N: gedcom tag HEAD
 #: app/Gedcom/GedcomTag.php:509
@@ -6936,7 +6939,7 @@ msgstr "Здравствуйте,%s…"
 #: login.php:390
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr "Здравствуйте, %s …<br>Дякуємо за Ваше звернення на наш сайт"
+msgstr "Здравствуйте, %s …<br>Дякуємо за Ваше звернення на наш сайт."
 
 #: login.php:317 login.php:565
 msgid "Hello administrator…"
@@ -7662,7 +7665,7 @@ msgstr "Лип"
 #. I18N: The julian calendar
 #: app/Date/JulianDate.php:40 help_text.php:193
 msgid "Julian"
-msgstr "Юліанськии?"
+msgstr "Юліанськии"
 
 #: app/Date/CalendarDate.php:232
 msgctxt "GENITIVE"
@@ -7882,7 +7885,7 @@ msgstr "Мормонське викриття"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1598
 msgid "LDS ordinance codes in chart boxes"
-msgstr "LDS коди таїнства у візитках на схемах."
+msgstr "LDS коди таїнства у візитках на схемах"
 
 #. I18N: gedcom tag SLGS
 #: app/Gedcom/GedcomTag.php:781
@@ -8056,12 +8059,12 @@ msgstr "Ліма, Перу"
 
 #: app/Module/FamilyTreeNewsModule.php:163
 msgid "Limit"
-msgstr "Обмеження:"
+msgstr "Обмеження"
 
 #. I18N: Limit display by [age/number]
 #: app/Module/FamilyTreeNewsModule.php:154
 msgid "Limit display by"
-msgstr "Обмежити висновок:"
+msgstr "Обмежити висновок"
 
 #: app/Module/RelativesTabModule.php:344 edit_interface.php:990
 #: edit_interface.php:1049
@@ -8736,7 +8739,7 @@ msgstr "Префікс ID медіаоб'екта"
 #. I18N: Label for search field
 #: find.php:191
 msgid "Media contains"
-msgstr "Медіа містить:"
+msgstr "Медіа містить"
 
 #: admin_media.php:685 admin_media_upload.php:198
 msgid "Media file"
@@ -9323,7 +9326,7 @@ msgstr "Назва"
 #. I18N: Label for search field
 #: find.php:155 find.php:172
 msgid "Name contains"
-msgstr "Ім'я містить:"
+msgstr "Ім'я містить"
 
 #: app/Gedcom/GedcomTag.php:607
 msgid "Name in Hebrew"
@@ -9678,7 +9681,7 @@ msgstr "Медіа-файл не був наданий."
 
 #: app/Module/FamilyTreeNewsModule.php:79
 msgid "No news articles have been submitted."
-msgstr "Немає новин"
+msgstr "Немає новин."
 
 #: app/Module/GoogleMapsModule.php:3910 app/Module/GoogleMapsModule.php:4574
 msgid "No places found"
@@ -9702,7 +9705,7 @@ msgstr "Немає записів для відображення"
 #: find.php:579 find.php:606 find.php:628 find.php:650 find.php:674
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:171 placelist.php:58
 msgid "No results found."
-msgstr "Інформація по запиту не знайдена"
+msgstr "Інформація по запиту не знайдена."
 
 #: includes/functions/functions_edit.php:603
 msgid "No temple - living ordinance"
@@ -9840,7 +9843,7 @@ msgstr "Нічого не знайдено для видалення"
 
 #: app/Module/BatchUpdateModule.php:214
 msgid "Nothing found."
-msgstr "Нічого не знайдено"
+msgstr "Нічого не знайдено."
 
 #: app/Date/CalendarDate.php:336
 msgctxt "Abbreviation for November"
@@ -9875,7 +9878,7 @@ msgstr "Нукуалофа, Тонга"
 #: app/Gedcom/GedcomTag.php:623 app/Stats.php:4457 app/Stats.php:4459
 #: statistics.php:530 statisticsplot.php:1323
 msgid "Number of children"
-msgstr "Кількість дітеи?"
+msgstr "Кількість дітеи"
 
 #: app/Module/RecentChangesModule.php:130
 #: app/Module/UpcomingAnniversariesModule.php:122
@@ -9885,7 +9888,7 @@ msgstr "Кількість днів"
 
 #: app/Stats.php:4705 statistics.php:305
 msgid "Number of families without children"
-msgstr "Число бездітних сімей."
+msgstr "Число бездітних сімей"
 
 #: app/Module/ClippingsCartModule.php:104
 #: app/Module/ClippingsCartModule.php:106
@@ -9894,7 +9897,7 @@ msgstr "Число бездітних сімей."
 #: app/Module/ClippingsCartModule.php:524
 #: app/Module/ClippingsCartModule.php:527
 msgid "Number of generations"
-msgstr "Число поколінь:"
+msgstr "Число поколінь"
 
 #: app/Module/FamilyTreeNewsModule.php:159
 msgid "Number of items"
@@ -10178,7 +10181,7 @@ msgstr "PGV повинен бути версією 4.2.3 або будь-яки�
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:77
 msgid "PHP blocked the file because of its extension."
-msgstr "PHP заблокував файл з розширення"
+msgstr "PHP заблокував файл з розширення."
 
 #: setup.php:140
 #, php-format
@@ -10193,7 +10196,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:74
 msgid "PHP failed to write to disk."
-msgstr "PHP не вдалося записати файл на диск"
+msgstr "PHP не вдалося записати файл на диск."
 
 #: admin_site_info.php:71
 msgid "PHP information"
@@ -10440,7 +10443,7 @@ msgstr ""
 
 #: admin_pgv_to_wt.php:94
 msgid "PhpGedView must use the same database as webtrees."
-msgstr "PhpGedView повинен використовувати ту ж базу даних, що і webtrees"
+msgstr "PhpGedView повинен використовувати ту ж базу даних, що і webtrees."
 
 #: admin_pgv_to_wt.php:44 admin_trees_manage.php:662
 msgid "PhpGedView to webtrees transfer wizard"
@@ -10480,7 +10483,7 @@ msgstr "Перевірка місць"
 #. I18N: Label for search field
 #: find.php:211
 msgid "Place contains"
-msgstr "Місце містить:"
+msgstr "Місце містить"
 
 #: app/Module/TopPageViewsModule.php:136
 msgid "Place counts before or after name?"
@@ -10656,7 +10659,7 @@ msgstr "Будь ласка вкажіть ім'я, прізвище або мі
 
 #: message.php:99
 msgid "Please enter a message subject."
-msgstr "Введіть тему повідомлення"
+msgstr "Введіть тему повідомлення."
 
 #: message.php:58
 msgid "Please enter a valid email address."
@@ -10665,11 +10668,11 @@ msgstr "Помилка в ел.адреса (адреса електронної
 #: app/Module/CensusAssistantModule.php:96 find.php:115 search.php:34
 #: search.php:46
 msgid "Please enter more than one character."
-msgstr "Введіть, будь ласка, хоча б два символи"
+msgstr "Введіть, будь ласка, хоча б два символи."
 
 #: message.php:104
 msgid "Please enter some message text before sending."
-msgstr "Введіть текст повідомлення"
+msgstr "Введіть текст повідомлення."
 
 #: message.php:125
 msgid "Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be used in any other way besides responding to this inquiry."
@@ -10846,7 +10849,9 @@ msgstr "Конфіденційність"
 
 #: admin_trees_config.php:538 admin_trees_config.php:559
 msgid "Privacy restrictions - these apply to records and facts that do not contain a GEDCOM RESN tag"
-msgstr "Обмеження доступу - ці настоянки впливають на записи і факти без GEDCOM RESN тега."
+msgstr ""
+"Обмеження доступу - ці настоянки впливають на записи і факти без GEDCOM RESN "
+"тега"
 
 #: app/Controller/GedcomRecordController.php:76 app/GedcomRecord.php:517
 #: app/GedcomRecord.php:595 app/GedcomRecord.php:717 app/Individual.php:1344
@@ -11353,7 +11358,7 @@ msgstr "Префікс ID архіву"
 #. I18N: Label for search field
 #: find.php:230
 msgid "Repository contains"
-msgstr "Архів містить:"
+msgstr "Архів містить"
 
 #: edit_interface.php:1563 includes/functions/functions_print_lists.php:1315
 msgid "Repository name"
@@ -11407,7 +11412,8 @@ msgstr ""
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:376
 msgid "Restrict access to the website, using IP addresses and user-agent strings."
-msgstr "Обмеження доступу до сайту, використовуючи IP-адреси і User-Agent рядки"
+msgstr ""
+"Обмеження доступу до сайту, використовуючи IP-адреси і User-Agent рядки."
 
 #: admin_users.php:569
 msgid "Restrict to immediate family"
@@ -11576,7 +11582,7 @@ msgstr "Сантьяго, Чилі"
 
 #: app/Gedcom/GedcomCodeTemp.php:288
 msgid "Santo Domingo, Dominican Republic"
-msgstr "Санто-Домінго, Домин. респ."
+msgstr "Санто-Домінго, Домініканська Республіка"
 
 #: app/Gedcom/GedcomCodeTemp.php:304
 msgid "Sao Paulo, Brazil"
@@ -11749,7 +11755,7 @@ msgstr "Виберіть вид зв'язку зі списку. Вибір <b>�
 
 #: statistics.php:499
 msgid "Select chart type"
-msgstr "Виберіть тип діаграми:"
+msgstr "Виберіть тип діаграми"
 
 #: edit_interface.php:1252
 msgid "Select events"
@@ -11939,7 +11945,7 @@ msgstr "Час на сервері"
 #. I18N: A site configuration setting
 #: admin_site_config.php:270
 msgid "Session timeout"
-msgstr "Час сесії минув."
+msgstr "Час сесії минув"
 
 #: admin_trees_manage.php:416 admin_trees_manage.php:427
 msgid "Set as default"
@@ -12050,7 +12056,7 @@ msgstr "Загальна примітка"
 #. I18N: Label for search field
 #: find.php:250
 msgid "Shared note contains"
-msgstr "Загальна примітка містить:"
+msgstr "Загальна примітка містить"
 
 #: app/Theme/BaseTheme.php:1415
 #: includes/functions/functions_print_lists.php:1068 notelist.php:30
@@ -12218,7 +12224,7 @@ msgstr "Показувати все примітки та зазначення �
 
 #: placelist.php:237
 msgid "Show all places in a list"
-msgstr "Показати всі місця у вигляді списку."
+msgstr "Показати всі місця у вигляді списку"
 
 #: app/Module/SourcesTabModule.php:62
 msgid "Show all sources"
@@ -12809,7 +12815,7 @@ msgstr ""
 #. I18N: Label for search field
 #: find.php:269
 msgid "Source contains"
-msgstr "Джерела містять:"
+msgstr "Джерела містять"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:2265 modules_v3/fact_sources/report.xml:6
@@ -13013,7 +13019,7 @@ msgstr "Підрозділ"
 
 #: app/Module/UserMessagesModule.php:78 message.php:127
 msgid "Subject"
-msgstr "Тема:"
+msgstr "Тема"
 
 #. I18N: gedcom tag SUBN
 #: app/Gedcom/GedcomTag.php:811
@@ -13285,7 +13291,7 @@ msgstr "Майстер перенесення PGV в webtrees представл
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
 msgid "The PHP temporary folder is missing."
-msgstr "Відсутній папка для тимчасових файлів PHP"
+msgstr "Відсутній папка для тимчасових файлів PHP."
 
 #: admin_users.php:97
 #, php-format
@@ -13520,7 +13526,7 @@ msgstr "Медіафайл %s не існує."
 
 #: mediafirewall.php:41
 msgid "The media file was not found in this family tree."
-msgstr "Мультимедійний файл не був знайден у сімейному древі"
+msgstr "Мультимедійний файл не був знайден у сімейному древі."
 
 #: admin_media_upload.php:223
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
@@ -13564,7 +13570,7 @@ msgstr "Пароль, необхідний для аутентифікації �
 
 #: setup.php:419
 msgid "The passwords do not match."
-msgstr "Паролі не збігаються"
+msgstr "Паролі не збігаються."
 
 #: admin_trees_config.php:219 admin_trees_config.php:341
 #, php-format
@@ -13592,7 +13598,7 @@ msgstr ""
 
 #: action.php:86
 msgid "The record has been copied to the clipboard."
-msgstr "Запис скопійовано в буфер обміну"
+msgstr "Запис скопійовано в буфер обміну."
 
 #. I18N: Records are individuals, sources, etc.
 #: admin_site_merge.php:162
@@ -13686,12 +13692,12 @@ msgstr ""
 #: admin_pgv_to_wt.php:107
 #, php-format
 msgid "The version of %s is too new."
-msgstr "Версія %s занадто нова"
+msgstr "Версія %s занадто нова."
 
 #: admin_pgv_to_wt.php:104
 #, php-format
 msgid "The version of %s is too old."
-msgstr "Версія %s занадто стара"
+msgstr "Версія %s занадто стара."
 
 #: admin_site_access.php:85
 msgid "The website access rule has been created."
@@ -14103,7 +14109,7 @@ msgstr "Ваше справжнє ім'я, яке ви бажаєте бачит
 
 #: admin_trees_check.php:125
 msgid "This may be a mistake in your data."
-msgstr "Це може бути помилкою в Ваших даних"
+msgstr "Це може бути помилкою в Ваших даних."
 
 #: admin_trees_check.php:124
 msgid "This may cause a problem for other applications."
@@ -14123,7 +14129,7 @@ msgstr "Цей мультимедійний файл існує, але не м�
 
 #: mediafirewall.php:410
 msgid "This media file is broken and cannot be watermarked."
-msgstr "Цей мультимедійний файл пошкоджений і водяні знаки не знайдені"
+msgstr "Цей мультимедійний файл пошкоджений і водяні знаки не знайдені."
 
 #: mediaviewer.php:73
 msgid "This media object does not exist or you do not have permission to view it."
@@ -14321,7 +14327,10 @@ msgstr "Цей сервер не підтримує безпечні заван�
 #: setup.php:183
 #, php-format
 msgid "This server’s memory limit is %s MB and its CPU time limit is %s seconds."
-msgstr "Цей сервер має наступні налаштування:<br> обмеження по пам'яті =%sMB (робоча пам'ять для скриптів)<br>межа процесорного часу =%s (максимальний час для виконання скрипта)"
+msgstr ""
+"Цей сервер має наступні налаштування: обмеження по пам'яті =%sMB (робоча "
+"пам'ять для скриптів), межа процесорного часу =%s (максимальний час для "
+"виконання скрипта)."
 
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: admin_trees_config.php:1632
@@ -14389,7 +14398,10 @@ msgstr "Це видалить всі генеалогічні дані з «%s»
 
 #: app/Module/GoogleMapsModule.php:1781
 msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables."
-msgstr "Вивести на екран перелік усіх місць, з обраного файлу GEDCOM. За замовчуванням, це не буде містити місця, які повністю відповідають між файл GEDCOM і таблиці GoogleMap"
+msgstr ""
+"Вивести на екран перелік усіх місць, з обраного файлу GEDCOM. За "
+"замовчуванням, це не буде містити місця, які повністю відповідають між файл "
+"GEDCOM і таблиці GoogleMap."
 
 #: admin_trees_places.php:96
 msgid "This will update the highest-level part or parts of the place name.  For example, “Mexico” will match “Quintana Roo, Mexico”, but not “Santa Fe, New Mexico”."
@@ -15227,7 +15239,7 @@ msgstr "Веракрус, Мексика"
 
 #: login.php:348 login.php:542
 msgid "Verification code"
-msgstr "Контрольний код:"
+msgstr "Контрольний код"
 
 #: admin_users.php:853
 msgid "Verified"
@@ -15762,7 +15774,7 @@ msgstr "Вам потрібно заповнити всі поля в облік
 
 #: edit_interface.php:1548
 msgid "You must provide a repository name."
-msgstr "Ви повинні вказати назву архіву"
+msgstr "Ви повинні вказати назву архіву."
 
 #: edit_interface.php:1210
 msgid "You must provide a source title"
@@ -15931,7 +15943,7 @@ msgstr "Наблизити тут"
 
 #: app/Theme/BaseTheme.php:664 app/Theme/BaseTheme.php:709
 msgid "Zoom in/out on this box."
-msgstr "Більше/менше даних"
+msgstr "Більше/менше даних."
 
 #: app/Module/GoogleMapsModule.php:4056 app/Module/GoogleMapsModule.php:4130
 #: app/Module/GoogleMapsModule.php:4569
