@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-12 22:05+0100\n"
+"PO-Revision-Date: 2015-03-16 08:59+0100\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Yiddish <http://translate.webtrees.net/projects/webtrees/webtrees/yi/>\n"
+"Language-Team: Yiddish "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/yi/>\n"
 "Language: yi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -13659,7 +13660,7 @@ msgstr "די ווערסיע פון %s איז צו נייַ."
 #: admin_pgv_to_wt.php:104
 #, php-format
 msgid "The version of %s is too old."
-msgstr "די ווערסיע פון% s איז צו אַלט."
+msgstr "די ווערסיע פון %s איז צו אַלט."
 
 #: admin_site_access.php:85
 msgid "The website access rule has been created."
