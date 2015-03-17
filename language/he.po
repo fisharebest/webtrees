@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-15 07:01+0100\n"
+"PO-Revision-Date: 2015-03-17 17:00+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
-"Language-Team: Hebrew <http://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
+"Language-Team: Hebrew "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -8725,7 +8726,7 @@ msgstr "קובץ מדיה שאותו יש להעלות"
 #: admin_trees_download.php:164
 #, php-format
 msgid "Media filenames will be prefixed by %s."
-msgstr ""
+msgstr "שמות של קבצי מדיה יקבלו קידומת %s."
 
 #: admin_media.php:617 admin_trees_config.php:1063
 msgid "Media files"
@@ -10760,7 +10761,7 @@ msgstr "מלל המציין שכל המשתמשים יכולים לבקש חשב
 
 #: admin_site_config.php:121
 msgid "Predefined text that states only family members can request a user account"
-msgstr "מלל המציין שרק בני משפחה  יכולים לבקש חשבון משתמש"
+msgstr "מלל המציין שרק בני משפחה יכולים לבקש חשבון משתמש"
 
 #: admin_trees_config.php:365 admin_trees_manage.php:363
 msgid "Preferences"
@@ -16965,7 +16966,7 @@ msgstr "אישה של נכד"
 #: includes/functions/functions.php:1813
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×% nephew/niece"
-msgstr ""
+msgstr "אחיין/אחינית מדרגה ×%"
 
 #: includes/functions/functions.php:1639 includes/functions/functions.php:1654
 #: includes/functions/functions.php:1667
