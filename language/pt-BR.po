@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-14 00:06+0100\n"
+"PO-Revision-Date: 2015-03-17 12:10+0100\n"
 "Last-Translator: Alan Benazzi <alan.benazzi@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) <http://translate.webtrees.net/projects/webtrees/webtrees/pt-BR/>\n"
+"Language-Team: Portuguese (Brazil) "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/pt-BR/>\n"
 "Language: pt-BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3581,7 +3582,7 @@ msgstr "Batizado de um irmão"
 
 #: app/Gedcom/GedcomTag.php:1239
 msgid "Christening of a sister"
-msgstr "Batizado de uma sobrinha"
+msgstr "Batizado de uma irmã"
 
 #: app/Gedcom/GedcomTag.php:1192
 msgid "Christening of a son"
