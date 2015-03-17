@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-03-15 08:17+0100\n"
+"PO-Revision-Date: 2015-03-17 11:30+0100\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
-"Language-Team: Lithuanian <http://translate.webtrees.net/projects/webtrees/webtrees/lt/>\n"
+"Language-Team: Lithuanian "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/lt/>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"(n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 2.3-dev\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -8752,7 +8754,7 @@ msgstr "Medijos byla įkėlimui"
 #: admin_trees_download.php:164
 #, php-format
 msgid "Media filenames will be prefixed by %s."
-msgstr ""
+msgstr "%s bus pridėtas prie medijos bylos vardo pradžios."
 
 #: admin_media.php:617 admin_trees_config.php:1063
 msgid "Media files"
@@ -8988,7 +8990,7 @@ msgstr "Minimalus ir maksimalus priartinimo lygmuo Google žemėlapyje. 1 rodo v
 #. I18N: A configuration setting
 #: admin_trees_config.php:1203
 msgid "Minimum number of occurrences to be a “common surname”"
-msgstr "Min. kiekis atitikimų, esančių su „bendromis pavardėmis“"
+msgstr "Minimalus paplitimas, kad būtų „dažnai pasitaikanti pavardė“"
 
 #. I18N: Name of a module/report
 #: app/Module/MissingFactsReportModule.php:26
@@ -9349,12 +9351,16 @@ msgstr "Vardai"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1224
 msgid "Names to add to common surnames (comma separated)"
-msgstr "Vardai skirti pridėti prie bendros pavardės (atskirti kableliais)"
+msgstr ""
+"Vardai pridėjimui prie dažniausiai pasitaikančių pavardžių (atskirti "
+"kableliais)"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1244
 msgid "Names to remove from common surnames (comma separated)"
-msgstr "Vardai skirti ištrinti iš bendros pavardės (atskirti kableliais)"
+msgstr ""
+"Vardai ištrynimui iš dažniausiai pasitaikančių pavardžių (atskirti "
+"kableliais)"
 
 #. I18N: gedcom tag _NAMS
 #: app/Gedcom/GedcomTag.php:1676
@@ -11776,7 +11782,7 @@ msgstr "Pasirinkite norimą potarpį"
 
 #: admin_site_merge.php:189
 msgid "Select the facts and events to keep from both records."
-msgstr ""
+msgstr "Pasirinkite faktus ir įvykius kuriuos laikyti iš abiejų įrašų."
 
 #: admin_site_config.php:622
 msgid "Select the languages that will be shown in menus."
@@ -14075,6 +14081,8 @@ msgstr "Tai yra SMTP serverio vardas. „localhost“ reiškia, kad pašto pasla
 #: admin_trees_config.php:1216
 msgid "This is the number of times that a surname must occur before it shows up in the Common Surname list on the “Home page”."
 msgstr ""
+"Tai yra kiek katrų pavardė turi būti naudota prieš jos įdėjimą į Dažniausiai "
+"Pasitaikančių Pavardžių sąrašą „Tituliniame puslapyje“."
 
 #. I18N: Help text for the “Quick family facts” configuration setting
 #: admin_trees_config.php:1991
@@ -14748,12 +14756,12 @@ msgstr "Iš viso narių"
 #. I18N: Menu entry
 #: admin_site_config.php:141 app/Theme/AdministrationTheme.php:72
 msgid "Tracking and analytics"
-msgstr ""
+msgstr "Sėkimai ir analizės"
 
 #: admin_site_config.php:563 admin_site_config.php:588
 #: admin_site_config.php:613
 msgid "Tracking and analytics are not added to the control panel."
-msgstr ""
+msgstr "Sėkimai ir analizės nėra pridėti prie valdymo skydo puslapių."
 
 #. I18N: gedcom tag TRLR
 #: app/Gedcom/GedcomTag.php:841
