@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-15 07:16+0100\n"
+"PO-Revision-Date: 2015-03-17 11:07+0100\n"
 "Last-Translator: Michel Rivière <gustine@laposte.net>\n"
-"Language-Team: French <http://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
+"Language-Team: French "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -8725,7 +8726,7 @@ msgstr "Objet média"
 #: admin_trees_download.php:164
 #, php-format
 msgid "Media filenames will be prefixed by %s."
-msgstr ""
+msgstr "Les noms de fichiers médias seront précédés de %s."
 
 #: admin_media.php:617 admin_trees_config.php:1063
 msgid "Media files"
@@ -16965,7 +16966,7 @@ msgstr "femme du petit-fils"
 #: includes/functions/functions.php:1813
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×% nephew/niece"
-msgstr ""
+msgstr "petit-neveu/petite-nièce au %s<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1639 includes/functions/functions.php:1654
 #: includes/functions/functions.php:1667

@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-14 22:09+0100\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Swedish <http://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
+"PO-Revision-Date: 2015-03-17 18:42+0100\n"
+"Last-Translator: Meliza Amity <meliza@amitys.com>\n"
+"Language-Team: Swedish "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -74,7 +75,7 @@ msgstr "%1$s %2$s har en %3$s-länk till %4$s."
 #: includes/functions/functions.php:2132
 #, php-format
 msgid "%1$s %2$s times removed ascending"
-msgstr "%1$s är %2$ sgenerationer mera"
+msgstr "%1$s är %2$s generationer mera"
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: includes/functions/functions.php:2135
@@ -314,8 +315,8 @@ msgstr[1] "%s minuter sedan"
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s månad"
+msgstr[1] "%s månader"
 
 #: app/I18N.php:513
 #, php-format
@@ -665,11 +666,11 @@ msgstr "En beskrivning av orsaken till händelsen eller faktumet ifråga, såsom
 
 #: admin_trees_download.php:116 admin_trees_manage.php:209
 msgid "A file on the server"
-msgstr ""
+msgstr "En fil på servern"
 
 #: admin_trees_download.php:201 admin_trees_manage.php:198
 msgid "A file on your computer"
-msgstr ""
+msgstr "En fil på din dator"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:30
@@ -1252,7 +1253,7 @@ msgstr "Lägg till en person i diagrammet"
 
 #: includes/functions/functions_print.php:596
 msgid "Add from clipboard"
-msgstr "Lägg till urklippskorgen:"
+msgstr "Lägg till ur klippskorgen"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:23
 msgid "Add individuals"
@@ -1858,7 +1859,8 @@ msgstr "Ett fel uppstod när filen packades upp."
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:36
 msgid "An interactive tree, showing all the ancestors and descendants of an individual."
-msgstr "Ett interaktivt träd, visande en persons alla förfäder och efterkommande"
+msgstr ""
+"Ett interaktivt träd, visande en persons alla förfäder och efterkommande."
 
 #: setup.php:937
 msgid "An unexpected database error occurred."
@@ -2783,7 +2785,7 @@ msgstr "Marinblå"
 
 #: message.php:135
 msgid "Body"
-msgstr "Meddelande:"
+msgstr "Meddelande"
 
 #: app/Gedcom/GedcomCodeTemp.php:102
 msgid "Bogota, Colombia"
@@ -2864,33 +2866,33 @@ msgstr "Brisbane, Australien"
 #. I18N: gedcom tag _BRTM
 #: app/Gedcom/GedcomTag.php:1085
 msgid "Brit milah"
-msgstr "Brit milah"
+msgstr "B'rit mila"
 
 #: app/Gedcom/GedcomTag.php:1781
 msgid "Brit milah of a brother"
-msgstr "Brors brit milah"
+msgstr "Brors b'rit mila"
 
 #: app/Gedcom/GedcomTag.php:1773
 msgid "Brit milah of a grandson"
-msgstr "Barnbarnets brit milah"
+msgstr "Barnbarnets b'rit mila"
 
 #: app/Gedcom/GedcomTag.php:1775
 msgctxt "daughter’s son"
 msgid "Brit milah of a grandson"
-msgstr "Dottersons brit milah"
+msgstr "Dottersons b'rit mila"
 
 #: app/Gedcom/GedcomTag.php:1777
 msgctxt "son’s son"
 msgid "Brit milah of a grandson"
-msgstr "Sonsons brit milah"
+msgstr "Sonsons b'rit mila"
 
 #: app/Gedcom/GedcomTag.php:1779
 msgid "Brit milah of a half-brother"
-msgstr "Halvbrors brit milah"
+msgstr "Halvbrors b'rit mila"
 
 #: app/Gedcom/GedcomTag.php:1771
 msgid "Brit milah of a son"
-msgstr "Sons brit milah"
+msgstr "Sons b'rit mila"
 
 #: app/Stats.php:6175
 msgid "British Indian Ocean Territory"
@@ -3181,7 +3183,7 @@ msgstr "Kan inte skapa en fil"
 
 #: app/Stats.php:6104
 msgid "Cape Colony"
-msgstr "Kap Kolonien?"
+msgstr "Kap Kolonien"
 
 #: app/Stats.php:6118
 msgid "Cape Verde"
@@ -3214,7 +3216,7 @@ msgstr "Katalonia"
 
 #: statistics.php:604
 msgid "Categories"
-msgstr "Kategorier (z-axel):"
+msgstr "Kategorier (z-axel)"
 
 #. I18N: gedcom tag CAUS
 #: app/Gedcom/GedcomTag.php:243
@@ -3273,7 +3275,7 @@ msgstr "Ort vid folkräkning"
 
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:478
 msgid "Census transcript"
-msgstr "Kopia över befolkningsräkning (Census)."
+msgstr "Kopia över befolkningsräkning (Census)"
 
 #: app/Module/GoogleMapsModule.php:1433
 msgid "Center map here"
@@ -3354,7 +3356,7 @@ msgstr "Ändringslogg"
 
 #: app/Stats.php:6108
 msgid "Channel Islands"
-msgstr "Kanalöarna?"
+msgstr "Kanalöarna"
 
 #. I18N: gedcom tag CHAR
 #: app/Gedcom/GedcomTag.php:271
@@ -3659,7 +3661,7 @@ msgstr "Välj %s till familjens huvudperson."
 
 #: edit_interface.php:1747
 msgid "Click a row, then drag-and-drop to re-order media"
-msgstr "Klicka på en rad och sen drag-och-släpp för att ordna om media "
+msgstr "Klicka på en rad och sen drag-och-släpp för att ordna om media"
 
 #: admin_trees_manage.php:690
 msgid "Click here for PhpGedView to webtrees transfer wizard"
@@ -3679,7 +3681,9 @@ msgstr "Klicka på namn för att lägga till person till ”Lägg till Länklist
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:295
 msgid "Click on a title to go straight to it, or scroll down to read them all."
-msgstr "Klicka på en rubrik för att gå direkt till den eller rulla ner för att läsa dem alla"
+msgstr ""
+"Klicka på en rubrik för att gå direkt till den eller rulla ner för att läsa "
+"dem alla."
 
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:69
 #: modules_v3/GEDFact_assistant/_MEDIA/media_1_ctrl.php:80
@@ -3890,7 +3894,7 @@ msgstr ""
 #: admin_trees_download.php:151 app/Module/ClippingsCartModule.php:209
 #: app/Module/ClippingsCartModule.php:600
 msgid "Convert from UTF-8 to ISO-8859-1"
-msgstr "Vill du konvertera från UTF-8 till ISO-8859-1?"
+msgstr "Konvertera från UTF-8 till ISO-8859-1"
 
 #: app/Stats.php:6115
 msgid "Cook Islands"
@@ -4322,7 +4326,7 @@ msgstr "Välsignelsedatum"
 
 #: app/Gedcom/GedcomTag.php:1087
 msgid "Date of brit milah"
-msgstr "Datum for brit milah"
+msgstr "Datum for b'rit mila"
 
 #: app/Gedcom/GedcomTag.php:229 modules_v3/missing_facts_report/report.xml:542
 msgid "Date of burial"
@@ -4423,7 +4427,7 @@ msgstr "Registreringsdatum"
 
 #: app/Module/UserMessagesModule.php:79
 msgid "Date sent"
-msgstr "Datum skickat:"
+msgstr "Datum skickat"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:747
@@ -6563,7 +6567,7 @@ msgstr "Allmän sökning"
 #. I18N: Description of the “Sitemaps” module
 #: app/Module/SiteMapModule.php:35
 msgid "Generate sitemap files for search engines."
-msgstr "Generera sajtkartfiler för sökmotorer"
+msgstr "Generera sajtkartfiler för sökmotorer."
 
 #. I18N: This is a report footer. %s is the name of the application.
 #: app/Report/ReportBase.php:108
@@ -6911,11 +6915,11 @@ msgstr "Hej %s…"
 #: login.php:390
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr "Hej %s…<br>Tack för din registrering"
+msgstr "Hej %s…<br>Tack för din registrering."
 
 #: login.php:317 login.php:565
 msgid "Hello administrator…"
-msgstr "Hej administratör"
+msgstr "Hej administratör…"
 
 #: help_text.php:455
 msgid "Help"
@@ -7149,7 +7153,11 @@ msgstr "Om en person inte tilltalades med första förnamnet, markeras tilltalsn
 #. I18N: Help text for the “Names to add to common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1236
 msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list.  It can be added here manually.  If more than one surname is entered, they must be separated by a comma.  <b>Surnames are case-sensitive.</b>"
-msgstr "Om antalet gånger ett efternamn förekommer är mindre än tröskeln, så kommer det inte med i listan. Det kan här läggas till manuellt. Om mer än ett efternamn skrivs in, måste de vara separerad med kommatecken. Efternamn är känsliga för stora och små bokstäver."
+msgstr ""
+"Om antalet gånger ett efternamn förekommer är mindre än tröskeln, så kommer "
+"det inte med i listan. Det kan här läggas till manuellt. Om mer än ett "
+"efternamn skrivs in, måste de vara separerad med kommatecken. <b>Efternamn "
+"är skiftlägeskänsliga.</b>"
 
 #: help_text.php:255
 #, php-format
@@ -7237,7 +7245,12 @@ msgstr ""
 #. I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1256
 msgid "If you want to remove a surname from the Common Surname list without increasing the threshold value, you can do that by entering the surname here.  If more than one surname is entered, they must be separated by a comma.  <b>Surnames are case-sensitive</b>.  Surnames entered here will also be removed from the “Top surnames” list on the “Home page”."
-msgstr "Om du vill ta bort ett efternamn från vanliga efternamnslistan utan att öka på tröskelvärdet, kan du lägga till det här. Om mer än ett efternamn måste de vara separerad av kommatecken, Efternamnen är känsliga för stora och små bokstäver. Efternamn som skrivs in här kommer också att tas bort från tio i topp listan på välkomstsidan."
+msgstr ""
+"Om du vill ta bort ett efternamn från vanliga efternamnslistan utan att öka "
+"på tröskelvärdet, kan du lägga till det här. Om mer än ett efternamn måste "
+"de vara separerad av kommatecken, <b>Efternamn är skiftlägeskänsliga</b>. "
+"Efternamn som skrivs in här kommer också att tas bort från ”Vanligaste "
+"efternamn” listan på ”välkomstsidan”."
 
 #: setup.php:187
 msgid "If your server’s security policy permits it, you will be able to request increased memory or CPU time using the webtrees administration page.  Otherwise, you will need to contact your server’s administrator."
@@ -8031,12 +8044,12 @@ msgstr "Lima, Peru"
 
 #: app/Module/FamilyTreeNewsModule.php:163
 msgid "Limit"
-msgstr "Gräns:"
+msgstr "Gräns"
 
 #. I18N: Limit display by [age/number]
 #: app/Module/FamilyTreeNewsModule.php:154
 msgid "Limit display by"
-msgstr "Begränsa visning med:"
+msgstr "Begränsa visning med"
 
 #: app/Module/RelativesTabModule.php:344 edit_interface.php:990
 #: edit_interface.php:1049
@@ -8197,7 +8210,7 @@ msgstr "Los Angeles, Kalifornien"
 #: login.php:213 login.php:229 login.php:250
 #: modules_v3/login_block/LoginBlockModule.php:87
 msgid "Lost password request"
-msgstr "Begär återställning av bortglömt lösenord."
+msgstr "Begär återställning av bortglömt lösenord"
 
 #: app/Gedcom/GedcomCodeTemp.php:194
 msgid "Louisville, Kentucky"
@@ -8711,7 +8724,7 @@ msgstr "Media-ID prefix"
 #. I18N: Label for search field
 #: find.php:191
 msgid "Media contains"
-msgstr "Media innehåller:"
+msgstr "Media innehåller"
 
 #: admin_media.php:685 admin_media_upload.php:198
 msgid "Media file"
@@ -9124,7 +9137,7 @@ msgstr "De vanligaste efternamnen"
 #. I18N: Help text for the “Secure connection” site configuration setting
 #: admin_site_config.php:399
 msgid "Most servers do not use secure connections."
-msgstr "De flesta servrar använder inte säkrade anslutningar"
+msgstr "De flesta servrar använder inte säkrade anslutningar."
 
 #: setup.php:282
 msgid "Most sites are configured to use localhost.  This means that your database runs on the same computer as your web server."
@@ -9298,7 +9311,7 @@ msgstr "Namn"
 #. I18N: Label for search field
 #: find.php:155 find.php:172
 msgid "Name contains"
-msgstr "Namnet innehåller:"
+msgstr "Namnet innehåller"
 
 #: app/Gedcom/GedcomTag.php:607
 msgid "Name in Hebrew"
@@ -9659,7 +9672,7 @@ msgstr "Inga platser hittades"
 
 #: admin_trees_places.php:126
 msgid "No places have been found."
-msgstr "Inga platser hittades"
+msgstr "Inga platser hittades."
 
 #: admin_site_config.php:118
 msgid "No predefined text"
@@ -9867,7 +9880,7 @@ msgstr "Antal familjer utan barn"
 #: app/Module/ClippingsCartModule.php:524
 #: app/Module/ClippingsCartModule.php:527
 msgid "Number of generations"
-msgstr "Antal generationer:"
+msgstr "Antal generationer"
 
 #: app/Module/FamilyTreeNewsModule.php:159
 msgid "Number of items"
@@ -10117,7 +10130,7 @@ msgstr "Övriga"
 
 #: app/Module/GoogleMapsModule.php:4322
 msgid "Overwrite existing coordinates."
-msgstr "Skriv över befintliga koordinater"
+msgstr "Skriv över befintliga koordinater."
 
 #: statistics.php:73
 msgid "Own charts"
@@ -10151,7 +10164,7 @@ msgstr "PGV måste vara version 4.2.3, eller någon av dess SVN uppdatering upp 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:77
 msgid "PHP blocked the file because of its extension."
-msgstr "PHP blockad på grund av filändelsen"
+msgstr "PHP blockade filen på grund av filändelsen."
 
 #: setup.php:140
 #, php-format
@@ -10166,7 +10179,7 @@ msgstr "PHP-filändelse ”%s” är inaktiv. Du kan inte installera webtrees f�
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:74
 msgid "PHP failed to write to disk."
-msgstr "PHP kunde inte skriva till skivan"
+msgstr "PHP kunde inte skriva till skivan."
 
 #: admin_site_info.php:71
 msgid "PHP information"
@@ -10413,7 +10426,7 @@ msgstr "PhpGedView kan vara installerad i en av dessa mappar:"
 
 #: admin_pgv_to_wt.php:94
 msgid "PhpGedView must use the same database as webtrees."
-msgstr "PhpGedView måste använda samma databas som webtrees"
+msgstr "PhpGedView måste använda samma databas som webtrees."
 
 #: admin_pgv_to_wt.php:44 admin_trees_manage.php:662
 msgid "PhpGedView to webtrees transfer wizard"
@@ -10453,7 +10466,7 @@ msgstr "Platskontroll"
 #. I18N: Label for search field
 #: find.php:211
 msgid "Place contains"
-msgstr "Ortsnamnet innehåller:"
+msgstr "Ortsnamnet innehåller"
 
 #: app/Module/TopPageViewsModule.php:136
 msgid "Place counts before or after name?"
@@ -10520,7 +10533,7 @@ msgstr "Välsignelseort"
 
 #: app/Gedcom/GedcomTag.php:1089
 msgid "Place of brit milah"
-msgstr "Ort för brit milah"
+msgstr "Ort för b'rit mila"
 
 #: app/Gedcom/GedcomTag.php:231 modules_v3/missing_facts_report/report.xml:553
 msgid "Place of burial"
@@ -10638,7 +10651,7 @@ msgstr "Obs! Skriv in en giltig e-postadress."
 #: app/Module/CensusAssistantModule.php:96 find.php:115 search.php:34
 #: search.php:46
 msgid "Please enter more than one character."
-msgstr "Var vänlig och skriv in mer än ett tecken"
+msgstr "Var vänlig och skriv in mer än ett tecken."
 
 #: message.php:104
 msgid "Please enter some message text before sending."
@@ -10752,15 +10765,21 @@ msgstr "Noggrannhet hos latitud och longitud"
 
 #: admin_site_config.php:120
 msgid "Predefined text that states admin will decide on each request for a user account"
-msgstr "Fördefinierad text som anger att administratören bestämmer om man får ett användarkonto."
+msgstr ""
+"Fördefinierad text som anger att administratören bestämmer om man får ett "
+"användarkonto"
 
 #: admin_site_config.php:119
 msgid "Predefined text that states all users can request a user account"
-msgstr "Fördefinierad text som anger att alla användare kan ansöka om ett användarkonto."
+msgstr ""
+"Fördefinierad text som anger att alla användare kan ansöka om ett "
+"användarkonto"
 
 #: admin_site_config.php:121
 msgid "Predefined text that states only family members can request a user account"
-msgstr "Fördefinierad text som anger att endast familjemedlemmar kan ansöka om ett användarkonto."
+msgstr ""
+"Fördefinierad text som anger att endast familjemedlemmar kan ansöka om ett "
+"användarkonto"
 
 #: admin_trees_config.php:365 admin_trees_manage.php:363
 msgid "Preferences"
@@ -11326,7 +11345,7 @@ msgstr "Arkiv-ID prefix"
 #. I18N: Label for search field
 #: find.php:230
 msgid "Repository contains"
-msgstr "Arkivet innehåller:"
+msgstr "Arkivet innehåller"
 
 #: edit_interface.php:1563 includes/functions/functions_print_lists.php:1315
 msgid "Repository name"
@@ -11718,11 +11737,13 @@ msgstr "Välj en fil från listan med filer som redan finns på servern, vilken 
 
 #: help_text.php:299
 msgid "Select a relationship name from the list.  Selecting <b>Godfather</b> means: <i>This associate is the godfather of the current individual</i>."
-msgstr "Välj ett släktförhållandenamn i listan. Väljer man <b>gudfar</b> betyder detta: <i>den valda är gudfar till den nuvarande personen.</i>"
+msgstr ""
+"Välj ett släktförhållandenamn i listan. Väljer man <b>gudfar</b> betyder "
+"detta: <i>den valda är gudfar till den nuvarande personen</i>."
 
 #: statistics.php:499
 msgid "Select chart type"
-msgstr "Välj diagramtyp (x-axel):"
+msgstr "Välj diagramtyp (x-axel)"
 
 #: edit_interface.php:1252
 msgid "Select events"
@@ -11735,7 +11756,7 @@ msgstr "Välj flagga"
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:33
 msgid "Select records from your family tree and save them as a GEDCOM file."
-msgstr "Välj poster från ditt släktträd och spara dem som en GEDCOM-fil"
+msgstr "Välj poster från ditt släktträd och spara dem som en GEDCOM-fil."
 
 #: statistics.php:544 statistics.php:555 statistics.php:564
 msgid "Select the desired age interval"
@@ -12023,7 +12044,7 @@ msgstr "Delad anteckning"
 #. I18N: Label for search field
 #: find.php:250
 msgid "Shared note contains"
-msgstr "Delad anteckning innehåller:"
+msgstr "Delad anteckning innehåller"
 
 #: app/Theme/BaseTheme.php:1415
 #: includes/functions/functions_print_lists.php:1068 notelist.php:30
@@ -12782,7 +12803,7 @@ msgstr "Källcitat kan inkludera fält till uppgift om kvaliteten hos data (prim
 #. I18N: Label for search field
 #: find.php:269
 msgid "Source contains"
-msgstr "Källa innehåller:"
+msgstr "Källa innehåller"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:2265 modules_v3/fact_sources/report.xml:6
@@ -12869,7 +12890,7 @@ msgstr "Makar"
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Spouses and children"
-msgstr "Makar och barn."
+msgstr "Makar och barn"
 
 #: app/Stats.php:6199
 msgid "Sri Lanka"
@@ -12986,7 +13007,7 @@ msgstr "Indelning"
 
 #: app/Module/UserMessagesModule.php:78 message.php:127
 msgid "Subject"
-msgstr "Ärende:"
+msgstr "Ärende"
 
 #. I18N: gedcom tag SUBN
 #: app/Gedcom/GedcomTag.php:811
@@ -13258,7 +13279,7 @@ msgstr "PhpGedView (PGV) till webtrees guide är en automatiserad process för a
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
 msgid "The PHP temporary folder is missing."
-msgstr "PHP:s temporära katalog saknas"
+msgstr "PHP:s temporära katalog saknas."
 
 #: admin_users.php:97
 #, php-format
@@ -13295,7 +13316,7 @@ msgstr "Datumet och tiden för den senaste uppdateringen"
 
 #: family.php:123
 msgid "The details of this family are private."
-msgstr "Denna familjs detaljer är privata"
+msgstr "Denna familjs detaljer är privata."
 
 #: individual.php:84
 msgid "The details of this individual are private."
@@ -13305,7 +13326,7 @@ msgstr "Denna persons detaljer är privata."
 #: admin_site_upgrade.php:291 admin_trees_export.php:42
 #, php-format
 msgid "The family tree has been exported to %s."
-msgstr "Släktträdet har exporterats till %s"
+msgstr "Släktträdet har exporterats till %s."
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:63
@@ -13382,7 +13403,7 @@ msgstr "Filen %s laddades upp."
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
 msgid "The file was only partially uploaded.  Please try again."
-msgstr "Filen blev endast delvis uppladdad, var god försök igen"
+msgstr "Filen blev endast delvis uppladdad, var god försök igen."
 
 #. I18N: %s is a filename
 #: medialist.php:294 mediaviewer.php:111
@@ -13451,7 +13472,7 @@ msgstr "Följande regler används för att avgöra om en besökare är en männi
 
 #: help_text.php:456
 msgid "The help text has not been written for this item."
-msgstr "För detta objekt ännu ingen hjälptext"
+msgstr "För detta objekt finns ännu ingen hjälptext."
 
 #. I18N: Help text for the “Technical help contact” configuration setting
 #: admin_trees_config.php:958
@@ -13493,7 +13514,7 @@ msgstr "Media filen %s finns inte."
 
 #: mediafirewall.php:41
 msgid "The media file was not found in this family tree."
-msgstr "Media filen hittades inte i detta släktträd"
+msgstr "Media filen hittades inte i detta släktträd."
 
 #: admin_media_upload.php:223
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
@@ -13565,7 +13586,7 @@ msgstr "Posten %1$s ändrades till %2$s."
 
 #: action.php:86
 msgid "The record has been copied to the clipboard."
-msgstr "Post som är kopierad till urklippskorgen"
+msgstr "Posten har kopierats till urklippskorgen."
 
 #. I18N: Records are individuals, sources, etc.
 #: admin_site_merge.php:162
@@ -13630,7 +13651,7 @@ msgstr "Uppgraderingen är klar."
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:62
 msgid "The uploaded file exceeds the allowed size."
-msgstr "Uppladdad fil överskrider max tillåtna storlek"
+msgstr "Uppladdad fil överskrider max tillåtna storlek."
 
 #: admin_users.php:788
 #, php-format
@@ -13658,12 +13679,12 @@ msgstr "Värdet att placera i ”Metabeskrivning” taggen i HTML-sidhuvudet.  L
 #: admin_pgv_to_wt.php:107
 #, php-format
 msgid "The version of %s is too new."
-msgstr "Versionen av %s är för ny"
+msgstr "Versionen av %s är för ny."
 
 #: admin_pgv_to_wt.php:104
 #, php-format
 msgid "The version of %s is too old."
-msgstr "Versionen av %s är för gammal"
+msgstr "Versionen av %s är för gammal."
 
 #: admin_site_access.php:85
 msgid "The website access rule has been created."
@@ -13977,7 +13998,7 @@ msgstr "Detta är ett valfritt statusfält och används oftast till LDS förordn
 
 #: setup.php:290 setup.php:294
 msgid "This is case sensitive."
-msgstr "Obs! skiftlägeskänslig"
+msgstr "Obs! skiftlägeskänslig."
 
 #: setup.php:377
 msgid "This is case sensitive.  If a database with this name does not already exist webtrees will attempt to create one for you.  Success will depend on permissions set for your web server, but you will be notified if this fails."
@@ -14093,7 +14114,7 @@ msgstr "Denna media fil finns, men kan inte nås."
 
 #: mediafirewall.php:410
 msgid "This media file is broken and cannot be watermarked."
-msgstr "Media filen är trasig och kan inte vattenstämplas"
+msgstr "Media filen är trasig och kan inte vattenstämplas."
 
 #: mediaviewer.php:73
 msgid "This media object does not exist or you do not have permission to view it."
@@ -14188,7 +14209,7 @@ msgstr "Detta val kontrollerar om listan <i>Händelser för nära släktingar</i
 #. I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting
 #: admin_trees_config.php:1590
 msgid "This option controls whether or not to show age of father and mother next to child’s birthdate on charts."
-msgstr "Visa ålder för föräldrar intill barnets födelsedatum i tavlor"
+msgstr "Visa ålder för föräldrar intill barnets födelsedatum i tavlor."
 
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: admin_trees_config.php:1304
@@ -14810,7 +14831,7 @@ msgstr "Förenta staternas mindre öar i Oceanien och Västindien"
 
 #: app/Stats.php:6315
 msgid "US Virgin Islands"
-msgstr "Jungfruöarna"
+msgstr "Amerikanska Jungfruöarna"
 
 #: app/Stats.php:6309
 msgid "USA"
@@ -14949,7 +14970,7 @@ msgstr "Uppdatera i alla fall"
 #: admin.php:546 admin_site_upgrade.php:80
 #, php-format
 msgid "Upgrade to webtrees %s."
-msgstr "Uppdatera till webtrees v. %s"
+msgstr "Uppdatera till webtrees v. %s."
 
 #: admin_site_upgrade.php:53
 msgid "Upgrade wizard"
@@ -14982,7 +15003,7 @@ msgstr "Använd Google Maps™ till platshierarkin"
 
 #: admin_site_config.php:114
 msgid "Use PHP mail to send messages"
-msgstr "Använd PHP e-post för att sända meddelande."
+msgstr "Använd PHP e-post för att sända meddelanden"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:758
@@ -15008,7 +15029,7 @@ msgstr[1] "Använd minst %s tecken."
 #: modules_v3/family_group_report/report.xml:13
 #: modules_v3/individual_ext_report/report.xml:14
 msgid "Use colors"
-msgstr "Använd färger?"
+msgstr "Använd färger"
 
 #: app/Module/InteractiveTree/TreeView.php:52
 msgid "Use compact layout"
@@ -15194,7 +15215,7 @@ msgstr "Veracruz, Mexiko"
 
 #: login.php:348 login.php:542
 msgid "Verification code"
-msgstr "Verifieringskod:"
+msgstr "Verifieringskod"
 
 #: admin_users.php:853
 msgid "Verified"
@@ -15729,7 +15750,7 @@ msgstr "Fyll i alla fält för administratörskontot."
 
 #: edit_interface.php:1548
 msgid "You must provide a repository name."
-msgstr "Du måste ange ett arkivnamn"
+msgstr "Du måste ange ett arkivnamn."
 
 #: edit_interface.php:1210
 msgid "You must provide a source title"
@@ -15898,7 +15919,7 @@ msgstr "Zooma in här"
 
 #: app/Theme/BaseTheme.php:664 app/Theme/BaseTheme.php:709
 msgid "Zoom in/out on this box."
-msgstr "Zooma in/ut denna ruta"
+msgstr "Zooma in/ut denna ruta."
 
 #: app/Module/GoogleMapsModule.php:4056 app/Module/GoogleMapsModule.php:4130
 #: app/Module/GoogleMapsModule.php:4569
@@ -19671,7 +19692,7 @@ msgstr ""
 
 #: app/Theme/WebtreesTheme.php:96
 msgid "webtrees"
-msgstr ""
+msgstr "webtrees"
 
 #. I18N: %s is a database name/identifier
 #: admin_pgv_to_wt.php:113

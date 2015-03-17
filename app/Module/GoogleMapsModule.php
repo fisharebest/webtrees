@@ -1346,9 +1346,10 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 				}
 				// end of add image
 
+				$birth     = $person->getFirstFact('BIRT');
 				$dataleft  = Filter::escapeJs($image . $event . ' — ' . $name);
 				$datamid   = Filter::escapeJs(' <span><a href="' . $person->getHtmlUrl() . '">(' . I18N::translate('View individual') . ')</a></span>');
-				$dataright = Filter::escapeJs($person->getFirstFact('BIRT')->summary());
+				$dataright = $birth ? Filter::escapeJs($birth->summary()) : '';
 
 				$latlongval[$i] = $this->getLatitudeAndLongitudeFromPlaceLocation($person->getBirthPlace());
 				if ($latlongval[$i]) {

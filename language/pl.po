@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-14 22:10+0100\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Polish <http://translate.webtrees.net/projects/webtrees/webtrees/pl/>\n"
+"PO-Revision-Date: 2015-03-16 12:51+0100\n"
+"Last-Translator: Łukasz Wileński <lukas.the.best@poczta.fm>\n"
+"Language-Team: Polish "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 2.3-dev\n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -244,17 +246,17 @@ msgstr[2] "%s dni temu"
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s rodzina została uaktualniona."
+msgstr[1] "%s rodziny zostały uaktualnione."
+msgstr[2] "%s rodzin zostało uaktualnionych."
 
 #: admin.php:761
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s drzewo genealogiczne"
+msgstr[1] "%s drzewa genealogiczne"
+msgstr[2] "%s drzew genealogicznych"
 
 #: app/Stats.php:4748 app/Stats.php:4752
 #, php-format
@@ -292,9 +294,9 @@ msgstr[2] "Dane %s osób są prywatne."
 #, php-format
 msgid "%s individuals has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s osoba została uaktualniona."
+msgstr[1] "%s osoby zostały uaktualnione."
+msgstr[2] "%s osób zostało uaktualnionych."
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:122
@@ -348,9 +350,9 @@ msgstr[2] "%s miesięcy temu"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s notatka została uaktualniona."
+msgstr[1] "%s notatki zostały uaktualnione."
+msgstr[2] "%s notatek zostało uaktualnionych."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: includes/functions/functions.php:2108
@@ -376,9 +378,9 @@ msgstr[2] "%s sekund temu"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s źródło zostało uaktualnione."
+msgstr[1] "%s źródła zostały uaktualnione."
+msgstr[2] "%s źródeł zostało uaktualnionych."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2124
@@ -1341,7 +1343,7 @@ msgstr "Dodaj wpisy rodziców wraz z wpisem o tej rodzinie."
 
 #: admin_trees_manage.php:266
 msgid "Add spaces where long lines were wrapped"
-msgstr ""
+msgstr "Dodaj spacje w miejscu podziału długich wierszy"
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: admin_trees_download.php:161 app/Module/ClippingsCartModule.php:212
@@ -4057,6 +4059,8 @@ msgstr "Pokaż własne wykresy statystyk"
 #: admin_trees_manage.php:712
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
 msgstr ""
+"Budowa, aktualizowanie i usuwanie drzewa genealogicznego dla każdego pliku "
+"GEDCOM w folderze data."
 
 #. I18N: gedcom tag CREM
 #: app/Gedcom/GedcomTag.php:331 modules_v3/family_group_report/report.xml:309
@@ -6246,7 +6250,7 @@ msgstr "Znajdź znak specjalny"
 
 #: relationship.php:96
 msgid "Find all possible relationships"
-msgstr ""
+msgstr "Znajdź wszystkie możliwe relacje"
 
 #: app/Module/CensusAssistantModule.php:63 find.php:55
 #: includes/functions/functions_print.php:730
@@ -6257,7 +6261,7 @@ msgstr "Znajdź osobę"
 
 #: relationship.php:91
 msgid "Find the closest relationships"
-msgstr ""
+msgstr "Znajdź najbliższe relacje"
 
 #: app/Stats.php:6141
 msgid "Finland"
@@ -6275,7 +6279,7 @@ msgstr "Pierwsze wydarzenie"
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:331
 msgid "First record"
-msgstr ""
+msgstr "Pierwszy wpis"
 
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:29
 msgid "Fix name slashes and spaces"
@@ -6350,6 +6354,8 @@ msgstr "Dla ceremonii mormońskich to pole umożliwia wprowadzenie świątyni, w
 #, php-format
 msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
 msgstr ""
+"Na przykład, jeśli plik GEDCOM zawiera %1$s a webtrees spodziewa się znaleźć "
+"%2$s w folderze multimediów, należy usunąć %3$s."
 
 #: admin_users.php:590
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
@@ -7214,10 +7220,15 @@ msgstr "Jeśli jesteś administratorem strony, powinieneś sprawdzić, czy:"
 #: site-unavailable.php:109
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
 msgstr ""
+"Jeśli nie możesz rozwiązać problemu samodzielnie, możesz poprosić o pomoc na "
+"forum <a href=\"http://webtrees.net\">webtrees.net</a>"
 
 #: admin_trees_manage.php:269
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
 msgstr ""
+"Jeśli dany plik GEDCOM został utworzony za pomocą oprogramowania, które "
+"pomija spacje w miejscu dzielenia długich linii, należy wybierać tę opcję, "
+"aby ponownie wstawić brakujące spacje."
 
 #: login.php:350
 msgid "If you didn’t request an account, you can just delete this message."
@@ -7265,6 +7276,8 @@ msgstr "Jeśli spróbujesz przekroczyć te limity, może dojść do przekroczeni
 #: admin_site_config.php:507
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr ""
+"Jeśli używasz jednej z następujących usług monitorowania i analityki, "
+"webtrees może automatycznie dodać kody monitorowania."
 
 #. I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1256
@@ -7779,7 +7792,7 @@ msgstr "Zachowaj powiązanie na liście"
 #. I18N: A configuration setting
 #: admin_trees_manage.php:259
 msgid "Keep media objects"
-msgstr ""
+msgstr "Zachowaj obiekty multimedialne"
 
 #: app/Stats.php:6186
 msgid "Kenya"
@@ -8757,7 +8770,7 @@ msgstr "Plik multimedialny do wgrania"
 #: admin_trees_download.php:164
 #, php-format
 msgid "Media filenames will be prefixed by %s."
-msgstr ""
+msgstr "Nazwy plików multimedialnych będą zawierały przedrostek %s."
 
 #: admin_media.php:617 admin_trees_config.php:1063
 msgid "Media files"
@@ -9574,11 +9587,11 @@ msgstr "Nie"
 
 #: admin_trees_manage.php:88 admin_trees_manage.php:109
 msgid "No GEDCOM file was received."
-msgstr ""
+msgstr "Nie wybrano pliku GEDCOM."
 
 #: admin_trees_manage.php:240
 msgid "No GEDCOM files found."
-msgstr ""
+msgstr "Nie znaleziono plików GEDCOM."
 
 #: app/Module/GoogleMapsModule.php:911
 msgid "No ancestors in the database."
@@ -10127,7 +10140,7 @@ msgstr "Typ orientacji"
 
 #: app/Gedcom/GedcomCodeTemp.php:248
 msgid "Orlando, Florida"
-msgstr "Orlando, Florida"
+msgstr "Orlando, Floryda"
 
 #: app/Gedcom/GedcomTag.php:1890 app/Stats.php:4969 app/Stats.php:5343
 msgid "Other"
@@ -10258,7 +10271,7 @@ msgstr "Rozmiar strony"
 #. I18N: The number of [...]
 #: app/Module/ExtraInformationModule.php:67 index.php:144
 msgid "Page views"
-msgstr ""
+msgstr "Liczba odsłon"
 
 #: app/Gedcom/GedcomTag.php:1888
 msgid "Painting"
@@ -11037,7 +11050,7 @@ msgstr "radżab"
 
 #: app/Gedcom/GedcomCodeTemp.php:268
 msgid "Raleigh, North Carolina"
-msgstr "Raleigh, North Carolina"
+msgstr "Raleigh, Północna Karolina"
 
 #. I18N: http://en.wikipedia.org/wiki/Ramadan_%28calendar_month%29
 #: app/Date/HijriDate.php:86
@@ -11136,7 +11149,7 @@ msgstr "Wpisy nie są tego samego typu. Nie można scalać wpisów różnego typ
 
 #: app/Gedcom/GedcomCodeTemp.php:272
 msgid "Redlands, California"
-msgstr "Redlands, California"
+msgstr "Redlands, Kalifornia"
 
 #: app/Module/GoogleMapsModule.php:964 app/Module/GoogleMapsModule.php:2316
 #: app/Module/GoogleMapsModule.php:3696
@@ -11289,7 +11302,7 @@ msgstr "Usuń powiązanie z listy"
 #. I18N: A media path (e.g. c:\aaa\bbb\ccc\ddd.jpeg) in a GEDCOM file
 #: admin_trees_manage.php:272
 msgid "Remove the GEDCOM media path from filenames"
-msgstr ""
+msgstr "Usuń nieprawidłową ścieżkę dostępu do pliku multimediów"
 
 #: app/Module/GoogleMapsModule.php:4523
 msgid "Remove this location?"
@@ -11504,7 +11517,7 @@ msgstr "Serwer poczty SMTP"
 
 #: app/Gedcom/GedcomCodeTemp.php:278
 msgid "Sacramento, California"
-msgstr "Sacramento, California"
+msgstr "Sacramento, Kalifornia"
 
 #. I18N: http://en.wikipedia.org/wiki/Safar
 #: app/Date/HijriDate.php:79
@@ -11565,11 +11578,11 @@ msgstr "Samoa"
 
 #: app/Gedcom/GedcomCodeTemp.php:284
 msgid "San Antonio, Texas"
-msgstr "San Antonio, Texas"
+msgstr "San Antonio, Teksas"
 
 #: app/Gedcom/GedcomCodeTemp.php:286
 msgid "San Diego, California"
-msgstr "San Diego, California"
+msgstr "San Diego, Kalifornia"
 
 #: app/Gedcom/GedcomCodeTemp.php:296
 msgid "San Jose, Costa Rica"
@@ -11717,7 +11730,7 @@ msgstr "Seattle, Washington"
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:348
 msgid "Second record"
-msgstr ""
+msgstr "Drugi wpis"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:394
@@ -11737,12 +11750,12 @@ msgstr "Więcej informacji na: %s."
 
 #: admin_site_merge.php:203 admin_site_merge.php:245 admin_site_merge.php:286
 msgid "Select"
-msgstr ""
+msgstr "Wybierz"
 
 #. I18N: A configuration setting
 #: admin_trees_manage.php:192
 msgid "Select a GEDCOM file to import"
-msgstr ""
+msgstr "Wybierz plik GEDCOM do zaimportowania"
 
 #: includes/functions/functions_edit.php:368 reportengine.php:261
 msgid "Select a date"
@@ -11783,11 +11796,11 @@ msgstr "Wybierz żądane grupowanie"
 
 #: admin_site_merge.php:189
 msgid "Select the facts and events to keep from both records."
-msgstr ""
+msgstr "Wybierz fakty i wydarzenia z obu wpisów, które mają być zachowane."
 
 #: admin_site_config.php:622
 msgid "Select the languages that will be shown in menus."
-msgstr ""
+msgstr "Wybierz języki jakie będą dostępne w menu."
 
 #: app/Module/FamilyTreeStatisticsModule.php:281
 msgid "Select the stats to show in this block"
@@ -11800,7 +11813,7 @@ msgstr "Wybierz tę opcję aby dołączyć pliki multimedialne, powiązane z wpi
 #. I18N: Records are indviduals, sources, etc.
 #: admin_site_merge.php:326
 msgid "Select two records to merge."
-msgstr ""
+msgstr "Wybierz dwa wpisy do scalenia."
 
 #: app/Gedcom/GedcomCodeRela.php:222
 msgid "Seller"
@@ -12624,7 +12637,7 @@ msgstr "Siostra"
 #: admin_site_config.php:557 admin_site_config.php:573
 #: admin_site_config.php:598
 msgid "Site identification code"
-msgstr ""
+msgstr "Kod identyfikacyjny witryny"
 
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: admin_users.php:459 edituser.php:271
@@ -12640,6 +12653,8 @@ msgstr "Kod weryfikacyjny witryny"
 #: admin_site_config.php:526 admin_site_config.php:547
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
 msgstr ""
+"Kod weryfikacyjny witryny nie działa, gdy webtrees jest zainstalowane w "
+"podfolderze."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:30
@@ -12737,6 +12752,10 @@ msgstr "Somalia"
 #: admin_trees_manage.php:284
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow webtrees to find the file, the first part of the path must be removed."
 msgstr ""
+"Niektóre programy genealogiczne tworzą pliki GEDCOM, które zawierają nazwy "
+"plików multimedialnych z pełnymi ścieżkami dostępu. Te ścieżki nie istnieją "
+"na serwerze internetowym. Aby umożliwić webtrees znalezienie pliku, pierwsza "
+"część ścieżki powinna być usunięta."
 
 #: app/Module/GoogleMapsModule.php:429
 msgid "Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”."
@@ -13113,7 +13132,7 @@ msgstr "Wyspy Svalbard i Jan Mayen"
 #. I18N: Reverse the order of two individuals
 #: relationship.php:86
 msgid "Swap individuals"
-msgstr ""
+msgstr "Zamień osoby"
 
 #: app/Stats.php:6286
 msgid "Swaziland"
@@ -13133,7 +13152,7 @@ msgstr "Sydney, Australia"
 
 #: admin_trees_manage.php:705
 msgid "Synchronize family trees with GEDCOM files"
-msgstr ""
+msgstr "Synchronizuj drzewa genealogiczne z plikami GEDCOM"
 
 #: app/Stats.php:6288
 msgid "Syrian Arab Republic"
@@ -13457,13 +13476,13 @@ msgstr "Katalog ten można określić w całości (np. /home/nazwa_użytkownika/
 
 #: admin_site_merge.php:194
 msgid "The following facts and events were found in both records."
-msgstr ""
+msgstr "Następujące fakty i wydarzenia zostały znalezione w obu wpisach."
 
 #. I18N: the name of an individual, source, etc.
 #: admin_site_merge.php:236 admin_site_merge.php:277
 #, php-format
 msgid "The following facts and events were only found in the record of %s."
-msgstr ""
+msgstr "Poniższe fakty i wydarzenia znaleziono tylko we wpisie %s."
 
 #: setup.php:174
 msgid "The following list shows typical requirements."
@@ -13510,7 +13529,7 @@ msgstr "Powiązanie pomiędzy „%1$s” a „%2$s” zostało usunięte."
 #: admin_site_merge.php:106
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr ""
+msgstr "Powiązanie „%1$s” i „%2$s” zostało uaktualnione."
 
 #: addmedia.php:313 addmedia.php:341
 #, php-format
@@ -13578,7 +13597,7 @@ msgstr "Hasła nie są jednakowe."
 #: admin_trees_config.php:219 admin_trees_config.php:341
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr ""
+msgstr "Ustawienia drzewa genealogicznego „%s” zostały uaktualnione."
 
 #: admin_modules.php:71
 #, php-format
@@ -13588,7 +13607,7 @@ msgstr "Ustawienia modułu „%s” zostały usunięte."
 #: app/Module/GoogleMapsModule.php:265
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr ""
+msgstr "Ustawienia modułu „%s” zostały uaktualnione."
 
 #: setup.php:381
 msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database.  “wt_” is suggested, but can be anything you want."
@@ -13607,7 +13626,7 @@ msgstr "Wpis skopiowany do schowka."
 #: admin_site_merge.php:162
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr ""
+msgstr "Wpisy „%1$s” i „%2$s” zostały połączone."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:112
 msgid "The regex appears to contain an error.  It can’t be used."
@@ -13717,7 +13736,7 @@ msgstr "Uaktualniono zasadę dostępu."
 #: admin_site_config.php:44 admin_site_config.php:63 admin_site_config.php:76
 #: admin_site_config.php:91 admin_site_config.php:100
 msgid "The website preferences have been updated."
-msgstr ""
+msgstr "Ustawienia witryny zostały zapisane."
 
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: admin_trees_config.php:2291
@@ -13754,6 +13773,11 @@ msgstr "Motywy"
 #: admin_site_config.php:236
 msgid "Themes can be selected at three levels: user, family tree, and website.  User settings take priority over family tree settings, which in turn take priority over the website setting.  Selecting “default theme” at one level will use the theme at the next level."
 msgstr ""
+"Motywy mogą być wybrane na trzech poziomach: użytkownika, drzewa "
+"genealogicznego, oraz na strony internetowej. Ustawienia użytkownika mają "
+"pierwszeństwo przed ustawieniami drzewa genealogicznego, które z kolei mają "
+"pierwszeństwo przed ustawieniami strony. Wybór „domyślnego motywu” na jednym "
+"poziomie spowoduje użycie jego na kolejnym poziomie."
 
 #: app/Module/ExtraInformationModule.php:58
 #: app/Module/IndividualFactsTabModule.php:115
@@ -13980,7 +14004,39 @@ msgstr "Dane te są prywatne i nie mogą być pokazane."
 
 #: help_text.php:366
 msgid "This input box lets you change that year of the calendar.  Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>.  This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned.  Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits.  For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>"
-msgstr "To miejsce pozwala zmienić rok kalendarza w trybie <b>miesiąca</b> lub rok listy w trybie <b>roku</b> mode.<br><br>Zmiana roku nic nie zmieni w trybie <b>dnia</b>, ponieważ są w nim zawsze wyświetlane wszystkie wydarzenia dla wszystkich lat.<br><br><b>Opcje zaawansowane</b> dla <b>Pokaż rok</b><dl><dt><b>Więcej lat</b></dt><dd>Istnieje możliwość wyszukiwania dat w pewnym przedziale lat.<br><br>Zakresy lat liczą się <u>włącznie</u>. Oznacza to, że zakres dat rozciąga się od 1 stycznia pierwszego roku do 31 grudnia ostatniego roku. Oto kilka przykładów zakresów lat:<br><br><b>1992-5</b> - wydarzenia od 1992 do 1995.<br><b>1972-89</b> - wydarzenia od 1972 do 1989.<br><b>1610-759</b> - wydarzenia od 1610 do 1759.<br><b>1880-1905</b> - wydarzenia od 1880 do 1905.<br><b>880-1105</b> - wydarzenia od 880 do 1105.<br><br>Można pominąć ostatnie cyfry roku, zastępując je znakiem zapytania.<br><br>Aby uzyskać wszystkie wydarzenia z dziesięciolecia.<br><b>197?</b> - wydarzenia od 1970 do 1979.<br>Aby uzyskać wszystkie wydarzenia z wieku.<br><b>19??-19??</b> - wydarzenia od 1900 do 1999.</dd><dt><br><b>Daty przybliżone</b></dt><dd>Czasami nieznana jest dokładna data wydarzenia. Aby zaznaczyć nieścisłość, do daty dodaje się terminy „po”, „przed” i „około”.<br><br>Takie daty są przechowywane w bazie danych razem z <u>angielskim</u> skrótem terminu. W trybie <b>roku</b> można przeprowadzać wyszukiwanie dla tych terminów, z lub bez towarzyszącej im daty. Przykłady wyszukiwania:<br><br><b>abt</b> 1800 (<b>abt</b> = about, około)<br><b>bet</b> 1950-1959 (<b>bet</b> = between, pomiędzy) wprowadź: bet 1950 lub tylko: 1950-59<br><b>bef</b> 1950 (<b>bef</b> = before, przed)<br><b>aft</b> 1900 (<b>aft</b> = after, po)<br><br><b>Uwaga:</b> webtrees szuka ciągu znaków dokładnie w takiej postaci, w jakiej został wprowadzony. Jeśli jest wyszukiwane <b>abt&nbsp;1850</b>, data wprowadzona jako <b>abt&nbsp;oct&nbsp;1850</b> <u>nie</u> zostanie odnaleziona.<br><br>Można wprowadzić sam skrót, bez roku, aby odnaleźć wszystkie wydarzenia z datą, która zawiera ten skrót.</dd></dl>Ekran nie zostanie odświeżony, kiedy zostanie wprowadzony nowy rok, ponieważ jest to pole, a nie odnośnik, należy kliknąć na przycisk <b>Pokaż miesiąc</b> lub <b>Pokaż rok</b> zanim będzie można zobaczyć zmianę."
+msgstr ""
+"To miejsce pozwala zmienić rok kalendarza w trybie <b>miesiąca</b> lub rok "
+"listy w trybie <b>roku</b>.<br><br>Zmiana roku nic nie zmieni w trybie "
+"<b>dnia</b>, ponieważ są w nim zawsze wyświetlane wszystkie wydarzenia dla "
+"wszystkich lat.<br><br><b>Opcje zaawansowane</b> dla <b>Pokaż "
+"rok</b><dl><dt><b>Więcej lat</b></dt><dd>Istnieje możliwość wyszukiwania dat "
+"w pewnym przedziale lat.<br><br>Zakresy lat liczą się <u>włącznie</u>. "
+"Oznacza to, że zakres dat rozciąga się od 1 stycznia pierwszego roku do 31 "
+"grudnia ostatniego roku. Oto kilka przykładów zakresów "
+"lat:<br><br><b>1992-5</b> - wydarzenia od 1992 do 1995.<br><b>1972-89</b> - "
+"wydarzenia od 1972 do 1989.<br><b>1610-759</b> - wydarzenia od 1610 do "
+"1759.<br><b>1880-1905</b> - wydarzenia od 1880 do 1905.<br><b>880-1105</b> - "
+"wydarzenia od 880 do 1105.<br><br>Można pominąć ostatnie cyfry roku, "
+"zastępując je znakiem zapytania.<br><br>Aby uzyskać wszystkie wydarzenia z "
+"dziesięciolecia.<br><b>197?</b> - wydarzenia od 1970 do 1979.<br>Aby uzyskać "
+"wszystkie wydarzenia z wieku.<br><b>19??-19??</b> - wydarzenia od 1900 do "
+"1999.</dd><dt><br><b>Daty przybliżone</b></dt><dd>Czasami nieznana jest "
+"dokładna data wydarzenia. Aby zaznaczyć nieścisłość, do daty dodaje się "
+"terminy „po”, „przed” i „około”.<br><br>Takie daty są przechowywane w bazie "
+"danych razem z <u>angielskim</u> skrótem terminu. W trybie <b>roku</b> można "
+"przeprowadzać wyszukiwanie dla tych terminów, z lub bez towarzyszącej im "
+"daty. Przykłady wyszukiwania:<br><br><b>abt</b> 1800 (<b>abt</b> = about, "
+"około)<br><b>bet</b> 1950-1959 (<b>bet</b> = between, pomiędzy) wprowadź: "
+"bet 1950 lub tylko: 1950-59<br><b>bef</b> 1950 (<b>bef</b> = before, "
+"przed)<br><b>aft</b> 1900 (<b>aft</b> = after, po)<br><br><b>Uwaga:</b> "
+"webtrees szuka ciągu znaków dokładnie w takiej postaci, w jakiej został "
+"wprowadzony. Jeśli jest wyszukiwane <b>abt&nbsp;1850</b>, data wprowadzona "
+"jako <b>abt&nbsp;oct&nbsp;1850</b> <u>nie</u> zostanie odnaleziona.<br><br>"
+"Można wprowadzić sam skrót, bez roku, aby odnaleźć wszystkie wydarzenia z "
+"datą, która zawiera ten skrót.</dd></dl>Ekran nie zostanie odświeżony, kiedy "
+"zostanie wprowadzony nowy rok, ponieważ jest to pole, a nie odnośnik, należy "
+"kliknąć na przycisk <b>Pokaż miesiąc</b> lub <b>Pokaż rok</b> zanim będzie "
+"można zobaczyć zmianę."
 
 #. I18N: Help text for the “Advanced name facts” configuration setting
 #: admin_trees_config.php:2200
@@ -14550,6 +14606,8 @@ msgstr "Aby zmniejszyć wysokość bloku artykuły, administrator ukrył niektó
 #: admin_trees_download.php:145 app/Module/ClippingsCartModule.php:180
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file.  You will need to uncompress the .ZIP file before you can use it."
 msgstr ""
+"Aby zmniejszyć rozmiar pobieranego pliku, można skompresować dane do pliku "
+"ZIP. Zanim będzie można używać danych ponownie, należy rozpakować plik ZIP."
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: admin_site_config.php:461
@@ -14753,12 +14811,12 @@ msgstr "Użytkownicy"
 #. I18N: Menu entry
 #: admin_site_config.php:141 app/Theme/AdministrationTheme.php:72
 msgid "Tracking and analytics"
-msgstr ""
+msgstr "Monitorowanie i analizy"
 
 #: admin_site_config.php:563 admin_site_config.php:588
 #: admin_site_config.php:613
 msgid "Tracking and analytics are not added to the control panel."
-msgstr ""
+msgstr "Monitorowanie i analizy nie są dodane do panelu sterowania."
 
 #. I18N: gedcom tag TRLR
 #: app/Gedcom/GedcomTag.php:841
@@ -15901,11 +15959,16 @@ msgstr "Twoje konto użytkownika nie ma ustawionego „automatycznego zatwierdza
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer maintained.  You should upgrade to a later version."
 msgstr ""
+"Twój serwer używa PHP w wersji %s, które już nie jest wspierane. Należy "
+"zaktualizować do nowszej wersji."
 
 #: admin.php:485
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates.  You should upgrade to a later version as soon as possible."
 msgstr ""
+"Twój serwer używa PHP w wersji %s, które już nie otrzymuje aktualizacji "
+"zabezpieczeń. Należy zaktualizować do nowszej wersji, tak szybko jak to "
+"możliwe."
 
 #: app/Stats.php:6323
 msgid "Yugoslavia"
@@ -17010,7 +17073,7 @@ msgstr "żona wnuka"
 #: includes/functions/functions.php:1813
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×% nephew/niece"
-msgstr ""
+msgstr "pra ×% siostrzeniec"
 
 #: includes/functions/functions.php:1639 includes/functions/functions.php:1654
 #: includes/functions/functions.php:1667
@@ -19752,6 +19815,11 @@ msgstr "webtrees wysyła emaile bez zachowywania"
 #: admin_trees_download.php:154
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-latin scripts.  If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
 msgstr ""
+"webtrees używa kodowania UTF-8 dla akcentowanych liter (w tym liter "
+"charakterystycznych dla alfabetu polskiego), znaków specjalnych i alfabetów "
+"innych niż łaciński. Jeśli jest konieczność używania danego pliku GEDCOM z "
+"oprogramowaniem genealogicznym, które nie obsługuje UTF-8, można go utworzyć "
+"przy użyciu kodowania ISO-8859-1."
 
 #: includes/functions/functions_print.php:185
 msgid "webtrees wiki"
