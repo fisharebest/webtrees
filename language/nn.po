@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-15 15:40+0100\n"
+"PO-Revision-Date: 2015-03-17 05:07+0100\n"
 "Last-Translator: H R Nilsen <hrnwebtrees@yahoo.com>\n"
 "Language-Team: Norwegian Nynorsk "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/nn/>\n"
@@ -1323,7 +1323,7 @@ msgstr "Legg til lengre tekst om personar i slektstreet."
 #: app/Module/ClippingsCartModule.php:87
 #: app/Module/ClippingsCartModule.php:506
 msgid "Add parents’ and all descendants’ records together with this family record."
-msgstr "Legg til foreldre og alle etterkomarar til denne familien."
+msgstr "Legg til foreldre og alle etterkomarar etter denne familien."
 
 #: app/Module/ClippingsCartModule.php:86
 #: app/Module/ClippingsCartModule.php:505
@@ -4947,14 +4947,14 @@ msgstr "Interesse for etterkomarar"
 
 #: modules_v3/descendancy_report/report.xml:39
 msgid "Descendants of "
-msgstr "Etterkomarar av "
+msgstr "Etterkomarar etter "
 
 #. I18N: %s is an individual’s name
 #: app/Controller/DescendancyController.php:54
 #: app/Module/ChartsBlockModule.php:86
 #, php-format
 msgid "Descendants of %s"
-msgstr "Etterkomarar av %s"
+msgstr "Etterkomarar etter %s"
 
 #. I18N: gedcom tag DSCR
 #: admin_module_blocks.php:72 admin_module_menus.php:86
@@ -5554,7 +5554,9 @@ msgstr "Angi ei postadresse i feltet på same måte som du ville gjort på ein k
 
 #: help_text.php:342
 msgid "Enter the time for this event in 24-hour format with leading zeroes.  Midnight is 00:00.  Examples: 04:50 13:00 20:30."
-msgstr "Angi klokkeslett for denne hendinga. Bruk tidsformat med 24 timer:<ul><li>Midnatt: 00:00</li><li>04:50</li><li>13:00</li><li>20:30</li></ul>"
+msgstr ""
+"Angi klokkeslett for denne hendinga. Bruk tidsformat med 24 timar.  Midnatt "
+"er 00:00.  Døme: 04:50 13:00 20:30."
 
 #: search.php:191
 msgid "Entire record"
@@ -6680,7 +6682,10 @@ msgstr "Førenamn"
 #. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
 #: admin_trees_config.php:1014
 msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu.  To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
-msgstr "Gjev brukarar høve til å velje eige tema (utsjånad) frå ein meny<br>Forutset at nytta tema har slik meny<br>Forutset òg at «Tillat brukarar å velje utsjånad» er sett til «Ja»"
+msgstr ""
+"Gjev brukarar høve til å velje eige tema (utsjånad) frå ein meny.<br><br>"
+"Forutset at nytta tema har ein slik meny.  Forutset òg at «Tillat brukarar å "
+"velje tema» er sett til «Ja»."
 
 #. I18N: Help text for the “Allow users to select their own theme” site configuration setting
 #: admin_site_config.php:249
@@ -7171,7 +7176,11 @@ msgstr "Om ein person ikkje var kjend under sitt første førenamn, vert det fø
 #. I18N: Help text for the “Names to add to common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1236
 msgid "If the number of times that a certain surname occurs is lower than the threshold, it will not appear in the list.  It can be added here manually.  If more than one surname is entered, they must be separated by a comma.  <b>Surnames are case-sensitive.</b>"
-msgstr "Dersom eit særskilt etternamn ikkje førekjem nok gonger til å verte synt i lista over dei mest nytta etternamna, kan det her leggjast til manuelt. Om det vert lagt inn fleire namn, må desse skiljast med komma."
+msgstr ""
+"Dersom eit særskilt etternamn ikkje førekjem nok gonger til å verte synt i "
+"lista over dei mest nytta etternamna, kan det her leggjast til manuelt. Om "
+"det vert lagt inn fleire namn, må desse skiljast med komma. <b>Det skiljast "
+"mellom store og små bokstavar.</b>"
 
 #: help_text.php:255
 #, php-format
@@ -15067,7 +15076,17 @@ msgstr "Bruk GeoNames-databasen til «autocomplete» for stadnamn"
 
 #: help_text.php:371
 msgid "Use these buttons to move an entry from one list to another.<br><br>Highlight the entry to be moved, and then click a button to move or copy that entry in the direction of the arrow.  Use the <b>&raquo;</b> and <b>&laquo;</b> buttons to move the highlighted entry from the leftmost to the rightmost list or vice-versa.  Use the <b>&gt;</b> and <b>&lt;</b> buttons to move the highlighted entry between the Available blocks list and the list to its right or left.<br><br>The entries in the Available Blocks list do not change, regardless of what you do with the Move right and Move left buttons.  This is so because the same block can appear several times on the same page.  The HTML block is a good example of why you might want to do this."
-msgstr "Nytt desse knappane til å flytte ein komponent frå ei liste til ei anna.<br><br>Merk den komponenten du ønskjer å flytte eller kopiere, og klikk ei pil med ønska retning. Nytt <b>&raquo;</b> og <b>&laquo;</b> knappane for å flytte den merka komponenten frå venstre til høgre eller omvendt. Nytt <b>&gt;</b> og <b>&lt;</b> knappane til å flytte den merka komponenten mellom Tilgjengelege Blokker og listene til høger og venstre.<br><br>Innhaldet i lista over Tilgjengelege Blokker vert ståande uansett hva du gjer med knappane Flytt til høgre og Flytt til venstre, fordi ein komponentkan nyttast fleire gonger på same side.  HTML-blokka er eit døme på dette.</dd></dl>"
+msgstr ""
+"Nytt desse knappane til å flytte ein komponent frå ei liste til ei "
+"anna.<br><br>Merk den komponenten du ønskjer å flytte eller kopiere, og "
+"klikk ei pil med ønska retning.  Nytt <b>&raquo;</b> og <b>&laquo;</b> "
+"knappane for å flytte den merka komponenten frå venstre til høgre eller "
+"omvendt.  Nytt <b>&gt;</b> og <b>&lt;</b> knappane til å flytte den merka "
+"komponenten mellom Tilgjengelege Blokker og listene til høger og "
+"venstre.<br><br>Innhaldet i lista over Tilgjengelege Blokker vert ståande "
+"uansett kva du gjer med knappane Flytt til høgre og Flytt til venstre, fordi "
+"ein komponent kan nyttast fleire gonger på same side.  HTML-blokka er eit "
+"døme på dette."
 
 #: help_text.php:376
 msgid "Use these buttons to re-arrange the order of the entries within the list.  The blocks will be printed in the order in which they are listed.<br><br>Highlight the entry to be moved, and then click a button to move that entry up or down."
@@ -16992,7 +17011,7 @@ msgstr "sonesons hustru"
 #: includes/functions/functions.php:1813
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×% nephew/niece"
-msgstr ""
+msgstr "%s× grandnevø/-niese"
 
 #: includes/functions/functions.php:1639 includes/functions/functions.php:1654
 #: includes/functions/functions.php:1667
