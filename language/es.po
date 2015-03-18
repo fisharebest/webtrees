@@ -16966,7 +16966,7 @@ msgstr "esposa del nieto"
 #: includes/functions/functions.php:1813
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "sobrino %s-nieto"
 
 #: includes/functions/functions.php:1639 includes/functions/functions.php:1654
 #: includes/functions/functions.php:1667
@@ -20373,10 +20373,6 @@ msgstr "…"
 
 #~ msgid "from"
 #~ msgstr "correspondientes a"
-
-#~ msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
-#~ msgid "great ×%s nephew/niece"
-#~ msgstr "sobrino %s-nieto"
 
 #~ msgctxt "FEMALE"
 #~ msgid "married"

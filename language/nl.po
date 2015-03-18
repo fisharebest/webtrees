@@ -20099,10 +20099,6 @@ msgstr "…"
 #~ msgid "from"
 #~ msgstr "vanaf"
 
-#~ msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
-#~ msgid "great ×%s nephew/niece"
-#~ msgstr "%sx achterneef/achternicht"
-
 #~ msgctxt "FEMALE"
 #~ msgid "married"
 #~ msgstr "getrouwd"
