@@ -20395,10 +20395,6 @@ msgstr "…"
 #~ msgid "go"
 #~ msgstr "aller"
 
-#~ msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
-#~ msgid "great ×%s nephew/niece"
-#~ msgstr "petit-neveu/petite-nièce au %s<sup>e</sup> degré"
-
 #~ msgctxt "FEMALE"
 #~ msgid "married"
 #~ msgstr "mariée"

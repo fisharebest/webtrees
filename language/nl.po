@@ -16966,7 +16966,7 @@ msgstr "aangetrouwde kleindochter"
 #: includes/functions/functions.php:1813
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "%sx achterneef/achternicht"
 
 #: includes/functions/functions.php:1639 includes/functions/functions.php:1654
 #: includes/functions/functions.php:1667
@@ -20098,10 +20098,6 @@ msgstr "…"
 
 #~ msgid "from"
 #~ msgstr "vanaf"
-
-#~ msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
-#~ msgid "great ×%s nephew/niece"
-#~ msgstr "%sx achterneef/achternicht"
 
 #~ msgctxt "FEMALE"
 #~ msgid "married"

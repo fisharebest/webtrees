@@ -17002,7 +17002,7 @@ msgstr "vnukova manželka"
 #: includes/functions/functions.php:1813
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "%s× pra-synovec/neteř"
 
 #: includes/functions/functions.php:1639 includes/functions/functions.php:1654
 #: includes/functions/functions.php:1667
@@ -20419,10 +20419,6 @@ msgstr "…"
 
 #~ msgid "from"
 #~ msgstr "z"
-
-#~ msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
-#~ msgid "great ×%s nephew/niece"
-#~ msgstr "%s× pra-synovec/neteř"
 
 #~ msgctxt "FEMALE"
 #~ msgid "married"
