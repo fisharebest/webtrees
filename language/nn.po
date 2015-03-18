@@ -17008,11 +17008,6 @@ msgctxt "son’s son’s wife"
 msgid "grandson’s wife"
 msgstr "sonesons hustru"
 
-#: includes/functions/functions.php:1813
-msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
-msgid "great ×%s nephew/niece"
-msgstr "%s× grandnevø/-niese"
-
 #: includes/functions/functions.php:1639 includes/functions/functions.php:1654
 #: includes/functions/functions.php:1667
 #, php-format
