@@ -17010,8 +17010,8 @@ msgstr "anūko žmona"
 
 #: includes/functions/functions.php:1813
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
-msgid "great ×% nephew/niece"
-msgstr ""
+msgid "great ×%s nephew/niece"
+msgstr "pro ×%s brolėnas/dukterėčia"
 
 #: includes/functions/functions.php:1639 includes/functions/functions.php:1654
 #: includes/functions/functions.php:1667
@@ -20311,10 +20311,6 @@ msgstr "…"
 
 #~ msgid "go"
 #~ msgstr "veikti"
-
-#~ msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
-#~ msgid "great ×%s nephew/niece"
-#~ msgstr "pro ×%s brolėnas/dukterėčia"
 
 #~ msgctxt "FEMALE"
 #~ msgid "married"

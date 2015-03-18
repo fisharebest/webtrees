@@ -16925,8 +16925,8 @@ msgstr "რძალი (შვილიშვილის ცოლი)"
 
 #: includes/functions/functions.php:1813
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
-msgid "great ×% nephew/niece"
-msgstr ""
+msgid "great ×%s nephew/niece"
+msgstr "правнучатый племянник/племянница"
 
 #: includes/functions/functions.php:1639 includes/functions/functions.php:1654
 #: includes/functions/functions.php:1667
@@ -20167,10 +20167,6 @@ msgstr ""
 
 #~ msgid "go"
 #~ msgstr "ტოგო"
-
-#~ msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
-#~ msgid "great ×%s nephew/niece"
-#~ msgstr "правнучатый племянник/племянница"
 
 #~ msgctxt "FEMALE"
 #~ msgid "married"

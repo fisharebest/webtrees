@@ -16964,8 +16964,8 @@ msgstr "barnebarns hustru"
 
 #: includes/functions/functions.php:1813
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
-msgid "great ×% nephew/niece"
-msgstr ""
+msgid "great ×%s nephew/niece"
+msgstr "%s× grand-nevø/niece"
 
 #: includes/functions/functions.php:1639 includes/functions/functions.php:1654
 #: includes/functions/functions.php:1667
@@ -20378,10 +20378,6 @@ msgstr "…"
 
 #~ msgid "go"
 #~ msgstr "Kør"
-
-#~ msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
-#~ msgid "great ×%s nephew/niece"
-#~ msgstr "%s× grand-nevø/niece"
 
 #~ msgctxt "FEMALE"
 #~ msgid "married"

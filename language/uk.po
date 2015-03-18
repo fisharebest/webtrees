@@ -17010,8 +17010,8 @@ msgstr "дружина онука"
 
 #: includes/functions/functions.php:1813
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
-msgid "great ×% nephew/niece"
-msgstr ""
+msgid "great ×%s nephew/niece"
+msgstr "%sх праплемінник/праплемінниця"
 
 #: includes/functions/functions.php:1639 includes/functions/functions.php:1654
 #: includes/functions/functions.php:1667
@@ -20278,10 +20278,6 @@ msgstr "…"
 
 #~ msgid "from"
 #~ msgstr "від"
-
-#~ msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
-#~ msgid "great ×%s nephew/niece"
-#~ msgstr "%sх праплемінник/праплемінниця"
 
 #~ msgctxt "FEMALE"
 #~ msgid "married"

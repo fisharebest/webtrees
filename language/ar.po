@@ -17107,8 +17107,8 @@ msgstr "زوجة إبن إبن"
 
 #: includes/functions/functions.php:1813
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
-msgid "great ×% nephew/niece"
-msgstr ""
+msgid "great ×%s nephew/niece"
+msgstr "ولد حفيد %s لأخ"
 
 #: includes/functions/functions.php:1639 includes/functions/functions.php:1654
 #: includes/functions/functions.php:1667
@@ -20508,10 +20508,6 @@ msgstr "…"
 
 #~ msgid "from"
 #~ msgstr "من"
-
-#~ msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
-#~ msgid "great ×%s nephew/niece"
-#~ msgstr "ولد حفيد %s لأخ"
 
 #~ msgctxt "FEMALE"
 #~ msgid "married"

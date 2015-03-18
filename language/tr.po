@@ -16924,8 +16924,8 @@ msgstr "oğlunun gelini"
 
 #: includes/functions/functions.php:1813
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
-msgid "great ×% nephew/niece"
-msgstr ""
+msgid "great ×%s nephew/niece"
+msgstr "×%s göbek yeğen"
 
 #: includes/functions/functions.php:1639 includes/functions/functions.php:1654
 #: includes/functions/functions.php:1667
@@ -20300,10 +20300,6 @@ msgstr "Soyisimsiz"
 
 #~ msgid "go"
 #~ msgstr "Git"
-
-#~ msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
-#~ msgid "great ×%s nephew/niece"
-#~ msgstr "×%s göbek yeğen"
 
 #~ msgctxt "FEMALE"
 #~ msgid "married"

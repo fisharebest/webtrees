@@ -16962,8 +16962,8 @@ msgstr "femme du petit-fils"
 
 #: includes/functions/functions.php:1813
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
-msgid "great ×% nephew/niece"
-msgstr ""
+msgid "great ×%s nephew/niece"
+msgstr "petit-neveu/petite-nièce au %s<sup>e</sup> degré"
 
 #: includes/functions/functions.php:1639 includes/functions/functions.php:1654
 #: includes/functions/functions.php:1667
@@ -20391,10 +20391,6 @@ msgstr "…"
 
 #~ msgid "go"
 #~ msgstr "aller"
-
-#~ msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
-#~ msgid "great ×%s nephew/niece"
-#~ msgstr "petit-neveu/petite-nièce au %s<sup>e</sup> degré"
 
 #~ msgctxt "FEMALE"
 #~ msgid "married"

@@ -1810,7 +1810,7 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 					}
 				default:
 					if ($first === 'bro' && $sex1 === 'M') {
-						return I18N::translateContext('(a man’s) brother’s great ×(%s-1) grandchild', 'great ×% nephew/niece', I18N::number($down - 3));
+						return I18N::translateContext('(a man’s) brother’s great ×(%s-1) grandchild', 'great ×%s nephew/niece', I18N::number($down - 3));
 					} elseif ($first === 'sis' && $sex1 === 'M') {
 						return I18N::translateContext('(a man’s) sister’s great ×(%s-1) grandchild', 'great ×%s nephew/niece', I18N::number($down - 3));
 					} else {

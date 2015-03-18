@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-17 18:42+0100\n"
+"PO-Revision-Date: 2015-03-17 23:14+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Swedish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
@@ -2262,7 +2262,7 @@ msgstr "Genomsnittligt antal barn per familj"
 #. I18N: help text for family tree / GEDCOM file names
 #: admin_trees_config.php:665 admin_trees_manage.php:635
 msgid "Avoid spaces and punctuation.  A family name might be a good choice."
-msgstr ""
+msgstr "Undvik mellanslag och skiljetecken. Ett släktnamn kan vara ett bra val."
 
 #: app/Date/JalaliDate.php:158
 msgctxt "Abbreviation for Persian month: Azar"
@@ -3139,7 +3139,7 @@ msgstr "CKEditor™"
 
 #: admin_trees_manage.php:342
 msgid "Calculating…"
-msgstr ""
+msgstr "Beräknar…"
 
 #: app/Module/YahrzeitModule.php:260 app/Theme/BaseTheme.php:969
 #: app/Theme/BaseTheme.php:973
@@ -3798,7 +3798,7 @@ msgstr "(mormon) Färdig; datum okänd"
 
 #: admin_trees_download.php:142
 msgid "Compress the GEDCOM file"
-msgstr ""
+msgstr "Komprimera GEDCOM-filen"
 
 #. I18N: gedcom tag CONC
 #: app/Gedcom/GedcomTag.php:303
@@ -3844,7 +3844,7 @@ msgstr "Kontaktinformation"
 
 #: edituser.php:265
 msgid "Contact method"
-msgstr ""
+msgstr "Kontaktmetod"
 
 #: search_advanced.php:155 search_advanced.php:217 search_advanced.php:232
 #: search_advanced.php:254 search_advanced.php:269
@@ -3889,7 +3889,7 @@ msgstr "Fortsättning"
 #: app/Theme/AdministrationTheme.php:191 app/Theme/BaseTheme.php:1200
 #: index_edit.php:298
 msgid "Control panel"
-msgstr ""
+msgstr "Kontrollpanel"
 
 #: admin_trees_download.php:151 app/Module/ClippingsCartModule.php:209
 #: app/Module/ClippingsCartModule.php:600
@@ -4886,7 +4886,7 @@ msgstr "Radera namn"
 
 #: edituser.php:291
 msgid "Delete your account"
-msgstr ""
+msgstr "Ta bort ditt konto"
 
 #: app/Controller/FamilyController.php:112
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?"
@@ -6472,7 +6472,7 @@ msgstr "Frimaire"
 #. I18N: label for the start of a date range (from x to y)
 #: admin_site_change.php:277 admin_site_logs.php:248
 msgid "From"
-msgstr ""
+msgstr "Från"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:89
@@ -7903,7 +7903,7 @@ msgstr "Språk"
 #. I18N: Menu entry
 #: admin_site_config.php:144 app/Theme/AdministrationTheme.php:71
 msgid "Languages"
-msgstr ""
+msgstr "Språk"
 
 #: app/Stats.php:6193
 msgid "Laos"
@@ -8177,7 +8177,7 @@ msgstr "Inloggnings URL"
 #. I18N: Menu entry
 #: admin_site_config.php:138 app/Theme/AdministrationTheme.php:70
 msgid "Login and registration"
-msgstr ""
+msgstr "Inloggning och registrering"
 
 #: app/Theme/BaseTheme.php:1467 modules_v3/login_block/LoginBlockModule.php:49
 #: modules_v3/login_block/LoginBlockModule.php:52
@@ -8310,7 +8310,7 @@ msgstr "Malta"
 #: admin_trees_places.php:89 app/Theme/AdministrationTheme.php:96
 #: index_edit.php:302
 msgid "Manage family trees"
-msgstr ""
+msgstr "Hantera släktträd"
 
 #: admin_media.php:529 app/Controller/MediaController.php:53
 #: app/Controller/MediaController.php:144 app/Module/AlbumModule.php:131
@@ -8994,7 +8994,7 @@ msgstr "Moderator"
 
 #: admin.php:608
 msgid "Moderators"
-msgstr ""
+msgstr "Moderatorer"
 
 #: admin_modules.php:142
 msgid "Module"
@@ -9137,7 +9137,7 @@ msgstr "De vanligaste efternamnen"
 #. I18N: Help text for the “Secure connection” site configuration setting
 #: admin_site_config.php:399
 msgid "Most servers do not use secure connections."
-msgstr "De flesta servrar använder inte säkrade anslutningar."
+msgstr "De flesta servrar använder inte säkra anslutningar."
 
 #: setup.php:282
 msgid "Most sites are configured to use localhost.  This means that your database runs on the same computer as your web server."
@@ -9260,7 +9260,7 @@ msgstr "Min sida"
 
 #: app/Theme/BaseTheme.php:1533
 msgid "My pages"
-msgstr ""
+msgstr "Mina sidor"
 
 #: app/Module/UserWelcomeModule.php:45 app/Theme/BaseTheme.php:1558
 msgid "My pedigree"
@@ -9274,7 +9274,7 @@ msgstr "MySQL gav felmeddelande: %s"
 
 #: admin_site_info.php:91
 msgid "MySQL variables"
-msgstr ""
+msgstr "MySQL-variabler"
 
 #: app/Stats.php:6215
 msgid "Myanmar"
@@ -9379,7 +9379,7 @@ msgstr "Nauru"
 
 #: app/Gedcom/GedcomCodeTemp.php:228
 msgid "Nauvoo, Illinois (new)"
-msgstr "Nauvoo, Illinois (new)"
+msgstr "Nauvoo, Illinois (ny)"
 
 #: app/Gedcom/GedcomCodeTemp.php:230
 msgid "Nauvoo, Illinois (original)"
@@ -10164,7 +10164,7 @@ msgstr "PGV måste vara version 4.2.3, eller någon av dess SVN uppdatering upp 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:77
 msgid "PHP blocked the file because of its extension."
-msgstr "PHP blockade filen på grund av filändelsen."
+msgstr "PHP blockerade filen på grund av filändelsen."
 
 #: setup.php:140
 #, php-format
@@ -10179,7 +10179,7 @@ msgstr "PHP-filändelse ”%s” är inaktiv. Du kan inte installera webtrees f�
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:74
 msgid "PHP failed to write to disk."
-msgstr "PHP kunde inte skriva till skivan."
+msgstr "PHP kunde inte skriva till disken."
 
 #: admin_site_info.php:71
 msgid "PHP information"
@@ -10237,7 +10237,7 @@ msgstr "Sidstorlek"
 #. I18N: The number of [...]
 #: app/Module/ExtraInformationModule.php:67 index.php:144
 msgid "Page views"
-msgstr ""
+msgstr "Sidvisningar"
 
 #: app/Gedcom/GedcomTag.php:1888
 msgid "Painting"
@@ -10804,7 +10804,7 @@ msgstr "Prefix"
 #: app/Module/UpcomingAnniversariesModule.php:141
 #: app/Module/YahrzeitModule.php:254
 msgid "Presentation style"
-msgstr "Presentations stil"
+msgstr "Presentationsstil"
 
 #. I18N: http://en.wikipedia.org/wiki/President_of_the_Church
 #: app/Gedcom/GedcomCodeTemp.php:260
@@ -10941,7 +10941,7 @@ msgstr "README-dokumentation"
 
 #: app/Gedcom/GedcomCodeRela.php:205
 msgid "Rabbi"
-msgstr "Rabbi"
+msgstr "Rabbin"
 
 #. I18N: http://en.wikipedia.org/wiki/Rabi%27_al-awwal
 #: app/Date/HijriDate.php:80
@@ -12890,7 +12890,7 @@ msgstr "Makar"
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Spouses and children"
-msgstr "Makar och barn"
+msgstr "Makar/-or och barn"
 
 #: app/Stats.php:6199
 msgid "Sri Lanka"
@@ -13651,7 +13651,7 @@ msgstr "Uppgraderingen är klar."
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:62
 msgid "The uploaded file exceeds the allowed size."
-msgstr "Uppladdad fil överskrider max tillåtna storlek."
+msgstr "Uppladdad fil överskrider max tillåten storlek."
 
 #: admin_users.php:788
 #, php-format
@@ -16985,8 +16985,8 @@ msgstr "sonsons maka"
 
 #: includes/functions/functions.php:1813
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
-msgid "great ×% nephew/niece"
-msgstr ""
+msgid "great ×%s nephew/niece"
+msgstr "%s. generations brorbarn"
 
 #: includes/functions/functions.php:1639 includes/functions/functions.php:1654
 #: includes/functions/functions.php:1667
@@ -20399,10 +20399,6 @@ msgstr "…"
 
 #~ msgid "go"
 #~ msgstr "gå"
-
-#~ msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
-#~ msgid "great ×%s nephew/niece"
-#~ msgstr "%s. generations brorbarn"
 
 #~ msgctxt "FEMALE"
 #~ msgid "married"

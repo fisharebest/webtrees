@@ -16962,8 +16962,8 @@ msgstr "nét de l’esposa"
 
 #: includes/functions/functions.php:1813
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
-msgid "great ×% nephew/niece"
-msgstr ""
+msgid "great ×%s nephew/niece"
+msgstr "nebot/da %s+1è/a"
 
 #: includes/functions/functions.php:1639 includes/functions/functions.php:1654
 #: includes/functions/functions.php:1667
@@ -20373,10 +20373,6 @@ msgstr "…"
 
 #~ msgid "from"
 #~ msgstr "de"
-
-#~ msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
-#~ msgid "great ×%s nephew/niece"
-#~ msgstr "nebot/da %s+1è/a"
 
 #~ msgctxt "FEMALE"
 #~ msgid "married"
