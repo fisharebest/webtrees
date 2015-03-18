@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-17 23:14+0100\n"
+"PO-Revision-Date: 2015-03-18 20:44+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Swedish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
@@ -10783,7 +10783,7 @@ msgstr ""
 
 #: admin_trees_config.php:365 admin_trees_manage.php:363
 msgid "Preferences"
-msgstr ""
+msgstr "Preferenser"
 
 #: admin_modules.php:83
 #, php-format
