@@ -143,17 +143,17 @@ function edit_language_checkboxes($parameter_name, $accepted_languages) {
 	/* number of checkboxes per row */
 	$CHUNK_SIZE = 4; // Make this a constant when moved to a class
 
-	$html = '<table class="language-selection">';
+	$html = '<div class="language-selection">';
 	foreach (array_chunk(I18N::activeLocales(), $CHUNK_SIZE) as $chunk) {
-		$html .= '<tr>';
+		$html .= '<span>';
 		foreach ($chunk as $locale) {
 			$tag = $locale->languageTag();
 			$checked = in_array($tag, $accepted_languages) ? 'checked' : '';
-			$html .= sprintf('<td><input id="lang_%1$s" type="checkbox" name="%2$s[]" value="%1$s"%3$s><label for="lang_%1$s">%4$s</label></td>', $tag, $parameter_name, $checked, $locale->endonym());
+			$html .= sprintf('<label><input type="checkbox" name="%s[]" value="%s"%s>%s</label>', $parameter_name, $tag, $checked, $locale->endonym());
 		}
-		$html .= '</tr>';
+		$html .= '</span>';
 	}
-	$html .= '</table>';
+	$html .= '</div>';
 	return $html;
 }
 
