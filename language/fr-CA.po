@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-14 14:49+0100\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: French (Canada) <http://translate.webtrees.net/projects/webtrees/webtrees/fr-CA/>\n"
+"PO-Revision-Date: 2015-03-19 11:33+0100\n"
+"Last-Translator: Jacqueline Gazaille <gazaillegen@gmail.com>\n"
+"Language-Team: French (Canada) "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/fr-CA/>\n"
 "Language: fr-CA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -8723,7 +8724,7 @@ msgstr "Objet média"
 #: admin_trees_download.php:164
 #, php-format
 msgid "Media filenames will be prefixed by %s."
-msgstr ""
+msgstr "Le préfixe des fichiers médias sera %s."
 
 #: admin_media.php:617 admin_trees_config.php:1063
 msgid "Media files"
