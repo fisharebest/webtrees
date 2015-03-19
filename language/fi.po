@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-16 22:28+0100\n"
+"PO-Revision-Date: 2015-03-19 09:18+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Finnish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
@@ -3134,7 +3134,7 @@ msgstr "CKEditor™"
 
 #: admin_trees_manage.php:342
 msgid "Calculating…"
-msgstr ""
+msgstr "Laskee…"
 
 #: app/Module/YahrzeitModule.php:260 app/Theme/BaseTheme.php:969
 #: app/Theme/BaseTheme.php:973
@@ -3314,15 +3314,15 @@ msgstr "Vaihda tämän sivun lohkot"
 
 #: admin_users.php:212
 msgid "Change the blocks on this user’s “My page”"
-msgstr ""
+msgstr "Vaihda tämän käyttäjän ”Oma sivuni” lohkot"
 
 #: admin_trees_manage.php:383 index_edit.php:52
 msgid "Change the “Home page” blocks"
-msgstr ""
+msgstr "Vaihda ”Etusivu”n lohkot"
 
 #: index_edit.php:44
 msgid "Change the “My page” blocks"
-msgstr ""
+msgstr "Vaihda ”Oma sivuni” lohkot"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: includes/functions/functions_print_lists.php:1757
@@ -3837,7 +3837,7 @@ msgstr "Yhteystiedot"
 
 #: edituser.php:265
 msgid "Contact method"
-msgstr ""
+msgstr "Yhteydenottotapa"
 
 #: search_advanced.php:155 search_advanced.php:217 search_advanced.php:232
 #: search_advanced.php:254 search_advanced.php:269
@@ -3882,7 +3882,7 @@ msgstr "Jatkuu"
 #: app/Theme/AdministrationTheme.php:191 app/Theme/BaseTheme.php:1200
 #: index_edit.php:298
 msgid "Control panel"
-msgstr ""
+msgstr "Ohjauspaneeli"
 
 #: admin_trees_download.php:151 app/Module/ClippingsCartModule.php:209
 #: app/Module/ClippingsCartModule.php:600
@@ -4013,7 +4013,7 @@ msgstr "Luo lähde"
 
 #: admin_site_access.php:226
 msgid "Create a website access rule"
-msgstr ""
+msgstr "Luo sivustoon pääsemissääntö"
 
 #: statistics.php:430
 msgid "Create your own chart"
@@ -4225,7 +4225,7 @@ msgstr "Dallas, Texas"
 #. I18N: A summary of the system status
 #: admin.php:399
 msgid "Dashboard"
-msgstr ""
+msgstr "Kojelauta"
 
 #. I18N: gedcom tag DATA
 #: app/Gedcom/GedcomTag.php:343
@@ -4871,7 +4871,7 @@ msgstr "Poista väliaikaiset tiedostot…"
 
 #: admin_modules.php:88
 msgid "Delete the preferences for this module."
-msgstr ""
+msgstr "Poista tämän moduulin asetukset."
 
 #: app/Controller/IndividualController.php:160
 msgid "Delete this name"
@@ -4879,7 +4879,7 @@ msgstr "Poista nimi"
 
 #: edituser.php:291
 msgid "Delete your account"
-msgstr ""
+msgstr "Poista käyttäjätilisi"
 
 #: app/Controller/FamilyController.php:112
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?"
@@ -5280,7 +5280,7 @@ msgstr "Muokkaa Usein kysytty aihe"
 
 #: admin_site_access.php:224
 msgid "Edit a website access rule"
-msgstr ""
+msgstr "Muokkaa sivustoon pääsemissääntö"
 
 #: app/Controller/MediaController.php:140
 msgid "Edit details"
@@ -5344,7 +5344,7 @@ msgstr "Muokkaa henkilötiedot, korvaa sinun tiedoilla."
 
 #: admin_users.php:268
 msgid "Edit user"
-msgstr ""
+msgstr "Muokkaa käyttäjä"
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:38 admin_users.php:525
@@ -6240,7 +6240,7 @@ msgstr "Ensimmäinen tapahtuma"
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:331
 msgid "First record"
-msgstr ""
+msgstr "Ensimmäinen tietue"
 
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:29
 msgid "Fix name slashes and spaces"
@@ -6465,7 +6465,7 @@ msgstr "Frimaire"
 #. I18N: label for the start of a date range (from x to y)
 #: admin_site_change.php:277 admin_site_logs.php:248
 msgid "From"
-msgstr ""
+msgstr "Lähettäjä"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:89
@@ -6546,7 +6546,7 @@ msgstr "Sukututkimus yhteyshenkilö"
 #. I18N: Individuals, sources, dates, places, etc.
 #: admin_trees_manage.php:437
 msgid "Genealogy data"
-msgstr ""
+msgstr "Sukututkimustieto"
 
 #: admin_trees_config.php:623 admin_trees_config.php:1704
 msgid "General"
@@ -7272,7 +7272,7 @@ msgstr "Tuo kaikki paikat sukupuusta"
 
 #: admin_trees_manage.php:254
 msgid "Import options"
-msgstr ""
+msgstr "Tuonti vaihtoehdot"
 
 #: admin_trees_merge.php:84 admin_trees_renumber.php:264
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
@@ -7887,7 +7887,7 @@ msgstr "Kieli"
 #. I18N: Menu entry
 #: admin_site_config.php:144 app/Theme/AdministrationTheme.php:71
 msgid "Languages"
-msgstr ""
+msgstr "Kielet"
 
 #: app/Stats.php:6193
 msgid "Laos"
@@ -8043,21 +8043,21 @@ msgstr "Liitä tämä henkilö lapseksi sivustolla olevaan perheeseen"
 #: admin_media.php:525 app/Controller/MediaController.php:61
 #: app/Controller/MediaController.php:150 app/Module/AlbumModule.php:141
 msgid "Link this media object to a family"
-msgstr ""
+msgstr "Linkkaa tämä meediakohde perheeseen"
 
 #: admin_media.php:526 app/Controller/MediaController.php:65
 #: app/Controller/MediaController.php:153 app/Module/AlbumModule.php:146
 msgid "Link this media object to a source"
-msgstr ""
+msgstr "Linkkaa tämä meediakohde lähteeseen"
 
 #: admin_media.php:524 app/Controller/MediaController.php:57
 #: app/Controller/MediaController.php:147 app/Module/AlbumModule.php:136
 msgid "Link this media object to an individual"
-msgstr ""
+msgstr "Linkkaa tämä meediakohde henkilöön"
 
 #: admin_users.php:584
 msgid "Link this user to an individual in the family tree."
-msgstr ""
+msgstr "Linkkaa tämä käyttäja sukupuun henkilöön."
 
 #: app/Controller/FamilyController.php:199 app/Module/AlbumModule.php:69
 #: app/Module/AlbumModule.php:70 app/Module/CensusAssistantModule.php:161
@@ -8161,7 +8161,7 @@ msgstr "Sisään kirjautumisen URL-osoite"
 #. I18N: Menu entry
 #: admin_site_config.php:138 app/Theme/AdministrationTheme.php:70
 msgid "Login and registration"
-msgstr ""
+msgstr "Sisään kirjautuminen ja rekisteröinti"
 
 #: app/Theme/BaseTheme.php:1467 modules_v3/login_block/LoginBlockModule.php:49
 #: modules_v3/login_block/LoginBlockModule.php:52
@@ -8294,7 +8294,7 @@ msgstr "Malta"
 #: admin_trees_places.php:89 app/Theme/AdministrationTheme.php:96
 #: index_edit.php:302
 msgid "Manage family trees"
-msgstr ""
+msgstr "Hallitse sukupuita"
 
 #: admin_media.php:529 app/Controller/MediaController.php:53
 #: app/Controller/MediaController.php:144 app/Module/AlbumModule.php:131
@@ -8304,7 +8304,7 @@ msgstr "Ylläpidä linkkejä"
 #. I18N: Menu entry
 #: admin_media.php:582 app/Theme/AdministrationTheme.php:139
 msgid "Manage media"
-msgstr ""
+msgstr "Hallitse mediaa"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:184 admin_users.php:40 admin_users.php:539
@@ -8978,7 +8978,7 @@ msgstr "Valvoja"
 
 #: admin.php:608
 msgid "Moderators"
-msgstr ""
+msgstr "Valvojat"
 
 #: admin_modules.php:142
 msgid "Module"
@@ -9244,7 +9244,7 @@ msgstr "Oma sivuni"
 
 #: app/Theme/BaseTheme.php:1533
 msgid "My pages"
-msgstr ""
+msgstr "Omat sivuni"
 
 #: app/Module/UserWelcomeModule.php:45 app/Theme/BaseTheme.php:1558
 msgid "My pedigree"
@@ -9258,7 +9258,7 @@ msgstr "MySQL antoi virheilmoituksen: %s"
 
 #: admin_site_info.php:91
 msgid "MySQL variables"
-msgstr ""
+msgstr "MySQL muuttujat"
 
 #: app/Stats.php:6215
 msgid "Myanmar"
@@ -10221,7 +10221,7 @@ msgstr "Sivun koko"
 #. I18N: The number of [...]
 #: app/Module/ExtraInformationModule.php:67 index.php:144
 msgid "Page views"
-msgstr ""
+msgstr "Sivunäkymät"
 
 #: app/Gedcom/GedcomTag.php:1888
 msgid "Painting"
@@ -10761,7 +10761,7 @@ msgstr "Esivalmistettu teksti, joka määrää että käyttäjätilin voi anoa a
 
 #: admin_trees_config.php:365 admin_trees_manage.php:363
 msgid "Preferences"
-msgstr ""
+msgstr "Asetukset"
 
 #: admin_modules.php:83
 #, php-format
@@ -11264,7 +11264,7 @@ msgstr "Reno, Nevada"
 
 #: admin_trees_manage.php:474
 msgid "Renumber"
-msgstr ""
+msgstr "Numeroi uudelleen"
 
 #. I18N: Renumber the records in a family tree
 #: admin_trees_merge.php:98 admin_trees_merge.php:103
@@ -11275,7 +11275,7 @@ msgstr "Numeroi sukupuu uudelleen"
 #. I18N: button label
 #: search.php:217
 msgid "Replace"
-msgstr ""
+msgstr "Korvaa"
 
 #: admin_trees_places.php:103 search.php:162
 msgid "Replace with"
@@ -11372,7 +11372,7 @@ msgstr "Asuinpaikka"
 
 #: index_edit.php:395
 msgid "Restore the default block layout"
-msgstr ""
+msgstr "Palauta lohkojen oletusesitystapa"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:376
@@ -11678,7 +11678,7 @@ msgstr "Seattle, Washington"
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:348
 msgid "Second record"
-msgstr ""
+msgstr "Toinen tietue"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:394
@@ -11698,7 +11698,7 @@ msgstr "Katso %s lisätietoja varten."
 
 #: admin_site_merge.php:203 admin_site_merge.php:245 admin_site_merge.php:286
 msgid "Select"
-msgstr ""
+msgstr "Valitse"
 
 #. I18N: A configuration setting
 #: admin_trees_manage.php:192
@@ -11815,7 +11815,7 @@ msgstr "Lähettäjän nimi"
 #. I18N: Menu entry
 #: admin_site_config.php:135 app/Theme/AdministrationTheme.php:69
 msgid "Sending email"
-msgstr ""
+msgstr "Sähköpostin lähetys"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:407
@@ -11894,7 +11894,7 @@ msgstr "Palvelintiedosto, joka sisältää paikkoja (CSV)"
 #. I18N: Menu entry
 #: admin.php:509 admin_site_info.php:25 app/Theme/AdministrationTheme.php:76
 msgid "Server information"
-msgstr ""
+msgstr "Palvelimen tiedot"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:329 setup.php:280
@@ -11913,7 +11913,7 @@ msgstr "Istunnon ajanloppuminen"
 
 #: admin_trees_manage.php:416 admin_trees_manage.php:427
 msgid "Set as default"
-msgstr ""
+msgstr "Aseta oletukseksi"
 
 #: inverselink.php:150
 msgid "Set link"
@@ -12291,7 +12291,7 @@ msgstr "Näytä luetut laskurit Henkilösivuilla, Etusivulla ja Omalla Sivullani
 
 #: compact.php:57
 msgid "Show images"
-msgstr ""
+msgstr "Näytä kuvat"
 
 #: app/Module/GoogleMapsModule.php:4551
 msgid "Show inactive places"
@@ -12335,12 +12335,12 @@ msgstr "Näytä luettelo sukupuista"
 #. I18N: A configuration setting
 #: admin_trees_config.php:464
 msgid "Show living individuals"
-msgstr ""
+msgstr "Näytä elävät henkilöt"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:504
 msgid "Show names of private individuals"
-msgstr ""
+msgstr "Näytä yksityisten henkilöiden nimet"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -12466,7 +12466,7 @@ msgstr "Näytä päivityksen päivä ja aika"
 #. I18N: A configuration setting
 #: admin_trees_config.php:400
 msgid "Show the family tree"
-msgstr ""
+msgstr "Näytä sukupuu"
 
 #: famlist.php:177 indilist.php:177
 msgid "Show the list of individuals"
@@ -13074,7 +13074,7 @@ msgstr "Huippuvuoret ja Jan Mayen"
 #. I18N: Reverse the order of two individuals
 #: relationship.php:86
 msgid "Swap individuals"
-msgstr ""
+msgstr "Vaihda henkilöt"
 
 #: app/Stats.php:6286
 msgid "Swaziland"
@@ -13632,7 +13632,7 @@ msgstr "Ladattu tiedosto ylittää sallitun enimmäiskoon."
 #: admin_users.php:788
 #, php-format
 msgid "The user %s has been deleted."
-msgstr ""
+msgstr "Käyttäjä %s on poistettu."
 
 #: login.php:324
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
@@ -13709,7 +13709,7 @@ msgstr "Teeman vaihtamisen valinta"
 
 #: admin_modules.php:150
 msgid "Themes"
-msgstr ""
+msgstr "Teemat"
 
 #: admin_site_config.php:236
 msgid "Themes can be selected at three levels: user, family tree, and website.  User settings take priority over family tree settings, which in turn take priority over the website setting.  Selecting “default theme” at one level will use the theme at the next level."
@@ -13749,8 +13749,8 @@ msgstr "Tarkista vireillä olevat muutokset."
 #, php-format
 msgid "There have been no changes within the last %s day."
 msgid_plural "There have been no changes within the last %s days."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ei ole ollut muutoksia viimeisen päivän aikana."
+msgstr[1] "Ei ole ollut muutoksia viimeisen %s päivän aikana."
 
 #: addmedia.php:182 admin_media_upload.php:142
 msgid "There was an error uploading your file."
@@ -14352,7 +14352,9 @@ msgstr "Tämä sivusto on tilapäisesti poissa käytöstä"
 #: admin_trees_manage.php:183
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
-msgstr "Tämä poistaa kaikki sukututkimustiedot ”%s” sta ja korvaa ne toisen GEDCOMin tiedoilla."
+msgstr ""
+"Tämä poistaa kaikki sukututkimustiedot ”%s” sta ja korvaa ne GEDCOMin "
+"tiedoilla."
 
 #: app/Module/GoogleMapsModule.php:1781
 msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables."
@@ -14472,7 +14474,7 @@ msgstr "Otsikko hepreaksi"
 #. I18N: label for the end of a date range (from x to y)
 #: admin_site_change.php:287 admin_site_logs.php:258
 msgid "To"
-msgstr ""
+msgstr "Vastaanottaja"
 
 #: app/Module/HtmlBlockModule.php:268
 msgid "To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
@@ -14593,7 +14595,7 @@ msgstr "Toronto, Ontario, Kanada"
 
 #: admin.php:759
 msgid "Total"
-msgstr ""
+msgstr "Yhteensä"
 
 #: modules_v3/change_report/report.xml:124
 msgid "Total accepted changes: "
@@ -15361,7 +15363,7 @@ msgstr "Lähetämme nyt varmistusviestin osoitteeseen <b>%s</b>. Sinun on varmis
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:67
 msgid "Website"
-msgstr ""
+msgstr "Sivusto"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:284
@@ -15381,12 +15383,12 @@ msgstr "Web-sivusto ja META tunniste (tag) asetukset"
 #. I18N: Menu entry
 #: admin_site_logs.php:35 app/Theme/AdministrationTheme.php:73
 msgid "Website logs"
-msgstr ""
+msgstr "Sivuston lokit"
 
 #. I18N: Menu entry
 #: admin_site_config.php:132 app/Theme/AdministrationTheme.php:68
 msgid "Website preferences"
-msgstr ""
+msgstr "Sivuston asetukset"
 
 #. I18N: abbreviation for Wednesday
 #: app/Date/CalendarDate.php:383 includes/functions/functions_print.php:707
@@ -15438,6 +15440,8 @@ msgstr "Kun lisäät uusia lähisukulaisia, voit lisätä lähdetietoviitteitä 
 #: admin_trees_config.php:892
 msgid "When new records are created, they are given an internal ID number.  You can specify the prefix used for each type of record."
 msgstr ""
+"Kun uudet tietueet luodaan, niille annetaan sisäinen tunnus. Voit määrittää "
+"jokaisen tietuetyypin etuliitteen."
 
 #. I18N: Help text for the “Date differences” configuration setting
 #: admin_trees_config.php:1699
@@ -15665,7 +15669,7 @@ msgstr "Voit nopeuttaa yksityisyyslaskentaa lisäämällä kuolintiedon, joka vo
 
 #: admin_site_access.php:74
 msgid "You cannot create a rule which would prevent yourself from accessing the website."
-msgstr ""
+msgstr "Et voi luoda sääntöä, joka estäisi sinua käyttämästä sivustoa."
 
 #: login.php:74
 msgid "You cannot login because your browser does not accept cookies."
@@ -15746,7 +15750,7 @@ msgstr "Sinun on ensin valittava henkilö, ennen kuin voit rajoittaa käyttäjä
 
 #: admin_trees_manage.php:304
 msgid "You need to create a family tree."
-msgstr ""
+msgstr "Sinun täytyy luoda sukupuu."
 
 #: admin_pgv_to_wt.php:1172
 msgid "You need to login again, using your PhpGedView username and password."
@@ -16292,7 +16296,7 @@ msgstr "jatka"
 #. I18N: Button label
 #: admin_trees_manage.php:643
 msgid "create"
-msgstr ""
+msgstr "luo"
 
 #. I18N: a program feature
 #: setup.php:135
@@ -16355,7 +16359,7 @@ msgstr "astetta"
 #. I18N: Button label
 #: admin_site_clean.php:116 admin_users.php:774
 msgid "delete"
-msgstr ""
+msgstr "poista"
 
 #. I18N: An access rule - deny access to the site
 #: admin_site_access.php:36 admin_site_access.php:43
@@ -16383,7 +16387,7 @@ msgstr "itä"
 #: admin_trees_config.php:2164 admin_trees_config.php:2195
 #: admin_trees_config.php:2224
 msgid "edit"
-msgstr ""
+msgstr "muokkaa"
 
 #: includes/functions/functions.php:539
 msgctxt "FEMALE"
@@ -16459,17 +16463,17 @@ msgstr "entinen mies"
 #: includes/functions/functions.php:716
 msgctxt "FEMALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "entinen kumppani"
 
 #: includes/functions/functions.php:698
 msgctxt "MALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "entinen kumppani"
 
 #: includes/functions/functions.php:734
 msgctxt "MALE/FEMALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "entinen kumppani"
 
 #: includes/functions/functions.php:739
 msgid "ex-spouse"
@@ -18494,7 +18498,7 @@ msgstr "tyttönimi"
 
 #: admin_trees_config.php:509
 msgid "managers"
-msgstr ""
+msgstr "ylläpitäjät"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:71
@@ -18559,7 +18563,7 @@ msgstr[1] "enintään %s päivää"
 #: admin_trees_config.php:468 admin_trees_config.php:508
 #: admin_trees_config.php:528
 msgid "members"
-msgstr ""
+msgstr "jäsenet"
 
 #. I18N: time format “%a” - exactly 00:00:00
 #: includes/functions/functions_date.php:81
@@ -18846,7 +18850,7 @@ msgstr "prosenttiosuus"
 
 #: admin_trees_config.php:1111
 msgid "pixels"
-msgstr ""
+msgstr "kuvapistettä"
 
 #. I18N: button label
 #: admin_trees_places.php:106
@@ -19664,7 +19668,7 @@ msgstr "utf8_swedish_ci"
 #: admin_trees_config.php:467 admin_trees_config.php:507
 #: admin_trees_config.php:527
 msgid "visitors"
-msgstr ""
+msgstr "vierailijat"
 
 #: app/Theme/WebtreesTheme.php:96
 msgid "webtrees"
