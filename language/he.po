@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-17 17:00+0100\n"
+"PO-Revision-Date: 2015-03-19 17:35+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
@@ -7233,7 +7233,9 @@ msgstr "אם תנסה לחרוג מגבולות אלו, ייתכן שתתקל ב
 
 #: admin_site_config.php:507
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
-msgstr "אם אתה משתמש באחד משירותי המעקב והניתוח הבאים, webtrees יכול להוסיף קודי המעקב באופן אוטומטי."
+msgstr ""
+"אם אתה משתמש באחד משירותי המעקב והניתוח הבאים, webtrees יכול להוסיף את קודי "
+"המעקב באופן אוטומטי."
 
 #. I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1256
@@ -12604,7 +12606,7 @@ msgstr "קוד אימות אתר"
 #. I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting
 #: admin_site_config.php:526 admin_site_config.php:547
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
-msgstr "קודי אימות של אתר אינם עובדים כאשר webtrees מותקן בתיקיית משנה."
+msgstr "קודי אימות של האתר אינם עובדים כאשר webtrees מותקן בתיקיית משנה."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:30
@@ -13717,7 +13719,10 @@ msgstr "עיצובים"
 
 #: admin_site_config.php:236
 msgid "Themes can be selected at three levels: user, family tree, and website.  User settings take priority over family tree settings, which in turn take priority over the website setting.  Selecting “default theme” at one level will use the theme at the next level."
-msgstr "ניתן לבחור עיצובים בשלוש רמות: משתמש, עץ משפחה ואתר אינטרנט. הגדרות משתמש מקבלות עדיפות על פני הגדרות עץ משפחה, אשר מקבלות עדיפה על פני הגדרת האתר. בחירת \"עיצוב ברירת מחדל\" ברמה אחת תשתמש כעיצוב ברמה הבאה."
+msgstr ""
+"ניתן לבחור עיצובים בשלוש רמות: משתמש, עץ משפחה ואתר אינטרנט. הגדרות משתמש "
+"מקבלות עדיפות על פני הגדרות עץ משפחה, אשר מקבלות עדיפות על פני הגדרת האתר. "
+"בחירת \"עיצוב ברירת מחדל\" ברמה אחת תשתמש כעיצוב ברמה הבאה."
 
 #: app/Module/ExtraInformationModule.php:58
 #: app/Module/IndividualFactsTabModule.php:115
@@ -14476,7 +14481,7 @@ msgstr "כותרת בעברית"
 #. I18N: label for the end of a date range (from x to y)
 #: admin_site_change.php:287 admin_site_logs.php:258
 msgid "To"
-msgstr "אל"
+msgstr "עד"
 
 #: app/Module/HtmlBlockModule.php:268
 msgid "To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
@@ -14718,7 +14723,7 @@ msgstr "מעקב וניתוח"
 #: admin_site_config.php:563 admin_site_config.php:588
 #: admin_site_config.php:613
 msgid "Tracking and analytics are not added to the control panel."
-msgstr "מעקב וניתוח אינם מתווספים ללוח בקרה."
+msgstr "מעקב וניתוח אינם מתווספים ללוח הבקרה."
 
 #. I18N: gedcom tag TRLR
 #: app/Gedcom/GedcomTag.php:841
@@ -15857,7 +15862,9 @@ msgstr "למשתמש שלך לא מופעל ”אישור אוטומטי של ש
 #: admin.php:491
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer maintained.  You should upgrade to a later version."
-msgstr "שרת האינטרנט שלך משתמש בגרסת PHP %s, אשר לו נתמכת יותר. עלך לשדרג לגרסה מתקדמת יותר."
+msgstr ""
+"שרת האינטרנט שלך משתמש בגרסת PHP %s, אשר לא נתמכת יותר. עליך לשדרג לגרסה "
+"מתקדמת יותר."
 
 #: admin.php:485
 #, php-format
