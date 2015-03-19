@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-03-17 11:30+0100\n"
+"PO-Revision-Date: 2015-03-19 10:21+0100\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
 "Language-Team: Lithuanian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/lt/>\n"
@@ -14553,6 +14553,8 @@ msgstr ""
 #: admin_trees_download.php:145 app/Module/ClippingsCartModule.php:180
 msgid "To reduce the size of the download, you can compress the data into a .ZIP file.  You will need to uncompress the .ZIP file before you can use it."
 msgstr ""
+"Norint sumažinti atsisiuntimo dydį, jūs galite suslėgti duomenis į .ZIP "
+"bylą. Jūs turėsite išskleisti .ZIP bylą prieš jos naudojimą."
 
 #. I18N: Help text for the "Custom welcome text" site configuration setting
 #: admin_site_config.php:461
@@ -15496,6 +15498,8 @@ msgstr ""
 #: admin_trees_config.php:2244
 msgid "When you add a new family member, a default surname can be provided.  This surname will depend on the local tradition."
 msgstr ""
+"Numatyta pavardė gali buti parūpinta kai jūs pridedate naują šeimos narį. Ši "
+"pavardė priklausys nuo vietinės tradicijos."
 
 #: help_text.php:440
 msgid "When you add, edit, or delete information, the changes are not saved immediately.  Instead, they are kept in a “pending” area.  These pending changes need to be reviewed by a moderator before they are accepted."
@@ -15902,11 +15906,16 @@ msgstr "Jums nėra įjungta „automatiškai patvirtinti pakeitimus“ nuostata.
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer maintained.  You should upgrade to a later version."
 msgstr ""
+"Jūsų žiniatinklio serveris naudoja PHP versija %s, kuri nebėra palaikoma. "
+"Jūs turėtumėt atnaujinti ją į naujesnę versiją."
 
 #: admin.php:485
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates.  You should upgrade to a later version as soon as possible."
 msgstr ""
+"Jūsų žiniatinklio serveris naudoja PHP versija %s, kuri nebegauna saugumo "
+"atnaujinimų. Jūs turėtumėt atnaujinti ją į naujesnę versiją kiek galima "
+"greičiau."
 
 #: app/Stats.php:6323
 msgid "Yugoslavia"

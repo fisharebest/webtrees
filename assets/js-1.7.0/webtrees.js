@@ -1170,8 +1170,8 @@ function autocomplete(selector) {
 	}
 
 	jQuery(selector).each(function() {
-		var type = $(this).data("autocomplete-type"); // What type of field
-		var ged  = $(this).data("autocomplete-ged"); // Which family tree
+		var type = jQuery(this).data("autocomplete-type"); // What type of field
+		var ged  = jQuery(this).data("autocomplete-ged"); // Which family tree
 		if (typeof(type) === "undefined") {
 			alert("Missing data-autocomplete-type attribute");
 		}
@@ -1188,7 +1188,7 @@ function autocomplete(selector) {
 				// Some autocomplete fields require the current value of an earlier field
 				var extra  = null;
 				if (self.data("autocomplete-extra")) {
-					extra = $("#" + self.data("autocomplete-extra")).val();
+					extra = jQuery("#" + self.data("autocomplete-extra")).val();
 				}
 
 				jQuery.getJSON("autocomplete.php", {

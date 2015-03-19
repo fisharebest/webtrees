@@ -1440,7 +1440,7 @@ class Stats {
 		// Get the country names for each language
 		$country_to_iso3166 = array();
 		foreach (I18N::activeLocales() as $locale) {
-			I18N::init($locale->getLanguageTag());
+			I18N::init($locale->languageTag());
 			$countries = $this->getAllCountries();
 			foreach ($this->iso3166() as $three => $two) {
 				$country_to_iso3166[$three] = $two;

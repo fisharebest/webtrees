@@ -626,7 +626,7 @@ $controller->pageHeader();
 			<legend class="col-sm-3 control-label">
 				<?php echo /* I18N: A site configuration setting */ I18N::translate('Language'); ?>
 			</legend>
-			<div class="col-sm-9" style="columns: 4 150px;-moz-columns: 4 150px;-webkit-columns: 4 150px;">
+			<div class="col-sm-9" style="columns: 4 150px;-moz-columns: 4 150px;">
 				<?php foreach (I18N::installedLocales() as $locale): ?>
 					<div>
 						<label title="<?php echo $locale->languageTag(); ?>">
