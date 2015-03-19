@@ -1841,17 +1841,17 @@ div.faq_body {
 .copylink,
 .deletelink {
 	float: left;
+	padding: 0 5px 0 0;
+	font-weight: normal;
 }
 
 [dir=rtl] .editlink,
 [dir=rtl] .copylink,
 [dir=rtl] .deletelink {
 	float: right;
+	padding: 0 0 0 5px;
 }
 
-span.link_text {
-	display: none;
-}
 
 /* ======== Indi header ====== */
 .field .editlink,
@@ -1911,13 +1911,11 @@ span.link_text {
 }
 
 #indi_header a {
-	color: #f00;
-	font-size: 0.75em;
 	font-weight: normal;
 }
 
 #indi_header a:hover {
-	color: #f00;
+	color: #333;
 }
 
 #indi_mainimage {
@@ -2061,10 +2059,7 @@ dd .deletelink {
 /* ======= General sprite ==== */
 .male_gender,
 .female_gender,
-.unknown_gender,
-.editicon,
-.copyicon,
-.deleteicon {
+.unknown_gender {
 	display: block;
 	background: url(images/indi_sprite.png) no-repeat;
 }
@@ -2085,24 +2080,6 @@ dd .deletelink {
 	background-position: -107px 4px;
 	width: 24px;
 	height: 30px;
-}
-
-.editicon {
-	background-position: -40px -32px;
-	width: 24px;
-	height: 16px;
-}
-
-.copyicon {
-	background-position: -70px -32px;
-	width: 24px;
-	height: 16px;
-}
-
-.deleteicon {
-	background-position: -100px -32px;
-	width: 24px;
-	height: 16px;
 }
 
 /* ======== Indi tabs ======== */
