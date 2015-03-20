@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-20 18:22+0100\n"
+"PO-Revision-Date: 2015-03-20 18:27+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Finnish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
@@ -731,7 +731,7 @@ msgstr "Luettelon katsotuimmista sivuista."
 #. I18N: Description of the “Who is online” module
 #: app/Module/LoggedInUsersModule.php:30
 msgid "A list of users and visitors who are currently online."
-msgstr "Luettelon käyttäjistä ja kävijöistä, jotka ovat tällä hetkellä verkossa."
+msgstr "Luettelon käyttäjistä ja vieraista, jotka ovat tällä hetkellä verkossa."
 
 #: help_text.php:278
 msgid "A media object is a record in the family tree which contains information about a media file.  This information may include a title, a copyright notice, a transcript, privacy restrictions, etc.  The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
@@ -3318,7 +3318,7 @@ msgstr "Vaihda tämän käyttäjän ”Oma sivuni” lohkot"
 
 #: admin_trees_manage.php:383 index_edit.php:52
 msgid "Change the “Home page” blocks"
-msgstr "Vaihda ”Etusivu”n lohkot"
+msgstr "Vaihda ”Etusivun” lohkot"
 
 #: index_edit.php:44
 msgid "Change the “My page” blocks"
