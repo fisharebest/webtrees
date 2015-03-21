@@ -115,7 +115,7 @@ if ($action == "filter") {
 			if (!isset($marrdate)) { $marrdate = ""; }
 
 			//-- Get Children’s Name, DOB, DOD --------------------------
-			$chBLDarray = Array();
+			$chBLDarray = array();
 			if (isset($children)) {
 				foreach ($children as $key=>$child) {
 					$chnam   = $child->getAllNames();

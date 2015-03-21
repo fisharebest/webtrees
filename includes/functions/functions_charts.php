@@ -352,7 +352,7 @@ function print_family_children(Family $family, $childid = '', $sosa = 0, $label 
 						//find out how many cousins there are to establish vertical line on second families
 						$fchildren = $famids[$f]->getChildren();
 						$kids = count($fchildren);
-						$Pheader = ($bheight-1) * $kids;
+						$Pheader = ($bheight - 1) * $kids;
 						$PBadj = 6; // default
 						if ($show_cousins > 0) {
 							if ($kids) {

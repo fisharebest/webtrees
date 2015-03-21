@@ -106,7 +106,7 @@ class HourglassController extends ChartController {
 			//-- recursively get the father’s family
 			$this->printPersonPedigree($person, $count + 1);
 			echo '</td></tr>';
-			echo '<tr><td>' .  $this->printEmptyBox() . '</td>';
+			echo '<tr><td>' . $this->printEmptyBox() . '</td>';
 			echo '<td>';
 			//-- recursively get the father’s family
 			$this->printPersonPedigree($person, $count + 1);

@@ -82,7 +82,7 @@ namespace Fisharebest\Webtrees;
 						$marrdate = $family->getMarriageDate();
 
 						//-- Get Parents Children’s Name, DOB, DOD --------------------------
-						$chBLDarray = Array();
+						$chBLDarray = array();
 						foreach ($family->getChildren() as $child) {
 							$chnam   = $child->getAllNames();
 							$chfulln = strip_tags($chnam[0]['full']); // Child’s Full Name
@@ -250,7 +250,7 @@ namespace Fisharebest\Webtrees;
 						//-- Parent’s Children’s Details --------------------------------------
 						foreach ($family->getChildren() as $child) {
 							// Get Child’s Children’s Name DOB DOD ----
-							$chBLDarray = Array();
+							$chBLDarray = array();
 							foreach ($child->getSpouseFamilies() as $childfamily) {
 								$chchildren = $childfamily->getChildren();
 								foreach ($chchildren as $chchild) {
@@ -338,7 +338,7 @@ namespace Fisharebest\Webtrees;
 					foreach ($person->getChildStepFamilies() as $family) {
 						$marrdate = $family->getMarriageDate();
 						//-- Get Children’s Name, DOB, DOD --------------------------
-						$chBLDarray = Array();
+						$chBLDarray = array();
 						foreach ($family->getChildren() as $child) {
 							$chnam   = $child->getAllNames();
 							$chfulln = strip_tags($chnam[0]['full']); // Child’s Full Name
@@ -520,7 +520,7 @@ namespace Fisharebest\Webtrees;
 						foreach ($family->getChildren() as $child) {
 
 							// Get Child’s Children
-							$chBLDarray = Array();
+							$chBLDarray = array();
 							foreach ($child->getSpouseFamilies() as $childfamily) {
 								$chchildren = $childfamily->getChildren();
 								foreach ($chchildren as $chchild) {
@@ -614,7 +614,7 @@ namespace Fisharebest\Webtrees;
 						$marrdate = $family->getMarriageDate();
 
 						//-- Get Children’s Name, DOB, DOD --------------------------
-						$chBLDarray = Array();
+						$chBLDarray = array();
 						foreach ($family->getChildren() as $child) {
 							$chnam   = $child->getAllNames();
 							$chfulln = strip_tags($chnam[0]['full']); // Child’s Full Name
@@ -814,7 +814,7 @@ namespace Fisharebest\Webtrees;
 							}
 
 							// Get Child’s Children
-							$chBLDarray = Array();
+							$chBLDarray = array();
 							foreach ($child->getSpouseFamilies() as $childfamily) {
 								$chchildren = $childfamily->getChildren();
 								foreach ($chchildren as $chchild) {
@@ -959,7 +959,7 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 			// Get Parent Children’s Name, DOB, DOD
 			$marrdate = $family->getMarriageDate();
 			if ($children) {
-				$chBLDarray = Array();
+				$chBLDarray = array();
 				foreach ($children as $child) {
 					$chnam   = $child->getAllNames();
 					$chfulln = strip_tags($chnam[0]['full']);
@@ -1112,7 +1112,7 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 
 			// Get StepParent’s Children’s Name, DOB, DOD
 			if (isset($children)) {
-				$chBLDarray = Array();
+				$chBLDarray = array();
 				foreach ($children as $child) {
 					$chnam   = $child->getAllNames();
 					$chfulln = strip_tags($chnam[0]['full']);
@@ -1269,7 +1269,7 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 			//-- Get Spouse’s Children’s Name, DOB, DOD --------------------------
 			$marrdate = $family->getMarriageDate();
 			if (isset($children)) {
-				$chBLDarray = Array();
+				$chBLDarray = array();
 				foreach ($children as $child) {
 					$chnam   = $child->getAllNames();
 					$chfulln = strip_tags($chnam[0]['full']); // Child’s Full Name
@@ -1371,7 +1371,7 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 				}
 
 				// Child’s Children
-				$chBLDarray = Array();
+				$chBLDarray = array();
 				foreach ($child->getSpouseFamilies() as $childfamily) {
 					$chchildren = $childfamily->getChildren();
 					foreach ($chchildren as $chchild) {
