@@ -1549,8 +1549,6 @@ $controller
 		</div>
 	</fieldset>
 
-	<h3><?php echo I18N::translate('Hide &amp; show'); ?></h3>
-
 	<h3><?php echo I18N::translate('Charts'); ?></h3>
 
 	<!-- PEDIGREE_FULL_DETAILS -->
@@ -1600,7 +1598,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo radio_buttons('SHOW_LDS_AT_GLANCE', $hide_show, $WT_TREE->getPreference('SHOW_LDS_AT_GLANCE'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting */ I18N::translate('Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>An individual who has all of the ordinances done will have <b>BESP</b> printed after their name.  Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code.  For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances.'); ?>
+				<?php echo /* I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting. "B", "E", "S" and "P" should not be translated. */ I18N::translate('This is a summary of the <abbr title="The Church of Jesus Christ of Latter-day Saints">LDS</abbr> ordinances for the individual.  “B” indicates an LDS baptism.  “E” indicates an LDS endowment.  “S” indicates an LDS spouse sealing.  “P” indicates an LDS child-to-parent sealing.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -1644,7 +1642,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo radio_buttons('SHOW_FACT_ICONS', $hide_show, $WT_TREE->getPreference('SHOW_FACT_ICONS'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Fact icons” configuration setting */ I18N::translate('Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> folder of the current theme.'); ?>
+				<?php echo /* I18N: Help text for the “Fact icons” configuration setting */ I18N::translate('Some themes can display icons on the “Facts and events” tab.'); ?>
 			</p>
 		</div>
 	</fieldset>
