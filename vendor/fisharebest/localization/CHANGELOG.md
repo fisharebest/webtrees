@@ -1,6 +1,9 @@
 CHANGE LOG
 ==========
 
+## 1.3.1 (2015-03-21)
+ - Add plural rules for Yiddish (yi) and Divehi (dv)
+
 ## 1.3.0 (2015-03-20)
  - Add Translator/Translation classes
 
