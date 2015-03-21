@@ -42,15 +42,18 @@ switch ($type) {
 case 'ASSO': // Associates of an individuals, whose name contains the search terms
 	$data = array();
 	// Fetch all data, regardless of privacy
-	$rows =
-		Database::prepare(
-			"SELECT 'INDI' AS type, i_id AS xref, i_gedcom AS gedcom, n_full" .
-			" FROM `##individuals`" .
-			" JOIN `##name` ON (i_id=n_id AND i_file=n_file)" .
-			" WHERE (n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') OR n_surn LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%')) AND i_file=? ORDER BY n_full COLLATE '" . I18N::$collation . "'"
-		)
-		->execute(array($term, $term, $WT_TREE->getTreeId()))
-		->fetchAll();
+	$rows = Database::prepare(
+		"SELECT 'INDI' AS type, i_id AS xref, i_gedcom AS gedcom, n_full" .
+		" FROM `##individuals`" .
+		" JOIN `##name` ON i_id = n_id AND i_file = n_file" .
+		" WHERE (n_full LIKE CONCAT('%', REPLACE(:term_1, ' ', '%'), '%') OR n_surn LIKE CONCAT('%', REPLACE(:term_2, ' ', '%'), '%')) AND i_file = :tree_id" .
+		" ORDER BY n_full COLLATE :collate"
+	)->execute(array(
+		'term_1'  => $term,
+		'term_2'  => $term,
+		'tree_id' => $WT_TREE->getTreeId(),
+		'collate' => I18N::collation(),
+	))->fetchAll();
 
 	// Filter for privacy and whether they could be alive at the right time
 	$event_date = Filter::get('extra');
@@ -88,15 +91,15 @@ case 'ASSO': // Associates of an individuals, whose name contains the search ter
 case 'CEME': // Cemetery fields, that contain the search term
 	$data = array();
 	// Fetch all data, regardless of privacy
-	$rows =
-		Database::prepare(
-			"SELECT SQL_CACHE i_id AS xref, i_gedcom AS gedcom" .
-			" FROM `##individuals`" .
-			" WHERE i_gedcom LIKE '%\n2 CEME %' AND i_file=?" .
-			" ORDER BY SUBSTRING_INDEX(i_gedcom, '\n2 CEME ', -1) COLLATE '" . I18N::$collation . "'"
-		)
-		->execute(array($WT_TREE->getTreeId()))
-		->fetchAll();
+	$rows = Database::prepare(
+		"SELECT SQL_CACHE i_id AS xref, i_gedcom AS gedcom" .
+		" FROM `##individuals`" .
+		" WHERE i_gedcom LIKE '%\n2 CEME %' AND i_file = :tree_id" .
+		" ORDER BY SUBSTRING_INDEX(i_gedcom, '\n2 CEME ', -1) COLLATE :collation"
+	)->execute(array(
+		'tree_id'   => $WT_TREE->getTreeId(),
+		'collation' => I18N::collation(),
+	))->fetchAll();
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$person = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
@@ -136,11 +139,13 @@ case 'GIVN': // Given names, that start with the search term
 		Database::prepare(
 			"SELECT SQL_CACHE DISTINCT n_givn" .
 			" FROM `##name`" .
-			" WHERE n_givn LIKE CONCAT(?, '%') AND n_file=?" .
-			" ORDER BY n_givn COLLATE '" . I18N::$collation . "'"
-		)
-		->execute(array($term, $WT_TREE->getTreeId()))
-		->fetchOneColumn()
+			" WHERE n_givn LIKE CONCAT(:term, '%') AND n_file = :tree_id" .
+			" ORDER BY n_givn COLLATE :collation"
+		)->execute(array(
+			'term'      => $term,
+			'tree_id'   => $WT_TREE->getTreeId(),
+			'collation' => I18N::collation(),
+		))->fetchOneColumn()
 	);
 	
 	return;
@@ -148,15 +153,18 @@ case 'GIVN': // Given names, that start with the search term
 case 'INDI': // Individuals, whose name contains the search terms
 	$data = array();
 	// Fetch all data, regardless of privacy
-	$rows =
-		Database::prepare(
-			"SELECT i_id AS xref, i_gedcom AS gedcom, n_full" .
-			" FROM `##individuals`" .
-			" JOIN `##name` ON (i_id=n_id AND i_file=n_file)" .
-			" WHERE (n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') OR n_surn LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%')) AND i_file=? ORDER BY n_full COLLATE '" . I18N::$collation . "'"
-		)
-		->execute(array($term, $term, $WT_TREE->getTreeId()))
-		->fetchAll();
+	$rows = Database::prepare(
+		"SELECT i_id AS xref, i_gedcom AS gedcom, n_full" .
+		" FROM `##individuals`" .
+		" JOIN `##name` ON i_id = n_id AND i_file = n_file" .
+		" WHERE (n_full LIKE CONCAT('%', REPLACE(:term_1, ' ', '%'), '%') OR n_surn LIKE CONCAT('%', REPLACE(:term_2, ' ', '%'), '%')) AND i_file = :tree_id" .
+		" ORDER BY n_full COLLATE :collation"
+	)->execute(array(
+		'term_1'    => $term,
+		'term_2'    => $term,
+		'tree_id'   => $WT_TREE->getTreeId(),
+		'collation' => I18N::collation(),
+	))->fetchAll();
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$person = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
@@ -242,13 +250,15 @@ case 'PLAC2': // Place names (without hierarchy), that include the search term
 		Database::prepare(
 			"SELECT SQL_CACHE p_place" .
 			" FROM `##places`" .
-			" WHERE p_place LIKE CONCAT('%', ?, '%') AND p_file=?" .
-			" ORDER BY p_place COLLATE '" . I18N::$collation . "'"
-		)
-		->execute(array($WT_TREE, $term, $WT_TREE->getTreeId()))
-		->fetchOneColumn()
+			" WHERE p_place LIKE CONCAT('%', :term, '%') AND p_file = :tree_id" .
+			" ORDER BY p_place COLLATE :collation"
+		)->execute(array(
+			'term'      => $term,
+			'tree_id'   => $WT_TREE->getTreeId(),
+			'collation' => I18N::collation(),
+		))->fetchOneColumn()
 	);
-	
+
 	return;
 
 case 'REPO': // Repositories, that include the search terms
@@ -304,14 +314,15 @@ case 'PAGE': // Citation details, for a given source, that contain the search te
 	$data = array();
 	$sid  = Filter::get('extra', WT_REGEX_XREF);
 	// Fetch all data, regardless of privacy
-	$rows =
-		Database::prepare(
-			"SELECT SQL_CACHE i_id AS xref, i_gedcom AS gedcom" .
-			" FROM `##individuals`" .
-			" WHERE i_gedcom LIKE CONCAT('%\n_ SOUR @', ?, '@%', REPLACE(?, ' ', '%'), '%') AND i_file=?"
-		)
-		->execute(array($sid, $term, $WT_TREE->getTreeId()))
-		->fetchAll();
+	$rows = Database::prepare(
+		"SELECT SQL_CACHE i_id AS xref, i_gedcom AS gedcom" .
+		" FROM `##individuals`" .
+		" WHERE i_gedcom LIKE CONCAT('%\n_ SOUR @', :xref, '@%', REPLACE(:term, ' ', '%'), '%') AND i_file = :tree_id"
+	)->execute(array(
+		'xref'    => $sid,
+		'term'    => $term,
+		'tree_id' => $WT_TREE->getTreeId(),
+	))->fetchAll();
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$person = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
@@ -323,14 +334,15 @@ case 'PAGE': // Citation details, for a given source, that contain the search te
 		}
 	}
 	// Fetch all data, regardless of privacy
-	$rows =
-		Database::prepare(
-			"SELECT SQL_CACHE f_id AS xref, f_gedcom AS gedcom" .
-			" FROM `##families`" .
-			" WHERE f_gedcom LIKE CONCAT('%\n_ SOUR @', ?, '@%', REPLACE(?, ' ', '%'), '%') AND f_file=?"
-		)
-		->execute(array($sid, $term, $WT_TREE->getTreeId()))
-		->fetchAll();
+	$rows = Database::prepare(
+		"SELECT SQL_CACHE f_id AS xref, f_gedcom AS gedcom" .
+		" FROM `##families`" .
+		" WHERE f_gedcom LIKE CONCAT('%\n_ SOUR @', :xref, '@%', REPLACE(:term, ' ', '%'), '%') AND f_file = :tree_id"
+	)->execute(array(
+		'xref'    => $sid,
+		'term'    => $term,
+		'tree_id' => $WT_TREE->getTreeId(),
+	))->fetchAll();
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$family = Family::getInstance($row->xref, $WT_TREE, $row->gedcom);
@@ -352,14 +364,16 @@ case 'PAGE': // Citation details, for a given source, that contain the search te
 case 'SOUR_TITL': // Source titles, that include the search terms
 	$data = array();
 	// Fetch all data, regardless of privacy
-	$rows =
-		Database::prepare(
-			"SELECT s_id AS xref, s_gedcom AS gedcom, s_name" .
-			" FROM `##sources`" .
-			" WHERE s_name LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND s_file=? ORDER BY s_name COLLATE '" . I18N::$collation . "'"
-		)
-		->execute(array($term, $WT_TREE->getTreeId()))
-		->fetchAll();
+	$rows = Database::prepare(
+		"SELECT s_id AS xref, s_gedcom AS gedcom, s_name" .
+		" FROM `##sources`" .
+		" WHERE s_name LIKE CONCAT('%', REPLACE(:term, ' ', '%'), '%') AND s_file = :tree_id" .
+		" ORDER BY s_name COLLATE :collation"
+	)->execute(array(
+		'term'      => $term,
+		'tree_id'   => $WT_TREE->getTreeId(),
+		'collation' => I18N::collation(),
+	))->fetchAll();
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$source = Source::getInstance($row->xref, $WT_TREE, $row->gedcom);
@@ -377,11 +391,13 @@ case 'SURN': // Surnames, that start with the search term
 		Database::prepare(
 			"SELECT SQL_CACHE DISTINCT n_surname" .
 			" FROM `##name`" .
-			" WHERE n_surname LIKE CONCAT(?, '%') AND n_file=?" .
-			" ORDER BY n_surname COLLATE '" . I18N::$collation . "'"
-		)
-		->execute(array($term, $WT_TREE->getTreeId()))
-		->fetchOneColumn()
+			" WHERE n_surname LIKE CONCAT(:term, '%') AND n_file = :tree_id" .
+			" ORDER BY n_surname COLLATE :collation"
+		)->execute(array(
+			'term'      => $term,
+			'tree_id'   => $WT_TREE->getTreeId(),
+			'collation' => I18N::collation(),
+		))->fetchOneColumn()
 	);
 	
 	return;
@@ -497,18 +513,19 @@ case 'IFS':
  * @return \stdClass[]
  */
 function get_FAM_rows(Tree $tree, $term) {
-	return
-		Database::prepare(
-			"SELECT DISTINCT 'FAM' AS type, f_id AS xref, f_gedcom AS gedcom" .
-			" FROM `##families`" .
-			" JOIN `##name` AS husb_name ON (f_husb=husb_name.n_id AND f_file=husb_name.n_file)" .
-			" JOIN `##name` AS wife_name ON (f_wife=wife_name.n_id AND f_file=wife_name.n_file)" .
-			" WHERE CONCAT(husb_name.n_full, ' ', wife_name.n_full) LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND f_file=?" .
-			" AND husb_name.n_type<>'_MARNM' AND wife_name.n_type<>'_MARNM'" .
-			" ORDER BY husb_name.n_sort, wife_name.n_sort COLLATE '" . I18N::$collation . "'"
-		)
-		->execute(array($term, $tree->getTreeId()))
-		->fetchAll();
+	return Database::prepare(
+		"SELECT DISTINCT 'FAM' AS type, f_id AS xref, f_gedcom AS gedcom" .
+		" FROM `##families`" .
+		" JOIN `##name` AS husb_name ON f_husb = husb_name.n_id AND f_file = husb_name.n_file" .
+		" JOIN `##name` AS wife_name ON f_wife = wife_name.n_id AND f_file = wife_name.n_file" .
+		" WHERE CONCAT(husb_name.n_full, ' ', wife_name.n_full) LIKE CONCAT('%', REPLACE(:term, ' ', '%'), '%') AND f_file = :tree_id" .
+		" AND husb_name.n_type <> '_MARNM' AND wife_name.n_type <> '_MARNM'" .
+		" ORDER BY husb_name.n_sort, wife_name.n_sort COLLATE :collation"
+	)->execute(array(
+		'term'      => $term,
+		'tree_id'   => $tree->getTreeId(),
+		'collation' => I18N::collation(),
+	))->fetchAll();
 }
 
 /**
@@ -518,15 +535,16 @@ function get_FAM_rows(Tree $tree, $term) {
  * @return \stdClass[]
  */
 function get_INDI_rows(Tree $tree, $term) {
-	return
-		Database::prepare(
-			"SELECT 'INDI' AS type, i_id AS xref, i_gedcom AS gedcom, n_full" .
-			" FROM `##individuals`" .
-			" JOIN `##name` ON (i_id=n_id AND i_file=n_file)" .
-			" WHERE n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND i_file=? ORDER BY n_full COLLATE '" . I18N::$collation . "'"
-		)
-		->execute(array($term, $tree->getTreeId()))
-		->fetchAll();
+	return Database::prepare(
+		"SELECT 'INDI' AS type, i_id AS xref, i_gedcom AS gedcom, n_full" .
+		" FROM `##individuals`" .
+		" JOIN `##name` ON i_id = n_id AND i_file = n_file" .
+		" WHERE n_full LIKE CONCAT('%', REPLACE(:term, ' ', '%'), '%') AND i_file = :tree_id ORDER BY n_full COLLATE :collation"
+	)->execute(array(
+		'term'      => $term,
+		'tree_id'   => $tree->getTreeId(),
+		'collation' => I18N::collation(),
+	))->fetchAll();
 }
 
 /**
@@ -536,16 +554,17 @@ function get_INDI_rows(Tree $tree, $term) {
  * @return \stdClass[]
  */
 function get_NOTE_rows(Tree $tree, $term) {
-	return
-		Database::prepare(
-			"SELECT o_id AS xref, o_gedcom AS gedcom" .
-			" FROM `##other`" .
-			" JOIN `##name` ON (o_id=n_id AND o_file=n_file)" .
-			" WHERE o_gedcom LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND o_file=? AND o_type='NOTE'" .
-			" ORDER BY n_full COLLATE '" . I18N::$collation . "'"
-		)
-		->execute(array($term, $tree->getTreeId()))
-		->fetchAll();
+	return Database::prepare(
+		"SELECT o_id AS xref, o_gedcom AS gedcom" .
+		" FROM `##other`" .
+		" JOIN `##name` ON o_id = n_id AND o_file = n_file" .
+		" WHERE o_gedcom LIKE CONCAT('%', REPLACE(:term, ' ', '%'), '%') AND o_file = :tree_id AND o_type = 'NOTE'" .
+		" ORDER BY n_full COLLATE :collation"
+	)->execute(array(
+		'term'      => $term,
+		'tree_id'   => $tree->getTreeId(),
+		'collation' => I18N::collation(),
+	))->fetchAll();
 }
 
 /**
@@ -555,14 +574,17 @@ function get_NOTE_rows(Tree $tree, $term) {
  * @return \stdClass[]
  */
 function get_OBJE_rows(Tree $tree, $term) {
-	return
-		Database::prepare(
-			"SELECT 'OBJE' AS type, m_id AS xref, m_gedcom AS gedcom" .
-			" FROM `##media`" .
-			" WHERE (m_titl LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') OR m_id LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%')) AND m_file=?"
-		)
-		->execute(array($term, $term, $tree->getTreeId()))
-		->fetchAll();
+	return Database::prepare(
+		"SELECT 'OBJE' AS type, m_id AS xref, m_gedcom AS gedcom" .
+		" FROM `##media`" .
+		" WHERE (m_titl LIKE CONCAT('%', REPLACE(:term_1, ' ', '%'), '%') OR m_id LIKE CONCAT('%', REPLACE(:term_2, ' ', '%'), '%')) AND m_file = :tree_id" .
+		" ORDER BY m_titl COLLATE :collation"
+	)->execute(array(
+		'term_1'    => $term,
+		'term_2'    => $term,
+		'tree_id'   => $tree->getTreeId(),
+		'collation' => I18N::collation(),
+	))->fetchAll();
 }
 
 /**
@@ -572,16 +594,17 @@ function get_OBJE_rows(Tree $tree, $term) {
  * @return \stdClass[]
  */
 function get_REPO_rows(Tree $tree, $term) {
-	return
-		Database::prepare(
-			"SELECT o_id AS xref, o_gedcom AS gedcom" .
-			" FROM `##other`" .
-			" JOIN `##name` ON (o_id=n_id AND o_file=n_file)" .
-			" WHERE n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND o_file=? AND o_type='REPO'" .
-			" ORDER BY n_full COLLATE '" . I18N::$collation . "'"
-		)
-		->execute(array($term, $tree->getTreeId()))
-		->fetchAll();
+	return Database::prepare(
+		"SELECT o_id AS xref, o_gedcom AS gedcom" .
+		" FROM `##other`" .
+		" JOIN `##name` ON o_id = n_id AND o_file = n_file" .
+		" WHERE n_full LIKE CONCAT('%', REPLACE(:term, ' ', '%'), '%') AND o_file = :tree_id AND o_type = 'REPO'" .
+		" ORDER BY n_full COLLATE :collation"
+	)->execute(array(
+		'term'      => $term,
+		'tree_id'   => $tree->getTreeId(),
+		'collation' => I18N::collation(),
+	))->fetchAll();
 }
 
 /**
@@ -591,12 +614,14 @@ function get_REPO_rows(Tree $tree, $term) {
  * @return \stdClass[]
  */
 function get_SOUR_rows(Tree $tree, $term) {
-	return
-		Database::prepare(
-			"SELECT s_id AS xref, s_gedcom AS gedcom" .
-			" FROM `##sources`" .
-			" WHERE s_name LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND s_file=? ORDER BY s_name COLLATE '" . I18N::$collation . "'"
-		)
-		->execute(array($term, $tree->getTreeId()))
-		->fetchAll();
+	return Database::prepare(
+		"SELECT s_id AS xref, s_gedcom AS gedcom" .
+		" FROM `##sources`" .
+		" WHERE s_name LIKE CONCAT('%', REPLACE(:term, ' ', '%'), '%') AND s_file = :tree_id" .
+		" ORDER BY s_name COLLATE :collation"
+	)->execute(array(
+		'term'      => $term,
+		'tree_id'   => $tree->getTreeId(),
+		'collation' => I18N::collation(),
+	))->fetchAll();
 }

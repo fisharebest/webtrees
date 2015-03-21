@@ -812,11 +812,16 @@ class GedcomRecord {
 		$rows = Database::prepare(
 			"SELECT i_id AS xref, i_gedcom AS gedcom" .
 			" FROM `##individuals`" .
-			" JOIN `##link` ON (i_file=l_file AND i_id=l_from)" .
-			" LEFT JOIN `##name` ON (i_file=n_file AND i_id=n_id AND n_num=0)" .
-			" WHERE i_file=? AND l_type=? AND l_to=?" .
-			" ORDER BY n_sort COLLATE '" . I18N::$collation . "'"
-		)->execute(array($this->tree->getTreeId(), $link, $this->xref))->fetchAll();
+			" JOIN `##link` ON i_file = l_file AND i_id = l_from" .
+			" LEFT JOIN `##name` ON i_file = n_file AND i_id = n_id AND n_num = 0" .
+			" WHERE i_file = :tree_id AND l_type = :link AND l_to = :xref" .
+			" ORDER BY n_sort COLLATE :collation"
+		)->execute(array(
+			'tree_id'   => $this->tree->getTreeId(),
+			'link'      => $link,
+			'xref'      => $this->xref,
+			'collation' => I18N::collation(),
+		))->fetchAll();
 
 		$list = array();
 		foreach ($rows as $row) {
@@ -839,10 +844,14 @@ class GedcomRecord {
 		$rows = Database::prepare(
 			"SELECT f_id AS xref, f_gedcom AS gedcom" .
 			" FROM `##families`" .
-			" JOIN `##link` ON (f_file=l_file AND f_id=l_from)" .
-			" LEFT JOIN `##name` ON (f_file=n_file AND f_id=n_id AND n_num=0)" .
-			" WHERE f_file=? AND l_type=? AND l_to=?"
-		)->execute(array($this->tree->getTreeId(), $link, $this->xref))->fetchAll();
+			" JOIN `##link` ON f_file = l_file AND f_id = l_from" .
+			" LEFT JOIN `##name` ON f_file = n_file AND f_id = n_id AND n_num = 0" .
+			" WHERE f_file = :tree_id AND l_type = :link AND l_to = :xref"
+		)->execute(array(
+			'tree_id' => $this->tree->getTreeId(),
+			'link'    => $link,
+			'xref'    => $this->xref,
+		))->fetchAll();
 
 		$list = array();
 		foreach ($rows as $row) {
@@ -863,12 +872,17 @@ class GedcomRecord {
 	 */
 	public function linkedSources($link) {
 		$rows = Database::prepare(
-				"SELECT s_id AS xref, s_gedcom AS gedcom" .
-				" FROM `##sources`" .
-				" JOIN `##link` ON (s_file=l_file AND s_id=l_from)" .
-				" WHERE s_file=? AND l_type=? AND l_to=?" .
-				" ORDER BY s_name COLLATE '" . I18N::$collation . "'"
-			)->execute(array($this->tree->getTreeId(), $link, $this->xref))->fetchAll();
+			"SELECT s_id AS xref, s_gedcom AS gedcom" .
+			" FROM `##sources`" .
+			" JOIN `##link` ON s_file = l_file AND s_id = l_from" .
+			" WHERE s_file = :tree_id AND l_type = :link AND l_to = :xref" .
+			" ORDER BY s_name COLLATE :collation"
+		)->execute(array(
+			'tree_id'   => $this->tree->getTreeId(),
+			'link'      => $link,
+			'xref'      => $this->xref,
+			'collation' => I18N::collation(),
+		))->fetchAll();
 
 		$list = array();
 		foreach ($rows as $row) {
@@ -891,10 +905,15 @@ class GedcomRecord {
 		$rows = Database::prepare(
 			"SELECT m_id AS xref, m_gedcom AS gedcom" .
 			" FROM `##media`" .
-			" JOIN `##link` ON (m_file=l_file AND m_id=l_from)" .
-			" WHERE m_file=? AND l_type=? AND l_to=?" .
-			" ORDER BY m_titl COLLATE '" . I18N::$collation . "'"
-		)->execute(array($this->tree->getTreeId(), $link, $this->xref))->fetchAll();
+			" JOIN `##link` ON m_file = l_file AND m_id = l_from" .
+			" WHERE m_file = :tree_id AND l_type = :link AND l_to = :xref" .
+			" ORDER BY m_titl COLLATE :collation"
+		)->execute(array(
+			'tree_id'   => $this->tree->getTreeId(),
+			'link'      => $link,
+			'xref'      => $this->xref,
+			'collation' => I18N::collation(),
+		))->fetchAll();
 
 		$list = array();
 		foreach ($rows as $row) {
@@ -917,11 +936,16 @@ class GedcomRecord {
 		$rows = Database::prepare(
 			"SELECT o_id AS xref, o_gedcom AS gedcom" .
 			" FROM `##other`" .
-			" JOIN `##link` ON (o_file=l_file AND o_id=l_from)" .
-			" LEFT JOIN `##name` ON (o_file=n_file AND o_id=n_id AND n_num=0)" .
-			" WHERE o_file=? AND o_type='NOTE' AND l_type=? AND l_to=?" .
-			" ORDER BY n_sort COLLATE '" . I18N::$collation . "'"
-		)->execute(array($this->tree->getTreeId(), $link, $this->xref))->fetchAll();
+			" JOIN `##link` ON o_file = l_file AND o_id = l_from" .
+			" LEFT JOIN `##name` ON o_file = n_file AND o_id = n_id AND n_num = 0" .
+			" WHERE o_file = :tree_id AND o_type = 'NOTE' AND l_type = :link AND l_to = :xref" .
+			" ORDER BY n_sort COLLATE :collation"
+		)->execute(array(
+			'tree_id'   => $this->tree->getTreeId(),
+			'link'      => $link,
+			'xref'      => $this->xref,
+			'collation' => I18N::collation(),
+		))->fetchAll();
 
 		$list = array();
 		foreach ($rows as $row) {
@@ -944,11 +968,16 @@ class GedcomRecord {
 		$rows = Database::prepare(
 			"SELECT o_id AS xref, o_gedcom AS gedcom" .
 			" FROM `##other`" .
-			" JOIN `##link` ON (o_file=l_file AND o_id=l_from)" .
-			" LEFT JOIN `##name` ON (o_file=n_file AND o_id=n_id AND n_num=0)" .
-			" WHERE o_file=? AND o_type='REPO' AND l_type=? AND l_to=?" .
-			" ORDER BY n_sort COLLATE '" . I18N::$collation . "'"
-		)->execute(array($this->tree->getTreeId(), $link, $this->xref))->fetchAll();
+			" JOIN `##link` ON o_file = l_file AND o_id = l_from" .
+			" LEFT JOIN `##name` ON o_file = n_file AND o_id = n_id AND n_num = 0" .
+			" WHERE o_file = :tree_id AND o_type = 'REPO' AND l_type = :link AND l_to = :xref" .
+			" ORDER BY n_sort COLLATE :colation"
+		)->execute(array(
+			'tree_id'   => $this->tree->getTreeId(),
+			'link'      => $link,
+			'xref'      => $this->xref,
+			'collation' => I18N::collation(),
+		))->fetchAll();
 
 		$list = array();
 		foreach ($rows as $row) {

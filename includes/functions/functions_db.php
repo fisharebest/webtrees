@@ -127,7 +127,7 @@ function search_indis(array $query, array $trees) {
 	foreach ($query as $n => $q) {
 		$queryregex[] = preg_quote(I18N::strtoupper($q), '/');
 		$sql .= " AND i_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
-		$args['collate_' . $n] = I18N::$collation;
+		$args['collate_' . $n] = I18N::collation();
 		$args['query_' . $n]   = Filter::escapeLike($q);
 	}
 
@@ -176,7 +176,7 @@ function search_indis_names(array $query, array $trees) {
 	// Convert the query into a SQL expression
 	foreach ($query as $n => $q) {
 		$sql .= " AND n_full COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
-		$args['collate_' . $n] = I18N::$collation;
+		$args['collate_' . $n] = I18N::collation();
 		$args['query_' . $n]   = Filter::escapeLike($q);
 	}
 
@@ -367,7 +367,7 @@ function search_fams(array $query, array $trees) {
 	foreach ($query as $n => $q) {
 		$queryregex[] = preg_quote(I18N::strtoupper($q), '/');
 		$sql .= " AND f_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
-		$args['collate_' . $n] = I18N::$collation;
+		$args['collate_' . $n] = I18N::collation();
 		$args['query_' . $n]   = Filter::escapeLike($q);
 	}
 
@@ -427,9 +427,9 @@ function search_fams_names(array $query, array $trees) {
 
 	foreach ($query as $n => $q) {
 		$sql .= " AND (husb.n_full COLLATE :husb_collate_" . $n . " LIKE CONCAT('%', :husb_query_" . $n . ", '%') OR wife.n_full COLLATE :wife_collate_" . $n . " LIKE CONCAT('%', :wife_query_" . $n . ", '%'))";
-		$args['husb_collate_' . $n] = I18N::$collation;
+		$args['husb_collate_' . $n] = I18N::collation();
 		$args['husb_query_' . $n]   = Filter::escapeLike($q);
-		$args['wife_collate_' . $n] = I18N::$collation;
+		$args['wife_collate_' . $n] = I18N::collation();
 		$args['wife_query_' . $n]   = Filter::escapeLike($q);
 	}
 
@@ -471,7 +471,7 @@ function search_sources($query, $trees) {
 	foreach ($query as $n => $q) {
 		$queryregex[] = preg_quote(I18N::strtoupper($q), '/');
 		$sql .= " AND s_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
-		$args['collate_' . $n] = I18N::$collation;
+		$args['collate_' . $n] = I18N::collation();
 		$args['query_' . $n]   = Filter::escapeLike($q);
 	}
 
@@ -525,7 +525,7 @@ function search_notes(array $query, array $trees) {
 	foreach ($query as $n => $q) {
 		$queryregex[] = preg_quote(I18N::strtoupper($q), '/');
 		$sql .= " AND o_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
-		$args['collate_' . $n] = I18N::$collation;
+		$args['collate_' . $n] = I18N::collation();
 		$args['query_' . $n]   = Filter::escapeLike($q);
 	}
 
@@ -579,7 +579,7 @@ function search_repos(array $query, array $trees) {
 	foreach ($query as $n => $q) {
 		$queryregex[] = preg_quote(I18N::strtoupper($q), '/');
 		$sql .= " AND o_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
-		$args['collate_' . $n] = I18N::$collation;
+		$args['collate_' . $n] = I18N::collation();
 		$args['query_' . $n]   = Filter::escapeLike($q);
 	}
 

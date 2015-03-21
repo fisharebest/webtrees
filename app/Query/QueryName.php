@@ -192,7 +192,7 @@ class QueryName {
 		switch (WT_LOCALE) {
 		case 'cs':
 			switch ($letter) {
-			case 'C': return $field . " LIKE 'C%' COLLATE " . I18N::$collation . " AND " . $field . " NOT LIKE 'CH%' COLLATE " . I18N::$collation;
+			case 'C': return $field . " LIKE 'C%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'CH%' COLLATE " . I18N::collation();
 			}
 			break;
 		case 'da':
@@ -200,32 +200,32 @@ class QueryName {
 		case 'nn':
 			switch ($letter) {
 			// AA gets listed under Å
-			case 'A': return $field . " LIKE 'A%' COLLATE " . I18N::$collation . " AND " . $field . " NOT LIKE 'AA%' COLLATE " . I18N::$collation;
-			case 'Å': return "(" . $field . " LIKE 'Å%' COLLATE " . I18N::$collation . " OR " . $field . " LIKE 'AA%' COLLATE " . I18N::$collation . ")";
+			case 'A': return $field . " LIKE 'A%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'AA%' COLLATE " . I18N::collation();
+			case 'Å': return "(" . $field . " LIKE 'Å%' COLLATE " . I18N::collation() . " OR " . $field . " LIKE 'AA%' COLLATE " . I18N::collation() . ")";
 			}
 			break;
 		case 'hu':
 			switch ($letter) {
-			case 'C':  return $field . " LIKE 'C%' COLLATE " . I18N::$collation . " AND " . $field . " NOT LIKE 'CS%' COLLATE " . I18N::$collation;
-			case 'D':  return $field . " LIKE 'D%' COLLATE " . I18N::$collation . " AND " . $field . " NOT LIKE 'DZ%' COLLATE " . I18N::$collation;
-			case 'DZ': return $field . " LIKE 'DZ%' COLLATE " . I18N::$collation . " AND " . $field . " NOT LIKE 'DZS%' COLLATE " . I18N::$collation;
-			case 'G':  return $field . " LIKE 'G%' COLLATE " . I18N::$collation . " AND " . $field . " NOT LIKE 'GY%' COLLATE " . I18N::$collation;
-			case 'L':  return $field . " LIKE 'L%' COLLATE " . I18N::$collation . " AND " . $field . " NOT LIKE 'LY%' COLLATE " . I18N::$collation;
-			case 'N':  return $field . " LIKE 'N%' COLLATE " . I18N::$collation . " AND " . $field . " NOT LIKE 'NY%' COLLATE " . I18N::$collation;
-			case 'S':  return $field . " LIKE 'S%' COLLATE " . I18N::$collation . " AND " . $field . " NOT LIKE 'SZ%' COLLATE " . I18N::$collation;
-			case 'T':  return $field . " LIKE 'T%' COLLATE " . I18N::$collation . " AND " . $field . " NOT LIKE 'TY%' COLLATE " . I18N::$collation;
-			case 'Z':  return $field . " LIKE 'Z%' COLLATE " . I18N::$collation . " AND " . $field . " NOT LIKE 'ZS%' COLLATE " . I18N::$collation;
+			case 'C':  return $field . " LIKE 'C%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'CS%' COLLATE " . I18N::collation();
+			case 'D':  return $field . " LIKE 'D%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'DZ%' COLLATE " . I18N::collation();
+			case 'DZ': return $field . " LIKE 'DZ%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'DZS%' COLLATE " . I18N::collation();
+			case 'G':  return $field . " LIKE 'G%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'GY%' COLLATE " . I18N::collation();
+			case 'L':  return $field . " LIKE 'L%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'LY%' COLLATE " . I18N::collation();
+			case 'N':  return $field . " LIKE 'N%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'NY%' COLLATE " . I18N::collation();
+			case 'S':  return $field . " LIKE 'S%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'SZ%' COLLATE " . I18N::collation();
+			case 'T':  return $field . " LIKE 'T%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'TY%' COLLATE " . I18N::collation();
+			case 'Z':  return $field . " LIKE 'Z%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'ZS%' COLLATE " . I18N::collation();
 			}
 			break;
 		case 'nl':
 			switch ($letter) {
-			case 'I': return $field . " LIKE 'I%' COLLATE " . I18N::$collation . " AND " . $field . " NOT LIKE 'IJ%' COLLATE " . I18N::$collation;
+			case 'I': return $field . " LIKE 'I%' COLLATE " . I18N::collation() . " AND " . $field . " NOT LIKE 'IJ%' COLLATE " . I18N::collation();
 			}
 			break;
 		}
 
 		// Easy cases: the MySQL collation rules take care of it
-		return "$field LIKE CONCAT('@'," . Database::quote($letter) . ",'%') COLLATE " . I18N::$collation . " ESCAPE '@'";
+		return "$field LIKE CONCAT('@'," . Database::quote($letter) . ",'%') COLLATE " . I18N::collation() . " ESCAPE '@'";
 	}
 
 	/**
@@ -274,7 +274,7 @@ class QueryName {
 
 		foreach (self::getAlphabetForLocale(WT_LOCALE) as $n => $letter) {
 			$sql .= " AND n_surn COLLATE :collate_" . $n . " NOT LIKE :letter_" . $n;
-			$args['collate_' . $n] = I18N::$collation;
+			$args['collate_' . $n] = I18N::collation();
 			$args['letter_' . $n] = $letter . '%';
 		}
 		$sql .= " GROUP BY LEFT(n_surn, 1) ORDER BY LEFT(n_surn, 1) = '', LEFT(n_surn, 1) = '@', LEFT(n_surn, 1)";
@@ -326,7 +326,7 @@ class QueryName {
 			($marnm ? "" : " AND n_type!='_MARNM'");
 
 		if ($surn) {
-			$sql .= " AND n_surn=" . Database::quote($surn) . " COLLATE '" . I18N::$collation . "'";
+			$sql .= " AND n_surn=" . Database::quote($surn) . " COLLATE '" . I18N::collation() . "'";
 		} elseif ($salpha == ',') {
 			$sql .= " AND n_surn=''";
 		} elseif ($salpha == '@') {
@@ -361,7 +361,7 @@ class QueryName {
 
 		if ($surn) {
 			$sql .= " AND n_surn COLLATE :collate_1 = :surn";
-			$args['collate_1'] = I18N::$collation;
+			$args['collate_1'] = I18N::collation();
 			$args['surn'] = $surn;
 		} elseif ($salpha === ',') {
 			$sql .= " AND n_surn = ''";
@@ -375,7 +375,7 @@ class QueryName {
 		}
 
 		foreach (self::getAlphabetForLocale(WT_LOCALE) as $letter) {
-			$sql .= " AND n_givn NOT LIKE '" . $letter . "%' COLLATE " . I18N::$collation;
+			$sql .= " AND n_givn NOT LIKE '" . $letter . "%' COLLATE " . I18N::collation();
 		}
 		$sql .= " GROUP BY LEFT(n_givn, 1) ORDER BY LEFT(n_givn, 1) = '@', LEFT(n_givn, 1) = '', LEFT(n_givn, 1)";
 
@@ -412,7 +412,7 @@ class QueryName {
 
 		if ($surn) {
 			$sql .= " AND n_surn COLLATE :collate_1 = :surn";
-			$args['collate_1'] = I18N::$collation;
+			$args['collate_1'] = I18N::collation();
 			$args['surn'] = $surn;
 		} elseif ($salpha === ',') {
 			$sql .= " AND n_surn = ''";
@@ -425,8 +425,8 @@ class QueryName {
 			$sql .= " AND n_surn NOT IN ('', '@N.N.')";
 		}
 		$sql .= " GROUP BY n_surn COLLATE :collate_2, n_file) n2 ON (n1.n_surn=n2.n_surn COLLATE :collate_3 AND n1.n_file=n2.n_file)";
-		$args['collate_2'] = I18N::$collation;
-		$args['collate_3'] = I18N::$collation;
+		$args['collate_2'] = I18N::collation();
+		$args['collate_3'] = I18N::collation();
 
 		$list = array();
 		foreach (Database::prepare($sql)->execute($args)->fetchAll() as $row) {
@@ -466,7 +466,7 @@ class QueryName {
 
 		if ($surn) {
 			$sql .= " AND n_surn COLLATE :collate_1 = :surn";
-			$args['collate_1'] = I18N::$collation;
+			$args['collate_1'] = I18N::collation();
 			$args['surn'] = $surn;
 		} elseif ($salpha === ',') {
 			$sql .= " AND n_surn = ''";
@@ -483,8 +483,8 @@ class QueryName {
 		}
 
 		$sql .= " ORDER BY CASE n_surn WHEN '@N.N.' THEN 1 ELSE 0 END, n_surn COLLATE :collate_2, CASE n_givn WHEN '@P.N.' THEN 1 ELSE 0 END, n_givn COLLATE :collate_3";
-		$args['collate_2'] = I18N::$collation;
-		$args['collate_3'] = I18N::$collation;
+		$args['collate_2'] = I18N::collation();
+		$args['collate_3'] = I18N::collation();
 
 		$list = array();
 		$rows = Database::prepare($sql)->execute($args)->fetchAll();

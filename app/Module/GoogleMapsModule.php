@@ -3191,7 +3191,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 					" ORDER BY pl_place COLLATE :collation"
 				)->execute(array(
 					'parent_id' => $parent_id,
-					'collation' => I18N::$collation,
+					'collation' => I18N::collation(),
 				))->fetchAll();
 		} else {
 			$rows = Database::prepare(
@@ -3202,7 +3202,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 				" ORDER BY pl_place COLLATE :collation"
 			)->execute(array(
 				'parent_id' => $parent_id,
-				'collation' => I18N::$collation,
+				'collation' => I18N::collation(),
 			))->fetchAll();
 		}
 

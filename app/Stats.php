@@ -576,11 +576,12 @@ class Stats {
 		$vars[] = $this->tree->getTreeId();
 		$total =
 			Database::prepare(
-				"SELECT SQL_CACHE COUNT({$distinct} n_surn COLLATE '" . I18N::$collation . "')" .
+				"SELECT SQL_CACHE COUNT({$distinct} n_surn COLLATE '" . I18N::collation() . "')" .
 				" FROM `##name`" .
-				" WHERE n_surn COLLATE '" . I18N::$collation . "' {$opt} AND n_file=?")
-				->execute($vars)
-				->fetchOne();
+				" WHERE n_surn COLLATE '" . I18N::collation() . "' {$opt} AND n_file=?"
+			)->execute(
+				$vars
+			)->fetchOne();
 
 		return I18N::number($total);
 	}

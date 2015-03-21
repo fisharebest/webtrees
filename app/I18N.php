@@ -92,9 +92,6 @@ class I18N {
 		'’' => '‘',
 	);
 
-	/** @var string The MySQL collation sequence used by this language, typically utf8_unicode_ci */
-	public static $collation;
-
 	/** @var string Punctuation used to separate list items, typically a comma */
 	public static $list_separator;
 
@@ -207,7 +204,6 @@ class I18N {
 		$WEEK_START = self::$locale->territory()->firstDay();
 
 		self::$list_separator = /* I18N: This punctuation is used to separate lists of items */ self::translate(', ');
-		self::$collation = 'utf8_' . self::$locale->collation();
 
 		return self::$locale->languageTag();
 	}
@@ -243,6 +239,23 @@ class I18N {
 		usort($locales, '\Fisharebest\Localization\Locale::compare');
 
 		return $locales;
+	}
+
+	/**
+	 * Which MySQL collation should be used for this locale?
+	 *
+	 * @return string
+	 */
+	public static function collation() {
+		$collation = self::$locale->collation();
+		switch ($collation) {
+		case 'german2_ci':
+		case 'vietnamese_ci':
+			// Only available in MySQL 5.6
+			return 'utf8_unicode_ci';
+		default:
+			return 'utf8_' . $collation;
+		}
 	}
 
 	/**
