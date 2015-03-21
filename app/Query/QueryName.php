@@ -311,7 +311,6 @@ class QueryName {
 	 * @param string  $salpha if set, only consider surnames starting with this letter
 	 * @param boolean $marnm  if set, include married names
 	 * @param boolean $fams   if set, only consider individuals with FAMS records
-	 * @param integer $ged_id only consider individuals from this tree
 	 *
 	 * @return integer[]
 	 */

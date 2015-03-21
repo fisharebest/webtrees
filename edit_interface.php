@@ -2689,7 +2689,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 					add_simple_tag('2 _MARNM ' . $value);
 					add_simple_tag('2 _MARNM_SURN ' . $marnm_surn);
 				} else {
-					add_simple_tag('2 ' . $tag . ' ' .  $value, '', GedcomTag::getLabel('NAME:' . $tag, $person));
+					add_simple_tag('2 ' . $tag . ' ' . $value, '', GedcomTag::getLabel('NAME:' . $tag, $person));
 				}
 			}
 		}

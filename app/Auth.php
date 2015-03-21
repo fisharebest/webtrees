@@ -123,7 +123,7 @@ class Auth {
 	 * @param Tree      $tree
 	 * @param User|null $user
 	 *
-	 * @return boolean
+	 * @return integer
 	 */
 	public static function accessLevel(Tree $tree, User $user = null) {
 		if ($user === null) {

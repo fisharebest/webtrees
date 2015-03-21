@@ -1314,7 +1314,7 @@ abstract class BaseTheme {
 	/**
 	 * Create a menu to show lists of individuals, families, sources, etc.
 	 *
-	 * @return Menu|null
+	 * @return Menu
 	 */
 	protected function menuLists() {
 		$menu = new Menu(I18N::translate('Lists'), 'indilist.php?' . $this->tree_url, 'menu-list');
@@ -1518,7 +1518,7 @@ abstract class BaseTheme {
 	/**
 	 * A link to the user's personal home page.
 	 *
-	 * @return Menu|null
+	 * @return Menu
 	 */
 	protected function menuMyPage()
 	{

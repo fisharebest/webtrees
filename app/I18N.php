@@ -151,7 +151,7 @@ class I18N {
 			}
 		}
 
-		File::mkdir( WT_DATA_DIR . 'cache');
+		File::mkdir(WT_DATA_DIR . 'cache');
 		$cache_file = WT_DATA_DIR . 'cache/language-' . self::$locale->languageTag() . '-cache.php';
 		if (file_exists($cache_file)) {
 			$filemtime = filemtime($cache_file);

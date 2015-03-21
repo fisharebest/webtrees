@@ -59,7 +59,7 @@ class Individual extends GedcomRecord {
 	 * Typically when we load families and their members.
 	 *
 	 * @param Tree  $tree
-	 * @param array $xrefs
+	 * @param string[] $xrefs
 	 */
 	public static function load(Tree $tree, array $xrefs) {
 		$sql  = '';
