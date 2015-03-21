@@ -1520,8 +1520,7 @@ abstract class BaseTheme {
 	 *
 	 * @return Menu
 	 */
-	protected function menuMyPage()
-	{
+	protected function menuMyPage() {
 		return new Menu(I18N::translate('My page'), 'index.php?ctype=user&amp;' . $this->tree_url, 'menu-mypage');
 	}
 
