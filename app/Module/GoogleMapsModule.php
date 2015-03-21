@@ -1334,7 +1334,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 					$curgen++;
 				}
 
-				$relationship = get_close_relationship_name($controller->root, $person);
+				$relationship = get_sosa_name($i + 1);
 
 				$event = '<img src="' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/sq' . $curgen . '.png" width="10" height="10"> ' .
 					'<strong>' . $relationship . '</strong>';
