@@ -21,9 +21,11 @@ use Zend_Session;
 /**
  * Defined in session.php
  *
- * @global Tree $WT_TREE
+ * @global Tree   $WT_TREE
+ * @global string $UNKNOWN_NN
+ * @global string $UNKNOWN_PN
  */
-global $WT_TREE;
+global $WT_TREE, $UNKNOWN_NN, $UNKNOWN_PN;
 
 define('WT_SCRIPT_NAME', 'autocomplete.php');
 require './includes/session.php';
@@ -111,7 +113,7 @@ case 'CEME': // Cemetery fields, that contain the search term
 case 'FAM': // Families, whose name contains the search terms
 	$data = array();
 	// Fetch all data, regardless of privacy
-	$rows = get_FAM_rows($term);
+	$rows = get_FAM_rows($WT_TREE, $term);
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$family = Family::getInstance($row->xref, $WT_TREE, $row->gedcom);
@@ -169,7 +171,7 @@ case 'INDI': // Individuals, whose name contains the search terms
 case 'NOTE': // Notes which contain the search terms
 	$data = array();
 	// Fetch all data, regardless of privacy
-	$rows = get_NOTE_rows($term);
+	$rows = get_NOTE_rows($WT_TREE, $term);
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$note = Note::getInstance($row->xref, $WT_TREE, $row->gedcom);
@@ -184,7 +186,7 @@ case 'NOTE': // Notes which contain the search terms
 case 'OBJE':
 	$data = array();
 	// Fetch all data, regardless of privacy
-	$rows = get_OBJE_rows($term);
+	$rows = get_OBJE_rows($WT_TREE, $term);
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$media = Media::getInstance($row->xref, $WT_TREE, $row->gedcom);
@@ -243,7 +245,7 @@ case 'PLAC2': // Place names (without hierarchy), that include the search term
 			" WHERE p_place LIKE CONCAT('%', ?, '%') AND p_file=?" .
 			" ORDER BY p_place COLLATE '" . I18N::$collation . "'"
 		)
-		->execute(array($term, $WT_TREE->getTreeId()))
+		->execute(array($WT_TREE, $term, $WT_TREE->getTreeId()))
 		->fetchOneColumn()
 	);
 	
@@ -252,7 +254,7 @@ case 'PLAC2': // Place names (without hierarchy), that include the search term
 case 'REPO': // Repositories, that include the search terms
 	$data = array();
 	// Fetch all data, regardless of privacy
-	$rows = get_REPO_rows($term);
+	$rows = get_REPO_rows($WT_TREE, $term);
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$record = Repository::getInstance($row->xref, $WT_TREE, $row->gedcom);
@@ -269,7 +271,7 @@ case 'REPO': // Repositories, that include the search terms
 case 'REPO_NAME': // Repository names, that include the search terms
 	$data = array();
 	// Fetch all data, regardless of privacy
-	$rows = get_REPO_rows($term);
+	$rows = get_REPO_rows($WT_TREE, $term);
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$record = Repository::getInstance($row->xref, $WT_TREE, $row->gedcom);
@@ -284,7 +286,7 @@ case 'REPO_NAME': // Repository names, that include the search terms
 case 'SOUR': // Sources, that include the search terms
 	$data = array();
 	// Fetch all data, regardless of privacy
-	$rows = get_SOUR_rows($term);
+	$rows = get_SOUR_rows($WT_TREE, $term);
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$record = Source::getInstance($row->xref, $WT_TREE, $row->gedcom);
@@ -387,7 +389,7 @@ case 'SURN': // Surnames, that start with the search term
 case 'IFSRO':
 	$data = array();
 	// Fetch all data, regardless of privacy
-	$rows = get_INDI_rows($term);
+	$rows = get_INDI_rows($WT_TREE, $term);
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$person = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
@@ -396,7 +398,7 @@ case 'IFSRO':
 		}
 	}
 	// Fetch all data, regardless of privacy
-	$rows = get_SOUR_rows($term);
+	$rows = get_SOUR_rows($WT_TREE, $term);
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$source = Source::getInstance($row->xref, $WT_TREE, $row->gedcom);
@@ -405,7 +407,7 @@ case 'IFSRO':
 		}
 	}
 	// Fetch all data, regardless of privacy
-	$rows = get_REPO_rows($term);
+	$rows = get_REPO_rows($WT_TREE, $term);
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$repository = Repository::getInstance($row->xref, $WT_TREE, $row->gedcom);
@@ -414,7 +416,7 @@ case 'IFSRO':
 		}
 	}
 	// Fetch all data, regardless of privacy
-	$rows = get_OBJE_rows($term);
+	$rows = get_OBJE_rows($WT_TREE, $term);
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$media = Media::getInstance($row->xref, $WT_TREE, $row->gedcom);
@@ -423,7 +425,7 @@ case 'IFSRO':
 		}
 	}
 	// Fetch all data, regardless of privacy
-	$rows = get_FAM_rows($term);
+	$rows = get_FAM_rows($WT_TREE, $term);
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$family = Family::getInstance($row->xref, $WT_TREE, $row->gedcom);
@@ -437,7 +439,7 @@ case 'IFSRO':
 		}
 	}
 	// Fetch all data, regardless of privacy
-	$rows = get_NOTE_rows($term);
+	$rows = get_NOTE_rows($WT_TREE, $term);
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$note = Note::getInstance($row->xref, $WT_TREE, $row->gedcom);
@@ -452,7 +454,7 @@ case 'IFSRO':
 case 'IFS':
 	$data = array();
 	// Fetch all data, regardless of privacy
-	$rows = get_INDI_rows($term);
+	$rows = get_INDI_rows($WT_TREE, $term);
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$person = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
@@ -461,7 +463,7 @@ case 'IFS':
 		}
 	}
 	// Fetch all data, regardless of privacy
-	$rows = get_SOUR_rows($term);
+	$rows = get_SOUR_rows($WT_TREE, $term);
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$source = Source::getInstance($row->xref, $WT_TREE, $row->gedcom);
@@ -470,7 +472,7 @@ case 'IFS':
 		}
 	}
 	// Fetch all data, regardless of privacy
-	$rows = get_FAM_rows($term);
+	$rows = get_FAM_rows($WT_TREE, $term);
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$family = Family::getInstance($row->xref, $WT_TREE, $row->gedcom);
@@ -489,11 +491,12 @@ case 'IFS':
 }
 
 /**
+ * @param Tree   $tree
  * @param string $term
  *
- * @return stdClass[]
+ * @return \stdClass[]
  */
-function get_FAM_rows($term) {
+function get_FAM_rows(Tree $tree, $term) {
 	return
 		Database::prepare(
 			"SELECT DISTINCT 'FAM' AS type, f_id AS xref, f_gedcom AS gedcom" .
@@ -504,16 +507,17 @@ function get_FAM_rows($term) {
 			" AND husb_name.n_type<>'_MARNM' AND wife_name.n_type<>'_MARNM'" .
 			" ORDER BY husb_name.n_sort, wife_name.n_sort COLLATE '" . I18N::$collation . "'"
 		)
-		->execute(array($term, $WT_TREE->getTreeId()))
+		->execute(array($term, $tree->getTreeId()))
 		->fetchAll();
 }
 
 /**
+ * @param Tree   $tree
  * @param string $term
  *
- * @return stdClass[]
+ * @return \stdClass[]
  */
-function get_INDI_rows($term) {
+function get_INDI_rows(Tree $tree, $term) {
 	return
 		Database::prepare(
 			"SELECT 'INDI' AS type, i_id AS xref, i_gedcom AS gedcom, n_full" .
@@ -521,16 +525,17 @@ function get_INDI_rows($term) {
 			" JOIN `##name` ON (i_id=n_id AND i_file=n_file)" .
 			" WHERE n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND i_file=? ORDER BY n_full COLLATE '" . I18N::$collation . "'"
 		)
-		->execute(array($term, $WT_TREE->getTreeId()))
+		->execute(array($term, $tree->getTreeId()))
 		->fetchAll();
 }
 
 /**
+ * @param Tree   $tree
  * @param string $term
  *
- * @return stdClass[]
+ * @return \stdClass[]
  */
-function get_NOTE_rows($term) {
+function get_NOTE_rows(Tree $tree, $term) {
 	return
 		Database::prepare(
 			"SELECT o_id AS xref, o_gedcom AS gedcom" .
@@ -539,32 +544,34 @@ function get_NOTE_rows($term) {
 			" WHERE o_gedcom LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND o_file=? AND o_type='NOTE'" .
 			" ORDER BY n_full COLLATE '" . I18N::$collation . "'"
 		)
-		->execute(array($term, $WT_TREE->getTreeId()))
+		->execute(array($term, $tree->getTreeId()))
 		->fetchAll();
 }
 
 /**
+ * @param Tree   $tree
  * @param string $term
  *
- * @return stdClass[]
+ * @return \stdClass[]
  */
-function get_OBJE_rows($term) {
+function get_OBJE_rows(Tree $tree, $term) {
 	return
 		Database::prepare(
 			"SELECT 'OBJE' AS type, m_id AS xref, m_gedcom AS gedcom" .
 			" FROM `##media`" .
 			" WHERE (m_titl LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') OR m_id LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%')) AND m_file=?"
 		)
-		->execute(array($term, $term, $WT_TREE->getTreeId()))
+		->execute(array($term, $term, $tree->getTreeId()))
 		->fetchAll();
 }
 
 /**
+ * @param Tree   $tree
  * @param string $term
  *
- * @return stdClass[]
+ * @return \stdClass[]
  */
-function get_REPO_rows($term) {
+function get_REPO_rows(Tree $tree, $term) {
 	return
 		Database::prepare(
 			"SELECT o_id AS xref, o_gedcom AS gedcom" .
@@ -573,22 +580,23 @@ function get_REPO_rows($term) {
 			" WHERE n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND o_file=? AND o_type='REPO'" .
 			" ORDER BY n_full COLLATE '" . I18N::$collation . "'"
 		)
-		->execute(array($term, $WT_TREE->getTreeId()))
+		->execute(array($term, $tree->getTreeId()))
 		->fetchAll();
 }
 
 /**
+ * @param Tree   $tree
  * @param string $term
  *
- * @return stdClass[]
+ * @return \stdClass[]
  */
-function get_SOUR_rows($term) {
+function get_SOUR_rows(Tree $tree, $term) {
 	return
 		Database::prepare(
 			"SELECT s_id AS xref, s_gedcom AS gedcom" .
 			" FROM `##sources`" .
 			" WHERE s_name LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND s_file=? ORDER BY s_name COLLATE '" . I18N::$collation . "'"
 		)
-		->execute(array($term, $WT_TREE->getTreeId()))
+		->execute(array($term, $tree->getTreeId()))
 		->fetchAll();
 }
