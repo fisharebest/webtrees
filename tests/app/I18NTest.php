@@ -33,6 +33,7 @@ class I18NTest extends PHPUnit_Framework_TestCase {
 		\Patchwork\Utf8\Bootup::filterRequestInputs();
 		defined('WT_BASE_URL') || define('WT_BASE_URL', 'http://localhost/');
 		defined('WT_DATA_DIR') || define('WT_DATA_DIR', 'data/');
+		defined('WT_MODULES_DIR') || define('WT_MODULES_DIR', 'modules_v3/');
 		I18N::init('en-US');
 	}
 
