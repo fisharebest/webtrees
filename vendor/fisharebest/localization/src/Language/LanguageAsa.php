@@ -17,4 +17,9 @@ class LanguageAsa extends Language {
 	public function defaultTerritory() {
 		return new TerritoryTz;
 	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule1;
+	}
 }

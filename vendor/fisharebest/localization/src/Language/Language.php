@@ -38,4 +38,14 @@ abstract class Language {
 	public function defaultScript() {
 		return new ScriptLatn;
 	}
+
+	/**
+	 * Which plural rule is used in this locale?
+	 *
+	 * @return PluralRuleInterface
+	 * @throws \DomainException
+	 */
+	public function pluralRule() {
+		throw new \DomainException('No plural rule defined for language ' . $this->code());
+	}
 }

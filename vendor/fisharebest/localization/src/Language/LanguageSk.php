@@ -17,4 +17,9 @@ class LanguageSk extends Language {
 	public function defaultTerritory() {
 		return new TerritorySk;
 	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule8;
+	}
 }

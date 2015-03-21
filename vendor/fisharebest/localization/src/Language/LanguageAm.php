@@ -22,4 +22,9 @@ class LanguageAm extends Language {
 	public function defaultTerritory() {
 		return new TerritoryEt;
 	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule2;
+	}
 }

@@ -17,4 +17,9 @@ class LanguageCs extends Language {
 	public function defaultTerritory() {
 		return new TerritoryCz;
 	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule8;
+	}
 }

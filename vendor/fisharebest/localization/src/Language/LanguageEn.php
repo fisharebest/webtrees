@@ -12,4 +12,9 @@ class LanguageEn extends Language {
 	public function code() {
 		return 'en';
 	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule1;
+	}
 }

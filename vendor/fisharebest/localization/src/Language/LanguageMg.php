@@ -17,4 +17,9 @@ class LanguageMg extends Language {
 	public function defaultTerritory() {
 		return new TerritoryMg;
 	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule2;
+	}
 }

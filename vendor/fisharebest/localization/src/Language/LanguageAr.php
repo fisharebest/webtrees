@@ -17,4 +17,9 @@ class LanguageAr extends Language {
 	public function defaultScript() {
 		return new ScriptArab;
 	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule12;
+	}
 }

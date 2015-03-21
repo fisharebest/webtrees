@@ -287,6 +287,15 @@ abstract class Locale {
 	}
 
 	/**
+	 * Which plural rule is used in this locale
+	 *
+	 * @return PluralRule
+	 */
+	public function pluralRule() {
+		return $this->language()->pluralRule();
+	}
+
+	/**
 	 * The script used by this locale.
 	 *
 	 * @return Script

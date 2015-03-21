@@ -17,4 +17,9 @@ class LanguageId extends Language {
 	public function defaultTerritory() {
 		return new TerritoryId;
 	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule0;
+	}
 }

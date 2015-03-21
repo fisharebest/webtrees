@@ -22,4 +22,9 @@ class LanguageNe extends Language {
 	public function defaultTerritory() {
 		return new TerritoryNp;
 	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule1;
+	}
 }

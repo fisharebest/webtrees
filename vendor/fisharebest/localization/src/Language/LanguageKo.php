@@ -22,4 +22,9 @@ class LanguageKo extends Language {
 	public function defaultTerritory() {
 		return new TerritoryKr;
 	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule0;
+	}
 }

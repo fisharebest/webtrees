@@ -17,4 +17,9 @@ class LanguageRm extends Language {
 	public function defaultTerritory() {
 		return new TerritoryCh;
 	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule1;
+	}
 }

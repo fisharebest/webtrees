@@ -17,4 +17,9 @@ class LanguageCgg extends Language {
 	public function defaultTerritory() {
 		return new TerritoryUg;
 	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule1;
+	}
 }

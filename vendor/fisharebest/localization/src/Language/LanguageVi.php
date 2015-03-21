@@ -17,4 +17,9 @@ class LanguageVi extends Language {
 	public function defaultTerritory() {
 		return new TerritoryVn;
 	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule0;
+	}
 }

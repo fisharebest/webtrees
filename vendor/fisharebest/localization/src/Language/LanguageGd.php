@@ -17,4 +17,9 @@ class LanguageGd extends Language {
 	public function defaultTerritory() {
 		return new TerritoryGb;
 	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule4;
+	}
 }

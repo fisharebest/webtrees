@@ -17,4 +17,9 @@ class LanguageBem extends Language {
 	public function defaultTerritory() {
 		return new TerritoryZm;
 	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule1;
+	}
 }

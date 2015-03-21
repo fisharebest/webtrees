@@ -19,6 +19,11 @@ class LocalePtBr extends LocalePt {
 	}
 
 	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule2;
+	}
+
+	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryBr;
 	}
