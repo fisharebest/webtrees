@@ -462,21 +462,7 @@ function reformat_record_import($rec, Tree $tree) {
 			$tag = 'SSN';
 			break;
 		case 'SEX':
-			switch (trim($data)) {
-			case 'M':
-			case 'F':
-			case 'U':
-				break;
-			case 'm':
-				$data = 'M';
-				break;
-			case 'f':
-				$data = 'F';
-				break;
-			default:
-				$data = 'U';
-				break;
-			}
+			$data = strtoupper($data);
 			break;
 		case 'SOURCE':
 			$tag = 'SOUR';
