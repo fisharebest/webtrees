@@ -160,10 +160,12 @@ class I18N {
 		}
 
 		// Load the translation file(s)
+		// Note that glob() returns false instead of an empty array when open_basedir_restriction
+		// is in force and no files are found.  See PHP bug #47358.
 		$translation_files = array_merge(
 			array(WT_ROOT . 'language/' . self::$locale->languageTag() . '.mo'),
-			glob(WT_MODULES_DIR . '*/language/*.{csv,php,mo}', GLOB_BRACE),
-			glob(WT_DATA_DIR . 'language/*.{csv,php,mo}', GLOB_BRACE)
+			glob(WT_MODULES_DIR . '*/language/*.{csv,php,mo}', GLOB_BRACE) ?: array(),
+			glob(WT_DATA_DIR . 'language/*.{csv,php,mo}', GLOB_BRACE) ?: array()
 		);
 
 		$rebuild_cache = false;
