@@ -703,7 +703,6 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	$SHOW_PEDIGREE_PLACES         = '';
 	$SHOW_PRIVATE_RELATIONSHIPS   = '';
 	$SHOW_RELATIVES_EVENTS        = '';
-	$SHOW_STATS                   = '';
 	$SOURCE_ID_PREFIX             = '';
 	$SOUR_FACTS_ADD               = '';
 	$SOUR_FACTS_QUICK             = '';
@@ -914,7 +913,6 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	preg_match_all('/[_A-Z]+/', $SHOW_RELATIVES_EVENTS, $match);
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_RELATIVES_EVENTS', implode(',', array_unique($match[0]))));
 
-	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SHOW_STATS', $SHOW_STATS));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SOURCE_ID_PREFIX', $SOURCE_ID_PREFIX));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SOUR_FACTS_ADD', $SOUR_FACTS_ADD));
 	$stmt_gedcom_setting->execute(array($GED_DATA['id'], 'SOUR_FACTS_QUICK', $SOUR_FACTS_QUICK));

@@ -30,6 +30,7 @@ try {
 
 // No longer used
 Database::exec("DELETE FROM `##user_setting` WHERE setting_name in ('edit_account')");
+Database::exec("DELETE FROM `##gedcom_setting` WHERE setting_name in ('SHOW_STATS')");
 
 // https://bugs.launchpad.net/webtrees/+bug/1405672
 Database::exec(

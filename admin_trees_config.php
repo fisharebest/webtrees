@@ -294,7 +294,6 @@ case 'general':
 	$WT_TREE->setPreference('SHOW_PEDIGREE_PLACES', Filter::post('SHOW_PEDIGREE_PLACES'));
 	$WT_TREE->setPreference('SHOW_PEDIGREE_PLACES_SUFFIX', Filter::postBool('SHOW_PEDIGREE_PLACES_SUFFIX'));
 	$WT_TREE->setPreference('SHOW_RELATIVES_EVENTS', implode(',', Filter::postArray('SHOW_RELATIVES_EVENTS')));
-	$WT_TREE->setPreference('SHOW_STATS', Filter::postBool('SHOW_STATS'));
 	$WT_TREE->setPreference('SOURCE_ID_PREFIX', Filter::post('SOURCE_ID_PREFIX'));
 	$WT_TREE->setPreference('SOUR_FACTS_ADD', str_replace(' ', '', Filter::post('SOUR_FACTS_ADD')));
 	$WT_TREE->setPreference('SOUR_FACTS_QUICK', str_replace(' ', '', Filter::post('SOUR_FACTS_QUICK')));
@@ -1736,19 +1735,6 @@ $controller
 			<?php echo radio_buttons('SHOW_COUNTER', $hide_show, $WT_TREE->getPreference('SHOW_COUNTER'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Hit counters” configuration setting */ I18N::translate('Show hit counters on Portal and Individual pages.'); ?>
-			</p>
-		</div>
-	</fieldset>
-
-	<!-- SHOW_STATS -->
-	<fieldset class="form-group">
-		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Execution statistics'); ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo radio_buttons('SHOW_STATS', $hide_show, $WT_TREE->getPreference('SHOW_STATS'), 'class="radio-inline"'); ?>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Execution statistics” configuration setting */ I18N::translate('Show runtime statistics and database queries at the bottom of every page.'); ?>
 			</p>
 		</div>
 	</fieldset>
