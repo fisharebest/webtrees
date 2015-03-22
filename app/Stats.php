@@ -5722,11 +5722,7 @@ class Stats {
 			// indi/fam/sour/etc.
 		}
 
-		$count = Database::prepare(
-			"SELECT SQL_NO_CACHE page_count FROM `##hit_counter`" .
-			" WHERE gedcom_id=? AND page_name=? AND page_parameter=?"
-		)->execute(array($this->tree->getTreeId(), $page_name, $page_parameter))->fetchOne();
-		return '<span class="hit-counter">' . I18N::number($count) . '</span>';
+		return '<span class="odometer">' . I18N::digits(HitCounter::getCount($this->tree, $page_name, $page_parameter)) . '</span>';
 	}
 
 	/**

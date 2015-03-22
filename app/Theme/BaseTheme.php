@@ -31,6 +31,9 @@ abstract class BaseTheme {
 	/** @var string An escaped version of the "ged=XXX" URL parameter */
 	protected $tree_url;
 
+	/** @var integer The number of times this page has been shown */
+	protected $page_views;
+
 	/**
 	 * Custom themes should place their initialization code in the function hookAfterInit(), not in
 	 * the constructor, as all themes get constructed - whether they are used or not.
@@ -366,7 +369,8 @@ abstract class BaseTheme {
 	protected function footerContent() {
 		return
 			$this->formatContactLinks() .
-			$this->logoPoweredBy();
+			$this->logoPoweredBy() .
+			$this->formatPageViews($this->page_views);
 	}
 
 	/**
@@ -395,6 +399,25 @@ abstract class BaseTheme {
 	protected function formatContactLinks() {
 		if ($this->tree) {
 			return '<div class="contact-links">' . $this->contactLinks() . '</div>';
+		} else {
+			return '';
+		}
+	}
+
+	/**
+	 * Add markup to the hit counter.
+	 *
+	 * @param integer $count
+	 *
+	 * @return string
+	 */
+	protected function formatPageViews($count) {
+		if ($count > 0) {
+			return
+				'<div class="page-views">' .
+				I18N::plural('This page has been viewed %s time.', 'This page has been viewed %s times.', $count,
+				'<span class="odometer">' . I18N::digits($count) . '</span>') .
+				'</div>';
 		} else {
 			return '';
 		}
@@ -486,6 +509,9 @@ abstract class BaseTheme {
 	 * @return string
 	 */
 	public function head(PageController $controller) {
+		// Record this now.  By the time we render the footer, $controller no longer exists.
+		$this->page_views = $this->pageViews($controller);
+
 		return
 			'<head>' .
 			$this->headContents($controller) .
@@ -985,6 +1011,21 @@ abstract class BaseTheme {
 		$menu->addSubmenu($submenu);
 
 		return $menu;
+	}
+
+	/**
+	 * Generate a menu item to change the blocks on the current (index.php) page.
+	 *
+	 * @return Menu|null
+	 */
+	protected function menuChangeBlocks() {
+		if (WT_SCRIPT_NAME === 'index.php' && Auth::check() && Filter::get('ctype', 'gedcom|user', 'user') === 'user') {
+			return new Menu(I18N::translate('Customize this page'),  'index_edit.php?user_id=' . Auth::id(), 'menu-change-blocks');
+		} elseif (WT_SCRIPT_NAME === 'index.php' && Auth::isManager($this->tree)) {
+			return new Menu(I18N::translate('Customize this page'),  'index_edit.php?gedcom_id=' . Auth::id(), 'menu-change-blocks');
+		} else {
+			return null;
+		}
 	}
 
 	/**
@@ -1534,6 +1575,7 @@ abstract class BaseTheme {
 				$this->menuMyIndividualRecord(),
 				$this->menuMyPedigree(),
 				$this->menuMyAccount(),
+				$this->menuChangeBlocks(),
 				$this->menuControlPanel(),
 			)));
 		} else {
@@ -1740,6 +1782,31 @@ abstract class BaseTheme {
 	 */
 	protected function metaViewport() {
 		return '<meta name="viewport" content="width=device-width, initial-scale=1">';
+	}
+
+	/**
+	 * How many times has the current page been shown?
+	 *
+	 * @param  PageController $controller
+	 *
+	 * @return integer Number of views, or zero for pages that aren't logged.
+	 */
+	protected function pageViews(PageController $controller) {
+		if ($this->tree->getPreference('SHOW_COUNTER')) {
+			if (isset($controller->record) && $controller->record instanceof GedcomRecord) {
+				return HitCounter::countHit($this->tree, WT_SCRIPT_NAME, $controller->record->getXref());
+			} elseif (isset($controller->root) && $controller->root instanceof GedcomRecord) {
+				return HitCounter::countHit($this->tree, WT_SCRIPT_NAME, $controller->root->getXref());
+			} elseif (WT_SCRIPT_NAME === 'index.php') {
+				if (Auth::check() && Filter::get('ctype') !== 'gedcom') {
+					return HitCounter::countHit($this->tree, WT_SCRIPT_NAME, 'user:' . Auth::id());
+				} else {
+					return HitCounter::countHit($this->tree, WT_SCRIPT_NAME, 'gedcom:' . $this->tree->getTreeId());
+				}
+			}
+		}
+
+		return 0;
 	}
 
 	/**

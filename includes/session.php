@@ -543,13 +543,6 @@ if (substr(WT_SCRIPT_NAME, 0, 5) === 'admin' || WT_SCRIPT_NAME === 'module.php' 
 	$WT_SESSION->theme_id = $theme_id;
 }
 
-// Page hit counter - load after theme, as we need theme formatting
-if ($WT_TREE && $WT_TREE->getPreference('SHOW_COUNTER') && !Auth::isSearchEngine()) {
-	require WT_ROOT . 'includes/hitcount.php';
-} else {
-	$hitCount = '';
-}
-
 // Search engines are only allowed to see certain pages.
 if (Auth::isSearchEngine() && !in_array(WT_SCRIPT_NAME, array(
 	'index.php', 'indilist.php', 'module.php', 'mediafirewall.php',

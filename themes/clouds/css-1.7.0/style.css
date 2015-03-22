@@ -2132,10 +2132,11 @@ dd .deletelink {
 	float: left;
 }
 
-.hit-counter {
+.odometer {
+	font-family: courier, mono-space;
+	font-weight: bold;
 	background: #000;
 	color: #fff;
-	font-weight: bold;
 }
 
 /* ======= General sprite ==== */
@@ -4584,22 +4585,6 @@ footer .error {
 
 .user_links {
 	white-space: nowrap;
-}
-
-#link_change_blocks {
-	clear: both;
-	margin: 0 auto;
-	padding: 25px 0 0;
-	text-align: center;
-	width: 400px;
-}
-
-#link_change_blocks span {
-	padding: 0 50px;
-}
-
-#link_change_blocks span span {
-	padding: 0 3px;
 }
 
 /* ====== End Theme Footer ===== */
