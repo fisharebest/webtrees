@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-18 05:56+0100\n"
+"PO-Revision-Date: 2015-03-22 10:11+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
@@ -16211,7 +16211,7 @@ msgstr "Laatst gewijzigd door"
 #: app/Date.php:301
 #, php-format
 msgid "calculated %s"
-msgstr "uitgerekend %s"
+msgstr "%s (berekend)"
 
 #: app/Stats.php:2621
 msgid "census added"
@@ -16454,7 +16454,7 @@ msgstr "landgoed eigenaar"
 #: app/Date.php:304
 #, php-format
 msgid "estimated %s"
-msgstr "geschat %s"
+msgstr "%s (geschat)"
 
 #: includes/functions/functions.php:703
 msgid "ex-husband"
