@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-16 08:59+0100\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"PO-Revision-Date: 2015-03-23 03:39+0100\n"
+"Last-Translator: Familia Boim <familiaboim@gmail.com>\n"
 "Language-Team: Yiddish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/yi/>\n"
 "Language: yi\n"
@@ -59,7 +59,7 @@ msgstr " פּער צייַט תקופה"
 #: includes/functions/functions_print_facts.php:192
 #, php-format
 msgid "#%s"
-msgstr ""
+msgstr "#%s"
 
 #. I18N: The placeholders are GEDCOM XREFs and tags.  e.g. “INDI I123 contains a FAMC link to F234.”
 #: admin_trees_check.php:205
@@ -143,7 +143,7 @@ msgstr "%1$s איז אַ %2$s אָבער אַ %3$s איז דערוואַרט."
 #, php-format
 msgctxt "FEMALE"
 msgid "%1$s × %2$s"
-msgstr ""
+msgstr "%1$s × %2$s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:620
@@ -163,7 +163,7 @@ msgstr "%2$s גראַד %1$s"
 #: admin_media.php:491 app/Media.php:382
 #, php-format
 msgid "%1$s × %2$s pixels"
-msgstr ""
+msgstr "%1$s × %2$s בילדצעלן"
 
 #. I18N: A range of years, e.g. “1870–”, “1870–1920”, “–1920”
 #: app/Individual.php:554
@@ -175,17 +175,17 @@ msgstr "%1$s–%2$s"
 #: includes/functions/functions.php:2150
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr ""
+msgstr "%1$s’s %2$s"
 
 #. I18N: This is the format string for the time-of-day.  See http://php.net/date for codes
 #: app/I18N.php:215
 msgid "%H:%i:%s"
-msgstr ""
+msgstr "%H:%i:%s"
 
 #. I18N: This is the format string for full dates.  See http://php.net/date for codes
 #: app/Date.php:222 app/I18N.php:212
 msgid "%j %F %Y"
-msgstr ""
+msgstr "%j %F %Y"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: app/Stats.php:6341
@@ -197,7 +197,7 @@ msgstr ""
 #: admin_media.php:483 app/Media.php:271
 #, php-format
 msgid "%s KB"
-msgstr ""
+msgstr "%s KB"
 
 #: app/Module/LoggedInUsersModule.php:51 app/Stats.php:5372
 #, php-format
@@ -211,7 +211,7 @@ msgstr[1] ""
 #, php-format
 msgid "%s child"
 msgid_plural "%s children"
-msgstr[0] "%s קינד"
+msgstr[0] "איין קינד"
 msgstr[1] "%s קינדער"
 
 #. I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
@@ -219,8 +219,8 @@ msgstr[1] "%s קינדער"
 #, php-format
 msgid "%s day"
 msgid_plural "%s days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "איין טאָג"
+msgstr[1] "%s טעג"
 
 #: app/I18N.php:516
 #, php-format
@@ -240,8 +240,8 @@ msgstr[1] ""
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "איין פאמיליע בוים"
+msgstr[1] "%s פאמיליע ביימער"
 
 #: app/Stats.php:4748 app/Stats.php:4752
 #, php-format
@@ -318,8 +318,8 @@ msgstr[1] "%s חדשים"
 #, php-format
 msgid "%s month ago"
 msgid_plural "%s months ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "איין חודש צוריק"
+msgstr[1] "%s חדשים צוריק"
 
 #: app/Controller/SearchController.php:404
 #, php-format
@@ -383,8 +383,8 @@ msgstr ""
 #, php-format
 msgid "%s week"
 msgid_plural "%s weeks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "איין וואָך"
+msgstr[1] "%s וואָכן"
 
 #: app/I18N.php:457 app/Module/RelativesTabModule.php:60
 #: includes/functions/functions_date.php:42
@@ -398,8 +398,8 @@ msgstr[1] "%s יאָרן"
 #, php-format
 msgid "%s year ago"
 msgid_plural "%s years ago"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "איין יאָר צוריק"
+msgstr[1] "%s יאר צוריק"
 
 #: app/Module/YahrzeitModule.php:114 calendar.php:660
 #: includes/functions/functions_print_lists.php:2101
@@ -430,7 +430,7 @@ msgstr ""
 #: app/I18N.php:351
 #, php-format
 msgid "%s%%"
-msgstr ""
+msgstr "%s%%"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:74
@@ -493,7 +493,7 @@ msgstr ""
 #. I18N: This punctuation is used to separate lists of items
 #: app/I18N.php:229
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: app/Stats.php:6368
 msgctxt "CENTURY"
@@ -930,7 +930,7 @@ msgstr ""
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: includes/functions/functions_date.php:95
 msgid "A.M."
-msgstr ""
+msgstr "A.M."
 
 #: app/I18N.php:220
 msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
@@ -1700,7 +1700,7 @@ msgstr "כינוי"
 
 #: includes/functions/functions_print_lists.php:173
 msgid "Alive"
-msgstr ""
+msgstr "לעבעדיק"
 
 #. I18N: listbox option, e.g. “10,25,50,100,all”
 #: app/I18N.php:786 app/Module/FrequentlyAskedQuestionsModule.php:161
@@ -1867,23 +1867,23 @@ msgstr "אַ אומגעריכט דייטאַבייס טעות פארגעקומע
 #: app/Module/AhnentafelReportModule.php:26 app/Theme/BaseTheme.php:1040
 #: modules_v3/ahnentafel_report/report.xml:4
 msgid "Ancestors"
-msgstr "אָוועס"
+msgstr "אבות"
 
 #. I18N: gedcom tag ANCI
 #: app/Gedcom/GedcomTag.php:159
 msgid "Ancestors interest"
-msgstr "אָוועס אינטערעס"
+msgstr "אבות אינטערעס"
 
 #: modules_v3/ahnentafel_report/report.xml:52
 msgid "Ancestors of "
-msgstr "אָוועס פון "
+msgstr "אבות פון "
 
 #. I18N: %s is an individual’s name
 #: app/Controller/AncestryController.php:49
 #: app/Controller/AncestryController.php:68
 #, php-format
 msgid "Ancestors of %s"
-msgstr "אָוועס פון %s"
+msgstr "אבות פון %s"
 
 #. I18N: gedcom tag AFN
 #: app/Gedcom/GedcomTag.php:139
@@ -1916,7 +1916,7 @@ msgstr "יאָרטאָג"
 
 #: calendar.php:33
 msgid "Anniversary calendar"
-msgstr "יאָרטאָג לוח"
+msgstr "יאָרטאָג קאלענדאר"
 
 #. I18N: gedcom tag ANUL
 #: app/Gedcom/GedcomTag.php:163
@@ -3339,7 +3339,7 @@ msgstr "ענדערונגען"
 
 #. I18N: title for list of recent changes
 #: app/Module/RecentChangesModule.php:68
-#, fuzzy, php-format
+#, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "ענדערונגען אין די לעצטע טאָג"
@@ -5340,7 +5340,7 @@ msgstr "רעדאַגירן געשיכטע"
 
 #: app/Tree.php:562
 msgid "Edit this individual and replace their details with your own."
-msgstr "רעדאַגירן דעם יחיד און פאַרבייַטן זייער פרטים מיט אייער אייגן"
+msgstr "רעדאַגירן דעם יחיד און פאַרבייַטן זייער פרטים מיט אייער אייגן."
 
 #: admin_users.php:268
 msgid "Edit user"
@@ -6589,7 +6589,7 @@ msgstr "דורות"
 #. I18N: gedcom tag ANCE
 #: app/Gedcom/GedcomTag.php:155
 msgid "Generations of ancestors"
-msgstr "דורות פון אָוועס"
+msgstr "דורות פון אבות"
 
 #: app/Module/GoogleMapsModule.php:174 app/Module/GoogleMapsModule.php:295
 #: app/Module/GoogleMapsModule.php:876 app/Module/GoogleMapsModule.php:1526
@@ -7382,7 +7382,7 @@ msgstr ""
 #. I18N: Name of a module
 #: app/Module/IndividualSidebarModule.php:27
 msgid "Individual list"
-msgstr ""
+msgstr "רשימה פון מענטשן"
 
 #: admin_trees_config.php:1397 admin_trees_config.php:1637
 msgid "Individual pages"
@@ -8751,15 +8751,15 @@ msgstr "מידיאַ כייפעץ"
 #: note.php:133 source.php:104 statistics.php:350 statistics.php:377
 #: statistics.php:380
 msgid "Media objects"
-msgstr ""
+msgstr "בילדער"
 
 #: medialist.php:174
 msgid "Media objects found"
-msgstr ""
+msgstr "בילדער געפונען"
 
 #: medialist.php:112
 msgid "Media objects per page"
-msgstr ""
+msgstr "בילדער פאר בלאט"
 
 #. I18N: gedcom tag MEDI
 #. I18N: gedcom tag _TYPE
@@ -9037,7 +9037,7 @@ msgstr "מאנטעווידעא, אורוגוויי"
 
 #: app/Theme/BaseTheme.php:980 calendar.php:172
 msgid "Month"
-msgstr "כוידעש"
+msgstr "חודש"
 
 #: statistics.php:503 statisticsplot.php:865
 msgid "Month of birth"
@@ -9547,7 +9547,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:911
 msgid "No ancestors in the database."
-msgstr "ניט אָוועס אין די דייטאַבייס."
+msgstr "קיין אבות אין די דייטאַבייס."
 
 #: admin_trees_config.php:35
 msgid "No calendar conversion"
@@ -10148,7 +10148,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:77
 msgid "PHP blocked the file because of its extension."
-msgstr "PHP אפגעשטעלט טעקע דורך געשפּרייט"
+msgstr "PHP אפגעשטעלט טעקע דורך געשפּרייט."
 
 #: setup.php:140
 #, php-format
@@ -10163,7 +10163,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:74
 msgid "PHP failed to write to disk."
-msgstr "PHP ניט אַנדערש צו שרייַבן צו דיסק"
+msgstr "PHP ניט אַנדערש צו שרייַבן צו דיסק."
 
 #: admin_site_info.php:71
 msgid "PHP information"
@@ -10635,7 +10635,7 @@ msgstr "ביטע אַרייַן אַ גילטיק בליצפּאָסט אַדר�
 #: app/Module/CensusAssistantModule.php:96 find.php:115 search.php:34
 #: search.php:46
 msgid "Please enter more than one character."
-msgstr "ביטע אַרייַן מער ווי איין כאַראַקטער"
+msgstr "ביטע אַרייַן מער ווי איין כאַראַקטער."
 
 #: message.php:104
 msgid "Please enter some message text before sending."
@@ -12214,7 +12214,7 @@ msgstr ""
 
 #: modules_v3/ahnentafel_report/report.xml:12
 msgid "Show children of ancestors?"
-msgstr "ווייַזן קינדער פון אָוועס?"
+msgstr "ווייַזן קינדער פון אבות?"
 
 #: app/Module/FamilyTreeStatisticsModule.php:274
 msgid "Show common surnames?"
@@ -13255,7 +13255,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
 msgid "The PHP temporary folder is missing."
-msgstr "פעלנדיק PHP צייַטווייַליק טעקע"
+msgstr "פעלנדיק PHP צייַטווייַליק טעקע."
 
 #: admin_users.php:97
 #, php-format
@@ -13379,7 +13379,7 @@ msgstr "דער טעקע %s איז צופֿעליקערט."
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:65
 msgid "The file was only partially uploaded.  Please try again."
-msgstr "טעקע איז געווען בלויז טייל צופֿעליקערט, ביטע פּרובירן ווידער"
+msgstr "די טעקע איז געווען בלויז טייל צופֿעליקערט. ביטע פּרובירן ווידער."
 
 #. I18N: %s is a filename
 #: medialist.php:294 mediaviewer.php:111
@@ -13490,7 +13490,7 @@ msgstr "מעדיע טעקע %s איז נישט עקסיסטירט."
 
 #: mediafirewall.php:41
 msgid "The media file was not found in this family tree."
-msgstr "די מידיאַ טעקע איז ניט געפינען אין דעם פאמיליע בוים"
+msgstr "די מידיאַ טעקע איז ניט געפינען אין דעם פאמיליע בוים."
 
 #: admin_media_upload.php:223
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
@@ -13585,7 +13585,9 @@ msgstr ""
 #. I18N: Description of “Statistics” module
 #: app/Module/FamilyTreeStatisticsModule.php:30
 msgid "The size of the family tree, earliest and latest events, common names, etc."
-msgstr "די נומער פון די פאמיליע בוים, ערליאַסט און לעצט געשעענישן, געוויינטלעך נעמען, אאז\"וו"
+msgstr ""
+"די נומער פון די פאמיליע בוים, ערליאַסט און לעצט געשעענישן, געוויינטלעך "
+"נעמען, אאז\"וו."
 
 #: help_text.php:253
 #, php-format
@@ -13722,7 +13724,7 @@ msgstr "עס זענען קיין פאקטן פֿאַר דעם יחיד."
 
 #: app/Module/MediaTabModule.php:68
 msgid "There are no media objects for this individual."
-msgstr ""
+msgstr "עס זענען קיין בילדער פאר דעם יחיד."
 
 #: app/Module/NotesTabModule.php:76
 msgid "There are no notes for this individual."
@@ -19770,8 +19772,8 @@ msgstr "יינגער שוועסטער"
 #, php-format
 msgid "±%s year"
 msgid_plural "±%s years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "± איין יאָר"
+msgstr[1] "±%s יאָר"
 
 #: app/Individual.php:1251
 #, php-format
