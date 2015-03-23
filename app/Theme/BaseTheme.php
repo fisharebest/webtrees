@@ -1792,7 +1792,7 @@ abstract class BaseTheme {
 	 * @return integer Number of views, or zero for pages that aren't logged.
 	 */
 	protected function pageViews(PageController $controller) {
-		if ($this->tree->getPreference('SHOW_COUNTER')) {
+		if ($this->tree && $this->tree->getPreference('SHOW_COUNTER')) {
 			if (isset($controller->record) && $controller->record instanceof GedcomRecord) {
 				return HitCounter::countHit($this->tree, WT_SCRIPT_NAME, $controller->record->getXref());
 			} elseif (isset($controller->root) && $controller->root instanceof GedcomRecord) {
