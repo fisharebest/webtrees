@@ -971,7 +971,7 @@ class GedcomRecord {
 			" JOIN `##link` ON o_file = l_file AND o_id = l_from" .
 			" LEFT JOIN `##name` ON o_file = n_file AND o_id = n_id AND n_num = 0" .
 			" WHERE o_file = :tree_id AND o_type = 'REPO' AND l_type = :link AND l_to = :xref" .
-			" ORDER BY n_sort COLLATE :colation"
+			" ORDER BY n_sort COLLATE :collation"
 		)->execute(array(
 			'tree_id'   => $this->tree->getTreeId(),
 			'link'      => $link,
