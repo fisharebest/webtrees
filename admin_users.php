@@ -373,7 +373,7 @@ case 'edit':
 			<div class="col-sm-9">
 				<div class="checkbox">
 					<label>
-						<input type="checkbox" name="verified" value="1" <?php echo $user->getPreference('verified') ? 'checked' : ''?>>
+						<input type="checkbox" name="verified" value="1" <?php echo $user->getPreference('verified') ? 'checked' : ''; ?>>
 						<?php echo I18N::translate('Email verified'); ?>
 					</label>
 					<label>
