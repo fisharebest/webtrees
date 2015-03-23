@@ -4494,6 +4494,7 @@ header nav {
 /* ====== Theme Footer ========= */
 
 footer {
+	clear: both;
 	text-align: center;
 }
 
