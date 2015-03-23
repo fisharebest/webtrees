@@ -85,30 +85,30 @@ class FamilyTreeStatisticsModule extends Module implements ModuleBlockInterface 
 
 	$content .= '<div class="stat-table1">';
 		if ($stat_indi) {
-			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Individuals') .    '</div><div class="facts_value stats_value stat-cell"><a href="' . "indilist.php?surname_sublist=no&amp;ged=" . $WT_TREE->getNameUrl() . '">' . $stats->totalIndividuals() . '</a></div></div>';
-			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Males') .          '</div><div class="facts_value stats_value stat-cell">' . $stats->totalSexMales() . '<br>' . $stats->totalSexMalesPercentage() . '</a></div></div>';
-			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Females') .        '</div><div class="facts_value stats_value stat-cell">' . $stats->totalSexFemales() . '<br>' . $stats->totalSexFemalesPercentage() . '</a></div></div>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Individuals') . '</div><div class="facts_value stats_value stat-cell"><a href="' . "indilist.php?surname_sublist=no&amp;ged=" . $WT_TREE->getNameUrl() . '">' . $stats->totalIndividuals() . '</a></div></div>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Males') . '</div><div class="facts_value stats_value stat-cell">' . $stats->totalSexMales() . '<br>' . $stats->totalSexMalesPercentage() . '</a></div></div>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Females') . '</div><div class="facts_value stats_value stat-cell">' . $stats->totalSexFemales() . '<br>' . $stats->totalSexFemalesPercentage() . '</a></div></div>';
 		}
 		if ($stat_surname) {
 			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Total surnames') . '</div><div class="facts_value stats_value stat-cell"><a href="indilist.php?show_all=yes&amp;surname_sublist=yes&amp;ged=' . $WT_TREE->getNameUrl() . '">' . $stats->totalSurnames() . '</a></div></div>';
 		}
 		if ($stat_fam) {
-			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Families') .       '</div><div class="facts_value stats_value stat-cell"><a href="famlist.php?ged=' . $WT_TREE->getNameUrl() . '">' . $stats->totalFamilies() . '</a></div></div>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Families') . '</div><div class="facts_value stats_value stat-cell"><a href="famlist.php?ged=' . $WT_TREE->getNameUrl() . '">' . $stats->totalFamilies() . '</a></div></div>';
 		}
 		if ($stat_sour) {
-			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Sources') .        '</div><div class="facts_value stats_value stat-cell"><a href="sourcelist.php?ged=' . $WT_TREE->getNameUrl() . '">' . $stats->totalSources() . '</a></div></div>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Sources') . '</div><div class="facts_value stats_value stat-cell"><a href="sourcelist.php?ged=' . $WT_TREE->getNameUrl() . '">' . $stats->totalSources() . '</a></div></div>';
 		}
 		if ($stat_media) {
-			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Media objects') .  '</div><div class="facts_value stats_value stat-cell"><a href="medialist.php?ged=' . $WT_TREE->getNameUrl() . '">' . $stats->totalMedia() . '</a></div></div>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Media objects') . '</div><div class="facts_value stats_value stat-cell"><a href="medialist.php?ged=' . $WT_TREE->getNameUrl() . '">' . $stats->totalMedia() . '</a></div></div>';
 		}
 		if ($stat_repo) {
-			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Repositories') .   '</div><div class="facts_value stats_value stat-cell"><a href="repolist.php?ged=' . $WT_TREE->getNameUrl() . '">' . $stats->totalRepositories() . '</a></div></div>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Repositories') . '</div><div class="facts_value stats_value stat-cell"><a href="repolist.php?ged=' . $WT_TREE->getNameUrl() . '">' . $stats->totalRepositories() . '</a></div></div>';
 		}
 		if ($stat_events) {
-			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Total events') .    '</div><div class="facts_value stats_value stat-cell">' . $stats->totalEvents() . '</div></div>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Total events') . '</div><div class="facts_value stats_value stat-cell">' . $stats->totalEvents() . '</div></div>';
 		}
 		if ($stat_users) {
-			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Total users') .     '</div><div class="facts_value stats_value stat-cell">';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Total users') . '</div><div class="facts_value stats_value stat-cell">';
 			if (Auth::isManager($WT_TREE)) {
 				$content .= '<a href="admin_users.php">' . $stats->totalUsers() . '</a>';
 			} else {

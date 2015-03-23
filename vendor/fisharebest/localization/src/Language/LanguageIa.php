@@ -12,4 +12,9 @@ class LanguageIa extends Language {
 	public function code() {
 		return 'ia';
 	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule1;
+	}
 }

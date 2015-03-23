@@ -17,4 +17,9 @@ class LanguageSq extends Language {
 	public function defaultTerritory() {
 		return new TerritoryAl;
 	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule1;
+	}
 }

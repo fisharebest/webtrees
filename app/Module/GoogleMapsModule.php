@@ -1334,7 +1334,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 					$curgen++;
 				}
 
-				$relationship = get_close_relationship_name($controller->root, $person);
+				$relationship = get_sosa_name($i + 1);
 
 				$event = '<img src="' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/sq' . $curgen . '.png" width="10" height="10"> ' .
 					'<strong>' . $relationship . '</strong>';
@@ -3191,7 +3191,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 					" ORDER BY pl_place COLLATE :collation"
 				)->execute(array(
 					'parent_id' => $parent_id,
-					'collation' => I18N::$collation,
+					'collation' => I18N::collation(),
 				))->fetchAll();
 		} else {
 			$rows = Database::prepare(
@@ -3202,7 +3202,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 				" ORDER BY pl_place COLLATE :collation"
 			)->execute(array(
 				'parent_id' => $parent_id,
-				'collation' => I18N::$collation,
+				'collation' => I18N::collation(),
 			))->fetchAll();
 		}
 

@@ -17,4 +17,9 @@ class LanguageGa extends Language {
 	public function defaultTerritory() {
 		return new TerritoryIe;
 	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule11;
+	}
 }

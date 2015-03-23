@@ -22,4 +22,9 @@ class LanguageDz extends Language {
 	public function defaultTerritory() {
 		return new TerritoryBt;
 	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule0;
+	}
 }

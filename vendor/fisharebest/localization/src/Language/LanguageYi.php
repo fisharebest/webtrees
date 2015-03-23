@@ -17,4 +17,9 @@ class LanguageYi extends Language {
 	public function defaultScript() {
 		return new ScriptHebr;
 	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule1;
+	}
 }

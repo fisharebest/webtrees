@@ -17,4 +17,9 @@ class LanguageFf extends Language {
 	public function defaultTerritory() {
 		return new TerritorySn;
 	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule2;
+	}
 }

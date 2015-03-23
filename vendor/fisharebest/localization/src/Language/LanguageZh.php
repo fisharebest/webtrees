@@ -22,4 +22,9 @@ class LanguageZh extends Language {
 	public function defaultScript() {
 		return new ScriptHans;
 	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule0;
+	}
 }

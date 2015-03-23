@@ -427,7 +427,7 @@ class LifespanController extends PageController {
 			}
 			sort_facts($unparsedEvents);
 
-			$eventinformation = Array();
+			$eventinformation = array();
 			foreach ($unparsedEvents as $val) {
 				$date = $val->getDate();
 				if (!empty($date)) {

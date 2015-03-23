@@ -17,4 +17,9 @@ class LanguageHr extends Language {
 	public function defaultTerritory() {
 		return new TerritoryHr;
 	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule7;
+	}
 }

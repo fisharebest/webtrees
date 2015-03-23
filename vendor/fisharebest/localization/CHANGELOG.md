@@ -1,6 +1,19 @@
 CHANGE LOG
 ==========
 
+## 1.3.2 (2015-03-23)
+ - Gettext detection fails on 32 bit builds
+
+## 1.3.1 (2015-03-21)
+ - Add plural rules for Yiddish (yi) and Divehi (dv)
+
+## 1.3.0 (2015-03-20)
+ - Add Translator/Translation classes
+
+## 1.2.0 (2015-03-19)
+ - Add plural rules for working with translations
+ - Add missing tests for formatting percentages
+
 ## 1.1.2 (2015-03-15)
  - Do not suppress the script in the language tag for zh-Hans
 

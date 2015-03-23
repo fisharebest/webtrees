@@ -17,11 +17,10 @@ namespace Fisharebest\Webtrees;
  */
 
 use Fisharebest\Localization\Locale;
+use Fisharebest\Localization\LocaleEnUs;
+use Fisharebest\Localization\Translation;
+use Fisharebest\Localization\Translator;
 use Patchwork\TurkishUtf8;
-use Zend_Cache;
-use Zend_Cache_Core;
-use Zend_Registry;
-use Zend_Translate;
 
 /**
  * Class I18N - Functions to support internationalization (i18n) functionality.
@@ -29,6 +28,9 @@ use Zend_Translate;
 class I18N {
 	/** @var Locale The current locale (e.g. LocaleEnGb) */
 	private static $locale;
+
+	/** @var Translator */
+	private static $translator;
 
 	// Digits are always rendered LTR, even in RTL text.
 	const DIGITS = '0123456789٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹';
@@ -90,155 +92,122 @@ class I18N {
 		'’' => '‘',
 	);
 
-	/** @var string The MySQL collation sequence used by this language, typically utf8_unicode_ci */
-	public static $collation;
-
 	/** @var string Punctuation used to separate list items, typically a comma */
 	public static $list_separator;
-
-	/** @var Zend_Cache_Core */
-	private static $cache;
-
-	/** @var Zend_Translate */
-	private static $translation_adapter;
 
 	/**
 	 * Initialise the translation adapter with a locale setting.
 	 *
-	 * @param string|null $locale If no locale specified, choose one automatically
+	 * @param string|null $code Use this locale/language code, or choose one automatically
 	 *
 	 * @return string $string
 	 */
-	public static function init($locale = null) {
+	public static function init($code = null) {
 		global $WT_SESSION, $WT_TREE;
 
-		// The translation libraries only work with a cache.
-		$cache_options = array(
-			'automatic_serialization' => true,
-			'cache_id_prefix'         => md5(WT_BASE_URL),
+		if ($code !== null) {
+			// Create the specified locale
+			self::$locale = Locale::create($code);
+		} else {
+			// Negotiate a locale, but if we can't then use a failsafe
+			self::$locale = new LocaleEnUs;
+			if (Filter::get('lang')) {
+				// A request in the URL
+				try {
+					$locale = Locale::create(Filter::get('lang'));
+					if (file_exists(WT_ROOT . 'language/' . $locale->languageTag() . '.mo')) {
+						self::$locale = $locale;
+					}
+				} catch (\Exception $ex) {
+				}
+			} elseif ($WT_SESSION->locale) {
+				// Previously used
+				self::$locale = Locale::create($WT_SESSION->locale);
+			} elseif (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+				// Browser negotiation
+				$http_accept_language = strtolower(str_replace(' ', '', $_SERVER['HTTP_ACCEPT_LANGUAGE']));
+				if (preg_match_all('/(?:([a-z][a-z0-9_-]+)(?:;q=([0-9.]+))?)/', $http_accept_language, $match)) {
+					$preferences = array_combine($match[1], $match[2]);
+					array_walk($preferences, function(&$x) { $x = $x === '' ? 1.0 : (float) $x; });
+				} else {
+					$preferences = array();
+				}
+				// Add the tree’s default language as a low-priority
+				if ($WT_TREE && !isset($preferences[$WT_TREE->getPreference('LANGUAGE')])) {
+					$preferences[$WT_TREE->getPreference('LANGUAGE')] = 0.2;
+				}
+				arsort($preferences);
+				foreach (array_keys($preferences) as $code) {
+					try {
+						$locale = Locale::create($code);
+						if (file_exists(WT_ROOT . 'language/' . $locale->languageTag() . '.mo')) {
+							self::$locale = $locale;
+							break;
+						}
+					} catch (\Exception $ex) {
+						// The user's prefered locale does not exist
+					}
+				}
+			}
+		}
+
+		File::mkdir(WT_DATA_DIR . 'cache');
+		$cache_file = WT_DATA_DIR . 'cache/language-' . self::$locale->languageTag() . '-cache.php';
+		if (file_exists($cache_file)) {
+			$filemtime = filemtime($cache_file);
+		} else {
+			$filemtime = 0;
+		}
+
+		// Load the translation file(s)
+		// Note that glob() returns false instead of an empty array when open_basedir_restriction
+		// is in force and no files are found.  See PHP bug #47358.
+		$translation_files = array_merge(
+			array(WT_ROOT . 'language/' . self::$locale->languageTag() . '.mo'),
+			glob(WT_MODULES_DIR . '*/language/' . self::$locale->languageTag() . '.{csv,php,mo}', GLOB_BRACE) ?: array(),
+			glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.{csv,php,mo}', GLOB_BRACE) ?: array()
 		);
 
-		if (ini_get('apc.enabled')) {
-			self::$cache = Zend_Cache::factory('Core', 'Apc', $cache_options, array());
-		} elseif (File::mkdir(WT_DATA_DIR . 'cache')) {
-			self::$cache = Zend_Cache::factory('Core', 'File', $cache_options, array('cache_dir' => WT_DATA_DIR . 'cache'));
+		$rebuild_cache = false;
+		foreach ($translation_files as $translation_file) {
+			if (filemtime($translation_file) > $filemtime) {
+				$rebuild_cache = true;
+				break;
+			}
+		}
+
+		if ($rebuild_cache) {
+			$translations = array();
+			foreach ($translation_files as $translation_file) {
+				$translation = new Translation($translation_file);
+				$translations = array_merge($translations, $translation->asArray());
+			}
+			file_put_contents($cache_file, '<' . '?php return ' . var_export($translations, true) . ';');
 		} else {
-			self::$cache = Zend_Cache::factory('Core', 'Zend_Cache_Backend_BlackHole', $cache_options, array(), false, true);
+			$translations = include $cache_file;
 		}
 
-		Zend_Translate::setCache(self::$cache);
-
-
-		$installed_locales = array();
-		foreach (self::installedLocales() as $installed_locale) {
-			$installed_locales[$installed_locale->languageTag()] = $installed_locale->endonym();
-		}
-
-		if (is_null($locale) || !array_key_exists($locale, $installed_locales)) {
-			// Automatic locale selection.
-			if (array_key_exists(Filter::get('lang'), $installed_locales)) {
-				// Requested in the URL?
-				$locale = Filter::get('lang');
-			} elseif (array_key_exists($WT_SESSION->locale, $installed_locales)) {
-				// Rembered from a previous visit?
-				$locale = $WT_SESSION->locale;
-			} else {
-				// Browser preference takes priority over gedcom default
-				if (empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
-					$prefs = array();
-				} else {
-					$prefs = explode(',', str_replace(' ', '', $_SERVER['HTTP_ACCEPT_LANGUAGE']));
-				}
-				if ($WT_TREE) {
-					// Add the tree’s default language as a low-priority
-					$locale  = $WT_TREE->getPreference('LANGUAGE');
-					$prefs[] = $locale . ';q=0.2';
-				}
-				$prefs2 = array();
-				foreach ($prefs as $pref) {
-					list($l, $q) = explode(';q=', $pref . ';q=1.0');
-					$l = preg_replace_callback(
-						'/_[a-z][a-z]$/',
-						function($x) { return strtoupper($x[0]); },
-						str_replace('-', '_', $l)
-					); // en-gb => en_GB
-					if (array_key_exists($l, $prefs2)) {
-						$prefs2[$l] = max((float) $q, $prefs2[$l]);
-					} else {
-						$prefs2[$l] = (float) $q;
-					}
-				}
-				// Ensure there is a fallback.
-				if (!array_key_exists('en-US', $prefs2)) {
-					$prefs2['en-US'] = 0.01;
-				}
-				arsort($prefs2);
-				foreach (array_keys($prefs2) as $pref) {
-					if (array_key_exists($pref, $installed_locales)) {
-						$locale = $pref;
-						break;
-					}
-				}
-			}
-		}
-
-		// Load the translation file
-		self::$translation_adapter = new Zend_Translate('gettext', WT_ROOT . 'language/' . $locale . '.mo', $locale);
-
-		// Deprecated - some custom modules use this to add translations
-		Zend_Registry::set('Zend_Translate', self::$translation_adapter);
-
-		// Load any local user translations
-		if (is_dir(WT_DATA_DIR . 'language')) {
-			if (file_exists(WT_DATA_DIR . 'language/' . $locale . '.mo')) {
-				self::addTranslation(
-					new Zend_Translate('gettext', WT_DATA_DIR . 'language/' . $locale . '.mo', $locale)
-				);
-			}
-			if (file_exists(WT_DATA_DIR . 'language/' . $locale . '.php')) {
-				self::addTranslation(
-					new Zend_Translate('array', WT_DATA_DIR . 'language/' . $locale . '.php', $locale)
-				);
-			}
-			if (file_exists(WT_DATA_DIR . 'language/' . $locale . '.csv')) {
-				self::addTranslation(
-					new Zend_Translate('csv', WT_DATA_DIR . 'language/' . $locale . '.csv', $locale)
-				);
-			}
-		}
+		// Create a translator
+		self::$translator = new Translator($translations, self::$locale->pluralRule());
 
 		// Extract language settings from the translation file
 		global $DATE_FORMAT; // I18N: This is the format string for full dates.  See http://php.net/date for codes
-		$DATE_FORMAT = self::noop('%j %F %Y');
+		$DATE_FORMAT = self::$translator->translate('%j %F %Y');
 
 		global $TIME_FORMAT; // I18N: This is the format string for the time-of-day.  See http://php.net/date for codes
-		$TIME_FORMAT = self::noop('%H:%i:%s');
+		$TIME_FORMAT = self::$translator->translate('%H:%i:%s');
 
 		// Alphabetic sorting sequence (upper-case letters), used by webtrees to sort strings
-		list(, self::$alphabet_upper) = explode('=', self::noop('ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ'));
+		list(, self::$alphabet_upper) = explode('=', self::$translator->translate('ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ'));
 		// Alphabetic sorting sequence (lower-case letters), used by webtrees to sort strings
-		list(, self::$alphabet_lower) = explode('=', self::noop('ALPHABET_lower=abcdefghijklmnopqrstuvwxyz'));
+		list(, self::$alphabet_lower) = explode('=', self::$translator->translate('ALPHABET_lower=abcdefghijklmnopqrstuvwxyz'));
 
-		global $WEEK_START; // I18N: This is the first day of the week on calendars. 0=Sunday, 1=Monday...
-		list(, $WEEK_START) = explode('=', self::noop('WEEK_START=0'));
-
-
-		// Save the current locale, and some attributes of it
-		self::$locale = Locale::create($locale);
+		global $WEEK_START;
+		$WEEK_START = self::$locale->territory()->firstDay();
 
 		self::$list_separator = /* I18N: This punctuation is used to separate lists of items */ self::translate(', ');
-		self::$collation      = /* I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html */ self::translate('utf8_unicode_ci');
 
 		return self::$locale->languageTag();
-	}
-
-	/**
-	 * Add a translation file
-	 *
-	 * @param Zend_Translate $translation
-	 */
-	public static function addTranslation(Zend_Translate $translation) {
-		self::$translation_adapter->getAdapter()->addTranslation(array('content' => $translation));
 	}
 
 	/**
@@ -275,6 +244,23 @@ class I18N {
 	}
 
 	/**
+	 * Which MySQL collation should be used for this locale?
+	 *
+	 * @return string
+	 */
+	public static function collation() {
+		$collation = self::$locale->collation();
+		switch ($collation) {
+		case 'german2_ci':
+		case 'vietnamese_ci':
+			// Only available in MySQL 5.6
+			return 'utf8_unicode_ci';
+		default:
+			return 'utf8_' . $collation;
+		}
+	}
+
+	/**
 	 * All locales for which a translation file exists.
 	 *
 	 * @return Locale[]
@@ -285,7 +271,7 @@ class I18N {
 			try {
 				$locales[] = Locale::create(basename($file, '.mo'));
 			} catch (\Exception $ex) {
-				// No such locale exists?
+				// Not a recognised locale
 			}
 		}
 		usort($locales, '\Fisharebest\Localization\Locale::compare');
@@ -346,9 +332,7 @@ class I18N {
 	 * @return string
 	 */
 	public static function percentage($n, $precision = 0) {
-		return
-			/* I18N: This is a percentage, such as “32.5%”. “%s” is the number, “%%” is the percent symbol.  Some languages require a (non-breaking) space between the two, or a different symbol. */
-			self::translate('%s%%', self::number($n * 100.0, $precision));
+		return self::$locale->percent($n, $precision);
 	}
 
 	/**
@@ -370,7 +354,7 @@ class I18N {
 	 */
 	public static function translate(/* var_args */) {
 		$args = func_get_args();
-		$args[0] = self::$translation_adapter->getAdapter()->_($args[0]);
+		$args[0] = self::$translator->translate($args[0]);
 
 		return call_user_func_array('sprintf', $args);
 	}
@@ -385,12 +369,7 @@ class I18N {
 	 */
 	public static function translateContext(/* var_args */) {
 		$args = func_get_args();
-		$msgid = $args[0] . "\x04" . $args[1];
-		$msgtxt = self::$translation_adapter->getAdapter()->_($msgid);
-		if ($msgtxt === $msgid) {
-			$msgtxt = $args[1];
-		}
-		$args[0] = $msgtxt;
+		$args[0] = self::$translator->translateContext($args[0], $args[1]);
 		unset($args[1]);
 
 		return call_user_func_array('sprintf', $args);
@@ -407,7 +386,7 @@ class I18N {
 	 * @return string
 	 */
 	public static function noop($string) {
-		return self::$translation_adapter->getAdapter()->_($string);
+		return self::$translator->translate($string);
 	}
 
 	/**
@@ -421,8 +400,8 @@ class I18N {
 	 */
 	public static function plural(/* var_args */) {
 		$args = func_get_args();
-		$string = self::$translation_adapter->getAdapter()->plural($args[0], $args[1], $args[2]);
-		array_splice($args, 0, 3, array($string));
+		$args[0] = self::$translator->plural($args[0], $args[1], $args[2]);
+		unset($args[1], $args[2]);
 
 		return call_user_func_array('sprintf', $args);
 	}

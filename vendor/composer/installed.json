@@ -537,17 +537,17 @@
     },
     {
         "name": "fisharebest/localization",
-        "version": "1.1.2",
-        "version_normalized": "1.1.2.0",
+        "version": "1.3.2",
+        "version_normalized": "1.3.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/fisharebest/localization.git",
-            "reference": "c951481668050ae52412c736c23b67b99e9db66e"
+            "reference": "3690068886d8e1877fa950d623931e8a56b6ae89"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/fisharebest/localization/zipball/c951481668050ae52412c736c23b67b99e9db66e",
-            "reference": "c951481668050ae52412c736c23b67b99e9db66e",
+            "url": "https://api.github.com/repos/fisharebest/localization/zipball/3690068886d8e1877fa950d623931e8a56b6ae89",
+            "reference": "3690068886d8e1877fa950d623931e8a56b6ae89",
             "shasum": ""
         },
         "require": {
@@ -557,7 +557,7 @@
             "phpunit/phpunit": "*",
             "satooshi/php-coveralls": "*"
         },
-        "time": "2015-03-15 09:35:07",
+        "time": "2015-03-23 22:54:33",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -576,14 +576,19 @@
                 "role": "Developer"
             }
         ],
-        "description": "A lightweight implementation of the Unicode Common Locale Data Repository (CLDR).",
+        "description": "A lightweight localization database and translation tools, with data from the CLDR, IANA, ISO, etc.",
         "homepage": "https://github.com/fisharebest/localization",
         "keywords": [
+            "cldr",
+            "gettext",
             "i18n",
             "l10n",
+            "language",
             "locale",
             "localization",
-            "unicode"
+            "script",
+            "translate",
+            "translation"
         ]
     }
 ]

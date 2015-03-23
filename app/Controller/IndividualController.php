@@ -243,7 +243,7 @@ class IndividualController extends GedcomRecordController {
 				echo ' title="', I18N::translate('Female'), '">';
 			 }
 			break;
-		case 'U':
+		default:
 			echo 'unknown_gender"';
 			if ($event->canEdit()) {
 				echo ' title="', I18N::translateContext('unknown gender', 'Unknown'), ' - ', I18N::translate('Edit'), '"';

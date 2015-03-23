@@ -17,4 +17,9 @@ class LanguageHa extends Language {
 	public function defaultTerritory() {
 		return new TerritoryNg;
 	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule1;
+	}
 }

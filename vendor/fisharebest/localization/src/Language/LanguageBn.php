@@ -22,4 +22,9 @@ class LanguageBn extends Language {
 	public function defaultTerritory() {
 		return new TerritoryBd;
 	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule2;
+	}
 }

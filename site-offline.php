@@ -31,6 +31,7 @@ define('WT_WEBTREES', 'webtrees');
 define('WT_BASE_URL', '');
 define('WT_ROOT', '');
 define('WT_DATA_DIR', realpath('data') . DIRECTORY_SEPARATOR);
+define('WT_MODULES_DIR', 'modules_v3/');
 
 $WT_SESSION         = new \stdClass;
 $WT_SESSION->locale = '';

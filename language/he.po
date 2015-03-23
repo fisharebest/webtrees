@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-19 17:35+0100\n"
+"PO-Revision-Date: 2015-03-21 19:50+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
@@ -607,7 +607,16 @@ msgstr "ה-9"
 #. I18N: Help text for the “Automatically create globally unique IDs” configuration setting
 #: admin_trees_config.php:776
 msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates.  The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
-msgstr "<b>GUID</b> בהקשר זה הוא ראשי תיבות של ”קוד זיהוי גלובלי ייחודי -  Globally Unique ID”.<br><br>GUID-ים נועדים לעזור לזהות כל אדם באופן הדיר, כך שארגונים מרכזיים כמו מרכז ההיסטוריה המשפחתית של כנסיית המורמונים בסולט לייק סיטי, או אפילו תוכניות תואמות הפועלות על השרת שלך, יוכלו לקבוע האם הם מטפלים באותו האדם, לא משנה מהיכן מקור ה-GEDCOM. מטרת המרכז ההיסטוריה המשפחתית הוא להוות מאגר מרכזי של נתוני חקר שושלת יוחסין ולחשוף אותו באמצעות שירותי אינטרנט. זה יאפשר לכל תכנית  לגשת לנתונים ולעדכן את הנתונים שלהם בתוכו.<br><br>אם אינך מתכוון לשתף GEDCOM זה עם מישהו אחר, אתה לא צריך לתת, ל-webtrees ליצור GUID-ים אבל, אם תיצור אותם לא תגרום כל נזק פרט להגדלת גודל ה-GEDCOM שלך."
+msgstr ""
+"<b>GUID</b> בהקשר זה הוא ראשי תיבות של ”קוד זיהוי גלובלי ייחודי -  Globally "
+"Unique ID”.<br><br>GUID-ים נועדים לעזור לזהות כל אדם באופן הדיר, כך שארגונים "
+"מרכזיים כמו מרכז ההיסטוריה המשפחתית של כנסיית המורמונים בסולט לייק סיטי, או "
+"אפילו תוכניות תואמות הפועלות על השרת שלך, תוכלנה לקבוע האם הן מטפלות באותו "
+"האדם, לא משנה מהיכן מקור ה-GEDCOM. מטרת מרכז ההיסטוריה המשפחתית הוא להוות "
+"מאגר מרכזי של נתוני חקר שושלת יוחסין ולחשוף אותו באמצעות שירותי אינטרנט. זה "
+"יאפשר לכל תכנית  לגשת לנתונים ולעדכן את הנתונים שלהם בתוכו.<br><br>אם אינך "
+"מתכוון לשתף GEDCOM זה עם מישהו אחר, אתה לא צריך לתת, ל-webtrees ליצור GUID-"
+"ים אבל, אם תיצור אותם לא תגרום כל נזק פרט להגדלת גודל ה-GEDCOM שלך."
 
 #: admin_trees_manage.php:686
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items.  You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
@@ -5207,7 +5216,16 @@ msgstr "שם משתמש כפול. משתמש עם שם משתמש זה מוגד�
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:914
 msgid "E-mail address to be used in the “From:” field of e-mails that webtrees creates automatically.<br><br>webtrees can automatically create e-mails to notify administrators of changes that need to be reviewed.  webtrees also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-msgstr "כתובת דואר אלקטרוני לשימוש בשדה ”מאת:” של דואר אלקטרוני ש-webtrees  יוצר באופן אוטומטי.<br><br>webtrees יכול באופן אוטומטי ליצור הודעות דואר אלקטרוני כדי ליידע את המנהלים על שינויים שיש לבדוק. webtrees שולחת גם הודעה בדואר אלקטרוני למשתמשים שבקשו חשבון.<br><br>בדרך כלל, שדה ”מאת:” של הדואר האלקטרוני שנוצר באופן אוטומטי הוא משהו כמו <i>From: webtrees-noreply@yoursite</i> כדי להראות שלא נדרשת תגובה לדואר האלקטרוני. כדי להתגונן מפני דואר זבל או פגיעות דואר אלקטרוני אחרות, חלק ממערכות הדואר האלקטרוני דורשות ששדה ”מאת:” של כל הודעה,  תשקף חשבון דואר תקף ולא תקבלנה הודעות שהן כנראה מחשבון <i>webtrees-noreply</i>."
+msgstr ""
+"כתובת דואר אלקטרוני לשימוש בשדה ”מאת:” של דואר אלקטרוני ש-webtrees  נוצרה "
+"באופן אוטומטי.<br><br>webtrees יכולה באופן אוטומטי ליצור הודעות דואר "
+"אלקטרוני כדי ליידע את המנהלים על שינויים שיש לבדוק. webtrees שולחת גם הודעה "
+"בדואר אלקטרוני למשתמשים שבקשו חשבון.<br><br>בדרך כלל, שדה ”מאת:” של הדואר "
+"האלקטרוני שנוצר באופן אוטומטי הוא משהו כמו <i>From: webtrees-"
+"noreply@yoursite</i> כדי להראות שלא נדרשת תגובה לדואר האלקטרוני. כדי להתגונן "
+"מפני דואר זבל או פגיעות דואר אלקטרוני אחרות, דורשות חלק ממערכות הדואר "
+"האלקטרוני ששדה ”מאת:” של כל הודעה,  ישקף חשבון דואר תקף ולא תקבלנה הודעות "
+"שהן כנראה מחשבון <i>webtrees-noreply</i>."
 
 #: help_text.php:417
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County.  “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
@@ -6318,11 +6336,16 @@ msgstr "עבור חוק המורמונים (LDS ordinances), השדה רושם �
 #: admin_trees_manage.php:285
 #, php-format
 msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
-msgstr "למשל, אם קובץ GEDCOM מכיל %1$s ו-webtrees מצפה למצוא %2$s בתיקיית מדיה, אז עלך למחוק את %3$s."
+msgstr ""
+"למשל, אם קובץ GEDCOM מכיל %1$s ו-webtrees מצפה למצוא %2$s בתיקיית מדיה, אז "
+"עליך למחוק את %3$s."
 
 #: admin_users.php:590
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
-msgstr "לדוגמה, אם תציין אורך הנתיב של 2, האדם יוכל לראות את הנכד שלו (ילד, ילד), הדודה שלו (הורה, אח), הבת החורגת שלו (בן זוג, ילד), אך לא בן דודו הראשון (הורה, אח, ילד)."
+msgstr ""
+"לדוגמה, אם תציין אורך נתיב של 2, האדם יוכל לראות את הנכד שלו (ילד, ילד), "
+"הדודה שלו (הורה, אח), הבת החורגת שלו (בן זוג, ילד), אך לא בן דודו הראשון ("
+"הורה, אח, ילד)."
 
 #: app/Theme/BaseTheme.php:262
 msgid "For help with genealogy questions contact"
@@ -6659,7 +6682,10 @@ msgstr "שמות פרטיים"
 #. I18N: Help text for the “Theme dropdown selector for theme changes” configuration setting
 #: admin_trees_config.php:1014
 msgid "Gives users the option of selecting their own theme from a menu.<br><br>Even with this option set, the theme currently in effect may not provide for such a menu.  To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well."
-msgstr "מעניק למשתמשים את האפשרות לבחור עיצוב שלהם מתפריט.<br><br>גם אם האפשרות הזו נבחרה, יתכן שהעיצוב הפעיל לא יכול לספק לתפריט כזה. כדי להיות פעיל, מחייבת אפשרות זו שגם <b>אפשר למשתמשים לבחור עיצוב</b> יהיה מוגדר."
+msgstr ""
+"מעניק למשתמשים את האפשרות לבחור עיצוב שלהם מתפריט.<br><br>גם אם האפשרות הזו "
+"נבחרה, יתכן שהעיצוב הפעיל לא יוכל לספק תפריט כזה. כדי להיות פעיל, חובה "
+"שהאפשרות <b>אפשר למשתמשים לבחור עיצוב</b> תהיה מוגדרת."
 
 #. I18N: Help text for the “Allow users to select their own theme” site configuration setting
 #: admin_site_config.php:249
@@ -7121,7 +7147,9 @@ msgstr "קוד זיהוי"
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:684
 msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-msgstr "אם מבקר באתר לא ציין שפה מועדפת בתצורת הדפדפן שלו, או שהוא ציין שפה שאינן נתמכת, אז שפה זה תהיה בשימוש. בדרך כלל, הגדרה זו חלה על מנועי חיפוש."
+msgstr ""
+"אם מבקר באתר לא ציין שפה מועדפת בתצורת הדפדפן שלו, או שהוא ציין שפה שאינן "
+"נתמכת, אז שפה זו תהיה בשימוש. בדרך כלל, הגדרה זו חלה על מנועי חיפוש."
 
 #: admin_users.php:387
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
@@ -7169,7 +7197,9 @@ msgstr "אם שני עצי משפחה משתמשים באותה תיקיית מ�
 
 #: admin_trees_config.php:414
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account.  You will need to add their account manually."
-msgstr "אם מבקרים לא יכולים לראות את עץ המשפחהן, הם לא יוכלו לבקש חשבון. יהיה עליך להוסיף את החשבון שלהם באופן ידני."
+msgstr ""
+"אם מבקרים לא יכולים לראות את עץ המשפחה, הם לא יוכלו לבקש חשבון. יהיה עליך "
+"להוסיף את החשבון שלהם באופן ידני."
 
 #. I18N: Help text for the “Who can upload new media files?” configuration setting
 #: admin_trees_config.php:1074
@@ -7234,7 +7264,7 @@ msgstr "אם תנסה לחרוג מגבולות אלו, ייתכן שתתקל ב
 #: admin_site_config.php:507
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr ""
-"אם אתה משתמש באחד משירותי המעקב והניתוח הבאים, webtrees יכול להוסיף את קודי "
+"אם אתה משתמש באחד משירותי המעקב והניתוח הבאים, webtrees יכולה להוסיף את קודי "
 "המעקב באופן אוטומטי."
 
 #. I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting
@@ -7295,7 +7325,10 @@ msgstr "בתרבויות רבות מקובל שיש שם מסורתי שכתוב
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:750
 msgid "In some calendars, days start at midnight.  In other calendars, days start at sunset.  The conversion process does not take account of the time, so for any event that occurs between sunset and midnight, the conversion between these types of calendar will be one day out."
-msgstr "בלוחות שנה מסוימים, ימים מתחילים בחצות. בלוחות אחרים, ימים מתחילים בשקיעה. תהליך ההמרה אינה לוקחת בחשבון את הזמן, ולכן לכל אירוע המתרחש בין השקיעה ועד חצות, ההמרה בין סוגים אלה של לוח השנה יהיה עם שגיאה של יום."
+msgstr ""
+"בלוחות שנה מסוימים, ימים מתחילים בחצות. בלוחות אחרים, ימים מתחילים בשקיעה. "
+"תהליך ההמרה אינו לוקח בחשבון את הזמן, ולכן לכל אירוע המתרחש בין השקיעה ועד "
+"חצות, ההמרה בין סוגים אלה של לוח השנה תהיה עם שגיאה של יום."
 
 #. I18N: Help text for the “Extend privacy to dead individuals” configuration setting
 #: admin_trees_config.php:495
@@ -9798,7 +9831,9 @@ msgstr "שים לב כי אם חשבון משתמש מקושר לרשומה, א�
 
 #: admin_users.php:591
 msgid "Note: longer path lengths require a lot of calculation, which can make your website run slowly for these users."
-msgstr "הערה: אורכי השביל ארוכים יותר דורשים הרבה חישובים, אשר יכול להפוך את האתר שלך לאיטי עבור המשתמשים אלה."
+msgstr ""
+"הערה: ככל שאורכי השביל ארוכים יותר נדרשים יותר חישובים, מה שיהפוך את האתר "
+"שלך לאיטי יותר עבור המשתמשים האלה."
 
 #. I18N: Name of a module
 #: app/Controller/SearchController.php:503 app/Module/NotesTabModule.php:27
@@ -11059,7 +11094,7 @@ msgstr "סדר מחדש מדיה"
 #: admin_users.php:308 admin_users.php:846 edituser.php:161 login.php:321
 #: login.php:426
 msgid "Real name"
-msgstr "שם אמתי"
+msgstr "שם אמיתי"
 
 #. I18N: Name of a module
 #: app/Module/RecentChangesModule.php:28
@@ -11958,7 +11993,10 @@ msgstr "הגדר את רמת גישת הפרטיות עבור כל האנשים 
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1647
 msgid "Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> folder of the current theme."
-msgstr "קבע את זה כ<b>כן</b> כדי להציג סמלים ליד שמות עובדה בדף העובדות והאירועים של אדם. סמלי עובדות יוצגו רק אם הם קיימים בתיקיית <i>images/facts</i> של העיצוב הנוכחי."
+msgstr ""
+"קבע את זה כ<b>הצג</b> כדי להציג סמלים ליד שמות עובדה בדף העובדות והאירועים "
+"של אדם. סמלי עובדות יוצגו רק אם הם קיימים בתיקיית <i>images/facts</i> של "
+"העיצוב הנוכחי."
 
 #. I18N: Help text for the “Use RIN number instead of GEDCOM ID” configuration setting
 #: admin_trees_config.php:763
@@ -12436,7 +12474,7 @@ msgstr "הצג מגורים?"
 #. I18N: Help text for the “Execution statistics” configuration setting
 #: admin_trees_config.php:1753
 msgid "Show runtime statistics and database queries at the bottom of every page."
-msgstr "הראה סטטיסטיקת של ריצה ושאילתות של מסדי נתונים בתחתית כל דף."
+msgstr "הראה סטטיסטיקות של ריצה ושאילתות של מסדי נתונים בתחתית כל דף."
 
 #: app/Module/SlideShowModule.php:387
 msgid "Show slide show controls?"
@@ -12596,7 +12634,9 @@ msgstr "קוד זיהוי אתר"
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: admin_users.php:459 edituser.php:271
 msgid "Site members can send each other messages.  You can choose to how these messages are sent to you, or choose not receive them at all."
-msgstr "חברי אתר יכולים לשלוח אחד לשני הודעות. באפשרותך לבחור כיצד מסרים אלה נשלחים אליך, או לבחור שלא לקבל אותם בכלל."
+msgstr ""
+"חברי האתר יכולים לשלוח אחד לשני הודעות. באפשרותך לבחור כיצד מסרים אלה נשלחים "
+"אליך, או לבחור שלא לקבל אותם בכלל."
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:515 admin_site_config.php:536
@@ -12606,7 +12646,7 @@ msgstr "קוד אימות אתר"
 #. I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting
 #: admin_site_config.php:526 admin_site_config.php:547
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
-msgstr "קודי אימות של האתר אינם עובדים כאשר webtrees מותקן בתיקיית משנה."
+msgstr "קודי אימות של האתר אינם עובדים כאשר webtrees מותקנת בתיקיית משנה."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:30
@@ -13656,7 +13696,9 @@ msgstr "שם המשתמש או הסיסמא שגוי."
 #. I18N: Help text for the “Description META tag” configuration setting
 #: admin_trees_config.php:1000
 msgid "The value to place in the “meta description” tag in the HTML page header.  Leave this field empty to use the name of the family tree."
-msgstr "הערך בתג ”מטה של התיאור” בכותרת הדף ה-HTML. השאר שדה זה ריק כדי להשתמש בכותרת של עץ המשפחה."
+msgstr ""
+"הערך בתג ”מטה (META) של התיאור” בכותרת הדף ה-HTML. השאר שדה זה ריק כדי "
+"להשתמש בכותרת של עץ המשפחה."
 
 #: admin_pgv_to_wt.php:107
 #, php-format
@@ -14075,7 +14117,7 @@ msgstr "זה הרוחב (בפיקסלים) שהתכנית תשתמש באופן 
 
 #: admin_users.php:313 edituser.php:167 login.php:430 setup.php:431
 msgid "This is your real name, as you would like it displayed on screen."
-msgstr "השם האמתי שלך, כפי שיוצג על המסך."
+msgstr "השם האמיתי שלך, כפי שיוצג על המסך."
 
 #: admin_trees_check.php:125
 msgid "This may be a mistake in your data."
@@ -14174,7 +14216,14 @@ msgstr "ההערה הזו עודכנה. עליך לסקור את השינויי�
 #. I18N: Help text for the “Show all notes and source references on notes and sources tabs” configuration setting
 #: admin_trees_config.php:1686
 msgid "This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record.  These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record.  These are <i>level 2</i> Notes and Source references because the various Facts are at level 1."
-msgstr "אפשרות זו קובעת אם הפניות להערות ולמקור המצורפות לעובדות צריכות להיות מוצגות על לשוניות ההערות והמקורות של הדף האישי.<br><br>בדרך כלל, הלשוניות של ההערות והמקורות מציגות רק הערות ומקורות המצורפים ישירות לרשומת מסד הנתונים של האדם. אלה הם <i>רמה 1</i> הפניות של הערות ומקורות.<br><br>אופצית ה<b>כן</b> גורמת ללשוניות האלו גם להראות הערות ומקורות שהם חלק ממגוון העובדות ברשומת מסד הנתונים של הפרט. אלו הם <i>רמה 2</i> של הפניות של הערות ומקורות, משום שהעובדות השונות הן ברמה 1."
+msgstr ""
+"אפשרות זו קובעת אם הפניות להערות ולמקור המצורפות לעובדות צריכות להיות מוצגות "
+"על לשוניות ההערות והמקורות של הדף האישי.<br><br>בדרך כלל, הלשוניות של ההערות "
+"והמקורות מציגות רק הערות ומקורות המצורפים ישירות לרשומת מסד הנתונים של האדם. "
+"אלה הם <i>רמה 1</i> הפניות של הערות ומקורות.<br><br>אופצית ה<b>כן</b> גורמת "
+"ללשוניות האלו להראות גם הערות ומקורות שהם חלק ממגוון העובדות ברשומת מסד "
+"הנתונים של הפרט. אלה הם <i>רמה 2</i> של הפניות של הערות ומקורות, משום "
+"שהעובדות השונות הן ברמה 1."
 
 #. I18N: Help text for the “Automatically expand notes” configuration setting
 #: admin_trees_config.php:1660
@@ -14302,7 +14351,11 @@ msgstr "מגבלת זיכרון של שרת זה היא %s מגה-בית, ומג
 #. I18N: Help text for the “Other facts to show in charts” configuration setting
 #: admin_trees_config.php:1632
 msgid "This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field."
-msgstr "זו צריכה להיות רשימה עובדות המופרדת ברווח או בפסיק, בנוסף ללידה ולמוות, שאתה רוצה שתופיע בתיבות תרשים כגון תרשים אילן היוחסין. רשימה זו מחייבת אותך להשתמש בתגי עובדה כהגדרתו בתקן GEDCOM 5.5.1. לדוגמה, אם אתה רוצה שהמקצוע יופיע בתיבה, עליך להוסיף ”OCCU” בשדה זה."
+msgstr ""
+"זו צריכה להיות רשימה של עובדות המופרדת ברווח או בפסיק, בנוסף ללידה ולמוות, "
+"שאתה רוצה שתופיע בתיבות תרשים כגון תרשים אילן היוחסין. רשימה זו מחייבת אותך "
+"להשתמש בתגי עובדה כהגדרתו בתקן GEDCOM 5.5.1. לדוגמה, אם אתה רוצה שהמקצוע "
+"יופיע בתיבה, עליך להוסיף ”OCCU” בשדה זה."
 
 #: source.php:73
 msgid "This source does not exist or you do not have permission to view it."
@@ -14508,7 +14561,11 @@ msgstr "כדי למנוע ממבקרים כניסה לאתר בזמן שאתה �
 #. I18N: “Apache” is a software program.
 #: admin_site_config.php:180
 msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder.  If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
-msgstr "כדי להגן על המידע הפרטי הזה, webtrees משתמש בקובץ תצורה של אפצ׳י (htaccess.) החוסם את כל הגישה לתיקייה זו. אם שרת האינטרנט שלך אינו תומך בקובצי htaccess., ואתה לא יכול להגביל את הגישה לתיקייה זו, אתה יכול לבחור תיקייה אחרת, הרחק ממסמכי האינטרנט שלך."
+msgstr ""
+"כדי להגן על המידע הפרטי הזה, webtrees משתמשת בקובץ תצורה של אפצ׳י (htaccess.)"
+" החוסם את כל הגישה לתיקייה זו. אם שרת האינטרנט שלך אינו תומך בקובצי "
+"htaccess., ואתה לא יכול להגביל את הגישה לתיקייה זו, אתה יכול לבחור תיקייה "
+"אחרת, הרחק ממסמכי האינטרנט שלך."
 
 #: help_text.php:423
 msgid "To reduce the height of the News block, the administrator has hidden some articles.  You can reveal these hidden articles by clicking the <b>View archive</b> link."
@@ -14579,7 +14636,7 @@ msgstr "השם הפרטי הנפוץ"
 #. I18N: Name of a module.  Top=Most common
 #: app/Module/TopGivenNamesModule.php:25 statistics.php:199
 msgid "Top given names"
-msgstr "שמות הפרטיים הנפוצים"
+msgstr "השמות הפרטיים הנפוצים"
 
 #: app/Module/GoogleMapsModule.php:4549 app/Module/GoogleMapsModule.php:4619
 #: placelist.php:107
@@ -15451,7 +15508,9 @@ msgstr "בעת יצירת רשומות חדשות, הן מקבלות מספר מ
 #. I18N: Help text for the “Date differences” configuration setting
 #: admin_trees_config.php:1699
 msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
-msgstr "כאשר אפשרות זו נבחרת, webtrees יחשב את הבדלי הגיל בין אחים, ילדים, בני זוג וכו׳."
+msgstr ""
+"כאשר אפשרות זו נבחרת, webtrees תחשב את הבדלי הגיל בין אחים, ילדים, בני זוג "
+"וכו׳."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2244
@@ -15468,7 +15527,10 @@ msgstr "לאחר שליחת הודעה זו, תקבל עותק בדואר האל
 
 #: admin_users.php:589
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations.  You specify the number of relationship steps that the user is allowed to see."
-msgstr "כאשר משתמש משויך לרשומת אדם בעץ המשפחה ויש לו תפקיד של חבר, עורך או מפקח, אתה יכול למנוע ממנו את הגישה לפרטי קרובים רחוקים החיים. אתה מציין את מספר השלבי הקשר משפחתי שהמשתמש רשאי לראות."
+msgstr ""
+"כאשר משתמש משויך לרשומת אדם בעץ המשפחה ויש לו תפקיד של חבר, עורך או מפקח, "
+"אתה יכול למנוע ממנו את הגישה לפרטי קרובים רחוקים החיים. אתה מציין את מספר "
+"שלבי הקשר המשפחתי שהמשתמש רשאי לראות."
 
 #: admin_pgv_to_wt.php:165
 msgid "Where is your PhpGedView installation?"
@@ -19689,12 +19751,12 @@ msgstr "webtrees לא יכולה להתחבר למאגר המידע %s של PhpG
 
 #: message.php:48 message.php:269 message.php:332
 msgid "webtrees message"
-msgstr "webtrees הודעת"
+msgstr "הודעת webtrees"
 
 #: setup.php:276
 #, php-format
 msgid "webtrees needs a MySQL database, version %s or later."
-msgstr "webtrees צריך מאגר מידע MySQL, גירסה %s ומעלה."
+msgstr "webtrees צריכה מאגר מידע MySQL, גירסה %s ומעלה."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: admin_site_config.php:306
@@ -19712,15 +19774,18 @@ msgstr "webtrees שולחת מיילים ללא אחסון"
 
 #: admin_trees_download.php:154
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-latin scripts.  If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
-msgstr "webtrees משתמש בקידוד UTF-8 לאותיות מודגשות לטיניות, לתווים מיוחדים ולסימנים שאינם לטיניים. אם אתה רוצה להשתמש בקובץ ה-GEDCOM הזה עם תוכנה גנאלוגית שאינה תומכת UTF-8, עלך ליצור אותו באמצעות קידוד ISO-8859-1."
+msgstr ""
+"webtrees משתמשת בקידוד UTF-8 לאותיות מודגשות לטיניות, לתווים מיוחדים "
+"ולסימנים שאינם לטיניים. אם אתה רוצה להשתמש בקובץ ה-GEDCOM הזה עם תוכנה "
+"גנאלוגית שאינה תומכת UTF-8, עלך ליצור אותו באמצעות קידוד ISO-8859-1."
 
 #: includes/functions/functions_print.php:185
 msgid "webtrees wiki"
-msgstr "webtrees ויקיפדיה של"
+msgstr "ויקיפדיה של webtrees"
 
 #: admin_trees_manage.php:673
 msgid "webtrees’ database must be on the same server as PGV’s"
-msgstr "webtrees חייב להיות על אותו השרת כמו PGV"
+msgstr "webtrees חייבת להיות על אותו השרת כמו PGV"
 
 #: app/Module/GoogleMapsModule.php:4050
 msgid "west"

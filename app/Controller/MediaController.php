@@ -136,29 +136,24 @@ class MediaController extends GedcomRecordController {
 	 * @return string
 	 */
 	static function getMediaListMenu(Media $mediaobject) {
-		$html = '<div class="lightbox-menu"><ul class="makeMenu lb-menu">';
-		$menu = new Menu(I18N::translate('Edit details'));
+		$html = '';
+
+		$menu = new Menu(I18N::translate('Edit details'), '#', '', "return window.open('addmedia.php?action=editmedia&amp;pid=" . $mediaobject->getXref() . "', '_blank', edit_window_specs);");
 		$menu->addClass('', '', 'lb-image_edit');
-		$menu->setOnclick("return window.open('addmedia.php?action=editmedia&amp;pid=" . $mediaobject->getXref() . "', '_blank', edit_window_specs);");
-		$html .= $menu->getMenuAsList();
-		$menu = new Menu(I18N::translate('Manage links'));
+		$html .= '<ul class="makeMenu lb-menu">' . $menu->getMenuAsList() . '</ul>';
+
+		$menu = new Menu(I18N::translate('Manage links'), '#', '', "return ilinkitem('" . $mediaobject->getXref() . "','person')", array(
+			new Menu(I18N::translate('Link this media object to an individual'), '#', '', "return ilinkitem('" . $mediaobject->getXref() . "','person')"),
+			new Menu(I18N::translate('Link this media object to a family'), '#', '', "return ilinkitem('" . $mediaobject->getXref() . "','family')"),
+			new Menu(I18N::translate('Link this media object to a source'), '#', '', "return ilinkitem('" . $mediaobject->getXref() . "','source')"),
+		));
 		$menu->addClass('', '', 'lb-image_link');
-		$menu->setOnclick("return ilinkitem('" . $mediaobject->getXref() . "','person')");
-		$submenu = new Menu(I18N::translate('Link this media object to an individual'), '#');
-		$submenu->setOnclick("return ilinkitem('" . $mediaobject->getXref() . "','person')");
-		$menu->addSubmenu($submenu);
-		$submenu = new Menu(I18N::translate('Link this media object to a family'), '#');
-		$submenu->setOnclick("return ilinkitem('" . $mediaobject->getXref() . "','family')");
-		$menu->addSubmenu($submenu);
-		$submenu = new Menu(I18N::translate('Link this media object to a source'), '#');
-		$submenu->setOnclick("return ilinkitem('" . $mediaobject->getXref() . "','source')");
-		$menu->addSubmenu($submenu);
-		$html .= $menu->getMenuAsList();
+		$html .= '<ul class="makeMenu lb-menu">' . $menu->getMenuAsList() . '</ul>';
+
 		$menu = new Menu(I18N::translate('View details'), $mediaobject->getHtmlUrl());
 		$menu->addClass('', '', 'lb-image_view');
-		$html .= $menu->getMenuAsList();
-		$html .= '</ul></div>';
+		$html .= '<ul class="makeMenu lb-menu">' . $menu->getMenuAsList() . '</ul>';
 
-		return $html;
+		return '<div class="lightbox-menu">' . $html . '</div>';
 	}
 }

@@ -17,4 +17,9 @@ class LanguageMfe extends Language {
 	public function defaultTerritory() {
 		return new TerritoryMu;
 	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule2;
+	}
 }

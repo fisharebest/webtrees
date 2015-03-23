@@ -17,4 +17,9 @@ class LanguageUz extends Language {
 	public function defaultTerritory() {
 		return new TerritoryUz;
 	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule1;
+	}
 }

@@ -12,4 +12,9 @@ class LanguageEo extends Language {
 	public function code() {
 		return 'eo';
 	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule1;
+	}
 }

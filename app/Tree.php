@@ -509,7 +509,6 @@ class Tree {
 		$tree->setPreference('SHOW_PEDIGREE_PLACES_SUFFIX', '0');
 		$tree->setPreference('SHOW_PRIVATE_RELATIONSHIPS', '1');
 		$tree->setPreference('SHOW_RELATIVES_EVENTS', '_BIRT_CHIL,_BIRT_SIBL,_MARR_CHIL,_MARR_PARE,_DEAT_CHIL,_DEAT_PARE,_DEAT_GPAR,_DEAT_SIBL,_DEAT_SPOU');
-		$tree->setPreference('SHOW_STATS', '0');
 		$tree->setPreference('SOURCE_ID_PREFIX', 'S');
 		$tree->setPreference('SOUR_FACTS_ADD', 'NOTE,REPO,SHARED_NOTE,RESN');
 		$tree->setPreference('SOUR_FACTS_QUICK', 'TEXT,NOTE,REPO');
