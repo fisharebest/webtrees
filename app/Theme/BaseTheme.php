@@ -1022,7 +1022,7 @@ abstract class BaseTheme {
 		if (WT_SCRIPT_NAME === 'index.php' && Auth::check() && Filter::get('ctype', 'gedcom|user', 'user') === 'user') {
 			return new Menu(I18N::translate('Customize this page'), 'index_edit.php?user_id=' . Auth::id(), 'menu-change-blocks');
 		} elseif (WT_SCRIPT_NAME === 'index.php' && Auth::isManager($this->tree)) {
-			return new Menu(I18N::translate('Customize this page'), 'index_edit.php?gedcom_id=' . Auth::id(), 'menu-change-blocks');
+			return new Menu(I18N::translate('Customize this page'), 'index_edit.php?gedcom_id=' . $this->tree->getTreeId(), 'menu-change-blocks');
 		} else {
 			return null;
 		}
