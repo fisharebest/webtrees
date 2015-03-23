@@ -1498,6 +1498,7 @@ return array(
     'Fisharebest\\Webtrees\\GoogleMapsModule' => $baseDir . '/app/Module/GoogleMapsModule.php',
     'Fisharebest\\Webtrees\\GregorianDate' => $baseDir . '/app/Date/GregorianDate.php',
     'Fisharebest\\Webtrees\\HijriDate' => $baseDir . '/app/Date/HijriDate.php',
+    'Fisharebest\\Webtrees\\HitCounter' => $baseDir . '/app/HitCounter.php',
     'Fisharebest\\Webtrees\\HourglassController' => $baseDir . '/app/Controller/HourglassController.php',
     'Fisharebest\\Webtrees\\Html' => $baseDir . '/app/Html.php',
     'Fisharebest\\Webtrees\\HtmlBlockModule' => $baseDir . '/app/Module/HtmlBlockModule.php',

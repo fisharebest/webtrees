@@ -9,8 +9,8 @@
  */
 class Translation {
 	// Constants for processing .MO files
-	const MO_MAGIC_LITTLE_ENDIAN = 0x950412de;
-	const MO_MAGIC_BIG_ENDIAN = 0xde120495;
+	const MO_MAGIC_LITTLE_ENDIAN = '950412de';
+	const MO_MAGIC_BIG_ENDIAN = 'de120495';
 	const PACK_LITTLE_ENDIAN = 'V';
 	const PACK_BIG_ENDIAN = 'N';
 
@@ -67,7 +67,7 @@ class Translation {
 	 * @param integer  $count
 	 * @param string   $pack   "N" for big-endian, "V" for little-endian
 	 *
-	 * return string
+	 * @return integer[]
 	 */
 	private function readMoWords($fp, $offset, $count, $pack) {
 		fseek($fp, $offset);
@@ -88,7 +88,7 @@ class Translation {
 		// How is the numeric data packed in the .MO file?
 		$magic = $this->readMoWords($fp, 0, 1, self::PACK_LITTLE_ENDIAN);
 
-		switch ($magic[1]) {
+		switch (dechex($magic[1])) {
 			case self::MO_MAGIC_LITTLE_ENDIAN:
 				$pack = self::PACK_LITTLE_ENDIAN;
 				break;
