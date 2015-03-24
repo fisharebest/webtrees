@@ -110,7 +110,7 @@ class Menu {
 	/**
 	 * Set the CSS classes for the (legacy) javascript menus
 	 *
-	 * @param string $class
+	 * @param string $menuclass
 	 * @param string $submenuclass
 	 * @param string $iconclass
 	 */
