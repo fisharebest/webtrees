@@ -131,11 +131,11 @@ class ColorsTheme extends CloudsTheme {
 		$menu = new Menu(/* I18N: A colour scheme */ I18N::translate('Palette'), '#', 'menu-color');
 
 		foreach ($this->palettes as $palette_id => $palette_name) {
-			$submenu = new Menu($palette_name, get_query_url(array('themecolor' => $palette_id), '&amp;'), 'menu-color-' . $palette_id);
-			if ($this->palette === $palette_id) {
-				$submenu->addClass('', '', 'active');
-			}
-			$menu->addSubmenu($submenu);
+			$menu->addSubmenu(new Menu(
+				$palette_name,
+				get_query_url(array('themecolor' => $palette_id), '&amp;'),
+				'menu-color-' . $palette_id . ($this->palette === $palette_id ? ' active' : '')
+			));
 		}
 
 		return $menu;

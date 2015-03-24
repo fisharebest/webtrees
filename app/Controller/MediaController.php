@@ -138,20 +138,17 @@ class MediaController extends GedcomRecordController {
 	static function getMediaListMenu(Media $mediaobject) {
 		$html = '';
 
-		$menu = new Menu(I18N::translate('Edit details'), '#', '', "return window.open('addmedia.php?action=editmedia&amp;pid=" . $mediaobject->getXref() . "', '_blank', edit_window_specs);");
-		$menu->addClass('', '', 'lb-image_edit');
+		$menu = new Menu(I18N::translate('Edit details'), '#', 'lb-image_edit', "return window.open('addmedia.php?action=editmedia&amp;pid=" . $mediaobject->getXref() . "', '_blank', edit_window_specs);");
 		$html .= '<ul class="makeMenu lb-menu">' . $menu->getMenuAsList() . '</ul>';
 
-		$menu = new Menu(I18N::translate('Manage links'), '#', '', "return ilinkitem('" . $mediaobject->getXref() . "','person')", array(
+		$menu = new Menu(I18N::translate('Manage links'), '#', 'lb-image_link', "return ilinkitem('" . $mediaobject->getXref() . "','person')", array(
 			new Menu(I18N::translate('Link this media object to an individual'), '#', '', "return ilinkitem('" . $mediaobject->getXref() . "','person')"),
 			new Menu(I18N::translate('Link this media object to a family'), '#', '', "return ilinkitem('" . $mediaobject->getXref() . "','family')"),
 			new Menu(I18N::translate('Link this media object to a source'), '#', '', "return ilinkitem('" . $mediaobject->getXref() . "','source')"),
 		));
-		$menu->addClass('', '', 'lb-image_link');
 		$html .= '<ul class="makeMenu lb-menu">' . $menu->getMenuAsList() . '</ul>';
 
-		$menu = new Menu(I18N::translate('View details'), $mediaobject->getHtmlUrl());
-		$menu->addClass('', '', 'lb-image_view');
+		$menu = new Menu(I18N::translate('View details'), $mediaobject->getHtmlUrl(), 'lb-image_view');
 		$html .= '<ul class="makeMenu lb-menu">' . $menu->getMenuAsList() . '</ul>';
 
 		return '<div class="lightbox-menu">' . $html . '</div>';
