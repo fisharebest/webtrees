@@ -722,7 +722,7 @@ $controller
 	<!-- CALENDAR_FORMAT -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Calendar conversion') ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Calendar conversion'); ?>
 			<label class="sr-only" for="CALENDAR_FORMAT0">
 				<?php echo /* I18N: A configuration setting */ I18N::translate('Calendar conversion'); ?> 1
 			</label>

@@ -1040,7 +1040,7 @@ abstract class BaseTheme {
 			// The top level menu is the pedigree chart
 			$menu = $this->menuChartPedigree($individual);
 			$menu->setLabel(I18N::translate('Charts'));
-			$menu->setId('menu-chart');
+			$menu->setClass('menu-chart');
 
 			$submenus = array_filter(array(
 				$this->menuChartAncestors($individual),
@@ -1338,11 +1338,11 @@ abstract class BaseTheme {
 
 		foreach (I18N::activeLocales() as $locale) {
 			$language_tag = $locale->languageTag();
-			$submenu = new Menu($locale->endonym(), get_query_url(array('lang' => $language_tag), '&amp;'), 'menu-language-' . $language_tag);
-			if (WT_LOCALE === $language_tag) {
-				$submenu->addClass('', '', 'active');
-			}
-			$menu->addSubmenu($submenu);
+			$menu->addSubmenu(new Menu(
+				$locale->endonym(),
+				get_query_url(array('lang' => $language_tag), '&amp;'),
+				'menu-language-' . $language_tag . (WT_LOCALE === $language_tag ? ' active' : '')
+			));
 		}
 
 		if (count($menu->getSubmenus()) > 1 && !Auth::isSearchEngine()) {
@@ -1678,10 +1678,11 @@ abstract class BaseTheme {
 		if ($this->tree && !Auth::isSearchEngine() && Site::getPreference('ALLOW_USER_THEMES') && $this->tree->getPreference('ALLOW_THEME_DROPDOWN')) {
 			$submenus = array();
 			foreach (Theme::installedThemes() as $theme) {
-				$submenu = new Menu($theme->themeName(), get_query_url(array('theme' => $theme->themeId()), '&amp;'), 'menu-theme-' . $theme->themeId());
-				if ($theme === $this) {
-					$submenu->addClass('', '', 'active');
-				}
+				$submenu = new Menu(
+					$theme->themeName(),
+					get_query_url(array('theme' => $theme->themeId()), '&amp;'),
+					'menu-theme-' . $theme->themeId() . ($theme === $this ? ' active' : '')
+				);
 				$submenus[] = $submenu;
 			}
 

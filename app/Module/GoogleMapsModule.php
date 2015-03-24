@@ -2314,7 +2314,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 				controlText.style.fontSize = '12px';
 				controlText.style.paddingLeft = '15px';
 				controlText.style.paddingRight = '15px';
-				controlText.innerHTML = '<b><?php echo I18N::translate('Redraw map')?></b>';
+				controlText.innerHTML = '<b><?php echo I18N::translate('Redraw map'); ?></b>';
 				controlUI.appendChild(controlText);
 
 				// Setup the click event listeners: simply set the map to original LatLng
@@ -3694,7 +3694,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 				controlText.style.fontSize = '12px';
 				controlText.style.paddingLeft = '15px';
 				controlText.style.paddingRight = '15px';
-				controlText.innerHTML = '<b><?php echo I18N::translate('Redraw map')?><\/b>';
+				controlText.innerHTML = '<b><?php echo I18N::translate('Redraw map'); ?><\/b>';
 				controlUI.appendChild(controlText);
 
 				// Setup the click event listeners: simply set the map to original LatLng
@@ -4035,7 +4035,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 			<tr>
 				<td class="descriptionbox"><?php echo GedcomTag::getLabel('LATI'); ?></td>
 				<td class="optionbox" colspan="2">
-					<input type="text" id="NEW_PLACE_LATI" name="NEW_PLACE_LATI" placeholder="<?php echo /* I18N: Measure of latitude/longitude */ I18N::translate('degrees') ?>" value="<?php echo abs($place_lati); ?>" size="20" onchange="updateMap();">
+					<input type="text" id="NEW_PLACE_LATI" name="NEW_PLACE_LATI" placeholder="<?php echo /* I18N: Measure of latitude/longitude */ I18N::translate('degrees'); ?>" value="<?php echo abs($place_lati); ?>" size="20" onchange="updateMap();">
 					<select name="LATI_CONTROL" onchange="updateMap();">
 						<option value="PL_N" <?php if ($place_lati >= 0) echo "selected"; echo ">", I18N::translate('north'); ?></option>
 						<option value="PL_S" <?php if ($place_lati < 0) echo "selected"; echo ">", I18N::translate('south'); ?></option>
@@ -4045,7 +4045,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 			<tr>
 				<td class="descriptionbox"><?php echo GedcomTag::getLabel('LONG'); ?></td>
 				<td class="optionbox" colspan="2">
-					<input type="text" id="NEW_PLACE_LONG" name="NEW_PLACE_LONG" placeholder="<?php echo I18N::translate('degrees') ?>" value="<?php echo abs($place_long); ?>" size="20" onchange="updateMap();">
+					<input type="text" id="NEW_PLACE_LONG" name="NEW_PLACE_LONG" placeholder="<?php echo I18N::translate('degrees'); ?>" value="<?php echo abs($place_long); ?>" size="20" onchange="updateMap();">
 					<select name="LONG_CONTROL" onchange="updateMap();">
 						<option value="PL_E" <?php if ($place_long >= 0) echo "selected"; echo ">", I18N::translate('east'); ?></option>
 						<option value="PL_W" <?php if ($place_long < 0) echo "selected"; echo ">", I18N::translate('west'); ?></option>
@@ -4599,7 +4599,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 				->execute(array($place['place_id']))
 				->fetchOne();
 			if ($noRows == 0) { ?>
-				<td><a href="#" onclick="delete_place(<?php echo $place['place_id']?>);return false;" class="icon-delete" title="<?php echo I18N::translate('Remove'); ?>"></a></td>
+				<td><a href="#" onclick="delete_place(<?php echo $place['place_id']; ?>);return false;" class="icon-delete" title="<?php echo I18N::translate('Remove'); ?>"></a></td>
 		<?php       } else { ?>
 				<td><i class="icon-delete-grey"></i></td>
 		<?php       } ?>

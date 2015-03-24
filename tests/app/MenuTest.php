@@ -40,7 +40,7 @@ class MenuTest extends PHPUnit_Framework_TestCase {
 
 		$this->assertSame('Test!', $menu->getLabel());
 		$this->assertSame('#', $menu->getLink());
-		$this->assertSame('', $menu->getId());
+		$this->assertSame('', $menu->getCLass());
 		$this->assertSame('', $menu->getOnclick());
 		$this->assertSame(array(), $menu->getSubmenus());
 	}
@@ -52,11 +52,11 @@ class MenuTest extends PHPUnit_Framework_TestCase {
 	 */
 	public function testConstructorNonDefaults() {
 		$submenus = array(new Menu('Submenu'));
-		$menu = new Menu('Test!', 'link.html', 'link-id', 'test();', $submenus);
+		$menu = new Menu('Test!', 'link.html', 'link-class', 'test();', $submenus);
 
 		$this->assertSame('Test!', $menu->getLabel());
 		$this->assertSame('link.html', $menu->getLink());
-		$this->assertSame('link-id', $menu->getId());
+		$this->assertSame('link-class', $menu->getClass());
 		$this->assertSame('test();', $menu->getOnclick());
 		$this->assertSame($submenus, $menu->getSubmenus());
 	}
@@ -97,10 +97,10 @@ class MenuTest extends PHPUnit_Framework_TestCase {
 	public function testGetterSetterId() {
 		$menu = new Menu('Test!');
 
-		$return = $menu->setId('link-id');
+		$return = $menu->setClass('link-class');
 
 		$this->assertSame($return, $menu);
-		$this->assertSame('link-id', $menu->getId());
+		$this->assertSame('link-class', $menu->getClass());
 	}
 
 	/**
@@ -154,7 +154,7 @@ class MenuTest extends PHPUnit_Framework_TestCase {
 	public function testFormatAsList() {
 		$menu = new Menu('Test!', 'link.html');
 
-		$this->assertSame('<li><a href="link.html">Test!</a></li>', $menu->getMenuAsList());
+		$this->assertSame('<li class=""><a href="link.html">Test!</a></li>', $menu->getMenuAsList());
 	}
 
 	/**
@@ -162,10 +162,10 @@ class MenuTest extends PHPUnit_Framework_TestCase {
 	 *
 	 * @return void
 	 */
-	public function testFormatAsListWithId() {
-		$menu = new Menu('Test!', 'link.html', 'link-id');
+	public function testFormatAsListWithClass() {
+		$menu = new Menu('Test!', 'link.html', 'link-class');
 
-		$this->assertSame('<li id="link-id"><a href="link.html">Test!</a></li>', $menu->getMenuAsList());
+		$this->assertSame('<li class="link-class"><a href="link.html">Test!</a></li>', $menu->getMenuAsList());
 	}
 
 	/**
@@ -176,7 +176,7 @@ class MenuTest extends PHPUnit_Framework_TestCase {
 	public function testFormatAsListWithNoTarget() {
 		$menu = new Menu('Test!', '');
 
-		$this->assertSame('<li><a>Test!</a></li>', $menu->getMenuAsList());
+		$this->assertSame('<li class=""><a>Test!</a></li>', $menu->getMenuAsList());
 	}
 
 	/**
@@ -187,7 +187,7 @@ class MenuTest extends PHPUnit_Framework_TestCase {
 	public function testFormatAsListWithHashTarget() {
 		$menu = new Menu('Test!');
 
-		$this->assertSame('<li><a href="#">Test!</a></li>', $menu->getMenuAsList());
+		$this->assertSame('<li class=""><a href="#">Test!</a></li>', $menu->getMenuAsList());
 	}
 
 	/**
@@ -198,7 +198,7 @@ class MenuTest extends PHPUnit_Framework_TestCase {
 	public function testFormatAsListWithOnclick() {
 		$menu = new Menu('Test!', '#', '', 'return test();');
 
-		$this->assertSame('<li><a href="#" onclick="return test();">Test!</a></li>', $menu->getMenuAsList());
+		$this->assertSame('<li class=""><a href="#" onclick="return test();">Test!</a></li>', $menu->getMenuAsList());
 	}
 
 	/**
@@ -207,8 +207,8 @@ class MenuTest extends PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function testFormatAsListWithOnclickAndId() {
-		$menu = new Menu('Test!', '#', 'link-id', 'return test();');
+		$menu = new Menu('Test!', '#', 'link-class', 'return test();');
 
-		$this->assertSame('<li id="link-id"><a href="#" onclick="return test();">Test!</a></li>', $menu->getMenuAsList());
+		$this->assertSame('<li class="link-class"><a href="#" onclick="return test();">Test!</a></li>', $menu->getMenuAsList());
 	}
 }

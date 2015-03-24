@@ -679,7 +679,7 @@ $controller
 </form>
 <br>
 <br>
-<table class="table table-bordered table-condensed" id="media-table-<?php echo $table_id ?>">
+<table class="table table-bordered table-condensed" id="media-table-<?php echo $table_id; ?>">
 	<thead>
 		<tr>
 			<th><?php echo I18N::translate('Media file'); ?></th>

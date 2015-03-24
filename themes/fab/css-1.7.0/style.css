@@ -4288,11 +4288,11 @@ header h1 {
 	font-weight: 900;
 }
 
-#menu-language li {
+.menu-language li {
 	text-align: left; /* The language menu is always LTR, even on RTL pages */
 }
 
-#menu-theme li {
+.menu-theme li {
 	text-align: left; /* The theme menu is always LTR, even on RTL pages */
 }
 
