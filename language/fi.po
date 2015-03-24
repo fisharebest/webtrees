@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-20 18:27+0100\n"
+"PO-Revision-Date: 2015-03-24 10:28+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Finnish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
@@ -6469,7 +6469,7 @@ msgstr "Frimaire"
 #. I18N: label for the start of a date range (from x to y)
 #: admin_site_change.php:277 admin_site_logs.php:248
 msgid "From"
-msgstr "Lähettäjä"
+msgstr "Päivästä"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:89
@@ -14504,7 +14504,7 @@ msgstr "Otsikko hepreaksi"
 #. I18N: label for the end of a date range (from x to y)
 #: admin_site_change.php:287 admin_site_logs.php:258
 msgid "To"
-msgstr "Vastaanottaja"
+msgstr "Päivään"
 
 #: app/Module/HtmlBlockModule.php:268
 msgid "To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
