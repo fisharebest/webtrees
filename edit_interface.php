@@ -1439,7 +1439,7 @@ case 'addmedia_links':
 	check_record_access($person);
 
 	$controller
-		->setPageTitle(I18N::translate('Family navigator'))
+		->setPageTitle(I18N::translate('Family navigator') . ' — ' . $person->getFullName())
 		->pageHeader();
 
 	?>
