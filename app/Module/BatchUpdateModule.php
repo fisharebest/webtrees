@@ -132,8 +132,7 @@ class BatchUpdateModule extends Module implements ModuleConfigInterface {
 					}
 				}
 				$this->xref = '';
-
-				return '';
+				break;
 			}
 
 			// Make sure that our requested record really does need updating.
