@@ -305,8 +305,8 @@ class BatchUpdateModule extends Module implements ModuleConfigInterface {
 	 */
 	private function getPluginList() {
 		$plugins = array();
-		$dir_handle = opendir(__DIR__);
-		while ($file = readdir($dir_handle)) {
+		$dir_handle = opendir(__DIR__ . '/BatchUpdate');
+		while (($file = readdir($dir_handle)) !== false) {
 			if (substr($file, -10) == 'Plugin.php' && $file !== 'BatchUpdateBasePlugin.php') {
 				$class = __NAMESPACE__ . '\\' . basename($file, '.php');
 				$plugins[$class] = new $class;
