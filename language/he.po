@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-24 15:52+0100\n"
+"PO-Revision-Date: 2015-03-26 07:18+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
@@ -14414,7 +14414,9 @@ msgstr "אתר האינטרנט הזה אינו זמין באופן זמני"
 #: admin_trees_manage.php:183
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
-msgstr "פעולה זו ימחק את כל נתוני חקר שושלת יוחסין מן “%s” ויחליף אותו עם נתונים קובץ GEDCOM."
+msgstr ""
+"פעולה זו תמחק את כל נתוני חקר שושלת יוחסין מן “%s” ותחליף אותו עם נתונים "
+"קובץ GEDCOM."
 
 #: app/Module/GoogleMapsModule.php:1781
 msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables."
