@@ -16,6 +16,8 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Rhumsaa\Uuid\Uuid;
+
 /**
  * Class Menu - System for generating menus.
  */
@@ -211,50 +213,32 @@ class Menu {
 	 * @return string
 	 */
 	public function getMenu() {
-		global $menucount;
+		$menu_id     = 'menu-' . Uuid::uuid4();
+		$sub_menu_id = 'sub-' . $menu_id;
 
-		if (!isset($menucount)) {
-			$menucount = 0;
-		} else {
-			$menucount++;
-		}
-		$id = $menucount . rand();
-		$c = count($this->submenus);
-		$output = "<div id=\"menu{$id}\" class=\"{$this->menuclass}\">";
-		$link = "<a href=\"{$this->link}\" onmouseover=\"";
-		if ($c >= 0) {
-			$link .= "show_submenu('menu{$id}_subs', 'menu{$id}');";
-		}
-		$link .= '" onmouseout="';
-		if ($c >= 0) {
-			$link .= "timeout_submenu('menu{$id}_subs');";
-		}
+		$html = '<a href="' . $this->link . '"';
 		if ($this->onclick) {
-			$link .= "\" onclick=\"{$this->onclick}";
+			$html .= ' onclick="' . $this->onclick . '"';
 		}
-		$link .= "\">";
-		$output .= $link;
-		$output .= $this->label;
-		$output .= "</a>";
+		if (!empty($this->submenus)) {
+			$html .= ' onmouseover="show_submenu(\'' . $sub_menu_id . '\', \'' . $menu_id . '\');"';
+			$html .= ' onmouseout="timeout_submenu(\'' . $sub_menu_id . '\');"';
+		}
+		$html .= '>' . $this->label . '</a>';
 
-		if ($c > 0) {
-			$submenuid = "menu{$id}_subs";
-			if (I18N::direction() === 'ltr') {
-				$output .= '<div style="text-align: left;">';
-			} else {
-				$output .= '<div style="text-align: right;">';
-			}
-			$output .= "<div id=\"menu{$id}_subs\" class=\"{$this->submenuclass}\" style=\"position: absolute; visibility: hidden; z-index: 100;";
-			$output .= "\" onmouseover=\"show_submenu('{$this->parentmenu}'); show_submenu('{$submenuid}');\" onmouseout=\"timeout_submenu('menu{$id}_subs');\">";
+		if (!empty($this->submenus)) {
+			$html .= '<div id="' . $sub_menu_id . '" class="' . $this->submenuclass . '"';
+			$html .= ' style="position: absolute; visibility: hidden; z-index: 100; text-align: ' . (I18N::direction() === 'ltr' ? 'left' : 'right') . '"';
+			$html .= ' onmouseover="show_submenu(\'' . $this->parentmenu . '\'); show_submenu(\'' . $sub_menu_id . '\');"';
+			$html .= ' onmouseout="timeout_submenu(\'' . $sub_menu_id . '\');">';
 			foreach ($this->submenus as $submenu) {
-				$submenu->parentmenu = $submenuid;
-				$output .= $submenu->getMenu();
+				$submenu->parentmenu = $sub_menu_id;
+				$html .= $submenu->getMenu();
 			}
-			$output .= "</div></div>";
+			$html .= '</div></div>';
 		}
-		$output .= "</div>";
 
-		return $output;
+		return '<div id="' . $menu_id . '" class="' . $this->menuclass . '">' . $html . '</div>';
 	}
 
 	/**

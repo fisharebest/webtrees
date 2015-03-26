@@ -388,7 +388,6 @@ class FrequentlyAskedQuestionsModule extends Module implements ModuleMenuInterfa
 		if (empty($faqs)) {
 			echo '<tr><td class="error center" colspan="5">', I18N::translate('The FAQ list is empty.'), '</td></tr></table>';
 		} else {
-			$trees = Tree::getAll();
 			foreach ($faqs as $faq) {
 				// NOTE: Print the position of the current item
 				echo '<tr class="faq_edit_pos"><td>';
@@ -396,7 +395,7 @@ class FrequentlyAskedQuestionsModule extends Module implements ModuleMenuInterfa
 				if ($faq->gedcom_id == null) {
 					echo I18N::translate('All');
 				} else {
-					echo $trees[$faq->gedcom_id]->getTitleHtml();
+					echo $WT_TREE->getTitleHtml();
 				}
 				echo '</td>';
 				// NOTE: Print the edit options of the current item

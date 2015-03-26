@@ -2312,7 +2312,7 @@ function listStartHandler($attrs) {
 					if ($match[2] == "LTE") {
 						$sql_where .= " AND {$attr}.d_julianday2<=" . $date->minimumJulianDay();
 					} else {
-						$sql_where[] = " AND {$attr}.d_julianday1>=" . $date->minimumJulianDay();
+						$sql_where .= " AND {$attr}.d_julianday1>=" . $date->minimumJulianDay();
 					}
 					if ($sortby == $match[1]) {
 						$sortby = "";

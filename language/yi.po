@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-23 03:39+0100\n"
+"PO-Revision-Date: 2015-03-25 02:30+0100\n"
 "Last-Translator: Familia Boim <familiaboim@gmail.com>\n"
 "Language-Team: Yiddish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/yi/>\n"
@@ -325,8 +325,8 @@ msgstr[1] "%s חדשים צוריק"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "איין צעטל איז דערהייַנטיקט."
+msgstr[1] "%s צעטאלעך געווען דערהייַנטיקט."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: includes/functions/functions.php:2108
@@ -455,19 +455,19 @@ msgstr "&gt;אויסקלייַבן&lt;"
 #: app/I18N.php:486 app/I18N.php:490
 #, php-format
 msgid "(aged %s)"
-msgstr ""
+msgstr "(%s אַלט)"
 
 #. I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (aged less than 21 years)
 #: app/I18N.php:480
 #, php-format
 msgid "(aged less than %s)"
-msgstr ""
+msgstr "(יינגער ווי %s אַלט)"
 
 #. I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (aged more than 21 years)
 #: app/I18N.php:483
 #, php-format
 msgid "(aged more than %s)"
-msgstr ""
+msgstr "(עלטער ווי %s אַלט)"
 
 #. I18N: %s is a placeholder for a number
 #: app/I18N.php:837
@@ -478,12 +478,12 @@ msgstr "(געפילטערט פון %s גאַנץ איינסן)"
 #. I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (in childhood)
 #: app/I18N.php:451
 msgid "(in childhood)"
-msgstr ""
+msgstr "(אין קינדשאַפט)"
 
 #. I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (in infancy)
 #: app/I18N.php:448
 msgid "(in infancy)"
-msgstr ""
+msgstr "(אין קינדהייַט)"
 
 #. I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (stillborn)
 #: app/I18N.php:445
@@ -3073,7 +3073,7 @@ msgstr "קווורע פון אַ זון"
 
 #: app/Gedcom/GedcomTag.php:1187
 msgid "Burial of a spouse"
-msgstr "קווורע פון אַ מאַן אָדער פרוי"
+msgstr "קבורה פון אַ מאַן / פרוי"
 
 #: app/Gedcom/GedcomTag.php:1185
 msgid "Burial of a wife"
@@ -3360,11 +3360,11 @@ msgstr ""
 
 #: admin_modules.php:174
 msgid "Chart"
-msgstr ""
+msgstr "טשאַרט"
 
 #: app/Module/ChartsBlockModule.php:176 statistics.php:582
 msgid "Chart type"
-msgstr ""
+msgstr "סאָרט טשאַרט"
 
 #. I18N: Name of a module/block
 #: admin_modules.php:148 admin_trees_config.php:1321
@@ -3641,7 +3641,7 @@ msgstr "ריין אַרויף דאַטן טעקע"
 
 #: lifespan.php:193 timeline.php:307
 msgid "Clear chart"
-msgstr ""
+msgstr "ליידיק טשאַרט"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/Gedcom/GedcomCodeStat.php:75
@@ -4225,7 +4225,7 @@ msgstr "דאלאס, טעקסאס"
 #. I18N: A summary of the system status
 #: admin.php:399
 msgid "Dashboard"
-msgstr ""
+msgstr "דאַשבאָאַרד"
 
 #. I18N: gedcom tag DATA
 #: app/Gedcom/GedcomTag.php:343
@@ -4450,7 +4450,7 @@ msgstr "טאָג"
 
 #: calendar.php:541
 msgid "Day not set"
-msgstr ""
+msgstr "טאָג ניט באַשטימט"
 
 #: timeline.php:122 timeline.php:124 timeline.php:126
 msgid "Day:"
@@ -4586,7 +4586,7 @@ msgstr "פטירה"
 
 #: app/Stats.php:1492 statistics.php:542
 msgid "Death by country"
-msgstr ""
+msgstr "פטירה דורך לאַנד"
 
 #: modules_v3/bdm_report/report.xml:10 modules_v3/death_report/report.xml:8
 msgid "Death date range end"
@@ -4712,7 +4712,7 @@ msgstr "פּטירע פון אַ זון"
 
 #: app/Gedcom/GedcomTag.php:1447
 msgid "Death of a spouse"
-msgstr "טויט פון אַ מאַן אָדער פרוי"
+msgstr "פטירה פון אַ מאַן / פרוי"
 
 #: app/Gedcom/GedcomTag.php:1445
 msgid "Death of a wife"
@@ -4739,7 +4739,7 @@ msgstr "פּטירות"
 
 #: app/Stats.php:1852 statistics.php:120
 msgid "Deaths by century"
-msgstr ""
+msgstr "פטירות דורך יאָרהונדערט"
 
 #: app/Date/CalendarDate.php:337
 msgctxt "Abbreviation for December"
@@ -4790,7 +4790,7 @@ msgstr ""
 
 #: app/Module/WelcomeBlockModule.php:42
 msgid "Default chart"
-msgstr ""
+msgstr "פעליקייַט טשאַרט"
 
 #: admin_trees_manage.php:413
 msgid "Default family tree"
@@ -5305,7 +5305,7 @@ msgstr "רעדאַגירן נאָמען"
 
 #: app/Controller/NoteController.php:47
 msgid "Edit note"
-msgstr "רעדאַגירן טאָן"
+msgstr "רעדאַגירן צעטל"
 
 #: admin_trees_config.php:1758
 msgid "Edit options"
@@ -5876,7 +5876,7 @@ msgstr "משפּחה ווי אַ קינד"
 #. I18N: gedcom tag FAMS
 #: app/Gedcom/GedcomTag.php:453
 msgid "Family as a spouse"
-msgstr ""
+msgstr "משפּחה ווי אַ מאַן / פרוי"
 
 #: app/Controller/FamilyBookController.php:58 app/Theme/BaseTheme.php:1073
 msgid "Family book"
@@ -5988,7 +5988,7 @@ msgstr ""
 
 #: app/Theme/BaseTheme.php:899
 msgid "Family with spouse"
-msgstr ""
+msgstr "משפּחה מיט אַ מאַן / פרוי"
 
 #: app/Module/FamilyTreeStatisticsModule.php:167
 #: app/Module/FamilyTreeStatisticsModule.php:379
@@ -6004,13 +6004,13 @@ msgstr "פאמיליע מיט ווייַב"
 #: app/Controller/FanchartController.php:53
 #: app/Controller/FanchartController.php:358 app/Theme/BaseTheme.php:1087
 msgid "Fan chart"
-msgstr ""
+msgstr "בויגן טשאַרט"
 
 #. I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is an individual’s name
 #: app/Controller/FanchartController.php:50
 #, php-format
 msgid "Fan chart of %s"
-msgstr "פאָכער טשאַרט פון %s"
+msgstr "בויגן טשאַרט פון %s"
 
 #: app/Date/JalaliDate.php:150
 msgctxt "Abbreviation for Persian month: Farvardin"
@@ -7034,14 +7034,14 @@ msgstr "האנג קאנג"
 #: app/Controller/FanchartController.php:359
 #: app/Module/ChartsBlockModule.php:182 app/Theme/BaseTheme.php:1116
 msgid "Hourglass chart"
-msgstr ""
+msgstr "זאַמד זייגער טשאַרט"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/HourglassController.php:82
 #: app/Module/ChartsBlockModule.php:96
 #, php-format
 msgid "Hourglass chart of %s"
-msgstr ""
+msgstr "זאַמד זייגער טשאַרט פון %s"
 
 #: app/Module/GoogleMapsModule.php:401 app/Module/GoogleMapsModule.php:4026
 msgid "House"
@@ -9248,7 +9248,7 @@ msgstr ""
 
 #: app/Module/UserWelcomeModule.php:45 app/Theme/BaseTheme.php:1558
 msgid "My pedigree"
-msgstr "מיין ייכעס"
+msgstr "מיין יחוס"
 
 #. I18N: %s is an error message
 #: admin_pgv_to_wt.php:116
@@ -10307,27 +10307,27 @@ msgstr "פּאַססוואָרדס מוזן אַנטהאַלטן לפּחות 6 
 #: app/Theme/BaseTheme.php:1138 modules_v3/pedigree_report/report.xml:3
 #: modules_v3/pedigree_report/report.xml:40
 msgid "Pedigree"
-msgstr ""
+msgstr "יחוס"
 
 #: modules_v3/pedigree_report/report.xml:736
 msgid "Pedigree Chart"
-msgstr "ייכעס טשאַרט"
+msgstr "יחוס טשאַרט"
 
 #: app/Controller/FanchartController.php:349
 #: app/Module/GoogleMapsModule.php:1389 app/Theme/BaseTheme.php:1150
 msgid "Pedigree map"
-msgstr ""
+msgstr "יחוס מאַפּע"
 
 #. I18N: %s is an individual’s name
 #: app/Module/GoogleMapsModule.php:761
 #, php-format
 msgid "Pedigree map of %s"
-msgstr ""
+msgstr "יחוס מאַפּע פון %s"
 
 #: app/Module/ChartsBlockModule.php:71
 #, php-format
 msgid "Pedigree of %s"
-msgstr ""
+msgstr "יחוס פון %s"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/PedigreeController.php:83
@@ -10459,7 +10459,7 @@ msgstr ""
 #: app/Module/GoogleMapsModule.php:459 app/Theme/BaseTheme.php:1426
 #: placelist.php:39 placelist.php:41 placelist.php:142
 msgid "Place hierarchy"
-msgstr ""
+msgstr "ערטער"
 
 #: app/Gedcom/GedcomTag.php:689
 msgid "Place in Hebrew"
@@ -12020,7 +12020,7 @@ msgstr "געטיילט צעטל"
 #. I18N: Label for search field
 #: find.php:250
 msgid "Shared note contains"
-msgstr ""
+msgstr "געטיילט צעטל איז כּולל"
 
 #: app/Theme/BaseTheme.php:1415
 #: includes/functions/functions_print_lists.php:1068 notelist.php:30
@@ -12765,7 +12765,7 @@ msgstr ""
 #: modules_v3/missing_facts_report/report.xml:525
 #: modules_v3/missing_facts_report/report.xml:566
 msgid "Source"
-msgstr "מאָקער"
+msgstr "מקור"
 
 #: admin_trees_config.php:826
 msgid "Source ID prefix"
@@ -12784,7 +12784,7 @@ msgstr "מקור כּולל"
 #. I18N: A configuration setting
 #: admin_trees_config.php:2265 modules_v3/fact_sources/report.xml:6
 msgid "Source type"
-msgstr ""
+msgstr "סאָרט מקור"
 
 #. I18N: Name of a module
 #: admin.php:678 admin.php:727 app/Controller/SearchController.php:500
@@ -12844,7 +12844,7 @@ msgstr "ספוקיין, וואשינגטאן"
 
 #: modules_v3/bdm_report/report.xml:166
 msgid "Spouse"
-msgstr "ספּאַוס"
+msgstr "מאַן / פרוי"
 
 #: app/Gedcom/GedcomTag.php:455
 msgid "Spouse census date"
@@ -12856,7 +12856,7 @@ msgstr ""
 
 #: app/Gedcom/GedcomTag.php:465
 msgid "Spouse note"
-msgstr ""
+msgstr "צעטל אויף אַ מאַן / פרוי"
 
 #: includes/functions/functions_print_lists.php:1524
 msgid "Spouses"
@@ -13296,7 +13296,7 @@ msgstr "די פרטים פון דעם משפּחה זענען פּריוואַט
 
 #: individual.php:84
 msgid "The details of this individual are private."
-msgstr "די פרטים פון דעם יחיד זענען פּריוואַט."
+msgstr "פרטים וועגן דעם מענטש זענען פּריוואַט."
 
 #. I18N: %s is a filename
 #: admin_site_upgrade.php:291 admin_trees_export.php:42
@@ -15265,7 +15265,7 @@ msgstr "זען הערות"
 
 #: app/Module/SlideShowModule.php:166 medialist.php:309
 msgid "View source"
-msgstr "זע מאָקער"
+msgstr "זע מקור"
 
 #: app/Module/FamilyTreeStatisticsModule.php:181
 msgid "View statistics as graphs"
@@ -16475,7 +16475,7 @@ msgstr ""
 
 #: includes/functions/functions.php:739
 msgid "ex-spouse"
-msgstr ""
+msgstr "פרייַערדיק מאַן / פרוי"
 
 #: includes/functions/functions.php:721
 msgid "ex-wife"

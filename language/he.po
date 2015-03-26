@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-21 19:50+0100\n"
+"PO-Revision-Date: 2015-03-24 15:52+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
@@ -11856,7 +11856,7 @@ msgstr "שם השולח"
 #. I18N: Menu entry
 #: admin_site_config.php:135 app/Theme/AdministrationTheme.php:69
 msgid "Sending email"
-msgstr "שולח דוא״ל"
+msgstr "שילוח דוא״ל"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:407
