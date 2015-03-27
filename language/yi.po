@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-25 02:30+0100\n"
+"PO-Revision-Date: 2015-03-27 16:14+0100\n"
 "Last-Translator: Familia Boim <familiaboim@gmail.com>\n"
 "Language-Team: Yiddish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/yi/>\n"
@@ -311,8 +311,8 @@ msgstr[1] "%s מינוט צוריק"
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] "%s חודש"
-msgstr[1] "%s חדשים"
+msgstr[0] "%s מאָנאַט"
+msgstr[1] "%s מאנאטן"
 
 #: app/I18N.php:513
 #, php-format
@@ -3770,14 +3770,14 @@ msgstr "קאָמאָראָס"
 #: app/Controller/CompactController.php:44
 #: app/Controller/FanchartController.php:357 app/Theme/BaseTheme.php:1051
 msgid "Compact tree"
-msgstr ""
+msgstr "קאמפאקטע בוים"
 
 #. I18N: %s is an individual’s name
 #: app/Controller/CompactController.php:41
 #: app/Controller/CompactController.php:119
 #, php-format
 msgid "Compact tree of %s"
-msgstr "קאָמפּאַקט בוים פון %s"
+msgstr "קאמפאקטע בוים פון %s"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/Gedcom/GedcomCodeStat.php:99
@@ -4267,7 +4267,7 @@ msgstr ""
 #: modules_v3/marriage_report/report.xml:43
 #: modules_v3/occupation_report/report.xml:54
 msgid "Date"
-msgstr ""
+msgstr "דאטום"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1694
@@ -4408,7 +4408,7 @@ msgstr ""
 
 #: help_text.php:174 statistics.php:615
 msgid "Date range"
-msgstr ""
+msgstr "דאטום צווישן"
 
 #: help_text.php:172
 msgid "Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range."
@@ -4416,11 +4416,11 @@ msgstr ""
 
 #: admin_users.php:850
 msgid "Date registered"
-msgstr "טאָג רעגיסטרירט"
+msgstr "דאטום רעגיסטרירט"
 
 #: app/Module/UserMessagesModule.php:79
 msgid "Date sent"
-msgstr "טאָג געשיקט"
+msgstr "דאטום געשיקט"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:747
@@ -5235,7 +5235,7 @@ msgstr "עאַרליעסט טויט יאָר"
 
 #: statistics.php:230
 msgid "Earliest divorce"
-msgstr ""
+msgstr "פרידיקע גט"
 
 #: statistics.php:229
 msgid "Earliest marriage"
@@ -5624,7 +5624,7 @@ msgstr ""
 
 #: search_advanced.php:102 search_advanced.php:164
 msgid "Exact date"
-msgstr ""
+msgstr "פּינקטלעכער דאטום"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:142
 msgid "Exact text"
@@ -6993,7 +6993,7 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:11
 #: modules_v3/individual_report/report.xml:8
 msgid "Highlighted image"
-msgstr ""
+msgstr "אונטערגעשטראָכן בילד"
 
 #. I18N: The Arabic/Hijri calendar
 #: app/Date/HijriDate.php:43 help_text.php:212
@@ -7247,7 +7247,7 @@ msgstr ""
 
 #: admin_media.php:489 app/Gedcom/GedcomTag.php:1786
 msgid "Image dimensions"
-msgstr ""
+msgstr "בילד ויסמעסטונג"
 
 #: admin_trees_config.php:1186
 msgid "Images without watermarks"
@@ -7306,7 +7306,7 @@ msgstr ""
 
 #: calendar.php:145
 msgid "In this month…"
-msgstr "אין דעם חודש …"
+msgstr "אין דעם מאָנאַט…"
 
 #: calendar.php:148
 msgid "In this year…"
@@ -7507,7 +7507,7 @@ msgstr ""
 
 #: app/Date.php:328
 msgid "Invalid date"
-msgstr "פאַרקריפּלט דאַטע"
+msgstr "פּאָסל דאטום"
 
 #: app/Stats.php:6177
 msgid "Iran"
@@ -7929,13 +7929,13 @@ msgstr "לעצטנס אריינלאגירט אין"
 
 #: statistics.php:135
 msgid "Latest birth"
-msgstr ""
+msgstr "לעצטע געבורט"
 
 #: app/Module/FamilyTreeStatisticsModule.php:130
 #: app/Module/FamilyTreeStatisticsModule.php:309
 #: app/Module/HtmlBlockModule.php:198
 msgid "Latest birth year"
-msgstr "לעצט געבורט יאָר"
+msgstr "לעצטע געבורט יאָר"
 
 #: statistics.php:136
 msgid "Latest death"
@@ -7949,7 +7949,7 @@ msgstr "לעצט טויט יאָר"
 
 #: statistics.php:238
 msgid "Latest divorce"
-msgstr ""
+msgstr "לעצטע גט"
 
 #: statistics.php:237
 msgid "Latest marriage"
@@ -8595,7 +8595,7 @@ msgstr "חתונות"
 
 #: app/Stats.php:3214 statistics.php:221
 msgid "Marriages by century"
-msgstr ""
+msgstr "חתונות דורך יאָרהונדערט"
 
 #. I18N: gedcom tag _MARNM
 #: app/Gedcom/GedcomTag.php:1557 modules_v3/cemetery_report/report.xml:7
@@ -9037,7 +9037,7 @@ msgstr "מאנטעווידעא, אורוגוויי"
 
 #: app/Theme/BaseTheme.php:980 calendar.php:172
 msgid "Month"
-msgstr "חודש"
+msgstr "מאָנאַט"
 
 #: statistics.php:503 statisticsplot.php:865
 msgid "Month of birth"
@@ -9979,23 +9979,23 @@ msgstr "עלטסטע אין אויבן"
 
 #: statistics.php:292
 msgid "Oldest father"
-msgstr ""
+msgstr "עלטסטע פאטער"
 
 #: statistics.php:270
 msgid "Oldest female"
-msgstr "עלטסטער נקבה"
+msgstr "עלטסטע נקבה"
 
 #: statistics.php:174
 msgid "Oldest living individuals"
-msgstr ""
+msgstr "עלטסטע לעבעדיק מענטשן"
 
 #: statistics.php:269
 msgid "Oldest male"
-msgstr "עלטסטער זכר"
+msgstr "עלטסטע זכר"
 
 #: statistics.php:293
 msgid "Oldest mother"
-msgstr ""
+msgstr "עלטסטע מוטער"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:71
@@ -11645,7 +11645,7 @@ msgstr "זוכמאשין"
 
 #: medialist.php:130
 msgid "Search filters"
-msgstr ""
+msgstr "זוכן פילטערס"
 
 #: admin_trees_places.php:101 search.php:73 search.php:156
 msgid "Search for"
@@ -11707,7 +11707,7 @@ msgstr ""
 
 #: includes/functions/functions_edit.php:368 reportengine.php:261
 msgid "Select a date"
-msgstr "אויסקלייַבן אַ דאַטע"
+msgstr "אויסקלייַבן אַ דאטום"
 
 #: app/Module/GoogleMapsModule.php:4308
 msgid "Select a file from the list of files already on the server which contains the place locations in CSV format."
@@ -12192,7 +12192,7 @@ msgstr "ווייַזן אַלע ערטער אין אַ רעשימע"
 
 #: app/Module/SourcesTabModule.php:62
 msgid "Show all sources"
-msgstr "ווייַזן אַלע מקורים"
+msgstr "ווייַזן אַלע מקורות"
 
 #: app/Module/InteractiveTree/TreeView.php:55
 msgid "Show all spouses and ancestors"
@@ -12442,11 +12442,11 @@ msgstr ""
 #: modules_v3/individual_ext_report/report.xml:9
 #: modules_v3/individual_report/report.xml:6
 msgid "Show sources?"
-msgstr "ווייַזן מקורים?"
+msgstr "ווייַזן מקורות?"
 
 #: familybook.php:78 hourglass.php:69
 msgid "Show spouses"
-msgstr ""
+msgstr "ווייַז מענער / פרויען"
 
 #: includes/functions/functions_print_lists.php:282
 #: includes/functions/functions_print_lists.php:743
@@ -12470,7 +12470,7 @@ msgstr ""
 
 #: famlist.php:177 indilist.php:177
 msgid "Show the list of individuals"
-msgstr ""
+msgstr "ווייַזן די רשימה פון מענטשן"
 
 #: famlist.php:179 indilist.php:179
 msgid "Show the list of surnames"
@@ -12803,11 +12803,11 @@ msgstr "סאָרט מקור"
 #: search.php:95 sourcelist.php:30 sourcelist.php:34 statistics.php:351
 #: statistics.php:388
 msgid "Sources"
-msgstr "מקורים"
+msgstr "מקורות"
 
 #: modules_v3/missing_facts_report/report.xml:11
 msgid "Sources to the events"
-msgstr "קוואלן צו די געשעענישן"
+msgstr "מקורות צו די געשעענישן"
 
 #: app/Stats.php:6324
 msgid "South Africa"
@@ -12860,13 +12860,13 @@ msgstr "צעטל אויף אַ מאַן / פרוי"
 
 #: includes/functions/functions_print_lists.php:1524
 msgid "Spouses"
-msgstr ""
+msgstr "מענער / פרויען"
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
 #: modules_v3/relative_ext_report/report.xml:6
 msgid "Spouses and children"
-msgstr "מאנען, ווייבער און קינדער"
+msgstr "מענער / פרויען און קינדער"
 
 #: app/Stats.php:6199
 msgid "Sri Lanka"
@@ -14611,7 +14611,7 @@ msgstr "גאַנץ טויט"
 
 #: statistics.php:112
 msgid "Total deaths"
-msgstr ""
+msgstr "גאַנץ פטירות"
 
 #: statistics.php:214
 msgid "Total divorces"
@@ -14639,7 +14639,7 @@ msgstr "גאַנץ משפחות: %s"
 
 #: statistics.php:92
 msgid "Total females"
-msgstr ""
+msgstr "גאַנץ נקבות"
 
 #: statistics.php:191
 msgid "Total given names"
@@ -14674,7 +14674,7 @@ msgstr "גאַנץ זכרים"
 
 #: statistics.php:213
 msgid "Total marriages"
-msgstr ""
+msgstr "גאַנץ חתונות"
 
 #: admin.php:576
 msgid "Total number of users"
@@ -14693,7 +14693,7 @@ msgstr "גאַנץ ערטער: %s"
 #: find.php:672
 #, php-format
 msgid "Total sources: %s"
-msgstr ""
+msgstr "גאַנץ מקורות: %s"
 
 #: app/Module/FamilyTreeStatisticsModule.php:93
 #: app/Module/FamilyTreeStatisticsModule.php:303
@@ -15011,7 +15011,7 @@ msgstr "ניץ פֿאַרבן"
 
 #: app/Module/InteractiveTree/TreeView.php:52
 msgid "Use compact layout"
-msgstr ""
+msgstr "ניצן קאמפאקטע אויסלייג"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:2252
@@ -15257,7 +15257,7 @@ msgstr "זע פּערזאָן"
 
 #: calendar.php:343 calendar.php:345
 msgid "View month"
-msgstr "זען חודש"
+msgstr "זען מאָנאַט"
 
 #: app/Module/AlbumModule.php:102 app/Module/AlbumModule.php:104
 msgid "View notes"
@@ -15559,11 +15559,11 @@ msgstr "ווינטער קורטערס, נעבראסקא"
 
 #: app/Stats.php:386 app/Stats.php:472
 msgid "With sources"
-msgstr "מיט מקורים"
+msgstr "מיט מקורות"
 
 #: app/Stats.php:385 app/Stats.php:471
 msgid "Without sources"
-msgstr "אָן מקורים"
+msgstr "אָן מקורות"
 
 #. I18N: gedcom tag _WITN
 #: app/Gedcom/GedcomCodeRela.php:253 app/Gedcom/GedcomTag.php:1760
@@ -15815,19 +15815,19 @@ msgstr ""
 
 #: statistics.php:284
 msgid "Youngest father"
-msgstr ""
+msgstr "ייִנגסטער פאטער"
 
 #: statistics.php:262
 msgid "Youngest female"
-msgstr ""
+msgstr "ייִנגסטער נקבֿה"
 
 #: statistics.php:261
 msgid "Youngest male"
-msgstr ""
+msgstr "ייִנגסטער זכר"
 
 #: statistics.php:285
 msgid "Youngest mother"
-msgstr ""
+msgstr "ייִנגסטער מוטער"
 
 #: app/Module/ClippingsCartModule.php:163
 #: app/Module/ClippingsCartModule.php:426
@@ -16308,7 +16308,7 @@ msgstr ""
 
 #: statistics.php:614
 msgid "date periods"
-msgstr "דאַטע צייַט"
+msgstr "דאטום צייַט"
 
 #: app/Module/GoogleMapsModule.php:2037 app/Module/GoogleMapsModule.php:2075
 #: edit_interface.php:2040 includes/functions/functions.php:749
@@ -18775,7 +18775,7 @@ msgstr "פון"
 
 #: includes/functions/functions_print.php:414
 msgid "on the date of death"
-msgstr "אויף די דאַטע פון טויט"
+msgstr "אויף די דאטום פון טויט"
 
 #: statisticsplot.php:798
 msgid "over"
@@ -19270,7 +19270,7 @@ msgstr "יידעם/שנור"
 #: app/Module/UpcomingAnniversariesModule.php:151
 #: modules_v3/change_report/report.xml:7
 msgid "sort by date"
-msgstr "סאָרט דורך דאַטע"
+msgstr "סאָרט דורך דאטום"
 
 #. I18N: An option in a list-box
 #: edit_interface.php:1885 modules_v3/bdm_report/report.xml:11
