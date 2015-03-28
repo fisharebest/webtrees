@@ -16,48 +16,32 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use Fisharebest\ExtCalendar\GregorianCalendar;
-
 /**
  * Class LifespanController - Controller for the timeline chart
  */
 class LifespanController extends PageController {
-	var $pids = array();
-	var $people = array();
-	var $place = '';
-	var $beginYear = 0;
-	var $endYear = 0;
-	var $scale = 2;
-	var $YrowLoc = 125;
-	var $minYear = 0;
 
-	// The following colours are deliberately omitted from the $colors list:
-	// Blue, Red, Black, White, Green
-	var $colors = array('Aliceblue', 'Antiquewhite', 'Aqua', 'Aquamarine', 'Azure', 'Beige', 'Bisque', 'Blanchedalmond', 'Blueviolet', 'Brown', 'Burlywood', 'Cadetblue', 'Chartreuse', 'Chocolate', 'Coral', 'Cornflowerblue', 'Cornsilk', 'Crimson', 'Cyan', 'Darkcyan', 'Darkgoldenrod', 'Darkgray', 'Darkgreen', 'Darkkhaki', 'Darkmagenta', 'Darkolivegreen', 'Darkorange', 'Darkorchid', 'Darkred', 'Darksalmon', 'Darkseagreen', 'Darkslateblue', 'Darkturquoise', 'Darkviolet', 'Deeppink', 'Deepskyblue', 'Dimgray', 'Dodgerblue', 'Firebrick', 'Floralwhite', 'Forestgreen', 'Fuchsia', 'Gainsboro', 'Ghostwhite', 'Gold', 'Goldenrod', 'Gray', 'Greenyellow', 'Honeydew', 'Hotpink', 'Indianred', 'Ivory', 'Khaki', 'Lavender', 'Lavenderblush', 'Lawngreen', 'Lemonchiffon', 'Lightblue', 'Lightcoral', 'Lightcyan', 'Lightgoldenrodyellow', 'Lightgreen', 'Lightgrey', 'Lightpink', 'Lightsalmon', 'Lightseagreen', 'Lightskyblue', 'Lightslategray', 'Lightsteelblue', 'Lightyellow', 'Lime', 'Limegreen', 'Linen', 'Magenta', 'Maroon', 'Mediumaqamarine', ' Mediumblue', 'Mediumorchid', 'Mediumpurple', 'Mediumseagreen', 'Mediumslateblue', 'Mediumspringgreen', 'Mediumturquoise', 'Mediumvioletred', 'Mintcream', 'Mistyrose', 'Moccasin', 'Navajowhite', 'Oldlace', 'Olive', 'Olivedrab', 'Orange', 'Orangered', 'Orchid', 'Palegoldenrod', 'Palegreen', 'Paleturquoise', 'Palevioletred', 'Papayawhip', 'Peachpuff', 'Peru', 'Pink', 'Plum', 'Powderblue', 'Purple', 'Rosybrown', 'Royalblue', 'Saddlebrown', 'Salmon', 'Sandybrown', 'Seagreen', 'Seashell', 'Sienna', 'Silver', 'Skyblue', 'Slateblue', 'Slategray', 'Snow', 'Springgreen', 'Steelblue', 'Tan', 'Teal', 'Thistle', 'Tomato', 'Turquoise', 'Violet', 'Wheat', 'Whitesmoke', 'Yellow', 'YellowGreen');
-	var $malecolorR = array(' 100', ' 110', ' 120', ' 130', ' 140', ' 150', ' 160', ' 170', ' 180', ' 190', ' 200', ' 210', ' 220', ' 230', ' 240', ' 250');
-	var $malecolorG = array(' 100', ' 110', ' 120', ' 130', ' 140', ' 150', ' 160', ' 170', ' 180', ' 190', ' 200', ' 210', ' 220', ' 230', ' 240', ' 250');
-	var $malecolorB = 255;
-	var $femalecolorR = 255;
-	var $femalecolorG = array(' 100', ' 110', ' 120', ' 130', ' 140', ' 150', ' 160', ' 170', ' 180', ' 190', ' 200', ' 210', ' 220', ' 230', ' 240', ' 250');
-	var $femalecolorB = array('250', ' 240', ' 230', ' 220', ' 210', ' 200', ' 190', ' 180', ' 170', ' 160', ' 150', ' 140', ' 130', ' 120', ' 110', ' 100');
-	var $color;
-	var $colorindex;
-	var $Fcolorindex;
-	var $Mcolorindex;
-	var $zoomfactor;
-	var $timelineMinYear;
-	var $timelineMaxYear;
-	var $birthMod;
-	var $deathMod;
-	var $endMod = 0;
-	var $modTest;
-	var $currentYear;
-	var $endDate;
-	var $startDate;
-	var $currentsex;
+	const baseHueAngle   = 15;
+	const baseSaturation = 100;
+	const baseLightness  = 30;
+	const baseLuminance  = 0.25;
+	const chartTop       = 10; // px
+	const barSpacing     = 25; // px
+	const yearSpan       = 5;  // No. years per scale section
+	const pixelsPerYear  = 10; // how many pixels to shift per year
 
+	public $people    = array();
+	public $place     = '';
+	public $beginYear = 0;
+	public $endYear   = 0;
+	
+	private $pids = array();
+	private $timelineMinYear;
+	private $timelineMaxYear;
+	private $currentYear;
+	private $colors = array();
 	private $nonfacts = array(
-		'FAMS', 'FAMC', 'MAY', 'BLOB', 'OBJE', 'SEX', 'NAME', 'SOUR', 'NOTE', 'BAPL', 'ENDL', 'SLGC', 'SLGS', '_TODO', '_WT_OBJE_SORT', 'CHAN', 'HUSB', 'WIFE', 'CHIL', 'BIRT', 'DEAT', 'BURI'
+		'FAMS', 'FAMC', 'MAY', 'BLOB', 'OBJE', 'SEX', 'NAME', 'SOUR', 'NOTE', 'BAPL', 'ENDL', 'SLGC', 'SLGS', '_TODO', '_WT_OBJE_SORT', 'CHAN', 'HUSB', 'WIFE', 'CHIL', 'BURI', 'OCCU', 'ASSO'
 	);
 
 	/**
@@ -69,21 +53,25 @@ class LifespanController extends PageController {
 		parent::__construct();
 		$this->setPageTitle(I18N::translate('Lifespans'));
 
-		$this->colorindex  = 0;
-		$this->Fcolorindex = 0;
-		$this->Mcolorindex = 0;
-		$this->zoomfactor  = 10;
-		$this->color       = '#0000FF';
-		$this->currentYear = (int) date('Y');
-		$this->deathMod    = 0;
-		$this->endDate     = $this->currentYear;
+		// Set up base color parameters
+		$angle = 0; // 0Deg = Red, 120Deg = green, 240Deg = blue
+		foreach (array('F', 'U', 'M') as $sex) {
+			$tmp                = new \stdClass();
+			$tmp->luminance     = $sex === 'U' ? 0 : self::baseLuminance;
+			$tmp->saturation    = self::baseSaturation;
+			$tmp->lightness     = self::baseLightness;
+			$tmp->baseHue       = $angle;
+			$tmp->currentHue    = $angle;
+			$this->colors[$sex] = $tmp;
+			$angle += 120;
+		}
+
+		$this->currentYear = (int)date('Y');
 
 		// Request parameters
-		$newpid    = Filter::get('newpid', WT_REGEX_XREF);
-		$remove    = Filter::get('remove', WT_REGEX_XREF);
-		$pids      = Filter::getArray('pids', WT_REGEX_XREF);
 		$clear     = Filter::getBool('clear');
 		$addfam    = Filter::getBool('addFamily');
+		$newpid    = Filter::get('newpid', WT_REGEX_XREF);
 		$place     = Filter::get('place');
 		$beginYear = Filter::getInteger('beginYear', 0, $this->currentYear + 100, 0);
 		$endYear   = Filter::getInteger('endYear', 0, $this->currentYear + 100, 0);
@@ -93,15 +81,15 @@ class LifespanController extends PageController {
 		if ($clear) {
 			// Empty list
 			$this->pids = array();
-		} elseif ($pids) {
-			// List of specified records
-			$this->pids = $pids;
 		} elseif ($place) {
 			// All records found in a place
 			$wt_place    = new Place($place, $WT_TREE);
 			$this->pids  = Database::prepare(
-				"SELECT DISTINCT pl_gid FROM `##placelinks` WHERE pl_p_id = ? AND pl_file = ?"
-			)->execute(array($wt_place->getPlaceId(), $WT_TREE->getTreeId()))->fetchOneColumn();
+				"SELECT DISTINCT pl_gid FROM `##placelinks` WHERE pl_p_id = :place_id AND pl_file = :tree_id"
+			)->execute(array(
+				'place_id'=>$wt_place->getPlaceId(),
+				'tree_id'=>$WT_TREE->getTreeId()
+			 ))->fetchOneColumn();
 			$this->place = $place;
 		} else {
 			// Modify an existing list of records
@@ -110,13 +98,7 @@ class LifespanController extends PageController {
 			} else {
 				$this->pids = array();
 			}
-			if ($remove) {
-				foreach ($this->pids as $key => $value) {
-					if ($value == $remove) {
-						unset($this->pids[$key]);
-					}
-				}
-			} elseif ($new_person) {
+			if ($new_person) {
 				$this->addFamily($new_person, $addfam);
 			} elseif (!$this->pids) {
 				$this->addFamily($this->getSignificantIndividual(), false);
@@ -130,15 +112,13 @@ class LifespanController extends PageController {
 			//-- cleanup user input
 			$this->pids = array_unique($this->pids); //removes duplicates
 			foreach ($this->pids as $key => $value) {
-				if ($value != $remove) {
-					$this->pids[$key] = $value;
-					$person           = Individual::getInstance($value, $WT_TREE);
-					// list of linked records includes families as well as individuals.
-					if ($person) {
-						$bdate = $person->getEstimatedBirthDate();
-						if ($bdate->isOK() && $person->canShow()) {
-							$this->people[] = $person;
-						}
+				$this->pids[$key] = $value;
+				$person           = Individual::getInstance($value, $WT_TREE);
+				// list of linked records includes families as well as individuals.
+				if ($person) {
+					$bdate = $person->getEstimatedBirthDate();
+					if ($bdate->isOK() && $person->canShow()) {
+						$this->people[] = $person;
 					}
 				}
 			}
@@ -150,7 +130,7 @@ class LifespanController extends PageController {
 			//the time line
 
 			//Variables to restrict the person boxes to the year searched.
-			//--Searches for individuals who had an even between the year begin and end years
+			//--Searches for individuals who had an event between the beginning and end years
 			$indis = self::searchIndividualsInYearRange($beginYear, $endYear);
 			//--Populates an array of people that had an event within those years
 
@@ -165,39 +145,39 @@ class LifespanController extends PageController {
 			$WT_SESSION->timeline_pids = null;
 		}
 
-		// Sort the array in order of birth year
-		uasort($this->people, function(Individual $a, Individual $b) {
-			return Date::compare($a->getEstimatedBirthDate(), $b->getEstimatedBirthDate());
-		});
-		//If there is people in the array posted back this if occurs
-		if (isset ($this->people[0])) {
-			//Find the maximum Death year and mimimum Birth year for each individual returned in the array.
-			$bdate                 = $this->people[0]->getEstimatedBirthDate();
-			$ddate                 = $this->people[0]->getEstimatedDeathDate();
-			$this->timelineMinYear = $bdate->gregorianYear();
-			$this->timelineMaxYear = $ddate->gregorianYear() ? $ddate->gregorianYear() : date('Y');
+		$minChartLength = $WT_TREE->getPreference('MAX_ALIVE_AGE'); // Ensure the minimum chart span is this long
+		// Set starting values for the timeline length
+		$this->timelineMinYear = $this->currentYear - $minChartLength;
+		$this->timelineMaxYear = 0;
+
+		if ($this->people) {
+			// Sort the array in order of birth year
+			uasort($this->people, function (Individual $a, Individual $b) {
+				return Date::compare($a->getEstimatedBirthDate(), $b->getEstimatedBirthDate());
+			});
+
+			//Find the maximum death year and mimimum birth year from the individuals returned in the array.
 			foreach ($this->people as $value) {
 				$bdate                 = $value->getEstimatedBirthDate();
 				$ddate                 = $value->getEstimatedDeathDate();
-				$this->timelineMinYear = min($this->timelineMinYear, $bdate->gregorianYear());
-				$this->timelineMaxYear = max($this->timelineMaxYear, $ddate->gregorianYear() ? $ddate->gregorianYear() : date('Y'));
-			}
+				$this->timelineMinYear = min($this->timelineMinYear, $bdate->minimumDate()->y);
+				$this->timelineMaxYear = max($this->timelineMaxYear, $ddate->maximumDate()->y);
 
-			if ($this->timelineMaxYear > $this->currentYear) {
-				$this->timelineMaxYear = $this->currentYear;
 			}
+			$this->timelineMaxYear = min($this->timelineMaxYear, $this->currentYear);
+			$this->timelineMinYear = min($this->timelineMinYear, $this->timelineMaxYear - $minChartLength);
 		} else {
-			// Sets the default timeline length
-			$this->timelineMinYear = date("Y") - 101;
-			$this->timelineMaxYear = date("Y");
+			$this->timelineMaxYear = $this->currentYear;
 		}
+		$this->timelineMinYear = (int)floor($this->timelineMinYear / 5) * 5; // round down to multiple of 5
+		$this->timelineMaxYear = (int)ceil($this->timelineMaxYear / 5) * 5; // round up to multiple of 5
 	}
 
 	/**
 	 * Add a person (and optionally their immediate family members) to the pids array
 	 *
 	 * @param Individual $person
-	 * @param boolean       $add_family
+	 * @param boolean $add_family
 	 */
 	private function addFamily(Individual $person, $add_family) {
 		$this->pids[] = $person->getXref();
@@ -225,316 +205,131 @@ class LifespanController extends PageController {
 	}
 
 	/**
-	 * Sets the start year and end year to a factor of 5
+	 * Prints the time line scale
 	 *
-	 * @param integer $year
-	 * @param integer $key
-	 *
-	 * @return integer
 	 */
-	private function modifyYear($year, $key) {
-		$temp = $year;
-		switch ($key) {
-		case 1 : // rounds beginning year
-			$this->birthMod = $year % 5;
-			$year           = $year - $this->birthMod;
-			if ($temp == $year) {
-				$this->modTest = 0;
-			} else {
-				$this->modTest = 1;
-			}
-			break;
-		case 2 : // rounds end year
-			$this->deathMod = $year % 5;
-			// Only executed if the year needs to be modified
-			if ($this->deathMod > 0) {
-				$this->endMod = 5 - $this->deathMod;
-			} else {
-				$this->endMod = 0;
-			}
-			$year = $year + $this->endMod;
-			break;
+	public function printTimeline() {
+		$startYear = $this->timelineMinYear;
+		while ($startYear < $this->timelineMaxYear) {
+			$date = new Date($startYear);
+			echo $date->display(false, '%Y');
+			$startYear += self::yearSpan;
 		}
-
-		return $year;
 	}
 
 	/**
-	 * Prints the time line
-	 *
-	 * @param integer $startYear
-	 * @param integer $endYear
-	 */
-	public function printTimeline($startYear, $endYear) {
-		$leftPosition          = 14; //start point
-		$tickDistance          = 50; //length of one timeline section
-		$top                   = 65; //top starting position
-		$yearSpan              = 5; //default zoom level
-		$newStartYear          = $this->modifyYear($startYear, 1); //starting date for timeline
-		$this->timelineMinYear = $newStartYear;
-		$newEndYear            = $this->modifyYear($endYear, 2); //ending date for timeline
-		$totalYears            = $newEndYear - $newStartYear; //length of timeline
-		$timelineTick          = $totalYears / $yearSpan; //calculates the length of the timeline
-
-		for ($i = 0; $i < $timelineTick; $i++) {
-			echo "<div class=\"sublinks_cell\" style=\"text-align: left; position: absolute; top: ", $top, "px; left: ", $leftPosition, "px; width: ", $tickDistance, "px;\">$newStartYear<i class=\"icon-lifespan-chunk\"></i></div>"; //onclick="zoomToggle('100px', '100px', '200px', '200px', this);"
-			$leftPosition += $tickDistance;
-			$newStartYear += $yearSpan;
-		}
-		echo "<div class=\"sublinks_cell\" style=\"text-align: left; position: absolute; top: ", $top, "px; left: ", $leftPosition, "px; width: ", $tickDistance, "px;\">$newStartYear</div>";
-	}
-
-	/**
-	 * Method used to place the person boxes onto the timeline
-	 *
-	 * @param Individual[] $ar
-	 * @param integer         $top
+	 * Populate the timeline
 	 *
 	 * @return integer
 	 */
-	public function fillTimeline($ar, $top) {
-		global $maxX, $zindex;
+	public function fillTimeline() {
 
-		$zindex = count($ar);
-
-		$rows   = array();
-		$modFix = 0;
-		if ($this->modTest == 1) {
-			$modFix = (9 * $this->birthMod);
-		}
+		$rows = array();
 		//base case
-		if (count($ar) == 0) {
-			return $top;
+		if (!$this->people) {
+			return self::chartTop;
 		}
-		$maxY = $top;
 
-		foreach ($ar as $value) {
-			//Creates appropriate color scheme to show relationships
-			$this->currentsex = $value->getSex();
-			if ($this->currentsex == "M") {
-				$this->Mcolorindex++;
-				if (!isset($this->malecolorR[$this->Mcolorindex])) {
-					$this->Mcolorindex = 0;
-				}
-				$this->malecolorR[$this->Mcolorindex];
-				$this->Mcolorindex++;
-				if (!isset($this->malecolorG[$this->Mcolorindex])) {
-					$this->Mcolorindex = 0;
-				}
-				$this->malecolorG[$this->Mcolorindex];
-				$red   = dechex($this->malecolorR[$this->Mcolorindex]);
-				$green = dechex($this->malecolorR[$this->Mcolorindex]);
-				if (strlen($red) < 2) {
-					$red = "0" . $red;
-				}
-				if (strlen($green) < 2) {
-					$green = "0" . $green;
-				}
+		$maxY = self::chartTop;
+		foreach ($this->people as $person) {
 
-				$this->color = "#" . $red . $green . dechex($this->malecolorB);
-			} elseif ($this->currentsex == "F") {
-				$this->Fcolorindex++;
-				if (!isset($this->femalecolorG[$this->Fcolorindex])) {
-					$this->Fcolorindex = 0;
-				}
-				$this->femalecolorG[$this->Fcolorindex];
-				$this->Fcolorindex++;
-				if (!isset($this->femalecolorB[$this->Fcolorindex])) {
-					$this->Fcolorindex = 0;
-				}
-				$this->femalecolorB[$this->Fcolorindex];
-				$this->color = "#" . dechex($this->femalecolorR) . dechex($this->femalecolorG[$this->Fcolorindex]) . dechex($this->femalecolorB[$this->Fcolorindex]);
-			} else {
-				$this->color = $this->colors[$this->colorindex];
-			}
+			$bdate = $person->getEstimatedBirthDate();
+			$ddate = $person->getEstimatedDeathDate();
+			$birthYear = $bdate->minimumDate()->y;
 
-			//set start position and size of person-box according to zoomfactor
-			$bdate     = $value->getEstimatedBirthDate();
-			$ddate     = $value->getEstimatedDeathDate();
-			$birthYear = $bdate->gregorianYear();
-			$deathYear = $ddate->gregorianYear() ? $ddate->gregorianYear() : date('Y');
-
-			$width  = ($deathYear - $birthYear) * $this->zoomfactor;
-			$height = 2 * $this->zoomfactor;
-
-			$startPos  = (($birthYear - $this->timelineMinYear) * $this->zoomfactor) + 14 + $modFix;
-			$minlength = mb_strlen(strip_tags($value->getFullName())) * $this->zoomfactor;
-
-			if ($startPos > 15) {
-				$startPos = (($birthYear - $this->timelineMinYear) * $this->zoomfactor) + 15;
-				$width    = (($deathYear - $birthYear) * $this->zoomfactor) - 2;
-			}
+			// truncate the bar at the current year
+			$length = min($ddate->maximumDate()->y, $this->currentYear) - $birthYear;
 
 			//set minimum width for single year lifespans
-			if ($width < 10) {
-				$width = 10;
-			}
+			$width = max(self::pixelsPerYear, $length * self::pixelsPerYear);
 
-			$lifespan  = "<span dir=\"ltr\">$birthYear-</span>";
-			$deathReal = $value->getDeathDate()->isOK();
-			$birthReal = $value->getBirthDate()->isOK();
-			if ($value->isDead() && $deathReal) {
-				$lifespan .= "<span dir=\"ltr\">$deathYear</span>";
-			}
-			$lifespannumeral = $deathYear - $birthYear;
+			$startPos  = ($birthYear - $this->timelineMinYear) * self::pixelsPerYear;
 
 			//-- calculate a good Y top value
-			$Y     = $top;
-			$Z     = $zindex;
+			$Y     = self::chartTop;
 			$ready = false;
 			while (!$ready) {
 				if (!isset($rows[$Y])) {
 					$ready          = true;
 					$rows[$Y]["x1"] = $startPos;
 					$rows[$Y]["x2"] = $startPos + $width;
-					$rows[$Y]["z"]  = $zindex;
 				} else {
 					if ($rows[$Y]["x1"] > $startPos + $width) {
 						$ready          = true;
 						$rows[$Y]["x1"] = $startPos;
-						$Z              = $rows[$Y]["z"];
 					} elseif ($rows[$Y]["x2"] < $startPos) {
 						$ready          = true;
 						$rows[$Y]["x2"] = $startPos + $width;
-						$Z              = $rows[$Y]["z"];
 					} else {
-						//move down 25 pixels
-						if ($this->zoomfactor > 10) {
-							$Y += 25 + $this->zoomfactor;
-						} else {
-							$Y += 25;
-						}
+						//move down a line
+						$Y+=self::barSpacing;
 					}
 				}
 			}
 
-			//Need to calculate each event and the spacing between them
-			// event1 distance will be event - birthyear   that will be the distance. then each distance will chain off that
-
-			//$event[][]  = {"Cell 1 will hold events"}{"cell2 will hold time between that and the next value"};
-			$facts = $value->getFacts();
-			foreach ($value->getSpouseFamilies() as $family) {
+			$facts = $person->getFacts();
+			foreach ($person->getSpouseFamilies() as $family) {
 				foreach ($family->getFacts() as $fact) {
 					$facts[] = $fact;
 				}
 			}
-			$unparsedEvents = array();
+			sort_facts($facts);
 
-			foreach ($facts as $fact) {
-				if (!in_array($fact->getTag(), $this->nonfacts)) {
-					$unparsedEvents[] = $fact;
-				}
-			}
-			sort_facts($unparsedEvents);
+			$acceptedFacts = array_filter($facts, function ($item) {
+				return !in_array($item->getTag(), $this->nonfacts) && $item->getDate()->isOK();
+			});
 
 			$eventinformation = array();
-			foreach ($unparsedEvents as $val) {
-				$date = $val->getDate();
-				if (!empty($date)) {
-					$fact    = $val->getTag();
-					$yearsin = $date->minimumDate()->y - $birthYear;
-					if ($lifespannumeral == 0) {
-						$lifespannumeral = 1;
-					}
-					$eventwidth = ($yearsin / $lifespannumeral) * 100; // percent of the lifespan before the event occured used for determining div spacing
-					// figure out some schema
-					$evntwdth = $eventwidth . "%";
-					//-- if the fact is a generic EVENt then get the qualifying TYPE
-					if ($fact == "EVEN") {
-						$fact = $val->getAttribute('TYPE');
-					}
-					$trans = GedcomTag::getLabel($fact);
-					if (isset($eventinformation[$evntwdth])) {
-						$eventinformation[$evntwdth] .= '<br>' . $trans . '<br>' . strip_tags($date->display()) . ' ' . $val->getPlace()->getFullName();
-					} else {
-						$eventinformation[$evntwdth] = $fact . '-fact, ' . $trans . '<br>' . strip_tags($date->display()) . ' ' . $val->getPlace()->getFullName();
-					}
+			foreach ($acceptedFacts as $val) {
+				$tag = $val->getTag();
+				//-- if the fact is a generic EVENt then get the qualifying TYPE
+				if ($tag == "EVEN") {
+					$tag = $val->getAttribute('TYPE');
 				}
+				$event              = new \stdClass();
+				$event->date        = $val->getDate()->display();
+				$event->label       = GedcomTag::getLabel($tag);
+				$event->place       = $val->getPlace()->getFullName();
+				$eventinformation[] = $event;
 			}
 
-			$bdate = $value->getEstimatedBirthDate();
-			$ddate = $value->getEstimatedDeathDate();
-			if ($width > ($minlength + 110)) {
-				echo "<div id=\"bar_", $value->getXref(), "\" style=\"position: absolute; top:", $Y, "px; left:", $startPos, "px; width:", $width, "px; height:", $height, "px; background-color:", $this->color, "; border: solid blue 1px; z-index:$Z;\">";
-				foreach ($eventinformation as $evtwidth => $val) {
-					echo "<div style=\"position:absolute; left:", $evtwidth, ";\"><a class=\"showit\" href=\"#\" style=\"top:-2px; font-size:10px;\"><b>";
-					$text = explode("-fact, ", $val);
-					$fact = $text[0];
-					echo '</b><span>', self::getAbbreviation($fact), '</span></a></div>';
-				}
-				$indiName = $value->getFullName();
-				echo '<table><tr><td width="15"><a class="showit" href="#"><b>';
-				echo self::getAbbreviation('BIRT');
-				echo '</b><span>', $value->getSexImage(), $indiName, '<br>', GedcomTag::getLabel('BIRT'), ' ', strip_tags($bdate->display()), ' ', $value->getBirthPlace(), '</span></a>',
-				'<td align="left" width="100%"><a href="', $value->getHtmlUrl(), '">', $value->getSexImage(), $indiName, '  ', $lifespan, ' </a></td>',
-				'<td width="15">';
-				if ($value->isDead()) {
-					if ($deathReal || $value->isDead()) {
-						echo '<a class="showit" href="#"><b>';
-						echo self::getAbbreviation('DEAT');
-						if (!$deathReal) {
-							echo '*';
-						}
-						echo '</b><span>' . $value->getSexImage() . $indiName . '<br>' . GedcomTag::getLabel('DEAT') . ' ' . strip_tags($ddate->display()) . ' ' . $value->getDeathPlace() . '</span></a>';
-					}
-				}
-				echo '</td></tr></table>';
-				echo '</div>';
+			$direction  = I18N::direction() === 'ltr' ? 'left' : 'right';
+			$lifespan   = $person->getLifeSpan();
+			$sex        = $person->getSex();
+			$popupClass = "person_box";
+			if ($sex !== 'M') {
+				$popupClass .= $sex;
+			}
+
+			// following line is a nasty method of approximating
+			// the width of a string in pixels from the character count
+			$minlength = mb_strlen(strip_tags($person->getFullName() . ' ' . $lifespan)) * 8;
+
+			if ($width > $minlength) {
+				$printName    = $person->getFullName();
+				$abbrLifespan = $lifespan;
+			} elseif ($width > 50) {
+				$printName    = $person->getShortName();
+				$abbrLifespan = '';
 			} else {
-				if ($width > $minlength + 5) {
-					echo '<div style="text-align: left; position: absolute; top:', $Y, 'px; left:', $startPos, 'px; width:', $width, 'px; height:', $height, 'px; background-color:', $this->color, '; border: solid blue 1px; z-index:', $Z, '">';
-					foreach ($eventinformation as $evtwidth => $val) {
-						echo '<div style="position:absolute; left:', $evtwidth, ' "><a class="showit" href="#" style="top:-2px; font-size:10px;"><b>';
-						$text = explode("-fact,", $val);
-						$fact = $text[0];
-						echo '</b><span>' . self::getAbbreviation($fact) . '</span></a></div>';
-					}
-					$indiName = $value->getFullName();
-					echo '<table dir="ltr"><tr><td width="15"><a class="showit" href="#"><b>';
-					echo self::getAbbreviation('BIRT');
-					if (!$birthReal) {
-						echo '*';
-					}
-					echo '</b><span>' . $value->getSexImage() . $indiName . '<br>' . GedcomTag::getLabel('BIRT') . ' ' . strip_tags($bdate->display(false)) . ' ' . $value->getBirthPlace() . '</span></a></td>' . '<td align="left" width="100%"><a href="' . $value->getHtmlUrl() . '">' . $value->getSexImage() . $indiName . '</a></td>' .
-						'<td width="15">';
-					if ($value->isDead()) {
-						if ($deathReal || $value->isDead()) {
-							echo '<a class="showit" href="#"><b>';
-							echo self::getAbbreviation('DEAT');
-							if (!$deathReal) {
-								echo "*";
-							}
-							echo '</b><span>' . $value->getSexImage() . $indiName . '<br>' . GedcomTag::getLabel('DEAT') . ' ' . strip_tags($ddate->display()) . ' ' . $value->getDeathPlace() . '</span></a>';
-						}
-					}
-					echo '</td></tr></table>';
-					echo '</div>';
-				} else {
-					echo '<div style="text-align: left; position: absolute;top:', $Y, 'px; left:', $startPos, 'px;width:', $width, 'px; height:', $height, 'px; background-color:', $this->color, '; border: solid blue 1px; z-index:', $Z, '">';
-					$indiName = $value->getFullName();
-					echo '<a class="showit" href="' . $value->getHtmlUrl() . '"><b>';
-					echo self::getAbbreviation('BIRT');
-					echo '</b><span>' . $value->getSexImage() . $indiName . '<br>' . GedcomTag::getLabel('BIRT') . ' ' . strip_tags($bdate->display()) . ' ' . $value->getBirthPlace() . '<br>';
-					foreach ($eventinformation as $val) {
-						$text = explode('-fact,', $val);
-						$val  = $text[1];
-						echo $val . "<br>";
-					}
-					if ($value->isDead() && $deathReal) {
-						echo GedcomTag::getLabel('DEAT') . " " . strip_tags($ddate->display()) . " " . $value->getDeathPlace();
-					}
-					echo '</span></a>';
-					echo '</div>';
-				}
+				$printName    = '';
+				$abbrLifespan = '';
 			}
-			$zindex--;
 
-			if ($maxX < $startPos + $width) {
-				$maxX = $startPos + $width;
+			printf("<div class='%s' style='top:%spx; %s:%spx; width:%spx; background-color:%s;'>",
+			       $popupClass, $Y, $direction, $startPos, $width, $this->colorCycle($sex));
+
+			printf("<div class='itr'>%s %s %s<div class='popup %s'><div><a href='%s'>%s %s</a></div>",
+			       $person->getSexImage(), $printName, $abbrLifespan, $popupClass, $person->getHtmlUrl(), $person->getFullName(), $lifespan);
+
+			foreach ($eventinformation as $event) {
+				printf("<div>%s: %s %s</div>", $event->label, $event->date, $event->place);
 			}
-			if ($maxY < $Y) {
-				$maxY = $Y;
-			}
+			echo "</div>" . // class='popup'
+				"</div>" . // class='itr'
+				"</div>";  // class=$popupclass
+
+			$maxY = max($maxY, $Y);
 		}
 
 		return $maxY;
@@ -564,19 +359,19 @@ class LifespanController extends PageController {
 	private static function searchIndividualsInYearRange($startyear, $endyear) {
 		global $WT_TREE;
 
-		// At present, the lifespan chart is driven by Gregorian years.
-		// We ought to allow it to work with other calendars...
-		$gregorian_calendar = new GregorianCalendar;
-
-		$startjd = $gregorian_calendar->ymdToJd($startyear, 1, 1);
-		$endjd   = $gregorian_calendar->ymdToJd($endyear, 12, 31);
+		$startDate = new Date($startyear);
+		$endDate   = new Date($endyear);
 
 		$rows = Database::prepare(
-"SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom" .
+			"SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom" .
 			" FROM `##individuals`" .
 			" JOIN `##dates` ON i_id=d_gid AND i_file=d_file" .
-			" WHERE i_file=? AND d_julianday1 BETWEEN ? AND ?"
-		)->execute(array($WT_TREE->getTreeId(), $startjd, $endjd))->fetchAll();
+			" WHERE i_file=:tree_id AND d_julianday1 BETWEEN :date1 AND :date2"
+		)->execute(array(
+			'tree_id'=>$WT_TREE->getTreeId(),
+			'date1'=>$startDate->minimumJulianDay(),
+			'date2'=>$endDate->maximumJulianDay()
+		))->fetchAll();
 
 		$list = array();
 		foreach ($rows as $row) {
@@ -587,22 +382,43 @@ class LifespanController extends PageController {
 	}
 
 	/**
-	 * Generate a very short abbreviation for birth/marriage/death
+	 * Function colorCycle
 	 *
-	 * @param string $tag
+	 * $lightness cycles through 40%, 50%, 60%, 70%, 80%, 90%
+	 * $hue reduces angle by baseHueAngle degrees on each complete $lightness cycle
+	 * but limits its value to stay within 120Deg of base i.e
+	 * Female tends from Red to Green, Male tends from Blue to Green
 	 *
+	 * @param string $sex
 	 * @return string
 	 */
-	private static function getAbbreviation($tag) {
-		switch ($tag) {
-		case 'BIRT':
-			return I18N::translateContext('Abbreviation for birth', 'b.');
-		case 'MARR':
-			return I18N::translateContext('Abbreviation for marriage', 'm.');
-		case 'DEAT':
-			return I18N::translateContext('Abbreviation for death', 'd.');
-		default:
-			return mb_substr(GedcomTag::getLabel($tag), 0, 1); // Just use the first letter of the full fact
+	private function colorCycle($sex = 'U') {
+		$lightness = ($this->colors[$sex]->lightness + 10) % 100;
+		$hue       = $this->colors[$sex]->currentHue;
+
+		if ($lightness === 0) {
+			$lightness = self::baseLightness;
+			if ($sex === 'F') {
+				$hue += self::baseHueAngle;
+				if ($hue > 120) {
+					$hue = $this->colors[$sex]->baseHue;
+				}
+			} else {
+				$hue -= self::baseHueAngle;
+				if ($hue < 120) {
+					$hue = $this->colors[$sex]->baseHue;
+				}
+			}
 		}
+
+		$this->colors[$sex]->currentHue = $hue;
+		$this->colors[$sex]->lightness  = $lightness;
+
+		return sprintf("hsla(%s, %s%%, %s%%, %s)",
+		               $this->colors[$sex]->currentHue,
+		               $this->colors[$sex]->saturation,
+		               $this->colors[$sex]->lightness,
+		               $this->colors[$sex]->luminance);
 	}
+
 }
