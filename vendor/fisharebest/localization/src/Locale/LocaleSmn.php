@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Locale;
+
+use Fisharebest\Localization\Language\LanguageSmn;
 
 /**
  * Class LocaleSmn - Inari Sami
@@ -7,14 +9,14 @@
  * @copyright (c) 2015 Greg Roach
  * @license       GPLv3+
  */
-class LocaleSmn extends Locale {
+class LocaleSmn extends AbstractLocale implements LocaleInterface {
 	/** {@inheritdoc} */
 	public function endonym() {
 		return 'anarâškielâ';
 	}
 
 	/** {@inheritdoc} */
-	protected function endonymSortable() {
+	public function endonymSortable() {
 		return 'ANARASKIELA';
 	}
 

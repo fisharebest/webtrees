@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Locale;
+
+use Fisharebest\Localization\Language\LanguageSl;
 
 /**
  * Class LocaleSl - Slovenian
@@ -7,7 +9,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license       GPLv3+
  */
-class LocaleSl extends Locale {
+class LocaleSl extends AbstractLocale implements LocaleInterface {
 	/** {@inheritdoc} */
 	public function collation() {
 		return 'slovenian_ci';
@@ -19,7 +21,7 @@ class LocaleSl extends Locale {
 	}
 
 	/** {@inheritdoc} */
-	protected function endonymSortable() {
+	public function endonymSortable() {
 		return 'SLOVENSCINA';
 	}
 

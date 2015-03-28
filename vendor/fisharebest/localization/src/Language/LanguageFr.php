@@ -1,4 +1,7 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Language;
+
+use Fisharebest\Localization\PluralRule\PluralRule2;
+use Fisharebest\Localization\Territory\TerritoryFr;
 
 /**
  * Class LanguageFr - Representation of the French language.
@@ -7,7 +10,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class LanguageFr extends Language {
+class LanguageFr extends AbstractLanguage implements LanguageInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'fr';

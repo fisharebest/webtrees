@@ -1,13 +1,13 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Territory;
 
 /**
- * Class Territory - Representation of the territory SU - Union of Soviet Socialist Republics.
+ * Class AbstractTerritory - Representation of the territory SU - Union of Soviet Socialist Republics.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class TerritorySu extends Territory {
+class TerritorySu extends AbstractTerritory implements TerritoryInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'SU';

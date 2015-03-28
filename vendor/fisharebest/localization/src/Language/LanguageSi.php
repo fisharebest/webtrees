@@ -1,4 +1,8 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Language;
+
+use Fisharebest\Localization\PluralRule\PluralRule2;
+use Fisharebest\Localization\Script\ScriptSinh;
+use Fisharebest\Localization\Territory\TerritoryLk;
 
 /**
  * Class LanguageSi - Representation of the Sinhala language.
@@ -7,7 +11,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class LanguageSi extends Language {
+class LanguageSi extends AbstractLanguage implements LanguageInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'si';

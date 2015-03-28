@@ -1,4 +1,4 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Script;
 
 /**
  * Class ScriptKpel - Representation of the Kpelle script.
@@ -7,7 +7,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class ScriptKpel extends Script {
+class ScriptKpel extends AbstractScript implements ScriptInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'Kpel';

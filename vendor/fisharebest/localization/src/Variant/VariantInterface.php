@@ -1,17 +1,17 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Variant;
 
 /**
- * Class Script - Representation of a locale variant.
+ * Interface VariantInterface - Representation of a locale variant.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-abstract class Variant {
+interface VariantInterface {
 	/**
 	 * The code for this variant.
 	 *
 	 * @return string
 	 */
-	abstract public function code();
+	public function code();
 }

@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Locale;
+
+use Fisharebest\Localization\Language\LanguageSg;
 
 /**
  * Class LocaleSg - Sango
@@ -7,14 +9,14 @@
  * @copyright (c) 2015 Greg Roach
  * @license       GPLv3+
  */
-class LocaleSg extends Locale {
+class LocaleSg extends AbstractLocale implements LocaleInterface {
 	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Sängö';
 	}
 
 	/** {@inheritdoc} */
-	protected function endonymSortable() {
+	public function endonymSortable() {
 		return 'SANGO';
 	}
 

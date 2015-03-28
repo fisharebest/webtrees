@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Locale;
+
+use Fisharebest\Localization\Language\LanguageAgq;
 
 /**
  * Class LocaleAgq - Aghem
@@ -7,14 +9,14 @@
  * @copyright (c) 2015 Greg Roach
  * @license       GPLv3+
  */
-class LocaleAgq extends Locale {
+class LocaleAgq extends AbstractLocale implements LocaleInterface {
 	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Aghem';
 	}
 
 	/** {@inheritdoc} */
-	protected function endonymSortable() {
+	public function endonymSortable() {
 		return 'AGHEM';
 	}
 

@@ -1,4 +1,7 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Language;
+
+use Fisharebest\Localization\PluralRule\PluralRule1;
+use Fisharebest\Localization\Territory\TerritoryDk;
 
 /**
  * Class LanguageDa - Representation of the Danish language.
@@ -7,7 +10,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class LanguageDa extends Language {
+class LanguageDa extends AbstractLanguage implements LanguageInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'da';

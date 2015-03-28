@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Locale;
+
+use Fisharebest\Localization\Language\LanguageLuy;
 
 /**
  * Class LocaleLuy - Luyia
@@ -7,14 +9,14 @@
  * @copyright (c) 2015 Greg Roach
  * @license       GPLv3+
  */
-class LocaleLuy extends Locale {
+class LocaleLuy extends AbstractLocale implements LocaleInterface {
 	/** {@inheritdoc} */
 	public function endonym() {
 		return 'Luluhia';
 	}
 
 	/** {@inheritdoc} */
-	protected function endonymSortable() {
+	public function endonymSortable() {
 		return 'LULUHIA';
 	}
 

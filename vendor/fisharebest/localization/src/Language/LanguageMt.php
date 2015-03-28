@@ -1,4 +1,7 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Language;
+
+use Fisharebest\Localization\PluralRule\PluralRule13;
+use Fisharebest\Localization\Territory\TerritoryMt;
 
 /**
  * Class LanguageMt - Representation of the Maltese language.
@@ -7,7 +10,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class LanguageMt extends Language {
+class LanguageMt extends AbstractLanguage implements LanguageInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'mt';

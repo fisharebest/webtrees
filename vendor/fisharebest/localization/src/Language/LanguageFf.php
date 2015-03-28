@@ -1,4 +1,7 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Language;
+
+use Fisharebest\Localization\PluralRule\PluralRule2;
+use Fisharebest\Localization\Territory\TerritorySn;
 
 /**
  * Class LanguageFf - Representation of the Fulah language.
@@ -7,7 +10,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class LanguageFf extends Language {
+class LanguageFf extends AbstractLanguage implements LanguageInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'ff';

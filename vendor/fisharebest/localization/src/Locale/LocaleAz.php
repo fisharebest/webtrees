@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Locale;
+
+use Fisharebest\Localization\Language\LanguageAz;
 
 /**
  * Class LocaleAz - Azerbaijani
@@ -7,14 +9,14 @@
  * @copyright (c) 2015 Greg Roach
  * @license       GPLv3+
  */
-class LocaleAz extends Locale {
+class LocaleAz extends AbstractLocale implements LocaleInterface {
 	/** {@inheritdoc} */
 	public function endonym() {
 		return 'azərbaycan';
 	}
 
 	/** {@inheritdoc} */
-	protected function endonymSortable() {
+	public function endonymSortable() {
 		return 'AZERBAYCAN';
 	}
 

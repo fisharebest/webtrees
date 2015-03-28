@@ -17,7 +17,7 @@ namespace Fisharebest\Webtrees;
  */
 
 use Fisharebest\Localization\Locale;
-use Fisharebest\Localization\LocaleEnUs;
+use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Localization\Translation;
 use Fisharebest\Localization\Translator;
 use Patchwork\TurkishUtf8;
@@ -123,31 +123,16 @@ class I18N {
 			} elseif ($WT_SESSION->locale) {
 				// Previously used
 				self::$locale = Locale::create($WT_SESSION->locale);
-			} elseif (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+			} else {
 				// Browser negotiation
-				$http_accept_language = strtolower(str_replace(' ', '', $_SERVER['HTTP_ACCEPT_LANGUAGE']));
-				if (preg_match_all('/(?:([a-z][a-z0-9_-]+)(?:;q=([0-9.]+))?)/', $http_accept_language, $match)) {
-					$preferences = array_combine($match[1], $match[2]);
-					array_walk($preferences, function(&$x) { $x = $x === '' ? 1.0 : (float) $x; });
-				} else {
-					$preferences = array();
-				}
-				// Add the tree’s default language as a low-priority
-				if ($WT_TREE && !isset($preferences[$WT_TREE->getPreference('LANGUAGE')])) {
-					$preferences[$WT_TREE->getPreference('LANGUAGE')] = 0.2;
-				}
-				arsort($preferences);
-				foreach (array_keys($preferences) as $code) {
-					try {
-						$locale = Locale::create($code);
-						if (file_exists(WT_ROOT . 'language/' . $locale->languageTag() . '.mo')) {
-							self::$locale = $locale;
-							break;
-						}
-					} catch (\Exception $ex) {
-						// The user's prefered locale does not exist
+				$default_locale = new LocaleEnUs;
+				try {
+					if ($WT_TREE) {
+						$default_locale = Locale::create($WT_TREE->getPreference('LANGUAGE'));
 					}
+				} catch (\Exception $ex) {
 				}
+				self::$locale = Locale::httpAcceptLanguage($_SESSION, self::installedLocales(), $default_locale);
 			}
 		}
 
@@ -168,7 +153,9 @@ class I18N {
 			glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.{csv,php,mo}', GLOB_BRACE) ?: array()
 		);
 
-		$rebuild_cache = false;
+		// Rebuild files after 2 hours
+		$rebuild_cache = time() > $filemtime + 7200;
+		// Rebuild files if any translation file has been updated
 		foreach ($translation_files as $translation_file) {
 			if (filemtime($translation_file) > $filemtime) {
 				$rebuild_cache = true;
@@ -251,6 +238,7 @@ class I18N {
 	public static function collation() {
 		$collation = self::$locale->collation();
 		switch ($collation) {
+		case 'croatian_ci':
 		case 'german2_ci':
 		case 'vietnamese_ci':
 			// Only available in MySQL 5.6
@@ -332,7 +320,7 @@ class I18N {
 	 * @return string
 	 */
 	public static function percentage($n, $precision = 0) {
-		return self::$locale->percent($n, $precision);
+		return self::$locale->percent(round($n, $precision + 2));
 	}
 
 	/**
@@ -400,7 +388,7 @@ class I18N {
 	 */
 	public static function plural(/* var_args */) {
 		$args = func_get_args();
-		$args[0] = self::$translator->plural($args[0], $args[1], $args[2]);
+		$args[0] = self::$translator->translatePlural($args[0], $args[1], $args[2]);
 		unset($args[1], $args[2]);
 
 		return call_user_func_array('sprintf', $args);

@@ -1,4 +1,4 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Script;
 
 /**
  * Class ScriptThaa - Representation of the Thaana script.
@@ -7,7 +7,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class ScriptThaa extends Script {
+class ScriptThaa extends AbstractScript implements ScriptInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'Thaa';

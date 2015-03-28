@@ -1,13 +1,13 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Territory;
 
 /**
- * Class Territory - Representation of the territory DM - Dominica.
+ * Class AbstractTerritory - Representation of the territory DM - Dominica.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class TerritoryDm extends Territory {
+class TerritoryDm extends AbstractTerritory implements TerritoryInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'DM';

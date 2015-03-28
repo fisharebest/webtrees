@@ -1,4 +1,4 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Locale;
 
 /**
  * Class LocaleAr001 - Modern Standard Arabic

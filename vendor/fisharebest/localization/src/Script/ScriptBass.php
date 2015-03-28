@@ -1,13 +1,13 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Script;
 
 /**
- * Class ScriptBass - Representation of the Yi script.
+ * Class ScriptBass - Representation of the Bassa Vah script.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class ScriptBass extends Script {
+class ScriptBass extends AbstractScript implements ScriptInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'Bass';

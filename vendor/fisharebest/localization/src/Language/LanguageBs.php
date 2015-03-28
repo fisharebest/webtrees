@@ -1,4 +1,7 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Language;
+
+use Fisharebest\Localization\PluralRule\PluralRule7;
+use Fisharebest\Localization\Territory\TerritoryBa;
 
 /**
  * Class LanguageBs - Representation of the Bosnian language.
@@ -7,7 +10,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class LanguageBs extends Language {
+class LanguageBs extends AbstractLanguage implements LanguageInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'bs';

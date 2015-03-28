@@ -1,13 +1,13 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Territory;
 
 /**
- * Class Territory - Representation of the territory GM - Gambia.
+ * Class AbstractTerritory - Representation of the territory GM - Gambia.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class TerritoryGm extends Territory {
+class TerritoryGm extends AbstractTerritory implements TerritoryInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'GM';

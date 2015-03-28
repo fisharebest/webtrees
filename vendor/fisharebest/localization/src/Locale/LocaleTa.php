@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Locale;
+
+use Fisharebest\Localization\Language\LanguageTa;
 
 /**
  * Class LocaleTa - Tamil
@@ -7,7 +9,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license       GPLv3+
  */
-class LocaleTa extends Locale {
+class LocaleTa extends AbstractLocale implements LocaleInterface {
 	/** {@inheritdoc} */
 	protected function digitsGroup() {
 		return 2;

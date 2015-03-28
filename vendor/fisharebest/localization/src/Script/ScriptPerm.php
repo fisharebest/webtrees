@@ -1,4 +1,4 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Script;
 
 /**
  * Class ScriptPerm - Representation of the Old Permic script.
@@ -7,7 +7,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class ScriptPerm extends Script {
+class ScriptPerm extends AbstractScript implements ScriptInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'Perm';

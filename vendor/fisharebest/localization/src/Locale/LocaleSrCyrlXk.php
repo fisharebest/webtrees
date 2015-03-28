@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Locale;
+
+use Fisharebest\Localization\Territory\TerritoryXk;
 
 /**
  * Class LocaleSrCyrlXk

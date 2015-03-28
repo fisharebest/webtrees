@@ -1,4 +1,4 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Script;
 
 /**
  * Class ScriptMlym - Representation of the Malayalam script.
@@ -7,7 +7,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class ScriptMlym extends Script {
+class ScriptMlym extends AbstractScript implements ScriptInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'Mlym';

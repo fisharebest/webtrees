@@ -1,4 +1,4 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Script;
 
 /**
  * Class ScriptHmng - Representation of the Pahawh Hmong script.
@@ -7,7 +7,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class ScriptHmng extends Script {
+class ScriptHmng extends AbstractScript implements ScriptInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'Hmng';

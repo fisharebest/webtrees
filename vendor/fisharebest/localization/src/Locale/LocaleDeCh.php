@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Locale;
+
+use Fisharebest\Localization\Territory\TerritoryCh;
 
 /**
  * Class LocaleDeCh - Swiss High German
@@ -14,7 +16,7 @@ class LocaleDeCh extends LocaleDe {
 	}
 
 	/** {@inheritdoc} */
-	protected function endonymSortable() {
+	public function endonymSortable() {
 		return 'SCHWEIZER HOCHDEUTSCH';
 	}
 

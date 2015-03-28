@@ -1,4 +1,4 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\PluralRule;
 
 /**
  * Interface PluralRuleInterface - Select a plural form for a specified number.

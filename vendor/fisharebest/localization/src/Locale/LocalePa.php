@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Locale;
+
+use Fisharebest\Localization\Language\LanguagePa;
 
 /**
  * Class LocalePa - Punjabi
@@ -7,7 +9,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license       GPLv3+
  */
-class LocalePa extends Locale {
+class LocalePa extends AbstractLocale implements LocaleInterface {
 	/** {@inheritdoc} */
 	protected function digitsGroup() {
 		return 2;

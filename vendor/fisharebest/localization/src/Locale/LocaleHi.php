@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Locale;
+
+use Fisharebest\Localization\Language\LanguageHi;
 
 /**
  * Class LocaleHi - Hindi
@@ -7,7 +9,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license       GPLv3+
  */
-class LocaleHi extends Locale {
+class LocaleHi extends AbstractLocale implements LocaleInterface {
 	/** {@inheritdoc} */
 	protected function digitsGroup() {
 		return 2;

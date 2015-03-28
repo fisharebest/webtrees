@@ -1,4 +1,8 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Language;
+
+use Fisharebest\Localization\PluralRule\PluralRule1;
+use Fisharebest\Localization\Script\ScriptThaa;
+use Fisharebest\Localization\Territory\TerritoryMv;
 
 /**
  * Class LanguageDv - Representation of the Divehi language.
@@ -7,7 +11,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class LanguageDv extends Language {
+class LanguageDv extends AbstractLanguage implements LanguageInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'dv';

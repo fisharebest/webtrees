@@ -1,4 +1,7 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Language;
+
+use Fisharebest\Localization\PluralRule\PluralRule1;
+use Fisharebest\Localization\Territory\TerritoryTz;
 
 /**
  * Class LanguageRwk - Representation of the Rwa language.
@@ -7,7 +10,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class LanguageRwk extends Language {
+class LanguageRwk extends AbstractLanguage implements LanguageInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'rwk';
@@ -16,5 +19,10 @@ class LanguageRwk extends Language {
 	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryTz;
+	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule1;
 	}
 }

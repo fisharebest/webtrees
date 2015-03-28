@@ -1,4 +1,7 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Language;
+
+use Fisharebest\Localization\PluralRule\PluralRuleManx;
+use Fisharebest\Localization\Territory\TerritoryIm;
 
 /**
  * Class LanguageGv - Representation of the Manx language.
@@ -7,7 +10,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class LanguageGv extends Language {
+class LanguageGv extends AbstractLanguage implements LanguageInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'gv';
@@ -16,5 +19,10 @@ class LanguageGv extends Language {
 	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryIm;
+	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRuleManx;
 	}
 }

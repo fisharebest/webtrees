@@ -1,4 +1,7 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Language;
+
+use Fisharebest\Localization\PluralRule\PluralRule1;
+use Fisharebest\Localization\Territory\TerritoryCm;
 
 /**
  * Class LanguageKkj - Representation of the Kako language.
@@ -7,7 +10,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class LanguageKkj extends Language {
+class LanguageKkj extends AbstractLanguage implements LanguageInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'kkj';
@@ -16,5 +19,10 @@ class LanguageKkj extends Language {
 	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryCm;
+	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule1;
 	}
 }

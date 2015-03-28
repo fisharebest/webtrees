@@ -1,13 +1,13 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Territory;
 
 /**
- * Class Territory - Representation of the territory AF - Afghanistan.
+ * Class AbstractTerritory - Representation of the territory AF - Afghanistan.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class TerritoryAf extends Territory {
+class TerritoryAf extends AbstractTerritory implements TerritoryInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'AF';

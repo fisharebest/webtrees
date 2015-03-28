@@ -1,4 +1,7 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Language;
+
+use Fisharebest\Localization\PluralRule\PluralRule0;
+use Fisharebest\Localization\Territory\TerritoryCv;
 
 /**
  * Class LanguageKea - Representation of the Kabuverdianu language.
@@ -7,7 +10,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class LanguageKea extends Language {
+class LanguageKea extends AbstractLanguage implements LanguageInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'kea';
@@ -16,5 +19,10 @@ class LanguageKea extends Language {
 	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryCv;
+	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule0;
 	}
 }

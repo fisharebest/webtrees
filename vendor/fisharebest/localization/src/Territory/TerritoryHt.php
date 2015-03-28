@@ -1,13 +1,13 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Territory;
 
 /**
- * Class Territory - Representation of the territory HT - Haiti.
+ * Class AbstractTerritory - Representation of the territory HT - Haiti.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class TerritoryHt extends Territory {
+class TerritoryHt extends AbstractTerritory implements TerritoryInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'HT';

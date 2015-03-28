@@ -1,13 +1,19 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Locale;
+
+use Fisharebest\Localization\Language\LanguageInterface;
+use Fisharebest\Localization\PluralRule\PluralRuleInterface;
+use Fisharebest\Localization\Script\ScriptInterface;
+use Fisharebest\Localization\Territory\TerritoryInterface;
+use Fisharebest\Localization\Variant\VariantInterface;
 
 /**
- * Class Locale - The “root” locale, from which all others are derived.
+ * Class AbstractLocale - The “root” locale, from which all others are derived.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-abstract class Locale {
+abstract class AbstractLocale {
 	// "Source" strings, when translating numbers
 	const DECIMAL  = '.'; // The default decimal mark
 	const GROUP    = ','; // The digit group separator
@@ -68,41 +74,6 @@ abstract class Locale {
 	}
 
 	/**
-	 * Callback for PHP sort functions - allows lists of locales to be sorted.
-	 * Diacritics are removed and text is capitalized to allow fast/simple sorting.
-	 *
-	 * @param Locale $x
-	 * @param Locale $y
-	 *
-	 * @return integer
-	 */
-	public static function compare(Locale $x, Locale $y) {
-		return strcmp($x->endonymSortable(), $y->endonymSortable());
-	}
-
-	/**
-	 * Create a locale from a language tag (or locale code).
-	 *
-	 * @param string $language
-	 *
-	 * @return Locale
-	 * @throws \DomainException
-	 */
-	public static function create($language) {
-		$parts = preg_split('/[^a-zA-Z0-9]+/', $language);
-		array_walk($parts, function (&$x) {
-			$x = ucfirst(strtolower($x));
-		});
-		$class = __NAMESPACE__ . '\Locale' . implode($parts);
-
-		if (class_exists($class)) {
-			return new $class;
-		} else {
-			throw new \DomainException($language);
-		}
-	}
-
-	/**
 	 * Convert (Hindu-Arabic) digits into a localized form
 	 *
 	 * @param string $string  e.g. "123.45"
@@ -158,7 +129,7 @@ abstract class Locale {
 	 *
 	 * @return string
 	 */
-	protected function endonymSortable() {
+	public function endonymSortable() {
 		return $this->endonym();
 	}
 
@@ -178,7 +149,7 @@ abstract class Locale {
 	/**
 	 * The language used by this locale.
 	 *
-	 * @return Language
+	 * @return LanguageInterface
 	 */
 	abstract public function language();
 
@@ -271,10 +242,8 @@ abstract class Locale {
 	 *
 	 * @return string
 	 */
-	public function percent($number, $precision = 0) {
-		$number = round($number * 100, $precision);
-
-		return sprintf($this->percentFormat(), $this->number($number));
+	public function percent($number) {
+		return sprintf($this->percentFormat(), $this->number($number * 100.0));
 	}
 
 	/**
@@ -289,7 +258,7 @@ abstract class Locale {
 	/**
 	 * Which plural rule is used in this locale
 	 *
-	 * @return PluralRule
+	 * @return PluralRuleInterface
 	 */
 	public function pluralRule() {
 		return $this->language()->pluralRule();
@@ -298,7 +267,7 @@ abstract class Locale {
 	/**
 	 * The script used by this locale.
 	 *
-	 * @return Script
+	 * @return ScriptInterface
 	 */
 	public function script() {
 		return $this->language()->defaultScript();
@@ -307,7 +276,7 @@ abstract class Locale {
 	/**
 	 * The territory used by this locale.
 	 *
-	 * @return Territory
+	 * @return TerritoryInterface
 	 */
 	public function territory() {
 		return $this->language()->defaultTerritory();
@@ -316,7 +285,7 @@ abstract class Locale {
 	/**
 	 * The variant, if any of this locale.
 	 *
-	 * @return Variant|null
+	 * @return VariantInterface|null
 	 */
 	public function variant() {
 		return null;

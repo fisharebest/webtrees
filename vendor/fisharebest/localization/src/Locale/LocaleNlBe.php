@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Locale;
+
+use Fisharebest\Localization\Territory\TerritoryBe;
 
 /**
  * Class LocaleNlBe - Flemish
@@ -14,7 +16,7 @@ class LocaleNlBe extends LocaleNl {
 	}
 
 	/** {@inheritdoc} */
-	protected function endonymSortable() {
+	public function endonymSortable() {
 		return 'VLAAMS';
 	}
 

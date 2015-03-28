@@ -1,4 +1,8 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Language;
+
+use Fisharebest\Localization\PluralRule\PluralRule0;
+use Fisharebest\Localization\Script\ScriptJpan;
+use Fisharebest\Localization\Territory\TerritoryJp;
 
 /**
  * Class LanguageJa - Representation of the Japanese language.
@@ -7,7 +11,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class LanguageJa extends Language {
+class LanguageJa extends AbstractLanguage implements LanguageInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'ja';

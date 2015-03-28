@@ -1,4 +1,4 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Locale;
 
 /**
  * Class LocaleAaEt
@@ -7,5 +7,5 @@
  * @copyright (c) 2015 Greg Roach
  * @license       GPLv3+
  */
-class LocaleAaEt extends LocaleAa {
+class LocaleAaEt extends LocaleAa implements LocaleInterface {
 }

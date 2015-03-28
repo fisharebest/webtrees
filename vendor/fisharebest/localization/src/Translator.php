@@ -1,5 +1,7 @@
 <?php namespace Fisharebest\Localization;
 
+use Fisharebest\Localization\PluralRule\PluralRuleInterface;
+
 /**
  * Class Translator - use a translation to translate messages.
  *
@@ -26,39 +28,8 @@ class Translator {
 	}
 
 	/**
-	 * Check whether a message is translated.
-	 *
-	 * @param string $message English text to check
-	 *
-	 * @return boolean
-	 */
-	public function isTranslated($message) {
-		return isset($this->translations[$message]);
-	}
-
-	/**
-	 * Translate a plural message into another language.
-	 *
-	 * @param string  $message1 English text for singular
-	 * @param string  $message2 English text for plural
-	 * @param integer $number   Number of entities
-	 *
-	 * @return string Translated text
-	 */
-	public function plural($message1, $message2, $number) {
-		$key = $message1 . chr(0) . $message2;
-		if (isset($this->translations[$key])) {
-			$plurals = explode(chr(0), $this->translations[$key]);
-			if (count($plurals) === $this->plural_rule->plurals()) {
-				return $plurals[$this->plural_rule->plural($number)];
-			}
-		}
-
-		return $number === 1 ? $message1 : $message2;
-	}
-
-	/**
 	 * Translate a message into another language.
+	 * Works the same as gettext().
 	 *
 	 * @param string $message English text to translate
 	 *
@@ -74,6 +45,7 @@ class Translator {
 
 	/**
 	 * Translate a context-sensitive message into another language.
+	 * Works the same as pgettext().
 	 *
 	 * @param string $context Context of the message, e.g. "verb" or "noun"
 	 * @param string $message English text to translate
@@ -87,5 +59,27 @@ class Translator {
 		} else {
 			return $message;
 		}
+	}
+
+	/**
+	 * Translate a plural message into another language.
+	 * Works the same as ngettext().
+	 *
+	 * @param string  $message1 English text for singular
+	 * @param string  $message2 English text for plural
+	 * @param integer $number   Number of entities
+	 *
+	 * @return string Translated text
+	 */
+	public function translatePlural($message1, $message2, $number) {
+		$key = $message1 . chr(0) . $message2;
+		if (isset($this->translations[$key])) {
+			$plurals = explode(chr(0), $this->translations[$key]);
+			if (count($plurals) === $this->plural_rule->plurals()) {
+				return $plurals[$this->plural_rule->plural($number)];
+			}
+		}
+
+		return $number === 1 ? $message1 : $message2;
 	}
 }
