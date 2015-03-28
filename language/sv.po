@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-18 20:44+0100\n"
+"PO-Revision-Date: 2015-03-28 18:37+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Swedish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
@@ -237,15 +237,15 @@ msgstr[1] "%s dagar sedan"
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s familj har uppdaterats."
+msgstr[1] "%s familjer har uppdaterats."
 
 #: admin.php:761
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s familjeträd"
+msgstr[1] "%s familjeträd"
 
 #: app/Stats.php:4748 app/Stats.php:4752
 #, php-format
@@ -279,8 +279,8 @@ msgstr[1] "%s personer är skyddade."
 #, php-format
 msgid "%s individuals has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s person har uppdaterats."
+msgstr[1] "%s personer har uppdaterats."
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:122
@@ -329,8 +329,8 @@ msgstr[1] "%s månader sedan"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s antekning har uppdaterats."
+msgstr[1] "%s antekningar har uppdaterats."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: includes/functions/functions.php:2108
@@ -355,8 +355,8 @@ msgstr[1] "%s sekunder sedan"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s källa har uppdaterats."
+msgstr[1] "%s källor har uppdaterats."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2124
@@ -3327,7 +3327,7 @@ msgstr ""
 
 #: index_edit.php:44
 msgid "Change the “My page” blocks"
-msgstr ""
+msgstr "Ändra ”Min sida” block"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: includes/functions/functions_print_lists.php:1757
@@ -4029,6 +4029,8 @@ msgstr "Skapa eget diagram"
 #: admin_trees_manage.php:712
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
 msgstr ""
+"Skapa, uppdatera och ta bort ett släktträd för varje GEDCOM-fil i data "
+"mappen."
 
 #. I18N: gedcom tag CREM
 #: app/Gedcom/GedcomTag.php:331 modules_v3/family_group_report/report.xml:309
@@ -4232,7 +4234,7 @@ msgstr "Dallas, Texas"
 #. I18N: A summary of the system status
 #: admin.php:399
 msgid "Dashboard"
-msgstr ""
+msgstr "Instrumentbräda"
 
 #. I18N: gedcom tag DATA
 #: app/Gedcom/GedcomTag.php:343
@@ -4878,7 +4880,7 @@ msgstr "Ta bort temporära filer…"
 
 #: admin_modules.php:88
 msgid "Delete the preferences for this module."
-msgstr ""
+msgstr "Ta bort denna moduls inställningar."
 
 #: app/Controller/IndividualController.php:160
 msgid "Delete this name"
@@ -5668,7 +5670,7 @@ msgstr "Exportera"
 
 #: admin_trees_download.php:34
 msgid "Export a GEDCOM file"
-msgstr ""
+msgstr "Exportera en GEDCOM fil"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:279
@@ -7280,7 +7282,7 @@ msgstr "Importera"
 
 #: admin_trees_manage.php:162
 msgid "Import a GEDCOM file"
-msgstr ""
+msgstr "Importera en GEDCOM fil"
 
 #: app/Module/GoogleMapsModule.php:4626
 msgid "Import all places from a family tree"
@@ -8059,17 +8061,17 @@ msgstr "Länka personen till existerande familj som barn"
 #: admin_media.php:525 app/Controller/MediaController.php:61
 #: app/Controller/MediaController.php:150 app/Module/AlbumModule.php:141
 msgid "Link this media object to a family"
-msgstr ""
+msgstr "Länka detta media objekt till en familj"
 
 #: admin_media.php:526 app/Controller/MediaController.php:65
 #: app/Controller/MediaController.php:153 app/Module/AlbumModule.php:146
 msgid "Link this media object to a source"
-msgstr ""
+msgstr "Länka detta media objekt till en källa"
 
 #: admin_media.php:524 app/Controller/MediaController.php:57
 #: app/Controller/MediaController.php:147 app/Module/AlbumModule.php:136
 msgid "Link this media object to an individual"
-msgstr ""
+msgstr "Länka detta media objekt till en person"
 
 #: admin_users.php:584
 msgid "Link this user to an individual in the family tree."
@@ -8320,7 +8322,7 @@ msgstr "Hantera länkar"
 #. I18N: Menu entry
 #: admin_media.php:582 app/Theme/AdministrationTheme.php:139
 msgid "Manage media"
-msgstr ""
+msgstr "Hantera media"
 
 #. I18N: Listbox entry; name of a role
 #: admin_trees_download.php:184 admin_users.php:40 admin_users.php:539
@@ -9555,11 +9557,11 @@ msgstr "Nej"
 
 #: admin_trees_manage.php:88 admin_trees_manage.php:109
 msgid "No GEDCOM file was received."
-msgstr ""
+msgstr "Ingen GEDCOM fil mottagen."
 
 #: admin_trees_manage.php:240
 msgid "No GEDCOM files found."
-msgstr ""
+msgstr "Inga GEDCOM filer hittades."
 
 #: app/Module/GoogleMapsModule.php:911
 msgid "No ancestors in the database."
@@ -10783,12 +10785,13 @@ msgstr ""
 
 #: admin_trees_config.php:365 admin_trees_manage.php:363
 msgid "Preferences"
-msgstr "Preferenser"
+msgstr "Inställningar"
 
 #: admin_modules.php:83
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
 msgstr ""
+"Inställningar finns för modulen ”%s”, men denna modul finns inte längre."
 
 #. I18N: A configuration setting
 #: admin_users.php:453
@@ -11394,7 +11397,7 @@ msgstr "Bosatt"
 
 #: index_edit.php:395
 msgid "Restore the default block layout"
-msgstr ""
+msgstr "Återställ standardblocklayout"
 
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:376
@@ -12615,6 +12618,8 @@ msgstr ""
 #: admin_users.php:459 edituser.php:271
 msgid "Site members can send each other messages.  You can choose to how these messages are sent to you, or choose not receive them at all."
 msgstr ""
+"Sajt medlemmar kan skicka varandra meddelanden. Du kan välja hur dessa "
+"meddelanden skickas till dig , eller välja att inte ta emot dem alls."
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:515 admin_site_config.php:536
@@ -13527,12 +13532,12 @@ msgstr "Minneskrav och processor-tidskrav beror på antalet personer som finns i
 #: admin_modules.php:39
 #, php-format
 msgid "The module “%s” has been disabled."
-msgstr ""
+msgstr "Modulen “%s” är inaktiverad."
 
 #: admin_modules.php:41
 #, php-format
 msgid "The module “%s” has been enabled."
-msgstr ""
+msgstr "Modulen “%s” är aktiverad."
 
 #: admin_site_upgrade.php:398
 #, php-format
@@ -13568,7 +13573,7 @@ msgstr ""
 #: admin_modules.php:71
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr ""
+msgstr "Inställningarna för modulen “%s” har raderats."
 
 #: app/Module/GoogleMapsModule.php:265
 #, php-format
@@ -13656,7 +13661,7 @@ msgstr "Uppladdad fil överskrider max tillåten storlek."
 #: admin_users.php:788
 #, php-format
 msgid "The user %s has been deleted."
-msgstr ""
+msgstr "Användaren “%s” har raderats."
 
 #: login.php:324
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
@@ -13692,7 +13697,7 @@ msgstr ""
 
 #: admin_site_access.php:113
 msgid "The website access rule has been deleted."
-msgstr ""
+msgstr "En åtkomstregel för sajten “%s” har raderats."
 
 #: admin_site_access.php:97
 msgid "The website access rule has been updated."
@@ -14376,7 +14381,9 @@ msgstr "Denna sajt är otillgänglig för tillfället"
 #: admin_trees_manage.php:183
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
-msgstr "Radera all släktdata från “%s” och ersätt dem med data från annan GEDCOM."
+msgstr ""
+"Detta kommer att radera all genealogisk data från “%s” och ersätta det med "
+"data från en GEDCOM fil."
 
 #: app/Module/GoogleMapsModule.php:1781
 msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables."
@@ -16379,7 +16386,7 @@ msgstr "grader"
 #. I18N: Button label
 #: admin_site_clean.php:116 admin_users.php:774
 msgid "delete"
-msgstr ""
+msgstr "radera"
 
 #. I18N: An access rule - deny access to the site
 #: admin_site_access.php:36 admin_site_access.php:43
@@ -16483,17 +16490,17 @@ msgstr "ex-make"
 #: includes/functions/functions.php:716
 msgctxt "FEMALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "ex-partner"
 
 #: includes/functions/functions.php:698
 msgctxt "MALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "ex-partner"
 
 #: includes/functions/functions.php:734
 msgctxt "MALE/FEMALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "ex-partner"
 
 #: includes/functions/functions.php:739
 msgid "ex-spouse"
@@ -18518,7 +18525,7 @@ msgstr "flicknamn"
 
 #: admin_trees_config.php:509
 msgid "managers"
-msgstr ""
+msgstr "manager"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:71
@@ -18583,7 +18590,7 @@ msgstr[1] "maximum %s dagar"
 #: admin_trees_config.php:468 admin_trees_config.php:508
 #: admin_trees_config.php:528
 msgid "members"
-msgstr ""
+msgstr "medlemmar"
 
 #. I18N: time format “%a” - exactly 00:00:00
 #: includes/functions/functions_date.php:81
