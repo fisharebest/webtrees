@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-14 14:45+0100\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Turkish <http://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
+"PO-Revision-Date: 2015-03-29 11:32+0100\n"
+"Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
+"Language-Team: Turkish "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -225,13 +226,13 @@ msgstr[0] "%s gün önce"
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
+msgstr[0] "%s aile güncellendi."
 
 #: admin.php:761
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
+msgstr[0] "%s aile ağacı"
 
 #: app/Stats.php:4748 app/Stats.php:4752
 #, php-format
@@ -261,7 +262,7 @@ msgstr[0] "%s bireyin hususi alanıdır."
 #, php-format
 msgid "%s individuals has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
+msgstr[0] "%s birey güncellendi."
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:122
@@ -305,7 +306,7 @@ msgstr[0] "%s ay önce"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] ""
+msgstr[0] "%s not güncellendi."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: includes/functions/functions.php:2108
@@ -329,7 +330,7 @@ msgstr[0] "%s saniye önce"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] ""
+msgstr[0] "%s kaynak güncellendi."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2124
@@ -636,11 +637,11 @@ msgstr "Ölüm nedeni gibi ilişkili olgu yada hadisenin sebibinin tanımı."
 
 #: admin_trees_download.php:116 admin_trees_manage.php:209
 msgid "A file on the server"
-msgstr ""
+msgstr "Sunucudaki bir dosya"
 
 #: admin_trees_download.php:201 admin_trees_manage.php:198
 msgid "A file on your computer"
-msgstr ""
+msgstr "Bilgisayarınızdaki bir dosya"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:30
@@ -1286,7 +1287,7 @@ msgstr "Bu aile kaydı ile birlikte ebeveyn kayıtlarını ekle."
 
 #: admin_trees_manage.php:266
 msgid "Add spaces where long lines were wrapped"
-msgstr ""
+msgstr "Bölünmüş uzun kelimelere boşluk ekle"
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: admin_trees_download.php:161 app/Module/ClippingsCartModule.php:212
@@ -1707,7 +1708,7 @@ msgstr "Tüm mevcut PGV kullanıcıları farklı email adresine sahip ollmalı"
 
 #: admin_trees_config.php:601
 msgid "All facts and events"
-msgstr ""
+msgstr "Tüm olgu ve hadiseler"
 
 #: admin_trees_config.php:1883
 msgid "All family facts"
@@ -1732,7 +1733,7 @@ msgstr "Tüm Kişiler"
 
 #: admin_trees_config.php:592
 msgid "All records"
-msgstr ""
+msgstr "Tüm kayıtlar"
 
 #: admin_trees_config.php:2090
 msgid "All repository facts"
@@ -2232,6 +2233,8 @@ msgstr "Aile başına ortalama çocuk sayısı"
 #: admin_trees_config.php:665 admin_trees_manage.php:635
 msgid "Avoid spaces and punctuation.  A family name might be a good choice."
 msgstr ""
+"Boşluk ve noktalama işaretlerinden kaçının. Bir aile adı (soyadı) iyi bir "
+"tercih olabilir."
 
 #: app/Date/JalaliDate.php:158
 msgctxt "Abbreviation for Persian month: Azar"
@@ -2326,7 +2329,7 @@ msgstr "Bir çocuğun vaftizi"
 
 #: app/Gedcom/GedcomTag.php:975
 msgid "Baptism of a daughter"
-msgstr ""
+msgstr "Bir kızın vaftizi"
 
 #: app/Gedcom/GedcomTag.php:986 app/Gedcom/GedcomTag.php:995
 #: app/Gedcom/GedcomTag.php:1004
@@ -2335,35 +2338,35 @@ msgstr "Torunun vaftizi"
 
 #: app/Gedcom/GedcomTag.php:984
 msgid "Baptism of a granddaughter"
-msgstr ""
+msgstr "Bir turunun vaftizi"
 
 #: app/Gedcom/GedcomTag.php:993
 msgctxt "daughter’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr ""
+msgstr "Bir turunun vaftizi"
 
 #: app/Gedcom/GedcomTag.php:1002
 msgctxt "son’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr ""
+msgstr "Bir turunun vaftizi"
 
 #: app/Gedcom/GedcomTag.php:982
 msgid "Baptism of a grandson"
-msgstr ""
+msgstr "Bir turunun vaftizi"
 
 #: app/Gedcom/GedcomTag.php:991
 msgctxt "daughter’s son"
 msgid "Baptism of a grandson"
-msgstr ""
+msgstr "Bir turunun vaftizi"
 
 #: app/Gedcom/GedcomTag.php:1000
 msgctxt "son’s son"
 msgid "Baptism of a grandson"
-msgstr ""
+msgstr "Bir turunun vaftizi"
 
 #: app/Gedcom/GedcomTag.php:1009
 msgid "Baptism of a half-brother"
-msgstr ""
+msgstr "Üvey kardeşin vaftizi"
 
 #: app/Gedcom/GedcomTag.php:1013
 msgid "Baptism of a half-sibling"
@@ -2371,7 +2374,7 @@ msgstr "Üvey-kardeşin vaftizi"
 
 #: app/Gedcom/GedcomTag.php:1011
 msgid "Baptism of a half-sister"
-msgstr ""
+msgstr "Üvey kardeşin vaftizi"
 
 #: app/Gedcom/GedcomTag.php:1022
 msgid "Baptism of a sibling"
@@ -2379,11 +2382,11 @@ msgstr "Kardeşin vaftizi"
 
 #: app/Gedcom/GedcomTag.php:1020
 msgid "Baptism of a sister"
-msgstr ""
+msgstr "Kardeşin vaftizi"
 
 #: app/Gedcom/GedcomTag.php:973
 msgid "Baptism of a son"
-msgstr ""
+msgstr "Oğlunun vaftizi"
 
 #. I18N: gedcom tag BARM
 #: app/Gedcom/GedcomTag.php:191 modules_v3/missing_facts_report/report.xml:14
@@ -2839,29 +2842,29 @@ msgstr "Brit milah (Sünnet)"
 
 #: app/Gedcom/GedcomTag.php:1781
 msgid "Brit milah of a brother"
-msgstr ""
+msgstr "Kardeşin brit milah'ı (sünnet)"
 
 #: app/Gedcom/GedcomTag.php:1773
 msgid "Brit milah of a grandson"
-msgstr ""
+msgstr "Torunun brit milah'ı (sünnet)"
 
 #: app/Gedcom/GedcomTag.php:1775
 msgctxt "daughter’s son"
 msgid "Brit milah of a grandson"
-msgstr ""
+msgstr "Torunun brit milah'ı (sünnet)"
 
 #: app/Gedcom/GedcomTag.php:1777
 msgctxt "son’s son"
 msgid "Brit milah of a grandson"
-msgstr ""
+msgstr "Torunun brit milah'ı (sünnet)"
 
 #: app/Gedcom/GedcomTag.php:1779
 msgid "Brit milah of a half-brother"
-msgstr ""
+msgstr "Üvey kardeşin brit milah'ı (sünnet)"
 
 #: app/Gedcom/GedcomTag.php:1771
 msgid "Brit milah of a son"
-msgstr ""
+msgstr "Oğlunun brit milah'ı (sünnet)"
 
 #: app/Stats.php:6175
 msgid "British Indian Ocean Territory"
@@ -3107,7 +3110,7 @@ msgstr "CKEditör™"
 
 #: admin_trees_manage.php:342
 msgid "Calculating…"
-msgstr ""
+msgstr "Hesaplanıyor…"
 
 #: app/Module/YahrzeitModule.php:260 app/Theme/BaseTheme.php:969
 #: app/Theme/BaseTheme.php:973
@@ -3287,15 +3290,15 @@ msgstr "Bu sayfadaki blokları değiştirin"
 
 #: admin_users.php:212
 msgid "Change the blocks on this user’s “My page”"
-msgstr ""
+msgstr "Bu kullanıcının \"Benim sayfam\" bloklarını değiştir"
 
 #: admin_trees_manage.php:383 index_edit.php:52
 msgid "Change the “Home page” blocks"
-msgstr ""
+msgstr "\"Ana sayfa\" bloklarını değiştir"
 
 #: index_edit.php:44
 msgid "Change the “My page” blocks"
-msgstr ""
+msgstr "\"Benim sayfam\" bloklarını değiştir"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: includes/functions/functions_print_lists.php:1757
@@ -3763,7 +3766,7 @@ msgstr "Tamamlandı; tarih bilinmiyor"
 
 #: admin_trees_download.php:142
 msgid "Compress the GEDCOM file"
-msgstr ""
+msgstr "GEDCOM dosyasını sıkıştır"
 
 #. I18N: gedcom tag CONC
 #: app/Gedcom/GedcomTag.php:303
@@ -3809,7 +3812,7 @@ msgstr "İletişim Bilgileri"
 
 #: edituser.php:265
 msgid "Contact method"
-msgstr ""
+msgstr "İrtibat türü"
 
 #: search_advanced.php:155 search_advanced.php:217 search_advanced.php:232
 #: search_advanced.php:254 search_advanced.php:269
@@ -3854,7 +3857,7 @@ msgstr "Devamlı"
 #: app/Theme/AdministrationTheme.php:191 app/Theme/BaseTheme.php:1200
 #: index_edit.php:298
 msgid "Control panel"
-msgstr ""
+msgstr "Kontrol paneli"
 
 #: admin_trees_download.php:151 app/Module/ClippingsCartModule.php:209
 #: app/Module/ClippingsCartModule.php:600
@@ -3985,7 +3988,7 @@ msgstr "Yeni bir kaynak ekle"
 
 #: admin_site_access.php:226
 msgid "Create a website access rule"
-msgstr ""
+msgstr "Web sitesi erişim kuralı oluştur"
 
 #: statistics.php:430
 msgid "Create your own chart"
@@ -3994,6 +3997,8 @@ msgstr "Kendi çizelgeni oluştur"
 #: admin_trees_manage.php:712
 msgid "Create, update, and delete a family tree for every GEDCOM file in the data folder."
 msgstr ""
+"Data klasöründeki her bir GEDCOM dosyası için bir soy ağacı oluşturma, "
+"güncelleme yada silme."
 
 #. I18N: gedcom tag CREM
 #: app/Gedcom/GedcomTag.php:331 modules_v3/family_group_report/report.xml:309
@@ -4197,7 +4202,7 @@ msgstr "Dallas, Texas"
 #. I18N: A summary of the system status
 #: admin.php:399
 msgid "Dashboard"
-msgstr ""
+msgstr "Gösterge paneli"
 
 #. I18N: gedcom tag DATA
 #: app/Gedcom/GedcomTag.php:343
@@ -4843,7 +4848,7 @@ msgstr "Geçici dosyaları sil…"
 
 #: admin_modules.php:88
 msgid "Delete the preferences for this module."
-msgstr ""
+msgstr "Bu modülün ayarlarını sil."
 
 #: app/Controller/IndividualController.php:160
 msgid "Delete this name"
@@ -4851,7 +4856,7 @@ msgstr "Adı sil"
 
 #: edituser.php:291
 msgid "Delete your account"
-msgstr ""
+msgstr "Hesabımı sil"
 
 #: app/Controller/FamilyController.php:112
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?"
@@ -5252,7 +5257,7 @@ msgstr "SSS öğesi düzenle"
 
 #: admin_site_access.php:224
 msgid "Edit a website access rule"
-msgstr ""
+msgstr "Web sitesi erişim kuralını düzenle"
 
 #: app/Controller/MediaController.php:140
 msgid "Edit details"
@@ -5316,7 +5321,7 @@ msgstr "Bu bireyin detay bilgilerini sizin kendi bilgilerinizle değiştirerek d
 
 #: admin_users.php:268
 msgid "Edit user"
-msgstr ""
+msgstr "Kullanıcıyı düzenle"
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:38 admin_users.php:525
@@ -5633,7 +5638,7 @@ msgstr "Dışarı aktar"
 
 #: admin_trees_download.php:34
 msgid "Export a GEDCOM file"
-msgstr ""
+msgstr "GEDCOM dosyasını dışa aktar"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:279
