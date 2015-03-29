@@ -99,13 +99,13 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 						<input type="hidden" name="type" value="<?php echo $clip_ctrl->type; ?>">
 						<input type="hidden" name="action" value="add1"></td></tr>
 						<tr><td class="optionbox"><input type="radio" name="others" checked value="none"><?php echo I18N::translate('Add just this individual.'); ?></td></tr>
-						<tr><td class="optionbox"><input type="radio" name="others" value="parents"><?php echo I18N::translate('Add this individual, his parents, and siblings.'); ?></td></tr>
-						<tr><td class="optionbox"><input type="radio" name="others" value="ancestors" id="ancestors"><?php echo I18N::translate('Add this individual and his direct line ancestors.'); ?><br>
+						<tr><td class="optionbox"><input type="radio" name="others" value="parents"><?php echo I18N::translate('Add this individual, their parents, and siblings.'); ?></td></tr>
+						<tr><td class="optionbox"><input type="radio" name="others" value="ancestors" id="ancestors"><?php echo I18N::translate('Add this individual and their direct line ancestors.'); ?><br>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo I18N::translate('Number of generations'); ?> <input type="text" size="5" name="level1" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('ancestors');"></td></tr>
-						<tr><td class="optionbox"><input type="radio" name="others" value="ancestorsfamilies" id="ancestorsfamilies"><?php echo I18N::translate('Add this individual, his direct line ancestors, and their families.'); ?><br >
+						<tr><td class="optionbox"><input type="radio" name="others" value="ancestorsfamilies" id="ancestorsfamilies"><?php echo I18N::translate('Add this individual, their direct line ancestors, and their families.'); ?><br >
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo I18N::translate('Number of generations'); ?> <input type="text" size="5" name="level2" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('ancestorsfamilies');"></td></tr>
-						<tr><td class="optionbox"><input type="radio" name="others" value="members"><?php echo I18N::translate('Add this individual, his spouse, and children.'); ?></td></tr>
-						<tr><td class="optionbox"><input type="radio" name="others" value="descendants" id="descendants"><?php echo I18N::translate('Add this individual, his spouse, and all descendants.'); ?><br >
+						<tr><td class="optionbox"><input type="radio" name="others" value="members"><?php echo I18N::translate('Add this individual, their spouse, and children.'); ?></td></tr>
+						<tr><td class="optionbox"><input type="radio" name="others" value="descendants" id="descendants"><?php echo I18N::translate('Add this individual, their spouse, and all descendants.'); ?><br >
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo I18N::translate('Number of generations'); ?> <input type="text" size="5" name="level3" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('descendants');"></td></tr>
 						<tr><td class="topbottombar"><input type="submit" value="<?php echo I18N::translate('Continue adding'); ?>">
 					</table>
@@ -517,13 +517,13 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 		<input type="hidden" name="action" value="add1">
 		<ul>
 		<li><input type="radio" name="others" checked value="none">'. I18N::translate('Add just this individual.') . '</li>
-		<li><input type="radio" name="others" value="parents">'. I18N::translate('Add this individual, his parents, and siblings.') . '</li>
-		<li><input type="radio" name="others" value="ancestors" id="ancestors">'. I18N::translate('Add this individual and his direct line ancestors.') . '<br>
+		<li><input type="radio" name="others" value="parents">'. I18N::translate('Add this individual, their parents, and siblings.') . '</li>
+		<li><input type="radio" name="others" value="ancestors" id="ancestors">'. I18N::translate('Add this individual and their direct line ancestors.') . '<br>
 				'. I18N::translate('Number of generations') . '<input type="text" size="4" name="level1" value="' . $MAX_PEDIGREE_GENERATIONS . '" onfocus="radAncestors(\'ancestors\');"></li>
-		<li><input type="radio" name="others" value="ancestorsfamilies" id="ancestorsfamilies">'. I18N::translate('Add this individual, his direct line ancestors, and their families.') . '<br>
+		<li><input type="radio" name="others" value="ancestorsfamilies" id="ancestorsfamilies">'. I18N::translate('Add this individual, their direct line ancestors, and their families.') . '<br>
 				'. I18N::translate('Number of generations') . ' <input type="text" size="4" name="level2" value="' . $MAX_PEDIGREE_GENERATIONS . '" onfocus="radAncestors(\'ancestorsfamilies\');"></li>
-		<li><input type="radio" name="others" value="members">'. I18N::translate('Add this individual, his spouse, and children.') . '</li>
-		<li><input type="radio" name="others" value="descendants" id="descendants">'. I18N::translate('Add this individual, his spouse, and all descendants.') . '<br >
+		<li><input type="radio" name="others" value="members">'. I18N::translate('Add this individual, their spouse, and children.') . '</li>
+		<li><input type="radio" name="others" value="descendants" id="descendants">'. I18N::translate('Add this individual, their spouse, and all descendants.') . '<br >
 				'. I18N::translate('Number of generations') . ' <input type="text" size="4" name="level3" value="' . $MAX_PEDIGREE_GENERATIONS . '" onfocus="radAncestors(\'descendants\');"></li>
 		</ul>
 		<input type="submit" value="'. I18N::translate('Continue adding') . '">

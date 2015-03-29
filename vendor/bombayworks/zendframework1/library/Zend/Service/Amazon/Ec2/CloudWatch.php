@@ -170,9 +170,9 @@ class Zend_Service_Amazon_Ec2_CloudWatch extends Zend_Service_Amazon_Ec2_Abstrac
      *  instance. This allows a user to pinpoint an exact instance from which to monitor data.
      *
      * InstanceType: This dimension filters the data you request for all instances running
-     *  with this specified instance type. This allows a user to catagorize his data by the
+     *  with this specified instance type. This allows a user to catagorize their data by the
      *  type of instance running. For example, a user might compare data from an m1.small instance
-     *  and an m1.large instance to determine which has the better business value for his application.
+     *  and an m1.large instance to determine which has the better business value for their application.
      *
      * LoadBalancerName: This dimension filters the data you request for the specified LoadBalancer
      *  name. A LoadBalancer is represented by a DNS name and provides the single destination to
