@@ -1045,40 +1045,6 @@ function get_gedcom_blocks($gedcom_id) {
 }
 
 /**
- * @param integer     $block_id
- * @param string      $setting_name
- * @param string|null $default_value
- *
- * @return null|string
- */
-function get_block_setting($block_id, $setting_name, $default_value = null) {
-	static $statement;
-	if ($statement === null) {
-		$statement = Database::prepare(
-			"SELECT SQL_CACHE setting_value FROM `##block_setting` WHERE block_id=? AND setting_name=?"
-		);
-	}
-	$setting_value = $statement->execute(array($block_id, $setting_name))->fetchOne();
-
-	return $setting_value === null ? $default_value : $setting_value;
-}
-
-/**
- * @param integer     $block_id
- * @param string      $setting_name
- * @param string|null $setting_value
- */
-function set_block_setting($block_id, $setting_name, $setting_value) {
-	if ($setting_value === null) {
-		Database::prepare("DELETE FROM `##block_setting` WHERE block_id=? AND setting_name=?")
-			->execute(array($block_id, $setting_name));
-	} else {
-		Database::prepare("REPLACE INTO `##block_setting` (block_id, setting_name, setting_value) VALUES (?, ?, ?)")
-			->execute(array($block_id, $setting_name, $setting_value));
-	}
-}
-
-/**
  * Update favorites after merging records.
  *
  * @param string $xref_from

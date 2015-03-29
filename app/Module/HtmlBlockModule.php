@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Class HtmlBlockModule
  */
-class HtmlBlockModule extends Module implements ModuleBlockInterface {
+class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('HTML');
@@ -34,11 +34,11 @@ class HtmlBlockModule extends Module implements ModuleBlockInterface {
 	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $ctype, $WT_TREE;
 
-		$title          = get_block_setting($block_id, 'title');
-		$html           = get_block_setting($block_id, 'html');
-		$gedcom         = get_block_setting($block_id, 'gedcom');
-		$show_timestamp = get_block_setting($block_id, 'show_timestamp', '0');
-		$languages      = get_block_setting($block_id, 'languages');
+		$title          = $this->getBlockSetting($block_id, 'title');
+		$html           = $this->getBlockSetting($block_id, 'html');
+		$gedcom         = $this->getBlockSetting($block_id, 'gedcom');
+		$show_timestamp = $this->getBlockSetting($block_id, 'show_timestamp', '0');
+		$languages      = $this->getBlockSetting($block_id, 'languages');
 
 		// Only show this block for certain languages
 		if ($languages && !in_array(WT_LOCALE, explode(',', $languages))) {
@@ -90,7 +90,7 @@ class HtmlBlockModule extends Module implements ModuleBlockInterface {
 		$content = $html;
 
 		if ($show_timestamp) {
-			$content .= '<br>' . format_timestamp(get_block_setting($block_id, 'timestamp', WT_TIMESTAMP));
+			$content .= '<br>' . format_timestamp($this->getBlockSetting($block_id, 'timestamp', WT_TIMESTAMP));
 		}
 
 		if ($template) {
@@ -120,13 +120,13 @@ class HtmlBlockModule extends Module implements ModuleBlockInterface {
 		global $WT_TREE;
 
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
-			set_block_setting($block_id, 'gedcom', Filter::post('gedcom'));
-			set_block_setting($block_id, 'title', Filter::post('title'));
-			set_block_setting($block_id, 'html', Filter::post('html'));
-			set_block_setting($block_id, 'show_timestamp', Filter::postBool('show_timestamp'));
-			set_block_setting($block_id, 'timestamp', Filter::post('timestamp'));
 			$languages = Filter::postArray('lang');
-			set_block_setting($block_id, 'languages', implode(',', $languages));
+			$this->setBlockSetting($block_id, 'gedcom', Filter::post('gedcom'));
+			$this->setBlockSetting($block_id, 'title', Filter::post('title'));
+			$this->setBlockSetting($block_id, 'html', Filter::post('html'));
+			$this->setBlockSetting($block_id, 'show_timestamp', Filter::postBool('show_timestamp'));
+			$this->setBlockSetting($block_id, 'timestamp', Filter::post('timestamp'));
+			$this->setBlockSetting($block_id, 'languages', implode(',', $languages));
 		}
 
 		$templates = array(
@@ -238,11 +238,11 @@ class HtmlBlockModule extends Module implements ModuleBlockInterface {
 			</div>'
 		);
 
-		$title          = get_block_setting($block_id, 'title');
-		$html           = get_block_setting($block_id, 'html');
-		$gedcom         = get_block_setting($block_id, 'gedcom');
-		$show_timestamp = get_block_setting($block_id, 'show_timestamp', '0');
-		$languages      = explode(',', get_block_setting($block_id, 'languages'));
+		$title          = $this->getBlockSetting($block_id, 'title');
+		$html           = $this->getBlockSetting($block_id, 'html');
+		$gedcom         = $this->getBlockSetting($block_id, 'gedcom');
+		$show_timestamp = $this->getBlockSetting($block_id, 'show_timestamp', '0');
+		$languages      = explode(',', $this->getBlockSetting($block_id, 'languages'));
 
 		echo '<tr><td class="descriptionbox wrap">',
 			GedcomTag::getLabel('TITL'),

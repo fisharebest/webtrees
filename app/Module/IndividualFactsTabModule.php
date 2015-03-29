@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Class IndividualFactsTabModule
  */
-class IndividualFactsTabModule extends Module implements ModuleTabInterface {
+class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module/tab on the individual page. */ I18N::translate('Facts and events');

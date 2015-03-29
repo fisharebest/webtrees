@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Class ChartsBlockModule
  */
-class ChartsBlockModule extends Module implements ModuleBlockInterface {
+class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module/block */ I18N::translate('Charts');
@@ -37,9 +37,9 @@ class ChartsBlockModule extends Module implements ModuleBlockInterface {
 		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
 		$gedcomid         = $WT_TREE->getUserPreference(Auth::user(), 'gedcomid');
 
-		$details = get_block_setting($block_id, 'details', '0');
-		$type    = get_block_setting($block_id, 'type', 'pedigree');
-		$pid     = get_block_setting($block_id, 'pid', Auth::check() ? ($gedcomid ? $gedcomid : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
+		$details = $this->getBlockSetting($block_id, 'details', '0');
+		$type    = $this->getBlockSetting($block_id, 'type', 'pedigree');
+		$pid     = $this->getBlockSetting($block_id, 'pid', Auth::check() ? ($gedcomid ? $gedcomid : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
 		if ($cfg) {
 			foreach (array('details', 'type', 'pid', 'block') as $name) {
@@ -52,7 +52,7 @@ class ChartsBlockModule extends Module implements ModuleBlockInterface {
 		$person = Individual::getInstance($pid, $WT_TREE);
 		if (!$person) {
 			$pid = $PEDIGREE_ROOT_ID;
-			set_block_setting($block_id, 'pid', $pid);
+			$this->setBlockSetting($block_id, 'pid', $pid);
 			$person = Individual::getInstance($pid, $WT_TREE);
 		}
 
@@ -154,14 +154,14 @@ class ChartsBlockModule extends Module implements ModuleBlockInterface {
 		$gedcomid         = $WT_TREE->getUserPreference(Auth::user(), 'gedcomid');
 
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
-			set_block_setting($block_id, 'details', Filter::postBool('details'));
-			set_block_setting($block_id, 'type', Filter::post('type', 'pedigree|descendants|hourglass|treenav', 'pedigree'));
-			set_block_setting($block_id, 'pid', Filter::post('pid', WT_REGEX_XREF));
+			$this->setBlockSetting($block_id, 'details', Filter::postBool('details'));
+			$this->setBlockSetting($block_id, 'type', Filter::post('type', 'pedigree|descendants|hourglass|treenav', 'pedigree'));
+			$this->setBlockSetting($block_id, 'pid', Filter::post('pid', WT_REGEX_XREF));
 		}
 
-		$details = get_block_setting($block_id, 'details', '0');
-		$type    = get_block_setting($block_id, 'type', 'pedigree');
-		$pid     = get_block_setting($block_id, 'pid', Auth::check() ? ($gedcomid ? $gedcomid : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
+		$details = $this->getBlockSetting($block_id, 'details', '0');
+		$type    = $this->getBlockSetting($block_id, 'type', 'pedigree');
+		$pid     = $this->getBlockSetting($block_id, 'pid', Auth::check() ? ($gedcomid ? $gedcomid : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
 		$controller
 			->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)

@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Class SourcesTabModule
  */
-class SourcesTabModule extends Module implements ModuleTabInterface {
+class SourcesTabModule extends AbstractModule implements ModuleTabInterface {
 	private $facts;
 
 	/** {@inheritdoc} */

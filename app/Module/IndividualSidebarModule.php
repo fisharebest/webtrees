@@ -21,7 +21,7 @@ use Zend_Session;
 /**
  * Class IndividualSidebarModule
  */
-class IndividualSidebarModule extends Module implements ModuleSidebarInterface {
+class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('Individual list');

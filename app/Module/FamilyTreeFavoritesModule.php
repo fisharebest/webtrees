@@ -26,7 +26,7 @@ use Rhumsaa\Uuid\Uuid;
  * Note that the user favorites module simply extends this module, so ensure that the
  * logic works for both.
  */
-class FamilyTreeFavoritesModule extends Module implements ModuleBlockInterface {
+class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('Favorites');
@@ -84,7 +84,7 @@ class FamilyTreeFavoritesModule extends Module implements ModuleBlockInterface {
 			break;
 		}
 
-		$block = get_block_setting($block_id, 'block', '0');
+		$block = $this->getBlockSetting($block_id, 'block', '0');
 
 		if ($cfg) {
 			foreach (array('block') as $name) {
@@ -219,10 +219,10 @@ class FamilyTreeFavoritesModule extends Module implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
-			set_block_setting($block_id, 'block', Filter::postBool('block'));
+			$this->setBlockSetting($block_id, 'block', Filter::postBool('block'));
 		}
 
-		$block = get_block_setting($block_id, 'block', '0');
+		$block = $this->getBlockSetting($block_id, 'block', '0');
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for a yes/no option */ I18N::translate('Add a scrollbar when block contents grow');

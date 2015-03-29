@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Class AlbumModule
  */
-class AlbumModule extends Module implements ModuleTabInterface {
+class AlbumModule extends AbstractModule implements ModuleTabInterface {
 	private $media_list;
 
 	/** {@inheritdoc} */

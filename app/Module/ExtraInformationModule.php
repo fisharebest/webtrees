@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees;
  * Class ExtraInformationModule
  * A sidebar to show non-genealogy information about an individual
  */
-class ExtraInformationModule extends Module implements ModuleSidebarInterface {
+class ExtraInformationModule extends AbstractModule implements ModuleSidebarInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module/sidebar */ I18N::translate('Extra information');

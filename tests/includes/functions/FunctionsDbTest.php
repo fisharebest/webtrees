@@ -220,24 +220,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test that function get_block_setting() exists in the correct namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionGetBlockSettingExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_block_setting'), true);
-	}
-
-	/**
-	 * Test that function set_block_setting() exists in the correct namespace.
-	 *
-	 * @return void
-	 */
-	public function testFunctionSetBlockSettingExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\set_block_setting'), true);
-	}
-
-	/**
 	 * Test that function update_favorites() exists in the correct namespace.
 	 *
 	 * @return void

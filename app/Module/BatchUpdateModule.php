@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Class BatchUpdateModule
  */
-class BatchUpdateModule extends Module implements ModuleConfigInterface {
+class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface {
 	/** @var string  Form parameter: chosen plugin*/
 	private $plugin;
 

@@ -26,7 +26,7 @@ $controller
 
 $action  = Filter::post('action');
 $modules = Module::getInstalledModules('disabled');
-$modules = array_filter($modules, function(Module $x) { return $x instanceof ModuleMenuInterface; });
+$modules = array_filter($modules, function(AbstractModule $x) { return $x instanceof ModuleMenuInterface; });
 
 if ($action === 'update_mods' && Filter::checkCsrf()) {
 	foreach ($modules as $module) {

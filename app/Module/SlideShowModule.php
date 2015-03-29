@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Class SlideShowModule
  */
-class SlideShowModule extends Module implements ModuleBlockInterface {
+class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('Slide show');
@@ -34,9 +34,9 @@ class SlideShowModule extends Module implements ModuleBlockInterface {
 	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $ctype, $WT_TREE;
 
-		$filter   = get_block_setting($block_id, 'filter', 'all');
-		$controls = get_block_setting($block_id, 'controls', '1');
-		$start    = get_block_setting($block_id, 'start', '0') || Filter::getBool('start');
+		$filter   = $this->getBlockSetting($block_id, 'filter', 'all');
+		$controls = $this->getBlockSetting($block_id, 'controls', '1');
+		$start    = $this->getBlockSetting($block_id, 'start', '0') || Filter::getBool('start');
 
 		// We can apply the filters using SQL
 		// Do not use "ORDER BY RAND()" - it is very slow on large tables.  Use PHP::array_rand() instead.
@@ -47,36 +47,36 @@ class SlideShowModule extends Module implements ModuleBlockInterface {
 			" AND m_type IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, '')"
 		)->execute(array(
 			$WT_TREE->getTreeId(),
-			get_block_setting($block_id, 'filter_avi', '0') ? 'avi' : null,
-			get_block_setting($block_id, 'filter_bmp', '1') ? 'bmp' : null,
-			get_block_setting($block_id, 'filter_gif', '1') ? 'gif' : null,
-			get_block_setting($block_id, 'filter_jpeg', '1') ? 'jpg' : null,
-			get_block_setting($block_id, 'filter_jpeg', '1') ? 'jpeg' : null,
-			get_block_setting($block_id, 'filter_mp3', '0') ? 'mp3' : null,
-			get_block_setting($block_id, 'filter_ole', '1') ? 'ole' : null,
-			get_block_setting($block_id, 'filter_pcx', '1') ? 'pcx' : null,
-			get_block_setting($block_id, 'filter_pdf', '0') ? 'pdf' : null,
-			get_block_setting($block_id, 'filter_png', '1') ? 'png' : null,
-			get_block_setting($block_id, 'filter_tiff', '1') ? 'tiff' : null,
-			get_block_setting($block_id, 'filter_wav', '0') ? 'wav' : null,
-			get_block_setting($block_id, 'filter_audio', '0') ? 'audio' : null,
-			get_block_setting($block_id, 'filter_book', '1') ? 'book' : null,
-			get_block_setting($block_id, 'filter_card', '1') ? 'card' : null,
-			get_block_setting($block_id, 'filter_certificate', '1') ? 'certificate' : null,
-			get_block_setting($block_id, 'filter_coat', '1') ? 'coat' : null,
-			get_block_setting($block_id, 'filter_document', '1') ? 'document' : null,
-			get_block_setting($block_id, 'filter_electronic', '1') ? 'electronic' : null,
-			get_block_setting($block_id, 'filter_fiche', '1') ? 'fiche' : null,
-			get_block_setting($block_id, 'filter_film', '1') ? 'film' : null,
-			get_block_setting($block_id, 'filter_magazine', '1') ? 'magazine' : null,
-			get_block_setting($block_id, 'filter_manuscript', '1') ? 'manuscript' : null,
-			get_block_setting($block_id, 'filter_map', '1') ? 'map' : null,
-			get_block_setting($block_id, 'filter_newspaper', '1') ? 'newspaper' : null,
-			get_block_setting($block_id, 'filter_other', '1') ? 'other' : null,
-			get_block_setting($block_id, 'filter_painting', '1') ? 'painting' : null,
-			get_block_setting($block_id, 'filter_photo', '1') ? 'photo' : null,
-			get_block_setting($block_id, 'filter_tombstone', '1') ? 'tombstone' : null,
-			get_block_setting($block_id, 'filter_video', '0') ? 'video' : null,
+			$this->getBlockSetting($block_id, 'filter_avi', '0') ? 'avi' : null,
+			$this->getBlockSetting($block_id, 'filter_bmp', '1') ? 'bmp' : null,
+			$this->getBlockSetting($block_id, 'filter_gif', '1') ? 'gif' : null,
+			$this->getBlockSetting($block_id, 'filter_jpeg', '1') ? 'jpg' : null,
+			$this->getBlockSetting($block_id, 'filter_jpeg', '1') ? 'jpeg' : null,
+			$this->getBlockSetting($block_id, 'filter_mp3', '0') ? 'mp3' : null,
+			$this->getBlockSetting($block_id, 'filter_ole', '1') ? 'ole' : null,
+			$this->getBlockSetting($block_id, 'filter_pcx', '1') ? 'pcx' : null,
+			$this->getBlockSetting($block_id, 'filter_pdf', '0') ? 'pdf' : null,
+			$this->getBlockSetting($block_id, 'filter_png', '1') ? 'png' : null,
+			$this->getBlockSetting($block_id, 'filter_tiff', '1') ? 'tiff' : null,
+			$this->getBlockSetting($block_id, 'filter_wav', '0') ? 'wav' : null,
+			$this->getBlockSetting($block_id, 'filter_audio', '0') ? 'audio' : null,
+			$this->getBlockSetting($block_id, 'filter_book', '1') ? 'book' : null,
+			$this->getBlockSetting($block_id, 'filter_card', '1') ? 'card' : null,
+			$this->getBlockSetting($block_id, 'filter_certificate', '1') ? 'certificate' : null,
+			$this->getBlockSetting($block_id, 'filter_coat', '1') ? 'coat' : null,
+			$this->getBlockSetting($block_id, 'filter_document', '1') ? 'document' : null,
+			$this->getBlockSetting($block_id, 'filter_electronic', '1') ? 'electronic' : null,
+			$this->getBlockSetting($block_id, 'filter_fiche', '1') ? 'fiche' : null,
+			$this->getBlockSetting($block_id, 'filter_film', '1') ? 'film' : null,
+			$this->getBlockSetting($block_id, 'filter_magazine', '1') ? 'magazine' : null,
+			$this->getBlockSetting($block_id, 'filter_manuscript', '1') ? 'manuscript' : null,
+			$this->getBlockSetting($block_id, 'filter_map', '1') ? 'map' : null,
+			$this->getBlockSetting($block_id, 'filter_newspaper', '1') ? 'newspaper' : null,
+			$this->getBlockSetting($block_id, 'filter_other', '1') ? 'other' : null,
+			$this->getBlockSetting($block_id, 'filter_painting', '1') ? 'painting' : null,
+			$this->getBlockSetting($block_id, 'filter_photo', '1') ? 'photo' : null,
+			$this->getBlockSetting($block_id, 'filter_tombstone', '1') ? 'tombstone' : null,
+			$this->getBlockSetting($block_id, 'filter_video', '0') ? 'video' : null,
 		))->fetchOneColumn();
 
 		// Keep looking through the media until a suitable one is found.
@@ -199,43 +199,43 @@ class SlideShowModule extends Module implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
-			set_block_setting($block_id, 'filter', Filter::post('filter', 'indi|event|all', 'all'));
-			set_block_setting($block_id, 'controls', Filter::postBool('controls'));
-			set_block_setting($block_id, 'start', Filter::postBool('start'));
-			set_block_setting($block_id, 'filter_avi', Filter::postBool('filter_avi'));
-			set_block_setting($block_id, 'filter_bmp', Filter::postBool('filter_bmp'));
-			set_block_setting($block_id, 'filter_gif', Filter::postBool('filter_gif'));
-			set_block_setting($block_id, 'filter_jpeg', Filter::postBool('filter_jpeg'));
-			set_block_setting($block_id, 'filter_mp3', Filter::postBool('filter_mp3'));
-			set_block_setting($block_id, 'filter_ole', Filter::postBool('filter_ole'));
-			set_block_setting($block_id, 'filter_pcx', Filter::postBool('filter_pcx'));
-			set_block_setting($block_id, 'filter_pdf', Filter::postBool('filter_pdf'));
-			set_block_setting($block_id, 'filter_png', Filter::postBool('filter_png'));
-			set_block_setting($block_id, 'filter_tiff', Filter::postBool('filter_tiff'));
-			set_block_setting($block_id, 'filter_wav', Filter::postBool('filter_wav'));
-			set_block_setting($block_id, 'filter_audio', Filter::postBool('filter_audio'));
-			set_block_setting($block_id, 'filter_book', Filter::postBool('filter_book'));
-			set_block_setting($block_id, 'filter_card', Filter::postBool('filter_card'));
-			set_block_setting($block_id, 'filter_certificate', Filter::postBool('filter_certificate'));
-			set_block_setting($block_id, 'filter_coat', Filter::postBool('filter_coat'));
-			set_block_setting($block_id, 'filter_document', Filter::postBool('filter_document'));
-			set_block_setting($block_id, 'filter_electronic', Filter::postBool('filter_electronic'));
-			set_block_setting($block_id, 'filter_fiche', Filter::postBool('filter_fiche'));
-			set_block_setting($block_id, 'filter_film', Filter::postBool('filter_film'));
-			set_block_setting($block_id, 'filter_magazine', Filter::postBool('filter_magazine'));
-			set_block_setting($block_id, 'filter_manuscript', Filter::postBool('filter_manuscript'));
-			set_block_setting($block_id, 'filter_map', Filter::postBool('filter_map'));
-			set_block_setting($block_id, 'filter_newspaper', Filter::postBool('filter_newspaper'));
-			set_block_setting($block_id, 'filter_other', Filter::postBool('filter_other'));
-			set_block_setting($block_id, 'filter_painting', Filter::postBool('filter_painting'));
-			set_block_setting($block_id, 'filter_photo', Filter::postBool('filter_photo'));
-			set_block_setting($block_id, 'filter_tombstone', Filter::postBool('filter_tombstone'));
-			set_block_setting($block_id, 'filter_video', Filter::postBool('filter_video'));
+			$this->setBlockSetting($block_id, 'filter', Filter::post('filter', 'indi|event|all', 'all'));
+			$this->setBlockSetting($block_id, 'controls', Filter::postBool('controls'));
+			$this->setBlockSetting($block_id, 'start', Filter::postBool('start'));
+			$this->setBlockSetting($block_id, 'filter_avi', Filter::postBool('filter_avi'));
+			$this->setBlockSetting($block_id, 'filter_bmp', Filter::postBool('filter_bmp'));
+			$this->setBlockSetting($block_id, 'filter_gif', Filter::postBool('filter_gif'));
+			$this->setBlockSetting($block_id, 'filter_jpeg', Filter::postBool('filter_jpeg'));
+			$this->setBlockSetting($block_id, 'filter_mp3', Filter::postBool('filter_mp3'));
+			$this->setBlockSetting($block_id, 'filter_ole', Filter::postBool('filter_ole'));
+			$this->setBlockSetting($block_id, 'filter_pcx', Filter::postBool('filter_pcx'));
+			$this->setBlockSetting($block_id, 'filter_pdf', Filter::postBool('filter_pdf'));
+			$this->setBlockSetting($block_id, 'filter_png', Filter::postBool('filter_png'));
+			$this->setBlockSetting($block_id, 'filter_tiff', Filter::postBool('filter_tiff'));
+			$this->setBlockSetting($block_id, 'filter_wav', Filter::postBool('filter_wav'));
+			$this->setBlockSetting($block_id, 'filter_audio', Filter::postBool('filter_audio'));
+			$this->setBlockSetting($block_id, 'filter_book', Filter::postBool('filter_book'));
+			$this->setBlockSetting($block_id, 'filter_card', Filter::postBool('filter_card'));
+			$this->setBlockSetting($block_id, 'filter_certificate', Filter::postBool('filter_certificate'));
+			$this->setBlockSetting($block_id, 'filter_coat', Filter::postBool('filter_coat'));
+			$this->setBlockSetting($block_id, 'filter_document', Filter::postBool('filter_document'));
+			$this->setBlockSetting($block_id, 'filter_electronic', Filter::postBool('filter_electronic'));
+			$this->setBlockSetting($block_id, 'filter_fiche', Filter::postBool('filter_fiche'));
+			$this->setBlockSetting($block_id, 'filter_film', Filter::postBool('filter_film'));
+			$this->setBlockSetting($block_id, 'filter_magazine', Filter::postBool('filter_magazine'));
+			$this->setBlockSetting($block_id, 'filter_manuscript', Filter::postBool('filter_manuscript'));
+			$this->setBlockSetting($block_id, 'filter_map', Filter::postBool('filter_map'));
+			$this->setBlockSetting($block_id, 'filter_newspaper', Filter::postBool('filter_newspaper'));
+			$this->setBlockSetting($block_id, 'filter_other', Filter::postBool('filter_other'));
+			$this->setBlockSetting($block_id, 'filter_painting', Filter::postBool('filter_painting'));
+			$this->setBlockSetting($block_id, 'filter_photo', Filter::postBool('filter_photo'));
+			$this->setBlockSetting($block_id, 'filter_tombstone', Filter::postBool('filter_tombstone'));
+			$this->setBlockSetting($block_id, 'filter_video', Filter::postBool('filter_video'));
 		}
 
-		$filter   = get_block_setting($block_id, 'filter', 'all');
-		$controls = get_block_setting($block_id, 'controls', '1');
-		$start    = get_block_setting($block_id, 'start', '0') || Filter::getBool('start');
+		$filter   = $this->getBlockSetting($block_id, 'filter', 'all');
+		$controls = $this->getBlockSetting($block_id, 'controls', '1');
+		$start    = $this->getBlockSetting($block_id, 'start', '0') || Filter::getBool('start');
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Show only individuals, events, or all?');
@@ -244,35 +244,35 @@ class SlideShowModule extends Module implements ModuleBlockInterface {
 		echo '</td></tr>';
 
 		$filters = array(
-			'avi'        =>get_block_setting($block_id, 'filter_avi', '0'),
-			'bmp'        =>get_block_setting($block_id, 'filter_bmp', '1'),
-			'gif'        =>get_block_setting($block_id, 'filter_gif', '1'),
-			'jpeg'       =>get_block_setting($block_id, 'filter_jpeg', '1'),
-			'mp3'        =>get_block_setting($block_id, 'filter_mp3', '0'),
-			'ole'        =>get_block_setting($block_id, 'filter_ole', '1'),
-			'pcx'        =>get_block_setting($block_id, 'filter_pcx', '1'),
-			'pdf'        =>get_block_setting($block_id, 'filter_pdf', '0'),
-			'png'        =>get_block_setting($block_id, 'filter_png', '1'),
-			'tiff'       =>get_block_setting($block_id, 'filter_tiff', '1'),
-			'wav'        =>get_block_setting($block_id, 'filter_wav', '0'),
-			'audio'      =>get_block_setting($block_id, 'filter_audio', '0'),
-			'book'       =>get_block_setting($block_id, 'filter_book', '1'),
-			'card'       =>get_block_setting($block_id, 'filter_card', '1'),
-			'certificate'=>get_block_setting($block_id, 'filter_certificate', '1'),
-			'coat'       =>get_block_setting($block_id, 'filter_coat', '1'),
-			'document'   =>get_block_setting($block_id, 'filter_document', '1'),
-			'electronic' =>get_block_setting($block_id, 'filter_electronic', '1'),
-			'fiche'      =>get_block_setting($block_id, 'filter_fiche', '1'),
-			'film'       =>get_block_setting($block_id, 'filter_film', '1'),
-			'magazine'   =>get_block_setting($block_id, 'filter_magazine', '1'),
-			'manuscript' =>get_block_setting($block_id, 'filter_manuscript', '1'),
-			'map'        =>get_block_setting($block_id, 'filter_map', '1'),
-			'newspaper'  =>get_block_setting($block_id, 'filter_newspaper', '1'),
-			'other'      =>get_block_setting($block_id, 'filter_other', '1'),
-			'painting'   =>get_block_setting($block_id, 'filter_painting', '1'),
-			'photo'      =>get_block_setting($block_id, 'filter_photo', '1'),
-			'tombstone'  =>get_block_setting($block_id, 'filter_tombstone', '1'),
-			'video'      =>get_block_setting($block_id, 'filter_video', '0'),
+			'avi'        =>$this->getBlockSetting($block_id, 'filter_avi', '0'),
+			'bmp'        =>$this->getBlockSetting($block_id, 'filter_bmp', '1'),
+			'gif'        =>$this->getBlockSetting($block_id, 'filter_gif', '1'),
+			'jpeg'       =>$this->getBlockSetting($block_id, 'filter_jpeg', '1'),
+			'mp3'        =>$this->getBlockSetting($block_id, 'filter_mp3', '0'),
+			'ole'        =>$this->getBlockSetting($block_id, 'filter_ole', '1'),
+			'pcx'        =>$this->getBlockSetting($block_id, 'filter_pcx', '1'),
+			'pdf'        =>$this->getBlockSetting($block_id, 'filter_pdf', '0'),
+			'png'        =>$this->getBlockSetting($block_id, 'filter_png', '1'),
+			'tiff'       =>$this->getBlockSetting($block_id, 'filter_tiff', '1'),
+			'wav'        =>$this->getBlockSetting($block_id, 'filter_wav', '0'),
+			'audio'      =>$this->getBlockSetting($block_id, 'filter_audio', '0'),
+			'book'       =>$this->getBlockSetting($block_id, 'filter_book', '1'),
+			'card'       =>$this->getBlockSetting($block_id, 'filter_card', '1'),
+			'certificate'=>$this->getBlockSetting($block_id, 'filter_certificate', '1'),
+			'coat'       =>$this->getBlockSetting($block_id, 'filter_coat', '1'),
+			'document'   =>$this->getBlockSetting($block_id, 'filter_document', '1'),
+			'electronic' =>$this->getBlockSetting($block_id, 'filter_electronic', '1'),
+			'fiche'      =>$this->getBlockSetting($block_id, 'filter_fiche', '1'),
+			'film'       =>$this->getBlockSetting($block_id, 'filter_film', '1'),
+			'magazine'   =>$this->getBlockSetting($block_id, 'filter_magazine', '1'),
+			'manuscript' =>$this->getBlockSetting($block_id, 'filter_manuscript', '1'),
+			'map'        =>$this->getBlockSetting($block_id, 'filter_map', '1'),
+			'newspaper'  =>$this->getBlockSetting($block_id, 'filter_newspaper', '1'),
+			'other'      =>$this->getBlockSetting($block_id, 'filter_other', '1'),
+			'painting'   =>$this->getBlockSetting($block_id, 'filter_painting', '1'),
+			'photo'      =>$this->getBlockSetting($block_id, 'filter_photo', '1'),
+			'tombstone'  =>$this->getBlockSetting($block_id, 'filter_tombstone', '1'),
+			'video'      =>$this->getBlockSetting($block_id, 'filter_video', '0'),
 		);
 
 		echo '<tr><td class="descriptionbox wrap width33">';

@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Class CemeteryReportModule
  */
-class CemeteryReportModule extends Module implements ModuleReportInterface {
+class CemeteryReportModule extends AbstractModule implements ModuleReportInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		// This text also appears in the .XML file - update both together

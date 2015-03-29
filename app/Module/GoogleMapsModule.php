@@ -37,7 +37,7 @@ use Zend_Session;
  *
  * Hence, use "Google Maps™ mapping service" where appropriate.
  */
-class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTabInterface {
+class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, ModuleTabInterface {
 
 	/** @var array of ancestors of root person */
 	private $ancestors = array();

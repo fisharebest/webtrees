@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Class FamilyNavigatorModule
  */
-class FamilyNavigatorModule extends Module implements ModuleSidebarInterface {
+class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInterface {
 
 	const TTL = "<div class='flyout2'>%s</div>";
 	const LNK = "<div class='flyout3' data-href='%s'>%s</div>";

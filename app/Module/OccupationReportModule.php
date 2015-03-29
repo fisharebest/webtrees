@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Class OccupationReportModule
  */
-class OccupationReportModule extends Module implements ModuleReportInterface {
+class OccupationReportModule extends AbstractModule implements ModuleReportInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		// This text also appears in the .XML file - update both together
