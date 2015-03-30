@@ -1824,7 +1824,7 @@ case 'reorder_children':
 	$xref   = Filter::post('xref', WT_REGEX_XREF, Filter::get('xref', WT_REGEX_XREF));
 	$option = Filter::post('option');
 
-	$family = Family::getInstance($xref);
+	$family = Family::getInstance($xref, $WT_TREE);
 	check_record_access($family, $WT_TREE);
 
 	$controller
@@ -1870,7 +1870,7 @@ case 'reorder_children':
 						echo ' class="facts_value new"';
 					}
 					echo ' id="li_', $id, '">';
-					echo Theme::theme()->individualBoxLarge(Individual::getInstance($id), $WT_TREE);
+					echo Theme::theme()->individualBoxLarge(Individual::getInstance($id, $WT_TREE));
 					echo '<input type="hidden" name="order[', $id, ']" value="', $i, '">';
 					echo '</li>';
 					$i++;
