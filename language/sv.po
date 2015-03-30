@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-28 18:37+0100\n"
+"PO-Revision-Date: 2015-03-30 12:18+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Swedish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
@@ -615,19 +615,48 @@ msgstr "<b>Viktig anmärkning:</b> Överföringsguiden kan inte hjälpa till med
 
 #: message.php:115
 msgid "<b>Please note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead individuals may also be private.  If this is the case, it is because there is not enough information known about the individual to determine whether they are alive or not and we probably do not have more information on this individual.<br><br>Before asking a question, please verify that you are inquiring about the correct individual by checking dates, places, and close relatives.  If you are submitting changes to the genealogy data, please include the sources where you obtained the data."
-msgstr "<b> Observera:</b> Privat information om levande personer kommer endast att visas för familj, släkt och nära vänner. Du kommer bli ombedd att bekräfta din relation innan du får några privata uppgifter. Ibland kan information om döda personer också vara privat. Om så är fallet är det för att det inte finns tillräcklig med information om personen för att bestämma om den lever eller ej.<br><br>Innan du frågar, kontrollera att du frågar om rätt person genom att kontrollera datum, platser och nära släktingar. Om du skickar in ändringar för släktträdet, så måste de källor som informationen kommer från, anges."
+msgstr ""
+"<b> Observera:</b> Privat information om levande personer kommer endast att "
+"visas för familj, släkt och nära vänner. Du kommer att bli ombedd att "
+"bekräfta din relation innan du får några privata uppgifter. Ibland kan "
+"information om döda personer också vara privat. Om så är fallet, är det för "
+"att tillräckligt information om personen inte finna för att avgöra om "
+"personen lever eller ej.<br><br>Innan du ställer en fråga, kontrollera att "
+"din förfrågan gäller rätt person genom att kontrollera datum, platser och "
+"nära släktingar. Om du skickar in ändringar för släktträdet, så måste du "
+"ange de källor som informationen kommer från."
 
 #: login.php:163
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
-msgstr "<center><b>Välkommen till denna släkt-webbsajt</b></center><br>Access är tillåten endast för <u>auktoriserade</u> användare.<br><br>Om du redan har ett konto kan du logga in på denna sida. Om du inte har ett konto ännu, kan du ansöka om ett genom att klicka på länken på denna sida.<br><br>Efter att vi verifierat din information, kommer administratören att godkänna eller avslå din begäran. Du kommer att få ett e-postmeddelande om din begäran godkänns."
+msgstr ""
+"<center><b>Välkommen till denna släkt-webbplats</b></center><br>Access är "
+"tillåten endast för <u>auktoriserade</u> användare.<br><br>Om du redan har "
+"ett konto kan du logga in på denna sida. Om du inte har ett konto ännu, kan "
+"du ansöka om ett genom att klicka på länken på denna sida.<br><br>Efter att "
+"vi verifierat din information, kommer administratören att godkänna eller "
+"avslå din begäran. Du kommer att få ett e-postmeddelande när din begäran "
+"godkänns."
 
 #: login.php:166
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
-msgstr "<center><b>Välkommen till denna släkt-webbsajt</b></center><br>Access är tillåten <u>endast för familjemedlemmar</u>. Om du redan har ett konto kan du logga in på denna sida. Om du inte har ett konto ännu, kan du ansöka om ett genom att klicka på länken på denna sida.<br><br>Efter att vi verifierat din information, kommer administratören antingen godkänna eller avslå din begäran. Du kommer att få ett e-postmeddelande när kontot godkänns."
+msgstr ""
+"<center><b>Välkommen till denna släkt-webbplats</b></center><br>Access är "
+"tillåten <u>endast för familjemedlemmar</u>. Om du redan har ett konto kan "
+"du logga in på denna sida. Om du inte har ett konto ännu, kan du ansöka om "
+"ett genom att klicka på länken på denna sida.<br><br>Efter att vi verifierat "
+"din information, kommer administratören antingen godkänna eller avslå din "
+"begäran. Du kommer att få ett e-postmeddelande när kontot godkänns."
 
 #: login.php:160
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account.  You will receive an email when your application has been approved."
-msgstr "<center><b>Välkommen till denna släkt-webbsajt</b></center><br>Access är tillåten för alla besökare som har ett användarkonto på denna sajt.<br><br>Om du redan har ett konto kan du logga in på denna sida. Om du inte har ett konto ännu, kan du ansöka om ett genom att klicka på länken på denna sida.<br><br>Efter att vi verifierat din information, kommer administratören att aktivera ditt konto. Du kommer att få ett e-postmeddelande när kontot aktiveras."
+msgstr ""
+"<center><b>Välkommen till denna släkt-webbplats</b></center><br>Access är "
+"tillåten för alla besökare som har ett användarkonto på denna "
+"webplats.<br><br>Om du redan har ett konto kan du logga in på denna sida. Om "
+"du inte har ett konto ännu, kan du ansöka om ett genom att klicka på länken "
+"på denna sida.<br><br>Efter att vi verifierat din information, kommer "
+"administratören att aktivera ditt konto. Du kommer att få ett e-"
+"postmeddelande när kontot aktiveras."
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:1025 admin_users.php:470 edituser.php:250
@@ -636,7 +665,12 @@ msgstr "<standardtema>"
 
 #: login.php:415
 msgid "<div class=\"largeError\">Notice:</div><div class=\"error\">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living individuals listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our website.</li></ul></div>"
-msgstr "<div class=\"largeError\">Observera:</div><div class=\"error\">Genom att komplettera och sända in detta formulär, accepterar du:<ul><li>att skydda integriteten av levande personer som finns på denna sajt</li><li>och i textrutan nedanför,  förklara till vem du är besläktad eller ge oss information om någon som borde finnas på vår sajt.</li></ul></div>"
+msgstr ""
+"<div class=\"largeError\">Observera:</div><div class=\"error\">Genom att "
+"komplettera och sända in detta formulär, accepterar du:<ul><li>att skydda "
+"integriteten av levande personer som finns på denna plats</li><li>och i "
+"textrutan nedanför,  förklara till vem du är besläktad eller ge oss "
+"information om någon som borde finnas på vår webplats.</li></ul></div>"
 
 #. I18N: a label/value pair, such as “Occupation: Farmer”.  Some languages may need to change the punctuation.
 #: app/Gedcom/GedcomTag.php:1814 includes/functions/functions_print.php:274
@@ -680,7 +714,7 @@ msgstr "Hälsningsmeddelande och användbara länkar för användare."
 #. I18N: Description of the “Home page” module
 #: app/Module/WelcomeBlockModule.php:30
 msgid "A greeting message for site visitors."
-msgstr "Ett hälsningsmeddelande till sajtens besökare."
+msgstr "Ett hälsningsmeddelande till webplatsens besökare."
 
 #. I18N: Description of the “Pending changes” module
 #: app/Module/ReviewChangesModule.php:30
@@ -870,7 +904,11 @@ msgstr "En sammanställning av händelserna vid specifik tid eller plats."
 
 #: admin_users.php:505
 msgid "A role is a set of access rights, which give permission to view data, change configuration settings, etc.  Access rights are assigned to roles, and roles are granted to users.  Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr "En roll är en uppsättning rättigheter, som ger tillstånd att visa data, ändra konfigurationsinställningar, osv.  Rättigheter tilldelas roller och roller tilldelas användare.  Varje släktträd kan tilldela olika tillgång till varje roll, och användare kan ha olika roll i varje släktträd."
+msgstr ""
+"En roll är en uppsättning rättigheter, som ger tillstånd att visa data, "
+"ändra konfigurationsinställningar, osv.  Rättigheter tilldelas roller och "
+"roller tilldelas användare.  Varje släktträd kan tilldela olika tillgång "
+"till varje roll, och användare kan ha en annan roll i varje släktträd."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarSidebarModule.php:32
@@ -905,7 +943,7 @@ msgstr "En flik som visar en persons nära släktingar."
 #. I18N: Description of the “Facts and events” module
 #: app/Module/IndividualFactsTabModule.php:30
 msgid "A tab showing the facts and events of an individual."
-msgstr "En flik som visar fakta och händelser till berörd person."
+msgstr "En flik som visar fakta och händelser till en person."
 
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:32
@@ -1130,7 +1168,10 @@ msgstr "Lägg till ny association"
 
 #: help_text.php:381
 msgid "Add a new associate allows you to link a fact with an associated individual in the website.  This is one way in which you might record that someone was the godfather of another individual."
-msgstr "Lägg till ny association gör att du kan länka ett faktum med en associerad person på denna sajt. Detta är ett sätt att registrera att någon var gudfar till någon."
+msgstr ""
+"Lägg till ny association gör att du kan länka ett faktum med en associerad "
+"person på denna webplats. Detta är ett sätt att registrera att någon var "
+"gudfar till någon."
 
 #: app/Module/RelativesTabModule.php:250
 msgid "Add a new brother or sister"
@@ -1737,7 +1778,7 @@ msgstr "Alla PGV-användare måste ha olika e-postadresser"
 
 #: admin_trees_config.php:601
 msgid "All facts and events"
-msgstr ""
+msgstr "Alla fakta och händelser"
 
 #: admin_trees_config.php:1883
 msgid "All family facts"
@@ -1762,7 +1803,7 @@ msgstr "Alla personer"
 
 #: admin_trees_config.php:592
 msgid "All records"
-msgstr ""
+msgstr "Alla poster"
 
 #: admin_trees_config.php:2090
 msgid "All repository facts"
@@ -1947,7 +1988,7 @@ msgstr "Apia, Samoa"
 #. I18N: Description of the “Batch update” module
 #: app/Module/BatchUpdateModule.php:63
 msgid "Apply automatic corrections to your genealogy data."
-msgstr "Applicera automatiska korrektioner till dina genealogiska data."
+msgstr "Applicera automatiska korrektioner till din genealogiska data."
 
 #: admin_trees_download.php:173 app/Module/ClippingsCartModule.php:194
 #: app/Module/ClippingsCartModule.php:202
@@ -2507,7 +2548,7 @@ msgstr "Billings, Montana"
 #. I18N: gedcom tag BLOB
 #: app/Gedcom/GedcomTag.php:223
 msgid "Binary data object"
-msgstr "Binärt data objekt"
+msgstr "Binär data objekt"
 
 #: includes/functions/functions_print.php:517
 msgid "Bing Maps™"
@@ -3319,11 +3360,11 @@ msgstr "Ändra blocken på denna sida"
 
 #: admin_users.php:212
 msgid "Change the blocks on this user’s “My page”"
-msgstr ""
+msgstr "Ändra blocken på denna användares \"Min sida\""
 
 #: admin_trees_manage.php:383 index_edit.php:52
 msgid "Change the “Home page” blocks"
-msgstr ""
+msgstr "Ändra \"Hemsida\" block"
 
 #: index_edit.php:44
 msgid "Change the “My page” blocks"
@@ -3952,7 +3993,9 @@ msgstr "Elfenbenskusten"
 
 #: login.php:633
 msgid "Could not verify the information you entered.  Please try again or contact the site administrator for more information."
-msgstr "Kunde inte verifiera informationen du skrev in. Gå tillbaka och försök igen."
+msgstr ""
+"Kunde inte verifiera informationen du skrev in. Gå tillbaka och försök igen "
+"eller kontakta webplatsens administratör för mer information."
 
 #: app/Stats.php:5091
 msgid "Count"
@@ -4020,7 +4063,7 @@ msgstr "Skapa en ny källa"
 
 #: admin_site_access.php:226
 msgid "Create a website access rule"
-msgstr ""
+msgstr "Skapa en webplats åtkomstregel"
 
 #: statistics.php:430
 msgid "Create your own chart"
@@ -5212,7 +5255,16 @@ msgstr "En avändare med detta användarnamn finns redan. Välj ett annat använ
 #. I18N: Help text for the “webtrees reply address” configuration setting
 #: admin_trees_config.php:914
 msgid "E-mail address to be used in the “From:” field of e-mails that webtrees creates automatically.<br><br>webtrees can automatically create e-mails to notify administrators of changes that need to be reviewed.  webtrees also sends notification e-mails to users who have requested an account.<br><br>Usually, the “From:” field of these automatically created e-mails is something like <i>From: webtrees-noreply@yoursite</i> to show that no response to the e-mail is required.  To guard against spam or other e-mail abuse, some e-mail systems require each message’s “From:” field to reflect a valid e-mail account and will not accept messages that are apparently from account <i>webtrees-noreply</i>."
-msgstr "E-postadress som skall användas i ”från:”-fältet för e-post som webtrees skapar automatiskt.<br><br>webtrees kan automatiskt skapa e-post för att meddela administratörer av förändringar som behöver granskas.  webtrees skickar också e-postmeddelanden till användare som har ansökt om ett konto.<br><br>Vanligtvis är ”från:” fältet i dessa automatiskt skapade e-postmeddelanden t ex <i>från: webtrees-noreply@yoursite</i> för att visa att inget svar på e-post krävs.  För att skydda mot skräppost eller andra e-missbruk, kräver vissa system en giltig adress i ”från:” fältet och kommer inte att acceptera meddelanden som är från kontot <i>webtrees-noreply</i>.Vanligtvis är ”från:” fältet i dessa automatiskt skapade e-postmeddelanden t ex <i>från: webtrees-noreply@yoursite</i> för att visa att inget svar på e-post krävs.  För att skydda mot skräppost eller andra e-missbruk, kräver vissa system en giltig adress i ”från:” fältet och kommer inte att acceptera meddelanden som är från kontot <i>webtrees-noreply</i>."
+msgstr ""
+"E-postadress som skall användas i ”från:”-fältet för e-post som webtrees "
+"skapar automatiskt.<br><br>webtrees kan automatiskt skapa e-post för att "
+"meddela administratörer av förändringar som behöver granskas.  webtrees "
+"skickar också e-postmeddelanden till användare som har ansökt om ett "
+"konto.<br><br>Vanligtvis är ”från:” fältet i dessa automatiskt skapade e-"
+"postmeddelanden t.ex. <i>från: webtrees-noreply@yoursite</i> för att visa "
+"att inget svar på e-post krävs.  För att skydda mot skräppost eller andra e-"
+"missbruk, kräver vissa system en giltig adress i ”från:” fältet och kommer "
+"inte att acceptera meddelanden som är från kontot <i>webtrees-noreply</i>."
 
 #: help_text.php:417
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County.  “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
@@ -5289,7 +5341,7 @@ msgstr "Redigera Vanliga frågor-post"
 
 #: admin_site_access.php:224
 msgid "Edit a website access rule"
-msgstr ""
+msgstr "Redigera en webplats åtkomstregel"
 
 #: app/Controller/MediaController.php:140
 msgid "Edit details"
@@ -5480,7 +5532,9 @@ msgstr "Aktiverad"
 #. I18N: Help text for the “Family tree” configuration setting
 #: admin_trees_config.php:410
 msgid "Enabling this option will force all visitors to login before they can view any data on the website."
-msgstr "Med val av detta tvingas alla besökare att logga in innan de ser data på denna sajt."
+msgstr ""
+"Med val av detta tvingas alla besökare att logga in innan de ser data på "
+"denna webplats."
 
 #. I18N [...] of a range of addresses
 #: admin_site_access.php:272 admin_site_access.php:387
@@ -5726,7 +5780,11 @@ msgstr "Vanliga frågor synlighet"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:371
 msgid "FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors.  Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc."
-msgstr "Vanliga frågor är listor med frågor och svar, som gör att du kan förklara sajtens regler, riktlinjer och rutiner för besökarna. Frågor behandlar vanligtvis sekretess, upphovsrätt, användarkonton, olämpligt innehåll, krav på källhänvisningar, etc."
+msgstr ""
+"Vanliga frågor är listor med frågor och svar, som gör att du kan förklara "
+"platsens regler, riktlinjer och rutiner för besökarna. Frågor behandlar "
+"vanligtvis sekretess, upphovsrätt, användarkonton, olämpligt innehåll, krav "
+"på källhänvisningar, etc."
 
 #. I18N: gedcom tag FACT
 #: app/Gedcom/GedcomTag.php:437
@@ -5923,7 +5981,7 @@ msgstr "Familjenavigator"
 #. I18N: Description of the “GEDCOM News” module
 #: app/Module/FamilyTreeNewsModule.php:30
 msgid "Family news and site announcements."
-msgstr "Släktnyheter och sajtmeddelanden."
+msgstr "Släktnyheter och webplatsmeddelanden."
 
 #. I18N: A title/heading. %s is an individual’s name
 #: app/Controller/FamilyBookController.php:368
@@ -6249,7 +6307,7 @@ msgstr "Första händelse"
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:331
 msgid "First record"
-msgstr ""
+msgstr "Första posten"
 
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:29
 msgid "Fix name slashes and spaces"
@@ -6344,7 +6402,9 @@ msgstr "För teknisk stöd eller släktfrågor kontakta"
 #. I18N: Help text for the “Show list of family trees” site configuration setting
 #: admin_site_config.php:262
 msgid "For websites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc."
-msgstr "För sajter med mer än ett släktträd visar detta alternativ en lista över släktträd i huvudmenyn, söksidor, osv."
+msgstr ""
+"För webplatser med mer än ett släktträd visar detta alternativ en lista över "
+"släktträd i huvudmenyn, söksidor, osv."
 
 #. I18N: gedcom tag FORM
 #: app/Gedcom/GedcomTag.php:493 help_text.php:162 help_text.php:174
@@ -6555,7 +6615,7 @@ msgstr "Släktforskningskontakt"
 #. I18N: Individuals, sources, dates, places, etc.
 #: admin_trees_manage.php:437
 msgid "Genealogy data"
-msgstr ""
+msgstr "Släktforsknings uppgifter"
 
 #: admin_trees_config.php:623 admin_trees_config.php:1704
 msgid "General"
@@ -6569,7 +6629,7 @@ msgstr "Allmän sökning"
 #. I18N: Description of the “Sitemaps” module
 #: app/Module/SiteMapModule.php:35
 msgid "Generate sitemap files for search engines."
-msgstr "Generera sajtkartfiler för sökmotorer."
+msgstr "Generera platskartfiler för sökmotorer."
 
 #. I18N: This is a report footer. %s is the name of the application.
 #: app/Report/ReportBase.php:108
@@ -6674,7 +6734,12 @@ msgstr "Ger användaren möjligheten att välja sitt eget tema."
 #. I18N: Help text for the “Allow visitors to request account registration” site configuration setting
 #: admin_site_config.php:474
 msgid "Gives visitors the option of registering themselves for an account on the website.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, an administrator will have to approve the registration before it becomes active."
-msgstr "Ger användare möjligheten att registrera sig själva för ett konto på sajten.<br><br>Användaren kommer att få ett e-postmeddelande med en kod för att verifiera sin ansökan.<br>Efter verifiering, behöver en administratör godkänna registreringen innan den blir aktiv.<br><br>Detta sätter variabeln $USE_REGISTRATION_MODULE i filen <i>config.php</i>."
+msgstr ""
+"Ger besökare möjligheten att registrera sig själva för ett konto på "
+"webplatsen.<br><br>Besökaren kommer att få ett e-postmeddelande med en kod "
+"för att verifiera sin ansökan.<br>Efter verifiering, behöver en "
+"administratör godkänna registreringen innan den blir aktiv.<br><br>Detta "
+"sätter variabeln $USE_REGISTRATION_MODULE i filen <i>config.php</i>."
 
 #. I18N: gedcom tag _UID
 #: app/Gedcom/GedcomTag.php:1748
@@ -7126,7 +7191,10 @@ msgstr "ID-nummer"
 #. I18N: Help text for the “Language” configuration setting
 #: admin_trees_config.php:684
 msgid "If a visitor to the website has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines."
-msgstr "Om en sajtens besökare inte har angett ett språk i sin webbläsarkonfiguration, eller har angett ett språk som inte stöds, används detta språk.  Normalt gäller denna inställning för sökmotorer."
+msgstr ""
+"Om en webplatsens besökare inte har angett ett språk i sin "
+"webbläsarkonfiguration, eller har angett ett språk som inte stöds, används "
+"detta språk.  Normalt gäller denna inställning för sökmotorer."
 
 #: admin_users.php:387
 msgid "If an administrator creates a user account, the verification email is not sent, and the email must be verified manually."
@@ -7174,7 +7242,10 @@ msgstr "Om denna person har någon annan händelse än Död, Begravning, eller K
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1058
 msgid "If two family trees use the same media folder, then they will be able to share media files.  If they use different media folders, then their media files will be kept separate."
-msgstr "Om två släktträd använder samma media mapp, kommer de att kunna dela mediefiler.  Om de använder olika mediamappar, kommer deras media-filer att hållas åtskilda."
+msgstr ""
+"Om två släktträd använder samma mediamapp, kommer de att kunna dela media-"
+"filer.  Om de använder olika mediamappar, kommer deras media-filer att "
+"hållas åtskilda."
 
 #: admin_trees_config.php:414
 msgid "If visitors can not see the family tree, they will not be able to sign up for an account.  You will need to add their account manually."
@@ -7187,7 +7258,7 @@ msgstr "Om du är orolig för att användarna ska ladda upp olämpliga bilder ka
 
 #: site-unavailable.php:96
 msgid "If you are the website administrator, you should check that:"
-msgstr "Om du är sajtadministratör, kontrollera att:"
+msgstr "Om du är platsadministratör, kontrollera att:"
 
 #: site-unavailable.php:109
 msgid "If you cannot resolve the problem yourself, you can ask for help on the forums at <a href=\"http://webtrees.net\">webtrees.net</a>"
@@ -7243,6 +7314,8 @@ msgstr "Om du försöker överskrida dessa gränser, kan du uppleva server-timeo
 #: admin_site_config.php:507
 msgid "If you use one of the following tracking and analytics services, webtrees can add the tracking codes automatically."
 msgstr ""
+"Om du använder en av de följande spårning och analytics tjänster, kan "
+"webtrees lägga up pföljningskoder automatiskt."
 
 #. I18N: Help text for the “Names to remove from common surnames (comma separated)” configuration setting
 #: admin_trees_config.php:1256
@@ -7261,7 +7334,11 @@ msgstr "Om serverns säkerhetspolicy tillåter det, kan du efterfråga ökat min
 #. I18N: Help text for the "Website URL" site configuration setting
 #: admin_site_config.php:289
 msgid "If your website can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL.  Requests for the other URLs will be redirected to the preferred one."
-msgstr "Om din sajt kan nås via mer än en URL, till exempel <b>http://www.exempel.com/webtrees/</b> och <b>http://webtrees.exempel.com/</b>, kan du ange önskad URL.  Begäran till andra webbadresser omdirigeras till den önskade."
+msgstr ""
+"Om din webplats kan nås via mer än en URL, till exempel "
+"<b>http://www.exempel.com/webtrees/</b> och "
+"<b>http://webtrees.exempel.com/</b>, kan du ange önskad URL.  Begäran till "
+"andra webbadresser omdirigeras till den önskade."
 
 #: admin_media.php:489 app/Gedcom/GedcomTag.php:1786
 msgid "Image dimensions"
@@ -7316,7 +7393,9 @@ msgstr "I vissa länder gäller integritetslagar inte enbart för levande person
 
 #: help_text.php:284
 msgid "In the citation details field you would enter the page number or other information that might help someone find the information in the source."
-msgstr "I källhänvisningsfältet anger du sidnumret eller annan information som kan hjälpa för att hitta informationen i källan."
+msgstr ""
+"I källhänvisningsfältet anger du sidnumret eller annan information som kan "
+"hjälpa någon hitta informationen i källan."
 
 #: help_text.php:337
 msgid "In this field you would enter the citation text for this source.  Examples of data may be a transcription of the text from the source, or a description of what was in the citation."
@@ -7473,7 +7552,7 @@ msgstr "Informationen om förfrågan visas under länken nedan."
 
 #: admin_pgv_to_wt.php:175
 msgid "Installation folder"
-msgstr "Installationskatalog"
+msgstr "Installationsmapp"
 
 #. I18N: Name of a module
 #: app/Controller/FanchartController.php:361
@@ -9143,11 +9222,13 @@ msgstr "De flesta servrar använder inte säkra anslutningar."
 
 #: setup.php:282
 msgid "Most sites are configured to use localhost.  This means that your database runs on the same computer as your web server."
-msgstr "De flesta sajter är konfigurerade att använda en lokal värddator (localhost). Det betyder att din databas och webbserver körs i samma dator."
+msgstr ""
+"De flesta webplatserna är konfigurerade att använda en lokal värddator "
+"(localhost). Det betyder att din databas och webbserver körs i samma dator."
 
 #: setup.php:286
 msgid "Most sites are configured to use the default value of 3306."
-msgstr "De flesta sajter är konfigurerade att använda standardvärdet 3306."
+msgstr "De flesta platserna är konfigurerade att använda standardvärdet 3306."
 
 #. I18N: Name of a module
 #: app/Module/TopPageViewsModule.php:25
@@ -10043,7 +10124,11 @@ msgstr "Endast släktträdets manager kan redigera"
 
 #: site-unavailable.php:93
 msgid "Oops!  The webserver is unable to connect to the database server.  It could be busy, undergoing maintenance, or simply broken.  You should <a href=\"index.php\">try again</a> in a few minutes or contact the website administrator."
-msgstr "Hoppsan! Webbservern kan inte ansluta till databasservern. Den kan vara upptagen, undergå service, eller helt enkel vara trasig. Du kan försöka <a href=\"index.php\">igen</a> efter några minuter eller kontakta sajtadministratören."
+msgstr ""
+"Hoppsan! Webbservern kan inte ansluta till databasservern. Den kan vara "
+"upptagen, undergå service, eller helt enkel vara trasig. Du kan försöka <a "
+"href=\"index.php\">igen</a> efter några minuter eller kontakta "
+"webplatsadministratören."
 
 #: setup.php:213
 msgid "Oops!  webtrees was unable to create files in this folder."
@@ -10626,7 +10711,25 @@ msgstr "Orter i %s"
 
 #: help_text.php:294
 msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-msgstr "Orter skall anges i enlighet med normerna inom släktforskning. I släktforskning bör orter registreras med den mest specifika informationen först och sedan de minst specifika sedan genom att använda kommatecken för att skilja de olika informationsnivåerna. Ortens information nivå bör motsvara förvaltning eller kyrka där viktiga uppgifterposter för den orten finns.<br>Till exempel skulle en plats som Salt Lake City skrivas som ”Salt Lake City, Salt Lake, Utah, USA”.<br>Låt oss unders??ka varje del av denna plats. Den första delen, ”Salt Lake City”, är den stad eller kommun där händelsen inträffade. I vissa länder kan det finnas kommuner eller stadsdelar inne i en stad som är viktigt att notera. I så fall bör de komma före staden. Nästa del, ”Salt Lake”, är länet. ”Utah” är staten, och ”USA” är landet. Det är viktigt att notera varje ort eftersom genealogiska register förs av regeringarna i varje nivå.<br>Om en nivå av platsen är okänd, bör du lämna ett mellanrum mellan kommatecken. Antag, i exemplet ovan, att du inte vet länet för Salt Lake City. Du borde ange den så här: ”Salt Lake City, , Utah, USA”. Antag att du bara vet att en person är född i Utah. Du skulle ange informationen så här: ”, , Utah, USA”.<br>Du kan använda <b>Sök plats</b> länken för att hjälpa dig hitta platser som redan finns i databasen."
+msgstr ""
+"Orter skall anges i enlighet med normerna inom släktforskning. I "
+"släktforskning bör orter registreras med den mest specifika informationen "
+"först och sedan de minst specifika genom att använda kommatecken för att "
+"skilja de olika ortsnivåerna. Ortens information nivå bör motsvara "
+"förvaltning eller kyrka där viktiga uppgifterposter för den ort finns.<br>"
+"Till exempel skulle en plats som Salt Lake City skrivas som ”Salt Lake City, "
+"Salt Lake, Utah, USA”.<br>Låt oss undersöka varje del av denna plats. Den "
+"första delen, ”Salt Lake City”, är den stad eller kommun där händelsen "
+"inträffade. I vissa länder kan det finnas kommuner eller stadsdelar inne i "
+"en stad som är viktigt att notera. I så fall bör de komma före staden. Nästa "
+"del, ”Salt Lake”, är länet. ”Utah” är staten, och ”USA” är landet. Det är "
+"viktigt att notera varje ort eftersom genealogiska register förs av "
+"regeringarna i varje nivå.<br>Om en nivå av platsen är okänd, bör du lämna "
+"ett mellanrum mellan kommatecken. Antag, i exemplet ovan, att du inte vet "
+"länet för Salt Lake City. Du borde ange den så här: ”Salt Lake City, , Utah, "
+"USA”. Antag att du bara vet att en person är född i Utah. Du skulle ange "
+"informationen så här: ”, , Utah, USA”.<br>Du kan använda <b>Sök plats</b> "
+"länken för att hjälpa dig hitta platser som redan finns i databasen."
 
 #: app/Module/SlideShowModule.php:122 app/Theme/CloudsTheme.php:68
 #: app/Theme/FabTheme.php:79 app/Theme/MinimalTheme.php:79
@@ -10636,7 +10739,9 @@ msgstr "Spela"
 
 #: login.php:343
 msgid "Please click on the following link and fill in the requested data to confirm your request and email address."
-msgstr "Klicka på länken nedan och fyll i de begärda uppgifterna för att verifiera ditt konto och e-postadress."
+msgstr ""
+"Klicka på följande länk och fyll i de begärda uppgifterna för att bekräfta "
+"din begäran och e-postadress."
 
 #: search.php:53
 msgid "Please enter a given name, surname, or place in addition to the year"
@@ -11289,7 +11394,7 @@ msgstr "Reno, Nevada"
 
 #: admin_trees_manage.php:474
 msgid "Renumber"
-msgstr ""
+msgstr "Omnumrera"
 
 #. I18N: Renumber the records in a family tree
 #: admin_trees_merge.php:98 admin_trees_merge.php:103
@@ -11300,7 +11405,7 @@ msgstr "Numrera om släktträdet"
 #. I18N: button label
 #: search.php:217
 msgid "Replace"
-msgstr ""
+msgstr "Ersätt"
 
 #: admin_trees_places.php:103 search.php:162
 msgid "Replace with"
@@ -11402,7 +11507,9 @@ msgstr "Återställ standardblocklayout"
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:376
 msgid "Restrict access to the website, using IP addresses and user-agent strings."
-msgstr "Begränsa åtkomst till sajten, med hjälp av IP-adresser och användaragentsträngar."
+msgstr ""
+"Begränsa åtkomst till webplatsen, med hjälp av IP-adresser och "
+"användaragentsträngar."
 
 #: admin_users.php:569
 msgid "Restrict to immediate family"
@@ -11703,7 +11810,7 @@ msgstr "Seattle, Washington"
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:348
 msgid "Second record"
-msgstr ""
+msgstr "Andra posten"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:394
@@ -11713,7 +11820,7 @@ msgstr "Säker anslutning"
 #. I18N: A site configuration setting
 #: admin_site_config.php:608
 msgid "Security code"
-msgstr ""
+msgstr "Säkerhetskod"
 
 #. I18N: %s is a URL
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:128
@@ -11723,7 +11830,7 @@ msgstr "Se %s för mer information."
 
 #: admin_site_merge.php:203 admin_site_merge.php:245 admin_site_merge.php:286
 msgid "Select"
-msgstr ""
+msgstr "Välj"
 
 #. I18N: A configuration setting
 #: admin_trees_manage.php:192
@@ -11771,11 +11878,11 @@ msgstr "Välj önskad antalsintervall"
 
 #: admin_site_merge.php:189
 msgid "Select the facts and events to keep from both records."
-msgstr ""
+msgstr "Välj de fakta och händelser som skall hållas från båda posterna."
 
 #: admin_site_config.php:622
 msgid "Select the languages that will be shown in menus."
-msgstr ""
+msgstr "Välj de språk som kommer att visas i menyer."
 
 #: app/Module/FamilyTreeStatisticsModule.php:281
 msgid "Select the stats to show in this block"
@@ -11788,7 +11895,7 @@ msgstr "Välj detta alternativ för att inkludera media filer associerade med po
 #. I18N: Records are indviduals, sources, etc.
 #: admin_site_merge.php:326
 msgid "Select two records to merge."
-msgstr ""
+msgstr "Välj två poster att slå ihop."
 
 #: app/Gedcom/GedcomCodeRela.php:222
 msgid "Seller"
@@ -11842,7 +11949,7 @@ msgstr "Avsändarnamn"
 #. I18N: Menu entry
 #: admin_site_config.php:135 app/Theme/AdministrationTheme.php:69
 msgid "Sending email"
-msgstr ""
+msgstr "Skickandet av e-post"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:407
@@ -11994,7 +12101,10 @@ msgstr "Om man väljer <b>Ja</b> kommer koderna för LDS förordningarna att vis
 #. I18N: Help text for the “Allow users to see raw GEDCOM records” configuration setting
 #: admin_trees_config.php:1714
 msgid "Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file."
-msgstr "Genom att sätta detta val till <b>Ja</b> kommer en länk placeras på alla sidor för personer, källor och familjer som tillåter användaren att läsa rådata från GEDCOM-filen om personen eller källan i fråga i ett separat fönster."
+msgstr ""
+"Genom att sätta detta val till <b>Ja</b> kommer en länk att placeras på alla "
+"sidor för personer, källor och familjer som tillåter användaren att läsa i "
+"ett separat fönster rådata från GEDCOM-filen."
 
 #: setup.php:98
 msgid "Setup wizard for webtrees"
@@ -12612,34 +12722,40 @@ msgstr "Syster"
 #: admin_site_config.php:557 admin_site_config.php:573
 #: admin_site_config.php:598
 msgid "Site identification code"
-msgstr ""
+msgstr "Webplats identifieringskod"
 
 #. I18N: Help text for the “Preferred contact method” configuration setting
 #: admin_users.php:459 edituser.php:271
 msgid "Site members can send each other messages.  You can choose to how these messages are sent to you, or choose not receive them at all."
 msgstr ""
-"Sajt medlemmar kan skicka varandra meddelanden. Du kan välja hur dessa "
+"Webplats medlemmar kan skicka varandra meddelanden. Du kan välja hur dessa "
 "meddelanden skickas till dig , eller välja att inte ta emot dem alls."
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:515 admin_site_config.php:536
 msgid "Site verification code"
-msgstr ""
+msgstr "Webplats verifikationskod"
 
 #. I18N: Help text for the "Site verification code for Google Webmaster Tools" site configuration setting
 #: admin_site_config.php:526 admin_site_config.php:547
 msgid "Site verification codes do not work when webtrees is installed in a subfolder."
 msgstr ""
+"Webplats verifikationskoderna fungerar inte när webtrees är installerad i en "
+"undermapp."
 
 #. I18N: Name of a module - see http://en.wikipedia.org/wiki/Sitemaps
 #: app/Module/SiteMapModule.php:30
 msgid "Sitemaps"
-msgstr "Sajtkarta"
+msgstr "Platskarta"
 
 #. I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL.
 #: app/Module/SiteMapModule.php:291
 msgid "Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling.  All major search engines support sitemaps.  For more information, see <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
-msgstr "Sajtkartor är ett sätt för webbansvariga att lämna information till sökmotorer om sökbara sidor på en webbplats. Alla större sökmotorer stödjer webbplatskartor. För mer information se <a href=\"http://www.sitemaps.org/\">www.sitemaps.org</a>."
+msgstr ""
+"platskartor är ett sätt för webbansvariga att lämna information till "
+"sökmotorer om sökbara sidor på en webbplats. Alla större sökmotorer stödjer "
+"webbplatskartor. För mer information se <a href=\"http://www.sitemaps.org/\""
+">www.sitemaps.org</a>."
 
 #. I18N: a month in the Jewish calendar
 #: app/Date/JewishDate.php:131
@@ -12803,7 +12919,11 @@ msgstr "Käll-ID prefix"
 #. I18N: Help text for the “Use full source citations” configuration setting
 #: admin_trees_config.php:2257
 msgid "Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don’t use these fields, you can disable them when creating new source citations."
-msgstr "Källcitat kan inkludera fält till uppgift om kvaliteten hos data (primär, sekundär, etc.) och datum när händelsen upptecknads i källan, om du inte använder dessa fält kan du inaktivera dem när du skapar nya källcitater."
+msgstr ""
+"Källcitat kan innehålla fält för att spela in kvaliteten på uppgifterna ("
+"primär, sekundär, etc.) och datumet när händelsen upptecknats i källan. Om "
+"du inte använder dessa fält, kan du inaktivera dem när du skapar nya "
+"källcitater."
 
 #. I18N: Label for search field
 #: find.php:269
@@ -13279,17 +13399,23 @@ msgstr "Mediavisaren kan visa en länk, för att ladda ner mediafilen till dator
 
 #: admin_trees_manage.php:669
 msgid "The PGV to webtrees wizard is an automated process to assist administrators make the move from a PGV installation to a new webtrees one.  It will transfer all PGV GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:"
-msgstr "PhpGedView (PGV) till webtrees guide är en automatiserad process för att guida administratörer att flytta en PGV installation till den nya webtrees. Det flyttar alla PGV-GEDCOM-filer och andra databasinformation direkt till din nya webtrees databas. Följande krav är nödvändiga:"
+msgstr ""
+"PhpGedView (PGV) till webtrees guiden är en automatiserad process som "
+"hjälper administratörer att flytta en PGV installation till en ny webtrees "
+"installation. Den flyttar alla PGV-GEDCOM-filer och annan databasinformation "
+"direkt till din nya webtrees databas. Följande nödvändliga krav ställs:"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
 msgid "The PHP temporary folder is missing."
-msgstr "PHP:s temporära katalog saknas."
+msgstr "PHP:s temporära mapp saknas."
 
 #: admin_users.php:97
 #, php-format
 msgid "The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s"
-msgstr "Administratören vid webtrees sajt %s har godkänt din ansökan för ett användarkonto. Du kan nu logga in via följande länk: %s"
+msgstr ""
+"Administratören vid webtrees webplats %s har godkänt din ansökan för ett "
+"användarkonto. Du kan nu logga in via följande länk: %s"
 
 #: login.php:627
 msgid "The administrator has been informed.  As soon as they give you permission to login, you can login with your user name and password."
@@ -13356,6 +13482,8 @@ msgstr ""
 #, php-format
 msgid "The family tree “%s” will be shown to visitors when they first arrive at this website."
 msgstr ""
+"Släktträdet ”%s” kommer att visas för besökare när de först kommer till "
+"denna webplats."
 
 #: admin_trees_merge.php:187
 msgid "The family trees have been merged successfully."
@@ -13482,12 +13610,14 @@ msgstr "För detta objekt finns ännu ingen hjälptext."
 #. I18N: Help text for the “Technical help contact” configuration setting
 #: admin_trees_config.php:958
 msgid "The individual to be contacted about technical questions or errors encountered on your website."
-msgstr "E-mail-adress besökare kan använda för att kontakta dig angående tekniska frågor eller fel på din sajt."
+msgstr ""
+"E-mail-adress besökare kan använda för att kontakta dig angående tekniska "
+"frågor eller fel på din webplats."
 
 #. I18N: Help text for the “Genealogy contact” configuration setting
 #: admin_trees_config.php:936
 msgid "The individual to contact about the genealogy data on this website."
-msgstr "Person som kan kontaktas gällande släktuppgifter i denna sajt."
+msgstr "Personen som kan kontaktas gällande släktuppgifter på denna  webplats."
 
 #. I18N: %s are names of records, such as sources, repositories or individuals
 #: action.php:151 action.php:155 app/Controller/GedcomRecordController.php:40
@@ -13597,7 +13727,7 @@ msgstr "Posten har kopierats till urklippskorgen."
 #: admin_site_merge.php:162
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr ""
+msgstr "Posterna ”%1$s” och ”%2$s” har slåts ihop."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:112
 msgid "The regex appears to contain an error.  It can’t be used."
@@ -13693,20 +13823,20 @@ msgstr "Versionen av %s är för gammal."
 
 #: admin_site_access.php:85
 msgid "The website access rule has been created."
-msgstr ""
+msgstr "Webplatsens åtkomstregel har skapats."
 
 #: admin_site_access.php:113
 msgid "The website access rule has been deleted."
-msgstr "En åtkomstregel för sajten “%s” har raderats."
+msgstr "Webplatsens åtkomstregel har raderats."
 
 #: admin_site_access.php:97
 msgid "The website access rule has been updated."
-msgstr ""
+msgstr "Webplatsens åtkomstregel har uppdaterats."
 
 #: admin_site_config.php:44 admin_site_config.php:63 admin_site_config.php:76
 #: admin_site_config.php:91 admin_site_config.php:100
 msgid "The website preferences have been updated."
-msgstr ""
+msgstr "Webplatsens inställningarna har updaterats."
 
 #. I18N: Help text for the “Use GeoNames database for autocomplete on places” configuration setting
 #: admin_trees_config.php:2291
@@ -13811,7 +13941,9 @@ msgstr "Thermidor"
 
 #: admin.php:498
 msgid "These pages provide access to all the configuration settings and management tools for this webtrees site."
-msgstr "Dessa sidor ger tillgång till alla konfigurationsinställningar och hanteringsverktyg för denna webtrees-sajt."
+msgstr ""
+"Dessa sidor ger tillgång till alla konfigurationsinställningar och "
+"hanteringsverktyg för denna webtrees-webplats."
 
 #. I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII
 #: import.php:149
@@ -13841,7 +13973,11 @@ msgstr "Om denna ruta är ikryssad kommer andra inloggade användare att kunna s
 
 #: setup.php:351 setup.php:362
 msgid "This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new webtrees system.  You can import your PhpGedView data and settings later."
-msgstr "Denna databas and tabell-prefix värkar att vara i användning av andra applikationer. Om du har ett befintligt PhpGedView-system, kan du skapa en ny webtrees system. Du kan importera dina PhpGedView data och inställning senare."
+msgstr ""
+"Denna databas and tabell-prefix värkar att vara i användning av andra "
+"applikationer. Om du har ett befintligt PhpGedView-system, kan du skapa en "
+"ny webtrees system. Du kan importera din PhpGedView data och inställning "
+"senare."
 
 #: setup.php:258
 #, php-format
@@ -13850,7 +13986,10 @@ msgstr "Denna databas kör endast med MySQL version %s. Du kan inte installera w
 
 #: admin_users.php:362 edituser.php:238 login.php:440 setup.php:447
 msgid "This email address will be used to send password reminders, website notifications, and messages from other family members who are registered on the website."
-msgstr "Denna e-postadress kommer att användas för att skicka dig lösenordspåminnelser, sajt-notifieringar och meddelanden från andra familjemedlemmar som är registrerade på sidan."
+msgstr ""
+"Denna e-postadress kommer att användas för att skicka dig "
+"lösenordspåminnelser, sajt-notifieringar och meddelanden från andra "
+"familjemedlemmar som är registrerade på webplatsen."
 
 #: addmedia.php:529
 msgid "This entry is ignored if you have entered a URL into the filename field."
@@ -14099,7 +14238,7 @@ msgstr "Detta är ditt namn, som det syns på skärmen."
 
 #: admin_trees_check.php:125
 msgid "This may be a mistake in your data."
-msgstr "Detta kan vara ett fel i dina egna data."
+msgstr "Detta kan vara ett fel i din egna data."
 
 #: admin_trees_check.php:124
 msgid "This may cause a problem for other applications."
@@ -14224,7 +14363,10 @@ msgstr "Här bestäms om du visar uppskattad födelse- och dödsdatum, eller ifa
 #. I18N: Help text for the “Gender icon on charts” configuration setting
 #: admin_trees_config.php:1577
 msgid "This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender.  The option simply removes some duplicate information from the box."
-msgstr "Detta alternativ kortollerar om köns-ikon virar eller ej på diagram.<br><br>Eftersom kön också framgår av rutfärgen, kan detta alternativ inte dölja könet. Detta alternativ helt enkelt tar bort dubbla information i rutan."
+msgstr ""
+"Detta alternativ kortollerar om köns-ikon visas eller ej på diagram.<br><br>"
+"Eftersom kön också framgår av rutfärgen, kan detta alternativ inte dölja "
+"könet. Detta alternativ helt enkelt tar bort dubbla information i rutan."
 
 #. I18N: Help text for the “Default pedigree chart layout” tree configuration setting
 #: admin_trees_config.php:1331
@@ -14255,7 +14397,10 @@ msgstr "Denna plats har inga koordinater"
 
 #: help_text.php:442
 msgid "This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc."
-msgstr "Denna process gör det möjligt för webbplatsens ägare att säkerställa att den nya informationen följer webbplatsens normer och konventioner, har rätt källhänvisningar etc."
+msgstr ""
+"Denna process gör det möjligt för webbplatsens ägare att säkerställa att den "
+"nya informationen följer webbplatsens normer och konventioner, har rätt "
+"källhänvisningar, etc."
 
 #: repo.php:73
 msgid "This repository does not exist or you do not have permission to view it."
@@ -14307,7 +14452,13 @@ msgstr "Denna sektion låter dig lägga till en ny anteckning till faktumet du f
 
 #: help_text.php:404
 msgid "This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the “Create a new source” link if you need to enter a new source.  In the citation details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source."
-msgstr "Denna sektion tillåter dig lägga till nya källcitat till faktumet som du för närvarande redigerar.<br><br>I Källfältet skriver du in ID för källan. Klicka på <b>Skapa ny källa</b>-länken om du behöver lägga till en nya källa. I Citatdetaljfältet skriver du in sidnummer eller annan information som hjälper till att hitta informationen i källan igen. I textfältet skriver du av källans text."
+msgstr ""
+"Denna sektion tillåter dig lägga till nya källcitat till faktumet som du för "
+"närvarande redigerar.<br><br>I Källfältet skriver du in ID för källan. "
+"Klicka på ”Skapa ny källa”-länken om du behöver lägga till en nya källa. I "
+"Citatdetaljfältet skriver du in sidnummer eller annan information som "
+"hjälper till att hitta informationen i källan igen. I textfältet skriver du "
+"källans text."
 
 #. I18N: http://en.wikipedia.org/wiki/Https
 #: admin_site_upgrade.php:322
@@ -14371,11 +14522,13 @@ msgstr "Denna webbplats uppgraderas.  Försök igen om några minuter."
 
 #: site-offline.php:76
 msgid "This website is down for maintenance.  You should <a href=\"index.php\">try again</a> in a few minutes."
-msgstr "Sajten är stängd för underhåll.  Du kan försöka <a href=\"index.php\">igen</a> efter några minuter."
+msgstr ""
+"Webplatsen är stängd för underhåll.  Du kan försöka <a href=\"index.php\""
+">igen</a> efter några minuter."
 
 #: site-offline.php:70 site-unavailable.php:90
 msgid "This website is temporarily unavailable"
-msgstr "Denna sajt är otillgänglig för tillfället"
+msgstr "Denna webplats är otillgänglig för tillfället"
 
 #. I18N: %s is the name of a family tree
 #: admin_trees_manage.php:183
@@ -14503,7 +14656,7 @@ msgstr "Titel på hebreiska"
 #. I18N: label for the end of a date range (from x to y)
 #: admin_site_change.php:287 admin_site_logs.php:258
 msgid "To"
-msgstr ""
+msgstr "Till"
 
 #: app/Module/HtmlBlockModule.php:268
 msgid "To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site’s requirements."
@@ -14530,7 +14683,11 @@ msgstr "För att förhindra besökare från att komma åt webbplatsen medan du �
 #. I18N: “Apache” is a software program.
 #: admin_site_config.php:180
 msgid "To protect this private data, webtrees uses an Apache configuration file (.htaccess) which blocks all access to this folder.  If your web-server does not support .htaccess files, and you cannot restrict access to this folder, then you can select another folder, away from your web documents."
-msgstr "För att skydda privat data, använder webtrees en Apache konfigurationen arkivera (.htaccess) som blockerar alla tillgång till mappen.  Om din webbserver inte stödjer .htaccess-filer, och du inte kan begränsa åtkomsten till den här mappen, kan du välja en annan mapp från din webbdokument."
+msgstr ""
+"För att skydda privat data, använder webtrees en Apache konfigurationsfil "
+"(.htaccess) som blockerar all tillgång till mappen.  Om din webbserver inte "
+"stöder .htaccess-filer, och du inte kan begränsa åtkomsten till denna mapp, "
+"kan du välja en annan mapp från dina webbdokument."
 
 #: help_text.php:423
 msgid "To reduce the height of the News block, the administrator has hidden some articles.  You can reveal these hidden articles by clicking the <b>View archive</b> link."
@@ -14547,11 +14704,15 @@ msgstr ""
 
 #: app/Module/SiteMapModule.php:316
 msgid "To tell search engines that sitemaps are available, you can use the following links."
-msgstr "För att visa för sökmotorer att sajtkartor finns tillgängliga, kan du använda följande länkar."
+msgstr ""
+"För att visa för sökmotorer att webplatskartor finns tillgängliga, kan du "
+"använda följande länkar."
 
 #: app/Module/SiteMapModule.php:313
 msgid "To tell search engines that sitemaps are available, you should add the following line to your robots.txt file."
-msgstr "För att visa för sökmotorer att sajtkartor finns tillgängliga, bör du lägga till följande rad i din robots.txt-fil."
+msgstr ""
+"För att visa för sökmotorer att webplatskartor finns tillgängliga, bör du "
+"lägga till följande rad i din robots.txt-fil."
 
 #: admin_site_config.php:420
 msgid "To use a Google mail account, use the following settings: server=smtp.gmail.com, port=587, security=tls, username=xxxxx@gmail.com, password=[your gmail password]"
@@ -14740,12 +14901,12 @@ msgstr "Antal användare"
 #. I18N: Menu entry
 #: admin_site_config.php:141 app/Theme/AdministrationTheme.php:72
 msgid "Tracking and analytics"
-msgstr ""
+msgstr "Spårning och analytics"
 
 #: admin_site_config.php:563 admin_site_config.php:588
 #: admin_site_config.php:613
 msgid "Tracking and analytics are not added to the control panel."
-msgstr ""
+msgstr "Spårning och analytics läggs inte till i kontrollpanelen."
 
 #. I18N: gedcom tag TRLR
 #: app/Gedcom/GedcomTag.php:841
@@ -15080,7 +15241,11 @@ msgstr "Använd detta fält för att visa att denna media objekt är den markera
 
 #: login.php:499
 msgid "Use this field to tell the site administrator why you are requesting an account and how you are related to the genealogy displayed on this site.  You can also use this to enter any other comments you may have for the site administrator."
-msgstr "Använd detta fält för att berätta för administratören varför du begär ett konto och hur ditt släktförhållande är till de på sajten. Du kan också använda detta fält att skriva in andra kommentarer du har till sajtadministratören."
+msgstr ""
+"Använd detta fält för att berätta för administratören varför du begär ett "
+"konto och hur ditt släktförhållande är till de på webplatsen. Du kan också "
+"använda detta fält att skriva in andra kommentarer du har till "
+"webplatsadministratören."
 
 #: app/Module/GoogleMapsModule.php:3916
 msgid "Use this value"
@@ -15377,47 +15542,63 @@ msgstr "Vattenstämplar är frivilliga och normalt visas de bara för besökare.
 #. I18N: Help text for the “Store watermarked full size images on server?” configuration setting
 #: admin_trees_config.php:1168
 msgid "Watermarks can be slow to generate for large images.  Busy websites may prefer to generate them once and store the watermarked image on the server."
-msgstr "Vattenstämplar kan vara långsamma att generera för stora bilder.  Upptagna sajter kanske föredrar att generera dem en gång och lagra den vattenstämplade bilden på servern."
+msgstr ""
+"Vattenstämplar kan vara långsamma att generera för stora bilder.  Upptagna "
+"webplatser kanske föredrar att generera dem en gång och lagra den "
+"vattenstämplade bilden på servern."
 
 #: login.php:392
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>.  You must verify your account request by following instructions in the confirmation email.  If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this website, you will need to know your user name and password."
-msgstr "Ni kommer att få en bekräftelse via e-post till e-postadressen (%s). Använd bekräftelsen för att aktivera ditt konto, om du misslyckas att aktiver ditt konto inom sju dagar kommer det att raderas (du kan då registrera kontot igen).<br><br>Efter du har följt instruktionerna i bekräftelse-eposten, måste administratören fortfarande godkänna din begäran innan du kan använda din konto.<br><br>För att logga in på sajten måste du veta ditt användarnamn och lösenord."
+msgstr ""
+"Ni kommer att få en bekräftelse via e-post till e-postadressen (%s). Använd "
+"bekräftelsen för att aktivera ditt konto, om du misslyckas att aktiver ditt "
+"konto inom sju dagar kommer det att raderas (du kan då registrera kontot "
+"igen).<br><br>Efter du har följt instruktionerna i bekräftelse-eposten, "
+"måste administratören fortfarande godkänna din begäran innan du kan använda "
+"ditt konto.<br><br>För att logga in på webplatsen måste du veta ditt "
+"användarnamn och lösenord."
 
 #: login.php:394
 #, php-format
 msgid "We will now send a confirmation email to the address <b>%s</b>.  You must verify your account request by following instructions in the confirmation email.  If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this website, you will need to know your user name and password."
-msgstr "Vi kommer nu att skicka ett bekräftelsemeddelande till adressen (%s). Du måste verifiera din kontobegäran genom att följa instruktionerna i bekräftelsemeddelandet. Om du inte verifierar din kontobegäran inom 7 dagar kommer begäran att avslås automatiskt. Du får ansöka igen.<br><br>Efter du följt instruktionerna i bekräftelsemeddelandet så kan du logga in. För att logga in på denna sajt måste du veta ditt användarnamn och lösenord."
+msgstr ""
+"Vi kommer nu att skicka ett bekräftelsemeddelande till adressen (%s). Du "
+"måste verifiera din kontobegäran genom att följa instruktionerna i "
+"bekräftelsemeddelandet. Om du inte verifierar din kontobegäran inom 7 dagar "
+"kommer begäran att avslås automatiskt. Du får ansöka igen.<br><br>Efter du "
+"följt instruktionerna i bekräftelsemeddelandet så kan du logga in. För att "
+"logga in på denna webplats måste du veta ditt användarnamn och lösenord."
 
 #. I18N: Menu entry
 #: app/Theme/AdministrationTheme.php:67
 msgid "Website"
-msgstr ""
+msgstr "Webplats"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:284
 msgid "Website URL"
-msgstr "URL till sajten"
+msgstr "URL till webplatsen"
 
 #. I18N: Menu entry
 #: admin_site_access.php:135 admin_site_access.php:248
 #: app/Theme/AdministrationTheme.php:74
 msgid "Website access rules"
-msgstr "Åtkomstregler för sajten"
+msgstr "Webplatsens åtkomstregel"
 
 #: admin_trees_config.php:963
 msgid "Website and META tag settings"
-msgstr "Webbsajt och META-tagg inställningar"
+msgstr "Webplats och META-tagg inställningar"
 
 #. I18N: Menu entry
 #: admin_site_logs.php:35 app/Theme/AdministrationTheme.php:73
 msgid "Website logs"
-msgstr ""
+msgstr "Webplats loggar"
 
 #. I18N: Menu entry
 #: admin_site_config.php:132 app/Theme/AdministrationTheme.php:68
 msgid "Website preferences"
-msgstr ""
+msgstr "Webplats inställningar"
 
 #. I18N: abbreviation for Wednesday
 #: app/Date/CalendarDate.php:383 includes/functions/functions_print.php:707
@@ -15498,7 +15679,7 @@ msgstr "Var är din PhpGedView installerad?"
 
 #: app/Module/SiteMapModule.php:293
 msgid "Which family trees should be included in the sitemaps?"
-msgstr "Vilka släktträd ska inkluderas i sajtkartorna?"
+msgstr "Vilka släktträd ska inkluderas i webplatskartorna?"
 
 #: app/Module/ClippingsCartModule.php:97
 #: app/Module/ClippingsCartModule.php:514
@@ -15664,7 +15845,10 @@ msgstr "Du kan nedladda en kopia av GEDCOM-specifikationen från %s."
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:41
 msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
-msgstr "Du kan göra de lättare att söka efter gifta kvinnor genom att lägga till deras namn som gifta.<br>Märk dock att alla kvinnor inte tar deras make efternamn, så se upp att inte felaktig information kommer in i din databas."
+msgstr ""
+"Du kan göra det lättare att söka efter gifta kvinnor genom att lägga till "
+"deras namn som gifta.<br>Märk dock att alla kvinnor inte tar sin makes "
+"efternamn, så se upp att felaktig information inte kommer in i din databas."
 
 #: login.php:629
 msgid "You can now login with your user name and password."
@@ -15732,7 +15916,9 @@ msgstr "Du kan skriva in en URL som börjar med ”http://”."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:372
 msgid "You may use HTML to format the answer and to add links to other websites."
-msgstr "Du kan använda HTML för att formatera svaret och lägga till länkar till andra webbsajter."
+msgstr ""
+"Du kan använda HTML för att formatera svaret och lägga till länkar till "
+"andra webplatser."
 
 #: setup.php:215
 msgid "You must change this before you can continue."
@@ -15794,7 +15980,12 @@ msgstr "Du måste nu granska kontouppgifterna och sätta ”godkänd”-status t
 #. I18N: Help text for the "Login URL" site configuration setting
 #: admin_site_config.php:436
 msgid "You only need to enter a Login URL if you want to redirect to a different website or location when your users login.  This is very useful if you need to switch from http to https when your users login.  Include the full URL to <i>login.php</i>.  For example, https://www.yourserver.com/webtrees/login.php ."
-msgstr "Du behöver endast ange en inloggnings-URL om du vill omdirigera till en annan sajt eller sökväg när dina användare loggar in. Det är mycket användbart när du behöver ändra från http till https när dina användare loggar in. Inkludera hela URL:en till <i>login.php</i>. Till exempel: https://www.yourserver.com/webtrees/login.php ."
+msgstr ""
+"Du behöver endast ange en inloggnings-URL om du vill omdirigera till en "
+"annan webplats eller sökväg när dina användare loggar in. Det är mycket "
+"användbart när du behöver ändra från http till https när dina användare "
+"loggar in. Inkludera hela URL:en till <i>login.php</i>. Till exempel: "
+"https://www.yourserver.com/webtrees/login.php ."
 
 #: message.php:256
 msgid "You sent the following message to a webtrees administrator:"
@@ -16323,7 +16514,7 @@ msgstr "fortsätt"
 #. I18N: Button label
 #: admin_trees_manage.php:643
 msgid "create"
-msgstr ""
+msgstr "skapa"
 
 #. I18N: a program feature
 #: setup.php:135
@@ -19517,7 +19708,9 @@ msgstr "databasanslutningens inställningar i filen “/data/config.ini.php” �
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:102
 msgid "the folder “/data” and the file “/data/config.ini.php” have access permissions that allow the webserver to read them"
-msgstr "katalogen “/data” och filen “/data/config.ini.php” har åtkomsträttigheter som tillåter webbservern att läsa dem"
+msgstr ""
+"mappen “/data” och filen “/data/config.ini.php” har åtkomsträttigheter som "
+"tillåter webbservern att läsa dem"
 
 #: includes/functions/functions.php:629
 #, php-format
@@ -19714,12 +19907,16 @@ msgstr "webtrees-meddelande"
 #: setup.php:276
 #, php-format
 msgid "webtrees needs a MySQL database, version %s or later."
-msgstr "webtrees behöver MySQL-databas version %s eller senare."
+msgstr "webtrees behöver en MySQL-databas, version %s eller senare."
 
 #. I18N: Help text for the “Messages” site configuration setting
 #: admin_site_config.php:306
 msgid "webtrees needs to send emails, such as password reminders and website notifications.  To do this, it can use this server’s built in PHP mail facility (which is not always available) or an external SMTP (mail-relay) service, for which you will need to provide the connection details."
-msgstr "webtrees behöver sända e-post, så som lösenords påminnelser och sajt meddelanden. För att göra det, kan den använda denna servers inbyggda PHP e-post egenskaper (som inte alltid är tillgängliga) eller en external SMTP (e-post relä) service för vilken du behöver anslutningsdetaljer."
+msgstr ""
+"webtrees behöver sända e-post, så som lösenords påminnelser och webplats "
+"meddelanden. För att göra det, kan den använda denna servers inbyggda PHP e-"
+"post egenskaper (som inte alltid är tillgängliga) eller en external SMTP (e-"
+"post relä) service för vilken du behöver anslutningsdetaljer."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:902
