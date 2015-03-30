@@ -69,7 +69,7 @@ $this
 			<?php echo WT_MenuBar::getThemeMenu(); ?>
 			<?php echo WT_MenuBar::getLanguageMenu(); ?>
 			</ul>
-			<div style="margin:auto;padding:10px;width:300px;"><div class="g-follow" data-annotation="bubble" data-height="20" data-href="//plus.google.com/u/0/106237023746635567418" data-rel="publisher"></div></div>
+			<div style="margin:auto;padding:10px;width:300px;"><div class="g-follow" data-annotation="bubble" data-height="20" data-href="//plus.google.com/u/0/+SoyagaciTkplus" data-rel="publisher"></div></div>
 		<h1><?php echo WT_TREE_TITLE; ?></h1>
 		<form class="header-search" action="search.php" method="post" role="search">
 			<input type="hidden" name="action" value="general">

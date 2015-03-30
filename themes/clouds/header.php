@@ -88,8 +88,9 @@ foreach (WT_MenuBar::getModuleMenus() as $menu) {
 			<input type="search" name="query" size="15" placeholder="<?php echo WT_I18N::translate('Search'); ?>">
 			<input class="search-icon" type="image" src="<?php echo $WT_IMAGES['search']; ?>" alt="<?php echo WT_I18N::translate('Search'); ?>" title="<?php echo WT_I18N::translate('Search'); ?>">
 		</form>
+		<div style="margin:auto;padding:10px;width:300px;"><div class="g-follow" data-annotation="bubble" data-height="20" data-href="//plus.google.com/u/0/+SoyagaciTkplus" data-rel="publisher"></div></div>
 		<ul class="secondary-menu">
-		<div style="margin:auto;padding:10px;width:300px;"><div class="g-follow" data-annotation="bubble" data-height="20" data-href="//plus.google.com/u/0/106237023746635567418" data-rel="publisher"></div></div>
+		
 			<?php
 			if (Auth::check()) {
 				echo '<li><a href="edituser.php" class="link">', WT_Filter::escapeHtml(Auth::user()->getRealName()), '</a></li><li>', logout_link(), '</li>';

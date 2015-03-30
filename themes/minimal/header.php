@@ -20,15 +20,13 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
-
 use WT\Auth;
-
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 define('WT_GOOGLE_SOCIALTRACKING',  './js/ga_social_tracking.js');
-// This theme uses the jQuery â€œcolorboxâ€ plugin to display images
+// This theme uses the jQuery “colorbox” plugin to display images
 $this
 	->addExternalJavascript(WT_GOOGLE_SOCIALTRACKING)
 	->addExternalJavascript(WT_JQUERY_COLORBOX_URL)
@@ -50,7 +48,8 @@ $this
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<?php echo header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL); ?>
+	<?php include(WT_ROOT."/keywords.php"); 
+	echo header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL); ?>
 	<title><?php echo WT_Filter::escapeHtml($title); ?></title>
 	<link rel="icon" href="<?php echo WT_CSS_URL; ?>favicon.png" type="image/png">
 	<link rel="stylesheet" type="text/css" href="<?php echo WT_THEME_URL; ?>jquery-ui-1.11.2/jquery-ui.css">
@@ -59,37 +58,35 @@ $this
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 	<![endif]-->
 </head>
-<body id="body">
+<body>
 	<?php if ($view !== 'simple') { ?>
 	<header>
-		<h1><?php echo WT_TREE_TITLE; ?><span style="text-align:center;margin:auto;padding:10px;width:300px;"><div class="g-follow" data-annotation="bubble" data-height="20" data-href="//plus.google.com/u/0/106237023746635567418" data-rel="publisher"></div></span></h1>
-		<div id="header-user-links">
-			<ul class="makeMenu">
-				<?php
-				if (Auth::check()) {
-					echo '<li><a href="edituser.php">', WT_Filter::escapeHtml(Auth::user()->getRealName()), '</a></li> <li>', logout_link(), '</li>';
-					if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
-						echo ' <li><a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\',chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
-					}
-				} else {
-					echo '<li>', login_link(), '</li> ';
+		<h1><?php echo WT_TREE_TITLE; ?></h1>
+		<ul class="secondary-menu">
+			<?php
+			if (Auth::check()) {
+				echo '<li><a href="edituser.php">', WT_Filter::escapeHtml(Auth::user()->getRealName()), '</a></li> <li>', logout_link(), '</li>';
+				if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
+					echo ' <li><a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\',chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
 				}
-				?>
-				<?php echo WT_MenuBar::getFavoritesMenu(); ?>
-				<?php echo WT_MenuBar::getLanguageMenu(); ?>
-				<?php echo WT_MenuBar::getThemeMenu(); ?>
-				<li>
-					<form style="display:inline;" action="search.php" method="post">
-						<input type="hidden" name="action" value="general">
-						<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">
-						<input type="hidden" name="topsearch" value="yes">
-						<input type="search" name="query" size="20" placeholder="<?php echo WT_I18N::translate('Search'); ?>">
-					</form>
-				</li>
-			</ul>
-		</div>
-		<nav id="topMenu">
-			<ul id="main-menu" role="menubar">
+			} else {
+				echo '<li>', login_link(), '</li> ';
+			}
+			?>
+			<?php echo WT_MenuBar::getFavoritesMenu(); ?>
+			<?php echo WT_MenuBar::getLanguageMenu(); ?>
+			<?php echo WT_MenuBar::getThemeMenu(); ?>
+			<li>
+				<form style="display:inline;" action="search.php" method="post">
+					<input type="hidden" name="action" value="general">
+					<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">
+					<input type="hidden" name="topsearch" value="yes">
+					<input type="search" name="query" size="20" placeholder="<?php echo WT_I18N::translate('Search'); ?>">
+				</form>
+			</li>
+		</ul>
+		<nav>
+			<ul class="primary-menu" role="menubar">
 				<?php echo WT_MenuBar::getGedcomMenu();   ?>
 				<?php echo WT_MenuBar::getMyPageMenu();   ?>
 				<?php echo WT_MenuBar::getChartsMenu();   ?>
@@ -99,6 +96,7 @@ $this
 				<?php echo WT_MenuBar::getSearchMenu();   ?>
 				<?php echo implode('', WT_MenuBar::getModuleMenus()); ?>
 			</ul>
+			<span style="text-align:center;margin:auto;padding:10px;width:300px;"><div class="g-follow" data-annotation="bubble" data-height="20" data-href="//plus.google.com/u/0/+SoyagaciTkplus" data-rel="publisher"></div></span>
 		</nav>
 	</header>
 	<?php } ?>

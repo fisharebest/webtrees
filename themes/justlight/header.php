@@ -119,7 +119,7 @@ $this
 											<?php echo getJLNavMenu(); ?>
 										</ul>
 									</div><!-- /.navbar-text -->
-									<div style="margin:auto;padding:10px;width:300px;"><div class="g-follow" data-annotation="bubble" data-height="20" data-href="//plus.google.com/u/0/106237023746635567418" data-rel="publisher"></div></div>
+									<div style="margin:auto;padding:10px;width:300px;"><div class="g-follow" data-annotation="bubble" data-height="20" data-href="//plus.google.com/u/0/+SoyagaciTkplus" data-rel="publisher"></div></div>
 								</div><!--/.nav-collapse -->
 							</div><!-- /.container-fluid -->
 						</div><!-- /.navbar-inner -->

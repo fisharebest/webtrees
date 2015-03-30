@@ -76,7 +76,7 @@ $this
 					<input type="submit" name="search" value="&gt;">
 				</form>
 			</div>
-			<div style="margin:auto;padding:10px;width:300px;"><div class="g-follow" data-annotation="bubble" data-height="20" data-href="//plus.google.com/u/0/106237023746635567418" data-rel="publisher"></div></div>
+			<div style="margin:auto;padding:10px;width:300px;"><div class="g-follow" data-annotation="bubble" data-height="20" data-href="//plus.google.com/u/0/+SoyagaciTkplus" data-rel="publisher"></div></div>
 		</div>
 		<div class="header-lower">
 			<ul class="secondary-menu" role="menubar">

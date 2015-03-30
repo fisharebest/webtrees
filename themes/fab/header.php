@@ -89,7 +89,7 @@ $this
 			</li>
 		</ul>
 		<h1><?php echo WT_TREE_TITLE; ?></h1>
-		<div style="margin:auto;padding:10px;width:300px;"><div class="g-follow" data-annotation="bubble" data-height="20" data-href="//plus.google.com/u/0/106237023746635567418" data-rel="publisher"></div></div>
+		<div style="margin:auto;padding:10px;width:300px;"><div class="g-follow" data-annotation="bubble" data-height="20" data-href="//plus.google.com/u/0/+SoyagaciTkplus" data-rel="publisher"></div></div>
 		<nav>
 			<ul class="primary-menu" role="menubar">
 				<?php echo WT_MenuBar::getGedcomMenu();   ?>
