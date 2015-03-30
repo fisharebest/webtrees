@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Class CensusAssistantModule
  */
-class CensusAssistantModule extends Module {
+class CensusAssistantModule extends AbstractModule {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('Census assistant');

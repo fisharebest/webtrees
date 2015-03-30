@@ -18,6 +18,7 @@ namespace Fisharebest\Webtrees;
 
 use Fisharebest\Localization\Locale;
 use Fisharebest\Localization\Locale\LocaleEnUs;
+use Fisharebest\Localization\Locale\LocaleInterface;
 use Fisharebest\Localization\Translation;
 use Fisharebest\Localization\Translator;
 use Patchwork\TurkishUtf8;
@@ -26,7 +27,7 @@ use Patchwork\TurkishUtf8;
  * Class I18N - Functions to support internationalization (i18n) functionality.
  */
 class I18N {
-	/** @var Locale The current locale (e.g. LocaleEnGb) */
+	/** @var LocaleInterface The current locale (e.g. LocaleEnGb) */
 	private static $locale;
 
 	/** @var Translator */
@@ -200,7 +201,7 @@ class I18N {
 	/**
 	 * The prefered locales for this site, or a default list if no preference.
 	 *
-	 * @return Locale[]
+	 * @return LocaleInterface[]
 	 */
 	public static function activeLocales() {
 		$code_list = Site::getPreference('LANGUAGES');
@@ -251,7 +252,7 @@ class I18N {
 	/**
 	 * All locales for which a translation file exists.
 	 *
-	 * @return Locale[]
+	 * @return LocaleInterface[]
 	 */
 	public static function installedLocales() {
 		$locales = array();
@@ -512,6 +513,15 @@ class I18N {
 	 */
 	public static function languageScript($locale) {
 		return Locale::create($locale)->script()->code();
+	}
+
+	/**
+	 * Return the current locale object
+	 *
+	 * @return LocaleInterface
+	 */
+	public static function locale() {
+		return self::$locale;
 	}
 
 	/**
