@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Locale;
+
+use Fisharebest\Localization\Territory\TerritoryAt;
 
 /**
  * Class LocaleDeAt - Austrian German
@@ -14,7 +16,7 @@ class LocaleDeAt extends LocaleDe {
 	}
 
 	/** {@inheritdoc} */
-	protected function endonymSortable() {
+	public function endonymSortable() {
 		return 'OSTERREICHISCHES DEUTSCH';
 	}
 

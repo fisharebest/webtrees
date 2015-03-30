@@ -1,13 +1,13 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Script;
 
 /**
- * Class Script - Representation of a writing system.
+ * Class AbstractScript - Representation of a writing system.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-abstract class Script {
+abstract class AbstractScript {
 	/**
 	 * The ISO15924 code for this script.
 	 *

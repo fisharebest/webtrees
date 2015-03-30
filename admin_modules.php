@@ -75,7 +75,7 @@ if (Filter::post('action') === 'delete' && Filter::checkCsrf()) {
 	return;
 }
 
-// Module can’t be found on disk?
+// The module can’t be found on disk?
 // Don't delete it automatically.  It may be temporarily missing, after a re-installation, etc.
 foreach ($module_status as $module_name => $status) {
 	if (!array_key_exists($module_name, $modules)) {

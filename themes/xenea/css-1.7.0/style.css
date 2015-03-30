@@ -4213,16 +4213,6 @@ header h1 {
 	float: left;
 }
 
-.menu-language ul {
-	left: auto;
-	right: 0;
-}
-
-[dir=rtl] .menu-language ul {
-	left: 0;
-	right: auto;
-}
-
 .secondary-menu {
 	clear: both;
 	text-align: center;
@@ -4250,17 +4240,20 @@ header h1 {
 	list-style: none;
 	display: none;
 	position: absolute;
-	left: 0;
-	right: auto;
 	top: 18px;
 	background-color: #fff;
 	border: thin solid #c3dfff;
 	padding: 1px;
 }
 
-[dir=rtl] .secondary-menu ul {
+.menu-language ul {
 	left: auto;
 	right: 0;
+}
+
+[dir=rtl] .menu-language ul {
+	left: 0;
+	right: auto;
 }
 
 .secondary-menu li li {

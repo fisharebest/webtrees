@@ -21,7 +21,7 @@ use Rhumsaa\Uuid\Uuid;
 /**
  * Class ResearchTaskModule
  */
-class ResearchTaskModule extends Module implements ModuleBlockInterface {
+class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module.  Tasks that need further research.  */ I18N::translate('Research tasks');
@@ -36,10 +36,10 @@ class ResearchTaskModule extends Module implements ModuleBlockInterface {
 	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $ctype, $controller, $WT_TREE;
 
-		$show_other      = get_block_setting($block_id, 'show_other', '1');
-		$show_unassigned = get_block_setting($block_id, 'show_unassigned', '1');
-		$show_future     = get_block_setting($block_id, 'show_future', '1');
-		$block           = get_block_setting($block_id, 'block', '1');
+		$show_other      = $this->getBlockSetting($block_id, 'show_other', '1');
+		$show_unassigned = $this->getBlockSetting($block_id, 'show_unassigned', '1');
+		$show_future     = $this->getBlockSetting($block_id, 'show_future', '1');
+		$block           = $this->getBlockSetting($block_id, 'block', '1');
 
 		if ($cfg) {
 			foreach (array('show_unassigned', 'show_other', 'show_future', 'block') as $name) {
@@ -153,16 +153,16 @@ class ResearchTaskModule extends Module implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
-			set_block_setting($block_id, 'show_other', Filter::postBool('show_other'));
-			set_block_setting($block_id, 'show_unassigned', Filter::postBool('show_unassigned'));
-			set_block_setting($block_id, 'show_future', Filter::postBool('show_future'));
-			set_block_setting($block_id, 'block', Filter::postBool('block'));
+			$this->setBlockSetting($block_id, 'show_other', Filter::postBool('show_other'));
+			$this->setBlockSetting($block_id, 'show_unassigned', Filter::postBool('show_unassigned'));
+			$this->setBlockSetting($block_id, 'show_future', Filter::postBool('show_future'));
+			$this->setBlockSetting($block_id, 'block', Filter::postBool('block'));
 		}
 
-		$show_other      = get_block_setting($block_id, 'show_other', '1');
-		$show_unassigned = get_block_setting($block_id, 'show_unassigned', '1');
-		$show_future     = get_block_setting($block_id, 'show_future', '1');
-		$block           = get_block_setting($block_id, 'block', '1');
+		$show_other      = $this->getBlockSetting($block_id, 'show_other', '1');
+		$show_unassigned = $this->getBlockSetting($block_id, 'show_unassigned', '1');
+		$show_future     = $this->getBlockSetting($block_id, 'show_future', '1');
+		$block           = $this->getBlockSetting($block_id, 'block', '1');
 
 		?>
 		<tr>

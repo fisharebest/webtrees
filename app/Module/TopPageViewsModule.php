@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Class TopPageViewsModule
  */
-class TopPageViewsModule extends Module implements ModuleBlockInterface {
+class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('Most viewed pages');
@@ -34,9 +34,9 @@ class TopPageViewsModule extends Module implements ModuleBlockInterface {
 	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $ctype, $WT_TREE;
 
-		$num             = get_block_setting($block_id, 'num', '10');
-		$count_placement = get_block_setting($block_id, 'count_placement', 'before');
-		$block           = get_block_setting($block_id, 'block', '0');
+		$num             = $this->getBlockSetting($block_id, 'num', '10');
+		$count_placement = $this->getBlockSetting($block_id, 'count_placement', 'before');
+		$block           = $this->getBlockSetting($block_id, 'block', '0');
 
 		if ($cfg) {
 			foreach (array('count_placement', 'num', 'block') as $name) {
@@ -117,14 +117,14 @@ class TopPageViewsModule extends Module implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
-			set_block_setting($block_id, 'num', Filter::postInteger('num', 1, 10000, 10));
-			set_block_setting($block_id, 'count_placement', Filter::post('count_placement', 'before|after', 'before'));
-			set_block_setting($block_id, 'block', Filter::postBool('block'));
+			$this->setBlockSetting($block_id, 'num', Filter::postInteger('num', 1, 10000, 10));
+			$this->setBlockSetting($block_id, 'count_placement', Filter::post('count_placement', 'before|after', 'before'));
+			$this->setBlockSetting($block_id, 'block', Filter::postBool('block'));
 		}
 
-		$num             = get_block_setting($block_id, 'num', '10');
-		$count_placement = get_block_setting($block_id, 'count_placement', 'before');
-		$block           = get_block_setting($block_id, 'block', '0');
+		$num             = $this->getBlockSetting($block_id, 'num', '10');
+		$count_placement = $this->getBlockSetting($block_id, 'count_placement', 'before');
+		$block           = $this->getBlockSetting($block_id, 'block', '0');
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Number of items to show');

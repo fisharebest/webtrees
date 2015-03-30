@@ -1,4 +1,8 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Language;
+
+use Fisharebest\Localization\PluralRule\PluralRule1;
+use Fisharebest\Localization\Script\ScriptArab;
+use Fisharebest\Localization\Territory\TerritoryIn;
 
 /**
  * Class LanguageKs - Representation of the Kashmiri language.
@@ -7,7 +11,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class LanguageKs extends Language {
+class LanguageKs extends AbstractLanguage implements LanguageInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'ks';
@@ -21,5 +25,10 @@ class LanguageKs extends Language {
 	/** {@inheritdoc} */
 	public function defaultScript() {
 		return new ScriptArab;
+	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule1;
 	}
 }

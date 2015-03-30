@@ -22,7 +22,7 @@ use Zend_Session;
  * Class InteractiveTreeModule
  * Tip : you could change the number of generations loaded before ajax calls both in individual page and in treeview page to optimize speed and server load
  */
-class InteractiveTreeModule extends Module implements ModuleTabInterface {
+class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface {
 	var $headers; // CSS and script to include in the top of <head> section, before theme’s CSS
 	var $js; // the TreeViewHandler javascript
 

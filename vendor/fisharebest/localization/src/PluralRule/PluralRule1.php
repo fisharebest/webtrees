@@ -1,4 +1,4 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\PluralRule;
 
 /**
  * Class PluralRule1 - Select a plural form for a specified number.
@@ -6,7 +6,7 @@
  * Families:
  * Germanic (Danish, Dutch, English, Faroese, Frisian, German, Norwegian, Swedish)
  * Finno-Ugric (Estonian, Finnish, Hungarian)
- * Language isolate (Basque)
+ * AbstractLanguage isolate (Basque)
  * Latin/Greek (Greek)
  * Semitic (Hebrew)
  * Romanic (Italian, Portuguese, Spanish, Catalan)

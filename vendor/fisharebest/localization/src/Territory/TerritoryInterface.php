@@ -1,19 +1,19 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Territory;
 
 /**
- * Class Territory - Representation of a geographic area.
+ * Interface TerritoryInterface - Representation of a geographic area.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-abstract class Territory {
+interface TerritoryInterface {
 	/**
 	 * The ISO639 or M.49 code for this territory.
 	 *
 	 * @return string
 	 */
-	abstract public function code();
+	public function code();
 
 	/**
 	 * What is the first day of the week?
@@ -23,27 +23,21 @@ abstract class Territory {
 	 *
 	 * @return integer
 	 */
-	public function firstDay() {
-		return 1;
-	}
+	public function firstDay();
 
 	/**
-	 * Does this territory use 'metric' or 'US' measurements.
+	 * Does this territory prefer 'metric' or 'US' measurements.
 	 *
 	 * @return string
 	 */
-	public function measurementSystem() {
-		return 'metric';
-	}
+	public function measurementSystem();
 
 	/**
-	 * Does this territory use 'A4' or 'US-Letter' paper.
+	 * Does this territory prefer 'A4' or 'US-Letter' paper.
 	 *
 	 * @return string
 	 */
-	public function paperSize() {
-		return 'A4';
-	}
+	public function paperSize();
 
 	/**
 	 * What is the first day of the weekend?
@@ -53,9 +47,7 @@ abstract class Territory {
 	 *
 	 * @return integer
 	 */
-	public function weekendStart() {
-		return 6;
-	}
+	public function weekendStart();
 
 	/**
 	 * What is the last day of the weekend?
@@ -65,7 +57,5 @@ abstract class Territory {
 	 *
 	 * @return integer
 	 */
-	public function weekendEnd() {
-		return 0;
-	}
+	public function weekendEnd();
 }

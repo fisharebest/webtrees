@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Class ReviewChangesModule
  */
-class ReviewChangesModule extends Module implements ModuleBlockInterface {
+class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('Pending changes');
@@ -34,9 +34,9 @@ class ReviewChangesModule extends Module implements ModuleBlockInterface {
 	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $ctype, $WT_TREE;
 
-		$sendmail = get_block_setting($block_id, 'sendmail', '1');
-		$days     = get_block_setting($block_id, 'days', '1');
-		$block    = get_block_setting($block_id, 'block', '1');
+		$sendmail = $this->getBlockSetting($block_id, 'sendmail', '1');
+		$days     = $this->getBlockSetting($block_id, 'days', '1');
+		$block    = $this->getBlockSetting($block_id, 'block', '1');
 
 		if ($cfg) {
 			foreach (array('days', 'sendmail', 'block') as $name) {
@@ -141,14 +141,14 @@ class ReviewChangesModule extends Module implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
-			set_block_setting($block_id, 'days', Filter::postInteger('num', 1, 180, 1));
-			set_block_setting($block_id, 'sendmail', Filter::postBool('sendmail'));
-			set_block_setting($block_id, 'block', Filter::postBool('block'));
+			$this->setBlockSetting($block_id, 'days', Filter::postInteger('num', 1, 180, 1));
+			$this->setBlockSetting($block_id, 'sendmail', Filter::postBool('sendmail'));
+			$this->setBlockSetting($block_id, 'block', Filter::postBool('block'));
 		}
 
-		$sendmail = get_block_setting($block_id, 'sendmail', '1');
-		$days     = get_block_setting($block_id, 'days', '1');
-		$block    = get_block_setting($block_id, 'block', '1');
+		$sendmail = $this->getBlockSetting($block_id, 'sendmail', '1');
+		$days     = $this->getBlockSetting($block_id, 'days', '1');
+		$block    = $this->getBlockSetting($block_id, 'block', '1');
 
 	?>
 	<tr>

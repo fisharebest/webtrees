@@ -1,4 +1,7 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Language;
+
+use Fisharebest\Localization\PluralRule\PluralRule1;
+use Fisharebest\Localization\Territory\TerritoryZw;
 
 /**
  * Class LanguageSn - Representation of the Shona language.
@@ -7,7 +10,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class LanguageSn extends Language {
+class LanguageSn extends AbstractLanguage implements LanguageInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'sn';
@@ -16,5 +19,10 @@ class LanguageSn extends Language {
 	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryZw;
+	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule1;
 	}
 }

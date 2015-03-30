@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Class RecentChangesModule
  */
-class RecentChangesModule extends Module implements ModuleBlockInterface {
+class RecentChangesModule extends AbstractModule implements ModuleBlockInterface {
 	const DEFAULT_DAYS = 7;
 	const MAX_DAYS = 90;
 
@@ -37,11 +37,11 @@ class RecentChangesModule extends Module implements ModuleBlockInterface {
 	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $ctype, $WT_TREE;
 
-		$days       = get_block_setting($block_id, 'days', self::DEFAULT_DAYS);
-		$infoStyle  = get_block_setting($block_id, 'infoStyle', 'table');
-		$sortStyle  = get_block_setting($block_id, 'sortStyle', 'date_desc');
-		$block      = get_block_setting($block_id, 'block', '1');
-		$hide_empty = get_block_setting($block_id, 'hide_empty', '0');
+		$days       = $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
+		$infoStyle  = $this->getBlockSetting($block_id, 'infoStyle', 'table');
+		$sortStyle  = $this->getBlockSetting($block_id, 'sortStyle', 'date_desc');
+		$block      = $this->getBlockSetting($block_id, 'block', '1');
+		$hide_empty = $this->getBlockSetting($block_id, 'hide_empty', '0');
 
 
 		if ($cfg) {
@@ -113,18 +113,18 @@ class RecentChangesModule extends Module implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
-			set_block_setting($block_id, 'days', Filter::postInteger('days', 1, self::MAX_DAYS, self::DEFAULT_DAYS));
-			set_block_setting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', 'table'));
-			set_block_setting($block_id, 'sortStyle', Filter::post('sortStyle', 'name|date_asc|date_desc', 'date_desc'));
-			set_block_setting($block_id, 'hide_empty', Filter::postBool('hide_empty'));
-			set_block_setting($block_id, 'block', Filter::postBool('block'));
+			$this->setBlockSetting($block_id, 'days', Filter::postInteger('days', 1, self::MAX_DAYS, self::DEFAULT_DAYS));
+			$this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', 'table'));
+			$this->setBlockSetting($block_id, 'sortStyle', Filter::post('sortStyle', 'name|date_asc|date_desc', 'date_desc'));
+			$this->setBlockSetting($block_id, 'hide_empty', Filter::postBool('hide_empty'));
+			$this->setBlockSetting($block_id, 'block', Filter::postBool('block'));
 		}
 
-		$days       = get_block_setting($block_id, 'days', self::DEFAULT_DAYS);
-		$infoStyle  = get_block_setting($block_id, 'infoStyle', 'table');
-		$sortStyle  = get_block_setting($block_id, 'sortStyle', 'date_desc');
-		$block      = get_block_setting($block_id, 'block', '1');
-		$hide_empty = get_block_setting($block_id, 'hide_empty', '0');
+		$days       = $this->getBlockSetting($block_id, 'days', self::DEFAULT_DAYS);
+		$infoStyle  = $this->getBlockSetting($block_id, 'infoStyle', 'table');
+		$sortStyle  = $this->getBlockSetting($block_id, 'sortStyle', 'date_desc');
+		$block      = $this->getBlockSetting($block_id, 'block', '1');
+		$hide_empty = $this->getBlockSetting($block_id, 'hide_empty', '0');
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Number of days to show');

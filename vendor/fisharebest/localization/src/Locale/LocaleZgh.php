@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Locale;
+
+use Fisharebest\Localization\Language\LanguageZgh;
 
 /**
  * Class LocaleZgh - Standard Moroccan Tamazight
@@ -7,7 +9,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license       GPLv3+
  */
-class LocaleZgh extends Locale {
+class LocaleZgh extends AbstractLocale implements LocaleInterface {
 	/** {@inheritdoc} */
 	public function endonym() {
 		return 'ⵜⴰⵎⴰⵣⵉⵖⵜ';

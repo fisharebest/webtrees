@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Locale;
+
+use Fisharebest\Localization\Territory\TerritoryMx;
 
 /**
  * Class LocaleEsMx - Mexican Spanish
@@ -14,7 +16,7 @@ class LocaleEsMx extends LocaleEs {
 	}
 
 	/** {@inheritdoc} */
-	protected function endonymSortable() {
+	public function endonymSortable() {
 		return 'ESPANOL DE MEXICO';
 	}
 

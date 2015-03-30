@@ -1,4 +1,8 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Language;
+
+use Fisharebest\Localization\PluralRule\PluralRule7;
+use Fisharebest\Localization\Script\ScriptCyrl;
+use Fisharebest\Localization\Territory\TerritoryRs;
 
 /**
  * Class LanguageSr - Representation of the Serbian language.
@@ -7,7 +11,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class LanguageSr extends Language {
+class LanguageSr extends AbstractLanguage implements LanguageInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'sr';

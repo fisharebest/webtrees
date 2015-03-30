@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Class LoginBlockModule
  */
-class LoginBlockModule extends Module implements ModuleBlockInterface {
+class LoginBlockModule extends AbstractModule implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('Login');
@@ -47,8 +47,8 @@ class LoginBlockModule extends Module implements ModuleBlockInterface {
 
 		if (Auth::check()) {
 			$title   = I18N::translate('Logout');
-			$content = '<div class="center"><form method="post" action="logout.php" name="logoutform" onsubmit="return true;">';
-			$content .= '<br><a href="edituser.php" class="name2">' . I18N::translate('Logged in as ') . ' ' . Auth::user()->getRealNameHtml() . '</a><br><br>';
+			$content = '<div class="center"><form method="post" action="../../logout.php" name="logoutform" onsubmit="return true;">';
+			$content .= '<br><a href="../../edituser.php" class="name2">' . I18N::translate('Logged in as ') . ' ' . Auth::user()->getRealNameHtml() . '</a><br><br>';
 			$content .= '<input type="submit" value="' . I18N::translate('Logout') . '">';
 
 			$content .= '<br><br></form></div>';

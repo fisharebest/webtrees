@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Class ThemeSelectModule
  */
-class ThemeSelectModule extends Module implements ModuleBlockInterface {
+class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('Theme change');

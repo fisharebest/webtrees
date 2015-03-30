@@ -1,19 +1,23 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Language;
+
+use Fisharebest\Localization\PluralRule\PluralRuleInterface;
+use Fisharebest\Localization\Script\ScriptInterface;
+use Fisharebest\Localization\Territory\TerritoryInterface;
 
 /**
- * Class Language - Representation of a language.
+ * Interface LanguageInterface - Representation of a language.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-abstract class Language {
+interface LanguageInterface {
 	/**
 	 * The ISO639 code for this language.
 	 *
 	 * @return string
 	 */
-	abstract public function code();
+	public function code();
 
 	/**
 	 * The default territory where this language is spoken, which would
@@ -21,11 +25,9 @@ abstract class Language {
 	 *
 	 * For example, we would normally omit the JP subtag from ja-JP.
 	 *
-	 * @return Script
+	 * @return TerritoryInterface
 	 */
-	public function defaultTerritory() {
-		return new Territory001;
-	}
+	public function defaultTerritory();
 
 	/**
 	 * The default script used to write this language, which would
@@ -33,19 +35,14 @@ abstract class Language {
 	 *
 	 * For example, we would normally omit the Latn subtag from en-Latn.
 	 *
-	 * @return Script
+	 * @return ScriptInterface
 	 */
-	public function defaultScript() {
-		return new ScriptLatn;
-	}
+	public function defaultScript();
 
 	/**
 	 * Which plural rule is used in this locale?
 	 *
 	 * @return PluralRuleInterface
-	 * @throws \DomainException
 	 */
-	public function pluralRule() {
-		throw new \DomainException('No plural rule defined for language ' . $this->code());
-	}
+	public function pluralRule();
 }

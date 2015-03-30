@@ -21,7 +21,7 @@ use Zend_Session;
 /**
  * Class DescendancyModule
  */
-class DescendancyModule extends Module implements ModuleSidebarInterface {
+class DescendancyModule extends AbstractModule implements ModuleSidebarInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module/sidebar */

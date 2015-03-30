@@ -1,4 +1,8 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Language;
+
+use Fisharebest\Localization\PluralRule\PluralRule7;
+use Fisharebest\Localization\Script\ScriptCyrl;
+use Fisharebest\Localization\Territory\TerritoryUa;
 
 /**
  * Class LanguageUk - Representation of the Ukrainian language.
@@ -7,7 +11,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class LanguageUk extends Language {
+class LanguageUk extends AbstractLanguage implements LanguageInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'uk';

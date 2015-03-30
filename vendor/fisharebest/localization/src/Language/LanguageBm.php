@@ -1,4 +1,7 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Language;
+
+use Fisharebest\Localization\PluralRule\PluralRule0;
+use Fisharebest\Localization\Territory\TerritoryMl;
 
 /**
  * Class LanguageBm - Representation of the Bambara language.
@@ -7,7 +10,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class LanguageBm extends Language {
+class LanguageBm extends AbstractLanguage implements LanguageInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'bm';
@@ -16,5 +19,10 @@ class LanguageBm extends Language {
 	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryMl;
+	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule0;
 	}
 }
