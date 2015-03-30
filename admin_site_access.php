@@ -206,7 +206,7 @@ case 'load':
 
 	// Total filtered/unfiltered rows
 	$recordsFiltered = Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
-	$recordsTotal    = Database::prepare("SELECT COUNT(*) FROM `##site_access_rule` WHERE rule <> 'unknown'")->fetchOne();
+	$recordsTotal    = Database::prepare("SELECT COUNT(*) FROM `##site_access_rule`")->fetchOne();
 
 	header('Content-type: application/json');
 	// See http://www.datatables.net/usage/server-side
