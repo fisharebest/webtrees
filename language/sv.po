@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-30 12:18+0100\n"
+"PO-Revision-Date: 2015-03-31 12:59+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Swedish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
@@ -179,7 +179,7 @@ msgstr "%1$s–%2$s"
 #: includes/functions/functions.php:2150
 #, php-format
 msgid "%1$s’s %2$s"
-msgstr "%1$s’s %2$s"
+msgstr "%1$ss %2$s"
 
 #. I18N: This is the format string for the time-of-day.  See http://php.net/date for codes
 #: app/I18N.php:215
@@ -5405,7 +5405,7 @@ msgstr "Ersätt denna persons uppgifter med dina egna."
 
 #: admin_users.php:268
 msgid "Edit user"
-msgstr ""
+msgstr "Redigera användare"
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:38 admin_users.php:525
@@ -5733,7 +5733,7 @@ msgstr "Exportera alla släktträd till GEDCOM-filer…"
 
 #: admin_trees_download.php:135
 msgid "Export options"
-msgstr ""
+msgstr "Exportalternativ"
 
 #. I18N: A configuration setting.  ... [who were] born in the last XX years or died in the last YY years
 #: admin_trees_config.php:483
@@ -6278,7 +6278,7 @@ msgstr "Hitta ett specialtecken"
 
 #: relationship.php:96
 msgid "Find all possible relationships"
-msgstr ""
+msgstr "Hitta alla möjliga relationer"
 
 #: app/Module/CensusAssistantModule.php:63 find.php:55
 #: includes/functions/functions_print.php:730
@@ -6289,7 +6289,7 @@ msgstr "Sök person"
 
 #: relationship.php:91
 msgid "Find the closest relationships"
-msgstr ""
+msgstr "Hitta de närmaste relationerna"
 
 #: app/Stats.php:6141
 msgid "Finland"
@@ -12028,7 +12028,7 @@ msgstr "Serverfil innehållande platser (CSV)"
 #. I18N: Menu entry
 #: admin.php:509 admin_site_info.php:25 app/Theme/AdministrationTheme.php:76
 msgid "Server information"
-msgstr ""
+msgstr "Serverinformation"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:329 setup.php:280
@@ -12047,7 +12047,7 @@ msgstr "Sessionstidsgräns"
 
 #: admin_trees_manage.php:416 admin_trees_manage.php:427
 msgid "Set as default"
-msgstr ""
+msgstr "Ange som standard"
 
 #: inverselink.php:150
 msgid "Set link"
@@ -12428,7 +12428,7 @@ msgstr "Visa träffräknare på Min Sida och på person sidor."
 
 #: compact.php:57
 msgid "Show images"
-msgstr ""
+msgstr "Visa bilder"
 
 #: app/Module/GoogleMapsModule.php:4551
 msgid "Show inactive places"
@@ -12472,12 +12472,12 @@ msgstr "Visa släktträdlista"
 #. I18N: A configuration setting
 #: admin_trees_config.php:464
 msgid "Show living individuals"
-msgstr ""
+msgstr "Visa levande individer"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:504
 msgid "Show names of private individuals"
-msgstr ""
+msgstr "Visa privatpersoners namn"
 
 #: modules_v3/ahnentafel_report/report.xml:9
 #: modules_v3/family_group_report/report.xml:8
@@ -12603,7 +12603,7 @@ msgstr "Visa datum och tid för uppdatering"
 #. I18N: A configuration setting
 #: admin_trees_config.php:400
 msgid "Show the family tree"
-msgstr ""
+msgstr "Visa släktträdet"
 
 #: famlist.php:177 indilist.php:177
 msgid "Show the list of individuals"
@@ -12788,7 +12788,7 @@ msgstr "Kartans storlek (i bildpunkter)"
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: app/Theme/BaseTheme.php:53
 msgid "Skip to content"
-msgstr ""
+msgstr "Hoppa till innehåll"
 
 #: app/Gedcom/GedcomCodeRela.php:240
 msgid "Slave"
@@ -13223,7 +13223,7 @@ msgstr "Svalbard och Jan Mayen"
 #. I18N: Reverse the order of two individuals
 #: relationship.php:86
 msgid "Swap individuals"
-msgstr ""
+msgstr "Byt individer med varandra"
 
 #: app/Stats.php:6286
 msgid "Swaziland"
@@ -13868,7 +13868,7 @@ msgstr "Temarullgardinsväljare för temaändringar"
 
 #: admin_modules.php:150
 msgid "Themes"
-msgstr ""
+msgstr "Teman"
 
 #: admin_site_config.php:236
 msgid "Themes can be selected at three levels: user, family tree, and website.  User settings take priority over family tree settings, which in turn take priority over the website setting.  Selecting “default theme” at one level will use the theme at the next level."
@@ -14785,7 +14785,7 @@ msgstr "Toronto, Ontario, Kanada"
 
 #: admin.php:759
 msgid "Total"
-msgstr ""
+msgstr "Totalt"
 
 #: modules_v3/change_report/report.xml:124
 msgid "Total accepted changes: "
@@ -16605,7 +16605,7 @@ msgstr "öst"
 #: admin_trees_config.php:2164 admin_trees_config.php:2195
 #: admin_trees_config.php:2224
 msgid "edit"
-msgstr ""
+msgstr "ändra"
 
 #: includes/functions/functions.php:539
 msgctxt "FEMALE"
@@ -19068,7 +19068,7 @@ msgstr "procent"
 
 #: admin_trees_config.php:1111
 msgid "pixels"
-msgstr ""
+msgstr "pixlar"
 
 #. I18N: button label
 #: admin_trees_places.php:106
