@@ -4,4 +4,5 @@ cache/
 config.ini.php
 histo.*.php
 html_purifier_cache/
+language/
 media/

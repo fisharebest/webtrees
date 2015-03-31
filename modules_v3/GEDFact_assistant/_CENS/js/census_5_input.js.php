@@ -1,33 +1,20 @@
 <?php
-// Census Assistant Control module for webtrees
-//
-// Census information about an individual
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2010 PGV Development Team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Fisharebest\Webtrees;
 
-// modified from tabledeleterow.js version 1.2 2006-02-21
-// mredkj.com
-
-// CONFIG notes. Below are some comments that point to where this script can be customized.
-// Note: Make sure to include a <tbody></tbody> in your table’s HTML
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 echo '<script src="', WT_STATIC_URL, WT_MODULES_DIR, 'GEDFact_assistant/_CENS/js/chapman_codes.js"></script>';
 ?>
@@ -219,7 +206,7 @@ function preview() {
 				}
 			// UK 1901 ===============
 			} else if (NoteYear.value=="1901") {
-				for (var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
+				for (var j=2; j<tr.cells.length-3; j++) {
 					if (j==5 || j==6 || j==8 || (j>=10 && j<=34) || j==36 || j==37 || (j>=39 && j<=41) || (j>=43 && j<=49) || (j>=51 && j<=62) || (j>=64 && j<=73)) {
 							continue;
 					} else {
@@ -232,7 +219,7 @@ function preview() {
 				}
 			// UK 1891 ===============
 			} else if (NoteYear.value=="1891") {
-				for (var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
+				for (var j=2; j<tr.cells.length-3; j++) {
 					if (j==5 || j==6 || j==8 || (j>=10 && j<=34) || (j>=36 && j<=38) || j==41 || j==42 || (j>=44 && j<=49) || (j>=51 && j<=62) || (j>=64 && j<=73)) {
 							continue;
 					} else {
@@ -245,7 +232,7 @@ function preview() {
 				}
 			// UK 1951-1881 ============
 			} else if (NoteYear.value=="1851" || NoteYear.value=="1861" || NoteYear.value=="1871" || NoteYear.value=="1881") {
-				for (var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
+				for (var j=2; j<tr.cells.length-3; j++) {
 					if (j==5 || j==6 || j==8 || (j>=10 && j<=34) || (j>=36 && j<=49) || (j>=51 && j<=62) || (j>=64 && j<=73)) {
 							continue;
 					} else {
@@ -258,7 +245,7 @@ function preview() {
 				}
 			// UK 1841 ===============
 			} else if (NoteYear.value=="1841") {
-				for (var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
+				for (var j=2; j<tr.cells.length-3; j++) {
 					if ((j>=3 && j<=6) || j==8 || (j>=10 && j<=34) || (j>=36 && j<=51) || (j>=54 && j<=73)) {
 							continue;
 					} else {
@@ -274,7 +261,7 @@ function preview() {
 		} else if (NoteCtry.value=="USA") {
 			// USA 1940 ===============
 			if (NoteYear.value=="1940") {
-				for (var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
+				for (var j=2; j<tr.cells.length-3; j++) {
 					if ( (j>=4 && j<=8) || j==11 || (j>=13 && j<=50) || (j>=52 && j<=59) || j>=62 && j<=73) {
 							continue;
 					} else {
@@ -289,7 +276,7 @@ function preview() {
 
 			// USA 1930 ===============
 			else if (NoteYear.value=="1930") {
-				for (var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
+				for (var j=2; j<tr.cells.length-3; j++) {
 					if (j==4 || j==5 || j==7 || j==8 || j==11 || j==13 || j==14 || (j>=16 && j<=19) || (j>=21 && j<=45) || (j>=47 && j<=50) || j==52 || j==53 || j==63 || j==64 || j>=67 && j<=73) {
 							continue;
 					} else {
@@ -304,7 +291,7 @@ function preview() {
 
 			// USA 1920 ===============
 			else if (NoteYear.value=="1920") {
-				for (var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
+				for (var j=2; j<tr.cells.length-3; j++) {
 					if (j==4 || (j>=6 && j<=8) || j==11 || j==13 || j==14 || (j>=16 && j<=30) || (j>=34 && j<=45) || (j>=47 && j<=50) || j==52 || j==53 || j==57 || j==58 || (j>=63 && j<=73)) {
 							continue;
 					} else {
@@ -319,7 +306,7 @@ function preview() {
 
 			// USA 1910 ===============
 			else if (NoteYear.value=="1910") {
-				for (var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
+				for (var j=2; j<tr.cells.length-3; j++) {
 					if ((j>=4 && j<=8) || j==11 || j==13 || j==14 || (j>=19 && j<=26) || j==30 || j==33 || j==36 || (j>=39 && j<=42) || j==45 || j==47 || j==48 || (j>=50 && j<=64) || j==66 || j>=68 && j<=73) {
 							continue;
 					} else {
@@ -333,7 +320,7 @@ function preview() {
 			}
 			// USA 1900 ===============
 			else if (NoteYear.value=="1900") {
-				for (var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
+				for (var j=2; j<tr.cells.length-3; j++) {
 					if ((j>=4 && j<=7) || j==10 || j==13 || j==14 || (j>=19 && j<=26) || j==33 || j==34 || (j>=36 && j<=44) || j==47 || (j>=50 && j<=73)) {
 							continue;
 					} else {
@@ -347,7 +334,7 @@ function preview() {
 			}
 			// USA 1890 ===============
 			else if (NoteYear.value=="1890") {
-				for (var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
+				for (var j=2; j<tr.cells.length-3; j++) {
 					if ((j>=4 && j<=7) || j==10 || j==11 || j==13 || j==14 || (j>=19 && j<=26) || j==31 || j==33 || j==34 || j==36 || j==37 || j==39 || j==40 || (j>=42 && j<=45) || j==47 || (j>=49 && j<=63) || (j>=65 && j<=73)) {
 							continue;
 					} else {
@@ -361,7 +348,7 @@ function preview() {
 			}
 			// USA 1880 ===============
 			else if (NoteYear.value=="1880") {
-				for (var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
+				for (var j=2; j<tr.cells.length-3; j++) {
 					if ((j>=3 && j<=7) || j==10 || j==11 || (j>=17 && j<=34) || (j>=37 && j<=44) || (j>=40 && j<=42) || j==46 || j==49 || j==50 || j==52 || j==53 || (j>=56 && j<=73)) {
 							continue;
 					} else {
@@ -375,7 +362,7 @@ function preview() {
 			}
 			// USA 1870 ===============
 			else if (NoteYear.value=="1870") {
-				for (var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
+				for (var j=2; j<tr.cells.length-3; j++) {
 					if ((j>=3 && j<=6) || j==8 || (j>=11 && j<=20) || (j>=27 && j<=46) || (j>=48 && j<=62) || (j>=64 && j<=73)) {
 							continue;
 					} else {
@@ -389,7 +376,7 @@ function preview() {
 			}
 			// USA 1860 or 1850 ===============
 			else if (NoteYear.value=="1860" || NoteYear.value=="1850") {
-				for (var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
+				for (var j=2; j<tr.cells.length-3; j++) {
 					if ((j>=3 && j<=6) || j==8 || (j>=11 && j<=20) || j==24 || j==25 || (j>=27 && j<=46) || (j>=48 && j<=62) || (j>=64 && j<=73)) {
 							continue;
 					} else {
@@ -406,7 +393,7 @@ function preview() {
 			// FR  ==========Modele FR  AD 2012=====
 			// Faire figurer les champs qui ne doivent pas apparaitre dans la zone texte
 			if (NoteYear.value !="1930") {
-				for (var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
+				for (var j=2; j<tr.cells.length-3; j++) {
 					if ( j==5 || j==6 || j==8  || j==10 || j==11 || (j>=12 &&  j<16) || (j>=17 &&  j<21) || (j>=22 &&  j<=29) || (j>=30 &&  j<33)|| (j>=34 &&  j<46) || (j>=47 &&  j<49)|| (j>=50 && j<=73) ) {
 							continue;
 					} else {
@@ -428,7 +415,7 @@ function preview() {
 		}
 
 		// Reset/Check the Pink Highlighting of the Name field and Age fields for any person not born ------------------
-		for (var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
+		for (var j=2; j<tr.cells.length-3; j++) {
 			if (i==0) {
 				// Do nothing as this is the header row.
 			} else {
@@ -596,6 +583,8 @@ function insertRowToTable(pid, nam, mnam, label, gend, cond, dom, dob, age, dod,
 		preview();
 
 	}
+
+	return false;
 }
 
 // addRowToTable - Inserts at row 'num', or appends to the end if no arguments are passed in. Don't pass in empty strings.

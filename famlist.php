@@ -1,51 +1,49 @@
 <?php
-// Family List
-//
-// NOTE: indilist.php and famlist.php contain mostly identical code.
-// Updates to one file almost certainly need to be made to the other one as well.
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Fisharebest\Webtrees;
 
-use WT\Auth;
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/**
+ * Defined in session.php
+ *
+ * @global string $UNKNOWN_NN
+ * @global string $UNKNOWN_PN
+ * @global Tree   $WT_TREE
+ */
+global $UNKNOWN_NN, $UNKNOWN_PN, $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'famlist.php');
 require './includes/session.php';
-require_once WT_ROOT . 'includes/functions/functions_print_lists.php';
 
-$controller = new WT_Controller_Page();
+$controller = new PageController;
 
 // We show three different lists: initials, surnames and individuals
 // Note that the data may contain special chars, such as surname="<unknown>",
-$alpha    = WT_Filter::get('alpha');  // All surnames beginning with this letter where "@"=unknown and ","=none
-$surname  = WT_Filter::get('surname'); // All indis with this surname
-$show_all = WT_Filter::get('show_all', 'no|yes', 'no'); // All indis
+$alpha    = Filter::get('alpha'); // All surnames beginning with this letter where "@"=unknown and ","=none
+$surname  = Filter::get('surname'); // All indis with this surname
+$show_all = Filter::get('show_all', 'no|yes', 'no'); // All indis
 // Long lists can be broken down by given name
-$show_all_firstnames = WT_Filter::get('show_all_firstnames', 'no|yes', 'no');
+$show_all_firstnames = Filter::get('show_all_firstnames', 'no|yes', 'no');
 if ($show_all_firstnames === 'yes') {
 	$falpha = '';
 } else {
-	$falpha = WT_Filter::get('falpha'); // All first names beginning with this letter
+	$falpha = Filter::get('falpha'); // All first names beginning with this letter
 }
 
-$show_marnm = WT_Filter::get('show_marnm', 'no|yes');
+$show_marnm = Filter::get('show_marnm', 'no|yes');
 switch ($show_marnm) {
 case 'no':
 case 'yes':
@@ -61,92 +59,92 @@ if ($show_all === 'yes') {
 	if ($show_all_firstnames === 'yes') {
 		$alpha   = '';
 		$surname = '';
-		$legend  = WT_I18N::translate('All');
-		$url     = WT_SCRIPT_NAME . '?show_all=yes&amp;ged=' . WT_GEDURL;
+		$legend  = I18N::translate('All');
+		$url     = WT_SCRIPT_NAME . '?show_all=yes&amp;ged=' . $WT_TREE->getNameUrl();
 		$show    = 'indi';
 	} elseif ($falpha) {
 		$alpha   = '';
 		$surname = '';
-		$legend  = WT_I18N::translate('All') . ', ' . WT_Filter::escapeHtml($falpha) . '…';
-		$url     = WT_SCRIPT_NAME . '?show_all=yes&amp;ged=' . WT_GEDURL;
+		$legend  = I18N::translate('All') . ', ' . Filter::escapeHtml($falpha) . '…';
+		$url     = WT_SCRIPT_NAME . '?show_all=yes&amp;ged=' . $WT_TREE->getNameUrl();
 		$show    = 'indi';
 	} else {
 		$alpha   = '';
 		$surname = '';
-		$legend  = WT_I18N::translate('All');
-		$url     = WT_SCRIPT_NAME . '?show_all=yes' . '&amp;ged=' . WT_GEDURL;
-		$show    = WT_Filter::get('show', 'surn|indi', 'surn');
+		$legend  = I18N::translate('All');
+		$url     = WT_SCRIPT_NAME . '?show_all=yes' . '&amp;ged=' . $WT_TREE->getNameUrl();
+		$show    = Filter::get('show', 'surn|indi', 'surn');
 	}
 } elseif ($surname) {
-	$alpha    = WT_Query_Name::initialLetter($surname); // so we can highlight the initial letter
+	$alpha    = QueryName::initialLetter($surname); // so we can highlight the initial letter
 	$show_all = 'no';
 	if ($surname === '@N.N.') {
 		$legend = $UNKNOWN_NN;
 	} else {
-		$legend = WT_Filter::escapeHtml($surname);
+		$legend = Filter::escapeHtml($surname);
 	}
-	$url = WT_SCRIPT_NAME . '?surname=' . rawurlencode($surname) . '&amp;ged=' . WT_GEDURL;
+	$url = WT_SCRIPT_NAME . '?surname=' . rawurlencode($surname) . '&amp;ged=' . $WT_TREE->getNameUrl();
 	switch ($falpha) {
 	case '':
 		break;
 	case '@':
 		$legend .= ', ' . $UNKNOWN_PN;
-		$url .= '&amp;falpha=' . rawurlencode($falpha) . '&amp;ged=' . WT_GEDURL;
+		$url .= '&amp;falpha=' . rawurlencode($falpha) . '&amp;ged=' . $WT_TREE->getNameUrl();
 		break;
 	default:
-		$legend .= ', ' . WT_Filter::escapeHtml($falpha) . '…';
-		$url .= '&amp;falpha=' . rawurlencode($falpha) . '&amp;ged=' . WT_GEDURL;
+		$legend .= ', ' . Filter::escapeHtml($falpha) . '…';
+		$url .= '&amp;falpha=' . rawurlencode($falpha) . '&amp;ged=' . $WT_TREE->getNameUrl();
 		break;
 	}
 	$show = 'indi'; // SURN list makes no sense here
 } elseif ($alpha === '@') {
 	$show_all = 'no';
 	$legend   = $UNKNOWN_NN;
-	$url      = WT_SCRIPT_NAME . '?alpha=' . rawurlencode($alpha) . '&amp;ged=' . WT_GEDURL;
+	$url      = WT_SCRIPT_NAME . '?alpha=' . rawurlencode($alpha) . '&amp;ged=' . $WT_TREE->getNameUrl();
 	$show     = 'indi'; // SURN list makes no sense here
 } elseif ($alpha === ',') {
 	$show_all = 'no';
-	$legend   = WT_I18N::translate('None');
-	$url      = WT_SCRIPT_NAME . '?alpha=' . rawurlencode($alpha) . '&amp;ged=' . WT_GEDURL;
+	$legend   = I18N::translate('None');
+	$url      = WT_SCRIPT_NAME . '?alpha=' . rawurlencode($alpha) . '&amp;ged=' . $WT_TREE->getNameUrl();
 	$show     = 'indi'; // SURN list makes no sense here
 } elseif ($alpha) {
 	$show_all = 'no';
-	$legend   = WT_Filter::escapeHtml($alpha) . '…';
-	$url      = WT_SCRIPT_NAME . '?alpha=' . rawurlencode($alpha) . '&amp;ged=' . WT_GEDURL;
-	$show     = WT_Filter::get('show', 'surn|indi', 'surn');
+	$legend   = Filter::escapeHtml($alpha) . '…';
+	$url      = WT_SCRIPT_NAME . '?alpha=' . rawurlencode($alpha) . '&amp;ged=' . $WT_TREE->getNameUrl();
+	$show     = Filter::get('show', 'surn|indi', 'surn');
 } else {
 	$show_all = 'no';
 	$legend   = '…';
-	$url      = WT_SCRIPT_NAME . '?ged=' . WT_GEDURL;
+	$url      = WT_SCRIPT_NAME . '?ged=' . $WT_TREE->getNameUrl();
 	$show     = 'none'; // Don't show lists until something is chosen
 }
 $legend = '<span dir="auto">' . $legend . '</span>';
 
 $controller
-	->setPageTitle(WT_I18N::translate('Families') . ' : ' . $legend)
+	->setPageTitle(I18N::translate('Families') . ' : ' . $legend)
 	->pageHeader();
 
-echo '<h2 class="center">', WT_I18N::translate('Families'), '</h2>';
+echo '<h2 class="center">', I18N::translate('Families'), '</h2>';
 
 // Print a selection list of initial letters
 $list = array();
-foreach (WT_Query_Name::surnameAlpha($show_marnm === 'yes', true, WT_GED_ID) as $letter => $count) {
+foreach (QueryName::surnameAlpha($WT_TREE, $show_marnm === 'yes', true) as $letter => $count) {
 	switch ($letter) {
 	case '@':
 		$html = $UNKNOWN_NN;
 		break;
 	case ',':
-		$html = WT_I18N::translate('None');
+		$html = I18N::translate('None');
 		break;
 	default:
-		$html = WT_Filter::escapeHtml($letter);
+		$html = Filter::escapeHtml($letter);
 		break;
 	}
 	if ($count) {
 		if ($letter == $alpha) {
-			$list[] = '<a href="' . WT_SCRIPT_NAME . '?alpha=' . rawurlencode($letter) . '&amp;ged=' . WT_GEDURL . '" class="warning" title="' . WT_I18N::number($count) . '">' . $html . '</a>';
+			$list[] = '<a href="' . WT_SCRIPT_NAME . '?alpha=' . rawurlencode($letter) . '&amp;ged=' . $WT_TREE->getNameUrl() . '" class="warning" title="' . I18N::number($count) . '">' . $html . '</a>';
 		} else {
-			$list[] = '<a href="' . WT_SCRIPT_NAME . '?alpha=' . rawurlencode($letter) . '&amp;ged=' . WT_GEDURL . '" title="' . WT_I18N::number($count) . '">' . $html . '</a>';
+			$list[] = '<a href="' . WT_SCRIPT_NAME . '?alpha=' . rawurlencode($letter) . '&amp;ged=' . $WT_TREE->getNameUrl() . '" title="' . I18N::number($count) . '">' . $html . '</a>';
 		}
 	} else {
 		$list[] = $html;
@@ -154,31 +152,31 @@ foreach (WT_Query_Name::surnameAlpha($show_marnm === 'yes', true, WT_GED_ID) as 
 }
 
 // Search spiders don't get the "show all" option as the other links give them everything.
-if (!$SEARCH_SPIDER) {
+if (!Auth::isSearchEngine()) {
 	if ($show_all === 'yes') {
-		$list[] = '<span class="warning">' . WT_I18N::translate('All') . '</span>';
+		$list[] = '<span class="warning">' . I18N::translate('All') . '</span>';
 	} else {
-		$list[] = '<a href="' . WT_SCRIPT_NAME . '?show_all=yes' . '&amp;ged=' . WT_GEDURL . '">' . WT_I18N::translate('All') . '</a>';
+		$list[] = '<a href="' . WT_SCRIPT_NAME . '?show_all=yes' . '&amp;ged=' . $WT_TREE->getNameUrl() . '">' . I18N::translate('All') . '</a>';
 	}
 }
 echo '<p class="center alpha_index">', join(' | ', $list), '</p>';
 
 // Search spiders don't get an option to show/hide the surname sublists,
 // nor does it make sense on the all/unknown/surname views
-if (!$SEARCH_SPIDER) {
+if (!Auth::isSearchEngine()) {
 	echo '<p class="center">';
 	if ($show !== 'none') {
 		if ($show_marnm === 'yes') {
-			echo '<a href="', $url, '&amp;show=' . $show . '&amp;show_marnm=no">', WT_I18N::translate('Exclude individuals with “%s” as a married name', $legend), '</a>';
+			echo '<a href="', $url, '&amp;show=' . $show . '&amp;show_marnm=no">', I18N::translate('Exclude individuals with “%s” as a married name', $legend), '</a>';
 		} else {
-			echo '<a href="', $url, '&amp;show=' . $show . '&amp;show_marnm=yes">', WT_I18N::translate('Include individuals with “%s” as a married name', $legend), '</a>';
+			echo '<a href="', $url, '&amp;show=' . $show . '&amp;show_marnm=yes">', I18N::translate('Include individuals with “%s” as a married name', $legend), '</a>';
 		}
 
 		if ($alpha !== '@' && $alpha !== ',' && !$surname) {
 			if ($show === 'surn') {
-				echo '<br><a href="', $url, '&amp;show=indi">', WT_I18N::translate('Show the list of individuals'), '</a>';
+				echo '<br><a href="', $url, '&amp;show=indi">', I18N::translate('Show the list of individuals'), '</a>';
 			} else {
-				echo '<br><a href="', $url, '&amp;show=surn">', WT_I18N::translate('Show the list of surnames'), '</a>';
+				echo '<br><a href="', $url, '&amp;show=surn">', I18N::translate('Show the list of surnames'), '</a>';
 			}
 		}
 	}
@@ -186,12 +184,12 @@ if (!$SEARCH_SPIDER) {
 }
 
 if ($show === 'indi' || $show === 'surn') {
-	$surns = WT_Query_Name::surnames($surname, $alpha, $show_marnm === 'yes', true, WT_GED_ID);
+	$surns = QueryName::surnames($WT_TREE, $surname, $alpha, $show_marnm === 'yes', true);
 	if ($show === 'surn') {
 		// Show the surname list
 		switch ($WT_TREE->getPreference('SURNAME_LIST_STYLE')) {
 		case 'style1';
-			echo format_surname_list($surns, 3, true, WT_SCRIPT_NAME);
+			echo format_surname_list($surns, 3, true, WT_SCRIPT_NAME, $WT_TREE);
 			break;
 		case 'style3':
 			echo format_surname_tagcloud($surns, WT_SCRIPT_NAME, true);
@@ -214,7 +212,7 @@ if ($show === 'indi' || $show === 'surn') {
 			$falpha              = '';
 			$show_all_firstnames = 'no';
 		} else {
-			$givn_initials = WT_Query_Name::givenAlpha($surname, $alpha, $show_marnm === 'yes', true, WT_GED_ID);
+			$givn_initials = QueryName::givenAlpha($WT_TREE, $surname, $alpha, $show_marnm === 'yes', true);
 			// Break long lists by initial letter of given name
 			if ($surname || $show_all === 'yes') {
 				// Don't show the list until we have some filter criteria
@@ -226,35 +224,35 @@ if ($show === 'indi' || $show === 'surn') {
 						$html = $UNKNOWN_PN;
 						break;
 					default:
-						$html = WT_Filter::escapeHtml($givn_initial);
+						$html = Filter::escapeHtml($givn_initial);
 						break;
 					}
 					if ($count) {
 						if ($show === 'indi' && $givn_initial === $falpha && $show_all_firstnames === 'no') {
-							$list[] = '<a class="warning" href="' . $url . '&amp;falpha=' . rawurlencode($givn_initial) . '" title="' . WT_I18N::number($count) . '">' . $html . '</a>';
+							$list[] = '<a class="warning" href="' . $url . '&amp;falpha=' . rawurlencode($givn_initial) . '" title="' . I18N::number($count) . '">' . $html . '</a>';
 						} else {
-							$list[] = '<a href="' . $url . '&amp;falpha=' . rawurlencode($givn_initial) . '" title="' . WT_I18N::number($count) . '">' . $html . '</a>';
+							$list[] = '<a href="' . $url . '&amp;falpha=' . rawurlencode($givn_initial) . '" title="' . I18N::number($count) . '">' . $html . '</a>';
 						}
 					} else {
 						$list[] = $html;
 					}
 				}
 				// Search spiders don't get the "show all" option as the other links give them everything.
-				if (!$SEARCH_SPIDER) {
+				if (!Auth::isSearchEngine()) {
 					if ($show_all_firstnames === 'yes') {
-						$list[] = '<span class="warning">' . WT_I18N::translate('All') . '</span>';
+						$list[] = '<span class="warning">' . I18N::translate('All') . '</span>';
 					} else {
-						$list[] = '<a href="' . $url . '&amp;show_all_firstnames=yes">' . WT_I18N::translate('All') . '</a>';
+						$list[] = '<a href="' . $url . '&amp;show_all_firstnames=yes">' . I18N::translate('All') . '</a>';
 					}
 				}
 				if ($show_all === 'no') {
-					echo '<h2 class="center">', WT_I18N::translate('Individuals with surname %s', $legend), '</h2>';
+					echo '<h2 class="center">', I18N::translate('Individuals with surname %s', $legend), '</h2>';
 				}
 				echo '<p class="center alpha_index">', join(' | ', $list), '</p>';
 			}
 		}
 		if ($show === 'indi') {
-			echo format_fam_table(WT_Query_Name::families($surname, $alpha, $falpha, $show_marnm === 'yes', WT_GED_ID));
+			echo format_fam_table(QueryName::families($WT_TREE, $surname, $alpha, $falpha, $show_marnm === 'yes'));
 		}
 	}
 }

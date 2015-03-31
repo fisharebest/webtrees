@@ -1,61 +1,50 @@
-<?PHP
-// Special Character tables, for use by Javascript to input characters
-// that aren't on your keyboard
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2007 PGV Development Team
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+<?php
+namespace Fisharebest\Webtrees;
 
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 $specialchar_languages = array(
-	'af'  => WT_I18N::languageName('af'),
-	'ar'  => WT_I18N::languageName('ar'),
-	'cs'  => WT_I18N::languageName('cs'),
-	'da'  => WT_I18N::languageName('da'),
-	'de'  => WT_I18N::languageName('de'),
-	'el'  => WT_I18N::languageName('el'),
-	'en'  => WT_I18N::languageName('en'),
-	'es'  => WT_I18N::languageName('es'),
-	'eu'  => WT_I18N::languageName('eu'),
-	'fi'  => WT_I18N::languageName('fi'),
-	'fr'  => WT_I18N::languageName('fr'),
-	'gd'  => WT_I18N::languageName('gd'),
-	'haw' => WT_I18N::languageName('haw'),
-	'he'  => WT_I18N::languageName('he'),
-	'hu'  => WT_I18N::languageName('hu'),
-	'is'  => WT_I18N::languageName('is'),
-	'it'  => WT_I18N::languageName('it'),
-	'lt'  => WT_I18N::languageName('lt'),
-	'nl'  => WT_I18N::languageName('nl'),
-	'nn'  => WT_I18N::languageName('nn'),
-	'pl'  => WT_I18N::languageName('pl'),
-	'pt'  => WT_I18N::languageName('pt'),
-	'ru'  => WT_I18N::languageName('ru'),
-	'sk'  => WT_I18N::languageName('sk'),
-	'sl'  => WT_I18N::languageName('sl'),
-	'sv'  => WT_I18N::languageName('sv'),
-	'tr'  => WT_I18N::languageName('tr'),
-	'vi'  => WT_I18N::languageName('vi'),
+	'af'  => I18N::languageName('af'),
+	'ar'  => I18N::languageName('ar'),
+	'cs'  => I18N::languageName('cs'),
+	'da'  => I18N::languageName('da'),
+	'de'  => I18N::languageName('de'),
+	'el'  => I18N::languageName('el'),
+	'en'  => I18N::languageName('en'),
+	'es'  => I18N::languageName('es'),
+	'eu'  => I18N::languageName('eu'),
+	'fi'  => I18N::languageName('fi'),
+	'fr'  => I18N::languageName('fr'),
+	'gd'  => I18N::languageName('gd'),
+	'haw' => I18N::languageName('haw'),
+	'he'  => I18N::languageName('he'),
+	'hu'  => I18N::languageName('hu'),
+	'is'  => I18N::languageName('is'),
+	'it'  => I18N::languageName('it'),
+	'lt'  => I18N::languageName('lt'),
+	'nl'  => I18N::languageName('nl'),
+	'nn'  => I18N::languageName('nn'),
+	'pl'  => I18N::languageName('pl'),
+	'pt'  => I18N::languageName('pt'),
+	'ru'  => I18N::languageName('ru'),
+	'sk'  => I18N::languageName('sk'),
+	'sl'  => I18N::languageName('sl'),
+	'sv'  => I18N::languageName('sv'),
+	'tr'  => I18N::languageName('tr'),
+	'vi'  => I18N::languageName('vi'),
 );
 
 switch ($language_filter) {

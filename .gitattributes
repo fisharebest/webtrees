@@ -28,6 +28,7 @@ library/bombayworks/zendframework1/library/Zend/Form/          export-ignore
 library/bombayworks/zendframework1/library/Zend/Gdata/         export-ignore
 library/bombayworks/zendframework1/library/Zend/Infocard/      export-ignore
 library/bombayworks/zendframework1/library/Zend/Json/          export-ignore
+library/bombayworks/zendframework1/library/Zend/Locale/        export-ignore
 library/bombayworks/zendframework1/library/Zend/Layout/        export-ignore
 library/bombayworks/zendframework1/library/Zend/Ldap/          export-ignore
 library/bombayworks/zendframework1/library/Zend/Log/           export-ignore

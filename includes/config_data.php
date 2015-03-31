@@ -1,44 +1,32 @@
 <?php
+namespace Fisharebest\Webtrees;
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 // Application configuration data.  Data here has no GUI to edit it,
 // although most of it can be altered to customise local installations.
-//
-// NOTE: The one-item-per-line and extra-comma-after-last-item approach
-// is used to allow SVN to reliably merge changes for users that have
-// customised their local copy of this file.
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2010 PGV Development Team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
-
-if (!defined('WT_WEBTREES')) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
 
 // Unknown surname
-$UNKNOWN_NN=WT_I18N::translate_c('Unknown surname', '…');
+$UNKNOWN_NN = I18N::translateContext('Unknown surname', '…');
 
 // Unknown given name
-$UNKNOWN_PN=WT_I18N::translate_c('Unknown given name', '…');
+$UNKNOWN_PN = I18N::translateContext('Unknown given name', '…');
 
 // NPFX tags - name prefixes
-$NPFX_accept=array(
+$NPFX_accept = array(
 	'Adm',
 	'Amb',
 	'Brig',
@@ -76,40 +64,8 @@ $NPFX_accept=array(
 	'Ven',
 );
 
-// SPFX tags - surname prefixes
-$SPFX_accept=array(
-	'al',
-	'da',
-	'de',
-	'dem',
-	'den',
-	'der',
-	'di',
-	'du',
-	'el',
-	'la',
-	'van',
-	'von',
-);
-
-// NSFX tags - name suffixes
-$NSFX_accept=array(
-	'I',
-	'II',
-	'III',
-	'IV',
-	'Jr',
-	'Junior',
-	'MD',
-	'PhD',
-	'Senior',
-	'Sr',
-	'V',
-	'VI',
-);
-
 // FILE:FORM tags - file formats
-$FILE_FORM_accept=array(
+$FILE_FORM_accept = array(
 	'avi',
 	'bmp',
 	'gif',
@@ -123,7 +79,7 @@ $FILE_FORM_accept=array(
 );
 
 // Fact tags (as opposed to event tags), that don't normally have a value
-$emptyfacts=array(
+$emptyfacts = array(
 	'ADOP',
 	'ANUL',
 	'BAPL',
@@ -173,7 +129,7 @@ $emptyfacts=array(
 );
 
 // Tags that don't require a PLAC subtag
-$nonplacfacts=array(
+$nonplacfacts = array(
 	'ENDL',
 	'NCHI',
 	'REFN',
@@ -182,7 +138,7 @@ $nonplacfacts=array(
 );
 
 // Tags that don't require a DATE subtag
-$nondatefacts=array(
+$nondatefacts = array(
 	'ABBR',
 	'ADDR',
 	'AFN',
@@ -211,19 +167,15 @@ $nondatefacts=array(
 	'_EMAIL',
 );
 
-// Tags that require a TYPE subtag
-$typefacts=array(
-);
-
 // Tags that require a DATE:TIME as well as a DATE
-$date_and_time=array(
+$date_and_time = array(
 	'BIRT',
 	'DEAT',
 );
 
 // Level 2 tags that apply to specific Level 1 tags
 // Tags are applied in the order they appear here.
-$level2_tags=array(
+$level2_tags = array(
 	'_HEB'=>array(
 		'NAME',
 		'TITL',
@@ -438,6 +390,5 @@ $level2_tags=array(
 	),
 );
 
-// The order of name parts, when generating names
-$STANDARD_NAME_FACTS=array('NAME', 'NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX');
-$REVERSED_NAME_FACTS=array('NAME', 'NPFX', 'SPFX', 'SURN', 'GIVN', 'NSFX');
+// Name fields
+$STANDARD_NAME_FACTS = array('NAME', 'NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX');

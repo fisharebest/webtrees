@@ -1,76 +1,62 @@
 <?php
-// Perform an action, as an AJAX request.
-//
-// It is bad design to put actions in GET parameters (because
-// reloading the page will execute the action again) or POST
-// parameters (because it effectively disables the "back" button).
-//
-// It also means we must hide such links from search engines,
-// which frequently penalize sites that generate different
-// content for browsers/robots.
-//
-// Instead, use an AJAX request, such as
-//
-// <a href="#" onclick="jQuery.post('action.php',{action='foo',p1='bar'}, function(){location.reload()});">click-me!</a>
-// <a href="#" onclick="jQuery.post('action.php',{action='foo',p1='bar'}).success(location.reload()).error(alert('failed'));">click-me!</a>
-//
-// Most actions will not need separate success() and error().
-// Typically this may occur if an action has already been submitted, or
-// the login session has expired.  In these cases, reloading the page is
-// the correct response for both success/error.
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2014 Greg Roach
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Fisharebest\Webtrees;
 
-use WT\Auth;
-use WT\Log;
-use WT\User;
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+use Zend_Session;
+use Zend_Session_Namespace;
+
+/**
+ * Defined in session.php
+ *
+ * @global Zend_Session_Namespace $WT_SESSION
+ * @global Tree                   $WT_TREE
+ */
+global $WT_SESSION, $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'action.php');
 require './includes/session.php';
 
 header('Content-type: text/html; charset=UTF-8');
 
-
-if (!WT_Filter::checkCsrf()) {
+if (!Filter::checkCsrf()) {
 	Zend_Session::writeClose();
-	header('HTTP/1.0 406 Not Acceptable');
-	exit;
+	http_response_code(406);
+
+	return;
 }
 
-switch (WT_Filter::post('action')) {
+switch (Filter::post('action')) {
 case 'accept-changes':
 	// Accept all the pending changes for a record
-	$record = WT_GedcomRecord::getInstance(WT_Filter::post('xref', WT_REGEX_XREF));
-	if ($record && WT_USER_CAN_ACCEPT && $record->canShow() && $record->canEdit()) {
-		WT_FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ WT_I18N::translate('The changes to “%s” have been accepted.', $record->getFullName()));
-		accept_all_changes($record->getXref(), $record->getGedcomId());
+	$record = GedcomRecord::getInstance(Filter::post('xref', WT_REGEX_XREF), $WT_TREE);
+	if ($record && Auth::isModerator($record->getTree()) && $record->canShow() && $record->canEdit()) {
+		FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ I18N::translate('The changes to “%s” have been accepted.', $record->getFullName()));
+		accept_all_changes($record->getXref(), $record->getTree()->getTreeId());
 	} else {
-		header('HTTP/1.0 406 Not Acceptable');
+		http_response_code(406);
 	}
 	break;
 
 case 'copy-fact':
 	// Copy a fact to the clipboard
-	require WT_ROOT.'includes/functions/functions_edit.php';
-	$xref    = WT_Filter::post('xref', WT_REGEX_XREF);
-	$fact_id = WT_Filter::post('fact_id');
+	$xref    = Filter::post('xref', WT_REGEX_XREF);
+	$fact_id = Filter::post('fact_id');
 
-	$record = WT_GedcomRecord::getInstance($xref);
+	$record = GedcomRecord::getInstance($xref, $WT_TREE);
 
 	if ($record && $record->canEdit()) {
 		foreach ($record->getFacts() as $fact) {
@@ -86,18 +72,18 @@ case 'copy-fact':
 					break;
 				}
 				if (!is_array($WT_SESSION->clipboard)) {
-					$WT_SESSION->clipboard=array();
+					$WT_SESSION->clipboard = array();
 				}
-				$WT_SESSION->clipboard[$fact_id]=array(
+				$WT_SESSION->clipboard[$fact_id] = array(
 					'type'   =>$type,
 					'factrec'=>$fact->getGedcom(),
 					'fact'   =>$fact->getTag()
 					);
 				// The clipboard only holds 10 facts
-				while (count($WT_SESSION->clipboard)>10) {
+				while (count($WT_SESSION->clipboard) > 10) {
 					array_shift($WT_SESSION->clipboard);
 				}
-				WT_FlashMessages::addMessage(WT_I18N::translate('The record was copied to the clipboard.'));
+				FlashMessages::addMessage(I18N::translate('The record has been copied to the clipboard.'));
 				break 2;
 			}
 		}
@@ -106,11 +92,10 @@ case 'copy-fact':
 
 case 'paste-fact':
 	// Paste a fact from the clipboard
-	require WT_ROOT.'includes/functions/functions_edit.php';
-	$xref    = WT_Filter::post('xref', WT_REGEX_XREF);
-	$fact_id = WT_Filter::post('fact_id');
+	$xref    = Filter::post('xref', WT_REGEX_XREF);
+	$fact_id = Filter::post('fact_id');
 
-	$record = WT_GedcomRecord::getInstance($xref);
+	$record = GedcomRecord::getInstance($xref, $WT_TREE);
 
 	if ($record && $record->canEdit() && isset($WT_SESSION->clipboard[$fact_id])) {
 		$record->createFact($WT_SESSION->clipboard[$fact_id]['factrec'], true);
@@ -118,11 +103,10 @@ case 'paste-fact':
 	break;
 
 case 'delete-fact':
-	require WT_ROOT.'includes/functions/functions_edit.php';
-	$xref    = WT_Filter::post('xref', WT_REGEX_XREF);
-	$fact_id = WT_Filter::post('fact_id');
+	$xref    = Filter::post('xref', WT_REGEX_XREF);
+	$fact_id = Filter::post('fact_id');
 
-	$record = WT_GedcomRecord::getInstance($xref);
+	$record = GedcomRecord::getInstance($xref, $WT_TREE);
 	if ($record && $record->canShow() && $record->canEdit()) {
 		foreach ($record->getFacts() as $fact) {
 			if ($fact->getfactId() == $fact_id && $fact->canShow() && $fact->canEdit()) {
@@ -133,7 +117,7 @@ case 'delete-fact':
 	}
 
 	// Can’t find the record/fact, or don’t have permission to delete it.
-	header('HTTP/1.0 406 Not Acceptable');
+	http_response_code(406);
 	break;
 
 case 'delete-family':
@@ -142,34 +126,33 @@ case 'delete-media':
 case 'delete-note':
 case 'delete-repository':
 case 'delete-source':
-	require WT_ROOT.'includes/functions/functions_edit.php';
-	$record=WT_GedcomRecord::getInstance(WT_Filter::post('xref', WT_REGEX_XREF));
-	if ($record && WT_USER_CAN_EDIT && $record->canShow() && $record->canEdit()) {
+	$record = GedcomRecord::getInstance(Filter::post('xref', WT_REGEX_XREF), $WT_TREE);
+	if ($record && Auth::isEditor($record->getTree()) && $record->canShow() && $record->canEdit()) {
 		// Delete links to this record
-		foreach (fetch_all_links($record->getXref(), $record->getGedcomId()) as $xref) {
-			$linker = WT_GedcomRecord::getInstance($xref);
-			$old_gedcom =$linker->getGedcom();
+		foreach (fetch_all_links($record->getXref(), $record->getTree()->getTreeId()) as $xref) {
+			$linker = GedcomRecord::getInstance($xref, $WT_TREE);
+			$old_gedcom = $linker->getGedcom();
 			$new_gedcom = remove_links($old_gedcom, $record->getXref());
 			// fetch_all_links() does not take account of pending changes.  The links (or even the
 			// record itself) may have already been deleted.
 			if ($old_gedcom !== $new_gedcom) {
 				// If we have removed a link from a family to an individual, and it has only one member
-				if (preg_match('/^0 @'.WT_REGEX_XREF.'@ FAM/', $new_gedcom) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) @(' . WT_REGEX_XREF . ')@/', $new_gedcom, $match)==1) {
+				if (preg_match('/^0 @' . WT_REGEX_XREF . '@ FAM/', $new_gedcom) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) @(' . WT_REGEX_XREF . ')@/', $new_gedcom, $match) == 1) {
 					// Delete the family
-					$family = WT_GedcomRecord::getInstance($xref);
-					WT_FlashMessages::addMessage(/* I18N: %s is the name of a family group, e.g. “Husband name + Wife name” */ WT_I18N::translate('The family “%s” was deleted because it only has one member.', $family->getFullName()));
+					$family = GedcomRecord::getInstance($xref, $WT_TREE);
+					FlashMessages::addMessage(/* I18N: %s is the name of a family group, e.g. “Husband name + Wife name” */ I18N::translate('The family “%s” has been deleted because it only has one member.', $family->getFullName()));
 					$family->deleteRecord();
 					// Delete any remaining link to this family
 					if ($match) {
-						$relict = WT_GedcomRecord::getInstance($match[2][0]);
+						$relict = GedcomRecord::getInstance($match[2][0], $WT_TREE);
 						$new_gedcom = $relict->getGedcom();
 						$new_gedcom = remove_links($new_gedcom, $linker->getXref());
 						$relict->updateRecord($new_gedcom, false);
-						WT_FlashMessages::addMessage(/* I18N: %s are names of records, such as sources, repositories or individuals */ WT_I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $relict->getFullName(), $family->getFullName()));
+						FlashMessages::addMessage(/* I18N: %s are names of records, such as sources, repositories or individuals */ I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $relict->getFullName(), $family->getFullName()));
 					}
 				} else {
 					// Remove links from $linker to $record
-					WT_FlashMessages::addMessage(/* I18N: %s are names of records, such as sources, repositories or individuals */ WT_I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $linker->getFullName(), $record->getFullName()));
+					FlashMessages::addMessage(/* I18N: %s are names of records, such as sources, repositories or individuals */ I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $linker->getFullName(), $record->getFullName()));
 					$linker->updateRecord($new_gedcom, false);
 				}
 			}
@@ -177,12 +160,12 @@ case 'delete-source':
 		// Delete the record itself
 		$record->deleteRecord();
 	} else {
-		header('HTTP/1.0 406 Not Acceptable');
+		http_response_code(406);
 	}
 	break;
 
 case 'delete-user':
-	$user = User::find(WT_Filter::postInteger('user_id'));
+	$user = User::find(Filter::postInteger('user_id'));
 
 	if ($user && Auth::isAdmin() && Auth::user() !== $user) {
 		Log::addAuthenticationLog('Deleted user: ' . $user->getUserName());
@@ -191,22 +174,21 @@ case 'delete-user':
 	break;
 
 case 'masquerade':
-	$user = User::find(WT_Filter::postInteger('user_id'));
+	$user = User::find(Filter::postInteger('user_id'));
 
 	if ($user && Auth::isAdmin() && Auth::user() !== $user) {
 		Log::addAuthenticationLog('Masquerade as user: ' . $user->getUserName());
 		Auth::login($user);
 	} else {
-		header('HTTP/1.0 406 Not Acceptable');
+		http_response_code(406);
 	}
 	break;
 
 case 'unlink-media':
 	// Remove links from an individual and their spouse-family records to a media object.
 	// Used by the "unlink" option on the album (lightbox) tab.
-	require WT_ROOT.'includes/functions/functions_edit.php';
-	$source = WT_Individual::getInstance( WT_Filter::post('source', WT_REGEX_XREF));
-	$target = WT_Filter::post('target', WT_REGEX_XREF);
+	$source = Individual::getInstance(Filter::post('source', WT_REGEX_XREF), $WT_TREE);
+	$target = Filter::post('target', WT_REGEX_XREF);
 	if ($source && $source->canShow() && $source->canEdit() && $target) {
 		// Consider the individual and their spouse-family records
 		$sources = $source->getSpouseFamilies();
@@ -225,31 +207,31 @@ case 'unlink-media':
 			}
 		}
 	} else {
-		header('HTTP/1.0 406 Not Acceptable');
+		http_response_code(406);
 	}
 	break;
 
 case 'reject-changes':
 	// Reject all the pending changes for a record
-	$record=WT_GedcomRecord::getInstance(WT_Filter::post('xref', WT_REGEX_XREF));
-	if ($record && WT_USER_CAN_ACCEPT && $record->canShow() && $record->canEdit()) {
-		WT_FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ WT_I18N::translate('The changes to “%s” have been rejected.', $record->getFullName()));
-		reject_all_changes($record->getXref(), $record->getGedcomId());
+	$record = GedcomRecord::getInstance(Filter::post('xref', WT_REGEX_XREF), $WT_TREE);
+	if ($record && $record->canEdit() && Auth::isModerator($record->getTree())) {
+		FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ I18N::translate('The changes to “%s” have been rejected.', $record->getFullName()));
+		reject_all_changes($record);
 	} else {
-		header('HTTP/1.0 406 Not Acceptable');
+		http_response_code(406);
 	}
 	break;
 
 case 'theme':
 	// Change the current theme
-	$theme = WT_Filter::post('theme');
-	if (WT_Site::getPreference('ALLOW_USER_THEMES') && in_array($theme, get_theme_names())) {
+	$theme = Filter::post('theme');
+	if (Site::getPreference('ALLOW_USER_THEMES') && array_key_exists($theme, Theme::themeNames())) {
 		$WT_SESSION->theme_id = $theme;
 		// Remember our selection
 		Auth::user()->setPreference('theme', $theme);
 	} else {
 		// Request for a non-existant theme.
-		header('HTTP/1.0 406 Not Acceptable');
+		http_response_code(406);
 	}
 	break;
 }

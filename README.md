@@ -1,13 +1,13 @@
 [![Latest Stable Version](https://poser.pugx.org/fisharebest/webtrees/v/stable.svg)](https://packagist.org/packages/fisharebest/webtrees)
 [![Build Status](https://travis-ci.org/fisharebest/webtrees.svg?branch=master)](https://travis-ci.org/fisharebest/webtrees)
+[![Translation status](http://translate.webtrees.net/widgets/webtrees/-/svg-badge.svg)](http://translate.webtrees.net/engage/webtrees/?utm_source=widget)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/78a5ba19-7ddf-4a58-8262-1c8a149f38de/mini.png)](https://insight.sensiolabs.com/projects/78a5ba19-7ddf-4a58-8262-1c8a149f38de)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/fisharebest/webtrees/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/fisharebest/webtrees/?branch=master)
 [![Code Climate](https://codeclimate.com/github/fisharebest/webtrees/badges/gpa.svg)](https://codeclimate.com/github/fisharebest/webtrees)
 
 # webtrees
 
-The project’s website is [webtrees.net](http://webtrees.net).
-
+The project’s website is [www.webtrees.net](http://www.webtrees.net).
 Further documentation is available at [wiki.webtrees.net](http://wiki.webtrees.net).
 
 
@@ -26,20 +26,21 @@ Further documentation is available at [wiki.webtrees.net](http://wiki.webtrees.n
 
 ### License
 
-* **webtrees: Web based Family History software**
-* Copyright (C) 2014 webtrees development team.
-* Derived from PhpGedView - Copyright (C) 2002 to 2010  PGV Development Team.
+* **webtrees: online genealogy**
+* Copyright (C) 2015 webtrees development team
 
-This program is free software; you can redistribute it and/or modify it under the
-terms of the GNU General Public License as published by the Free Software
-Foundation; either version 2 of the License, or (at your option) any later version.
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
 
-This program is distributed in the hope that it will be useful, but WITHOUT ANY
-WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
-PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
 
-See the GPL.txt included with this software for more detailed licensing
-information.
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 
 ### Introduction
@@ -239,7 +240,7 @@ over. Follow these steps to update a GEDCOM that has already been imported:
   configuration page. On the line  relating to this particular family tree (GEDCOM)
   file (or a new one) click either IMPORT or UPLOAD.
 * Take careful note of the media items option (_“If you have created media objects
-  in **webtrees**, and have edited your gedcom off-line using a program that
+  in **webtrees**, and have edited your data off-line using software that
   deletes media objects, then tick this box to merge the current media objects
   with the new GEDCOM.”_) In most cases you should leave this box **UNCHECKED**.
 * Click “SAVE”. **webtrees** will validate the GEDCOM again before importing.

@@ -1,41 +1,65 @@
 <?php
-// Change the blocks on "My page" and "Home page"
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Fisharebest\Webtrees;
 
-use WT\Auth;
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+use Zend_Session;
+use Zend_Session_Namespace;
+
+/**
+ * Defined in session.php
+ *
+ * @global Zend_Session_Namespace $WT_SESSION
+ * @global Tree                   $WT_TREE
+ */
+global $WT_SESSION, $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'index_edit.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Ajax();
+$controller = new PageController;
 
 // Only one of $user_id and $gedcom_id should be set
-$user_id = WT_Filter::get('user_id', WT_REGEX_INTEGER, WT_Filter::post('user_id', WT_REGEX_INTEGER));
+$user_id   = Filter::get('user_id', WT_REGEX_INTEGER, Filter::post('user_id', WT_REGEX_INTEGER));
+$gedcom_id = Filter::get('gedcom_id', WT_REGEX_INTEGER, Filter::post('gedcom_id', WT_REGEX_INTEGER));
 if ($user_id) {
 	$gedcom_id = null;
-	$can_reset = $user_id > 0;
+	if ($user_id < 0) {
+		$controller->setPageTitle(I18N::translate('Set the default blocks for new users'));
+		$can_reset = false;
+	} else {
+		$controller->setPageTitle(I18N::translate('Change the “My page” blocks'));
+		$can_reset = true;
+	}
 } else {
-	$gedcom_id = WT_Filter::get('gedcom_id', WT_REGEX_INTEGER, WT_Filter::post('gedcom_id', WT_REGEX_INTEGER));
-	$can_reset = $gedcom_id > 0;
+	if ($gedcom_id < 0) {
+		$controller->setPageTitle(I18N::translate('Set the default blocks for new family trees'));
+		$can_reset = false;
+	} else {
+		$controller->setPageTitle(I18N::translate('Change the “Home page” blocks'));
+		$can_reset = true;
+	}
+}
+
+if ($user_id < 0 || $gedcom_id < 0 || Auth::isAdmin() && $user_id != Auth::id()) {
+	// We're doing this from an admin page.  Use the admin theme, and return there afterwards.
+	Theme::theme(new AdministrationTheme)->init($WT_SESSION, $WT_TREE);
+	$return_to = 'admin_trees_manage.php?ged=';
+} else {
+	$return_to = 'index.php';
 }
 
 // Only an admin can edit the "default" page
@@ -43,17 +67,17 @@ if ($user_id) {
 // Only a user or an admin can edit a user’s "my page"
 if (
 	$gedcom_id < 0 && !Auth::isAdmin() ||
-	$gedcom_id > 0 && !Auth::isManager(WT_Tree::get($gedcom_id)) ||
+	$gedcom_id > 0 && !Auth::isManager(Tree::findById($gedcom_id)) ||
 	$user_id && Auth::id() != $user_id && !Auth::isAdmin()
 ) {
-	$controller->pageHeader();
-	$controller->addInlineJavascript('window.location.reload();');
-	exit;
+	header('Location: ' . WT_BASE_URL . $return_to);
+
+	return;
 }
 
-$action = WT_Filter::get('action');
+$action = Filter::get('action');
 
-if ($can_reset && WT_Filter::post('default') === '1') {
+if ($can_reset && Filter::post('default') === '1') {
 	if ($user_id) {
 		$defaults = get_user_blocks(-1);
 	} else {
@@ -77,7 +101,7 @@ if ($can_reset && WT_Filter::post('default') === '1') {
 // Define all the icons we're going to use
 $IconUarrow = 'icon-uarrow';
 $IconDarrow = 'icon-darrow';
-if ($TEXT_DIRECTION === 'ltr') {
+if (I18N::direction() === 'ltr') {
 	$IconRarrow  = 'icon-rarrow';
 	$IconLarrow  = 'icon-larrow';
 	$IconRDarrow = 'icon-rdarrow';
@@ -90,7 +114,7 @@ if ($TEXT_DIRECTION === 'ltr') {
 }
 
 $all_blocks = array();
-foreach (WT_Module::getActiveBlocks() as $name => $block) {
+foreach (Module::getActiveBlocks($WT_TREE) as $name => $block) {
 	if ($user_id && $block->isUserBlock() || $gedcom_id && $block->isGedcomBlock()) {
 		$all_blocks[$name] = $block;
 	}
@@ -113,27 +137,29 @@ if ($action === 'update') {
 		foreach ($new_blocks as $order => $block_name) {
 			if (is_numeric($block_name)) {
 				// existing block
-				WT_DB::prepare("UPDATE `##block` SET block_order=? WHERE block_id=?")->execute(array($order, $block_name));
+				Database::prepare("UPDATE `##block` SET block_order=? WHERE block_id=?")->execute(array($order, $block_name));
 				// existing block moved location
-				WT_DB::prepare("UPDATE `##block` SET location=? WHERE block_id=?")->execute(array($location, $block_name));
+				Database::prepare("UPDATE `##block` SET location=? WHERE block_id=?")->execute(array($location, $block_name));
 			} else {
 				// new block
 				if ($user_id) {
-					WT_DB::prepare("INSERT INTO `##block` (user_id, location, block_order, module_name) VALUES (?, ?, ?, ?)")->execute(array($user_id, $location, $order, $block_name));
+					Database::prepare("INSERT INTO `##block` (user_id, location, block_order, module_name) VALUES (?, ?, ?, ?)")->execute(array($user_id, $location, $order, $block_name));
 				} else {
-					WT_DB::prepare("INSERT INTO `##block` (gedcom_id, location, block_order, module_name) VALUES (?, ?, ?, ?)")->execute(array($gedcom_id, $location, $order, $block_name));
+					Database::prepare("INSERT INTO `##block` (gedcom_id, location, block_order, module_name) VALUES (?, ?, ?, ?)")->execute(array($gedcom_id, $location, $order, $block_name));
 				}
 			}
 		}
 		// deleted blocks
 		foreach ($blocks[$location] as $block_id=>$block_name) {
 			if (!in_array($block_id, $main) && !in_array($block_id, $right)) {
-				WT_DB::prepare("DELETE FROM `##block_setting` WHERE block_id=?")->execute(array($block_id));
-				WT_DB::prepare("DELETE FROM `##block`         WHERE block_id=?")->execute(array($block_id));
+				Database::prepare("DELETE FROM `##block_setting` WHERE block_id=?")->execute(array($block_id));
+				Database::prepare("DELETE FROM `##block`         WHERE block_id=?")->execute(array($block_id));
 			}
 		}
 	}
-	exit;
+	header('Location: ' . WT_BASE_URL . $return_to);
+
+	return;
 }
 
 $controller
@@ -259,104 +285,118 @@ $controller
 	// Load Block Description array for use by javascript
 	foreach ($all_blocks as $block_name => $block) {
 		$controller->addInlineJavascript(
-			'block_descr["'.$block_name.'"] = "'.WT_Filter::escapeJs($block->getDescription()).'";'
+			'block_descr["' . $block_name . '"] = "' . Filter::escapeJs($block->getDescription()) . '";'
 		);
 	}
 	$controller->addInlineJavascript(
-		'block_descr["advice1"] = "'.WT_I18N::translate('Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.').'";'
+		'block_descr["advice1"] = "' . I18N::translate('Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.') . '";'
 	);
-
 ?>
-<form name="config_setup" method="post" action="index_edit.php?action=update" onsubmit="select_options(); return modalDialogSubmitAjax(this);" >
-<input type="hidden" name="user_id"   value="<?php echo $user_id; ?>">
-<input type="hidden" name="gedcom_id" value="<?php echo $gedcom_id; ?>">
-<table border="1" id="change_blocks">
-<?php
-// NOTE: Row 1: Column legends
-echo '<tr>';
-	echo '<td class="descriptionbox center vmiddle" colspan="2">';
-		echo '<b>', WT_I18N::translate('Main section blocks'), '</b>';
+
+<?php if ($return_to !== 'index.php'): ?>
+<ol class="breadcrumb small">
+	<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
+	<?php if ($user_id): ?>
+	<li><a href="admin_users.php"><?php echo I18N::translate('User administration'); ?></a></li>
+	<?php else: ?>
+	<li><a href="admin_trees_manage.php"><?php echo I18N::translate('Manage family trees'); ?></a></li>
+	<?php endif; ?>
+	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+</ol>
+<?php endif; ?>
+
+<h1><?php echo $controller->getPageTitle(); ?></h1>
+
+<form name="config_setup" method="post" action="index_edit.php?action=update" onsubmit="select_options();" >
+	<input type="hidden" name="user_id"   value="<?php echo $user_id; ?>">
+	<input type="hidden" name="gedcom_id" value="<?php echo $gedcom_id; ?>">
+	<table border="1" id="change_blocks">
+		<tr>
+	<?php
+	// NOTE: Row 1: Column legends
+		echo '<td class="descriptionbox center vmiddle" colspan="2">';
+			echo '<b>', I18N::translate('Main section blocks'), '</b>';
+		echo '</td>';
+		echo '<td class="descriptionbox center vmiddle" colspan="3">';
+			echo '<b>', I18N::translate('Available blocks'), '</b>';
+		echo '</td>';
+		echo '<td class="descriptionbox center vmiddle" colspan="2">';
+			echo '<b>', I18N::translate('Right section blocks'), '</b>';
+		echo '</td>';
+	echo '</tr>';
+	echo '<tr>';
+	// NOTE: Row 2 column 1: Up/Down buttons for left (main) block list
+	echo '<td class="optionbox center vmiddle">';
+		echo '<a onclick="move_up_block(\'main_select\');" title="', I18N::translate('Move up'), '"class="', $IconUarrow, '"></a>';
+		echo '<br>';
+		echo '<a onclick="move_down_block(\'main_select\');" title="', I18N::translate('Move down'), '"class="', $IconDarrow, '"></a>';
+		echo '<br><br>';
+		echo help_link('block_move_up');
 	echo '</td>';
-	echo '<td class="descriptionbox center vmiddle" colspan="3">';
-		echo '<b>', WT_I18N::translate('Available blocks'), '</b>';
+	// NOTE: Row 2 column 2: Left (Main) block list
+	echo '<td class="optionbox center">';
+		echo '<select multiple="multiple" id="main_select" name="main[]" size="10" onchange="show_description(\'main_select\');">';
+		foreach ($blocks['main'] as $block_id=>$block_name) {
+			echo '<option value="', $block_id, '">', $all_blocks[$block_name]->getTitle(), '</option>';
+		}
+		echo '</select>';
 	echo '</td>';
-	echo '<td class="descriptionbox center vmiddle" colspan="2">';
-		echo '<b>', WT_I18N::translate('Right section blocks'), '</b>';
+	// NOTE: Row 2 column 3: Left/Right buttons for left (main) block list
+	echo '<td class="optionbox center vmiddle">';
+		echo '<a onclick="move_left_right_block(\'main_select\', \'right_select\');" title="', I18N::translate('Move right'), '"class="', $IconRDarrow, '"></a>';
+		echo '<br>';
+		echo '<a onclick="move_left_right_block(\'main_select\', \'available_select\');" title="', I18N::translate('Remove'), '"class="', $IconRarrow, '"></a>';
+		echo '<br>';
+		echo '<a onclick="move_left_right_block(\'available_select\', \'main_select\');" title="', I18N::translate('Add'), '"class="', $IconLarrow, '"></a>';
+		echo '<br><br>';
+		echo help_link('block_move_right');
 	echo '</td>';
-echo '</tr>';
-echo '<tr>';
-// NOTE: Row 2 column 1: Up/Down buttons for left (main) block list
-echo '<td class="optionbox center vmiddle">';
-	echo '<a onclick="move_up_block(\'main_select\');" title="', WT_I18N::translate('Move up'), '"class="', $IconUarrow, '"></a>';
-	echo '<br>';
-	echo '<a onclick="move_down_block(\'main_select\');" title="', WT_I18N::translate('Move down'), '"class="', $IconDarrow, '"></a>';
-	echo '<br><br>';
-	echo help_link('block_move_up');
-echo '</td>';
-// NOTE: Row 2 column 2: Left (Main) block list
-echo '<td class="optionbox center">';
-	echo '<select multiple="multiple" id="main_select" name="main[]" size="10" onchange="show_description(\'main_select\');">';
-	foreach ($blocks['main'] as $block_id=>$block_name) {
-		echo '<option value="', $block_id, '">', $all_blocks[$block_name]->getTitle(), '</option>';
+	// Row 2 column 4: Middle (Available) block list
+	echo '<td class="optionbox center">';
+		echo '<select id="available_select" name="available[]" size="10" onchange="show_description(\'available_select\');">';
+		foreach ($all_blocks as $block_name=>$block) {
+			echo '<option value="', $block_name, '">', $block->getTitle(), '</option>';
+		}
+		echo '</select>';
+	echo '</td>';
+	// NOTE: Row 2 column 5: Left/Right buttons for right block list
+	echo '<td class="optionbox center vmiddle">';
+		echo '<a onclick="move_left_right_block(\'right_select\', \'main_select\');" title="', I18N::translate('Move left'), '"class="', $IconLDarrow, '"></a>';
+		echo '<br>';
+		echo '<a onclick="move_left_right_block(\'right_select\', \'available_select\');" title="', I18N::translate('Remove'), '"class="', $IconLarrow, '"></a>';
+		echo '<br>';
+		echo '<a onclick="move_left_right_block(\'available_select\', \'right_select\');" title="', I18N::translate('Add'), '"class="', $IconRarrow, '"></a>';
+		echo '<br><br>';
+		echo help_link('block_move_right');
+	echo '</td>';
+	// NOTE: Row 2 column 6: Right block list
+	echo '<td class="optionbox center">';
+		echo '<select multiple="multiple" id="right_select" name="right[]" size="10" onchange="show_description(\'right_select\');">';
+		foreach ($blocks['side'] as $block_id=>$block_name) {
+			echo '<option value="', $block_id, '">', $all_blocks[$block_name]->getTitle(), '</option>';
+		}
+		echo '</select>';
+	echo '</td>';
+	// NOTE: Row 2 column 7: Up/Down buttons for right block list
+	echo '<td class="optionbox center vmiddle">';
+		echo '<a onclick="move_up_block(\'right_select\');" title="', I18N::translate('Move up'), '"class="', $IconUarrow, '"></a>';
+		echo '<br>';
+		echo '<a onclick="move_down_block(\'right_select\');" title="', I18N::translate('Move down'), '"class="', $IconDarrow, '"></a>';
+		echo '<br><br>';
+		echo help_link('block_move_up');
+	echo '</td>';
+	echo '</tr>';
+	// NOTE: Row 3 columns 1-7: Summary description of currently selected block
+	echo '<tr><td class="descriptionbox wrap" colspan="7"><div id="instructions">';
+	echo I18N::translate('Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.');
+	echo '</div></td></tr>';
+	if ($can_reset) {
+		echo '<tr><td class="topbottombar" colspan="4">';
+		echo '<input type="checkbox" name="default" value="1">', I18N::translate('Restore the default block layout'), '</td>';
+		echo '<td class="topbottombar" colspan="3">';
+	} else {
+		echo '<td class="topbottombar" colspan="7">';
 	}
-	echo '</select>';
-echo '</td>';
-// NOTE: Row 2 column 3: Left/Right buttons for left (main) block list
-echo '<td class="optionbox center vmiddle">';
-	echo '<a onclick="move_left_right_block(\'main_select\', \'right_select\');" title="', WT_I18N::translate('Move right'), '"class="', $IconRDarrow, '"></a>';
-	echo '<br>';
-	echo '<a onclick="move_left_right_block(\'main_select\', \'available_select\');" title="', WT_I18N::translate('Remove'), '"class="', $IconRarrow, '"></a>';
-	echo '<br>';
-	echo '<a onclick="move_left_right_block(\'available_select\', \'main_select\');" title="', WT_I18N::translate('Add'), '"class="', $IconLarrow, '"></a>';
-	echo '<br><br>';
-	echo help_link('block_move_right');
-echo '</td>';
-// Row 2 column 4: Middle (Available) block list
-echo '<td class="optionbox center">';
-	echo '<select id="available_select" name="available[]" size="10" onchange="show_description(\'available_select\');">';
-	foreach ($all_blocks as $block_name=>$block) {
-		echo '<option value="', $block_name, '">', $block->getTitle(), '</option>';
-	}
-	echo '</select>';
-echo '</td>';
-// NOTE: Row 2 column 5: Left/Right buttons for right block list
-echo '<td class="optionbox center vmiddle">';
-	echo '<a onclick="move_left_right_block(\'right_select\', \'main_select\');" title="', WT_I18N::translate('Move left'), '"class="', $IconLDarrow, '"></a>';
-	echo '<br>';
-	echo '<a onclick="move_left_right_block(\'right_select\', \'available_select\');" title="', WT_I18N::translate('Remove'), '"class="', $IconLarrow, '"></a>';
-	echo '<br>';
-	echo '<a onclick="move_left_right_block(\'available_select\', \'right_select\');" title="', WT_I18N::translate('Add'), '"class="', $IconRarrow, '"></a>';
-	echo '<br><br>';
-	echo help_link('block_move_right');
-echo '</td>';
-// NOTE: Row 2 column 6: Right block list
-echo '<td class="optionbox center">';
-	echo '<select multiple="multiple" id="right_select" name="right[]" size="10" onchange="show_description(\'right_select\');">';
-	foreach ($blocks['side'] as $block_id=>$block_name) {
-		echo '<option value="', $block_id, '">', $all_blocks[$block_name]->getTitle(), '</option>';
-	}
-	echo '</select>';
-echo '</td>';
-// NOTE: Row 2 column 7: Up/Down buttons for right block list
-echo '<td class="optionbox center vmiddle">';
-	echo '<a onclick="move_up_block(\'right_select\');" title="', WT_I18N::translate('Move up'), '"class="', $IconUarrow, '"></a>';
-	echo '<br>';
-	echo '<a onclick="move_down_block(\'right_select\');" title="', WT_I18N::translate('Move down'), '"class="', $IconDarrow, '"></a>';
-	echo '<br><br>';
-	echo help_link('block_move_up');
-echo '</td>';
-echo '</tr>';
-// NOTE: Row 3 columns 1-7: Summary description of currently selected block
-echo '<tr><td class="descriptionbox wrap" colspan="7"><div id="instructions">';
-echo WT_I18N::translate('Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.');
-echo '</div></td></tr>';
-if ($can_reset) {
-	echo '<tr><td class="topbottombar" colspan="4">';
-	echo '<input type="checkbox" name="default" value="1">', WT_I18N::translate('Restore the default block layout'), '</td>';
-	echo '<td class="topbottombar" colspan="3">';
-} else {
-	echo '<td class="topbottombar" colspan="7">';
-}
-echo '<input type="submit" value="', WT_I18N::translate('save'), '">';
-echo '</td></tr></table>';
-echo '</form>';
+	echo '<input type="submit" value="', I18N::translate('save'), '">';
+	echo '</td></tr></table>';
+	echo '</form>';

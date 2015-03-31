@@ -1,36 +1,30 @@
 <?php
-// Module system for adding features to phpGedView.
-//
-// webtrees: Web based Family History software
-// Copyright (C) 2014 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2009 PGV Development Team.
-//
-// This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation; either version 2 of the License, or
-// (at your option) any later version.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+namespace Fisharebest\Webtrees;
+
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 define('WT_SCRIPT_NAME', 'module.php');
 require './includes/session.php';
 
-$all_modules = WT_Module::getActiveModules();
-$mod         = WT_Filter::get('mod');
-$mod_action  = WT_Filter::get('mod_action');
+$mod        = Filter::get('mod');
+$mod_action = Filter::get('mod_action');
+$module     = Module::getModuleByName($mod);
 
-if ($mod && array_key_exists($mod, $all_modules)) {
-	$module = $all_modules[$mod];
+if ($module) {
 	$module->modAction($mod_action);
 } else {
-	header('Location: ' . WT_SERVER_NAME . WT_SCRIPT_PATH);
+	header('Location: ' . WT_BASE_URL);
 }
