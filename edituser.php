@@ -186,7 +186,7 @@ function checkform(frm) {
 				</label>
 			</div>
 			<div class="value">
-				<input data-autocomplete-type="INDI" type="text" name="form_rootid" id="form_rootid" value="<?php $WT_TREE->getUserPreference(Auth::user(), 'rootid'); ?>">
+				<input data-autocomplete-type="INDI" type="text" name="form_rootid" id="form_rootid" value="<?php echo $WT_TREE->getUserPreference(Auth::user(), 'rootid'); ?>">
 				<?php echo print_findindi_link('form_rootid'); ?>
 				<br>
 				<?php if ($default_individual): ?>
