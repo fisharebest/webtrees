@@ -219,7 +219,7 @@ class Date {
 		$CALENDAR_FORMAT = $WT_TREE->getPreference('CALENDAR_FORMAT');
 
 		if ($date_format === null) {
-			$date_format = /* I18N: This is the format string for full dates.  See http://php.net/date for codes */ I18N::noop('%j %F %Y');
+			$date_format = I18N::dateFormat();
 		}
 
 		if ($convert_calendars) {

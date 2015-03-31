@@ -139,7 +139,7 @@ case 'DATE':
 		$date = strip_tags($date->display(false, null, false));
 	}
 	// These shortcuts work differently for different languages
-	switch (preg_replace('/[^DMY]/', '', str_replace(array('J', 'F'), array('D', 'M'), strtoupper($DATE_FORMAT)))) {
+	switch (preg_replace('/[^DMY]/', '', str_replace(array('J', 'F'), array('D', 'M'), I18N::dateFormat()))) {
 	case 'YMD':
 		$example1 = '11/12/1913'; // Note: we ignore the DMY order if it doesn't make sense.
 		$example2 = '03/02/01';

@@ -284,7 +284,7 @@ case 'create':
 			<div class="col-sm-9">
 				<input class="form-control" type="text" id="user_agent_pattern" name="user_agent_pattern" required value="<?php echo Filter::escapeHtml($user_agent_pattern); ?>" maxlength="255">
 				<p class="small text-muted">
-					<?php echo I18N::noop('The “%” character is a wildcard, and will match zero or more other characters.'); ?>
+					<?php echo I18N::translate('The “%” character is a wildcard, and will match zero or more other characters.'); ?>
 				</p>
 			</div>
 		</div>
