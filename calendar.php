@@ -350,14 +350,7 @@ if ($view === 'year') {
 }
 echo '</td><td class="topbottombar width50">';
 $n = 0;
-foreach (array(
-	'gregorian' => GregorianDate::calendarName(),
-	'julian'    => JulianDate::calendarName(),
-	'jewish'    => JewishDate::calendarName(),
-	'french'    => FrenchDate::calendarName(),
-	'hijri'     => HijriDate::calendarName(),
-	'jalali'    => JalaliDate::calendarName(),
-) as $newcal => $cal_name) {
+foreach (Date::calendarNames() as $newcal => $cal_name) {
 	$tmp = $cal_date->convertToCalendar($newcal);
 	if ($tmp->inValidRange()) {
 		if ($n++) {

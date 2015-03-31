@@ -30,19 +30,10 @@ require './includes/session.php';
 $controller = new PageController;
 $controller->restrictAccess(Auth::isManager($WT_TREE));
 
+$calendars = array('none' => I18N::translate('No calendar conversion')) + Date::calendarNames();
 
-$calendars = array(
-	'none'      => I18N::translate('No calendar conversion'),
-	'gregorian' => GregorianDate::calendarName(),
-	'julian'    => JulianDate::calendarName(),
-	'french'    => FrenchDate::calendarName(),
-	'jewish'    => JewishDate::calendarName(),
-	'hijri'     => HijriDate::calendarName(),
-	'jalali'    => JalaliDate::calendarName(),
-);
-
-$french_calendar_start = new Date('22 SEP 1792');
-$french_calendar_end = new Date('31 DEC 1805');
+$french_calendar_start    = new Date('22 SEP 1792');
+$french_calendar_end      = new Date('31 DEC 1805');
 $gregorian_calendar_start = new Date('15 OCT 1582');
 
 $hide_show = array(

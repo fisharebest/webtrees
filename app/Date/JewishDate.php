@@ -39,12 +39,6 @@ class JewishDate extends CalendarDate {
 	}
 
 	/** {@inheritdoc} */
-	public static function calendarName() {
-		return /* I18N: The Hebrew/Jewish calendar */
-			I18N::translate('Jewish');
-	}
-
-	/** {@inheritdoc} */
 	function formatDayZeros() {
 		if (WT_LOCALE == 'he') {
 			return $this->numberToHebrewNumerals($this->d);

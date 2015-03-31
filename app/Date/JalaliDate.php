@@ -35,12 +35,6 @@ class JalaliDate extends CalendarDate {
 	}
 
 	/** {@inheritdoc} */
-	public static function calendarName() {
-		return /* I18N: The Persian/Jalali calendar */
-			I18N::translate('Jalali');
-	}
-
-	/** {@inheritdoc} */
 	public static function monthNameNominativeCase($month_number, $leap_year) {
 		static $translated_month_names;
 

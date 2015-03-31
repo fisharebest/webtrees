@@ -199,6 +199,23 @@ class Date {
 		}
 	}
 
+
+	/**
+	 * A list of supported calendars and their names.
+	 *
+	 * @return string[]
+	 */
+	public static function calendarNames() {
+		return array(
+			'gregorian' => /* I18N: The gregorian calendar */ I18N::translate('Gregorian'),
+			'julian'    => /* I18N: The julian calendar */ I18N::translate('Julian'),
+			'french'    => /* I18N: The French calendar */ I18N::translate('French'),
+			'jewish'    => /* I18N: The Hebrew/Jewish calendar */ I18N::translate('Jewish'),
+			'hijri'     => /* I18N: The Arabic/Hijri calendar */ I18N::translate('Hijri'),
+			'jalali'    => /* I18N: The Persian/Jalali calendar */ I18N::translate('Jalali'),
+		);
+	}
+
 	/**
 	 * Convert a date to the preferred format and calendar(s) display.
 	 *

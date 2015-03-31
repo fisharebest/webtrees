@@ -38,12 +38,6 @@ class HijriDate extends CalendarDate {
 	}
 
 	/** {@inheritdoc} */
-	public static function calendarName() {
-		return /* I18N: The Arabic/Hijri calendar */
-			I18N::translate('Hijri');
-	}
-
-	/** {@inheritdoc} */
 	public static function monthNameNominativeCase($month_number, $leap_year) {
 		static $translated_month_names;
 

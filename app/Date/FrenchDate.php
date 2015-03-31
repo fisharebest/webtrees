@@ -38,11 +38,6 @@ class FrenchDate extends CalendarDate {
 	}
 
 	/** {@inheritdoc} */
-	public static function calendarName() {
-		return /* I18N: The French calendar */ I18N::translate('French');
-	}
-
-	/** {@inheritdoc} */
 	public static function monthNameNominativeCase($month_number, $leap_year) {
 		static $translated_month_names;
 

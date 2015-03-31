@@ -35,12 +35,6 @@ class JulianDate extends CalendarDate {
 	}
 
 	/** {@inheritdoc} */
-	public static function calendarName() {
-		return /* I18N: The julian calendar */
-			I18N::translate('Julian');
-	}
-
-	/** {@inheritdoc} */
 	protected static function nextYear($year) {
 		if ($year == -1) {
 			return 1;

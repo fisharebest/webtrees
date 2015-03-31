@@ -136,15 +136,6 @@ class CalendarDate {
 	}
 
 	/**
-	 * What is this calendar called?
-	 *
-	 * @return string
-	 */
-	public static function calendarName() {
-		return /* I18N: The French calendar */ I18N::translate('French');
-	}
-
-	/**
 	 * Is the current year a leap year?
 	 *
 	 * @return boolean

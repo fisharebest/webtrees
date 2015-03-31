@@ -30,10 +30,4 @@ class GregorianDate extends CalendarDate {
 		$this->calendar = new GregorianCalendar;
 		parent::__construct($date);
 	}
-
-	/** {@inheritdoc} */
-	public static function calendarName() {
-		return /* I18N: The gregorian calendar */
-			I18N::translate('Gregorian');
-	}
 }
