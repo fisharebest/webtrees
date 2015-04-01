@@ -1,0 +1,54 @@
+
+===============================================================================================================
+#The strings below exists in the Justblack Theme Options module but are part of the core translation of webtrees.
+#Do not translate these strings within the module. Remove them if they exists in the module language files.
+#Note: the line number may be different from the current line number in the file justblack_theme_options/module.php
+===============================================================================================================
+
+#: modules_v3/justlight_theme_options/module.php:89
+msgid "View"
+msgstr ""
+
+#: modules_v3/justlight_theme_options/module.php:95
+msgid "Media"
+msgstr ""
+
+#: modules_v3/justlight_theme_options/module.php:101
+msgid "Home page"
+msgstr ""
+
+#: modules_v3/justlight_theme_options/module.php:107
+msgid "My page"
+msgstr ""
+
+#: modules_v3/justlight_theme_options/module.php:113
+msgid "Charts"
+msgstr ""
+
+#: modules_v3/justlight_theme_options/module.php:119
+msgid "Lists"
+msgstr ""
+
+#: modules_v3/justlight_theme_options/module.php:125
+msgid "Calendar"
+msgstr ""
+
+#: modules_v3/justlight_theme_options/module.php:131
+msgid "Reports"
+msgstr ""
+
+#: modules_v3/justlight_theme_options/module.php:137
+msgid "Search"
+msgstr ""
+
+#: modules_v3/justlight_theme_options/module.php:417
+msgid "Include subfolders"
+msgstr ""
+
+#: modules_v3/justlight_theme_options/module.php:425
+msgid "Save"
+msgstr ""
+
+#: modules_v3/justlight_theme_options/module.php:426
+msgid "Reset"
+msgstr ""

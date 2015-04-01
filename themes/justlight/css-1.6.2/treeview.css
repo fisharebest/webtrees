@@ -1,0 +1,62 @@
+/*
+ * JustLight stylesheet for the Interactive Tree Module (modules_v3/tree)
+ *
+ * webtrees: Web based Family History software
+ * Copyright (C) 2014 webtrees development team.
+ * Copyright (C) 2014 JustCarmen.
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+ */
+
+#content .tv_out {
+	background-color: #fff;
+	border: none;
+	width:100%;
+}
+
+#content .charts_block #tree-title {
+	display: none;
+}
+
+#content #tabs .tv_out {
+	border: 1px solid #ccc;
+}
+
+#content .tv_in {
+	padding: 20px;
+}
+
+#content .tvM {
+	background-color: #D7EAF9 !important;
+}
+
+#content .tvF {
+    background-color: #FFF0F5 !important;
+}
+
+#content .tv_in table.tv_tree, 
+#content .tv_in table.tv_tree tbody, 
+#content .tv_in table.tv_tree tr, 
+#content .tv_in table.tv_tree td {
+	font-size: 12px;
+}
+
+#content #tv_tree div.tv_box {
+	width: 220px;
+}
+
+#content .tv_treelink.icon-button_indi:before {
+	content: "\e200";
+}

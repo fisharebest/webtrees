@@ -1,3 +1,7 @@
 *.swp
 .idea/
 vendor/.git
+*.bak
+web.config
+*.db
+*.orig

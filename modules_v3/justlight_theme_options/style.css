@@ -1,0 +1,124 @@
+/*
+ * Stylesheet for the JustLight Theme Options Module
+ *
+ * webtrees: Web based Family History software
+ * Copyright (C) 2014 webtrees development team.
+ * Copyright (C) 2014 JustCarmen.
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+ */
+
+#jl_options form {
+	width: 100%;
+}
+
+#jl_options .block_left {
+	float: left;
+	width: 50%;
+}
+
+#jl_options .block_right {
+	float: left;
+}
+
+#jl_options .field {
+	margin-bottom: 5px;
+}
+
+#jl_options label, #jl_options input {
+	display: inline-block;
+	vertical-align: baseline;
+}
+
+#jl_options label {
+	width: 350px;
+}
+
+#jl_options #titlepos label {
+	float: left;
+	margin-top: 5px;
+}
+
+#jl_options #titlepos span {
+	margin-left: 4px;
+}
+
+#jl_options select {
+	margin: 4px;
+}
+
+#jl_options input[type=file] {
+	background: none;
+	border: none;
+	margin: 0;
+}
+
+#jl_options input[type=file]:hover {
+	color: red;
+}
+
+#jl_options #buttons {
+	margin-top: 25px;
+}
+
+#jl_options #buttons input {
+	margin-left: 0;
+}
+
+#jl_options h3 {
+	margin: 0 5px 10px;
+}
+
+#jl_options #trashMenu {
+	display: none;
+}
+
+#jl_options ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	min-height: 100px;
+	min-width: 180px;
+	border: 1px solid #CBC7BD;
+	padding: 5px;
+	clear: both;
+}
+
+#jl_options li {
+	margin: 0 3px 3px 3px;
+	padding: 0.4em;
+	padding-left: 1.5em;
+	height: 18px;
+	cursor: move;
+	min-width: 150px;
+}
+
+#jl_options li span {
+	position: absolute;
+	margin-left: -1.3em;
+}
+
+#jl_options .clearfloat {
+	clear: both;
+}
+
+#jl_options .icon-edit {
+	cursor: pointer;
+	margin: 0 5px;
+}
+
+#flash-messages .ui-state-highlight {
+	padding: 5px;
+}
