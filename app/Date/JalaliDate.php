@@ -22,9 +22,6 @@ use Fisharebest\ExtCalendar\PersianCalendar;
  * Class JalaliDate - Definitions for the Jalali calendar
  */
 class JalaliDate extends CalendarDate {
-	const CALENDAR_ESCAPE = '@#DJALALI@';
-	const CAL_START_JD = 1948321;
-
 	/** {@inheritdoc} */
 	public static $MONTH_ABBREV = array('' => 0, 'FARVA' => 1, 'ORDIB' => 2, 'KHORD' => 3, 'TIR' => 4, 'MORDA' => 5, 'SHAHR' => 6, 'MEHR' => 7, 'ABAN' => 8, 'AZAR' => 9, 'DEY' => 10, 'BAHMA' => 11, 'ESFAN' => 12);
 
@@ -60,7 +57,7 @@ class JalaliDate extends CalendarDate {
 	}
 
 	/** {@inheritdoc} */
-	static function monthNameGenitiveCase($month_number, $leap_year) {
+	protected function monthNameGenitiveCase($month_number, $leap_year) {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
@@ -85,7 +82,7 @@ class JalaliDate extends CalendarDate {
 	}
 
 	/** {@inheritdoc} */
-	static function monthNameLocativeCase($month_number, $leap_year) {
+	protected function monthNameLocativeCase($month_number, $leap_year) {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
@@ -110,7 +107,7 @@ class JalaliDate extends CalendarDate {
 	}
 
 	/** {@inheritdoc} */
-	static function monthNameInstrumentalCase($month_number, $leap_year) {
+	protected function monthNameInstrumentalCase($month_number, $leap_year) {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
@@ -135,7 +132,7 @@ class JalaliDate extends CalendarDate {
 	}
 
 	/** {@inheritdoc} */
-	static function monthNameAbbreviated($month_number, $leap_year) {
+	protected function monthNameAbbreviated($month_number, $leap_year) {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {

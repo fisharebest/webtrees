@@ -5,7 +5,7 @@ namespace Fisharebest\ExtCalendar;
  * class GregorianCalendar - calculations for the (proleptic) Gregorian calendar.
  *
  * @author        Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2014 Greg Roach
+ * @copyright (c) 2014-2015 Greg Roach
  * @license       This program is free software: you can redistribute it and/or modify
  *                it under the terms of the GNU General Public License as published by
  *                the Free Software Foundation, either version 3 of the License, or
@@ -20,25 +20,27 @@ namespace Fisharebest\ExtCalendar;
  *                along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 class GregorianCalendar extends JulianCalendar implements CalendarInterface {
-	/** Same as PHP’s ext/calendar extension */
-	const PHP_CALENDAR_NAME = 'Gregorian';
+	/** {@inheritdoc} */
+	public function daysInWeek() {
+		return 7;
+	}
 
-	/** Same as PHP’s ext/calendar extension */
-	const PHP_CALENDAR_NUMBER = 0;
+	/** {@inheritdoc} */
+	public function gedcomCalendarEscape() {
+		return '@#DGREGORIAN@';
+	}
 
-	/** Same as PHP’s ext/calendar extension */
-	const PHP_CALENDAR_SYMBOL = 'CAL_GREGORIAN';
+	/** {@inheritdoc} */
+	public function jdEnd() {
+		return PHP_INT_MAX;
+	}
 
-	/** See the GEDCOM specification */
-	const GEDCOM_CALENDAR_ESCAPE = '@#DGREGORIAN@';
+	/** {@inheritdoc} */
+	public function jdStart() {
+		return 1;
+	}
 
-	/**
-	 * Determine whether a year is a leap year.
-	 *
-	 * @param integer $year
-	 *
-	 * @return boolean
-	 */
+	/** {@inheritdoc} */
 	public function isLeapYear($year) {
 		if ($year < 0) {
 			$year++;
@@ -56,20 +58,25 @@ class GregorianCalendar extends JulianCalendar implements CalendarInterface {
 	 */
 	public function jdToYmd($julian_day) {
 		$a = $julian_day + 32044;
-		$b = (int)((4 * $a + 3) / 146097);
-		$c = $a - (int)($b * 146097 / 4);
-		$d = (int)((4 * $c + 3) / 1461);
-		$e = $c - (int)((1461 * $d) / 4);
-		$m = (int)((5 * $e + 2) / 153);
+		$b = (int) ((4 * $a + 3) / 146097);
+		$c = $a - (int) ($b * 146097 / 4);
+		$d = (int) ((4 * $c + 3) / 1461);
+		$e = $c - (int) ((1461 * $d) / 4);
+		$m = (int) ((5 * $e + 2) / 153);
 
-		$day   = $e - (int)((153 * $m + 2) / 5) + 1;
-		$month = $m + 3 - 12 * (int)($m / 10);
-		$year  = $b * 100 + $d - 4800 + (int)($m / 10);
+		$day   = $e - (int) ((153 * $m + 2) / 5) + 1;
+		$month = $m + 3 - 12 * (int) ($m / 10);
+		$year  = $b * 100 + $d - 4800 + (int) ($m / 10);
 		if ($year < 1) { // 0 is 1 BCE, -1 is 2 BCE, etc.
 			$year--;
 		}
 
 		return array($year, $month, $day);
+	}
+
+	/** {@inheritdoc} */
+	public function monthsInYear() {
+		return 12;
 	}
 
 	/**
@@ -86,11 +93,11 @@ class GregorianCalendar extends JulianCalendar implements CalendarInterface {
 			// 1 B.C.E. => 0, 2 B.C.E> => 1, etc.
 			++$year;
 		}
-		$a     = (int)((14 - $month) / 12);
+		$a     = (int) ((14 - $month) / 12);
 		$year  = $year + 4800 - $a;
 		$month = $month + 12 * $a - 3;
 
-		return $day + (int)((153 * $month + 2) / 5) + 365 * $year + (int)($year / 4) - (int)($year / 100) + (int)($year / 400) - 32045;
+		return $day + (int) ((153 * $month + 2) / 5) + 365 * $year + (int) ($year / 4) - (int) ($year / 100) + (int) ($year / 400) - 32045;
 	}
 
 	/**
@@ -107,16 +114,16 @@ class GregorianCalendar extends JulianCalendar implements CalendarInterface {
 		$golden = $year % 19 + 1;
 
 		// The “dominical” number (finding a Sunday)
-		$dom = ($year + (int)($year / 4) - (int)($year / 100) + (int)($year / 400)) % 7;
+		$dom = ($year + (int) ($year / 4) - (int) ($year / 100) + (int) ($year / 400)) % 7;
 		if ($dom < 0) {
 			$dom += 7;
 		}
 
 		// The solar correction
-		$solar = (int)(($year - 1600) / 100) - (int)(($year - 1600) / 400);
+		$solar = (int) (($year - 1600) / 100) - (int) (($year - 1600) / 400);
 
 		// The lunar correction
-		$lunar = (int)((int)(($year - 1400) / 100) * 8) / 25;
+		$lunar = (int) ((int) (($year - 1400) / 100) * 8) / 25;
 
 		// The uncorrected “Paschal full moon” date
 		$pfm = (3 - 11 * $golden + $solar - $lunar) % 30;

@@ -22,12 +22,6 @@ use Fisharebest\ExtCalendar\FrenchCalendar;
  * Class FrenchDate - Definitions for the French Republican calendar
  */
 class FrenchDate extends CalendarDate {
-	const CALENDAR_ESCAPE = '@#DFRENCH R@';
-	const MONTHS_IN_YEAR = 13;
-	const CAL_START_JD = 2375840; // 22 SEP 1792 = 01 VEND 0001
-	const CAL_END_JD = 2380687; // 31 DEC 1805 = 10 NIVO 0014
-	const DAYS_IN_WEEK = 10; // A metric week of 10 unimaginatively named days.
-
 	/** {@inheritdoc} */
 	public static $MONTH_ABBREV = array('' => 0, 'VEND' => 1, 'BRUM' => 2, 'FRIM' => 3, 'NIVO' => 4, 'PLUV' => 5, 'VENT' => 6, 'GERM' => 7, 'FLOR' => 8, 'PRAI' => 9, 'MESS' => 10, 'THER' => 11, 'FRUC' => 12, 'COMP' => 13);
 
@@ -64,7 +58,7 @@ class FrenchDate extends CalendarDate {
 	}
 
 	/** {@inheritdoc} */
-	static function monthNameGenitiveCase($month_number, $leap_year) {
+	protected function monthNameGenitiveCase($month_number, $leap_year) {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
@@ -90,7 +84,7 @@ class FrenchDate extends CalendarDate {
 	}
 
 	/** {@inheritdoc} */
-	static function monthNameLocativeCase($month_number, $leap_year) {
+	protected function monthNameLocativeCase($month_number, $leap_year) {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
@@ -116,7 +110,7 @@ class FrenchDate extends CalendarDate {
 	}
 
 	/** {@inheritdoc} */
-	static function monthNameInstrumentalCase($month_number, $leap_year) {
+	protected function monthNameInstrumentalCase($month_number, $leap_year) {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
@@ -142,12 +136,12 @@ class FrenchDate extends CalendarDate {
 	}
 
 	/** {@inheritdoc} */
-	protected static function monthNameAbbreviated($month_number, $leap_year) {
+	protected function monthNameAbbreviated($month_number, $leap_year) {
 		return self::monthNameNominativeCase($month_number, $leap_year);
 	}
 
 	/** {@inheritdoc} */
-	public static function dayNames($day_number) {
+	public function dayNames($day_number) {
 		static $translated_day_names;
 
 		if ($translated_day_names === null) {
@@ -169,8 +163,8 @@ class FrenchDate extends CalendarDate {
 	}
 
 	/** {@inheritdoc} */
-	protected static function dayNamesAbbreviated($day_number) {
-		return self::dayNames($day_number);
+	protected function dayNamesAbbreviated($day_number) {
+		return $this->dayNames($day_number);
 	}
 
 	/** {@inheritdoc} */

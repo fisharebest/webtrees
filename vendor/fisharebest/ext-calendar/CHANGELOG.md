@@ -1,6 +1,13 @@
 CHANGE LOG
 ==========
 
+## 2.1.0 (2015-04-02)
+ - Add JewishCalendar::numberToHebrewNumerals() to format Jewish dates
+
+## 2.0.0 (2015-03-31)
+ - Eliminate AbstractCalendar, just use CalendarInterface.
+ - PHP bug 67960 now fixed, so we need to emulate it.
+
 ## 1.3.0 (2014-10-31)
  - Only emulate bugs in the shim functions, not when using the calendar classes.
 

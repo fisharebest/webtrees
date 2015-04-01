@@ -4,7 +4,7 @@
  * own shim functions.
  *
  * @author        Greg Roach <fisharebest@gmail.com>
- * @copyright (c) 2014 Greg Roach
+ * @copyright (c) 2014-2015 Greg Roach
  * @license       This program is free software: you can redistribute it and/or modify
  *                it under the terms of the GNU General Public License as published by
  *                the Free Software Foundation, either version 3 of the License, or
@@ -91,7 +91,7 @@ function cal_to_jd($calendar_id, $month, $day, $year) {
  * @return integer|boolean
  */
 function easter_date($year = null) {
-	return Shim::easterDate($year ? $year : (int)date('Y'));
+	return Shim::easterDate($year ? $year : (int) date('Y'));
 }
 
 /**
@@ -101,7 +101,7 @@ function easter_date($year = null) {
  * @return integer
  */
 function easter_days($year = null, $method = CAL_EASTER_DEFAULT) {
-	return Shim::easterDays($year ? $year : (int)date('Y'), $method);
+	return Shim::easterDays($year ? $year : (int) date('Y'), $method);
 }
 
 /**

@@ -8,7 +8,6 @@ $baseDir = dirname($vendorDir);
 return array(
     'Datamatrix' => $vendorDir . '/tecnick.com/tcpdf/include/barcodes/datamatrix.php',
     'Fisharebest\\Algorithm\\Dijkstra' => $vendorDir . '/fisharebest/algorithm/src/Dijkstra.php',
-    'Fisharebest\\ExtCalendar\\AbstractCalendar' => $vendorDir . '/fisharebest/ext-calendar/src/AbstractCalendar.php',
     'Fisharebest\\ExtCalendar\\ArabicCalendar' => $vendorDir . '/fisharebest/ext-calendar/src/ArabicCalendar.php',
     'Fisharebest\\ExtCalendar\\CalendarInterface' => $vendorDir . '/fisharebest/ext-calendar/src/CalendarInterface.php',
     'Fisharebest\\ExtCalendar\\FrenchCalendar' => $vendorDir . '/fisharebest/ext-calendar/src/FrenchCalendar.php',
