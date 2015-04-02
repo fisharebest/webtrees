@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-29 11:32+0100\n"
+"PO-Revision-Date: 2015-04-02 07:33+0100\n"
 "Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
@@ -5919,7 +5919,7 @@ msgstr ""
 "SSS 'lar; ziyaretçilerin uyması gereken site kurallarını, politika ve "
 "prosedürlerini açıklamanız için sorular ve cevapları listesidir.  Sorular "
 "genellikle gizlilik, telif hakkı, kullanıcı hesapları, uygunsuz içerik, "
-"kaynak alıntılar için şartlar vb. ile ilgilidir"
+"kaynak alıntılar için şartlar vb. ile ilgilidir."
 
 #. I18N: gedcom tag FACT
 #: app/Gedcom/GedcomTag.php:437
@@ -6521,8 +6521,8 @@ msgstr "LDS yönetmelikleri için, bu alan işlemin yapıldığı tapınağı ka
 #, php-format
 msgid "For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s."
 msgstr ""
-"Örneğin, eğer GEDCOM dosyası %1$ içerir ve webtrees media klasöründe %2$ "
-"bulmayı bekler ise, %3$ 'yı kaldırmak gerekir."
+"Örneğin, eğer GEDCOM dosyası %1$s içerir ve webtrees media klasöründe %2$s "
+"bulmayı bekler ise, %3$s 'yı kaldırmak gerekir."
 
 #: admin_users.php:590
 msgid "For example, if you specify a path length of 2, the individual will be able to see their grandson (child, child), their aunt (parent, sibling), their step-daughter (spouse, child), but not their first cousin (parent, sibling, child)."
@@ -13149,7 +13149,7 @@ msgstr "Haritanın boyutu (piksel)"
 #. I18N: Skip over the headers and menus, to the main content of the page
 #: app/Theme/BaseTheme.php:53
 msgid "Skip to content"
-msgstr "Sayfa içeriğine atla."
+msgstr "Sayfa içeriğine atla"
 
 #: app/Gedcom/GedcomCodeRela.php:240
 msgid "Slave"
@@ -13616,7 +13616,7 @@ msgstr "Sydney, Avustralya"
 
 #: admin_trees_manage.php:705
 msgid "Synchronize family trees with GEDCOM files"
-msgstr "Aile ağaçlarını GEDCOM dosyaları ile senkronize et."
+msgstr "Aile ağaçlarını GEDCOM dosyaları ile senkronize et"
 
 #: app/Stats.php:6288
 msgid "Syrian Arab Republic"
@@ -13788,7 +13788,7 @@ msgstr ""
 "\"PGV to webtrees\" sihirbazı, yöneticilerin PGV kurulumlarını yeni webtrees "
 "a değiştirmek için yardımcı otomatik proses dir. Sihirbaz tüm PGV GEDCOM ve "
 "diğer veritabanı bilgilerini  doğrudan webtrees veritabanına aktaracaktır. "
-"Aşağıdaki şartlar gereklidir."
+"Aşağıdaki şartlar gereklidir:"
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
@@ -14829,7 +14829,7 @@ msgstr ""
 msgid "This is the width (in pixels) that the program will use when automatically generating thumbnails.  The default setting is 100."
 msgstr ""
 "Otomatik resim önizleme dosyaları oluşturulurken kullanılacak resim "
-"genişliği (pixel). Varsayılan değer:100"
+"genişliği (pixel). Varsayılan değer 100 dür."
 
 #: admin_users.php:313 edituser.php:167 login.php:430 setup.php:431
 msgid "This is your real name, as you would like it displayed on screen."
@@ -16894,7 +16894,7 @@ msgstr ""
 #, php-format
 msgid "Your web server is using PHP version %s, which is no longer receiving security updates.  You should upgrade to a later version as soon as possible."
 msgstr ""
-"Web sunucusu artık güvenlik güncelleştirmelerini almayan bir PHP sürüm% s, "
+"Web sunucusu artık güvenlik güncelleştirmelerini almayan bir PHP sürüm %s, "
 "kullanıyor. En kısa sürede bir sonraki sürüme yükseltmeniz önerilir."
 
 #: app/Stats.php:6323
@@ -20831,17 +20831,17 @@ msgstr "“%s” favorilerinize eklendi."
 
 #: app/Note.php:113 includes/functions/functions_print.php:98
 msgid "…"
-msgstr "..."
+msgstr "…"
 
 #: includes/config_data.php:26
 msgctxt "Unknown given name"
 msgid "…"
-msgstr "İsimsiz"
+msgstr "…"
 
 #: includes/config_data.php:23
 msgctxt "Unknown surname"
 msgid "…"
-msgstr "Soyisimsiz"
+msgstr "…"
 
 #~ msgid "%s not implemented"
 #~ msgstr "%s uygulanmadı"
