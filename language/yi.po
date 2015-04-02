@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-27 16:14+0100\n"
+"PO-Revision-Date: 2015-04-02 18:40+0100\n"
 "Last-Translator: Familia Boim <familiaboim@gmail.com>\n"
 "Language-Team: Yiddish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/yi/>\n"
@@ -19660,7 +19660,7 @@ msgstr "דערהײַנטיק"
 #. I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
 #: app/I18N.php:230
 msgid "utf8_unicode_ci"
-msgstr ""
+msgstr "utf8_unicode_ci"
 
 #: admin_trees_config.php:403 admin_trees_config.php:427
 #: admin_trees_config.php:467 admin_trees_config.php:507
@@ -19670,7 +19670,7 @@ msgstr ""
 
 #: app/Theme/WebtreesTheme.php:96
 msgid "webtrees"
-msgstr ""
+msgstr "webtrees"
 
 #. I18N: %s is a database name/identifier
 #: admin_pgv_to_wt.php:113
@@ -19725,7 +19725,7 @@ msgstr "פרוי"
 #. I18N: Name of a theme.
 #: app/Theme/XeneaTheme.php:108
 msgid "xenea"
-msgstr ""
+msgstr "זעניא"
 
 #: timeline.php:124
 msgid "years"
