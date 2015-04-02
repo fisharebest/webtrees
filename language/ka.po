@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-16 09:03+0100\n"
+"PO-Revision-Date: 2015-04-02 10:49+0100\n"
 "Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
 "Language-Team: Georgian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/ka/>\n"
@@ -2755,7 +2755,7 @@ msgstr "აზიმუტი"
 
 #: message.php:135
 msgid "Body"
-msgstr "ტექსტი:"
+msgstr "ტექსტი"
 
 #: app/Gedcom/GedcomCodeTemp.php:102
 msgid "Bogota, Colombia"
@@ -3185,7 +3185,7 @@ msgstr "კატალონია"
 
 #: statistics.php:604
 msgid "Categories"
-msgstr "კატეგორიები:"
+msgstr "კატეგორიები"
 
 #. I18N: gedcom tag CAUS
 #: app/Gedcom/GedcomTag.php:243
@@ -4393,7 +4393,7 @@ msgstr "რეგისტრაციის თარიღი"
 
 #: app/Module/UserMessagesModule.php:79
 msgid "Date sent"
-msgstr "გაგზავნის თარიღი:"
+msgstr "გაგზავნის თარიღი"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:747
@@ -5849,7 +5849,7 @@ msgstr "Семья будучи ребёнком"
 #. I18N: gedcom tag FAMS
 #: app/Gedcom/GedcomTag.php:453
 msgid "Family as a spouse"
-msgstr "ოჯახი მეუღლესთან ერთად:"
+msgstr "ოჯახი მეუღლესთან ერთად"
 
 #: app/Controller/FamilyBookController.php:58 app/Theme/BaseTheme.php:1073
 msgid "Family book"
@@ -5961,7 +5961,7 @@ msgstr "Семья с запечатанными родителями (морм�
 
 #: app/Theme/BaseTheme.php:899
 msgid "Family with spouse"
-msgstr "ოჯახი მეუღლესთან ერთად:"
+msgstr "ოჯახი მეუღლესთან ერთად"
 
 #: app/Module/FamilyTreeStatisticsModule.php:167
 #: app/Module/FamilyTreeStatisticsModule.php:379
@@ -6618,7 +6618,7 @@ msgstr "გიბრალტარი"
 
 #: search.php:233
 msgid "Given name"
-msgstr "სახელი, მამის სახელი:"
+msgstr "სახელი, მამის სახელი"
 
 #. I18N: gedcom tag GIVN
 #: app/Gedcom/GedcomTag.php:501
@@ -8001,7 +8001,7 @@ msgstr ""
 
 #: app/Module/FamilyTreeNewsModule.php:163
 msgid "Limit"
-msgstr "ზღვარი:"
+msgstr "ზღვარი"
 
 #. I18N: Limit display by [age/number]
 #: app/Module/FamilyTreeNewsModule.php:154
@@ -8681,7 +8681,7 @@ msgstr "Префикс ID медиаобъекта"
 #. I18N: Label for search field
 #: find.php:191
 msgid "Media contains"
-msgstr "მედია შეიცავს:"
+msgstr "მედია შეიცავს"
 
 #: admin_media.php:685 admin_media_upload.php:198
 msgid "Media file"
@@ -9268,7 +9268,7 @@ msgstr "სახელი"
 #. I18N: Label for search field
 #: find.php:155 find.php:172
 msgid "Name contains"
-msgstr "სახელი შეიცავს:"
+msgstr "სახელი შეიცავს"
 
 #: app/Gedcom/GedcomTag.php:607
 msgid "Name in Hebrew"
@@ -9835,7 +9835,7 @@ msgstr "უშვილო ოჯახების რაოდენობა.
 #: app/Module/ClippingsCartModule.php:524
 #: app/Module/ClippingsCartModule.php:527
 msgid "Number of generations"
-msgstr "თაობების რაოდენობა:"
+msgstr "თაობების რაოდენობა"
 
 #: app/Module/FamilyTreeNewsModule.php:159
 msgid "Number of items"
@@ -10250,7 +10250,7 @@ msgstr "მშობლები, ძმები, დები"
 
 #: includes/functions/functions_print.php:322
 msgid "Parent’s age"
-msgstr "მშობლის ასაკი:"
+msgstr "მშობლის ასაკი"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:381 admin_users.php:334 edituser.php:201
@@ -10421,7 +10421,7 @@ msgstr "ადგილმდებარეობის გადამოწ�
 #. I18N: Label for search field
 #: find.php:211
 msgid "Place contains"
-msgstr "ადგილი შეიცავს:"
+msgstr "ადგილი შეიცავს"
 
 #: app/Module/TopPageViewsModule.php:136
 msgid "Place counts before or after name?"
@@ -11294,7 +11294,7 @@ msgstr "Префикс ID архива"
 #. I18N: Label for search field
 #: find.php:230
 msgid "Repository contains"
-msgstr "არქივი შეიცავს:"
+msgstr "არქივი შეიცავს"
 
 #: edit_interface.php:1563 includes/functions/functions_print_lists.php:1315
 msgid "Repository name"
@@ -11690,7 +11690,7 @@ msgstr ""
 
 #: statistics.php:499
 msgid "Select chart type"
-msgstr "ამოირჩიეთ დიაგრამა:"
+msgstr "ამოირჩიეთ დიაგრამა"
 
 #: edit_interface.php:1252
 msgid "Select events"
@@ -11991,7 +11991,7 @@ msgstr "ზოგადი შენიშვნები"
 #. I18N: Label for search field
 #: find.php:250
 msgid "Shared note contains"
-msgstr "ზოგადი შენიშვნები შეიცავს:"
+msgstr "ზოგადი შენიშვნები შეიცავს"
 
 #: app/Theme/BaseTheme.php:1415
 #: includes/functions/functions_print_lists.php:1068 notelist.php:30
@@ -12750,7 +12750,7 @@ msgstr ""
 #. I18N: Label for search field
 #: find.php:269
 msgid "Source contains"
-msgstr "წყაროები შეიცავენ:"
+msgstr "წყაროები შეიცავენ"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:2265 modules_v3/fact_sources/report.xml:6
@@ -12954,7 +12954,7 @@ msgstr "ქვედანაყოფი"
 
 #: app/Module/UserMessagesModule.php:78 message.php:127
 msgid "Subject"
-msgstr "თემა:"
+msgstr "თემა"
 
 #. I18N: gedcom tag SUBN
 #: app/Gedcom/GedcomTag.php:811
@@ -15156,7 +15156,7 @@ msgstr "Веракрус, Мексика"
 
 #: login.php:348 login.php:542
 msgid "Verification code"
-msgstr "საკონტროლო კოდი:"
+msgstr "საკონტროლო კოდი"
 
 #: admin_users.php:853
 msgid "Verified"
@@ -15732,11 +15732,11 @@ msgstr ""
 
 #: message.php:256
 msgid "You sent the following message to a webtrees administrator:"
-msgstr "ახალი შეტყობინება "
+msgstr "ახალი შეტყობინება"
 
 #: message.php:253
 msgid "You sent the following message to a webtrees user:"
-msgstr "ახალი შეტყობინება "
+msgstr "ახალი შეტყობინება:"
 
 #: admin_site_upgrade.php:97
 msgid "You should accept or reject all pending changes before upgrading."
