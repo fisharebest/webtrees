@@ -376,7 +376,7 @@ class I18N {
 					}
 				} catch (\Exception $ex) {
 				}
-				self::$locale = Locale::httpAcceptLanguage($_SESSION, self::installedLocales(), $default_locale);
+				self::$locale = Locale::httpAcceptLanguage($_SERVER, self::installedLocales(), $default_locale);
 			}
 		}
 
