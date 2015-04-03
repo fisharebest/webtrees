@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-03-31 21:54+0100\n"
-"Last-Translator: Ramūnas Dronga <ieskok@ramuno.lt>\n"
+"PO-Revision-Date: 2015-04-03 01:01+0100\n"
+"Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
 "Language-Team: Lithuanian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/lt/>\n"
 "Language: lt\n"
@@ -636,14 +636,14 @@ msgstr "9-tą"
 #: admin_trees_config.php:776
 msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates.  The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
 msgstr ""
-"<b>GUID</b> šiame kontekste reiškia \"Globalų unikalų ID\".<br><br>GUID "
-"padeda atpažinti kiekvieną individą, kad centrinės organizacijos, tokios "
-"kaip \"Family History Center\" ar kitos programos, galėtų nustatyti tą patį "
-"individą nepaisant GEDCOM bylų šaltinio. \"Family History Center\" siekia "
-"būti centriniu geneologinės informacijos šaltiniu, kuris pasiekiamas per web "
-"servisus. Tokiu būdu bet kuri programa gali pasiekti ir atsinaujinti "
-"geneologinę informaciją.<br><br>Jei jūs neketinate dalintis GEDCOM bylomis, "
-"galite išjungti GUID sukurimą."
+"<b>GUID</b> šiame kontekste reiškia „Globaliai unikalus ID“.<br><br>GUID "
+"padeda atpažinti kiekvieną asmenį, kai centrinės organizacijos, tokios kaip „"
+"Family History Center“ ar kitos programos, galėtų nustatyti tą patį asmenį "
+"nepaisant GEDCOM bylų šaltinio. „Family History Center“ siekia būti "
+"centriniu geneologinės informacijos šaltiniu, kuris pasiekiamas per "
+"interneto paslaugas. Tokiu būdu bet kuri programa gali pasiekti ir "
+"atsinaujinti geneologinę informaciją.<br><br>Jei jūs neketinate dalintis "
+"GEDCOM bylomis, galite išjungti GUID sukurimą."
 
 #: admin_trees_manage.php:686
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items.  You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
@@ -776,11 +776,11 @@ msgstr "Sąrašas narių ir lankytojų, kurie dabar lankosi tinklapyje."
 #: help_text.php:278
 msgid "A media object is a record in the family tree which contains information about a media file.  This information may include a title, a copyright notice, a transcript, privacy restrictions, etc.  The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
 msgstr ""
-"Media objektas yra įrašas šeimos medyje, kuris savyje turi informaciją apie "
-"media bylą. Ši informacija gali turėti pavadinimą, autorines teises, "
+"Medijos objektas yra įrašas šeimos medyje, kuris savyje turi informaciją "
+"apie medijos bylą. Ši informacija gali turėti pavadinimą, autorines teises, "
 "transkriptą, privatumo nuostatas ir t.t. Medijos byla, tokia kaip nuotrauka "
-"ar video įrašas, gali būti išsaugota lokaliai (tam pačiame serveryje) arba "
-"nuotoliniu būfu (kitame serveryje)."
+"ar vaizdo įrašas, gali būti išsaugota lokaliai (tam pačiame serveryje) arba "
+"nuotoliniu būdu (kitame serveryje)."
 
 #. I18N: %s is a username
 #: login.php:265
@@ -1455,11 +1455,11 @@ msgstr "Adresas"
 
 #: app/Gedcom/GedcomTag.php:125
 msgid "Address line 1"
-msgstr "Gatvė"
+msgstr "Pirma adreso eilutė"
 
 #: app/Gedcom/GedcomTag.php:127
 msgid "Address line 2"
-msgstr ""
+msgstr "Antra adreso eilutė"
 
 #: app/Gedcom/GedcomCodeTemp.php:80
 msgid "Adelaide, Australia"
@@ -2301,16 +2301,16 @@ msgstr "Vidutinis amžius"
 #: app/Module/FamilyTreeStatisticsModule.php:365
 #: app/Module/HtmlBlockModule.php:218 app/Stats.php:2355 statistics.php:147
 msgid "Average age at death"
-msgstr "Vidutinė gyvenimo trukmė"
+msgstr "Gyvenimo trukmės vidurklis"
 
 #: app/Stats.php:3562 app/Stats.php:3563 app/Stats.php:3567 app/Stats.php:3571
 #: app/Stats.php:3573
 msgid "Average age in century of marriage"
-msgstr "Vidutinis santuokos amžius"
+msgstr "Santuokos amžiaus vidurklis nurodytame amžiuje"
 
 #: app/Stats.php:2343 app/Stats.php:2355
 msgid "Average age related to death century"
-msgstr "Vidutinis mirties amžius"
+msgstr "Gyvenymo trukmės vidurklis nurodytame amžiuje"
 
 #: app/Module/FamilyTreeStatisticsModule.php:174
 #: app/Module/FamilyTreeStatisticsModule.php:393
@@ -5278,9 +5278,9 @@ msgstr ""
 #: help_text.php:449
 msgid "Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account."
 msgstr ""
-"Kiekviena paskyra turi opciją \"automatiškai priimti pakeitimus\". Kai tai "
-"įjungta, visi pakeitimai yra iš karto išsaugomi. Dauguma administratorių "
-"įjungia šią opciją savo paskyroms."
+"Kiekviena paskyra turi pasirinkimą „automatiškai priimti pakeitimus“. Kai "
+"tai įjungta, visi pakeitimai yra iš karto išsaugomi. Dauguma administratorių "
+"įjungia šį pasirinkimą savo paskyroms."
 
 #: statistics.php:127
 msgid "Earliest birth"
@@ -15063,7 +15063,7 @@ msgstr "Urugvajus"
 
 #: app/Module/GoogleMapsModule.php:464
 msgid "Use Google Maps™ for the place hierarchy"
-msgstr "Naudokite \"Google Maps™\" vietovių hierarchijoms"
+msgstr "Naudokite „Google Maps™“ vietovių hierarchijoms"
 
 #: admin_site_config.php:114
 msgid "Use PHP mail to send messages"
@@ -15115,7 +15115,7 @@ msgstr "Naudoti slaptažodį"
 msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question."
 msgstr ""
 "Naudoti silueto paveikslus kai nėra pagrindinės nuotraukos. Naudojami "
-"paveikslai atitinka nurodytą individo lytį."
+"paveikslai atitinka nurodytą asmenio lytį."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1123
@@ -15534,8 +15534,8 @@ msgstr ""
 #: admin_trees_config.php:1699
 msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
 msgstr ""
-"Kai ši opcija įjungta, sistema apskaičiuoja amžių skirtumus tarp giminaičių, "
-"vaikių, sutuoktinių ir kt."
+"Kai šis pasirinkimas įjungtas, sistema apskaičiuoja amžių skirtumus tarp "
+"giminaičių, vaikių, sutuoktinių ir kt."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2244
@@ -15547,8 +15547,9 @@ msgstr ""
 #: help_text.php:440
 msgid "When you add, edit, or delete information, the changes are not saved immediately.  Instead, they are kept in a “pending” area.  These pending changes need to be reviewed by a moderator before they are accepted."
 msgstr ""
-"Kai Jūs prideda, keičiat ar ištrinat informaciją, pakeitimai nėra išsaugomi "
-"iš karto. Šie pakeitimus turi peržiūrėti ir patvirtinti moderatoriai."
+"Kai jūs pridedate, redaguojate ar ištrinate informaciją, pakeitimai nėra "
+"išsaugomi iš karto. Šiuos pakeitimus turi peržiūrėti ir patvirtinti "
+"moderatoriai."
 
 #: message.php:140
 msgid "When you send this message you will receive a copy sent via email to the address you provided."
@@ -15564,7 +15565,7 @@ msgstr "Kur yra jūsų PhpGedView instaliacija?"
 
 #: app/Module/SiteMapModule.php:293
 msgid "Which family trees should be included in the sitemaps?"
-msgstr "Kurios šeimos medžiai turi būti įtraukti į \"Sitemaps\"?"
+msgstr "Kurie šeimos medžiai turi būti įtraukti į „Sitemaps“?"
 
 #: app/Module/ClippingsCartModule.php:97
 #: app/Module/ClippingsCartModule.php:514
