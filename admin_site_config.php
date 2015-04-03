@@ -243,7 +243,7 @@ $controller->pageHeader();
 			<?php echo /* I18N: A site configuration setting */ I18N::translate('Allow users to select their own theme'); ?>
 		</legend>
 		<div class="col-sm-9">
-			<?php echo edit_field_yes_no('ALLOW_USER_THEMES', Site::getPreference('ALLOW_USER_THEMES')); ?>
+			<?php echo edit_field_yes_no('ALLOW_USER_THEMES', Site::getPreference('ALLOW_USER_THEMES'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Allow users to select their own theme” site configuration setting */ I18N::translate('Gives users the option of selecting their own theme.'); ?>
 			</p>
@@ -256,7 +256,7 @@ $controller->pageHeader();
 			<?php echo /* I18N: A site configuration setting */ I18N::translate('Show list of family trees'); ?>
 		</legend>
 		<div class="col-sm-9">
-			<?php echo edit_field_yes_no('ALLOW_CHANGE_GEDCOM', Site::getPreference('ALLOW_CHANGE_GEDCOM')); ?>
+			<?php echo edit_field_yes_no('ALLOW_CHANGE_GEDCOM', Site::getPreference('ALLOW_CHANGE_GEDCOM'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
 				<?php /* I18N: Help text for the “Show list of family trees” site configuration setting */ I18N::translate('For websites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc.'); ?>
 			</p>
@@ -354,7 +354,7 @@ $controller->pageHeader();
 			<?php echo /* I18N: A site configuration setting */ I18N::translate('Use password'); ?>
 		</legend>
 		<div class="col-sm-9">
-			<?php echo edit_field_yes_no('SMTP_AUTH', Site::getPreference('SMTP_AUTH')); ?>
+			<?php echo edit_field_yes_no('SMTP_AUTH', Site::getPreference('SMTP_AUTH'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Use password” site configuration setting */ I18N::translate('Most SMTP servers require a password.'); ?>
 			</p>
@@ -468,7 +468,7 @@ $controller->pageHeader();
 			<?php echo /* I18N: A site configuration setting */ I18N::translate('Allow visitors to request a new user account'); ?>
 		</legend>
 		<div class="col-sm-9">
-			<?php echo edit_field_yes_no('USE_REGISTRATION_MODULE', Site::getPreference('USE_REGISTRATION_MODULE')); ?>
+			<?php echo edit_field_yes_no('USE_REGISTRATION_MODULE', Site::getPreference('USE_REGISTRATION_MODULE'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
 				<?php echo I18N::translate('The new user will be asked to confirm their email address before the account is created.'); ?>
 				<?php echo I18N::translate('Details of the new user will be sent to the genealogy contact for the corresponding family tree.'); ?>
@@ -483,7 +483,7 @@ $controller->pageHeader();
 			<?php echo /* I18N: A site configuration setting */ I18N::translate('Show acceptable use agreement on “Request new user account” page'); ?>
 		</legend>
 		<div class="col-sm-9">
-			<?php echo edit_field_yes_no('SHOW_REGISTER_CAUTION', Site::getPreference('SHOW_REGISTER_CAUTION')); ?>
+			<?php echo edit_field_yes_no('SHOW_REGISTER_CAUTION', Site::getPreference('SHOW_REGISTER_CAUTION'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
 			</p>
 		</div>

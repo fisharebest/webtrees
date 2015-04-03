@@ -92,9 +92,9 @@ function radio_buttons($name, $values, $selected, $extra = '') {
  *
  * @return string
  */
-function edit_field_yes_no($name, $selected = false) {
+function edit_field_yes_no($name, $selected = false, $extra='') {
 	return radio_buttons(
-		$name, array(I18N::translate('no'), I18N::translate('yes')), $selected
+		$name, array(I18N::translate('no'), I18N::translate('yes')), $selected, $extra
 	);
 }
 
