@@ -111,7 +111,6 @@ if (!isset($_POST['lang'])) {
 	echo
 		'<p>', I18N::translate('Change language'), ' ',
 		select_edit_control('change_lang', $installed_languages, null, Filter::get('lang'), 'onchange="window.location=\'' . WT_SCRIPT_NAME . '?lang=\'+this.value;">'),
-		//edit_field_language('change_lang', WT_LOCALE, 'onchange="window.location=\'' . WT_SCRIPT_NAME . '?lang=\'+this.value;">'),
 		'</p>',
 		'<h2>', I18N::translate('Checking server configuration'), '</h2>';
 	$warnings = false;
