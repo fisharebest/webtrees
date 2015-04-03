@@ -503,7 +503,7 @@ if (!$isExternal) {
 	//-- don’t let regular users change the location of media items
 	if ($action !== 'update' || Auth::isManager($WT_TREE)) {
 		$mediaFolders = QueryMedia::folderList();
-		echo '<span dir="ltr"><select name="folder_list" onchange="document.newmedia.folder.value=this.options[this.selectedIndex].value;">';
+		echo '<select name="folder_list" onchange="document.newmedia.folder.value=this.options[this.selectedIndex].value;">';
 		echo '<option ';
 		if ($folder == '') {
 			echo 'selected';
@@ -519,12 +519,12 @@ if (!$isExternal) {
 			}
 			echo '>', $f, "</option>";
 		}
-		echo '</select></span>';
+		echo '</select>';
 	} else {
 		echo $folder;
 	}
 	if (Auth::isAdmin()) {
-		echo '<br><span dir="ltr"><input type="text" name="folder" size="40" value="', $folder, '"></span>';
+		echo '<br><input type="text" name="folder" size="40" value="', $folder, '">';
 		if ($gedfile === 'FILE') {
 			echo '<p class="small text-muted">', I18N::translate('This entry is ignored if you have entered a URL into the filename field.'), '</p>';
 		}
