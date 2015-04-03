@@ -25,8 +25,7 @@ $controller
 	->setPageTitle(I18N::translate('Reports'));
 
 $action  = Filter::post('action');
-$modules = Module::getInstalledModules('disabled');
-$modules = array_filter($modules, function(AbstractModule $x) { return $x instanceof ModuleReportInterface; });
+$modules = Module::getAllModulesByComponent('report');
 
 if ($action === 'update_mods' && Filter::checkCsrf()) {
 	foreach ($modules as $module) {

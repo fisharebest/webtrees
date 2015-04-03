@@ -59,7 +59,7 @@ class Module {
 	}
 
 	/**
-	 * Get a list of modules which (a) provide a specific function chart and (b) we have permission to see.
+	 * Get a list of modules which (a) provide a specific function and (b) we have permission to see.
 	 *
 	 * We cannot currently use auto-loading for modules, as there may be user-defined
 	 * modules about which the auto-loader knows nothing.
@@ -80,6 +80,35 @@ class Module {
 			'tree_id'      => $tree->getTreeId(),
 			'component'    => $component,
 			'access_level' => Auth::accessLevel($tree),
+		))->fetchOneColumn();
+
+		$array = array();
+		foreach ($module_names as $module_name) {
+			$interface = __NAMESPACE__ . '\Module' . ucfirst($component) . 'Interface';
+			$module = self::getModuleByName($module_name);
+			if ($module instanceof $interface) {
+				$array[$module_name] = $module;
+			}
+		}
+	}
+
+	/**
+	 * Get a list of all modules, enabled or not, which provide a specific function.
+	 *
+	 * We cannot currently use auto-loading for modules, as there may be user-defined
+	 * modules about which the auto-loader knows nothing.
+	 *
+	 * @param string $component The type of module, such as "tab", "report" or "menu"
+	 *
+	 * @return AbstractModule[]
+	 */
+	public static function getAllModulesByComponent($component) {
+		$module_names = Database::prepare(
+			"SELECT SQL_CACHE module_name" .
+			" FROM `##module`" .
+			" ORDER BY CASE :component WHEN 'menu' THEN menu_order WHEN 'sidebar' THEN sidebar_order WHEN 'tab' THEN tab_order ELSE 0 END, module_name"
+		)->execute(array(
+			'component'    => $component,
 		))->fetchOneColumn();
 
 		$array = array();
