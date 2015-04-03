@@ -71,7 +71,6 @@ case 'login':
 		Site::setPreference('WELCOME_TEXT_AUTH_MODE', Filter::post('WELCOME_TEXT_AUTH_MODE'));
 		Site::setPreference('WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE, Filter::post('WELCOME_TEXT_AUTH_MODE_4'));
 		Site::setPreference('USE_REGISTRATION_MODULE', Filter::post('USE_REGISTRATION_MODULE'));
-		Site::setPreference('REQUIRE_ADMIN_AUTH_REGISTRATION', Filter::post('REQUIRE_ADMIN_AUTH_REGISTRATION'));
 		Site::setPreference('SHOW_REGISTER_CAUTION', Filter::post('SHOW_REGISTER_CAUTION'));
 		FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 	}
@@ -466,24 +465,14 @@ $controller->pageHeader();
 	<!-- USE_REGISTRATION_MODULE -->
 	<fieldset class="form-group">
 		<legend class="col-sm-3 control-label">
-			<?php echo /* I18N: A site configuration setting */ I18N::translate('Allow visitors to request account registration'); ?>
+			<?php echo /* I18N: A site configuration setting */ I18N::translate('Allow visitors to request a new user account'); ?>
 		</legend>
 		<div class="col-sm-9">
 			<?php echo edit_field_yes_no('USE_REGISTRATION_MODULE', Site::getPreference('USE_REGISTRATION_MODULE')); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Allow visitors to request account registration” site configuration setting */ I18N::translate('Gives visitors the option of registering themselves for an account on the website.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, an administrator will have to approve the registration before it becomes active.'); ?>
-			</p>
-		</div>
-	</fieldset>
-
-	<!-- REQUIRE_ADMIN_AUTH_REGISTRATION -->
-	<fieldset class="form-group">
-		<legend class="col-sm-3 control-label">
-			<?php echo /* I18N: A site configuration setting */ I18N::translate('Require an administrator to approve new user registrations'); ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo edit_field_yes_no('REQUIRE_ADMIN_AUTH_REGISTRATION', Site::getPreference('REQUIRE_ADMIN_AUTH_REGISTRATION')); ?>
-			<p class="small text-muted">
+				<?php echo I18N::translate('The new user will be asked to confirm their email address before the account is created.'); ?>
+				<?php echo I18N::translate('Details of the new user will be sent to the genealogy contact for the corresponding family tree.'); ?>
+				<?php echo I18N::translate('An administrator must approve the new user account and select an access level before the user can log in.'); ?>
 			</p>
 		</div>
 	</fieldset>

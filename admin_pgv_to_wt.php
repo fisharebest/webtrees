@@ -53,7 +53,6 @@ $DBNAME                          = '';
 $TBLPREFIX                       = '';
 $PGV_SCHEMA_VERSION              = '';
 $USE_REGISTRATION_MODULE         = '';
-$REQUIRE_ADMIN_AUTH_REGISTRATION = '';
 $ALLOW_USER_THEMES               = '';
 $ALLOW_CHANGE_GEDCOM             = '';
 $PGV_SESSION_TIME                = '';
@@ -210,7 +209,6 @@ Database::exec("DELETE FROM `##user`                WHERE user_id>0");
 echo '<p>', $INDEX_DIRECTORY, 'config.php => wt_site_setting…</p>';
 
 Site::setPreference('USE_REGISTRATION_MODULE', $USE_REGISTRATION_MODULE);
-Site::setPreference('REQUIRE_ADMIN_AUTH_REGISTRATION', $REQUIRE_ADMIN_AUTH_REGISTRATION);
 Site::setPreference('ALLOW_USER_THEMES', $ALLOW_USER_THEMES);
 Site::setPreference('ALLOW_CHANGE_GEDCOM', $ALLOW_CHANGE_GEDCOM);
 Site::setPreference('SESSION_TIME', $PGV_SESSION_TIME);
