@@ -284,8 +284,8 @@ case 'importform':
 					<?php echo /* I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg” */ I18N::translate('Some genealogy software creates GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow webtrees to find the file, the first part of the path must be removed.'); ?>
 					<?php echo /* I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names */ I18N::translate('For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s.', '<code>C:\\Documents\\family\\photo.jpeg</code>', '<code>family\\photo.jpeg</code>', '<code>C:\\Documents\\</code>'); ?>
 				</p>
-			</fieldset>
-		</div>
+			</div>
+		</fieldset>
 
 		<div class="form-group">
 			<div class="col-sm-offset-3 col-sm-9">
