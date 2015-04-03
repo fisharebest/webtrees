@@ -204,7 +204,7 @@ class BranchesController extends PageController {
 		$sosa = array_search($individual, $this->ancestors, true);
 		if ($sosa) {
 			$sosa_class = 'search_hit';
-			$sosa_html  = ' <a class="details1 ' . $individual->getBoxStyle() . '" title="' . I18N::translate('Sosa') . '" href="relationship.php?pid2=' . $WT_TREE->getUserPreference(Auth::user(), 'rootid') . '&amp;pid1=' . $individual->getXref() . '">' . $sosa . '</a>' . self::sosaGeneration($sosa);
+			$sosa_html  = ' <a class="details1 ' . $individual->getBoxStyle() . '" title="' . I18N::translate('Sosa') . '" href="relationship.php?pid2=' . $this->ancestors[1]->getXref() . '&amp;pid1=' . $individual->getXref() . '">' . $sosa . '</a>' . self::sosaGeneration($sosa);
 		} else {
 			$sosa_class = '';
 			$sosa_html  = '';
@@ -240,7 +240,7 @@ class BranchesController extends PageController {
 					$sosa = array_search($spouse, $this->ancestors, true);
 					if ($sosa) {
 						$sosa_class = 'search_hit';
-						$sosa_html  = ' <a class="details1 ' . $spouse->getBoxStyle() . '" title="' . I18N::translate('Sosa') . '" href="relationship.php?pid2=' . $WT_TREE->getUserPreference(Auth::user(), 'rootid') . '&amp;pid1=' . $spouse->getXref() . '"> ' . $sosa . ' </a>' . self::sosaGeneration($sosa);
+						$sosa_html  = ' <a class="details1 ' . $spouse->getBoxStyle() . '" title="' . I18N::translate('Sosa') . '" href="relationship.php?pid2=' . $this->ancestors[1]->getXref() . '&amp;pid1=' . $spouse->getXref() . '"> ' . $sosa . ' </a>' . self::sosaGeneration($sosa);
 					} else {
 						$sosa_class = '';
 						$sosa_html  = '';
