@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-28 20:33+0100\n"
+"PO-Revision-Date: 2015-04-03 13:31+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
@@ -7216,7 +7216,9 @@ msgstr "אם אתה לא יכול לפתור את הבעיה בעצמך, אתה 
 
 #: admin_trees_manage.php:269
 msgid "If you created this GEDCOM file using genealogy software that omits spaces when splitting long lines, then select this option to reinsert the missing spaces."
-msgstr "אם יצרת את קובץ ה-GEDCOM הזה באמצעות תוכנת גנאלוגה שמשמיטה רווחים בזמן חלוקת שורות ארוכות, בחר באפשרות זו כדי להכניס את הרווחים החסרים."
+msgstr ""
+"אם יצרת את קובץ ה-GEDCOM הזה באמצעות תוכנת חקר שושלת יוחסין שמשמיטה רווחים "
+"בזמן חלוקת שורות ארוכות, בחר באפשרות זו כדי להכניס את הרווחים החסרים."
 
 #: login.php:350
 msgid "If you didn’t request an account, you can just delete this message."
@@ -10649,7 +10651,21 @@ msgstr "מקומות ב-%s"
 
 #: help_text.php:294
 msgid "Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database."
-msgstr "שמות מקומות יש להכניס לפי התקנים של חקר המשפחה. בחקר שושלת יוחסין רושמים מהמפורט לכללי כאשר פסיקים משמשים לסמני הפרדה בין הרמות. הרמה בה אתה רושם את נתוני המקום צריכה לייצג את הרמה של הממשל או הכנסייה בה נתונים חיוניים נשמרים עבור המקום.<br><br>כך למשל מקום כמו סולט לייק סיטי ירשם כ”סולט לייק סיטי, סולט לייק, יוטה, ארה״ב”.<br><br>הבא נבחן כל חלק של מקום זה. חלק הראשון, ”סולט לייק סיטי,” הוא העיר או העיירה שבו האירוע התרחש. בחלק מהמדינות, יתכן שקיימות רשויות מקומיות או רבעים בתוך העיר שחשוב לציין אותם. במקרה זה הם יופיעו לפני העיר. החלק הבא, ”סולט לייק,” הוא המחוז. ”יוטה” היא המדינה, ו”ארה״ב” הארץ. חשוב לציין כל מקום משום שרשימות חקר משפחה נשמרות ע״י הממשלות עבור כל רמה.<br><br>אם רמה מסוימת של המקום לא ידועה, יש להשאירה ריקה בין שני פסיקים. כך אם אין יודעים את המחוז נרשום: ”סולט לייק סיטי, ,יוטה, ארה״ב”. נניח שיודעים רק שאדם נולד ביוטה. את העובדה יש להכניס בצורה הבאה: ”, , יוטה, ארה״ב”.<br><br>ניתן להשתמש בקשר <b>מצא מקום</b> כדי לעזור במציאת מקומות שכבר קיימים במאגר הנתונים."
+msgstr ""
+"שמות מקומות יש להכניס לפי התקנים של חקר שושלת יוחסין. בחקר שושלת יוחסין "
+"רושמים מהמפורט לכללי כאשר פסיקים משמשים לסמני הפרדה בין הרמות. הרמה בה אתה "
+"רושם את נתוני המקום צריכה לייצג את הרמה של הממשל או הכנסייה בה נתונים "
+"חיוניים נשמרים עבור המקום.<br><br>כך למשל מקום כמו סולט לייק סיטי ירשם כ”"
+"סולט לייק סיטי, סולט לייק, יוטה, ארה״ב”.<br><br>הבא נבחן כל חלק של מקום זה. "
+"חלק הראשון, ”סולט לייק סיטי,” הוא העיר או העיירה שבו האירוע התרחש. בחלק "
+"מהמדינות, יתכן שקיימות רשויות מקומיות או רבעים בתוך העיר שחשוב לציין אותם. "
+"במקרה זה הם יופיעו לפני העיר. החלק הבא, ”סולט לייק,” הוא המחוז. ”יוטה” היא "
+"המדינה, ו”ארה״ב” הארץ. חשוב לציין כל מקום משום שרשימות חקר שושלת יוחסין "
+"נשמרות ע״י הממשלות עבור כל רמה.<br><br>אם רמה מסוימת של המקום לא ידועה, יש "
+"להשאירה ריקה בין שני פסיקים. כך אם אין יודעים את המחוז נרשום: ”סולט לייק "
+"סיטי, ,יוטה, ארה״ב”. נניח שיודעים רק שאדם נולד ביוטה. את העובדה יש להכניס "
+"בצורה הבאה: ”, , יוטה, ארה״ב”.<br><br>ניתן להשתמש בקשר <b>מצא מקום</b> כדי "
+"לעזור במציאת מקומות שכבר קיימים במאגר הנתונים."
 
 #: app/Module/SlideShowModule.php:122 app/Theme/CloudsTheme.php:68
 #: app/Theme/FabTheme.php:79 app/Theme/MinimalTheme.php:79
@@ -10807,7 +10823,7 @@ msgstr "העדפות"
 #: admin_modules.php:83
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
-msgstr "קיימות העדפות עבור מודול “%s”, אבל מודול זה אינו קיים יותר."
+msgstr "קיימות העדפות עבור מודול ”%s”, אבל מודול זה אינו קיים יותר."
 
 #. I18N: A configuration setting
 #: admin_users.php:453
@@ -12743,7 +12759,10 @@ msgstr "סומליה"
 #. I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg”
 #: admin_trees_manage.php:284
 msgid "Some genealogy software creates GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow webtrees to find the file, the first part of the path must be removed."
-msgstr "חלק מתוכנות הגנאלוגיה יוצרות קבצי GEDCOM המכילים קבצי מדיה עם נתיבים מלאים. נתיבים אלה לא יהיו קיימים בשרת האינטרנט. כדי לאפשר ל-webtrees למצוא את הקובץ, יש להסיר את החלק הראשון של השביל."
+msgstr ""
+"חלק מתוכנות חקר שושלת יוחסין יוצרות קבצי GEDCOM המכילים קבצי מדיה עם נתיבים "
+"מלאים. נתיבים אלה לא יהיו קיימים בשרת האינטרנט. כדי לאפשר ל-webtrees למצוא "
+"את הקובץ, יש להסיר את החלק הראשון של השביל."
 
 #: app/Module/GoogleMapsModule.php:429
 msgid "Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”."
@@ -14415,8 +14434,8 @@ msgstr "אתר האינטרנט הזה אינו זמין באופן זמני"
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
 msgstr ""
-"פעולה זו תמחק את כל נתוני חקר שושלת יוחסין מן “%s” ותחליף אותם בנתוני קובץ "
-"GEDCOM."
+"פעולה זו ימחק את כל נתוני חקר שושלת יוחסין מן ”%s” ויחליף אותו עם נתונים "
+"קובץ GEDCOM."
 
 #: app/Module/GoogleMapsModule.php:1781
 msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables."
@@ -19778,8 +19797,8 @@ msgstr "webtrees שולחת מיילים ללא אחסון"
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-latin scripts.  If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
 msgstr ""
 "webtrees משתמשת בקידוד UTF-8 לאותיות מודגשות לטיניות, לתווים מיוחדים "
-"ולסימנים שאינם לטיניים. אם אתה רוצה להשתמש בקובץ ה-GEDCOM הזה עם תוכנה "
-"גנאלוגית שאינה תומכת UTF-8, עלך ליצור אותו באמצעות קידוד ISO-8859-1."
+"ולסימנים שאינם לטיניים. אם אתה רוצה להשתמש בקובץ ה-GEDCOM הזה עם תוכנת חקר "
+"שושלת יוחסין שאינה תומכת UTF-8, עלך ליצור אותו באמצעות קידוד ISO-8859-1."
 
 #: includes/functions/functions_print.php:185
 msgid "webtrees wiki"
