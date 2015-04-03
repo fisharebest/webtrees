@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-04-02 18:40+0100\n"
+"PO-Revision-Date: 2015-04-03 01:47+0100\n"
 "Last-Translator: Familia Boim <familiaboim@gmail.com>\n"
 "Language-Team: Yiddish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/yi/>\n"
@@ -930,7 +930,7 @@ msgstr ""
 #. I18N: time format “%A” - between 00:00:01 and 11:59:59
 #: includes/functions/functions_date.php:95
 msgid "A.M."
-msgstr "A.M."
+msgstr "פארמיטאג"
 
 #: app/I18N.php:220
 msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
@@ -1104,7 +1104,7 @@ msgstr "לייג אַ קינד צו שאַפֿן אַ איין-עלטערן מש
 #: app/Controller/FamilyController.php:97
 #: includes/functions/functions_charts.php:301
 msgid "Add a child to this family"
-msgstr ""
+msgstr "שטעלן אַ קינד צו דעם משפּחה"
 
 #: edit_interface.php:81
 msgid "Add a fact"
@@ -1146,7 +1146,7 @@ msgstr ""
 
 #: app/Module/GoogleMapsModule.php:4615
 msgid "Add a new geographic location"
-msgstr ""
+msgstr "שטעלן אַ נייַ אָרט"
 
 #: app/Module/RelativesTabModule.php:362 edit_interface.php:815
 #: edit_interface.php:906
@@ -1388,7 +1388,7 @@ msgstr ""
 
 #: modules_v3/GEDFact_assistant/_CENS/census_1_ctrl.php:84
 msgid "Add/insert a blank row"
-msgstr ""
+msgstr "שטעלן / אַרייַנשטעלן אַ ליידיק רודערן"
 
 #. I18N: gedcom tag ADDR
 #: app/Gedcom/GedcomTag.php:123
@@ -2070,7 +2070,7 @@ msgstr ""
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:61
 msgid "Ash"
-msgstr ""
+msgstr "אַשבוים"
 
 #: statistics.php:598
 msgid "Asia"
@@ -2451,7 +2451,7 @@ msgstr "אָנהייב יאָר"
 #: search_advanced.php:154 search_advanced.php:216 search_advanced.php:231
 #: search_advanced.php:253 search_advanced.php:268
 msgid "Begins with"
-msgstr ""
+msgstr "הייבט מיט"
 
 #: app/Stats.php:6091
 msgid "Belarus"
@@ -2817,11 +2817,11 @@ msgstr "בוסטון, מסצ'וסטס"
 
 #: includes/functions/functions_print_lists.php:608
 msgid "Both alive"
-msgstr ""
+msgstr "ביידע לעבעדיק"
 
 #: includes/functions/functions_print_lists.php:635
 msgid "Both dead"
-msgstr ""
+msgstr "ביידע ניט לעבעדיק"
 
 #: app/Stats.php:6100
 msgid "Botswana"
@@ -3224,7 +3224,7 @@ msgstr "גרונט פון פטירה"
 
 #: admin_trees_manage.php:722 admin_trees_renumber.php:285
 msgid "Caution!  This may take a long time.  Be patient."
-msgstr ""
+msgstr "וואָרענען! דעם קען נעמען אַ לאנגע צייַט. זיין פּאַציענט."
 
 #: admin_site_upgrade.php:198
 msgid "Caution: old modules may not work, or they may prevent webtrees from working."
@@ -3712,7 +3712,7 @@ msgstr "קאָקאָס (קילינג) אינזלען"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:65
 msgid "Coffee and Cream"
-msgstr ""
+msgstr "קאַווע און קרעם"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:66
@@ -3977,7 +3977,7 @@ msgstr "קאונטי"
 
 #: admin_media.php:309
 msgid "Create"
-msgstr ""
+msgstr "שאַפֿן"
 
 #: admin_trees_manage.php:589
 msgid "Create a new family tree"
@@ -4786,7 +4786,7 @@ msgstr "דעסידי"
 
 #: app/Module/HtmlBlockModule.php:280
 msgid "Default"
-msgstr ""
+msgstr "פעליקייַט"
 
 #: app/Module/WelcomeBlockModule.php:42
 msgid "Default chart"
@@ -4975,7 +4975,7 @@ msgstr "דע'"
 #: app/Date/JalaliDate.php:84
 msgctxt "GENITIVE"
 msgid "Dey"
-msgstr "דיי"
+msgstr "דעיי"
 
 #. I18N: 10th month in the Persian/Jalali calendar
 #: app/Date/JalaliDate.php:134
@@ -5122,7 +5122,7 @@ msgstr "גט דערלאנגט"
 
 #: app/Stats.php:3308 statistics.php:222
 msgid "Divorces by century"
-msgstr ""
+msgstr "גיטין דורך יאָרהונדערט"
 
 #: app/Stats.php:6127
 msgid "Djibouti"
@@ -15923,7 +15923,7 @@ msgstr "פארגרעסער="
 #. I18N: time format “%a” - between 00:00:01 and 11:59:59
 #: includes/functions/functions_date.php:83
 msgid "a.m."
-msgstr ""
+msgstr "פארמיטאג"
 
 #. I18N: Gedcom ABT dates
 #: app/Date.php:298
@@ -16070,7 +16070,7 @@ msgstr "טאַנטע/פעטער"
 #: app/Controller/LifespanController.php:599
 msgctxt "Abbreviation for birth"
 msgid "b."
-msgstr ""
+msgstr "ג."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:319
 msgid "back to top"
@@ -16267,12 +16267,12 @@ msgstr "פאַרמאַכן"
 #. I18N: Name of a theme.
 #: app/Theme/CloudsTheme.php:126
 msgid "clouds"
-msgstr ""
+msgstr "וואלקנס"
 
 #. I18N: Name of a theme.
 #: app/Theme/ColorsTheme.php:160
 msgid "colors"
-msgstr ""
+msgstr "פארבן"
 
 #: app/Module/TopSurnamesModule.php:157
 msgid "compact list"
@@ -16294,7 +16294,7 @@ msgstr "פאָרזעצן"
 #. I18N: Button label
 #: admin_trees_manage.php:643
 msgid "create"
-msgstr ""
+msgstr "שאַפֿן"
 
 #. I18N: a program feature
 #: setup.php:135
@@ -16304,7 +16304,7 @@ msgstr ""
 #: app/Controller/LifespanController.php:603
 msgctxt "Abbreviation for death"
 msgid "d."
-msgstr ""
+msgstr "פ."
 
 #: statistics.php:614
 msgid "date periods"
@@ -16357,7 +16357,7 @@ msgstr "גראַד"
 #. I18N: Button label
 #: admin_site_clean.php:116 admin_users.php:774
 msgid "delete"
-msgstr ""
+msgstr "ויסמעקן"
 
 #. I18N: An access rule - deny access to the site
 #: admin_site_access.php:36 admin_site_access.php:43
@@ -16385,7 +16385,7 @@ msgstr "מזרח"
 #: admin_trees_config.php:2164 admin_trees_config.php:2195
 #: admin_trees_config.php:2224
 msgid "edit"
-msgstr ""
+msgstr "רעדאַקטירן"
 
 #: includes/functions/functions.php:539
 msgctxt "FEMALE"
@@ -16456,7 +16456,7 @@ msgstr ""
 
 #: includes/functions/functions.php:703
 msgid "ex-husband"
-msgstr ""
+msgstr "פרייַערדיק מאַן"
 
 #: includes/functions/functions.php:716
 msgctxt "FEMALE"
@@ -16479,7 +16479,7 @@ msgstr "פרייַערדיק מאַן / פרוי"
 
 #: includes/functions/functions.php:721
 msgid "ex-wife"
-msgstr ""
+msgstr "פרייַערדיק פרוי"
 
 #: admin_trees_config.php:110 modules_v3/fact_sources/report.xml:6
 msgid "facts"
@@ -16588,7 +16588,7 @@ msgstr "ערשטער %s"
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "first %s"
-msgstr ""
+msgstr "ערשטער %s"
 
 #: includes/functions/functions.php:525
 msgctxt "FEMALE"
@@ -16789,24 +16789,24 @@ msgstr ""
 #: includes/functions/functions.php:551
 msgctxt "FEMALE"
 msgid "fourteenth cousin"
-msgstr ""
+msgstr "פֿערצנטן שוועסטערקינד"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:514
 msgctxt "MALE"
 msgid "fourteenth cousin"
-msgstr ""
+msgstr "פֿערצנטן שוועסטערקינד"
 
 #: includes/functions/functions.php:586
 msgctxt "MALE/FEMALE"
 msgid "fourteenth cousin"
-msgstr ""
+msgstr "פֿערצנטן שוועסטערקינד"
 
 #: includes/functions/functions.php:631
 #, php-format
 msgctxt "FEMALE"
 msgid "fourth %s"
-msgstr ""
+msgstr "פערטער %s"
 
 #: includes/functions/functions.php:616
 #, php-format
@@ -18501,7 +18501,7 @@ msgstr ""
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:71
 msgid "markdown"
-msgstr ""
+msgstr "markdown"
 
 #: app/Stats.php:2618
 msgid "marriage"
@@ -18566,12 +18566,12 @@ msgstr ""
 #. I18N: time format “%a” - exactly 00:00:00
 #: includes/functions/functions_date.php:81
 msgid "midnight"
-msgstr ""
+msgstr "חצות"
 
 #. I18N: Name of a theme.
 #: app/Theme/MinimalTheme.php:117
 msgid "minimal"
-msgstr ""
+msgstr "מינימאַל"
 
 #: app/Module/GoogleMapsModule.php:338
 msgid "minimum"
@@ -18742,7 +18742,7 @@ msgstr "קיין"
 #. I18N: time format “%a” - exactly 12:00:00
 #: includes/functions/functions_date.php:85
 msgid "noon"
-msgstr ""
+msgstr "מיטאג"
 
 #: app/Module/GoogleMapsModule.php:4039
 msgid "north"
@@ -18788,7 +18788,7 @@ msgstr "קוילעלדיק"
 #. I18N: time format “%a” - between 12:00:01 and 23:59:59
 #: includes/functions/functions_date.php:87
 msgid "p.m."
-msgstr ""
+msgstr "נאכמיטאג"
 
 #: includes/functions/functions.php:691
 msgid "parent"
@@ -19467,18 +19467,18 @@ msgstr ""
 #: includes/functions/functions.php:543
 msgctxt "FEMALE"
 msgid "tenth cousin"
-msgstr "צענט שוועסטערקינד"
+msgstr "צענטער שוועסטערקינד"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:502
 msgctxt "MALE"
 msgid "tenth cousin"
-msgstr "צענט שוועסטערקינד"
+msgstr "צענטער שוועסטערקינד"
 
 #: includes/functions/functions.php:578
 msgctxt "MALE/FEMALE"
 msgid "tenth cousin"
-msgstr "צענט שוועסטערקינד"
+msgstr "צענטער שוועסטערקינד"
 
 #. I18N: [you should check that:] ...
 #: site-unavailable.php:99
@@ -19494,7 +19494,7 @@ msgstr ""
 #, php-format
 msgctxt "FEMALE"
 msgid "third %s"
-msgstr ""
+msgstr "דריטן %s"
 
 #: includes/functions/functions.php:614
 #, php-format
@@ -19527,18 +19527,18 @@ msgstr "דריטן שוועסטערקינד"
 #: includes/functions/functions.php:549
 msgctxt "FEMALE"
 msgid "thirteenth cousin"
-msgstr ""
+msgstr "דרייַצנטן שוועסטערקינד"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:511
 msgctxt "MALE"
 msgid "thirteenth cousin"
-msgstr ""
+msgstr "דרייַצנטן שוועסטערקינד"
 
 #: includes/functions/functions.php:584
 msgctxt "MALE/FEMALE"
 msgid "thirteenth cousin"
-msgstr ""
+msgstr "דרייַצנטן שוועסטערקינד"
 
 #: admin_trees_config.php:588
 msgid "this record does not exist"
@@ -19680,7 +19680,7 @@ msgstr "webtrees קענען נישט פאַרבינדן צו די PhpGedView ד�
 
 #: message.php:48 message.php:269 message.php:332
 msgid "webtrees message"
-msgstr ""
+msgstr "webtrees אָנזאָג"
 
 #: setup.php:276
 #, php-format
@@ -19695,7 +19695,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_config.php:902
 msgid "webtrees reply address"
-msgstr ""
+msgstr "webtrees ענטפער אַדרעס"
 
 #: includes/functions/functions_edit.php:216
 msgid "webtrees sends emails with no storage"
@@ -19707,7 +19707,7 @@ msgstr ""
 
 #: includes/functions/functions_print.php:185
 msgid "webtrees wiki"
-msgstr ""
+msgstr "webtrees וויקי"
 
 #: admin_trees_manage.php:673
 msgid "webtrees’ database must be on the same server as PGV’s"
