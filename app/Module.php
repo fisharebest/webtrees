@@ -90,6 +90,8 @@ class Module {
 				$array[$module_name] = $module;
 			}
 		}
+
+		return $array;
 	}
 
 	/**
