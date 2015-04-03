@@ -189,7 +189,7 @@ msgstr "%G:%i:%s"
 #. I18N: This is the format string for full dates.  See http://php.net/date for codes
 #: app/Date.php:222 app/I18N.php:212
 msgid "%j %F %Y"
-msgstr "%j %F %Y"
+msgstr "%j %F %y"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: app/Stats.php:6341
@@ -277,7 +277,7 @@ msgstr[1] "%s אנשים פרטיים."
 
 #: app/Controller/SearchController.php:321
 #, php-format
-msgid "%s individuals has been updated."
+msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
 msgstr[0] "אדם %s עודכן."
 msgstr[1] "%s אנשים עודכנו."

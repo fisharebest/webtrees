@@ -292,7 +292,7 @@ msgstr[2] "Dane %s osób są prywatne."
 
 #: app/Controller/SearchController.php:321
 #, php-format
-msgid "%s individuals has been updated."
+msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
 msgstr[0] "%s osoba została uaktualniona."
 msgstr[1] "%s osoby zostały uaktualnione."
