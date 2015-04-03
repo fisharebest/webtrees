@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-15 13:48+0000\n"
-"PO-Revision-Date: 2015-03-25 21:15+0100\n"
+"PO-Revision-Date: 2015-03-31 13:41+0100\n"
 "Last-Translator: Jens Friismose <jelo2007@gmail.com>\n"
 "Language-Team: Danish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/da/>\n"
@@ -237,15 +237,15 @@ msgstr[1] "%s dage siden"
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s familie er blevet opdateret."
+msgstr[1] "%s familier er blevet opdateret."
 
 #: admin.php:761
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s familietræ"
+msgstr[1] "%s familietræer"
 
 #: app/Stats.php:4748 app/Stats.php:4752
 #, php-format
@@ -279,8 +279,8 @@ msgstr[1] "%s individer er private."
 #, php-format
 msgid "%s individuals has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s individ er blevet opdateret"
+msgstr[1] "%s individer er blevet opdateret"
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:122
@@ -329,8 +329,8 @@ msgstr[1] "%s måneder siden"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s note er blevet opdateret."
+msgstr[1] "%s noter er blevet opdateret."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: includes/functions/functions.php:2108
@@ -755,7 +755,7 @@ msgstr "En liste over Hebræiske døds-mærkedage der forekommer i den nærmeste
 #. I18N: Description of the “On this day” module
 #: app/Module/OnThisDayModule.php:30
 msgid "A list of the anniversaries that occur today."
-msgstr "En liste over dagens mærkedage."
+msgstr "En liste over mærkedage i dag."
 
 #. I18N: Description of the “Upcoming events” module
 #: app/Module/UpcomingAnniversariesModule.php:30
@@ -829,7 +829,7 @@ msgstr "En rapport over et individs aner, udformet som et træ."
 #: app/Module/AhnentafelReportModule.php:32
 #: modules_v3/ahnentafel_report/report.xml:5
 msgid "A report of an individual’s ancestors, in a narrative style."
-msgstr "En rapport for et individs ane i beskrivende stil."
+msgstr "En rapport for et individs aner i beskrivende stil."
 
 #. I18N: Description of the “Descendants” module
 #: app/Module/DescendancyReportModule.php:32
@@ -1331,7 +1331,7 @@ msgstr "Tilføj links"
 
 #: app/Module/RelativesTabModule.php:203
 msgid "Add marriage details"
-msgstr "Tilføj ny giftemål"
+msgstr "Tilføj oplysninger for bryllup"
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:29
 msgid "Add missing death records"
@@ -1505,12 +1505,12 @@ msgstr "Adopteret af begge forældre"
 #: app/Gedcom/GedcomCodeAdop.php:47
 msgctxt "FEMALE"
 msgid "Adopted by both parents"
-msgstr "Adopteret af begge forældrer"
+msgstr "Adopteret af begge forældre"
 
 #: app/Gedcom/GedcomCodeAdop.php:45
 msgctxt "MALE"
 msgid "Adopted by both parents"
-msgstr "Adopteret af begge forældrer"
+msgstr "Adopteret af begge forældre"
 
 #. I18N: gedcom tag _ADPF
 #: app/Gedcom/GedcomCodeAdop.php:58 app/Gedcom/GedcomTag.php:933
@@ -1792,7 +1792,7 @@ msgstr ""
 
 #: admin_trees_config.php:1883
 msgid "All family facts"
-msgstr "Alle familie faktum"
+msgstr "Alle familie fakta"
 
 #: login.php:421
 msgid "All fields must be completed."
@@ -1804,7 +1804,7 @@ msgstr "Alle filer har læse og skrive adgang."
 
 #: admin_trees_config.php:1765
 msgid "All individual facts"
-msgstr "Alle individuelle faktum"
+msgstr "Alle individuelle fakta"
 
 #: calendar.php:214 calendar.php:232 calendar.php:233 calendar.php:236
 #: calendar.php:237 calendar.php:504
@@ -1817,11 +1817,11 @@ msgstr ""
 
 #: admin_trees_config.php:2090
 msgid "All repository facts"
-msgstr "Alle opbevaringsfaktum"
+msgstr "Alle opbevaringsfakta"
 
 #: admin_trees_config.php:2001
 msgid "All source facts"
-msgstr "Alle kilde faktum"
+msgstr "Alle kilde fakta"
 
 #. I18N: Description of the “CKEditor” module.  WYSIWYG = “what you see is what you get”
 #: app/Module/CkeditorModule.php:30
@@ -1836,7 +1836,7 @@ msgstr "Tillad brugere at se GEDCOM-poster"
 #. I18N: A site configuration setting
 #: admin_site_config.php:244
 msgid "Allow users to select their own theme"
-msgstr "Tillad brugere selv at vælge hjemmesidens udseende"
+msgstr "Tillad brugere selv at vælge tema"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:469
@@ -1926,6 +1926,7 @@ msgstr "Forfædre"
 
 #. I18N: gedcom tag ANCI
 #: app/Gedcom/GedcomTag.php:159
+#, fuzzy
 msgid "Ancestors interest"
 msgstr "Mangler forfædre"
 
@@ -3189,7 +3190,7 @@ msgstr "CKEditor™"
 
 #: admin_trees_manage.php:342
 msgid "Calculating…"
-msgstr ""
+msgstr "Beregner …"
 
 #: app/Module/YahrzeitModule.php:260 app/Theme/BaseTheme.php:969
 #: app/Theme/BaseTheme.php:973
@@ -3369,15 +3370,15 @@ msgstr "Tilpas rammerne på denne side"
 
 #: admin_users.php:212
 msgid "Change the blocks on this user’s “My page”"
-msgstr ""
+msgstr "Omforme blokkene på denne brugers \"Min side\""
 
 #: admin_trees_manage.php:383 index_edit.php:52
 msgid "Change the “Home page” blocks"
-msgstr ""
+msgstr "Omforme blokkene på \"Startsiden\""
 
 #: index_edit.php:44
 msgid "Change the “My page” blocks"
-msgstr ""
+msgstr "Omforme blokkene på \"Min side\""
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: includes/functions/functions_print_lists.php:1757
@@ -3848,7 +3849,7 @@ msgstr "Gennemført: ukendt dato"
 
 #: admin_trees_download.php:142
 msgid "Compress the GEDCOM file"
-msgstr ""
+msgstr "Komprimer GEDCOM filen"
 
 #. I18N: gedcom tag CONC
 #: app/Gedcom/GedcomTag.php:303
@@ -3894,7 +3895,7 @@ msgstr "Kontaktinformation"
 
 #: edituser.php:265
 msgid "Contact method"
-msgstr ""
+msgstr "Kontakt metode"
 
 #: search_advanced.php:155 search_advanced.php:217 search_advanced.php:232
 #: search_advanced.php:254 search_advanced.php:269
@@ -3939,7 +3940,7 @@ msgstr "Fortsat"
 #: app/Theme/AdministrationTheme.php:191 app/Theme/BaseTheme.php:1200
 #: index_edit.php:298
 msgid "Control panel"
-msgstr ""
+msgstr "Kontrolpanel"
 
 #: admin_trees_download.php:151 app/Module/ClippingsCartModule.php:209
 #: app/Module/ClippingsCartModule.php:600
@@ -4070,7 +4071,7 @@ msgstr "Opret en ny kilde"
 
 #: admin_site_access.php:226
 msgid "Create a website access rule"
-msgstr ""
+msgstr "Opret adgangsregel til websiden"
 
 #: statistics.php:430
 msgid "Create your own chart"
@@ -4936,7 +4937,7 @@ msgstr "Slet navn"
 
 #: edituser.php:291
 msgid "Delete your account"
-msgstr ""
+msgstr "Slet din konto"
 
 #: app/Controller/FamilyController.php:112
 msgid "Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?"
@@ -5339,7 +5340,7 @@ msgstr "Rediger en FAQ"
 
 #: admin_site_access.php:224
 msgid "Edit a website access rule"
-msgstr ""
+msgstr "Rediger adgangsregel til websiden"
 
 #: app/Controller/MediaController.php:140
 msgid "Edit details"
@@ -5403,7 +5404,7 @@ msgstr "Rediger dette individ og erstat deres detaljer med dine egne."
 
 #: admin_users.php:268
 msgid "Edit user"
-msgstr ""
+msgstr "Rediger bruger"
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:38 admin_users.php:525
@@ -5722,7 +5723,7 @@ msgstr "Gem på server"
 
 #: admin_trees_download.php:34
 msgid "Export a GEDCOM file"
-msgstr ""
+msgstr "Eksporter en GEDCOM fil"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:279
@@ -5731,7 +5732,7 @@ msgstr "Eksporter alle træer til GEDCOM filer…"
 
 #: admin_trees_download.php:135
 msgid "Export options"
-msgstr ""
+msgstr "Eksport muligheder"
 
 #. I18N: A configuration setting.  ... [who were] born in the last XX years or died in the last YY years
 #: admin_trees_config.php:483
@@ -6272,7 +6273,7 @@ msgstr "Find et specielt tegn"
 
 #: relationship.php:96
 msgid "Find all possible relationships"
-msgstr ""
+msgstr "Find alle mulige slægtsskaber"
 
 #: app/Module/CensusAssistantModule.php:63 find.php:55
 #: includes/functions/functions_print.php:730
@@ -6283,7 +6284,7 @@ msgstr "Find en person"
 
 #: relationship.php:91
 msgid "Find the closest relationships"
-msgstr ""
+msgstr "Find nærmeste slægtskab"
 
 #: app/Stats.php:6141
 msgid "Finland"
@@ -6529,7 +6530,7 @@ msgstr "Frimaire"
 #. I18N: label for the start of a date range (from x to y)
 #: admin_site_change.php:277 admin_site_logs.php:248
 msgid "From"
-msgstr ""
+msgstr "Fra"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:89
@@ -6610,7 +6611,7 @@ msgstr "Kontaktperson vedr. slægtsspørgsmål"
 #. I18N: Individuals, sources, dates, places, etc.
 #: admin_trees_manage.php:437
 msgid "Genealogy data"
-msgstr ""
+msgstr "Slægtsforskning data"
 
 #: admin_trees_config.php:623 admin_trees_config.php:1704
 msgid "General"

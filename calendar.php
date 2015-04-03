@@ -26,7 +26,6 @@ global $WT_TREE;
 define('WT_SCRIPT_NAME', 'calendar.php');
 require './includes/session.php';
 
-$WEEK_START      = $WT_TREE->getPreference('WEEK_START');
 $CALENDAR_FORMAT = $WT_TREE->getPreference('CALENDAR_FORMAT');
 
 $controller = new PageController;
@@ -509,17 +508,24 @@ case 'day':
 
 	break;
 case 'month':
-	// We use JD%7 = 0/Mon...6/Sun.  Config files use 0/Sun...6/Sat.  Add 6 to convert.
-	$week_start = ($WEEK_START + 6) % $days_in_week;
-	// The french  calendar has a 10-day week, but our config only lets us choose
-	// mon-sun as a start day.  Force french calendars to start on primidi
+// We use JD%7 = 0/Mon...6/Sun.  Standard definitions use 0/Sun...6/Sat.
+	$week_start    = (I18N::locale()->territory()->firstDay() + 6) % 7;
+	$weekend_start = (I18N::locale()->territory()->weekendStart() + 6) % 7;
+	$weekend_end   = (I18N::locale()->territory()->weekendEnd() + 6) % 7;
+	// The french  calendar has a 10-day week, which starts on primidi
 	if ($days_in_week === 10) {
-		$week_start = 0;
+		$week_start    = 0;
+		$weekend_start = -1;
+		$weekend_end   = -1;
 	}
 	echo '<table class="list_table width100"><tr>';
 	for ($week_day = 0; $week_day < $days_in_week; ++$week_day) {
 		$day_name = $cal_date->dayNames(($week_day + $week_start) % $days_in_week);
-		echo '<td class="descriptionbox" width="' . (100 / $days_in_week) . '%">', $day_name, '</td>';
+		if ($week_day == $weekend_start || $week_day == $weekend_end) {
+			echo '<td class="descriptionbox weekend" width="' . (100 / $days_in_week) . '%">', $day_name, '</td>';
+		} else {
+			echo '<td class="descriptionbox" width="' . (100 / $days_in_week) . '%">', $day_name, '</td>';
+		}
 	}
 	echo '</tr>';
 	// Print days 1-n of the month...

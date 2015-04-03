@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-03-13 10:03+0000\n"
-"PO-Revision-Date: 2015-03-19 10:21+0100\n"
-"Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
+"PO-Revision-Date: 2015-03-31 21:54+0100\n"
+"Last-Translator: Ramūnas Dronga <ieskok@ramuno.lt>\n"
 "Language-Team: Lithuanian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/lt/>\n"
 "Language: lt\n"
@@ -70,7 +70,7 @@ msgstr "#%s"
 #: admin_trees_check.php:205
 #, php-format
 msgid "%1$s %2$s has a %3$s link to %4$s."
-msgstr "%1$s %2$s turi %3$s nuoroda į %4$s."
+msgstr "%1$s %2$s turi %3$s nuorodą į %4$s."
 
 #. I18N: %1$s=“fifth cousin”, etc., %2$s>=4
 #: includes/functions/functions.php:2132
@@ -94,7 +94,7 @@ msgstr "%1$s (%2$s)"
 #: admin_site_upgrade.php:315
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr "%1$sKB buvo atsiusti per %2$s sekundes."
+msgstr "%1$sKB buvo atsiųsti per %2$s sekundes."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_site_merge.php:44 admin_site_merge.php:48 admin_trees_check.php:156
@@ -144,7 +144,7 @@ msgstr[2] "%1$s asmens gimimo vietovės koordinatės nežinomos: %2$s."
 #: admin_trees_check.php:177
 #, php-format
 msgid "%1$s is a %2$s but a %3$s is expected."
-msgstr "%1$s yra %2$s bet mes tikimės %3$s."
+msgstr "%1$s yra %2$s, bet mes tikimės %3$s."
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: includes/functions/functions.php:635
@@ -245,9 +245,9 @@ msgstr[2] "prieš %s dienas"
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] "%s šeima buvo redeguota."
-msgstr[1] "%s šeimos buvo redeguotos."
-msgstr[2] "%s šeimos buvo redeguotos."
+msgstr[0] "%s šeima buvo redaguota."
+msgstr[1] "%s šeimos buvo redaguotos."
+msgstr[2] "%s šeimos buvo redaguotos."
 
 #: admin.php:761
 #, php-format
@@ -293,15 +293,17 @@ msgstr[2] "%s asmenų yra viešai nerodomi."
 #, php-format
 msgid "%s individuals has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] "%s asmuo buvo redeguotas."
-msgstr[1] "%s asmenys buvo redeguoti."
-msgstr[2] "%s asmenų buvo redeguoti."
+msgstr[0] "%s asmuo buvo redaguotas."
+msgstr[1] "%s asmenys buvo redaguoti."
+msgstr[2] "%s asmenų buvo redaguoti."
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:122
 #, php-format
 msgid "%s is disabled on this server.  You cannot install webtrees until it is enabled.  Please ask your server’s administrator to enable it."
-msgstr "%s išjungta šiame serveryje.  Jūs negalite įdiegti webtrees, kol tai nėra įjungta. Kreipkitės į jusų serverio administratorių kad tai būtu įjungta."
+msgstr ""
+"%s išjungta šiame serveryje.  Jūs negalite įdiegti webtrees, kol tai nėra "
+"įjungta. Kreipkitės į jūsų serverio administratorių kad tai būtu įjungta."
 
 #: app/Module/LoggedInUsersModule.php:57 app/Stats.php:5382
 #, php-format
@@ -333,7 +335,7 @@ msgstr[2] "prieš %s minutčių"
 #, php-format
 msgid "%s month"
 msgid_plural "%s months"
-msgstr[0] "%s mėnesis"
+msgstr[0] "%s mėnuo"
 msgstr[1] "%s mėnesiai"
 msgstr[2] "%s mėnesių"
 
@@ -349,9 +351,9 @@ msgstr[2] "prieš %s mėnesius"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] "%s pastaba buvo redeguota."
-msgstr[1] "%s pastabos buvo redeguotos."
-msgstr[2] "%s pastabų buvo redeguota."
+msgstr[0] "%s pastaba buvo redaguota."
+msgstr[1] "%s pastabos buvo redaguotos."
+msgstr[2] "%s pastabų buvo redaguota."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: includes/functions/functions.php:2108
@@ -377,9 +379,9 @@ msgstr[2] "prieš %s sekundžių"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] "%s šaltinis buvo redeguotas."
-msgstr[1] "%s šaltiniai buvo redeguoti."
-msgstr[2] "%s šaltinių buvo redeguota."
+msgstr[0] "%s šaltinis buvo redaguotas."
+msgstr[1] "%s šaltiniai buvo redaguoti."
+msgstr[2] "%s šaltinių buvo redaguota."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2124
@@ -634,6 +636,14 @@ msgstr "9-tą"
 #: admin_trees_config.php:776
 msgid "<b>GUID</b> in this context is an acronym for “Globally Unique ID”.<br><br>GUIDs are intended to help identify each individual in a manner that is repeatable, so that central organizations such as the Family History Center of the LDS church in Salt Lake City, or even compatible programs running on your own server, can determine whether they are dealing with the same individual no matter where the GEDCOM file originates.  The goal of the Family History Center is to have a central repository of genealogy data and expose it through web services.  This will enable any program to access the data and update their data within it.<br><br>If you do not intend to share this GEDCOM file with anyone else, you do not need to let webtrees create these GUIDs; however, doing so will do no harm other than increasing the size of your GEDCOM file."
 msgstr ""
+"<b>GUID</b> šiame kontekste reiškia \"Globalų unikalų ID\".<br><br>GUID "
+"padeda atpažinti kiekvieną individą, kad centrinės organizacijos, tokios "
+"kaip \"Family History Center\" ar kitos programos, galėtų nustatyti tą patį "
+"individą nepaisant GEDCOM bylų šaltinio. \"Family History Center\" siekia "
+"būti centriniu geneologinės informacijos šaltiniu, kuris pasiekiamas per web "
+"servisus. Tokiu būdu bet kuri programa gali pasiekti ir atsinaujinti "
+"geneologinę informaciją.<br><br>Jei jūs neketinate dalintis GEDCOM bylomis, "
+"galite išjungti GUID sukurimą."
 
 #: admin_trees_manage.php:686
 msgid "<b>Important note:</b> The transfer wizard is not able to assist with moving media items.  You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished."
@@ -692,11 +702,11 @@ msgstr "Įvykio ar fakto aprašymas, pavyzdžiui įrašas apie mirties priežast
 
 #: admin_trees_download.php:116 admin_trees_manage.php:209
 msgid "A file on the server"
-msgstr "Byla ant serverio"
+msgstr "Byla serveryje"
 
 #: admin_trees_download.php:201 admin_trees_manage.php:198
 msgid "A file on your computer"
-msgstr "Byla ant jūsų komputerio"
+msgstr "Byla jūsų kompiuteryje"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:30
@@ -766,12 +776,19 @@ msgstr "Sąrašas narių ir lankytojų, kurie dabar lankosi tinklapyje."
 #: help_text.php:278
 msgid "A media object is a record in the family tree which contains information about a media file.  This information may include a title, a copyright notice, a transcript, privacy restrictions, etc.  The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver)."
 msgstr ""
+"Media objektas yra įrašas šeimos medyje, kuris savyje turi informaciją apie "
+"media bylą. Ši informacija gali turėti pavadinimą, autorines teises, "
+"transkriptą, privatumo nuostatas ir t.t. Medijos byla, tokia kaip nuotrauka "
+"ar video įrašas, gali būti išsaugota lokaliai (tam pačiame serveryje) arba "
+"nuotoliniu būfu (kitame serveryje)."
 
 #. I18N: %s is a username
 #: login.php:265
 #, php-format
 msgid "A new password has been created and emailed to %s.  You can change this password after you login."
-msgstr "Naujas slaptažodis buvo sukurtas ir išsiųstas į %s. Galite keisti šį slaptažodį, po to kai prisijungsite."
+msgstr ""
+"Naujas slaptažodis buvo sukurtas ir išsiųstas į %s. Galite pakeisti šį "
+"slaptažodį, po to kai prisijungsite."
 
 #: login.php:252
 msgid "A new password has been requested for your user name."
@@ -835,13 +852,14 @@ msgstr "Informacija apie šeimos narius ir duomenys apie juos."
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:32 modules_v3/death_report/report.xml:4
 msgid "A report of individuals who died in a given time or place."
-msgstr "Ataskaita apie asmenis, kurie mirė tam tikru metu ar toje pat vietoje."
+msgstr ""
+"Ataskaita apie asmenis, kurie mirė tam tikru metu ar toje pačioje vietoje."
 
 #. I18N: Description of the “Occupations” module
 #: app/Module/OccupationReportModule.php:32
 #: modules_v3/occupation_report/report.xml:4
 msgid "A report of individuals who had a given occupation."
-msgstr "Sąrašas asmenų turintis nurodytą profesiją."
+msgstr "Sąrašas asmenų, turinčių nurodytą profesiją."
 
 #. I18N: Description of the “Births” module
 #: app/Module/BirthReportModule.php:32 modules_v3/birth_report/report.xml:4
@@ -858,7 +876,9 @@ msgstr "Ataskaita apie asmenis palaidotus nurodytoje vietovėje."
 #: app/Module/MarriageReportModule.php:32
 #: modules_v3/marriage_report/report.xml:4
 msgid "A report of individuals who were married in a given time or place."
-msgstr "Ataskaita apie asmenis, kurie vedė/ištekėjo duotu laikotarpiu ar vietovėje."
+msgstr ""
+"Ataskaita apie asmenis, kurie vedė/ištekėjo nurodytu laikotarpiu ar "
+"vietovėje."
 
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:32 modules_v3/change_report/report.xml:4
@@ -875,7 +895,7 @@ msgstr "Ataskaita apie šeimas susijusias su asmeniu."
 #: app/Module/RelatedIndividualsReportModule.php:32
 #: modules_v3/relative_ext_report/report.xml:4
 msgid "A report of the individuals that are closely related to an individual."
-msgstr "Ataskaita apie asmenis kurie artimai susije su asmeniu."
+msgstr "Ataskaita apie asmenis, kurie artimai susiję su asmeniu."
 
 #. I18N: Description of the “Source” module
 #: app/Module/FactSourcesReportModule.php:32
@@ -892,11 +912,17 @@ msgstr "Trūkstamos informacijos apie asmenis ir jų gimines ataskaita."
 #: app/Module/BatchUpdate/BirthDeathMarriageReportModule.php:32
 #: modules_v3/bdm_report/report.xml:4
 msgid "A report of vital records for a given date or place."
-msgstr "Įrašų ataskaitą pagal duotą datą ar vietovę."
+msgstr "Įrašų ataskaitą pagal nurodytą datą ar vietovę."
 
 #: admin_users.php:505
 msgid "A role is a set of access rights, which give permission to view data, change configuration settings, etc.  Access rights are assigned to roles, and roles are granted to users.  Each family tree can assign different access to each role, and users can have a different role in each family tree."
-msgstr "Vaidmuo yra prieigos teisių rinkinys, kuris suteiks leidimą peržiūrėti duomenis, pakeisti konfigūracijos nustatymus ir t.t. Prieigos teisės yra priskirtos vaidmenims ir vaidmenys yra paskirti vartotojams. Kiekvienas šeimos medis gali turėtiskirtingus priėjimus surištus prie kiekvieno vaidmens, o vartotojai gali turėti skirtingą vaidmenį kiekviename šeimos medyje."
+msgstr ""
+"Vaidmuo yra prieigos teisių rinkinys, kuris suteiks leidimą peržiūrėti "
+"duomenis, pakeisti konfigūracijos nustatymus ir t.t. Prieigos teisės yra "
+"priskirtos vaidmenims ir vaidmenys yra paskirti vartotojams. Kiekvienas "
+"šeimos medis gali turėti skirtingus priėjimus surištus prie kiekvieno "
+"vaidmens, o vartotojai gali turėti skirtingą vaidmenį kiekviename šeimos "
+"medyje."
 
 #. I18N: Description of the “Families” module
 #: app/Module/FamiliesSidebarSidebarModule.php:32
@@ -950,7 +976,9 @@ msgstr "Kortelė parodo šaltinius, kurie susieti su asmeniu."
 
 #: admin_users.php:393
 msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
-msgstr "Vartotojas negalės prisijungti, kol abu „Patvirtinta administratoriaus“ ir „Elektroninio pašto adresas patvirtintas“ nėra pažimėti."
+msgstr ""
+"Vartotojas negalės prisijungti, kol „Patvirtinta administratoriaus“ ir „"
+"Elektroninio pašto adresas patvirtintas“ nėra pažymėti."
 
 #. I18N: Help text for the “Add watermarks to thumbnails” configuration setting
 #: admin_trees_config.php:1155
@@ -1383,7 +1411,7 @@ msgstr "Įtraukti šį šaltinį ir šeimas/asmenis surištus su juo."
 #. I18N: A configuration setting
 #: admin_trees_config.php:968
 msgid "Add to TITLE header tag"
-msgstr "Prie PAVADINIMO antraštės pridėti žymę"
+msgstr "Prie TITLE antraštės pridėti žymę"
 
 #: app/Module/ClippingsCartModule.php:321
 msgid "Add to clippings cart"
@@ -1427,11 +1455,11 @@ msgstr "Adresas"
 
 #: app/Gedcom/GedcomTag.php:125
 msgid "Address line 1"
-msgstr "Adresas 1"
+msgstr "Gatvė"
 
 #: app/Gedcom/GedcomTag.php:127
 msgid "Address line 2"
-msgstr "Adresas 2"
+msgstr ""
 
 #: app/Gedcom/GedcomCodeTemp.php:80
 msgid "Adelaide, Australia"
@@ -1443,7 +1471,7 @@ msgstr "Administratorius"
 
 #: setup.php:425 setup.php:427
 msgid "Administrator account"
-msgstr "Administratoriaus abonementas"
+msgstr "Administratoriaus paskyra"
 
 #: admin_users.php:477
 msgid "Administrator comments on user"
@@ -1634,7 +1662,9 @@ msgstr "Po šeimos medžio sukūrimo, Jūs galėsite įkelti arba importuoti duo
 
 #: login.php:255
 msgid "After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
-msgstr "Prisijungus, pasirinkite „Mano prisijungimo informacija“ nuorodą iš „Mano puslapis“ meniu ir slaptažodžiui pakeisti užpildykite laukelius."
+msgstr ""
+"Prisijungus pasirinkite „Mano prisijungimo informacija“ nuorodą iš „Mano "
+"puslapis“ meniu ir slaptažodžiui pakeisti užpildykite laukelius."
 
 #. I18N: gedcom tag AGE
 #: app/Controller/TimelineController.php:236
@@ -1700,7 +1730,7 @@ msgstr "Amžius susijęs su mirties metais"
 #. I18N: gedcom tag AGNC
 #: app/Gedcom/GedcomTag.php:147
 msgid "Agency"
-msgstr "Istituzione"
+msgstr "Agentūra"
 
 #: app/Stats.php:6067
 msgid "Aland Islands"
@@ -1775,7 +1805,7 @@ msgstr "Visi laukai turi būti užpildyti."
 
 #: admin_site_upgrade.php:406
 msgid "All files have read and write permission."
-msgstr "Visos bylos turi skaitymo ir rašymo leidima."
+msgstr "Visos bylos turi skaitymo ir rašymo leidimą."
 
 #: admin_trees_config.php:1765
 msgid "All individual facts"
@@ -1837,17 +1867,17 @@ msgstr "Dar žinomas kaip"
 
 #: app/Stats.php:6074
 msgid "American Samoa"
-msgstr "Samoa americane"
+msgstr "Amerikos Samoa"
 
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:32
 msgid "An alternative to the “media” tab, and an enhanced image viewer."
-msgstr "Alternatyva „medijos“ kortelei, ir išplėstai paveikslėlio žiūryklei."
+msgstr "Alternatyva „medijos“ kortelei ir išplėstai paveikslėlio peržiūrai."
 
 #. I18N: Description of the “Charts” module
 #: app/Module/ChartsBlockModule.php:30
 msgid "An alternative way to display charts."
-msgstr "Alternatyvus kelias rodyti diagramas."
+msgstr "Alternatyvus kelias į diagramas."
 
 #. I18N: Description of the “Census assistant” module
 #: app/Module/CensusAssistantModule.php:30
@@ -1866,11 +1896,15 @@ msgstr "Alternatyvus būdas pasirinkti naują temą."
 
 #: help_text.php:53
 msgid "An associate is another individual who was involved with this fact or event, such as a witness or a priest."
-msgstr "Kompanjonas yra kitas asmuo, kuris yra šio fakto ar įvykio dalyvis, pavyzdžiui, liudytojas arba kunigas."
+msgstr ""
+"Kompanionas yra kitas asmuo, kuris yra šio fakto ar įvykio dalyvis, "
+"pavyzdžiui, liudytojas arba kunigas."
 
 #: help_text.php:48
 msgid "An associate is another individual who was involved with this individual, such as a friend or an employer."
-msgstr "Kompanjonas yra kitas asmuo, kuris bendradarbiavo su šiuo asmeniu, pavyzdžiui, draugas arba darbdavys."
+msgstr ""
+"Kompanionas yra kitas asmuo, kuris bendradarbiavo su šiuo asmeniu, "
+"pavyzdžiui, draugas arba darbdavys."
 
 #. I18N: Description of the “Edit” module
 #: app/Module/PageMenuModule.php:30
@@ -1880,7 +1914,7 @@ msgstr "Redagavimo meniu asmenų, šeimų, šaltinių ir t.t."
 #: admin_site_upgrade.php:342 admin_site_upgrade.php:364
 #: admin_site_upgrade.php:374 admin_site_upgrade.php:458
 msgid "An error occurred when unzipping the file."
-msgstr "Klaida ivyko bylos išplėtime."
+msgstr "Klaida išarchyvuojant bylą."
 
 #. I18N: Description of the “Interactive tree” module
 #: app/Module/InteractiveTreeModule.php:36
@@ -1959,7 +1993,7 @@ msgstr "Atsakymas"
 
 #: app/Stats.php:6075
 msgid "Antarctica"
-msgstr "Antartide"
+msgstr "Antartida"
 
 #: app/Stats.php:6077
 msgid "Antigua and Barbuda"
@@ -2046,7 +2080,7 @@ msgstr "Ar jūs tikrai norite ištrinti šį žurnalo įrašą?"
 
 #: app/Module/UserMessagesModule.php:63 app/Module/UserMessagesModule.php:105
 msgid "Are you sure you want to delete this message?  It cannot be retrieved later."
-msgstr "Ar jūs tikrai norite ištrinti šią žinutę? Ji negalės būti atkurta."
+msgstr "Ar jūs tikrai norite ištrinti šią žinutę? Atstatymas negalimas."
 
 #: app/Module/FamilyTreeNewsModule.php:103
 msgid "Are you sure you want to delete this news article?"
@@ -2114,7 +2148,7 @@ msgstr "Kompanionas"
 
 #: edit_interface.php:1248 help_text.php:416
 msgid "Associate events with this source"
-msgstr "Su šiuo šaltiniu susije renginiai"
+msgstr "Su šiuo šaltiniu susiję renginiai"
 
 #: search.php:104 search.php:269
 msgid "Associates"
@@ -2209,7 +2243,7 @@ msgstr "Paskutinio keitimo autorius"
 
 #: admin_users.php:423
 msgid "Automatically approve changes made by this user"
-msgstr "Pakeitimus padarytus šio vartotojo tvirtinti automatiškai"
+msgstr "Automatiškai patvirtinti šio vartotojo pakeitimus"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:771
@@ -2272,11 +2306,11 @@ msgstr "Vidutinė gyvenimo trukmė"
 #: app/Stats.php:3562 app/Stats.php:3563 app/Stats.php:3567 app/Stats.php:3571
 #: app/Stats.php:3573
 msgid "Average age in century of marriage"
-msgstr "Vidutinis amžius santuokos amžiuje"
+msgstr "Vidutinis santuokos amžius"
 
 #: app/Stats.php:2343 app/Stats.php:2355
 msgid "Average age related to death century"
-msgstr "Vidutinis amžius mirties amžiuje"
+msgstr "Vidutinis mirties amžius"
 
 #: app/Module/FamilyTreeStatisticsModule.php:174
 #: app/Module/FamilyTreeStatisticsModule.php:393
@@ -2287,7 +2321,7 @@ msgstr "Vidutinis vaikų skaičius šeimoje"
 #. I18N: help text for family tree / GEDCOM file names
 #: admin_trees_config.php:665 admin_trees_manage.php:635
 msgid "Avoid spaces and punctuation.  A family name might be a good choice."
-msgstr "Vengti tarpų ir skyrybos ženklų.  Pavardė gali būti geras pasirinkimas."
+msgstr "Vengti tarpų ir skyrybos ženklų. Pavardė gali būti geras pasirinkimas."
 
 #: app/Date/JalaliDate.php:158
 msgctxt "Abbreviation for Persian month: Azar"
@@ -2423,11 +2457,11 @@ msgstr "Įbrolio krikštas"
 
 #: app/Gedcom/GedcomTag.php:1013
 msgid "Baptism of a half-sibling"
-msgstr "Įbrolio/įsesers krikštas"
+msgstr "Įbrolio/įseserės krikštas"
 
 #: app/Gedcom/GedcomTag.php:1011
 msgid "Baptism of a half-sister"
-msgstr "Įsesers krikštas"
+msgstr "Įseserės krikštas"
 
 #: app/Gedcom/GedcomTag.php:1022
 msgid "Baptism of a sibling"
@@ -2686,11 +2720,11 @@ msgstr "Gimimai pagal šalis"
 
 #: modules_v3/bdm_report/report.xml:8 modules_v3/birth_report/report.xml:8
 msgid "Birth date range end"
-msgstr "Gimimų laikotarpis baigiasi"
+msgstr "Gimimų laikotarpio pabaiga"
 
 #: modules_v3/bdm_report/report.xml:7 modules_v3/birth_report/report.xml:7
 msgid "Birth date range start"
-msgstr "Gimimų laikotarpis prasideda"
+msgstr "Gimimų laikotarpio pradžia"
 
 #: app/Gedcom/GedcomTag.php:1076
 msgid "Birth of a brother"
@@ -2743,11 +2777,11 @@ msgstr "Įbrolio gimimas"
 
 #: app/Gedcom/GedcomTag.php:1071
 msgid "Birth of a half-sibling"
-msgstr "Įbrolio/įsesers gimimas"
+msgstr "Įbrolio/įseserės gimimas"
 
 #: app/Gedcom/GedcomTag.php:1069
 msgid "Birth of a half-sister"
-msgstr "Įsesers gimimas"
+msgstr "Įseserės gimimas"
 
 #: app/Gedcom/GedcomTag.php:1080
 msgid "Birth of a sibling"
@@ -2874,7 +2908,7 @@ msgstr "Atšakos"
 #: app/Controller/BranchesController.php:52
 #, php-format
 msgid "Branches of the %s family"
-msgstr "Atšakos %s šeimos"
+msgstr "%s šeimos atšakos"
 
 #: app/Stats.php:6095
 msgid "Brazil"
@@ -3051,7 +3085,7 @@ msgstr "Įbrolio/įsesers laidotuvės"
 
 #: app/Gedcom/GedcomTag.php:1158
 msgid "Burial of a half-sister"
-msgstr "Įsesers laidotuvės"
+msgstr "Įseserės laidotuvės"
 
 #: app/Gedcom/GedcomTag.php:1183
 msgid "Burial of a husband"
@@ -3148,15 +3182,15 @@ msgstr "Įprastai rodomos vietovės susietos su jūsų šeimos medžiu. Pasirink
 #, php-format
 msgid "By default, your server allows scripts to run for %s second."
 msgid_plural "By default, your server allows scripts to run for %s seconds."
-msgstr[0] "Normaliai jūsų serveris leidžia skriptus veikti %s sekunde."
-msgstr[1] "Normaliai jūsų serveris leidžia skriptus veikti %s sekundes."
-msgstr[2] "Normaliai jūsų serveris leidžia skriptus veikti %s sekundžių."
+msgstr[0] "Pagal nutylėjimą jūsų serveris leidžia skriptus veikti %s sekunde."
+msgstr[1] "Pagal nutylėjimą jūsų serveris leidžia skriptus veikti %s sekundes."
+msgstr[2] "Pagal nutylėjimą jūsų serveris leidžia skriptus veikti %s sekundžių."
 
 #. I18N: %s is an amount of memory, such as 32MB
 #: admin_site_config.php:199
 #, php-format
 msgid "By default, your server allows scripts to use %s of memory."
-msgstr "Normaliai jūsų serveris leidžia skriptams naudotis %s atminties."
+msgstr "Pagal nutylėjimą jūsų serveris leidžia skriptams naudoti %s atminties."
 
 #. I18N: Name of a module.  CKEditor is a trademark.  Do not translate it?  http://ckeditor.com
 #: app/Module/CkeditorModule.php:25
@@ -5244,6 +5278,9 @@ msgstr ""
 #: help_text.php:449
 msgid "Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account."
 msgstr ""
+"Kiekviena paskyra turi opciją \"automatiškai priimti pakeitimus\". Kai tai "
+"įjungta, visi pakeitimai yra iš karto išsaugomi. Dauguma administratorių "
+"įjungia šią opciją savo paskyroms."
 
 #: statistics.php:127
 msgid "Earliest birth"
@@ -6546,7 +6583,7 @@ msgstr "GEDCOM byla"
 
 #: help_text.php:385
 msgid "GEDFact shared note assistant"
-msgstr ""
+msgstr "GEDFact užrašų pagalbininkas"
 
 #: app/Stats.php:6148
 msgid "Gabon"
@@ -14300,6 +14337,8 @@ msgstr "Ši saugykla buvo pakeista. Jūs turėtumėte peržiūrėti pakeitimus i
 #: admin_users.php:534
 msgid "This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users."
 msgstr ""
+"Ši rolė turi visus redaguotojo leidimus, taip pat leidimus patvirtinti/"
+"atmesti naujus pakeitimus."
 
 #: admin_users.php:548
 msgid "This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the website, users, and modules."
@@ -15075,6 +15114,8 @@ msgstr "Naudoti slaptažodį"
 #: admin_trees_config.php:1128
 msgid "Use silhouette images when no highlighted image for that individual has been specified.  The images used are specific to the gender of the individual in question."
 msgstr ""
+"Naudoti silueto paveikslus kai nėra pagrindinės nuotraukos. Naudojami "
+"paveikslai atitinka nurodytą individo lytį."
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1123
@@ -15493,6 +15534,8 @@ msgstr ""
 #: admin_trees_config.php:1699
 msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
 msgstr ""
+"Kai ši opcija įjungta, sistema apskaičiuoja amžių skirtumus tarp giminaičių, "
+"vaikių, sutuoktinių ir kt."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2244
@@ -15504,6 +15547,8 @@ msgstr ""
 #: help_text.php:440
 msgid "When you add, edit, or delete information, the changes are not saved immediately.  Instead, they are kept in a “pending” area.  These pending changes need to be reviewed by a moderator before they are accepted."
 msgstr ""
+"Kai Jūs prideda, keičiat ar ištrinat informaciją, pakeitimai nėra išsaugomi "
+"iš karto. Šie pakeitimus turi peržiūrėti ir patvirtinti moderatoriai."
 
 #: message.php:140
 msgid "When you send this message you will receive a copy sent via email to the address you provided."

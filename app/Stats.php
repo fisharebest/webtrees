@@ -5508,8 +5508,6 @@ class Stats {
 	 * @return string
 	 */
 	private function getLatestUserData($type = 'userid', $params = array()) {
-		global $DATE_FORMAT, $TIME_FORMAT;
-
 		static $user_id = null;
 
 		if ($user_id === null) {
@@ -5530,14 +5528,14 @@ class Stats {
 			if (is_array($params) && isset($params[0]) && $params[0] != '') {
 				$datestamp = $params[0];
 			} else {
-				$datestamp = $DATE_FORMAT;
+				$datestamp = I18N::dateFormat();
 			}
 			return timestamp_to_gedcom_date($user->getPreference('reg_timestamp'))->display(false, $datestamp);
 		case 'regtime':
 			if (is_array($params) && isset($params[0]) && $params[0] != '') {
 				$datestamp = $params[0];
 			} else {
-				$datestamp = str_replace('%', '', $TIME_FORMAT);
+				$datestamp = str_replace('%', '', I18N::timeFormat());
 			}
 			return date($datestamp, $user->getPreference('reg_timestamp'));
 		case 'loggedin':
