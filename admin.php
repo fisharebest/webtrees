@@ -588,7 +588,9 @@ if (
 							<td>
 								<?php foreach ($administrators as $n => $user): ?>
 									<?php echo $n ? I18N::$list_separator : ''; ?>
-									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>"><?php echo Filter::escapeHtml($user->real_name); ?></a>
+									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>" dir="auto">
+										<?php echo Filter::escapeHtml($user->real_name); ?>
+									</a>
 								<?php endforeach; ?>
 							</td>
 						</tr>
@@ -599,7 +601,9 @@ if (
 							<td>
 								<?php foreach ($managers as $n => $user): ?>
 									<?php echo $n ? I18N::$list_separator : ''; ?>
-									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>"><?php echo Filter::escapeHtml($user->real_name); ?></a>
+									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>" dir="auto">
+										<?php echo Filter::escapeHtml($user->real_name); ?>
+									</a>
 								<?php endforeach; ?>
 							</td>
 						</tr>
@@ -610,7 +614,9 @@ if (
 							<td>
 								<?php foreach ($moderators as $n => $user): ?>
 									<?php echo $n ? I18N::$list_separator : ''; ?>
-									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>"><?php echo Filter::escapeHtml($user->real_name); ?></a>
+									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>" dir="auto">
+										<?php echo Filter::escapeHtml($user->real_name); ?>
+									</a>
 								<?php endforeach; ?>
 							</td>
 						</tr>
@@ -621,7 +627,9 @@ if (
 							<td>
 								<?php foreach ($unverified as $n => $user): ?>
 									<?php echo $n ? I18N::$list_separator : ''; ?>
-									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>"><?php echo Filter::escapeHtml($user->real_name); ?></a>
+									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>" dir="auto">
+										<?php echo Filter::escapeHtml($user->real_name); ?>
+									</a>
 								<?php endforeach; ?>
 							</td>
 						</tr>
@@ -632,7 +640,9 @@ if (
 							<td>
 								<?php foreach ($unapproved as $n => $user): ?>
 									<?php echo $n ? I18N::$list_separator : ''; ?>
-									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>"><?php echo Filter::escapeHtml($user->real_name); ?></a>
+									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>" dir="auto">
+										<?php echo Filter::escapeHtml($user->real_name); ?>
+									</a>
 								<?php endforeach; ?>
 							</td>
 						</tr>
@@ -643,7 +653,9 @@ if (
 							<td>
 								<?php foreach ($logged_in as $n => $user): ?>
 								<?php echo $n ? I18N::$list_separator : ''; ?>
-									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>"><?php echo Filter::escapeHtml($user->real_name); ?></a>
+									<a href="admin_users.php?action=edit&user_id=<?php echo $user->user_id; ?>" dir="auto">
+										<?php echo Filter::escapeHtml($user->real_name); ?>
+									</a>
 								<?php endforeach; ?>
 							</td>
 						</tr>
