@@ -71,7 +71,7 @@ $html  = $matches[2];
 					<?php echo I18N::translate('PHP information'); ?>
 				</h2>
 			</div>
-			<div class="panel-body">
+			<div class="panel-body" dir="ltr">
 				<style type="text/css" scoped>
 					<?php echo $style; ?>
 					table { width: 100%; }
