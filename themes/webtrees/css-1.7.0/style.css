@@ -2747,7 +2747,6 @@ dd .deletelink {
 	font-weight: bold;
 	padding: 5px 10px 0;
 	width: 240px;
-	white-space: nowrap;
 }
 
 #edituser-table .value {
