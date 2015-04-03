@@ -331,7 +331,6 @@ $controller
 		echo '<br>';
 		echo '<a onclick="move_down_block(\'main_select\');" title="', I18N::translate('Move down'), '"class="', $IconDarrow, '"></a>';
 		echo '<br><br>';
-		echo help_link('block_move_up');
 	echo '</td>';
 	// NOTE: Row 2 column 2: Left (Main) block list
 	echo '<td class="optionbox center">';
@@ -349,7 +348,6 @@ $controller
 		echo '<br>';
 		echo '<a onclick="move_left_right_block(\'available_select\', \'main_select\');" title="', I18N::translate('Add'), '"class="', $IconLarrow, '"></a>';
 		echo '<br><br>';
-		echo help_link('block_move_right');
 	echo '</td>';
 	// Row 2 column 4: Middle (Available) block list
 	echo '<td class="optionbox center">';
@@ -367,7 +365,6 @@ $controller
 		echo '<br>';
 		echo '<a onclick="move_left_right_block(\'available_select\', \'right_select\');" title="', I18N::translate('Add'), '"class="', $IconRarrow, '"></a>';
 		echo '<br><br>';
-		echo help_link('block_move_right');
 	echo '</td>';
 	// NOTE: Row 2 column 6: Right block list
 	echo '<td class="optionbox center">';
@@ -383,7 +380,6 @@ $controller
 		echo '<br>';
 		echo '<a onclick="move_down_block(\'right_select\');" title="', I18N::translate('Move down'), '"class="', $IconDarrow, '"></a>';
 		echo '<br><br>';
-		echo help_link('block_move_up');
 	echo '</td>';
 	echo '</tr>';
 	// NOTE: Row 3 columns 1-7: Summary description of currently selected block
