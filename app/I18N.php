@@ -520,7 +520,7 @@ class I18N {
 	 */
 	public static function plural(/* var_args */) {
 		$args    = func_get_args();
-		$args[0] = self::$translator->translatePlural($args[0], $args[1], $args[2]);
+		$args[0] = self::$translator->translatePlural($args[0], $args[1], (int) $args[2]);
 		unset($args[1], $args[2]);
 
 		return self::substitutePlaceholders($args);
