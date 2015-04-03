@@ -471,7 +471,7 @@ $controller->pageHeader();
 		<div class="col-sm-9">
 			<?php echo edit_field_yes_no('USE_REGISTRATION_MODULE', Site::getPreference('USE_REGISTRATION_MODULE')); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Allow visitors to request account registration” site configuration setting */ I18N::translate('Gives visitors the option of registering themselves for an account on the website.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, an administrator will have to approve the registration before it becomes active.'); ?>
+				<?php echo /* I18N: Help text for the “Allow visitors to request account registration” site configuration setting */ I18N::translate('Gives visitors the option of registering themselves for an account on the website.<br><br>The visitor will receive an email message with a code to verify their application for an account.  After verification, an administrator will have to approve the registration before it becomes active.'); ?>
 			</p>
 		</div>
 	</fieldset>
