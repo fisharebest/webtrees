@@ -290,7 +290,7 @@ case 'edit':
 	case 'FAM':
 	case 'INDI':
 		// FAM and INDI records have real facts.  They can take NOTE/SOUR/OBJE/etc.
-		if ($level1type !== 'SEX' && $level1type !== 'NOTE') {
+		if ($level1type !== 'SEX' && $level1type !== 'NOTE' && $level1type !== 'ALIA') {
 			if ($level1type !== 'SOUR') {
 				print_add_layer('SOUR');
 			}
@@ -366,7 +366,7 @@ case 'add':
 	// Genealogical facts (e.g. for INDI and FAM records) can have 2 SOUR/NOTE/OBJE/ASSO/RESN ...
 	if ($level0type == 'INDI' || $level0type == 'FAM') {
 		// ... but not facts which are simply links to other records
-		if ($fact != 'OBJE' && $fact != 'NOTE' && $fact != 'SHARED_NOTE' && $fact != 'OBJE' && $fact != 'REPO' && $fact != 'SOUR' && $fact != 'ASSO') {
+		if ($fact != 'OBJE' && $fact != 'NOTE' && $fact != 'SHARED_NOTE' && $fact != 'OBJE' && $fact != 'REPO' && $fact != 'SOUR' && $fact != 'ASSO' && $fact != 'ALIA') {
 			print_add_layer('SOUR');
 			print_add_layer('OBJE');
 			// Don’t add notes to notes!

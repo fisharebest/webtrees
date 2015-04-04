@@ -679,7 +679,10 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 
 			// Extra markup for specific fact types
 			switch ($fact) {
+			case 'ALIA':
 			case 'ASSO':
+				echo ' data-autocomplete-type="INDI"';
+				break;
 			case '_ASSO':
 				echo ' data-autocomplete-type="ASSO"';
 				break;
@@ -783,6 +786,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 	case 'FAMS':
 		echo print_findfamily_link($element_id);
 		break;
+	case 'ALIA':
 	case 'ASSO':
 	case '_ASSO':
 		echo print_findindi_link($element_id, $element_id . '_description');
@@ -880,6 +884,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 	}
 	if ($value && $value != 'new' && $islink) {
 		switch ($fact) {
+		case 'ALIA':
 		case 'ASSO':
 		case '_ASSO':
 			$tmp = Individual::getInstance($value, $WT_TREE);
@@ -1434,7 +1439,7 @@ function create_add_form($fact) {
 			$fact .= ' ' . GedcomTag::createUid();
 		}
 		// These new level 1 tags need to be turned into links
-		if (in_array($fact, array('ASSO'))) {
+		if (in_array($fact, array('ALIA', 'ASSO'))) {
 			$fact .= ' @';
 		}
 		if (in_array($fact, $emptyfacts)) {
