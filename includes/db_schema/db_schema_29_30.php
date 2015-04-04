@@ -46,6 +46,12 @@ Database::exec(
 	" SET setting_value = REPLACE(setting_value, '#WT_VERSION#', '#webtreesVersion#')" .
 	" WHERE setting_name = 'html' AND module_name = 'html'"
 );
+Database::exec(
+	"UPDATE `##block_setting` " .
+	" JOIN `##block` USING (block_id)" .
+	" SET setting_value = REPLACE(setting_value, '#browserTime24#', '#browserTime#')" .
+	" WHERE setting_name = 'html' AND module_name = 'html'"
+);
 
 // Language settings have changed from locale (en_GB) to language tag (en-GB)
 Database::exec(

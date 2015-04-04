@@ -90,7 +90,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 		$content = $html;
 
 		if ($show_timestamp) {
-			$content .= '<br>' . format_timestamp($this->getBlockSetting($block_id, 'timestamp', WT_TIMESTAMP));
+			$content .= '<br>' . format_timestamp($this->getBlockSetting($block_id, 'timestamp', WT_TIMESTAMP) + WT_TIMESTAMP_OFFSET);
 		}
 
 		if ($template) {

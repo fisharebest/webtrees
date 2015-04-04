@@ -170,7 +170,7 @@ default:
 
 	echo '</div>';
 	echo '<div id="login-box">
-		<form id="login-form" name="login-form" method="post" action="', WT_LOGIN_URL, '" onsubmit="d=new Date(); this.timediff.value=d.getTimezoneOffset()*60;">
+		<form id="login-form" name="login-form" method="post" action="', WT_LOGIN_URL, '" onsubmit="d=new Date(); this.timediff.value=-60*d.getTimezoneOffset();">
 		<input type="hidden" name="action" value="login">
 		<input type="hidden" name="url" value="', Filter::escapeHtml($url), '">
 		<input type="hidden" name="timediff" value="0">';

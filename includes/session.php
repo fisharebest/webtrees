@@ -457,21 +457,15 @@ if (empty($WEBTREES_EMAIL)) {
 // Note that the database/webservers may not be synchronised, so use DB time throughout.
 define('WT_TIMESTAMP', (int) Database::prepare("SELECT UNIX_TIMESTAMP()")->fetchOne());
 
-// Server timezone is defined in php.ini
-define('WT_SERVER_TIMESTAMP', WT_TIMESTAMP + (int) date('Z'));
-
 if (Auth::check()) {
-	define('WT_CLIENT_TIMESTAMP', WT_TIMESTAMP - $WT_SESSION->timediff);
+	define('WT_TIMESTAMP_OFFSET', $WT_SESSION->timediff);
 } else {
-	define('WT_CLIENT_TIMESTAMP', WT_SERVER_TIMESTAMP);
+	define('WT_TIMESTAMP_OFFSET', (int) date('Z'));
 }
-define('WT_CLIENT_JD', 2440588 + (int) (WT_CLIENT_TIMESTAMP / 86400));
+define('WT_CLIENT_JD', 2440588 + (int) ((WT_TIMESTAMP + WT_TIMESTAMP_OFFSET) / 86400));
 
 // Application configuration data - things that aren’t (yet?) user-editable
 require WT_ROOT . 'includes/config_data.php';
-
-
-
 
 // The login URL must be an absolute URL, and can be user-defined
 if (Site::getPreference('LOGIN_URL')) {

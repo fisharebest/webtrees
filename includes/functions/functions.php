@@ -30,7 +30,7 @@ function fetch_latest_version() {
 	if ($last_update_timestamp < WT_TIMESTAMP - 24 * 60 * 60) {
 		$row = Database::prepare("SHOW VARIABLES LIKE 'version'")->fetchOneRow();
 		$params = '?w=' . WT_VERSION . '&p=' . PHP_VERSION . '&m=' . $row->value . '&o=' . (DIRECTORY_SEPARATOR === '/' ? 'u' : 'w');
-		$latest_version_txt = File::fetchUrl('http://svn.webtrees.net/build/latest-version.txt' . $params);
+		$latest_version_txt = File::fetchUrl('http://dev.webtrees.net/build/latest-version.txt' . $params);
 		if ($latest_version_txt) {
 			Site::setPreference('LATEST_WT_VERSION', $latest_version_txt);
 			Site::setPreference('LATEST_WT_VERSION_TIMESTAMP', WT_TIMESTAMP);

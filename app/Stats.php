@@ -5662,28 +5662,21 @@ class Stats {
 	 * @return string
 	 */
 	public function browserDate() {
-		return timestamp_to_gedcom_date(WT_CLIENT_TIMESTAMP)->display();
+		return timestamp_to_gedcom_date(WT_TIMESTAMP + WT_TIMESTAMP_OFFSET)->display();
 	}
 
 	/**
 	 * @return string
 	 */
 	public function browserTime() {
-		return date('g:i a', WT_CLIENT_TIMESTAMP);
-	}
-
-	/**
-	 * @return string
-	 */
-	public function browserTime24() {
-		return date('G:i', WT_CLIENT_TIMESTAMP);
+		return date(str_replace('%', '', I18N::timeFormat()), WT_TIMESTAMP + WT_TIMESTAMP_OFFSET);
 	}
 
 	/**
 	 * @return string
 	 */
 	public function browserTimezone() {
-		return date('T', WT_CLIENT_TIMESTAMP);
+		return date('T', WT_TIMESTAMP + WT_TIMESTAMP_OFFSET);
 	}
 
 	/**
