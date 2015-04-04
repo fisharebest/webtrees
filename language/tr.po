@@ -88,7 +88,7 @@ msgstr "%1$s (%2$s)"
 #: admin_site_upgrade.php:315
 #, php-format
 msgid "%1$s KB were downloaded in %2$s seconds."
-msgstr "%2$s saniyede %1$sKB indirildi."
+msgstr "%2$s saniyede %1$s KB indirildi."
 
 #. I18N: placeholders are GEDCOM XREFs, such as R123
 #: admin_site_merge.php:44 admin_site_merge.php:48 admin_trees_check.php:156
@@ -176,12 +176,12 @@ msgstr "%1$s’sının %2$s"
 #. I18N: This is the format string for the time-of-day.  See http://php.net/date for codes
 #: app/I18N.php:806
 msgid "%H:%i:%s"
-msgstr "%H:%i"
+msgstr "%H:%i:%s"
 
 #. I18N: This is the format string for full dates.  See http://php.net/date for codes
 #: app/I18N.php:156
 msgid "%j %F %Y"
-msgstr "%s-%M-%Y"
+msgstr "%j %F %Y"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: app/Stats.php:6329
@@ -5397,7 +5397,7 @@ msgstr "Email adresi"
 
 #: admin_users.php:377
 msgid "Email verified"
-msgstr "Email onaylı"
+msgstr "Email doğrulandı"
 
 #: app/Stats.php:77
 msgid "Embedded variable"
@@ -6291,7 +6291,7 @@ msgstr "Örneğin, yol uzaklğını 2 olarak belirtirseniz, şahıs torununu(ço
 
 #: app/Theme/BaseTheme.php:265
 msgid "For help with genealogy questions contact"
-msgstr "Soyağacı soruları ile yardım için irtibat"
+msgstr "Soyağacı soruları ve yardım için irtibat adresi"
 
 #: app/Theme/BaseTheme.php:276
 msgid "For technical support and information contact"
@@ -9718,7 +9718,7 @@ msgstr "Evli değil"
 
 #: admin.php:625
 msgid "Not verified by the user"
-msgstr "Kendini onaylamayan kullanıcılar"
+msgstr "Kendini doğrulamayan kullanıcılar"
 
 #. I18N: gedcom tag NOTE
 #: app/Controller/FamilyController.php:181 app/Gedcom/GedcomTag.php:635
@@ -15083,7 +15083,7 @@ msgstr "Doğrulama kodu"
 
 #: admin_users.php:853
 msgid "Verified"
-msgstr "Onaylı"
+msgstr "Doğrulandı"
 
 #: app/Gedcom/GedcomCodeTemp.php:330
 msgid "Vernal, Utah"
@@ -15302,7 +15302,11 @@ msgstr "Batı Sahra"
 #: admin_users.php:384
 msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
 msgstr "Yeni bir kullanıcı kayıt olduğunda, belirtilen mail adresine bir onaylama maili gnderilir. Kullanıcı mailde bulunan onaylama linkine tıkladığında belirtilen mail adresinin doğru olduğu onaylanmış olur ve \"Mail Onaylı\" seçeneği otomatik olarak seçilir."
-
+msgstr ""
+"Yeni bir kullanıcı kayıt olduğunda, belirtilen mail adresine bir onaylama "
+"maili gnderilir. Kullanıcı mailde bulunan onaylama linkine tıkladığında "
+"belirtilen mail adresinin doğru olduğu onaylanmış olur ve \"Email "
+"doğrulandı\" seçeneği otomatik olarak seçilir."
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:45
 msgid "When adding a link, the ID field cannot be empty."
 msgstr "Bir link eklenirken ID alanı boş geçilemez."
