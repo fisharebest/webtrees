@@ -30,9 +30,8 @@ array_walk($variables, function(&$x) { $x = str_replace(',', ', ', $x); });
 
 ob_start();
 phpinfo(INFO_ALL & ~INFO_CREDITS & ~INFO_LICENSE);
-preg_match('%<style type="text/css">(.*?)</style>.*?(<body>.*</body>)%s', ob_get_clean(), $matches);
-$style = $matches[1];
-$html  = $matches[2];
+preg_match('%<body>(.*)</body>%s', ob_get_clean(), $matches);
+$html = $matches[1];
 
 ?>
 
@@ -72,12 +71,9 @@ $html  = $matches[2];
 				</h2>
 			</div>
 			<div class="panel-body" dir="ltr">
-				<style type="text/css" scoped>
-					<?php echo $style; ?>
-					table { width: 100%; }
-					td.v { word-break: break-all; }
-				</style>
-				<?php echo $html; ?>
+				<div class="php-info">
+					<?php echo $html; ?>
+				</div>
 			</div>
 		</div>
 	</div>
