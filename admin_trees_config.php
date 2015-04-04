@@ -1217,7 +1217,7 @@ $controller
 			<input
 				class="form-control"
 				id="COMMON_NAMES_ADD"
-				maxlength="5"
+				maxlength="255"
 				name="COMMON_NAMES_ADD"
 				type="text"
 				value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('COMMON_NAMES_ADD')); ?>"
@@ -1237,7 +1237,7 @@ $controller
 			<input
 				class="form-control"
 				id="COMMON_NAMES_REMOVE"
-				maxlength="5"
+				maxlength="255"
 				name="COMMON_NAMES_REMOVE"
 				type="text"
 				value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('COMMON_NAMES_REMOVE')); ?>"
