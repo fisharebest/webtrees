@@ -10,6 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.3-dev\n"
 
 #: modules_v3/ahnentafel_report/report.xml:157
 #: modules_v3/ahnentafel_report/report.xml:185
@@ -260,15 +261,15 @@ msgstr[1] "vor %s Tagen"
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s Familie wurde aktualisiert."
+msgstr[1] "%s Familien wurden aktualisiert."
 
 #: admin.php:773
 #, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s Stammbaum"
+msgstr[1] "%s Stammbäume"
 
 #: app/Stats.php:4749 app/Stats.php:4753
 #, php-format
@@ -295,8 +296,8 @@ msgstr[1] "%s Personen"
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s Person wurde aktualisiert."
+msgstr[1] "%s Personen wurden aktualisiert."
 
 #: app/Module/GoogleMapsModule.php:907
 #, php-format
@@ -352,8 +353,8 @@ msgstr[1] "vor %s Monaten"
 #, php-format
 msgid "%s note has been updated."
 msgid_plural "%s notes have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s Bemerkung wurde aktualisiert."
+msgstr[1] "%s Bemerkungen wurden aktualisiert."
 
 #. I18N: %s=“fifth cousin”, etc. http://www.ancestry.com/learn/library/article.aspx?article=2856
 #: includes/functions/functions.php:2108
@@ -378,8 +379,8 @@ msgstr[1] "vor %s Sekunden"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s Quelle wurde aktualisiert."
+msgstr[1] "%s Quellen wurden aktualisiert."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2124
@@ -731,11 +732,11 @@ msgstr "Eine Beschreibung für den Grund oder die Ursache des verknüpften Ereig
 
 #: admin_trees_download.php:116 admin_trees_manage.php:209
 msgid "A file on the server"
-msgstr ""
+msgstr "Eine Datei auf dem Server"
 
 #: admin_trees_download.php:201 admin_trees_manage.php:198
 msgid "A file on your computer"
-msgstr ""
+msgstr "Eine Datei auf Ihrem Computer"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:30
@@ -1347,7 +1348,7 @@ msgstr "Fügt den Personen im Stammbaum erzählende Geschichten zu"
 
 #: admin_trees_manage.php:266
 msgid "Add spaces where long lines were wrapped"
-msgstr ""
+msgstr "Leerzeichen dort hinzufügen, wo lange Zeilen umgebrochen werden"
 
 #. I18N: A media path (e.g. C:\aaa\bbb\ccc\) in a GEDCOM file
 #: admin_trees_download.php:161 app/Module/ClippingsCartModule.php:362
@@ -3349,7 +3350,7 @@ msgstr "Änderungen"
 
 #. I18N: title for list of recent changes
 #: app/Module/RecentChangesModule.php:68
-#, fuzzy, php-format
+#, php-format
 msgid "Changes in the last %s day"
 msgid_plural "Changes in the last %s days"
 msgstr[0] "Änderungen am gestrigen Tag"
@@ -3666,7 +3667,7 @@ msgstr "Klicken Sie auf %s, um diese Person als Familienoberhaupt auszuwählen."
 
 #: edit_interface.php:1747
 msgid "Click a row, then drag-and-drop to re-order media"
-msgstr "Zeile klicken und verschieben, um Medienobjekte neu zu ordnen "
+msgstr "Zeile klicken und verschieben, um Medienobjekte neu zu ordnen"
 
 #: admin_trees_manage.php:690
 msgid "Click here for PhpGedView to webtrees transfer wizard"
@@ -3791,7 +3792,7 @@ msgstr "Fertiggestellt; Datum unbekannt"
 
 #: admin_trees_download.php:142
 msgid "Compress the GEDCOM file"
-msgstr ""
+msgstr "Komprimieren der GEDCOM Datei"
 
 #. I18N: gedcom tag CONC
 #: app/Gedcom/GedcomTag.php:303
@@ -5657,7 +5658,7 @@ msgstr "Export"
 
 #: admin_trees_download.php:34
 msgid "Export a GEDCOM file"
-msgstr ""
+msgstr "Eine GEDCOM-Datei exportieren"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:279
@@ -5666,7 +5667,7 @@ msgstr "Exportiere alle Familienbäume in GEDCOM Dateien…"
 
 #: admin_trees_download.php:135
 msgid "Export options"
-msgstr ""
+msgstr "Optionen exportieren"
 
 #. I18N: A configuration setting.  ... [who were] born in the last XX years or died in the last YY years
 #: admin_trees_config.php:473
@@ -6234,7 +6235,7 @@ msgstr "Erstes Ereignis"
 #. I18N: Record is an indvidual, source, etc.
 #: admin_site_merge.php:331
 msgid "First record"
-msgstr ""
+msgstr "Erster Eintrag"
 
 #: app/Module/BatchUpdate/BatchUpdateNameFormatPlugin.php:29
 msgid "Fix name slashes and spaces"
