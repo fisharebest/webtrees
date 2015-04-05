@@ -298,7 +298,7 @@ case 'edit':
 				print_add_layer('OBJE');
 			}
 			print_add_layer('NOTE');
-			print_add_layer('SHARED_NOTE');
+			print_add_layer('SHARED_NOTE', 2, $level1type);
 			if ($level1type !== 'ASSO' && $level1type !== 'NOTE' && $level1type !== 'SOUR') {
 				print_add_layer('ASSO');
 			}
@@ -372,7 +372,7 @@ case 'add':
 			// Don’t add notes to notes!
 			if ($fact != 'NOTE') {
 				print_add_layer('NOTE');
-				print_add_layer('SHARED_NOTE');
+				print_add_layer('SHARED_NOTE', 2, $fact);
 			}
 			print_add_layer('ASSO');
 			// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window

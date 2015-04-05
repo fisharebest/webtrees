@@ -851,7 +851,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 			}
 
 			// Allow the GEDFact_assistant module to create a formatted shared note.
-			if (Module::getModuleByName('GEDFact_assistant')) {
+			if ($upperlevel === 'CENS' && Module::getModuleByName('GEDFact_assistant')) {
 				echo CensusAssistantModule::addNoteWithAssistantLink($element_id, $xref, $action);
 			}
 		}
@@ -923,8 +923,9 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
  *
  * @param string  $tag
  * @param integer $level
+ * @param string  $parent_tag
  */
-function print_add_layer($tag, $level = 2) {
+function print_add_layer($tag, $level = 2, $parent_tag = '') {
 	global $WT_TREE;
 
 	switch ($tag) {
@@ -994,7 +995,7 @@ function print_add_layer($tag, $level = 2) {
 		echo '<div id="newshared_note" style="display: none;">';
 		echo '<table class="facts_table">';
 		// 2 SHARED NOTE
-		add_simple_tag($level . ' SHARED_NOTE');
+		add_simple_tag($level . ' SHARED_NOTE', $parent_tag);
 		echo '</table></div>';
 		break;
 

@@ -322,12 +322,6 @@ class CensusAssistantModule extends AbstractModule {
 			return '';
 		}
 
-		// There are lots of “add shared note” links.  We only need to modify the 2nd one
-		static $n = 0;
-		if (++$n != 2) {
-			return '';
-		}
-
 		$controller->addInlineJavascript('
 			var pid_array=jQuery("#pid_array");
 			function set_pid_array(pa) {
