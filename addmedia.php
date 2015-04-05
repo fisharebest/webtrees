@@ -478,7 +478,7 @@ if ($gedfile == 'FILE') {
 
 	echo '<tr>';
 	echo '<td class="descriptionbox wrap width25">';
-	echo I18N::translate('Filename on server'), help_link('upload_server_file');
+	echo I18N::translate('Filename on server');
 	echo '</td>';
 	echo '<td class="optionbox wrap wrap">';
 	if (Auth::isManager($WT_TREE)) {

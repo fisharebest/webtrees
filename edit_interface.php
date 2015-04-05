@@ -1245,7 +1245,7 @@ case 'addnewsource':
 				<?php echo keep_chan(); ?>
 			</table>
 				<a href="#"  onclick="return expand_layer('events');"><i id="events_img" class="icon-plus"></i>
-				<?php echo I18N::translate('Associate events with this source'); ?></a><?php echo help_link('edit_SOUR_EVEN'); ?>
+				<?php echo I18N::translate('Associate events with this source'); ?></a>
 				<div id="events" style="display: none;">
 				<table class="facts_table">
 				<tr>
