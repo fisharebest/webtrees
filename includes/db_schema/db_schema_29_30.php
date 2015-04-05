@@ -29,7 +29,7 @@ try {
 }
 
 // No longer used
-Database::exec("DELETE FROM `##user_setting` WHERE setting_name IN ('edit_account')");
+Database::exec("DELETE FROM `##user_setting` WHERE setting_name IN ('editaccount')");
 Database::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('SHOW_STATS')");
 Database::exec("DELETE FROM `##site_setting` WHERE setting_name IN ('REQUIRE_ADMIN_AUTH_REGISTRATION')");
 
