@@ -146,8 +146,8 @@ administration page, where you'll need to select one of the following options:
    * ADD a GEDCOM file from your server, (if your GEDCOM file is too large to upload,
      you can copy it to the webtrees/data folder, and load it from there)
    * CREATE a new, empty GEDCOM file
-   * TRANSFER your existing PGV data straight into **webtrees**, using the
-     PGV-to-**webtrees** wizard described in section 9 below:
+   * TRANSFER your existing PhpGedView data straight into **webtrees**, using the
+     PhpGedView-to-**webtrees** wizard described in section 9 below:
      [Converting from phpgedview](#converting-from-phpgedview)
 
 There are *lots* of configuration options. You'll probably want to review the
@@ -363,32 +363,32 @@ your responsibility.
 
 ### Converting from phpgedview
 
-If you are moving to **webtrees** from an existing PhpGedView (“PGV”) setup, and
-your PGV install meets certain requirements, **webtrees** has provided a “wizard”
+If you are moving to **webtrees** from an existing PhpGedView setup, and
+your PhpGedView install meets certain requirements, **webtrees** has provided a “wizard”
 to help make the transfer of the majority of your data a relatively quick and
 painless operation. See exceptions noted below. Please note that we have designed
-this wizard so as to not disturb your existing PGV installation, leaving all those
+this wizard so as to not disturb your existing PhpGedView installation, leaving all those
 settings, data and your website intact and fully functional.
 
 The requirements are:
 
-* The PGV database and index directory must be on the same server as **webtrees**.
+* The PhpGedView database and index directory must be on the same server as **webtrees**.
 * Your **webtrees** MySQL database username and password must either be the same
-  as your PGV username and password, or if you created a new user for **webtrees**,
-  that new user must also have full privileges to access your PGV database.
-* PGV must be at least versions 4.2.3 or 4.2.4 (this corresponds to an internal
+  as your PhpGedView username and password, or if you created a new user for **webtrees**,
+  that new user must also have full privileges to access your PhpGedView database.
+* PhpGedView must be at least versions 4.2.3 or 4.2.4 (this corresponds to an internal
   “PGV_SCHEMA_VERSION” of between 10 and 14).  Newer versions, including the current
   version 4.3 SVN work (as of JAN 2013) also currently, and later versions, should
   they be released, will probably work, provided the data structures do not change;
-* All changes in PGV must be accepted (as pending edits will not be transfered).
-* All existing PGV users must have an email address, and it must be unique to that
-  user (PGV allows users to delete their email address, or have the same email
+* All changes in PhpGedView must be accepted (as pending edits will not be transfered).
+* All existing PhpGedView users must have an email address, and it must be unique to that
+  user (PhpGedView allows users to delete their email address, or have the same email
   address as other users;  **webtrees** requires that all users have their own
   unique email address).
 * The wizard transfer process overwrites the username and password you may have
   entered in setting up the initial admin account. The main administration user
   name and password in **webtrees** will be identical to the admin user name and
-  password from PGV after running the wizard. Once done, you can change it back
+  password from PhpGedView after running the wizard. Once done, you can change it back
   if desired.
 
 
@@ -403,8 +403,8 @@ be outlined there.
 
 This transfer wizard is not able to assist with moving media items.  You will need
 to set up and move or copy your media configuration and objects separately after
-the transfer wizard is finished. If you use the media firewall in PGV with a
-directory outside the PGV root, then duplicating the media configuration in
+the transfer wizard is finished. If you use the media firewall in PhpGedView with a
+directory outside the PhpGedView root, then duplicating the media configuration in
 **webtrees** to use the same firewall directory should make your media available
 in **webtrees**.
 

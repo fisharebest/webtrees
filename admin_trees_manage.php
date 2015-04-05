@@ -652,7 +652,7 @@ $controller->pageHeader();
 		</div>
 	</div>
 	<?php endif; ?>
-	<!-- display link to PGV-WT transfer wizard on first visit to this page, before any GEDCOM is loaded -->
+	<!-- display link to PhpGedView-WT transfer wizard on first visit to this page, before any GEDCOM is loaded -->
 	<?php if (count(Tree::GetAll()) === 0 && count(User::all()) === 1): ?>
 	<div class="panel panel-default">
 		<div class="panel-heading">
@@ -666,20 +666,20 @@ $controller->pageHeader();
 		<div id="pgv-import-wizard" class="panel-collapse collapse">
 			<div class="panel-body">
 				<p>
-					<?php echo I18N::translate('The PGV to webtrees wizard is an automated process to assist administrators make the move from a PGV installation to a new webtrees one.  It will transfer all PGV GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:'); ?>
+					<?php echo I18N::translate('The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one.  It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:'); ?>
 				</p>
 				<ul>
 					<li>
-						<?php echo I18N::translate('webtrees’ database must be on the same server as PGV’s'); ?>
+						<?php echo I18N::translate('webtrees’ database must be on the same server as PhpGedView’s'); ?>
 					</li>
 					<li>
-						<?php echo /* I18N: %s is a number */ I18N::translate('PGV must be version 4.2.3, or any SVN up to #%s', I18N::digits(7101)); ?>
+						<?php echo /* I18N: %s is a number */ I18N::translate('PhpGedView must be version 4.2.3, or any SVN up to #%s', I18N::digits(7101)); ?>
 					</li>
 					<li>
-						<?php echo I18N::translate('All changes in PGV must be accepted'); ?>
+						<?php echo I18N::translate('All changes in PhpGedView must be accepted'); ?>
 					</li>
 					<li>
-						<?php echo I18N::translate('All existing PGV users must have distinct email addresses'); ?>
+						<?php echo I18N::translate('All existing PhpGedView users must have distinct email addresses'); ?>
 					</li>
 				</ul>
 				<p>

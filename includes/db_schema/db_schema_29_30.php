@@ -21,7 +21,7 @@ use PDOException;
 // Update the database schema from version 29-30
 // - delete an old/unused table
 
-// Originally migrated from PGV, but never used.
+// Originally migrated from PhpGedView, but never used.
 try {
 	Database::exec("DROP TABLE `##ip_address`");
 } catch (PDOException $ex) {
