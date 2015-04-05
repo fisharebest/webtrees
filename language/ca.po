@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2015-04-05 21:03+0100\n"
+"POT-Creation-Date: 2015-04-05 21:47+0100\n"
 "PO-Revision-Date: 2013-12-29 21:20+0100\n"
 "Last-Translator: Toni Planas <toniplanas@calvermell.cat>\n"
 "Language: ca\n"
@@ -10116,12 +10116,6 @@ msgstr "Propietari"
 msgid "P.M."
 msgstr "P.M."
 
-#. I18N: %s is a number
-#: admin_trees_manage.php:676
-#, php-format
-msgid "PhpGedView must be version 4.2.3, or any SVN up to #%s"
-msgstr "PhpGedView ha d’ésser versió 4.2.3, o qualsevol SVN fins el #%s"
-
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:77
 msgid "PHP blocked the file because of its extension."
@@ -10377,6 +10371,12 @@ msgstr "Fotografia"
 #: admin_pgv_to_wt.php:152
 msgid "PhpGedView might be installed in one of these folders:"
 msgstr ""
+
+#. I18N: %s is a number
+#: admin_trees_manage.php:676
+#, php-format
+msgid "PhpGedView must be version 4.2.3, or any SVN up to #%s"
+msgstr "PhpGedView ha d’ésser versió 4.2.3, o qualsevol SVN fins el #%s"
 
 #: admin_pgv_to_wt.php:93
 msgid "PhpGedView must use the same database as webtrees."
@@ -13178,14 +13178,14 @@ msgstr "La Haia, Holanda"
 msgid "The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons."
 msgstr "El Visor Multimèdia pot presentar un enllaç que, polsant-lo, descarregarà el fitxer multimèdia al PC local.<br><br>Podeu fer ocultar aquest enllaç per qüestions de seguretat."
 
-#: admin_trees_manage.php:669
-msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one.  It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:"
-msgstr "L’assitent webtrees a webtrees és un procés automatitzat per ajudar els administradors a realitzar el pas d’una instal lació amb PhpGedView a una de nova amb webtrees. Es transferirà tots els GEDCOM PhpGedView i la informació de base de dades directament a la nova base de dades  webtrees. Calen els requisits següents:"
-
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
 msgid "The PHP temporary folder is missing."
 msgstr "Manca el directori PHP temporal"
+
+#: admin_trees_manage.php:669
+msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one.  It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:"
+msgstr "L’assitent webtrees a webtrees és un procés automatitzat per ajudar els administradors a realitzar el pas d’una instal lació amb PhpGedView a una de nova amb webtrees. Es transferirà tots els GEDCOM PhpGedView i la informació de base de dades directament a la nova base de dades  webtrees. Calen els requisits següents:"
 
 #: admin_users.php:97
 #, php-format

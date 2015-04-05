@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
-"POT-Creation-Date: 2015-04-05 21:03+0100\n"
+"POT-Creation-Date: 2015-04-05 21:47+0100\n"
 "PO-Revision-Date: 2015-03-17 11:07+0100\n"
 "Last-Translator: Michel Rivière <gustine@laposte.net>\n"
 "Language-Team: French <http://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
@@ -10118,12 +10118,6 @@ msgstr "Propriétaire"
 msgid "P.M."
 msgstr "P.M."
 
-#. I18N: %s is a number
-#: admin_trees_manage.php:676
-#, php-format
-msgid "PhpGedView must be version 4.2.3, or any SVN up to #%s"
-msgstr "PhpGedView doit être la version 4.2.3, ou tout SVN jusqu’à # %s"
-
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:77
 msgid "PHP blocked the file because of its extension."
@@ -10379,6 +10373,12 @@ msgstr "Photo"
 #: admin_pgv_to_wt.php:152
 msgid "PhpGedView might be installed in one of these folders:"
 msgstr "PhpGedView doit être installé dans un de ces répertoires :"
+
+#. I18N: %s is a number
+#: admin_trees_manage.php:676
+#, php-format
+msgid "PhpGedView must be version 4.2.3, or any SVN up to #%s"
+msgstr "PhpGedView doit être la version 4.2.3, ou tout SVN jusqu’à # %s"
 
 #: admin_pgv_to_wt.php:93
 msgid "PhpGedView must use the same database as webtrees."
@@ -13180,14 +13180,14 @@ msgstr "La Haye, Pays-Bas"
 msgid "The Media Viewer can show a link which, when clicked, will download the media file to the local PC.<br><br>You may want to hide the download link for security reasons."
 msgstr "Le diaporama (Media Viewer) peut montrer un lien qui, lorsqu’on clique dessus, télécharge le fichier numérique à l’ordinateur local.<br><br>Vous pouvez cacher le lien de téléchargement pour des raisons de sécurité."
 
-#: admin_trees_manage.php:669
-msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one.  It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:"
-msgstr "L’assistant de conversion de PhpGedView à webtrees est un processus automatisé afin d’aider les administrateurs à faire le transfert d’une installation PhpGedView vers une installation webtrees. Cet assistant transférera tous les GEDCOMs sous PhpGedView ainsi que toutes autres informations de la base de données directement vers votre nouvelle base de données sous webtrees. Les conditions suivantes sont requises&nbsp;:"
-
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
 msgid "The PHP temporary folder is missing."
 msgstr "Répertoire temporaire PHP manquant."
+
+#: admin_trees_manage.php:669
+msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one.  It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:"
+msgstr "L’assistant de conversion de PhpGedView à webtrees est un processus automatisé afin d’aider les administrateurs à faire le transfert d’une installation PhpGedView vers une installation webtrees. Cet assistant transférera tous les GEDCOMs sous PhpGedView ainsi que toutes autres informations de la base de données directement vers votre nouvelle base de données sous webtrees. Les conditions suivantes sont requises&nbsp;:"
 
 #: admin_users.php:97
 #, php-format
