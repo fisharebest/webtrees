@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-04-05 21:47+0100\n"
-"PO-Revision-Date: 2015-04-03 01:01+0100\n"
+"PO-Revision-Date: 2015-04-06 11:58+0100\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
-"Language-Team: Lithuanian <http://translate.webtrees.net/projects/webtrees/webtrees/lt/>\n"
+"Language-Team: Lithuanian "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/lt/>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"(n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 2.3-dev\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -209,31 +211,31 @@ msgstr "%s KB"
 #: app/Module/ClippingsCartModule.php:175
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s ir jos protėvius"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:177
 #, php-format
 msgid "%s and his ancestors"
-msgstr ""
+msgstr "%s ir jo protėvius"
 
 #. I18N: %s is the name of a source
 #: app/Module/ClippingsCartModule.php:261
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr ""
+msgstr "%s ir asmenis su nuorodomis į jį."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:99
 #, php-format
 msgid "%s and their children"
-msgstr ""
+msgstr "%s ir jų vaikus"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:105
 #, php-format
 msgid "%s and their descendants"
-msgstr ""
+msgstr "%s ir jų palikuonis"
 
 #: app/Module/LoggedInUsersModule.php:51 app/Stats.php:5373
 #, php-format
@@ -500,49 +502,49 @@ msgstr "%s&nbsp;CE"
 #: app/Module/ClippingsCartModule.php:193
 #, php-format
 msgid "%s, her ancestors and their families"
-msgstr ""
+msgstr "%s, jos protėvius ir jų šeimas"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:147
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr ""
+msgstr "%s, jos tėvus bei brolius ir seseris"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:161
 #, php-format
 msgid "%s, her spouses and children"
-msgstr ""
+msgstr "%s, jos sutuoktinius ir vaikus"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:211
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr ""
+msgstr "%s, jos sutuoktinius ir palikuonis"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:195
 #, php-format
 msgid "%s, his ancestors and their families"
-msgstr ""
+msgstr "%s, jo protėvius ir jų šeimas"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:149
 #, php-format
 msgid "%s, his parents and siblings"
-msgstr ""
+msgstr "%s, jo tėvus bei brolius ir seseris"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:163
 #, php-format
 msgid "%s, his spouses and children"
-msgstr ""
+msgstr "%s, jo sutuoktines ir vaikus"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:213
 #, php-format
 msgid "%s, his spouses and descendants"
-msgstr ""
+msgstr "%s, jo sutuoktines ir palikuonis"
 
 #. I18N: first/default option in a drop-down listbox
 #: app/Module/GoogleMapsModule.php:1548 app/Module/GoogleMapsModule.php:1564
@@ -1407,7 +1409,7 @@ msgstr "Pridėti prie mėgstamiausių"
 #: app/Module/ClippingsCartModule.php:384
 #: app/Module/ClippingsCartModule.php:474
 msgid "Add to the clippings cart"
-msgstr ""
+msgstr "Įdėti į iškarpų krepšelį"
 
 #: admin_trees_manage.php:495
 msgid "Add unlinked records"
@@ -1827,7 +1829,7 @@ msgstr "Leisti nariams pasirinkti puslapiui savo temą"
 #. I18N: A site configuration setting
 #: admin_site_config.php:468
 msgid "Allow visitors to request a new user account"
-msgstr ""
+msgstr "Leisti lankytojams prašyti naujos naudotojo sąskaitos"
 
 #. I18N: gedcom tag _AKA
 #: app/Gedcom/GedcomTag.php:964
@@ -1853,6 +1855,8 @@ msgstr "Amerikos Samoa"
 #: admin_site_config.php:475
 msgid "An administrator must approve the new user account and select an access level before the user can log in."
 msgstr ""
+"Vartotojai negalės prisijungti kol administratorius nepatvirtino naujos "
+"naudotojo sąskaitos ir parinko prieigos lygį."
 
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:32
@@ -4226,7 +4230,7 @@ msgstr "Nustatytomas pasisveikinimo tekstas"
 
 #: app/Theme/BaseTheme.php:1023 app/Theme/BaseTheme.php:1025
 msgid "Customize this page"
-msgstr ""
+msgstr "Tinkinti šį puslapį"
 
 #: app/Stats.php:6112
 msgid "Cyprus"
