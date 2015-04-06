@@ -2134,10 +2134,11 @@ dd .deletelink {
 	float: left;
 }
 
-.hit-counter {
+.odometer {
+	font-family: courier, mono-space;
+	font-weight: bold;
 	background: #000;
 	color: #fff;
-	font-weight: bold;
 }
 
 /* ======= General sprite ==== */
@@ -2859,7 +2860,6 @@ dd .deletelink {
 	font-weight: bold;
 	padding: 5px 10px 0;
 	width: 240px;
-	white-space: nowrap;
 }
 
 #edituser-table .value {
@@ -3540,6 +3540,11 @@ table.table-census-assistant th {
 	border-collapse: collapse;
 	padding:         0;
 	width:           100%;
+}
+
+/*-- relationship  --*/
+.rel-background {
+	background-color: #fff;
 }
 
 /*-- timeline  --*/
@@ -4493,6 +4498,7 @@ header nav {
 /* ====== Theme Footer ========= */
 
 footer {
+	clear: both;
 	text-align: center;
 }
 
@@ -4511,704 +4517,688 @@ footer {
 	content: url(images/powered-by-webtrees.png);
 }
 
-#link_change_blocks {
-	clear: both;
-	margin: 0 auto;
-	padding: 25px 0 0;
-	text-align: center;
-	width: 400px;
-}
-
-#link_change_blocks span {
-	padding: 0 50px;
-}
-
-#link_change_blocks span span {
-	padding: 0 3px;
-}
-
 /* ====== End Theme Footer ===== */
 
 /* ====== Theme Icons ========== */
 /* ***** Header icons **** */
-#menu-tree {
+.menu-tree {
 	background-position:center 0;
 }
 
-#menu-mymenu {
+.menu-mymenu {
 	background-position:center -287px;
 }
 
-#menu-chart {
+.menu-chart {
 	background-position:center -41px;
 }
 
-#menu-list {
+.menu-list {
 	background-position: center -82px;
 }
 
-#menu-report {
+.menu-report {
 	background-position: center -164px;
 }
 
-#menu-calendar {
+.menu-calendar {
 	background-position: center -123px;
 }
 
-#menu-search {
+.menu-search {
 	background-position: center -205px;
 }
 
-#menu-help {
+.menu-help {
 	background-position: center -246px;
 }
 
-#menu-clippings {
+.menu-clippings {
 	background-position: center -328px;
 }
 
-#menu-indi {
+.menu-indi {
 	background-position: center -369px;
 }
 
-#menu-indi-orderfam {
+.menu-indi-orderfam {
 	background-position: left 0; /* error */
 }
 
-[dir=rtl] #menu-indi-orderfam {
+[dir=rtl] .menu-indi-orderfam {
 	background-position: right 0; /* error */
 }
 
-#menu-sour {
+.menu-sour {
 	background-position: center -451px;
 }
 
-#menu-fam {
+.menu-fam {
 	background-position: center -410px;
 }
 
-#menu-obje {
+.menu-obje {
 	background-position: center -533px;
 }
 
-#menu-note {
+.menu-note {
 	background-position: center -492px;
 }
 
-#menu-repo {
+.menu-repo {
 	background-position: center -574px;
 }
 
-#menu-story {
+.menu-story {
 	background-position: center -615px;
 }
 
 /* Header Sub-menu icons */
-#menu-admin {
+.menu-admin {
 	background-position: left -728px;
 }
 
-[dir=rtl] #menu-admin {
+[dir=rtl] .menu-admin {
 	background-position: right -728px;
 }
 
-#menu-branches {
+.menu-branches {
 	background-position: left -468px;
 }
 
-[dir=rtl] #menu-branches {
+[dir=rtl] .menu-branches {
 	background-position: right -468px;
 }
 
-#menu-calendar-day {
+.menu-calendar-day {
 	background-position: left -572px;
 }
 
-[dir=rtl] #menu-calendar-day {
+[dir=rtl] .menu-calendar-day {
 	background-position: right -572px;
 }
 
-#menu-calendar-month {
+.menu-calendar-month {
 	background-position: left -572px;
 }
 
-[dir=rtl] #menu-calendar-month {
+[dir=rtl] .menu-calendar-month {
 	background-position: right -572px;
 }
 
-#menu-calendar-year {
+.menu-calendar-year {
 	background-position: left -572px;
 }
 
-[dir=rtl] #menu-calendar-year {
+[dir=rtl] .menu-calendar-year {
 	background-position: right -572px;
 }
 
-#menu-chart-ancestry {
+.menu-chart-ancestry {
 	background-position: left -208px;
 }
 
-[dir=rtl] #menu-chart-ancestry {
+[dir=rtl] .menu-chart-ancestry {
 	background-position: right -208px;
 }
 
-#menu-chart-compact {
+.menu-chart-compact {
 	background-position: left -52px;
 }
 
-[dir=rtl] #menu-chart-compact {
+[dir=rtl] .menu-chart-compact {
 	background-position: right -52px;
 }
 
-#menu-chart-descendants {
+.menu-chart-descendants {
 	background-position: left -0px;
 }
 
-[dir=rtl] #menu-chart-descendants {
+[dir=rtl] .menu-chart-descendants {
 	background-position: right -0px;
 }
 
-#menu-chart-familybook {
+.menu-chart-familybook {
 	background-position: left -104px;
 }
 
-[dir=rtl] #menu-chart-familybook {
+[dir=rtl] .menu-chart-familybook {
 	background-position: right -104px;
 }
 
-#menu-chart-fanchart {
+.menu-chart-fanchart {
 	background-position: left -26px;
 }
 
-[dir=rtl] #menu-chart-fanchart {
+[dir=rtl] .menu-chart-fanchart {
 	background-position: right -26px;
 }
 
-#menu-chart-hourglass {
+.menu-chart-hourglass {
 	background-position: left -130px;
 }
 
-[dir=rtl] #menu-chart-hourglass {
+[dir=rtl] .menu-chart-hourglass {
 	background-position: right -130px;
 }
 
-#menu-chart-lifespan {
+.menu-chart-lifespan {
 	background-position: left -182px;
 }
 
-[dir=rtl] #menu-chart-lifespan {
+[dir=rtl] .menu-chart-lifespan {
 	background-position: right -182px;
 }
 
-#menu-chart-pedigree {
+.menu-chart-pedigree {
 	background-position: left -208px;
 }
 
-[dir=rtl] #menu-chart-pedigree {
+[dir=rtl] .menu-chart-pedigree {
 	background-position: right -208px;
 }
 
-#menu-chart-pedigree_map {
+.menu-chart-pedigree_map {
 	background-position: left -234px;
 }
 
-[dir=rtl] #menu-chart-pedigree_map {
+[dir=rtl] .menu-chart-pedigree_map {
 	background-position: right -234px;
 }
 
-#menu-chart-relationship {
+.menu-chart-relationship {
 	background-position: left -260px;
 }
 
-[dir=rtl] #menu-chart-relationship {
+[dir=rtl] .menu-chart-relationship {
 	background-position: right -260px;
 }
 
-#menu-chart-statistics {
+.menu-chart-statistics {
 	background-position: left -286px;
 }
 
-[dir=rtl] #menu-chart-statistics {
+[dir=rtl] .menu-chart-statistics {
 	background-position: right -286px;
 }
 
-#menu-chart-timeline {
+.menu-chart-timeline {
 	background-position: left -312px;
 }
 
-[dir=rtl] #menu-chart-timeline {
+[dir=rtl] .menu-chart-timeline {
 	background-position: right -312px;
 }
 
-#menu-chart-tree {
+.menu-chart-tree {
 	background-position: left -156px;
 }
 
-[dir=rtl] #menu-chart-tree {
+[dir=rtl] .menu-chart-tree {
 	background-position: right -156px;
 }
 
-#menu-clippingsadd {
+.menu-clippingsadd {
 	background-position: left -702px;
 }
 
-[dir=rtl] #menu-clippingsadd {
+[dir=rtl] .menu-clippingsadd {
 	background-position: right -702px;
 }
 
-#menu-clippingscart {
+.menu-clippingscart {
 	background-position: left -702px;
 }
 
-[dir=rtl] #menu-clippingscart {
+[dir=rtl] .menu-clippingscart {
 	background-position: right -702px;
 }
 
-#menu-fam-addchil {
+.menu-fam-addchil {
 	background-position: left -858px;
 }
 
-[dir=rtl] #menu-fam-addchil {
+[dir=rtl] .menu-fam-addchil {
 	background-position: right -858px;
 }
 
-#menu-fam-addfav {
+.menu-fam-addfav {
 	background-position: left -832px;
 }
 
-[dir=rtl] #menu-fam-addfav {
+[dir=rtl] .menu-fam-addfav {
 	background-position: right -832px;
 }
 
-#menu-fam-change {
+.menu-fam-change {
 	background-position: left -858px;
 }
 
-[dir=rtl] #menu-fam-change {
+[dir=rtl] .menu-fam-change {
 	background-position: right -858px;
 }
 
-#menu-fam-del {
+.menu-fam-del {
 	background-position: left -936px;
 }
 
-[dir=rtl] #menu-fam-del {
+[dir=rtl] .menu-fam-del {
 	background-position: right -936px;
 }
 
-#menu-fam-editraw {
+.menu-fam-editraw {
 	background-position: left -754px;
 }
 
-[dir=rtl] #menu-fam-editraw {
+[dir=rtl] .menu-fam-editraw {
 	background-position: right -574px;
 }
 
-#menu-fam-orderchil {
+.menu-fam-orderchil {
 	background-position: left -858px;
 }
 
-[dir=rtl] #menu-fam-orderchil {
+[dir=rtl] .menu-fam-orderchil {
 	background-position: right -858px;
 }
 
-#menu-help-contents {
+.menu-help-contents {
 	background-position: left -624px;
 }
 
-[dir=rtl] #menu-help-contents {
+[dir=rtl] .menu-help-contents {
 	background-position: right -624px;
 }
 
-#menu-help-faq {
+.menu-help-faq {
 	background-position: left -624px;
 }
 
-[dir=rtl] #menu-help-faq {
+[dir=rtl] .menu-help-faq {
 	background-position: right -624px;
 }
 
-#menu-help-genealogy {
+.menu-help-genealogy {
 	background-position: left -624px;
 }
 
-[dir=rtl] #menu-help-genealogy {
+[dir=rtl] .menu-help-genealogy {
 	background-position: right -624px;
 }
 
-#menu-help-hide {
+.menu-help-hide {
 	background-position: left -624px;
 }
 
-[dir=rtl] #menu-help-hide {
+[dir=rtl] .menu-help-hide {
 	background-position: right -624px;
 }
 
-#menu-help-show {
+.menu-help-show {
 	background-position: left -624px;
 }
 
-[dir=rtl] #menu-help-show {
+[dir=rtl] .menu-help-show {
 	background-position: right -624px;
 }
 
-#menu-help-technical {
+.menu-help-technical {
 	background-position: left -676px;
 }
 
-[dir=rtl] #menu-help-technical {
+[dir=rtl] .menu-help-technical {
 	background-position: right -676px;
 }
 
-#menu-help-wiki {
+.menu-help-wiki {
 	background-position: left -650px;
 }
 
-[dir=rtl] #menu-help-wiki {
+[dir=rtl] .menu-help-wiki {
 	background-position: right -650px;
 }
 
-#menu-indi-addfav {
+.menu-indi-addfav {
 	background-position: left -832px;
 }
 
-[dir=rtl] #menu-indi-addfav {
+[dir=rtl] .menu-indi-addfav {
 	background-position: right -832px;
 }
 
-#menu-indi-addname {
+.menu-indi-addname {
 	background-position: left -780px;
 }
 
-[dir=rtl] #menu-indi-addname {
+[dir=rtl] .menu-indi-addname {
 	background-position: right -780px;
 }
 
-#menu-indi-del {
+.menu-indi-del {
 	background-position: left -806px;
 }
 
-[dir=rtl] #menu-indi-del {
+[dir=rtl] .menu-indi-del {
 	background-position: right -806px;
 }
 
-#menu-indi-editraw {
+.menu-indi-editraw {
 	background-position: left -754px;
 }
 
-[dir=rtl] #menu-indi-editraw {
+[dir=rtl] .menu-indi-editraw {
 	background-position: right -574px;
 }
 
-#menu-indi-editsex {
+.menu-indi-editsex {
 	background-position: left -780px;
 }
 
-[dir=rtl] #menu-indi-editsex {
+[dir=rtl] .menu-indi-editsex {
 	background-position: right -780px;
 }
 
-#menu-list-fam {
+.menu-list-fam {
 	background-position: left -494px;
 }
 
-[dir=rtl] #menu-list-fam {
+[dir=rtl] .menu-list-fam {
 	background-position: right -494px;
 }
 
-#menu-list-indi {
+.menu-list-indi {
 	background-position: left -520px;
 }
 
-[dir=rtl] #menu-list-indi {
+[dir=rtl] .menu-list-indi {
 	background-position: right -520px;
 }
 
-#menu-list-note {
+.menu-list-note {
 	background-position: left -416px;
 }
 
-[dir=rtl] #menu-list-note {
+[dir=rtl] .menu-list-note {
 	background-position: right -416px;
 }
 
-#menu-list-obje {
+.menu-list-obje {
 	background-position: left -338px;
 }
 
-[dir=rtl] #menu-list-obje {
+[dir=rtl] .menu-list-obje {
 	background-position: right -338px;
 }
 
-#menu-list-plac {
+.menu-list-plac {
 	background-position: left -364px;
 }
 
-[dir=rtl] #menu-list-plac {
+[dir=rtl] .menu-list-plac {
 	background-position: right -364px;
 }
 
-#menu-list-repo {
+.menu-list-repo {
 	background-position: left -390px;
 }
 
-[dir=rtl] #menu-list-repo {
+[dir=rtl] .menu-list-repo {
 	background-position: right -390px;
 }
 
-#menu-list-sour {
+.menu-list-sour {
 	background-position: left -442px;
 }
 
-[dir=rtl] #menu-list-sour {
+[dir=rtl] .menu-list-sour {
 	background-position: right -442px;
 }
 
-#menu-myaccount {
+.menu-myaccount {
 	background-position: left -676px;
 }
 
-[dir=rtl] #menu-myaccount {
+[dir=rtl] .menu-myaccount {
 	background-position: right -676px;
 }
 
-#menu-mypage {
+.menu-mypage {
 	background-position: left -676px;
 }
 
-[dir=rtl] #menu-mypage {
+[dir=rtl] .menu-mypage {
 	background-position: right -676px;
 }
 
-#menu-mypedigree {
+.menu-mypedigree {
 	background-position: left -208px;
 }
 
-[dir=rtl] #menu-mypedigree {
+[dir=rtl] .menu-mypedigree {
 	background-position: right -208px;
 }
 
-#menu-myrecord {
+.menu-myrecord {
 	background-position: left -520px;
 }
 
-[dir=rtl] #menu-myrecord {
+[dir=rtl] .menu-myrecord {
 	background-position: right -520px;
 }
 
-#menu-note-addfav {
+.menu-note-addfav {
 	background-position: left -832px;
 }
 
-[dir=rtl] #menu-note-fav {
+[dir=rtl] .menu-note-fav {
 	background-position: right -832px;
 }
 
-#menu-note-del {
+.menu-note-del {
 	background-position: left -806px;
 }
 
-[dir=rtl] #menu-note-del {
+[dir=rtl] .menu-note-del {
 	background-position: right -806px;
 }
 
-#menu-note-edit {
+.menu-note-edit {
 	background-position: left -910px;
 }
 
-[dir=rtl] #menu-note-edit {
+[dir=rtl] .menu-note-edit {
 	background-position: right -910px;
 }
 
-#menu-note-editraw {
+.menu-note-editraw {
 	background-position: left -754px;
 }
 
-[dir=rtl] #menu-note-editraw {
+[dir=rtl] .menu-note-editraw {
 	background-position: right -574px;
 }
 
-#menu-obje-addfav {
+.menu-obje-addfav {
 	background-position: left -832px;
 }
 
-[dir=rtl] #menu-obje-addfav {
+[dir=rtl] .menu-obje-addfav {
 	background-position: right -832px;
 }
 
-#menu-obje-del {
+.menu-obje-del {
 	background-position: left -1040px;
 }
 
-[dir=rtl] #menu-obje-del {
+[dir=rtl] .menu-obje-del {
 	background-position: right -1040px;
 }
 
-#menu-obje-edit {
+.menu-obje-edit {
 	background-position: left -962px;
 }
 
-[dir=rtl] #menu-obje-edit {
+[dir=rtl] .menu-obje-edit {
 	background-position: right -962px;
 }
 
-#menu-obje-editraw {
+.menu-obje-editraw {
 	background-position: left -754px;
 }
 
-[dir=rtl] #menu-obje-editraw {
+[dir=rtl] .menu-obje-editraw {
 	background-position: right -574px;
 }
 
-#menu-obje-link {
+.menu-obje-link {
 	background-position: left -988px;
 }
 
-[dir=rtl] #menu-obje-link {
+[dir=rtl] .menu-obje-link {
 	background-position: right -988px;
 }
 
-#menu-obje-link-fam {
+.menu-obje-link-fam {
 	background-position: left -494px;
 }
 
-[dir=rtl] #menu-obje-link-fam {
+[dir=rtl] .menu-obje-link-fam {
 	background-position: right -494px;
 }
 
-#menu-obje-link-indi {
+.menu-obje-link-indi {
 	background-position: left -520px;
 }
 
-[dir=rtl] #menu-obje-link-indi {
+[dir=rtl] .menu-obje-link-indi {
 	background-position: right -520px;
 }
 
-#menu-obje-link-sour {
+.menu-obje-link-sour {
 	background-position: left -442px;
 }
 
-[dir=rtl] #menu-obje-link-sour {
+[dir=rtl] .menu-obje-link-sour {
 	background-position: right -442px;
 }
 
-#menu-repo-addfav {
+.menu-repo-addfav {
 	background-position: left -832px;
 }
 
-[dir=rtl] #menu-repo-addfav {
+[dir=rtl] .menu-repo-addfav {
 	background-position: right -832px;
 }
 
-#menu-repo-del {
+.menu-repo-del {
 	background-position: left -806px;
 }
 
-[dir=rtl] #menu-repo-del {
+[dir=rtl] .menu-repo-del {
 	background-position: right -806px;
 }
 
-#menu-repo-edit {
+.menu-repo-edit {
 	background-position: left -1014px;
 }
 
-[dir=rtl] #menu-repo-edit {
+[dir=rtl] .menu-repo-edit {
 	background-position: right -1014px;
 }
 
-#menu-repo-editraw {
+.menu-repo-editraw {
 	background-position: left -754px;
 }
 
-[dir=rtl] #menu-repo-editraw {
+[dir=rtl] .menu-repo-editraw {
 	background-position: right -574px;
 }
 
-#menu-report li {
+.menu-report li {
 	background-position: left -546px;
 }
 
-[dir=rtl] #menu-report li {
+[dir=rtl] .menu-report li {
 	background-position: right -546px;
 }
 
-#menu-search-advanced {
+.menu-search-advanced {
 	background-position: left -598px;
 }
 
-[dir=rtl] #menu-search-advanced {
+[dir=rtl] .menu-search-advanced {
 	background-position: right -598px;
 }
 
-#menu-search-general {
+.menu-search-general {
 	background-position: left -598px;
 }
 
-[dir=rtl] #menu-search-general {
+[dir=rtl] .menu-search-general {
 	background-position: right -598px;
 }
 
-#menu-search-replace {
+.menu-search-replace {
 	background-position: left -598px;
 }
 
-[dir=rtl] #menu-search-replace {
+[dir=rtl] .menu-search-replace {
 	background-position: right -598px;
 }
 
-#menu-search-soundex {
+.menu-search-soundex {
 	background-position: left -598px;
 }
 
-[dir=rtl] #menu-search-soundex {
+[dir=rtl] .menu-search-soundex {
 	background-position: right -598px;
 }
 
-#menu-sour-addfav {
+.menu-sour-addfav {
 	background-position: left -832px;
 }
 
-[dir=rtl] #menu-sour-addfav {
+[dir=rtl] .menu-sour-addfav {
 	background-position: right -832px;
 }
 
-#menu-sour-del {
+.menu-sour-del {
 	background-position: left -1066px;
 }
 
-[dir=rtl] #menu-sour-del {
+[dir=rtl] .menu-sour-del {
 	background-position: right -1066px;
 }
 
-#menu-sour-edit {
+.menu-sour-edit {
 	background-position: left -884px;
 }
 
-[dir=rtl] #menu-sour-edit {
+[dir=rtl] .menu-sour-edit {
 	background-position: right -884px;
 }
 
-#menu-sour-editraw {
+.menu-sour-editraw {
 	background-position: left -754px;
 }
 
-[dir=rtl] #menu-sour-editraw {
+[dir=rtl] .menu-sour-editraw {
 	background-position: right -574px;
 }
 
-#menu-story-sub {
+.menu-story-sub {
 	background-position: left -1092px;
 }
 
-[dir=rtl] #menu-story-sub {
+[dir=rtl] .menu-story-sub {
 	background-position: right -1040px;
 }
 
-#menu-tree li {
+.menu-tree li {
 	background-position: left -754px;
 }
 
-[dir=rtl] #menu-tree li {
+[dir=rtl] .menu-tree li {
 	background-position: right -754px;
 }
 

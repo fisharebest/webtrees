@@ -337,7 +337,7 @@ case 'run':
 	$elementHandler['HighlightedImage']['start'] = __NAMESPACE__ . '\\highlightedImageStartHandler';
 	$elementHandler['if']['end'] = __NAMESPACE__ . '\\ifEndHandler';
 	$elementHandler['if']['start'] = __NAMESPACE__ . '\\ifStartHandler';
-	$elementHandler['Image']['start'] = 'imageStartHandler';
+	$elementHandler['Image']['start'] = __NAMESPACE__ . '\\imageStartHandler';
 	$elementHandler['Input']['end'] = '';
 	$elementHandler['Input']['start'] = '';
 	$elementHandler['Line']['start'] = __NAMESPACE__ . '\\lineStartHandler';

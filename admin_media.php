@@ -521,12 +521,12 @@ function mediaObjectInfo(Media $media) {
 		'<div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-pencil"></i> <span class="caret"></span></button><ul class="dropdown-menu" role="menu">' .
 		'<li><a href="#" onclick="window.open(\'addmedia.php?action=editmedia&amp;pid=' . $xref . '&ged=' . Filter::escapeJs($gedcom) . '\', \'_blank\', edit_window_specs);"><i class="fa fa-fw fa-pencil"></i> ' . I18N::translate('Edit') . '</a></li>' .
 		'<li><a href="#" onclick="return delete_media(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs(Filter::unescapeHtml($media->getFullName()))) . '\', \'' . $media->getXref() . '\', \'' . Filter::escapeJs($gedcom) . '\');"><i class="fa fa-fw fa-trash-o"></i> ' . I18N::translate('Delete') . '</a></li>' .
-		'<li><a href="#" onclick="return ilinkitem(\'' . $media->getXref(). '\', \'person\', WT_GEDCOM)"><i class="fa fa-fw fa-link"></i> ' . I18N::translate('Link this media object to an individual') . '</a></li>' .
-		'<li><a href="#" onclick="return ilinkitem(\'' . $media->getXref(). '\', \'family\', WT_GEDCOM)"><i class="fa fa-fw fa-link"></i> ' . I18N::translate('Link this media object to a family') . '</a></li>' .
-		'<li><a href="#" onclick="return ilinkitem(\'' . $media->getXref(). '\', \'source\', WT_GEDCOM)"><i class="fa fa-fw fa-link"></i> ' . I18N::translate('Link this media object to a source') . '</a></li>';
+		'<li><a href="#" onclick="return ilinkitem(\'' . $media->getXref() . '\', \'person\', WT_GEDCOM)"><i class="fa fa-fw fa-link"></i> ' . I18N::translate('Link this media object to an individual') . '</a></li>' .
+		'<li><a href="#" onclick="return ilinkitem(\'' . $media->getXref() . '\', \'family\', WT_GEDCOM)"><i class="fa fa-fw fa-link"></i> ' . I18N::translate('Link this media object to a family') . '</a></li>' .
+		'<li><a href="#" onclick="return ilinkitem(\'' . $media->getXref() . '\', \'source\', WT_GEDCOM)"><i class="fa fa-fw fa-link"></i> ' . I18N::translate('Link this media object to a source') . '</a></li>';
 
 	if (Module::getModuleByName('GEDFact_assistant')) {
-		$html .= '<li><a href="#" onclick="return ilinkitem(\'' . $media->getXref(). '\', \'manage\', WT_GEDCOM)"><i class="fa fa-fw fa-link"></i> ' . I18N::translate('Manage links') . '</a></li>';
+		$html .= '<li><a href="#" onclick="return ilinkitem(\'' . $media->getXref() . '\', \'manage\', WT_GEDCOM)"><i class="fa fa-fw fa-link"></i> ' . I18N::translate('Manage links') . '</a></li>';
 	}
 
 	$html .=
@@ -679,7 +679,7 @@ $controller
 </form>
 <br>
 <br>
-<table class="table table-bordered table-condensed" id="media-table-<?php echo $table_id ?>">
+<table class="table table-bordered table-condensed" id="media-table-<?php echo $table_id; ?>">
 	<thead>
 		<tr>
 			<th><?php echo I18N::translate('Media file'); ?></th>

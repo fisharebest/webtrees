@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Class UserJournalModule
  */
-class UserJournalModule extends Module implements ModuleBlockInterface {
+class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('Journal');
@@ -42,7 +42,7 @@ class UserJournalModule extends Module implements ModuleBlockInterface {
 			}
 			break;
 		}
-		$block = get_block_setting($block_id, 'block', '1');
+		$block = $this->getBlockSetting($block_id, 'block', '1');
 		if ($cfg) {
 			foreach (array('block') as $name) {
 				if (array_key_exists($name, $cfg)) {

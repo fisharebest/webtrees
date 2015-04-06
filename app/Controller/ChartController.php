@@ -125,7 +125,7 @@ class ChartController extends PageController {
 
 	/**
 	 * Function boxDimensions
-	 * @return personbox|\stdClass
+	 * @return \stdClass
 	 */
 	public function getBoxDimensions() {
 		return $this->box;

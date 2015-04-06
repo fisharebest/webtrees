@@ -23,8 +23,6 @@ use Fisharebest\ExtCalendar\JulianCalendar;
  * (Proleptic means we extend it backwards, prior to its introduction in 46BC)
  */
 class JulianDate extends CalendarDate {
-	const CALENDAR_ESCAPE = '@#DJULIAN@';
-
 	/** @var boolean True for dates recorded in new-style/old-style format, e.g. 2 FEB 1743/44 */
 	private $new_old_style = false;
 
@@ -35,13 +33,7 @@ class JulianDate extends CalendarDate {
 	}
 
 	/** {@inheritdoc} */
-	public static function calendarName() {
-		return /* I18N: The julian calendar */
-			I18N::translate('Julian');
-	}
-
-	/** {@inheritdoc} */
-	protected static function nextYear($year) {
+	protected function nextYear($year) {
 		if ($year == -1) {
 			return 1;
 		} else {

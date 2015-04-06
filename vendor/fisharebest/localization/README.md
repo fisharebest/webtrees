@@ -22,14 +22,16 @@ Locales, languages, scripts and territories
 A locale consists of three things: a language, a script and a territory.
 Scripts and territories are often implicit from the language.
 
-Normally you would just need to work with locales, and can ignore the
-other entities.
+Normally you would just need to work with locales, and can ignore these
+entities.
 
 ``` php
-$locale = new LocaleJa;   // Create a locale for Japanese.
-$locale->code();          // "ja_JP" (territories are always included in locale codes)
-$locale->languageTag();   // "ja" (redundant territories are omitted in tags)
-$locale->endonym();       // "日本語" (Japanese name for Japanese)
+$locale = new LocaleJa;         // Create a locale for Japanese.
+$locale = Locale::create('ja'); // Create a locale for Japanese, from its code.
+
+$locale->code();                // "ja_JP" (territories are always included in locale codes)
+$locale->languageTag();         // "ja" (redundant territories are omitted in tags)
+$locale->endonym();             // "日本語" (Japanese name for Japanese)
 
 // Languages - extract from the locale, or create with "new LanguageXx"
 $locale->language();            // LanguageJa
@@ -56,9 +58,10 @@ Localization
 Create a locale and use it to localize data in your application.
 
 ``` php
-// Two ways to create locales
+// Many ways to create locales
 $locale = new LocaleEnGb;
-$locale = Locale::create('en-GB');
+$locale = Locale::create('en-GB'); // Upper/lower case, hyphen/underscore
+$locale = Locale::httpAcceptLanguage($_SERVER, $available_locales, $default_locale);
 
 // Markup for HTML elements containing this locale
 $locale->htmlAttributes();      // lang="ar" dir="rtl"
@@ -80,12 +83,42 @@ $locale = new LocaleGr;         // Gujarati
 $locale->digits('2014');        // "૨૦૧૪"
 $locale = new LocaleItCh;       // Swiss Italian
 $locale->number('12345678.9');  // "12'345'678.9"
-$locale->percent(0.1234, 1);    // "12.3%"
+$locale->percent(0.123);        // "12.3%"
 
 // To sort data properly in MySQL, you need to specify a collation sequence.
 // See http://dev.mysql.com/doc/refman/5.7/en/charset-unicode-sets.html
 $locale->collation();           // "unicode_ci", "swedish_ci", etc.
 ```
+
+Translation
+===========
+
+When working with gettext and .PO files, you need to know the plural rules.
+
+``` php
+$locale = new LocaleEn;
+$locale->pluralRule()->plurals(); // 2 (English has two plural forms)
+$locale->pluralRule()->plural(0); // 1 (zero is plural in English)
+$locale = new LocaleFr;
+$locale->pluralRule()->plurals(); // 2 (French also has two plural forms)
+$locale->pluralRule()->plural(0); // 0 (zero is singular in French)
+```
+
+Some of the plural definitions in CLDR differ to those traditionally used by `gettext`.
+We use the gettext versions for br, fa, fil, he, lv, mk, pt, tr and se.
+
+Translation functions work the same as `gettext`.
+
+``` php
+$locale = new LocaleFr;
+$translation = new Translation('/path/to/fr.mo');  // Can use .CSV, .PHP and .MO files
+$translator = new Translator($translation->asArray(), $locale->pluralRule());
+$translator->translate('the fish');                // "le poisson" 
+$translator->translateContext('noun', 'fish');     // "poisson" 
+$translator->translateContext('verb', 'fish');     // "pêcher" 
+$translator->plural('%d fish', '%d fishes', 4);    // "%d poissons" 
+```
+
 
 Updates welcome
 ===============

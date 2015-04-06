@@ -127,7 +127,7 @@ function search_indis(array $query, array $trees) {
 	foreach ($query as $n => $q) {
 		$queryregex[] = preg_quote(I18N::strtoupper($q), '/');
 		$sql .= " AND i_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
-		$args['collate_' . $n] = I18N::$collation;
+		$args['collate_' . $n] = I18N::collation();
 		$args['query_' . $n]   = Filter::escapeLike($q);
 	}
 
@@ -176,7 +176,7 @@ function search_indis_names(array $query, array $trees) {
 	// Convert the query into a SQL expression
 	foreach ($query as $n => $q) {
 		$sql .= " AND n_full COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
-		$args['collate_' . $n] = I18N::$collation;
+		$args['collate_' . $n] = I18N::collation();
 		$args['query_' . $n]   = Filter::escapeLike($q);
 	}
 
@@ -367,7 +367,7 @@ function search_fams(array $query, array $trees) {
 	foreach ($query as $n => $q) {
 		$queryregex[] = preg_quote(I18N::strtoupper($q), '/');
 		$sql .= " AND f_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
-		$args['collate_' . $n] = I18N::$collation;
+		$args['collate_' . $n] = I18N::collation();
 		$args['query_' . $n]   = Filter::escapeLike($q);
 	}
 
@@ -427,9 +427,9 @@ function search_fams_names(array $query, array $trees) {
 
 	foreach ($query as $n => $q) {
 		$sql .= " AND (husb.n_full COLLATE :husb_collate_" . $n . " LIKE CONCAT('%', :husb_query_" . $n . ", '%') OR wife.n_full COLLATE :wife_collate_" . $n . " LIKE CONCAT('%', :wife_query_" . $n . ", '%'))";
-		$args['husb_collate_' . $n] = I18N::$collation;
+		$args['husb_collate_' . $n] = I18N::collation();
 		$args['husb_query_' . $n]   = Filter::escapeLike($q);
-		$args['wife_collate_' . $n] = I18N::$collation;
+		$args['wife_collate_' . $n] = I18N::collation();
 		$args['wife_query_' . $n]   = Filter::escapeLike($q);
 	}
 
@@ -471,7 +471,7 @@ function search_sources($query, $trees) {
 	foreach ($query as $n => $q) {
 		$queryregex[] = preg_quote(I18N::strtoupper($q), '/');
 		$sql .= " AND s_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
-		$args['collate_' . $n] = I18N::$collation;
+		$args['collate_' . $n] = I18N::collation();
 		$args['query_' . $n]   = Filter::escapeLike($q);
 	}
 
@@ -525,7 +525,7 @@ function search_notes(array $query, array $trees) {
 	foreach ($query as $n => $q) {
 		$queryregex[] = preg_quote(I18N::strtoupper($q), '/');
 		$sql .= " AND o_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
-		$args['collate_' . $n] = I18N::$collation;
+		$args['collate_' . $n] = I18N::collation();
 		$args['query_' . $n]   = Filter::escapeLike($q);
 	}
 
@@ -579,7 +579,7 @@ function search_repos(array $query, array $trees) {
 	foreach ($query as $n => $q) {
 		$queryregex[] = preg_quote(I18N::strtoupper($q), '/');
 		$sql .= " AND o_gedcom COLLATE :collate_" . $n . " LIKE CONCAT('%', :query_" . $n . ", '%')";
-		$args['collate_' . $n] = I18N::$collation;
+		$args['collate_' . $n] = I18N::collation();
 		$args['query_' . $n]   = Filter::escapeLike($q);
 	}
 
@@ -1042,40 +1042,6 @@ function get_gedcom_blocks($gedcom_id) {
 	}
 
 	return $blocks;
-}
-
-/**
- * @param integer     $block_id
- * @param string      $setting_name
- * @param string|null $default_value
- *
- * @return null|string
- */
-function get_block_setting($block_id, $setting_name, $default_value = null) {
-	static $statement;
-	if ($statement === null) {
-		$statement = Database::prepare(
-			"SELECT SQL_CACHE setting_value FROM `##block_setting` WHERE block_id=? AND setting_name=?"
-		);
-	}
-	$setting_value = $statement->execute(array($block_id, $setting_name))->fetchOne();
-
-	return $setting_value === null ? $default_value : $setting_value;
-}
-
-/**
- * @param integer     $block_id
- * @param string      $setting_name
- * @param string|null $setting_value
- */
-function set_block_setting($block_id, $setting_name, $setting_value) {
-	if ($setting_value === null) {
-		Database::prepare("DELETE FROM `##block_setting` WHERE block_id=? AND setting_name=?")
-			->execute(array($block_id, $setting_name));
-	} else {
-		Database::prepare("REPLACE INTO `##block_setting` (block_id, setting_name, setting_value) VALUES (?, ?, ?)")
-			->execute(array($block_id, $setting_name, $setting_value));
-	}
 }
 
 /**

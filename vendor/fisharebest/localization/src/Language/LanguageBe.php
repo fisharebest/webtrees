@@ -1,4 +1,8 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Language;
+
+use Fisharebest\Localization\PluralRule\PluralRule7;
+use Fisharebest\Localization\Script\ScriptCyrl;
+use Fisharebest\Localization\Territory\TerritoryBy;
 
 /**
  * Class LanguageBe - Representation of the Belarusian language.
@@ -7,7 +11,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class LanguageBe extends Language {
+class LanguageBe extends AbstractLanguage implements LanguageInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'be';
@@ -21,5 +25,10 @@ class LanguageBe extends Language {
 	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryBy;
+	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule7;
 	}
 }

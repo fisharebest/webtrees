@@ -34,6 +34,7 @@ define('WT_WEBTREES', 'webtrees');
 define('WT_BASE_URL', '');
 define('WT_ROOT', '');
 define('WT_DATA_DIR', realpath('data') . DIRECTORY_SEPARATOR);
+define('WT_MODULES_DIR', 'modules_v3/');
 
 // No configuration file?  Start the setup wizard
 if (!file_exists(WT_DATA_DIR . 'config.ini.php')) {
@@ -106,7 +107,7 @@ if (is_array($config_ini_php) && array_key_exists('dbhost', $config_ini_php) && 
 				</li>
 			</ol>
 			<p class="good">
-				<?php echo I18N::translate('If you cannot resolve the problem yourself, you can ask for help on the forums at <a href="http://webtrees.net">webtrees.net</a>'); ?>
+				<?php echo I18N::translate('If you cannot resolve the problem yourself, you can ask for help on the forums at <a href="http://webtrees.net">webtrees.net</a>.'); ?>
 			</p>
 		</div>
 	</body>

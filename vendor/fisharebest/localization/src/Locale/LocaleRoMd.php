@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Locale;
+
+use Fisharebest\Localization\Territory\TerritoryMd;
 
 /**
  * Class LocaleRoMd - Moldavian
@@ -14,7 +16,7 @@ class LocaleRoMd extends LocaleRo {
 	}
 
 	/** {@inheritdoc} */
-	protected function endonymSortable() {
+	public function endonymSortable() {
 		return 'MOLDOVENEASCA';
 	}
 

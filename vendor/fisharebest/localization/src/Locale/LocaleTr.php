@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Locale;
+
+use Fisharebest\Localization\Language\LanguageTr;
 
 /**
  * Class LocaleTr - Turkish
@@ -7,7 +9,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license       GPLv3+
  */
-class LocaleTr extends Locale {
+class LocaleTr extends AbstractLocale implements LocaleInterface {
 	/** {@inheritdoc} */
 	public function collation() {
 		return 'turkish_ci';
@@ -19,7 +21,7 @@ class LocaleTr extends Locale {
 	}
 
 	/** {@inheritdoc} */
-	protected function endonymSortable() {
+	public function endonymSortable() {
 		return 'TURKCE';
 	}
 

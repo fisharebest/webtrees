@@ -30,19 +30,10 @@ require './includes/session.php';
 $controller = new PageController;
 $controller->restrictAccess(Auth::isManager($WT_TREE));
 
+$calendars = array('none' => I18N::translate('No calendar conversion')) + Date::calendarNames();
 
-$calendars = array(
-	'none'      => I18N::translate('No calendar conversion'),
-	'gregorian' => GregorianDate::calendarName(),
-	'julian'    => JulianDate::calendarName(),
-	'french'    => FrenchDate::calendarName(),
-	'jewish'    => JewishDate::calendarName(),
-	'hijri'     => HijriDate::calendarName(),
-	'jalali'    => JalaliDate::calendarName(),
-);
-
-$french_calendar_start = new Date('22 SEP 1792');
-$french_calendar_end = new Date('31 DEC 1805');
+$french_calendar_start    = new Date('22 SEP 1792');
+$french_calendar_end      = new Date('31 DEC 1805');
 $gregorian_calendar_start = new Date('15 OCT 1582');
 
 $hide_show = array(
@@ -294,7 +285,6 @@ case 'general':
 	$WT_TREE->setPreference('SHOW_PEDIGREE_PLACES', Filter::post('SHOW_PEDIGREE_PLACES'));
 	$WT_TREE->setPreference('SHOW_PEDIGREE_PLACES_SUFFIX', Filter::postBool('SHOW_PEDIGREE_PLACES_SUFFIX'));
 	$WT_TREE->setPreference('SHOW_RELATIVES_EVENTS', implode(',', Filter::postArray('SHOW_RELATIVES_EVENTS')));
-	$WT_TREE->setPreference('SHOW_STATS', Filter::postBool('SHOW_STATS'));
 	$WT_TREE->setPreference('SOURCE_ID_PREFIX', Filter::post('SOURCE_ID_PREFIX'));
 	$WT_TREE->setPreference('SOUR_FACTS_ADD', str_replace(' ', '', Filter::post('SOUR_FACTS_ADD')));
 	$WT_TREE->setPreference('SOUR_FACTS_QUICK', str_replace(' ', '', Filter::post('SOUR_FACTS_QUICK')));
@@ -723,7 +713,7 @@ $controller
 	<!-- CALENDAR_FORMAT -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Calendar conversion') ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Calendar conversion'); ?>
 			<label class="sr-only" for="CALENDAR_FORMAT0">
 				<?php echo /* I18N: A configuration setting */ I18N::translate('Calendar conversion'); ?> 1
 			</label>
@@ -1227,7 +1217,7 @@ $controller
 			<input
 				class="form-control"
 				id="COMMON_NAMES_ADD"
-				maxlength="5"
+				maxlength="255"
 				name="COMMON_NAMES_ADD"
 				type="text"
 				value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('COMMON_NAMES_ADD')); ?>"
@@ -1247,7 +1237,7 @@ $controller
 			<input
 				class="form-control"
 				id="COMMON_NAMES_REMOVE"
-				maxlength="5"
+				maxlength="255"
 				name="COMMON_NAMES_REMOVE"
 				type="text"
 				value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('COMMON_NAMES_REMOVE')); ?>"
@@ -1549,8 +1539,6 @@ $controller
 		</div>
 	</fieldset>
 
-	<h3><?php echo I18N::translate('Hide &amp; show'); ?></h3>
-
 	<h3><?php echo I18N::translate('Charts'); ?></h3>
 
 	<!-- PEDIGREE_FULL_DETAILS -->
@@ -1600,7 +1588,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo radio_buttons('SHOW_LDS_AT_GLANCE', $hide_show, $WT_TREE->getPreference('SHOW_LDS_AT_GLANCE'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting */ I18N::translate('Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>An individual who has all of the ordinances done will have <b>BESP</b> printed after their name.  Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code.  For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances.'); ?>
+				<?php echo /* I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting. "B", "E", "S" and "P" should not be translated. */ I18N::translate('This is a summary of the <abbr title="The Church of Jesus Christ of Latter-day Saints">LDS</abbr> ordinances for the individual.  “B” indicates an LDS baptism.  “E” indicates an LDS endowment.  “S” indicates an LDS spouse sealing.  “P” indicates an LDS child-to-parent sealing.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -1644,7 +1632,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo radio_buttons('SHOW_FACT_ICONS', $hide_show, $WT_TREE->getPreference('SHOW_FACT_ICONS'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Fact icons” configuration setting */ I18N::translate('Set this to <b>Yes</b> to display icons near Fact names on the Personal Facts and Details page.  Fact icons will be displayed only if they exist in the <i>images/facts</i> folder of the current theme.'); ?>
+				<?php echo /* I18N: Help text for the “Fact icons” configuration setting */ I18N::translate('Some themes can display icons on the “Facts and events” tab.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -1738,19 +1726,6 @@ $controller
 			<?php echo radio_buttons('SHOW_COUNTER', $hide_show, $WT_TREE->getPreference('SHOW_COUNTER'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Hit counters” configuration setting */ I18N::translate('Show hit counters on Portal and Individual pages.'); ?>
-			</p>
-		</div>
-	</fieldset>
-
-	<!-- SHOW_STATS -->
-	<fieldset class="form-group">
-		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Execution statistics'); ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo radio_buttons('SHOW_STATS', $hide_show, $WT_TREE->getPreference('SHOW_STATS'), 'class="radio-inline"'); ?>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Execution statistics” configuration setting */ I18N::translate('Show runtime statistics and database queries at the bottom of every page.'); ?>
 			</p>
 		</div>
 	</fieldset>

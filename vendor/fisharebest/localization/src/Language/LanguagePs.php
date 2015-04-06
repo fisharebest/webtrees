@@ -1,4 +1,8 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Language;
+
+use Fisharebest\Localization\PluralRule\PluralRule1;
+use Fisharebest\Localization\Script\ScriptArab;
+use Fisharebest\Localization\Territory\TerritoryPk;
 
 /**
  * Class LanguagePs - Representation of the Pushto language.
@@ -7,7 +11,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class LanguagePs extends Language {
+class LanguagePs extends AbstractLanguage implements LanguageInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'ps';
@@ -21,5 +25,10 @@ class LanguagePs extends Language {
 	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryPk;
+	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule1;
 	}
 }

@@ -1841,17 +1841,17 @@ div.faq_body {
 .copylink,
 .deletelink {
 	float: left;
+	padding: 0 5px 0 0;
+	font-weight: normal;
 }
 
 [dir=rtl] .editlink,
 [dir=rtl] .copylink,
 [dir=rtl] .deletelink {
 	float: right;
+	padding: 0 0 0 5px;
 }
 
-span.link_text {
-	display: none;
-}
 
 /* ======== Indi header ====== */
 .field .editlink,
@@ -1911,13 +1911,11 @@ span.link_text {
 }
 
 #indi_header a {
-	color: #f00;
-	font-size: 0.75em;
 	font-weight: normal;
 }
 
 #indi_header a:hover {
-	color: #f00;
+	color: #333;
 }
 
 #indi_mainimage {
@@ -2052,19 +2050,17 @@ dd .deletelink {
 	float: left;
 }
 
-.hit-counter {
-	background: #555;
-	color: #fff;
+.odometer {
+	font-family: courier, mono-space;
 	font-weight: bold;
+	background: #000;
+	color: #fff;
 }
 
 /* ======= General sprite ==== */
 .male_gender,
 .female_gender,
-.unknown_gender,
-.editicon,
-.copyicon,
-.deleteicon {
+.unknown_gender {
 	display: block;
 	background: url(images/indi_sprite.png) no-repeat;
 }
@@ -2085,24 +2081,6 @@ dd .deletelink {
 	background-position: -107px 4px;
 	width: 24px;
 	height: 30px;
-}
-
-.editicon {
-	background-position: -40px -32px;
-	width: 24px;
-	height: 16px;
-}
-
-.copyicon {
-	background-position: -70px -32px;
-	width: 24px;
-	height: 16px;
-}
-
-.deleteicon {
-	background-position: -100px -32px;
-	width: 24px;
-	height: 16px;
 }
 
 /* ======== Indi tabs ======== */
@@ -2796,7 +2774,6 @@ dd .deletelink {
 	font-weight: bold;
 	padding: 5px 10px 0;
 	width: 240px;
-	white-space: nowrap;
 }
 
 #edituser-table .value {
@@ -3477,6 +3454,11 @@ table.table-census-assistant th {
 	border-collapse: collapse;
 	padding:         0;
 	width:           100%;
+}
+
+/*-- relationship  --*/
+.rel-background {
+	background-color: #fff;
 }
 
 /*-- timeline  --*/
@@ -4409,22 +4391,6 @@ footer {
 .powered-by-webtrees {
 	font-size: 16px;
 	margin-top: 10px;
-}
-
-#link_change_blocks {
-	clear: both;
-	margin: 0 auto;
-	padding: 25px 0 0;
-	text-align: center;
-	width: 400px;
-}
-
-#link_change_blocks span {
-	padding: 0 50px;
-}
-
-#link_change_blocks span span {
-	padding: 0 3px;
 }
 
 /* ====== End Theme Footer ===== */

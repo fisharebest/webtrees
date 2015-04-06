@@ -142,6 +142,7 @@ $nondatefacts = array(
 	'ABBR',
 	'ADDR',
 	'AFN',
+	'ALIA',
 	'AUTH',
 	'CHIL',
 	'EMAIL',

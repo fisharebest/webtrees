@@ -133,7 +133,7 @@ class AdvancedSearchController extends SearchController {
 		}
 		$fields = array();
 		foreach ($ofields as $field) {
-			$fields[$field] = GedcomTag::GetLabel($field);
+			$fields[$field] = strip_tags(GedcomTag::GetLabel($field)); // Custom tags have error markup
 		}
 		uksort($fields, __NAMESPACE__ . '\AdvancedSearchController::tagSort');
 		return $fields;

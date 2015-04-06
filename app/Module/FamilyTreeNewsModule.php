@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Class FamilyTreeNewsModule
  */
-class FamilyTreeNewsModule extends Module implements ModuleBlockInterface {
+class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('News');
@@ -47,11 +47,11 @@ class FamilyTreeNewsModule extends Module implements ModuleBlockInterface {
 			$limit = 'nolimit';
 			$flag  = '0';
 		} else {
-			$flag = get_block_setting($block_id, 'flag', 0);
+			$flag = $this->getBlockSetting($block_id, 'flag', 0);
 			if ($flag === '0') {
 				$limit = 'nolimit';
 			} else {
-				$limit = get_block_setting($block_id, 'limit', 'nolimit');
+				$limit = $this->getBlockSetting($block_id, 'limit', 'nolimit');
 			}
 		}
 		if ($cfg) {
@@ -142,12 +142,12 @@ class FamilyTreeNewsModule extends Module implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
-			set_block_setting($block_id, 'limit', Filter::post('limit'));
-			set_block_setting($block_id, 'flag', Filter::post('flag'));
+			$this->setBlockSetting($block_id, 'limit', Filter::post('limit'));
+			$this->setBlockSetting($block_id, 'flag', Filter::post('flag'));
 		}
 
-		$limit = get_block_setting($block_id, 'limit', 'nolimit');
-		$flag  = get_block_setting($block_id, 'flag', 0);
+		$limit = $this->getBlockSetting($block_id, 'limit', 'nolimit');
+		$flag  = $this->getBlockSetting($block_id, 'flag', 0);
 
 		echo
 			'<tr><td class="descriptionbox wrap width33">',

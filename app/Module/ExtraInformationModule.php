@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees;
  * Class ExtraInformationModule
  * A sidebar to show non-genealogy information about an individual
  */
-class ExtraInformationModule extends Module implements ModuleSidebarInterface {
+class ExtraInformationModule extends AbstractModule implements ModuleSidebarInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module/sidebar */ I18N::translate('Extra information');
@@ -61,11 +61,7 @@ class ExtraInformationModule extends Module implements ModuleSidebarInterface {
 				print_fact($fact, $controller->record);
 			}
 		}
-		if ($WT_TREE->getPreference('SHOW_COUNTER')) {
-			$hitCount = 0;
-			require WT_ROOT . 'includes/hitcount.php';
-			echo '<div id="hitcounter">', I18N::translate('Page views'), ' ', $hitCount, '</div>';
-		}
+
 		return strip_tags(ob_get_clean(), '<a><div><span>');
 	}
 

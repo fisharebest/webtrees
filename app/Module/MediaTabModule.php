@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Class MediaTabModule
  */
-class MediaTabModule extends Module implements ModuleTabInterface {
+class MediaTabModule extends AbstractModule implements ModuleTabInterface {
 	private $facts;
 
 	/** {@inheritdoc} */

@@ -45,7 +45,7 @@ Add the package as a dependency in your `composer.json` file:
 
 ``` javascript
 require {
-    "fisharebest/ext-calendar": "1.*"
+    "fisharebest/ext-calendar": "2.*"
 }
 ```
 
@@ -79,9 +79,20 @@ $calendar = new PersianCalendar;
 $julian_day = $calendar->ymdToJd($year, $month, $day);
 list($year, $month, $day) = $calendar->jdToYmd($julian_day);
 
-// Information functions
-$is_leap_year = $calendar->isLeapYear($year);
-$month_length = $calendar->daysInMonth($year, $month);
+// Days, weeks and months
+$is_leap_year  = $calendar->isLeapYear($year);
+$month_length  = $calendar->daysInMonth($year, $month);
+$number_months = $calendar->monthsInYear();  // Including leap-months
+$week_length   = $calendar->daysInWeek();    // Not all calendars have 7!
+
+// Which dates are valid for this calendar?
+$jd = $calendar->jdStart();
+$jd = $calendar->jdEnd();
+
+// Miscellaneous utilities
+$jewish = new JewishCalendar;
+$jewish->numberToHebrewNumerals(5781, false); // "תשפ״א"
+$jewish->numberToHebrewNumerals(5781, true);  // "ה׳תשפ״א"
 ```
 
 Known restrictions and limitations
@@ -99,7 +110,7 @@ Thus the package always provides the same behaviour as the native `ext/calendar`
 
 * [#54254](https://bugs.php.net/bug.php?id=54254) Jewish month "Adar" - fixed in PHP 5.5
 
-* [#67960](https://bugs.php.net/bug.php?id=67960) Constants `CAL_DOW_SHORT` and `CAL_DOW_LONG` - found/fixed by this project!
+* [#67960](https://bugs.php.net/bug.php?id=67960) Constants `CAL_DOW_SHORT` and `CAL_DOW_LONG` - found/fixed by this project - fixed in PHP 5.5.21 and 5.6.5
 
 * [#67976](https://bugs.php.net/bug.php?id=67976) Wrong value in `cal_days_in_month()` for French calendar - found by this project!
 

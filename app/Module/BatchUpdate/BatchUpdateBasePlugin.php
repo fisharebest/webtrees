@@ -84,7 +84,7 @@ class BatchUpdateBasePlugin {
 	 *
 	 * @return string
 	 */
-	function getActionPreview(GedcomRecord $record) {
+	public function getActionPreview(GedcomRecord $record) {
 		$old_lines = preg_split('/[\n]+/', $record->getGedcom());
 		$new_lines = preg_split('/[\n]+/', $this->updateRecord($record->getXref(), $record->getGedcom()));
 		// Find matching lines using longest-common-subsequence algorithm.
@@ -112,7 +112,7 @@ class BatchUpdateBasePlugin {
 			$diff_lines[] = self::decorateInsertedText($new_lines[++$last_new]);
 		}
 
-		return '<pre>' . self::createEditLinks(implode("\n", $diff_lines)) . '</pre>';
+		return '<pre class="gedcom-data">' . self::createEditLinks(implode("\n", $diff_lines)) . '</pre>';
 	}
 
 	/**
@@ -159,7 +159,7 @@ class BatchUpdateBasePlugin {
 	 * @return string
 	 */
 	static function decorateInsertedText($text) {
-		return '<span class="added_text">' . $text . '</span>';
+		return '<ins>' . $text . '</ins>';
 	}
 
 	/**
@@ -170,7 +170,7 @@ class BatchUpdateBasePlugin {
 	 * @return string
 	 */
 	static function decorateDeletedText($text) {
-		return '<span class="deleted_text">' . $text . '</span>';
+		return '<del>' . $text . '</del>';
 	}
 
 	/**

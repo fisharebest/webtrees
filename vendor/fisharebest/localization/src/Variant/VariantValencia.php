@@ -1,13 +1,13 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Variant;
 
 /**
- * Class VariantPosix - Representation of the Valencia variant of ca-ES.
+ * Class VariantValencia - Representation of the Valencia variant of ca-ES.
  *
  * @author    Greg Roach <fisharebest@gmail.com>
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class VariantValencia extends Variant {
+class VariantValencia implements VariantInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'valencia';

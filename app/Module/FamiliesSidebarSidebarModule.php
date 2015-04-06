@@ -21,7 +21,7 @@ use Zend_Session;
 /**
  * Class FamiliesSidebarModule
  */
-class FamiliesSidebarModule extends Module implements ModuleSidebarInterface {
+class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module/sidebar */ I18N::translate('Family list');

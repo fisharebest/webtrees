@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Language;
+
+use Fisharebest\Localization\Territory\TerritoryKe;
 
 /**
  * Class LanguageGuz - Representation of the Gusii language.
@@ -7,7 +9,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class LanguageGuz extends Language {
+class LanguageGuz extends AbstractLanguage implements LanguageInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'guz';

@@ -18,7 +18,7 @@
 // Specifications for various types of popup edit window.
 // Choose positions to center in the smallest (1000x800) target screen
 var edit_window_specs='width=650,height=600,left=175,top=100,resizable=1,scrollbars=1'; // edit_interface.php, add_media.php, gedrecord.php
-var indx_window_specs='width=600,height=500,left=200,top=150,resizable=1,scrollbars=1'; // index_edit.php, module configuration
+var indx_window_specs='width=600,height=500,left=200,top=150,resizable=1,scrollbars=1'; // module configuration
 var news_window_specs='width=740,height=650,left=200,top=150,resizable=1,scrollbars=1'; // edit_news.php
 var help_window_specs='width=500,height=400,left=250,top=200,resizable=1,scrollbars=1'; // help.php
 var find_window_specs='width=550,height=600,left=250,top=150,resizable=1,scrollbars=1'; // find.php, inverse_link.php
@@ -1170,8 +1170,8 @@ function autocomplete(selector) {
 	}
 
 	jQuery(selector).each(function() {
-		var type = $(this).data("autocomplete-type"); // What type of field
-		var ged  = $(this).data("autocomplete-ged"); // Which family tree
+		var type = jQuery(this).data("autocomplete-type"); // What type of field
+		var ged  = jQuery(this).data("autocomplete-ged"); // Which family tree
 		if (typeof(type) === "undefined") {
 			alert("Missing data-autocomplete-type attribute");
 		}
@@ -1188,7 +1188,7 @@ function autocomplete(selector) {
 				// Some autocomplete fields require the current value of an earlier field
 				var extra  = null;
 				if (self.data("autocomplete-extra")) {
-					extra = $("#" + self.data("autocomplete-extra")).val();
+					extra = jQuery("#" + self.data("autocomplete-extra")).val();
 				}
 
 				jQuery.getJSON("autocomplete.php", {

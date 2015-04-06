@@ -1,4 +1,7 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Language;
+
+use Fisharebest\Localization\PluralRule\PluralRule1;
+use Fisharebest\Localization\Territory\TerritoryCh;
 
 /**
  * Class LanguageGsw - Representation of the Swiss German language.
@@ -7,7 +10,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class LanguageGsw extends Language {
+class LanguageGsw extends AbstractLanguage implements LanguageInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'gsw';
@@ -16,5 +19,10 @@ class LanguageGsw extends Language {
 	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryCh;
+	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule1;
 	}
 }

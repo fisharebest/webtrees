@@ -43,11 +43,11 @@ class IndividualController extends GedcomRecordController {
 
 		parent::__construct();
 
-		$this->tabs = Module::getActiveTabs($this->record->getTree());
 
 		// If we can display the details, add them to the page header
 		if ($this->record && $this->record->canShow()) {
 			$this->setPageTitle($this->record->getFullName() . ' ' . $this->record->getLifespan());
+			$this->tabs = Module::getActiveTabs($this->record->getTree());
 		}
 	}
 
@@ -243,7 +243,7 @@ class IndividualController extends GedcomRecordController {
 				echo ' title="', I18N::translate('Female'), '">';
 			 }
 			break;
-		case 'U':
+		default:
 			echo 'unknown_gender"';
 			if ($event->canEdit()) {
 				echo ' title="', I18N::translateContext('unknown gender', 'Unknown'), ' - ', I18N::translate('Edit'), '"';

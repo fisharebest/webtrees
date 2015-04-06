@@ -131,17 +131,4 @@ if ($blocks['side']) {
 	}
 	echo '</div>';
 }
-
-echo '<div id="link_change_blocks">';
-
-if ($ctype === 'user') {
-	echo '<a href="index_edit.php?user_id=' . Auth::id() . '">', I18N::translate('Change the blocks on this page'), '</a>';
-} elseif ($ctype === 'gedcom' && Auth::isManager($WT_TREE)) {
-	echo '<a href="index_edit.php?gedcom_id=' . $WT_TREE->getTreeId() . '">', I18N::translate('Change the blocks on this page'), '</a>';
-}
-
-if ($WT_TREE->getPreference('SHOW_COUNTER')) {
-	echo '<span>' . /* I18N: The number of [...] */ I18N::translate('Page views') . ' ' . $hitCount . '</span>';
-}
-
-echo '</div></div>';
+echo '</div>';

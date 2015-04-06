@@ -1,4 +1,7 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Locale;
+
+use Fisharebest\Localization\PluralRule\PluralRule2;
+use Fisharebest\Localization\Territory\TerritoryBr;
 
 /**
  * Class LocalePtBr - Brazilian Portuguese
@@ -14,8 +17,13 @@ class LocalePtBr extends LocalePt {
 	}
 
 	/** {@inheritdoc} */
-	protected function endonymSortable() {
+	public function endonymSortable() {
 		return 'PORTUGUES DO BRASIL';
+	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule2;
 	}
 
 	/** {@inheritdoc} */

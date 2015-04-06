@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Locale;
+
+use Fisharebest\Localization\Language\LanguageRo;
 
 /**
  * Class LocaleRo - Romanian
@@ -7,7 +9,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license       GPLv3+
  */
-class LocaleRo extends Locale {
+class LocaleRo extends AbstractLocale implements LocaleInterface {
 	/** {@inheritdoc} */
 	public function collation() {
 		return 'romanian_ci';
@@ -19,7 +21,7 @@ class LocaleRo extends Locale {
 	}
 
 	/** {@inheritdoc} */
-	protected function endonymSortable() {
+	public function endonymSortable() {
 		return 'ROMANA';
 	}
 

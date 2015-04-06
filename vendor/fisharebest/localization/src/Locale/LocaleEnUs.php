@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Locale;
+
+use Fisharebest\Localization\Territory\TerritoryUs;
 
 /**
  * Class LocaleEnUs - American English
@@ -14,7 +16,7 @@ class LocaleEnUs extends LocaleEn {
 	}
 
 	/** {@inheritdoc} */
-	protected function endonymSortable() {
+	public function endonymSortable() {
 		return 'ENGLISH, AMERICAN';
 	}
 

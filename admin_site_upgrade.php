@@ -36,7 +36,7 @@ $download_url_html   = '<b dir="auto"><a href="' . Filter::escapeHtml($download_
 
 // Show a friendly message while the site is being upgraded
 $lock_file           = __DIR__ . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'offline.txt';
-$lock_file_text      = I18N::translate('This website is being upgraded.  Try again in a few minutes.') . PHP_EOL . format_timestamp(WT_TIMESTAMP) . I18N::translate('UTC');
+$lock_file_text      = I18N::translate('This website is being upgraded.  Try again in a few minutes.') . PHP_EOL . format_timestamp(WT_TIMESTAMP) . /* I18N: Timezone - http://en.wikipedia.org/wiki/UTC */ I18N::translate('UTC');
 
 // Success/failure indicators
 $icon_success        = '<i class="icon-yes"></i>';

@@ -25,8 +25,7 @@ $controller
 	->setPageTitle(I18N::translate('Menus'));
 
 $action  = Filter::post('action');
-$modules = Module::getInstalledModules('disabled');
-$modules = array_filter($modules, function(Module $x) { return $x instanceof ModuleMenuInterface; });
+$modules = Module::getAllModulesByComponent('menu');
 
 if ($action === 'update_mods' && Filter::checkCsrf()) {
 	foreach ($modules as $module) {

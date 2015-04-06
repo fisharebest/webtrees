@@ -37,7 +37,7 @@ use Zend_Session;
  *
  * Hence, use "Google Maps™ mapping service" where appropriate.
  */
-class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTabInterface {
+class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, ModuleTabInterface {
 
 	/** @var array of ancestors of root person */
 	private $ancestors = array();
@@ -321,7 +321,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 						</tr>
 						<tr>
 							<th><?php echo /* I18N: http://en.wikipedia.org/wiki/Google_street_view */ I18N::translate('Google Street View™'); ?></th>
-							<td><?php echo radio_buttons('GM_USE_STREETVIEW', array(false=> I18N::translate('hide'), true=> I18N::translate('show')), $this->getSetting('GM_USE_STREETVIEW')); ?></td>
+							<td><?php echo radio_buttons('GM_USE_STREETVIEW', array(false=> I18N::translate('hide'), true=> I18N::translate('show')), $this->getSetting('GM_USE_STREETVIEW'), 'class="radio-inline"'); ?></td>
 						</tr>
 						<tr>
 							<th><?php echo I18N::translate('Size of map (in pixels)'); ?></th>
@@ -462,7 +462,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 					<table class="gm_edit_config">
 						<tr>
 							<th><?php echo I18N::translate('Use Google Maps™ for the place hierarchy'); ?></th>
-							<td><?php echo edit_field_yes_no('GM_PLACE_HIERARCHY', $this->getSetting('GM_PLACE_HIERARCHY')); ?></td>
+							<td><?php echo edit_field_yes_no('GM_PLACE_HIERARCHY', $this->getSetting('GM_PLACE_HIERARCHY'), 'class="radio-inline"'); ?></td>
 						</tr>
 						<tr>
 							<th><?php echo I18N::translate('Size of map (in pixels)'); ?></th>
@@ -487,7 +487,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 								<?php echo I18N::translate('Display short placenames'), help_link('GM_DISP_SHORT_PLACE', 'googlemap'); ?>
 							</th>
 							<td>
-								<?php echo edit_field_yes_no('GM_DISP_SHORT_PLACE', $this->getSetting('GM_DISP_SHORT_PLACE')); ?>
+								<?php echo edit_field_yes_no('GM_DISP_SHORT_PLACE', $this->getSetting('GM_DISP_SHORT_PLACE'), 'class="radio-inline"'); ?>
 								<p class="small text-muted">
 									<?php echo I18N::translate('Hide the flags that are configured in the googlemap module.  Usually these are for countries and states.  This serves as a visual cue that the markers around the flag are from the general area, and not the specific spot.'); ?>
 								</p>
@@ -498,7 +498,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 								<?php echo I18N::translate('Display map coordinates'); ?>
 							</th>
 							<td>
-								<?php echo edit_field_yes_no('GM_COORD', $this->getSetting('GM_COORD')); ?>
+								<?php echo edit_field_yes_no('GM_COORD', $this->getSetting('GM_COORD'), 'class="radio-inline"'); ?>
 								<p class="small text-muted">
 									<?php echo I18N::translate('This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers.'); ?>
 								</p>
@@ -1334,7 +1334,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 					$curgen++;
 				}
 
-				$relationship = get_close_relationship_name($controller->root, $person);
+				$relationship = get_sosa_name($i + 1);
 
 				$event = '<img src="' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/sq' . $curgen . '.png" width="10" height="10"> ' .
 					'<strong>' . $relationship . '</strong>';
@@ -1346,9 +1346,10 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 				}
 				// end of add image
 
+				$birth     = $person->getFirstFact('BIRT');
 				$dataleft  = Filter::escapeJs($image . $event . ' — ' . $name);
 				$datamid   = Filter::escapeJs(' <span><a href="' . $person->getHtmlUrl() . '">(' . I18N::translate('View individual') . ')</a></span>');
-				$dataright = Filter::escapeJs($person->getFirstFact('BIRT')->summary());
+				$dataright = $birth ? Filter::escapeJs($birth->summary()) : '';
 
 				$latlongval[$i] = $this->getLatitudeAndLongitudeFromPlaceLocation($person->getBirthPlace());
 				if ($latlongval[$i]) {
@@ -2313,7 +2314,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 				controlText.style.fontSize = '12px';
 				controlText.style.paddingLeft = '15px';
 				controlText.style.paddingRight = '15px';
-				controlText.innerHTML = '<b><?php echo I18N::translate('Redraw map')?></b>';
+				controlText.innerHTML = '<b><?php echo I18N::translate('Redraw map'); ?></b>';
 				controlUI.appendChild(controlText);
 
 				// Setup the click event listeners: simply set the map to original LatLng
@@ -3190,7 +3191,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 					" ORDER BY pl_place COLLATE :collation"
 				)->execute(array(
 					'parent_id' => $parent_id,
-					'collation' => I18N::$collation,
+					'collation' => I18N::collation(),
 				))->fetchAll();
 		} else {
 			$rows = Database::prepare(
@@ -3201,7 +3202,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 				" ORDER BY pl_place COLLATE :collation"
 			)->execute(array(
 				'parent_id' => $parent_id,
-				'collation' => I18N::$collation,
+				'collation' => I18N::collation(),
 			))->fetchAll();
 		}
 
@@ -3693,7 +3694,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 				controlText.style.fontSize = '12px';
 				controlText.style.paddingLeft = '15px';
 				controlText.style.paddingRight = '15px';
-				controlText.innerHTML = '<b><?php echo I18N::translate('Redraw map')?><\/b>';
+				controlText.innerHTML = '<b><?php echo I18N::translate('Redraw map'); ?><\/b>';
 				controlUI.appendChild(controlText);
 
 				// Setup the click event listeners: simply set the map to original LatLng
@@ -4034,7 +4035,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 			<tr>
 				<td class="descriptionbox"><?php echo GedcomTag::getLabel('LATI'); ?></td>
 				<td class="optionbox" colspan="2">
-					<input type="text" id="NEW_PLACE_LATI" name="NEW_PLACE_LATI" placeholder="<?php echo /* I18N: Measure of latitude/longitude */ I18N::translate('degrees') ?>" value="<?php echo abs($place_lati); ?>" size="20" onchange="updateMap();">
+					<input type="text" id="NEW_PLACE_LATI" name="NEW_PLACE_LATI" placeholder="<?php echo /* I18N: Measure of latitude/longitude */ I18N::translate('degrees'); ?>" value="<?php echo abs($place_lati); ?>" size="20" onchange="updateMap();">
 					<select name="LATI_CONTROL" onchange="updateMap();">
 						<option value="PL_N" <?php if ($place_lati >= 0) echo "selected"; echo ">", I18N::translate('north'); ?></option>
 						<option value="PL_S" <?php if ($place_lati < 0) echo "selected"; echo ">", I18N::translate('south'); ?></option>
@@ -4044,7 +4045,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 			<tr>
 				<td class="descriptionbox"><?php echo GedcomTag::getLabel('LONG'); ?></td>
 				<td class="optionbox" colspan="2">
-					<input type="text" id="NEW_PLACE_LONG" name="NEW_PLACE_LONG" placeholder="<?php echo I18N::translate('degrees') ?>" value="<?php echo abs($place_long); ?>" size="20" onchange="updateMap();">
+					<input type="text" id="NEW_PLACE_LONG" name="NEW_PLACE_LONG" placeholder="<?php echo I18N::translate('degrees'); ?>" value="<?php echo abs($place_long); ?>" size="20" onchange="updateMap();">
 					<select name="LONG_CONTROL" onchange="updateMap();">
 						<option value="PL_E" <?php if ($place_long >= 0) echo "selected"; echo ">", I18N::translate('east'); ?></option>
 						<option value="PL_W" <?php if ($place_long < 0) echo "selected"; echo ">", I18N::translate('west'); ?></option>
@@ -4598,7 +4599,7 @@ class GoogleMapsModule extends Module implements ModuleConfigInterface, ModuleTa
 				->execute(array($place['place_id']))
 				->fetchOne();
 			if ($noRows == 0) { ?>
-				<td><a href="#" onclick="delete_place(<?php echo $place['place_id']?>);return false;" class="icon-delete" title="<?php echo I18N::translate('Remove'); ?>"></a></td>
+				<td><a href="#" onclick="delete_place(<?php echo $place['place_id']; ?>);return false;" class="icon-delete" title="<?php echo I18N::translate('Remove'); ?>"></a></td>
 		<?php       } else { ?>
 				<td><i class="icon-delete-grey"></i></td>
 		<?php       } ?>

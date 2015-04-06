@@ -1,4 +1,8 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Language;
+
+use Fisharebest\Localization\PluralRule\PluralRule0;
+use Fisharebest\Localization\Script\ScriptKore;
+use Fisharebest\Localization\Territory\TerritoryKr;
 
 /**
  * Class LanguageKo - Representation of the Korean language.
@@ -7,7 +11,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class LanguageKo extends Language {
+class LanguageKo extends AbstractLanguage implements LanguageInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'ko';
@@ -21,5 +25,10 @@ class LanguageKo extends Language {
 	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryKr;
+	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule0;
 	}
 }

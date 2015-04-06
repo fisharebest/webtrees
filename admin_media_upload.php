@@ -233,7 +233,7 @@ for ($i = 1; $i < 6; $i++) {
 		echo '</td>';
 		echo '<td>';
 
-		echo '<span dir="ltr"><select name="folder_list', $i, '" onchange="document.uploadmedia.folder', $i, '.value=this.options[this.selectedIndex].value;">';
+		echo '<select name="folder_list', $i, '" onchange="document.uploadmedia.folder', $i, '.value=this.options[this.selectedIndex].value;">';
 		echo '<option';
 		echo ' value="/"> ', I18N::translate('Choose: '), ' </option>';
 		if (Auth::isAdmin()) {
@@ -242,9 +242,9 @@ for ($i = 1; $i < 6; $i++) {
 		foreach ($mediaFolders as $f) {
 			echo '<option value="', Filter::escapeHtml($f), '">', Filter::escapeHtml($f), "</option>";
 		}
-		echo "</select></span>";
+		echo "</select>";
 		if (Auth::isAdmin()) {
-			echo '<br><span dir="ltr"><input name="folder', $i, '" type="text" size="40" value=""></span>';
+			echo '<br><input name="folder', $i, '" type="text" size="40" value="">';
 		} else {
 			echo '<input name="folder', $i, '" type="hidden" value="">';
 		}

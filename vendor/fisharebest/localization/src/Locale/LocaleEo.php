@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Locale;
+
+use Fisharebest\Localization\Language\LanguageEo;
 
 /**
  * Class LocaleEo - Esperanto
@@ -7,7 +9,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license       GPLv3+
  */
-class LocaleEo extends Locale {
+class LocaleEo extends AbstractLocale implements LocaleInterface {
 	/** {@inheritdoc} */
 	public function collation() {
 		return 'esperanto_ci';
@@ -19,7 +21,7 @@ class LocaleEo extends Locale {
 	}
 
 	/** {@inheritdoc} */
-	protected function endonymSortable() {
+	public function endonymSortable() {
 		return 'ESPERANTO';
 	}
 

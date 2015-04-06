@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Class BatchUpdateModule
  */
-class BatchUpdateModule extends Module implements ModuleConfigInterface {
+class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface {
 	/** @var string  Form parameter: chosen plugin*/
 	private $plugin;
 
@@ -132,8 +132,7 @@ class BatchUpdateModule extends Module implements ModuleConfigInterface {
 					}
 				}
 				$this->xref = '';
-
-				return '';
+				break;
 			}
 
 			// Make sure that our requested record really does need updating.
@@ -305,8 +304,8 @@ class BatchUpdateModule extends Module implements ModuleConfigInterface {
 	 */
 	private function getPluginList() {
 		$plugins = array();
-		$dir_handle = opendir(__DIR__);
-		while ($file = readdir($dir_handle)) {
+		$dir_handle = opendir(__DIR__ . '/BatchUpdate');
+		while (($file = readdir($dir_handle)) !== false) {
 			if (substr($file, -10) == 'Plugin.php' && $file !== 'BatchUpdateBasePlugin.php') {
 				$class = __NAMESPACE__ . '\\' . basename($file, '.php');
 				$plugins[$class] = new $class;

@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Class LoggedInUsersModule
  */
-class LoggedInUsersModule extends Module implements ModuleBlockInterface {
+class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module. (A list of users who are online now) */ I18N::translate('Who is online');

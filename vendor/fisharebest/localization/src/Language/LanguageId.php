@@ -1,4 +1,7 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Language;
+
+use Fisharebest\Localization\PluralRule\PluralRule0;
+use Fisharebest\Localization\Territory\TerritoryId;
 
 /**
  * Class LanguageId - Representation of the Indonesian language.
@@ -7,7 +10,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class LanguageId extends Language {
+class LanguageId extends AbstractLanguage implements LanguageInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'id';
@@ -16,5 +19,10 @@ class LanguageId extends Language {
 	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryId;
+	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule0;
 	}
 }

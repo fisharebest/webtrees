@@ -206,7 +206,7 @@ case 'load':
 
 	// Total filtered/unfiltered rows
 	$recordsFiltered = Database::prepare("SELECT FOUND_ROWS()")->fetchOne();
-	$recordsTotal    = Database::prepare("SELECT COUNT(*) FROM `##site_access_rule` WHERE rule <> 'unknown'")->fetchOne();
+	$recordsTotal    = Database::prepare("SELECT COUNT(*) FROM `##site_access_rule`")->fetchOne();
 
 	header('Content-type: application/json');
 	// See http://www.datatables.net/usage/server-side
@@ -284,7 +284,7 @@ case 'create':
 			<div class="col-sm-9">
 				<input class="form-control" type="text" id="user_agent_pattern" name="user_agent_pattern" required value="<?php echo Filter::escapeHtml($user_agent_pattern); ?>" maxlength="255">
 				<p class="small text-muted">
-					<?php echo I18N::noop('The “%” character is a wildcard, and will match zero or more other characters.'); ?>
+					<?php echo I18N::translate('The “%” character is a wildcard, and will match zero or more other characters.'); ?>
 				</p>
 			</div>
 		</div>
@@ -343,24 +343,6 @@ default:
 					/* 5 user_agent_pattern      */ { class: "ua_string" },
 					/* 6 comment                 */ { },
 					/* 7 rule                    */ { }
-				]
-			});
-
-			jQuery(".table-unknown-site-visitors").dataTable({
-				ajax: "' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=load_unknown",
-				serverSide: true,
-				' . I18N::datatablesI18N() . ',
-				processing: true,
-				stateSave: true,
-				stateDuration: 180,
-				columns: [
-					/* 0 ip_address         */ { dataSort: 1, class: "ip_address" },
-					/* 0 ip_address (sort)  */ { type: "num", visible: false },
-					/* 1 user_agent_pattern */ { class: "ua_string" },
-					/* 2 updated            */ { class: "ua_string" },
-					/* 3 <allowed>          */ { sortable: false, class: "center" },
-					/* 4 <banned>           */ { sortable: false, class: "center" },
-					/* 5 <search-engine>    */ { sortable: false, class: "center" }
 				]
 			});
 		');

@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Class TopSurnamesModule
  */
-class TopSurnamesModule extends Module implements ModuleBlockInterface {
+class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module.  Top=Most common */ I18N::translate('Top surnames');
@@ -37,9 +37,9 @@ class TopSurnamesModule extends Module implements ModuleBlockInterface {
 		$COMMON_NAMES_REMOVE    = $WT_TREE->getPreference('COMMON_NAMES_REMOVE');
 		$COMMON_NAMES_THRESHOLD = $WT_TREE->getPreference('COMMON_NAMES_THRESHOLD');
 
-		$num       = get_block_setting($block_id, 'num', '10');
-		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');
-		$block     = get_block_setting($block_id, 'block', '0');
+		$num       = $this->getBlockSetting($block_id, 'num', '10');
+		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
+		$block     = $this->getBlockSetting($block_id, 'block', '0');
 
 		if ($cfg) {
 			foreach (array('num', 'infoStyle', 'block') as $name) {
@@ -136,14 +136,14 @@ class TopSurnamesModule extends Module implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
-			set_block_setting($block_id, 'num', Filter::postInteger('num', 1, 10000, 10));
-			set_block_setting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|array|table|tagcloud', 'table'));
-			set_block_setting($block_id, 'block', Filter::postBool('block'));
+			$this->setBlockSetting($block_id, 'num', Filter::postInteger('num', 1, 10000, 10));
+			$this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|array|table|tagcloud', 'table'));
+			$this->setBlockSetting($block_id, 'block', Filter::postBool('block'));
 		}
 
-		$num       = get_block_setting($block_id, 'num', '10');
-		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');
-		$block     = get_block_setting($block_id, 'block', '0');
+		$num       = $this->getBlockSetting($block_id, 'num', '10');
+		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
+		$block     = $this->getBlockSetting($block_id, 'block', '0');
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Number of items to show');

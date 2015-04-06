@@ -83,7 +83,7 @@ class CustomTheme extends WebtreesTheme {
 			$menu = parent::menuLists();
 			// Remove the "notes" sub-menu.
 			$submenus = array_filter($menu->getSubmenus(), function(Menu $menu) {
-				return $menu->getId() !== 'menu-list-note';
+				return $menu->getClass() !== 'menu-list-note';
 			});
 			// Replace the sub-menus
 			$menu->setSubmenus($submenus);

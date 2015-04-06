@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Class CensusAssistantModule
  */
-class CensusAssistantModule extends Module {
+class CensusAssistantModule extends AbstractModule {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('Census assistant');
@@ -119,7 +119,7 @@ class CensusAssistantModule extends Module {
 		$filter = trim($filter);
 		$filter_array = explode(' ', preg_replace('/ {2,}/', ' ', $filter));
 		echo "<table class=\"tabs_table width90\"><tr>";
-		$myindilist = search_indis_names($filter_array, $WT_TREE);
+		$myindilist = search_indis_names($filter_array, array($WT_TREE));
 		if ($myindilist) {
 			echo "<td class=\"list_value_wrap\"><ul>";
 			usort($myindilist, __NAMESPACE__ . '\GedcomRecord::compare');
@@ -319,12 +319,6 @@ class CensusAssistantModule extends Module {
 		// Only modify “add shared note” links on the add/edit actions.
 		// TODO: does the “edit” action work?
 		if ($action != 'add' && $action != 'edit') {
-			return '';
-		}
-
-		// There are lots of “add shared note” links.  We only need to modify the 2nd one
-		static $n = 0;
-		if (++$n != 2) {
 			return '';
 		}
 

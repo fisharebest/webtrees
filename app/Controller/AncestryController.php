@@ -27,7 +27,7 @@ class AncestryController extends ChartController {
 	/** @var integer Determines style of chart */
 	public $chart_style;
 
-	/** @var integer Number of generations to display	 */
+	/** @var integer Number of generations to display */
 	public $generations;
 
 	/**
@@ -56,62 +56,36 @@ class AncestryController extends ChartController {
 	/**
 	 * print a child ascendancy
 	 *
-	 * @param         $person
-	 * @param integer $sosa  child sosa number
-	 * @param integer $depth the ascendancy depth to show
+	 * @param Individual $individual
+	 * @param integer    $sosa  child sosa number
+	 * @param integer    $depth the ascendancy depth to show
 	 */
-	public function printChildAscendancy($person, $sosa, $depth) {
-
-		$pidarr = array();
-		if ($person) {
-			$pid = $person->getXref();
-			$label = I18N::translate('Ancestors of %s', $person->getFullName());
-		} else {
-			$pid = '';
-			$label = '';
-		}
-		// child
+	public function printChildAscendancy(Individual $individual, $sosa, $depth) {
 		echo '<li>';
-		echo '<table><tr><td>';
-		if ($sosa == 1) {
+		echo '<table><tbody><tr><td>';
+		if ($sosa === 1) {
 			echo '<img src="', Theme::theme()->parameter('image-spacer'), '" height="3" width="', Theme::theme()->parameter('chart-descendancy-indent'), '"></td><td>';
 		} else {
 			echo '<img src="', Theme::theme()->parameter('image-spacer'), '" height="3" width="2" alt="">';
 			echo '<img src="', Theme::theme()->parameter('image-hline'), '" height="3" width="', Theme::theme()->parameter('chart-descendancy-indent') - 2, '"></td><td>';
 		}
-		print_pedigree_person($person, $this->showFull());
-		echo '</td>';
-		echo '<td>';
+		print_pedigree_person($individual, $this->showFull());
+		echo '</td><td>';
 		if ($sosa > 1) {
-			print_url_arrow('?rootid=' . $pid . '&amp;PEDIGREE_GENERATIONS=' . $this->generations . '&amp;show_full=' . $this->showFull() . '&amp;chart_style=' . $this->chart_style . '&amp;ged=' . $person->getTree()->getNameUrl(), $label, 3);
+			print_url_arrow('?rootid=' . $individual->getXref() . '&amp;PEDIGREE_GENERATIONS=' . $this->generations . '&amp;show_full=' . $this->showFull() . '&amp;chart_style=' . $this->chart_style . '&amp;ged=' . $individual->getTree()->getNameUrl(), I18N::translate('Ancestors of %s', $individual->getFullName()), 3);
 		}
-		echo '</td>';
-		echo '<td class="details1">&nbsp;<span dir="ltr" class="person_box' . (($sosa == 1) ? 'NN' : (($sosa % 2) ? 'F' : '')) . '">&nbsp;', $sosa, '&nbsp;</span>&nbsp;';
-		echo '</td><td class="details1">';
-		$relation = '';
-		$new = ($pid == '' || !isset($pidarr[$pid]));
-		if (!$new) {
-			$relation = '<br>[=<a href="#sosa' . $pidarr[$pid] . '">' . $pidarr[$pid] . '</a> - ' . get_sosa_name($pidarr[$pid]) . ']';
-		} else {
-			$pidarr[$pid] = $sosa;
-		}
-		echo get_sosa_name($sosa) . $relation;
-		echo '</td>';
-		echo '</tr></table>';
+		echo '</td><td class="details1">&nbsp;<span class="person_box' . ($sosa === 1 ? 'NN' : ($sosa % 2 ? 'F' : '')) . '">', I18N::number($sosa), '</span> ';
+		echo '</td><td class="details1">&nbsp;', get_sosa_name($sosa), '</td>';
+		echo '</tr></tbody></table>';
 
-		if (is_null($person)) {
-			echo '</li>';
-			return;
-		}
-		// parents
-		$family = $person->getPrimaryChildFamily();
-
-		if ($family && $new && $depth > 0) {
-			// print marriage info
+		// Parents
+		$family = $individual->getPrimaryChildFamily();
+		if ($family && $depth > 0) {
+			// Marriage details
 			echo '<span class="details1">';
 			echo '<img src="', Theme::theme()->parameter('image-spacer'), '" height="2" width="', Theme::theme()->parameter('chart-descendancy-indent'), '" alt=""><a href="#" onclick="return expand_layer(\'sosa_', $sosa, '\');" class="top"><i id="sosa_', $sosa, '_img" class="icon-minus" title="', I18N::translate('View family'), '"></i></a>';
-			echo '&nbsp;<span dir="ltr" class="person_box">&nbsp;', ($sosa * 2), '&nbsp;</span>&nbsp;', I18N::translate('and');
-			echo '&nbsp;<span dir="ltr" class="person_boxF">&nbsp;', ($sosa * 2 + 1), '&nbsp;</span>&nbsp;';
+			echo ' <span class="person_box">', I18N::number($sosa * 2), '</span> ', I18N::translate('and');
+			echo ' <span class="person_boxF">', I18N::number($sosa * 2 + 1), '</span>';
 			if ($family->canShow()) {
 				foreach ($family->getFacts(WT_EVENTS_MARR) as $fact) {
 					echo ' <a href="', $family->getHtmlUrl(), '" class="details1">', $fact->summary(), '</a>';
@@ -120,8 +94,12 @@ class AncestryController extends ChartController {
 			echo '</span>';
 			// display parents recursively - or show empty boxes
 			echo '<ul id="sosa_', $sosa, '" class="generation">';
-			$this->printChildAscendancy($family->getHusband(), $sosa * 2, $depth - 1);
-			$this->printChildAscendancy($family->getWife(), $sosa * 2 + 1, $depth - 1);
+			if ($family->getHusband()) {
+				$this->printChildAscendancy($family->getHusband(), $sosa * 2, $depth - 1);
+			}
+			if ($family->getWife()) {
+				$this->printChildAscendancy($family->getWife(), $sosa * 2 + 1, $depth - 1);
+			}
 			echo '</ul>';
 		}
 		echo '</li>';

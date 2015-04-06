@@ -1,4 +1,8 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Language;
+
+use Fisharebest\Localization\PluralRule\PluralRule2;
+use Fisharebest\Localization\Script\ScriptArmn;
+use Fisharebest\Localization\Territory\TerritoryAm;
 
 /**
  * Class LanguageHy - Representation of the Armenian language.
@@ -7,7 +11,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class LanguageHy extends Language {
+class LanguageHy extends AbstractLanguage implements LanguageInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'hy';
@@ -21,5 +25,10 @@ class LanguageHy extends Language {
 	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryAm;
+	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule2;
 	}
 }

@@ -1,4 +1,7 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Locale;
+
+use Fisharebest\Localization\Language\LanguageEs;
+use Fisharebest\Localization\Territory\TerritoryEs;
 
 /**
  * Class LocaleEs - Spanish
@@ -7,7 +10,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license       GPLv3+
  */
-class LocaleEs extends Locale {
+class LocaleEs extends AbstractLocale implements LocaleInterface {
 	/** {@inheritdoc} */
 	public function collation() {
 		return 'spanish_ci';
@@ -19,7 +22,7 @@ class LocaleEs extends Locale {
 	}
 
 	/** {@inheritdoc} */
-	protected function endonymSortable() {
+	public function endonymSortable() {
 		return 'ESPANOL';
 	}
 

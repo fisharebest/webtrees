@@ -23,17 +23,17 @@
 		}
 	},
 	"require": {
-		"bombayworks/zendframework1": "*",
-		"ezyang/htmlpurifier": "*",
-		"fisharebest/algorithm": "*",
-		"fisharebest/ext-calendar": "*",
-		"fisharebest/localization": "*",
-		"ircmaxell/password-compat": "*",
-		"michelf/php-markdown": "*",
-		"patchwork/utf8": "*",
-		"pclzip/pclzip": "*",
-		"tecnick.com/tcpdf": "*",
-		"rhumsaa/uuid": "*"
+		"bombayworks/zendframework1": "1.*",
+		"ezyang/htmlpurifier": "4.*",
+		"fisharebest/algorithm": "1.*",
+		"fisharebest/ext-calendar": "2.*",
+		"fisharebest/localization": "1.*",
+		"ircmaxell/password-compat": "1.*",
+		"michelf/php-markdown": "1.*",
+		"patchwork/utf8": "1.*",
+		"pclzip/pclzip": "2.*",
+		"rhumsaa/uuid": "2.*",
+		"tecnick.com/tcpdf": "6.*"
 	},
 	"scripts": {
 		"post-install-cmd": [

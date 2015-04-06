@@ -45,10 +45,6 @@ define('WT_REQUIRED_MYSQL_VERSION', '5.0.13');
 define('WT_REQUIRED_PHP_VERSION', '5.3.2');
 define('WT_MODULES_DIR', 'modules_v3/');
 define('WT_ROOT', '');
-define('Auth::PRIV_PRIVATE', 2);
-define('Auth::PRIV_USER', 1);
-define('Auth::PRIV_NONE', 0);
-define('Auth::PRIV_HIDE', -1);
 
 if (file_exists(WT_DATA_DIR . WT_CONFIG_FILE)) {
 	header('Location: index.php');
@@ -107,9 +103,14 @@ echo '<input type="hidden" name="lang" value="', WT_LOCALE, '">';
 ////////////////////////////////////////////////////////////////////////////////
 
 if (!isset($_POST['lang'])) {
+	$installed_languages = array();
+	foreach (I18N::installedLocales() as $locale) {
+		$installed_languages[$locale->languageTag()] = $locale->endonym();
+	}
+
 	echo
 		'<p>', I18N::translate('Change language'), ' ',
-		edit_field_language('change_lang', WT_LOCALE, 'onchange="window.location=\'' . WT_SCRIPT_NAME . '?lang=\'+this.value;">'),
+		select_edit_control('change_lang', $installed_languages, null, Filter::get('lang'), 'onchange="window.location=\'' . WT_SCRIPT_NAME . '?lang=\'+this.value;">'),
 		'</p>',
 		'<h2>', I18N::translate('Checking server configuration'), '</h2>';
 	$warnings = false;
@@ -878,7 +879,6 @@ try {
 		"('WT_SCHEMA_VERSION',               '-2')," .
 		"('INDEX_DIRECTORY',                 'data/')," .
 		"('USE_REGISTRATION_MODULE',         '1')," .
-		"('REQUIRE_ADMIN_AUTH_REGISTRATION', '1')," .
 		"('ALLOW_USER_THEMES',               '1')," .
 		"('ALLOW_CHANGE_GEDCOM',             '1')," .
 		"('SESSION_TIME',                    '7200')," .

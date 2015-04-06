@@ -21,7 +21,7 @@ use Zend_Session;
 /**
  * Class IndividualSidebarModule
  */
-class IndividualSidebarModule extends Module implements ModuleSidebarInterface {
+class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('Individual list');
@@ -224,17 +224,19 @@ class IndividualSidebarModule extends Module implements ModuleSidebarInterface {
 		if (strlen($query) < 2) {
 			return '';
 		}
-		$rows =
-			Database::prepare(
-				"SELECT i_id AS xref, i_gedcom AS gedcom" .
-				" FROM `##individuals`, `##name`" .
-				" WHERE (i_id LIKE ? OR n_sort LIKE ?)" .
-				" AND i_id=n_id AND i_file=n_file AND i_file=?" .
-				" ORDER BY n_sort COLLATE '" . I18N::$collation . "'" .
-				" LIMIT 50"
-			)
-			->execute(array("%{$query}%", "%{$query}%", $tree->getTreeId()))
-			->fetchAll();
+		$rows = Database::prepare(
+			"SELECT i_id AS xref, i_gedcom AS gedcom" .
+			" FROM `##individuals`, `##name`" .
+			" WHERE (i_id LIKE CONCAT('%', :query_1, '%') OR n_sort LIKE CONCAT('%', :query_2, '%'))" .
+			" AND i_id = n_id AND i_file = n_file AND i_file = :tree_id" .
+			" ORDER BY n_sort COLLATE :collation" .
+			" LIMIT 50"
+		)->execute(array(
+			'query_1'   => $query,
+			'query_2'   => $query,
+			'tree_id'   => $tree->getTreeId(),
+			'collation' => I18N::collation(),
+		))->fetchAll();
 
 		$out = '<ul>';
 		foreach ($rows as $row) {

@@ -80,7 +80,7 @@ class Date {
 			$this->date1 = $this->parseDate($match[2]);
 			$this->qual2 = $match[3];
 			$this->date2 = $this->parseDate($match[4]);
-		} elseif (preg_match('/^(FROM|BET|TO|AND|BEF|AFT|CAL|EST|INT|ABT) (.+)/', $date, $match)) {
+		} elseif (preg_match('/^(TO|BEF|AFT|CAL|EST|INT|ABT) (.+)/', $date, $match)) {
 			$this->qual1 = $match[1];
 			$this->date1 = $this->parseDate($match[2]);
 		} else {
@@ -199,6 +199,23 @@ class Date {
 		}
 	}
 
+
+	/**
+	 * A list of supported calendars and their names.
+	 *
+	 * @return string[]
+	 */
+	public static function calendarNames() {
+		return array(
+			'gregorian' => /* I18N: The gregorian calendar */ I18N::translate('Gregorian'),
+			'julian'    => /* I18N: The julian calendar */ I18N::translate('Julian'),
+			'french'    => /* I18N: The French calendar */ I18N::translate('French'),
+			'jewish'    => /* I18N: The Hebrew/Jewish calendar */ I18N::translate('Jewish'),
+			'hijri'     => /* I18N: The Arabic/Hijri calendar */ I18N::translate('Hijri'),
+			'jalali'    => /* I18N: The Persian/Jalali calendar */ I18N::translate('Jalali'),
+		);
+	}
+
 	/**
 	 * Convert a date to the preferred format and calendar(s) display.
 	 *
@@ -219,7 +236,7 @@ class Date {
 		$CALENDAR_FORMAT = $WT_TREE->getPreference('CALENDAR_FORMAT');
 
 		if ($date_format === null) {
-			$date_format = /* I18N: This is the format string for full dates.  See http://php.net/date for codes */ I18N::noop('%j %F %Y');
+			$date_format = I18N::dateFormat();
 		}
 
 		if ($convert_calendars) {

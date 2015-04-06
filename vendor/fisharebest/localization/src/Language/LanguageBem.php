@@ -1,4 +1,7 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Language;
+
+use Fisharebest\Localization\PluralRule\PluralRule1;
+use Fisharebest\Localization\Territory\TerritoryZm;
 
 /**
  * Class LanguageBem - Representation of the Bemba (Zambia) language.
@@ -7,7 +10,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class LanguageBem extends Language {
+class LanguageBem extends AbstractLanguage implements LanguageInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'bem';
@@ -16,5 +19,10 @@ class LanguageBem extends Language {
 	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryZm;
+	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule1;
 	}
 }

@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Locale;
+
+use Fisharebest\Localization\Territory\TerritoryEr;
 
 /**
  * Class LocaleAaEr
@@ -7,7 +9,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license       GPLv3+
  */
-class LocaleAaEr extends LocaleAa {
+class LocaleAaEr extends LocaleAa implements LocaleInterface {
 	/** {@inheritdoc} */
 	public function territory() {
 		return new TerritoryEr;

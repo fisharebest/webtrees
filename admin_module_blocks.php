@@ -32,8 +32,7 @@ $controller
 	->setPageTitle(I18N::translate('Blocks'));
 
 $action  = Filter::post('action');
-$modules = Module::getInstalledModules('disabled');
-$modules = array_filter($modules, function(Module $x) { return $x instanceof ModuleBlockInterface; });
+$modules = Module::getAllModulesByComponent('block');
 
 if ($action === 'update_mods' && Filter::checkCsrf()) {
 	foreach ($modules as $module) {

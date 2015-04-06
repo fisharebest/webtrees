@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Class UpcomingAnniversariesModule
  */
-class UpcomingAnniversariesModule extends Module implements ModuleBlockInterface {
+class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('Upcoming events');
@@ -34,12 +34,12 @@ class UpcomingAnniversariesModule extends Module implements ModuleBlockInterface
 	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $ctype, $WT_TREE;
 
-		$days      = get_block_setting($block_id, 'days', '7');
-		$filter    = get_block_setting($block_id, 'filter', '1');
-		$onlyBDM   = get_block_setting($block_id, 'onlyBDM', '0');
-		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');
-		$sortStyle = get_block_setting($block_id, 'sortStyle', 'alpha');
-		$block     = get_block_setting($block_id, 'block', '1');
+		$days      = $this->getBlockSetting($block_id, 'days', '7');
+		$filter    = $this->getBlockSetting($block_id, 'filter', '1');
+		$onlyBDM   = $this->getBlockSetting($block_id, 'onlyBDM', '0');
+		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
+		$sortStyle = $this->getBlockSetting($block_id, 'sortStyle', 'alpha');
+		$block     = $this->getBlockSetting($block_id, 'block', '1');
 
 		if ($cfg) {
 			foreach (array('days', 'filter', 'onlyBDM', 'infoStyle', 'sortStyle', 'block') as $name) {
@@ -103,20 +103,20 @@ class UpcomingAnniversariesModule extends Module implements ModuleBlockInterface
 	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
-			set_block_setting($block_id, 'days', Filter::postInteger('days', 1, 30, 7));
-			set_block_setting($block_id, 'filter', Filter::postBool('filter'));
-			set_block_setting($block_id, 'onlyBDM', Filter::postBool('onlyBDM'));
-			set_block_setting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', 'table'));
-			set_block_setting($block_id, 'sortStyle', Filter::post('sortStyle', 'alpha|anniv', 'alpha'));
-			set_block_setting($block_id, 'block', Filter::postBool('block'));
+			$this->setBlockSetting($block_id, 'days', Filter::postInteger('days', 1, 30, 7));
+			$this->setBlockSetting($block_id, 'filter', Filter::postBool('filter'));
+			$this->setBlockSetting($block_id, 'onlyBDM', Filter::postBool('onlyBDM'));
+			$this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', 'table'));
+			$this->setBlockSetting($block_id, 'sortStyle', Filter::post('sortStyle', 'alpha|anniv', 'alpha'));
+			$this->setBlockSetting($block_id, 'block', Filter::postBool('block'));
 		}
 
-		$days      = get_block_setting($block_id, 'days', '7');
-		$filter    = get_block_setting($block_id, 'filter', '1');
-		$onlyBDM   = get_block_setting($block_id, 'onlyBDM', '0');
-		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');
-		$sortStyle = get_block_setting($block_id, 'sortStyle', 'alpha');
-		$block     = get_block_setting($block_id, 'block', '1');
+		$days      = $this->getBlockSetting($block_id, 'days', '7');
+		$filter    = $this->getBlockSetting($block_id, 'filter', '1');
+		$onlyBDM   = $this->getBlockSetting($block_id, 'onlyBDM', '0');
+		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
+		$sortStyle = $this->getBlockSetting($block_id, 'sortStyle', 'alpha');
+		$block     = $this->getBlockSetting($block_id, 'block', '1');
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Number of days to show');

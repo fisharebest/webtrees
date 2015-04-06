@@ -1,4 +1,7 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Language;
+
+use Fisharebest\Localization\PluralRule\PluralRule3;
+use Fisharebest\Localization\Territory\TerritoryLv;
 
 /**
  * Class LanguageLv - Representation of the Latvian language.
@@ -7,7 +10,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class LanguageLv extends Language {
+class LanguageLv extends AbstractLanguage implements LanguageInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'lv';
@@ -16,5 +19,10 @@ class LanguageLv extends Language {
 	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryLv;
+	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule3;
 	}
 }

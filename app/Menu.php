@@ -16,6 +16,8 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Rhumsaa\Uuid\Uuid;
+
 /**
  * Class Menu - System for generating menus.
  */
@@ -26,8 +28,8 @@ class Menu {
 	/** @var string The target URL or href*/
 	private $link;
 
-	/** @var string The CSS ID to be used for this menu item */
-	private $id;
+	/** @var string The CSS class used to style this menu item */
+	private $class;
 
 	/** @var string An onclick action, typically used with a link of "#" */
 	private $onclick;
@@ -45,22 +47,22 @@ class Menu {
 	private $iconclass;
 
 	/** @var string Used to format javascript menus */
-	private $class;
+	private $menuclass;
 
 	/**
 	 * Constructor for the menu class
 	 *
 	 * @param string    $label    The label for the menu item
 	 * @param string    $link     The target URL
-	 * @param string    $id       An CSS identifier
+	 * @param string    $class    An CSS class
 	 * @param string    $onclick  A javascript onclick handler
 	 * @param Menu[] $submenus Any submenus
 	 */
-	public function __construct($label, $link = '#', $id = '', $onclick = '', $submenus = array()) {
+	public function __construct($label, $link = '#', $class = '', $onclick = '', $submenus = array()) {
 		$this
 			->setLabel($label)
 			->setLink($link)
-			->setId($id)
+			->setClass($class)
 			->setOnclick($onclick)
 			->setSubmenus($submenus);
 	}
@@ -81,17 +83,6 @@ class Menu {
 	 * @return string
 	 */
 	public function bootstrap() {
-		if ($this->iconclass) {
-			$class = ' class="' . $this->iconclass . '"';
-		} else {
-			$class = '';
-		}
-		if ($this->id) {
-			$id = ' id="' . $this->id . '"';
-		} else {
-			$id = '';
-		}
-
 		if ($this->submenus) {
 			$submenus = '';
 			foreach ($this->submenus as $submenu) {
@@ -99,7 +90,7 @@ class Menu {
 			}
 
 			return
-				'<li' . $id . ' class="dropdown">' .
+				'<li class="' . $this->class . ' dropdown">' .
 				'<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">' .
 				$this->label .
 				' <span class="caret"></span></a>' .
@@ -114,19 +105,19 @@ class Menu {
 				$onclick = '';
 			}
 
-			return '<li' . $id . $class . '><a href="' . $this->link . '"' . $onclick . '>' . $this->label . '</a></li>';
+			return '<li class="' . $this->class . '"><a href="' . $this->link . '"' . $onclick . '>' . $this->label . '</a></li>';
 		}
 	}
 
 	/**
-	 * Set the CSS classes for this menu
+	 * Set the CSS classes for the (legacy) javascript menus
 	 *
-	 * @param string $class
+	 * @param string $menuclass
 	 * @param string $submenuclass
 	 * @param string $iconclass
 	 */
-	public function addClass($class, $submenuclass = '', $iconclass = '') {
-		$this->class = $class;
+	public function addClass($menuclass, $submenuclass = '', $iconclass = '') {
+		$this->menuclass = $menuclass;
 		$this->submenuclass = $submenuclass;
 		$this->iconclass = $iconclass;
 	}
@@ -134,17 +125,17 @@ class Menu {
 	/**
 	 * @return string
 	 */
-	public function getId() {
-		return $this->id;
+	public function getClass() {
+		return $this->class;
 	}
 
 	/**
-	 * @param string $id
+	 * @param string $class
 	 *
 	 * @return $this
 	 */
-	public function setId($id) {
-		$this->id = $id;
+	public function setClass($class) {
+		$this->class = $class;
 
 		return $this;
 	}
@@ -222,50 +213,32 @@ class Menu {
 	 * @return string
 	 */
 	public function getMenu() {
-		global $menucount;
+		$menu_id     = 'menu-' . Uuid::uuid4();
+		$sub_menu_id = 'sub-' . $menu_id;
 
-		if (!isset($menucount)) {
-			$menucount = 0;
-		} else {
-			$menucount++;
-		}
-		$id = $menucount . rand();
-		$c = count($this->submenus);
-		$output = "<div id=\"menu{$id}\" class=\"{$this->class}\">";
-		$link = "<a href=\"{$this->link}\" onmouseover=\"";
-		if ($c >= 0) {
-			$link .= "show_submenu('menu{$id}_subs', 'menu{$id}');";
-		}
-		$link .= '" onmouseout="';
-		if ($c >= 0) {
-			$link .= "timeout_submenu('menu{$id}_subs');";
-		}
+		$html = '<a href="' . $this->link . '"';
 		if ($this->onclick) {
-			$link .= "\" onclick=\"{$this->onclick}";
+			$html .= ' onclick="' . $this->onclick . '"';
 		}
-		$link .= "\">";
-		$output .= $link;
-		$output .= $this->label;
-		$output .= "</a>";
+		if (!empty($this->submenus)) {
+			$html .= ' onmouseover="show_submenu(\'' . $sub_menu_id . '\', \'' . $menu_id . '\');"';
+			$html .= ' onmouseout="timeout_submenu(\'' . $sub_menu_id . '\');"';
+		}
+		$html .= '>' . $this->label . '</a>';
 
-		if ($c > 0) {
-			$submenuid = "menu{$id}_subs";
-			if (I18N::direction() === 'ltr') {
-				$output .= '<div style="text-align: left;">';
-			} else {
-				$output .= '<div style="text-align: right;">';
-			}
-			$output .= "<div id=\"menu{$id}_subs\" class=\"{$this->submenuclass}\" style=\"position: absolute; visibility: hidden; z-index: 100;";
-			$output .= "\" onmouseover=\"show_submenu('{$this->parentmenu}'); show_submenu('{$submenuid}');\" onmouseout=\"timeout_submenu('menu{$id}_subs');\">";
+		if (!empty($this->submenus)) {
+			$html .= '<div id="' . $sub_menu_id . '" class="' . $this->submenuclass . '"';
+			$html .= ' style="position: absolute; visibility: hidden; z-index: 100; text-align: ' . (I18N::direction() === 'ltr' ? 'left' : 'right') . '"';
+			$html .= ' onmouseover="show_submenu(\'' . $this->parentmenu . '\'); show_submenu(\'' . $sub_menu_id . '\');"';
+			$html .= ' onmouseout="timeout_submenu(\'' . $sub_menu_id . '\');">';
 			foreach ($this->submenus as $submenu) {
-				$submenu->parentmenu = $submenuid;
-				$output .= $submenu->getMenu();
+				$submenu->parentmenu = $sub_menu_id;
+				$html .= $submenu->getMenu();
 			}
-			$output .= "</div></div>";
+			$html .= '</div></div>';
 		}
-		$output .= "</div>";
 
-		return $output;
+		return '<div id="' . $menu_id . '" class="' . $this->menuclass . '">' . $html . '</div>';
 	}
 
 	/**
@@ -274,11 +247,6 @@ class Menu {
 	 * @return string
 	 */
 	public function getMenuAsList() {
-		if ($this->iconclass) {
-			$class = ' class="' . $this->iconclass . '"';
-		} else {
-			$class = '';
-		}
 		if ($this->onclick) {
 			$onclick = ' onclick="' . $this->onclick . '"';
 		} else {
@@ -289,12 +257,7 @@ class Menu {
 		} else {
 			$link = '';
 		}
-		if ($this->id) {
-			$id = ' id="' . $this->id . '"';
-		} else {
-			$id = '';
-		}
-		$html = '<a' . $link . $class . $onclick . '>' . $this->label . '</a>';
+		$html = '<a' . $link . $onclick . '>' . $this->label . '</a>';
 		if ($this->submenus) {
 			$html .= '<ul>';
 			foreach ($this->submenus as $submenu) {
@@ -303,7 +266,7 @@ class Menu {
 			$html .= '</ul>';
 		}
 
-		return '<li' . $id . '>' . $html . '</li>';
+		return '<li class="' . $this->class . '">' . $html . '</li>';
 	}
 
 	/**

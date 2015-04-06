@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Class RelativesTabModule
  */
-class RelativesTabModule extends Module implements ModuleTabInterface {
+class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('Families');

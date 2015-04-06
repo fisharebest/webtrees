@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Class FamilyTreeStatisticsModule
  */
-class FamilyTreeStatisticsModule extends Module implements ModuleBlockInterface {
+class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('Statistics');
@@ -34,24 +34,24 @@ class FamilyTreeStatisticsModule extends Module implements ModuleBlockInterface 
 	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $WT_TREE, $ctype;
 
-		$show_last_update     = get_block_setting($block_id, 'show_last_update', '1');
-		$show_common_surnames = get_block_setting($block_id, 'show_common_surnames', '1');
-		$stat_indi            = get_block_setting($block_id, 'stat_indi', '1');
-		$stat_fam             = get_block_setting($block_id, 'stat_fam', '1');
-		$stat_sour            = get_block_setting($block_id, 'stat_sour', '1');
-		$stat_media           = get_block_setting($block_id, 'stat_media', '1');
-		$stat_repo            = get_block_setting($block_id, 'stat_repo', '1');
-		$stat_surname         = get_block_setting($block_id, 'stat_surname', '1');
-		$stat_events          = get_block_setting($block_id, 'stat_events', '1');
-		$stat_users           = get_block_setting($block_id, 'stat_users', '1');
-		$stat_first_birth     = get_block_setting($block_id, 'stat_first_birth', '1');
-		$stat_last_birth      = get_block_setting($block_id, 'stat_last_birth', '1');
-		$stat_first_death     = get_block_setting($block_id, 'stat_first_death', '1');
-		$stat_last_death      = get_block_setting($block_id, 'stat_last_death', '1');
-		$stat_long_life       = get_block_setting($block_id, 'stat_long_life', '1');
-		$stat_avg_life        = get_block_setting($block_id, 'stat_avg_life', '1');
-		$stat_most_chil       = get_block_setting($block_id, 'stat_most_chil', '1');
-		$stat_avg_chil        = get_block_setting($block_id, 'stat_avg_chil', '1');
+		$show_last_update     = $this->getBlockSetting($block_id, 'show_last_update', '1');
+		$show_common_surnames = $this->getBlockSetting($block_id, 'show_common_surnames', '1');
+		$stat_indi            = $this->getBlockSetting($block_id, 'stat_indi', '1');
+		$stat_fam             = $this->getBlockSetting($block_id, 'stat_fam', '1');
+		$stat_sour            = $this->getBlockSetting($block_id, 'stat_sour', '1');
+		$stat_media           = $this->getBlockSetting($block_id, 'stat_media', '1');
+		$stat_repo            = $this->getBlockSetting($block_id, 'stat_repo', '1');
+		$stat_surname         = $this->getBlockSetting($block_id, 'stat_surname', '1');
+		$stat_events          = $this->getBlockSetting($block_id, 'stat_events', '1');
+		$stat_users           = $this->getBlockSetting($block_id, 'stat_users', '1');
+		$stat_first_birth     = $this->getBlockSetting($block_id, 'stat_first_birth', '1');
+		$stat_last_birth      = $this->getBlockSetting($block_id, 'stat_last_birth', '1');
+		$stat_first_death     = $this->getBlockSetting($block_id, 'stat_first_death', '1');
+		$stat_last_death      = $this->getBlockSetting($block_id, 'stat_last_death', '1');
+		$stat_long_life       = $this->getBlockSetting($block_id, 'stat_long_life', '1');
+		$stat_avg_life        = $this->getBlockSetting($block_id, 'stat_avg_life', '1');
+		$stat_most_chil       = $this->getBlockSetting($block_id, 'stat_most_chil', '1');
+		$stat_avg_chil        = $this->getBlockSetting($block_id, 'stat_avg_chil', '1');
 
 		// This can be overriden when embedding in an HTML block
 		$block     = '0';
@@ -85,30 +85,30 @@ class FamilyTreeStatisticsModule extends Module implements ModuleBlockInterface 
 
 	$content .= '<div class="stat-table1">';
 		if ($stat_indi) {
-			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Individuals') .    '</div><div class="facts_value stats_value stat-cell"><a href="' . "indilist.php?surname_sublist=no&amp;ged=" . $WT_TREE->getNameUrl() . '">' . $stats->totalIndividuals() . '</a></div></div>';
-			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Males') .          '</div><div class="facts_value stats_value stat-cell">' . $stats->totalSexMales() . '<br>' . $stats->totalSexMalesPercentage() . '</a></div></div>';
-			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Females') .        '</div><div class="facts_value stats_value stat-cell">' . $stats->totalSexFemales() . '<br>' . $stats->totalSexFemalesPercentage() . '</a></div></div>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Individuals') . '</div><div class="facts_value stats_value stat-cell"><a href="' . "indilist.php?surname_sublist=no&amp;ged=" . $WT_TREE->getNameUrl() . '">' . $stats->totalIndividuals() . '</a></div></div>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Males') . '</div><div class="facts_value stats_value stat-cell">' . $stats->totalSexMales() . '<br>' . $stats->totalSexMalesPercentage() . '</a></div></div>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Females') . '</div><div class="facts_value stats_value stat-cell">' . $stats->totalSexFemales() . '<br>' . $stats->totalSexFemalesPercentage() . '</a></div></div>';
 		}
 		if ($stat_surname) {
 			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Total surnames') . '</div><div class="facts_value stats_value stat-cell"><a href="indilist.php?show_all=yes&amp;surname_sublist=yes&amp;ged=' . $WT_TREE->getNameUrl() . '">' . $stats->totalSurnames() . '</a></div></div>';
 		}
 		if ($stat_fam) {
-			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Families') .       '</div><div class="facts_value stats_value stat-cell"><a href="famlist.php?ged=' . $WT_TREE->getNameUrl() . '">' . $stats->totalFamilies() . '</a></div></div>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Families') . '</div><div class="facts_value stats_value stat-cell"><a href="famlist.php?ged=' . $WT_TREE->getNameUrl() . '">' . $stats->totalFamilies() . '</a></div></div>';
 		}
 		if ($stat_sour) {
-			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Sources') .        '</div><div class="facts_value stats_value stat-cell"><a href="sourcelist.php?ged=' . $WT_TREE->getNameUrl() . '">' . $stats->totalSources() . '</a></div></div>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Sources') . '</div><div class="facts_value stats_value stat-cell"><a href="sourcelist.php?ged=' . $WT_TREE->getNameUrl() . '">' . $stats->totalSources() . '</a></div></div>';
 		}
 		if ($stat_media) {
-			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Media objects') .  '</div><div class="facts_value stats_value stat-cell"><a href="medialist.php?ged=' . $WT_TREE->getNameUrl() . '">' . $stats->totalMedia() . '</a></div></div>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Media objects') . '</div><div class="facts_value stats_value stat-cell"><a href="medialist.php?ged=' . $WT_TREE->getNameUrl() . '">' . $stats->totalMedia() . '</a></div></div>';
 		}
 		if ($stat_repo) {
-			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Repositories') .   '</div><div class="facts_value stats_value stat-cell"><a href="repolist.php?ged=' . $WT_TREE->getNameUrl() . '">' . $stats->totalRepositories() . '</a></div></div>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Repositories') . '</div><div class="facts_value stats_value stat-cell"><a href="repolist.php?ged=' . $WT_TREE->getNameUrl() . '">' . $stats->totalRepositories() . '</a></div></div>';
 		}
 		if ($stat_events) {
-			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Total events') .    '</div><div class="facts_value stats_value stat-cell">' . $stats->totalEvents() . '</div></div>';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Total events') . '</div><div class="facts_value stats_value stat-cell">' . $stats->totalEvents() . '</div></div>';
 		}
 		if ($stat_users) {
-			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Total users') .     '</div><div class="facts_value stats_value stat-cell">';
+			$content .= '<div class="stat-row"><div class="facts_label stat-cell">' . I18N::translate('Total users') . '</div><div class="facts_value stats_value stat-cell">';
 			if (Auth::isManager($WT_TREE)) {
 				$content .= '<a href="admin_users.php">' . $stats->totalUsers() . '</a>';
 			} else {
@@ -224,45 +224,45 @@ class FamilyTreeStatisticsModule extends Module implements ModuleBlockInterface 
 	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
-			set_block_setting($block_id, 'show_last_update', Filter::postBool('show_last_update'));
-			set_block_setting($block_id, 'show_common_surnames', Filter::postBool('show_common_surnames'));
-			set_block_setting($block_id, 'stat_indi', Filter::postBool('stat_indi'));
-			set_block_setting($block_id, 'stat_fam', Filter::postBool('stat_fam'));
-			set_block_setting($block_id, 'stat_sour', Filter::postBool('stat_sour'));
-			set_block_setting($block_id, 'stat_other', Filter::postBool('stat_other'));
-			set_block_setting($block_id, 'stat_media', Filter::postBool('stat_media'));
-			set_block_setting($block_id, 'stat_repo', Filter::postBool('stat_repo'));
-			set_block_setting($block_id, 'stat_surname', Filter::postBool('stat_surname'));
-			set_block_setting($block_id, 'stat_events', Filter::postBool('stat_events'));
-			set_block_setting($block_id, 'stat_users', Filter::postBool('stat_users'));
-			set_block_setting($block_id, 'stat_first_birth', Filter::postBool('stat_first_birth'));
-			set_block_setting($block_id, 'stat_last_birth', Filter::postBool('stat_last_birth'));
-			set_block_setting($block_id, 'stat_first_death', Filter::postBool('stat_first_death'));
-			set_block_setting($block_id, 'stat_last_death', Filter::postBool('stat_last_death'));
-			set_block_setting($block_id, 'stat_long_life', Filter::postBool('stat_long_life'));
-			set_block_setting($block_id, 'stat_avg_life', Filter::postBool('stat_avg_life'));
-			set_block_setting($block_id, 'stat_most_chil', Filter::postBool('stat_most_chil'));
-			set_block_setting($block_id, 'stat_avg_chil', Filter::postBool('stat_avg_chil'));
+			$this->setBlockSetting($block_id, 'show_last_update', Filter::postBool('show_last_update'));
+			$this->setBlockSetting($block_id, 'show_common_surnames', Filter::postBool('show_common_surnames'));
+			$this->setBlockSetting($block_id, 'stat_indi', Filter::postBool('stat_indi'));
+			$this->setBlockSetting($block_id, 'stat_fam', Filter::postBool('stat_fam'));
+			$this->setBlockSetting($block_id, 'stat_sour', Filter::postBool('stat_sour'));
+			$this->setBlockSetting($block_id, 'stat_other', Filter::postBool('stat_other'));
+			$this->setBlockSetting($block_id, 'stat_media', Filter::postBool('stat_media'));
+			$this->setBlockSetting($block_id, 'stat_repo', Filter::postBool('stat_repo'));
+			$this->setBlockSetting($block_id, 'stat_surname', Filter::postBool('stat_surname'));
+			$this->setBlockSetting($block_id, 'stat_events', Filter::postBool('stat_events'));
+			$this->setBlockSetting($block_id, 'stat_users', Filter::postBool('stat_users'));
+			$this->setBlockSetting($block_id, 'stat_first_birth', Filter::postBool('stat_first_birth'));
+			$this->setBlockSetting($block_id, 'stat_last_birth', Filter::postBool('stat_last_birth'));
+			$this->setBlockSetting($block_id, 'stat_first_death', Filter::postBool('stat_first_death'));
+			$this->setBlockSetting($block_id, 'stat_last_death', Filter::postBool('stat_last_death'));
+			$this->setBlockSetting($block_id, 'stat_long_life', Filter::postBool('stat_long_life'));
+			$this->setBlockSetting($block_id, 'stat_avg_life', Filter::postBool('stat_avg_life'));
+			$this->setBlockSetting($block_id, 'stat_most_chil', Filter::postBool('stat_most_chil'));
+			$this->setBlockSetting($block_id, 'stat_avg_chil', Filter::postBool('stat_avg_chil'));
 		}
 
-		$show_last_update     = get_block_setting($block_id, 'show_last_update', '1');
-		$show_common_surnames = get_block_setting($block_id, 'show_common_surnames', '1');
-		$stat_indi            = get_block_setting($block_id, 'stat_indi', '1');
-		$stat_fam             = get_block_setting($block_id, 'stat_fam', '1');
-		$stat_sour            = get_block_setting($block_id, 'stat_sour', '1');
-		$stat_media           = get_block_setting($block_id, 'stat_media', '1');
-		$stat_repo            = get_block_setting($block_id, 'stat_repo', '1');
-		$stat_surname         = get_block_setting($block_id, 'stat_surname', '1');
-		$stat_events          = get_block_setting($block_id, 'stat_events', '1');
-		$stat_users           = get_block_setting($block_id, 'stat_users', '1');
-		$stat_first_birth     = get_block_setting($block_id, 'stat_first_birth', '1');
-		$stat_last_birth      = get_block_setting($block_id, 'stat_last_birth', '1');
-		$stat_first_death     = get_block_setting($block_id, 'stat_first_death', '1');
-		$stat_last_death      = get_block_setting($block_id, 'stat_last_death', '1');
-		$stat_long_life       = get_block_setting($block_id, 'stat_long_life', '1');
-		$stat_avg_life        = get_block_setting($block_id, 'stat_avg_life', '1');
-		$stat_most_chil       = get_block_setting($block_id, 'stat_most_chil', '1');
-		$stat_avg_chil        = get_block_setting($block_id, 'stat_avg_chil', '1');
+		$show_last_update     = $this->getBlockSetting($block_id, 'show_last_update', '1');
+		$show_common_surnames = $this->getBlockSetting($block_id, 'show_common_surnames', '1');
+		$stat_indi            = $this->getBlockSetting($block_id, 'stat_indi', '1');
+		$stat_fam             = $this->getBlockSetting($block_id, 'stat_fam', '1');
+		$stat_sour            = $this->getBlockSetting($block_id, 'stat_sour', '1');
+		$stat_media           = $this->getBlockSetting($block_id, 'stat_media', '1');
+		$stat_repo            = $this->getBlockSetting($block_id, 'stat_repo', '1');
+		$stat_surname         = $this->getBlockSetting($block_id, 'stat_surname', '1');
+		$stat_events          = $this->getBlockSetting($block_id, 'stat_events', '1');
+		$stat_users           = $this->getBlockSetting($block_id, 'stat_users', '1');
+		$stat_first_birth     = $this->getBlockSetting($block_id, 'stat_first_birth', '1');
+		$stat_last_birth      = $this->getBlockSetting($block_id, 'stat_last_birth', '1');
+		$stat_first_death     = $this->getBlockSetting($block_id, 'stat_first_death', '1');
+		$stat_last_death      = $this->getBlockSetting($block_id, 'stat_last_death', '1');
+		$stat_long_life       = $this->getBlockSetting($block_id, 'stat_long_life', '1');
+		$stat_avg_life        = $this->getBlockSetting($block_id, 'stat_avg_life', '1');
+		$stat_most_chil       = $this->getBlockSetting($block_id, 'stat_most_chil', '1');
+		$stat_avg_chil        = $this->getBlockSetting($block_id, 'stat_avg_chil', '1');
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for yes/no option */ I18N::translate('Show date of last update?');

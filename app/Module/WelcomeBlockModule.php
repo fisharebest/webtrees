@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Class WelcomeBlockModule
  */
-class WelcomeBlockModule extends Module implements ModuleBlockInterface {
+class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('Home page');

@@ -17,18 +17,21 @@ namespace Fisharebest\Webtrees;
  */
 
 use Fisharebest\Localization\Locale;
+use Fisharebest\Localization\Locale\LocaleEnUs;
+use Fisharebest\Localization\Locale\LocaleInterface;
+use Fisharebest\Localization\Translation;
+use Fisharebest\Localization\Translator;
 use Patchwork\TurkishUtf8;
-use Zend_Cache;
-use Zend_Cache_Core;
-use Zend_Registry;
-use Zend_Translate;
 
 /**
  * Class I18N - Functions to support internationalization (i18n) functionality.
  */
 class I18N {
-	/** @var Locale The current locale (e.g. LocaleEnGb) */
+	/** @var LocaleInterface The current locale (e.g. LocaleEnGb) */
 	private static $locale;
+
+	/** @var Translator */
+	private static $translator;
 
 	// Digits are always rendered LTR, even in RTL text.
 	const DIGITS = '0123456789٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹';
@@ -90,161 +93,13 @@ class I18N {
 		'’' => '‘',
 	);
 
-	/** @var string The MySQL collation sequence used by this language, typically utf8_unicode_ci */
-	public static $collation;
-
 	/** @var string Punctuation used to separate list items, typically a comma */
 	public static $list_separator;
-
-	/** @var Zend_Cache_Core */
-	private static $cache;
-
-	/** @var Zend_Translate */
-	private static $translation_adapter;
-
-	/**
-	 * Initialise the translation adapter with a locale setting.
-	 *
-	 * @param string|null $locale If no locale specified, choose one automatically
-	 *
-	 * @return string $string
-	 */
-	public static function init($locale = null) {
-		global $WT_SESSION, $WT_TREE;
-
-		// The translation libraries only work with a cache.
-		$cache_options = array(
-			'automatic_serialization' => true,
-			'cache_id_prefix'         => md5(WT_BASE_URL),
-		);
-
-		if (ini_get('apc.enabled')) {
-			self::$cache = Zend_Cache::factory('Core', 'Apc', $cache_options, array());
-		} elseif (File::mkdir(WT_DATA_DIR . 'cache')) {
-			self::$cache = Zend_Cache::factory('Core', 'File', $cache_options, array('cache_dir' => WT_DATA_DIR . 'cache'));
-		} else {
-			self::$cache = Zend_Cache::factory('Core', 'Zend_Cache_Backend_BlackHole', $cache_options, array(), false, true);
-		}
-
-		Zend_Translate::setCache(self::$cache);
-
-
-		$installed_locales = array();
-		foreach (self::installedLocales() as $installed_locale) {
-			$installed_locales[$installed_locale->languageTag()] = $installed_locale->endonym();
-		}
-
-		if (is_null($locale) || !array_key_exists($locale, $installed_locales)) {
-			// Automatic locale selection.
-			if (array_key_exists(Filter::get('lang'), $installed_locales)) {
-				// Requested in the URL?
-				$locale = Filter::get('lang');
-			} elseif (array_key_exists($WT_SESSION->locale, $installed_locales)) {
-				// Rembered from a previous visit?
-				$locale = $WT_SESSION->locale;
-			} else {
-				// Browser preference takes priority over gedcom default
-				if (empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
-					$prefs = array();
-				} else {
-					$prefs = explode(',', str_replace(' ', '', $_SERVER['HTTP_ACCEPT_LANGUAGE']));
-				}
-				if ($WT_TREE) {
-					// Add the tree’s default language as a low-priority
-					$locale  = $WT_TREE->getPreference('LANGUAGE');
-					$prefs[] = $locale . ';q=0.2';
-				}
-				$prefs2 = array();
-				foreach ($prefs as $pref) {
-					list($l, $q) = explode(';q=', $pref . ';q=1.0');
-					$l = preg_replace_callback(
-						'/_[a-z][a-z]$/',
-						function($x) { return strtoupper($x[0]); },
-						str_replace('-', '_', $l)
-					); // en-gb => en_GB
-					if (array_key_exists($l, $prefs2)) {
-						$prefs2[$l] = max((float) $q, $prefs2[$l]);
-					} else {
-						$prefs2[$l] = (float) $q;
-					}
-				}
-				// Ensure there is a fallback.
-				if (!array_key_exists('en-US', $prefs2)) {
-					$prefs2['en-US'] = 0.01;
-				}
-				arsort($prefs2);
-				foreach (array_keys($prefs2) as $pref) {
-					if (array_key_exists($pref, $installed_locales)) {
-						$locale = $pref;
-						break;
-					}
-				}
-			}
-		}
-
-		// Load the translation file
-		self::$translation_adapter = new Zend_Translate('gettext', WT_ROOT . 'language/' . $locale . '.mo', $locale);
-
-		// Deprecated - some custom modules use this to add translations
-		Zend_Registry::set('Zend_Translate', self::$translation_adapter);
-
-		// Load any local user translations
-		if (is_dir(WT_DATA_DIR . 'language')) {
-			if (file_exists(WT_DATA_DIR . 'language/' . $locale . '.mo')) {
-				self::addTranslation(
-					new Zend_Translate('gettext', WT_DATA_DIR . 'language/' . $locale . '.mo', $locale)
-				);
-			}
-			if (file_exists(WT_DATA_DIR . 'language/' . $locale . '.php')) {
-				self::addTranslation(
-					new Zend_Translate('array', WT_DATA_DIR . 'language/' . $locale . '.php', $locale)
-				);
-			}
-			if (file_exists(WT_DATA_DIR . 'language/' . $locale . '.csv')) {
-				self::addTranslation(
-					new Zend_Translate('csv', WT_DATA_DIR . 'language/' . $locale . '.csv', $locale)
-				);
-			}
-		}
-
-		// Extract language settings from the translation file
-		global $DATE_FORMAT; // I18N: This is the format string for full dates.  See http://php.net/date for codes
-		$DATE_FORMAT = self::noop('%j %F %Y');
-
-		global $TIME_FORMAT; // I18N: This is the format string for the time-of-day.  See http://php.net/date for codes
-		$TIME_FORMAT = self::noop('%H:%i:%s');
-
-		// Alphabetic sorting sequence (upper-case letters), used by webtrees to sort strings
-		list(, self::$alphabet_upper) = explode('=', self::noop('ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ'));
-		// Alphabetic sorting sequence (lower-case letters), used by webtrees to sort strings
-		list(, self::$alphabet_lower) = explode('=', self::noop('ALPHABET_lower=abcdefghijklmnopqrstuvwxyz'));
-
-		global $WEEK_START; // I18N: This is the first day of the week on calendars. 0=Sunday, 1=Monday...
-		list(, $WEEK_START) = explode('=', self::noop('WEEK_START=0'));
-
-
-		// Save the current locale, and some attributes of it
-		self::$locale = Locale::create($locale);
-
-		self::$list_separator = /* I18N: This punctuation is used to separate lists of items */ self::translate(', ');
-		self::$collation      = /* I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html */ self::translate('utf8_unicode_ci');
-
-		return self::$locale->languageTag();
-	}
-
-	/**
-	 * Add a translation file
-	 *
-	 * @param Zend_Translate $translation
-	 */
-	public static function addTranslation(Zend_Translate $translation) {
-		self::$translation_adapter->getAdapter()->addTranslation(array('content' => $translation));
-	}
 
 	/**
 	 * The prefered locales for this site, or a default list if no preference.
 	 *
-	 * @return Locale[]
+	 * @return LocaleInterface[]
 	 */
 	public static function activeLocales() {
 		$code_list = Site::getPreference('LANGUAGES');
@@ -275,496 +130,30 @@ class I18N {
 	}
 
 	/**
-	 * All locales for which a translation file exists.
-	 *
-	 * @return Locale[]
-	 */
-	public static function installedLocales() {
-		$locales = array();
-		foreach (glob(WT_ROOT . 'language/*.mo') as $file) {
-			try {
-				$locales[] = Locale::create(basename($file, '.mo'));
-			} catch (\Exception $ex) {
-				// No such locale exists?
-			}
-		}
-		usort($locales, '\Fisharebest\Localization\Locale::compare');
-
-		return $locales;
-	}
-
-	/**
-	 * Generate i18n markup for the <html> tag, e.g. lang="ar" dir="rtl"
+	 * Which MySQL collation should be used for this locale?
 	 *
 	 * @return string
 	 */
-	public static function htmlAttributes() {
-		return self::$locale->htmlAttributes();
-	}
-
-	/**
-	 * Translate a number into the local representation.
-	 *
-	 * e.g. 12345.67 becomes
-	 * en: 12,345.67
-	 * fr: 12 345,67
-	 * de: 12.345,67
-	 *
-	 * @param float   $n
-	 * @param integer $precision
-	 *
-	 * @return string
-	 */
-	public static function number($n, $precision = 0) {
-		return self::$locale->number(round($n, $precision));
-	}
-
-	/**
-	 * Convert the digits 0-9 into the local script
-	 *
-	 * Used for years, etc., where we do not want thousands-separators, decimals, etc.
-	 *
-	 * @param integer $n
-	 *
-	 * @return string
-	 */
-	public static function digits($n) {
-		return self::$locale->digits($n);
-	}
-
-	/**
-	 * Translate a fraction into a percentage.
-	 *
-	 * e.g. 0.123 becomes
-	 * en: 12.3%
-	 * fr: 12,3 %
-	 * de: 12,3%
-	 *
-	 * @param float   $n
-	 * @param integer $precision
-	 *
-	 * @return string
-	 */
-	public static function percentage($n, $precision = 0) {
-		return
-			/* I18N: This is a percentage, such as “32.5%”. “%s” is the number, “%%” is the percent symbol.  Some languages require a (non-breaking) space between the two, or a different symbol. */
-			self::translate('%s%%', self::number($n * 100.0, $precision));
-	}
-
-	/**
-	 * What is the direction of the current locale
-	 *
-	 * @return string "ltr" or "rtl"
-	 */
-	public static function direction() {
-		return self::$locale->direction();
-	}
-
-	/**
-	 * Translate a string, and then substitute placeholders
-	 *
-	 * echo I18N::translate('Hello World!');
-	 * echo I18N::translate('The %s sat on the mat', 'cat');
-	 *
-	 * @return string
-	 */
-	public static function translate(/* var_args */) {
-		$args = func_get_args();
-		$args[0] = self::$translation_adapter->getAdapter()->_($args[0]);
-
-		return call_user_func_array('sprintf', $args);
-	}
-
-	/**
-	 * Context sensitive version of translate.
-	 *
-	 * echo I18N::translate_c('NOMINATIVE', 'January');
-	 * echo I18N::translate_c('GENITIVE',   'January');
-	 *
-	 * @return string
-	 */
-	public static function translateContext(/* var_args */) {
-		$args = func_get_args();
-		$msgid = $args[0] . "\x04" . $args[1];
-		$msgtxt = self::$translation_adapter->getAdapter()->_($msgid);
-		if ($msgtxt === $msgid) {
-			$msgtxt = $args[1];
-		}
-		$args[0] = $msgtxt;
-		unset($args[1]);
-
-		return call_user_func_array('sprintf', $args);
-	}
-
-	/**
-	 * Similar to translate, but do perform "no operation" on it.
-	 *
-	 * This is necessary to fetch a format string (containing % characters) without
-	 * performing sustitution of arguments.
-	 *
-	 * @param string $string
-	 *
-	 * @return string
-	 */
-	public static function noop($string) {
-		return self::$translation_adapter->getAdapter()->_($string);
-	}
-
-	/**
-	 * Translate a plural string
-	 *
-	 * echo self::plural('There is an error', 'There are errors', $num_errors);
-	 * echo self::plural('There is one error', 'There are %s errors', $num_errors);
-	 * echo self::plural('There is %1$s %2$s cat', 'There are %1$s %2$s cats', $num, $num, $colour);
-	 *
-	 * @return string
-	 */
-	public static function plural(/* var_args */) {
-		$args = func_get_args();
-		$string = self::$translation_adapter->getAdapter()->plural($args[0], $args[1], $args[2]);
-		array_splice($args, 0, 3, array($string));
-
-		return call_user_func_array('sprintf', $args);
-	}
-
-	/**
-	 * Convert a GEDCOM age string into translated_text
-	 *
-	 * NB: The import function will have normalised this, so we don't need
-	 * to worry about badly formatted strings
-	 * NOTE: this function is not yet complete - eventually it will replace get_age_at_event()
-	 *
-	 * @param $string
-	 *
-	 * @return string
-	 */
-	public static function gedcomAge($string) {
-		switch ($string) {
-		case 'STILLBORN':
-			// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (stillborn)
-			return self::translate('(stillborn)');
-		case 'INFANT':
-			// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (in infancy)
-			return self::translate('(in infancy)');
-		case 'CHILD':
-			// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (in childhood)
-			return self::translate('(in childhood)');
-		}
-		$age = array();
-		if (preg_match('/(\d+)y/', $string, $match)) {
-			// I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-			$years = $match[1];
-			$age[] = self::plural('%s year', '%s years', $years, self::number($years));
-		} else {
-			$years = -1;
-		}
-		if (preg_match('/(\d+)m/', $string, $match)) {
-			// I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-			$age[] = self::plural('%s month', '%s months', $match[1], self::number($match[1]));
-		}
-		if (preg_match('/(\d+)w/', $string, $match)) {
-			// I18N: Part of an age string. e.g. 7 weeks and 3 days
-			$age[] = self::plural('%s week', '%s weeks', $match[1], self::number($match[1]));
-		}
-		if (preg_match('/(\d+)d/', $string, $match)) {
-			// I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
-			$age[] = self::plural('%s day', '%s days', $match[1], self::number($match[1]));
-		}
-		// If an age is just a number of years, only show the number
-		if (count($age) === 1 && $years >= 0) {
-			$age = $years;
-		}
-		if ($age) {
-			if (!substr_compare($string, '<', 0, 1)) {
-				// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (aged less than 21 years)
-				return self::translate('(aged less than %s)', $age);
-			} elseif (!substr_compare($string, '>', 0, 1)) {
-				// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (aged more than 21 years)
-				return self::translate('(aged more than %s)', $age);
-			} else {
-				// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (aged 43 years)
-				return self::translate('(aged %s)', $age);
-			}
-		} else {
-			// Not a valid string?
-			return self::translate('(aged %s)', $string);
-		}
-	}
-
-	/**
-	 * Convert a number of seconds into a relative time.  For example, 630 => "10 hours, 30 minutes ago"
-	 *
-	 * @param integer $seconds
-	 *
-	 * @return string
-	 */
-	public static function timeAgo($seconds) {
-		$minute = 60;
-		$hour   = 60 * $minute;
-		$day    = 24 * $hour;
-		$month  = 30 * $day;
-		$year   = 365 * $day;
-
-		if ($seconds > $year) {
-			$years = (int) ($seconds / $year);
-			return self::plural('%s year ago', '%s years ago', $years, self::number($years));
-		} elseif ($seconds > $month) {
-			$months = (int) ($seconds / $month);
-			return self::plural('%s month ago', '%s months ago', $months, self::number($months));
-		} elseif ($seconds > $day) {
-			$days = (int) ($seconds / $day);
-			return self::plural('%s day ago', '%s days ago', $days, self::number($days));
-		} elseif ($seconds > $hour) {
-			$hours = (int) ($seconds / $hour);
-			return self::plural('%s hour ago', '%s hours ago', $hours, self::number($hours));
-		} elseif ($seconds > $minute) {
-			$minutes = (int) ($seconds / $minute);
-			return self::plural('%s minute ago', '%s minutes ago', $minutes, self::number($minutes));
-		} else {
-			return self::plural('%s second ago', '%s seconds ago', $seconds, self::number($seconds));
-		}
-	}
-
-	/**
-	 * Return the endonym for a given language - as per http://cldr.unicode.org/
-	 * 
-	 * @param string $locale
-	 *
-	 * @return string
-	 */
-	public static function languageName($locale) {
-		return Locale::create($locale)->endonym();
-	}
-
-	/**
-	 * Return the script used by a given language
-	 *
-	 * @param string $locale
-	 *
-	 * @return string
-	 */
-	public static function languageScript($locale) {
-		return Locale::create($locale)->script()->code();
-	}
-
-	/**
-	 * Identify the script used for a piece of text
-	 *
-	 * @param $string
-	 *
-	 * @return string
-	 */
-	public static function textScript($string) {
-		$string = strip_tags($string); // otherwise HTML tags show up as latin
-		$string = html_entity_decode($string, ENT_QUOTES, 'UTF-8'); // otherwise HTML entities show up as latin
-		$string = str_replace(array('@N.N.', '@P.N.'), '', $string); // otherwise unknown names show up as latin
-		$pos = 0;
-		$strlen = strlen($string);
-		while ($pos < $strlen) {
-			// get the Unicode Code Point for the character at position $pos
-			$byte1 = ord($string[$pos]);
-			if ($byte1 < 0x80) {
-				$code_point = $byte1;
-				$chrlen = 1;
-			} elseif ($byte1 < 0xC0) {
-				// Invalid continuation character
-				return 'Latn';
-			} elseif ($byte1 < 0xE0) {
-				$code_point = (($byte1 & 0x1F) << 6) + (ord($string[$pos + 1]) & 0x3F);
-				$chrlen = 2;
-			} elseif ($byte1 < 0xF0) {
-				$code_point = (($byte1 & 0x0F) << 12) + ((ord($string[$pos + 1]) & 0x3F) << 6) + (ord($string[$pos + 2]) & 0x3F);
-				$chrlen = 3;
-			} elseif ($byte1 < 0xF8) {
-				$code_point = (($byte1 & 0x07) << 24) + ((ord($string[$pos + 1]) & 0x3F) << 12) + ((ord($string[$pos + 2]) & 0x3F) << 6) + (ord($string[$pos + 3]) & 0x3F);
-				$chrlen = 3;
- 			} else {
-				// Invalid UTF
-				return 'Latn';
-			}
-
-			foreach (self::$scripts as $range) {
-				if ($code_point >= $range[1] && $code_point <= $range[2]) {
-					return $range[0];
-				}
-			}
-			// Not a recognised script.  Maybe punctuation, spacing, etc.  Keep looking.
-			$pos += $chrlen;
-		}
-
-		return 'Latn';
-	}
-
-	/**
-	 * Return the direction (ltr or rtl) for a given script
-	 *
-	 * The PHP/intl library does not provde this information, so we need
-	 * our own lookup table.
-	 *
-	 * @param string $script
-	 *
-	 * @return string
-	 */
-	public static function scriptDirection($script) {
-		switch ($script) {
-		case 'Arab':
-		case 'Hebr':
-		case 'Mong':
-		case 'Thaa':
-			return 'rtl';
+	public static function collation() {
+		$collation = self::$locale->collation();
+		switch ($collation) {
+		case 'croatian_ci':
+		case 'german2_ci':
+		case 'vietnamese_ci':
+			// Only available in MySQL 5.6
+			return 'utf8_unicode_ci';
 		default:
-			return 'ltr';
+			return 'utf8_' . $collation;
 		}
 	}
 
 	/**
-	 * UTF8 version of PHP::strtoupper()
-	 *
-	 * Convert a string to upper case, using the rules from the current locale
-	 *
-	 * @param string $string
+	 * What format is used to display dates in the current locale?
 	 *
 	 * @return string
 	 */
-	public static function strtoupper($string) {
-		if (self::$locale->language()->code() === 'tr' || self::$locale->language()->code() === 'az') {
-			return TurkishUtf8::strtoupper($string);
-		} else {
-			return mb_strtoupper($string);
-		}
-	}
-
-	/**
-	 * UTF8 version of PHP::strtolower()
-	 *
-	 * Convert a string to lower case, using the rules from the current locale
-	 *
-	 * @param string $string
-	 *
-	 * @return string
-	 */
-	public static function strtolower($string) {
-		if (self::$locale->language()->code() === 'tr' || self::$locale->language()->code() === 'az') {
-			return TurkishUtf8::strtolower($string);
-		} else {
-			return mb_strtolower($string);
-		}
-	}
-
-	/**
-	 * UTF8 version of PHP::strcasecmp()
-	 *
-	 * Perform a case-insensitive comparison of two strings, using rules from the current locale
-	 *
-	 * @param string $string1
-	 * @param string $string2
-	 *
-	 * @return integer
-	 */
-	public static function strcasecmp($string1, $string2) {
-		$strpos1 = 0;
-		$strpos2 = 0;
-		$strlen1 = strlen($string1);
-		$strlen2 = strlen($string2);
-		while ($strpos1 < $strlen1 && $strpos2 < $strlen2) {
-			$byte1 = ord($string1[$strpos1]);
-			$byte2 = ord($string2[$strpos2]);
-			if (($byte1 & 0xE0) === 0xC0) {
-				$chr1 = $string1[$strpos1++] . $string1[$strpos1++];
-			} elseif (($byte1 & 0xF0) === 0xE0) {
-				$chr1 = $string1[$strpos1++] . $string1[$strpos1++] . $string1[$strpos1++];
-			} else {
-				$chr1 = $string1[$strpos1++];
-			}
-			if (($byte2 & 0xE0) === 0xC0) {
-				$chr2 = $string2[$strpos2++] . $string2[$strpos2++];
-			} elseif (($byte2 & 0xF0) === 0xE0) {
-				$chr2 = $string2[$strpos2++] . $string2[$strpos2++] . $string2[$strpos2++];
-			} else {
-				$chr2 = $string2[$strpos2++];
-			}
-			if ($chr1 === $chr2) {
-				continue;
-			}
-			// Try the local alphabet first
-			$offset1 = strpos(self::$alphabet_lower, $chr1);
-			if ($offset1 === false) {
-				$offset1 = strpos(self::$alphabet_upper, $chr1);
-			}
-			$offset2 = strpos(self::$alphabet_lower, $chr2);
-			if ($offset2 === false) {
-				$offset2 = strpos(self::$alphabet_upper, $chr2);
-			}
-			if ($offset1 !== false && $offset2 !== false) {
-				if ($offset1 === $offset2) {
-					continue;
-				} else {
-					return $offset1 - $offset2;
-				}
-			}
-			// Try the global alphabet next
-			$offset1 = strpos(self::ALPHABET_LOWER, $chr1);
-			if ($offset1 === false) {
-				$offset1 = strpos(self::ALPHABET_UPPER, $chr1);
-			}
-			$offset2 = strpos(self::ALPHABET_LOWER, $chr2);
-			if ($offset2 === false) {
-				$offset2 = strpos(self::ALPHABET_UPPER, $chr2);
-			}
-			if ($offset1 !== false && $offset2 !== false) {
-				if ($offset1 === $offset2) {
-					continue;
-				} else {
-					return $offset1 - $offset2;
-				}
-			}
-			// Just compare by unicode order
-			return strcmp($chr1, $chr2);
-		}
-		// Shortest string comes first.
-		return ($strlen1 - $strpos1) - ($strlen2 - $strpos2);
-	}
-
-	/**
-	 * UTF8 version of PHP::strrev()
-	 *
-	 * Reverse RTL text for third-party libraries such as GD2 and googlechart.
-	 *
-	 * These do not support UTF8 text direction, so we must mimic it for them.
-	 *
-	 * Numbers are always rendered LTR, even in RTL text.
-	 * The visual direction of characters such as parentheses should be reversed.
-	 *
-	 * @param string $text Text to be reversed
-	 *
-	 * @return string
-	 */
-	public static function reverseText($text) {
-		// Remove HTML markup - we can't display it and it is LTR.
-		$text = Filter::unescapeHtml($text);
-
-		// LTR text doesn't need reversing
-		if (self::scriptDirection(self::textScript($text)) === 'ltr') {
-			return $text;
-		}
-
-		// Mirrored characters
-		$text = strtr($text, self::$mirror_characters);
-
-		$reversed = '';
-		$digits = '';
-		while ($text != '') {
-			$letter = mb_substr($text, 0, 1);
-			$text = mb_substr($text, 1);
-			if (strpos(self::DIGITS, $letter) !== false) {
-				$digits .= $letter;
-			} else {
-				$reversed = $letter . $digits . $reversed;
-				$digits = '';
-			}
-		}
-
-		return $digits . $reversed;
+	public static function dateFormat() {
+		return /* I18N: This is the format string for full dates.  See http://php.net/date for codes */ self::$translator->translate('%j %F %Y');
 	}
 
 	/**
@@ -844,5 +233,625 @@ class I18N {
 			' "zeroRecords":    "' . self::translate('No records to display') . '"' .
 			'}' .
 			$callback;
+	}
+
+	/**
+	 * Convert the digits 0-9 into the local script
+	 *
+	 * Used for years, etc., where we do not want thousands-separators, decimals, etc.
+	 *
+	 * @param integer $n
+	 *
+	 * @return string
+	 */
+	public static function digits($n) {
+		return self::$locale->digits($n);
+	}
+
+	/**
+	 * What is the direction of the current locale
+	 *
+	 * @return string "ltr" or "rtl"
+	 */
+	public static function direction() {
+		return self::$locale->direction();
+	}
+
+	/**
+	 * What is the first day of the week.
+	 *
+	 * @return integer Sunday=0, Monday=1, etc.
+	 */
+	public static function firstDay() {
+		return self::$locale->territory()->firstDay();
+	}
+
+	/**
+	 * Convert a GEDCOM age string into translated_text
+	 *
+	 * NB: The import function will have normalised this, so we don't need
+	 * to worry about badly formatted strings
+	 * NOTE: this function is not yet complete - eventually it will replace get_age_at_event()
+	 *
+	 * @param $string
+	 *
+	 * @return string
+	 */
+	public static function gedcomAge($string) {
+		switch ($string) {
+			case 'STILLBORN':
+				// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (stillborn)
+				return self::translate('(stillborn)');
+			case 'INFANT':
+				// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (in infancy)
+				return self::translate('(in infancy)');
+			case 'CHILD':
+				// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (in childhood)
+				return self::translate('(in childhood)');
+		}
+		$age = array();
+		if (preg_match('/(\d+)y/', $string, $match)) {
+			// I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
+			$years = $match[1];
+			$age[] = self::plural('%s year', '%s years', $years, self::number($years));
+		} else {
+			$years = -1;
+		}
+		if (preg_match('/(\d+)m/', $string, $match)) {
+			// I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
+			$age[] = self::plural('%s month', '%s months', $match[1], self::number($match[1]));
+		}
+		if (preg_match('/(\d+)w/', $string, $match)) {
+			// I18N: Part of an age string. e.g. 7 weeks and 3 days
+			$age[] = self::plural('%s week', '%s weeks', $match[1], self::number($match[1]));
+		}
+		if (preg_match('/(\d+)d/', $string, $match)) {
+			// I18N: Part of an age string. e.g. 5 years, 4 months and 3 days
+			$age[] = self::plural('%s day', '%s days', $match[1], self::number($match[1]));
+		}
+		// If an age is just a number of years, only show the number
+		if (count($age) === 1 && $years >= 0) {
+			$age = $years;
+		}
+		if ($age) {
+			if (!substr_compare($string, '<', 0, 1)) {
+				// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (aged less than 21 years)
+				return self::translate('(aged less than %s)', $age);
+			} elseif (!substr_compare($string, '>', 0, 1)) {
+				// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (aged more than 21 years)
+				return self::translate('(aged more than %s)', $age);
+			} else {
+				// I18N: Description of an individual’s age at an event.  For example, Died 14 Jan 1900 (aged 43 years)
+				return self::translate('(aged %s)', $age);
+			}
+		} else {
+			// Not a valid string?
+			return self::translate('(aged %s)', $string);
+		}
+	}
+
+	/**
+	 * Generate i18n markup for the <html> tag, e.g. lang="ar" dir="rtl"
+	 *
+	 * @return string
+	 */
+	public static function htmlAttributes() {
+		return self::$locale->htmlAttributes();
+	}
+
+	/**
+	 * Initialise the translation adapter with a locale setting.
+	 *
+	 * @param string|null $code Use this locale/language code, or choose one automatically
+	 *
+	 * @return string $string
+	 */
+	public static function init($code = null) {
+		global $WT_SESSION, $WT_TREE;
+
+		if ($code !== null) {
+			// Create the specified locale
+			self::$locale = Locale::create($code);
+		} else {
+			// Negotiate a locale, but if we can't then use a failsafe
+			self::$locale = new LocaleEnUs;
+			if (Filter::get('lang')) {
+				// A request in the URL
+				try {
+					$locale = Locale::create(Filter::get('lang'));
+					if (file_exists(WT_ROOT . 'language/' . $locale->languageTag() . '.mo')) {
+						self::$locale = $locale;
+					}
+				} catch (\Exception $ex) {
+				}
+			} elseif ($WT_SESSION->locale) {
+				// Previously used
+				self::$locale = Locale::create($WT_SESSION->locale);
+			} else {
+				// Browser negotiation
+				$default_locale = new LocaleEnUs;
+				try {
+					if ($WT_TREE) {
+						$default_locale = Locale::create($WT_TREE->getPreference('LANGUAGE'));
+					}
+				} catch (\Exception $ex) {
+				}
+				self::$locale = Locale::httpAcceptLanguage($_SERVER, self::installedLocales(), $default_locale);
+			}
+		}
+
+		File::mkdir(WT_DATA_DIR . 'cache');
+		$cache_file = WT_DATA_DIR . 'cache/language-' . self::$locale->languageTag() . '-cache.php';
+		if (file_exists($cache_file)) {
+			$filemtime = filemtime($cache_file);
+		} else {
+			$filemtime = 0;
+		}
+
+		// Load the translation file(s)
+		// Note that glob() returns false instead of an empty array when open_basedir_restriction
+		// is in force and no files are found.  See PHP bug #47358.
+		$translation_files = array_merge(
+			array(WT_ROOT . 'language/' . self::$locale->languageTag() . '.mo'),
+			glob(WT_MODULES_DIR . '*/language/' . self::$locale->languageTag() . '.{csv,php,mo}', GLOB_BRACE) ?: array(),
+			glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.{csv,php,mo}', GLOB_BRACE) ?: array()
+		);
+
+		// Rebuild files after 2 hours
+		$rebuild_cache = time() > $filemtime + 7200;
+		// Rebuild files if any translation file has been updated
+		foreach ($translation_files as $translation_file) {
+			if (filemtime($translation_file) > $filemtime) {
+				$rebuild_cache = true;
+				break;
+			}
+		}
+
+		if ($rebuild_cache) {
+			$translations = array();
+			foreach ($translation_files as $translation_file) {
+				$translation = new Translation($translation_file);
+				$translations = array_merge($translations, $translation->asArray());
+			}
+			file_put_contents($cache_file, '<' . '?php return ' . var_export($translations, true) . ';');
+		} else {
+			$translations = include $cache_file;
+		}
+
+		// Create a translator
+		self::$translator = new Translator($translations, self::$locale->pluralRule());
+
+		// Alphabetic sorting sequence (upper-case letters), used by webtrees to sort strings
+		list(, self::$alphabet_upper) = explode('=', self::$translator->translate('ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ'));
+		// Alphabetic sorting sequence (lower-case letters), used by webtrees to sort strings
+		list(, self::$alphabet_lower) = explode('=', self::$translator->translate('ALPHABET_lower=abcdefghijklmnopqrstuvwxyz'));
+
+		global $WEEK_START;
+		$WEEK_START = self::$locale->territory()->firstDay();
+
+		self::$list_separator = /* I18N: This punctuation is used to separate lists of items */ self::translate(', ');
+
+		return self::$locale->languageTag();
+	}
+
+	/**
+	 * All locales for which a translation file exists.
+	 *
+	 * @return LocaleInterface[]
+	 */
+	public static function installedLocales() {
+		$locales = array();
+		foreach (glob(WT_ROOT . 'language/*.mo') as $file) {
+			try {
+				$locales[] = Locale::create(basename($file, '.mo'));
+			} catch (\Exception $ex) {
+				// Not a recognised locale
+			}
+		}
+		usort($locales, '\Fisharebest\Localization\Locale::compare');
+
+		return $locales;
+	}
+
+	/**
+	 * Return the endonym for a given language - as per http://cldr.unicode.org/
+	 *
+	 * @param string $locale
+	 *
+	 * @return string
+	 */
+	public static function languageName($locale) {
+		return Locale::create($locale)->endonym();
+	}
+
+	/**
+	 * Return the script used by a given language
+	 *
+	 * @param string $locale
+	 *
+	 * @return string
+	 */
+	public static function languageScript($locale) {
+		return Locale::create($locale)->script()->code();
+	}
+
+	/**
+	 * Translate a number into the local representation.
+	 *
+	 * e.g. 12345.67 becomes
+	 * en: 12,345.67
+	 * fr: 12 345,67
+	 * de: 12.345,67
+	 *
+	 * @param float   $n
+	 * @param integer $precision
+	 *
+	 * @return string
+	 */
+	public static function number($n, $precision = 0) {
+		return self::$locale->number(round($n, $precision));
+	}
+
+	/**
+	 * Translate a fraction into a percentage.
+	 *
+	 * e.g. 0.123 becomes
+	 * en: 12.3%
+	 * fr: 12,3 %
+	 * de: 12,3%
+	 *
+	 * @param float   $n
+	 * @param integer $precision
+	 *
+	 * @return string
+	 */
+	public static function percentage($n, $precision = 0) {
+		return self::$locale->percent(round($n, $precision + 2));
+	}
+
+	/**
+	 * Translate a plural string
+	 *
+	 * echo self::plural('There is an error', 'There are errors', $num_errors);
+	 * echo self::plural('There is one error', 'There are %s errors', $num_errors);
+	 * echo self::plural('There is %1$s %2$s cat', 'There are %1$s %2$s cats', $num, $num, $colour);
+	 *
+	 * @return string
+	 */
+	public static function plural(/* var_args */) {
+		$args    = func_get_args();
+		$args[0] = self::$translator->translatePlural($args[0], $args[1], (int) $args[2]);
+		unset($args[1], $args[2]);
+
+		return self::substitutePlaceholders($args);
+	}
+
+	/**
+	 * UTF8 version of PHP::strrev()
+	 *
+	 * Reverse RTL text for third-party libraries such as GD2 and googlechart.
+	 *
+	 * These do not support UTF8 text direction, so we must mimic it for them.
+	 *
+	 * Numbers are always rendered LTR, even in RTL text.
+	 * The visual direction of characters such as parentheses should be reversed.
+	 *
+	 * @param string $text Text to be reversed
+	 *
+	 * @return string
+	 */
+	public static function reverseText($text) {
+		// Remove HTML markup - we can't display it and it is LTR.
+		$text = Filter::unescapeHtml($text);
+
+		// LTR text doesn't need reversing
+		if (self::scriptDirection(self::textScript($text)) === 'ltr') {
+			return $text;
+		}
+
+		// Mirrored characters
+		$text = strtr($text, self::$mirror_characters);
+
+		$reversed = '';
+		$digits = '';
+		while ($text != '') {
+			$letter = mb_substr($text, 0, 1);
+			$text = mb_substr($text, 1);
+			if (strpos(self::DIGITS, $letter) !== false) {
+				$digits .= $letter;
+			} else {
+				$reversed = $letter . $digits . $reversed;
+				$digits = '';
+			}
+		}
+
+		return $digits . $reversed;
+	}
+
+	/**
+	 * Return the direction (ltr or rtl) for a given script
+	 *
+	 * The PHP/intl library does not provde this information, so we need
+	 * our own lookup table.
+	 *
+	 * @param string $script
+	 *
+	 * @return string
+	 */
+	public static function scriptDirection($script) {
+		switch ($script) {
+		case 'Arab':
+		case 'Hebr':
+		case 'Mong':
+		case 'Thaa':
+			return 'rtl';
+		default:
+			return 'ltr';
+		}
+	}
+
+	/**
+	 * UTF8 version of PHP::strcasecmp()
+	 *
+	 * Perform a case-insensitive comparison of two strings, using rules from the current locale
+	 *
+	 * @param string $string1
+	 * @param string $string2
+	 *
+	 * @return integer
+	 */
+	public static function strcasecmp($string1, $string2) {
+		$strpos1 = 0;
+		$strpos2 = 0;
+		$strlen1 = strlen($string1);
+		$strlen2 = strlen($string2);
+		while ($strpos1 < $strlen1 && $strpos2 < $strlen2) {
+			$byte1 = ord($string1[$strpos1]);
+			$byte2 = ord($string2[$strpos2]);
+			if (($byte1 & 0xE0) === 0xC0) {
+				$chr1 = $string1[$strpos1++] . $string1[$strpos1++];
+			} elseif (($byte1 & 0xF0) === 0xE0) {
+				$chr1 = $string1[$strpos1++] . $string1[$strpos1++] . $string1[$strpos1++];
+			} else {
+				$chr1 = $string1[$strpos1++];
+			}
+			if (($byte2 & 0xE0) === 0xC0) {
+				$chr2 = $string2[$strpos2++] . $string2[$strpos2++];
+			} elseif (($byte2 & 0xF0) === 0xE0) {
+				$chr2 = $string2[$strpos2++] . $string2[$strpos2++] . $string2[$strpos2++];
+			} else {
+				$chr2 = $string2[$strpos2++];
+			}
+			if ($chr1 === $chr2) {
+				continue;
+			}
+			// Try the local alphabet first
+			$offset1 = strpos(self::$alphabet_lower, $chr1);
+			if ($offset1 === false) {
+				$offset1 = strpos(self::$alphabet_upper, $chr1);
+			}
+			$offset2 = strpos(self::$alphabet_lower, $chr2);
+			if ($offset2 === false) {
+				$offset2 = strpos(self::$alphabet_upper, $chr2);
+			}
+			if ($offset1 !== false && $offset2 !== false) {
+				if ($offset1 === $offset2) {
+					continue;
+				} else {
+					return $offset1 - $offset2;
+				}
+			}
+			// Try the global alphabet next
+			$offset1 = strpos(self::ALPHABET_LOWER, $chr1);
+			if ($offset1 === false) {
+				$offset1 = strpos(self::ALPHABET_UPPER, $chr1);
+			}
+			$offset2 = strpos(self::ALPHABET_LOWER, $chr2);
+			if ($offset2 === false) {
+				$offset2 = strpos(self::ALPHABET_UPPER, $chr2);
+			}
+			if ($offset1 !== false && $offset2 !== false) {
+				if ($offset1 === $offset2) {
+					continue;
+				} else {
+					return $offset1 - $offset2;
+				}
+			}
+			// Just compare by unicode order
+			return strcmp($chr1, $chr2);
+		}
+		// Shortest string comes first.
+		return ($strlen1 - $strpos1) - ($strlen2 - $strpos2);
+	}
+
+	/**
+	 * UTF8 version of PHP::strtolower()
+	 *
+	 * Convert a string to lower case, using the rules from the current locale
+	 *
+	 * @param string $string
+	 *
+	 * @return string
+	 */
+	public static function strtolower($string) {
+		if (self::$locale->language()->code() === 'tr' || self::$locale->language()->code() === 'az') {
+			return TurkishUtf8::strtolower($string);
+		} else {
+			return mb_strtolower($string);
+		}
+	}
+
+	/**
+	 * UTF8 version of PHP::strtoupper()
+	 *
+	 * Convert a string to upper case, using the rules from the current locale
+	 *
+	 * @param string $string
+	 *
+	 * @return string
+	 */
+	public static function strtoupper($string) {
+		if (self::$locale->language()->code() === 'tr' || self::$locale->language()->code() === 'az') {
+			return TurkishUtf8::strtoupper($string);
+		} else {
+			return mb_strtoupper($string);
+		}
+	}
+
+	/**
+	 * Substitute any "%s" placeholders in a translated string.
+	 * This also allows us to have translated strings that contain
+	 * "%" characters, which can't be passed to sprintf.
+	 *
+	 * @param string[] $args translated string plus optional parameters
+	 *
+	 * @return string
+	 */
+	private static function substitutePlaceholders(array $args) {
+		if (count($args) > 1) {
+			return call_user_func_array('sprintf', $args);
+		} else {
+			return $args[0];
+		}
+	}
+
+	/**
+	 * Identify the script used for a piece of text
+	 *
+	 * @param $string
+	 *
+	 * @return string
+	 */
+	public static function textScript($string) {
+		$string = strip_tags($string); // otherwise HTML tags show up as latin
+		$string = html_entity_decode($string, ENT_QUOTES, 'UTF-8'); // otherwise HTML entities show up as latin
+		$string = str_replace(array('@N.N.', '@P.N.'), '', $string); // otherwise unknown names show up as latin
+		$pos = 0;
+		$strlen = strlen($string);
+		while ($pos < $strlen) {
+			// get the Unicode Code Point for the character at position $pos
+			$byte1 = ord($string[$pos]);
+			if ($byte1 < 0x80) {
+				$code_point = $byte1;
+				$chrlen = 1;
+			} elseif ($byte1 < 0xC0) {
+				// Invalid continuation character
+				return 'Latn';
+			} elseif ($byte1 < 0xE0) {
+				$code_point = (($byte1 & 0x1F) << 6) + (ord($string[$pos + 1]) & 0x3F);
+				$chrlen = 2;
+			} elseif ($byte1 < 0xF0) {
+				$code_point = (($byte1 & 0x0F) << 12) + ((ord($string[$pos + 1]) & 0x3F) << 6) + (ord($string[$pos + 2]) & 0x3F);
+				$chrlen = 3;
+			} elseif ($byte1 < 0xF8) {
+				$code_point = (($byte1 & 0x07) << 24) + ((ord($string[$pos + 1]) & 0x3F) << 12) + ((ord($string[$pos + 2]) & 0x3F) << 6) + (ord($string[$pos + 3]) & 0x3F);
+				$chrlen = 3;
+			} else {
+				// Invalid UTF
+				return 'Latn';
+			}
+
+			foreach (self::$scripts as $range) {
+				if ($code_point >= $range[1] && $code_point <= $range[2]) {
+					return $range[0];
+				}
+			}
+			// Not a recognised script.  Maybe punctuation, spacing, etc.  Keep looking.
+			$pos += $chrlen;
+		}
+
+		return 'Latn';
+	}
+
+	/**
+	 * Convert a number of seconds into a relative time.  For example, 630 => "10 hours, 30 minutes ago"
+	 *
+	 * @param integer $seconds
+	 *
+	 * @return string
+	 */
+	public static function timeAgo($seconds) {
+		$minute = 60;
+		$hour   = 60 * $minute;
+		$day    = 24 * $hour;
+		$month  = 30 * $day;
+		$year   = 365 * $day;
+
+		if ($seconds > $year) {
+			$years = (int) ($seconds / $year);
+			return self::plural('%s year ago', '%s years ago', $years, self::number($years));
+		} elseif ($seconds > $month) {
+			$months = (int) ($seconds / $month);
+			return self::plural('%s month ago', '%s months ago', $months, self::number($months));
+		} elseif ($seconds > $day) {
+			$days = (int) ($seconds / $day);
+			return self::plural('%s day ago', '%s days ago', $days, self::number($days));
+		} elseif ($seconds > $hour) {
+			$hours = (int) ($seconds / $hour);
+			return self::plural('%s hour ago', '%s hours ago', $hours, self::number($hours));
+		} elseif ($seconds > $minute) {
+			$minutes = (int) ($seconds / $minute);
+			return self::plural('%s minute ago', '%s minutes ago', $minutes, self::number($minutes));
+		} else {
+			return self::plural('%s second ago', '%s seconds ago', $seconds, self::number($seconds));
+		}
+	}
+
+	/**
+	 * What format is used to display dates in the current locale?
+	 *
+	 * @return string
+	 */
+	public static function timeFormat() {
+		return /* I18N: This is the format string for the time-of-day.  See http://php.net/date for codes */ self::$translator->translate('%H:%i:%s');
+	}
+
+	/**
+	 * Translate a string, and then substitute placeholders
+	 *
+	 * echo I18N::translate('Hello World!');
+	 * echo I18N::translate('The %s sat on the mat', 'cat');
+	 *
+	 * @return string
+	 */
+	public static function translate(/* var_args */) {
+		$args    = func_get_args();
+		$args[0] = self::$translator->translate($args[0]);
+
+		return self::substitutePlaceholders($args);
+	}
+
+	/**
+	 * Context sensitive version of translate.
+	 *
+	 * echo I18N::translate_c('NOMINATIVE', 'January');
+	 * echo I18N::translate_c('GENITIVE',   'January');
+	 *
+	 * @return string
+	 */
+	public static function translateContext(/* var_args */) {
+		$args    = func_get_args();
+		$args[0] = self::$translator->translateContext($args[0], $args[1]);
+		unset($args[1]);
+
+		return self::substitutePlaceholders($args);
+	}
+
+	/**
+	 * What is the last day of the weekend.
+	 *
+	 * @return integer Sunday=0, Monday=1, etc.
+	 */
+	public static function weekendEnd() {
+		return self::$locale->territory()->weekendEnd();
+	}
+
+	/**
+	 * What is the first day of the weekend.
+	 *
+	 * @return integer Sunday=0, Monday=1, etc.
+	 */
+	public static function weekendStart() {
+		return self::$locale->territory()->weekendStart();
 	}
 }

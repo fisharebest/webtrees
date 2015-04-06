@@ -29,7 +29,7 @@ class PedigreeController extends ChartController {
 	const LANDSCAPE        = 1;
 	const OLDEST_AT_TOP    = 2;
 	const OLDEST_AT_BOTTOM = 3;
-	CONST MENU_ITEM = '<a href="pedigree.php?rootid=%s&amp;show_full=%s&amp;PEDIGREE_GENERATIONS=%s&amp;orientation=%s" class="%s noprint">%s</a>';
+	const MENU_ITEM = '<a href="pedigree.php?rootid=%s&amp;show_full=%s&amp;PEDIGREE_GENERATIONS=%s&amp;orientation=%s" class="%s noprint">%s</a>';
 
 	/**
 	 * Next and previous generation arrow size

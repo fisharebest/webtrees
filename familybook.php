@@ -51,7 +51,7 @@ $controller
 						<?php echo I18N::translate('Show details'); ?>
 					</td>
 					<td class="optionbox">
-						<?php echo two_state_checkbox("show_full",$controller->showFull());?>
+						<?php echo two_state_checkbox("show_full", $controller->showFull()); ?>
 		  			</td>
 					<td rowspan="3" class="topbottombar vmiddle">
 						<input type="submit" value="<?php echo /* I18N: Submit button, on a form */ I18N::translate('View'); ?>">

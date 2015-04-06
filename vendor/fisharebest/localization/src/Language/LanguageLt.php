@@ -1,4 +1,7 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Language;
+
+use Fisharebest\Localization\PluralRule\PluralRule6;
+use Fisharebest\Localization\Territory\TerritoryLt;
 
 /**
  * Class LanguageLt - Representation of the Lithuanian language.
@@ -7,7 +10,7 @@
  * @copyright (c) 2015 Greg Roach
  * @license   GPLv3+
  */
-class LanguageLt extends Language {
+class LanguageLt extends AbstractLanguage implements LanguageInterface {
 	/** {@inheritdoc} */
 	public function code() {
 		return 'lt';
@@ -16,5 +19,10 @@ class LanguageLt extends Language {
 	/** {@inheritdoc} */
 	public function defaultTerritory() {
 		return new TerritoryLt;
+	}
+
+	/** {@inheritdoc} */
+	public function pluralRule() {
+		return new PluralRule6;
 	}
 }

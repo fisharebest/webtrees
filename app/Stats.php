@@ -576,11 +576,12 @@ class Stats {
 		$vars[] = $this->tree->getTreeId();
 		$total =
 			Database::prepare(
-				"SELECT SQL_CACHE COUNT({$distinct} n_surn COLLATE '" . I18N::$collation . "')" .
+				"SELECT SQL_CACHE COUNT({$distinct} n_surn COLLATE '" . I18N::collation() . "')" .
 				" FROM `##name`" .
-				" WHERE n_surn COLLATE '" . I18N::$collation . "' {$opt} AND n_file=?")
-				->execute($vars)
-				->fetchOne();
+				" WHERE n_surn COLLATE '" . I18N::collation() . "' {$opt} AND n_file=?"
+			)->execute(
+				$vars
+			)->fetchOne();
 
 		return I18N::number($total);
 	}
@@ -1440,7 +1441,7 @@ class Stats {
 		// Get the country names for each language
 		$country_to_iso3166 = array();
 		foreach (I18N::activeLocales() as $locale) {
-			I18N::init($locale->getLanguageTag());
+			I18N::init($locale->languageTag());
 			$countries = $this->getAllCountries();
 			foreach ($this->iso3166() as $three => $two) {
 				$country_to_iso3166[$three] = $two;
@@ -5507,8 +5508,6 @@ class Stats {
 	 * @return string
 	 */
 	private function getLatestUserData($type = 'userid', $params = array()) {
-		global $DATE_FORMAT, $TIME_FORMAT;
-
 		static $user_id = null;
 
 		if ($user_id === null) {
@@ -5529,14 +5528,14 @@ class Stats {
 			if (is_array($params) && isset($params[0]) && $params[0] != '') {
 				$datestamp = $params[0];
 			} else {
-				$datestamp = $DATE_FORMAT;
+				$datestamp = I18N::dateFormat();
 			}
 			return timestamp_to_gedcom_date($user->getPreference('reg_timestamp'))->display(false, $datestamp);
 		case 'regtime':
 			if (is_array($params) && isset($params[0]) && $params[0] != '') {
 				$datestamp = $params[0];
 			} else {
-				$datestamp = str_replace('%', '', $TIME_FORMAT);
+				$datestamp = str_replace('%', '', I18N::timeFormat());
 			}
 			return date($datestamp, $user->getPreference('reg_timestamp'));
 		case 'loggedin':
@@ -5663,28 +5662,21 @@ class Stats {
 	 * @return string
 	 */
 	public function browserDate() {
-		return timestamp_to_gedcom_date(WT_CLIENT_TIMESTAMP)->display();
+		return timestamp_to_gedcom_date(WT_TIMESTAMP + WT_TIMESTAMP_OFFSET)->display();
 	}
 
 	/**
 	 * @return string
 	 */
 	public function browserTime() {
-		return date('g:i a', WT_CLIENT_TIMESTAMP);
-	}
-
-	/**
-	 * @return string
-	 */
-	public function browserTime24() {
-		return date('G:i', WT_CLIENT_TIMESTAMP);
+		return date(str_replace('%', '', I18N::timeFormat()), WT_TIMESTAMP + WT_TIMESTAMP_OFFSET);
 	}
 
 	/**
 	 * @return string
 	 */
 	public function browserTimezone() {
-		return date('T', WT_CLIENT_TIMESTAMP);
+		return date('T', WT_TIMESTAMP + WT_TIMESTAMP_OFFSET);
 	}
 
 	/**
@@ -5721,11 +5713,7 @@ class Stats {
 			// indi/fam/sour/etc.
 		}
 
-		$count = Database::prepare(
-			"SELECT SQL_NO_CACHE page_count FROM `##hit_counter`" .
-			" WHERE gedcom_id=? AND page_name=? AND page_parameter=?"
-		)->execute(array($this->tree->getTreeId(), $page_name, $page_parameter))->fetchOne();
-		return '<span class="hit-counter">' . I18N::number($count) . '</span>';
+		return '<span class="odometer">' . I18N::digits(HitCounter::getCount($this->tree, $page_name, $page_parameter)) . '</span>';
 	}
 
 	/**

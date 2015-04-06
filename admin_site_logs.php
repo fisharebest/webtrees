@@ -218,8 +218,8 @@ $controller
 				date: "fa fa-calendar",
 				up: "fa fa-arrow-up",
 				down: "fa fa-arrow-down",
-				previous: "fa fa-arrow-left",
-				next: "fa fa-arrow-right",
+				previous: "fa fa-arrow-' . (I18N::direction() === 'rtl' ? 'right' : 'left') . '",
+				next: "fa fa-arrow-' . (I18N::direction() === 'rtl' ? 'left' : 'right') . '",
 				today: "fa fa-trash-o",
 				clear: "fa fa-trash-o"
 			}

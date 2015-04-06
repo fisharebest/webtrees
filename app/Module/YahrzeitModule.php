@@ -22,7 +22,7 @@ use Rhumsaa\Uuid\Uuid;
 /**
  * Class YahrzeitModule
  */
-class YahrzeitModule extends Module implements ModuleBlockInterface {
+class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module.  Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar. */ I18N::translate('Yahrzeiten');
@@ -37,10 +37,10 @@ class YahrzeitModule extends Module implements ModuleBlockInterface {
 	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $ctype, $controller, $WT_TREE;
 
-		$days      = get_block_setting($block_id, 'days', '7');
-		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');
-		$calendar  = get_block_setting($block_id, 'calendar', 'jewish');
-		$block     = get_block_setting($block_id, 'block', '1');
+		$days      = $this->getBlockSetting($block_id, 'days', '7');
+		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
+		$calendar  = $this->getBlockSetting($block_id, 'calendar', 'jewish');
+		$block     = $this->getBlockSetting($block_id, 'block', '1');
 
 		if ($cfg) {
 			foreach (array('days', 'infoStyle', 'block') as $name) {
@@ -232,16 +232,16 @@ class YahrzeitModule extends Module implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function configureBlock($block_id) {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
-			set_block_setting($block_id, 'days', Filter::postInteger('days', 1, 30, 7));
-			set_block_setting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', 'table'));
-			set_block_setting($block_id, 'calendar', Filter::post('calendar', 'jewish|gregorian', 'jewish'));
-			set_block_setting($block_id, 'block', Filter::postBool('block'));
+			$this->setBlockSetting($block_id, 'days', Filter::postInteger('days', 1, 30, 7));
+			$this->setBlockSetting($block_id, 'infoStyle', Filter::post('infoStyle', 'list|table', 'table'));
+			$this->setBlockSetting($block_id, 'calendar', Filter::post('calendar', 'jewish|gregorian', 'jewish'));
+			$this->setBlockSetting($block_id, 'block', Filter::postBool('block'));
 		}
 
-		$days      = get_block_setting($block_id, 'days', '7');
-		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');
-		$calendar  = get_block_setting($block_id, 'calendar', 'jewish');
-		$block     = get_block_setting($block_id, 'block', '1');
+		$days      = $this->getBlockSetting($block_id, 'days', '7');
+		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
+		$calendar  = $this->getBlockSetting($block_id, 'calendar', 'jewish');
+		$block     = $this->getBlockSetting($block_id, 'block', '1');
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Number of days to show');
@@ -260,8 +260,8 @@ class YahrzeitModule extends Module implements ModuleBlockInterface {
 		echo I18N::translate('Calendar');
 		echo '</td><td class="optionbox">';
 		echo select_edit_control('calendar', array(
-			'jewish'   => JewishDate::calendarName(),
-			'gregorian'=> GregorianDate::calendarName(),
+			'jewish'   => /* I18N: The Hebrew/Jewish calendar */ I18N::translate('Jewish'),
+			'gregorian'=> /* I18N: The gregorian calendar */ I18N::translate('Gregorian'),
 		), null, $calendar, '');
 		echo '</td></tr>';
 

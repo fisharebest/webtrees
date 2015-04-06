@@ -2038,10 +2038,11 @@ dd .deletelink {
 	float: left;
 }
 
-.hit-counter {
+.odometer {
+	font-family: courier, mono-space;
+	font-weight: bold;
 	background: #000;
 	color: #fff;
-	font-weight: bold;
 }
 
 /* ======= General sprite ==== */
@@ -2746,7 +2747,6 @@ dd .deletelink {
 	font-weight: bold;
 	padding: 5px 10px 0;
 	width: 240px;
-	white-space: nowrap;
 }
 
 #edituser-table .value {
@@ -3428,6 +3428,11 @@ table.table-census-assistant th {
 	border-collapse: collapse;
 	padding:         0;
 	width:           100%;
+}
+
+/*-- relationship  --*/
+.rel-background {
+	background-color: #fff;
 }
 
 /*-- timeline  --*/
@@ -4429,704 +4434,688 @@ footer {
 	content: url(images/powered-by-webtrees.png);
 }
 
-#link_change_blocks {
-	clear: both;
-	margin: 0 auto;
-	padding: 25px 0 0;
-	text-align: center;
-	width: 400px;
-}
-
-#link_change_blocks span {
-	padding: 0 50px;
-}
-
-#link_change_blocks span span {
-	padding: 0 3px;
-}
-
 /* ====== End Theme Footer ===== */
 
 /* ====== Theme Icons ========== */
 /* ***** Header icons **** */
-#menu-tree {
+.menu-tree {
 	background-position:center 0;
 }
 
-#menu-mymenu {
+.menu-mymenu {
 	background-position:center -70px;
 }
 
-#menu-chart {
+.menu-chart {
 	background-position:center -140px;
 }
 
-#menu-list {
+.menu-list {
 	background-position:center -210px;
 }
 
-#menu-report {
+.menu-report {
 	background-position:center -280px;
 }
 
-#menu-calendar {
+.menu-calendar {
 	background-position:center -350px;
 }
 
-#menu-search {
+.menu-search {
 	background-position:center -420px;
 }
 
-#menu-help {
+.menu-help {
 	background-position:center -490px;
 }
 
-#menu-clippings {
+.menu-clippings {
 	background-position:center -560px;
 }
 
-#menu-indi {
+.menu-indi {
 	background-position:center -630px;
 }
 
-#menu-indi-orderfam {
+.menu-indi-orderfam {
 	background-position: left 0;
 }
 
-[dir=rtl] #menu-indi-orderfam {
+[dir=rtl] .menu-indi-orderfam {
 	background-position: right 0;
 }
 
-#menu-sour {
+.menu-sour {
 	background-position:center -700px;
 }
 
-#menu-fam {
+.menu-fam {
 	background-position:center -770px;
 }
 
-#menu-obje {
+.menu-obje {
 	background-position:center -840px;
 }
 
-#menu-note {
+.menu-note {
 	background-position:center -910px;
 }
 
-#menu-repo {
+.menu-repo {
 	background-position:center -980px;
 }
 
-#menu-story {
+.menu-story {
 	background-position:center -1045px;
 }
 
 /* Header Sub-menu icons */
-#menu-admin {
+.menu-admin {
 	background-position: left 0;
 }
 
-[dir=rtl] #menu-admin {
+[dir=rtl] .menu-admin {
 	background-position: right 0;
 }
 
-#menu-branches {
+.menu-branches {
 	background-position: left -450px;
 }
 
-[dir=rtl] #menu-branches {
+[dir=rtl] .menu-branches {
 	background-position: right -450px;
 }
 
-#menu-calendar-day {
+.menu-calendar-day {
 	background-position: left -60px;
 }
 
-[dir=rtl] #menu-calendar-day {
+[dir=rtl] .menu-calendar-day {
 	background-position: right -60px;
 }
 
-#menu-calendar-month {
+.menu-calendar-month {
 	background-position: left -60px;
 }
 
-[dir=rtl] #menu-calendar-month {
+[dir=rtl] .menu-calendar-month {
 	background-position: right -60px;
 }
 
-#menu-calendar-year {
+.menu-calendar-year {
 	background-position: left -60px;
 }
 
-[dir=rtl] #menu-calendar-year {
+[dir=rtl] .menu-calendar-year {
 	background-position: right -60px;
 }
 
-#menu-chart-ancestry {
+.menu-chart-ancestry {
 	background-position: left -30px;
 }
 
-[dir=rtl] #menu-chart-ancestry {
+[dir=rtl] .menu-chart-ancestry {
 	background-position: right -30px;
 }
 
-#menu-chart-compact {
+.menu-chart-compact {
 	background-position: left -30px;
 }
 
-[dir=rtl] #menu-chart-compact {
+[dir=rtl] .menu-chart-compact {
 	background-position: right -30px;
 }
 
-#menu-chart-descendants {
+.menu-chart-descendants {
 	background-position: left -150px;
 }
 
-[dir=rtl] #menu-chart-descendants {
+[dir=rtl] .menu-chart-descendants {
 	background-position: right -150px;
 }
 
-#menu-chart-familybook {
+.menu-chart-familybook {
 	background-position: left -180px;
 }
 
-[dir=rtl] #menu-chart-familybook {
+[dir=rtl] .menu-chart-familybook {
 	background-position: right -180px;
 }
 
-#menu-chart-fanchart {
+.menu-chart-fanchart {
 	background-position: left -210px;
 }
 
-[dir=rtl] #menu-chart-fanchart {
+[dir=rtl] .menu-chart-fanchart {
 	background-position: right -210px;
 }
 
-#menu-chart-hourglass {
+.menu-chart-hourglass {
 	background-position: left -270px;
 }
 
-[dir=rtl] #menu-chart-hourglass {
+[dir=rtl] .menu-chart-hourglass {
 	background-position: right -270px;
 }
 
-#menu-chart-lifespan {
+.menu-chart-lifespan {
 	background-position: left -660px;
 }
 
-[dir=rtl] #menu-chart-lifespan {
+[dir=rtl] .menu-chart-lifespan {
 	background-position: right -660px;
 }
 
-#menu-chart-pedigree {
+.menu-chart-pedigree {
 	background-position: left -480px;
 }
 
-[dir=rtl] #menu-chart-pedigree {
+[dir=rtl] .menu-chart-pedigree {
 	background-position: right -480px;
 }
 
-#menu-chart-pedigree_map {
+.menu-chart-pedigree_map {
 	background-position: left -720px;
 }
 
-[dir=rtl] #menu-chart-pedigree_map {
+[dir=rtl] .menu-chart-pedigree_map {
 	background-position: right -720px;
 }
 
-#menu-chart-relationship {
+.menu-chart-relationship {
 	background-position: left -540px;
 }
 
-[dir=rtl] #menu-chart-relationship {
+[dir=rtl] .menu-chart-relationship {
 	background-position: right -540px;
 }
 
-#menu-chart-statistics {
+.menu-chart-statistics {
 	background-position: left -630px;
 }
 
-[dir=rtl] #menu-chart-statistics {
+[dir=rtl] .menu-chart-statistics {
 	background-position: right -630px;
 }
 
-#menu-chart-timeline {
+.menu-chart-timeline {
 	background-position: left -660px;
 }
 
-[dir=rtl] #menu-chart-timeline {
+[dir=rtl] .menu-chart-timeline {
 	background-position: right -660px;
 }
 
-#menu-chart-tree {
+.menu-chart-tree {
 	background-position: left -240px;
 }
 
-[dir=rtl] #menu-chart-tree {
+[dir=rtl] .menu-chart-tree {
 	background-position: right -240px;
 }
 
-#menu-clippingsadd {
+.menu-clippingsadd {
 	background-position: left -930px;
 }
 
-[dir=rtl] #menu-clippingsadd {
+[dir=rtl] .menu-clippingsadd {
 	background-position: right -930px;
 }
 
-#menu-clippingscart {
+.menu-clippingscart {
 	background-position: left -900px;
 }
 
-[dir=rtl] #menu-clippingscart {
+[dir=rtl] .menu-clippingscart {
 	background-position: right -900px;
 }
 
-#menu-fam-addchil {
+.menu-fam-addchil {
 	background-position: left -1050px;
 }
 
-[dir=rtl] #menu-fam-addchil {
+[dir=rtl] .menu-fam-addchil {
 	background-position: right -1050px;
 }
 
-#menu-fam-addfav {
+.menu-fam-addfav {
 	background-position: left -870px;
 }
 
-[dir=rtl] #menu-fam-addfav {
+[dir=rtl] .menu-fam-addfav {
 	background-position: right -870px;
 }
 
-#menu-fam-change {
+.menu-fam-change {
 	background-position: left -90px;
 }
 
-[dir=rtl] #menu-fam-change {
+[dir=rtl] .menu-fam-change {
 	background-position: right -90px;
 }
 
-#menu-fam-del {
+.menu-fam-del {
 	background-position: left -840px;
 }
 
-[dir=rtl] #menu-fam-del {
+[dir=rtl] .menu-fam-del {
 	background-position: right -840px;
 }
 
-#menu-fam-editraw {
+.menu-fam-editraw {
 	background-position: left -90px;
 }
 
-[dir=rtl] #menu-fam-editraw {
+[dir=rtl] .menu-fam-editraw {
 	background-position: right -90px;
 }
 
-#menu-fam-orderchil {
+.menu-fam-orderchil {
 	background-position: left -1080px;
 }
 
-[dir=rtl] #menu-fam-orderchil {
+[dir=rtl] .menu-fam-orderchil {
 	background-position: right -1080px;
 }
 
-#menu-help-contents {
+.menu-help-contents {
 	background-position: left -300px;
 }
 
-[dir=rtl] #menu-help-contents {
+[dir=rtl] .menu-help-contents {
 	background-position: right -300px;
 }
 
-#menu-help-faq {
+.menu-help-faq {
 	background-position: left -300px;
 }
 
-[dir=rtl] #menu-help-faq {
+[dir=rtl] .menu-help-faq {
 	background-position: right -300px;
 }
 
-#menu-help-genealogy {
+.menu-help-genealogy {
 	background-position: left -120px;
 }
 
-[dir=rtl] #menu-help-genealogy {
+[dir=rtl] .menu-help-genealogy {
 	background-position: right -120px;
 }
 
-#menu-help-hide {
+.menu-help-hide {
 	background-position: left -300px;
 }
 
-[dir=rtl] #menu-help-hide {
+[dir=rtl] .menu-help-hide {
 	background-position: right -300px;
 }
 
-#menu-help-show {
+.menu-help-show {
 	background-position: left -300px;
 }
 
-[dir=rtl] #menu-help-show {
+[dir=rtl] .menu-help-show {
 	background-position: right -300px;
 }
 
-#menu-help-technical {
+.menu-help-technical {
 	background-position: left -120px;
 }
 
-[dir=rtl] #menu-help-technical {
+[dir=rtl] .menu-help-technical {
 	background-position: right -120px;
 }
 
-#menu-help-wiki {
+.menu-help-wiki {
 	background-position: left -690px;
 }
 
-[dir=rtl] #menu-help-wiki {
+[dir=rtl] .menu-help-wiki {
 	background-position: right -690px;
 }
 
-#menu-indi-addfav {
+.menu-indi-addfav {
 	background-position: left -870px;
 }
 
-[dir=rtl] #menu-indi-addfav {
+[dir=rtl] .menu-indi-addfav {
 	background-position: right -870px;
 }
 
-#menu-indi-addname {
+.menu-indi-addname {
 	background-position: left -780px;
 }
 
-[dir=rtl] #menu-indi-addname {
+[dir=rtl] .menu-indi-addname {
 	background-position: right -780px;
 }
 
-#menu-indi-del {
+.menu-indi-del {
 	background-position: left -840px;
 }
 
-[dir=rtl] #menu-indi-del {
+[dir=rtl] .menu-indi-del {
 	background-position: right -840px;
 }
 
-#menu-indi-editraw {
+.menu-indi-editraw {
 	background-position: left -750px;
 }
 
-[dir=rtl] #menu-indi-editraw {
+[dir=rtl] .menu-indi-editraw {
 	background-position: right -750px;
 }
 
-#menu-indi-editsex {
+.menu-indi-editsex {
 	background-position: left -810px;
 }
 
-[dir=rtl] #menu-indi-editsex {
+[dir=rtl] .menu-indi-editsex {
 	background-position: right -810px;
 }
 
-#menu-list-fam {
+.menu-list-fam {
 	background-position: left -90px;
 }
 
-[dir=rtl] #menu-list-fam {
+[dir=rtl] .menu-list-fam {
 	background-position: right -90px;
 }
 
-#menu-list-indi {
+.menu-list-indi {
 	background-position: left -120px;
 }
 
-[dir=rtl] #menu-list-indi {
+[dir=rtl] .menu-list-indi {
 	background-position: right -120px;
 }
 
-#menu-list-note {
+.menu-list-note {
 	background-position: left -420px;
 }
 
-[dir=rtl] #menu-list-note {
+[dir=rtl] .menu-list-note {
 	background-position: right -420px;
 }
 
-#menu-list-obje {
+.menu-list-obje {
 	background-position: left -330px;
 }
 
-[dir=rtl] #menu-list-obje {
+[dir=rtl] .menu-list-obje {
 	background-position: right -330px;
 }
 
-#menu-list-plac {
+.menu-list-plac {
 	background-position: left -510px;
 }
 
-[dir=rtl] #menu-list-plac {
+[dir=rtl] .menu-list-plac {
 	background-position: right -510px;
 }
 
-#menu-list-repo {
+.menu-list-repo {
 	background-position: left -360px;
 }
 
-[dir=rtl] #menu-list-repo {
+[dir=rtl] .menu-list-repo {
 	background-position: right -360px;
 }
 
-#menu-list-sour {
+.menu-list-sour {
 	background-position: left -180px;
 }
 
-[dir=rtl] #menu-list-sour {
+[dir=rtl] .menu-list-sour {
 	background-position: right -180px;
 }
 
-#menu-myaccount {
+.menu-myaccount {
 	background-position: left -390px;
 }
 
-[dir=rtl] #menu-myaccount {
+[dir=rtl] .menu-myaccount {
 	background-position: right -390px;
 }
 
-#menu-mypage {
+.menu-mypage {
 	background-position: left -390px;
 }
 
-[dir=rtl] #menu-mypage {
+[dir=rtl] .menu-mypage {
 	background-position: right -390px;
 }
 
-#menu-mypedigree {
+.menu-mypedigree {
 	background-position: left -480px;
 }
 
-[dir=rtl] #menu-mypedigree {
+[dir=rtl] .menu-mypedigree {
 	background-position: right -480px;
 }
 
-#menu-myrecord {
+.menu-myrecord {
 	background-position: left -120px;
 }
 
-[dir=rtl] #menu-myrecord {
+[dir=rtl] .menu-myrecord {
 	background-position: right -120px;
 }
 
-#menu-note-addfav {
+.menu-note-addfav {
 	background-position: left -870px;
 }
 
-[dir=rtl] #menu-note-addfav {
+[dir=rtl] .menu-note-addfav {
 	background-position: right -870px;
 }
 
-#menu-note-del {
+.menu-note-del {
 	background-position: left -840px;
 }
 
-[dir=rtl] #menu-note-del {
+[dir=rtl] .menu-note-del {
 	background-position: right -840px;
 }
 
-#menu-note-edit {
+.menu-note-edit {
 	background-position: left -1020px;
 }
 
-[dir=rtl] #menu-note-edit {
+[dir=rtl] .menu-note-edit {
 	background-position: right -1020px;
 }
 
-#menu-note-editraw {
+.menu-note-editraw {
 	background-position: left -1020px;
 }
 
-[dir=rtl] #menu-note-editraw {
+[dir=rtl] .menu-note-editraw {
 	background-position: right -1020px;
 }
 
-#menu-obje-addfav {
+.menu-obje-addfav {
 	background-position: left -870px;
 }
 
-[dir=rtl] #menu-obje-addfav {
+[dir=rtl] .menu-obje-addfav {
 	background-position: right -870px;
 }
 
-#menu-obje-del {
+.menu-obje-del {
 	background-position: left -840px;
 }
 
-[dir=rtl] #menu-obje-del {
+[dir=rtl] .menu-obje-del {
 	background-position: right -840px;
 }
 
-#menu-obje-edit {
+.menu-obje-edit {
 	background-position: left -1110px;
 }
 
-[dir=rtl] #menu-obje-edit {
+[dir=rtl] .menu-obje-edit {
 	background-position: right -1110px;
 }
 
-#menu-obje-editraw {
+.menu-obje-editraw {
 	background-position: left -1110px;
 }
 
-[dir=rtl] #menu-obje-editraw {
+[dir=rtl] .menu-obje-editraw {
 	background-position: right -1110px;
 }
 
-#menu-obje-link {
+.menu-obje-link {
 	background-position: left -1140px;
 }
 
-[dir=rtl] #menu-obje-link {
+[dir=rtl] .menu-obje-link {
 	background-position: right -1140px;
 }
 
-#menu-obje-link-fam {
+.menu-obje-link-fam {
 	background-position: left -90px;
 }
 
-[dir=rtl] #menu-obje-link-fam {
+[dir=rtl] .menu-obje-link-fam {
 	background-position: right -90px;
 }
 
-#menu-obje-link-indi {
+.menu-obje-link-indi {
 	background-position: left -120px;
 }
 
-[dir=rtl] #menu-obje-link-indi {
+[dir=rtl] .menu-obje-link-indi {
 	background-position: right -120px;
 }
 
-#menu-obje-link-sour {
+.menu-obje-link-sour {
 	background-position: left -180px;
 }
 
-[dir=rtl] #menu-obje-link-sour {
+[dir=rtl] .menu-obje-link-sour {
 	background-position: right -180px;
 }
 
-#menu-repo-addfav {
+.menu-repo-addfav {
 	background-position: left -870px;
 }
 
-[dir=rtl] #menu-repo-addfav {
+[dir=rtl] .menu-repo-addfav {
 	background-position: right -870px;
 }
 
-#menu-repo-del {
+.menu-repo-del {
 	background-position: left -840px;
 }
 
-[dir=rtl] #menu-repo-del {
+[dir=rtl] .menu-repo-del {
 	background-position: right -840px;
 }
 
-#menu-repo-edit {
+.menu-repo-edit {
 	background-position: left -990px;
 }
 
-[dir=rtl] #menu-repo-edit {
+[dir=rtl] .menu-repo-edit {
 	background-position: right -990px;
 }
 
-#menu-repo-editraw {
+.menu-repo-editraw {
 	background-position: left -990px;
 }
 
-[dir=rtl] #menu-repo-editraw {
+[dir=rtl] .menu-repo-editraw {
 	background-position: right -990px;
 }
 
-#menu-report li {
+.menu-report li {
 	background-position: left -570px;
 }
 
-[dir=rtl] #menu-report li {
+[dir=rtl] .menu-report li {
 	background-position: right -570px;
 }
 
-#menu-search-advanced {
+.menu-search-advanced {
 	background-position: left -600px;
 }
 
-[dir=rtl] #menu-search-advanced {
+[dir=rtl] .menu-search-advanced {
 	background-position: right -600px;
 }
 
-#menu-search-general {
+.menu-search-general {
 	background-position: left -600px;
 }
 
-[dir=rtl] #menu-search-general {
+[dir=rtl] .menu-search-general {
 	background-position: right -600px;
 }
 
-#menu-search-replace {
+.menu-search-replace {
 	background-position: left -600px;
 }
 
-[dir=rtl] #menu-search-replace {
+[dir=rtl] .menu-search-replace {
 	background-position: right -600px;
 }
 
-#menu-search-soundex {
+.menu-search-soundex {
 	background-position: left -600px;
 }
 
-[dir=rtl] #menu-search-soundex {
+[dir=rtl] .menu-search-soundex {
 	background-position: right -600px;
 }
 
-#menu-sour-addfav {
+.menu-sour-addfav {
 	background-position: left -870px;
 }
 
-[dir=rtl] #menu-sour-addfav {
+[dir=rtl] .menu-sour-addfav {
 	background-position: right -870px;
 }
 
-#menu-sour-del {
+.menu-sour-del {
 	background-position: left -840px;
 }
 
-[dir=rtl] #menu-sour-del {
+[dir=rtl] .menu-sour-del {
 	background-position: right -840px;
 }
 
-#menu-sour-edit {
+.menu-sour-edit {
 	background-position: left -960px;
 }
 
-[dir=rtl] #menu-sour-edit {
+[dir=rtl] .menu-sour-edit {
 	background-position: right -960px;
 }
 
-#menu-sour-editraw {
+.menu-sour-editraw {
 	background-position: left -960px;
 }
 
-[dir=rtl] #menu-sour-editraw {
+[dir=rtl] .menu-sour-editraw {
 	background-position: right -960px;
 }
 
-#menu-story-sub {
+.menu-story-sub {
 	background-position: left -1208px;
 }
 
-[dir=rtl] #menu-story-sub {
+[dir=rtl] .menu-story-sub {
 	background-position: right -1208px;
 }
 
-#menu-tree li {
+.menu-tree li {
 	background-position: left -240px;
 }
 
-[dir=rtl] #menu-tree li {
+[dir=rtl] .menu-tree li {
 	background-position: right -240px;
 }
 

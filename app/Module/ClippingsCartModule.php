@@ -21,7 +21,7 @@ use Zend_Session;
 /**
  * Class ClippingsCartModule
  */
-class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleSidebarInterface {
+class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface, ModuleSidebarInterface {
 
 	/** {@inheritdoc} */
 	public function getTitle() {
@@ -70,91 +70,241 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 			}
 
 			if ($clip_ctrl->action == 'add') {
-				$person = GedcomRecord::getInstance($clip_ctrl->id, $WT_TREE);
-				echo '<h3><a href="', $person->getHtmlUrl(), '">' . $person->getFullName(), '</a></h3>';
+				$record = GedcomRecord::getInstance($clip_ctrl->id, $WT_TREE);
 				if ($clip_ctrl->type === 'FAM') { ?>
-					<form action="module.php" method="get">
+				<form action="module.php" method="get">
 					<input type="hidden" name="mod" value="clippings">
 					<input type="hidden" name="mod_action" value="index">
+					<input type="hidden" name="id" value="<?php echo $clip_ctrl->id; ?>">
+					<input type="hidden" name="type" value="<?php echo $clip_ctrl->type; ?>">
+					<input type="hidden" name="action" value="add1">
 					<table>
-						<tr><td class="topbottombar"><?php echo I18N::translate('Which other links from this family would you like to add?'); ?>
-						<input type="hidden" name="id" value="<?php echo $clip_ctrl->id; ?>">
-						<input type="hidden" name="type" value="<?php echo $clip_ctrl->type; ?>">
-						<input type="hidden" name="action" value="add1"></td></tr>
-						<tr><td class="optionbox"><input type="radio" name="others" checked value="none"><?php echo I18N::translate('Add just this family record.'); ?></td></tr>
-						<tr><td class="optionbox"><input type="radio" name="others" value="parents"><?php echo I18N::translate('Add parents’ records together with this family record.'); ?></td></tr>
-						<tr><td class="optionbox"><input type="radio" name="others" value="members"><?php echo I18N::translate('Add parents’ and children’s records together with this family record.'); ?></td></tr>
-						<tr><td class="optionbox"><input type="radio" name="others" value="descendants"><?php echo I18N::translate('Add parents’ and all descendants’ records together with this family record.'); ?></td></tr>
-						<tr><td class="topbottombar"><input type="submit" value="<?php echo I18N::translate('Continue adding'); ?>"></td></tr>
-
+						<thead>
+							<tr>
+								<td class="topbottombar">
+									<?php echo I18N::translate('Add to the clippings cart'); ?>
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="optionbox">
+									<input type="radio" name="others" value="parents">
+									<?php echo $record->getFullName(); ?>
+								</td>
+							</tr>
+							<tr>
+								<td class="optionbox">
+									<input type="radio" name="others" value="members" checked>
+									<?php echo /* I18N: %s is a family (husband + wife) */ I18N::translate('%s and their children', $record->getFullName()); ?>
+								</td>
+							</tr>
+							<tr>
+								<td class="optionbox">
+									<input type="radio" name="others" value="descendants">
+									<?php echo /* I18N: %s is a family (husband + wife) */ I18N::translate('%s and their descendants', $record->getFullName()); ?>
+								</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<td class="topbottombar"><input type="submit" value="<?php echo I18N::translate('continue'); ?>">
+								</td>
+							</tr>
+						</tfoot>
 					</table>
-					</form>
+				</form>
 				<?php } elseif ($clip_ctrl->type === 'INDI') { ?>
-					<form action="module.php" method="get">
+				<form action="module.php" method="get">
 					<input type="hidden" name="mod" value="clippings">
 					<input type="hidden" name="mod_action" value="index">
+					<input type="hidden" name="id" value="<?php echo $clip_ctrl->id; ?>">
+					<input type="hidden" name="type" value="<?php echo $clip_ctrl->type; ?>">
+					<input type="hidden" name="action" value="add1"></td></tr>
 					<table>
-						<tr><td class="topbottombar"><?php echo I18N::translate('Which links from this individual would you also like to add?'); ?>
-						<input type="hidden" name="id" value="<?php echo $clip_ctrl->id; ?>">
-						<input type="hidden" name="type" value="<?php echo $clip_ctrl->type; ?>">
-						<input type="hidden" name="action" value="add1"></td></tr>
-						<tr><td class="optionbox"><input type="radio" name="others" checked value="none"><?php echo I18N::translate('Add just this individual.'); ?></td></tr>
-						<tr><td class="optionbox"><input type="radio" name="others" value="parents"><?php echo I18N::translate('Add this individual, his parents, and siblings.'); ?></td></tr>
-						<tr><td class="optionbox"><input type="radio" name="others" value="ancestors" id="ancestors"><?php echo I18N::translate('Add this individual and his direct line ancestors.'); ?><br>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo I18N::translate('Number of generations'); ?> <input type="text" size="5" name="level1" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('ancestors');"></td></tr>
-						<tr><td class="optionbox"><input type="radio" name="others" value="ancestorsfamilies" id="ancestorsfamilies"><?php echo I18N::translate('Add this individual, his direct line ancestors, and their families.'); ?><br >
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo I18N::translate('Number of generations'); ?> <input type="text" size="5" name="level2" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('ancestorsfamilies');"></td></tr>
-						<tr><td class="optionbox"><input type="radio" name="others" value="members"><?php echo I18N::translate('Add this individual, his spouse, and children.'); ?></td></tr>
-						<tr><td class="optionbox"><input type="radio" name="others" value="descendants" id="descendants"><?php echo I18N::translate('Add this individual, his spouse, and all descendants.'); ?><br >
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo I18N::translate('Number of generations'); ?> <input type="text" size="5" name="level3" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('descendants');"></td></tr>
-						<tr><td class="topbottombar"><input type="submit" value="<?php echo I18N::translate('Continue adding'); ?>">
+						<thead>
+							<tr>
+								<td class="topbottombar">
+									<?php echo I18N::translate('Add to the clippings cart'); ?>
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="optionbox">
+									<label>
+										<input type="radio" name="others" checked value="none">
+										<?php echo $record->getFullName(); ?>
+									</label>
+								</td>
+							</tr>
+							<tr>
+								<td class="optionbox">
+									<label>
+										<input type="radio" name="others" value="parents">
+										<?php
+										if ($record->getSex() === 'F') {
+											echo /* I18N: %s is a woman's name */ I18N::translate('%s, her parents and siblings', $record->getFullName());
+										} else {
+											echo /* I18N: %s is a man's name */ I18N::translate('%s, his parents and siblings', $record->getFullName());
+										}
+										?>
+									</label>
+								</td>
+							</tr>
+							<tr>
+								<td class="optionbox">
+									<label>
+										<input type="radio" name="others" value="members">
+										<?php
+										if ($record->getSex() === 'F') {
+											echo /* I18N: %s is a woman's name */ I18N::translate('%s, her spouses and children', $record->getFullName());
+										} else {
+											echo /* I18N: %s is a man's name */ I18N::translate('%s, his spouses and children', $record->getFullName());
+										}
+										?>
+									</label>
+								</td>
+							</tr>
+							<tr>
+								<td class="optionbox">
+									<label>
+										<input type="radio" name="others" value="ancestors" id="ancestors">
+										<?php
+										if ($record->getSex() === 'F') {
+										echo /* I18N: %s is a woman's name */ I18N::translate('%s and her ancestors', $record->getFullName());
+										} else {
+										echo /* I18N: %s is a man's name */ I18N::translate('%s and his ancestors', $record->getFullName());
+										}
+									?>
+									</label>
+									<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<?php echo I18N::translate('Number of generations'); ?>
+									<input type="text" size="5" name="level1" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('ancestors');">
+								</td>
+							</tr>
+							<tr>
+								<td class="optionbox">
+									<label>
+										<input type="radio" name="others" value="ancestorsfamilies" id="ancestorsfamilies">
+										<?php
+										if ($record->getSex() === 'F') {
+											echo /* I18N: %s is a woman's name */ I18N::translate('%s, her ancestors and their families', $record->getFullName());
+										} else {
+											echo /* I18N: %s is a man's name */ I18N::translate('%s, his ancestors and their families', $record->getFullName());
+										}
+										?>
+									</label>
+									<br >
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<?php echo I18N::translate('Number of generations'); ?>
+									<input type="text" size="5" name="level2" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('ancestorsfamilies');">
+								</td>
+							</tr>
+							<tr>
+								<td class="optionbox">
+									<label>
+										<input type="radio" name="others" value="descendants" id="descendants">
+										<?php
+										if ($record->getSex() === 'F') {
+											echo /* I18N: %s is a woman's name */ I18N::translate('%s, her spouses and descendants', $record->getFullName());
+										} else {
+											echo /* I18N: %s is a man's name */ I18N::translate('%s, his spouses and descendants', $record->getFullName());
+										}
+										?>
+									</label>
+									<br >
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<?php echo I18N::translate('Number of generations'); ?>
+									<input type="text" size="5" name="level3" value="<?php echo $MAX_PEDIGREE_GENERATIONS; ?>" onfocus="radAncestors('descendants');">
+								</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<td class="topbottombar">
+									<input type="submit" value="<?php echo I18N::translate('continue'); ?>">
+								</td>
+							</tr>
+						</tfoot>
 					</table>
-					</form>
+				</form>
 				<?php } elseif ($clip_ctrl->type === 'SOUR') { ?>
-					<form action="module.php" method="get">
+				<form action="module.php" method="get">
 					<input type="hidden" name="mod" value="clippings">
 					<input type="hidden" name="mod_action" value="index">
+					<input type="hidden" name="id" value="<?php echo $clip_ctrl->id; ?>">
+					<input type="hidden" name="type" value="<?php echo $clip_ctrl->type; ?>">
+					<input type="hidden" name="action" value="add1"></td></tr>
 					<table>
-						<tr><td class="topbottombar"><?php echo I18N::translate('Which records linked to this source should be added?'); ?>
-						<input type="hidden" name="id" value="<?php echo $clip_ctrl->id; ?>">
-						<input type="hidden" name="type" value="<?php echo $clip_ctrl->type; ?>">
-						<input type="hidden" name="action" value="add1"></td></tr>
-						<tr><td class="optionbox"><input type="radio" name="others" checked value="none"><?php echo I18N::translate('Add just this source.'); ?></td></tr>
-						<tr><td class="optionbox"><input type="radio" name="others" value="linked"><?php echo I18N::translate('Add this source and families/individuals linked to it.'); ?></td></tr>
-						<tr><td class="topbottombar"><input type="submit" value="<?php echo I18N::translate('Continue adding'); ?>">
+						<thead>
+							<tr>
+								<td class="topbottombar">
+									<?php echo I18N::translate('Add to the clippings cart'); ?>
+								</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="optionbox">
+									<label>
+										<input type="radio" name="others" checked value="none">
+										<?php echo $record->getFullName(); ?>
+									</label>
+								</td>
+							</tr>
+							<tr>
+								<td class="optionbox">
+									<label>
+										<input type="radio" name="others" value="linked">
+										<?php echo /* I18N: %s is the name of a source */ I18N::translate('%s and the individuals that reference it.', $record->getFullName()); ?>
+									</label>
+								</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<td class="topbottombar">
+									<input type="submit" value="<?php echo I18N::translate('continue'); ?>">
+								</td>
+							</tr>
+						</tfoot>
 					</table>
-					</form>
+				</form>
 				<?php }
 				}
 
 			if (!$WT_SESSION->cart[$WT_TREE->getTreeId()]) {
 				if ($clip_ctrl->action != 'add') {
-
 					echo I18N::translate('The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple.  Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name.  There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>');
 					?>
 					<form method="get" name="addin" action="module.php">
 					<input type="hidden" name="mod" value="clippings">
 					<input type="hidden" name="mod_action" value="index">
-					<table>
-					<tr>
-						<td colspan="2" class="topbottombar" style="text-align:center; ">
-							<?php echo I18N::translate('Enter an individual, family, or source ID'); ?>
-						</td>
-					</tr>
-					<tr>
-						<td class="optionbox">
-							<input type="hidden" name="action" value="add">
-							<input type="text" data-autocomplete-type="IFSRO" name="id" id="cart_item_id" size="5">
-						</td>
-						<td class="optionbox">
-							<?php echo print_findindi_link('cart_item_id'); ?>
-							<?php echo print_findfamily_link('cart_item_id'); ?>
-							<?php echo print_findsource_link('cart_item_id', ''); ?>
-							<input type="submit" value="<?php echo I18N::translate('Add'); ?>">
-
-						</td>
-					</tr>
-					</table>
+						<table>
+							<thead>
+								<tr>
+									<td colspan="2" class="topbottombar">
+										<?php echo I18N::translate('Add to the clippings cart'); ?>
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="optionbox">
+										<input type="hidden" name="action" value="add">
+										<input type="text" data-autocomplete-type="IFSRO" name="id" id="cart_item_id" size="5">
+									</td>
+									<td class="optionbox">
+										<?php echo print_findindi_link('cart_item_id'); ?>
+										<?php echo print_findfamily_link('cart_item_id'); ?>
+										<?php echo print_findsource_link('cart_item_id', ''); ?>
+										<input type="submit" value="<?php echo I18N::translate('Add'); ?>">
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</form>
 					<?php
 				}
@@ -225,28 +375,31 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 					<br>
 
 					<form method="get" name="addin" action="module.php">
-					<input type="hidden" name="mod" value="clippings">
-					<input type="hidden" name="mod_action" value="index">
-					<table>
-					<tr>
-						<td colspan="2" class="topbottombar" style="text-align:center; ">
-							<?php echo I18N::translate('Enter an individual, family, or source ID'); ?>
-						</td>
-					</tr>
-					<tr>
-						<td class="optionbox">
-							<input type="hidden" name="action" value="add">
-							<input type="text" data-autocomplete-type="IFSRO" name="id" id="cart_item_id" size="8">
-						</td>
-						<td class="optionbox">
-							<?php echo print_findindi_link('cart_item_id'); ?>
-							<?php echo print_findfamily_link('cart_item_id'); ?>
-							<?php echo print_findsource_link('cart_item_id'); ?>
-							<input type="submit" value="<?php echo I18N::translate('Add'); ?>">
-
-						</td>
-					</tr>
-					</table>
+						<input type="hidden" name="mod" value="clippings">
+						<input type="hidden" name="mod_action" value="index">
+						<table>
+							<thead>
+								<tr>
+									<td colspan="2" class="topbottombar" style="text-align:center; ">
+										<?php echo I18N::translate('Add to the clippings cart'); ?>
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="optionbox">
+										<input type="hidden" name="action" value="add">
+										<input type="text" data-autocomplete-type="IFSRO" name="id" id="cart_item_id" size="8">
+									</td>
+									<td class="optionbox">
+										<?php echo print_findindi_link('cart_item_id'); ?>
+										<?php echo print_findfamily_link('cart_item_id'); ?>
+										<?php echo print_findsource_link('cart_item_id'); ?>
+										<input type="submit" value="<?php echo I18N::translate('Add'); ?>">
+									</td>
+								</tr>
+								</tbody>
+						</table>
 					</form>
 
 
@@ -318,7 +471,7 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 			$menu->addSubmenu($submenu);
 		}
 		if (!empty($controller->record) && $controller->record->canShow()) {
-			$submenu = new Menu(I18N::translate('Add to clippings cart'), 'module.php?mod=clippings&amp;mod_action=index&amp;action=add&amp;id=' . $controller->record->getXref(), 'menu-clippingsadd');
+			$submenu = new Menu(I18N::translate('Add to the clippings cart'), 'module.php?mod=clippings&amp;mod_action=index&amp;action=add&amp;id=' . $controller->record->getXref(), 'menu-clippingsadd');
 			$menu->addSubmenu($submenu);
 		}
 		return $menu;
@@ -470,80 +623,6 @@ class ClippingsCartModule extends Module implements ModuleMenuInterface, ModuleS
 		$record = Individual::getInstance($pid, $WT_TREE);
 		if ($record && !array_key_exists($record->getXref(), $WT_SESSION->cart[$WT_TREE->getTreeId()])) {
 			$out .= '<br><a href="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax&amp;sb_action=clippings&amp;add=' . $pid . '&amp;pid=' . $pid . '" class="add_cart"><i class="icon-clippings"></i> ' . I18N::translate('Add %s to the clippings cart', $record->getFullName()) . '</a>';
-		}
-		return $out;
-	}
-
-	/**
-	 * @param Individual $person
-	 *
-	 * @return string
-	 */
-	public function askAddOptions(Individual $person) {
-		$MAX_PEDIGREE_GENERATIONS = $person->getTree()->getPreference('MAX_PEDIGREE_GENERATIONS');
-
-		$out = '<h3><a href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a></h3>';
-		$out .= '<script>';
-		$out .= 'function radAncestors(elementid) {var radFamilies=document.getElementById(elementid);radFamilies.checked=true;}
-			function continueAjax(frm) {
-				var others = jQuery("input[name=\'others\']:checked").val();
-				var link = "module.php?mod='.$this->getName() . '&mod_action=ajax&sb_action=clippings&add1="+frm.pid.value+"&others="+others+"&level1="+frm.level1.value+"&level2="+frm.level2.value+"&level3="+frm.level3.value;
-				jQuery("#sb_clippings_content").load(link);
-			}';
-		$out .= '</script>';
-		if ($person instanceof Family) {
-			$out .= '<form action="module.php" method="get" onsubmit="continueAjax(this); return false;">
-			<input type="hidden" name="mod" value="clippings">
-			<input type="hidden" name="mod_action" value="index">
-			<table>
-			<tr><td class="topbottombar">' . I18N::translate('Which other links from this family would you like to add?') . '
-			<input type="hidden" name="pid" value="'.$person->getXref() . '">
-			<input type="hidden" name="type" value="'.$person::RECORD_TYPE . '">
-			<input type="hidden" name="action" value="add1"></td></tr>
-			<tr><td class="optionbox"><input type="radio" name="others" checked value="none">'. I18N::translate('Add just this family record.') . '</td></tr>
-			<tr><td class="optionbox"><input type="radio" name="others" value="parents">'. I18N::translate('Add parents’ records together with this family record.') . '</td></tr>
-			<tr><td class="optionbox"><input type="radio" name="others" value="members">'. I18N::translate('Add parents’ and children’s records together with this family record.') . '</td></tr>
-			<tr><td class="optionbox"><input type="radio" name="others" value="descendants">'. I18N::translate('Add parents’ and all descendants’ records together with this family record.') . '</td></tr>
-			<tr><td class="topbottombar"><input type="submit" value="'. I18N::translate('Continue adding') . '"></td></tr>
-			</table>
-			</form>';
-		} elseif ($person instanceof Individual) {
-			$out .= '<form action="module.php" method="get" onsubmit="continueAjax(this); return false;">
-			<input type="hidden" name="mod" value="clippings">
-			<input type="hidden" name="mod_action" value="index">
-		' . I18N::translate('Which links from this individual would you also like to add?') . '
-		<input type="hidden" name="pid" value="'.$person->getXref() . '">
-		<input type="hidden" name="type" value="'.$person::RECORD_TYPE . '">
-		<input type="hidden" name="action" value="add1">
-		<ul>
-		<li><input type="radio" name="others" checked value="none">'. I18N::translate('Add just this individual.') . '</li>
-		<li><input type="radio" name="others" value="parents">'. I18N::translate('Add this individual, his parents, and siblings.') . '</li>
-		<li><input type="radio" name="others" value="ancestors" id="ancestors">'. I18N::translate('Add this individual and his direct line ancestors.') . '<br>
-				'. I18N::translate('Number of generations') . '<input type="text" size="4" name="level1" value="' . $MAX_PEDIGREE_GENERATIONS . '" onfocus="radAncestors(\'ancestors\');"></li>
-		<li><input type="radio" name="others" value="ancestorsfamilies" id="ancestorsfamilies">'. I18N::translate('Add this individual, his direct line ancestors, and their families.') . '<br>
-				'. I18N::translate('Number of generations') . ' <input type="text" size="4" name="level2" value="' . $MAX_PEDIGREE_GENERATIONS . '" onfocus="radAncestors(\'ancestorsfamilies\');"></li>
-		<li><input type="radio" name="others" value="members">'. I18N::translate('Add this individual, his spouse, and children.') . '</li>
-		<li><input type="radio" name="others" value="descendants" id="descendants">'. I18N::translate('Add this individual, his spouse, and all descendants.') . '<br >
-				'. I18N::translate('Number of generations') . ' <input type="text" size="4" name="level3" value="' . $MAX_PEDIGREE_GENERATIONS . '" onfocus="radAncestors(\'descendants\');"></li>
-		</ul>
-		<input type="submit" value="'. I18N::translate('Continue adding') . '">
-		</form>';
-		} else if ($person instanceof Source) {
-			$out .= '<form action="module.php" method="get" onsubmit="continueAjax(this); return false;">
-		<input type="hidden" name="mod" value="clippings">
-		<input type="hidden" name="mod_action" value="index">
-		<table>
-		<tr><td class="topbottombar">' . I18N::translate('Which records linked to this source should be added?') . '
-		<input type="hidden" name="pid" value="'.$person->getXref() . '">
-		<input type="hidden" name="type" value="'.$person::RECORD_TYPE . '">
-		<input type="hidden" name="action" value="add1"></td></tr>
-		<tr><td class="optionbox"><input type="radio" name="others" checked value="none">'. I18N::translate('Add just this source.') . '</td></tr>
-		<tr><td class="optionbox"><input type="radio" name="others" value="linked">'. I18N::translate('Add this source and families/individuals linked to it.') . '</td></tr>
-		<tr><td class="topbottombar"><input type="submit" value="'. I18N::translate('Continue adding') . '">
-		</table>
-		</form>';
-		} else {
-			return $this->getSidebarContent();
 		}
 		return $out;
 	}

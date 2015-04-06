@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Class CkeditorModule
  */
-class CkeditorModule extends Module {
+class CkeditorModule extends AbstractModule {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module.  CKEditor is a trademark.  Do not translate it?  http://ckeditor.com */ I18N::translate('CKEditor™');

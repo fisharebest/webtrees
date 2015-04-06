@@ -2045,10 +2045,11 @@ dd .deletelink {
 	float: left;
 }
 
-.hit-counter {
+.odometer {
+	font-family: courier, mono-space;
+	font-weight: bold;
 	background: #000;
 	color: #fff;
-	font-weight: bold;
 }
 
 /* ======= General sprite ==== */
@@ -2790,7 +2791,6 @@ dd .deletelink {
 	font-weight: bold;
 	padding: 5px 10px 0;
 	width: 240px;
-	white-space: nowrap;
 }
 
 #edituser-table .value {
@@ -3472,6 +3472,11 @@ table.table-census-assistant th {
 	border-collapse: collapse;
 	padding:         0;
 	width:           100%;
+}
+
+/*-- relationship  --*/
+.rel-background {
+	background-color: #fff;
 }
 
 /*-- timeline  --*/
@@ -4287,11 +4292,11 @@ header h1 {
 	font-weight: 900;
 }
 
-#menu-language li {
+.menu-language li {
 	text-align: left; /* The language menu is always LTR, even on RTL pages */
 }
 
-#menu-theme li {
+.menu-theme li {
 	text-align: left; /* The theme menu is always LTR, even on RTL pages */
 }
 
@@ -4424,22 +4429,6 @@ footer {
 
 .powered-by-webtrees:after {
 	content: url(images/powered-by-webtrees.png);
-}
-
-#link_change_blocks {
-	clear: both;
-	margin: 0 auto;
-	padding: 25px 0 0;
-	text-align: center;
-	width: 400px;
-}
-
-#link_change_blocks span {
-	padding: 0 50px;
-}
-
-#link_change_blocks span span {
-	padding: 0 3px;
 }
 
 /* ====== End Theme Footer ===== */

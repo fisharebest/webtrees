@@ -139,7 +139,7 @@ case 'DATE':
 		$date = strip_tags($date->display(false, null, false));
 	}
 	// These shortcuts work differently for different languages
-	switch (preg_replace('/[^DMY]/', '', str_replace(array('J', 'F'), array('D', 'M'), strtoupper($DATE_FORMAT)))) {
+	switch (preg_replace('/[^DMY]/', '', str_replace(array('J', 'F'), array('D', 'M'), I18N::dateFormat()))) {
 	case 'YMD':
 		$example1 = '11/12/1913'; // Note: we ignore the DMY order if it doesn't make sense.
 		$example2 = '03/02/01';
@@ -160,86 +160,81 @@ case 'DATE':
 		'<p>' . I18N::translate('Dates are stored using English abbreviations and keywords.  Shortcuts are available as alternatives to these abbreviations and keywords.') . '</p>' .
 		'<table border="1">' .
 		'<tr><th>' . I18N::translate('Date') . '</th><th>' . I18N::translate('Format') . '</th><th>' . I18N::translate('Shortcut') . '</th></tr>' .
-		'<tr><td>' . $dates['1900'] . '</td><td><tt dir="ltr" lang="en">1900</tt></td><td></td></tr>' .
-		'<tr><td>' . $dates['JAN 1900'] . '<br>' . $dates['FEB 1900'] . '<br>' . $dates['MAR 1900'] . '<br>' . $dates['APR 1900'] . '<br>' . $dates['MAY 1900'] . '<br>' . $dates['JUN 1900'] . '<br>' . $dates['JUL 1900'] . '<br>' . $dates['AUG 1900'] . '<br>' . $dates['SEP 1900'] . '<br>' . $dates['OCT 1900'] . '<br>' . $dates['NOV 1900'] . '<br>' . $dates['DEC 1900'] . '</td><td><tt dir="ltr" lang="en">JAN 1900<br>FEB 1900<br>MAR 1900<br>APR 1900<br>MAY 1900<br>JUN 1900<br>JUL 1900<br>AUG 1900<br>SEP 1900<br>OCT 1900<br>NOV 1900<br>DEC 1900</tt></td><td></td></tr>' .
-		'<tr><td>' . $dates['11 DEC 1913'] . '</td><td><tt dir="ltr" lang="en">11 DEC 1913</tt></td><td><tt dir="ltr" lang="en">' . $example1 . '</tt></td></tr>' .
-		'<tr><td>' . $dates['01 FEB 2003'] . '</td><td><tt dir="ltr" lang="en">01 FEB 2003</tt></td><td><tt dir="ltr" lang="en">' . $example2 . '</tt></td></tr>' .
-		'<tr><td>' . $dates['ABT 1900'] . '</td><td><tt dir="ltr" lang="en">ABT 1900</tt></td><td><tt dir="ltr" lang="en">~1900</tt></td></tr>' .
-		'<tr><td>' . $dates['EST 1900'] . '</td><td><tt dir="ltr" lang="en">EST 1900</tt></td><td><tt dir="ltr" lang="en">*1900</tt></td></tr>' .
-		'<tr><td>' . $dates['CAL 1900'] . '</td><td><tt dir="ltr" lang="en">CAL 1900</tt></td><td><tt dir="ltr" lang="en">#1900</tt></td></tr>' .
-		'<tr><td>' . $dates['INT 1900 (...)'] . '</td><td><tt dir="ltr" lang="en">INT 1900 (...)</tt></td><td></td></tr>' .
+		'<tr><td>' . $dates['1900'] . '</td><td><kbd dir="ltr" lang="en">1900</kbd></td><td></td></tr>' .
+		'<tr><td>' . $dates['JAN 1900'] . '<br>' . $dates['FEB 1900'] . '<br>' . $dates['MAR 1900'] . '<br>' . $dates['APR 1900'] . '<br>' . $dates['MAY 1900'] . '<br>' . $dates['JUN 1900'] . '<br>' . $dates['JUL 1900'] . '<br>' . $dates['AUG 1900'] . '<br>' . $dates['SEP 1900'] . '<br>' . $dates['OCT 1900'] . '<br>' . $dates['NOV 1900'] . '<br>' . $dates['DEC 1900'] . '</td><td><kbd dir="ltr" lang="en">JAN 1900<br>FEB 1900<br>MAR 1900<br>APR 1900<br>MAY 1900<br>JUN 1900<br>JUL 1900<br>AUG 1900<br>SEP 1900<br>OCT 1900<br>NOV 1900<br>DEC 1900</kbd></td><td></td></tr>' .
+		'<tr><td>' . $dates['11 DEC 1913'] . '</td><td><kbd dir="ltr" lang="en">11 DEC 1913</kbd></td><td><kbd dir="ltr" lang="en">' . $example1 . '</kbd></td></tr>' .
+		'<tr><td>' . $dates['01 FEB 2003'] . '</td><td><kbd dir="ltr" lang="en">01 FEB 2003</kbd></td><td><kbd dir="ltr" lang="en">' . $example2 . '</kbd></td></tr>' .
+		'<tr><td>' . $dates['ABT 1900'] . '</td><td><kbd dir="ltr" lang="en">ABT 1900</kbd></td><td><kbd dir="ltr" lang="en">~1900</kbd></td></tr>' .
+		'<tr><td>' . $dates['EST 1900'] . '</td><td><kbd dir="ltr" lang="en">EST 1900</kbd></td><td><kbd dir="ltr" lang="en">*1900</kbd></td></tr>' .
+		'<tr><td>' . $dates['CAL 1900'] . '</td><td><kbd dir="ltr" lang="en">CAL 1900</kbd></td><td><kbd dir="ltr" lang="en">#1900</kbd></td></tr>' .
+		'<tr><td>' . $dates['INT 1900 (...)'] . '</td><td><kbd dir="ltr" lang="en">INT 1900 (...)</kbd></td><td></td></tr>' .
 		'</table>' .
 		'<p>' . I18N::translate('Date ranges are used to indicate that an event, such as a birth, happened on an unknown date within a possible range.') . '</p>' .
 		'<table border="1">' .
 		'<tr><th>' . I18N::translate('Date range') . '</th><th>' . I18N::translate('Format') . '</th><th>' . I18N::translate('Shortcut') . '</th></tr>' .
-		'<tr><td>' . $dates['BET 1900 AND 1910'] . '</td><td><tt dir="ltr" lang="en">BET 1900 AND 1910</tt></td><td><tt dir="ltr" lang="en">1900-1910</tt></td></tr>' .
-		'<tr><td>' . $dates['AFT 1900'] . '</td><td><tt dir="ltr" lang="en">AFT 1900</tt></td><td><tt dir="ltr" lang="en">&gt;1900</tt></td></tr>' .
-		'<tr><td>' . $dates['BEF 1910'] . '</td><td><tt dir="ltr" lang="en">BEF 1910</tt></td><td><tt dir="ltr" lang="en">&lt;1910</tt></td></tr>' .
-		'<tr><td>' . $dates['BET JAN 1900 AND MAR 1900'] . '</td><td><tt dir="ltr" lang="en">BET JAN 1900 AND MAR 1900</tt></td><td><tt dir="ltr" lang="en">Q1 1900</tt></td></tr>' .
-		'<tr><td>' . $dates['BET APR 1900 AND JUN 1900'] . '</td><td><tt dir="ltr" lang="en">BET APR 1900 AND JUN 1900</tt></td><td><tt dir="ltr" lang="en">Q2 1900</tt></td></tr>' .
-		'<tr><td>' . $dates['BET JUL 1900 AND SEP 1900'] . '</td><td><tt dir="ltr" lang="en">BET JUL 1900 AND SEP 1900</tt></td><td><tt dir="ltr" lang="en">Q3 1900</tt></td></tr>' .
-		'<tr><td>' . $dates['BET OCT 1900 AND DEC 1900'] . '</td><td><tt dir="ltr" lang="en">BET OCT 1900 AND DEC 1900</tt></td><td><tt dir="ltr" lang="en">Q4 1900</tt></td></tr>' .
+		'<tr><td>' . $dates['BET 1900 AND 1910'] . '</td><td><kbd dir="ltr" lang="en">BET 1900 AND 1910</kbd></td><td><kbd dir="ltr" lang="en">1900-1910</kbd></td></tr>' .
+		'<tr><td>' . $dates['AFT 1900'] . '</td><td><kbd dir="ltr" lang="en">AFT 1900</kbd></td><td><kbd dir="ltr" lang="en">&gt;1900</kbd></td></tr>' .
+		'<tr><td>' . $dates['BEF 1910'] . '</td><td><kbd dir="ltr" lang="en">BEF 1910</kbd></td><td><kbd dir="ltr" lang="en">&lt;1910</kbd></td></tr>' .
+		'<tr><td>' . $dates['BET JAN 1900 AND MAR 1900'] . '</td><td><kbd dir="ltr" lang="en">BET JAN 1900 AND MAR 1900</kbd></td><td><kbd dir="ltr" lang="en">Q1 1900</kbd></td></tr>' .
+		'<tr><td>' . $dates['BET APR 1900 AND JUN 1900'] . '</td><td><kbd dir="ltr" lang="en">BET APR 1900 AND JUN 1900</kbd></td><td><kbd dir="ltr" lang="en">Q2 1900</kbd></td></tr>' .
+		'<tr><td>' . $dates['BET JUL 1900 AND SEP 1900'] . '</td><td><kbd dir="ltr" lang="en">BET JUL 1900 AND SEP 1900</kbd></td><td><kbd dir="ltr" lang="en">Q3 1900</kbd></td></tr>' .
+		'<tr><td>' . $dates['BET OCT 1900 AND DEC 1900'] . '</td><td><kbd dir="ltr" lang="en">BET OCT 1900 AND DEC 1900</kbd></td><td><kbd dir="ltr" lang="en">Q4 1900</kbd></td></tr>' .
 		'</table>' .
 		'<p>' . I18N::translate('Date periods are used to indicate that a fact, such as an occupation, continued for a period of time.') . '</p>' .
 		'<table border="1">' .
 		'<tr><th>' . I18N::translate('Date period') . '</th><th>' . I18N::translate('Format') . '</th><th>' . I18N::translate('Shortcut') . '</th></tr>' .
-		'<tr><td>' . $dates['FROM 1900 TO 1910'] . '</td><td><tt dir="ltr" lang="en">FROM 1900 TO 1910</tt></td><td><tt dir="ltr" lang="en">1900~1910</tt></td></tr>' .
-		'<tr><td>' . $dates['FROM 1900'] . '</td><td><tt dir="ltr" lang="en">FROM 1900</tt></td><td><tt dir="ltr" lang="en">1900-</tt></td></tr>' .
-		'<tr><td>' . $dates['TO 1910'] . '</td><td><tt dir="ltr" lang="en">TO 1910</tt></td><td><tt dir="ltr" lang="en">-1900</tt></td></tr>' .
+		'<tr><td>' . $dates['FROM 1900 TO 1910'] . '</td><td><kbd dir="ltr" lang="en">FROM 1900 TO 1910</kbd></td><td><kbd dir="ltr" lang="en">1900~1910</kbd></td></tr>' .
+		'<tr><td>' . $dates['FROM 1900'] . '</td><td><kbd dir="ltr" lang="en">FROM 1900</kbd></td><td><kbd dir="ltr" lang="en">1900-</kbd></td></tr>' .
+		'<tr><td>' . $dates['TO 1910'] . '</td><td><kbd dir="ltr" lang="en">TO 1910</kbd></td><td><kbd dir="ltr" lang="en">-1900</kbd></td></tr>' .
 		'</table>' .
 		'<p>' . I18N::translate('Simple dates are assumed to be in the gregorian calendar.  To specify a date in another calendar, add a keyword before the date.  This keyword is optional if the month or year format make the date unambiguous.') . '</p>' .
 		'<table border="1">' .
 		'<tr><th>' . I18N::translate('Date') . '</th><th>' . I18N::translate('Format') . '</th></tr>' .
 		'<tr><td colspan="2" align="center">' . I18N::translate('Julian') . '</td></tr>' .
-		'<tr><td>' . $dates['@#DJULIAN@ 14 JAN 1700'] . '</td><td><tt dir="ltr" lang="en">@#DJULIAN@ 14 JAN 1700</tt></td></tr>' .
-		'<tr><td>' . $dates['@#DJULIAN@ 44 B.C.'] . '</td><td><tt dir="ltr" lang="en">@#DJULIAN@ 44 B.C.</tt></td></tr>' .
-		'<tr><td>' . $dates['@#DJULIAN@ 20 FEB 1742/43'] . '</td><td><tt dir="ltr" lang="en">@#DJULIAN@ 20 FEB 1742/43</tt></td></tr>' .
-		'<tr><td>' . $dates['BET @#DJULIAN@ 01 SEP 1752 AND @#DGREGORIAN@ 30 SEP 1752'] . '</td><td><tt dir="ltr" lang="en">BET @#DJULIAN@ 01 SEP 1752 AND @#DGREGORIAN@ 30 SEP 1752</tt></td></tr>' .
+		'<tr><td>' . $dates['@#DJULIAN@ 14 JAN 1700'] . '</td><td><kbd dir="ltr" lang="en">@#DJULIAN@ 14 JAN 1700</kbd></td></tr>' .
+		'<tr><td>' . $dates['@#DJULIAN@ 44 B.C.'] . '</td><td><kbd dir="ltr" lang="en">@#DJULIAN@ 44 B.C.</kbd></td></tr>' .
+		'<tr><td>' . $dates['@#DJULIAN@ 20 FEB 1742/43'] . '</td><td><kbd dir="ltr" lang="en">@#DJULIAN@ 20 FEB 1742/43</kbd></td></tr>' .
+		'<tr><td>' . $dates['BET @#DJULIAN@ 01 SEP 1752 AND @#DGREGORIAN@ 30 SEP 1752'] . '</td><td><kbd dir="ltr" lang="en">BET @#DJULIAN@ 01 SEP 1752 AND @#DGREGORIAN@ 30 SEP 1752</kbd></td></tr>' .
 		'<tr><td colspan="2" align="center">' . I18N::translate('Jewish') . '</td></tr>' .
-		'<tr><td>' . $dates['@#DHEBREW@ 5481'] . '</td><td><tt dir="ltr" lang="en">@#DHEBREW@ 5481</tt></td></tr>' .
-		'<tr><td>' . $dates['@#DHEBREW@ TSH 5481'] . '</td><td><tt dir="ltr" lang="en">@#DHEBREW@ TSH 5481</tt></td></tr>' .
-		'<tr><td>' . $dates['ABT @#DHEBREW@ CSH 5481'] . '</td><td><tt dir="ltr" lang="en">ABT @#DHEBREW@ CSH 5481</tt></td></tr>' .
-		'<tr><td>' . $dates['BET @#DHEBREW@ KSL 5481 AND @#DHEBREW@ TVT 5481'] . '</td><td><tt dir="ltr" lang="en">BET @#DHEBREW@ KSL 5481 AND @#DHEBREW@ TVT 5481</tt></td></tr>' .
-		'<tr><td>' . $dates['FROM @#DHEBREW@ SHV 5481 TO @#DHEBREW@ ADR 5481'] . '</td><td><tt dir="ltr" lang="en">FROM @#DHEBREW@ SHV 5481 TO @#DHEBREW@ ADR 5481</tt></td></tr>' .
-		'<tr><td>' . $dates['AFT @#DHEBREW@ ADR 5481'] . '</td><td><tt dir="ltr" lang="en">AFT @#DHEBREW@ ADR 5481</tt></td></tr>' .
-		'<tr><td>' . $dates['AFT @#DHEBREW@ ADS 5480'] . '</td><td><tt dir="ltr" lang="en">AFT @#DHEBREW@ ADS 5480</tt></td></tr>' .
-		'<tr><td>' . $dates['BEF @#DHEBREW@ NSN 5481'] . '</td><td><tt dir="ltr" lang="en">BEF @#DHEBREW@ NSN 5481</tt></td></tr>' .
-		'<tr><td>' . $dates['ABT @#DHEBREW@ IYR 5481'] . '</td><td><tt dir="ltr" lang="en">ABT @#DHEBREW@ IYR 5481</tt></td></tr>' .
-		'<tr><td>' . $dates['FROM @#DHEBREW@ SVN 5481'] . '</td><td><tt dir="ltr" lang="en">FROM @#DHEBREW@ SVN 5481</tt></td></tr>' .
-		'<tr><td>' . $dates['TO @#DHEBREW@ TMZ 5481'] . '</td><td><tt dir="ltr" lang="en">TO @#DHEBREW@ TMZ 5481</tt></td></tr>' .
-		'<tr><td>' . $dates['EST @#DHEBREW@ AAV 5481'] . '</td><td><tt dir="ltr" lang="en">EST @#DHEBREW@ AAV 5481</tt></td></tr>' .
-		'<tr><td>' . $dates['@#DHEBREW@ 03 ELL 5481'] . '</td><td><tt dir="ltr" lang="en">@#DHEBREW@ 03 ELL 5481</tt></td></tr>' .
+		'<tr><td>' . $dates['@#DHEBREW@ 5481'] . '</td><td><kbd dir="ltr" lang="en">@#DHEBREW@ 5481</kbd></td></tr>' .
+		'<tr><td>' . $dates['@#DHEBREW@ TSH 5481'] . '</td><td><kbd dir="ltr" lang="en">@#DHEBREW@ TSH 5481</kbd></td></tr>' .
+		'<tr><td>' . $dates['ABT @#DHEBREW@ CSH 5481'] . '</td><td><kbd dir="ltr" lang="en">ABT @#DHEBREW@ CSH 5481</kbd></td></tr>' .
+		'<tr><td>' . $dates['BET @#DHEBREW@ KSL 5481 AND @#DHEBREW@ TVT 5481'] . '</td><td><kbd dir="ltr" lang="en">BET @#DHEBREW@ KSL 5481 AND @#DHEBREW@ TVT 5481</kbd></td></tr>' .
+		'<tr><td>' . $dates['FROM @#DHEBREW@ SHV 5481 TO @#DHEBREW@ ADR 5481'] . '</td><td><kbd dir="ltr" lang="en">FROM @#DHEBREW@ SHV 5481 TO @#DHEBREW@ ADR 5481</kbd></td></tr>' .
+		'<tr><td>' . $dates['AFT @#DHEBREW@ ADR 5481'] . '</td><td><kbd dir="ltr" lang="en">AFT @#DHEBREW@ ADR 5481</kbd></td></tr>' .
+		'<tr><td>' . $dates['AFT @#DHEBREW@ ADS 5480'] . '</td><td><kbd dir="ltr" lang="en">AFT @#DHEBREW@ ADS 5480</kbd></td></tr>' .
+		'<tr><td>' . $dates['BEF @#DHEBREW@ NSN 5481'] . '</td><td><kbd dir="ltr" lang="en">BEF @#DHEBREW@ NSN 5481</kbd></td></tr>' .
+		'<tr><td>' . $dates['ABT @#DHEBREW@ IYR 5481'] . '</td><td><kbd dir="ltr" lang="en">ABT @#DHEBREW@ IYR 5481</kbd></td></tr>' .
+		'<tr><td>' . $dates['FROM @#DHEBREW@ SVN 5481'] . '</td><td><kbd dir="ltr" lang="en">FROM @#DHEBREW@ SVN 5481</kbd></td></tr>' .
+		'<tr><td>' . $dates['TO @#DHEBREW@ TMZ 5481'] . '</td><td><kbd dir="ltr" lang="en">TO @#DHEBREW@ TMZ 5481</kbd></td></tr>' .
+		'<tr><td>' . $dates['EST @#DHEBREW@ AAV 5481'] . '</td><td><kbd dir="ltr" lang="en">EST @#DHEBREW@ AAV 5481</kbd></td></tr>' .
+		'<tr><td>' . $dates['@#DHEBREW@ 03 ELL 5481'] . '</td><td><kbd dir="ltr" lang="en">@#DHEBREW@ 03 ELL 5481</kbd></td></tr>' .
 		'<tr><td colspan="2" align="center">' . I18N::translate('Hijri') . '</td></tr>' .
-		'<tr><td>' . $dates['@#DHIJRI@ 1497'] . '</td><td><tt dir="ltr" lang="en">@#DHIJRI@ 1497</tt></td></tr>' .
-		'<tr><td>' . $dates['@#DHIJRI@ MUHAR 1497'] . '</td><td><tt dir="ltr" lang="en">@#DHIJRI@ MUHAR 1497</tt></td></tr>' .
-		'<tr><td>' . $dates['ABT @#DHIJRI@ SAFAR 1497'] . '</td><td><tt dir="ltr" lang="en">ABT @#DHIJRI@ SAFAR 1497</tt></td></tr>' .
-		'<tr><td>' . $dates['BET @#DHIJRI@ RABIA 1497 AND @#DHIJRI@ RABIT 1497'] . '</td><td><tt dir="ltr" lang="en">BET @#DHIJRI@ RABIA 1497 AND @#DHIJRI@ RABIT 1497</tt></td></tr>' .
-		'<tr><td>' . $dates['FROM @#DHIJRI@ JUMAA 1497 TO @#DHIJRI@ JUMAT 1497'] . '</td><td><tt dir="ltr" lang="en">FROM @#DHIJRI@ JUMAA 1497 TO @#DHIJRI@ JUMAT 1497</tt></td></tr>' .
-		'<tr><td>' . $dates['AFT @#DHIJRI@ RAJAB 1497'] . '</td><td><tt dir="ltr" lang="en">AFT @#DHIJRI@ RAJAB 1497</tt></td></tr>' .
-		'<tr><td>' . $dates['BEF @#DHIJRI@ SHAAB 1497'] . '</td><td><tt dir="ltr" lang="en">BEF @#DHIJRI@ SHAAB 1497</tt></td></tr>' .
-		'<tr><td>' . $dates['ABT @#DHIJRI@ RAMAD 1497'] . '</td><td><tt dir="ltr" lang="en">ABT @#DHIJRI@ RAMAD 1497</tt></td></tr>' .
-		'<tr><td>' . $dates['FROM @#DHIJRI@ SHAWW 1497'] . '</td><td><tt dir="ltr" lang="en">FROM @#DHIJRI@ SHAWW 1497</tt></td></tr>' .
-		'<tr><td>' . $dates['TO @#DHIJRI@ DHUAQ 1497'] . '</td><td><tt dir="ltr" lang="en">TO @#DHIJRI@ DHUAQ 1497</tt></td></tr>' .
-		'<tr><td>' . $dates['@#DHIJRI@ 03 DHUAH 1497'] . '</td><td><tt dir="ltr" lang="en">@#DHIJRI@ 03 DHUAH 1497</tt></td></tr>' .
+		'<tr><td>' . $dates['@#DHIJRI@ 1497'] . '</td><td><kbd dir="ltr" lang="en">@#DHIJRI@ 1497</kbd></td></tr>' .
+		'<tr><td>' . $dates['@#DHIJRI@ MUHAR 1497'] . '</td><td><kbd dir="ltr" lang="en">@#DHIJRI@ MUHAR 1497</kbd></td></tr>' .
+		'<tr><td>' . $dates['ABT @#DHIJRI@ SAFAR 1497'] . '</td><td><kbd dir="ltr" lang="en">ABT @#DHIJRI@ SAFAR 1497</kbd></td></tr>' .
+		'<tr><td>' . $dates['BET @#DHIJRI@ RABIA 1497 AND @#DHIJRI@ RABIT 1497'] . '</td><td><kbd dir="ltr" lang="en">BET @#DHIJRI@ RABIA 1497 AND @#DHIJRI@ RABIT 1497</kbd></td></tr>' .
+		'<tr><td>' . $dates['FROM @#DHIJRI@ JUMAA 1497 TO @#DHIJRI@ JUMAT 1497'] . '</td><td><kbd dir="ltr" lang="en">FROM @#DHIJRI@ JUMAA 1497 TO @#DHIJRI@ JUMAT 1497</kbd></td></tr>' .
+		'<tr><td>' . $dates['AFT @#DHIJRI@ RAJAB 1497'] . '</td><td><kbd dir="ltr" lang="en">AFT @#DHIJRI@ RAJAB 1497</kbd></td></tr>' .
+		'<tr><td>' . $dates['BEF @#DHIJRI@ SHAAB 1497'] . '</td><td><kbd dir="ltr" lang="en">BEF @#DHIJRI@ SHAAB 1497</kbd></td></tr>' .
+		'<tr><td>' . $dates['ABT @#DHIJRI@ RAMAD 1497'] . '</td><td><kbd dir="ltr" lang="en">ABT @#DHIJRI@ RAMAD 1497</kbd></td></tr>' .
+		'<tr><td>' . $dates['FROM @#DHIJRI@ SHAWW 1497'] . '</td><td><kbd dir="ltr" lang="en">FROM @#DHIJRI@ SHAWW 1497</kbd></td></tr>' .
+		'<tr><td>' . $dates['TO @#DHIJRI@ DHUAQ 1497'] . '</td><td><kbd dir="ltr" lang="en">TO @#DHIJRI@ DHUAQ 1497</kbd></td></tr>' .
+		'<tr><td>' . $dates['@#DHIJRI@ 03 DHUAH 1497'] . '</td><td><kbd dir="ltr" lang="en">@#DHIJRI@ 03 DHUAH 1497</kbd></td></tr>' .
 		'<tr><td colspan="2" align="center">' . I18N::translate('French') . '</td></tr>' .
-		'<tr><td>' . $dates['@#DFRENCH R@ 12'] . '</td><td><tt dir="ltr" lang="en">@#DFRENCH R@ 12</tt></td></tr>' .
-		'<tr><td>' . $dates['@#DFRENCH R@ VEND 12'] . '</td><td><tt dir="ltr" lang="en">@#DFRENCH R@ VEND 12</tt></td></tr>' .
-		'<tr><td>' . $dates['ABT @#DFRENCH R@ BRUM 12'] . '</td><td><tt dir="ltr" lang="en">ABT @#DFRENCH R@ BRUM 12</tt></td></tr>' .
-		'<tr><td>' . $dates['BET @#DFRENCH R@ FRIM 12 AND @#DFRENCH R@ NIVO 12'] . '</td><td><tt dir="ltr" lang="en">BET @#DFRENCH R@ FRIM 12 AND @#DFRENCH R@ NIVO 12</tt></td></tr>' .
-		'<tr><td>' . $dates['FROM @#DFRENCH R@ PLUV 12 TO @#DFRENCH R@ VENT 12'] . '</td><td><tt dir="ltr" lang="en">FROM @#DFRENCH R@ PLUV 12 TO @#DFRENCH R@ VENT 12</tt></td></tr>' .
-		'<tr><td>' . $dates['AFT @#DFRENCH R@ GERM 12'] . '</td><td><tt dir="ltr" lang="en">AFT @#DFRENCH R@ GERM 12</tt></td></tr>' .
-		'<tr><td>' . $dates['BEF @#DFRENCH R@ FLOR 12'] . '</td><td><tt dir="ltr" lang="en">BEF @#DFRENCH R@ FLOR 12</tt></td></tr>' .
-		'<tr><td>' . $dates['ABT @#DFRENCH R@ PRAI 12'] . '</td><td><tt dir="ltr" lang="en">ABT @#DFRENCH R@ PRAI 12</tt></td></tr>' .
-		'<tr><td>' . $dates['FROM @#DFRENCH R@ MESS 12'] . '</td><td><tt dir="ltr" lang="en">FROM @#DFRENCH R@ MESS 12</tt></td></tr>' .
-		'<tr><td>' . $dates['TO @#DFRENCH R@ THER 12'] . '</td><td><tt dir="ltr" lang="en">TO @#DFRENCH R@ THER 12</tt></td></tr>' .
-		'<tr><td>' . $dates['EST @#DFRENCH R@ FRUC 12'] . '</td><td><tt dir="ltr" lang="en">EST @#DFRENCH R@ FRUC 12</tt></td></tr>' .
-		'<tr><td>' . $dates['@#DFRENCH R@ 03 COMP 12'] . '</td><td><tt dir="ltr" lang="en">@#DFRENCH R@ 03 COMP 12</tt></td></tr>' .
+		'<tr><td>' . $dates['@#DFRENCH R@ 12'] . '</td><td><kbd dir="ltr" lang="en">@#DFRENCH R@ 12</kbd></td></tr>' .
+		'<tr><td>' . $dates['@#DFRENCH R@ VEND 12'] . '</td><td><kbd dir="ltr" lang="en">@#DFRENCH R@ VEND 12</kbd></td></tr>' .
+		'<tr><td>' . $dates['ABT @#DFRENCH R@ BRUM 12'] . '</td><td><kbd dir="ltr" lang="en">ABT @#DFRENCH R@ BRUM 12</kbd></td></tr>' .
+		'<tr><td>' . $dates['BET @#DFRENCH R@ FRIM 12 AND @#DFRENCH R@ NIVO 12'] . '</td><td><kbd dir="ltr" lang="en">BET @#DFRENCH R@ FRIM 12 AND @#DFRENCH R@ NIVO 12</kbd></td></tr>' .
+		'<tr><td>' . $dates['FROM @#DFRENCH R@ PLUV 12 TO @#DFRENCH R@ VENT 12'] . '</td><td><kbd dir="ltr" lang="en">FROM @#DFRENCH R@ PLUV 12 TO @#DFRENCH R@ VENT 12</kbd></td></tr>' .
+		'<tr><td>' . $dates['AFT @#DFRENCH R@ GERM 12'] . '</td><td><kbd dir="ltr" lang="en">AFT @#DFRENCH R@ GERM 12</kbd></td></tr>' .
+		'<tr><td>' . $dates['BEF @#DFRENCH R@ FLOR 12'] . '</td><td><kbd dir="ltr" lang="en">BEF @#DFRENCH R@ FLOR 12</kbd></td></tr>' .
+		'<tr><td>' . $dates['ABT @#DFRENCH R@ PRAI 12'] . '</td><td><kbd dir="ltr" lang="en">ABT @#DFRENCH R@ PRAI 12</kbd></td></tr>' .
+		'<tr><td>' . $dates['FROM @#DFRENCH R@ MESS 12'] . '</td><td><kbd dir="ltr" lang="en">FROM @#DFRENCH R@ MESS 12</kbd></td></tr>' .
+		'<tr><td>' . $dates['TO @#DFRENCH R@ THER 12'] . '</td><td><kbd dir="ltr" lang="en">TO @#DFRENCH R@ THER 12</kbd></td></tr>' .
+		'<tr><td>' . $dates['EST @#DFRENCH R@ FRUC 12'] . '</td><td><kbd dir="ltr" lang="en">EST @#DFRENCH R@ FRUC 12</kbd></td></tr>' .
+		'<tr><td>' . $dates['@#DFRENCH R@ 03 COMP 12'] . '</td><td><kbd dir="ltr" lang="en">@#DFRENCH R@ 03 COMP 12</kbd></td></tr>' .
 		'</table>';
-	break;
-
-case 'FORM':
-	$title = GedcomTag::getLabel('FORM');
-	$text = I18N::translate('This is an optional field that can be used to enter the file format of the media object.  Some genealogy programs may look at this field to determine how to handle the item.  However, since media do not transfer across computer systems very well, this field is not very important.');
 	break;
 
 // This help text is used for all NAME components
@@ -352,11 +347,6 @@ case '_HEB':
 	$text = I18N::translate('In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters.');
 	break;
 
-case '_PRIM':
-	$title = GedcomTag::getLabel('_PRIM');
-	$text = I18N::translate('Use this field to signal that this media item is the highlighted or primary item for the individual it is attached to.  The highlighted image is the one that will be used on charts and on the individual’s page.');
-	break;
-
 	//////////////////////////////////////////////////////////////////////////////
 	// This section contains all the other help items.
 	//////////////////////////////////////////////////////////////////////////////
@@ -364,44 +354,6 @@ case '_PRIM':
 case 'annivers_year_select':
 	$title = I18N::translate('Year input box');
 	$text = I18N::translate('This input box lets you change that year of the calendar.  Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>.  This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned.  Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits.  For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>');
-	break;
-
-case 'block_move_right':
-	$title = I18N::translate('Move list entries');
-	$text = I18N::translate('Use these buttons to move an entry from one list to another.<br><br>Highlight the entry to be moved, and then click a button to move or copy that entry in the direction of the arrow.  Use the <b>&raquo;</b> and <b>&laquo;</b> buttons to move the highlighted entry from the leftmost to the rightmost list or vice-versa.  Use the <b>&gt;</b> and <b>&lt;</b> buttons to move the highlighted entry between the Available blocks list and the list to its right or left.<br><br>The entries in the Available Blocks list do not change, regardless of what you do with the Move right and Move left buttons.  This is so because the same block can appear several times on the same page.  The HTML block is a good example of why you might want to do this.');
-	break;
-
-case 'block_move_up':
-	$title = I18N::translate('Move list entries');
-	$text = I18N::translate('Use these buttons to re-arrange the order of the entries within the list.  The blocks will be printed in the order in which they are listed.<br><br>Highlight the entry to be moved, and then click a button to move that entry up or down.');
-	break;
-
-case 'edit_add_ASSO':
-	$title = I18N::translate('Add a new associate');
-	$text = I18N::translate('Add a new associate allows you to link a fact with an associated individual in the website.  This is one way in which you might record that someone was the godfather of another individual.');
-	break;
-
-case 'edit_add_GEDFact_ASSISTED':
-	$title = I18N::translate('GEDFact shared note assistant');
-	$text = I18N::translate('Clicking the “+” icon will open the GEDFact shared note assistant window.<br>Specific help will be found there.<br><br>When you click the “save” button, the ID of the shared note will be pasted here.');
-	break;
-
-case 'edit_add_NOTE':
-	$title = I18N::translate('Add a new note');
-	$text = I18N::translate('This section allows you to add a new note to the fact that you are currently editing.  Notes are free-form text and will appear in the Fact Details section of the page.');
-	break;
-
-case 'edit_add_SHARED_NOTE':
-	$title = I18N::translate('Add a new shared note');
-	$text = I18N::translate('Shared notes, like regular notes, are free-form text.  Unlike regular notes, each shared note can be linked to more than one individual, family, source, or fact.<br><br>By clicking the appropriate icon, you can establish a link to an existing shared note or create a new shared note and at the same time link to it.  If a link to an existing shared note has already been established, you can also edit that note’s contents.<br><ul><li><b>Link to an existing shared note</b><div style="padding-left:20px;">If you already know the ID number of the desired shared note, you can enter that number directly into the field.<br><br>When you click the <b>Find shared note</b> icon, you will be able to search the text of all existing shared notes and then choose one of them.  The ID number of the chosen note will be entered into the field automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Create a new shared note</b><div style="padding-left:20px;">When you click the <b>Create a new shared note</b> icon, a new window will open.  You can enter the text of the new note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, you will see a message with the ID number of the newly created shared note.  You should click on this message to close the editing window and also copy that new ID number directly into the ID number field.  If you just close the window, the newly created ID number will not be copied automatically.<br><br>You must click the <b>Add</b> button to update the original record.</div><br></li><li><b>Edit an existing shared note</b><div style="padding-left:20px;">When you click the <b>Edit shared note</b> icon, a new window will open.  You can change the text of the existing shared note as you wish.  As with regular notes, you can enter URLs.<br><br>When you click the <b>Save</b> button, the text of the shared note will be updated.  You can close the window and then click the <b>Save</b> button again.<br><br>When you change the text of a shared note, your change will be reflected in all places to which that shared note is currently linked.  New links that you establish after having made your change will also use the updated text.</div></li></ul>');
-	if (Module::getModuleByName('GEDFact_assistant')) {
-		$text .= '<p class="warning">' . I18N::translate('You should avoid using the vertical line character “|” in your notes.  It is used internally by webtrees and may cause your note to display incorrectly.') . '</p>';
-	}
-	break;
-
-case 'edit_add_SOUR':
-	$title = I18N::translate('Add a new source citation');
-	$text = I18N::translate('This section allows you to add a new source citation to the fact that you are currently editing.<br><br>In the Source field you enter the ID for the source.  Click the “Create a new source” link if you need to enter a new source.  In the citation details field you would enter the page number or other information that might help someone find the information in the source.  In the Text field you would enter the text transcription from the source.');
 	break;
 
 case 'edit_edit_raw':

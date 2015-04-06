@@ -1,4 +1,6 @@
-<?php namespace Fisharebest\Localization;
+<?php namespace Fisharebest\Localization\Locale;
+
+use Fisharebest\Localization\Script\ScriptLatn;
 
 /**
  * Class LocaleSrLatn
@@ -14,7 +16,7 @@ class LocaleSrLatn extends LocaleSr {
 	}
 
 	/** {@inheritdoc} */
-	protected function endonymSortable() {
+	public function endonymSortable() {
 		return 'SRPSKI';
 	}
 

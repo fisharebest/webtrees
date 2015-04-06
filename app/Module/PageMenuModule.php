@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 /**
  * Class PageMenuModule
  */
-class PageMenuModule extends Module implements ModuleMenuInterface {
+class PageMenuModule extends AbstractModule implements ModuleMenuInterface {
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module/menu */ I18N::translate('Edit');

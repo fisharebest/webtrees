@@ -25,8 +25,7 @@ $controller
 	->setPageTitle(I18N::translate('Sidebars'));
 
 $action  = Filter::post('action');
-$modules = Module::getInstalledModules('disabled');
-$modules = array_filter($modules, function(Module $x) { return $x instanceof ModuleSidebarInterface; });
+$modules = Module::getAllModulesByComponent('sidebar');
 
 if ($action === 'update_mods' && Filter::checkCsrf()) {
 	foreach ($modules as $module) {

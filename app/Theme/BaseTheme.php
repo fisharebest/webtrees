@@ -31,6 +31,9 @@ abstract class BaseTheme {
 	/** @var string An escaped version of the "ged=XXX" URL parameter */
 	protected $tree_url;
 
+	/** @var integer The number of times this page has been shown */
+	protected $page_views;
+
 	/**
 	 * Custom themes should place their initialization code in the function hookAfterInit(), not in
 	 * the constructor, as all themes get constructed - whether they are used or not.
@@ -366,7 +369,8 @@ abstract class BaseTheme {
 	protected function footerContent() {
 		return
 			$this->formatContactLinks() .
-			$this->logoPoweredBy();
+			$this->logoPoweredBy() .
+			$this->formatPageViews($this->page_views);
 	}
 
 	/**
@@ -395,6 +399,25 @@ abstract class BaseTheme {
 	protected function formatContactLinks() {
 		if ($this->tree) {
 			return '<div class="contact-links">' . $this->contactLinks() . '</div>';
+		} else {
+			return '';
+		}
+	}
+
+	/**
+	 * Add markup to the hit counter.
+	 *
+	 * @param integer $count
+	 *
+	 * @return string
+	 */
+	protected function formatPageViews($count) {
+		if ($count > 0) {
+			return
+				'<div class="page-views">' .
+				I18N::plural('This page has been viewed %s time.', 'This page has been viewed %s times.', $count,
+				'<span class="odometer">' . I18N::digits($count) . '</span>') .
+				'</div>';
 		} else {
 			return '';
 		}
@@ -486,6 +509,9 @@ abstract class BaseTheme {
 	 * @return string
 	 */
 	public function head(PageController $controller) {
+		// Record this now.  By the time we render the footer, $controller no longer exists.
+		$this->page_views = $this->pageViews($controller);
+
 		return
 			'<head>' .
 			$this->headContents($controller) .
@@ -988,6 +1014,21 @@ abstract class BaseTheme {
 	}
 
 	/**
+	 * Generate a menu item to change the blocks on the current (index.php) page.
+	 *
+	 * @return Menu|null
+	 */
+	protected function menuChangeBlocks() {
+		if (WT_SCRIPT_NAME === 'index.php' && Auth::check() && Filter::get('ctype', 'gedcom|user', 'user') === 'user') {
+			return new Menu(I18N::translate('Customize this page'), 'index_edit.php?user_id=' . Auth::id(), 'menu-change-blocks');
+		} elseif (WT_SCRIPT_NAME === 'index.php' && Auth::isManager($this->tree)) {
+			return new Menu(I18N::translate('Customize this page'), 'index_edit.php?gedcom_id=' . $this->tree->getTreeId(), 'menu-change-blocks');
+		} else {
+			return null;
+		}
+	}
+
+	/**
 	 * Generate a menu for each of the different charts.
 	 *
 	 * @param Individual $individual
@@ -999,7 +1040,7 @@ abstract class BaseTheme {
 			// The top level menu is the pedigree chart
 			$menu = $this->menuChartPedigree($individual);
 			$menu->setLabel(I18N::translate('Charts'));
-			$menu->setId('menu-chart');
+			$menu->setClass('menu-chart');
 
 			$submenus = array_filter(array(
 				$this->menuChartAncestors($individual),
@@ -1297,11 +1338,11 @@ abstract class BaseTheme {
 
 		foreach (I18N::activeLocales() as $locale) {
 			$language_tag = $locale->languageTag();
-			$submenu = new Menu($locale->endonym(), get_query_url(array('lang' => $language_tag), '&amp;'), 'menu-language-' . $language_tag);
-			if (WT_LOCALE === $language_tag) {
-				$submenu->addClass('', '', 'active');
-			}
-			$menu->addSubmenu($submenu);
+			$menu->addSubmenu(new Menu(
+				$locale->endonym(),
+				get_query_url(array('lang' => $language_tag), '&amp;'),
+				'menu-language-' . $language_tag . (WT_LOCALE === $language_tag ? ' active' : '')
+			));
 		}
 
 		if (count($menu->getSubmenus()) > 1 && !Auth::isSearchEngine()) {
@@ -1314,7 +1355,7 @@ abstract class BaseTheme {
 	/**
 	 * Create a menu to show lists of individuals, families, sources, etc.
 	 *
-	 * @return Menu|null
+	 * @return Menu
 	 */
 	protected function menuLists() {
 		$menu = new Menu(I18N::translate('Lists'), 'indilist.php?' . $this->tree_url, 'menu-list');
@@ -1518,10 +1559,9 @@ abstract class BaseTheme {
 	/**
 	 * A link to the user's personal home page.
 	 *
-	 * @return Menu|null
+	 * @return Menu
 	 */
-	protected function menuMyPage()
-	{
+	protected function menuMyPage() {
 		return new Menu(I18N::translate('My page'), 'index.php?ctype=user&amp;' . $this->tree_url, 'menu-mypage');
 	}
 
@@ -1535,6 +1575,7 @@ abstract class BaseTheme {
 				$this->menuMyIndividualRecord(),
 				$this->menuMyPedigree(),
 				$this->menuMyAccount(),
+				$this->menuChangeBlocks(),
 				$this->menuControlPanel(),
 			)));
 		} else {
@@ -1637,10 +1678,11 @@ abstract class BaseTheme {
 		if ($this->tree && !Auth::isSearchEngine() && Site::getPreference('ALLOW_USER_THEMES') && $this->tree->getPreference('ALLOW_THEME_DROPDOWN')) {
 			$submenus = array();
 			foreach (Theme::installedThemes() as $theme) {
-				$submenu = new Menu($theme->themeName(), get_query_url(array('theme' => $theme->themeId()), '&amp;'), 'menu-theme-' . $theme->themeId());
-				if ($theme === $this) {
-					$submenu->addClass('', '', 'active');
-				}
+				$submenu = new Menu(
+					$theme->themeName(),
+					get_query_url(array('theme' => $theme->themeId()), '&amp;'),
+					'menu-theme-' . $theme->themeId() . ($theme === $this ? ' active' : '')
+				);
 				$submenus[] = $submenu;
 			}
 
@@ -1741,6 +1783,31 @@ abstract class BaseTheme {
 	 */
 	protected function metaViewport() {
 		return '<meta name="viewport" content="width=device-width, initial-scale=1">';
+	}
+
+	/**
+	 * How many times has the current page been shown?
+	 *
+	 * @param  PageController $controller
+	 *
+	 * @return integer Number of views, or zero for pages that aren't logged.
+	 */
+	protected function pageViews(PageController $controller) {
+		if ($this->tree && $this->tree->getPreference('SHOW_COUNTER')) {
+			if (isset($controller->record) && $controller->record instanceof GedcomRecord) {
+				return HitCounter::countHit($this->tree, WT_SCRIPT_NAME, $controller->record->getXref());
+			} elseif (isset($controller->root) && $controller->root instanceof GedcomRecord) {
+				return HitCounter::countHit($this->tree, WT_SCRIPT_NAME, $controller->root->getXref());
+			} elseif (WT_SCRIPT_NAME === 'index.php') {
+				if (Auth::check() && Filter::get('ctype') !== 'gedcom') {
+					return HitCounter::countHit($this->tree, WT_SCRIPT_NAME, 'user:' . Auth::id());
+				} else {
+					return HitCounter::countHit($this->tree, WT_SCRIPT_NAME, 'gedcom:' . $this->tree->getTreeId());
+				}
+			}
+		}
+
+		return 0;
 	}
 
 	/**
