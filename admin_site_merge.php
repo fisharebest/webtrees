@@ -143,6 +143,9 @@ if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYP
 	)->execute(array($WT_TREE->getTreeId(), $gid2));
 
 	$gedcom = "0 @" . $rec1->getXref() . "@ " . $rec1::RECORD_TYPE;
+	foreach ($facts as $fact_id=>$fact) {
+		$gedcom .= "\n" . $fact->getGedcom();
+	}
 	foreach ($facts1 as $fact_id=>$fact) {
 		if (in_array($fact_id, $keep1)) {
 			$gedcom .= "\n" . $fact->getGedcom();
