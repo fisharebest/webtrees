@@ -219,7 +219,7 @@ $controller->pageHeader();
 						<td>
 							<div class="gedcom-data" dir="ltr"><?php echo Filter::escapeHtml($fact->getGedcom()); ?></div>
 							<?php if ($fact->getTarget()): ?>
-							<a href="<?php echo $fact->getTarget()->getXref(); ?>">
+							<a href="<?php echo $fact->getTarget()->getHtmlUrl(); ?>">
 								<?php echo $fact->getTarget()->getFullName(); ?>
 							</a>
 							<?php endif; ?>
@@ -266,7 +266,7 @@ $controller->pageHeader();
 									<td>
 										<div class="gedcom-data" dir="ltr"><?php echo Filter::escapeHtml($fact->getGedcom()); ?></div>
 										<?php if ($fact->getTarget()): ?>
-											<a href="<?php echo $fact->getTarget()->getXref(); ?>">
+											<a href="<?php echo $fact->getTarget()->getHtmlUrl(); ?>">
 												<?php echo $fact->getTarget()->getFullName(); ?>
 											</a>
 										<?php endif; ?>
@@ -312,7 +312,7 @@ $controller->pageHeader();
 									<td>
 										<div class="gedcom-data" dir="ltr"><?php echo Filter::escapeHtml($fact->getGedcom()); ?></div>
 										<?php if ($fact->getTarget()): ?>
-											<a href="<?php echo $fact->getTarget()->getXref(); ?>">
+											<a href="<?php echo $fact->getTarget()->getHtmlUrl(); ?>">
 												<?php echo $fact->getTarget()->getFullName(); ?>
 											</a>
 										<?php endif; ?>
