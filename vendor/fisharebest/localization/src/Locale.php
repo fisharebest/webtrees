@@ -32,7 +32,7 @@ class Locale {
 	 * @throws \DomainException
 	 */
 	public static function create($code) {
-		$class = __NAMESPACE__ . '\Locale\Locale' . implode(array_map(function ($x) {
+		$class = __NAMESPACE__ . '\Locale\Locale' . implode(array_map(function($x) {
 			return ucfirst(strtolower($x));
 		}, preg_split('/[^a-zA-Z0-9]+/', $code)));
 
@@ -77,6 +77,7 @@ class Locale {
 						return $locale;
 					}
 				} catch (\DomainException $ex) {
+					// An unknown locale?  Ignore it.
 				}
 			}
 		}

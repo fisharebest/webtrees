@@ -69,7 +69,7 @@ class GedcomCodeStat {
 				/* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
 				I18N::translate('Died as a child: exempt');
 		case 'CLEARED':
-			// This status appears in PGV, but not in the GEDCOM 5.5.1 specification.
+			// This status appears in PhpGedView, but not in the GEDCOM 5.5.1 specification.
 			return
 				/* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
 				I18N::translate('Cleared but not yet completed');

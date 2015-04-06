@@ -318,7 +318,7 @@ class SearchController extends PageController {
 		}
 
 		if ($records_updated) {
-			FlashMessages::addMessage(I18N::plural('%s individuals has been updated.', '%s individuals have been updated.', $records_updated, I18N::number($records_updated)));
+			FlashMessages::addMessage(I18N::plural('%s individual has been updated.', '%s individuals have been updated.', $records_updated, I18N::number($records_updated)));
 		}
 
 		$records_updated = 0;

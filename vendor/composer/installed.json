@@ -477,17 +477,17 @@
     },
     {
         "name": "fisharebest/ext-calendar",
-        "version": "1.3.0",
-        "version_normalized": "1.3.0.0",
+        "version": "2.1.0",
+        "version_normalized": "2.1.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/fisharebest/ext-calendar.git",
-            "reference": "1498941b9b83222312bb957b5a425df075421443"
+            "reference": "e34274eb932db010369ebe8c76c6b6a6a2ad14c5"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/fisharebest/ext-calendar/zipball/1498941b9b83222312bb957b5a425df075421443",
-            "reference": "1498941b9b83222312bb957b5a425df075421443",
+            "url": "https://api.github.com/repos/fisharebest/ext-calendar/zipball/e34274eb932db010369ebe8c76c6b6a6a2ad14c5",
+            "reference": "e34274eb932db010369ebe8c76c6b6a6a2ad14c5",
             "shasum": ""
         },
         "require": {
@@ -497,7 +497,7 @@
             "phpunit/phpunit": "*",
             "satooshi/php-coveralls": "*"
         },
-        "time": "2014-10-31 19:49:13",
+        "time": "2015-04-02 20:40:10",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -537,17 +537,17 @@
     },
     {
         "name": "fisharebest/localization",
-        "version": "1.4.0",
-        "version_normalized": "1.4.0.0",
+        "version": "1.4.1",
+        "version_normalized": "1.4.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/fisharebest/localization.git",
-            "reference": "72153e73c7771d61835e00d42f47794417ae53b6"
+            "reference": "6514b2fb91b6d95968d31d008fcc82df63d7d902"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/fisharebest/localization/zipball/72153e73c7771d61835e00d42f47794417ae53b6",
-            "reference": "72153e73c7771d61835e00d42f47794417ae53b6",
+            "url": "https://api.github.com/repos/fisharebest/localization/zipball/6514b2fb91b6d95968d31d008fcc82df63d7d902",
+            "reference": "6514b2fb91b6d95968d31d008fcc82df63d7d902",
             "shasum": ""
         },
         "require": {
@@ -557,7 +557,7 @@
             "phpunit/phpunit": "*",
             "satooshi/php-coveralls": "*"
         },
-        "time": "2015-03-27 22:05:59",
+        "time": "2015-04-06 15:20:23",
         "type": "library",
         "installation-source": "dist",
         "autoload": {

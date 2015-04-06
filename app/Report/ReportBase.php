@@ -924,7 +924,7 @@ function cellEndHandler() {
 function nowStartHandler() {
 	global $currentElement;
 
-	$g = timestamp_to_gedcom_date(WT_CLIENT_TIMESTAMP);
+	$g = timestamp_to_gedcom_date(WT_TIMESTAMP + WT_TIMESTAMP_OFFSET);
 	$currentElement->addText($g->display());
 }
 

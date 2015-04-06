@@ -290,7 +290,7 @@ case 'edit':
 	case 'FAM':
 	case 'INDI':
 		// FAM and INDI records have real facts.  They can take NOTE/SOUR/OBJE/etc.
-		if ($level1type !== 'SEX' && $level1type !== 'NOTE') {
+		if ($level1type !== 'SEX' && $level1type !== 'NOTE' && $level1type !== 'ALIA') {
 			if ($level1type !== 'SOUR') {
 				print_add_layer('SOUR');
 			}
@@ -298,7 +298,7 @@ case 'edit':
 				print_add_layer('OBJE');
 			}
 			print_add_layer('NOTE');
-			print_add_layer('SHARED_NOTE');
+			print_add_layer('SHARED_NOTE', 2, $level1type);
 			if ($level1type !== 'ASSO' && $level1type !== 'NOTE' && $level1type !== 'SOUR') {
 				print_add_layer('ASSO');
 			}
@@ -366,13 +366,13 @@ case 'add':
 	// Genealogical facts (e.g. for INDI and FAM records) can have 2 SOUR/NOTE/OBJE/ASSO/RESN ...
 	if ($level0type == 'INDI' || $level0type == 'FAM') {
 		// ... but not facts which are simply links to other records
-		if ($fact != 'OBJE' && $fact != 'NOTE' && $fact != 'SHARED_NOTE' && $fact != 'OBJE' && $fact != 'REPO' && $fact != 'SOUR' && $fact != 'ASSO') {
+		if ($fact != 'OBJE' && $fact != 'NOTE' && $fact != 'SHARED_NOTE' && $fact != 'REPO' && $fact != 'SOUR' && $fact != 'ASSO' && $fact != 'ALIA') {
 			print_add_layer('SOUR');
 			print_add_layer('OBJE');
 			// Don’t add notes to notes!
 			if ($fact != 'NOTE') {
 				print_add_layer('NOTE');
-				print_add_layer('SHARED_NOTE');
+				print_add_layer('SHARED_NOTE', 2, $fact);
 			}
 			print_add_layer('ASSO');
 			// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
@@ -1245,7 +1245,7 @@ case 'addnewsource':
 				<?php echo keep_chan(); ?>
 			</table>
 				<a href="#"  onclick="return expand_layer('events');"><i id="events_img" class="icon-plus"></i>
-				<?php echo I18N::translate('Associate events with this source'); ?></a><?php echo help_link('edit_SOUR_EVEN'); ?>
+				<?php echo I18N::translate('Associate events with this source'); ?></a>
 				<div id="events" style="display: none;">
 				<table class="facts_table">
 				<tr>

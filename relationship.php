@@ -105,8 +105,12 @@ if ($person1 && $person2) {
 if ($person1 && $person2) {
 	if (I18N::direction() === 'ltr') {
 		$horizontal_arrow = '<br><i class="icon-rarrow"></i>';
+		$diagonal1 = Theme::theme()->parameter('image-dline');
+		$diagonal2 = Theme::theme()->parameter('image-dline2');
 	} else {
 		$horizontal_arrow = '<br><i class="icon-larrow"></i>';
+		$diagonal1 = Theme::theme()->parameter('image-dline2');
+		$diagonal2 = Theme::theme()->parameter('image-dline');
 	}
 	$up_arrow   = ' <i class="icon-uarrow"></i>';
 	$down_arrow = ' <i class="icon-darrow"></i>';
@@ -141,18 +145,18 @@ if ($person1 && $person2) {
 				case 'bro':
 				case 'sis':
 				case 'sib':
-					$table[$x + 1][$y] = '<div class="rel-background" style="background:url(' . Theme::theme()->parameter('image-hline') . ') repeat-x center; width: 65px; text-align: center"><span">' . get_relationship_name_from_path($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . $horizontal_arrow . '</span></div>';
+					$table[$x + 1][$y] = '<div style="background:url(' . Theme::theme()->parameter('image-hline') . ') repeat-x center; width: 64px; text-align: center"><div style="height: 32px;">' . get_relationship_name_from_path($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="height: 32px;">' . $horizontal_arrow . '</div></div>';
 					$x += 2;
 					break;
 				case 'son':
 				case 'dau':
 				case 'chi':
 					if ($n > 2 && preg_match('/fat|mot|par/', $relationships[$n - 2])) {
-						$table[$x + 1][$y - 1] = '<div class="rel-background" style="background:url(' . Theme::theme()->parameter('image-dline2') . '); width: 65px; height: 50px; padding-top: 15px;"><div style="text-align: center; ">' . get_relationship_name_from_path($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . $down_arrow . '</div></div>';
+						$table[$x + 1][$y - 1] = '<div style="background:url(' . $diagonal2 . '); width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: end;">' . get_relationship_name_from_path($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="height: 32px; text-align: start;">' . $down_arrow . '</div></div>';
 						$x += 2;
 					} else {
 						$table[$x][$y - 1] = '<div style="background:url(' . Theme::theme()
-								->parameter('image-vline') . ') repeat-y center; height: 50px; padding-top: 15px;"><div class="rel-background" style="text-align: center;">' . get_relationship_name_from_path($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . $down_arrow . '</div></div>';
+								->parameter('image-vline') . ') repeat-y center; height: 64px; text-align: center;"><div style="display: inline-block; width:50%; line-height: 64px;">' . get_relationship_name_from_path($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="display: inline-block; width:50%; line-height: 64px;">' . $down_arrow . '</div></div>';
 					}
 					$y -= 2;
 					break;
@@ -160,11 +164,11 @@ if ($person1 && $person2) {
 				case 'mot':
 				case 'par':
 					if ($n > 2 && preg_match('/son|dau|chi/', $relationships[$n - 2])) {
-						$table[$x + 1][$y + 1] = '<div class="rel-background" style="background:url(' . Theme::theme()->parameter('image-dline') . '); width: 65px; height: 65px; padding-top: 15px;"><div style="text-align: center;">' . get_relationship_name_from_path($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . $up_arrow . '</div></div>';
+						$table[$x + 1][$y + 1] = '<div style="background:url(' . $diagonal1 . '); background-position: top right; width: 64px; height: 64px; text-align: center;"><div style="height: 32px; text-align: start;">' . get_relationship_name_from_path($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="height: 32px; text-align: end;">' . $up_arrow . '</div></div>';
 						$x += 2;
 					} else {
 						$table[$x][$y + 1] = '<div style="background:url(' . Theme::theme()
-								->parameter('image-vline') . ') repeat-y center; height: 50px; padding-top: 15px;"><div class="rel-background" style="text-align: center; background:">' . get_relationship_name_from_path($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . $up_arrow . '</div></div>';
+								->parameter('image-vline') . ') repeat-y center; height: 64px; text-align:center; "><div style="display: inline-block; width: 50%; line-height: 32px;">' . get_relationship_name_from_path($relationships[$n], Individual::getInstance($path[$n - 1], $WT_TREE), Individual::getInstance($path[$n + 1], $WT_TREE)) . '</div><div style="display: inline-block; width: 50%; line-height: 32px">' . $up_arrow . '</div></div>';
 					}
 					$y += 2;
 					break;

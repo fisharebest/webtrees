@@ -10,7 +10,7 @@ use Fisharebest\Localization\PluralRule\PluralRuleInterface;
  * @license   GPLv3+
  */
 class Translator {
-	/** @var \ArrayAccess An association of English -> translated messages */
+	/** @var array An association of English -> translated messages */
 	private $translations;
 
 	/** @var PluralRuleInterface */
@@ -22,7 +22,7 @@ class Translator {
 	 * @param array               $translations
 	 * @param PluralRuleInterface $plural_rule
 	 */
-	public function __construct($translations, $plural_rule) {
+	public function __construct(array $translations, $plural_rule) {
 		$this->translations = $translations;
 		$this->plural_rule  = $plural_rule;
 	}

@@ -258,6 +258,15 @@ class I18N {
 	}
 
 	/**
+	 * What is the first day of the week.
+	 *
+	 * @return integer Sunday=0, Monday=1, etc.
+	 */
+	public static function firstDay() {
+		return self::$locale->territory()->firstDay();
+	}
+
+	/**
 	 * Convert a GEDCOM age string into translated_text
 	 *
 	 * NB: The import function will have normalised this, so we don't need
@@ -367,7 +376,7 @@ class I18N {
 					}
 				} catch (\Exception $ex) {
 				}
-				self::$locale = Locale::httpAcceptLanguage($_SESSION, self::installedLocales(), $default_locale);
+				self::$locale = Locale::httpAcceptLanguage($_SERVER, self::installedLocales(), $default_locale);
 			}
 		}
 
@@ -467,15 +476,6 @@ class I18N {
 	}
 
 	/**
-	 * Return the current locale object
-	 *
-	 * @return LocaleInterface
-	 */
-	public static function locale() {
-		return self::$locale;
-	}
-
-	/**
 	 * Translate a number into the local representation.
 	 *
 	 * e.g. 12345.67 becomes
@@ -520,7 +520,7 @@ class I18N {
 	 */
 	public static function plural(/* var_args */) {
 		$args    = func_get_args();
-		$args[0] = self::$translator->translatePlural($args[0], $args[1], $args[2]);
+		$args[0] = self::$translator->translatePlural($args[0], $args[1], (int) $args[2]);
 		unset($args[1], $args[2]);
 
 		return self::substitutePlaceholders($args);
@@ -835,5 +835,23 @@ class I18N {
 		unset($args[1]);
 
 		return self::substitutePlaceholders($args);
+	}
+
+	/**
+	 * What is the last day of the weekend.
+	 *
+	 * @return integer Sunday=0, Monday=1, etc.
+	 */
+	public static function weekendEnd() {
+		return self::$locale->territory()->weekendEnd();
+	}
+
+	/**
+	 * What is the first day of the weekend.
+	 *
+	 * @return integer Sunday=0, Monday=1, etc.
+	 */
+	public static function weekendStart() {
+		return self::$locale->territory()->weekendStart();
 	}
 }

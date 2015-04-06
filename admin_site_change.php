@@ -87,7 +87,7 @@ if ($to) {
 }
 if ($type) {
 	$where .= " AND status = :status";
-	$args['type'] = $type;
+	$args['status'] = $type;
 }
 if ($oldged) {
 	$where .= " AND old_gedcom LIKE CONCAT('%', :old_ged, '%')";

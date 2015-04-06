@@ -19,7 +19,7 @@ namespace Fisharebest\Webtrees;
 // Update the favorite module database schema from version 0 to version 1
 //
 // Version 0: empty database
-// Version 1: create the tables, as per PGV 4.2.1
+// Version 1: create the tables, as per PhpGedView 4.2.1
 Database::exec(
 	"CREATE TABLE IF NOT EXISTS `##favorites` (" .
 	" fv_id       INTEGER AUTO_INCREMENT NOT NULL," .

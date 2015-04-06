@@ -21,7 +21,7 @@ use PDOException;
 // Update the GM module database schema from version 1 to version 2
 //
 // Version 0: empty database
-// Version 1: create the tables, as per PGV 4.2.1
+// Version 1: create the tables, as per PhpGedView 4.2.1
 // Version 2: update the tables to support streetview
 
 // Create all of the tables needed for this module

@@ -22,18 +22,9 @@ use Fisharebest\ExtCalendar\GregorianCalendar;
  * Class GregorianDate - Definitions for the Gregorian calendar
  */
 class GregorianDate extends CalendarDate {
-	const CALENDAR_ESCAPE = '@#DGREGORIAN@';
-	const CAL_START_JD = 2299161; // 15 OCT 1582
-
 	/** {@inheritdoc} */
 	public function __construct($date) {
 		$this->calendar = new GregorianCalendar;
 		parent::__construct($date);
-	}
-
-	/** {@inheritdoc} */
-	public static function calendarName() {
-		return /* I18N: The gregorian calendar */
-			I18N::translate('Gregorian');
 	}
 }

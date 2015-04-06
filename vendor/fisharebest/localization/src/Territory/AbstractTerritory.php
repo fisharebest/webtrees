@@ -9,9 +9,6 @@
  */
 abstract class AbstractTerritory {
 	/** {@inheritdoc} */
-	abstract public function code();
-
-	/** {@inheritdoc} */
 	public function firstDay() {
 		return 1;
 	}

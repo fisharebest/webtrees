@@ -19,7 +19,7 @@ class PluralRuleCentralAtlasTamazight implements PluralRuleInterface {
 	public function plural($number) {
 		$number = abs($number);
 
-		if ($number >=2 && $number <= 10 || $number > 99) {
+		if ($number >= 2 && $number <= 10 || $number > 99) {
 			return 1;
 		} else {
 			return 0;

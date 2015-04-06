@@ -23,9 +23,7 @@ namespace Fisharebest\Webtrees;
  * how it is to be represented....  This class is just a place holder so that
  * webtrees won’t compain if it receives one.
  */
-class RomanDate extends CalendarDate {
-	const CALENDAR_ESCAPE = '@#DROMAN@';
-
+class RomanDate extends JulianDate {
 	/** {@inheritdoc} */
 	protected function formatGedcomYear() {
 		return sprintf('%04dAUC', $this->y);

@@ -25,9 +25,6 @@ use Fisharebest\ExtCalendar\ArabicCalendar;
  * "True" dates are based on local lunar observations, and can be a +/- one day.
  */
 class HijriDate extends CalendarDate {
-	const CALENDAR_ESCAPE = '@#DHIJRI@';
-	const CAL_START_JD = 1948440; // @#DHIJRI@ 1 MUHAR 0001 = @#JULIAN@ 16 JUL 0622
-
 	/** {@inheritdoc} */
 	public static $MONTH_ABBREV = array('' => 0, 'MUHAR' => 1, 'SAFAR' => 2, 'RABIA' => 3, 'RABIT' => 4, 'JUMAA' => 5, 'JUMAT' => 6, 'RAJAB' => 7, 'SHAAB' => 8, 'RAMAD' => 9, 'SHAWW' => 10, 'DHUAQ' => 11, 'DHUAH' => 12);
 
@@ -35,12 +32,6 @@ class HijriDate extends CalendarDate {
 	public function __construct($date) {
 		$this->calendar = new ArabicCalendar;
 		parent::__construct($date);
-	}
-
-	/** {@inheritdoc} */
-	public static function calendarName() {
-		return /* I18N: The Arabic/Hijri calendar */
-			I18N::translate('Hijri');
 	}
 
 	/** {@inheritdoc} */
@@ -69,7 +60,7 @@ class HijriDate extends CalendarDate {
 	}
 
 	/** {@inheritdoc} */
-	static function monthNameGenitiveCase($month_number, $leap_year) {
+	protected function monthNameGenitiveCase($month_number, $leap_year) {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
@@ -94,7 +85,7 @@ class HijriDate extends CalendarDate {
 	}
 
 	/** {@inheritdoc} */
-	static function monthNameLocativeCase($month_number, $leap_year) {
+	protected function monthNameLocativeCase($month_number, $leap_year) {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
@@ -119,7 +110,7 @@ class HijriDate extends CalendarDate {
 	}
 
 	/** {@inheritdoc} */
-	static function monthNameInstrumentalCase($month_number, $leap_year) {
+	protected function monthNameInstrumentalCase($month_number, $leap_year) {
 		static $translated_month_names;
 
 		if ($translated_month_names === null) {
@@ -144,7 +135,7 @@ class HijriDate extends CalendarDate {
 	}
 
 	/** {@inheritdoc} */
-	static function monthNameAbbreviated($month_number, $leap_year) {
+	protected function monthNameAbbreviated($month_number, $leap_year) {
 		return self::monthNameNominativeCase($month_number, $leap_year);
 	}
 }

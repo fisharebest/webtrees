@@ -2860,7 +2860,6 @@ dd .deletelink {
 	font-weight: bold;
 	padding: 5px 10px 0;
 	width: 240px;
-	white-space: nowrap;
 }
 
 #edituser-table .value {
@@ -3541,11 +3540,6 @@ table.table-census-assistant th {
 	border-collapse: collapse;
 	padding:         0;
 	width:           100%;
-}
-
-/*-- relationship  --*/
-.rel-background {
-	background-color: #fff;
 }
 
 /*-- timeline  --*/

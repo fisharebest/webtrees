@@ -92,9 +92,9 @@ function radio_buttons($name, $values, $selected, $extra = '') {
  *
  * @return string
  */
-function edit_field_yes_no($name, $selected = false) {
+function edit_field_yes_no($name, $selected = false, $extra='') {
 	return radio_buttons(
-		$name, array(I18N::translate('no'), I18N::translate('yes')), $selected
+		$name, array(I18N::translate('no'), I18N::translate('yes')), $selected, $extra
 	);
 }
 
@@ -509,16 +509,6 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 	} else {
 		// Not all facts have help text.
 		switch ($fact) {
-		case 'FORM':
-			if ($upperlevel != 'OBJE') {
-				echo help_link($fact);
-			}
-			break;
-		case 'NOTE':
-			if ($islink) {
-				echo help_link('edit_add_SHARED_NOTE');
-			}
-			break;
 		case 'NAME':
 			if ($upperlevel != 'REPO') {
 				echo help_link($fact);
@@ -551,7 +541,6 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 		case 'TIME':
 		case 'WWW':
 		case '_HEB':
-		case '_PRIM':
 			echo help_link($fact);
 			break;
 		}
@@ -619,13 +608,14 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 		if ($value === 'Y') {
 			echo ' selected';
 		}
-		echo '>', I18N::translate('yes'), '</option>';
+		echo '>', /* I18N: option in list box “always use this image” */ I18N::translate('always'), '</option>';
 		echo '<option value="N" ';
 		if ($value === 'N') {
 			echo 'selected';
 		}
-		echo '>', I18N::translate('no'), '</option>';
+		echo '>', /* I18N: option in list box “never use this image” */ I18N::translate('never'), '</option>';
 		echo '</select>';
+		echo '<p class="small text-muted">', I18N::translate('Use this image for charts and on the individual’s page.'), '</p>';
 	} else if ($fact === 'SEX') {
 		echo '<select id="', $element_id, '" name="', $element_name, '"><option value="M" ';
 		if ($value === 'M') {
@@ -679,7 +669,10 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 
 			// Extra markup for specific fact types
 			switch ($fact) {
+			case 'ALIA':
 			case 'ASSO':
+				echo ' data-autocomplete-type="INDI"';
+				break;
 			case '_ASSO':
 				echo ' data-autocomplete-type="ASSO"';
 				break;
@@ -783,6 +776,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 	case 'FAMS':
 		echo print_findfamily_link($element_id);
 		break;
+	case 'ALIA':
 	case 'ASSO':
 	case '_ASSO':
 		echo print_findindi_link($element_id, $element_id . '_description');
@@ -857,7 +851,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 			}
 
 			// Allow the GEDFact_assistant module to create a formatted shared note.
-			if (Module::getModuleByName('GEDFact_assistant')) {
+			if ($upperlevel === 'CENS' && Module::getModuleByName('GEDFact_assistant')) {
 				echo CensusAssistantModule::addNoteWithAssistantLink($element_id, $xref, $action);
 			}
 		}
@@ -880,6 +874,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 	}
 	if ($value && $value != 'new' && $islink) {
 		switch ($fact) {
+		case 'ALIA':
 		case 'ASSO':
 		case '_ASSO':
 			$tmp = Individual::getInstance($value, $WT_TREE);
@@ -928,14 +923,14 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
  *
  * @param string  $tag
  * @param integer $level
+ * @param string  $parent_tag
  */
-function print_add_layer($tag, $level = 2) {
+function print_add_layer($tag, $level = 2, $parent_tag = '') {
 	global $WT_TREE;
 
 	switch ($tag) {
 	case 'SOUR':
 		echo "<a href=\"#\" onclick=\"return expand_layer('newsource');\"><i id=\"newsource_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a new source citation'), '</a>';
-		echo help_link('edit_add_SOUR');
 		echo '<br>';
 		echo '<div id="newsource" style="display: none;">';
 		echo '<table class="facts_table">';
@@ -964,12 +959,10 @@ function print_add_layer($tag, $level = 2) {
 		//-- Add a new ASSOciate
 		if ($tag == 'ASSO') {
 			echo "<a href=\"#\" onclick=\"return expand_layer('newasso');\"><i id=\"newasso_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a new associate'), '</a>';
-			echo help_link('edit_add_ASSO');
 			echo '<br>';
 			echo '<div id="newasso" style="display: none;">';
 		} else {
 			echo "<a href=\"#\" onclick=\"return expand_layer('newasso2');\"><i id=\"newasso2_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a new associate'), '</a>';
-			echo help_link('edit_add_ASSO');
 			echo '<br>';
 			echo '<div id="newasso2" style="display: none;">';
 		}
@@ -988,7 +981,6 @@ function print_add_layer($tag, $level = 2) {
 	case 'NOTE':
 		//-- Retrieve existing note or add new note to fact
 		echo "<a href=\"#\" onclick=\"return expand_layer('newnote');\"><i id=\"newnote_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a new note'), '</a>';
-		echo help_link('edit_add_NOTE');
 		echo '<br>';
 		echo '<div id="newnote" style="display: none;">';
 		echo '<table class="facts_table">';
@@ -999,19 +991,17 @@ function print_add_layer($tag, $level = 2) {
 
 	case 'SHARED_NOTE':
 		echo "<a href=\"#\" onclick=\"return expand_layer('newshared_note');\"><i id=\"newshared_note_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a new shared note'), '</a>';
-		echo help_link('edit_add_SHARED_NOTE');
 		echo '<br>';
 		echo '<div id="newshared_note" style="display: none;">';
 		echo '<table class="facts_table">';
 		// 2 SHARED NOTE
-		add_simple_tag($level . ' SHARED_NOTE');
+		add_simple_tag($level . ' SHARED_NOTE', $parent_tag);
 		echo '</table></div>';
 		break;
 
 	case 'OBJE':
 		if ($WT_TREE->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($WT_TREE)) {
 			echo "<a href=\"#\" onclick=\"return expand_layer('newobje');\"><i id=\"newobje_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a new media object'), '</a>';
-			echo help_link('OBJE');
 			echo '<br>';
 			echo '<div id="newobje" style="display: none;">';
 			echo '<table class="facts_table">';
@@ -1022,7 +1012,6 @@ function print_add_layer($tag, $level = 2) {
 
 	case 'RESN':
 		echo "<a href=\"#\" onclick=\"return expand_layer('newresn');\"><i id=\"newresn_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a new restriction'), '</a>';
-		echo help_link('RESN');
 		echo '<br>';
 		echo '<div id="newresn" style="display: none;">';
 		echo '<table class="facts_table">';
@@ -1434,7 +1423,7 @@ function create_add_form($fact) {
 			$fact .= ' ' . GedcomTag::createUid();
 		}
 		// These new level 1 tags need to be turned into links
-		if (in_array($fact, array('ASSO'))) {
+		if (in_array($fact, array('ALIA', 'ASSO'))) {
 			$fact .= ' @';
 		}
 		if (in_array($fact, $emptyfacts)) {

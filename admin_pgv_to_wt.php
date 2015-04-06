@@ -46,14 +46,13 @@ $controller
 $error    = false;
 $PGV_PATH = Filter::post('PGV_PATH');
 
-// We read these variables from PGV's config.php, and set them here in case any are missing.
+// We read these variables from PhpGedView's config.php, and set them here in case any are missing.
 $INDEX_DIRECTORY                 = '';
 $DBHOST                          = '';
 $DBNAME                          = '';
 $TBLPREFIX                       = '';
 $PGV_SCHEMA_VERSION              = '';
 $USE_REGISTRATION_MODULE         = '';
-$REQUIRE_ADMIN_AUTH_REGISTRATION = '';
 $ALLOW_USER_THEMES               = '';
 $ALLOW_CHANGE_GEDCOM             = '';
 $PGV_SESSION_TIME                = '';
@@ -139,7 +138,7 @@ $controller->pageHeader();
 <?php
 
 if (!$PGV_PATH) {
-	// Look for PGV in some nearby directories
+	// Look for PhpGedView in some nearby directories
 	$pgv_dirs = array();
 	$dir      = opendir(realpath('..'));
 	while (($subdir = readdir($dir)) !== false) {
@@ -210,7 +209,6 @@ Database::exec("DELETE FROM `##user`                WHERE user_id>0");
 echo '<p>', $INDEX_DIRECTORY, 'config.php => wt_site_setting…</p>';
 
 Site::setPreference('USE_REGISTRATION_MODULE', $USE_REGISTRATION_MODULE);
-Site::setPreference('REQUIRE_ADMIN_AUTH_REGISTRATION', $REQUIRE_ADMIN_AUTH_REGISTRATION);
 Site::setPreference('ALLOW_USER_THEMES', $ALLOW_USER_THEMES);
 Site::setPreference('ALLOW_CHANGE_GEDCOM', $ALLOW_CHANGE_GEDCOM);
 Site::setPreference('SESSION_TIME', $PGV_SESSION_TIME);
@@ -270,7 +268,7 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 		"   WHEN 'danish'     THEN 'da'" .
 		"   WHEN 'dutch'      THEN 'nl'" .
 		"   WHEN 'english'    THEN 'en_US'" .
-		"   WHEN 'english-uk' THEN 'en_GB'" . // PGV once had the config for this, but no language files
+		"   WHEN 'english-uk' THEN 'en_GB'" . // PhpGedView once had the config for this, but no language files
 		"   WHEN 'estonian'   THEN 'et'" .
 		"   WHEN 'finnish'    THEN 'fi'" .
 		"   WHEN 'french'     THEN 'fr'" .
@@ -305,7 +303,7 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 	echo '<p>pgv_user => wt_user…</p>';
 
 	try {
-		// "INSERT IGNORE" is needed to allow for PGV users with duplicate emails.  Only the first will be imported.
+		// "INSERT IGNORE" is needed to allow for PhpGedView users with duplicate emails.  Only the first will be imported.
 		Database::prepare(
 			"INSERT IGNORE INTO `##user` (user_id, user_name, real_name, email, password)" .
 			" SELECT user_id, user_name, CONCAT_WS(' ', us1.setting_value, us2.setting_value), us3.setting_value, password FROM `{$DBNAME}`.`{$TBLPREFIX}user`" .
@@ -335,7 +333,7 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 		"  WHEN 'danish'     THEN 'da'" .
 		"  WHEN 'dutch'      THEN 'nl'" .
 		"  WHEN 'english'    THEN 'en_US'" .
-		"  WHEN 'english-uk' THEN 'en_GB'" . // PGV once had the config for this, but no language files
+		"  WHEN 'english-uk' THEN 'en_GB'" . // PhpGedView once had the config for this, but no language files
 		"  WHEN 'estonian'   THEN 'et'" .
 		"  WHEN 'finnish'    THEN 'fi'" .
 		"  WHEN 'french'     THEN 'fr'" .
@@ -359,7 +357,7 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 		"  WHEN 'swedish'    THEN 'sv'" .
 		"  WHEN 'turkish'    THEN 'tr'" .
 		"  WHEN 'vietnamese' THEN 'vi'" .
-		"  ELSE 'en_US'" . // PGV supports other languages that webtrees does not (yet)
+		"  ELSE 'en_US'" .
 		"  END" .
 		" WHEN 'theme' THEN" .
 		"  CASE setting_value" .
@@ -390,7 +388,7 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 	)->execute();
 
 } else {
-	// Copied from PGV's db_schema_11_12
+	// Copied from PhpGedView's db_schema_11_12
 	if (file_exists($INDEX_DIRECTORY . 'gedcoms.php')) {
 		require_once $INDEX_DIRECTORY . 'gedcoms.php';
 		echo '<p>', $INDEX_DIRECTORY . 'gedcoms.php', ' => wt_gedcom…</p>';
@@ -422,7 +420,7 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 	echo '<p>pgv_users => wt_user…</p>';
 
 	try {
-		// "INSERT IGNORE" is needed to allow for PGV users with duplicate emails.  Only the first will be imported.
+		// "INSERT IGNORE" is needed to allow for PhpGedView users with duplicate emails.  Only the first will be imported.
 		Database::prepare(
 			"INSERT IGNORE INTO `##user` (user_name, real_name, email, password)" .
 			" SELECT u_username, CONCAT_WS(' ', u_firstname, u_lastname), u_email, u_password FROM `{$DBNAME}`.`{$TBLPREFIX}users`"
@@ -458,7 +456,7 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 			"  WHEN 'danish'     THEN 'da'" .
 			"  WHEN 'dutch'      THEN 'nl'" .
 			"  WHEN 'english'    THEN 'en_US'" .
-			"  WHEN 'english-uk' THEN 'en_GB'" . // PGV had the config for en_GB, but no language files
+			"  WHEN 'english-uk' THEN 'en_GB'" . // PhpGedView had the config for en_GB, but no language files
 			"  WHEN 'estonian'   THEN 'et'" .
 			"  WHEN 'finnish'    THEN 'fi'" .
 			"  WHEN 'french'     THEN 'fr'" .
@@ -475,7 +473,7 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 			"  WHEN 'spanish'    THEN 'es'" .
 			"  WHEN 'swedish'    THEN 'sv'" .
 			"  WHEN 'turkish'    THEN 'tr'" .
-			"  ELSE 'en_US'" . // PGV supports other languages that webtrees does not (yet)
+			"  ELSE 'en_US'" . // PhpGedView supports other languages that webtrees does not (yet)
 			" END" .
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`" .
 			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)" .
@@ -538,11 +536,11 @@ if ($PGV_SCHEMA_VERSION >= 12) {
 		// a) we've already done it (upgrade)
 		// b) it doesn't exist (new install)
 	}
-	// Some PGV installations store the u_reg_timestamp in the format "2010-03-07 21:41:07"
+	// Some PhpGedView installations store the u_reg_timestamp in the format "2010-03-07 21:41:07"
 	Database::prepare(
 		"UPDATE `##user_setting` SET setting_value=UNIX_TIMESTAMP(setting_value) WHERE setting_name='reg_timestamp' AND setting_value LIKE '____-__-__ __:__:__'"
 	)->execute();
-	// Some PGV installations have empty/invalid values for reg_timestamp
+	// Some PhpGedView installations have empty/invalid values for reg_timestamp
 	Database::prepare(
 		"UPDATE `##user_setting` SET setting_value=CAST(setting_value AS UNSIGNED) WHERE setting_name='reg_timestamp'"
 	)->execute();
@@ -615,7 +613,7 @@ $PRIV_USER = Auth::PRIV_USER;
 $PRIV_NONE = Auth::PRIV_NONE;
 $PRIV_HIDE = Auth::PRIV_HIDE;
 
-// Old versions of PGV used a $GEDCOMS[] array.
+// Old versions of PhpGedView used a $GEDCOMS[] array.
 // New versions used a database.
 $GEDCOMS = Database::prepare(
 	"SELECT" .
@@ -632,7 +630,7 @@ $GEDCOMS = Database::prepare(
 )->fetchAll(PDO::FETCH_ASSOC);
 
 foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
-	// We read these variables from PGV's index/*_conf.php, and set them here in case any are missing.
+	// We read these variables from PhpGedView's index/*_conf.php, and set them here in case any are missing.
 	$ADVANCED_NAME_FACTS          = '';
 	$ADVANCED_PLAC_FACTS          = '';
 	$ALLOW_THEME_DROPDOWN         = '';
@@ -974,7 +972,7 @@ Database::exec(
 );
 
 ////////////////////////////////////////////////////////////////////////////////
-// The PGV blocks don't migrate easily.
+// The PhpGedView blocks don't migrate easily.
 // Just give everybody and every tree default blocks
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -1008,7 +1006,7 @@ if ($PGV_SCHEMA_VERSION >= 13) {
 		" SELECT gedcom_id, page_name, page_parameter, page_count FROM `{$DBNAME}`.`{$TBLPREFIX}hit_counter`"
 	)->execute();
 } else {
-	// Copied from PGV's db_schema_12_13
+	// Copied from PhpGedView's db_schema_12_13
 	$statement = Database::prepare("INSERT IGNORE INTO `##hit_counter` (gedcom_id, page_name, page_parameter, page_count) VALUES (?, ?, ?, ?)");
 
 	foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
@@ -1120,7 +1118,7 @@ try {
 		" SELECT pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon FROM `{$DBNAME}`.`{$TBLPREFIX}placelocation`"
 	)->execute();
 } catch (PDOexception $ex) {
-	// This table will only exist if the gm module is installed in PGV/WT
+	// This table will only exist if the gm module is installed in PhpGedView/WT
 }
 
 ////////////////////////////////////////////////////////////////////////////////

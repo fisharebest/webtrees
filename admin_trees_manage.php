@@ -284,8 +284,8 @@ case 'importform':
 					<?php echo /* I18N: Help text for the “GEDCOM media path” configuration setting. A “path” is something like “C:\Documents\Genealogy\Photos\John_Smith.jpeg” */ I18N::translate('Some genealogy software creates GEDCOM files that contain media filenames with full paths.  These paths will not exist on the web-server.  To allow webtrees to find the file, the first part of the path must be removed.'); ?>
 					<?php echo /* I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names */ I18N::translate('For example, if the GEDCOM file contains %1$s and webtrees expects to find %2$s in the media folder, then you would need to remove %3$s.', '<code>C:\\Documents\\family\\photo.jpeg</code>', '<code>family\\photo.jpeg</code>', '<code>C:\\Documents\\</code>'); ?>
 				</p>
-			</fieldset>
-		</div>
+			</div>
+		</fieldset>
 
 		<div class="form-group">
 			<div class="col-sm-offset-3 col-sm-9">
@@ -652,7 +652,7 @@ $controller->pageHeader();
 		</div>
 	</div>
 	<?php endif; ?>
-	<!-- display link to PGV-WT transfer wizard on first visit to this page, before any GEDCOM is loaded -->
+	<!-- display link to PhpGedView-WT transfer wizard on first visit to this page, before any GEDCOM is loaded -->
 	<?php if (count(Tree::GetAll()) === 0 && count(User::all()) === 1): ?>
 	<div class="panel panel-default">
 		<div class="panel-heading">
@@ -666,20 +666,20 @@ $controller->pageHeader();
 		<div id="pgv-import-wizard" class="panel-collapse collapse">
 			<div class="panel-body">
 				<p>
-					<?php echo I18N::translate('The PGV to webtrees wizard is an automated process to assist administrators make the move from a PGV installation to a new webtrees one.  It will transfer all PGV GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:'); ?>
+					<?php echo I18N::translate('The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one.  It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:'); ?>
 				</p>
 				<ul>
 					<li>
-						<?php echo I18N::translate('webtrees’ database must be on the same server as PGV’s'); ?>
+						<?php echo I18N::translate('webtrees’ database must be on the same server as PhpGedView’s'); ?>
 					</li>
 					<li>
-						<?php echo /* I18N: %s is a number */ I18N::translate('PGV must be version 4.2.3, or any SVN up to #%s', I18N::digits(7101)); ?>
+						<?php echo /* I18N: %s is a number */ I18N::translate('PhpGedView must be version 4.2.3, or any SVN up to #%s', I18N::digits(7101)); ?>
 					</li>
 					<li>
-						<?php echo I18N::translate('All changes in PGV must be accepted'); ?>
+						<?php echo I18N::translate('All changes in PhpGedView must be accepted'); ?>
 					</li>
 					<li>
-						<?php echo I18N::translate('All existing PGV users must have distinct email addresses'); ?>
+						<?php echo I18N::translate('All existing PhpGedView users must have distinct email addresses'); ?>
 					</li>
 				</ul>
 				<p>

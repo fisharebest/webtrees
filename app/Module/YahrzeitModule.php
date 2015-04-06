@@ -260,8 +260,8 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 		echo I18N::translate('Calendar');
 		echo '</td><td class="optionbox">';
 		echo select_edit_control('calendar', array(
-			'jewish'   => JewishDate::calendarName(),
-			'gregorian'=> GregorianDate::calendarName(),
+			'jewish'   => /* I18N: The Hebrew/Jewish calendar */ I18N::translate('Jewish'),
+			'gregorian'=> /* I18N: The gregorian calendar */ I18N::translate('Gregorian'),
 		), null, $calendar, '');
 		echo '</td></tr>';
 

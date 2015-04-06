@@ -21,7 +21,7 @@ use PDOException;
 // Update the database schema from version 29-30
 // - delete an old/unused table
 
-// Originally migrated from PGV, but never used.
+// Originally migrated from PhpGedView, but never used.
 try {
 	Database::exec("DROP TABLE `##ip_address`");
 } catch (PDOException $ex) {
@@ -29,8 +29,9 @@ try {
 }
 
 // No longer used
-Database::exec("DELETE FROM `##user_setting` WHERE setting_name in ('edit_account')");
-Database::exec("DELETE FROM `##gedcom_setting` WHERE setting_name in ('SHOW_STATS')");
+Database::exec("DELETE FROM `##user_setting` WHERE setting_name IN ('editaccount')");
+Database::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('SHOW_STATS')");
+Database::exec("DELETE FROM `##site_setting` WHERE setting_name IN ('REQUIRE_ADMIN_AUTH_REGISTRATION')");
 
 // https://bugs.launchpad.net/webtrees/+bug/1405672
 Database::exec(
@@ -43,6 +44,12 @@ Database::exec(
 	"UPDATE `##block_setting` " .
 	" JOIN `##block` USING (block_id)" .
 	" SET setting_value = REPLACE(setting_value, '#WT_VERSION#', '#webtreesVersion#')" .
+	" WHERE setting_name = 'html' AND module_name = 'html'"
+);
+Database::exec(
+	"UPDATE `##block_setting` " .
+	" JOIN `##block` USING (block_id)" .
+	" SET setting_value = REPLACE(setting_value, '#browserTime24#', '#browserTime#')" .
 	" WHERE setting_name = 'html' AND module_name = 'html'"
 );
 

@@ -2758,7 +2758,6 @@ dd .deletelink {
 	font-weight: bold;
 	padding: 5px 10px 0;
 	width: 240px;
-	white-space: nowrap;
 }
 
 #edituser-table .value {
@@ -3441,11 +3440,6 @@ table.table-census-assistant th {
 	width:           100%;
 }
 
-/*-- relationship  --*/
-.rel-background {
-	background-color: #fff;
-}
-
 /*-- timeline  --*/
 #timeline_chart {
 	position: relative;
@@ -3794,8 +3788,8 @@ a.icon-ldarrow:hover {
 }
 
 .icon-note {
-	width: 20px;
-	height: 20px;
+	width: 22px;
+	height: 22px;
 	background-image: url(images/notes.png);
 }
 

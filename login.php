@@ -42,8 +42,6 @@ if (Auth::check() && $WT_TREE) {
 
 $controller = new PageController;
 
-$REQUIRE_ADMIN_AUTH_REGISTRATION = Site::getPreference('REQUIRE_ADMIN_AUTH_REGISTRATION');
-
 $action          = Filter::post('action');
 $user_realname   = Filter::post('user_realname');
 $user_name       = Filter::post('user_name');
@@ -172,7 +170,7 @@ default:
 
 	echo '</div>';
 	echo '<div id="login-box">
-		<form id="login-form" name="login-form" method="post" action="', WT_LOGIN_URL, '" onsubmit="d=new Date(); this.timediff.value=d.getTimezoneOffset()*60;">
+		<form id="login-form" name="login-form" method="post" action="', WT_LOGIN_URL, '" onsubmit="d=new Date(); this.timediff.value=-60*d.getTimezoneOffset();">
 		<input type="hidden" name="action" value="login">
 		<input type="hidden" name="url" value="', Filter::escapeHtml($url), '">
 		<input type="hidden" name="timediff" value="0">';
@@ -299,7 +297,7 @@ case 'register':
 			$user
 				->setPreference('language', WT_LOCALE)
 				->setPreference('verified', '0')
-				->setPreference('verified_by_admin', !$REQUIRE_ADMIN_AUTH_REGISTRATION)
+				->setPreference('verified_by_admin', 0)
 				->setPreference('reg_timestamp', date('U'))
 				->setPreference('reg_hashcode', md5(Uuid::uuid4()))
 				->setPreference('contactmethod', 'messaging2')
@@ -321,13 +319,9 @@ case 'register':
 				I18N::translate('Real name') . ' ' . $user->getRealNameHtml() . Mail::EOL .
 				I18N::translate('Email address') . ' ' . Filter::escapeHtml($user->getEmail()) . Mail::EOL .
 				I18N::translate('Comments') . ' ' . Filter::escapeHtml($user_comments) . Mail::EOL . Mail::EOL .
-				I18N::translate('The user has been sent an e-mail with the information necessary to confirm the access request.') . Mail::EOL . Mail::EOL;
-			if ($REQUIRE_ADMIN_AUTH_REGISTRATION) {
-				$mail1_body .= I18N::translate('You will be informed by e-mail when this prospective user has confirmed the request.  You can then complete the process by activating the user name.  The new user will not be able to login until you activate the account.');
-			} else {
-				$mail1_body .= I18N::translate('You will be informed by e-mail when this prospective user has confirmed the request.  After this, the user will be able to login without any action on your part.');
-			}
-			$mail1_body .= Mail::auditFooter();
+				I18N::translate('The user has been sent an e-mail with the information necessary to confirm the access request.') . Mail::EOL . Mail::EOL .
+				I18N::translate('You will be informed by e-mail when this prospective user has confirmed the request.  You can then complete the process by activating the user name.  The new user will not be able to login until you activate the account.') .
+				Mail::auditFooter();
 
 			$mail1_subject = /* I18N: %s is a server name/URL */ I18N::translate('New registration at %s', WT_BASE_URL . ' ' . $WT_TREE->title());
 			I18N::init(WT_LOCALE);
@@ -387,14 +381,9 @@ case 'register':
 					->execute(array($user->getEmail(), $WT_REQUEST->getClientIp(), $webmaster->getUserId(), $mail1_subject, Filter::unescapeHtml($mail1_body)));
 			}
 
-			echo '<div class="confirm"><p>', I18N::translate('Hello %s…<br>Thank you for your registration.', $user->getRealNameHtml()), '</p><p>';
-				if ($REQUIRE_ADMIN_AUTH_REGISTRATION) {
-					echo I18N::translate('We will now send a confirmation email to the address <b>%s</b>.  You must verify your account request by following instructions in the confirmation email.  If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this website, you will need to know your user name and password.', $user->getEmail());
-				} else {
-					echo I18N::translate('We will now send a confirmation email to the address <b>%s</b>.  You must verify your account request by following instructions in the confirmation email.  If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, you can login.  To login to this website, you will need to know your user name and password.', $user->getEmail());
-				}
-				echo '</p>
-			</div>';
+			echo '<div class="confirm"><p>', I18N::translate('Hello %s…<br>Thank you for your registration.', $user->getRealNameHtml()), '</p>';
+			echo '<p>', I18N::translate('We will now send a confirmation email to the address <b>%s</b>.  You must verify your account request by following instructions in the confirmation email.  If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br><br>After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br><br>To login to this website, you will need to know your user name and password.', $user->getEmail()), '</p>';
+			echo '</div>';
 			echo '</div>';
 
 			return;
@@ -562,19 +551,15 @@ case 'verify_hash':
 
 	$user = User::findByIdentifier($user_name);
 	$mail1_body =
-		I18N::translate('Hello administrator…') . Mail::EOL . Mail::EOL .
+		I18N::translate('Hello administrator…') .
+		Mail::EOL . Mail::EOL .
 		/* I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address */ I18N::translate(
 			'A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s).',
 			$user->getRealNameHtml(),
 			Filter::escapeHtml($user->getUserName()),
 			Filter::escapeHtml($user->getEmail())
-		) . Mail::EOL . Mail::EOL;
-	if ($REQUIRE_ADMIN_AUTH_REGISTRATION && !$user->getPreference('verified_by_admin')) {
-		$mail1_body .= I18N::translate('You now need to review the account details, and set the “approved” status to “yes”.');
-	} else {
-		$mail1_body .= I18N::translate('You do not have to take any action; the user can now login.');
-	}
-	$mail1_body .=
+		) . Mail::EOL . Mail::EOL .
+		I18N::translate('You now need to review the account details, and set the “approved” status to “yes”.') .
 		Mail::EOL .
 		'<a href="' . WT_BASE_URL . "admin_users.php?filter=" . Filter::escapeUrl($user->getUserName()) . '">' .
 		WT_BASE_URL . "admin_users.php?filter=" . Filter::escapeUrl($user->getUserName()) .
@@ -617,17 +602,10 @@ case 'verify_hash':
 			->setPreference('reg_timestamp', date('U'))
 			->deletePreference('reg_hashcode');
 
-		if (!$REQUIRE_ADMIN_AUTH_REGISTRATION) {
-			$user->setPreference('verified_by_admin', '1');
-		}
 		Log::addAuthenticationLog('User ' . $user_name . ' verified their email address');
 
 		echo '<p>', I18N::translate('You have confirmed your request to become a registered user.'), '</p>';
-		if ($REQUIRE_ADMIN_AUTH_REGISTRATION && !$user->getPreference('verified_by_admin')) {
-			echo '<p>', I18N::translate('The administrator has been informed.  As soon as they give you permission to login, you can login with your user name and password.'), '</p>';
-		} else {
-			echo '<p>', I18N::translate('You can now login with your user name and password.'), '</p>';
-		}
+		echo '<p>', I18N::translate('The administrator has been informed.  As soon as they give you permission to login, you can login with your user name and password.'), '</p>';
 	} else {
 		echo '<p class="warning">';
 		echo I18N::translate('Could not verify the information you entered.  Please try again or contact the site administrator for more information.');

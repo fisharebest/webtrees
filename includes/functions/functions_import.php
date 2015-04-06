@@ -42,7 +42,7 @@ function reformat_record_import($rec, Tree $tree) {
 		list(, $level, $xref, $tag, $data) = $match;
 		$tag = strtoupper($tag); // Tags should always be upper case
 		switch ($tag) {
-		// Convert PGV tags to WT
+		// Convert PhpGedView tags to WT
 		case '_PGVU':
 			$tag = '_WT_USER';
 			break;
@@ -474,7 +474,7 @@ function reformat_record_import($rec, Tree $tree) {
 			$tag = 'STAT';
 		case 'STAT':
 			if ($data == 'CANCELLED') {
-				// PGV mis-spells this tag - correct it.
+				// PhpGedView mis-spells this tag - correct it.
 				$data = 'CANCELED';
 			}
 			break;

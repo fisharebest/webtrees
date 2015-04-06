@@ -24,7 +24,7 @@ class PluralRule9 implements PluralRuleInterface {
 
 		if ($number === 1) {
 			return 0;
-		} elseif ($number % 10 >= 2 && $number %10 <= 4 && ($number % 100 < 10 || $number % 100 >= 20)) {
+		} elseif ($number % 10 >= 2 && $number % 10 <= 4 && ($number % 100 < 10 || $number % 100 >= 20)) {
 			return 1;
 		} else {
 			return 2;

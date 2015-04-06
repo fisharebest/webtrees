@@ -71,7 +71,6 @@ case 'login':
 		Site::setPreference('WELCOME_TEXT_AUTH_MODE', Filter::post('WELCOME_TEXT_AUTH_MODE'));
 		Site::setPreference('WELCOME_TEXT_AUTH_MODE_' . WT_LOCALE, Filter::post('WELCOME_TEXT_AUTH_MODE_4'));
 		Site::setPreference('USE_REGISTRATION_MODULE', Filter::post('USE_REGISTRATION_MODULE'));
-		Site::setPreference('REQUIRE_ADMIN_AUTH_REGISTRATION', Filter::post('REQUIRE_ADMIN_AUTH_REGISTRATION'));
 		Site::setPreference('SHOW_REGISTER_CAUTION', Filter::post('SHOW_REGISTER_CAUTION'));
 		FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 	}
@@ -244,7 +243,7 @@ $controller->pageHeader();
 			<?php echo /* I18N: A site configuration setting */ I18N::translate('Allow users to select their own theme'); ?>
 		</legend>
 		<div class="col-sm-9">
-			<?php echo edit_field_yes_no('ALLOW_USER_THEMES', Site::getPreference('ALLOW_USER_THEMES')); ?>
+			<?php echo edit_field_yes_no('ALLOW_USER_THEMES', Site::getPreference('ALLOW_USER_THEMES'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Allow users to select their own theme” site configuration setting */ I18N::translate('Gives users the option of selecting their own theme.'); ?>
 			</p>
@@ -257,7 +256,7 @@ $controller->pageHeader();
 			<?php echo /* I18N: A site configuration setting */ I18N::translate('Show list of family trees'); ?>
 		</legend>
 		<div class="col-sm-9">
-			<?php echo edit_field_yes_no('ALLOW_CHANGE_GEDCOM', Site::getPreference('ALLOW_CHANGE_GEDCOM')); ?>
+			<?php echo edit_field_yes_no('ALLOW_CHANGE_GEDCOM', Site::getPreference('ALLOW_CHANGE_GEDCOM'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
 				<?php /* I18N: Help text for the “Show list of family trees” site configuration setting */ I18N::translate('For websites with more than one family tree, this option will show the list of family trees in the main menu, the search pages, etc.'); ?>
 			</p>
@@ -355,7 +354,7 @@ $controller->pageHeader();
 			<?php echo /* I18N: A site configuration setting */ I18N::translate('Use password'); ?>
 		</legend>
 		<div class="col-sm-9">
-			<?php echo edit_field_yes_no('SMTP_AUTH', Site::getPreference('SMTP_AUTH')); ?>
+			<?php echo edit_field_yes_no('SMTP_AUTH', Site::getPreference('SMTP_AUTH'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Use password” site configuration setting */ I18N::translate('Most SMTP servers require a password.'); ?>
 			</p>
@@ -466,24 +465,14 @@ $controller->pageHeader();
 	<!-- USE_REGISTRATION_MODULE -->
 	<fieldset class="form-group">
 		<legend class="col-sm-3 control-label">
-			<?php echo /* I18N: A site configuration setting */ I18N::translate('Allow visitors to request account registration'); ?>
+			<?php echo /* I18N: A site configuration setting */ I18N::translate('Allow visitors to request a new user account'); ?>
 		</legend>
 		<div class="col-sm-9">
-			<?php echo edit_field_yes_no('USE_REGISTRATION_MODULE', Site::getPreference('USE_REGISTRATION_MODULE')); ?>
+			<?php echo edit_field_yes_no('USE_REGISTRATION_MODULE', Site::getPreference('USE_REGISTRATION_MODULE'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Allow visitors to request account registration” site configuration setting */ I18N::translate('Gives visitors the option of registering themselves for an account on the website.<br><br>The visitor will receive an email message with a code to verify his application for an account.  After verification, an administrator will have to approve the registration before it becomes active.'); ?>
-			</p>
-		</div>
-	</fieldset>
-
-	<!-- REQUIRE_ADMIN_AUTH_REGISTRATION -->
-	<fieldset class="form-group">
-		<legend class="col-sm-3 control-label">
-			<?php echo /* I18N: A site configuration setting */ I18N::translate('Require an administrator to approve new user registrations'); ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo edit_field_yes_no('REQUIRE_ADMIN_AUTH_REGISTRATION', Site::getPreference('REQUIRE_ADMIN_AUTH_REGISTRATION')); ?>
-			<p class="small text-muted">
+				<?php echo I18N::translate('The new user will be asked to confirm their email address before the account is created.'); ?>
+				<?php echo I18N::translate('Details of the new user will be sent to the genealogy contact for the corresponding family tree.'); ?>
+				<?php echo I18N::translate('An administrator must approve the new user account and select an access level before the user can log in.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -494,7 +483,7 @@ $controller->pageHeader();
 			<?php echo /* I18N: A site configuration setting */ I18N::translate('Show acceptable use agreement on “Request new user account” page'); ?>
 		</legend>
 		<div class="col-sm-9">
-			<?php echo edit_field_yes_no('SHOW_REGISTER_CAUTION', Site::getPreference('SHOW_REGISTER_CAUTION')); ?>
+			<?php echo edit_field_yes_no('SHOW_REGISTER_CAUTION', Site::getPreference('SHOW_REGISTER_CAUTION'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
 			</p>
 		</div>
@@ -583,7 +572,7 @@ $controller->pageHeader();
 				<?php echo /* I18N: A site configuration setting */ I18N::translate('URL'); ?>
 			</label>
 			<div class="col-sm-9">
-				<input type="text" class="form-control" id="PIWIK_URL" name="PIWIK_URL" value="<?php echo Filter::escapeHtml(Site::getPreference('PIWIK_URL')); ?>" placeholder="e.g. piwik/ or http://example.com/piwik/" maxlength="255">
+				<input type="text" class="form-control" id="PIWIK_URL" name="PIWIK_URL" value="<?php echo Filter::escapeHtml(Site::getPreference('PIWIK_URL')); ?>" placeholder="http://example.com/piwik/" maxlength="255">
 				<p class="small text-muted">
 					<?php echo I18N::translate('Tracking and analytics are not added to the control panel.'); ?>
 				</p>
