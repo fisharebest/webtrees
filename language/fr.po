@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-04-05 21:47+0100\n"
-"PO-Revision-Date: 2015-04-06 09:04+0100\n"
+"PO-Revision-Date: 2015-04-06 09:33+0100\n"
 "Last-Translator: Michel Rivière <gustine@laposte.net>\n"
 "Language-Team: French "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
@@ -6313,7 +6313,9 @@ msgstr "Police"
 
 #: help_text.php:327
 msgid "For LDS ordinances, this field records the temple where it was performed."
-msgstr "Pour des ordinations SDJ (Eglise de Jésus-Christ des saints des derniers jours), ce champ enregistre le nom du temple où il s’est déroulé."
+msgstr ""
+"Pour des ordonnances SDJ (Église de Jésus-Christ des saints des derniers "
+"jours), ce champ enregistre le nom du temple où cela a eu lieu."
 
 #. I18N: Help text for the “GEDCOM media path” configuration setting. %s are all folder names
 #: admin_trees_manage.php:285
@@ -7846,7 +7848,7 @@ msgstr "SDJ: dotation"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1586
 msgid "LDS ordinance codes in chart boxes"
-msgstr "Codes d’ordination SDJ sur les diagrammes"
+msgstr "Codes d’ordonnances SDJ sur les diagrammes"
 
 #. I18N: gedcom tag SLGS
 #: app/Gedcom/GedcomTag.php:781
@@ -10060,7 +10062,7 @@ msgstr "Ordibehesht"
 #. I18N: gedcom tag ORDI
 #: app/Gedcom/GedcomTag.php:657
 msgid "Ordinance"
-msgstr "SDJ: cérémonie"
+msgstr "SDJ: ordonnance"
 
 #. I18N: gedcom tag ORDN
 #: app/Gedcom/GedcomTag.php:661
@@ -13913,14 +13915,17 @@ msgstr "Il s’agit d’un lien vers vos propres informations dans l’arbre gé
 #: admin_trees_config.php:1591
 msgid "This is a summary of the <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr> ordinances for the individual.  “B” indicates an LDS baptism.  “E” indicates an LDS endowment.  “S” indicates an LDS spouse sealing.  “P” indicates an LDS child-to-parent sealing."
 msgstr ""
-"Ceci est un résumé des ordonnances <abbr title=\"The Church of Jesus Christ "
-"of Latter-day Saints (L’Église de Jésus-Christ des saints des derniers jours)"
-"\">LDS</abbr> pour un individu.  “B” Baptême. “E” Dotation. “S” Scellement  "
-"au conjoint. “P” Scellement aux parents."
+"Ceci est un résumé des ordonnances <abbr title=\"Église de Jésus-Christ des "
+"saints des derniers jours (mormonisme)\">SDJ</abbr> pour un individu.  “B” "
+"Baptême. “E” Dotation. “S” Scellement  au conjoint. “P” Scellement aux "
+"parents."
 
 #: help_text.php:322
 msgid "This is an optional status field and is used mostly for LDS ordinances as they are run through the TempleReady program."
-msgstr "C’est un champ optionnel qui est utilisé principalement pour les ordinations SDJ (Eglise de Jésus-Christ des saints des derniers jours) lorsqu’elles sont effectuées selon le logiciel TempleReady."
+msgstr ""
+"C’est un champ optionnel qui est utilisé principalement pour les ordonnances "
+"SDJ (Église de Jésus-Christ des saints des derniers jours) lorsqu’elles sont "
+"effectuées selon le logiciel TempleReady."
 
 #: setup.php:291 setup.php:295
 msgid "This is case sensitive."
