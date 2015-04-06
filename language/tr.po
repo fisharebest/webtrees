@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-04-05 21:47+0100\n"
-"PO-Revision-Date: 2015-04-06 12:05+0100\n"
+"PO-Revision-Date: 2015-04-06 12:06+0100\n"
 "Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
@@ -11617,7 +11617,7 @@ msgstr "Güvenlik kodu"
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:128
 #, php-format
 msgid "See %s for more information."
-msgstr "Daha fazla bilgi için bakınız: %s"
+msgstr "Daha fazla bilgi için bakınız: %s ."
 
 #: admin_site_merge.php:203 admin_site_merge.php:245 admin_site_merge.php:286
 msgid "Select"
