@@ -1,6 +1,5 @@
 <?php namespace Fisharebest\Localization\Locale;
 
-use Fisharebest\Localization\Language\LanguageInterface;
 use Fisharebest\Localization\PluralRule\PluralRuleInterface;
 use Fisharebest\Localization\Script\ScriptInterface;
 use Fisharebest\Localization\Territory\TerritoryInterface;
@@ -114,14 +113,6 @@ abstract class AbstractLocale {
 	}
 
 	/**
-	 * The name of this locale, in its own language/script, and with the
-	 * customary capitalization of the locale.
-	 *
-	 * @return string
-	 */
-	abstract public function endonym();
-
-	/**
 	 * A sortable version of the locale name.  For example, “British English”
 	 * might sort as “ENGLISH, BRITISH” to keep all the variants of English together.
 	 *
@@ -145,13 +136,6 @@ abstract class AbstractLocale {
 			return 'lang="' . $this->languageTag() . '"';
 		}
 	}
-
-	/**
-	 * The language used by this locale.
-	 *
-	 * @return LanguageInterface
-	 */
-	abstract public function language();
 
 	/**
 	 * The IETF language tag for the locale.  Examples include

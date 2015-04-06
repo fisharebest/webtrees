@@ -9,13 +9,6 @@
  */
 abstract class AbstractScript {
 	/**
-	 * The ISO15924 code for this script.
-	 *
-	 * @return string
-	 */
-	abstract public function code();
-
-	/**
 	 * What are the default digits used by this script?
 	 *
 	 * This is an array of translations from Hindu-Arabic (0123456789)
@@ -38,13 +31,6 @@ abstract class AbstractScript {
 	public function direction() {
 		return substr_compare($this->number(), '1', 0, 1) ? 'ltr' : 'rtl';
 	}
-
-	/**
-	 * The ISO15924 number for this script.
-	 *
-	 * @return string
-	 */
-	abstract public function number();
 
 	/**
 	 * The Unicode name (aka “property value alias”) for this script, or
