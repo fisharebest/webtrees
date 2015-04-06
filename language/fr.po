@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-04-05 21:47+0100\n"
-"PO-Revision-Date: 2015-03-17 11:07+0100\n"
+"PO-Revision-Date: 2015-04-06 09:04+0100\n"
 "Last-Translator: Michel Rivière <gustine@laposte.net>\n"
-"Language-Team: French <http://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
+"Language-Team: French "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -206,31 +207,31 @@ msgstr "%s Ko"
 #: app/Module/ClippingsCartModule.php:175
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s et ses ascendants"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:177
 #, php-format
 msgid "%s and his ancestors"
-msgstr ""
+msgstr "%s et ses ascendants"
 
 #. I18N: %s is the name of a source
 #: app/Module/ClippingsCartModule.php:261
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr ""
+msgstr "%s et les individus qui lui sont liés."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:99
 #, php-format
 msgid "%s and their children"
-msgstr ""
+msgstr "%s et ses enfants"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:105
 #, php-format
 msgid "%s and their descendants"
-msgstr ""
+msgstr "%s et ses descendants"
 
 #: app/Module/LoggedInUsersModule.php:51 app/Stats.php:5373
 #, php-format
@@ -475,49 +476,49 @@ msgstr "%s&nbsp;de notre ère"
 #: app/Module/ClippingsCartModule.php:193
 #, php-format
 msgid "%s, her ancestors and their families"
-msgstr ""
+msgstr "%s, ses ascendants et leurs familles"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:147
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr ""
+msgstr "%s, ses parents, ses frères et ses sœurs"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:161
 #, php-format
 msgid "%s, her spouses and children"
-msgstr ""
+msgstr "%s, ses conjoints et ses enfants"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:211
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr ""
+msgstr "%s, ses conjoints et ses descendants"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:195
 #, php-format
 msgid "%s, his ancestors and their families"
-msgstr ""
+msgstr "%s, ses ascendants et leurs familles"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:149
 #, php-format
 msgid "%s, his parents and siblings"
-msgstr ""
+msgstr "%s, ses parents, ses frères et ses sœurs"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:163
 #, php-format
 msgid "%s, his spouses and children"
-msgstr ""
+msgstr "%s, ses conjointes et ses enfants"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:213
 #, php-format
 msgid "%s, his spouses and descendants"
-msgstr ""
+msgstr "%s, ses conjointes et ses descendants"
 
 #. I18N: first/default option in a drop-down listbox
 #: app/Module/GoogleMapsModule.php:1548 app/Module/GoogleMapsModule.php:1564
@@ -1382,7 +1383,7 @@ msgstr "Ajouter aux favoris"
 #: app/Module/ClippingsCartModule.php:384
 #: app/Module/ClippingsCartModule.php:474
 msgid "Add to the clippings cart"
-msgstr ""
+msgstr "Ajouter au panier"
 
 #: admin_trees_manage.php:495
 msgid "Add unlinked records"
@@ -1802,7 +1803,7 @@ msgstr "Permettre aux utilisateurs de choisir leur propre thème"
 #. I18N: A site configuration setting
 #: admin_site_config.php:468
 msgid "Allow visitors to request a new user account"
-msgstr ""
+msgstr "Permettre aux visiteurs de demander un compte utilisateur"
 
 #. I18N: gedcom tag _AKA
 #: app/Gedcom/GedcomTag.php:964
@@ -1828,6 +1829,8 @@ msgstr "Samoas américaines"
 #: admin_site_config.php:475
 msgid "An administrator must approve the new user account and select an access level before the user can log in."
 msgstr ""
+"Un administrateur doit approuver le nouveau compte et choisir son niveau d’"
+"accès avant que l’utilisateur puisse se connecter."
 
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:32
@@ -4199,7 +4202,7 @@ msgstr "Texte personnalisé de bienvenue"
 
 #: app/Theme/BaseTheme.php:1023 app/Theme/BaseTheme.php:1025
 msgid "Customize this page"
-msgstr ""
+msgstr "Personnaliser cette page"
 
 #: app/Stats.php:6112
 msgid "Cyprus"
@@ -4970,6 +4973,8 @@ msgstr "Détails"
 #: admin_site_config.php:474
 msgid "Details of the new user will be sent to the genealogy contact for the corresponding family tree."
 msgstr ""
+"Les détails du nouvel utilisateur seront envoyés au référent généalogique "
+"correspondant à l’arbre généalogique."
 
 #: app/Gedcom/GedcomCodeTemp.php:138
 msgid "Detroit, Michigan"
@@ -12128,7 +12133,7 @@ msgstr "Afficher toutes les sources"
 
 #: app/Module/InteractiveTree/TreeView.php:55
 msgid "Show all spouses and ancestors"
-msgstr "Afficher tous les conjoints et tous les ancêtres"
+msgstr "Afficher tous les conjoints et tous les ascendants"
 
 #: find.php:465
 msgid "Show all tags"
@@ -12634,6 +12639,8 @@ msgstr "Certains noms de lieux peuvent contenir des préfixes ou des suffixes op
 #: admin_trees_config.php:1635
 msgid "Some themes can display icons on the “Facts and events” tab."
 msgstr ""
+"Certains thèmes peuvent afficher des icônes dans l’onglet « Faits et "
+"événements »."
 
 #: modules_v3/family_group_report/report.xml:762
 #: modules_v3/individual_ext_report/report.xml:517
@@ -13450,6 +13457,8 @@ msgstr "Les nouveaux fichiers sont actuellement situés dans le dossier %s."
 #: admin_site_config.php:473
 msgid "The new user will be asked to confirm their email address before the account is created."
 msgstr ""
+"Le nouvel utilisateur sera invité à confirmer son adresse de courriel avant "
+"que le compte ne soit ouvert."
 
 #: help_text.php:380
 msgid "The number of occurrences of the specified name will be shown on the map.  If you leave this field empty, the most common surname will be used."
@@ -13904,6 +13913,10 @@ msgstr "Il s’agit d’un lien vers vos propres informations dans l’arbre gé
 #: admin_trees_config.php:1591
 msgid "This is a summary of the <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr> ordinances for the individual.  “B” indicates an LDS baptism.  “E” indicates an LDS endowment.  “S” indicates an LDS spouse sealing.  “P” indicates an LDS child-to-parent sealing."
 msgstr ""
+"Ceci est un résumé des ordonnances <abbr title=\"The Church of Jesus Christ "
+"of Latter-day Saints (L’Église de Jésus-Christ des saints des derniers jours)"
+"\">LDS</abbr> pour un individu.  “B” Baptême. “E” Dotation. “S” Scellement  "
+"au conjoint. “P” Scellement aux parents."
 
 #: help_text.php:322
 msgid "This is an optional status field and is used mostly for LDS ordinances as they are run through the TempleReady program."
@@ -14161,8 +14174,8 @@ msgstr "Cette page vous permet de contourner les formes habituelles, et de modif
 #, php-format
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Cette page a été vue %s fois."
+msgstr[1] "Cette page a été vue %s fois."
 
 #: app/Module/GoogleMapsModule.php:2850
 msgid "This place has no coordinates"
@@ -14210,7 +14223,10 @@ msgstr "Ce rôle a toutes les autorisations du rôle de membre, plus l’autoris
 
 #: admin_users.php:542
 msgid "This role has all the permissions of the moderator role, plus any additional access granted by the family tree configuration, plus permission to change the settings/configuration of a family tree."
-msgstr "Ce rôle a toutes les autorisations du rôle du modérateur, plus l’accès à la configuration l’arbre généalogique, plus l’autorisation de modifier les paramètres / configuration d’un arbre généalogique."
+msgstr ""
+"Ce rôle a toutes les autorisations du rôle du modérateur, plus l’accès à la "
+"configuration de l’arbre généalogique, plus l’autorisation de modifier les "
+"paramètres et la configuration d’un arbre généalogique."
 
 #: admin_users.php:520
 msgid "This role has all the permissions of the visitor role, plus any additional access granted by the family tree configuration."
@@ -14977,7 +14993,7 @@ msgstr "Utilisez ce champ pour dire à l’administrateur du site pourquoi vous 
 
 #: includes/functions/functions_edit.php:618
 msgid "Use this image for charts and on the individual’s page."
-msgstr ""
+msgstr "Utiliser cette image pour les diagrammes et sur la page de l’individu."
 
 #: app/Module/GoogleMapsModule.php:3917
 msgid "Use this value"
@@ -15360,7 +15376,9 @@ msgstr "Quand de nouveaux enregistrements sont créés, ils reçoivent un identi
 #. I18N: Help text for the “Date differences” configuration setting
 #: admin_trees_config.php:1687
 msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
-msgstr "Lorsque cette option est sélectionnée, webtrees calcule les différences d’âge entre frères et soeurs, enfants, conjoints, etc."
+msgstr ""
+"Lorsque cette option est sélectionnée, webtrees calcule les différences d’"
+"âge entre frères et sœurs, enfants, conjoints, etc."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2219
@@ -15898,7 +15916,7 @@ msgstr "également connu sous"
 #. I18N: option in list box “always use this image”
 #: includes/functions/functions_edit.php:611
 msgid "always"
-msgstr ""
+msgstr "toujours"
 
 #: app/Controller/AncestryController.php:87 app/Stats.php:4076
 #: app/Stats.php:4101 app/Stats.php:4112 app/Stats.php:4122 app/Stats.php:5380
@@ -18555,7 +18573,7 @@ msgstr "neveu/nièce"
 #. I18N: option in list box “never use this image”
 #: includes/functions/functions_edit.php:616
 msgid "never"
-msgstr ""
+msgstr "jamais"
 
 #. I18N: button label, next page
 #: app/I18N.php:220 app/Module/BatchUpdateModule.php:204
