@@ -196,7 +196,7 @@ $controller->pageHeader();
 		</div>
 		<div class="panel-body">
 			<?php if ($facts): ?>
-			<table class="table">
+			<table class="table table-bordered table-condensed">
 				<thead>
 					<tr>
 						<th>
@@ -215,6 +215,11 @@ $controller->pageHeader();
 						</td>
 						<td>
 							<div class="gedcom-data" dir="ltr"><?php echo Filter::escapeHtml($fact->getGedcom()); ?></div>
+							<?php if ($fact->getTarget()): ?>
+							<a href="<?php echo $fact->getTarget()->getXref(); ?>">
+								<?php echo $fact->getTarget()->getFullName(); ?>
+							</a>
+							<?php endif; ?>
 						</td>
 					</tr>
 				<?php endforeach; ?>
@@ -238,7 +243,7 @@ $controller->pageHeader();
 				</div>
 				<div class="panel-body">
 					<?php if ($facts): ?>
-						<table class="table">
+						<table class="table table-bordered table-condensed">
 							<thead>
 							<tr>
 								<th>
@@ -257,6 +262,11 @@ $controller->pageHeader();
 									</td>
 									<td>
 										<div class="gedcom-data" dir="ltr"><?php echo Filter::escapeHtml($fact->getGedcom()); ?></div>
+										<?php if ($fact->getTarget()): ?>
+											<a href="<?php echo $fact->getTarget()->getXref(); ?>">
+												<?php echo $fact->getTarget()->getFullName(); ?>
+											</a>
+										<?php endif; ?>
 									</td>
 								</tr>
 							<?php endforeach; ?>
@@ -279,7 +289,7 @@ $controller->pageHeader();
 				</div>
 				<div class="panel-body">
 					<?php if ($facts): ?>
-						<table class="table">
+						<table class="table table-bordered table-condensed">
 							<thead>
 							<tr>
 								<th>
@@ -298,6 +308,11 @@ $controller->pageHeader();
 									</td>
 									<td>
 										<div class="gedcom-data" dir="ltr"><?php echo Filter::escapeHtml($fact->getGedcom()); ?></div>
+										<?php if ($fact->getTarget()): ?>
+											<a href="<?php echo $fact->getTarget()->getXref(); ?>">
+												<?php echo $fact->getTarget()->getFullName(); ?>
+											</a>
+										<?php endif; ?>
 									</td>
 								</tr>
 							<?php endforeach; ?>
