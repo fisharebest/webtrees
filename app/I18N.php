@@ -33,6 +33,11 @@ class I18N {
 	/** @var Translator */
 	private static $translator;
 
+	/**
+	 * @var string calendar (e.g @#DGREGORIAN@)
+	 */
+	private static $default_calendar;
+
 	// Digits are always rendered LTR, even in RTL text.
 	const DIGITS = '0123456789٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹';
 
@@ -430,6 +435,21 @@ class I18N {
 		$WEEK_START = self::$locale->territory()->firstDay();
 
 		self::$list_separator = /* I18N: This punctuation is used to separate lists of items */ self::translate(', ');
+
+		switch (self::$locale->languageTag()) {
+			case 'fa':
+				self::$default_calendar = '@#DJALALI@';
+				break;
+			case 'ar':
+				self::$default_calendar = '@#DHIJRI@';
+				break;
+			case 'he':
+				self::$default_calendar = '@#DHEBREW@';
+				break;
+			default:
+				self::$default_calendar = '@#DGREGORIAN@';
+				break;
+		}
 
 		return self::$locale->languageTag();
 	}
@@ -853,5 +873,13 @@ class I18N {
 	 */
 	public static function weekendStart() {
 		return self::$locale->territory()->weekendStart();
+	}
+
+	/**
+	 * static Function defaultCalendar
+	 * @return string
+	 */
+	public static function defaultCalendar() {
+		return self::$default_calendar;
 	}
 }
