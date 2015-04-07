@@ -5,3 +5,5 @@ php:
   - 5.4
   - 5.3
   - hhvm
+git:
+  submodules: false

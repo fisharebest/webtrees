@@ -1,0 +1,4 @@
+build:
+    dependencies:
+        before:
+            - "sed -i -e 's#git@github.com:#https://github.com/#g' .gitmodules"

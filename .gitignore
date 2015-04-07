@@ -1,3 +1,6 @@
 *.swp
 .idea/
 vendor/.git
+.vagrant/
+/Vagrantfile
+/puphpet/
