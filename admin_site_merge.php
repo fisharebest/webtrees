@@ -143,6 +143,9 @@ if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYP
 	)->execute(array($WT_TREE->getTreeId(), $gid2));
 
 	$gedcom = "0 @" . $rec1->getXref() . "@ " . $rec1::RECORD_TYPE;
+	foreach ($facts as $fact_id=>$fact) {
+		$gedcom .= "\n" . $fact->getGedcom();
+	}
 	foreach ($facts1 as $fact_id=>$fact) {
 		if (in_array($fact_id, $keep1)) {
 			$gedcom .= "\n" . $fact->getGedcom();
@@ -196,7 +199,7 @@ $controller->pageHeader();
 		</div>
 		<div class="panel-body">
 			<?php if ($facts): ?>
-			<table class="table">
+			<table class="table table-bordered table-condensed">
 				<thead>
 					<tr>
 						<th>
@@ -215,6 +218,11 @@ $controller->pageHeader();
 						</td>
 						<td>
 							<div class="gedcom-data" dir="ltr"><?php echo Filter::escapeHtml($fact->getGedcom()); ?></div>
+							<?php if ($fact->getTarget()): ?>
+							<a href="<?php echo $fact->getTarget()->getHtmlUrl(); ?>">
+								<?php echo $fact->getTarget()->getFullName(); ?>
+							</a>
+							<?php endif; ?>
 						</td>
 					</tr>
 				<?php endforeach; ?>
@@ -238,7 +246,7 @@ $controller->pageHeader();
 				</div>
 				<div class="panel-body">
 					<?php if ($facts): ?>
-						<table class="table">
+						<table class="table table-bordered table-condensed">
 							<thead>
 							<tr>
 								<th>
@@ -257,6 +265,11 @@ $controller->pageHeader();
 									</td>
 									<td>
 										<div class="gedcom-data" dir="ltr"><?php echo Filter::escapeHtml($fact->getGedcom()); ?></div>
+										<?php if ($fact->getTarget()): ?>
+											<a href="<?php echo $fact->getTarget()->getHtmlUrl(); ?>">
+												<?php echo $fact->getTarget()->getFullName(); ?>
+											</a>
+										<?php endif; ?>
 									</td>
 								</tr>
 							<?php endforeach; ?>
@@ -279,7 +292,7 @@ $controller->pageHeader();
 				</div>
 				<div class="panel-body">
 					<?php if ($facts): ?>
-						<table class="table">
+						<table class="table table-bordered table-condensed">
 							<thead>
 							<tr>
 								<th>
@@ -298,6 +311,11 @@ $controller->pageHeader();
 									</td>
 									<td>
 										<div class="gedcom-data" dir="ltr"><?php echo Filter::escapeHtml($fact->getGedcom()); ?></div>
+										<?php if ($fact->getTarget()): ?>
+											<a href="<?php echo $fact->getTarget()->getHtmlUrl(); ?>">
+												<?php echo $fact->getTarget()->getFullName(); ?>
+											</a>
+										<?php endif; ?>
 									</td>
 								</tr>
 							<?php endforeach; ?>

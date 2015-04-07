@@ -1,6 +1,9 @@
 CHANGE LOG
 ==========
 
+## 1.4.1 (2015-04-06)
+ - PHP<=5.3.8 cannot extend abstract classes with abstract functions
+
 ## 1.4.0 (2015-03-27)
  - Fix PSR4 autoloading
  - Add PHP interfaces for scripts, languages, locales, etc

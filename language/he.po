@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-04-05 21:47+0100\n"
-"PO-Revision-Date: 2015-04-03 13:31+0100\n"
+"PO-Revision-Date: 2015-04-06 14:20+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
-"Language-Team: Hebrew <http://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
+"Language-Team: Hebrew "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16933,10 +16934,10 @@ msgid "great ×%s nephew/niece"
 msgstr "אחיין/ית מדרגה %s"
 
 #: includes/functions/functions.php:1813
-#, fuzzy, php-format
+#, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr "אחיין/אחינית מדרגה ×%"
+msgstr "אחיין/אחינית מדרגה s%"
 
 #: includes/functions/functions.php:1815
 #, php-format

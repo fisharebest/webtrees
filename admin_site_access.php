@@ -200,8 +200,9 @@ case 'load':
 		$site_access_rule_id = $datum[8];
 
 		$datum[0] = '<div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-pencil"></i> <span class="caret"></span></button><ul class="dropdown-menu" role="menu"><li><a href="?action=edit&amp;site_access_rule_id=' . $site_access_rule_id . '"><i class="fa fa-fw fa-pencil"></i> ' . I18N::translate('Edit') . '</a></li><li class="divider"><li><a href="#" onclick="if (confirm(\'' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJs($datum[5])) . '\')) delete_site_access_rule(' . $site_access_rule_id . '); return false;"><i class="fa fa-fw fa-trash-o"></i> ' . I18N::translate('Delete') . '</a></li></ul></div>';
-
+		$datum[5] = '<span dir="ltr">' . $datum[5] . '</span>';
 		$datum[6] = $rules_display[$datum[6]];
+		$datum[7] = '<span dir="auto">' . $datum[7] . '</span>';
 	}
 
 	// Total filtered/unfiltered rows
@@ -282,7 +283,7 @@ case 'create':
 				<?php echo I18N::translate('User-agent string'); ?>
 			</label>
 			<div class="col-sm-9">
-				<input class="form-control" type="text" id="user_agent_pattern" name="user_agent_pattern" required value="<?php echo Filter::escapeHtml($user_agent_pattern); ?>" maxlength="255">
+				<input class="form-control" type="text" id="user_agent_pattern" name="user_agent_pattern" required value="<?php echo Filter::escapeHtml($user_agent_pattern); ?>" maxlength="255" dir="ltr">
 				<p class="small text-muted">
 					<?php echo I18N::translate('The “%” character is a wildcard, and will match zero or more other characters.'); ?>
 				</p>
@@ -299,13 +300,13 @@ case 'create':
 			</div>
 		</div>
 
-		<!-- COMMET -->
+		<!-- COMMENT -->
 		<div class="form-group">
 			<label class="control-label col-sm-3" for="comment">
 				<?php echo I18N::translate('Comment'); ?>
 			</label>
 			<div class="col-sm-9">
-				<input class="form-control" type="text" id="comment" name="comment" value="<?php echo Filter::escapeHtml($comment); ?>" maxlength="255">
+				<input class="form-control" type="text" id="comment" name="comment" value="<?php echo Filter::escapeHtml($comment); ?>" maxlength="255" dir="auto">
 			</div>
 		</div>
 

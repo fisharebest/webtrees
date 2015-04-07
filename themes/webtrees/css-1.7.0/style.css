@@ -3430,11 +3430,6 @@ table.table-census-assistant th {
 	width:           100%;
 }
 
-/*-- relationship  --*/
-.rel-background {
-	background-color: #fff;
-}
-
 /*-- timeline  --*/
 #timeline_chart {
 	position: relative;
