@@ -43,7 +43,7 @@ $filtersx = Filter::get('filtersx', '[MF]');
 
 if ($cal . $day . $month . $year === '') {
 	// No date specified?  Use the most likely calendar
-	$cal = I18N::defaultCalendar();
+	$cal = I18N::defaultCalendar()->gedcomCalendarEscape();
 }
 
 // Create a CalendarDate from the parameters

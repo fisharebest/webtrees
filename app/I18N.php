@@ -16,6 +16,11 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\ExtCalendar\ArabicCalendar;
+use Fisharebest\ExtCalendar\CalendarInterface;
+use Fisharebest\ExtCalendar\GregorianCalendar;
+use Fisharebest\ExtCalendar\JewishCalendar;
+use Fisharebest\ExtCalendar\PersianCalendar;
 use Fisharebest\Localization\Locale;
 use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Localization\Locale\LocaleInterface;
@@ -32,11 +37,6 @@ class I18N {
 
 	/** @var Translator */
 	private static $translator;
-
-	/**
-	 * @var string calendar (e.g @#DGREGORIAN@)
-	 */
-	private static $default_calendar;
 
 	// Digits are always rendered LTR, even in RTL text.
 	const DIGITS = '0123456789٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹';
@@ -435,21 +435,6 @@ class I18N {
 		$WEEK_START = self::$locale->territory()->firstDay();
 
 		self::$list_separator = /* I18N: This punctuation is used to separate lists of items */ self::translate(', ');
-
-		switch (self::$locale->languageTag()) {
-			case 'fa':
-				self::$default_calendar = '@#DJALALI@';
-				break;
-			case 'ar':
-				self::$default_calendar = '@#DHIJRI@';
-				break;
-			case 'he':
-				self::$default_calendar = '@#DHEBREW@';
-				break;
-			default:
-				self::$default_calendar = '@#DGREGORIAN@';
-				break;
-		}
 
 		return self::$locale->languageTag();
 	}
@@ -876,10 +861,21 @@ class I18N {
 	}
 
 	/**
-	 * static Function defaultCalendar
-	 * @return string
+	 * Which calendar prefered in this locale?
+	 *
+	 * @return CalendarInterface
 	 */
 	public static function defaultCalendar() {
-		return self::$default_calendar;
+		switch (self::$locale->languageTag()) {
+			case 'ar':
+				return new ArabicCalendar;
+			case 'fa':
+				return new PersianCalendar;
+			case 'he':
+			case 'yi':
+				return new JewishCalendar;
+			default:
+				return new GregorianCalendar;
+		}
 	}
 }
