@@ -45,7 +45,6 @@ fieldset,
 .facts_label,
 .facts_label03,
 .facts_value,
-.lifespan_outer,
 .list_label,
 .list_label_wrap,
 .list_value,
@@ -254,10 +253,6 @@ hr {
 .news_box:target,
 #gedcom_stats:target {
 	background-color: #ffc;
-}
-
-.person_box_lifespan {
-	display: inline;
 }
 
 /* families tab person box */
@@ -813,39 +808,6 @@ a:hover .nameZoom {
 .old {
 	border: solid red 1px;
 	overflow: hidden;
-}
-
-a.showit {
-	position: relative;
-	z-index: 24;
-	text-decoration: none;
-}
-
-a.showit:hover {
-	z-index: 25;
-	background-color: #ff9;
-	cursor: crosshair;
-}
-
-a.showit > span {
-	display: none;
-}
-
-a.showit:hover > span {
-	display: block;
-	position: absolute;
-	top: 22px;
-	left: 0;
-	width: 225px;
-	border: 2px solid #000;
-	border-left: 15px outset;
-	padding: 3px;
-	background-color: #444;
-	color: #fff;
-	font-size: 15px;
-	text-align: left;
-	opacity: .85;
-	z-index: 5;
 }
 
 .tag_cloud {
@@ -3435,57 +3397,79 @@ table.table-census-assistant th {
 }
 
 /*-- Lifespan ---- */
-#lifespan-page .person0 {
-	padding: 5px;
+#lifespan-forms {
+	display: table;
+	margin:  0 auto;
 }
 
-#lifespan-page .person0 div{
-	text-align: center;
+#lifespan-forms form {
+	display: table-cell;
+	padding: 3px 0;
 }
 
-#lifespan_chart .div-controls {
-	opacity: 0.67;
+#lifespan-forms div {
+	display: table-row;
+}
+
+#lifespan-forms label,
+#lifespan-forms span {
+	display: table-cell;
+	border:  none;
+}
+
+#lifespan-page .total {
+	font-weight: bold;
+}
+
+#lifespan-chart {
+	padding:    0 10px 10px;
+	margin:     10px auto;
+	min-height: 500px;
+}
+
+#lifespan-scale {
+	background:  transparent url(images/lifespan-chunk.png) repeat-x left bottom;
+	height:      55px;
+	display:     inline-block;
+	white-space: nowrap;
+}
+
+#lifespan-scale .date {
+	display: inline-block;
+	width:   50px;
+}
+
+[dir='rtl'] #lifespan-scale .date {
+	text-align: right;
+}
+
+#lifespan-people {
 	position: relative;
-	top: 80px;
-	width: 180px;
-	z-index: 100;
-	margin-left: 20px;
 }
 
-.lifespan_people span:first-letter {
-	font-variant: small-caps;
-	font-size: 16px;
-	padding: 1px;
-}
-
-.lifespan_outer {
-	position: relative;
-	width: 99.5%;
-	height: 600px;
-	overflow: hidden;
-	border: solid #00f 1px;
-}
-
-.lifespan_outer a:hover {
-	color: #f00;
-	text-decoration: none;
-}
-
-.lifespan_timeline {
+#lifespan-people > div {
 	position: absolute;
-	width: 100%;
-	left: -10px;
-	top: -65px;
-	z-index: 2;
-	background-color: #fff;
+	padding:  0;
+	height:   20px;
 }
 
-.lifespan_people {
-	position: absolute;
-	width: 500px;
-	left: -10px;
-	top: -60px;
-	z-index: 1;
+#lifespan-people .itr {
+	display: inline;
+}
+
+#lifespan-people .popup div:first-of-type {
+	font-weight: 900;
+}
+
+#lifespan-people .popup {
+	left:        0;
+	right:       auto;
+	white-space: nowrap;
+}
+
+[dir='rtl'] #lifespan-people .popup {
+	left:  auto;
+	right: 0;
 }
 
 /*-- Pedigree ---- */
@@ -3790,12 +3774,6 @@ a.icon-ldarrow:hover {
 	background-image: url(images/ldarrow2.png);
 }
 
-.icon-lifespan-chunk {
-	width: 50px;
-	height: 37px;
-	background-image: url(images/lifespan-chunk.png);
-}
-
 .icon-loading-small {
 	width: 16px;
 	height: 16px;
@@ -3806,30 +3784,6 @@ a.icon-ldarrow:hover {
 	width: 32px;
 	height: 32px;
 	background-image: url(images/loading.gif);
-}
-
-.icon-lsdnarrow {
-	width: 48px;
-	height: 48px;
-	background-image: url(images/lifespan-down.png);
-}
-
-.icon-lsltarrow {
-	width: 48px;
-	height: 48px;
-	background-image: url(images/lifespan-left.png);
-}
-
-.icon-lsrtarrow {
-	width: 48px;
-	height: 48px;
-	background-image: url(images/lifespan-right.png);
-}
-
-.icon-lsuparrow {
-	width: 48px;
-	height: 48px;
-	background-image: url(images/lifespan-up.png);
 }
 
 .icon-media {
@@ -5359,19 +5313,9 @@ footer .error {
 		vertical-align: middle;
 	}
 
-	.lifespan_outer {
+	#lifespan-chart {
+		margin: 0;
 		border: 0;
-		height: auto;
-		overflow: visible;
-		position: relative;
-		width: auto;
-	}
-
-	.lifespan_people {
-		left: -10px;
-		position: absolute;
-		top: -60px;
-		width: auto;
-		z-index: 1;
+		padding: 0;
 	}
 }
