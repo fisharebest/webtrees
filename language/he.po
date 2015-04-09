@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-04-05 21:47+0100\n"
-"PO-Revision-Date: 2015-04-09 06:04+0100\n"
+"PO-Revision-Date: 2015-04-09 13:57+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
@@ -13790,7 +13790,7 @@ msgstr "המשפחה עברה עריכה. מפקח צריך לסקור את הש
 #: family.php:56
 #, php-format
 msgid "This family has been edited.  You should review the changes and then %1$s or %2$s them."
-msgstr "המשפחה הזו עודכנה. עליך לסקור את השינויים ואח״כ %1$s או %2$s אותם."
+msgstr "המשפחה הזו עודכנה. סקור את השינויים ואח״כ %1$s או %2$s אותם."
 
 #: includes/functions/functions_charts.php:406
 #: includes/functions/functions_charts.php:543
@@ -13864,7 +13864,7 @@ msgstr "האדם עבר עריכה. מפקח צריך לסקור את השינו
 #: individual.php:66
 #, php-format
 msgid "This individual has been edited.  You should review the changes and then %1$s or %2$s them."
-msgstr "האדם הזה עודכן. עליך לסקור את השינויים ואח״כ %1$s או %2$s אותם."
+msgstr "האדם הזה עודכן. סקור את השינויים ואח״כ %1$s או %2$s אותם."
 
 #. I18N: Help text for the “Default individual” configuration setting
 #: admin_trees_config.php:708 admin_users.php:579 edituser.php:196
@@ -13909,10 +13909,10 @@ msgstr "זהו קישור לרשומה שלך בעץ המשפחה. אם זה א�
 #: admin_trees_config.php:1591
 msgid "This is a summary of the <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr> ordinances for the individual.  “B” indicates an LDS baptism.  “E” indicates an LDS endowment.  “S” indicates an LDS spouse sealing.  “P” indicates an LDS child-to-parent sealing."
 msgstr ""
-"זהו סיכום של חוק המורמונים (LDS ordinances) של אדם<abbr title=\"כנסיית ישו "
-"המשיח של קדושי אחרית ימים\">”LDS</abbr>.”B” מצביע על טבילת מורמונים.”E” "
-"מצביע על סמיכה של מיקדש המורמונים.”S” מצביע על חותמת מורמונים של בן/בת "
-"זוג.”P” מצביע על חותמת מורמונים של ילד אל הורה."
+"זהו סיכום של חוק המורמונים <abbr title=\"כנסיית ישו המשיח של קדושי אחרית "
+"ימים\">LDS</abbr> של אדם.”B” מצביע על טבילת מורמונים.”E” מצביע על סמיכה של "
+"מיקדש המורמונים.”S” מצביע על חותמת מורמונים של בן/בת זוג.”P” מצביע על חותמת "
+"מורמונים של ילד אל הורה."
 
 #: help_text.php:322
 msgid "This is an optional status field and is used mostly for LDS ordinances as they are run through the TempleReady program."
@@ -14060,7 +14060,7 @@ msgstr "על ישות המדיה הזו בוצעה עריכה. מפקח צריך
 #: mediaviewer.php:56
 #, php-format
 msgid "This media object has been edited.  You should review the changes and then %1$s or %2$s them."
-msgstr "ישות המדיה הזו עודכנה. עליך לסקור את השינויים ואח״כ %1$s או %2$s אותן."
+msgstr "ישות המדיה הזו עודכנה. סקור את השינויים ואח״כ %1$s או %2$s אותן."
 
 #: admin_media.php:564 find.php:573
 msgid "This media object is not linked to any other record."
@@ -14106,7 +14106,7 @@ msgstr "ההערה עברה עריכה. מפקח צריך לסקור את השי
 #: note.php:56
 #, php-format
 msgid "This note has been edited.  You should review the changes and then %1$s or %2$s them."
-msgstr "ההערה הזו עודכנה. עליך לסקור את השינויים ואח״כ %1$s או %2$s אותם."
+msgstr "ההערה הזו עודכנה. סקור את השינויים ואח״כ %1$s או %2$s אותם."
 
 #. I18N: Help text for the “Show all notes and source references on notes and sources tabs” configuration setting
 #: admin_trees_config.php:1674
@@ -14170,8 +14170,8 @@ msgstr "דף זה מאפשר לך לעקוף את הטפסים הרגילים, �
 #, php-format
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
-msgstr[0] "דף זה נצפה פעם אחת"
-msgstr[1] "דף זה נצפה %s פעמים"
+msgstr[0] "דף זה נצפה פעם אחת."
+msgstr[1] "דף זה נצפה %s פעמים."
 
 #: app/Module/GoogleMapsModule.php:2850
 msgid "This place has no coordinates"
@@ -14203,7 +14203,7 @@ msgstr "המאגר עבר עריכה. מפקח צריך לסקור את השינ
 #: repo.php:56
 #, php-format
 msgid "This repository has been edited.  You should review the changes and then %1$s or %2$s them."
-msgstr "המאגר הזה עודכן. עליך לסקור את השינויים ואח״כ %1$s או %2$s אותם."
+msgstr "המאגר הזה עודכן. סקור את השינויים ואח״כ %1$s או %2$s אותם."
 
 #: admin_users.php:534
 msgid "This role has all the permissions of the editor role, plus permission to approve/reject changes made by other users."
@@ -14262,7 +14262,7 @@ msgstr "המקור עבר עריכה. מפקח צריך לסקור את השינ
 #: source.php:56
 #, php-format
 msgid "This source has been edited.  You should review the changes and then %1$s or %2$s them."
-msgstr "המקור הזה עודכן. עליך לסקור את השינויים ואח״כ %1$s או %2$s אותם."
+msgstr "המקור הזה עודכן. סקור את השינויים ואח״כ %1$s או %2$s אותם."
 
 #: app/Module/GoogleMapsModule.php:419
 msgid "This specifies the precision of the different levels when entering new geographic locations.  For example a country will be specified with precision 0 (=0 digits after the decimal point), while a town needs 3 or 4 digits."
@@ -15682,7 +15682,7 @@ msgstr "שלחת את ההודעה הבאה למשתמש webtrees:"
 
 #: admin_site_upgrade.php:97
 msgid "You should accept or reject all pending changes before upgrading."
-msgstr "אתה צריך לקבל או לדחות את כל השינויים הממתינים לפני השדרוג."
+msgstr "לפני השדרוג אשר או דחה את כל השינויים הממתינים."
 
 #: admin_site_upgrade.php:196
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
@@ -15832,13 +15832,13 @@ msgstr "בערך %s"
 #: source.php:57
 msgctxt "You should review the changes and then accept or reject them."
 msgid "accept"
-msgstr "לקבל"
+msgstr "אשר"
 
 #: family.php:39 individual.php:49 mediaviewer.php:39 note.php:39 repo.php:39
 #: source.php:39
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "accept"
-msgstr "לקבל"
+msgstr "אשר"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:54
@@ -18790,13 +18790,13 @@ msgstr "רשומות"
 #: source.php:58
 msgctxt "You should review the changes and then accept or reject them."
 msgid "reject"
-msgstr "לדחות"
+msgstr "דחה"
 
 #: family.php:40 individual.php:50 mediaviewer.php:40 note.php:40 repo.php:40
 #: source.php:40
 msgctxt "You should review the deletion and then accept or reject it."
 msgid "reject"
-msgstr "לדחות"
+msgstr "דחה"
 
 #. I18N: the status of an edit accepted/rejected/pending
 #: admin_site_change.php:55
