@@ -164,8 +164,10 @@ case 'load_json':
 	$data = Database::prepare($sql_select . $where . $order_by . $limit)->execute($args)->fetchAll(PDO::FETCH_NUM);
 	foreach ($data as &$datum) {
 		$datum[2] = Filter::escapeHtml($datum[2]);
-		$datum[4] = Filter::escapeHtml($datum[4]);
-		$datum[5] = Filter::escapeHtml($datum[5]);
+		$datum[3] = '<span dir="auto">' . Filter::escapeHtml($datum[3]) . '</span>';
+		$datum[4] = '<span dir="auto">' . Filter::escapeHtml($datum[4]) . '</span>';
+		$datum[5] = '<span dir="auto">' . Filter::escapeHtml($datum[5]) . '</span>';
+		$datum[6] = '<span dir="auto">' . Filter::escapeHtml($datum[6]) . '</span>';
 	}
 
 	// Total filtered/unfiltered rows
