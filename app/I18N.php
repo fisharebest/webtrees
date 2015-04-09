@@ -16,6 +16,11 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\ExtCalendar\ArabicCalendar;
+use Fisharebest\ExtCalendar\CalendarInterface;
+use Fisharebest\ExtCalendar\GregorianCalendar;
+use Fisharebest\ExtCalendar\JewishCalendar;
+use Fisharebest\ExtCalendar\PersianCalendar;
 use Fisharebest\Localization\Locale;
 use Fisharebest\Localization\Locale\LocaleEnUs;
 use Fisharebest\Localization\Locale\LocaleInterface;
@@ -853,5 +858,24 @@ class I18N {
 	 */
 	public static function weekendStart() {
 		return self::$locale->territory()->weekendStart();
+	}
+
+	/**
+	 * Which calendar prefered in this locale?
+	 *
+	 * @return CalendarInterface
+	 */
+	public static function defaultCalendar() {
+		switch (self::$locale->languageTag()) {
+			case 'ar':
+				return new ArabicCalendar;
+			case 'fa':
+				return new PersianCalendar;
+			case 'he':
+			case 'yi':
+				return new JewishCalendar;
+			default:
+				return new GregorianCalendar;
+		}
 	}
 }
