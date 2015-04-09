@@ -4495,6 +4495,18 @@ footer {
 	background-image: url(images/user_add.png);
 }
 
+.language-selection {
+	display: table;
+}
+
+.language-selection span {
+	display: table-row;
+}
+
+.language-selection label {
+	display: table-cell;
+}
+
 @media print {
 	header,
 	footer,
