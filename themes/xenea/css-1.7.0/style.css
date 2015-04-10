@@ -2001,6 +2001,7 @@ dd .deletelink {
 
 .markdown table {
 	border-collapse: collapse;
+	margin-bottom: 5px;
 }
 
 .markdown th {

@@ -1997,6 +1997,7 @@ dd .deletelink {
 .markdown table {
 	border-collapse: collapse;
 	font-size: 10px;
+	margin-bottom: 8px;
 }
 
 .markdown th {
