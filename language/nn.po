@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-04-05 21:47+0100\n"
-"PO-Revision-Date: 2015-04-11 06:32+0100\n"
+"PO-Revision-Date: 2015-04-11 06:36+0100\n"
 "Last-Translator: H R Nilsen <hrnwebtrees@yahoo.com>\n"
 "Language-Team: Norwegian Nynorsk "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/nn/>\n"
@@ -7846,7 +7846,7 @@ msgstr "LDS endowment"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1586
 msgid "LDS ordinance codes in chart boxes"
-msgstr "Ordinanskodar i diagram (mormon)"
+msgstr "LDS ordinasjonskodar i diagram"
 
 #. I18N: gedcom tag SLGS
 #: app/Gedcom/GedcomTag.php:781
