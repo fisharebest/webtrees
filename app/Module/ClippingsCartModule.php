@@ -336,12 +336,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 					</tr>
 					<tr>
 						<td class="descriptionbox width50 wrap">
-							<?php echo I18N::translate('Include media (automatically zips files)'), help_link('include_media'); ?>
+							<?php echo I18N::translate('Include media (automatically zips files)'); ?>
 						</td>
 					<td class="optionbox"><input type="checkbox" name="IncludeMedia" value="yes"></td></tr>
 
 					<?php if (Auth::isManager($WT_TREE)) {	?>
-						<tr><td class="descriptionbox width50 wrap"><?php echo I18N::translate('Apply privacy settings'), help_link('apply_privacy'); ?></td>
+						<tr><td class="descriptionbox width50 wrap"><?php echo I18N::translate('Apply privacy settings'); ?></td>
 						<td class="optionbox">
 							<input type="radio" name="privatize_export" value="none" checked> <?php echo I18N::translate('None'); ?><br>
 							<input type="radio" name="privatize_export" value="gedadmin"> <?php echo I18N::translate('Manager'); ?><br>
@@ -349,17 +349,17 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 							<input type="radio" name="privatize_export" value="visitor"> <?php echo I18N::translate('Visitor'); ?>
 						</td></tr>
 					<?php } elseif (Auth::isMember($WT_TREE)) { ?>
-						<tr><td class="descriptionbox width50 wrap"><?php echo I18N::translate('Apply privacy settings'), help_link('apply_privacy'); ?></td>
+						<tr><td class="descriptionbox width50 wrap"><?php echo I18N::translate('Apply privacy settings'); ?></td>
 						<td class="optionbox">
 							<input type="radio" name="privatize_export" value="user" checked> <?php echo I18N::translate('Member'); ?><br>
 							<input type="radio" name="privatize_export" value="visitor"> <?php echo I18N::translate('Visitor'); ?>
 						</td></tr>
 					<?php } ?>
 
-					<tr><td class="descriptionbox width50 wrap"><?php echo I18N::translate('Convert from UTF-8 to ISO-8859-1'), help_link('utf8_ansi'); ?></td>
+					<tr><td class="descriptionbox width50 wrap"><?php echo I18N::translate('Convert from UTF-8 to ISO-8859-1'); ?></td>
 					<td class="optionbox"><input type="checkbox" name="convert" value="yes"></td></tr>
 
-					<tr><td class="descriptionbox width50 wrap"><?php echo I18N::translate('Add the GEDCOM media path to filenames'), help_link('GEDCOM_MEDIA_PATH'); ?></td>
+					<tr><td class="descriptionbox width50 wrap"><?php echo I18N::translate('Add the GEDCOM media path to filenames'); ?></td>
 					<td class="optionbox">
 						<input type="checkbox" name="conv_path" value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')); ?>">
 						<span dir="auto"><?php echo Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')); ?></span>
@@ -653,13 +653,13 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 		<tr><td class="descriptionbox width50 wrap">'. I18N::translate('Zip file(s)') . '</td>
 		<td class="optionbox"><input type="checkbox" name="Zip" value="yes" checked></td></tr>
 
-		<tr><td class="descriptionbox width50 wrap">'. I18N::translate('Include media (automatically zips files)') . help_link('include_media') . '</td>
+		<tr><td class="descriptionbox width50 wrap">'. I18N::translate('Include media (automatically zips files)') . '</td>
 		<td class="optionbox"><input type="checkbox" name="IncludeMedia" value="yes" checked></td></tr>
 		';
 
 		if (Auth::isManager($WT_TREE)) {
 			$out .=
-				'<tr><td class="descriptionbox width50 wrap">' . I18N::translate('Apply privacy settings') . help_link('apply_privacy') . '</td>' .
+				'<tr><td class="descriptionbox width50 wrap">' . I18N::translate('Apply privacy settings') . '</td>' .
 				'<td class="optionbox">' .
 				'	<input type="radio" name="privatize_export" value="none" checked> ' . I18N::translate('None') . '<br>' .
 				'	<input type="radio" name="privatize_export" value="gedadmin"> ' . I18N::translate('Manager') . '<br>' .
@@ -668,7 +668,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 				'</td></tr>';
 		} elseif (Auth::isMember($WT_TREE)) {
 			$out .=
-				'<tr><td class="descriptionbox width50 wrap">' . I18N::translate('Apply privacy settings') . help_link('apply_privacy') . '</td>' .
+				'<tr><td class="descriptionbox width50 wrap">' . I18N::translate('Apply privacy settings') . '</td>' .
 				'<td class="list_value">' .
 				'	<input type="radio" name="privatize_export" value="user" checked> ' . I18N::translate('Member') . '<br>' .
 				'	<input type="radio" name="privatize_export" value="visitor"> ' . I18N::translate('Visitor') .
@@ -676,11 +676,11 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 		}
 
 		$out .= '
-		<tr><td class="descriptionbox width50 wrap">'. I18N::translate('Convert from UTF-8 to ISO-8859-1') . help_link('utf8_ansi') . '</td>
+		<tr><td class="descriptionbox width50 wrap">'. I18N::translate('Convert from UTF-8 to ISO-8859-1') . '</td>
 		<td class="optionbox"><input type="checkbox" name="convert" value="yes"></td></tr>
 
 		<tr>
-		<td class="descriptionbox width50 wrap">'. I18N::translate('Add the GEDCOM media path to filenames') . help_link('GEDCOM_MEDIA_PATH') . '</td>
+		<td class="descriptionbox width50 wrap">'. I18N::translate('Add the GEDCOM media path to filenames') . '</td>
 		<td class="optionbox">
 		<input type="checkbox" name="conv_path" value="' . Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')) . '">
 		<span dir="auto">' . Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')) . '</span></td>
