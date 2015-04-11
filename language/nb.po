@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-04-05 21:47+0100\n"
-"PO-Revision-Date: 2015-04-11 06:57+0100\n"
+"PO-Revision-Date: 2015-04-11 07:00+0100\n"
 "Last-Translator: H R Nilsen <hrnwebtrees@yahoo.com>\n"
 "Language-Team: Norwegian Bokmål "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/nb/>\n"
@@ -4288,7 +4288,7 @@ msgstr "Dato for barns besegling (mormon)"
 
 #: app/Gedcom/GedcomTag.php:415
 msgid "Date of LDS endowment"
-msgstr "Dato for Mormonerlegat"
+msgstr "Dato for LDS endowment"
 
 #: app/Gedcom/GedcomTag.php:467
 msgid "Date of LDS spouse sealing"
@@ -7837,12 +7837,12 @@ msgstr "Mormonkonfirmasjon"
 #. I18N: gedcom tag ENDL
 #: app/Gedcom/GedcomTag.php:413
 msgid "LDS endowment"
-msgstr "Mormonerlegat"
+msgstr "LDS endowment"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1586
 msgid "LDS ordinance codes in chart boxes"
-msgstr "Ordinanskoder i diagram (mormon)"
+msgstr "LDS ordinasjonskoder i diagram"
 
 #. I18N: gedcom tag SLGS
 #: app/Gedcom/GedcomTag.php:781
@@ -10457,7 +10457,7 @@ msgstr "Sted for barns besegling (mormon)"
 
 #: app/Gedcom/GedcomTag.php:417
 msgid "Place of LDS endowment"
-msgstr "Sted for Mormonerlegat"
+msgstr "Sted for LDS endowment"
 
 #: app/Gedcom/GedcomTag.php:469
 msgid "Place of LDS spouse sealing"
