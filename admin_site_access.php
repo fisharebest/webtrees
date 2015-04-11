@@ -335,8 +335,9 @@ default:
 				processing: true,
 				stateSave: true,
 				stateDuration: 180,
+				sorting: [[1, "asc"]],
 				columns: [
-					/* 0 <edit>                  */ { sortable: false, class: "center" },
+					/* 0 <edit>                  */ { sortable: false },
 					/* 1 ip_address_start        */ { dataSort: 2, class: "ip_address" },
 					/* 2 ip_address_start (sort) */ { type: "num", visible: false },
 					/* 3 ip_address_end          */ { dataSort: 4, class: "ip_address" },

@@ -810,7 +810,7 @@ default:
 				},
 				autoWidth: false,
 				pageLength: ' . Auth::user()->getPreference('admin_users_page_size', 10) . ',
-				sorting: [[2,"asc"]],
+				sorting: [[2, "asc"]],
 				columns: [
 					/* details           */ { sortable: false },
 					/* user-id           */ { visible: false },
@@ -822,8 +822,8 @@ default:
 					/* registered        */ { dataSort: 7 },
 					/* last_login (sort) */ { visible: false },
 					/* last_login        */ { dataSort: 9 },
-					/* verified          */ { class: "center" },
-					/* approved          */ { class: "center" }
+					/* verified          */ null,
+					/* approved          */ null
 				]
 			})
 			.fnFilter("' . Filter::get('filter') . '"); // View details of a newly created user
