@@ -394,13 +394,13 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			))->fetchAll();
 
 		$min_block_order = Database::prepare(
-			"SELECT MIN(block_order) FROM `##block` WHERE module_name = 'faq' AND gedcom_id = :tree_id"
+			"SELECT MIN(block_order) FROM `##block` WHERE module_name = 'faq' AND (gedcom_id = :tree_id OR gedcom_id IS NULL)"
 		)->execute(array(
 			'tree_id' => $WT_TREE->getTreeId(),
 		))->fetchOne();
 
 		$max_block_order = Database::prepare(
-			"SELECT MAX(block_order) FROM `##block` WHERE module_name = 'faq' AND gedcom_id = :tree_id"
+			"SELECT MAX(block_order) FROM `##block` WHERE module_name = 'faq' AND (gedcom_id = :tree_id OR gedcom_id IS NULL)"
 		)->execute(array(
 			'tree_id' => $WT_TREE->getTreeId(),
 		))->fetchOne();
