@@ -63,7 +63,7 @@ class PageController extends BaseController {
 	}
 
 	/**
-	 * Some pages will want to display this as <h2> $page_title </h2>
+	 * Some pages will want to display this as <h1> $page_title </h1>
 	 *
 	 * @return string
 	 */

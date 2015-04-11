@@ -150,7 +150,7 @@ function edit_language_checkboxes($parameter_name, $accepted_languages) {
 		$html .= '</label>';
 		$html .= '</div>';
 	}
-	
+
 	return $html;
 }
 
