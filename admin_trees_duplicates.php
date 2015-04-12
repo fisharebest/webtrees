@@ -76,7 +76,7 @@ $individuals = Database::prepare(
 	"SELECT DISTINCT GROUP_CONCAT(d_gid ORDER BY d_gid) AS xrefs" .
 	" FROM `##dates` AS d" .
 	" JOIN `##name` ON d_file = n_file AND d_gid = n_id" .
-	" WHERE d_file = 13 AND d_fact IN ('BIRT', 'CHR', 'BAPM', 'DEAT', 'BURI')" .
+	" WHERE d_file = :tree_id AND d_fact IN ('BIRT', 'CHR', 'BAPM', 'DEAT', 'BURI')" .
 	" GROUP BY d_day, d_month, d_year, d_type, d_fact, n_type, n_full" .
 	" HAVING COUNT(DISTINCT d_gid) > 1"
 )->execute(array(
