@@ -437,6 +437,16 @@ $controller->pageHeader();
 							<?php echo /* I18N: Individuals, sources, dates, places, etc. */ I18N::translate('Genealogy data'); ?>
 						</h3>
 						<ul class="fa-ul">
+							<!-- FIND DUPLICATES -->
+							<li>
+								<i class="fa fa-li fa-copy"></i>
+								<a href="admin_trees_duplicates.php?ged=<?php echo $tree->getNameUrl(); ?>">
+									<?php echo I18N::translate('Find duplicates'); ?>
+									<span class="sr-only">
+										<?php echo $tree->getTitleHtml(); ?>
+									</span>
+								</a>
+							</li>
 							<!-- MERGE -->
 							<li>
 								<i class="fa fa-li fa-code-fork"></i>

@@ -168,11 +168,6 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 			->addInlineJavascript('autocomplete();');
 	?>
 		<tr>
-			<td colspan="2">
-				<?php echo I18N::translate('This block allows a pedigree, descendancy, or hourglass chart to appear on your “My page” or the “Home page”.  Because of space limitations, the charts should be placed only on the left side of the page.<br><br>When this block appears on the “Home page”, the root individual and the type of chart to be displayed are determined by the administrator.  When this block appears on the user’s “My page”, these options are determined by the user.<br><br>The behavior of these charts is identical to their behavior when they are called up from the menus.  Click on the box of an individual to see more details about them.'); ?>
-			</td>
-		</tr>
-		<tr>
 			<td class="descriptionbox wrap width33"><?php echo I18N::translate('Chart type'); ?></td>
 			<td class="optionbox">
 				<?php echo select_edit_control('type',
@@ -198,7 +193,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 				echo print_findindi_link('pid');
 				$root = Individual::getInstance($pid, $WT_TREE);
 				if ($root) {
-					echo ' <span class="list_item">', $root->getFullName(), $root->format_first_major_fact(WT_EVENTS_BIRT, 1), '</span>';
+					echo ' <span class="list_item">', $root->getFullName(), $root->formatFirstMajorFact(WT_EVENTS_BIRT, 1), '</span>';
 				}
 				?>
 			</td>

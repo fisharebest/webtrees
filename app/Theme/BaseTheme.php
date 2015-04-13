@@ -1987,7 +1987,16 @@ abstract class BaseTheme {
 	 * @return string[]
 	 */
 	protected function stylesheets() {
-		return array();
+		$stylesheets = array(
+			WT_BOOTSTRAP_CSS_URL,
+			WT_FONT_AWESOME_CSS_URL,
+		);
+
+		if (I18N::direction() === 'rtl') {
+			$stylesheets[] = WT_BOOTSTRAP_RTL_CSS_URL;
+		}
+
+		return $stylesheets;
 	}
 
 	/**

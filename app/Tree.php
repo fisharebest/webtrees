@@ -143,7 +143,7 @@ class Tree {
 	 * @return string
 	 */
 	public function getTitleHtml() {
-		return Filter::escapeHtml($this->title);
+		return '<span dir="auto">' . Filter::escapeHtml($this->title) . '</span>';
 	}
 
 	/**

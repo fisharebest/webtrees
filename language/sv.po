@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-04-05 21:47+0100\n"
-"PO-Revision-Date: 2015-04-07 22:05+0100\n"
+"PO-Revision-Date: 2015-04-09 13:08+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Swedish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
@@ -5630,7 +5630,7 @@ msgstr "Esfand"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1289
 msgid "Estimated dates for birth and death"
-msgstr "Uppskattade datum för födelse och död"
+msgstr "Beräknade datum för födelse och död"
 
 #: app/Stats.php:6127
 msgid "Estonia"
@@ -14243,7 +14243,10 @@ msgstr "Visa ålder för föräldrar intill barnets födelsedatum i tavlor."
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: admin_trees_config.php:1294
 msgid "This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known."
-msgstr "Här bestäms om du visar uppskattad födelse- och dödsdatum, eller ifall de saknas, lämnas tomma i personlistor och -diagram."
+msgstr ""
+"Det här alternativet bestämmer om vi visar beräknade datum för födelse och "
+"död istället för att lämna dem tomma på individuella listor och tavlor för "
+"personer vars datum är okända."
 
 #. I18N: Help text for the “Gender icon on charts” configuration setting
 #: admin_trees_config.php:1565

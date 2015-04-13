@@ -280,7 +280,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 				'<option value="__default__" ', $sel_default, '>', I18N::translate('Default'), '</option>';
 			foreach (Tree::getAll() as $tree) {
 				if ($tree->getName() === $gedcom) {$sel = 'selected'; } else {$sel = ''; }
-				echo '<option value="', $tree->getNameHtml(), '" ', $sel, ' dir="auto">', $tree->getTitleHtml(), '</option>';
+				echo '<option value="', $tree->getNameHtml(), '" ', $sel, '>', $tree->getTitleHtml(), '</option>';
 			}
 			echo '</select>';
 			echo '</td></tr>';

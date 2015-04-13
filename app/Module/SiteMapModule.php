@@ -282,7 +282,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 			<li><a href="admin_modules.php"><?php echo I18N::translate('Module administration'); ?></a></li>
 			<li class="active"><?php echo $controller->getPageTitle(); ?></li>
 		</ol>
-		<h2><?php echo $controller->getPageTitle(); ?></h2>
+		<h1><?php echo $controller->getPageTitle(); ?></h1>
 		<?php
 
 		echo
@@ -294,12 +294,12 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 			'<form method="post" action="module.php?mod=' . $this->getName() . '&amp;mod_action=admin">',
 		'<input type="hidden" name="action" value="save">';
 		foreach (Tree::getAll() as $tree) {
-			echo '<p><input type="checkbox" name="include', $tree->getTreeId(), '" ';
+			echo '<div class="checkbox"><label><input type="checkbox" name="include', $tree->getTreeId(), '" ';
 			if ($tree->getPreference('include_in_sitemap')) {
 				echo 'checked';
 				$include_any = true;
 			}
-			echo '>', $tree->getTitleHtml(), '</p>';
+			echo '>', $tree->getTitleHtml(), '</label></div>';
 		}
 		echo
 		'<input type="submit" value="', I18N::translate('save'), '">',

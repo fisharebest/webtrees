@@ -132,7 +132,7 @@ $people = count($controller->people);
 
 ?>
 <div id="lifespan-page">
-<h2><?php echo I18N::translate('Lifespans'), help_link('lifespan_chart'); ?></h2>
+<h2><?php echo I18N::translate('Lifespans'); ?></h2>
 	<table>
 		<tr>
 			<td>
