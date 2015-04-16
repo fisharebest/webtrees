@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-04-05 21:47+0100\n"
-"PO-Revision-Date: 2015-04-16 19:18+0100\n"
-"Last-Translator: Andreas Rauhut <andreas@rauhut.eu>\n"
+"PO-Revision-Date: 2015-04-16 19:20+0100\n"
+"Last-Translator: Rico Sonntag <mail@ricosonntag.de>\n"
 "Language-Team: German "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -4229,7 +4229,7 @@ msgstr "Dallas, Texas"
 #. I18N: A summary of the system status
 #: admin.php:399
 msgid "Dashboard"
-msgstr ""
+msgstr "Übersicht"
 
 #. I18N: gedcom tag DATA
 #: app/Gedcom/GedcomTag.php:343
