@@ -617,7 +617,7 @@ $controller->pageHeader();
 			</legend>
 			<div class="col-sm-9" style="columns: 4 150px;-moz-columns: 4 150px;">
 				<?php foreach (I18N::installedLocales() as $locale): ?>
-					<div>
+					<div class="checkbox">
 						<label title="<?php echo $locale->languageTag(); ?>">
 							<input type="checkbox" name="LANGUAGES[]" value="<?php echo $locale->languageTag(); ?>" <?php echo in_array($locale->languageTag(), $language_tags) ? 'checked' : ''; ?>>
 							<?php echo $locale->endonym(); ?>

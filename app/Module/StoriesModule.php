@@ -189,6 +189,8 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 					CkeditorModule::enableEditor($controller);
 				}
 
+				$individual = Individual::getInstance($xref, $WT_TREE);
+
 				?>
 				<ol class="breadcrumb small">
 					<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
@@ -198,45 +200,64 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 				</ol>
 
 				<h1><?php echo $controller->getPageTitle(); ?></h1>
-				<?php
 
-				echo '<form name="story" method="post" action="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">';
-				echo Filter::getCsrf();
-				echo '<input type="hidden" name="save" value="1">';
-				echo '<input type="hidden" name="block_id" value="', $block_id, '">';
-				echo '<input type="hidden" name="gedcom_id" value="', $WT_TREE->getTreeId(), '">';
-				echo '<table id="story_module">';
-				echo '<tr><th>';
-				echo I18N::translate('Story title');
-				echo '</th></tr><tr><td><textarea name="title" rows="1" cols="90" tabindex="2">', Filter::escapeHtml($title), '</textarea></td></tr>';
-				echo '<tr><th>';
-				echo I18N::translate('Story');
-				echo '</th></tr><tr><td>';
-				echo '<textarea name="story_body" class="html-edit" rows="10" cols="90" tabindex="2">', Filter::escapeHtml($story_body), '</textarea>';
-				echo '</td></tr>';
-				echo '</table><table id="story_module2">';
-				echo '<tr>';
-				echo '<th>', I18N::translate('Individual'), '</th>';
-				echo '<th>', I18N::translate('Show this block for which languages?'), '</th>';
-				echo '</tr>';
-				echo '<tr>';
-				echo '<td class="optionbox">';
-				echo '<input data-autocomplete-type="INDI" type="text" name="xref" id="pid" size="4" value="' . $xref . '">';
-				echo print_findindi_link('pid');
-				if ($xref) {
-					$person = Individual::getInstance($xref, $WT_TREE);
-					if ($person) {
-						echo ' ', $person->formatList('span');
-					}
-				}
-				echo '</td>';
-				$languages = explode(',', $this->getBlockSetting($block_id, 'languages'));
-				echo '<td class="optionbox">';
-				echo edit_language_checkboxes('lang', $languages);
-				echo '</td></tr></table>';
-				echo '<p><input type="submit" value="', I18N::translate('save'), '" tabindex="5">';
-				echo '</p>';
-				echo '</form>';
+				<form class="form-horizontal" method="post" action="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_edit">
+					<?php echo Filter::getCsrf(); ?>
+					<input type="hidden" name="save" value="1">
+					<input type="hidden" name="block_id" value="<?php echo $block_id; ?>">
+					<input type="hidden" name="gedcom_id" value="<?php echo $WT_TREE->getTreeId(); ?>">
+
+					<div class="form-group">
+						<label for="title" class="col-sm-3 control-label">
+							<?php echo I18N::translate('Story title'); ?>
+						</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" name="title" id="title" value="<?php echo Filter::escapeHtml($title); ?>">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="story_body" class="col-sm-3 control-label">
+							<?php echo I18N::translate('Story'); ?>
+						</label>
+						<div class="col-sm-9">
+							<textarea name="story_body" id="story_body" class="html-edit form-control" rows="10"><?php echo Filter::escapeHtml($story_body); ?></textarea>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="xref" class="col-sm-3 control-label">
+							<?php echo I18N::translate('Individual'); ?>
+						</label>
+						<div class="col-sm-9">
+							<input data-autocomplete-type="INDI" type="text" name="xref" id="xref" size="4" value="<?php echo $xref; ?>">
+							<?php echo print_findindi_link('xref'); ?>
+							<?php if ($individual): ?>
+								<?php echo $individual->formatList('span'); ?>
+							<?php endif; ?>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="xref" class="col-sm-3 control-label">
+							<?php echo I18N::translate('Show this block for which languages?'); ?>
+						</label>
+						<div class="col-sm-9">
+							<?php echo edit_language_checkboxes('lang', explode(',', $this->getBlockSetting($block_id, 'languages'))); ?>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-offset-3 col-sm-9">
+							<button type="submit" class="btn btn-primary">
+								<i class="fa fa-check"></i>
+								<?php echo I18N::translate('save'); ?>
+							</button>
+						</div>
+					</div>
+
+				</form>
+				<?php
 			}
 		} else {
 			header('Location: ' . WT_BASE_URL);
@@ -347,9 +368,10 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 						<?php echo Filter::escapeHtml($this->getBlockSetting($story->block_id, 'title')); ?>
 					</td>
 					<td>
-						<?php if ($indi = Individual::getInstance($story->xref, $WT_TREE)): ?>
-						<a href="<?php echo $indi->getHtmlUrl(); ?>#stories">
-							<?php echo $indi->getFullName(); ?>
+						<?php $individual = Individual::getInstance($story->xref, $WT_TREE); ?>
+						<?php if ($individual): ?>
+						<a href="<?php echo $individual->getHtmlUrl(); ?>#stories">
+							<?php echo $individual->getFullName(); ?>
 						</a>
 						<?php else: ?>
 							<?php echo $story->xref; ?>

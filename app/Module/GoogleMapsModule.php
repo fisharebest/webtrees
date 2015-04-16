@@ -484,7 +484,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						</tr>
 						<tr>
 							<th>
-								<?php echo I18N::translate('Display short placenames'), help_link('GM_DISP_SHORT_PLACE', 'googlemap'); ?>
+								<?php echo I18N::translate('Display short placenames'); ?>
 							</th>
 							<td>
 								<?php echo edit_field_yes_no('GM_DISP_SHORT_PLACE', $this->getSetting('GM_DISP_SHORT_PLACE'), 'class="radio-inline"'); ?>

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-04-05 21:47+0100\n"
-"PO-Revision-Date: 2015-04-07 22:05+0100\n"
+"PO-Revision-Date: 2015-04-12 16:36+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Swedish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
@@ -219,7 +219,7 @@ msgstr "%s och hans förfäder"
 #: app/Module/ClippingsCartModule.php:261
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr "%s och individerna som refererar den."
+msgstr "%s och personerna som hänför sig till det."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:99
@@ -1204,7 +1204,7 @@ msgstr "Lägg till"
 #: app/Module/ClippingsCartModule.php:625
 #, php-format
 msgid "Add %s to the clippings cart"
-msgstr "Lägg %s till korg"
+msgstr "Lägg %s till i urklippskorgen"
 
 #: app/Module/RelativesTabModule.php:373 edit_interface.php:597
 msgid "Add a child to create a one-parent family"
@@ -1416,7 +1416,7 @@ msgstr "Lägg till i favoriter"
 #: app/Module/ClippingsCartModule.php:384
 #: app/Module/ClippingsCartModule.php:474
 msgid "Add to the clippings cart"
-msgstr "Lägg till klippkorgen"
+msgstr "Lägg till i urklippskorgen"
 
 #: admin_trees_manage.php:495
 msgid "Add unlinked records"
@@ -1862,8 +1862,8 @@ msgstr "Amerikanska Samoa"
 #: admin_site_config.php:475
 msgid "An administrator must approve the new user account and select an access level before the user can log in."
 msgstr ""
-"En administratör måste godkänna det nya användarkontot och välja en "
-"åtkomstnivå innan användaren kan logga in."
+"En administratör godkänner det nya användarkontot och väljer åtkomstnivå "
+"innan användaren kan logga in."
 
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:32
@@ -3737,7 +3737,7 @@ msgstr "Klicka för att välja en person som familjens huvudperson."
 #. I18N: Name of a module
 #: app/Module/ClippingsCartModule.php:28
 msgid "Clippings cart"
-msgstr "Klippkorg"
+msgstr "Urklippskorg"
 
 #: app/Gedcom/GedcomTag.php:1864
 msgid "Coat of arms"
@@ -4324,15 +4324,15 @@ msgstr "Datum för LDS dop"
 
 #: app/Gedcom/GedcomTag.php:775
 msgid "Date of LDS child sealing"
-msgstr "LDS Barns förseglingsdatum"
+msgstr "LDS Barns beseglingsdatum"
 
 #: app/Gedcom/GedcomTag.php:415
 msgid "Date of LDS endowment"
-msgstr "LDS endowment datum"
+msgstr "LDS gåva datum"
 
 #: app/Gedcom/GedcomTag.php:467
 msgid "Date of LDS spouse sealing"
-msgstr "LDS Makes/makas förseglingsdatum"
+msgstr "LDS Makes/makas beseglingsdatum"
 
 #: app/Gedcom/GedcomTag.php:133
 msgid "Date of adoption"
@@ -5009,8 +5009,8 @@ msgstr "Detaljer"
 #: admin_site_config.php:474
 msgid "Details of the new user will be sent to the genealogy contact for the corresponding family tree."
 msgstr ""
-"Detaljer om den nya användaren kommer att skickas till "
-"släktforskningskontaktet för det motsvarande släktträdet."
+"Detaljer om den nya användaren kommer att skickas släktforskarkontakten för "
+"släktträdet ifråga."
 
 #: app/Gedcom/GedcomCodeTemp.php:138
 msgid "Detroit, Michigan"
@@ -5189,7 +5189,7 @@ msgstr "Skapa inte nya platser, importera bara koordinater för befintliga plats
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/Gedcom/GedcomCodeStat.php:87
 msgid "Do not seal, previous sealing cancelled"
-msgstr "(mormon) Försegla inte, tidigare försegling upphävd"
+msgstr "(mormon) Besegling inte, tidigare besegling upphävd"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/Gedcom/GedcomCodeStat.php:83
@@ -5630,7 +5630,7 @@ msgstr "Esfand"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1289
 msgid "Estimated dates for birth and death"
-msgstr "Uppskattade datum för födelse och död"
+msgstr "Beräknade datum för födelse och död"
 
 #: app/Stats.php:6127
 msgid "Estonia"
@@ -6027,7 +6027,7 @@ msgstr "Familj med rada föräldrar"
 #. I18N: “sealing” is a Mormon ceremony.
 #: app/Gedcom/GedcomCodePedi.php:132
 msgid "Family with sealing parents"
-msgstr "Familj med försegling föräldrar"
+msgstr "Familj med besegling föräldrar"
 
 #: app/Theme/BaseTheme.php:925
 msgid "Family with spouse"
@@ -7891,7 +7891,7 @@ msgstr "LDS dop"
 #. I18N: gedcom tag SLGC
 #: app/Gedcom/GedcomTag.php:773
 msgid "LDS child sealing"
-msgstr "LDS Barns försegling"
+msgstr "LDS Barns besegling"
 
 #. I18N: gedcom tag CONL
 #: app/Gedcom/GedcomTag.php:319
@@ -7901,7 +7901,7 @@ msgstr "LDS konfirmation"
 #. I18N: gedcom tag ENDL
 #: app/Gedcom/GedcomTag.php:413
 msgid "LDS endowment"
-msgstr "LDS endowment"
+msgstr "LDS gåva"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1586
@@ -7911,7 +7911,7 @@ msgstr "LDS religiösa förrättningar i diagram rutor"
 #. I18N: gedcom tag SLGS
 #: app/Gedcom/GedcomTag.php:781
 msgid "LDS spouse sealing"
-msgstr "LDS Makes/makas försegling"
+msgstr "LDS Makes/makas besegling"
 
 #: includes/functions/functions_print.php:527
 msgid "LDS temple"
@@ -10523,15 +10523,15 @@ msgstr "Dop ort (mormonkyrkan)"
 
 #: app/Gedcom/GedcomTag.php:777
 msgid "Place of LDS child sealing"
-msgstr "LDS Barns förseglingsplats"
+msgstr "LDS Barns beseglingsplats"
 
 #: app/Gedcom/GedcomTag.php:417
 msgid "Place of LDS endowment"
-msgstr "LDS endowment plats"
+msgstr "LDS gåva plats"
 
 #: app/Gedcom/GedcomTag.php:469
 msgid "Place of LDS spouse sealing"
-msgstr "LDS Makes/makas förseglingsplats"
+msgstr "LDS Makes/makas beseglingsplats"
 
 #: app/Gedcom/GedcomTag.php:135
 msgid "Place of adoption"
@@ -11621,24 +11621,24 @@ msgstr "Urklippsalbum"
 #: app/Gedcom/GedcomCodePedi.php:78
 msgctxt "Female pedigree"
 msgid "Sealing"
-msgstr "Försegling"
+msgstr "Besegling"
 
 #. I18N: “sealing” is a ceremony in the Mormon church.
 #: app/Gedcom/GedcomCodePedi.php:74
 msgctxt "Male pedigree"
 msgid "Sealing"
-msgstr "Försegling"
+msgstr "Besegling"
 
 #. I18N: “sealing” is a ceremony in the Mormon church.
 #: app/Gedcom/GedcomCodePedi.php:82
 msgctxt "Pedigree"
 msgid "Sealing"
-msgstr "Försegling"
+msgstr "Besegling"
 
 #. I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints)
 #: app/Gedcom/GedcomCodeStat.php:66
 msgid "Sealing cancelled (divorce)"
-msgstr "(mormon) Försegling upphävd (skilsmässa)"
+msgstr "(mormon)  Besegling upphävd (skilsmässa)"
 
 #. I18N: button label
 #: app/Module/DescendancyModule.php:89 app/Module/DescendancyModule.php:122
@@ -12050,7 +12050,10 @@ msgstr "Delade anteckningar"
 
 #: help_text.php:312
 msgid "Shared notes are free-form text and will appear in the Fact Details section of the page.<br><br>Each shared note can be linked to more than one individual, family, source, or event."
-msgstr "Delade anteckningar är ett fritt textfält och kommer att visas i faktadetaljsektionen på sidan.<br><br>Varje delad anteckning kan be länkad till mer än en person, familj, källa eller händelse."
+msgstr ""
+"Delade anteckningar är ett fritt textfält och kommer att visas i "
+"faktadetaljsektionen på sidan.<br><br>Varje delad anteckning kan länkas till "
+"mer än en person, familj, källa eller händelse."
 
 #: find.php:648
 msgid "Shared notes found"
@@ -13306,7 +13309,17 @@ msgstr "Ändringar till ”%s” har icke blivit godkända."
 
 #: app/Module/ClippingsCartModule.php:280
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple.  Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name.  There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
-msgstr "Urklippskorgen tillåter dig att göra extrakt (”urklipp”) från detta släktträd och packa ihop dem till en enda nedladdning  och importera den till ditt egna släktforsningsprogram. Den nedladdningsbara filen är inspelad i GEDCOM-format.<br><ul><li>Hur gör man urklipp?<br>Detta är väldigt enkelt. När du ser ett klickbart namn (person, familj eller källa) kan du gå till detaljsidan för namnet. Där kommer du att se valet <b>Lägg till i urklippskorg</b>. När du klickar på länken kommer du att erbjudas flera alternativ att ladda ner.</li><li>Hur laddar man ner?<br>När du har saker i urklippskorgen, kan du ladda ner dem genom att klicka på <b> Ladda ner nu</b> länken. Följ instruktionerna och länkarna.</li></ul>"
+msgstr ""
+"Urklippskorgen tillåter dig att göra extrakt (”urklipp”) från detta "
+"släktträd och packa ihop dem till en enda nedladdning  och importera den "
+"till ditt egna släktforsningsprogram. Den nedladdningsbara filen är inspelad "
+"i GEDCOM-format.<br><ul><li>Hur gör man urklipp?<br>Detta är väldigt enkelt. "
+"När du ser ett klickbart namn (person, familj eller källa) kan du gå till "
+"detaljsidan för namnet. Där kommer du att se valet <b>Lägg till i "
+"urklippskorgen</b>. När du klickar på länken kommer du att erbjudas flera "
+"alternativ att ladda ner.</li><li>Hur laddar man ner?<br>När du har saker i "
+"urklippskorgen, kan du ladda ner dem genom att klicka på <b> Ladda ner nu</b>"
+" länken. Följ instruktionerna och länkarna.</li></ul>"
 
 #: site-unavailable.php:67
 msgid "The database reported the following error message:"
@@ -13549,8 +13562,7 @@ msgstr "De nya filerna ligger för närvarande i mappen %s."
 #: admin_site_config.php:473
 msgid "The new user will be asked to confirm their email address before the account is created."
 msgstr ""
-"Den nya användaren blir ombedd att bekräfta sin e-postadress innan kontot "
-"skapas."
+"Den nya användaren ombeds att bekräfta sin e-postadress innan kontot skapas."
 
 #: help_text.php:380
 msgid "The number of occurrences of the specified name will be shown on the map.  If you leave this field empty, the most common surname will be used."
@@ -14017,9 +14029,9 @@ msgstr "Detta är en länk till din egen datapost i släktträdet. Om det är fe
 msgid "This is a summary of the <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr> ordinances for the individual.  “B” indicates an LDS baptism.  “E” indicates an LDS endowment.  “S” indicates an LDS spouse sealing.  “P” indicates an LDS child-to-parent sealing."
 msgstr ""
 "Detta är en sammanfattning av <abbr title=\"Jesu Kristi Kyrka av Sista "
-"Dagars Heliga\">LDS</abbr> förrättningar för personen. ”B” indikerar en LDS "
-"dop. ”E” indikerar en LDS endowment. ”S” indikerar en LDS makes/makas "
-"försegling. ”P” indikerar en LDS barn-till-föräldrar försegling."
+"Dagars Heliga\">LDS</abbr> förrättningar för personen. ”B” avser ett LDS "
+"dop. ”E” avser en LDS gåva. ”S” avser en LDS makes/makas besegling. ”P” "
+"avser en LDS barn-till-föräldrar besegling."
 
 #: help_text.php:322
 msgid "This is an optional status field and is used mostly for LDS ordinances as they are run through the TempleReady program."
@@ -14243,7 +14255,10 @@ msgstr "Visa ålder för föräldrar intill barnets födelsedatum i tavlor."
 #. I18N: Help text for the “Estimated dates for birth and death” configuration setting
 #: admin_trees_config.php:1294
 msgid "This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known."
-msgstr "Här bestäms om du visar uppskattad födelse- och dödsdatum, eller ifall de saknas, lämnas tomma i personlistor och -diagram."
+msgstr ""
+"Det här alternativet bestämmer om vi visar beräknade datum för födelse och "
+"död istället för att lämna dem tomma på personlistor och tavlor för personer "
+"vars datum är okända."
 
 #. I18N: Help text for the “Gender icon on charts” configuration setting
 #: admin_trees_config.php:1565

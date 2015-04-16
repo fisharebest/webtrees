@@ -467,7 +467,7 @@ a:hover .nameZoom {
 }
 
 .subheaders {
-	color: #006
+	color: #006;
 	font-weight: bold;
 	font-size: 15px;
 	margin-top: 15px;
@@ -2084,6 +2084,7 @@ dd .deletelink {
 
 .markdown table {
 	border-collapse: collapse;
+	margin-bottom: 5px;
 }
 
 .markdown th {

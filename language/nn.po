@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-04-05 21:47+0100\n"
-"PO-Revision-Date: 2015-03-17 05:07+0100\n"
+"PO-Revision-Date: 2015-04-11 06:36+0100\n"
 "Last-Translator: H R Nilsen <hrnwebtrees@yahoo.com>\n"
-"Language-Team: Norwegian Nynorsk <http://translate.webtrees.net/projects/webtrees/webtrees/nn/>\n"
+"Language-Team: Norwegian Nynorsk "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/nn/>\n"
 "Language: nn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -206,31 +207,31 @@ msgstr "%s KB"
 #: app/Module/ClippingsCartModule.php:175
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s og hennar anar"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:177
 #, php-format
 msgid "%s and his ancestors"
-msgstr ""
+msgstr "%s og hans anar"
 
 #. I18N: %s is the name of a source
 #: app/Module/ClippingsCartModule.php:261
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr ""
+msgstr "%s og dei personane som er knytte til den."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:99
 #, php-format
 msgid "%s and their children"
-msgstr ""
+msgstr "%s og deira born"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:105
 #, php-format
 msgid "%s and their descendants"
-msgstr ""
+msgstr "%s og deira etterkomarar"
 
 #: app/Module/LoggedInUsersModule.php:51 app/Stats.php:5373
 #, php-format
@@ -475,49 +476,49 @@ msgstr "%s&nbsp;VT"
 #: app/Module/ClippingsCartModule.php:193
 #, php-format
 msgid "%s, her ancestors and their families"
-msgstr ""
+msgstr "%s, hennar anar og deira familar"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:147
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr ""
+msgstr "%s, hennar foreldre og sysken"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:161
 #, php-format
 msgid "%s, her spouses and children"
-msgstr ""
+msgstr "%s, hennar ektefellar og born"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:211
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr ""
+msgstr "%s, hennar ektefellar og etterkomarar"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:195
 #, php-format
 msgid "%s, his ancestors and their families"
-msgstr ""
+msgstr "%s, hans anar og deira familiar"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:149
 #, php-format
 msgid "%s, his parents and siblings"
-msgstr ""
+msgstr "%s, hans foreldre og sysken"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:163
 #, php-format
 msgid "%s, his spouses and children"
-msgstr ""
+msgstr "%s, hans ektefellar og born"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:213
 #, php-format
 msgid "%s, his spouses and descendants"
-msgstr ""
+msgstr "%s, hans ektefellar og etterkomarar"
 
 #. I18N: first/default option in a drop-down listbox
 #: app/Module/GoogleMapsModule.php:1548 app/Module/GoogleMapsModule.php:1564
@@ -1382,7 +1383,7 @@ msgstr "Legg til i favorittar"
 #: app/Module/ClippingsCartModule.php:384
 #: app/Module/ClippingsCartModule.php:474
 msgid "Add to the clippings cart"
-msgstr ""
+msgstr "Legg til i utklippsmappa"
 
 #: admin_trees_manage.php:495
 msgid "Add unlinked records"
@@ -1802,7 +1803,7 @@ msgstr "Tillat brukarar å velje utsjånad"
 #. I18N: A site configuration setting
 #: admin_site_config.php:468
 msgid "Allow visitors to request a new user account"
-msgstr ""
+msgstr "Tillat besøkjande å be om brukarkonto"
 
 #. I18N: gedcom tag _AKA
 #: app/Gedcom/GedcomTag.php:964
@@ -1828,6 +1829,8 @@ msgstr "Amerikansk Samoa"
 #: admin_site_config.php:475
 msgid "An administrator must approve the new user account and select an access level before the user can log in."
 msgstr ""
+"Ein administrator må godkjenne den nye brukarkontoen, og velje nivå for "
+"tilgjenge, før brukaren kan logge inn."
 
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:32
@@ -4199,7 +4202,7 @@ msgstr "Eigendefinert velkomsttekst"
 
 #: app/Theme/BaseTheme.php:1023 app/Theme/BaseTheme.php:1025
 msgid "Customize this page"
-msgstr ""
+msgstr "Endre utsjånad på denne sida"
 
 #: app/Stats.php:6112
 msgid "Cyprus"
@@ -4289,7 +4292,7 @@ msgstr "Dato for barns besegling (mormon)"
 
 #: app/Gedcom/GedcomTag.php:415
 msgid "Date of LDS endowment"
-msgstr "Dato for Mormonlegat"
+msgstr "Dato for LDS endowment"
 
 #: app/Gedcom/GedcomTag.php:467
 msgid "Date of LDS spouse sealing"
@@ -4970,6 +4973,8 @@ msgstr "Detaljar"
 #: admin_site_config.php:474
 msgid "Details of the new user will be sent to the genealogy contact for the corresponding family tree."
 msgstr ""
+"Detaljar om den nye brukaren vil bli sendt til kontaktpersonen for det "
+"aktuelle slektstre."
 
 #: app/Gedcom/GedcomCodeTemp.php:138
 msgid "Detroit, Michigan"
@@ -7836,12 +7841,12 @@ msgstr "Mormonkonfirmasjon"
 #. I18N: gedcom tag ENDL
 #: app/Gedcom/GedcomTag.php:413
 msgid "LDS endowment"
-msgstr "Mormonlegat"
+msgstr "LDS endowment"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1586
 msgid "LDS ordinance codes in chart boxes"
-msgstr "Ordinanskodar i diagram (mormon)"
+msgstr "LDS ordinasjonskodar i diagram"
 
 #. I18N: gedcom tag SLGS
 #: app/Gedcom/GedcomTag.php:781
@@ -10456,7 +10461,7 @@ msgstr "Stad for barns besegling (mormon)"
 
 #: app/Gedcom/GedcomTag.php:417
 msgid "Place of LDS endowment"
-msgstr "Stad for Mormonlegat"
+msgstr "Stad for LDS endowment"
 
 #: app/Gedcom/GedcomTag.php:469
 msgid "Place of LDS spouse sealing"
@@ -12633,7 +12638,7 @@ msgstr "Enkelte stadnamn kan skrivast med valfrie førestavingar og etterstaving
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1635
 msgid "Some themes can display icons on the “Facts and events” tab."
-msgstr ""
+msgstr "Enkelte tema kan syne ikon på  “Fakta og hendingar” fanen."
 
 #: modules_v3/family_group_report/report.xml:762
 #: modules_v3/individual_ext_report/report.xml:517
@@ -13450,6 +13455,8 @@ msgstr "Dei nye filene er no plasserte i mappa %s."
 #: admin_site_config.php:473
 msgid "The new user will be asked to confirm their email address before the account is created."
 msgstr ""
+"Nye brukarar vil verte bedne om å stadfeste e-postadresse før brukarkonto "
+"vert oppretta."
 
 #: help_text.php:380
 msgid "The number of occurrences of the specified name will be shown on the map.  If you leave this field empty, the most common surname will be used."
@@ -13904,6 +13911,10 @@ msgstr "Dette er ei lenke til opplysningane om deg i slektstreet. Om dette ikkje
 #: admin_trees_config.php:1591
 msgid "This is a summary of the <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr> ordinances for the individual.  “B” indicates an LDS baptism.  “E” indicates an LDS endowment.  “S” indicates an LDS spouse sealing.  “P” indicates an LDS child-to-parent sealing."
 msgstr ""
+"Dette er samandrag av ein persons <abbr title=\"Jesu Kristi Kirke av Siste "
+"Dagers Hellige\">LDS</abbr> ordinasjonar.  “B” indikerer ein LDS dåp.  “E” "
+"indikerer ein LDS endowment.  “S” indikerer ein LDS partnarbesegling.  “P” "
+"indikerer ein LDS barn-til-forelder besegling."
 
 #: help_text.php:322
 msgid "This is an optional status field and is used mostly for LDS ordinances as they are run through the TempleReady program."
@@ -14161,8 +14172,8 @@ msgstr "Denne sida let deg gjere endringar direkte i GEDCOM-fila, utan å gå gj
 #, php-format
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Denne sida har blitt synt %s gong."
+msgstr[1] "Denne sida har blitt synt %s gongar."
 
 #: app/Module/GoogleMapsModule.php:2850
 msgid "This place has no coordinates"
@@ -14977,7 +14988,7 @@ msgstr "Nytt dette feltet for å fortelje administratoren til nettstaden kvifor 
 
 #: includes/functions/functions_edit.php:618
 msgid "Use this image for charts and on the individual’s page."
-msgstr ""
+msgstr "Bruk dette biletet i diagram og på personsider."
 
 #: app/Module/GoogleMapsModule.php:3917
 msgid "Use this value"
@@ -15898,7 +15909,7 @@ msgstr "også kjend som"
 #. I18N: option in list box “always use this image”
 #: includes/functions/functions_edit.php:611
 msgid "always"
-msgstr ""
+msgstr "alltid"
 
 #: app/Controller/AncestryController.php:87 app/Stats.php:4076
 #: app/Stats.php:4101 app/Stats.php:4112 app/Stats.php:4122 app/Stats.php:5380
@@ -18555,7 +18566,7 @@ msgstr "systerbarn"
 #. I18N: option in list box “never use this image”
 #: includes/functions/functions_edit.php:616
 msgid "never"
-msgstr ""
+msgstr "aldri"
 
 #. I18N: button label, next page
 #: app/I18N.php:220 app/Module/BatchUpdateModule.php:204

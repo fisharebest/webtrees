@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-04-05 21:47+0100\n"
-"PO-Revision-Date: 2015-03-19 11:33+0100\n"
+"PO-Revision-Date: 2015-04-12 17:14+0100\n"
 "Last-Translator: Jacqueline Gazaille <gazaillegen@gmail.com>\n"
-"Language-Team: French (Canada) <http://translate.webtrees.net/projects/webtrees/webtrees/fr-CA/>\n"
+"Language-Team: French (Canada) "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/fr-CA/>\n"
 "Language: fr-CA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -204,13 +205,13 @@ msgstr "%s Ko"
 #: app/Module/ClippingsCartModule.php:175
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s et ses ancêtres"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:177
 #, php-format
 msgid "%s and his ancestors"
-msgstr ""
+msgstr "%s et ses ancêtres"
 
 #. I18N: %s is the name of a source
 #: app/Module/ClippingsCartModule.php:261
@@ -222,13 +223,13 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:99
 #, php-format
 msgid "%s and their children"
-msgstr ""
+msgstr "%s et leurs enfants"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:105
 #, php-format
 msgid "%s and their descendants"
-msgstr ""
+msgstr "%s et leurs descendants"
 
 #: app/Module/LoggedInUsersModule.php:51 app/Stats.php:5373
 #, php-format
@@ -473,49 +474,49 @@ msgstr "%s&nbsp;De cette ère"
 #: app/Module/ClippingsCartModule.php:193
 #, php-format
 msgid "%s, her ancestors and their families"
-msgstr ""
+msgstr "%s, ses ancêtres et leurs familles"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:147
 #, php-format
 msgid "%s, her parents and siblings"
-msgstr ""
+msgstr "%s, ses parents et ses proches"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:161
 #, php-format
 msgid "%s, her spouses and children"
-msgstr ""
+msgstr "%s, ses conjoints et ses enfants"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:211
 #, php-format
 msgid "%s, her spouses and descendants"
-msgstr ""
+msgstr "%s, ses conjoints et ses descendants"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:195
 #, php-format
 msgid "%s, his ancestors and their families"
-msgstr ""
+msgstr "%s, ses ancêtres et leurs familles"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:149
 #, php-format
 msgid "%s, his parents and siblings"
-msgstr ""
+msgstr "%s, ses parents et leurs proches"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:163
 #, php-format
 msgid "%s, his spouses and children"
-msgstr ""
+msgstr "%s, ses épouses et ses enfants"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:213
 #, php-format
 msgid "%s, his spouses and descendants"
-msgstr ""
+msgstr "%s, ses conjoints et ses descendants"
 
 #. I18N: first/default option in a drop-down listbox
 #: app/Module/GoogleMapsModule.php:1548 app/Module/GoogleMapsModule.php:1564
@@ -1380,7 +1381,7 @@ msgstr "Ajouter aux favoris"
 #: app/Module/ClippingsCartModule.php:384
 #: app/Module/ClippingsCartModule.php:474
 msgid "Add to the clippings cart"
-msgstr ""
+msgstr "Ajouter au panier"
 
 #: admin_trees_manage.php:495
 msgid "Add unlinked records"
@@ -1800,7 +1801,7 @@ msgstr "Permettre aux utilisateurs de choisir leur propre thème"
 #. I18N: A site configuration setting
 #: admin_site_config.php:468
 msgid "Allow visitors to request a new user account"
-msgstr ""
+msgstr "Permettre aux visiteurs de demander un nouveau compte"
 
 #. I18N: gedcom tag _AKA
 #: app/Gedcom/GedcomTag.php:964

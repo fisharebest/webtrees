@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-04-05 21:47+0100\n"
-"PO-Revision-Date: 2015-04-03 01:47+0100\n"
+"PO-Revision-Date: 2015-04-09 18:00+0100\n"
 "Last-Translator: Familia Boim <familiaboim@gmail.com>\n"
-"Language-Team: Yiddish <http://translate.webtrees.net/projects/webtrees/webtrees/yi/>\n"
+"Language-Team: Yiddish "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/yi/>\n"
 "Language: yi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1745,7 +1746,7 @@ msgstr ""
 
 #: admin_trees_config.php:591
 msgid "All facts and events"
-msgstr ""
+msgstr "אַלע פאקטן און געשעענישן"
 
 #: admin_trees_config.php:1858
 msgid "All family facts"
@@ -14525,7 +14526,7 @@ msgstr "טאראנטא, אנטעריא, קאנאדע"
 
 #: admin.php:771
 msgid "Total"
-msgstr ""
+msgstr "גאַנץ"
 
 #: modules_v3/change_report/report.xml:124
 msgid "Total accepted changes: "
@@ -14545,14 +14546,14 @@ msgstr "גאַנץ פטירות"
 
 #: statistics.php:214
 msgid "Total divorces"
-msgstr ""
+msgstr "גאַנץ גטין"
 
 #: app/Module/FamilyTreeStatisticsModule.php:108
 #: app/Module/FamilyTreeStatisticsModule.php:373
 #: app/Module/HtmlBlockModule.php:180
 #: modules_v3/missing_facts_report/report.xml:598 statistics.php:364
 msgid "Total events"
-msgstr "גאַנץ פּאַסירונג ס"
+msgstr "גאַנץ געשעענישן"
 
 #: app/Stats.php:4705 modules_v3/fact_sources/report.xml:245
 #: modules_v3/fact_sources/report.xml:249
@@ -14752,7 +14753,7 @@ msgstr "סאוועטן פארבאנד"
 #. I18N: Timezone - http://en.wikipedia.org/wiki/UTC
 #: admin_site_upgrade.php:39
 msgid "UTC"
-msgstr ""
+msgstr "UTC"
 
 #: app/Stats.php:6293
 msgid "Uganda"

@@ -22,17 +22,10 @@ namespace Fisharebest\Webtrees;
 class AdministrationTheme extends BaseTheme {
 	/** {@inheritdoc} */
 	protected function stylesheets() {
-		$stylesheets = array(
-			WT_FONT_AWESOME_CSS_URL,
-			WT_BOOTSTRAP_CSS_URL,
-			WT_DATATABLES_BOOTSTRAP_CSS_URL,
-			WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL,
-			$this->assetUrl() . 'style.css',
-		);
-
-		if (I18N::direction() === 'rtl') {
-			$stylesheets[] = WT_BOOTSTRAP_RTL_CSS_URL;
-		}
+		$stylesheets = parent::stylesheets();
+		$stylesheets[] = WT_DATATABLES_BOOTSTRAP_CSS_URL;
+		$stylesheets[] = WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL;
+		$stylesheets[] = $this->assetUrl() . 'style.css';
 
 		return $stylesheets;
 	}
