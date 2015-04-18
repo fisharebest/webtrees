@@ -71,8 +71,9 @@ a:hover {
 	outline-style: none;
 }
 
-#flash-messages {
+.flash-messages {
 	clear: both;
+	text-align: center;
 }
 
 dl {
@@ -1131,7 +1132,8 @@ td.descriptionbox a {
 }
 
 /* login.php */
-#login-register-page h2 {
+#login-register-page h2,
+#login-page .confirm {
 	text-align: center;
 }
 
@@ -1205,7 +1207,6 @@ td.descriptionbox a {
 #new_passwd_form label,
 #verify-form label {
 	display: block;
-	text-align: right;
 }
 
 #login-form label input,

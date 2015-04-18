@@ -113,8 +113,9 @@ a:visited {
 	outline-style: none;
 }
 
-#flash-messages {
+.flash-messages {
 	clear: both;
+	text-align: center;
 }
 
 dl {
@@ -1129,7 +1130,8 @@ a.showit:hover > span {
 }
 
 /* login.php */
-#login-register-page h2 {
+#login-register-page h2,
+#login-page .confirm {
 	text-align: center;
 }
 
@@ -1204,7 +1206,6 @@ a.showit:hover > span {
 #new_passwd_form label,
 #verify-form label {
 	display: block;
-	text-align: right;
 }
 
 #login-form label input,
