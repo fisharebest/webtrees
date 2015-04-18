@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-04-05 21:47+0100\n"
-"PO-Revision-Date: 2015-04-18 12:10+0100\n"
+"PO-Revision-Date: 2015-04-18 12:50+0100\n"
 "Last-Translator: Rico Sonntag <mail@ricosonntag.de>\n"
 "Language-Team: German "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
@@ -848,7 +848,7 @@ msgstr "Ein persönlicher Bereich, um Notizen zu machen oder ein Journal zu füh
 #: login.php:317
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
-msgstr "Ein zukünftiger Benutzer hat sich mit webtrees auf %s registriert."
+msgstr "Ein zukünftiger Benutzer hat sich für webtrees auf %s registriert."
 
 #. I18N: Description of the “Pedigree” module
 #: app/Module/PedigreeReportModule.php:32
@@ -1846,7 +1846,7 @@ msgstr "Amerikanisch-Samoa"
 #: admin_site_config.php:475
 msgid "An administrator must approve the new user account and select an access level before the user can log in."
 msgstr ""
-"Ein Administrator muss das neue Benutzerkonto genehmigen und eine "
+"Ein Administrator muss das neue Benutzerkonto genehmigen und ein "
 "Zugriffslevel festlegen bevor der Benutzer sich anmelden kann."
 
 #. I18N: Description of the “Album” module
@@ -3358,7 +3358,7 @@ msgstr "Ändere Sprache"
 
 #: admin_users.php:212
 msgid "Change the blocks on this user’s “My page”"
-msgstr "Blöcke auf der “Mein webtrees” Seite dieses Users ändern"
+msgstr "Blöcke auf der “Meine Seite”-Seite dieses Benutzers ändern"
 
 #: admin_trees_manage.php:383 index_edit.php:52
 msgid "Change the “Home page” blocks"
@@ -3366,7 +3366,7 @@ msgstr "Blöcke auf der Startseite ändern"
 
 #: index_edit.php:44
 msgid "Change the “My page” blocks"
-msgstr "Blöcke auf der “Mein webtrees” Seite ändern"
+msgstr "Blöcke auf der “Meine Seite”-Seite ändern"
 
 #. I18N: [a record was] Changed on <date/time> by <user>
 #: includes/functions/functions_print_lists.php:1757
@@ -3704,7 +3704,7 @@ msgstr "Zeile klicken und verschieben, um Medienobjekte neu zu ordnen"
 
 #: admin_trees_manage.php:690
 msgid "Click here for PhpGedView to webtrees transfer wizard"
-msgstr "Hier klicken für den Transfer-Assistenten von PhpGedView nach webtrees"
+msgstr "Hier klicken für den Übertragungsassistent von PhpGedView nach webtrees"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:297
 msgid "Click here to add, edit, or delete"
@@ -5989,7 +5989,7 @@ msgstr "Familien Baum Sammelbehälter"
 
 #: admin_trees_config.php:618 admin_trees_manage.php:600
 msgid "Family tree title"
-msgstr "Titel des Familienstammbaums"
+msgstr "Titel des Stammbaumes"
 
 #. I18N: Menu entry
 #: admin.php:674 admin.php:682 app/Theme/AdministrationTheme.php:85
@@ -6752,7 +6752,7 @@ msgstr "Google Maps™"
 #: app/Module/GoogleMapsModule.php:1522 app/Module/GoogleMapsModule.php:2661
 #: app/Module/GoogleMapsModule.php:4150
 msgid "Google Maps™ preferences"
-msgstr "Google Maps™ Voreinstellungen"
+msgstr "Google Maps™ Einstellungen"
 
 #. I18N: http://en.wikipedia.org/wiki/Google_street_view
 #: app/Module/GoogleMapsModule.php:323 app/Module/GoogleMapsModule.php:2418
@@ -9288,7 +9288,7 @@ msgstr "Mein Datenblatt"
 #: admin_modules.php:173 app/Module/UserWelcomeModule.php:25
 #: app/Theme/BaseTheme.php:1565 index.php:77 index.php:86
 msgid "My page"
-msgstr "Mein webtrees"
+msgstr "Meine Seite"
 
 #: app/Theme/BaseTheme.php:1573
 msgid "My pages"
@@ -10076,7 +10076,7 @@ msgstr "Hoppla! Der Server kann sich nicht mit der Datenbank verbinden. Sie kön
 
 #: setup.php:214
 msgid "Oops!  webtrees was unable to create files in this folder."
-msgstr "Uups! webtrees konnte in diesem Ordner keine Dateien erstellen."
+msgstr "Uups! webtrees konnte in diesem Verzeichnis keine Dateien erstellen."
 
 #: includes/functions/functions_print.php:518
 msgid "OpenStreetMap™"
@@ -10451,11 +10451,11 @@ msgstr ""
 
 #: admin_pgv_to_wt.php:93
 msgid "PhpGedView must use the same database as webtrees."
-msgstr "PhpGedView muss die gleiche Datenbank benutzen wie webtrees."
+msgstr "PhpGedView muss die gleiche Datenbank verwenden wie webtrees."
 
 #: admin_pgv_to_wt.php:44 admin_trees_manage.php:662
 msgid "PhpGedView to webtrees transfer wizard"
-msgstr "Übertragungs-Assistent PhpGedView zu webtrees"
+msgstr "Übertragungsassistent PhpGedView zu webtrees"
 
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:72
@@ -11488,7 +11488,7 @@ msgstr "Ruanda"
 
 #: admin_site_config.php:323
 msgid "SMTP mail server"
-msgstr "alternativ SMTP Mail Server"
+msgstr "SMTP Mailserver"
 
 #: app/Gedcom/GedcomCodeTemp.php:278
 msgid "Sacramento, California"
@@ -11843,7 +11843,7 @@ msgstr "Absender"
 #. I18N: Menu entry
 #: admin_site_config.php:134 app/Theme/AdministrationTheme.php:69
 msgid "Sending email"
-msgstr "Sende Email"
+msgstr "Sende E-Mail"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:406
@@ -13569,7 +13569,7 @@ msgstr "Die Einstellungen für den Stammbaum \"%s\" wurden aktualisiert."
 #: admin_modules.php:71
 #, php-format
 msgid "The preferences for the module “%s” have been deleted."
-msgstr "Die Vorlieben für das Modul “%s” wurden gelöscht."
+msgstr "Die Einstellungen für das Modul “%s” wurden gelöscht."
 
 #: app/Module/GoogleMapsModule.php:265
 #, php-format
@@ -13661,7 +13661,9 @@ msgstr "Der Benutzer “%s” wurde gelöscht."
 
 #: login.php:322
 msgid "The user has been sent an e-mail with the information necessary to confirm the access request."
-msgstr "Dem Benutzer wurde eine E-Mail geschickt mit den notwenigen Informationen, um die Zugangsanfrage zu bestätigen."
+msgstr ""
+"Dem Benutzer wurde eine E-Mail geschickt mit den notwendigen Informationen, "
+"um die Zugangsanfrage zu bestätigen."
 
 #. I18N: Help text for the "Username" site configuration setting
 #: admin_site_config.php:372
@@ -14075,7 +14077,9 @@ msgstr "Diese Liste enthält alle Ereignisse, die im Quellendatensatz nur <u>ein
 #. I18N: Help text for the “Server name” site configuration setting
 #: admin_site_config.php:333
 msgid "This is the name of the SMTP server.  “localhost” means that the mail service is running on the same computer as your web server."
-msgstr "Dies ist der Name des SMTP-Servers. „localhost“ bedeutet, dass der Mailserver auf dem gleichen Computer läuft wie der Webserver."
+msgstr ""
+"Dies ist der Name des SMTP-Servers. \"localhost\" bedeutet, dass der "
+"Mailserver auf dem gleichen Computer läuft wie der Webserver."
 
 #. I18N: Help text for the “Minimum number of occurrences to be a ‘common surname’” configuration setting
 #: admin_trees_config.php:1206
@@ -14179,7 +14183,9 @@ msgstr "Das Passwort muss mindestens sechs Zeichen lang sein. Groß- und Kleinsc
 #. I18N: Help text for the “Sender name” site configuration setting
 #: admin_site_config.php:318
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
-msgstr "Dieser Name wird für die Absenderangabe im „Von“-Feld benutzt, wenn automatische Mails von diesem Server versandt werden."
+msgstr ""
+"Dieser Name wird für die Absenderangabe im \"Von\"-Feld benutzt, wenn "
+"automatische E-Mails von diesem Server versandt werden."
 
 #: note.php:73
 msgid "This note does not exist or you do not have permission to view it."
@@ -15419,7 +15425,7 @@ msgstr "Webseiten Logs"
 #. I18N: Menu entry
 #: admin_site_config.php:131 app/Theme/AdministrationTheme.php:68
 msgid "Website preferences"
-msgstr "Webseiten Vorlieben"
+msgstr "Einstellungen Webseite"
 
 #. I18N: abbreviation for Wednesday
 #: app/Date/CalendarDate.php:368 includes/functions/functions_print.php:707
@@ -15667,7 +15673,7 @@ msgstr "Sie können die Datensätze in einem Familienstammbaum neu nummerieren, 
 
 #: admin_trees_renumber.php:278
 msgid "You can renumber this family tree."
-msgstr "Sie können diesen Familienstammbaum neu nummerieren."
+msgstr "Sie können diesen Stammbaum neu nummerieren."
 
 #: admin_site_config.php:199 admin_site_config.php:218
 msgid "You can request a higher or lower limit, although the server may ignore this request."
@@ -19708,7 +19714,7 @@ msgstr ""
 #. I18N: A configuration setting
 #: admin_trees_config.php:892
 msgid "webtrees reply address"
-msgstr "webtrees Mail Antwort-Adresse"
+msgstr "webtrees E-Mail-Antwortadresse"
 
 #: includes/functions/functions_edit.php:213
 msgid "webtrees sends emails with no storage"
