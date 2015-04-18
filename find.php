@@ -194,7 +194,7 @@ if ($type == 'media') {
 		echo $filter;
 	}
 	echo '" autofocus>',
-	'<p>', I18N::translate('Simple search filter based on the characters entered, no wildcards are accepted.'), '</p>',
+	'<p class="small text-muted">', I18N::translate('Simple search filter based on the characters entered, no wildcards are accepted.'), '</p>',
 	'<p><input type="submit" name="search" value="', I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
 	<input type="submit" name="all" value="', I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
 	</p></form></div>';
