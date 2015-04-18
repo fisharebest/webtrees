@@ -1206,6 +1206,7 @@ a.showit:hover > span {
 #new_passwd_form label,
 #verify-form label {
 	display: block;
+	text-align: right;
 }
 
 #login-form label input,

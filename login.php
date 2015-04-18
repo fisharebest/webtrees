@@ -169,14 +169,14 @@ default:
 	}
 
 	echo '</div>';
-	echo '<div id="login-box">
-		<form id="login-form" name="login-form" method="post" action="', WT_LOGIN_URL, '" onsubmit="d=new Date(); this.timediff.value=-60*d.getTimezoneOffset();">
-		<input type="hidden" name="action" value="login">
-		<input type="hidden" name="url" value="', Filter::escapeHtml($url), '">
-		<input type="hidden" name="timediff" value="0">';
+	echo '<div id="login-box">';
 		if ($message) {
 			echo '<p class="error">', $message, '</p>';
 		}
+	echo '<form id="login-form" name="login-form" method="post" action="', WT_LOGIN_URL, '" onsubmit="d=new Date(); this.timediff.value=-60*d.getTimezoneOffset();">
+		<input type="hidden" name="action" value="login">
+		<input type="hidden" name="url" value="', Filter::escapeHtml($url), '">
+		<input type="hidden" name="timediff" value="0">';
 		echo '<div>
 			<label for="username">', I18N::translate('Username'),
 			'<input type="text" id="username" name="username" value="', Filter::escapeHtml($username), '" class="formField" autofocus>
