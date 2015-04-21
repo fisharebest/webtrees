@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-04-05 21:47+0100\n"
-"PO-Revision-Date: 2015-04-12 19:39+0100\n"
+"PO-Revision-Date: 2015-04-18 12:29+0100\n"
 "Last-Translator: resist <bvank@outlook.com>\n"
 "Language-Team: Hungarian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/hu/>\n"
@@ -8109,12 +8109,12 @@ msgstr "Lima, Peru"
 
 #: app/Module/FamilyTreeNewsModule.php:163
 msgid "Limit"
-msgstr "Korlát:"
+msgstr "Korlát"
 
 #. I18N: Limit display by [age/number]
 #: app/Module/FamilyTreeNewsModule.php:154
 msgid "Limit display by"
-msgstr "Megjelenési korlát ennyivel:"
+msgstr "Megjelenési korlát ennyivel"
 
 #: app/Module/RelativesTabModule.php:344 edit_interface.php:990
 #: edit_interface.php:1049
@@ -8787,8 +8787,9 @@ msgstr "Média-elem azonosító előtag"
 
 #. I18N: Label for search field
 #: find.php:191
+#, fuzzy
 msgid "Media contains"
-msgstr "A Média tartalma:"
+msgstr "Média tartalma"
 
 #: admin_media.php:685 admin_media_upload.php:198
 msgid "Media file"
@@ -9144,7 +9145,7 @@ msgstr "Házasságkötési hónap"
 
 #: timeline.php:122 timeline.php:124 timeline.php:126
 msgid "Month:"
-msgstr "Hónap"
+msgstr "Hónap:"
 
 #: app/Gedcom/GedcomCodeTemp.php:220
 msgid "Monticello, Utah"
@@ -9199,7 +9200,7 @@ msgstr "A legtöbb SMTP szerver jelszót igényel."
 #: app/Module/FamilyTreeStatisticsModule.php:187
 #: app/Module/HtmlBlockModule.php:236
 msgid "Most common surnames"
-msgstr "Leggyakoribb vezetéknevek:"
+msgstr "Leggyakoribb vezetéknevek"
 
 #. I18N: Help text for the “Secure connection” site configuration setting
 #: admin_site_config.php:398
@@ -9374,6 +9375,7 @@ msgstr "Név"
 
 #. I18N: Label for search field
 #: find.php:155 find.php:172
+#, fuzzy
 msgid "Name contains"
 msgstr "Név tartalmazza:"
 
@@ -9943,6 +9945,7 @@ msgstr "Gyermek nélküli családok száma"
 #: app/Module/ClippingsCartModule.php:183
 #: app/Module/ClippingsCartModule.php:201
 #: app/Module/ClippingsCartModule.php:219
+#, fuzzy
 msgid "Number of generations"
 msgstr "Generációk száma:"
 
@@ -10343,7 +10346,7 @@ msgstr "Paraguay"
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:944
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:946
 msgid "Parents"
-msgstr "Szülők:"
+msgstr "Szülők"
 
 #: modules_v3/individual_ext_report/report.xml:6
 #: modules_v3/missing_facts_report/report.xml:6
@@ -11452,7 +11455,9 @@ msgstr "Az eredeti blokk elrendezés visszaállítása"
 #. I18N: http://en.wikipedia.org/wiki/User_agent
 #: admin_site_access.php:358
 msgid "Restrict access to the website, using IP addresses and user-agent strings."
-msgstr "Korlátozd az oldalhoz való hozzáférést IP-címek és böngésző-azonosítók segítségével"
+msgstr ""
+"Korlátozza az oldalhoz való hozzáférést IP-címek és böngésző-azonosítók "
+"segítségével."
 
 #: admin_users.php:569
 msgid "Restrict to immediate family"
@@ -11622,7 +11627,7 @@ msgstr "Santiago, Chile"
 
 #: app/Gedcom/GedcomCodeTemp.php:288
 msgid "Santo Domingo, Dominican Republic"
-msgstr "Santo Domingo, Dom. Közt."
+msgstr "Santo Domingo, Dominikai  Köztársaság"
 
 #: app/Gedcom/GedcomCodeTemp.php:304
 msgid "Sao Paulo, Brazil"
@@ -12086,6 +12091,7 @@ msgstr "Közös jegyzet"
 
 #. I18N: Label for search field
 #: find.php:250
+#, fuzzy
 msgid "Shared note contains"
 msgstr "Közös jegyzet tartalma:"
 
@@ -12846,6 +12852,7 @@ msgstr ""
 
 #. I18N: Label for search field
 #: find.php:269
+#, fuzzy
 msgid "Source contains"
 msgstr "A Forrás tartalma:"
 
@@ -13051,7 +13058,7 @@ msgstr "Felosztás"
 
 #: app/Module/UserMessagesModule.php:78 message.php:127
 msgid "Subject"
-msgstr "Tárgy:"
+msgstr "Tárgy"
 
 #. I18N: gedcom tag SUBN
 #: app/Gedcom/GedcomTag.php:811
@@ -13319,7 +13326,7 @@ msgstr ""
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:71
 msgid "The PHP temporary folder is missing."
-msgstr "Hiányzó PHP ideiglenes mappa"
+msgstr "Hiányzó PHP ideiglenes mappa."
 
 #: admin_trees_manage.php:669
 msgid "The PhpGedView to webtrees wizard is an automated process to assist administrators make the move from a PhpGedView installation to a new webtrees one.  It will transfer all PhpGedView GEDCOM and other database information directly to your new webtrees database.  The following requirements are necessary:"
@@ -13347,8 +13354,12 @@ msgid "The changes to “%s” have been rejected."
 msgstr "A „%s”-t illető módosítások elutasításra kerültek."
 
 #: app/Module/ClippingsCartModule.php:280
+#, fuzzy
 msgid "The clippings cart allows you to take extracts (“clippings”) from this family tree and bundle them up into a single file for downloading and subsequent importing into your own genealogy program.  The downloadable file is recorded in GEDCOM format.<br><ul><li>How to take clippings?<br>This is really simple.  Whenever you see a clickable name (individual, family, or source) you can go to the Details page of that name.  There you will see the <b>Add to clippings cart</b> option.  When you click that link you will be offered several options to download.</li><li>How to download?<br>Once you have items in your cart, you can download them just by clicking the “Download” link.  Follow the instructions and links.</li></ul>"
-msgstr "A Hulladékkosár lehetővé teszi kivonatok létrehozását bejegyzésekből, amelyek később letölthetőek lesznek és beimportálhatóak más családfa programokba. A letölthető fájl GEDCOM formátumú lesz."
+msgstr ""
+"A Hulladékkosár lehetővé teszi kivonatok létrehozását bejegyzésekből, "
+"amelyek később letölthetőek lesznek és beimportálhatóak más családfa "
+"programokba. A letölthető fájl GEDCOM formátumú lesz."
 
 #: site-unavailable.php:67
 msgid "The database reported the following error message:"
