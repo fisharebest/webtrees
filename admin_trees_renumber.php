@@ -64,7 +64,7 @@ $xrefs = Database::prepare(
 
 echo '<h1>', $controller->getPageTitle(), '</h1>';
 
-if (Filter::get('go')) {
+if (Filter::get('action') === 'renumber') {
 	foreach ($xrefs as $old_xref=>$type) {
 		Database::beginTransaction();
 		Database::exec(
@@ -279,7 +279,7 @@ if ($xrefs) {
 	echo '<button type="submit" class="btn btn-primary">';
 	echo '<i class="fa fa-check"></i> ', /* I18N: Button label */ I18N::translate('continue');
 	echo '</button>';
-	//echo '<input type="submit" name="go" value="', /* I18N: button label */ I18N::translate('go'), '"></p>';
+	echo '<input type="hidden" name="action" value="renumber">';
 	echo '<input type="hidden" name="ged" value="', $WT_TREE->getNameHtml(), '">';
 	echo '</form>';
 	echo '<p>', I18N::translate('Caution!  This may take a long time.  Be patient.'), '</p>';
