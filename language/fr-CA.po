@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-04-05 21:47+0100\n"
-"PO-Revision-Date: 2015-04-12 17:14+0100\n"
+"PO-Revision-Date: 2015-04-25 12:01+0100\n"
 "Last-Translator: Jacqueline Gazaille <gazaillegen@gmail.com>\n"
 "Language-Team: French (Canada) "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/fr-CA/>\n"
@@ -217,7 +217,7 @@ msgstr "%s et ses ancêtres"
 #: app/Module/ClippingsCartModule.php:261
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr ""
+msgstr "%s et les individus qui lui sont liés."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:99
@@ -1827,6 +1827,8 @@ msgstr "Samoas américaines"
 #: admin_site_config.php:475
 msgid "An administrator must approve the new user account and select an access level before the user can log in."
 msgstr ""
+"Un administrateur doit approuver le nouveau compte et choisir son niveau d’"
+"accès avant que l’utilisateur puisse se connecter."
 
 #. I18N: Description of the “Album” module
 #: app/Module/AlbumModule.php:32
@@ -4198,7 +4200,7 @@ msgstr "Texte personnalisé de bienvenue"
 
 #: app/Theme/BaseTheme.php:1023 app/Theme/BaseTheme.php:1025
 msgid "Customize this page"
-msgstr ""
+msgstr "Personnaliser cette page"
 
 #: app/Stats.php:6112
 msgid "Cyprus"
@@ -4969,6 +4971,8 @@ msgstr "Détails"
 #: admin_site_config.php:474
 msgid "Details of the new user will be sent to the genealogy contact for the corresponding family tree."
 msgstr ""
+"Les détails du nouvel utilisateur seront envoyés au référent en généalogie "
+"assigné à l’arbre généalogique."
 
 #: app/Gedcom/GedcomCodeTemp.php:138
 msgid "Detroit, Michigan"
@@ -12633,6 +12637,8 @@ msgstr "Certains noms de lieux peuvent contenir des préfixes ou des suffixes op
 #: admin_trees_config.php:1635
 msgid "Some themes can display icons on the “Facts and events” tab."
 msgstr ""
+"Certains thèmes peuvent afficher des icônes dans l’onglet « Faits et "
+"événements »."
 
 #: modules_v3/family_group_report/report.xml:762
 #: modules_v3/individual_ext_report/report.xml:517
@@ -13449,6 +13455,8 @@ msgstr "Les nouveaux fichiers sont actuellement situés dans le dossier %s."
 #: admin_site_config.php:473
 msgid "The new user will be asked to confirm their email address before the account is created."
 msgstr ""
+"Le nouvel utilisateur sera invité à confirmer son adresse de courriel avant "
+"que le compte ne soit ouvert."
 
 #: help_text.php:380
 msgid "The number of occurrences of the specified name will be shown on the map.  If you leave this field empty, the most common surname will be used."
@@ -13903,6 +13911,10 @@ msgstr "Il s’agit d’un lien vers vos propre information dans l’arbre gén�
 #: admin_trees_config.php:1591
 msgid "This is a summary of the <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr> ordinances for the individual.  “B” indicates an LDS baptism.  “E” indicates an LDS endowment.  “S” indicates an LDS spouse sealing.  “P” indicates an LDS child-to-parent sealing."
 msgstr ""
+"Ceci est un résumé des ordonnances <abbr title=\"Église de Jésus-Christ des "
+"saints des derniers jours\">SDJ</abbr> pour un individu. “B” indique un "
+"baptême SDJ. “E” une dotation SDJ. “S” un scellement SDJ au conjoint. “P” un "
+"scellement SDJ de l’enfant aux parents."
 
 #: help_text.php:322
 msgid "This is an optional status field and is used mostly for LDS ordinances as they are run through the TempleReady program."
@@ -14160,8 +14172,8 @@ msgstr "Cette page vous permet de contourner les formes habituelles, et de modif
 #, php-format
 msgid "This page has been viewed %s time."
 msgid_plural "This page has been viewed %s times."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Cette page a été vue %s fois."
+msgstr[1] "Cette page a été vue %s fois."
 
 #: app/Module/GoogleMapsModule.php:2850
 msgid "This place has no coordinates"
@@ -14976,7 +14988,7 @@ msgstr "Utilisez ce champ pour dire à l’administrateur du site pourquoi vous 
 
 #: includes/functions/functions_edit.php:618
 msgid "Use this image for charts and on the individual’s page."
-msgstr ""
+msgstr "Utiliser cette image pour les diagrammes et sur la page d’un individu."
 
 #: app/Module/GoogleMapsModule.php:3917
 msgid "Use this value"
@@ -15897,7 +15909,7 @@ msgstr "également connu sous"
 #. I18N: option in list box “always use this image”
 #: includes/functions/functions_edit.php:611
 msgid "always"
-msgstr ""
+msgstr "toujours"
 
 #: app/Controller/AncestryController.php:87 app/Stats.php:4076
 #: app/Stats.php:4101 app/Stats.php:4112 app/Stats.php:4122 app/Stats.php:5380
@@ -18554,7 +18566,7 @@ msgstr "neveu/nièce"
 #. I18N: option in list box “never use this image”
 #: includes/functions/functions_edit.php:616
 msgid "never"
-msgstr ""
+msgstr "jamais"
 
 #. I18N: button label, next page
 #: app/I18N.php:220 app/Module/BatchUpdateModule.php:204
