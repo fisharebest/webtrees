@@ -97,9 +97,6 @@ case 'login':
 		Session::put('timediff', $timediff);
 		Session::put('locale', Auth::user()->getPreference('language'));
 		Session::put('theme_id', Auth::user()->getPreference('theme'));
-		Session::put('activity_time', WT_TIMESTAMP);
-
-		Auth::user()->setPreference('sessiontime', WT_TIMESTAMP);
 
 		// If we’ve clicked login from the login page, we don’t want to go back there.
 		if (strpos($url, WT_SCRIPT_NAME) === 0) {
