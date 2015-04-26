@@ -44,28 +44,28 @@ if ($subclick === 'all') {
 $embed = substr($choose, 0, 1) === '1';
 
 switch ($type) {
-case "indi":
+case 'indi':
 	$controller->setPageTitle(I18N::translate('Find an individual'));
 	break;
-case "fam":
+case 'fam':
 	$controller->setPageTitle(I18N::translate('Find a family'));
 	break;
-case "media":
+case 'media':
 	$controller->setPageTitle(I18N::translate('Find a media object'));
 	break;
-case "place":
+case 'place':
 	$controller->setPageTitle(I18N::translate('Find a place'));
 	break;
-case "repo":
+case 'repo':
 	$controller->setPageTitle(I18N::translate('Find a repository'));
 	break;
-case "note":
+case 'note':
 	$controller->setPageTitle(I18N::translate('Find a shared note'));
 	break;
-case "source":
+case 'source':
 	$controller->setPageTitle(I18N::translate('Find a source'));
 	break;
-case "specialchar":
+case 'specialchar':
 	$controller->setPageTitle(I18N::translate('Find a special character'));
 	$language_filter = Filter::get('language_filter');
 	// Users will probably always want the same language, so remember their setting
@@ -75,9 +75,9 @@ case "specialchar":
 		Auth::user()->setPreference('default_language_filter', $language_filter);
 	}
 	require WT_ROOT . 'includes/specialchars.php';
-	$action = "filter";
+	$action = 'filter';
 	break;
-case "facts":
+case 'facts':
 	$controller
 		->setPageTitle(I18N::translate('Find a fact or event'))
 		->addInlineJavascript('initPickFact();');
