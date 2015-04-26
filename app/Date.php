@@ -50,13 +50,13 @@ use Fisharebest\ExtCalendar\GregorianCalendar;
  */
 class Date {
 	/** @var string Optional qualifier, such as BEF, FROM, ABT */
-	private $qual1;
+	public $qual1;
 
 	/** @var CalendarDate  The first (or only) date */
 	private $date1;
 
 	/** @var string  Optional qualifier, such as TO, AND*/
-	private $qual2;
+	public $qual2;
 
 	/** @var CalendarDate Optional second date */
 	private $date2;

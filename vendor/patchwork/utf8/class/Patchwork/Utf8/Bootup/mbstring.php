@@ -28,7 +28,7 @@ function mb_encoding_aliases($encoding) {return s\Mbstring::mb_encoding_aliases(
 function mb_check_encoding($var = INF, $encoding = INF) {return s\Mbstring::mb_check_encoding($var, $encoding);}
 function mb_detect_encoding($str, $encoding_list = INF, $strict = false) {return s\Mbstring::mb_detect_encoding($str, $encoding_list, $strict);}
 function mb_detect_order($encoding_list = INF) {return s\Mbstring::mb_detect_order($encoding_list);}
-function mb_parse_str($s, &$result = array()) {return parse_str($s, $result);};
+function mb_parse_str($s, &$result = array()) {parse_str($s, $result);};
 function mb_strlen($s, $enc = INF) {return s\Mbstring::mb_strlen($s, $enc);};
 function mb_strpos($s, $needle, $offset = 0, $enc = INF) {return s\Mbstring::mb_strpos($s, $needle, $offset, $enc);};
 function mb_strtolower($s, $enc = INF) {return s\Mbstring::mb_strtolower($s, $enc);};
