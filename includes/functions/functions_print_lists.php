@@ -17,7 +17,6 @@ namespace Fisharebest\Webtrees;
  */
 
 use Rhumsaa\Uuid\Uuid;
-use Zend_Tag_Cloud;
 
 /**
  * Print a table of individuals
