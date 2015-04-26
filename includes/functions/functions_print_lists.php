@@ -1493,11 +1493,12 @@ function format_media_table($media_objects) {
  *
  * @param string[][] $surnames array (of SURN, of array of SPFX_SURN, of array of PID)
  * @param string     $script   "indilist.php" (counts of individuals) or "famlist.php" (counts of spouses)
+ * @param Tree       $tree     generate links for this tree
  *
  * @return string
  */
-function format_surname_table($surnames, $script) {
-	global $controller, $WT_TREE;
+function format_surname_table($surnames, $script, Tree $tree) {
+	global $controller;
 
 	$html = '';
 	$controller
@@ -1538,9 +1539,9 @@ function format_surname_table($surnames, $script) {
 	foreach ($surnames as $surn => $surns) {
 		// Each surname links back to the indi/fam surname list
 		if ($surn) {
-			$url = $script . '?surname=' . rawurlencode($surn) . '&amp;ged=' . $WT_TREE->getNameUrl();
+			$url = $script . '?surname=' . rawurlencode($surn) . '&amp;ged=' . $tree->getNameUrl();
 		} else {
-			$url = $script . '?alpha=,&amp;ged=' . $WT_TREE->getNameUrl();
+			$url = $script . '?alpha=,&amp;ged=' . $tree->getNameUrl();
 		}
 		// Row counter
 		$html .= '<tr>';
@@ -1584,49 +1585,42 @@ function format_surname_table($surnames, $script) {
  * @param string[][] $surnames array (of SURN, of array of SPFX_SURN, of array of PID)
  * @param string     $script   indilist or famlist
  * @param boolean    $totals   show totals after each name
+ * @param Tree       $tree     generate links to this tree
  *
  * @return string
  */
-function format_surname_tagcloud($surnames, $script, $totals) {
+function format_surname_tagcloud($surnames, $script, $totals, Tree $tree) {
 	global $WT_TREE;
 
-	$cloud = new Zend_Tag_Cloud(
-		array(
-			'tagDecorator'   => array(
-				'decorator' => 'HtmlTag',
-				'options'   => array(
-					'htmlTags'     => array(),
-					'fontSizeUnit' => '%',
-					'minFontSize'  => 80,
-					'maxFontSize'  => 250
-				)
-			),
-			'cloudDecorator' => array(
-				'decorator' => 'HtmlCloud',
-				'options'   => array(
-					'htmlTags' => array(
-						'div' => array(
-							'class' => 'tag_cloud'
-						)
-					)
-				)
-			)
-		)
-	);
+	$minimum = PHP_INT_MAX;
+	$maximum = 1;
 	foreach ($surnames as $surn => $surns) {
 		foreach ($surns as $spfxsurn => $indis) {
-			$cloud->appendTag(array(
-				'title'  => $totals ? I18N::translate('%1$s (%2$s)', '<span dir="auto">' . $spfxsurn . '</span>', I18N::number(count($indis))) : $spfxsurn,
-				'weight' => count($indis),
-				'params' => array(
-					'url' => $surn ?
-						$script . '?surname=' . urlencode($surn) . '&amp;ged=' . $WT_TREE->getNameUrl() : $script . '?alpha=,&amp;ged=' . $WT_TREE->getNameUrl()
-				)
-			));
+			$maximum = max($maximum, count($indis));
+			$minimum = min($minimum, count($indis));
 		}
 	}
 
-	return (string) $cloud;
+	$html = '';
+	foreach ($surnames as $surn => $surns) {
+		foreach ($surns as $spfxsurn => $indis) {
+			$size = 75.0 + 125.0 * (count($indis) - $minimum) / ($maximum - $minimum);
+			$html .= '<a style="font-size:' . $size . '%" href="' . $script . '?';
+			if ($surn) {
+				$html .= 'surname=' . urlencode($surn) . '&amp;ged=' . $tree->getNameUrl();
+				} else {
+				$html .= '?alpha=,&amp;ged=' . $WT_TREE->getNameUrl();
+			}
+			if ($totals) {
+				$html .= I18N::translate('%1$s (%2$s)', '<span dir="auto">' . $spfxsurn . '</span>', I18N::number(count($indis)));
+			} else {
+				$html .= $spfxsurn;
+			}
+			$html .= '</a> ';
+		}
+	}
+
+	return '<div class="tag_cloud">' . $html . '</div>';
 }
 
 /**
