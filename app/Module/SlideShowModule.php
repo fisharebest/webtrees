@@ -175,7 +175,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 			$content = I18N::translate('This family tree has no images to display.');
 		}
 		if ($template) {
-			echo Theme::theme()->formatBlock($id, $title, $class, $content);
+			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 			return $content;
 		}
