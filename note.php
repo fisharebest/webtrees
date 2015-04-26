@@ -16,13 +16,6 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/**
- * Defined in session.php
- *
- * @global Tree   $WT_TREE
- */
-global $WT_TREE;
-
 define('WT_SCRIPT_NAME', 'note.php');
 require './includes/session.php';
 

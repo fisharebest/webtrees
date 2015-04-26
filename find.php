@@ -32,23 +32,16 @@ $type      = Filter::get('type');
 $filter    = Filter::get('filter');
 $action    = Filter::get('action');
 $callback  = Filter::get('callback', '[a-zA-Z0-9_]+', 'paste_id');
-$media     = Filter::get('media');
 $all       = Filter::getBool('all');
 $subclick  = Filter::get('subclick');
 $choose    = Filter::get('choose', '[a-zA-Z0-9_]+', '0all');
 $qs        = Filter::get('tags');
 
-if ($subclick == 'all') {
+if ($subclick === 'all') {
 	$all = true;
 }
 
-$embed = substr($choose, 0, 1) == "1";
-$chooseType = substr($choose, 1);
-if ($chooseType != "media" && $chooseType != "0file") {
-	$chooseType = "all";
-}
-
-// End variables for find media
+$embed = substr($choose, 0, 1) === '1';
 
 switch ($type) {
 case "indi":
@@ -524,9 +517,7 @@ if ($action == "filter") {
 	}
 
 	// Output Media
-	if ($type == "media") {
-		global $dirs;
-
+	if ($type === 'media') {
 		$medialist = QueryMedia::mediaList('', 'include', 'title', $filter);
 
 		echo '<div id="find-output">';

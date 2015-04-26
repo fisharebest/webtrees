@@ -43,7 +43,7 @@ class ExtraInformationModule extends AbstractModule implements ModuleSidebarInte
 
 	/** {@inheritdoc} */
 	public function getSidebarContent() {
-		global $WT_TREE, $controller;
+		global $controller;
 
 		$indifacts = array();
 		// The individual’s own facts
