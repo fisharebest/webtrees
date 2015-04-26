@@ -16,8 +16,6 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use Zend_Session;
-
 /**
  * Class FamiliesSidebarModule
  */
@@ -36,7 +34,6 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 	public function modAction($modAction) {
 		switch ($modAction) {
 		case 'ajax':
-			Zend_Session::writeClose();
 			header('Content-Type: text/html; charset=UTF-8');
 			echo $this->getSidebarAjaxContent();
 			break;

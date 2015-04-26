@@ -445,16 +445,16 @@ $_SERVER[$variable]))) {
 	 * @return string
 	 */
 	public static function getCsrfToken() {
-		global $WT_SESSION;
-
-		if ($WT_SESSION->CSRF_TOKEN === null) {
+		if (!Session::has('CSRF_TOKEN')) {
 			$charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcedfghijklmnopqrstuvwxyz0123456789';
+			$csrf_token = '';
 			for ($n = 0; $n < 32; ++$n) {
-				$WT_SESSION->CSRF_TOKEN .= substr($charset, mt_rand(0, 61), 1);
+				$csrf_token .= substr($charset, mt_rand(0, 61), 1);
 			}
+			Session::put('CSRF_TOKEN', $csrf_token);
 		}
 
-		return $WT_SESSION->CSRF_TOKEN;
+		return Session::get('CSRF_TOKEN');
 	}
 
 	/**

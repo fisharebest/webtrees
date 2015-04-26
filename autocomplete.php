@@ -16,8 +16,6 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use Zend_Session;
-
 /**
  * Defined in session.php
  *
@@ -31,9 +29,6 @@ define('WT_SCRIPT_NAME', 'autocomplete.php');
 require './includes/session.php';
 
 header('Content-Type: text/plain; charset=UTF-8');
-
-// We have finished writing session data, so release the lock
-Zend_Session::writeClose();
 
 $term = Filter::get('term'); // we can search on '"><& etc.
 $type = Filter::get('field');

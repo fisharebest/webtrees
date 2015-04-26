@@ -352,7 +352,7 @@ class I18N {
 	 * @return string $string
 	 */
 	public static function init($code = null) {
-		global $WT_SESSION, $WT_TREE;
+		global $WT_TREE;
 
 		if ($code !== null) {
 			// Create the specified locale
@@ -369,9 +369,9 @@ class I18N {
 					}
 				} catch (\Exception $ex) {
 				}
-			} elseif ($WT_SESSION->locale) {
+			} elseif (Session::has('locale')) {
 				// Previously used
-				self::$locale = Locale::create($WT_SESSION->locale);
+				self::$locale = Locale::create(Session::get('locale'));
 			} else {
 				// Browser negotiation
 				$default_locale = new LocaleEnUs;

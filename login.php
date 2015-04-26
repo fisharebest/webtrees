@@ -18,17 +18,14 @@ namespace Fisharebest\Webtrees;
 
 use Rhumsaa\Uuid\Uuid;
 use Zend_Controller_Request_Http;
-use Zend_Session;
-use Zend_Session_Namespace;
 
 /**
  * Defined in session.php
  *
  * @global Zend_Controller_Request_Http $WT_REQUEST
- * @global Zend_Session_Namespace       $WT_SESSION
  * @global Tree                         $WT_TREE
  */
-global $WT_REQUEST, $WT_SESSION, $WT_TREE;
+global $WT_REQUEST, $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'login.php');
 require './includes/session.php';
@@ -97,10 +94,10 @@ case 'login':
 		Auth::login($user);
 		Log::addAuthenticationLog('Login: ' . Auth::user()->getUserName() . '/' . Auth::user()->getRealName());
 
-		$WT_SESSION->timediff      = $timediff;
-		$WT_SESSION->locale        = Auth::user()->getPreference('language');
-		$WT_SESSION->theme_id      = Auth::user()->getPreference('theme');
-		$WT_SESSION->activity_time = WT_TIMESTAMP;
+		Session::put('timediff', $timediff);
+		Session::put('locale', Auth::user()->getPreference('language'));
+		Session::put('theme_id', Auth::user()->getPreference('theme'));
+		Session::put('activity_time', WT_TIMESTAMP);
 
 		Auth::user()->setPreference('sessiontime', WT_TIMESTAMP);
 
@@ -126,9 +123,6 @@ case 'login':
 
 		// Redirect to the target URL
 		header('Location: ' . WT_BASE_URL . $url);
-		// Explicitly write the session data before we exit,
-		// as it doesn’t always happen when using APC.
-		Zend_Session::writeClose();
 
 		return;
 	} catch (\Exception $ex) {
@@ -275,7 +269,7 @@ case 'register':
 	$controller->setPageTitle(I18N::translate('Request new user account'));
 
 	// The form parameters are mandatory, and the validation errors are shown in the client.
-	if ($WT_SESSION->good_to_send && $user_name && $user_password01 && $user_password01 == $user_password02 && $user_realname && $user_email && $user_comments) {
+	if (Session::get('good_to_send') && $user_name && $user_password01 && $user_password01 == $user_password02 && $user_realname && $user_email && $user_comments) {
 
 		// These validation errors cannot be shown in the client.
 		if (User::findByIdentifier($user_name)) {
@@ -390,7 +384,7 @@ case 'register':
 		}
 	}
 
-	$WT_SESSION->good_to_send = true;
+	Session::put('good_to_send', true);
 	$controller
 		->pageHeader()
 		->addInlineJavascript('function regex_quote(str) {return str.replace(/[\\\\.?+*()[\](){}|]/g, "\\\\$&");}');

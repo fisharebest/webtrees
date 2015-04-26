@@ -64,7 +64,7 @@ class LifespanController extends PageController {
 	 * Startup activity
 	 */
 	public function __construct() {
-		global $WT_SESSION, $WT_TREE;
+		global $WT_TREE;
 
 		parent::__construct();
 		$this->setPageTitle(I18N::translate('Lifespans'));
@@ -105,8 +105,8 @@ class LifespanController extends PageController {
 			$this->place = $place;
 		} else {
 			// Modify an existing list of records
-			if (is_array($WT_SESSION->timeline_pids)) {
-				$this->pids = $WT_SESSION->timeline_pids;
+			if (is_array(Session::get('timeline_pids'))) {
+				$this->pids = Session::get('timeline_pids');
 			} else {
 				$this->pids = array();
 			}
@@ -122,7 +122,7 @@ class LifespanController extends PageController {
 				$this->addFamily($this->getSignificantIndividual(), false);
 			}
 		}
-		$WT_SESSION->timeline_pids = $this->pids;
+		Session::put('timeline_pids', $this->pids);
 
 		$this->beginYear = $beginYear;
 		$this->endYear   = $endYear;
@@ -162,7 +162,7 @@ class LifespanController extends PageController {
 					}
 				}
 			}
-			$WT_SESSION->timeline_pids = null;
+			Session::forget('timeline_pids');
 		}
 
 		// Sort the array in order of birth year

@@ -17,7 +17,6 @@ namespace Fisharebest\Webtrees;
  */
 
 use PDO;
-use Zend_Session;
 
 /**
  * Defined in session.php
@@ -121,7 +120,6 @@ case 'delete':
 	break;
 
 case 'export':
-	Zend_Session::writeClose();
 	header('Content-Type: text/csv');
 	header('Content-Disposition: attachment; filename="webtrees-changes.csv"');
 	$rows = Database::prepare($sql_select . $where . ' ORDER BY change_id')->execute($args)->fetchAll();
@@ -139,7 +137,6 @@ case 'export':
 
 	return;
 case 'load_json':
-	Zend_Session::writeClose();
 	$start  = Filter::getInteger('start');
 	$length = Filter::getInteger('length');
 	$order  = Filter::getArray('order');

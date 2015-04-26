@@ -32,10 +32,7 @@ define('WT_BASE_URL', '');
 define('WT_ROOT', '');
 define('WT_DATA_DIR', realpath('data') . DIRECTORY_SEPARATOR);
 define('WT_MODULES_DIR', 'modules_v3/');
-
-$WT_SESSION         = new \stdClass;
-$WT_SESSION->locale = '';
-
+Session::start();
 define('WT_LOCALE', I18N::init());
 
 if (file_exists(WT_DATA_DIR . 'offline.txt')) {

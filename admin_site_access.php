@@ -18,7 +18,6 @@ namespace Fisharebest\Webtrees;
 
 use PDO;
 use Zend_Controller_Request_Http;
-use Zend_Session;
 
 /**
  * Defined in session.php
@@ -137,7 +136,6 @@ $controller
 $action = Filter::get('action');
 switch ($action) {
 case 'load':
-	Zend_Session::writeClose();
 	// AJAX callback for datatables
 	$search = Filter::get('search');
 	$search = $search['value'];

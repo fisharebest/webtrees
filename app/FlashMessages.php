@@ -16,8 +16,6 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use Zend_Controller_Action_HelperBroker;
-
 /**
  * Class FlashMessages - Flash messages allow us to generate messages
  * in one context, and display them in another.
@@ -33,9 +31,10 @@ class FlashMessages {
 		$message         = new \stdClass;
 		$message->text   = $text;
 		$message->status = $status;
-		$flash_messenger = Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger');
 
-		$flash_messenger->addMessage($message);
+		$messages = Session::get('flash_messages', array());
+		$messages[] = $message;
+		Session::put('flash_messages', $messages);
 	}
 
 	/**
@@ -44,20 +43,8 @@ class FlashMessages {
 	 * @return string[]
 	 */
 	public static function getMessages() {
-		$flash_messenger = Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger');
-
-		$messages = array();
-
-		// Get messages from previous requests
-		foreach ($flash_messenger->getMessages() as $message) {
-			$messages[] = $message;
-		}
-
-		// Get messages from the current request
-		foreach ($flash_messenger->getCurrentMessages() as $message) {
-			$messages[] = $message;
-		}
-		$flash_messenger->clearCurrentMessages();
+		$messages = Session::get('flash_messages', array());
+		Session::forget('flash_messages');
 
 		return $messages;
 	}

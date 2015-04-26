@@ -16,15 +16,6 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use Zend_Session_Namespace;
-
-/**
- * Defined in session.php
- *
- * @global Zend_Session_Namespace $WT_SESSION
- */
-global $WT_SESSION;
-
 define('WT_SCRIPT_NAME', 'message.php');
 require './includes/session.php';
 
@@ -74,18 +65,18 @@ if (Auth::check()) {
 // This makes it harder for spammers.
 switch ($action) {
 case 'compose':
-	$WT_SESSION->good_to_send = true;
+	Session::put('good_to_send', true);
 	break;
 case 'send':
 	// Only send messages if we've come straight from the compose page.
-	if (!$WT_SESSION->good_to_send) {
+	if (!Session::get('good_to_send')) {
 		Log::addAuthenticationLog('Attempt to send a message without visiting the compose page.  Spam attack?');
 		$action = 'compose';
 	}
 	if (!Filter::checkCsrf()) {
 		$action = 'compose';
 	}
-	unset($WT_SESSION->good_to_send);
+	Session::forget('good_to_send');
 	break;
 }
 
