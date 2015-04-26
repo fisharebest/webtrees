@@ -56,7 +56,7 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 	/** {@inheritdoc} */
 	public function getSidebarAjaxContent() {
 		global $WT_TREE;
-		
+
 		$alpha   = Filter::get('alpha'); // All surnames beginning with this letter where "@"=unknown and ","=none
 		$surname = Filter::get('surname'); // All indis with this surname.
 		$search  = Filter::get('search');
@@ -66,7 +66,7 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 		} elseif ($alpha == '@' || $alpha == ',' || $surname) {
 			return $this->getSurnameIndis($WT_TREE, $alpha, $surname);
 		} elseif ($alpha) {
-			return $this->getAlphaSurnames($WT_TREE, $alpha, $surname);
+			return $this->getAlphaSurnames($WT_TREE, $alpha);
 		} else {
 			return '';
 		}
@@ -109,7 +109,7 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 					  success: function(html) {
 					    jQuery("#sb_indi_"+surname+" div").html(html);
 					    jQuery("#sb_indi_"+surname+" div").show("fast");
-					    jQuery("#sb_indi_"+surname).css("list-style-image", "url(' . $WT_IMAGES['minus'] . ')");
+					    jQuery("#sb_indi_"+surname).css("list-style-image", "url(' . Theme::theme()->parameter('image-minus') . ')");
 					    loadedNames[surname]=2;
 					  }
 					});
@@ -117,17 +117,16 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 				else if (loadedNames[surname]==1) {
 					loadedNames[surname]=2;
 					jQuery("#sb_indi_"+surname+" div").show("fast");
-					jQuery("#sb_indi_"+surname).css("list-style-image", "url(' . $WT_IMAGES['minus'] . ')");
+					jQuery("#sb_indi_"+surname).css("list-style-image", "url(' . Theme::theme()->parameter('image-minus') . ')");
 				}
 				else {
 					loadedNames[surname]=1;
 					jQuery("#sb_indi_"+surname+" div").hide("fast");
-					jQuery("#sb_indi_"+surname).css("list-style-image", "url(' . $WT_IMAGES['plus'] . ')");
+					jQuery("#sb_indi_"+surname).css("list-style-image", "url(' . Theme::theme()->parameter('image-plus') . ')");
 				}
 				return false;
 			});
 		');
-
 
 		$out = '<form method="post" action="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax" onsubmit="return false;"><input type="search" name="sb_indi_name" id="sb_indi_name" placeholder="' . I18N::translate('Search') . '"><p>';
 		foreach ($initials as $letter=>$count) {
@@ -159,24 +158,15 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 	/**
 	 * @param Tree   $tree
 	 * @param string $alpha
-	 * @param string $surname1
 	 *
 	 * @return string
 	 */
-	private function getAlphaSurnames(Tree $tree, $alpha, $surname1 = '') {
-		global $WT_TREE;
-
-		$surnames = QueryName::surnames($WT_TREE, '', $alpha, true, false);
+	private function getAlphaSurnames(Tree $tree, $alpha) {
+		$surnames = QueryName::surnames($tree, '', $alpha, true, false);
 		$out = '<ul>';
 		foreach (array_keys($surnames) as $surname) {
 			$out .= '<li id="sb_indi_' . $surname . '" class="sb_indi_surname_li"><a href="' . $surname . '" title="' . $surname . '" alt="' . $alpha . '" class="sb_indi_surname">' . $surname . '</a>';
-			if (!empty($surname1) && $surname1 == $surname) {
-				$out .= '<div class="name_tree_div_visible">';
-				$out .= $this->getSurnameIndis($alpha, $surname1);
-				$out .= '</div>';
-			} else {
-				$out .= '<div class="name_tree_div"></div>';
-			}
+			$out .= '<div class="name_tree_div"></div>';
 			$out .= '</li>';
 		}
 		$out .= '</ul>';
