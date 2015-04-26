@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-04-05 21:47+0100\n"
-"PO-Revision-Date: 2015-04-09 18:00+0100\n"
+"PO-Revision-Date: 2015-04-26 14:46+0100\n"
 "Last-Translator: Familia Boim <familiaboim@gmail.com>\n"
 "Language-Team: Yiddish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/yi/>\n"
@@ -221,7 +221,7 @@ msgstr ""
 #: app/Module/ClippingsCartModule.php:99
 #, php-format
 msgid "%s and their children"
-msgstr ""
+msgstr "%s און זייער קינדער"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:105
@@ -454,7 +454,7 @@ msgstr ""
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s x שוועסטערקינד"
 
 #. I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era
 #: app/Date/JulianDate.php:66
@@ -738,7 +738,7 @@ msgstr ""
 
 #: admin_trees_download.php:201 admin_trees_manage.php:198
 msgid "A file on your computer"
-msgstr ""
+msgstr "אַ טעקע אויף דיין קאָמפּיוטער"
 
 #. I18N: Description of the “My page” module
 #: app/Module/UserWelcomeModule.php:30
@@ -983,7 +983,7 @@ msgstr ""
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:32
 msgid "A tab showing the notes attached to an individual."
-msgstr ""
+msgstr "א קוויטל ווייַזונג דער צעטלען פון אַ יחיד."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourcesTabModule.php:32
@@ -1068,7 +1068,7 @@ msgstr "אָננעמען"
 #: admin_module_reports.php:65 admin_module_sidebar.php:87
 #: admin_module_tabs.php:87 admin_trees_config.php:560
 msgid "Access level"
-msgstr ""
+msgstr "מדרגה פון צוטריט"
 
 #: admin_users.php:371
 msgid "Account approval and email verification"
