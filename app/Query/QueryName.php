@@ -262,7 +262,7 @@ class QueryName {
 		// Now fetch initial letters that are not in our alphabet,
 		// including "@" (for "@N.N.") and "" for no surname.
 		$sql =
-			"SELECT SQL_CACHE UPPER(LEFT(n_surn, 1)), COUNT(n_id)" .
+			"SELECT SQL_CACHE initial, count FROM (SELECT UPPER(LEFT(n_surn, 1)) AS initial, COUNT(n_id) AS count" .
 			" FROM `##name` " .
 			($fams ? " JOIN `##link` ON n_id = l_from AND n_file = l_file AND l_type = 'FAMS' " : "") .
 			" WHERE n_file = :tree_id AND n_surn <> ''" .
@@ -277,7 +277,7 @@ class QueryName {
 			$args['collate_' . $n] = I18N::collation();
 			$args['letter_' . $n] = $letter . '%';
 		}
-		$sql .= " GROUP BY LEFT(n_surn, 1) ORDER BY LEFT(n_surn, 1) = '', LEFT(n_surn, 1) = '@', LEFT(n_surn, 1)";
+		$sql .= " GROUP BY UPPER(LEFT(n_surn, 1))) AS subquery ORDER BY initial = '', initial = '@', initial";
 		foreach (Database::prepare($sql)->execute($args)->fetchAssoc() as $alpha => $count) {
 			$alphas[$alpha] = $count;
 		}
@@ -401,12 +401,13 @@ class QueryName {
 			"SELECT SQL_CACHE n2.n_surn, n1.n_surname, n1.n_id" .
 			" FROM `##name` n1 " .
 			($fams ? " JOIN `##link` ON n_id = l_from AND n_file = l_file AND l_type = 'FAMS' " : "") .
-			" JOIN (SELECT n_surn, n_file FROM `##name`" .
+			" JOIN (SELECT n_surn COLLATE :collate_0 AS n_surn, n_file FROM `##name`" .
 			" WHERE n_file = :tree_id" .
 			($marnm ? "" : " AND n_type != '_MARNM'");
 
 		$args = array(
 			'tree_id' => $tree->getTreeId(),
+			'collate_0' => I18N::collation(),
 		);
 
 		if ($surn) {
@@ -423,7 +424,7 @@ class QueryName {
 			// All surnames
 			$sql .= " AND n_surn NOT IN ('', '@N.N.')";
 		}
-		$sql .= " GROUP BY n_surn COLLATE :collate_2, n_file) n2 ON (n1.n_surn=n2.n_surn COLLATE :collate_3 AND n1.n_file=n2.n_file)";
+		$sql .= " GROUP BY n_surn COLLATE :collate_2, n_file) AS n2 ON (n1.n_surn = n2.n_surn COLLATE :collate_3 AND n1.n_file = n2.n_file)";
 		$args['collate_2'] = I18N::collation();
 		$args['collate_3'] = I18N::collation();
 
