@@ -17,15 +17,13 @@ namespace Fisharebest\Webtrees;
  */
 
 use Rhumsaa\Uuid\Uuid;
-use Zend_Controller_Request_Http;
 
 /**
  * Defined in session.php
  *
- * @global Zend_Controller_Request_Http $WT_REQUEST
- * @global Tree                         $WT_TREE
+ * @global Tree $WT_TREE
  */
-global $WT_REQUEST, $WT_TREE;
+global $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'login.php');
 require './includes/session.php';
@@ -369,7 +367,7 @@ case 'register':
 			$mail1_method = $webmaster->getPreference('contact_method');
 			if ($mail1_method != 'messaging3' && $mail1_method != 'mailto' && $mail1_method != 'none') {
 				Database::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
-					->execute(array($user->getEmail(), $WT_REQUEST->getClientIp(), $webmaster->getUserId(), $mail1_subject, Filter::unescapeHtml($mail1_body)));
+					->execute(array($user->getEmail(), WT_CLIENT_IP, $webmaster->getUserId(), $mail1_subject, Filter::unescapeHtml($mail1_body)));
 			}
 
 			echo '<div class="confirm"><p>', I18N::translate('Hello %s…<br>Thank you for your registration.', $user->getRealNameHtml()), '</p>';
@@ -585,7 +583,7 @@ case 'verify_hash':
 		$mail1_method = $webmaster->getPreference('CONTACT_METHOD');
 		if ($mail1_method != 'messaging3' && $mail1_method != 'mailto' && $mail1_method != 'none') {
 			Database::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
-				->execute(array($user_name, $WT_REQUEST->getClientIp(), $webmaster->getUserId(), $mail1_subject, Filter::unescapeHtml($mail1_body)));
+				->execute(array($user_name, WT_CLIENT_IP, $webmaster->getUserId(), $mail1_subject, Filter::unescapeHtml($mail1_body)));
 		}
 
 		$user

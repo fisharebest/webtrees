@@ -17,12 +17,8 @@ namespace Fisharebest\Webtrees;
  */
 
 use PDOException;
-use Zend_Controller_Request_Http;
 
 error_reporting(E_ALL);
-
-// To embed webtrees code in other applications, we must explicitly declare any global variables that we create.
-global $WT_REQUEST;
 
 define('WT_SCRIPT_NAME', 'setup.php');
 define('WT_CONFIG_FILE', 'config.ini.php');
@@ -63,7 +59,6 @@ if (version_compare(PHP_VERSION, WT_REQUIRED_PHP_VERSION) < 0) {
 
 Session::start();
 
-$WT_REQUEST = new Zend_Controller_Request_Http;
 define('WT_LOCALE', I18N::init(Filter::post('lang', '[@a-zA-Z_]+')));
 
 header('Content-Type: text/html; charset=UTF-8');

@@ -33,12 +33,10 @@ class Mail {
 	 * @return string
 	 */
 	public static function auditFooter() {
-		global $WT_REQUEST;
-
 		return
 			self::EOL .
 			'---------------------------------------' . self::EOL .
-			'IP ADDRESS: ' . $WT_REQUEST->getClientIp() . self::EOL .
+			'IP ADDRESS: ' . WT_CLIENT_IP . self::EOL .
 			'LANGUAGE: ' . WT_LOCALE . self::EOL;
 	}
 

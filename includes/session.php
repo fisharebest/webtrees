@@ -17,7 +17,6 @@ namespace Fisharebest\Webtrees;
  */
 
 use PDOException;
-use Zend_Controller_Request_Http;
 
 /**
  * This is the bootstrap script, that is run on every request.
@@ -32,11 +31,10 @@ if (!defined('WT_SCRIPT_NAME')) {
 /**
  * We set the following globals
  *
- * @global boolean                      $SEARCH_SPIDER
- * @global Zend_Controller_Request_Http $WT_REQUEST
- * @global Tree                         $WT_TREE
+ * @global boolean $SEARCH_SPIDER
+ * @global Tree    $WT_TREE
  */
-global $WT_REQUEST, $WT_TREE, $SEARCH_SPIDER;
+global $WT_TREE, $SEARCH_SPIDER;
 
 // Identify ourself
 define('WT_WEBTREES', 'webtrees');
@@ -284,7 +282,14 @@ if (file_exists(WT_ROOT . 'data/config.ini.php')) {
 	exit;
 }
 
-$WT_REQUEST = new Zend_Controller_Request_Http;
+// What is the remote client's IP address
+if (Filter::server('HTTP_CLIENT_IP') !== null) {
+	define('WT_CLIENT_IP', Filter::server('HTTP_CLIENT_IP'));
+} else if (Filter::server('HTTP_X_FORWARDED_FOR') !== null) {
+	define('WT_CLIENT_IP', Filter::server('HTTP_X_FORWARDED_FOR'));
+} else {
+	define('WT_CLIENT_IP', Filter::server('REMOTE_ADDR'));
+}
 
 // Connect to the database
 try {
@@ -328,7 +333,7 @@ $rule = Database::prepare(
 	" WHERE IFNULL(INET_ATON(?), 0) BETWEEN ip_address_start AND ip_address_end" .
 	" AND ? LIKE user_agent_pattern" .
 	" ORDER BY ip_address_end LIMIT 1"
-)->execute(array($WT_REQUEST->getClientIp(), Filter::server('HTTP_USER_AGENT')))->fetchOne();
+)->execute(array(WT_CLIENT_IP, Filter::server('HTTP_USER_AGENT')))->fetchOne();
 
 switch ($rule) {
 case 'allow':
@@ -341,13 +346,13 @@ case 'robot':
 case 'unknown':
 	// Search engines don’t send cookies, and so create a new session with every visit.
 	// Make sure they always use the same one
-	Session::setId('search-engine-' . str_replace('.', '-', $WT_REQUEST->getClientIp()));
+	Session::setId('search-engine-' . str_replace('.', '-', WT_CLIENT_IP));
 	$SEARCH_SPIDER = true;
 	break;
 case '':
 	Database::prepare(
 		"INSERT INTO `##site_access_rule` (ip_address_start, ip_address_end, user_agent_pattern, comment) VALUES (IFNULL(INET_ATON(?), 0), IFNULL(INET_ATON(?), 4294967295), ?, '')"
-	)->execute(array($WT_REQUEST->getClientIp(), $WT_REQUEST->getClientIp(), Filter::server('HTTP_USER_AGENT', null, '')));
+	)->execute(array(WT_CLIENT_IP, WT_CLIENT_IP, Filter::server('HTTP_USER_AGENT', null, '')));
 	$SEARCH_SPIDER = true;
 	break;
 }
@@ -367,7 +372,7 @@ session_set_save_handler(
 		return Database::prepare("SELECT session_data FROM `##session` WHERE session_id=?")->execute(array($id))->fetchOne();
 	},
 	// write
-	function($id, $data) use ($WT_REQUEST) {
+	function($id, $data) {
 		// Only update the session table once per minute, unless the session data has actually changed.
 		Database::prepare(
 			"INSERT INTO `##session` (session_id, user_id, ip_address, session_data, session_time)" .
@@ -377,7 +382,7 @@ session_set_save_handler(
 			" ip_address   = VALUES(ip_address)," .
 			" session_data = VALUES(session_data)," .
 			" session_time = CURRENT_TIMESTAMP - SECOND(CURRENT_TIMESTAMP)"
-		)->execute(array($id, (int) Auth::id(), $WT_REQUEST->getClientIp(), $data));
+		)->execute(array($id, (int) Auth::id(), WT_CLIENT_IP, $data));
 
 		return true;
 	},
