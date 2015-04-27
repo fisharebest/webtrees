@@ -394,14 +394,19 @@ class Fact {
 				$attributes[] = $place;
 			}
 		}
-		$html = GedcomTag::getLabelValue($this->getTag(), implode(' — ', $attributes), $this->getParent());
+
+		$class = 'fact_' . $this->getTag();
 		if ($this->isPendingAddition()) {
-			return '<div class="new">' . $html . '</div>';
+			$class .= ' new';
 		} elseif ($this->isPendingDeletion()) {
-			return '<div class="old">' . $html . '</div>';
-		} else {
-			return $html;
+			$class .= ' old';
 		}
+
+		return
+			'<div class="' . $class . '">' .
+			/* I18N: a label/value pair, such as “Occupation: Farmer”.  Some languages may need to change the punctuation. */
+			I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', $this->getLabel(), implode(' — ', $attributes)) .
+			'</div>';
 	}
 
 	/**
