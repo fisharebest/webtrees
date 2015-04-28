@@ -16,8 +16,6 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use Zend_Session;
-
 /**
  * Class DescendancyModule
  */
@@ -38,7 +36,6 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 	public function modAction($modAction) {
 		global $WT_TREE;
 
-		Zend_Session::writeClose();
 		header('Content-Type: text/html; charset=UTF-8');
 
 		switch ($modAction) {

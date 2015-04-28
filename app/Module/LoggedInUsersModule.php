@@ -61,7 +61,7 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
 		if (Auth::check()) {
 			foreach ($logged_in as $user) {
 				$content .= '<div class="logged_in_name">';
-				$content .= Filter::escapeHtml($user->getRealName()) . ' - ' . Filter::escapeHtml($user->getUserName());
+				$content .= $user->getRealNameHtml() . ' - ' . Filter::escapeHtml($user->getUserName());
 				if (Auth::id() != $user->getUserId() && $user->getPreference('contactmethod') != 'none') {
 					$content .= ' <a class="icon-email" href="#" onclick="return message(\'' . Filter::escapeHtml($user->getUserName()) . '\', \'\', \'' . Filter::escapeHtml(get_query_url()) . '\');" title="' . I18N::translate('Send a message') . '"></a>';
 				}

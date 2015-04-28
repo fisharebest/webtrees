@@ -43,8 +43,7 @@ if (!file_exists(WT_DATA_DIR . 'config.ini.php')) {
 	return;
 }
 
-$WT_SESSION         = new \stdClass;
-$WT_SESSION->locale = '';
+Session::start();
 
 define('WT_LOCALE', I18N::init());
 

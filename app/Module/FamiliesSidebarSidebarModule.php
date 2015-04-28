@@ -16,8 +16,6 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use Zend_Session;
-
 /**
  * Class FamiliesSidebarModule
  */
@@ -36,7 +34,6 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 	public function modAction($modAction) {
 		switch ($modAction) {
 		case 'ajax':
-			Zend_Session::writeClose();
 			header('Content-Type: text/html; charset=UTF-8');
 			echo $this->getSidebarAjaxContent();
 			break;
@@ -69,7 +66,7 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 		} elseif ($alpha == '@' || $alpha == ',' || $surname) {
 			return $this->getSurnameFams($WT_TREE, $alpha, $surname);
 		} elseif ($alpha) {
-			return $this->getAlphaSurnames($WT_TREE, $alpha, $surname);
+			return $this->getAlphaSurnames($WT_TREE, $alpha);
 		} else {
 			return '';
 		}
@@ -111,7 +108,7 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 					  cache: false,
 					  success: function(html) {
 					    jQuery("#sb_fam_"+surname+" div").html(html);
-					    jQuery("#sb_fam_"+surname+" div").show();
+					    jQuery("#sb_fam_"+surname+" div").show("fast");
 					    jQuery("#sb_fam_"+surname).css("list-style-image", "url(' . Theme::theme()->parameter('image-minus') . ')");
 					    famloadedNames[surname]=2;
 					  }
@@ -124,16 +121,14 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 				}
 				else {
 					famloadedNames[surname]=1;
-					jQuery("#sb_fam_"+surname+" div").hide();
+					jQuery("#sb_fam_"+surname+" div").hide("fast");
 					jQuery("#sb_fam_"+surname).css("list-style-image", "url(' . Theme::theme()->parameter('image-plus') . ')");
 				}
 				return false;
 			});
 		');
-		$out =
-			'<form method="post" action="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax" onsubmit="return false;">' .
-			'<input type="search" name="sb_fam_name" id="sb_fam_name" placeholder="' . I18N::translate('Search') . '">' .
-			'<p>';
+
+		$out = '<form method="post" action="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax" onsubmit="return false;"><input type="search" name="sb_fam_name" id="sb_fam_name" placeholder="' . I18N::translate('Search') . '"><p>';
 		foreach ($initials as $letter=>$count) {
 			switch ($letter) {
 			case '@':
@@ -156,31 +151,26 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 		$out .= '</p>';
 		$out .= '<div id="sb_fam_content">';
 		$out .= '</div></form>';
+
 		return $out;
 	}
 
 	/**
 	 * @param Tree   $tree
 	 * @param string $alpha
-	 * @param string $surname1
 	 *
 	 * @return string
 	 */
-	public function getAlphaSurnames(Tree $tree, $alpha, $surname1 = '') {
+	private function getAlphaSurnames(Tree $tree, $alpha) {
 		$surnames = QueryName::surnames($tree, '', $alpha, true, true);
 		$out = '<ul>';
 		foreach (array_keys($surnames) as $surname) {
 			$out .= '<li id="sb_fam_' . $surname . '" class="sb_fam_surname_li"><a href="' . $surname . '" title="' . $surname . '" alt="' . $alpha . '" class="sb_fam_surname">' . $surname . '</a>';
-			if (!empty($surname1) && $surname1 == $surname) {
-				$out .= '<div class="name_tree_div_visible">';
-				$out .= $this->getSurnameFams($tree, $alpha, $surname1);
-				$out .= '</div>';
-			} else {
-				$out .= '<div class="name_tree_div"></div>';
-			}
+			$out .= '<div class="name_tree_div"></div>';
 			$out .= '</li>';
 		}
 		$out .= '</ul>';
+
 		return $out;
 	}
 
@@ -221,17 +211,20 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 		if (strlen($query) < 2) {
 			return '';
 		}
-
-		//-- search for INDI names
 		$rows = Database::prepare(
 			"SELECT i_id AS xref" .
 			" FROM `##individuals`, `##name`" .
-			" WHERE (i_id LIKE ? OR n_sort LIKE ?)" .
-			" AND i_id=n_id AND i_file=n_file AND i_file=?" .
-			" ORDER BY n_sort"
-		)
-		->execute(array("%{$query}%", "%{$query}%", $tree->getTreeId()))
-		->fetchAll();
+			" WHERE (i_id LIKE CONCAT('%', :query_1, '%') OR n_sort LIKE CONCAT('%', :query_2, '%'))" .
+			" AND i_id = n_id AND i_file = n_file AND i_file = :tree_id" .
+			" ORDER BY n_sort COLLATE :collation" .
+			" LIMIT 50"
+		)->execute(array(
+			'query_1'   => $query,
+			'query_2'   => $query,
+			'tree_id'   => $tree->getTreeId(),
+			'collation' => I18N::collation(),
+		))->fetchAll();
+
 		$ids = array();
 		foreach ($rows as $row) {
 			$ids[] = $row->xref;
@@ -240,8 +233,8 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 		$vars = array();
 		if (empty($ids)) {
 			//-- no match : search for FAM id
-			$where = "f_id LIKE ?";
-			$vars[] = "%{$query}%";
+			$where = "f_id LIKE CONCAT('%', ?, '%')";
+			$vars[] = $query;
 		} else {
 			//-- search for spouses
 			$qs = implode(',', array_fill(0, count($ids), '?'));

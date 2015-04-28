@@ -421,7 +421,7 @@ if (!$linktoid && $action == 'create') {
 	echo ' ', print_findindi_link('linktoid');
 	echo ' ', print_findfamily_link('linktoid');
 	echo ' ', print_findsource_link('linktoid');
-	echo '<p class="sub">', I18N::translate('Enter or search for the ID of the individual, family, or source to which this media item should be linked.'), '</p></td></tr>';
+	echo '<p class="small text-muted">', I18N::translate('Enter or search for the ID of the individual, family, or source to which this media item should be linked.'), '</p></td></tr>';
 }
 
 if ($media) {
@@ -445,7 +445,7 @@ if ($gedfile == 'FILE') {
 	if (Auth::isManager($WT_TREE)) {
 		echo '<tr><td class="descriptionbox wrap width25">';
 		echo I18N::translate('Thumbnail to upload') . '</td><td class="optionbox wrap"><input type="file" name="thumbnail" size="40">';
-		echo '<p class="sub">', I18N::translate('Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording.'), '</p>';
+		echo '<p class="small text-muted">', I18N::translate('Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording.'), '</p>';
 		echo '</td></tr>';
 	}
 }
@@ -458,7 +458,7 @@ if ($gedfile == 'FILE') {
 			"1 $gedfile",
 			'',
 			I18N::translate('Filename on server'),
-			I18N::translate('Do not change to keep original filename.') . '<br>' . I18N::translate('You may enter a URL, beginning with “http://”.')
+			'<p class="small text-muted">' . I18N::translate('Do not change to keep original filename.') . '<br>' . I18N::translate('You may enter a URL, beginning with “http://”.') . '</p>'
 		);
 	}
 	$fileName = '';
@@ -486,7 +486,7 @@ if ($gedfile == 'FILE') {
 		if ($isExternal) {
 			echo '>';
 		} else {
-			echo '><p class="sub">' . I18N::translate('Do not change to keep original filename.') . '</p>';
+			echo '><p class="small text-muted">' . I18N::translate('Do not change to keep original filename.') . '</p>';
 		}
 	} else {
 		echo $fileName;

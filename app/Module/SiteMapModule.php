@@ -16,8 +16,6 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use Zend_Session;
-
 /**
  * Class SiteMapModule
  */
@@ -42,7 +40,6 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 			$this->admin();
 			break;
 		case 'generate':
-			Zend_Session::writeClose();
 			$this->generate(Filter::get('file'));
 			break;
 		default:

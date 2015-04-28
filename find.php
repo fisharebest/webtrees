@@ -32,47 +32,40 @@ $type      = Filter::get('type');
 $filter    = Filter::get('filter');
 $action    = Filter::get('action');
 $callback  = Filter::get('callback', '[a-zA-Z0-9_]+', 'paste_id');
-$media     = Filter::get('media');
 $all       = Filter::getBool('all');
 $subclick  = Filter::get('subclick');
 $choose    = Filter::get('choose', '[a-zA-Z0-9_]+', '0all');
 $qs        = Filter::get('tags');
 
-if ($subclick == 'all') {
+if ($subclick === 'all') {
 	$all = true;
 }
 
-$embed = substr($choose, 0, 1) == "1";
-$chooseType = substr($choose, 1);
-if ($chooseType != "media" && $chooseType != "0file") {
-	$chooseType = "all";
-}
-
-// End variables for find media
+$embed = substr($choose, 0, 1) === '1';
 
 switch ($type) {
-case "indi":
+case 'indi':
 	$controller->setPageTitle(I18N::translate('Find an individual'));
 	break;
-case "fam":
+case 'fam':
 	$controller->setPageTitle(I18N::translate('Find a family'));
 	break;
-case "media":
+case 'media':
 	$controller->setPageTitle(I18N::translate('Find a media object'));
 	break;
-case "place":
+case 'place':
 	$controller->setPageTitle(I18N::translate('Find a place'));
 	break;
-case "repo":
+case 'repo':
 	$controller->setPageTitle(I18N::translate('Find a repository'));
 	break;
-case "note":
+case 'note':
 	$controller->setPageTitle(I18N::translate('Find a shared note'));
 	break;
-case "source":
+case 'source':
 	$controller->setPageTitle(I18N::translate('Find a source'));
 	break;
-case "specialchar":
+case 'specialchar':
 	$controller->setPageTitle(I18N::translate('Find a special character'));
 	$language_filter = Filter::get('language_filter');
 	// Users will probably always want the same language, so remember their setting
@@ -82,9 +75,9 @@ case "specialchar":
 		Auth::user()->setPreference('default_language_filter', $language_filter);
 	}
 	require WT_ROOT . 'includes/specialchars.php';
-	$action = "filter";
+	$action = 'filter';
 	break;
-case "facts":
+case 'facts':
 	$controller
 		->setPageTitle(I18N::translate('Find a fact or event'))
 		->addInlineJavascript('initPickFact();');
@@ -194,7 +187,7 @@ if ($type == 'media') {
 		echo $filter;
 	}
 	echo '" autofocus>',
-	'<p>', I18N::translate('Simple search filter based on the characters entered, no wildcards are accepted.'), '</p>',
+	'<p class="small text-muted">', I18N::translate('Simple search filter based on the characters entered, no wildcards are accepted.'), '</p>',
 	'<p><input type="submit" name="search" value="', I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
 	<input type="submit" name="all" value="', I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
 	</p></form></div>';
@@ -524,9 +517,7 @@ if ($action == "filter") {
 	}
 
 	// Output Media
-	if ($type == "media") {
-		global $dirs;
-
+	if ($type === 'media') {
 		$medialist = QueryMedia::mediaList('', 'include', 'title', $filter);
 
 		echo '<div id="find-output">';

@@ -1,3 +1,10 @@
+## v1.2.2 (2015-04-26)
+
+- Fix ucwords to be functionally the same as in-built PHP version
+- Fix iconv_set_encoding deprecation notice in PHP 5.6.0
+- remove legacy test for HHVM/PHP7
+- mb_parse_str() should have no return value
+
 ## v1.2.1 (2015-01-28)
 
 - fix double declaration in mbstring shim
@@ -14,6 +21,12 @@
 
 - add best-fit mappings for UTF-8 to Code Page approximations
 - add portable Unicode filesystem access under Windows and other OSes
+
+## v1.1.29 (2015-04-26)
+
+- fix ucwords to be functionally the same as in-built PHP version
+- fix iconv_set_encoding deprecation notice in PHP 5.6.0
+- remove legacy test for HHVM/PHP7
 
 ## v1.1.28 (2015-01-12)
 

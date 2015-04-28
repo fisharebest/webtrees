@@ -5,10 +5,12 @@ php:
   - 5.4
   - 5.5
   - 5.6
+  - nightly
   - hhvm-nightly
 
 matrix:
   allow_failures:
+    - php: nightly
     - php: hhvm-nightly
 
 script:

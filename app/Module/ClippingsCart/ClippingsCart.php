@@ -17,7 +17,6 @@ namespace Fisharebest\Webtrees;
  */
 
 use PclZip;
-use Zend_Session;
 
 /**
  * The clippings cart.
@@ -60,14 +59,12 @@ class ClippingsCart {
 	 * Create the clippings controller
 	 */
 	public function __construct() {
-		global $WT_TREE, $WT_SESSION;
+		global $WT_TREE;
 
 		// Our cart is an array of items in the session
-		if (!is_array($WT_SESSION->cart)) {
-			$WT_SESSION->cart = array();
-		}
-		if (!array_key_exists($WT_TREE->getTreeId(), $WT_SESSION->cart)) {
-			$WT_SESSION->cart[$WT_TREE->getTreeId()] = array();
+		$cart = Session::get('cart', array());
+		if (!array_key_exists($WT_TREE->getTreeId(), $cart)) {
+			$cart[$WT_TREE->getTreeId()] = array();
 		}
 
 		$this->action           = Filter::get('action');
@@ -149,12 +146,12 @@ class ClippingsCart {
 						$this->addFamilyDescendancy($family, $this->level3);
 					}
 				}
-				uksort($WT_SESSION->cart[$WT_TREE->getTreeId()], __NAMESPACE__ . '\ClippingsCart::compareClippings');
+				uksort($cart[$WT_TREE->getTreeId()], __NAMESPACE__ . '\ClippingsCart::compareClippings');
 			}
 		} elseif ($this->action === 'remove') {
-			unset ($WT_SESSION->cart[$WT_TREE->getTreeId()][$this->id]);
+			unset ($cart[$WT_TREE->getTreeId()][$this->id]);
 		} elseif ($this->action === 'empty') {
-			$WT_SESSION->cart[$WT_TREE->getTreeId()] = array();
+			$cart[$WT_TREE->getTreeId()] = array();
 		} elseif ($this->action === 'download') {
 			$media      = array();
 			$mediacount = 0;
@@ -194,7 +191,7 @@ class ClippingsCart {
 				break;
 			}
 
-			foreach (array_keys($WT_SESSION->cart[$WT_TREE->getTreeId()]) as $xref) {
+			foreach (array_keys($cart[$WT_TREE->getTreeId()]) as $xref) {
 				$object = GedcomRecord::getInstance($xref, $WT_TREE);
 				// The object may have been deleted since we added it to the cart....
 				if ($object) {
@@ -202,19 +199,19 @@ class ClippingsCart {
 					// Remove links to objects that aren't in the cart
 					preg_match_all('/\n1 ' . WT_REGEX_TAG . ' @(' . WT_REGEX_XREF . ')@(\n[2-9].*)*/', $record, $matches, PREG_SET_ORDER);
 					foreach ($matches as $match) {
-						if (!array_key_exists($match[1], $WT_SESSION->cart[$WT_TREE->getTreeId()])) {
+						if (!array_key_exists($match[1], $cart[$WT_TREE->getTreeId()])) {
 							$record = str_replace($match[0], '', $record);
 						}
 					}
 					preg_match_all('/\n2 ' . WT_REGEX_TAG . ' @(' . WT_REGEX_XREF . ')@(\n[3-9].*)*/', $record, $matches, PREG_SET_ORDER);
 					foreach ($matches as $match) {
-						if (!array_key_exists($match[1], $WT_SESSION->cart[$WT_TREE->getTreeId()])) {
+						if (!array_key_exists($match[1], $cart[$WT_TREE->getTreeId()])) {
 							$record = str_replace($match[0], '', $record);
 						}
 					}
 					preg_match_all('/\n3 ' . WT_REGEX_TAG . ' @(' . WT_REGEX_XREF . ')@(\n[4-9].*)*/', $record, $matches, PREG_SET_ORDER);
 					foreach ($matches as $match) {
-						if (!array_key_exists($match[1], $WT_SESSION->cart[$WT_TREE->getTreeId()])) {
+						if (!array_key_exists($match[1], $cart[$WT_TREE->getTreeId()])) {
 							$record = str_replace($match[0], '', $record);
 						}
 					}
@@ -259,6 +256,7 @@ class ClippingsCart {
 					}
 				}
 			}
+			Session::put('cart', $cart);
 
 			if ($this->IncludeMedia === "yes") {
 				$this->media_list = $media;
@@ -315,8 +313,6 @@ class ClippingsCart {
 	 * based on the options he or she selected.
 	 */
 	function downloadClipping() {
-		Zend_Session::writeClose();
-
 		if ($this->IncludeMedia === 'yes' || $this->Zip === 'yes') {
 			header('Content-Type: application/zip');
 			header('Content-Disposition: attachment; filename="clipping.zip"');
@@ -337,15 +333,15 @@ class ClippingsCart {
 	 * @param GedcomRecord $record
 	 */
 	function addClipping(GedcomRecord $record) {
-		global $WT_SESSION;
-
 		if ($record->canShowName()) {
-			$WT_SESSION->cart[$record->getTree()->getTreeId()][$record->getXref()] = true;
+			$cart = Session::get('cart');
+			$cart[$record->getTree()->getTreeId()][$record->getXref()] = true;
 			// Add directly linked records
 			preg_match_all('/\n\d (?:OBJE|NOTE|SOUR|REPO) @(' . WT_REGEX_XREF . ')@/', $record->getGedcom(), $matches);
 			foreach ($matches[1] as $match) {
-				$WT_SESSION->cart[$record->getTree()->getTreeId()][$match] = true;
+				$cart[$record->getTree()->getTreeId()][$match] = true;
 			}
+			Session::put('cart', $cart);
 		}
 	}
 

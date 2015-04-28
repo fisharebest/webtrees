@@ -164,6 +164,7 @@ return array(
     'Fisharebest\\Webtrees\\ReviewChangesModule' => $baseDir . '/app/Module/ReviewChangesModule.php',
     'Fisharebest\\Webtrees\\RomanDate' => $baseDir . '/app/Date/RomanDate.php',
     'Fisharebest\\Webtrees\\SearchController' => $baseDir . '/app/Controller/SearchController.php',
+    'Fisharebest\\Webtrees\\Session' => $baseDir . '/app/Session.php',
     'Fisharebest\\Webtrees\\SimpleController' => $baseDir . '/app/Controller/SimpleController.php',
     'Fisharebest\\Webtrees\\Site' => $baseDir . '/app/Site.php',
     'Fisharebest\\Webtrees\\SiteMapModule' => $baseDir . '/app/Module/SiteMapModule.php',

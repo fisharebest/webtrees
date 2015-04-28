@@ -177,8 +177,6 @@ class BranchesController extends PageController {
 	 * @return string
 	 */
 	private function getDescendantsHtml(Individual $individual, Family $parents = null) {
-		global $WT_TREE;
-		
 		// A person has many names.  Select the one that matches the searched surname
 		$person_name = '';
 		foreach ($individual->getAllNames() as $name) {

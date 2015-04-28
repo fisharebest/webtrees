@@ -38,7 +38,7 @@ class Log {
 	 * @param Tree|null $tree
 	 */
 	private static function addLog($message, $log_type, Tree $tree = null) {
-		global $WT_REQUEST, $WT_TREE;
+		global $WT_TREE;
 
 		if (!$tree) {
 			$tree = $WT_TREE;
@@ -49,7 +49,7 @@ class Log {
 		)->execute(array(
 					$log_type,
 					$message,
-					$WT_REQUEST->getClientIp(),
+					WT_CLIENT_IP,
 					Auth::id(),
 					$tree ? $tree->getTreeId() : null
 		));

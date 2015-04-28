@@ -16,8 +16,6 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use Zend_Session;
-
 /**
  * Defined in session.php
  *
@@ -27,8 +25,6 @@ global $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'mediafirewall.php');
 require './includes/session.php';
-
-Zend_Session::writeClose();
 
 $mid   = Filter::get('mid', WT_REGEX_XREF);
 $thumb = Filter::getBool('thumb');

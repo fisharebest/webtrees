@@ -16,8 +16,6 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use Zend_Session;
-
 /**
  * Class AjaxController - Base controller for all popup pages
  */
@@ -27,8 +25,6 @@ class AjaxController extends BaseController {
 	 * @return $this
 	 */
 	public function pageHeader() {
-		// We have finished writing session data, so release the lock
-		Zend_Session::writeClose();
 		// Ajax responses are always UTF8
 		header('Content-Type: text/html; charset=UTF-8');
 		$this->page_header = true;

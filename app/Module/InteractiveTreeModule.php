@@ -16,8 +16,6 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use Zend_Session;
-
 /**
  * Class InteractiveTreeModule
  * Tip : you could change the number of generations loaded before ajax calls both in individual page and in treeview page to optimize speed and server load
@@ -117,7 +115,6 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 			break;
 
 		case 'getDetails':
-			Zend_Session::writeClose();
 			header('Content-Type: text/html; charset=UTF-8');
 			$pid = Filter::get('pid', WT_REGEX_XREF);
 			$i = Filter::get('instance');
@@ -129,7 +126,6 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 			break;
 
 		case 'getPersons':
-			Zend_Session::writeClose();
 			header('Content-Type: text/html; charset=UTF-8');
 			$q = Filter::get('q');
 			$i = Filter::get('instance');

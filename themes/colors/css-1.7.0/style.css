@@ -118,8 +118,9 @@ a:hover {
 	outline-style: none;
 }
 
-#flash-messages {
+.flash-messages {
 	clear: both;
+	text-align: center;
 }
 
 dl {
@@ -424,7 +425,6 @@ a:hover .nameZoom {
 }
 
 .error {
-	color: #d00;
 	font-weight: bold;
 }
 
@@ -1180,7 +1180,8 @@ a.showit:hover > span {
 }
 
 /* login.php */
-#login-register-page h2 {
+#login-register-page h2,
+#login-page .confirm {
 	text-align: center;
 }
 
@@ -1238,7 +1239,6 @@ a.showit:hover > span {
 #verify-form {
 	width: 440px;
 }
-
 
 #login-form div,
 #login-form div a,

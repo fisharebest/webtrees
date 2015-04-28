@@ -17,6 +17,13 @@ namespace Fisharebest\Webtrees;
  */
 
 /**
+ * This function was introduced in PHP 5.4
+ */
+function session_register_shutdown() {
+	register_shutdown_function('session_write_close');
+}
+
+/**
  * https://php.net/date_default_timezone_get
  * Prior to PHP 5.4, this function would attempt to guess the timezone,
  * and emit a warning when it did this.  Suppresss the warning.

@@ -84,19 +84,19 @@ class Bootup
     {
         if (extension_loaded('iconv'))
         {
-            if ('UTF-8' !== iconv_get_encoding('input_encoding'))
+            if ('UTF-8' !== strtoupper(iconv_get_encoding('input_encoding')))
             {
                 iconv_set_encoding('input_encoding', 'UTF-8');
             }
 
-            if ('UTF-8' !== iconv_get_encoding('internal_encoding'))
+            if ('UTF-8' !== strtoupper(iconv_get_encoding('internal_encoding')))
             {
                 iconv_set_encoding('internal_encoding', 'UTF-8');
             }
 
-            if ('UTF-8' !== iconv_get_encoding('output_encoding'))
+            if ('UTF-8' !== strtoupper(iconv_get_encoding('output_encoding')))
             {
-                iconv_set_encoding('output_encoding' , 'UTF-8');
+                iconv_set_encoding('output_encoding', 'UTF-8');
             }
         }
         else if (!defined('ICONV_IMPL'))

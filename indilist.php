@@ -192,11 +192,11 @@ if ($show === 'indi' || $show === 'surn') {
 			echo format_surname_list($surns, 3, true, WT_SCRIPT_NAME, $WT_TREE);
 			break;
 		case 'style3':
-			echo format_surname_tagcloud($surns, WT_SCRIPT_NAME, true);
+			echo format_surname_tagcloud($surns, WT_SCRIPT_NAME, true, $WT_TREE);
 			break;
 		case 'style2':
 		default:
-			echo format_surname_table($surns, WT_SCRIPT_NAME);
+			echo format_surname_table($surns, WT_SCRIPT_NAME, $WT_TREE);
 			break;
 		}
 	} else {

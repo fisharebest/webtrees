@@ -16,8 +16,6 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use Zend_Session;
-
 /**
  * Class PageController Controller for full-page, themed HTML responses
  */
@@ -198,9 +196,6 @@ class PageController extends BaseController {
 			ob_flush();
 		}
 		flush();
-
-		// Once we've displayed the header, we should no longer write session data.
-		Zend_Session::writeClose();
 
 		// We've displayed the header - display the footer automatically
 		$this->page_header = true;

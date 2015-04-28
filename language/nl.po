@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-04-05 21:47+0100\n"
-"PO-Revision-Date: 2015-04-06 21:23+0100\n"
+"PO-Revision-Date: 2015-04-19 09:34+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
@@ -1617,7 +1617,9 @@ msgstr "Afrika"
 
 #: admin_trees_manage.php:646
 msgid "After creating the family tree, you will be able to upload or import data from a GEDCOM file."
-msgstr "Na het aanmaken van de stamboom kunnen gegevens van een GEDCOM-bestand ge-upload of geïmporteerd worden."
+msgstr ""
+"Na het aanmaken van de stamboom kunt u de gegevens van een GEDCOM-bestand "
+"uploaden of importeren."
 
 #: login.php:253
 msgid "After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
@@ -3516,7 +3518,12 @@ msgstr "Kies familieleden"
 
 #: addmedia.php:448 admin_media_upload.php:211
 msgid "Choose the thumbnail image that you want to upload.  Although thumbnails can be generated automatically for images, you may wish to generate your own thumbnail, especially for other media types.  For example, you can provide a still image from a video, or a photograph of the individual who made an audio recording."
-msgstr "Kies het miniatuurplaatje dat ge-upload moet worden. Hoewel miniaturen automatisch gemaakt kunnen worden, wilt u misschien zelf een miniatuur maken, speciaal voor andere bestandstypes. U wilt b.v. een stilstaand shot uit een video gebruiken of een foto van de maker van een video of audio-opname."
+msgstr ""
+"Kies het miniatuurplaatje dat u wilt uploaden. Hoewel miniaturen van "
+"afbeeldingen automatisch gemaakt kunnen worden, wilt u misschien zelf een "
+"miniatuur maken, vooral voor andere bestandstypes. U wilt bijvoorbeeld een "
+"stilstaand shot uit een video gebruiken of een foto van de maker van een "
+"audio-opname."
 
 #: admin_site_config.php:121
 msgid "Choose user defined welcome text typed below"
@@ -7186,7 +7193,9 @@ msgstr "Als er veel inactieve plaatsen zijn, kan het lang duren om een lijst te 
 
 #: addmedia.php:534 admin_media_upload.php:252
 msgid "If you have a large number of media files, you can organize them into folders and subfolders."
-msgstr "Als u een groot aantal mediabestanden heeft, kan u ze organiseren in mappen en submappen."
+msgstr ""
+"Als u een groot aantal mediabestanden heeft, kunt u ze organiseren in mappen "
+"en submappen."
 
 #: admin_trees_manage.php:262
 msgid "If you have created media objects in webtrees, and have subsequently edited this GEDCOM file using genealogy software that deletes media objects, then select this option to merge the current media objects with the new GEDCOM file."
@@ -13433,7 +13442,17 @@ msgstr "Het mediabestand is niet gevonden in deze stamboom."
 
 #: admin_media_upload.php:223
 msgid "The media file you are uploading can be, and probably should be, named differently on the server than it is on your local computer.  This is so because often the local filename has meaning to you but is much less meaningful to others visiting this website.  Consider also the possibility that you and someone else both try to upload different files called “granny.jpg“.<br><br>In this field, you specify the new name of the file you are uploading.  The name you enter here will also be used to name the thumbnail, which can be uploaded separately or generated automatically.  You do not need to enter the filename extension (jpg, gif, pdf, doc, etc.)<br><br>Leave this field blank to keep the original name of the file you have uploaded from your local computer."
-msgstr "Het mediabestand dat wordt ge-upload kan, en moet eigenlijk een andere naam krijgen op de server dan op uw lokale computer. Op de lokale computer heeft die naam betekenis voor de gebruiker van die computer, maar dat betekent niet dat dit ook geld voor de bezoekers van de site. Bedenk dat verschillende personen een foto van opa \"opa.jpg\"willen noemen, terwijl dit zeer waarschijnlijk om verschillende personen zal gaan.<br><br>In dit veld moet u een nieuwe naam opgeven voor het bestand dat u gaat uploaden. Die naam wordt ook gebruikt voor de miniatuur, welke apart ge-upload kan worden of automatisch aangemaakt. De extensie van de bestandsnaam ( jpg, gif, pdf, doc, enz.) hoeft niet te worden opgegeven.<br><br>Laat dit veld leeg, om de originele naam van het bestand dat u geupload heeft van uw lokale computer, te behouden.."
+msgstr ""
+"Het mediabestand dat u uploadt kan, en moet eigenlijk, een andere naam "
+"krijgen op de server dan op uw lokale computer. Op uw lokale computer heeft "
+"die naam betekenis voor u, maar dat betekent niet dat dit ook geldt voor de "
+"bezoekers van de site. Denk ook aan de mogelijkheid dat meerdere gebruikers "
+"proberen bestanden te uploaden met de naam “opa.jpg”.<br><br>In dit veld "
+"kunt u de nieuwe naam opgeven voor het bestand dat u gaat uploaden. De naam "
+"die u hier invult, wordt ook gebruikt voor de miniatuur, die u apart kunt "
+"uploaden of die automatisch wordt aangemaakt. De extensie (jpg, gif, pdf, "
+"doc, enz) hoeft u niet in te vullen.<br><br>Laat dit veld leeg om de "
+"originele naam van het bestand te behouden."
 
 #: setup.php:173
 msgid "The memory and CPU time requirements depend on the number of individuals in your family tree."
@@ -15606,7 +15625,7 @@ msgstr "U heeft een GEDCOM bestand gekozen met een andere naam. Is dat correct?"
 
 #: addmedia.php:461
 msgid "You may enter a URL, beginning with “http://”."
-msgstr "Hier kan een URL worden ingevoerd, beginnend met ‘http://’."
+msgstr "Hier kunt u een URL invoeren, beginnend met ‘http://’."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:372
 msgid "You may use HTML to format the answer and to add links to other websites."
@@ -15929,7 +15948,7 @@ msgstr "en"
 #: includes/functions/functions.php:1092
 msgctxt "father’s brother’s wife"
 msgid "aunt"
-msgstr "aangetr. tante"
+msgstr "aangetrouwde tante"
 
 #: includes/functions/functions.php:848
 msgctxt "father’s sister"
@@ -15939,7 +15958,7 @@ msgstr "tante"
 #: includes/functions/functions.php:1154
 msgctxt "mother’s brother’s wife"
 msgid "aunt"
-msgstr "aangetr. tante"
+msgstr "aangetrouwde tante"
 
 #: includes/functions/functions.php:886
 msgctxt "mother’s sister"
@@ -15949,7 +15968,7 @@ msgstr "tante"
 #: includes/functions/functions.php:1206
 msgctxt "parent’s brother’s wife"
 msgid "aunt"
-msgstr "aangetr. tante"
+msgstr "aangetrouwde tante"
 
 #: includes/functions/functions.php:904
 msgctxt "parent’s sister"
@@ -19506,7 +19525,7 @@ msgstr "oom"
 #: includes/functions/functions.php:1134
 msgctxt "father’s sister’s husband"
 msgid "uncle"
-msgstr "aangetr. oom"
+msgstr "aangetrouwde oom"
 
 #: includes/functions/functions.php:870
 msgctxt "mother’s brother"
@@ -19516,7 +19535,7 @@ msgstr "oom"
 #: includes/functions/functions.php:1202
 msgctxt "mother’s sister’s husband"
 msgid "uncle"
-msgstr "aangetr. oom"
+msgstr "aangetrouwde oom"
 
 #: includes/functions/functions.php:890
 msgctxt "parent’s brother"
@@ -19526,7 +19545,7 @@ msgstr "oom"
 #: includes/functions/functions.php:1244
 msgctxt "parent’s sister’s husband"
 msgid "uncle"
-msgstr "aangetr. oom"
+msgstr "aangetrouwde oom"
 
 #: admin_site_access.php:34 admin_site_access.php:41
 #: app/Module/FamilyNavigatorModule.php:168

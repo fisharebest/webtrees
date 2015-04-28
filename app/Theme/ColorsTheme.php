@@ -86,13 +86,13 @@ class ColorsTheme extends CloudsTheme {
 			}
 			unset($_GET['themecolor']);
 			// Rember that we have selected a value
-			$this->session->subColor = $this->palette;
+			Session::set('subColor', $this->palette);
 		}
 		// If we are logged in, use our preference
 		$this->palette = Auth::user()->getPreference('themecolor');
 		// If not logged in or no preference, use one we selected earlier in the session?
 		if (!$this->palette) {
-			$this->palette = $this->session->subColor;
+			$this->palette = Session::get('subColor');
 		}
 		// We haven't selected one this session?  Use the site default
 		if (!$this->palette) {
