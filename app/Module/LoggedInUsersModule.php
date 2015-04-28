@@ -32,6 +32,8 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
 
 	/** {@inheritdoc} */
 	public function getBlock($block_id, $template = true, $cfg = null) {
+		global $WT_TREE;
+
 		$id        = $this->getName() . $block_id;
 		$class     = $this->getName() . '_block';
 		$title     = $this->getTitle();
@@ -60,8 +62,15 @@ class LoggedInUsersModule extends AbstractModule implements ModuleBlockInterface
 		$content .= '<div class="logged_in_list">';
 		if (Auth::check()) {
 			foreach ($logged_in as $user) {
+				$individual = Individual::getInstance($WT_TREE->getUserPreference($user, 'gedcomid'), $WT_TREE);
+
 				$content .= '<div class="logged_in_name">';
-				$content .= $user->getRealNameHtml() . ' - ' . Filter::escapeHtml($user->getUserName());
+				if ($individual) {
+					$content .= '<a href="' . $individual->getHtmlUrl() . '">' . $user->getRealNameHtml() . '</a>';
+				} else {
+					$content .= $user->getRealNameHtml();
+				}
+				$content .= ' - ' . Filter::escapeHtml($user->getUserName());
 				if (Auth::id() != $user->getUserId() && $user->getPreference('contactmethod') != 'none') {
 					$content .= ' <a class="icon-email" href="#" onclick="return message(\'' . Filter::escapeHtml($user->getUserName()) . '\', \'\', \'' . Filter::escapeHtml(get_query_url()) . '\');" title="' . I18N::translate('Send a message') . '"></a>';
 				}
