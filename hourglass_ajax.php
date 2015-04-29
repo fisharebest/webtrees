@@ -16,16 +16,12 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use Zend_Session;
-
 define('WT_SCRIPT_NAME', 'hourglass_ajax.php');
 require './includes/session.php';
 
 $controller = new HourglassController;
 
 header('Content-type: text/html; charset=UTF-8');
-
-Zend_Session::writeClose();
 
 if (Filter::get('type') === 'desc') {
 	$controller->printDescendency($controller->root, 1, false);

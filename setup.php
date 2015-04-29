@@ -17,12 +17,8 @@ namespace Fisharebest\Webtrees;
  */
 
 use PDOException;
-use Zend_Controller_Request_Http;
 
 error_reporting(E_ALL);
-
-// To embed webtrees code in other applications, we must explicitly declare any global variables that we create.
-global $WT_REQUEST, $WT_SESSION;
 
 define('WT_SCRIPT_NAME', 'setup.php');
 define('WT_CONFIG_FILE', 'config.ini.php');
@@ -53,7 +49,6 @@ if (file_exists(WT_DATA_DIR . WT_CONFIG_FILE)) {
 }
 
 if (version_compare(PHP_VERSION, WT_REQUIRED_PHP_VERSION) < 0) {
-	// We cannot translate these messages without a modern PHP
 	echo
 		'<h1>Sorry, the setup wizard cannot start.</h1>',
 		'<p>This server is running PHP version ', PHP_VERSION, '</p>',
@@ -62,10 +57,8 @@ if (version_compare(PHP_VERSION, WT_REQUIRED_PHP_VERSION) < 0) {
 	return;
 }
 
-$WT_REQUEST          = new Zend_Controller_Request_Http;
-$WT_SESSION          = new \stdClass;
-$WT_SESSION->locale  = null; // Needed for I18N
-$WT_SESSION->wt_user = null; // Needed for Auth
+Session::start();
+
 define('WT_LOCALE', I18N::init(Filter::post('lang', '[@a-zA-Z_]+')));
 
 header('Content-Type: text/html; charset=UTF-8');
@@ -110,7 +103,7 @@ if (!isset($_POST['lang'])) {
 
 	echo
 		'<p>', I18N::translate('Change language'), ' ',
-		select_edit_control('change_lang', $installed_languages, null, Filter::get('lang'), 'onchange="window.location=\'' . WT_SCRIPT_NAME . '?lang=\'+this.value;">'),
+		select_edit_control('change_lang', $installed_languages, null, WT_LOCALE, 'onchange="window.location=\'' . WT_SCRIPT_NAME . '?lang=\'+this.value;">'),
 		'</p>',
 		'<h2>', I18N::translate('Checking server configuration'), '</h2>';
 	$warnings = false;

@@ -17,18 +17,13 @@ namespace Fisharebest\Webtrees;
  */
 
 use Rhumsaa\Uuid\Uuid;
-use Zend_Controller_Request_Http;
-use Zend_Session;
-use Zend_Session_Namespace;
 
 /**
  * Defined in session.php
  *
- * @global Zend_Controller_Request_Http $WT_REQUEST
- * @global Zend_Session_Namespace       $WT_SESSION
- * @global Tree                         $WT_TREE
+ * @global Tree $WT_TREE
  */
-global $WT_REQUEST, $WT_SESSION, $WT_TREE;
+global $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'login.php');
 require './includes/session.php';
@@ -97,12 +92,9 @@ case 'login':
 		Auth::login($user);
 		Log::addAuthenticationLog('Login: ' . Auth::user()->getUserName() . '/' . Auth::user()->getRealName());
 
-		$WT_SESSION->timediff      = $timediff;
-		$WT_SESSION->locale        = Auth::user()->getPreference('language');
-		$WT_SESSION->theme_id      = Auth::user()->getPreference('theme');
-		$WT_SESSION->activity_time = WT_TIMESTAMP;
-
-		Auth::user()->setPreference('sessiontime', WT_TIMESTAMP);
+		Session::put('timediff', $timediff);
+		Session::put('locale', Auth::user()->getPreference('language'));
+		Session::put('theme_id', Auth::user()->getPreference('theme'));
 
 		// If we’ve clicked login from the login page, we don’t want to go back there.
 		if (strpos($url, WT_SCRIPT_NAME) === 0) {
@@ -126,9 +118,6 @@ case 'login':
 
 		// Redirect to the target URL
 		header('Location: ' . WT_BASE_URL . $url);
-		// Explicitly write the session data before we exit,
-		// as it doesn’t always happen when using APC.
-		Zend_Session::writeClose();
 
 		return;
 	} catch (\Exception $ex) {
@@ -275,7 +264,7 @@ case 'register':
 	$controller->setPageTitle(I18N::translate('Request new user account'));
 
 	// The form parameters are mandatory, and the validation errors are shown in the client.
-	if ($WT_SESSION->good_to_send && $user_name && $user_password01 && $user_password01 == $user_password02 && $user_realname && $user_email && $user_comments) {
+	if (Session::get('good_to_send') && $user_name && $user_password01 && $user_password01 == $user_password02 && $user_realname && $user_email && $user_comments) {
 
 		// These validation errors cannot be shown in the client.
 		if (User::findByIdentifier($user_name)) {
@@ -378,7 +367,7 @@ case 'register':
 			$mail1_method = $webmaster->getPreference('contact_method');
 			if ($mail1_method != 'messaging3' && $mail1_method != 'mailto' && $mail1_method != 'none') {
 				Database::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
-					->execute(array($user->getEmail(), $WT_REQUEST->getClientIp(), $webmaster->getUserId(), $mail1_subject, Filter::unescapeHtml($mail1_body)));
+					->execute(array($user->getEmail(), WT_CLIENT_IP, $webmaster->getUserId(), $mail1_subject, Filter::unescapeHtml($mail1_body)));
 			}
 
 			echo '<div class="confirm"><p>', I18N::translate('Hello %s…<br>Thank you for your registration.', $user->getRealNameHtml()), '</p>';
@@ -390,7 +379,7 @@ case 'register':
 		}
 	}
 
-	$WT_SESSION->good_to_send = true;
+	Session::put('good_to_send', true);
 	$controller
 		->pageHeader()
 		->addInlineJavascript('function regex_quote(str) {return str.replace(/[\\\\.?+*()[\](){}|]/g, "\\\\$&");}');
@@ -594,7 +583,7 @@ case 'verify_hash':
 		$mail1_method = $webmaster->getPreference('CONTACT_METHOD');
 		if ($mail1_method != 'messaging3' && $mail1_method != 'mailto' && $mail1_method != 'none') {
 			Database::prepare("INSERT INTO `##message` (sender, ip_address, user_id, subject, body) VALUES (? ,? ,? ,? ,?)")
-				->execute(array($user_name, $WT_REQUEST->getClientIp(), $webmaster->getUserId(), $mail1_subject, Filter::unescapeHtml($mail1_body)));
+				->execute(array($user_name, WT_CLIENT_IP, $webmaster->getUserId(), $mail1_subject, Filter::unescapeHtml($mail1_body)));
 		}
 
 		$user

@@ -16,8 +16,6 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use Zend_Session;
-
 /**
  * Defined in session.php
  *
@@ -27,8 +25,6 @@ global $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'expand_view.php');
 require './includes/session.php';
-
-Zend_Session::writeClose();
 
 header('Content-Type: text/html; charset=UTF-8');
 $individual = Individual::getInstance(Filter::get('pid', WT_REGEX_XREF), $WT_TREE);

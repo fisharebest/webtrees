@@ -90,7 +90,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 		switch ($infoStyle) {
 		case 'tagcloud':
 			uksort($all_surnames, __NAMESPACE__ . '\I18N::strcasecmp');
-			$content = format_surname_tagcloud($all_surnames, 'indilist.php', true);
+			$content = format_surname_tagcloud($all_surnames, 'indilist.php', true, $WT_TREE);
 			break;
 		case 'list':
 			uasort($all_surnames, __NAMESPACE__ . '\\TopSurnamesModule::surnameCountSort');
@@ -103,7 +103,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 		case 'table':
 		default:
 			uasort($all_surnames, __NAMESPACE__ . '\\TopSurnamesModule::surnameCountSort');
-			$content = format_surname_table($all_surnames, 'indilist.php');
+			$content = format_surname_table($all_surnames, 'indilist.php', $WT_TREE);
 			break;
 		}
 

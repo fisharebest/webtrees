@@ -16,16 +16,12 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use Zend_Session;
-use Zend_Session_Namespace;
-
 /**
  * Defined in session.php
  *
- * @global Zend_Session_Namespace $WT_SESSION
- * @global Tree                   $WT_TREE
+ * @global Tree $WT_TREE
  */
-global $WT_SESSION, $WT_TREE;
+global $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'action.php');
 require './includes/session.php';
@@ -33,7 +29,6 @@ require './includes/session.php';
 header('Content-type: text/html; charset=UTF-8');
 
 if (!Filter::checkCsrf()) {
-	Zend_Session::writeClose();
 	http_response_code(406);
 
 	return;
@@ -71,18 +66,20 @@ case 'copy-fact':
 					$type = $record::RECORD_TYPE; // paste only to the same record type
 					break;
 				}
-				if (!is_array($WT_SESSION->clipboard)) {
-					$WT_SESSION->clipboard = array();
+				$clipboard = Session::get('clipboard');
+				if (!is_array($clipboard)) {
+					$clipboard = array();
 				}
-				$WT_SESSION->clipboard[$fact_id] = array(
+				$clipboard[$fact_id] = array(
 					'type'   =>$type,
 					'factrec'=>$fact->getGedcom(),
 					'fact'   =>$fact->getTag()
 					);
 				// The clipboard only holds 10 facts
-				while (count($WT_SESSION->clipboard) > 10) {
-					array_shift($WT_SESSION->clipboard);
+				while (count($clipboard) > 10) {
+					array_shift($clipboard);
 				}
+				Session::put('clipboard', $clipboard);
 				FlashMessages::addMessage(I18N::translate('The record has been copied to the clipboard.'));
 				break 2;
 			}
@@ -92,13 +89,13 @@ case 'copy-fact':
 
 case 'paste-fact':
 	// Paste a fact from the clipboard
-	$xref    = Filter::post('xref', WT_REGEX_XREF);
-	$fact_id = Filter::post('fact_id');
+	$xref      = Filter::post('xref', WT_REGEX_XREF);
+	$fact_id   = Filter::post('fact_id');
+	$record    = GedcomRecord::getInstance($xref, $WT_TREE);
+	$clipboard = Session::get('clipboard');
 
-	$record = GedcomRecord::getInstance($xref, $WT_TREE);
-
-	if ($record && $record->canEdit() && isset($WT_SESSION->clipboard[$fact_id])) {
-		$record->createFact($WT_SESSION->clipboard[$fact_id]['factrec'], true);
+	if ($record && $record->canEdit() && isset($clipboard[$fact_id])) {
+		$record->createFact($clipboard[$fact_id]['factrec'], true);
 	}
 	break;
 
@@ -226,7 +223,7 @@ case 'theme':
 	// Change the current theme
 	$theme = Filter::post('theme');
 	if (Site::getPreference('ALLOW_USER_THEMES') && array_key_exists($theme, Theme::themeNames())) {
-		$WT_SESSION->theme_id = $theme;
+		Session::put('theme_id', $theme);
 		// Remember our selection
 		Auth::user()->setPreference('theme', $theme);
 	} else {
@@ -235,4 +232,3 @@ case 'theme':
 	}
 	break;
 }
-Zend_Session::writeClose();

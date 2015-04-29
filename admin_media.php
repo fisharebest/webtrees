@@ -16,8 +16,6 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use Zend_Session;
-
 define('WT_SCRIPT_NAME', 'admin_media.php');
 require './includes/session.php';
 
@@ -85,7 +83,6 @@ if ($delete_file) {
 
 switch ($action) {
 case 'load_json':
-	Zend_Session::writeClose();
 	$search = Filter::get('search');
 	$search = $search['value'];
 	$start  = Filter::getInteger('start');

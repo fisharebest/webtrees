@@ -18,7 +18,6 @@ namespace Fisharebest\Webtrees;
 
 use PDO;
 use PDOException;
-use Zend_Session;
 
 /**
  * Class GoogleMapsModule
@@ -4110,7 +4109,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		$controller->restrictAccess(Auth::isAdmin());
 
 		if ($action == 'ExportFile' && Auth::isAdmin()) {
-			Zend_Session::writeClose();
 			$tmp = $this->placeIdToHierarchy($parent);
 			$maxLevel = $this->getHighestLevel();
 			if ($maxLevel > 8) $maxLevel = 8;

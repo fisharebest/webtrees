@@ -16,8 +16,6 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use Zend_Session;
-
 /**
  * Class SearchController - Controller for the search page
  */
@@ -236,7 +234,6 @@ class SearchController extends PageController {
 			if (count($this->myindilist) == 1 && !$this->myfamlist && !$this->mysourcelist && !$this->mynotelist) {
 				$indi = $this->myindilist[0];
 				if ($indi->canShowName()) {
-					Zend_Session::writeClose();
 					header('Location: ' . WT_BASE_URL . $indi->getRawUrl());
 					exit;
 				}
@@ -244,7 +241,6 @@ class SearchController extends PageController {
 			if (!$this->myindilist && count($this->myfamlist) == 1 && !$this->mysourcelist && !$this->mynotelist) {
 				$fam = $this->myfamlist[0];
 				if ($fam->canShowName()) {
-					Zend_Session::writeClose();
 					header('Location: ' . WT_BASE_URL . $fam->getRawUrl());
 					exit;
 				}
@@ -252,7 +248,6 @@ class SearchController extends PageController {
 			if (!$this->myindilist && !$this->myfamlist && count($this->mysourcelist) == 1 && !$this->mynotelist) {
 				$sour = $this->mysourcelist[0];
 				if ($sour->canShowName()) {
-					Zend_Session::writeClose();
 					header('Location: ' . WT_BASE_URL . $sour->getRawUrl());
 					exit;
 				}
@@ -260,7 +255,6 @@ class SearchController extends PageController {
 			if (!$this->myindilist && !$this->myfamlist && !$this->mysourcelist && count($this->mynotelist) == 1) {
 				$note = $this->mynotelist[0];
 				if ($note->canShowName()) {
-					Zend_Session::writeClose();
 					header('Location: ' . WT_BASE_URL . $note->getRawUrl());
 					exit;
 				}

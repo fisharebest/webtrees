@@ -355,16 +355,16 @@
         },
         {
             "name": "patchwork/utf8",
-            "version": "v1.2.1",
+            "version": "v1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tchwork/utf8.git",
-                "reference": "01f0ed1628db7794e2d4e336f55a09daef4248a5"
+                "reference": "7287a6fb2c46a66ac6bfbaf0e4975229b27efcba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tchwork/utf8/zipball/01f0ed1628db7794e2d4e336f55a09daef4248a5",
-                "reference": "01f0ed1628db7794e2d4e336f55a09daef4248a5",
+                "url": "https://api.github.com/repos/tchwork/utf8/zipball/7287a6fb2c46a66ac6bfbaf0e4975229b27efcba",
+                "reference": "7287a6fb2c46a66ac6bfbaf0e4975229b27efcba",
                 "shasum": ""
             },
             "require": {
@@ -408,7 +408,7 @@
                 "utf-8",
                 "utf8"
             ],
-            "time": "2015-01-29 08:36:50"
+            "time": "2015-04-26 09:51:43"
         },
         {
             "name": "pclzip/pclzip",

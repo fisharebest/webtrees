@@ -583,12 +583,12 @@ function CheckFactUnique($uniquefacts, $recfacts, $type) {
  * @param string $type      the type of record INDI, FAM, SOUR etc
  */
 function print_add_new_fact($id, $usedfacts, $type) {
-	global $WT_SESSION, $WT_TREE;
+	global $WT_TREE;
 
 	// -- Add from clipboard
-	if ($WT_SESSION->clipboard) {
+	if (is_array(Session::get('clipboard'))) {
 		$newRow = true;
-		foreach (array_reverse($WT_SESSION->clipboard, true) as $fact_id=>$fact) {
+		foreach (array_reverse(Session::get('clipboard'), true) as $fact_id=>$fact) {
 			if ($fact["type"] == $type || $fact["type"] == 'all') {
 				if ($newRow) {
 					$newRow = false;

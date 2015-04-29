@@ -16,8 +16,6 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use Zend_Session;
-
 /**
  * Class IndividualController - Controller for the individual page
  */
@@ -105,8 +103,6 @@ class IndividualController extends GedcomRecordController {
 
 		header("Content-Type: text/html; charset=UTF-8"); // AJAX calls do not have the meta tag headers and need this set
 		header("X-Robots-Tag: noindex,follow"); // AJAX pages should not show up in search results, any links can be followed though
-
-		Zend_Session::writeClose();
 
 		echo $mod->getTabContent();
 

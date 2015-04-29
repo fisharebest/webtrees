@@ -16,15 +16,10 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use Zend_Session_Namespace;
-
 /**
  * Class Base - Common functions and interfaces for all themes.
  */
 abstract class BaseTheme {
-	/** @var Zend_Session_Namespace */
-	protected $session;
-
 	/** @var Tree The current tree */
 	protected $tree;
 
@@ -956,21 +951,19 @@ abstract class BaseTheme {
 	 * Initialise the theme.  We cannot pass these in a constructor, as the construction
 	 * happens in a theme file, and we need to be able to change it.
 	 *
-	 * @param Zend_Session_Namespace $session
-	 * @param Tree|null              $tree The current tree (if there is one).
+	 * @param Tree|null $tree The current tree (if there is one).
 	 *
 	 * @return void
 	 */
-	final public function init(Zend_Session_Namespace $session, Tree $tree = null) {
-		$this->tree          = $tree;
-		$this->tree_url      = $tree ? 'ged=' . $tree->getNameUrl() : '';
-		$this->session       = $session;
+	final public function init(Tree $tree = null) {
+		$this->tree     = $tree;
+		$this->tree_url = $tree ? 'ged=' . $tree->getNameUrl() : '';
 
 		$this->hookAfterInit();
 	}
 
 	/**
-	 * A large webtrees logo, for the footer.
+	 * A large webtrees logo, for the header.
 	 *
 	 * @return string
 	 */

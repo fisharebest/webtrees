@@ -16,16 +16,12 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use Zend_Session;
-use Zend_Session_Namespace;
-
 /**
  * Defined in session.php
  *
- * @global Zend_Session_Namespace $WT_SESSION
- * @global Tree                   $WT_TREE
+ * @global Tree $WT_TREE
  */
-global $WT_SESSION, $WT_TREE;
+global $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'index_edit.php');
 require './includes/session.php';
@@ -56,7 +52,7 @@ if ($user_id) {
 
 if ($user_id < 0 || $gedcom_id < 0 || Auth::isAdmin() && $user_id != Auth::id()) {
 	// We're doing this from an admin page.  Use the admin theme, and return there afterwards.
-	Theme::theme(new AdministrationTheme)->init($WT_SESSION, $WT_TREE);
+	Theme::theme(new AdministrationTheme)->init($WT_TREE);
 	$return_to = 'admin_trees_manage.php?ged=';
 } else {
 	$return_to = 'index.php';
@@ -127,7 +123,6 @@ if ($user_id) {
 }
 
 if ($action === 'update') {
-	Zend_Session::writeClose();
 	foreach (array('main', 'side') as $location) {
 		if ($location === 'main') {
 			$new_blocks = $main;

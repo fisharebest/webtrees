@@ -30,15 +30,13 @@ class HitCounter {
 	 * @return integer
 	 */
 	public static function countHit(Tree $tree, $page, $parameter) {
-		global $WT_SESSION;
-
 		// Don't increment the counter while we stay on the same page.
 		if (
-			$WT_SESSION->last_tree_id === $tree->getTreeId() &&
-			$WT_SESSION->last_page === $page &&
-			$WT_SESSION->last_parameter === $parameter
+			Session::get('last_tree_id') === $tree->getTreeId() &&
+			Session::get('last_page') === $page &&
+			Session::get('last_parameter') === $parameter
 		) {
-			return $WT_SESSION->last_count;
+			return Session::get('last_count');
 		}
 
 		$page_count = self::getCount($tree, $page, $parameter);
@@ -65,10 +63,10 @@ class HitCounter {
 
 		$page_count++;
 
-		$WT_SESSION->last_tree_id   = $tree->getTreeId();
-		$WT_SESSION->last_page      = $page;
-		$WT_SESSION->last_parameter = $parameter;
-		$WT_SESSION->last_count     = $page_count;
+		Session::put('last_tree_id', $tree->getTreeId());
+		Session::put('last_page', $page);
+		Session::put('last_parameter', $parameter);
+		Session::put('last_count', $page_count);
 
 		return $page_count;
 	}

@@ -17,15 +17,6 @@ namespace Fisharebest\Webtrees;
  */
 
 use PDO;
-use Zend_Controller_Request_Http;
-use Zend_Session;
-
-/**
- * Defined in session.php
- *
- * @global Zend_Controller_Request_Http $WT_REQUEST
- */
-global $WT_REQUEST;
 
 define('WT_SCRIPT_NAME', 'admin_site_access.php');
 require './includes/session.php';
@@ -55,7 +46,7 @@ case 'save':
 		$rule                = Filter::post('rule', 'allow|deny|robot');
 		$comment             = Filter::post('comment');
 		$user_agent_string   = Filter::server('HTTP_USER_AGENT');
-		$ip_address          = $WT_REQUEST->getClientIp();
+		$ip_address          = WT_CLIENT_IP;
 
 		if ($ip_address_start !== null && $ip_address_end !== null && $user_agent_pattern !== null && $rule !== null) {
 			// This doesn't work with named placeholders.  The :user_agent_string parameter is not recognised...
@@ -137,7 +128,6 @@ $controller
 $action = Filter::get('action');
 switch ($action) {
 case 'load':
-	Zend_Session::writeClose();
 	// AJAX callback for datatables
 	$search = Filter::get('search');
 	$search = $search['value'];

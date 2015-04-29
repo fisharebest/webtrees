@@ -85,10 +85,12 @@ function radio_buttons($name, $values, $selected, $extra = '') {
 	return $html;
 }
 
-// Print an edit control for a Yes/No field
 /**
+ * Print an edit control for a Yes/No field
+ *
  * @param string  $name
  * @param boolean $selected
+ * @param string  $extra
  *
  * @return string
  */

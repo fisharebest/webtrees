@@ -24,7 +24,6 @@ namespace Fisharebest\Webtrees;
 global $WT_TREE;
 
 use PclZip;
-use Zend_Session;
 
 define('WT_SCRIPT_NAME', 'admin_trees_download.php');
 require './includes/session.php';
@@ -83,7 +82,6 @@ if ($action === 'download') {
 			File::delete($temp_dir);
 		}
 	} else {
-		Zend_Session::writeClose();
 		header('Content-Type: text/plain; charset=UTF-8');
 		header('Content-Disposition: attachment; filename="' . $download_filename . '"');
 		// Stream the GEDCOM file straight to the browser.

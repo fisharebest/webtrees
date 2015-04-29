@@ -18,15 +18,13 @@ namespace Fisharebest\Webtrees;
 
 use PDO;
 use PDOException;
-use Zend_Session_Namespace;
 
 /**
  * Defined in session.php
  *
- * @global Zend_Session_Namespace $WT_SESSION
- * @global Tree                   $WT_TREE
+ * @global Tree $WT_TREE
  */
-global $WT_SESSION, $WT_TREE;
+global $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'admin_pgv_to_wt.php');
 require './includes/session.php';
@@ -47,24 +45,24 @@ $error    = false;
 $PGV_PATH = Filter::post('PGV_PATH');
 
 // We read these variables from PhpGedView's config.php, and set them here in case any are missing.
-$INDEX_DIRECTORY                 = '';
-$DBHOST                          = '';
-$DBNAME                          = '';
-$TBLPREFIX                       = '';
-$PGV_SCHEMA_VERSION              = '';
-$USE_REGISTRATION_MODULE         = '';
-$ALLOW_USER_THEMES               = '';
-$ALLOW_CHANGE_GEDCOM             = '';
-$PGV_SESSION_TIME                = '';
-$PGV_SMTP_ACTIVE                 = '';
-$PGV_SMTP_HOST                   = '';
-$PGV_SMTP_HELO                   = '';
-$PGV_SMTP_PORT                   = '';
-$PGV_SMTP_AUTH                   = '';
-$PGV_SMTP_AUTH_USER              = '';
-$PGV_SMTP_AUTH_PASS              = '';
-$PGV_SMTP_SSL                    = '';
-$PGV_SMTP_FROM_NAME              = '';
+$INDEX_DIRECTORY         = '';
+$DBHOST                  = '';
+$DBNAME                  = '';
+$TBLPREFIX               = '';
+$PGV_SCHEMA_VERSION      = '';
+$USE_REGISTRATION_MODULE = '';
+$ALLOW_USER_THEMES       = '';
+$ALLOW_CHANGE_GEDCOM     = '';
+$PGV_SESSION_TIME        = '';
+$PGV_SMTP_ACTIVE         = '';
+$PGV_SMTP_HOST           = '';
+$PGV_SMTP_HELO           = '';
+$PGV_SMTP_PORT           = '';
+$PGV_SMTP_AUTH           = '';
+$PGV_SMTP_AUTH_USER      = '';
+$PGV_SMTP_AUTH_PASS      = '';
+$PGV_SMTP_SSL            = '';
+$PGV_SMTP_FROM_NAME      = '';
 
 if ($PGV_PATH) {
 	if (!is_dir($PGV_PATH) || !is_readable($PGV_PATH . '/config.php')) {
@@ -121,7 +119,7 @@ if ($PGV_PATH) {
 
 if ($PGV_PATH) {
 	// The account we are using is about to be deleted.
-	$WT_SESSION->wt_user = null;
+	Session::forget('wt_user');
 }
 
 $controller->pageHeader();
