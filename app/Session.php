@@ -91,11 +91,21 @@ class Session {
 	}
 
 	/**
+	 * Remove all stored data from the session.
+	 */
+	public static function clear() {
+		$_SESSION = array();
+	}
+
+	/**
 	 * After any change in authentication level, we should use a new session ID.
 	 *
 	 * @param bool $destroy
 	 */
 	public static function regenerate($destroy = false) {
+		if ($destroy) {
+			self::clear();
+		}
 		session_regenerate_id($destroy);
 	}
 
