@@ -21,6 +21,9 @@ namespace Fisharebest\Webtrees;
  * in one context, and display them in another.
  */
 class FlashMessages {
+	// Session storage key
+	const FLASH_KEY = 'flash_messages';
+
 	/**
 	 * Add a new message to the session storage.
 	 *
@@ -32,9 +35,9 @@ class FlashMessages {
 		$message->text   = $text;
 		$message->status = $status;
 
-		$messages = Session::get('flash_messages', array());
+		$messages = Session::get(self::FLASH_KEY, array());
 		$messages[] = $message;
-		Session::put('flash_messages', $messages);
+		Session::put(self::FLASH_KEY, $messages);
 	}
 
 	/**
@@ -43,8 +46,8 @@ class FlashMessages {
 	 * @return string[]
 	 */
 	public static function getMessages() {
-		$messages = Session::get('flash_messages', array());
-		Session::forget('flash_messages');
+		$messages = Session::get(self::FLASH_KEY, array());
+		Session::forget(self::FLASH_KEY);
 
 		return $messages;
 	}
