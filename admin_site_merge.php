@@ -167,7 +167,7 @@ if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYP
 		$record2_name
 	), 'success');
 
-	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
+	header('Location: ' . WT_BASE_URL . Filter::post('url', 'admin_trees_duplicates\.php', WT_SCRIPT_NAME));
 
 	return;
 }
@@ -187,6 +187,7 @@ $controller->pageHeader();
 <form method="post">
 	<input type="hidden" name="action" value="merge">
 	<input type="hidden" name="ged" value="<?php echo $WT_TREE->getNameHtml(); ?>">
+	<input type="hidden" name="url" value="<?php echo Filter::get('url', 'admin_trees_duplicates\.php'); ?>">
 	<?php echo Filter::getCsrf(); ?>
 	<p>
 		<?php echo I18N::translate('Select the facts and events to keep from both records.'); ?>
