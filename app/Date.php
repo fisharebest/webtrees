@@ -80,7 +80,7 @@ class Date {
 			$this->date1 = $this->parseDate($match[2]);
 			$this->qual2 = $match[3];
 			$this->date2 = $this->parseDate($match[4]);
-		} elseif (preg_match('/^(TO|BEF|AFT|CAL|EST|INT|ABT) (.+)/', $date, $match)) {
+		} elseif (preg_match('/^(TO|FROM|BEF|AFT|CAL|EST|INT|ABT) (.+)/', $date, $match)) {
 			$this->qual1 = $match[1];
 			$this->date1 = $this->parseDate($match[2]);
 		} else {

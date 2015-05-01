@@ -53,7 +53,7 @@ $timediff        = Filter::postInteger('timediff', -43200, 50400, 0); // Same ra
 
 // These parameters may come from the URL which is emailed to users.
 if (!$action)        $action        = Filter::get('action');
-if (!$user_name)     $user_name     = Filter::get('user_name', WT_REGEX_USERNAME);
+if (!$user_name)     $user_name     = Filter::get('user_name');
 if (!$user_hashcode) $user_hashcode = Filter::get('user_hashcode');
 if (!$url)           $url           = Filter::get('url');
 
@@ -212,13 +212,9 @@ default:
 	break;
 
 case 'requestpw':
-	$controller
-		->setPageTitle(I18N::translate('Lost password request'))
-		->pageHeader();
-	echo '<div id="login-page">';
-	$user_name = Filter::post('new_passwd_username', WT_REGEX_USERNAME);
+	$user_name = Filter::post('new_passwd_username');
+	$user      = User::findByIdentifier($user_name);
 
-	$user = User::findByIdentifier($user_name);
 	if ($user) {
 		$passchars = 'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 		$user_new_pw = '';
@@ -242,16 +238,14 @@ case 'requestpw':
 			I18N::translate('After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password.') . Mail::EOL . Mail::EOL .
 			'<a href="' . WT_BASE_URL . 'login.php?ged=' . $WT_TREE->getNameUrl() . '">' . WT_BASE_URL . 'login.php?ged=' . $WT_TREE->getNameUrl() . '</a>'
 		);
+
+		FlashMessages::addMessage(I18N::translate('A new password has been created and emailed to %s.  You can change this password after you login.', Filter::escapeHtml($user_name)), 'success');
+	} else {
+		FlashMessages::addMessage(I18N::translate('There is no account with the username or email “%s”.', Filter::escapeHtml($user_name)), 'danger');
 	}
-	// Show a success message, even if the user account does not exist.
-	// Otherwise this page can be used to guess/test usernames.
-	// A genuine user will hopefully always know their own email address.
-	echo
-		'<div class="confirm"><p>',
-		/* I18N: %s is a username */
-		I18N::translate('A new password has been created and emailed to %s.  You can change this password after you login.', $user_name),
-		'</p></div>';
-	echo '</div>';
+	header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME);
+
+	return;
 	break;
 
 case 'register':
