@@ -32,6 +32,9 @@ $controller
 	->restrictAccess(Auth::isAdmin() || Auth::isManager($WT_TREE))
 	->setPageTitle(I18N::translate('Manage family trees'));
 
+// Show a reduced page when there are more than a certain number of trees
+$multiple_tree_threshold = Site::getPreference('MULTIPLE_TREE_THRESHOLD', 100);
+
 $gedcom_files = glob(WT_DATA_DIR . '*.{ged,Ged,GED}', GLOB_NOSORT | GLOB_BRACE);
 
 // Process POST actions
@@ -306,6 +309,15 @@ if (!Tree::getAll()) {
 
 $controller->pageHeader();
 
+$all_trees = Tree::getAll();
+// On sites with hundreds or thousands of trees, this page becomes very large.
+// Just show the current tree, the default tree, and unimported trees
+if (count($all_trees) >= $multiple_tree_threshold) {
+	$all_trees = array_filter($all_trees, function($x) use ($WT_TREE) {
+		return $x->getPreference('imported') === '0' || $WT_TREE->getTreeId() === $x->getTreeId() || $x->getName() === Site::getPreference('DEFAULT_GEDCOM');
+	});
+}
+
 // List the gedcoms available to this user
 ?>
 <ol class="breadcrumb small">
@@ -316,7 +328,7 @@ $controller->pageHeader();
 <h1><?php echo $controller->getPageTitle(); ?></h1>
 
 <div class="panel-group" id="accordion" role="tablist">
-	<?php foreach (Tree::GetAll() as $tree): ?>
+	<?php foreach ($all_trees as $tree): ?>
 	<?php if (Auth::isManager($tree)): ?>
 	<div class="panel panel-default">
 		<div class="panel-heading" role="tab" id="panel-tree-<?php echo $tree->getTreeId(); ?>">
@@ -706,7 +718,7 @@ $controller->pageHeader();
 	<?php endif; ?>
 
 	<!-- BULK LOAD/SYNCHRONISE GEDCOM FILES -->
-	<?php if (count($gedcom_files) >= 25): ?>
+	<?php if (count($gedcom_files) >= $multiple_tree_threshold): ?>
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h2 class="panel-title">
