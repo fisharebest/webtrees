@@ -629,7 +629,7 @@ if (count($all_trees) >= $multiple_tree_threshold) {
 								name="tree_title"
 								required
 								type="text"
-								value="<?php echo $default_tree_title; ?>"
+								placeholder="<?php echo $default_tree_title; ?>"
 							>
 						</div>
 					</div>
@@ -665,7 +665,7 @@ if (count($all_trees) >= $multiple_tree_threshold) {
 								<?php echo /* I18N: Button label */ I18N::translate('create'); ?>
 							</button>
 							<p class="small text-muted">
-								<?php echo I18N::translate('After creating the family tree, you will be able to upload or import data from a GEDCOM file.'); ?>
+								<?php echo I18N::translate('After creating the family tree, you will be able to import data from a GEDCOM file.'); ?>
 							</p>
 						</div>
 					</div>
