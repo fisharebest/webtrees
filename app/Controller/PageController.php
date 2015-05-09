@@ -20,10 +20,17 @@ namespace Fisharebest\Webtrees;
  * Class PageController Controller for full-page, themed HTML responses
  */
 class PageController extends BaseController {
-	// Page header information
+	/** @var string Some pages have multiple URLs (TODO really?)
 	private $canonical_url = '';
-	private $meta_robots = 'noindex,nofollow'; // Most pages are not intended for robots
-	private $page_title = WT_WEBTREES; // <head><title> $page_title </title></head>
+
+	/** @var string Most pages are not intended for robots
+	private $meta_robots = 'noindex,nofollow';
+
+	/** @var string <head><title> $page_title </title></head>
+	private $page_title = WT_WEBTREES;
+
+	/** @var boolean Is this a popup window?
+	private $popup
 
 	/**
 	 * Startup activity
@@ -139,14 +146,36 @@ class PageController extends BaseController {
 	}
 
 	/**
+	 * Print the page footer, using the theme
+	 * Note that popup windows are deprecated
+	 *
+	 * @return void
+	 */
+	public function pageFooterPopupWindow() {
+		echo
+			Theme::theme()->footerContainerPopupWindow() .
+			$this->getJavascript() .
+			Theme::theme()->hookFooterExtraJavascript() .
+			(WT_DEBUG_SQL ? Database::getQueryLog() : '') .
+			'</body>' .
+			'</html>' . PHP_EOL .
+			'<!-- webtrees: ' . WT_VERSION . ' -->' .
+			'<!-- Execution time: ' . I18N::number(microtime(true) - WT_START_TIME, 3) . ' seconds -->' .
+			'<!-- Memory: ' . I18N::number(memory_get_peak_usage(true) / 1024) . ' KB -->' .
+			'<!-- SQL queries: ' . I18N::number(Database::getQueryCount()) . ' -->';
+	}
+
+	/**
 	 * Print the page header, using the theme
 	 *
-	 * @param string $view 'simple' or ''
+	 * @param boolean $popup Is this a popup window
 	 *
 	 * @return $this
 	 */
-	public function pageHeader($view = '') {
+	public function pageHeader($popup = false) {
 		global $WT_TREE;
+
+		$this->popup = $popup;
 
 		// Give Javascript access to some PHP constants
 		$this->addInlineJavascript('
@@ -171,13 +200,16 @@ class PageController extends BaseController {
 		echo Theme::theme()->html();
 		echo Theme::theme()->head($this);
 
-		switch ($view) {
-		case 'simple':
+		if ($this->popup) {
 			echo Theme::theme()->bodyHeaderPopupWindow();
-			break;
-		default:
+			// We've displayed the header - display the footer automatically
+			register_shutdown_function(array($this, 'pageFooterPopupWindow'), $this->popup);
+
+		} else {
 			echo Theme::theme()->bodyHeader();
-			break;
+			// We've displayed the header - display the footer automatically
+			register_shutdown_function(array($this, 'pageFooter'), $this->popup);
+
 		}
 
 		// Flush the output, so the browser can render the header and load javascript
@@ -186,9 +218,6 @@ class PageController extends BaseController {
 			ob_flush();
 		}
 		flush();
-
-		// We've displayed the header - display the footer automatically
-		register_shutdown_function(array($this, 'pageFooter'));
 
 		return $this;
 	}

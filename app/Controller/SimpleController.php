@@ -32,12 +32,12 @@ class SimpleController extends PageController {
 	/**
 	 * Simple (i.e. popup) windows are deprecated.
 	 *
-	 * @param string $view
+	 * @param boolean $popup
 	 *
 	 * @return $this
 	 */
-	public function pageHeader($view = 'simple') {
-		return parent::pageHeader($view);
+	public function pageHeader($popup = true) {
+		return parent::pageHeader($popup);
 	}
 
 	/**

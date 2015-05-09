@@ -346,14 +346,22 @@ abstract class BaseTheme {
 	}
 
 	/**
-	 * Create the <footer> tag.
+	 * Close the main content and create the <footer> tag.
 	 *
 	 * @return string
 	 */
 	public function footerContainer() {
-		return
-			'</main>' .
-			'<footer>' . $this->footerContent() . '</footer>';
+		return '</main><footer>' . $this->footerContent() . '</footer>';
+	}
+
+	/**
+	 * Close the main content.
+	 * Note that popup windows are deprecated
+	 *
+	 * @return string
+	 */
+	public function footerContainerPopupWindow() {
+		return '</main>';
 	}
 
 	/**
