@@ -421,7 +421,7 @@ $controller
 // Check for updates
 $latest_version_txt = fetch_latest_version();
 if (preg_match('/^[0-9.]+\|[0-9.]+\|/', $latest_version_txt)) {
-	list($latest_version, $earliest_version, $download_url) = explode('|', $latest_version_txt);
+	list($latest_version) = explode('|', $latest_version_txt);
 } else {
 	// Cannot determine the latest version
 	$latest_version = '';
@@ -753,7 +753,7 @@ if (
 								</td>
 							<td class="text-right flip">
 								<?php if ($sources[$tree->getTreeId()]): ?>
-								<a href="sourlist.php?ged=<?php echo $tree->getNameUrl(); ?>">
+								<a href="sourcelist.php?ged=<?php echo $tree->getNameUrl(); ?>">
 									<?php echo I18N::number($sources[$tree->getTreeId()]); ?>
 									<span class="sr-only"><?php echo I18N::translate('Sources'); ?> <?php echo $tree->getTitleHtml(); ?></span>
 								</a>
@@ -810,7 +810,7 @@ if (
 								<?php echo I18N::number(array_sum($media)); ?>
 							</td>
 						</tr>
-					</tbody>
+					</tfoot>
 				</table>
 			</div>
 		</div>
