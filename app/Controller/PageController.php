@@ -33,18 +33,6 @@ class PageController extends BaseController {
 	private $popup;
 
 	/**
-	 * Startup activity
-	 */
-	public function __construct() {
-		parent::__construct();
-		// Every page uses these scripts
-		$this
-			->addExternalJavascript(WT_JQUERY_JS_URL)
-			->addExternalJavascript(WT_JQUERYUI_JS_URL)
-			->addExternalJavascript(WT_WEBTREES_JS_URL);
-	}
-
-	/**
 	 * What should this page show in the browser’s title bar?
 	 *
 	 * @param string  $page_title
@@ -134,6 +122,10 @@ class PageController extends BaseController {
 	public function pageFooter() {
 		echo
 			Theme::theme()->footerContainer() .
+			'<!--[if lt IE 9]><script src="' . WT_JQUERY_JS_URL . '"></script><![endif]-->' .
+			'<!--[if gte IE 9]><!--><script src="' . WT_JQUERY2_JS_URL . '"></script><!--<![endif]-->' .
+			'<script src="' . WT_JQUERYUI_JS_URL . '">"</script>' .
+			'<script src="' . WT_WEBTREES_JS_URL . '">"</script>' .
 			$this->getJavascript() .
 			Theme::theme()->hookFooterExtraJavascript() .
 			(WT_DEBUG_SQL ? Database::getQueryLog() : '') .
@@ -154,6 +146,10 @@ class PageController extends BaseController {
 	public function pageFooterPopupWindow() {
 		echo
 			Theme::theme()->footerContainerPopupWindow() .
+			'<!--[if lt IE 9]><script src="' . WT_JQUERY_JS_URL . '"></script><![endif]-->' .
+			'<!--[if gte IE 9]><!--><script src="' . WT_JQUERY2_JS_URL . '"></script><!--<![endif]-->' .
+			'<script src="' . WT_JQUERYUI_JS_URL . '">"</script>' .
+			'<script src="' . WT_WEBTREES_JS_URL . '">"</script>' .
 			$this->getJavascript() .
 			Theme::theme()->hookFooterExtraJavascript() .
 			(WT_DEBUG_SQL ? Database::getQueryLog() : '') .
