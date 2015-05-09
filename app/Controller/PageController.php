@@ -38,16 +38,6 @@ class PageController extends BaseController {
 	}
 
 	/**
-	 * Shutdown activity
-	 */
-	public function __destruct() {
-		// If we printed a header, automatically print a footer
-		if ($this->page_header) {
-			echo $this->pageFooter();
-		}
-	}
-
-	/**
 	 * What should this page show in the browser’s title bar?
 	 *
 	 * @param string  $page_title
@@ -132,10 +122,10 @@ class PageController extends BaseController {
 	/**
 	 * Print the page footer, using the theme
 	 *
-	 * @return string
+	 * @return void
 	 */
-	protected function pageFooter() {
-		return
+	public function pageFooter() {
+		echo
 			Theme::theme()->footerContainer() .
 			$this->getJavascript() .
 			Theme::theme()->hookFooterExtraJavascript() .
@@ -198,7 +188,7 @@ class PageController extends BaseController {
 		flush();
 
 		// We've displayed the header - display the footer automatically
-		$this->page_header = true;
+		register_shutdown_function(array($this, 'pageFooter'));
 
 		return $this;
 	}

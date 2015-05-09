@@ -129,15 +129,17 @@ class BaseController {
 	 */
 	public function pageHeader() {
 		// We've displayed the header - display the footer automatically
-		$this->page_header = true;
+		register_shutdown_function(array($this, 'pageFooter'));
 
 		return $this;
 	}
 
 	/**
 	 * Print the page footer, using the theme
+	 *
+	 * @return void
 	 */
-	protected function pageFooter() {
+	public function pageFooter() {
 		if (WT_DEBUG_SQL) {
 			echo Database::getQueryLog();
 		}
