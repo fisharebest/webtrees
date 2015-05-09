@@ -20,17 +20,17 @@ namespace Fisharebest\Webtrees;
  * Class PageController Controller for full-page, themed HTML responses
  */
 class PageController extends BaseController {
-	/** @var string Some pages have multiple URLs (TODO really?)
+	/** @var string Some pages have multiple URLs (TODO really?) */
 	private $canonical_url = '';
 
-	/** @var string Most pages are not intended for robots
+	/** @var string Most pages are not intended for robots */
 	private $meta_robots = 'noindex,nofollow';
 
-	/** @var string <head><title> $page_title </title></head>
+	/** @var string <head><title> $page_title </title></head> */
 	private $page_title = WT_WEBTREES;
 
-	/** @var boolean Is this a popup window?
-	private $popup
+	/** @var boolean Is this a popup window? */
+	private $popup;
 
 	/**
 	 * Startup activity
