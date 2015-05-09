@@ -353,7 +353,26 @@ $old_files = array(
 	WT_ROOT . 'themes/_administration/jquery-ui-1.10.3',
 	// Removed in 1.7.0
 	WT_ROOT . 'admin_site_other.php',
+	WT_ROOT . 'includes/hitcount.php',
 	WT_ROOT . 'js',
+	WT_ROOT . 'language/en_GB.mo', // Replaced with en-GB.mo
+	WT_ROOT . 'language/en_US.mo', // Replaced with en-US.mo
+	WT_ROOT . 'language/extra',
+	WT_ROOT . 'library',
+	WT_ROOT . 'modules_v3/batch_update/admin_batch_update.php',
+	WT_ROOT . 'modules_v3/batch_update/plugins',
+	WT_ROOT . 'modules_v3/charts/help_text.php',
+	WT_ROOT . 'modules_v3/ckeditor/ckeditor-4.4.1-custom',
+	WT_ROOT . 'modules_v3/clippings/clippings_ctrl.php',
+	WT_ROOT . 'modules_v3/clippings/help_text.php',
+	WT_ROOT . 'modules_v3/faq/help_text.php',
+	WT_ROOT . 'modules_v3/googlemap/help_text.php',
+	WT_ROOT . 'modules_v3/html/help_text.php',
+	WT_ROOT . 'modules_v3/logged_in/help_text.php',
+	WT_ROOT . 'modules_v3/review_changes/help_text.php',
+	WT_ROOT . 'modules_v3/todo/help_text.php',
+	WT_ROOT . 'modules_v3/tree/class_treeview.php',
+	WT_ROOT . 'modules_v3/yahrzeit/help_text.php',
 	WT_ROOT . 'save.php',
 	WT_ROOT . 'themes/_administration/css-1.6.2',
 	WT_ROOT . 'themes/_administration/templates',
@@ -402,7 +421,7 @@ $controller
 // Check for updates
 $latest_version_txt = fetch_latest_version();
 if (preg_match('/^[0-9.]+\|[0-9.]+\|/', $latest_version_txt)) {
-	list($latest_version, $earliest_version, $download_url) = explode('|', $latest_version_txt);
+	list($latest_version) = explode('|', $latest_version_txt);
 } else {
 	// Cannot determine the latest version
 	$latest_version = '';
@@ -734,7 +753,7 @@ if (
 								</td>
 							<td class="text-right flip">
 								<?php if ($sources[$tree->getTreeId()]): ?>
-								<a href="sourlist.php?ged=<?php echo $tree->getNameUrl(); ?>">
+								<a href="sourcelist.php?ged=<?php echo $tree->getNameUrl(); ?>">
 									<?php echo I18N::number($sources[$tree->getTreeId()]); ?>
 									<span class="sr-only"><?php echo I18N::translate('Sources'); ?> <?php echo $tree->getTitleHtml(); ?></span>
 								</a>
@@ -791,7 +810,7 @@ if (
 								<?php echo I18N::number(array_sum($media)); ?>
 							</td>
 						</tr>
-					</tbody>
+					</tfoot>
 				</table>
 			</div>
 		</div>

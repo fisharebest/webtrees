@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-04-05 21:47+0100\n"
-"PO-Revision-Date: 2015-04-28 10:41+0100\n"
-"Last-Translator: Andreas Rauhut <andreas@rauhut.eu>\n"
+"PO-Revision-Date: 2015-05-04 11:03+0100\n"
+"Last-Translator: Rico Sonntag <mail@ricosonntag.de>\n"
 "Language-Team: German "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -312,7 +312,10 @@ msgstr[1] "Die Personen %s sind privat."
 #: setup.php:123
 #, php-format
 msgid "%s is disabled on this server.  You cannot install webtrees until it is enabled.  Please ask your server’s administrator to enable it."
-msgstr "%s ist auf diesem Server deaktiviert. Sie können „webtrees“ erst installieren, wenn es aktiviert ist. Wenden Sie sich bitte an Ihren Administrator, um es zu aktivieren."
+msgstr ""
+"%s ist auf diesem Server deaktiviert. Sie können „webtrees“ erst "
+"installieren, wenn es aktiviert ist. Wenden Sie sich bitte an Ihren "
+"Serveradministrator, um es zu aktivieren."
 
 #: app/Module/LoggedInUsersModule.php:57 app/Stats.php:5383
 #, php-format
@@ -1011,7 +1014,9 @@ msgstr "Ein Reiter zur Anzeige von Quellen, die mit einzelnen Personen verbunden
 
 #: admin_users.php:393
 msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
-msgstr "Ein Benutzer kann sich nicht anmelden, solange nicht beide Optionen „E-Mail überprüft“ und „Vom Administrator zugelassen“ erfüllt sind."
+msgstr ""
+"Ein Benutzer kann sich nicht anmelden, solange nicht beide Optionen „E-Mail "
+"überprüft“ und „Vom Administrator zugelassen“ erfüllt sind."
 
 #. I18N: Help text for the “Add watermarks to thumbnails” configuration setting
 #: admin_trees_config.php:1145
@@ -5687,7 +5692,7 @@ msgstr "Genauer Text"
 #: famlist.php:170 indilist.php:170
 #, php-format
 msgid "Exclude individuals with “%s” as a married name"
-msgstr "Personen mit \"%s\" als Ehename ausschließen"
+msgstr "Personen mit „%s“ als Ehename ausschließen"
 
 #: admin_media.php:665
 msgid "Exclude subfolders"
@@ -6712,7 +6717,7 @@ msgstr "Erlaubt den Benutzern eigene Themes auszuwählen."
 #. I18N: gedcom tag _UID
 #: app/Gedcom/GedcomTag.php:1748
 msgid "Globally unique identifier"
-msgstr "Global einmalig ID-Nummer"
+msgstr "Global einmalige ID-Nummer"
 
 #: app/Gedcom/GedcomCodeRela.php:151
 msgid "Godchild"
@@ -7366,7 +7371,7 @@ msgstr "Vollständig definierte Orte auch mit anzeigen: "
 #: famlist.php:172 indilist.php:172
 #, php-format
 msgid "Include individuals with “%s” as a married name"
-msgstr "Personen mit \"%s\" als Ehename einschließen"
+msgstr "Personen mit „%s“ als Ehename einschließen"
 
 #: app/Module/ClippingsCartModule.php:339
 #: app/Module/ClippingsCartModule.php:656 help_text.php:384
@@ -10194,12 +10199,18 @@ msgstr "PHP hat das Hochladen der Datei auf Grund der Dateiendung blockiert."
 #: setup.php:141
 #, php-format
 msgid "PHP extension “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
-msgstr "Die PHP Erweiterung „%1$s“ ist deaktiviert. Ohne diese werden die folgenden Funktionen nicht funktionieren: %2$s. Bitten Sie Ihren Serveradministrator diese zu aktivieren."
+msgstr ""
+"Die PHP Erweiterung „%1$s“ ist deaktiviert. Ohne diese stehen die folgenden "
+"Funktionen nicht zur Verfügung: %2$s. Bitten Sie Ihren Serveradministrator "
+"diese zu aktivieren."
 
 #: setup.php:130
 #, php-format
 msgid "PHP extension “%s” is disabled.  You cannot install webtrees until this is enabled.  Please ask your server’s administrator to enable it."
-msgstr "Die PHP Erweiterung „%s“ ist deaktiviert. Sie können webtrees nicht installieren, solange diese deaktiviert ist. Bitten Sie Ihren Serveradministrator diese zu aktivieren."
+msgstr ""
+"Die PHP Erweiterung „%s“ ist deaktiviert. Sie können webtrees nicht "
+"installieren, solange diese deaktiviert ist. Bitten Sie Ihren "
+"Serveradministrator diese zu aktivieren."
 
 #. I18N: PHP internal error message - php.net/manual/en/features.file-upload.errors.php
 #: includes/functions/functions.php:74
@@ -10213,7 +10224,10 @@ msgstr "PHP Informationen"
 #: setup.php:150
 #, php-format
 msgid "PHP setting “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it."
-msgstr "Die PHP Einstellung „%1$s“ ist deaktiviert. Ohne diese werden die folgenden Funktionen nicht funktionieren: %2$s. Bitten Sie Ihren Serveradministrator diese zu aktivieren."
+msgstr ""
+"Die PHP Einstellung „%1$s“ ist deaktiviert. Ohne diese stehen die folgenden "
+"Funktionen nicht zur Verfügung: %2$s. Bitten Sie Ihren Serveradministrator "
+"diese zu aktivieren."
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:208
@@ -10810,7 +10824,7 @@ msgstr "Einstellungen"
 #, php-format
 msgid "Preferences exist for the module “%s”, but this module no longer exists."
 msgstr ""
-"Für das Modul “%s” existieren Einstellungen, aber das Modul existiert nicht "
+"Für das Modul „%s“ existieren Einstellungen, aber das Modul existiert nicht "
 "mehr."
 
 #. I18N: A configuration setting
@@ -12717,8 +12731,8 @@ msgstr "Einige Ortsnamen können mit optionalen Zusatzbezeichnungen versehen sei
 #: admin_trees_config.php:1635
 msgid "Some themes can display icons on the “Facts and events” tab."
 msgstr ""
-"Einige Designs können Symbole auf der Registerkarte \"Fakten und Ereignisse\""
-" anzeigen."
+"Einige Designs können Symbole auf der Registerkarte „Fakten und Ereignisse“ "
+"anzeigen."
 
 #: modules_v3/family_group_report/report.xml:762
 #: modules_v3/individual_ext_report/report.xml:517
@@ -13490,7 +13504,7 @@ msgstr "Die Beziehung zwischen „%1$s“ und „%2$s“ wurde gelöscht."
 #: admin_site_merge.php:106
 #, php-format
 msgid "The link from “%1$s” to “%2$s” has been updated."
-msgstr "Die Verlinkung von \"%1$s\" nach \"%2$s\" ist aktualisiert worden."
+msgstr "Die Verlinkung von „%1$s“ nach „%2$s“ ist aktualisiert worden."
 
 #: addmedia.php:313 addmedia.php:341
 #, php-format
@@ -13564,7 +13578,7 @@ msgstr "Die Passwörter stimmen nicht überein."
 #: admin_trees_config.php:210 admin_trees_config.php:331
 #, php-format
 msgid "The preferences for the family tree “%s” have been updated."
-msgstr "Die Einstellungen für den Stammbaum \"%s\" wurden aktualisiert."
+msgstr "Die Einstellungen für den Stammbaum „%s“ wurden aktualisiert."
 
 #: admin_modules.php:71
 #, php-format
@@ -13574,7 +13588,7 @@ msgstr "Die Einstellungen für das Modul “%s” wurden gelöscht."
 #: app/Module/GoogleMapsModule.php:265
 #, php-format
 msgid "The preferences for the module “%s” have been updated."
-msgstr "Die Einstellungen für das Modul \"%s\" wurden aktualisiert."
+msgstr "Die Einstellungen für das Modul „%s“ wurden aktualisiert."
 
 #: setup.php:382
 msgid "The prefix is optional, but recommended.  By giving the table names a unique prefix you can let several different applications share the same database.  “wt_” is suggested, but can be anything you want."
@@ -13593,7 +13607,7 @@ msgstr "Der Datensatz wurde in die Zwischenablage kopiert."
 #: admin_site_merge.php:162
 #, php-format
 msgid "The records “%1$s” and “%2$s” have been merged."
-msgstr "Die Datensätze \"%1$s\" und \"%2$s\" wurden zusammengeführt."
+msgstr "Die Datensätze „%1$s“ und „%2$s“ wurden zusammengeführt."
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:112
 msgid "The regex appears to contain an error.  It can’t be used."
@@ -13744,7 +13758,7 @@ msgstr ""
 "Themen können in drei Stufen ausgewählt werden: Benutzer, Stammbaum und "
 "Webseite. Die Benutzereinstellungen haben Vorrang vor den Stammbaum-"
 "Einstellungen, die wiederum Vorrang vor der Webseiten-Einstellung haben. Die "
-"Auswahl des \"Standardthemas\" auf einer Stufe wird das Thema auch auf der "
+"Auswahl des „Standardthemas“ auf einer Stufe wird das Thema auch auf der "
 "nächsten Stufe verwenden."
 
 #: app/Module/ExtraInformationModule.php:58
@@ -14009,9 +14023,9 @@ msgstr "Dies ist ein Link zu Ihrem eigenen Datensatz im Stammbaum. Ist dies eine
 msgid "This is a summary of the <abbr title=\"The Church of Jesus Christ of Latter-day Saints\">LDS</abbr> ordinances for the individual.  “B” indicates an LDS baptism.  “E” indicates an LDS endowment.  “S” indicates an LDS spouse sealing.  “P” indicates an LDS child-to-parent sealing."
 msgstr ""
 "Dies ist eine Zusammenfassung der <abbr title=\"Die Kirche Jesu Christi der "
-"Heiligen der Letzten Tage\">LDS</abbr> Verordnungen für den Einzelnen. \"B\" "
-"steht für eine HLT-Taufe, \"E\" für eine HLT-Begabung, \"S\" für einen HLT-"
-"Ehepartnerversiegelung sowie \"P\" für eine HLT-Kind-Eltern-Versiegelung."
+"Heiligen der Letzten Tage\">LDS</abbr> Verordnungen für den Einzelnen. „B“ "
+"steht für eine HLT-Taufe, „E“ für eine HLT-Begabung, „S“ für einen HLT-"
+"Ehepartnerversiegelung sowie „P“ für eine HLT-Kind-Eltern-Versiegelung."
 
 #: help_text.php:322
 msgid "This is an optional status field and is used mostly for LDS ordinances as they are run through the TempleReady program."
@@ -14078,7 +14092,7 @@ msgstr "Diese Liste enthält alle Ereignisse, die im Quellendatensatz nur <u>ein
 #: admin_site_config.php:333
 msgid "This is the name of the SMTP server.  “localhost” means that the mail service is running on the same computer as your web server."
 msgstr ""
-"Dies ist der Name des SMTP-Servers. \"localhost\" bedeutet, dass der "
+"Dies ist der Name des SMTP-Servers. „localhost“ bedeutet, dass der "
 "Mailserver auf dem gleichen Computer läuft wie der Webserver."
 
 #. I18N: Help text for the “Minimum number of occurrences to be a ‘common surname’” configuration setting
@@ -14184,7 +14198,7 @@ msgstr "Das Passwort muss mindestens sechs Zeichen lang sein. Groß- und Kleinsc
 #: admin_site_config.php:318
 msgid "This name is used in the “From” field, when sending automatic emails from this server."
 msgstr ""
-"Dieser Name wird für die Absenderangabe im \"Von\"-Feld benutzt, wenn "
+"Dieser Name wird für die Absenderangabe im „Von“-Feld benutzt, wenn "
 "automatische E-Mails von diesem Server versandt werden."
 
 #: note.php:73
@@ -14402,7 +14416,9 @@ msgstr "Diese Webseite ist vorübergehend nicht verfügbar"
 #: admin_trees_manage.php:183
 #, php-format
 msgid "This will delete all the genealogy data from “%s” and replace it with data from a GEDCOM file."
-msgstr "Dies wird die Genealogischen Daten von „%s“ löschen und sie durch Daten einer andern GEDCOM ersetzen."
+msgstr ""
+"Dies wird die genealogischen Daten von „%s“ löschen und sie durch Daten "
+"einer andern GEDCOM ersetzen."
 
 #: app/Module/GoogleMapsModule.php:1782
 msgid "This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables."

@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-04-05 21:47+0100\n"
-"PO-Revision-Date: 2015-04-06 09:33+0100\n"
-"Last-Translator: Michel Rivière <gustine@laposte.net>\n"
+"PO-Revision-Date: 2015-05-04 11:33+0100\n"
+"Last-Translator: Michel <gustine@laposte.net>\n"
 "Language-Team: French "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
 "Language: fr\n"
@@ -385,8 +385,8 @@ msgstr[1] "il y a %s secondes"
 #, php-format
 msgid "%s source has been updated."
 msgid_plural "%s sources have been updated."
-msgstr[0] "%s note a été mise à jour."
-msgstr[1] "%s notes ont été mises à jour."
+msgstr[0] "%s source a été mise à jour."
+msgstr[1] "%s sources ont été mises à jour."
 
 #. I18N: %s=“fifth cousin”, etc.
 #: includes/functions/functions.php:2124

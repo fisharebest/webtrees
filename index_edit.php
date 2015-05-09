@@ -50,14 +50,6 @@ if ($user_id) {
 	}
 }
 
-if ($user_id < 0 || $gedcom_id < 0 || Auth::isAdmin() && $user_id != Auth::id()) {
-	// We're doing this from an admin page.  Use the admin theme, and return there afterwards.
-	Theme::theme(new AdministrationTheme)->init($WT_TREE);
-	$return_to = 'admin_trees_manage.php?ged=';
-} else {
-	$return_to = 'index.php';
-}
-
 // Only an admin can edit the "default" page
 // Only managers can edit the "home page"
 // Only a user or an admin can edit a user’s "my page"
@@ -66,7 +58,7 @@ if (
 	$gedcom_id > 0 && !Auth::isManager(Tree::findById($gedcom_id)) ||
 	$user_id && Auth::id() != $user_id && !Auth::isAdmin()
 ) {
-	header('Location: ' . WT_BASE_URL . $return_to);
+	header('Location: ' . WT_BASE_URL);
 
 	return;
 }
@@ -152,7 +144,11 @@ if ($action === 'update') {
 			}
 		}
 	}
-	header('Location: ' . WT_BASE_URL . $return_to);
+	if ($user_id) {
+		header('Location: ' . WT_BASE_URL . 'index.php?ctype=user&ged=' . $WT_TREE->getName());
+	} else {
+		header('Location: ' . WT_BASE_URL . 'index.php?ctype=gedcom&ged=' . $WT_TREE->getName());
+	}
 
 	return;
 }
@@ -287,18 +283,6 @@ $controller
 		'block_descr["advice1"] = "' . I18N::translate('Highlight a block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.') . '";'
 	);
 ?>
-
-<?php if ($return_to !== 'index.php'): ?>
-<ol class="breadcrumb small">
-	<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
-	<?php if ($user_id): ?>
-	<li><a href="admin_users.php"><?php echo I18N::translate('User administration'); ?></a></li>
-	<?php else: ?>
-	<li><a href="admin_trees_manage.php"><?php echo I18N::translate('Manage family trees'); ?></a></li>
-	<?php endif; ?>
-	<li class="active"><?php echo $controller->getPageTitle(); ?></li>
-</ol>
-<?php endif; ?>
 
 <h1><?php echo $controller->getPageTitle(); ?></h1>
 
