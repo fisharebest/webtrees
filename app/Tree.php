@@ -545,14 +545,21 @@ class Tree {
 		$tree->setPreference('WORD_WRAPPED_NOTES', '0');
 
 		// Default restriction settings
-		$statement = Database::prepare(
-			"INSERT INTO `##default_resn` (gedcom_id, xref, tag_type, resn) VALUES (?, NULL, ?, ?)"
-		);
-		$statement->execute(array($tree_id, 'SSN', 'confidential'));
-		$statement->execute(array($tree_id, 'SOUR', 'privacy'));
-		$statement->execute(array($tree_id, 'REPO', 'privacy'));
-		$statement->execute(array($tree_id, 'SUBM', 'confidential'));
-		$statement->execute(array($tree_id, 'SUBN', 'confidential'));
+		Database::prepare(
+			"INSERT INTO `##default_resn` (gedcom_id, tag_type, resn) VALUES (?, 'SSN', 'confidential')"
+		)->execute(array($tree_id));
+		Database::prepare(
+			"INSERT INTO `##default_resn` (gedcom_id, tag_type, resn) VALUES (?, 'SOUR', 'privacy')"
+		)->execute(array($tree_id));
+		Database::prepare(
+			"INSERT INTO `##default_resn` (gedcom_id, tag_type, resn) VALUES (?, 'REPO', 'privacy')"
+		)->execute(array($tree_id));
+		Database::prepare(
+			"INSERT INTO `##default_resn` (gedcom_id, tag_type, resn) VALUES (?, 'SUBM', 'confidential')"
+		)->execute(array($tree_id));
+		Database::prepare(
+			"INSERT INTO `##default_resn` (gedcom_id, tag_type, resn) VALUES (?, 'SUBN', 'confidential')"
+		)->execute(array($tree_id));
 
 		// Genealogy data
 		// It is simpler to create a temporary/unimported GEDCOM than to populate all the tables...

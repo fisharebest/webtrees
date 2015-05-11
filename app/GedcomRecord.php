@@ -220,44 +220,44 @@ class GedcomRecord {
 	 * Fetch data from the database
 	 *
 	 * @param string  $xref
-	 * @param integer $gedcom_id
+	 * @param integer $tree_id
 	 *
 	 * @return null|string
 	 */
-	protected static function fetchGedcomRecord($xref, $gedcom_id) {
-		static $statement = null;
-
+	protected static function fetchGedcomRecord($xref, $tree_id) {
 		// We don't know what type of object this is.  Try each one in turn.
-		$data = Individual::fetchGedcomRecord($xref, $gedcom_id);
+		$data = Individual::fetchGedcomRecord($xref, $tree_id);
 		if ($data) {
 			return $data;
 		}
-		$data = Family::fetchGedcomRecord($xref, $gedcom_id);
+		$data = Family::fetchGedcomRecord($xref, $tree_id);
 		if ($data) {
 			return $data;
 		}
-		$data = Source::fetchGedcomRecord($xref, $gedcom_id);
+		$data = Source::fetchGedcomRecord($xref, $tree_id);
 		if ($data) {
 			return $data;
 		}
-		$data = Repository::fetchGedcomRecord($xref, $gedcom_id);
+		$data = Repository::fetchGedcomRecord($xref, $tree_id);
 		if ($data) {
 			return $data;
 		}
-		$data = Media::fetchGedcomRecord($xref, $gedcom_id);
+		$data = Media::fetchGedcomRecord($xref, $tree_id);
 		if ($data) {
 			return $data;
 		}
-		$data = Note::fetchGedcomRecord($xref, $gedcom_id);
+		$data = Note::fetchGedcomRecord($xref, $tree_id);
 		if ($data) {
 			return $data;
 		}
 		// Some other type of record...
-		if (is_null($statement)) {
-			$statement = Database::prepare("SELECT o_gedcom FROM `##other` WHERE o_id=? AND o_file=?");
-		}
-		return $statement->execute(array($xref, $gedcom_id))->fetchOne();
 
+		return Database::prepare(
+			"SELECT o_gedcom FROM `##other` WHERE o_id = :xref AND o_file = :tree_id"
+		)->execute(array(
+			'xref'    => $xref,
+			'tree_id' => $tree_id,
+		))->fetchOne();
 	}
 
 	/**

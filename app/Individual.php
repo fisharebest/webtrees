@@ -253,14 +253,13 @@ class Individual extends GedcomRecord {
 	}
 
 	/** {@inheritdoc} */
-	protected static function fetchGedcomRecord($xref, $gedcom_id) {
-		static $statement = null;
-
-		if ($statement === null) {
-			$statement = Database::prepare("SELECT i_gedcom FROM `##individuals` WHERE i_id=? AND i_file=?");
-		}
-
-		return $statement->execute(array($xref, $gedcom_id))->fetchOne();
+	protected static function fetchGedcomRecord($xref, $tree_id) {
+		return Database::prepare(
+			"SELECT i_gedcom FROM `##individuals` WHERE i_id = :xref AND i_file = :tree_id"
+		)->execute(array(
+			'xref'    => $xref,
+			'tree_id' => $tree_id,
+		))->fetchOne();
 	}
 
 	/**

@@ -65,14 +65,13 @@ class Source extends GedcomRecord {
 	}
 
 	/** {@inheritdoc} */
-	protected static function fetchGedcomRecord($xref, $gedcom_id) {
-		static $statement = null;
-
-		if ($statement === null) {
-			$statement = Database::prepare("SELECT s_gedcom FROM `##sources` WHERE s_id=? AND s_file=?");
-		}
-
-		return $statement->execute(array($xref, $gedcom_id))->fetchOne();
+	protected static function fetchGedcomRecord($xref, $tree_id) {
+		return Database::prepare(
+			"SELECT s_gedcom FROM `##sources` WHERE s_id = :xref AND s_file = :tree_id"
+		)->execute(array(
+			'xref'    => $xref,
+			'tree_id' => $tree_id,
+		))->fetchOne();
 	}
 
 	/** {@inheritdoc} */
