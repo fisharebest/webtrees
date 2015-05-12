@@ -578,30 +578,7 @@ function reformat_record_import($rec, Tree $tree) {
  * @param boolean $update whether or not this is an updated record that has been accepted
  */
 function import_record($gedrec, Tree $tree, $update) {
-	$ged_id = $tree->getTreeId();
-
-	static $sql_insert_indi = null;
-	static $sql_insert_fam = null;
-	static $sql_insert_sour = null;
-	static $sql_insert_media = null;
-	static $sql_insert_other = null;
-	if (!$sql_insert_indi) {
-		$sql_insert_indi = Database::prepare(
-			"INSERT INTO `##individuals` (i_id, i_file, i_rin, i_sex, i_gedcom) VALUES (?,?,?,?,?)"
-		);
-		$sql_insert_fam = Database::prepare(
-			"INSERT INTO `##families` (f_id, f_file, f_husb, f_wife, f_gedcom, f_numchil) VALUES (?,?,?,?,?,?)"
-		);
-		$sql_insert_sour = Database::prepare(
-			"INSERT INTO `##sources` (s_id, s_file, s_name, s_gedcom) VALUES (?,?,?,?)"
-		);
-		$sql_insert_media = Database::prepare(
-			"INSERT INTO `##media` (m_id, m_ext, m_type, m_titl, m_filename, m_file, m_gedcom) VALUES (?, ?, ?, ?, ?, ?, ?)"
-		);
-		$sql_insert_other = Database::prepare(
-			"INSERT INTO `##other` (o_id, o_file, o_type, o_gedcom) VALUES (?,?,?,?)"
-		);
-	}
+	$tree_id = $tree->getTreeId();
 
 	// Escaped @ signs (only if importing from file)
 	if (!$update) {
@@ -633,7 +610,7 @@ function import_record($gedrec, Tree $tree, $update) {
 	if ($tree->getPreference('keep_media') && $xref) {
 		$old_linked_media =
 			Database::prepare("SELECT l_to FROM `##link` WHERE l_from=? AND l_file=? AND l_type='OBJE'")
-			->execute(array($xref, $ged_id))
+			->execute(array($xref, $tree_id))
 			->fetchOneColumn();
 		foreach ($old_linked_media as $media_id) {
 			$gedrec .= "\n1 OBJE @" . $media_id . "@";
@@ -651,12 +628,16 @@ function import_record($gedrec, Tree $tree, $update) {
 		} else {
 			$rin = $xref;
 		}
-		$sql_insert_indi->execute(array($xref, $ged_id, $rin, $record->getSex(), $gedrec));
+		Database::prepare(
+			"INSERT INTO `##individuals` (i_id, i_file, i_rin, i_sex, i_gedcom) VALUES (?, ?, ?, ?, ?)"
+		)->execute(array(
+			$xref, $tree_id, $rin, $record->getSex(), $gedrec
+		));
 		// Update the cross-reference/index tables.
-		update_places($xref, $ged_id, $gedrec);
-		update_dates($xref, $ged_id, $gedrec);
-		update_links($xref, $ged_id, $gedrec);
-		update_names($xref, $ged_id, $record);
+		update_places($xref, $tree_id, $gedrec);
+		update_dates($xref, $tree_id, $gedrec);
+		update_links($xref, $tree_id, $gedrec);
+		update_names($xref, $tree_id, $record);
 		break;
 	case 'FAM':
 		// Convert inline media into media objects
@@ -676,11 +657,15 @@ function import_record($gedrec, Tree $tree, $update) {
 		if (preg_match('/\n1 NCHI (\d+)/', $gedrec, $match)) {
 			$nchi = max($nchi, $match[1]);
 		}
-		$sql_insert_fam->execute(array($xref, $ged_id, $husb, $wife, $gedrec, $nchi));
+		Database::prepare(
+			"INSERT INTO `##families` (f_id, f_file, f_husb, f_wife, f_gedcom, f_numchil) VALUES (?, ?, ?, ?, ?, ?)"
+		)->execute(array(
+			$xref, $tree_id, $husb, $wife, $gedrec, $nchi
+		));
 		// Update the cross-reference/index tables.
-		update_places($xref, $ged_id, $gedrec);
-		update_dates($xref, $ged_id, $gedrec);
-		update_links($xref, $ged_id, $gedrec);
+		update_places($xref, $tree_id, $gedrec);
+		update_dates($xref, $tree_id, $gedrec);
+		update_links($xref, $tree_id, $gedrec);
 		break;
 	case 'SOUR':
 		// Convert inline media into media objects
@@ -694,34 +679,50 @@ function import_record($gedrec, Tree $tree, $update) {
 		} else {
 			$name = $xref;
 		}
-		$sql_insert_sour->execute(array($xref, $ged_id, $name, $gedrec));
+		Database::prepare(
+			"INSERT INTO `##sources` (s_id, s_file, s_name, s_gedcom) VALUES (?, ?, ?, ?)"
+		)->execute(array(
+			$xref, $tree_id, $name, $gedrec
+		));
 		// Update the cross-reference/index tables.
-		update_links($xref, $ged_id, $gedrec);
-		update_names($xref, $ged_id, $record);
+		update_links($xref, $tree_id, $gedrec);
+		update_names($xref, $tree_id, $record);
 		break;
 	case 'REPO':
 		// Convert inline media into media objects
 		$gedrec = convert_inline_media($tree, $gedrec);
 
 		$record = new Repository($xref, $gedrec, null, $tree);
-		$sql_insert_other->execute(array($xref, $ged_id, $type, $gedrec));
+		Database::prepare(
+			"INSERT INTO `##other` (o_id, o_file, o_type, o_gedcom) VALUES (?, ?, 'REPO', ?)"
+		)->execute(array(
+			$xref, $tree_id, $gedrec
+		));
 		// Update the cross-reference/index tables.
-		update_links($xref, $ged_id, $gedrec);
-		update_names($xref, $ged_id, $record);
+		update_links($xref, $tree_id, $gedrec);
+		update_names($xref, $tree_id, $record);
 		break;
 	case 'NOTE':
 		$record = new Note($xref, $gedrec, null, $tree);
-		$sql_insert_other->execute(array($xref, $ged_id, $type, $gedrec));
+		Database::prepare(
+			"INSERT INTO `##other` (o_id, o_file, o_type, o_gedcom) VALUES (?, ?, 'NOTE', ?)"
+		)->execute(array(
+			$xref, $tree_id, $gedrec
+		));
 		// Update the cross-reference/index tables.
-		update_links($xref, $ged_id, $gedrec);
-		update_names($xref, $ged_id, $record);
+		update_links($xref, $tree_id, $gedrec);
+		update_names($xref, $tree_id, $record);
 		break;
 	case 'OBJE':
 		$record = new Media($xref, $gedrec, null, $tree);
-		$sql_insert_media->execute(array($xref, $record->extension(), $record->getMediaType(), $record->title, $record->file, $ged_id, $gedrec));
+		Database::prepare(
+			"INSERT INTO `##media` (m_id, m_ext, m_type, m_titl, m_filename, m_file, m_gedcom) VALUES (?, ?, ?, ?, ?, ?, ?)"
+		)->execute(array(
+			$xref, $record->extension(), $record->getMediaType(), $record->title, $record->file, $tree_id, $gedrec
+		));
 		// Update the cross-reference/index tables.
-		update_links($xref, $ged_id, $gedrec);
-		update_names($xref, $ged_id, $record);
+		update_links($xref, $tree_id, $gedrec);
+		update_names($xref, $tree_id, $record);
 		break;
 	case 'HEAD':
 		// Force HEAD records to have a creation date.
@@ -732,16 +733,20 @@ function import_record($gedrec, Tree $tree, $update) {
 	case 'TRLR':
 	case 'SUBM':
 	case 'SUBN':
-		$sql_insert_other->execute(array($xref, $ged_id, $type, $gedrec));
+		Database::prepare(
+			"INSERT INTO `##other` (o_id, o_file, o_type, o_gedcom) VALUES (?, ?, ?, ?)"
+		)->execute(array($xref, $tree_id, $type, $gedrec));
 		// Update the cross-reference/index tables.
-		update_links($xref, $ged_id, $gedrec);
+		update_links($xref, $tree_id, $gedrec);
 		break;
 	default:
 		$record = new GedcomRecord($xref, $gedrec, null, $tree);
-		$sql_insert_other->execute(array($xref, $ged_id, $type, $gedrec));
+		Database::prepare(
+			"INSERT INTO `##other` (o_id, o_file, o_type, o_gedcom) VALUES (?, ?, ?, ?)"
+		)->execute(array($xref, $tree_id, $type, $gedrec));
 		// Update the cross-reference/index tables.
-		update_links($xref, $ged_id, $gedrec);
-		update_names($xref, $ged_id, $record);
+		update_links($xref, $tree_id, $gedrec);
+		update_names($xref, $tree_id, $record);
 		break;
 	}
 }
@@ -755,25 +760,6 @@ function import_record($gedrec, Tree $tree, $update) {
  */
 function update_places($gid, $ged_id, $gedrec) {
 	global $placecache;
-
-	static $sql_insert_placelinks = null;
-	static $sql_insert_places = null;
-	static $sql_select_places = null;
-	if (!$sql_insert_placelinks) {
-		// Use INSERT IGNORE as a (temporary) fix for https://bugs.launchpad.net/webtrees/+bug/582226
-		// It ignores places that utf8_unicode_ci consider to be the same (i.e. accents).
-		// For example Québec and Quebec
-		// We need a better solution that attaches multiple names to single places
-		$sql_insert_placelinks = Database::prepare(
-			"INSERT IGNORE INTO `##placelinks` (pl_p_id, pl_gid, pl_file) VALUES (?, ?, ?)"
-		);
-		$sql_insert_places = Database::prepare(
-			"INSERT INTO `##places` (p_place, p_parent_id, p_file, p_std_soundex, p_dm_soundex) VALUES (LEFT(?, 150), ?, ?, ?, ?)"
-		);
-		$sql_select_places = Database::prepare(
-			"SELECT p_id FROM `##places` WHERE p_file = ? AND p_parent_id = ? AND p_place = LEFT(?, 150)"
-		);
-	}
 
 	if (!isset($placecache)) {
 		$placecache = array();
@@ -804,7 +790,15 @@ function update_places($gid, $ged_id, $gedrec) {
 				$parent_id = $placecache[$key];
 				if (!isset($personplace[$key])) {
 					$personplace[$key] = 1;
-					$sql_insert_placelinks->execute(array($parent_id, $gid, $ged_id));
+					// Use INSERT IGNORE as a (temporary) fix for https://bugs.launchpad.net/webtrees/+bug/582226
+					// It ignores places that utf8_unicode_ci consider to be the same (i.e. accents).
+					// For example Québec and Quebec
+					// We need a better solution that attaches multiple names to single places
+					Database::prepare(
+						"INSERT IGNORE INTO `##placelinks` (pl_p_id, pl_gid, pl_file) VALUES (?, ?, ?)"
+					)->execute(array(
+						$parent_id, $gid, $ged_id
+					));
 				}
 				continue;
 			}
@@ -812,7 +806,11 @@ function update_places($gid, $ged_id, $gedrec) {
 			//-- only search the database while we are finding places in it
 			if ($search) {
 				//-- check if this place and level has already been added
-				$tmp = $sql_select_places->execute(array($ged_id, $parent_id, $place))->fetchOne();
+				$tmp = Database::prepare(
+					"SELECT p_id FROM `##places` WHERE p_file = ? AND p_parent_id = ? AND p_place = LEFT(?, 150)"
+				)->execute(array(
+					$ged_id, $parent_id, $place
+				))->fetchOne();
 				if ($tmp) {
 					$p_id = $tmp;
 				} else {
@@ -824,11 +822,19 @@ function update_places($gid, $ged_id, $gedrec) {
 			if (!$search) {
 				$std_soundex = Soundex::russell($place);
 				$dm_soundex  = Soundex::daitchMokotoff($place);
-				$sql_insert_places->execute(array($place, $parent_id, $ged_id, $std_soundex, $dm_soundex));
+				Database::prepare(
+					"INSERT INTO `##places` (p_place, p_parent_id, p_file, p_std_soundex, p_dm_soundex) VALUES (LEFT(?, 150), ?, ?, ?, ?)"
+				)->execute(array(
+					$place, $parent_id, $ged_id, $std_soundex, $dm_soundex
+				));
 				$p_id = Database::getInstance()->lastInsertId();
 			}
 
-			$sql_insert_placelinks->execute(array($p_id, $gid, $ged_id));
+			Database::prepare(
+				"INSERT IGNORE INTO `##placelinks` (pl_p_id, pl_gid, pl_file) VALUES (?, ?, ?)"
+			)->execute(array(
+				$p_id, $gid, $ged_id
+			));
 			//-- increment the level and assign the parent id for the next place level
 			$parent_id = $p_id;
 			$placecache[$key] = $p_id;
@@ -845,13 +851,6 @@ function update_places($gid, $ged_id, $gedrec) {
  * @param string  $gedrec
  */
 function update_dates($xref, $ged_id, $gedrec) {
-	static $sql_insert_date = null;
-	if (!$sql_insert_date) {
-		$sql_insert_date = Database::prepare(
-			"INSERT INTO `##dates` (d_day,d_month,d_mon,d_year,d_julianday1,d_julianday2,d_fact,d_gid,d_file,d_type) VALUES (?,?,?,?,?,?,?,?,?,?)"
-		);
-	}
-
 	if (strpos($gedrec, '2 DATE ') && preg_match_all("/\n1 (\w+).*(?:\n[2-9].*)*(?:\n2 DATE (.+))(?:\n[2-9].*)*/", $gedrec, $matches, PREG_SET_ORDER)) {
 		foreach ($matches as $match) {
 			$fact = $match[1];
@@ -859,7 +858,9 @@ function update_dates($xref, $ged_id, $gedrec) {
 				$fact = $tmatch[1];
 			}
 			$date = new Date($match[2]);
-			$sql_insert_date->execute(array(
+			Database::prepare(
+				"INSERT INTO `##dates` (d_day,d_month,d_mon,d_year,d_julianday1,d_julianday2,d_fact,d_gid,d_file,d_type) VALUES (?,?,?,?,?,?,?,?,?,?)"
+			)->execute(array(
 				$date->minimumDate()->d,
 				$date->minimumDate()->format('%O'),
 				$date->minimumDate()->m,
@@ -872,7 +873,9 @@ function update_dates($xref, $ged_id, $gedrec) {
 				$date->minimumDate()->format('%@'),
 			));
 			if ($date->minimumDate() !== $date->maximumDate()) {
-				$sql_insert_date->execute(array(
+				Database::prepare(
+					"INSERT INTO `##dates` (d_day,d_month,d_mon,d_year,d_julianday1,d_julianday2,d_fact,d_gid,d_file,d_type) VALUES (?,?,?,?,?,?,?,?,?,?)"
+				)->execute(array(
 					$date->maximumDate()->d,
 					$date->maximumDate()->format('%O'),
 					$date->maximumDate()->m,
@@ -897,11 +900,6 @@ function update_dates($xref, $ged_id, $gedrec) {
  * @param string  $gedrec
  */
 function update_links($xref, $ged_id, $gedrec) {
-	static $sql_insert_link = null;
-	if (!$sql_insert_link) {
-		$sql_insert_link = Database::prepare("INSERT INTO `##link` (l_from,l_to,l_type,l_file) VALUES (?,?,?,?)");
-	}
-
 	if (preg_match_all('/^\d+ (' . WT_REGEX_TAG . ') @(' . WT_REGEX_XREF . ')@/m', $gedrec, $matches, PREG_SET_ORDER)) {
 		$data = array();
 		foreach ($matches as $match) {
@@ -910,7 +908,11 @@ function update_links($xref, $ged_id, $gedrec) {
 				$data[] = $match[1] . $match[2];
 				// Ignore any errors, which may be caused by "duplicates" that differ on case/collation, e.g. "S1" and "s1"
 				try {
-					$sql_insert_link->execute(array($xref, $match[2], $match[1], $ged_id));
+					Database::prepare(
+						"INSERT INTO `##link` (l_from, l_to, l_type, l_file) VALUES (?, ?, ?, ?)"
+					)->execute(array(
+						$xref, $match[2], $match[1], $ged_id
+					));
 				} catch (PDOException $e) {
 					// We could display a warning here....
 				}
@@ -927,32 +929,33 @@ function update_links($xref, $ged_id, $gedrec) {
  * @param GedcomRecord $record
  */
 function update_names($xref, $ged_id, GedcomRecord $record) {
-	static $sql_insert_name_indi = null;
-	static $sql_insert_name_other = null;
-	if (!$sql_insert_name_indi) {
-		$sql_insert_name_indi = Database::prepare("INSERT INTO `##name` (n_file,n_id,n_num,n_type,n_sort,n_full,n_surname,n_surn,n_givn,n_soundex_givn_std,n_soundex_surn_std,n_soundex_givn_dm,n_soundex_surn_dm) VALUES (?, ?, ?, ?, LEFT(?, 255), LEFT(?, 255), LEFT(?, 255), LEFT(?, 255), ?, ?, ?, ?, ?)");
-		$sql_insert_name_other = Database::prepare("INSERT INTO `##name` (n_file,n_id,n_num,n_type,n_sort,n_full) VALUES (?, ?, ?, ?, LEFT(?, 255), LEFT(?, 255))");
-	}
-
 	foreach ($record->getAllNames() as $n=>$name) {
 		if ($record instanceof Individual) {
-			if ($name['givn'] == '@P.N.') {
+			if ($name['givn'] === '@P.N.') {
 				$soundex_givn_std = null;
 				$soundex_givn_dm  = null;
 			} else {
 				$soundex_givn_std = Soundex::russell($name['givn']);
 				$soundex_givn_dm  = Soundex::daitchMokotoff($name['givn']);
 			}
-			if ($name['surn'] == '@N.N.') {
+			if ($name['surn'] === '@N.N.') {
 				$soundex_surn_std = null;
 				$soundex_surn_dm  = null;
 			} else {
 				$soundex_surn_std = Soundex::russell($name['surname']);
 				$soundex_surn_dm  = Soundex::daitchMokotoff($name['surname']);
 			}
-			$sql_insert_name_indi->execute(array($ged_id, $xref, $n, $name['type'], $name['sort'], $name['fullNN'], $name['surname'], $name['surn'], $name['givn'], $soundex_givn_std, $soundex_surn_std, $soundex_givn_dm, $soundex_surn_dm));
+			Database::prepare(
+				"INSERT INTO `##name` (n_file,n_id,n_num,n_type,n_sort,n_full,n_surname,n_surn,n_givn,n_soundex_givn_std,n_soundex_surn_std,n_soundex_givn_dm,n_soundex_surn_dm) VALUES (?, ?, ?, ?, LEFT(?, 255), LEFT(?, 255), LEFT(?, 255), LEFT(?, 255), ?, ?, ?, ?, ?)"
+			)->execute(array(
+				$ged_id, $xref, $n, $name['type'], $name['sort'], $name['fullNN'], $name['surname'], $name['surn'], $name['givn'], $soundex_givn_std, $soundex_surn_std, $soundex_givn_dm, $soundex_surn_dm
+			));
 		} else {
-			$sql_insert_name_other->execute(array($ged_id, $xref, $n, $name['type'], $name['sort'], $name['fullNN']));
+			Database::prepare(
+				"INSERT INTO `##name` (n_file,n_id,n_num,n_type,n_sort,n_full) VALUES (?, ?, ?, ?, LEFT(?, 255), LEFT(?, 255))"
+			)->execute(array(
+				$ged_id, $xref, $n, $name['type'], $name['sort'], $name['fullNN']
+			));
 		}
 	}
 }
@@ -988,18 +991,6 @@ function convert_inline_media(Tree $tree, $gedrec) {
  * @return string
  */
 function create_media_object($level, $gedrec, Tree $tree) {
-	static $sql_insert_media = null;
-	static $sql_select_media = null;
-
-	if (!$sql_insert_media) {
-		$sql_insert_media = Database::prepare(
-			"INSERT INTO `##media` (m_id, m_ext, m_type, m_titl, m_filename, m_file, m_gedcom) VALUES (?, ?, ?, ?, ?, ?, ?)"
-		);
-		$sql_select_media = Database::prepare(
-			"SELECT m_id FROM `##media` WHERE m_filename=? AND m_titl=? AND m_file=?"
-		);
-	}
-
 	if (preg_match('/\n\d FILE (.+)/', $gedrec, $file_match)) {
 		$file = $file_match[1];
 	} else {
@@ -1013,7 +1004,11 @@ function create_media_object($level, $gedrec, Tree $tree) {
 	}
 
 	// Have we already created a media object with the same title/filename?
-	$xref = $sql_select_media->execute(array($file, $titl, $tree->getTreeId()))->fetchOne();
+	$xref = Database::prepare(
+		"SELECT m_id FROM `##media` WHERE m_filename = ? AND m_titl = ? AND m_file = ?"
+	)->execute(array(
+		$file, $titl, $tree->getTreeId()
+	))->fetchOne();
 
 	if (!$xref) {
 		$xref = $tree->getNewXref('OBJE');
@@ -1025,7 +1020,11 @@ function create_media_object($level, $gedrec, Tree $tree) {
 		$gedrec = preg_replace('/\n1 FORM (.+)\n1 FILE (.+)\n1 TITL (.+)/', "\n1 FILE $2\n2 FORM $1\n2 TITL $3", $gedrec);
 		// Create new record
 		$record = new Media($xref, $gedrec, null, $tree);
-		$sql_insert_media->execute(array($xref, $record->extension(), $record->getMediaType(), $record->title, $record->file, $tree->getTreeId(), $gedrec));
+		Database::prepare(
+			"INSERT INTO `##media` (m_id, m_ext, m_type, m_titl, m_filename, m_file, m_gedcom) VALUES (?, ?, ?, ?, ?, ?, ?)"
+		)->execute(array(
+			$xref, $record->extension(), $record->getMediaType(), $record->title, $record->file, $tree->getTreeId(), $gedrec
+		));
 	}
 
 	return "\n" . $level . ' OBJE @' . $xref . '@';
