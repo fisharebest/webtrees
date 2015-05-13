@@ -139,6 +139,15 @@ legend img {
 	width: 20px;
 }
 
+/* Some styles from bootstrap */
+.text-muted {
+	color: #777;
+}
+
+.small {
+	font-size: 12px;
+}
+
 img.block,
 #mycart img {
 	border: 0;
@@ -2839,10 +2848,6 @@ dd .deletelink {
 
 #edit_interface-page input[type="text"][id$="DATE"] {
 	width: 160px;
-}
-
-#edit_interface-page input[type="text"][id^="TIME"] {
-	width: 100px;
 }
 
 #edit_interface-page input[type="text"][id*="OBJE_FILE"] {
