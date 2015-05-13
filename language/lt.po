@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-04-05 21:47+0100\n"
-"PO-Revision-Date: 2015-04-06 11:58+0100\n"
+"PO-Revision-Date: 2015-05-02 10:04+0100\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
 "Language-Team: Lithuanian "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/lt/>\n"
@@ -5001,6 +5001,8 @@ msgstr "Išsamiau"
 #: admin_site_config.php:474
 msgid "Details of the new user will be sent to the genealogy contact for the corresponding family tree."
 msgstr ""
+"Naujo vartotojo detalės bus išsiustos asmeniui atsakingam genelogijos "
+"klausimais šitame kilmės medyje."
 
 #: app/Gedcom/GedcomCodeTemp.php:138
 msgid "Detroit, Michigan"
@@ -6217,7 +6219,7 @@ msgstr "Rasti šeimą"
 
 #: find.php:61 includes/functions/functions_print.php:810
 msgid "Find a media object"
-msgstr "Rasti media objektą"
+msgstr "Rasti medijos objektą"
 
 #: find.php:64 includes/functions/functions_print.php:739
 msgid "Find a place"
@@ -6249,7 +6251,7 @@ msgstr "Rasti visus galimus giminystės ryšius"
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:29
 #: modules_v3/GEDFact_assistant/_CENS/census_3_find.php:61
 msgid "Find an individual"
-msgstr "Rasti individą"
+msgstr "Rasti asmenį"
 
 #: relationship.php:91
 msgid "Find the closest relationships"
@@ -7391,7 +7393,7 @@ msgstr "Asmenų ID priešdėlis"
 
 #: statistics.php:533
 msgid "Individual distribution"
-msgstr "individualus paskirstymas"
+msgstr "Asmenų išsibarstymas"
 
 #: app/Stats.php:1527 statistics.php:584
 msgid "Individual distribution chart"
@@ -7404,7 +7406,7 @@ msgstr "Asmenų sąrašas"
 
 #: admin_trees_config.php:1387 admin_trees_config.php:1625
 msgid "Individual pages"
-msgstr "Individualūs puslapiai"
+msgstr "Asmenų puslapiai"
 
 #: admin_users.php:566 edituser.php:171
 msgid "Individual record"

@@ -513,32 +513,11 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 				echo help_link($fact);
 			}
 			break;
-		case 'ASSO':
-		case '_ASSO': // Some apps (including webtrees) use "2 _ASSO", since "2 ASSO" is not strictly valid GEDCOM
-			if ($level == 1) {
-				echo help_link('ASSO_1');
-			} else {
-				echo help_link('ASSO_2');
-			}
-			break;
-		case 'ADDR':
-		case 'AGNC':
-		case 'CAUS':
 		case 'DATE':
-		case 'OBJE':
-		case 'PAGE':
-		case 'PEDI':
 		case 'PLAC':
-		case 'RELA':
 		case 'RESN':
 		case 'ROMN':
-		case 'SOUR':
-		case 'STAT':
 		case 'SURN':
-		case 'TEMP':
-		case 'TEXT':
-		case 'TIME':
-		case 'WWW':
 		case '_HEB':
 			echo help_link($fact);
 			break;
@@ -546,25 +525,25 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 	}
 	// tag level
 	if ($level > 0) {
-		if ($fact == 'TEXT' && $level > 1) {
-			echo "<input type=\"hidden\" name=\"glevels[]\" value=\"", $level - 1, "\">";
-			echo "<input type=\"hidden\" name=\"islink[]\" value=\"0\">";
-			echo "<input type=\"hidden\" name=\"tag[]\" value=\"DATA\">";
+		if ($fact === 'TEXT' && $level > 1) {
+			echo '<input type="hidden" name="glevels[]" value="', $level - 1, '">';
+			echo '<input type="hidden" name="islink[]" value="0">';
+			echo '<input type="hidden" name="tag[]" value="DATA">';
 			//-- leave data text[] value empty because the following TEXT line will
 			//--- cause the DATA to be added
-			echo "<input type=\"hidden\" name=\"text[]\" value=\"\">";
+			echo '<input type="hidden" name="text[]" value="">';
 		}
-		echo "<input type=\"hidden\" name=\"glevels[]\" value=\"", $level, "\">";
-		echo "<input type=\"hidden\" name=\"islink[]\" value=\"", $islink, "\">";
-		echo "<input type=\"hidden\" name=\"tag[]\" value=\"", $fact, "\">";
+		echo '<input type="hidden" name="glevels[]" value="', $level, '">';
+		echo '<input type="hidden" name="islink[]" value="', $islink, '">';
+		echo '<input type="hidden" name="tag[]" value="', $fact, '">';
 	}
 	echo "</td>";
 
 	// value
-	echo "<td class=\"optionbox wrap\">";
+	echo '<td class="optionbox wrap">';
 
 	// retrieve linked NOTE
-	if ($fact == "NOTE" && $islink) {
+	if ($fact === 'NOTE' && $islink) {
 		$note1 = Note::getInstance($value, $WT_TREE);
 		if ($note1) {
 			$noterec = $note1->getGedcom();
@@ -573,8 +552,8 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 		}
 	}
 
-	if (in_array($fact, $emptyfacts) && ($value == '' || $value == 'Y' || $value == 'y')) {
-		echo "<input type=\"hidden\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", $value, "\">";
+	if (in_array($fact, $emptyfacts) && ($value === '' || $value === 'Y' || $value === 'y')) {
+		echo '<input type="hidden" id="', $element_id, '" name="', $element_name, '" value="', $value, '">';
 		if ($level <= 1) {
 			echo '<input type="checkbox" ';
 			if ($value) {
@@ -711,6 +690,9 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 			case '_MARNM_SURN':
 				echo ' data-autocomplete-type="SURN"';
 				break;
+			case 'TIME':
+				echo ' pattern="([0-1][0-9]|2[0-3]):[0-5][0-9](:[0-5]0-9])?" dir="ltr" placeholder="' . /* I18N: Examples of valid time formats (hours:minutes:seconds) */ I18N::translate('hh:mm or hh:mm:ss') . '"';
+				break;
 			}
 			echo '>';
 		}
@@ -751,9 +733,8 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 			echo '>', GedcomTag::getLabel('MARR_' . strtoupper($key)), '</option>';
 		}
 		echo "</select>";
-	}
-	// NAME TYPE : hide text field and show a selection list
-	else if ($fact == 'TYPE' && $level == 0) {
+	} elseif ($fact == 'TYPE' && $level == 0) {
+		// NAME TYPE : hide text field and show a selection list
 		$onchange = 'onchange="document.getElementById(\'' . $element_id . '\').value=this.value;"';
 		echo edit_field_name_type($element_name, $value, $onchange, $person);
 		echo '<script>';
@@ -871,6 +852,14 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 		$date = new Date($value);
 		echo $date->display();
 	}
+	if (($fact === 'ASSO'|| $fact === '_ASSO') && $value === '') {
+		if ($level == 1) {
+			echo '<p class="small text-muted">' . I18N::translate('An associate is another individual who was involved with this individual, such as a friend or an employer.') . '</p>';
+		} else {
+			echo '<p class="small text-muted">' . I18N::translate('An associate is another individual who was involved with this fact or event, such as a witness or a priest.') . '</p>';
+		}
+	}
+
 	if ($value && $value != 'new' && $islink) {
 		switch ($fact) {
 		case 'ALIA':

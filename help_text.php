@@ -33,31 +33,6 @@ switch ($help) {
 	// Generally, these tags need to be lists explicitly in add_simple_tag()
 	//////////////////////////////////////////////////////////////////////////////
 
-case 'ADDR':
-	$title = GedcomTag::getLabel('ADDR');
-	$text = I18N::translate('Enter the address into the field just as you would write it on an envelope.<br><br>Leave this field blank if you do not want to include an address.');
-	break;
-
-case 'AGNC':
-	$title = GedcomTag::getLabel('AGNC');
-	$text = I18N::translate('The organization, institution, corporation, individual, or other entity that has authority.<br><br>For example, an employer of an individual, or a church that administered rites or events, or an organization responsible for creating and/or archiving records.');
-	break;
-
-case 'ASSO_1':
-	$title = GedcomTag::getLabel('ASSO');
-	$text = I18N::translate('An associate is another individual who was involved with this individual, such as a friend or an employer.');
-	break;
-
-case 'ASSO_2':
-	$title = GedcomTag::getLabel('ASSO');
-	$text = I18N::translate('An associate is another individual who was involved with this fact or event, such as a witness or a priest.');
-	break;
-
-case 'CAUS':
-	$title = GedcomTag::getLabel('CAUS');
-	$text = I18N::translate('A description of the cause of the associated event or fact, such as the cause of death.');
-	break;
-
 case 'DATE':
 	$title = GedcomTag::getLabel('DATE');
 	$dates = array(
@@ -274,19 +249,9 @@ case 'OBJE':
 		'</p>';
 	break;
 
-case 'PAGE':
-	$title = GedcomTag::getLabel('PAGE');
-	$text = I18N::translate('In the citation details field you would enter the page number or other information that might help someone find the information in the source.');
-	break;
-
 case 'PLAC':
 	$title = GedcomTag::getLabel('PLAC');
 	$text = I18N::translate('Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database.');
-	break;
-
-case 'RELA':
-	$title = GedcomTag::getLabel('RELA');
-	$text = I18N::translate('Select a relationship name from the list.  Selecting <b>Godfather</b> means: <i>This associate is the godfather of the current individual</i>.');
 	break;
 
 case 'RESN':
@@ -305,36 +270,6 @@ case 'ROMN':
 case 'SHARED_NOTE':
 	$title = GedcomTag::getLabel('SHARED_NOTE');
 	$text = I18N::translate('Shared notes are free-form text and will appear in the Fact Details section of the page.<br><br>Each shared note can be linked to more than one individual, family, source, or event.');
-	break;
-
-case 'SOUR':
-	$title = GedcomTag::getLabel('SOUR');
-	$text = I18N::translate('This field allows you to change the source record that this fact’s source citation links to.  This field takes a source ID.  Beside the field will be listed the title of the current source ID.  Use the <b>Find ID</b> link to look up the source’s ID number.  To remove the entire citation, make this field blank.');
-	break;
-
-case 'STAT':
-	$title = GedcomTag::getLabel('STAT');
-	$text = I18N::translate('This is an optional status field and is used mostly for LDS ordinances as they are run through the TempleReady program.');
-	break;
-
-case 'TEMP':
-	$title = GedcomTag::getLabel('TEMP');
-	$text = I18N::translate('For LDS ordinances, this field records the temple where it was performed.');
-	break;
-
-case 'TEXT':
-	$title = GedcomTag::getLabel('TEXT');
-	$text = I18N::translate('In this field you would enter the citation text for this source.  Examples of data may be a transcription of the text from the source, or a description of what was in the citation.');
-	break;
-
-case 'TIME':
-	$title = GedcomTag::getLabel('TIME');
-	$text = I18N::translate('Enter the time for this event in 24-hour format with leading zeroes.  Midnight is 00:00.  Examples: 04:50 13:00 20:30.');
-	break;
-
-case 'WWW':
-	$title = GedcomTag::getLabel('WWW');
-	$text = I18N::translate('Enter the URL address including the http://.<br><br>An example URL looks like this: <b>http://www.webtrees.net/</b>.  Leave this field blank if you do not want to include a URL.');
 	break;
 
 case '_HEB':

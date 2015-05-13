@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-04-05 21:47+0100\n"
-"PO-Revision-Date: 2015-04-26 14:46+0100\n"
+"PO-Revision-Date: 2015-05-08 21:38+0100\n"
 "Last-Translator: Familia Boim <familiaboim@gmail.com>\n"
 "Language-Team: Yiddish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/yi/>\n"
@@ -203,19 +203,19 @@ msgstr "%s KB"
 #: app/Module/ClippingsCartModule.php:175
 #, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%s און איר עלטערן"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:177
 #, php-format
 msgid "%s and his ancestors"
-msgstr ""
+msgstr "%s און זיין עלטערן"
 
 #. I18N: %s is the name of a source
 #: app/Module/ClippingsCartModule.php:261
 #, php-format
 msgid "%s and the individuals that reference it."
-msgstr ""
+msgstr "%s און די מענטשן אַז דערמאָנען עס."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:99
@@ -227,7 +227,7 @@ msgstr "%s און זייער קינדער"
 #: app/Module/ClippingsCartModule.php:105
 #, php-format
 msgid "%s and their descendants"
-msgstr ""
+msgstr "%s און זייער קינדסקינדער"
 
 #: app/Module/LoggedInUsersModule.php:51 app/Stats.php:5373
 #, php-format
@@ -263,8 +263,8 @@ msgstr[1] "%s טעג צוריק"
 #, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "איין משפּחה האט שוין דערהייַנטיקן."
+msgstr[1] "%s משפּחות האט שוין דערהייַנטיקן."
 
 #: admin.php:773
 #, php-format
@@ -298,8 +298,8 @@ msgstr[1] "%s מענטשן"
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "איין מענטש האט שוין דערהייַנטיקן."
+msgstr[1] "%s מענטשן האָבן שוין דערהייַנטיקן."
 
 #: app/Module/GoogleMapsModule.php:907
 #, php-format
@@ -441,14 +441,14 @@ msgstr "%s יאָר יאָרטאָג"
 #, php-format
 msgctxt "FEMALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s מדרגה שוועסטערקינד"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: includes/functions/functions.php:520
 #, php-format
 msgctxt "MALE"
 msgid "%s × cousin"
-msgstr ""
+msgstr "%s מדרגה שוועסטערקינד"
 
 #: includes/functions/functions.php:590
 #, php-format
@@ -877,7 +877,7 @@ msgstr "א באַריכט פון משפּחה מיטגלידער און זייע
 #. I18N: Description of the “Deaths” module
 #: app/Module/DeathReportModule.php:32 modules_v3/death_report/report.xml:4
 msgid "A report of individuals who died in a given time or place."
-msgstr ""
+msgstr "א באַריכט פון מענטשן וואס געשטארבן אין אַ געוויס צייַט אָדער פּלאַץ."
 
 #. I18N: Description of the “Occupations” module
 #: app/Module/OccupationReportModule.php:32
@@ -900,7 +900,7 @@ msgstr "א באַריכט פון מענטשן וואס זענען געווען �
 #: app/Module/MarriageReportModule.php:32
 #: modules_v3/marriage_report/report.xml:4
 msgid "A report of individuals who were married in a given time or place."
-msgstr ""
+msgstr "א באַריכט פון מענטשן וואס זענען חתונה אין אַ געגעבן צייַט אָדער אָרט."
 
 #. I18N: Description of the “Changes” module
 #: app/Module/ChangeReportModule.php:32 modules_v3/change_report/report.xml:4
@@ -911,7 +911,7 @@ msgstr "א באַריכט פון פריש און פּענדינג ענדערונ
 #: app/Module/IndividualFamiliesReportModule.php:32
 #: modules_v3/individual_ext_report/report.xml:4
 msgid "A report of the families that are closely related to an individual."
-msgstr ""
+msgstr "א באַריכט פון די משפּחות וואָס זענען ענג פֿאַרבונדענע צו אַ יחיד."
 
 #. I18N: Description of the “Related individuals” module
 #: app/Module/RelatedIndividualsReportModule.php:32
@@ -929,6 +929,8 @@ msgstr ""
 #: modules_v3/missing_facts_report/report.xml:4
 msgid "A report of the information that is missing for an individual and their relatives."
 msgstr ""
+"א באַריכט פון די אינפֿאָרמאַציע אַז איז פעלנדיק פֿאַר אַ יחיד און זייער "
+"קרובים."
 
 #. I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death
 #: app/Module/BatchUpdate/BirthDeathMarriageReportModule.php:32
@@ -978,17 +980,17 @@ msgstr "א קוויטל ווייַזונג די פאקטן און געשעעני
 #. I18N: Description of the “Media” module
 #: app/Module/MediaTabModule.php:32
 msgid "A tab showing the media objects linked to an individual."
-msgstr ""
+msgstr "א קוויטל ווייזונג די בילדער פארבונדן צו אַ מענטש."
 
 #. I18N: Description of the “Notes” module
 #: app/Module/NotesTabModule.php:32
 msgid "A tab showing the notes attached to an individual."
-msgstr "א קוויטל ווייַזונג דער צעטלען פון אַ יחיד."
+msgstr "א קוויטל ווייזונג די בילדער פארבונדן צו אַ מענטש."
 
 #. I18N: Description of the “Sources” module
 #: app/Module/SourcesTabModule.php:32
 msgid "A tab showing the sources linked to an individual."
-msgstr ""
+msgstr "א קוויטל ווייזונג די מקורות פארבונדן צו אַ מענטש."
 
 #: admin_users.php:393
 msgid "A user will not be able to login until both the “email verified” and “approved by administrator” options are selected."
@@ -1006,11 +1008,11 @@ msgstr "פארמיטאג"
 
 #: app/I18N.php:427
 msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
-msgstr ""
+msgstr "ALPHABET_lower=אבגדהוזחטיכךלמםנןסעפףצץקרשת"
 
 #: app/I18N.php:425
 msgid "ALPHABET_upper=ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-msgstr ""
+msgstr "ALPHABET_upper=אבגדהוזחטיכךלמםנןסעפףצץקרשת"
 
 #: app/Gedcom/GedcomCodeTemp.php:76
 msgid "Aba, Nigeria"
@@ -1049,7 +1051,7 @@ msgstr "אבאן"
 #: admin_trees_config.php:1498 admin_trees_config.php:1500
 #: admin_trees_config.php:1504
 msgid "Abbreviate place names"
-msgstr ""
+msgstr "אָפּקירצן פּלאַץ נעמען"
 
 #. I18N: gedcom tag ABBR
 #: app/Gedcom/GedcomTag.php:119
@@ -1180,7 +1182,7 @@ msgstr "שטעלן אַ קינד צו דעם משפּחה"
 
 #: edit_interface.php:81
 msgid "Add a fact"
-msgstr ""
+msgstr "לייג אַ פאַקט"
 
 #: app/Module/RelativesTabModule.php:129
 msgid "Add a husband to this family"
@@ -1229,7 +1231,7 @@ msgstr "לייג אַ נייַ זשורנאַל פאַרשרייַב"
 #: app/Module/AlbumModule.php:65 app/Module/MediaTabModule.php:79
 #: includes/functions/functions_edit.php:1004 source.php:155
 msgid "Add a new media object"
-msgstr ""
+msgstr "לייג אַ נייַ בילד"
 
 #: app/Module/RelativesTabModule.php:300 edit_interface.php:675 family.php:108
 msgid "Add a new mother"
@@ -1422,7 +1424,7 @@ msgstr "אדלייד, אוסטרליה"
 
 #: admin_users.php:496 admin_users.php:545
 msgid "Administrator"
-msgstr ""
+msgstr "אַדמיניסטראַטאָר"
 
 #: setup.php:426 setup.php:428
 msgid "Administrator account"
@@ -1473,36 +1475,36 @@ msgstr "אנגענומען דורך ביידע עלטערן"
 #. I18N: gedcom tag _ADPF
 #: app/Gedcom/GedcomCodeAdop.php:58 app/Gedcom/GedcomTag.php:933
 msgid "Adopted by father"
-msgstr ""
+msgstr "אנגענומען דורך טאַטע"
 
 #. I18N: gedcom tag _ADPF
 #: app/Gedcom/GedcomCodeAdop.php:56 app/Gedcom/GedcomTag.php:929
 msgctxt "FEMALE"
 msgid "Adopted by father"
-msgstr ""
+msgstr "אנגענומען דורך טאַטע"
 
 #. I18N: gedcom tag _ADPF
 #: app/Gedcom/GedcomCodeAdop.php:54 app/Gedcom/GedcomTag.php:925
 msgctxt "MALE"
 msgid "Adopted by father"
-msgstr ""
+msgstr "אנגענומען דורך טאַטע"
 
 #. I18N: gedcom tag _ADPM
 #: app/Gedcom/GedcomCodeAdop.php:67 app/Gedcom/GedcomTag.php:948
 msgid "Adopted by mother"
-msgstr ""
+msgstr "אנגענומען דורך מוטער"
 
 #. I18N: gedcom tag _ADPM
 #: app/Gedcom/GedcomCodeAdop.php:65 app/Gedcom/GedcomTag.php:944
 msgctxt "FEMALE"
 msgid "Adopted by mother"
-msgstr ""
+msgstr "אנגענומען דורך מוטער"
 
 #. I18N: gedcom tag _ADPM
 #: app/Gedcom/GedcomCodeAdop.php:63 app/Gedcom/GedcomTag.php:940
 msgctxt "MALE"
 msgid "Adopted by mother"
-msgstr ""
+msgstr "אנגענומען דורך מוטער"
 
 #. I18N: gedcom tag ADOP
 #: app/Gedcom/GedcomTag.php:131
@@ -1631,7 +1633,7 @@ msgstr "יאָרן"
 
 #: statistics.php:281
 msgid "Age at birth of child"
-msgstr ""
+msgstr "יאָרן בייַ געבורט פון קינד"
 
 #: admin_trees_config.php:433
 msgid "Age at which to assume an individual is dead"
@@ -1639,19 +1641,19 @@ msgstr "יאָרן אין וועלכע צו יבערנעמען אַ מענטש �
 
 #: statistics.php:336
 msgid "Age between husband and wife"
-msgstr "עלטער צווישן מאַן און פרוי"
+msgstr "יאָרן צווישן מאַן און פרוי"
 
 #: statistics.php:328
 msgid "Age between siblings"
-msgstr ""
+msgstr "יאָרן צווישן ברידער / שוועסטער"
 
 #: statistics.php:337
 msgid "Age between wife and husband"
-msgstr "עלטער צווישן פרוי און מאַן"
+msgstr "יאָרן צווישן פרוי און מאַן"
 
 #: statistics.php:325
 msgid "Age difference"
-msgstr ""
+msgstr "יאָרן צווישן"
 
 #: statistics.php:527 statisticsplot.php:1273
 msgid "Age in year of first marriage"
@@ -1844,7 +1846,7 @@ msgstr ""
 #. I18N: Description of the “Login” module
 #: app/Module/LoginBlockModule.php:30
 msgid "An alternative way to login and logout."
-msgstr ""
+msgstr "אַ בייַטנ לויט דער ריי צוארײַנלאָגירן און אַרויסלאָגירן."
 
 #. I18N: Description of the “Theme change” module
 #: app/Module/ThemeSelectModule.php:30
@@ -2013,7 +2015,7 @@ msgstr "אַפּריל"
 #. I18N: The name of a colour-scheme
 #: app/Theme/ColorsTheme.php:60
 msgid "Aqua Marine"
-msgstr ""
+msgstr "בלוי גרין"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:417
 msgid "Are you sure you want to delete this FAQ entry?"
@@ -5221,7 +5223,7 @@ msgstr ""
 
 #: statistics.php:127
 msgid "Earliest birth"
-msgstr ""
+msgstr "ערשטער געבורט"
 
 #: app/Module/FamilyTreeStatisticsModule.php:123
 #: app/Module/FamilyTreeStatisticsModule.php:295
@@ -5231,7 +5233,7 @@ msgstr "ערשטער געבורט יאָר"
 
 #: statistics.php:128
 msgid "Earliest death"
-msgstr ""
+msgstr "ערשטער פטירה"
 
 #: app/Module/FamilyTreeStatisticsModule.php:137
 #: app/Module/FamilyTreeStatisticsModule.php:323
@@ -5245,7 +5247,7 @@ msgstr "פרידיקע גט"
 
 #: statistics.php:229
 msgid "Earliest marriage"
-msgstr ""
+msgstr "ערשטער חתונה"
 
 #: app/Stats.php:6120
 msgid "Ecuador"
@@ -5282,7 +5284,7 @@ msgstr "ויסרעדאַגירן"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:103
 msgid "Edit FAQ item"
-msgstr ""
+msgstr "רעדאַגירן FAQ פֿראַגע"
 
 #: admin_site_access.php:224
 msgid "Edit a website access rule"
@@ -5302,7 +5304,7 @@ msgstr "רעדאַגירן מידיאַ"
 
 #: addmedia.php:235 addmedia.php:396 app/Controller/MediaController.php:47
 msgid "Edit media object"
-msgstr ""
+msgstr "רעדאַגירן בילד"
 
 #: app/Controller/IndividualController.php:161 edit_interface.php:1669
 #: includes/functions/functions_edit.php:652
@@ -5350,7 +5352,7 @@ msgstr "רעדאַגירן דעם יחיד און פאַרבייַטן זייע�
 
 #: admin_users.php:268
 msgid "Edit user"
-msgstr ""
+msgstr "רעדאַגירן באַניצער"
 
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:38 admin_users.php:525
@@ -5624,7 +5626,7 @@ msgstr ""
 #: search_advanced.php:153 search_advanced.php:215 search_advanced.php:230
 #: search_advanced.php:252 search_advanced.php:267
 msgid "Exact"
-msgstr ""
+msgstr "פּינקטלעכער"
 
 #: search_advanced.php:102 search_advanced.php:164
 msgid "Exact date"
@@ -5651,7 +5653,7 @@ msgstr ""
 #. I18N: placeholder text for registration-comments field
 #: login.php:482
 msgid "Explain why you are requesting an account."
-msgstr ""
+msgstr "פאַרענטפערן פֿאַר וואָס איר זענען ריקוועסטינג אַ חשבון."
 
 #: admin_site_change.php:346 admin_site_logs.php:310
 #: admin_trees_manage.php:559
@@ -5660,16 +5662,16 @@ msgstr "אַרויספיר"
 
 #: admin_trees_download.php:34
 msgid "Export a GEDCOM file"
-msgstr ""
+msgstr "אַרויספיר אַ GEDCOM טעקע"
 
 #. I18N: The system is about to [...]
 #: admin_site_upgrade.php:279
 msgid "Export all the family trees to GEDCOM files…"
-msgstr ""
+msgstr "אַרויספיר אַלע די משפּחה ביימער צו GEDCOM טעקעס…"
 
 #: admin_trees_download.php:135
 msgid "Export options"
-msgstr ""
+msgstr "אַרויספיר אָפּציעס"
 
 #. I18N: A configuration setting.  ... [who were] born in the last XX years or died in the last YY years
 #: admin_trees_config.php:473
@@ -5679,7 +5681,7 @@ msgstr "פאַרברייטערן פּריוואַטקייט צו טויטע מע
 #. I18N: “External files” are stored on other computers
 #: admin_media.php:631
 msgid "External files"
-msgstr ""
+msgstr "דרויסנדיקע טעקעס"
 
 #: admin_media.php:670
 msgid "External media files have a URL instead of a filename."
@@ -5698,7 +5700,7 @@ msgstr "אויג קאָליר"
 #. I18N: Name of a theme.
 #: app/Theme/FabTheme.php:119
 msgid "F.A.B."
-msgstr ""
+msgstr "פ.א.ב."
 
 #. I18N: Name of a module.  Abbreviation for “Frequently Asked Questions”
 #: app/Module/FrequentlyAskedQuestionsModule.php:25
@@ -5708,7 +5710,7 @@ msgstr "FAQ"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:152
 msgid "FAQ position"
-msgstr ""
+msgstr "FAQ פּאָזיציע"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:153
 msgid "FAQ visibility"
@@ -5725,64 +5727,64 @@ msgstr "פאַקט"
 
 #: app/Gedcom/GedcomTag.php:1470
 msgid "Fact 1"
-msgstr ""
+msgstr "פאַקט 1"
 
 #: app/Gedcom/GedcomTag.php:1488
 msgid "Fact 10"
-msgstr ""
+msgstr "פאַקט 10"
 
 #: app/Gedcom/GedcomTag.php:1490
 msgid "Fact 11"
-msgstr ""
+msgstr "פאַקט 11"
 
 #: app/Gedcom/GedcomTag.php:1492
 msgid "Fact 12"
-msgstr ""
+msgstr "פאַקט 12"
 
 #: app/Gedcom/GedcomTag.php:1494
 msgid "Fact 13"
-msgstr ""
+msgstr "פאַקט 13"
 
 #: app/Gedcom/GedcomTag.php:1472
 msgid "Fact 2"
-msgstr ""
+msgstr "פאַקט 2"
 
 #: app/Gedcom/GedcomTag.php:1474
 msgid "Fact 3"
-msgstr ""
+msgstr "פאַקט 3"
 
 #: app/Gedcom/GedcomTag.php:1476
 msgid "Fact 4"
-msgstr ""
+msgstr "פאַקט 4"
 
 #: app/Gedcom/GedcomTag.php:1478
 msgid "Fact 5"
-msgstr ""
+msgstr "פאַקט 5"
 
 #: app/Gedcom/GedcomTag.php:1480
 msgid "Fact 6"
-msgstr ""
+msgstr "פאַקט 6"
 
 #: app/Gedcom/GedcomTag.php:1482
 msgid "Fact 7"
-msgstr ""
+msgstr "פאַקט 7"
 
 #: app/Gedcom/GedcomTag.php:1484
 msgid "Fact 8"
-msgstr ""
+msgstr "פאַקט 8"
 
 #: app/Gedcom/GedcomTag.php:1486
 msgid "Fact 9"
-msgstr ""
+msgstr "פאַקט 9"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1630
 msgid "Fact icons"
-msgstr ""
+msgstr "פאַקט נוליקע"
 
 #: admin_trees_config.php:557 includes/functions/functions_print.php:659
 msgid "Fact or event"
-msgstr ""
+msgstr "פאַקט אָדער געשעעניש"
 
 #. I18N: Name of a module/tab on the individual page.
 #: app/Module/IndividualFactsTabModule.php:25
@@ -5794,11 +5796,11 @@ msgstr "פאקטן און געשעענישן"
 
 #: admin_trees_config.php:1853
 msgid "Facts for family records"
-msgstr ""
+msgstr "פאקטן פֿאַר משפּחה רעקאָרדס"
 
 #: admin_trees_config.php:1735
 msgid "Facts for individual records"
-msgstr ""
+msgstr "פאקטן פֿאַר אַ יחיד רעקאָרדס"
 
 #: admin_trees_config.php:1916
 msgid "Facts for new families"
@@ -5806,7 +5808,7 @@ msgstr "פאקטן פֿאַר נייַ משפחות"
 
 #: admin_trees_config.php:1798
 msgid "Facts for new individuals"
-msgstr ""
+msgstr "פאקטן פֿאַר נייַ מענטשן"
 
 #: admin_trees_config.php:2060
 msgid "Facts for repository records"
@@ -5864,7 +5866,7 @@ msgstr "מישפּאָכע"
 
 #: admin_trees_config.php:799
 msgid "Family ID prefix"
-msgstr ""
+msgstr "משפּחה שייַן פּרעפֿיקס"
 
 #. I18N: gedcom tag FAMC
 #: app/Gedcom/GedcomTag.php:445
@@ -6129,7 +6131,7 @@ msgstr "פידזשי"
 
 #: app/Module/GoogleMapsModule.php:4291
 msgid "File containing places (CSV)"
-msgstr ""
+msgstr "טעקע מיט ערטער (CSV)"
 
 #: admin_media.php:484 app/Gedcom/GedcomTag.php:1784
 msgid "File size"
@@ -6137,7 +6139,7 @@ msgstr "טעקע גרייס"
 
 #: includes/functions/functions.php:58
 msgid "File successfully uploaded"
-msgstr ""
+msgstr "טעקע צופֿעליקערט מיט הצלחה"
 
 #. I18N: gedcom tag FILE
 #: admin_media.php:475 app/Gedcom/GedcomTag.php:485
@@ -6208,7 +6210,7 @@ msgstr ""
 
 #: relationship.php:96
 msgid "Find all possible relationships"
-msgstr ""
+msgstr "געפֿינען אַלע מעגלעך באציונגען"
 
 #: app/Module/CensusAssistantModule.php:63 find.php:55
 #: includes/functions/functions_print.php:730
@@ -6219,7 +6221,7 @@ msgstr "געפינען אַ פערזאן"
 
 #: relationship.php:91
 msgid "Find the closest relationships"
-msgstr ""
+msgstr "געפֿינען די נאָענטעגעפֿינען די נאָענטער באציונגען"
 
 #: app/Stats.php:6129
 msgid "Finland"
@@ -6343,7 +6345,7 @@ msgstr "פֿאָרמאַטירונג"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1529
 msgid "Format text and notes"
-msgstr ""
+msgstr "פֿאָרמאַטירונג טעקסט און הערות"
 
 #: app/Gedcom/GedcomCodePedi.php:65
 msgctxt "Female pedigree"
@@ -6462,7 +6464,7 @@ msgstr "פרימער"
 #. I18N: label for the start of a date range (from x to y)
 #: admin_site_change.php:277 admin_site_logs.php:248
 msgid "From"
-msgstr ""
+msgstr "פון"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:78
@@ -6500,7 +6502,7 @@ msgstr "לעווייַע"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1710
 msgid "GEDCOM errors"
-msgstr ""
+msgstr "GEDCOM טעויות"
 
 #. I18N: gedcom tag GEDC
 #. I18N: gedcom tag _GEDF
@@ -6559,7 +6561,7 @@ msgstr "גענעראַטע סיטעמאַפּ טעקעס פֿאַר זוכן ע�
 #: app/Report/ReportBase.php:108
 #, php-format
 msgid "Generated by %s"
-msgstr ""
+msgstr "געמאכט דורך %s"
 
 #: app/Controller/BranchesController.php:283
 msgid "Generation"
@@ -6653,7 +6655,7 @@ msgstr ""
 #. I18N: Help text for the “Allow users to select their own theme” site configuration setting
 #: admin_site_config.php:248
 msgid "Gives users the option of selecting their own theme."
-msgstr ""
+msgstr "גיט ניצערס די אָפּציע צו סעלעקטירן זייער אייגן טעמע."
 
 #. I18N: gedcom tag _UID
 #: app/Gedcom/GedcomTag.php:1748
@@ -6717,11 +6719,11 @@ msgstr "זיידע - באָבע"
 
 #: statistics.php:161
 msgid "Greatest age at death"
-msgstr ""
+msgstr "גרעסטע יאָרן בייַ טויט"
 
 #: statistics.php:329
 msgid "Greatest age between siblings"
-msgstr ""
+msgstr "גרעסטע יאָרן צווישן ברידער / שוועסטער"
 
 #: app/Stats.php:6147
 msgid "Greece"
@@ -6896,11 +6898,11 @@ msgstr "שאָלעם אַלייכעם %s…"
 #: login.php:384
 #, php-format
 msgid "Hello %s…<br>Thank you for your registration."
-msgstr ""
+msgstr "העלא %s ... <br>דאנק איר פֿאַר דיין רעגיסטראַציע."
 
 #: login.php:315 login.php:554
 msgid "Hello administrator…"
-msgstr ""
+msgstr "העלא אַדמיניסטראַטאָר …"
 
 #: help_text.php:407
 msgid "Help"
@@ -7065,12 +7067,12 @@ msgstr "יאָרן פון מאַן"
 
 #: app/Module/GoogleMapsModule.php:276 app/Module/GoogleMapsModule.php:317
 msgid "Hybrid"
-msgstr ""
+msgstr "פאַרמישעכץ"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:774
 msgid "ID settings"
-msgstr ""
+msgstr "שייַן באַשטעטיקן"
 
 #: admin_site_logs.php:275 admin_site_logs.php:330
 msgid "IP address"
@@ -7248,15 +7250,15 @@ msgstr "אַרייַנפיר"
 
 #: admin_trees_manage.php:162
 msgid "Import a GEDCOM file"
-msgstr ""
+msgstr "אַרייַנפיר אַ GEDCOM טעקע"
 
 #: app/Module/GoogleMapsModule.php:4627
 msgid "Import all places from a family tree"
-msgstr ""
+msgstr "אַרייַנפיר אַלע ערטער פון אַ פאמיליע בוים"
 
 #: admin_trees_manage.php:254
 msgid "Import options"
-msgstr ""
+msgstr "אַרייַנפיר אָפּציעס"
 
 #: admin_trees_merge.php:84 admin_trees_renumber.php:264
 msgid "In a family tree, each record has an internal reference number (called an “XREF”) such as “F123” or “R14”."
@@ -7303,7 +7305,7 @@ msgstr "אַרייַננעמען גאָר ריכטן ערטער: "
 #: famlist.php:172 indilist.php:172
 #, php-format
 msgid "Include individuals with “%s” as a married name"
-msgstr ""
+msgstr "אַרייַננעמען מענטשן מיט “%s” ווי אַ חתונה נאָמען"
 
 #: app/Module/ClippingsCartModule.php:339
 #: app/Module/ClippingsCartModule.php:656 help_text.php:384
@@ -7313,7 +7315,7 @@ msgstr ""
 #. I18N: Label for check-box
 #: admin_media.php:660 medialist.php:106
 msgid "Include subfolders"
-msgstr ""
+msgstr "אַרייַננעמען אונטער טעקען"
 
 #: lifespan.php:150
 msgid "Include the individual’s immediate family?"
@@ -7353,11 +7355,11 @@ msgstr "מענטש 2"
 
 #: admin_trees_config.php:782
 msgid "Individual ID prefix"
-msgstr ""
+msgstr "מענטש שייַן פּרעפֿיקס"
 
 #: statistics.php:533
 msgid "Individual distribution"
-msgstr ""
+msgstr "פּערזענלעך פאַרשפּרייטונג"
 
 #: app/Stats.php:1527 statistics.php:584
 msgid "Individual distribution chart"
@@ -7370,7 +7372,7 @@ msgstr "רשימה פון מענטשן"
 
 #: admin_trees_config.php:1387 admin_trees_config.php:1625
 msgid "Individual pages"
-msgstr ""
+msgstr "פּערזענלעך בלעטער"
 
 #: admin_users.php:566 edituser.php:171
 msgid "Individual record"
@@ -7403,7 +7405,7 @@ msgstr "מענטשן"
 
 #: app/Stats.php:387 statistics.php:391
 msgid "Individuals with sources"
-msgstr ""
+msgstr "מענטשן מיט מקורות"
 
 #: famlist.php:249 indilist.php:249
 #, php-format
@@ -7417,7 +7419,7 @@ msgstr "אינדאנעזיע"
 #. I18N: gedcom tag INFL
 #: app/Gedcom/GedcomTag.php:533 includes/functions/functions_date.php:30
 msgid "Infant"
-msgstr ""
+msgstr "וויקלקינד"
 
 #: app/Gedcom/GedcomCodeRela.php:168
 msgid "Informant"
@@ -7467,19 +7469,19 @@ msgstr ""
 #. I18N: gedcom tag _INTE
 #: app/Gedcom/GedcomTag.php:1544
 msgid "Interred"
-msgstr ""
+msgstr "קבור"
 
 #. I18N: gedcom tag _INTE
 #: app/Gedcom/GedcomTag.php:1540
 msgctxt "FEMALE"
 msgid "Interred"
-msgstr ""
+msgstr "קבור"
 
 #. I18N: gedcom tag _INTE
 #: app/Gedcom/GedcomTag.php:1536
 msgctxt "MALE"
 msgid "Interred"
-msgstr ""
+msgstr "קבור"
 
 #: import.php:113
 msgid "Invalid GEDCOM file - no header record found."
@@ -7516,6 +7518,8 @@ msgstr "ישראל"
 #: admin_site_upgrade.php:75 admin_site_upgrade.php:79
 msgid "It can take several minutes to download and install the upgrade.  Be patient."
 msgstr ""
+"עס קענען נעמען עטלעכע מינוט צו דאַונלאָודירן און ינסטאַלירן די אַפּגרייד. "
+"זיין פּאַציענט."
 
 #: app/Stats.php:6169
 msgid "Italy"
@@ -7723,12 +7727,12 @@ msgstr "האַלטן"
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:125
 msgid "Keep link in list"
-msgstr ""
+msgstr "האַלטן לינק אין רשימה"
 
 #. I18N: A configuration setting
 #: admin_trees_manage.php:259
 msgid "Keep media objects"
-msgstr ""
+msgstr "האַלטן בילדער"
 
 #: app/Stats.php:6174
 msgid "Kenya"
@@ -7871,7 +7875,7 @@ msgstr "שפּראַך"
 #. I18N: Menu entry
 #: admin_site_config.php:143 app/Theme/AdministrationTheme.php:71
 msgid "Languages"
-msgstr ""
+msgstr "שפּראַכן"
 
 #: app/Stats.php:6181
 msgid "Laos"
@@ -7879,7 +7883,7 @@ msgstr "לאַאָס"
 
 #: setup.php:181
 msgid "Large systems (50,000 individuals): 64–128 MB, 40–80 seconds"
-msgstr ""
+msgstr "גרויס סיסטעמען (50,000 מענטשן): 64-128 מעגאבייטן, 40-80 סעקונדעס"
 
 #: app/Stats.php:4381 statistics.php:316
 msgid "Largest families"
@@ -7901,7 +7905,7 @@ msgstr "לעצטע ענדערונג"
 
 #: app/Module/ReviewChangesModule.php:96
 msgid "Last email reminder was sent "
-msgstr ""
+msgstr "לעצטע בליצפּאָסט דערמאָנונג איז געשיקט "
 
 #: statistics.php:368
 msgid "Last event"
@@ -7923,7 +7927,7 @@ msgstr "לעצטע געבורט יאָר"
 
 #: statistics.php:136
 msgid "Latest death"
-msgstr ""
+msgstr "לעצט פטירה"
 
 #: app/Module/FamilyTreeStatisticsModule.php:144
 #: app/Module/FamilyTreeStatisticsModule.php:337
@@ -7937,7 +7941,7 @@ msgstr "לעצטע גט"
 
 #: statistics.php:237
 msgid "Latest marriage"
-msgstr ""
+msgstr "לעצט חתונה"
 
 #. I18N: gedcom tag LATI
 #: app/Gedcom/GedcomTag.php:541 app/Module/GoogleMapsModule.php:1670
@@ -7999,7 +8003,7 @@ msgstr "ליכטנשטיין"
 
 #: statistics.php:144
 msgid "Lifespan"
-msgstr ""
+msgstr "לעבן-שפּאַן"
 
 #: app/Controller/LifespanController.php:70 app/Theme/BaseTheme.php:1168
 #: lifespan.php:135
@@ -8017,7 +8021,7 @@ msgstr "באַגרענעצן"
 #. I18N: Limit display by [age/number]
 #: app/Module/FamilyTreeNewsModule.php:154
 msgid "Limit display by"
-msgstr ""
+msgstr "באַגרענעצן אַרויסווייַזן דורך"
 
 #: app/Module/RelativesTabModule.php:344 edit_interface.php:990
 #: edit_interface.php:1049
@@ -8027,21 +8031,21 @@ msgstr "פֿאַרבינדונג דעם פערזאן צו אַן שאַפֿן מ
 #: admin_media.php:525 app/Controller/MediaController.php:61
 #: app/Controller/MediaController.php:146 app/Module/AlbumModule.php:136
 msgid "Link this media object to a family"
-msgstr ""
+msgstr "פאַרבינדן דעם בילד צו אַ פאמיליע"
 
 #: admin_media.php:526 app/Controller/MediaController.php:65
 #: app/Controller/MediaController.php:147 app/Module/AlbumModule.php:140
 msgid "Link this media object to a source"
-msgstr ""
+msgstr "פאַרבינדן דעם בילד צו אַ מקור"
 
 #: admin_media.php:524 app/Controller/MediaController.php:57
 #: app/Controller/MediaController.php:145 app/Module/AlbumModule.php:132
 msgid "Link this media object to an individual"
-msgstr ""
+msgstr "פאַרבינדן דעם בילד צו אַ מענטש"
 
 #: admin_users.php:584
 msgid "Link this user to an individual in the family tree."
-msgstr ""
+msgstr "פאַרבינדן דעם באַניצער צו אַ יחיד אין די פאמיליע בוים."
 
 #: app/Controller/FamilyController.php:199 app/Module/AlbumModule.php:69
 #: app/Module/AlbumModule.php:70 app/Module/CensusAssistantModule.php:161
@@ -8049,7 +8053,7 @@ msgstr ""
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:72
 #: source.php:158
 msgid "Link to an existing media object"
-msgstr ""
+msgstr "פאַרבינדן צו אַ שאַפֿן בילד"
 
 #. I18N: gedcom tag _DBID
 #: app/Gedcom/GedcomTag.php:1349
@@ -8092,12 +8096,12 @@ msgstr ""
 #. I18N: “Local files” are stored on this computer
 #: admin_media.php:626
 msgid "Local files"
-msgstr ""
+msgstr "היגע טעקעס"
 
 #. I18N: gedcom tag _LOC
 #: app/Gedcom/GedcomTag.php:1549
 msgid "Location"
-msgstr ""
+msgstr "אָרט"
 
 #: app/Module/GoogleMapsModule.php:4503
 msgid "Location not removed: this location contains sub-locations"
@@ -8134,22 +8138,22 @@ msgstr "ארײַנלאָגירן"
 
 #: setup.php:434
 msgid "Login ID"
-msgstr ""
+msgstr "ארײַנלאָגירן שייַן"
 
 #. I18N: A site configuration setting
 #: admin_site_config.php:430
 msgid "Login URL"
-msgstr ""
+msgstr "ארײַנלאָגירן URL"
 
 #. I18N: Menu entry
 #: admin_site_config.php:137 app/Theme/AdministrationTheme.php:70
 msgid "Login and registration"
-msgstr ""
+msgstr "ארײַנלאָגירן און רעגיסטראַציע"
 
 #: app/Module/LoginBlockModule.php:49 app/Module/LoginBlockModule.php:52
 #: app/Theme/BaseTheme.php:1508
 msgid "Logout"
-msgstr "גײ אַרױס"
+msgstr "אַרויסלאָגירן"
 
 #: app/Gedcom/GedcomCodeTemp.php:192
 msgid "London, England"
@@ -18377,7 +18381,7 @@ msgstr "רשימה"
 #: app/Controller/LifespanController.php:601
 msgctxt "Abbreviation for marriage"
 msgid "m."
-msgstr ""
+msgstr "ח."
 
 #. I18N: A woman’s name, before she marries (in cultures where women take their new husband’s name on marriage)
 #: app/Gedcom/GedcomCodeName.php:118
@@ -18386,7 +18390,7 @@ msgstr "מיידל נאָמען"
 
 #: admin_trees_config.php:499
 msgid "managers"
-msgstr ""
+msgstr "פאַרוואַלטערס"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:62
@@ -18451,7 +18455,7 @@ msgstr[1] "מאַקסימום %s טעג"
 #: admin_trees_config.php:458 admin_trees_config.php:498
 #: admin_trees_config.php:518
 msgid "members"
-msgstr ""
+msgstr "מיטגלידער"
 
 #. I18N: time format “%a” - exactly 00:00:00
 #: includes/functions/functions_date.php:77

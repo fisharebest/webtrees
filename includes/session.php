@@ -63,6 +63,7 @@ if (getenv('USE_CDN')) {
 	define('WT_JQUERY_COOKIE_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js');
 	define('WT_JQUERY_DATATABLES_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/datatables/1.10.5/js/jquery.dataTables.min.js');
 	define('WT_JQUERY_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js');
+	define('WT_JQUERY2_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js');
 	define('WT_MODERNIZR_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js');
 	define('WT_MOMENT_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js');
 	define('WT_RESPOND_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js');
@@ -80,6 +81,7 @@ if (getenv('USE_CDN')) {
 	define('WT_JQUERY_COOKIE_JS_URL', WT_STATIC_URL . 'packages/jquery-cookie-1.4.1/jquery.cookie.js');
 	define('WT_JQUERY_DATATABLES_JS_URL', WT_STATIC_URL . 'packages/datatables-1.10.5/js/jquery.dataTables.min.js');
 	define('WT_JQUERY_JS_URL', WT_STATIC_URL . 'packages/jquery-1.11.2/jquery.min.js');
+	define('WT_JQUERY2_JS_URL', WT_STATIC_URL . 'packages/jquery-2.1.3/jquery.min.js');
 	define('WT_MODERNIZR_JS_URL', WT_STATIC_URL . 'packages/modernizr-2.8.3/modernizr.min.js');
 	define('WT_MOMENT_JS_URL', WT_STATIC_URL . 'packages/moment-2.9.0/moment-with-locales.min.js');
 	define('WT_RESPOND_JS_URL', WT_STATIC_URL . 'packages/respond-1.4.2/respond.min.js');
@@ -113,7 +115,6 @@ define('WT_REGEX_TAG', '[_A-Z][_A-Z0-9]*');
 define('WT_REGEX_INTEGER', '-?\d+');
 define('WT_REGEX_BYTES', '[0-9]+[bBkKmMgG]?');
 define('WT_REGEX_IPV4', '\d{1,3}(\.\d{1,3}){3}');
-define('WT_REGEX_USERNAME', '[^<>"%{};]+');
 define('WT_REGEX_PASSWORD', '.{' . WT_MINIMUM_PASSWORD_LENGTH . ',}');
 
 // UTF8 representation of various characters
@@ -400,7 +401,7 @@ session_set_save_handler(
 	}
 );
 
-session_start(array(
+Session::start(array(
 	'gc_maxlifetime' => Site::getPreference('SESSION_TIME'),
 	'cookie_path' => parse_url(WT_BASE_URL, PHP_URL_PATH),
 ));

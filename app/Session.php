@@ -28,7 +28,7 @@ class Session {
 	 */
 	public static function start(array $config = array()) {
 		$default_config = array(
-			'session.use_cookies' => 1,
+			'use_cookies' => 1,
 			'name' => 'WT_SESSION',
 			'cookie_lifetime' => 0,
 			'gc_maxlifetime' => 7200,
@@ -39,7 +39,7 @@ class Session {
 		);
 		session_register_shutdown();
 		foreach ($config + $default_config as $key => $value) {
-			ini_set($key, $value);
+			ini_set('session.' . $key, $value);
 		}
 		session_start();
 	}
@@ -91,11 +91,21 @@ class Session {
 	}
 
 	/**
+	 * Remove all stored data from the session.
+	 */
+	public static function clear() {
+		$_SESSION = array();
+	}
+
+	/**
 	 * After any change in authentication level, we should use a new session ID.
 	 *
 	 * @param bool $destroy
 	 */
 	public static function regenerate($destroy = false) {
+		if ($destroy) {
+			self::clear();
+		}
 		session_regenerate_id($destroy);
 	}
 

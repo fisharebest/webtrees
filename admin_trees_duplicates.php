@@ -164,7 +164,7 @@ $all_duplicates = array(
 		<?php endforeach; ?>
 		<?php if (count($duplicates) === 2): ?>
 		—
-		<a href="admin_site_merge.php?ged=<?php echo $WT_TREE->getNameHtml(); ?>&amp;gid1=<?php echo $duplicates[0]->getXref(); ?>&amp;gid2=<?php echo $duplicates[1]->getXref(); ?>">
+		<a href="admin_site_merge.php?ged=<?php echo $WT_TREE->getNameHtml(); ?>&amp;gid1=<?php echo $duplicates[0]->getXref(); ?>&amp;gid2=<?php echo $duplicates[1]->getXref(); ?>&amp;url=admin_trees_duplicates.php">
 			<?php echo I18N::translate('Merge'); ?>
 		</a>
 		<?php endif; ?>

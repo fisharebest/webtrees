@@ -33,6 +33,9 @@ class Database {
 	/** @var array Keep a log of all the SQL statements that we execute */
 	private static $log;
 
+	/** @var Statement[] Cache of prepared statements */
+	private static $prepared = array();
+
 	/**
 	 * Prevent instantiation via new Database
 	 */
@@ -261,7 +264,12 @@ class Database {
 		}
 		$sql = str_replace('##', WT_TBLPREFIX, $sql);
 
-		return new Statement(self::$pdo->prepare($sql));
+		$hash = md5($sql);
+		if (!array_key_exists($hash, self::$prepared)) {
+			self::$prepared[$hash] = new Statement(self::$pdo->prepare($sql));
+		}
+
+		return self::$prepared[$hash];
 	}
 
 	/**

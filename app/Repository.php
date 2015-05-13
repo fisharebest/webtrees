@@ -45,14 +45,13 @@ class Repository extends GedcomRecord {
 	}
 
 	/** {@inheritdoc} */
-	protected static function fetchGedcomRecord($xref, $gedcom_id) {
-		static $statement = null;
-
-		if ($statement === null) {
-			$statement = Database::prepare("SELECT o_gedcom FROM `##other` WHERE o_id=? AND o_file=?");
-		}
-
-		return $statement->execute(array($xref, $gedcom_id))->fetchOne();
+	protected static function fetchGedcomRecord($xref, $tree_id) {
+		return Database::prepare(
+			"SELECT o_gedcom FROM `##other` WHERE o_id = :xref AND o_file = :tree_id AND o_type = 'REPO'"
+		)->execute(array(
+			'xref'    => $xref,
+			'tree_id' => $tree_id,
+		))->fetchOne();
 	}
 
 	/** {@inheritdoc} */
