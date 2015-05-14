@@ -2003,6 +2003,7 @@ abstract class BaseTheme {
 		$stylesheets = array(
 			WT_BOOTSTRAP_CSS_URL,
 			WT_FONT_AWESOME_CSS_URL,
+			WT_FONT_AWESOME_RTL_CSS_URL,
 		);
 
 		if (I18N::direction() === 'rtl') {
