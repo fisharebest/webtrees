@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-05-14 08:44+0100\n"
-"PO-Revision-Date: 2015-05-02 10:04+0100\n"
+"PO-Revision-Date: 2015-05-14 09:04+0100\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
-"Language-Team: Lithuanian <http://translate.webtrees.net/projects/webtrees/webtrees/lt/>\n"
+"Language-Team: Lithuanian "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/lt/>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"(n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 2.3-dev\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -15894,7 +15896,7 @@ msgstr "dar žinomas kaip"
 #. I18N: option in list box “always use this image”
 #: includes/functions/functions_edit.php:589
 msgid "always"
-msgstr ""
+msgstr "visada"
 
 #: app/Controller/AncestryController.php:87 app/Stats.php:4072
 #: app/Stats.php:4097 app/Stats.php:4108 app/Stats.php:4118 app/Stats.php:5376
@@ -18278,7 +18280,7 @@ msgstr "pusmetis po vedybų"
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: includes/functions/functions_edit.php:694
 msgid "hh:mm or hh:mm:ss"
-msgstr ""
+msgstr "hh:mm arba hh:mm:ss"
 
 #: admin_trees_config.php:40 app/Module/GoogleMapsModule.php:323
 msgid "hide"
@@ -18559,7 +18561,7 @@ msgstr "sūnėnas/dukterėčia"
 #. I18N: option in list box “never use this image”
 #: includes/functions/functions_edit.php:594
 msgid "never"
-msgstr ""
+msgstr "niekada"
 
 #. I18N: button label, next page
 #: app/I18N.php:225 app/Module/BatchUpdateModule.php:204
