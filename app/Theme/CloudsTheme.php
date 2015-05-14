@@ -90,7 +90,7 @@ class CloudsTheme extends BaseTheme {
 	}
 
 	/** {@inheritdoc} */
-	protected function primaryMenuContainer(array $menus) {
+	protected function primaryMenuContent(array $menus) {
 		$html = '';
 
 		foreach ($menus as $menu) {
@@ -105,7 +105,7 @@ class CloudsTheme extends BaseTheme {
 			$html .= $menu->getMenuAsList();
 		}
 
-		return '<ul class="primary-menu">' . $html . '</ul>';
+		return $html;
 	}
 
 	/** {@inheritdoc} */

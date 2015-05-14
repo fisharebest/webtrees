@@ -1932,12 +1932,18 @@ abstract class BaseTheme {
 	 * @return string
 	 */
 	protected function primaryMenuContainer(array $menus) {
-		$html = '';
-		foreach ($menus as $menu) {
-			$html .= $menu->getMenuAsList();
-		}
+		return '<nav><ul class="primary-menu">' . $this->primaryMenuContent($menus) . '</ul></nav>';
+	}
 
-		return '<nav><ul class="primary-menu">' . $html . '</ul></nav>';
+	/**
+	 * Create the primary menu.
+	 *
+	 * @param Menu[] $menus
+	 *
+	 * @return string
+	 */
+	protected function primaryMenuContent(array $menus) {
+		return implode('', array_map(function($menu) { return $menu->getMenuAsList(); }, $menus));
 	}
 
 	/**
@@ -1965,12 +1971,18 @@ abstract class BaseTheme {
 	 * @return string
 	 */
 	protected function secondaryMenuContainer(array $menus) {
-		$html = '';
-		foreach ($menus as $menu) {
-			$html .= $menu->getMenuAsList();
-		}
+		return '<ul class="nav nav-pills secondary-menu">' . $this->secondaryMenuContent($menus) . '</ul>';
+	}
 
-		return '<ul class="nav nav-pills secondary-menu">' . $html . '</ul>';
+	/**
+	 * Format the secondary menu.
+	 *
+	 * @param Menu[] $menus
+	 *
+	 * @return string
+	 */
+	protected function secondaryMenuContent(array $menus) {
+		return implode('', array_map(function($menu) { return $menu->getMenuAsList(); }, $menus));
 	}
 
 	/**

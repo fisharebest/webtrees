@@ -203,12 +203,12 @@ class AdministrationTheme extends BaseTheme {
 
 	/** {@inheritdoc} */
 	protected function secondaryMenuContainer(array $menus) {
-		$html = '';
-		foreach ($menus as $menu) {
-			$html .= $menu->bootstrap();
-		}
+		return '<div class="clearfix"><ul class="nav nav-pills small pull-right flip" role="menu">' . $this->secondaryMenuContent($menus) . '</ul></div>';
+	}
 
-		return '<div class="clearfix"><ul class="nav nav-pills small pull-right flip" role="menu">' . $html . '</ul></div>';
+	/** {@inheritdoc} */
+	protected function secondaryMenuContent(array $menus) {
+		return implode('', array_map(function($menu) { return $menu->bootstrap(); }, $menus));
 	}
 
 	/** {@inheritdoc} */

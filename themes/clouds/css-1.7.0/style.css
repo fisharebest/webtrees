@@ -216,6 +216,15 @@ header form {
 	font-size: 12px;
 }
 
+/* Some styles from bootstrap */
+.text-muted {
+	color: #777;
+}
+
+.small {
+	font-size: 12px;
+}
+
 #mycart a img {
 	height: 15px;
 }
@@ -2946,10 +2955,6 @@ dd .deletelink {
 
 #edit_interface-page input[type="text"][id$="DATE"] {
 	width: 160px;
-}
-
-#edit_interface-page input[type="text"][id^="TIME"] {
-	width: 100px;
 }
 
 #edit_interface-page input[type="text"][id*="OBJE_FILE"] {
