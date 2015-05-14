@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-05-14 08:44+0100\n"
-"PO-Revision-Date: 2015-04-19 09:34+0100\n"
+"PO-Revision-Date: 2015-05-14 13:24+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
-"Language-Team: Dutch <http://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
+"Language-Team: Dutch "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1614,6 +1615,8 @@ msgstr "Afrika"
 #: admin_trees_manage.php:668
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
 msgstr ""
+"Na het aanmaken van de stamboom kunt u de gegevens van een GEDCOM-bestand "
+"importeren."
 
 #: login.php:238
 msgid "After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
@@ -6206,7 +6209,7 @@ msgstr "Zoek een persoon"
 
 #: admin_trees_duplicates.php:32 admin_trees_manage.php:456
 msgid "Find duplicates"
-msgstr ""
+msgstr "Dubbele records zoeken"
 
 #: relationship.php:91
 msgid "Find the closest relationships"
@@ -8816,7 +8819,7 @@ msgstr "Kwikzilver"
 
 #: admin_trees_duplicates.php:168
 msgid "Merge"
-msgstr ""
+msgstr "Samenvoegen"
 
 #. I18N: Menu entry
 #: admin_trees_merge.php:32 app/Theme/AdministrationTheme.php:97
@@ -9537,7 +9540,7 @@ msgstr "Er zijn geen niet-standaard thema's ingeschakeld."
 
 #: admin_trees_duplicates.php:175
 msgid "No duplicates have been found."
-msgstr ""
+msgstr "Er zijn geen dubbele records gevonden."
 
 #: admin_trees_check.php:256
 msgid "No errors have been found."
@@ -13659,7 +13662,7 @@ msgstr[1] "Er zijn geen wijzigingen aangebracht in de laatste %s dagen."
 #: login.php:244
 #, php-format
 msgid "There is no account with the username or email “%s”."
-msgstr ""
+msgstr "Er bestaat geen account met de gebruikersnaam of het e-mailadres “%s”."
 
 #: addmedia.php:182 admin_media_upload.php:142
 msgid "There was an error uploading your file."
@@ -18241,7 +18244,7 @@ msgstr "half jaar na huwelijk"
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: includes/functions/functions_edit.php:694
 msgid "hh:mm or hh:mm:ss"
-msgstr ""
+msgstr "hh:mm or hh:mm:ss"
 
 #: admin_trees_config.php:40 app/Module/GoogleMapsModule.php:323
 msgid "hide"
