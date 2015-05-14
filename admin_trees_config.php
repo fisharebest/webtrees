@@ -620,6 +620,7 @@ $controller
 		<div class="col-sm-9">
 			<input
 				class="form-control"
+				dir="auto"
 				id="title"
 				maxlength="255"
 				name="title"
@@ -637,12 +638,11 @@ $controller
 		</label>
 		<div class="col-sm-9">
 			<div class="input-group">
-				<span class="input-group-addon">
+				<span class="input-group-addon" dir="ltr">
 					<?php echo WT_BASE_URL; ?>?ged=
 				</span>
 				<input
 					class="form-control"
-					dir="ltr"
 					id="gedcom"
 					maxlength="255"
 					name="gedcom"
