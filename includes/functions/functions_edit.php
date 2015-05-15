@@ -51,7 +51,7 @@ function select_edit_control($name, $values, $empty, $selected, $extra = '') {
 			$html .= '<option value="' . Filter::escapeHtml($key) . '" dir="auto">' . Filter::escapeHtml($value) . '</option>';
 		}
 	}
-	if (substr($name, -2) == '[]') {
+	if (substr($name, -2) === '[]') {
 		// id attribute is not used for arrays
 		return '<select name="' . $name . '" ' . $extra . '>' . $html . '</select>';
 	} else {
@@ -438,9 +438,10 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 	$subnamefacts = array('NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX', '_MARNM_SURN');
 	preg_match('/^(?:(\d+) (' . WT_REGEX_TAG . ') ?(.*))/', $tag, $match);
 	list(, $level, $fact, $value) = $match;
+	$level = (int) $level;
 
 	// element name : used to POST data
-	if ($level == 0) {
+	if ($level === 0) {
 		if ($upperlevel) {
 			$element_name = $upperlevel . '_' . $fact;
 		} else {
@@ -449,12 +450,12 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 	} else {
 		$element_name = 'text[]';
 	}
-	if ($level == 1) {
+	if ($level === 1) {
 		$main_fact = $fact;
 	}
 
 	// element id : used by javascript functions
-	if ($level == 0) {
+	if ($level === 0) {
 			$element_id = $fact;
 	} else {
 			$element_id = $fact . Uuid::uuid4();
@@ -464,32 +465,32 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 	}
 
 	// field value
-	$islink = (substr($value, 0, 1) === '@' && substr($value, 0, 2) != '@#');
+	$islink = (substr($value, 0, 1) === '@' && substr($value, 0, 2) !== '@#');
 	if ($islink) {
-		$value = trim(substr($tag, strlen($fact) + 3), " @\r");
+		$value = trim(substr($tag, strlen($fact) + 3), ' @\r');
 	} else {
-		$value = substr($tag, strlen($fact) + 3);
+		$value = (string)substr($tag, strlen($fact) + 3);
 	}
-	if ($fact == 'REPO' || $fact == 'SOUR' || $fact == 'OBJE' || $fact == 'FAMC') {
+	if ($fact === 'REPO' || $fact === 'SOUR' || $fact === 'OBJE' || $fact === 'FAMC') {
 			$islink = true;
 	}
 
-	if ($fact == 'SHARED_NOTE_EDIT' || $fact == 'SHARED_NOTE') {
+	if ($fact === 'SHARED_NOTE_EDIT' || $fact === 'SHARED_NOTE') {
 		$islink = true;
 		$fact = 'NOTE';
 	}
 
 	// label
-	echo "<tr id=\"", $element_id, "_tr\" ";
-	if ($fact == "MAP" || ($fact == "LATI" || $fact == "LONG") && $value == '') {
-		echo " style=\"display:none;\"";
+	echo '<tr id="', $element_id, '_tr"';
+	if ($fact === 'MAP' || ($fact === 'LATI' || $fact === 'LONG') && $value === '') {
+		echo ' style="display:none;"';
 	}
-	echo " >";
+	echo '>';
 
-	if (in_array($fact, $subnamefacts) || $fact == "LATI" || $fact == "LONG") {
-		echo "<td class=\"optionbox wrap width25\">";
+	if (in_array($fact, $subnamefacts) || $fact === 'LATI' || $fact === 'LONG') {
+		echo '<td class="optionbox wrap width25">';
 	} else {
-		echo "<td class=\"descriptionbox wrap width25\">";
+		echo '<td class="descriptionbox wrap width25">';
 	}
 
 	// tag name
@@ -501,15 +502,14 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 		echo GedcomTag::getLabel($fact);
 	}
 
-// help link
 	// If using GEDFact-assistant window
-	if ($action == "addnewnote_assisted") {
+	if ($action === 'addnewnote_assisted') {
 		// Do not print on GEDFact Assistant window
 	} else {
 		// Not all facts have help text.
 		switch ($fact) {
 		case 'NAME':
-			if ($upperlevel != 'REPO') {
+			if ($upperlevel !== 'REPO') {
 				echo help_link($fact);
 			}
 			break;
@@ -529,15 +529,14 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 			echo '<input type="hidden" name="glevels[]" value="', $level - 1, '">';
 			echo '<input type="hidden" name="islink[]" value="0">';
 			echo '<input type="hidden" name="tag[]" value="DATA">';
-			//-- leave data text[] value empty because the following TEXT line will
-			//--- cause the DATA to be added
+			// leave data text[] value empty because the following TEXT line will cause the DATA to be added
 			echo '<input type="hidden" name="text[]" value="">';
 		}
 		echo '<input type="hidden" name="glevels[]" value="', $level, '">';
 		echo '<input type="hidden" name="islink[]" value="', $islink, '">';
 		echo '<input type="hidden" name="tag[]" value="', $fact, '">';
 	}
-	echo "</td>";
+	echo '</td>';
 
 	// value
 	echo '<td class="optionbox wrap">';
@@ -547,7 +546,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 		$note1 = Note::getInstance($value, $WT_TREE);
 		if ($note1) {
 			$noterec = $note1->getGedcom();
-			preg_match("/$value/i", $noterec, $notematch);
+			preg_match('/' . $value / '/i', $noterec, $notematch);
 			$value = $notematch[0];
 		}
 	}
@@ -559,7 +558,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 			if ($value) {
 				echo 'checked';
 			}
-			echo " onclick=\"if (this.checked) ", $element_id, ".value='Y'; else ", $element_id, ".value='';\">";
+			echo ' onclick="if (this.checked) ', $element_id, '.value=\'Y\'; else ', $element_id, '.value=\'\';">';
 			echo I18N::translate('yes');
 		}
 
@@ -608,7 +607,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 			echo 'selected';
 		}
 		echo '>', I18N::translateContext('unknown gender', 'Unknown'), '</option></select>';
-	} else if ($fact == 'TYPE' && $level == '3') {
+	} else if ($fact === 'TYPE' && $level === 3) {
 		//-- Build the selector for the Media 'TYPE' Fact
 		echo '<select name="text[]"><option selected value="" ></option>';
 		$selectedValue = strtolower($value);
@@ -617,32 +616,32 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 		}
 		foreach (GedcomTag::getFileFormTypes() as $typeName => $typeValue) {
 			echo '<option value="', $typeName, '" ';
-			if ($selectedValue == $typeName) {
+			if ($selectedValue === $typeName) {
 				echo 'selected';
 			}
 			echo '>', $typeValue, '</option>';
 		}
 		echo '</select>';
-	} else if (($fact == 'NAME' && $upperlevel != 'REPO') || $fact == '_MARNM') {
+	} else if (($fact === 'NAME' && $upperlevel !== 'REPO') || $fact === '_MARNM') {
 		// Populated in javascript from sub-tags
-		echo "<input type=\"hidden\" id=\"", $element_id, "\" name=\"", $element_name, "\" onchange=\"updateTextName('", $element_id, "');\" value=\"", Filter::escapeHtml($value), "\" class=\"", $fact, "\">";
+		echo '<input type="hidden" id="', $element_id, '" name="', $element_name, '" onchange="updateTextName(\'', $element_id, '\');" value="', Filter::escapeHtml($value), '" class="', $fact, '">';
 		echo '<span id="', $element_id, '_display" dir="auto">', Filter::escapeHtml($value), '</span>';
 		echo ' <a href="#edit_name" onclick="convertHidden(\'', $element_id, '\'); return false;" class="icon-edit_indi" title="' . I18N::translate('Edit name') . '"></a>';
 	} else {
 		// textarea
-		if ($fact == 'TEXT' || $fact == 'ADDR' || ($fact == 'NOTE' && !$islink)) {
-			echo "<textarea id=\"", $element_id, "\" name=\"", $element_name, "\" dir=\"auto\">", Filter::escapeHtml($value), "</textarea><br>";
+		if ($fact === 'TEXT' || $fact === 'ADDR' || ($fact === 'NOTE' && !$islink)) {
+			echo '<textarea id="', $element_id, '" name="', $element_name, '" dir="auto">', Filter::escapeHtml($value), '</textarea><br>';
 		} else {
 			// text
 			// If using GEDFact-assistant window
-			if ($action == "addnewnote_assisted") {
-				echo "<input type=\"text\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", Filter::escapeHtml($value), "\" style=\"width:4.1em;\" dir=\"ltr\"";
+			if ($action === 'addnewnote_assisted') {
+				echo '<input type="text" id="', $element_id, '" name="', $element_name, '" value="', Filter::escapeHtml($value), '" style="width:4.1em;" dir="ltr"';
 			} else {
-				echo "<input type=\"text\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", Filter::escapeHtml($value), "\" dir=\"ltr\"";
+				echo '<input type="text" id="', $element_id, '" name="', $element_name, '" value="', Filter::escapeHtml($value), '" dir="ltr"';
 			}
-			echo " class=\"{$fact}\"";
+			echo ' class="', $fact, '"';
 			if (in_array($fact, $subnamefacts)) {
-				echo " onblur=\"updatewholename();\" onkeyup=\"updatewholename();\"";
+				echo ' onblur="updatewholename();" onkeyup="updatewholename();"';
 			}
 
 			// Extra markup for specific fact types
@@ -655,16 +654,16 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 				echo ' data-autocomplete-type="ASSO"';
 				break;
 			case 'DATE':
-				echo " onblur=\"valid_date(this);\" onmouseout=\"valid_date(this);\"";
+				echo ' onblur="valid_date(this);" onmouseout="valid_date(this);"';
 				break;
 			case 'GIVN':
 				echo ' autofocus data-autocomplete-type="GIVN"';
 				break;
 			case 'LATI':
-				echo " onblur=\"valid_lati_long(this, 'N', 'S');\" onmouseout=\"valid_lati_long(this, 'N', 'S');\"";
+				echo ' onblur="valid_lati_long(this, \'N\', \'S\');" onmouseout="valid_lati_long(this, \'N\', \'S\');"';
 				break;
 			case 'LONG':
-				echo " onblur=\"valid_lati_long(this, 'E', 'W');\" onmouseout=\"valid_lati_long(this, 'E', 'W');\"";
+				echo ' onblur="valid_lati_long(this, \'E\', \'W\');" onmouseout="valid_lati_long(this, \'E\', \'W\');"';
 				break;
 			case 'NOTE':
 				// Shared notes.  Inline notes are handled elsewhere.
@@ -700,8 +699,8 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 		$tmp_array = array('TYPE', 'TIME', 'NOTE', 'SOUR', 'REPO', 'OBJE', 'ASSO', '_ASSO', 'AGE');
 
 		// split PLAC
-		if ($fact == 'PLAC') {
-			echo "<div id=\"", $element_id, "_pop\" style=\"display: inline;\">";
+		if ($fact === 'PLAC') {
+			echo '<div id="', $element_id, '_pop" style="display: inline;">';
 			echo print_specialchar_link($element_id), ' ', print_findplace_link($element_id);
 			echo '<span  onclick="jQuery(\'tr[id^=', $upperlevel, '_LATI],tr[id^=', $upperlevel, '_LONG],tr[id^=LATI],tr[id^=LONG]\').toggle(\'fast\'); return false;" class="icon-target" title="', GedcomTag::getLabel('LATI'), ' / ', GedcomTag::getLabel('LONG'), '"></span>';
 			echo '</div>';
@@ -714,11 +713,11 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 		}
 	}
 	// MARRiage TYPE : hide text field and show a selection list
-	if ($fact == 'TYPE' && $level == 2 && $tags[0] == 'MARR') {
+	if ($fact === 'TYPE' && $level === 2 && $tags[0] === 'MARR') {
 		echo '<script>';
-		echo "document.getElementById('", $element_id, "').style.display='none'";
+		echo 'document.getElementById(\'', $element_id, '\').style.display=\'none\'';
 		echo '</script>';
-		echo "<select id=\"", $element_id, "_sel\" onchange=\"document.getElementById('", $element_id, "').value=this.value;\" >";
+		echo '<select id="', $element_id, '_sel" onchange="document.getElementById(\'', $element_id, '\').value=this.value;" >';
 		foreach (array('Unknown', 'Civil', 'Religious', 'Partners') as $key) {
 			if ($key === 'Unknown') {
 				echo '<option value="" ';
@@ -732,14 +731,12 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 			}
 			echo '>', GedcomTag::getLabel('MARR_' . strtoupper($key)), '</option>';
 		}
-		echo "</select>";
-	} elseif ($fact == 'TYPE' && $level == 0) {
+		echo '</select>';
+	} elseif ($fact === 'TYPE' && $level === 0) {
 		// NAME TYPE : hide text field and show a selection list
 		$onchange = 'onchange="document.getElementById(\'' . $element_id . '\').value=this.value;"';
 		echo edit_field_name_type($element_name, $value, $onchange, $person);
-		echo '<script>';
-		echo "document.getElementById('", $element_id, "').style.display='none';";
-		echo '</script>';
+		echo '<script>document.getElementById("', $element_id, '").style.display="none";</script>';
 	}
 
 	// popup links
@@ -762,12 +759,12 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 		echo print_findindi_link($element_id, $element_id . '_description');
 		break;
 	case 'FILE':
-		print_findmedia_link($element_id, "0file");
+		print_findmedia_link($element_id, '0file');
 		break;
 	case 'SOUR':
 		echo print_findsource_link($element_id, $element_id . '_description'), ' ', print_addnewsource_link($element_id);
 		//-- checkboxes to apply '1 SOUR' to BIRT/MARR/DEAT as '2 SOUR'
-		if ($level == 1) {
+		if ($level === 1) {
 			echo '<br>';
 			switch ($WT_TREE->getPreference('PREFER_LEVEL2_SOURCES')) {
 			case '2': // records
@@ -848,19 +845,19 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 	echo '<div id="' . $element_id . '_description">';
 
 	// current value
-	if ($fact == 'DATE') {
+	if ($fact === 'DATE') {
 		$date = new Date($value);
 		echo $date->display();
 	}
 	if (($fact === 'ASSO'|| $fact === '_ASSO') && $value === '') {
-		if ($level == 1) {
+		if ($level === 1) {
 			echo '<p class="small text-muted">' . I18N::translate('An associate is another individual who was involved with this individual, such as a friend or an employer.') . '</p>';
 		} else {
 			echo '<p class="small text-muted">' . I18N::translate('An associate is another individual who was involved with this fact or event, such as a witness or a priest.') . '</p>';
 		}
 	}
 
-	if ($value && $value != 'new' && $islink) {
+	if ($value && $value !== 'new' && $islink) {
 		switch ($fact) {
 		case 'ALIA':
 		case 'ASSO':
@@ -898,7 +895,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 	}
 
 	// pastable values
-	if ($fact == 'FORM' && $upperlevel == 'OBJE') {
+	if ($fact === 'FORM' && $upperlevel === 'OBJE') {
 		print_autopaste_link($element_id, $FILE_FORM_accept);
 	}
 	echo '</div>', $extra, '</td></tr>';
@@ -918,7 +915,7 @@ function print_add_layer($tag, $level = 2, $parent_tag = '') {
 
 	switch ($tag) {
 	case 'SOUR':
-		echo "<a href=\"#\" onclick=\"return expand_layer('newsource');\"><i id=\"newsource_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a new source citation'), '</a>';
+		echo '<a href="#" onclick="return expand_layer(\'newsource\');"><i id="newsource_img" class="icon-plus"></i> ', I18N::translate('Add a new source citation'), '</a>';
 		echo '<br>';
 		echo '<div id="newsource" style="display: none;">';
 		echo '<table class="facts_table">';
@@ -945,7 +942,7 @@ function print_add_layer($tag, $level = 2, $parent_tag = '') {
 	case 'ASSO':
 	case 'ASSO2':
 		//-- Add a new ASSOciate
-		if ($tag == 'ASSO') {
+		if ($tag === 'ASSO') {
 			echo "<a href=\"#\" onclick=\"return expand_layer('newasso');\"><i id=\"newasso_img\" class=\"icon-plus\"></i> ", I18N::translate('Add a new associate'), '</a>';
 			echo '<br>';
 			echo '<div id="newasso" style="display: none;">';
@@ -1019,27 +1016,27 @@ function addSimpleTags($fact) {
 	global $WT_TREE, $nonplacfacts, $nondatefacts;
 
 	// For new individuals, these facts default to "Y"
-	if ($fact == 'MARR') {
-		add_simple_tag("0 {$fact} Y");
+	if ($fact === 'MARR') {
+		add_simple_tag('0 ' . $fact . 'Y');
 	} else {
-		add_simple_tag("0 {$fact}");
+		add_simple_tag('0 ' . $fact);
 	}
 
 	if (!in_array($fact, $nondatefacts)) {
-		add_simple_tag("0 DATE", $fact, GedcomTag::getLabel("{$fact}:DATE"));
+		add_simple_tag('0 DATE', $fact, GedcomTag::getLabel($fact . ':DATE'));
 	}
 
 	if (!in_array($fact, $nonplacfacts)) {
-		add_simple_tag("0 PLAC", $fact, GedcomTag::getLabel("{$fact}:PLAC"));
+		add_simple_tag('0 PLAC', $fact, GedcomTag::getLabel($fact . ':PLAC'));
 
 		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 			foreach ($match[1] as $tag) {
-				add_simple_tag("0 {$tag}", $fact, GedcomTag::getLabel("{$fact}:PLAC:{$tag}"));
+				add_simple_tag('0 ' . $tag, $fact, GedcomTag::getLabel($fact . ':PLAC:' . $tag));
 			}
 		}
-		add_simple_tag("0 MAP", $fact);
-		add_simple_tag("0 LATI", $fact);
-		add_simple_tag("0 LONG", $fact);
+		add_simple_tag('0 MAP', $fact);
+		add_simple_tag('0 LATI', $fact);
+		add_simple_tag('0 LONG', $fact);
 	}
 }
 
@@ -1061,7 +1058,7 @@ function addNewName() {
 
 	// Paternal and Polish and Lithuanian surname traditions can also create a _MARNM
 	$SURNAME_TRADITION = $WT_TREE->getPreference('SURNAME_TRADITION');
-	if ($SURNAME_TRADITION == 'paternal' || $SURNAME_TRADITION == 'polish' || $SURNAME_TRADITION == 'lithuanian') {
+	if ($SURNAME_TRADITION === 'paternal' || $SURNAME_TRADITION === 'polish' || $SURNAME_TRADITION === 'lithuanian') {
 		$tags[] = '_MARNM';
 	}
 
@@ -1097,44 +1094,44 @@ function addNewFact($fact) {
 	global $WT_TREE;
 
 	$FACT = Filter::post($fact);
-	$DATE = Filter::post("{$fact}_DATE");
-	$PLAC = Filter::post("{$fact}_PLAC");
-	if ($DATE || $PLAC || $FACT && $FACT != 'Y') {
-		if ($FACT && $FACT != 'Y') {
-			$gedrec = "\n1 {$fact} {$FACT}";
+	$DATE = Filter::post($fact . '_DATE');
+	$PLAC = Filter::post($fact . '_PLAC');
+	if ($DATE || $PLAC || $FACT && $FACT !== 'Y') {
+		if ($FACT && $FACT !== 'Y') {
+			$gedrec = "\n1 " . $fact . ' ' . $FACT;
 		} else {
-			$gedrec = "\n1 {$fact}";
+			$gedrec = "\n1 " . $fact;
 		}
 		if ($DATE) {
-			$gedrec .= "\n2 DATE {$DATE}";
+			$gedrec .= "\n2 DATE " . $DATE;
 		}
 		if ($PLAC) {
-			$gedrec .= "\n2 PLAC {$PLAC}";
+			$gedrec .= "\n2 PLAC " . $PLAC;
 
 			if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 				foreach ($match[1] as $tag) {
-					$TAG = Filter::post("{$fact}_{$tag}");
+					$TAG = Filter::post($fact . '_' . $tag);
 					if ($TAG) {
-						$gedrec .= "\n3 {$tag} {$TAG}";
+						$gedrec .= "\n3 " . $tag . ' ' . $TAG;
 					}
 				}
 			}
-			$LATI = Filter::post("{$fact}_LATI");
-			$LONG = Filter::post("{$fact}_LONG");
+			$LATI = Filter::post($fact . '_LATI');
+			$LONG = Filter::post($fact . '_LONG');
 			if ($LATI || $LONG) {
-				$gedrec .= "\n3 MAP\n4 LATI {$LATI}\n4 LONG {$LONG}";
+				$gedrec .= "\n3 MAP\n4 LATI " . $LATI . "\n4 LONG " . $LONG;
 			}
 		}
-		if (Filter::postBool("SOUR_{$fact}")) {
+		if (Filter::postBool('SOUR_' . $fact)) {
 			return updateSOUR($gedrec, 2);
 		} else {
 			return $gedrec;
 		}
-	} elseif ($FACT == 'Y') {
-		if (Filter::postBool("SOUR_{$fact}")) {
-			return updateSOUR("\n1 {$fact} Y", 2);
+	} elseif ($FACT === 'Y') {
+		if (Filter::postBool('SOUR_' . $fact)) {
+			return updateSOUR("\n1 " . $fact . ' Y', 2);
 		} else {
-			return "\n1 {$fact} Y";
+			return "\n1 " . $fact . ' Y';
 		}
 	} else {
 		return '';
@@ -1184,21 +1181,21 @@ function splitSOUR() {
 	for ($i = 0; $i < count($glevels); $i++) {
 		if ($inSOUR) {
 			if ($levelSOUR < $glevels[$i]) {
-				$dest = "S";
+				$dest = 'S';
 			} else {
 				$inSOUR = false;
-				$dest = "R";
+				$dest = 'R';
 			}
 		} else {
-			if ($tag[$i] == "SOUR") {
+			if ($tag[$i] === 'SOUR') {
 				$inSOUR = true;
 				$levelSOUR = $glevels[$i];
-				$dest = "S";
+				$dest = 'S';
 			} else {
-				$dest = "R";
+				$dest = 'R';
 			}
 		}
-		if ($dest == "S") {
+		if ($dest === 'S') {
 			$glevelsSOUR[] = $glevels[$i];
 			$tagSOUR[] = $tag[$i];
 			$islinkSOUR[] = $islink[$i];
@@ -1226,7 +1223,7 @@ function updateSOUR($inputRec, $levelOverride = 'no') {
 	global $glevels, $tag, $islink, $text;
 	global $glevelsSOUR, $tagSOUR, $islinkSOUR, $textSOUR;
 
-	if (count($tagSOUR) == 0) {
+	if (count($tagSOUR) === 0) {
 		return $inputRec; // No update required
 	}
 
@@ -1266,7 +1263,7 @@ function updateRest($inputRec, $levelOverride = 'no') {
 	global $glevels, $tag, $islink, $text;
 	global $glevelsRest, $tagRest, $islinkRest, $textRest;
 
-	if (count($tagRest) == 0) {
+	if (count($tagRest) === 0) {
 		return $inputRec; // No update required
 	}
 
@@ -1320,7 +1317,7 @@ function updateRest($inputRec, $levelOverride = 'no') {
 function handle_updates($newged, $levelOverride = 'no') {
 	global $glevels, $islink, $tag, $uploaded_files, $text;
 
-	if ($levelOverride == "no" || count($glevels) == 0) {
+	if ($levelOverride === 'no' || count($glevels) === 0) {
 		$levelAdjust = 0;
 	} else {
 		$levelAdjust = $levelOverride - $glevels[0];
@@ -1332,7 +1329,7 @@ function handle_updates($newged, $levelOverride = 'no') {
 		// This can happen when the SOUR entry is deleted but its sub-records
 		// were incorrectly left intact.
 		// The sub-records should be deleted.
-		if ($tag[$j] == "SOUR" && ($text[$j] == "@@" || $text[$j] == '')) {
+		if ($tag[$j] === 'SOUR' && ($text[$j] === '@@' || $text[$j] === '')) {
 			$text[$j] = '';
 			$k = $j + 1;
 			while (($k < count($glevels)) && ($glevels[$k] > $glevels[$j])) {
@@ -1341,7 +1338,7 @@ function handle_updates($newged, $levelOverride = 'no') {
 			}
 		}
 
-		if (trim($text[$j]) != '') {
+		if (trim($text[$j]) !== '') {
 			$pass = true;
 		} else {
 			//-- for facts with empty values they must have sub records
@@ -1349,13 +1346,13 @@ function handle_updates($newged, $levelOverride = 'no') {
 			$k = $j + 1;
 			$pass = false;
 			while (($k < count($glevels)) && ($glevels[$k] > $glevels[$j])) {
-				if ($text[$k] != '') {
-					if (($tag[$j] != "OBJE") || ($tag[$k] == "FILE")) {
+				if ($text[$k] !== '') {
+					if (($tag[$j] !== 'OBJE') || ($tag[$k] === 'FILE')) {
 						$pass = true;
 						break;
 					}
 				}
-				if (($tag[$k] == "FILE") && (count($uploaded_files) > 0)) {
+				if (($tag[$k] === 'FILE') && (count($uploaded_files) > 0)) {
 					$filename = array_shift($uploaded_files);
 					if (!empty($filename)) {
 						$text[$k] = $filename;
@@ -1371,12 +1368,12 @@ function handle_updates($newged, $levelOverride = 'no') {
 		//--- then write the line to the gedcom record
 		//if ((($text[trim($j)]!='')||($pass==true)) && (strlen($text[$j]) > 0)) {
 		//-- we have to let some emtpy text lines pass through... (DEAT, BIRT, etc)
-		if ($pass == true) {
+		if ($pass) {
 			$newline = $glevels[$j] + $levelAdjust . ' ' . $tag[$j];
 			//-- check and translate the incoming dates
-			if ($tag[$j] == 'DATE' && $text[$j] != '') {
+			if ($tag[$j] === 'DATE' && $text[$j] !== '') {
 			}
-			if ($text[$j] != '') {
+			if ($text[$j] !== '') {
 				if ($islink[$j]) {
 					$newline .= ' @' . $text[$j] . '@';
 				} else {
@@ -1401,13 +1398,13 @@ function create_add_form($fact) {
 	$tags = array();
 
 	// handle  MARRiage TYPE
-	if (substr($fact, 0, 5) == 'MARR_') {
+	if (substr($fact, 0, 5) === 'MARR_') {
 		$tags[0] = 'MARR';
 		add_simple_tag('1 MARR');
 		insert_missing_subtags($fact);
 	} else {
 		$tags[0] = $fact;
-		if ($fact == '_UID') {
+		if ($fact === '_UID') {
 			$fact .= ' ' . GedcomTag::createUid();
 		}
 		// These new level 1 tags need to be turned into links
@@ -1421,7 +1418,7 @@ function create_add_form($fact) {
 		}
 		insert_missing_subtags($tags[0]);
 		//-- handle the special SOURce case for level 1 sources [ 1759246 ]
-		if ($fact == 'SOUR') {
+		if ($fact === 'SOUR') {
 			add_simple_tag('2 PAGE');
 			add_simple_tag('3 TEXT');
 			if ($WT_TREE->getPreference('FULL_SOURCES')) {
@@ -1496,30 +1493,30 @@ function create_edit_form(GedcomRecord $record, Fact $fact) {
 			$text .= $fields[$j];
 		}
 		$text = rtrim($text);
-		while (($i + 1 < count($gedlines)) && (preg_match("/" . ($level + 1) . " CONT ?(.*)/", $gedlines[$i + 1], $cmatch) > 0)) {
+		while (($i + 1 < count($gedlines)) && (preg_match("/" . ($level + 1) . ' CONT ?(.*)/', $gedlines[$i + 1], $cmatch) > 0)) {
 			$text .= "\n" . $cmatch[1];
 			$i++;
 		}
 
-		if ($type == "SOUR") {
+		if ($type === 'SOUR') {
 			$inSource = true;
 			$levelSource = $level;
 		} elseif ($levelSource >= $level) {
 			$inSource = false;
 		}
 
-		if ($type != "DATA" && $type != "CONT") {
+		if ($type !== 'DATA' && $type !== 'CONT') {
 			$tags[] = $type;
 			$person = Individual::getInstance($pid, $WT_TREE);
 			$subrecord = $level . ' ' . $type . ' ' . $text;
-			if ($inSource && $type == "DATE") {
+			if ($inSource && $type === 'DATE') {
 				add_simple_tag($subrecord, '', GedcomTag::getLabel($label, $person));
-			} elseif (!$inSource && $type == "DATE") {
+			} elseif (!$inSource && $type === 'DATE') {
 				add_simple_tag($subrecord, $level1type, GedcomTag::getLabel($label, $person));
 				$add_date = false;
-			} elseif ($type == 'STAT') {
+			} elseif ($type === 'STAT') {
 				add_simple_tag($subrecord, $level1type, GedcomTag::getLabel($label, $person));
-			} elseif ($level0type == 'REPO') {
+			} elseif ($level0type === 'REPO') {
 				$repo = Repository::getInstance($pid, $WT_TREE);
 				add_simple_tag($subrecord, $level0type, GedcomTag::getLabel($label, $repo));
 			} else {
@@ -1539,12 +1536,12 @@ function create_edit_form(GedcomRecord $record, Fact $fact) {
 		if (!empty($expected_subtags[$type])) {
 			foreach ($expected_subtags[$type] as $subtag) {
 				if (!in_array($subtag, $subtags)) {
-					if (!$inSource || $subtag != "DATA") {
-						add_simple_tag(($level + 1) . ' ' . $subtag, '', GedcomTag::getLabel("{$label}:{$subtag}"));
+					if (!$inSource || $subtag !== 'DATA') {
+						add_simple_tag(($level + 1) . ' ' . $subtag, '', GedcomTag::getLabel($label . ':' . $subtag));
 					}
 					if (!empty($expected_subtags[$subtag])) {
 						foreach ($expected_subtags[$subtag] as $subsubtag) {
-							add_simple_tag(($level + 2) . ' ' . $subsubtag, '', GedcomTag::getLabel("{$label}:{$subtag}:{$subsubtag}"));
+							add_simple_tag(($level + 2) . ' ' . $subsubtag, '', GedcomTag::getLabel($label . ':' . $subtag . ':' . $subsubtag));
 						}
 					}
 				}
@@ -1552,11 +1549,11 @@ function create_edit_form(GedcomRecord $record, Fact $fact) {
 		}
 
 		// Awkward special cases
-		if ($level == 2 && $type == 'DATE' && in_array($level1type, $date_and_time) && !in_array('TIME', $subtags)) {
-			add_simple_tag("3 TIME"); // TIME is NOT a valid 5.5.1 tag
+		if ($level == 2 && $type === 'DATE' && in_array($level1type, $date_and_time) && !in_array('TIME', $subtags)) {
+			add_simple_tag('3 TIME'); // TIME is NOT a valid 5.5.1 tag
 		}
-		if ($level == 2 && $type == 'STAT' && GedcomCodeTemp::isTagLDS($level1type) && !in_array('DATE', $subtags)) {
-			add_simple_tag("3 DATE", '', GedcomTag::getLabel('STAT:DATE'));
+		if ($level == 2 && $type === 'STAT' && GedcomCodeTemp::isTagLDS($level1type) && !in_array('DATE', $subtags)) {
+			add_simple_tag('3 DATE', '', GedcomTag::getLabel('STAT:DATE'));
 		}
 
 		$i++;
@@ -1576,7 +1573,7 @@ function create_edit_form(GedcomRecord $record, Fact $fact) {
 		}
 	}
 
-	if ($level1type != '_PRIM') {
+	if ($level1type !== '_PRIM') {
 		insert_missing_subtags($level1type, $add_date);
 	}
 	return $level1type;
@@ -1594,27 +1591,27 @@ function insert_missing_subtags($level1tag, $add_date = false) {
 
 	// handle  MARRiage TYPE
 	$type_val = '';
-	if (substr($level1tag, 0, 5) == 'MARR_') {
+	if (substr($level1tag, 0, 5) === 'MARR_') {
 		$type_val = substr($level1tag, 5);
 		$level1tag = 'MARR';
 	}
 
 	foreach ($level2_tags as $key=>$value) {
-		if ($key == 'DATE' && in_array($level1tag, $nondatefacts) || $key == 'PLAC' && in_array($level1tag, $nonplacfacts)) {
+		if ($key === 'DATE' && in_array($level1tag, $nondatefacts) || $key === 'PLAC' && in_array($level1tag, $nonplacfacts)) {
 			continue;
 		}
 		if (in_array($level1tag, $value) && !in_array($key, $tags)) {
-			if ($key == 'TYPE') {
+			if ($key === 'TYPE') {
 				add_simple_tag('2 TYPE ' . $type_val, $level1tag);
-			} elseif ($level1tag == '_TODO' && $key == 'DATE') {
+			} elseif ($level1tag === '_TODO' && $key === 'DATE') {
 				add_simple_tag('2 ' . $key . ' ' . strtoupper(date('d M Y')), $level1tag);
-			} elseif ($level1tag == '_TODO' && $key == '_WT_USER') {
+			} elseif ($level1tag === '_TODO' && $key === '_WT_USER') {
 				add_simple_tag('2 ' . $key . ' ' . Auth::user()->getUserName(), $level1tag);
-			} else if ($level1tag == 'TITL' && strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), $key) !== false) {
+			} else if ($level1tag === 'TITL' && strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), $key) !== false) {
 				add_simple_tag('2 ' . $key, $level1tag);
-			} else if ($level1tag == 'NAME' && strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), $key) !== false) {
+			} else if ($level1tag === 'NAME' && strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), $key) !== false) {
 				add_simple_tag('2 ' . $key, $level1tag);
-			} else if ($level1tag != 'TITL' && $level1tag != 'NAME') {
+			} else if ($level1tag !== 'TITL' && $level1tag !== 'NAME') {
 				add_simple_tag('2 ' . $key, $level1tag);
 			}
 			// Add level 3/4 tags as appropriate
@@ -1622,7 +1619,7 @@ function insert_missing_subtags($level1tag, $add_date = false) {
 			case 'PLAC':
 				if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 					foreach ($match[1] as $tag) {
-						add_simple_tag("3 $tag", '', GedcomTag::getLabel("{$level1tag}:PLAC:{$tag}"));
+						add_simple_tag('3 ' . $tag, '', GedcomTag::getLabel($level1tag . ':PLAC:' . $tag));
 					}
 				}
 				add_simple_tag('3 MAP');
@@ -1658,18 +1655,18 @@ function insert_missing_subtags($level1tag, $add_date = false) {
 				break;
 			}
 		} elseif ($key === 'DATE' && $add_date) {
-			add_simple_tag('2 DATE', $level1tag, GedcomTag::getLabel("{$level1tag}:DATE"));
+			add_simple_tag('2 DATE', $level1tag, GedcomTag::getLabel($level1tag . ':DATE'));
 		}
 	}
 	// Do something (anything!) with unrecognized custom tags
-	if (substr($level1tag, 0, 1) == '_' && $level1tag != '_UID' && $level1tag != '_TODO') {
+	if (substr($level1tag, 0, 1) === '_' && $level1tag !== '_UID' && $level1tag !== '_TODO') {
 		foreach (array('DATE', 'PLAC', 'ADDR', 'AGNC', 'TYPE', 'AGE') as $tag) {
 			if (!in_array($tag, $tags)) {
-				add_simple_tag("2 {$tag}");
+				add_simple_tag('2 ' . $tag);
 				if ($tag === 'PLAC') {
 					if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
 						foreach ($match[1] as $ptag) {
-							add_simple_tag("3 $ptag", '', GedcomTag::getLabel("{$level1tag}:PLAC:{$ptag}"));
+							add_simple_tag('3 ' . $ptag, '', GedcomTag::getLabel($level1tag . ':PLAC:' . $ptag));
 						}
 					}
 					add_simple_tag('3 MAP');
