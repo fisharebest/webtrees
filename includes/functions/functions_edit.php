@@ -94,7 +94,7 @@ function radio_buttons($name, $values, $selected, $extra = '') {
  *
  * @return string
  */
-function edit_field_yes_no($name, $selected = false, $extra='') {
+function edit_field_yes_no($name, $selected = false, $extra = '') {
 	return radio_buttons(
 		$name, array(I18N::translate('no'), I18N::translate('yes')), $selected, $extra
 	);
@@ -469,7 +469,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 	if ($islink) {
 		$value = trim(substr($tag, strlen($fact) + 3), ' @\r');
 	} else {
-		$value = (string)substr($tag, strlen($fact) + 3);
+		$value = (string) substr($tag, strlen($fact) + 3);
 	}
 	if ($fact === 'REPO' || $fact === 'SOUR' || $fact === 'OBJE' || $fact === 'FAMC') {
 			$islink = true;
@@ -849,7 +849,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 		$date = new Date($value);
 		echo $date->display();
 	}
-	if (($fact === 'ASSO'|| $fact === '_ASSO') && $value === '') {
+	if (($fact === 'ASSO' || $fact === '_ASSO') && $value === '') {
 		if ($level === 1) {
 			echo '<p class="small text-muted">' . I18N::translate('An associate is another individual who was involved with this individual, such as a friend or an employer.') . '</p>';
 		} else {
