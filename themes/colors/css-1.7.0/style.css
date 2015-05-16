@@ -253,13 +253,13 @@ hr {
 	margin-top: 5px;
 }
 
-.person_box {
+.person_box, .action_header {
 	background-color: #ddf;
 	border: 1px solid #aaa;
 	padding: 3px;
 }
 
-.person_boxF {
+.person_boxF, .action_headerF {
 	background-color: #fdd;
 	border: 1px solid #aaa;
 	padding: 3px;
@@ -1693,7 +1693,7 @@ a.showit:hover > span {
 }
 
 .blockcontent .list_table {
-	border-spacing: 0;
+	border-spacing: 1px;
 	border: solid #999 1px;
 	border-right: 0;
 }

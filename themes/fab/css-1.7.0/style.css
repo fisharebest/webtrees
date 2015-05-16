@@ -244,12 +244,12 @@ header form {
     font-size: 11px;
 }
 
-.person_box {
+.person_box, .action_header {
 	padding: 3px;
 	background-color: #ddf;
 }
 
-.person_boxF {
+.person_boxF, .action_headerF {
 	padding: 3px;
 	background-color: #fdd;
 }

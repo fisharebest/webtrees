@@ -202,13 +202,13 @@ header form {
 	color: #999;
 }
 
-.person_box {
+.person_box, .action_header {
 	background: #edf7fd;
 	border: solid #81a9cb 1px;
 	padding: 3px;
 }
 
-.person_boxF {
+.person_boxF, .action_headerF {
 	background: #e9daf1;
 	border: 1px solid #ff2080;
 	padding: 3px;
@@ -1651,7 +1651,7 @@ td.descriptionbox a {
 }
 
 .blockcontent .list_table {
-	border-spacing: 0;
+	border-spacing: 1px;
 	border: solid #81a9cb 1px;
 	border-right: 0;
 }
