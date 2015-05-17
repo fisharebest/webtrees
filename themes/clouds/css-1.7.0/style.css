@@ -242,21 +242,21 @@ hr {
 	border-color: #006;
 }
 
-.person_box {
+.person_box, .action_header {
 	background: #ddf;
-	border: 1px solid #8bf;
+	border: 1px solid #aaa;
 	padding: 3px;
 }
 
-.person_boxF {
+.person_boxF, .action_headerF {
 	background: #fdd;
-	border: 1px solid #8bf;
+	border: 1px solid #aaa;
 	padding: 3px;
 }
 
 .person_boxNN {
 	background: #fff;
-	border: 1px solid #8bf;
+	border: 1px solid #aaa;
 	padding: 3px;
 }
 
@@ -1691,7 +1691,7 @@ background-color: #fff;
 }
 
 .blockcontent .list_table {
-	border-spacing: 0;
+	border-spacing: 1px;
 	border: solid #999 1px;
 	border-right: 0;
 }

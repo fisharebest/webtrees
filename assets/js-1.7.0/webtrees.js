@@ -82,18 +82,6 @@ function modalNotes(content, title) {
 	return false;
 }
 
-// For a dialog containing a form, submit the form via AJAX
-// (to save the data), then reload the page (to display it).
-function modalDialogSubmitAjax(form) {
-	jQuery.ajax({
-		type:    'POST',
-		url:     jQuery(form).attr('action'),
-		data:    jQuery(form).serialize(),
-		success: function() { window.location.reload(); }
-	});
-	return false;
-}
-
 function closePopupAndReloadParent(url) {
 	if (parent.opener) {
 		if (url) {

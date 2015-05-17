@@ -111,7 +111,7 @@ class Date {
 	 */
 	private function parseDate($date) {
 		// Valid calendar escape specified? - use it
-		if (preg_match('/^(@#D(?:GREGORIAN|JULIAN|HEBREW|HIJRI|JALALI|FRENCH R|ROMAN|JALALI)+@) ?(.*)/', $date, $match)) {
+		if (preg_match('/^(@#D(?:GREGORIAN|JULIAN|HEBREW|HIJRI|JALALI|FRENCH R|ROMAN)+@) ?(.*)/', $date, $match)) {
 			$cal  = $match[1];
 			$date = $match[2];
 		} else {

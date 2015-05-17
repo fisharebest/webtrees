@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-05-14 08:44+0100\n"
-"PO-Revision-Date: 2015-04-06 12:06+0100\n"
+"PO-Revision-Date: 2015-05-14 10:24+0100\n"
 "Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
-"Language-Team: Turkish <http://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
+"Language-Team: Turkish "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1585,6 +1586,7 @@ msgstr "Afrika"
 #: admin_trees_manage.php:668
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
 msgstr ""
+"Aile ağacını oluşturduktan sonra, GEDCOM dosya verilerini yükleyebilirsiniz."
 
 #: login.php:238
 msgid "After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
@@ -6175,7 +6177,7 @@ msgstr "Bir birey bul"
 
 #: admin_trees_duplicates.php:32 admin_trees_manage.php:456
 msgid "Find duplicates"
-msgstr ""
+msgstr "Tekrarlayanları bul"
 
 #: relationship.php:91
 msgid "Find the closest relationships"
@@ -8785,7 +8787,7 @@ msgstr "Cıva"
 
 #: admin_trees_duplicates.php:168
 msgid "Merge"
-msgstr ""
+msgstr "Birleştir"
 
 #. I18N: Menu entry
 #: admin_trees_merge.php:32 app/Theme/AdministrationTheme.php:97
@@ -9506,7 +9508,7 @@ msgstr "Etkinleştirilmiş özel tema yok."
 
 #: admin_trees_duplicates.php:175
 msgid "No duplicates have been found."
-msgstr ""
+msgstr "Tekrarlayan kayıt bulunamadı."
 
 #: admin_trees_check.php:256
 msgid "No errors have been found."
@@ -13625,6 +13627,7 @@ msgstr[0] "Son %s günde hiç bir değişiklik yapılmadı."
 #, php-format
 msgid "There is no account with the username or email “%s”."
 msgstr ""
+"Kullanıcı adı yada mail adresi “%s” olan bir kullanıcı hesabı bulunamadı."
 
 #: addmedia.php:182 admin_media_upload.php:142
 msgid "There was an error uploading your file."
