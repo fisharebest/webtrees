@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-05-14 08:44+0100\n"
-"PO-Revision-Date: 2015-05-21 18:35+0100\n"
+"PO-Revision-Date: 2015-05-21 18:50+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
@@ -18242,7 +18242,7 @@ msgstr "חצי שנה אחרי הנישואין"
 #. I18N: Examples of valid time formats (hours:minutes:seconds)
 #: includes/functions/functions_edit.php:694
 msgid "hh:mm or hh:mm:ss"
-msgstr "hh:mm או hh:mm:ss"
+msgstr "שש:דד או שש:דד:שש"
 
 #: admin_trees_config.php:40 app/Module/GoogleMapsModule.php:323
 msgid "hide"
