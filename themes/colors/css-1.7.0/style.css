@@ -4249,7 +4249,7 @@ header h1 {
 	float: left;
 	font-size: 24px;
 	font-weight: normal;
-	margin: 14px 12px 3px;
+	margin: 14px 5px 3px;
 }
 
 [dir=rtl] header h1 {
@@ -4289,6 +4289,10 @@ header {
 .secondary-menu  ul li:before,
 .secondary-menu li:first-child:before {
 	content: "";
+}
+
+.secondary-menu li:last-child:before {
+	content: "  ";
 }
 
 .secondary-menu ul {
@@ -4446,7 +4450,7 @@ header nav {
 	background-repeat: no-repeat;
 	height: 40px;
 	line-height: 40px;
-	margin: 4px 0 0 16px;
+	margin: 4px 9px 0 7px;
 	text-indent: 32px;
 	width: 40px;
 }
@@ -4464,7 +4468,7 @@ header nav {
 
 /* Reverse left and right on RTL pages */
 [dir=rtl] .primary-menu > li {
-	margin: 4px 16px 0 0;
+	margin: 4px 7px 0 0;
 }
 
 [dir=rtl] .primary-menu li {
@@ -5315,5 +5319,49 @@ footer {
 		left: -10px;
 		top: -60px;
 		z-index: 1;
+	}
+}
+
+/* Mobile low and high resolution viewports */
+@media (max-width: 653px) {
+	.secondary-menu {
+		margin: 0 10px 4px 5px;
+    }
+	[dir="rtl"] .secondary-menu {
+		float: left;
+	margin: 0 0 4px 10px;
+	}
+	#home-page {
+		padding: 20px 0;
+	}
+}
+
+@media (max-width: 453px) {
+	.secondary-menu {
+		float: left;
+	}
+	[dir=rtl] .secondary-menu {
+		float: right;
+	}
+	#content {
+    margin-top: 40px;
+    }
+	#home-page {
+		padding: 40px 0;
+	}
+	.header-search {
+		display: block;
+		margin-top: 5px;
+	}
+	.primary-menu > li {
+		background-image: url("images/sprites-top2-menu.png");
+		margin: 0 0 0 7px;
+		width: 20px;
+	}
+	.primary-menu > li > ul {
+		top: 32px;
+	}
+	.primary-menu {
+		height: 40px;
 	}
 }
