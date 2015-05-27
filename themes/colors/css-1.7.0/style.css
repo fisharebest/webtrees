@@ -31,19 +31,10 @@ p {
 	margin: 12px 0;
 }
 
-#home-page {
-	padding: 8px 0;
-}
-
 #content {
-	margin-left: 8px;  
-	margin-right: 8px;
-	padding-top: 10px;
-}
-
-main {
 	display: block;
 	clear: both;
+	margin: 10px 8px 0 8px;
 }
 
 /* ====== Round Corners ======== */
@@ -4271,7 +4262,7 @@ header {
 /* ====== Secondary menu ======= */
 .secondary-menu {
 	float: right;
-	margin: 21px 10px 4px 0;
+	margin: 12px 10px 12px 0;
 	white-space: nowrap;
 	list-style: none;
 	padding: 1px;
@@ -5323,35 +5314,30 @@ footer {
 }
 
 /* Mobile low and high resolution viewports */
-@media (max-width: 653px) {
-	.secondary-menu {
-		margin: 0 10px 4px 5px;
-    }
-	[dir="rtl"] .secondary-menu {
-		float: left;
-	margin: 0 0 4px 10px;
-	}
-	#home-page {
-		padding: 30px 0;
-	}
+@media (max-width: 600px) {
 	#content {
-    margin-top: 20px;
+    margin-top: 50px;
     }
+
+    [dir="rtl"] .secondary-menu {
+    clear:both;
+    float: left;
+    margin: 12px 10px 12px 10px;
+	}
 }
 
-@media (max-width: 453px) {
+@media (max-width: 400px) {
 	.secondary-menu {
 		float: left;
+		margin: 0px 5px 4px;
 	}
 	[dir=rtl] .secondary-menu {
 		float: right;
+		margin: 0px 5px 4px;
 	}
 	#content {
-    margin-top: 40px;
+    margin-top: 45px;
     }
-	#home-page {
-		padding: 0;
-	}
 	.header-search {
 		display: block;
 		margin-top: 5px;
@@ -5359,7 +5345,10 @@ footer {
 	.primary-menu > li {
 		background-image: url("images/sprites-top2-menu.png");
 		margin: 0 0 0 7px;
-		width: 20px;
+		width: 22px;
+	}
+	[dir=rtl] .primary-menu > li {
+		margin: 0 7px 0 0;
 	}
 	.primary-menu > li > ul {
 		top: 32px;
