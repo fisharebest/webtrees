@@ -44,6 +44,7 @@ $apply_filter   = Filter::get('apply_filter');
 $filter         = Filter::get('filter', null, ''); // MySQL needs an empty string, not NULL
 $columns        = Filter::getInteger('columns', 1, 2, 2);
 $subdirs        = Filter::get('subdirs', 'on');
+$form_type      = Filter::get('form_type', implode('|', array_keys(GedcomTag::getFileFormTypes())));
 $currentdironly = ($subdirs === 'on') ? false : true;
 
 // reset all variables
@@ -54,6 +55,7 @@ if ($reset === 'Reset') {
 	$columns        = '2';
 	$currentdironly = true;
 	$filter         = '';
+	$form_type      = '';
 }
 
 // A list of all subfolders used by this tree
@@ -64,7 +66,8 @@ $medialist = QueryMedia::mediaList(
 	$folder,
 	$currentdironly ? 'exclude' : 'include',
 	$sortby,
-	$filter
+	$filter,
+	$form_type
 );
 
 ?>
@@ -84,10 +87,12 @@ $medialist = QueryMedia::mediaList(
 				</td>
 				<?php if (Auth::isEditor($WT_TREE)): ?>
 				<td class="descriptionbox wrap">
-					<?php echo I18N::translate('Sort order'); ?>
+					<label for="sortby">
+						<?php echo I18N::translate('Sort order'); ?>
+					</label>
 				</td>
 				<td class="optionbox wrap">
-					<select name="sortby">
+					<select name="sortby" id="sortby">
 						<option value="title" <?php echo $sortby === 'title' ? 'selected' : ''; ?>>
 							<?php echo /* I18N: An option in a list-box */ I18N::translate('sort by title'); ?>
 						</option>
@@ -103,16 +108,20 @@ $medialist = QueryMedia::mediaList(
 			</tr>
 			<tr>
 				<td class="descriptionbox wrap">
-					<?php echo /* I18N: Label for check-box */ I18N::translate('Include subfolders'); ?>
+					<label for="subdirs">
+						<?php echo /* I18N: Label for check-box */ I18N::translate('Include subfolders'); ?>
+					</label>
 				</td>
 				<td class="optionbox wrap">
 					<input type="checkbox" id="subdirs" name="subdirs" <?php echo $currentdironly ? '' : 'checked'; ?>>
 				</td>
 				<td class="descriptionbox wrap">
-					<?php echo I18N::translate('Media objects per page'); ?>
+					<label for="max">
+						<?php echo I18N::translate('Media objects per page'); ?>
+					</label>
 				</td>
 				<td class="optionbox wrap">
-					<select name="max">
+					<select name="max" id="max">
 						<?php
 						foreach (array('10', '20', '30', '40', '50', '75', '100', '125', '150', '200') as $selectEntry) {
 							echo '<option value="', $selectEntry, '" ';
@@ -127,16 +136,27 @@ $medialist = QueryMedia::mediaList(
 			</tr>
 			<tr>
 				<td class="descriptionbox wrap">
-					<?php echo I18N::translate('Search filters'); ?>
+					<label for="form-type">
+						<?php echo I18N::translate('Type'); ?>
+					</label>
 				</td>
 				<td class="optionbox wrap">
-					<input id="filter" name="filter" value="<?php echo Filter::escapeHtml($filter); ?>" size="14" dir="auto">
+					<select name="form_type" id="form-type">
+						<option value=""></option>
+						<?php foreach (GedcomTag::getFileFormTypes() as $value => $label): ?>
+							<option value="<?php echo $value; ?>" <?php echo $value === $form_type ? 'selected' : ''; ?>>
+								<?php echo $label; ?>
+							</option>
+						<?php endforeach; ?>
+					</select>
 				</td>
 				<td class="descriptionbox wrap">
-					<?php echo I18N::translate('Columns per page'); ?>
+					<label for="columns">
+						<?php echo I18N::translate('Columns per page'); ?>
+					</label>
 				</td>
 				<td class="optionbox wrap">
-					<select name="columns">
+					<select name="columns" id="columns">
 						<?php
 						foreach (array('1', '2') as $selectEntry) {
 							echo '<option value="', $selectEntry, '" ';
@@ -151,13 +171,18 @@ $medialist = QueryMedia::mediaList(
 			</tr>
 			<tr>
 				<td class="descriptionbox wrap">
+					<label for="filter">
+						<?php echo I18N::translate('Search filters'); ?>
+					</label>
 				</td>
+				<td class="optionbox wrap">
+					<input type="text" id="filter" name="filter" value="<?php echo Filter::escapeHtml($filter); ?>" size="14" dir="auto">
+				</td>
+				<td class="descriptionbox wrap"></td>
 				<td class="optionbox wrap">
 					<input type="submit" name="apply_filter" value="<?php echo I18N::translate('Search'); ?>">
 					<input type="submit" name="reset" value="<?php echo I18N::translate('Reset'); ?>">
 				</td>
-				<td class="descriptionbox wrap"></td>
-				<td class="optionbox wrap"></td>
 			</tr>
 		</tbody>
 	</table>
@@ -238,7 +263,6 @@ if ($search) {
 						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $newstart, '&amp;max=', $max, '" class="icon-larrow"></a>';
 					}
 					if ($currentPage > 1) {
-						$lastStart = ((int) ($ct / $max)) * $max;
 						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=0&amp;max=', $max, '" class="icon-ldarrow"></a>';
 					}
 				}
