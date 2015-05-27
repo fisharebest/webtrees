@@ -5332,8 +5332,11 @@ footer {
 	margin: 0 0 4px 10px;
 	}
 	#home-page {
-		padding: 20px 0;
+		padding: 30px 0;
 	}
+	#content {
+    margin-top: 20px;
+    }
 }
 
 @media (max-width: 453px) {
@@ -5347,7 +5350,7 @@ footer {
     margin-top: 40px;
     }
 	#home-page {
-		padding: 40px 0;
+		padding: 0;
 	}
 	.header-search {
 		display: block;
