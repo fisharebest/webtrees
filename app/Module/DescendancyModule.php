@@ -199,7 +199,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 		$out = '';
 		foreach ($rows as $row) {
 			$person = Individual::getInstance($row->xref, $tree);
-			if ($person->canShowName()) {
+			if ($person && $person->canShowName()) {
 				$out .= $this->getPersonLi($person);
 			}
 		}
