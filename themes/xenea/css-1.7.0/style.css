@@ -5219,3 +5219,20 @@ footer {
 		z-index: 1;
 	}
 }
+
+/* Mobile low resolution viewport */
+@media (max-width: 400px) {
+	header h1 {
+		margin: 10px 12px 0 10px;
+	}
+	.header-upper {
+		height: 70px;
+	}
+	.primary-menu > li {
+		width: 80px;
+		margin: 0 0 20px 0;
+	}
+	header nav {
+		height: 85px;
+    }
+}
