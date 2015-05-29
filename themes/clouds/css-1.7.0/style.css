@@ -5385,10 +5385,14 @@ footer .error {
 }
 /* Mobile low and high resolution viewports */
 @media (max-width: 480px) {
-header {
-	height: 83px;
+	header {
+		height: 83px;
 	}
 	.secondary-menu {
-    top: 50px;
+		top: 50px;
+		margin-top: 10px;
+	}
+	.primary-menu > li > a {
+		height: 20px;
 	}
 }

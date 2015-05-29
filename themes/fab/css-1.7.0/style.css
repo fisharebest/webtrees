@@ -4537,3 +4537,30 @@ footer {
 		margin-bottom: 10px;
 	}
 }
+
+/* Mobile low resolution viewports */
+@media (max-width: 400px) {
+	header {
+		text-align: left;
+		height: 150px;
+	}
+	[dir=rtl] header {
+		text-align: right;
+	}
+	[dir=rtl] .secondary-menu {
+		float: right;
+	}
+	.header-search {
+		display: block;
+		float: left;
+	}
+	[dir=rtl] .header-search {
+		float: right;
+	}
+	.primary-menu li, .secondary-menu li {
+		float:left;
+	}
+	.secondary-menu li:last-child:before {
+		content: "  ";
+	}
+}
