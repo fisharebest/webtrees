@@ -31,16 +31,14 @@ $controller
 	->setPageTitle(I18N::translate('Media objects'))
 	->pageHeader();
 
-$search = Filter::get('search');
+$action = Filter::get('action');
 $sortby = Filter::get('sortby', 'file|title', 'title');
 if (!Auth::isEditor($WT_TREE)) {
 	$sortby = 'title';
 }
-$start          = Filter::getInteger('start');
+$page           = Filter::getInteger('page');
 $max            = Filter::get('max', '10|20|30|40|50|75|100|125|150|200', '20');
 $folder         = Filter::get('folder', null, ''); // MySQL needs an empty string, not NULL
-$reset          = Filter::get('reset');
-$apply_filter   = Filter::get('apply_filter');
 $filter         = Filter::get('filter', null, ''); // MySQL needs an empty string, not NULL
 $columns        = Filter::getInteger('columns', 1, 2, 2);
 $subdirs        = Filter::get('subdirs', 'on');
@@ -48,7 +46,7 @@ $form_type      = Filter::get('form_type', implode('|', array_keys(GedcomTag::ge
 $currentdironly = ($subdirs === 'on') ? false : true;
 
 // reset all variables
-if ($reset === 'Reset') {
+if ($action === 'reset') {
 	$sortby         = 'title';
 	$max            = '20';
 	$folder         = '';
@@ -71,7 +69,9 @@ $medialist = QueryMedia::mediaList(
 );
 
 ?>
-<div id="medialist-page"><h2><?php echo $controller->getPageTitle(); ?></h2>
+<div id="medialist-page">
+
+<h2><?php echo $controller->getPageTitle(); ?></h2>
 
 <form action="medialist.php" method="get">
 	<input type="hidden" name="action" value="filter">
@@ -80,7 +80,9 @@ $medialist = QueryMedia::mediaList(
 		<tbody>
 			<tr>
 				<td class="descriptionbox wrap">
-					<?php echo I18N::translate('Folder'); ?>
+					<label for="folder">
+						<?php echo I18N::translate('Folder'); ?>
+					</label>
 				</td>
 				<td class="optionbox wrap">
 					<?php echo select_edit_control('folder', $folders, null, $folder); ?>
@@ -180,8 +182,12 @@ $medialist = QueryMedia::mediaList(
 				</td>
 				<td class="descriptionbox wrap"></td>
 				<td class="optionbox wrap">
-					<input type="submit" name="apply_filter" value="<?php echo I18N::translate('Search'); ?>">
-					<input type="submit" name="reset" value="<?php echo I18N::translate('Reset'); ?>">
+					<button type="submit" name="action" value="submit">
+						<?php echo I18N::translate('Search'); ?>
+					</button>
+					<button type="submit" name="action" value="reset">
+						<?php echo I18N::translate('reset'); ?>
+					</button>
 				</td>
 			</tr>
 		</tbody>
@@ -189,97 +195,55 @@ $medialist = QueryMedia::mediaList(
 </form>
 
 <?php
-if ($search) {
-	$ct = count($medialist);
-	$count = $max;
-	if ($start + $count > $ct) {
-		$count = $ct - $start;
+if ($action === 'submit') {
+	$url = 'medialist.php?action=submit' .
+		'&amp;folder=' . Filter::escapeUrl($folder) .
+		'&amp;sortby=' . Filter::escapeUrl($sortby) .
+		'&amp;subdirs=' . Filter::escapeUrl($subdirs) .
+		'&amp;filter=' . Filter::escapeUrl($filter) .
+		'&amp;form_type=' . Filter::escapeUrl($form_type) .
+		'&amp;columns=' . Filter::escapeUrl($columns) .
+		'&amp;max=' . Filter::escapeUrl($max);
+
+	$count = count($medialist);
+	$pages = (int) (($count + $max - 1) / $max);
+	$page  = max(min($page, $pages), 1);
+
+	if (I18N::direction() === 'ltr') {
+		$icons = array('first' => 'ldarrow', 'previous' => 'larrow', 'next' => 'rarrow', 'last' => 'rdarrow');
+	} else {
+		$icons = array('first' => 'rdarrow', 'previous' => 'rarrow', 'next' => 'larrow', 'last' => 'ldarrow');
 	}
 
-	echo '<div><p>', I18N::translate('Media objects found'), ' ', $ct, '</p>';
+	echo '<div><p>', I18N::translate('Media objects found'), ' ', $count, '</p>';
 
-	if ($ct > 0) {
-		$currentPage = ((int) ($start / $max)) + 1;
-		$lastPage    = (int) (($ct + $max - 1) / $max);
-
+	if ($count > 0) {
 		echo '<table class="list_table">';
 		// Display controls twice - at the top and bottom of the table
 		foreach (array('thead', 'tfoot') as $tsection) {
 			echo '<', $tsection, '><tr><td colspan="2">';
-
 			echo '<table class="list_table_controls"><tr><td>';
-			if (I18N::direction() === 'ltr') {
-				if ($ct > $max) {
-					if ($currentPage > 1) {
-						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=0&amp;max=', $max, '" class="icon-ldarrow"></a>';
-					}
-					if ($start > 0) {
-						$newstart = $start - $max;
-						if ($start < 0) {
-							$start = 0;
-						}
-						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $newstart, '&amp;max=', $max, '" class="icon-larrow"></a>';
-					}
-				}
-			} else {
-				if ($ct > $max) {
-					if ($currentPage < $lastPage) {
-						$lastStart = ((int) ($ct / $max)) * $max;
-						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $lastStart, '&amp;max=', $max, '" class="icon-rdarrow"></a>';
-					}
-					if ($start + $max < $ct) {
-						$newstart = $start + $count;
-						if ($start < 0) {
-							$start = 0;
-						}
-						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $newstart, '&amp;max=', $max, '" class="icon-rarrow"></a>';
-					}
-				}
+			if ($page > 1) {
+				echo '<a href="', $url, '&amp;page=1" class="icon-', $icons['first'] ,'"></a>';
+				echo '<a href="', $url, '&amp;page=', $page - 1 ,'" class="icon-', $icons['previous'] , '"></a>';
 			}
-			echo '</td>';
-			echo '<td>', I18N::translate('Page %s of %s', $currentPage, $lastPage), '</td>';
-			echo '<td>';
-			if (I18N::direction() === 'ltr') {
-				if ($ct > $max) {
-					if ($start + $max < $ct) {
-						$newstart = $start + $count;
-						if ($start < 0) {
-							$start = 0;
-						}
-						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $newstart, '&amp;max=', $max, '" class="icon-rarrow"></a>';
-					}
-					if ($currentPage < $lastPage) {
-						$lastStart = ((int) ($ct / $max)) * $max;
-						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $lastStart, '&amp;max=', $max, '" class="icon-rdarrow"></a>';
-					}
-				}
-			} else {
-				if ($ct > $max) {
-					if ($start > 0) {
-						$newstart = $start - $max;
-						if ($start < 0) {
-							$start = 0;
-						}
-						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=', $newstart, '&amp;max=', $max, '" class="icon-larrow"></a>';
-					}
-					if ($currentPage > 1) {
-						echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter=', rawurlencode($filter), '&amp;columns=', $columns, '&amp;apply_filter=', $apply_filter, '&amp;start=0&amp;max=', $max, '" class="icon-ldarrow"></a>';
-					}
-				}
+			echo '</td><td>', I18N::translate('Page %s of %s', $page, $pages), '</td><td>';
+			if ($page < $pages) {
+				echo '<a href="', $url, '&amp;page=', $page + 1 ,'" class="icon-', $icons['next'] , '"></a>';
+				echo '<a href="', $url, '&amp;page=', $pages ,'" class="icon-', $icons['last'] ,'"></a>';
 			}
 			echo '</td></tr></table>';
-
 			echo '</td></tr></', $tsection, '>';
 		}
 
 		echo '<tbody><tr>';
-		for ($i = $start, $n = 0; $i < $start + $count; ++$i) {
-			$mediaobject = $medialist[$i];
+		for ($i = 0, $n = 0; $i < $max; ++$i) {
+			$mediaobject = $medialist[($page - 1) * $max + $i];
 
-			if ($columns == '1') {
+			if ($columns === 1) {
 				echo '<td class="media-col1 list_value_wrap">';
 			}
-			if ($columns == '2') {
+			if ($columns === 2) {
 				echo '<td class="media-col2 list_value_wrap">';
 			}
 
