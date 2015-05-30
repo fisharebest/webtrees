@@ -49,7 +49,7 @@ return array(
     'Fisharebest\\Webtrees\\FabTheme' => $baseDir . '/app/Theme/FabTheme.php',
     'Fisharebest\\Webtrees\\Fact' => $baseDir . '/app/Fact.php',
     'Fisharebest\\Webtrees\\FactSourcesReportModule' => $baseDir . '/app/Module/FactSourcesReportModule.php',
-    'Fisharebest\\Webtrees\\FamiliesSidebarModule' => $baseDir . '/app/Module/FamiliesSidebarSidebarModule.php',
+    'Fisharebest\\Webtrees\\FamiliesSidebarModule' => $baseDir . '/app/Module/FamiliesSidebarModule.php',
     'Fisharebest\\Webtrees\\Family' => $baseDir . '/app/Family.php',
     'Fisharebest\\Webtrees\\FamilyBookController' => $baseDir . '/app/Controller/FamilyBookController.php',
     'Fisharebest\\Webtrees\\FamilyController' => $baseDir . '/app/Controller/FamilyController.php',
