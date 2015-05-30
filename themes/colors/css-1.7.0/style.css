@@ -31,19 +31,10 @@ p {
 	margin: 12px 0;
 }
 
-#home-page {
-	padding: 8px 0;
-}
-
 #content {
-	margin-left: 8px;  
-	margin-right: 8px;
-	padding-top: 10px;
-}
-
-main {
 	display: block;
 	clear: both;
+	margin: 10px 8px 0 8px;
 }
 
 /* ====== Round Corners ======== */
@@ -4249,7 +4240,7 @@ header h1 {
 	float: left;
 	font-size: 24px;
 	font-weight: normal;
-	margin: 14px 12px 3px;
+	margin: 14px 5px 3px;
 }
 
 [dir=rtl] header h1 {
@@ -4271,7 +4262,7 @@ header {
 /* ====== Secondary menu ======= */
 .secondary-menu {
 	float: right;
-	margin: 21px 10px 4px 0;
+	margin: 12px 10px 12px 0;
 	white-space: nowrap;
 	list-style: none;
 	padding: 1px;
@@ -4289,6 +4280,10 @@ header {
 .secondary-menu  ul li:before,
 .secondary-menu li:first-child:before {
 	content: "";
+}
+
+.secondary-menu li:last-child:before {
+	content: "  ";
 }
 
 .secondary-menu ul {
@@ -4446,7 +4441,7 @@ header nav {
 	background-repeat: no-repeat;
 	height: 40px;
 	line-height: 40px;
-	margin: 4px 0 0 16px;
+	margin: 4px 9px 0 7px;
 	text-indent: 32px;
 	width: 40px;
 }
@@ -4464,7 +4459,7 @@ header nav {
 
 /* Reverse left and right on RTL pages */
 [dir=rtl] .primary-menu > li {
-	margin: 4px 16px 0 0;
+	margin: 4px 7px 0 0;
 }
 
 [dir=rtl] .primary-menu li {
@@ -5315,5 +5310,50 @@ footer {
 		left: -10px;
 		top: -60px;
 		z-index: 1;
+	}
+}
+
+/* Mobile low and high resolution viewports */
+@media (max-width: 600px) {
+	#content {
+    margin-top: 50px;
+    }
+
+    [dir="rtl"] .secondary-menu {
+    clear:both;
+    float: left;
+    margin: 12px 10px 12px 10px;
+	}
+}
+
+@media (max-width: 400px) {
+	.secondary-menu {
+		float: left;
+		margin: 0px 5px 4px;
+	}
+	[dir=rtl] .secondary-menu {
+		float: right;
+		margin: 0px 5px 4px;
+	}
+	#content {
+    margin-top: 45px;
+    }
+	.header-search {
+		display: block;
+		margin-top: 5px;
+	}
+	.primary-menu > li {
+		background-image: url("images/sprites-top2-menu.png");
+		margin: 0 0 0 7px;
+		width: 22px;
+	}
+	[dir=rtl] .primary-menu > li {
+		margin: 0 7px 0 0;
+	}
+	.primary-menu > li > ul {
+		top: 32px;
+	}
+	.primary-menu {
+		height: 40px;
 	}
 }

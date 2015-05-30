@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-05-14 08:44+0100\n"
-"PO-Revision-Date: 2015-05-14 13:24+0100\n"
+"PO-Revision-Date: 2015-05-24 10:36+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
@@ -427,7 +427,7 @@ msgstr[1] "%s weken"
 msgid "%s year"
 msgid_plural "%s years"
 msgstr[0] "%s jaar"
-msgstr[1] "%s jaren"
+msgstr[1] "%s jaar"
 
 #: app/I18N.php:787
 #, php-format
@@ -692,15 +692,33 @@ msgstr "<b>Let op:</b> Privé informatie van levende personen wordt alleen aan d
 
 #: login.php:150
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>authorized</u> users only.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your information, the administrator will either approve or decline your account application.  You will receive an email message when your application has been approved."
-msgstr "<center><b>Welkom op deze genealogie website</b></center><br><br>Toegang tot deze website is voorbehouden aan <u>geautoriseerde</u> gebruikers.<br>Wanneer u een gebruikersnaam en wachtwoord hebt, dan kunt u zich op deze pagina aanmelden.<br><br>Als u nog geen gebruikersnaam en wachtwoord hebt, dan kunt u er met behulp van de onderstaande link een aanvragen.<br>Na verificatie van de door u verstrekte informatie kan de sitebeheerder uw aanvraag toekennen of afwijzen.<br>Zodra uw aanvraag is toegekend, ontvangt u hierover een e-mailbericht."
+msgstr ""
+"<center><b>Welkom op deze genealogie website</b></center><br>Toegang tot "
+"deze website is voorbehouden aan <u>geautoriseerde</u> gebruikers.<br><br>"
+"Als u een gebruikersaccount hebt, kunt u inloggen op deze pagina. Als u geen "
+"gebruikersaccount hebt, kunt u er een aanvragen door op de link hieronder te "
+"klikken.<br><br>Nadat uw aanvraag is gecontroleerd, zal de sitebeheerder uw "
+"account activeren. U ontvangt een e-mail wanneer uw aanvraag is goedgekeurd."
 
 #: login.php:153
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to <u>family members only</u>.<br><br>If you have a user account you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying the information you provide, the administrator will either approve or decline your request for an account.  You will receive an email when your request is approved."
-msgstr "<center><b>Welkom op deze genealogie website</b></center><br><br>Toegang tot deze website is voorbehouden aan <b>familieleden</b><br><br>Wanneer u een gebruikersnaam en wachtwoord hebt, dan kunt u zich op deze pagina aanmelden.<br><br>Als u nog geen gebruikersnaam en wachtwoord hebt, dan kunt u er met behulp van de onderstaande link een aanvragen.<br>Na verificatie van de door u verstrekte informatie kan de sitebeheerder uw aanvraag toekennen of afwijzen.<br>Zodra uw aanvraag is toegekend, ontvangt u hierover een e-mailbericht."
+msgstr ""
+"<center><b>Welkom op deze genealogie website</b></center><br>Toegang tot "
+"deze website is voorbehouden aan <u>familieleden</u><br><br>Als u een "
+"gebruikersaccount hebt, kunt u inloggen op deze pagina. Als u geen "
+"gebruikersaccount hebt, kunt u er een aanvragen door op de link hieronder te "
+"klikken.<br><br>Nadat uw aanvraag is gecontroleerd, zal de sitebeheerder uw "
+"account activeren. U ontvangt een e-mail wanneer uw aanvraag is goedgekeurd."
 
 #: login.php:147
 msgid "<center><b>Welcome to this genealogy website</b></center><br>Access to this website is permitted to every visitor who has a user account.<br><br>If you have a user account, you can login on this page.  If you don’t have a user account, you can apply for one by clicking on the appropriate link below.<br><br>After verifying your application, the website administrator will activate your account.  You will receive an email when your application has been approved."
-msgstr "<center><b>Welkom op deze genealogie website</b></center><br>Toegang tot deze site is voorbehouden aan bezoekers met een gebruikersaccount.<br><br>Als u een gebruikersaccount heeft, kunt u inloggen op deze pagina.  Als u geen gebruikersaccount heeft, kunt u er een aanvragen door op de link hieronder te klikken.<br><br>Nadat uw aanvraag is gecontroleerd, zal de website beheerder uw account activeren. U ontvangt een e-mail wanneer uw aanvraag is goedgekeurd."
+msgstr ""
+"<center><b>Welkom op deze genealogie website</b></center><br>Toegang tot "
+"deze site is voorbehouden aan bezoekers met een gebruikersaccount.<br><br>"
+"Als u een gebruikersaccount hebt, kunt u inloggen op deze pagina. Als u geen "
+"gebruikersaccount hebt, kunt u er een aanvragen door op de link hieronder te "
+"klikken.<br><br>Nadat uw aanvraag is gecontroleerd, zal de sitebeheerder uw "
+"account activeren. U ontvangt een e-mail wanneer uw aanvraag is goedgekeurd."
 
 #. I18N: default option in list of themes
 #: admin_trees_config.php:1015 admin_users.php:470 edituser.php:250

@@ -1384,6 +1384,87 @@ $controller
 		</div>
 	</div>
 
+	<!-- PEDIGREE_FULL_DETAILS -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Show chart details by default'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('PEDIGREE_FULL_DETAILS', $no_yes, $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Show chart details by default” configuration setting */ I18N::translate('This is the initial setting for the “show details” option on the charts.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- PEDIGREE_SHOW_GENDER -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Gender icon on charts'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('PEDIGREE_SHOW_GENDER', $hide_show, $WT_TREE->getPreference('PEDIGREE_SHOW_GENDER'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Gender icon on charts” configuration setting */ I18N::translate('This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender.  The option simply removes some duplicate information from the box.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- SHOW_PARENTS_AGE -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Age of parents next to child’s birthdate'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('SHOW_PARENTS_AGE', $hide_show, $WT_TREE->getPreference('SHOW_PARENTS_AGE'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting */ I18N::translate('This option controls whether or not to show age of father and mother next to child’s birthdate on charts.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- SHOW_LDS_AT_GLANCE -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */ I18N::translate('LDS ordinance codes in chart boxes'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('SHOW_LDS_AT_GLANCE', $hide_show, $WT_TREE->getPreference('SHOW_LDS_AT_GLANCE'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting. "B", "E", "S" and "P" should not be translated. */ I18N::translate('This is a summary of the <abbr title="The Church of Jesus Christ of Latter-day Saints">LDS</abbr> ordinances for the individual.  “B” indicates an LDS baptism.  “E” indicates an LDS endowment.  “S” indicates an LDS spouse sealing.  “P” indicates an LDS child-to-parent sealing.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- CHART_BOX_TAGS -->
+	<div class="form-group">
+		<label class="control-label col-sm-3" for="CHART_BOX_TAGS">
+			<?php echo I18N::translate('Other facts to show in charts'); ?>
+		</label>
+		<div class="col-sm-9">
+			<div class="input-group">
+				<input
+					class="form-control"
+					dir="ltr"
+					id="CHART_BOX_TAGS"
+					maxlength="255"
+					name="CHART_BOX_TAGS"
+					type="text"
+					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('CHART_BOX_TAGS')); ?>"
+					>
+				<div class="input-group-btn">
+					<a class="btn btn-default" onclick="return findFact(document.getElementById('CHART_BOX_TAGS'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
+						<i class="fa fa-pencil"></i>
+						<?php echo /* I18N: button label */ I18N::translate('edit'); ?>
+					</a>
+				</div>
+			</div>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Other facts to show in charts” configuration setting */ I18N::translate('This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field.'); ?>
+			</p>
+		</div>
+	</div>
+
 	<h3><?php echo I18N::translate('Individual pages'); ?></h3>
 
 	<!-- EXPAND_RELATIVES_EVENTS -->
@@ -1489,6 +1570,80 @@ $controller
 			</div>
 		</div>
 	</fieldset>
+	<!-- SHOW_FACT_ICONS -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */
+			I18N::translate('Fact icons'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('SHOW_FACT_ICONS', $hide_show, $WT_TREE->getPreference('SHOW_FACT_ICONS'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Fact icons” configuration setting */
+				I18N::translate('Some themes can display icons on the “Facts and events” tab.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- EXPAND_NOTES -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */
+			I18N::translate('Automatically expand notes'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('EXPAND_NOTES', $no_yes, $WT_TREE->getPreference('EXPAND_NOTES'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Automatically expand notes” configuration setting */
+				I18N::translate('This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- EXPAND_SOURCES -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */
+			I18N::translate('Automatically expand sources'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('EXPAND_SOURCES', $no_yes, $WT_TREE->getPreference('EXPAND_SOURCES'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Automatically expand sources” configuration setting */
+				I18N::translate('This option controls whether or not to automatically display content of a <i>Source</i> record on the Individual page.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- SHOW_LEVEL2_NOTES -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */
+			I18N::translate('Show all notes and source references on notes and sources tabs'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('SHOW_LEVEL2_NOTES', $no_yes, $WT_TREE->getPreference('SHOW_LEVEL2_NOTES'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Show all notes and source references on notes and sources tabs” configuration setting */
+				I18N::translate('This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record.  These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record.  These are <i>level 2</i> Notes and Source references because the various Facts are at level 1.'); ?>
+			</p>
+		</div>
+	</fieldset>
+
+	<!-- SHOW_AGE_DIFF -->
+	<fieldset class="form-group">
+		<legend class="control-label col-sm-3">
+			<?php echo /* I18N: A configuration setting */
+			I18N::translate('Date differences'); ?>
+		</legend>
+		<div class="col-sm-9">
+			<?php echo radio_buttons('SHOW_AGE_DIFF', $hide_show, $WT_TREE->getPreference('SHOW_AGE_DIFF'), 'class="radio-inline"'); ?>
+			<p class="small text-muted">
+				<?php echo /* I18N: Help text for the “Date differences” configuration setting */
+				I18N::translate('When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc.'); ?>
+			</p>
+		</div>
+	</fieldset>
 
 	<h3><?php echo I18N::translate('Places'); ?></h3>
 
@@ -1535,156 +1690,6 @@ $controller
 			</p>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Format text and notes” configuration setting */ I18N::translate('Markdown is a simple system of formatting, used on websites such as Wikipedia.  It uses unobtrusive punctuation characters to create headings and sub-headings, bold and italic text, lists, tables, etc.'); ?>
-			</p>
-		</div>
-	</fieldset>
-
-	<h3><?php echo I18N::translate('Charts'); ?></h3>
-
-	<!-- PEDIGREE_FULL_DETAILS -->
-	<fieldset class="form-group">
-		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Show chart details by default'); ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo radio_buttons('PEDIGREE_FULL_DETAILS', $no_yes, $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS'), 'class="radio-inline"'); ?>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Show chart details by default” configuration setting */ I18N::translate('This is the initial setting for the “show details” option on the charts.'); ?>
-			</p>
-		</div>
-	</fieldset>
-
-	<!-- PEDIGREE_SHOW_GENDER -->
-	<fieldset class="form-group">
-		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Gender icon on charts'); ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo radio_buttons('PEDIGREE_SHOW_GENDER', $hide_show, $WT_TREE->getPreference('PEDIGREE_SHOW_GENDER'), 'class="radio-inline"'); ?>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Gender icon on charts” configuration setting */ I18N::translate('This option controls whether or not to show the individual’s gender icon on charts.<br><br>Since the gender is also indicated by the color of the box, this option doesn’t conceal the gender.  The option simply removes some duplicate information from the box.'); ?>
-			</p>
-	</div>
-	</fieldset>
-
-	<!-- SHOW_PARENTS_AGE -->
-	<fieldset class="form-group">
-		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Age of parents next to child’s birthdate'); ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo radio_buttons('SHOW_PARENTS_AGE', $hide_show, $WT_TREE->getPreference('SHOW_PARENTS_AGE'), 'class="radio-inline"'); ?>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Age of parents next to child’s birthdate” configuration setting */ I18N::translate('This option controls whether or not to show age of father and mother next to child’s birthdate on charts.'); ?>
-	</p>
-		</div>
-	</fieldset>
-
-	<!-- SHOW_LDS_AT_GLANCE -->
-	<fieldset class="form-group">
-		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('LDS ordinance codes in chart boxes'); ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo radio_buttons('SHOW_LDS_AT_GLANCE', $hide_show, $WT_TREE->getPreference('SHOW_LDS_AT_GLANCE'), 'class="radio-inline"'); ?>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “LDS ordinance codes in chart boxes” configuration setting. "B", "E", "S" and "P" should not be translated. */ I18N::translate('This is a summary of the <abbr title="The Church of Jesus Christ of Latter-day Saints">LDS</abbr> ordinances for the individual.  “B” indicates an LDS baptism.  “E” indicates an LDS endowment.  “S” indicates an LDS spouse sealing.  “P” indicates an LDS child-to-parent sealing.'); ?>
-			</p>
-		</div>
-	</fieldset>
-
-	<!-- CHART_BOX_TAGS -->
-	<div class="form-group">
-		<label class="control-label col-sm-3" for="CHART_BOX_TAGS">
-			<?php echo I18N::translate('Other facts to show in charts'); ?>
-		</label>
-		<div class="col-sm-9">
-			<div class="input-group">
-				<input
-					class="form-control"
-					dir="ltr"
-					id="CHART_BOX_TAGS"
-					maxlength="255"
-					name="CHART_BOX_TAGS"
-					type="text"
-					value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('CHART_BOX_TAGS')); ?>"
-					>
-				<div class="input-group-btn">
-					<a class="btn btn-default" onclick="return findFact(document.getElementById('CHART_BOX_TAGS'), '<?php echo $WT_TREE->getNameHtml(); ?>');">
-						<i class="fa fa-pencil"></i>
-						<?php echo /* I18N: button label */ I18N::translate('edit'); ?>
-					</a>
-				</div>
-			</div>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Other facts to show in charts” configuration setting */ I18N::translate('This should be a comma or space separated list of facts, in addition to birth and death, that you want to appear in chart boxes such as the pedigree chart.  This list requires you to use fact tags as defined in the GEDCOM 5.5.1 standard.  For example, if you wanted the occupation to show up in the box, you would add “OCCU” to this field.'); ?>
-			</p>
-		</div>
-	</div>
-
-	<h3><?php echo I18N::translate('Individual pages'); ?></h3>
-
-	<!-- SHOW_FACT_ICONS -->
-	<fieldset class="form-group">
-		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Fact icons'); ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo radio_buttons('SHOW_FACT_ICONS', $hide_show, $WT_TREE->getPreference('SHOW_FACT_ICONS'), 'class="radio-inline"'); ?>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Fact icons” configuration setting */ I18N::translate('Some themes can display icons on the “Facts and events” tab.'); ?>
-			</p>
-		</div>
-	</fieldset>
-
-	<!-- EXPAND_NOTES -->
-	<fieldset class="form-group">
-		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Automatically expand notes'); ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo radio_buttons('EXPAND_NOTES', $no_yes, $WT_TREE->getPreference('EXPAND_NOTES'), 'class="radio-inline"'); ?>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Automatically expand notes” configuration setting */ I18N::translate('This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page.'); ?>
-			</p>
-		</div>
-	</fieldset>
-
-	<!-- EXPAND_SOURCES -->
-	<fieldset class="form-group">
-		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Automatically expand sources'); ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo radio_buttons('EXPAND_SOURCES', $no_yes, $WT_TREE->getPreference('EXPAND_SOURCES'), 'class="radio-inline"'); ?>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Automatically expand sources” configuration setting */ I18N::translate('This option controls whether or not to automatically display content of a <i>Source</i> record on the Individual page.'); ?>
-			</p>
-		</div>
-	</fieldset>
-
-	<!-- SHOW_LEVEL2_NOTES -->
-	<fieldset class="form-group">
-		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Show all notes and source references on notes and sources tabs'); ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo radio_buttons('SHOW_LEVEL2_NOTES', $no_yes, $WT_TREE->getPreference('SHOW_LEVEL2_NOTES'), 'class="radio-inline"'); ?>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Show all notes and source references on notes and sources tabs” configuration setting */ I18N::translate('This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br><br>Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual’s database record.  These are <i>level 1</i> Notes and Source references.<br><br>The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual’s database record.  These are <i>level 2</i> Notes and Source references because the various Facts are at level 1.'); ?>
-			</p>
-		</div>
-	</fieldset>
-
-	<!-- SHOW_AGE_DIFF -->
-	<fieldset class="form-group">
-		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Date differences'); ?>
-		</legend>
-		<div class="col-sm-9">
-			<?php echo radio_buttons('SHOW_AGE_DIFF', $hide_show, $WT_TREE->getPreference('SHOW_AGE_DIFF'), 'class="radio-inline"'); ?>
-			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Date differences” configuration setting */ I18N::translate('When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc.'); ?>
 			</p>
 		</div>
 	</fieldset>

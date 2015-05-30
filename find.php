@@ -518,7 +518,7 @@ if ($action == "filter") {
 
 	// Output Media
 	if ($type === 'media') {
-		$medialist = QueryMedia::mediaList('', 'include', 'title', $filter);
+		$medialist = QueryMedia::mediaList('', 'include', 'title', $filter, '');
 
 		echo '<div id="find-output">';
 

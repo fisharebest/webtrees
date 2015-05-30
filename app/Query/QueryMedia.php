@@ -78,11 +78,12 @@ class QueryMedia {
 	 * @param string $subfolders either "include" or "exclude"
 	 * @param string $sort       either "file" or "title"
 	 * @param string $filter     optional search string
+	 * @param string $form_type  option OBJE/FILE/FORM/TYPE
 	 *
 	 * @return Media[]
 	 * @throws \Exception
 	 */
-	public static function mediaList($folder, $subfolders, $sort, $filter) {
+	public static function mediaList($folder, $subfolders, $sort, $filter, $form_type) {
 		global $WT_TREE;
 
 		// All files in the folder, plus external files
@@ -121,6 +122,11 @@ class QueryMedia {
 			$sql .= " AND (SUBSTRING_INDEX(m_filename, '/', -1) LIKE CONCAT('%', ?, '%') OR m_titl LIKE CONCAT('%', ?, '%'))";
 			$args[] = Filter::escapeLike($filter);
 			$args[] = Filter::escapeLike($filter);
+		}
+
+		if ($form_type) {
+			$sql .= " AND (m_gedcom LIKE CONCAT('%\n3 TYPE ', ?, '%'))";
+			$args[] = $form_type;
 		}
 
 		switch ($sort) {

@@ -680,7 +680,7 @@ function import_record($gedrec, Tree $tree, $update) {
 			$name = $xref;
 		}
 		Database::prepare(
-			"INSERT INTO `##sources` (s_id, s_file, s_name, s_gedcom) VALUES (?, ?, ?, ?)"
+			"INSERT INTO `##sources` (s_id, s_file, s_name, s_gedcom) VALUES (?, ?, LEFT(?, 255), ?)"
 		)->execute(array(
 			$xref, $tree_id, $name, $gedrec
 		));

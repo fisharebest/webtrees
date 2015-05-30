@@ -33,7 +33,7 @@ $controller
 	->setPageTitle(I18N::translate('Manage family trees'));
 
 // Show a reduced page when there are more than a certain number of trees
-$multiple_tree_threshold = Site::getPreference('MULTIPLE_TREE_THRESHOLD', 100);
+$multiple_tree_threshold = Site::getPreference('MULTIPLE_TREE_THRESHOLD') ?: 500;
 
 $gedcom_files = glob(WT_DATA_DIR . '*.{ged,Ged,GED}', GLOB_NOSORT | GLOB_BRACE);
 
