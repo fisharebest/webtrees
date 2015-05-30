@@ -554,7 +554,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 				}
 			}
 		} elseif ($remove) {
-			unset ($cart[$WT_TREE->getTreeId()][$remove]);
+			unset($cart[$WT_TREE->getTreeId()][$remove]);
 			Session::put('cart', $cart);
 		} elseif (isset($_REQUEST['empty'])) {
 			$cart[$WT_TREE->getTreeId()] = array();

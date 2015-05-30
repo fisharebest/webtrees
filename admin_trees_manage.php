@@ -313,7 +313,7 @@ $all_trees = Tree::getAll();
 // On sites with hundreds or thousands of trees, this page becomes very large.
 // Just show the current tree, the default tree, and unimported trees
 if (count($all_trees) >= $multiple_tree_threshold) {
-	$all_trees = array_filter($all_trees, function($x) use ($WT_TREE) {
+	$all_trees = array_filter($all_trees, function ($x) use ($WT_TREE) {
 		return $x->getPreference('imported') === '0' || $WT_TREE->getTreeId() === $x->getTreeId() || $x->getName() === Site::getPreference('DEFAULT_GEDCOM');
 	});
 }

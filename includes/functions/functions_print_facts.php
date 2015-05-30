@@ -687,8 +687,7 @@ function print_main_sources(Fact $fact, $level) {
 				} else {
 					echo GedcomTag::getLabel($factname, $parent);
 				}
-			} else
-			if ($can_edit) {
+			} elseif ($can_edit) {
 				echo "<a onclick=\"return edit_record('$pid', '$fact_id');\" href=\"#\" title=\"", I18N::translate('Edit'), '">';
 					if ($fact->getParent()->getTree()->getPreference('SHOW_FACT_ICONS')) {
 						if ($level == 1) {
@@ -952,7 +951,7 @@ function print_main_notes(Fact $fact, $level) {
 				} else {
 					echo GedcomTag::getLabel($factname, $parent);
 				}
-			} else if ($factname != 'NOTE') {
+			} elseif ($factname != 'NOTE') {
 				// Note is already printed
 				echo GedcomTag::getLabel($factname, $parent);
 				if ($note) {
@@ -1064,8 +1063,7 @@ function print_main_media(Fact $fact, $level) {
 				} else {
 					echo GedcomTag::getLabel($factname, $parent);
 				}
-			} else
-			if ($can_edit) {
+			} elseif ($can_edit) {
 				echo '<a onclick="window.open(\'addmedia.php?action=editmedia&amp;pid=', $media->getXref(), '\', \'_blank\', edit_window_specs); return false;" href="#" title="', I18N::translate('Edit'), '">';
 				echo GedcomTag::getLabel($factname, $parent), '</a>';
 				echo '<div class="editfacts">';

@@ -562,23 +562,23 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 			echo I18N::translate('yes');
 		}
 
-	} else if ($fact === 'TEMP') {
+	} elseif ($fact === 'TEMP') {
 		echo select_edit_control($element_name, GedcomCodeTemp::templeNames(), I18N::translate('No temple - living ordinance'), $value);
-	} else if ($fact === 'ADOP') {
+	} elseif ($fact === 'ADOP') {
 		echo edit_field_adop($element_name, $value, '', $person);
-	} else if ($fact === 'PEDI') {
+	} elseif ($fact === 'PEDI') {
 		echo edit_field_pedi($element_name, $value, '', $person);
-	} else if ($fact === 'STAT') {
+	} elseif ($fact === 'STAT') {
 		echo select_edit_control($element_name, GedcomCodeStat::statusNames($upperlevel), '', $value);
-	} else if ($fact === 'RELA') {
+	} elseif ($fact === 'RELA') {
 		echo edit_field_rela($element_name, strtolower($value));
-	} else if ($fact === 'QUAY') {
+	} elseif ($fact === 'QUAY') {
 		echo select_edit_control($element_name, GedcomCodeQuay::getValues(), '', $value);
-	} else if ($fact === '_WT_USER') {
+	} elseif ($fact === '_WT_USER') {
 		echo edit_field_username($element_name, $value);
-	} else if ($fact === 'RESN') {
+	} elseif ($fact === 'RESN') {
 		echo edit_field_resn($element_name, $value);
-	} else if ($fact === '_PRIM') {
+	} elseif ($fact === '_PRIM') {
 		echo '<select id="', $element_id, '" name="', $element_name, '" >';
 		echo '<option value=""></option>';
 		echo '<option value="Y" ';
@@ -593,7 +593,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 		echo '>', /* I18N: option in list box “never use this image” */ I18N::translate('never'), '</option>';
 		echo '</select>';
 		echo '<p class="small text-muted">', I18N::translate('Use this image for charts and on the individual’s page.'), '</p>';
-	} else if ($fact === 'SEX') {
+	} elseif ($fact === 'SEX') {
 		echo '<select id="', $element_id, '" name="', $element_name, '"><option value="M" ';
 		if ($value === 'M') {
 			echo 'selected';
@@ -607,7 +607,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 			echo 'selected';
 		}
 		echo '>', I18N::translateContext('unknown gender', 'Unknown'), '</option></select>';
-	} else if ($fact === 'TYPE' && $level === 3) {
+	} elseif ($fact === 'TYPE' && $level === 3) {
 		//-- Build the selector for the Media 'TYPE' Fact
 		echo '<select name="text[]"><option selected value="" ></option>';
 		$selectedValue = strtolower($value);
@@ -622,7 +622,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 			echo '>', $typeValue, '</option>';
 		}
 		echo '</select>';
-	} else if (($fact === 'NAME' && $upperlevel !== 'REPO') || $fact === '_MARNM') {
+	} elseif (($fact === 'NAME' && $upperlevel !== 'REPO') || $fact === '_MARNM') {
 		// Populated in javascript from sub-tags
 		echo '<input type="hidden" id="', $element_id, '" name="', $element_name, '" onchange="updateTextName(\'', $element_id, '\');" value="', Filter::escapeHtml($value), '" class="', $fact, '">';
 		echo '<span id="', $element_id, '_display" dir="auto">', Filter::escapeHtml($value), '</span>';
@@ -1607,11 +1607,11 @@ function insert_missing_subtags($level1tag, $add_date = false) {
 				add_simple_tag('2 ' . $key . ' ' . strtoupper(date('d M Y')), $level1tag);
 			} elseif ($level1tag === '_TODO' && $key === '_WT_USER') {
 				add_simple_tag('2 ' . $key . ' ' . Auth::user()->getUserName(), $level1tag);
-			} else if ($level1tag === 'TITL' && strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), $key) !== false) {
+			} elseif ($level1tag === 'TITL' && strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), $key) !== false) {
 				add_simple_tag('2 ' . $key, $level1tag);
-			} else if ($level1tag === 'NAME' && strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), $key) !== false) {
+			} elseif ($level1tag === 'NAME' && strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), $key) !== false) {
 				add_simple_tag('2 ' . $key, $level1tag);
-			} else if ($level1tag !== 'TITL' && $level1tag !== 'NAME') {
+			} elseif ($level1tag !== 'TITL' && $level1tag !== 'NAME') {
 				add_simple_tag('2 ' . $key, $level1tag);
 			}
 			// Add level 3/4 tags as appropriate

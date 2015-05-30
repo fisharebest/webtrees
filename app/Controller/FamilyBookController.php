@@ -224,21 +224,21 @@ class FamilyBookController extends ChartController {
 					if ($genoffset == 3) {
 						if ($famcount == 3) {
 							$linefactor = $tblheight / 2;
-						} else if ($famcount > 3) {
+						} elseif ($famcount > 3) {
 							$linefactor = $tblheight;
 						}
 					}
 					if ($genoffset == 4) {
 						if ($famcount == 4) {
 							$linefactor = $tblheight;
-						} else if ($famcount > 4) {
+						} elseif ($famcount > 4) {
 							$linefactor = ($famcount - $genoffset) * ($tblheight * 1.5);
 						}
 					}
 					if ($genoffset == 5) {
 						if ($famcount == 5) {
 							$linefactor = 0;
-						} else if ($famcount > 5) {
+						} elseif ($famcount > 5) {
 							$linefactor = $tblheight * ($famcount - $genoffset);
 						}
 					}

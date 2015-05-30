@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees;
 interface ModuleBlockInterface {
 	/**
 	 * Generate the HTML content of this block.
-	 * 
+	 *
 	 * @param integer $block_id
 	 *
 	 * @return string

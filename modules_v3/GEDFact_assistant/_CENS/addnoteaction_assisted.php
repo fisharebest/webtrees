@@ -86,7 +86,7 @@ if (!empty($NOTE)) {
 	for ($k = 0; $k < count($newlines); $k++) {
 		if ($k == 0 && count($newlines) > 1) {
 			$newgedrec = "0 @XREF@ NOTE $newlines[$k]\n";
-		} else if ($k == 0) {
+		} elseif ($k == 0) {
 			$newgedrec = "0 @XREF@ NOTE $newlines[$k]\n1 CONT\n";
 		} else {
 			$newgedrec .= "1 CONT $newlines[$k]\n";

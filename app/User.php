@@ -259,7 +259,7 @@ class User {
 	/**
 	 * Delete a user
 	 */
-	function delete() {
+	public function delete() {
 		// Don't delete the logs.
 		Database::prepare("UPDATE `##log` SET user_id=NULL WHERE user_id =?")->execute(array($this->user_id));
 		// Take over the user’s pending changes. (What else could we do with them?)

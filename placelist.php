@@ -244,3 +244,4 @@ case 'hierarchy':
 }
 
 echo '</div>'; // <div id="place-hierarchy">
+

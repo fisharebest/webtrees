@@ -114,7 +114,7 @@ function spanLTRRTL($inputText, $direction = 'BOTH', $class = '') {
 					}
 				}
 				breakCurrentSpan($result);
-			} else if ($waitingText == '') {
+			} elseif ($waitingText == '') {
 				$result .= $element;
 			} else {
 				$waitingText .= $element;
@@ -164,7 +164,7 @@ function spanLTRRTL($inputText, $direction = 'BOTH', $class = '') {
 					// This is not a digit.  Is it numeric punctuation?
 					if (substr($workingText . "\n", $offset, 6) == '&nbsp;') {
 						$offset += 6; // This could be numeric punctuation
-					} else if (strpos($numberPunctuation, $charArray['letter']) !== false) {
+					} elseif (strpos($numberPunctuation, $charArray['letter']) !== false) {
 						$offset += $charArray['length']; // This could be numeric punctuation
 					}
 					// If the next character is a digit, the current character is numeric punctuation
@@ -193,7 +193,7 @@ function spanLTRRTL($inputText, $direction = 'BOTH', $class = '') {
 							$currentLetter = WT_UTF8_LRE . $currentLetter;
 						}
 					}
-				} else if (strpos($numbers, $currentLetter) !== false) {
+				} elseif (strpos($numbers, $currentLetter) !== false) {
 					$numberState = true; // The current letter is a digit
 					if ($currentState == 'RTL') {
 						$currentLetter = WT_UTF8_LRE . $currentLetter;
@@ -650,10 +650,10 @@ function finishCurrentSpan(&$result, $theEnd = false) {
 		if ($posBlank === false) {
 			$posSeparator    = $posNbsp;
 			$lengthSeparator = 6;
-		} else if ($posNbsp === false) {
+		} elseif ($posNbsp === false) {
 			$posSeparator    = $posBlank;
 			$lengthSeparator = 1;
-		} else if ($posBlank < $posNbsp) {
+		} elseif ($posBlank < $posNbsp) {
 			$posSeparator    = $posBlank;
 			$lengthSeparator = 1;
 		} else {

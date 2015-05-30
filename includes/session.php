@@ -205,7 +205,7 @@ $path = substr($path, 0, stripos($path, WT_SCRIPT_NAME));
 define('WT_BASE_URL', $protocol . '://' . $host . $port . $path);
 
 // Convert PHP errors into exceptions
-set_error_handler(function($errno, $errstr, $errfile, $errline) {
+set_error_handler(function ($errno, $errstr, $errfile, $errline) {
 	if (error_reporting() & $errno) {
 		throw new \ErrorException($errstr, 0, $errno, $errfile, $errline);
 	} else {
@@ -213,13 +213,13 @@ set_error_handler(function($errno, $errstr, $errfile, $errline) {
 	}
 });
 
-set_exception_handler(function(\Exception $ex) {
+set_exception_handler(function (\Exception $ex) {
 	$long_message = '';
 	$short_message = '';
 
 	foreach ($ex->getTrace() as $level => $frame) {
 		$frame += array('args' => array(), 'file' => 'unknown', 'line' => 'unknown');
-		array_walk($frame['args'], function(&$arg) {
+		array_walk($frame['args'], function (&$arg) {
 			switch (gettype($arg)) {
 			case 'boolean':
 			case 'integer':
@@ -289,7 +289,7 @@ if (file_exists(WT_ROOT . 'data/config.ini.php')) {
 // What is the remote client's IP address
 if (Filter::server('HTTP_CLIENT_IP') !== null) {
 	define('WT_CLIENT_IP', Filter::server('HTTP_CLIENT_IP'));
-} else if (Filter::server('HTTP_X_FORWARDED_FOR') !== null) {
+} elseif (Filter::server('HTTP_X_FORWARDED_FOR') !== null) {
 	define('WT_CLIENT_IP', Filter::server('HTTP_X_FORWARDED_FOR'));
 } else {
 	define('WT_CLIENT_IP', Filter::server('REMOTE_ADDR'));
@@ -364,19 +364,19 @@ case '':
 // Store our session data in the database.
 session_set_save_handler(
 	// open
-	function() {
+	function () {
 		return true;
 	},
 	// close
-	function() {
+	function () {
 		return true;
 	},
 	// read
-	function($id) {
+	function ($id) {
 		return Database::prepare("SELECT session_data FROM `##session` WHERE session_id=?")->execute(array($id))->fetchOne();
 	},
 	// write
-	function($id, $data) {
+	function ($id, $data) {
 		// Only update the session table once per minute, unless the session data has actually changed.
 		Database::prepare(
 			"INSERT INTO `##session` (session_id, user_id, ip_address, session_data, session_time)" .
@@ -391,13 +391,13 @@ session_set_save_handler(
 		return true;
 	},
 	// destroy
-	function($id) {
+	function ($id) {
 		Database::prepare("DELETE FROM `##session` WHERE session_id=?")->execute(array($id));
 
 		return true;
 	},
 	// gc
-	function($maxlifetime) {
+	function ($maxlifetime) {
 		Database::prepare("DELETE FROM `##session` WHERE session_time < DATE_SUB(NOW(), INTERVAL ? SECOND)")->execute(array($maxlifetime));
 
 		return true;

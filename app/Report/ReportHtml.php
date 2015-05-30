@@ -130,7 +130,7 @@ class ReportHtml extends ReportBase {
 	/**
 	 * HTML Setup - ReportHtml
 	 */
-	function setup() {
+	public function setup() {
 		parent::setup();
 
 		// Setting up the correct dimensions if Portrait (default) or Landscape
@@ -163,7 +163,7 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return mixed
 	 */
-	function addElement($element) {
+	public function addElement($element) {
 		if ($this->processing == "B") {
 			return $this->bodyElements[] = $element;
 		} elseif ($this->processing == "H") {
@@ -176,7 +176,7 @@ class ReportHtml extends ReportBase {
 	/**
 	 *
 	 */
-	function runPageHeader() {
+	public function runPageHeader() {
 		foreach ($this->pageHeaderElements as $element) {
 			if (is_object($element)) {
 				$element->render($this);
@@ -191,7 +191,7 @@ class ReportHtml extends ReportBase {
 	/**
 	 *
 	 */
-	function footnotes() {
+	public function footnotes() {
 		$this->currentStyle = "";
 		if (!empty($this->printedfootnotes)) {
 			foreach ($this->printedfootnotes as $element) {
@@ -203,7 +203,7 @@ class ReportHtml extends ReportBase {
 	/**
 	 *
 	 */
-	function run() {
+	public function run() {
 		$controller = new SimpleController;
 		$controller
 			->setPageTitle($this->title)
@@ -306,7 +306,7 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return object ReportHtmlCell
 	 */
-	function createCell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth) {
+	public function createCell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth) {
 		return new ReportHtmlCell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth);
 	}
 
@@ -326,7 +326,7 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return ReportHtmlTextbox
 	 */
-	function createTextBox($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth) {
+	public function createTextBox($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth) {
 		return new ReportHtmlTextbox($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth);
 	}
 
@@ -336,7 +336,7 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return ReportHtmlText
 	 */
-	function createText($style, $color) {
+	public function createText($style, $color) {
 		return new ReportHtmlText($style, $color);
 	}
 
@@ -345,14 +345,14 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return ReportHtmlFootnote
 	 */
-	function createFootnote($style = "") {
+	public function createFootnote($style = "") {
 		return new ReportHtmlFootnote($style);
 	}
 
 	/**
 	 * @return ReportHtmlPageheader
 	 */
-	function createPageHeader() {
+	public function createPageHeader() {
 		return new ReportHtmlPageheader;
 	}
 
@@ -367,7 +367,7 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return ReportHtmlImage
 	 */
-	function createImage($file, $x, $y, $w, $h, $align, $ln) {
+	public function createImage($file, $x, $y, $w, $h, $align, $ln) {
 		return new ReportHtmlImage($file, $x, $y, $w, $h, $align, $ln);
 	}
 
@@ -382,7 +382,7 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return ReportHtmlImage
 	 */
-	function createImageFromObject($mediaobject, $x, $y, $w, $h, $align, $ln) {
+	public function createImageFromObject($mediaobject, $x, $y, $w, $h, $align, $ln) {
 		return new ReportHtmlImage($mediaobject->getHtmlUrlDirect('thumb'), $x, $y, $w, $h, $align, $ln);
 	}
 
@@ -394,7 +394,7 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return ReportHtmlLine
 	 */
-	function createLine($x1, $y1, $x2, $y2) {
+	public function createLine($x1, $y1, $x2, $y2) {
 		return new ReportHtmlLine($x1, $y1, $x2, $y2);
 	}
 
@@ -404,14 +404,14 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return ReportHtmlHtml
 	 */
-	function createHTML($tag, $attrs) {
+	public function createHTML($tag, $attrs) {
 		return new ReportHtmlHtml($tag, $attrs);
 	}
 
 	/**
 	 * Clear the Header - ReportHtml
 	 */
-	function clearHeader() {
+	public function clearHeader() {
 		$this->headerElements = array();
 	}
 
@@ -422,7 +422,7 @@ class ReportHtml extends ReportBase {
 	/**
 	 * Update the Page Number and set a new Y if max Y is larger - ReportHtml
 	 */
-	function addPage() {
+	public function addPage() {
 		$this->pageN++;
 		// Add a little margin to max Y "between pages"
 		$this->maxY += 10;
@@ -441,7 +441,7 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @param float $y
 	 */
-	function addMaxY($y) {
+	public function addMaxY($y) {
 		if ($this->maxY < $y) {
 			$this->maxY = $y;
 		}
@@ -452,7 +452,7 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return integer
 	 */
-	function addPageHeader($element) {
+	public function addPageHeader($element) {
 		$this->pageHeaderElements[] = $element;
 		return count($this->headerElements) - 1;
 	}
@@ -464,7 +464,7 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return boolean false if not numbered before | object if already numbered
 	 */
-	function checkFootnote($footnote) {
+	public function checkFootnote($footnote) {
 		$ct = count($this->printedfootnotes);
 		$i = 0;
 		$val = $footnote->getValue();
@@ -487,7 +487,7 @@ class ReportHtml extends ReportBase {
 	/**
 	 * Clear the Page Header - ReportHtml
 	 */
-	function clearPageHeader() {
+	public function clearPageHeader() {
 		$this->pageHeaderElements = array();
 	}
 
@@ -498,7 +498,7 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return integer Number of lines. 0 if empty line
 	 */
-	function countLines($str) {
+	public function countLines($str) {
 		if ($str == "") {
 			return 0;
 		}
@@ -508,14 +508,14 @@ class ReportHtml extends ReportBase {
 	/**
 	 * @return string
 	 */
-	function getCurrentStyle() {
+	public function getCurrentStyle() {
 		return $this->currentStyle;
 	}
 
 	/**
 	 * @return integer
 	 */
-	function getCurrentStyleHeight() {
+	public function getCurrentStyleHeight() {
 		if (empty($this->currentStyle)) {
 			return $this->defaultFontSize;
 		}
@@ -528,7 +528,7 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return integer
 	 */
-	function getFootnotesHeight($cellWidth) {
+	public function getFootnotesHeight($cellWidth) {
 		$h = 0;
 		foreach ($this->printedfootnotes as $element) {
 			$h += $element->getFootnoteHeight($this, $cellWidth);
@@ -541,14 +541,14 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return float
 	 */
-	function getRemainingWidth() {
+	public function getRemainingWidth() {
 		return $this->noMarginWidth - $this->X;
 	}
 
 	/**
 	 * @return float
 	 */
-	function getPageHeight() {
+	public function getPageHeight() {
 		return $this->pageh - $this->topmargin;
 	}
 
@@ -557,7 +557,7 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return integer
 	 */
-	function getStringWidth($text) {
+	public function getStringWidth($text) {
 		$style = $this->getStyle($this->currentStyle);
 		return mb_strlen($text) * ($style['size'] / 2);
 	}
@@ -569,7 +569,7 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return integer
 	 */
-	function getTextCellHeight($str) {
+	public function getTextCellHeight($str) {
 		// Count the number of lines to calculate the height
 		$nl = $this->countLines($str);
 		// Calculate the cell height
@@ -581,7 +581,7 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return float
 	 */
-	function getX() {
+	public function getX() {
 		return $this->X;
 	}
 
@@ -590,7 +590,7 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return float
 	 */
-	function getY() {
+	public function getY() {
 		return $this->Y;
 	}
 
@@ -599,14 +599,14 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return integer
 	 */
-	function pageNo() {
+	public function pageNo() {
 		return $this->pageN;
 	}
 
 	/**
 	 * @param $s
 	 */
-	function setCurrentStyle($s) {
+	public function setCurrentStyle($s) {
 		$this->currentStyle = $s;
 	}
 
@@ -615,7 +615,7 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @param float $x
 	 */
-	function setX($x) {
+	public function setX($x) {
 		$this->X = $x;
 	}
 
@@ -626,7 +626,7 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @param float $y
 	 */
-	function setY($y) {
+	public function setY($y) {
 		$this->Y = $y;
 		if ($this->maxY < $y) {
 			$this->maxY = $y;
@@ -641,7 +641,7 @@ class ReportHtml extends ReportBase {
 	 * @param float $x
 	 * @param float $y
 	 */
-	function setXy($x, $y) {
+	public function setXy($x, $y) {
 		$this->setX($x);
 		$this->setY($y);
 	}
@@ -654,7 +654,7 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return string
 	 */
-	function textWrap($str, $width) {
+	public function textWrap($str, $width) {
 		// Calculate the line width
 		$lw = (int) ($width / ($this->getCurrentStyleHeight() / 2));
 		// Wordwrap each line
@@ -681,7 +681,7 @@ class ReportHtml extends ReportBase {
 	 * @param string  $color HTML RGB color code (Ex: #001122)
 	 * @param boolean $useclass
 	 */
-	function write($text, $color = '', $useclass = true) {
+	public function write($text, $color = '', $useclass = true) {
 		$style = $this->getStyle($this->getCurrentStyle());
 		$htmlcode = '<span dir="' . I18N::direction() . '"';
 		if ($useclass) {

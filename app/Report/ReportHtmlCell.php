@@ -27,7 +27,7 @@ class ReportHtmlCell extends ReportBaseCell {
 	 *
 	 * @return void
 	 */
-	function render($renderer) {
+	public function render($renderer) {
 		if (strpos($this->text, "{{:ptp:}}") !== false) {
 			return;
 		}

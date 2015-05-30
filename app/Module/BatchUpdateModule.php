@@ -87,7 +87,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 	 *
 	 * @return string
 	 */
-	function main() {
+	private function main() {
 		global $WT_TREE;
 
 		$this->plugins = $this->getPluginList(); // List of available plugins

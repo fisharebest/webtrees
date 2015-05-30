@@ -27,7 +27,7 @@ class ReportPdfPageheader extends ReportBasePageheader {
 	 *
 	 * @return void
 	 */
-	function render($renderer) {
+	public function render($renderer) {
 		$renderer->clearPageHeader();
 		foreach ($this->elements as $element) {
 			$renderer->addPageHeader($element);

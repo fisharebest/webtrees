@@ -21,7 +21,7 @@ use PHPUnit_Framework_TestCase;
 /**
  * Test harness for the class Statement
  */
-class DBTest extends PHPUnit_Framework_TestCase {
+class StatementTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 *

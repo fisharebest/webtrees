@@ -25,7 +25,7 @@ class ReportHtmlTextbox extends ReportBaseTextbox {
 	 *
 	 * @return void
 	 */
-	function render($renderer) {
+	public function render($renderer) {
 		// checkFootnote
 		$newelements = array();
 		$lastelement = array();

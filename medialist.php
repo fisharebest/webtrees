@@ -314,4 +314,3 @@ if ($action === 'submit') {
 	echo '</div>';
 }
 echo '</div>';
-

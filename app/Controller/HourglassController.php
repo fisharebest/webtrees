@@ -37,9 +37,6 @@ class HourglassController extends ChartController {
 	private $left_arrow;
 	private $right_arrow;
 
-	// The following is an ajax variable
-	var $ARID;
-
 	/** @var boolean Can the Javascript be loaded by the controller */
 	private $canLoadJS;
 
@@ -353,7 +350,7 @@ class HourglassController extends ChartController {
 						}
 
 						// filter out root person from children array so only siblings remain
-						$siblings = array_filter($family->getChildren(), function(Individual $item) use ($pid) {
+						$siblings = array_filter($family->getChildren(), function (Individual $item) use ($pid) {
 							return $item->getXref() != $pid;
 						});
 						$num = count($siblings);
@@ -414,7 +411,7 @@ class HourglassController extends ChartController {
 	 * setup all of the javascript that is needed for the hourglass chart
 	 *
 	 */
-	function setupJavascript() {
+	public function setupJavascript() {
 		$js = "
 			var WT_HOURGLASS_CHART = (function() {
 				function sizeLines() {

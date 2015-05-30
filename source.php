@@ -117,7 +117,7 @@ echo '<div id="source-tabs">
 		// Sort the facts
 		usort(
 			$facts,
-			function(Fact $x, Fact $y) {
+			function (Fact $x, Fact $y) {
 				static $order = array(
 					'TITL' => 0,
 					'ABBR' => 1,
@@ -180,3 +180,4 @@ echo '<div id="source-tabs">
 	}
 echo '</div>'; //close div "source-tabs"
 echo '</div>'; //close div "source-details"
+

@@ -1649,7 +1649,7 @@ function format_surname_list($surnames, $style, $totals, $script, Tree $tree) {
 			if ($first_spfxsurn) {
 				if (I18N::strtoupper($spfxsurn) == I18N::strtoupper($first_spfxsurn)) {
 					$surns[$first_spfxsurn] = array_merge($surns[$first_spfxsurn], $surns[$spfxsurn]);
-					unset ($surns[$spfxsurn]);
+					unset($surns[$spfxsurn]);
 				}
 			} else {
 				$first_spfxsurn = $spfxsurn;
@@ -2076,7 +2076,7 @@ function print_events_list($startjd, $endjd, $events = 'BIRT MARR DEAT', $only_l
 		// Data is already sorted by anniversary date
 		break;
 	case 'alpha':
-		uasort($filtered_events, function(Fact $x, Fact $y) {
+		uasort($filtered_events, function (Fact $x, Fact $y) {
 			return GedcomRecord::compare($x->getParent(), $y->getParent());
 		});
 		break;

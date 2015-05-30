@@ -20,12 +20,12 @@ namespace Fisharebest\Webtrees;
  * Class BatchUpdateSearchReplacePlugin Batch Update plugin: search/replace
  */
 class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
-	var $search = null; // Search string
-	var $replace = null; // Replace string
-	var $method = null; // simple/wildcards/regex
-	var $regex  = null; // Search string, converted to a regex
-	var $case   = null; // "i" for case insensitive, "" for case sensitive
-	var $error  = null; // Message for bad user parameters
+	private $search  = null; // Search string
+	private $replace = null; // Replace string
+	private $method  = null; // simple/wildcards/regex
+	private $regex   = null; // Search string, converted to a regex
+	private $case    = null; // "i" for case insensitive, "" for case sensitive
+	private $error   = null; // Message for bad user parameters
 
 	/**
 	 * User-friendly name for this plugin.

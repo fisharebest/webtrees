@@ -48,7 +48,7 @@ function month_of_birth($z_axis, array $z_boundaries, Stats $stats) {
 				}
 			}
 		}
-	} else if ($z_axis === 301) {
+	} elseif ($z_axis === 301) {
 		$num = $stats->statsBirthQuery(false, true);
 		foreach ($num as $values) {
 			foreach (array('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC') as $key => $month) {
@@ -56,7 +56,7 @@ function month_of_birth($z_axis, array $z_boundaries, Stats $stats) {
 					if ($values['i_sex'] === 'M') {
 						fill_y_data(0, $key, $values['total']);
 						$total += $values['total'];
-					} else if ($values['i_sex'] === 'F') {
+					} elseif ($values['i_sex'] === 'F') {
 						fill_y_data(1, $key, $values['total']);
 						$total += $values['total'];
 					}
@@ -105,7 +105,7 @@ function month_of_birth_of_first_child($z_axis, array $z_boundaries, Stats $stat
 				}
 			}
 		}
-	} else if ($z_axis === 301) {
+	} elseif ($z_axis === 301) {
 		$num = $stats->monthFirstChildQuery(false, true);
 		foreach ($num as $values) {
 			foreach (array('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC') as $key => $month) {
@@ -113,7 +113,7 @@ function month_of_birth_of_first_child($z_axis, array $z_boundaries, Stats $stat
 					if ($values['i_sex'] === 'M') {
 						fill_y_data(0, $key, $values['total']);
 						$total += $values['total'];
-					} else if ($values['i_sex'] === 'F') {
+					} elseif ($values['i_sex'] === 'F') {
 						fill_y_data(1, $key, $values['total']);
 						$total += $values['total'];
 					}
@@ -162,7 +162,7 @@ function month_of_death($z_axis, array $z_boundaries, Stats $stats) {
 				}
 			}
 		}
-	} else if ($z_axis === 301) {
+	} elseif ($z_axis === 301) {
 		$num = $stats->statsDeathQuery(false, true);
 		foreach ($num as $values) {
 			foreach (array('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC') as $key => $month) {
@@ -170,7 +170,7 @@ function month_of_death($z_axis, array $z_boundaries, Stats $stats) {
 					if ($values['i_sex'] === 'M') {
 						fill_y_data(0, $key, $values['total']);
 						$total += $values['total'];
-					} else if ($values['i_sex'] === 'F') {
+					} elseif ($values['i_sex'] === 'F') {
 						fill_y_data(1, $key, $values['total']);
 						$total += $values['total'];
 					}
@@ -311,7 +311,7 @@ function lifespan_by_birth_year($z_axis, array $z_boundaries, Stats $stats) {
 				$total++;
 			}
 		}
-	} else if ($z_axis === 301) {
+	} elseif ($z_axis === 301) {
 		$num = $stats->statsAgeQuery(false, 'BIRT', 'M');
 		foreach ($num as $values) {
 			foreach ($values as $age_value) {
@@ -363,7 +363,7 @@ function lifespan_by_death_year($z_axis, array $z_boundaries, Stats $stats) {
 				$total++;
 			}
 		}
-	} else if ($z_axis === 301) {
+	} elseif ($z_axis === 301) {
 		$num = $stats->statsAgeQuery(false, 'DEAT', 'M');
 		foreach ($num as $values) {
 			foreach ($values as $age_value) {
@@ -418,7 +418,7 @@ function age_at_marriage($z_axis, array $z_boundaries, Stats $stats) {
 			fill_y_data(0, (int) ($values['age'] / 365.25), 1);
 			$total++;
 		}
-	} else if ($z_axis === 301) {
+	} elseif ($z_axis === 301) {
 		$num = $stats->statsMarrAgeQuery(false, 'M');
 		foreach ($num as $values) {
 			fill_y_data(0, (int) ($values['age'] / 365.25), 1);
@@ -480,7 +480,7 @@ function age_at_first_marriage($z_axis, array $z_boundaries, Stats $stats) {
 				$indi[] = $values['d_gid'];
 			}
 		}
-	} else if ($z_axis === 301) {
+	} elseif ($z_axis === 301) {
 		$num  = $stats->statsMarrAgeQuery(false, 'M');
 		$indi = array();
 		foreach ($num as $values) {
@@ -544,7 +544,7 @@ function number_of_children($z_axis, array $z_boundaries, Stats $stats) {
 			fill_y_data(0, $values['f_numchil'], $values['total']);
 			$total += $values['f_numchil'] * $values['total'];
 		}
-	} else if ($z_axis === 301) {
+	} elseif ($z_axis === 301) {
 		$num = $stats->statsChildrenQuery(false, 'M');
 		foreach ($num as $values) {
 			fill_y_data(0, $values['num'], $values['total']);
@@ -712,7 +712,7 @@ function my_plot($mytitle, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 	$imgurl = 'https://chart.googleapis.com/chart?cht=bvg&amp;chs=950x300&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt=' . rawurlencode($title) . '&amp;' . $datastring . '&amp;' . $colorstring . '&amp;chbh=';
 	if (count($ydata) > 3) {
 		$imgurl .= '5,1';
-	} else if (count($ydata) < 2) {
+	} elseif (count($ydata) < 2) {
 		$imgurl .= '45,1';
 	} else {
 		$imgurl .= '20,3';
@@ -779,7 +779,7 @@ function calculate_axis($x_axis_boundaries) {
 		if (($hulpar[$i] - $hulpar[$i1]) === 1) {
 			$xdata[$i]        = $hulpar[$i1];
 			$x_boundaries[$i] = $hulpar[$i1];
-		} else if ($hulpar[$i1] === $hulpar[0]) {
+		} elseif ($hulpar[$i1] === $hulpar[0]) {
 			$xdata[$i]        = $hulpar[$i1] . '-' . $hulpar[$i];
 			$x_boundaries[$i] = $hulpar[$i];
 		} else {

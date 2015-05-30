@@ -66,7 +66,7 @@ class Filter {
 	 * @return string
 	 */
 	public static function escapeJs($string) {
-		return preg_replace_callback('/[^A-Za-z0-9,. _]/Su', function($x) {
+		return preg_replace_callback('/[^A-Za-z0-9,. _]/Su', function ($x) {
 			if (strlen($x[0]) == 1) {
 				return sprintf('\\x%02X', ord($x[0]));
 			} elseif (function_exists('iconv')) {
@@ -135,7 +135,7 @@ class Filter {
 	public static function expandUrls($text) {
 		return preg_replace_callback(
 			'/' . addcslashes('(?!>)' . self::URL_REGEX . '(?!</a>)', '/') . '/i',
-			function($m) {
+			function ($m) {
 				return '<a href="' . $m[0] . '" target="_blank">' . $m[0] . '</a>';
 			},
 			self::escapeHtml($text)
@@ -199,7 +199,7 @@ class Filter {
 				$variable,
 				FILTER_CALLBACK,
 				array(
-					'options' => function($x) {
+					'options' => function ($x) {
 						return mb_check_encoding($x, 'UTF-8') ? $x : false;
 					},
 				)
@@ -243,7 +243,7 @@ class Filter {
 					$variable => array(
 						'flags'   => FILTER_REQUIRE_ARRAY,
 						'filter'  => FILTER_CALLBACK,
-						'options' => function($x) {
+						'options' => function ($x) {
 							return !function_exists('mb_convert_encoding') || mb_check_encoding($x, 'UTF-8') ? $x : false;
 						}
 					),

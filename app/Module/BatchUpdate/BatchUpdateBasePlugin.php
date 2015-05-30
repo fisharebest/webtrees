@@ -32,14 +32,14 @@ class BatchUpdateBasePlugin {
 	 *
 	 * @return string[]
 	 */
-	function getRecordTypesToUpdate() {
+	public function getRecordTypesToUpdate() {
 		return array('INDI');
 	}
 
 	/**
 	 * Default option is just the "don't update CHAN record"
 	 */
-	function getOptions() {
+	public function getOptions() {
 		$this->chan = Filter::getBool('chan');
 	}
 
@@ -48,7 +48,7 @@ class BatchUpdateBasePlugin {
 	 *
 	 * @return string
 	 */
-	function getOptionsForm() {
+	public function getOptionsForm() {
 		return
 			'<tr><th>' . I18N::translate('Do not update the “last change” record') . '</th>' .
 			'<td><select name="chan" onchange="this.form.submit();">' .
@@ -64,7 +64,7 @@ class BatchUpdateBasePlugin {
 	 *
 	 * @return string[]
 	 */
-	function getActionButtons($xref) {
+	public function getActionButtons($xref) {
 		if (Auth::user()->getPreference('auto_accept')) {
 			return array(
 				BatchUpdateModule::createSubmitButton(I18N::translate('Update'), $xref, 'update'),
@@ -158,7 +158,7 @@ class BatchUpdateBasePlugin {
 	 *
 	 * @return string
 	 */
-	static function decorateInsertedText($text) {
+	public static function decorateInsertedText($text) {
 		return '<ins>' . $text . '</ins>';
 	}
 
@@ -169,7 +169,7 @@ class BatchUpdateBasePlugin {
 	 *
 	 * @return string
 	 */
-	static function decorateDeletedText($text) {
+	public static function decorateDeletedText($text) {
 		return '<del>' . $text . '</del>';
 	}
 
@@ -180,7 +180,7 @@ class BatchUpdateBasePlugin {
 	 *
 	 * @return string
 	 */
-	static function createEditLinks($gedrec) {
+	public static function createEditLinks($gedrec) {
 		return preg_replace(
 			"/@([^#@\n]+)@/m",
 			'<a href="#" onclick="return edit_raw(\'\\1\');">@\\1@</a>',

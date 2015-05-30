@@ -27,7 +27,7 @@ class ReportPdfCell extends ReportBaseCell {
 	 *
 	 * @return void
 	 */
-	function render($renderer) {
+	public function render($renderer) {
 
 		// Set up the text style
 		if (($renderer->getCurrentStyle()) != ($this->styleName)) {

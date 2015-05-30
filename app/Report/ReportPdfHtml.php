@@ -26,7 +26,7 @@ class ReportPdfHtml extends ReportBaseHtml {
 	 *
 	 * @return integer|string
 	 */
-	function render($renderer, $sub = false) {
+	public function render($renderer, $sub = false) {
 		if (!empty($this->attrs['style'])) {
 			$renderer->setCurrentStyle($this->attrs['style']);
 		}

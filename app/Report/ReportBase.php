@@ -96,7 +96,7 @@ class ReportBase {
 	 * As DEFAULT A4 and Portrait will be used if not set
 	 *
 	 */
-	function setup() {
+	public function setup() {
 		// Set RTL direction
 		if (I18N::direction() === 'rtl') {
 			$this->rtl = true;
@@ -413,7 +413,7 @@ class ReportBase {
 	 *
 	 * @return integer
 	 */
-	function setProcessing($p) {
+	public function setProcessing($p) {
 		$this->processing = $p;
 
 		return 0;
@@ -426,7 +426,7 @@ class ReportBase {
 	 *
 	 * @return integer
 	 */
-	function addTitle($data) {
+	public function addTitle($data) {
 		$this->title .= $data;
 
 		return 0;
@@ -439,7 +439,7 @@ class ReportBase {
 	 *
 	 * @return integer
 	 */
-	function addDescription($data) {
+	public function addDescription($data) {
 		$this->rsubject .= $data;
 
 		return 0;
@@ -452,7 +452,7 @@ class ReportBase {
 	 *
 	 * @return integer
 	 */
-	function addStyle($style) {
+	public function addStyle($style) {
 		$this->Styles[$style['name']] = $style;
 
 		return 0;
@@ -465,7 +465,7 @@ class ReportBase {
 	 *
 	 * @return array
 	 */
-	function getStyle($s) {
+	public function getStyle($s) {
 		if (!isset($this->Styles[$s])) {
 			return current($this->Styles);
 		}
@@ -2299,7 +2299,7 @@ function listStartHandler($attrs) {
 				// Substitute global vars
 				$value = preg_replace_callback(
 					'/\$(\w+)/',
-					function($matches) use ($vars) {
+					function ($matches) use ($vars) {
 						return $vars[$matches[1]]['id'];
 					},
 					$value
@@ -2385,7 +2385,7 @@ function listStartHandler($attrs) {
 				// Substitute global vars
 				$value = preg_replace_callback(
 					'/\$(\w+)/',
-					function($matches) use ($vars) {
+					function ($matches) use ($vars) {
 						return $vars[$matches[1]]['id'];
 					},
 					$value
@@ -2609,7 +2609,7 @@ function listStartHandler($attrs) {
 		uasort($list, __NAMESPACE__ . '\GedcomRecord::compare');
 		break;
 	case 'CHAN':
-		uasort($list, function(GedcomRecord $x, GedcomRecord $y) {
+		uasort($list, function (GedcomRecord $x, GedcomRecord $y) {
 			return $y->lastChangeTimestamp(true) - $x->lastChangeTimestamp(true);
 		});
 		break;

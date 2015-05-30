@@ -652,7 +652,7 @@ function print_add_new_fact($id, $usedfacts, $type) {
 	foreach ($addfacts as $addfact) {
 		$translated_addfacts[$addfact] = GedcomTag::getLabel($addfact);
 	}
-	uasort($translated_addfacts, function($x, $y) {
+	uasort($translated_addfacts, function ($x, $y) {
 		return I18N::strcasecmp(I18N::translate($x), I18N::translate($y));
 	});
 	echo '<tr><td class="descriptionbox">';

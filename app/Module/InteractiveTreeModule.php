@@ -21,9 +21,6 @@ namespace Fisharebest\Webtrees;
  * Tip : you could change the number of generations loaded before ajax calls both in individual page and in treeview page to optimize speed and server load
  */
 class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface {
-	var $headers; // CSS and script to include in the top of <head> section, before theme’s CSS
-	var $js; // the TreeViewHandler javascript
-
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('Interactive tree');

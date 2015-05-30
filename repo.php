@@ -97,7 +97,7 @@ echo '<div id="repo-tabs">
 		// Sort the facts
 		usort(
 			$facts,
-			function(Fact $x, Fact $y) {
+			function (Fact $x, Fact $y) {
 				static $order = array(
 					'NAME' => 0,
 					'ADDR' => 1,

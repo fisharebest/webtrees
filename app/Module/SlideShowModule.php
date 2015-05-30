@@ -372,7 +372,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 							echo '</tr><tr>';
 						}
 						echo '<td class="width33"><label><input type="checkbox" value="yes" name="filter_' . $typeName . '" ';
-						echo ($filters[$typeName]) ? 'checked' : '';
+						echo $filters[$typeName] ? 'checked' : '';
 						echo '> ' . $typeValue . '</label></td>';
 					}
 					?>

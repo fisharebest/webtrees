@@ -175,3 +175,4 @@ if ($action == "filter") {
 }
 echo '<button onclick="window.close();">', I18N::translate('close'), '</button>';
 echo "</div>"; // Close div that centers table
+

@@ -42,7 +42,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 	 *
 	 * @return string
 	 */
-	static function ageDifference(Date $prev, Date $next, $child_number = 0) {
+	private static function ageDifference(Date $prev, Date $next, $child_number = 0) {
 		if ($prev->isOK() && $next->isOK()) {
 			$days = $next->maximumJulianDay() - $prev->minimumJulianDay();
 			if ($days < 0) {
@@ -73,7 +73,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 	 * @param string $type
 	 * @param string $label
 	 */
-	function printFamily(Family $family, $type, $label) {
+	private function printFamily(Family $family, $type, $label) {
 		global $controller;
 
 		if ($family->getTree()->getPreference('SHOW_PRIVATE_RELATIONSHIPS')) {

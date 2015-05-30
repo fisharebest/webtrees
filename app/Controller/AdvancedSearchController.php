@@ -20,10 +20,10 @@ namespace Fisharebest\Webtrees;
  * Class AdvancedSearchController - Controller for the advanced search page
  */
 class AdvancedSearchController extends SearchController {
-	var $fields = array();
-	var $values = array();
-	var $plusminus = array();
-	var $errors = array();
+	public $fields = array();
+	public $values = array();
+	public $plusminus = array();
+	public $errors = array();
 
 	/**
 	 * Startup activity
@@ -73,7 +73,7 @@ class AdvancedSearchController extends SearchController {
 	 *
 	 * @return string[]
 	 */
-	function getOtherFields() {
+	public function getOtherFields() {
 		global $WT_TREE;
 
 		$ofields = array(
@@ -163,7 +163,7 @@ class AdvancedSearchController extends SearchController {
 	 *
 	 * @return string
 	 */
-	function getValue($i) {
+	public function getValue($i) {
 		$val = '';
 		if (isset($this->values[$i])) {
 			$val = $this->values[$i];
@@ -176,7 +176,7 @@ class AdvancedSearchController extends SearchController {
 	 *
 	 * @return string
 	 */
-	function getField($i) {
+	public function getField($i) {
 		$val = '';
 		if (isset($this->fields[$i])) {
 			$val = htmlentities($this->fields[$i]);
@@ -190,7 +190,7 @@ class AdvancedSearchController extends SearchController {
 	 *
 	 * @return integer
 	 */
-	function getIndex($field) {
+	public function getIndex($field) {
 		return array_search($field, $this->fields);
 	}
 
@@ -199,14 +199,14 @@ class AdvancedSearchController extends SearchController {
 	 *
 	 * @return string
 	 */
-	function getLabel($tag) {
+	public function getLabel($tag) {
 		return GedcomTag::getLabel(preg_replace('/:(SDX|BEGINS|EXACT|CONTAINS)$/', '', $tag));
 	}
 
 	/**
 	 * Set the field order
 	 */
-	function reorderFields() {
+	private function reorderFields() {
 		$i = 0;
 		$newfields = array();
 		$newvalues = array();
@@ -240,7 +240,7 @@ class AdvancedSearchController extends SearchController {
 	 *
 	 * @return void
 	 */
-	function advancedSearch() {
+	private function advancedSearch() {
 		global $WT_TREE;
 
 		$this->myindilist = array();
@@ -629,7 +629,7 @@ class AdvancedSearchController extends SearchController {
 	}
 
 	/** {@inheritdoc} */
-	function printResults() {
+	public function printResults() {
 		if ($this->myindilist) {
 			uasort($this->myindilist, __NAMESPACE__ . '\GedcomRecord::compare');
 			echo format_indi_table($this->myindilist);

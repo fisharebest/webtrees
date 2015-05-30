@@ -590,7 +590,7 @@ function import_record($gedrec, Tree $tree, $update) {
 
 	// import different types of records
 	if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ (' . WT_REGEX_TAG . ')/', $gedrec, $match)) {
-		list(,$xref, $type) = $match;
+		list(, $xref, $type) = $match;
 		// check for a _UID, if the record doesn't have one, add one
 		if ($tree->getPreference('GENERATE_UIDS') && !strpos($gedrec, "\n1 _UID ")) {
 			$gedrec .= "\n1 _UID " . GedcomTag::createUid();
@@ -1013,7 +1013,7 @@ function create_media_object($level, $gedrec, Tree $tree) {
 	if (!$xref) {
 		$xref = $tree->getNewXref('OBJE');
 		// renumber the lines
-		$gedrec = preg_replace_callback('/\n(\d+)/', function($m) use ($level) { return "\n" . ($m[1] - $level); }, $gedrec);
+		$gedrec = preg_replace_callback('/\n(\d+)/', function ($m) use ($level) { return "\n" . ($m[1] - $level); }, $gedrec);
 		// convert to an object
 		$gedrec = str_replace("\n0 OBJE\n", '0 @' . $xref . "@ OBJE\n", $gedrec);
 		// Fix Legacy GEDCOMS
@@ -1086,7 +1086,7 @@ function reject_all_changes(GedcomRecord $record) {
  */
 function update_record($gedrec, $ged_id, $delete) {
 	if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ (' . WT_REGEX_TAG . ')/', $gedrec, $match)) {
-		list(,$gid, $type) = $match;
+		list(, $gid, $type) = $match;
 	} else {
 		echo "ERROR: Invalid gedcom record.";
 		return;

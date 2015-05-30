@@ -254,7 +254,7 @@ class IndividualController extends GedcomRecordController {
 	/**
 	 * get edit menu
 	 */
-	function getEditMenu() {
+	public function getEditMenu() {
 		if (!$this->record || $this->record->isPendingDeletion()) {
 			return null;
 		}
@@ -333,7 +333,7 @@ class IndividualController extends GedcomRecordController {
 	 *
 	 * @return string returns 'person_box', 'person_boxF', or 'person_boxNN'
 	 */
-	function getPersonStyle($person) {
+	public function getPersonStyle($person) {
 		switch ($person->getSex()) {
 		case 'M':
 			$class = 'person_box';

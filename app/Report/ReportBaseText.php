@@ -66,7 +66,7 @@ class ReportBaseText extends ReportBaseElement {
 	 *
 	 * @return mixed
 	 */
-	function setWrapWidth($wrapwidth, $cellwidth) {
+	public function setWrapWidth($wrapwidth, $cellwidth) {
 		$this->wrapWidthCell = $cellwidth;
 		if (strpos($this->text, "\n") !== false) {
 			$this->wrapWidthRemaining = $cellwidth;
@@ -80,7 +80,7 @@ class ReportBaseText extends ReportBaseElement {
 	/**
 	 * @return string
 	 */
-	function getStyleName() {
+	public function getStyleName() {
 		return $this->styleName;
 	}
 }

@@ -1,7 +1,6 @@
 <?php
-namespace Fisharebest\Webtrees;
 
-/**
+/*
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
  * This program is free software: you can redistribute it and/or modify
@@ -16,26 +15,17 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use PHPUnit_Framework_TestCase;
+// This is a configuration file for php-cs-fixer
+$finder = Symfony\CS\Finder\DefaultFinder::create()
+	->in(__DIR__)
+	->exclude('packages')
+	->exclude('vendor');
 
-/**
- * Test harness for the class Statement
- */
-class DatabaseTest extends PHPUnit_Framework_TestCase {
-	/**
-	 * Prepare the environment for these tests
-	 *
-	 * @return void
-	 */
-	public function setUp() {
-	}
-
-	/**
-	 * Test that the class exists
-	 *
-	 * @return void
-	 */
-	public function testClassExists() {
-		$this->assertTrue(class_exists(__NAMESPACE__ . '\Database'));
-	}
-}
+return Symfony\CS\Config\Config::create()
+	->level(Symfony\CS\FixerInterface::PSR2_LEVEL)
+	->fixers([
+		// Exclude these PSR2 rules
+		'--indentation',
+		'--braces',
+	])
+	->finder($finder);

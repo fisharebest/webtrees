@@ -134,7 +134,7 @@ class CalendarDate {
 	 *
 	 * @return boolean
 	 */
-	function isLeapYear() {
+	public function isLeapYear() {
 		return $this->calendar->isLeapYear($this->y);
 	}
 

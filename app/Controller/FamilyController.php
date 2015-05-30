@@ -68,7 +68,7 @@ class FamilyController extends GedcomRecordController {
 	 *
 	 * @return string
 	 */
-	function getTimelineIndis($tags) {
+	public function getTimelineIndis($tags) {
 		preg_match_all('/\n1 (?:' . implode('|', $tags) . ') @(' . WT_REGEX_XREF . ')@/', $this->record->getGedcom(), $matches);
 		foreach ($matches[1] as &$match) {
 			$match = 'pids%5B%5D=' . $match;
@@ -79,7 +79,7 @@ class FamilyController extends GedcomRecordController {
 	/**
 	 * get edit menu
 	 */
-	function getEditMenu() {
+	public function getEditMenu() {
 		if (!$this->record || $this->record->isPendingDeletion()) {
 			return null;
 		}

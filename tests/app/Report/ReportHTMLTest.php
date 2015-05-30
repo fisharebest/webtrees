@@ -21,7 +21,7 @@ use PHPUnit_Framework_TestCase;
 /**
  * Test harness for the class ReportHtml
  */
-class ReportHtmlTest extends PHPUnit_Framework_TestCase {
+class ReportHTMLTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 *

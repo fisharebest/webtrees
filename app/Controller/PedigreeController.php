@@ -250,9 +250,9 @@ class PedigreeController extends ChartController {
 
 	/**
 	 * Function get_menu
-	 * 
+	 *
 	 * Build a menu for the chart root individual
-	 * 
+	 *
 	 * @return string
 	 */
 	public function get_menu() {
@@ -296,9 +296,9 @@ class PedigreeController extends ChartController {
 
 	/**
 	 * Function gotoPreviousGen
-	 * 
+	 *
 	 * Create a link to generate a new chart based on the correct parent of the individual with this index
-	 * 
+	 *
 	 * @param integer $index
 	 * @return string
 	 */

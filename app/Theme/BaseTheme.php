@@ -818,7 +818,7 @@ abstract class BaseTheme {
 				$event = $individual->getFirstFact($tag);
 				if (!is_null($event)) {
 					$html .= $event->summary();
-					unset ($opt_tags[$key]);
+					unset($opt_tags[$key]);
 				}
 			}
 		}
@@ -828,7 +828,7 @@ abstract class BaseTheme {
 			if ($event) {
 				$html .= $event->summary();
 				if (in_array($deattag, $opt_tags)) {
-					unset ($opt_tags[array_search($deattag, $opt_tags)]);
+					unset($opt_tags[array_search($deattag, $opt_tags)]);
 				}
 				break;
 			}
@@ -907,7 +907,7 @@ abstract class BaseTheme {
 			$this->menuChartTimeline($individual),
 		));
 
-		usort($menus, function(Menu $x, Menu $y) {
+		usort($menus, function (Menu $x, Menu $y) {
 			return I18N::strcasecmp($x->getLabel(), $y->getLabel());
 		});
 
@@ -1059,7 +1059,7 @@ abstract class BaseTheme {
 				$this->menuChartTimeline($individual),
 			));
 
-			usort($submenus, function(Menu $x, Menu $y) {
+			usort($submenus, function (Menu $x, Menu $y) {
 				return I18N::strcasecmp($x->getLabel(), $y->getLabel());
 			});
 
@@ -1397,7 +1397,7 @@ abstract class BaseTheme {
 			}
 		}
 
-		uasort($menulist, function(Menu $x, Menu $y) {
+		uasort($menulist, function (Menu $x, Menu $y) {
 			return I18N::strcasecmp($x->getLabel(), $y->getLabel());
 		});
 
@@ -1687,7 +1687,7 @@ abstract class BaseTheme {
 				$submenus[] = $submenu;
 			}
 
-			usort($submenus, function(Menu $x, Menu $y) {
+			usort($submenus, function (Menu $x, Menu $y) {
 				return I18N::strcasecmp($x->getLabel(), $y->getLabel());
 			});
 
@@ -1943,7 +1943,7 @@ abstract class BaseTheme {
 	 * @return string
 	 */
 	protected function primaryMenuContent(array $menus) {
-		return implode('', array_map(function($menu) { return $menu->getMenuAsList(); }, $menus));
+		return implode('', array_map(function ($menu) { return $menu->getMenuAsList(); }, $menus));
 	}
 
 	/**
@@ -1982,7 +1982,7 @@ abstract class BaseTheme {
 	 * @return string
 	 */
 	protected function secondaryMenuContent(array $menus) {
-		return implode('', array_map(function($menu) { return $menu->getMenuAsList(); }, $menus));
+		return implode('', array_map(function ($menu) { return $menu->getMenuAsList(); }, $menus));
 	}
 
 	/**

@@ -308,7 +308,7 @@ class CensusAssistantModule extends AbstractModule {
 	 *
 	 * @return string
 	 */
-	static function addNoteWithAssistantLink($element_id, $xref, $action) {
+	public static function addNoteWithAssistantLink($element_id, $xref, $action) {
 		global $controller, $WT_TREE;
 
 		// We do not yet support family records

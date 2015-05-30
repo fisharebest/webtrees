@@ -27,7 +27,7 @@ class ReportHtmlText extends ReportBaseText {
 	 *
 	 * @return void
 	 */
-	function render($renderer, $curx = 0, $attrib = true) {
+	public function render($renderer, $curx = 0, $attrib = true) {
 
 		// Setup the style name
 		if ($renderer->getCurrentStyle() != $this->styleName) {
@@ -79,7 +79,7 @@ class ReportHtmlText extends ReportBaseText {
 	 *
 	 * @return float
 	 */
-	function getHeight($html) {
+	public function getHeight($html) {
 		$ct = substr_count($this->text, "\n");
 		if ($ct > 0) {
 			$ct += 1;
@@ -95,7 +95,7 @@ class ReportHtmlText extends ReportBaseText {
 	 *
 	 * @return array
 	 */
-	function getWidth($html) {
+	public function getWidth($html) {
 		// Setup the style name
 		if ($html->getCurrentStyle() != $this->styleName) {
 			$html->setCurrentStyle($this->styleName);

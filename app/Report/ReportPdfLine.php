@@ -27,7 +27,7 @@ class ReportPdfLine extends ReportBaseLine {
 	 *
 	 * @return void
 	 */
-	function render($renderer) {
+	public function render($renderer) {
 		if ($this->x1 == ".") {
 			$this->x1 = $renderer->GetX();
 		}

@@ -76,7 +76,7 @@ class ReportBaseFootnote extends ReportBaseElement {
 	 *
 	 * @return integer
 	 */
-	function addText($t) {
+	public function addText($t) {
 		$t = trim($t, "\r\n\t");
 		$t = str_replace(array("<br>", "&nbsp;"), array("\n", " "), $t);
 		$t = strip_tags($t);
@@ -92,7 +92,7 @@ class ReportBaseFootnote extends ReportBaseElement {
 	 *
 	 * @return mixed
 	 */
-	function setWrapWidth($wrapwidth, $cellwidth) {
+	public function setWrapWidth($wrapwidth, $cellwidth) {
 		$this->wrapWidthCell = $cellwidth;
 		if (strpos($this->numText, "\n") !== false) {
 			$this->wrapWidthRemaining = $cellwidth;
@@ -108,7 +108,7 @@ class ReportBaseFootnote extends ReportBaseElement {
 	 *
 	 * @return integer
 	 */
-	function setNum($n) {
+	public function setNum($n) {
 		$this->num = $n;
 		$this->numText = "$n ";
 
@@ -120,7 +120,7 @@ class ReportBaseFootnote extends ReportBaseElement {
 	 *
 	 * @return integer
 	 */
-	function setAddlink($a) {
+	public function setAddlink($a) {
 		$this->addlink = $a;
 
 		return 0;

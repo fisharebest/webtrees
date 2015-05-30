@@ -56,7 +56,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		$title = I18N::plural('%s message', '%s messages', $count, I18N::number($count));
-		$users = array_filter(User::all(), function(User $user) {
+		$users = array_filter(User::all(), function (User $user) {
 			return $user->getUserId() !== Auth::id() && $user->getPreference('verified_by_admin') && $user->getPreference('contactmethod') !== 'none';
 		});
 

@@ -93,7 +93,7 @@ class Module {
 
 		// The order of menus/sidebars/tabs is defined in the database.  Others are sorted by name.
 		if ($component !== 'menu' && $component !== 'sidebar' && $component !== 'tab') {
-			uasort($array, function(AbstractModule $x, AbstractModule $y) {
+			uasort($array, function (AbstractModule $x, AbstractModule $y) {
 				return I18N::strcasecmp($x->getTitle(), $y->getTitle());
 			});
 		}
@@ -131,7 +131,7 @@ class Module {
 
 		// The order of menus/sidebars/tabs is defined in the database.  Others are sorted by name.
 		if ($component !== 'menu' && $component !== 'sidebar' && $component !== 'tab') {
-			uasort($array, function(AbstractModule $x, AbstractModule $y) {
+			uasort($array, function (AbstractModule $x, AbstractModule $y) {
 				return I18N::strcasecmp($x->getTitle(), $y->getTitle());
 			});
 		}
@@ -314,7 +314,7 @@ class Module {
 			}
 		}
 
-		uasort($modules, function(AbstractModule $x, AbstractModule $y) {
+		uasort($modules, function (AbstractModule $x, AbstractModule $y) {
 			return I18N::strcasecmp($x->getTitle(), $y->getTitle());
 		});
 

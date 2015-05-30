@@ -104,7 +104,7 @@ class Family extends GedcomRecord {
 	 *
 	 * @return Individual|null
 	 */
-	function getHusband() {
+	public function getHusband() {
 		if ($this->husb && $this->husb->canShowName()) {
 			return $this->husb;
 		} else {
@@ -117,7 +117,7 @@ class Family extends GedcomRecord {
 	 *
 	 * @return Individual|null
 	 */
-	function getWife() {
+	public function getWife() {
 		if ($this->wife && $this->wife->canShowName()) {
 			return $this->wife;
 		} else {
@@ -153,7 +153,7 @@ class Family extends GedcomRecord {
 	 *
 	 * @return Individual|null
 	 */
-	function getSpouse(Individual $person) {
+	public function getSpouse(Individual $person) {
 		if ($person === $this->wife) {
 			return $this->husb;
 		} else {
@@ -168,7 +168,7 @@ class Family extends GedcomRecord {
 	 *
 	 * @return Individual[]
 	 */
-	function getSpouses($access_level = null) {
+	public function getSpouses($access_level = null) {
 		if ($access_level === null) {
 			$access_level = Auth::accessLevel($this->tree);
 		}
@@ -191,7 +191,7 @@ class Family extends GedcomRecord {
 	 *
 	 * @return Individual[]
 	 */
-	function getChildren($access_level = null) {
+	public function getChildren($access_level = null) {
 		if ($access_level === null) {
 			$access_level = Auth::accessLevel($this->tree);
 		}
@@ -388,7 +388,7 @@ class Family extends GedcomRecord {
 	}
 
 	/** {@inheritdoc} */
-	function formatListDetails() {
+	public function formatListDetails() {
 		return
 			$this->formatFirstMajorFact(WT_EVENTS_MARR, 1) .
 			$this->formatFirstMajorFact(WT_EVENTS_DIV, 1);

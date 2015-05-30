@@ -38,7 +38,7 @@ class ReportBaseHtml extends ReportBaseElement {
 	/**
 	 * @return string
 	 */
-	function getStart() {
+	public function getStart() {
 		$str = "<" . $this->tag . " ";
 		foreach ($this->attrs as $key => $value) {
 			$str .= $key . "=\"" . $value . "\" ";
@@ -51,7 +51,7 @@ class ReportBaseHtml extends ReportBaseElement {
 	/**
 	 * @return string
 	 */
-	function getEnd() {
+	public function getEnd() {
 		return "</" . $this->tag . ">";
 	}
 
@@ -60,7 +60,7 @@ class ReportBaseHtml extends ReportBaseElement {
 	 *
 	 * @return integer
 	 */
-	function addElement($element) {
+	public function addElement($element) {
 		$this->elements[] = $element;
 
 		return 0;

@@ -21,7 +21,7 @@ use PHPUnit_Framework_TestCase;
 /**
  * Test harness for the class ReportPdf
  */
-class ReportPdfTest extends PHPUnit_Framework_TestCase {
+class ReportPDFTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 *

@@ -201,7 +201,7 @@ if (!$ajax) {
 			</tr>
 		</table>
 		</fieldset>';
-	} else if ($tab == 1) {
+	} elseif ($tab == 1) {
 		echo '<fieldset>
 		<legend>', I18N::translate('Total families: %s', $stats->totalFamilies()), '</legend>
 		<b>', I18N::translate('Events'), '</b>
@@ -339,7 +339,7 @@ if (!$ajax) {
 			</tr>
 		</table>
 		</fieldset>';
-	} else if ($tab == 2) {
+	} elseif ($tab == 2) {
 		echo '<fieldset>
 		<legend>', I18N::translate('Records'), ': ', $stats->totalRecords(), '</legend>
 		<table class="facts_table">
@@ -422,7 +422,7 @@ if (!$ajax) {
 			</tr>
 		</table>
 		</fieldset>';
-	} else if ($tab == 3) {
+	} elseif ($tab == 3) {
 		echo '<fieldset>
 		<legend>', I18N::translate('Create your own chart'), '</legend>';
 		?>

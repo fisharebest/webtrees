@@ -35,7 +35,7 @@ class SourceController extends GedcomRecordController {
 	/**
 	 * get edit menu
 	 */
-	function getEditMenu() {
+	public function getEditMenu() {
 		if (!$this->record || $this->record->isPendingDeletion()) {
 			return null;
 		}

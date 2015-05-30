@@ -122,7 +122,7 @@ class QueryName {
 	 *
 	 * @return string
 	 */
-	static public function initialLetter($name) {
+	public static function initialLetter($name) {
 		$name = I18N::strtoupper($name);
 		switch (WT_LOCALE) {
 		case 'cs':
@@ -188,7 +188,7 @@ class QueryName {
 	 *
 	 * @return string
 	 */
-	static private function getInitialSql($field, $letter) {
+	private static function getInitialSql($field, $letter) {
 		switch (WT_LOCALE) {
 		case 'cs':
 			switch ($letter) {

@@ -149,7 +149,7 @@ class ClippingsCart {
 				uksort($cart[$WT_TREE->getTreeId()], __NAMESPACE__ . '\ClippingsCart::compareClippings');
 			}
 		} elseif ($this->action === 'remove') {
-			unset ($cart[$WT_TREE->getTreeId()][$this->id]);
+			unset($cart[$WT_TREE->getTreeId()][$this->id]);
 		} elseif ($this->action === 'empty') {
 			$cart[$WT_TREE->getTreeId()] = array();
 		} elseif ($this->action === 'download') {
@@ -279,7 +279,7 @@ class ClippingsCart {
 	/**
 	 * Loads everything in the clippings cart into a zip file.
 	 */
-	function zipCart() {
+	private function zipCart() {
 		$tempFileName = 'clipping' . rand() . '.ged';
 		$fp = fopen(WT_DATA_DIR . $tempFileName, "wb");
 		if ($fp) {
@@ -312,7 +312,7 @@ class ClippingsCart {
 	 * Brings up the download dialog box and allows the user to download the file
 	 * based on the options he or she selected.
 	 */
-	function downloadClipping() {
+	public function downloadClipping() {
 		if ($this->IncludeMedia === 'yes' || $this->Zip === 'yes') {
 			header('Content-Type: application/zip');
 			header('Content-Disposition: attachment; filename="clipping.zip"');
@@ -332,7 +332,7 @@ class ClippingsCart {
 	 *
 	 * @param GedcomRecord $record
 	 */
-	function addClipping(GedcomRecord $record) {
+	public function addClipping(GedcomRecord $record) {
 		if ($record->canShowName()) {
 			$cart = Session::get('cart');
 			$cart[$record->getTree()->getTreeId()][$record->getXref()] = true;
@@ -351,7 +351,7 @@ class ClippingsCart {
 	 * @param Family|null $family
 	 * @param integer        $level
 	 */
-	function addFamilyDescendancy(Family $family = null, $level = PHP_INT_MAX) {
+	public function addFamilyDescendancy(Family $family = null, $level = PHP_INT_MAX) {
 		if (!$family) {
 			return;
 		}
@@ -374,7 +374,7 @@ class ClippingsCart {
 	 *
 	 * @param Family|null $family
 	 */
-	function addFamilyMembers(Family $family = null) {
+	public function addFamilyMembers(Family $family = null) {
 		if (!$family) {
 			return;
 		}
@@ -393,7 +393,7 @@ class ClippingsCart {
 	 * @param Individual|null $person
 	 * @param integer         $level
 	 */
-	function addAncestorsToCart(Individual $person = null, $level = 0) {
+	public function addAncestorsToCart(Individual $person = null, $level = 0) {
 		if (!$person) {
 			return;
 		}
@@ -413,7 +413,7 @@ class ClippingsCart {
 	 * @param Individual|null $person
 	 * @param integer            $level
 	 */
-	function addAncestorsToCartFamilies(Individual $person = null, $level = 0) {
+	public function addAncestorsToCartFamilies(Individual $person = null, $level = 0) {
 		if (!$person) {
 			return;
 		}
@@ -434,7 +434,7 @@ class ClippingsCart {
 	 *
 	 * @return integer
 	 */
-	static function compareClippings($a, $b) {
+	private static function compareClippings($a, $b) {
 		global $WT_TREE;
 
 		$a = GedcomRecord::getInstance($a, $WT_TREE);

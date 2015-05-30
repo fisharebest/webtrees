@@ -160,7 +160,7 @@ class ReportBaseTextbox extends ReportBaseElement {
 	 *
 	 * @return integer
 	 */
-	function addElement($element) {
+	public function addElement($element) {
 		$this->elements[] = $element;
 
 		return 0;

@@ -230,3 +230,4 @@ foreach ($controller->nodes as $i => $node) {
 echo '<canvas id="pedigree_canvas" width="' . $controller->chartsize['x'] . '" height="' . $controller->chartsize['y'] . '"><p>No lines between boxes? Unfortunately your browser does not support the HTML5 canvas feature.</p></canvas>';
 echo '</div>'; //close #pedigree_chart
 echo '</div>'; //close #pedigree-page
+

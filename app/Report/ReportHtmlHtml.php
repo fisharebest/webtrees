@@ -27,7 +27,7 @@ class ReportHtmlHtml extends ReportBaseHtml {
 	 *
 	 * @return string
 	 */
-	function render($renderer, $sub = false, $inat = true) {
+	public function render($renderer, $sub = false, $inat = true) {
 		if (!empty($this->attrs["wt_style"])) {
 			$renderer->setCurrentStyle($this->attrs["wt_style"]);
 		}

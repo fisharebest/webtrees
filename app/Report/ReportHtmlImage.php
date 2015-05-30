@@ -27,7 +27,7 @@ class ReportHtmlImage extends ReportBaseImage {
 	 *
 	 * @return void
 	 */
-	function render($renderer) {
+	public function render($renderer) {
 		global $lastpicbottom, $lastpicpage, $lastpicleft, $lastpicright;
 
 		// Get the current positions
@@ -83,7 +83,7 @@ class ReportHtmlImage extends ReportBaseImage {
 	 *
 	 * @return float
 	 */
-	function getHeight($html) {
+	public function getHeight($html) {
 		return $this->height + ($html->cPadding * 2);
 	}
 
