@@ -74,7 +74,7 @@ class ReportBaseFootnote extends ReportBaseElement {
 	/**
 	 * @param $t
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function addText($t) {
 		$t = trim($t, "\r\n\t");
@@ -106,10 +106,10 @@ class ReportBaseFootnote extends ReportBaseElement {
 	/**
 	 * @param $n
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function setNum($n) {
-		$this->num = $n;
+		$this->num     = $n;
 		$this->numText = "$n ";
 
 		return 0;
@@ -118,7 +118,7 @@ class ReportBaseFootnote extends ReportBaseElement {
 	/**
 	 * @param $a
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function setAddlink($a) {
 		$this->addlink = $a;

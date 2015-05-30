@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees;
  */
 class Repository extends GedcomRecord {
 	const RECORD_TYPE = 'REPO';
-	const URL_PREFIX = 'repo.php?rid=';
+	const URL_PREFIX  = 'repo.php?rid=';
 
 	/**
 	 * Get an instance of a repository object.  For single records,

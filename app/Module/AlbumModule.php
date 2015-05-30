@@ -44,7 +44,6 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 		return Auth::isEditor($WT_TREE) || $this->getMedia();
 	}
 
-
 	/** {@inheritdoc} */
 	public function isGrayedOut() {
 		return !$this->getMedia();
@@ -153,6 +152,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 		}
 		$html .= '</ul>';
 		$html .= '</td></tr></table>';
+
 		return $html;
 	}
 
@@ -197,6 +197,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 				return array_search($x->getXref(), $wt_obje_sort) - array_search($y->getXref(), $wt_obje_sort);
 			});
 		}
+
 		return $this->media_list;
 	}
 

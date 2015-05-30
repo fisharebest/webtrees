@@ -20,7 +20,6 @@ namespace Fisharebest\Webtrees;
  * Class PedigreeController - Controller for the pedigree chart
  */
 class PedigreeController extends ChartController {
-
 	/**
 	 * Chart orientation codes
 	 * Dont change them! the offset calculations rely on this order
@@ -29,23 +28,23 @@ class PedigreeController extends ChartController {
 	const LANDSCAPE        = 1;
 	const OLDEST_AT_TOP    = 2;
 	const OLDEST_AT_BOTTOM = 3;
-	const MENU_ITEM = '<a href="pedigree.php?rootid=%s&amp;show_full=%s&amp;PEDIGREE_GENERATIONS=%s&amp;orientation=%s" class="%s noprint">%s</a>';
+	const MENU_ITEM        = '<a href="pedigree.php?rootid=%s&amp;show_full=%s&amp;PEDIGREE_GENERATIONS=%s&amp;orientation=%s" class="%s noprint">%s</a>';
 
 	/**
 	 * Next and previous generation arrow size
 	 */
 	const ARROW_SIZE = 22; //pixels
 
-	/** @var integer Selected chart layout */
+	/** @var int Selected chart layout */
 	public $orientation;
 
-	/** @var integer Number of generation to display */
+	/** @var int Number of generation to display */
 	public $generations;
 
 	/** @var array data pertaining to each chart node */
 	public $nodes = array();
 
-	/** @var integer Number of nodes in the chart */
+	/** @var int Number of nodes in the chart */
 	public $treesize;
 
 	/** @var bool Are there ancestors beyond the bounds of this chart */
@@ -105,20 +104,20 @@ class PedigreeController extends ChartController {
 			case self::LANDSCAPE:
 				$this->arrows->prevGen = I18N::direction() === 'rtl' ? 'icon-larrow' : 'icon-rarrow';
 				$this->arrows->menu    = I18N::direction() === 'rtl' ? 'icon-rarrow' : 'icon-larrow';
-				$addoffset['x'] = $this->chartHasAncestors ? self::ARROW_SIZE : 0;
-				$addoffset['y'] = 0;
+				$addoffset['x']        = $this->chartHasAncestors ? self::ARROW_SIZE : 0;
+				$addoffset['y']        = 0;
 				break;
 			case self::OLDEST_AT_TOP:
 				$this->arrows->prevGen = 'icon-uarrow';
 				$this->arrows->menu    = 'icon-darrow';
-				$addoffset['x']  = 0;
-				$addoffset['y'] = $this->root->getSpouseFamilies() ? self::ARROW_SIZE : 0;
+				$addoffset['x']        = 0;
+				$addoffset['y']        = $this->root->getSpouseFamilies() ? self::ARROW_SIZE : 0;
 				break;
 			case self::OLDEST_AT_BOTTOM:
 				$this->arrows->prevGen = 'icon-darrow';
 				$this->arrows->menu    = 'icon-uarrow';
-				$addoffset['x']  = 0;
-				$addoffset['y'] = $this->chartHasAncestors ? self::ARROW_SIZE : 0;
+				$addoffset['x']        = 0;
+				$addoffset['y']        = $this->chartHasAncestors ? self::ARROW_SIZE : 0;
 				break;
 		}
 
@@ -137,10 +136,10 @@ class PedigreeController extends ChartController {
 			$boxpos = $i - pow(2, $this->generations - $curgen);
 			// -- offset multiple for current generation
 			if ($this->orientation < self::OLDEST_AT_TOP) {
-				$genoffset = pow(2, $curgen - $this->orientation);
+				$genoffset  = pow(2, $curgen - $this->orientation);
 				$boxspacing = $this->getBoxDimensions()->height + $byspacing;
 			} else {
-				$genoffset = pow(2, $curgen - 1);
+				$genoffset  = pow(2, $curgen - 1);
 				$boxspacing = $this->getBoxDimensions()->width + $byspacing;
 			}
 			// -- calculate the yoffset position in the generation put child between parents
@@ -161,7 +160,7 @@ class PedigreeController extends ChartController {
 							$yoffset = $yoffset + (($boxspacing / 2) * ($curgen - 1));
 						}
 						$parent = (int) (($i - 1) / 2);
-						$pgen = $curgen;
+						$pgen   = $curgen;
 						while ($parent > 0) {
 							if ($parent % 2 == 0) {
 								$yoffset = $yoffset - (($boxspacing / 2) * $pgen);
@@ -243,7 +242,6 @@ class PedigreeController extends ChartController {
 			return $item['y'];
 		}, $this->nodes));
 
-
 		$this->chartsize['x'] = $max_xoffset + $bxspacing + $this->getBoxDimensions()->width  + $addoffset['x'];
 		$this->chartsize['y'] = $max_yoffset + $byspacing + $this->getBoxDimensions()->height + $addoffset['y'];
 	}
@@ -257,7 +255,7 @@ class PedigreeController extends ChartController {
 	 */
 	public function get_menu() {
 		$famids = $this->root->getSpouseFamilies();
-		$html = '';
+		$html   = '';
 		if ($famids) {
 			$html = sprintf('<div id="childarrow"><a href="#" class="menuselect noprint %s"></a><div id="childbox">', $this->arrows->menu);
 
@@ -291,6 +289,7 @@ class PedigreeController extends ChartController {
 				'</div>' . // #childbox
 				'</div>'; // #childarrow
 		}
+
 		return $html;
 	}
 
@@ -299,7 +298,8 @@ class PedigreeController extends ChartController {
 	 *
 	 * Create a link to generate a new chart based on the correct parent of the individual with this index
 	 *
-	 * @param integer $index
+	 * @param int $index
+	 *
 	 * @return string
 	 */
 	public function gotoPreviousGen($index) {
@@ -308,7 +308,7 @@ class PedigreeController extends ChartController {
 			if ($this->nodes[$index]['indi'] && $this->nodes[$index]['indi']->getChildFamilies()) {
 				$html .= '<div class="ancestorarrow">';
 				$rootParentId = 1;
-				if ($index > (int)($this->treesize / 2) + (int)($this->treesize / 4)) {
+				if ($index > (int) ($this->treesize / 2) + (int) ($this->treesize / 4)) {
 					$rootParentId++;
 				}
 				$html .= sprintf(self::MENU_ITEM, $this->nodes[$rootParentId]['indi']->getXref(), $this->showFull(), $this->generations, $this->orientation, $this->arrows->prevGen, '');
@@ -317,6 +317,7 @@ class PedigreeController extends ChartController {
 				$html .= '<div class="spacer"></div>';
 			}
 		}
+
 		return $html;
 	}
 }

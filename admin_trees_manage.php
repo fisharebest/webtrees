@@ -217,11 +217,11 @@ case 'importform':
 								<?php echo WT_DATA_DIR; ?>
 							</span>
 							<?php
-							$d = opendir(WT_DATA_DIR);
+							$d     = opendir(WT_DATA_DIR);
 							$files = array();
 							while (($f = readdir($d)) !== false) {
 								if (!is_dir(WT_DATA_DIR . $f) && is_readable(WT_DATA_DIR . $f)) {
-									$fp = fopen(WT_DATA_DIR . $f, 'rb');
+									$fp     = fopen(WT_DATA_DIR . $f, 'rb');
 									$header = fread($fp, 64);
 									fclose($fp);
 									if (preg_match('/^(' . WT_UTF8_BOM . ')?0 *HEAD/', $header)) {

@@ -42,7 +42,7 @@ class CemeteryReportModule extends AbstractModule implements ModuleReportInterfa
 		global $WT_TREE;
 
 		$menus = array();
-		$menu = new Menu(
+		$menu  = new Menu(
 			$this->getTitle(),
 			'reportengine.php?ged=' . $WT_TREE->getNameUrl() . '&amp;action=setup&amp;report=' . WT_MODULES_DIR . $this->getName() . '/report.xml',
 			'menu-report-' . $this->getName()

@@ -53,7 +53,7 @@ class BatchUpdateDuplicateLinksPlugin extends BatchUpdateBasePlugin {
 	 * @param string $xref
 	 * @param string $gedrec
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function doesRecordNeedUpdate($xref, $gedrec) {
 		return
@@ -75,7 +75,7 @@ class BatchUpdateDuplicateLinksPlugin extends BatchUpdateBasePlugin {
 			array(
 				'/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))((?:\n1.*(?:\n[2-9].*)*)*\1)/',
 				'/(\n2.*@.+@.*(?:(?:\n[3-9].*)*))((?:\n2.*(?:\n[3-9].*)*)*\1)/',
-				'/(\n3.*@.+@.*(?:(?:\n[4-9].*)*))((?:\n3.*(?:\n[4-9].*)*)*\1)/'
+				'/(\n3.*@.+@.*(?:(?:\n[4-9].*)*))((?:\n3.*(?:\n[4-9].*)*)*\1)/',
 			),
 			'$2',
 			$gedrec

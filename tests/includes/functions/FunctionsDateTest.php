@@ -24,16 +24,12 @@ use PHPUnit_Framework_TestCase;
 class FunctionsDateTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Prepare the environment for these tests
-	 *
-	 * @return void
 	 */
 	public function setUp() {
 	}
 
 	/**
 	 * Test that function get_age_at_event() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionGetAgeAtEventExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_age_at_event'), true);
@@ -41,8 +37,6 @@ class FunctionsDateTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function format_timestamp() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionFormatTimestampExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\format_timestamp'), true);
@@ -50,8 +44,6 @@ class FunctionsDateTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function timestamp_to_gedcom_date() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionTimestampToGedcomDateExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\timestamp_to_gedcom_date'), true);

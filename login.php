@@ -195,7 +195,7 @@ default:
 
 	// hidden New Password block
 	echo '<div id="new_passwd">
-		<form id="new_passwd_form" name="new_passwd_form" action="'.WT_LOGIN_URL . '" method="post">
+		<form id="new_passwd_form" name="new_passwd_form" action="' . WT_LOGIN_URL . '" method="post">
 		<input type="hidden" name="action" value="requestpw">
 		<h4>', I18N::translate('Lost password request'), '</h4>
 		<div>
@@ -216,9 +216,9 @@ case 'requestpw':
 	$user      = User::findByIdentifier($user_name);
 
 	if ($user) {
-		$passchars = 'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+		$passchars   = 'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 		$user_new_pw = '';
-		$max = strlen($passchars) - 1;
+		$max         = strlen($passchars) - 1;
 		for ($i = 0; $i < 8; $i++) {
 			$index = rand(0, $max);
 			$user_new_pw .= $passchars{$index};
@@ -532,7 +532,7 @@ case 'verify_hash':
 	$webmaster = User::find($WT_TREE->getPreference('WEBMASTER_USER_ID'));
 	I18N::init($webmaster->getPreference('language'));
 
-	$user = User::findByIdentifier($user_name);
+	$user       = User::findByIdentifier($user_name);
 	$mail1_body =
 		I18N::translate('Hello administrator…') .
 		Mail::EOL . Mail::EOL .

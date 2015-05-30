@@ -67,6 +67,7 @@ function reformat_record_export($rec) {
 		}
 		$newrec .= $line . WT_EOL;
 	}
+
 	return $newrec;
 }
 
@@ -165,7 +166,6 @@ function convert_media_path($rec, $path) {
  *                                'toANSI':       should the output be produced in ISO-8859-1 instead of UTF-8?  (yes, no)
  *                                'path':         what constant should prefix all media file paths?  (eg: media/  or c:\my pictures\my family
  *                                'slashes':      what folder separators apply to media file paths?  (forward, backward)
- *
  */
 function export_gedcom(Tree $tree, $gedout, $exportOptions) {
 	switch ($exportOptions['privatize']) {
@@ -197,7 +197,7 @@ function export_gedcom(Tree $tree, $gedout, $exportOptions) {
 	// Generate the OBJE/SOUR/REPO/NOTE records first, as their privacy calcualations involve
 	// database queries, and we wish to avoid large gaps between queries due to MySQL connection timeouts.
 	$tmp_gedcom = '';
-	$rows = Database::prepare(
+	$rows       = Database::prepare(
 		"SELECT m_id AS xref, m_gedcom AS gedcom" .
 		" FROM `##media` WHERE m_file = :tree_id ORDER BY m_id"
 	)->execute(array(

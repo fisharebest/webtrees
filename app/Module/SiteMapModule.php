@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees;
  */
 class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 	const RECORDS_PER_VOLUME = 500; // Keep sitemap files small, for memory, CPU and max_allowed_packet limits.
-	const CACHE_LIFE = 1209600; // Two weeks
+	const CACHE_LIFE         = 1209600; // Two weeks
 
 	/** {@inheritdoc} */
 	public function getTitle() {
@@ -70,7 +70,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 		if ($timestamp > WT_TIMESTAMP - self::CACHE_LIFE) {
 			$data = $this->getSetting('sitemap.xml');
 		} else {
-			$data = '';
+			$data    = '';
 			$lastmod = '<lastmod>' . date('Y-m-d') . '</lastmod>';
 			foreach (Tree::getAll() as $tree) {
 				if ($tree->getPreference('include_in_sitemap')) {
@@ -128,7 +128,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 	 * A separate file for each family tree and each record type.
 	 * These files depend on access levels, so only cache for visitors.
 	 *
-	 * @param integer $ged_id
+	 * @param int    $ged_id
 	 * @param string $rec_type
 	 * @param string $volume
 	 */
@@ -139,7 +139,7 @@ class SiteMapModule extends AbstractModule implements ModuleConfigInterface {
 		if ($timestamp > WT_TIMESTAMP - self::CACHE_LIFE && !Auth::check()) {
 			$data = $this->getSetting('sitemap-' . $ged_id . '-' . $rec_type . '-' . $volume . '.xml');
 		} else {
-			$data = '<url><loc>' . WT_BASE_URL . 'index.php?ctype=gedcom&amp;ged=' . $tree->getNameUrl() . '</loc></url>' . PHP_EOL;
+			$data    = '<url><loc>' . WT_BASE_URL . 'index.php?ctype=gedcom&amp;ged=' . $tree->getNameUrl() . '</loc></url>' . PHP_EOL;
 			$records = array();
 			switch ($rec_type) {
 			case 'i':

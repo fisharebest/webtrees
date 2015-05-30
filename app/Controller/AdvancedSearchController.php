@@ -20,10 +20,10 @@ namespace Fisharebest\Webtrees;
  * Class AdvancedSearchController - Controller for the advanced search page
  */
 class AdvancedSearchController extends SearchController {
-	public $fields = array();
-	public $values = array();
+	public $fields    = array();
+	public $values    = array();
 	public $plusminus = array();
-	public $errors = array();
+	public $errors    = array();
 
 	/**
 	 * Startup activity
@@ -136,6 +136,7 @@ class AdvancedSearchController extends SearchController {
 			$fields[$field] = strip_tags(GedcomTag::GetLabel($field)); // Custom tags have error markup
 		}
 		uksort($fields, __NAMESPACE__ . '\AdvancedSearchController::tagSort');
+
 		return $fields;
 	}
 
@@ -150,7 +151,7 @@ class AdvancedSearchController extends SearchController {
 	public static function tagSort($x, $y) {
 		list($x1) = explode(':', $x . ':');
 		list($y1) = explode(':', $y . ':');
-		$tmp = I18N::strcasecmp(GedcomTag::getLabel($x1), GedcomTag::getLabel($y1));
+		$tmp      = I18N::strcasecmp(GedcomTag::getLabel($x1), GedcomTag::getLabel($y1));
 		if ($tmp) {
 			return $tmp;
 		} else {
@@ -159,7 +160,7 @@ class AdvancedSearchController extends SearchController {
 	}
 
 	/**
-	 * @param integer $i
+	 * @param int $i
 	 *
 	 * @return string
 	 */
@@ -168,11 +169,12 @@ class AdvancedSearchController extends SearchController {
 		if (isset($this->values[$i])) {
 			$val = $this->values[$i];
 		}
+
 		return $val;
 	}
 
 	/**
-	 * @param integer $i
+	 * @param int $i
 	 *
 	 * @return string
 	 */
@@ -188,7 +190,7 @@ class AdvancedSearchController extends SearchController {
 	/**
 	 * @param string $field
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function getIndex($field) {
 		return array_search($field, $this->fields);
@@ -207,12 +209,12 @@ class AdvancedSearchController extends SearchController {
 	 * Set the field order
 	 */
 	private function reorderFields() {
-		$i = 0;
+		$i         = 0;
 		$newfields = array();
 		$newvalues = array();
-		$newplus = array();
-		$rels = array();
-		foreach ($this->fields as $j=>$field) {
+		$newplus   = array();
+		$rels      = array();
+		foreach ($this->fields as $j => $field) {
 			if (strpos($this->fields[$j], "FAMC:HUSB:NAME") === 0 || strpos($this->fields[$j], "FAMC:WIFE:NAME") === 0) {
 				$rels[$this->fields[$j]] = $this->values[$j];
 				continue;
@@ -226,10 +228,10 @@ class AdvancedSearchController extends SearchController {
 			}
 			$i++;
 		}
-		$this->fields = $newfields;
-		$this->values = $newvalues;
+		$this->fields    = $newfields;
+		$this->values    = $newvalues;
 		$this->plusminus = $newplus;
-		foreach ($rels as $field=>$value) {
+		foreach ($rels as $field => $value) {
 			$this->fields[] = $field;
 			$this->values[] = $value;
 		}
@@ -237,14 +239,12 @@ class AdvancedSearchController extends SearchController {
 
 	/**
 	 * Perform the search
-	 *
-	 * @return void
 	 */
 	private function advancedSearch() {
 		global $WT_TREE;
 
 		$this->myindilist = array();
-		$fct = count($this->fields);
+		$fct              = count($this->fields);
 		if (!array_filter($this->values)) {
 			return;
 		}
@@ -262,7 +262,7 @@ class AdvancedSearchController extends SearchController {
 		$fam_date        = false;
 		$indi_plac       = false;
 		$fam_plac        = false;
-		foreach ($this->fields as $n=>$field) {
+		foreach ($this->fields as $n => $field) {
 			if ($this->values[$n]) {
 				if (substr($field, 0, 14) == 'FAMC:HUSB:NAME') {
 					$father_name = true;
@@ -272,14 +272,14 @@ class AdvancedSearchController extends SearchController {
 					$indi_name = true;
 				} elseif (strpos($field, ':DATE') !== false) {
 					if (substr($field, 0, 4) == 'FAMS') {
-						$fam_date = true;
+						$fam_date      = true;
 						$spouse_family = true;
 					} else {
 						$indi_date = true;
 					}
 				} elseif (strpos($field, ':PLAC') !== false) {
 					if (substr($field, 0, 4) == 'FAMS') {
-						$fam_plac = true;
+						$fam_plac      = true;
 						$spouse_family = true;
 					} else {
 						$indi_plac = true;
@@ -375,7 +375,7 @@ class AdvancedSearchController extends SearchController {
 						$sdx = Soundex::russell($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
-							foreach ($sdx as $k=>$v) {
+							foreach ($sdx as $k => $v) {
 								$sdx[$k] = "i_n.n_soundex_givn_std LIKE CONCAT('%', ?, '%')";
 								$bind[]  = $v;
 							}
@@ -391,7 +391,7 @@ class AdvancedSearchController extends SearchController {
 						$sdx = Soundex::daitchMokotoff($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
-							foreach ($sdx as $k=>$v) {
+							foreach ($sdx as $k => $v) {
 								$sdx[$k] = "i_n.n_soundex_givn_dm LIKE CONCAT('%', ?, '%')";
 								$bind[]  = $v;
 							}
@@ -422,7 +422,7 @@ class AdvancedSearchController extends SearchController {
 						$sdx = Soundex::russell($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
-							foreach ($sdx as $k=>$v) {
+							foreach ($sdx as $k => $v) {
 								$sdx[$k] = "i_n.n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
 								$bind[]  = $v;
 							}
@@ -438,7 +438,7 @@ class AdvancedSearchController extends SearchController {
 						$sdx = Soundex::daitchMokotoff($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
-							foreach ($sdx as $k=>$v) {
+							foreach ($sdx as $k => $v) {
 								$sdx[$k] = "i_n.n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
 								$bind[]  = $v;
 							}
@@ -524,7 +524,7 @@ class AdvancedSearchController extends SearchController {
 						$sdx = Soundex::russell($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
-							foreach ($sdx as $k=>$v) {
+							foreach ($sdx as $k => $v) {
 								$sdx[$k] = "{$table}.n_soundex_givn_std LIKE CONCAT('%', ?, '%')";
 								$bind[]  = $v;
 							}
@@ -540,7 +540,7 @@ class AdvancedSearchController extends SearchController {
 						$sdx = Soundex::daitchMokotoff($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
-							foreach ($sdx as $k=>$v) {
+							foreach ($sdx as $k => $v) {
 								$sdx[$k] = "{$table}.n_soundex_givn_dm LIKE CONCAT('%', ?, '%')";
 								$bind[]  = $v;
 							}
@@ -571,7 +571,7 @@ class AdvancedSearchController extends SearchController {
 						$sdx = Soundex::russell($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
-							foreach ($sdx as $k=>$v) {
+							foreach ($sdx as $k => $v) {
 								$sdx[$k] = "{$table}.n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
 								$bind[]  = $v;
 							}
@@ -587,7 +587,7 @@ class AdvancedSearchController extends SearchController {
 						$sdx = Soundex::daitchMokotoff($value);
 						if ($sdx) {
 							$sdx = explode(':', $sdx);
-							foreach ($sdx as $k=>$v) {
+							foreach ($sdx as $k => $v) {
 								$sdx[$k] = "{$table}.n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
 								$bind[]  = $v;
 							}
@@ -617,7 +617,7 @@ class AdvancedSearchController extends SearchController {
 		foreach ($rows as $row) {
 			$person = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
 			// Check for XXXX:PLAC fields, which were only partially matched by SQL
-			foreach ($this->fields as $n=>$field) {
+			foreach ($this->fields as $n => $field) {
 				if ($this->values[$n] && preg_match('/^(' . WT_REGEX_TAG . '):PLAC$/', $field, $match)) {
 					if (!preg_match('/\n1 ' . $match[1] . '(\n[2-9].*)*\n2 PLAC .*' . preg_quote($this->values[$n], '/') . '/i', $person->getGedcom())) {
 						continue 2;

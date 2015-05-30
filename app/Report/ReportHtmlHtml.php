@@ -22,8 +22,8 @@ namespace Fisharebest\Webtrees;
 class ReportHtmlHtml extends ReportBaseHtml {
 	/**
 	 * @param ReportHtml $renderer
-	 * @param boolean        $sub
-	 * @param boolean        $inat
+	 * @param bool       $sub
+	 * @param bool       $inat
 	 *
 	 * @return string
 	 */
@@ -53,7 +53,7 @@ class ReportHtmlHtml extends ReportBaseHtml {
 		if ($inat) {
 			$startX = $renderer->GetX();
 			$startY = $renderer->GetY();
-			$width = $renderer->getRemainingWidth();
+			$width  = $renderer->getRemainingWidth();
 			echo "<div style=\"position: absolute;top: ", $startY, "pt;", $renderer->alignRTL, ": ", $startX, "pt;width: ", $width, "pt;\">";
 			$startY += $renderer->getCurrentStyleHeight() + 2;
 			$renderer->SetY($startY);

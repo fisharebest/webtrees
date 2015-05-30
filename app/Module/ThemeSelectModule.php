@@ -33,10 +33,10 @@ class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function getBlock($block_id, $template = true, $cfg = null) {
 		/** @var BaseTheme */
-		$id = $this->getName() . $block_id;
+		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		$title = $this->getTitle();
-		$menu = Theme::theme()->menuThemes();
+		$menu  = Theme::theme()->menuThemes();
 
 		if ($menu) {
 			$content = '<div class="center theme_form">' . $menu . '</div><br>';

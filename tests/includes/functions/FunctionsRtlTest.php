@@ -24,16 +24,12 @@ use PHPUnit_Framework_TestCase;
 class FunctionsRtlTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Prepare the environment for these tests
-	 *
-	 * @return void
 	 */
 	public function setUp() {
 	}
 
 	/**
 	 * Test that function stripLRMRLM() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionStripLRMRLMExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\stripLRMRLM'), true);
@@ -41,8 +37,6 @@ class FunctionsRtlTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function spanLTRRTL() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionSpanLTRRTLExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\spanLTRRTL'), true);
@@ -50,8 +44,6 @@ class FunctionsRtlTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function starredName() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionStarredNameExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\starredName'), true);
@@ -59,8 +51,6 @@ class FunctionsRtlTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function getChar() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionGetCharExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\getChar'), true);
@@ -68,8 +58,6 @@ class FunctionsRtlTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function breakCurrentSpan() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionBreakCurrentSpanExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\breakCurrentSpan'), true);
@@ -77,8 +65,6 @@ class FunctionsRtlTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function beginCurrentSpan() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionBeginCurrentSpanExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\beginCurrentSpan'), true);
@@ -86,8 +72,6 @@ class FunctionsRtlTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function finishCurrentSpan() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionFinishCurrentSpanExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\finishCurrentSpan'), true);
@@ -95,8 +79,6 @@ class FunctionsRtlTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function utf8_wordwrap() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionUtf8WordwrapExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\utf8_wordwrap'), true);

@@ -52,7 +52,7 @@ class Mail {
 	 * @param string $subject
 	 * @param string $message
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function send(Tree $tree, $to_email, $to_name, $replyto_email, $replyto_name, $subject, $message) {
 		try {
@@ -77,12 +77,12 @@ class Mail {
 	/**
 	 * Send an automated system message (such as a password reminder) from a tree to a user.
 	 *
-	 * @param Tree $tree
-	 * @param User    $user
-	 * @param string  $subject
-	 * @param string  $message
+	 * @param Tree   $tree
+	 * @param User   $user
+	 * @param string $subject
+	 * @param string $message
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function systemMessage(Tree $tree, User $user, $subject, $message) {
 		return self::send(

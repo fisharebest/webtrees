@@ -24,8 +24,6 @@ class ReportHtmlCell extends ReportBaseCell {
 	 * HTML Cell renderer
 	 *
 	 * @param ReportHtml $renderer
-	 *
-	 * @return void
 	 */
 	public function render($renderer) {
 		if (strpos($this->text, "{{:ptp:}}") !== false) {
@@ -135,7 +133,7 @@ class ReportHtmlCell extends ReportBaseCell {
 		if (!empty($temptext)) {
 			// Wrap the text
 			$temptext = $renderer->textWrap($temptext, $cW);
-			$tmph = $renderer->getTextCellHeight($temptext);
+			$tmph     = $renderer->getTextCellHeight($temptext);
 			// Add some cell padding
 			$this->height += $cP;
 			if ($tmph > $this->height) {

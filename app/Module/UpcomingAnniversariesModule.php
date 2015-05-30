@@ -79,6 +79,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 			if ($block) {
 				$class .= ' small_inner_block';
 			}
+
 			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 			return $content;
@@ -140,15 +141,15 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('infoStyle', array('list'=> I18N::translate('list'), 'table'=> I18N::translate('table')), null, $infoStyle, '');
+		echo select_edit_control('infoStyle', array('list' => I18N::translate('list'), 'table' => I18N::translate('table')), null, $infoStyle, '');
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Sort order');
 		echo '</td><td class="optionbox">';
 		echo select_edit_control('sortStyle', array(
-			/* I18N: An option in a list-box */ 'alpha'=> I18N::translate('sort by name'),
-			/* I18N: An option in a list-box */ 'anniv'=> I18N::translate('sort by date'),
+			/* I18N: An option in a list-box */ 'alpha' => I18N::translate('sort by name'),
+			/* I18N: An option in a list-box */ 'anniv' => I18N::translate('sort by date'),
 		), null, $sortStyle, '');
 		echo '</td></tr>';
 

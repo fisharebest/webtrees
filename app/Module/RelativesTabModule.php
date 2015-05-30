@@ -38,7 +38,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 	/**
 	 * @param Date $prev
 	 * @param Date $next
-	 * @param integer $child_number
+	 * @param int  $child_number
 	 *
 	 * @return string
 	 */
@@ -167,7 +167,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 
 		///// MARR /////
 		$found = false;
-		$prev = new Date('');
+		$prev  = new Date('');
 		foreach ($family->getFacts(WT_EVENTS_MARR) as $fact) {
 			$found |= !$fact->isPendingDeletion();
 			if ($fact->isPendingAddition()) {

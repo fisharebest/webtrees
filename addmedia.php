@@ -47,7 +47,7 @@ $controller
 	->addInlineJavascript('autocomplete();')
 	->restrictAccess(Auth::isMember($WT_TREE));
 
-$disp = true;
+$disp  = true;
 $media = Media::getInstance($pid, $WT_TREE);
 if ($media) {
 	$disp = $media->canShow();
@@ -320,7 +320,7 @@ case 'update': // Save the information from the “editmedia” action
 		$oldServerFile  = $media->getServerFilename('main');
 		$oldServerThumb = $media->getServerFilename('thumb');
 
-		$newmedia = new Media("xxx", "0 @xxx@ OBJE\n1 FILE " . $newFilename, null, $WT_TREE);
+		$newmedia       = new Media("xxx", "0 @xxx@ OBJE\n1 FILE " . $newFilename, null, $WT_TREE);
 		$newServerFile  = $newmedia->getServerFilename('main');
 		$newServerThumb = $newmedia->getServerFilename('thumb');
 
@@ -366,9 +366,9 @@ case 'update': // Save the information from the “editmedia” action
 
 	// Insert the 1 FILE xxx record into the arrays used by function handle_updates()
 	$glevels = array_merge(array('1'), $glevels);
-	$tag = array_merge(array('FILE'), $tag);
-	$islink = array_merge(array(0), $islink);
-	$text = array_merge(array($newFilename), $text);
+	$tag     = array_merge(array('FILE'), $tag);
+	$islink  = array_merge(array(0), $islink);
+	$text    = array_merge(array($newFilename), $text);
 
 	$record = GedcomRecord::getInstance($pid, $WT_TREE);
 	$newrec = "0 @$pid@ OBJE\n";

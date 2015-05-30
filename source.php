@@ -71,7 +71,7 @@ if ($controller->record && $controller->record->canShow()) {
 	http_response_code(404);
 	$controller->pageHeader();
 	echo '<p class="ui-state-error">', I18N::translate('This source does not exist or you do not have permission to view it.'), '</p>';
-	
+
 	return;
 }
 
@@ -132,6 +132,7 @@ echo '<div id="source-tabs">
 					'_UID' => 10,
 					'CHAN' => 11,
 				);
+
 				return
 					(array_key_exists($x->getTag(), $order) ? $order[$x->getTag()] : PHP_INT_MAX)
 					-

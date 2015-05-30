@@ -20,7 +20,6 @@ namespace Fisharebest\Webtrees;
  * Class AjaxController - Base controller for all popup pages
  */
 class AjaxController extends BaseController {
-
 	/**
 	 * @return $this
 	 */
@@ -34,7 +33,6 @@ class AjaxController extends BaseController {
 	}
 
 	/**
-	 * @return void
 	 */
 	public function pageFooter() {
 		// Ajax responses may have Javascript
@@ -44,7 +42,7 @@ class AjaxController extends BaseController {
 	/**
 	 * Restrict access.
 	 *
-	 * @param boolean $condition
+	 * @param bool $condition
 	 *
 	 * @return $this
 	 */

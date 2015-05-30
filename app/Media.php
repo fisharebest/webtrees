@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees;
  */
 class Media extends GedcomRecord {
 	const RECORD_TYPE = 'OBJE';
-	const URL_PREFIX = 'mediaviewer.php?mid=';
+	const URL_PREFIX  = 'mediaviewer.php?mid=';
 
 	// TODO: these should be private, with getTitle() and getFilename() functions
 	/** @var string The "TITL" value from the GEDCOM */
@@ -74,7 +74,7 @@ class Media extends GedcomRecord {
 		$linked_ids = Database::prepare(
 			"SELECT l_from FROM `##link` WHERE l_to = ? AND l_file = ?"
 		)->execute(array(
-			$this->xref, $this->tree->getTreeId()
+			$this->xref, $this->tree->getTreeId(),
 		))->fetchOneColumn();
 		foreach ($linked_ids as $linked_id) {
 			$linked_record = GedcomRecord::getInstance($linked_id, $this->tree);
@@ -241,7 +241,7 @@ class Media extends GedcomRecord {
 	 *
 	 * @param string $which specify either 'main' or 'thumb'
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function fileExists($which = 'main') {
 		return file_exists($this->getServerFilename($which));
@@ -249,6 +249,7 @@ class Media extends GedcomRecord {
 
 	/**
 	 * Determine if the file is an external url
+	 *
 	 * @return bool
 	 */
 	public function isExternal() {
@@ -275,7 +276,7 @@ class Media extends GedcomRecord {
 	 *
 	 * @param string $which specify either 'main' or 'thumb'
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function getFilesizeraw($which = 'main') {
 		try {
@@ -290,7 +291,7 @@ class Media extends GedcomRecord {
 	 *
 	 * @param string $which specify either 'main' or 'thumb'
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function getFiletime($which = 'main') {
 		try {
@@ -323,7 +324,6 @@ class Media extends GedcomRecord {
 	 * Deprecated? This does not need to be a function here.
 	 *
 	 * @return string
-	 *
 	 */
 	public function getMediaType() {
 		if (preg_match('/\n\d TYPE (.+)/', $this->gedcom, $match)) {
@@ -349,9 +349,9 @@ class Media extends GedcomRecord {
 	/**
 	 * get image properties
 	 *
-	 * @param string  $which     specify either 'main' or 'thumb'
-	 * @param integer $addWidth  amount to add to width
-	 * @param integer $addHeight amount to add to height
+	 * @param string $which     specify either 'main' or 'thumb'
+	 * @param int    $addWidth  amount to add to width
+	 * @param int    $addHeight amount to add to height
 	 *
 	 * @return array
 	 */
@@ -393,13 +393,13 @@ class Media extends GedcomRecord {
 
 		if (!is_array($imgsize) || empty($imgsize['0'])) {
 			// this is not an image, OR the file doesn’t exist OR it is a url
-			$imgsize[0] = 0;
-			$imgsize[1] = 0;
-			$imgsize['adjW'] = 0;
-			$imgsize['adjH'] = 0;
-			$imgsize['ext'] = '';
-			$imgsize['mime'] = '';
-			$imgsize['WxH'] = '';
+			$imgsize[0]       = 0;
+			$imgsize[1]       = 0;
+			$imgsize['adjW']  = 0;
+			$imgsize['adjH']  = 0;
+			$imgsize['ext']   = '';
+			$imgsize['mime']  = '';
+			$imgsize['WxH']   = '';
 			$imgsize['imgWH'] = '';
 			if ($this->isExternal()) {
 				// don’t let large external images break the dislay
@@ -410,7 +410,7 @@ class Media extends GedcomRecord {
 		if (empty($imgsize['mime'])) {
 			// this is not an image, OR the file doesn’t exist OR it is a url
 			// set file type equal to the file extension - can’t use parse_url because this may not be a full url
-			$exp = explode('?', $this->file);
+			$exp            = explode('?', $this->file);
 			$imgsize['ext'] = strtoupper(pathinfo($exp[0], PATHINFO_EXTENSION));
 			// all mimetypes we wish to serve with the media firewall must be added to this array.
 			$mime = array(
@@ -445,15 +445,15 @@ class Media extends GedcomRecord {
 	/**
 	 * Generate a URL directly to the media file
 	 *
-	 * @param string  $which
-	 * @param boolean $download
+	 * @param string $which
+	 * @param bool   $download
 	 *
 	 * @return string
 	 */
 	public function getHtmlUrlDirect($which = 'main', $download = false) {
 		// “cb” is “cache buster”, so clients will make new request if anything significant about the user or the file changes
 		// The extension is there so that image viewers (e.g. colorbox) can do something sensible
-		$thumbstr = ($which == 'thumb') ? '&amp;thumb=1' : '';
+		$thumbstr    = ($which == 'thumb') ? '&amp;thumb=1' : '';
 		$downloadstr = ($download) ? '&dl=1' : '';
 
 		return
@@ -546,7 +546,7 @@ class Media extends GedcomRecord {
 		if ($this->isExternal() || !file_exists($this->getServerFilename('thumb'))) {
 			// Use an icon
 			$mime_type = str_replace('/', '-', $this->mimeType());
-			$image =
+			$image     =
 				'<i' .
 				' dir="' . 'auto' . '"' . // For the tool-tip
 				' class="' . 'icon-mime-' . $mime_type . '"' .

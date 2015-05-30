@@ -20,37 +20,36 @@ namespace Fisharebest\Webtrees;
  * Class HourglassController - Controller for the hourglass chart
  */
 class HourglassController extends ChartController {
-
-	/** @var integer Whether to show spouse details */
+	/** @var int Whether to show spouse details */
 	public $show_spouse;
 
-	/** @var integer Number of ascendancy generations to show */
+	/** @var int Number of ascendancy generations to show */
 	public $generations;
 
-	/** @var integer Number of descendancy generations that exist */
+	/** @var int Number of descendancy generations that exist */
 	private $dgenerations;
 
-	/** @var integer Half height of personbox */
+	/** @var int Half height of personbox */
 	public $bhalfheight;
 
 	// Left and right get reversed on RTL pages
 	private $left_arrow;
 	private $right_arrow;
 
-	/** @var boolean Can the Javascript be loaded by the controller */
+	/** @var bool Can the Javascript be loaded by the controller */
 	private $canLoadJS;
 
-	const LINK = "<a class='%s' href='%s' data-parms='%s-%s-%s'></a>";
+	const LINK        = "<a class='%s' href='%s' data-parms='%s-%s-%s'></a>";
 	const SWITCH_LINK = "<a href='hourglass.php?rootid=%s&amp;show_spouse=%s&amp;show_full=%s&amp;generations=%s' class='name1'>%s</a>";
 
 	/**
-	 * @param string  $rootid
-	 * @param integer $show_full
-	 * @param boolean $loadJS
+	 * @param string $rootid
+	 * @param int    $show_full
+	 * @param bool   $loadJS
 	 */
 	public function __construct($rootid = '', $show_full = 1, $loadJS = true) {
 		global $WT_TREE;
-		
+
 		parent::__construct($show_full);
 
 		// Extract parameters from
@@ -61,10 +60,10 @@ class HourglassController extends ChartController {
 
 		//-- flip the arrows for RTL languages
 		if (I18N::direction() === 'ltr') {
-			$this->left_arrow = 'icon-larrow';
+			$this->left_arrow  = 'icon-larrow';
 			$this->right_arrow = 'icon-rarrow';
 		} else {
-			$this->left_arrow = 'icon-rarrow';
+			$this->left_arrow  = 'icon-rarrow';
 			$this->right_arrow = 'icon-larrow';
 		}
 
@@ -83,7 +82,7 @@ class HourglassController extends ChartController {
 	 * Prints pedigree of the person passed in. Which is the descendancy
 	 *
 	 * @param Individual $person ID of person to print the pedigree for
-	 * @param integer    $count  generation count, so it recursively calls itself
+	 * @param int        $count  generation count, so it recursively calls itself
 	 */
 	public function printPersonPedigree(Individual $person, $count) {
 
@@ -181,10 +180,10 @@ class HourglassController extends ChartController {
 	 * Prints descendency of passed in person
 	 *
 	 * @param Individual $person  person to print descendency for
-	 * @param integer       $count   count of generations to print
-	 * @param boolean       $showNav
+	 * @param int        $count   count of generations to print
+	 * @param bool       $showNav
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function printDescendency($person, $count, $showNav = true) {
 		global $lastGenSecondFam;
@@ -193,7 +192,7 @@ class HourglassController extends ChartController {
 			return 0;
 		}
 
-		$pid = $person->getXref();
+		$pid         = $person->getXref();
 		$tablealign  = 'right';
 		$otablealign = 'left';
 		if (I18N::direction() === 'rtl') {
@@ -211,9 +210,9 @@ class HourglassController extends ChartController {
 		echo "<table id='table_$pid' class='hourglassChart' style='float:$tablealign'>";
 		echo '<tr>';
 		echo "<td style='text-align:$tablealign'>";
-		$numkids = 0;
+		$numkids  = 0;
 		$families = $person->getSpouseFamilies();
-		$famNum = 0;
+		$famNum   = 0;
 		$children = array();
 		if ($count < $this->dgenerations) {
 			// Put all of the children in a common array
@@ -229,7 +228,7 @@ class HourglassController extends ChartController {
 				echo "<table style='position: relative; top: auto; float: $tablealign;'>";
 				for ($i = 0; $i < $ct; $i++) {
 					$person2 = $children[$i];
-					$chil = $person2->getXref();
+					$chil    = $person2->getXref();
 					echo '<tr>';
 					echo '<td id="td_', $chil, '" class="', I18N::direction(), '" style="text-align:', $otablealign, '">';
 					$kids = $this->printDescendency($person2, $count + 1);
@@ -294,7 +293,7 @@ class HourglassController extends ChartController {
 				$this->getBoxDimensions()->width -= 10;
 				$this->getBoxDimensions()->height -= 10;
 				print_pedigree_person($family->getSpouse($person), $this->showFull());
-				$this->getBoxDimensions()->width = $tempw;
+				$this->getBoxDimensions()->width  = $tempw;
 				$this->getBoxDimensions()->height = $temph;
 				$numkids += 0.95;
 				echo "</td><td></td>";
@@ -314,7 +313,7 @@ class HourglassController extends ChartController {
 				$famids = $person->getSpouseFamilies();
 				//-- make sure there is more than 1 child in the family with parents
 				$cfamids = $person->getChildFamilies();
-				$num = 0;
+				$num     = 0;
 				foreach ($cfamids as $family) {
 					$num += $family->getNumberOfChildren();
 				}
@@ -377,10 +376,10 @@ class HourglassController extends ChartController {
 	/**
 	 * Calculates number of generations a person has
 	 *
-	 * @param Individual $individual Individual to see how far down the descendency goes
-	 * @param integer    $depth      Pass in 0 and it calculates how far down descendency goes
+	 * @param Individual $individual Start individual
+	 * @param int        $depth      Pass in 0 and it calculates how far down descendency goes
 	 *
-	 * @return integer Number of generations the descendency actually goes
+	 * @return int Number of generations the descendency actually goes
 	 */
 	private function maxDescendencyGenerations(Individual $individual, $depth) {
 		if ($depth > $this->generations) {
@@ -409,7 +408,6 @@ class HourglassController extends ChartController {
 
 	/**
 	 * setup all of the javascript that is needed for the hourglass chart
-	 *
 	 */
 	public function setupJavascript() {
 		$js = "

@@ -36,9 +36,9 @@ if ($person->getBirthYear() == 0) {
 } else {
 	$BirthYr = $person->getBirthYear();
 }
-$fulln = rtrim($nam[0]['givn'], '*') . " " . $nam[0]['surname'];
-$fulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-$fulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $fulln);
+$fulln     = rtrim($nam[0]['givn'], '*') . " " . $nam[0]['surname'];
+$fulln     = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $fulln);
+$fulln     = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $fulln);
 $wholename = $fulln;
 
 echo '<script src="', WT_STATIC_URL, WT_MODULES_DIR, 'GEDFact_assistant/_CENS/js/dynamicoptionlist.js"></script>';

@@ -23,7 +23,7 @@ class ChartController extends PageController {
 	/** @var Individual Who is chart about? */
 	public $root;
 
-	/** @var boolean determines the detail shown in the personbox */
+	/** @var bool determines the detail shown in the personbox */
 	private $show_full;
 
 	/** @var string An error message, in case we cannot construct the chart */
@@ -41,7 +41,7 @@ class ChartController extends PageController {
 
 		parent::__construct();
 
-		$rootid = Filter::get('rootid', WT_REGEX_XREF);
+		$rootid     = Filter::get('rootid', WT_REGEX_XREF);
 		$this->root = Individual::getInstance($rootid, $WT_TREE);
 		if (!$this->root) {
 			// Missing root individual?  Show the chart for someone.
@@ -83,22 +83,22 @@ class ChartController extends PageController {
 	/**
 	 * Find the direct-line ancestors of an individual.  Array indexes are SOSA numbers.
 	 *
-	 * @param integer $generations
+	 * @param int $generations
 	 *
 	 * @return Individual[]
 	 */
 	public function sosaAncestors($generations) {
 		$ancestors = array(
-			1 => $this->root
+			1 => $this->root,
 		);
 
 		// Subtract one generation, as this algorithm includes parents.
 		$max = pow(2, $generations - 1);
 
 		for ($i = 1; $i < $max; $i++) {
-			$ancestors[$i * 2] = null;
+			$ancestors[$i * 2]     = null;
 			$ancestors[$i * 2 + 1] = null;
-			$person = $ancestors[$i];
+			$person                = $ancestors[$i];
 			if ($person) {
 				$family = $person->getPrimaryChildFamily();
 				if ($family) {
@@ -117,6 +117,7 @@ class ChartController extends PageController {
 
 	/**
 	 * Function showFull
+	 *
 	 * @return bool
 	 */
 	public function showFull() {
@@ -125,6 +126,7 @@ class ChartController extends PageController {
 
 	/**
 	 * Function boxDimensions
+	 *
 	 * @return \stdClass
 	 */
 	public function getBoxDimensions() {

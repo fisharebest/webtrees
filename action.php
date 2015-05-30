@@ -71,9 +71,9 @@ case 'copy-fact':
 					$clipboard = array();
 				}
 				$clipboard[$fact_id] = array(
-					'type'   =>$type,
-					'factrec'=>$fact->getGedcom(),
-					'fact'   =>$fact->getTag()
+					'type'    => $type,
+					'factrec' => $fact->getGedcom(),
+					'fact'    => $fact->getTag(),
 					);
 				// The clipboard only holds 10 facts
 				while (count($clipboard) > 10) {
@@ -127,7 +127,7 @@ case 'delete-source':
 	if ($record && Auth::isEditor($record->getTree()) && $record->canShow() && $record->canEdit()) {
 		// Delete links to this record
 		foreach (fetch_all_links($record->getXref(), $record->getTree()->getTreeId()) as $xref) {
-			$linker = GedcomRecord::getInstance($xref, $WT_TREE);
+			$linker     = GedcomRecord::getInstance($xref, $WT_TREE);
 			$old_gedcom = $linker->getGedcom();
 			$new_gedcom = remove_links($old_gedcom, $record->getXref());
 			// fetch_all_links() does not take account of pending changes.  The links (or even the
@@ -141,7 +141,7 @@ case 'delete-source':
 					$family->deleteRecord();
 					// Delete any remaining link to this family
 					if ($match) {
-						$relict = GedcomRecord::getInstance($match[2][0], $WT_TREE);
+						$relict     = GedcomRecord::getInstance($match[2][0], $WT_TREE);
 						$new_gedcom = $relict->getGedcom();
 						$new_gedcom = remove_links($new_gedcom, $linker->getXref());
 						$relict->updateRecord($new_gedcom, false);
@@ -188,7 +188,7 @@ case 'unlink-media':
 	$target = Filter::post('target', WT_REGEX_XREF);
 	if ($source && $source->canShow() && $source->canEdit() && $target) {
 		// Consider the individual and their spouse-family records
-		$sources = $source->getSpouseFamilies();
+		$sources   = $source->getSpouseFamilies();
 		$sources[] = $source;
 		foreach ($sources as $source) {
 			foreach ($source->getFacts() as $fact) {

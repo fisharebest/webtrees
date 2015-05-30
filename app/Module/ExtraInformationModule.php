@@ -75,7 +75,7 @@ class ExtraInformationModule extends AbstractModule implements ModuleSidebarInte
 	 *
 	 * @param Fact $fact
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function showFact(Fact $fact) {
 		switch ($fact->getTag()) {

@@ -165,7 +165,7 @@ class Filter {
 		$config = HTMLPurifier_Config::createDefault();
 		$config->set('Cache.SerializerPath', $HTML_PURIFIER_CACHE_DIR);
 		$purifier = new HTMLPurifier($config);
-		$text = $purifier->purify($text);
+		$text     = $purifier->purify($text);
 
 		return $text;
 	}
@@ -204,6 +204,7 @@ class Filter {
 					},
 				)
 			);
+
 			return ($tmp === null || $tmp === false) ? $default : $tmp;
 		}
 	}
@@ -234,6 +235,7 @@ class Filter {
 					),
 				)
 			);
+
 			return $tmp[$variable] ?: array();
 		} else {
 			// PHP5.3 requires the $tmp variable
@@ -245,10 +247,11 @@ class Filter {
 						'filter'  => FILTER_CALLBACK,
 						'options' => function ($x) {
 							return !function_exists('mb_convert_encoding') || mb_check_encoding($x, 'UTF-8') ? $x : false;
-						}
+						},
 					),
 				)
 			);
+
 			return $tmp[$variable] ?: array();
 		}
 	}
@@ -284,7 +287,7 @@ class Filter {
 	 *
 	 * @param string $variable
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function getBool($variable) {
 		return (bool) filter_input(INPUT_GET, $variable, FILTER_VALIDATE_BOOLEAN);
@@ -293,15 +296,15 @@ class Filter {
 	/**
 	 * Validate integer GET parameters
 	 *
-	 * @param string  $variable
-	 * @param integer $min
-	 * @param integer $max
-	 * @param integer $default
+	 * @param string $variable
+	 * @param int    $min
+	 * @param int    $max
+	 * @param int    $default
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public static function getInteger($variable, $min = 0, $max = PHP_INT_MAX, $default = 0) {
-		return filter_input(INPUT_GET, $variable, FILTER_VALIDATE_INT, array('options'=>array('min_range'=>$min, 'max_range'=>$max, 'default'=>$default)));
+		return filter_input(INPUT_GET, $variable, FILTER_VALIDATE_INT, array('options' => array('min_range' => $min, 'max_range' => $max, 'default' => $default)));
 	}
 
 	/**
@@ -359,7 +362,7 @@ class Filter {
 	 *
 	 * @param string $variable
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function postBool($variable) {
 		return (bool) filter_input(INPUT_POST, $variable, FILTER_VALIDATE_BOOLEAN);
@@ -368,15 +371,15 @@ class Filter {
 	/**
 	 * Validate integer POST parameters
 	 *
-	 * @param string  $variable
-	 * @param integer $min
-	 * @param integer $max
-	 * @param integer $default
+	 * @param string $variable
+	 * @param int    $min
+	 * @param int    $max
+	 * @param int    $default
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public static function postInteger($variable, $min = 0, $max = PHP_INT_MAX, $default = 0) {
-		return filter_input(INPUT_POST, $variable, FILTER_VALIDATE_INT, array('options'=>array('min_range'=>$min, 'max_range'=>$max, 'default'=>$default)));
+		return filter_input(INPUT_POST, $variable, FILTER_VALIDATE_INT, array('options' => array('min_range' => $min, 'max_range' => $max, 'default' => $default)));
 	}
 
 	/**
@@ -446,7 +449,7 @@ $_SERVER[$variable]))) {
 	 */
 	public static function getCsrfToken() {
 		if (!Session::has('CSRF_TOKEN')) {
-			$charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcedfghijklmnopqrstuvwxyz0123456789';
+			$charset    = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcedfghijklmnopqrstuvwxyz0123456789';
 			$csrf_token = '';
 			for ($n = 0; $n < 32; ++$n) {
 				$csrf_token .= substr($charset, mt_rand(0, 61), 1);
@@ -469,7 +472,7 @@ $_SERVER[$variable]))) {
 	/**
 	 * Check that the POST request contains the CSRF token generated above.
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function checkCsrf() {
 		if (self::post('csrf') !== self::getCsrfToken()) {

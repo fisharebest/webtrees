@@ -20,7 +20,6 @@ namespace Fisharebest\Webtrees;
  * Class GedcomCodeRela - Functions and logic for GEDCOM "RELA" codes
  */
 class GedcomCodeRela {
-
 	/** @var string[] List of possible values for the RELA tag */
 	private static $TYPES = array(
 		'attendant', 'attending', 'best_man', 'bridesmaid', 'buyer',

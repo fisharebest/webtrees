@@ -47,6 +47,7 @@ class PageMenuModule extends AbstractModule implements ModuleMenuInterface {
 		if (Auth::isEditor($WT_TREE) && method_exists($controller, 'getEditMenu')) {
 			$menu = $controller->getEditMenu();
 		}
+
 		return $menu;
 	}
 }

@@ -29,8 +29,6 @@ class ReportBaseElement {
 	 * Element renderer
 	 *
 	 * @param ReportHtml|ReportPdf $renderer
-	 *
-	 * @return void
 	 */
 	public function render($renderer) {
 		//-- to be implemented in inherited classes
@@ -57,7 +55,7 @@ class ReportBaseElement {
 	/**
 	 * @param string $t
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function addText($t) {
 		global $wt_report, $reportTitle, $reportDescription;
@@ -79,7 +77,7 @@ class ReportBaseElement {
 	}
 
 	/**
-	 * @return integer
+	 * @return int
 	 */
 	public function addNewline() {
 		$this->text .= "\n";
@@ -98,7 +96,7 @@ class ReportBaseElement {
 	 * @param $wrapwidth
 	 * @param $cellwidth
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function setWrapWidth($wrapwidth, $cellwidth) {
 		return 0;
@@ -106,8 +104,6 @@ class ReportBaseElement {
 
 	/**
 	 * @param $renderer
-	 *
-	 * @return void
 	 */
 	public function renderFootnote($renderer) {
 		// To be implemented in inherited classes
@@ -115,8 +111,6 @@ class ReportBaseElement {
 
 	/**
 	 * @param $text
-	 *
-	 * @return void
 	 */
 	public function setText($text) {
 		$this->text = $text;

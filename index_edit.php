@@ -137,7 +137,7 @@ if ($action === 'update') {
 			}
 		}
 		// deleted blocks
-		foreach ($blocks[$location] as $block_id=>$block_name) {
+		foreach ($blocks[$location] as $block_id => $block_name) {
 			if (!in_array($block_id, $main) && !in_array($block_id, $right)) {
 				Database::prepare("DELETE FROM `##block_setting` WHERE block_id=?")->execute(array($block_id));
 				Database::prepare("DELETE FROM `##block`         WHERE block_id=?")->execute(array($block_id));
@@ -272,7 +272,6 @@ $controller
 	var block_descr = new Array();
 	');
 
-
 	// Load Block Description array for use by javascript
 	foreach ($all_blocks as $block_name => $block) {
 		$controller->addInlineJavascript(
@@ -314,7 +313,7 @@ $controller
 	// NOTE: Row 2 column 2: Left (Main) block list
 	echo '<td class="optionbox center">';
 		echo '<select multiple="multiple" id="main_select" name="main[]" size="10" onchange="show_description(\'main_select\');">';
-		foreach ($blocks['main'] as $block_id=>$block_name) {
+		foreach ($blocks['main'] as $block_id => $block_name) {
 			echo '<option value="', $block_id, '">', $all_blocks[$block_name]->getTitle(), '</option>';
 		}
 		echo '</select>';
@@ -331,7 +330,7 @@ $controller
 	// Row 2 column 4: Middle (Available) block list
 	echo '<td class="optionbox center">';
 		echo '<select id="available_select" name="available[]" size="10" onchange="show_description(\'available_select\');">';
-		foreach ($all_blocks as $block_name=>$block) {
+		foreach ($all_blocks as $block_name => $block) {
 			echo '<option value="', $block_name, '">', $block->getTitle(), '</option>';
 		}
 		echo '</select>';
@@ -348,7 +347,7 @@ $controller
 	// NOTE: Row 2 column 6: Right block list
 	echo '<td class="optionbox center">';
 		echo '<select multiple="multiple" id="right_select" name="right[]" size="10" onchange="show_description(\'right_select\');">';
-		foreach ($blocks['side'] as $block_id=>$block_name) {
+		foreach ($blocks['side'] as $block_id => $block_name) {
 			echo '<option value="', $block_id, '">', $all_blocks[$block_name]->getTitle(), '</option>';
 		}
 		echo '</select>';

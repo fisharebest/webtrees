@@ -105,13 +105,13 @@ case 'languages':
 
 // Lists of options for <select> controls.
 $SMTP_SSL_OPTIONS = array(
-	'none'=> I18N::translate('none'),
-	/* I18N: Secure Sockets Layer - a secure communications protocol*/ 'ssl'=> I18N::translate('ssl'),
-	/* I18N: Transport Layer Security - a secure communications protocol */ 'tls'=> I18N::translate('tls'),
+	'none'                                                                        => I18N::translate('none'),
+	/* I18N: Secure Sockets Layer - a secure communications protocol*/ 'ssl'      => I18N::translate('ssl'),
+	/* I18N: Transport Layer Security - a secure communications protocol */ 'tls' => I18N::translate('tls'),
 );
 $SMTP_ACTIVE_OPTIONS = array(
-	'internal'=> I18N::translate('Use PHP mail to send messages'),
-	'external'=> I18N::translate('Use SMTP to send messages'),
+	'internal' => I18N::translate('Use PHP mail to send messages'),
+	'external' => I18N::translate('Use SMTP to send messages'),
 );
 $WELCOME_TEXT_AUTH_MODE_OPTIONS = array(
 	0 => I18N::translate('No predefined text'),
@@ -283,7 +283,7 @@ $controller->pageHeader();
 			<?php echo /* I18N: A site configuration setting */ I18N::translate('Website URL'); ?>
 		</label>
 		<div class="col-sm-9">
-			<?php echo select_edit_control('SERVER_URL', array(WT_BASE_URL=>WT_BASE_URL), '', Site::getPreference('SERVER_URL'), 'class="form-control"'); ?>
+			<?php echo select_edit_control('SERVER_URL', array(WT_BASE_URL => WT_BASE_URL), '', Site::getPreference('SERVER_URL'), 'class="form-control"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the "Website URL" site configuration setting */ I18N::translate('If your website can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL.  Requests for the other URLs will be redirected to the preferred one.'); ?>
 				<?php echo I18N::translate('If you leave this setting empty, the default value will be used.'); ?>

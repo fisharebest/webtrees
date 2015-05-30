@@ -17,8 +17,8 @@ namespace Fisharebest\Webtrees;
  */
 
 /**
- * @param string  $age_string
- * @param boolean $show_years
+ * @param string $age_string
+ * @param bool   $show_years
  *
  * @return string
  */
@@ -61,7 +61,7 @@ function get_age_at_event($age_string, $show_years) {
  * Don't attempt to convert into other calendars, as not all days start at
  * midnight, and we can only get it wrong.
  *
- * @param integer $time
+ * @param int $time
  *
  * @return string
  */
@@ -106,7 +106,7 @@ function format_timestamp($time) {
 /**
  * Convert a unix-style timestamp into a Date object
  *
- * @param integer $time
+ * @param int $time
  *
  * @return Date
  */

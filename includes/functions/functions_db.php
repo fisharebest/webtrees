@@ -20,8 +20,8 @@ namespace Fisharebest\Webtrees;
  * Fetch all records linked to a record - when deleting an object, we must
  * also delete all links to it.
  *
- * @param string  $xref
- * @param integer $gedcom_id
+ * @param string $xref
+ * @param int    $gedcom_id
  *
  * @return string[]
  */
@@ -36,7 +36,7 @@ function fetch_all_links($xref, $gedcom_id) {
 			$gedcom_id,
 			$xref,
 			$gedcom_id,
-			$xref
+			$xref,
 		))->fetchOneColumn();
 }
 
@@ -179,7 +179,6 @@ function search_indis_names(array $query, array $trees) {
 		$args['collate_' . $n] = I18N::collation();
 		$args['query_' . $n]   = Filter::escapeLike($q);
 	}
-
 
 	$sql .= " AND i_file IN (";
 	foreach ($trees as $n => $tree) {
@@ -330,15 +329,15 @@ function search_indis_soundex($soundex, $lastname, $firstname, $place, array $tr
 /**
  * get recent changes since the given julian day inclusive
  *
- * @param integer $jd      leave empty to include all
- * @param boolean $allgeds
+ * @param int  $jd      leave empty to include all
+ * @param bool $allgeds
  *
  * @return string[] List of XREFs of records with changes
  */
 function get_recent_changes($jd = 0, $allgeds = false) {
 	global $WT_TREE;
 
-	$sql = "SELECT d_gid FROM `##dates` WHERE d_fact='CHAN' AND d_julianday1>=?";
+	$sql  = "SELECT d_gid FROM `##dates` WHERE d_fact='CHAN' AND d_julianday1>=?";
 	$vars = array($jd);
 	if (!$allgeds) {
 		$sql .= " AND d_file=?";
@@ -639,8 +638,8 @@ function find_rin_id($rin) {
  * This function returns a simple array of the most common surnames
  * found in the individuals list.
  *
- * @param integer $min  The number of times a surname must occur before it is added to the array
- * @param Tree    $tree
+ * @param int  $min  The number of times a surname must occur before it is added to the array
+ * @param Tree $tree
  *
  * @return mixed[][]
  */
@@ -666,6 +665,7 @@ function get_common_surnames($min, Tree $tree) {
 		foreach ($topsurns as $key => $value) {
 			$topsurns[$key] = array('name' => $key, 'match' => $value);
 		}
+
 		return $topsurns;
 	}
 }
@@ -673,9 +673,9 @@ function get_common_surnames($min, Tree $tree) {
 /**
  * get the top surnames
  *
- * @param integer $ged_id fetch surnames from this gedcom
- * @param integer $min    only fetch surnames occuring this many times
- * @param integer $max    only fetch this number of surnames (0=all)
+ * @param int $ged_id fetch surnames from this gedcom
+ * @param int $min    only fetch surnames occuring this many times
+ * @param int $max    only fetch this number of surnames (0=all)
  *
  * @return string[]
  */
@@ -714,9 +714,9 @@ function get_top_surnames($ged_id, $min, $max) {
  * Get a list of events whose anniversary occured on a given julian day.
  * Used on the on-this-day/upcoming blocks and the day/month calendar views.
  *
- * @param integer $jd    the julian day
- * @param string  $facts restrict the search to just these facts or leave blank for all
- * @param Tree    $tree  the tree to search
+ * @param int    $jd    the julian day
+ * @param string $facts restrict the search to just these facts or leave blank for all
+ * @param Tree   $tree  the tree to search
  *
  * @return Fact[]
  */
@@ -876,7 +876,7 @@ function get_anniversary_events($jd, $facts, Tree $tree) {
 				$anniv_date = new Date($row->d_type . ' ' . $row->d_day . ' ' . $row->d_month . ' ' . $row->d_year);
 				foreach ($record->getFacts() as $fact) {
 					if (($fact->getDate()->minimumDate() == $anniv_date->minimumDate() || $fact->getDate()->maximumDate() == $anniv_date->minimumDate()) && $fact->getTag() === $row->d_fact) {
-						$fact->anniv = $row->d_year === 0 ? 0 : $anniv->y - $row->d_year;
+						$fact->anniv   = $row->d_year === 0 ? 0 : $anniv->y - $row->d_year;
 						$found_facts[] = $fact;
 					}
 				}
@@ -890,10 +890,10 @@ function get_anniversary_events($jd, $facts, Tree $tree) {
 /**
  * Get a list of events which occured during a given date range.
  *
- * @param integer $jd1    the start range of julian day
- * @param integer $jd2    the end range of julian day
- * @param string  $facts  restrict the search to just these facts or leave blank for all
- * @param Tree    $tree   the tree to search
+ * @param int    $jd1   the start range of julian day
+ * @param int    $jd2   the end range of julian day
+ * @param string $facts restrict the search to just these facts or leave blank for all
+ * @param Tree   $tree  the tree to search
  *
  * @return Fact[]
  */
@@ -934,7 +934,7 @@ function get_calendar_events($jd1, $jd2, $facts, Tree $tree) {
 			$anniv_date = new Date($row->d_type . ' ' . $row->d_day . ' ' . $row->d_month . ' ' . $row->d_year);
 			foreach ($record->getFacts() as $fact) {
 				if (($fact->getDate()->minimumDate() == $anniv_date->minimumDate() || $fact->getDate()->maximumDate() == $anniv_date->minimumDate()) && $fact->getTag() === $row->d_fact) {
-					$fact->anniv = 0;
+					$fact->anniv   = 0;
 					$found_facts[] = $fact;
 				}
 			}
@@ -947,10 +947,10 @@ function get_calendar_events($jd1, $jd2, $facts, Tree $tree) {
 /**
  * Get the list of current and upcoming events, sorted by anniversary date
  *
- * @param integer $jd1
- * @param integer $jd2
- * @param string  $events
- * @param Tree    $tree
+ * @param int    $jd1
+ * @param int    $jd2
+ * @param string $events
+ * @param Tree   $tree
  *
  * @return Fact[]
  */
@@ -970,10 +970,10 @@ function get_events_list($jd1, $jd2, $events, Tree $tree) {
 /**
  * Check if a media file is shared (i.e. used by another gedcom)
  *
- * @param string  $file_name
- * @param integer $ged_id
+ * @param string $file_name
+ * @param int    $ged_id
  *
- * @return boolean
+ * @return bool
  */
 function is_media_used_in_other_gedcom($file_name, $ged_id) {
 	return
@@ -983,15 +983,15 @@ function is_media_used_in_other_gedcom($file_name, $ged_id) {
 }
 
 /**
- * @param integer $user_id
+ * @param int $user_id
  *
  * @return string[][]
  */
 function get_user_blocks($user_id) {
 	global $WT_TREE;
 
-	$blocks = array('main'=>array(), 'side'=>array());
-	$rows = Database::prepare(
+	$blocks = array('main' => array(), 'side' => array());
+	$rows   = Database::prepare(
 		"SELECT SQL_CACHE location, block_id, module_name" .
 		" FROM  `##block`" .
 		" JOIN  `##module` USING (module_name)" .
@@ -1012,7 +1012,7 @@ function get_user_blocks($user_id) {
 /**
  * Get the blocks for the specified tree
  *
- * @param integer $gedcom_id
+ * @param int $gedcom_id
  *
  * @return string[][]
  */
@@ -1023,8 +1023,8 @@ function get_gedcom_blocks($gedcom_id) {
 		$access_level = Auth::accessLevel(Tree::findById($gedcom_id));
 	}
 
-	$blocks = array('main'=>array(), 'side'=>array());
-	$rows = Database::prepare(
+	$blocks = array('main' => array(), 'side' => array());
+	$rows   = Database::prepare(
 		"SELECT SQL_CACHE location, block_id, module_name" .
 		" FROM  `##block`" .
 		" JOIN  `##module` USING (module_name)" .
@@ -1051,7 +1051,7 @@ function get_gedcom_blocks($gedcom_id) {
  * @param string $xref_to
  * @param Tree   $tree
  *
- * @return integer
+ * @return int
  */
 function update_favorites($xref_from, $xref_to, Tree $tree) {
 	return

@@ -44,7 +44,7 @@ class BatchUpdateNameFormatPlugin extends BatchUpdateBasePlugin {
 	 * @param string $xref
 	 * @param string $gedrec
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function doesRecordNeedUpdate($xref, $gedrec) {
 		return

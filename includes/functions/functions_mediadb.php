@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees;
  *
  * @param string $val
  *
- * @return integer
+ * @return int
  */
 function return_bytes($val) {
 	if (!$val) {
@@ -48,7 +48,7 @@ function return_bytes($val) {
  *
  * @param string $serverFilename
  *
- * @return boolean
+ * @return bool
  */
 function hasMemoryForImage($serverFilename) {
 	// find out how much total memory this script can access
@@ -72,7 +72,7 @@ function hasMemoryForImage($serverFilename) {
 	// from comments on http://www.php.net/imagecreatefromjpeg
 	if ($imgsize && isset($imgsize['bits']) && (isset($imgsize['channels']))) {
 		$memoryNeeded = round(($imgsize[0] * $imgsize[1] * $imgsize['bits'] * $imgsize['channels'] / 8 + Pow(2, 16)) * 1.65);
-		$memorySpare = $memoryAvailable - $memoryUsed - $memoryNeeded;
+		$memorySpare  = $memoryAvailable - $memoryUsed - $memoryNeeded;
 		if ($memorySpare > 0) {
 			// we have enough memory to load this file
 			return true;
@@ -80,6 +80,7 @@ function hasMemoryForImage($serverFilename) {
 			// not enough memory to load this file
 			$image_info = sprintf('%.2fKB, %d × %d %d bits %d channels', filesize($serverFilename) / 1024, $imgsize[0], $imgsize[1], $imgsize['bits'], $imgsize['channels']);
 			Log::addMediaLog('Cannot create thumbnail ' . $serverFilename . ' (' . $image_info . ') memory avail: ' . $memoryAvailable . ' used: ' . $memoryUsed . ' needed: ' . $memoryNeeded . ' spare: ' . $memorySpare);
+
 			return false;
 		}
 	} else {

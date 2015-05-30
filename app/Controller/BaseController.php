@@ -21,9 +21,9 @@ namespace Fisharebest\Webtrees;
  */
 class BaseController {
 	// The controller accumulates Javascript (inline and external), and renders it in the footer
-	const JS_PRIORITY_HIGH = 0;
-	const JS_PRIORITY_NORMAL = 1;
-	const JS_PRIORITY_LOW = 2;
+	const JS_PRIORITY_HIGH     = 0;
+	const JS_PRIORITY_NORMAL   = 1;
+	const JS_PRIORITY_LOW      = 2;
 	private $inline_javascript = array(
 		self::JS_PRIORITY_HIGH   => array(),
 		self::JS_PRIORITY_NORMAL => array(),
@@ -67,13 +67,13 @@ class BaseController {
 	 * NOTE: there is no need to use "jQuery(document).ready(function(){...})", etc.
 	 * as this Javascript won’t be inserted until the very end of the page.
 	 *
-	 * @param string  $script
-	 * @param integer $priority
+	 * @param string $script
+	 * @param int    $priority
 	 *
 	 * @return $this
 	 */
 	public function addInlineJavascript($script, $priority = self::JS_PRIORITY_NORMAL) {
-		$tmp = & $this->inline_javascript[$priority];
+		$tmp   = &$this->inline_javascript[$priority];
 		$tmp[] = $script;
 
 		return $this;
@@ -136,8 +136,6 @@ class BaseController {
 
 	/**
 	 * Print the page footer, using the theme
-	 *
-	 * @return void
 	 */
 	public function pageFooter() {
 		if (WT_DEBUG_SQL) {

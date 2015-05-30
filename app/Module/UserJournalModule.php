@@ -81,6 +81,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 			if ($block) {
 				$class .= ' small_inner_block';
 			}
+
 			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 			return $content;

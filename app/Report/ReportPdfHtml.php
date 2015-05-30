@@ -21,10 +21,10 @@ namespace Fisharebest\Webtrees;
  */
 class ReportPdfHtml extends ReportBaseHtml {
 	/**
-	 * @param         $renderer
-	 * @param boolean $sub
+	 * @param      $renderer
+	 * @param bool $sub
 	 *
-	 * @return integer|string
+	 * @return int|string
 	 */
 	public function render($renderer, $sub = false) {
 		if (!empty($this->attrs['style'])) {

@@ -74,7 +74,7 @@ if ($tree1_id && $tree2_id != $tree1_id) {
 		") AS other_trees USING (xref)"
 	)->execute(array(
 		$tree1_id, $tree1_id, $tree1_id, $tree1_id, $tree1_id,
-		$tree2_id, $tree2_id, $tree2_id, $tree2_id, $tree2_id, $tree2_id
+		$tree2_id, $tree2_id, $tree2_id, $tree2_id, $tree2_id, $tree2_id,
 	))->fetchAssoc();
 
 	if ($xrefs) {

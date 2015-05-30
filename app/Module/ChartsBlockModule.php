@@ -56,7 +56,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 			$person = Individual::getInstance($pid, $WT_TREE);
 		}
 
-		$id = $this->getName() . $block_id;
+		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		if ($ctype == 'gedcom' && Auth::isManager($WT_TREE) || $ctype == 'user' && Auth::check()) {
 			$title = '<a class="icon-admin" title="' . I18N::translate('Configure') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
@@ -110,7 +110,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 			case 'treenav':
 				$title .= I18N::translate('Interactive tree of %s', $person->getFullName());
 				$mod = new InteractiveTreeModule(WT_MODULES_DIR . 'tree');
-				$tv = new TreeView;
+				$tv  = new TreeView;
 				$content .= '<td>';
 				$content .= '<script>jQuery("head").append(\'<link rel="stylesheet" href="' . $mod->css() . '" type="text/css" />\');</script>';
 				$content .= '<script src="' . $mod->js() . '"></script>';
@@ -175,7 +175,8 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 					'pedigree'    => I18N::translate('Pedigree'),
 					'descendants' => I18N::translate('Descendants'),
 					'hourglass'   => I18N::translate('Hourglass chart'),
-					'treenav'     => I18N::translate('Interactive tree')),
+					'treenav'     => I18N::translate('Interactive tree'),
+				),
 				null, $type); ?>
 			</td>
 		</tr>

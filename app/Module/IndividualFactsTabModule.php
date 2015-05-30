@@ -143,7 +143,6 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 			echo '<script>jQuery("tr.histo").toggle();</script>';
 		}
 
-
 		return '<div id="' . $this->getName() . '_content">' . ob_get_clean() . '</div>';
 	}
 
@@ -333,7 +332,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 	 * Get the events of parents and grandparents.
 	 *
 	 * @param Individual $person
-	 * @param integer    $sosa
+	 * @param int        $sosa
 	 *
 	 * @return Fact[]
 	 */
@@ -455,7 +454,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 					// rather than UTF8 encoding.
 					$hist = html_entity_decode($hist, ENT_QUOTES, 'UTF-8');
 
-					$fact = new Fact($hist, $person, 'histo');
+					$fact  = new Fact($hist, $person, 'histo');
 					$sdate = $fact->getDate();
 					if ($sdate->isOK() && Date::compare($birt_date, $sdate) <= 0 && Date::compare($sdate, $deat_date) <= 0) {
 						$facts[] = $fact;

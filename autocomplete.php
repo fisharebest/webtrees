@@ -80,7 +80,7 @@ case 'ASSO': // Associates of an individuals, whose name contains the search ter
 		}
 	}
 	echo json_encode($data);
-	
+
 	return;
 
 case 'CEME': // Cemetery fields, that contain the search term
@@ -105,7 +105,7 @@ case 'CEME': // Cemetery fields, that contain the search term
 		}
 	}
 	echo json_encode($data);
-	
+
 	return;
 
 case 'FAM': // Families, whose name contains the search terms
@@ -125,7 +125,7 @@ case 'FAM': // Families, whose name contains the search terms
 		}
 	}
 	echo json_encode($data);
-	
+
 	return;
 
 case 'GIVN': // Given names, that start with the search term
@@ -142,7 +142,7 @@ case 'GIVN': // Given names, that start with the search term
 			'collation' => I18N::collation(),
 		))->fetchOneColumn()
 	);
-	
+
 	return;
 
 case 'INDI': // Individuals, whose name contains the search terms
@@ -168,7 +168,7 @@ case 'INDI': // Individuals, whose name contains the search terms
 		}
 	}
 	echo json_encode($data);
-	
+
 	return;
 
 case 'NOTE': // Notes which contain the search terms
@@ -183,7 +183,7 @@ case 'NOTE': // Notes which contain the search terms
 		}
 	}
 	echo json_encode($data);
-	
+
 	return;
 
 case 'OBJE':
@@ -198,7 +198,7 @@ case 'OBJE':
 		}
 	}
 	echo json_encode($data);
-	
+
 	return;
 
 case 'PLAC': // Place names (with hierarchy), that include the search term
@@ -236,7 +236,7 @@ case 'PLAC': // Place names (with hierarchy), that include the search term
 		}
 	}
 	echo json_encode($data);
-	
+
 	return;
 
 case 'PLAC2': // Place names (without hierarchy), that include the search term
@@ -270,7 +270,7 @@ case 'REPO': // Repositories, that include the search terms
 		}
 	}
 	echo json_encode($data);
-	
+
 	return;
 
 case 'REPO_NAME': // Repository names, that include the search terms
@@ -285,7 +285,7 @@ case 'REPO_NAME': // Repository names, that include the search terms
 		}
 	}
 	echo json_encode($data);
-	
+
 	return;
 
 case 'SOUR': // Sources, that include the search terms
@@ -302,7 +302,7 @@ case 'SOUR': // Sources, that include the search terms
 		}
 	}
 	echo json_encode($data);
-	
+
 	return;
 
 case 'PAGE': // Citation details, for a given source, that contain the search term
@@ -353,7 +353,7 @@ case 'PAGE': // Citation details, for a given source, that contain the search te
 	// back into integers.
 	$data = array_values(array_unique($data));
 	echo json_encode($data);
-	
+
 	return;
 
 case 'SOUR_TITL': // Source titles, that include the search terms
@@ -377,7 +377,7 @@ case 'SOUR_TITL': // Source titles, that include the search terms
 		}
 	}
 	echo json_encode($data);
-	
+
 	return;
 
 case 'SURN': // Surnames, that start with the search term
@@ -394,7 +394,7 @@ case 'SURN': // Surnames, that start with the search term
 			'collation' => I18N::collation(),
 		))->fetchOneColumn()
 	);
-	
+
 	return;
 
 case 'IFSRO':
@@ -459,7 +459,7 @@ case 'IFSRO':
 		}
 	}
 	echo json_encode($data);
-	
+
 	return;
 
 case 'IFS':
@@ -497,7 +497,7 @@ case 'IFS':
 		}
 	}
 	echo json_encode($data);
-	
+
 	return;
 }
 

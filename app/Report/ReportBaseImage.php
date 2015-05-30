@@ -75,13 +75,13 @@ class ReportBaseImage extends ReportBaseElement {
 	 * @param string $ln    T:same line, N:next line
 	 */
 	public function __construct($file, $x, $y, $w, $h, $align, $ln) {
-		$this->file = $file;
-		$this->width = $w;
+		$this->file   = $file;
+		$this->width  = $w;
 		$this->height = $h;
-		$this->x = $x;
-		$this->y = $y;
-		$this->align = $align;
-		$this->line = $ln;
+		$this->x      = $x;
+		$this->y      = $y;
+		$this->align  = $align;
+		$this->line   = $ln;
 
 		return 0;
 	}

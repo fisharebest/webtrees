@@ -24,16 +24,12 @@ use PHPUnit_Framework_TestCase;
 class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Prepare the environment for these tests
-	 *
-	 * @return void
 	 */
 	public function setUp() {
 	}
 
 	/**
 	 * Test that function fetch_all_links() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionFetchAllLinksExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\fetch_all_links'), true);
@@ -41,8 +37,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function get_source_list() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionGetSourceListExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_source_list'), true);
@@ -50,8 +44,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function get_repo_list() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionGetRepoListExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_repo_list'), true);
@@ -59,8 +51,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function get_note_list() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionGetNoteListExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_note_list'), true);
@@ -68,8 +58,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function search_indis() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionSearchIndisExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\search_indis'), true);
@@ -77,8 +65,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function search_indis_names() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionSearchIndisNamesExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\search_indis_names'), true);
@@ -86,8 +72,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function search_indis_soundex() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionSearchIndisSoundexExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\search_indis_soundex'), true);
@@ -95,8 +79,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function get_recent_changes() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionGetRecentChangesExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_recent_changes'), true);
@@ -104,8 +86,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function search_fams() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionSearchFamsExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\search_fams'), true);
@@ -113,8 +93,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function search_fams_names() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionSearchFamsNamesExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\search_fams_names'), true);
@@ -122,8 +100,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function search_sources() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionSearchSourcesExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\search_sources'), true);
@@ -131,8 +107,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function search_notes() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionSearchNotesExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\search_notes'), true);
@@ -140,8 +114,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function search_repos() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionSearchReposExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\search_repos'), true);
@@ -149,8 +121,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function find_rin_id() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionFindRinIdExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\find_rin_id'), true);
@@ -158,8 +128,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function get_common_surnames() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionGetCommonSurnamesExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_common_surnames'), true);
@@ -167,8 +135,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function get_top_surnames() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionGetTopSurnamesExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_top_surnames'), true);
@@ -176,8 +142,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function get_anniversary_events() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionGetAnniversaryEventsExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_anniversary_events'), true);
@@ -185,8 +149,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function get_calendar_events() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionGetCalendarEventsExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_calendar_events'), true);
@@ -194,8 +156,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function is_media_used_in_other_gedcom() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionIsMediaUsedInOtherGedcomExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\is_media_used_in_other_gedcom'), true);
@@ -203,8 +163,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function get_user_blocks() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionGetUserBlocksExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_user_blocks'), true);
@@ -212,8 +170,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function get_gedcom_blocks() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionGetGedcomBlocksExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_gedcom_blocks'), true);
@@ -221,8 +177,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function update_favorites() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionUpdateFavoritesExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\update_favorites'), true);
@@ -230,8 +184,6 @@ class FunctionsDbTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function get_events_list() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionGetEventsListExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\get_events_list'), true);

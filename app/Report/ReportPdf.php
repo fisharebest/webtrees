@@ -23,26 +23,26 @@ class ReportPdf extends ReportBase {
 	/**
 	 * PDF compression - Zlib extension is required
 	 *
-	 * @var boolean const
+	 * @var bool const
 	 */
 	const COMPRESSION = true;
 	/**
 	 * If true reduce the RAM memory usage by caching temporary data on filesystem (slower).
 	 *
-	 * @var boolean const
+	 * @var bool const
 	 */
 	const DISK_CACHE = false;
 	/**
 	 * true means that the input text is unicode (PDF)
 	 *
-	 * @var boolean const
+	 * @var bool const
 	 */
 	const UNICODE = true;
 	/**
 	 * false means that the full font is embedded, true means only the used chars
 	 * in TCPDF v5.9 font subsetting is a very slow process, this leads to larger files
 	 *
-	 * @var boolean const
+	 * @var bool const
 	 */
 	const SUBSETTING = false;
 	/**
@@ -61,7 +61,7 @@ class ReportPdf extends ReportBase {
 		// Setup the PDF class with custom size pages because WT supports more page sizes. If WT sends an unknown size name then the default would be A4
 		$this->pdf = new ReportTcpdf($this->orientation, parent::UNITS, array(
 			$this->pagew,
-			$this->pageh
+			$this->pageh,
 		), self::UNICODE, "UTF-8", self::DISK_CACHE);
 
 		// Setup the PDF margins
@@ -105,7 +105,7 @@ class ReportPdf extends ReportBase {
 	 *
 	 * @param object|string $element Object or string
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function addElement($element) {
 		if ($this->processing == "B") {
@@ -147,20 +147,20 @@ class ReportPdf extends ReportBase {
 	/**
 	 * Create a new Cell object - ReportPdf
 	 *
-	 * @param integer $width   cell width (expressed in points)
-	 * @param integer $height  cell height (expressed in points)
-	 * @param mixed   $border  Border style
-	 * @param string  $align   Text alignement
-	 * @param string  $bgcolor Background color code
-	 * @param string  $style   The name of the text style
-	 * @param integer $ln      Indicates where the current position should go after the call
-	 * @param mixed   $top     Y-position
-	 * @param mixed   $left    X-position
-	 * @param integer $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 1
-	 * @param integer $stretch Stretch carachter mode
-	 * @param string  $bocolor Border color
-	 * @param string  $tcolor  Text color
-	 * @param boolean $reseth
+	 * @param int    $width   cell width (expressed in points)
+	 * @param int    $height  cell height (expressed in points)
+	 * @param mixed  $border  Border style
+	 * @param string $align   Text alignement
+	 * @param string $bgcolor Background color code
+	 * @param string $style   The name of the text style
+	 * @param int    $ln      Indicates where the current position should go after the call
+	 * @param mixed  $top     Y-position
+	 * @param mixed  $left    X-position
+	 * @param int    $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 1
+	 * @param int    $stretch Stretch carachter mode
+	 * @param string $bocolor Border color
+	 * @param string $tcolor  Text color
+	 * @param bool   $reseth
 	 *
 	 * @return ReportPdfCell
 	 */
@@ -173,18 +173,18 @@ class ReportPdf extends ReportBase {
 	/**
 	 * Create a new TextBox object - ReportPdf
 	 *
-	 * @param float   $width   Text box width
-	 * @param float   $height  Text box height
-	 * @param boolean $border
-	 * @param string  $bgcolor Background color code in HTML
-	 * @param boolean $newline
-	 * @param mixed   $left
-	 * @param mixed   $top
-	 * @param boolean $pagecheck
-	 * @param string  $style
-	 * @param boolean $fill
-	 * @param boolean $padding
-	 * @param boolean $reseth
+	 * @param float  $width   Text box width
+	 * @param float  $height  Text box height
+	 * @param bool   $border
+	 * @param string $bgcolor Background color code in HTML
+	 * @param bool   $newline
+	 * @param mixed  $left
+	 * @param mixed  $top
+	 * @param bool   $pagecheck
+	 * @param string $style
+	 * @param bool   $fill
+	 * @param bool   $padding
+	 * @param bool   $reseth
 	 *
 	 * @return ReportPdfTextbox
 	 */
@@ -232,8 +232,8 @@ class ReportPdf extends ReportBase {
 	 * @param string  $file  Filename
 	 * @param mixed   $x
 	 * @param mixed   $y
-	 * @param integer $w     Image width
-	 * @param integer $h     Image height
+	 * @param int $w     Image width
+	 * @param int $h     Image height
 	 * @param string  $align L:left, C:center, R:right or empty to use x/y
 	 * @param string  $ln    T:same line, N:next line
 	 *
@@ -246,13 +246,13 @@ class ReportPdf extends ReportBase {
 	/**
 	 * Create a new image object from Media Object - ReportPdf
 	 *
-	 * @param Media   $mediaobject
-	 * @param mixed   $x
-	 * @param mixed   $y
-	 * @param integer $w           Image width
-	 * @param integer $h           Image height
-	 * @param string  $align       L:left, C:center, R:right or empty to use x/y
-	 * @param string  $ln          T:same line, N:next line
+	 * @param Media  $mediaobject
+	 * @param mixed  $x
+	 * @param mixed  $y
+	 * @param int    $w           Image width
+	 * @param int    $h           Image height
+	 * @param string $align       L:left, C:center, R:right or empty to use x/y
+	 * @param string $ln          T:same line, N:next line
 	 *
 	 * @return ReportPdfImage
 	 */

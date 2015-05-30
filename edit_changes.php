@@ -132,8 +132,8 @@ if ($changed_gedcoms) {
 		" ORDER BY gedcom_id, c.xref, c.change_id"
 	)->fetchAll();
 
-	$output = '<br><br><table class="list_table">';
-	$prev_xref = null;
+	$output         = '<br><br><table class="list_table">';
+	$prev_xref      = null;
 	$prev_gedcom_id = null;
 	foreach ($changes as $change) {
 		$tree = Tree::findById($change->gedcom_id);

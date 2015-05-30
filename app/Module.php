@@ -49,7 +49,7 @@ class Module {
 					Database::prepare(
 						"UPDATE `##module` SET status = 'disabled' WHERE module_name = :module_name"
 					)->execute(array(
-						'module_name' => $module_name
+						'module_name' => $module_name,
 					));
 				}
 			}
@@ -85,7 +85,7 @@ class Module {
 		$array = array();
 		foreach ($module_names as $module_name) {
 			$interface = __NAMESPACE__ . '\Module' . ucfirst($component) . 'Interface';
-			$module = self::getModuleByName($module_name);
+			$module    = self::getModuleByName($module_name);
 			if ($module instanceof $interface) {
 				$array[$module_name] = $module;
 			}
@@ -123,7 +123,7 @@ class Module {
 		$array = array();
 		foreach ($module_names as $module_name) {
 			$interface = __NAMESPACE__ . '\Module' . ucfirst($component) . 'Interface';
-			$module = self::getModuleByName($module_name);
+			$module    = self::getModuleByName($module_name);
 			if ($module instanceof $interface) {
 				$array[$module_name] = $module;
 			}
@@ -325,9 +325,7 @@ class Module {
 	 * After creating a new family tree, we need to assign the default access
 	 * rights for each module.
 	 *
-	 * @param integer $tree_id
-	 *
-	 * @return void
+	 * @param int $tree_id
 	 */
 	public static function setDefaultAccess($tree_id) {
 		foreach (self::getInstalledModules('disabled') as $module) {

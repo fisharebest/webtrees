@@ -44,7 +44,7 @@ class RepositoryController extends GedcomRecordController {
 		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-repo');
 
 		if (Auth::isEditor($this->record->getTree())) {
-			$fact = $this->record->getFirstFact('NAME');
+			$fact    = $this->record->getFirstFact('NAME');
 			$submenu = new Menu(I18N::translate('Edit repository'), '#', 'menu-repo-edit');
 			if ($fact) {
 				// Edit existing name

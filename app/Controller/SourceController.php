@@ -44,7 +44,7 @@ class SourceController extends GedcomRecordController {
 		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-sour');
 
 		if (Auth::isEditor($this->record->getTree())) {
-			$fact = $this->record->getFirstFact('TITL');
+			$fact    = $this->record->getFirstFact('TITL');
 			$submenu = new Menu(I18N::translate('Edit source'), '#', 'menu-sour-edit');
 			if ($fact) {
 				// Edit existing name

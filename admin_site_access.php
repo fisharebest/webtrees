@@ -205,7 +205,7 @@ case 'load':
 		'draw'            => Filter::getInteger('draw'),
 		'recordsTotal'    => $recordsTotal,
 		'recordsFiltered' => $recordsFiltered,
-		'data'            => $data
+		'data'            => $data,
 	));
 	break;
 

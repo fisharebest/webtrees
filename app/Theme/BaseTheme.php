@@ -26,7 +26,7 @@ abstract class BaseTheme {
 	/** @var string An escaped version of the "ged=XXX" URL parameter */
 	protected $tree_url;
 
-	/** @var integer The number of times this page has been shown */
+	/** @var int The number of times this page has been shown */
 	protected $page_views;
 
 	/**
@@ -410,7 +410,7 @@ abstract class BaseTheme {
 	/**
 	 * Add markup to the hit counter.
 	 *
-	 * @param integer $count
+	 * @param int $count
 	 *
 	 * @return string
 	 */
@@ -592,8 +592,6 @@ abstract class BaseTheme {
 	/**
 	 * Allow themes to do things after initialization (since they cannot use
 	 * the constructor).
-	 *
-	 * @return void
 	 */
 	public function hookAfterInit() {
 	}
@@ -629,9 +627,9 @@ abstract class BaseTheme {
 	/**
 	 * Add HTML markup to create an alert
 	 *
-	 * @param string  $html        The content of the alert
-	 * @param string  $level       One of 'success', 'info', 'warning', 'danger'
-	 * @param boolean $dismissible If true, add a close button.
+	 * @param string $html        The content of the alert
+	 * @param string $level       One of 'success', 'info', 'warning', 'danger'
+	 * @param bool   $dismissible If true, add a close button.
 	 *
 	 * @return string
 	 */
@@ -767,7 +765,6 @@ abstract class BaseTheme {
 		} else {
 			$thumbnail = '';
 		}
-
 
 		return
 			'<div data-pid="' . $individual->getXref() . '" class="person_box_template ' . $personBoxClass . ' iconz box-style0" style="width: ' . $this->parameter('compact-chart-box-x') . 'px; min-height: ' . $this->parameter('compact-chart-box-y') . 'px">' .
@@ -926,7 +923,7 @@ abstract class BaseTheme {
 
 		foreach ($individual->getSpouseFamilies() as $family) {
 			$menus[] = new Menu('<strong>' . I18N::translate('Family with spouse') . '</strong>', $family->getHtmlUrl());
-			$spouse = $family->getSpouse($individual);
+			$spouse  = $family->getSpouse($individual);
 			if ($spouse && $spouse->canShowName()) {
 				$menus[] = new Menu($spouse->getFullName(), $spouse->getHtmlUrl());
 			}
@@ -960,8 +957,6 @@ abstract class BaseTheme {
 	 * happens in a theme file, and we need to be able to change it.
 	 *
 	 * @param Tree|null $tree The current tree (if there is one).
-	 *
-	 * @return void
 	 */
 	final public function init(Tree $tree = null) {
 		$this->tree     = $tree;
@@ -1791,7 +1786,7 @@ abstract class BaseTheme {
 	 *
 	 * @param  PageController $controller
 	 *
-	 * @return integer Number of views, or zero for pages that aren't logged.
+	 * @return int Number of views, or zero for pages that aren't logged.
 	 */
 	protected function pageViews(PageController $controller) {
 		if ($this->tree && $this->tree->getPreference('SHOW_COUNTER')) {
@@ -1816,7 +1811,7 @@ abstract class BaseTheme {
 	 *
 	 * @param string $parameter_name
 	 *
-	 * @return string|integer|float
+	 * @return string|int|float
 	 */
 	public function parameter($parameter_name) {
 		$parameters = array(
@@ -1987,8 +1982,6 @@ abstract class BaseTheme {
 
 	/**
 	 * Send any HTTP headers.
-	 *
-	 * @return void
 	 */
 	public function sendHeaders() {
 		header('Content-Type: text/html; charset=UTF-8');

@@ -110,7 +110,7 @@ if (!empty($AUTH)) {
 }
 if (!empty($PUBL)) {
 	$newlines = preg_split("/\r?\n/", $PUBL, -1, PREG_SPLIT_NO_EMPTY);
-	foreach ($newlines as $k=>$line) {
+	foreach ($newlines as $k => $line) {
 		if ($k == 0) {
 			$newgedrec .= "1 PUBL $line\n";
 		} else {

@@ -24,8 +24,6 @@ class ReportPdfLine extends ReportBaseLine {
 	 * PDF line renderer
 	 *
 	 * @param PDF $renderer
-	 *
-	 * @return void
 	 */
 	public function render($renderer) {
 		if ($this->x1 == ".") {

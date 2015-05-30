@@ -41,7 +41,7 @@ class User {
 	/**
 	 * Find the user with a specified user_id.
 	 *
-	 * @param integer|null $user_id
+	 * @param int|null $user_id
 	 *
 	 * @return User|null
 	 */
@@ -89,7 +89,7 @@ class User {
 			" WHERE gedcom_id = :tree_id AND setting_name = 'gedcomid' AND setting_value = :xref"
 		)->execute(array(
 			'tree_id' => $individual->getTree()->getTreeId(),
-			'xref'    => $individual->getXref()
+			'xref'    => $individual->getXref(),
 		))->fetchOne();
 
 		return self::find($user_id);
@@ -140,13 +140,14 @@ class User {
 			"INSERT INTO `##block` (`user_id`, `location`, `block_order`, `module_name`)" .
 			" SELECT :user_id , `location`, `block_order`, `module_name` FROM `##block` WHERE `user_id` = -1"
 		)->execute(array('user_id' => $user->getUserId()));
+
 		return $user;
 	}
 
 	/**
 	 * Get a count of all users.
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public static function count() {
 		return (int) Database::prepare(
@@ -275,10 +276,9 @@ class User {
 	}
 
 	/** Validate a supplied password
-	 *
 	 * @param string $password
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function checkPassword($password) {
 		$password_hash = Database::prepare(
@@ -289,6 +289,7 @@ class User {
 			if (password_needs_rehash($password_hash, PASSWORD_DEFAULT)) {
 				$this->setPassword($password);
 			}
+
 			return true;
 		} else {
 			return false;

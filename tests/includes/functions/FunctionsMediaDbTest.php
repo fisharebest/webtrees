@@ -24,16 +24,12 @@ use PHPUnit_Framework_TestCase;
 class FunctionsMediaDbTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Prepare the environment for these tests
-	 *
-	 * @return void
 	 */
 	public function setUp() {
 	}
 
 	/**
 	 * Test the function return_bytes().
-	 *
-	 * @return void
 	 */
 	public function testFunctionReturnBytes() {
 		$this->assertSame(-1, return_bytes(''));
@@ -51,8 +47,6 @@ class FunctionsMediaDbTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test that function hasMemoryForImage() exists in the correct namespace.
-	 *
-	 * @return void
 	 */
 	public function testFunctionHasMemoryForImageExists() {
 		$this->assertEquals(function_exists(__NAMESPACE__ . '\\hasMemoryForImage'), true);

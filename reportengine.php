@@ -28,14 +28,14 @@ require './includes/session.php';
 
 $controller = new PageController;
 
-$famid = Filter::get('famid', WT_REGEX_XREF);
-$pid = Filter::get('pid', WT_REGEX_XREF);
-$action = Filter::get('action', 'choose|setup|run', 'choose');
-$report = Filter::get('report');
-$output = Filter::get('output', 'HTML|PDF', 'PDF');
-$vars = Filter::get('vars');
+$famid    = Filter::get('famid', WT_REGEX_XREF);
+$pid      = Filter::get('pid', WT_REGEX_XREF);
+$action   = Filter::get('action', 'choose|setup|run', 'choose');
+$report   = Filter::get('report');
+$output   = Filter::get('output', 'HTML|PDF', 'PDF');
+$vars     = Filter::get('vars');
 $varnames = Filter::get('varnames');
-$type = Filter::get('type');
+$type     = Filter::get('type');
 if (!is_array($vars)) {
 	$vars = array();
 }
@@ -230,7 +230,7 @@ case 'setup':
 			echo '<select name="vars[', Filter::escapeHtml($input['name']), ']" id="', Filter::escapeHtml($input['name']), '_var">';
 			$options = preg_split('/[|]+/', $input['options']);
 			foreach ($options as $option) {
-				$opt = explode('=>', $option);
+				$opt                   = explode('=>', $option);
 				list($value, $display) = $opt;
 				if (preg_match('/^I18N::number\((.+)\)$/', $display, $match)) {
 					$display = I18N::number($match[1]);
@@ -285,7 +285,7 @@ case 'setup':
 
 case 'run':
 	if (strstr($report, 'report_singlepage.xml') !== false) {
-		$DEBUG = false;
+		$DEBUG    = false;
 		$pedigree = new \ReportPedigree;
 
 		return;
@@ -294,11 +294,11 @@ case 'run':
 	switch ($output) {
 	case 'HTML':
 		header('Content-type: text/html; charset=UTF-8');
-		$wt_report = new ReportHtml;
+		$wt_report  = new ReportHtml;
 		$ReportRoot = $wt_report;
 		break;
 	case 'PDF':
-		$wt_report = new ReportPdf;
+		$wt_report  = new ReportPdf;
 		$ReportRoot = $wt_report;
 		break;
 	}
@@ -310,60 +310,60 @@ case 'run':
 	 *
 	 * @global array $elementHandler
 	 */
-	$elementHandler = array();
-	$elementHandler['AgeAtDeath']['start'] = __NAMESPACE__ . '\\ageAtDeathStartHandler';
-	$elementHandler['br']['start'] = __NAMESPACE__ . '\\brStartHandler';
-	$elementHandler['Body']['start'] = __NAMESPACE__ . '\\bodyStartHandler';
-	$elementHandler['Cell']['end'] = __NAMESPACE__ . '\\cellEndHandler';
-	$elementHandler['Cell']['start'] = __NAMESPACE__ . '\\cellStartHandler';
-	$elementHandler['Description']['end'] = __NAMESPACE__ . '\\descriptionEndHandler';
-	$elementHandler['Description']['start'] = __NAMESPACE__ . '\\descriptionStartHandler';
-	$elementHandler['Doc']['end'] = __NAMESPACE__ . '\\docEndHandler';
-	$elementHandler['Doc']['start'] = __NAMESPACE__ . '\\docStartHandler';
-	$elementHandler['Report']['end'] = '';
-	$elementHandler['Report']['start'] = '';
-	$elementHandler['Facts']['end'] = __NAMESPACE__ . '\\factsEndHandler';
-	$elementHandler['Facts']['start'] = __NAMESPACE__ . '\\factsStartHandler';
-	$elementHandler['Footer']['start'] = __NAMESPACE__ . '\\footerStartHandler';
-	$elementHandler['Footnote']['end'] = __NAMESPACE__ . '\\footnoteEndHandler';
-	$elementHandler['Footnote']['start'] = __NAMESPACE__ . '\\footnoteStartHandler';
-	$elementHandler['FootnoteTexts']['start'] = __NAMESPACE__ . '\\footnoteTextsStartHandler';
-	$elementHandler['Gedcom']['end'] = __NAMESPACE__ . '\\gedcomEndHandler';
-	$elementHandler['Gedcom']['start'] = __NAMESPACE__ . '\\gedcomStartHandler';
-	$elementHandler['GedcomValue']['start'] = __NAMESPACE__ . '\\gedcomValueStartHandler';
-	$elementHandler['Generation']['start'] = __NAMESPACE__ . '\\generationStartHandler';
-	$elementHandler['GetPersonName']['start'] = __NAMESPACE__ . '\\getPersonNameStartHandler';
-	$elementHandler['Header']['start'] = __NAMESPACE__ . '\\headerStartHandler';
+	$elementHandler                              = array();
+	$elementHandler['AgeAtDeath']['start']       = __NAMESPACE__ . '\\ageAtDeathStartHandler';
+	$elementHandler['br']['start']               = __NAMESPACE__ . '\\brStartHandler';
+	$elementHandler['Body']['start']             = __NAMESPACE__ . '\\bodyStartHandler';
+	$elementHandler['Cell']['end']               = __NAMESPACE__ . '\\cellEndHandler';
+	$elementHandler['Cell']['start']             = __NAMESPACE__ . '\\cellStartHandler';
+	$elementHandler['Description']['end']        = __NAMESPACE__ . '\\descriptionEndHandler';
+	$elementHandler['Description']['start']      = __NAMESPACE__ . '\\descriptionStartHandler';
+	$elementHandler['Doc']['end']                = __NAMESPACE__ . '\\docEndHandler';
+	$elementHandler['Doc']['start']              = __NAMESPACE__ . '\\docStartHandler';
+	$elementHandler['Report']['end']             = '';
+	$elementHandler['Report']['start']           = '';
+	$elementHandler['Facts']['end']              = __NAMESPACE__ . '\\factsEndHandler';
+	$elementHandler['Facts']['start']            = __NAMESPACE__ . '\\factsStartHandler';
+	$elementHandler['Footer']['start']           = __NAMESPACE__ . '\\footerStartHandler';
+	$elementHandler['Footnote']['end']           = __NAMESPACE__ . '\\footnoteEndHandler';
+	$elementHandler['Footnote']['start']         = __NAMESPACE__ . '\\footnoteStartHandler';
+	$elementHandler['FootnoteTexts']['start']    = __NAMESPACE__ . '\\footnoteTextsStartHandler';
+	$elementHandler['Gedcom']['end']             = __NAMESPACE__ . '\\gedcomEndHandler';
+	$elementHandler['Gedcom']['start']           = __NAMESPACE__ . '\\gedcomStartHandler';
+	$elementHandler['GedcomValue']['start']      = __NAMESPACE__ . '\\gedcomValueStartHandler';
+	$elementHandler['Generation']['start']       = __NAMESPACE__ . '\\generationStartHandler';
+	$elementHandler['GetPersonName']['start']    = __NAMESPACE__ . '\\getPersonNameStartHandler';
+	$elementHandler['Header']['start']           = __NAMESPACE__ . '\\headerStartHandler';
 	$elementHandler['HighlightedImage']['start'] = __NAMESPACE__ . '\\highlightedImageStartHandler';
-	$elementHandler['if']['end'] = __NAMESPACE__ . '\\ifEndHandler';
-	$elementHandler['if']['start'] = __NAMESPACE__ . '\\ifStartHandler';
-	$elementHandler['Image']['start'] = __NAMESPACE__ . '\\imageStartHandler';
-	$elementHandler['Input']['end'] = '';
-	$elementHandler['Input']['start'] = '';
-	$elementHandler['Line']['start'] = __NAMESPACE__ . '\\lineStartHandler';
-	$elementHandler['List']['end'] = __NAMESPACE__ . '\\listEndHandler';
-	$elementHandler['List']['start'] = __NAMESPACE__ . '\\listStartHandler';
-	$elementHandler['ListTotal']['start'] = __NAMESPACE__ . '\\listTotalStartHandler';
-	$elementHandler['NewPage']['start'] = __NAMESPACE__ . '\\newPageStartHandler';
-	$elementHandler['Now']['start'] = __NAMESPACE__ . '\\nowStartHandler';
-	$elementHandler['PageHeader']['end'] = __NAMESPACE__ . '\\pageHeaderEndHandler';
-	$elementHandler['PageHeader']['start'] = __NAMESPACE__ . '\\pageHeaderStartHandler';
-	$elementHandler['PageNum']['start'] = __NAMESPACE__ . '\\pageNumStartHandler';
-	$elementHandler['Relatives']['end'] = __NAMESPACE__ . '\\relativesEndHandler';
-	$elementHandler['Relatives']['start'] = __NAMESPACE__ . '\\relativesStartHandler';
-	$elementHandler['RepeatTag']['end'] = __NAMESPACE__ . '\\repeatTagEndHandler';
-	$elementHandler['RepeatTag']['start'] = __NAMESPACE__ . '\\repeatTagStartHandler';
-	$elementHandler['SetVar']['start'] = __NAMESPACE__ . '\\setVarStartHandler';
-	$elementHandler['Style']['start'] = __NAMESPACE__ . '\\styleStartHandler';
-	$elementHandler['Text']['end'] = __NAMESPACE__ . '\\textEndHandler';
-	$elementHandler['Text']['start'] = __NAMESPACE__ . '\\textStartHandler';
-	$elementHandler['TextBox']['end'] = __NAMESPACE__ . '\\textBoxEndHandler';
-	$elementHandler['TextBox']['start'] = __NAMESPACE__ . '\\textBoxStartHandler';
-	$elementHandler['Title']['end'] = __NAMESPACE__ . '\\titleEndHandler';
-	$elementHandler['Title']['start'] = __NAMESPACE__ . '\\titleStartHandler';
-	$elementHandler['TotalPages']['start'] = __NAMESPACE__ . '\\totalPagesStartHandler';
-	$elementHandler['var']['start'] = __NAMESPACE__ . '\\varStartHandler';
-	$elementHandler['sp']['start'] = __NAMESPACE__ . '\\spStartHandler';
+	$elementHandler['if']['end']                 = __NAMESPACE__ . '\\ifEndHandler';
+	$elementHandler['if']['start']               = __NAMESPACE__ . '\\ifStartHandler';
+	$elementHandler['Image']['start']            = __NAMESPACE__ . '\\imageStartHandler';
+	$elementHandler['Input']['end']              = '';
+	$elementHandler['Input']['start']            = '';
+	$elementHandler['Line']['start']             = __NAMESPACE__ . '\\lineStartHandler';
+	$elementHandler['List']['end']               = __NAMESPACE__ . '\\listEndHandler';
+	$elementHandler['List']['start']             = __NAMESPACE__ . '\\listStartHandler';
+	$elementHandler['ListTotal']['start']        = __NAMESPACE__ . '\\listTotalStartHandler';
+	$elementHandler['NewPage']['start']          = __NAMESPACE__ . '\\newPageStartHandler';
+	$elementHandler['Now']['start']              = __NAMESPACE__ . '\\nowStartHandler';
+	$elementHandler['PageHeader']['end']         = __NAMESPACE__ . '\\pageHeaderEndHandler';
+	$elementHandler['PageHeader']['start']       = __NAMESPACE__ . '\\pageHeaderStartHandler';
+	$elementHandler['PageNum']['start']          = __NAMESPACE__ . '\\pageNumStartHandler';
+	$elementHandler['Relatives']['end']          = __NAMESPACE__ . '\\relativesEndHandler';
+	$elementHandler['Relatives']['start']        = __NAMESPACE__ . '\\relativesStartHandler';
+	$elementHandler['RepeatTag']['end']          = __NAMESPACE__ . '\\repeatTagEndHandler';
+	$elementHandler['RepeatTag']['start']        = __NAMESPACE__ . '\\repeatTagStartHandler';
+	$elementHandler['SetVar']['start']           = __NAMESPACE__ . '\\setVarStartHandler';
+	$elementHandler['Style']['start']            = __NAMESPACE__ . '\\styleStartHandler';
+	$elementHandler['Text']['end']               = __NAMESPACE__ . '\\textEndHandler';
+	$elementHandler['Text']['start']             = __NAMESPACE__ . '\\textStartHandler';
+	$elementHandler['TextBox']['end']            = __NAMESPACE__ . '\\textBoxEndHandler';
+	$elementHandler['TextBox']['start']          = __NAMESPACE__ . '\\textBoxStartHandler';
+	$elementHandler['Title']['end']              = __NAMESPACE__ . '\\titleEndHandler';
+	$elementHandler['Title']['start']            = __NAMESPACE__ . '\\titleStartHandler';
+	$elementHandler['TotalPages']['start']       = __NAMESPACE__ . '\\totalPagesStartHandler';
+	$elementHandler['var']['start']              = __NAMESPACE__ . '\\varStartHandler';
+	$elementHandler['sp']['start']               = __NAMESPACE__ . '\\spStartHandler';
 
 	/**
 	 * A new object of the currently used element class

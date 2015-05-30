@@ -74,16 +74,16 @@ class SearchController extends PageController {
 	/** @var string @var string Replace parameter */
 	public $replace = '';
 
-	/** @var boolean @var string Replace parameter */
+	/** @var bool @var string Replace parameter */
 	public $replaceNames = false;
 
-	/** @var boolean @var string Replace parameter */
+	/** @var bool @var string Replace parameter */
 	public $replacePlaces = false;
 
-	/** @var boolean @var string Replace parameter */
+	/** @var bool @var string Replace parameter */
 	public $replaceAll = false;
 
-	/** @var boolean @var string Replace parameter */
+	/** @var bool @var string Replace parameter */
 	public $replacePlacesWord = false;
 
 	/**
@@ -185,10 +185,10 @@ class SearchController extends PageController {
 			break;
 		case 'replace':
 			$this->search_trees = array($WT_TREE);
-			$this->srindi = 'checked';
-			$this->srfams = 'checked';
-			$this->srsour = 'checked';
-			$this->srnote = 'checked';
+			$this->srindi       = 'checked';
+			$this->srfams       = 'checked';
+			$this->srsour       = 'checked';
+			$this->srnote       = 'checked';
 			if (Filter::post('query')) {
 				$this->searchAndReplace($WT_TREE);
 				header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=replace&query=' . Filter::escapeUrl($this->query) . '&replace=' . Filter::escapeUrl($this->replace) . '&replaceAll=' . $this->replaceAll . '&replaceNames=' . $this->replaceNames . '&replacePlaces=' . $this->replacePlaces . '&replacePlacesWord=' . $this->replacePlacesWord);
@@ -430,9 +430,6 @@ class SearchController extends PageController {
 	 *
 	 *  The names' Soundex SQL table contains all the soundex values twice
 	 *  The places table contains only one value
-	 *
-	 *  The code should be improved - see RFE
-	 *
 	 */
 	private function soundexSearch() {
 		if (((!empty($this->lastname)) || (!empty($this->firstname)) || (!empty($this->place))) && $this->search_trees) {

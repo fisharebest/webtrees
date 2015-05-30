@@ -37,8 +37,6 @@ class CkeditorModule extends AbstractModule {
 	 * before we have sent the page footer.
 	 *
 	 * @param BaseController $controller
-	 *
-	 * @return void
 	 */
 	public static function enableEditor($controller) {
 		$controller

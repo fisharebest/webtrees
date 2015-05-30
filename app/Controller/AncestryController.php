@@ -20,14 +20,13 @@ namespace Fisharebest\Webtrees;
  * Class AncestryController - Controller for the ancestry chart
  */
 class AncestryController extends ChartController {
-
-	/** @var integer Show boxes for cousins */
+	/** @var int Show boxes for cousins */
 	public $show_cousins;
 
-	/** @var integer Determines style of chart */
+	/** @var int Determines style of chart */
 	public $chart_style;
 
-	/** @var integer Number of generations to display */
+	/** @var int Number of generations to display */
 	public $generations;
 
 	/**
@@ -57,8 +56,8 @@ class AncestryController extends ChartController {
 	 * print a child ascendancy
 	 *
 	 * @param Individual $individual
-	 * @param integer    $sosa  child sosa number
-	 * @param integer    $depth the ascendancy depth to show
+	 * @param int        $sosa  child sosa number
+	 * @param int        $depth the ascendancy depth to show
 	 */
 	public function printChildAscendancy(Individual $individual, $sosa, $depth) {
 		echo '<li>';

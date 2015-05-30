@@ -131,7 +131,7 @@ if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYP
 		" GROUP BY page_name"
 	)->execute(array($WT_TREE->getTreeId(), $gid1, $gid2))->fetchAssoc();
 
-	foreach ($hits as $page_name=>$page_count) {
+	foreach ($hits as $page_name => $page_count) {
 		Database::prepare(
 			"UPDATE `##hit_counter` SET page_count=?" .
 			" WHERE gedcom_id=? AND page_name=? AND page_parameter=?"
@@ -143,15 +143,15 @@ if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYP
 	)->execute(array($WT_TREE->getTreeId(), $gid2));
 
 	$gedcom = "0 @" . $rec1->getXref() . "@ " . $rec1::RECORD_TYPE;
-	foreach ($facts as $fact_id=>$fact) {
+	foreach ($facts as $fact_id => $fact) {
 		$gedcom .= "\n" . $fact->getGedcom();
 	}
-	foreach ($facts1 as $fact_id=>$fact) {
+	foreach ($facts1 as $fact_id => $fact) {
 		if (in_array($fact_id, $keep1)) {
 			$gedcom .= "\n" . $fact->getGedcom();
 		}
 	}
-	foreach ($facts2 as $fact_id=>$fact) {
+	foreach ($facts2 as $fact_id => $fact) {
 		if (in_array($fact_id, $keep2)) {
 			$gedcom .= "\n" . $fact->getGedcom();
 		}

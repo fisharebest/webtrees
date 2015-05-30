@@ -54,7 +54,7 @@ class CensusAssistantModule extends AbstractModule {
 	 */
 	private static function mediaFind() {
 		global $WT_TREE;
-		
+
 		$controller = new SimpleController;
 		$filter     = Filter::get('filter');
 		$multiple   = Filter::getBool('multiple');
@@ -116,7 +116,7 @@ class CensusAssistantModule extends AbstractModule {
 		echo '<button onclick="window.close();">', I18N::translate('close'), '</button>';
 		echo "<br>";
 
-		$filter = trim($filter);
+		$filter       = trim($filter);
 		$filter_array = explode(' ', preg_replace('/ {2,}/', ' ', $filter));
 		echo "<table class=\"tabs_table width90\"><tr>";
 		$myindilist = search_indis_names($filter_array, array($WT_TREE));
@@ -126,13 +126,13 @@ class CensusAssistantModule extends AbstractModule {
 			foreach ($myindilist as $indi) {
 				$nam = Filter::escapeHtml($indi->getFullName());
 				echo "<li><a href=\"#\" onclick=\"pasterow(
-					'".$indi->getXref() . "' ,
-					'".$nam . "' ,
-					'".$indi->getSex() . "' ,
-					'".$indi->getbirthyear() . "' ,
-					'".(1901 - $indi->getbirthyear()) . "' ,
-					'".$indi->getbirthplace() . "'); return false;\">
-					<b>".$indi->getFullName() . "</b>&nbsp;&nbsp;&nbsp;";
+					'" . $indi->getXref() . "' ,
+					'" . $nam . "' ,
+					'" . $indi->getSex() . "' ,
+					'" . $indi->getbirthyear() . "' ,
+					'" . (1901 - $indi->getbirthyear()) . "' ,
+					'" . $indi->getbirthplace() . "'); return false;\">
+					<b>" . $indi->getFullName() . "</b>&nbsp;&nbsp;&nbsp;";
 
 				$born = GedcomTag::getLabel('BIRT');
 				echo "</span><br><span class=\"list_item\">", $born, " ", $indi->getbirthyear(), "&nbsp;&nbsp;&nbsp;", $indi->getbirthplace(), "</span></a></li>";
@@ -268,7 +268,7 @@ class CensusAssistantModule extends AbstractModule {
 			$postamble = Filter::escapeHtml($match[5]);
 
 			$fmt_headers = array();
-			foreach ($headers as $key=>$value) {
+			foreach ($headers as $key => $value) {
 				$fmt_headers['.b.' . $key] = '<span title="' . Filter::escapeHtml($value) . '">' . $key . '</span>';
 			}
 

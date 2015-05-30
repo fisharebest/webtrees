@@ -47,6 +47,7 @@ class FamilyController extends GedcomRecordController {
 				return $individual;
 			}
 		}
+
 		return parent::getSignificantIndividual();
 	}
 
@@ -60,6 +61,7 @@ class FamilyController extends GedcomRecordController {
 		if ($this->record) {
 			return $this->record;
 		}
+
 		return parent::getSignificantFamily();
 	}
 
@@ -73,6 +75,7 @@ class FamilyController extends GedcomRecordController {
 		foreach ($matches[1] as &$match) {
 			$match = 'pids%5B%5D=' . $match;
 		}
+
 		return implode('&amp;', $matches[1]);
 	}
 
@@ -150,6 +153,7 @@ class FamilyController extends GedcomRecordController {
 	public function getSignificantSurname() {
 		if ($this->record && $this->record->getHusband()) {
 			list($surn) = explode(',', $this->record->getHusband()->getSortname());
+
 			return $surn;
 		} else {
 			return '';

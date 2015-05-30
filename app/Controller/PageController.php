@@ -29,7 +29,7 @@ class PageController extends BaseController {
 	/** @var string <head><title> $page_title </title></head> */
 	private $page_title = WT_WEBTREES;
 
-	/** @var boolean Is this a popup window? */
+	/** @var bool Is this a popup window? */
 	private $popup;
 
 	/**
@@ -101,7 +101,7 @@ class PageController extends BaseController {
 	/**
 	 * Restrict access
 	 *
-	 * @param boolean $condition
+	 * @param bool $condition
 	 *
 	 * @return $this
 	 */
@@ -116,8 +116,6 @@ class PageController extends BaseController {
 
 	/**
 	 * Print the page footer, using the theme
-	 *
-	 * @return void
 	 */
 	public function pageFooter() {
 		echo
@@ -140,8 +138,6 @@ class PageController extends BaseController {
 	/**
 	 * Print the page footer, using the theme
 	 * Note that popup windows are deprecated
-	 *
-	 * @return void
 	 */
 	public function pageFooterPopupWindow() {
 		echo
@@ -164,7 +160,7 @@ class PageController extends BaseController {
 	/**
 	 * Print the page header, using the theme
 	 *
-	 * @param boolean $popup Is this a popup window
+	 * @param bool $popup Is this a popup window
 	 *
 	 * @return $this
 	 */

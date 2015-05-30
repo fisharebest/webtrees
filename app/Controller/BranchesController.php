@@ -23,10 +23,10 @@ class BranchesController extends PageController {
 	/** @var string Generate the branches for this surname */
 	private $surname;
 
-	/** @var boolean Whether to use Standard phonetic matching */
+	/** @var bool Whether to use Standard phonetic matching */
 	private $soundex_std;
 
-	/** @var boolean Whether to use Daitch-Mokotov phonetic matching */
+	/** @var bool Whether to use Daitch-Mokotov phonetic matching */
 	private $soundex_dm;
 
 	/** @var Individual[] Everyone with the selected surname */
@@ -72,7 +72,7 @@ class BranchesController extends PageController {
 	/**
 	 * Should we use Standard phonetic matching
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function getSoundexStd() {
 		return $this->soundex_std;
@@ -81,7 +81,7 @@ class BranchesController extends PageController {
 	/**
 	 * Should we use Daitch-Mokotov phonetic matching
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function getSoundexDm() {
 		return $this->soundex_dm;
@@ -133,7 +133,7 @@ class BranchesController extends PageController {
 	 * Load the ancestors of an individual, so we can highlight them in the list
 	 *
 	 * @param Individual $ancestor
-	 * @param integer       $sosa
+	 * @param int        $sosa
 	 */
 	private function loadAncestors(Individual $ancestor, $sosa) {
 		if ($ancestor) {
@@ -271,7 +271,7 @@ class BranchesController extends PageController {
 	/**
 	 * Convert a SOSA number into a generation number.  e.g. 8 = great-grandfather = 3 generations
 	 *
-	 * @param integer $sosa
+	 * @param int $sosa
 	 *
 	 * @return string
 	 */

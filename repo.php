@@ -64,7 +64,7 @@ if ($controller->record && $controller->record->canShow()) {
 	http_response_code(404);
 	$controller->pageHeader();
 	echo '<p class="ui-state-error">', I18N::translate('This repository does not exist or you do not have permission to view it.'), '</p>';
-	
+
 	return;
 }
 
@@ -108,6 +108,7 @@ echo '<div id="repo-tabs">
 					'_UID' => 6,
 					'CHAN' => 7,
 				);
+
 				return
 					(array_key_exists($x->getTag(), $order) ? $order[$x->getTag()] : PHP_INT_MAX)
 					-
@@ -126,7 +127,6 @@ echo '<div id="repo-tabs">
 		}
 		echo '</table>
 	</div>';
-
 
 	// Sources linked to this repository
 	if ($linked_sour) {

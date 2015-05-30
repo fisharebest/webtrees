@@ -189,6 +189,7 @@ $controller
 <?php
 if ($controller->error_message) {
 	echo '<p class="ui-state-error">', $controller->error_message, '</p>';
+
 	return;
 }
 

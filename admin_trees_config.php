@@ -59,7 +59,7 @@ for ($n = 1; $n <= 9; ++$n) {
 
 $formats = array(
 	''         => /* I18N: None of the other options */ I18N::translate('none'),
-	'markdown' => /* I18N: https://en.wikipedia.org/wiki/Markdown */ I18N::translate('markdown')
+	'markdown' => /* I18N: https://en.wikipedia.org/wiki/Markdown */ I18N::translate('markdown'),
 );
 
 $surname_traditions = array(
@@ -93,7 +93,7 @@ $surname_traditions = array(
 		' ' . /* I18N: In the Lithuanian surname tradition, ... */ I18N::translate('Wives take their husband’s surname.') .
 		' ' . /* I18N: In the Lithuanian surname tradition, ... */ I18N::translate('Surnames are inflected to indicate an individual’s gender and marital status.'),
 	'none' =>
-		I18N::translateContext('Surname tradition', 'none')
+		I18N::translateContext('Surname tradition', 'none'),
 );
 
 $source_types = array(
@@ -111,14 +111,14 @@ $PRIVACY_CONSTANTS = array(
 	'none'         => I18N::translate('Show to visitors'),
 	'privacy'      => I18N::translate('Show to members'),
 	'confidential' => I18N::translate('Show to managers'),
-	'hidden'       => I18N::translate('Hide from everyone')
+	'hidden'       => I18N::translate('Hide from everyone'),
 );
 
 $privacy = array(
 	Auth::PRIV_PRIVATE => I18N::translate('Show to visitors'),
-	Auth::PRIV_USER   => I18N::translate('Show to members'),
-	Auth::PRIV_NONE   => I18N::translate('Show to managers'),
-	Auth::PRIV_HIDE   => I18N::translate('Hide from everyone'),
+	Auth::PRIV_USER    => I18N::translate('Show to members'),
+	Auth::PRIV_NONE    => I18N::translate('Show to managers'),
+	Auth::PRIV_HIDE    => I18N::translate('Hide from everyone'),
 );
 
 $tags = array_unique(array_merge(
@@ -223,7 +223,7 @@ case 'general':
 	// e.g. "gregorian_and_jewish"
 	$WT_TREE->setPreference('CALENDAR_FORMAT', implode('_and_', array_unique(array(
 		Filter::post('CALENDAR_FORMAT0', 'gregorian|julian|french|jewish|hijri|jalali', 'none'),
-		Filter::post('CALENDAR_FORMAT1', 'gregorian|julian|french|jewish|hijri|jalali', 'none')
+		Filter::post('CALENDAR_FORMAT1', 'gregorian|julian|french|jewish|hijri|jalali', 'none'),
 	))));
 	$WT_TREE->setPreference('CHART_BOX_TAGS', Filter::post('CHART_BOX_TAGS'));
 	$WT_TREE->setPreference('COMMON_NAMES_ADD', str_replace(' ', '', Filter::post('COMMON_NAMES_ADD')));
@@ -1058,8 +1058,7 @@ $controller
 			<?php echo /* I18N: A configuration setting */ I18N::translate('Who can upload new media files?'); ?>
 		</label>
 		<div class="col-sm-9">
-			<?php echo select_edit_control('MEDIA_UPLOAD', array(Auth::PRIV_USER=> I18N::translate('Show to members'),
-				Auth::PRIV_NONE=> I18N::translate('Show to managers'), Auth::PRIV_HIDE=> I18N::translate('Hide from everyone')), null, $WT_TREE->getPreference('MEDIA_UPLOAD'), 'class="form-control"'); ?>
+			<?php echo select_edit_control('MEDIA_UPLOAD', array(Auth::PRIV_USER => I18N::translate('Show to members'), Auth::PRIV_NONE => I18N::translate('Show to managers'), Auth::PRIV_HIDE => I18N::translate('Hide from everyone')), null, $WT_TREE->getPreference('MEDIA_UPLOAD'), 'class="form-control"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Who can upload new media files?” configuration setting */ I18N::translate('If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only.'); ?>
 			</p>
@@ -1664,8 +1663,8 @@ $controller
 				'Show the %1$s %2$s parts of a place name.',
 				select_edit_control('SHOW_PEDIGREE_PLACES_SUFFIX',
 					array(
-						false=> I18N::translateContext('Show the [first/last] [N] parts of a place name.', 'first'),
-						true => I18N::translateContext('Show the [first/last] [N] parts of a place name.', 'last')
+						false => I18N::translateContext('Show the [first/last] [N] parts of a place name.', 'first'),
+						true  => I18N::translateContext('Show the [first/last] [N] parts of a place name.', 'last'),
 					), null, $WT_TREE->getPreference('SHOW_PEDIGREE_PLACES_SUFFIX')
 				),
 				select_edit_control('SHOW_PEDIGREE_PLACES', $one_to_nine, null, $WT_TREE->getPreference('SHOW_PEDIGREE_PLACES'))

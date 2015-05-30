@@ -118,7 +118,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 				$this->xref = $this->findNextXref($this->xref);
 				break;
 			case 'update_all':
-				foreach ($this->all_xrefs as $xref=>$type) {
+				foreach ($this->all_xrefs as $xref => $type) {
 					$record = self::getLatestRecord($xref, $type);
 					if ($this->PLUGIN->doesRecordNeedUpdate($xref, $record)) {
 						$newrecord = $this->PLUGIN->updateRecord($xref, $record);
@@ -173,7 +173,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 			$html .= '<option value="" selected></option>';
 		}
 
-		foreach ($this->plugins as $class=>$plugin) {
+		foreach ($this->plugins as $class => $plugin) {
 			$html .= '<option value="' . $class . '" ' . ($this->plugin == $class ? 'selected' : '') . '>' . $plugin->getName() . '</option>';
 		}
 		$html .= '</select>';
@@ -235,6 +235,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 				}
 			}
 		}
+
 		return null;
 	}
 
@@ -254,6 +255,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 				}
 			}
 		}
+
 		return null;
 	}
 
@@ -263,28 +265,28 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 	private function getAllXrefs() {
 		global $WT_TREE;
 
-		$sql = array();
+		$sql  = array();
 		$vars = array();
 		foreach ($this->PLUGIN->getRecordTypesToUpdate() as $type) {
 			switch ($type) {
 			case 'INDI':
-				$sql[] = "SELECT i_id, 'INDI' FROM `##individuals` WHERE i_file=?";
+				$sql[]  = "SELECT i_id, 'INDI' FROM `##individuals` WHERE i_file=?";
 				$vars[] = $WT_TREE->getTreeId();
 				break;
 			case 'FAM':
-				$sql[] = "SELECT f_id, 'FAM' FROM `##families` WHERE f_file=?";
+				$sql[]  = "SELECT f_id, 'FAM' FROM `##families` WHERE f_file=?";
 				$vars[] = $WT_TREE->getTreeId();
 				break;
 			case 'SOUR':
-				$sql[] = "SELECT s_id, 'SOUR' FROM `##sources` WHERE s_file=?";
+				$sql[]  = "SELECT s_id, 'SOUR' FROM `##sources` WHERE s_file=?";
 				$vars[] = $WT_TREE->getTreeId();
 				break;
 			case 'OBJE':
-				$sql[] = "SELECT m_id, 'OBJE' FROM `##media` WHERE m_file=?";
+				$sql[]  = "SELECT m_id, 'OBJE' FROM `##media` WHERE m_file=?";
 				$vars[] = $WT_TREE->getTreeId();
 				break;
 			default:
-				$sql[] = "SELECT o_id, ? FROM `##other` WHERE o_type=? AND o_file=?";
+				$sql[]  = "SELECT o_id, ? FROM `##other` WHERE o_type=? AND o_file=?";
 				$vars[] = $type;
 				$vars[] = $type;
 				$vars[] = $WT_TREE->getTreeId();
@@ -303,11 +305,11 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 	 * @return BatchUpdateBasePlugin[]
 	 */
 	private function getPluginList() {
-		$plugins = array();
+		$plugins    = array();
 		$dir_handle = opendir(__DIR__ . '/BatchUpdate');
 		while (($file = readdir($dir_handle)) !== false) {
 			if (substr($file, -10) == 'Plugin.php' && $file !== 'BatchUpdateBasePlugin.php') {
-				$class = __NAMESPACE__ . '\\' . basename($file, '.php');
+				$class           = __NAMESPACE__ . '\\' . basename($file, '.php');
 				$plugins[$class] = new $class;
 			}
 		}
@@ -386,6 +388,5 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 	public function getConfigLink() {
 		return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_batch_update';
 	}
-
 
 }

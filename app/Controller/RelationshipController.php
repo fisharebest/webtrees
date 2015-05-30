@@ -27,7 +27,7 @@ class RelationshipController extends PageController {
 	 *
 	 * @param Individual $individual1
 	 * @param Individual $individual2
-	 * @param boolean    $all
+	 * @param bool       $all
 	 *
 	 * @return string[][]
 	 */
@@ -35,7 +35,7 @@ class RelationshipController extends PageController {
 		$rows = Database::prepare(
 			"SELECT l_from, l_to FROM `##link` WHERE l_file = :tree_id AND l_type IN ('FAMS', 'FAMC', 'CHIL', 'HUSB', 'WIFE')"
 		)->execute(array(
-			'tree_id' => $individual1->getTree()->getTreeId()
+			'tree_id' => $individual1->getTree()->getTreeId(),
 		))->fetchAll();
 
 		$graph = array();
@@ -60,7 +60,7 @@ class RelationshipController extends PageController {
 				while (list(, $next) = each($queue)) {
 					// For each family on the path
 					for ($n = count($next['path']) - 2; $n >= 1; $n -= 2) {
-						$exclude = $next['exclude'];
+						$exclude   = $next['exclude'];
 						$exclude[] = $next['path'][$n];
 						sort($exclude);
 						$tmp = implode('-', $exclude);

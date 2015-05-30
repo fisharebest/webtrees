@@ -111,6 +111,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 			if ($block) {
 				$class .= ' small_inner_block';
 			}
+
 			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 
@@ -170,7 +171,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 	 * @param string[] $a
 	 * @param string[] $b
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	private static function surnameCountSort($a, $b) {
 		$counta = 0;

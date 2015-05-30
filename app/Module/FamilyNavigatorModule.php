@@ -20,7 +20,6 @@ namespace Fisharebest\Webtrees;
  * Class FamilyNavigatorModule
  */
 class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInterface {
-
 	const TTL = "<div class='flyout2'>%s</div>";
 	const LNK = "<div class='flyout3' data-href='%s'>%s</div>";
 	const MSG = "<div class='flyout4'>(%s)</div>"; // class flyout4 not used in standard themes
@@ -156,8 +155,8 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 	}
 
 	/**
-	 * @param         $person
-	 * @param boolean $showUnknown
+	 * @param      $person
+	 * @param bool $showUnknown
 	 *
 	 * @return string
 	 */
@@ -179,7 +178,7 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 	private function getParents(Individual $person) {
 		$father = null;
 		$mother = null;
-		$html = sprintf(self::TTL, I18N::translate('Parents'));
+		$html   = sprintf(self::TTL, I18N::translate('Parents'));
 		$family = $person->getPrimaryChildFamily();
 		if (!Auth::isSearchEngine() && $person->canShowName() && $family !== null) {
 			$father = $family->getHusband();
@@ -207,6 +206,7 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 		if (!($father instanceof Individual || $mother instanceof Individual)) {
 			$html .= sprintf(self::MSG, I18N::translateContext('unknown family', 'unknown'));
 		}
+
 		return $html;
 	}
 
@@ -234,6 +234,7 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 		if (!$html) {
 			$html = sprintf(self::MSG, I18N::translate('none'));
 		}
+
 		return sprintf(self::TTL, I18N::translate('Family')) . $html;
 	}
 

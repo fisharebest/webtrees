@@ -29,7 +29,7 @@ class Auth {
 	/**
 	 * Are we currently logged in?
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function check() {
 		return self::id() !== null;
@@ -40,7 +40,7 @@ class Auth {
 	 *
 	 * @param User|null $user
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function isAdmin(User $user = null) {
 		if ($user === null) {
@@ -56,7 +56,7 @@ class Auth {
 	 * @param Tree      $tree
 	 * @param User|null $user
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function isManager(Tree $tree, User $user = null) {
 		if ($user === null) {
@@ -72,7 +72,7 @@ class Auth {
 	 * @param Tree      $tree
 	 * @param User|null $user
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function isModerator(Tree $tree, User $user = null) {
 		if ($user === null) {
@@ -88,8 +88,7 @@ class Auth {
 	 * @param Tree      $tree
 	 * @param User|null $user
 	 *
-	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function isEditor(Tree $tree, User $user = null) {
 		if ($user === null) {
@@ -105,7 +104,7 @@ class Auth {
 	 * @param Tree      $tree
 	 * @param User|null $user
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function isMember(Tree $tree, User $user = null) {
 		if ($user === null) {
@@ -121,7 +120,7 @@ class Auth {
 	 * @param Tree      $tree
 	 * @param User|null $user
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public static function accessLevel(Tree $tree, User $user = null) {
 		if ($user === null) {
@@ -140,7 +139,7 @@ class Auth {
 	/**
 	 * Is the current visitor a search engine?  The global is set in session.php
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function isSearchEngine() {
 		global $SEARCH_SPIDER;
@@ -165,11 +164,11 @@ class Auth {
 	public static function user() {
 		$user = User::find(self::id());
 		if ($user === null) {
-			$visitor = new \stdClass;
-			$visitor->user_id = '';
+			$visitor            = new \stdClass;
+			$visitor->user_id   = '';
 			$visitor->user_name = '';
 			$visitor->real_name = '';
-			$visitor->email = '';
+			$visitor->email     = '';
 
 			return new User($visitor);
 		} else {

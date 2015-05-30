@@ -60,7 +60,7 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
 	 * @param string $xref
 	 * @param string $gedrec
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function doesRecordNeedUpdate($xref, $gedrec) {
 		return !$this->error && preg_match('/(?:' . $this->regex . ')/mu' . $this->case, $gedrec);

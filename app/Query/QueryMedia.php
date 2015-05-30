@@ -18,10 +18,6 @@ namespace Fisharebest\Webtrees;
 
 /**
  * Class QueryMedia - generate lists of files for admin_media.php
- *
- * @package   webtrees
- * @copyright (c) 2014 webtrees development team
- * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2
  */
 class QueryMedia {
 	/**
@@ -80,8 +76,9 @@ class QueryMedia {
 	 * @param string $filter     optional search string
 	 * @param string $form_type  option OBJE/FILE/FORM/TYPE
 	 *
-	 * @return Media[]
 	 * @throws \Exception
+ *
+	 * @return Media[]
 	 */
 	public static function mediaList($folder, $subfolders, $sort, $filter, $form_type) {
 		global $WT_TREE;
@@ -148,6 +145,7 @@ class QueryMedia {
 				$list[] = $media;
 			}
 		}
+
 		return $list;
 	}
 }

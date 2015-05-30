@@ -59,13 +59,13 @@ $xrefs = Database::prepare(
 	") AS other_trees USING (xref)"
 )->execute(array(
 	$WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId(),
-	$WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId()
+	$WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId(),
 ))->fetchAssoc();
 
 echo '<h1>', $controller->getPageTitle(), '</h1>';
 
 if (Filter::get('action') === 'renumber') {
-	foreach ($xrefs as $old_xref=>$type) {
+	foreach ($xrefs as $old_xref => $type) {
 		Database::beginTransaction();
 		Database::exec(
 			"LOCK TABLE `##individuals` WRITE," .

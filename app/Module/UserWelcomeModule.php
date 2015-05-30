@@ -34,9 +34,9 @@ class UserWelcomeModule extends AbstractModule implements ModuleBlockInterface {
 	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $WT_TREE;
 
-		$id = $this->getName() . $block_id;
-		$class = $this->getName() . '_block';
-		$title = '<span dir="auto">' . /* I18N: A greeting; %s is the user’s name */ I18N::translate('Welcome %s', Auth::user()->getRealNameHtml()) . '</span>';
+		$id      = $this->getName() . $block_id;
+		$class   = $this->getName() . '_block';
+		$title   = '<span dir="auto">' . /* I18N: A greeting; %s is the user’s name */ I18N::translate('Welcome %s', Auth::user()->getRealNameHtml()) . '</span>';
 		$content = '<table><tr>';
 		$content .= '<td><a href="edituser.php"><i class="icon-mypage"></i><br>' . I18N::translate('My account') . '</a></td>';
 

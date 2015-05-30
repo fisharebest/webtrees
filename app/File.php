@@ -34,9 +34,9 @@ class File {
 	 * @return null|string
 	 */
 	public static function fetchUrl($url, $stream = null) {
-		$host = parse_url($url, PHP_URL_HOST);
-		$port = parse_url($url, PHP_URL_PORT);
-		$path = parse_url($url, PHP_URL_PATH);
+		$host  = parse_url($url, PHP_URL_HOST);
+		$port  = parse_url($url, PHP_URL_PORT);
+		$path  = parse_url($url, PHP_URL_PATH);
 		$query = parse_url($url, PHP_URL_QUERY);
 
 		if (!$port) {
@@ -89,7 +89,7 @@ class File {
 	 *
 	 * @param string $path
 	 *
-	 * @return boolean Was the file deleted
+	 * @return bool Was the file deleted
 	 */
 	public static function delete($path) {
 		if (is_dir($path)) {
@@ -121,7 +121,7 @@ class File {
 	 *
 	 * @param string $path
 	 *
-	 * @return boolean Does the folder now exist
+	 * @return bool Does the folder now exist
 	 */
 	public static function mkdir($path) {
 		if (is_dir($path)) {

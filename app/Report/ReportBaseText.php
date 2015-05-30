@@ -35,13 +35,13 @@ class ReportBaseText extends ReportBaseElement {
 	/**
 	 * Remaining width of a cel
 	 *
-	 * @var integer User unit (points)
+	 * @var int User unit (points)
 	 */
 	public $wrapWidthRemaining;
 	/**
 	 * Original width of a cell
 	 *
-	 * @var integer User unit (points)
+	 * @var int User unit (points)
 	 */
 	public $wrapWidthCell;
 
@@ -52,10 +52,10 @@ class ReportBaseText extends ReportBaseElement {
 	 * @param string $color HTML color code
 	 */
 	public function __construct($style, $color) {
-		$this->text = '';
-		$this->color = $color;
+		$this->text               = '';
+		$this->color              = $color;
 		$this->wrapWidthRemaining = 0;
-		$this->styleName = $style;
+		$this->styleName          = $style;
 
 		return 0;
 	}

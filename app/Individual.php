@@ -23,7 +23,7 @@ use Fisharebest\ExtCalendar\GregorianCalendar;
  */
 class Individual extends GedcomRecord {
 	const RECORD_TYPE = 'INDI';
-	const URL_PREFIX = 'individual.php?pid=';
+	const URL_PREFIX  = 'individual.php?pid=';
 
 	public $generation; // used in some lists to keep track of this individual’s generation in that list
 
@@ -112,7 +112,7 @@ class Individual extends GedcomRecord {
 
 		// Dead people...
 		if ($this->tree->getPreference('SHOW_DEAD_PEOPLE') >= $access_level && $this->isDead()) {
-			$keep_alive = false;
+			$keep_alive             = false;
 			$KEEP_ALIVE_YEARS_BIRTH = $this->tree->getPreference('KEEP_ALIVE_YEARS_BIRTH');
 			if ($KEEP_ALIVE_YEARS_BIRTH) {
 				preg_match_all('/\n1 (?:' . WT_EVENTS_BIRT . ').*(?:\n[2-9].*)*(?:\n2 DATE (.+))/', $this->gedcom, $matches, PREG_SET_ORDER);
@@ -154,9 +154,9 @@ class Individual extends GedcomRecord {
 	 * For relationship privacy calculations - is this individual a close relative?
 	 *
 	 * @param Individual $target
-	 * @param integer       $distance
+	 * @param int        $distance
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	private static function isRelated(Individual $target, $distance) {
 		static $cache = null;
@@ -268,7 +268,7 @@ class Individual extends GedcomRecord {
 	 * @param Individual $x
 	 * @param Individual $y
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public static function compareBirthDate(Individual $x, Individual $y) {
 		return Date::compare($x->getEstimatedBirthDate(), $y->getEstimatedBirthDate());
@@ -280,7 +280,7 @@ class Individual extends GedcomRecord {
 	 * @param Individual $x
 	 * @param Individual $y
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public static function compareDeathDate(Individual $x, Individual $y) {
 		return Date::compare($x->getEstimatedDeathDate(), $y->getEstimatedDeathDate());
@@ -290,7 +290,7 @@ class Individual extends GedcomRecord {
 	 * Calculate whether this individual is living or dead.
 	 * If not known to be dead, then assume living.
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function isDead() {
 		$MAX_ALIVE_AGE = $this->tree->getPreference('MAX_ALIVE_AGE');
@@ -406,7 +406,7 @@ class Individual extends GedcomRecord {
 				continue;
 			}
 			$level = $match[1];
-			$prim = $media->isPrimary();
+			$prim  = $media->isPrimary();
 			if ($prim == 'N') {
 				continue;
 			}
@@ -694,7 +694,7 @@ class Individual extends GedcomRecord {
 				if ($min && $max) {
 					$gregorian_calendar = new GregorianCalendar;
 
-					list($year) = $gregorian_calendar->jdToYmd((int) ((max($min) + min($max)) / 2));
+					list($year)                   = $gregorian_calendar->jdToYmd((int) ((max($min) + min($max)) / 2));
 					$this->_getEstimatedBirthDate = new Date('EST ' . $year);
 				} else {
 					$this->_getEstimatedBirthDate = new Date(''); // always return a date object
@@ -782,7 +782,7 @@ class Individual extends GedcomRecord {
 	/**
 	 * Get a list of this individual’s spouse families
 	 *
-	 * @param integer|null $access_level
+	 * @param int|null $access_level
 	 *
 	 * @return Family[]
 	 */
@@ -813,7 +813,7 @@ class Individual extends GedcomRecord {
 	 * @return Individual|null
 	 */
 	public function getCurrentSpouse() {
-		$tmp = $this->getSpouseFamilies();
+		$tmp    = $this->getSpouseFamilies();
 		$family = end($tmp);
 		if ($family) {
 			return $family->getSpouse($this);
@@ -825,7 +825,7 @@ class Individual extends GedcomRecord {
 	/**
 	 * Count the children belonging to this individual.
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function getNumberOfChildren() {
 		if (preg_match('/\n1 NCHI (\d+)(?:\n|$)/', $this->getGedcom(), $match)) {
@@ -845,7 +845,7 @@ class Individual extends GedcomRecord {
 	/**
 	 * Get a list of this individual’s child families (i.e. their parents).
 	 *
-	 * @param integer|null $access_level
+	 * @param int|null $access_level
 	 *
 	 * @return Family[]
 	 */
@@ -919,7 +919,7 @@ class Individual extends GedcomRecord {
 	 */
 	public function getChildStepFamilies() {
 		$step_families = array();
-		$families = $this->getChildFamilies();
+		$families      = $this->getChildFamilies();
 		foreach ($families as $family) {
 			$father = $family->getHusband();
 			if ($father) {
@@ -949,7 +949,7 @@ class Individual extends GedcomRecord {
 	 */
 	public function getSpouseStepFamilies() {
 		$step_families = array();
-		$families = $this->getSpouseFamilies();
+		$families      = $this->getSpouseFamilies();
 		foreach ($families as $family) {
 			$spouse = $family->getSpouse($this);
 			if ($spouse) {
@@ -1030,7 +1030,6 @@ class Individual extends GedcomRecord {
 	}
 
 	/**
-	 *
 	 * @todo this function does not belong in this class
 	 *
 	 * @param Family $family
@@ -1138,11 +1137,11 @@ class Individual extends GedcomRecord {
 		////////////////////////////////////////////////////////////////////////////
 
 		$sublevel = 1 + (int) $gedcom[0];
-		$NPFX = preg_match("/\n{$sublevel} NPFX (.+)/", $gedcom, $match) ? $match[1] : '';
-		$GIVN = preg_match("/\n{$sublevel} GIVN (.+)/", $gedcom, $match) ? $match[1] : '';
-		$SURN = preg_match("/\n{$sublevel} SURN (.+)/", $gedcom, $match) ? $match[1] : '';
-		$NSFX = preg_match("/\n{$sublevel} NSFX (.+)/", $gedcom, $match) ? $match[1] : '';
-		$NICK = preg_match("/\n{$sublevel} NICK (.+)/", $gedcom, $match) ? $match[1] : '';
+		$NPFX     = preg_match("/\n{$sublevel} NPFX (.+)/", $gedcom, $match) ? $match[1] : '';
+		$GIVN     = preg_match("/\n{$sublevel} GIVN (.+)/", $gedcom, $match) ? $match[1] : '';
+		$SURN     = preg_match("/\n{$sublevel} SURN (.+)/", $gedcom, $match) ? $match[1] : '';
+		$NSFX     = preg_match("/\n{$sublevel} NSFX (.+)/", $gedcom, $match) ? $match[1] : '';
+		$NICK     = preg_match("/\n{$sublevel} NICK (.+)/", $gedcom, $match) ? $match[1] : '';
 
 		// SURN is an comma-separated list of surnames...
 		if ($SURN) {
@@ -1210,7 +1209,7 @@ class Individual extends GedcomRecord {
 		// Add placeholder for unknown given name
 		if (!$GIVN) {
 			$GIVN = '@P.N.';
-			$pos = strpos($full, '/');
+			$pos  = strpos($full, '/');
 			$full = substr($full, 0, $pos) . '@P.N. ' . substr($full, $pos);
 		}
 
@@ -1255,7 +1254,7 @@ class Individual extends GedcomRecord {
 		$full = preg_replace('/([^ >]*)\*/', '<span class="starredname">\\1</span>', $full);
 
 		// Remove prefered-name indicater - they don’t go in the database
-		$GIVN = str_replace('*', '', $GIVN);
+		$GIVN   = str_replace('*', '', $GIVN);
 		$fullNN = str_replace('*', '', $fullNN);
 
 		foreach ($SURNS as $SURN) {
@@ -1312,20 +1311,20 @@ class Individual extends GedcomRecord {
 			$char = ($bwidth / 6.5);
 		}
 		if ($this->canShowName()) {
-			$tmp = $this->getAllNames();
-			$givn = $tmp[$this->getPrimaryName()]['givn'];
-			$surn = $tmp[$this->getPrimaryName()]['surname'];
-			$new_givn = explode(' ', $givn);
+			$tmp        = $this->getAllNames();
+			$givn       = $tmp[$this->getPrimaryName()]['givn'];
+			$surn       = $tmp[$this->getPrimaryName()]['surname'];
+			$new_givn   = explode(' ', $givn);
 			$count_givn = count($new_givn);
-			$len_givn = mb_strlen($givn);
-			$len_surn = mb_strlen($surn);
-			$len = $len_givn + $len_surn;
-			$i = 1;
+			$len_givn   = mb_strlen($givn);
+			$len_surn   = mb_strlen($surn);
+			$len        = $len_givn + $len_surn;
+			$i          = 1;
 			while ($len > $char && $i <= $count_givn) {
 				$new_givn[$count_givn - $i] = mb_substr($new_givn[$count_givn - $i], 0, 1);
-				$givn = implode(' ', $new_givn);
-				$len_givn = mb_strlen($givn);
-				$len = $len_givn + $len_surn;
+				$givn                       = implode(' ', $new_givn);
+				$len_givn                   = mb_strlen($givn);
+				$len                        = $len_givn + $len_surn;
 				$i++;
 			}
 			$max_surn = $char - $i * 2;

@@ -24,8 +24,6 @@ class ReportPdfImage extends ReportBaseImage {
 	 * PDF image renderer
 	 *
 	 * @param PDF $renderer
-	 *
-	 * @return void
 	 */
 	public function render($renderer) {
 		global $lastpicbottom, $lastpicpage, $lastpicleft, $lastpicright;
@@ -85,11 +83,11 @@ class ReportPdfImage extends ReportBaseImage {
 				$this->align
 			);
 		}
-		$lastpicpage = $renderer->PageNo();
+		$lastpicpage           = $renderer->PageNo();
 		$renderer->lastpicpage = $renderer->getPage();
-		$lastpicleft = $this->x;
-		$lastpicright = $this->x + $this->width;
-		$lastpicbottom = $this->y + $this->height;
+		$lastpicleft           = $this->x;
+		$lastpicright          = $this->x + $this->width;
+		$lastpicbottom         = $this->y + $this->height;
 		// Setup for the next line
 		if ($this->line == "N") {
 			$renderer->SetY($lastpicbottom);

@@ -91,7 +91,7 @@ class GedcomTag {
 	 *
 	 * @param string $tag
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function isTag($tag) {
 		return in_array($tag, self::$ALL_TAGS);

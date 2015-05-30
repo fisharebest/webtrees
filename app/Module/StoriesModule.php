@@ -75,7 +75,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 			)->execute(array(
 				$this->getName(),
 				$controller->record->getXref(),
-				$controller->record->getTree()->getTreeId()
+				$controller->record->getTree()->getTreeId(),
 			))->fetchOneColumn();
 
 		$html = '';
@@ -102,7 +102,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 
 	/** {@inheritdoc} */
 	public function hasTabContent() {
-		return $this->getTabContent() <> '';
+		return $this->getTabContent() != '';
 	}
 
 	/** {@inheritdoc} */
@@ -119,7 +119,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 			)->execute(array(
 				$this->getName(),
 				$controller->record->getXref(),
-				$controller->record->getTree()->getTreeId()
+				$controller->record->getTree()->getTreeId(),
 			))->fetchOne();
 
 		return $count_of_stories == 0;
@@ -155,7 +155,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 						Filter::postInteger('gedcom_id'),
 						Filter::post('xref', WT_REGEX_XREF),
 						$this->getName(),
-						0
+						0,
 					));
 					$block_id = Database::getInstance()->lastInsertId();
 				}

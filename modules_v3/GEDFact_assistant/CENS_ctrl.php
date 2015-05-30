@@ -58,7 +58,7 @@ $summary = $person->formatFirstMajorFact(WT_EVENTS_BIRT, 2);
 if (!($person->isDead())) {
 	// If alive display age
 	$bdate = $person->getBirthDate();
-	$age = Date::getAgeGedcom($bdate);
+	$age   = Date::getAgeGedcom($bdate);
 	if ($age != "") {
 		$summary .= "<span class=\"label\">" . I18N::translate('Age') . ":</span><span class=\"field\"> " . get_age_at_event($age, true) . "</span>";
 	}

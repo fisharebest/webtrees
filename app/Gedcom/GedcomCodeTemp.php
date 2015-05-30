@@ -25,7 +25,7 @@ class GedcomCodeTemp {
 	 *
 	 * @param string $tag
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function isTagLDS($tag) {
 		return $tag === 'BAPL' || $tag === 'CONL' || $tag === 'ENDL' || $tag === 'SLGC' || $tag === 'SLGS';

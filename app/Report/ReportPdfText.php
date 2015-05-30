@@ -24,8 +24,6 @@ class ReportPdfText extends ReportBaseText {
 	 * PDF Text renderer
 	 *
 	 * @param PDF $renderer
-	 *
-	 * @return void
 	 */
 	public function render($renderer) {
 		// Set up the style
@@ -106,16 +104,16 @@ class ReportPdfText extends ReportBaseText {
 			$wrapWidthRemaining = (int) ($this->wrapWidthRemaining);
 			if (($lw >= ($wrapWidthRemaining)) or ($lfct > 1)) {
 				$newtext = "";
-				$lines = explode("\n", $this->text);
+				$lines   = explode("\n", $this->text);
 				// Go throught the text line by line
 				foreach ($lines as $line) {
 					// Line width in points + a little margin
 					$lw = $pdf->GetStringWidth($line);
 					// If the line has to be wraped
 					if ($lw >= $wrapWidthRemaining) {
-						$words = explode(" ", $line);
+						$words    = explode(" ", $line);
 						$addspace = count($words);
-						$lw = 0;
+						$lw       = 0;
 						foreach ($words as $word) {
 							$addspace--;
 							$lw += $pdf->GetStringWidth($word . " ");
@@ -149,12 +147,12 @@ class ReportPdfText extends ReportBaseText {
 					$lfct--;
 				}
 				$this->text = $newtext;
-				$lfct = substr_count($this->text, "\n");
+				$lfct       = substr_count($this->text, "\n");
 
 				return array($lw, 1, $lfct);
 			}
 		}
-		$l = 0;
+		$l    = 0;
 		$lfct = substr_count($this->text, "\n");
 		if ($lfct > 0) {
 			$l = 2;

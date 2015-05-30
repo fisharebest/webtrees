@@ -22,8 +22,6 @@ namespace Fisharebest\Webtrees;
 class ReportHtmlPageheader extends ReportBasePageheader {
 	/**
 	 * @param ReportHtml $renderer
-	 *
-	 * @return void
 	 */
 	public function render($renderer) {
 		$renderer->clearPageHeader();

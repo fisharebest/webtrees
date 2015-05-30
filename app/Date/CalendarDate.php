@@ -41,19 +41,19 @@ class CalendarDate {
 	/** @var CalendarInterface The calendar system used to represent this date */
 	protected $calendar;
 
-	/** @var integer Year number  */
+	/** @var int Year number  */
 	public $y;
 
-	/** @var integer Month number  */
+	/** @var int Month number  */
 	public $m;
 
-	/** @var integer Day number  */
+	/** @var int Day number  */
 	public $d;
 
-	/** @var integer Earliest Julian day number (start of month/year for imprecise dates) */
+	/** @var int Earliest Julian day number (start of month/year for imprecise dates) */
 	public $minJD;
 
-	/** @var integer Latest Julian day number (end of month/year for imprecise dates) */
+	/** @var int Latest Julian day number (end of month/year for imprecise dates) */
 	public $maxJD;
 
 	/**
@@ -67,8 +67,8 @@ class CalendarDate {
 	public function __construct($date) {
 		// Construct from an integer (a julian day number)
 		if (is_integer($date)) {
-			$this->minJD = $date;
-			$this->maxJD = $date;
+			$this->minJD                       = $date;
+			$this->maxJD                       = $date;
 			list($this->y, $this->m, $this->d) = $this->calendar->jdToYmd($date);
 
 			return;
@@ -132,7 +132,7 @@ class CalendarDate {
 	/**
 	 * Is the current year a leap year?
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function isLeapYear() {
 		return $this->calendar->isLeapYear($this->y);
@@ -150,8 +150,8 @@ class CalendarDate {
 			$this->maxJD = $this->calendar->ymdToJd($this->nextYear($this->y), 1, 1) - 1;
 		} elseif ($this->d == 0) {
 			list($ny, $nm) = $this->nextMonth();
-			$this->minJD = $this->calendar->ymdToJd($this->y, $this->m, 1);
-			$this->maxJD = $this->calendar->ymdToJd($ny, $nm, 1) - 1;
+			$this->minJD   = $this->calendar->ymdToJd($this->y, $this->m, 1);
+			$this->maxJD   = $this->calendar->ymdToJd($ny, $nm, 1) - 1;
 		} else {
 			$this->minJD = $this->calendar->ymdToJd($this->y, $this->m, $this->d);
 			$this->maxJD = $this->minJD;
@@ -163,8 +163,8 @@ class CalendarDate {
 	 *
 	 * We put these in the base class, to save duplicating it in the Julian and Gregorian calendars.
 	 *
-	 * @param integer $month_number
-	 * @param boolean $leap_year    Some calendars use leap months
+	 * @param int  $month_number
+	 * @param bool $leap_year    Some calendars use leap months
 	 *
 	 * @return string
 	 */
@@ -197,8 +197,8 @@ class CalendarDate {
 	 *
 	 * We put these in the base class, to save duplicating it in the Julian and Gregorian calendars.
 	 *
-	 * @param integer $month_number
-	 * @param boolean $leap_year    Some calendars use leap months
+	 * @param int  $month_number
+	 * @param bool $leap_year    Some calendars use leap months
 	 *
 	 * @return string
 	 */
@@ -231,8 +231,8 @@ class CalendarDate {
 	 *
 	 * We put these in the base class, to save duplicating it in the Julian and Gregorian calendars.
 	 *
-	 * @param integer $month_number
-	 * @param boolean $leap_year    Some calendars use leap months
+	 * @param int  $month_number
+	 * @param bool $leap_year    Some calendars use leap months
 	 *
 	 * @return string
 	 */
@@ -265,8 +265,8 @@ class CalendarDate {
 	 *
 	 * We put these in the base class, to save duplicating it in the Julian and Gregorian calendars.
 	 *
-	 * @param integer $month_number
-	 * @param boolean $leap_year    Some calendars use leap months
+	 * @param int  $month_number
+	 * @param bool $leap_year    Some calendars use leap months
 	 *
 	 * @return string
 	 */
@@ -297,8 +297,8 @@ class CalendarDate {
 	/**
 	 * Abbreviated month name
 	 *
-	 * @param integer $month_number
-	 * @param boolean $leap_year    Some calendars use leap months
+	 * @param int  $month_number
+	 * @param bool $leap_year    Some calendars use leap months
 	 *
 	 * @return string
 	 */
@@ -329,7 +329,7 @@ class CalendarDate {
 	/**
 	 * Full day of th eweek
 	 *
-	 * @param integer $day_number
+	 * @param int $day_number
 	 *
 	 * @return string
 	 */
@@ -354,7 +354,7 @@ class CalendarDate {
 	/**
 	 * Abbreviated day of the week
 	 *
-	 * @param integer $day_number
+	 * @param int $day_number
 	 *
 	 * @return string
 	 */
@@ -379,9 +379,9 @@ class CalendarDate {
 	/**
 	 * Most years are 1 more than the previous, but not always (e.g. 1BC->1AD)
 	 *
-	 * @param integer $year
+	 * @param int $year
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	protected function nextYear($year) {
 		return $year + 1;
@@ -392,7 +392,7 @@ class CalendarDate {
 	 *
 	 * @param string $year
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	protected function extractYear($year) {
 		return (int) $year;
@@ -404,7 +404,7 @@ class CalendarDate {
 	 * @param CalendarDate $d1
 	 * @param CalendarDate $d2
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public static function compare(CalendarDate $d1, CalendarDate $d2) {
 		if ($d1->maxJD < $d2->minJD) {
@@ -423,9 +423,9 @@ class CalendarDate {
 	 *
 	 * @todo JewishDate needs to redefine this to cope with leap months
 	 *
-	 * @param boolean $full             true=gedcom style, false=just years
-	 * @param integer $jd               date for calculation
-	 * @param boolean $warn_on_negative show a warning triangle for negative ages
+	 * @param bool $full             true=gedcom style, false=just years
+	 * @param int $jd                date for calculation
+	 * @param bool $warn_on_negative show a warning triangle for negative ages
 	 *
 	 * @return string
 	 */
@@ -443,9 +443,9 @@ class CalendarDate {
 			return '<i class="icon-warning"></i>';
 		}
 		list($y, $m, $d) = $this->calendar->jdToYmd($jd);
-		$dy = $y - $this->y;
-		$dm = $m - max($this->m, 1);
-		$dd = $d - max($this->d, 1);
+		$dy              = $y - $this->y;
+		$dm              = $m - max($this->m, 1);
+		$dd              = $d - max($this->d, 1);
 		if ($dd < 0) {
 			$dm--;
 		}
@@ -500,7 +500,7 @@ class CalendarDate {
 	/**
 	 * Is this date within the valid range of the calendar
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function inValidRange() {
 		return $this->minJD >= $this->calendar->jdStart() && $this->maxJD <= $this->calendar->jdEnd();
@@ -509,7 +509,7 @@ class CalendarDate {
 	/**
 	 * How many months in a year
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function monthsInYear() {
 		return $this->calendar->monthsInYear();
@@ -518,7 +518,7 @@ class CalendarDate {
 	/**
 	 * How many days in the current month
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function daysInMonth() {
 		try {
@@ -533,7 +533,7 @@ class CalendarDate {
 	/**
 	 * How many days in the current week
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function daysInWeek() {
 		return $this->calendar->daysInWeek();
@@ -851,7 +851,7 @@ class CalendarDate {
 	/**
 	 * Convert a decimal number to roman numerals
 	 *
-	 * @param integer $number
+	 * @param int $number
 	 *
 	 * @return string
 	 */
@@ -876,7 +876,7 @@ class CalendarDate {
 	 *
 	 * @param string $roman
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	protected function romanNumeralsToNumber($roman) {
 		$num = 0;

@@ -65,7 +65,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 			}
 		}
 
-		$id = $this->getName() . $block_id;
+		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
 			$title = '<a class="icon-admin" title="' . I18N::translate('Configure') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
@@ -81,7 +81,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		if ($show_last_update) {
 			$content .= '<div>' . /* I18N: %s is a date */ I18N::translate('This family tree was last updated on %s.', strip_tags($stats->gedcomUpdated())) . '</div>';
 		}
-/** Responsive Design */
+	/** Responsive Design */
 
 	$content .= '<div class="stat-table1">';
 		if ($stat_indi) {

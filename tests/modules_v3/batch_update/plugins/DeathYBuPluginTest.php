@@ -24,16 +24,12 @@ use PHPUnit_Framework_TestCase;
 class DeathYBuPluginTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Prepare the environment for these tests
-	 *
-	 * @return void
 	 */
 	public function setUp() {
 	}
 
 	/**
 	 * Test that the class exists.
-	 *
-	 * @return void
 	 */
 	public function testFunctionGetUserFullNameExists() {
 		$this->assertEquals(true, class_exists(__NAMESPACE__ . '\\BatchUpdateMissingDeathPlugin'));

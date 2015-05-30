@@ -42,7 +42,7 @@ class UserFavoritesModule extends FamilyTreeFavoritesModule {
 	/**
 	 * Get the favorites for a user (for the current family tree)
 	 *
-	 * @param integer $user_id
+	 * @param int $user_id
 	 *
 	 * @return string[][]
 	 */

@@ -78,7 +78,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 				)->execute(array(
 					'tree_id'     => Filter::postInteger('gedcom_id'),
 					'block_order' => Filter::postInteger('block_order'),
-					'block_id'    => $block_id
+					'block_id'    => $block_id,
 				));
 			} else {
 				Database::prepare(
@@ -243,7 +243,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 		)->execute(array(
 			'block_order'   => $block_order,
 			'module_name_1' => $this->getName(),
-			'module_name_2' => $this->getName()
+			'module_name_2' => $this->getName(),
 		))->fetchOneRow();
 		if ($swap_block) {
 			Database::prepare(

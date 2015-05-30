@@ -70,8 +70,9 @@ class Theme {
 	 *
 	 * @param BaseTheme|null $theme
 	 *
-	 * @return BaseTheme
 	 * @throws \LogicException
+ *
+	 * @return BaseTheme
 	 */
 	public static function theme(BaseTheme $theme = null) {
 

@@ -22,7 +22,7 @@ namespace Fisharebest\Webtrees;
 class AdministrationTheme extends BaseTheme {
 	/** {@inheritdoc} */
 	protected function stylesheets() {
-		$stylesheets = parent::stylesheets();
+		$stylesheets   = parent::stylesheets();
 		$stylesheets[] = WT_DATATABLES_BOOTSTRAP_CSS_URL;
 		$stylesheets[] = WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL;
 		$stylesheets[] = $this->assetUrl() . 'style.css';

@@ -125,7 +125,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 
 	/**
 	 * @param Individual $person
-	 * @param integer    $generations
+	 * @param int        $generations
 	 *
 	 * @return string
 	 */
@@ -148,7 +148,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 	/**
 	 * @param Family     $family
 	 * @param Individual $person
-	 * @param integer    $generations
+	 * @param int        $generations
 	 *
 	 * @return string
 	 */
@@ -163,7 +163,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 		}
 
 		$marryear = $family->getMarriageYear();
-		$marr = $marryear ? '<i class="icon-rings"></i>' . $marryear : '';
+		$marr     = $marryear ? '<i class="icon-rings"></i>' . $marryear : '';
 
 		return
 			'<li class="sb_desc_indi_li">' .
@@ -212,7 +212,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 
 	/**
 	 * @param Individual $person
-	 * @param integer    $generations
+	 * @param int        $generations
 	 *
 	 * @return string
 	 */
@@ -231,8 +231,8 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 	}
 
 	/**
-	 * @param Family  $family
-	 * @param integer $generations
+	 * @param Family $family
+	 * @param int    $generations
 	 *
 	 * @return string
 	 */

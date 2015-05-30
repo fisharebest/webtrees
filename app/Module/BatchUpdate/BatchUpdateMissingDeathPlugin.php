@@ -44,7 +44,7 @@ class BatchUpdateMissingDeathPlugin extends BatchUpdateBasePlugin {
 	 * @param string $xref
 	 * @param string $gedrec
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function doesRecordNeedUpdate($xref, $gedrec) {
 		global $WT_TREE;

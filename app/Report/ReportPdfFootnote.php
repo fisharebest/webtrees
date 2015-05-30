@@ -24,8 +24,6 @@ class ReportPdfFootnote extends ReportBaseFootnote {
 	 * PDF Footnotes number renderer
 	 *
 	 * @param PDF $renderer
-	 *
-	 * @return void
 	 */
 	public function render($renderer) {
 		$renderer->setCurrentStyle("footnotenum");
@@ -37,8 +35,6 @@ class ReportPdfFootnote extends ReportBaseFootnote {
 	 * Uses style name "footnote" by default
 	 *
 	 * @param PDF $pdf
-	 *
-	 * @return void
 	 */
 	public function renderFootnote($pdf) {
 		if ($pdf->getCurrentStyle() != $this->styleName) {
@@ -104,16 +100,16 @@ class ReportPdfFootnote extends ReportBaseFootnote {
 			$wrapWidthRemaining = (int) ($this->wrapWidthRemaining);
 			if (($lw >= $wrapWidthRemaining) or ($lfct > 1)) {
 				$newtext = "";
-				$lines = explode("\n", $this->numText);
+				$lines   = explode("\n", $this->numText);
 				// Go throught the text line by line
 				foreach ($lines as $line) {
 					// Line width in points
 					$lw = ceil($pdf->GetStringWidth($line));
 					// If the line has to be wraped
 					if ($lw >= $wrapWidthRemaining) {
-						$words = explode(" ", $line);
+						$words    = explode(" ", $line);
 						$addspace = count($words);
-						$lw = 0;
+						$lw       = 0;
 						foreach ($words as $word) {
 							$addspace--;
 							$lw += ceil($pdf->GetStringWidth($word . " "));
@@ -147,12 +143,12 @@ class ReportPdfFootnote extends ReportBaseFootnote {
 					$lfct--;
 				}
 				$this->numText = $newtext;
-				$lfct = substr_count($this->numText, "\n");
+				$lfct          = substr_count($this->numText, "\n");
 
 				return array($lw, 1, $lfct);
 			}
 		}
-		$l = 0;
+		$l    = 0;
 		$lfct = substr_count($this->numText, "\n");
 		if ($lfct > 0) {
 			$l = 2;

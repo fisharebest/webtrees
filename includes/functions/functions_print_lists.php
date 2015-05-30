@@ -287,7 +287,7 @@ function format_indi_table($datalist, $option = '') {
 				</tfoot>
 				<tbody>';
 
-	$d100y = new Date(date('Y') - 100); // 100 years ago
+	$d100y        = new Date(date('Y') - 100); // 100 years ago
 	$unique_indis = array(); // Don't double-count indis with multiple names.
 	foreach ($datalist as $key => $person) {
 		if (!$person->canShowName()) {
@@ -310,11 +310,11 @@ function format_indi_table($datalist, $option = '') {
 				$title = 'title="' . strip_tags(GedcomTag::getLabel($name['type'], $person)) . '"';
 			}
 			if ($num == $person->getPrimaryName()) {
-				$class = ' class="name2"';
-				$sex_image = $person->getSexImage();
+				$class             = ' class="name2"';
+				$sex_image         = $person->getSexImage();
 				list($surn, $givn) = explode(',', $name['sort']);
 			} else {
-				$class = '';
+				$class     = '';
 				$sex_image = '';
 			}
 			$html .= '<a ' . $title . ' href="' . $person->getHtmlUrl() . '"' . $class . '>' . highlight_search_hits($name['full']) . '</a>' . $sex_image . '<br>';
@@ -573,7 +573,7 @@ function format_fam_table($datalist) {
 			jQuery(".loading-image").css("display", "none");
 	');
 
-	$stats = new Stats($WT_TREE);
+	$stats   = new Stats($WT_TREE);
 	$max_age = max($stats->oldestMarriageMaleAge(), $stats->oldestMarriageFemaleAge()) + 1;
 
 	//-- init chart data
@@ -779,11 +779,11 @@ function format_fam_table($datalist) {
 				$title = 'title="' . strip_tags(GedcomTag::getLabel($name['type'], $husb)) . '"';
 			}
 			if ($num == $husb->getPrimaryName()) {
-				$class = ' class="name2"';
-				$sex_image = $husb->getSexImage();
+				$class             = ' class="name2"';
+				$sex_image         = $husb->getSexImage();
 				list($surn, $givn) = explode(',', $name['sort']);
 			} else {
-				$class = '';
+				$class     = '';
 				$sex_image = '';
 			}
 			// Only show married names if they are the name we are filtering by.
@@ -824,11 +824,11 @@ function format_fam_table($datalist) {
 				$title = 'title="' . strip_tags(GedcomTag::getLabel($name['type'], $wife)) . '"';
 			}
 			if ($num == $wife->getPrimaryName()) {
-				$class = ' class="name2"';
-				$sex_image = $wife->getSexImage();
+				$class             = ' class="name2"';
+				$sex_image         = $wife->getSexImage();
 				list($surn, $givn) = explode(',', $name['sort']);
 			} else {
-				$class = '';
+				$class     = '';
 				$sex_image = '';
 			}
 			// Only show married names if they are the name we are filtering by.
@@ -1014,7 +1014,7 @@ function format_sour_table($datalist) {
 		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##other` JOIN `##link` ON l_from = o_id AND l_file = o_file AND o_type = 'NOTE' AND l_type = 'SOUR' GROUP BY l_to, l_file"
 	)->fetchAssoc();
 
-	$html = '';
+	$html     = '';
 	$table_id = 'table-sour-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
@@ -1156,7 +1156,7 @@ function format_sour_table($datalist) {
 function format_note_table($datalist) {
 	global $WT_TREE, $controller;
 
-	$html = '';
+	$html     = '';
 	$table_id = 'table-note-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
@@ -1278,7 +1278,7 @@ function format_repo_table($repositories) {
 		"SELECT CONCAT(l_to, '@', l_file), COUNT(*) FROM `##sources` JOIN `##link` ON l_from = s_id AND l_file = s_file AND l_type = 'REPO' GROUP BY l_to, l_file"
 	)->fetchAssoc();
 
-	$html = '';
+	$html     = '';
 	$table_id = 'table-repo-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
@@ -1385,7 +1385,7 @@ function format_repo_table($repositories) {
 function format_media_table($media_objects) {
 	global $WT_TREE, $controller;
 
-	$html = '';
+	$html     = '';
 	$table_id = 'table-obje-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
@@ -1583,7 +1583,7 @@ function format_surname_table($surnames, $script, Tree $tree) {
  *
  * @param string[][] $surnames array (of SURN, of array of SPFX_SURN, of array of PID)
  * @param string     $script   indilist or famlist
- * @param boolean    $totals   show totals after each name
+ * @param bool       $totals   show totals after each name
  * @param Tree       $tree     generate links to this tree
  *
  * @return string
@@ -1626,8 +1626,8 @@ function format_surname_tagcloud($surnames, $script, $totals, Tree $tree) {
  * Print a list of surnames.
  *
  * @param string[][] $surnames array (of SURN, of array of SPFX_SURN, of array of PID)
- * @param integer    $style    1=bullet list, 2=semicolon-separated list, 3=tabulated list with up to 4 columns
- * @param boolean    $totals   show totals after each name
+ * @param int        $style    1=bullet list, 2=semicolon-separated list, 3=tabulated list with up to 4 columns
+ * @param bool       $totals   show totals after each name
  * @param string     $script   indilist or famlist
  * @param Tree       $tree     Link back to the individual list in this tree
  *
@@ -1673,7 +1673,7 @@ function format_surname_list($surnames, $style, $totals, $script, Tree $tree) {
 	case 2:
 		return implode(I18N::$list_separator, $html);
 	case 3:
-		$i = 0;
+		$i     = 0;
 		$count = count($html);
 		if ($count > 36) {
 			$col = 4;
@@ -1685,7 +1685,7 @@ function format_surname_list($surnames, $style, $totals, $script, Tree $tree) {
 			$col = 1;
 		}
 		$newcol = ceil($count / $col);
-		$html2 = '<table class="list_table"><tr>';
+		$html2  = '<table class="list_table"><tr>';
 		$html2 .= '<td class="list_value" style="padding: 14px;">';
 
 		foreach ($html as $surns) {
@@ -1713,7 +1713,7 @@ function format_surname_list($surnames, $style, $totals, $script, Tree $tree) {
 function print_changes_list($change_ids, $sort) {
 	global $WT_TREE;
 
-	$n = 0;
+	$n   = 0;
 	$arr = array();
 	foreach ($change_ids as $change_id) {
 		$record = GedcomRecord::getInstance($change_id, $WT_TREE);
@@ -1722,8 +1722,8 @@ function print_changes_list($change_ids, $sort) {
 		}
 		// setup sorting parameters
 		$arr[$n]['record'] = $record;
-		$arr[$n]['jd'] = ($sort == 'name') ? 1 : $n;
-		$arr[$n]['anniv'] = $record->lastChangeTimestamp(true);
+		$arr[$n]['jd']     = ($sort == 'name') ? 1 : $n;
+		$arr[$n]['anniv']  = $record->lastChangeTimestamp(true);
 		$arr[$n++]['fact'] = $record->getSortName(); // in case two changes have same timestamp
 	}
 
@@ -1765,7 +1765,7 @@ function print_changes_list($change_ids, $sort) {
 function print_changes_table($change_ids, $sort) {
 	global $controller, $WT_TREE;
 
-	$n = 0;
+	$n        = 0;
 	$table_id = 'table-chan-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 	switch ($sort) {
 	case 'name':        //name
@@ -1877,18 +1877,18 @@ function print_changes_table($change_ids, $sort) {
 /**
  * Print a table of events
  *
- * @param integer $startjd
- * @param integer $endjd
- * @param string  $events
- * @param boolean $only_living
- * @param string  $sort_by
+ * @param int    $startjd
+ * @param int    $endjd
+ * @param string $events
+ * @param bool   $only_living
+ * @param string $sort_by
  *
  * @return string
  */
 function print_events_table($startjd, $endjd, $events = 'BIRT MARR DEAT', $only_living = false, $sort_by = 'anniv') {
 	global $controller, $WT_TREE;
 
-	$html = '';
+	$html     = '';
 	$table_id = 'table-even-' . Uuid::uuid4(); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
@@ -1916,8 +1916,8 @@ function print_events_table($startjd, $endjd, $events = 'BIRT MARR DEAT', $only_
 		');
 
 	// Did we have any output?  Did we skip anything?
-	$output = 0;
-	$filter = 0;
+	$output          = 0;
+	$filter          = 0;
 	$filtered_events = array();
 
 	foreach (get_events_list($startjd, $endjd, $events, $WT_TREE) as $fact) {
@@ -2027,11 +2027,11 @@ function print_events_table($startjd, $endjd, $events = 'BIRT MARR DEAT', $only_
  *
  * This performs the same function as print_events_table(), but formats the output differently.
  *
- * @param integer $startjd
- * @param integer $endjd
- * @param string  $events
- * @param boolean $only_living
- * @param string  $sort_by
+ * @param int    $startjd
+ * @param int    $endjd
+ * @param string $events
+ * @param bool   $only_living
+ * @param string $sort_by
  *
  * @return string
  */
@@ -2039,10 +2039,10 @@ function print_events_list($startjd, $endjd, $events = 'BIRT MARR DEAT', $only_l
 	global $WT_TREE;
 
 	// Did we have any output?  Did we skip anything?
-	$output = 0;
-	$filter = 0;
+	$output          = 0;
+	$filter          = 0;
 	$filtered_events = array();
-	$html = '';
+	$html            = '';
 	foreach (get_events_list($startjd, $endjd, $events, $WT_TREE) as $fact) {
 		$record = $fact->getParent();
 		//-- only living people ?
@@ -2146,13 +2146,13 @@ function print_events_list($startjd, $endjd, $events = 'BIRT MARR DEAT', $only_l
  * @return string
  */
 function print_chart_by_age($data, $title) {
-	$count = 0;
+	$count  = 0;
 	$agemax = 0;
-	$vmax = 0;
-	$avg = 0;
+	$vmax   = 0;
+	$avg    = 0;
 	foreach ($data as $age => $v) {
-		$n = strlen($v);
-		$vmax = max($vmax, $n);
+		$n      = strlen($v);
+		$vmax   = max($vmax, $n);
 		$agemax = max($agemax, $age);
 		$count += $n;
 		$avg += $age * $n;
@@ -2160,7 +2160,7 @@ function print_chart_by_age($data, $title) {
 	if ($count < 1) {
 		return;
 	}
-	$avg = round($avg / $count);
+	$avg       = round($avg / $count);
 	$chart_url = "https://chart.googleapis.com/chart?cht=bvs"; // chart type
 	$chart_url .= "&amp;chs=725x150"; // size
 	$chart_url .= "&amp;chbh=3,2,2"; // bvg : 4,1,2
@@ -2218,9 +2218,9 @@ function print_chart_by_age($data, $title) {
  */
 function print_chart_by_decade($data, $title) {
 	$count = 0;
-	$vmax = 0;
+	$vmax  = 0;
 	foreach ($data as $v) {
-		$n = strlen($v);
+		$n    = strlen($v);
 		$vmax = max($vmax, $n);
 		$count += $n;
 	}

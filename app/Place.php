@@ -47,7 +47,7 @@ class Place {
 	}
 
 	/**
-	 * @return integer
+	 * @return int
 	 */
 	public function getPlaceId() {
 		$place_id = 0;
@@ -203,7 +203,7 @@ class Place {
 	 */
 	public static function allPlaces(Tree $tree) {
 		$places = array();
-		$rows =
+		$rows   =
 			Database::prepare(
 				"SELECT SQL_CACHE CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place)" .
 				" FROM      `##places` AS p1" .
@@ -225,6 +225,7 @@ class Place {
 		foreach ($rows as $row) {
 			$places[] = new Place($row, $tree);
 		}
+
 		return $places;
 	}
 
@@ -236,7 +237,7 @@ class Place {
 	 */
 	public static function findPlaces($filter, Tree $tree) {
 		$places = array();
-		$rows =
+		$rows   =
 			Database::prepare(
 				"SELECT SQL_CACHE CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place)" .
 				" FROM      `##places` AS p1" .
@@ -251,14 +252,15 @@ class Place {
 				" WHERE CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) LIKE CONCAT('%', :filter_1, '%') AND CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) NOT LIKE CONCAT('%,%', :filter_2, '%') AND p1.p_file = :tree_id" .
 				" ORDER BY  CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place) COLLATE :collation"
 			)->execute(array(
-				'filter_1' => preg_quote($filter),
-				'filter_2' => preg_quote($filter),
-				'tree_id'  => $tree->getTreeId(),
+				'filter_1'  => preg_quote($filter),
+				'filter_2'  => preg_quote($filter),
+				'tree_id'   => $tree->getTreeId(),
 				'collation' => I18N::collation(),
 			))->fetchOneColumn();
 		foreach ($rows as $row) {
 			$places[] = new Place($row, $tree);
 		}
+
 		return $places;
 	}
 }

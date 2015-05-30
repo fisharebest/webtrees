@@ -42,7 +42,7 @@ class FamilyGroupReportModule extends AbstractModule implements ModuleReportInte
 		global $controller, $WT_TREE;
 
 		$menus = array();
-		$menu = new Menu(
+		$menu  = new Menu(
 			$this->getTitle(),
 			'reportengine.php?ged=' . $WT_TREE->getNameUrl() . '&amp;action=setup&amp;report=' . WT_MODULES_DIR . $this->getName() . '/report.xml&amp;famid=' . $controller->getSignificantFamily()->getXref(),
 			'menu-report-' . $this->getName()

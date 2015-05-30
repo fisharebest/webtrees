@@ -68,11 +68,11 @@ class BatchUpdateBasePlugin {
 		if (Auth::user()->getPreference('auto_accept')) {
 			return array(
 				BatchUpdateModule::createSubmitButton(I18N::translate('Update'), $xref, 'update'),
-				BatchUpdateModule::createSubmitButton(I18N::translate('Update all'), $xref, 'update_all')
+				BatchUpdateModule::createSubmitButton(I18N::translate('Update all'), $xref, 'update_all'),
 			);
 		} else {
 			return array(
-				BatchUpdateModule::createSubmitButton(I18N::translate('Update'), $xref, 'update')
+				BatchUpdateModule::createSubmitButton(I18N::translate('Update'), $xref, 'update'),
 			);
 		}
 	}
@@ -91,8 +91,8 @@ class BatchUpdateBasePlugin {
 		$lcs = self::longestCommonSubsequence($old_lines, $new_lines, 0, count($old_lines) - 1, 0, count($new_lines) - 1);
 
 		$diff_lines = array();
-		$last_old = -1;
-		$last_new = -1;
+		$last_old   = -1;
+		$last_new   = -1;
 		while ($lcs) {
 			list($old, $new) = array_shift($lcs);
 			while ($last_old < $old - 1) {
@@ -102,8 +102,8 @@ class BatchUpdateBasePlugin {
 				$diff_lines[] = self::decorateInsertedText($new_lines[++$last_new]);
 			}
 			$diff_lines[] = $new_lines[$new];
-			$last_old = $old;
-			$last_new = $new;
+			$last_old     = $old;
+			$last_new     = $new;
 		}
 		while ($last_old < count($old_lines) - 1) {
 			$diff_lines[] = self::decorateDeletedText($old_lines[++$last_old]);
@@ -120,10 +120,10 @@ class BatchUpdateBasePlugin {
 	 *
 	 * @param string[] $X
 	 * @param string[] $Y
-	 * @param integer  $x1
-	 * @param integer  $x2
-	 * @param integer  $y1
-	 * @param integer  $y2
+	 * @param int      $x1
+	 * @param int      $x2
+	 * @param int      $y1
+	 * @param int      $y2
 	 *
 	 * @return array
 	 */
@@ -133,16 +133,19 @@ class BatchUpdateBasePlugin {
 				// Match at start of sequence
 				$tmp = self::longestCommonSubsequence($X, $Y, $x1 + 1, $x2, $y1 + 1, $y2);
 				array_unshift($tmp, array($x1, $y1));
+
 				return $tmp;
 			} elseif ($X[$x2] == $Y[$y2]) {
 				// Match at end of sequence
 				$tmp = self::longestCommonSubsequence($X, $Y, $x1, $x2 - 1, $y1, $y2 - 1);
 				array_push($tmp, array($x2, $y2));
+
 				return $tmp;
 			} else {
 				// No match.  Look for subsequences
 				$tmp1 = self::longestCommonSubsequence($X, $Y, $x1, $x2, $y1, $y2 - 1);
 				$tmp2 = self::longestCommonSubsequence($X, $Y, $x1, $x2 - 1, $y1, $y2);
+
 				return count($tmp1) > count($tmp2) ? $tmp1 : $tmp2;
 			}
 		} else {

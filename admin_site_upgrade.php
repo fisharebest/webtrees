@@ -350,7 +350,7 @@ $num_files = $res['nb'];
 
 reset_timeout();
 $start_time = microtime(true);
-$res = $archive->extract(
+$res        = $archive->extract(
 	\PCLZIP_OPT_PATH, $zip_dir,
 	\PCLZIP_OPT_REMOVE_PATH, 'webtrees',
 	\PCLZIP_OPT_REPLACE_NEWER
@@ -439,7 +439,7 @@ try {
 
 reset_timeout();
 $start_time = microtime(true);
-$res = $archive->extract(
+$res        = $archive->extract(
 	\PCLZIP_OPT_PATH, WT_ROOT,
 	\PCLZIP_OPT_REMOVE_PATH, 'webtrees',
 	\PCLZIP_OPT_REPLACE_NEWER

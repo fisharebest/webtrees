@@ -20,7 +20,6 @@ namespace Fisharebest\Webtrees;
  * Class ClippingsCartModule
  */
 class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface, ModuleSidebarInterface {
-
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('Clippings cart');
@@ -49,7 +48,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 
 			$MAX_PEDIGREE_GENERATIONS = $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS');
 
-			$cart = Session::get('cart');
+			$cart      = Session::get('cart');
 			$clip_ctrl = new ClippingsCart;
 
 			$controller = new PageController;
@@ -472,6 +471,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 			$submenu = new Menu(I18N::translate('Add to the clippings cart'), 'module.php?mod=clippings&amp;mod_action=index&amp;action=add&amp;id=' . $controller->record->getXref(), 'menu-clippingsadd');
 			$menu->addSubmenu($submenu);
 		}
+
 		return $menu;
 	}
 
@@ -530,7 +530,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 		} elseif ($add1) {
 			$record = Individual::getInstance($add1, $WT_TREE);
 			if ($record) {
-				$clip_ctrl->id = $record->getXref();
+				$clip_ctrl->id   = $record->getXref();
 				$clip_ctrl->type = $record::RECORD_TYPE;
 				if ($others == 'parents') {
 					foreach ($record->getChildFamilies() as $family) {
@@ -629,6 +629,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 		if ($record && !array_key_exists($record->getXref(), $cart[$WT_TREE->getTreeId()])) {
 			$out .= '<br><a href="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax&amp;sb_action=clippings&amp;add=' . $pid . '&amp;pid=' . $pid . '" class="add_cart"><i class="icon-clippings"></i> ' . I18N::translate('Add %s to the clippings cart', $record->getFullName()) . '</a>';
 		}
+
 		return $out;
 	}
 
@@ -651,14 +652,14 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 		$out .= '<form method="get" action="module.php">
 		<input type="hidden" name="mod" value="clippings">
 		<input type="hidden" name="mod_action" value="index">
-		<input type="hidden" name="pid" value="' .$pid . '">
+		<input type="hidden" name="pid" value="' . $pid . '">
 		<input type="hidden" name="action" value="download">
 		<table>
-		<tr><td colspan="2" class="topbottombar"><h2>'. I18N::translate('Download') . '</h2></td></tr>
-		<tr><td class="descriptionbox width50 wrap">'. I18N::translate('Zip file(s)') . '</td>
+		<tr><td colspan="2" class="topbottombar"><h2>' . I18N::translate('Download') . '</h2></td></tr>
+		<tr><td class="descriptionbox width50 wrap">' . I18N::translate('Zip file(s)') . '</td>
 		<td class="optionbox"><input type="checkbox" name="Zip" value="yes" checked></td></tr>
 
-		<tr><td class="descriptionbox width50 wrap">'. I18N::translate('Include media (automatically zips files)') . '</td>
+		<tr><td class="descriptionbox width50 wrap">' . I18N::translate('Include media (automatically zips files)') . '</td>
 		<td class="optionbox"><input type="checkbox" name="IncludeMedia" value="yes" checked></td></tr>
 		';
 
@@ -681,23 +682,23 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 		}
 
 		$out .= '
-		<tr><td class="descriptionbox width50 wrap">'. I18N::translate('Convert from UTF-8 to ISO-8859-1') . '</td>
+		<tr><td class="descriptionbox width50 wrap">' . I18N::translate('Convert from UTF-8 to ISO-8859-1') . '</td>
 		<td class="optionbox"><input type="checkbox" name="convert" value="yes"></td></tr>
 
 		<tr>
-		<td class="descriptionbox width50 wrap">'. I18N::translate('Add the GEDCOM media path to filenames') . '</td>
+		<td class="descriptionbox width50 wrap">' . I18N::translate('Add the GEDCOM media path to filenames') . '</td>
 		<td class="optionbox">
 		<input type="checkbox" name="conv_path" value="' . Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')) . '">
 		<span dir="auto">' . Filter::escapeHtml($WT_TREE->getPreference('GEDCOM_MEDIA_PATH')) . '</span></td>
 		</tr>
 
-		<input type="hidden" name="conv_path" value="'.$clip_ctrl->conv_path . '">
+		<input type="hidden" name="conv_path" value="' . $clip_ctrl->conv_path . '">
 
 		</td></tr>
 
 		<tr><td class="topbottombar" colspan="2">
-		<input type="button" value="'. I18N::translate('Cancel') . '" onclick="cancelDownload();">
-		<input type="submit" value="'. I18N::translate('Download') . '">
+		<input type="button" value="' . I18N::translate('Cancel') . '" onclick="cancelDownload();">
+		<input type="submit" value="' . I18N::translate('Download') . '">
 		</form>';
 
 		return $out;

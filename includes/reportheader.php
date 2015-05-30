@@ -20,18 +20,19 @@ namespace Fisharebest\Webtrees;
  * element handlers array
  *
  * An array of element handler functions
+ *
  * @global array $elementHandler
  */
-$elementHandler = array();
-$elementHandler['Report']['start']   = __NAMESPACE__ . '\\reportStartHandler';
-$elementHandler['var']['start']      = __NAMESPACE__ . '\\varStartHandler';
-$elementHandler['Title']['start']    = __NAMESPACE__ . '\\titleStartHandler';
-$elementHandler['Title']['end']      = __NAMESPACE__ . '\\titleEndHandler';
+$elementHandler                       = array();
+$elementHandler['Report']['start']    = __NAMESPACE__ . '\\reportStartHandler';
+$elementHandler['var']['start']       = __NAMESPACE__ . '\\varStartHandler';
+$elementHandler['Title']['start']     = __NAMESPACE__ . '\\titleStartHandler';
+$elementHandler['Title']['end']       = __NAMESPACE__ . '\\titleEndHandler';
 $elementHandler['Description']['end'] = __NAMESPACE__ . '\\descriptionEndHandler';
-$elementHandler['Input']['start']    = __NAMESPACE__ . '\\inputStartHandler';
-$elementHandler['Input']['end']      = __NAMESPACE__ . '\\inputEndHandler';
+$elementHandler['Input']['start']     = __NAMESPACE__ . '\\inputStartHandler';
+$elementHandler['Input']['end']       = __NAMESPACE__ . '\\inputEndHandler';
 
-$text = "";
+$text         = "";
 $report_array = array();
 
 /**
@@ -57,6 +58,7 @@ function startElement($parser, $name, $attrs) {
  * xml end element handler
  *
  * this function is called whenever an ending element is reached
+ *
  * @param resource $parser the resource handler for the xml parser
  * @param string $name the name of the xml element parsed
  */
@@ -75,6 +77,7 @@ function endElement($parser, $name) {
  *
  * this function is called whenever raw character data is reached
  * just print it to the screen
+ *
  * @param resource $parser the resource handler for the xml parser
  * @param string $data the name of the xml element parsed
  */
@@ -145,7 +148,7 @@ function titleEndHandler() {
 	global $report_array, $text;
 
 	$report_array["title"] = $text;
-	$text = "";
+	$text                  = "";
 }
 
 /**
@@ -155,7 +158,7 @@ function descriptionEndHandler() {
 	global $report_array, $text;
 
 	$report_array["description"] = $text;
-	$text = "";
+	$text                        = "";
 }
 
 /**
@@ -164,13 +167,13 @@ function descriptionEndHandler() {
 function inputStartHandler($attrs) {
 	global $input, $text;
 
-	$text = "";
-	$input = array();
-	$input["name"] = "";
-	$input["type"] = "";
-	$input["lookup"] = "";
+	$text             = "";
+	$input            = array();
+	$input["name"]    = "";
+	$input["type"]    = "";
+	$input["lookup"]  = "";
 	$input["default"] = "";
-	$input["value"] = "";
+	$input["value"]   = "";
 	$input["options"] = "";
 	if (isset($attrs["name"])) {
 		$input["name"] = $attrs["name"];
@@ -213,5 +216,5 @@ function inputEndHandler() {
 		$report_array["inputs"] = array();
 	}
 	$report_array["inputs"][] = $input;
-	$text = "";
+	$text                     = "";
 }

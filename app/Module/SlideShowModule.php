@@ -82,7 +82,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 		// Keep looking through the media until a suitable one is found.
 		$random_media = null;
 		while ($all_media) {
-			$n = array_rand($all_media);
+			$n     = array_rand($all_media);
 			$media = Media::getInstance($all_media[$n], $WT_TREE);
 			if ($media->canShow() && !$media->isExternal()) {
 				// Check if it is linked to a suitable individual
@@ -101,7 +101,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 			unset($all_media[$n]);
 		};
 
-		$id = $this->getName() . $block_id;
+		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
 			$title = '<a class="icon-admin" title="' . I18N::translate('Configure') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
@@ -142,7 +142,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 						}
 						function reload_image() {
 							if (play) {
-								jQuery("#block_'.$block_id . '").load("index.php?ctype=' . $ctype . '&action=ajax&block_id=' . $block_id . '&start=1");
+								jQuery("#block_' . $block_id . '").load("index.php?ctype=' . $ctype . '&action=ajax&block_id=' . $block_id . '&start=1");
 							}
 						}
 					</script>';
@@ -240,39 +240,39 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Show only individuals, events, or all?');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('filter', array('indi'=> I18N::translate('Individuals'), 'event'=> I18N::translate('Facts and events'), 'all'=> I18N::translate('All')), null, $filter, '');
+		echo select_edit_control('filter', array('indi' => I18N::translate('Individuals'), 'event' => I18N::translate('Facts and events'), 'all' => I18N::translate('All')), null, $filter, '');
 		echo '</td></tr>';
 
 		$filters = array(
-			'avi'        =>$this->getBlockSetting($block_id, 'filter_avi', '0'),
-			'bmp'        =>$this->getBlockSetting($block_id, 'filter_bmp', '1'),
-			'gif'        =>$this->getBlockSetting($block_id, 'filter_gif', '1'),
-			'jpeg'       =>$this->getBlockSetting($block_id, 'filter_jpeg', '1'),
-			'mp3'        =>$this->getBlockSetting($block_id, 'filter_mp3', '0'),
-			'ole'        =>$this->getBlockSetting($block_id, 'filter_ole', '1'),
-			'pcx'        =>$this->getBlockSetting($block_id, 'filter_pcx', '1'),
-			'pdf'        =>$this->getBlockSetting($block_id, 'filter_pdf', '0'),
-			'png'        =>$this->getBlockSetting($block_id, 'filter_png', '1'),
-			'tiff'       =>$this->getBlockSetting($block_id, 'filter_tiff', '1'),
-			'wav'        =>$this->getBlockSetting($block_id, 'filter_wav', '0'),
-			'audio'      =>$this->getBlockSetting($block_id, 'filter_audio', '0'),
-			'book'       =>$this->getBlockSetting($block_id, 'filter_book', '1'),
-			'card'       =>$this->getBlockSetting($block_id, 'filter_card', '1'),
-			'certificate'=>$this->getBlockSetting($block_id, 'filter_certificate', '1'),
-			'coat'       =>$this->getBlockSetting($block_id, 'filter_coat', '1'),
-			'document'   =>$this->getBlockSetting($block_id, 'filter_document', '1'),
-			'electronic' =>$this->getBlockSetting($block_id, 'filter_electronic', '1'),
-			'fiche'      =>$this->getBlockSetting($block_id, 'filter_fiche', '1'),
-			'film'       =>$this->getBlockSetting($block_id, 'filter_film', '1'),
-			'magazine'   =>$this->getBlockSetting($block_id, 'filter_magazine', '1'),
-			'manuscript' =>$this->getBlockSetting($block_id, 'filter_manuscript', '1'),
-			'map'        =>$this->getBlockSetting($block_id, 'filter_map', '1'),
-			'newspaper'  =>$this->getBlockSetting($block_id, 'filter_newspaper', '1'),
-			'other'      =>$this->getBlockSetting($block_id, 'filter_other', '1'),
-			'painting'   =>$this->getBlockSetting($block_id, 'filter_painting', '1'),
-			'photo'      =>$this->getBlockSetting($block_id, 'filter_photo', '1'),
-			'tombstone'  =>$this->getBlockSetting($block_id, 'filter_tombstone', '1'),
-			'video'      =>$this->getBlockSetting($block_id, 'filter_video', '0'),
+			'avi'         => $this->getBlockSetting($block_id, 'filter_avi', '0'),
+			'bmp'         => $this->getBlockSetting($block_id, 'filter_bmp', '1'),
+			'gif'         => $this->getBlockSetting($block_id, 'filter_gif', '1'),
+			'jpeg'        => $this->getBlockSetting($block_id, 'filter_jpeg', '1'),
+			'mp3'         => $this->getBlockSetting($block_id, 'filter_mp3', '0'),
+			'ole'         => $this->getBlockSetting($block_id, 'filter_ole', '1'),
+			'pcx'         => $this->getBlockSetting($block_id, 'filter_pcx', '1'),
+			'pdf'         => $this->getBlockSetting($block_id, 'filter_pdf', '0'),
+			'png'         => $this->getBlockSetting($block_id, 'filter_png', '1'),
+			'tiff'        => $this->getBlockSetting($block_id, 'filter_tiff', '1'),
+			'wav'         => $this->getBlockSetting($block_id, 'filter_wav', '0'),
+			'audio'       => $this->getBlockSetting($block_id, 'filter_audio', '0'),
+			'book'        => $this->getBlockSetting($block_id, 'filter_book', '1'),
+			'card'        => $this->getBlockSetting($block_id, 'filter_card', '1'),
+			'certificate' => $this->getBlockSetting($block_id, 'filter_certificate', '1'),
+			'coat'        => $this->getBlockSetting($block_id, 'filter_coat', '1'),
+			'document'    => $this->getBlockSetting($block_id, 'filter_document', '1'),
+			'electronic'  => $this->getBlockSetting($block_id, 'filter_electronic', '1'),
+			'fiche'       => $this->getBlockSetting($block_id, 'filter_fiche', '1'),
+			'film'        => $this->getBlockSetting($block_id, 'filter_film', '1'),
+			'magazine'    => $this->getBlockSetting($block_id, 'filter_magazine', '1'),
+			'manuscript'  => $this->getBlockSetting($block_id, 'filter_manuscript', '1'),
+			'map'         => $this->getBlockSetting($block_id, 'filter_map', '1'),
+			'newspaper'   => $this->getBlockSetting($block_id, 'filter_newspaper', '1'),
+			'other'       => $this->getBlockSetting($block_id, 'filter_other', '1'),
+			'painting'    => $this->getBlockSetting($block_id, 'filter_painting', '1'),
+			'photo'       => $this->getBlockSetting($block_id, 'filter_photo', '1'),
+			'tombstone'   => $this->getBlockSetting($block_id, 'filter_tombstone', '1'),
+			'video'       => $this->getBlockSetting($block_id, 'filter_video', '0'),
 		);
 
 		echo '<tr><td class="descriptionbox wrap width33">';

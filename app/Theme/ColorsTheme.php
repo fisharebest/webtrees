@@ -57,22 +57,22 @@ class ColorsTheme extends CloudsTheme {
 	 */
 	public function hookAfterInit() {
 		$this->palettes = array(
-			'aquamarine'      => /* I18N: The name of a colour-scheme */ I18N::translate('Aqua Marine'),
-			'ash'             => /* I18N: The name of a colour-scheme */ I18N::translate('Ash'),
-			'belgianchocolate'=> /* I18N: The name of a colour-scheme */ I18N::translate('Belgian Chocolate'),
-			'bluelagoon'      => /* I18N: The name of a colour-scheme */ I18N::translate('Blue Lagoon'),
-			'bluemarine'      => /* I18N: The name of a colour-scheme */ I18N::translate('Blue Marine'),
-			'coffeeandcream'  => /* I18N: The name of a colour-scheme */ I18N::translate('Coffee and Cream'),
-			'coldday'         => /* I18N: The name of a colour-scheme */ I18N::translate('Cold Day'),
-			'greenbeam'       => /* I18N: The name of a colour-scheme */ I18N::translate('Green Beam'),
-			'mediterranio'    => /* I18N: The name of a colour-scheme */ I18N::translate('Mediterranio'),
-			'mercury'         => /* I18N: The name of a colour-scheme */ I18N::translate('Mercury'),
-			'nocturnal'       => /* I18N: The name of a colour-scheme */ I18N::translate('Nocturnal'),
-			'olivia'          => /* I18N: The name of a colour-scheme */ I18N::translate('Olivia'),
-			'pinkplastic'     => /* I18N: The name of a colour-scheme */ I18N::translate('Pink Plastic'),
-			'sage'            => /* I18N: The name of a colour-scheme */ I18N::translate('Sage'),
-			'shinytomato'     => /* I18N: The name of a colour-scheme */ I18N::translate('Shiny Tomato'),
-			'tealtop'         => /* I18N: The name of a colour-scheme */ I18N::translate('Teal Top'),
+			'aquamarine'       => /* I18N: The name of a colour-scheme */ I18N::translate('Aqua Marine'),
+			'ash'              => /* I18N: The name of a colour-scheme */ I18N::translate('Ash'),
+			'belgianchocolate' => /* I18N: The name of a colour-scheme */ I18N::translate('Belgian Chocolate'),
+			'bluelagoon'       => /* I18N: The name of a colour-scheme */ I18N::translate('Blue Lagoon'),
+			'bluemarine'       => /* I18N: The name of a colour-scheme */ I18N::translate('Blue Marine'),
+			'coffeeandcream'   => /* I18N: The name of a colour-scheme */ I18N::translate('Coffee and Cream'),
+			'coldday'          => /* I18N: The name of a colour-scheme */ I18N::translate('Cold Day'),
+			'greenbeam'        => /* I18N: The name of a colour-scheme */ I18N::translate('Green Beam'),
+			'mediterranio'     => /* I18N: The name of a colour-scheme */ I18N::translate('Mediterranio'),
+			'mercury'          => /* I18N: The name of a colour-scheme */ I18N::translate('Mercury'),
+			'nocturnal'        => /* I18N: The name of a colour-scheme */ I18N::translate('Nocturnal'),
+			'olivia'           => /* I18N: The name of a colour-scheme */ I18N::translate('Olivia'),
+			'pinkplastic'      => /* I18N: The name of a colour-scheme */ I18N::translate('Pink Plastic'),
+			'sage'             => /* I18N: The name of a colour-scheme */ I18N::translate('Sage'),
+			'shinytomato'      => /* I18N: The name of a colour-scheme */ I18N::translate('Shiny Tomato'),
+			'tealtop'          => /* I18N: The name of a colour-scheme */ I18N::translate('Teal Top'),
 		);
 		uasort($this->palettes, __NAMESPACE__ . '\I18N::strcasecmp');
 

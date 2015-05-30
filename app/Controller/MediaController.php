@@ -26,7 +26,7 @@ class MediaController extends GedcomRecordController {
 	public function __construct() {
 		global $WT_TREE;
 
-		$xref = Filter::get('mid', WT_REGEX_XREF);
+		$xref         = Filter::get('mid', WT_REGEX_XREF);
 		$this->record = Media::getInstance($xref, $WT_TREE);
 
 		parent::__construct();

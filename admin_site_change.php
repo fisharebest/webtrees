@@ -164,7 +164,7 @@ case 'load_json':
 
 	if ($length) {
 		Auth::user()->setPreference('admin_site_change_page_size', $length);
-		$limit = " LIMIT :limit OFFSET :offset";
+		$limit          = " LIMIT :limit OFFSET :offset";
 		$args['limit']  = $length;
 		$args['offset'] = $start;
 	} else {
@@ -192,7 +192,7 @@ case 'load_json':
 		'draw'            => Filter::getInteger('draw'),
 		'recordsTotal'    => $recordsTotal,
 		'recordsFiltered' => $recordsFiltered,
-		'data'            => $data
+		'data'            => $data,
 	));
 
 	return;
@@ -208,7 +208,7 @@ $controller
 		jQuery(".table-site-changes").dataTable( {
 			processing: true,
 			serverSide: true,
-			ajax: "'.WT_BASE_URL . WT_SCRIPT_NAME . '?action=load_json&from=' . $from . '&to=' . $to . '&type=' . $type . '&oldged=' . rawurlencode($oldged) . '&newged=' . rawurlencode($newged) . '&xref=' . rawurlencode($xref) . '&user=' . rawurlencode($user) . '&gedc=' . rawurlencode($gedc) . '",
+			ajax: "' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=load_json&from=' . $from . '&to=' . $to . '&type=' . $type . '&oldged=' . rawurlencode($oldged) . '&newged=' . rawurlencode($newged) . '&xref=' . rawurlencode($xref) . '&user=' . rawurlencode($user) . '&gedc=' . rawurlencode($gedc) . '",
 			' . I18N::datatablesI18N(array(10, 20, 50, 100, 500, 1000, -1)) . ',
 			sorting: [[ 0, "desc" ]],
 			pageLength: ' . Auth::user()->getPreference('admin_site_change_page_size', 10) . ',

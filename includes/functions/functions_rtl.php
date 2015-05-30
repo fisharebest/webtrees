@@ -581,8 +581,8 @@ function beginCurrentSpan(&$result) {
 /**
  * Finish current span
  *
- * @param string  $result
- * @param boolean $theEnd
+ * @param string $result
+ * @param bool   $theEnd
  */
 function finishCurrentSpan(&$result, $theEnd = false) {
 	global $previousState, $currentState, $posSpanStart, $waitingText;
@@ -1090,10 +1090,10 @@ function finishCurrentSpan(&$result, $theEnd = false) {
 }
 
 /**
- * @param string  $string
- * @param integer $width
- * @param string  $sep
- * @param boolean $cut
+ * @param string $string
+ * @param int    $width
+ * @param string $sep
+ * @param bool   $cut
  *
  * @return string
  */

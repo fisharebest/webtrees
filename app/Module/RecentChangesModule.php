@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees;
  */
 class RecentChangesModule extends AbstractModule implements ModuleBlockInterface {
 	const DEFAULT_DAYS = 7;
-	const MAX_DAYS = 90;
+	const MAX_DAYS     = 90;
 
 	/** {@inheritdoc} */
 	public function getTitle() {
@@ -42,7 +42,6 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 		$sortStyle  = $this->getBlockSetting($block_id, 'sortStyle', 'date_desc');
 		$block      = $this->getBlockSetting($block_id, 'block', '1');
 		$hide_empty = $this->getBlockSetting($block_id, 'hide_empty', '0');
-
 
 		if ($cfg) {
 			foreach (array('days', 'infoStyle', 'sortStyle', 'hide_empty', 'block') as $name) {
@@ -89,6 +88,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 			if ($block) {
 				$class .= ' small_inner_block';
 			}
+
 			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 			return $content;
@@ -145,7 +145,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 		echo select_edit_control('sortStyle', array(
 			'name'      => /* I18N: An option in a list-box */ I18N::translate('sort by name'),
 			'date_asc'  => /* I18N: An option in a list-box */ I18N::translate('sort by date, oldest first'),
-			'date_desc' => /* I18N: An option in a list-box */ I18N::translate('sort by date, newest first')
+			'date_desc' => /* I18N: An option in a list-box */ I18N::translate('sort by date, newest first'),
 		), null, $sortStyle, '');
 		echo '</td></tr>';
 

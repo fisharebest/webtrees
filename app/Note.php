@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees;
  */
 class Note extends GedcomRecord {
 	const RECORD_TYPE = 'NOTE';
-	const URL_PREFIX = 'note.php?nid=';
+	const URL_PREFIX  = 'note.php?nid=';
 
 	/**
 	 * Get an instance of a note object.  For single records,
@@ -63,7 +63,7 @@ class Note extends GedcomRecord {
 		$linked_ids = Database::prepare(
 			"SELECT l_from FROM `##link` WHERE l_to=? AND l_file=?"
 		)->execute(array(
-			$this->xref, $this->tree->getTreeId()
+			$this->xref, $this->tree->getTreeId(),
 		))->fetchOneColumn();
 		foreach ($linked_ids as $linked_id) {
 			$linked_record = GedcomRecord::getInstance($linked_id, $this->tree);
@@ -87,7 +87,7 @@ class Note extends GedcomRecord {
 			"SELECT o_gedcom FROM `##other` WHERE o_id = :xref AND o_file = :tree_id AND o_type = 'NOTE'"
 		)->execute(array(
 			'xref'    => $xref,
-			'tree_id' => $tree_id
+			'tree_id' => $tree_id,
 		))->fetchOne();
 	}
 

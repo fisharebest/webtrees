@@ -24,8 +24,6 @@ class ReportPdfCell extends ReportBaseCell {
 	 * PDF Cell renderer
 	 *
 	 * @param PDF $renderer
-	 *
-	 * @return void
 	 */
 	public function render($renderer) {
 
@@ -36,7 +34,7 @@ class ReportPdfCell extends ReportBaseCell {
 		$temptext = str_replace("#PAGENUM#", $renderer->PageNo(), $this->text);
 		// underline «title» part of Source item
 		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
-		$match = array();
+		$match    = array();
 		// Indicates if the cell background must be painted (1) or transparent (0)
 		if ($this->fill == 1) {
 			if (!empty($this->bgcolor)) {
@@ -99,7 +97,7 @@ class ReportPdfCell extends ReportBaseCell {
 		if (!empty($temptext)) {
 			$cHT = $renderer->getNumLines($temptext, $this->width);
 			$cHT = $cHT * $renderer->getCellHeightRatio() * $renderer->getCurrentStyleHeight();
-			$cM = $renderer->getMargins();
+			$cM  = $renderer->getMargins();
 			// Add padding
 			if (is_array($cM['cell'])) {
 				$cHT += ($cM['padding_bottom'] + $cM['padding_top']);

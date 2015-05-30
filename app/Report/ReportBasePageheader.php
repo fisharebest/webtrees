@@ -32,7 +32,7 @@ class ReportBasePageheader extends ReportBaseElement {
 	}
 
 	/**
-	 * @return integer
+	 * @return int
 	 */
 	public function textBox() {
 		$this->elements = array();
@@ -45,7 +45,7 @@ class ReportBasePageheader extends ReportBaseElement {
 	 *
 	 * @param $element
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function addElement($element) {
 		$this->elements[] = $element;

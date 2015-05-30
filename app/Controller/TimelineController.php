@@ -20,7 +20,7 @@ namespace Fisharebest\Webtrees;
  * Class TimelineController - Controller for the timeline chart
  */
 class TimelineController extends PageController {
-	/** @var integer Height of the age box */
+	/** @var int Height of the age box */
 	public $bheight = 30;
 
 	/** @var Fact[] The facts to display on the chart */
@@ -35,10 +35,10 @@ class TimelineController extends PageController {
 	/** @var integer[] Numeric birth days of each individual */
 	public $birthdays = array();
 
-	/** @var integer Lowest year to display */
+	/** @var int Lowest year to display */
 	public $baseyear = 0;
 
-	/** @var integer Highest year to display */
+	/** @var int Highest year to display */
 	public $topyear = 0;
 
 	/** @var string[] List of individual XREFs to display */
@@ -50,7 +50,7 @@ class TimelineController extends PageController {
 	/** @var string URL-encoded list of XREFs */
 	public $pidlinks = '';
 
-	/** @var integer Vertical scale */
+	/** @var int Vertical scale */
 	public $scale = 2;
 
 	// GEDCOM elements that may have DATE data, but should not be displayed

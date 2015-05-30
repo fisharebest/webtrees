@@ -29,7 +29,7 @@ class ReportBaseHtml extends ReportBaseElement {
 	 * @param $attrs
 	 */
 	public function __construct($tag, $attrs) {
-		$this->tag = $tag;
+		$this->tag   = $tag;
 		$this->attrs = $attrs;
 
 		return 0;
@@ -58,7 +58,7 @@ class ReportBaseHtml extends ReportBaseElement {
 	/**
 	 * @param $element
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function addElement($element) {
 		$this->elements[] = $element;

@@ -40,8 +40,9 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 	public function getTabContent() {
 		global $controller;
 
-		$tv = new TreeView('tvTab');
+		$tv              = new TreeView('tvTab');
 		list($html, $js) = $tv->drawViewport($controller->record, 3);
+
 		return
 			'<script src="' . $this->js() . '"></script>' .
 			'<script src="' . WT_JQUERYUI_TOUCH_PUNCH_URL . '"></script>' .
@@ -88,7 +89,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 		switch ($mod_action) {
 		case 'treeview':
 			$controller = new ChartController;
-			$tv = new TreeView('tv');
+			$tv         = new TreeView('tv');
 			ob_start();
 
 			$person = $controller->getSignificantIndividual();
@@ -113,9 +114,9 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 
 		case 'getDetails':
 			header('Content-Type: text/html; charset=UTF-8');
-			$pid = Filter::get('pid', WT_REGEX_XREF);
-			$i = Filter::get('instance');
-			$tv = new TreeView($i);
+			$pid        = Filter::get('pid', WT_REGEX_XREF);
+			$i          = Filter::get('instance');
+			$tv         = new TreeView($i);
 			$individual = Individual::getInstance($pid, $WT_TREE);
 			if ($individual) {
 				echo $tv->getDetails($individual);
@@ -124,8 +125,8 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 
 		case 'getPersons':
 			header('Content-Type: text/html; charset=UTF-8');
-			$q = Filter::get('q');
-			$i = Filter::get('instance');
+			$q  = Filter::get('q');
+			$i  = Filter::get('instance');
 			$tv = new TreeView($i);
 			echo $tv->getPersons($q);
 			break;

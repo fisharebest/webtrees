@@ -39,7 +39,7 @@ if (
 	$obj instanceof Media
 ) {
 	header('Location: ' . WT_BASE_URL . $obj->getRawUrl());
-	
+
 	return;
 } elseif (!$obj || !$obj->canShow()) {
 	$controller->pageHeader();

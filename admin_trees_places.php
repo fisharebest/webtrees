@@ -45,7 +45,7 @@ if ($search && $replace) {
 		foreach ($record->getFacts() as $fact) {
 			$old_place = $fact->getAttribute('PLAC');
 			if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
-				$new_place = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
+				$new_place           = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
 				$changes[$old_place] = $new_place;
 				if ($confirm == 'update') {
 					$gedcom = preg_replace('/(\n2 PLAC (?:.*, )*)' . preg_quote($search, '/') . '(\n|$)/i', '$1' . $replace . '$2', $fact->getGedcom());
@@ -66,7 +66,7 @@ if ($search && $replace) {
 		foreach ($record->getFacts() as $fact) {
 			$old_place = $fact->getAttribute('PLAC');
 			if (preg_match('/(^|, )' . preg_quote($search, '/') . '$/i', $old_place)) {
-				$new_place = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
+				$new_place           = preg_replace('/(^|, )' . preg_quote($search, '/') . '$/i', '$1' . $replace, $old_place);
 				$changes[$old_place] = $new_place;
 				if ($confirm == 'update') {
 					$gedcom = preg_replace('/(\n2 PLAC (?:.*, )*)' . preg_quote($search, '/') . '(\n|$)/i', '$1' . $replace . '$2', $fact->getGedcom());

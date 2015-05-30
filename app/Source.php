@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees;
  */
 class Source extends GedcomRecord {
 	const RECORD_TYPE = 'SOUR';
-	const URL_PREFIX = 'source.php?sid=';
+	const URL_PREFIX  = 'source.php?sid=';
 
 	/**
 	 * Get an instance of a source object.  For single records,

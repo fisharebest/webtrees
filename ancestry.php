@@ -119,6 +119,7 @@ $controller
 
 if ($controller->error_message) {
 	echo '<p class="ui-state-error">', $controller->error_message, '</p>';
+
 	return;
 }
 switch ($controller->chart_style) {

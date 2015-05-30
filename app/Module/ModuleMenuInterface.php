@@ -23,7 +23,7 @@ interface ModuleMenuInterface {
 	/**
 	 * The user can re-order menus.  Until they do, they are shown in this order.
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function defaultMenuOrder();
 

@@ -19,9 +19,9 @@ namespace Fisharebest\Webtrees;
 /**
  * print a table cell with sosa number
  *
- * @param integer $sosa
- * @param string  $pid optional pid
- * @param string  $arrowDirection   direction of link arrow
+ * @param int    $sosa
+ * @param string $pid optional pid
+ * @param string $arrowDirection   direction of link arrow
  */
 function print_sosa_number($sosa, $pid = "", $arrowDirection = "up") {
 	if (substr($sosa, -1, 1) == ".") {
@@ -56,11 +56,11 @@ function print_sosa_number($sosa, $pid = "", $arrowDirection = "up") {
  * print the parents table for a family
  *
  * @param Family $family family gedcom ID
- * @param integer   $sosa   child sosa number
- * @param string    $label  indi label (descendancy booklet)
- * @param string    $parid  parent ID (descendancy booklet)
- * @param string    $gparid gd-parent ID (descendancy booklet)
- * @param integer   $show_full large or small box
+ * @param int    $sosa   child sosa number
+ * @param string $label  indi label (descendancy booklet)
+ * @param string $parid  parent ID (descendancy booklet)
+ * @param string $gparid gd-parent ID (descendancy booklet)
+ * @param int    $show_full large or small box
  */
 function print_family_parents(Family $family, $sosa = 0, $label = '', $parid = '', $gparid = '', $show_full = 1) {
 
@@ -264,12 +264,12 @@ function print_family_parents(Family $family, $sosa = 0, $label = '', $parid = '
 /**
  * print the children table for a family
  *
- * @param Family $family  family
- * @param string    $childid child ID
- * @param integer   $sosa    child sosa number
- * @param string    $label   indi label (descendancy booklet)
- * @param integer   $show_cousins display cousins on chart
- * @param integer   $show_full large or small box
+ * @param Family $family       family
+ * @param string $childid      child ID
+ * @param int    $sosa         child sosa number
+ * @param string $label        indi label (descendancy booklet)
+ * @param int    $show_cousins display cousins on chart
+ * @param int    $show_full    large or small box
  */
 function print_family_children(Family $family, $childid = '', $sosa = 0, $label = '', $show_cousins = 0, $show_full = 1) {
 
@@ -282,7 +282,7 @@ function print_family_children(Family $family, $childid = '', $sosa = 0, $label 
 	$pbheight = $bheight + 14;
 
 	$children = $family->getChildren();
-	$numchil = count($children);
+	$numchil  = count($children);
 
 	echo '<table border="0" cellpadding="0" cellspacing="2"><tr>';
 	if ($sosa > 0) {
@@ -335,7 +335,6 @@ function print_family_children(Family $family, $childid = '', $sosa = 0, $label 
 				// loop for all families where current child is a spouse
 				$famids = $child->getSpouseFamilies();
 
-
 				$maxfam = count($famids) - 1;
 				for ($f = 0; $f <= $maxfam; $f++) {
 					$famid_child = $famids[$f]->getXref();
@@ -351,9 +350,9 @@ function print_family_children(Family $family, $childid = '', $sosa = 0, $label 
 
 						//find out how many cousins there are to establish vertical line on second families
 						$fchildren = $famids[$f]->getChildren();
-						$kids = count($fchildren);
-						$Pheader = ($bheight - 1) * $kids;
-						$PBadj = 6; // default
+						$kids      = count($fchildren);
+						$Pheader   = ($bheight - 1) * $kids;
+						$PBadj     = 6; // default
 						if ($show_cousins > 0) {
 							if ($kids) {
 								$PBadj = max(0, $Pheader / 2 + $kids * 4.5);
@@ -413,14 +412,14 @@ function print_family_children(Family $family, $childid = '', $sosa = 0, $label 
  * print a family with Sosa-Stradonitz numbering system
  * ($rootid=1, father=2, mother=3 ...)
  *
- * @param string  $famid   family gedcom ID
- * @param string  $childid tree root ID
- * @param integer $sosa    starting sosa number
- * @param string  $label   indi label (descendancy booklet)
- * @param string  $parid   parent ID (descendancy booklet)
- * @param string  $gparid  gd-parent ID (descendancy booklet)
- * @param integer $show_cousins display cousins on chart
- * @param integer $show_full large or small box
+ * @param string $famid        family gedcom ID
+ * @param string $childid      tree root ID
+ * @param int    $sosa         starting sosa number
+ * @param string $label        indi label (descendancy booklet)
+ * @param string $parid        parent ID (descendancy booklet)
+ * @param string $gparid       gd-parent ID (descendancy booklet)
+ * @param int    $show_cousins display cousins on chart
+ * @param int    $show_full    large or small box
  */
 function print_sosa_family($famid, $childid, $sosa, $label = '', $parid = '', $gparid = '', $show_cousins = 0, $show_full = 1) {
 	global $WT_TREE;
@@ -441,9 +440,9 @@ function print_sosa_family($famid, $childid, $sosa, $label = '', $parid = '', $g
 /**
  * print an arrow to a new url
  *
- * @param string  $url   target url
- * @param string  $label arrow label
- * @param integer $dir   arrow direction 0=left 1=right 2=up 3=down (default=2)
+ * @param string $url   target url
+ * @param string $label arrow label
+ * @param int    $dir   arrow direction 0=left 1=right 2=up 3=down (default=2)
  */
 function print_url_arrow($url, $label, $dir = 2) {
 	if ($url === '') {
@@ -459,10 +458,9 @@ function print_url_arrow($url, $label, $dir = 2) {
 		$adir = 0;
 	}
 
-
 	// arrow style     0         1         2         3
 	$array_style = array('icon-larrow', 'icon-rarrow', 'icon-uarrow', 'icon-darrow');
-	$astyle = $array_style[$adir];
+	$astyle      = $array_style[$adir];
 
 	// Labels include people’s names, which may contain markup
 	echo '<a href="' . $url . '" title="' . strip_tags($label) . '" class="' . $astyle . '"></a>';
@@ -486,14 +484,15 @@ function get_sosa_name($sosa) {
 		}
 		$sosa /= 2;
 	}
+
 	return get_relationship_name_from_path($path, null, null);
 }
 
 /**
  * print cousins list
  *
- * @param string  $famid family ID
- * @param integer $show_full large or small box
+ * @param string $famid family ID
+ * @param int    $show_full large or small box
  */
 function print_cousins($famid, $show_full = 1) {
 	global $WT_TREE;
@@ -504,7 +503,7 @@ function print_cousins($famid, $show_full = 1) {
 		$bheight = Theme::theme()->parameter('compact-chart-box-y');
 	}
 
-	$family = Family::getInstance($famid, $WT_TREE);
+	$family    = Family::getInstance($famid, $WT_TREE);
 	$fchildren = $family->getChildren();
 
 	$kids = count($fchildren);
@@ -516,7 +515,7 @@ function print_cousins($famid, $show_full = 1) {
 			echo '<td rowspan="', $kids, '" valign="middle" align="right"><img width="3px" height="', (($bheight + 9) * ($kids - 1)), 'px" src="', Theme::theme()->parameter('image-vline'), '" alt=""></td>';
 		}
 		$ctkids = count($fchildren);
-		$i = 1;
+		$i      = 1;
 		foreach ($fchildren as $fchil) {
 			if ($i == 1) {
 				echo '<td><img width="10px" height="3px" align="top"';

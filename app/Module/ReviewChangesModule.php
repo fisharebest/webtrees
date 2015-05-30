@@ -79,7 +79,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 			}
 		}
 		if (Auth::isEditor($WT_TREE) && $WT_TREE->hasPendingEdit()) {
-			$id = $this->getName() . $block_id;
+			$id    = $this->getName() . $block_id;
 			$class = $this->getName() . '_block';
 			if ($ctype === 'user' || Auth::isManager($WT_TREE)) {
 				$title = '<a class="icon-admin" title="' . I18N::translate('Configure') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
@@ -116,6 +116,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 				if ($block) {
 					$class .= ' small_inner_block';
 				}
+
 				return Theme::theme()->formatBlock($id, $title, $class, $content);
 			} else {
 				return $content;

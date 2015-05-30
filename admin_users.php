@@ -33,11 +33,11 @@ $controller->restrictAccess(Auth::isAdmin());
 
 // Valid values for form variables
 $ALL_EDIT_OPTIONS = array(
-	'none'  => /* I18N: Listbox entry; name of a role */ I18N::translate('Visitor'),
-	'access'=> /* I18N: Listbox entry; name of a role */ I18N::translate('Member'),
-	'edit'  => /* I18N: Listbox entry; name of a role */ I18N::translate('Editor'),
-	'accept'=> /* I18N: Listbox entry; name of a role */ I18N::translate('Moderator'),
-	'admin' => /* I18N: Listbox entry; name of a role */ I18N::translate('Manager')
+	'none'   => /* I18N: Listbox entry; name of a role */ I18N::translate('Visitor'),
+	'access' => /* I18N: Listbox entry; name of a role */ I18N::translate('Member'),
+	'edit'   => /* I18N: Listbox entry; name of a role */ I18N::translate('Editor'),
+	'accept' => /* I18N: Listbox entry; name of a role */ I18N::translate('Moderator'),
+	'admin'  => /* I18N: Listbox entry; name of a role */ I18N::translate('Manager'),
 );
 
 // Form actions
@@ -248,7 +248,7 @@ case 'load_json':
 		'draw'            => Filter::getInteger('draw'),
 		'recordsTotal'    => $recordsTotal,
 		'recordsFiltered' => $recordsFiltered,
-		'data'            => $data
+		'data'            => $data,
 	));
 
 	return;
@@ -258,12 +258,12 @@ case 'edit':
 
 	if ($user_id === 0) {
 		$controller->setPageTitle(I18N::translate('Add a new user'));
-		$tmp = new \stdClass;
+		$tmp            = new \stdClass;
 		$tmp->user_id   = '';
 		$tmp->user_name = '';
 		$tmp->real_name = '';
 		$tmp->email     = '';
-		$user = new User($tmp);
+		$user           = new User($tmp);
 	} else {
 		$controller->setPageTitle(I18N::translate('Edit user'));
 		$user = User::find($user_id);
@@ -279,7 +279,7 @@ case 'edit':
 				var idNum = fieldIDx.replace("RELATIONSHIP_PATH_LENGTH","");
 				var newIDx = "gedcomid"+idNum;
 				if (jQuery("#"+newIDx).val()=="") {
-					alert("'. I18N::translate('You must specify an individual record before you can restrict the user to their immediate family.') . '");
+					alert("' . I18N::translate('You must specify an individual record before you can restrict the user to their immediate family.') . '");
 					jQuery(this).val("");
 				}
 			});

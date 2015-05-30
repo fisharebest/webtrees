@@ -46,6 +46,7 @@ $repositories = Database::prepare(
 $repositories = array_map(
 	function ($x) use ($WT_TREE) {
 		$tmp = explode(',', $x->xrefs);
+
 		return array_map(function ($y) use ($WT_TREE) {
 			return Repository::getInstance($y, $WT_TREE);
 		}, $tmp);
@@ -66,6 +67,7 @@ $sources = Database::prepare(
 $sources = array_map(
 	function ($x) use ($WT_TREE) {
 		$tmp = explode(',', $x->xrefs);
+
 		return array_map(function ($y) use ($WT_TREE) {
 			return Source::getInstance($y, $WT_TREE);
 		}, $tmp);
@@ -86,6 +88,7 @@ $individuals = Database::prepare(
 $individuals = array_map(
 	function ($x) use ($WT_TREE) {
 		$tmp = explode(',', $x->xrefs);
+
 		return array_map(function ($y) use ($WT_TREE) {
 			return Individual::getInstance($y, $WT_TREE);
 		}, $tmp);
@@ -105,6 +108,7 @@ $families = Database::prepare(
 $families = array_map(
 	function ($x) use ($WT_TREE) {
 		$tmp = explode(',', $x->xrefs);
+
 		return array_map(function ($y) use ($WT_TREE) {
 			return Family::getInstance($y, $WT_TREE);
 		}, $tmp);
@@ -124,6 +128,7 @@ $media = Database::prepare(
 $media = array_map(
 	function ($x) use ($WT_TREE) {
 		$tmp = explode(',', $x->xrefs);
+
 		return array_map(function ($y) use ($WT_TREE) {
 			return Media::getInstance($y, $WT_TREE);
 		}, $tmp);
@@ -131,10 +136,10 @@ $media = array_map(
 );
 
 $all_duplicates = array(
-	I18N::translate('Repositories') => $repositories,
-	I18N::translate('Sources') => $sources,
-	I18N::translate('Individuals') => $individuals,
-	I18N::translate('Families') => $families,
+	I18N::translate('Repositories')  => $repositories,
+	I18N::translate('Sources')       => $sources,
+	I18N::translate('Individuals')   => $individuals,
+	I18N::translate('Families')      => $families,
 	I18N::translate('Media objects') => $media,
 );
 

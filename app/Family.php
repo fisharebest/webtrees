@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees;
  */
 class Family extends GedcomRecord {
 	const RECORD_TYPE = 'FAM';
-	const URL_PREFIX = 'family.php?famid=';
+	const URL_PREFIX  = 'family.php?famid=';
 
 	/** @var Individual|null The husband (or first spouse for same-sex couples) */
 	private $husb;
@@ -164,7 +164,7 @@ class Family extends GedcomRecord {
 	/**
 	 * Get the (zero, one or two) spouses from this family.
 	 *
-	 * @param integer|null $access_level
+	 * @param int|null $access_level
 	 *
 	 * @return Individual[]
 	 */
@@ -187,7 +187,7 @@ class Family extends GedcomRecord {
 	/**
 	 * Get a list of this family’s children.
 	 *
-	 * @param integer|null $access_level
+	 * @param int|null $access_level
 	 *
 	 * @return Individual[]
 	 */
@@ -215,7 +215,7 @@ class Family extends GedcomRecord {
 	 * @param Family $x
 	 * @param Family $y
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public static function compareMarrDate(Family $x, Family $y) {
 		return Date::compare($x->getMarriageDate(), $y->getMarriageDate());
@@ -224,7 +224,7 @@ class Family extends GedcomRecord {
 	/**
 	 * Number of children - for the individual list
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function getNumberOfChildren() {
 		$nchi = count($this->getChildren());
@@ -261,7 +261,7 @@ class Family extends GedcomRecord {
 	/**
 	 * Get the marriage year - displayed on lists of families
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function getMarriageYear() {
 		return $this->getMarriageDate()->minimumDate()->y;

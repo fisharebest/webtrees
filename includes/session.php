@@ -25,6 +25,7 @@ use PDOException;
 // WT_SCRIPT_NAME is defined in each script that the user is permitted to load.
 if (!defined('WT_SCRIPT_NAME')) {
 	http_response_code(403);
+
 	return;
 }
 
@@ -406,7 +407,7 @@ session_set_save_handler(
 
 Session::start(array(
 	'gc_maxlifetime' => Site::getPreference('SESSION_TIME'),
-	'cookie_path' => parse_url(WT_BASE_URL, PHP_URL_PATH),
+	'cookie_path'    => parse_url(WT_BASE_URL, PHP_URL_PATH),
 ));
 
 if (!Auth::isSearchEngine() && !Session::get('initiated')) {
