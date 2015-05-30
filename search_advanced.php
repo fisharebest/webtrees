@@ -284,8 +284,8 @@ echo '</script>';
 	<?php } ?>
 	</table>
 		<div class="center" style="margin-top:10px;">
-			<a href="#" onclick="addFields();"><?php echo I18N::translate('Add more fields'); ?></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="#" onclick="addFields();"><?php echo I18N::translate('Add more fields'); ?></a>
+			<p><input type="submit" value="<?php echo I18N::translate('Search'); ?>"></p>
 		</div>
-	<input type="submit" value="<?php echo I18N::translate('Search'); ?>">
 </form>
 </div>
