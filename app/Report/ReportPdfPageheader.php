@@ -23,7 +23,7 @@ class ReportPdfPageheader extends ReportBasePageheader {
 	/**
 	 * PageHeader element renderer
 	 *
-	 * @param ReportPdf $renderer
+	 * @param ReportTcpdf $renderer
 	 */
 	public function render($renderer) {
 		$renderer->clearPageHeader();

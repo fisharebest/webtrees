@@ -23,7 +23,7 @@ class ReportPdfFootnote extends ReportBaseFootnote {
 	/**
 	 * PDF Footnotes number renderer
 	 *
-	 * @param ReportPdf $renderer
+	 * @param ReportTcpdf $renderer
 	 */
 	public function render($renderer) {
 		$renderer->setCurrentStyle("footnotenum");
@@ -34,7 +34,7 @@ class ReportPdfFootnote extends ReportBaseFootnote {
 	 * Write the Footnote text
 	 * Uses style name "footnote" by default
 	 *
-	 * @param ReportPdf $pdf
+	 * @param ReportTcpdf $pdf
 	 */
 	public function renderFootnote($pdf) {
 		if ($pdf->getCurrentStyle() != $this->styleName) {
@@ -58,7 +58,7 @@ class ReportPdfFootnote extends ReportBaseFootnote {
 	/**
 	 * Returns the height in points of the Footnote element
 	 *
-	 * @param ReportPdf $renderer
+	 * @param ReportTcpdf $renderer
 	 *
 	 * @return float $h
 	 */
@@ -70,7 +70,7 @@ class ReportPdfFootnote extends ReportBaseFootnote {
 	 * Splits the text into lines to fit into a giving cell
 	 * and returns the last lines width
 	 *
-	 * @param ReportPdf $pdf
+	 * @param ReportTcpdf $pdf
 	 *
 	 * @return array
 	 */

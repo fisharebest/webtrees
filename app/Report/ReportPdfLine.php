@@ -23,7 +23,7 @@ class ReportPdfLine extends ReportBaseLine {
 	/**
 	 * PDF line renderer
 	 *
-	 * @param ReportPdf $renderer
+	 * @param ReportTcpdf $renderer
 	 */
 	public function render($renderer) {
 		if ($this->x1 == ".") {

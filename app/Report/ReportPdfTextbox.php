@@ -23,7 +23,7 @@ class ReportPdfTextbox extends ReportBaseTextbox {
 	/**
 	 * PDF Text Box renderer
 	 *
-	 * @param ReportPdf $renderer
+	 * @param ReportTcpdf $renderer
 	 *
 	 * @return bool|int
 	 */

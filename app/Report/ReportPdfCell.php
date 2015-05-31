@@ -23,7 +23,7 @@ class ReportPdfCell extends ReportBaseCell {
 	/**
 	 * PDF Cell renderer
 	 *
-	 * @param ReportPdf $renderer
+	 * @param ReportTcpdf $renderer
 	 */
 	public function render($renderer) {
 

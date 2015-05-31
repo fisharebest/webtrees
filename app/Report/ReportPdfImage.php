@@ -23,7 +23,7 @@ class ReportPdfImage extends ReportBaseImage {
 	/**
 	 * PDF image renderer
 	 *
-	 * @param ReportPdf $renderer
+	 * @param ReportTcpdf $renderer
 	 */
 	public function render($renderer) {
 		global $lastpicbottom, $lastpicpage, $lastpicleft, $lastpicright;
@@ -97,7 +97,7 @@ class ReportPdfImage extends ReportBaseImage {
 	/**
 	 * Get the image height
 	 *
-	 * @param ReportPdf $pdf
+	 * @param ReportTcpdf $pdf
 	 *
 	 * @return float
 	 */
