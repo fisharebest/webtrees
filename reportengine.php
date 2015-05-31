@@ -19,6 +19,7 @@ use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Report\ReportBaseElement;
 use Fisharebest\Webtrees\Report\ReportHtml;
 use Fisharebest\Webtrees\Report\ReportPdf;
+use Fisharebest\Webtrees\Report\ReportParserSetup;
 
 /**
  * Defined in session.php
@@ -133,29 +134,8 @@ case 'choose':
 	break;
 
 case 'setup':
-	require_once WT_ROOT . 'includes/reportheader.php';
-	$report_array = array();
-	// Start the sax parser
-	$xml_parser = xml_parser_create();
-	// Make sure everything is case sensitive
-	xml_parser_set_option($xml_parser, XML_OPTION_CASE_FOLDING, false);
-	// Set the main element handler functions
-	xml_set_element_handler($xml_parser, '\Fisharebest\Webtrees\\startElement', '\Fisharebest\Webtrees\\endElement');
-	// Set the character data handler
-	xml_set_character_data_handler($xml_parser, '\Fisharebest\Webtrees\\characterData');
-
-	// Open the file
-	$fp = fopen($report, 'r');
-	while (($data = fread($fp, 4096))) {
-		if (!xml_parse($xml_parser, $data, feof($fp))) {
-			throw new \DomainException(sprintf(
-				'XML error: %s at line %d',
-				xml_error_string(xml_get_error_code($xml_parser)),
-				xml_get_current_line_number($xml_parser)
-			));
-		}
-	}
-	xml_parser_free($xml_parser);
+	$report_setup = new ReportParserSetup($report);
+	$report_array = $report_setup->reportProperties();
 
 	$controller
 		->setPageTitle($report_array['title'])
@@ -312,67 +292,142 @@ case 'run':
 	 *
 	 * Converts XML element names into functions
 	 *
-	 * @global array $elementHandler
+	 * @global string[][] $elementHandler
 	 */
-	$elementHandler                              = array();
-	$elementHandler['AgeAtDeath']['start']       = '\Fisharebest\Webtrees\Report\\ageAtDeathStartHandler';
-	$elementHandler['br']['start']               = '\Fisharebest\Webtrees\Report\\brStartHandler';
-	$elementHandler['Body']['start']             = '\Fisharebest\Webtrees\Report\\bodyStartHandler';
-	$elementHandler['Cell']['end']               = '\Fisharebest\Webtrees\Report\\cellEndHandler';
-	$elementHandler['Cell']['start']             = '\Fisharebest\Webtrees\Report\\cellStartHandler';
-	$elementHandler['Description']['end']        = '\Fisharebest\Webtrees\Report\\descriptionEndHandler';
-	$elementHandler['Description']['start']      = '\Fisharebest\Webtrees\Report\\descriptionStartHandler';
-	$elementHandler['Doc']['end']                = '\Fisharebest\Webtrees\Report\\docEndHandler';
-	$elementHandler['Doc']['start']              = '\Fisharebest\Webtrees\Report\\docStartHandler';
-	$elementHandler['Report']['end']             = '';
-	$elementHandler['Report']['start']           = '';
-	$elementHandler['Facts']['end']              = '\Fisharebest\Webtrees\Report\\factsEndHandler';
-	$elementHandler['Facts']['start']            = '\Fisharebest\Webtrees\Report\\factsStartHandler';
-	$elementHandler['Footer']['start']           = '\Fisharebest\Webtrees\Report\\footerStartHandler';
-	$elementHandler['Footnote']['end']           = '\Fisharebest\Webtrees\Report\\footnoteEndHandler';
-	$elementHandler['Footnote']['start']         = '\Fisharebest\Webtrees\Report\\footnoteStartHandler';
-	$elementHandler['FootnoteTexts']['start']    = '\Fisharebest\Webtrees\Report\\footnoteTextsStartHandler';
-	$elementHandler['Gedcom']['end']             = '\Fisharebest\Webtrees\Report\\gedcomEndHandler';
-	$elementHandler['Gedcom']['start']           = '\Fisharebest\Webtrees\Report\\gedcomStartHandler';
-	$elementHandler['GedcomValue']['start']      = '\Fisharebest\Webtrees\Report\\gedcomValueStartHandler';
-	$elementHandler['Generation']['start']       = '\Fisharebest\Webtrees\Report\\generationStartHandler';
-	$elementHandler['GetPersonName']['start']    = '\Fisharebest\Webtrees\Report\\getPersonNameStartHandler';
-	$elementHandler['Header']['start']           = '\Fisharebest\Webtrees\Report\\headerStartHandler';
-	$elementHandler['HighlightedImage']['start'] = '\Fisharebest\Webtrees\Report\\highlightedImageStartHandler';
-	$elementHandler['if']['end']                 = '\Fisharebest\Webtrees\Report\\ifEndHandler';
-	$elementHandler['if']['start']               = '\Fisharebest\Webtrees\Report\\ifStartHandler';
-	$elementHandler['Image']['start']            = '\Fisharebest\Webtrees\Report\\imageStartHandler';
-	$elementHandler['Input']['end']              = '';
-	$elementHandler['Input']['start']            = '';
-	$elementHandler['Line']['start']             = '\Fisharebest\Webtrees\Report\\lineStartHandler';
-	$elementHandler['List']['end']               = '\Fisharebest\Webtrees\Report\\listEndHandler';
-	$elementHandler['List']['start']             = '\Fisharebest\Webtrees\Report\\listStartHandler';
-	$elementHandler['ListTotal']['start']        = '\Fisharebest\Webtrees\Report\\listTotalStartHandler';
-	$elementHandler['NewPage']['start']          = '\Fisharebest\Webtrees\Report\\newPageStartHandler';
-	$elementHandler['Now']['start']              = '\Fisharebest\Webtrees\Report\\nowStartHandler';
-	$elementHandler['PageHeader']['end']         = '\Fisharebest\Webtrees\Report\\pageHeaderEndHandler';
-	$elementHandler['PageHeader']['start']       = '\Fisharebest\Webtrees\Report\\pageHeaderStartHandler';
-	$elementHandler['PageNum']['start']          = '\Fisharebest\Webtrees\Report\\pageNumStartHandler';
-	$elementHandler['Relatives']['end']          = '\Fisharebest\Webtrees\Report\\relativesEndHandler';
-	$elementHandler['Relatives']['start']        = '\Fisharebest\Webtrees\Report\\relativesStartHandler';
-	$elementHandler['RepeatTag']['end']          = '\Fisharebest\Webtrees\Report\\repeatTagEndHandler';
-	$elementHandler['RepeatTag']['start']        = '\Fisharebest\Webtrees\Report\\repeatTagStartHandler';
-	$elementHandler['SetVar']['start']           = '\Fisharebest\Webtrees\Report\\setVarStartHandler';
-	$elementHandler['Style']['start']            = '\Fisharebest\Webtrees\Report\\styleStartHandler';
-	$elementHandler['Text']['end']               = '\Fisharebest\Webtrees\Report\\textEndHandler';
-	$elementHandler['Text']['start']             = '\Fisharebest\Webtrees\Report\\textStartHandler';
-	$elementHandler['TextBox']['end']            = '\Fisharebest\Webtrees\Report\\textBoxEndHandler';
-	$elementHandler['TextBox']['start']          = '\Fisharebest\Webtrees\Report\\textBoxStartHandler';
-	$elementHandler['Title']['end']              = '\Fisharebest\Webtrees\Report\\titleEndHandler';
-	$elementHandler['Title']['start']            = '\Fisharebest\Webtrees\Report\\titleStartHandler';
-	$elementHandler['TotalPages']['start']       = '\Fisharebest\Webtrees\Report\\totalPagesStartHandler';
-	$elementHandler['var']['start']              = '\Fisharebest\Webtrees\Report\\varStartHandler';
-	$elementHandler['sp']['start']               = '\Fisharebest\Webtrees\Report\\spStartHandler';
+	$elementHandler = array(
+		'AgeAtDeath' => array(
+			'start' => '\Fisharebest\Webtrees\Report\\ageAtDeathStartHandler',
+		),
+		'br' => array(
+			'start' => '\Fisharebest\Webtrees\Report\\brStartHandler',
+		),
+		'Body' => array(
+			'start' => '\Fisharebest\Webtrees\Report\\bodyStartHandler',
+		),
+		'Cell' => array(
+			'end'   => '\Fisharebest\Webtrees\Report\\cellEndHandler',
+			'start' => '\Fisharebest\Webtrees\Report\\cellStartHandler',
+		),
+		'Description' => array(
+			'end'   => '\Fisharebest\Webtrees\Report\\descriptionEndHandler',
+			'start' => '\Fisharebest\Webtrees\Report\\descriptionStartHandler',
+		),
+		'Doc' => array(
+			'end'   => '\Fisharebest\Webtrees\Report\\docEndHandler',
+			'start' => '\Fisharebest\Webtrees\Report\\docStartHandler',
+		),
+		'Report' => array(
+			'end'   => '',
+			'start' => '',
+		),
+		'Facts' => array(
+			'end'   => '\Fisharebest\Webtrees\Report\\factsEndHandler',
+			'start' => '\Fisharebest\Webtrees\Report\\factsStartHandler',
+		),
+		'Footer' => array(
+			'start' => '\Fisharebest\Webtrees\Report\\footerStartHandler',
+		),
+		'Footnote' => array(
+			'end'   => '\Fisharebest\Webtrees\Report\\footnoteEndHandler',
+			'start' => '\Fisharebest\Webtrees\Report\\footnoteStartHandler',
+		),
+		'FootnoteTexts' => array(
+			'start' => '\Fisharebest\Webtrees\Report\\footnoteTextsStartHandler',
+		),
+		'Gedcom' => array(
+			'end'   => '\Fisharebest\Webtrees\Report\\gedcomEndHandler',
+			'start' => '\Fisharebest\Webtrees\Report\\gedcomStartHandler',
+		),
+		'GedcomValue' => array(
+			'start' => '\Fisharebest\Webtrees\Report\\gedcomValueStartHandler',
+		),
+		'Generation' => array(
+			'start' => '\Fisharebest\Webtrees\Report\\generationStartHandler',
+		),
+		'GetPersonName' => array(
+			'start' => '\Fisharebest\Webtrees\Report\\getPersonNameStartHandler',
+		),
+		'Header' => array(
+			'start' => '\Fisharebest\Webtrees\Report\\headerStartHandler',
+		),
+		'HighlightedImage' => array(
+			'start' => '\Fisharebest\Webtrees\Report\\highlightedImageStartHandler',
+		),
+		'if' => array(
+			'end'   => '\Fisharebest\Webtrees\Report\\ifEndHandler',
+			'start' => '\Fisharebest\Webtrees\Report\\ifStartHandler',
+		),
+		'Image' => array(
+			'start' => '\Fisharebest\Webtrees\Report\\imageStartHandler',
+		),
+		'Input' => array(
+			'end'  => '',
+			'start'=> '',
+		),
+		'Line' => array(
+			'start' => '\Fisharebest\Webtrees\Report\\lineStartHandler',
+		),
+		'List' => array(
+			'end'   => '\Fisharebest\Webtrees\Report\\listEndHandler',
+			'start'=> '\Fisharebest\Webtrees\Report\\listStartHandler',
+		),
+		'ListTotal' => array(
+			'start' => '\Fisharebest\Webtrees\Report\\listTotalStartHandler',
+		),
+		'NewPage' => array(
+			'start' => '\Fisharebest\Webtrees\Report\\newPageStartHandler',
+		),
+		'Now' => array(
+			'start' => '\Fisharebest\Webtrees\Report\\nowStartHandler',
+		),
+		'PageHeader' => array(
+			'end'   => '\Fisharebest\Webtrees\Report\\pageHeaderEndHandler',
+			'start' => '\Fisharebest\Webtrees\Report\\pageHeaderStartHandler',
+		),
+		'PageNum' => array(
+			'start' => '\Fisharebest\Webtrees\Report\\pageNumStartHandler',
+		),
+		'Relatives' => array(
+			'end'   => '\Fisharebest\Webtrees\Report\\relativesEndHandler',
+			'start' => '\Fisharebest\Webtrees\Report\\relativesStartHandler',
+		),
+		'RepeatTag' => array(
+			'end'   => '\Fisharebest\Webtrees\Report\\repeatTagEndHandler',
+			'start' => '\Fisharebest\Webtrees\Report\\repeatTagStartHandler',
+		),
+		'SetVar' => array(
+			'start' => '\Fisharebest\Webtrees\Report\\setVarStartHandler',
+		),
+		'Style' => array(
+			'start' => '\Fisharebest\Webtrees\Report\\styleStartHandler',
+		),
+		'Text' => array(
+			'end'   => '\Fisharebest\Webtrees\Report\\textEndHandler',
+			'start' => '\Fisharebest\Webtrees\Report\\textStartHandler',
+		),
+		'TextBox' => array(
+			'end'   => '\Fisharebest\Webtrees\Report\\textBoxEndHandler',
+			'start' => '\Fisharebest\Webtrees\Report\\textBoxStartHandler',
+		),
+		'Title' => array(
+			'end'   => '\Fisharebest\Webtrees\Report\\titleEndHandler',
+			'start' => '\Fisharebest\Webtrees\Report\\titleStartHandler',
+		),
+		'TotalPages' => array(
+			'start' => '\Fisharebest\Webtrees\Report\\totalPagesStartHandler',
+		),
+		'var' => array(
+			'start' => '\Fisharebest\Webtrees\Report\\varStartHandler',
+		),
+		'sp' => array(
+			'start' => '\Fisharebest\Webtrees\Report\\spStartHandler',
+		),
+	);
 
 	/**
 	 * A new object of the currently used element class
 	 *
-	 * @global object $currentElement
+	 * @global ReportBaseElement $currentElement
 	 */
 	$currentElement = new ReportBaseElement;
 
@@ -494,12 +549,3 @@ case 'run':
 	xml_parser_free($xml_parser);
 }
 
-// We cannot add translation comments inside the XML files.
-// These messages are all used in the reports.  We repeat them
-// here, so we can add comments
-/* I18N: An option in a list-box */
-I18N::translate('sort by date of birth');
-/* I18N: An option in a list-box */
-I18N::translate('sort by date of marriage');
-/* I18N: An option in a list-box */
-I18N::translate('sort by date of death');
