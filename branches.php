@@ -34,7 +34,7 @@ $controller
 
 ?>
 <div id="branches-page">
-	<h2><?php echo $controller->getPageTitle(); ?></h2>
+	<h2 class="center"><?php echo $controller->getPageTitle(); ?></h2>
 	<form name="surnlist" id="surnlist" action="branches.php">
 		<table class="facts_table width50">
 			<tbody>
