@@ -1,5 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -15,8 +14,6 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
-use PHPUnit_Framework_TestCase;
 
 /**
  * Unit tests for the global functions in the file includes/functions/functions_mediadb.php
@@ -49,6 +46,6 @@ class FunctionsMediaDbTest extends PHPUnit_Framework_TestCase {
 	 * Test that function hasMemoryForImage() exists in the correct namespace.
 	 */
 	public function testFunctionHasMemoryForImageExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\hasMemoryForImage'), true);
+		$this->assertEquals(function_exists('hasMemoryForImage'), true);
 	}
 }

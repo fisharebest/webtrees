@@ -23,6 +23,8 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\PageController;
+
 define('WT_SCRIPT_NAME', 'sourcelist.php');
 require './includes/session.php';
 

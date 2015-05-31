@@ -23,6 +23,9 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\SimpleController;
+use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
+
 define('WT_SCRIPT_NAME', 'edit_interface.php');
 require './includes/session.php';
 
@@ -2200,7 +2203,7 @@ case 'reorder_fams':
 
 	$fams = $person->getSpouseFamilies();
 	if ($option === 'bymarriage') {
-		usort($fams, __NAMESPACE__ . '\Family::compareMarrDate');
+		usort($fams, '\Fisharebest\Webtrees\Family::compareMarrDate');
 	}
 
 	?>

@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Controller;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,19 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\User;
 
 /**
  * Class IndividualController - Controller for the individual page

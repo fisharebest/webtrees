@@ -23,6 +23,8 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Date\GregorianDate;
+
 define('WT_SCRIPT_NAME', 'statisticsplot.php');
 require './includes/session.php';
 

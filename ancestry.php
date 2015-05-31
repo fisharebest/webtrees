@@ -23,6 +23,8 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\AncestryController;
+
 define('WT_SCRIPT_NAME', 'ancestry.php');
 require './includes/session.php';
 

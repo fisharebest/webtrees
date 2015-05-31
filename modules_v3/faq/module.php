@@ -16,4 +16,6 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Module\FrequentlyAskedQuestionsModule;
+
 return new FrequentlyAskedQuestionsModule(__DIR__);

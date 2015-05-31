@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Controller;
 
 /**
  * webtrees: online genealogy
@@ -17,6 +17,14 @@ namespace Fisharebest\Webtrees;
  */
 
 use Fisharebest\ExtCalendar\GregorianCalendar;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Place;
+use Fisharebest\Webtrees\Session;
 
 /**
  * Class LifespanController - Controller for the timeline chart

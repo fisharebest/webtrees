@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Query;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,11 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Class QueryName - generate lists for indilist.php and famlist.php
@@ -523,7 +528,7 @@ class QueryName {
 				$list[$family->getXref()] = $family;
 			}
 		}
-		usort($list, __NAMESPACE__ . '\GedcomRecord::compare');
+		usort($list, '\Fisharebest\Webtrees\GedcomRecord::compare');
 
 		return $list;
 	}

@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Controller;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,19 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Log;
+use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Class SearchController - Controller for the search page
@@ -481,8 +494,8 @@ class SearchController extends PageController {
 			header('Location: ' . WT_BASE_URL . $indi->getRawUrl());
 			exit;
 		}
-		usort($this->myindilist, __NAMESPACE__ . '\GedcomRecord::compare');
-		usort($this->myfamlist, __NAMESPACE__ . '\GedcomRecord::compare');
+		usort($this->myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
+		usort($this->myfamlist, '\Fisharebest\Webtrees\GedcomRecord::compare');
 	}
 
 	/**

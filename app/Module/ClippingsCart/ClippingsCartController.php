@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module\ClippingsCart;
 
 /**
  * webtrees: online genealogy
@@ -16,12 +16,21 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Session;
+use Fisharebest\Webtrees\User;
 use PclZip;
 
 /**
  * The clippings cart.
  */
-class ClippingsCart {
+class ClippingsCartController {
 	/** @var string  */
 	private $download_data;
 
@@ -146,7 +155,7 @@ class ClippingsCart {
 						$this->addFamilyDescendancy($family, $this->level3);
 					}
 				}
-				uksort($cart[$WT_TREE->getTreeId()], __NAMESPACE__ . '\ClippingsCart::compareClippings');
+				uksort($cart[$WT_TREE->getTreeId()], '\Fisharebest\Webtrees\Module\ClippingsCart::compareClippings');
 			}
 		} elseif ($this->action === 'remove') {
 			unset($cart[$WT_TREE->getTreeId()][$this->id]);

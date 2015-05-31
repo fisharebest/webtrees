@@ -23,6 +23,8 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\MediaController;
+
 define('WT_SCRIPT_NAME', 'mediaviewer.php');
 require './includes/session.php';
 

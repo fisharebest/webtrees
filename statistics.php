@@ -23,6 +23,9 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\AjaxController;
+use Fisharebest\Webtrees\Controller\PageController;
+
 define('WT_SCRIPT_NAME', 'statistics.php');
 require './includes/session.php';
 

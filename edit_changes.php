@@ -23,6 +23,8 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\SimpleController;
+
 define('WT_SCRIPT_NAME', 'edit_changes.php');
 require './includes/session.php';
 

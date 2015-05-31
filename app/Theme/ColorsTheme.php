@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Theme;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,11 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Session;
+use Fisharebest\Webtrees\Site;
 
 /**
  * Class ColorsTheme - The colors theme.
@@ -74,7 +79,7 @@ class ColorsTheme extends CloudsTheme {
 			'shinytomato'      => /* I18N: The name of a colour-scheme */ I18N::translate('Shiny Tomato'),
 			'tealtop'          => /* I18N: The name of a colour-scheme */ I18N::translate('Teal Top'),
 		);
-		uasort($this->palettes, __NAMESPACE__ . '\I18N::strcasecmp');
+		uasort($this->palettes, '\Fisharebest\Webtrees\I18N;;strcasecmp');
 
 		// If we've selected a new palette, and we are logged in, set this value as a default.
 		if (isset($_GET['themecolor']) && array_key_exists($_GET['themecolor'], $this->palettes)) {

@@ -37,6 +37,14 @@ namespace Fisharebest\Webtrees;
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use Fisharebest\ExtCalendar\GregorianCalendar;
+use Fisharebest\Webtrees\Date\CalendarDate;
+use Fisharebest\Webtrees\Date\FrenchDate;
+use Fisharebest\Webtrees\Date\GregorianDate;
+use Fisharebest\Webtrees\Date\HijriDate;
+use Fisharebest\Webtrees\Date\JalaliDate;
+use Fisharebest\Webtrees\Date\JewishDate;
+use Fisharebest\Webtrees\Date\JulianDate;
+use Fisharebest\Webtrees\Date\RomanDate;
 
 /**
  * Class Date - a representation of GEDCOM dates and date ranges
@@ -107,7 +115,7 @@ class Date {
 	 * @param string $date
 	 *
 	 * @throws \DomainException
- *
+	 *
 	 * @return CalendarDate
 	 */
 	private function parseDate($date) {
@@ -444,7 +452,7 @@ class Date {
 	 * @param int  $format
 	 *
 	 * @throws \InvalidArgumentException
- *
+	 *
 	 * @return int|string
 	 */
 	public static function getAge(Date $d1, Date $d2 = null, $format = 0) {

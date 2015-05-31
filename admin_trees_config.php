@@ -23,6 +23,8 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\PageController;
+
 define('WT_SCRIPT_NAME', 'admin_trees_config.php');
 
 require './includes/session.php';
@@ -137,7 +139,7 @@ foreach ($tags as $tag) {
 	}
 }
 
-uasort($all_tags, __NAMESPACE__ . '\I18N::strcasecmp');
+uasort($all_tags, '\Fisharebest\Webtrees\I18N::strcasecmp');
 
 $resns = Database::prepare(
 	"SELECT default_resn_id, tag_type, xref, resn" .

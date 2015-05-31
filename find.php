@@ -23,6 +23,9 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\SimpleController;
+use Fisharebest\Webtrees\Query\QueryMedia;
+
 define('WT_SCRIPT_NAME', 'find.php');
 require './includes/session.php';
 
@@ -480,7 +483,7 @@ if ($action == "filter") {
 		$myindilist = search_indis_names($filter_array, array($WT_TREE));
 		if ($myindilist) {
 			echo '<ul>';
-			usort($myindilist, __NAMESPACE__ . '\GedcomRecord::compare');
+			usort($myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
 			foreach ($myindilist as $indi) {
 				echo $indi->formatList('li', true);
 			}
@@ -504,7 +507,7 @@ if ($action == "filter") {
 
 		if ($myfamlist) {
 			echo '<ul>';
-			usort($myfamlist, __NAMESPACE__ . '\GedcomRecord::compare');
+			usort($myfamlist, '\Fisharebest\Webtrees\GedcomRecord::compare');
 			foreach ($myfamlist as $family) {
 				echo $family->formatList('li', true);
 			}
@@ -608,7 +611,7 @@ if ($action == "filter") {
 			$repo_list = get_repo_list($WT_TREE);
 		}
 		if ($repo_list) {
-			usort($repo_list, __NAMESPACE__ . '\GedcomRecord::compare');
+			usort($repo_list, '\Fisharebest\Webtrees\GedcomRecord::compare');
 			echo '<ul>';
 			foreach ($repo_list as $repo) {
 				echo '<li><a href="', $repo->getHtmlUrl(), '" onclick="pasteid(\'', $repo->getXref(), '\');"><span class="list_item">', $repo->getFullName(), '</span></a></li>';
@@ -630,7 +633,7 @@ if ($action == "filter") {
 			$mynotelist = get_note_list($WT_TREE);
 		}
 		if ($mynotelist) {
-			usort($mynotelist, __NAMESPACE__ . '\GedcomRecord::compare');
+			usort($mynotelist, '\Fisharebest\Webtrees\GedcomRecord::compare');
 			echo '<ul>';
 			foreach ($mynotelist as $note) {
 				echo '<li><a href="', $note->getHtmlUrl(), '" onclick="pasteid(\'', $note->getXref(), '\');"><span class="list_item">', $note->getFullName(), '</span></a></li>';
@@ -652,7 +655,7 @@ if ($action == "filter") {
 			$mysourcelist = get_source_list($WT_TREE);
 		}
 		if ($mysourcelist) {
-			usort($mysourcelist, __NAMESPACE__ . '\GedcomRecord::compare');
+			usort($mysourcelist, '\Fisharebest\Webtrees\GedcomRecord::compare');
 			echo '<ul>';
 			foreach ($mysourcelist as $source) {
 				echo '<li><a href="', $source->getHtmlUrl(), '" onclick="pasteid(\'', $source->getXref(), '\', \'',

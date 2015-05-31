@@ -23,6 +23,8 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\PageController;
+
 define('WT_SCRIPT_NAME', 'admin_trees_renumber.php');
 require './includes/session.php';
 

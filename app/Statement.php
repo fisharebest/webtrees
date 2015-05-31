@@ -48,7 +48,7 @@ class Statement {
 	 * @param array $bind_variables
 	 *
 	 * @throws \Exception
- *
+	 *
 	 * @return Statement
 	 */
 	public function execute($bind_variables = array()) {

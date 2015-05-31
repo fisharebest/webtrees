@@ -16,6 +16,9 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
+use Fisharebest\Webtrees\Module\UserFavoritesModule;
+use Fisharebest\Webtrees\Query\QueryName;
 use PDO;
 use PDOException;
 use Rhumsaa\Uuid\Uuid;
@@ -4836,7 +4839,7 @@ class Stats {
 		if (count($surname_list) == 0) {
 			return '';
 		}
-		uasort($surname_list, __NAMESPACE__ . '\Stats::nameTotalReverseSort');
+		uasort($surname_list, '\Fisharebest\Webtrees\Stats::nameTotalReverseSort');
 		if ($maxtoshow > 0) {
 			$surname_list = array_slice($surname_list, 0, $maxtoshow);
 		}
@@ -4844,13 +4847,13 @@ class Stats {
 		switch ($sorting) {
 		default:
 		case 'alpha':
-			uksort($surname_list, __NAMESPACE__ . '\I18N::strcasecmp');
+			uksort($surname_list, '\Fisharebest\Webtrees\I18N::strcasecmp');
 			break;
 		case 'count':
-			uasort($surname_list, __NAMESPACE__ . '\Stats::nameTotalSort');
+			uasort($surname_list, '\Fisharebest\Webtrees\Stats::nameTotalSort');
 			break;
 		case 'rcount':
-			uasort($surname_list, __NAMESPACE__ . '\Stats::nameTotalReverseSort');
+			uasort($surname_list, '\Fisharebest\Webtrees\Stats::nameTotalReverseSort');
 			break;
 		}
 
@@ -4951,7 +4954,7 @@ class Stats {
 			return '';
 		}
 		$SURNAME_TRADITION = $this->tree->getPreference('SURNAME_TRADITION');
-		uasort($surnames, __NAMESPACE__ . '\Stats::nameTotalReverseSort');
+		uasort($surnames, '\Fisharebest\Webtrees\Stats::nameTotalReverseSort');
 		$surnames     = array_slice($surnames, 0, $maxtoshow);
 		$all_surnames = array();
 		foreach (array_keys($surnames) as $n => $surname) {

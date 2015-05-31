@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\GedcomCode;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,7 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\I18N;
 
 /**
  * Class GedcomCodeStat - Functions and logic for GEDCOM "STAT" codes
@@ -126,7 +127,7 @@ class GedcomCodeStat {
 		foreach (self::statusCodes($tag) as $status_code) {
 			$status_names[$status_code] = self::statusName($status_code);
 		}
-		uasort($status_names, __NAMESPACE__ . '\I18N::strcasecmp');
+		uasort($status_names, '\Fisharebest\Webtrees\I18N::strcasecmp');
 
 		return $status_names;
 	}

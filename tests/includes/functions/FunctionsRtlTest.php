@@ -1,5 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -16,8 +15,6 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use PHPUnit_Framework_TestCase;
-
 /**
  * Unit tests for the global functions in the file includes/functions/functions_rtl.php
  */
@@ -32,55 +29,55 @@ class FunctionsRtlTest extends PHPUnit_Framework_TestCase {
 	 * Test that function stripLRMRLM() exists in the correct namespace.
 	 */
 	public function testFunctionStripLRMRLMExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\stripLRMRLM'), true);
+		$this->assertEquals(function_exists('stripLRMRLM'), true);
 	}
 
 	/**
 	 * Test that function spanLTRRTL() exists in the correct namespace.
 	 */
 	public function testFunctionSpanLTRRTLExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\spanLTRRTL'), true);
+		$this->assertEquals(function_exists('spanLTRRTL'), true);
 	}
 
 	/**
 	 * Test that function starredName() exists in the correct namespace.
 	 */
 	public function testFunctionStarredNameExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\starredName'), true);
+		$this->assertEquals(function_exists('starredName'), true);
 	}
 
 	/**
 	 * Test that function getChar() exists in the correct namespace.
 	 */
 	public function testFunctionGetCharExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\getChar'), true);
+		$this->assertEquals(function_exists('getChar'), true);
 	}
 
 	/**
 	 * Test that function breakCurrentSpan() exists in the correct namespace.
 	 */
 	public function testFunctionBreakCurrentSpanExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\breakCurrentSpan'), true);
+		$this->assertEquals(function_exists('breakCurrentSpan'), true);
 	}
 
 	/**
 	 * Test that function beginCurrentSpan() exists in the correct namespace.
 	 */
 	public function testFunctionBeginCurrentSpanExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\beginCurrentSpan'), true);
+		$this->assertEquals(function_exists('beginCurrentSpan'), true);
 	}
 
 	/**
 	 * Test that function finishCurrentSpan() exists in the correct namespace.
 	 */
 	public function testFunctionFinishCurrentSpanExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\finishCurrentSpan'), true);
+		$this->assertEquals(function_exists('finishCurrentSpan'), true);
 	}
 
 	/**
 	 * Test that function utf8_wordwrap() exists in the correct namespace.
 	 */
 	public function testFunctionUtf8WordwrapExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\utf8_wordwrap'), true);
+		$this->assertEquals(function_exists('utf8_wordwrap'), true);
 	}
 }

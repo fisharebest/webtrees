@@ -1,5 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +14,14 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\File;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Site;
 
 /**
  * Check with the webtrees.net server for the latest version of webtrees.
@@ -221,8 +228,8 @@ function sort_facts(&$arr) {
 	}
 
 	//-- sort each type of array
-	usort($dated, __NAMESPACE__ . '\Fact::compareDate');
-	usort($nondated, __NAMESPACE__ . '\Fact::compareType');
+	usort($dated, '\Fisharebest\Webtrees\Fact::compareDate');
+	usort($nondated, '\Fisharebest\Webtrees\Fact::compareType');
 
 	//-- merge the arrays back together comparing by Facts
 	$dc = count($dated);

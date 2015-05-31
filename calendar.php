@@ -23,6 +23,14 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Date\FrenchDate;
+use Fisharebest\Webtrees\Date\GregorianDate;
+use Fisharebest\Webtrees\Date\HijriDate;
+use Fisharebest\Webtrees\Date\JalaliDate;
+use Fisharebest\Webtrees\Date\JewishDate;
+use Fisharebest\Webtrees\Date\JulianDate;
+
 define('WT_SCRIPT_NAME', 'calendar.php');
 require './includes/session.php';
 

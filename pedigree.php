@@ -23,6 +23,8 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\PedigreeController;
+
 define('WT_SCRIPT_NAME', 'pedigree.php');
 require './includes/session.php';
 

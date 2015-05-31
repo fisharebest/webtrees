@@ -1,5 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -16,12 +15,10 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use PHPUnit_Framework_TestCase;
-
 /**
- * Test harness for the class GedcomTag
+ * Test harness for the class BirthDeathMarriageReportModule
  */
-class GedcomTagTest extends PHPUnit_Framework_TestCase {
+class BirthDeathMarriageReportModuleTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */
@@ -32,6 +29,6 @@ class GedcomTagTest extends PHPUnit_Framework_TestCase {
 	 * Test that the class exists
 	 */
 	public function testClassExists() {
-		$this->assertTrue(class_exists(__NAMESPACE__ . '\GedcomTag'));
+		$this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\BirthDeathMarriageReportModule'));
 	}
 }

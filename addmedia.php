@@ -23,6 +23,9 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\SimpleController;
+use Fisharebest\Webtrees\Query\QueryMedia;
+
 define('WT_SCRIPT_NAME', 'addmedia.php');
 require './includes/session.php';
 

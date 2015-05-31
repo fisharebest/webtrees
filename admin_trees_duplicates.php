@@ -23,6 +23,8 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\PageController;
+
 define('WT_SCRIPT_NAME', 'admin_trees_duplicates.php');
 require './includes/session.php';
 

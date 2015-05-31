@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -16,6 +16,21 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Controller\ChartController;
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Controller\SimpleController;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Stats;
+use Fisharebest\Webtrees\Theme;
+use Fisharebest\Webtrees\Tree;
 use PDO;
 use PDOException;
 
@@ -1620,7 +1635,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$place_list = preg_grep('/' . $filter . '/', $place_list);
 
 			//sort the array, limit to unique values, and count them
-			usort($place_list, __NAMESPACE__ . '\I18N::strcasecmp');
+			usort($place_list, '\Fisharebest\Webtrees\I18N::strcasecmp');
 			$i = count($place_list);
 
 			//calculate maximum no. of levels to display

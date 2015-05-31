@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Report;
 
 /**
  * webtrees: online genealogy
@@ -23,7 +23,7 @@ class ReportPdfText extends ReportBaseText {
 	/**
 	 * PDF Text renderer
 	 *
-	 * @param PDF $renderer
+	 * @param ReportPdf $renderer
 	 */
 	public function render($renderer) {
 		// Set up the style
@@ -67,7 +67,7 @@ class ReportPdfText extends ReportBaseText {
 	 *
 	 * The height is already calculated in getWidth()
 	 *
-	 * @param PDF $pdf
+	 * @param ReportPdf $pdf
 	 *
 	 * @return float 0
 	 */
@@ -78,7 +78,7 @@ class ReportPdfText extends ReportBaseText {
 	/**
 	 * Splits the text into lines if necessary to fit into a giving cell
 	 *
-	 * @param PDF $pdf
+	 * @param ReportPdf $pdf
 	 *
 	 * @return array
 	 */

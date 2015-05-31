@@ -23,6 +23,8 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\DescendancyController;
+
 define('WT_SCRIPT_NAME', 'descendancy.php');
 require './includes/session.php';
 

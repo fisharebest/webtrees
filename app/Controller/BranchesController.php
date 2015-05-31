@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Controller;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,15 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Soundex;
 
 /**
  * Class BranchesController - Controller for the branches list
@@ -126,7 +135,7 @@ class BranchesController extends PageController {
 			$this->individuals[] = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
 		}
 		// Sort by birth date, oldest first
-		usort($this->individuals, __NAMESPACE__ . '\Individual::compareBirthDate');
+		usort($this->individuals, '\Fisharebest\Webtrees\Individual::compareBirthDate');
 	}
 
 	/**
@@ -228,7 +237,7 @@ class BranchesController extends PageController {
 		// spouses and children
 		$spouse_families = $individual->getSpouseFamilies();
 		if ($spouse_families) {
-			usort($spouse_families, __NAMESPACE__ . '\Family::compareMarrDate');
+			usort($spouse_families, '\Fisharebest\Webtrees\Family::compareMarrDate');
 			$fam_html = '';
 			foreach ($spouse_families as $family) {
 				$fam_html .= $indi_html; // Repeat the individual details for each spouse.

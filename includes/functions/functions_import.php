@@ -1,5 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -16,7 +15,19 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use PDOException;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Log;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Soundex;
+use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Tidy up a gedcom record on import, so that we can access it consistently/efficiently.

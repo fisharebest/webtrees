@@ -16,6 +16,9 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Controller\NoteController;
+use Fisharebest\Webtrees\Module\CensusAssistantModule;
+
 define('WT_SCRIPT_NAME', 'note.php');
 require './includes/session.php';
 

@@ -106,7 +106,7 @@ class Database {
 	 * We don't access $instance directly, only via query(), exec() and prepare()
 	 *
 	 * @throws \Exception
- *
+	 *
 	 * @return Database
 	 */
 	public static function getInstance() {
@@ -252,7 +252,7 @@ class Database {
 	 * @param $sql
 	 *
 	 * @throws \Exception
- *
+	 *
 	 * @return Statement
 	 */
 	public static function prepare($sql) {

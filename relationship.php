@@ -23,6 +23,8 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\RelationshipController;
+
 define('WT_SCRIPT_NAME', 'relationship.php');
 require './includes/session.php';
 

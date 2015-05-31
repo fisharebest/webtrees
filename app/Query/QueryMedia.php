@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Query;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,9 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Media;
 
 /**
  * Class QueryMedia - generate lists of files for admin_media.php
@@ -77,7 +80,7 @@ class QueryMedia {
 	 * @param string $form_type  option OBJE/FILE/FORM/TYPE
 	 *
 	 * @throws \Exception
- *
+	 *
 	 * @return Media[]
 	 */
 	public static function mediaList($folder, $subfolders, $sort, $filter, $form_type) {

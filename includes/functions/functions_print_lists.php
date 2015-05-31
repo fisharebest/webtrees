@@ -1,5 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -16,6 +15,23 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Place;
+use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Stats;
+use Fisharebest\Webtrees\Tree;
 use Rhumsaa\Uuid\Uuid;
 
 /**
@@ -1729,14 +1745,14 @@ function print_changes_list($change_ids, $sort) {
 
 	switch ($sort) {
 	case 'name':
-		uasort($arr, __NAMESPACE__ . '\\event_sort_name');
+		uasort($arr, 'event_sort_name');
 		break;
 	case 'date_asc':
-		uasort($arr, __NAMESPACE__ . '\\event_sort');
+		uasort($arr, 'event_sort');
 		$arr = array_reverse($arr);
 		break;
 	case 'date_desc':
-		uasort($arr, __NAMESPACE__ . '\\event_sort');
+		uasort($arr, 'event_sort');
 	}
 	$html = '';
 	foreach ($arr as $value) {

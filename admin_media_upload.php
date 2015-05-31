@@ -23,6 +23,9 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Query\QueryMedia;
+
 define('WT_SCRIPT_NAME', 'admin_media_upload.php');
 require './includes/session.php';
 

@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Date;
 
 /**
  * webtrees: online genealogy
@@ -18,6 +18,7 @@ namespace Fisharebest\Webtrees;
 
 use FishareBest\ExtCalendar\CalendarInterface;
 use FishareBest\ExtCalendar\JewishCalendar;
+use Fisharebest\Webtrees\I18N;
 
 /**
  * Class CalendarDate - Classes for Gedcom Date/Calendar functionality.

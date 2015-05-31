@@ -1,5 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -17,6 +16,8 @@ namespace Fisharebest\Webtrees;
  */
 
 // RTL Functions for use in the PDF/HTML reports
+
+use Fisharebest\Webtrees\I18N;
 
 $SpecialChar = array(' ', '.', ',', '"', '\'', '/', '\\', '|', ':', ';', '+', '&', '#', '@', '-', '=', '*', '%', '!', '?', '$', '<', '>', "\n");
 $SpecialPar  = array('(', ')', '[', ']', '{', '}');

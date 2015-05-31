@@ -1,5 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +14,25 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Date\FrenchDate;
+use Fisharebest\Webtrees\Date\GregorianDate;
+use Fisharebest\Webtrees\Date\HijriDate;
+use Fisharebest\Webtrees\Date\JalaliDate;
+use Fisharebest\Webtrees\Date\JewishDate;
+use Fisharebest\Webtrees\Date\JulianDate;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Soundex;
+use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Fetch all records linked to a record - when deleting an object, we must
@@ -58,7 +76,7 @@ function get_source_list(Tree $tree) {
 	foreach ($rows as $row) {
 		$list[] = Source::getInstance($row->xref, $tree, $row->gedcom);
 	}
-	usort($list, __NAMESPACE__ . '\GedcomRecord::compare');
+	usort($list, '\Fisharebest\Webtrees\GedcomRecord::compare');
 
 	return $list;
 }
@@ -81,7 +99,7 @@ function get_repo_list(Tree $tree) {
 	foreach ($rows as $row) {
 		$list[] = Repository::getInstance($row->xref, $tree, $row->gedcom);
 	}
-	usort($list, __NAMESPACE__ . '\GedcomRecord::compare');
+	usort($list, '\Fisharebest\Webtrees\GedcomRecord::compare');
 
 	return $list;
 }
@@ -104,7 +122,7 @@ function get_note_list(Tree $tree) {
 	foreach ($rows as $row) {
 		$list[] = Note::getInstance($row->xref, $tree, $row->gedcom);
 	}
-	usort($list, __NAMESPACE__ . '\GedcomRecord::compare');
+	usort($list, '\Fisharebest\Webtrees\GedcomRecord::compare');
 
 	return $list;
 }
@@ -661,7 +679,7 @@ function get_common_surnames($min, Tree $tree) {
 	if (empty($topsurns) && $min > 2) {
 		return get_common_surnames($min / 2, $tree);
 	} else {
-		uksort($topsurns, __NAMESPACE__ . '\I18N::strcasecmp');
+		uksort($topsurns, '\Fisharebest\Webtrees\I18N;;strcasecmp');
 		foreach ($topsurns as $key => $value) {
 			$topsurns[$key] = array('name' => $key, 'match' => $value);
 		}

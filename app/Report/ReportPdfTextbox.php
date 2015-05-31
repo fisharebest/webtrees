@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Report;
 
 /**
  * webtrees: online genealogy
@@ -23,7 +23,7 @@ class ReportPdfTextbox extends ReportBaseTextbox {
 	/**
 	 * PDF Text Box renderer
 	 *
-	 * @param PDF $renderer
+	 * @param ReportPdf $renderer
 	 *
 	 * @return bool|int
 	 */

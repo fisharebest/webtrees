@@ -23,6 +23,8 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\IndividualController;
+
 define('WT_SCRIPT_NAME', 'individual.php');
 require './includes/session.php';
 $controller = new IndividualController;

@@ -1,5 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -16,8 +15,6 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use PHPUnit_Framework_TestCase;
-
 /**
  * Test harness for the class ModuleChartInterface
  */
@@ -32,6 +29,6 @@ class ModuleChartInterfaceTest extends PHPUnit_Framework_TestCase {
 	 * Test that the class exists
 	 */
 	public function testClassExists() {
-		$this->assertTrue(interface_exists(__NAMESPACE__ . '\ModuleChartInterface'));
+		$this->assertTrue(interface_exists('\Fisharebest\Webtrees\Module\ModuleChartInterface'));
 	}
 }

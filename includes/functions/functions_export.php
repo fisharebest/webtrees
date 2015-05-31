@@ -1,5 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +14,16 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Tidy up a gedcom record on export, for compatibility/portability.

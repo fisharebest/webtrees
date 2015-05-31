@@ -15,6 +15,14 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Module\AbstractModule;
+use Fisharebest\Webtrees\Module\ModuleBlockInterface;
+use Fisharebest\Webtrees\Module\ModuleChartInterface;
+use Fisharebest\Webtrees\Module\ModuleMenuInterface;
+use Fisharebest\Webtrees\Module\ModuleReportInterface;
+use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
+use Fisharebest\Webtrees\Module\ModuleTabInterface;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
 
 /**
  * Class Module - Static functions for managing and maintaining modules.
@@ -84,7 +92,7 @@ class Module {
 
 		$array = array();
 		foreach ($module_names as $module_name) {
-			$interface = __NAMESPACE__ . '\Module' . ucfirst($component) . 'Interface';
+			$interface = '\Fisharebest\Webtrees\Module\Module' . ucfirst($component) . 'Interface';
 			$module    = self::getModuleByName($module_name);
 			if ($module instanceof $interface) {
 				$array[$module_name] = $module;
@@ -122,7 +130,7 @@ class Module {
 
 		$array = array();
 		foreach ($module_names as $module_name) {
-			$interface = __NAMESPACE__ . '\Module' . ucfirst($component) . 'Interface';
+			$interface = '\Fisharebest\Webtrees\Module\Module' . ucfirst($component) . 'Interface';
 			$module    = self::getModuleByName($module_name);
 			if ($module instanceof $interface) {
 				$array[$module_name] = $module;

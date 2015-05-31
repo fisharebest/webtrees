@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees;
  */
 
 use Fisharebest\ExtCalendar\GregorianCalendar;
+use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 
 /**
  * Class Individual - Class file for an individual

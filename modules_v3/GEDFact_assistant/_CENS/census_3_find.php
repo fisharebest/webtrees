@@ -18,6 +18,8 @@ namespace Fisharebest\Webtrees;
 
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\SimpleController;
+
 $controller = new SimpleController;
 
 $filter   = Filter::get('filter');
@@ -72,7 +74,7 @@ if ($action == "filter") {
 	$myindilist = search_indis_names($filter_array, array($WT_TREE));
 	if ($myindilist) {
 		echo "<tr><td class=\"list_value_wrap\"><ul>";
-		usort($myindilist, __NAMESPACE__ . '\GedcomRecord::compare');
+		usort($myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
 		foreach ($myindilist as $indi) {
 			$nam       = $indi->getAllNames();
 			$wholename = rtrim($nam[0]['givn'], '*') . "&nbsp;" . $nam[0]['surname'];

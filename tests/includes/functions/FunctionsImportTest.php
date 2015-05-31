@@ -1,5 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -16,8 +15,6 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use PHPUnit_Framework_TestCase;
-
 /**
  * Unit tests for the global functions in the file includes/functions/functions_import.php
  */
@@ -32,62 +29,62 @@ class FunctionsImportTest extends PHPUnit_Framework_TestCase {
 	 * Test that function reformat_record_import() exists in the correct namespace.
 	 */
 	public function testFunctionReformatRecordImportExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\reformat_record_import'), true);
+		$this->assertEquals(function_exists('reformat_record_import'), true);
 	}
 
 	/**
 	 * Test that function update_dates() exists in the correct namespace.
 	 */
 	public function testFunctionUpdateDatesExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\update_dates'), true);
+		$this->assertEquals(function_exists('update_dates'), true);
 	}
 
 	/**
 	 * Test that function update_links() exists in the correct namespace.
 	 */
 	public function testFunctionUpdateLinksExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\update_links'), true);
+		$this->assertEquals(function_exists('update_links'), true);
 	}
 
 	/**
 	 * Test that function update_names() exists in the correct namespace.
 	 */
 	public function testFunctionUpdateNamesExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\update_names'), true);
+		$this->assertEquals(function_exists('update_names'), true);
 	}
 
 	/**
 	 * Test that function convert_inline_media() exists in the correct namespace.
 	 */
 	public function testFunctionConvertInlineMediaExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\convert_inline_media'), true);
+		$this->assertEquals(function_exists('convert_inline_media'), true);
 	}
 
 	/**
 	 * Test that function create_media_object() exists in the correct namespace.
 	 */
 	public function testFunctionCreateMediaObjectExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\create_media_object'), true);
+		$this->assertEquals(function_exists('create_media_object'), true);
 	}
 
 	/**
 	 * Test that function accept_all_changes() exists in the correct namespace.
 	 */
 	public function testFunctionAcceptAllChangesExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\accept_all_changes'), true);
+		$this->assertEquals(function_exists('accept_all_changes'), true);
 	}
 
 	/**
 	 * Test that function reject_all_changes() exists in the correct namespace.
 	 */
 	public function testFunctionRejectAllChangesExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\reject_all_changes'), true);
+		$this->assertEquals(function_exists('reject_all_changes'), true);
 	}
 
 	/**
 	 * Test that function update_record() exists in the correct namespace.
 	 */
 	public function testFunctionUpdateRecordExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\update_record'), true);
+		$this->assertEquals(function_exists('update_record'), true);
 	}
 }

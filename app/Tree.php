@@ -346,7 +346,7 @@ class Tree {
 	 * @param int $tree_id
 	 *
 	 * @throws \DomainException
- *
+	 *
 	 * @return Tree
 	 */
 	public static function findById($tree_id) {
@@ -818,7 +818,7 @@ class Tree {
 	 * @param string $gedcom
 	 *
 	 * @throws \Exception
- *
+	 *
 	 * @return GedcomRecord
 	 */
 	public function createRecord($gedcom) {

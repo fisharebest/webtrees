@@ -1,5 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -16,6 +15,25 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\GedcomCode\GedcomCodeAdop;
+use Fisharebest\Webtrees\GedcomCode\GedcomCodeQuay;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Module\CensusAssistantModule;
+use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Theme;
+use Fisharebest\Webtrees\User;
 use Rhumsaa\Uuid\Uuid;
 
 /**

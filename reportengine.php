@@ -15,6 +15,10 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Report\ReportBaseElement;
+use Fisharebest\Webtrees\Report\ReportHtml;
+use Fisharebest\Webtrees\Report\ReportPdf;
 
 /**
  * Defined in session.php
@@ -136,9 +140,9 @@ case 'setup':
 	// Make sure everything is case sensitive
 	xml_parser_set_option($xml_parser, XML_OPTION_CASE_FOLDING, false);
 	// Set the main element handler functions
-	xml_set_element_handler($xml_parser, __NAMESPACE__ . '\\startElement', __NAMESPACE__ . '\\endElement');
+	xml_set_element_handler($xml_parser, '\Fisharebest\Webtrees\\startElement', '\Fisharebest\Webtrees\\endElement');
 	// Set the character data handler
-	xml_set_character_data_handler($xml_parser, __NAMESPACE__ . '\\characterData');
+	xml_set_character_data_handler($xml_parser, '\Fisharebest\Webtrees\\characterData');
 
 	// Open the file
 	$fp = fopen($report, 'r');
@@ -311,59 +315,59 @@ case 'run':
 	 * @global array $elementHandler
 	 */
 	$elementHandler                              = array();
-	$elementHandler['AgeAtDeath']['start']       = __NAMESPACE__ . '\\ageAtDeathStartHandler';
-	$elementHandler['br']['start']               = __NAMESPACE__ . '\\brStartHandler';
-	$elementHandler['Body']['start']             = __NAMESPACE__ . '\\bodyStartHandler';
-	$elementHandler['Cell']['end']               = __NAMESPACE__ . '\\cellEndHandler';
-	$elementHandler['Cell']['start']             = __NAMESPACE__ . '\\cellStartHandler';
-	$elementHandler['Description']['end']        = __NAMESPACE__ . '\\descriptionEndHandler';
-	$elementHandler['Description']['start']      = __NAMESPACE__ . '\\descriptionStartHandler';
-	$elementHandler['Doc']['end']                = __NAMESPACE__ . '\\docEndHandler';
-	$elementHandler['Doc']['start']              = __NAMESPACE__ . '\\docStartHandler';
+	$elementHandler['AgeAtDeath']['start']       = '\Fisharebest\Webtrees\Report\\ageAtDeathStartHandler';
+	$elementHandler['br']['start']               = '\Fisharebest\Webtrees\Report\\brStartHandler';
+	$elementHandler['Body']['start']             = '\Fisharebest\Webtrees\Report\\bodyStartHandler';
+	$elementHandler['Cell']['end']               = '\Fisharebest\Webtrees\Report\\cellEndHandler';
+	$elementHandler['Cell']['start']             = '\Fisharebest\Webtrees\Report\\cellStartHandler';
+	$elementHandler['Description']['end']        = '\Fisharebest\Webtrees\Report\\descriptionEndHandler';
+	$elementHandler['Description']['start']      = '\Fisharebest\Webtrees\Report\\descriptionStartHandler';
+	$elementHandler['Doc']['end']                = '\Fisharebest\Webtrees\Report\\docEndHandler';
+	$elementHandler['Doc']['start']              = '\Fisharebest\Webtrees\Report\\docStartHandler';
 	$elementHandler['Report']['end']             = '';
 	$elementHandler['Report']['start']           = '';
-	$elementHandler['Facts']['end']              = __NAMESPACE__ . '\\factsEndHandler';
-	$elementHandler['Facts']['start']            = __NAMESPACE__ . '\\factsStartHandler';
-	$elementHandler['Footer']['start']           = __NAMESPACE__ . '\\footerStartHandler';
-	$elementHandler['Footnote']['end']           = __NAMESPACE__ . '\\footnoteEndHandler';
-	$elementHandler['Footnote']['start']         = __NAMESPACE__ . '\\footnoteStartHandler';
-	$elementHandler['FootnoteTexts']['start']    = __NAMESPACE__ . '\\footnoteTextsStartHandler';
-	$elementHandler['Gedcom']['end']             = __NAMESPACE__ . '\\gedcomEndHandler';
-	$elementHandler['Gedcom']['start']           = __NAMESPACE__ . '\\gedcomStartHandler';
-	$elementHandler['GedcomValue']['start']      = __NAMESPACE__ . '\\gedcomValueStartHandler';
-	$elementHandler['Generation']['start']       = __NAMESPACE__ . '\\generationStartHandler';
-	$elementHandler['GetPersonName']['start']    = __NAMESPACE__ . '\\getPersonNameStartHandler';
-	$elementHandler['Header']['start']           = __NAMESPACE__ . '\\headerStartHandler';
-	$elementHandler['HighlightedImage']['start'] = __NAMESPACE__ . '\\highlightedImageStartHandler';
-	$elementHandler['if']['end']                 = __NAMESPACE__ . '\\ifEndHandler';
-	$elementHandler['if']['start']               = __NAMESPACE__ . '\\ifStartHandler';
-	$elementHandler['Image']['start']            = __NAMESPACE__ . '\\imageStartHandler';
+	$elementHandler['Facts']['end']              = '\Fisharebest\Webtrees\Report\\factsEndHandler';
+	$elementHandler['Facts']['start']            = '\Fisharebest\Webtrees\Report\\factsStartHandler';
+	$elementHandler['Footer']['start']           = '\Fisharebest\Webtrees\Report\\footerStartHandler';
+	$elementHandler['Footnote']['end']           = '\Fisharebest\Webtrees\Report\\footnoteEndHandler';
+	$elementHandler['Footnote']['start']         = '\Fisharebest\Webtrees\Report\\footnoteStartHandler';
+	$elementHandler['FootnoteTexts']['start']    = '\Fisharebest\Webtrees\Report\\footnoteTextsStartHandler';
+	$elementHandler['Gedcom']['end']             = '\Fisharebest\Webtrees\Report\\gedcomEndHandler';
+	$elementHandler['Gedcom']['start']           = '\Fisharebest\Webtrees\Report\\gedcomStartHandler';
+	$elementHandler['GedcomValue']['start']      = '\Fisharebest\Webtrees\Report\\gedcomValueStartHandler';
+	$elementHandler['Generation']['start']       = '\Fisharebest\Webtrees\Report\\generationStartHandler';
+	$elementHandler['GetPersonName']['start']    = '\Fisharebest\Webtrees\Report\\getPersonNameStartHandler';
+	$elementHandler['Header']['start']           = '\Fisharebest\Webtrees\Report\\headerStartHandler';
+	$elementHandler['HighlightedImage']['start'] = '\Fisharebest\Webtrees\Report\\highlightedImageStartHandler';
+	$elementHandler['if']['end']                 = '\Fisharebest\Webtrees\Report\\ifEndHandler';
+	$elementHandler['if']['start']               = '\Fisharebest\Webtrees\Report\\ifStartHandler';
+	$elementHandler['Image']['start']            = '\Fisharebest\Webtrees\Report\\imageStartHandler';
 	$elementHandler['Input']['end']              = '';
 	$elementHandler['Input']['start']            = '';
-	$elementHandler['Line']['start']             = __NAMESPACE__ . '\\lineStartHandler';
-	$elementHandler['List']['end']               = __NAMESPACE__ . '\\listEndHandler';
-	$elementHandler['List']['start']             = __NAMESPACE__ . '\\listStartHandler';
-	$elementHandler['ListTotal']['start']        = __NAMESPACE__ . '\\listTotalStartHandler';
-	$elementHandler['NewPage']['start']          = __NAMESPACE__ . '\\newPageStartHandler';
-	$elementHandler['Now']['start']              = __NAMESPACE__ . '\\nowStartHandler';
-	$elementHandler['PageHeader']['end']         = __NAMESPACE__ . '\\pageHeaderEndHandler';
-	$elementHandler['PageHeader']['start']       = __NAMESPACE__ . '\\pageHeaderStartHandler';
-	$elementHandler['PageNum']['start']          = __NAMESPACE__ . '\\pageNumStartHandler';
-	$elementHandler['Relatives']['end']          = __NAMESPACE__ . '\\relativesEndHandler';
-	$elementHandler['Relatives']['start']        = __NAMESPACE__ . '\\relativesStartHandler';
-	$elementHandler['RepeatTag']['end']          = __NAMESPACE__ . '\\repeatTagEndHandler';
-	$elementHandler['RepeatTag']['start']        = __NAMESPACE__ . '\\repeatTagStartHandler';
-	$elementHandler['SetVar']['start']           = __NAMESPACE__ . '\\setVarStartHandler';
-	$elementHandler['Style']['start']            = __NAMESPACE__ . '\\styleStartHandler';
-	$elementHandler['Text']['end']               = __NAMESPACE__ . '\\textEndHandler';
-	$elementHandler['Text']['start']             = __NAMESPACE__ . '\\textStartHandler';
-	$elementHandler['TextBox']['end']            = __NAMESPACE__ . '\\textBoxEndHandler';
-	$elementHandler['TextBox']['start']          = __NAMESPACE__ . '\\textBoxStartHandler';
-	$elementHandler['Title']['end']              = __NAMESPACE__ . '\\titleEndHandler';
-	$elementHandler['Title']['start']            = __NAMESPACE__ . '\\titleStartHandler';
-	$elementHandler['TotalPages']['start']       = __NAMESPACE__ . '\\totalPagesStartHandler';
-	$elementHandler['var']['start']              = __NAMESPACE__ . '\\varStartHandler';
-	$elementHandler['sp']['start']               = __NAMESPACE__ . '\\spStartHandler';
+	$elementHandler['Line']['start']             = '\Fisharebest\Webtrees\Report\\lineStartHandler';
+	$elementHandler['List']['end']               = '\Fisharebest\Webtrees\Report\\listEndHandler';
+	$elementHandler['List']['start']             = '\Fisharebest\Webtrees\Report\\listStartHandler';
+	$elementHandler['ListTotal']['start']        = '\Fisharebest\Webtrees\Report\\listTotalStartHandler';
+	$elementHandler['NewPage']['start']          = '\Fisharebest\Webtrees\Report\\newPageStartHandler';
+	$elementHandler['Now']['start']              = '\Fisharebest\Webtrees\Report\\nowStartHandler';
+	$elementHandler['PageHeader']['end']         = '\Fisharebest\Webtrees\Report\\pageHeaderEndHandler';
+	$elementHandler['PageHeader']['start']       = '\Fisharebest\Webtrees\Report\\pageHeaderStartHandler';
+	$elementHandler['PageNum']['start']          = '\Fisharebest\Webtrees\Report\\pageNumStartHandler';
+	$elementHandler['Relatives']['end']          = '\Fisharebest\Webtrees\Report\\relativesEndHandler';
+	$elementHandler['Relatives']['start']        = '\Fisharebest\Webtrees\Report\\relativesStartHandler';
+	$elementHandler['RepeatTag']['end']          = '\Fisharebest\Webtrees\Report\\repeatTagEndHandler';
+	$elementHandler['RepeatTag']['start']        = '\Fisharebest\Webtrees\Report\\repeatTagStartHandler';
+	$elementHandler['SetVar']['start']           = '\Fisharebest\Webtrees\Report\\setVarStartHandler';
+	$elementHandler['Style']['start']            = '\Fisharebest\Webtrees\Report\\styleStartHandler';
+	$elementHandler['Text']['end']               = '\Fisharebest\Webtrees\Report\\textEndHandler';
+	$elementHandler['Text']['start']             = '\Fisharebest\Webtrees\Report\\textStartHandler';
+	$elementHandler['TextBox']['end']            = '\Fisharebest\Webtrees\Report\\textBoxEndHandler';
+	$elementHandler['TextBox']['start']          = '\Fisharebest\Webtrees\Report\\textBoxStartHandler';
+	$elementHandler['Title']['end']              = '\Fisharebest\Webtrees\Report\\titleEndHandler';
+	$elementHandler['Title']['start']            = '\Fisharebest\Webtrees\Report\\titleStartHandler';
+	$elementHandler['TotalPages']['start']       = '\Fisharebest\Webtrees\Report\\totalPagesStartHandler';
+	$elementHandler['var']['start']              = '\Fisharebest\Webtrees\Report\\varStartHandler';
+	$elementHandler['sp']['start']               = '\Fisharebest\Webtrees\Report\\spStartHandler';
 
 	/**
 	 * A new object of the currently used element class
@@ -473,9 +477,9 @@ case 'run':
 	//-- make sure everything is case sensitive
 	xml_parser_set_option($xml_parser, XML_OPTION_CASE_FOLDING, false);
 	//-- set the main element handler functions
-	xml_set_element_handler($xml_parser, __NAMESPACE__ . '\\startElement', __NAMESPACE__ . '\\endElement');
+	xml_set_element_handler($xml_parser, '\Fisharebest\Webtrees\Report\\startElement', '\Fisharebest\Webtrees\Report\\endElement');
 	//-- set the character data handler
-	xml_set_character_data_handler($xml_parser, __NAMESPACE__ . '\\characterData');
+	xml_set_character_data_handler($xml_parser, '\Fisharebest\Webtrees\Report\\characterData');
 
 	$fp = fopen($report, 'r');
 	while (($data = fread($fp, 4096))) {

@@ -1,5 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -16,12 +15,10 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use PHPUnit_Framework_TestCase;
-
 /**
- * Unit tests for the batch update plugin: married_names
+ * Test harness for the class ClippingsCartController
  */
-class MarriedNamesBuPluginTest extends PHPUnit_Framework_TestCase {
+class ClippingsCartControllerTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Prepare the environment for these tests
 	 */
@@ -29,9 +26,9 @@ class MarriedNamesBuPluginTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * Test that the class exists.
+	 * Test that the class exists
 	 */
-	public function testFunctionGetUserFullNameExists() {
-		$this->assertEquals(true, class_exists(__NAMESPACE__ . '\\BatchUpdateMarriedNamesPlugin'));
+	public function testClassExists() {
+		$this->assertTrue(class_exists('\Fisharebest\Webtrees\Module\ClippingsCart\ClippingsCartController'));
 	}
 }

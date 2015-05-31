@@ -24,13 +24,13 @@ namespace Fisharebest\Webtrees;
  * @global array $elementHandler
  */
 $elementHandler                       = array();
-$elementHandler['Report']['start']    = __NAMESPACE__ . '\\reportStartHandler';
-$elementHandler['var']['start']       = __NAMESPACE__ . '\\varStartHandler';
-$elementHandler['Title']['start']     = __NAMESPACE__ . '\\titleStartHandler';
-$elementHandler['Title']['end']       = __NAMESPACE__ . '\\titleEndHandler';
-$elementHandler['Description']['end'] = __NAMESPACE__ . '\\descriptionEndHandler';
-$elementHandler['Input']['start']     = __NAMESPACE__ . '\\inputStartHandler';
-$elementHandler['Input']['end']       = __NAMESPACE__ . '\\inputEndHandler';
+$elementHandler['Report']['start']    = '\Fisharebest\Webtrees\\reportStartHandler';
+$elementHandler['var']['start']       = '\Fisharebest\Webtrees\\varStartHandler';
+$elementHandler['Title']['start']     = '\Fisharebest\Webtrees\\titleStartHandler';
+$elementHandler['Title']['end']       = '\Fisharebest\Webtrees\\titleEndHandler';
+$elementHandler['Description']['end'] = '\Fisharebest\Webtrees\\descriptionEndHandler';
+$elementHandler['Input']['start']     = '\Fisharebest\Webtrees\\inputStartHandler';
+$elementHandler['Input']['end']       = '\Fisharebest\Webtrees\\inputEndHandler';
 
 $text         = "";
 $report_array = array();

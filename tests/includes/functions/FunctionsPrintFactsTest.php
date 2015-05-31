@@ -1,5 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -16,8 +15,6 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use PHPUnit_Framework_TestCase;
-
 /**
  * Unit tests for the global functions in the file includes/functions/functions_print_facts.php
  */
@@ -32,62 +29,62 @@ class FunctionsPrintFactsTest extends PHPUnit_Framework_TestCase {
 	 * Test that function print_fact() exists in the correct namespace.
 	 */
 	public function testFunctionPrintFactExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_fact'), true);
+		$this->assertEquals(function_exists('print_fact'), true);
 	}
 
 	/**
 	 * Test that function print_repository_record() exists in the correct namespace.
 	 */
 	public function testFunctionPrintRepositoryRecordExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_repository_record'), true);
+		$this->assertEquals(function_exists('print_repository_record'), true);
 	}
 
 	/**
 	 * Test that function print_fact_sources() exists in the correct namespace.
 	 */
 	public function testFunctionPrintFactSourcesExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_fact_sources'), true);
+		$this->assertEquals(function_exists('print_fact_sources'), true);
 	}
 
 	/**
 	 * Test that function print_media_links() exists in the correct namespace.
 	 */
 	public function testFunctionPrintMediaLinksExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_media_links'), true);
+		$this->assertEquals(function_exists('print_media_links'), true);
 	}
 
 	/**
 	 * Test that function print_main_sources() exists in the correct namespace.
 	 */
 	public function testFunctionPrintMainSourcesExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_main_sources'), true);
+		$this->assertEquals(function_exists('print_main_sources'), true);
 	}
 
 	/**
 	 * Test that function printSourceStructure() exists in the correct namespace.
 	 */
 	public function testFunctionPrintSourceStructureExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\printSourceStructure'), true);
+		$this->assertEquals(function_exists('printSourceStructure'), true);
 	}
 
 	/**
 	 * Test that function getSourceStructure() exists in the correct namespace.
 	 */
 	public function testFunctionGetSourceStructureExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\getSourceStructure'), true);
+		$this->assertEquals(function_exists('getSourceStructure'), true);
 	}
 
 	/**
 	 * Test that function print_main_notes() exists in the correct namespace.
 	 */
 	public function testFunctionPrintMainNotesExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_main_notes'), true);
+		$this->assertEquals(function_exists('print_main_notes'), true);
 	}
 
 	/**
 	 * Test that function print_main_media() exists in the correct namespace.
 	 */
 	public function testFunctionPrintMainMediaExists() {
-		$this->assertEquals(function_exists(__NAMESPACE__ . '\\print_main_media'), true);
+		$this->assertEquals(function_exists('print_main_media'), true);
 	}
 }

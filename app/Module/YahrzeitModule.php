@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -17,6 +17,14 @@ namespace Fisharebest\Webtrees;
  */
 
 use Fisharebest\ExtCalendar\JewishCalendar;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Date\GregorianDate;
+use Fisharebest\Webtrees\Date\JewishDate;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Theme;
 use Rhumsaa\Uuid\Uuid;
 
 /**

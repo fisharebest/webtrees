@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,14 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Controller\SimpleController;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Note;
 
 /**
  * Class CensusAssistantModule
@@ -122,7 +130,7 @@ class CensusAssistantModule extends AbstractModule {
 		$myindilist = search_indis_names($filter_array, array($WT_TREE));
 		if ($myindilist) {
 			echo "<td class=\"list_value_wrap\"><ul>";
-			usort($myindilist, __NAMESPACE__ . '\GedcomRecord::compare');
+			usort($myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
 			foreach ($myindilist as $indi) {
 				$nam = Filter::escapeHtml($indi->getFullName());
 				echo "<li><a href=\"#\" onclick=\"pasterow(

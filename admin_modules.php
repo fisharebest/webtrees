@@ -16,6 +16,16 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Module\ModuleBlockInterface;
+use Fisharebest\Webtrees\Module\ModuleChartInterface;
+use Fisharebest\Webtrees\Module\ModuleConfigInterface;
+use Fisharebest\Webtrees\Module\ModuleMenuInterface;
+use Fisharebest\Webtrees\Module\ModuleReportInterface;
+use Fisharebest\Webtrees\Module\ModuleSidebarInterface;
+use Fisharebest\Webtrees\Module\ModuleTabInterface;
+use Fisharebest\Webtrees\Module\ModuleThemeInterface;
+
 define('WT_SCRIPT_NAME', 'admin_modules.php');
 require 'includes/session.php';
 

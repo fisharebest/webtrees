@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,16 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Module\ClippingsCart\ClippingsCartController;
+use Fisharebest\Webtrees\Session;
 
 /**
  * Class ClippingsCartModule
@@ -49,7 +59,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 			$MAX_PEDIGREE_GENERATIONS = $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS');
 
 			$cart      = Session::get('cart');
-			$clip_ctrl = new ClippingsCart;
+			$clip_ctrl = new ClippingsCartController;
 
 			$controller = new PageController;
 			$controller
@@ -486,7 +496,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 			return false;
 		} else {
 			// Creating a controller has the side effect of initialising the cart
-			new ClippingsCart;
+			new ClippingsCartController;
 
 			return true;
 		}
@@ -512,7 +522,7 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 
 		$cart = Session::get('cart');
 
-		$clip_ctrl         = new ClippingsCart;
+		$clip_ctrl         = new ClippingsCartController;
 		$add               = Filter::get('add', WT_REGEX_XREF);
 		$add1              = Filter::get('add1', WT_REGEX_XREF);
 		$remove            = Filter::get('remove', WT_REGEX_XREF);
@@ -634,11 +644,11 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 	}
 
 	/**
-	 * @param ClippingsCart $clip_ctrl
+	 * @param ClippingsCartController $clip_ctrl
 	 *
 	 * @return string
 	 */
-	public function downloadForm(ClippingsCart $clip_ctrl) {
+	public function downloadForm(ClippingsCartController $clip_ctrl) {
 		global $WT_TREE;
 
 		$pid = Filter::get('pid', WT_REGEX_XREF);

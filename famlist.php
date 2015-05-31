@@ -25,6 +25,9 @@ namespace Fisharebest\Webtrees;
  */
 global $UNKNOWN_NN, $UNKNOWN_PN, $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Query\QueryName;
+
 define('WT_SCRIPT_NAME', 'famlist.php');
 require './includes/session.php';
 

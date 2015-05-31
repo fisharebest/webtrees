@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Report;
 
 /**
  * webtrees: online genealogy
@@ -23,7 +23,7 @@ class ReportPdfImage extends ReportBaseImage {
 	/**
 	 * PDF image renderer
 	 *
-	 * @param PDF $renderer
+	 * @param ReportPdf $renderer
 	 */
 	public function render($renderer) {
 		global $lastpicbottom, $lastpicpage, $lastpicleft, $lastpicright;
@@ -97,7 +97,7 @@ class ReportPdfImage extends ReportBaseImage {
 	/**
 	 * Get the image height
 	 *
-	 * @param PDF $pdf
+	 * @param ReportPdf $pdf
 	 *
 	 * @return float
 	 */

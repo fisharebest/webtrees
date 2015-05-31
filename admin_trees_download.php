@@ -23,6 +23,7 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\PageController;
 use PclZip;
 
 define('WT_SCRIPT_NAME', 'admin_trees_download.php');

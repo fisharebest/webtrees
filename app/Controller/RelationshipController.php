@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Controller;
 
 /**
  * webtrees: online genealogy
@@ -17,6 +17,10 @@ namespace Fisharebest\Webtrees;
  */
 
 use Fisharebest\Algorithm\Dijkstra;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\Individual;
 
 /**
  * Class RelationshipController - Controller for the relationships calculations

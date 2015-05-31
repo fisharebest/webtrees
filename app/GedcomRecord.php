@@ -126,7 +126,7 @@ class GedcomRecord {
 	 * @param string|null $gedcom
 	 *
 	 * @throws \Exception
- *
+	 *
 	 * @return GedcomRecord|null
 	 */
 	public static function getInstance($xref, Tree $tree, $gedcom = null) {

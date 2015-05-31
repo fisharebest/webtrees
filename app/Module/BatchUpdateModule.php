@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,20 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Module\BatchUpdate\BatchUpdateBasePlugin;
+use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Class BatchUpdateModule
@@ -309,7 +323,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 		$dir_handle = opendir(__DIR__ . '/BatchUpdate');
 		while (($file = readdir($dir_handle)) !== false) {
 			if (substr($file, -10) == 'Plugin.php' && $file !== 'BatchUpdateBasePlugin.php') {
-				$class           = __NAMESPACE__ . '\\' . basename($file, '.php');
+				$class           = '\Fisharebest\Webtrees\Module\BatchUpdate\\' . basename($file, '.php');
 				$plugins[$class] = new $class;
 			}
 		}

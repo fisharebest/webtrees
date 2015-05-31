@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,11 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Query\QueryName;
+use Fisharebest\Webtrees\Theme;
 
 /**
  * Class TopSurnamesModule
@@ -89,20 +94,20 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 
 		switch ($infoStyle) {
 		case 'tagcloud':
-			uksort($all_surnames, __NAMESPACE__ . '\I18N::strcasecmp');
+			uksort($all_surnames, '\Fisharebest\Webtrees\I18N::strcasecmp');
 			$content = format_surname_tagcloud($all_surnames, 'indilist.php', true, $WT_TREE);
 			break;
 		case 'list':
-			uasort($all_surnames, __NAMESPACE__ . '\\TopSurnamesModule::surnameCountSort');
+			uasort($all_surnames, '\Fisharebest\Webtrees\Module\TopSurnamesModule::surnameCountSort');
 			$content = format_surname_list($all_surnames, '1', true, 'indilist.php', $WT_TREE);
 			break;
 		case 'array':
-			uasort($all_surnames, __NAMESPACE__ . '\\TopSurnamesModule::surnameCountSort');
+			uasort($all_surnames, '\Fisharebest\Webtrees\Module\TopSurnamesModule::surnameCountSort');
 			$content = format_surname_list($all_surnames, '2', true, 'indilist.php', $WT_TREE);
 			break;
 		case 'table':
 		default:
-			uasort($all_surnames, __NAMESPACE__ . '\\TopSurnamesModule::surnameCountSort');
+			uasort($all_surnames, '\Fisharebest\Webtrees\Module\TopSurnamesModule::surnameCountSort');
 			$content = format_surname_table($all_surnames, 'indilist.php', $WT_TREE);
 			break;
 		}

@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Controller;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,12 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Soundex;
 
 /**
  * Class AdvancedSearchController - Controller for the advanced search page
@@ -135,7 +141,7 @@ class AdvancedSearchController extends SearchController {
 		foreach ($ofields as $field) {
 			$fields[$field] = strip_tags(GedcomTag::GetLabel($field)); // Custom tags have error markup
 		}
-		uksort($fields, __NAMESPACE__ . '\AdvancedSearchController::tagSort');
+		uksort($fields, '\Fisharebest\Webtrees\Controller\AdvancedSearchController::tagSort');
 
 		return $fields;
 	}
@@ -631,7 +637,7 @@ class AdvancedSearchController extends SearchController {
 	/** {@inheritdoc} */
 	public function printResults() {
 		if ($this->myindilist) {
-			uasort($this->myindilist, __NAMESPACE__ . '\GedcomRecord::compare');
+			uasort($this->myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
 			echo format_indi_table($this->myindilist);
 		} elseif (array_filter($this->values)) {
 			echo '<p class="ui-state-highlight">', I18N::translate('No results found.'), '</p>';
