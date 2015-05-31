@@ -98,8 +98,8 @@ class ReportPdfFootnote extends ReportBaseFootnote {
 			// Check with line counter too!
 			// but floor the $wrapWidthRemaining first to keep it bugfree!
 			$wrapWidthRemaining = (int) ($this->wrapWidthRemaining);
-			if (($lw >= $wrapWidthRemaining) or ($lfct > 1)) {
-				$newtext = "";
+			if ($lw >= $wrapWidthRemaining || $lfct > 1) {
+				$newtext = '';
 				$lines   = explode("\n", $this->numText);
 				// Go throught the text line by line
 				foreach ($lines as $line) {

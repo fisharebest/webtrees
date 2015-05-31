@@ -113,7 +113,7 @@ class ReportHtmlText extends ReportBaseText {
 		// If there is still remaining wrap width...
 		if ($this->wrapWidthRemaining > 0) {
 			// Check with line counter too!
-			if (($lw >= $this->wrapWidthRemaining) or ($lfct > 1)) {
+			if ($lw >= $this->wrapWidthRemaining || $lfct > 1) {
 				$newtext            = "";
 				$wrapWidthRemaining = $this->wrapWidthRemaining;
 				$lines              = explode("\n", $this->text);

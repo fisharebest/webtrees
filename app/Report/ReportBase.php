@@ -1649,16 +1649,16 @@ function factsEndHandler() {
 		$i         = 0;
 		while ($i < $count) {
 			$gedrec = $repeats[$i];
-			$fact   = "";
-			$desc   = "";
-			if (preg_match("/1 (\w+)(.*)/", $gedrec, $match)) {
+			$fact   = '';
+			$desc   = '';
+			if (preg_match('/1 (\w+)(.*)/', $gedrec, $match)) {
 				$fact = $match[1];
-				if ($fact == "EVEN" or $fact == "FACT") {
+				if ($fact === 'EVEN' || $fact === 'FACT') {
 					$tmatch = array();
-					if (preg_match("/2 TYPE (.+)/", $gedrec, $tmatch)) {
+					if (preg_match('/2 TYPE (.+)/', $gedrec, $tmatch)) {
 						$type = trim($tmatch[1]);
 					} else {
-						$type = " ";
+						$type = ' ';
 					}
 				}
 				$desc = trim($match[2]);
@@ -2059,7 +2059,7 @@ function highlightedImageStartHandler($attrs) {
 				)
 			) && $mediaobject->canShow() && $mediaobject->fileExists('thumb')
 		) {
-			if (($width > 0) and ($height == 0)) {
+			if ($width > 0 && $height == 0) {
 				$perc   = $width / $attributes['adjW'];
 				$height = round($attributes['adjH'] * $perc);
 			} elseif ($height > 0 && $width == 0) {
@@ -2157,7 +2157,7 @@ function imageStartHandler($attrs) {
 					)
 				) && $mediaobject->canShow() && $mediaobject->fileExists('thumb')
 			) {
-				if (($width > 0) and ($height == 0)) {
+				if ($width > 0 && $height == 0) {
 					$perc   = $width / $attributes['adjW'];
 					$height = round($attributes['adjH'] * $perc);
 				} elseif ($height > 0 && $width == 0) {
@@ -2174,7 +2174,7 @@ function imageStartHandler($attrs) {
 	} else {
 		if (file_exists($file) && preg_match("/(jpg|jpeg|png|gif)$/i", $file)) {
 			$size = getimagesize($file);
-			if (($width > 0) and ($height == 0)) {
+			if ($width > 0 && $height == 0) {
 				$perc   = $width / $size[0];
 				$height = round($size[1] * $perc);
 			} elseif ($height > 0 && $width == 0) {
@@ -2319,7 +2319,7 @@ function listStartHandler($attrs) {
 					unset($attrs[$attr]); // This filter has been fully processed
 				} elseif (preg_match('/^NAME CONTAINS (.*)$/', $value, $match)) {
 					// Do nothing, unless you have to
-					if (($match[1] != "") or ($sortby == "NAME")) {
+					if ($match[1] != '' || $sortby == 'NAME') {
 						$sql_join .= " JOIN `##name` AS {$attr} ON (n_file=i_file AND n_id=i_id)";
 						// Search the DB only if there is any name supplied
 						if ($match[1] != "") {
@@ -2457,7 +2457,7 @@ function listStartHandler($attrs) {
 
 	$filters  = array();
 	$filters2 = array();
-	if ((isset($attrs['filter1'])) and (count($list) > 0)) {
+	if (isset($attrs['filter1']) && count($list) > 0) {
 		foreach ($attrs as $key => $value) {
 			if (preg_match("/filter(\d)/", $key)) {
 				$condition = $value;
