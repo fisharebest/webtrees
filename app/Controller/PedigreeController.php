@@ -276,9 +276,10 @@ class PedigreeController extends ChartController {
 				}
 			}
 			//-- echo the siblings
+			$tmp = $this->root; // PHP5.3 cannot use $this in closures
 			foreach ($this->root->getChildFamilies() as $family) {
-				$siblings = array_filter($family->getChildren(), function (Individual $item) {
-					return $this->root->getXref() !== $item->getXref();
+				$siblings = array_filter($family->getChildren(), function (Individual $item) use ($tmp) {
+					return $tmp->getXref() !== $item->getXref();
 				});
 				$num      = count($siblings);
 				if ($num) {
