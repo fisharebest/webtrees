@@ -328,6 +328,10 @@ table.center {
 	width: 100%;
 }
 
+.facts_table .optionbox {
+	white-space: normal;
+} 
+
 div.fact_SHARED_NOTE {
 	clear: both;
 }
@@ -2825,7 +2829,7 @@ dd .deletelink {
 	background-color: #ecf5ff;
 	color: #333;
 	border-top: 1px solid #999;
-	margin: 0 0 0 170px;
+	margin: 0 0 0 30%;
 	padding: 5px;
 	white-space: nowrap;
 }
@@ -2839,7 +2843,7 @@ dd .deletelink {
 }
 
 [dir=rtl] #search-page-table .value {
-	margin: 0 170px 0 0;
+	margin: 0 30% 0 0;
 }
 
 /*  edituser.php  */
@@ -5345,7 +5349,7 @@ footer {
 	.primary-menu > li {
 		background-image: url("images/sprites-top2-menu.png");
 		margin: 0 0 0 7px;
-		width: 22px;
+		width: 28px;
 	}
 	[dir=rtl] .primary-menu > li {
 		margin: 0 7px 0 0;
@@ -5356,4 +5360,25 @@ footer {
 	.primary-menu {
 		height: 40px;
 	}
-}
+	/* Search */
+	#search-page-table div #query { width: 150px;}
+	#search-page-table {
+		width: auto;
+	}
+	#search-page-table .value {
+		white-space: normal;
+    }
+	#search-page-table > input {
+		width: 20px;
+	}
+	/* Lists */
+	#place_hierarchy td {
+		white-space: normal;
+	}
+	/* Reports fixes */
+	#reportengine-page table {
+		width: 100%;
+	}
+} 
+
+
