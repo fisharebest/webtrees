@@ -67,7 +67,7 @@ return array(
     "'%value%' does not fit the date format '%format%'" => "'%value%' nije u formatu datuma '%format%'",
 
     // Zend_Validate_Db_Abstract
-    "No record matching %value% was found" => "Zapis koji se poklapa sa %value% nije pronađen",
+    "No record matching '%value%' was found" => "Zapis koji se poklapa sa %value% nije pronađen",
     "A record matching '%value%' was found" => "Zapis koji se poklapa sa %value% je pronađen",
 
     // Zend_Validate_Digits
