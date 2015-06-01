@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-05-14 08:44+0100\n"
-"PO-Revision-Date: 2015-05-14 10:24+0100\n"
+"PO-Revision-Date: 2015-06-01 11:19+0100\n"
 "Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
@@ -15268,79 +15268,98 @@ msgstr "Yeni bir kullanıcı kayıt olduğunda, belirtilen mail adresine bir ona
 
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:45
 msgid "When adding a link, the ID field cannot be empty."
-msgstr ""
+msgstr "Bir bağlantı eklenirken ID alanı boş bırakılamaz."
 
 #. I18N: Help text for the “Source type” configuration setting
 #: admin_trees_config.php:2245
 msgid "When adding new close relatives, you can add source citations to the records (e.g. INDI, FAM) or the facts (BIRT, MARR, DEAT).  This option controls which checkboxes are ticked by default."
 msgstr ""
+"Yeni yakın akrabalar eklerken, kaynak kayıtlarına atıf (INDI, FAM, v.b.) ya "
+"da olgu (BIRT, MARR, DEAT) ekleyebilirsiniz. Bu seçenek, varsayılan olarak "
+"işaretli olan onay kutularını kontrol eder."
 
 #. I18N: Help text for the “ID settings” configuration setting
 #: admin_trees_config.php:882
 msgid "When new records are created, they are given an internal ID number.  You can specify the prefix used for each type of record."
 msgstr ""
+"Yeni kayıt oluşturulurken, bunlara dahili bir kimlik numarası verilir. Her "
+"tür kayıt için kullanılacak ön eki belirtebilirsiniz."
 
 #. I18N: Help text for the “Date differences” configuration setting
 #: admin_trees_config.php:1687
 msgid "When this option is selected, webtrees will calculate the age differences between siblings, children, spouses, etc."
 msgstr ""
+"Bu seçenek seçildiğinde, kardeşler, çocuklar, eşler, vb. arasındaki yaş "
+"farkları hesaplanır."
 
 #. I18N: Help text for the “Surname tradition” configuration setting
 #: admin_trees_config.php:2219
 msgid "When you add a new family member, a default surname can be provided.  This surname will depend on the local tradition."
 msgstr ""
+"Yeni bir aile üyesi eklediğinizde, varsayılan bir soyadı sağlanabilir. Bu "
+"soyadı, yerel geleneklere bağlıdır."
 
 #: help_text.php:312
 msgid "When you add, edit, or delete information, the changes are not saved immediately.  Instead, they are kept in a “pending” area.  These pending changes need to be reviewed by a moderator before they are accepted."
 msgstr ""
+"Bir bilgiyi eklediğinizde, düzenlediğinizde yada sildiğinizde, değişiklikler "
+"hemen kaydedilmez. Bunun yerine, bir \"bekleme\" alanında tutulur. Bu "
+"bekleyen değişikliklerin kabul edilmeden önce bir moderatör tarafından "
+"gözden geçirilmesi gerekir."
 
 #: message.php:131
 msgid "When you send this message you will receive a copy sent via email to the address you provided."
 msgstr ""
+"Bu iletiyi gönderdiğinizde, mesajın bir kopyası daha önce belirttiğiniz "
+"adresinize e-posta yoluyla gönderilecektir."
 
 #: admin_users.php:589
 msgid "Where a user is associated to an individual record in a family tree and has a role of member, editor, or moderator, you can prevent them from accessing the details of distant, living relations.  You specify the number of relationship steps that the user is allowed to see."
 msgstr ""
+"Bir kullanıcı, bir aile ağacındaki bireysel bir kayıtla ilişkilendirilerek "
+"üye, editör veya moderatör rolü atandığı durumlarda, bu kişiye uzak yaşayan "
+"akrabalarının detaylarına erişmesini engelleyebilirsiniz. Bunun için kaç "
+"basamak yakın akraba bilgilerinin görülebileceğini belirtiniz."
 
 #: admin_pgv_to_wt.php:162
 msgid "Where is your PhpGedView installation?"
-msgstr ""
+msgstr "PhpGedVıew kurulumunuzun yeri neresi?"
 
 #: app/Module/SiteMapModule.php:290
 msgid "Which family trees should be included in the sitemaps?"
-msgstr ""
+msgstr "Site haritasında dahil edilmesini istediğiniz aile ağaçları?"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1058
 msgid "Who can upload new media files?"
-msgstr ""
+msgstr "Yeni medya dosyalarını kimler yükleyebilir?"
 
 #. I18N: Name of a module. (A list of users who are online now)
 #: app/Module/LoggedInUsersModule.php:25
 msgid "Who is online"
-msgstr ""
+msgstr "Kimler çevrimiçi"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:143
 #: search.php:210
 msgid "Whole words only"
-msgstr ""
+msgstr "Sadece tüm kelimeler"
 
 #: includes/functions/functions_print_lists.php:625
 msgid "Widow"
-msgstr ""
+msgstr "Dul"
 
 #: includes/functions/functions_print_lists.php:616
 msgid "Widower"
-msgstr ""
+msgstr "Dul"
 
 #: app/Module/GoogleMapsModule.php:328 app/Module/GoogleMapsModule.php:469
 msgid "Width"
-msgstr ""
+msgstr "Genişlik"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1087
 msgid "Width of generated thumbnails"
-msgstr ""
+msgstr "Oluşturulan küçük resimlerin genişliği"
 
 #. I18N: gedcom tag WIFE
 #: app/Gedcom/GedcomTag.php:857 edit_interface.php:1084
@@ -15354,45 +15373,46 @@ msgstr ""
 #: modules_v3/individual_report/report.xml:478
 #: modules_v3/relative_ext_report/report.xml:109
 msgid "Wife"
-msgstr ""
+msgstr "Karısı"
 
 #: app/Controller/TimelineController.php:234
 msgid "Wife’s age"
-msgstr ""
+msgstr "Karısının yaşı"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:150
 msgid "Wife’s maiden surname becomes new given name"
-msgstr ""
+msgstr "Karısının kızlık soyadı yeni verilen ad olur"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:148
 msgid "Wife’s surname replaced by husband’s surname"
-msgstr ""
+msgstr "Karısının soyadı kocasının soyadı ile değiştirilir"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:144
 msgid "Wildcards"
-msgstr ""
+msgstr "Joker karakterler"
 
 #. I18N: gedcom tag WILL
 #: app/Gedcom/GedcomTag.php:861
 msgid "Will"
-msgstr ""
+msgstr "Vasiyet"
 
 #: app/Gedcom/GedcomCodeTemp.php:336
+#, fuzzy
 msgid "Winter Quarters, Nebraska"
-msgstr ""
+msgstr "Winter Quarters, Nebraska"
 
 #: app/Stats.php:382 app/Stats.php:468
 msgid "With sources"
-msgstr ""
+msgstr "Kaynaklar ile"
 
 #: app/Stats.php:381 app/Stats.php:467
 msgid "Without sources"
-msgstr ""
+msgstr "Kaynaklar hariç"
 
 #. I18N: gedcom tag _WITN
 #: app/Gedcom/GedcomCodeRela.php:253 app/Gedcom/GedcomTag.php:1760
 msgid "Witness"
-msgstr ""
+msgstr "Şahit"
 
 #. I18N: In the paternal surname tradition, ...
 #. I18N: In the Polish surname tradition, ...
@@ -15400,49 +15420,54 @@ msgstr ""
 #: admin_trees_config.php:69 admin_trees_config.php:88
 #: admin_trees_config.php:93
 msgid "Wives take their husband’s surname."
-msgstr ""
+msgstr "Kadın kocasının soyadını alır."
 
 #: statistics.php:592
 msgid "World"
-msgstr ""
+msgstr "Dünya"
 
 #. I18N: gedcom tag _YART
 #: app/Gedcom/GedcomTag.php:1768
+#, fuzzy
 msgid "Yahrzeit"
-msgstr ""
+msgstr "Yahrzeit"
 
 #. I18N: Name of a module.  Yahrzeiten (the plural of Yahrzeit) are special anniversaries of deaths in the Hebrew faith/calendar.
 #: app/Module/YahrzeitModule.php:28
+#, fuzzy
 msgid "Yahrzeiten"
-msgstr ""
+msgstr "Yahrzeiten"
 
 #: app/Theme/BaseTheme.php:1011 calendar.php:180
 #: modules_v3/GEDFact_assistant/_CENS/census_2_source_input.php:1012
 #: search.php:251
 msgid "Year"
-msgstr ""
+msgstr "Yıl"
 
 #: help_text.php:280
 msgid "Year input box"
-msgstr ""
+msgstr "Yıl giriş kutusu"
 
 #: timeline.php:126 timeline.php:369
 msgid "Year:"
-msgstr ""
+msgstr "Yıl:"
 
 #: app/Stats.php:6306
+#, fuzzy
 msgid "Yemen"
-msgstr ""
+msgstr "Yemen"
 
 #. I18N: %1$s is the site URL and %2$s is an email address
 #: login.php:318
 #, php-format
 msgid "You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s."
 msgstr ""
+"Siz (yada sizin adınıza bir başkası) %2$s email adresini kullanarak %1$s "
+"için hesap açma isteğinde bulundu."
 
 #: login.php:270 message.php:56
 msgid "You are not allowed to send messages that contain external links."
-msgstr ""
+msgstr "Dış bağlantılar içeren bir mesaj gönderme yetkiniz yok."
 
 #. I18N: Help text for the "Default theme" site configuration setting
 #. I18N: Help text for the “Default theme” configuration setting
@@ -15450,16 +15475,23 @@ msgstr ""
 #: admin_site_config.php:232 admin_trees_config.php:1017 edituser.php:259
 msgid "You can change the appearance of webtrees using “themes”.  Each theme has a different style, layout, color scheme, etc."
 msgstr ""
+"Siz \"temalar\" seçeneğini kullanarak sitenin görünümünü "
+"değiştirebilirsiniz. Her temanın farklı bir tarzı, düzeni, rengi, v.b. "
+"vardır."
 
 #. I18N: %s is a URL
 #: help_text.php:289
 #, php-format
 msgid "You can download a copy of the GEDCOM specification from %s."
-msgstr ""
+msgstr "GEDCOM tanımlamalarının bir kopyasını %s 'den indirebilirsiniz."
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:41
 msgid "You can make it easier to search for married women by recording their married name.<br>However not all women take their husband’s surname, so beware of introducing incorrect information into your database."
 msgstr ""
+"Evli bir bayanın evlilik soyadını kaydederek aramalarda daha kolay "
+"bulunmasını sağlayabilirsiniz.<br>Ancak bütün kadınlar kocalarının soy adını "
+"almayabilirler, bundan dolayı veritabanında yanlış bilgi tutmadığınızdan "
+"emin olun."
 
 #: admin_site_upgrade.php:197
 msgid "You can re-enable these modules after the upgrade."
@@ -15491,11 +15523,11 @@ msgstr ""
 
 #: login.php:67
 msgid "You cannot login because your browser does not accept cookies."
-msgstr ""
+msgstr "Tarayıcınız çerezleri kabul etmediğinden dolayı giriş yapamazsınız."
 
 #: includes/session.php:537
 msgid "You do not have permission to view this page."
-msgstr ""
+msgstr "Bu sayfayı görmek için yetkiniz yok."
 
 #: admin_site_merge.php:52
 msgid "You entered the same IDs.  You cannot merge the same records."
@@ -15503,11 +15535,11 @@ msgstr ""
 
 #: login.php:590
 msgid "You have confirmed your request to become a registered user."
-msgstr ""
+msgstr "Kayıtlı kullanıcı olma isteğinizi doğruladınız."
 
 #: app/Module/UserJournalModule.php:63
 msgid "You have not created any journal items."
-msgstr ""
+msgstr "Herhangi bir günlük maddesi oluşturmadınız."
 
 #: admin_trees_manage.php:188
 msgid "You have selected a GEDCOM file with a different name.  Is this correct?"
@@ -15515,40 +15547,42 @@ msgstr ""
 
 #: addmedia.php:461
 msgid "You may enter a URL, beginning with “http://”."
-msgstr ""
+msgstr "“http://” ile başlayan bir URL girişi yapabilirsiniz."
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:417
 msgid "You may use HTML to format the answer and to add links to other websites."
 msgstr ""
+"Cevapları biçimlendirmek için HTML kullanabilir ve diğer web sitelerine "
+"bağlantılar ekleyebilirsiniz."
 
 #: setup.php:209
 msgid "You must change this before you can continue."
-msgstr ""
+msgstr "Devam etmek için bunu değiştirmelisiniz."
 
 #: modules_v3/GEDFact_assistant/MEDIA_ctrl.php:77
 #: modules_v3/GEDFact_assistant/_CENS/census_3_search_add.php:32
 msgid "You must enter a name"
-msgstr ""
+msgstr "Bir isim girmelisiniz"
 
 #: edituser.php:121
 msgid "You must enter a real name."
-msgstr ""
+msgstr "Bir gerçek isim girmelisiniz."
 
 #: edituser.php:116
 msgid "You must enter a user name."
-msgstr ""
+msgstr "Bir kullanıcı adı girmelisiniz."
 
 #: setup.php:415
 msgid "You must enter all the administrator account fields."
-msgstr ""
+msgstr "Tüm yönetici hesabı alanlarını girmelisiniz."
 
 #: edit_interface.php:1533
 msgid "You must provide a repository name."
-msgstr ""
+msgstr "Bir depo adı belirtmelisiniz."
 
 #: edit_interface.php:1199
 msgid "You must provide a source title"
-msgstr ""
+msgstr "Bir kaynak başlığı belirtmelisiniz"
 
 #: admin_trees_merge.php:94
 msgid "You must renumber the records in one of the trees before you can merge them."
@@ -15577,84 +15611,102 @@ msgstr ""
 #: login.php:545
 msgid "You now need to review the account details, and set the “approved” status to “yes”."
 msgstr ""
+"Şimdi hesap bilgilerini gözden geçirmek ve onaylamak için \"Onaylandı\" "
+"alanını \"evet\" olarak ayarlayın."
 
 #. I18N: Help text for the "Login URL" site configuration setting
 #: admin_site_config.php:435
 msgid "You only need to enter a Login URL if you want to redirect to a different website or location when your users login.  This is very useful if you need to switch from http to https when your users login.  Include the full URL to <i>login.php</i>.  For example, https://www.yourserver.com/webtrees/login.php ."
 msgstr ""
+"Giriş URL sadece kullanıcılarınızı giriş için farklı bir site yada yere "
+"yönlendirmek istediğinizde kullanılmalıdır. Giriş sırasında http den https "
+"'e geçmek istediğinizde bu yardımcı olabilir. <i>login.php</i> içeren tam "
+"URL giriniz. Örneğin, https://www.yourserver.com/webtrees/login.php ."
 
 #: message.php:247
 msgid "You sent the following message to a webtrees administrator:"
-msgstr ""
+msgstr "Bir webtrees yöneticisine aşağıdaki mesajı gönderdiniz:"
 
 #: message.php:244
 msgid "You sent the following message to a webtrees user:"
-msgstr ""
+msgstr "Aşağıdaki mesajı bir webtrees kullanıcısına gönderdiniz:"
 
 #: admin_site_upgrade.php:97
 msgid "You should accept or reject all pending changes before upgrading."
 msgstr ""
+"Güncelleme yapmadan önce bütün bekleyen değişiklikleri onaylamalı yada yeri "
+"çevirmelisiniz."
 
 #: admin_site_upgrade.php:196
 msgid "You should consult the module’s author to confirm compatibility with this version of webtrees."
 msgstr ""
+"Bu versiyon webtrees ile uyumlu olup olmadığınu modülün yapımcısına "
+"danışmalısınız."
 
 #: admin_site_upgrade.php:260
 msgid "You should consult the theme’s author to confirm compatibility with this version of webtrees."
 msgstr ""
+"Bu versiyon webtrees ile uyumlu olup olmadığınu temanın yapımcısına "
+"danışmalısınız."
 
 #. I18N: e.g. ‘You should delete the “http://” from “http://www.example.com” and try again.’
 #: login.php:271 message.php:57
 #, php-format
 msgid "You should delete the “%1$s” from “%2$s” and try again."
-msgstr ""
+msgstr "“%2$s” adresinden “%1$s” silip tekrar deneyin."
 
 #: admin_users.php:390
 msgid "You should not approve an account unless you know that the email address is correct."
 msgstr ""
+"E-mail adresinin doğru olduğundan emin değilseniz kullanıcı hesabını "
+"onaylamamalısınız."
 
 #: login.php:306
 msgid "You will be informed by e-mail when this prospective user has confirmed the request.  You can then complete the process by activating the user name.  The new user will not be able to login until you activate the account."
 msgstr ""
+"Kullanıcı kendi hesabını onayladıktan sonra onayladığına dair e-mail mesajı "
+"ile bilgilendirileceksiniz. Ardından siteye giriş yaparak kullanıcı hesabını "
+"onaylayabilirsiniz. Yeni kullanıcı hesabı onaylayana kadar kullanıcı siteye "
+"giriş yapamayacaktır."
 
 #: setup.php:429
 msgid "You will use this to login to webtrees."
-msgstr ""
+msgstr "webtrees sitesine giriş yapmak için kullanacağınız kullanıcı adı."
 
 #: statistics.php:281
 msgid "Youngest father"
-msgstr ""
+msgstr "En genç baba"
 
 #: statistics.php:259
 msgid "Youngest female"
-msgstr ""
+msgstr "En genç kadın"
 
 #: statistics.php:258
 msgid "Youngest male"
-msgstr ""
+msgstr "En genç erkek"
 
 #: statistics.php:282
 msgid "Youngest mother"
-msgstr ""
+msgstr "En genç anne"
 
 #: app/Module/ClippingsCartModule.php:311
 #: app/Module/ClippingsCartModule.php:584
 msgid "Your clippings cart is empty."
-msgstr ""
+msgstr "Küpür sepetiniz boş."
 
 #: message.php:115 message.php:269 setup.php:423
 msgid "Your name"
-msgstr ""
+msgstr "Adınız"
 
 #. I18N: %s is a server name/URL
 #: login.php:328
 #, php-format
 msgid "Your registration at %s"
-msgstr ""
+msgstr "%s sitesindeki üyeliğiniz"
 
 #: setup.php:271
 msgid "Your server’s administrator will provide you with the connection details."
-msgstr ""
+msgstr "Sunucunuzun yöneticisi bağlantı detayları size verecektir."
 
 #: app/Module/BatchUpdateModule.php:186
 msgid "Your user account does not have “automatically approve changes” enabled.  You will only be able to change one record at a time."
@@ -19608,9 +19660,10 @@ msgid "…"
 msgstr ""
 
 #: includes/config_data.php:23
+#, fuzzy
 msgctxt "Unknown surname"
 msgid "…"
-msgstr ""
+msgstr "…"
 
 #~ msgid "A description of the cause of the associated event or fact, such as the cause of death."
 #~ msgstr "Ölüm nedeni gibi ilişkili olgu yada hadisenin sebibinin tanımı."
