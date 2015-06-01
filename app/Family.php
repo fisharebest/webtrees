@@ -51,27 +51,6 @@ class Family extends GedcomRecord {
 		}
 	}
 
-	/**
-	 * Get an instance of a family object.  For single records,
-	 * we just receive the XREF.  For bulk records (such as lists
-	 * and search results) we can receive the GEDCOM data as well.
-	 *
-	 * @param string      $xref
-	 * @param Tree        $tree
-	 * @param string|null $gedcom
-	 *
-	 * @return Family|null
-	 */
-	public static function getInstance($xref, Tree $tree, $gedcom = null) {
-		$record = parent::getInstance($xref, $tree, $gedcom);
-
-		if ($record instanceof Family) {
-			return $record;
-		} else {
-			return null;
-		}
-	}
-
 	/** {@inheritdoc} */
 	protected function createPrivateGedcomRecord($access_level) {
 		$SHOW_PRIVATE_RELATIONSHIPS = $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');

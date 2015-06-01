@@ -68,7 +68,7 @@ class Place {
 	 * @return Place
 	 */
 	public function getParentPlace() {
-		return new Place(implode(self::GEDCOM_SEPARATOR, array_slice($this->gedcom_place, 1)), $this->tree);
+		return new self(implode(self::GEDCOM_SEPARATOR, array_slice($this->gedcom_place, 1)), $this->tree);
 	}
 
 	/**
@@ -92,7 +92,7 @@ class Place {
 			'collation' => I18N::collation(),
 		))->fetchOneColumn();
 		foreach ($rows as $row) {
-			$children[] = new Place($row . $parent_text, $this->tree);
+			$children[] = new self($row . $parent_text, $this->tree);
 		}
 
 		return $children;
@@ -223,7 +223,7 @@ class Place {
 				'collate' => I18N::collation(),
 			))->fetchOneColumn();
 		foreach ($rows as $row) {
-			$places[] = new Place($row, $tree);
+			$places[] = new self($row, $tree);
 		}
 
 		return $places;
@@ -258,7 +258,7 @@ class Place {
 				'collation' => I18N::collation(),
 			))->fetchOneColumn();
 		foreach ($rows as $row) {
-			$places[] = new Place($row, $tree);
+			$places[] = new self($row, $tree);
 		}
 
 		return $places;

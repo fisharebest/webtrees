@@ -35,14 +35,14 @@ return Symfony\CS\Config\Config::create()
 		'duplicate_semicolons',
 		'--empty_return',
 		'extra_empty_lines',
-		'--include', // WHAT IS THIS?
+		'include',
 		'join_function',
 		'list_commas',
 		'multiline_array_trailing_comma',
 		'namespace_no_leading_whitespace',
 		'--new_with_braces',
 		'no_blank_lines_after_class_opening',
-		'--object_operator', // WE WANT THIS?
+		'object_operator',
 		'operators_spaces',
 		'phpdoc_indent',
 		'phpdoc_no_access',
@@ -59,7 +59,7 @@ return Symfony\CS\Config\Config::create()
 		'remove_leading_slash_use',
 		'remove_lines_between_uses',
 		'return',
-		'--self_accessor', // WE WANT THIS?
+		'self_accessor',
 		'single_array_no_trailing_comma',
 		'--single_blank_line_before_namespace',
 		'--single_quote', // WE WANT THIS?

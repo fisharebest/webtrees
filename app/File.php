@@ -57,7 +57,7 @@ class File {
 			if (preg_match('/^HTTP\/1.[01] 30[123].+\nLocation: ([^\r\n]+)/s', $response, $match)) {
 				fclose($fp);
 
-				return File::fetchUrl($match[1], $stream);
+				return self::fetchUrl($match[1], $stream);
 			} else {
 				// The response includes headers, a blank line, then the content
 				$response = substr($response, strpos($response, "\r\n\r\n") + 4);
@@ -96,7 +96,7 @@ class File {
 			$dir = opendir($path);
 			while ($dir !== false && (($file = readdir($dir)) !== false)) {
 				if ($file !== '.' && $file !== '..') {
-					File::delete($path . DIRECTORY_SEPARATOR . $file);
+					self::delete($path . DIRECTORY_SEPARATOR . $file);
 				}
 			}
 			closedir($dir);
@@ -128,7 +128,7 @@ class File {
 			return true;
 		} else {
 			if (dirname($path) && !is_dir(dirname($path))) {
-				File::mkdir(dirname($path));
+				self::mkdir(dirname($path));
 			}
 			try {
 				mkdir($path);

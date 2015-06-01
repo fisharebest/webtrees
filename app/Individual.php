@@ -35,27 +35,6 @@ class Individual extends GedcomRecord {
 	private $_getEstimatedDeathDate;
 
 	/**
-	 * Get an instance of an individual object.  For single records,
-	 * we just receive the XREF.  For bulk records (such as lists
-	 * and search results) we can receive the GEDCOM data as well.
-	 *
-	 * @param string      $xref
-	 * @param Tree        $tree
-	 * @param string|null $gedcom
-	 *
-	 * @return Individual|null
-	 */
-	public static function getInstance($xref, Tree $tree, $gedcom = null) {
-		$record = parent::getInstance($xref, $tree, $gedcom);
-
-		if ($record instanceof Individual) {
-			return $record;
-		} else {
-			return null;
-		}
-	}
-
-	/**
 	 * Sometimes, we'll know in advance that we need to load a set of records.
 	 * Typically when we load families and their members.
 	 *
@@ -162,7 +141,7 @@ class Individual extends GedcomRecord {
 	private static function isRelated(Individual $target, $distance) {
 		static $cache = null;
 
-		$user_individual = Individual::getInstance($target->tree->getUserPreference(Auth::user(), 'gedcomid'), $target->tree);
+		$user_individual = self::getInstance($target->tree->getUserPreference(Auth::user(), 'gedcomid'), $target->tree);
 		if ($user_individual) {
 			if (!$cache) {
 				$cache = array(

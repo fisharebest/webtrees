@@ -23,27 +23,6 @@ class Source extends GedcomRecord {
 	const RECORD_TYPE = 'SOUR';
 	const URL_PREFIX  = 'source.php?sid=';
 
-	/**
-	 * Get an instance of a source object.  For single records,
-	 * we just receive the XREF.  For bulk records (such as lists
-	 * and search results) we can receive the GEDCOM data as well.
-	 *
-	 * @param string      $xref
-	 * @param Tree        $tree
-	 * @param string|null $gedcom
-	 *
-	 * @return Source|null
-	 */
-	public static function getInstance($xref, Tree $tree, $gedcom = null) {
-		$record = parent::getInstance($xref, $tree, $gedcom);
-
-		if ($record instanceof Source) {
-			return $record;
-		} else {
-			return null;
-		}
-	}
-
 	/** {@inheritdoc} */
 	protected function canShowByType($access_level) {
 		// Hide sources if they are attached to private repositories ...

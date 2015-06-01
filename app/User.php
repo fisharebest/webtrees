@@ -51,7 +51,7 @@ class User {
 				"SELECT SQL_CACHE user_id, user_name, real_name, email FROM `##user` WHERE user_id = ?"
 			)->execute(array($user_id))->fetchOneRow();
 			if ($row) {
-				self::$cache[$user_id] = new User($row);
+				self::$cache[$user_id] = new self($row);
 			} else {
 				self::$cache[$user_id] = null;
 			}
@@ -135,7 +135,7 @@ class User {
 		));
 
 		// Set default blocks for this user
-		$user = User::findByIdentifier($user_name);
+		$user = self::findByIdentifier($user_name);
 		Database::prepare(
 			"INSERT INTO `##block` (`user_id`, `location`, `block_order`, `module_name`)" .
 			" SELECT :user_id , `location`, `block_order`, `module_name` FROM `##block` WHERE `user_id` = -1"
@@ -173,7 +173,7 @@ class User {
 		)->fetchAll();
 
 		foreach ($rows as $row) {
-			$users[] = new User($row);
+			$users[] = new self($row);
 		}
 
 		return $users;
@@ -196,7 +196,7 @@ class User {
 
 		$users = array();
 		foreach ($rows as $row) {
-			$users[] = new User($row);
+			$users[] = new self($row);
 		}
 
 		return $users;
@@ -219,7 +219,7 @@ class User {
 
 		$users = array();
 		foreach ($rows as $row) {
-			$users[] = new User($row);
+			$users[] = new self($row);
 		}
 
 		return $users;
@@ -239,7 +239,7 @@ class User {
 
 		$users = array();
 		foreach ($rows as $row) {
-			$users[] = new User($row);
+			$users[] = new self($row);
 		}
 
 		return $users;
