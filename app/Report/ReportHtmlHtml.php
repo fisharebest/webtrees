@@ -39,7 +39,7 @@ class ReportHtmlHtml extends ReportBaseHtml {
 			} elseif (is_string($element) && $element == "addpage") {
 				$renderer->AddPage();
 			} elseif ($element instanceof ReportBaseHtml) {
-				$this->text .= $element->render($renderer, true, false);
+				$element->render($renderer, true, false);
 			} else {
 				$element->render($renderer);
 			}
