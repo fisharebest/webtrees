@@ -278,29 +278,10 @@ case 'run':
 	switch ($output) {
 	case 'HTML':
 		header('Content-type: text/html; charset=UTF-8');
-		$wt_report  = new ReportHtml;
-		$ReportRoot = $wt_report;
+		new ReportParserGenerate($report, new ReportHtml);
 		break;
 	case 'PDF':
-		$wt_report  = new ReportPdf;
-		$ReportRoot = $wt_report;
+		new ReportParserGenerate($report, new ReportPdf);
 		break;
 	}
-
-	/**
-	 * @global array $wt_reportStack
-	 */
-	$wt_reportStack = array();
-
-	/**
-	 * @global array $parserStack
-	 */
-	$parserStack = array();
-
-	/**
-	 * @global resource $parser
-	 */
-	$parser = '';
-
-	new ReportParserGenerate($report);
 }

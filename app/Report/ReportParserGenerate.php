@@ -63,6 +63,15 @@ class ReportParserGenerate extends ReportParserBase {
 	/** @var array[] Nested repeating data */
 	private $repeats_stack = array();
 
+	/** @var ReportBase[] Nested repeating data */
+	private $wt_report_stack = array();
+
+	/** @var resource Nested repeating data */
+	private $parser;
+
+	/** @var resource[] Nested repeating data */
+	private $parser_stack = array();
+
 	/** @var string The current GEDCOM record */
 	private $gedrec = '';
 
@@ -96,8 +105,16 @@ class ReportParserGenerate extends ReportParserBase {
 	/** @var int Number of items filtered from lists */
 	private $list_private = 0;
 
+	/** @var ReportBase A factory for creating report elements */
+	private $report_root;
+
+	/** @var ReportBase Nested report elements */
+	private $wt_report;
+
 	/** {@inheritDoc} */
-	public function __construct($report) {
+	public function __construct($report, ReportBase $report_root = null) {
+		$this->report_root     = $report_root;
+		$this->wt_report       = $report_root;
 		$this->current_element = new ReportBaseElement;
 		parent::__construct($report);
 	}
@@ -165,14 +182,12 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param string   $data   the name of the XML element parsed
 	 */
 	protected function characterData($parser, $data) {
-		global $wt_report;
-
-		if ($this->print_data && ($this->process_gedcoms === 0) && ($this->process_ifs === 0) && ($this->process_repeats === 0)) {
+		if ($this->print_data && $this->process_gedcoms === 0 && $this->process_ifs === 0 && $this->process_repeats === 0) {
 			$this->current_element->addText($data);
 		} elseif ($this->report_title) {
-			$wt_report->addTitle($data);
+			$this->wt_report->addTitle($data);
 		} elseif ($this->report_description) {
-			$wt_report->addDescription($data);
+			$this->wt_report->addDescription($data);
 		}
 	}
 
@@ -182,8 +197,6 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
 	private function styleStartHandler($attrs) {
-		global $wt_report;
-
 		if (empty($attrs['name'])) {
 			throw new \DomainException('REPORT ERROR Style: The "name" of the style is missing or not set in the XML file.');
 		}
@@ -195,13 +208,13 @@ class ReportParserGenerate extends ReportParserBase {
 		$s['name'] = $attrs['name'];
 
 		// string Name of the DEFAULT font
-		$s['font'] = $wt_report->defaultFont;
+		$s['font'] = $this->wt_report->defaultFont;
 		if (!empty($attrs['font'])) {
 			$s['font'] = $attrs['font'];
 		}
 
 		// int The size of the font in points
-		$s['size'] = $wt_report->defaultFontSize;
+		$s['size'] = $this->wt_report->defaultFontSize;
 		if (!empty($attrs['size'])) {
 			$s['size'] = (int) $attrs['size'];
 		} // Get it as int to ignore all decimal points or text (if any text then int(0))
@@ -212,7 +225,7 @@ class ReportParserGenerate extends ReportParserBase {
 			$s['style'] = $attrs['style'];
 		}
 
-		$wt_report->addStyle($s);
+		$this->wt_report->addStyle($s);
 	}
 
 	/**
@@ -223,150 +236,139 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
 	private function docStartHandler($attrs) {
-		global $parser, $wt_report;
-
-		$parser = $this->xml_parser;
+		$this->parser = $this->xml_parser;
 
 		// Custom page width
 		if (!empty($attrs['customwidth'])) {
-			$wt_report->pagew = (int) $attrs['customwidth'];
+			$this->wt_report->pagew = (int) $attrs['customwidth'];
 		} // Get it as int to ignore all decimal points or text (if any text then int(0))
 		// Custom Page height
 		if (!empty($attrs['customheight'])) {
-			$wt_report->pageh = (int) $attrs['customheight'];
+			$this->wt_report->pageh = (int) $attrs['customheight'];
 		} // Get it as int to ignore all decimal points or text (if any text then int(0))
 
 		// Left Margin
 		if (isset($attrs['leftmargin'])) {
 			if ($attrs['leftmargin'] === "0") {
-				$wt_report->leftmargin = 0;
+				$this->wt_report->leftmargin = 0;
 			} elseif (!empty($attrs['leftmargin'])) {
-				$wt_report->leftmargin = (int) $attrs['leftmargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
+				$this->wt_report->leftmargin = (int) $attrs['leftmargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
 			}
 		}
 		// Right Margin
 		if (isset($attrs['rightmargin'])) {
 			if ($attrs['rightmargin'] === "0") {
-				$wt_report->rightmargin = 0;
+				$this->wt_report->rightmargin = 0;
 			} elseif (!empty($attrs['rightmargin'])) {
-				$wt_report->rightmargin = (int) $attrs['rightmargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
+				$this->wt_report->rightmargin = (int) $attrs['rightmargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
 			}
 		}
 		// Top Margin
 		if (isset($attrs['topmargin'])) {
 			if ($attrs['topmargin'] === "0") {
-				$wt_report->topmargin = 0;
+				$this->wt_report->topmargin = 0;
 			} elseif (!empty($attrs['topmargin'])) {
-				$wt_report->topmargin = (int) $attrs['topmargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
+				$this->wt_report->topmargin = (int) $attrs['topmargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
 			}
 		}
 		// Bottom Margin
 		if (isset($attrs['bottommargin'])) {
 			if ($attrs['bottommargin'] === "0") {
-				$wt_report->bottommargin = 0;
+				$this->wt_report->bottommargin = 0;
 			} elseif (!empty($attrs['bottommargin'])) {
-				$wt_report->bottommargin = (int) $attrs['bottommargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
+				$this->wt_report->bottommargin = (int) $attrs['bottommargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
 			}
 		}
 		// Header Margin
 		if (isset($attrs['headermargin'])) {
 			if ($attrs['headermargin'] === "0") {
-				$wt_report->headermargin = 0;
+				$this->wt_report->headermargin = 0;
 			} elseif (!empty($attrs['headermargin'])) {
-				$wt_report->headermargin = (int) $attrs['headermargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
+				$this->wt_report->headermargin = (int) $attrs['headermargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
 			}
 		}
 		// Footer Margin
 		if (isset($attrs['footermargin'])) {
 			if ($attrs['footermargin'] === "0") {
-				$wt_report->footermargin = 0;
+				$this->wt_report->footermargin = 0;
 			} elseif (!empty($attrs['footermargin'])) {
-				$wt_report->footermargin = (int) $attrs['footermargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
+				$this->wt_report->footermargin = (int) $attrs['footermargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
 			}
 		}
 
 		// Page Orientation
 		if (!empty($attrs['orientation'])) {
 			if ($attrs['orientation'] == "landscape") {
-				$wt_report->orientation = "landscape";
+				$this->wt_report->orientation = "landscape";
 			} elseif ($attrs['orientation'] == "portrait") {
-				$wt_report->orientation = "portrait";
+				$this->wt_report->orientation = "portrait";
 			}
 		}
 		// Page Size
 		if (!empty($attrs['pageSize'])) {
-			$wt_report->pageFormat = strtoupper($attrs['pageSize']);
+			$this->wt_report->pageFormat = strtoupper($attrs['pageSize']);
 		}
 
 		// Show Generated By...
 		if (isset($attrs['showGeneratedBy'])) {
 			if ($attrs['showGeneratedBy'] === "0") {
-				$wt_report->showGenText = false;
+				$this->wt_report->showGenText = false;
 			} elseif ($attrs['showGeneratedBy'] === "1") {
-				$wt_report->showGenText = true;
+				$this->wt_report->showGenText = true;
 			}
 		}
 
-		$wt_report->setup();
+		$this->wt_report->setup();
 	}
 
 	/**
 	 * XML </Doc> end element handler
 	 */
 	private function docEndHandler() {
-		global $wt_report;
-		$wt_report->run();
+		$this->wt_report->run();
 	}
 
 	/**
 	 * XML <Header> start element handler
 	 */
 	private function headerStartHandler() {
-		global $wt_report;
-
 		// Clear the Header before any new elements are added
-		$wt_report->clearHeader();
-		$wt_report->setProcessing("H");
+		$this->wt_report->clearHeader();
+		$this->wt_report->setProcessing("H");
 	}
 
 	/**
 	 * XML <PageHeader> start element handler
 	 */
 	private function pageHeaderStartHandler() {
-		global $wt_reportStack, $wt_report, $ReportRoot;
-
 		array_push($this->print_data_stack, $this->print_data);
 		$this->print_data = false;
-		array_push($wt_reportStack, $wt_report);
-		$wt_report = $ReportRoot->createPageHeader();
+		array_push($this->wt_report_stack, $this->wt_report);
+		$this->wt_report = $this->report_root->createPageHeader();
 	}
 
 	/**
 	 * XML <pageHeaderEndHandler> end element handler
 	 */
 	private function pageHeaderEndHandler() {
-		global $wt_report, $wt_reportStack;
-
 		$this->print_data        = array_pop($this->print_data_stack);
-		$this->current_element   = $wt_report;
-		$wt_report               = array_pop($wt_reportStack);
-		$wt_report->addElement($this->current_element);
+		$this->current_element   = $this->wt_report;
+		$this->wt_report         = array_pop($this->wt_report_stack);
+		$this->wt_report->addElement($this->current_element);
 	}
 
 	/**
 	 * XML <bodyStartHandler> start element handler
 	 */
 	private function bodyStartHandler() {
-		global $wt_report;
-		$wt_report->setProcessing("B");
+		$this->wt_report->setProcessing("B");
 	}
 
 	/**
 	 * XML <footerStartHandler> start element handler
 	 */
 	private function footerStartHandler() {
-		global $wt_report;
-		$wt_report->setProcessing("F");
+		$this->wt_report->setProcessing("F");
 	}
 
 	/**
@@ -375,21 +377,19 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
 	private function cellStartHandler($attrs) {
-		global $ReportRoot, $wt_report;
-
 		// string The text alignment of the text in this box.
 		$align = "";
 		if (!empty($attrs['align'])) {
 			$align = $attrs['align'];
 			// RTL supported left/right alignment
 			if ($align == "rightrtl") {
-				if ($wt_report->rtl) {
+				if ($this->wt_report->rtl) {
 					$align = "left";
 				} else {
 					$align = "right";
 				}
 			} elseif ($align == "leftrtl") {
-				if ($wt_report->rtl) {
+				if ($this->wt_report->rtl) {
 					$align = "right";
 				} else {
 					$align = "left";
@@ -509,7 +509,7 @@ class ReportParserGenerate extends ReportParserBase {
 		array_push($this->print_data_stack, $this->print_data);
 		$this->print_data = true;
 
-		$this->current_element = $ReportRoot->createCell(
+		$this->current_element = $this->report_root->createCell(
 			$width,
 			$height,
 			$border,
@@ -531,10 +531,8 @@ class ReportParserGenerate extends ReportParserBase {
 	 * XML </Cell> end element handler
 	 */
 	private function cellEndHandler() {
-		global $wt_report;
-
 		$this->print_data = array_pop($this->print_data_stack);
-		$wt_report->addElement($this->current_element);
+		$this->wt_report->addElement($this->current_element);
 	}
 
 	/**
@@ -641,8 +639,6 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
 	private function textBoxStartHandler($attrs) {
-		global $wt_report, $wt_reportStack, $ReportRoot;
-
 		// string Background color code
 		$bgcolor = "";
 		if (!empty($attrs['bgcolor'])) {
@@ -745,8 +741,8 @@ class ReportParserGenerate extends ReportParserBase {
 		array_push($this->print_data_stack, $this->print_data);
 		$this->print_data = false;
 
-		array_push($wt_reportStack, $wt_report);
-		$wt_report = $ReportRoot->createTextBox(
+		array_push($this->wt_report_stack, $this->wt_report);
+		$this->wt_report = $this->report_root->createTextBox(
 			$width,
 			$height,
 			$border,
@@ -766,20 +762,16 @@ class ReportParserGenerate extends ReportParserBase {
 	 * XML <textBoxEndHandler> end element handler
 	 */
 	private function textBoxEndHandler() {
-		global $wt_report, $wt_reportStack;
-
 		$this->print_data      = array_pop($this->print_data_stack);
-		$this->current_element = $wt_report;
-		$wt_report             = array_pop($wt_reportStack);
-		$wt_report->addElement($this->current_element);
+		$this->current_element = $this->wt_report;
+		$this->wt_report       = array_pop($this->wt_report_stack);
+		$this->wt_report->addElement($this->current_element);
 	}
 
 	/**
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
 	private function textStartHandler($attrs) {
-		global $ReportRoot;
-
 		array_push($this->print_data_stack, $this->print_data);
 		$this->print_data = true;
 
@@ -795,17 +787,15 @@ class ReportParserGenerate extends ReportParserBase {
 			$color = $attrs['color'];
 		}
 
-		$this->current_element = $ReportRoot->createText($style, $color);
+		$this->current_element = $this->report_root->createText($style, $color);
 	}
 
 	/**
 	 *
 	 */
 	private function textEndHandler() {
-		global $wt_report;
-
 		$this->print_data = array_pop($this->print_data_stack);
-		$wt_report->addElement($this->current_element);
+		$this->wt_report->addElement($this->current_element);
 	}
 
 	/**
@@ -967,8 +957,6 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
 	private function repeatTagStartHandler($attrs) {
-		global $parser;
-
 		$this->process_repeats++;
 		if ($this->process_repeats > 1) {
 			return;
@@ -976,7 +964,7 @@ class ReportParserGenerate extends ReportParserBase {
 
 		array_push($this->repeats_stack, array($this->repeats, $this->repeat_bytes));
 		$this->repeats      = array();
-		$this->repeat_bytes = xml_get_current_line_number($parser);
+		$this->repeat_bytes = xml_get_current_line_number($this->parser);
 
 		$tag = "";
 		if (isset($attrs['tag'])) {
@@ -1031,7 +1019,7 @@ class ReportParserGenerate extends ReportParserBase {
 	 * XML </ RepeatTag> end element handler
 	 */
 	private function repeatTagEndHandler() {
-		global $parser, $parserStack, $report;
+		global $report;
 
 		$this->process_repeats--;
 		if ($this->process_repeats > 0) {
@@ -1071,12 +1059,12 @@ class ReportParserGenerate extends ReportParserBase {
 			unset($lines);
 			$reportxml .= "</tempdoc>\n";
 			// Save original values
-			array_push($parserStack, $parser);
+			array_push($this->parser_stack, $this->parser);
 			$oldgedrec = $this->gedrec;
 			foreach ($this->repeats as $gedrec) {
 				$this->gedrec  = $gedrec;
 				$repeat_parser = xml_parser_create();
-				$parser        = $repeat_parser;
+				$this->parser  = $repeat_parser;
 				xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, false);
 				xml_set_element_handler($repeat_parser, array($this, 'startElement'), array($this, 'endElement'));
 				xml_set_character_data_handler($repeat_parser, array($this, 'characterData'));
@@ -1091,7 +1079,7 @@ class ReportParserGenerate extends ReportParserBase {
 			}
 			// Restore original values
 			$this->gedrec = $oldgedrec;
-			$parser       = array_pop($parserStack);
+			$this->parser = array_pop($this->parser_stack);
 		}
 		list($this->repeats, $this->repeat_bytes) = array_pop($this->repeats_stack);
 	}
@@ -1110,10 +1098,10 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
 	private function varStartHandler($attrs) {
-		global $parser, $vars;
+		global $vars;
 
 		if (empty($attrs['var'])) {
-			throw new \DomainException('REPORT ERROR var: The attribute "var=" is missing or not set in the XML file on line: ' . xml_get_current_line_number($parser));
+			throw new \DomainException('REPORT ERROR var: The attribute "var=" is missing or not set in the XML file on line: ' . xml_get_current_line_number($this->parser));
 		}
 
 		$var = $attrs['var'];
@@ -1150,7 +1138,7 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
 	private function factsStartHandler($attrs) {
-		global $parser, $vars, $WT_TREE;
+		global $vars, $WT_TREE;
 
 		$this->process_repeats++;
 		if ($this->process_repeats > 1) {
@@ -1159,7 +1147,7 @@ class ReportParserGenerate extends ReportParserBase {
 
 		array_push($this->repeats_stack, array($this->repeats, $this->repeat_bytes));
 		$this->repeats      = array();
-		$this->repeat_bytes = xml_get_current_line_number($parser);
+		$this->repeat_bytes = xml_get_current_line_number($this->parser);
 
 		$id    = "";
 		$match = array();
@@ -1198,7 +1186,7 @@ class ReportParserGenerate extends ReportParserBase {
 	 * XML </ Facts> end element handler
 	 */
 	private function factsEndHandler() {
-		global $parser, $parserStack, $report;
+		global $report;
 
 		$this->process_repeats--;
 		if ($this->process_repeats > 0) {
@@ -1208,7 +1196,7 @@ class ReportParserGenerate extends ReportParserBase {
 		// Check if there is anything to repeat
 		if (count($this->repeats) > 0) {
 
-			$line       = xml_get_current_line_number($parser) - 1;
+			$line       = xml_get_current_line_number($this->parser) - 1;
 			$lineoffset = 0;
 			foreach ($this->repeats_stack as $rep) {
 				$lineoffset += $rep[1];
@@ -1231,7 +1219,7 @@ class ReportParserGenerate extends ReportParserBase {
 			unset($lines);
 			$reportxml .= "</tempdoc>\n";
 			// Save original values
-			array_push($parserStack, $parser);
+			array_push($this->parser_stack, $this->parser);
 			$oldgedrec = $this->gedrec;
 			$count     = count($this->repeats);
 			$i         = 0;
@@ -1253,7 +1241,7 @@ class ReportParserGenerate extends ReportParserBase {
 					$this->desc .= get_cont(2, $this->gedrec);
 				}
 				$repeat_parser = xml_parser_create();
-				$parser        = $repeat_parser;
+				$this->parser  = $repeat_parser;
 				xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, false);
 				xml_set_element_handler($repeat_parser, array($this, 'startElement'), array($this, 'endElement'));
 				xml_set_character_data_handler($repeat_parser, array($this, 'characterData'));
@@ -1268,7 +1256,7 @@ class ReportParserGenerate extends ReportParserBase {
 				$i++;
 			}
 			// Restore original values
-			$parser       = array_pop($parserStack);
+			$this->parser = array_pop($this->parser_stack);
 			$this->gedrec = $oldgedrec;
 		}
 		list($this->repeats, $this->repeat_bytes) = array_pop($this->repeats_stack);
@@ -1428,7 +1416,7 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
 	private function footnoteStartHandler($attrs) {
-		global $ReportRoot, $WT_TREE;
+		global $WT_TREE;
 
 		$id = "";
 		if (preg_match("/[0-9] (.+) @(.+)@/", $this->gedrec, $match)) {
@@ -1443,7 +1431,7 @@ class ReportParserGenerate extends ReportParserBase {
 				$style = $attrs['style'];
 			}
 			$this->footnote_element = $this->current_element;
-			$this->current_element  = $ReportRoot->createFootnote($style);
+			$this->current_element  = $this->report_root->createFootnote($style);
 		} else {
 			$this->print_data       = false;
 			$this->process_footnote = false;
@@ -1455,13 +1443,11 @@ class ReportParserGenerate extends ReportParserBase {
 	 * Print the collected Footnote data
 	 */
 	private function footnoteEndHandler() {
-		global $wt_report;
-
 		if ($this->process_footnote) {
 			$this->print_data = array_pop($this->print_data_stack);
 			$temp             = trim($this->current_element->getValue());
 			if (strlen($temp) > 3) {
-				$wt_report->addElement($this->current_element);
+				$this->wt_report->addElement($this->current_element);
 			}
 			$this->current_element = $this->footnote_element;
 		} else {
@@ -1473,10 +1459,8 @@ class ReportParserGenerate extends ReportParserBase {
 	 * XML <FootnoteTexts /> element
 	 */
 	private function footnoteTextsStartHandler() {
-		global $wt_report;
-
 		$temp = "footnotetexts";
-		$wt_report->addElement($temp);
+		$this->wt_report->addElement($temp);
 	}
 
 	/**
@@ -1558,7 +1542,7 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
 	private function highlightedImageStartHandler($attrs) {
-		global $wt_report, $ReportRoot, $WT_TREE;
+		global $WT_TREE;
 
 		$id    = '';
 		$match = array();
@@ -1647,8 +1631,8 @@ class ReportParserGenerate extends ReportParserBase {
 					$width  = $attributes['adjW'];
 					$height = $attributes['adjH'];
 				}
-				$image = $ReportRoot->createImageFromObject($mediaobject, $left, $top, $width, $height, $align, $ln);
-				$wt_report->addElement($image);
+				$image = $this->report_root->createImageFromObject($mediaobject, $left, $top, $width, $height, $align, $ln);
+				$this->wt_report->addElement($image);
 			}
 		}
 	}
@@ -1657,7 +1641,7 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
 	private function imageStartHandler($attrs) {
-		global $wt_report, $ReportRoot, $WT_TREE;
+		global $WT_TREE;
 
 		// mixed Position the top corner of this box on the page. the default is the current position
 		$top = '.';
@@ -1745,8 +1729,8 @@ class ReportParserGenerate extends ReportParserBase {
 						$width  = $attributes['adjW'];
 						$height = $attributes['adjH'];
 					}
-					$image = $ReportRoot->createImageFromObject($mediaobject, $left, $top, $width, $height, $align, $ln);
-					$wt_report->addElement($image);
+					$image = $this->report_root->createImageFromObject($mediaobject, $left, $top, $width, $height, $align, $ln);
+					$this->wt_report->addElement($image);
 				}
 			}
 		} else {
@@ -1762,8 +1746,8 @@ class ReportParserGenerate extends ReportParserBase {
 					$width  = $size[0];
 					$height = $size[1];
 				}
-				$image = $ReportRoot->createImage($file, $left, $top, $width, $height, $align, $ln);
-				$wt_report->addElement($image);
+				$image = $this->report_root->createImage($file, $left, $top, $width, $height, $align, $ln);
+				$this->wt_report->addElement($image);
 			}
 		}
 	}
@@ -1774,8 +1758,6 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
 	private function lineStartHandler($attrs) {
-		global $wt_report, $ReportRoot;
-
 		// Start horizontal position, current position (default)
 		$x1 = ".";
 		if (isset($attrs['x1'])) {
@@ -1821,8 +1803,8 @@ class ReportParserGenerate extends ReportParserBase {
 			}
 		}
 
-		$line = $ReportRoot->createLine($x1, $y1, $x2, $y2);
-		$wt_report->addElement($line);
+		$line = $this->report_root->createLine($x1, $y1, $x2, $y2);
+		$this->wt_report->addElement($line);
 	}
 
 	/**
@@ -1831,7 +1813,7 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
 	private function listStartHandler($attrs) {
-		global $parser, $vars, $WT_TREE;
+		global $vars, $WT_TREE;
 
 		$this->process_repeats++;
 		if ($this->process_repeats > 1) {
@@ -2204,14 +2186,14 @@ class ReportParserGenerate extends ReportParserBase {
 		}
 
 		array_push($this->repeats_stack, array($this->repeats, $this->repeat_bytes));
-		$this->repeat_bytes = xml_get_current_line_number($parser) + 1;
+		$this->repeat_bytes = xml_get_current_line_number($this->parser) + 1;
 	}
 
 	/**
 	 * XML <List> end element handler
 	 */
 	private function listEndHandler() {
-		global $parser, $parserStack, $report;
+		global $report;
 
 		$this->process_repeats--;
 		if ($this->process_repeats > 0) {
@@ -2249,7 +2231,7 @@ class ReportParserGenerate extends ReportParserBase {
 			unset($lines);
 			$reportxml .= "</tempdoc>";
 			// Save original values
-			array_push($parserStack, $parser);
+			array_push($this->parser_stack, $this->parser);
 			$oldgedrec = $this->gedrec;
 
 			$this->list_total   = count($this->list);
@@ -2259,7 +2241,7 @@ class ReportParserGenerate extends ReportParserBase {
 					$this->gedrec = $record->privatizeGedcom(Auth::accessLevel($record->getTree()));
 					//-- start the sax parser
 					$repeat_parser = xml_parser_create();
-					$parser        = $repeat_parser;
+					$this->parser  = $repeat_parser;
 					xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, false);
 					xml_set_element_handler($repeat_parser, array($this, 'startElement'), array($this, 'endElement'));
 					xml_set_character_data_handler($repeat_parser, array($this, 'characterData'));
@@ -2276,7 +2258,7 @@ class ReportParserGenerate extends ReportParserBase {
 				}
 			}
 			$this->list   = array();
-			$parser       = array_pop($parserStack);
+			$this->parser = array_pop($this->parser_stack);
 			$this->gedrec = $oldgedrec;
 		}
 		list($this->repeats, $this->repeat_bytes) = array_pop($this->repeats_stack);
@@ -2301,7 +2283,7 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
 	private function relativesStartHandler($attrs) {
-		global $parser, $vars, $WT_TREE;
+		global $vars, $WT_TREE;
 
 		$this->process_repeats++;
 		if ($this->process_repeats > 1) {
@@ -2433,14 +2415,14 @@ class ReportParserGenerate extends ReportParserBase {
 				break;
 		}
 		array_push($this->repeats_stack, array($this->repeats, $this->repeat_bytes));
-		$this->repeat_bytes = xml_get_current_line_number($parser) + 1;
+		$this->repeat_bytes = xml_get_current_line_number($this->parser) + 1;
 	}
 
 	/**
 	 * XML </ Relatives> end element handler
 	 */
 	private function relativesEndHandler() {
-		global $parser, $parserStack, $report, $WT_TREE;
+		global $report, $WT_TREE;
 
 		$this->process_repeats--;
 		if ($this->process_repeats > 0) {
@@ -2478,7 +2460,7 @@ class ReportParserGenerate extends ReportParserBase {
 			unset($lines);
 			$reportxml .= "</tempdoc>\n";
 			// Save original values
-			array_push($parserStack, $parser);
+			array_push($this->parser_stack, $this->parser);
 			$oldgedrec = $this->gedrec;
 
 			$this->list_total   = count($this->list);
@@ -2491,7 +2473,7 @@ class ReportParserGenerate extends ReportParserBase {
 				$this->gedrec = $tmp->privatizeGedcom(Auth::accessLevel($WT_TREE));
 
 				$repeat_parser = xml_parser_create();
-				$parser        = $repeat_parser;
+				$this->parser  = $repeat_parser;
 				xml_parser_set_option($repeat_parser, XML_OPTION_CASE_FOLDING, false);
 				xml_set_element_handler($repeat_parser, array($this, 'startElement'), array($this, 'endElement'));
 				xml_set_character_data_handler($repeat_parser, array($this, 'characterData'));
@@ -2503,7 +2485,7 @@ class ReportParserGenerate extends ReportParserBase {
 			}
 			// Clean up the list array
 			$this->list   = array();
-			$parser       = array_pop($parserStack);
+			$this->parser = array_pop($this->parser_stack);
 			$this->gedrec = $oldgedrec;
 		}
 		list($this->repeats, $this->repeat_bytes) = array_pop($this->repeats_stack);
@@ -2524,10 +2506,8 @@ class ReportParserGenerate extends ReportParserBase {
 	 * Has to be placed in an element (header, pageheader, body or footer)
 	 */
 	private function newPageStartHandler() {
-		global $wt_report;
-
 		$temp = "addpage";
-		$wt_report->addElement($temp);
+		$this->wt_report->addElement($temp);
 	}
 
 	/**
@@ -2535,14 +2515,12 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param string $tag   HTML tag name
 	 */
 	private function htmlStartHandler($tag, $attrs) {
-		global $wt_reportStack, $wt_report, $ReportRoot;
-
 		if ($tag === "tempdoc") {
 			return;
 		}
-		array_push($wt_reportStack, $wt_report);
-		$wt_report             = $ReportRoot->createHTML($tag, $attrs);
-		$this->current_element = $wt_report;
+		array_push($this->wt_report_stack, $this->wt_report);
+		$this->wt_report       = $this->report_root->createHTML($tag, $attrs);
+		$this->current_element = $this->wt_report;
 
 		array_push($this->print_data_stack, $this->print_data);
 		$this->print_data = true;
@@ -2552,18 +2530,17 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param string $tag
 	 */
 	private function htmlEndHandler($tag) {
-		global $wt_report, $wt_reportStack;
 		if ($tag === "tempdoc") {
 			return;
 		}
 
 		$this->print_data      = array_pop($this->print_data_stack);
-		$this->current_element = $wt_report;
-		$wt_report             = array_pop($wt_reportStack);
-		if (!is_null($wt_report)) {
-			$wt_report->addElement($this->current_element);
+		$this->current_element = $this->wt_report;
+		$this->wt_report       = array_pop($this->wt_report_stack);
+		if (!is_null($this->wt_report)) {
+			$this->wt_report->addElement($this->current_element);
 		} else {
-			$wt_report = $this->current_element;
+			$this->wt_report = $this->current_element;
 		}
 	}
 
