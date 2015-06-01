@@ -16,11 +16,10 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 use Fisharebest\Webtrees\Controller\PageController;
-use Fisharebest\Webtrees\Report\ReportBaseElement;
 use Fisharebest\Webtrees\Report\ReportHtml;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
-use Fisharebest\Webtrees\Report\ReportPdf;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
+use Fisharebest\Webtrees\Report\ReportPdf;
 
 /**
  * Defined in session.php
@@ -305,4 +304,3 @@ case 'run':
 
 	new ReportParserGenerate($report);
 }
-

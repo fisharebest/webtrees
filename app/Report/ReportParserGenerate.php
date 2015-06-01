@@ -65,7 +65,7 @@ class ReportParserGenerate extends ReportParserBase {
 
 	/** @var string The current GEDCOM record */
 	private $gedrec = '';
-	
+
 	/** @var string[] Nested GEDCOM records */
 	private $gedrec_stack = array();
 
@@ -1091,7 +1091,7 @@ class ReportParserGenerate extends ReportParserBase {
 			}
 			// Restore original values
 			$this->gedrec = $oldgedrec;
-			$parser = array_pop($parserStack);
+			$parser       = array_pop($parserStack);
 		}
 		list($this->repeats, $this->repeat_bytes) = array_pop($this->repeats_stack);
 	}
@@ -1179,7 +1179,7 @@ class ReportParserGenerate extends ReportParserBase {
 			$facts = $record->getFacts();
 			sort_facts($facts);
 			$this->repeats  = array();
-			$nonfacts = explode(',', $tag);
+			$nonfacts       = explode(',', $tag);
 			foreach ($facts as $event) {
 				if (!in_array($event->getTag(), $nonfacts)) {
 					$this->repeats[] = $event->getGedcom();
@@ -1268,7 +1268,7 @@ class ReportParserGenerate extends ReportParserBase {
 				$i++;
 			}
 			// Restore original values
-			$parser = array_pop($parserStack);
+			$parser       = array_pop($parserStack);
 			$this->gedrec = $oldgedrec;
 		}
 		list($this->repeats, $this->repeat_bytes) = array_pop($this->repeats_stack);
@@ -1942,7 +1942,7 @@ class ReportParserGenerate extends ReportParserBase {
 				}
 
 				$this->list = array();
-				$rows = Database::prepare(
+				$rows       = Database::prepare(
 					$sql_select . $sql_join . $sql_where . $sql_order_by
 				)->fetchAll();
 
@@ -2020,7 +2020,7 @@ class ReportParserGenerate extends ReportParserBase {
 				}
 
 				$this->list = array();
-				$rows = Database::prepare(
+				$rows       = Database::prepare(
 					$sql_select . $sql_join . $sql_where . $sql_order_by
 				)->fetchAll();
 
@@ -2502,7 +2502,7 @@ class ReportParserGenerate extends ReportParserBase {
 				xml_parser_free($repeat_parser);
 			}
 			// Clean up the list array
-			$this->list = array();
+			$this->list   = array();
 			$parser       = array_pop($parserStack);
 			$this->gedrec = $oldgedrec;
 		}
