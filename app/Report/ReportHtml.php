@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees\Report;
  */
 use Fisharebest\Webtrees\Controller\SimpleController;
 use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Media;
 
 /**
  * Class ReportHtml
@@ -162,16 +163,14 @@ class ReportHtml extends ReportBase {
 
 	/**
 	 * @param $element
-	 *
-	 * @return mixed
 	 */
 	public function addElement($element) {
 		if ($this->processing == "B") {
-			return $this->bodyElements[] = $element;
+			$this->bodyElements[] = $element;
 		} elseif ($this->processing == "H") {
-			return $this->headerElements[] = $element;
+			$this->headerElements[] = $element;
 		} elseif ($this->processing == "F") {
-			return $this->footerElements[] = $element;
+			$this->footerElements[] = $element;
 		}
 	}
 
@@ -374,7 +373,7 @@ class ReportHtml extends ReportBase {
 	}
 
 	/**
-	 * @param $mediaobject
+	 * @param Media $mediaobject
 	 * @param $x
 	 * @param $y
 	 * @param $w
@@ -384,7 +383,7 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return ReportHtmlImage
 	 */
-	public function createImageFromObject($mediaobject, $x, $y, $w, $h, $align, $ln) {
+	public function createImageFromObject(Media $mediaobject, $x, $y, $w, $h, $align, $ln) {
 		return new ReportHtmlImage($mediaobject->getHtmlUrlDirect('thumb'), $x, $y, $w, $h, $align, $ln);
 	}
 

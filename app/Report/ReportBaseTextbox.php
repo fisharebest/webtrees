@@ -157,12 +157,8 @@ class ReportBaseTextbox extends ReportBaseElement {
 	 * Add an element to the TextBox
 	 *
 	 * @param object|string $element
-	 *
-	 * @return int
 	 */
 	public function addElement($element) {
 		$this->elements[] = $element;
-
-		return 0;
 	}
 }

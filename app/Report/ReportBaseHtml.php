@@ -57,12 +57,8 @@ class ReportBaseHtml extends ReportBaseElement {
 
 	/**
 	 * @param $element
-	 *
-	 * @return int
 	 */
 	public function addElement($element) {
 		$this->elements[] = $element;
-
-		return 0;
 	}
 }
