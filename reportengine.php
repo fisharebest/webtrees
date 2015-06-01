@@ -269,10 +269,9 @@ case 'setup':
 
 case 'run':
 	if (strstr($report, 'report_singlepage.xml') !== false) {
-		$DEBUG    = false;
-		$pedigree = new \ReportPedigree;
-
-		return;
+		// This is a custom module?
+		new \ReportPedigree;
+		break;
 	}
 
 	switch ($output) {
