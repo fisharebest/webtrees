@@ -18,6 +18,7 @@ namespace Fisharebest\Webtrees;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Report\ReportBaseElement;
 use Fisharebest\Webtrees\Report\ReportHtml;
+use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportPdf;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
 
@@ -288,198 +289,9 @@ case 'run':
 	}
 
 	/**
-	 * element handlers array
-	 *
-	 * Converts XML element names into functions
-	 *
-	 * @global string[][] $elementHandler
-	 */
-	$elementHandler = array(
-		'AgeAtDeath' => array(
-			'start' => '\Fisharebest\Webtrees\Report\\ageAtDeathStartHandler',
-		),
-		'br' => array(
-			'start' => '\Fisharebest\Webtrees\Report\\brStartHandler',
-		),
-		'Body' => array(
-			'start' => '\Fisharebest\Webtrees\Report\\bodyStartHandler',
-		),
-		'Cell' => array(
-			'end'   => '\Fisharebest\Webtrees\Report\\cellEndHandler',
-			'start' => '\Fisharebest\Webtrees\Report\\cellStartHandler',
-		),
-		'Description' => array(
-			'end'   => '\Fisharebest\Webtrees\Report\\descriptionEndHandler',
-			'start' => '\Fisharebest\Webtrees\Report\\descriptionStartHandler',
-		),
-		'Doc' => array(
-			'end'   => '\Fisharebest\Webtrees\Report\\docEndHandler',
-			'start' => '\Fisharebest\Webtrees\Report\\docStartHandler',
-		),
-		'Report' => array(
-			'end'   => '',
-			'start' => '',
-		),
-		'Facts' => array(
-			'end'   => '\Fisharebest\Webtrees\Report\\factsEndHandler',
-			'start' => '\Fisharebest\Webtrees\Report\\factsStartHandler',
-		),
-		'Footer' => array(
-			'start' => '\Fisharebest\Webtrees\Report\\footerStartHandler',
-		),
-		'Footnote' => array(
-			'end'   => '\Fisharebest\Webtrees\Report\\footnoteEndHandler',
-			'start' => '\Fisharebest\Webtrees\Report\\footnoteStartHandler',
-		),
-		'FootnoteTexts' => array(
-			'start' => '\Fisharebest\Webtrees\Report\\footnoteTextsStartHandler',
-		),
-		'Gedcom' => array(
-			'end'   => '\Fisharebest\Webtrees\Report\\gedcomEndHandler',
-			'start' => '\Fisharebest\Webtrees\Report\\gedcomStartHandler',
-		),
-		'GedcomValue' => array(
-			'start' => '\Fisharebest\Webtrees\Report\\gedcomValueStartHandler',
-		),
-		'Generation' => array(
-			'start' => '\Fisharebest\Webtrees\Report\\generationStartHandler',
-		),
-		'GetPersonName' => array(
-			'start' => '\Fisharebest\Webtrees\Report\\getPersonNameStartHandler',
-		),
-		'Header' => array(
-			'start' => '\Fisharebest\Webtrees\Report\\headerStartHandler',
-		),
-		'HighlightedImage' => array(
-			'start' => '\Fisharebest\Webtrees\Report\\highlightedImageStartHandler',
-		),
-		'if' => array(
-			'end'   => '\Fisharebest\Webtrees\Report\\ifEndHandler',
-			'start' => '\Fisharebest\Webtrees\Report\\ifStartHandler',
-		),
-		'Image' => array(
-			'start' => '\Fisharebest\Webtrees\Report\\imageStartHandler',
-		),
-		'Input' => array(
-			'end'  => '',
-			'start'=> '',
-		),
-		'Line' => array(
-			'start' => '\Fisharebest\Webtrees\Report\\lineStartHandler',
-		),
-		'List' => array(
-			'end'   => '\Fisharebest\Webtrees\Report\\listEndHandler',
-			'start'=> '\Fisharebest\Webtrees\Report\\listStartHandler',
-		),
-		'ListTotal' => array(
-			'start' => '\Fisharebest\Webtrees\Report\\listTotalStartHandler',
-		),
-		'NewPage' => array(
-			'start' => '\Fisharebest\Webtrees\Report\\newPageStartHandler',
-		),
-		'Now' => array(
-			'start' => '\Fisharebest\Webtrees\Report\\nowStartHandler',
-		),
-		'PageHeader' => array(
-			'end'   => '\Fisharebest\Webtrees\Report\\pageHeaderEndHandler',
-			'start' => '\Fisharebest\Webtrees\Report\\pageHeaderStartHandler',
-		),
-		'PageNum' => array(
-			'start' => '\Fisharebest\Webtrees\Report\\pageNumStartHandler',
-		),
-		'Relatives' => array(
-			'end'   => '\Fisharebest\Webtrees\Report\\relativesEndHandler',
-			'start' => '\Fisharebest\Webtrees\Report\\relativesStartHandler',
-		),
-		'RepeatTag' => array(
-			'end'   => '\Fisharebest\Webtrees\Report\\repeatTagEndHandler',
-			'start' => '\Fisharebest\Webtrees\Report\\repeatTagStartHandler',
-		),
-		'SetVar' => array(
-			'start' => '\Fisharebest\Webtrees\Report\\setVarStartHandler',
-		),
-		'Style' => array(
-			'start' => '\Fisharebest\Webtrees\Report\\styleStartHandler',
-		),
-		'Text' => array(
-			'end'   => '\Fisharebest\Webtrees\Report\\textEndHandler',
-			'start' => '\Fisharebest\Webtrees\Report\\textStartHandler',
-		),
-		'TextBox' => array(
-			'end'   => '\Fisharebest\Webtrees\Report\\textBoxEndHandler',
-			'start' => '\Fisharebest\Webtrees\Report\\textBoxStartHandler',
-		),
-		'Title' => array(
-			'end'   => '\Fisharebest\Webtrees\Report\\titleEndHandler',
-			'start' => '\Fisharebest\Webtrees\Report\\titleStartHandler',
-		),
-		'TotalPages' => array(
-			'start' => '\Fisharebest\Webtrees\Report\\totalPagesStartHandler',
-		),
-		'var' => array(
-			'start' => '\Fisharebest\Webtrees\Report\\varStartHandler',
-		),
-		'sp' => array(
-			'start' => '\Fisharebest\Webtrees\Report\\spStartHandler',
-		),
-	);
-
-	/**
-	 * A new object of the currently used element class
-	 *
-	 * @global ReportBaseElement $currentElement
-	 */
-	$currentElement = new ReportBaseElement;
-
-	/**
-	 * Should character data be printed
-	 *
-	 * This variable is turned on or off by the element handlers to tell whether the inner character
-	 * Data should be printed
-	 *
-	 * @global boolean $printData
-	 */
-	$printData = false;
-
-	/**
-	 * Title collector. Mark it if it has already been used
-	 *
-	 * @global boolean $reportTitle
-	 */
-	$reportTitle = false;
-
-	/**
-	 * Description collector. Mark it if it has already been used
-	 *
-	 * @global boolean $reportDescription
-	 */
-	$reportDescription = false;
-
-	/**
-	 * Print data stack
-	 *
-	 * As the XML is being processed there will be times when we need to turn on and off the
-	 * <var>$printData</var> variable as we encounter entinties in the XML.  The stack allows us to
-	 * keep track of when to turn <var>$printData</var> on and off.
-	 *
-	 * @global array $printDataStack
-	 */
-	$printDataStack = array();
-
-	/**
 	 * @global array $wt_reportStack
 	 */
 	$wt_reportStack = array();
-
-	/**
-	 * @global array $gedrecStack
-	 */
-	$gedrecStack = array();
-
-	/**
-	 * @global array $repeatsStack
-	 */
-	$repeatsStack = array();
 
 	/**
 	 * @global array $parserStack
@@ -487,65 +299,10 @@ case 'run':
 	$parserStack = array();
 
 	/**
-	 * @global array $repeats
-	 */
-	$repeats = array();
-
-	/**
-	 * @global string $gedrec
-	 */
-	$gedrec = '';
-
-	/**
-	 * @global ???? $repeatBytes
-	 */
-	$repeatBytes = 0;
-
-	/**
 	 * @global resource $parser
 	 */
 	$parser = '';
 
-	/**
-	 * @global int $processRepeats
-	 */
-	$processRepeats = 0;
-
-	/**
-	 * @global ???? $processIfs
-	 */
-	$processIfs = 0;
-
-	/**
-	 * @global ???? $processGedcoms
-	 */
-	$processGedcoms = 0;
-
-	/**
-	 * Wether or not to print footnote
-	 * true = print, false = don't print
-	 */
-	$processFootnote = true;
-
-	//-- start the sax parser
-	$xml_parser = xml_parser_create();
-	//-- make sure everything is case sensitive
-	xml_parser_set_option($xml_parser, XML_OPTION_CASE_FOLDING, false);
-	//-- set the main element handler functions
-	xml_set_element_handler($xml_parser, '\Fisharebest\Webtrees\Report\\startElement', '\Fisharebest\Webtrees\Report\\endElement');
-	//-- set the character data handler
-	xml_set_character_data_handler($xml_parser, '\Fisharebest\Webtrees\Report\\characterData');
-
-	$fp = fopen($report, 'r');
-	while (($data = fread($fp, 4096))) {
-		if (!xml_parse($xml_parser, $data, feof($fp))) {
-			throw new \DomainException(sprintf(
-				'XML error: %s at line %d',
-				xml_error_string(xml_get_error_code($xml_parser)),
-				xml_get_current_line_number($xml_parser)
-			));
-		}
-	}
-	xml_parser_free($xml_parser);
+	new ReportParserGenerate($report);
 }
 

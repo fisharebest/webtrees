@@ -15,16 +15,14 @@ namespace Fisharebest\Webtrees\Report;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\I18N;
 
 /**
  * Class ReportParserBase
  */
 class ReportParserBase {
 	/** @var resource The XML parser */
-	private $xml_parser;
+	protected $xml_parser;
 
 	/** @var string Text contents of tags */
 	protected $text = '';
@@ -61,8 +59,8 @@ class ReportParserBase {
 	 * @param string   $name   The name of the xml element parsed
 	 * @param string[] $attrs  An array of key value pairs for the attributes
 	 */
-	private function startElement($parser, $name, $attrs) {
-		$method = strtolower($name) . 'StartHandler';
+	public function startElement($parser, $name, $attrs) {
+		$method = $name . 'StartHandler';
 		if (method_exists($this, $method)) {
 			$this->$method($attrs);
 		}
@@ -74,8 +72,8 @@ class ReportParserBase {
 	 * @param resource $parser the resource handler for the xml parser
 	 * @param string $name the name of the xml element parsed
 	 */
-	private function endElement($parser, $name) {
-		$method = strtolower($name) . 'EndHandler';
+	public function endElement($parser, $name) {
+		$method = $name . 'EndHandler';
 		if (method_exists($this, $method)) {
 			$this->$method();
 		}
@@ -87,7 +85,7 @@ class ReportParserBase {
 	 * @param resource $parser The resource handler for the xml parser
 	 * @param string   $data   The name of the xml element parsed
 	 */
-	private function characterData($parser, $data) {
+	public function characterData($parser, $data) {
 		$this->text .= $data;
 	}
 }

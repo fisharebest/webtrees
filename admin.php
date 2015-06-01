@@ -356,6 +356,7 @@ $old_files = array(
 	// Removed in 1.7.0
 	WT_ROOT . 'admin_site_other.php',
 	WT_ROOT . 'includes/hitcount.php',
+	WT_ROOT . 'includes/reportheader.php',
 	WT_ROOT . 'js',
 	WT_ROOT . 'language/en_GB.mo', // Replaced with en-GB.mo
 	WT_ROOT . 'language/en_US.mo', // Replaced with en-US.mo
