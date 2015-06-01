@@ -46,7 +46,7 @@ $repositories = Database::prepare(
 ))->fetchAll();
 
 $repositories = array_map(
-	function ($x) use ($WT_TREE) {
+	function (\stdClass $x) use ($WT_TREE) {
 		$tmp = explode(',', $x->xrefs);
 
 		return array_map(function ($y) use ($WT_TREE) {
@@ -67,7 +67,7 @@ $sources = Database::prepare(
 ))->fetchAll();
 
 $sources = array_map(
-	function ($x) use ($WT_TREE) {
+	function (\stdClass $x) use ($WT_TREE) {
 		$tmp = explode(',', $x->xrefs);
 
 		return array_map(function ($y) use ($WT_TREE) {
@@ -88,7 +88,7 @@ $individuals = Database::prepare(
 ))->fetchAll();
 
 $individuals = array_map(
-	function ($x) use ($WT_TREE) {
+	function (\stdClass $x) use ($WT_TREE) {
 		$tmp = explode(',', $x->xrefs);
 
 		return array_map(function ($y) use ($WT_TREE) {
@@ -108,7 +108,7 @@ $families = Database::prepare(
 ))->fetchAll();
 
 $families = array_map(
-	function ($x) use ($WT_TREE) {
+	function (\stdClass $x) use ($WT_TREE) {
 		$tmp = explode(',', $x->xrefs);
 
 		return array_map(function ($y) use ($WT_TREE) {
@@ -128,7 +128,7 @@ $media = Database::prepare(
 ))->fetchAll();
 
 $media = array_map(
-	function ($x) use ($WT_TREE) {
+	function (\stdClass $x) use ($WT_TREE) {
 		$tmp = explode(',', $x->xrefs);
 
 		return array_map(function ($y) use ($WT_TREE) {
