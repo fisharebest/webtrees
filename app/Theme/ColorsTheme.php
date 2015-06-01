@@ -79,7 +79,7 @@ class ColorsTheme extends CloudsTheme {
 			'shinytomato'      => /* I18N: The name of a colour-scheme */ I18N::translate('Shiny Tomato'),
 			'tealtop'          => /* I18N: The name of a colour-scheme */ I18N::translate('Teal Top'),
 		);
-		uasort($this->palettes, '\Fisharebest\Webtrees\I18N;;strcasecmp');
+		uasort($this->palettes, '\Fisharebest\Webtrees\I18N::strcasecmp');
 
 		// If we've selected a new palette, and we are logged in, set this value as a default.
 		if (isset($_GET['themecolor']) && array_key_exists($_GET['themecolor'], $this->palettes)) {
