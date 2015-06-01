@@ -360,7 +360,7 @@ function spanLTRRTL($inputText, $direction = 'BOTH', $class = '') {
 			break;
 		}
 		$textSpan = stripLRMRLM(substr($result, $lenStart + 3, $spanEnd - $lenStart - 3));
-		if (I18N::scriptDirection(textScript($textSpan)) === 'rtl') {
+		if (I18N::scriptDirection(I18N::textScript($textSpan)) === 'rtl') {
 			break;
 		}
 		$result = $startLTR . substr($result, $lenStart, $spanEnd - $lenStart) . substr($result, $spanEnd + $lenStart + $lenEnd);

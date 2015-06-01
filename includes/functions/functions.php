@@ -2061,7 +2061,7 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 				case 'F':
 					return I18N::translate('great ×%s granddaughter', I18N::number($up - 2));
 				default:
-					return I18N::translate('great ×%s grandchild', I18N::number(up - 2));
+					return I18N::translate('great ×%s grandchild', I18N::number($up - 2));
 				}
 			}
 		}
