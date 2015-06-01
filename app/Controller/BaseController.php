@@ -32,22 +32,10 @@ class BaseController {
 	);
 	private $external_javascript = array();
 
-	protected $page_header = false; // Have we printed a page header?
-
 	/**
 	 * Startup activity
 	 */
 	public function __construct() {
-	}
-
-	/**
-	 * Shutdown activity
-	 */
-	public function __destruct() {
-		// If we printed a header, automatically print a footer
-		if ($this->page_header) {
-			echo $this->pageFooter();
-		}
 	}
 
 	/**

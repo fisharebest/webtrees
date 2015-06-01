@@ -2174,7 +2174,7 @@ function print_chart_by_age($data, $title) {
 		$avg += $age * $n;
 	}
 	if ($count < 1) {
-		return;
+		return '';
 	}
 	$avg       = round($avg / $count);
 	$chart_url = "https://chart.googleapis.com/chart?cht=bvs"; // chart type
@@ -2241,7 +2241,7 @@ function print_chart_by_decade($data, $title) {
 		$count += $n;
 	}
 	if ($count < 1) {
-		return;
+		return '';
 	}
 	$chart_url = "https://chart.googleapis.com/chart?cht=bvs"; // chart type
 	$chart_url .= "&amp;chs=360x150"; // size
