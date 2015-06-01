@@ -679,7 +679,7 @@ function get_common_surnames($min, Tree $tree) {
 	if (empty($topsurns) && $min > 2) {
 		return get_common_surnames($min / 2, $tree);
 	} else {
-		uksort($topsurns, '\Fisharebest\Webtrees\I18N;;strcasecmp');
+		uksort($topsurns, '\Fisharebest\Webtrees\I18N::strcasecmp');
 		foreach ($topsurns as $key => $value) {
 			$topsurns[$key] = array('name' => $key, 'match' => $value);
 		}
