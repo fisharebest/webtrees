@@ -18,7 +18,7 @@
 // https://github.com/FriendsOfPHP/PHP-CS-Fixer
 
 $finder = Symfony\CS\Finder\DefaultFinder::create()
-	->in(__DIR__)
+	->in(__DIR__.'/modules_v3')
 	->exclude('packages')
 	->exclude('vendor');
 
