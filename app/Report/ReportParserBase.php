@@ -59,7 +59,7 @@ class ReportParserBase {
 	 * @param string   $name   The name of the xml element parsed
 	 * @param string[] $attrs  An array of key value pairs for the attributes
 	 */
-	public function startElement($parser, $name, $attrs) {
+	protected function startElement($parser, $name, $attrs) {
 		$method = $name . 'StartHandler';
 		if (method_exists($this, $method)) {
 			$this->$method($attrs);
@@ -72,7 +72,7 @@ class ReportParserBase {
 	 * @param resource $parser the resource handler for the xml parser
 	 * @param string $name the name of the xml element parsed
 	 */
-	public function endElement($parser, $name) {
+	protected function endElement($parser, $name) {
 		$method = $name . 'EndHandler';
 		if (method_exists($this, $method)) {
 			$this->$method();
@@ -85,7 +85,7 @@ class ReportParserBase {
 	 * @param resource $parser The resource handler for the xml parser
 	 * @param string   $data   The name of the xml element parsed
 	 */
-	public function characterData($parser, $data) {
+	protected function characterData($parser, $data) {
 		$this->text .= $data;
 	}
 }
