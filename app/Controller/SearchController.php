@@ -197,6 +197,7 @@ class SearchController extends PageController {
 			$this->soundexSearch();
 			break;
 		case 'replace':
+			$this->setPageTitle(I18N::translate('Search and replace'));
 			$this->search_trees = array($WT_TREE);
 			$this->srindi       = 'checked';
 			$this->srfams       = 'checked';
