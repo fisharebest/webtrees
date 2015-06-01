@@ -127,7 +127,7 @@ class GedcomRecord {
 	 *
 	 * @throws \Exception
 	 *
-	 * @return GedcomRecord|null
+	 * @return GedcomRecord|Individual|Family|Source|Repository|Media|Note|null
 	 */
 	public static function getInstance($xref, Tree $tree, $gedcom = null) {
 		$tree_id = $tree->getTreeId();
