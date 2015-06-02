@@ -17,6 +17,10 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Module\AbstractModule;
+use Fisharebest\Webtrees\Module\ModuleConfigInterface;
+use Fisharebest\Webtrees\Module\ModuleMenuInterface;
+
 class CustomJavaScriptModule extends AbstractModule implements ModuleConfigInterface, ModuleMenuInterface {
 	
 	public function __construct() {
