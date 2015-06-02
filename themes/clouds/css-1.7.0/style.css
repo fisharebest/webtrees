@@ -326,6 +326,10 @@ table.center {
 	width: 100%;
 }
 
+.facts_table .optionbox {
+	white-space: normal;
+}
+
 div.fact_SHARED_NOTE {
 	clear: both;
 }
@@ -5383,7 +5387,28 @@ footer .error {
 		z-index: 1;
 	}
 }
-/* Mobile low and high resolution viewports */
+
+/* Mobile low resolution viewport */
+@media (max-width: 600px) {
+	/* Search */
+	#search-page-table {
+		width: auto;
+	}
+	#search-page-table .value {
+		margin: 0 0 0 30%;
+		white-space: normal;
+	}
+	[dir=rtl] #search-page-table .value {
+		margin: 0 30% 0 0;
+	}
+	#search-page-table div #query {
+		width: 150px;
+	}
+	#search-page-table > input {
+		width: 20px;
+	}
+}
+
 @media (max-width: 480px) {
 	header {
 		height: 83px;
@@ -5394,5 +5419,13 @@ footer .error {
 	}
 	.primary-menu > li > a {
 		height: 20px;
+	}
+	/* Lists */
+	#place_hierarchy td {
+		white-space: normal;
+	}
+	/* Reports */
+	#reportengine-page table {
+		width: 100%;
 	}
 }
