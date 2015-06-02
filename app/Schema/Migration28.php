@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Schema;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,17 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-use Fisharebest\Webtrees\Module\GoogleMapsModule;
+use Fisharebest\Webtrees\Database;
 
-return new GoogleMapsModule(__DIR__);
+/**
+ * Class Migration28 - upgrade the database schema from version 28 to version 29.
+ */
+class Migration28 implements MigrationInterface {
+	/** {@inheritDoc} */
+	public function upgrade() {
+		// Earlier versions used the wrong month number for Adar in non-leap years
+		Database::exec(
+			"UPDATE `##dates` SET d_mon = 7 WHERE d_mon = 6 && d_type = '@#DHEBREW@' AND MOD(7 * d_year + 1, 19) >= 7"
+		);
+	}
+}

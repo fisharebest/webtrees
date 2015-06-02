@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Schema;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,19 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-use Fisharebest\Webtrees\Module\GoogleMapsModule;
+use Fisharebest\Webtrees\Database;
 
-return new GoogleMapsModule(__DIR__);
+/**
+ * Class Migration14 - upgrade the database schema from version 14 to version 15.
+ */
+class Migration14 implements MigrationInterface {
+	/** {@inheritDoc} */
+	public function upgrade() {
+		// Delete old config settings
+		Database::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN('GEDCOM_DEFAULT_TAB', 'LINK_ICONS', 'ZOOM_BOXES')");
+		Database::exec("DELETE FROM `##user_setting` WHERE setting_name='default'");
+
+		// There is no way to add a RESN tag to NOTE objects
+		Database::exec("UPDATE `##gedcom_setting` SET setting_value='SOUR,RESN' WHERE setting_name='NOTE_FACTS_ADD' AND setting_value='SOUR'");
+	}
+}

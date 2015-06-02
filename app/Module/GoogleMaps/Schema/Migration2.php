@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module\GoogleMaps\Schema;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,17 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-use Fisharebest\Webtrees\Module\GoogleMapsModule;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Schema\MigrationInterface;
 
-return new GoogleMapsModule(__DIR__);
+/**
+ * Class Migration2 - upgrade the database schema from version 2 to version 3.
+ */
+class Migration2 implements MigrationInterface {
+	/** {@inheritDoc} */
+	public function upgrade() {
+		// Convert flag icons from .gif to .png
+
+		Database::exec("UPDATE `##placelocation` SET pl_icon=REPLACE(pl_icon, '.gif', '.png')");
+	}
+}

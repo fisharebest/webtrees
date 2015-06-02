@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module\FamilyTreeFavorites\Schema;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,22 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-use Fisharebest\Webtrees\Module\GoogleMapsModule;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Schema\MigrationInterface;
+use PDOException;
 
-return new GoogleMapsModule(__DIR__);
+/**
+ * Class Migration3 - upgrade the database schema from version 3 to version 4.
+ */
+class Migration3 implements MigrationInterface {
+	/** {@inheritDoc} */
+	public function upgrade() {
+		// An earlier update mistakenly made the fv_note column too short.
+		// Add the new constraints
+		try {
+			Database::exec("ALTER TABLE `##favorite` CHANGE note note VARCHAR(1000) NULL");
+		} catch (PDOException $ex) {
+			// Already updated?
+		}
+	}
+}

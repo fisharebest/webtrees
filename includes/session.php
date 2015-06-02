@@ -305,7 +305,8 @@ try {
 	unset($dbconfig);
 	// Some of the FAMILY JOIN HUSBAND JOIN WIFE queries can excede the MAX_JOIN_SIZE setting
 	Database::exec("SET NAMES 'utf8' COLLATE 'utf8_unicode_ci', SQL_BIG_SELECTS=1");
-	Database::updateSchema(WT_ROOT . 'includes/db_schema/', 'WT_SCHEMA_VERSION', WT_SCHEMA_VERSION);
+	// Update the database schema
+	Database::updateSchema('\Fisharebest\Webtrees\Schema', 'WT_SCHEMA_VERSION', WT_SCHEMA_VERSION);
 } catch (PDOException $ex) {
 	FlashMessages::addMessage($ex->getMessage(), 'danger');
 	header('Location: ' . WT_BASE_URL . 'site-unavailable.php');

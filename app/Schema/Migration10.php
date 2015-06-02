@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Schema;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,18 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-use Fisharebest\Webtrees\Module\GoogleMapsModule;
+use Fisharebest\Webtrees\Database;
 
-return new GoogleMapsModule(__DIR__);
+/**
+ * Class Migration10 - upgrade the database schema from version 10 to version 11.
+ */
+class Migration10 implements MigrationInterface {
+	/** {@inheritDoc} */
+	public function upgrade() {
+		// Delete old configuration setting
+		Database::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('SEARCH_FACTS_DEFAULT', 'DISPLAY_JEWISH_GERESHAYIM', 'DISPLAY_JEWISH_THOUSANDS')");
+
+		// Increase the password column from 64 to 128 characters
+		Database::exec("ALTER TABLE `##user` CHANGE password password VARCHAR(128) COLLATE utf8_unicode_ci NOT NULL");
+	}
+}

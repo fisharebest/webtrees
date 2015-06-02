@@ -65,15 +65,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	public function __construct($directory) {
 		parent::__construct($directory);
 
-		// Create GM tables, if not already present
-		try {
-			Database::updateSchema(WT_ROOT . WT_MODULES_DIR . '/googlemap/db_schema/', 'GM_SCHEMA_VERSION', 5);
-		} catch (PDOException $ex) {
-			// The schema update scripts should never fail.  If they do, there is no clean recovery.
-			FlashMessages::addMessage($ex->getMessage(), 'danger');
-			header('Location: ' . WT_BASE_URL . 'site-unavailable.php');
-			throw $ex;
-		}
+		// Create/update the database tables.
+		Database::updateSchema('\Fisharebest\Webtrees\Module\GoogleMaps\Schema', 'GM_SCHEMA_VERSION', 5);
 
 		// Set default values
 		try {
