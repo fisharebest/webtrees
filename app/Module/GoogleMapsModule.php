@@ -32,7 +32,6 @@ use Fisharebest\Webtrees\Stats;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use PDO;
-use PDOException;
 
 /**
  * Class GoogleMapsModule
