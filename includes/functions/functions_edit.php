@@ -1043,7 +1043,7 @@ function addSimpleTags($fact) {
 
 	// For new individuals, these facts default to "Y"
 	if ($fact === 'MARR') {
-		add_simple_tag('0 ' . $fact . 'Y');
+		add_simple_tag('0 ' . $fact . ' Y');
 	} else {
 		add_simple_tag('0 ' . $fact);
 	}
