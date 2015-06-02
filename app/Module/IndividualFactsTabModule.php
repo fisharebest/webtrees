@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,14 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Site;
 
 /**
  * Class IndividualFactsTabModule
@@ -142,7 +150,6 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 		if (!$EXPAND_HISTO_EVENTS) {
 			echo '<script>jQuery("tr.histo").toggle();</script>';
 		}
-
 
 		return '<div id="' . $this->getName() . '_content">' . ob_get_clean() . '</div>';
 	}
@@ -333,7 +340,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 	 * Get the events of parents and grandparents.
 	 *
 	 * @param Individual $person
-	 * @param integer    $sosa
+	 * @param int        $sosa
 	 *
 	 * @return Fact[]
 	 */
@@ -455,7 +462,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 					// rather than UTF8 encoding.
 					$hist = html_entity_decode($hist, ENT_QUOTES, 'UTF-8');
 
-					$fact = new Fact($hist, $person, 'histo');
+					$fact  = new Fact($hist, $person, 'histo');
 					$sdate = $fact->getDate();
 					if ($sdate->isOK() && Date::compare($birt_date, $sdate) <= 0 && Date::compare($sdate, $deat_date) <= 0) {
 						$facts[] = $fact;

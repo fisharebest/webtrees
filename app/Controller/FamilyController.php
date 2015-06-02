@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Controller;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,13 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Module;
 
 /**
  * Class FamilyController - Controller for the family page
@@ -47,6 +54,7 @@ class FamilyController extends GedcomRecordController {
 				return $individual;
 			}
 		}
+
 		return parent::getSignificantIndividual();
 	}
 
@@ -60,6 +68,7 @@ class FamilyController extends GedcomRecordController {
 		if ($this->record) {
 			return $this->record;
 		}
+
 		return parent::getSignificantFamily();
 	}
 
@@ -68,18 +77,19 @@ class FamilyController extends GedcomRecordController {
 	 *
 	 * @return string
 	 */
-	function getTimelineIndis($tags) {
+	public function getTimelineIndis($tags) {
 		preg_match_all('/\n1 (?:' . implode('|', $tags) . ') @(' . WT_REGEX_XREF . ')@/', $this->record->getGedcom(), $matches);
 		foreach ($matches[1] as &$match) {
 			$match = 'pids%5B%5D=' . $match;
 		}
+
 		return implode('&amp;', $matches[1]);
 	}
 
 	/**
 	 * get edit menu
 	 */
-	function getEditMenu() {
+	public function getEditMenu() {
 		if (!$this->record || $this->record->isPendingDeletion()) {
 			return null;
 		}
@@ -150,6 +160,7 @@ class FamilyController extends GedcomRecordController {
 	public function getSignificantSurname() {
 		if ($this->record && $this->record->getHusband()) {
 			list($surn) = explode(',', $this->record->getHusband()->getSortname());
+
 			return $surn;
 		} else {
 			return '';

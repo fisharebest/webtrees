@@ -16,6 +16,7 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Controller\PageController;
 use PclZip;
 
 define('WT_SCRIPT_NAME', 'admin_site_upgrade.php');
@@ -350,7 +351,7 @@ $num_files = $res['nb'];
 
 reset_timeout();
 $start_time = microtime(true);
-$res = $archive->extract(
+$res        = $archive->extract(
 	\PCLZIP_OPT_PATH, $zip_dir,
 	\PCLZIP_OPT_REMOVE_PATH, 'webtrees',
 	\PCLZIP_OPT_REPLACE_NEWER
@@ -439,7 +440,7 @@ try {
 
 reset_timeout();
 $start_time = microtime(true);
-$res = $archive->extract(
+$res        = $archive->extract(
 	\PCLZIP_OPT_PATH, WT_ROOT,
 	\PCLZIP_OPT_REMOVE_PATH, 'webtrees',
 	\PCLZIP_OPT_REPLACE_NEWER

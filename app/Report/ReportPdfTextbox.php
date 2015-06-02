@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Report;
 
 /**
  * webtrees: online genealogy
@@ -23,14 +23,14 @@ class ReportPdfTextbox extends ReportBaseTextbox {
 	/**
 	 * PDF Text Box renderer
 	 *
-	 * @param PDF $renderer
+	 * @param ReportTcpdf $renderer
 	 *
-	 * @return boolean|integer
+	 * @return bool|int
 	 */
-	function render($renderer) {
+	public function render($renderer) {
 
-		$newelements = array();
-		$lastelement = "";
+		$newelements      = array();
+		$lastelement      = "";
 		$footnote_element = array();
 		// Element counter
 		$cE = count($this->elements);
@@ -54,7 +54,7 @@ class ReportPdfTextbox extends ReportBaseTextbox {
 							$lastelement->addText(str_replace("\n", "<br>", $element->getValue()));
 						} elseif (!empty($lastelement)) {
 							$newelements[] = $lastelement;
-							$lastelement = $element;
+							$lastelement   = $element;
 						}
 					}
 				} // Collect the Footnote links
@@ -64,7 +64,7 @@ class ReportPdfTextbox extends ReportBaseTextbox {
 					// Save first the last element if any
 					if (!empty($lastelement)) {
 						$newelements[] = $lastelement;
-						$lastelement = array();
+						$lastelement   = array();
 					}
 					// Save the Footnote with it’s link number as key for sorting later
 					$footnote_element[$element->num] = $element;
@@ -79,14 +79,14 @@ class ReportPdfTextbox extends ReportBaseTextbox {
 					}
 					if (!empty($lastelement)) {
 						$newelements[] = $lastelement;
-						$lastelement = array();
+						$lastelement   = array();
 					}
 					$newelements[] = $element;
 				}
 			} else {
 				if (!empty($lastelement)) {
 					$newelements[] = $lastelement;
-					$lastelement = array();
+					$lastelement   = array();
 				}
 				if (!empty($footnote_element)) {
 					ksort($footnote_element);
@@ -147,7 +147,7 @@ class ReportPdfTextbox extends ReportBaseTextbox {
 		}
 		// Element height (exept text)
 		$eH = 0;
-		$w = 0;
+		$w  = 0;
 		// Temp Height
 		$cHT = 0;
 		//-- $lw is an array

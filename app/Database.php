@@ -63,8 +63,6 @@ class Database {
 
 	/**
 	 * Disconnect from the server, so we can connect to another one
-	 *
-	 * @return void
 	 */
 	public static function disconnect() {
 		self::$pdo = null;
@@ -96,7 +94,7 @@ class Database {
 				PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
 				PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
 				PDO::ATTR_CASE               => PDO::CASE_LOWER,
-				PDO::ATTR_AUTOCOMMIT         => true
+				PDO::ATTR_AUTOCOMMIT         => true,
 			)
 		);
 		self::$pdo->exec("SET NAMES UTF8");
@@ -107,9 +105,9 @@ class Database {
 	/**
 	 * We don't access $instance directly, only via query(), exec() and prepare()
 	 *
-	 * @return Database
-	 *
 	 * @throws \Exception
+	 *
+	 * @return Database
 	 */
 	public static function getInstance() {
 		if (self::$pdo instanceof PDO) {
@@ -122,7 +120,7 @@ class Database {
 	/**
 	 * Are we currently connected to a database?
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function isConnected() {
 		return self::$pdo instanceof PDO;
@@ -132,11 +130,9 @@ class Database {
 	 * Log the details of a query, for debugging and analysis.
 	 *
 	 * @param string   $query
-	 * @param integer  $rows
-	 * @param double   $microtime
+	 * @param int      $rows
+	 * @param float    $microtime
 	 * @param string[] $bind_variables
-	 *
-	 * @return void
 	 */
 	public static function logQuery($query, $rows, $microtime, $bind_variables) {
 		if (WT_DEBUG_SQL) {
@@ -187,7 +183,7 @@ class Database {
 	/**
 	 * Determine the number of queries executed, for the page statistics.
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public static function getQueryCount() {
 		return count(self::$log);
@@ -199,7 +195,7 @@ class Database {
 	 * @return string
 	 */
 	public static function getQueryLog() {
-		$html = '<table border="1" style="table-layout: fixed; width: 960px;word-wrap: break-word;"><col span="3"><col align="char"><thead><tr><th>#</th><th style="width: 800px;">Query</th><th>Rows</th><th>Time (ms)</th></tr></thead><tbody>' . implode('', self::$log) . '</tbody></table>';
+		$html      = '<table border="1" style="table-layout: fixed; width: 960px;word-wrap: break-word;"><col span="3"><col align="char"><thead><tr><th>#</th><th style="width: 800px;">Query</th><th>Rows</th><th>Time (ms)</th></tr></thead><tbody>' . implode('', self::$log) . '</tbody></table>';
 		self::$log = array();
 
 		return $html;
@@ -238,13 +234,13 @@ class Database {
 	 *
 	 * @param string $sql The SQL statement to execute
 	 *
-	 * @return integer The number of rows affected by this SQL query
+	 * @return int The number of rows affected by this SQL query
 	 */
 	public static function exec($sql) {
-		$sql = str_replace('##', WT_TBLPREFIX, $sql);
+		$sql   = str_replace('##', WT_TBLPREFIX, $sql);
 		$start = microtime(true);
-		$rows = self::$pdo->exec($sql);
-		$end = microtime(true);
+		$rows  = self::$pdo->exec($sql);
+		$end   = microtime(true);
 		self::logQuery($sql, $rows, $end - $start, array());
 
 		return $rows;
@@ -255,8 +251,9 @@ class Database {
 	 *
 	 * @param $sql
 	 *
-	 * @return Statement
 	 * @throws \Exception
+	 *
+	 * @return Statement
 	 */
 	public static function prepare($sql) {
 		if (!self::$pdo instanceof PDO) {
@@ -286,9 +283,8 @@ class Database {
 	 *
 	 * @param string  $schema_dir
 	 * @param string  $schema_name
-	 * @param integer $target_version
+	 * @param int     $target_version
 	 *
-	 * @return void
 	 * @throws \Exception
 	 */
 	public static function updateSchema($schema_dir, $schema_name, $target_version) {

@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Report;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,9 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Controller\SimpleController;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Media;
 
 /**
  * Class ReportHtml
@@ -130,12 +133,12 @@ class ReportHtml extends ReportBase {
 	/**
 	 * HTML Setup - ReportHtml
 	 */
-	function setup() {
+	public function setup() {
 		parent::setup();
 
 		// Setting up the correct dimensions if Portrait (default) or Landscape
 		if ($this->orientation == "landscape") {
-			$tmpw = $this->pagew;
+			$tmpw        = $this->pagew;
 			$this->pagew = $this->pageh;
 			$this->pageh = $tmpw;
 		}
@@ -143,7 +146,7 @@ class ReportHtml extends ReportBase {
 		$this->noMarginWidth = (int) ($this->pagew - $this->leftmargin - $this->rightmargin);
 		// If RTL
 		if ($this->rtl) {
-			$this->alignRTL = "right";
+			$this->alignRTL  = "right";
 			$this->entityRTL = "&rlm;";
 		}
 		// Change the default HTML font name
@@ -160,23 +163,21 @@ class ReportHtml extends ReportBase {
 
 	/**
 	 * @param $element
-	 *
-	 * @return mixed
 	 */
-	function addElement($element) {
+	public function addElement($element) {
 		if ($this->processing == "B") {
-			return $this->bodyElements[] = $element;
+			$this->bodyElements[] = $element;
 		} elseif ($this->processing == "H") {
-			return $this->headerElements[] = $element;
+			$this->headerElements[] = $element;
 		} elseif ($this->processing == "F") {
-			return $this->footerElements[] = $element;
+			$this->footerElements[] = $element;
 		}
 	}
 
 	/**
 	 *
 	 */
-	function runPageHeader() {
+	public function runPageHeader() {
 		foreach ($this->pageHeaderElements as $element) {
 			if (is_object($element)) {
 				$element->render($this);
@@ -191,7 +192,7 @@ class ReportHtml extends ReportBase {
 	/**
 	 *
 	 */
-	function footnotes() {
+	public function footnotes() {
 		$this->currentStyle = "";
 		if (!empty($this->printedfootnotes)) {
 			foreach ($this->printedfootnotes as $element) {
@@ -203,7 +204,7 @@ class ReportHtml extends ReportBase {
 	/**
 	 *
 	 */
-	function run() {
+	public function run() {
 		$controller = new SimpleController;
 		$controller
 			->setPageTitle($this->title)
@@ -252,7 +253,7 @@ class ReportHtml extends ReportBase {
 		echo '</div>';
 		echo '<script>document.getElementById("headerdiv").style.height="', $this->topmargin - $this->headermargin - 6, 'pt";</script>';
 		echo '<div id="bodydiv" style="position: relative; top: auto; width: ', $this->noMarginWidth, 'pt; height: 100%;">';
-		$this->Y = 0;
+		$this->Y    = 0;
 		$this->maxY = 0;
 		$this->runPageHeader();
 		foreach ($this->bodyElements as $element) {
@@ -269,8 +270,8 @@ class ReportHtml extends ReportBase {
 		echo '<script>document.getElementById("bodydiv").style.height="', $this->maxY, 'pt";</script>';
 		echo '<div id="bottommargin" style="position: relative; top: auto; height: ', $this->bottommargin - $this->footermargin, 'pt;width:', $this->noMarginWidth, 'pt;"></div>';
 		echo '<div id="footerdiv" style="position: relative; top: auto; width: ', $this->noMarginWidth, 'pt;height:auto;">';
-		$this->Y = 0;
-		$this->X = 0;
+		$this->Y    = 0;
+		$this->X    = 0;
 		$this->maxY = 0;
 		foreach ($this->footerElements as $element) {
 			if (is_object($element)) {
@@ -289,24 +290,24 @@ class ReportHtml extends ReportBase {
 	/**
 	 * Create a new Cell object - ReportHtml
 	 *
-	 * @param integer $width   cell width (expressed in points)
-	 * @param integer $height  cell height (expressed in points)
-	 * @param mixed   $border  Border style
-	 * @param string  $align   Text alignement
-	 * @param string  $bgcolor Background color code
-	 * @param string  $style   The name of the text style
-	 * @param integer $ln      Indicates where the current position should go after the call
-	 * @param mixed   $top     Y-position
-	 * @param mixed   $left    X-position
-	 * @param integer $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 0.
-	 * @param integer $stretch Stretch carachter mode
-	 * @param string  $bocolor Border color
-	 * @param string  $tcolor  Text color
-	 * @param boolean $reseth
+	 * @param int    $width   cell width (expressed in points)
+	 * @param int    $height  cell height (expressed in points)
+	 * @param mixed  $border  Border style
+	 * @param string $align   Text alignement
+	 * @param string $bgcolor Background color code
+	 * @param string $style   The name of the text style
+	 * @param int    $ln      Indicates where the current position should go after the call
+	 * @param mixed  $top     Y-position
+	 * @param mixed  $left    X-position
+	 * @param int    $fill    Indicates if the cell background must be painted (1) or transparent (0). Default value: 0.
+	 * @param int    $stretch Stretch carachter mode
+	 * @param string $bocolor Border color
+	 * @param string $tcolor  Text color
+	 * @param bool    $reseth
 	 *
 	 * @return object ReportHtmlCell
 	 */
-	function createCell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth) {
+	public function createCell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth) {
 		return new ReportHtmlCell($width, $height, $border, $align, $bgcolor, $style, $ln, $top, $left, $fill, $stretch, $bocolor, $tcolor, $reseth);
 	}
 
@@ -326,7 +327,7 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return ReportHtmlTextbox
 	 */
-	function createTextBox($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth) {
+	public function createTextBox($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth) {
 		return new ReportHtmlTextbox($width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth);
 	}
 
@@ -336,7 +337,7 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return ReportHtmlText
 	 */
-	function createText($style, $color) {
+	public function createText($style, $color) {
 		return new ReportHtmlText($style, $color);
 	}
 
@@ -345,14 +346,14 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return ReportHtmlFootnote
 	 */
-	function createFootnote($style = "") {
+	public function createFootnote($style = "") {
 		return new ReportHtmlFootnote($style);
 	}
 
 	/**
 	 * @return ReportHtmlPageheader
 	 */
-	function createPageHeader() {
+	public function createPageHeader() {
 		return new ReportHtmlPageheader;
 	}
 
@@ -367,12 +368,12 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return ReportHtmlImage
 	 */
-	function createImage($file, $x, $y, $w, $h, $align, $ln) {
+	public function createImage($file, $x, $y, $w, $h, $align, $ln) {
 		return new ReportHtmlImage($file, $x, $y, $w, $h, $align, $ln);
 	}
 
 	/**
-	 * @param $mediaobject
+	 * @param Media $mediaobject
 	 * @param $x
 	 * @param $y
 	 * @param $w
@@ -382,7 +383,7 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return ReportHtmlImage
 	 */
-	function createImageFromObject($mediaobject, $x, $y, $w, $h, $align, $ln) {
+	public function createImageFromObject(Media $mediaobject, $x, $y, $w, $h, $align, $ln) {
 		return new ReportHtmlImage($mediaobject->getHtmlUrlDirect('thumb'), $x, $y, $w, $h, $align, $ln);
 	}
 
@@ -394,7 +395,7 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return ReportHtmlLine
 	 */
-	function createLine($x1, $y1, $x2, $y2) {
+	public function createLine($x1, $y1, $x2, $y2) {
 		return new ReportHtmlLine($x1, $y1, $x2, $y2);
 	}
 
@@ -404,14 +405,14 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return ReportHtmlHtml
 	 */
-	function createHTML($tag, $attrs) {
+	public function createHTML($tag, $attrs) {
 		return new ReportHtmlHtml($tag, $attrs);
 	}
 
 	/**
 	 * Clear the Header - ReportHtml
 	 */
-	function clearHeader() {
+	public function clearHeader() {
 		$this->headerElements = array();
 	}
 
@@ -422,7 +423,7 @@ class ReportHtml extends ReportBase {
 	/**
 	 * Update the Page Number and set a new Y if max Y is larger - ReportHtml
 	 */
-	function addPage() {
+	public function addPage() {
 		$this->pageN++;
 		// Add a little margin to max Y "between pages"
 		$this->maxY += 10;
@@ -441,7 +442,7 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @param float $y
 	 */
-	function addMaxY($y) {
+	public function addMaxY($y) {
 		if ($this->maxY < $y) {
 			$this->maxY = $y;
 		}
@@ -450,10 +451,11 @@ class ReportHtml extends ReportBase {
 	/**
 	 * @param $element
 	 *
-	 * @return integer
+	 * @return int
 	 */
-	function addPageHeader($element) {
+	public function addPageHeader($element) {
 		$this->pageHeaderElements[] = $element;
+
 		return count($this->headerElements) - 1;
 	}
 
@@ -462,17 +464,18 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @param object $footnote
 	 *
-	 * @return boolean false if not numbered before | object if already numbered
+	 * @return bool false if not numbered before | object if already numbered
 	 */
-	function checkFootnote($footnote) {
-		$ct = count($this->printedfootnotes);
-		$i = 0;
+	public function checkFootnote($footnote) {
+		$ct  = count($this->printedfootnotes);
+		$i   = 0;
 		$val = $footnote->getValue();
 		while ($i < $ct) {
 			if ($this->printedfootnotes[$i]->getValue() == $val) {
 				// If this footnote already exist then set up the numbers for this object
 				$footnote->setNum($i + 1);
 				$footnote->setAddlink($i + 1);
+
 				return $this->printedfootnotes[$i];
 			}
 			$i++;
@@ -481,13 +484,14 @@ class ReportHtml extends ReportBase {
 		$footnote->setNum($ct + 1);
 		$footnote->setAddlink($ct + 1);
 		$this->printedfootnotes[] = $footnote;
+
 		return false;
 	}
 
 	/**
 	 * Clear the Page Header - ReportHtml
 	 */
-	function clearPageHeader() {
+	public function clearPageHeader() {
 		$this->pageHeaderElements = array();
 	}
 
@@ -496,43 +500,46 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @param string $str
 	 *
-	 * @return integer Number of lines. 0 if empty line
+	 * @return int Number of lines. 0 if empty line
 	 */
-	function countLines($str) {
+	public function countLines($str) {
 		if ($str == "") {
 			return 0;
 		}
+
 		return (substr_count($str, "\n") + 1);
 	}
 
 	/**
 	 * @return string
 	 */
-	function getCurrentStyle() {
+	public function getCurrentStyle() {
 		return $this->currentStyle;
 	}
 
 	/**
-	 * @return integer
+	 * @return int
 	 */
-	function getCurrentStyleHeight() {
+	public function getCurrentStyleHeight() {
 		if (empty($this->currentStyle)) {
 			return $this->defaultFontSize;
 		}
 		$style = $this->getStyle($this->currentStyle);
+
 		return $style["size"];
 	}
 
 	/**
 	 * @param $cellWidth
 	 *
-	 * @return integer
+	 * @return int
 	 */
-	function getFootnotesHeight($cellWidth) {
+	public function getFootnotesHeight($cellWidth) {
 		$h = 0;
 		foreach ($this->printedfootnotes as $element) {
 			$h += $element->getFootnoteHeight($this, $cellWidth);
 		}
+
 		return $h;
 	}
 
@@ -541,24 +548,25 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return float
 	 */
-	function getRemainingWidth() {
+	public function getRemainingWidth() {
 		return $this->noMarginWidth - $this->X;
 	}
 
 	/**
 	 * @return float
 	 */
-	function getPageHeight() {
+	public function getPageHeight() {
 		return $this->pageh - $this->topmargin;
 	}
 
 	/**
 	 * @param $text
 	 *
-	 * @return integer
+	 * @return int
 	 */
-	function getStringWidth($text) {
+	public function getStringWidth($text) {
 		$style = $this->getStyle($this->currentStyle);
+
 		return mb_strlen($text) * ($style['size'] / 2);
 	}
 
@@ -567,9 +575,9 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @param $str
 	 *
-	 * @return integer
+	 * @return int
 	 */
-	function getTextCellHeight($str) {
+	public function getTextCellHeight($str) {
 		// Count the number of lines to calculate the height
 		$nl = $this->countLines($str);
 		// Calculate the cell height
@@ -581,7 +589,7 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return float
 	 */
-	function getX() {
+	public function getX() {
 		return $this->X;
 	}
 
@@ -590,23 +598,23 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @return float
 	 */
-	function getY() {
+	public function getY() {
 		return $this->Y;
 	}
 
 	/**
 	 * Get the current page number - ReportHtml
 	 *
-	 * @return integer
+	 * @return int
 	 */
-	function pageNo() {
+	public function pageNo() {
 		return $this->pageN;
 	}
 
 	/**
 	 * @param $s
 	 */
-	function setCurrentStyle($s) {
+	public function setCurrentStyle($s) {
 		$this->currentStyle = $s;
 	}
 
@@ -615,7 +623,7 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @param float $x
 	 */
-	function setX($x) {
+	public function setX($x) {
 		$this->X = $x;
 	}
 
@@ -626,7 +634,7 @@ class ReportHtml extends ReportBase {
 	 *
 	 * @param float $y
 	 */
-	function setY($y) {
+	public function setY($y) {
 		$this->Y = $y;
 		if ($this->maxY < $y) {
 			$this->maxY = $y;
@@ -641,7 +649,7 @@ class ReportHtml extends ReportBase {
 	 * @param float $x
 	 * @param float $y
 	 */
-	function setXy($x, $y) {
+	public function setXy($x, $y) {
 		$this->setX($x);
 		$this->setY($y);
 	}
@@ -649,18 +657,18 @@ class ReportHtml extends ReportBase {
 	/**
 	 * Wrap text - ReportHtml
 	 *
-	 * @param string  $str   Text to wrap
-	 * @param integer $width Width in points the text has to fit into
+	 * @param string $str   Text to wrap
+	 * @param int    $width Width in points the text has to fit into
 	 *
 	 * @return string
 	 */
-	function textWrap($str, $width) {
+	public function textWrap($str, $width) {
 		// Calculate the line width
 		$lw = (int) ($width / ($this->getCurrentStyleHeight() / 2));
 		// Wordwrap each line
 		$lines = explode("\n", $str);
 		// Line Feed counter
-		$lfct = count($lines);
+		$lfct     = count($lines);
 		$wraptext = '';
 		foreach ($lines as $line) {
 			$wtext = utf8_wordwrap($line, $lw, "\n", true);
@@ -671,18 +679,19 @@ class ReportHtml extends ReportBase {
 			}
 			$lfct--;
 		}
+
 		return $wraptext;
 	}
 
 	/**
 	 * Write text - ReportHtml
 	 *
-	 * @param string  $text  Text to print
-	 * @param string  $color HTML RGB color code (Ex: #001122)
-	 * @param boolean $useclass
+	 * @param string $text  Text to print
+	 * @param string $color HTML RGB color code (Ex: #001122)
+	 * @param bool   $useclass
 	 */
-	function write($text, $color = '', $useclass = true) {
-		$style = $this->getStyle($this->getCurrentStyle());
+	public function write($text, $color = '', $useclass = true) {
+		$style    = $this->getStyle($this->getCurrentStyle());
 		$htmlcode = '<span dir="' . I18N::direction() . '"';
 		if ($useclass) {
 			$htmlcode .= ' class="' . $style['name'] . '"';

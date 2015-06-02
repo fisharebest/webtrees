@@ -1,5 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -16,6 +15,28 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\GedcomCode\GedcomCodeAdop;
+use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;
+use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
+use Fisharebest\Webtrees\GedcomCode\GedcomCodeQuay;
+use Fisharebest\Webtrees\GedcomCode\GedcomCodeRela;
+use Fisharebest\Webtrees\GedcomCode\GedcomCodeStat;
+use Fisharebest\Webtrees\GedcomCode\GedcomCodeTemp;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Module\CensusAssistantModule;
+use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Source;
 use Rhumsaa\Uuid\Uuid;
 
 /**
@@ -88,9 +109,9 @@ function radio_buttons($name, $values, $selected, $extra = '') {
 /**
  * Print an edit control for a Yes/No field
  *
- * @param string  $name
- * @param boolean $selected
- * @param string  $extra
+ * @param string $name
+ * @param bool   $selected
+ * @param string $extra
  *
  * @return string
  */
@@ -103,9 +124,9 @@ function edit_field_yes_no($name, $selected = false, $extra = '') {
 /**
  * Print an edit control for a checkbox.
  *
- * @param string  $name
- * @param boolean $is_checked
- * @param string  $extra
+ * @param string $name
+ * @param bool   $is_checked
+ * @param string $extra
  *
  * @return string
  */
@@ -119,9 +140,9 @@ function checkbox($name, $is_checked = false, $extra = '') {
  * This function gives us a three options, set, unset or not sent.
  * Useful for dynamically generated forms where we don't know what elements are present.
  *
- * @param string  $name
- * @param integer $is_checked 0 or 1
- * @param string  $extra
+ * @param string $name
+ * @param int    $is_checked 0 or 1
+ * @param string $extra
  *
  * @return string
  */
@@ -167,11 +188,12 @@ function edit_language_checkboxes($parameter_name, $accepted_languages) {
  */
 function edit_field_access_level($name, $selected = '', $extra = '') {
 	$ACCESS_LEVEL = array(
-		Auth::PRIV_PRIVATE=> I18N::translate('Show to visitors'),
-		Auth::PRIV_USER  => I18N::translate('Show to members'),
-		Auth::PRIV_NONE  => I18N::translate('Show to managers'),
-		Auth::PRIV_HIDE  => I18N::translate('Hide from everyone')
+		Auth::PRIV_PRIVATE => I18N::translate('Show to visitors'),
+		Auth::PRIV_USER    => I18N::translate('Show to members'),
+		Auth::PRIV_NONE    => I18N::translate('Show to managers'),
+		Auth::PRIV_HIDE    => I18N::translate('Hide from everyone'),
 	);
+
 	return select_edit_control($name, $ACCESS_LEVEL, null, $selected, $extra);
 }
 
@@ -186,12 +208,13 @@ function edit_field_access_level($name, $selected = '', $extra = '') {
  */
 function edit_field_resn($name, $selected = '', $extra = '') {
 	$RESN = array(
-		''            =>'',
-		'none'        => I18N::translate('Show to visitors'), // Not valid GEDCOM, but very useful
-		'privacy'     => I18N::translate('Show to members'),
-		'confidential'=> I18N::translate('Show to managers'),
-		'locked'      => I18N::translate('Only managers can edit')
+		''             => '',
+		'none'         => I18N::translate('Show to visitors'), // Not valid GEDCOM, but very useful
+		'privacy'      => I18N::translate('Show to members'),
+		'confidential' => I18N::translate('Show to managers'),
+		'locked'       => I18N::translate('Only managers can edit'),
 	);
+
 	return select_edit_control($name, $RESN, null, $selected, $extra);
 }
 
@@ -207,12 +230,13 @@ function edit_field_resn($name, $selected = '', $extra = '') {
 function edit_field_contact($name, $selected = '', $extra = '') {
 	// Different ways to contact the users
 	$CONTACT_METHODS = array(
-		'messaging' => I18N::translate('Internal messaging'),
-		'messaging2'=> I18N::translate('Internal messaging with emails'),
-		'messaging3'=> I18N::translate('webtrees sends emails with no storage'),
-		'mailto'    => I18N::translate('Mailto link'),
-		'none'      => I18N::translate('No contact'),
+		'messaging'  => I18N::translate('Internal messaging'),
+		'messaging2' => I18N::translate('Internal messaging with emails'),
+		'messaging3' => I18N::translate('webtrees sends emails with no storage'),
+		'mailto'     => I18N::translate('Mailto link'),
+		'none'       => I18N::translate('No contact'),
 	);
+
 	return select_edit_control($name, $CONTACT_METHODS, null, $selected, $extra);
 }
 
@@ -237,11 +261,11 @@ function edit_field_language($name, $selected = '', $extra = '') {
 /**
  * Print an edit control for a range of integers.
  *
- * @param string  $name
- * @param string  $selected
- * @param integer $min
- * @param integer $max
- * @param string  $extra
+ * @param string $name
+ * @param string $selected
+ * @param int    $min
+ * @param int    $max
+ * @param string $extra
  *
  * @return string
  */
@@ -250,6 +274,7 @@ function edit_field_integers($name, $selected = '', $min, $max, $extra = '') {
 	for ($i = $min; $i <= $max; ++$i) {
 		$array[$i] = I18N::number($i);
 	}
+
 	return select_edit_control($name, $array, null, $selected, $extra);
 }
 
@@ -331,6 +356,7 @@ function edit_field_rela($name, $selected = '', $extra = '') {
 	if (!array_key_exists($selected, $rela_codes)) {
 		$rela_codes[$selected] = $selected;
 	}
+
 	return select_edit_control($name, $rela_codes, '', $selected, $extra);
 }
 
@@ -438,7 +464,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 	$subnamefacts = array('NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX', '_MARNM_SURN');
 	preg_match('/^(?:(\d+) (' . WT_REGEX_TAG . ') ?(.*))/', $tag, $match);
 	list(, $level, $fact, $value) = $match;
-	$level = (int) $level;
+	$level                        = (int) $level;
 
 	// element name : used to POST data
 	if ($level === 0) {
@@ -477,7 +503,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 
 	if ($fact === 'SHARED_NOTE_EDIT' || $fact === 'SHARED_NOTE') {
 		$islink = true;
-		$fact = 'NOTE';
+		$fact   = 'NOTE';
 	}
 
 	// label
@@ -562,23 +588,23 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 			echo I18N::translate('yes');
 		}
 
-	} else if ($fact === 'TEMP') {
+	} elseif ($fact === 'TEMP') {
 		echo select_edit_control($element_name, GedcomCodeTemp::templeNames(), I18N::translate('No temple - living ordinance'), $value);
-	} else if ($fact === 'ADOP') {
+	} elseif ($fact === 'ADOP') {
 		echo edit_field_adop($element_name, $value, '', $person);
-	} else if ($fact === 'PEDI') {
+	} elseif ($fact === 'PEDI') {
 		echo edit_field_pedi($element_name, $value, '', $person);
-	} else if ($fact === 'STAT') {
+	} elseif ($fact === 'STAT') {
 		echo select_edit_control($element_name, GedcomCodeStat::statusNames($upperlevel), '', $value);
-	} else if ($fact === 'RELA') {
+	} elseif ($fact === 'RELA') {
 		echo edit_field_rela($element_name, strtolower($value));
-	} else if ($fact === 'QUAY') {
+	} elseif ($fact === 'QUAY') {
 		echo select_edit_control($element_name, GedcomCodeQuay::getValues(), '', $value);
-	} else if ($fact === '_WT_USER') {
+	} elseif ($fact === '_WT_USER') {
 		echo edit_field_username($element_name, $value);
-	} else if ($fact === 'RESN') {
+	} elseif ($fact === 'RESN') {
 		echo edit_field_resn($element_name, $value);
-	} else if ($fact === '_PRIM') {
+	} elseif ($fact === '_PRIM') {
 		echo '<select id="', $element_id, '" name="', $element_name, '" >';
 		echo '<option value=""></option>';
 		echo '<option value="Y" ';
@@ -593,7 +619,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 		echo '>', /* I18N: option in list box “never use this image” */ I18N::translate('never'), '</option>';
 		echo '</select>';
 		echo '<p class="small text-muted">', I18N::translate('Use this image for charts and on the individual’s page.'), '</p>';
-	} else if ($fact === 'SEX') {
+	} elseif ($fact === 'SEX') {
 		echo '<select id="', $element_id, '" name="', $element_name, '"><option value="M" ';
 		if ($value === 'M') {
 			echo 'selected';
@@ -607,7 +633,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 			echo 'selected';
 		}
 		echo '>', I18N::translateContext('unknown gender', 'Unknown'), '</option></select>';
-	} else if ($fact === 'TYPE' && $level === 3) {
+	} elseif ($fact === 'TYPE' && $level === 3) {
 		//-- Build the selector for the Media 'TYPE' Fact
 		echo '<select name="text[]"><option selected value="" ></option>';
 		$selectedValue = strtolower($value);
@@ -622,7 +648,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 			echo '>', $typeValue, '</option>';
 		}
 		echo '</select>';
-	} else if (($fact === 'NAME' && $upperlevel !== 'REPO') || $fact === '_MARNM') {
+	} elseif (($fact === 'NAME' && $upperlevel !== 'REPO') || $fact === '_MARNM') {
 		// Populated in javascript from sub-tags
 		echo '<input type="hidden" id="', $element_id, '" name="', $element_name, '" onchange="updateTextName(\'', $element_id, '\');" value="', Filter::escapeHtml($value), '" class="', $fact, '">';
 		echo '<span id="', $element_id, '_display" dir="auto">', Filter::escapeHtml($value), '</span>';
@@ -906,9 +932,9 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 /**
  * Prints collapsable fields to add ASSO/RELA, SOUR, OBJE, etc.
  *
- * @param string  $tag
- * @param integer $level
- * @param string  $parent_tag
+ * @param string $tag
+ * @param int    $level
+ * @param string $parent_tag
  */
 function print_add_layer($tag, $level = 2, $parent_tag = '') {
 	global $WT_TREE;
@@ -1017,7 +1043,7 @@ function addSimpleTags($fact) {
 
 	// For new individuals, these facts default to "Y"
 	if ($fact === 'MARR') {
-		add_simple_tag('0 ' . $fact . 'Y');
+		add_simple_tag('0 ' . $fact . ' Y');
 	} else {
 		add_simple_tag('0 ' . $fact);
 	}
@@ -1068,6 +1094,7 @@ function addNewName() {
 			$gedrec .= "\n2 {$tag} {$TAG}";
 		}
 	}
+
 	return $gedrec;
 }
 
@@ -1159,7 +1186,6 @@ function addNewFact($fact) {
  * - $tagRest[] - an array of the tags for each gedcom line that was edited
  * - $islinkRest[] - an array of 1 or 0 values to indicate when the text is a link element
  * - $textRest[] - an array of the text data for each line
- *
  */
 function splitSOUR() {
 	global $glevels, $tag, $islink, $text;
@@ -1167,14 +1193,14 @@ function splitSOUR() {
 	global $glevelsRest, $tagRest, $islinkRest, $textRest;
 
 	$glevelsSOUR = array();
-	$tagSOUR = array();
-	$islinkSOUR = array();
-	$textSOUR = array();
+	$tagSOUR     = array();
+	$islinkSOUR  = array();
+	$textSOUR    = array();
 
 	$glevelsRest = array();
-	$tagRest = array();
-	$islinkRest = array();
-	$textRest = array();
+	$tagRest     = array();
+	$islinkRest  = array();
+	$textRest    = array();
 
 	$inSOUR = false;
 
@@ -1184,27 +1210,27 @@ function splitSOUR() {
 				$dest = 'S';
 			} else {
 				$inSOUR = false;
-				$dest = 'R';
+				$dest   = 'R';
 			}
 		} else {
 			if ($tag[$i] === 'SOUR') {
-				$inSOUR = true;
+				$inSOUR    = true;
 				$levelSOUR = $glevels[$i];
-				$dest = 'S';
+				$dest      = 'S';
 			} else {
 				$dest = 'R';
 			}
 		}
 		if ($dest === 'S') {
 			$glevelsSOUR[] = $glevels[$i];
-			$tagSOUR[] = $tag[$i];
-			$islinkSOUR[] = $islink[$i];
-			$textSOUR[] = $text[$i];
+			$tagSOUR[]     = $tag[$i];
+			$islinkSOUR[]  = $islink[$i];
+			$textSOUR[]    = $text[$i];
 		} else {
 			$glevelsRest[] = $glevels[$i];
-			$tagRest[] = $tag[$i];
-			$islinkRest[] = $islink[$i];
-			$textRest[] = $text[$i];
+			$tagRest[]     = $tag[$i];
+			$islinkRest[]  = $islink[$i];
+			$textRest[]    = $text[$i];
 		}
 	}
 }
@@ -1229,22 +1255,22 @@ function updateSOUR($inputRec, $levelOverride = 'no') {
 
 	// Save original interface update arrays before replacing them with the xxxSOUR ones
 	$glevelsSave = $glevels;
-	$tagSave = $tag;
-	$islinkSave = $islink;
-	$textSave = $text;
+	$tagSave     = $tag;
+	$islinkSave  = $islink;
+	$textSave    = $text;
 
 	$glevels = $glevelsSOUR;
-	$tag = $tagSOUR;
-	$islink = $islinkSOUR;
-	$text = $textSOUR;
+	$tag     = $tagSOUR;
+	$islink  = $islinkSOUR;
+	$text    = $textSOUR;
 
 	$myRecord = handle_updates($inputRec, $levelOverride); // Now do the update
 
 	// Restore the original interface update arrays (just in case ...)
 	$glevels = $glevelsSave;
-	$tag = $tagSave;
-	$islink = $islinkSave;
-	$text = $textSave;
+	$tag     = $tagSave;
+	$islink  = $islinkSave;
+	$text    = $textSave;
 
 	return $myRecord;
 }
@@ -1269,22 +1295,22 @@ function updateRest($inputRec, $levelOverride = 'no') {
 
 	// Save original interface update arrays before replacing them with the xxxRest ones
 	$glevelsSave = $glevels;
-	$tagSave = $tag;
-	$islinkSave = $islink;
-	$textSave = $text;
+	$tagSave     = $tag;
+	$islinkSave  = $islink;
+	$textSave    = $text;
 
 	$glevels = $glevelsRest;
-	$tag = $tagRest;
-	$islink = $islinkRest;
-	$text = $textRest;
+	$tag     = $tagRest;
+	$islink  = $islinkRest;
+	$text    = $textRest;
 
 	$myRecord = handle_updates($inputRec, $levelOverride); // Now do the update
 
 	// Restore the original interface update arrays (just in case ...)
 	$glevels = $glevelsSave;
-	$tag = $tagSave;
-	$islink = $islinkSave;
-	$text = $textSave;
+	$tag     = $tagSave;
+	$islink  = $islinkSave;
+	$text    = $textSave;
 
 	return $myRecord;
 }
@@ -1331,7 +1357,7 @@ function handle_updates($newged, $levelOverride = 'no') {
 		// The sub-records should be deleted.
 		if ($tag[$j] === 'SOUR' && ($text[$j] === '@@' || $text[$j] === '')) {
 			$text[$j] = '';
-			$k = $j + 1;
+			$k        = $j + 1;
 			while (($k < count($glevels)) && ($glevels[$k] > $glevels[$j])) {
 				$text[$k] = '';
 				$k++;
@@ -1343,7 +1369,7 @@ function handle_updates($newged, $levelOverride = 'no') {
 		} else {
 			//-- for facts with empty values they must have sub records
 			//-- this section checks if they have subrecords
-			$k = $j + 1;
+			$k    = $j + 1;
 			$pass = false;
 			while (($k < count($glevels)) && ($glevels[$k] > $glevels[$j])) {
 				if ($text[$k] !== '') {
@@ -1356,7 +1382,7 @@ function handle_updates($newged, $levelOverride = 'no') {
 					$filename = array_shift($uploaded_files);
 					if (!empty($filename)) {
 						$text[$k] = $filename;
-						$pass = true;
+						$pass     = true;
 						break;
 					}
 				}
@@ -1442,32 +1468,32 @@ function create_edit_form(GedcomRecord $record, Fact $fact) {
 
 	$pid = $record->getXref();
 
-	$tags = array();
+	$tags     = array();
 	$gedlines = explode("\n", $fact->getGedcom());
 
 	$linenum = 0;
-	$fields = explode(' ', $gedlines[$linenum]);
-	$glevel = $fields[0];
-	$level = $glevel;
+	$fields  = explode(' ', $gedlines[$linenum]);
+	$glevel  = $fields[0];
+	$level   = $glevel;
 
-	$type = $fact->getTag();
-	$parent = $fact->getParent();
+	$type       = $fact->getTag();
+	$parent     = $fact->getParent();
 	$level0type = $parent::RECORD_TYPE;
 	$level1type = $type;
 
-	$i = $linenum;
-	$inSource = false;
+	$i           = $linenum;
+	$inSource    = false;
 	$levelSource = 0;
-	$add_date = true;
+	$add_date    = true;
 	// List of tags we would expect at the next level
 	// NB add_missing_subtags() already takes care of the simple cases
 	// where a level 1 tag is missing a level 2 tag.  Here we only need to
 	// handle the more complicated cases.
 	$expected_subtags = array(
-		'SOUR'=>array('PAGE', 'DATA'),
-		'DATA'=>array('TEXT'),
-		'PLAC'=>array('MAP'),
-		'MAP' =>array('LATI', 'LONG')
+		'SOUR' => array('PAGE', 'DATA'),
+		'DATA' => array('TEXT'),
+		'PLAC' => array('MAP'),
+		'MAP'  => array('LATI', 'LONG'),
 	);
 	if ($record->getTree()->getPreference('FULL_SOURCES')) {
 		$expected_subtags['SOUR'][] = 'QUAY';
@@ -1477,7 +1503,7 @@ function create_edit_form(GedcomRecord $record, Fact $fact) {
 		$expected_subtags['PLAC'] = array_merge($match[1], $expected_subtags['PLAC']);
 	}
 
-	$stack = array(0=>$level0type);
+	$stack = array(0 => $level0type);
 	// Loop on existing tags :
 	while (true) {
 		// Keep track of our hierarchy, e.g. 1=>BIRT, 2=>PLAC, 3=>FONE
@@ -1499,15 +1525,15 @@ function create_edit_form(GedcomRecord $record, Fact $fact) {
 		}
 
 		if ($type === 'SOUR') {
-			$inSource = true;
+			$inSource    = true;
 			$levelSource = $level;
 		} elseif ($levelSource >= $level) {
 			$inSource = false;
 		}
 
 		if ($type !== 'DATA' && $type !== 'CONT') {
-			$tags[] = $type;
-			$person = Individual::getInstance($pid, $WT_TREE);
+			$tags[]    = $type;
+			$person    = Individual::getInstance($pid, $WT_TREE);
 			$subrecord = $level . ' ' . $type . ' ' . $text;
 			if ($inSource && $type === 'DATE') {
 				add_simple_tag($subrecord, '', GedcomTag::getLabel($label, $person));
@@ -1559,7 +1585,7 @@ function create_edit_form(GedcomRecord $record, Fact $fact) {
 		$i++;
 		if (isset($gedlines[$i])) {
 			$fields = explode(' ', $gedlines[$i]);
-			$level = $fields[0];
+			$level  = $fields[0];
 			if (isset($fields[1])) {
 				$type = trim($fields[1]);
 			} else {
@@ -1576,14 +1602,15 @@ function create_edit_form(GedcomRecord $record, Fact $fact) {
 	if ($level1type !== '_PRIM') {
 		insert_missing_subtags($level1type, $add_date);
 	}
+
 	return $level1type;
 }
 
 /**
  * Populates the global $tags array with any missing sub-tags.
  *
- * @param string  $level1tag the type of the level 1 gedcom record
- * @param boolean $add_date
+ * @param string $level1tag the type of the level 1 gedcom record
+ * @param bool   $add_date
  */
 function insert_missing_subtags($level1tag, $add_date = false) {
 	global $tags, $date_and_time, $level2_tags, $WT_TREE;
@@ -1592,11 +1619,11 @@ function insert_missing_subtags($level1tag, $add_date = false) {
 	// handle  MARRiage TYPE
 	$type_val = '';
 	if (substr($level1tag, 0, 5) === 'MARR_') {
-		$type_val = substr($level1tag, 5);
+		$type_val  = substr($level1tag, 5);
 		$level1tag = 'MARR';
 	}
 
-	foreach ($level2_tags as $key=>$value) {
+	foreach ($level2_tags as $key => $value) {
 		if ($key === 'DATE' && in_array($level1tag, $nondatefacts) || $key === 'PLAC' && in_array($level1tag, $nonplacfacts)) {
 			continue;
 		}
@@ -1607,11 +1634,11 @@ function insert_missing_subtags($level1tag, $add_date = false) {
 				add_simple_tag('2 ' . $key . ' ' . strtoupper(date('d M Y')), $level1tag);
 			} elseif ($level1tag === '_TODO' && $key === '_WT_USER') {
 				add_simple_tag('2 ' . $key . ' ' . Auth::user()->getUserName(), $level1tag);
-			} else if ($level1tag === 'TITL' && strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), $key) !== false) {
+			} elseif ($level1tag === 'TITL' && strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), $key) !== false) {
 				add_simple_tag('2 ' . $key, $level1tag);
-			} else if ($level1tag === 'NAME' && strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), $key) !== false) {
+			} elseif ($level1tag === 'NAME' && strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), $key) !== false) {
 				add_simple_tag('2 ' . $key, $level1tag);
-			} else if ($level1tag !== 'TITL' && $level1tag !== 'NAME') {
+			} elseif ($level1tag !== 'TITL' && $level1tag !== 'NAME') {
 				add_simple_tag('2 ' . $key, $level1tag);
 			}
 			// Add level 3/4 tags as appropriate

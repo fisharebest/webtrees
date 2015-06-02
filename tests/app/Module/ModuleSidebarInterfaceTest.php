@@ -1,5 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -16,26 +15,20 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use PHPUnit_Framework_TestCase;
-
 /**
  * Test harness for the class ModuleSidebarInterface
  */
 class ModuleSidebarInterfaceTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Prepare the environment for these tests
-	 *
-	 * @return void
 	 */
 	public function setUp() {
 	}
 
 	/**
 	 * Test that the class exists
-	 *
-	 * @return void
 	 */
 	public function testClassExists() {
-		$this->assertTrue(interface_exists(__NAMESPACE__ . '\ModuleSidebarInterface'));
+		$this->assertTrue(interface_exists('\Fisharebest\Webtrees\Module\ModuleSidebarInterface'));
 	}
 }

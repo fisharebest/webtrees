@@ -1,5 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -16,26 +15,20 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use PHPUnit_Framework_TestCase;
-
 /**
- * Unit tests for the batch update plugin: married_names
+ * Test harness for the class GedcomTag
  */
-class MarriedNamesBuPluginTest extends PHPUnit_Framework_TestCase {
+class GedcomTagTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Prepare the environment for these tests
-	 *
-	 * @return void
 	 */
 	public function setUp() {
 	}
 
 	/**
-	 * Test that the class exists.
-	 *
-	 * @return void
+	 * Test that the class exists
 	 */
-	public function testFunctionGetUserFullNameExists() {
-		$this->assertEquals(true, class_exists(__NAMESPACE__ . '\\BatchUpdateMarriedNamesPlugin'));
+	public function testClassExists() {
+		$this->assertTrue(class_exists('\Fisharebest\Webtrees\GedcomTag'));
 	}
 }

@@ -394,6 +394,9 @@ class Zend_View_Helper_HeadMeta extends Zend_View_Helper_Placeholder_Container_S
             && !empty($item->modifiers['conditional'])
             && is_string($item->modifiers['conditional']))
         {
+            if (str_replace(' ', '', $item->modifiers['conditional']) === '!IE') {
+                $meta = '<!-->' . $meta . '<!--';
+            }
             $meta = '<!--[if ' . $this->_escape($item->modifiers['conditional']) . ']>' . $meta . '<![endif]-->';
         }
         

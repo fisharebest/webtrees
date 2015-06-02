@@ -16,6 +16,8 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Theme\AdministrationTheme;
 use PDOException;
 
 /**
@@ -25,6 +27,7 @@ use PDOException;
 // WT_SCRIPT_NAME is defined in each script that the user is permitted to load.
 if (!defined('WT_SCRIPT_NAME')) {
 	http_response_code(403);
+
 	return;
 }
 
@@ -58,7 +61,7 @@ if (getenv('USE_CDN')) {
 	//define('WT_DATATABLES_BOOTSTRAP_CSS_URL', '//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css');
 	define('WT_DATATABLES_BOOTSTRAP_JS_URL', '//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js');
 	define('WT_FONT_AWESOME_CSS_URL', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css');
-	define('WT_JQUERYUI_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js');
+	define('WT_JQUERYUI_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js');
 	define('WT_JQUERYUI_TOUCH_PUNCH_URL', '//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js');
 	define('WT_JQUERY_COOKIE_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js');
 	define('WT_JQUERY_DATATABLES_JS_URL', '//cdnjs.cloudflare.com/ajax/libs/datatables/1.10.7/js/jquery.dataTables.min.js');
@@ -76,7 +79,7 @@ if (getenv('USE_CDN')) {
 	//define('WT_DATATABLES_BOOTSTRAP_CSS_URL', WT_STATIC_URL . 'packages/datatables-1.10.7/plugins/dataTables.bootstrap.css');
 	define('WT_DATATABLES_BOOTSTRAP_JS_URL', WT_STATIC_URL . 'packages/datatables-1.10.7/plugins/dataTables.bootstrap.js');
 	define('WT_FONT_AWESOME_CSS_URL', WT_STATIC_URL . 'packages/font-awesome-4.3.0/css/font-awesome.min.css');
-	define('WT_JQUERYUI_JS_URL', WT_STATIC_URL . 'packages/jquery-ui-1.11.2/js/jquery-ui.min.js');
+	define('WT_JQUERYUI_JS_URL', WT_STATIC_URL . 'packages/jquery-ui-1.11.4/js/jquery-ui.min.js');
 	define('WT_JQUERYUI_TOUCH_PUNCH_URL', WT_STATIC_URL . 'packages/jqueryui-touch-punch-0.2.3/jquery.ui.touch-punch.min.js');
 	define('WT_JQUERY_COOKIE_JS_URL', WT_STATIC_URL . 'packages/jquery-cookie-1.4.1/jquery.cookie.js');
 	define('WT_JQUERY_DATATABLES_JS_URL', WT_STATIC_URL . 'packages/datatables-1.10.7/js/jquery.dataTables.min.js');
@@ -205,7 +208,7 @@ $path = substr($path, 0, stripos($path, WT_SCRIPT_NAME));
 define('WT_BASE_URL', $protocol . '://' . $host . $port . $path);
 
 // Convert PHP errors into exceptions
-set_error_handler(function($errno, $errstr, $errfile, $errline) {
+set_error_handler(function ($errno, $errstr, $errfile, $errline) {
 	if (error_reporting() & $errno) {
 		throw new \ErrorException($errstr, 0, $errno, $errfile, $errline);
 	} else {
@@ -213,13 +216,13 @@ set_error_handler(function($errno, $errstr, $errfile, $errline) {
 	}
 });
 
-set_exception_handler(function(\Exception $ex) {
+set_exception_handler(function (\Exception $ex) {
 	$long_message = '';
 	$short_message = '';
 
 	foreach ($ex->getTrace() as $level => $frame) {
 		$frame += array('args' => array(), 'file' => 'unknown', 'line' => 'unknown');
-		array_walk($frame['args'], function(&$arg) {
+		array_walk($frame['args'], function (&$arg) {
 			switch (gettype($arg)) {
 			case 'boolean':
 			case 'integer':
@@ -289,7 +292,7 @@ if (file_exists(WT_ROOT . 'data/config.ini.php')) {
 // What is the remote client's IP address
 if (Filter::server('HTTP_CLIENT_IP') !== null) {
 	define('WT_CLIENT_IP', Filter::server('HTTP_CLIENT_IP'));
-} else if (Filter::server('HTTP_X_FORWARDED_FOR') !== null) {
+} elseif (Filter::server('HTTP_X_FORWARDED_FOR') !== null) {
 	define('WT_CLIENT_IP', Filter::server('HTTP_X_FORWARDED_FOR'));
 } else {
 	define('WT_CLIENT_IP', Filter::server('REMOTE_ADDR'));
@@ -364,19 +367,19 @@ case '':
 // Store our session data in the database.
 session_set_save_handler(
 	// open
-	function() {
+	function () {
 		return true;
 	},
 	// close
-	function() {
+	function () {
 		return true;
 	},
 	// read
-	function($id) {
+	function ($id) {
 		return Database::prepare("SELECT session_data FROM `##session` WHERE session_id=?")->execute(array($id))->fetchOne();
 	},
 	// write
-	function($id, $data) {
+	function ($id, $data) {
 		// Only update the session table once per minute, unless the session data has actually changed.
 		Database::prepare(
 			"INSERT INTO `##session` (session_id, user_id, ip_address, session_data, session_time)" .
@@ -391,13 +394,13 @@ session_set_save_handler(
 		return true;
 	},
 	// destroy
-	function($id) {
+	function ($id) {
 		Database::prepare("DELETE FROM `##session` WHERE session_id=?")->execute(array($id));
 
 		return true;
 	},
 	// gc
-	function($maxlifetime) {
+	function ($maxlifetime) {
 		Database::prepare("DELETE FROM `##session` WHERE session_time < DATE_SUB(NOW(), INTERVAL ? SECOND)")->execute(array($maxlifetime));
 
 		return true;
@@ -406,7 +409,7 @@ session_set_save_handler(
 
 Session::start(array(
 	'gc_maxlifetime' => Site::getPreference('SESSION_TIME'),
-	'cookie_path' => parse_url(WT_BASE_URL, PHP_URL_PATH),
+	'cookie_path'    => parse_url(WT_BASE_URL, PHP_URL_PATH),
 ));
 
 if (!Auth::isSearchEngine() && !Session::get('initiated')) {

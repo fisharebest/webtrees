@@ -1,5 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -16,6 +15,26 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Controller\SearchController;
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\GedcomCode\GedcomCodeRela;
+use Fisharebest\Webtrees\GedcomCode\GedcomCodeStat;
+use Fisharebest\Webtrees\GedcomCode\GedcomCodeTemp;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Module\CensusAssistantModule;
+use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Place;
+use Fisharebest\Webtrees\Session;
+use Fisharebest\Webtrees\Theme;
+use Fisharebest\Webtrees\Tree;
 use Rhumsaa\Uuid\Uuid;
 
 /**
@@ -23,8 +42,8 @@ use Rhumsaa\Uuid\Uuid;
  *
  * find and print a given individuals information for a pedigree chart
  *
- * @param Individual $person The person to print
- * @param integer    $show_full  the style to print the box in, 0 for smaller boxes, 1 for larger boxes
+ * @param Individual $person    The person to print
+ * @param int        $show_full The style to print the box in, 0 for smaller boxes, 1 for larger boxes
  */
 function print_pedigree_person(Individual $person = null, $show_full = 1) {
 
@@ -50,9 +69,9 @@ function print_pedigree_person(Individual $person = null, $show_full = 1) {
  * print a note record
  *
  * @param string $text
- * @param integer $nlevel   the level of the note record
- * @param string  $nrec     the note record to print
- * @param boolean $textOnly Don't print the "Note: " introduction
+ * @param int    $nlevel   the level of the note record
+ * @param string $nrec     the note record to print
+ * @param bool   $textOnly Don't print the "Note: " introduction
  *
  * @return string
  */
@@ -97,6 +116,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 			list($text) = explode("\n", strip_tags($html));
 			$first_line = strlen($text) > 100 ? mb_substr($text, 0, 100) . I18N::translate('…') : $text;
 		}
+
 		return
 			'<div class="fact_NOTE"><span class="label">' .
 			'<a href="#" onclick="expand_layer(\'' . $element_id . '\'); return false;"><i id="' . $element_id . '_img" class="icon-plus"></i></a> ' . GedcomTag::getLabel($label) . ':</span> ' . '<span id="' . $element_id . '-alt">' . $first_line . '</span>' .
@@ -108,19 +128,19 @@ function print_note_record($text, $nlevel, $nrec, $textOnly = false) {
 /**
  * Print all of the notes in this fact record
  *
- * @param string  $factrec  the factrecord to print the notes from
- * @param integer $level    The level of the factrecord
- * @param boolean $textOnly Don't print the "Note: " introduction
+ * @param string $factrec  The factrecord to print the notes from
+ * @param int    $level    The level of the factrecord
+ * @param bool   $textOnly Don't print the "Note: " introduction
  *
  * @return string HTML
  */
 function print_fact_notes($factrec, $level, $textOnly = false) {
 	global $WT_TREE;
 
-	$data = '';
+	$data          = '';
 	$previous_spos = 0;
-	$nlevel = $level + 1;
-	$ct = preg_match_all("/$level NOTE (.*)/", $factrec, $match, PREG_SET_ORDER);
+	$nlevel        = $level + 1;
+	$ct            = preg_match_all("/$level NOTE (.*)/", $factrec, $match, PREG_SET_ORDER);
 	for ($j = 0; $j < $ct; $j++) {
 		$spos1 = strpos($factrec, $match[$j][0], $previous_spos);
 		$spos2 = strpos($factrec . "\n$level", "\n$level", $spos1 + 1);
@@ -128,7 +148,7 @@ function print_fact_notes($factrec, $level, $textOnly = false) {
 			$spos2 = strlen($factrec);
 		}
 		$previous_spos = $spos2;
-		$nrec = substr($factrec, $spos1, $spos2 - $spos1);
+		$nrec          = substr($factrec, $spos1, $spos2 - $spos1);
 		if (!isset($match[$j][1])) {
 			$match[$j][1] = '';
 		}
@@ -139,7 +159,7 @@ function print_fact_notes($factrec, $level, $textOnly = false) {
 			if ($note) {
 				if ($note->canShow()) {
 					$noterec = $note->getGedcom();
-					$nt = preg_match("/0 @$nmatch[1]@ NOTE (.*)/", $noterec, $n1match);
+					$nt      = preg_match("/0 @$nmatch[1]@ NOTE (.*)/", $noterec, $n1match);
 					$data .= print_note_record(($nt > 0) ? $n1match[1] : "", 1, $noterec, $textOnly);
 					if (!$textOnly) {
 						if (strpos($noterec, '1 SOUR') !== false) {
@@ -159,6 +179,7 @@ function print_fact_notes($factrec, $level, $textOnly = false) {
 			}
 		}
 	}
+
 	return $data;
 }
 
@@ -279,6 +300,7 @@ function format_asso_rela_record(Fact $event) {
 		}
 		$html .= '<div class="fact_ASSO">' . $asso . '</div>';
 	}
+
 	return $html;
 }
 
@@ -291,15 +313,15 @@ function format_asso_rela_record(Fact $event) {
  * @return string HTML
  */
 function format_parents_age(Individual $person, Date $birth_date) {
-	$html = '';
+	$html     = '';
 	$families = $person->getChildFamilies();
 	// Multiple sets of parents (e.g. adoption) cause complications, so ignore.
 	if ($birth_date->isOK() && count($families) == 1) {
 		$family = current($families);
 		foreach ($family->getSpouses() as $parent) {
 			if ($parent->getBirthDate()->isOK()) {
-				$sex = $parent->getSexImage();
-				$age = Date::getAge($parent->getBirthDate(), $birth_date, 2);
+				$sex      = $parent->getSexImage();
+				$age      = Date::getAge($parent->getBirthDate(), $birth_date, 2);
 				$deatdate = $parent->getDeathDate();
 				switch ($parent->getSex()) {
 				case 'F':
@@ -328,6 +350,7 @@ function format_parents_age(Individual $person, Date $birth_date) {
 			$html = '<span class="age">' . $html . '</span>';
 		}
 	}
+
 	return $html;
 }
 
@@ -336,8 +359,8 @@ function format_parents_age(Individual $person, Date $birth_date) {
  *
  * @param Fact         $event  event containing the date/age
  * @param GedcomRecord $record the person (or couple) whose ages should be printed
- * @param boolean      $anchor option to print a link to calendar
- * @param boolean      $time   option to print TIME value
+ * @param bool         $anchor option to print a link to calendar
+ * @param bool         $time   option to print TIME value
  *
  * @return string
  */
@@ -474,9 +497,9 @@ function format_fact_date(Fact $event, GedcomRecord $record, $anchor, $time) {
  * print fact PLACe TEMPle STATus
  *
  * @param Fact $event       gedcom fact record
- * @param boolean $anchor      to print a link to placelist
- * @param boolean $sub_records to print place subrecords
- * @param boolean $lds         to print LDS TEMPle and STATus
+ * @param bool $anchor      to print a link to placelist
+ * @param bool $sub_records to print place subrecords
+ * @param bool $lds         to print LDS TEMPle and STATus
  *
  * @return string HTML
  */
@@ -499,13 +522,13 @@ function format_fact_place(Fact $event, $anchor = false, $sub_records = false, $
 				}
 			}
 			$map_lati = "";
-			$cts = preg_match('/\d LATI (.*)/', $placerec, $match);
+			$cts      = preg_match('/\d LATI (.*)/', $placerec, $match);
 			if ($cts > 0) {
 				$map_lati = $match[1];
 				$html .= '<br><span class="label">' . GedcomTag::getLabel('LATI') . ': </span>' . $map_lati;
 			}
 			$map_long = '';
-			$cts = preg_match('/\d LONG (.*)/', $placerec, $match);
+			$cts      = preg_match('/\d LONG (.*)/', $placerec, $match);
 			if ($cts > 0) {
 				$map_long = $match[1];
 				$html .= ' <span class="label">' . GedcomTag::getLabel('LONG') . ': </span>' . $map_long;
@@ -534,6 +557,7 @@ function format_fact_place(Fact $event, $anchor = false, $sub_records = false, $
 			}
 		}
 	}
+
 	return $html;
 }
 
@@ -572,6 +596,7 @@ function CheckFactUnique($uniquefacts, $recfacts, $type) {
 			}
 		}
 	}
+
 	return $uniquefacts;
 }
 
@@ -588,7 +613,7 @@ function print_add_new_fact($id, $usedfacts, $type) {
 	// -- Add from clipboard
 	if (is_array(Session::get('clipboard'))) {
 		$newRow = true;
-		foreach (array_reverse(Session::get('clipboard'), true) as $fact_id=>$fact) {
+		foreach (array_reverse(Session::get('clipboard'), true) as $fact_id => $fact) {
 			if ($fact["type"] == $type || $fact["type"] == 'all') {
 				if ($newRow) {
 					$newRow = false;
@@ -619,40 +644,40 @@ function print_add_new_fact($id, $usedfacts, $type) {
 	// -- Add from pick list
 	switch ($type) {
 	case "INDI":
-		$addfacts   = preg_split("/[, ;:]+/", $WT_TREE->getPreference('INDI_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+		$addfacts    = preg_split("/[, ;:]+/", $WT_TREE->getPreference('INDI_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
 		$uniquefacts = preg_split("/[, ;:]+/", $WT_TREE->getPreference('INDI_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-		$quickfacts = preg_split("/[, ;:]+/", $WT_TREE->getPreference('INDI_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
+		$quickfacts  = preg_split("/[, ;:]+/", $WT_TREE->getPreference('INDI_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
 		break;
 	case "FAM":
-		$addfacts   = preg_split("/[, ;:]+/", $WT_TREE->getPreference('FAM_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+		$addfacts    = preg_split("/[, ;:]+/", $WT_TREE->getPreference('FAM_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
 		$uniquefacts = preg_split("/[, ;:]+/", $WT_TREE->getPreference('FAM_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-		$quickfacts = preg_split("/[, ;:]+/", $WT_TREE->getPreference('FAM_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
+		$quickfacts  = preg_split("/[, ;:]+/", $WT_TREE->getPreference('FAM_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
 		break;
 	case "SOUR":
-		$addfacts   = preg_split("/[, ;:]+/", $WT_TREE->getPreference('SOUR_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+		$addfacts    = preg_split("/[, ;:]+/", $WT_TREE->getPreference('SOUR_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
 		$uniquefacts = preg_split("/[, ;:]+/", $WT_TREE->getPreference('SOUR_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-		$quickfacts = preg_split("/[, ;:]+/", $WT_TREE->getPreference('SOUR_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
+		$quickfacts  = preg_split("/[, ;:]+/", $WT_TREE->getPreference('SOUR_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
 		break;
 	case "NOTE":
-		$addfacts   = preg_split("/[, ;:]+/", $WT_TREE->getPreference('NOTE_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+		$addfacts    = preg_split("/[, ;:]+/", $WT_TREE->getPreference('NOTE_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
 		$uniquefacts = preg_split("/[, ;:]+/", $WT_TREE->getPreference('NOTE_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-		$quickfacts = preg_split("/[, ;:]+/", $WT_TREE->getPreference('NOTE_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
+		$quickfacts  = preg_split("/[, ;:]+/", $WT_TREE->getPreference('NOTE_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
 		break;
 	case "REPO":
-		$addfacts   = preg_split("/[, ;:]+/", $WT_TREE->getPreference('REPO_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
+		$addfacts    = preg_split("/[, ;:]+/", $WT_TREE->getPreference('REPO_FACTS_ADD'), -1, PREG_SPLIT_NO_EMPTY);
 		$uniquefacts = preg_split("/[, ;:]+/", $WT_TREE->getPreference('REPO_FACTS_UNIQUE'), -1, PREG_SPLIT_NO_EMPTY);
-		$quickfacts = preg_split("/[, ;:]+/", $WT_TREE->getPreference('REPO_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
+		$quickfacts  = preg_split("/[, ;:]+/", $WT_TREE->getPreference('REPO_FACTS_QUICK'), -1, PREG_SPLIT_NO_EMPTY);
 		break;
 	default:
 		return;
 	}
-	$addfacts = array_merge(CheckFactUnique($uniquefacts, $usedfacts, $type), $addfacts);
-	$quickfacts = array_intersect($quickfacts, $addfacts);
+	$addfacts            = array_merge(CheckFactUnique($uniquefacts, $usedfacts, $type), $addfacts);
+	$quickfacts          = array_intersect($quickfacts, $addfacts);
 	$translated_addfacts = array();
 	foreach ($addfacts as $addfact) {
 		$translated_addfacts[$addfact] = GedcomTag::getLabel($addfact);
 	}
-	uasort($translated_addfacts, function($x, $y) {
+	uasort($translated_addfacts, function ($x, $y) {
 		return I18N::strcasecmp(I18N::translate($x), I18N::translate($y));
 	});
 	echo '<tr><td class="descriptionbox">';
@@ -662,7 +687,7 @@ function print_add_new_fact($id, $usedfacts, $type) {
 	echo '<form method="get" name="newfactform" action="?" onsubmit="return false;">';
 	echo '<select id="newfact" name="newfact">';
 	echo '<option value="" disabled selected>' . I18N::translate('&lt;select&gt;') . '</option>';
-	foreach ($translated_addfacts as $fact=>$fact_name) {
+	foreach ($translated_addfacts as $fact => $fact_name) {
 		echo '<option value="', $fact, '">', $fact_name, '</option>';
 	}
 	if ($type == 'INDI' || $type == 'FAM') {

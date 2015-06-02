@@ -16,6 +16,8 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Controller\PageController;
+
 define('WT_SCRIPT_NAME', 'admin_site_info.php');
 require './includes/session.php';
 
@@ -26,7 +28,7 @@ $controller
 	->pageHeader();
 
 $variables = Database::prepare("SHOW VARIABLES")->fetchAssoc();
-array_walk($variables, function(&$x) { $x = str_replace(',', ', ', $x); });
+array_walk($variables, function (&$x) { $x = str_replace(',', ', ', $x); });
 
 ob_start();
 phpinfo(INFO_ALL & ~INFO_CREDITS & ~INFO_LICENSE);

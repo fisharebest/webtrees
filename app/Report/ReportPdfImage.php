@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Report;
 
 /**
  * webtrees: online genealogy
@@ -23,11 +23,9 @@ class ReportPdfImage extends ReportBaseImage {
 	/**
 	 * PDF image renderer
 	 *
-	 * @param PDF $renderer
-	 *
-	 * @return void
+	 * @param ReportTcpdf $renderer
 	 */
-	function render($renderer) {
+	public function render($renderer) {
 		global $lastpicbottom, $lastpicpage, $lastpicleft, $lastpicright;
 
 		// Check for a pagebreak first
@@ -85,11 +83,11 @@ class ReportPdfImage extends ReportBaseImage {
 				$this->align
 			);
 		}
-		$lastpicpage = $renderer->PageNo();
+		$lastpicpage           = $renderer->PageNo();
 		$renderer->lastpicpage = $renderer->getPage();
-		$lastpicleft = $this->x;
-		$lastpicright = $this->x + $this->width;
-		$lastpicbottom = $this->y + $this->height;
+		$lastpicleft           = $this->x;
+		$lastpicright          = $this->x + $this->width;
+		$lastpicbottom         = $this->y + $this->height;
 		// Setup for the next line
 		if ($this->line == "N") {
 			$renderer->SetY($lastpicbottom);
@@ -99,11 +97,11 @@ class ReportPdfImage extends ReportBaseImage {
 	/**
 	 * Get the image height
 	 *
-	 * @param PDF $pdf
+	 * @param ReportTcpdf $pdf
 	 *
 	 * @return float
 	 */
-	function getHeight($pdf) {
+	public function getHeight($pdf) {
 		return $this->height;
 	}
 
@@ -112,7 +110,7 @@ class ReportPdfImage extends ReportBaseImage {
 	 *
 	 * @return float
 	 */
-	function getWidth($pdf) {
+	public function getWidth($pdf) {
 		return $this->width;
 	}
 }

@@ -16,6 +16,9 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Controller\NoteController;
+use Fisharebest\Webtrees\Module\CensusAssistantModule;
+
 define('WT_SCRIPT_NAME', 'note.php');
 require './includes/session.php';
 
@@ -64,7 +67,7 @@ if ($controller->record && $controller->record->canShow()) {
 	http_response_code(404);
 	$controller->pageHeader();
 	echo '<p class="ui-state-error">', I18N::translate('This note does not exist or you do not have permission to view it.'), '</p>';
-	
+
 	return;
 }
 

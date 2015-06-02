@@ -23,6 +23,9 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\SimpleController;
+use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
+
 define('WT_SCRIPT_NAME', 'edit_interface.php');
 require './includes/session.php';
 
@@ -97,7 +100,7 @@ case 'updateraw':
 
 	if (!Filter::checkCsrf()) {
 		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=editraw&xref=' . $xref);
-		
+
 		return;
 	}
 
@@ -150,7 +153,7 @@ case 'editrawfact':
 		$controller
 			->pageHeader()
 			->addInlineJavascript('closePopupAndReloadParent();');
-		
+
 		return;
 	}
 
@@ -193,7 +196,7 @@ case 'updaterawfact':
 
 	if (!Filter::checkCsrf()) {
 		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=editrawfact&xref=' . $xref . '&fact_id=' . $fact_id);
-		
+
 		return;
 	}
 
@@ -212,7 +215,7 @@ case 'updaterawfact':
 		$controller
 			->pageHeader()
 			->addInlineJavascript('closePopupAndReloadParent();');
-		
+
 		return;
 	}
 
@@ -249,7 +252,7 @@ case 'edit':
 		$controller
 			->pageHeader()
 			->addInlineJavascript('closePopupAndReloadParent();');
-		
+
 		return;
 	}
 
@@ -397,7 +400,7 @@ case 'update':
 		$prev_action = Filter::post('prev_action', 'add|edit|addname|editname');
 		$fact_type   = Filter::post('fact_type', WT_REGEX_TAG);
 		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=' . $prev_action . '&xref=' . $xref . '&fact_id=' . $fact_id . '&fact=' . $fact_type);
-		
+
 		return;
 	}
 
@@ -470,7 +473,7 @@ case 'update':
 	}
 	if (!empty($NOTE)) {
 		$tempnote = preg_split('/\r?\n/', trim($NOTE) . "\n"); // make sure only one line ending on the end
-		$title[] = '0 @' . $xref . '@ NOTE ' . array_shift($tempnote);
+		$title[]  = '0 @' . $xref . '@ NOTE ' . array_shift($tempnote);
 		foreach ($tempnote as &$line) {
 			$line = trim('1 CONT ' . $line, ' ');
 		}
@@ -525,7 +528,7 @@ case 'add_child_to_family_action':
 	if (!Filter::checkCsrf()) {
 		$gender = Filter::get('gender', '[MFU]', 'U');
 		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=add_child_to_family&xref=' . $xref . '&gender=' . $gender);
-		
+
 		return;
 	}
 
@@ -602,7 +605,7 @@ case 'add_child_to_individual_action':
 
 	if (!Filter::checkCsrf()) {
 		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=add_child_to_individual&xref=' . $xref);
-		
+
 		return;
 	}
 
@@ -685,7 +688,7 @@ case 'add_parent_to_individual_action':
 	if (!Filter::checkCsrf()) {
 		$gender = Filter::get('gender', '[MFU]', 'U');
 		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=add_parent_to_individual&xref=' . $xref . '&gender=' . $gender);
-		
+
 		return;
 	}
 
@@ -755,7 +758,7 @@ case 'add_unlinked_indi_action':
 
 	if (!Filter::checkCsrf()) {
 		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=add_unlinked_indi');
-		
+
 		return;
 	}
 
@@ -820,7 +823,7 @@ case 'add_spouse_to_individual_action':
 	if (!Filter::checkCsrf()) {
 		$famtag = Filter::get('famtag', 'HUSB|WIFE');
 		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=add_spouse_to_individual&xref=' . $xref . '&famtag=' . $famtag);
-		
+
 		return;
 	}
 
@@ -912,7 +915,7 @@ case 'add_spouse_to_family_action':
 	if (!Filter::checkCsrf()) {
 		$famtag = Filter::get('famtag', 'HUSB|WIFE');
 		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=add_spouse_to_family&xref=' . $xref . '&famtag=' . $famtag);
-		
+
 		return;
 	}
 
@@ -1024,7 +1027,7 @@ case 'linkfamaction':
 
 	if (!Filter::checkCsrf()) {
 		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=addfamlink&xref=' . $xref);
-		
+
 		return;
 	}
 
@@ -1137,7 +1140,7 @@ case 'linkspouseaction':
 	if (!Filter::checkCsrf()) {
 		$famtag = Filter::get('famtag', 'HUSB|WIFE');
 		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=linkspouse&xref=' . $xref . '&famtag=' . $famtag);
-		
+
 		return;
 	}
 
@@ -1275,12 +1278,12 @@ case 'addsourceaction':
 
 	if (!Filter::checkCsrf()) {
 		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=addnewsource');
-		
+
 		return;
 	}
 
 	$newgedrec = '0 @XREF@ SOUR';
-	$ABBR = Filter::post('ABBR');
+	$ABBR      = Filter::post('ABBR');
 	if ($ABBR) {
 		$newgedrec .= "\n1 ABBR " . $ABBR;
 	}
@@ -1380,7 +1383,7 @@ case 'addnoteaction':
 
 	if (!Filter::checkCsrf()) {
 		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=addnewnote');
-		
+
 		return;
 	}
 
@@ -1403,7 +1406,7 @@ case 'addnoteaction_assisted':
 
 	if (!Filter::checkCsrf()) {
 		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=addnewnote_assisted');
-		
+
 		return;
 	}
 
@@ -1488,7 +1491,7 @@ case 'editnoteaction':
 
 	if (!Filter::checkCsrf()) {
 		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=editnote&xref=' . $xref);
-		
+
 		return;
 	}
 
@@ -1576,7 +1579,7 @@ case 'addrepoaction':
 
 	if (!Filter::checkCsrf()) {
 		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=addnewrepository');
-		
+
 		return;
 	}
 
@@ -1584,7 +1587,7 @@ case 'addrepoaction':
 		->setPageTitle(I18N::translate('Create a new repository'))
 		->pageHeader();
 
-	$gedrec = '0 @XREF@ REPO';
+	$gedrec    = '0 @XREF@ REPO';
 	$REPO_NAME = Filter::post('REPO_NAME');
 	if ($REPO_NAME) {
 		$gedrec .= "\n1 NAME " . $REPO_NAME;
@@ -1641,7 +1644,7 @@ case 'editname':
 		$controller
 			->pageHeader()
 			->addInlineJavascript('closePopupAndReloadParent();');
-		
+
 		return;
 	}
 
@@ -1731,7 +1734,7 @@ case 'reorder_media':
 			<input type="hidden" name="xref" value="<?php echo $xref; ?>">
 			<?php echo Filter::getCsrf(); ?>
 			<ul id="reorder_media_list">
-			<?php foreach ($sort_obje as $n=>$obje) { ?>
+			<?php foreach ($sort_obje as $n => $obje) { ?>
 				<li class="facts_value" style="list-style:none;cursor:move;margin-bottom:2px;" id="li_<?php echo $obje->getXref(); ?>">
 					<table class="pic">
 						<tr>
@@ -1766,7 +1769,7 @@ case 'reorder_media_update':
 
 	if (!Filter::checkCsrf()) {
 		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=reorder_media_&xref=' . $xref);
-		
+
 		return;
 	}
 
@@ -1786,7 +1789,7 @@ case 'reorder_media_update':
 	}
 	if (is_array($order1)) {
 		// Add new _WT_OBJE_SORT records
-		foreach ($order1 as $xref=>$n) {
+		foreach ($order1 as $xref => $n) {
 			$facts[] = '1 _WT_OBJE_SORT @' . $xref . '@';
 		}
 	}
@@ -1829,7 +1832,7 @@ case 'reorder_children':
 					$ids[] = $child->getXref();
 				}
 				$children = array();
-				foreach ($family->getChildren() as $k=>$child) {
+				foreach ($family->getChildren() as $k => $child) {
 					$bdate = $child->getEstimatedBirthDate();
 					if ($bdate->isOK()) {
 						$sortkey = $bdate->julianDay();
@@ -1841,9 +1844,9 @@ case 'reorder_children':
 				if ($option === 'bybirth') {
 					asort($children);
 				}
-				$i = 0;
+				$i         = 0;
 				$show_full = 1; // Force details to show for each child
-				foreach ($children as $id=>$child) {
+				foreach ($children as $id => $child) {
 					echo '<li style="cursor:move; margin-bottom:2px; position:relative;"';
 					if (!in_array($id, $ids)) {
 						echo ' class="facts_value new"';
@@ -1876,7 +1879,7 @@ case 'reorder_update':
 
 	if (!Filter::checkCsrf()) {
 		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=reorder_children&xref=' . $xref);
-		
+
 		return;
 	}
 
@@ -1892,8 +1895,8 @@ case 'reorder_update':
 		$facts  = $family->getFacts();
 
 		// Move children to the end of the record
-		foreach ($order as $child=>$num) {
-			foreach ($facts as $n=>$fact) {
+		foreach ($order as $child => $num) {
+			foreach ($facts as $n => $fact) {
 				if ($fact->getValue() === '@' . $child . '@') {
 					$facts[] = $fact;
 					unset($facts[$n]);
@@ -1924,8 +1927,8 @@ case 'changefamily':
 		->setPageTitle(I18N::translate('Change family members') . ' – ' . $family->getFullName())
 		->pageHeader();
 
-	$father = $family->getHusband();
-	$mother = $family->getWife();
+	$father   = $family->getHusband();
+	$mother   = $family->getWife();
 	$children = $family->getChildren();
 	?>
 	<div id="edit_interface-page">
@@ -2071,12 +2074,12 @@ case 'changefamily_update':
 
 	if (!Filter::checkCsrf()) {
 		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=changefamily&xref=' . $xref);
-		
+
 		return;
 	}
 
 	$CHIL = array();
-	for ($i = 0; ;++$i) {
+	for ($i = 0;; ++$i) {
 		if (isset($_POST['CHIL' . $i])) {
 			$CHIL[] = Filter::post('CHIL' . $i, WT_REGEX_XREF);
 		} else {
@@ -2097,8 +2100,8 @@ case 'changefamily_update':
 	$old_children = $family->getChildren();
 
 	// New family members
-	$new_father = Individual::getInstance($HUSB, $WT_TREE);
-	$new_mother = Individual::getInstance($WIFE, $WT_TREE);
+	$new_father   = Individual::getInstance($HUSB, $WT_TREE);
+	$new_mother   = Individual::getInstance($WIFE, $WT_TREE);
 	$new_children = array();
 	if (is_array($CHIL)) {
 		foreach ($CHIL as $child) {
@@ -2200,7 +2203,7 @@ case 'reorder_fams':
 
 	$fams = $person->getSpouseFamilies();
 	if ($option === 'bymarriage') {
-		usort($fams, __NAMESPACE__ . '\Family::compareMarrDate');
+		usort($fams, '\Fisharebest\Webtrees\Family::compareMarrDate');
 	}
 
 	?>
@@ -2213,7 +2216,7 @@ case 'reorder_fams':
 		<input type="hidden" name="option" value="bymarriage">
 		<?php echo Filter::getCsrf(); ?>
 		<ul id="reorder_list">
-		<?php foreach ($fams as $n=>$family) { ?>
+		<?php foreach ($fams as $n => $family) { ?>
 			<li class="facts_value" style="cursor:move;margin-bottom:2px;" id="li_<?php echo $family->getXref(); ?>">
 				<div class="name2"><?php echo $family->getFullName(); ?></div>
 				<?php echo $family->formatFirstMajorFact(WT_EVENTS_MARR, 2); ?>
@@ -2238,7 +2241,7 @@ case 'reorder_fams_update':
 
 	if (!Filter::checkCsrf()) {
 		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=reorder_fams&xref=' . $xref);
-		
+
 		return;
 	}
 
@@ -2254,8 +2257,8 @@ case 'reorder_fams_update':
 		$facts  = $person->getFacts();
 
 		// Move families to the end of the record
-		foreach ($order as $family=>$num) {
-			foreach ($facts as $n=>$fact) {
+		foreach ($order as $family => $num) {
+			foreach ($facts as $n => $fact) {
 				if ($fact->getValue() === '@' . $family . '@') {
 					$facts[] = $fact;
 					unset($facts[$n]);
@@ -2333,7 +2336,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	if ($name_fact) {
 		$name_fact_id = $name_fact->getFactId();
 		$name_type    = $name_fact->getAttribute('TYPE');
-		$namerec = $name_fact->getGedcom();
+		$namerec      = $name_fact->getGedcom();
 		// Populate the standard NAME field and subfields
 		foreach ($STANDARD_NAME_FACTS as $tag) {
 			if ($tag === 'NAME') {
@@ -2634,7 +2637,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	}
 
 	// Edit the standard name fields
-	foreach ($name_fields as $tag=>$value) {
+	foreach ($name_fields as $tag => $value) {
 		add_simple_tag('0 ' . $tag . ' ' . $value);
 	}
 
@@ -2652,7 +2655,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	if (isset($adv_name_fields['TYPE'])) {
 		unset($adv_name_fields['TYPE']);
 	}
-	foreach ($adv_name_fields as $tag=>$dummy) {
+	foreach ($adv_name_fields as $tag => $dummy) {
 		// Edit existing tags
 		if (preg_match_all('/2 ' . $tag . ' (.+)/', $namerec, $match)) {
 			foreach ($match[1] as $value) {
@@ -2711,7 +2714,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 			$i++;
 			if (isset($gedlines[$i])) {
 				$fields = explode(' ', $gedlines[$i]);
-				$level = $fields[0];
+				$level  = $fields[0];
 				if (isset($fields[1])) {
 					$type = $fields[1];
 				}
@@ -2787,9 +2790,9 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	echo '</p>';
 	echo '</form>';
 	$controller->addInlineJavascript('
-	SURNAME_TRADITION="'.$SURNAME_TRADITION . '";
-	gender="'.$gender . '";
-	famtag="'.$famtag . '";
+	SURNAME_TRADITION="' . $SURNAME_TRADITION . '";
+	gender="' . $gender . '";
+	famtag="' . $famtag . '";
 	function trim(str) {
 		str=str.replace(/\s\s+/g, " ");
 		return str.replace(/(^\s+)|(\s+$)/g, "");

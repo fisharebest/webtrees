@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Report;
 
 /**
  * webtrees: online genealogy
@@ -67,7 +67,7 @@ class ReportBaseLine extends ReportBaseElement {
 	 *
 	 * @return number
 	 */
-	function getHeight($renderer) {
+	public function getHeight($renderer) {
 		return abs($this->y2 - $this->y1);
 	}
 
@@ -76,7 +76,7 @@ class ReportBaseLine extends ReportBaseElement {
 	 *
 	 * @return number
 	 */
-	function getWidth($renderer) {
+	public function getWidth($renderer) {
 		return abs($this->x2 - $this->x1);
 	}
 }

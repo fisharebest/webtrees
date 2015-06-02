@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Report;
 
 /**
  * webtrees: online genealogy
@@ -29,10 +29,8 @@ class ReportBaseElement {
 	 * Element renderer
 	 *
 	 * @param ReportHtml|ReportPdf $renderer
-	 *
-	 * @return void
 	 */
-	function render($renderer) {
+	public function render($renderer) {
 		//-- to be implemented in inherited classes
 	}
 
@@ -41,7 +39,7 @@ class ReportBaseElement {
 	 *
 	 * @return float
 	 */
-	function getHeight($renderer) {
+	public function getHeight($renderer) {
 		return 0.0;
 	}
 
@@ -50,16 +48,16 @@ class ReportBaseElement {
 	 *
 	 * @return float
 	 */
-	function getWidth($renderer) {
+	public function getWidth($renderer) {
 		return 0.0;
 	}
 
 	/**
 	 * @param string $t
 	 *
-	 * @return integer
+	 * @return int
 	 */
-	function addText($t) {
+	public function addText($t) {
 		global $wt_report, $reportTitle, $reportDescription;
 
 		$t = trim($t, "\r\n\t");
@@ -79,9 +77,9 @@ class ReportBaseElement {
 	}
 
 	/**
-	 * @return integer
+	 * @return int
 	 */
-	function addNewline() {
+	public function addNewline() {
 		$this->text .= "\n";
 
 		return 0;
@@ -90,7 +88,7 @@ class ReportBaseElement {
 	/**
 	 * @return string
 	 */
-	function getValue() {
+	public function getValue() {
 		return $this->text;
 	}
 
@@ -98,27 +96,23 @@ class ReportBaseElement {
 	 * @param $wrapwidth
 	 * @param $cellwidth
 	 *
-	 * @return integer
+	 * @return int
 	 */
-	function setWrapWidth($wrapwidth, $cellwidth) {
+	public function setWrapWidth($wrapwidth, $cellwidth) {
 		return 0;
 	}
 
 	/**
 	 * @param $renderer
-	 *
-	 * @return void
 	 */
-	function renderFootnote($renderer) {
+	public function renderFootnote($renderer) {
 		// To be implemented in inherited classes
 	}
 
 	/**
 	 * @param $text
-	 *
-	 * @return void
 	 */
-	function setText($text) {
+	public function setText($text) {
 		$this->text = $text;
 	}
 }

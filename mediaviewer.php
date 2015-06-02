@@ -23,6 +23,8 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\MediaController;
+
 define('WT_SCRIPT_NAME', 'mediaviewer.php');
 require './includes/session.php';
 
@@ -71,7 +73,7 @@ if ($controller->record && $controller->record->canShow()) {
 	http_response_code(404);
 	$controller->pageHeader();
 	echo '<p class="ui-state-error">', I18N::translate('This media object does not exist or you do not have permission to view it.'), '</p>';
-	
+
 	return;
 }
 
@@ -99,7 +101,7 @@ echo '<div id="media-tabs">';
 				<td align="center" width="150">';
 					// When we have a pending edit, $controller->record shows the *old* data.
 					// As a temporary kludge, fetch a "normal" version of the record - which includes pending changes
-					// TODO - check both, and use RED/BLUE boxes.
+					// Perhaps check both, and use RED/BLUE boxes.
 					$tmp = Media::getInstance($controller->record->getXref(), $WT_TREE);
 					echo $tmp->displayImage();
 					if (!$tmp->isExternal()) {
@@ -118,7 +120,7 @@ echo '<div id="media-tabs">';
 							<td>
 								<table class="facts_table">';
 										$facts = $controller->getFacts();
-										foreach ($facts as $f=>$fact) {
+										foreach ($facts as $f => $fact) {
 											print_fact($fact, $controller->record);
 										}
 								echo '</table>

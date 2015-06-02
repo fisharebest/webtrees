@@ -23,6 +23,8 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\PageController;
+
 define('WT_SCRIPT_NAME', 'admin_trees_merge.php');
 require './includes/session.php';
 
@@ -74,7 +76,7 @@ if ($tree1_id && $tree2_id != $tree1_id) {
 		") AS other_trees USING (xref)"
 	)->execute(array(
 		$tree1_id, $tree1_id, $tree1_id, $tree1_id, $tree1_id,
-		$tree2_id, $tree2_id, $tree2_id, $tree2_id, $tree2_id, $tree2_id
+		$tree2_id, $tree2_id, $tree2_id, $tree2_id, $tree2_id, $tree2_id,
 	))->fetchAssoc();
 
 	if ($xrefs) {

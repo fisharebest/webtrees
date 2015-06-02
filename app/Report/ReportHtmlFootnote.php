@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Report;
 
 /**
  * webtrees: online genealogy
@@ -24,10 +24,8 @@ class ReportHtmlFootnote extends ReportBaseFootnote {
 	 * HTML Footnotes number renderer
 	 *
 	 * @param ReportHtml $renderer
-	 *
-	 * @return void
 	 */
-	function render($renderer) {
+	public function render($renderer) {
 		$renderer->setCurrentStyle("footnotenum");
 		echo "<a href=\"#footnote", $this->num, "\"><sup>";
 		$renderer->write($renderer->entityRTL . $this->num);
@@ -39,10 +37,8 @@ class ReportHtmlFootnote extends ReportBaseFootnote {
 	 * Uses style name "footnote" by default
 	 *
 	 * @param ReportHtml $html
-	 *
-	 * @return void
 	 */
-	function renderFootnote($html) {
+	public function renderFootnote($html) {
 
 		if ($html->getCurrentStyle() != $this->styleName) {
 			$html->setCurrentStyle($this->styleName);
@@ -62,11 +58,11 @@ class ReportHtmlFootnote extends ReportBaseFootnote {
 	 * Calculates the Footnotes height
 	 *
 	 * @param ReportHtml $html
-	 * @param integer    $cellWidth The width of the cell to use it for text wraping
+	 * @param int        $cellWidth The width of the cell to use it for text wraping
 	 *
-	 * @return integer   Footnote height in points
+	 * @return int       Footnote height in points
 	 */
-	function getFootnoteHeight($html, $cellWidth = 0) {
+	public function getFootnoteHeight($html, $cellWidth = 0) {
 		if ($html->getCurrentStyle() != $this->styleName) {
 			$html->setCurrentStyle($this->styleName);
 		}
@@ -75,8 +71,9 @@ class ReportHtmlFootnote extends ReportBaseFootnote {
 			$this->text = $html->textWrap($this->text, $cellWidth);
 		}
 		$this->text = $this->text . "\n\n";
-		$ct = substr_count($this->text, "\n");
-		$fsize = $html->getCurrentStyleHeight();
+		$ct         = substr_count($this->text, "\n");
+		$fsize      = $html->getCurrentStyleHeight();
+
 		return ($fsize * $ct) * $html->cellHeightRatio;
 	}
 
@@ -88,7 +85,7 @@ class ReportHtmlFootnote extends ReportBaseFootnote {
 	 *
 	 * @return array
 	 */
-	function getWidth($html) {
+	public function getWidth($html) {
 		// Setup the style name
 		$html->setCurrentStyle("footnotenum");
 
@@ -110,19 +107,19 @@ class ReportHtmlFootnote extends ReportBaseFootnote {
 		// If there is still remaining wrap width...
 		if ($this->wrapWidthRemaining > 0) {
 			// Check with line counter too!
-			if (($lw >= $this->wrapWidthRemaining) or ($lfct > 1)) {
-				$newtext = "";
+			if ($lw >= $this->wrapWidthRemaining || $lfct > 1) {
+				$newtext            = "";
 				$wrapWidthRemaining = $this->wrapWidthRemaining;
-				$lines = explode("\n", $this->numText);
+				$lines              = explode("\n", $this->numText);
 				// Go throught the text line by line
 				foreach ($lines as $line) {
 					// Line width in points + a little margin
 					$lw = $html->GetStringWidth($line);
 					// If the line has to be wraped
 					if ($lw > $wrapWidthRemaining) {
-						$words = explode(" ", $line);
+						$words    = explode(" ", $line);
 						$addspace = count($words);
-						$lw = 0;
+						$lw       = 0;
 						foreach ($words as $word) {
 							$addspace--;
 							$lw += $html->GetStringWidth($word . " ");
@@ -156,15 +153,17 @@ class ReportHtmlFootnote extends ReportBaseFootnote {
 					$lfct--;
 				}
 				$this->numText = $newtext;
-				$lfct = substr_count($this->numText, "\n");
+				$lfct          = substr_count($this->numText, "\n");
+
 				return array($lw, 1, $lfct);
 			}
 		}
-		$l = 0;
+		$l    = 0;
 		$lfct = substr_count($this->numText, "\n");
 		if ($lfct > 0) {
 			$l = 2;
 		}
+
 		return array($lw, $l, $lfct);
 	}
 }

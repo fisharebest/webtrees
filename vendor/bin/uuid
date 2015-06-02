@@ -1,7 +1,1 @@
-#!/usr/bin/env sh
-SRC_DIR="`pwd`"
-cd "`dirname "$0"`"
-cd "../rhumsaa/uuid/bin"
-BIN_TARGET="`pwd`/uuid"
-cd "$SRC_DIR"
-"$BIN_TARGET" "$@"
+../ramsey/uuid/bin/uuid

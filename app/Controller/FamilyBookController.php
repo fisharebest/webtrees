@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Controller;
 
 /**
  * webtrees: online genealogy
@@ -16,23 +16,28 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Theme;
+
 /**
  * Class FamilyBookController - Controller for the familybook chart
  */
 class FamilyBookController extends ChartController {
-	/** @var integer Whether to show spouse details */
+	/** @var int Whether to show spouse details */
 	public $show_spouse;
 
-	/** @var integer Number of descendancy generations to show */
+	/** @var int Number of descendancy generations to show */
 	public $descent;
 
-	/** @var integer Number of ascendancy generations to show */
+	/** @var int Number of ascendancy generations to show */
 	public $generations;
 
-	/** @var integer Number of descendancy generations that exist */
+	/** @var int Number of descendancy generations that exist */
 	private $dgenerations;
 
-	/** @var integer Half height of personbox */
+	/** @var int Half height of personbox */
 	public $bhalfheight;
 
 	/**
@@ -69,9 +74,9 @@ class FamilyBookController extends ChartController {
 	 * Prints descendency of passed in person
 	 *
 	 * @param Individual|null $person
-	 * @param integer         $generation
+	 * @param int             $generation
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	private function printDescendency(Individual $person = null, $generation) {
 
@@ -178,7 +183,7 @@ class FamilyBookController extends ChartController {
 	 * Prints pedigree of the person passed in
 	 *
 	 * @param Individual $person
-	 * @param integer       $count
+	 * @param int        $count
 	 */
 	private function printPersonPedigree($person, $count) {
 		if ($count >= $this->generations) {
@@ -224,21 +229,21 @@ class FamilyBookController extends ChartController {
 					if ($genoffset == 3) {
 						if ($famcount == 3) {
 							$linefactor = $tblheight / 2;
-						} else if ($famcount > 3) {
+						} elseif ($famcount > 3) {
 							$linefactor = $tblheight;
 						}
 					}
 					if ($genoffset == 4) {
 						if ($famcount == 4) {
 							$linefactor = $tblheight;
-						} else if ($famcount > 4) {
+						} elseif ($famcount > 4) {
 							$linefactor = ($famcount - $genoffset) * ($tblheight * 1.5);
 						}
 					}
 					if ($genoffset == 5) {
 						if ($famcount == 5) {
 							$linefactor = 0;
-						} else if ($famcount > 5) {
+						} elseif ($famcount > 5) {
 							$linefactor = $tblheight * ($famcount - $genoffset);
 						}
 					}
@@ -306,10 +311,10 @@ class FamilyBookController extends ChartController {
 	/**
 	 * Calculates number of generations a person has
 	 *
-	 * @param string  $pid
-	 * @param integer $depth
+	 * @param string $pid
+	 * @param int    $depth
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	private function maxDescendencyGenerations($pid, $depth) {
 		global $WT_TREE;
@@ -343,8 +348,6 @@ class FamilyBookController extends ChartController {
 
 	/**
 	 * Print empty box
-	 *
-	 * @return void
 	 */
 
 	private function printEmptyBox() {
@@ -355,7 +358,7 @@ class FamilyBookController extends ChartController {
 	 * Print a “Family Book” for an individual
 	 *
 	 * @param Individual $person
-	 * @param integer    $descent_steps
+	 * @param int    $descent_steps
 	 */
 	public function printFamilyBook(Individual $person, $descent_steps) {
 		if ($descent_steps == 0 || !$person->canShowName()) {

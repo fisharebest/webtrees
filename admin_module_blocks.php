@@ -23,6 +23,9 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Module\ModuleConfigInterface;
+
 define('WT_SCRIPT_NAME', 'admin_module_blocks.php');
 require 'includes/session.php';
 

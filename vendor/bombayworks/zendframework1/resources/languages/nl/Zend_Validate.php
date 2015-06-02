@@ -67,7 +67,7 @@ return array(
     "'%value%' does not fit the date format '%format%'" => "'%value%' past niet in het datumformaat '%format%'",
 
     // Zend_Validate_Db_Abstract
-    "No record matching %value% was found" => "Er kon geen record gevonden wat overeenkomt met %value%",
+    "No record matching '%value%' was found" => "Er kon geen record gevonden wat overeenkomt met %value%",
     "A record matching '%value%' was found" => "Een record wat overeenkomt met %value% is gevonden",
 
     // Zend_Validate_Digits

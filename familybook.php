@@ -23,6 +23,8 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\FamilyBookController;
+
 define('WT_SCRIPT_NAME', 'familybook.php');
 require './includes/session.php';
 

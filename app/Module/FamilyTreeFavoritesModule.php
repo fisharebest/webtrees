@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -16,6 +16,15 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Theme;
 use PDO;
 use PDOException;
 use Rhumsaa\Uuid\Uuid;
@@ -99,7 +108,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 			$userfavs = array();
 		}
 
-		$id = $this->getName() . $block_id;
+		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		$title = $this->getTitle();
 
@@ -111,7 +120,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 
 		$content = '';
 		if ($userfavs) {
-			foreach ($userfavs as $key=>$favorite) {
+			foreach ($userfavs as $key => $favorite) {
 				if (isset($favorite['id'])) {
 					$key = $favorite['id'];
 				}
@@ -195,6 +204,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 			if ($block) {
 				$class .= ' small_inner_block';
 			}
+
 			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 			return $content;
@@ -234,9 +244,9 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 	/**
 	 * Delete a favorite from the database
 	 *
-	 * @param integer $favorite_id
+	 * @param int $favorite_id
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function deleteFavorite($favorite_id) {
 		return (bool)
@@ -249,7 +259,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 	 *
 	 * @param $favorite
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function addFavorite($favorite) {
 		// -- make sure a favorite is added
@@ -288,7 +298,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 	/**
 	 * Get favorites for a user or family tree
 	 *
-	 * @param integer $gedcom_id
+	 * @param int $gedcom_id
 	 *
 	 * @return string[][]
 	 */

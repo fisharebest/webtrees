@@ -67,7 +67,7 @@ return array(
     "'%value%' does not fit the date format '%format%'" => "'%value%' no se ajusta al formato de fecha '%format%'",
 
     // Zend_Validate_Db_Abstract
-    "No record matching %value% was found" => "No fue encontrado ningun registro que coincida con %value%",
+    "No record matching '%value%' was found" => "No fue encontrado ningun registro que coincida con %value%",
     "A record matching '%value%' was found" => "Se encontro un registro coincidente con %value%",
 
     // Zend_Validate_Digits
@@ -78,7 +78,7 @@ return array(
     // Zend_Validate_EmailAddress
     "Invalid type given, value should be a string" => "El tipo especificado no es válido, el valor debe ser una cadena de texto",
     "'%value%' is no valid email address in the basic format local-part@hostname" => "'%value%' no es una dirección de correo electrónico válido en el formato local-part@hostname",
-    "'%hostname%' is no valid hostname for email address '%value%'" => "'%hostname%' no es un nombre de host válido para la dirección de correo electrónico '%value%'",
+    "'%hostname%' is not a valid hostname for email address '%value%'" => "'%hostname%' no es un nombre de host válido para la dirección de correo electrónico '%value%'",
     "'%hostname%' does not appear to have a valid MX record for the email address '%value%'" => "'%hostname%' no parece tener un registro MX válido para la dirección de correo electrónico '%value%'",
     "'%hostname%' is not in a routable network segment. The email address '%value%' should not be resolved from public network." => "'%hostname%' no esta en un segmento de red ruteable. La dirección de correo electrónico '%value%' no se debe poder resolver desde una red pública.",
     "'%localPart%' can not be matched against dot-atom format" => "'%localPart%' no es igual al formato dot-atom",

@@ -91,7 +91,7 @@ class GedcomTag {
 	 *
 	 * @param string $tag
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function isTag($tag) {
 		return in_array($tag, self::$ALL_TAGS);
@@ -1838,7 +1838,7 @@ class GedcomTag {
 		foreach ($tags as $tag) {
 			$facts[$tag] = self::getLabel($tag, null);
 		}
-		uasort($facts, __NAMESPACE__ . '\I18N::strcasecmp');
+		uasort($facts, '\Fisharebest\Webtrees\I18N::strcasecmp');
 
 		return $facts;
 	}
@@ -1901,7 +1901,7 @@ class GedcomTag {
 		foreach (self::$OBJE_FILE_FORM_TYPE as $type) {
 			$values[$type] = self::getFileFormTypeValue($type);
 		}
-		uasort($values, __NAMESPACE__ . '\I18N::strcasecmp');
+		uasort($values, '\Fisharebest\Webtrees\I18N::strcasecmp');
 
 		return $values;
 	}

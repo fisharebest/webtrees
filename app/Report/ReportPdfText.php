@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Report;
 
 /**
  * webtrees: online genealogy
@@ -23,11 +23,9 @@ class ReportPdfText extends ReportBaseText {
 	/**
 	 * PDF Text renderer
 	 *
-	 * @param PDF $renderer
-	 *
-	 * @return void
+	 * @param ReportTcpdf $renderer
 	 */
-	function render($renderer) {
+	public function render($renderer) {
 		// Set up the style
 		if ($renderer->getCurrentStyle() != $this->styleName) {
 			$renderer->setCurrentStyle($this->styleName);
@@ -69,22 +67,22 @@ class ReportPdfText extends ReportBaseText {
 	 *
 	 * The height is already calculated in getWidth()
 	 *
-	 * @param PDF $pdf
+	 * @param ReportTcpdf $pdf
 	 *
 	 * @return float 0
 	 */
-	function getHeight($pdf) {
+	public function getHeight($pdf) {
 		return 0;
 	}
 
 	/**
 	 * Splits the text into lines if necessary to fit into a giving cell
 	 *
-	 * @param PDF $pdf
+	 * @param ReportTcpdf $pdf
 	 *
 	 * @return array
 	 */
-	function getWidth($pdf) {
+	public function getWidth($pdf) {
 		// Setup the style name, a font must be selected to calculate the width
 		if ($pdf->getCurrentStyle() != $this->styleName) {
 			$pdf->setCurrentStyle($this->styleName);
@@ -104,18 +102,18 @@ class ReportPdfText extends ReportBaseText {
 			// Check with line counter too!
 			// but floor the $wrapWidthRemaining first to keep it bugfree!
 			$wrapWidthRemaining = (int) ($this->wrapWidthRemaining);
-			if (($lw >= ($wrapWidthRemaining)) or ($lfct > 1)) {
+			if ($lw >= $wrapWidthRemaining || $lfct > 1) {
 				$newtext = "";
-				$lines = explode("\n", $this->text);
+				$lines   = explode("\n", $this->text);
 				// Go throught the text line by line
 				foreach ($lines as $line) {
 					// Line width in points + a little margin
 					$lw = $pdf->GetStringWidth($line);
 					// If the line has to be wraped
 					if ($lw >= $wrapWidthRemaining) {
-						$words = explode(" ", $line);
+						$words    = explode(" ", $line);
 						$addspace = count($words);
-						$lw = 0;
+						$lw       = 0;
 						foreach ($words as $word) {
 							$addspace--;
 							$lw += $pdf->GetStringWidth($word . " ");
@@ -149,12 +147,12 @@ class ReportPdfText extends ReportBaseText {
 					$lfct--;
 				}
 				$this->text = $newtext;
-				$lfct = substr_count($this->text, "\n");
+				$lfct       = substr_count($this->text, "\n");
 
 				return array($lw, 1, $lfct);
 			}
 		}
-		$l = 0;
+		$l    = 0;
 		$lfct = substr_count($this->text, "\n");
 		if ($lfct > 0) {
 			$l = 2;

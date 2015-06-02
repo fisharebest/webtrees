@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Controller;
 
 /**
  * webtrees: online genealogy
@@ -16,11 +16,24 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\User;
+
 /**
  * Class IndividualController - Controller for the individual page
  */
 class IndividualController extends GedcomRecordController {
-	public $name_count = 0;
+	public $name_count  = 0;
 	public $total_names = 0;
 
 	public $tabs;
@@ -41,7 +54,6 @@ class IndividualController extends GedcomRecordController {
 
 		parent::__construct();
 
-
 		// If we can display the details, add them to the page header
 		if ($this->record && $this->record->canShow()) {
 			$this->setPageTitle($this->record->getFullName() . ' ' . $this->record->getLifespan());
@@ -59,6 +71,7 @@ class IndividualController extends GedcomRecordController {
 		if ($this->record) {
 			return $this->record;
 		}
+
 		return parent::getSignificantIndividual();
 	}
 
@@ -77,6 +90,7 @@ class IndividualController extends GedcomRecordController {
 				return $family;
 			}
 		}
+
 		return parent::getSignificantFamily();
 	}
 
@@ -126,7 +140,7 @@ class IndividualController extends GedcomRecordController {
 			null,
 			$event->getParent()->getTree()
 		);
-		$all_names = $dummy->getAllNames();
+		$all_names    = $dummy->getAllNames();
 		$primary_name = $all_names[0];
 
 		$this->name_count++;
@@ -254,7 +268,7 @@ class IndividualController extends GedcomRecordController {
 	/**
 	 * get edit menu
 	 */
-	function getEditMenu() {
+	public function getEditMenu() {
 		if (!$this->record || $this->record->isPendingDeletion()) {
 			return null;
 		}
@@ -278,7 +292,7 @@ class IndividualController extends GedcomRecordController {
 			$menu->addSubmenu($submenu);
 
 			$has_sex_record = false;
-			$submenu = new Menu(I18N::translate('Edit gender'), '#', 'menu-indi-editsex');
+			$submenu        = new Menu(I18N::translate('Edit gender'), '#', 'menu-indi-editsex');
 			foreach ($this->record->getFacts() as $fact) {
 				if ($fact->getTag() == 'SEX' && $fact->canEdit()) {
 					$submenu->setOnclick("return edit_record('" . $this->record->getXref() . "', '" . $fact->getFactId() . "');");
@@ -333,7 +347,7 @@ class IndividualController extends GedcomRecordController {
 	 *
 	 * @return string returns 'person_box', 'person_boxF', or 'person_boxNN'
 	 */
-	function getPersonStyle($person) {
+	public function getPersonStyle($person) {
 		switch ($person->getSex()) {
 		case 'M':
 			$class = 'person_box';
@@ -350,6 +364,7 @@ class IndividualController extends GedcomRecordController {
 		} elseif ($person->isPendingAddtion()) {
 			$class .= ' new';
 		}
+
 		return $class;
 	}
 
@@ -362,6 +377,7 @@ class IndividualController extends GedcomRecordController {
 	public function getSignificantSurname() {
 		if ($this->record) {
 			list($surn) = explode(',', $this->record->getSortname());
+
 			return $surn;
 		} else {
 			return '';
@@ -376,9 +392,9 @@ class IndividualController extends GedcomRecordController {
 	public function getSideBarContent() {
 		global $controller;
 
-		$html = '';
+		$html   = '';
 		$active = 0;
-		$n = 0;
+		$n      = 0;
 		foreach (Module::getActiveSidebars($this->record->getTree()) as $mod) {
 			if ($mod->hasSidebarContent()) {
 				$html .= '<h3 id="' . $mod->getName() . '"><a href="#">' . $mod->getTitle() . '</a></h3>';

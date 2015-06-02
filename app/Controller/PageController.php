@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Controller;
 
 /**
  * webtrees: online genealogy
@@ -16,6 +16,14 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Theme;
+
 /**
  * Class PageController Controller for full-page, themed HTML responses
  */
@@ -29,7 +37,7 @@ class PageController extends BaseController {
 	/** @var string <head><title> $page_title </title></head> */
 	private $page_title = WT_WEBTREES;
 
-	/** @var boolean Is this a popup window? */
+	/** @var bool Is this a popup window? */
 	private $popup;
 
 	/**
@@ -101,7 +109,7 @@ class PageController extends BaseController {
 	/**
 	 * Restrict access
 	 *
-	 * @param boolean $condition
+	 * @param bool $condition
 	 *
 	 * @return $this
 	 */
@@ -116,8 +124,6 @@ class PageController extends BaseController {
 
 	/**
 	 * Print the page footer, using the theme
-	 *
-	 * @return void
 	 */
 	public function pageFooter() {
 		echo
@@ -140,8 +146,6 @@ class PageController extends BaseController {
 	/**
 	 * Print the page footer, using the theme
 	 * Note that popup windows are deprecated
-	 *
-	 * @return void
 	 */
 	public function pageFooterPopupWindow() {
 		echo
@@ -164,7 +168,7 @@ class PageController extends BaseController {
 	/**
 	 * Print the page header, using the theme
 	 *
-	 * @param boolean $popup Is this a popup window
+	 * @param bool $popup Is this a popup window
 	 *
 	 * @return $this
 	 */

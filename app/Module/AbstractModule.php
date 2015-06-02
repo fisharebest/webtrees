@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,9 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Class AbstractModule - common functions for blocks
@@ -40,7 +43,7 @@ abstract class AbstractModule {
 	}
 
 	/**
-	 * @param integer     $block_id
+	 * @param int         $block_id
 	 * @param string      $setting_name
 	 * @param string|null $default_value
 	 *
@@ -58,7 +61,7 @@ abstract class AbstractModule {
 	}
 
 	/**
-	 * @param integer     $block_id
+	 * @param int         $block_id
 	 * @param string      $setting_name
 	 * @param string|null $setting_value
 	 *
@@ -104,7 +107,7 @@ abstract class AbstractModule {
 	 *
 	 * Some modules are aimed at admins or managers, and are not generally shown to users.
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function defaultAccessLevel() {
 		// Returns one of: Auth::PRIV_HIDE, Auth::PRIV_PRIVATE, Auth::PRIV_USER, WT_PRIV_ADMIN
@@ -125,8 +128,6 @@ abstract class AbstractModule {
 	 *
 	 * Since modules may have many settings, and will probably want to use
 	 * lots of them, load them all at once and cache them.
-	 *
-	 * @return void
 	 */
 	private function loadAllSettings() {
 		if ($this->settings === null) {
@@ -199,9 +200,9 @@ abstract class AbstractModule {
 	 * Get a the current access level for a module
 	 *
 	 * @param Tree   $tree
-	 * @param string $component - tab, block, menu, etc
+	 * @param string $component tab, block, menu, etc
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function getAccessLevel(Tree $tree, $component) {
 		$access_level = Database::prepare(

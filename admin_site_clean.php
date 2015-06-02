@@ -16,11 +16,11 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Controller\PageController;
 use Rhumsaa\Uuid\Uuid;
 
 define('WT_SCRIPT_NAME', 'admin_site_clean.php');
 require './includes/session.php';
-
 
 $to_delete = Filter::postArray('to_delete');
 if ($to_delete && Filter::checkCsrf()) {
@@ -60,14 +60,14 @@ foreach (Tree::getAll() as $tree) {
 
 	if (substr($MEDIA_DIRECTORY, 0, 3) != '../') {
 		// Just need to add the first part of the path
-		$tmp = explode('/', $MEDIA_DIRECTORY);
+		$tmp             = explode('/', $MEDIA_DIRECTORY);
 		$do_not_delete[] = $tmp[0];
 	}
 }
 
 $locked_icon = '<i class="fa fa-ban text-danger"></i>';
 
-$dir = dir(WT_DATA_DIR);
+$dir     = dir(WT_DATA_DIR);
 $entries = array();
 while (false !== ($entry = $dir->read())) {
 	if ($entry[0] != '.') {

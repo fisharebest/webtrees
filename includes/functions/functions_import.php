@@ -1,5 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -16,7 +15,19 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use PDOException;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Log;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Soundex;
+use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Tidy up a gedcom record on import, so that we can access it consistently/efficiently.
@@ -38,9 +49,9 @@ function reformat_record_import($rec, Tree $tree) {
 
 	// Process the record line-by-line
 	$newrec = '';
-	foreach ($matches as $n=>$match) {
+	foreach ($matches as $n => $match) {
 		list(, $level, $xref, $tag, $data) = $match;
-		$tag = strtoupper($tag); // Tags should always be upper case
+		$tag                               = strtoupper($tag); // Tags should always be upper case
 		switch ($tag) {
 		// Convert PhpGedView tags to WT
 		case '_PGVU':
@@ -172,7 +183,7 @@ function reformat_record_import($rec, Tree $tree) {
 			// Preserve text from INT dates
 			if (strpos($data, '(') !== false) {
 				list($date, $text) = explode('(', $data, 2);
-				$text = ' (' . $text;
+				$text              = ' (' . $text;
 			} else {
 				$date = $data;
 				$text = '';
@@ -565,6 +576,7 @@ function reformat_record_import($rec, Tree $tree) {
 			break;
 		}
 	}
+
 	return $newrec;
 }
 
@@ -573,9 +585,9 @@ function reformat_record_import($rec, Tree $tree) {
  *
  * this function will parse the given gedcom record and add it to the database
  *
- * @param string  $gedrec the raw gedcom record to parse
- * @param Tree    $tree import the record into this tree
- * @param boolean $update whether or not this is an updated record that has been accepted
+ * @param string $gedrec the raw gedcom record to parse
+ * @param Tree   $tree   import the record into this tree
+ * @param bool   $update whether or not this is an updated record that has been accepted
  */
 function import_record($gedrec, Tree $tree, $update) {
 	$tree_id = $tree->getTreeId();
@@ -590,7 +602,7 @@ function import_record($gedrec, Tree $tree, $update) {
 
 	// import different types of records
 	if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ (' . WT_REGEX_TAG . ')/', $gedrec, $match)) {
-		list(,$xref, $type) = $match;
+		list(, $xref, $type) = $match;
 		// check for a _UID, if the record doesn't have one, add one
 		if ($tree->getPreference('GENERATE_UIDS') && !strpos($gedrec, "\n1 _UID ")) {
 			$gedrec .= "\n1 _UID " . GedcomTag::createUid();
@@ -631,7 +643,7 @@ function import_record($gedrec, Tree $tree, $update) {
 		Database::prepare(
 			"INSERT INTO `##individuals` (i_id, i_file, i_rin, i_sex, i_gedcom) VALUES (?, ?, ?, ?, ?)"
 		)->execute(array(
-			$xref, $tree_id, $rin, $record->getSex(), $gedrec
+			$xref, $tree_id, $rin, $record->getSex(), $gedrec,
 		));
 		// Update the cross-reference/index tables.
 		update_places($xref, $tree_id, $gedrec);
@@ -660,7 +672,7 @@ function import_record($gedrec, Tree $tree, $update) {
 		Database::prepare(
 			"INSERT INTO `##families` (f_id, f_file, f_husb, f_wife, f_gedcom, f_numchil) VALUES (?, ?, ?, ?, ?, ?)"
 		)->execute(array(
-			$xref, $tree_id, $husb, $wife, $gedrec, $nchi
+			$xref, $tree_id, $husb, $wife, $gedrec, $nchi,
 		));
 		// Update the cross-reference/index tables.
 		update_places($xref, $tree_id, $gedrec);
@@ -682,7 +694,7 @@ function import_record($gedrec, Tree $tree, $update) {
 		Database::prepare(
 			"INSERT INTO `##sources` (s_id, s_file, s_name, s_gedcom) VALUES (?, ?, LEFT(?, 255), ?)"
 		)->execute(array(
-			$xref, $tree_id, $name, $gedrec
+			$xref, $tree_id, $name, $gedrec,
 		));
 		// Update the cross-reference/index tables.
 		update_links($xref, $tree_id, $gedrec);
@@ -696,7 +708,7 @@ function import_record($gedrec, Tree $tree, $update) {
 		Database::prepare(
 			"INSERT INTO `##other` (o_id, o_file, o_type, o_gedcom) VALUES (?, ?, 'REPO', ?)"
 		)->execute(array(
-			$xref, $tree_id, $gedrec
+			$xref, $tree_id, $gedrec,
 		));
 		// Update the cross-reference/index tables.
 		update_links($xref, $tree_id, $gedrec);
@@ -707,7 +719,7 @@ function import_record($gedrec, Tree $tree, $update) {
 		Database::prepare(
 			"INSERT INTO `##other` (o_id, o_file, o_type, o_gedcom) VALUES (?, ?, 'NOTE', ?)"
 		)->execute(array(
-			$xref, $tree_id, $gedrec
+			$xref, $tree_id, $gedrec,
 		));
 		// Update the cross-reference/index tables.
 		update_links($xref, $tree_id, $gedrec);
@@ -718,7 +730,7 @@ function import_record($gedrec, Tree $tree, $update) {
 		Database::prepare(
 			"INSERT INTO `##media` (m_id, m_ext, m_type, m_titl, m_filename, m_file, m_gedcom) VALUES (?, ?, ?, ?, ?, ?, ?)"
 		)->execute(array(
-			$xref, $record->extension(), $record->getMediaType(), $record->title, $record->file, $tree_id, $gedrec
+			$xref, $record->extension(), $record->getMediaType(), $record->getTitle(), $record->getFilename(), $tree_id, $gedrec,
 		));
 		// Update the cross-reference/index tables.
 		update_links($xref, $tree_id, $gedrec);
@@ -754,9 +766,9 @@ function import_record($gedrec, Tree $tree, $update) {
 /**
  * extract all places from the given record and insert them into the places table
  *
- * @param string  $gid
- * @param integer $ged_id
- * @param string  $gedrec
+ * @param string $gid
+ * @param int    $ged_id
+ * @param string $gedrec
  */
 function update_places($gid, $ged_id, $gedrec) {
 	global $placecache;
@@ -769,22 +781,22 @@ function update_places($gid, $ged_id, $gedrec) {
 	// 0 HEAD/1 PLAC or 0 _EVDEF/1 PLAC
 	$pt = preg_match_all("/^[2-9] PLAC (.+)/m", $gedrec, $match, PREG_SET_ORDER);
 	for ($i = 0; $i < $pt; $i++) {
-		$place = trim($match[$i][1]);
+		$place    = trim($match[$i][1]);
 		$lowplace = I18N::strtolower($place);
 		//-- if we have already visited this place for this person then we don't need to again
 		if (isset($personplace[$lowplace])) {
 			continue;
 		}
 		$personplace[$lowplace] = 1;
-		$places = explode(',', $place);
+		$places                 = explode(',', $place);
 		//-- reverse the array to start at the highest level
-		$secalp = array_reverse($places);
+		$secalp    = array_reverse($places);
 		$parent_id = 0;
-		$search = true;
+		$search    = true;
 
 		foreach ($secalp as $place) {
 			$place = trim($place);
-			$key = strtolower(mb_substr($place, 0, 150) . "_" . $parent_id);
+			$key   = strtolower(mb_substr($place, 0, 150) . "_" . $parent_id);
 			//-- if this place has already been added then we don't need to add it again
 			if (isset($placecache[$key])) {
 				$parent_id = $placecache[$key];
@@ -797,7 +809,7 @@ function update_places($gid, $ged_id, $gedrec) {
 					Database::prepare(
 						"INSERT IGNORE INTO `##placelinks` (pl_p_id, pl_gid, pl_file) VALUES (?, ?, ?)"
 					)->execute(array(
-						$parent_id, $gid, $ged_id
+						$parent_id, $gid, $ged_id,
 					));
 				}
 				continue;
@@ -809,7 +821,7 @@ function update_places($gid, $ged_id, $gedrec) {
 				$tmp = Database::prepare(
 					"SELECT p_id FROM `##places` WHERE p_file = ? AND p_parent_id = ? AND p_place = LEFT(?, 150)"
 				)->execute(array(
-					$ged_id, $parent_id, $place
+					$ged_id, $parent_id, $place,
 				))->fetchOne();
 				if ($tmp) {
 					$p_id = $tmp;
@@ -825,7 +837,7 @@ function update_places($gid, $ged_id, $gedrec) {
 				Database::prepare(
 					"INSERT INTO `##places` (p_place, p_parent_id, p_file, p_std_soundex, p_dm_soundex) VALUES (LEFT(?, 150), ?, ?, ?, ?)"
 				)->execute(array(
-					$place, $parent_id, $ged_id, $std_soundex, $dm_soundex
+					$place, $parent_id, $ged_id, $std_soundex, $dm_soundex,
 				));
 				$p_id = Database::getInstance()->lastInsertId();
 			}
@@ -833,11 +845,11 @@ function update_places($gid, $ged_id, $gedrec) {
 			Database::prepare(
 				"INSERT IGNORE INTO `##placelinks` (pl_p_id, pl_gid, pl_file) VALUES (?, ?, ?)"
 			)->execute(array(
-				$p_id, $gid, $ged_id
+				$p_id, $gid, $ged_id,
 			));
 			//-- increment the level and assign the parent id for the next place level
-			$parent_id = $p_id;
-			$placecache[$key] = $p_id;
+			$parent_id         = $p_id;
+			$placecache[$key]  = $p_id;
 			$personplace[$key] = 1;
 		}
 	}
@@ -846,9 +858,9 @@ function update_places($gid, $ged_id, $gedrec) {
 /**
  * Extract all the dates from the given record and insert them into the database.
  *
- * @param string  $xref
- * @param integer $ged_id
- * @param string  $gedrec
+ * @param string $xref
+ * @param int    $ged_id
+ * @param string $gedrec
  */
 function update_dates($xref, $ged_id, $gedrec) {
 	if (strpos($gedrec, '2 DATE ') && preg_match_all("/\n1 (\w+).*(?:\n[2-9].*)*(?:\n2 DATE (.+))(?:\n[2-9].*)*/", $gedrec, $matches, PREG_SET_ORDER)) {
@@ -895,9 +907,9 @@ function update_dates($xref, $ged_id, $gedrec) {
 /**
  * Extract all the links from the given record and insert them into the database
  *
- * @param string  $xref
- * @param integer $ged_id
- * @param string  $gedrec
+ * @param string $xref
+ * @param int    $ged_id
+ * @param string $gedrec
  */
 function update_links($xref, $ged_id, $gedrec) {
 	if (preg_match_all('/^\d+ (' . WT_REGEX_TAG . ') @(' . WT_REGEX_XREF . ')@/m', $gedrec, $matches, PREG_SET_ORDER)) {
@@ -911,7 +923,7 @@ function update_links($xref, $ged_id, $gedrec) {
 					Database::prepare(
 						"INSERT INTO `##link` (l_from, l_to, l_type, l_file) VALUES (?, ?, ?, ?)"
 					)->execute(array(
-						$xref, $match[2], $match[1], $ged_id
+						$xref, $match[2], $match[1], $ged_id,
 					));
 				} catch (PDOException $e) {
 					// We could display a warning here....
@@ -924,12 +936,12 @@ function update_links($xref, $ged_id, $gedrec) {
 /**
  * Extract all the names from the given record and insert them into the database.
  *
- * @param string          $xref
- * @param integer         $ged_id
+ * @param string       $xref
+ * @param int          $ged_id
  * @param GedcomRecord $record
  */
 function update_names($xref, $ged_id, GedcomRecord $record) {
-	foreach ($record->getAllNames() as $n=>$name) {
+	foreach ($record->getAllNames() as $n => $name) {
 		if ($record instanceof Individual) {
 			if ($name['givn'] === '@P.N.') {
 				$soundex_givn_std = null;
@@ -948,13 +960,13 @@ function update_names($xref, $ged_id, GedcomRecord $record) {
 			Database::prepare(
 				"INSERT INTO `##name` (n_file,n_id,n_num,n_type,n_sort,n_full,n_surname,n_surn,n_givn,n_soundex_givn_std,n_soundex_surn_std,n_soundex_givn_dm,n_soundex_surn_dm) VALUES (?, ?, ?, ?, LEFT(?, 255), LEFT(?, 255), LEFT(?, 255), LEFT(?, 255), ?, ?, ?, ?, ?)"
 			)->execute(array(
-				$ged_id, $xref, $n, $name['type'], $name['sort'], $name['fullNN'], $name['surname'], $name['surn'], $name['givn'], $soundex_givn_std, $soundex_surn_std, $soundex_givn_dm, $soundex_surn_dm
+				$ged_id, $xref, $n, $name['type'], $name['sort'], $name['fullNN'], $name['surname'], $name['surn'], $name['givn'], $soundex_givn_std, $soundex_surn_std, $soundex_givn_dm, $soundex_surn_dm,
 			));
 		} else {
 			Database::prepare(
 				"INSERT INTO `##name` (n_file,n_id,n_num,n_type,n_sort,n_full) VALUES (?, ?, ?, ?, LEFT(?, 255), LEFT(?, 255))"
 			)->execute(array(
-				$ged_id, $xref, $n, $name['type'], $name['sort'], $name['fullNN']
+				$ged_id, $xref, $n, $name['type'], $name['sort'], $name['fullNN'],
 			));
 		}
 	}
@@ -978,15 +990,16 @@ function convert_inline_media(Tree $tree, $gedrec) {
 	while (preg_match('/\n3 OBJE(?:\n[4-9].+)+/', $gedrec, $match)) {
 		$gedrec = str_replace($match[0], create_media_object(3, $match[0], $tree), $gedrec);
 	}
+
 	return $gedrec;
 }
 
 /**
  * Create a new media object, from inline media data.
  *
- * @param integer $level
- * @param string  $gedrec
- * @param Tree    $tree
+ * @param int    $level
+ * @param string $gedrec
+ * @param Tree   $tree
  *
  * @return string
  */
@@ -1007,13 +1020,13 @@ function create_media_object($level, $gedrec, Tree $tree) {
 	$xref = Database::prepare(
 		"SELECT m_id FROM `##media` WHERE m_filename = ? AND m_titl = ? AND m_file = ?"
 	)->execute(array(
-		$file, $titl, $tree->getTreeId()
+		$file, $titl, $tree->getTreeId(),
 	))->fetchOne();
 
 	if (!$xref) {
 		$xref = $tree->getNewXref('OBJE');
 		// renumber the lines
-		$gedrec = preg_replace_callback('/\n(\d+)/', function($m) use ($level) { return "\n" . ($m[1] - $level); }, $gedrec);
+		$gedrec = preg_replace_callback('/\n(\d+)/', function ($m) use ($level) { return "\n" . ($m[1] - $level); }, $gedrec);
 		// convert to an object
 		$gedrec = str_replace("\n0 OBJE\n", '0 @' . $xref . "@ OBJE\n", $gedrec);
 		// Fix Legacy GEDCOMS
@@ -1023,7 +1036,7 @@ function create_media_object($level, $gedrec, Tree $tree) {
 		Database::prepare(
 			"INSERT INTO `##media` (m_id, m_ext, m_type, m_titl, m_filename, m_file, m_gedcom) VALUES (?, ?, ?, ?, ?, ?, ?)"
 		)->execute(array(
-			$xref, $record->extension(), $record->getMediaType(), $record->title, $record->file, $tree->getTreeId(), $gedrec
+			$xref, $record->extension(), $record->getMediaType(), $record->getTitle(), $record->getFilename(), $tree->getTreeId(), $gedrec,
 		));
 	}
 
@@ -1033,8 +1046,8 @@ function create_media_object($level, $gedrec, Tree $tree) {
 /**
  * Accept all pending changes for a specified record.
  *
- * @param string  $xref
- * @param integer $ged_id
+ * @param string $xref
+ * @param int    $ged_id
  */
 function accept_all_changes($xref, $ged_id) {
 	$changes = Database::prepare(
@@ -1080,15 +1093,16 @@ function reject_all_changes(GedcomRecord $record) {
 /**
  * update a record in the database
  *
- * @param string  $gedrec
- * @param integer $ged_id
- * @param boolean $delete
+ * @param string $gedrec
+ * @param int    $ged_id
+ * @param bool   $delete
  */
 function update_record($gedrec, $ged_id, $delete) {
 	if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ (' . WT_REGEX_TAG . ')/', $gedrec, $match)) {
-		list(,$gid, $type) = $match;
+		list(, $gid, $type) = $match;
 	} else {
 		echo "ERROR: Invalid gedcom record.";
+
 		return;
 	}
 

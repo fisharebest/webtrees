@@ -2,7 +2,7 @@
 	"name": "fisharebest/webtrees",
 	"description": "webtrees online genealogy",
 	"keywords": ["webtrees", "genealogy"],
-	"license": "GPL-3.0+",
+	"license": "GPL-3.0",
 	"autoload": {
 		"files": [
 			"includes/functions/functions.php",
@@ -18,7 +18,9 @@
 			"includes/functions/functions_print_lists.php",
 			"includes/functions/functions_rtl.php"
 			],
-		"classmap":  ["app/"]
+		"psr-4": {
+			"Fisharebest\\Webtrees\\": "app/"
+		}
 	},
 	"require": {
 		"bombayworks/zendframework1": "1.*",
@@ -30,7 +32,7 @@
 		"michelf/php-markdown": "1.*",
 		"patchwork/utf8": "1.*",
 		"pclzip/pclzip": "2.*",
-		"rhumsaa/uuid": "2.*",
+		"ramsey/uuid": "2.*",
 		"tecnick.com/tcpdf": "6.*"
 	}
 }

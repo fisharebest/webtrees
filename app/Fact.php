@@ -32,10 +32,10 @@ class Fact {
 	/** @var string The GEDCOM tag for this record */
 	private $tag;
 
-	/** @var boolean Is this a recently deleted fact, pending approval? */
+	/** @var bool Is this a recently deleted fact, pending approval? */
 	private $pending_deletion = false;
 
-	/** @var boolean Is this a recently added fact, pending approval? */
+	/** @var bool Is this a recently added fact, pending approval? */
 	private $pending_addition = false;
 
 	/** @var Date The date of this fact, from the “2 DATE …” attribute */
@@ -44,7 +44,7 @@ class Fact {
 	/** @var Place The place of this fact, from the “2 PLAC …” attribute */
 	private $place;
 
-	/** @var integer Temporary(!) variable Used by sort_facts() */
+	/** @var int Temporary(!) variable Used by sort_facts() */
 	public $sortOrder;
 
 	/**
@@ -86,7 +86,7 @@ class Fact {
 	/**
 	 * Get the record to which this fact links
 	 *
-	 * @return GedcomRecord|null
+	 * @return Individual|Family|Source|Repository|Media|Note|null
 	 */
 	public function getTarget() {
 		$xref = trim($this->getValue(), '@');
@@ -129,9 +129,9 @@ class Fact {
 	/**
 	 * Do the privacy rules allow us to display this fact to the current user
 	 *
-	 * @param integer|null $access_level
+	 * @param int|null $access_level
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function canShow($access_level = null) {
 		if ($access_level === null) {
@@ -167,7 +167,7 @@ class Fact {
 	/**
 	 * Check whether this fact is protected against edit
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function canEdit() {
 		// Managers can edit anything
@@ -284,7 +284,7 @@ class Fact {
 	/**
 	 * Is this a newly deleted fact, pending approval.
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function isPendingDeletion() {
 		return $this->pending_deletion;
@@ -301,7 +301,7 @@ class Fact {
 	/**
 	 * Is this a newly added fact, pending approval.
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function isPendingAddition() {
 		return $this->pending_addition;
@@ -415,7 +415,7 @@ class Fact {
 	 * @param Fact $a Fact one
 	 * @param Fact $b Fact two
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public static function compareDate(Fact $a, Fact $b) {
 		if ($a->getDate()->isOK() && $b->getDate()->isOK()) {
@@ -445,7 +445,7 @@ class Fact {
 	 * @param Fact $a Fact one
 	 * @param Fact $b Fact two
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public static function compareType(Fact $a, Fact $b) {
 		global $factsort;

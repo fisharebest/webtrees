@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Report;
 
 /**
  * webtrees: online genealogy
@@ -32,9 +32,9 @@ class ReportBasePageheader extends ReportBaseElement {
 	}
 
 	/**
-	 * @return integer
+	 * @return int
 	 */
-	function textBox() {
+	public function textBox() {
 		$this->elements = array();
 
 		return 0;
@@ -44,12 +44,8 @@ class ReportBasePageheader extends ReportBaseElement {
 	 * Add element - PageHeader
 	 *
 	 * @param $element
-	 *
-	 * @return integer
 	 */
-	function addElement($element) {
+	public function addElement($element) {
 		$this->elements[] = $element;
-
-		return 0;
 	}
 }

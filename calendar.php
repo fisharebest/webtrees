@@ -23,6 +23,14 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Date\FrenchDate;
+use Fisharebest\Webtrees\Date\GregorianDate;
+use Fisharebest\Webtrees\Date\HijriDate;
+use Fisharebest\Webtrees\Date\JalaliDate;
+use Fisharebest\Webtrees\Date\JewishDate;
+use Fisharebest\Webtrees\Date\JulianDate;
+
 define('WT_SCRIPT_NAME', 'calendar.php');
 require './includes/session.php';
 
@@ -635,8 +643,8 @@ function apply_filter($facts, $filterof, $filtersx) {
 /**
  * Format an anniversary display.
  *
- * @param Fact    $fact
- * @param boolean $show_places
+ * @param Fact $fact
+ * @param bool $show_places
  *
  * @return string
  */
@@ -656,9 +664,9 @@ function calendar_fact_text(Fact $fact, $show_places) {
  * Format a list of facts for display
  *
  * @param Fact[] $list
- * @param string    $tag1
- * @param string    $tag2
- * @param boolean   $show_sex_symbols
+ * @param string $tag1
+ * @param string $tag2
+ * @param bool   $show_sex_symbols
  *
  * @return string
  */

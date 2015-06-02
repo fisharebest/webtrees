@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Controller;
 
 /**
  * webtrees: online genealogy
@@ -16,6 +16,14 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Module;
+
 /**
  * Class MediaController - Controller for the media page
  */
@@ -26,7 +34,7 @@ class MediaController extends GedcomRecordController {
 	public function __construct() {
 		global $WT_TREE;
 
-		$xref = Filter::get('mid', WT_REGEX_XREF);
+		$xref         = Filter::get('mid', WT_REGEX_XREF);
 		$this->record = Media::getInstance($xref, $WT_TREE);
 
 		parent::__construct();
@@ -35,7 +43,7 @@ class MediaController extends GedcomRecordController {
 	/**
 	 * get edit menu
 	 */
-	function getEditMenu() {
+	public function getEditMenu() {
 		if (!$this->record || $this->record->isPendingDeletion()) {
 			return null;
 		}
@@ -109,7 +117,7 @@ class MediaController extends GedcomRecordController {
 	 *
 	 * @return Fact[]
 	 */
-	function getFacts() {
+	public function getFacts() {
 		$facts = $this->record->getFacts();
 
 		// Add some dummy facts to show additional information
@@ -135,7 +143,7 @@ class MediaController extends GedcomRecordController {
 	 *
 	 * @return string
 	 */
-	static function getMediaListMenu(Media $mediaobject) {
+	public static function getMediaListMenu(Media $mediaobject) {
 		$html = '';
 
 		$menu = new Menu(I18N::translate('Edit details'), '#', 'lb-image_edit', "return window.open('addmedia.php?action=editmedia&amp;pid=" . $mediaobject->getXref() . "', '_blank', edit_window_specs);");

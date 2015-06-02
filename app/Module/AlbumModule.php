@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,13 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Theme;
 
 /**
  * Class AlbumModule
@@ -43,7 +50,6 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 
 		return Auth::isEditor($WT_TREE) || $this->getMedia();
 	}
-
 
 	/** {@inheritdoc} */
 	public function isGrayedOut() {
@@ -153,6 +159,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 		}
 		$html .= '</ul>';
 		$html .= '</td></tr></table>';
+
 		return $html;
 	}
 
@@ -193,10 +200,11 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 			foreach ($controller->record->getFacts('_WT_OBJE_SORT') as $fact) {
 				$wt_obje_sort[] = trim($fact->getValue(), '@');
 			}
-			usort($this->media_list, function(Media $x, Media $y) use ($wt_obje_sort) {
+			usort($this->media_list, function (Media $x, Media $y) use ($wt_obje_sort) {
 				return array_search($x->getXref(), $wt_obje_sort) - array_search($y->getXref(), $wt_obje_sort);
 			});
 		}
+
 		return $this->media_list;
 	}
 

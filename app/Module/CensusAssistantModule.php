@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,14 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Controller\SimpleController;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Note;
 
 /**
  * Class CensusAssistantModule
@@ -54,7 +62,7 @@ class CensusAssistantModule extends AbstractModule {
 	 */
 	private static function mediaFind() {
 		global $WT_TREE;
-		
+
 		$controller = new SimpleController;
 		$filter     = Filter::get('filter');
 		$multiple   = Filter::getBool('multiple');
@@ -116,23 +124,23 @@ class CensusAssistantModule extends AbstractModule {
 		echo '<button onclick="window.close();">', I18N::translate('close'), '</button>';
 		echo "<br>";
 
-		$filter = trim($filter);
+		$filter       = trim($filter);
 		$filter_array = explode(' ', preg_replace('/ {2,}/', ' ', $filter));
 		echo "<table class=\"tabs_table width90\"><tr>";
 		$myindilist = search_indis_names($filter_array, array($WT_TREE));
 		if ($myindilist) {
 			echo "<td class=\"list_value_wrap\"><ul>";
-			usort($myindilist, __NAMESPACE__ . '\GedcomRecord::compare');
+			usort($myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
 			foreach ($myindilist as $indi) {
 				$nam = Filter::escapeHtml($indi->getFullName());
 				echo "<li><a href=\"#\" onclick=\"pasterow(
-					'".$indi->getXref() . "' ,
-					'".$nam . "' ,
-					'".$indi->getSex() . "' ,
-					'".$indi->getbirthyear() . "' ,
-					'".(1901 - $indi->getbirthyear()) . "' ,
-					'".$indi->getbirthplace() . "'); return false;\">
-					<b>".$indi->getFullName() . "</b>&nbsp;&nbsp;&nbsp;";
+					'" . $indi->getXref() . "' ,
+					'" . $nam . "' ,
+					'" . $indi->getSex() . "' ,
+					'" . $indi->getbirthyear() . "' ,
+					'" . (1901 - $indi->getbirthyear()) . "' ,
+					'" . $indi->getbirthplace() . "'); return false;\">
+					<b>" . $indi->getFullName() . "</b>&nbsp;&nbsp;&nbsp;";
 
 				$born = GedcomTag::getLabel('BIRT');
 				echo "</span><br><span class=\"list_item\">", $born, " ", $indi->getbirthyear(), "&nbsp;&nbsp;&nbsp;", $indi->getbirthplace(), "</span></a></li>";
@@ -268,7 +276,7 @@ class CensusAssistantModule extends AbstractModule {
 			$postamble = Filter::escapeHtml($match[5]);
 
 			$fmt_headers = array();
-			foreach ($headers as $key=>$value) {
+			foreach ($headers as $key => $value) {
 				$fmt_headers['.b.' . $key] = '<span title="' . Filter::escapeHtml($value) . '">' . $key . '</span>';
 			}
 
@@ -308,7 +316,7 @@ class CensusAssistantModule extends AbstractModule {
 	 *
 	 * @return string
 	 */
-	static function addNoteWithAssistantLink($element_id, $xref, $action) {
+	public static function addNoteWithAssistantLink($element_id, $xref, $action) {
 		global $controller, $WT_TREE;
 
 		// We do not yet support family records

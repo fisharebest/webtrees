@@ -23,7 +23,7 @@ $settings = Database::prepare(
 	"SELECT gedcom_id, setting_value FROM `##gedcom_setting` WHERE setting_name='SHOW_RELATIVES_EVENTS'"
 )->fetchAssoc();
 
-foreach ($settings as $gedcom_id=>$setting) {
+foreach ($settings as $gedcom_id => $setting) {
 	// Delete old settings
 	$setting = preg_replace('/_(BIRT|MARR|DEAT)_(COUS|MSIB|FSIB|GGCH|NEPH|GGPA)/', '', $setting);
 	$setting = preg_replace('/_FAMC_(RESI_EMIG)/', '', $setting);

@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module\BatchUpdate;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,11 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\BatchUpdateModule;
 
 /**
  * Class BatchUpdateBasePlugin
@@ -32,14 +37,14 @@ class BatchUpdateBasePlugin {
 	 *
 	 * @return string[]
 	 */
-	function getRecordTypesToUpdate() {
+	public function getRecordTypesToUpdate() {
 		return array('INDI');
 	}
 
 	/**
 	 * Default option is just the "don't update CHAN record"
 	 */
-	function getOptions() {
+	public function getOptions() {
 		$this->chan = Filter::getBool('chan');
 	}
 
@@ -48,7 +53,7 @@ class BatchUpdateBasePlugin {
 	 *
 	 * @return string
 	 */
-	function getOptionsForm() {
+	public function getOptionsForm() {
 		return
 			'<tr><th>' . I18N::translate('Do not update the “last change” record') . '</th>' .
 			'<td><select name="chan" onchange="this.form.submit();">' .
@@ -64,15 +69,15 @@ class BatchUpdateBasePlugin {
 	 *
 	 * @return string[]
 	 */
-	function getActionButtons($xref) {
+	public function getActionButtons($xref) {
 		if (Auth::user()->getPreference('auto_accept')) {
 			return array(
 				BatchUpdateModule::createSubmitButton(I18N::translate('Update'), $xref, 'update'),
-				BatchUpdateModule::createSubmitButton(I18N::translate('Update all'), $xref, 'update_all')
+				BatchUpdateModule::createSubmitButton(I18N::translate('Update all'), $xref, 'update_all'),
 			);
 		} else {
 			return array(
-				BatchUpdateModule::createSubmitButton(I18N::translate('Update'), $xref, 'update')
+				BatchUpdateModule::createSubmitButton(I18N::translate('Update'), $xref, 'update'),
 			);
 		}
 	}
@@ -91,8 +96,8 @@ class BatchUpdateBasePlugin {
 		$lcs = self::longestCommonSubsequence($old_lines, $new_lines, 0, count($old_lines) - 1, 0, count($new_lines) - 1);
 
 		$diff_lines = array();
-		$last_old = -1;
-		$last_new = -1;
+		$last_old   = -1;
+		$last_new   = -1;
 		while ($lcs) {
 			list($old, $new) = array_shift($lcs);
 			while ($last_old < $old - 1) {
@@ -102,8 +107,8 @@ class BatchUpdateBasePlugin {
 				$diff_lines[] = self::decorateInsertedText($new_lines[++$last_new]);
 			}
 			$diff_lines[] = $new_lines[$new];
-			$last_old = $old;
-			$last_new = $new;
+			$last_old     = $old;
+			$last_new     = $new;
 		}
 		while ($last_old < count($old_lines) - 1) {
 			$diff_lines[] = self::decorateDeletedText($old_lines[++$last_old]);
@@ -120,10 +125,10 @@ class BatchUpdateBasePlugin {
 	 *
 	 * @param string[] $X
 	 * @param string[] $Y
-	 * @param integer  $x1
-	 * @param integer  $x2
-	 * @param integer  $y1
-	 * @param integer  $y2
+	 * @param int      $x1
+	 * @param int      $x2
+	 * @param int      $y1
+	 * @param int      $y2
 	 *
 	 * @return array
 	 */
@@ -133,16 +138,19 @@ class BatchUpdateBasePlugin {
 				// Match at start of sequence
 				$tmp = self::longestCommonSubsequence($X, $Y, $x1 + 1, $x2, $y1 + 1, $y2);
 				array_unshift($tmp, array($x1, $y1));
+
 				return $tmp;
 			} elseif ($X[$x2] == $Y[$y2]) {
 				// Match at end of sequence
 				$tmp = self::longestCommonSubsequence($X, $Y, $x1, $x2 - 1, $y1, $y2 - 1);
 				array_push($tmp, array($x2, $y2));
+
 				return $tmp;
 			} else {
 				// No match.  Look for subsequences
 				$tmp1 = self::longestCommonSubsequence($X, $Y, $x1, $x2, $y1, $y2 - 1);
 				$tmp2 = self::longestCommonSubsequence($X, $Y, $x1, $x2 - 1, $y1, $y2);
+
 				return count($tmp1) > count($tmp2) ? $tmp1 : $tmp2;
 			}
 		} else {
@@ -158,7 +166,7 @@ class BatchUpdateBasePlugin {
 	 *
 	 * @return string
 	 */
-	static function decorateInsertedText($text) {
+	public static function decorateInsertedText($text) {
 		return '<ins>' . $text . '</ins>';
 	}
 
@@ -169,7 +177,7 @@ class BatchUpdateBasePlugin {
 	 *
 	 * @return string
 	 */
-	static function decorateDeletedText($text) {
+	public static function decorateDeletedText($text) {
 		return '<del>' . $text . '</del>';
 	}
 
@@ -180,7 +188,7 @@ class BatchUpdateBasePlugin {
 	 *
 	 * @return string
 	 */
-	static function createEditLinks($gedrec) {
+	public static function createEditLinks($gedrec) {
 		return preg_replace(
 			"/@([^#@\n]+)@/m",
 			'<a href="#" onclick="return edit_raw(\'\\1\');">@\\1@</a>',

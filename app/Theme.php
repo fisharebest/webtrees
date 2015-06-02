@@ -15,6 +15,7 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Theme\BaseTheme;
 
 /**
  * Class Theme - provide access to the current theme.
@@ -70,8 +71,9 @@ class Theme {
 	 *
 	 * @param BaseTheme|null $theme
 	 *
-	 * @return BaseTheme
 	 * @throws \LogicException
+	 *
+	 * @return BaseTheme
 	 */
 	public static function theme(BaseTheme $theme = null) {
 

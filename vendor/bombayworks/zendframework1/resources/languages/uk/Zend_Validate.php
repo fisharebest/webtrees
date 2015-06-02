@@ -67,7 +67,7 @@ return array(
     "'%value%' does not fit the date format '%format%'" => "'%value%' не відповідає формату дати '%format%'",
 
     // Zend_Validate_Db_Abstract
-    "No record matching %value% was found" => "Не знайдено записів, що відповідають '%value%'",
+    "No record matching '%value%' was found" => "Не знайдено записів, що відповідають '%value%'",
     "A record matching '%value%' was found" => "Знайдено запис, що відповідає '%value%'",
 
     // Zend_Validate_Digits

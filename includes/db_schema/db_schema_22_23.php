@@ -45,7 +45,7 @@ foreach ($_cfgs as $_cfg) {
 			// $WT_DATA_DIR = /home/fisharebest/public_html/webtrees/data/
 			// Therefore we need to calculate ../../../my_pictures/
 			$_media_dir = '';
-			$_tmp_dir = $WT_DATA_DIR;
+			$_tmp_dir   = $WT_DATA_DIR;
 			while (strpos($_mf_dir, $_tmp_dir) !== 0) {
 				$_media_dir .= '../';
 				$_tmp_dir = preg_replace('~[^/\\\\]+[/\\\\]$~', '', $_tmp_dir);

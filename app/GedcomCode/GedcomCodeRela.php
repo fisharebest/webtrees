@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\GedcomCode;
 
 /**
  * webtrees: online genealogy
@@ -15,12 +15,14 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 
 /**
  * Class GedcomCodeRela - Functions and logic for GEDCOM "RELA" codes
  */
 class GedcomCodeRela {
-
 	/** @var string[] List of possible values for the RELA tag */
 	private static $TYPES = array(
 		'attendant', 'attending', 'best_man', 'bridesmaid', 'buyer',
@@ -268,7 +270,7 @@ class GedcomCodeRela {
 		foreach (self::$TYPES as $type) {
 			$values[$type] = self::getValue($type, $record);
 		}
-		uasort($values, __NAMESPACE__ . '\I18N::strcasecmp');
+		uasort($values, '\Fisharebest\Webtrees\I18N::strcasecmp');
 
 		return $values;
 	}

@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,7 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Menu;
 
 /**
  * Interface ModuleMenuInterface - Classes and libraries for module system
@@ -23,7 +24,7 @@ interface ModuleMenuInterface {
 	/**
 	 * The user can re-order menus.  Until they do, they are shown in this order.
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function defaultMenuOrder();
 

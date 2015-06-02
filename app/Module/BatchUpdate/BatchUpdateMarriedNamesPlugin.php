@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module\BatchUpdate;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,9 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module\BatchUpdateModule;
 
 /**
  * Class BatchUpdateMarriedNamesPlugin Batch Update plugin: add missing 2 _MARNM records
@@ -47,7 +50,7 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin {
 	 * @param string $xref
 	 * @param string $gedrec
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function doesRecordNeedUpdate($xref, $gedrec) {
 		return preg_match('/^1 SEX F/m', $gedrec) && preg_match('/^1 NAME /m', $gedrec) && self::surnamesToAdd($xref, $gedrec);
@@ -67,7 +70,7 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin {
 		$SURNAME_TRADITION = $WT_TREE->getPreference('SURNAME_TRADITION');
 
 		preg_match('/^1 NAME (.*)/m', $gedrec, $match);
-		$wife_name = $match[1];
+		$wife_name     = $match[1];
 		$married_names = array();
 		foreach (self::surnamesToAdd($xref, $gedrec) as $surname) {
 			switch ($this->surname) {
@@ -82,6 +85,7 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin {
 				break;
 			}
 		}
+
 		return preg_replace('/(^1 NAME .*([\r\n]+[2-9].*)*)/m', '\\1' . implode('', $married_names), $gedrec, 1);
 	}
 
@@ -92,14 +96,14 @@ class BatchUpdateMarriedNamesPlugin extends BatchUpdateBasePlugin {
 	 * @return string[]
 	 */
 	private function surnamesToAdd($xref, $gedrec) {
-		$wife_surnames = self::surnames($xref, $gedrec);
-		$husb_surnames = array();
+		$wife_surnames    = self::surnames($xref, $gedrec);
+		$husb_surnames    = array();
 		$missing_surnames = array();
 		preg_match_all('/^1 FAMS @(.+)@/m', $gedrec, $fmatch);
 		foreach ($fmatch[1] as $famid) {
 			$famrec = BatchUpdateModule::getLatestRecord($famid, 'FAM');
 			if (preg_match('/^1 MARR/m', $famrec) && preg_match('/^1 HUSB @(.+)@/m', $famrec, $hmatch)) {
-				$husbrec = BatchUpdateModule::getLatestRecord($hmatch[1], 'INDI');
+				$husbrec       = BatchUpdateModule::getLatestRecord($hmatch[1], 'INDI');
 				$husb_surnames = array_unique(array_merge($husb_surnames, self::surnames($hmatch[1], $husbrec)));
 			}
 		}

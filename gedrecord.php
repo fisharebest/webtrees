@@ -23,6 +23,8 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\PageController;
+
 define('WT_SCRIPT_NAME', 'gedrecord.php');
 require './includes/session.php';
 
@@ -39,7 +41,7 @@ if (
 	$obj instanceof Media
 ) {
 	header('Location: ' . WT_BASE_URL . $obj->getRawUrl());
-	
+
 	return;
 } elseif (!$obj || !$obj->canShow()) {
 	$controller->pageHeader();

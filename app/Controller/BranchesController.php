@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Controller;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,15 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Soundex;
 
 /**
  * Class BranchesController - Controller for the branches list
@@ -23,10 +32,10 @@ class BranchesController extends PageController {
 	/** @var string Generate the branches for this surname */
 	private $surname;
 
-	/** @var boolean Whether to use Standard phonetic matching */
+	/** @var bool Whether to use Standard phonetic matching */
 	private $soundex_std;
 
-	/** @var boolean Whether to use Daitch-Mokotov phonetic matching */
+	/** @var bool Whether to use Daitch-Mokotov phonetic matching */
 	private $soundex_dm;
 
 	/** @var Individual[] Everyone with the selected surname */
@@ -72,7 +81,7 @@ class BranchesController extends PageController {
 	/**
 	 * Should we use Standard phonetic matching
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function getSoundexStd() {
 		return $this->soundex_std;
@@ -81,7 +90,7 @@ class BranchesController extends PageController {
 	/**
 	 * Should we use Daitch-Mokotov phonetic matching
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function getSoundexDm() {
 		return $this->soundex_dm;
@@ -126,14 +135,14 @@ class BranchesController extends PageController {
 			$this->individuals[] = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
 		}
 		// Sort by birth date, oldest first
-		usort($this->individuals, __NAMESPACE__ . '\Individual::compareBirthDate');
+		usort($this->individuals, '\Fisharebest\Webtrees\Individual::compareBirthDate');
 	}
 
 	/**
 	 * Load the ancestors of an individual, so we can highlight them in the list
 	 *
 	 * @param Individual $ancestor
-	 * @param integer       $sosa
+	 * @param int        $sosa
 	 */
 	private function loadAncestors(Individual $ancestor, $sosa) {
 		if ($ancestor) {
@@ -228,7 +237,7 @@ class BranchesController extends PageController {
 		// spouses and children
 		$spouse_families = $individual->getSpouseFamilies();
 		if ($spouse_families) {
-			usort($spouse_families, __NAMESPACE__ . '\Family::compareMarrDate');
+			usort($spouse_families, '\Fisharebest\Webtrees\Family::compareMarrDate');
 			$fam_html = '';
 			foreach ($spouse_families as $family) {
 				$fam_html .= $indi_html; // Repeat the individual details for each spouse.
@@ -271,7 +280,7 @@ class BranchesController extends PageController {
 	/**
 	 * Convert a SOSA number into a generation number.  e.g. 8 = great-grandfather = 3 generations
 	 *
-	 * @param integer $sosa
+	 * @param int $sosa
 	 *
 	 * @return string
 	 */

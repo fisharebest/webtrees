@@ -29,7 +29,6 @@ try {
 	// Already been run?
 }
 
-
 try {
 	// The INDILIST and FAMLIST scripts have been rewritten to use this index
 	Database::exec(

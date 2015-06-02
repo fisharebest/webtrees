@@ -28,13 +28,13 @@ class Session {
 	 */
 	public static function start(array $config = array()) {
 		$default_config = array(
-			'use_cookies' => 1,
-			'name' => 'WT_SESSION',
+			'use_cookies'     => 1,
+			'name'            => 'WT_SESSION',
 			'cookie_lifetime' => 0,
-			'gc_maxlifetime' => 7200,
-			'gc_probability' => 1,
-			'gc_divisor' => 100,
-			'cookie_path' => '',
+			'gc_maxlifetime'  => 7200,
+			'gc_probability'  => 1,
+			'gc_divisor'      => 100,
+			'cookie_path'     => '',
 			'cookie_httponly' => true,
 		);
 		session_register_shutdown();
@@ -84,7 +84,7 @@ class Session {
 	 *
 	 * @param string $name
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function has($name) {
 		return array_key_exists($name, $_SESSION);

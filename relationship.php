@@ -23,6 +23,8 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\RelationshipController;
+
 define('WT_SCRIPT_NAME', 'relationship.php');
 require './includes/session.php';
 
@@ -105,12 +107,12 @@ if ($person1 && $person2) {
 if ($person1 && $person2) {
 	if (I18N::direction() === 'ltr') {
 		$horizontal_arrow = '<br><i class="icon-rarrow"></i>';
-		$diagonal1 = Theme::theme()->parameter('image-dline');
-		$diagonal2 = Theme::theme()->parameter('image-dline2');
+		$diagonal1        = Theme::theme()->parameter('image-dline');
+		$diagonal2        = Theme::theme()->parameter('image-dline2');
 	} else {
 		$horizontal_arrow = '<br><i class="icon-larrow"></i>';
-		$diagonal1 = Theme::theme()->parameter('image-dline2');
-		$diagonal2 = Theme::theme()->parameter('image-dline');
+		$diagonal1        = Theme::theme()->parameter('image-dline2');
+		$diagonal2        = Theme::theme()->parameter('image-dline');
 	}
 	$up_arrow   = ' <i class="icon-uarrow"></i>';
 	$down_arrow = ' <i class="icon-darrow"></i>';

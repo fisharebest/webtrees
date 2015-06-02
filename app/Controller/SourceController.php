@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Controller;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,12 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Source;
 
 /**
  * Class SourceController - Controller for the source page
@@ -35,7 +41,7 @@ class SourceController extends GedcomRecordController {
 	/**
 	 * get edit menu
 	 */
-	function getEditMenu() {
+	public function getEditMenu() {
 		if (!$this->record || $this->record->isPendingDeletion()) {
 			return null;
 		}
@@ -44,7 +50,7 @@ class SourceController extends GedcomRecordController {
 		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-sour');
 
 		if (Auth::isEditor($this->record->getTree())) {
-			$fact = $this->record->getFirstFact('TITL');
+			$fact    = $this->record->getFirstFact('TITL');
 			$submenu = new Menu(I18N::translate('Edit source'), '#', 'menu-sour-edit');
 			if ($fact) {
 				// Edit existing name

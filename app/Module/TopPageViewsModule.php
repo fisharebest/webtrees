@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,12 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Theme;
 
 /**
  * Class TopPageViewsModule
@@ -67,13 +73,12 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 			'limit'   => (int) $num,
 		))->FetchAssoc();
 
-
 		if ($block) {
 			$content .= "<table width=\"90%\">";
 		} else {
 			$content .= "<table>";
 		}
-		foreach ($top10 as $id=>$count) {
+		foreach ($top10 as $id => $count) {
 			$record = GedcomRecord::getInstance($id, $WT_TREE);
 			if ($record && $record->canShow()) {
 				$content .= '<tr valign="top">';
@@ -93,6 +98,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 			if ($block) {
 				$class .= ' small_inner_block';
 			}
+
 			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 			return $content;
@@ -135,7 +141,7 @@ class TopPageViewsModule extends AbstractModule implements ModuleBlockInterface 
 		echo "<tr><td class=\"descriptionbox wrap width33\">";
 		echo I18N::translate('Place counts before or after name?');
 		echo "</td><td class=\"optionbox\">";
-		echo select_edit_control('count_placement', array('before'=> I18N::translate('before'), 'after'=> I18N::translate('after')), null, $count_placement, '');
+		echo select_edit_control('count_placement', array('before' => I18N::translate('before'), 'after' => I18N::translate('after')), null, $count_placement, '');
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';

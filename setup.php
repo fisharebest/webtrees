@@ -107,7 +107,7 @@ if (!isset($_POST['lang'])) {
 		'</p>',
 		'<h2>', I18N::translate('Checking server configuration'), '</h2>';
 	$warnings = false;
-	$errors = false;
+	$errors   = false;
 
 	// Mandatory functions
 	$disable_functions = preg_split('/ *, */', ini_get('disable_functions'));
@@ -129,7 +129,7 @@ if (!isset($_POST['lang'])) {
 		'gd'        => /* I18N: a program feature */ I18N::translate('creating thumbnails of images'),
 		'xml'       => /* I18N: a program feature */ I18N::translate('reporting'),
 		'simplexml' => /* I18N: a program feature */ I18N::translate('reporting'),
-	) as $extension=>$features) {
+	) as $extension => $features) {
 		if (!extension_loaded($extension)) {
 			echo '<p class="bad">', I18N::translate('PHP extension “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it.', $extension, $features), '</p>';
 			$warnings = true;
@@ -137,8 +137,8 @@ if (!isset($_POST['lang'])) {
 	}
 	// Settings
 	foreach (array(
-		'file_uploads'=>/* I18N: a program feature */ I18N::translate('file upload capability'),
-	) as $setting=>$features) {
+		'file_uploads' => /* I18N: a program feature */ I18N::translate('file upload capability'),
+	) as $setting => $features) {
 		if (!ini_get($setting)) {
 			echo '<p class="bad">', I18N::translate('PHP setting “%1$s” is disabled.  Without it, the following features will not work: %2$s.  Please ask your server’s administrator to enable it.', $setting, $features), '</p>';
 			$warnings = true;
@@ -311,7 +311,7 @@ if (empty($_POST['dbuser']) || !Database::isConnected() || !$db_version_ok) {
 //
 // Other characters may be invalid (objects must be valid filenames on the
 // MySQL server’s filesystem), so block the usual ones.
-$DBNAME = str_replace(array('`', '"', '\'', ':', '/', '\\', '\r', '\n', '\t', '\0'), '', $_POST['dbname']);
+$DBNAME    = str_replace(array('`', '"', '\'', ':', '/', '\\', '\r', '\n', '\t', '\0'), '', $_POST['dbname']);
 $TBLPREFIX = str_replace(array('`', '"', '\'', ':', '/', '\\', '\r', '\n', '\t', '\0'), '', $_POST['tblpfx']);
 
 // If we have specified a database, and we have not used invalid characters,
@@ -406,10 +406,10 @@ if (!isset($_POST['wtemail'])) {
 	$_POST['wtemail'] = '';
 }
 
-if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass']) < 6 || strlen($_POST['wtpass2']) < 6 || empty($_POST['wtemail']) || $_POST['wtpass'] <> $_POST['wtpass2']) {
+if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass']) < 6 || strlen($_POST['wtpass2']) < 6 || empty($_POST['wtemail']) || $_POST['wtpass'] != $_POST['wtpass2']) {
 	if (strlen($_POST['wtpass']) > 0 && strlen($_POST['wtpass']) < 6) {
 		echo '<p class="bad">', I18N::translate('The password needs to be at least six characters long.'), '</p>';
-	} elseif ($_POST['wtpass'] <> $_POST['wtpass2']) {
+	} elseif ($_POST['wtpass'] != $_POST['wtpass2']) {
 		echo '<p class="bad">', I18N::translate('The passwords do not match.'), '</p>';
 	} elseif ((empty($_POST['wtname']) || empty($_POST['wtuser']) || empty($_POST['wtpass']) || empty($_POST['wtemail'])) && $_POST['wtname'] . $_POST['wtuser'] . $_POST['wtpass'] . $_POST['wtemail'] != '') {
 		echo '<p class="bad">', I18N::translate('You must enter all the administrator account fields.'), '</p>';
@@ -852,7 +852,7 @@ try {
 		"INSERT IGNORE INTO `##user` (user_id, user_name, real_name, email, password) VALUES " .
 		" (-1, 'DEFAULT_USER', 'DEFAULT_USER', 'DEFAULT_USER', 'DEFAULT_USER'), (1, ?, ?, ?, ?)"
 	)->execute(array(
-		$_POST['wtuser'], $_POST['wtname'], $_POST['wtemail'], password_hash($_POST['wtpass'], PASSWORD_DEFAULT)
+		$_POST['wtuser'], $_POST['wtname'], $_POST['wtemail'], password_hash($_POST['wtpass'], PASSWORD_DEFAULT),
 	));
 
 	Database::prepare(
@@ -864,7 +864,7 @@ try {
 		" (1, 'auto_accept',       ?)," .
 		" (1, 'visibleonline',     ?)"
 	)->execute(array(
-		1, WT_LOCALE, 1, 1, 0, 1
+		1, WT_LOCALE, 1, 1, 0, 1,
 	));
 
 	Database::prepare(
@@ -885,7 +885,7 @@ try {
 		"('SMTP_HELO',                       ?)," .
 		"('SMTP_FROM_NAME',                  ?)"
 	)->execute(array(
-		$_SERVER['SERVER_NAME'], $_SERVER['SERVER_NAME']
+		$_SERVER['SERVER_NAME'], $_SERVER['SERVER_NAME'],
 	));
 
 	// Search for all installed modules, and enable them.
@@ -905,7 +905,6 @@ try {
 		" FROM `##block`" .
 		" WHERE user_id=-1"
 	)->execute();
-
 
 	// Write the config file.  We already checked that this would work.
 	$config_ini_php =

@@ -71,4 +71,3 @@ try {
 
 // Update the version to indicate success
 Site::setPreference($schema_name, $next_version);
-

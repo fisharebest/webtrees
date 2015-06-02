@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Controller;
 
 /**
  * webtrees: online genealogy
@@ -16,17 +16,23 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Theme;
+
 /**
  * Class FanchartController Controller for the fan chart
  */
 class FanchartController extends ChartController {
-	/** @var integer Style of fanchart */
+	/** @var int Style of fanchart */
 	public $fan_style;
 
-	/** @var integer Width of fanchart (a percentage)  */
+	/** @var int Width of fanchart (a percentage)  */
 	public $fan_width;
 
-	/** @var integer Number of generations to display */
+	/** @var int Number of generations to display */
 	public $generations;
 
 	/**
@@ -70,8 +76,8 @@ class FanchartController extends ChartController {
 	/**
 	 * split and center text by lines
 	 *
-	 * @param string  $data input string
-	 * @param integer $maxlen max length of each line
+	 * @param string $data input string
+	 * @param int    $maxlen max length of each line
 	 *
 	 * @return string $text output string
 	 */
@@ -85,12 +91,13 @@ class FanchartController extends ChartController {
 			foreach ($lines as $line) {
 				$text .= $this->splitAlignText($line, $maxlen) . "\n";
 			}
+
 			return $text;
 		}
 		// process current line word by word
 		$split = explode(' ', $data);
-		$text = '';
-		$line = '';
+		$text  = '';
+		$line  = '';
 
 		// do not split hebrew line
 		$found = false;
@@ -103,7 +110,7 @@ class FanchartController extends ChartController {
 			$line = $data;
 		} else {
 			foreach ($split as $word) {
-				$len = strlen($line);
+				$len  = strlen($line);
 				$wlen = strlen($word);
 				if (($len + $wlen) < $maxlen) {
 					if (!empty($line)) {
@@ -126,7 +133,7 @@ class FanchartController extends ChartController {
 			if (in_array(ord($line{0}), $RTLOrd)) {
 				$len /= 2;
 			}
-			$p = max(0, (int) (($maxlen - $len) / 2));
+			$p    = max(0, (int) (($maxlen - $len) / 2));
 			$line = str_repeat(' ', $p) . $line; // center alignment using spaces
 			$text .= $line;
 		}
@@ -154,7 +161,7 @@ class FanchartController extends ChartController {
 		$treesize = count($treeid) + 1;
 
 		// generations count
-		$gen = log($treesize) / log(2) - 1;
+		$gen  = log($treesize) / log(2) - 1;
 		$sosa = $treesize - 1;
 
 		// fan size
@@ -163,11 +170,11 @@ class FanchartController extends ChartController {
 		}
 		$fandeg = min($fandeg, 360);
 		$fandeg = max($fandeg, 90);
-		$cx = $fanw / 2 - 1; // center x
-		$cy = $cx; // center y
-		$rx = $fanw - 1;
-		$rw = $fanw / ($gen + 1);
-		$fanh = $fanw; // fan height
+		$cx     = $fanw / 2 - 1; // center x
+		$cy     = $cx; // center y
+		$rx     = $fanw - 1;
+		$rw     = $fanw / ($gen + 1);
+		$fanh   = $fanw; // fan height
 		if ($fandeg == 180) {
 			$fanh = round($fanh * ($gen + 1) / ($gen * 2));
 		}

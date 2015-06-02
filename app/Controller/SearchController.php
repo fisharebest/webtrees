@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Controller;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,19 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Log;
+use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Class SearchController - Controller for the search page
@@ -56,18 +69,35 @@ class SearchController extends PageController {
 	/** @var string The soundex algorithm to use */
 	public $soundex;
 
-	// Need to decide if these variables are public/private/protected (or unused)
-	var $showasso = 'off';
-	var $name;
-	var $firstname;
-	var $lastname;
-	var $place;
-	var $year;
-	var $replace = '';
-	var $replaceNames = false;
-	var $replacePlaces = false;
-	var $replaceAll = false;
-	var $replacePlacesWord = false;
+	/** @var string @var string Search parameter */
+	public $showasso = 'off';
+
+	/** @var string @var string Search parameter */
+	public $firstname;
+
+	/** @var string @var string Search parameter */
+	public $lastname;
+
+	/** @var string @var string Search parameter */
+	public $place;
+
+	/** @var string @var string Search parameter */
+	public $year;
+
+	/** @var string @var string Replace parameter */
+	public $replace = '';
+
+	/** @var bool @var string Replace parameter */
+	public $replaceNames = false;
+
+	/** @var bool @var string Replace parameter */
+	public $replacePlaces = false;
+
+	/** @var bool @var string Replace parameter */
+	public $replaceAll = false;
+
+	/** @var bool @var string Replace parameter */
+	public $replacePlacesWord = false;
 
 	/**
 	 * Startup activity
@@ -111,7 +141,6 @@ class SearchController extends PageController {
 		$this->lastname          = Filter::get('lastname');
 		$this->place             = Filter::get('place');
 		$this->year              = Filter::get('year');
-		$this->name              = Filter::get('name');
 
 		// If no record types specified, search individuals
 		if (!$this->srfams && !$this->srsour && !$this->srnote) {
@@ -168,11 +197,12 @@ class SearchController extends PageController {
 			$this->soundexSearch();
 			break;
 		case 'replace':
+			$this->setPageTitle(I18N::translate('Search and replace'));
 			$this->search_trees = array($WT_TREE);
-			$this->srindi = 'checked';
-			$this->srfams = 'checked';
-			$this->srsour = 'checked';
-			$this->srnote = 'checked';
+			$this->srindi       = 'checked';
+			$this->srfams       = 'checked';
+			$this->srsour       = 'checked';
+			$this->srnote       = 'checked';
 			if (Filter::post('query')) {
 				$this->searchAndReplace($WT_TREE);
 				header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=replace&query=' . Filter::escapeUrl($this->query) . '&replace=' . Filter::escapeUrl($this->replace) . '&replaceAll=' . $this->replaceAll . '&replaceNames=' . $this->replaceNames . '&replacePlaces=' . $this->replacePlaces . '&replacePlacesWord=' . $this->replacePlacesWord);
@@ -414,23 +444,20 @@ class SearchController extends PageController {
 	 *
 	 *  The names' Soundex SQL table contains all the soundex values twice
 	 *  The places table contains only one value
-	 *
-	 *  The code should be improved - see RFE
-	 *
 	 */
 	private function soundexSearch() {
-		if (((!empty ($this->lastname)) || (!empty ($this->firstname)) || (!empty ($this->place))) && $this->search_trees) {
+		if (((!empty($this->lastname)) || (!empty($this->firstname)) || (!empty($this->place))) && $this->search_trees) {
 			$logstring = "Type: Soundex\n";
-			if (!empty ($this->lastname)) {
+			if (!empty($this->lastname)) {
 				$logstring .= "Last name: " . $this->lastname . "\n";
 			}
-			if (!empty ($this->firstname)) {
+			if (!empty($this->firstname)) {
 				$logstring .= "First name: " . $this->firstname . "\n";
 			}
-			if (!empty ($this->place)) {
+			if (!empty($this->place)) {
 				$logstring .= "Place: " . $this->place . "\n";
 			}
-			if (!empty ($this->year)) {
+			if (!empty($this->year)) {
 				$logstring .= "Year: " . $this->year . "\n";
 			}
 			Log::addSearchLog($logstring, $this->search_trees);
@@ -468,14 +495,14 @@ class SearchController extends PageController {
 			header('Location: ' . WT_BASE_URL . $indi->getRawUrl());
 			exit;
 		}
-		usort($this->myindilist, __NAMESPACE__ . '\GedcomRecord::compare');
-		usort($this->myfamlist, __NAMESPACE__ . '\GedcomRecord::compare');
+		usort($this->myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
+		usort($this->myfamlist, '\Fisharebest\Webtrees\GedcomRecord::compare');
 	}
 
 	/**
 	 * Display the search results
 	 */
-	function printResults() {
+	public function printResults() {
 		if ($this->action !== 'replace' && ($this->query || $this->firstname || $this->lastname || $this->place)) {
 			if ($this->myindilist || $this->myfamlist || $this->mysourcelist || $this->mynotelist) {
 				$this->addInlineJavascript('jQuery("#search-result-tabs").tabs();');

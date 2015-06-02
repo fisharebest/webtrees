@@ -16,6 +16,8 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Controller\SimpleController;
+
 define('WT_SCRIPT_NAME', 'message.php');
 require './includes/session.php';
 
@@ -293,7 +295,7 @@ function addMessage($message) {
 				WT_CLIENT_IP,
 				$recipient->getUserId(),
 				$message['subject'],
-				str_replace('<br>', '', $message['body']) // Remove the <br> that we added for the external email.  TODO: create different messages
+				str_replace('<br>', '', $message['body']), // Remove the <br> that we added for the external email.  Perhaps create different messages
 			));
 	}
 	if ($message['method'] !== 'messaging') {

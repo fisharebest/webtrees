@@ -98,8 +98,8 @@ namespace Fisharebest\Webtrees;
 							//-- Parents Husbands Parents --------------------------------------
 							$gparent = $family->getHusband();
 							foreach ($gparent->getChildFamilies() as $cfamily) {
-								$phusb = $cfamily->getHusband();
-								$pwife = $cfamily->getWife();
+								$phusb                 = $cfamily->getHusband();
+								$pwife                 = $cfamily->getWife();
 								if ($phusb) { $HusbFBP = $phusb->getBirthPlace(); }
 								if ($pwife) { $HusbMBP = $pwife->getBirthPlace(); }
 							}
@@ -115,7 +115,7 @@ namespace Fisharebest\Webtrees;
 								}
 							}
 							$label = get_close_relationship_name($person, $gparent);
-							$menu = new Menu($label);
+							$menu  = new Menu($label);
 							print_pedigree_person_nav_cens($gparent->getXref(), $label, $censdate);
 							$submenu = new Menu($parentlinks);
 							$menu->addSubmenu($submenu);
@@ -137,7 +137,7 @@ namespace Fisharebest\Webtrees;
 										"<?php echo $gparent->getXref(); ?>",
 										"<?php echo $fulln; ?>",
 										"<?php echo $fulmn; ?>",
-										"<?php echo $person === $gparent ? 'head': Filter::escapeHtml($label); ?>",
+										"<?php echo $person === $gparent ? 'head' : Filter::escapeHtml($label); ?>",
 										"<?php echo $gparent->getSex(); ?>",
 										"<?php echo $married >= 0 ? 'M' : 'S'; ?>",
 										"<?php echo $marrdate->julianDay(); ?>",
@@ -177,8 +177,8 @@ namespace Fisharebest\Webtrees;
 							$gparent = $family->getWife();
 							$cfamily = null;
 							foreach ($gparent->getChildFamilies() as $cfamily) {
-								$phusb = $cfamily->getHusband();
-								$pwife = $cfamily->getWife();
+								$phusb                 = $cfamily->getHusband();
+								$pwife                 = $cfamily->getWife();
 								if ($phusb) { $WifeFBP = $phusb->getBirthPlace(); }
 								if ($pwife) { $WifeMBP = $pwife->getBirthPlace(); }
 							}
@@ -194,7 +194,7 @@ namespace Fisharebest\Webtrees;
 								}
 							}
 							$label = get_close_relationship_name($person, $gparent);
-							$menu = new Menu($label);
+							$menu  = new Menu($label);
 							print_pedigree_person_nav_cens($gparent->getXref(), $label, $censyear);
 							$submenu = new Menu($parentlinks);
 							$menu->addSubmenu($submenu);
@@ -215,7 +215,7 @@ namespace Fisharebest\Webtrees;
 										"<?php echo $gparent->getXref(); ?>",
 										"<?php echo $fulln; ?>",
 										"<?php echo $fulmn; ?>",
-										"<?php echo $person === $gparent ? 'head': Filter::escapeHtml($label); ?>",
+										"<?php echo $person === $gparent ? 'head' : Filter::escapeHtml($label); ?>",
 										"<?php echo $gparent->getSex(); ?>",
 										"<?php echo $married >= 0 && isset($nam[1]) ? 'M' : 'S'; ?>",
 										"<?php echo $marrdate->julianDay(); ?>",
@@ -268,7 +268,7 @@ namespace Fisharebest\Webtrees;
 							$marrdate = '';
 							foreach ($child->getSpouseFamilies() as $childfamily) {
 								$marrdate = $childfamily->getMarriageDate();
-								$married = Date::compare($censdate, $marrdate);
+								$married  = Date::compare($censdate, $marrdate);
 							}
 							$nam   = $child->getAllNames();
 							$fulln = strip_tags($nam[0]['full']);
@@ -279,7 +279,7 @@ namespace Fisharebest\Webtrees;
 								}
 							}
 							$label = get_close_relationship_name($person, $child);
-							$menu = new Menu($label);
+							$menu  = new Menu($label);
 							print_pedigree_person_nav_cens($child->getXref(), $label, $censyear);
 							$submenu = new Menu($spouselinks);
 							$menu->addSubmenu($submenu);
@@ -366,16 +366,16 @@ namespace Fisharebest\Webtrees;
 
 							//-- Step Husbands Details --------------------------------------
 							$married = Date::compare($censdate, $marrdate);
-							$nam   = $gparent->getAllNames();
-							$fulln = strip_tags($nam[0]['full']);
-							$fulmn = $fulln;
+							$nam     = $gparent->getAllNames();
+							$fulln   = strip_tags($nam[0]['full']);
+							$fulmn   = $fulln;
 							foreach ($nam as $n) {
 								if ($n['type'] === '_MARNM') {
 									$fulmn = strip_tags($n['full']);
 								}
 							}
 							$label = get_close_relationship_name($person, $gparent);
-							$menu = new Menu($label);
+							$menu  = new Menu($label);
 							print_pedigree_person_nav_cens($gparent->getXref(), $label, $censyear);
 							$submenu = new Menu($parentlinks);
 							$menu->addSubmenu($submenu);
@@ -406,9 +406,9 @@ namespace Fisharebest\Webtrees;
 										"<?php echo $gparent->getXref(); ?>",
 										"<?php echo $fulln; ?>",
 										"<?php echo $fulmn; ?>",
-										"<?php echo $person === $gparent ? 'head': Filter::escapeHtml($label); ?>",
+										"<?php echo $person === $gparent ? 'head' : Filter::escapeHtml($label); ?>",
 										"<?php echo $gparent->getSex(); ?>",
-										"<?php echo $married >= 0 ? 'M': 'S'; ?>",
+										"<?php echo $married >= 0 ? 'M' : 'S'; ?>",
 										"<?php echo $marrdate ? $marrdate->julianDay() : ''; ?>",
 										"<?php echo $gparent->getBirthDate()->julianDay(); ?>",
 										"<?php echo $censyear - $gparent->getbirthyear(); ?>",
@@ -444,8 +444,8 @@ namespace Fisharebest\Webtrees;
 							$gparent = $family->getWife();
 							$cfamily = null;
 							foreach ($gparent->getChildFamilies() as $cfamily) {
-								$phusb = $cfamily->getHusband();
-								$pwife = $cfamily->getWife();
+								$phusb                 = $cfamily->getHusband();
+								$pwife                 = $cfamily->getWife();
 								if ($phusb) { $WifeFBP = $phusb->getBirthPlace(); }
 								if ($pwife) { $WifeMBP = $pwife->getBirthPlace(); }
 							}
@@ -462,7 +462,7 @@ namespace Fisharebest\Webtrees;
 							}
 
 							$label = get_close_relationship_name($person, $gparent);
-							$menu = new Menu($label);
+							$menu  = new Menu($label);
 							print_pedigree_person_nav_cens($gparent->getXref(), $label, $censyear);
 							$submenu = new Menu($parentlinks);
 							$menu->addSubmenu($submenu);
@@ -485,9 +485,9 @@ namespace Fisharebest\Webtrees;
 										"<?php echo $gparent->getXref(); ?>",
 										"<?php echo $fulln; ?>",
 										"<?php echo $fulmn; ?>",
-										"<?php echo $person === $gparent ? 'head': Filter::escapeHtml($label); ?>",
+										"<?php echo $person === $gparent ? 'head' : Filter::escapeHtml($label); ?>",
 										"<?php echo $gparent->getSex(); ?>",
-										"<?php echo $married >= 0 && isset($nam[1]) ? 'M': 'S'; ?>",
+										"<?php echo $married >= 0 && isset($nam[1]) ? 'M' : 'S'; ?>",
 										"<?php echo $marrdate ? $marrdate->julianDay() : ''; ?>",
 										"<?php echo $gparent->getBirthDate()->julianDay(); ?>",
 										"<?php echo $censyear - $gparent->getbirthyear(); ?>",
@@ -533,7 +533,7 @@ namespace Fisharebest\Webtrees;
 								}
 							}
 
-							$nam   = $child->getAllNames();
+							$nam     = $child->getAllNames();
 							$fulln   = strip_tags($nam[0]['full']);
 							$fulmn   = $fulln;
 							foreach ($nam as $n) {
@@ -542,7 +542,7 @@ namespace Fisharebest\Webtrees;
 								}
 							}
 							$label = get_close_relationship_name($person, $child);
-							$menu = new Menu($label);
+							$menu  = new Menu($label);
 							print_pedigree_person_nav_cens($child->getXref(), $label, $censyear);
 							$submenu = new Menu($spouselinks);
 							$menu->addSubmenu($submenu);
@@ -651,7 +651,7 @@ namespace Fisharebest\Webtrees;
 								}
 							}
 							$label = get_close_relationship_name($person, $gparent);
-							$menu = new Menu($label);
+							$menu  = new Menu($label);
 							print_pedigree_person_nav_cens($gparent->getXref(), $label, $censyear);
 							$submenu = new Menu($parentlinks);
 							$menu->addSubmenu($submenu);
@@ -741,7 +741,7 @@ namespace Fisharebest\Webtrees;
 								}
 							}
 							$label = get_close_relationship_name($person, $gparent);
-							$menu = new Menu($label);
+							$menu  = new Menu($label);
 							print_pedigree_person_nav_cens($gparent->getXref(), $label, $censyear);
 							$submenu = new Menu($parentlinks);
 							$menu->addSubmenu($submenu);
@@ -837,7 +837,7 @@ namespace Fisharebest\Webtrees;
 								}
 							}
 							$label = get_close_relationship_name($person, $child);
-							$menu = new Menu($label);
+							$menu  = new Menu($label);
 							print_pedigree_person_nav_cens($child->getXref(), $label, $censyear);
 							$submenu = new Menu($spouselinks);
 							$menu->addSubmenu($submenu);
@@ -912,8 +912,6 @@ namespace Fisharebest\Webtrees;
  * @param string $pid      The Gedcom Xref ID of the individual to print
  * @param string $currpid
  * @param string $censyear
- *
- * @return void
  */
 function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 	global $spouselinks, $parentlinks, $step_parentlinks, $persons, $person_step, $person_parent;
@@ -921,8 +919,8 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 
 	$person = Individual::getInstance($pid, $WT_TREE);
 
-	$tmp = array('M'=>'', 'F'=>'F', 'U'=>'NN');
-	$isF = $tmp[$person->getSex()];
+	$tmp              = array('M' => '', 'F' => 'F', 'U' => 'NN');
+	$isF              = $tmp[$person->getSex()];
 	$spouselinks      = '';
 	$parentlinks      = '';
 	$step_parentlinks = '';
@@ -952,8 +950,8 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 
 		// Parent families
 		foreach ($person->getChildFamilies() as $family) {
-			$husb = $family->getHusband();
-			$wife = $family->getWife();
+			$husb     = $family->getHusband();
+			$wife     = $family->getWife();
 			$children = $family->getChildren();
 
 			// Get Parent Children’s Name, DOB, DOD
@@ -975,17 +973,17 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 				if ($husb) {
 					// Parent Husbands Parents
 					foreach ($husb->getChildFamilies() as $pfamily) {
-						$phusb = $pfamily->getHusband();
-						$pwife = $pfamily->getWife();
+						$phusb                  = $pfamily->getHusband();
+						$pwife                  = $pfamily->getWife();
 						if ($phusb) { $pHusbFBP = $phusb->getBirthPlace(); }
 						if ($pwife) { $pHusbMBP = $pwife->getBirthPlace(); }
 					}
 
 					// Parent Husbands Details
 					$person_parent = 'Yes';
-					$nam   = $husb->getAllNames();
-					$fulln = strip_tags($nam[0]['full']);
-					$fulmn = $fulln;
+					$nam           = $husb->getAllNames();
+					$fulln         = strip_tags($nam[0]['full']);
+					$fulmn         = $fulln;
 					foreach ($nam as $n) {
 						if ($n['type'] === '_MARNM') {
 							$fulmn = strip_tags($n['full']);
@@ -1040,8 +1038,8 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 				if ($wife) {
 					// Parent Wifes Parents
 					foreach ($wife->getChildFamilies() as $pfamily) {
-						$pwhusb = $pfamily->getHusband();
-						$pwwife = $pfamily->getWife();
+						$pwhusb                  = $pfamily->getHusband();
+						$pwwife                  = $pfamily->getWife();
 						if ($pwhusb) { $pWifeFBP = $pwhusb->getBirthPlace(); }
 						if ($pwwife) { $pWifeMBP = $pwwife->getBirthPlace(); }
 					}
@@ -1105,8 +1103,8 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 
 		// Step families
 		foreach ($person->getChildStepFamilies() as $family) {
-			$husb = $family->getHusband();
-			$wife = $family->getWife();
+			$husb     = $family->getHusband();
+			$wife     = $family->getWife();
 			$children = $family->getChildren();
 			$marrdate = $family->getMarriageDate();
 
@@ -1130,16 +1128,16 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 					if ($husb) {
 						// Step Husbands Parents
 						foreach ($husb->getChildFamilies() as $pfamily) {
-							$phusb = $pfamily->getHusband();
-							$pwife = $pfamily->getWife();
+							$phusb                  = $pfamily->getHusband();
+							$pwife                  = $pfamily->getWife();
 							if ($phusb) { $pHusbFBP = $phusb->getBirthPlace(); }
 							if ($pwife) { $pHusbMBP = $pwife->getBirthPlace(); }
 						}
 						//-- Step Husband Details ------------------------------
 						$person_step = 'Yes';
-						$nam   = $husb->getAllNames();
-						$fulln   = strip_tags($nam[0]['full']);
-						$fulmn   = $fulln;
+						$nam         = $husb->getAllNames();
+						$fulln       = strip_tags($nam[0]['full']);
+						$fulmn       = $fulln;
 						foreach ($nam as $n) {
 							if ($n['type'] === '_MARNM') {
 								$fulmn = strip_tags($n['full']);
@@ -1199,16 +1197,16 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 					if ($wife) {
 						// Step Wifes Parents
 						foreach ($wife->getChildFamilies() as $pfamily) {
-							$pwhusb = $pfamily->getHusband();
-							$pwwife = $pfamily->getWife();
+							$pwhusb                  = $pfamily->getHusband();
+							$pwwife                  = $pfamily->getWife();
 							if ($pwhusb) { $pWifeFBP = $pwhusb->getBirthPlace(); }
 							if ($pwwife) { $pWifeMBP = $pwwife->getBirthPlace(); }
 						}
 						// Step Wife Details
 						$person_step = 'Yes';
-						$nam   = $wife->getAllNames();
-						$fulln   = strip_tags($nam[0]['full']);
-						$fulmn   = $fulln;
+						$nam         = $wife->getAllNames();
+						$fulln       = strip_tags($nam[0]['full']);
+						$fulmn       = $fulln;
 						foreach ($nam as $n) {
 							if ($n['type'] === '_MARNM') {
 								$fulmn = strip_tags($n['full']);
@@ -1263,7 +1261,7 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 
 		// Spouse Families
 		foreach ($person->getSpouseFamilies() as $family) {
-			$spouse = $family->getSpouse($person);
+			$spouse   = $family->getSpouse($person);
 			$children = $family->getChildren();
 
 			//-- Get Spouse’s Children’s Name, DOB, DOD --------------------------
@@ -1286,14 +1284,14 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 
 					// Spouse Parents
 					foreach ($spouse->getChildFamilies() as $pfamily) {
-						$phusb = $pfamily->getHusband();
-						$pwife = $pfamily->getWife();
+						$phusb                    = $pfamily->getHusband();
+						$pwife                    = $pfamily->getWife();
 						if ($phusb) { $pSpouseFBP = $phusb->getBirthPlace(); }
 						if ($pwife) { $pSpouseMBP = $pwife->getBirthPlace(); }
 					}
 
 					// Spouse Details
-					$nam   = $spouse->getAllNames();
+					$nam     = $spouse->getAllNames();
 					$fulln   = strip_tags($nam[0]['full']);
 					$fulmn   = $fulln;
 					foreach ($nam as $n) {
@@ -1364,8 +1362,8 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 
 				// Child’s Parents
 				foreach ($child->getChildFamilies() as $family) {
-					$husb = $family->getHusband();
-					$wife = $family->getWife();
+					$husb                  = $family->getHusband();
+					$wife                  = $family->getWife();
 					if ($husb) { $ChildFBP = $husb->getBirthPlace(); }
 					if ($wife) { $ChildMBP = $wife->getBirthPlace(); }
 				}
@@ -1385,7 +1383,7 @@ function print_pedigree_person_nav_cens($pid, $currpid, $censyear) {
 				}
 
 				// Child’s marriage status
-				$marrdate = '';
+				$marrdate  = '';
 				$chhusbnam = null;
 				foreach ($child->getSpouseFamilies() as $childfamily) {
 					$marrdate = $childfamily->getMarriageDate();

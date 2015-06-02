@@ -78,18 +78,18 @@ class I18N {
 
 	// Characters that are displayed in mirror form in RTL text.
 	private static $mirror_characters = array(
-		'(' => ')',
-		')' => '(',
-		'[' => ']',
-		']' => '[',
-		'{' => '}',
-		'}' => '{',
-		'<' => '>',
-		'>' => '<',
+		'('   => ')',
+		')'   => '(',
+		'['   => ']',
+		']'   => '[',
+		'{'   => '}',
+		'}'   => '{',
+		'<'   => '>',
+		'>'   => '<',
 		'‹' => '›',
 		'›' => '‹',
-		'«' => '»',
-		'»' => '«',
+		'«'  => '»',
+		'»'  => '«',
 		'﴾' => '﴿',
 		'﴿' => '﴾',
 		'“' => '”',
@@ -245,7 +245,7 @@ class I18N {
 	 *
 	 * Used for years, etc., where we do not want thousands-separators, decimals, etc.
 	 *
-	 * @param integer $n
+	 * @param int $n
 	 *
 	 * @return string
 	 */
@@ -265,7 +265,7 @@ class I18N {
 	/**
 	 * What is the first day of the week.
 	 *
-	 * @return integer Sunday=0, Monday=1, etc.
+	 * @return int Sunday=0, Monday=1, etc.
 	 */
 	public static function firstDay() {
 		return self::$locale->territory()->firstDay();
@@ -415,7 +415,7 @@ class I18N {
 		if ($rebuild_cache) {
 			$translations = array();
 			foreach ($translation_files as $translation_file) {
-				$translation = new Translation($translation_file);
+				$translation  = new Translation($translation_file);
 				$translations = array_merge($translations, $translation->asArray());
 			}
 			file_put_contents($cache_file, '<' . '?php return ' . var_export($translations, true) . ';');
@@ -488,8 +488,8 @@ class I18N {
 	 * fr: 12 345,67
 	 * de: 12.345,67
 	 *
-	 * @param float   $n
-	 * @param integer $precision
+	 * @param float $n
+	 * @param int   $precision
 	 *
 	 * @return string
 	 */
@@ -505,8 +505,8 @@ class I18N {
 	 * fr: 12,3 %
 	 * de: 12,3%
 	 *
-	 * @param float   $n
-	 * @param integer $precision
+	 * @param float $n
+	 * @param int   $precision
 	 *
 	 * @return string
 	 */
@@ -558,15 +558,15 @@ class I18N {
 		$text = strtr($text, self::$mirror_characters);
 
 		$reversed = '';
-		$digits = '';
+		$digits   = '';
 		while ($text != '') {
 			$letter = mb_substr($text, 0, 1);
-			$text = mb_substr($text, 1);
+			$text   = mb_substr($text, 1);
 			if (strpos(self::DIGITS, $letter) !== false) {
 				$digits .= $letter;
 			} else {
 				$reversed = $letter . $digits . $reversed;
-				$digits = '';
+				$digits   = '';
 			}
 		}
 
@@ -603,7 +603,7 @@ class I18N {
 	 * @param string $string1
 	 * @param string $string2
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public static function strcasecmp($string1, $string2) {
 		$strpos1 = 0;
@@ -731,26 +731,26 @@ class I18N {
 		$string = strip_tags($string); // otherwise HTML tags show up as latin
 		$string = html_entity_decode($string, ENT_QUOTES, 'UTF-8'); // otherwise HTML entities show up as latin
 		$string = str_replace(array('@N.N.', '@P.N.'), '', $string); // otherwise unknown names show up as latin
-		$pos = 0;
+		$pos    = 0;
 		$strlen = strlen($string);
 		while ($pos < $strlen) {
 			// get the Unicode Code Point for the character at position $pos
 			$byte1 = ord($string[$pos]);
 			if ($byte1 < 0x80) {
 				$code_point = $byte1;
-				$chrlen = 1;
+				$chrlen     = 1;
 			} elseif ($byte1 < 0xC0) {
 				// Invalid continuation character
 				return 'Latn';
 			} elseif ($byte1 < 0xE0) {
 				$code_point = (($byte1 & 0x1F) << 6) + (ord($string[$pos + 1]) & 0x3F);
-				$chrlen = 2;
+				$chrlen     = 2;
 			} elseif ($byte1 < 0xF0) {
 				$code_point = (($byte1 & 0x0F) << 12) + ((ord($string[$pos + 1]) & 0x3F) << 6) + (ord($string[$pos + 2]) & 0x3F);
-				$chrlen = 3;
+				$chrlen     = 3;
 			} elseif ($byte1 < 0xF8) {
 				$code_point = (($byte1 & 0x07) << 24) + ((ord($string[$pos + 1]) & 0x3F) << 12) + ((ord($string[$pos + 2]) & 0x3F) << 6) + (ord($string[$pos + 3]) & 0x3F);
-				$chrlen = 3;
+				$chrlen     = 3;
 			} else {
 				// Invalid UTF
 				return 'Latn';
@@ -771,7 +771,7 @@ class I18N {
 	/**
 	 * Convert a number of seconds into a relative time.  For example, 630 => "10 hours, 30 minutes ago"
 	 *
-	 * @param integer $seconds
+	 * @param int $seconds
 	 *
 	 * @return string
 	 */
@@ -784,18 +784,23 @@ class I18N {
 
 		if ($seconds > $year) {
 			$years = (int) ($seconds / $year);
+
 			return self::plural('%s year ago', '%s years ago', $years, self::number($years));
 		} elseif ($seconds > $month) {
 			$months = (int) ($seconds / $month);
+
 			return self::plural('%s month ago', '%s months ago', $months, self::number($months));
 		} elseif ($seconds > $day) {
 			$days = (int) ($seconds / $day);
+
 			return self::plural('%s day ago', '%s days ago', $days, self::number($days));
 		} elseif ($seconds > $hour) {
 			$hours = (int) ($seconds / $hour);
+
 			return self::plural('%s hour ago', '%s hours ago', $hours, self::number($hours));
 		} elseif ($seconds > $minute) {
 			$minutes = (int) ($seconds / $minute);
+
 			return self::plural('%s minute ago', '%s minutes ago', $minutes, self::number($minutes));
 		} else {
 			return self::plural('%s second ago', '%s seconds ago', $seconds, self::number($seconds));
@@ -845,7 +850,7 @@ class I18N {
 	/**
 	 * What is the last day of the weekend.
 	 *
-	 * @return integer Sunday=0, Monday=1, etc.
+	 * @return int Sunday=0, Monday=1, etc.
 	 */
 	public static function weekendEnd() {
 		return self::$locale->territory()->weekendEnd();
@@ -854,7 +859,7 @@ class I18N {
 	/**
 	 * What is the first day of the weekend.
 	 *
-	 * @return integer Sunday=0, Monday=1, etc.
+	 * @return int Sunday=0, Monday=1, etc.
 	 */
 	public static function weekendStart() {
 		return self::$locale->territory()->weekendStart();

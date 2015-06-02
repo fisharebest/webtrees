@@ -18,6 +18,8 @@ namespace Fisharebest\Webtrees;
 
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\SimpleController;
+
 $controller = new SimpleController;
 
 $filter   = Filter::get('filter');
@@ -64,7 +66,7 @@ echo "</table>";
 echo "<br>";
 
 if ($action == "filter") {
-	$filter = trim($filter);
+	$filter       = trim($filter);
 	$filter_array = explode(' ', preg_replace('/ {2,}/', ' ', $filter));
 
 	// Output Individual for GEDFact Assistant ======================
@@ -72,16 +74,16 @@ if ($action == "filter") {
 	$myindilist = search_indis_names($filter_array, array($WT_TREE));
 	if ($myindilist) {
 		echo "<tr><td class=\"list_value_wrap\"><ul>";
-		usort($myindilist, __NAMESPACE__ . '\GedcomRecord::compare');
+		usort($myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
 		foreach ($myindilist as $indi) {
-			$nam = $indi->getAllNames();
+			$nam       = $indi->getAllNames();
 			$wholename = rtrim($nam[0]['givn'], '*') . "&nbsp;" . $nam[0]['surname'];
-			$fulln = rtrim($nam[0]['givn'], '*') . "&nbsp;" . $nam[0]['surname'];
-			$fulln = str_replace('"', '\'', $fulln); // Replace double quotes
-			$fulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-			$fulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $fulln);
-			$givn  = rtrim($nam[0]['givn'], '*');
-			$surn  = $nam[0]['surname'];
+			$fulln     = rtrim($nam[0]['givn'], '*') . "&nbsp;" . $nam[0]['surname'];
+			$fulln     = str_replace('"', '\'', $fulln); // Replace double quotes
+			$fulln     = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $fulln);
+			$fulln     = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $fulln);
+			$givn      = rtrim($nam[0]['givn'], '*');
+			$surn      = $nam[0]['surname'];
 			if (isset($nam[1])) {
 				$fulmn = rtrim($nam[1]['givn'], '*') . "&nbsp;" . $nam[1]['surname'];
 				$fulmn = str_replace('"', '\'', $fulmn); // Replace double quotes
@@ -117,17 +119,17 @@ if ($action == "filter") {
 			//-- Get Children’s Name, DOB, DOD --------------------------
 			$chBLDarray = array();
 			if (isset($children)) {
-				foreach ($children as $key=>$child) {
-					$chnam   = $child->getAllNames();
-					$chfulln = rtrim($chnam[0]['givn'], '*') . " " . $chnam[0]['surname'];
-					$chfulln = str_replace('"', "", $chfulln); // Must remove quotes completely here
-					$chfulln = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $chfulln);
-					$chfulln = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $chfulln); // Child’s Full Name
-					$chdob   = ($child->getBirthDate()->minimumJulianDay() + $child->getBirthDate()->maximumJulianDay()) / 2; // Child’s Date of Birth (Julian)
+				foreach ($children as $key => $child) {
+					$chnam                       = $child->getAllNames();
+					$chfulln                     = rtrim($chnam[0]['givn'], '*') . " " . $chnam[0]['surname'];
+					$chfulln                     = str_replace('"', "", $chfulln); // Must remove quotes completely here
+					$chfulln                     = str_replace("@N.N.", "(" . I18N::translate('unknown') . ")", $chfulln);
+					$chfulln                     = str_replace("@P.N.", "(" . I18N::translate('unknown') . ")", $chfulln); // Child’s Full Name
+					$chdob                       = ($child->getBirthDate()->minimumJulianDay() + $child->getBirthDate()->maximumJulianDay()) / 2; // Child’s Date of Birth (Julian)
 					if (!isset($chdob)) { $chdob = ""; }
-					$chdod   = ($child->getDeathDate()->minimumJulianDay() + $child->getDeathDate()->maximumJulianDay()) / 2; // Child’s Date of Death (Julian)
+					$chdod                       = ($child->getDeathDate()->minimumJulianDay() + $child->getDeathDate()->maximumJulianDay()) / 2; // Child’s Date of Death (Julian)
 					if (!isset($chdod)) { $chdod = ""; }
-					$chBLD   = ($chfulln . ", " . $chdob . ", " . $chdod);
+					$chBLD                       = ($chfulln . ", " . $chdob . ", " . $chdod);
 					array_push($chBLDarray, $chBLD);
 				}
 			}
@@ -175,3 +177,4 @@ if ($action == "filter") {
 }
 echo '<button onclick="window.close();">', I18N::translate('close'), '</button>';
 echo "</div>"; // Close div that centers table
+

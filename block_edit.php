@@ -23,11 +23,14 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Module\CkeditorModule;
+
 define('WT_SCRIPT_NAME', 'block_edit.php');
 require './includes/session.php';
 
 $block_id = Filter::getInteger('block_id');
-$block = Database::prepare(
+$block    = Database::prepare(
 	"SELECT SQL_CACHE * FROM `##block` WHERE block_id=?"
 )->execute(array($block_id))->fetchOneRow();
 

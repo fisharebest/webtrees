@@ -7,7 +7,7 @@ exec { "apt-update" :
 }
 
 # install vim and all packages required to build PHP
-$packages = [ "vim", "curl", "libxpm-dev", "libmcrypt-dev", "libbz2-dev", "libcurl4-gnutls-dev", "libjpeg62-dev", "libpng12-dev", "libfreetype6-dev", "libt1-dev", "libgmp3-dev", "libmysqlclient-dev", "libpq-dev", "libpcre3-dev", "libxml2-dev", "libxslt-dev", "make"]
+$packages = [ "vim", "curl", "libxpm-dev", "libmcrypt-dev", "libbz2-dev", "libcurl4-gnutls-dev", "libjpeg62-dev", "libpng12-dev", "libfreetype6-dev", "libt1-dev", "libgmp3-dev", "libmysqlclient-dev", "libpq-dev", "libpcre3-dev", "libxml2-dev", "libxslt-dev", "make", "phpunit"]
 
 package { $packages :
     ensure => installed,

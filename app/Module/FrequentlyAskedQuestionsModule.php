@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,14 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Class FrequentlyAskedQuestionsModule
@@ -78,7 +86,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 				)->execute(array(
 					'tree_id'     => Filter::postInteger('gedcom_id'),
 					'block_order' => Filter::postInteger('block_order'),
-					'block_id'    => $block_id
+					'block_id'    => $block_id,
 				));
 			} else {
 				Database::prepare(
@@ -243,7 +251,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 		)->execute(array(
 			'block_order'   => $block_order,
 			'module_name_1' => $this->getName(),
-			'module_name_2' => $this->getName()
+			'module_name_2' => $this->getName(),
 		))->fetchOneRow();
 		if ($swap_block) {
 			Database::prepare(
@@ -436,7 +444,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			foreach ($faqs as $faq) {
 				// NOTE: Print the position of the current item
 				echo '<tr class="faq_edit_pos"><td>';
-				echo I18N::translate('#%s',$faq->block_order + 1), ' ';
+				echo I18N::translate('#%s', $faq->block_order + 1), ' ';
 				if ($faq->gedcom_id == null) {
 					echo I18N::translate('All');
 				} else {

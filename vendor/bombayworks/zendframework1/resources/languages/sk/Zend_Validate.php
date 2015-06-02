@@ -80,7 +80,7 @@ return array(
     "'%value%' is not a valid email address in the basic format local-part@hostname" => "'%value%' nie je platná e-mailová adresa v tvare local-part@hostname",
     "'%hostname%' is not a valid hostname for email address '%value%'" => "'%hostname%' je neplatný hostname pre emailovou adresu '%value%'",
     "'%hostname%' does not appear to have a valid MX record for the email address '%value%'" => "'%hostname%' neobsahuje platný MX záznam pre e-mailovou adresu '%value%'",
-    "'%hostname%' is not in a routable network segment. The email address '%value%' should not be resolved from public network" => "'%hostname%' nie je v smerovateľnom úseku siete. E-mailová adresa '%valute%' by nemala byť požadovaná z verejnej siete",
+    "'%hostname%' is not in a routable network segment. The email address '%value%' should not be resolved from public network" => "'%hostname%' nie je v smerovateľnom úseku siete. E-mailová adresa '%value%' by nemala byť požadovaná z verejnej siete",
     "'%localPart%' can not be matched against dot-atom format" => "'%localPart%' nemôže byť porovnaný proti dot-atom formátu",
     "'%localPart%' can not be matched against quoted-string format" => "'%localPart%' nemôže byť porovnaný proti quoted-string formátu",
     "'%localPart%' is not a valid local part for email address '%value%'" => "'%localPart%' je neplatná 'local part' pre e-mailovou adresu '%value%'",

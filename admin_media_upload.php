@@ -23,6 +23,9 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Query\QueryMedia;
+
 define('WT_SCRIPT_NAME', 'admin_media_upload.php');
 require './includes/session.php';
 
@@ -149,8 +152,8 @@ if ($action == "upload") {
 
 				// Now copy the (optional thumbnail)
 				if (!empty($_FILES['thumbnail' . $i]['name']) && preg_match('/^image\/(png|gif|jpeg)/', $_FILES['thumbnail' . $i]['type'], $match)) {
-					$extension = $match[1];
-					$thumbFile = preg_replace('/\.[a-z0-9]{3,5}$/', '.' . $extension, $fileName);
+					$extension      = $match[1];
+					$thumbFile      = preg_replace('/\.[a-z0-9]{3,5}$/', '.' . $extension, $fileName);
 					$serverFileName = WT_DATA_DIR . $MEDIA_DIRECTORY . 'thumbs/' . $folderName . $thumbFile;
 					if (move_uploaded_file($_FILES['thumbnail' . $i]['tmp_name'], $serverFileName)) {
 						FlashMessages::addMessage(I18N::translate('The file %s has been uploaded.', Html::filename($serverFileName)));
@@ -167,7 +170,6 @@ $controller->pageHeader();
 $mediaFolders = QueryMedia::folderListAll();
 
 // Determine file size limit
-// TODO: do we need to check post_max_size size too?
 $filesize = ini_get('upload_max_filesize');
 if (empty($filesize)) {
 	$filesize = "2M";

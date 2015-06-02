@@ -22,7 +22,7 @@ use PDOException;
  * Class Tree - Provide an interface to the wt_gedcom table
  */
 class Tree {
-	/** @var integer The tree's ID number */
+	/** @var int The tree's ID number */
 	private $tree_id;
 
 	/** @var string The tree's name */
@@ -53,9 +53,9 @@ class Tree {
 	 * Create a tree object.  This is a private constructor - it can only
 	 * be called from Tree::getAll() to ensure proper initialisation.
 	 *
-	 * @param integer $tree_id
-	 * @param string  $tree_name
-	 * @param string  $tree_title
+	 * @param int    $tree_id
+	 * @param string $tree_name
+	 * @param string $tree_title
 	 */
 	private function __construct($tree_id, $tree_name, $tree_title) {
 		$this->tree_id                 = $tree_id;
@@ -74,7 +74,7 @@ class Tree {
 			'priv_user'   => Auth::PRIV_USER,
 			'priv_none'   => Auth::PRIV_NONE,
 			'priv_hide'   => Auth::PRIV_HIDE,
-			'tree_id'     => $this->tree_id
+			'tree_id'     => $this->tree_id,
 		))->fetchAll();
 
 		foreach ($rows as $row) {
@@ -89,13 +89,12 @@ class Tree {
 			}
 		}
 
-
 	}
 
 	/**
 	 * The ID of this tree
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function getTreeId() {
 		return $this->tree_id;
@@ -284,7 +283,7 @@ class Tree {
 					'user_id'       => $user->getUserId(),
 					'tree_id'       => $this->tree_id,
 					'setting_name'  => $setting_name,
-					'setting_value' => $setting_value
+					'setting_value' => $setting_value,
 				));
 			}
 			// Update our cache
@@ -301,7 +300,7 @@ class Tree {
 	 *
 	 * @param User $user
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function canAcceptChanges(User $user) {
 		return Auth::isModerator($this, $user);
@@ -315,7 +314,7 @@ class Tree {
 	public static function getAll() {
 		if (self::$trees === null) {
 			self::$trees = array();
-			$rows = Database::prepare(
+			$rows        = Database::prepare(
 				"SELECT SQL_CACHE g.gedcom_id AS tree_id, g.gedcom_name AS tree_name, gs1.setting_value AS tree_title" .
 				" FROM `##gedcom` g" .
 				" LEFT JOIN `##gedcom_setting`      gs1 ON (g.gedcom_id=gs1.gedcom_id AND gs1.setting_name='title')" .
@@ -344,10 +343,11 @@ class Tree {
 	/**
 	 * Find the tree with a specific ID.
 	 *
-	 * @param integer $tree_id
+	 * @param int $tree_id
+	 *
+	 * @throws \DomainException
 	 *
 	 * @return Tree
-	 * @throws \DomainException
 	 */
 	public static function findById($tree_id) {
 		foreach (self::getAll() as $tree) {
@@ -568,7 +568,7 @@ class Tree {
 		$note     = I18N::translate('Edit this individual and replace their details with your own.');
 		Database::prepare("INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data) VALUES (?, ?)")->execute(array(
 			$tree_id,
-			"0 HEAD\n1 CHAR UTF-8\n0 @I1@ INDI\n1 NAME {$john_doe}\n1 SEX M\n1 BIRT\n2 DATE 01 JAN 1850\n2 NOTE {$note}\n0 TRLR\n"
+			"0 HEAD\n1 CHAR UTF-8\n0 @I1@ INDI\n1 NAME {$john_doe}\n1 SEX M\n1 BIRT\n2 DATE 01 JAN 1850\n2 NOTE {$note}\n0 TRLR\n",
 		));
 
 		// Set the initial blocks
@@ -594,10 +594,9 @@ class Tree {
 		return (bool) Database::prepare(
 			"SELECT 1 FROM `##change` WHERE status = 'pending' AND gedcom_id = :tree_id"
 		)->execute(array(
-			'tree_id' => $this->tree_id
+			'tree_id' => $this->tree_id,
 		))->fetchOne();
 	}
-
 
 	/**
 	 * Delete all the genealogy data from a tree - in preparation for importing
@@ -675,7 +674,7 @@ class Tree {
 			'tree_id_2' => $this->tree_id,
 			'tree_id_3' => $this->tree_id,
 			'tree_id_4' => $this->tree_id,
-			'tree_id_5' => $this->tree_id
+			'tree_id_5' => $this->tree_id,
 		));
 
 		$buffer = reformat_record_export(gedcom_header($this));
@@ -818,8 +817,9 @@ class Tree {
 	 *
 	 * @param string $gedcom
 	 *
-	 * @return GedcomRecord
 	 * @throws \Exception
+	 *
+	 * @return GedcomRecord
 	 */
 	public function createRecord($gedcom) {
 		if (preg_match('/^0 @(' . WT_REGEX_XREF . ')@ (' . WT_REGEX_TAG . ')/', $gedcom, $match)) {
@@ -851,7 +851,7 @@ class Tree {
 			$this->tree_id,
 			$xref,
 			$gedcom,
-			Auth::id()
+			Auth::id(),
 		));
 
 		Log::addEditLog('Create: ' . $type . ' ' . $xref);

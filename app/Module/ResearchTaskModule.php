@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -16,6 +16,11 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Theme;
 use Rhumsaa\Uuid\Uuid;
 
 /**
@@ -97,10 +102,10 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 		$content .= '<th>' . GedcomTag::getLabel('TEXT') . '</th>';
 		$content .= '</tr></thead><tbody>';
 
-		$found = false;
+		$found  = false;
 		$end_jd = $show_future ? 99999999 : WT_CLIENT_JD;
 		foreach (get_calendar_events(0, $end_jd, '_TODO', $WT_TREE) as $fact) {
-			$record = $fact->getParent();
+			$record    = $fact->getParent();
 			$user_name = $fact->getAttribute('_WT_USER');
 			if ($user_name === Auth::user()->getUserName() || !$user_name && $show_unassigned || $user_name && $show_other) {
 				$content .= '<tr>';
@@ -129,6 +134,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 			if ($block) {
 				$class .= ' small_inner_block';
 			}
+
 			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 			return $content;

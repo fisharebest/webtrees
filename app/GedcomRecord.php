@@ -38,22 +38,22 @@ class GedcomRecord {
 	/** @var Fact[] facts extracted from $gedcom/$pending */
 	protected $facts;
 
-	/** @var boolean Can we display details of this record to Auth::PRIV_PRIVATE */
+	/** @var bool Can we display details of this record to Auth::PRIV_PRIVATE */
 	private $disp_public;
 
-	/** @var boolean Can we display details of this record to Auth::PRIV_USER */
+	/** @var bool Can we display details of this record to Auth::PRIV_USER */
 	private $disp_user;
 
-	/** @var boolean Can we display details of this record to Auth::PRIV_NONE */
+	/** @var bool Can we display details of this record to Auth::PRIV_NONE */
 	private $disp_none;
 
 	/** @var string[][] All the names of this individual */
 	protected $_getAllNames;
 
-	/** @var integer Cached result */
+	/** @var int Cached result */
 	protected $_getPrimaryName;
 
-	/** @var integer Cached result */
+	/** @var int Cached result */
 	protected $_getSecondaryName;
 
 	// Allow getInstance() to return references to existing objects
@@ -125,15 +125,22 @@ class GedcomRecord {
 	 * @param Tree        $tree
 	 * @param string|null $gedcom
 	 *
-	 * @return GedcomRecord|null
 	 * @throws \Exception
+	 *
+	 * @return GedcomRecord|Individual|Family|Source|Repository|Media|Note|null
 	 */
 	public static function getInstance($xref, Tree $tree, $gedcom = null) {
 		$tree_id = $tree->getTreeId();
 
-		// Is this record already in the cache?
+		// Is this record already in the cache, and of the correct type?
 		if (isset(self::$gedcom_record_cache[$xref][$tree_id])) {
-			return self::$gedcom_record_cache[$xref][$tree_id];
+			$record = self::$gedcom_record_cache[$xref][$tree_id];
+
+			if ($record instanceof static) {
+				return $record;
+			} else {
+				null;
+			}
 		}
 
 		// Do we need to fetch the record from the database?
@@ -146,10 +153,10 @@ class GedcomRecord {
 			if (!isset(self::$pending_record_cache[$tree_id])) {
 				// Fetch all pending records in one database query
 				self::$pending_record_cache[$tree_id] = array();
-				$rows = Database::prepare(
+				$rows                                 = Database::prepare(
 					"SELECT xref, new_gedcom FROM `##change` WHERE status = 'pending' AND gedcom_id = :tree_id ORDER BY change_id"
 				)->execute(array(
-					'tree_id' => $tree_id
+					'tree_id' => $tree_id,
 				))->fetchAll();
 				foreach ($rows as $row) {
 					self::$pending_record_cache[$tree_id][$row->xref] = $row->new_gedcom;
@@ -206,7 +213,7 @@ class GedcomRecord {
 			$record = new Note($xref, $gedcom, $pending, $tree);
 			break;
 		default:
-			$record = new GedcomRecord($xref, $gedcom, $pending, $tree);
+			$record = new self($xref, $gedcom, $pending, $tree);
 			break;
 		}
 
@@ -219,8 +226,8 @@ class GedcomRecord {
 	/**
 	 * Fetch data from the database
 	 *
-	 * @param string  $xref
-	 * @param integer $tree_id
+	 * @param string $xref
+	 * @param int    $tree_id
 	 *
 	 * @return null|string
 	 */
@@ -295,7 +302,7 @@ class GedcomRecord {
 	/**
 	 * Does this record have a pending change?
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function isPendingAddtion() {
 		return $this->pending !== null;
@@ -304,7 +311,7 @@ class GedcomRecord {
 	/**
 	 * Does this record have a pending deletion?
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function isPendingDeletion() {
 		return $this->pending === '';
@@ -352,9 +359,9 @@ class GedcomRecord {
 	/**
 	 * Work out whether this record can be shown to a user with a given access level
 	 *
-	 * @param integer $access_level
+	 * @param int $access_level
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	private function canShowRecord($access_level) {
 		// This setting would better be called "$ENABLE_PRIVACY"
@@ -396,9 +403,9 @@ class GedcomRecord {
 	/**
 	 * Each object type may have its own special rules, and re-implement this function.
 	 *
-	 * @param integer $access_level
+	 * @param int $access_level
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	protected function canShowByType($access_level) {
 		$fact_privacy = $this->tree->getFactPrivacy();
@@ -415,9 +422,9 @@ class GedcomRecord {
 	/**
 	 * Can the details of this record be shown?
 	 *
-	 * @param integer|null $access_level
+	 * @param int|null $access_level
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function canShow($access_level = null) {
 		if ($access_level === null) {
@@ -431,16 +438,19 @@ class GedcomRecord {
 			if ($this->disp_public === null) {
 				$this->disp_public = $this->canShowRecord(Auth::PRIV_PRIVATE);
 			}
+
 			return $this->disp_public;
 		case Auth::PRIV_USER: // member
 			if ($this->disp_user === null) {
 				$this->disp_user = $this->canShowRecord(Auth::PRIV_USER);
 			}
+
 			return $this->disp_user;
 		case Auth::PRIV_NONE: // admin
 			if ($this->disp_none === null) {
 				$this->disp_none = $this->canShowRecord(Auth::PRIV_NONE);
 			}
+
 			return $this->disp_none;
 		case Auth::PRIV_HIDE: // hidden from admins
 			// We use this value to bypass privacy checks.  For example,
@@ -455,9 +465,9 @@ class GedcomRecord {
 	/**
 	 * Can the name of this record be shown?
 	 *
-	 * @param integer|null $access_level
+	 * @param int|null $access_level
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function canShowName($access_level = null) {
 		if ($access_level === null) {
@@ -470,7 +480,7 @@ class GedcomRecord {
 	/**
 	 * Can we edit this record?
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function canEdit() {
 		return Auth::isManager($this->tree) || Auth::isEditor($this->tree) && strpos($this->gedcom, "\n1 RESN locked") === false;
@@ -480,7 +490,7 @@ class GedcomRecord {
 	 * Remove private data from the raw gedcom record.
 	 * Return both the visible and invisible data.  We need the invisible data when editing.
 	 *
-	 * @param integer $access_level
+	 * @param int $access_level
 	 *
 	 * @return string
 	 */
@@ -498,6 +508,7 @@ class GedcomRecord {
 			foreach ($this->getFacts(null, false, $access_level) as $fact) {
 				$gedrec .= "\n" . $fact->getGedcom();
 			}
+
 			return $gedrec;
 		} else {
 			// We cannot display the details, but we may be able to display
@@ -509,7 +520,7 @@ class GedcomRecord {
 	/**
 	 * Generate a private version of this record
 	 *
-	 * @param integer $access_level
+	 * @param int $access_level
 	 *
 	 * @return string
 	 */
@@ -528,7 +539,7 @@ class GedcomRecord {
 	protected function addName($type, $value, $gedcom) {
 		$this->_getAllNames[] = array(
 			'type'   => $type,
-			'sort'   => preg_replace_callback('/([0-9]+)/', function($matches) { return str_pad($matches[0], 10, '0', STR_PAD_LEFT); }, $value),
+			'sort'   => preg_replace_callback('/([0-9]+)/', function ($matches) { return str_pad($matches[0], 10, '0', STR_PAD_LEFT); }, $value),
 			'full'   => '<span dir="auto">' . Filter::escapeHtml($value) . '</span>', // This is used for display
 			'fullNN' => $value, // This goes into the database
 		);
@@ -543,8 +554,8 @@ class GedcomRecord {
 	 * ['full'] = the name as specified in the record, e.g. 'Vincent van Gogh' or 'John Unknown'
 	 * ['sort'] = a sortable version of the name (not for display), e.g. 'Gogh, Vincent' or '@N.N., John'
 	 *
-	 * @param integer    $level
-	 * @param string    $fact_type
+	 * @param int    $level
+	 * @param string $fact_type
 	 * @param Fact[] $facts
 	 */
 	protected function extractNamesFromFacts($level, $fact_type, $facts) {
@@ -595,6 +606,7 @@ class GedcomRecord {
 				$this->addName(static::RECORD_TYPE, I18N::translate('Private'), null);
 			}
 		}
+
 		return $this->_getAllNames;
 	}
 
@@ -610,7 +622,7 @@ class GedcomRecord {
 	/**
 	 * Which of the (possibly several) names of this record is the primary one.
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function getPrimaryName() {
 		static $language_script;
@@ -639,7 +651,7 @@ class GedcomRecord {
 	/**
 	 * Which of the (possibly several) names of this record is the secondary one.
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function getSecondaryName() {
 		if (is_null($this->_getSecondaryName)) {
@@ -649,7 +661,7 @@ class GedcomRecord {
 			$all_names = $this->getAllNames();
 			if (count($all_names) > 1) {
 				$primary_script = I18N::textScript($all_names[$this->getPrimaryName()]['sort']);
-				foreach ($all_names as $n=>$name) {
+				foreach ($all_names as $n => $name) {
 					if ($n != $this->getPrimaryName() && $name['type'] != '_MARNM' && I18N::textScript($name['sort']) != $primary_script) {
 						$this->_getSecondaryName = $n;
 						break;
@@ -657,13 +669,14 @@ class GedcomRecord {
 				}
 			}
 		}
+
 		return $this->_getSecondaryName;
 	}
 
 	/**
 	 * Allow the choice of primary name to be overidden, e.g. in a search result
 	 *
-	 * @param integer $n
+	 * @param int $n
 	 */
 	public function setPrimaryName($n) {
 		$this->_getPrimaryName   = $n;
@@ -686,7 +699,7 @@ class GedcomRecord {
 	 * @param GedcomRecord $x
 	 * @param GedcomRecord $y
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public static function compare(GedcomRecord $x, GedcomRecord $y) {
 		if ($x->canShowName()) {
@@ -712,6 +725,7 @@ class GedcomRecord {
 	public function getFullName() {
 		if ($this->canShowName()) {
 			$tmp = $this->getAllNames();
+
 			return $tmp[$this->getPrimaryName()]['full'];
 		} else {
 			return I18N::translate('Private');
@@ -726,6 +740,7 @@ class GedcomRecord {
 	public function getSortName() {
 		// The sortable name is never displayed, no need to call canShowName()
 		$tmp = $this->getAllNames();
+
 		return $tmp[$this->getPrimaryName()]['sort'];
 	}
 
@@ -737,6 +752,7 @@ class GedcomRecord {
 	public function getAddName() {
 		if ($this->canShowName() && $this->getPrimaryName() != $this->getSecondaryName()) {
 			$all_names = $this->getAllNames();
+
 			return $all_names[$this->getSecondaryName()]['full'];
 		} else {
 			return null;
@@ -748,9 +764,9 @@ class GedcomRecord {
 	 * If $find is set, then we are displaying items from a selection list.
 	 * $name allows us to use something other than the record name.
 	 *
-	 * @param string  $tag
-	 * @param boolean $find
-	 * @param null    $name
+	 * @param string $tag
+	 * @param bool   $find
+	 * @param null   $name
 	 *
 	 * @return string
 	 */
@@ -765,6 +781,7 @@ class GedcomRecord {
 		$html .= ' class="list_item"><b>' . $name . '</b>';
 		$html .= $this->formatListDetails();
 		$html = '<' . $tag . '>' . $html . '</a></' . $tag . '>';
+
 		return $html;
 	}
 
@@ -781,8 +798,8 @@ class GedcomRecord {
 	/**
 	 * Extract/format the first fact from a list of facts.
 	 *
-	 * @param string  $facts
-	 * @param integer $style
+	 * @param string $facts
+	 * @param int    $style
 	 *
 	 * @return string
 	 */
@@ -798,6 +815,7 @@ class GedcomRecord {
 				}
 			}
 		}
+
 		return '';
 	}
 
@@ -830,6 +848,7 @@ class GedcomRecord {
 				$list[] = $record;
 			}
 		}
+
 		return $list;
 	}
 
@@ -860,6 +879,7 @@ class GedcomRecord {
 				$list[] = $record;
 			}
 		}
+
 		return $list;
 	}
 
@@ -891,6 +911,7 @@ class GedcomRecord {
 				$list[] = $record;
 			}
 		}
+
 		return $list;
 	}
 
@@ -922,6 +943,7 @@ class GedcomRecord {
 				$list[] = $record;
 			}
 		}
+
 		return $list;
 	}
 
@@ -954,6 +976,7 @@ class GedcomRecord {
 				$list[] = $record;
 			}
 		}
+
 		return $list;
 	}
 
@@ -986,6 +1009,7 @@ class GedcomRecord {
 				$list[] = $record;
 			}
 		}
+
 		return $list;
 	}
 
@@ -1051,10 +1075,10 @@ class GedcomRecord {
 	/**
 	 * The facts and events for this record.
 	 *
-	 * @param string       $filter
-	 * @param boolean      $sort
-	 * @param integer|null $access_level
-	 * @param boolean      $override     Include private records, to allow us to implement $SHOW_PRIVATE_RELATIONSHIPS and $SHOW_LIVING_NAMES.
+	 * @param string    $filter
+	 * @param bool      $sort
+	 * @param int|null  $access_level
+	 * @param bool      $override     Include private records, to allow us to implement $SHOW_PRIVATE_RELATIONSHIPS and $SHOW_LIVING_NAMES.
 	 *
 	 * @return Fact[]
 	 */
@@ -1074,6 +1098,7 @@ class GedcomRecord {
 		if ($sort) {
 			sort_facts($facts);
 		}
+
 		return $facts;
 	}
 
@@ -1081,7 +1106,7 @@ class GedcomRecord {
 	 * Get the last-change timestamp for this record, either as a formatted string
 	 * (for display) or as a unix timestamp (for sorting)
 	 *
-	 * @param boolean $sorting
+	 * @param bool $sorting
 	 *
 	 * @return string
 	 */
@@ -1136,8 +1161,8 @@ class GedcomRecord {
 	/**
 	 * Add a new fact to this record
 	 *
-	 * @param string  $gedcom
-	 * @param boolean $update_chan
+	 * @param string $gedcom
+	 * @param bool   $update_chan
 	 */
 	public function createFact($gedcom, $update_chan) {
 		$this->updateFact(null, $gedcom, $update_chan);
@@ -1146,8 +1171,8 @@ class GedcomRecord {
 	/**
 	 * Delete a fact from this record
 	 *
-	 * @param string  $fact_id
-	 * @param boolean $update_chan
+	 * @param string $fact_id
+	 * @param bool   $update_chan
 	 */
 	public function deleteFact($fact_id, $update_chan) {
 		$this->updateFact($fact_id, null, $update_chan);
@@ -1156,9 +1181,9 @@ class GedcomRecord {
 	/**
 	 * Replace a fact with a new gedcom data.
 	 *
-	 * @param string  $fact_id
-	 * @param string  $gedcom
-	 * @param boolean $update_chan
+	 * @param string $fact_id
+	 * @param string $gedcom
+	 * @param bool   $update_chan
 	 *
 	 * @throws \Exception
 	 */
@@ -1214,7 +1239,7 @@ class GedcomRecord {
 				$this->xref,
 				$old_gedcom,
 				$new_gedcom,
-				Auth::id()
+				Auth::id(),
 			));
 
 			$this->pending = $new_gedcom;
@@ -1231,8 +1256,8 @@ class GedcomRecord {
 	/**
 	 * Update this record
 	 *
-	 * @param string  $gedcom
-	 * @param boolean $update_chan
+	 * @param string $gedcom
+	 * @param bool   $update_chan
 	 */
 	public function updateRecord($gedcom, $update_chan) {
 		// MSDOS line endings will break things in horrible ways
@@ -1253,7 +1278,7 @@ class GedcomRecord {
 			$this->xref,
 			$this->getGedcom(),
 			$gedcom,
-			Auth::id()
+			Auth::id(),
 		));
 
 		// Clear the cache
@@ -1291,7 +1316,7 @@ class GedcomRecord {
 		}
 
 		// Clear the cache
-		self::$gedcom_record_cache = null;
+		self::$gedcom_record_cache  = null;
 		self::$pending_record_cache = null;
 
 		Log::addEditLog('Delete: ' . static::RECORD_TYPE . ' ' . $this->xref);
@@ -1300,8 +1325,8 @@ class GedcomRecord {
 	/**
 	 * Remove all links from this record to $xref
 	 *
-	 * @param string  $xref
-	 * @param boolean $update_chan
+	 * @param string $xref
+	 * @param bool   $update_chan
 	 */
 	public function removeLinks($xref, $update_chan) {
 		$value = '@' . $xref . '@';
@@ -1312,9 +1337,9 @@ class GedcomRecord {
 			} elseif (preg_match_all('/\n(\d) ' . WT_REGEX_TAG . ' ' . $value . '/', $fact->getGedcom(), $matches, PREG_SET_ORDER)) {
 				$gedcom = $fact->getGedcom();
 				foreach ($matches as $match) {
-					$next_level = $match[1] + 1;
+					$next_level  = $match[1] + 1;
 					$next_levels = '[' . $next_level . '-9]';
-					$gedcom = preg_replace('/' . $match[0] . '(\n' . $next_levels . '.*)*/', '', $gedcom);
+					$gedcom      = preg_replace('/' . $match[0] . '(\n' . $next_levels . '.*)*/', '', $gedcom);
 				}
 				$this->updateFact($fact->getFactId(), $gedcom, $update_chan);
 			}

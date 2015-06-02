@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -15,12 +15,16 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Menu;
 
 /**
  * Class FamilyNavigatorModule
  */
 class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInterface {
-
 	const TTL = "<div class='flyout2'>%s</div>";
 	const LNK = "<div class='flyout3' data-href='%s'>%s</div>";
 	const MSG = "<div class='flyout4'>(%s)</div>"; // class flyout4 not used in standard themes
@@ -156,8 +160,8 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 	}
 
 	/**
-	 * @param         $person
-	 * @param boolean $showUnknown
+	 * @param      $person
+	 * @param bool $showUnknown
 	 *
 	 * @return string
 	 */
@@ -179,7 +183,7 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 	private function getParents(Individual $person) {
 		$father = null;
 		$mother = null;
-		$html = sprintf(self::TTL, I18N::translate('Parents'));
+		$html   = sprintf(self::TTL, I18N::translate('Parents'));
 		$family = $person->getPrimaryChildFamily();
 		if (!Auth::isSearchEngine() && $person->canShowName() && $family !== null) {
 			$father = $family->getHusband();
@@ -207,6 +211,7 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 		if (!($father instanceof Individual || $mother instanceof Individual)) {
 			$html .= sprintf(self::MSG, I18N::translateContext('unknown family', 'unknown'));
 		}
+
 		return $html;
 	}
 
@@ -234,6 +239,7 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 		if (!$html) {
 			$html = sprintf(self::MSG, I18N::translate('none'));
 		}
+
 		return sprintf(self::TTL, I18N::translate('Family')) . $html;
 	}
 

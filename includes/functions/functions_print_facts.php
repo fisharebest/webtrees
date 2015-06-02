@@ -1,5 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -16,6 +15,25 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\GedcomCode\GedcomCodeAdop;
+use Fisharebest\Webtrees\GedcomCode\GedcomCodeQuay;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Module\CensusAssistantModule;
+use Fisharebest\Webtrees\Note;
+use Fisharebest\Webtrees\Repository;
+use Fisharebest\Webtrees\Source;
+use Fisharebest\Webtrees\Theme;
+use Fisharebest\Webtrees\User;
 use Rhumsaa\Uuid\Uuid;
 
 /**
@@ -39,12 +57,15 @@ function print_fact(Fact $fact, GedcomRecord $record) {
 	switch ($fact->getTag()) {
 	case 'NOTE':
 		print_main_notes($fact, 1);
+
 		return;
 	case 'SOUR':
 		print_main_sources($fact, 1);
+
 		return;
 	case 'OBJE':
 		print_main_media($fact, 1);
+
 		return;
 	case 'FAMC':
 	case 'FAMS':
@@ -478,15 +499,15 @@ function print_repository_record($xref) {
  * this function is called by the print_fact function and other functions to
  * print any source information attached to the fact
  *
- * @param string  $factrec The fact record to look for sources in
- * @param integer $level   The level to look for sources at
+ * @param string $factrec The fact record to look for sources in
+ * @param int    $level   The level to look for sources at
  *
  * @return string HTML text
  */
 function print_fact_sources($factrec, $level) {
 	global $WT_TREE;
 
-	$data = '';
+	$data   = '';
 	$nlevel = $level + 1;
 
 	// -- Systems not using source records [ 1046971 ]
@@ -497,10 +518,10 @@ function print_fact_sources($factrec, $level) {
 		}
 	}
 	// -- find source for each fact
-	$ct = preg_match_all("/$level SOUR @(.*)@/", $factrec, $match, PREG_SET_ORDER);
+	$ct    = preg_match_all("/$level SOUR @(.*)@/", $factrec, $match, PREG_SET_ORDER);
 	$spos2 = 0;
 	for ($j = 0; $j < $ct; $j++) {
-		$sid = $match[$j][1];
+		$sid    = $match[$j][1];
 		$source = Source::getInstance($sid, $WT_TREE);
 		if ($source) {
 			if ($source->canShow()) {
@@ -510,7 +531,7 @@ function print_fact_sources($factrec, $level) {
 					$spos2 = strlen($factrec);
 				}
 				$srec = substr($factrec, $spos1, $spos2 - $spos1);
-				$lt = preg_match_all("/$nlevel \w+/", $srec, $matches);
+				$lt   = preg_match_all("/$nlevel \w+/", $srec, $matches);
 				$data .= '<div class="fact_SOUR">';
 				$data .= '<span class="label">';
 				$elementID = Uuid::uuid4();
@@ -561,8 +582,8 @@ function print_fact_sources($factrec, $level) {
 /**
  * Print the links to media objects
  *
- * @param string  $factrec
- * @param integer $level
+ * @param string $factrec
+ * @param int    $level
  */
 function print_media_links($factrec, $level) {
 	global $WT_TREE;
@@ -574,7 +595,7 @@ function print_media_links($factrec, $level) {
 	$objectNum = 0;
 	while ($objectNum < count($omatch)) {
 		$media_id = $omatch[$objectNum][1];
-		$media = Media::getInstance($media_id, $WT_TREE);
+		$media    = Media::getInstance($media_id, $WT_TREE);
 		if ($media) {
 			if ($media->canShow()) {
 				if ($objectNum > 0) {
@@ -605,7 +626,7 @@ function print_media_links($factrec, $level) {
 					}
 					$ct = preg_match("/WT_FAMILY_ID: (.*)/", $factrec, $match);
 					if ($ct > 0) {
-						$famid = trim($match[1]);
+						$famid  = trim($match[1]);
 						$family = Family::getInstance($famid, $spouse->getTree());
 						if ($family) {
 							if ($spouse) {
@@ -631,7 +652,7 @@ function print_media_links($factrec, $level) {
  * Print a row for the sources tab on the individual page.
  *
  * @param Fact $fact
- * @param integer $level
+ * @param int  $level
  */
 function print_main_sources(Fact $fact, $level) {
 	$factrec = $fact->getGedcom();
@@ -652,16 +673,16 @@ function print_main_sources(Fact $fact, $level) {
 	}
 
 	// -- find source for each fact
-	$ct = preg_match_all("/($level SOUR (.+))/", $factrec, $match, PREG_SET_ORDER);
+	$ct    = preg_match_all("/($level SOUR (.+))/", $factrec, $match, PREG_SET_ORDER);
 	$spos2 = 0;
 	for ($j = 0; $j < $ct; $j++) {
-		$sid = trim($match[$j][2], '@');
+		$sid   = trim($match[$j][2], '@');
 		$spos1 = strpos($factrec, $match[$j][1], $spos2);
 		$spos2 = strpos($factrec, "\n$level", $spos1);
 		if (!$spos2) {
 			$spos2 = strlen($factrec);
 		}
-		$srec = substr($factrec, $spos1, $spos2 - $spos1);
+		$srec   = substr($factrec, $spos1, $spos2 - $spos1);
 		$source = Source::getInstance($sid, $fact->getParent()->getTree());
 		// Allow access to "1 SOUR @non_existent_source@", so it can be corrected/deleted
 		if (!$source || $source->canShow()) {
@@ -677,7 +698,7 @@ function print_main_sources(Fact $fact, $level) {
 			echo ' ', $styleadd, ' width20">';
 			$factlines = explode("\n", $factrec); // 1 BIRT Y\n2 SOUR ...
 			$factwords = explode(" ", $factlines[0]); // 1 BIRT Y
-			$factname = $factwords[1]; // BIRT
+			$factname  = $factwords[1]; // BIRT
 			if ($factname == 'EVEN' || $factname == 'FACT') {
 				// Add ' EVEN' to provide sensible output for an event with an empty TYPE record
 				$ct = preg_match("/2 TYPE (.*)/", $factrec, $ematch);
@@ -687,8 +708,7 @@ function print_main_sources(Fact $fact, $level) {
 				} else {
 					echo GedcomTag::getLabel($factname, $parent);
 				}
-			} else
-			if ($can_edit) {
+			} elseif ($can_edit) {
 				echo "<a onclick=\"return edit_record('$pid', '$fact_id');\" href=\"#\" title=\"", I18N::translate('Edit'), '">';
 					if ($fact->getParent()->getTree()->getPreference('SHOW_FACT_ICONS')) {
 						if ($level == 1) {
@@ -830,13 +850,13 @@ function printSourceStructure($textSOUR) {
 function getSourceStructure($srec) {
 	// Set up the output array
 	$textSOUR = array(
-		'PAGE'=>'',
-		'EVEN'=>'',
-		'ROLE'=>'',
-		'DATA'=>'',
-		'DATE'=>'',
-		'TEXT'=>array(),
-		'QUAY'=>'',
+		'PAGE' => '',
+		'EVEN' => '',
+		'ROLE' => '',
+		'DATA' => '',
+		'DATE' => '',
+		'TEXT' => array(),
+		'QUAY' => '',
 	);
 
 	if ($srec) {
@@ -871,7 +891,7 @@ function getSourceStructure($srec) {
  * Print a row for the notes tab on the individual page.
  *
  * @param Fact $fact
- * @param integer $level
+ * @param int  $level
  */
 function print_main_notes(Fact $fact, $level) {
 	$factrec = $fact->getGedcom();
@@ -941,8 +961,8 @@ function print_main_notes(Fact $fact, $level) {
 			}
 			$factlines = explode("\n", $factrec); // 1 BIRT Y\n2 NOTE ...
 			$factwords = explode(" ", $factlines[0]); // 1 BIRT Y
-			$factname = $factwords[1]; // BIRT
-			$parent = GedcomRecord::getInstance($pid, $fact->getParent()->getTree());
+			$factname  = $factwords[1]; // BIRT
+			$parent    = GedcomRecord::getInstance($pid, $fact->getParent()->getTree());
 			if ($factname == 'EVEN' || $factname == 'FACT') {
 				// Add ' EVEN' to provide sensible output for an event with an empty TYPE record
 				$ct = preg_match("/2 TYPE (.*)/", $factrec, $ematch);
@@ -952,7 +972,7 @@ function print_main_notes(Fact $fact, $level) {
 				} else {
 					echo GedcomTag::getLabel($factname, $parent);
 				}
-			} else if ($factname != 'NOTE') {
+			} elseif ($factname != 'NOTE') {
 				// Note is already printed
 				echo GedcomTag::getLabel($factname, $parent);
 				if ($note) {
@@ -1018,7 +1038,7 @@ function print_main_notes(Fact $fact, $level) {
  * Print a row for the media tab on the individual page.
  *
  * @param Fact $fact
- * @param integer $level
+ * @param int  $level
  */
 function print_main_media(Fact $fact, $level) {
 	$factrec = $fact->getGedcom();
@@ -1054,7 +1074,7 @@ function print_main_media(Fact $fact, $level) {
 			preg_match("/^\d (\w*)/", $factrec, $factname);
 			$factlines = explode("\n", $factrec); // 1 BIRT Y\n2 SOUR ...
 			$factwords = explode(" ", $factlines[0]); // 1 BIRT Y
-			$factname = $factwords[1]; // BIRT
+			$factname  = $factwords[1]; // BIRT
 			if ($factname == 'EVEN' || $factname == 'FACT') {
 				// Add ' EVEN' to provide sensible output for an event with an empty TYPE record
 				$ct = preg_match("/2 TYPE (.*)/", $factrec, $ematch);
@@ -1064,8 +1084,7 @@ function print_main_media(Fact $fact, $level) {
 				} else {
 					echo GedcomTag::getLabel($factname, $parent);
 				}
-			} else
-			if ($can_edit) {
+			} elseif ($can_edit) {
 				echo '<a onclick="window.open(\'addmedia.php?action=editmedia&amp;pid=', $media->getXref(), '\', \'_blank\', edit_window_specs); return false;" href="#" title="', I18N::translate('Edit'), '">';
 				echo GedcomTag::getLabel($factname, $parent), '</a>';
 				echo '<div class="editfacts">';

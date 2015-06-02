@@ -177,15 +177,15 @@ $date_and_time = array(
 // Level 2 tags that apply to specific Level 1 tags
 // Tags are applied in the order they appear here.
 $level2_tags = array(
-	'_HEB'=>array(
+	'_HEB' => array(
 		'NAME',
 		'TITL',
 	),
-	'ROMN'=>array(
+	'ROMN' => array(
 		'NAME',
 		'TITL',
 	),
-	'TYPE'=>array(
+	'TYPE' => array(
 		'EVEN',
 		'FACT',
 		'GRAD',
@@ -194,24 +194,24 @@ $level2_tags = array(
 		'ORDN',
 		'SSN',
 	),
-	'AGNC'=>array(
+	'AGNC' => array(
 		'EDUC',
 		'GRAD',
 		'OCCU',
 		'ORDN',
 		'RETI',
 	),
-	'CALN'=>array(
+	'CALN' => array(
 		'REPO',
 	),
-	'CEME'=>array( // CEME is NOT a valid 5.5.1 tag
+	'CEME' => array(// CEME is NOT a valid 5.5.1 tag
 		//'BURI',
 	),
-	'RELA'=>array(
+	'RELA' => array(
 		'ASSO',
 		'_ASSO',
 	),
-	'DATE'=>array(
+	'DATE' => array(
 		'ADOP',
 		'ANUL',
 		'BAPL',
@@ -258,18 +258,18 @@ $level2_tags = array(
 		'WILL',
 		'_TODO',
 	),
-	'AGE'=>array(
+	'AGE' => array(
 		'CENS',
 		'DEAT',
 	),
-	'TEMP'=>array(
+	'TEMP' => array(
 		'BAPL',
 		'CONL',
 		'ENDL',
 		'SLGC',
 		'SLGS',
 	),
-	'PLAC'=>array(
+	'PLAC' => array(
 		'ADOP',
 		'ANUL',
 		'BAPL',
@@ -314,14 +314,14 @@ $level2_tags = array(
 		'SSN',
 		'WILL',
 	),
-	'STAT'=>array(
+	'STAT' => array(
 		'BAPL',
 		'CONL',
 		'ENDL',
 		'SLGC',
 		'SLGS',
 	),
-	'ADDR'=>array(
+	'ADDR' => array(
 		'BAPM',
 		'BIRT',
 		'BURI',
@@ -340,49 +340,49 @@ $level2_tags = array(
 		'PROP',
 		'RESI',
 	),
-	'CAUS'=>array(
+	'CAUS' => array(
 		'DEAT',
 	),
-	'PHON'=>array(
+	'PHON' => array(
 		'OCCU',
 		'RESI',
 	),
-	'FAX'=>array(
+	'FAX' => array(
 		'OCCU',
 		'RESI',
 	),
-	'WWW'=>array(
+	'WWW' => array(
 		'OCCU',
 		'RESI',
 	),
-	'EMAIL'=>array(
+	'EMAIL' => array(
 		'OCCU',
 		'RESI',
 	),
-	'HUSB'=>array(
+	'HUSB' => array(
 		'MARR',
 	),
-	'WIFE'=>array(
+	'WIFE' => array(
 		'MARR',
 	),
-	'FAMC'=>array(
+	'FAMC' => array(
 		'ADOP',
 		'SLGC',
 	),
-	'FILE'=>array(
+	'FILE' => array(
 		'OBJE',
 	),
-	'_PRIM'=>array(
+	'_PRIM' => array(
 		'OBJE',
 	),
-	'EVEN'=>array(
+	'EVEN' => array(
 		'DATA',
 	),
-	'_WT_USER'=>array(
+	'_WT_USER' => array(
 		'_TODO',
 	),
 	// See https://bugs.launchpad.net/webtrees/+bug/1082666
-	'RELI'=>array(
+	'RELI' => array(
 		//'CHR',
 		//'CHRA',
 		//'BAPM',

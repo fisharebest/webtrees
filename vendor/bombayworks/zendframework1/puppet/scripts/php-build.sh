@@ -76,15 +76,9 @@ make -j 5
 echo "Installing ${VERSION}${POSTFIX} in $PHP_DIR"
 sudo make install
 
-echo "Installing PHPUnit"
-export PATH=/usr/local/php/${VERSION}/bin:/usr/local/bin:/usr/bin:/bin:/vagrant/puppet/scripts
-sudo pear update-channels
-sudo pear upgrade-all
-sudo pear config-set auto_discover 1
-sudo pear install pear.phpunit.de/PHPUnit-3.4.15
-
+echo "Linking PHPUnit library"
+sudo ln -s /usr/share/php/PHPUnit /usr/local/php/${VERSION}${POSTFIX}/lib/php/PHPUnit
 
 echo ""
 echo "PHP version ${VERSION} is now installed. Type: pe ${VERSION}"
 echo ""
-

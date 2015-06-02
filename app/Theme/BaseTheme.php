@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Theme;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,25 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\HitCounter;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
+use Fisharebest\Webtrees\Module\UserFavoritesModule;
+use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Theme;
+use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 
 /**
  * Class Base - Common functions and interfaces for all themes.
@@ -26,7 +45,7 @@ abstract class BaseTheme {
 	/** @var string An escaped version of the "ged=XXX" URL parameter */
 	protected $tree_url;
 
-	/** @var integer The number of times this page has been shown */
+	/** @var int The number of times this page has been shown */
 	protected $page_views;
 
 	/**
@@ -410,7 +429,7 @@ abstract class BaseTheme {
 	/**
 	 * Add markup to the hit counter.
 	 *
-	 * @param integer $count
+	 * @param int $count
 	 *
 	 * @return string
 	 */
@@ -592,8 +611,6 @@ abstract class BaseTheme {
 	/**
 	 * Allow themes to do things after initialization (since they cannot use
 	 * the constructor).
-	 *
-	 * @return void
 	 */
 	public function hookAfterInit() {
 	}
@@ -629,9 +646,9 @@ abstract class BaseTheme {
 	/**
 	 * Add HTML markup to create an alert
 	 *
-	 * @param string  $html        The content of the alert
-	 * @param string  $level       One of 'success', 'info', 'warning', 'danger'
-	 * @param boolean $dismissible If true, add a close button.
+	 * @param string $html        The content of the alert
+	 * @param string $level       One of 'success', 'info', 'warning', 'danger'
+	 * @param bool   $dismissible If true, add a close button.
 	 *
 	 * @return string
 	 */
@@ -768,7 +785,6 @@ abstract class BaseTheme {
 			$thumbnail = '';
 		}
 
-
 		return
 			'<div data-pid="' . $individual->getXref() . '" class="person_box_template ' . $personBoxClass . ' iconz box-style0" style="width: ' . $this->parameter('compact-chart-box-x') . 'px; min-height: ' . $this->parameter('compact-chart-box-y') . 'px">' .
 			'<div class="compact_view">' .
@@ -818,7 +834,7 @@ abstract class BaseTheme {
 				$event = $individual->getFirstFact($tag);
 				if (!is_null($event)) {
 					$html .= $event->summary();
-					unset ($opt_tags[$key]);
+					unset($opt_tags[$key]);
 				}
 			}
 		}
@@ -828,7 +844,7 @@ abstract class BaseTheme {
 			if ($event) {
 				$html .= $event->summary();
 				if (in_array($deattag, $opt_tags)) {
-					unset ($opt_tags[array_search($deattag, $opt_tags)]);
+					unset($opt_tags[array_search($deattag, $opt_tags)]);
 				}
 				break;
 			}
@@ -907,7 +923,7 @@ abstract class BaseTheme {
 			$this->menuChartTimeline($individual),
 		));
 
-		usort($menus, function(Menu $x, Menu $y) {
+		usort($menus, function (Menu $x, Menu $y) {
 			return I18N::strcasecmp($x->getLabel(), $y->getLabel());
 		});
 
@@ -926,7 +942,7 @@ abstract class BaseTheme {
 
 		foreach ($individual->getSpouseFamilies() as $family) {
 			$menus[] = new Menu('<strong>' . I18N::translate('Family with spouse') . '</strong>', $family->getHtmlUrl());
-			$spouse = $family->getSpouse($individual);
+			$spouse  = $family->getSpouse($individual);
 			if ($spouse && $spouse->canShowName()) {
 				$menus[] = new Menu($spouse->getFullName(), $spouse->getHtmlUrl());
 			}
@@ -960,8 +976,6 @@ abstract class BaseTheme {
 	 * happens in a theme file, and we need to be able to change it.
 	 *
 	 * @param Tree|null $tree The current tree (if there is one).
-	 *
-	 * @return void
 	 */
 	final public function init(Tree $tree = null) {
 		$this->tree     = $tree;
@@ -1059,7 +1073,7 @@ abstract class BaseTheme {
 				$this->menuChartTimeline($individual),
 			));
 
-			usort($submenus, function(Menu $x, Menu $y) {
+			usort($submenus, function (Menu $x, Menu $y) {
 				return I18N::strcasecmp($x->getLabel(), $y->getLabel());
 			});
 
@@ -1397,7 +1411,7 @@ abstract class BaseTheme {
 			}
 		}
 
-		uasort($menulist, function(Menu $x, Menu $y) {
+		uasort($menulist, function (Menu $x, Menu $y) {
 			return I18N::strcasecmp($x->getLabel(), $y->getLabel());
 		});
 
@@ -1687,7 +1701,7 @@ abstract class BaseTheme {
 				$submenus[] = $submenu;
 			}
 
-			usort($submenus, function(Menu $x, Menu $y) {
+			usort($submenus, function (Menu $x, Menu $y) {
 				return I18N::strcasecmp($x->getLabel(), $y->getLabel());
 			});
 
@@ -1791,7 +1805,7 @@ abstract class BaseTheme {
 	 *
 	 * @param  PageController $controller
 	 *
-	 * @return integer Number of views, or zero for pages that aren't logged.
+	 * @return int Number of views, or zero for pages that aren't logged.
 	 */
 	protected function pageViews(PageController $controller) {
 		if ($this->tree && $this->tree->getPreference('SHOW_COUNTER')) {
@@ -1816,7 +1830,7 @@ abstract class BaseTheme {
 	 *
 	 * @param string $parameter_name
 	 *
-	 * @return string|integer|float
+	 * @return string|int|float
 	 */
 	public function parameter($parameter_name) {
 		$parameters = array(
@@ -1943,7 +1957,7 @@ abstract class BaseTheme {
 	 * @return string
 	 */
 	protected function primaryMenuContent(array $menus) {
-		return implode('', array_map(function($menu) { return $menu->getMenuAsList(); }, $menus));
+		return implode('', array_map(function ($menu) { return $menu->getMenuAsList(); }, $menus));
 	}
 
 	/**
@@ -1982,13 +1996,11 @@ abstract class BaseTheme {
 	 * @return string
 	 */
 	protected function secondaryMenuContent(array $menus) {
-		return implode('', array_map(function($menu) { return $menu->getMenuAsList(); }, $menus));
+		return implode('', array_map(function ($menu) { return $menu->getMenuAsList(); }, $menus));
 	}
 
 	/**
 	 * Send any HTTP headers.
-	 *
-	 * @return void
 	 */
 	public function sendHeaders() {
 		header('Content-Type: text/html; charset=UTF-8');

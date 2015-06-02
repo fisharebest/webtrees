@@ -30,7 +30,7 @@ class Statement {
 	/** @var PDOStatement */
 	private $pdo_statement;
 
-	/** @var boolean Keep track of calls to execute(), so we can do it automatically */
+	/** @var bool Keep track of calls to execute(), so we can do it automatically */
 	private $executed = false;
 
 	/**
@@ -47,8 +47,9 @@ class Statement {
 	 *
 	 * @param array $bind_variables
 	 *
-	 * @return Statement
 	 * @throws \Exception
+	 *
+	 * @return Statement
 	 */
 	public function execute($bind_variables = array()) {
 		if ($this->executed) {
@@ -96,8 +97,6 @@ class Statement {
 	/**
 	 * Close the cursor, and mark it as not-executed, so we can execute
 	 * it again (perhaps with different parameters).
-	 *
-	 * @return void
 	 */
 	public function closeCursor() {
 		$this->pdo_statement->closeCursor();
@@ -109,7 +108,7 @@ class Statement {
 	 *
 	 * Execute the query, if necessary.  Typically when there are no parameters.
 	 *
-	 * @param integer $fetch_style
+	 * @param int $fetch_style
 	 *
 	 * @return \stdClass|array|false
 	 */
@@ -126,7 +125,7 @@ class Statement {
 	 *
 	 * Execute the query, if necessary.  Typically when there are no parameters.
 	 *
-	 * @param integer $fetch_style
+	 * @param int $fetch_style
 	 *
 	 * @return \stdClass[]|string[][]
 	 */
@@ -146,7 +145,7 @@ class Statement {
 	 *
 	 * Execute the query, if necessary.  Typically when there are no parameters.
 	 *
-	 * @param integer $fetch_style
+	 * @param int $fetch_style
 	 *
 	 * @return \stdClass|array|null
 	 */
@@ -224,7 +223,7 @@ class Statement {
 	/**
 	 * How many rows were affected by this statement.
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function rowCount() {
 		return $this->pdo_statement->rowCount();

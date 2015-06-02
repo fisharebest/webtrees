@@ -23,6 +23,8 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\PedigreeController;
+
 define('WT_SCRIPT_NAME', 'pedigree.php');
 require './includes/session.php';
 
@@ -189,6 +191,7 @@ $controller
 <?php
 if ($controller->error_message) {
 	echo '<p class="ui-state-error">', $controller->error_message, '</p>';
+
 	return;
 }
 
@@ -230,3 +233,4 @@ foreach ($controller->nodes as $i => $node) {
 echo '<canvas id="pedigree_canvas" width="' . $controller->chartsize['x'] . '" height="' . $controller->chartsize['y'] . '"><p>No lines between boxes? Unfortunately your browser does not support the HTML5 canvas feature.</p></canvas>';
 echo '</div>'; //close #pedigree_chart
 echo '</div>'; //close #pedigree-page
+

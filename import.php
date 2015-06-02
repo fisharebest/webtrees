@@ -16,6 +16,7 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Controller\AjaxController;
 use PDOException;
 
 define('WT_SCRIPT_NAME', 'import.php');
@@ -24,7 +25,7 @@ require './includes/session.php';
 // Don't use ged=XX as we want to be able to run without changing the current gedcom.
 // This will let us load several gedcoms together, or to edit one while loading another.
 $gedcom_id = Filter::getInteger('gedcom_id');
-$tree = Tree::findById($gedcom_id);
+$tree      = Tree::findById($gedcom_id);
 
 if (!$tree || !Auth::isManager($tree, Auth::user())) {
 	http_response_code(403);

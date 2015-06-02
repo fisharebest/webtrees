@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Controller;
 
 /**
  * webtrees: online genealogy
@@ -32,7 +32,7 @@ class SimpleController extends PageController {
 	/**
 	 * Simple (i.e. popup) windows are deprecated.
 	 *
-	 * @param boolean $popup
+	 * @param bool $popup
 	 *
 	 * @return $this
 	 */
@@ -43,7 +43,7 @@ class SimpleController extends PageController {
 	/**
 	 * Restrict access
 	 *
-	 * @param boolean $condition
+	 * @param bool $condition
 	 *
 	 * @return $this
 	 */

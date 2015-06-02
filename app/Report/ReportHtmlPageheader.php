@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Report;
 
 /**
  * webtrees: online genealogy
@@ -22,10 +22,8 @@ namespace Fisharebest\Webtrees;
 class ReportHtmlPageheader extends ReportBasePageheader {
 	/**
 	 * @param ReportHtml $renderer
-	 *
-	 * @return void
 	 */
-	function render($renderer) {
+	public function render($renderer) {
 		$renderer->clearPageHeader();
 		foreach ($this->elements as $element) {
 			$renderer->addPageHeader($element);

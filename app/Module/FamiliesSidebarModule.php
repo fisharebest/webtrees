@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,14 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Query\QueryName;
+use Fisharebest\Webtrees\Theme;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Class FamiliesSidebarModule
@@ -104,7 +112,7 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 
 				if (!famloadedNames[surname]) {
 					jQuery.ajax({
-					  url: "module.php?mod='.$this->getName() . '&mod_action=ajax&sb_action=families&alpha="+alpha+"&surname="+surname,
+					  url: "module.php?mod=' . $this->getName() . '&mod_action=ajax&sb_action=families&alpha="+alpha+"&surname="+surname,
 					  cache: false,
 					  success: function(html) {
 					    jQuery("#sb_fam_"+surname+" div").html(html);
@@ -129,7 +137,7 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 		');
 
 		$out = '<form method="post" action="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax" onsubmit="return false;"><input type="search" name="sb_fam_name" id="sb_fam_name" placeholder="' . I18N::translate('Search') . '"><p>';
-		foreach ($initials as $letter=>$count) {
+		foreach ($initials as $letter => $count) {
 			switch ($letter) {
 			case '@':
 				$html = $UNKNOWN_NN;
@@ -163,7 +171,7 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 	 */
 	private function getAlphaSurnames(Tree $tree, $alpha) {
 		$surnames = QueryName::surnames($tree, '', $alpha, true, true);
-		$out = '<ul>';
+		$out      = '<ul>';
 		foreach (array_keys($surnames) as $surname) {
 			$out .= '<li id="sb_fam_' . $surname . '" class="sb_fam_surname_li"><a href="' . $surname . '" title="' . $surname . '" alt="' . $alpha . '" class="sb_fam_surname">' . $surname . '</a>';
 			$out .= '<div class="name_tree_div"></div>';
@@ -183,7 +191,7 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 	 */
 	public function getSurnameFams(Tree $tree, $alpha, $surname) {
 		$families = QueryName::families($tree, $surname, $alpha, '', true);
-		$out = '<ul>';
+		$out      = '<ul>';
 		foreach ($families as $family) {
 			if ($family->canShowName()) {
 				$out .= '<li><a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . ' ';
@@ -233,17 +241,17 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 		$vars = array();
 		if (empty($ids)) {
 			//-- no match : search for FAM id
-			$where = "f_id LIKE CONCAT('%', ?, '%')";
+			$where  = "f_id LIKE CONCAT('%', ?, '%')";
 			$vars[] = $query;
 		} else {
 			//-- search for spouses
-			$qs = implode(',', array_fill(0, count($ids), '?'));
+			$qs    = implode(',', array_fill(0, count($ids), '?'));
 			$where = "(f_husb IN ($qs) OR f_wife IN ($qs))";
-			$vars = array_merge($vars, $ids, $ids);
+			$vars  = array_merge($vars, $ids, $ids);
 		}
 
 		$vars[] = $tree->getTreeId();
-		$rows = Database::prepare("SELECT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom FROM `##families` WHERE {$where} AND f_file=?")
+		$rows   = Database::prepare("SELECT f_id AS xref, f_file AS gedcom_id, f_gedcom AS gedcom FROM `##families` WHERE {$where} AND f_file=?")
 		->execute($vars)
 		->fetchAll();
 

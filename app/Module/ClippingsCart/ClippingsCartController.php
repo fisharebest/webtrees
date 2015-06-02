@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module\ClippingsCart;
 
 /**
  * webtrees: online genealogy
@@ -16,12 +16,21 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Session;
+use Fisharebest\Webtrees\User;
 use PclZip;
 
 /**
  * The clippings cart.
  */
-class ClippingsCart {
+class ClippingsCartController {
 	/** @var string  */
 	private $download_data;
 
@@ -46,13 +55,13 @@ class ClippingsCart {
 	/** @var string Whether to download as ZIP file */
 	private $Zip;
 
-	/** @var integer The number of ancestor generations (individuals) to add */
+	/** @var int The number of ancestor generations (individuals) to add */
 	public $level1;
 
-	/** @var integer The number of ancestor generations (families) to add */
+	/** @var int The number of ancestor generations (families) to add */
 	public $level2;
 
-	/** @var integer The number of descendent generations to add */
+	/** @var int The number of descendent generations to add */
 	public $level3;
 
 	/**
@@ -146,10 +155,10 @@ class ClippingsCart {
 						$this->addFamilyDescendancy($family, $this->level3);
 					}
 				}
-				uksort($cart[$WT_TREE->getTreeId()], __NAMESPACE__ . '\ClippingsCart::compareClippings');
+				uksort($cart[$WT_TREE->getTreeId()], '\Fisharebest\Webtrees\Module\ClippingsCart::compareClippings');
 			}
 		} elseif ($this->action === 'remove') {
-			unset ($cart[$WT_TREE->getTreeId()][$this->id]);
+			unset($cart[$WT_TREE->getTreeId()][$this->id]);
 		} elseif ($this->action === 'empty') {
 			$cart[$WT_TREE->getTreeId()] = array();
 		} elseif ($this->action === 'download') {
@@ -215,7 +224,7 @@ class ClippingsCart {
 							$record = str_replace($match[0], '', $record);
 						}
 					}
-					$record = convert_media_path($record, $this->conv_path);
+					$record      = convert_media_path($record, $this->conv_path);
 					$savedRecord = $record; // Save this for the "does this file exist" check
 					if ($convert === 'yes') {
 						$record = utf8_decode($record);
@@ -239,7 +248,7 @@ class ClippingsCart {
 						// This autoloads the PclZip library, so we can use its constants.
 						new PclZip('');
 
-						$ft = preg_match_all("/\n\d FILE (.+)/", $savedRecord, $match, PREG_SET_ORDER);
+						$ft              = preg_match_all("/\n\d FILE (.+)/", $savedRecord, $match, PREG_SET_ORDER);
 						$MEDIA_DIRECTORY = $WT_TREE->getPreference('MEDIA_DIRECTORY');
 						for ($k = 0; $k < $ft; $k++) {
 							// Skip external files and non-existant files
@@ -270,7 +279,7 @@ class ClippingsCart {
 			}
 			$filetext .= "0 TRLR\n";
 			//-- make sure the preferred line endings are used
-			$filetext = preg_replace("/[\r\n]+/", WT_EOL, $filetext);
+			$filetext            = preg_replace("/[\r\n]+/", WT_EOL, $filetext);
 			$this->download_data = $filetext;
 			$this->downloadClipping();
 		}
@@ -279,25 +288,25 @@ class ClippingsCart {
 	/**
 	 * Loads everything in the clippings cart into a zip file.
 	 */
-	function zipCart() {
+	private function zipCart() {
 		$tempFileName = 'clipping' . rand() . '.ged';
-		$fp = fopen(WT_DATA_DIR . $tempFileName, "wb");
+		$fp           = fopen(WT_DATA_DIR . $tempFileName, "wb");
 		if ($fp) {
 			flock($fp, LOCK_EX);
 			fwrite($fp, $this->download_data);
 			flock($fp, LOCK_UN);
 			fclose($fp);
 			$zipName = "clippings" . rand(0, 1500) . ".zip";
-			$fname = WT_DATA_DIR . $zipName;
+			$fname   = WT_DATA_DIR . $zipName;
 			$comment = "Created by " . WT_WEBTREES . " " . WT_VERSION . " on " . date("d M Y") . ".";
 			$archive = new PclZip($fname);
 			// add the ged file to the root of the zip file (strip off the data folder)
 			$this->media_list[] = array(\PCLZIP_ATT_FILE_NAME => WT_DATA_DIR . $tempFileName, \PCLZIP_ATT_FILE_NEW_FULL_NAME => $tempFileName);
-			$v_list = $archive->create($this->media_list, \PCLZIP_OPT_COMMENT, $comment);
+			$v_list             = $archive->create($this->media_list, \PCLZIP_OPT_COMMENT, $comment);
 			if ($v_list == 0) {
 				echo "Error : " . $archive->errorInfo(true) . "</td></tr>";
 			} else {
-				$openedFile = fopen($fname, "rb");
+				$openedFile          = fopen($fname, "rb");
 				$this->download_data = fread($openedFile, filesize($fname));
 				fclose($openedFile);
 				unlink($fname);
@@ -312,7 +321,7 @@ class ClippingsCart {
 	 * Brings up the download dialog box and allows the user to download the file
 	 * based on the options he or she selected.
 	 */
-	function downloadClipping() {
+	public function downloadClipping() {
 		if ($this->IncludeMedia === 'yes' || $this->Zip === 'yes') {
 			header('Content-Type: application/zip');
 			header('Content-Disposition: attachment; filename="clipping.zip"');
@@ -332,9 +341,9 @@ class ClippingsCart {
 	 *
 	 * @param GedcomRecord $record
 	 */
-	function addClipping(GedcomRecord $record) {
+	public function addClipping(GedcomRecord $record) {
 		if ($record->canShowName()) {
-			$cart = Session::get('cart');
+			$cart                                                      = Session::get('cart');
 			$cart[$record->getTree()->getTreeId()][$record->getXref()] = true;
 			// Add directly linked records
 			preg_match_all('/\n\d (?:OBJE|NOTE|SOUR|REPO) @(' . WT_REGEX_XREF . ')@/', $record->getGedcom(), $matches);
@@ -349,9 +358,9 @@ class ClippingsCart {
 	 * Recursive function to traverse the tree
 	 *
 	 * @param Family|null $family
-	 * @param integer        $level
+	 * @param int         $level
 	 */
-	function addFamilyDescendancy(Family $family = null, $level = PHP_INT_MAX) {
+	public function addFamilyDescendancy(Family $family = null, $level = PHP_INT_MAX) {
 		if (!$family) {
 			return;
 		}
@@ -374,7 +383,7 @@ class ClippingsCart {
 	 *
 	 * @param Family|null $family
 	 */
-	function addFamilyMembers(Family $family = null) {
+	public function addFamilyMembers(Family $family = null) {
 		if (!$family) {
 			return;
 		}
@@ -391,9 +400,9 @@ class ClippingsCart {
 	 * Recursively add direct-line ancestors to cart
 	 *
 	 * @param Individual|null $person
-	 * @param integer         $level
+	 * @param int             $level
 	 */
-	function addAncestorsToCart(Individual $person = null, $level = 0) {
+	public function addAncestorsToCart(Individual $person = null, $level = 0) {
 		if (!$person) {
 			return;
 		}
@@ -411,9 +420,9 @@ class ClippingsCart {
 	 * Recursively adds direct-line ancestors and their families to the cart
 	 *
 	 * @param Individual|null $person
-	 * @param integer            $level
+	 * @param int             $level
 	 */
-	function addAncestorsToCartFamilies(Individual $person = null, $level = 0) {
+	public function addAncestorsToCartFamilies(Individual $person = null, $level = 0) {
 		if (!$person) {
 			return;
 		}
@@ -432,9 +441,9 @@ class ClippingsCart {
 	 * @param string $a
 	 * @param string $b
 	 *
-	 * @return integer
+	 * @return int
 	 */
-	static function compareClippings($a, $b) {
+	private static function compareClippings($a, $b) {
 		global $WT_TREE;
 
 		$a = GedcomRecord::getInstance($a, $WT_TREE);

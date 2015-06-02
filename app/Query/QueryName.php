@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Query;
 
 /**
  * webtrees: online genealogy
@@ -15,13 +15,14 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Class QueryName - generate lists for indilist.php and famlist.php
- *
- * @package   webtrees
- * @copyright (c) 2015 webtrees development team
- * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2
  */
 class QueryName {
 	/**
@@ -35,82 +36,82 @@ class QueryName {
 		switch ($locale) {
 		case 'ar':
 			return array(
-				'ا', 'ب', 'ت', 'ث', 'ج', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'ه', 'و', 'ي', 'آ', 'ة', 'ى', 'ی'
+				'ا', 'ب', 'ت', 'ث', 'ج', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'ه', 'و', 'ي', 'آ', 'ة', 'ى', 'ی',
 			);
 		case 'cs':
 			return array(
-				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'CH', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'CH', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
 			);
 		case 'da':
 		case 'nb':
 		case 'nn':
 			return array(
-				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Æ', 'Ø', 'Å'
+				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Æ', 'Ø', 'Å',
 			);
 		case 'el':
 			return array(
-				'Α', 'Β', 'Γ', 'Δ', 'Ε', 'Ζ', 'Η', 'Θ', 'Ι', 'Κ', 'Λ', 'Μ', 'Ν', 'Ξ', 'Ο', 'Π', 'Ρ', 'Σ', 'Τ', 'Υ', 'Φ', 'Χ', 'Ψ', 'Ω'
+				'Α', 'Β', 'Γ', 'Δ', 'Ε', 'Ζ', 'Η', 'Θ', 'Ι', 'Κ', 'Λ', 'Μ', 'Ν', 'Ξ', 'Ο', 'Π', 'Ρ', 'Σ', 'Τ', 'Υ', 'Φ', 'Χ', 'Ψ', 'Ω',
 			);
 		case 'es':
 			return array(
-				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
 			);
 		case 'et':
 			return array(
-				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Š', 'Z', 'Ž', 'T', 'U', 'V', 'W', 'Õ', 'Ä', 'Ö', 'Ü', 'X', 'Y'
+				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Š', 'Z', 'Ž', 'T', 'U', 'V', 'W', 'Õ', 'Ä', 'Ö', 'Ü', 'X', 'Y',
 			);
 		case 'fi':
 		case 'sv':
 			return array(
-				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Å', 'Ä', 'Ö'
+				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Å', 'Ä', 'Ö',
 			);
 		case 'he':
 			return array(
-				'א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח', 'ט', 'י', 'כ', 'ל', 'מ', 'נ', 'ס', 'ע', 'פ', 'צ', 'ק', 'ר', 'ש', 'ת'
+				'א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח', 'ט', 'י', 'כ', 'ל', 'מ', 'נ', 'ס', 'ע', 'פ', 'צ', 'ק', 'ר', 'ש', 'ת',
 			);
 		case 'hu':
 			return array(
-				'A', 'B', 'C', 'CS', 'D', 'DZ', 'DZS', 'E', 'F', 'G', 'GY', 'H', 'I', 'J', 'K', 'L', 'LY', 'M', 'N', 'NY', 'O', 'Ö', 'P', 'Q', 'R', 'S', 'SZ', 'T', 'TY', 'U', 'Ü', 'V', 'W', 'X', 'Y', 'Z', 'ZS'
+				'A', 'B', 'C', 'CS', 'D', 'DZ', 'DZS', 'E', 'F', 'G', 'GY', 'H', 'I', 'J', 'K', 'L', 'LY', 'M', 'N', 'NY', 'O', 'Ö', 'P', 'Q', 'R', 'S', 'SZ', 'T', 'TY', 'U', 'Ü', 'V', 'W', 'X', 'Y', 'Z', 'ZS',
 			);
 		case 'lt':
 			return array(
-				'A', 'Ą', 'B', 'C', 'Č', 'D', 'E', 'Ę', 'Ė', 'F', 'G', 'H', 'I', 'Y', 'Į', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'Š', 'T', 'U', 'Ų', 'Ū', 'V', 'Z', 'Ž'
+				'A', 'Ą', 'B', 'C', 'Č', 'D', 'E', 'Ę', 'Ė', 'F', 'G', 'H', 'I', 'Y', 'Į', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'Š', 'T', 'U', 'Ų', 'Ū', 'V', 'Z', 'Ž',
 			);
 		case 'nl':
 			return array(
-				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'IJ'
+				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'IJ',
 			);
 		case 'pl':
 			return array(
-				'A', 'B', 'C', 'Ć', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'Ł', 'M', 'N', 'O', 'Ó', 'P', 'Q', 'R', 'S', 'Ś', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ź', 'Ż'
+				'A', 'B', 'C', 'Ć', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'Ł', 'M', 'N', 'O', 'Ó', 'P', 'Q', 'R', 'S', 'Ś', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ź', 'Ż',
 			);
 		case 'ro':
 			return array(
-				'A', 'Ă', 'Â', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'Î', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Ş', 'T', 'Ţ', 'U', 'V', 'W', 'X', 'Y', 'Z'
+				'A', 'Ă', 'Â', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'Î', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Ş', 'T', 'Ţ', 'U', 'V', 'W', 'X', 'Y', 'Z',
 			);
 		case 'ru':
 			return array(
-				'А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я'
+				'А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я',
 			);
 		case 'sk':
 			return array(
-				'A', 'Á', 'Ä', 'B', 'C', 'Č', 'D', 'Ď', 'E', 'É', 'F', 'G', 'H', 'I', 'Í', 'J', 'K', 'L', 'Ľ', 'Ĺ', 'M', 'N', 'Ň', 'O', 'Ó', 'Ô', 'P', 'Q', 'R', 'Ŕ', 'S', 'Š', 'T', 'Ť', 'U', 'Ú', 'V', 'W', 'X', 'Y', 'Ý', 'Z', 'Ž'
+				'A', 'Á', 'Ä', 'B', 'C', 'Č', 'D', 'Ď', 'E', 'É', 'F', 'G', 'H', 'I', 'Í', 'J', 'K', 'L', 'Ľ', 'Ĺ', 'M', 'N', 'Ň', 'O', 'Ó', 'Ô', 'P', 'Q', 'R', 'Ŕ', 'S', 'Š', 'T', 'Ť', 'U', 'Ú', 'V', 'W', 'X', 'Y', 'Ý', 'Z', 'Ž',
 			);
 		case 'sl':
 			return array(
-				'A', 'B', 'C', 'Č', 'Ć', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Š', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ž'
+				'A', 'B', 'C', 'Č', 'Ć', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Š', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ž',
 			);
 		case 'sr':
 			return array(
-				'A', 'B', 'C', 'Č', 'Ć', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Š', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ž'
+				'A', 'B', 'C', 'Č', 'Ć', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'Š', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'Ž',
 			);
 		case 'tr':
 			return array(
-				'A', 'B', 'C', 'Ç', 'D', 'E', 'F', 'G', 'Ğ', 'H', 'I', 'İ', 'J', 'K', 'L', 'M', 'N', 'O', 'Ö', 'P', 'R', 'S', 'Ş', 'T', 'U', 'Ü', 'V', 'Y', 'Z'
+				'A', 'B', 'C', 'Ç', 'D', 'E', 'F', 'G', 'Ğ', 'H', 'I', 'İ', 'J', 'K', 'L', 'M', 'N', 'O', 'Ö', 'P', 'R', 'S', 'Ş', 'T', 'U', 'Ü', 'V', 'Y', 'Z',
 			);
 		default:
 			return array(
-				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+				'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
 			);
 		}
 	}
@@ -122,7 +123,7 @@ class QueryName {
 	 *
 	 * @return string
 	 */
-	static public function initialLetter($name) {
+	public static function initialLetter($name) {
 		$name = I18N::strtoupper($name);
 		switch (WT_LOCALE) {
 		case 'cs':
@@ -188,7 +189,7 @@ class QueryName {
 	 *
 	 * @return string
 	 */
-	static private function getInitialSql($field, $letter) {
+	private static function getInitialSql($field, $letter) {
 		switch (WT_LOCALE) {
 		case 'cs':
 			switch ($letter) {
@@ -231,10 +232,10 @@ class QueryName {
 	/**
 	 * Get a list of initial surname letters for indilist.php and famlist.php
 	 *
-	 * @param Tree    $tree   Find surnames from this tree
-	 * @param boolean $marnm  if set, include married names
-	 * @param boolean $fams   if set, only consider individuals with FAMS records
-	 * @param boolean $totals if set, count the number of names beginning with each letter
+	 * @param Tree $tree   Find surnames from this tree
+	 * @param bool $marnm  if set, include married names
+	 * @param bool $fams   if set, only consider individuals with FAMS records
+	 * @param bool $totals if set, count the number of names beginning with each letter
 	 *
 	 * @return integer[]
 	 */
@@ -275,7 +276,7 @@ class QueryName {
 		foreach (self::getAlphabetForLocale(WT_LOCALE) as $n => $letter) {
 			$sql .= " AND n_surn COLLATE :collate_" . $n . " NOT LIKE :letter_" . $n;
 			$args['collate_' . $n] = I18N::collation();
-			$args['letter_' . $n] = $letter . '%';
+			$args['letter_' . $n]  = $letter . '%';
 		}
 		$sql .= " GROUP BY UPPER(LEFT(n_surn, 1))) AS subquery ORDER BY initial = '', initial = '@', initial";
 		foreach (Database::prepare($sql)->execute($args)->fetchAssoc() as $alpha => $count) {
@@ -306,11 +307,11 @@ class QueryName {
 	/**
 	 * Get a list of initial given name letters for indilist.php and famlist.php
 	 *
-	 * @param Tree    $tree   Find names in this tree
-	 * @param string  $surn   if set, only consider people with this surname
-	 * @param string  $salpha if set, only consider surnames starting with this letter
-	 * @param boolean $marnm  if set, include married names
-	 * @param boolean $fams   if set, only consider individuals with FAMS records
+	 * @param Tree   $tree   Find names in this tree
+	 * @param string $surn   if set, only consider people with this surname
+	 * @param string $salpha if set, only consider surnames starting with this letter
+	 * @param bool   $marnm  if set, include married names
+	 * @param bool   $fams   if set, only consider individuals with FAMS records
 	 *
 	 * @return integer[]
 	 */
@@ -341,7 +342,7 @@ class QueryName {
 		// are any names beginning with that letter.  It looks better to
 		// show the full alphabet, rather than omitting rare letters such as X
 		foreach (self::getAlphabetForLocale(WT_LOCALE) as $letter) {
-			$count = Database::prepare($sql . " AND " . self::getInitialSql('n_givn', $letter))->fetchOne();
+			$count           = Database::prepare($sql . " AND " . self::getInitialSql('n_givn', $letter))->fetchOne();
 			$alphas[$letter] = $count;
 		}
 
@@ -361,7 +362,7 @@ class QueryName {
 		if ($surn) {
 			$sql .= " AND n_surn COLLATE :collate_1 = :surn";
 			$args['collate_1'] = I18N::collation();
-			$args['surn'] = $surn;
+			$args['surn']      = $surn;
 		} elseif ($salpha === ',') {
 			$sql .= " AND n_surn = ''";
 		} elseif ($salpha === '@') {
@@ -388,11 +389,11 @@ class QueryName {
 	/**
 	 * Get a list of actual surnames and variants, based on a "root" surname.
 	 *
-	 * @param Tree    $tree   only fetch individuals from this tree
-	 * @param string  $surn   if set, only fetch people with this surname
-	 * @param string  $salpha if set, only consider surnames starting with this letter
-	 * @param boolean $marnm  if set, include married names
-	 * @param boolean $fams   if set, only consider individuals with FAMS records
+	 * @param Tree   $tree   only fetch individuals from this tree
+	 * @param string $surn   if set, only fetch people with this surname
+	 * @param string $salpha if set, only consider surnames starting with this letter
+	 * @param bool   $marnm  if set, include married names
+	 * @param bool   $fams   if set, only consider individuals with FAMS records
 	 *
 	 * @return array
 	 */
@@ -406,14 +407,14 @@ class QueryName {
 			($marnm ? "" : " AND n_type != '_MARNM'");
 
 		$args = array(
-			'tree_id' => $tree->getTreeId(),
+			'tree_id'   => $tree->getTreeId(),
 			'collate_0' => I18N::collation(),
 		);
 
 		if ($surn) {
 			$sql .= " AND n_surn COLLATE :collate_1 = :surn";
 			$args['collate_1'] = I18N::collation();
-			$args['surn'] = $surn;
+			$args['surn']      = $surn;
 		} elseif ($salpha === ',') {
 			$sql .= " AND n_surn = ''";
 		} elseif ($salpha === '@') {
@@ -442,12 +443,12 @@ class QueryName {
 	 * To search for unknown names, use $surn="@N.N.", $salpha="@" or $galpha="@"
 	 * To search for names with no surnames, use $salpha=","
 	 *
-	 * @param Tree    $tree   only fetch individuals from this tree
-	 * @param string  $surn   if set, only fetch people with this surname
-	 * @param string  $salpha if set, only fetch surnames starting with this letter
+	 * @param Tree   $tree   only fetch individuals from this tree
+	 * @param string $surn   if set, only fetch people with this surname
+	 * @param string $salpha if set, only fetch surnames starting with this letter
 	 * @param string  $galpha if set, only fetch given names starting with this letter
-	 * @param boolean $marnm  if set, include married names
-	 * @param boolean $fams   if set, only fetch individuals with FAMS records
+	 * @param bool   $marnm  if set, include married names
+	 * @param bool   $fams   if set, only fetch individuals with FAMS records
 	 *
 	 * @return Individual[]
 	 */
@@ -467,7 +468,7 @@ class QueryName {
 		if ($surn) {
 			$sql .= " AND n_surn COLLATE :collate_1 = :surn";
 			$args['collate_1'] = I18N::collation();
-			$args['surn'] = $surn;
+			$args['surn']      = $surn;
 		} elseif ($salpha === ',') {
 			$sql .= " AND n_surn = ''";
 		} elseif ($salpha === '@') {
@@ -491,7 +492,7 @@ class QueryName {
 		foreach ($rows as $row) {
 			$person = Individual::getInstance($row->xref, $tree, $row->gedcom);
 			// The name from the database may be private - check the filtered list...
-			foreach ($person->getAllNames() as $n=>$name) {
+			foreach ($person->getAllNames() as $n => $name) {
 				if ($name['fullNN'] == $row->n_full) {
 					$person->setPrimaryName($n);
 					// We need to clone $person, as we may have multiple references to the
@@ -512,11 +513,11 @@ class QueryName {
 	 * To search for unknown names, use $surn="@N.N.", $salpha="@" or $galpha="@"
 	 * To search for names with no surnames, use $salpha=","
 	 *
-	 * @param Tree    $tree   only fetch individuals from this tree
-	 * @param string  $surn   if set, only fetch people with this surname
-	 * @param string  $salpha if set, only fetch surnames starting with this letter
-	 * @param string  $galpha if set, only fetch given names starting with this letter
-	 * @param boolean $marnm  if set, include married names
+	 * @param Tree   $tree   only fetch individuals from this tree
+	 * @param string $surn   if set, only fetch people with this surname
+	 * @param string $salpha if set, only fetch surnames starting with this letter
+	 * @param string $galpha if set, only fetch given names starting with this letter
+	 * @param bool   $marnm  if set, include married names
 	 *
 	 * @return Family[]
 	 */
@@ -527,7 +528,7 @@ class QueryName {
 				$list[$family->getXref()] = $family;
 			}
 		}
-		usort($list, __NAMESPACE__ . '\GedcomRecord::compare');
+		usort($list, '\Fisharebest\Webtrees\GedcomRecord::compare');
 
 		return $list;
 	}

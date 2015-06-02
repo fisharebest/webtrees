@@ -117,9 +117,9 @@ class Menu {
 	 * @param string $iconclass
 	 */
 	public function addClass($menuclass, $submenuclass = '', $iconclass = '') {
-		$this->menuclass = $menuclass;
+		$this->menuclass    = $menuclass;
 		$this->submenuclass = $submenuclass;
-		$this->iconclass = $iconclass;
+		$this->iconclass    = $iconclass;
 	}
 
 	/**

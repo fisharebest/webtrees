@@ -328,6 +328,14 @@ table.center {
 	width: 100%;
 }
 
+.facts_table .optionbox {
+	white-space: normal;
+}
+
+.facts_table .optionbox {
+	white-space: normal;
+} 
+
 div.fact_SHARED_NOTE {
 	clear: both;
 }
@@ -1076,7 +1084,7 @@ a.showit:hover > span {
 }
 
 #medialist-page .media-col {
-	padding-left: 5px; 
+	padding-left: 5px;
 	border: none;
 }
 
@@ -1086,7 +1094,7 @@ a.showit:hover > span {
 }
 
 #medialist-page .media-image {
-	vertical-align:top; 
+	vertical-align:top;
 	white-space:normal;
 }
 
@@ -1850,7 +1858,7 @@ float: right;
 	display: table-cell;
 	vertical-align: middle;
 	text-align: center;
-	white-space: pre-wrap;  
+	white-space: pre-wrap;
 }
 .left {text-align: left;}
 [dir=rtl] .left {text-align: right;}
@@ -2825,7 +2833,7 @@ dd .deletelink {
 	background-color: #ecf5ff;
 	color: #333;
 	border-top: 1px solid #999;
-	margin: 0 0 0 170px;
+	margin: 0 0 0 30%;
 	padding: 5px;
 	white-space: nowrap;
 }
@@ -2839,7 +2847,7 @@ dd .deletelink {
 }
 
 [dir=rtl] #search-page-table .value {
-	margin: 0 170px 0 0;
+	margin: 0 30% 0 0;
 }
 
 /*  edituser.php  */
@@ -4406,7 +4414,7 @@ header nav {
 .primary-menu a {
 	display: block;
 	text-decoration: none;
-	padding: 0 10px;
+	padding: 4px 5px;
 	margin: 0;
 	white-space: nowrap;
 }
@@ -5316,13 +5324,33 @@ footer {
 /* Mobile low and high resolution viewports */
 @media (max-width: 600px) {
 	#content {
-    margin-top: 50px;
+		margin-top: 50px;
+	}
+	[dir="rtl"] .secondary-menu {
+		clear:both;
+		float: left;
+		margin: 12px 10px 12px 10px;
+	}
+	/* Search */
+	#search-page-table div #query {
+		width: 150px;
+	}
+	#search-page-table {
+		width: auto;
+	}
+	#search-page-table .value {
+		white-space: normal;
     }
-
-    [dir="rtl"] .secondary-menu {
-    clear:both;
-    float: left;
-    margin: 12px 10px 12px 10px;
+	#search-page-table > input {
+		width: 20px;
+	}
+	/* Lists */
+	#place_hierarchy td {
+		white-space: normal;
+	}
+	/* Reports */
+	#reportengine-page table {
+		width: 100%;
 	}
 }
 
@@ -5336,7 +5364,7 @@ footer {
 		margin: 0px 5px 4px;
 	}
 	#content {
-    margin-top: 45px;
+		margin-top: 45px;
     }
 	.header-search {
 		display: block;
@@ -5345,7 +5373,7 @@ footer {
 	.primary-menu > li {
 		background-image: url("images/sprites-top2-menu.png");
 		margin: 0 0 0 7px;
-		width: 22px;
+		width: 28px;
 	}
 	[dir=rtl] .primary-menu > li {
 		margin: 0 7px 0 0;
@@ -5356,4 +5384,6 @@ footer {
 	.primary-menu {
 		height: 40px;
 	}
-}
+} 
+
+

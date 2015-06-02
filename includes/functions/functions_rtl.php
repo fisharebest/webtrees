@@ -1,5 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -17,6 +16,8 @@ namespace Fisharebest\Webtrees;
  */
 
 // RTL Functions for use in the PDF/HTML reports
+
+use Fisharebest\Webtrees\I18N;
 
 $SpecialChar = array(' ', '.', ',', '"', '\'', '/', '\\', '|', ':', ';', '+', '&', '#', '@', '-', '=', '*', '%', '!', '?', '$', '<', '>', "\n");
 $SpecialPar  = array('(', ')', '[', ']', '{', '}');
@@ -114,7 +115,7 @@ function spanLTRRTL($inputText, $direction = 'BOTH', $class = '') {
 					}
 				}
 				breakCurrentSpan($result);
-			} else if ($waitingText == '') {
+			} elseif ($waitingText == '') {
 				$result .= $element;
 			} else {
 				$waitingText .= $element;
@@ -164,7 +165,7 @@ function spanLTRRTL($inputText, $direction = 'BOTH', $class = '') {
 					// This is not a digit.  Is it numeric punctuation?
 					if (substr($workingText . "\n", $offset, 6) == '&nbsp;') {
 						$offset += 6; // This could be numeric punctuation
-					} else if (strpos($numberPunctuation, $charArray['letter']) !== false) {
+					} elseif (strpos($numberPunctuation, $charArray['letter']) !== false) {
 						$offset += $charArray['length']; // This could be numeric punctuation
 					}
 					// If the next character is a digit, the current character is numeric punctuation
@@ -193,7 +194,7 @@ function spanLTRRTL($inputText, $direction = 'BOTH', $class = '') {
 							$currentLetter = WT_UTF8_LRE . $currentLetter;
 						}
 					}
-				} else if (strpos($numbers, $currentLetter) !== false) {
+				} elseif (strpos($numbers, $currentLetter) !== false) {
 					$numberState = true; // The current letter is a digit
 					if ($currentState == 'RTL') {
 						$currentLetter = WT_UTF8_LRE . $currentLetter;
@@ -359,7 +360,7 @@ function spanLTRRTL($inputText, $direction = 'BOTH', $class = '') {
 			break;
 		}
 		$textSpan = stripLRMRLM(substr($result, $lenStart + 3, $spanEnd - $lenStart - 3));
-		if (I18N::scriptDirection(textScript($textSpan)) === 'rtl') {
+		if (I18N::scriptDirection(I18N::textScript($textSpan)) === 'rtl') {
 			break;
 		}
 		$result = $startLTR . substr($result, $lenStart, $spanEnd - $lenStart) . substr($result, $spanEnd + $lenStart + $lenEnd);
@@ -581,8 +582,8 @@ function beginCurrentSpan(&$result) {
 /**
  * Finish current span
  *
- * @param string  $result
- * @param boolean $theEnd
+ * @param string $result
+ * @param bool   $theEnd
  */
 function finishCurrentSpan(&$result, $theEnd = false) {
 	global $previousState, $currentState, $posSpanStart, $waitingText;
@@ -650,10 +651,10 @@ function finishCurrentSpan(&$result, $theEnd = false) {
 		if ($posBlank === false) {
 			$posSeparator    = $posNbsp;
 			$lengthSeparator = 6;
-		} else if ($posNbsp === false) {
+		} elseif ($posNbsp === false) {
 			$posSeparator    = $posBlank;
 			$lengthSeparator = 1;
-		} else if ($posBlank < $posNbsp) {
+		} elseif ($posBlank < $posNbsp) {
 			$posSeparator    = $posBlank;
 			$lengthSeparator = 1;
 		} else {
@@ -1090,10 +1091,10 @@ function finishCurrentSpan(&$result, $theEnd = false) {
 }
 
 /**
- * @param string  $string
- * @param integer $width
- * @param string  $sep
- * @param boolean $cut
+ * @param string $string
+ * @param int    $width
+ * @param string $sep
+ * @param bool   $cut
  *
  * @return string
  */

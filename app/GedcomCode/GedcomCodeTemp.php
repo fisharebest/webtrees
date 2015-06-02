@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\GedcomCode;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,7 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\I18N;
 
 /**
  * Class GedcomCodeTemp - Functions and logic for GEDCOM "TEMP" codes
@@ -25,7 +26,7 @@ class GedcomCodeTemp {
 	 *
 	 * @param string $tag
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public static function isTagLDS($tag) {
 		return $tag === 'BAPL' || $tag === 'CONL' || $tag === 'ENDL' || $tag === 'SLGC' || $tag === 'SLGS';
@@ -349,7 +350,7 @@ class GedcomCodeTemp {
 		foreach (self::templeCodes() as $temple_code) {
 			$temple_names[$temple_code] = self::templeName($temple_code);
 		}
-		uasort($temple_names, __NAMESPACE__ . '\I18N::strcasecmp');
+		uasort($temple_names, '\Fisharebest\Webtrees\I18N::strcasecmp');
 
 		return $temple_names;
 	}

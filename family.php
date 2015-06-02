@@ -23,6 +23,8 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\FamilyController;
+
 define('WT_SCRIPT_NAME', 'family.php');
 require './includes/session.php';
 
@@ -75,7 +77,7 @@ if ($controller->record && $controller->record->canShow()) {
 	http_response_code(404);
 	$controller->pageHeader();
 	echo '<p class="ui-state-error">', I18N::translate('This family does not exist or you do not have permission to view it.'), '</p>';
-	
+
 	return;
 }
 

@@ -15,6 +15,11 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Report\ReportHtml;
+use Fisharebest\Webtrees\Report\ReportParserGenerate;
+use Fisharebest\Webtrees\Report\ReportParserSetup;
+use Fisharebest\Webtrees\Report\ReportPdf;
 
 /**
  * Defined in session.php
@@ -28,14 +33,14 @@ require './includes/session.php';
 
 $controller = new PageController;
 
-$famid = Filter::get('famid', WT_REGEX_XREF);
-$pid = Filter::get('pid', WT_REGEX_XREF);
-$action = Filter::get('action', 'choose|setup|run', 'choose');
-$report = Filter::get('report');
-$output = Filter::get('output', 'HTML|PDF', 'PDF');
-$vars = Filter::get('vars');
+$famid    = Filter::get('famid', WT_REGEX_XREF);
+$pid      = Filter::get('pid', WT_REGEX_XREF);
+$action   = Filter::get('action', 'choose|setup|run', 'choose');
+$report   = Filter::get('report');
+$output   = Filter::get('output', 'HTML|PDF', 'PDF');
+$vars     = Filter::get('vars');
 $varnames = Filter::get('varnames');
-$type = Filter::get('type');
+$type     = Filter::get('type');
 if (!is_array($vars)) {
 	$vars = array();
 }
@@ -129,29 +134,8 @@ case 'choose':
 	break;
 
 case 'setup':
-	require_once WT_ROOT . 'includes/reportheader.php';
-	$report_array = array();
-	// Start the sax parser
-	$xml_parser = xml_parser_create();
-	// Make sure everything is case sensitive
-	xml_parser_set_option($xml_parser, XML_OPTION_CASE_FOLDING, false);
-	// Set the main element handler functions
-	xml_set_element_handler($xml_parser, __NAMESPACE__ . '\\startElement', __NAMESPACE__ . '\\endElement');
-	// Set the character data handler
-	xml_set_character_data_handler($xml_parser, __NAMESPACE__ . '\\characterData');
-
-	// Open the file
-	$fp = fopen($report, 'r');
-	while (($data = fread($fp, 4096))) {
-		if (!xml_parse($xml_parser, $data, feof($fp))) {
-			throw new \DomainException(sprintf(
-				'XML error: %s at line %d',
-				xml_error_string(xml_get_error_code($xml_parser)),
-				xml_get_current_line_number($xml_parser)
-			));
-		}
-	}
-	xml_parser_free($xml_parser);
+	$report_setup = new ReportParserSetup($report);
+	$report_array = $report_setup->reportProperties();
 
 	$controller
 		->setPageTitle($report_array['title'])
@@ -230,7 +214,7 @@ case 'setup':
 			echo '<select name="vars[', Filter::escapeHtml($input['name']), ']" id="', Filter::escapeHtml($input['name']), '_var">';
 			$options = preg_split('/[|]+/', $input['options']);
 			foreach ($options as $option) {
-				$opt = explode('=>', $option);
+				$opt                   = explode('=>', $option);
 				list($value, $display) = $opt;
 				if (preg_match('/^I18N::number\((.+)\)$/', $display, $match)) {
 					$display = I18N::number($match[1]);
@@ -285,217 +269,18 @@ case 'setup':
 
 case 'run':
 	if (strstr($report, 'report_singlepage.xml') !== false) {
-		$DEBUG = false;
-		$pedigree = new \ReportPedigree;
-
-		return;
+		// This is a custom module?
+		new \ReportPedigree;
+		break;
 	}
 
 	switch ($output) {
 	case 'HTML':
 		header('Content-type: text/html; charset=UTF-8');
-		$wt_report = new ReportHtml;
-		$ReportRoot = $wt_report;
+		new ReportParserGenerate($report, new ReportHtml);
 		break;
 	case 'PDF':
-		$wt_report = new ReportPdf;
-		$ReportRoot = $wt_report;
+		new ReportParserGenerate($report, new ReportPdf);
 		break;
 	}
-
-	/**
-	 * element handlers array
-	 *
-	 * Converts XML element names into functions
-	 *
-	 * @global array $elementHandler
-	 */
-	$elementHandler = array();
-	$elementHandler['AgeAtDeath']['start'] = __NAMESPACE__ . '\\ageAtDeathStartHandler';
-	$elementHandler['br']['start'] = __NAMESPACE__ . '\\brStartHandler';
-	$elementHandler['Body']['start'] = __NAMESPACE__ . '\\bodyStartHandler';
-	$elementHandler['Cell']['end'] = __NAMESPACE__ . '\\cellEndHandler';
-	$elementHandler['Cell']['start'] = __NAMESPACE__ . '\\cellStartHandler';
-	$elementHandler['Description']['end'] = __NAMESPACE__ . '\\descriptionEndHandler';
-	$elementHandler['Description']['start'] = __NAMESPACE__ . '\\descriptionStartHandler';
-	$elementHandler['Doc']['end'] = __NAMESPACE__ . '\\docEndHandler';
-	$elementHandler['Doc']['start'] = __NAMESPACE__ . '\\docStartHandler';
-	$elementHandler['Report']['end'] = '';
-	$elementHandler['Report']['start'] = '';
-	$elementHandler['Facts']['end'] = __NAMESPACE__ . '\\factsEndHandler';
-	$elementHandler['Facts']['start'] = __NAMESPACE__ . '\\factsStartHandler';
-	$elementHandler['Footer']['start'] = __NAMESPACE__ . '\\footerStartHandler';
-	$elementHandler['Footnote']['end'] = __NAMESPACE__ . '\\footnoteEndHandler';
-	$elementHandler['Footnote']['start'] = __NAMESPACE__ . '\\footnoteStartHandler';
-	$elementHandler['FootnoteTexts']['start'] = __NAMESPACE__ . '\\footnoteTextsStartHandler';
-	$elementHandler['Gedcom']['end'] = __NAMESPACE__ . '\\gedcomEndHandler';
-	$elementHandler['Gedcom']['start'] = __NAMESPACE__ . '\\gedcomStartHandler';
-	$elementHandler['GedcomValue']['start'] = __NAMESPACE__ . '\\gedcomValueStartHandler';
-	$elementHandler['Generation']['start'] = __NAMESPACE__ . '\\generationStartHandler';
-	$elementHandler['GetPersonName']['start'] = __NAMESPACE__ . '\\getPersonNameStartHandler';
-	$elementHandler['Header']['start'] = __NAMESPACE__ . '\\headerStartHandler';
-	$elementHandler['HighlightedImage']['start'] = __NAMESPACE__ . '\\highlightedImageStartHandler';
-	$elementHandler['if']['end'] = __NAMESPACE__ . '\\ifEndHandler';
-	$elementHandler['if']['start'] = __NAMESPACE__ . '\\ifStartHandler';
-	$elementHandler['Image']['start'] = __NAMESPACE__ . '\\imageStartHandler';
-	$elementHandler['Input']['end'] = '';
-	$elementHandler['Input']['start'] = '';
-	$elementHandler['Line']['start'] = __NAMESPACE__ . '\\lineStartHandler';
-	$elementHandler['List']['end'] = __NAMESPACE__ . '\\listEndHandler';
-	$elementHandler['List']['start'] = __NAMESPACE__ . '\\listStartHandler';
-	$elementHandler['ListTotal']['start'] = __NAMESPACE__ . '\\listTotalStartHandler';
-	$elementHandler['NewPage']['start'] = __NAMESPACE__ . '\\newPageStartHandler';
-	$elementHandler['Now']['start'] = __NAMESPACE__ . '\\nowStartHandler';
-	$elementHandler['PageHeader']['end'] = __NAMESPACE__ . '\\pageHeaderEndHandler';
-	$elementHandler['PageHeader']['start'] = __NAMESPACE__ . '\\pageHeaderStartHandler';
-	$elementHandler['PageNum']['start'] = __NAMESPACE__ . '\\pageNumStartHandler';
-	$elementHandler['Relatives']['end'] = __NAMESPACE__ . '\\relativesEndHandler';
-	$elementHandler['Relatives']['start'] = __NAMESPACE__ . '\\relativesStartHandler';
-	$elementHandler['RepeatTag']['end'] = __NAMESPACE__ . '\\repeatTagEndHandler';
-	$elementHandler['RepeatTag']['start'] = __NAMESPACE__ . '\\repeatTagStartHandler';
-	$elementHandler['SetVar']['start'] = __NAMESPACE__ . '\\setVarStartHandler';
-	$elementHandler['Style']['start'] = __NAMESPACE__ . '\\styleStartHandler';
-	$elementHandler['Text']['end'] = __NAMESPACE__ . '\\textEndHandler';
-	$elementHandler['Text']['start'] = __NAMESPACE__ . '\\textStartHandler';
-	$elementHandler['TextBox']['end'] = __NAMESPACE__ . '\\textBoxEndHandler';
-	$elementHandler['TextBox']['start'] = __NAMESPACE__ . '\\textBoxStartHandler';
-	$elementHandler['Title']['end'] = __NAMESPACE__ . '\\titleEndHandler';
-	$elementHandler['Title']['start'] = __NAMESPACE__ . '\\titleStartHandler';
-	$elementHandler['TotalPages']['start'] = __NAMESPACE__ . '\\totalPagesStartHandler';
-	$elementHandler['var']['start'] = __NAMESPACE__ . '\\varStartHandler';
-	$elementHandler['sp']['start'] = __NAMESPACE__ . '\\spStartHandler';
-
-	/**
-	 * A new object of the currently used element class
-	 *
-	 * @global object $currentElement
-	 */
-	$currentElement = new ReportBaseElement;
-
-	/**
-	 * Should character data be printed
-	 *
-	 * This variable is turned on or off by the element handlers to tell whether the inner character
-	 * Data should be printed
-	 *
-	 * @global boolean $printData
-	 */
-	$printData = false;
-
-	/**
-	 * Title collector. Mark it if it has already been used
-	 *
-	 * @global boolean $reportTitle
-	 */
-	$reportTitle = false;
-
-	/**
-	 * Description collector. Mark it if it has already been used
-	 *
-	 * @global boolean $reportDescription
-	 */
-	$reportDescription = false;
-
-	/**
-	 * Print data stack
-	 *
-	 * As the XML is being processed there will be times when we need to turn on and off the
-	 * <var>$printData</var> variable as we encounter entinties in the XML.  The stack allows us to
-	 * keep track of when to turn <var>$printData</var> on and off.
-	 *
-	 * @global array $printDataStack
-	 */
-	$printDataStack = array();
-
-	/**
-	 * @global array $wt_reportStack
-	 */
-	$wt_reportStack = array();
-
-	/**
-	 * @global array $gedrecStack
-	 */
-	$gedrecStack = array();
-
-	/**
-	 * @global array $repeatsStack
-	 */
-	$repeatsStack = array();
-
-	/**
-	 * @global array $parserStack
-	 */
-	$parserStack = array();
-
-	/**
-	 * @global array $repeats
-	 */
-	$repeats = array();
-
-	/**
-	 * @global string $gedrec
-	 */
-	$gedrec = '';
-
-	/**
-	 * @global ???? $repeatBytes
-	 */
-	$repeatBytes = 0;
-
-	/**
-	 * @global resource $parser
-	 */
-	$parser = '';
-
-	/**
-	 * @global int $processRepeats
-	 */
-	$processRepeats = 0;
-
-	/**
-	 * @global ???? $processIfs
-	 */
-	$processIfs = 0;
-
-	/**
-	 * @global ???? $processGedcoms
-	 */
-	$processGedcoms = 0;
-
-	/**
-	 * Wether or not to print footnote
-	 * true = print, false = don't print
-	 */
-	$processFootnote = true;
-
-	//-- start the sax parser
-	$xml_parser = xml_parser_create();
-	//-- make sure everything is case sensitive
-	xml_parser_set_option($xml_parser, XML_OPTION_CASE_FOLDING, false);
-	//-- set the main element handler functions
-	xml_set_element_handler($xml_parser, __NAMESPACE__ . '\\startElement', __NAMESPACE__ . '\\endElement');
-	//-- set the character data handler
-	xml_set_character_data_handler($xml_parser, __NAMESPACE__ . '\\characterData');
-
-	$fp = fopen($report, 'r');
-	while (($data = fread($fp, 4096))) {
-		if (!xml_parse($xml_parser, $data, feof($fp))) {
-			throw new \DomainException(sprintf(
-				'XML error: %s at line %d',
-				xml_error_string(xml_get_error_code($xml_parser)),
-				xml_get_current_line_number($xml_parser)
-			));
-		}
-	}
-	xml_parser_free($xml_parser);
 }
-
-// We cannot add translation comments inside the XML files.
-// These messages are all used in the reports.  We repeat them
-// here, so we can add comments
-/* I18N: An option in a list-box */
-I18N::translate('sort by date of birth');
-/* I18N: An option in a list-box */
-I18N::translate('sort by date of marriage');
-/* I18N: An option in a list-box */
-I18N::translate('sort by date of death');

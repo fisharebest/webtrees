@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Theme;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,10 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Class AdministrationTheme - Theme for the control panel.
@@ -22,7 +26,7 @@ namespace Fisharebest\Webtrees;
 class AdministrationTheme extends BaseTheme {
 	/** {@inheritdoc} */
 	protected function stylesheets() {
-		$stylesheets = parent::stylesheets();
+		$stylesheets   = parent::stylesheets();
 		$stylesheets[] = WT_DATATABLES_BOOTSTRAP_CSS_URL;
 		$stylesheets[] = WT_BOOTSTRAP_DATETIMEPICKER_CSS_URL;
 		$stylesheets[] = $this->assetUrl() . 'style.css';
@@ -208,7 +212,7 @@ class AdministrationTheme extends BaseTheme {
 
 	/** {@inheritdoc} */
 	protected function secondaryMenuContent(array $menus) {
-		return implode('', array_map(function($menu) { return $menu->bootstrap(); }, $menus));
+		return implode('', array_map(function ($menu) { return $menu->bootstrap(); }, $menus));
 	}
 
 	/** {@inheritdoc} */

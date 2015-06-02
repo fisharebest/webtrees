@@ -75,6 +75,5 @@ Database::exec(
 	" WHERE setting_name = 'languages'"
 );
 
-
 // Update the version to indicate success
 Site::setPreference($schema_name, $next_version);

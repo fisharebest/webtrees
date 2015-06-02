@@ -23,6 +23,9 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\SimpleController;
+use Fisharebest\Webtrees\Query\QueryMedia;
+
 define('WT_SCRIPT_NAME', 'find.php');
 require './includes/session.php';
 
@@ -117,7 +120,7 @@ echo '<script>';
 <?php
 echo '</script>';
 
-$options = array();
+$options             = array();
 $options["option"][] = "findindi";
 $options["option"][] = "findfam";
 $options["option"][] = "findmedia";
@@ -127,14 +130,14 @@ $options["option"][] = "findnote";
 $options["option"][] = "findsource";
 $options["option"][] = "findspecialchar";
 $options["option"][] = "findfact";
-$options["form"][] = "formindi";
-$options["form"][] = "formfam";
-$options["form"][] = "formmedia";
-$options["form"][] = "formplace";
-$options["form"][] = "formrepo";
-$options["form"][] = "formnote";
-$options["form"][] = "formsource";
-$options["form"][] = "formspecialchar";
+$options["form"][]   = "formindi";
+$options["form"][]   = "formfam";
+$options["form"][]   = "formmedia";
+$options["form"][]   = "formplace";
+$options["form"][]   = "formrepo";
+$options["form"][]   = "formnote";
+$options["form"][]   = "formsource";
+$options["form"][]   = "formspecialchar";
 
 echo '<div id="find-page"><h3>', $controller->getPageTitle(), '</h3>';
 
@@ -142,7 +145,7 @@ echo '<div id="find-page"><h3>', $controller->getPageTitle(), '</h3>';
 if ($type == "indi") {
 	echo '<div id="find-header">
 	<form name="filterindi" method="get" onsubmit="return checknames(this);" action="find.php">
-	<input type="hidden" name="callback" value="'.$callback . '">
+	<input type="hidden" name="callback" value="' . $callback . '">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="type" value="indi">
 	<span>', /* I18N: Label for search field */ I18N::translate('Name contains'), '&nbsp;</span>
@@ -159,7 +162,7 @@ if ($type == "indi") {
 if ($type == "fam") {
 	echo '<div id="find-header">
 	<form name="filterfam" method="get" onsubmit="return checknames(this);" action="find.php">
-	<input type="hidden" name="callback" value="'.$callback . '">
+	<input type="hidden" name="callback" value="' . $callback . '">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="type" value="fam">
 	<span>', I18N::translate('Name contains'), '&nbsp;</span>
@@ -276,7 +279,7 @@ if ($type == 'specialchar') {
 	<form name="filterspecialchar" method="get" action="find.php">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="type" value="specialchar">
-	<input type="hidden" name="callback" value="'.$callback . '">
+	<input type="hidden" name="callback" value="' . $callback . '">
 	<p><select id="language_filter" name="language_filter" onchange="submit();">
 	<option value="">', I18N::translate('Change language'), '</option>';
 	$language_options = '';
@@ -302,9 +305,9 @@ if ($type == "facts") {
 	<table class="list_table width100" border="0">
 	<tr><td class="list_label" style="padding: 5px; font-weight: normal; white-space: normal;">';
 
-	$all = strlen($qs) ? explode(',', strtoupper($qs)) : array();
+	$all           = strlen($qs) ? explode(',', strtoupper($qs)) : array();
 	$preselDefault = array();
-	$preselCustom = array();
+	$preselCustom  = array();
 	foreach ($all as $one) {
 		if (GedcomTag::isTag($one)) {
 			$preselDefault[] = $one;
@@ -471,7 +474,7 @@ if ($type == "facts") {
 }
 
 if ($action == "filter") {
-	$filter = trim($filter);
+	$filter       = trim($filter);
 	$filter_array = explode(' ', preg_replace('/ {2,}/', ' ', $filter));
 
 	// Output Individual
@@ -480,7 +483,7 @@ if ($action == "filter") {
 		$myindilist = search_indis_names($filter_array, array($WT_TREE));
 		if ($myindilist) {
 			echo '<ul>';
-			usort($myindilist, __NAMESPACE__ . '\GedcomRecord::compare');
+			usort($myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
 			foreach ($myindilist as $indi) {
 				echo $indi->formatList('li', true);
 			}
@@ -504,7 +507,7 @@ if ($action == "filter") {
 
 		if ($myfamlist) {
 			echo '<ul>';
-			usort($myfamlist, __NAMESPACE__ . '\GedcomRecord::compare');
+			usort($myfamlist, '\Fisharebest\Webtrees\GedcomRecord::compare');
 			foreach ($myfamlist as $family) {
 				echo $family->formatList('li', true);
 			}
@@ -608,7 +611,7 @@ if ($action == "filter") {
 			$repo_list = get_repo_list($WT_TREE);
 		}
 		if ($repo_list) {
-			usort($repo_list, __NAMESPACE__ . '\GedcomRecord::compare');
+			usort($repo_list, '\Fisharebest\Webtrees\GedcomRecord::compare');
 			echo '<ul>';
 			foreach ($repo_list as $repo) {
 				echo '<li><a href="', $repo->getHtmlUrl(), '" onclick="pasteid(\'', $repo->getXref(), '\');"><span class="list_item">', $repo->getFullName(), '</span></a></li>';
@@ -630,7 +633,7 @@ if ($action == "filter") {
 			$mynotelist = get_note_list($WT_TREE);
 		}
 		if ($mynotelist) {
-			usort($mynotelist, __NAMESPACE__ . '\GedcomRecord::compare');
+			usort($mynotelist, '\Fisharebest\Webtrees\GedcomRecord::compare');
 			echo '<ul>';
 			foreach ($mynotelist as $note) {
 				echo '<li><a href="', $note->getHtmlUrl(), '" onclick="pasteid(\'', $note->getXref(), '\');"><span class="list_item">', $note->getFullName(), '</span></a></li>';
@@ -652,7 +655,7 @@ if ($action == "filter") {
 			$mysourcelist = get_source_list($WT_TREE);
 		}
 		if ($mysourcelist) {
-			usort($mysourcelist, __NAMESPACE__ . '\GedcomRecord::compare');
+			usort($mysourcelist, '\Fisharebest\Webtrees\GedcomRecord::compare');
 			echo '<ul>';
 			foreach ($mysourcelist as $source) {
 				echo '<li><a href="', $source->getHtmlUrl(), '" onclick="pasteid(\'', $source->getXref(), '\', \'',

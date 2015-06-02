@@ -1,5 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +14,14 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\File;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Site;
 
 /**
  * Check with the webtrees.net server for the latest version of webtrees.
@@ -28,8 +35,8 @@ namespace Fisharebest\Webtrees;
 function fetch_latest_version() {
 	$last_update_timestamp = Site::getPreference('LATEST_WT_VERSION_TIMESTAMP');
 	if ($last_update_timestamp < WT_TIMESTAMP - 24 * 60 * 60) {
-		$row = Database::prepare("SHOW VARIABLES LIKE 'version'")->fetchOneRow();
-		$params = '?w=' . WT_VERSION . '&p=' . PHP_VERSION . '&m=' . $row->value . '&o=' . (DIRECTORY_SEPARATOR === '/' ? 'u' : 'w');
+		$row                = Database::prepare("SHOW VARIABLES LIKE 'version'")->fetchOneRow();
+		$params             = '?w=' . WT_VERSION . '&p=' . PHP_VERSION . '&m=' . $row->value . '&o=' . (DIRECTORY_SEPARATOR === '/' ? 'u' : 'w');
 		$latest_version_txt = File::fetchUrl('http://dev.webtrees.net/build/latest-version.txt' . $params);
 		if ($latest_version_txt) {
 			Site::setPreference('LATEST_WT_VERSION', $latest_version_txt);
@@ -48,7 +55,7 @@ function fetch_latest_version() {
 /**
  * Convert a file upload PHP error code into user-friendly text.
  *
- * @param integer $error_code
+ * @param int $error_code
  *
  * @return string
  */
@@ -92,10 +99,10 @@ function file_upload_error_text($error_code) {
  * The following example is the DATE subrecord of the above BIRT subrecord:
  * <code>2 DATE 1 JAN 1900</code>
  *
- * @param integer $level  the N level of the subrecord to get
- * @param string  $tag    a gedcom tag or string to search for in the record (ie 1 BIRT or 2 DATE)
- * @param string  $gedrec the parent gedcom record to search in
- * @param integer $num    this allows you to specify which matching <var>$tag</var> to get.  Oftentimes a
+ * @param int    $level  the N level of the subrecord to get
+ * @param string $tag    a gedcom tag or string to search for in the record (ie 1 BIRT or 2 DATE)
+ * @param string $gedrec the parent gedcom record to search in
+ * @param int    $num    this allows you to specify which matching <var>$tag</var> to get.  Oftentimes a
  *                        gedcom record will have more that 1 of the same type of subrecord.  An individual may have
  *                        multiple events for example.  Passing $num=1 would get the first 1.  Passing $num=2 would get the
  *                        second one, etc.
@@ -107,10 +114,10 @@ function get_sub_record($level, $tag, $gedrec, $num = 1) {
 		return '';
 	}
 	// -- adding \n before and after gedrec
-	$gedrec = "\n" . $gedrec . "\n";
-	$tag = trim($tag);
+	$gedrec       = "\n" . $gedrec . "\n";
+	$tag          = trim($tag);
 	$searchTarget = "~[\n]" . $tag . "[\s]~";
-	$ct = preg_match_all($searchTarget, $gedrec, $match, PREG_SET_ORDER | PREG_OFFSET_CAPTURE);
+	$ct           = preg_match_all($searchTarget, $gedrec, $match, PREG_SET_ORDER | PREG_OFFSET_CAPTURE);
 	if ($ct == 0) {
 		return '';
 	}
@@ -138,8 +145,8 @@ function get_sub_record($level, $tag, $gedrec, $num = 1) {
  *
  * get the N+1 CONT or CONC lines of a gedcom subrecord
  *
- * @param integer $nlevel the level of the CONT lines to get
- * @param string  $nrec   the gedcom subrecord to search in
+ * @param int    $nlevel the level of the CONT lines to get
+ * @param string $nrec   the gedcom subrecord to search in
  *
  * @return string a string with all CONT lines merged
  */
@@ -166,7 +173,7 @@ function get_cont($nlevel, $nrec) {
  * @param array $a
  * @param array $b
  *
- * @return integer
+ * @return int
  */
 function event_sort($a, $b) {
 	if ($a['jd'] == $b['jd']) {
@@ -186,7 +193,7 @@ function event_sort($a, $b) {
  * @param array $a
  * @param array $b
  *
- * @return integer
+ * @return int
  */
 function event_sort_name($a, $b) {
 	if ($a['jd'] == $b['jd']) {
@@ -206,7 +213,7 @@ function event_sort_name($a, $b) {
  * @param Fact[] $arr
  */
 function sort_facts(&$arr) {
-	$dated = array();
+	$dated    = array();
 	$nondated = array();
 	//-- split the array into dated and non-dated arrays
 	$order = 0;
@@ -221,8 +228,8 @@ function sort_facts(&$arr) {
 	}
 
 	//-- sort each type of array
-	usort($dated, __NAMESPACE__ . '\Fact::compareDate');
-	usort($nondated, __NAMESPACE__ . '\Fact::compareType');
+	usort($dated, '\Fisharebest\Webtrees\Fact::compareDate');
+	usort($nondated, '\Fisharebest\Webtrees\Fact::compareType');
 
 	//-- merge the arrays back together comparing by Facts
 	$dc = count($dated);
@@ -294,7 +301,7 @@ function get_associate_relationship_name(Individual $person1, Individual $person
  *
  * @param Individual $person1   The person to compute the relationship from
  * @param Individual $person2   The person to compute the relatiohip to
- * @param integer    $maxlength The maximum length of path
+ * @param int        $maxlength The maximum length of path
  *
  * @return array|bool An array of nodes on the relationship path, or false if no path found
  */
@@ -351,12 +358,12 @@ function get_relationship(Individual $person1, Individual $person2, $maxlength =
 					if (!isset($visited[$spouse->getXref()])) {
 						$node1 = $node;
 						$node1['length']++;
-						$node1['path'][] = $spouse;
-						$node1['indi'] = $spouse;
+						$node1['path'][]      = $spouse;
+						$node1['indi']        = $spouse;
 						$node1['relations'][] = $parent_codes[$spouse->getSex()];
-						$p1nodes[] = $node1;
+						$p1nodes[]            = $node1;
 						if ($spouse === $person2) {
-							$found = true;
+							$found   = true;
 							$resnode = $node1;
 						} else {
 							$visited[$spouse->getXref()] = true;
@@ -367,12 +374,12 @@ function get_relationship(Individual $person1, Individual $person2, $maxlength =
 					if (!isset($visited[$child->getXref()])) {
 						$node1 = $node;
 						$node1['length']++;
-						$node1['path'][] = $child;
-						$node1['indi'] = $child;
+						$node1['path'][]      = $child;
+						$node1['indi']        = $child;
 						$node1['relations'][] = $sibling_codes[$child->getSex()];
-						$p1nodes[] = $node1;
+						$p1nodes[]            = $node1;
 						if ($child === $person2) {
-							$found = true;
+							$found   = true;
 							$resnode = $node1;
 						} else {
 							$visited[$child->getXref()] = true;
@@ -387,12 +394,12 @@ function get_relationship(Individual $person1, Individual $person2, $maxlength =
 					if (!in_array($spouse->getXref(), $node1) || !isset($visited[$spouse->getXref()])) {
 						$node1 = $node;
 						$node1['length']++;
-						$node1['path'][] = $spouse;
-						$node1['indi'] = $spouse;
+						$node1['path'][]      = $spouse;
+						$node1['indi']        = $spouse;
 						$node1['relations'][] = $spouse_codes[$spouse->getSex()];
-						$p1nodes[] = $node1;
+						$p1nodes[]            = $node1;
 						if ($spouse === $person2) {
-							$found = true;
+							$found   = true;
 							$resnode = $node1;
 						} else {
 							$visited[$spouse->getXref()] = true;
@@ -403,12 +410,12 @@ function get_relationship(Individual $person1, Individual $person2, $maxlength =
 					if (!isset($visited[$child->getXref()])) {
 						$node1 = $node;
 						$node1['length']++;
-						$node1['path'][] = $child;
-						$node1['indi'] = $child;
+						$node1['path'][]      = $child;
+						$node1['indi']        = $child;
 						$node1['relations'][] = $child_codes[$child->getSex()];
-						$p1nodes[] = $node1;
+						$p1nodes[]            = $node1;
 						if ($child === $person2) {
-							$found = true;
+							$found   = true;
 							$resnode = $node1;
 						} else {
 							$visited[$child->getXref()] = true;
@@ -436,7 +443,7 @@ function get_relationship_name($nodes) {
 	}
 	$person1 = $nodes['path'][0];
 	$person2 = $nodes['path'][count($nodes['path']) - 1];
-	$path = array_slice($nodes['relations'], 1);
+	$path    = array_slice($nodes['relations'], 1);
 	// Look for paths with *specific* names first.
 	// Note that every combination must be listed separately, as the same English
 	// name can be used for many different relationships.  e.g.
@@ -461,8 +468,8 @@ function get_relationship_name($nodes) {
 }
 
 /**
- * @param integer $n
- * @param string  $sex
+ * @param int    $n
+ * @param string $sex
  *
  * @return string
  */
@@ -596,9 +603,9 @@ function cousin_name($n, $sex) {
  * A variation on cousin_name(), for constructs such as “sixth great-nephew”
  * Currently used only by Spanish relationship names.
  *
- * @param integer $n
- * @param string  $sex
- * @param string  $relation
+ * @param int    $n
+ * @param string $sex
+ * @param string $relation
  *
  * @return string
  */
@@ -1532,7 +1539,7 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 	// Look for generic/pattern relationships.
 	if (preg_match('/^((?:mot|fat|par)+)(bro|sis|sib)$/', $path, $match)) {
 		// siblings of direct ancestors
-		$up = strlen($match[1]) / 3;
+		$up       = strlen($match[1]) / 3;
 		$bef_last = substr($path, -6, 3);
 		switch ($up) {
 		case 3:
@@ -1673,7 +1680,7 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 	}
 	if (preg_match('/^(?:bro|sis|sib)((?:son|dau|chi)+)$/', $path, $match)) {
 		// direct descendants of siblings
-		$down = strlen($match[1]) / 3 + 1; // Add one, as we count generations from the common ancestor
+		$down  = strlen($match[1]) / 3 + 1; // Add one, as we count generations from the common ancestor
 		$first = substr($path, 0, 3);
 		switch ($down) {
 		case 4:
@@ -2054,18 +2061,18 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 				case 'F':
 					return I18N::translate('great ×%s granddaughter', I18N::number($up - 2));
 				default:
-					return I18N::translate('great ×%s grandchild', I18N::number(up - 2));
+					return I18N::translate('great ×%s grandchild', I18N::number($up - 2));
 				}
 			}
 		}
 	}
 	if (preg_match('/^((?:mot|fat|par)+)(?:bro|sis|sib)((?:son|dau|chi)+)$/', $path, $match)) {
 		// cousins in English
-		$ascent = $match[1];
+		$ascent  = $match[1];
 		$descent = $match[2];
-		$up = strlen($ascent) / 3;
-		$down = strlen($descent) / 3;
-		$cousin = min($up, $down); // Moved out of switch (en/default case) so that
+		$up      = strlen($ascent) / 3;
+		$down    = strlen($descent) / 3;
+		$cousin  = min($up, $down); // Moved out of switch (en/default case) so that
 		$removed = abs($down - $up); // Spanish (and other languages) can use it, too.
 
 		// Different languages have different rules for naming cousins.  For example,
@@ -2142,8 +2149,8 @@ function get_relationship_name_from_path($path, Individual $person1 = null, Indi
 	// Try splitting at every point, and choose the path with the shorted translated name.
 
 	$relationship = null;
-	$path1 = substr($path, 0, 3);
-	$path2 = substr($path, 3);
+	$path1        = substr($path, 0, 3);
+	$path2        = substr($path, 3);
 	while ($path2) {
 		$tmp = I18N::translate(
 		// I18N: A complex relationship, such as “third-cousin’s great-uncle”
@@ -2205,7 +2212,7 @@ function get_query_url($overwrite = null, $separator = '&') {
  *
  * @param string $file
  *
- * @return boolean
+ * @return bool
  */
 function isFileExternal($file) {
 	return strpos($file, '://') !== false;

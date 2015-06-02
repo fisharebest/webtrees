@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Controller;
 
 /**
  * webtrees: online genealogy
@@ -16,20 +16,25 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Theme;
 use Rhumsaa\Uuid\Uuid;
 
 /**
  * Class DescendancyController - Controller for the descendancy chart
  */
 class DescendancyController extends ChartController {
-
-	/** @var integer Show boxes for cousins */
+	/** @var int Show boxes for cousins */
 	public $show_cousins;
 
-	/** @var integer Determines style of chart */
+	/** @var int Determines style of chart */
 	public $chart_style;
 
-	/** @var integer Number of generations to display */
+	/** @var int Number of generations to display */
 	public $generations;
 
 	// d'Aboville numbering system [ http://www.saintclair.org/numbers/numdob.html ]
@@ -62,11 +67,9 @@ class DescendancyController extends ChartController {
 	 * Print a child family
 	 *
 	 * @param Individual $person
-	 * @param integer    $depth the descendancy depth to show
+	 * @param int        $depth the descendancy depth to show
 	 * @param string     $label
 	 * @param string     $gpid
-	 *
-	 * @return void
 	 */
 	public function printChildFamily(Individual $person, $depth, $label = '1.', $gpid = '') {
 
@@ -86,9 +89,7 @@ class DescendancyController extends ChartController {
 	 * print a child descendancy
 	 *
 	 * @param Individual $person
-	 * @param integer    $depth the descendancy depth to show
-	 *
-	 * @return void
+	 * @param int        $depth the descendancy depth to show
 	 */
 	public function printChildDescendancy(Individual $person, $depth) {
 		echo "<li>";
@@ -124,7 +125,7 @@ class DescendancyController extends ChartController {
 		}
 		$this->dabo_num[$level]++;
 		$this->dabo_num[$level + 1] = 0;
-		$this->dabo_sex[$level] = $person->getSex();
+		$this->dabo_sex[$level]     = $person->getSex();
 		for ($i = 0; $i <= $level; $i++) {
 			$isf = $this->dabo_sex[$i];
 			if ($isf === 'M') {
@@ -154,9 +155,7 @@ class DescendancyController extends ChartController {
 	 *
 	 * @param Individual $person
 	 * @param Family     $family
-	 * @param integer       $depth the descendancy depth to show
-	 *
-	 * @return void
+	 * @param int        $depth the descendancy depth to show
 	 */
 	private function printFamilyDescendancy(Individual $person, Family $family, $depth) {
 		$uid = Uuid::uuid4(); // create a unique ID
@@ -226,7 +225,7 @@ class DescendancyController extends ChartController {
 	 * Find all the individuals that are descended from an individual.
 	 *
 	 * @param Individual   $person
-	 * @param integer         $n
+	 * @param int          $n
 	 * @param Individual[] $array
 	 *
 	 * @return Individual[]
@@ -245,6 +244,7 @@ class DescendancyController extends ChartController {
 				$array = $this->individualDescendancy($child, $n - 1, $array);
 			}
 		}
+
 		return $array;
 	}
 
@@ -252,7 +252,7 @@ class DescendancyController extends ChartController {
 	 * Find all the families that are descended from an individual.
 	 *
 	 * @param Individual $person
-	 * @param integer       $n
+	 * @param int        $n
 	 * @param Family[]   $array
 	 *
 	 * @return Family[]
@@ -267,6 +267,7 @@ class DescendancyController extends ChartController {
 				$array = $this->familyDescendancy($child, $n - 1, $array);
 			}
 		}
+
 		return $array;
 	}
 }

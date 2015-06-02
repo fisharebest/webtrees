@@ -78,7 +78,7 @@ return array(
     // Zend_Validate_EmailAddress
     "Invalid type given. String expected" => "Chybný typ. Byl očekáván řetězec",
     "'%value%' is no valid email address in the basic format local-part@hostname" => "'%value%' není platná e-mailová adresa ve formátu local-part@hostname",
-    "'%hostname%' is no valid hostname for email address '%value%'" => "'%hostname%' není platné hostname pro emailovou adresu '%value%'",
+    "'%hostname%' is not a valid hostname for email address '%value%'" => "'%hostname%' není platné hostname pro emailovou adresu '%value%'",
     "'%hostname%' does not appear to have a valid MX record for the email address '%value%'" => "'%hostname%' neobsahuje platný MX záznam pro e-mailovou adresu '%value%'",
     "'%hostname%' is not in a routable network segment. The email address '%value%' should not be resolved from public network" => "'%hostname%' není v směrovatelném úseku sítě. E-mailová adresa '%value%' by neměla být požadována z veřejné sítě",
     "'%localPart%' can not be matched against dot-atom format" => "'%localPart%' nemůže být porovnán proti dot-atom formátu",

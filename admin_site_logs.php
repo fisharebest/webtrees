@@ -16,6 +16,7 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Controller\PageController;
 use PDO;
 
 /**
@@ -150,7 +151,7 @@ case 'load_json':
 
 	if ($length) {
 		Auth::user()->setPreference('admin_site_log_page_size', $length);
-		$limit = " LIMIT :limit OFFSET :offset";
+		$limit          = " LIMIT :limit OFFSET :offset";
 		$args['limit']  = $length;
 		$args['offset'] = $start;
 	} else {
@@ -177,7 +178,7 @@ case 'load_json':
 		'draw'            => Filter::getInteger('draw'),
 		'recordsTotal'    => $recordsTotal,
 		'recordsFiltered' => $recordsFiltered,
-		'data'            => $data
+		'data'            => $data,
 	));
 
 	return;
@@ -193,7 +194,7 @@ $controller
 		jQuery(".table-site-logs").dataTable( {
 			processing: true,
 			serverSide: true,
-			ajax: "'.WT_BASE_URL . WT_SCRIPT_NAME . '?action=load_json&from=' . $from . '&to=' . $to . '&type=' . $type . '&text=' . rawurlencode($text) . '&ip=' . rawurlencode($ip) . '&user=' . rawurlencode($user) . '&gedc=' . rawurlencode($gedc) . '",
+			ajax: "' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=load_json&from=' . $from . '&to=' . $to . '&type=' . $type . '&text=' . rawurlencode($text) . '&ip=' . rawurlencode($ip) . '&user=' . rawurlencode($user) . '&gedc=' . rawurlencode($gedc) . '",
 			' . I18N::datatablesI18N(array(10, 20, 50, 100, 500, 1000, -1)) . ',
 			sorting: [[ 0, "desc" ]],
 			pageLength: ' . Auth::user()->getPreference('admin_site_log_page_size', 10) . ',
@@ -266,7 +267,7 @@ foreach (User::all() as $tmp_user) {
 			<label for="type">
 				<?php echo I18N::translate('Type'); ?>
 			</label>
-			<?php echo select_edit_control('type', array(''=>'', 'auth'=>'auth', 'config'=>'config', 'debug'=>'debug', 'edit'=>'edit', 'error'=>'error', 'media'=>'media', 'search'=>'search'), null, $type, 'class="form-control"'); ?>
+			<?php echo select_edit_control('type', array('' => '', 'auth' => 'auth', 'config' => 'config', 'debug' => 'debug', 'edit' => 'edit', 'error' => 'error', 'media' => 'media', 'search' => 'search'), null, $type, 'class="form-control"'); ?>
 		</div>
 
 		<div class="form-group col-xs-6 col-sm-4">

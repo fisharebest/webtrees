@@ -23,6 +23,8 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\AncestryController;
+
 define('WT_SCRIPT_NAME', 'ancestry.php');
 require './includes/session.php';
 
@@ -119,6 +121,7 @@ $controller
 
 if ($controller->error_message) {
 	echo '<p class="ui-state-error">', $controller->error_message, '</p>';
+
 	return;
 }
 switch ($controller->chart_style) {

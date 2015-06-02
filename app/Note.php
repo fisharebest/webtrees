@@ -21,28 +21,7 @@ namespace Fisharebest\Webtrees;
  */
 class Note extends GedcomRecord {
 	const RECORD_TYPE = 'NOTE';
-	const URL_PREFIX = 'note.php?nid=';
-
-	/**
-	 * Get an instance of a note object.  For single records,
-	 * we just receive the XREF.  For bulk records (such as lists
-	 * and search results) we can receive the GEDCOM data as well.
-	 *
-	 * @param string      $xref
-	 * @param Tree        $tree
-	 * @param string|null $gedcom
-	 *
-	 * @return Note|null
-	 */
-	public static function getInstance($xref, Tree $tree, $gedcom = null) {
-		$record = parent::getInstance($xref, $tree, $gedcom);
-
-		if ($record instanceof Note) {
-			return $record;
-		} else {
-			return null;
-		}
-	}
+	const URL_PREFIX  = 'note.php?nid=';
 
 	/**
 	 * Get the text contents of the note
@@ -63,7 +42,7 @@ class Note extends GedcomRecord {
 		$linked_ids = Database::prepare(
 			"SELECT l_from FROM `##link` WHERE l_to=? AND l_file=?"
 		)->execute(array(
-			$this->xref, $this->tree->getTreeId()
+			$this->xref, $this->tree->getTreeId(),
 		))->fetchOneColumn();
 		foreach ($linked_ids as $linked_id) {
 			$linked_record = GedcomRecord::getInstance($linked_id, $this->tree);
@@ -87,7 +66,7 @@ class Note extends GedcomRecord {
 			"SELECT o_gedcom FROM `##other` WHERE o_id = :xref AND o_file = :tree_id AND o_type = 'NOTE'"
 		)->execute(array(
 			'xref'    => $xref,
-			'tree_id' => $tree_id
+			'tree_id' => $tree_id,
 		))->fetchOne();
 	}
 

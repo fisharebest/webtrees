@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1f071d48335694823b978cad7eaafd55",
+    "hash": "7afd564aae4bbb5a37fce9cdf18ffe16",
     "packages": [
         {
             "name": "bombayworks/zendframework1",
-            "version": "v1.12.11",
+            "version": "v1.12.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bombayworks/zendframework1.git",
-                "reference": "64447e39d4c7a08ba17d2087a89caab713804d27"
+                "reference": "9d7220bba71e86518ce93abbe47d978f275f03dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/64447e39d4c7a08ba17d2087a89caab713804d27",
-                "reference": "64447e39d4c7a08ba17d2087a89caab713804d27",
+                "url": "https://api.github.com/repos/bombayworks/zendframework1/zipball/9d7220bba71e86518ce93abbe47d978f275f03dc",
+                "reference": "9d7220bba71e86518ce93abbe47d978f275f03dc",
                 "shasum": ""
             },
             "require": {
@@ -55,7 +55,7 @@
                 "ZF1",
                 "framework"
             ],
-            "time": "2015-02-11 16:00:41"
+            "time": "2015-05-20 16:00:33"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -91,8 +91,7 @@
                 {
                     "name": "Edward Z. Yang",
                     "email": "admin@htmlpurifier.org",
-                    "homepage": "http://ezyang.com",
-                    "role": "Developer"
+                    "homepage": "http://ezyang.com"
                 }
             ],
             "description": "Standards compliant HTML filter written in PHP",
@@ -104,16 +103,16 @@
         },
         {
             "name": "fisharebest/algorithm",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fisharebest/algorithm.git",
-                "reference": "ddfbf31e7b1ef49f227409a41261770ed3fb467b"
+                "reference": "39c51e71151410c72047467d63231aa377cf934a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fisharebest/algorithm/zipball/ddfbf31e7b1ef49f227409a41261770ed3fb467b",
-                "reference": "ddfbf31e7b1ef49f227409a41261770ed3fb467b",
+                "url": "https://api.github.com/repos/fisharebest/algorithm/zipball/39c51e71151410c72047467d63231aa377cf934a",
+                "reference": "39c51e71151410c72047467d63231aa377cf934a",
                 "shasum": ""
             },
             "require": {
@@ -146,7 +145,7 @@
                 "Algorithm",
                 "dijkstra"
             ],
-            "time": "2015-02-15 21:38:53"
+            "time": "2015-05-15 17:06:43"
         },
         {
             "name": "fisharebest/ext-calendar",
@@ -448,7 +447,7 @@
             "time": "2014-06-05 11:42:24"
         },
         {
-            "name": "rhumsaa/uuid",
+            "name": "ramsey/uuid",
             "version": "2.8.0",
             "source": {
                 "type": "git",

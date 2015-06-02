@@ -23,6 +23,9 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\SimpleController;
+use Fisharebest\Webtrees\Query\QueryMedia;
+
 define('WT_SCRIPT_NAME', 'addmedia.php');
 require './includes/session.php';
 
@@ -47,7 +50,7 @@ $controller
 	->addInlineJavascript('autocomplete();')
 	->restrictAccess(Auth::isMember($WT_TREE));
 
-$disp = true;
+$disp  = true;
 $media = Media::getInstance($pid, $WT_TREE);
 if ($media) {
 	$disp = $media->canShow();
@@ -66,7 +69,7 @@ if (!Auth::isEditor($WT_TREE) || !$disp) {
 	return;
 }
 
-// TODO - there is a lot of common code in the create and update cases....
+// There is a lot of common code in the create and update cases....
 // .... and also in the admin_media_upload.php script
 
 switch ($action) {
@@ -320,7 +323,7 @@ case 'update': // Save the information from the “editmedia” action
 		$oldServerFile  = $media->getServerFilename('main');
 		$oldServerThumb = $media->getServerFilename('thumb');
 
-		$newmedia = new Media("xxx", "0 @xxx@ OBJE\n1 FILE " . $newFilename, null, $WT_TREE);
+		$newmedia       = new Media("xxx", "0 @xxx@ OBJE\n1 FILE " . $newFilename, null, $WT_TREE);
 		$newServerFile  = $newmedia->getServerFilename('main');
 		$newServerThumb = $newmedia->getServerFilename('thumb');
 
@@ -366,9 +369,9 @@ case 'update': // Save the information from the “editmedia” action
 
 	// Insert the 1 FILE xxx record into the arrays used by function handle_updates()
 	$glevels = array_merge(array('1'), $glevels);
-	$tag = array_merge(array('FILE'), $tag);
-	$islink = array_merge(array(0), $islink);
-	$text = array_merge(array($newFilename), $text);
+	$tag     = array_merge(array('FILE'), $tag);
+	$islink  = array_merge(array(0), $islink);
+	$text    = array_merge(array($newFilename), $text);
 
 	$record = GedcomRecord::getInstance($pid, $WT_TREE);
 	$newrec = "0 @$pid@ OBJE\n";

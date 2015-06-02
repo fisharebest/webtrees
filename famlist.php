@@ -25,6 +25,9 @@ namespace Fisharebest\Webtrees;
  */
 global $UNKNOWN_NN, $UNKNOWN_PN, $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Query\QueryName;
+
 define('WT_SCRIPT_NAME', 'famlist.php');
 require './includes/session.php';
 
@@ -159,7 +162,7 @@ if (!Auth::isSearchEngine()) {
 		$list[] = '<a href="' . WT_SCRIPT_NAME . '?show_all=yes' . '&amp;ged=' . $WT_TREE->getNameUrl() . '">' . I18N::translate('All') . '</a>';
 	}
 }
-echo '<p class="center alpha_index">', join(' | ', $list), '</p>';
+echo '<p class="center alpha_index">', implode(' | ', $list), '</p>';
 
 // Search spiders don't get an option to show/hide the surname sublists,
 // nor does it make sense on the all/unknown/surname views
@@ -248,7 +251,7 @@ if ($show === 'indi' || $show === 'surn') {
 				if ($show_all === 'no') {
 					echo '<h2 class="center">', I18N::translate('Individuals with surname %s', $legend), '</h2>';
 				}
-				echo '<p class="center alpha_index">', join(' | ', $list), '</p>';
+				echo '<p class="center alpha_index">', implode(' | ', $list), '</p>';
 			}
 		}
 		if ($show === 'indi') {

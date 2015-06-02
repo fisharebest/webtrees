@@ -78,7 +78,7 @@ return array(
     // Zend_Validate_EmailAddress
     "Invalid type given. String expected" => "不正な形式です。文字列が期待されています",
     "'%value%' is no valid email address in the basic format local-part@hostname" => "'%value%' はメールアドレスの基本的な形式 local-part@hostname ではありません",
-    "'%hostname%' is no valid hostname for email address '%value%'" => "メールアドレス '%value%' 内の '%hostname%' は有効なホスト名ではありません",
+    "'%hostname%' is not a valid hostname for email address '%value%'" => "メールアドレス '%value%' 内の '%hostname%' は有効なホスト名ではありません",
     "'%hostname%' does not appear to have a valid MX record for the email address '%value%'" => "メールアドレス '%value%' 内の '%hostname%' は有効な MX レコードではないようです",
     "'%hostname%' is not in a routable network segment. The email address '%value%' should not be resolved from public network" => "'%hostname%' はネットワークセグメントにありません。メールアドレス '%value%' はパブリックなネットワークから名前解決できませんでした",
     "'%localPart%' can not be matched against dot-atom format" => "'%localPart%' はドットアトム形式ではありません",

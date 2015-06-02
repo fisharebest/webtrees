@@ -1,5 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -16,7 +15,7 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use PHPUnit_Framework_TestCase;
+use Fisharebest\Webtrees\Menu;
 
 /**
  * Test harness for the class Menu
@@ -24,16 +23,12 @@ use PHPUnit_Framework_TestCase;
 class MenuTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Prepare the environment for these tests.
-	 *
-	 * @return void
 	 */
 	public function setUp() {
 	}
 
 	/**
 	 * Test the constructor with default parameters.
-	 *
-	 * @return void
 	 */
 	public function testConstructorDefaults() {
 		$menu = new Menu('Test!');
@@ -47,12 +42,10 @@ class MenuTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test the constructor with non-default parameters.
-	 *
-	 * @return void
 	 */
 	public function testConstructorNonDefaults() {
 		$submenus = array(new Menu('Submenu'));
-		$menu = new Menu('Test!', 'link.html', 'link-class', 'test();', $submenus);
+		$menu     = new Menu('Test!', 'link.html', 'link-class', 'test();', $submenus);
 
 		$this->assertSame('Test!', $menu->getLabel());
 		$this->assertSame('link.html', $menu->getLink());
@@ -63,8 +56,6 @@ class MenuTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test the getter/setter for the label.
-	 *
-	 * @return void
 	 */
 	public function testGetterSetterLabel() {
 		$menu = new Menu('Test!');
@@ -77,8 +68,6 @@ class MenuTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test the getter/setter for the link.
-	 *
-	 * @return void
 	 */
 	public function testGetterSetterLink() {
 		$menu = new Menu('Test!');
@@ -91,8 +80,6 @@ class MenuTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test the getter/setter for the ID.
-	 *
-	 * @return void
 	 */
 	public function testGetterSetterId() {
 		$menu = new Menu('Test!');
@@ -105,8 +92,6 @@ class MenuTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test the getter/setter for the Onclick event.
-	 *
-	 * @return void
 	 */
 	public function testGetterSetterOnclick() {
 		$menu = new Menu('Test!');
@@ -119,11 +104,9 @@ class MenuTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test the getter/setter for the submenus.
-	 *
-	 * @return void
 	 */
 	public function testGetterSetterSubmenus() {
-		$menu = new Menu('Test!');
+		$menu     = new Menu('Test!');
 		$submenus = array(
 			new Menu('Sub1'),
 			new Menu('Sub2'),
@@ -137,19 +120,15 @@ class MenuTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test the string cast.
-	 *
-	 * @return void
 	 */
 	public function testStringCast() {
 		$menu = new Menu('Test!');
 
-		$this->assertSame((string)$menu, $menu->getMenuAsList());
+		$this->assertSame((string) $menu, $menu->getMenuAsList());
 	}
 
 	/**
 	 * Test the list rendering for a simple link.
-	 *
-	 * @return void
 	 */
 	public function testFormatAsList() {
 		$menu = new Menu('Test!', 'link.html');
@@ -159,8 +138,6 @@ class MenuTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test the list rendering for a simple link with a CSS ID.
-	 *
-	 * @return void
 	 */
 	public function testFormatAsListWithClass() {
 		$menu = new Menu('Test!', 'link.html', 'link-class');
@@ -170,8 +147,6 @@ class MenuTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test the list rendering for an empty target.
-	 *
-	 * @return void
 	 */
 	public function testFormatAsListWithNoTarget() {
 		$menu = new Menu('Test!', '');
@@ -181,8 +156,6 @@ class MenuTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test the list rendering for a default (hash) target.
-	 *
-	 * @return void
 	 */
 	public function testFormatAsListWithHashTarget() {
 		$menu = new Menu('Test!');
@@ -192,8 +165,6 @@ class MenuTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test the list rendering for an onclick link.
-	 *
-	 * @return void
 	 */
 	public function testFormatAsListWithOnclick() {
 		$menu = new Menu('Test!', '#', '', 'return test();');
@@ -203,8 +174,6 @@ class MenuTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test the list rendering for an onclick link.
-	 *
-	 * @return void
 	 */
 	public function testFormatAsListWithOnclickAndId() {
 		$menu = new Menu('Test!', '#', 'link-class', 'return test();');

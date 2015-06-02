@@ -16,6 +16,8 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Controller\FanchartController;
+
 define('WT_SCRIPT_NAME', 'fanchart.php');
 require './includes/session.php';
 
@@ -115,7 +117,7 @@ $controller
 
 if ($controller->error_message) {
 	echo '<p class="ui-state-error">', $controller->error_message, '</p>';
-	
+
 	return;
 }
 

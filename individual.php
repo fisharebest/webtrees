@@ -23,6 +23,8 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\IndividualController;
+
 define('WT_SCRIPT_NAME', 'individual.php');
 require './includes/session.php';
 $controller = new IndividualController;
@@ -32,7 +34,7 @@ $controller
 if ($controller->record && $controller->record->canShow()) {
 	if (Filter::get('action') == 'ajax') {
 		$controller->ajaxRequest();
-		
+
 		return;
 	}
 	// Generate the sidebar content *before* we display the page header,
@@ -82,13 +84,13 @@ if ($controller->record && $controller->record->canShow()) {
 	$controller->pageHeader();
 	echo '<h2>', $controller->record->getFullName(), '</h2>';
 	echo '<p class="ui-state-highlight">', I18N::translate('The details of this individual are private.'), '</p>';
-	
+
 	return;
 } else {
 	http_response_code(404);
 	$controller->pageHeader();
 	echo '<p class="ui-state-error">', I18N::translate('This individual does not exist or you do not have permission to view it.'), '</p>';
-	
+
 	return;
 }
 
@@ -244,3 +246,4 @@ echo
 		$sidebar_html;
 	}
 	echo '</div>'; // close #main
+

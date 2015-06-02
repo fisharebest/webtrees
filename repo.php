@@ -16,6 +16,8 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Controller\RepositoryController;
+
 define('WT_SCRIPT_NAME', 'repo.php');
 require './includes/session.php';
 
@@ -64,7 +66,7 @@ if ($controller->record && $controller->record->canShow()) {
 	http_response_code(404);
 	$controller->pageHeader();
 	echo '<p class="ui-state-error">', I18N::translate('This repository does not exist or you do not have permission to view it.'), '</p>';
-	
+
 	return;
 }
 
@@ -97,7 +99,7 @@ echo '<div id="repo-tabs">
 		// Sort the facts
 		usort(
 			$facts,
-			function(Fact $x, Fact $y) {
+			function (Fact $x, Fact $y) {
 				static $order = array(
 					'NAME' => 0,
 					'ADDR' => 1,
@@ -108,6 +110,7 @@ echo '<div id="repo-tabs">
 					'_UID' => 6,
 					'CHAN' => 7,
 				);
+
 				return
 					(array_key_exists($x->getTag(), $order) ? $order[$x->getTag()] : PHP_INT_MAX)
 					-
@@ -126,7 +129,6 @@ echo '<div id="repo-tabs">
 		}
 		echo '</table>
 	</div>';
-
 
 	// Sources linked to this repository
 	if ($linked_sour) {

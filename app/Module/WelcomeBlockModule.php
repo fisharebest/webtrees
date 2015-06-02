@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,10 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Theme;
 
 /**
  * Class WelcomeBlockModule
@@ -35,10 +39,10 @@ class WelcomeBlockModule extends AbstractModule implements ModuleBlockInterface 
 		global $controller, $WT_TREE;
 
 		$indi_xref = $controller->getSignificantIndividual()->getXref();
-		$id = $this->getName() . $block_id;
-		$class = $this->getName() . '_block';
-		$title = '<span dir="auto">' . $WT_TREE->getTitleHtml() . '</span>';
-		$content = '<table><tr>';
+		$id        = $this->getName() . $block_id;
+		$class     = $this->getName() . '_block';
+		$title     = '<span dir="auto">' . $WT_TREE->getTitleHtml() . '</span>';
+		$content   = '<table><tr>';
 		$content .= '<td><a href="pedigree.php?rootid=' . $indi_xref . '&amp;ged=' . $WT_TREE->getNameUrl() . '"><i class="icon-pedigree"></i><br>' . I18N::translate('Default chart') . '</a></td>';
 		$content .= '<td><a href="individual.php?pid=' . $indi_xref . '&amp;ged=' . $WT_TREE->getNameUrl() . '"><i class="icon-indis"></i><br>' . I18N::translate('Default individual') . '</a></td>';
 		if (Site::getPreference('USE_REGISTRATION_MODULE') && !Auth::check()) {

@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Report;
 
 /**
  * webtrees: online genealogy
@@ -75,13 +75,13 @@ class ReportBaseImage extends ReportBaseElement {
 	 * @param string $ln    T:same line, N:next line
 	 */
 	public function __construct($file, $x, $y, $w, $h, $align, $ln) {
-		$this->file = $file;
-		$this->width = $w;
+		$this->file   = $file;
+		$this->width  = $w;
 		$this->height = $h;
-		$this->x = $x;
-		$this->y = $y;
-		$this->align = $align;
-		$this->line = $ln;
+		$this->x      = $x;
+		$this->y      = $y;
+		$this->align  = $align;
+		$this->line   = $ln;
 
 		return 0;
 	}
@@ -91,7 +91,7 @@ class ReportBaseImage extends ReportBaseElement {
 	 *
 	 * @return float
 	 */
-	function getHeight($renderer) {
+	public function getHeight($renderer) {
 		return $this->height;
 	}
 
@@ -100,7 +100,7 @@ class ReportBaseImage extends ReportBaseElement {
 	 *
 	 * @return float
 	 */
-	function getWidth($renderer) {
+	public function getWidth($renderer) {
 		return $this->width;
 	}
 }

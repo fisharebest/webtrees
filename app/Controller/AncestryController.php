@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Controller;
 
 /**
  * webtrees: online genealogy
@@ -15,19 +15,22 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Theme;
 
 /**
  * Class AncestryController - Controller for the ancestry chart
  */
 class AncestryController extends ChartController {
-
-	/** @var integer Show boxes for cousins */
+	/** @var int Show boxes for cousins */
 	public $show_cousins;
 
-	/** @var integer Determines style of chart */
+	/** @var int Determines style of chart */
 	public $chart_style;
 
-	/** @var integer Number of generations to display */
+	/** @var int Number of generations to display */
 	public $generations;
 
 	/**
@@ -57,8 +60,8 @@ class AncestryController extends ChartController {
 	 * print a child ascendancy
 	 *
 	 * @param Individual $individual
-	 * @param integer    $sosa  child sosa number
-	 * @param integer    $depth the ascendancy depth to show
+	 * @param int        $sosa  child sosa number
+	 * @param int        $depth the ascendancy depth to show
 	 */
 	public function printChildAscendancy(Individual $individual, $sosa, $depth) {
 		echo '<li>';

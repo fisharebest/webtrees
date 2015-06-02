@@ -16,6 +16,8 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Controller\SimpleController;
+use Fisharebest\Webtrees\Module\CkeditorModule;
 use PDO;
 
 /**

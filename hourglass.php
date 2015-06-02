@@ -23,6 +23,8 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\HourglassController;
+
 define('WT_SCRIPT_NAME', 'hourglass.php');
 require './includes/session.php';
 

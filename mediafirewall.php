@@ -91,7 +91,7 @@ function applyWatermark($im, Tree $tree) {
 /**
  * @param resource $im
  * @param string   $text
- * @param integer  $maxsize
+ * @param int      $maxsize
  * @param string   $color
  * @param string   $font
  * @param string   $vpos
@@ -185,7 +185,7 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 	// apply the text
 	if ($useTTF) {
 		// if imagettftext throws errors, catch them with a custom error handler
-		set_error_handler(__NAMESPACE__ . '\\imagettftextErrorHandler');
+		set_error_handler('\Fisharebest\Webtrees\\imagettftextErrorHandler');
 		imagettftext($im, $taille, $rotation, $pos_x, $pos_y, $textcolor, 'includes/fonts/' . $font, $text);
 		restore_error_handler();
 	}
@@ -201,11 +201,11 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 }
 
 /**
- * @param integer $t
- * @param integer $mxl
- * @param string  $text
+ * @param int    $t
+ * @param int    $mxl
+ * @param string $text
  *
- * @return integer
+ * @return int
  */
 function textlength($t, $mxl, $text) {
 	$taille_c = $t;
@@ -224,10 +224,10 @@ function textlength($t, $mxl, $text) {
  * imagettftext is the function that is most likely to throw an error
  * use this custom error handler to catch and log it
  *
- * @param integer $errno
- * @param string  $errstr
+ * @param int    $errno
+ * @param string $errstr
  *
- * @return boolean
+ * @return bool
  */
 function imagettftextErrorHandler($errno, $errstr) {
 	global $useTTF, $serverFilename;
@@ -370,14 +370,14 @@ if ($if_modified_since === $filetimeHeader) {
 	// then check if the etag matches
 	if ($if_none_match === $etag) {
 		http_response_code(304);
-		
+
 		return;
 	}
 }
 
 // send headers for the image
 header('Content-Type: ' . $mimetype);
-header('Content-Disposition: filename="' . addslashes(basename($media->file)) . '"');
+header('Content-Disposition: filename="' . addslashes(basename($media->getFilename())) . '"');
 
 if ($generatewatermark) {
 	// generate the watermarked image

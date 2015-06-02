@@ -37,6 +37,14 @@ namespace Fisharebest\Webtrees;
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
 use Fisharebest\ExtCalendar\GregorianCalendar;
+use Fisharebest\Webtrees\Date\CalendarDate;
+use Fisharebest\Webtrees\Date\FrenchDate;
+use Fisharebest\Webtrees\Date\GregorianDate;
+use Fisharebest\Webtrees\Date\HijriDate;
+use Fisharebest\Webtrees\Date\JalaliDate;
+use Fisharebest\Webtrees\Date\JewishDate;
+use Fisharebest\Webtrees\Date\JulianDate;
+use Fisharebest\Webtrees\Date\RomanDate;
 
 /**
  * Class Date - a representation of GEDCOM dates and date ranges
@@ -106,8 +114,9 @@ class Date {
 	 *
 	 * @param string $date
 	 *
-	 * @return CalendarDate
 	 * @throws \DomainException
+	 *
+	 * @return CalendarDate
 	 */
 	private function parseDate($date) {
 		// Valid calendar escape specified? - use it
@@ -199,7 +208,6 @@ class Date {
 		}
 	}
 
-
 	/**
 	 * A list of supported calendars and their names.
 	 *
@@ -219,9 +227,9 @@ class Date {
 	/**
 	 * Convert a date to the preferred format and calendar(s) display.
 	 *
-	 * @param boolean|null $url               Wrap the date in a link to calendar.php
-	 * @param string|null  $date_format       Override the default date format
-	 * @param boolean|null $convert_calendars Convert the date into other calendars
+	 * @param bool|null   $url               Wrap the date in a link to calendar.php
+	 * @param string|null $date_format       Override the default date format
+	 * @param bool|null   $convert_calendars Convert the date into other calendars
 	 *
 	 * @return string
 	 */
@@ -385,7 +393,7 @@ class Date {
 	/**
 	 * Get the earliest Julian day number from this GEDCOM date.
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function minimumJulianDay() {
 		return $this->minimumDate()->minJD;
@@ -394,7 +402,7 @@ class Date {
 	/**
 	 * Get the latest Julian day number from this GEDCOM date.
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function maximumJulianDay() {
 		return $this->maximumDate()->maxJD;
@@ -406,7 +414,7 @@ class Date {
 	 * For a month-only date, this would be somewhere around the 16th day.
 	 * For a year-only date, this would be somewhere around 1st July.
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function julianDay() {
 		return (int) (($this->minimumJulianDay() + $this->maximumJulianDay()) / 2);
@@ -418,8 +426,8 @@ class Date {
 	 * This is typically used to create an estimated death date,
 	 * which is before a certain number of years after the birth date.
 	 *
-	 * @param integer $years     - a number of years, positive or negative
-	 * @param string  $qualifier - typically “BEF” or “AFT”
+	 * @param int     $years     a number of years, positive or negative
+	 * @param string  $qualifier typically “BEF” or “AFT”
 	 *
 	 * @return Date
 	 */
@@ -439,12 +447,13 @@ class Date {
 	/**
 	 * Calculate the the age of a person, on a date.
 	 *
-	 * @param Date    $d1
-	 * @param Date    $d2
-	 * @param integer $format
+	 * @param Date $d1
+	 * @param Date $d2
+	 * @param int  $format
+	 *
+	 * @throws \InvalidArgumentException
 	 *
 	 * @return int|string
-	 * @throws \InvalidArgumentException
 	 */
 	public static function getAge(Date $d1, Date $d2 = null, $format = 0) {
 		if ($d2) {
@@ -497,7 +506,7 @@ class Date {
 	 *
 	 * @param Date      $d1
 	 * @param Date|null $d2
-	 * @param boolean      $warn_on_negative
+	 * @param bool      $warn_on_negative
 	 *
 	 * @return string
 	 */
@@ -527,7 +536,7 @@ class Date {
 	 * @param Date $a
 	 * @param Date $b
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public static function compare(Date $a, Date $b) {
 		// Get min/max JD for each date.
@@ -578,7 +587,7 @@ class Date {
 	 * An incomplete date such as "12 AUG" would be invalid, as
 	 * we cannot sort it.
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function isOK() {
 		return $this->minimumJulianDay() && $this->maximumJulianDay();
@@ -590,12 +599,12 @@ class Date {
 	 * jewish/arabic users.  This is only for interfacing with external entities,
 	 * such as the ancestry.com search interface or the dated fact icons.
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function gregorianYear() {
 		if ($this->isOK()) {
 			$gregorian_calendar = new GregorianCalendar;
-			list($year) = $gregorian_calendar->jdToYmd($this->julianDay());
+			list($year)         = $gregorian_calendar->jdToYmd($this->julianDay());
 
 			return $year;
 		} else {
