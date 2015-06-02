@@ -101,7 +101,7 @@ echo '<div id="media-tabs">';
 				<td align="center" width="150">';
 					// When we have a pending edit, $controller->record shows the *old* data.
 					// As a temporary kludge, fetch a "normal" version of the record - which includes pending changes
-					// TODO - check both, and use RED/BLUE boxes.
+					// Perhaps check both, and use RED/BLUE boxes.
 					$tmp = Media::getInstance($controller->record->getXref(), $WT_TREE);
 					echo $tmp->displayImage();
 					if (!$tmp->isExternal()) {

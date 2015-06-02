@@ -69,7 +69,7 @@ if (!Auth::isEditor($WT_TREE) || !$disp) {
 	return;
 }
 
-// TODO - there is a lot of common code in the create and update cases....
+// There is a lot of common code in the create and update cases....
 // .... and also in the admin_media_upload.php script
 
 switch ($action) {

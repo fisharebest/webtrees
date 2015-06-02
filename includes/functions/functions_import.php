@@ -730,7 +730,7 @@ function import_record($gedrec, Tree $tree, $update) {
 		Database::prepare(
 			"INSERT INTO `##media` (m_id, m_ext, m_type, m_titl, m_filename, m_file, m_gedcom) VALUES (?, ?, ?, ?, ?, ?, ?)"
 		)->execute(array(
-			$xref, $record->extension(), $record->getMediaType(), $record->title, $record->file, $tree_id, $gedrec,
+			$xref, $record->extension(), $record->getMediaType(), $record->getTitle(), $record->getFilename(), $tree_id, $gedrec,
 		));
 		// Update the cross-reference/index tables.
 		update_links($xref, $tree_id, $gedrec);
@@ -1036,7 +1036,7 @@ function create_media_object($level, $gedrec, Tree $tree) {
 		Database::prepare(
 			"INSERT INTO `##media` (m_id, m_ext, m_type, m_titl, m_filename, m_file, m_gedcom) VALUES (?, ?, ?, ?, ?, ?, ?)"
 		)->execute(array(
-			$xref, $record->extension(), $record->getMediaType(), $record->title, $record->file, $tree->getTreeId(), $gedrec,
+			$xref, $record->extension(), $record->getMediaType(), $record->getTitle(), $record->getFilename(), $tree->getTreeId(), $gedrec,
 		));
 	}
 

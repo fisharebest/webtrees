@@ -170,7 +170,6 @@ $controller->pageHeader();
 $mediaFolders = QueryMedia::folderListAll();
 
 // Determine file size limit
-// TODO: do we need to check post_max_size size too?
 $filesize = ini_get('upload_max_filesize');
 if (empty($filesize)) {
 	$filesize = "2M";

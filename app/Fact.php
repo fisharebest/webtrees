@@ -86,7 +86,7 @@ class Fact {
 	/**
 	 * Get the record to which this fact links
 	 *
-	 * @return GedcomRecord|null
+	 * @return Individual|Family|Source|Repository|Media|Note|null
 	 */
 	public function getTarget() {
 		$xref = trim($this->getValue(), '@');

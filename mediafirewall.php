@@ -377,7 +377,7 @@ if ($if_modified_since === $filetimeHeader) {
 
 // send headers for the image
 header('Content-Type: ' . $mimetype);
-header('Content-Disposition: filename="' . addslashes(basename($media->file)) . '"');
+header('Content-Disposition: filename="' . addslashes(basename($media->getFilename())) . '"');
 
 if ($generatewatermark) {
 	// generate the watermarked image

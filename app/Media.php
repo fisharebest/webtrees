@@ -23,27 +23,21 @@ class Media extends GedcomRecord {
 	const RECORD_TYPE = 'OBJE';
 	const URL_PREFIX  = 'mediaviewer.php?mid=';
 
-	// TODO: these should be private, with getTitle() and getFilename() functions
 	/** @var string The "TITL" value from the GEDCOM */
-	public $title;
+	private $title = '';
 
 	/** @var string The "FILE" value from the GEDCOM */
-	public $file;
+	private $file = '';
 
 	/** {@inheritdoc} */
 	public function __construct($xref, $gedcom, $pending, $tree) {
 		parent::__construct($xref, $gedcom, $pending, $tree);
 
-		// TODO get this data from Fact objects
 		if (preg_match('/\n1 FILE (.+)/', $gedcom . $pending, $match)) {
 			$this->file = $match[1];
-		} else {
-			$this->file = '';
 		}
 		if (preg_match('/\n\d TITL (.+)/', $gedcom . $pending, $match)) {
 			$this->title = $match[1];
-		} else {
-			$this->title = $this->file;
 		}
 	}
 
@@ -102,6 +96,15 @@ class Media extends GedcomRecord {
 	 */
 	public function getFilename() {
 		return $this->file;
+	}
+
+	/**
+	 * Get the media's title (name)
+	 *
+	 * @return string
+	 */
+	public function getTitle() {
+		return $this->title;
 	}
 
 	/**
@@ -516,8 +519,6 @@ class Media extends GedcomRecord {
 
 	/**
 	 * Display an image-thumbnail or a media-icon, and add markup for image viewers such as colorbox.
-	 * TODO - take a size parameter and generate different thumbnails for each size, rather than
-	 * always send the same image and resize it in the browser.
 	 *
 	 * @return string
 	 */

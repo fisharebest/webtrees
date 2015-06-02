@@ -295,7 +295,7 @@ function addMessage($message) {
 				WT_CLIENT_IP,
 				$recipient->getUserId(),
 				$message['subject'],
-				str_replace('<br>', '', $message['body']), // Remove the <br> that we added for the external email.  TODO: create different messages
+				str_replace('<br>', '', $message['body']), // Remove the <br> that we added for the external email.  Perhaps create different messages
 			));
 	}
 	if ($message['method'] !== 'messaging') {
