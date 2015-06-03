@@ -4568,6 +4568,7 @@ footer {
 }
 
 @media (max-width: 500px) {
+	/* Header */
 	header {
 		text-align: left;
 		height: 150px;
@@ -4590,6 +4591,38 @@ footer {
 	}
 	.secondary-menu li:last-child:before {
 		content: "  ";
+	}
+	/* Front Page */
+	#index_main_blocks {
+		float: left;
+		width: 100%;
+	}
+	#index_small_blocks {
+		float: left;
+		width: 100%;
+	}
+	.stat-table1, .stat-table2{
+		width: 100%;
+	}
+	/* Indi Page */
+	#indi_left {
+		float: left;
+		width: 100%;
+		font-size: 10px;
+	}
+	#header_accordion1 {
+		font-size: 10px;
+	}
+	#main {
+		display: inline;
+	}
+	#separator {
+		display: none;
+	}
+	#sidebar {
+		float: left;
+		width: 100%;
+		display: inline;
 	}
 	/* Lists */
 	#place_hierarchy td {

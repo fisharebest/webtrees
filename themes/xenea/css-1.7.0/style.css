@@ -5257,7 +5257,11 @@ footer {
 }
 
 @media (max-width: 400px) {
-nav ul {margin: 0; padding: 0;}
+/* Header */
+	nav ul {
+		margin: 0;
+		padding: 0;
+	}
 	header h1 {
 		margin: 10px 12px 0 10px;
 	}
@@ -5271,4 +5275,36 @@ nav ul {margin: 0; padding: 0;}
 	header nav {
 		height: 40px;
     }
+	/* Front Page */
+	#index_main_blocks {
+		float: left;
+		width: 100%;
+	}
+	#index_small_blocks {
+		float: left;
+		width: 100%;
+	}
+	.stat-table1, .stat-table2{
+		width: 100%;
+	}
+	/* Indi Page */
+	#indi_left {
+		float: left;
+		width: 100%;
+		font-size: 10px;
+	}
+	#header_accordion1 {
+		font-size: 10px;
+	}
+	#main {
+		display: inline;
+	}
+	#separator {
+		display: none;
+	}
+	#sidebar {
+		float: left;
+		width: 100%;
+		display: inline;
+	}
 }
