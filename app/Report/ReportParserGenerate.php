@@ -30,12 +30,6 @@ use Fisharebest\Webtrees\Place;
  * Class ReportParserGenerate - parse a report.xml file and generate the report.
  */
 class ReportParserGenerate extends ReportParserBase {
-	/** @var bool Are we processing a <Description> element  */
-	private $report_description = false;
-
-	/** @var bool Are we processing a <Title> element  */
-	private $report_title = false;
-
 	/** @var bool Are we collecting data from <Footnote> elements  */
 	private $process_footnote = true;
 
@@ -184,10 +178,6 @@ class ReportParserGenerate extends ReportParserBase {
 	protected function characterData($parser, $data) {
 		if ($this->print_data && $this->process_gedcoms === 0 && $this->process_ifs === 0 && $this->process_repeats === 0) {
 			$this->current_element->addText($data);
-		} elseif ($this->report_title) {
-			$this->wt_report->addTitle($data);
-		} elseif ($this->report_description) {
-			$this->wt_report->addDescription($data);
 		}
 	}
 
@@ -1132,6 +1122,7 @@ class ReportParserGenerate extends ReportParserBase {
 			}
 		}
 		$this->current_element->addText($var);
+		$this->text = $var; // Used for title/descriptio
 	}
 
 	/**
@@ -1354,7 +1345,16 @@ class ReportParserGenerate extends ReportParserBase {
 		}
 
 		$condition = $attrs['condition'];
-		$condition = preg_replace("/\\$(\w+)/", "\$vars[\"$1\"][\"id\"]", $condition);
+
+		// Substitute global vars
+		$condition = preg_replace_callback(
+			'/\$(\w+)/',
+			function ($matches) use ($vars) {
+				return '$vars["' . $matches[1] . '"]["id"]';
+			},
+			$condition
+		);
+
 		$condition = str_replace(array(" LT ", " GT "), array("<", ">"), $condition);
 		// Replace the first accurance only once of @fact:DATE or in any other combinations to the current fact, such as BIRT
 		$condition = str_replace("@fact", $this->fact, $condition);
@@ -2573,30 +2573,16 @@ class ReportParserGenerate extends ReportParserBase {
 	}
 
 	/**
-	 * XML <titleStartHandler> start element handler
-	 */
-	private function titleStartHandler() {
-		$this->report_title = true;
-	}
-
-	/**
 	 * XML </titleEndHandler> end element handler
 	 */
 	private function titleEndHandler() {
-		$this->report_title = false;
-	}
-
-	/**
-	 * XML <descriptionStartHandler> start element handler
-	 */
-	private function descriptionStartHandler() {
-		$this->report_description = true;
+		$this->report_root->addTitle($this->text);
 	}
 
 	/**
 	 * XML </descriptionEndHandler> end element handler
 	 */
 	private function descriptionEndHandler() {
-		$this->report_description = false;
+		$this->report_root->addDescription($this->text);
 	}
 }

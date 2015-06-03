@@ -58,20 +58,11 @@ class ReportBaseElement {
 	 * @return int
 	 */
 	public function addText($t) {
-		global $wt_report, $reportTitle, $reportDescription;
-
 		$t = trim($t, "\r\n\t");
 		$t = str_replace(array("<br>", "&nbsp;"), array("\n", " "), $t);
 		$t = strip_tags($t);
 		$t = htmlspecialchars_decode($t);
 		$this->text .= $t;
-
-		// Adding the title and description to the Document Properties
-		if ($reportTitle) {
-			$wt_report->addTitle($t);
-		} elseif ($reportDescription) {
-			$wt_report->addDescription($t);
-		}
 
 		return 0;
 	}
