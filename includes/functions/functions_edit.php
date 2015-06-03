@@ -572,7 +572,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 		$note1 = Note::getInstance($value, $WT_TREE);
 		if ($note1) {
 			$noterec = $note1->getGedcom();
-			preg_match('/' . $value / '/i', $noterec, $notematch);
+			preg_match('/' . $value . '/i', $noterec, $notematch);
 			$value = $notematch[0];
 		}
 	}
