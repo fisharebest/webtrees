@@ -248,7 +248,7 @@ class Fact {
 	/**
 	 * The Person/Family record where this Fact came from
 	 *
-	 * @return GedcomRecord
+	 * @return Individual|Family|Source|Repository|Media|Note|GedcomRecord
 	 */
 	public function getParent() {
 		return $this->parent;
