@@ -16,12 +16,24 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-/**
- * Defined in session.php
- *
- * @global Tree $WT_TREE
- */
+/** @global SimpleController $controller */
+global $controller;
+
+/** @global Tree $WT_TREE */
 global $WT_TREE;
+
+if (!Filter::checkCsrf()) {
+	require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/census/census-edit.php';
+
+	return;
+}
+
+$controller
+	->setPageTitle(I18N::translate('Create a new shared note using assistant'))
+	->pageHeader();
+
+echo '<div id="edit_interface-page">';
+echo '<h4>', $controller->getPageTitle(), '</h4>';
 
 $newgedrec = "0 @XREF@ NOTE\n";
 
@@ -137,3 +149,5 @@ if ($record) {
 	openerpasteid("' . $record->getXref() . '");
 	');
 }
+
+echo 	'</div>';

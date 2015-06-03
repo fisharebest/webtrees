@@ -1395,27 +1395,12 @@ case 'addnoteaction':
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'addnewnote_assisted':
-	require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/CENS_ctrl.php';
-break;
+	require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/census/census-edit.php';
+	break;
 
 ////////////////////////////////////////////////////////////////////////////////
 case 'addnoteaction_assisted':
-	$controller
-		->setPageTitle(I18N::translate('Create a new shared note using assistant'))
-		->pageHeader();
-
-	if (!Filter::checkCsrf()) {
-		header('Location: ' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=addnewnote_assisted');
-
-		return;
-	}
-
-	echo '<div id="edit_interface-page">';
-	echo '<h4>', $controller->getPageTitle(), '</h4>';
-
-	require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/_CENS/addnoteaction_assisted.php';
-
-	echo 	'</div>';
+	require WT_ROOT . WT_MODULES_DIR . 'GEDFact_assistant/census/census-save.php';
 	break;
 
 ////////////////////////////////////////////////////////////////////////////////
