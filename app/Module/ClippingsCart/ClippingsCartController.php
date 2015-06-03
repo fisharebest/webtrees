@@ -155,7 +155,7 @@ class ClippingsCartController {
 						$this->addFamilyDescendancy($family, $this->level3);
 					}
 				}
-				uksort($cart[$WT_TREE->getTreeId()], '\Fisharebest\Webtrees\Module\ClippingsCart::compareClippings');
+				uksort($cart[$WT_TREE->getTreeId()], array($this, 'compareClippings'));
 			}
 		} elseif ($this->action === 'remove') {
 			unset($cart[$WT_TREE->getTreeId()][$this->id]);
