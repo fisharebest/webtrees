@@ -55,8 +55,6 @@ class UserFavoritesModule extends FamilyTreeFavoritesModule {
 	public static function getFavorites($user_id) {
 		global $WT_TREE;
 
-		self::updateSchema(); // make sure the favorites table has been created
-
 		return
 			Database::prepare(
 				"SELECT SQL_CACHE favorite_id AS id, user_id, gedcom_id, xref AS gid, favorite_type AS type, title AS title, note AS note, url AS url" .

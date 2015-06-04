@@ -24,18 +24,13 @@ use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Media;
+use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
 
 /**
  * Class ReportParserGenerate - parse a report.xml file and generate the report.
  */
 class ReportParserGenerate extends ReportParserBase {
-	/** @var bool Are we processing a <Description> element  */
-	private $report_description = false;
-
-	/** @var bool Are we processing a <Title> element  */
-	private $report_title = false;
-
 	/** @var bool Are we collecting data from <Footnote> elements  */
 	private $process_footnote = true;
 
@@ -184,10 +179,6 @@ class ReportParserGenerate extends ReportParserBase {
 	protected function characterData($parser, $data) {
 		if ($this->print_data && $this->process_gedcoms === 0 && $this->process_ifs === 0 && $this->process_repeats === 0) {
 			$this->current_element->addText($data);
-		} elseif ($this->report_title) {
-			$this->wt_report->addTitle($data);
-		} elseif ($this->report_description) {
-			$this->wt_report->addDescription($data);
 		}
 	}
 
@@ -925,7 +916,7 @@ class ReportParserGenerate extends ReportParserBase {
 					$level = $attrs['level'];
 				}
 				$tags  = preg_split('/[: ]/', $tag);
-				$value = get_gedcom_value($tag, $level, $this->gedrec);
+				$value = $this->get_gedcom_value($tag, $level, $this->gedrec);
 				switch (end($tags)) {
 					case 'DATE':
 						$tmp   = new Date($value);
@@ -1132,6 +1123,7 @@ class ReportParserGenerate extends ReportParserBase {
 			}
 		}
 		$this->current_element->addText($var);
+		$this->text = $var; // Used for title/descriptio
 	}
 
 	/**
@@ -1354,7 +1346,16 @@ class ReportParserGenerate extends ReportParserBase {
 		}
 
 		$condition = $attrs['condition'];
-		$condition = preg_replace("/\\$(\w+)/", "\$vars[\"$1\"][\"id\"]", $condition);
+
+		// Substitute global vars
+		$condition = preg_replace_callback(
+			'/\$(\w+)/',
+			function ($matches) use ($vars) {
+				return '$vars["' . $matches[1] . '"]["id"]';
+			},
+			$condition
+		);
+
 		$condition = str_replace(array(" LT ", " GT "), array("<", ">"), $condition);
 		// Replace the first accurance only once of @fact:DATE or in any other combinations to the current fact, such as BIRT
 		$condition = str_replace("@fact", $this->fact, $condition);
@@ -1381,10 +1382,10 @@ class ReportParserGenerate extends ReportParserBase {
 				if ($level == 0) {
 					$level++;
 				}
-				$value = get_gedcom_value($id, $level, $this->gedrec);
+				$value = $this->get_gedcom_value($id, $level, $this->gedrec);
 				if (empty($value)) {
 					$level++;
-					$value = get_gedcom_value($id, $level, $this->gedrec);
+					$value = $this->get_gedcom_value($id, $level, $this->gedrec);
 				}
 				$value = preg_replace("/^@(" . WT_REGEX_XREF . ")@$/", "$1", $value);
 				$value = "\"" . addslashes($value) . "\"";
@@ -2117,7 +2118,7 @@ class ReportParserGenerate extends ReportParserBase {
 						}
 						$tags = explode(":", $tag);
 						$t    = end($tags);
-						$v    = get_gedcom_value($tag, 1, $grec);
+						$v    = $this->get_gedcom_value($tag, 1, $grec);
 						//-- check for EMAIL and _EMAIL (silly double gedcom standard :P)
 						if ($t == "EMAIL" && empty($v)) {
 							$tag  = str_replace("EMAIL", "_EMAIL", $tag);
@@ -2368,18 +2369,18 @@ class ReportParserGenerate extends ReportParserBase {
 					}
 					break;
 				case "direct-ancestors":
-					add_ancestors($this->list, $id, false, $maxgen);
+					$this->add_ancestors($this->list, $id, false, $maxgen);
 					break;
 				case "ancestors":
-					add_ancestors($this->list, $id, true, $maxgen);
+					$this->add_ancestors($this->list, $id, true, $maxgen);
 					break;
 				case "descendants":
 					$this->list[$id]->generation = 1;
-					add_descendancy($this->list, $id, false, $maxgen);
+					$this->add_descendancy($this->list, $id, false, $maxgen);
 					break;
 				case "all":
-					add_ancestors($this->list, $id, true, $maxgen);
-					add_descendancy($this->list, $id, true, $maxgen);
+					$this->add_ancestors($this->list, $id, true, $maxgen);
+					$this->add_descendancy($this->list, $id, true, $maxgen);
 					break;
 			}
 		}
@@ -2573,30 +2574,202 @@ class ReportParserGenerate extends ReportParserBase {
 	}
 
 	/**
-	 * XML <titleStartHandler> start element handler
-	 */
-	private function titleStartHandler() {
-		$this->report_title = true;
-	}
-
-	/**
 	 * XML </titleEndHandler> end element handler
 	 */
 	private function titleEndHandler() {
-		$this->report_title = false;
-	}
-
-	/**
-	 * XML <descriptionStartHandler> start element handler
-	 */
-	private function descriptionStartHandler() {
-		$this->report_description = true;
+		$this->report_root->addTitle($this->text);
 	}
 
 	/**
 	 * XML </descriptionEndHandler> end element handler
 	 */
 	private function descriptionEndHandler() {
-		$this->report_description = false;
+		$this->report_root->addDescription($this->text);
+	}
+
+	/**
+	 * @param string[] $list
+	 * @param string   $pid
+	 * @param bool  $parents
+	 * @param int  $generations
+	 */
+	function add_descendancy(&$list, $pid, $parents = false, $generations = -1) {
+		global $WT_TREE;
+
+		$person = Individual::getInstance($pid, $WT_TREE);
+		if ($person === null) {
+			return;
+		}
+		if (!isset($list[$pid])) {
+			$list[$pid] = $person;
+		}
+		if (!isset($list[$pid]->generation)) {
+			$list[$pid]->generation = 0;
+		}
+		foreach ($person->getSpouseFamilies() as $family) {
+			if ($parents) {
+				$husband = $family->getHusband();
+				$wife    = $family->getWife();
+				if ($husband) {
+					$list[$husband->getXref()] = $husband;
+					if (isset($list[$pid]->generation)) {
+						$list[$husband->getXref()]->generation = $list[$pid]->generation - 1;
+					} else {
+						$list[$husband->getXref()]->generation = 1;
+					}
+				}
+				if ($wife) {
+					$list[$wife->getXref()] = $wife;
+					if (isset($list[$pid]->generation)) {
+						$list[$wife->getXref()]->generation = $list[$pid]->generation - 1;
+					} else {
+						$list[$wife->getXref()]->generation = 1;
+					}
+				}
+			}
+			$children = $family->getChildren();
+			foreach ($children as $child) {
+				if ($child) {
+					$list[$child->getXref()] = $child;
+					if (isset($list[$pid]->generation)) {
+						$list[$child->getXref()]->generation = $list[$pid]->generation + 1;
+					} else {
+						$list[$child->getXref()]->generation = 2;
+					}
+				}
+			}
+			if ($generations == -1 || $list[$pid]->generation + 1 < $generations) {
+				foreach ($children as $child) {
+					$this->add_descendancy($list, $child->getXref(), $parents, $generations); // recurse on the childs family
+				}
+			}
+		}
+	}
+
+	/**
+	 * @param string[] $list
+	 * @param string   $pid
+	 * @param bool  $children
+	 * @param int  $generations
+	 */
+	function add_ancestors(&$list, $pid, $children = false, $generations = -1) {
+		global $WT_TREE;
+
+		$genlist                = array($pid);
+		$list[$pid]->generation = 1;
+		while (count($genlist) > 0) {
+			$id = array_shift($genlist);
+			if (strpos($id, 'empty') === 0) {
+				continue; // id can be something like “empty7”
+			}
+			$person = Individual::getInstance($id, $WT_TREE);
+			foreach ($person->getChildFamilies() as $family) {
+				$husband = $family->getHusband();
+				$wife    = $family->getWife();
+				if ($husband) {
+					$list[$husband->getXref()]             = $husband;
+					$list[$husband->getXref()]->generation = $list[$id]->generation + 1;
+				}
+				if ($wife) {
+					$list[$wife->getXref()]             = $wife;
+					$list[$wife->getXref()]->generation = $list[$id]->generation + 1;
+				}
+				if ($generations == -1 || $list[$id]->generation + 1 < $generations) {
+					if ($husband) {
+						array_push($genlist, $husband->getXref());
+					}
+					if ($wife) {
+						array_push($genlist, $wife->getXref());
+					}
+				}
+				if ($children) {
+					foreach ($family->getChildren() as $child) {
+						$list[$child->getXref()] = $child;
+						if (isset($list[$id]->generation)) {
+							$list[$child->getXref()]->generation = $list[$id]->generation;
+						} else {
+							$list[$child->getXref()]->generation = 1;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/**
+	 * get gedcom tag value
+	 *
+	 * @param string  $tag    The tag to find, use : to delineate subtags
+	 * @param int $level  The gedcom line level of the first tag to find, setting level to 0 will cause it to use 1+ the level of the incoming record
+	 * @param string  $gedrec The gedcom record to get the value from
+	 *
+	 * @return string the value of a gedcom tag from the given gedcom record
+	 */
+	function get_gedcom_value($tag, $level, $gedrec) {
+		global $WT_TREE;
+
+		if (empty($gedrec)) {
+			return '';
+		}
+		$tags      = explode(':', $tag);
+		$origlevel = $level;
+		if ($level == 0) {
+			$level = $gedrec{0} + 1;
+		}
+
+		$subrec = $gedrec;
+		foreach ($tags as $t) {
+			$lastsubrec = $subrec;
+			$subrec     = get_sub_record($level, "$level $t", $subrec);
+			if (empty($subrec) && $origlevel == 0) {
+				$level--;
+				$subrec = get_sub_record($level, "$level $t", $lastsubrec);
+			}
+			if (empty($subrec)) {
+				if ($t == "TITL") {
+					$subrec = get_sub_record($level, "$level ABBR", $lastsubrec);
+					if (!empty($subrec)) {
+						$t = "ABBR";
+					}
+				}
+				if (empty($subrec)) {
+					if ($level > 0) {
+						$level--;
+					}
+					$subrec = get_sub_record($level, "@ $t", $gedrec);
+					if (empty($subrec)) {
+						return '';
+					}
+				}
+			}
+			$level++;
+		}
+		$level--;
+		$ct = preg_match("/$level $t(.*)/", $subrec, $match);
+		if ($ct == 0) {
+			$ct = preg_match("/$level @.+@ (.+)/", $subrec, $match);
+		}
+		if ($ct == 0) {
+			$ct = preg_match("/@ $t (.+)/", $subrec, $match);
+		}
+		if ($ct > 0) {
+			$value = trim($match[1]);
+			if ($t == 'NOTE' && preg_match('/^@(.+)@$/', $value, $match)) {
+				$note = Note::getInstance($match[1], $WT_TREE);
+				if ($note) {
+					$value = $note->getNote();
+				} else {
+					//-- set the value to the id without the @
+					$value = $match[1];
+				}
+			}
+			if ($level != 0 || $t != "NOTE") {
+				$value .= get_cont($level + 1, $subrec);
+			}
+
+			return $value;
+		}
+
+		return "";
 	}
 }

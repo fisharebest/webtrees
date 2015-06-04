@@ -34,5 +34,10 @@
 		"pclzip/pclzip": "2.*",
 		"ramsey/uuid": "2.*",
 		"tecnick.com/tcpdf": "6.*"
+	},
+	"extra": {
+		"branch-alias": {
+			"dev-master": "1.8-dev"
+		}
 	}
 }

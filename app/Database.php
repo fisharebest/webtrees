@@ -16,6 +16,7 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Schema\MigrationInterface;
 use PDO;
 use PDOException;
 
@@ -281,47 +282,27 @@ class Database {
 	/**
 	 * Run a series of scripts to bring the database schema up to date.
 	 *
-	 * @param string  $schema_dir
-	 * @param string  $schema_name
-	 * @param int     $target_version
+	 * @param string $namespace      Where to find our MigrationXXX classes
+	 * @param string $schema_name    Where to find our MigrationXXX classes
+	 * @param int    $target_version updade/downgrade to this version
 	 *
 	 * @throws \Exception
 	 */
-	public static function updateSchema($schema_dir, $schema_name, $target_version) {
+	public static function updateSchema($namespace, $schema_name, $target_version) {
 		try {
 			$current_version = (int) Site::getPreference($schema_name);
 		} catch (PDOException $e) {
-			// During initial installation, this table won’t exist.
-			// It will only be a problem if we can’t subsequently create it.
+			// During initial installation, the site_preference table won’t exist.
 			$current_version = 0;
-		}
-
-		// During installation, the current version is set to a special value of
-		// -1 (v1.2.5 to v1.2.7) or -2 (v1.3.0 onwards).  This indicates that the tables have
-		// been created, and we are already at the latest version.
-		switch ($current_version) {
-		case -1:
-			// Due to a bug in webtrees 1.2.5 - 1.2.7, the setup value of "-1"
-			// wasn't being updated.
-			$current_version = 12;
-			Site::setPreference($schema_name, $current_version);
-			break;
-		case -2:
-			// Because of the above bug, we now set the version to -2 during setup.
-			$current_version = $target_version;
-			Site::setPreference($schema_name, $current_version);
-			break;
 		}
 
 		// Update the schema, one version at a time.
 		while ($current_version < $target_version) {
-			$next_version = $current_version + 1;
-			require $schema_dir . 'db_schema_' . $current_version . '_' . $next_version . '.php';
-			// The updatescript should update the version or throw an exception
-			$current_version = (int) Site::getPreference($schema_name);
-			if ($current_version != $next_version) {
-				throw new \Exception("Internal error while updating {$schema_name} to {$next_version}");
-			}
+			$class = $namespace . '\\Migration' . $current_version;
+			/** @var MigrationInterface $migration */
+			$migration = new $class;
+			$migration->upgrade();
+			Site::setPreference($schema_name, ++$current_version);
 		}
 	}
 }

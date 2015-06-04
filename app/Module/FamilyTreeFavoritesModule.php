@@ -37,6 +37,14 @@ use Rhumsaa\Uuid\Uuid;
  */
 class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInterface {
 	/** {@inheritdoc} */
+	public function __construct($directory) {
+		parent::__construct($directory);
+
+		// Create/update the database tables.
+		Database::updateSchema('\Fisharebest\Webtrees\Module\FamilyTreeFavorites\Schema', 'FV_SCHEMA_VERSION', 4);
+	}
+
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('Favorites');
 	}
@@ -49,8 +57,6 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 	/** {@inheritdoc} */
 	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $ctype, $controller, $WT_TREE;
-
-		self::updateSchema(); // make sure the favorites table has been created
 
 		$action = Filter::get('action');
 		switch ($action) {
@@ -303,8 +309,6 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 	 * @return string[][]
 	 */
 	public static function getFavorites($gedcom_id) {
-		self::updateSchema(); // make sure the favorites table has been created
-
 		return
 			Database::prepare(
 				"SELECT SQL_CACHE favorite_id AS id, user_id, gedcom_id, xref AS gid, favorite_type AS type, title, note, url" .

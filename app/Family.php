@@ -314,7 +314,7 @@ class Family extends GedcomRecord {
 					0 => array(
 						'type' => 'BIRT',
 						'sort' => '@N.N.',
-						'full' => $UNKNOWN_PN, ' ', $UNKNOWN_NN,
+						'full' => $UNKNOWN_PN . ' ' . $UNKNOWN_NN,
 					),
 				);
 			}
@@ -328,7 +328,7 @@ class Family extends GedcomRecord {
 					0 => array(
 						'type' => 'BIRT',
 						'sort' => '@N.N.',
-						'full' => $UNKNOWN_PN, ' ', $UNKNOWN_NN,
+						'full' => $UNKNOWN_PN . ' ' . $UNKNOWN_NN,
 					),
 				);
 			}

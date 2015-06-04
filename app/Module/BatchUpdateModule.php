@@ -49,7 +49,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 	/** @var BatchUpdateBasePlugin[] All available plugins */
 	private $plugins;
 
-	/** @var @var BatchUpdateBasePlugin  The current plugin */
+	/** @var BatchUpdateBasePlugin  The current plugin */
 	private $PLUGIN;
 
 	/** @var string[] n array of all xrefs that might need to be updated */

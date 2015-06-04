@@ -26,6 +26,14 @@ use Fisharebest\Webtrees\Theme;
  */
 class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterface {
 	/** {@inheritdoc} */
+	public function __construct($directory) {
+		parent::__construct($directory);
+
+		// Create/update the database tables.
+		Database::updateSchema('\Fisharebest\Webtrees\Module\FamilyTreeNews\Schema', 'NB_SCHEMA_VERSION', 3);
+	}
+
+	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('News');
 	}

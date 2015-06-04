@@ -32,7 +32,6 @@ use Fisharebest\Webtrees\Stats;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\Tree;
 use PDO;
-use PDOException;
 
 /**
  * Class GoogleMapsModule
@@ -52,7 +51,7 @@ use PDOException;
  * Hence, use "Google Maps™ mapping service" where appropriate.
  */
 class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, ModuleTabInterface {
-	/** @var array of ancestors of root person */
+	/** @var Individual[] of ancestors of root person */
 	private $ancestors = array();
 
 	/** @var int Number of generation to display */
@@ -65,15 +64,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	public function __construct($directory) {
 		parent::__construct($directory);
 
-		// Create GM tables, if not already present
-		try {
-			Database::updateSchema(WT_ROOT . WT_MODULES_DIR . '/googlemap/db_schema/', 'GM_SCHEMA_VERSION', 5);
-		} catch (PDOException $ex) {
-			// The schema update scripts should never fail.  If they do, there is no clean recovery.
-			FlashMessages::addMessage($ex->getMessage(), 'danger');
-			header('Location: ' . WT_BASE_URL . 'site-unavailable.php');
-			throw $ex;
-		}
+		// Create/update the database tables.
+		Database::updateSchema('\Fisharebest\Webtrees\Module\GoogleMaps\Schema', 'GM_SCHEMA_VERSION', 5);
 
 		// Set default values
 		try {
@@ -284,13 +276,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		}
 
 		$controller->pageHeader();
-
-		$map_types = array(
-			'ROADMAP'   => I18N::translate('Map'),
-			'SATELLITE' => I18N::translate('Satellite'),
-			'HYBRID'    => I18N::translate('Hybrid'),
-			'TERRAIN'   => I18N::translate('Terrain'),
-		);
 
 		?>
 		<ol class="breadcrumb small">
@@ -950,7 +935,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	 * @return string
 	 */
 	private function pedigreeMapJavascript() {
-		global $controller, $PEDIGREE_GENERATIONS;
+		global $PEDIGREE_GENERATIONS;
 
 		// The HomeControl returns the map to the original position and style
 		$js = 'function HomeControl(controlDiv, pm_map) {' .
@@ -995,6 +980,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				document.getElementById(lastlinkid).className = "person_box:target";
 			}
 			google.maps.event.trigger(gmarkers[i], "click");
+			return false;
 		}' .
 		// this variable will collect the html which will eventually be placed in the side_bar
 		'var side_bar_html = "";' .
@@ -1289,7 +1275,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			// save the info we need to use later for the side_bar
 			'gmarkers[i] = marker;' .
 			// add a line to the side_bar html
-			'side_bar_html += "<br><div id=\'"+linkid+"\' onclick=\'myclick(" + i + ")\'>" + html +"<br></div>";
+			'side_bar_html += "<br><div id=\'"+linkid+"\' onclick=\'return myclick(" + i + ")\'>" + html +"<br></div>";
 			i++;
 			return marker;
 		};' .
@@ -1598,7 +1584,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		switch ($action) {
 		case 'go':
 			//Identify gedcom file
-			$trees = Tree::getAll();
 			echo '<div id="gm_check_title">', Tree::findById($gedcom_id)->getTitleHtml(), '</div>';
 			//Select all '2 PLAC ' tags in the file and create array
 			$place_list = array();
@@ -2106,18 +2091,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			}
 		}
 
-		// Group markers by location
-		$location_groups = array();
-		foreach ($gmarks as $gmark) {
-			$key = $gmark['lat'] . $gmark['lng'];
-			if (isset($location_groups[$key])) {
-				$location_groups[$key][] = $gmark;
-			} else {
-				$location_groups[$key] = array($gmark);
-			}
-		}
-		$location_groups = array_values($location_groups);
-
 		// *** ENABLE STREETVIEW ***
 		$STREETVIEW = $this->getSetting('GM_USE_STREETVIEW');
 		?>
@@ -2302,6 +2275,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			function myclick(i) {
 				infowindow.close();
 				google.maps.event.trigger(gmarkers[i], 'click');
+				return false;
 			}
 
 			// Home control
@@ -2487,10 +2461,10 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		// Create the normal googlemap sidebar of events and children
 		echo '<div style="overflow: auto; overflow-x: hidden; overflow-y: auto; height:', $this->getSetting('GM_YSIZE'), 'px;"><table class="facts_table">';
 
-		foreach ($gmarks as $gmark) {
+		foreach ($gmarks as $key => $gmark) {
 			echo '<tr>';
 			echo '<td class="facts_label">';
-			echo '<a href="#" onclick="myclick(\'', Filter::escapeHtml($key), '\')">', $gmark['fact_label'], '</a></td>';
+			echo '<a href="#" onclick="return myclick(\'', Filter::escapeHtml($key), '\')">', $gmark['fact_label'], '</a></td>';
 			echo '<td class="', $gmark['class'], '" style="white-space: normal">';
 			if ($gmark['info']) {
 				echo '<span class="field">', Filter::escapeHtml($gmark['info']), '</span><br>';
