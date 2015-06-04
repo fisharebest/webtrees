@@ -76,7 +76,6 @@ class PedigreeController extends ChartController {
 		$addoffset         = array();
 
 		// With more than 8 generations, we run out of pixels on the <canvas>
-		// TODO investigate adding additional canvas elements
 		if ($this->generations > 8) {
 			$this->generations = 8;
 		}
