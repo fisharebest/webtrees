@@ -445,7 +445,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 				// NOTE: Print the position of the current item
 				echo '<tr class="faq_edit_pos"><td>';
 				echo I18N::translate('#%s', $faq->block_order + 1), ' ';
-				if ($faq->gedcom_id == null) {
+				if ($faq->gedcom_id === null) {
 					echo I18N::translate('All');
 				} else {
 					echo $WT_TREE->getTitleHtml();

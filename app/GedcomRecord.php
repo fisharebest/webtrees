@@ -1090,7 +1090,7 @@ class GedcomRecord {
 			$facts = array();
 		if ($this->canShow($access_level) || $override) {
 			foreach ($this->facts as $fact) {
-				if (($filter == null || preg_match('/^' . $filter . '$/', $fact->getTag())) && $fact->canShow($access_level)) {
+				if (($filter === null || preg_match('/^' . $filter . '$/', $fact->getTag())) && $fact->canShow($access_level)) {
 					$facts[] = $fact;
 				}
 			}
