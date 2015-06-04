@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-05-14 08:44+0100\n"
-"PO-Revision-Date: 2015-05-08 21:38+0100\n"
+"PO-Revision-Date: 2015-06-04 21:55+0100\n"
 "Last-Translator: Familia Boim <familiaboim@gmail.com>\n"
-"Language-Team: Yiddish <http://translate.webtrees.net/projects/webtrees/webtrees/yi/>\n"
+"Language-Team: Yiddish "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/yi/>\n"
 "Language: yi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -751,6 +752,8 @@ msgstr "א גרוס אָנזאָג פֿאַר זייַטל געסט."
 #: app/Module/ReviewChangesModule.php:30
 msgid "A list of changes that need moderator approval, and email notifications."
 msgstr ""
+"א רשימה פון ענדערונגען וואָס דאַרפֿן מאָדעראַטאָר האַסקאָמע, און בליצפּאָסט "
+"נאָטיפיקאַטיאָנס."
 
 #. I18N: Description of the “FAQ” module
 #: app/Module/FrequentlyAskedQuestionsModule.php:30
@@ -1068,7 +1071,7 @@ msgstr "מדרגה פון צוטריט"
 
 #: admin_users.php:371
 msgid "Account approval and email verification"
-msgstr ""
+msgstr "קאָנטע באוויליקן און בליצפּאָסט באַשטעטיקן"
 
 #: app/Gedcom/GedcomCodeTemp.php:78
 msgid "Accra, Ghana"
