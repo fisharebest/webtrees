@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees\Controller;
  */
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\ConfigData;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\FlashMessages;
@@ -298,8 +299,6 @@ class SearchController extends PageController {
 	 * @param Tree $tree
 	 */
 	private function searchAndReplace(Tree $tree) {
-		global $STANDARD_NAME_FACTS;
-
 		$this->generalSearch();
 
 		//-- don't try to make any changes if nothing was found
@@ -310,7 +309,7 @@ class SearchController extends PageController {
 		Log::addEditLog("Search And Replace old:" . $this->query . " new:" . $this->replace);
 
 		$adv_name_tags   = preg_split("/[\s,;: ]+/", $tree->getPreference('ADVANCED_NAME_FACTS'));
-		$name_tags       = array_unique(array_merge($STANDARD_NAME_FACTS, $adv_name_tags));
+		$name_tags       = array_unique(array_merge(ConfigData::standardNameFacts(), $adv_name_tags));
 		$name_tags[]     = '_MARNM';
 		$records_updated = 0;
 		foreach ($this->myindilist as $id => $record) {

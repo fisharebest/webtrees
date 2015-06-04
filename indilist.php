@@ -19,11 +19,10 @@ namespace Fisharebest\Webtrees;
 /**
  * Defined in session.php
  *
- * @global string $UNKNOWN_NN
- * @global string $UNKNOWN_PN
  * @global Tree   $WT_TREE
  */
-global $UNKNOWN_NN, $UNKNOWN_PN, $WT_TREE;
+global
+$WT_TREE;
 
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Query\QueryName;
@@ -82,7 +81,7 @@ if ($show_all === 'yes') {
 	$alpha    = QueryName::initialLetter($surname); // so we can highlight the initial letter
 	$show_all = 'no';
 	if ($surname === '@N.N.') {
-		$legend = $UNKNOWN_NN;
+		$legend = I18N::translateContext('Unknown surname', '…');
 	} else {
 		$legend = Filter::escapeHtml($surname);
 	}
@@ -91,7 +90,7 @@ if ($show_all === 'yes') {
 	case '':
 		break;
 	case '@':
-		$legend .= ', ' . $UNKNOWN_PN;
+		$legend .= ', ' . I18N::translateContext('Unknown given name', '…');
 		$url .= '&amp;falpha=' . rawurlencode($falpha) . '&amp;ged=' . $WT_TREE->getNameUrl();
 		break;
 	default:
@@ -102,7 +101,7 @@ if ($show_all === 'yes') {
 	$show = 'indi'; // SURN list makes no sense here
 } elseif ($alpha === '@') {
 	$show_all = 'no';
-	$legend   = $UNKNOWN_NN;
+	$legend   = I18N::translateContext('Unknown surname', '…');
 	$url      = WT_SCRIPT_NAME . '?alpha=' . rawurlencode($alpha) . '&amp;ged=' . $WT_TREE->getNameUrl();
 	$show     = 'indi'; // SURN list makes no sense here
 } elseif ($alpha === ',') {
@@ -134,7 +133,7 @@ $list = array();
 foreach (QueryName::surnameAlpha($WT_TREE, $show_marnm === 'yes', false) as $letter => $count) {
 	switch ($letter) {
 	case '@':
-		$html = $UNKNOWN_NN;
+		$html = I18N::translateContext('Unknown surname', '…');
 		break;
 	case ',':
 		$html = I18N::translate('None');
@@ -224,7 +223,7 @@ if ($show === 'indi' || $show === 'surn') {
 				foreach ($givn_initials as $givn_initial => $count) {
 					switch ($givn_initial) {
 					case '@':
-						$html = $UNKNOWN_PN;
+						$html = I18N::translateContext('Unknown given name', '…');
 						break;
 					default:
 						$html = Filter::escapeHtml($givn_initial);

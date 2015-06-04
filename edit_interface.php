@@ -2297,15 +2297,15 @@ function keep_chan(GedcomRecord $record = null) {
 /**
  * Print a form to add an individual or edit an individual’s name
  *
- * @param string        $nextaction
+ * @param string     $nextaction
  * @param Individual $person
  * @param Family     $family
- * @param Fact          $name_fact
- * @param string        $famtag
- * @param string        $gender
+ * @param Fact       $name_fact
+ * @param string     $famtag
+ * @param string     $gender
  */
 function print_indi_form($nextaction, Individual $person = null, Family $family = null, Fact $name_fact = null, $famtag = 'CHIL', $gender = 'U') {
-	global $WT_TREE, $NPFX_accept, $bdm, $STANDARD_NAME_FACTS, $controller;
+	global $WT_TREE, $bdm, $controller;
 
 	$SURNAME_TRADITION = $WT_TREE->getPreference('SURNAME_TRADITION');
 
@@ -2323,7 +2323,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		$name_type    = $name_fact->getAttribute('TYPE');
 		$namerec      = $name_fact->getGedcom();
 		// Populate the standard NAME field and subfields
-		foreach ($STANDARD_NAME_FACTS as $tag) {
+		foreach (ConfigData::standardNameFacts() as $tag) {
 			if ($tag === 'NAME') {
 				$name_fields[$tag] = $name_fact->getValue();
 			} else {
@@ -2335,7 +2335,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		$name_type    = null;
 		$namerec      = null;
 		// Populate the standard NAME field and subfields
-		foreach ($STANDARD_NAME_FACTS as $tag) {
+		foreach (ConfigData::standardNameFacts() as $tag) {
 			$name_fields[$tag] = '';
 		}
 	}
@@ -2601,7 +2601,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	}
 
 	// Populate any missing 2 XXXX fields from the 1 NAME field
-	$npfx_accept = implode('|', $NPFX_accept);
+	$npfx_accept = implode('|', ConfigData::namePrefixes());
 	if (preg_match('/(((' . $npfx_accept . ')\.? +)*)([^\n\/"]*)("(.*)")? *\/(([a-z]{2,3} +)*)(.*)\/ *(.*)/i', $name_fields['NAME'], $name_bits)) {
 		if (empty($name_fields['NPFX'])) {
 			$name_fields['NPFX'] = $name_bits[1];

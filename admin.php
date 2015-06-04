@@ -355,6 +355,7 @@ $old_files = array(
 	WT_ROOT . 'themes/_administration/jquery-ui-1.10.3',
 	// Removed in 1.7.0
 	WT_ROOT . 'admin_site_other.php',
+	WT_ROOT . 'includes/config_data.php',
 	WT_ROOT . 'includes/db_schema',
 	WT_ROOT . 'includes/hitcount.php',
 	WT_ROOT . 'includes/reportheader.php',

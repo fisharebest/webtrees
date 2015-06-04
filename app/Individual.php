@@ -1110,8 +1110,6 @@ class Individual extends GedcomRecord {
 	 * @param string $gedcom
 	 */
 	protected function addName($type, $full, $gedcom) {
-		global $UNKNOWN_NN, $UNKNOWN_PN;
-
 		////////////////////////////////////////////////////////////////////////////
 		// Extract the structured name parts - use for "sortable" names and indexes
 		////////////////////////////////////////////////////////////////////////////
@@ -1223,8 +1221,8 @@ class Individual extends GedcomRecord {
 		$fullNN = str_replace('/', '', $full);
 
 		// Insert placeholders for any missing/unknown names
-		$full = str_replace('@N.N.', $UNKNOWN_NN, $full);
-		$full = str_replace('@P.N.', $UNKNOWN_PN, $full);
+		$full = str_replace('@N.N.', I18N::translateContext('Unknown surname', '…'), $full);
+		$full = str_replace('@P.N.', I18N::translateContext('Unknown given name', '…'), $full);
 		// Localise quotation marks around the nickname
 		$full = preg_replace_callback('/"([^"]*)"/', function ($matches) { return I18N::translate('“%s”', $matches[1]); }, $full);
 		// Format for display
@@ -1282,7 +1280,7 @@ class Individual extends GedcomRecord {
 	 * @return string
 	 */
 	public function getShortName() {
-		global $bwidth, $UNKNOWN_NN, $UNKNOWN_PN;
+		global $bwidth;
 
 		// Estimate number of characters that can fit in box. Calulates to 28 characters in webtrees theme, or 34 if no thumbnail used.
 		if ($this->tree->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
@@ -1313,7 +1311,7 @@ class Individual extends GedcomRecord {
 			}
 			$shortname = str_replace(
 				array('@P.N.', '@N.N.'),
-				array($UNKNOWN_PN, $UNKNOWN_NN),
+				array(I18N::translateContext('Unknown given name', '…'), I18N::translateContext('Unknown surname', '…')),
 				$givn . ' ' . $surn
 			);
 

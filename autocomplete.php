@@ -20,10 +20,8 @@ namespace Fisharebest\Webtrees;
  * Defined in session.php
  *
  * @global Tree   $WT_TREE
- * @global string $UNKNOWN_NN
- * @global string $UNKNOWN_PN
  */
-global $WT_TREE, $UNKNOWN_NN, $UNKNOWN_PN;
+global $WT_TREE;
 
 define('WT_SCRIPT_NAME', 'autocomplete.php');
 require './includes/session.php';
@@ -164,7 +162,7 @@ case 'INDI': // Individuals, whose name contains the search terms
 	foreach ($rows as $row) {
 		$person = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
 		if ($person->canShowName()) {
-			$data[] = array('value' => $row->xref, 'label' => str_replace(array('@N.N.', '@P.N.'), array($UNKNOWN_NN, $UNKNOWN_PN), $row->n_full) . ', <i>' . $person->getLifeSpan() . '</i>');
+			$data[] = array('value' => $row->xref, 'label' => str_replace(array('@N.N.', '@P.N.'), array(I18N::translateContext('Unknown surname', '…'), I18N::translateContext('Unknown given name', '…')), $row->n_full) . ', <i>' . $person->getLifeSpan() . '</i>');
 		}
 	}
 	echo json_encode($data);
@@ -405,7 +403,7 @@ case 'IFSRO':
 	foreach ($rows as $row) {
 		$person = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
 		if ($person->canShowName()) {
-			$data[] = array('value' => $person->getXref(), 'label' => str_replace(array('@N.N.', '@P.N.'), array($UNKNOWN_NN, $UNKNOWN_PN), $row->n_full) . ', <i>' . $person->getLifeSpan() . '</i>');
+			$data[] = array('value' => $person->getXref(), 'label' => str_replace(array('@N.N.', '@P.N.'), array(I18N::translateContext('Unknown surname', '…'), I18N::translateContext('Unknown given name', '…')), $row->n_full) . ', <i>' . $person->getLifeSpan() . '</i>');
 		}
 	}
 	// Fetch all data, regardless of privacy
@@ -470,7 +468,7 @@ case 'IFS':
 	foreach ($rows as $row) {
 		$person = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
 		if ($person->canShowName()) {
-			$data[] = array('value' => $person->getXref(), 'label' => str_replace(array('@N.N.', '@P.N.'), array($UNKNOWN_NN, $UNKNOWN_PN), $row->n_full) . ', <i>' . $person->getLifeSpan() . '</i>');
+			$data[] = array('value' => $person->getXref(), 'label' => str_replace(array('@N.N.', '@P.N.'), array(I18N::translateContext('Unknown surname', '…'), I18N::translateContext('Unknown given name', '…')), $row->n_full) . ', <i>' . $person->getLifeSpan() . '</i>');
 		}
 	}
 	// Fetch all data, regardless of privacy

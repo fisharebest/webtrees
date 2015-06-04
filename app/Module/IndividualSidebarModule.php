@@ -82,7 +82,7 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 
 	/** {@inheritdoc} */
 	public function getSidebarContent() {
-		global $WT_IMAGES, $UNKNOWN_NN, $controller, $WT_TREE;
+		global $controller, $WT_TREE;
 
 		// Fetch a list of the initial letters of all surnames in the database
 		$initials = QueryName::surnameAlpha($WT_TREE, true, false, false);
@@ -140,7 +140,7 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 		foreach ($initials as $letter => $count) {
 			switch ($letter) {
 			case '@':
-				$html = $UNKNOWN_NN;
+				$html = I18N::translateContext('Unknown surname', '…');
 				break;
 			case ',':
 				$html = I18N::translate('None');

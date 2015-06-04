@@ -16,6 +16,7 @@
  */
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\ConfigData;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
@@ -456,7 +457,7 @@ function print_addnewsource_link($element_id) {
  * @return string
  */
 function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Individual $person = null) {
-	global $tags, $emptyfacts, $main_fact, $FILE_FORM_accept, $xref, $bdm, $action, $WT_TREE;
+	global $tags, $main_fact, $xref, $bdm, $action, $WT_TREE;
 
 	// Keep track of SOUR fields, so we can reference them in subsequent PAGE fields.
 	static $source_element_id;
@@ -577,7 +578,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 		}
 	}
 
-	if (in_array($fact, $emptyfacts) && ($value === '' || $value === 'Y' || $value === 'y')) {
+	if (in_array($fact, ConfigData::emptyFacts()) && ($value === '' || $value === 'Y' || $value === 'y')) {
 		echo '<input type="hidden" id="', $element_id, '" name="', $element_name, '" value="', $value, '">';
 		if ($level <= 1) {
 			echo '<input type="checkbox" ';
@@ -922,7 +923,7 @@ function add_simple_tag($tag, $upperlevel = '', $label = '', $extra = null, Indi
 
 	// pastable values
 	if ($fact === 'FORM' && $upperlevel === 'OBJE') {
-		print_autopaste_link($element_id, $FILE_FORM_accept);
+		print_autopaste_link($element_id, ConfigData::fileFormats());
 	}
 	echo '</div>', $extra, '</td></tr>';
 
@@ -1039,7 +1040,7 @@ function print_add_layer($tag, $level = 2, $parent_tag = '') {
  * @param string $fact
  */
 function addSimpleTags($fact) {
-	global $WT_TREE, $nonplacfacts, $nondatefacts;
+	global $WT_TREE;
 
 	// For new individuals, these facts default to "Y"
 	if ($fact === 'MARR') {
@@ -1048,11 +1049,11 @@ function addSimpleTags($fact) {
 		add_simple_tag('0 ' . $fact);
 	}
 
-	if (!in_array($fact, $nondatefacts)) {
+	if (!in_array($fact, ConfigData::nonDateFacts())) {
 		add_simple_tag('0 DATE', $fact, GedcomTag::getLabel($fact . ':DATE'));
 	}
 
-	if (!in_array($fact, $nonplacfacts)) {
+	if (!in_array($fact, ConfigData::nonPlaceFacts())) {
 		add_simple_tag('0 PLAC', $fact, GedcomTag::getLabel($fact . ':PLAC'));
 
 		if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
@@ -1419,7 +1420,7 @@ function handle_updates($newged, $levelOverride = 'no') {
  * @param string $fact the new fact we are adding
  */
 function create_add_form($fact) {
-	global $tags, $emptyfacts, $WT_TREE;
+	global $tags, $WT_TREE;
 
 	$tags = array();
 
@@ -1437,7 +1438,7 @@ function create_add_form($fact) {
 		if (in_array($fact, array('ALIA', 'ASSO'))) {
 			$fact .= ' @';
 		}
-		if (in_array($fact, $emptyfacts)) {
+		if (in_array($fact, ConfigData::emptyFacts())) {
 			add_simple_tag('1 ' . $fact . ' Y');
 		} else {
 			add_simple_tag('1 ' . $fact);
@@ -1464,7 +1465,7 @@ function create_add_form($fact) {
  * @return string
  */
 function create_edit_form(GedcomRecord $record, Fact $fact) {
-	global $date_and_time, $tags, $WT_TREE;
+	global $tags, $WT_TREE;
 
 	$pid = $record->getXref();
 
@@ -1575,7 +1576,7 @@ function create_edit_form(GedcomRecord $record, Fact $fact) {
 		}
 
 		// Awkward special cases
-		if ($level == 2 && $type === 'DATE' && in_array($level1type, $date_and_time) && !in_array('TIME', $subtags)) {
+		if ($level == 2 && $type === 'DATE' && in_array($level1type, ConfigData::dateAndTime()) && !in_array('TIME', $subtags)) {
 			add_simple_tag('3 TIME'); // TIME is NOT a valid 5.5.1 tag
 		}
 		if ($level == 2 && $type === 'STAT' && GedcomCodeTemp::isTagLDS($level1type) && !in_array('DATE', $subtags)) {
@@ -1613,8 +1614,7 @@ function create_edit_form(GedcomRecord $record, Fact $fact) {
  * @param bool   $add_date
  */
 function insert_missing_subtags($level1tag, $add_date = false) {
-	global $tags, $date_and_time, $level2_tags, $WT_TREE;
-	global $nondatefacts, $nonplacfacts;
+	global $tags, $WT_TREE;
 
 	// handle  MARRiage TYPE
 	$type_val = '';
@@ -1623,8 +1623,8 @@ function insert_missing_subtags($level1tag, $add_date = false) {
 		$level1tag = 'MARR';
 	}
 
-	foreach ($level2_tags as $key => $value) {
-		if ($key === 'DATE' && in_array($level1tag, $nondatefacts) || $key === 'PLAC' && in_array($level1tag, $nonplacfacts)) {
+	foreach (ConfigData::levelTwoTags() as $key => $value) {
+		if ($key === 'DATE' && in_array($level1tag, ConfigData::nonDateFacts()) || $key === 'PLAC' && in_array($level1tag, ConfigData::nonPlaceFacts())) {
 			continue;
 		}
 		if (in_array($level1tag, $value) && !in_array($key, $tags)) {
@@ -1667,7 +1667,7 @@ function insert_missing_subtags($level1tag, $add_date = false) {
 				break;
 			case 'DATE':
 				// TIME is NOT a valid 5.5.1 tag
-				if (in_array($level1tag, $date_and_time)) {
+				if (in_array($level1tag, ConfigData::dateAndTime())) {
 					add_simple_tag('3 TIME');
 				}
 				break;

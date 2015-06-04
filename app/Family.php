@@ -303,8 +303,6 @@ class Family extends GedcomRecord {
 
 	/** {@inheritdoc} */
 	public function getAllNames() {
-		global $UNKNOWN_NN, $UNKNOWN_PN;
-
 		if (is_null($this->_getAllNames)) {
 			// Check the script used by each name, so we can match cyrillic with cyrillic, greek with greek, etc.
 			if ($this->husb) {
@@ -314,7 +312,7 @@ class Family extends GedcomRecord {
 					0 => array(
 						'type' => 'BIRT',
 						'sort' => '@N.N.',
-						'full' => $UNKNOWN_PN . ' ' . $UNKNOWN_NN,
+						'full' => I18N::translateContext('Unknown given name', '…') . ' ' . I18N::translateContext('Unknown surname', '…'),
 					),
 				);
 			}
@@ -328,7 +326,7 @@ class Family extends GedcomRecord {
 					0 => array(
 						'type' => 'BIRT',
 						'sort' => '@N.N.',
-						'full' => $UNKNOWN_PN . ' ' . $UNKNOWN_NN,
+						'full' => I18N::translateContext('Unknown given name', '…') . ' ' . I18N::translateContext('Unknown surname', '…'),
 					),
 				);
 			}

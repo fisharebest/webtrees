@@ -459,9 +459,6 @@ if (Auth::check()) {
 }
 define('WT_CLIENT_JD', 2440588 + (int) ((WT_TIMESTAMP + WT_TIMESTAMP_OFFSET) / 86400));
 
-// Application configuration data - things that aren’t (yet?) user-editable
-require WT_ROOT . 'includes/config_data.php';
-
 // The login URL must be an absolute URL, and can be user-defined
 if (Site::getPreference('LOGIN_URL')) {
 	define('WT_LOGIN_URL', Site::getPreference('LOGIN_URL'));
