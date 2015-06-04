@@ -542,11 +542,11 @@ class Fact {
 
 		// - Don't let dated after DEAT/BURI facts sort non-dated facts before DEAT/BURI
 		// - Treat dated after BURI facts as BURI instead
-		if ($a->getAttribute('DATE') != null && $factsort[$atag] > $factsort['BURI'] && $factsort[$atag] < $factsort['CHAN']) {
+		if ($a->getAttribute('DATE') !== null && $factsort[$atag] > $factsort['BURI'] && $factsort[$atag] < $factsort['CHAN']) {
 			$atag = 'BURI';
 		}
 
-		if ($b->getAttribute('DATE') != null && $factsort[$btag] > $factsort['BURI'] && $factsort[$btag] < $factsort['CHAN']) {
+		if ($b->getAttribute('DATE') !== null && $factsort[$btag] > $factsort['BURI'] && $factsort[$btag] < $factsort['CHAN']) {
 			$btag = 'BURI';
 		}
 
@@ -554,11 +554,11 @@ class Fact {
 
 		// If facts are the same then put dated facts before non-dated facts
 		if ($ret == 0) {
-			if ($a->getAttribute('DATE') != null && $b->getAttribute('DATE') == null) {
+			if ($a->getAttribute('DATE') !== null && $b->getAttribute('DATE') === null) {
 				return -1;
 			}
 
-			if ($b->getAttribute('DATE') != null && $a->getAttribute('DATE') == null) {
+			if ($b->getAttribute('DATE') !== null && $a->getAttribute('DATE') === null) {
 				return 1;
 			}
 
