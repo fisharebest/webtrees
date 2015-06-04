@@ -87,7 +87,6 @@ foreach ($vars as $name => $var) {
 	}
 }
 $vars = $newvars;
-unset($newvars);
 
 foreach ($varnames as $name) {
 	if (!isset($vars[$name])) {
@@ -277,10 +276,10 @@ case 'run':
 	switch ($output) {
 	case 'HTML':
 		header('Content-type: text/html; charset=UTF-8');
-		new ReportParserGenerate($report, new ReportHtml);
+		new ReportParserGenerate($report, new ReportHtml, $vars);
 		break;
 	case 'PDF':
-		new ReportParserGenerate($report, new ReportPdf);
+		new ReportParserGenerate($report, new ReportPdf, $vars);
 		break;
 	}
 }

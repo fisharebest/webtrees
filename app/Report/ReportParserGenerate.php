@@ -23,6 +23,7 @@ use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Log;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Note;
 use Fisharebest\Webtrees\Place;
@@ -106,11 +107,15 @@ class ReportParserGenerate extends ReportParserBase {
 	/** @var ReportBase Nested report elements */
 	private $wt_report;
 
+	/** @var string[][] Variables defined in the report at run-time */
+	private $vars;
+
 	/** {@inheritDoc} */
-	public function __construct($report, ReportBase $report_root = null) {
+	public function __construct($report, ReportBase $report_root = null, $vars = array()) {
 		$this->report_root     = $report_root;
 		$this->wt_report       = $report_root;
 		$this->current_element = new ReportBaseElement;
+		$this->vars            = $vars;
 		parent::__construct($report);
 	}
 
@@ -125,14 +130,12 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param array    $attrs  an array of key value pairs for the attributes
 	 */
 	protected function startElement($parser, $name, $attrs) {
-		global $vars;
-
 		$newattrs = array();
 
 		foreach ($attrs as $key => $value) {
 			if (preg_match("/^\\$(\w+)$/", $value, $match)) {
-				if ((isset($vars[$match[1]]['id'])) && (!isset($vars[$match[1]]['gedcom']))) {
-					$value = $vars[$match[1]]['id'];
+				if ((isset($this->vars[$match[1]]['id'])) && (!isset($this->vars[$match[1]]['gedcom']))) {
+					$value = $this->vars[$match[1]]['id'];
 				}
 			}
 			$newattrs[$key] = $value;
@@ -554,7 +557,7 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
 	private function gedcomStartHandler($attrs) {
-		global $vars, $WT_TREE;
+		global $WT_TREE;
 
 		if ($this->process_gedcoms > 0) {
 			$this->process_gedcoms++;
@@ -575,8 +578,8 @@ class ReportParserGenerate extends ReportParserBase {
 			$newgedrec = '';
 			foreach ($tags as $tag) {
 				if (preg_match("/\\$(.+)/", $tag, $match)) {
-					if (isset($vars[$match[1]]['gedcom'])) {
-						$newgedrec = $vars[$match[1]]['gedcom'];
+					if (isset($this->vars[$match[1]]['gedcom'])) {
+						$newgedrec = $this->vars[$match[1]]['gedcom'];
 					} else {
 						$tmp       = GedcomRecord::getInstance($match[1], $WT_TREE);
 						$newgedrec = $tmp ? $tmp->privatizeGedcom(Auth::accessLevel($WT_TREE)) : '';
@@ -798,7 +801,7 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
 	private function getPersonNameStartHandler($attrs) {
-		global $vars, $WT_TREE;
+		global $WT_TREE;
 
 		$id    = "";
 		$match = array();
@@ -808,8 +811,8 @@ class ReportParserGenerate extends ReportParserBase {
 			}
 		} else {
 			if (preg_match("/\\$(.+)/", $attrs['id'], $match)) {
-				if (isset($vars[$match[1]]['id'])) {
-					$id = $vars[$match[1]]['id'];
+				if (isset($this->vars[$match[1]]['id'])) {
+					$id = $this->vars[$match[1]]['id'];
 				}
 			} else {
 				if (preg_match("/@(.+)/", $attrs['id'], $match)) {
@@ -1089,16 +1092,14 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
 	private function varStartHandler($attrs) {
-		global $vars;
-
 		if (empty($attrs['var'])) {
 			throw new \DomainException('REPORT ERROR var: The attribute "var=" is missing or not set in the XML file on line: ' . xml_get_current_line_number($this->parser));
 		}
 
 		$var = $attrs['var'];
 		// SetVar element preset variables
-		if (!empty($vars[$var]['id'])) {
-			$var = $vars[$var]['id'];
+		if (!empty($this->vars[$var]['id'])) {
+			$var = $this->vars[$var]['id'];
 		} else {
 			$tfact = $this->fact;
 			if (($this->fact === "EVEN" || $this->fact === "FACT") && $this->type !== " ") {
@@ -1130,7 +1131,7 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
 	private function factsStartHandler($attrs) {
-		global $vars, $WT_TREE;
+		global $WT_TREE;
 
 		$this->process_repeats++;
 		if ($this->process_repeats > 1) {
@@ -1151,7 +1152,7 @@ class ReportParserGenerate extends ReportParserBase {
 			$tag .= $attrs['ignore'];
 		}
 		if (preg_match("/\\$(.+)/", $tag, $match)) {
-			$tag = $vars[$match[1]]['id'];
+			$tag = $this->vars[$match[1]]['id'];
 		}
 
 		$record = GedcomRecord::getInstance($id, $WT_TREE);
@@ -1256,13 +1257,11 @@ class ReportParserGenerate extends ReportParserBase {
 
 	/**
 	 * Setting upp or changing variables in the XML
-	 * The XML variable name and value is stored in the global variable $vars
+	 * The XML variable name and value is stored in $this->vars
 	 *
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
 	private function setVarStartHandler($attrs) {
-		global $vars;
-
 		if (empty($attrs['name'])) {
 			throw new \DomainException('REPORT ERROR var: The attribute "name" is missing or not set in the XML file');
 		}
@@ -1288,12 +1287,12 @@ class ReportParserGenerate extends ReportParserBase {
 			}
 		}
 		if (preg_match("/\\$(\w+)/", $name, $match)) {
-			$name = $vars["'" . $match[1] . "'"]['id'];
+			$name = $this->vars["'" . $match[1] . "'"]['id'];
 		}
 		$count = preg_match_all("/\\$(\w+)/", $value, $match, PREG_SET_ORDER);
 		$i     = 0;
 		while ($i < $count) {
-			$t     = $vars[$match[$i][1]]['id'];
+			$t     = $this->vars[$match[$i][1]]['id'];
 			$value = preg_replace("/\\$" . $match[$i][1] . "/", $t, $value, 1);
 			$i++;
 		}
@@ -1328,7 +1327,7 @@ class ReportParserGenerate extends ReportParserBase {
 		if (strpos($value, "@") !== false) {
 			$value = "";
 		}
-		$vars[$name]['id'] = $value;
+		$this->vars[$name]['id'] = $value;
 	}
 
 	/**
@@ -1337,8 +1336,6 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
 	private function ifStartHandler($attrs) {
-		global $vars;
-
 		if ($this->process_ifs > 0) {
 			$this->process_ifs++;
 
@@ -1346,16 +1343,7 @@ class ReportParserGenerate extends ReportParserBase {
 		}
 
 		$condition = $attrs['condition'];
-
-		// Substitute global vars
-		$condition = preg_replace_callback(
-			'/\$(\w+)/',
-			function ($matches) use ($vars) {
-				return '$vars["' . $matches[1] . '"]["id"]';
-			},
-			$condition
-		);
-
+		$condition = $this->substitute_vars($condition);
 		$condition = str_replace(array(" LT ", " GT "), array("<", ">"), $condition);
 		// Replace the first accurance only once of @fact:DATE or in any other combinations to the current fact, such as BIRT
 		$condition = str_replace("@fact", $this->fact, $condition);
@@ -1814,7 +1802,7 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
 	private function listStartHandler($attrs) {
-		global $vars, $WT_TREE;
+		global $WT_TREE;
 
 		$this->process_repeats++;
 		if ($this->process_repeats > 1) {
@@ -1825,7 +1813,7 @@ class ReportParserGenerate extends ReportParserBase {
 		if (isset($attrs['sortby'])) {
 			$sortby = $attrs['sortby'];
 			if (preg_match("/\\$(\w+)/", $sortby, $match)) {
-				$sortby = $vars[$match[1]]['id'];
+				$sortby = $this->vars[$match[1]]['id'];
 				$sortby = trim($sortby);
 			}
 		} else {
@@ -1855,14 +1843,7 @@ class ReportParserGenerate extends ReportParserBase {
 				$sql_order_by = "";
 				foreach ($attrs as $attr => $value) {
 					if (strpos($attr, 'filter') === 0 && $value) {
-						// Substitute global vars
-						$value = preg_replace_callback(
-							'/\$(\w+)/',
-							function ($matches) use ($vars) {
-								return $vars[$matches[1]]['id'];
-							},
-							$value
-						);
+						$value = $this->substitute_vars($value);
 						// Convert the various filters into SQL
 						if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
 							$sql_join .= " JOIN `##dates` AS {$attr} ON ({$attr}.d_file=i_file AND {$attr}.d_gid=i_id)";
@@ -1941,14 +1922,7 @@ class ReportParserGenerate extends ReportParserBase {
 				$sql_order_by = "";
 				foreach ($attrs as $attr => $value) {
 					if (strpos($attr, 'filter') === 0 && $value) {
-						// Substitute global vars
-						$value = preg_replace_callback(
-							'/\$(\w+)/',
-							function ($matches) use ($vars) {
-								return $vars[$matches[1]]['id'];
-							},
-							$value
-						);
+						$value = $this->substitute_vars($value);
 						// Convert the various filters into SQL
 						if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
 							$sql_join .= " JOIN `##dates` AS {$attr} ON ({$attr}.d_file=f_file AND {$attr}.d_gid=f_id)";
@@ -2046,7 +2020,7 @@ class ReportParserGenerate extends ReportParserBase {
 						$expr = trim($match[2]);
 						$val  = trim($match[3]);
 						if (preg_match("/\\$(\w+)/", $val, $match)) {
-							$val = $vars[$match[1]]['id'];
+							$val = $this->vars[$match[1]]['id'];
 							$val = trim($val);
 						}
 						if ($val) {
@@ -2284,7 +2258,7 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
 	private function relativesStartHandler($attrs) {
-		global $vars, $WT_TREE;
+		global $WT_TREE;
 
 		$this->process_repeats++;
 		if ($this->process_repeats > 1) {
@@ -2297,7 +2271,7 @@ class ReportParserGenerate extends ReportParserBase {
 		}
 		$match = array();
 		if (preg_match("/\\$(\w+)/", $sortby, $match)) {
-			$sortby = $vars[$match[1]]['id'];
+			$sortby = $this->vars[$match[1]]['id'];
 			$sortby = trim($sortby);
 		}
 
@@ -2314,7 +2288,7 @@ class ReportParserGenerate extends ReportParserBase {
 			$group = $attrs['group'];
 		}
 		if (preg_match("/\\$(\w+)/", $group, $match)) {
-			$group = $vars[$match[1]]['id'];
+			$group = $this->vars[$match[1]]['id'];
 			$group = trim($group);
 		}
 
@@ -2322,8 +2296,9 @@ class ReportParserGenerate extends ReportParserBase {
 		if (isset($attrs['id'])) {
 			$id = $attrs['id'];
 		}
+		$match = $this->substitute_vars($match);
 		if (preg_match("/\\$(\w+)/", $id, $match)) {
-			$id = $vars[$match[1]]['id'];
+			$id = $this->vars[$match[1]]['id'];
 			$id = trim($id);
 		}
 
@@ -2771,5 +2746,30 @@ class ReportParserGenerate extends ReportParserBase {
 		}
 
 		return "";
+	}
+
+	/**
+	 * Replace variable identifiers with their values.
+	 *
+	 * @param string $expression An expression such as "$foo == 123"
+	 *
+	 * @return string
+	 */
+	private function substitute_vars($expression) {
+		$tmp = $this->vars; // PHP5.3 cannot use $this in closures
+
+		return preg_replace_callback(
+			'/\$(\w+)/',
+			function ($matches) use ($tmp) {
+				if (isset($tmp[$matches[1]]['id'])) {
+					return '"' . $tmp[$matches[1]]['id'] . '"';
+				} else {
+					Log::addErrorLog(sprintf('Undefined variable $%s in report', $matches[1]));
+					return '$' . $matches[1];
+				}
+			},
+			$expression
+		);
+
 	}
 }
