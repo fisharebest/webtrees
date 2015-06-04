@@ -820,10 +820,11 @@ function calculate_legend($boundaries_z_axis) {
 
 global $legend, $xdata, $ydata, $xmax, $zmax, $z_boundaries, $xgiven, $zgiven, $percentage, $male_female;
 
-$x_axis      = Filter::getInteger('x-as', 1, 21, 11);
-$y_axis      = Filter::getInteger('y-as', 201, 202, 201);
-$z_axis      = Filter::getInteger('z-as', 300, 302, 302);
-$stats       = new Stats($WT_TREE);
+$x_axis       = Filter::getInteger('x-as', 1, 21, 11);
+$y_axis       = Filter::getInteger('y-as', 201, 202, 201);
+$z_axis       = Filter::getInteger('z-as', 300, 302, 302);
+$stats        = new Stats($WT_TREE);
+$z_boundaries = array();
 
 echo '<div class="statistics_chart" title="', I18N::translate('Statistics plot'), '">';
 
