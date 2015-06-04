@@ -1010,24 +1010,6 @@ class Individual extends GedcomRecord {
 	}
 
 	/**
-	 * @todo this function does not belong in this class
-	 *
-	 * @param Family $family
-	 *
-	 * @return string
-	 */
-	public function getSpouseFamilyLabel(Family $family) {
-		$spouse = $family->getSpouse($this);
-		if ($spouse) {
-			return
-				/* I18N: %s is the spouse name */
-				I18N::translate('Family with %s', $spouse->getFullName());
-		} else {
-			return $family->getFullName();
-		}
-	}
-
-	/**
 	 * get primary parents names for this individual
 	 *
 	 * @param string $classname optional css class

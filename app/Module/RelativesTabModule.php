@@ -323,7 +323,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 		// spouses
 		$families = $controller->record->getSpouseFamilies();
 		foreach ($families as $family) {
-			$this->printFamily($family, 'FAMS', $controller->record->getSpouseFamilyLabel($family));
+			$this->printFamily($family, 'FAMS', $controller->getSpouseFamilyLabel($family, $controller->record));
 		}
 
 		// step-children

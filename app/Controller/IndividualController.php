@@ -422,4 +422,20 @@ class IndividualController extends GedcomRecordController {
 			return '';
 		}
 	}
+
+	/**
+	 * @param Family $family
+	 *
+	 * @return string
+	 */
+	public function getSpouseFamilyLabel(Family $family, $individual) {
+		$spouse = $family->getSpouse($individual);
+		if ($spouse) {
+			return
+				/* I18N: %s is the spouse name */
+				I18N::translate('Family with %s', $spouse->getFullName());
+		} else {
+			return $family->getFullName();
+		}
+	}
 }

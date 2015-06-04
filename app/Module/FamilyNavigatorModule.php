@@ -86,7 +86,7 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 		}
 		//-- spouse and children --------------------------------------------------
 		foreach ($controller->record->getSpouseFamilies() as $family) {
-			$this->drawFamily($family, $controller->record->getSpouseFamilyLabel($family));
+			$this->drawFamily($family, $controller->getSpouseFamilyLabel($family, $controller->record));
 		}
 		//-- step children ----------------------------------------------------------------
 		foreach ($controller->record->getSpouseStepFamilies() as $family) {
