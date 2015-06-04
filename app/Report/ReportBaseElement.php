@@ -28,14 +28,14 @@ class ReportBaseElement {
 	/**
 	 * Element renderer
 	 *
-	 * @param ReportHtml|ReportPdf $renderer
+	 * @param ReportHtml|ReportTcpdf $renderer
 	 */
 	public function render($renderer) {
 		//-- to be implemented in inherited classes
 	}
 
 	/**
-	 * @param ReportHtml|ReportPdf $renderer
+	 * @param ReportHtml|ReportTcpdf $renderer
 	 *
 	 * @return float
 	 */
@@ -44,7 +44,7 @@ class ReportBaseElement {
 	}
 
 	/**
-	 * @param ReportHtml|ReportPdf $renderer
+	 * @param ReportHtml|ReportTcpdf $renderer
 	 *
 	 * @return float
 	 */
