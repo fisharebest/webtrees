@@ -517,7 +517,6 @@ function mediaFileInfo($media_folder, $media_path, $file) {
 function mediaObjectInfo(Media $media) {
 	$xref   = $media->getXref();
 	$gedcom = $media->getTree()->getName();
-	$name   = $media->getFullName();
 
 	$html =
 		'<div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-pencil"></i> <span class="caret"></span></button><ul class="dropdown-menu" role="menu">' .
