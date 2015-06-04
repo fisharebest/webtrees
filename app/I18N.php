@@ -431,9 +431,6 @@ class I18N {
 		// Alphabetic sorting sequence (lower-case letters), used by webtrees to sort strings
 		list(, self::$alphabet_lower) = explode('=', self::$translator->translate('ALPHABET_lower=abcdefghijklmnopqrstuvwxyz'));
 
-		global $WEEK_START;
-		$WEEK_START = self::$locale->territory()->firstDay();
-
 		self::$list_separator = /* I18N: This punctuation is used to separate lists of items */ self::translate(', ');
 
 		return self::$locale->languageTag();

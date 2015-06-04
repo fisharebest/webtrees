@@ -708,7 +708,7 @@ function print_add_new_fact($id, $usedfacts, $type) {
  * javascript declaration for calendar popup
  */
 function init_calendar_popup() {
-	global $WEEK_START, $controller;
+	global $controller;
 
 	$controller->addInlineJavascript('
 		cal_setMonthNames(
@@ -734,7 +734,7 @@ function init_calendar_popup() {
 			"' . I18N::translate('Fri') . '",
 			"' . I18N::translate('Sat') . '"
 		)
-		cal_setWeekStart(' . $WEEK_START . ');
+		cal_setWeekStart(' . I18N::firstDay() . ');
 	');
 }
 
