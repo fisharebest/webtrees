@@ -357,6 +357,7 @@ $old_files = array(
 	WT_ROOT . 'admin_site_other.php',
 	WT_ROOT . 'includes/config_data.php',
 	WT_ROOT . 'includes/db_schema',
+	WT_ROOT . 'includes/fonts',
 	WT_ROOT . 'includes/hitcount.php',
 	WT_ROOT . 'includes/reportheader.php',
 	WT_ROOT . 'js',

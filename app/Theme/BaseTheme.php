@@ -1841,7 +1841,7 @@ abstract class BaseTheme {
 			'chart-box-y'                    => 80,
 			'chart-descendancy-indent'       => 15,
 			'chart-font-color'               => '000000',
-			'chart-font-name'                => WT_ROOT . 'includes/fonts/DejaVuSans.ttf',
+			'chart-font-name'                => WT_ROOT . 'packages/dejavu-fonts-ttf-2.35/ttf/DejaVuSans.ttf',
 			'chart-font-size'                => 7,
 			'chart-spacing-x'                => 5,
 			'chart-spacing-y'                => 10,
