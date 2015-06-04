@@ -621,30 +621,20 @@ function my_plot($mytitle, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 	} else {
 		$stop = count($ydata);
 	}
-	$yprocentmax = 0;
 	if ($percentage) {
+		$ypercentmax = 0;
 		$yt = array();
 		for ($i = 0; $i < $stop; $i++) {
-			$ytotal   = 0;
-			$ymax     = 0;
-			$yprocent = 0;
 			if (isset($ydata[$i])) {
-				for ($j = 0; $j < count($ydata[$i]); $j++) {
-					if ($ydata[$i][$j] > $ymax) {
-						$ymax = $ydata[$i][$j];
-					}
-					$ytotal += $ydata[$i][$j];
-				}
-				$yt[$i] = $ytotal;
-				if ($ytotal > 0) {
-					$yprocent = round($ymax / $ytotal * 100, 1);
-				}
-				if ($yprocentmax < $yprocent) {
-					$yprocentmax = $yprocent;
+				$ymax   = max($ydata[$i]);
+				$yt[$i] = array_sum($ydata[$i]);
+				if ($yt[$i] > 0) {
+					$ypercent    = round($ymax / $yt[$i] * 100, 1);
+					$ypercentmax = max($ypercentmax, $ypercent);
 				}
 			}
 		}
-		$ymax = $yprocentmax;
+		$ymax = $ypercentmax;
 		if ($ymax > 0) {
 			$scalefactor = 100.0 / $ymax;
 		} else {
@@ -653,28 +643,24 @@ function my_plot($mytitle, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 		$datastring = 'chd=t:';
 		for ($i = 0; $i < $stop; $i++) {
 			if (isset($ydata[$i])) {
-				for ($j = 0; $j < count($ydata[$i]); $j++) {
+				foreach ($ydata[$i] as $j => $data) {
+					if ($j > 0) {
+						$datastring .= ',';
+					}
 					if ($yt[$i] > 0) {
-						$datastring .= round($ydata[$i][$j] / $yt[$i] * 100 * $scalefactor, 1);
+						$datastring .= round($data / $yt[$i] * 100 * $scalefactor, 1);
 					} else {
 						$datastring .= '0';
 					}
-					if (!($j === (count($ydata[$i]) - 1))) {
-						$datastring .= ',';
-					}
 				}
-				if (!($i === ($stop - 1))) {
+				if ($i !== $stop - 1) {
 					$datastring .= '|';
 				}
 			}
 		}
 	} else {
 		for ($i = 0; $i < $stop; $i++) {
-			for ($j = 0; $j < count($ydata[$i]); $j++) {
-				if ($ydata[$i][$j] > $ymax) {
-					$ymax = $ydata[$i][$j];
-				}
-			}
+			$ymax = max($ymax, max($ydata[$i]));
 		}
 		if ($ymax > 0) {
 			$scalefactor = 100.0 / $ymax;
@@ -683,13 +669,13 @@ function my_plot($mytitle, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 		}
 		$datastring = 'chd=t:';
 		for ($i = 0; $i < $stop; $i++) {
-			for ($j = 0; $j < count($ydata[$i]); $j++) {
-				$datastring .= round($ydata[$i][$j] * $scalefactor, 1);
-				if (!($j === (count($ydata[$i]) - 1))) {
+			foreach ($ydata[$i] as $j => $data) {
+				if ($j > 0) {
 					$datastring .= ',';
 				}
+				$datastring .= round($data * $scalefactor, 1);
 			}
-			if (!($i === ($stop - 1))) {
+			if ($i !== $stop - 1) {
 				$datastring .= '|';
 			}
 		}
@@ -717,8 +703,8 @@ function my_plot($mytitle, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 		$imgurl .= '20,3';
 	}
 	$imgurl .= '&amp;chxt=x,x,y,y&amp;chxl=0:|';
-	for ($i = 0; $i < count($xdata); $i++) {
-		$imgurl .= rawurlencode($xdata[$i]) . '|';
+	foreach ($xdata as $data) {
+		$imgurl .= rawurlencode($data) . '|';
 	}
 
 	$imgurl .= '1:||||' . rawurlencode($xtitle) . '|2:|';
@@ -744,14 +730,14 @@ function my_plot($mytitle, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 		}
 		$imgurl .= '3:||' . rawurlencode($ytitle) . '|';
 	}
-	//only show legend if y-data is non-2-dimensional
+	// Only show legend if y-data is non-2-dimensional
 	if (count($ydata) > 1) {
 		$imgurl .= '&amp;chdl=';
-		for ($i = 0; $i < count($legend); $i++) {
-			$imgurl .= rawurlencode($legend[$i]);
-			if (!($i === (count($legend) - 1))) {
+		foreach ($legend as $i => $data) {
+			if ($i > 0) {
 				$imgurl .= '|';
 			}
+			$imgurl .= rawurlencode($data);
 		}
 	}
 	$title = strstr($mytitle, '|', true);
