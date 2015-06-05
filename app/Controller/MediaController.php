@@ -19,6 +19,7 @@ namespace Fisharebest\Webtrees\Controller;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Menu;
@@ -131,7 +132,7 @@ class MediaController extends GedcomRecordController {
 			$facts[] = new Fact('1 __FILE_SIZE__ ' . $this->record->getFilesize(), $this->record, 0);
 		}
 
-		sort_facts($facts);
+		Functions::sortFacts($facts);
 
 		return $facts;
 	}

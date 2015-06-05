@@ -15,6 +15,7 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
 /**
  * Class Fact - Class that defines an event details object
@@ -44,7 +45,7 @@ class Fact {
 	/** @var Place The place of this fact, from the “2 PLAC …” attribute */
 	private $place;
 
-	/** @var int Temporary(!) variable Used by sort_facts() */
+	/** @var int Temporary(!) variable Used by Functions::sortFacts() */
 	public $sortOrder;
 
 	/**
@@ -385,7 +386,7 @@ class Fact {
 			}
 			$date = $this->getDate();
 			if ($this->getTag() == 'BIRT' && $this->getParent() instanceof Individual && $this->getParent()->getTree()->getPreference('SHOW_PARENTS_AGE')) {
-				$attributes[] = $date->display() . format_parents_age($this->getParent(), $date);
+				$attributes[] = $date->display() . FunctionsPrint::formatParentsAges($this->getParent(), $date);
 			} else {
 				$attributes[] = $date->display();
 			}

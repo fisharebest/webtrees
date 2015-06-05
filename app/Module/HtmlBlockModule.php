@@ -17,6 +17,8 @@ namespace Fisharebest\Webtrees\Module;
  */
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsDate;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module;
@@ -99,7 +101,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 		$content = $html;
 
 		if ($show_timestamp) {
-			$content .= '<br>' . format_timestamp($this->getBlockSetting($block_id, 'timestamp', WT_TIMESTAMP) + WT_TIMESTAMP_OFFSET);
+			$content .= '<br>' . FunctionsDate::formatTimestamp($this->getBlockSetting($block_id, 'timestamp', WT_TIMESTAMP) + WT_TIMESTAMP_OFFSET);
 		}
 
 		if ($template) {
@@ -310,14 +312,14 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 		echo '<tr><td class="descriptionbox wrap">';
 		echo I18N::translate('Show the date and time of update');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('show_timestamp', $show_timestamp);
+		echo FunctionsEdit::editFieldYesNo('show_timestamp', $show_timestamp);
 		echo '<input type="hidden" name="timestamp" value="', WT_TIMESTAMP, '">';
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap">';
 		echo I18N::translate('Show this block for which languages?');
 		echo '</td><td class="optionbox">';
-		echo edit_language_checkboxes('lang', $languages);
+		echo FunctionsEdit::editLanguageCheckboxes('lang', $languages);
 		echo '</td></tr>';
 	}
 }

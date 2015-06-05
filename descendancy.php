@@ -24,6 +24,9 @@ namespace Fisharebest\Webtrees;
 global $WT_TREE;
 
 use Fisharebest\Webtrees\Controller\DescendancyController;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 
 define('WT_SCRIPT_NAME', 'descendancy.php');
 require './includes/session.php';
@@ -46,7 +49,7 @@ $controller
 					</td>
 					<td class="optionbox">
 						<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
-						<?php echo print_findindi_link('rootid'); ?>
+						<?php echo FunctionsPrint::printFindIndividualLink('rootid'); ?>
 					</td>
 					<td rowspan="3" class="descriptionbox">
 						<?php echo I18N::translate('Layout'); ?>
@@ -73,7 +76,7 @@ $controller
 						<?php echo I18N::translate('Generations'); ?>
 					</td>
 					<td class="optionbox">
-						<?php echo edit_field_integers('generations', $controller->generations, 2, $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS')); ?>
+						<?php echo FunctionsEdit::editFieldInteger('generations', $controller->generations, 2, $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS')); ?>
 					</td>
 				</tr>
 				<tr>
@@ -81,7 +84,7 @@ $controller
 						<?php echo I18N::translate('Show details'); ?>
 					</td>
 					<td class="optionbox">
-						<?php echo two_state_checkbox('show_full', $controller->showFull()); ?>
+						<?php echo FunctionsEdit::twoStateCheckbox('show_full', $controller->showFull()); ?>
 					</td>
 				</tr>
 			</tbody>
@@ -106,11 +109,11 @@ if ($controller->error_message) {
 		break;
 	case 2: // Individual list
 		$descendants = $controller->individualDescendancy($controller->root, $controller->generations, array());
-		echo '<div id="descendancy-list">', format_indi_table($descendants), '</div>';
+		echo '<div id="descendancy-list">', FunctionsPrintLists::individualTable($descendants), '</div>';
 		break;
 	case 3: // Family list
 		$descendants = $controller->familyDescendancy($controller->root, $controller->generations, array());
-		echo '<div id="descendancy-list">', format_fam_table($descendants), '</div>';
+		echo '<div id="descendancy-list">', FunctionsPrintLists::familyTable($descendants), '</div>';
 		break;
 	}
 }

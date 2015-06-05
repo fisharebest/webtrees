@@ -276,7 +276,7 @@ class I18N {
 	 *
 	 * NB: The import function will have normalised this, so we don't need
 	 * to worry about badly formatted strings
-	 * NOTE: this function is not yet complete - eventually it will replace get_age_at_event()
+	 * NOTE: this function is not yet complete - eventually it will replace FunctionsDate::get_age_at_event()
 	 *
 	 * @param $string
 	 *

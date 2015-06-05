@@ -24,6 +24,8 @@ namespace Fisharebest\Webtrees;
 global $WT_TREE;
 
 use Fisharebest\Webtrees\Controller\HourglassController;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
 define('WT_SCRIPT_NAME', 'hourglass.php');
 require './includes/session.php';
@@ -48,13 +50,13 @@ $controller
 					</td>
 					<td class="optionbox">
 						<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
-						<?php echo print_findindi_link('pid'); ?>
+						<?php echo FunctionsPrint::printFindIndividualLink('pid'); ?>
 					</td>
 					<td class="descriptionbox">
 						<?php echo I18N::translate('Show details'); ?>
 					</td>
 					<td class="optionbox">
-						<?php echo two_state_checkbox("show_full", $controller->showFull()); ?>
+						<?php echo FunctionsEdit::twoStateCheckbox("show_full", $controller->showFull()); ?>
 					</td>
 					<td rowspan="3" class="topbottombar vmiddle">
 						<input type="submit" value="<?php echo I18N::translate('View'); ?>">
@@ -65,7 +67,7 @@ $controller
 						<?php echo I18N::translate('Generations'); ?>
 					</td>
 					<td class="optionbox">
-						<?php echo edit_field_integers('generations', $controller->generations, 2, $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS')); ?>
+						<?php echo FunctionsEdit::editFieldInteger('generations', $controller->generations, 2, $WT_TREE->getPreference('MAX_DESCENDANCY_GENERATIONS')); ?>
 					</td>
 					<td class="descriptionbox">
 						<?php echo I18N::translate('Show spouses'); ?>

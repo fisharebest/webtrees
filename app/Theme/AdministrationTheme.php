@@ -212,7 +212,7 @@ class AdministrationTheme extends BaseTheme {
 
 	/** {@inheritdoc} */
 	protected function secondaryMenuContent(array $menus) {
-		return implode('', array_map(function ($menu) { return $menu->bootstrap(); }, $menus));
+		return implode('', array_map(function (Menu $menu) { return $menu->bootstrap(); }, $menus));
 	}
 
 	/** {@inheritdoc} */

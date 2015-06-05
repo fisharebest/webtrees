@@ -23,6 +23,8 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Functions\FunctionsMedia;
+
 define('WT_SCRIPT_NAME', 'mediafirewall.php');
 require './includes/session.php';
 
@@ -314,7 +316,7 @@ if ($type) {
 
 // determine whether we have enough memory to watermark this image
 if ($usewatermark) {
-	if (!hasMemoryForImage($serverFilename)) {
+	if (!FunctionsMedia::hasMemoryForImage($serverFilename)) {
 		// not enough memory to watermark this file
 		$usewatermark = false;
 	}

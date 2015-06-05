@@ -24,6 +24,8 @@ namespace Fisharebest\Webtrees;
 global $WT_TREE;
 
 use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\FunctionsDb;
+use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 
 define('WT_SCRIPT_NAME', 'notelist.php');
 require './includes/session.php';
@@ -34,5 +36,5 @@ $controller->pageHeader();
 
 echo '<div id="notelist-page">',
 	'<h2>', I18N::translate('Shared notes'), '</h2>',
-	format_note_table(get_note_list($WT_TREE));
+	FunctionsPrintLists::noteTable(FunctionsDb::getNoteList($WT_TREE));
 echo '</div>';

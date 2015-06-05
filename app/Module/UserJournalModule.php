@@ -18,6 +18,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Theme;
 
@@ -78,7 +79,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 		foreach ($usernews as $news) {
 			$content .= '<div class="journal_box">';
 			$content .= '<div class="news_title">' . $news->subject . '</div>';
-			$content .= '<div class="news_date">' . format_timestamp($news->updated) . '</div>';
+			$content .= '<div class="news_date">' . FunctionsDate::formatTimestamp($news->updated) . '</div>';
 			if ($news->body == strip_tags($news->body)) {
 				// No HTML?
 				$news->body = nl2br($news->body, false);

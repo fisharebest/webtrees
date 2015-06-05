@@ -16,6 +16,7 @@ namespace Fisharebest\Webtrees\Report;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 use Fisharebest\Webtrees\Controller\SimpleController;
+use Fisharebest\Webtrees\Functions\FunctionsRtl;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 
@@ -671,7 +672,7 @@ class ReportHtml extends ReportBase {
 		$lfct     = count($lines);
 		$wraptext = '';
 		foreach ($lines as $line) {
-			$wtext = utf8_wordwrap($line, $lw, "\n", true);
+			$wtext = FunctionsRtl::utf8WordWrap($line, $lw, "\n", true);
 			$wraptext .= $wtext;
 			// Add a new line as long as it’s not the last line
 			if ($lfct > 1) {

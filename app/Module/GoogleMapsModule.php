@@ -24,6 +24,10 @@ use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\Functions\FunctionsCharts;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -299,7 +303,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						</tr>
 						<tr>
 							<th><?php echo /* I18N: http://en.wikipedia.org/wiki/Google_street_view */ I18N::translate('Google Street View™'); ?></th>
-							<td><?php echo radio_buttons('GM_USE_STREETVIEW', array(false => I18N::translate('hide'), true => I18N::translate('show')), $this->getSetting('GM_USE_STREETVIEW'), 'class="radio-inline"'); ?></td>
+							<td><?php echo FunctionsEdit::radioButtons('GM_USE_STREETVIEW', array(false => I18N::translate('hide'), true => I18N::translate('show')), $this->getSetting('GM_USE_STREETVIEW'), 'class="radio-inline"'); ?></td>
 						</tr>
 						<tr>
 							<th><?php echo I18N::translate('Size of map (in pixels)'); ?></th>
@@ -440,7 +444,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					<table class="gm_edit_config">
 						<tr>
 							<th><?php echo I18N::translate('Use Google Maps™ for the place hierarchy'); ?></th>
-							<td><?php echo edit_field_yes_no('GM_PLACE_HIERARCHY', $this->getSetting('GM_PLACE_HIERARCHY'), 'class="radio-inline"'); ?></td>
+							<td><?php echo FunctionsEdit::editFieldYesNo('GM_PLACE_HIERARCHY', $this->getSetting('GM_PLACE_HIERARCHY'), 'class="radio-inline"'); ?></td>
 						</tr>
 						<tr>
 							<th><?php echo I18N::translate('Size of map (in pixels)'); ?></th>
@@ -465,7 +469,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 								<?php echo I18N::translate('Display short placenames'); ?>
 							</th>
 							<td>
-								<?php echo edit_field_yes_no('GM_DISP_SHORT_PLACE', $this->getSetting('GM_DISP_SHORT_PLACE'), 'class="radio-inline"'); ?>
+								<?php echo FunctionsEdit::editFieldYesNo('GM_DISP_SHORT_PLACE', $this->getSetting('GM_DISP_SHORT_PLACE'), 'class="radio-inline"'); ?>
 								<p class="small text-muted">
 									<?php echo I18N::translate('Hide the flags that are configured in the googlemap module.  Usually these are for countries and states.  This serves as a visual cue that the markers around the flag are from the general area, and not the specific spot.'); ?>
 								</p>
@@ -476,7 +480,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 								<?php echo I18N::translate('Display map coordinates'); ?>
 							</th>
 							<td>
-								<?php echo edit_field_yes_no('GM_COORD', $this->getSetting('GM_COORD'), 'class="radio-inline"'); ?>
+								<?php echo FunctionsEdit::editFieldYesNo('GM_COORD', $this->getSetting('GM_COORD'), 'class="radio-inline"'); ?>
 								<p class="small text-muted">
 									<?php echo I18N::translate('This options sets whether latitude and longitude are displayed on the pop-up window attached to map markers.'); ?>
 								</p>
@@ -758,7 +762,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					</td>
 					<td class="optionbox">
 						<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
-						<?php echo print_findindi_link('rootid'); ?>
+						<?php echo FunctionsPrint::printFindIndividualLink('rootid'); ?>
 					</td>
 					<td class="topbottombar" rowspan="2">
 						<input type="submit" value="<?php echo I18N::translate('View'); ?>">
@@ -1313,7 +1317,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					$curgen++;
 				}
 
-				$relationship = get_sosa_name($i + 1);
+				$relationship = FunctionsCharts::getSosaName($i + 1);
 
 				$event = '<img src="' . WT_STATIC_URL . WT_MODULES_DIR . 'googlemap/images/sq' . $curgen . '.png" width="10" height="10"> ' .
 					'<strong>' . $relationship . '</strong>';
@@ -1521,7 +1525,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				<input type="hidden" name="mod_action" value="admin_placecheck">
 				<div class="gm_check">
 					<label>', I18N::translate('Family tree'), '</label>';
-					echo select_edit_control('gedcom_id', Tree::getIdList(), null, $gedcom_id, ' onchange="this.form.submit();"');
+					echo FunctionsEdit::selectEditControl('gedcom_id', Tree::getIdList(), null, $gedcom_id, ' onchange="this.form.submit();"');
 					echo '<label>', I18N::translate('Country'), '</label>
 					<select name="country" onchange="this.form.submit();">
 						<option value="XYZ" selected>', /* I18N: first/default option in a drop-down listbox */ I18N::translate('&lt;select&gt;'), '</option>
@@ -1918,7 +1922,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$indifacts = array_merge($indifacts, $family->getFacts());
 		}
 
-		sort_facts($indifacts);
+		Functions::sortFacts($indifacts);
 
 		// Create the markers list array
 		$gmarks = array();
@@ -3952,7 +3956,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				<td class="descriptionbox"><?php echo GedcomTag::getLabel('PLAC'); ?></td>
 				<td class="optionbox"><input type="text" id="new_pl_name" name="NEW_PLACE_NAME" value="<?php echo Filter::escapeHtml($place_name); ?>" size="25" class="address_input">
 					<div id="INDI_PLAC_pop" style="display: inline;">
-					<?php echo print_specialchar_link('new_pl_name'); ?></div></td><td class="optionbox">
+					<?php echo FunctionsPrint::printSpecialCharacterLink('new_pl_name'); ?></div></td><td class="optionbox">
 					<label for="new_pl_name"><a href="#" onclick="showLocation_all(document.getElementById('new_pl_name').value); return false">&nbsp;<?php echo I18N::translate('Search globally'); ?></a></label>
 					&nbsp;&nbsp;|&nbsp;&nbsp;
 					<label for="new_pl_name"><a href="#" onclick="showLocation_level(document.getElementById('new_pl_name').value); return false">&nbsp;<?php echo I18N::translate('Search locally'); ?></a></label>
@@ -4138,7 +4142,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				->fetchOneColumn();
 			foreach ($gedcom_records as $gedrec) {
 				$i        = 1;
-				$placerec = get_sub_record(2, '2 PLAC', $gedrec, $i);
+				$placerec = Functions::getSubRecord(2, '2 PLAC', $gedrec, $i);
 				while (!empty($placerec)) {
 					if (preg_match("/2 PLAC (.+)/", $placerec, $match)) {
 						$placelist[$j]          = array();
@@ -4168,7 +4172,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						$j                          = $j + 1;
 					}
 					$i        = $i + 1;
-					$placerec = get_sub_record(2, '2 PLAC', $gedrec, $i);
+					$placerec = Functions::getSubRecord(2, '2 PLAC', $gedrec, $i);
 				}
 			}
 			asort($placelist);
@@ -4489,7 +4493,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		function delete_place(placeid) {
 			var answer=confirm('<?php echo I18N::translate('Remove this location?'); ?>');
 			if (answer == true) {
-				window.location = '<?php echo get_query_url(array('action' => 'DeleteRecord')); ?>&action=DeleteRecord&deleteRecord=' + placeid;
+				window.location = '<?php echo Functions::getQueryUrl(array('action' => 'DeleteRecord')); ?>&action=DeleteRecord&deleteRecord=' + placeid;
 			}
 		}
 		</script>
@@ -4583,7 +4587,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				</td>
 				<td>
 					<form action="?" onsubmit="add_place_location(this.parent_id.options[this.parent_id.selectedIndex].value); return false;">
-						<?php echo select_edit_control('parent_id', $where_am_i, I18N::translate('Top level'), $parent); ?>
+						<?php echo FunctionsEdit::selectEditControl('parent_id', $where_am_i, I18N::translate('Top level'), $parent); ?>
 						<input type="submit" value="<?php echo I18N::translate('Add'); ?>">
 					</form>
 				</td>
@@ -4597,7 +4601,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						<input type="hidden" name="mod" value="googlemap">
 						<input type="hidden" name="mod_action" value="admin_places">
 						<input type="hidden" name="action" value="ImportGedcom">
-						<?php echo select_edit_control('ged', Tree::getNameList(), null, $WT_TREE->getName()); ?>
+						<?php echo FunctionsEdit::selectEditControl('ged', Tree::getNameList(), null, $WT_TREE->getName()); ?>
 						<input type="submit" value="<?php echo I18N::translate('Import'); ?>">
 					</form>
 				</td>
@@ -4624,7 +4628,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 						<input type="hidden" name="mod" value="googlemap">
 						<input type="hidden" name="mod_action" value="admin_places">
 						<input type="hidden" name="action" value="ExportFile">
-						<?php echo select_edit_control('parent', $where_am_i, I18N::translate('All'), $WT_TREE->getTreeId()); ?>
+						<?php echo FunctionsEdit::selectEditControl('parent', $where_am_i, I18N::translate('All'), $WT_TREE->getTreeId()); ?>
 						<input type="submit" value="<?php echo I18N::translate('Download'); ?>">
 					</form>
 				</td>

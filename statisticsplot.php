@@ -623,7 +623,7 @@ function my_plot($mytitle, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 	}
 	if ($percentage) {
 		$ypercentmax = 0;
-		$yt = array();
+		$yt          = array();
 		for ($i = 0; $i < $stop; $i++) {
 			if (isset($ydata[$i])) {
 				$ymax   = max($ydata[$i]);

@@ -18,6 +18,8 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
@@ -173,7 +175,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 				$content .= '<a href="' . $source->getHtmlUrl() . '">' . I18N::translate('View source') . ' — ' . $source->getFullname() . '</a><br>';
 			}
 			$content .= '<br><div class="indent">';
-			$content .= print_fact_notes($random_media->getGedcom(), "1", false);
+			$content .= FunctionsPrint::printFactNotes($random_media->getGedcom(), "1", false);
 			$content .= '</div>';
 			$content .= '</td></tr></table>';
 			$content .= '</div>'; // random_picture_content
@@ -247,7 +249,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Show only individuals, events, or all?');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('filter', array('indi' => I18N::translate('Individuals'), 'event' => I18N::translate('Facts and events'), 'all' => I18N::translate('All')), null, $filter, '');
+		echo FunctionsEdit::selectEditControl('filter', array('indi' => I18N::translate('Individuals'), 'event' => I18N::translate('Facts and events'), 'all' => I18N::translate('All')), null, $filter, '');
 		echo '</td></tr>';
 
 		$filters = array(
@@ -393,13 +395,13 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Show slide show controls?');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('controls', $controls);
+		echo FunctionsEdit::editFieldYesNo('controls', $controls);
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Start slide show on page load?');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('start', $start);
+		echo FunctionsEdit::editFieldYesNo('start', $start);
 		echo '</td></tr>';
 	}
 }

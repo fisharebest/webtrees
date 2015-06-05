@@ -15,6 +15,7 @@ namespace Fisharebest\Webtrees\Report;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Functions\FunctionsRtl;
 
 /**
  * Class ReportPdfCell
@@ -108,7 +109,7 @@ class ReportPdfCell extends ReportBaseCell {
 			if ($renderer->checkPageBreakPDF($cHT)) {
 				$this->top = $renderer->GetY();
 			}
-			$temptext = spanLTRRTL($temptext, "BOTH");
+			$temptext = FunctionsRtl::spanLtrRtl($temptext, "BOTH");
 		}
 		// HTML ready - last value is true
 		$renderer->MultiCell(

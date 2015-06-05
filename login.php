@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees;
  */
 
 use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\Functions;
 use Rhumsaa\Uuid\Uuid;
 
 /**
@@ -105,7 +106,7 @@ case 'login':
 		// We're logging in as an administrator
 		if (Auth::isAdmin()) {
 			// Check for updates
-			$latest_version_txt = fetch_latest_version();
+			$latest_version_txt = Functions::fetchLatestVersion();
 			if (preg_match('/^[0-9.]+\|[0-9.]+\|/', $latest_version_txt)) {
 				list($latest_version, $earliest_version, $download_url) = explode('|', $latest_version_txt);
 				if (version_compare(WT_VERSION, $latest_version) < 0) {

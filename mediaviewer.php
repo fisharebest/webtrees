@@ -24,6 +24,9 @@ namespace Fisharebest\Webtrees;
 global $WT_TREE;
 
 use Fisharebest\Webtrees\Controller\MediaController;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
+use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 
 define('WT_SCRIPT_NAME', 'mediaviewer.php');
 require './includes/session.php';
@@ -41,13 +44,13 @@ if ($controller->record && $controller->record->canShow()) {
 					'<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
 					'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
 				),
-				' ', help_link('pending_changes'),
+				' ', FunctionsPrint::helpLink('pending_changes'),
 				'</p>';
 		} elseif (Auth::isEditor($controller->record->getTree())) {
 			echo
 				'<p class="ui-state-highlight">',
 				I18N::translate('This media object has been deleted.  The deletion will need to be reviewed by a moderator.'),
-				' ', help_link('pending_changes'),
+				' ', FunctionsPrint::helpLink('pending_changes'),
 				'</p>';
 		}
 	} elseif ($controller->record->isPendingAddtion()) {
@@ -59,13 +62,13 @@ if ($controller->record && $controller->record->canShow()) {
 					'<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'accept') . '</a>',
 					'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'reject') . '</a>'
 				),
-				' ', help_link('pending_changes'),
+				' ', FunctionsPrint::helpLink('pending_changes'),
 				'</p>';
 		} elseif (Auth::isEditor($controller->record->getTree())) {
 			echo
 				'<p class="ui-state-highlight">',
 				I18N::translate('This media object has been edited.  The changes need to be reviewed by a moderator.'),
-				' ', help_link('pending_changes'),
+				' ', FunctionsPrint::helpLink('pending_changes'),
 				'</p>';
 		}
 	}
@@ -121,7 +124,7 @@ echo '<div id="media-tabs">';
 								<table class="facts_table">';
 										$facts = $controller->getFacts();
 										foreach ($facts as $f => $fact) {
-											print_fact($fact, $controller->record);
+											FunctionsPrintFacts::printFact($fact, $controller->record);
 										}
 								echo '</table>
 							</td>
@@ -151,27 +154,27 @@ echo '<div id="media-tabs">';
 
 	// Individuals linked to this media object
 	if ($linked_indi) {
-		echo '<div id="indi-media">', format_indi_table($linked_indi), '</div>';
+		echo '<div id="indi-media">', FunctionsPrintLists::individualTable($linked_indi), '</div>';
 	}
 
 	// Families linked to this media object
 	if ($linked_fam) {
-		echo '<div id="fam-media">', format_fam_table($linked_fam), '</div>';
+		echo '<div id="fam-media">', FunctionsPrintLists::familyTable($linked_fam), '</div>';
 	}
 
 	// Sources linked to this media object
 	if ($linked_sour) {
-		echo '<div id="sources-media">', format_sour_table($linked_sour), '</div>';
+		echo '<div id="sources-media">', FunctionsPrintLists::sourceTable($linked_sour), '</div>';
 	}
 
 	// Repositories linked to this media object
 	if ($linked_repo) {
-		echo '<div id="repo-media">', format_repo_table($linked_repo), '</div>';
+		echo '<div id="repo-media">', FunctionsPrintLists::repositoryTable($linked_repo), '</div>';
 	}
 
 	// medias linked to this media object
 	if ($linked_note) {
-		echo '<div id="notes-media">', format_note_table($linked_note), '</div>';
+		echo '<div id="notes-media">', FunctionsPrintLists::noteTable($linked_note), '</div>';
 	}
 echo '</div>';
 echo '</div>';

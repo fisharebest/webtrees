@@ -19,6 +19,9 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module;
@@ -113,7 +116,7 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 			$indifacts[] = $fact;
 		}
 
-		sort_facts($indifacts);
+		Functions::sortFacts($indifacts);
 
 		ob_start();
 
@@ -134,12 +137,12 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 		echo '</form></td></tr>';
 
 		foreach ($indifacts as $fact) {
-			print_fact($fact, $controller->record);
+			FunctionsPrintFacts::printFact($fact, $controller->record);
 		}
 
 		//-- new fact link
 		if ($controller->record->canEdit()) {
-			print_add_new_fact($controller->record->getXref(), $indifacts, 'INDI');
+			FunctionsPrint::printAddNewFact($controller->record->getXref(), $indifacts, 'INDI');
 		}
 		echo '</tbody>';
 		echo '</table>';

@@ -17,6 +17,8 @@ namespace Fisharebest\Webtrees\Module;
  */
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 
@@ -69,10 +71,10 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
 		<?php
 		foreach ($this->getFactsWithNotes() as $fact) {
 			if ($fact->getTag() == 'NOTE') {
-				print_main_notes($fact, 1);
+				FunctionsPrintFacts::printMainNotes($fact, 1);
 			} else {
 				for ($i = 2; $i < 4; ++$i) {
-					print_main_notes($fact, $i);
+					FunctionsPrintFacts::printMainNotes($fact, $i);
 				}
 			}
 		}
@@ -138,7 +140,7 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
 					$this->facts[] = $fact;
 				}
 			}
-			sort_facts($this->facts);
+			Functions::sortFacts($this->facts);
 		}
 
 		return $this->facts;

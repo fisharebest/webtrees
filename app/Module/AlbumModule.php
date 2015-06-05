@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees\Module;
  */
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Menu;
@@ -97,7 +98,7 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 			$needle   = '1 NOTE';
 			$before   = substr($haystack, 0, strpos($haystack, $needle));
 			$after    = substr(strstr($haystack, $needle), strlen($needle));
-			$notes    = print_fact_notes($before . $needle . $after, 1, true);
+			$notes    = FunctionsPrint::printFactNotes($before . $needle . $after, 1, true);
 
 			// Prepare Below Thumbnail  menu ----------------------------------------------------
 			$menu = new Menu('<div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">' . $media->getFullName() . '</div>');

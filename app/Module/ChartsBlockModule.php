@@ -18,6 +18,8 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Controller\HourglassController;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
@@ -80,7 +82,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 				$controller->addInlineJavascript($chartController->setupJavascript());
 				$content .= '<td valign="middle">';
 				ob_start();
-				print_pedigree_person($person, $details);
+				FunctionsPrint::printPedigreePerson($person, $details);
 				$content .= ob_get_clean();
 				$content .= '</td>';
 				$content .= '<td valign="middle">';
@@ -177,7 +179,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 		<tr>
 			<td class="descriptionbox wrap width33"><?php echo I18N::translate('Chart type'); ?></td>
 			<td class="optionbox">
-				<?php echo select_edit_control('type',
+				<?php echo FunctionsEdit::selectEditControl('type',
 				array(
 					'pedigree'    => I18N::translate('Pedigree'),
 					'descendants' => I18N::translate('Descendants'),
@@ -190,7 +192,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 		<tr>
 			<td class="descriptionbox wrap width33"><?php echo I18N::translate('Show details'); ?></td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('details', $details); ?>
+			<?php echo FunctionsEdit::editFieldYesNo('details', $details); ?>
 			</td>
 		</tr>
 		<tr>
@@ -198,7 +200,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 			<td class="optionbox">
 				<input data-autocomplete-type="INDI" type="text" name="pid" id="pid" value="<?php echo $pid; ?>" size="5">
 				<?php
-				echo print_findindi_link('pid');
+				echo FunctionsPrint::printFindIndividualLink('pid');
 				$root = Individual::getInstance($pid, $WT_TREE);
 				if ($root) {
 					echo ' <span class="list_item">', $root->getFullName(), $root->formatFirstMajorFact(WT_EVENTS_BIRT, 1), '</span>';

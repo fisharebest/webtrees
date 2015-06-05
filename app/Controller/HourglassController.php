@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees\Controller;
  */
 
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Theme;
@@ -120,7 +121,7 @@ class HourglassController extends ChartController {
 			echo '<td><img class="line4" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3"></td>';
 			echo '<td>';
 			//-- print the father box
-			print_pedigree_person($family->getHusband(), $this->showFull());
+			FunctionsPrint::printPedigreePerson($family->getHusband(), $this->showFull());
 			echo "</td>";
 			if ($family->getHusband()) {
 				$ARID = $family->getHusband()->getXref();
@@ -152,7 +153,7 @@ class HourglassController extends ChartController {
 				'<td><img class="line4" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3" alt=""></td>',
 			'<td>';
 			//-- print the mother box
-			print_pedigree_person($family->getWife(), $this->showFull());
+			FunctionsPrint::printPedigreePerson($family->getWife(), $this->showFull());
 			echo '</td>';
 			if ($family->getWife()) {
 				$ARID = $family->getWife()->getXref();
@@ -285,7 +286,7 @@ class HourglassController extends ChartController {
 		}
 
 		echo '<table id="table2_' . $pid . '"><tr><td>';
-		print_pedigree_person($person, $this->showFull());
+		FunctionsPrint::printPedigreePerson($person, $this->showFull());
 		echo '</td><td><img class="line2" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3">';
 
 		//----- Print the spouse
@@ -297,7 +298,7 @@ class HourglassController extends ChartController {
 				$temph = $this->getBoxDimensions()->height;
 				$this->getBoxDimensions()->width -= 10;
 				$this->getBoxDimensions()->height -= 10;
-				print_pedigree_person($family->getSpouse($person), $this->showFull());
+				FunctionsPrint::printPedigreePerson($family->getSpouse($person), $this->showFull());
 				$this->getBoxDimensions()->width  = $tempw;
 				$this->getBoxDimensions()->height = $temph;
 				$numkids += 0.95;

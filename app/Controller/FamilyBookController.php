@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees\Controller;
  */
 
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Theme;
@@ -152,7 +153,7 @@ class FamilyBookController extends ChartController {
 		}
 		echo '<table><tr><td>';
 		if ($person) {
-			print_pedigree_person($person, $this->showFull());
+			FunctionsPrint::printPedigreePerson($person, $this->showFull());
 			echo '</td><td>',
 			'<img class="line2" src="', Theme::theme()->parameter('image-hline'), '" width="8" height="3" alt="">';
 		} else {
@@ -166,7 +167,7 @@ class FamilyBookController extends ChartController {
 				foreach ($person->getSpouseFamilies() as $family) {
 					$spouse = $family->getSpouse($person);
 					echo '</td></tr><tr><td>';
-					print_pedigree_person($spouse, $this->showFull());
+					FunctionsPrint::printPedigreePerson($spouse, $this->showFull());
 					$numkids += 0.95;
 					echo '</td><td>';
 				}
@@ -259,7 +260,7 @@ class FamilyBookController extends ChartController {
 			'<td>';
 			$lh = $savlh; // restore original line height
 			//-- print the father box
-			print_pedigree_person($family->getHusband(), $this->showFull());
+			FunctionsPrint::printPedigreePerson($family->getHusband(), $this->showFull());
 			echo '</td>';
 			if ($family->getHusband()) {
 				echo '<td>';
@@ -282,7 +283,7 @@ class FamilyBookController extends ChartController {
 			'<td><img class="line4" src="', Theme::theme()->parameter('image-hline'), '" height="3"></td>',
 			'<td>';
 			//-- print the mother box
-			print_pedigree_person($family->getWife(), $this->showFull());
+			FunctionsPrint::printPedigreePerson($family->getWife(), $this->showFull());
 			echo '</td>';
 			if ($family->getWife()) {
 				echo '<td>';

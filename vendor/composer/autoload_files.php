@@ -8,16 +8,4 @@ $baseDir = dirname($vendorDir);
 return array(
     $vendorDir . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
     $vendorDir . '/ircmaxell/password-compat/lib/password.php',
-    $baseDir . '/includes/functions/functions.php',
-    $baseDir . '/includes/functions/functions_charts.php',
-    $baseDir . '/includes/functions/functions_date.php',
-    $baseDir . '/includes/functions/functions_db.php',
-    $baseDir . '/includes/functions/functions_edit.php',
-    $baseDir . '/includes/functions/functions_export.php',
-    $baseDir . '/includes/functions/functions_import.php',
-    $baseDir . '/includes/functions/functions_mediadb.php',
-    $baseDir . '/includes/functions/functions_print.php',
-    $baseDir . '/includes/functions/functions_print_facts.php',
-    $baseDir . '/includes/functions/functions_print_lists.php',
-    $baseDir . '/includes/functions/functions_rtl.php',
 );

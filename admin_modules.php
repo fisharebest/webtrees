@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees;
  */
 
 use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Module\ModuleBlockInterface;
 use Fisharebest\Webtrees\Module\ModuleChartInterface;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
@@ -165,7 +166,7 @@ $controller
 		foreach ($modules as $module_name => $module) {
 			$status = $module_status[$module_name];
 			echo
-			'<tr><td class="text-center">', two_state_checkbox('status-' . $module->getName(), $status === 'enabled'), '</td>',
+			'<tr><td class="text-center">', FunctionsEdit::twoStateCheckbox('status-' . $module->getName(), $status === 'enabled'), '</td>',
 			'<td>';
 			if ($module instanceof ModuleConfigInterface) {
 				echo '<a href="', $module->getConfigLink(), '">';

@@ -24,6 +24,7 @@ namespace Fisharebest\Webtrees;
 global $WT_TREE;
 
 use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Query\QueryMedia;
 
 define('WT_SCRIPT_NAME', 'admin_media_upload.php');
@@ -144,7 +145,7 @@ if ($action == "upload") {
 					FlashMessages::addMessage(
 						I18N::translate('There was an error uploading your file.') .
 						'<br>' .
-						file_upload_error_text($_FILES['mediafile' . $i]['error'])
+						Functions::fileUploadErrorText($_FILES['mediafile' . $i]['error'])
 					);
 					$filename = '';
 					break;

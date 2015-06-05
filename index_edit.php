@@ -24,6 +24,7 @@ namespace Fisharebest\Webtrees;
 global $WT_TREE;
 
 use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\FunctionsDb;
 
 define('WT_SCRIPT_NAME', 'index_edit.php');
 require './includes/session.php';
@@ -69,9 +70,9 @@ $action = Filter::get('action');
 
 if ($can_reset && Filter::post('default') === '1') {
 	if ($user_id) {
-		$defaults = get_user_blocks(-1);
+		$defaults = FunctionsDb::getUserBlocks(-1);
 	} else {
-		$defaults = get_gedcom_blocks(-1);
+		$defaults = FunctionsDb::getTreeBlocks(-1);
 	}
 	$main  = $defaults['main'];
 	$right = $defaults['side'];
@@ -111,9 +112,9 @@ foreach (Module::getActiveBlocks($WT_TREE) as $name => $block) {
 }
 
 if ($user_id) {
-	$blocks = get_user_blocks($user_id);
+	$blocks = FunctionsDb::getUserBlocks($user_id);
 } else {
-	$blocks = get_gedcom_blocks($gedcom_id);
+	$blocks = FunctionsDb::getTreeBlocks($gedcom_id);
 }
 
 if ($action === 'update') {

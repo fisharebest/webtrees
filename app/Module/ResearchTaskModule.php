@@ -18,6 +18,8 @@ namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsDb;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Theme;
@@ -104,7 +106,7 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 
 		$found  = false;
 		$end_jd = $show_future ? 99999999 : WT_CLIENT_JD;
-		foreach (get_calendar_events(0, $end_jd, '_TODO', $WT_TREE) as $fact) {
+		foreach (FunctionsDb::getCalendarEvents(0, $end_jd, '_TODO', $WT_TREE) as $fact) {
 			$record    = $fact->getParent();
 			$user_name = $fact->getAttribute('_WT_USER');
 			if ($user_name === Auth::user()->getUserName() || !$user_name && $show_unassigned || $user_name && $show_other) {
@@ -183,25 +185,25 @@ class ResearchTaskModule extends AbstractModule implements ModuleBlockInterface 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Show research tasks that are assigned to other users');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('show_other', $show_other);
+		echo FunctionsEdit::editFieldYesNo('show_other', $show_other);
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Show research tasks that are not assigned to any user');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('show_unassigned', $show_unassigned);
+		echo FunctionsEdit::editFieldYesNo('show_unassigned', $show_unassigned);
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Show research tasks that have a date in the future');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('show_future', $show_future);
+		echo FunctionsEdit::editFieldYesNo('show_future', $show_future);
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for a yes/no option */ I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('block', $block);
+		echo FunctionsEdit::editFieldYesNo('block', $block);
 		echo '</td></tr>';
 	}
 }

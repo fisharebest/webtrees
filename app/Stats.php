@@ -16,6 +16,11 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\Functions\FunctionsDate;
+use Fisharebest\Webtrees\Functions\FunctionsDb;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\Module\FamilyTreeFavoritesModule;
 use Fisharebest\Webtrees\Module\UserFavoritesModule;
 use Fisharebest\Webtrees\Query\QueryName;
@@ -1291,7 +1296,7 @@ class Stats {
 		case 'place':
 			$fact = GedcomRecord::getInstance($row['d_gid'], $this->tree)->getFirstFact($row['d_fact']);
 			if ($fact) {
-				$result = format_fact_place($fact, true, true, true);
+				$result = FunctionsPrint::formatFactPlace($fact, true, true, true);
 			} else {
 				$result = I18N::translate('Private');
 			}
@@ -2108,7 +2113,7 @@ class Stats {
 			} else {
 				$age = $age . 'd';
 			}
-			$age = get_age_at_event($age, true);
+			$age = FunctionsDate::getAgeAtEvent($age, true);
 			if ($person->canShow()) {
 				if ($type == 'list') {
 					$top10[] = "<li><a href=\"" . $person->getHtmlUrl() . "\">" . $person->getFullName() . "</a> (" . $age . ")" . "</li>";
@@ -2185,7 +2190,7 @@ class Stats {
 			} else {
 				$age = $age . 'd';
 			}
-			$age = get_age_at_event($age, true);
+			$age = FunctionsDate::getAgeAtEvent($age, true);
 			if ($type === 'list') {
 				$top10[] = "<li><a href=\"" . $person->getHtmlUrl() . "\">" . $person->getFullName() . "</a> (" . $age . ")" . "</li>";
 			} else {
@@ -2254,7 +2259,7 @@ class Stats {
 				$age = $age . 'd';
 			}
 
-			return get_age_at_event($age, true);
+			return FunctionsDate::getAgeAtEvent($age, true);
 		} else {
 			return I18N::number($age / 365.25);
 		}
@@ -2682,7 +2687,7 @@ class Stats {
 		case 'place':
 			$fact = $record->getFirstFact($row['fact']);
 			if ($fact) {
-				$result = format_fact_place($fact, true, true, true);
+				$result = FunctionsPrint::formatFactPlace($fact, true, true, true);
 			} else {
 				$result = I18N::translate('Private');
 			}
@@ -2832,7 +2837,7 @@ class Stats {
 				} else {
 					$age = $age . 'd';
 				}
-				$result = get_age_at_event($age, true);
+				$result = FunctionsDate::getAgeAtEvent($age, true);
 			} else {
 				$result = I18N::number((int) ($age / 365.25));
 			}
@@ -2941,7 +2946,7 @@ class Stats {
 			} else {
 				$age = $age . 'd';
 			}
-			$age = get_age_at_event($age, true);
+			$age = FunctionsDate::getAgeAtEvent($age, true);
 			if ($type === 'age') {
 				return $age;
 			}
@@ -3036,7 +3041,7 @@ class Stats {
 			} else {
 				$age = $age . 'd';
 			}
-			$age = get_age_at_event($age, true);
+			$age = FunctionsDate::getAgeAtEvent($age, true);
 			if ($family->canShow()) {
 				if ($type === 'list') {
 					$top10[] = '<li><a href="' . $family->getHtmlUrl() . '">' . $family->getFullName() . '</a> (' . $age . ')' . "</li>";
@@ -3124,7 +3129,7 @@ class Stats {
 				} else {
 					$age = $age . 'd';
 				}
-				$result = get_age_at_event($age, true);
+				$result = FunctionsDate::getAgeAtEvent($age, true);
 			} else {
 				$result = (int) ($age / 365.25);
 			}
@@ -4110,7 +4115,7 @@ class Stats {
 			} else {
 				$age = $age . 'd';
 			}
-			$age = get_age_at_event($age, true);
+			$age = FunctionsDate::getAgeAtEvent($age, true);
 			if ($type == 'age') {
 				return $age;
 			}
@@ -4835,7 +4840,7 @@ class Stats {
 		} else {
 			$sorting = 'alpha';
 		}
-		$surname_list = get_common_surnames($threshold, $this->tree);
+		$surname_list = FunctionsDb::getCommonSurnames($threshold, $this->tree);
 		if (count($surname_list) == 0) {
 			return '';
 		}
@@ -4863,14 +4868,14 @@ class Stats {
 			$surnames = array_merge($surnames, QueryName::surnames($this->tree, $surname, '', false, false));
 		}
 
-		return format_surname_list($surnames, ($type == 'list' ? 1 : 2), $show_tot, 'indilist.php', $this->tree);
+		return FunctionsPrintLists::surnameList($surnames, ($type == 'list' ? 1 : 2), $show_tot, 'indilist.php', $this->tree);
 	}
 
 	/**
 	 * @return string
 	 */
 	public function getCommonSurname() {
-		$surnames = array_keys(get_top_surnames($this->tree->getTreeId(), 1, 1));
+		$surnames = array_keys(FunctionsDb::getTopSurnames($this->tree->getTreeId(), 1, 1));
 
 		return array_shift($surnames);
 	}
@@ -4949,7 +4954,7 @@ class Stats {
 		}
 		$sizes    = explode('x', $size);
 		$tot_indi = $this->totalIndividualsQuery();
-		$surnames = get_common_surnames($threshold, $this->tree);
+		$surnames = FunctionsDb::getCommonSurnames($threshold, $this->tree);
 		if (count($surnames) <= 0) {
 			return '';
 		}
@@ -5425,9 +5430,9 @@ class Stats {
 				}
 				if (Auth::id() != $user->getUserId() && $user->getPreference('contactmethod') != 'none') {
 					if ($type == 'list') {
-						$content .= '<br><a class="icon-email" href="#" onclick="return message(\'' . $user->getUserId() . '\', \'\', \'' . Filter::escapeJs(get_query_url()) . '\');" title="' . I18N::translate('Send a message') . '"></a>';
+						$content .= '<br><a class="icon-email" href="#" onclick="return message(\'' . $user->getUserId() . '\', \'\', \'' . Filter::escapeJs(Functions::getQueryUrl()) . '\');" title="' . I18N::translate('Send a message') . '"></a>';
 					} else {
-						$content .= ' <a class="icon-email" href="#" onclick="return message(\'' . $user->getUserId() . '\', \'\', \'' . Filter::escapeJs(get_query_url()) . '\');" title="' . I18N::translate('Send a message') . '"></a>';
+						$content .= ' <a class="icon-email" href="#" onclick="return message(\'' . $user->getUserId() . '\', \'\', \'' . Filter::escapeJs(Functions::getQueryUrl()) . '\');" title="' . I18N::translate('Send a message') . '"></a>';
 					}
 				}
 				if ($type == 'list') {
@@ -5561,7 +5566,7 @@ class Stats {
 				$datestamp = I18N::dateFormat();
 			}
 
-			return timestamp_to_gedcom_date($user->getPreference('reg_timestamp'))->display(false, $datestamp);
+			return FunctionsDate::timestampToGedcomDate($user->getPreference('reg_timestamp'))->display(false, $datestamp);
 		case 'regtime':
 			if (is_array($params) && isset($params[0]) && $params[0] != '') {
 				$datestamp = $params[0];
@@ -5664,7 +5669,7 @@ class Stats {
 	 * @return string
 	 */
 	public function serverDate() {
-		return timestamp_to_gedcom_date(WT_TIMESTAMP)->display();
+		return FunctionsDate::timestampToGedcomDate(WT_TIMESTAMP)->display();
 	}
 
 	/**
@@ -5695,7 +5700,7 @@ class Stats {
 	 * @return string
 	 */
 	public function browserDate() {
-		return timestamp_to_gedcom_date(WT_TIMESTAMP + WT_TIMESTAMP_OFFSET)->display();
+		return FunctionsDate::timestampToGedcomDate(WT_TIMESTAMP + WT_TIMESTAMP_OFFSET)->display();
 	}
 
 	/**

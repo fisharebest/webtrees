@@ -16,6 +16,7 @@ namespace Fisharebest\Webtrees\Theme;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Session;
@@ -138,7 +139,7 @@ class ColorsTheme extends CloudsTheme {
 		foreach ($this->palettes as $palette_id => $palette_name) {
 			$menu->addSubmenu(new Menu(
 				$palette_name,
-				get_query_url(array('themecolor' => $palette_id), '&amp;'),
+				Functions::getQueryUrl(array('themecolor' => $palette_id), '&amp;'),
 				'menu-color-' . $palette_id . ($this->palette === $palette_id ? ' active' : '')
 			));
 		}

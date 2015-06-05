@@ -24,6 +24,8 @@ namespace Fisharebest\Webtrees;
 global $WT_TREE;
 
 use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
 define('WT_SCRIPT_NAME', 'edituser.php');
 require './includes/session.php';
@@ -189,7 +191,7 @@ function checkform(frm) {
 			</div>
 			<div class="value">
 				<input data-autocomplete-type="INDI" type="text" name="form_rootid" id="form_rootid" value="<?php echo $WT_TREE->getUserPreference(Auth::user(), 'rootid'); ?>">
-				<?php echo print_findindi_link('form_rootid'); ?>
+				<?php echo FunctionsPrint::printFindIndividualLink('form_rootid'); ?>
 				<br>
 				<?php if ($default_individual): ?>
 				<?php echo $default_individual->formatList('span'); ?>
@@ -227,7 +229,7 @@ function checkform(frm) {
 				</label>
 			</div>
 			<div class="value">
-				<?php echo edit_field_language('form_language', Auth::user()->getPreference('language')); ?>
+				<?php echo FunctionsEdit::editFieldLanguage('form_language', Auth::user()->getPreference('language')); ?>
 			</div>
 			<div class="label">
 				<label for="form_email">
@@ -268,7 +270,7 @@ function checkform(frm) {
 				</label>
 			</div>
 			<div class="value">
-				<?php echo edit_field_contact('form_contact_method', Auth::user()->getPreference('contactmethod')); ?>
+				<?php echo FunctionsEdit::editFieldContact('form_contact_method', Auth::user()->getPreference('contactmethod')); ?>
 				<p class="small text-muted">
 					<?php echo I18N::translate('Site members can send each other messages.  You can choose to how these messages are sent to you, or choose not receive them at all.'); ?>
 				</p>
@@ -279,7 +281,7 @@ function checkform(frm) {
 				</label>
 			</div>
 			<div class="value">
-				<?php echo checkbox('form_visible_online', Auth::user()->getPreference('visibleonline')); ?>
+				<?php echo FunctionsEdit::checkbox('form_visible_online', Auth::user()->getPreference('visibleonline')); ?>
 				<p class="small text-muted">
 					<?php echo I18N::translate('This checkbox controls your visibility to other users while you’re online.  It also controls your ability to see other online users who are configured to be visible.<br><br>When this box is unchecked, you will be completely invisible to others, and you will also not be able to see other online users.  When this box is checked, exactly the opposite is true.  You will be visible to others, and you will also be able to see others who are configured to be visible.'); ?>
 				</p>

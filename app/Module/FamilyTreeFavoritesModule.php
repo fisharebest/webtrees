@@ -20,6 +20,8 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
@@ -188,12 +190,12 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 			$content .= '<input type="radio" name="fav_category" value="record" checked onclick="jQuery(\'#gid' . $uniqueID . '\').removeAttr(\'disabled\'); jQuery(\'#url, #favtitle\').attr(\'disabled\',\'disabled\').val(\'\');">';
 			$content .= '<label for="gid' . $uniqueID . '">' . I18N::translate('Enter an individual, family, or source ID') . '</label>';
 			$content .= '<input class="pedigree_form" data-autocomplete-type="IFSRO" type="text" name="gid" id="gid' . $uniqueID . '" size="5" value="">';
-			$content .= ' ' . print_findindi_link('gid' . $uniqueID);
-			$content .= ' ' . print_findfamily_link('gid' . $uniqueID);
-			$content .= ' ' . print_findsource_link('gid' . $uniqueID);
-			$content .= ' ' . print_findrepository_link('gid' . $uniqueID);
-			$content .= ' ' . print_findnote_link('gid' . $uniqueID);
-			$content .= ' ' . print_findmedia_link('gid' . $uniqueID);
+			$content .= ' ' . FunctionsPrint::printFindIndividualLink('gid' . $uniqueID);
+			$content .= ' ' . FunctionsPrint::printFindFamilyLink('gid' . $uniqueID);
+			$content .= ' ' . FunctionsPrint::printFindSourceLink('gid' . $uniqueID);
+			$content .= ' ' . FunctionsPrint::printFindRepositoryLink('gid' . $uniqueID);
+			$content .= ' ' . FunctionsPrint::printFindNoteLink('gid' . $uniqueID);
+			$content .= ' ' . FunctionsPrint::printFindMediaLink('gid' . $uniqueID);
 			$content .= '</div>';
 			$content .= '<div class="add_fav_url">';
 			$content .= '<input type="radio" name="fav_category" value="url" onclick="jQuery(\'#url, #favtitle\').removeAttr(\'disabled\'); jQuery(\'#gid' . $uniqueID . '\').attr(\'disabled\',\'disabled\').val(\'\');">';
@@ -243,7 +245,7 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for a yes/no option */ I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('block', $block);
+		echo FunctionsEdit::editFieldYesNo('block', $block);
 		echo '</td></tr>';
 	}
 

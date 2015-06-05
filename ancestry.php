@@ -24,6 +24,10 @@ namespace Fisharebest\Webtrees;
 global $WT_TREE;
 
 use Fisharebest\Webtrees\Controller\AncestryController;
+use Fisharebest\Webtrees\Functions\FunctionsCharts;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 
 define('WT_SCRIPT_NAME', 'ancestry.php');
 require './includes/session.php';
@@ -49,7 +53,7 @@ $controller
 					</td>
 					<td class="optionbox">
 						<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
-						<?php echo print_findindi_link('rootid'); ?>
+						<?php echo FunctionsPrint::printFindIndividualLink('rootid'); ?>
 					</td>
 					<td rowspan="3" class="descriptionbox">
 						<label><?php echo I18N::translate('Layout'); ?></label>
@@ -67,7 +71,7 @@ $controller
 								<?php echo I18N::translate('Booklet'); ?>
 							</label>
 							<label>
-								<?php echo two_state_checkbox('show_cousins', $controller->show_cousins, "id='cousins' " . ($controller->chart_style === 1 ? '' : 'disabled')); ?>
+								<?php echo FunctionsEdit::twoStateCheckbox('show_cousins', $controller->show_cousins, "id='cousins' " . ($controller->chart_style === 1 ? '' : 'disabled')); ?>
 								<?php echo I18N::translate('Show cousins'); ?>
 							</label>
 						</div>
@@ -111,7 +115,7 @@ $controller
 						<?php echo '<label>', I18N::translate('Show details'), '</label>'; ?>
 					</td>
 					<td class="optionbox">
-						<?php echo checkbox('show_full', $controller->showFull()); ?>
+						<?php echo FunctionsEdit::checkbox('show_full', $controller->showFull()); ?>
 					</td>
 				</tr>
 			</tbody>
@@ -136,14 +140,14 @@ case 1:
 	echo '<div id="ancestry_booklet">';
 	// Booklet
 	// first page : show indi facts
-	print_pedigree_person($controller->root, $controller->showFull());
+	FunctionsPrint::printPedigreePerson($controller->root, $controller->showFull());
 	// process the tree
 	$ancestors = $controller->sosaAncestors($controller->generations - 1);
 	$ancestors = array_filter($ancestors); // The SOSA array includes empty placeholders
 
 	foreach ($ancestors as $sosa => $individual) {
 		foreach ($individual->getChildFamilies() as $family) {
-			print_sosa_family($family->getXref(), $individual->getXref(), $sosa, '', '', '', $controller->show_cousins, $controller->showFull());
+			FunctionsCharts::printSosaFamily($family->getXref(), $individual->getXref(), $sosa, '', '', '', $controller->show_cousins, $controller->showFull());
 		}
 	}
 	echo '</div>';
@@ -152,7 +156,7 @@ case 2:
 	// Individual list
 	$ancestors = $controller->sosaAncestors($controller->generations);
 	$ancestors = array_filter($ancestors); // The SOSA array includes empty placeholders
-	echo '<div id="ancestry-list">', format_indi_table($ancestors, 'sosa'), '</div>';
+	echo '<div id="ancestry-list">', FunctionsPrintLists::individualTable($ancestors, 'sosa'), '</div>';
 	break;
 case 3:
 	// Family list
@@ -164,7 +168,7 @@ case 3:
 			$families[$family->getXref()] = $family;
 		}
 	}
-	echo '<div id="ancestry-list">', format_fam_table($families), '</div>';
+	echo '<div id="ancestry-list">', FunctionsPrintLists::familyTable($families), '</div>';
 	break;
 }
 echo '</div>';

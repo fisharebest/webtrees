@@ -20,6 +20,7 @@ use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -430,7 +431,7 @@ class LifespanController extends PageController {
 					$unparsedEvents[] = $fact;
 				}
 			}
-			sort_facts($unparsedEvents);
+			Functions::sortFacts($unparsedEvents);
 
 			$eventinformation = array();
 			foreach ($unparsedEvents as $val) {

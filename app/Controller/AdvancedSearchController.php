@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees\Controller;
  */
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -638,7 +639,7 @@ class AdvancedSearchController extends SearchController {
 	public function printResults() {
 		if ($this->myindilist) {
 			uasort($this->myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
-			echo format_indi_table($this->myindilist);
+			echo FunctionsPrintLists::individualTable($this->myindilist);
 		} elseif (array_filter($this->values)) {
 			echo '<p class="ui-state-highlight">', I18N::translate('No results found.'), '</p>';
 		}

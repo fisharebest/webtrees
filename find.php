@@ -24,6 +24,7 @@ namespace Fisharebest\Webtrees;
 global $WT_TREE;
 
 use Fisharebest\Webtrees\Controller\SimpleController;
+use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Query\QueryMedia;
 
 define('WT_SCRIPT_NAME', 'find.php');
@@ -480,7 +481,7 @@ if ($action == "filter") {
 	// Output Individual
 	if ($type == "indi") {
 		echo '<div id="find-output">';
-		$myindilist = search_indis_names($filter_array, array($WT_TREE));
+		$myindilist = FunctionsDb::searchIndividualNames($filter_array, array($WT_TREE));
 		if ($myindilist) {
 			echo '<ul>';
 			usort($myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
@@ -501,8 +502,8 @@ if ($action == "filter") {
 		// Get the famrecs with hits on names from the family table
 		// Get the famrecs with hits in the gedcom record from the family table
 		$myfamlist = array_unique(array_merge(
-			search_fams_names($filter_array, array($WT_TREE)),
-			search_fams($filter_array, array($WT_TREE))
+			FunctionsDb::searchFamilyNames($filter_array, array($WT_TREE)),
+			FunctionsDb::searchFamilies($filter_array, array($WT_TREE))
 		));
 
 		if ($myfamlist) {
@@ -606,9 +607,9 @@ if ($action == "filter") {
 	if ($type == "repo") {
 		echo '<div id="find-output">';
 		if ($filter) {
-			$repo_list = search_repos($filter_array, array($WT_TREE));
+			$repo_list = FunctionsDb::searchRepositories($filter_array, array($WT_TREE));
 		} else {
-			$repo_list = get_repo_list($WT_TREE);
+			$repo_list = FunctionsDb::getRepositoryList($WT_TREE);
 		}
 		if ($repo_list) {
 			usort($repo_list, '\Fisharebest\Webtrees\GedcomRecord::compare');
@@ -628,9 +629,9 @@ if ($action == "filter") {
 	if ($type == "note") {
 		echo '<div id="find-output">';
 		if ($filter) {
-			$mynotelist = search_notes($filter_array, array($WT_TREE));
+			$mynotelist = FunctionsDb::searchNotes($filter_array, array($WT_TREE));
 		} else {
-			$mynotelist = get_note_list($WT_TREE);
+			$mynotelist = FunctionsDb::getNoteList($WT_TREE);
 		}
 		if ($mynotelist) {
 			usort($mynotelist, '\Fisharebest\Webtrees\GedcomRecord::compare');
@@ -650,9 +651,9 @@ if ($action == "filter") {
 	if ($type == "source") {
 		echo '<div id="find-output">';
 		if ($filter) {
-			$mysourcelist = search_sources($filter_array, array($WT_TREE));
+			$mysourcelist = FunctionsDb::searchSources($filter_array, array($WT_TREE));
 		} else {
-			$mysourcelist = get_source_list($WT_TREE);
+			$mysourcelist = FunctionsDb::getSourceList($WT_TREE);
 		}
 		if ($mysourcelist) {
 			usort($mysourcelist, '\Fisharebest\Webtrees\GedcomRecord::compare');

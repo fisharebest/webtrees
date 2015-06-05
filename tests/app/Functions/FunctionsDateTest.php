@@ -20,29 +20,9 @@
  */
 class FunctionsDateTest extends PHPUnit_Framework_TestCase {
 	/**
-	 * Prepare the environment for these tests
+	 * Test that the class exists
 	 */
-	public function setUp() {
-	}
-
-	/**
-	 * Test that function get_age_at_event() exists in the correct namespace.
-	 */
-	public function testFunctionGetAgeAtEventExists() {
-		$this->assertEquals(function_exists('get_age_at_event'), true);
-	}
-
-	/**
-	 * Test that function format_timestamp() exists in the correct namespace.
-	 */
-	public function testFunctionFormatTimestampExists() {
-		$this->assertEquals(function_exists('format_timestamp'), true);
-	}
-
-	/**
-	 * Test that function timestamp_to_gedcom_date() exists in the correct namespace.
-	 */
-	public function testFunctionTimestampToGedcomDateExists() {
-		$this->assertEquals(function_exists('timestamp_to_gedcom_date'), true);
+	public function testClassExists() {
+		$this->assertTrue(class_exists('\Fisharebest\Webtrees\Functions\FunctionsDate'));
 	}
 }

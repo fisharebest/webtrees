@@ -257,7 +257,7 @@ class PedigreeController extends ChartController {
 	 *
 	 * @return string
 	 */
-	public function get_menu() {
+	public function getMenu() {
 		$famids = $this->root->getSpouseFamilies();
 		$html   = '';
 		if ($famids) {

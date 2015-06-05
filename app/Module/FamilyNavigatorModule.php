@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees\Module;
  */
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -117,7 +118,7 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 		</tr>
 		<?php
 		foreach ($family->getSpouses() as $spouse) {
-			$menu = new Menu(get_close_relationship_name($controller->record, $spouse));
+			$menu = new Menu(Functions::getCloseRelationshipName($controller->record, $spouse));
 			$menu->addClass('', 'submenu flyout');
 			$menu->addSubmenu(new Menu($this->getParents($spouse)));
 			?>
@@ -138,7 +139,7 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 		}
 
 		foreach ($family->getChildren() as $child) {
-			$menu = new Menu(get_close_relationship_name($controller->record, $child));
+			$menu = new Menu(Functions::getCloseRelationshipName($controller->record, $child));
 			$menu->addClass('', 'submenu flyout');
 			$menu->addSubmenu(new Menu($this->getFamily($child)));
 			?>

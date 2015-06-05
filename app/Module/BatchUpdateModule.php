@@ -20,6 +20,7 @@ use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -181,7 +182,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 			'<input type="hidden" name="data"   value="">' . // will be set by javascript for next update
 			'<table id="batch_update"><tr>' .
 			'<th>' . I18N::translate('Family tree') . '</th>' .
-			'<td>' . select_edit_control('ged', Tree::getNameList(), '', $WT_TREE->getName(), 'onchange="reset_reload();"') .
+			'<td>' . FunctionsEdit::selectEditControl('ged', Tree::getNameList(), '', $WT_TREE->getName(), 'onchange="reset_reload();"') .
 			'</td></tr><tr><th>' . I18N::translate('Batch update') . '</th><td><select name="plugin" onchange="reset_reload();">';
 		if (!$this->plugin) {
 			$html .= '<option value="" selected></option>';

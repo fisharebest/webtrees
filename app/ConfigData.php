@@ -204,7 +204,7 @@ class ConfigData {
 	 */
 	public static function standardNameFacts() {
 		return array(
-			'NAME', 'NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX'
+			'NAME', 'NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX',
 		);
 	}
 }

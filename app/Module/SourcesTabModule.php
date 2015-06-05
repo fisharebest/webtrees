@@ -17,6 +17,8 @@ namespace Fisharebest\Webtrees\Module;
  */
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 
@@ -69,9 +71,9 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface {
 			<?php
 			foreach ($this->getFactsWithSources() as $fact) {
 				if ($fact->getTag() == 'SOUR') {
-					print_main_sources($fact, 1);
+					FunctionsPrintFacts::printMainSources($fact, 1);
 				} else {
-					print_main_sources($fact, 2);
+					FunctionsPrintFacts::printMainSources($fact, 2);
 				}
 			}
 			if (!$this->getFactsWithSources()) {
@@ -126,7 +128,7 @@ class SourcesTabModule extends AbstractModule implements ModuleTabInterface {
 					$this->facts[] = $fact;
 				}
 			}
-			sort_facts($this->facts);
+			Functions::sortFacts($this->facts);
 		}
 
 		return $this->facts;

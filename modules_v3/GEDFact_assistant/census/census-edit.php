@@ -16,6 +16,9 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 use Fisharebest\Webtrees\Controller\SimpleController;
+use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\Functions\FunctionsDate;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
 /** @global SimpleController $controller */
 global $controller;
@@ -40,11 +43,11 @@ echo '<h3>', $controller->getPageTitle(), '&nbsp;&nbsp;';
 	// When more languages are added to the wiki, we can expand or redesign this
 	switch (WT_LOCALE) {
 	case 'fr':
-		echo wiki_help_link('/fr/Module_Assistant_Recensement');
+		echo FunctionsPrint::wikiHelpLink('/fr/Module_Assistant_Recensement');
 		break;
 	case 'en':
 	default:
-		echo wiki_help_link('/en/Census_Assistant_module');
+		echo FunctionsPrint::wikiHelpLink('/en/Census_Assistant_module');
 		break;
 	}
 echo '</h3>';
@@ -67,7 +70,7 @@ if (!($person->isDead())) {
 	$bdate = $person->getBirthDate();
 	$age   = Date::getAgeGedcom($bdate);
 	if ($age != "") {
-		$summary .= "<span class=\"label\">" . I18N::translate('Age') . ":</span><span class=\"field\"> " . get_age_at_event($age, true) . "</span>";
+		$summary .= "<span class=\"label\">" . I18N::translate('Age') . ":</span><span class=\"field\"> " . FunctionsDate::getAgeAtEvent($age, true) . "</span>";
 	}
 }
 $summary .= $person->formatFirstMajorFact(WT_EVENTS_DEAT, 2);
@@ -1158,7 +1161,7 @@ $summary .= $person->formatFirstMajorFact(WT_EVENTS_DEAT, 2);
 			<div class="optionbox">
 				<textarea wrap="off" name="NOTE" id="NOTE"></textarea><br>
 				<center>
-					<?php echo print_specialchar_link('NOTE'); ?>
+					<?php echo FunctionsPrint::printSpecialCharacterLink('NOTE'); ?>
 				</center>
 			</div>
 		</div>
@@ -1266,7 +1269,7 @@ $summary .= $person->formatFirstMajorFact(WT_EVENTS_DEAT, 2);
 										$fulmn = strip_tags($n['full']);
 									}
 								}
-								$label = get_close_relationship_name($person, $gparent);
+								$label = Functions::getCloseRelationshipName($person, $gparent);
 								$menu  = new Menu($label);
 								print_pedigree_person_nav_cens($gparent->getXref(), $label, $censdate);
 								$submenu = new Menu($parentlinks);
@@ -1345,7 +1348,7 @@ $summary .= $person->formatFirstMajorFact(WT_EVENTS_DEAT, 2);
 										$fulmn = strip_tags($n['full']);
 									}
 								}
-								$label = get_close_relationship_name($person, $gparent);
+								$label = Functions::getCloseRelationshipName($person, $gparent);
 								$menu  = new Menu($label);
 								print_pedigree_person_nav_cens($gparent->getXref(), $label, $censyear);
 								$submenu = new Menu($parentlinks);
@@ -1430,7 +1433,7 @@ $summary .= $person->formatFirstMajorFact(WT_EVENTS_DEAT, 2);
 										$fulmn = strip_tags($n['full']);
 									}
 								}
-								$label = get_close_relationship_name($person, $child);
+								$label = Functions::getCloseRelationshipName($person, $child);
 								$menu  = new Menu($label);
 								print_pedigree_person_nav_cens($child->getXref(), $label, $censyear);
 								$submenu = new Menu($spouselinks);
@@ -1526,7 +1529,7 @@ $summary .= $person->formatFirstMajorFact(WT_EVENTS_DEAT, 2);
 										$fulmn = strip_tags($n['full']);
 									}
 								}
-								$label = get_close_relationship_name($person, $gparent);
+								$label = Functions::getCloseRelationshipName($person, $gparent);
 								$menu  = new Menu($label);
 								print_pedigree_person_nav_cens($gparent->getXref(), $label, $censyear);
 								$submenu = new Menu($parentlinks);
@@ -1613,7 +1616,7 @@ $summary .= $person->formatFirstMajorFact(WT_EVENTS_DEAT, 2);
 									}
 								}
 
-								$label = get_close_relationship_name($person, $gparent);
+								$label = Functions::getCloseRelationshipName($person, $gparent);
 								$menu  = new Menu($label);
 								print_pedigree_person_nav_cens($gparent->getXref(), $label, $censyear);
 								$submenu = new Menu($parentlinks);
@@ -1693,7 +1696,7 @@ $summary .= $person->formatFirstMajorFact(WT_EVENTS_DEAT, 2);
 										$fulmn = strip_tags($n['full']);
 									}
 								}
-								$label = get_close_relationship_name($person, $child);
+								$label = Functions::getCloseRelationshipName($person, $child);
 								$menu  = new Menu($label);
 								print_pedigree_person_nav_cens($child->getXref(), $label, $censyear);
 								$submenu = new Menu($spouselinks);
@@ -1802,7 +1805,7 @@ $summary .= $person->formatFirstMajorFact(WT_EVENTS_DEAT, 2);
 										$fulmn = strip_tags($n['full']);
 									}
 								}
-								$label = get_close_relationship_name($person, $gparent);
+								$label = Functions::getCloseRelationshipName($person, $gparent);
 								$menu  = new Menu($label);
 								print_pedigree_person_nav_cens($gparent->getXref(), $label, $censyear);
 								$submenu = new Menu($parentlinks);
@@ -1892,7 +1895,7 @@ $summary .= $person->formatFirstMajorFact(WT_EVENTS_DEAT, 2);
 										$fulmn = strip_tags($n['full']);
 									}
 								}
-								$label = get_close_relationship_name($person, $gparent);
+								$label = Functions::getCloseRelationshipName($person, $gparent);
 								$menu  = new Menu($label);
 								print_pedigree_person_nav_cens($gparent->getXref(), $label, $censyear);
 								$submenu = new Menu($parentlinks);
@@ -1988,7 +1991,7 @@ $summary .= $person->formatFirstMajorFact(WT_EVENTS_DEAT, 2);
 										$fulmn = strip_tags($n['full']);
 									}
 								}
-								$label = get_close_relationship_name($person, $child);
+								$label = Functions::getCloseRelationshipName($person, $child);
 								$menu  = new Menu($label);
 								print_pedigree_person_nav_cens($child->getXref(), $label, $censyear);
 								$submenu = new Menu($spouselinks);

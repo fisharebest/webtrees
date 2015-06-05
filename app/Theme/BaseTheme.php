@@ -21,6 +21,7 @@ use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\HitCounter;
@@ -253,7 +254,7 @@ abstract class BaseTheme {
 		case 'mailto':
 			return '<a href="mailto:' . Filter::escapeHtml($user->getEmail()) . '">' . $user->getRealNameHtml() . '</a>';
 		default:
-			return "<a href='#' onclick='message(\"" . Filter::escapeHtml($user->getUserName()) . "\", \"" . $method . "\", \"" . WT_BASE_URL . Filter::escapeHtml(get_query_url()) . "\", \"\");return false;'>" . $user->getRealNameHtml() . '</a>';
+			return "<a href='#' onclick='message(\"" . Filter::escapeHtml($user->getUserName()) . "\", \"" . $method . "\", \"" . WT_BASE_URL . Filter::escapeHtml(Functions::getQueryUrl()) . "\", \"\");return false;'>" . $user->getRealNameHtml() . '</a>';
 		}
 	}
 
@@ -1355,7 +1356,7 @@ abstract class BaseTheme {
 			$language_tag = $locale->languageTag();
 			$menu->addSubmenu(new Menu(
 				$locale->endonym(),
-				get_query_url(array('lang' => $language_tag), '&amp;'),
+				Functions::getQueryUrl(array('lang' => $language_tag), '&amp;'),
 				'menu-language-' . $language_tag . (WT_LOCALE === $language_tag ? ' active' : '')
 			));
 		}
@@ -1509,7 +1510,7 @@ abstract class BaseTheme {
 		if (Auth::check() || Auth::isSearchEngine() || WT_SCRIPT_NAME === 'login.php') {
 			return null;
 		} else {
-			return new Menu(I18N::translate('Login'), WT_LOGIN_URL . '?url=' . rawurlencode(get_query_url()));
+			return new Menu(I18N::translate('Login'), WT_LOGIN_URL . '?url=' . rawurlencode(Functions::getQueryUrl()));
 		}
 	}
 
@@ -1695,7 +1696,7 @@ abstract class BaseTheme {
 			foreach (Theme::installedThemes() as $theme) {
 				$submenu = new Menu(
 					$theme->themeName(),
-					get_query_url(array('theme' => $theme->themeId()), '&amp;'),
+					Functions::getQueryUrl(array('theme' => $theme->themeId()), '&amp;'),
 					'menu-theme-' . $theme->themeId() . ($theme === $this ? ' active' : '')
 				);
 				$submenus[] = $submenu;
@@ -1957,7 +1958,7 @@ abstract class BaseTheme {
 	 * @return string
 	 */
 	protected function primaryMenuContent(array $menus) {
-		return implode('', array_map(function ($menu) { return $menu->getMenuAsList(); }, $menus));
+		return implode('', array_map(function (Menu $menu) { return $menu->getMenuAsList(); }, $menus));
 	}
 
 	/**
@@ -1996,7 +1997,7 @@ abstract class BaseTheme {
 	 * @return string
 	 */
 	protected function secondaryMenuContent(array $menus) {
-		return implode('', array_map(function ($menu) { return $menu->getMenuAsList(); }, $menus));
+		return implode('', array_map(function (Menu $menu) { return $menu->getMenuAsList(); }, $menus));
 	}
 
 	/**

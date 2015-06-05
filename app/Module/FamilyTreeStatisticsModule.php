@@ -17,6 +17,8 @@ namespace Fisharebest\Webtrees\Module;
  */
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsDb;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Stats;
 use Fisharebest\Webtrees\Theme;
@@ -187,7 +189,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		}
 		// NOTE: Print the most common surnames
 		if ($show_common_surnames) {
-			$surnames = get_common_surnames($WT_TREE->getPreference('COMMON_NAMES_THRESHOLD'), $WT_TREE);
+			$surnames = FunctionsDb::getCommonSurnames($WT_TREE->getPreference('COMMON_NAMES_THRESHOLD'), $WT_TREE);
 			if (count($surnames) > 0) {
 				$content .= '<p><b>' . I18N::translate('Most common surnames') . '</b></p>';
 				$content .= '<div class="common_surnames">';
@@ -272,13 +274,13 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for yes/no option */ I18N::translate('Show date of last update?');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('show_last_update', $show_last_update);
+		echo FunctionsEdit::editFieldYesNo('show_last_update', $show_last_update);
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Show common surnames?');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('show_common_surnames', $show_common_surnames);
+		echo FunctionsEdit::editFieldYesNo('show_common_surnames', $show_common_surnames);
 		echo '</td></tr>';
 
 ?>

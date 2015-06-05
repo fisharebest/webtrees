@@ -16,6 +16,7 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\Report\ReportHtml;
 use Fisharebest\Webtrees\Report\ReportParserGenerate;
 use Fisharebest\Webtrees\Report\ReportParserSetup;
@@ -142,7 +143,7 @@ case 'setup':
 		->addExternalJavascript(WT_AUTOCOMPLETE_JS_URL)
 		->addInlineJavascript('autocomplete();');
 
-	init_calendar_popup();
+	FunctionsPrint::initializeCalendarPopup();
 
 	echo '<div id="reportengine-page">
 		<form name="setupreport" method="get" action="reportengine.php" onsubmit="if (this.output[1].checked) {this.target=\'_blank\';}">
@@ -233,13 +234,13 @@ case 'setup':
 		if (isset($input['lookup'])) {
 			echo '<input type="hidden" name="type[', Filter::escapeHtml($input['name']), ']" value="', Filter::escapeHtml($input['lookup']), '">';
 			if ($input['lookup'] == 'INDI') {
-				echo print_findindi_link('pid');
+				echo FunctionsPrint::printFindIndividualLink('pid');
 			} elseif ($input['lookup'] == 'PLAC') {
-				echo print_findplace_link($input['name']);
+				echo FunctionsPrint::printFindPlaceLink($input['name']);
 			} elseif ($input['lookup'] == 'FAM') {
-				echo print_findfamily_link('famid');
+				echo FunctionsPrint::printFindFamilyLink('famid');
 			} elseif ($input['lookup'] == 'SOUR') {
-				echo print_findsource_link($input['name']);
+				echo FunctionsPrint::printFindSourceLink($input['name']);
 			} elseif ($input['lookup'] == 'DATE') {
 				echo ' <a href="#" onclick="cal_toggleDate(\'div_', Filter::EscapeJs($input['name']), '\', \'', Filter::EscapeJs($input['name']), '\'); return false;" class="icon-button_calendar" title="', I18N::translate('Select a date'), '"></a>';
 				echo '<div id="div_', Filter::EscapeHtml($input['name']), '" style="position:absolute;visibility:hidden;background-color:white;"></div>';

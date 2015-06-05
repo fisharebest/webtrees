@@ -19,6 +19,8 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
@@ -533,7 +535,7 @@ class ReportParserGenerate extends ReportParserBase {
 	 * XML <Now /> element handler
 	 */
 	private function nowStartHandler() {
-		$g = timestamp_to_gedcom_date(WT_TIMESTAMP + WT_TIMESTAMP_OFFSET);
+		$g = FunctionsDate::timestampToGedcomDate(WT_TIMESTAMP + WT_TIMESTAMP_OFFSET);
 		$this->current_element->addText($g->display());
 	}
 
@@ -598,7 +600,7 @@ class ReportParserGenerate extends ReportParserBase {
 					} else {
 						$temp      = explode(" ", trim($tgedrec));
 						$level     = $temp[0] + 1;
-						$newgedrec = get_sub_record($level, "$level $tag", $tgedrec);
+						$newgedrec = Functions::getSubRecord($level, "$level $tag", $tgedrec);
 						$tgedrec   = $newgedrec;
 					}
 				}
@@ -919,7 +921,7 @@ class ReportParserGenerate extends ReportParserBase {
 					$level = $attrs['level'];
 				}
 				$tags  = preg_split('/[: ]/', $tag);
-				$value = $this->get_gedcom_value($tag, $level, $this->gedrec);
+				$value = $this->getGedcomValue($tag, $level, $this->gedrec);
 				switch (end($tags)) {
 					case 'DATE':
 						$tmp   = new Date($value);
@@ -985,10 +987,10 @@ class ReportParserGenerate extends ReportParserBase {
 					$t = $tags[$i];
 					if (!empty($t)) {
 						if ($i < ($count - 1)) {
-							$subrec = get_sub_record($level, "$level $t", $subrec);
+							$subrec = Functions::getSubRecord($level, "$level $t", $subrec);
 							if (empty($subrec)) {
 								$level--;
-								$subrec = get_sub_record($level, "@ $t", $this->gedrec);
+								$subrec = Functions::getSubRecord($level, "@ $t", $this->gedrec);
 								if (empty($subrec)) {
 									return;
 								}
@@ -1002,7 +1004,7 @@ class ReportParserGenerate extends ReportParserBase {
 				$count = preg_match_all("/$level $t(.*)/", $subrec, $match, PREG_SET_ORDER);
 				$i     = 0;
 				while ($i < $count) {
-					$this->repeats[] = get_sub_record($level, "$level $t", $subrec, $i + 1);
+					$this->repeats[] = Functions::getSubRecord($level, "$level $t", $subrec, $i + 1);
 					$i++;
 				}
 			}
@@ -1158,7 +1160,7 @@ class ReportParserGenerate extends ReportParserBase {
 		$record = GedcomRecord::getInstance($id, $WT_TREE);
 		if (empty($attrs['diff']) && !empty($id)) {
 			$facts = $record->getFacts();
-			sort_facts($facts);
+			Functions::sortFacts($facts);
 			$this->repeats  = array();
 			$nonfacts       = explode(',', $tag);
 			foreach ($facts as $event) {
@@ -1231,7 +1233,7 @@ class ReportParserGenerate extends ReportParserBase {
 						}
 					}
 					$this->desc = trim($match[2]);
-					$this->desc .= get_cont(2, $this->gedrec);
+					$this->desc .= Functions::getCont(2, $this->gedrec);
 				}
 				$repeat_parser = xml_parser_create();
 				$this->parser  = $repeat_parser;
@@ -1343,7 +1345,7 @@ class ReportParserGenerate extends ReportParserBase {
 		}
 
 		$condition = $attrs['condition'];
-		$condition = $this->substitute_vars($condition);
+		$condition = $this->substituteVars($condition);
 		$condition = str_replace(array(" LT ", " GT "), array("<", ">"), $condition);
 		// Replace the first accurance only once of @fact:DATE or in any other combinations to the current fact, such as BIRT
 		$condition = str_replace("@fact", $this->fact, $condition);
@@ -1370,10 +1372,10 @@ class ReportParserGenerate extends ReportParserBase {
 				if ($level == 0) {
 					$level++;
 				}
-				$value = $this->get_gedcom_value($id, $level, $this->gedrec);
+				$value = $this->getGedcomValue($id, $level, $this->gedrec);
 				if (empty($value)) {
 					$level++;
-					$value = $this->get_gedcom_value($id, $level, $this->gedrec);
+					$value = $this->getGedcomValue($id, $level, $this->gedrec);
 				}
 				$value = preg_replace("/^@(" . WT_REGEX_XREF . ")@$/", "$1", $value);
 				$value = "\"" . addslashes($value) . "\"";
@@ -1456,7 +1458,7 @@ class ReportParserGenerate extends ReportParserBase {
 	 * XML <AgeAtDeath /> element handler
 	 */
 	private function ageAtDeathStartHandler() {
-		// This duplicates functionality in format_fact_date()
+		// This duplicates functionality in FunctionsPrint::format_fact_date()
 		global $factrec, $WT_TREE;
 
 		$match = array();
@@ -1497,7 +1499,7 @@ class ReportParserGenerate extends ReportParserBase {
 				if ($age != '' && $age != "0d") {
 					if ($fact_age != '' && $fact_age != $age || $fact_age == '' && $husb_age == '' && $wife_age == '' || $husb_age != '' && $person->getSex() == 'M' && $husb_age != $age || $wife_age != '' && $person->getSex() == 'F' && $wife_age != $age
 					) {
-						$value  = get_age_at_event($age, false);
+						$value  = FunctionsDate::getAgeAtEvent($age, false);
 						$abbrev = substr($value, 0, strpos($value, ' ') + 5);
 						if ($value !== $abbrev) {
 							$value = $abbrev . '.';
@@ -1843,7 +1845,7 @@ class ReportParserGenerate extends ReportParserBase {
 				$sql_order_by = "";
 				foreach ($attrs as $attr => $value) {
 					if (strpos($attr, 'filter') === 0 && $value) {
-						$value = $this->substitute_vars($value);
+						$value = $this->substituteVars($value);
 						// Convert the various filters into SQL
 						if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
 							$sql_join .= " JOIN `##dates` AS {$attr} ON ({$attr}.d_file=i_file AND {$attr}.d_gid=i_id)";
@@ -1922,7 +1924,7 @@ class ReportParserGenerate extends ReportParserBase {
 				$sql_order_by = "";
 				foreach ($attrs as $attr => $value) {
 					if (strpos($attr, 'filter') === 0 && $value) {
-						$value = $this->substitute_vars($value);
+						$value = $this->substituteVars($value);
 						// Convert the various filters into SQL
 						if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
 							$sql_join .= " JOIN `##dates` AS {$attr} ON ({$attr}.d_file=f_file AND {$attr}.d_gid=f_id)";
@@ -2092,13 +2094,13 @@ class ReportParserGenerate extends ReportParserBase {
 						}
 						$tags = explode(":", $tag);
 						$t    = end($tags);
-						$v    = $this->get_gedcom_value($tag, 1, $grec);
+						$v    = $this->getGedcomValue($tag, 1, $grec);
 						//-- check for EMAIL and _EMAIL (silly double gedcom standard :P)
 						if ($t == "EMAIL" && empty($v)) {
 							$tag  = str_replace("EMAIL", "_EMAIL", $tag);
 							$tags = explode(":", $tag);
 							$t    = end($tags);
-							$v    = get_sub_record(1, $tag, $grec);
+							$v    = Functions::getSubRecord(1, $tag, $grec);
 						}
 
 						switch ($expr) {
@@ -2296,7 +2298,7 @@ class ReportParserGenerate extends ReportParserBase {
 		if (isset($attrs['id'])) {
 			$id = $attrs['id'];
 		}
-		$match = $this->substitute_vars($match);
+		$match = $this->substituteVars($match);
 		if (preg_match("/\\$(\w+)/", $id, $match)) {
 			$id = $this->vars[$match[1]]['id'];
 			$id = trim($id);
@@ -2344,18 +2346,18 @@ class ReportParserGenerate extends ReportParserBase {
 					}
 					break;
 				case "direct-ancestors":
-					$this->add_ancestors($this->list, $id, false, $maxgen);
+					$this->addAncestors($this->list, $id, false, $maxgen);
 					break;
 				case "ancestors":
-					$this->add_ancestors($this->list, $id, true, $maxgen);
+					$this->addAncestors($this->list, $id, true, $maxgen);
 					break;
 				case "descendants":
 					$this->list[$id]->generation = 1;
-					$this->add_descendancy($this->list, $id, false, $maxgen);
+					$this->addDescendancy($this->list, $id, false, $maxgen);
 					break;
 				case "all":
-					$this->add_ancestors($this->list, $id, true, $maxgen);
-					$this->add_descendancy($this->list, $id, true, $maxgen);
+					$this->addAncestors($this->list, $id, true, $maxgen);
+					$this->addDescendancy($this->list, $id, true, $maxgen);
 					break;
 			}
 		}
@@ -2568,7 +2570,7 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param bool  $parents
 	 * @param int  $generations
 	 */
-	function add_descendancy(&$list, $pid, $parents = false, $generations = -1) {
+	public function addDescendancy(&$list, $pid, $parents = false, $generations = -1) {
 		global $WT_TREE;
 
 		$person = Individual::getInstance($pid, $WT_TREE);
@@ -2615,7 +2617,7 @@ class ReportParserGenerate extends ReportParserBase {
 			}
 			if ($generations == -1 || $list[$pid]->generation + 1 < $generations) {
 				foreach ($children as $child) {
-					$this->add_descendancy($list, $child->getXref(), $parents, $generations); // recurse on the childs family
+					$this->addDescendancy($list, $child->getXref(), $parents, $generations); // recurse on the childs family
 				}
 			}
 		}
@@ -2627,7 +2629,7 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param bool  $children
 	 * @param int  $generations
 	 */
-	function add_ancestors(&$list, $pid, $children = false, $generations = -1) {
+	public function addAncestors(&$list, $pid, $children = false, $generations = -1) {
 		global $WT_TREE;
 
 		$genlist                = array($pid);
@@ -2680,7 +2682,7 @@ class ReportParserGenerate extends ReportParserBase {
 	 *
 	 * @return string the value of a gedcom tag from the given gedcom record
 	 */
-	function get_gedcom_value($tag, $level, $gedrec) {
+	public function getGedcomValue($tag, $level, $gedrec) {
 		global $WT_TREE;
 
 		if (empty($gedrec)) {
@@ -2695,14 +2697,14 @@ class ReportParserGenerate extends ReportParserBase {
 		$subrec = $gedrec;
 		foreach ($tags as $t) {
 			$lastsubrec = $subrec;
-			$subrec     = get_sub_record($level, "$level $t", $subrec);
+			$subrec     = Functions::getSubRecord($level, "$level $t", $subrec);
 			if (empty($subrec) && $origlevel == 0) {
 				$level--;
-				$subrec = get_sub_record($level, "$level $t", $lastsubrec);
+				$subrec = Functions::getSubRecord($level, "$level $t", $lastsubrec);
 			}
 			if (empty($subrec)) {
 				if ($t == "TITL") {
-					$subrec = get_sub_record($level, "$level ABBR", $lastsubrec);
+					$subrec = Functions::getSubRecord($level, "$level ABBR", $lastsubrec);
 					if (!empty($subrec)) {
 						$t = "ABBR";
 					}
@@ -2711,7 +2713,7 @@ class ReportParserGenerate extends ReportParserBase {
 					if ($level > 0) {
 						$level--;
 					}
-					$subrec = get_sub_record($level, "@ $t", $gedrec);
+					$subrec = Functions::getSubRecord($level, "@ $t", $gedrec);
 					if (empty($subrec)) {
 						return '';
 					}
@@ -2739,7 +2741,7 @@ class ReportParserGenerate extends ReportParserBase {
 				}
 			}
 			if ($level != 0 || $t != "NOTE") {
-				$value .= get_cont($level + 1, $subrec);
+				$value .= Functions::getCont($level + 1, $subrec);
 			}
 
 			return $value;
@@ -2755,7 +2757,7 @@ class ReportParserGenerate extends ReportParserBase {
 	 *
 	 * @return string
 	 */
-	private function substitute_vars($expression) {
+	private function substituteVars($expression) {
 		$tmp = $this->vars; // PHP5.3 cannot use $this in closures
 
 		return preg_replace_callback(
@@ -2765,6 +2767,7 @@ class ReportParserGenerate extends ReportParserBase {
 					return '"' . $tmp[$matches[1]]['id'] . '"';
 				} else {
 					Log::addErrorLog(sprintf('Undefined variable $%s in report', $matches[1]));
+
 					return '$' . $matches[1];
 				}
 			},

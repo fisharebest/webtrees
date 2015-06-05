@@ -21,6 +21,9 @@ use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsDb;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
@@ -48,7 +51,7 @@ class IndividualController extends GedcomRecordController {
 		$this->record = Individual::getInstance($xref, $WT_TREE);
 
 		if (!$this->record && $WT_TREE->getPreference('USE_RIN')) {
-			$rin          = find_rin_id($xref);
+			$rin          = FunctionsDb::findRin($xref);
 			$this->record = Individual::getInstance($rin, $WT_TREE);
 		}
 
@@ -209,10 +212,10 @@ class IndividualController extends GedcomRecordController {
 			echo '</div>';
 		}
 		if (preg_match("/\n2 SOUR/", $factrec)) {
-			echo '<div id="indi_sour" class="clearfloat">', print_fact_sources($factrec, 2), '</div>';
+			echo '<div id="indi_sour" class="clearfloat">', FunctionsPrintFacts::printFactSources($factrec, 2), '</div>';
 		}
 		if (preg_match("/\n2 NOTE/", $factrec)) {
-			echo '<div id="indi_note" class="clearfloat">', print_fact_notes($factrec, 2), '</div>';
+			echo '<div id="indi_note" class="clearfloat">', FunctionsPrint::printFactNotes($factrec, 2), '</div>';
 		}
 		echo '</div>';
 	}

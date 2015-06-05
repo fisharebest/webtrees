@@ -25,6 +25,7 @@ global
 $WT_TREE;
 
 use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\Query\QueryName;
 
 define('WT_SCRIPT_NAME', 'indilist.php');
@@ -191,14 +192,14 @@ if ($show === 'indi' || $show === 'surn') {
 		// Show the surname list
 		switch ($WT_TREE->getPreference('SURNAME_LIST_STYLE')) {
 		case 'style1';
-			echo format_surname_list($surns, 3, true, WT_SCRIPT_NAME, $WT_TREE);
+			echo FunctionsPrintLists::surnameList($surns, 3, true, WT_SCRIPT_NAME, $WT_TREE);
 			break;
 		case 'style3':
-			echo format_surname_tagcloud($surns, WT_SCRIPT_NAME, true, $WT_TREE);
+			echo FunctionsPrintLists::surnameTagCloud($surns, WT_SCRIPT_NAME, true, $WT_TREE);
 			break;
 		case 'style2':
 		default:
-			echo format_surname_table($surns, WT_SCRIPT_NAME, $WT_TREE);
+			echo FunctionsPrintLists::surnameTable($surns, WT_SCRIPT_NAME, $WT_TREE);
 			break;
 		}
 	} else {
@@ -254,7 +255,7 @@ if ($show === 'indi' || $show === 'surn') {
 			}
 		}
 		if ($show === 'indi') {
-			echo format_indi_table(QueryName::individuals($WT_TREE, $surname, $alpha, $falpha, $show_marnm === 'yes', false));
+			echo FunctionsPrintLists::individualTable(QueryName::individuals($WT_TREE, $surname, $alpha, $falpha, $show_marnm === 'yes', false));
 		}
 	}
 }

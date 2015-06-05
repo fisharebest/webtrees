@@ -17,6 +17,8 @@ namespace Fisharebest\Webtrees\Module;
  */
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Theme;
 
@@ -69,12 +71,12 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 		switch ($infoStyle) {
 		case 'list':
 			// Output style 1:  Old format, no visible tables, much smaller text.  Better suited to right side of page.
-			$content .= print_events_list($startjd, $endjd, $onlyBDM ? 'BIRT MARR DEAT' : '', $filter, $sortStyle);
+			$content .= FunctionsPrintLists::eventsList($startjd, $endjd, $onlyBDM ? 'BIRT MARR DEAT' : '', $filter, $sortStyle);
 			break;
 		case 'table':
 			// Style 2: New format, tables, big text, etc.  Not too good on right side of page
 			ob_start();
-			$content .= print_events_table($startjd, $endjd, $onlyBDM ? 'BIRT MARR DEAT' : '', $filter, $sortStyle);
+			$content .= FunctionsPrintLists::eventsTable($startjd, $endjd, $onlyBDM ? 'BIRT MARR DEAT' : '', $filter, $sortStyle);
 			$content .= ob_get_clean();
 			break;
 		}
@@ -133,25 +135,25 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Show only events of living individuals?');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('filter', $filter);
+		echo FunctionsEdit::editFieldYesNo('filter', $filter);
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Show only births, deaths, and marriages?');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('onlyBDM', $onlyBDM);
+		echo FunctionsEdit::editFieldYesNo('onlyBDM', $onlyBDM);
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('infoStyle', array('list' => I18N::translate('list'), 'table' => I18N::translate('table')), null, $infoStyle, '');
+		echo FunctionsEdit::selectEditControl('infoStyle', array('list' => I18N::translate('list'), 'table' => I18N::translate('table')), null, $infoStyle, '');
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Sort order');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('sortStyle', array(
+		echo FunctionsEdit::selectEditControl('sortStyle', array(
 			/* I18N: An option in a list-box */ 'alpha' => I18N::translate('sort by name'),
 			/* I18N: An option in a list-box */ 'anniv' => I18N::translate('sort by date'),
 		), null, $sortStyle, '');
@@ -160,7 +162,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for a yes/no option */ I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('block', $block);
+		echo FunctionsEdit::editFieldYesNo('block', $block);
 		echo '</td></tr>';
 	}
 }

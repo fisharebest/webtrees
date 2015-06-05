@@ -24,6 +24,9 @@ namespace Fisharebest\Webtrees;
 global $WT_TREE;
 
 use Fisharebest\Webtrees\Controller\SourceController;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
+use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 
 define('WT_SCRIPT_NAME', 'source.php');
 require './includes/session.php';
@@ -41,13 +44,13 @@ if ($controller->record && $controller->record->canShow()) {
 					'<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
 					'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
 				),
-				' ', help_link('pending_changes'),
+				' ', FunctionsPrint::helpLink('pending_changes'),
 				'</p>';
 		} elseif (Auth::isEditor($controller->record->getTree())) {
 			echo
 				'<p class="ui-state-highlight">',
 				I18N::translate('This source has been deleted.  The deletion will need to be reviewed by a moderator.'),
-				' ', help_link('pending_changes'),
+				' ', FunctionsPrint::helpLink('pending_changes'),
 				'</p>';
 		}
 	} elseif ($controller->record->isPendingAddtion()) {
@@ -59,13 +62,13 @@ if ($controller->record && $controller->record->canShow()) {
 					'<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'accept') . '</a>',
 					'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'reject') . '</a>'
 				),
-				' ', help_link('pending_changes'),
+				' ', FunctionsPrint::helpLink('pending_changes'),
 				'</p>';
 		} elseif (Auth::isEditor($controller->record->getTree())) {
 			echo
 				'<p class="ui-state-highlight">',
 				I18N::translate('This source has been edited.  The changes need to be reviewed by a moderator.'),
-				' ', help_link('pending_changes'),
+				' ', FunctionsPrint::helpLink('pending_changes'),
 				'</p>';
 		}
 	}
@@ -144,19 +147,19 @@ echo '<div id="source-tabs">
 
 		// Print the facts
 		foreach ($facts as $fact) {
-			print_fact($fact, $controller->record);
+			FunctionsPrintFacts::printFact($fact, $controller->record);
 		}
 
 		// new fact link
 		if ($controller->record->canEdit()) {
-			print_add_new_fact($controller->record->getXref(), $facts, 'SOUR');
+			FunctionsPrint::printAddNewFact($controller->record->getXref(), $facts, 'SOUR');
 			// new media
 			if ($controller->record->getTree()->getPreference('MEDIA_UPLOAD') >= Auth::accessLevel($WT_TREE)) {
 				echo '<tr><td class="descriptionbox">';
 				echo GedcomTag::getLabel('OBJE');
 				echo '</td><td class="optionbox">';
 				echo '<a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&amp;linktoid=', $controller->record->getXref(), '\', \'_blank\', edit_window_specs); return false;">', I18N::translate('Add a new media object'), '</a>';
-				echo help_link('OBJE');
+				echo FunctionsPrint::helpLink('OBJE');
 				echo '<br>';
 				echo '<a href="#" onclick="window.open(\'inverselink.php?linktoid=', $controller->record->getXref(), '&amp;linkto=source\', \'_blank\', find_window_specs); return false;">', I18N::translate('Link to an existing media object'), '</a>';
 				echo '</td></tr>';
@@ -167,19 +170,19 @@ echo '<div id="source-tabs">
 
 	// Individuals linked to this source
 	if ($linked_indi) {
-		echo '<div id="indi-sources">', format_indi_table($linked_indi), '</div>';
+		echo '<div id="indi-sources">', FunctionsPrintLists::individualTable($linked_indi), '</div>';
 	}
 	// Families linked to this source
 	if ($linked_fam) {
-		echo '<div id="fam-sources">', format_fam_table($linked_fam), '</div>';
+		echo '<div id="fam-sources">', FunctionsPrintLists::familyTable($linked_fam), '</div>';
 	}
 	// Media Items linked to this source
 	if ($linked_obje) {
-		echo '<div id="media-sources">', format_media_table($linked_obje), '</div>';
+		echo '<div id="media-sources">', FunctionsPrintLists::mediaTable($linked_obje), '</div>';
 	}
 	// Shared Notes linked to this source
 	if ($linked_note) {
-		echo '<div id="note-sources">', format_note_table($linked_note), '</div>';
+		echo '<div id="note-sources">', FunctionsPrintLists::noteTable($linked_note), '</div>';
 	}
 echo '</div>'; //close div "source-tabs"
 echo '</div>'; //close div "source-details"

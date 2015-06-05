@@ -18,6 +18,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -120,7 +121,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 				?>
 					<tr>
 					<td class="<?php echo $class; ?>">
-						<?php echo get_close_relationship_name($controller->record, $person); ?>
+						<?php echo Functions::getCloseRelationshipName($controller->record, $person); ?>
 					</td>
 					<td class="<?php echo $controller->getPersonStyle($person); ?>">
 						<?php echo Theme::theme()->individualBoxLarge($person); ?>
@@ -154,7 +155,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 				?>
 				<tr>
 					<td class="<?php echo $class; ?>">
-						<?php echo get_close_relationship_name($controller->record, $person); ?>
+						<?php echo Functions::getCloseRelationshipName($controller->record, $person); ?>
 					</td>
 					<td class="<?php echo $controller->getPersonStyle($person); ?>">
 						<?php echo Theme::theme()->individualBoxLarge($person); ?>
@@ -239,7 +240,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 				<tr>
 					<td class="<?php echo $class; ?>">
 						<?php echo self::ageDifference($prev, $next, $child_number); ?>
-						<?php echo get_close_relationship_name($controller->record, $person); ?>
+						<?php echo Functions::getCloseRelationshipName($controller->record, $person); ?>
 					</td>
 					<td class="<?php echo $controller->getPersonStyle($person); ?>">
 						<?php echo Theme::theme()->individualBoxLarge($person); ?>

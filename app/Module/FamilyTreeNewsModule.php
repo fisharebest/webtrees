@@ -18,6 +18,8 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsDate;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Theme;
 
@@ -106,7 +108,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 			}
 			$content .= '<div class="news_box" id="article' . $news->news_id . '">';
 			$content .= '<div class="news_title">' . Filter::escapeHtml($news->subject) . '</div>';
-			$content .= '<div class="news_date">' . format_timestamp($news->updated) . '</div>';
+			$content .= '<div class="news_date">' . FunctionsDate::formatTimestamp($news->updated) . '</div>';
 			if ($news->body == strip_tags($news->body)) {
 				$news->body = nl2br($news->body, false);
 			}
@@ -127,7 +129,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 				$content .= '&nbsp;&nbsp;|&nbsp;&nbsp;';
 			}
 			$content .= '<a href="index.php?gedcom_news_archive=yes&amp;ctype=' . $ctype . '">' . I18N::translate('View archive') . "</a>";
-			$content .= help_link('gedcom_news_archive') . '<br>';
+			$content .= FunctionsPrint::helpLink('gedcom_news_archive') . '<br>';
 		}
 
 		if ($template) {

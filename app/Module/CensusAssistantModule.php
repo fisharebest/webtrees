@@ -18,6 +18,7 @@ namespace Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Controller\SimpleController;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
@@ -112,7 +113,7 @@ class CensusAssistantModule extends AbstractModule {
 
 			// Output Individual for GEDFact Assistant ======================
 			echo "<table class=\"tabs_table width90\">";
-			$myindilist = search_indis_names($filter_array, array($WT_TREE));
+			$myindilist = FunctionsDb::searchIndividualNames($filter_array, array($WT_TREE));
 			if ($myindilist) {
 				echo "<tr><td class=\"list_value_wrap\"><ul>";
 				usort($myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
@@ -290,7 +291,7 @@ class CensusAssistantModule extends AbstractModule {
 		$filter       = trim($filter);
 		$filter_array = explode(' ', preg_replace('/ {2,}/', ' ', $filter));
 		echo "<table class=\"tabs_table width90\"><tr>";
-		$myindilist = search_indis_names($filter_array, array($WT_TREE));
+		$myindilist = FunctionsDb::searchIndividualNames($filter_array, array($WT_TREE));
 		if ($myindilist) {
 			echo "<td class=\"list_value_wrap\"><ul>";
 			usort($myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');

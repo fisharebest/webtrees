@@ -20,6 +20,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Theme;
@@ -115,7 +116,7 @@ class PageController extends BaseController {
 	 */
 	public function restrictAccess($condition) {
 		if ($condition !== true) {
-			header('Location: ' . WT_LOGIN_URL . '?url=' . rawurlencode(get_query_url()));
+			header('Location: ' . WT_LOGIN_URL . '?url=' . rawurlencode(Functions::getQueryUrl()));
 			exit;
 		}
 

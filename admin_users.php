@@ -17,6 +17,9 @@ namespace Fisharebest\Webtrees;
  */
 
 use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\FunctionsDate;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use PDO;
 
 /**
@@ -225,13 +228,13 @@ case 'load_json':
 			$datum[5] = $installed_languages[$datum[5]];
 		}
 		// $datum[6] is the sortable registration timestamp
-		$datum[7] = $datum[7] ? format_timestamp($datum[7]) : '';
+		$datum[7] = $datum[7] ? FunctionsDate::formatTimestamp($datum[7]) : '';
 		if (date("U") - $datum[6] > 604800 && !$datum[10]) {
 			$datum[7] = '<span class="red">' . $datum[7] . '</span>';
 		}
 		// $datum[8] is the sortable last-login timestamp
 		if ($datum[8]) {
-			$datum[9] = format_timestamp($datum[8]) . '<br>' . I18N::timeAgo(WT_TIMESTAMP - $datum[8]);
+			$datum[9] = FunctionsDate::formatTimestamp($datum[8]) . '<br>' . I18N::timeAgo(WT_TIMESTAMP - $datum[8]);
 		} else {
 			$datum[9] = I18N::translate('Never');
 		}
@@ -454,7 +457,7 @@ case 'edit':
 				<?php echo /* I18N: A configuration setting */ I18N::translate('Preferred contact method'); ?>
 			</label>
 			<div class="col-sm-9">
-				<?php echo edit_field_contact('contact_method', $user->getPreference('contactmethod')); ?>
+				<?php echo FunctionsEdit::editFieldContact('contact_method', $user->getPreference('contactmethod')); ?>
 				<p class="small text-muted">
 					<?php echo /* I18N: Help text for the “Preferred contact method” configuration setting */
 					I18N::translate('Site members can send each other messages.  You can choose to how these messages are sent to you, or choose not receive them at all.'); ?>
@@ -468,7 +471,7 @@ case 'edit':
 				<?php echo I18N::translate('Theme'); ?>
 			</label>
 			<div class="col-sm-9">
-				<?php echo select_edit_control('theme', Theme::themeNames(), I18N::translate('<default theme>'), $user->getPreference('theme'), 'class="form-control"'); ?>
+				<?php echo FunctionsEdit::selectEditControl('theme', Theme::themeNames(), I18N::translate('<default theme>'), $user->getPreference('theme'), 'class="form-control"'); ?>
 			</div>
 		</div>
 
@@ -621,7 +624,7 @@ case 'edit':
 							id="rootid<?php echo $tree->getTreeId(); ?>"
 							value="<?php echo Filter::escapeHtml($tree->getUserPreference($user, 'rootid')); ?>"
 						>
-						<?php echo print_findindi_link('rootid' . $tree->getTreeId(), '', $tree); ?>
+						<?php echo FunctionsPrint::printFindIndividualLink('rootid' . $tree->getTreeId(), '', $tree); ?>
 					</td>
 					<td>
 						<input
@@ -633,7 +636,7 @@ case 'edit':
 							id="gedcomid<?php echo $tree->getTreeId(); ?>"
 							value="<?php echo Filter::escapeHtml($tree->getUserPreference($user, 'gedcomid')); ?>"
 						>
-						<?php echo print_findindi_link('gedcomid' . $tree->getTreeId(), '', $tree); ?>
+						<?php echo FunctionsPrint::printFindIndividualLink('gedcomid' . $tree->getTreeId(), '', $tree); ?>
 					</td>
 					<td>
 						<select name="RELATIONSHIP_PATH_LENGTH<?php echo $tree->getTreeId(); ?>" id="RELATIONSHIP_PATH_LENGTH<?php echo $tree->getTreeId(); ?>" class="relpath">
@@ -711,7 +714,7 @@ case 'cleanup':
 					</a>
 				</td>
 				<td>
-					<?php echo I18N::translate('User’s account has been inactive too long: ') . timestamp_to_gedcom_date($datelogin)->display(); ?>
+					<?php echo I18N::translate('User’s account has been inactive too long: ') . FunctionsDate::timestampToGedcomDate($datelogin)->display(); ?>
 				</td>
 				<td>
 					<input type="checkbox" name="del_<?php echo $user->getUserId(); ?>" value="1">

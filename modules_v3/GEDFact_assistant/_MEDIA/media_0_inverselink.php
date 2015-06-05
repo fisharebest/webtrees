@@ -23,6 +23,8 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+
 $more_links  = Filter::get('more_links');
 $exist_links = Filter::get('exist_links');
 $gid         = Filter::get('gid', WT_REGEX_XREF);
@@ -167,9 +169,9 @@ if ($action == 'choose' && $paramok) {
 	echo '</td><td style="padding-bottom: 2px; vertical-align: middle;">';
 	echo '&nbsp;';
 	echo '<img style="border-style:none;" src="', Theme::theme()->parameter('image-add'), '" alt="', I18N::translate('Add'), ' " title="', I18N::translate('Add'), '" align="middle" name="addLink" value="" onclick="blankwin(); return false;">';
-	echo ' ', print_findindi_link('gid');
-	echo ' ', print_findfamily_link('gid');
-	echo ' ', print_findsource_link('gid');
+	echo ' ', FunctionsPrint::printFindIndividualLink('gid');
+	echo ' ', FunctionsPrint::printFindFamilyLink('gid');
+	echo ' ', FunctionsPrint::printFindSourceLink('gid');
 	echo '</td></tr></table>';
 	echo "<sub>" . I18N::translate('Enter or search for the ID of the individual, family, or source to which this media item should be linked.') . "</sub>";
 	echo '<br><br>';

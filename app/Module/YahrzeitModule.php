@@ -22,6 +22,8 @@ use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Date\GregorianDate;
 use Fisharebest\Webtrees\Date\JewishDate;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsDb;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Theme;
@@ -76,7 +78,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 		// Fetch normal anniversaries...
 		$yahrzeits = array();
 		for ($jd = $startjd - 1; $jd <= $endjd + $days; ++$jd) {
-			foreach (get_anniversary_events($jd, 'DEAT _YART', $WT_TREE) as $fact) {
+			foreach (FunctionsDb::getAnniversaryEvents($jd, 'DEAT _YART', $WT_TREE) as $fact) {
 				// Exact hebrew dates only
 				$date = $fact->getDate();
 				if ($date->minimumDate() instanceof JewishDate && $date->minimumJulianDay() === $date->maximumJulianDay()) {
@@ -262,13 +264,13 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('infoStyle', array('list' => I18N::translate('list'), 'table' => I18N::translate('table')), null, $infoStyle, '');
+		echo FunctionsEdit::selectEditControl('infoStyle', array('list' => I18N::translate('list'), 'table' => I18N::translate('table')), null, $infoStyle, '');
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Calendar');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('calendar', array(
+		echo FunctionsEdit::selectEditControl('calendar', array(
 			'jewish'    => /* I18N: The Hebrew/Jewish calendar */ I18N::translate('Jewish'),
 			'gregorian' => /* I18N: The gregorian calendar */ I18N::translate('Gregorian'),
 		), null, $calendar, '');
@@ -277,7 +279,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for a yes/no option */ I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('block', $block);
+		echo FunctionsEdit::editFieldYesNo('block', $block);
 		echo '</td></tr>';
 	}
 }

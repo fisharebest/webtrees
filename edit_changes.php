@@ -24,6 +24,7 @@ namespace Fisharebest\Webtrees;
 global $WT_TREE;
 
 use Fisharebest\Webtrees\Controller\SimpleController;
+use Fisharebest\Webtrees\Functions\FunctionsImport;
 
 define('WT_SCRIPT_NAME', 'edit_changes.php');
 require './includes/session.php';
@@ -78,10 +79,10 @@ case 'accept':
 	foreach ($changes as $change) {
 		if (empty($change->new_gedcom)) {
 			// delete
-			update_record($change->old_gedcom, $gedcom_id, true);
+			FunctionsImport::updateRecord($change->old_gedcom, $gedcom_id, true);
 		} else {
 			// add/update
-			update_record($change->new_gedcom, $gedcom_id, false);
+			FunctionsImport::updateRecord($change->new_gedcom, $gedcom_id, false);
 		}
 		Database::prepare("UPDATE `##change` SET status='accepted' WHERE change_id=?")->execute(array($change->change_id));
 		Log::addEditLog("Accepted change {$change->change_id} for {$change->xref} / {$change->gedcom_name} into database");
@@ -105,10 +106,10 @@ case 'acceptall':
 	foreach ($changes as $change) {
 		if (empty($change->new_gedcom)) {
 			// delete
-			update_record($change->old_gedcom, $change->gedcom_id, true);
+			FunctionsImport::updateRecord($change->old_gedcom, $change->gedcom_id, true);
 		} else {
 			// add/update
-			update_record($change->new_gedcom, $change->gedcom_id, false);
+			FunctionsImport::updateRecord($change->new_gedcom, $change->gedcom_id, false);
 		}
 		Database::prepare("UPDATE `##change` SET status='accepted' WHERE change_id=?")->execute(array($change->change_id));
 		Log::addEditLog("Accepted change {$change->change_id} for {$change->xref} / {$change->gedcom_name} into database");

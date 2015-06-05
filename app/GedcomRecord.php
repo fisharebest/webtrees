@@ -15,6 +15,10 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\Functions\FunctionsDate;
+use Fisharebest\Webtrees\Functions\FunctionsImport;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
 /**
  * Class GedcomRecord - Base class for all gedcom records
@@ -809,9 +813,9 @@ class GedcomRecord {
 			if ($event->getDate()->isOK() || !$event->getPlace()->isEmpty()) {
 				switch ($style) {
 				case 1:
-					return '<br><em>' . $event->getLabel() . ' ' . format_fact_date($event, $this, false, false) . ' ' . format_fact_place($event) . '</em>';
+					return '<br><em>' . $event->getLabel() . ' ' . FunctionsPrint::formatFactDate($event, $this, false, false) . ' ' . FunctionsPrint::formatFactPlace($event) . '</em>';
 				case 2:
-					return '<dl><dt class="label">' . $event->getLabel() . '</dt><dd class="field">' . format_fact_date($event, $this, false, false) . ' ' . format_fact_place($event) . '</dd></dl>';
+					return '<dl><dt class="label">' . $event->getLabel() . '</dt><dd class="field">' . FunctionsPrint::formatFactDate($event, $this, false, false) . ' ' . FunctionsPrint::formatFactPlace($event) . '</dd></dl>';
 				}
 			}
 		}
@@ -1096,7 +1100,7 @@ class GedcomRecord {
 			}
 		}
 		if ($sort) {
-			sort_facts($facts);
+			Functions::sortFacts($facts);
 		}
 
 		return $facts;
@@ -1126,7 +1130,7 @@ class GedcomRecord {
 			if ($sorting) {
 				return $t;
 			} else {
-				return strip_tags(format_timestamp($t));
+				return strip_tags(FunctionsDate::formatTimestamp($t));
 			}
 		} else {
 			// The record does not have a CHAN event
@@ -1245,7 +1249,7 @@ class GedcomRecord {
 			$this->pending = $new_gedcom;
 
 			if (Auth::user()->getPreference('auto_accept')) {
-				accept_all_changes($this->xref, $this->tree->getTreeId());
+				FunctionsImport::acceptAllChanges($this->xref, $this->tree->getTreeId());
 				$this->gedcom  = $new_gedcom;
 				$this->pending = null;
 			}
@@ -1286,7 +1290,7 @@ class GedcomRecord {
 
 		// Accept this pending change
 		if (Auth::user()->getPreference('auto_accept')) {
-			accept_all_changes($this->xref, $this->tree->getTreeId());
+			FunctionsImport::acceptAllChanges($this->xref, $this->tree->getTreeId());
 			$this->gedcom  = $gedcom;
 			$this->pending = null;
 		}
@@ -1312,7 +1316,7 @@ class GedcomRecord {
 
 		// Accept this pending change
 		if (Auth::user()->getPreference('auto_accept')) {
-			accept_all_changes($this->xref, $this->tree->getTreeId());
+			FunctionsImport::acceptAllChanges($this->xref, $this->tree->getTreeId());
 		}
 
 		// Clear the cache

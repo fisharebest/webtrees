@@ -24,6 +24,7 @@ namespace Fisharebest\Webtrees;
 global $WT_TREE;
 
 use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 
 define('WT_SCRIPT_NAME', 'placelist.php');
 require './includes/session.php';
@@ -226,13 +227,13 @@ case 'hierarchy':
 		}
 		echo '</ul>';
 		if ($myindilist) {
-			echo '<div id="places-indi">', format_indi_table($myindilist), '</div>';
+			echo '<div id="places-indi">', FunctionsPrintLists::individualTable($myindilist), '</div>';
 		}
 		if ($myfamlist) {
-			echo '<div id="places-fam">', format_fam_table($myfamlist), '</div>';
+			echo '<div id="places-fam">', FunctionsPrintLists::familyTable($myfamlist), '</div>';
 		}
 		if (!$myindilist && !$myfamlist) {
-			echo '<div id="places-indi">', format_indi_table(array()), '</div>';
+			echo '<div id="places-indi">', FunctionsPrintLists::individualTable(array()), '</div>';
 		}
 		echo '</div>'; // <div id="places-tabs">
 	}

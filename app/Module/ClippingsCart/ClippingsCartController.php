@@ -20,6 +20,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsExport;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -164,7 +165,7 @@ class ClippingsCartController {
 		} elseif ($this->action === 'download') {
 			$media      = array();
 			$mediacount = 0;
-			$filetext   = gedcom_header($WT_TREE);
+			$filetext   = FunctionsExport::gedcomHeader($WT_TREE);
 			// Include SUBM/SUBN records, if they exist
 			$subn =
 				Database::prepare("SELECT o_gedcom FROM `##other` WHERE o_type=? AND o_file=?")
@@ -224,7 +225,7 @@ class ClippingsCartController {
 							$record = str_replace($match[0], '', $record);
 						}
 					}
-					$record      = convert_media_path($record, $this->conv_path);
+					$record      = FunctionsExport::convertMediaPath($record, $this->conv_path);
 					$savedRecord = $record; // Save this for the "does this file exist" check
 					if ($convert === 'yes') {
 						$record = utf8_decode($record);

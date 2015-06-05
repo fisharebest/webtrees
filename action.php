@@ -23,6 +23,10 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Functions\FunctionsDb;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Functions\FunctionsImport;
+
 define('WT_SCRIPT_NAME', 'action.php');
 require './includes/session.php';
 
@@ -40,7 +44,7 @@ case 'accept-changes':
 	$record = GedcomRecord::getInstance(Filter::post('xref', WT_REGEX_XREF), $WT_TREE);
 	if ($record && Auth::isModerator($record->getTree()) && $record->canShow() && $record->canEdit()) {
 		FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ I18N::translate('The changes to “%s” have been accepted.', $record->getFullName()));
-		accept_all_changes($record->getXref(), $record->getTree()->getTreeId());
+		FunctionsImport::acceptAllChanges($record->getXref(), $record->getTree()->getTreeId());
 	} else {
 		http_response_code(406);
 	}
@@ -126,11 +130,11 @@ case 'delete-source':
 	$record = GedcomRecord::getInstance(Filter::post('xref', WT_REGEX_XREF), $WT_TREE);
 	if ($record && Auth::isEditor($record->getTree()) && $record->canShow() && $record->canEdit()) {
 		// Delete links to this record
-		foreach (fetch_all_links($record->getXref(), $record->getTree()->getTreeId()) as $xref) {
+		foreach (FunctionsDb::fetchAllLinks($record->getXref(), $record->getTree()->getTreeId()) as $xref) {
 			$linker     = GedcomRecord::getInstance($xref, $WT_TREE);
 			$old_gedcom = $linker->getGedcom();
-			$new_gedcom = remove_links($old_gedcom, $record->getXref());
-			// fetch_all_links() does not take account of pending changes.  The links (or even the
+			$new_gedcom = FunctionsEdit::removeLinks($old_gedcom, $record->getXref());
+			// FunctionsDb::fetch_all_links() does not take account of pending changes.  The links (or even the
 			// record itself) may have already been deleted.
 			if ($old_gedcom !== $new_gedcom) {
 				// If we have removed a link from a family to an individual, and it has only one member
@@ -143,7 +147,7 @@ case 'delete-source':
 					if ($match) {
 						$relict     = GedcomRecord::getInstance($match[2][0], $WT_TREE);
 						$new_gedcom = $relict->getGedcom();
-						$new_gedcom = remove_links($new_gedcom, $linker->getXref());
+						$new_gedcom = FunctionsEdit::removeLinks($new_gedcom, $linker->getXref());
 						$relict->updateRecord($new_gedcom, false);
 						FlashMessages::addMessage(/* I18N: %s are names of records, such as sources, repositories or individuals */ I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $relict->getFullName(), $family->getFullName()));
 					}
@@ -213,7 +217,7 @@ case 'reject-changes':
 	$record = GedcomRecord::getInstance(Filter::post('xref', WT_REGEX_XREF), $WT_TREE);
 	if ($record && $record->canEdit() && Auth::isModerator($record->getTree())) {
 		FlashMessages::addMessage(/* I18N: %s is the name of an individual, source or other record */ I18N::translate('The changes to “%s” have been rejected.', $record->getFullName()));
-		reject_all_changes($record);
+		FunctionsImport::rejectAllChanges($record);
 	} else {
 		http_response_code(406);
 	}

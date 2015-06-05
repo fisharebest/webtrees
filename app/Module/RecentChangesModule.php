@@ -17,6 +17,9 @@ namespace Fisharebest\Webtrees\Module;
  */
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsDb;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Theme;
 
@@ -55,7 +58,7 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 			}
 		}
 
-		$found_facts = get_recent_changes(WT_CLIENT_JD - $days);
+		$found_facts = FunctionsDb::getRecentChanges(WT_CLIENT_JD - $days);
 
 		if (!$found_facts && $hide_empty) {
 			return '';
@@ -78,11 +81,11 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 			ob_start();
 			switch ($infoStyle) {
 			case 'list':
-				$content .= print_changes_list($found_facts, $sortStyle);
+				$content .= FunctionsPrintLists::changesList($found_facts, $sortStyle);
 				break;
 			case 'table':
 				// sortable table
-				$content .= print_changes_table($found_facts, $sortStyle);
+				$content .= FunctionsPrintLists::changesTable($found_facts, $sortStyle);
 				break;
 			}
 			$content .= ob_get_clean();
@@ -140,13 +143,13 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('infoStyle', array('list' => I18N::translate('list'), 'table' => I18N::translate('table')), null, $infoStyle, '');
+		echo FunctionsEdit::selectEditControl('infoStyle', array('list' => I18N::translate('list'), 'table' => I18N::translate('table')), null, $infoStyle, '');
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Sort order');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('sortStyle', array(
+		echo FunctionsEdit::selectEditControl('sortStyle', array(
 			'name'      => /* I18N: An option in a list-box */ I18N::translate('sort by name'),
 			'date_asc'  => /* I18N: An option in a list-box */ I18N::translate('sort by date, oldest first'),
 			'date_desc' => /* I18N: An option in a list-box */ I18N::translate('sort by date, newest first'),
@@ -156,13 +159,13 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for a yes/no option */ I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('block', $block);
+		echo FunctionsEdit::editFieldYesNo('block', $block);
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Should this block be hidden when it is empty?');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('hide_empty', $hide_empty);
+		echo FunctionsEdit::editFieldYesNo('hide_empty', $hide_empty);
 		echo '</td></tr>';
 		echo '<tr><td colspan="2" class="optionbox wrap">';
 		echo '<span class="error">', I18N::translate('If you hide an empty block, you will not be able to change its configuration until it becomes visible by no longer being empty.'), '</span>';

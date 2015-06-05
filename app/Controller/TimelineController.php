@@ -20,6 +20,8 @@ use Fisharebest\Webtrees\Date\GregorianDate;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsDate;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Theme;
@@ -225,16 +227,16 @@ class TimelineController extends PageController {
 		echo $event->getLabel();
 		echo ' — ';
 		if ($record instanceof Individual) {
-			echo format_fact_date($event, $record, false, false);
+			echo FunctionsPrint::formatFactDate($event, $record, false, false);
 		} elseif ($record instanceof Family) {
 			echo $gdate->display();
 			if ($record->getHusband() && $record->getHusband()->getBirthDate()->isOK()) {
-				$ageh = get_age_at_event(Date::getAgeGedcom($record->getHusband()->getBirthDate(), $gdate), false);
+				$ageh = FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($record->getHusband()->getBirthDate(), $gdate), false);
 			} else {
 				$ageh = null;
 			}
 			if ($record->getWife() && $record->getWife()->getBirthDate()->isOK()) {
-				$agew = get_age_at_event(Date::getAgeGedcom($record->getWife()->getBirthDate(), $gdate), false);
+				$agew = FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($record->getWife()->getBirthDate(), $gdate), false);
 			} else {
 				$agew = null;
 			}

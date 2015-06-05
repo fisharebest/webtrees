@@ -16,6 +16,7 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use PDOException;
 
 error_reporting(E_ALL);
@@ -104,7 +105,7 @@ if (!isset($_POST['lang'])) {
 
 	echo
 		'<p>', I18N::translate('Change language'), ' ',
-		select_edit_control('change_lang', $installed_languages, null, WT_LOCALE, 'onchange="window.location=\'' . WT_SCRIPT_NAME . '?lang=\'+this.value;">'),
+		FunctionsEdit::selectEditControl('change_lang', $installed_languages, null, WT_LOCALE, 'onchange="window.location=\'' . WT_SCRIPT_NAME . '?lang=\'+this.value;">'),
 		'</p>',
 		'<h2>', I18N::translate('Checking server configuration'), '</h2>';
 	$warnings = false;

@@ -25,6 +25,9 @@ global $WT_TREE;
 
 use Fisharebest\Webtrees\Controller\MediaController;
 use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\Query\QueryMedia;
 
 define('WT_SCRIPT_NAME', 'medialist.php');
@@ -89,7 +92,7 @@ $medialist = QueryMedia::mediaList(
 					</label>
 				</td>
 				<td class="optionbox wrap">
-					<?php echo select_edit_control('folder', $folders, null, $folder); ?>
+					<?php echo FunctionsEdit::selectEditControl('folder', $folders, null, $folder); ?>
 				</td>
 				<?php if (Auth::isEditor($WT_TREE)): ?>
 				<td class="descriptionbox wrap">
@@ -288,8 +291,8 @@ if ($action === 'submit') {
 			}
 			echo '<br>';
 			echo '<div>';
-			echo print_fact_sources($mediaobject->getGedcom(), 1);
-			echo print_fact_notes($mediaobject->getGedcom(), 1);
+			echo FunctionsPrintFacts::printFactSources($mediaobject->getGedcom(), 1);
+			echo FunctionsPrint::printFactNotes($mediaobject->getGedcom(), 1);
 			echo '</div>';
 			foreach ($mediaobject->linkedIndividuals('OBJE') as $individual) {
 				echo '<a href="' . $individual->getHtmlUrl() . '">' . I18N::translate('View individual') . ' — ' . $individual->getFullname() . '</a><br>';

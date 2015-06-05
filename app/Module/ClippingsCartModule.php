@@ -19,6 +19,7 @@ use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -304,9 +305,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 										<input type="text" data-autocomplete-type="IFSRO" name="id" id="cart_item_id" size="5">
 									</td>
 									<td class="optionbox">
-										<?php echo print_findindi_link('cart_item_id'); ?>
-										<?php echo print_findfamily_link('cart_item_id'); ?>
-										<?php echo print_findsource_link('cart_item_id', ''); ?>
+										<?php echo FunctionsPrint::printFindIndividualLink('cart_item_id'); ?>
+										<?php echo FunctionsPrint::printFindFamilyLink('cart_item_id'); ?>
+										<?php echo FunctionsPrint::printFindSourceLink('cart_item_id', ''); ?>
 										<input type="submit" value="<?php echo I18N::translate('Add'); ?>">
 									</td>
 								</tr>
@@ -399,9 +400,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 										<input type="text" data-autocomplete-type="IFSRO" name="id" id="cart_item_id" size="8">
 									</td>
 									<td class="optionbox">
-										<?php echo print_findindi_link('cart_item_id'); ?>
-										<?php echo print_findfamily_link('cart_item_id'); ?>
-										<?php echo print_findsource_link('cart_item_id'); ?>
+										<?php echo FunctionsPrint::printFindIndividualLink('cart_item_id'); ?>
+										<?php echo FunctionsPrint::printFindFamilyLink('cart_item_id'); ?>
+										<?php echo FunctionsPrint::printFindSourceLink('cart_item_id'); ?>
 										<input type="submit" value="<?php echo I18N::translate('Add'); ?>">
 									</td>
 								</tr>

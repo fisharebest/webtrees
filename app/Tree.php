@@ -16,6 +16,8 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Functions\FunctionsExport;
+use Fisharebest\Webtrees\Functions\FunctionsImport;
 use PDOException;
 
 /**
@@ -677,9 +679,9 @@ class Tree {
 			'tree_id_5' => $this->tree_id,
 		));
 
-		$buffer = reformat_record_export(gedcom_header($this));
+		$buffer = FunctionsExport::reformatRecord(FunctionsExport::gedcomHeader($this));
 		while ($row = $stmt->fetch()) {
-			$buffer .= reformat_record_export($row->gedcom);
+			$buffer .= FunctionsExport::reformatRecord($row->gedcom);
 			if (strlen($buffer) > 65535) {
 				fwrite($stream, $buffer);
 				$buffer = '';
@@ -858,7 +860,7 @@ class Tree {
 
 		// Accept this pending change
 		if (Auth::user()->getPreference('auto_accept')) {
-			accept_all_changes($xref, $this->tree_id);
+			FunctionsImport::acceptAllChanges($xref, $this->tree_id);
 		}
 		// Return the newly created record.  Note that since GedcomRecord
 		// has a cache of pending changes, we cannot use it to create a

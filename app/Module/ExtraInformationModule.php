@@ -16,6 +16,7 @@ namespace Fisharebest\Webtrees\Module;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\I18N;
 
 /**
@@ -60,7 +61,7 @@ class ExtraInformationModule extends AbstractModule implements ModuleSidebarInte
 			echo I18N::translate('There are no facts for this individual.');
 		} else {
 			foreach ($indifacts as $fact) {
-				print_fact($fact, $controller->record);
+				FunctionsPrintFacts::printFact($fact, $controller->record);
 			}
 		}
 

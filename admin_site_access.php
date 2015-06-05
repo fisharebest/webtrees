@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees;
  */
 
 use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use PDO;
 
 define('WT_SCRIPT_NAME', 'admin_site_access.php');
@@ -287,7 +288,7 @@ case 'create':
 				<?php echo /* I18N: A configuration setting */ I18N::translate('Rule'); ?>
 			</label>
 			<div class="col-sm-9">
-				<?php echo select_edit_control('rule', $rules_edit, null, $rule, 'class="form-control"'); ?>
+				<?php echo FunctionsEdit::selectEditControl('rule', $rules_edit, null, $rule, 'class="form-control"'); ?>
 			</div>
 		</div>
 

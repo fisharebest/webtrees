@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees;
  */
 
 use Fisharebest\Webtrees\Controller\AjaxController;
+use Fisharebest\Webtrees\Functions\FunctionsImport;
 use PDOException;
 
 define('WT_SCRIPT_NAME', 'import.php');
@@ -211,7 +212,7 @@ for ($end_time = microtime(true) + 1.0; microtime(true) < $end_time;) {
 	try {
 		// Import all the records in this chunk of data
 		foreach (preg_split('/\n+(?=0)/', $data->chunk_data) as $rec) {
-			import_record($rec, $tree, false);
+			FunctionsImport::importRecord($rec, $tree, false);
 		}
 		// Mark the chunk as imported
 		Database::prepare(

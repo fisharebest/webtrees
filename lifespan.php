@@ -24,6 +24,7 @@ namespace Fisharebest\Webtrees;
 global $WT_TREE;
 
 use Fisharebest\Webtrees\Controller\LifespanController;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
 define('WT_SCRIPT_NAME', 'lifespan.php');
 require './includes/session.php';
@@ -146,7 +147,7 @@ $people = count($controller->people);
 								<?php echo I18N::translate('Add another individual to the chart'); ?>
 								<br>
 								<input class="pedigree_form" data-autocomplete-type="INDI" type="text" size="5" id="newpid" name="newpid">
-								<?php print_findindi_link('newpid'); ?>
+								<?php FunctionsPrint::printFindIndividualLink('newpid'); ?>
 								<br>
 								<div>
 									<?php echo I18N::translate('Include the individual’s immediate family?'); ?>

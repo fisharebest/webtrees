@@ -15,6 +15,8 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Functions\FunctionsMedia;
+use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 
 /**
  * Class Media - Class that defines a media object
@@ -163,7 +165,7 @@ class Media extends GedcomRecord {
 						Log::addMediaLog('Thumbnail could not be created for ' . $main_file . ' (copy of main image)');
 					}
 				} else {
-					if (hasMemoryForImage($main_file)) {
+					if (FunctionsMedia::hasMemoryForImage($main_file)) {
 						try {
 							switch ($imgsize['mime']) {
 							case 'image/png':
@@ -576,7 +578,7 @@ class Media extends GedcomRecord {
 	/** {@inheritdoc} */
 	public function formatListDetails() {
 		ob_start();
-		print_media_links('1 OBJE @' . $this->getXref() . '@', 1);
+		FunctionsPrintFacts::printMediaLinks('1 OBJE @' . $this->getXref() . '@', 1);
 
 		return ob_get_clean();
 	}
