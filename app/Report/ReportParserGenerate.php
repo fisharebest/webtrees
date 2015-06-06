@@ -1849,9 +1849,9 @@ class ReportParserGenerate extends ReportParserBase {
 			case 'individual':
 				$sql_select   = "SELECT DISTINCT i_id AS xref, i_gedcom AS gedcom FROM `##individuals` ";
 				$sql_join     = "";
-				$sql_where    = " WHERE i_file = " . $WT_TREE->getTreeId();
+				$sql_where    = " WHERE i_file = :tree_id";
 				$sql_order_by = "";
-				$sql_params   = array();
+				$sql_params   = array('tree_id' => $WT_TREE->getTreeId());
 				foreach ($attrs as $attr => $value) {
 					if (strpos($attr, 'filter') === 0 && $value) {
 						$value = $this->substituteVars($value, false);
@@ -1925,9 +1925,9 @@ class ReportParserGenerate extends ReportParserBase {
 			case 'family':
 				$sql_select   = "SELECT DISTINCT f_id AS xref, f_gedcom AS gedcom FROM `##families`";
 				$sql_join     = "";
-				$sql_where    = " WHERE f_file=" . $WT_TREE->getTreeId();
+				$sql_where    = " WHERE f_file = :tree_id";
 				$sql_order_by = "";
-				$sql_params   = array();
+				$sql_params   = array('tree_id' => $WT_TREE->getTreeId());
 				foreach ($attrs as $attr => $value) {
 					if (strpos($attr, 'filter') === 0 && $value) {
 						$value = $this->substituteVars($value, false);
