@@ -17,11 +17,11 @@ namespace Fisharebest\Webtrees;
  */
 
 /**
- * Class ConfigData - Application configuration data.  Data here has no
+ * Class Config - Application configuration data.  Data here has no
  * GUI to edit it, although most of it can be altered to customise local
  * installations.
  */
-class ConfigData {
+class Config {
 	/**
 	 * NPFX tags - name prefixes
 	 *

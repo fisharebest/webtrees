@@ -421,11 +421,6 @@ if (!Auth::isSearchEngine() && !Session::get('initiated')) {
 	// An existing session
 }
 
-/** @deprecated Will be removed in 1.7.0 */
-define('WT_USER_ID', Auth::id());
-/** @deprecated Will be removed in 1.7.0 */
-define('WT_USER_NAME', Auth::id() ? Auth::user()->getUserName() : '');
-
 // Set the tree for the page; (1) the request, (2) the session, (3) the site default, (4) any tree
 foreach (array(Filter::post('ged'), Filter::get('ged'), Session::get('GEDCOM'), Site::getPreference('DEFAULT_GEDCOM')) as $tree_name) {
 	$WT_TREE = Tree::findByName($tree_name);

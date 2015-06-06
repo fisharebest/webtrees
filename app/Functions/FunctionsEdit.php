@@ -17,7 +17,7 @@ namespace Fisharebest\Webtrees\Functions;
  */
 
 use Fisharebest\Webtrees\Auth;
-use Fisharebest\Webtrees\ConfigData;
+use Fisharebest\Webtrees\Config;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
@@ -583,7 +583,7 @@ class FunctionsEdit {
 			}
 		}
 
-		if (in_array($fact, ConfigData::emptyFacts()) && ($value === '' || $value === 'Y' || $value === 'y')) {
+		if (in_array($fact, Config::emptyFacts()) && ($value === '' || $value === 'Y' || $value === 'y')) {
 			echo '<input type="hidden" id="', $element_id, '" name="', $element_name, '" value="', $value, '">';
 			if ($level <= 1) {
 				echo '<input type="checkbox" ';
@@ -931,7 +931,7 @@ class FunctionsEdit {
 
 		// pastable values
 		if ($fact === 'FORM' && $upperlevel === 'OBJE') {
-			FunctionsPrint::printAutoPasteLink($element_id, ConfigData::fileFormats());
+			FunctionsPrint::printAutoPasteLink($element_id, Config::fileFormats());
 		}
 		echo '</div>', $extra, '</td></tr>';
 
@@ -1057,11 +1057,11 @@ class FunctionsEdit {
 			self::addSimpleTag('0 ' . $fact);
 		}
 
-		if (!in_array($fact, ConfigData::nonDateFacts())) {
+		if (!in_array($fact, Config::nonDateFacts())) {
 			self::addSimpleTag('0 DATE', $fact, GedcomTag::getLabel($fact . ':DATE'));
 		}
 
-		if (!in_array($fact, ConfigData::nonPlaceFacts())) {
+		if (!in_array($fact, Config::nonPlaceFacts())) {
 			self::addSimpleTag('0 PLAC', $fact, GedcomTag::getLabel($fact . ':PLAC'));
 
 			if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_PLAC_FACTS'), $match)) {
@@ -1446,7 +1446,7 @@ class FunctionsEdit {
 			if (in_array($fact, array('ALIA', 'ASSO'))) {
 				$fact .= ' @';
 			}
-			if (in_array($fact, ConfigData::emptyFacts())) {
+			if (in_array($fact, Config::emptyFacts())) {
 				self::addSimpleTag('1 ' . $fact . ' Y');
 			} else {
 				self::addSimpleTag('1 ' . $fact);
@@ -1584,7 +1584,7 @@ class FunctionsEdit {
 			}
 
 			// Awkward special cases
-			if ($level == 2 && $type === 'DATE' && in_array($level1type, ConfigData::dateAndTime()) && !in_array('TIME', $subtags)) {
+			if ($level == 2 && $type === 'DATE' && in_array($level1type, Config::dateAndTime()) && !in_array('TIME', $subtags)) {
 				self::addSimpleTag('3 TIME'); // TIME is NOT a valid 5.5.1 tag
 			}
 			if ($level == 2 && $type === 'STAT' && GedcomCodeTemp::isTagLDS($level1type) && !in_array('DATE', $subtags)) {
@@ -1631,8 +1631,8 @@ class FunctionsEdit {
 			$level1tag = 'MARR';
 		}
 
-		foreach (ConfigData::levelTwoTags() as $key => $value) {
-			if ($key === 'DATE' && in_array($level1tag, ConfigData::nonDateFacts()) || $key === 'PLAC' && in_array($level1tag, ConfigData::nonPlaceFacts())) {
+		foreach (Config::levelTwoTags() as $key => $value) {
+			if ($key === 'DATE' && in_array($level1tag, Config::nonDateFacts()) || $key === 'PLAC' && in_array($level1tag, Config::nonPlaceFacts())) {
 				continue;
 			}
 			if (in_array($level1tag, $value) && !in_array($key, $tags)) {
@@ -1675,7 +1675,7 @@ class FunctionsEdit {
 						break;
 					case 'DATE':
 						// TIME is NOT a valid 5.5.1 tag
-						if (in_array($level1tag, ConfigData::dateAndTime())) {
+						if (in_array($level1tag, Config::dateAndTime())) {
 							self::addSimpleTag('3 TIME');
 						}
 						break;

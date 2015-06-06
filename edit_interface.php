@@ -2325,7 +2325,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		$name_type    = $name_fact->getAttribute('TYPE');
 		$namerec      = $name_fact->getGedcom();
 		// Populate the standard NAME field and subfields
-		foreach (ConfigData::standardNameFacts() as $tag) {
+		foreach (Config::standardNameFacts() as $tag) {
 			if ($tag === 'NAME') {
 				$name_fields[$tag] = $name_fact->getValue();
 			} else {
@@ -2337,7 +2337,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		$name_type    = null;
 		$namerec      = null;
 		// Populate the standard NAME field and subfields
-		foreach (ConfigData::standardNameFacts() as $tag) {
+		foreach (Config::standardNameFacts() as $tag) {
 			$name_fields[$tag] = '';
 		}
 	}
@@ -2603,7 +2603,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	}
 
 	// Populate any missing 2 XXXX fields from the 1 NAME field
-	$npfx_accept = implode('|', ConfigData::namePrefixes());
+	$npfx_accept = implode('|', Config::namePrefixes());
 	if (preg_match('/(((' . $npfx_accept . ')\.? +)*)([^\n\/"]*)("(.*)")? *\/(([a-z]{2,3} +)*)(.*)\/ *(.*)/i', $name_fields['NAME'], $name_bits)) {
 		if (empty($name_fields['NPFX'])) {
 			$name_fields['NPFX'] = $name_bits[1];
