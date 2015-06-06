@@ -113,7 +113,7 @@ class ReportParserGenerate extends ReportParserBase {
 	private $vars;
 
 	/** {@inheritDoc} */
-	public function __construct($report, ReportBase $report_root = null, $vars = array()) {
+	public function __construct($report, ReportBase $report_root = null, array $vars = array()) {
 		$this->report_root     = $report_root;
 		$this->wt_report       = $report_root;
 		$this->current_element = new ReportBaseElement;
@@ -1345,7 +1345,7 @@ class ReportParserGenerate extends ReportParserBase {
 		}
 
 		$condition = $attrs['condition'];
-		$condition = $this->substituteVars($condition);
+		$condition = $this->substituteVars($condition, true);
 		$condition = str_replace(array(" LT ", " GT "), array("<", ">"), $condition);
 		// Replace the first accurance only once of @fact:DATE or in any other combinations to the current fact, such as BIRT
 		$condition = str_replace("@fact", $this->fact, $condition);
@@ -1845,7 +1845,7 @@ class ReportParserGenerate extends ReportParserBase {
 				$sql_order_by = "";
 				foreach ($attrs as $attr => $value) {
 					if (strpos($attr, 'filter') === 0 && $value) {
-						$value = $this->substituteVars($value);
+						$value = $this->substituteVars($value, false);
 						// Convert the various filters into SQL
 						if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
 							$sql_join .= " JOIN `##dates` AS {$attr} ON ({$attr}.d_file=i_file AND {$attr}.d_gid=i_id)";
@@ -1924,7 +1924,7 @@ class ReportParserGenerate extends ReportParserBase {
 				$sql_order_by = "";
 				foreach ($attrs as $attr => $value) {
 					if (strpos($attr, 'filter') === 0 && $value) {
-						$value = $this->substituteVars($value);
+						$value = $this->substituteVars($value, false);
 						// Convert the various filters into SQL
 						if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
 							$sql_join .= " JOIN `##dates` AS {$attr} ON ({$attr}.d_file=f_file AND {$attr}.d_gid=f_id)";
@@ -2298,7 +2298,6 @@ class ReportParserGenerate extends ReportParserBase {
 		if (isset($attrs['id'])) {
 			$id = $attrs['id'];
 		}
-		$match = $this->substituteVars($match);
 		if (preg_match("/\\$(\w+)/", $id, $match)) {
 			$id = $this->vars[$match[1]]['id'];
 			$id = trim($id);
@@ -2570,7 +2569,7 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param bool  $parents
 	 * @param int  $generations
 	 */
-	public function addDescendancy(&$list, $pid, $parents = false, $generations = -1) {
+	private function addDescendancy(&$list, $pid, $parents = false, $generations = -1) {
 		global $WT_TREE;
 
 		$person = Individual::getInstance($pid, $WT_TREE);
@@ -2629,7 +2628,7 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @param bool  $children
 	 * @param int  $generations
 	 */
-	public function addAncestors(&$list, $pid, $children = false, $generations = -1) {
+	private function addAncestors(&$list, $pid, $children = false, $generations = -1) {
 		global $WT_TREE;
 
 		$genlist                = array($pid);
@@ -2682,7 +2681,7 @@ class ReportParserGenerate extends ReportParserBase {
 	 *
 	 * @return string the value of a gedcom tag from the given gedcom record
 	 */
-	public function getGedcomValue($tag, $level, $gedrec) {
+	private function getGedcomValue($tag, $level, $gedrec) {
 		global $WT_TREE;
 
 		if (empty($gedrec)) {
@@ -2754,17 +2753,22 @@ class ReportParserGenerate extends ReportParserBase {
 	 * Replace variable identifiers with their values.
 	 *
 	 * @param string $expression An expression such as "$foo == 123"
+	 * @param bool   $quote      Whether to add quotation marks
 	 *
 	 * @return string
 	 */
-	private function substituteVars($expression) {
+	private function substituteVars($expression, $quote) {
 		$tmp = $this->vars; // PHP5.3 cannot use $this in closures
 
 		return preg_replace_callback(
 			'/\$(\w+)/',
-			function ($matches) use ($tmp) {
+			function ($matches) use ($tmp, $quote) {
 				if (isset($tmp[$matches[1]]['id'])) {
-					return '"' . $tmp[$matches[1]]['id'] . '"';
+					if ($quote) {
+						return "'" . addcslashes($tmp[$matches[1]]['id'], "'") . "'";
+					} else {
+						return $tmp[$matches[1]]['id'];
+					}
 				} else {
 					Log::addErrorLog(sprintf('Undefined variable $%s in report', $matches[1]));
 
@@ -2773,6 +2777,5 @@ class ReportParserGenerate extends ReportParserBase {
 			},
 			$expression
 		);
-
 	}
 }
