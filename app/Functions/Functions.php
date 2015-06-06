@@ -295,7 +295,7 @@ class Functions {
 		if ($person1 === $person2) {
 			$label = I18N::translate('self');
 		} else {
-			$label = get_relationship_name(get_relationship($person1, $person2));
+			$label = self::getRelationshipName(self::getRelationship($person1, $person2));
 		}
 
 		return $label;
@@ -2096,15 +2096,15 @@ class Functions {
 					if ($down == $up) {
 						return self::cousinName($cousin, $sex2);
 					} elseif ($down < $up) {
-						return self::cousinName2($cousin + 1, $sex2, get_relationship_name_from_path('sib' . $descent, null, null));
+						return self::cousinName2($cousin + 1, $sex2, self::getRelationshipNameFromPath('sib' . $descent, null, null));
 					} else {
 						switch ($sex2) {
 							case 'M':
-								return self::cousinName2($cousin + 1, $sex2, get_relationship_name_from_path('bro' . $descent, null, null));
+								return self::cousinName2($cousin + 1, $sex2, self::getRelationshipNameFromPath('bro' . $descent, null, null));
 							case 'F':
-								return self::cousinName2($cousin + 1, $sex2, get_relationship_name_from_path('sis' . $descent, null, null));
+								return self::cousinName2($cousin + 1, $sex2, self::getRelationshipNameFromPath('sis' . $descent, null, null));
 							default:
-								return self::cousinName2($cousin + 1, $sex2, get_relationship_name_from_path('sib' . $descent, null, null));
+								return self::cousinName2($cousin + 1, $sex2, self::getRelationshipNameFromPath('sib' . $descent, null, null));
 						}
 					}
 				case 'en_AU': // See: http://en.wikipedia.org/wiki/File:CousinTree.svg
