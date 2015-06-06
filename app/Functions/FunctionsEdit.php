@@ -736,7 +736,7 @@ class FunctionsEdit {
 			// split PLAC
 			if ($fact === 'PLAC') {
 				echo '<div id="', $element_id, '_pop" style="display: inline;">';
-				echo FunctionsPrint::printSpecialCharacterLink($element_id), ' ', self::print_findplace_link($element_id);
+				echo FunctionsPrint::printSpecialCharacterLink($element_id), ' ', FunctionsPrint::printFindPlaceLink($element_id);
 				echo '<span  onclick="jQuery(\'tr[id^=', $upperlevel, '_LATI],tr[id^=', $upperlevel, '_LONG],tr[id^=LATI],tr[id^=LONG]\').toggle(\'fast\'); return false;" class="icon-target" title="', GedcomTag::getLabel('LATI'), ' / ', GedcomTag::getLabel('LONG'), '"></span>';
 				echo '</div>';
 				if (Module::getModuleByName('places_assistant')) {
