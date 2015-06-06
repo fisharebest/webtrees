@@ -71,15 +71,6 @@ case 'source':
 	break;
 case 'specialchar':
 	$controller->setPageTitle(I18N::translate('Find a special character'));
-	$language_filter = Filter::get('language_filter');
-	// Users will probably always want the same language, so remember their setting
-	if (!$language_filter) {
-		$language_filter = Auth::user()->getPreference('default_language_filter');
-	} else {
-		Auth::user()->setPreference('default_language_filter', $language_filter);
-	}
-	require WT_ROOT . 'includes/specialchars.php';
-	$action = 'filter';
 	break;
 case 'facts':
 	$controller
@@ -120,25 +111,6 @@ echo '<script>';
 	}
 <?php
 echo '</script>';
-
-$options             = array();
-$options["option"][] = "findindi";
-$options["option"][] = "findfam";
-$options["option"][] = "findmedia";
-$options["option"][] = "findplace";
-$options["option"][] = "findrepo";
-$options["option"][] = "findnote";
-$options["option"][] = "findsource";
-$options["option"][] = "findspecialchar";
-$options["option"][] = "findfact";
-$options["form"][]   = "formindi";
-$options["form"][]   = "formfam";
-$options["form"][]   = "formmedia";
-$options["form"][]   = "formplace";
-$options["form"][]   = "formrepo";
-$options["form"][]   = "formnote";
-$options["form"][]   = "formsource";
-$options["form"][]   = "formspecialchar";
 
 echo '<div id="find-page"><h3>', $controller->getPageTitle(), '</h3>';
 
@@ -276,23 +248,27 @@ if ($type == "source") {
 
 // Show specialchar and hide the rest
 if ($type == 'specialchar') {
+	$language_filter = Filter::get('language_filter', null, Auth::user()->getPreference('default_language_filter'));
+	$specialchar_languages = SpecialChars::allLanguages();
+	if (!array_key_exists($language_filter, $specialchar_languages)) {
+		$language_filter = 'en';
+	}
+	Auth::user()->setPreference('default_language_filter', $language_filter);
+	$action = 'filter';
 	echo '<div id="find-header">
 	<form name="filterspecialchar" method="get" action="find.php">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="type" value="specialchar">
 	<input type="hidden" name="callback" value="' . $callback . '">
-	<p><select id="language_filter" name="language_filter" onchange="submit();">
-	<option value="">', I18N::translate('Change language'), '</option>';
-	$language_options = '';
-	foreach ($specialchar_languages as $key => $special_character) {
-		$language_options .= '<option value="' . $key . '" ';
-		if ($key == $language_filter) {
-			$language_options .= 'selected';
+	<p><select id="language_filter" name="language_filter" onchange="submit();">';
+	foreach (SpecialChars::allLanguages() as $lanuguage_tag => $language_name) {
+		echo '<option value="' . $lanuguage_tag . '" ';
+		if ($lanuguage_tag === $language_filter) {
+			echo 'selected';
 		}
-		$language_options .= '>' . $special_character . '</option>';
+		echo '>', $language_name, '</option>';
 	}
-	echo $language_options,
-	'</select>
+	echo '</select>
 	</p></form></div>';
 }
 
@@ -675,17 +651,17 @@ if ($action == "filter") {
 	if ($type == "specialchar") {
 		echo '<div id="find-output-special"><p>';
 		// lower case special characters
-		foreach ($lcspecialchars as $special_character) {
+		foreach (SpecialChars::create($language_filter)->upper() as $special_character) {
 			echo '<a class="largechars" href="#" onclick="return window.opener.paste_char(\'', $special_character, '\');">', $special_character, '</a> ';
 		}
 		echo '</p><p>';
 		//upper case special characters
-		foreach ($ucspecialchars as $special_character) {
+		foreach (SpecialChars::create($language_filter)->lower() as $special_character) {
 			echo '<a class="largechars" href="#" onclick="return window.opener.paste_char(\'', $special_character, '\');">', $special_character, '</a> ';
 		}
 		echo '</p><p>';
 		// other special characters (not letters)
-		foreach ($otherspecialchars as $special_character) {
+		foreach (SpecialChars::create($language_filter)->other() as $special_character) {
 			echo '<a class="largechars" href="#" onclick="return window.opener.paste_char(\'', $special_character, '\');">', $special_character, '</a> ';
 		}
 		echo '</p></div>';
