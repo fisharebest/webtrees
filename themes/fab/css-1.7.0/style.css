@@ -42,7 +42,6 @@ fieldset,
 .facts_label,
 .facts_label03,
 .facts_value,
-.lifespan_outer,
 .list_label,
 .list_label_wrap,
 .list_value,
@@ -263,10 +262,6 @@ header form {
 .news_box:target,
 #gedcom_stats:target {
 	background-color: #ffc;
-}
-
-.person_box_lifespan {
-	display: inline;
 }
 
 /* families tab person box */
@@ -779,42 +774,6 @@ a:hover .nameZoom {
 .old {
 	border: solid #f00 1px;
 	overflow: hidden;
-}
-
-a.showit {
-	position: relative;
-	z-index: 24;
-	color: #000;
-	text-decoration: none;
-}
-
-a.showit:hover {
-	z-index: 25;
-	background-color: #ff9;
-	cursor: crosshair;
-}
-
-a.showit > span {
-	display: none;
-}
-
-a.showit:hover > span {
-	display: block;
-	position: absolute;
-	top: 22px;
-	left: 0;
-	width: 225px;
-	border-top: 2px solid #222;
-	border-right: 2px solid #000;
-	border-bottom: 2px solid #000;
-	border-left: 15px outset #222;
-	padding: 3px;
-	background: #555;
-	color: #fff;
-	font-size: 15px;
-	text-align: left;
-	opacity: .85;
-	z-index: 5;
 }
 
 .tag_cloud {
@@ -3374,57 +3333,94 @@ table.table-census-assistant th {
 }
 
 /*-- Lifespan ---- */
-
-#lifespan-page .person0 {
-	padding: 5px;
+.lifespan-form {
+	display: table;
+	margin:  0 auto;
 }
 
-#lifespan-page .person0 div{
-	text-align: center;
+.lifespan-form fieldset {
+	display:        inline-block;
+	margin:         0;
+	vertical-align: top;
+	height:         130px;
 }
 
-#lifespan_chart .div-controls {
-	opacity: 0.67;
+.lifespan-form legend {
+	color: inherit;
+}
+
+.lifespan-form fieldset > div {
+	display: table-row;
+}
+
+.lifespan-form label,
+.lifespan-form span {
+	display: table-cell;
+	border:  none;
+}
+
+.lifespan-form .controls {
+	text-align: right;
+}
+
+[dir='rtl'] .lifespan-form .controls {
+	text-align: left;
+}
+
+.lifespan-form select,
+.lifespan-form .controls * {
+	margin: 1px 0;
+}
+
+#lifespan-chart {
+	padding:    0 10px 10px;
+	margin:     0 auto;
+	min-height: 500px;
+}
+
+#lifespan-scale {
+	background:  transparent url(images/lifespan-chunk.png) repeat-x left bottom;
+	height:      55px;
+	display:     inline-block;
+	white-space: nowrap;
+}
+
+#lifespan-scale .date {
+	display: inline-block;
+	width:   70px;
+}
+
+[dir='rtl'] #lifespan-scale .date {
+	text-align: right;
+}
+
+#lifespan-people {
 	position: relative;
-	top: 80px;
-	width: 180px;
-	z-index: 100;
-	margin-left: 20px;
 }
 
-.lifespan_people span:first-letter {
-	font-variant: small-caps;
-	font-size: 16px;
-	padding: 1px;
-}
-
-.lifespan_outer {
-	position: relative;
-	width: 99.5%;
-	height: 600px;
-	overflow: hidden;
-}
-
-.lifespan_outer a:hover {
-	color: #f00;
-	text-decoration: none;
-}
-
-.lifespan_timeline {
+#lifespan-people > div {
 	position: absolute;
-	width: 100%;
-	left: -10px;
-	top: -65px;
-	z-index: 2;
-	background-color: #fff;
+	padding:  0;
 }
 
-.lifespan_people {
-	position: absolute;
-	width: 500px;
-	left: -10px;
-	top: -60px;
-	z-index: 1;
+#lifespan-people .itr {
+	display: inline;
+	white-space: nowrap;
+}
+
+#lifespan-people .popup div:first-of-type {
+	font-weight: 900;
+}
+
+#lifespan-people .popup {
+	left:        0;
+	right:       auto;
+	white-space: nowrap;
+}
+
+[dir='rtl'] #lifespan-people .popup {
+	left:  auto;
+	right: 0;
 }
 
 /*-- Pedigree ---- */
@@ -3723,12 +3719,6 @@ a.icon-larrow:hover {
 	background-image: url(images/ldarrow2.png);
 }
 
-.icon-lifespan-chunk {
-	width: 50px;
-	height: 37px;
-	background-image: url(images/lifespan-chunk.png);
-}
-
 .icon-loading-small {
 	width: 16px;
 	height: 16px;
@@ -3739,30 +3729,6 @@ a.icon-larrow:hover {
 	width: 32px;
 	height: 32px;
 	background-image: url(images/loading.gif);
-}
-
-.icon-lsdnarrow {
-	width: 48px;
-	height: 48px;
-	background-image: url(images/lifespan-down.png);
-}
-
-.icon-lsltarrow {
-	width: 48px;
-	height: 48px;
-	background-image: url(images/lifespan-left.png);
-}
-
-.icon-lsrtarrow {
-	width: 48px;
-	height: 48px;
-	background-image: url(images/lifespan-right.png);
-}
-
-.icon-lsuparrow {
-	width: 48px;
-	height: 48px;
-	background-image: url(images/lifespan-up.png);
 }
 
 .icon-media {
@@ -4539,6 +4505,12 @@ footer {
 
 	#familybook_chart h3 {
 		margin-bottom: 10px;
+	}
+
+	#lifespan-chart {
+		margin: 0;
+		border: 0;
+		padding: 0;
 	}
 }
 
