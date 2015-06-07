@@ -3398,6 +3398,13 @@ table.table-census-assistant th {
 }
 
 /*-- Lifespan ---- */
+#lifespan-page .descriptionbox {
+	background-color: #ededee;
+	color: #333;
+}
+#lifespan-page .optionbox{
+	background-color: #fff;
+}
 .lifespan-form {
 	display: table;
 	margin:  0 auto;
