@@ -2768,16 +2768,15 @@ class ReportParserGenerate extends ReportParserBase {
 	 * @return string
 	 */
 	private function substituteVars($expression, $quote) {
-		$tmp = $this->vars; // PHP5.3 cannot use $this in closures
-
+		$that = $this; // PHP5.3 cannot access $this inside a closure
 		return preg_replace_callback(
 			'/\$(\w+)/',
-			function ($matches) use ($tmp, $quote) {
-				if (isset($tmp[$matches[1]]['id'])) {
+			function ($matches) use ($that, $quote) {
+				if (isset($that->vars[$matches[1]]['id'])) {
 					if ($quote) {
-						return "'" . addcslashes($tmp[$matches[1]]['id'], "'") . "'";
+						return "'" . addcslashes($that->vars[$matches[1]]['id'], "'") . "'";
 					} else {
-						return $tmp[$matches[1]]['id'];
+						return $that->vars[$matches[1]]['id'];
 					}
 				} else {
 					Log::addErrorLog(sprintf('Undefined variable $%s in report', $matches[1]));
