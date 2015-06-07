@@ -59,8 +59,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 
 			$MAX_PEDIGREE_GENERATIONS = $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS');
 
-			$cart      = Session::get('cart');
 			$clip_ctrl = new ClippingsCartController;
+			$cart      = Session::get('cart');
 
 			$controller = new PageController;
 			$controller
