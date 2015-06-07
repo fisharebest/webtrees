@@ -1181,7 +1181,7 @@ abstract class BaseTheme {
 	 * @return Menu
 	 */
 	protected function menuChartLifespan(Individual $individual) {
-		return new Menu(I18N::translate('Lifespans'), 'lifespan.php?pids%5B%5D=' . $individual->getXref() . '&amp;addFamily=1&amp;' . $this->tree_url, 'menu-chart-lifespan');
+		return new Menu(I18N::translate('Lifespans'), 'lifespan.php', 'menu-chart-lifespan');
 	}
 
 	/**
