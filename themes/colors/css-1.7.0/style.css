@@ -192,6 +192,7 @@ textarea {
 	font-weight: bold;
 	padding: 4px;
 	text-align: center;
+	border: 1px solid #999;
 }
 
 fieldset {
@@ -345,6 +346,7 @@ div.fact_SHARED_NOTE {
 
 .facts_label03 {
 	color: #fff;
+	border: 1px solid #999;
 	background-color: #81a9cb;
 	font-size: 12px;
 	padding: 4px;
@@ -3399,12 +3401,12 @@ table.table-census-assistant th {
 
 /*-- Lifespan ---- */
 #lifespan-page .descriptionbox {
-	background-color: #ededee;
 	color: #333;
 }
 #lifespan-page .optionbox{
-	background-color: #fff;
+	background: #fff;
 }
+
 .lifespan-form {
 	display: table;
 	margin:  0 auto;
