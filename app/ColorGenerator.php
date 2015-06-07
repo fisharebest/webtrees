@@ -1,40 +1,52 @@
 <?php
 namespace Fisharebest\Webtrees;
 
-	/**
-	 * webtrees: online genealogy
-	 * Copyright (C) 2015 webtrees development team
-	 * This program is free software: you can redistribute it and/or modify
-	 * it under the terms of the GNU General Public License as published by
-	 * the Free Software Foundation, either version 3 of the License, or
-	 * (at your option) any later version.
-	 * This program is distributed in the hope that it will be useful,
-	 * but WITHOUT ANY WARRANTY; without even the implied warranty of
-	 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-	 * GNU General Public License for more details.
-	 * You should have received a copy of the GNU General Public License
-	 * along with this program. If not, see <http://www.gnu.org/licenses/>.
-	 */
+/**
+ * webtrees: online genealogy
+ * Copyright (C) 2015 webtrees development team
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 
 /**
  * Class colorGenerator
  */
 class ColorGenerator {
-
+	/** @var int */
 	private $hue;
+
+	/** @var int */
 	private $basehue;
+
+	/** @var int */
 	private $saturation;
+
+	/** @var int */
 	private $lightness;
+
+	/** @var int */
 	private $baselightness;
+
+	/** @var int */
 	private $alpha;
+
+	/** @var int */
 	private $range;
 
 	/**
-	 * @param integer $hue (0Deg = Red, 120Deg = green, 240Deg = blue)
-	 * @param integer $saturation
-	 * @param integer $lightness
-	 * @param integer $alpha
-	 * @param integer $range (sign determines direction. positive = clockwise, negative = anticlockwise)
+	 * @param int $hue (0Deg = Red, 120Deg = green, 240Deg = blue)
+	 * @param int $saturation
+	 * @param int $lightness
+	 * @param int $alpha
+	 * @param int $range (sign determines direction. positive = clockwise, negative = anticlockwise)
 	 */
 	public function __construct($hue, $saturation, $lightness, $alpha, $range) {
 		$this->hue           = $hue;
@@ -55,6 +67,7 @@ class ColorGenerator {
 	 *
 	 * @param int $lightnessStep
 	 * @param int $hueStep
+	 *
 	 * @return string
 	 */
 	public function getNextColor($lightnessStep = 10, $hueStep = 15) {

@@ -19,61 +19,95 @@ namespace Fisharebest\Webtrees\Controller;
 use Fisharebest\Webtrees\ColorGenerator;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Date;
-use Fisharebest\Webtrees\Fact;
-use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\Functions\Functions;
-use Fisharebest\Webtrees\GedcomTag;
-use Fisharebest\Webtrees\I18N;
-use Fisharebest\Webtrees\Individual;
-use Fisharebest\Webtrees\Family;
-use Fisharebest\Webtrees\Place;
-use Fisharebest\Webtrees\Session;
 use Fisharebest\Webtrees\Date\FrenchDate;
 use Fisharebest\Webtrees\Date\GregorianDate;
 use Fisharebest\Webtrees\Date\HijriDate;
 use Fisharebest\Webtrees\Date\JalaliDate;
 use Fisharebest\Webtrees\Date\JewishDate;
 use Fisharebest\Webtrees\Date\JulianDate;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Place;
+use Fisharebest\Webtrees\Session;
 
 /**
  * Class LifespanController - Controller for the timeline chart
  */
 class LifespanController extends PageController {
-
 	// Base color parameters
-	const range         = 120;   // degrees
-	const saturation    = 100;   // percent
-	const lightness     = 30;    // percent
-	const alpha         = 0.25;
+	const RANGE           = 120; // degrees
+	const SATURATION      = 100; // percent
+	const LIGHTNESS       = 30;  // percent
+	const ALPHA           = 0.25;
+	const CHART_TOP       = 10; // pixels
+	const BAR_SPACING     = 22; // pixels
+	const YEAR_SPAN       = 10; // Number of years per scale section
+	const PIXELS_PER_YEAR = 7;  // Number of pixels to shift per year
+	const SESSION_DATA    = 'lifespan_data';
 
-	const chartTop      = 10; // px
-	const barSpacing    = 22; // px
-	const yearSpan      = 10; // No. years per scale section
-	const pixelsPerYear = 7;  // No. pixels to shift per year
-	const sessionData   = 'lifespan_data';
+	/** @var string|null Chart parameter */
+	public $place     = null;
 
-	// Used in lifespan.php
-	public $place       = null;
-	public $beginYear   = null;
-	public $endYear     = null;
-	public $subtitle    = '&nbsp;';
+/** @var int|null Chart parameter */
+	public $beginYear = null;
+
+	/** @var int|null Chart parameter */
+	public $endYear   = null;
+
+	/** @var string Chart parameter */
+	public $subtitle  = '&nbsp;';
+
+	/** @var string Chart parameter */
 	public $showDetails;
 
-	private $people     = array();
+	/** @var Individual[] */
+	private $people = array();
+
+	/** @var string */
 	private $defaultCalendar;
+
+	/** @var string */
 	private $calendar;
+
+	/** @var string */
 	private $calendarEscape;
+
+	/** @var int */
 	private $timelineMinYear;
+
+	/** @var int */
 	private $timelineMaxYear;
+
+	/** @var int */
 	private $currentYear;
-	private $colors     = array();
-	private $place_obj  = null;
-	private $startDate  = null;
-	private $endDate    = null;
+
+	/** @var string[] */
+	private $colors = array();
+
+	/** @var Place|null */
+	private $place_obj = null;
+
+	/** @var Date|null */
+	private $startDate = null;
+
+	/** @var Date|null */
+	private $endDate = null;
+
+	/** @var bool */
 	private $strictDate;
+
+	/** @var string[] */
 	private $facts;
-	private $nonfacts   = array(
-		'FAMS', 'FAMC', 'MAY', 'BLOB', 'OBJE', 'SEX', 'NAME', 'SOUR', 'NOTE', 'BAPL', 'ENDL', 'SLGC', 'SLGS', '_TODO', '_WT_OBJE_SORT', 'CHAN', 'HUSB', 'WIFE', 'CHIL', 'OCCU', 'ASSO'
+
+	/** @var string[] */
+	private $nonfacts = array(
+		'FAMS', 'FAMC', 'MAY', 'BLOB', 'OBJE', 'SEX', 'NAME', 'SOUR', 'NOTE', 'BAPL', 'ENDL',
+		'SLGC', 'SLGS', '_TODO', '_WT_OBJE_SORT', 'CHAN', 'HUSB', 'WIFE', 'CHIL', 'OCCU', 'ASSO',
 	);
 
 	/**
@@ -84,7 +118,7 @@ class LifespanController extends PageController {
 
 		parent::__construct();
 		$this->setPageTitle(I18N::translate('Lifespans'));
-		$this->showDetails = $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS', true) ? 'checked' : '';
+		$this->showDetails = $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS') ? 'checked' : '';
 
 		$this->facts           = explode('|', WT_EVENTS_BIRT . '|' . WT_EVENTS_DEAT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV);
 		$tmp                   = explode('\\', get_class(I18N::defaultCalendar()));
@@ -103,8 +137,8 @@ class LifespanController extends PageController {
 		$this->strictDate = Filter::postBool('strictDate');
 
 		// Set up base color parameters
-		$this->colors['M'] = new ColorGenerator(240, self::saturation, self::lightness, self::alpha, self::range * -1);
-		$this->colors['F'] = new ColorGenerator(000, self::saturation, self::lightness, self::alpha, self::range);
+		$this->colors['M'] = new ColorGenerator(240, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE * -1);
+		$this->colors['F'] = new ColorGenerator(000, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE);
 
 		// Build a list of people based on the input parameters
 		if ($clear) {
@@ -129,11 +163,11 @@ class LifespanController extends PageController {
 				" AND `pl_p_id`=:place_id"
 			)->execute(array(
 				'tree_id'  => $WT_TREE->getTreeId(),
-				'place_id' => $this->place_obj->getPlaceId()
+				'place_id' => $this->place_obj->getPlaceId(),
 			))->fetchOneColumn();
 		} else {
 			// Modify an existing list of records
-			$xrefs = Session::get(self::sessionData, array());
+			$xrefs = Session::get(self::SESSION_DATA, array());
 			if ($newpid) {
 				$xrefs = array_merge($xrefs, $this->addFamily(Individual::getInstance($newpid, $WT_TREE), $addfam));
 				$xrefs = array_unique($xrefs);
@@ -147,9 +181,9 @@ class LifespanController extends PageController {
 
 		$tmp = strtoupper(strtr($this->calendar,
 			array('jewish' => 'hebrew',
-			      'french' => 'french r'
+			      'french' => 'french r',
 			)));
-		$this->calendarEscape = sprintf("@#D%s@", $tmp);
+		$this->calendarEscape = sprintf('@#D%s@', $tmp);
 
 		if ($xrefs) {
 			// ensure date ranges are valid in preparation for filtering list
@@ -192,13 +226,13 @@ class LifespanController extends PageController {
 					unset($xrefs[$key]); // no point in storing a xref if we can't use it
 				}
 			}
-			Session::put(self::sessionData, $xrefs);
+			Session::put(self::SESSION_DATA, $xrefs);
 		} else {
-			Session::forget(self::sessionData);
+			Session::forget(self::SESSION_DATA);
 		}
 
 		$this->people = array_filter(array_unique($this->people));
-		$count = count($this->people);
+		$count        = count($this->people);
 		if ($count) {
 			// Build the subtitle
 			if ($this->place && $filterPids) {
@@ -238,8 +272,10 @@ class LifespanController extends PageController {
 			$bdate   = $this->getCalendarDate($this->people[0]->getEstimatedBirthDate()->minimumJulianDay());
 			$minyear = $bdate->y;
 
-			$maxyear = array_reduce($this->people, function ($carry, $item) {
-				$date = $this->getCalendarDate($item->getEstimatedDeathDate()->maximumJulianDay());
+			$that    = $this; // PHP5.3 cannot access $this inside a closure
+			$maxyear = array_reduce($this->people, function ($carry, Individual $item) use ($that) {
+				$date = $that->getCalendarDate($item->getEstimatedDeathDate()->maximumJulianDay());
+
 				return max($carry, $date->y);
 			}, 0);
 		} elseif ($filterPids) {
@@ -253,7 +289,7 @@ class LifespanController extends PageController {
 		$maxyear = min($maxyear, $this->currentYear); // Limit maximum year to current year as we can't forecast the future
 		$minyear = min($minyear, $maxyear - $WT_TREE->getPreference('MAX_ALIVE_AGE')); // Set default minimum chart length
 
-		$this->timelineMinYear = (int)floor($minyear / 10) * 10; // round down to start of the decade
+		$this->timelineMinYear = (int) floor($minyear / 10) * 10; // round down to start of the decade
 		$this->timelineMaxYear = (int) ceil($maxyear / 10) * 10; // round up to start of next decade
 	}
 
@@ -261,7 +297,8 @@ class LifespanController extends PageController {
 	 * Add a person (and optionally their immediate family members) to the pids array
 	 *
 	 * @param Individual $person
-	 * @param boolean $add_family
+	 * @param bool $add_family
+	 *
 	 * @return array
 	 */
 	private function addFamily(Individual $person, $add_family) {
@@ -288,31 +325,30 @@ class LifespanController extends PageController {
 				}
 			}
 		}
+
 		return $xrefs;
 	}
 
 	/**
 	 * Prints the time line scale
-	 *
 	 */
 	public function printTimeline() {
 		$startYear = $this->timelineMinYear;
 		while ($startYear < $this->timelineMaxYear) {
 			$date = new Date($this->calendarEscape . $startYear);
 			echo $date->display(false, '%Y', false);
-			$startYear += self::yearSpan;
+			$startYear += self::YEAR_SPAN;
 		}
 	}
 
 	/**
 	 * Populate the timeline
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function fillTimeline() {
-
 		$rows = array();
-		$maxY = self::chartTop;
+		$maxY = self::CHART_TOP;
 		//base case
 		if (!$this->people) {
 			return $maxY;
@@ -324,27 +360,27 @@ class LifespanController extends PageController {
 			$ddate     = $this->getCalendarDate($person->getEstimatedDeathDate()->maximumJulianDay());
 			$birthYear = $bdate->y;
 			$age       = min($ddate->y, $this->currentYear) - $birthYear; // truncate the bar at the current year
-			$width     = max(9, $age * self::pixelsPerYear); // min width is width of sex icon
-			$startPos  = ($birthYear - $this->timelineMinYear) * self::pixelsPerYear;
+			$width     = max(9, $age * self::PIXELS_PER_YEAR); // min width is width of sex icon
+			$startPos  = ($birthYear - $this->timelineMinYear) * self::PIXELS_PER_YEAR;
 
 			//-- calculate a good Y top value
-			$Y     = self::chartTop;
+			$Y     = self::CHART_TOP;
 			$ready = false;
 			while (!$ready) {
 				if (!isset($rows[$Y])) {
 					$ready          = true;
-					$rows[$Y]["x1"] = $startPos;
-					$rows[$Y]["x2"] = $startPos + $width;
+					$rows[$Y]['x1'] = $startPos;
+					$rows[$Y]['x2'] = $startPos + $width;
 				} else {
-					if ($rows[$Y]["x1"] > $startPos + $width) {
+					if ($rows[$Y]['x1'] > $startPos + $width) {
 						$ready          = true;
-						$rows[$Y]["x1"] = $startPos;
-					} elseif ($rows[$Y]["x2"] < $startPos) {
+						$rows[$Y]['x1'] = $startPos;
+					} elseif ($rows[$Y]['x2'] < $startPos) {
 						$ready          = true;
-						$rows[$Y]["x2"] = $startPos + $width;
+						$rows[$Y]['x2'] = $startPos + $width;
 					} else {
 						//move down a line
-						$Y += self::barSpacing;
+						$Y += self::BAR_SPACING;
 					}
 				}
 			}
@@ -357,9 +393,10 @@ class LifespanController extends PageController {
 			}
 			Functions::sortFacts($facts);
 
-			$acceptedFacts = array_filter($facts, function ($fact) {
-				return (in_array($fact->getTag(), $this->facts) && $fact->getDate()->isOK()) ||
-				       (($this->place_obj || $this->startDate) && $this->checkFact($fact));
+			$that          = $this; // PHP5.3 cannot access $this inside a closure
+			$acceptedFacts = array_filter($facts, function (Fact $fact) use ($that) {
+				return (in_array($fact->getTag(), $that->facts) && $fact->getDate()->isOK()) ||
+				       (($that->place_obj || $that->startDate) && $that->checkFact($fact));
 			});
 
 			$eventList = array();
@@ -369,9 +406,10 @@ class LifespanController extends PageController {
 				if ($tag == "EVEN") {
 					$tag = $fact->getAttribute('TYPE');
 				}
-				$eventList[] = array('label' => GedcomTag::getLabel($tag),
-				                     'date'  => $fact->getDate()->display(),
-				                     'place' => $fact->getPlace()->getFullName()
+				$eventList[] = array(
+					'label' => GedcomTag::getLabel($tag),
+					'date'  => $fact->getDate()->display(),
+					'place' => $fact->getPlace()->getFullName(),
 				);
 			}
 			$direction  = I18N::direction() === 'ltr' ? 'left' : 'right';
@@ -401,13 +439,13 @@ class LifespanController extends PageController {
 			}
 
 			// Bar framework
-			printf("
-                <div class='person_box%s' style='top:%spx; %s:%spx; width:%spx; %s'>
-                        <div class='itr'>%s %s %s
-                            <div class='popup person_box%s'>
+			printf('
+                <div class="person_box%s" style="top:%spx; %s:%spx; width:%spx; %s">
+                        <div class="itr">%s %s %s
+                            <div class="popup person_box%s">
                                 <div>
-                                    <a href='%s'>%s%s</a>
-                                </div>",
+                                    <a href="%s">%s%s</a>
+                                </div>',
 				$popupClass, $Y, $direction, $startPos, $width, $color,
 				$person->getSexImage(), $printName, $abbrLifespan,
 				$popupClass,
@@ -419,12 +457,13 @@ class LifespanController extends PageController {
 				printf("<div>%s: %s %s</div>", $event['label'], $event['date'], $event['place']);
 			}
 			echo
-				"</div>" . // class='popup'
-				"</div>" .  // class='itr'
-				"</div>";   // class=$popupclass
+				'</div>' . // class="popup"
+				'</div>' .  // class="itr"
+				'</div>';   // class=$popupclass
 
 			$maxY = max($maxY, $Y);
 		}
+
 		return $maxY;
 	}
 
@@ -432,7 +471,9 @@ class LifespanController extends PageController {
 	 * Function checkFact
 	 *
 	 * Does this fact meet the search criteria?
+	 *
 	 * @param  Fact $fact
+	 *
 	 * @return bool
 	 */
 	private function checkFact(Fact $fact) {
@@ -449,12 +490,15 @@ class LifespanController extends PageController {
 				$valid = $date->isOK() && Date::compare($date, $this->startDate) >= 0 && Date::compare($date, $this->endDate) <= 0;
 			}
 		}
+
 		return $valid;
 	}
 
 	/**
 	 * Function getCalendarDate
+	 *
 	 * @param int $date
+	 *
 	 * @return object
 	 */
 	private function getCalendarDate($date) {
@@ -477,19 +521,22 @@ class LifespanController extends PageController {
 			default:
 				$caldate = new GregorianDate($date);
 		}
+
 		return $caldate;
 	}
 
 	/**
 	 * Function getCalendarOptionList
+	 *
 	 * @return string
 	 */
 	public function getCalendarOptionList() {
 		$html = '';
 		foreach (Date::calendarNames() as $calendar => $name) {
 			$selected = $this->calendar === $calendar ? 'selected' : '';
-			$html .= sprintf("<option dir='auto' value='%s' %s>%s</option>", $calendar, $selected, $name);
+			$html .= sprintf('<option dir="auto" value="%s" %s>%s</option>', $calendar, $selected, $name);
 		}
+
 		return $html;
 	}
 }
