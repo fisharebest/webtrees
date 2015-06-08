@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\SpecialChars;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,9 +13,10 @@ namespace Fisharebest\Webtrees\SpecialChars;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\SpecialChars;
 
 /**
- * Class SpecialCharsHaw - exemplar characters for Hawaiian
+ * Exemplar characters for Hawaiian
  *
  * For each language, list the symbols, puncutation and letters with diacritics
  * that may be difficult to type.

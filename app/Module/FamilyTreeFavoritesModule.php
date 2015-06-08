@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees\Module;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
@@ -38,7 +37,11 @@ use Rhumsaa\Uuid\Uuid;
  * logic works for both.
  */
 class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInterface {
-	/** {@inheritdoc} */
+	/**
+	 * Create a new module.
+	 *
+	 * @param string $directory Where is this module installed
+	 */
 	public function __construct($directory) {
 		parent::__construct($directory);
 
@@ -46,18 +49,34 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 		Database::updateSchema('\Fisharebest\Webtrees\Module\FamilyTreeFavorites\Schema', 'FV_SCHEMA_VERSION', 4);
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * How should this module be labelled on tabs, menus, etc.?
+	 *
+	 * @return string
+	 */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('Favorites');
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * A sentence describing what this module does.
+	 *
+	 * @return string
+	 */
 	public function getDescription() {
 		return /* I18N: Description of the “Favorites” module */ I18N::translate('Display and manage a family tree’s favorite pages.');
 	}
 
-	/** {@inheritdoc} */
-	public function getBlock($block_id, $template = true, $cfg = null) {
+	/**
+	 * Generate the HTML content of this block.
+	 *
+	 * @param int   $block_id
+	 * @param bool  $template
+	 * @param array $cfg
+	 *
+	 * @return string
+	 */
+	public function getBlock($block_id, $template = true, $cfg = array()) {
 		global $ctype, $controller, $WT_TREE;
 
 		$action = Filter::get('action');
@@ -103,11 +122,9 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 
 		$block = $this->getBlockSetting($block_id, 'block', '0');
 
-		if ($cfg) {
-			foreach (array('block') as $name) {
-				if (array_key_exists($name, $cfg)) {
-					$$name = $cfg[$name];
-				}
+		foreach (array('block') as $name) {
+			if (array_key_exists($name, $cfg)) {
+				$$name = $cfg[$name];
 			}
 		}
 
@@ -219,22 +236,41 @@ class FamilyTreeFavoritesModule extends AbstractModule implements ModuleBlockInt
 		}
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Should this block load asynchronously using AJAX?
+	 *
+	 * Simple blocks are faster in-line, more comples ones
+	 * can be loaded later.
+	 *
+	 * @return bool
+	 */
 	public function loadAjax() {
 		return false;
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Can this block be shown on the user’s home page?
+	 *
+	 * @return bool
+	 */
 	public function isUserBlock() {
 		return false;
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Can this block be shown on the tree’s home page?
+	 *
+	 * @return bool
+	 */
 	public function isGedcomBlock() {
 		return true;
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * An HTML form to edit block settings
+	 *
+	 * @param int $block_id
+	 */
 	public function configureBlock($block_id) {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
 			$this->setBlockSetting($block_id, 'block', Filter::postBool('block'));

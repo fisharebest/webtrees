@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Date;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,9 +13,10 @@ namespace Fisharebest\Webtrees\Date;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Date;
 
 /**
- * Class RomanDate - Definitions for the Roman calendar
+ * Definitions for the Roman calendar
  *
  * The 5.5.1 gedcom spec mentions this calendar, but gives no details of
  * how it is to be represented....  This class is just a place holder so that

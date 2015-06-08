@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module\FamilyTreeNews\Schema;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,12 +13,14 @@ namespace Fisharebest\Webtrees\Module\FamilyTreeNews\Schema;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module\FamilyTreeNews\Schema;
+
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Schema\MigrationInterface;
 use PDOException;
 
 /**
- * Class Migration2 - upgrade the database schema from version 2 to version 3.
+ * Upgrade the database schema from version 2 to version 3.
  */
 class Migration2 implements MigrationInterface {
 	/** {@inheritDoc} */

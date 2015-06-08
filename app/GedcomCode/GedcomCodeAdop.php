@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\GedcomCode;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,8 @@ namespace Fisharebest\Webtrees\GedcomCode;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\GedcomCode;
+
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -77,7 +77,7 @@ class GedcomCodeAdop {
 	/**
 	 * A list of all possible values for PEDI
 	 *
-	 * @param null GedcomRecord|null $record
+	 * @param GedcomRecord|null $record
 	 *
 	 * @return string[]
 	 */

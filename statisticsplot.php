@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 /**
  * Defined in session.php
@@ -570,6 +569,8 @@ function number_of_children($z_axis, array $z_boundaries, Stats $stats) {
 }
 
 /**
+ * Calculate the Y axis.
+ *
  * @param int $z
  * @param int $x
  * @param int $val
@@ -602,6 +603,8 @@ function fill_y_data($z, $x, $val) {
 }
 
 /**
+ * Plot the data.
+ *
  * @param string      $mytitle
  * @param integer[][] $xdata
  * @param string      $xtitle
@@ -745,6 +748,8 @@ function my_plot($mytitle, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 }
 
 /**
+ * Create the X azxs.
+ *
  * @param string $x_axis_boundaries
  */
 function calculate_axis($x_axis_boundaries) {
@@ -789,6 +794,8 @@ function calculate_axis($x_axis_boundaries) {
 }
 
 /**
+ * Calculate the Z axis.
+ *
  * @param string $boundaries_z_axis
  */
 function calculate_legend($boundaries_z_axis) {

@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Schema;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,13 +13,17 @@ namespace Fisharebest\Webtrees\Schema;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Schema;
+
 use Fisharebest\Webtrees\Database;
 
 /**
- * Class Migration14 - upgrade the database schema from version 14 to version 15.
+ * Upgrade the database schema from version 14 to version 15.
  */
 class Migration14 implements MigrationInterface {
-	/** {@inheritDoc} */
+	/**
+	 * Upgrade to to the next version
+	 */
 	public function upgrade() {
 		// Delete old config settings
 		Database::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN('GEDCOM_DEFAULT_TAB', 'LINK_ICONS', 'ZOOM_BOXES')");

@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Date;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,25 +13,39 @@ namespace Fisharebest\Webtrees\Date;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Date;
 
 use Fisharebest\ExtCalendar\JulianCalendar;
 use Fisharebest\Webtrees\I18N;
 
 /**
- * Class JulianDate - Definitions for the Julian Proleptic calendar
+ * Definitions for the Julian Proleptic calendar
  * (Proleptic means we extend it backwards, prior to its introduction in 46BC)
  */
 class JulianDate extends CalendarDate {
 	/** @var bool True for dates recorded in new-style/old-style format, e.g. 2 FEB 1743/44 */
 	private $new_old_style = false;
 
-	/** {@inheritdoc} */
+	/**
+	 * Create a date from either:
+	 * a Julian day number
+	 * day/month/year strings from a GEDCOM date
+	 * another CalendarDate object
+	 *
+	 * @param array|int|CalendarDate $date
+	 */
 	public function __construct($date) {
 		$this->calendar = new JulianCalendar;
 		parent::__construct($date);
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Most years are 1 more than the previous, but not always (e.g. 1BC->1AD)
+	 *
+	 * @param int $year
+	 *
+	 * @return int
+	 */
 	protected function nextYear($year) {
 		if ($year == -1) {
 			return 1;
@@ -45,7 +57,9 @@ class JulianDate extends CalendarDate {
 	/**
 	 * Process new-style/old-style years and years BC
 	 *
-	 * {@inheritdoc}
+	 * @param string $year
+	 *
+	 * @return int
 	 */
 	protected function extractYear($year) {
 		if (preg_match('/^(\d\d\d\d)\/\d{1,4}$/', $year, $match)) {
@@ -60,7 +74,11 @@ class JulianDate extends CalendarDate {
 		}
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Generate the %Y format for a date.
+	 *
+	 * @return string
+	 */
 	protected function formatLongYear() {
 		if ($this->y < 0) {
 			return /*  I18N: BCE=Before the Common Era, for Julian years < 0.  See http://en.wikipedia.org/wiki/Common_Era */
@@ -75,7 +93,11 @@ class JulianDate extends CalendarDate {
 		}
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Generate the %E format for a date.
+	 *
+	 * @return string
+	 */
 	protected function formatGedcomYear() {
 		if ($this->y < 0) {
 			return sprintf('%04d B.C.', -$this->y);

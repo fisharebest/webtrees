@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Functions;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,8 @@ namespace Fisharebest\Webtrees\Functions;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Functions;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Fact;
@@ -473,6 +473,8 @@ class Functions {
 	}
 
 	/**
+	 * Calculate the name of a cousin.
+	 *
 	 * @param int $n
 	 * @param string $sex
 	 *
@@ -665,6 +667,8 @@ class Functions {
 	}
 
 	/**
+	 * Convert a relationship path into a relationship name.
+	 *
 	 * @param string $path
 	 * @param Individual $person1
 	 * @param Individual $person2

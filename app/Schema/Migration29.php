@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Schema;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,13 +13,17 @@ namespace Fisharebest\Webtrees\Schema;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Schema;
+
 use Fisharebest\Webtrees\Database;
 
 /**
- * Class Migration29 - upgrade the database schema from version 29 to version 30.
+ * Upgrade the database schema from version 29 to version 30.
  */
 class Migration29 implements MigrationInterface {
-	/** {@inheritDoc} */
+	/**
+	 * Upgrade to to the next version
+	 */
 	public function upgrade() {
 		// Originally migrated from PhpGedView, but never used.
 		Database::exec("DROP TABLE IF EXISTS `##ip_address`");

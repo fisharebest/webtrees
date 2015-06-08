@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Controller;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,8 @@ namespace Fisharebest\Webtrees\Controller;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Controller;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
@@ -27,7 +27,7 @@ use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module;
 
 /**
- * Class FamilyController - Controller for the family page
+ * Controller for the family page
  */
 class FamilyController extends GedcomRecordController {
 	/**
@@ -73,20 +73,6 @@ class FamilyController extends GedcomRecordController {
 		}
 
 		return parent::getSignificantFamily();
-	}
-
-	/**
-	 * @param string[] $tags an array of HUSB/WIFE/CHIL
-	 *
-	 * @return string
-	 */
-	public function getTimelineIndis($tags) {
-		preg_match_all('/\n1 (?:' . implode('|', $tags) . ') @(' . WT_REGEX_XREF . ')@/', $this->record->getGedcom(), $matches);
-		foreach ($matches[1] as &$match) {
-			$match = 'pids%5B%5D=' . $match;
-		}
-
-		return implode('&amp;', $matches[1]);
 	}
 
 	/**

@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Query;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,12 +13,14 @@ namespace Fisharebest\Webtrees\Query;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Query;
+
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Media;
 
 /**
- * Class QueryMedia - generate lists of files for admin_media.php
+ * Generate lists of files for admin_media.php
  */
 class QueryMedia {
 	/**

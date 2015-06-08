@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,10 +13,12 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
+
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
 /**
- * Class Fact - Class that defines an event details object
+ * A GEDCOM fact or event object.
  */
 class Fact {
 	/** @var string Unique identifier for this fact (currently implemented as a hash of the raw data). */

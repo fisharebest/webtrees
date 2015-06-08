@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,8 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
+
 use Fisharebest\Localization\Locale;
 use Fisharebest\Webtrees\SpecialChars\SpecialCharsInterface;
 
@@ -22,6 +22,7 @@ use Fisharebest\Webtrees\SpecialChars\SpecialCharsInterface;
  * Class SpecialChars - exemplar and difficult-to-type characters.
  */
 class SpecialChars {
+	/** @var string[] A list of supported language-tags. */
 	private static $languages = array(
 		'af', 'ar', 'cs', 'da', 'de', 'el', 'en', 'es', 'eu', 'fi', 'fr', 'gd', 'haw', 'he',
 		'hu', 'is', 'it', 'lt', 'nl', 'nn', 'pl', 'pt', 'ru', 'sk', 'sl', 'sv', 'tr', 'vi',

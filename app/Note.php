@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,9 +13,10 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 /**
- * Class Note - Class file for a Shared Note (NOTE) object
+ * A GEDCOM note (NOTE) object.
  */
 class Note extends GedcomRecord {
 	const RECORD_TYPE = 'NOTE';
@@ -36,7 +35,13 @@ class Note extends GedcomRecord {
 		}
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Each object type may have its own special rules, and re-implement this function.
+	 *
+	 * @param int $access_level
+	 *
+	 * @return bool
+	 */
 	protected function canShowByType($access_level) {
 		// Hide notes if they are attached to private records
 		$linked_ids = Database::prepare(
@@ -55,12 +60,25 @@ class Note extends GedcomRecord {
 		return parent::canShowByType($access_level);
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Generate a private version of this record
+	 *
+	 * @param int $access_level
+	 *
+	 * @return string
+	 */
 	protected function createPrivateGedcomRecord($access_level) {
 		return '0 @' . $this->xref . '@ NOTE ' . I18N::translate('Private');
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Fetch data from the database
+	 *
+	 * @param string $xref
+	 * @param int    $tree_id
+	 *
+	 * @return null|string
+	 */
 	protected static function fetchGedcomRecord($xref, $tree_id) {
 		return Database::prepare(
 			"SELECT o_gedcom FROM `##other` WHERE o_id = :xref AND o_file = :tree_id AND o_type = 'NOTE'"
@@ -73,8 +91,6 @@ class Note extends GedcomRecord {
 	/**
 	 * Create a name for this note - apply (and remove) markup, then take
 	 * a maximum of 100 characters from the first line.
-	 *
-	 * {@inheritdoc}
 	 */
 	public function extractNames() {
 		$text = $this->getNote();

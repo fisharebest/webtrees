@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Functions;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees\Functions;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Controller\SearchController;
@@ -744,6 +743,8 @@ class FunctionsPrint {
 	}
 
 	/**
+	 * HTML link to find an individual.
+	 *
 	 * @param string $element_id
 	 * @param string $indiname
 	 * @param Tree $tree
@@ -761,6 +762,8 @@ class FunctionsPrint {
 	}
 
 	/**
+	 * HTML link to find a place.
+	 *
 	 * @param string $element_id
 	 *
 	 * @return string
@@ -770,6 +773,8 @@ class FunctionsPrint {
 	}
 
 	/**
+	 * HTML link to find a family.
+	 *
 	 * @param string $element_id
 	 *
 	 * @return string
@@ -779,6 +784,8 @@ class FunctionsPrint {
 	}
 
 	/**
+	 * HTML link to open the special character window.
+	 *
 	 * @param string $element_id
 	 *
 	 * @return string
@@ -788,6 +795,8 @@ class FunctionsPrint {
 	}
 
 	/**
+	 * HTML element to insert a value from a list.
+	 *
 	 * @param string $element_id
 	 * @param string[] $choices
 	 */
@@ -802,6 +811,8 @@ class FunctionsPrint {
 	}
 
 	/**
+	 * HTML link to find a source.
+	 *
 	 * @param string $element_id
 	 * @param string $sourcename
 	 *
@@ -812,6 +823,8 @@ class FunctionsPrint {
 	}
 
 	/**
+	 * HTML link to find a note.
+	 *
 	 * @param string $element_id
 	 * @param string $notename
 	 *
@@ -822,6 +835,8 @@ class FunctionsPrint {
 	}
 
 	/**
+	 * HTML link to find a repository.
+	 *
 	 * @param string $element_id
 	 *
 	 * @return string
@@ -831,6 +846,8 @@ class FunctionsPrint {
 	}
 
 	/**
+	 * HTML link to find a media object.
+	 *
 	 * @param string $element_id
 	 * @param string $choose
 	 *
@@ -841,6 +858,8 @@ class FunctionsPrint {
 	}
 
 	/**
+	 * HTML link to find a fact.
+	 *
 	 * @param string $element_id
 	 *
 	 * @return string

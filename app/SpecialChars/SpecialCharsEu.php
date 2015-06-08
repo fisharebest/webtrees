@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\SpecialChars;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,9 +13,10 @@ namespace Fisharebest\Webtrees\SpecialChars;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\SpecialChars;
 
 /**
- * Class SpecialCharsEu - exemplar characters for Basque
+ * Exemplar characters for Basque
  *
  * For each language, list the symbols, puncutation and letters with diacritics
  * that may be difficult to type.
@@ -30,7 +29,7 @@ class SpecialCharsEu extends AbstractSpecialChars {
 	 */
 	public function upper() {
 		return array(
-			'Ç'
+			'Ç',
 		);
 	}
 
@@ -41,7 +40,7 @@ class SpecialCharsEu extends AbstractSpecialChars {
 	 */
 	public function lower() {
 		return array(
-			'ç'
+			'ç',
 		);
 	}
 }

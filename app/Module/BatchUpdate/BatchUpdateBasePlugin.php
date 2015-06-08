@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module\BatchUpdate;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,8 @@ namespace Fisharebest\Webtrees\Module\BatchUpdate;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module\BatchUpdate;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -30,7 +30,8 @@ use Fisharebest\Webtrees\Module\BatchUpdateModule;
  * string updateRecord($xref, $gedrec)
  */
 class BatchUpdateBasePlugin {
-	public $chan = false; // User option; update change record
+	/** @var bool User option; update change record */
+	public $chan = false;
 
 	/**
 	 * Default is to operate on INDI records

@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Controller;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,12 +13,15 @@ namespace Fisharebest\Webtrees\Controller;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Controller;
 
 /**
- * Class AjaxController - Base controller for all popup pages
+ * Base controller for all popup pages
  */
 class AjaxController extends BaseController {
 	/**
+	 * Print the page header, using the theme
+	 *
 	 * @return $this
 	 */
 	public function pageHeader() {
@@ -33,6 +34,7 @@ class AjaxController extends BaseController {
 	}
 
 	/**
+	 * Print the page footer, using the theme
 	 */
 	public function pageFooter() {
 		// Ajax responses may have Javascript

@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,8 @@ namespace Fisharebest\Webtrees\Module;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Functions\Functions;
@@ -27,6 +27,7 @@ use Fisharebest\Webtrees\I18N;
  * Class MediaTabModule
  */
 class MediaTabModule extends AbstractModule implements ModuleTabInterface {
+	/** @var  Fact[] A list of facts with media objects. */
 	private $facts;
 
 	/** {@inheritdoc} */

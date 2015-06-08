@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 /**
  * Defined in session.php
@@ -500,6 +499,8 @@ case 'IFS':
 }
 
 /**
+ * Find family records from the database.
+ *
  * @param Tree   $tree
  * @param string $term
  *
@@ -522,6 +523,8 @@ function get_FAM_rows(Tree $tree, $term) {
 }
 
 /**
+ * Find individual records from the database.
+ *
  * @param Tree   $tree
  * @param string $term
  *
@@ -541,6 +544,8 @@ function get_INDI_rows(Tree $tree, $term) {
 }
 
 /**
+ * Find note records from the database.
+ *
  * @param Tree   $tree
  * @param string $term
  *
@@ -561,6 +566,8 @@ function get_NOTE_rows(Tree $tree, $term) {
 }
 
 /**
+ * Find media object records from the database.
+ *
  * @param Tree   $tree
  * @param string $term
  *
@@ -581,6 +588,8 @@ function get_OBJE_rows(Tree $tree, $term) {
 }
 
 /**
+ * Find repository records from the database.
+ *
  * @param Tree   $tree
  * @param string $term
  *
@@ -601,6 +610,8 @@ function get_REPO_rows(Tree $tree, $term) {
 }
 
 /**
+ * Find source records from the database.
+ *
  * @param Tree   $tree
  * @param string $term
  *

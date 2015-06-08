@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,13 +13,15 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
+
 use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\Functions\FunctionsImport;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
 /**
- * Class GedcomRecord - Base class for all gedcom records
+ * A GEDCOM object.
  */
 class GedcomRecord {
 	const RECORD_TYPE = 'UNKNOWN';
@@ -60,10 +60,10 @@ class GedcomRecord {
 	/** @var int Cached result */
 	protected $_getSecondaryName;
 
-	// Allow getInstance() to return references to existing objects
+	/** @var GedcomRecord[][] Allow getInstance() to return references to existing objects */
 	protected static $gedcom_record_cache;
 
-	// Fetch all pending edits in one database query
+	/** @var \stdClass[][] Fetch all pending edits in one database query */
 	private static $pending_record_cache;
 
 	/**

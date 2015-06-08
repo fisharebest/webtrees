@@ -29,6 +29,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 	<files>
 		<directory>.</directory>
 		<ignore>data/*</ignore>
+		<ignore>packages/*</ignore>
 		<ignore>tests/*</ignore>
 		<ignore>themes/_custom/*</ignore>
 		<ignore>vendor/*</ignore>

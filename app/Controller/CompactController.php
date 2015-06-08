@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Controller;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,17 +13,19 @@ namespace Fisharebest\Webtrees\Controller;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Controller;
+
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\I18N;
 
 /**
- * Class CompactController - Controller for the compact chart
+ * Controller for the compact chart
  */
 class CompactController extends ChartController {
-	// Data for the view
+	/** @var bool Data for the view .*/
 	public $show_thumbs = false;
 
-	// Date for the controller
+	/** int[] Data for the controller. */
 	private $treeid = array();
 
 	/**
@@ -49,6 +49,8 @@ class CompactController extends ChartController {
 	}
 
 	/**
+	 * Get an individual by their SOSA number.
+	 *
 	 * @param int $n
 	 *
 	 * @return string
@@ -100,6 +102,8 @@ class CompactController extends ChartController {
 	}
 
 	/**
+	 * Get an arrow, pointing to other generations.
+	 *
 	 * @param int    $n
 	 * @param string $arrow_dir
 	 *

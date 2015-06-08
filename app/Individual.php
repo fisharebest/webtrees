@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,18 +13,20 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 use Fisharebest\ExtCalendar\GregorianCalendar;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodePedi;
 
 /**
- * Class Individual - Class file for an individual
+ * A GEDCOM individual (INDI) object.
  */
 class Individual extends GedcomRecord {
 	const RECORD_TYPE = 'INDI';
 	const URL_PREFIX  = 'individual.php?pid=';
 
-	public $generation; // used in some lists to keep track of this individual’s generation in that list
+	/** @var int used in some lists to keep track of this individual’s generation in that list */
+	public $generation;
 
 	/** @var Date The estimated date of birth */
 	private $_getEstimatedBirthDate;
@@ -72,7 +72,9 @@ class Individual extends GedcomRecord {
 	/**
 	 * Can the name of this record be shown?
 	 *
-	 * {@inheritdoc}
+	 * @param int|null $access_level
+	 *
+	 * @return bool
 	 */
 	public function canShowName($access_level = null) {
 		if ($access_level === null) {
@@ -83,9 +85,11 @@ class Individual extends GedcomRecord {
 	}
 
 	/**
-	 * Implement individual-specific privacy logic
+	 * Can this individual be shown?
 	 *
-	 * {@inheritdoc}
+	 * @param int $access_level
+	 *
+	 * @return bool
 	 */
 	protected function canShowByType($access_level) {
 		global $WT_TREE;
@@ -205,7 +209,13 @@ class Individual extends GedcomRecord {
 		return false;
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Generate a private version of this record
+	 *
+	 * @param int $access_level
+	 *
+	 * @return string
+	 */
 	protected function createPrivateGedcomRecord($access_level) {
 		$SHOW_PRIVATE_RELATIONSHIPS = $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
@@ -232,7 +242,14 @@ class Individual extends GedcomRecord {
 		return $rec;
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Fetch data from the database
+	 *
+	 * @param string $xref
+	 * @param int    $tree_id
+	 *
+	 * @return null|string
+	 */
 	protected static function fetchGedcomRecord($xref, $tree_id) {
 		return Database::prepare(
 			"SELECT i_gedcom FROM `##individuals` WHERE i_id = :xref AND i_file = :tree_id"
@@ -1238,7 +1255,7 @@ class Individual extends GedcomRecord {
 	}
 
 	/**
-	 * Get an array of structures containing all the names in the record
+	 * Extract names from the GEDCOM record.
 	 */
 	public function extractNames() {
 		$this->extractNamesFromFacts(1, 'NAME', $this->getFacts('NAME', false, Auth::accessLevel($this->tree), $this->canShowName()));

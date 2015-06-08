@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees\Module;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Controller\ChartController;
@@ -64,7 +63,11 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	/** @var int Number of nodes in the chart */
 	private $treesize;
 
-	/** {@inheritdoc} */
+	/**
+	 * Create a new module.
+	 *
+	 * @param string $directory Where is this module installed
+	 */
 	public function __construct($directory) {
 		parent::__construct($directory);
 
@@ -82,7 +85,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		return /* I18N: Description of the “Google Maps™” module */ I18N::translate('Show the location of places and events using the Google Maps™ mapping service.');
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * This is a general purpose hook, allowing modules to respond to routes
+	 * of the form module.php?mod=FOO&mod_action=BAR
+	 *
+	 * @param string $mod_action
+	 */
 	public function modAction($mod_action) {
 		switch ($mod_action) {
 		case 'admin_config':
@@ -506,7 +514,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	}
 
 	/**
-	 * ...
+	 * Select a flag.
+	 *
 	 */
 	private function flags() {
 		global $WT_TREE;
@@ -721,7 +730,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	}
 
 	/**
-	 * ...
+	 * Display a map showing the originas of ones ancestors.
 	 */
 	private function pedigreeMap() {
 		global $controller, $WT_TREE;
@@ -914,6 +923,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	}
 
 	/**
+	 * Create the Javascript to activate the map.
+	 *
 	 * @return string
 	 */
 	private function pedigreeMapJavascript() {
@@ -1475,7 +1486,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	}
 
 	/**
-	 * ...
+	 * Check places for missing data, etc.
 	 */
 	private function adminPlaceCheck() {
 		global $WT_TREE;
@@ -1797,6 +1808,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	}
 
 	/**
+	 * Remove prefixes from a place name to allow it to be matched.
+	 *
 	 * @param string   $prefix_list
 	 * @param string   $place
 	 * @param string[] $placelist
@@ -1816,6 +1829,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	}
 
 	/**
+	 * Remove suffixes from a place name to allow it to be matched.
+	 *
 	 * @param string   $suffix_list
 	 * @param string   $place
 	 * @param string[] $placelist
@@ -1835,6 +1850,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	}
 
 	/**
+	 * Remove prefixes and sufixes to allow place names to be matched.
+	 *
 	 * @param string   $prefix_list
 	 * @param string   $suffix_list
 	 * @param string   $place
@@ -1857,6 +1874,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	}
 
 	/**
+	 * Match placenames with different prefixes and suffixes.
+	 *
 	 * @param string $placename
 	 * @param int    $level
 	 *
@@ -1875,6 +1894,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	}
 
 	/**
+	 * Get the map co-ordinates of a place.
+	 *
 	 * @param string $place
 	 *
 	 * @return null|\stdClass
@@ -1912,6 +1933,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	}
 
 	/**
+	 * Build a map for an individual.
+	 *
 	 * @param Individual $indi
 	 */
 	private function buildIndividualMap(Individual $indi) {
@@ -2465,6 +2488,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	}
 
 	/**
+	 * Get the Location ID.
+	 *
 	 * @param string $place
 	 *
 	 * @return int
@@ -2503,6 +2528,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	}
 
 	/**
+	 * Get the place ID.
+	 *
 	 * @param string $place
 	 *
 	 * @return int
@@ -2540,6 +2567,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	}
 
 	/**
+	 * Set the place IDs.
+	 *
 	 * @param int      $level
 	 * @param string[] $parent
 	 *
@@ -2560,6 +2589,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	}
 
 	/**
+	 * Set the map level.
+	 *
 	 * @param int      $level
 	 * @param string[] $parent
 	 *
@@ -2712,6 +2743,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	}
 
 	/**
+	 * Find the current location.
+	 *
 	 * @param int $numls
 	 * @param int $levelm
 	 *
@@ -2730,6 +2763,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	}
 
 	/**
+	 * Print the numbers of individuals.
+	 *
 	 * @param int      $level
 	 * @param string[] $parent
 	 */
@@ -2756,6 +2791,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	}
 
 	/**
+	 * Print the flags and markers.
+	 *
 	 * @param string[] $place2
 	 * @param int      $level
 	 * @param string[] $parent
@@ -3132,6 +3169,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	}
 
 	/**
+	 * Get the highest index.
+	 *
 	 * @return int
 	 */
 	private function getHighestIndex() {
@@ -3139,6 +3178,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	}
 
 	/**
+	 * Get the highest level.
+	 *
 	 * @return int
 	 */
 	private function getHighestLevel() {
@@ -3193,6 +3234,8 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	}
 
 	/**
+	 * Set the output level.
+	 *
 	 * @param int $parent_id
 	 */
 	private function outputLevel($parent_id) {
@@ -3248,7 +3291,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	}
 
 	/**
-	 * ...
+	 * Edit places.
 	 */
 	private function placesEdit() {
 		$GM_MAX_ZOOM = $this->getSetting('GM_MAX_ZOOM');
@@ -4063,7 +4106,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	}
 
 	/**
-	 * ...
+	 * Places administration.
 	 */
 	private function adminPlaces() {
 		global $WT_TREE;
@@ -4638,7 +4681,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	}
 
 	/**
-	 * ...
+	 * Generate the streetview window.
 	 */
 	private function wtStreetView() {
 	header('Content-type: text/html; charset=UTF-8');

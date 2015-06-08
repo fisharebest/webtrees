@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 /**
  * This function was introduced in PHP 5.4
@@ -64,6 +63,8 @@ if (!defined('PASSWORD_BCRYPT') && crypt("password", $hash) !== $hash) {
 	define('PASSWORD_BCRYPT', 1);
 	define('PASSWORD_DEFAULT', 1);
 	/**
+	 * Shim for PHP5.5
+	 *
 	 * @param string $password
 	 * @param int    $algo
 	 *
@@ -74,6 +75,8 @@ if (!defined('PASSWORD_BCRYPT') && crypt("password", $hash) !== $hash) {
 	}
 
 	/**
+	 * Shim for PHP5.5
+	 *
 	 * @param string $hash
 	 * @param int    $algo
 	 *
@@ -84,6 +87,8 @@ if (!defined('PASSWORD_BCRYPT') && crypt("password", $hash) !== $hash) {
 	}
 
 	/**
+	 * Shim for PHP5.5
+	 *
 	 * @param string $password
 	 * @param string $hash
 	 *

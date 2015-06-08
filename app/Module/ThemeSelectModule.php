@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,9 +13,10 @@ namespace Fisharebest\Webtrees\Module;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module;
+
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Theme;
-use Fisharebest\Webtrees\Theme\AbstractTheme;
 
 /**
  * Class ThemeSelectModule
@@ -33,8 +32,16 @@ class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface {
 		return /* I18N: Description of the “Theme change” module */ I18N::translate('An alternative way to select a new theme.');
 	}
 
-	/** {@inheritdoc} */
-	public function getBlock($block_id, $template = true, $cfg = null) {
+	/**
+	 * Generate the HTML content of this block.
+	 *
+	 * @param int   $block_id
+	 * @param bool  $template
+	 * @param array $cfg
+	 *
+	 * @return string
+	 */
+	public function getBlock($block_id, $template = true, $cfg = array()) {
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		$title = $this->getTitle();
@@ -68,7 +75,11 @@ class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface {
 		return true;
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * An HTML form to edit block settings
+	 *
+	 * @param int $block_id
+	 */
 	public function configureBlock($block_id) {
 	}
 }

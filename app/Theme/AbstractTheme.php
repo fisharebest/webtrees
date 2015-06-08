@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Theme;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,8 @@ namespace Fisharebest\Webtrees\Theme;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Theme;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Database;
@@ -37,7 +37,7 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 
 /**
- * Class AbstractTheme - Common functions and interfaces for all themes.
+ * Common functions for all themes.
  */
 abstract class AbstractTheme {
 	/** @var Tree The current tree */
@@ -1005,6 +1005,8 @@ abstract class AbstractTheme {
 	}
 
 	/**
+	 * A menu for the day/month/year calendar views.
+	 *
 	 * @return Menu
 	 */
 	protected function menuCalendar() {
@@ -1319,6 +1321,8 @@ abstract class AbstractTheme {
 	}
 
 	/**
+	 * A menu for the home (family tree) pages.
+	 *
 	 * @return Menu
 	 */
 	protected function menuHomePage() {
@@ -1583,6 +1587,8 @@ abstract class AbstractTheme {
 	}
 
 	/**
+	 * A menu for the user's personal pages.
+	 *
 	 * @return Menu|null
 	 */
 	protected function menuMyPages() {
@@ -1639,6 +1645,8 @@ abstract class AbstractTheme {
 	}
 
 	/**
+	 * A menu with a list of reports.
+	 *
 	 * @return Menu|null
 	 */
 	protected function menuReports() {

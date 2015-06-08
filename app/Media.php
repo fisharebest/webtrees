@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,11 +13,13 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
+
 use Fisharebest\Webtrees\Functions\FunctionsMedia;
 use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 
 /**
- * Class Media - Class that defines a media object
+ * A GEDCOM media (OBJE) object.
  */
 class Media extends GedcomRecord {
 	const RECORD_TYPE = 'OBJE';
@@ -31,7 +31,15 @@ class Media extends GedcomRecord {
 	/** @var string The "FILE" value from the GEDCOM */
 	private $file = '';
 
-	/** {@inheritdoc} */
+	/**
+	 * Create a GedcomRecord object from raw GEDCOM data.
+	 *
+	 * @param string      $xref
+	 * @param string      $gedcom  an empty string for new/pending records
+	 * @param string|null $pending null for a record with no pending edits,
+	 *                             empty string for records with pending deletions
+	 * @param Tree        $tree
+	 */
 	public function __construct($xref, $gedcom, $pending, $tree) {
 		parent::__construct($xref, $gedcom, $pending, $tree);
 
@@ -43,7 +51,13 @@ class Media extends GedcomRecord {
 		}
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Each object type may have its own special rules, and re-implement this function.
+	 *
+	 * @param int $access_level
+	 *
+	 * @return bool
+	 */
 	protected function canShowByType($access_level) {
 		// Hide media objects if they are attached to private records
 		$linked_ids = Database::prepare(
@@ -62,7 +76,14 @@ class Media extends GedcomRecord {
 		return parent::canShowByType($access_level);
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Fetch data from the database
+	 *
+	 * @param string $xref
+	 * @param int    $tree_id
+	 *
+	 * @return null|string
+	 */
 	protected static function fetchGedcomRecord($xref, $tree_id) {
 		return Database::prepare(
 			"SELECT m_gedcom FROM `##media` WHERE m_id = :xref AND m_file = :tree_id"
@@ -558,7 +579,11 @@ class Media extends GedcomRecord {
 			'>' . $image . '</a>';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * If this object has no name, what do we call it?
+	 *
+	 * @return string
+	 */
 	public function getFallBackName() {
 		if ($this->canShow()) {
 			return basename($this->file);
@@ -567,7 +592,9 @@ class Media extends GedcomRecord {
 		}
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Extract names from the GEDCOM record.
+	 */
 	public function extractNames() {
 		// Earlier gedcom versions had level 1 titles
 		// Later gedcom versions had level 2 titles
@@ -575,7 +602,12 @@ class Media extends GedcomRecord {
 		$this->extractNamesFromFacts(1, 'TITL', $this->getFacts('TITL'));
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * This function should be redefined in derived classes to show any major
+	 * identifying characteristics of this record.
+	 *
+	 * @return string
+	 */
 	public function formatListDetails() {
 		ob_start();
 		FunctionsPrintFacts::printMediaLinks('1 OBJE @' . $this->getXref() . '@', 1);

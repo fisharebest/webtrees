@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Functions;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,13 +13,12 @@ namespace Fisharebest\Webtrees\Functions;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
-// RTL Functions for use in the PDF/HTML reports
+namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\I18N;
 
 /**
- * Class FunctionsRtl - common functions
+ * RTL Functions for use in the PDF/HTML reports
  */
 class FunctionsRtl {
 	const OPEN_PARENTHESES = '([{';
@@ -36,26 +33,34 @@ class FunctionsRtl {
 
 	const PUNCTUATION = ',.:;?!';
 
+	/** @var string Were we previously processing LTR or RTL. */
 	private static $previousState;
 
+	/** @var string Are we currently processing LTR or RTL. */
 	private static $currentState;
 
+	/** @var string Text waiting to be processed. */
 	private static $waitingText;
 
+	/** @var string LTR text. */
 	private static $startLTR;
 
+	/** @var string LTR text. */
 	private static $endLTR;
 
+	/** @var string RTL text. */
 	private static $startRTL;
 
+	/** @var string RTL text. */
 	private static $endRTL;
 
+	/** @var int Offset into the text. */
 	private static $lenStart;
 
+	/** @var int Offset into the text. */
 	private static $lenEnd;
 
-	private static $spanNumber = 0;
-
+	/** @var int Offset into the text. */
 	private static $posSpanStart;
 
 	/**
@@ -86,7 +91,6 @@ class FunctionsRtl {
 			// Nothing to do
 			return '';
 		}
-		self::$spanNumber++;
 
 		$workingText = str_replace("\n", '<br>', $inputText);
 		$workingText = str_replace(array('<span class="starredname"><br>', '<span<br>class="starredname">'), '<br><span class="starredname">', $workingText); // Reposition some incorrectly placed line breaks
@@ -1103,6 +1107,8 @@ class FunctionsRtl {
 	}
 
 	/**
+	 * Wrap text, similar to the PHP wordwrap() function.
+	 *
 	 * @param string $string
 	 * @param int $width
 	 * @param string $sep

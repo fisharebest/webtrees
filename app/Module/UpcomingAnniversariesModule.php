@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,8 @@ namespace Fisharebest\Webtrees\Module;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsEdit;
@@ -26,17 +26,33 @@ use Fisharebest\Webtrees\Theme;
  * Class UpcomingAnniversariesModule
  */
 class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockInterface {
-	/** {@inheritdoc} */
+	/**
+	 * How should this module be labelled on tabs, menus, etc.?
+	 *
+	 * @return string
+	 */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('Upcoming events');
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * A sentence describing what this module does.
+	 *
+	 * @return string
+	 */
 	public function getDescription() {
 		return /* I18N: Description of the “Upcoming events” module */ I18N::translate('A list of the anniversaries that will occur in the near future.');
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Generate the HTML content of this block.
+	 *
+	 * @param int   $block_id
+	 * @param bool  $template
+	 * @param array $cfg
+	 *
+	 * @return string
+	 */
 	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $ctype, $WT_TREE;
 
@@ -47,11 +63,9 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 		$sortStyle = $this->getBlockSetting($block_id, 'sortStyle', 'alpha');
 		$block     = $this->getBlockSetting($block_id, 'block', '1');
 
-		if ($cfg) {
-			foreach (array('days', 'filter', 'onlyBDM', 'infoStyle', 'sortStyle', 'block') as $name) {
-				if (array_key_exists($name, $cfg)) {
-					$$name = $cfg[$name];
-				}
+		foreach (array('days', 'filter', 'onlyBDM', 'infoStyle', 'sortStyle', 'block') as $name) {
+			if (array_key_exists($name, $cfg)) {
+				$$name = $cfg[$name];
 			}
 		}
 
@@ -107,7 +121,11 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 		return true;
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * An HTML form to edit block settings
+	 *
+	 * @param int $block_id
+	 */
 	public function configureBlock($block_id) {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
 			$this->setBlockSetting($block_id, 'days', Filter::postInteger('days', 1, 30, 7));

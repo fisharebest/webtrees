@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,8 @@ namespace Fisharebest\Webtrees\Module;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Controller\HourglassController;
 use Fisharebest\Webtrees\Filter;
@@ -39,8 +39,16 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 		return /* I18N: Description of the “Charts” module */ I18N::translate('An alternative way to display charts.');
 	}
 
-	/** {@inheritdoc} */
-	public function getBlock($block_id, $template = true, $cfg = null) {
+	/**
+	 * Generate the HTML content of this block.
+	 *
+	 * @param int   $block_id
+	 * @param bool  $template
+	 * @param array $cfg
+	 *
+	 * @return string
+	 */
+	public function getBlock($block_id, $template = true, $cfg = array()) {
 		global $WT_TREE, $ctype, $controller;
 
 		$PEDIGREE_ROOT_ID = $WT_TREE->getPreference('PEDIGREE_ROOT_ID');
@@ -50,11 +58,9 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 		$type    = $this->getBlockSetting($block_id, 'type', 'pedigree');
 		$pid     = $this->getBlockSetting($block_id, 'pid', Auth::check() ? ($gedcomid ? $gedcomid : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
-		if ($cfg) {
-			foreach (array('details', 'type', 'pid', 'block') as $name) {
-				if (array_key_exists($name, $cfg)) {
-					$$name = $cfg[$name];
-				}
+		foreach (array('details', 'type', 'pid', 'block') as $name) {
+			if (array_key_exists($name, $cfg)) {
+				$$name = $cfg[$name];
 			}
 		}
 
@@ -155,7 +161,11 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 		return true;
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * An HTML form to edit block settings
+	 *
+	 * @param int $block_id
+	 */
 	public function configureBlock($block_id) {
 		global $WT_TREE, $controller;
 
