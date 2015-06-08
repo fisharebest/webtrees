@@ -23,8 +23,12 @@ use Fisharebest\Webtrees\Tree;
 /**
  * Class AdministrationTheme - Theme for the control panel.
  */
-class AdministrationTheme extends BaseTheme {
-	/** {@inheritdoc} */
+class AdministrationTheme extends AbstractTheme implements ThemeInterface {
+	/**
+	 * A list of CSS files to include for this page.
+	 *
+	 * @return string[]
+	 */
 	protected function stylesheets() {
 		$stylesheets   = parent::stylesheets();
 		$stylesheets[] = WT_DATATABLES_BOOTSTRAP_CSS_URL;
@@ -34,30 +38,48 @@ class AdministrationTheme extends BaseTheme {
 		return $stylesheets;
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Where are our CSS, JS and other assets?
+	 *
+	 * @return string A relative path, such as "themes/foo/"
+	 */
 	public function assetUrl() {
 		return 'themes/_administration/css-1.7.0/';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Create the contents of the <footer> tag.
+	 *
+	 * @return string
+	 */
 	protected function footerContent() {
 		return '';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Create the contents of the <header> tag.
+	 *
+	 * @return string
+	 */
 	protected function headerContent() {
 		return
 			$this->accessibilityLinks() .
 			$this->secondaryMenuContainer($this->secondaryMenu());
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Allow themes to add extra scripts to the page footer.
+	 *
+	 * @return string
+	 */
 	public function hookFooterExtraJavascript() {
 		return
 			'<script src="' . WT_BOOTSTRAP_JS_URL . '"></script>';
 	}
 
 	/**
+	 * Site administration functions.
+	 *
 	 * @return Menu
 	 */
 	protected function menuAdminSite() {
@@ -76,6 +98,8 @@ class AdministrationTheme extends BaseTheme {
 	}
 
 	/**
+	 * Tree administration menu.
+	 *
 	 * @return Menu
 	 */
 	protected function menuAdminTrees() {
@@ -87,6 +111,8 @@ class AdministrationTheme extends BaseTheme {
 	}
 
 	/**
+	 * Manage trees menu.
+	 *
 	 * @return Menu
 	 */
 	protected function menuAdminTreesManage() {
@@ -94,6 +120,8 @@ class AdministrationTheme extends BaseTheme {
 	}
 
 	/**
+	 * Merge trees menu.
+	 *
 	 * @return Menu|null
 	 */
 	protected function menuAdminTreesMerge() {
@@ -105,6 +133,8 @@ class AdministrationTheme extends BaseTheme {
 	}
 
 	/**
+	 * Set default blocks menu.
+	 *
 	 * @return Menu|null
 	 */
 	protected function menuAdminTreesSetDefault() {
@@ -116,6 +146,8 @@ class AdministrationTheme extends BaseTheme {
 	}
 
 	/**
+	 * User administration menu.
+	 *
 	 * @return Menu
 	 */
 	protected function menuAdminUsers() {
@@ -129,6 +161,8 @@ class AdministrationTheme extends BaseTheme {
 	}
 
 	/**
+	 * Media administration menu.
+	 *
 	 * @return Menu
 	 */
 	protected function menuAdminMedia() {
@@ -139,6 +173,8 @@ class AdministrationTheme extends BaseTheme {
 	}
 
 	/**
+	 * Module administration menu.
+	 *
 	 * @return Menu
 	 */
 	protected function menuAdminModules() {
@@ -152,7 +188,11 @@ class AdministrationTheme extends BaseTheme {
 		));
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Generate a list of items for the main menu.
+	 *
+	 * @return Menu[]
+	 */
 	protected function primaryMenu() {
 		if (Auth::isAdmin()) {
 			return array(
@@ -169,7 +209,13 @@ class AdministrationTheme extends BaseTheme {
 		}
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Add markup to the primary menu.
+	 *
+	 * @param Menu[] $menus
+	 *
+	 * @return string
+	 */
 	protected function primaryMenuContainer(array $menus) {
 		$html = '';
 		foreach ($menus as $menu) {
@@ -195,7 +241,11 @@ class AdministrationTheme extends BaseTheme {
 			'</nav>';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Generate a list of items for the user menu.
+	 *
+	 * @return Menu[]
+	 */
 	protected function secondaryMenu() {
 		return array_filter(array(
 			$this->menuPendingChanges(),
@@ -205,22 +255,42 @@ class AdministrationTheme extends BaseTheme {
 		));
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Add markup to the secondary menu.
+	 *
+	 * @param Menu[] $menus
+	 *
+	 * @return string
+	 */
 	protected function secondaryMenuContainer(array $menus) {
 		return '<div class="clearfix"><ul class="nav nav-pills small pull-right flip" role="menu">' . $this->secondaryMenuContent($menus) . '</ul></div>';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Format the secondary menu.
+	 *
+	 * @param Menu[] $menus
+	 *
+	 * @return string
+	 */
 	protected function secondaryMenuContent(array $menus) {
 		return implode('', array_map(function (Menu $menu) { return $menu->bootstrap(); }, $menus));
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * A fixed string to identify this theme, in settings, etc.
+	 *
+	 * @return string
+	 */
 	public function themeId() {
 		return '_administration';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * What is this theme called?
+	 *
+	 * @return string
+	 */
 	public function themeName() {
 		return 'administration';
 	}

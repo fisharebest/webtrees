@@ -22,24 +22,47 @@ use Fisharebest\Webtrees\Theme;
 /**
  * Class CloudsTheme - The clouds theme.
  */
-class CloudsTheme extends BaseTheme {
-	/** {@inheritdoc} */
+class CloudsTheme extends AbstractTheme implements ThemeInterface {
+	/**
+	 * Where are our CSS, JS and other assets?
+	 *
+	 * @return string A relative path, such as "themes/foo/"
+	 */
 	public function assetUrl() {
 		return 'themes/clouds/css-1.7.0/';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * HTML link to a "favorites icon".
+	 *
+	 * @return string
+	 */
 	protected function favicon() {
 		return '<link rel="icon" href="' . $this->assetUrl() . 'favicon.png" type="image/png">';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Add markup to a flash message.
+	 *
+	 * @param \stdClass $message
+	 *
+	 * @return string
+	 */
 	protected function flashMessageContainer(\stdClass $message) {
 		// This theme uses jQuery markup.
 		return '<p class="ui-state-highlight">' . $message->text . '</p>';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Format the contents of a variable-height home-page block.
+	 *
+	 * @param string $id
+	 * @param string $title
+	 * @param string $class
+	 * @param string $content
+	 *
+	 * @return string
+	 */
 	public function formatBlock($id, $title, $class, $content) {
 		return
 			'<div id="' . $id . '" class="block" >' .
@@ -50,14 +73,22 @@ class CloudsTheme extends BaseTheme {
 			'</div>';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Create a search field and submit button for the quick search form in the header.
+	 *
+	 * @return string
+	 */
 	protected function formQuickSearchFields() {
 		return
 			'<input type="search" name="query" size="15" placeholder="' . I18N::translate('Search') . '">' .
 			'<input class="search-icon" type="image" src="' . Theme::theme()->parameter('image-search') . '" alt="' . I18N::translate('Search') . '" title="' . I18N::translate('Search') . '">';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Allow themes to add extra scripts to the page footer.
+	 *
+	 * @return string
+	 */
 	public function hookFooterExtraJavascript() {
 		return
 			'<script src="' . WT_JQUERY_COLORBOX_URL . '"></script>' .
@@ -75,7 +106,13 @@ class CloudsTheme extends BaseTheme {
 			'</script>';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Misecellaneous dimensions, fonts, styles, etc.
+	 *
+	 * @param string $parameter_name
+	 *
+	 * @return string|int|float
+	 */
 	public function parameter($parameter_name) {
 		$parameters = array(
 			'chart-background-f'             => 'e9daf1',
@@ -92,7 +129,13 @@ class CloudsTheme extends BaseTheme {
 		}
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Create the primary menu.
+	 *
+	 * @param Menu[] $menus
+	 *
+	 * @return string
+	 */
 	protected function primaryMenuContent(array $menus) {
 		$html = '';
 
@@ -111,7 +154,11 @@ class CloudsTheme extends BaseTheme {
 		return $html;
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * A list of CSS files to include for this page.
+	 *
+	 * @return string[]
+	 */
 	protected function stylesheets() {
 		return array(
 			'themes/clouds/jquery-ui-1.11.2/jquery-ui.css',
@@ -119,12 +166,20 @@ class CloudsTheme extends BaseTheme {
 		);
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * A fixed string to identify this theme, in settings, etc.
+	 *
+	 * @return string
+	 */
 	public function themeId() {
 		return 'clouds';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * What is this theme called?
+	 *
+	 * @return string
+	 */
 	public function themeName() {
 		return /* I18N: Name of a theme. */ I18N::translate('clouds');
 	}

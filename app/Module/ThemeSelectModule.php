@@ -17,7 +17,7 @@ namespace Fisharebest\Webtrees\Module;
  */
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Theme;
-use Fisharebest\Webtrees\Theme\BaseTheme;
+use Fisharebest\Webtrees\Theme\AbstractTheme;
 
 /**
  * Class ThemeSelectModule
@@ -35,7 +35,6 @@ class ThemeSelectModule extends AbstractModule implements ModuleBlockInterface {
 
 	/** {@inheritdoc} */
 	public function getBlock($block_id, $template = true, $cfg = null) {
-		/** @var BaseTheme */
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		$title = $this->getTitle();

@@ -25,19 +25,27 @@ use Fisharebest\Webtrees\Site;
 /**
  * Class ColorsTheme - The colors theme.
  */
-class ColorsTheme extends CloudsTheme {
+class ColorsTheme extends CloudsTheme implements ThemeInterface {
 	/** @var string[] A list of color palettes */
 	protected $palettes;
 
 	/** @var string Which of the color palettes to use on this page */
 	protected $palette;
 
-	/** {@inheritdoc} */
+	/**
+	 * Where are our CSS, JS and other assets?
+	 *
+	 * @return string A relative path, such as "themes/foo/"
+	 */
 	public function assetUrl() {
 		return 'themes/colors/css-1.7.0/';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Add markup to the secondary menu.
+	 *
+	 * @return string
+	 */
 	protected function formatSecondaryMenu() {
 		return
 			'<ul class="secondary-menu">' .
@@ -48,7 +56,11 @@ class ColorsTheme extends CloudsTheme {
 			'</ul>';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Create the contents of the <header> tag.
+	 *
+	 * @return string
+	 */
 	protected function headerContent() {
 		return
 			//$this->accessibilityLinks() .
@@ -58,8 +70,6 @@ class ColorsTheme extends CloudsTheme {
 
 	/**
 	 * Create resources for the colors theme.
-	 *
-	 * {@inheritdoc}
 	 */
 	public function hookAfterInit() {
 		$this->palettes = array(
@@ -147,7 +157,11 @@ class ColorsTheme extends CloudsTheme {
 		return $menu;
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * A list of CSS files to include for this page.
+	 *
+	 * @return string[]
+	 */
 	protected function stylesheets() {
 		return array(
 			'themes/colors/jquery-ui-1.11.2/jquery-ui.css',
@@ -156,12 +170,20 @@ class ColorsTheme extends CloudsTheme {
 		);
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * A fixed string to identify this theme, in settings, etc.
+	 *
+	 * @return string
+	 */
 	public function themeId() {
 		return 'colors';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * What is this theme called?
+	 *
+	 * @return string
+	 */
 	public function themeName() {
 		return /* I18N: Name of a theme. */ I18N::translate('colors');
 	}

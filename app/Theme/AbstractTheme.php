@@ -37,9 +37,9 @@ use Fisharebest\Webtrees\Tree;
 use Fisharebest\Webtrees\User;
 
 /**
- * Class Base - Common functions and interfaces for all themes.
+ * Class AbstractTheme - Common functions and interfaces for all themes.
  */
-abstract class BaseTheme {
+abstract class AbstractTheme {
 	/** @var Tree The current tree */
 	protected $tree;
 
@@ -64,7 +64,7 @@ abstract class BaseTheme {
 	 *
 	 * @return string
 	 */
-	public function accessibilityLinks() {
+	protected function accessibilityLinks() {
 		return
 			'<div class="accessibility-links">' .
 			'<a class="sr-only sr-only-focusable btn btn-info btn-sm" href="#content">' .
@@ -99,6 +99,7 @@ abstract class BaseTheme {
 				);
 		}
 	}
+
 	/**
 	 * Create the verification code for Google Webmaster Tools.
 	 *
