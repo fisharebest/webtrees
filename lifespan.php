@@ -54,7 +54,7 @@ $controller
 					<?php echo I18N::translate('Include the individual’s immediate family?'); ?>
 				</label>
 				<span class="optionbox">
-					<input id="addFamily" type="checkbox" value="yes" name="addFamily">
+					<input id="addFamily" type="checkbox" value="yes" name="addFamily" <?php echo $controller->showDetails;?>>
 				</span>
 			</div>
 		</fieldset>
