@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,14 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Theme;
 
 /**
  * Class RelativesTabModule
@@ -38,11 +46,11 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 	/**
 	 * @param Date $prev
 	 * @param Date $next
-	 * @param integer $child_number
+	 * @param int  $child_number
 	 *
 	 * @return string
 	 */
-	static function ageDifference(Date $prev, Date $next, $child_number = 0) {
+	private static function ageDifference(Date $prev, Date $next, $child_number = 0) {
 		if ($prev->isOK() && $next->isOK()) {
 			$days = $next->maximumJulianDay() - $prev->minimumJulianDay();
 			if ($days < 0) {
@@ -73,7 +81,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 	 * @param string $type
 	 * @param string $label
 	 */
-	function printFamily(Family $family, $type, $label) {
+	private function printFamily(Family $family, $type, $label) {
 		global $controller;
 
 		if ($family->getTree()->getPreference('SHOW_PRIVATE_RELATIONSHIPS')) {
@@ -113,7 +121,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 				?>
 					<tr>
 					<td class="<?php echo $class; ?>">
-						<?php echo get_close_relationship_name($controller->record, $person); ?>
+						<?php echo Functions::getCloseRelationshipName($controller->record, $person); ?>
 					</td>
 					<td class="<?php echo $controller->getPersonStyle($person); ?>">
 						<?php echo Theme::theme()->individualBoxLarge($person); ?>
@@ -147,7 +155,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 				?>
 				<tr>
 					<td class="<?php echo $class; ?>">
-						<?php echo get_close_relationship_name($controller->record, $person); ?>
+						<?php echo Functions::getCloseRelationshipName($controller->record, $person); ?>
 					</td>
 					<td class="<?php echo $controller->getPersonStyle($person); ?>">
 						<?php echo Theme::theme()->individualBoxLarge($person); ?>
@@ -167,7 +175,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 
 		///// MARR /////
 		$found = false;
-		$prev = new Date('');
+		$prev  = new Date('');
 		foreach ($family->getFacts(WT_EVENTS_MARR) as $fact) {
 			$found |= !$fact->isPendingDeletion();
 			if ($fact->isPendingAddition()) {
@@ -232,7 +240,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 				<tr>
 					<td class="<?php echo $class; ?>">
 						<?php echo self::ageDifference($prev, $next, $child_number); ?>
-						<?php echo get_close_relationship_name($controller->record, $person); ?>
+						<?php echo Functions::getCloseRelationshipName($controller->record, $person); ?>
 					</td>
 					<td class="<?php echo $controller->getPersonStyle($person); ?>">
 						<?php echo Theme::theme()->individualBoxLarge($person); ?>
@@ -316,7 +324,7 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 		// spouses
 		$families = $controller->record->getSpouseFamilies();
 		foreach ($families as $family) {
-			$this->printFamily($family, 'FAMS', $controller->record->getSpouseFamilyLabel($family));
+			$this->printFamily($family, 'FAMS', $controller->getSpouseFamilyLabel($family, $controller->record));
 		}
 
 		// step-children

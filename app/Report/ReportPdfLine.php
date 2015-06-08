@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Report;
 
 /**
  * webtrees: online genealogy
@@ -23,11 +23,9 @@ class ReportPdfLine extends ReportBaseLine {
 	/**
 	 * PDF line renderer
 	 *
-	 * @param PDF $renderer
-	 *
-	 * @return void
+	 * @param ReportTcpdf $renderer
 	 */
-	function render($renderer) {
+	public function render($renderer) {
 		if ($this->x1 == ".") {
 			$this->x1 = $renderer->GetX();
 		}

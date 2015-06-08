@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Controller;
 
 /**
  * webtrees: online genealogy
@@ -15,19 +15,24 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsCharts;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Theme;
 
 /**
  * Class AncestryController - Controller for the ancestry chart
  */
 class AncestryController extends ChartController {
-
-	/** @var integer Show boxes for cousins */
+	/** @var int Show boxes for cousins */
 	public $show_cousins;
 
-	/** @var integer Determines style of chart */
+	/** @var int Determines style of chart */
 	public $chart_style;
 
-	/** @var integer Number of generations to display */
+	/** @var int Number of generations to display */
 	public $generations;
 
 	/**
@@ -57,8 +62,8 @@ class AncestryController extends ChartController {
 	 * print a child ascendancy
 	 *
 	 * @param Individual $individual
-	 * @param integer    $sosa  child sosa number
-	 * @param integer    $depth the ascendancy depth to show
+	 * @param int        $sosa  child sosa number
+	 * @param int        $depth the ascendancy depth to show
 	 */
 	public function printChildAscendancy(Individual $individual, $sosa, $depth) {
 		echo '<li>';
@@ -69,13 +74,13 @@ class AncestryController extends ChartController {
 			echo '<img src="', Theme::theme()->parameter('image-spacer'), '" height="3" width="2" alt="">';
 			echo '<img src="', Theme::theme()->parameter('image-hline'), '" height="3" width="', Theme::theme()->parameter('chart-descendancy-indent') - 2, '"></td><td>';
 		}
-		print_pedigree_person($individual, $this->showFull());
+		FunctionsPrint::printPedigreePerson($individual, $this->showFull());
 		echo '</td><td>';
 		if ($sosa > 1) {
-			print_url_arrow('?rootid=' . $individual->getXref() . '&amp;PEDIGREE_GENERATIONS=' . $this->generations . '&amp;show_full=' . $this->showFull() . '&amp;chart_style=' . $this->chart_style . '&amp;ged=' . $individual->getTree()->getNameUrl(), I18N::translate('Ancestors of %s', $individual->getFullName()), 3);
+			FunctionsCharts::printUrlArrow('?rootid=' . $individual->getXref() . '&amp;PEDIGREE_GENERATIONS=' . $this->generations . '&amp;show_full=' . $this->showFull() . '&amp;chart_style=' . $this->chart_style . '&amp;ged=' . $individual->getTree()->getNameUrl(), I18N::translate('Ancestors of %s', $individual->getFullName()), 3);
 		}
 		echo '</td><td class="details1">&nbsp;<span class="person_box' . ($sosa === 1 ? 'NN' : ($sosa % 2 ? 'F' : '')) . '">', I18N::number($sosa), '</span> ';
-		echo '</td><td class="details1">&nbsp;', get_sosa_name($sosa), '</td>';
+		echo '</td><td class="details1">&nbsp;', FunctionsCharts::getSosaName($sosa), '</td>';
 		echo '</tr></tbody></table>';
 
 		// Parents

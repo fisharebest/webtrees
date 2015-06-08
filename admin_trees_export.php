@@ -49,4 +49,3 @@ if (Auth::isManager($WT_TREE) && Filter::checkCsrf()) {
 }
 
 header('Location: ' . WT_BASE_URL . 'admin_trees_manage.php');
-

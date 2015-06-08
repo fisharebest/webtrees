@@ -23,6 +23,13 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\SimpleController;
+use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\Functions\FunctionsDb;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\Query\QueryMedia;
+
 define('WT_SCRIPT_NAME', 'addmedia.php');
 require './includes/session.php';
 
@@ -47,7 +54,7 @@ $controller
 	->addInlineJavascript('autocomplete();')
 	->restrictAccess(Auth::isMember($WT_TREE));
 
-$disp = true;
+$disp  = true;
 $media = Media::getInstance($pid, $WT_TREE);
 if ($media) {
 	$disp = $media->canShow();
@@ -66,7 +73,7 @@ if (!Auth::isEditor($WT_TREE) || !$disp) {
 	return;
 }
 
-// TODO - there is a lot of common code in the create and update cases....
+// There is a lot of common code in the create and update cases....
 // .... and also in the admin_media_upload.php script
 
 switch ($action) {
@@ -181,7 +188,7 @@ case 'create': // Save the information from the “showcreateform” action
 			FlashMessages::addMessage(
 				I18N::translate('There was an error uploading your file.') .
 				'<br>' .
-				file_upload_error_text($_FILES['mediafile']['error'])
+				Functions::fileUploadErrorText($_FILES['mediafile']['error'])
 			);
 			$filename = '';
 			break;
@@ -215,7 +222,7 @@ case 'create': // Save the information from the “showcreateform” action
 		$newged .= "\n1 FILE " . $folderName . $fileName;
 	}
 
-	$newged = handle_updates($newged);
+	$newged = FunctionsEdit::handleUpdates($newged);
 
 	$new_media = $WT_TREE->createRecord($newged);
 	if ($linktoid) {
@@ -309,7 +316,7 @@ case 'update': // Save the information from the “editmedia” action
 	$newFilename = $folderName . $fileName;
 
 	// Cannot rename local to external or vice-versa
-	if (isFileExternal($oldFilename) != isFileExternal($filename)) {
+	if (Functions::isFileExternal($oldFilename) != Functions::isFileExternal($filename)) {
 		FlashMessages::addMessage(I18N::translate('The media file %1$s could not be renamed to %2$s.', Html::filename($oldFilename), Html::filename($newFilename)));
 		break;
 	}
@@ -320,7 +327,7 @@ case 'update': // Save the information from the “editmedia” action
 		$oldServerFile  = $media->getServerFilename('main');
 		$oldServerThumb = $media->getServerFilename('thumb');
 
-		$newmedia = new Media("xxx", "0 @xxx@ OBJE\n1 FILE " . $newFilename, null, $WT_TREE);
+		$newmedia       = new Media("xxx", "0 @xxx@ OBJE\n1 FILE " . $newFilename, null, $WT_TREE);
 		$newServerFile  = $newmedia->getServerFilename('main');
 		$newServerThumb = $newmedia->getServerFilename('thumb');
 
@@ -328,7 +335,7 @@ case 'update': // Save the information from the “editmedia” action
 		if ($oldServerFile !== $newServerFile) {
 			//-- check if the file is used in more than one gedcom
 			//-- do not allow it to be moved or renamed if it is
-			if (!$media->isExternal() && is_media_used_in_other_gedcom($media->getFilename(), $WT_TREE->getTreeId())) {
+			if (!$media->isExternal() && FunctionsDb::isMediaUsedInOtherTree($media->getFilename(), $WT_TREE->getTreeId())) {
 				FlashMessages::addMessage(I18N::translate('This file is linked to another family tree on this server.  It cannot be deleted, moved, or renamed until these links have been removed.'));
 				break;
 			}
@@ -364,15 +371,15 @@ case 'update': // Save the information from the “editmedia” action
 		}
 	}
 
-	// Insert the 1 FILE xxx record into the arrays used by function handle_updates()
+	// Insert the 1 FILE xxx record into the arrays used by function FunctionsEdit::handle_updatesges()
 	$glevels = array_merge(array('1'), $glevels);
-	$tag = array_merge(array('FILE'), $tag);
-	$islink = array_merge(array(0), $islink);
-	$text = array_merge(array($newFilename), $text);
+	$tag     = array_merge(array('FILE'), $tag);
+	$islink  = array_merge(array(0), $islink);
+	$text    = array_merge(array($newFilename), $text);
 
 	$record = GedcomRecord::getInstance($pid, $WT_TREE);
 	$newrec = "0 @$pid@ OBJE\n";
-	$newrec = handle_updates($newrec);
+	$newrec = FunctionsEdit::handleUpdates($newrec);
 	$record->updateRecord($newrec, $update_CHAN);
 
 	if ($pid && $linktoid) {
@@ -412,15 +419,15 @@ if ($linktoid) {
 }
 echo '<table class="facts_table">';
 echo '<tr><td class="topbottombar" colspan="2">';
-echo $controller->getPageTitle(), help_link('OBJE');
+echo $controller->getPageTitle(), FunctionsPrint::helpLink('OBJE');
 echo '</td></tr>';
 if (!$linktoid && $action == 'create') {
 	echo '<tr><td class="descriptionbox wrap width25">';
 	echo I18N::translate('Enter an individual, family, or source ID');
 	echo '</td><td class="optionbox wrap"><input type="text" data-autocomplete-type="IFS" name="linktoid" id="linktoid" size="6" value="">';
-	echo ' ', print_findindi_link('linktoid');
-	echo ' ', print_findfamily_link('linktoid');
-	echo ' ', print_findsource_link('linktoid');
+	echo ' ', FunctionsPrint::printFindIndividualLink('linktoid');
+	echo ' ', FunctionsPrint::printFindFamilyLink('linktoid');
+	echo ' ', FunctionsPrint::printFindSourceLink('linktoid');
 	echo '<p class="small text-muted">', I18N::translate('Enter or search for the ID of the individual, family, or source to which this media item should be linked.'), '</p></td></tr>';
 }
 
@@ -451,10 +458,10 @@ if ($gedfile == 'FILE') {
 }
 
 // Filename on server
-$isExternal = isFileExternal($gedfile);
+$isExternal = Functions::isFileExternal($gedfile);
 if ($gedfile == 'FILE') {
 	if (Auth::isManager($WT_TREE)) {
-		add_simple_tag(
+		FunctionsEdit::addSimpleTag(
 			"1 $gedfile",
 			'',
 			I18N::translate('Filename on server'),
@@ -542,7 +549,7 @@ if (preg_match('/\n(2 FORM .*)/', $gedrec, $match)) {
 } else {
 	$gedform = '2 FORM';
 }
-$formid = add_simple_tag($gedform);
+$formid = FunctionsEdit::addSimpleTag($gedform);
 
 // automatically set the format field from the filename
 $controller->addInlineJavascript('
@@ -566,7 +573,7 @@ if (preg_match('/\n(3 TYPE .*)/', $gedrec, $match)) {
 } else {
 	$gedtype = '3 TYPE photo'; // default to ‘Photo’
 }
-add_simple_tag($gedtype);
+FunctionsEdit::addSimpleTag($gedtype);
 
 // 1 FILE / 2 TITL
 if (preg_match('/\n(2 TITL .*)/', $gedrec, $match)) {
@@ -574,7 +581,7 @@ if (preg_match('/\n(2 TITL .*)/', $gedrec, $match)) {
 } else {
 	$gedtitl = '2 TITL';
 }
-add_simple_tag($gedtitl);
+FunctionsEdit::addSimpleTag($gedtitl);
 
 // 1 FILE / 2 TITL / 3 _HEB
 if (strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), '_HEB') !== false) {
@@ -583,7 +590,7 @@ if (strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), '_HEB') !== false) {
 	} else {
 		$gedtitl = '3 _HEB';
 	}
-	add_simple_tag($gedtitl);
+	FunctionsEdit::addSimpleTag($gedtitl);
 }
 
 // 1 FILE / 2 TITL / 3 ROMN
@@ -593,7 +600,7 @@ if (strstr($WT_TREE->getPreference('ADVANCED_NAME_FACTS'), 'ROMN') !== false) {
 	} else {
 		$gedtitl = '3 ROMN';
 	}
-	add_simple_tag($gedtitl);
+	FunctionsEdit::addSimpleTag($gedtitl);
 }
 
 // 1 _PRIM
@@ -602,7 +609,7 @@ if (preg_match('/\n(1 _PRIM .*)/', $gedrec, $match)) {
 } else {
 	$gedprim = '1 _PRIM';
 }
-add_simple_tag($gedprim);
+FunctionsEdit::addSimpleTag($gedprim);
 
 //-- print out editing fields for any other data in the media record
 $sourceLevel = 0;
@@ -624,15 +631,15 @@ if (!empty($gedrec)) {
 			$fact     = trim($match[2]);
 			$event    = trim($match[3]);
 			if ($fact === 'NOTE' || $fact === 'TEXT') {
-				$event .= get_cont($subLevel + 1, $subrec);
+				$event .= Functions::getCont($subLevel + 1, $subrec);
 			}
 			if ($sourceSOUR !== '' && $subLevel <= $sourceLevel) {
 				// Get rid of all saved Source data
-				add_simple_tag($sourceLevel . ' SOUR ' . $sourceSOUR);
-				add_simple_tag(($sourceLevel + 1) . ' PAGE ' . $sourcePAGE);
-				add_simple_tag(($sourceLevel + 2) . ' TEXT ' . $sourceTEXT);
-				add_simple_tag(($sourceLevel + 2) . ' DATE ' . $sourceDATE, '', GedcomTag::getLabel('DATA:DATE'));
-				add_simple_tag(($sourceLevel + 1) . ' QUAY ' . $sourceQUAY);
+				FunctionsEdit::addSimpleTag($sourceLevel . ' SOUR ' . $sourceSOUR);
+				FunctionsEdit::addSimpleTag(($sourceLevel + 1) . ' PAGE ' . $sourcePAGE);
+				FunctionsEdit::addSimpleTag(($sourceLevel + 2) . ' TEXT ' . $sourceTEXT);
+				FunctionsEdit::addSimpleTag(($sourceLevel + 2) . ' DATE ' . $sourceDATE, '', GedcomTag::getLabel('DATA:DATE'));
+				FunctionsEdit::addSimpleTag(($sourceLevel + 1) . ' QUAY ' . $sourceQUAY);
 				$sourceSOUR = '';
 			}
 
@@ -669,18 +676,18 @@ if (!empty($gedrec)) {
 
 			// Output anything that isn’t part of a source reference
 			if (!empty($fact) && $fact !== 'CONC' && $fact !== 'CONT' && $fact !== 'DATA') {
-				add_simple_tag($subLevel . ' ' . $fact . ' ' . $event);
+				FunctionsEdit::addSimpleTag($subLevel . ' ' . $fact . ' ' . $event);
 			}
 		}
 	}
 
 	if ($sourceSOUR !== '') {
 		// Get rid of all saved Source data
-		add_simple_tag($sourceLevel . ' SOUR ' . $sourceSOUR);
-		add_simple_tag(($sourceLevel + 1) . ' PAGE ' . $sourcePAGE);
-		add_simple_tag(($sourceLevel + 2) . ' TEXT ' . $sourceTEXT);
-		add_simple_tag(($sourceLevel + 2) . ' DATE ' . $sourceDATE, '', GedcomTag::getLabel('DATA:DATE'));
-		add_simple_tag(($sourceLevel + 1) . ' QUAY ' . $sourceQUAY);
+		FunctionsEdit::addSimpleTag($sourceLevel . ' SOUR ' . $sourceSOUR);
+		FunctionsEdit::addSimpleTag(($sourceLevel + 1) . ' PAGE ' . $sourcePAGE);
+		FunctionsEdit::addSimpleTag(($sourceLevel + 2) . ' TEXT ' . $sourceTEXT);
+		FunctionsEdit::addSimpleTag(($sourceLevel + 2) . ' DATE ' . $sourceDATE, '', GedcomTag::getLabel('DATA:DATE'));
+		FunctionsEdit::addSimpleTag(($sourceLevel + 1) . ' QUAY ' . $sourceQUAY);
 	}
 }
 if (Auth::isAdmin()) {
@@ -695,10 +702,10 @@ if (Auth::isAdmin()) {
 	echo '</td></tr>';
 }
 echo '</table>';
-print_add_layer('SOUR', 1);
-print_add_layer('NOTE', 1);
-print_add_layer('SHARED_NOTE', 1);
-print_add_layer('RESN', 1);
+FunctionsEdit::printAddLayer('SOUR', 1);
+FunctionsEdit::printAddLayer('NOTE', 1);
+FunctionsEdit::printAddLayer('SHARED_NOTE', 1);
+FunctionsEdit::printAddLayer('RESN', 1);
 ?>
 		<p id="save-cancel">
 			<input type="submit" class="save" value="<?php echo I18N::translate('save'); ?>">

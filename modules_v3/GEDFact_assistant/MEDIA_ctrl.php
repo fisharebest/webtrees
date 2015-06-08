@@ -15,6 +15,7 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Controller\PageController;
 
 /**
  * Defined in edit_interface.php
@@ -76,7 +77,7 @@ global $person, $controller;
 									if (txt === "") {
 										alert("<?php echo I18N::translate('You must enter a name'); ?>");
 									} else {
-										window.open("module.php?mod=GEDFact_assistant&mod_action=media_3_find&callback=paste_id&action=filter&type=indi&multiple=&filter=" + txt, "win02", "resizable=1, menubar=0, scrollbars=1, top=180, left=600, HEIGHT=600, WIDTH=450 ").focus();
+										window.open("module.php?mod=GEDFact_assistant&mod_action=media_find&callback=paste_id&action=filter&type=indi&multiple=&filter=" + txt, "win02", "resizable=1, menubar=0, scrollbars=1, top=180, left=600, HEIGHT=600, WIDTH=450 ").focus();
 									}
 								}
 							</script>

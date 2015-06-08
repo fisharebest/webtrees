@@ -16,6 +16,8 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\Functions;
 use Rhumsaa\Uuid\Uuid;
 
 /**
@@ -104,7 +106,7 @@ case 'login':
 		// We're logging in as an administrator
 		if (Auth::isAdmin()) {
 			// Check for updates
-			$latest_version_txt = fetch_latest_version();
+			$latest_version_txt = Functions::fetchLatestVersion();
 			if (preg_match('/^[0-9.]+\|[0-9.]+\|/', $latest_version_txt)) {
 				list($latest_version, $earliest_version, $download_url) = explode('|', $latest_version_txt);
 				if (version_compare(WT_VERSION, $latest_version) < 0) {
@@ -195,7 +197,7 @@ default:
 
 	// hidden New Password block
 	echo '<div id="new_passwd">
-		<form id="new_passwd_form" name="new_passwd_form" action="'.WT_LOGIN_URL . '" method="post">
+		<form id="new_passwd_form" name="new_passwd_form" action="' . WT_LOGIN_URL . '" method="post">
 		<input type="hidden" name="action" value="requestpw">
 		<h4>', I18N::translate('Lost password request'), '</h4>
 		<div>
@@ -216,9 +218,9 @@ case 'requestpw':
 	$user      = User::findByIdentifier($user_name);
 
 	if ($user) {
-		$passchars = 'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+		$passchars   = 'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 		$user_new_pw = '';
-		$max = strlen($passchars) - 1;
+		$max         = strlen($passchars) - 1;
 		for ($i = 0; $i < 8; $i++) {
 			$index = rand(0, $max);
 			$user_new_pw .= $passchars{$index};
@@ -532,7 +534,7 @@ case 'verify_hash':
 	$webmaster = User::find($WT_TREE->getPreference('WEBMASTER_USER_ID'));
 	I18N::init($webmaster->getPreference('language'));
 
-	$user = User::findByIdentifier($user_name);
+	$user       = User::findByIdentifier($user_name);
 	$mail1_body =
 		I18N::translate('Hello administrator…') .
 		Mail::EOL . Mail::EOL .

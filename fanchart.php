@@ -16,6 +16,10 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Controller\FanchartController;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+
 define('WT_SCRIPT_NAME', 'fanchart.php');
 require './includes/session.php';
 
@@ -76,7 +80,7 @@ $controller
 					</td>
 					<td class="optionbox">
 						<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
-						<?php echo print_findindi_link('rootid'); ?>
+						<?php echo FunctionsPrint::printFindIndividualLink('rootid'); ?>
 					</td>
 					<td class="descriptionbox">
 						<label for="fan_style">
@@ -84,7 +88,7 @@ $controller
 							</label>
 					</td>
 					<td class="optionbox">
-						<?php echo select_edit_control('fan_style', $controller->getFanStyles(), null, $controller->fan_style); ?>
+						<?php echo FunctionsEdit::selectEditControl('fan_style', $controller->getFanStyles(), null, $controller->fan_style); ?>
 					</td>
 					<td rowspan="2" class="topbottombar vmiddle">
 						<input type="submit" value="<?php echo I18N::translate('View'); ?>">
@@ -97,7 +101,7 @@ $controller
 						</label>
 					</td>
 					<td class="optionbox">
-						<?php echo edit_field_integers('generations', $controller->generations, 2, 9); ?>
+						<?php echo FunctionsEdit::editFieldInteger('generations', $controller->generations, 2, 9); ?>
 					</td>
 					<td class="descriptionbox">
 						<label for="fan_width">
@@ -115,7 +119,7 @@ $controller
 
 if ($controller->error_message) {
 	echo '<p class="ui-state-error">', $controller->error_message, '</p>';
-	
+
 	return;
 }
 

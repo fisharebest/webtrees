@@ -54,9 +54,7 @@
 
 		<Body>
 			<SetVar name="printedFamilies" value="0" />
-			<List list="family" filter1="MARR:PLAC CONTAINS $marrplace" filter2="MARR:DATE GTE $marrdate1" filter3="MARR:DATE LTE $marrdate2" filter4="REGEXP /\n1 MARR/" sortby="$sortby">
-			<!-- filter4 should be: filter4="NAME CONTAINS $name", but the family name doesn't exist as a field in the database,
-					so we can't use that.  -->
+			<List list="family" filter1="MARR:PLAC CONTAINS $marrplace" filter2="MARR:DATE GTE $marrdate1" filter3="MARR:DATE LTE $marrdate2" filter4="NAME CONTAINS $name" sortby="$sortby">
 				<SetVar name="skipFamily" value="no" />
 				<if condition="$name!=''">
 					<SetVar name="skipFamily" value="yes" />

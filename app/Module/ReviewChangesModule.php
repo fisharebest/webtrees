@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,18 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsDate;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\GedcomRecord;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Mail;
+use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Theme;
+use Fisharebest\Webtrees\Tree;
+use Fisharebest\Webtrees\User;
 
 /**
  * Class ReviewChangesModule
@@ -79,10 +91,10 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 			}
 		}
 		if (Auth::isEditor($WT_TREE) && $WT_TREE->hasPendingEdit()) {
-			$id = $this->getName() . $block_id;
+			$id    = $this->getName() . $block_id;
 			$class = $this->getName() . '_block';
 			if ($ctype === 'user' || Auth::isManager($WT_TREE)) {
-				$title = '<i class="icon-admin" title="' . I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
+				$title = '<a class="icon-admin" title="' . I18N::translate('Configure') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
 			} else {
 				$title = '';
 			}
@@ -93,8 +105,8 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 				$content .= "<a href=\"#\" onclick=\"window.open('edit_changes.php','_blank', chan_window_specs); return false;\">" . I18N::translate('There are pending changes for you to moderate.') . "</a><br>";
 			}
 			if ($sendmail == "yes") {
-				$content .= I18N::translate('Last email reminder was sent ') . format_timestamp(Site::getPreference('LAST_CHANGE_EMAIL')) . "<br>";
-				$content .= I18N::translate('Next email reminder will be sent after ') . format_timestamp(Site::getPreference('LAST_CHANGE_EMAIL') + (60 * 60 * 24 * $days)) . "<br><br>";
+				$content .= I18N::translate('Last email reminder was sent ') . FunctionsDate::formatTimestamp(Site::getPreference('LAST_CHANGE_EMAIL')) . "<br>";
+				$content .= I18N::translate('Next email reminder will be sent after ') . FunctionsDate::formatTimestamp(Site::getPreference('LAST_CHANGE_EMAIL') + (60 * 60 * 24 * $days)) . "<br><br>";
 			}
 			$content .= '<ul>';
 			$changes = Database::prepare(
@@ -116,6 +128,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 				if ($block) {
 					$class .= ' small_inner_block';
 				}
+
 				return Theme::theme()->formatBlock($id, $title, $class, $content);
 			} else {
 				return $content;
@@ -161,7 +174,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Send out reminder emails?');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('sendmail', $sendmail);
+		echo FunctionsEdit::editFieldYesNo('sendmail', $sendmail);
 		echo '<br>';
 		echo I18N::translate('Reminder email frequency (days)') . "&nbsp;<input type='text' name='days' value='" . $days . "' size='2'>";
 		echo '</td></tr>';
@@ -169,7 +182,7 @@ class ReviewChangesModule extends AbstractModule implements ModuleBlockInterface
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for a yes/no option */ I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('block', $block);
+		echo FunctionsEdit::editFieldYesNo('block', $block);
 		echo '</td></tr>';
 	}
 }

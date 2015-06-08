@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,13 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsDb;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Stats;
+use Fisharebest\Webtrees\Theme;
 
 /**
  * Class FamilyTreeStatisticsModule
@@ -65,10 +72,10 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 			}
 		}
 
-		$id = $this->getName() . $block_id;
+		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
-			$title = '<i class="icon-admin" title="' . I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
+			$title = '<a class="icon-admin" title="' . I18N::translate('Configure') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
 		} else {
 			$title = '';
 		}
@@ -81,7 +88,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		if ($show_last_update) {
 			$content .= '<div>' . /* I18N: %s is a date */ I18N::translate('This family tree was last updated on %s.', strip_tags($stats->gedcomUpdated())) . '</div>';
 		}
-/** Responsive Design */
+	/** Responsive Design */
 
 	$content .= '<div class="stat-table1">';
 		if ($stat_indi) {
@@ -182,7 +189,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		}
 		// NOTE: Print the most common surnames
 		if ($show_common_surnames) {
-			$surnames = get_common_surnames($WT_TREE->getPreference('COMMON_NAMES_THRESHOLD'), $WT_TREE);
+			$surnames = FunctionsDb::getCommonSurnames($WT_TREE->getPreference('COMMON_NAMES_THRESHOLD'), $WT_TREE);
 			if (count($surnames) > 0) {
 				$content .= '<p><b>' . I18N::translate('Most common surnames') . '</b></p>';
 				$content .= '<div class="common_surnames">';
@@ -267,13 +274,13 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for yes/no option */ I18N::translate('Show date of last update?');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('show_last_update', $show_last_update);
+		echo FunctionsEdit::editFieldYesNo('show_last_update', $show_last_update);
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Show common surnames?');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('show_common_surnames', $show_common_surnames);
+		echo FunctionsEdit::editFieldYesNo('show_common_surnames', $show_common_surnames);
 		echo '</td></tr>';
 
 ?>

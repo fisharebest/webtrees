@@ -23,6 +23,10 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\AjaxController;
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+
 define('WT_SCRIPT_NAME', 'statistics.php');
 require './includes/session.php';
 
@@ -201,7 +205,7 @@ if (!$ajax) {
 			</tr>
 		</table>
 		</fieldset>';
-	} else if ($tab == 1) {
+	} elseif ($tab == 1) {
 		echo '<fieldset>
 		<legend>', I18N::translate('Total families: %s', $stats->totalFamilies()), '</legend>
 		<b>', I18N::translate('Events'), '</b>
@@ -339,7 +343,7 @@ if (!$ajax) {
 			</tr>
 		</table>
 		</fieldset>';
-	} else if ($tab == 2) {
+	} elseif ($tab == 2) {
 		echo '<fieldset>
 		<legend>', I18N::translate('Records'), ': ', $stats->totalRecords(), '</legend>
 		<table class="facts_table">
@@ -422,7 +426,7 @@ if (!$ajax) {
 			</tr>
 		</table>
 		</fieldset>';
-	} else if ($tab == 3) {
+	} elseif ($tab == 3) {
 		echo '<fieldset>
 		<legend>', I18N::translate('Create your own chart'), '</legend>';
 		?>
@@ -584,7 +588,7 @@ if (!$ajax) {
 			<br>
 			</div>
 			<div id="surname_opt" style="display:none;">';
-		echo GedcomTag::getLabel('SURN'), help_link('google_chart_surname'), '<br><input data-autocomplete-type="SURN" type="text" name="SURN" size="20">';
+		echo GedcomTag::getLabel('SURN'), FunctionsPrint::helpLink('google_chart_surname'), '<br><input data-autocomplete-type="SURN" type="text" name="SURN" size="20">';
 		echo '<br>
 			</div>';
 		echo I18N::translate('Geographical area');

@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 namespace Fisharebest\Webtrees;
 
 /**
@@ -51,7 +50,7 @@ class Log {
 					$message,
 					WT_CLIENT_IP,
 					Auth::id(),
-					$tree ? $tree->getTreeId() : null
+					$tree ? $tree->getTreeId() : null,
 		));
 	}
 

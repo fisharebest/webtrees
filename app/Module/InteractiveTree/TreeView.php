@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module\InteractiveTree;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,10 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
 
 /**
  * Class TreeView
@@ -29,7 +33,7 @@ class TreeView {
 	 * @param string $name the name of the TreeView object’s instance
 	 */
 	public function __construct($name = 'tree') {
-		$this->name = $name;
+		$this->name         = $name;
 		$this->all_partners = Filter::cookie('allPartners', 'true|false', 'true');
 	}
 
@@ -38,7 +42,7 @@ class TreeView {
 	 * Size is set by the container, as the viewport can scale itself automatically
 	 *
 	 * @param Individual $root_person  the id of the root person
-	 * @param integer    $generations number of generations to draw
+	 * @param int        $generations number of generations to draw
 	 *
 	 * @return string[]  HTML and Javascript
 	 */
@@ -80,14 +84,14 @@ class TreeView {
 		global $WT_TREE;
 
 		$list = explode(';', $list);
-		$r = array();
+		$r    = array();
 		foreach ($list as $jsonRequest) {
 			$firstLetter = substr($jsonRequest, 0, 1);
 			$jsonRequest = substr($jsonRequest, 1);
 			switch ($firstLetter) {
 			case 'c':
 				$fidlist = explode(',', $jsonRequest);
-				$flist = array();
+				$flist   = array();
 				foreach ($fidlist as $fid) {
 					$flist[] = Family::getInstance($fid, $WT_TREE);
 				}
@@ -95,9 +99,9 @@ class TreeView {
 				break;
 			case 'p':
 				$params = explode('@', $jsonRequest);
-				$fid = $params[0];
-				$order = $params[1];
-				$f = Family::getInstance($fid, $WT_TREE);
+				$fid    = $params[0];
+				$order  = $params[1];
+				$f      = Family::getInstance($fid, $WT_TREE);
 				if ($f->getHusband()) {
 					$r[] = $this->drawPerson($f->getHusband(), 0, 1, $f, $order);
 				} elseif ($f->getWife()) {
@@ -106,6 +110,7 @@ class TreeView {
 				break;
 			}
 		}
+
 		return json_encode($r);
 	}
 
@@ -150,22 +155,23 @@ class TreeView {
 		foreach ($individual->getFacts(WT_EVENTS_DEAT, true) as $fact) {
 			$hmtl .= $fact->summary();
 		}
+
 		return '<div class="tv' . $individual->getSex() . ' tv_person_expanded">' . $hmtl . '</div>';
 	}
 
 	/**
 	 * Draw the children for some families
 	 *
-	 * @param array   $familyList array of families to draw the children for
-	 * @param integer $gen        number of generations to draw
-	 * @param boolean $ajax       setted to true for an ajax call
+	 * @param Family[] $familyList array of families to draw the children for
+	 * @param int      $gen        number of generations to draw
+	 * @param bool     $ajax       setted to true for an ajax call
 	 *
 	 * @return string
 	 */
 	private function drawChildren(array $familyList, $gen = 1, $ajax = false) {
-		$html = '';
+		$html          = '';
 		$children2draw = array();
-		$f2load = array();
+		$f2load        = array();
 
 		foreach ($familyList as $f) {
 			if (empty($f)) {
@@ -183,7 +189,7 @@ class TreeView {
 		$tc = count($children2draw);
 		if ($tc) {
 			$f2load = implode(',', $f2load);
-			$nbc = 0;
+			$nbc    = 0;
 			foreach ($children2draw as $child) {
 				$nbc++;
 				if ($tc == 1) {
@@ -201,6 +207,7 @@ class TreeView {
 				$html = '<td align="right"' . ($gen == 0 ? ' abbr="c' . $f2load . '"' : '') . '>' . $html . '</td>' . $this->drawHorizontalLine();
 			}
 		}
+
 		return $html;
 	}
 
@@ -208,11 +215,11 @@ class TreeView {
 	 * Draw a person in the tree
 	 *
 	 * @param Individual $person The Person object to draw the box for
-	 * @param integer       $gen    The number of generations up or down to print
-	 * @param integer       $state  Whether we are going up or down the tree, -1 for descendents +1 for ancestors
+	 * @param int        $gen    The number of generations up or down to print
+	 * @param int        $state  Whether we are going up or down the tree, -1 for descendents +1 for ancestors
 	 * @param Family     $pfamily
-	 * @param string        $order  first (1), last(2), unique(0), or empty. Required for drawing lines between boxes
-	 * @param boolean       $isRoot
+	 * @param string     $order  first (1), last(2), unique(0), or empty. Required for drawing lines between boxes
+	 * @param bool       $isRoot
 	 *
 	 * @return string
 	 *
@@ -294,7 +301,7 @@ class TreeView {
 				$html .= '</td></tr>';
 			}
 			if (count($fop)) {
-				$n = 0;
+				$n  = 0;
 				$nb = count($fop);
 				foreach ($fop as $p) {
 					$n++;
@@ -311,6 +318,7 @@ class TreeView {
 		if ($isRoot) {
 			$html .= '</td><td id="tv_tree_right"></td></tr><tr><td id="tv_tree_bottomleft"></td><td id="tv_tree_bottom"></td><td id="tv_tree_bottomright"></td></tr></tbody></table>';
 		}
+
 		return $html;
 	}
 
@@ -353,6 +361,7 @@ class TreeView {
 			$title = '';
 		}
 		$sex = $individual->getSex();
+
 		return '<div class="tv' . $sex . ' ' . $dashed . '"' . $title . '><a href="' . $individual->getHtmlUrl() . '"></a>' . $individual->getFullName() . ' <span class="dates">' . $individual->getLifeSpan() . '</span></div>';
 	}
 

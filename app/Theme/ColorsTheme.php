@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Theme;
 
 /**
  * webtrees: online genealogy
@@ -15,23 +15,37 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Session;
+use Fisharebest\Webtrees\Site;
 
 /**
  * Class ColorsTheme - The colors theme.
  */
-class ColorsTheme extends CloudsTheme {
+class ColorsTheme extends CloudsTheme implements ThemeInterface {
 	/** @var string[] A list of color palettes */
 	protected $palettes;
 
 	/** @var string Which of the color palettes to use on this page */
 	protected $palette;
 
-	/** {@inheritdoc} */
+	/**
+	 * Where are our CSS, JS and other assets?
+	 *
+	 * @return string A relative path, such as "themes/foo/"
+	 */
 	public function assetUrl() {
 		return 'themes/colors/css-1.7.0/';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Add markup to the secondary menu.
+	 *
+	 * @return string
+	 */
 	protected function formatSecondaryMenu() {
 		return
 			'<ul class="secondary-menu">' .
@@ -42,7 +56,11 @@ class ColorsTheme extends CloudsTheme {
 			'</ul>';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Create the contents of the <header> tag.
+	 *
+	 * @return string
+	 */
 	protected function headerContent() {
 		return
 			//$this->accessibilityLinks() .
@@ -52,29 +70,27 @@ class ColorsTheme extends CloudsTheme {
 
 	/**
 	 * Create resources for the colors theme.
-	 *
-	 * {@inheritdoc}
 	 */
 	public function hookAfterInit() {
 		$this->palettes = array(
-			'aquamarine'      => /* I18N: The name of a colour-scheme */ I18N::translate('Aqua Marine'),
-			'ash'             => /* I18N: The name of a colour-scheme */ I18N::translate('Ash'),
-			'belgianchocolate'=> /* I18N: The name of a colour-scheme */ I18N::translate('Belgian Chocolate'),
-			'bluelagoon'      => /* I18N: The name of a colour-scheme */ I18N::translate('Blue Lagoon'),
-			'bluemarine'      => /* I18N: The name of a colour-scheme */ I18N::translate('Blue Marine'),
-			'coffeeandcream'  => /* I18N: The name of a colour-scheme */ I18N::translate('Coffee and Cream'),
-			'coldday'         => /* I18N: The name of a colour-scheme */ I18N::translate('Cold Day'),
-			'greenbeam'       => /* I18N: The name of a colour-scheme */ I18N::translate('Green Beam'),
-			'mediterranio'    => /* I18N: The name of a colour-scheme */ I18N::translate('Mediterranio'),
-			'mercury'         => /* I18N: The name of a colour-scheme */ I18N::translate('Mercury'),
-			'nocturnal'       => /* I18N: The name of a colour-scheme */ I18N::translate('Nocturnal'),
-			'olivia'          => /* I18N: The name of a colour-scheme */ I18N::translate('Olivia'),
-			'pinkplastic'     => /* I18N: The name of a colour-scheme */ I18N::translate('Pink Plastic'),
-			'sage'            => /* I18N: The name of a colour-scheme */ I18N::translate('Sage'),
-			'shinytomato'     => /* I18N: The name of a colour-scheme */ I18N::translate('Shiny Tomato'),
-			'tealtop'         => /* I18N: The name of a colour-scheme */ I18N::translate('Teal Top'),
+			'aquamarine'       => /* I18N: The name of a colour-scheme */ I18N::translate('Aqua Marine'),
+			'ash'              => /* I18N: The name of a colour-scheme */ I18N::translate('Ash'),
+			'belgianchocolate' => /* I18N: The name of a colour-scheme */ I18N::translate('Belgian Chocolate'),
+			'bluelagoon'       => /* I18N: The name of a colour-scheme */ I18N::translate('Blue Lagoon'),
+			'bluemarine'       => /* I18N: The name of a colour-scheme */ I18N::translate('Blue Marine'),
+			'coffeeandcream'   => /* I18N: The name of a colour-scheme */ I18N::translate('Coffee and Cream'),
+			'coldday'          => /* I18N: The name of a colour-scheme */ I18N::translate('Cold Day'),
+			'greenbeam'        => /* I18N: The name of a colour-scheme */ I18N::translate('Green Beam'),
+			'mediterranio'     => /* I18N: The name of a colour-scheme */ I18N::translate('Mediterranio'),
+			'mercury'          => /* I18N: The name of a colour-scheme */ I18N::translate('Mercury'),
+			'nocturnal'        => /* I18N: The name of a colour-scheme */ I18N::translate('Nocturnal'),
+			'olivia'           => /* I18N: The name of a colour-scheme */ I18N::translate('Olivia'),
+			'pinkplastic'      => /* I18N: The name of a colour-scheme */ I18N::translate('Pink Plastic'),
+			'sage'             => /* I18N: The name of a colour-scheme */ I18N::translate('Sage'),
+			'shinytomato'      => /* I18N: The name of a colour-scheme */ I18N::translate('Shiny Tomato'),
+			'tealtop'          => /* I18N: The name of a colour-scheme */ I18N::translate('Teal Top'),
 		);
-		uasort($this->palettes, __NAMESPACE__ . '\I18N::strcasecmp');
+		uasort($this->palettes, '\Fisharebest\Webtrees\I18N::strcasecmp');
 
 		// If we've selected a new palette, and we are logged in, set this value as a default.
 		if (isset($_GET['themecolor']) && array_key_exists($_GET['themecolor'], $this->palettes)) {
@@ -133,7 +149,7 @@ class ColorsTheme extends CloudsTheme {
 		foreach ($this->palettes as $palette_id => $palette_name) {
 			$menu->addSubmenu(new Menu(
 				$palette_name,
-				get_query_url(array('themecolor' => $palette_id), '&amp;'),
+				Functions::getQueryUrl(array('themecolor' => $palette_id), '&amp;'),
 				'menu-color-' . $palette_id . ($this->palette === $palette_id ? ' active' : '')
 			));
 		}
@@ -141,7 +157,11 @@ class ColorsTheme extends CloudsTheme {
 		return $menu;
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * A list of CSS files to include for this page.
+	 *
+	 * @return string[]
+	 */
 	protected function stylesheets() {
 		return array(
 			'themes/colors/jquery-ui-1.11.2/jquery-ui.css',
@@ -150,12 +170,20 @@ class ColorsTheme extends CloudsTheme {
 		);
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * A fixed string to identify this theme, in settings, etc.
+	 *
+	 * @return string
+	 */
 	public function themeId() {
 		return 'colors';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * What is this theme called?
+	 *
+	 * @return string
+	 */
 	public function themeName() {
 		return /* I18N: Name of a theme. */ I18N::translate('colors');
 	}

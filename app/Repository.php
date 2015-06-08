@@ -21,28 +21,7 @@ namespace Fisharebest\Webtrees;
  */
 class Repository extends GedcomRecord {
 	const RECORD_TYPE = 'REPO';
-	const URL_PREFIX = 'repo.php?rid=';
-
-	/**
-	 * Get an instance of a repository object.  For single records,
-	 * we just receive the XREF.  For bulk records (such as lists
-	 * and search results) we can receive the GEDCOM data as well.
-	 *
-	 * @param string      $xref
-	 * @param Tree        $tree
-	 * @param string|null $gedcom
-	 *
-	 * @return Repository|null
-	 */
-	public static function getInstance($xref, Tree $tree, $gedcom = null) {
-		$record = parent::getInstance($xref, $tree, $gedcom);
-
-		if ($record instanceof Repository) {
-			return $record;
-		} else {
-			return null;
-		}
-	}
+	const URL_PREFIX  = 'repo.php?rid=';
 
 	/** {@inheritdoc} */
 	protected static function fetchGedcomRecord($xref, $tree_id) {

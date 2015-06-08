@@ -16,16 +16,6 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use PDOException;
-
-// Create tables, if not already present
-try {
-	Database::updateSchema(WT_MODULES_DIR . 'user_blog/db_schema/', 'NB_SCHEMA_VERSION', 3);
-} catch (PDOException $ex) {
-	// The schema update scripts should never fail.  If they do, there is no clean recovery.
-	FlashMessages::addMessage($ex->getMessage(), 'danger');
-	header('Location: ' . WT_BASE_URL . 'site-unavailable.php');
-	throw $ex;
-}
+use Fisharebest\Webtrees\Module\UserJournalModule;
 
 return new UserJournalModule(__DIR__);

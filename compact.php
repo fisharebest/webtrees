@@ -23,6 +23,9 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\CompactController;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+
 define('WT_SCRIPT_NAME', 'compact.php');
 require './includes/session.php';
 
@@ -45,7 +48,7 @@ $controller
 					</td>
 					<td class="optionbox vmiddle">
 						<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
-						<?php echo print_findindi_link('rootid'); ?>
+						<?php echo FunctionsPrint::printFindIndividualLink('rootid'); ?>
 					</td>
 					<td <?php echo $WT_TREE->getPreference('SHOW_HIGHLIGHT_IMAGES') ? 'rowspan="2"' : ''; ?> class="facts_label03">
 						<input type="submit" value="<?php echo I18N::translate('View'); ?>">

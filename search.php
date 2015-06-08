@@ -16,6 +16,9 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Controller\SearchController;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+
 define('WT_SCRIPT_NAME', 'search.php');
 require './includes/session.php';
 
@@ -74,7 +77,7 @@ function checknames(frm) {
 			</div>
 			<div class="value">
 				<input id="query" type="text" name="query" value="<?php echo Filter::escapeHtml($controller->query); ?>" size="40" autofocus>
-				<?php echo print_specialchar_link('query'); ?>
+				<?php echo FunctionsPrint::printSpecialCharacterLink('query'); ?>
  			</div>
 			<div class="label">
 				<?php echo I18N::translate('Records'); ?>

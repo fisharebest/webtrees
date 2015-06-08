@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Controller;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,8 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\I18N;
 
 /**
  * Class CompactController - Controller for the compact chart
@@ -47,7 +49,7 @@ class CompactController extends ChartController {
 	}
 
 	/**
-	 * @param integer $n
+	 * @param int $n
 	 *
 	 * @return string
 	 */
@@ -55,7 +57,7 @@ class CompactController extends ChartController {
 		$indi = $this->treeid[$n];
 
 		if ($indi && $indi->canShowName()) {
-			$name = $indi->getFullName();
+			$name    = $indi->getFullName();
 			$addname = $indi->getAddName();
 
 			if ($this->show_thumbs && $indi->getTree()->getPreference('SHOW_HIGHLIGHT_IMAGES')) {
@@ -98,8 +100,8 @@ class CompactController extends ChartController {
 	}
 
 	/**
-	 * @param integer $n
-	 * @param string  $arrow_dir
+	 * @param int    $n
+	 * @param string $arrow_dir
 	 *
 	 * @return string
 	 */
@@ -117,7 +119,7 @@ class CompactController extends ChartController {
 
 		if ($indi) {
 			$title = I18N::translate('Compact tree of %s', $indi->getFullName());
-			$text = '<a class="icon-' . $arrow_dir . 'arrow" title="' . strip_tags($title) . '" href="?rootid=' . $indi->getXref();
+			$text  = '<a class="icon-' . $arrow_dir . 'arrow" title="' . strip_tags($title) . '" href="?rootid=' . $indi->getXref();
 			if ($this->show_thumbs) {
 				$text .= "&amp;show_thumbs=" . $this->show_thumbs;
 			}

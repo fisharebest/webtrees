@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Controller;
 
 /**
  * webtrees: online genealogy
@@ -15,12 +15,22 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Date\GregorianDate;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsDate;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Theme;
 
 /**
  * Class TimelineController - Controller for the timeline chart
  */
 class TimelineController extends PageController {
-	/** @var integer Height of the age box */
+	/** @var int Height of the age box */
 	public $bheight = 30;
 
 	/** @var Fact[] The facts to display on the chart */
@@ -35,10 +45,10 @@ class TimelineController extends PageController {
 	/** @var integer[] Numeric birth days of each individual */
 	public $birthdays = array();
 
-	/** @var integer Lowest year to display */
+	/** @var int Lowest year to display */
 	public $baseyear = 0;
 
-	/** @var integer Highest year to display */
+	/** @var int Highest year to display */
 	public $topyear = 0;
 
 	/** @var string[] List of individual XREFs to display */
@@ -50,7 +60,7 @@ class TimelineController extends PageController {
 	/** @var string URL-encoded list of XREFs */
 	public $pidlinks = '';
 
-	/** @var integer Vertical scale */
+	/** @var int Vertical scale */
 	public $scale = 2;
 
 	// GEDCOM elements that may have DATE data, but should not be displayed
@@ -217,16 +227,16 @@ class TimelineController extends PageController {
 		echo $event->getLabel();
 		echo ' — ';
 		if ($record instanceof Individual) {
-			echo format_fact_date($event, $record, false, false);
+			echo FunctionsPrint::formatFactDate($event, $record, false, false);
 		} elseif ($record instanceof Family) {
 			echo $gdate->display();
 			if ($record->getHusband() && $record->getHusband()->getBirthDate()->isOK()) {
-				$ageh = get_age_at_event(Date::getAgeGedcom($record->getHusband()->getBirthDate(), $gdate), false);
+				$ageh = FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($record->getHusband()->getBirthDate(), $gdate), false);
 			} else {
 				$ageh = null;
 			}
 			if ($record->getWife() && $record->getWife()->getBirthDate()->isOK()) {
-				$agew = get_age_at_event(Date::getAgeGedcom($record->getWife()->getBirthDate(), $gdate), false);
+				$agew = FunctionsDate::getAgeAtEvent(Date::getAgeGedcom($record->getWife()->getBirthDate(), $gdate), false);
 			} else {
 				$agew = null;
 			}

@@ -23,6 +23,8 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\PageController;
+
 define('WT_SCRIPT_NAME', 'admin_trees_duplicates.php');
 require './includes/session.php';
 
@@ -44,8 +46,9 @@ $repositories = Database::prepare(
 ))->fetchAll();
 
 $repositories = array_map(
-	function ($x) use ($WT_TREE) {
+	function (\stdClass $x) use ($WT_TREE) {
 		$tmp = explode(',', $x->xrefs);
+
 		return array_map(function ($y) use ($WT_TREE) {
 			return Repository::getInstance($y, $WT_TREE);
 		}, $tmp);
@@ -64,8 +67,9 @@ $sources = Database::prepare(
 ))->fetchAll();
 
 $sources = array_map(
-	function ($x) use ($WT_TREE) {
+	function (\stdClass $x) use ($WT_TREE) {
 		$tmp = explode(',', $x->xrefs);
+
 		return array_map(function ($y) use ($WT_TREE) {
 			return Source::getInstance($y, $WT_TREE);
 		}, $tmp);
@@ -84,8 +88,9 @@ $individuals = Database::prepare(
 ))->fetchAll();
 
 $individuals = array_map(
-	function ($x) use ($WT_TREE) {
+	function (\stdClass $x) use ($WT_TREE) {
 		$tmp = explode(',', $x->xrefs);
+
 		return array_map(function ($y) use ($WT_TREE) {
 			return Individual::getInstance($y, $WT_TREE);
 		}, $tmp);
@@ -103,8 +108,9 @@ $families = Database::prepare(
 ))->fetchAll();
 
 $families = array_map(
-	function ($x) use ($WT_TREE) {
+	function (\stdClass $x) use ($WT_TREE) {
 		$tmp = explode(',', $x->xrefs);
+
 		return array_map(function ($y) use ($WT_TREE) {
 			return Family::getInstance($y, $WT_TREE);
 		}, $tmp);
@@ -122,8 +128,9 @@ $media = Database::prepare(
 ))->fetchAll();
 
 $media = array_map(
-	function ($x) use ($WT_TREE) {
+	function (\stdClass $x) use ($WT_TREE) {
 		$tmp = explode(',', $x->xrefs);
+
 		return array_map(function ($y) use ($WT_TREE) {
 			return Media::getInstance($y, $WT_TREE);
 		}, $tmp);
@@ -131,10 +138,10 @@ $media = array_map(
 );
 
 $all_duplicates = array(
-	I18N::translate('Repositories') => $repositories,
-	I18N::translate('Sources') => $sources,
-	I18N::translate('Individuals') => $individuals,
-	I18N::translate('Families') => $families,
+	I18N::translate('Repositories')  => $repositories,
+	I18N::translate('Sources')       => $sources,
+	I18N::translate('Individuals')   => $individuals,
+	I18N::translate('Families')      => $families,
 	I18N::translate('Media objects') => $media,
 );
 

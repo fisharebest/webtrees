@@ -64,8 +64,8 @@ if (!defined('PASSWORD_BCRYPT') && crypt("password", $hash) !== $hash) {
 	define('PASSWORD_BCRYPT', 1);
 	define('PASSWORD_DEFAULT', 1);
 	/**
-	 * @param string  $password
-	 * @param integer $algo
+	 * @param string $password
+	 * @param int    $algo
 	 *
 	 * @return string
 	 */
@@ -74,10 +74,10 @@ if (!defined('PASSWORD_BCRYPT') && crypt("password", $hash) !== $hash) {
 	}
 
 	/**
-	 * @param string  $hash
-	 * @param integer $algo
+	 * @param string $hash
+	 * @param int    $algo
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	function password_needs_rehash($hash, $algo) {
 		return false;
@@ -87,7 +87,7 @@ if (!defined('PASSWORD_BCRYPT') && crypt("password", $hash) !== $hash) {
 	 * @param string $password
 	 * @param string $hash
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	function password_verify($password, $hash) {
 		return crypt($password, $hash) === $hash;
@@ -100,6 +100,7 @@ if (!defined('PASSWORD_BCRYPT') && crypt("password", $hash) !== $hash) {
  * @param string|null $code
  *
  * @link https://php.net/http_response_code
+ *
  * @return int|null
  */
 function http_response_code($code = null) {
@@ -222,7 +223,7 @@ function http_response_code($code = null) {
 			throw new \DomainException;
 		}
 		$http_response_code = $code;
-		$protocol = Filter::server('SERVER_PROTOCOL', null, 'HTTP/1.0');
+		$protocol           = Filter::server('SERVER_PROTOCOL', null, 'HTTP/1.0');
 		header($protocol . ' ' . $code . ' ' . $text);
 	}
 

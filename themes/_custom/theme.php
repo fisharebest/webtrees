@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace MyNamespace\MyProject;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,8 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Theme\WebtreesTheme;
 
 /**
  * Class CustomTheme - This is a template showing how to create a custom theme.
@@ -24,13 +26,12 @@ namespace Fisharebest\Webtrees;
  * For example, "themes/custom".  You should also rename the class.
  *
  * In this example, we are extending the webtrees theme, but you could
- * also extend any of the core themes, or even the base theme.  You
- * should choose a unique class name, as users may install many custom themes.
+ * also extend any of the core themes, or even the base theme.
  *
  * Only the first two functions are required: themeId() and themeName().
  * The rest are just examples, and should be removed in actual themes.
  */
-class CustomTheme extends WebtreesTheme {
+class MyTheme extends WebtreesTheme {
 	/**
 	 * Give your theme a unique identifier.  Themes beginning with an underscore
 	 * are reserved for internal use.
@@ -82,7 +83,7 @@ class CustomTheme extends WebtreesTheme {
 			// Start with the default "Lists" menu.
 			$menu = parent::menuLists();
 			// Remove the "notes" sub-menu.
-			$submenus = array_filter($menu->getSubmenus(), function(Menu $menu) {
+			$submenus = array_filter($menu->getSubmenus(), function (Menu $menu) {
 				return $menu->getClass() !== 'menu-list-note';
 			});
 			// Replace the sub-menus
@@ -97,4 +98,5 @@ class CustomTheme extends WebtreesTheme {
 	}
 }
 
-return new CustomTheme; // This script must return a theme object.
+return new MyTheme; // This script must return a theme object.
+

@@ -23,6 +23,9 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
+
 define('WT_SCRIPT_NAME', 'placelist.php');
 require './includes/session.php';
 
@@ -62,7 +65,7 @@ case 'list':
 		echo ' colspan="', $num_places > 20 ? 3 : 2, '"><i class="icon-place"></i> ';
 		echo I18N::translate('Place list');
 		echo '</td></tr><tr><td class="list_value_wrap"><ul>';
-		foreach ($list_places as $n=>$list_place) {
+		foreach ($list_places as $n => $list_place) {
 			echo '<li><a href="', $list_place->getURL(), '">', $list_place->getReverseName(), '</a></li>';
 			if ($num_places > 20) {
 				if ($n == (int) ($num_places / 3)) {
@@ -84,7 +87,7 @@ case 'hierarchy':
 	$gm_module = Module::getModuleByName('googlemap');
 
 	// Find this place and its ID
-	$place = new Place(implode(', ', array_reverse($parent)), $WT_TREE);
+	$place    = new Place(implode(', ', array_reverse($parent)), $WT_TREE);
 	$place_id = $place->getPlaceId();
 
 	$child_places = $place->getChildPlaces();
@@ -109,7 +112,7 @@ case 'hierarchy':
 	echo '</h2>';
 
 	if ($gm_module && $gm_module->getSetting('GM_PLACE_HIERARCHY')) {
-		$linklevels = '';
+		$linklevels  = '';
 		$placelevels = '';
 		$place_names = array();
 		for ($j = 0; $j < $level; $j++) {
@@ -146,7 +149,7 @@ case 'hierarchy':
 
 		echo '<li><a href="', $child_place->getURL(), '" class="list_item">', $child_place->getPlaceName(), '</a></li>';
 		if ($gm_module && $gm_module->getSetting('GM_PLACE_HIERARCHY')) {
-			list($tmp) = explode(', ', $child_place->getGedcomName(), 2);
+			list($tmp)       = explode(', ', $child_place->getGedcomName(), 2);
 			$place_names[$n] = $tmp;
 		}
 		$n++;
@@ -188,7 +191,7 @@ case 'hierarchy':
 	if ($place_id && $action == 'show') {
 		// -- array of names
 		$myindilist = array();
-		$myfamlist = array();
+		$myfamlist  = array();
 
 		$positions =
 			Database::prepare("SELECT DISTINCT pl_gid FROM `##placelinks` WHERE pl_p_id=? AND pl_file=?")
@@ -224,13 +227,13 @@ case 'hierarchy':
 		}
 		echo '</ul>';
 		if ($myindilist) {
-			echo '<div id="places-indi">', format_indi_table($myindilist), '</div>';
+			echo '<div id="places-indi">', FunctionsPrintLists::individualTable($myindilist), '</div>';
 		}
 		if ($myfamlist) {
-			echo '<div id="places-fam">', format_fam_table($myfamlist), '</div>';
+			echo '<div id="places-fam">', FunctionsPrintLists::familyTable($myfamlist), '</div>';
 		}
 		if (!$myindilist && !$myfamlist) {
-			echo '<div id="places-indi">', format_indi_table(array()), '</div>';
+			echo '<div id="places-indi">', FunctionsPrintLists::individualTable(array()), '</div>';
 		}
 		echo '</div>'; // <div id="places-tabs">
 	}
@@ -244,3 +247,4 @@ case 'hierarchy':
 }
 
 echo '</div>'; // <div id="place-hierarchy">
+

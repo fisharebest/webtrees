@@ -16,6 +16,10 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Controller\AjaxController;
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+
 define('WT_SCRIPT_NAME', 'admin_media.php');
 require './includes/session.php';
 
@@ -50,7 +54,7 @@ if ($delete_file) {
 	$controller = new AjaxController;
 	// Only delete valid (i.e. unused) media files
 	$media_folder = Filter::post('media_folder', null, ''); // MySQL needs an empty string, not NULL
-	$disk_files = all_disk_files($media_folder, '', 'include', '');
+	$disk_files   = all_disk_files($media_folder, '', 'include', '');
 	if (in_array($delete_file, $disk_files)) {
 		$tmp = WT_DATA_DIR . $media_folder . $delete_file;
 		try {
@@ -107,7 +111,7 @@ case 'load_json':
 			'media_folder' => $media_folder,
 			'media_path_2' => Filter::escapeLike($media_path),
 			'search_1'     => Filter::escapeLike($search),
-			'search_2'     => Filter::escapeLike($search)
+			'search_2'     => Filter::escapeLike($search),
 		);
 		// Unfiltered rows
 		$SELECT2 =
@@ -120,7 +124,7 @@ case 'load_json':
 			" AND   m_filename NOT LIKE 'https://%'";
 		$ARGS2 = array(
 			'media_folder' => $media_folder,
-			'media_path_3' => $media_path
+			'media_path_3' => $media_path,
 		);
 
 		if ($subfolders == 'exclude') {
@@ -166,7 +170,7 @@ case 'load_json':
 
 		$data = array();
 		foreach ($rows as $row) {
-			$media = Media::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
+			$media  = Media::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
 			$data[] = array(
 				mediaFileInfo($media_folder, $media_path, $row->media_path),
 				$media->displayImage(),
@@ -184,7 +188,7 @@ case 'load_json':
 			" AND   (m_filename LIKE CONCAT('%', :search_1, '%') OR m_titl LIKE CONCAT('%', :search_2, '%'))";
 		$ARGS1 = array(
 			'search_1' => Filter::escapeLike($search),
-			'search_2' => Filter::escapeLike($search)
+			'search_2' => Filter::escapeLike($search),
 		);
 		// Unfiltered rows
 		$SELECT2 =
@@ -230,7 +234,7 @@ case 'load_json':
 
 		$data = array();
 		foreach ($rows as $row) {
-			$media = Media::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
+			$media  = Media::getInstance($row->xref, Tree::findById($row->gedcom_id), $row->gedcom);
 			$data[] = array(
 				GedcomTag::getLabelValue('URL', $row->m_filename),
 				$media->displayImage(),
@@ -247,7 +251,7 @@ case 'load_json':
 			" JOIN `##gedcom_setting` USING (gedcom_id)" .
 			" WHERE setting_name='MEDIA_DIRECTORY' AND setting_value = :media_folder"
 		)->execute(array(
-			'media_folder' => $media_folder
+			'media_folder' => $media_folder,
 		))->fetchAssoc();
 
 		$disk_files = all_disk_files($media_folder, $media_path, $subfolders, $search);
@@ -259,7 +263,7 @@ case 'load_json':
 
 		// Filter unused files
 		if ($search) {
-			$unused_files = array_filter($unused_files, function($x) use ($search) { return strpos($x, $search) !== false; });
+			$unused_files = array_filter($unused_files, function ($x) use ($search) { return strpos($x, $search) !== false; });
 		}
 		$recordsFiltered = count($unused_files);
 
@@ -329,7 +333,7 @@ case 'load_json':
 		'draw'            => Filter::getInteger('draw'), // String, but always an integer
 		'recordsTotal'    => $recordsTotal,
 		'recordsFiltered' => $recordsFiltered,
-		'data'            => $data
+		'data'            => $data,
 	));
 
 	return;
@@ -383,7 +387,7 @@ function media_paths($media_folder) {
  * Search a folder (and optional subfolders) for filenames that match a search pattern.
  *
  * @param string  $dir
- * @param boolean $recursive
+ * @param bool    $recursive
  * @param string  $filter
  *
  * @return string[]
@@ -395,7 +399,7 @@ function scan_dirs($dir, $recursive, $filter) {
 	if (is_dir($dir)) {
 		foreach (scandir($dir) as $path) {
 			if (is_dir($dir . $path)) {
-				// TODO - but what if there are user-defined subfolders “thumbs” or “watermarks”…
+				// What if there are user-defined subfolders “thumbs” or “watermarks”?
 				if ($path != '.' && $path != '..' && $path != 'thumbs' && $path != 'watermark' && $recursive) {
 					foreach (scan_dirs($dir . $path . '/', $recursive, $filter) as $subpath) {
 						$files[] = $path . '/' . $subpath;
@@ -406,6 +410,7 @@ function scan_dirs($dir, $recursive, $filter) {
 			}
 		}
 	}
+
 	return $files;
 }
 
@@ -499,6 +504,7 @@ function mediaFileInfo($media_folder, $media_path, $file) {
 		$html .= '</dl>';
 		$html .= '<div class="alert alert-danger">' . I18N::translate('This media file does not exist.') . '</div>';
 	}
+
 	return $html;
 }
 
@@ -512,7 +518,6 @@ function mediaFileInfo($media_folder, $media_path, $file) {
 function mediaObjectInfo(Media $media) {
 	$xref   = $media->getXref();
 	$gedcom = $media->getTree()->getName();
-	$name   = $media->getFullName();
 
 	$html =
 		'<div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-pencil"></i> <span class="caret"></span></button><ul class="dropdown-menu" role="menu">' .
@@ -584,7 +589,7 @@ $controller
 	jQuery("#media-table-' . $table_id . '").dataTable({
 		processing: true,
 		serverSide: true,
-		ajax: "'.WT_BASE_URL . WT_SCRIPT_NAME . '?action=load_json&files=' . $files . '&media_folder=' . $media_folder . '&media_path=' . $media_path . '&subfolders=' . $subfolders . '",
+		ajax: "' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=load_json&files=' . $files . '&media_folder=' . $media_folder . '&media_path=' . $media_path . '&subfolders=' . $subfolders . '",
 		' . I18N::datatablesI18N(array(5, 10, 20, 50, 100, 500, 1000, -1)) . ',
 		autoWidth:false,
 		pageLength: 10,
@@ -638,7 +643,7 @@ $controller
 
 					<div dir="ltr">
 						<?php if (count($media_folders) > 1): ?>
-						<?php echo WT_DATA_DIR, select_edit_control('media_folder', $media_folders, null, $media_folder, 'onchange="this.form.submit();"'); ?>
+						<?php echo WT_DATA_DIR, FunctionsEdit::selectEditControl('media_folder', $media_folders, null, $media_folder, 'onchange="this.form.submit();"'); ?>
 						<?php else: ?>
 						<?php echo WT_DATA_DIR, Filter::escapeHtml($media_folder); ?>
 						<input type="hidden" name="media_folder" value="<?php echo Filter::escapeHtml($media_folder); ?>">
@@ -646,7 +651,7 @@ $controller
 					</div>
 
 					<?php if (count($media_paths) > 1): ?>
-					<?php echo select_edit_control('media_path', $media_paths, null, $media_path, 'onchange="this.form.submit();"'); ?>
+					<?php echo FunctionsEdit::selectEditControl('media_path', $media_paths, null, $media_path, 'onchange="this.form.submit();"'); ?>
 					<?php else: ?>
 					<?php echo Filter::escapeHtml($media_path); ?>
 					<input type="hidden" name="media_path" value="<?php echo Filter::escapeHtml($media_path); ?>">

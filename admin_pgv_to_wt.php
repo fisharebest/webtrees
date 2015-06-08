@@ -16,6 +16,7 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Controller\PageController;
 use PDO;
 use PDOException;
 
@@ -76,7 +77,7 @@ if ($PGV_PATH) {
 			array(
 				'/^\s*(include|require).*/m',
 				'/.*<\?php.*/',
-				'/.*\?>.*/'
+				'/.*\?>.*/',
 			), '', $config_php
 		);
 		eval($config_php);
@@ -607,9 +608,9 @@ define('PGV_PRIV_USER', Auth::PRIV_USER);
 define('PGV_PRIV_NONE', Auth::PRIV_NONE);
 define('PGV_PRIV_HIDE', Auth::PRIV_HIDE);
 $PRIV_PUBLIC = Auth::PRIV_PRIVATE;
-$PRIV_USER = Auth::PRIV_USER;
-$PRIV_NONE = Auth::PRIV_NONE;
-$PRIV_HIDE = Auth::PRIV_HIDE;
+$PRIV_USER   = Auth::PRIV_USER;
+$PRIV_NONE   = Auth::PRIV_NONE;
+$PRIV_HIDE   = Auth::PRIV_HIDE;
 
 // Old versions of PhpGedView used a $GEDCOMS[] array.
 // New versions used a database.
@@ -725,9 +726,8 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 		echo '<p>Error - could not read configuration file ', $config, '</p>';
 	}
 
-	$stmt_default_resn = Database::prepare("INSERT INTO `##default_resn` (gedcom_id, xref, tag_type, resn) VALUES (?, ?, ?, CASE ? WHEN -1 THEN 'hidden' WHEN 0 THEN 'confidential' WHEN 1 THEN 'privacy' ELSE 'none' END)");
+	$stmt_default_resn   = Database::prepare("INSERT INTO `##default_resn` (gedcom_id, xref, tag_type, resn) VALUES (?, ?, ?, CASE ? WHEN -1 THEN 'hidden' WHEN 0 THEN 'confidential' WHEN 1 THEN 'privacy' ELSE 'none' END)");
 	$stmt_gedcom_setting = Database::prepare("INSERT INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value) VALUES (?,?,?)");
-
 
 	$privacy = str_replace(array('$INDEX_DIRECTORY', '${INDEX_DIRECTORY}'), $INDEX_DIRECTORY, $GED_DATA['privacy']);
 	if (substr($config, 0, 1) == '.') {
@@ -736,8 +736,8 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 	if (is_readable($privacy)) {
 		// initialise this, in case it is missing from the file
 		$person_privacy = array();
-		$person_facts = array();
-		$global_facts = array();
+		$person_facts   = array();
+		$global_facts   = array();
 
 		echo '<p>Reading privacy file ', $privacy, '</p>';
 		require $privacy;
@@ -761,7 +761,6 @@ foreach ($GEDCOMS as $GEDCOM => $GED_DATA) {
 				}
 			}
 		}
-
 
 	} else {
 		echo '<p>Could not read privacy file ', $privacy, '</p>';

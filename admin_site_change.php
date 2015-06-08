@@ -16,6 +16,8 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use PDO;
 
 /**
@@ -164,7 +166,7 @@ case 'load_json':
 
 	if ($length) {
 		Auth::user()->setPreference('admin_site_change_page_size', $length);
-		$limit = " LIMIT :limit OFFSET :offset";
+		$limit          = " LIMIT :limit OFFSET :offset";
 		$args['limit']  = $length;
 		$args['offset'] = $start;
 	} else {
@@ -192,7 +194,7 @@ case 'load_json':
 		'draw'            => Filter::getInteger('draw'),
 		'recordsTotal'    => $recordsTotal,
 		'recordsFiltered' => $recordsFiltered,
-		'data'            => $data
+		'data'            => $data,
 	));
 
 	return;
@@ -208,7 +210,7 @@ $controller
 		jQuery(".table-site-changes").dataTable( {
 			processing: true,
 			serverSide: true,
-			ajax: "'.WT_BASE_URL . WT_SCRIPT_NAME . '?action=load_json&from=' . $from . '&to=' . $to . '&type=' . $type . '&oldged=' . rawurlencode($oldged) . '&newged=' . rawurlencode($newged) . '&xref=' . rawurlencode($xref) . '&user=' . rawurlencode($user) . '&gedc=' . rawurlencode($gedc) . '",
+			ajax: "' . WT_BASE_URL . WT_SCRIPT_NAME . '?action=load_json&from=' . $from . '&to=' . $to . '&type=' . $type . '&oldged=' . rawurlencode($oldged) . '&newged=' . rawurlencode($newged) . '&xref=' . rawurlencode($xref) . '&user=' . rawurlencode($user) . '&gedc=' . rawurlencode($gedc) . '",
 			' . I18N::datatablesI18N(array(10, 20, 50, 100, 500, 1000, -1)) . ',
 			sorting: [[ 0, "desc" ]],
 			pageLength: ' . Auth::user()->getPreference('admin_site_change_page_size', 10) . ',
@@ -293,7 +295,7 @@ foreach (User::all() as $tmp_user) {
 			<label for="type">
 				<?php echo I18N::translate('Status'); ?>
 			</label>
-			<?php echo select_edit_control('type', $statuses, null, $type, 'class="form-control"'); ?>
+			<?php echo FunctionsEdit::selectEditControl('type', $statuses, null, $type, 'class="form-control"'); ?>
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
@@ -323,14 +325,14 @@ foreach (User::all() as $tmp_user) {
 			<label for="user">
 				<?php echo I18N::translate('User'); ?>
 			</label>
-			<?php echo select_edit_control('user', $users_array, '', $user, 'class="form-control"'); ?>
+			<?php echo FunctionsEdit::selectEditControl('user', $users_array, '', $user, 'class="form-control"'); ?>
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
 			<label for="gedc">
 				<?php echo I18N::translate('Family tree'); ?>
 			</label>
-			<?php echo select_edit_control('gedc', Tree::getNameList(), '', $gedc, Auth::isAdmin() ? 'class="form-control"' : 'disabled class="form-control"'); ?>
+			<?php echo FunctionsEdit::selectEditControl('gedc', Tree::getNameList(), '', $gedc, Auth::isAdmin() ? 'class="form-control"' : 'disabled class="form-control"'); ?>
 		</div>
 	</div>
 

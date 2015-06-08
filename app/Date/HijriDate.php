@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Date;
 
 /**
  * webtrees: online genealogy
@@ -17,6 +17,7 @@ namespace Fisharebest\Webtrees;
  */
 
 use Fisharebest\ExtCalendar\ArabicCalendar;
+use Fisharebest\Webtrees\I18N;
 
 /**
  * Class HijriDate - Definitions for the Hijri calendar.

@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Report;
 
 /**
  * webtrees: online genealogy
@@ -42,13 +42,13 @@ class ReportTcpdf extends TCPDF {
 	/** @var string Currently used style name */
 	public $currentStyle;
 
-	/** @var integer The last cell height */
+	/** @var int The last cell height */
 	public $lastCellHeight = 0;
 
-	/** @var integer The largest font size within a TextBox to calculate the height */
+	/** @var int The largest font size within a TextBox to calculate the height */
 	public $largestFontHeight = 0;
 
-	/** @var integer The last pictures page number */
+	/** @var int The last pictures page number */
 	public $lastpicpage = 0;
 
 	public $wt_report;
@@ -56,7 +56,7 @@ class ReportTcpdf extends TCPDF {
 	/**
 	 * PDF Header -PDF
 	 */
-	function header() {
+	public function header() {
 		foreach ($this->headerElements as $element) {
 			if (is_object($element)) {
 				$element->render($this);
@@ -80,7 +80,7 @@ class ReportTcpdf extends TCPDF {
 	/**
 	 * PDF Body -PDF
 	 */
-	function body() {
+	public function body() {
 		$this->AddPage();
 		foreach ($this->bodyElements as $key => $element) {
 			if (is_object($element)) {
@@ -98,7 +98,7 @@ class ReportTcpdf extends TCPDF {
 	/**
 	 * PDF Footnotes -PDF
 	 */
-	function footnotes() {
+	public function footnotes() {
 		foreach ($this->printedfootnotes as $element) {
 			if (($this->GetY() + $element->getFootnoteHeight($this)) > $this->getPageHeight()) {
 				$this->AddPage();
@@ -113,7 +113,7 @@ class ReportTcpdf extends TCPDF {
 	/**
 	 * PDF Footer -PDF
 	 */
-	function footer() {
+	public function footer() {
 		foreach ($this->footerElements as $element) {
 			if (is_object($element)) {
 				$element->render($this);
@@ -130,9 +130,9 @@ class ReportTcpdf extends TCPDF {
 	 *
 	 * @param object|string $element
 	 *
-	 * @return integer The number of the Header elements
+	 * @return int The number of the Header elements
 	 */
-	function addHeader($element) {
+	public function addHeader($element) {
 		$this->headerElements[] = $element;
 
 		return count($this->headerElements) - 1;
@@ -143,9 +143,9 @@ class ReportTcpdf extends TCPDF {
 	 *
 	 * @param object|string $element
 	 *
-	 * @return integer The number of the Page Header elements
+	 * @return int The number of the Page Header elements
 	 */
-	function addPageHeader($element) {
+	public function addPageHeader($element) {
 		$this->pageHeaderElements[] = $element;
 
 		return count($this->pageHeaderElements) - 1;
@@ -156,9 +156,9 @@ class ReportTcpdf extends TCPDF {
 	 *
 	 * @param object|string $element
 	 *
-	 * @return integer The number of the Body elements
+	 * @return int The number of the Body elements
 	 */
-	function addBody($element) {
+	public function addBody($element) {
 		$this->bodyElements[] = $element;
 
 		return count($this->bodyElements) - 1;
@@ -169,9 +169,9 @@ class ReportTcpdf extends TCPDF {
 	 *
 	 * @param object|string $element
 	 *
-	 * @return integer The number of the Footer elements
+	 * @return int The number of the Footer elements
 	 */
-	function addFooter($element) {
+	public function addFooter($element) {
 		$this->footerElements[] = $element;
 
 		return count($this->footerElements) - 1;
@@ -180,35 +180,35 @@ class ReportTcpdf extends TCPDF {
 	/**
 	 * @param $index
 	 */
-	function removeHeader($index) {
+	public function removeHeader($index) {
 		unset($this->headerElements[$index]);
 	}
 
 	/**
 	 * @param $index
 	 */
-	function removePageHeader($index) {
+	public function removePageHeader($index) {
 		unset($this->pageHeaderElements[$index]);
 	}
 
 	/**
 	 * @param $index
 	 */
-	function removeBody($index) {
+	public function removeBody($index) {
 		unset($this->bodyElements[$index]);
 	}
 
 	/**
 	 * @param $index
 	 */
-	function removeFooter($index) {
+	public function removeFooter($index) {
 		unset($this->footerElements[$index]);
 	}
 
 	/**
 	 * Clear the Header -PDF
 	 */
-	function clearHeader() {
+	public function clearHeader() {
 		unset($this->headerElements);
 		$this->headerElements = array();
 	}
@@ -216,7 +216,7 @@ class ReportTcpdf extends TCPDF {
 	/**
 	 * Clear the Page Header -PDF
 	 */
-	function clearPageHeader() {
+	public function clearPageHeader() {
 		unset($this->pageHeaderElements);
 		$this->pageHeaderElements = array();
 	}
@@ -224,7 +224,7 @@ class ReportTcpdf extends TCPDF {
 	/**
 	 * @param $r
 	 */
-	function setReport($r) {
+	public function setReport($r) {
 		$this->wt_report = $r;
 	}
 
@@ -233,7 +233,7 @@ class ReportTcpdf extends TCPDF {
 	 *
 	 * @return string
 	 */
-	function getCurrentStyle() {
+	public function getCurrentStyle() {
 		return $this->currentStyle;
 	}
 
@@ -242,9 +242,9 @@ class ReportTcpdf extends TCPDF {
 	 *
 	 * @param string $s Style name
 	 */
-	function setCurrentStyle($s) {
+	public function setCurrentStyle($s) {
 		$this->currentStyle = $s;
-		$style = $this->wt_report->getStyle($s);
+		$style              = $this->wt_report->getStyle($s);
 		$this->SetFont($style['font'], $style['style'], $style['size']);
 	}
 
@@ -255,9 +255,9 @@ class ReportTcpdf extends TCPDF {
 	 *
 	 * @return array
 	 */
-	function getStyle($s) {
+	public function getStyle($s) {
 		if (!isset($this->wt_report->Styles[$s])) {
-			$s = $this->getCurrentStyle();
+			$s                           = $this->getCurrentStyle();
 			$this->wt_report->Styles[$s] = $s;
 		}
 
@@ -272,7 +272,7 @@ class ReportTcpdf extends TCPDF {
 	 *
 	 * @return float
 	 */
-	function addMarginX($x) {
+	public function addMarginX($x) {
 		$m = $this->getMargins();
 		if ($this->getRTL()) {
 			$x += $m['right'];
@@ -290,7 +290,7 @@ class ReportTcpdf extends TCPDF {
 	 *
 	 * @return float
 	 */
-	function getMaxLineWidth() {
+	public function getMaxLineWidth() {
 		$m = $this->getMargins();
 		if ($this->getRTL()) {
 			return ($this->getRemainingWidth() + $m['right']);
@@ -300,9 +300,9 @@ class ReportTcpdf extends TCPDF {
 	}
 
 	/**
-	 * @return integer
+	 * @return int
 	 */
-	function getFootnotesHeight() {
+	public function getFootnotesHeight() {
 		$h = 0;
 		foreach ($this->printedfootnotes as $element) {
 			$h += $element->getHeight($this);
@@ -314,9 +314,9 @@ class ReportTcpdf extends TCPDF {
 	/**
 	 * Returns the the current font size height -PDF
 	 *
-	 * @return integer
+	 * @return int
 	 */
-	function getCurrentStyleHeight() {
+	public function getCurrentStyleHeight() {
 		if (empty($this->currentStyle)) {
 			return $this->wt_report->defaultFontSize;
 		}
@@ -330,12 +330,12 @@ class ReportTcpdf extends TCPDF {
 	 *
 	 * @param object $footnote
 	 *
-	 * @return boolean false if not numbered befor | object if already numbered
+	 * @return bool false if not numbered befor | object if already numbered
 	 */
-	function checkFootnote($footnote) {
-		$ct = count($this->printedfootnotes);
+	public function checkFootnote($footnote) {
+		$ct  = count($this->printedfootnotes);
 		$val = $footnote->getValue();
-		$i = 0;
+		$i   = 0;
 		while ($i < $ct) {
 			if ($this->printedfootnotes[$i]->getValue() == $val) {
 				// If this footnote already exist then set up the numbers for this object
@@ -358,13 +358,12 @@ class ReportTcpdf extends TCPDF {
 	 * Used this function instead of AddPage()
 	 * This function will make sure that images will not be overwritten
 	 */
-	function newPage() {
+	public function newPage() {
 		if ($this->lastpicpage > $this->getPage()) {
 			$this->setPage($this->lastpicpage);
 		}
 		$this->AddPage();
 	}
-
 
 	/*******************************************
 	 * TCPDF protected functions
@@ -373,11 +372,11 @@ class ReportTcpdf extends TCPDF {
 	/**
 	 * Add a page if needed -PDF
 	 *
-	 * @param integer $height Cell height
+	 * @param int $height Cell height
 	 *
-	 * @return boolean true in case of page break, false otherwise
+	 * @return bool true in case of page break, false otherwise
 	 */
-	function checkPageBreakPDF($height) {
+	public function checkPageBreakPDF($height) {
 		return $this->checkPageBreak($height);
 	}
 
@@ -386,7 +385,7 @@ class ReportTcpdf extends TCPDF {
 	 *
 	 * @return float Remaining width
 	 */
-	function getRemainingWidthPDF() {
+	public function getRemainingWidthPDF() {
 		return $this->getRemainingWidth();
 	}
 }

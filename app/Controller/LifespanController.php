@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Controller;
 
 /**
  * webtrees: online genealogy
@@ -16,48 +16,98 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use Fisharebest\ExtCalendar\GregorianCalendar;
+use Fisharebest\Webtrees\ColorGenerator;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Date\FrenchDate;
+use Fisharebest\Webtrees\Date\GregorianDate;
+use Fisharebest\Webtrees\Date\HijriDate;
+use Fisharebest\Webtrees\Date\JalaliDate;
+use Fisharebest\Webtrees\Date\JewishDate;
+use Fisharebest\Webtrees\Date\JulianDate;
+use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Place;
+use Fisharebest\Webtrees\Session;
 
 /**
  * Class LifespanController - Controller for the timeline chart
  */
 class LifespanController extends PageController {
-	var $pids = array();
-	var $people = array();
-	var $place = '';
-	var $beginYear = 0;
-	var $endYear = 0;
-	var $scale = 2;
-	var $YrowLoc = 125;
-	var $minYear = 0;
+	// Base color parameters
+	const RANGE           = 120; // degrees
+	const SATURATION      = 100; // percent
+	const LIGHTNESS       = 30;  // percent
+	const ALPHA           = 0.25;
+	const CHART_TOP       = 10; // pixels
+	const BAR_SPACING     = 22; // pixels
+	const YEAR_SPAN       = 10; // Number of years per scale section
+	const PIXELS_PER_YEAR = 7;  // Number of pixels to shift per year
+	const SESSION_DATA    = 'lifespan_data';
 
-	// The following colours are deliberately omitted from the $colors list:
-	// Blue, Red, Black, White, Green
-	var $colors = array('Aliceblue', 'Antiquewhite', 'Aqua', 'Aquamarine', 'Azure', 'Beige', 'Bisque', 'Blanchedalmond', 'Blueviolet', 'Brown', 'Burlywood', 'Cadetblue', 'Chartreuse', 'Chocolate', 'Coral', 'Cornflowerblue', 'Cornsilk', 'Crimson', 'Cyan', 'Darkcyan', 'Darkgoldenrod', 'Darkgray', 'Darkgreen', 'Darkkhaki', 'Darkmagenta', 'Darkolivegreen', 'Darkorange', 'Darkorchid', 'Darkred', 'Darksalmon', 'Darkseagreen', 'Darkslateblue', 'Darkturquoise', 'Darkviolet', 'Deeppink', 'Deepskyblue', 'Dimgray', 'Dodgerblue', 'Firebrick', 'Floralwhite', 'Forestgreen', 'Fuchsia', 'Gainsboro', 'Ghostwhite', 'Gold', 'Goldenrod', 'Gray', 'Greenyellow', 'Honeydew', 'Hotpink', 'Indianred', 'Ivory', 'Khaki', 'Lavender', 'Lavenderblush', 'Lawngreen', 'Lemonchiffon', 'Lightblue', 'Lightcoral', 'Lightcyan', 'Lightgoldenrodyellow', 'Lightgreen', 'Lightgrey', 'Lightpink', 'Lightsalmon', 'Lightseagreen', 'Lightskyblue', 'Lightslategray', 'Lightsteelblue', 'Lightyellow', 'Lime', 'Limegreen', 'Linen', 'Magenta', 'Maroon', 'Mediumaqamarine', ' Mediumblue', 'Mediumorchid', 'Mediumpurple', 'Mediumseagreen', 'Mediumslateblue', 'Mediumspringgreen', 'Mediumturquoise', 'Mediumvioletred', 'Mintcream', 'Mistyrose', 'Moccasin', 'Navajowhite', 'Oldlace', 'Olive', 'Olivedrab', 'Orange', 'Orangered', 'Orchid', 'Palegoldenrod', 'Palegreen', 'Paleturquoise', 'Palevioletred', 'Papayawhip', 'Peachpuff', 'Peru', 'Pink', 'Plum', 'Powderblue', 'Purple', 'Rosybrown', 'Royalblue', 'Saddlebrown', 'Salmon', 'Sandybrown', 'Seagreen', 'Seashell', 'Sienna', 'Silver', 'Skyblue', 'Slateblue', 'Slategray', 'Snow', 'Springgreen', 'Steelblue', 'Tan', 'Teal', 'Thistle', 'Tomato', 'Turquoise', 'Violet', 'Wheat', 'Whitesmoke', 'Yellow', 'YellowGreen');
-	var $malecolorR = array(' 100', ' 110', ' 120', ' 130', ' 140', ' 150', ' 160', ' 170', ' 180', ' 190', ' 200', ' 210', ' 220', ' 230', ' 240', ' 250');
-	var $malecolorG = array(' 100', ' 110', ' 120', ' 130', ' 140', ' 150', ' 160', ' 170', ' 180', ' 190', ' 200', ' 210', ' 220', ' 230', ' 240', ' 250');
-	var $malecolorB = 255;
-	var $femalecolorR = 255;
-	var $femalecolorG = array(' 100', ' 110', ' 120', ' 130', ' 140', ' 150', ' 160', ' 170', ' 180', ' 190', ' 200', ' 210', ' 220', ' 230', ' 240', ' 250');
-	var $femalecolorB = array('250', ' 240', ' 230', ' 220', ' 210', ' 200', ' 190', ' 180', ' 170', ' 160', ' 150', ' 140', ' 130', ' 120', ' 110', ' 100');
-	var $color;
-	var $colorindex;
-	var $Fcolorindex;
-	var $Mcolorindex;
-	var $zoomfactor;
-	var $timelineMinYear;
-	var $timelineMaxYear;
-	var $birthMod;
-	var $deathMod;
-	var $endMod = 0;
-	var $modTest;
-	var $currentYear;
-	var $endDate;
-	var $startDate;
-	var $currentsex;
+	/** @var string|null Chart parameter */
+	public $place     = null;
 
+/** @var int|null Chart parameter */
+	public $beginYear = null;
+
+	/** @var int|null Chart parameter */
+	public $endYear   = null;
+
+	/** @var string Chart parameter */
+	public $subtitle  = '&nbsp;';
+
+	/** @var string Chart parameter */
+	public $showDetails;
+
+	/** @var Individual[] */
+	private $people = array();
+
+	/** @var string */
+	private $defaultCalendar;
+
+	/** @var string */
+	private $calendar;
+
+	/** @var string */
+	private $calendarEscape;
+
+	/** @var int */
+	private $timelineMinYear;
+
+	/** @var int */
+	private $timelineMaxYear;
+
+	/** @var int */
+	private $currentYear;
+
+	/** @var string[] */
+	private $colors = array();
+
+	/** @var Place|null */
+	private $place_obj = null;
+
+	/** @var Date|null */
+	private $startDate = null;
+
+	/** @var Date|null */
+	private $endDate = null;
+
+	/** @var bool */
+	private $strictDate;
+
+	/** @var string[] */
+	private $facts;
+
+	/** @var string[] */
 	private $nonfacts = array(
-		'FAMS', 'FAMC', 'MAY', 'BLOB', 'OBJE', 'SEX', 'NAME', 'SOUR', 'NOTE', 'BAPL', 'ENDL', 'SLGC', 'SLGS', '_TODO', '_WT_OBJE_SORT', 'CHAN', 'HUSB', 'WIFE', 'CHIL', 'BIRT', 'DEAT', 'BURI'
+		'FAMS', 'FAMC', 'MAY', 'BLOB', 'OBJE', 'SEX', 'NAME', 'SOUR', 'NOTE', 'BAPL', 'ENDL',
+		'SLGC', 'SLGS', '_TODO', '_WT_OBJE_SORT', 'CHAN', 'HUSB', 'WIFE', 'CHIL', 'OCCU', 'ASSO',
 	);
 
 	/**
@@ -68,541 +118,425 @@ class LifespanController extends PageController {
 
 		parent::__construct();
 		$this->setPageTitle(I18N::translate('Lifespans'));
+		$this->showDetails = $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS') ? 'checked' : '';
 
-		$this->colorindex  = 0;
-		$this->Fcolorindex = 0;
-		$this->Mcolorindex = 0;
-		$this->zoomfactor  = 10;
-		$this->color       = '#0000FF';
-		$this->currentYear = (int) date('Y');
-		$this->deathMod    = 0;
-		$this->endDate     = $this->currentYear;
+		$this->facts           = explode('|', WT_EVENTS_BIRT . '|' . WT_EVENTS_DEAT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV);
+		$tmp                   = explode('\\', get_class(I18N::defaultCalendar()));
+		$cal                   = strtolower(array_pop($tmp));
+		$this->defaultCalendar = str_replace('calendar', '', $cal);
+		$filterPids            = false;
 
 		// Request parameters
-		$newpid    = Filter::get('newpid', WT_REGEX_XREF);
-		$remove    = Filter::get('remove', WT_REGEX_XREF);
-		$pids      = Filter::getArray('pids', WT_REGEX_XREF);
-		$clear     = Filter::getBool('clear');
-		$addfam    = Filter::getBool('addFamily');
-		$place     = Filter::get('place');
-		$beginYear = Filter::getInteger('beginYear', 0, $this->currentYear + 100, 0);
-		$endYear   = Filter::getInteger('endYear', 0, $this->currentYear + 100, 0);
+		$clear            = Filter::postBool('clear');
+		$newpid           = Filter::post('newpid', WT_REGEX_XREF);
+		$addfam           = Filter::postBool('addFamily');
+		$this->place      = Filter::post('place');
+		$this->beginYear  = Filter::postInteger('beginYear', 0, PHP_INT_MAX, null);
+		$this->endYear    = Filter::postInteger('endYear', 0, PHP_INT_MAX, null);
+		$this->calendar   = Filter::post('calendar', null, $this->defaultCalendar);
+		$this->strictDate = Filter::postBool('strictDate');
 
-		$new_person = Individual::getInstance($newpid, $WT_TREE);
+		// Set up base color parameters
+		$this->colors['M'] = new ColorGenerator(240, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE * -1);
+		$this->colors['F'] = new ColorGenerator(000, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE);
 
+		// Build a list of people based on the input parameters
 		if ($clear) {
-			// Empty list
-			$this->pids = array();
-		} elseif ($pids) {
-			// List of specified records
-			$this->pids = $pids;
-		} elseif ($place) {
-			// All records found in a place
-			$wt_place    = new Place($place, $WT_TREE);
-			$this->pids  = Database::prepare(
-				"SELECT DISTINCT pl_gid FROM `##placelinks` WHERE pl_p_id = ? AND pl_file = ?"
-			)->execute(array($wt_place->getPlaceId(), $WT_TREE->getTreeId()))->fetchOneColumn();
-			$this->place = $place;
+			// Empty list & reset form
+			$xrefs           = array();
+			$this->place     = null;
+			$this->beginYear = null;
+			$this->endYear   = null;
+			$this->calendar  = $this->defaultCalendar;
+		} elseif ($this->place) {
+			// Get all individual & family records found for a place
+			$this->place_obj = new Place($this->place, $WT_TREE);
+			$xrefs           = Database::prepare(
+				"SELECT DISTINCT `i_id` FROM `##placelinks`" .
+				" JOIN `##individuals` ON `pl_gid`=`i_id` AND `pl_file`=`i_file`" .
+				" WHERE `i_file`=:tree_id" .
+				" AND `pl_p_id`=:place_id" .
+				" UNION" .
+				" SELECT DISTINCT `f_id` FROM `##placelinks`" .
+				" JOIN `##families` ON `pl_gid`=`f_id` AND `pl_file`=`f_file`" .
+				" WHERE `f_file`=:tree_id" .
+				" AND `pl_p_id`=:place_id"
+			)->execute(array(
+				'tree_id'  => $WT_TREE->getTreeId(),
+				'place_id' => $this->place_obj->getPlaceId(),
+			))->fetchOneColumn();
 		} else {
 			// Modify an existing list of records
-			if (is_array(Session::get('timeline_pids'))) {
-				$this->pids = Session::get('timeline_pids');
-			} else {
-				$this->pids = array();
-			}
-			if ($remove) {
-				foreach ($this->pids as $key => $value) {
-					if ($value == $remove) {
-						unset($this->pids[$key]);
-					}
-				}
-			} elseif ($new_person) {
-				$this->addFamily($new_person, $addfam);
-			} elseif (!$this->pids) {
-				$this->addFamily($this->getSignificantIndividual(), false);
+			$xrefs = Session::get(self::SESSION_DATA, array());
+			if ($newpid) {
+				$xrefs = array_merge($xrefs, $this->addFamily(Individual::getInstance($newpid, $WT_TREE), $addfam));
+				$xrefs = array_unique($xrefs);
+			} elseif (!$xrefs) {
+				$xrefs = $this->addFamily($this->getSignificantIndividual(), false);
 			}
 		}
-		Session::put('timeline_pids', $this->pids);
 
-		$this->beginYear = $beginYear;
-		$this->endYear   = $endYear;
-		if ($beginYear == 0 || $endYear == 0) {
-			//-- cleanup user input
-			$this->pids = array_unique($this->pids); //removes duplicates
-			foreach ($this->pids as $key => $value) {
-				if ($value != $remove) {
-					$this->pids[$key] = $value;
-					$person           = Individual::getInstance($value, $WT_TREE);
-					// list of linked records includes families as well as individuals.
-					if ($person) {
-						$bdate = $person->getEstimatedBirthDate();
-						if ($bdate->isOK() && $person->canShow()) {
-							$this->people[] = $person;
+		$tmp               = $this->getCalendarDate(unixtojd());
+		$this->currentYear = $tmp->today()->y;
+
+		$tmp = strtoupper(strtr($this->calendar,
+			array('jewish' => 'hebrew',
+			      'french' => 'french r',
+			)));
+		$this->calendarEscape = sprintf('@#D%s@', $tmp);
+
+		if ($xrefs) {
+			// ensure date ranges are valid in preparation for filtering list
+			if ($this->beginYear || $this->endYear) {
+				$filterPids = true;
+				if (!$this->beginYear) {
+					$tmp             = new Date($this->calendarEscape . ' 1');
+					$this->beginYear = $tmp->minimumDate()->y;
+				}
+				if (!$this->endYear) {
+					$this->endYear = $this->currentYear;
+				}
+				$this->startDate = new Date($this->calendarEscape . $this->beginYear);
+				$this->endDate   = new Date($this->calendarEscape . $this->endYear);
+			}
+
+			// Test each xref to see if the search criteria are met
+			foreach ($xrefs as $key => $xref) {
+				$valid  = false;
+				$person = Individual::getInstance($xref, $WT_TREE);
+				if ($person) {
+					if ($person->canShow()) {
+						foreach ($person->getFacts() as $fact) {
+							if ($this->checkFact($fact)) {
+								$this->people[] = $person;
+								$valid          = true;
+								break;
+							}
 						}
 					}
-				}
-			}
-		} else {
-			//--Finds if the begin year and end year textboxes are not empty
-			//-- reset the people array when doing a year range search
-			$this->people = array();
-			//Takes the begining year and end year passed by the postback and modifies them and uses them to populate
-			//the time line
-
-			//Variables to restrict the person boxes to the year searched.
-			//--Searches for individuals who had an even between the year begin and end years
-			$indis = self::searchIndividualsInYearRange($beginYear, $endYear);
-			//--Populates an array of people that had an event within those years
-
-			foreach ($indis as $person) {
-				if (empty($searchplace) || in_array($person->getXref(), $this->pids)) {
-					$bdate = $person->getEstimatedBirthDate();
-					if ($bdate->isOK() && $person->canShow()) {
-						$this->people[] = $person;
+				} else {
+					$family = Family::getInstance($xref, $WT_TREE);
+					if ($family && $family->canShow() && $this->checkFact($family->getMarriage())) {
+						$valid          = true;
+						$this->people[] = $family->getHusband();
+						$this->people[] = $family->getWife();
 					}
 				}
+				if (!$valid) {
+					unset($xrefs[$key]); // no point in storing a xref if we can't use it
+				}
 			}
-			Session::forget('timeline_pids');
-		}
-
-		// Sort the array in order of birth year
-		uasort($this->people, function(Individual $a, Individual $b) {
-			return Date::compare($a->getEstimatedBirthDate(), $b->getEstimatedBirthDate());
-		});
-		//If there is people in the array posted back this if occurs
-		if (isset ($this->people[0])) {
-			//Find the maximum Death year and mimimum Birth year for each individual returned in the array.
-			$bdate                 = $this->people[0]->getEstimatedBirthDate();
-			$ddate                 = $this->people[0]->getEstimatedDeathDate();
-			$this->timelineMinYear = $bdate->gregorianYear();
-			$this->timelineMaxYear = $ddate->gregorianYear() ? $ddate->gregorianYear() : date('Y');
-			foreach ($this->people as $value) {
-				$bdate                 = $value->getEstimatedBirthDate();
-				$ddate                 = $value->getEstimatedDeathDate();
-				$this->timelineMinYear = min($this->timelineMinYear, $bdate->gregorianYear());
-				$this->timelineMaxYear = max($this->timelineMaxYear, $ddate->gregorianYear() ? $ddate->gregorianYear() : date('Y'));
-			}
-
-			if ($this->timelineMaxYear > $this->currentYear) {
-				$this->timelineMaxYear = $this->currentYear;
-			}
+			Session::put(self::SESSION_DATA, $xrefs);
 		} else {
-			// Sets the default timeline length
-			$this->timelineMinYear = date("Y") - 101;
-			$this->timelineMaxYear = date("Y");
+			Session::forget(self::SESSION_DATA);
 		}
+
+		$this->people = array_filter(array_unique($this->people));
+		$count        = count($this->people);
+		if ($count) {
+			// Build the subtitle
+			if ($this->place && $filterPids) {
+				$this->subtitle = I18N::plural(
+					'%s person with events in %s between %s and %s',
+					'%s people with events in %s between %s and %s',
+					$count, I18N::number($count),
+					$this->place, $this->startDate->display(false, '%Y'), $this->endDate->display(false, '%Y')
+				);
+			} elseif ($this->place) {
+				$this->subtitle = I18N::plural(
+					'%s person with events in %s',
+					'%s people with events in %s',
+					$count, I18N::number($count),
+					$this->place
+				);
+			} elseif ($filterPids) {
+				$this->subtitle = I18N::plural(
+					'%s person with events between %s and %s',
+					'%s people with events between %s and %s',
+					$count, I18N::number($count),
+					$this->startDate->display(false, '%Y'), $this->endDate->display(false, '%Y')
+				);
+			} else {
+				$this->subtitle = I18N::plural(
+					'%s person',
+					'%s people',
+					$count, I18N::number($count));
+			}
+
+			// Sort the array in order of birth year
+			usort($this->people, function (Individual $a, Individual $b) {
+				return Date::compare($a->getEstimatedBirthDate(), $b->getEstimatedBirthDate());
+			});
+
+			//Find the mimimum birth year and maximum death year from the individuals in the array.
+			$bdate   = $this->getCalendarDate($this->people[0]->getEstimatedBirthDate()->minimumJulianDay());
+			$minyear = $bdate->y;
+
+			$that    = $this; // PHP5.3 cannot access $this inside a closure
+			$maxyear = array_reduce($this->people, function ($carry, Individual $item) use ($that) {
+				$date = $that->getCalendarDate($item->getEstimatedDeathDate()->maximumJulianDay());
+
+				return max($carry, $date->y);
+			}, 0);
+		} elseif ($filterPids) {
+			$minyear = $this->endYear;
+			$maxyear = $this->endYear;
+		} else {
+			$minyear = $this->currentYear;
+			$maxyear = $this->currentYear;
+		}
+
+		$maxyear = min($maxyear, $this->currentYear); // Limit maximum year to current year as we can't forecast the future
+		$minyear = min($minyear, $maxyear - $WT_TREE->getPreference('MAX_ALIVE_AGE')); // Set default minimum chart length
+
+		$this->timelineMinYear = (int) floor($minyear / 10) * 10; // round down to start of the decade
+		$this->timelineMaxYear = (int) ceil($maxyear / 10) * 10; // round up to start of next decade
 	}
 
 	/**
 	 * Add a person (and optionally their immediate family members) to the pids array
 	 *
 	 * @param Individual $person
-	 * @param boolean       $add_family
+	 * @param bool $add_family
+	 *
+	 * @return array
 	 */
 	private function addFamily(Individual $person, $add_family) {
-		$this->pids[] = $person->getXref();
+		$xrefs   = array();
+		$xrefs[] = $person->getXref();
 		if ($add_family) {
 			foreach ($person->getSpouseFamilies() as $family) {
 				$spouse = $family->getSpouse($person);
 				if ($spouse) {
-					$this->pids[] = $spouse->getXref();
+					$xrefs[] = $spouse->getXref();
 					foreach ($family->getChildren() as $child) {
-						$this->pids[] = $child->getXref();
+						$xrefs[] = $child->getXref();
 					}
 				}
 			}
 			foreach ($person->getChildFamilies() as $family) {
 				foreach ($family->getSpouses() as $parent) {
-					$this->pids[] = $parent->getXref();
+					$xrefs[] = $parent->getXref();
 				}
 				foreach ($family->getChildren() as $sibling) {
 					if ($person !== $sibling) {
-						$this->pids[] = $sibling->getXref();
+						$xrefs[] = $sibling->getXref();
 					}
 				}
 			}
 		}
+
+		return $xrefs;
 	}
 
 	/**
-	 * Sets the start year and end year to a factor of 5
-	 *
-	 * @param integer $year
-	 * @param integer $key
-	 *
-	 * @return integer
+	 * Prints the time line scale
 	 */
-	private function modifyYear($year, $key) {
-		$temp = $year;
-		switch ($key) {
-		case 1 : // rounds beginning year
-			$this->birthMod = $year % 5;
-			$year           = $year - $this->birthMod;
-			if ($temp == $year) {
-				$this->modTest = 0;
-			} else {
-				$this->modTest = 1;
-			}
-			break;
-		case 2 : // rounds end year
-			$this->deathMod = $year % 5;
-			// Only executed if the year needs to be modified
-			if ($this->deathMod > 0) {
-				$this->endMod = 5 - $this->deathMod;
-			} else {
-				$this->endMod = 0;
-			}
-			$year = $year + $this->endMod;
-			break;
+	public function printTimeline() {
+		$startYear = $this->timelineMinYear;
+		while ($startYear < $this->timelineMaxYear) {
+			$date = new Date($this->calendarEscape . $startYear);
+			echo $date->display(false, '%Y', false);
+			$startYear += self::YEAR_SPAN;
 		}
-
-		return $year;
 	}
 
 	/**
-	 * Prints the time line
+	 * Populate the timeline
 	 *
-	 * @param integer $startYear
-	 * @param integer $endYear
+	 * @return int
 	 */
-	public function printTimeline($startYear, $endYear) {
-		$leftPosition          = 14; //start point
-		$tickDistance          = 50; //length of one timeline section
-		$top                   = 65; //top starting position
-		$yearSpan              = 5; //default zoom level
-		$newStartYear          = $this->modifyYear($startYear, 1); //starting date for timeline
-		$this->timelineMinYear = $newStartYear;
-		$newEndYear            = $this->modifyYear($endYear, 2); //ending date for timeline
-		$totalYears            = $newEndYear - $newStartYear; //length of timeline
-		$timelineTick          = $totalYears / $yearSpan; //calculates the length of the timeline
-
-		for ($i = 0; $i < $timelineTick; $i++) {
-			echo "<div class=\"sublinks_cell\" style=\"text-align: left; position: absolute; top: ", $top, "px; left: ", $leftPosition, "px; width: ", $tickDistance, "px;\">$newStartYear<i class=\"icon-lifespan-chunk\"></i></div>"; //onclick="zoomToggle('100px', '100px', '200px', '200px', this);"
-			$leftPosition += $tickDistance;
-			$newStartYear += $yearSpan;
-		}
-		echo "<div class=\"sublinks_cell\" style=\"text-align: left; position: absolute; top: ", $top, "px; left: ", $leftPosition, "px; width: ", $tickDistance, "px;\">$newStartYear</div>";
-	}
-
-	/**
-	 * Method used to place the person boxes onto the timeline
-	 *
-	 * @param Individual[] $ar
-	 * @param integer         $top
-	 *
-	 * @return integer
-	 */
-	public function fillTimeline($ar, $top) {
-		global $maxX, $zindex;
-
-		$zindex = count($ar);
-
-		$rows   = array();
-		$modFix = 0;
-		if ($this->modTest == 1) {
-			$modFix = (9 * $this->birthMod);
-		}
+	public function fillTimeline() {
+		$rows = array();
+		$maxY = self::CHART_TOP;
 		//base case
-		if (count($ar) == 0) {
-			return $top;
+		if (!$this->people) {
+			return $maxY;
 		}
-		$maxY = $top;
 
-		foreach ($ar as $value) {
-			//Creates appropriate color scheme to show relationships
-			$this->currentsex = $value->getSex();
-			if ($this->currentsex == "M") {
-				$this->Mcolorindex++;
-				if (!isset($this->malecolorR[$this->Mcolorindex])) {
-					$this->Mcolorindex = 0;
-				}
-				$this->malecolorR[$this->Mcolorindex];
-				$this->Mcolorindex++;
-				if (!isset($this->malecolorG[$this->Mcolorindex])) {
-					$this->Mcolorindex = 0;
-				}
-				$this->malecolorG[$this->Mcolorindex];
-				$red   = dechex($this->malecolorR[$this->Mcolorindex]);
-				$green = dechex($this->malecolorR[$this->Mcolorindex]);
-				if (strlen($red) < 2) {
-					$red = "0" . $red;
-				}
-				if (strlen($green) < 2) {
-					$green = "0" . $green;
-				}
+		foreach ($this->people as $person) {
 
-				$this->color = "#" . $red . $green . dechex($this->malecolorB);
-			} elseif ($this->currentsex == "F") {
-				$this->Fcolorindex++;
-				if (!isset($this->femalecolorG[$this->Fcolorindex])) {
-					$this->Fcolorindex = 0;
-				}
-				$this->femalecolorG[$this->Fcolorindex];
-				$this->Fcolorindex++;
-				if (!isset($this->femalecolorB[$this->Fcolorindex])) {
-					$this->Fcolorindex = 0;
-				}
-				$this->femalecolorB[$this->Fcolorindex];
-				$this->color = "#" . dechex($this->femalecolorR) . dechex($this->femalecolorG[$this->Fcolorindex]) . dechex($this->femalecolorB[$this->Fcolorindex]);
-			} else {
-				$this->color = $this->colors[$this->colorindex];
-			}
-
-			//set start position and size of person-box according to zoomfactor
-			$bdate     = $value->getEstimatedBirthDate();
-			$ddate     = $value->getEstimatedDeathDate();
-			$birthYear = $bdate->gregorianYear();
-			$deathYear = $ddate->gregorianYear() ? $ddate->gregorianYear() : date('Y');
-
-			$width  = ($deathYear - $birthYear) * $this->zoomfactor;
-			$height = 2 * $this->zoomfactor;
-
-			$startPos  = (($birthYear - $this->timelineMinYear) * $this->zoomfactor) + 14 + $modFix;
-			$minlength = mb_strlen(strip_tags($value->getFullName())) * $this->zoomfactor;
-
-			if ($startPos > 15) {
-				$startPos = (($birthYear - $this->timelineMinYear) * $this->zoomfactor) + 15;
-				$width    = (($deathYear - $birthYear) * $this->zoomfactor) - 2;
-			}
-
-			//set minimum width for single year lifespans
-			if ($width < 10) {
-				$width = 10;
-			}
-
-			$lifespan  = "<span dir=\"ltr\">$birthYear-</span>";
-			$deathReal = $value->getDeathDate()->isOK();
-			$birthReal = $value->getBirthDate()->isOK();
-			if ($value->isDead() && $deathReal) {
-				$lifespan .= "<span dir=\"ltr\">$deathYear</span>";
-			}
-			$lifespannumeral = $deathYear - $birthYear;
+			$bdate     = $this->getCalendarDate($person->getEstimatedBirthDate()->minimumJulianDay());
+			$ddate     = $this->getCalendarDate($person->getEstimatedDeathDate()->maximumJulianDay());
+			$birthYear = $bdate->y;
+			$age       = min($ddate->y, $this->currentYear) - $birthYear; // truncate the bar at the current year
+			$width     = max(9, $age * self::PIXELS_PER_YEAR); // min width is width of sex icon
+			$startPos  = ($birthYear - $this->timelineMinYear) * self::PIXELS_PER_YEAR;
 
 			//-- calculate a good Y top value
-			$Y     = $top;
-			$Z     = $zindex;
+			$Y     = self::CHART_TOP;
 			$ready = false;
 			while (!$ready) {
 				if (!isset($rows[$Y])) {
 					$ready          = true;
-					$rows[$Y]["x1"] = $startPos;
-					$rows[$Y]["x2"] = $startPos + $width;
-					$rows[$Y]["z"]  = $zindex;
+					$rows[$Y]['x1'] = $startPos;
+					$rows[$Y]['x2'] = $startPos + $width;
 				} else {
-					if ($rows[$Y]["x1"] > $startPos + $width) {
+					if ($rows[$Y]['x1'] > $startPos + $width) {
 						$ready          = true;
-						$rows[$Y]["x1"] = $startPos;
-						$Z              = $rows[$Y]["z"];
-					} elseif ($rows[$Y]["x2"] < $startPos) {
+						$rows[$Y]['x1'] = $startPos;
+					} elseif ($rows[$Y]['x2'] < $startPos) {
 						$ready          = true;
-						$rows[$Y]["x2"] = $startPos + $width;
-						$Z              = $rows[$Y]["z"];
+						$rows[$Y]['x2'] = $startPos + $width;
 					} else {
-						//move down 25 pixels
-						if ($this->zoomfactor > 10) {
-							$Y += 25 + $this->zoomfactor;
-						} else {
-							$Y += 25;
-						}
+						//move down a line
+						$Y += self::BAR_SPACING;
 					}
 				}
 			}
 
-			//Need to calculate each event and the spacing between them
-			// event1 distance will be event - birthyear   that will be the distance. then each distance will chain off that
-
-			//$event[][]  = {"Cell 1 will hold events"}{"cell2 will hold time between that and the next value"};
-			$facts = $value->getFacts();
-			foreach ($value->getSpouseFamilies() as $family) {
+			$facts = $person->getFacts();
+			foreach ($person->getSpouseFamilies() as $family) {
 				foreach ($family->getFacts() as $fact) {
 					$facts[] = $fact;
 				}
 			}
-			$unparsedEvents = array();
+			Functions::sortFacts($facts);
 
-			foreach ($facts as $fact) {
-				if (!in_array($fact->getTag(), $this->nonfacts)) {
-					$unparsedEvents[] = $fact;
+			$that          = $this; // PHP5.3 cannot access $this inside a closure
+			$acceptedFacts = array_filter($facts, function (Fact $fact) use ($that) {
+				return (in_array($fact->getTag(), $that->facts) && $fact->getDate()->isOK()) ||
+				       (($that->place_obj || $that->startDate) && $that->checkFact($fact));
+			});
+
+			$eventList = array();
+			foreach ($acceptedFacts as $fact) {
+				$tag = $fact->getTag();
+				//-- if the fact is a generic EVENt then get the qualifying TYPE
+				if ($tag == "EVEN") {
+					$tag = $fact->getAttribute('TYPE');
 				}
+				$eventList[] = array(
+					'label' => GedcomTag::getLabel($tag),
+					'date'  => $fact->getDate()->display(),
+					'place' => $fact->getPlace()->getFullName(),
+				);
 			}
-			sort_facts($unparsedEvents);
+			$direction  = I18N::direction() === 'ltr' ? 'left' : 'right';
+			$lifespan   = ' ' . $person->getLifeSpan(); // put the space here so its included in the length calcs
+			$sex        = $person->getSex();
+			$popupClass = strtr($sex, array('M' => '', 'U' => 'NN'));
+			$color      = $sex === 'U' ? '' : sprintf("background-color: %s", $this->colors[$sex]->getNextColor());
 
-			$eventinformation = array();
-			foreach ($unparsedEvents as $val) {
-				$date = $val->getDate();
-				if (!empty($date)) {
-					$fact    = $val->getTag();
-					$yearsin = $date->minimumDate()->y - $birthYear;
-					if ($lifespannumeral == 0) {
-						$lifespannumeral = 1;
-					}
-					$eventwidth = ($yearsin / $lifespannumeral) * 100; // percent of the lifespan before the event occured used for determining div spacing
-					// figure out some schema
-					$evntwdth = $eventwidth . "%";
-					//-- if the fact is a generic EVENt then get the qualifying TYPE
-					if ($fact == "EVEN") {
-						$fact = $val->getAttribute('TYPE');
-					}
-					$trans = GedcomTag::getLabel($fact);
-					if (isset($eventinformation[$evntwdth])) {
-						$eventinformation[$evntwdth] .= '<br>' . $trans . '<br>' . strip_tags($date->display()) . ' ' . $val->getPlace()->getFullName();
-					} else {
-						$eventinformation[$evntwdth] = $fact . '-fact, ' . $trans . '<br>' . strip_tags($date->display()) . ' ' . $val->getPlace()->getFullName();
-					}
-				}
-			}
+			// following lines are a nasty method of approximating
+			// the width of a string in pixels from the character count
+			$name_length       = mb_strlen(strip_tags($person->getFullName())) * 6.5;
+			$short_name_length = mb_strlen(strip_tags($person->getShortName())) * 6.5;
+			$lifespan_length   = mb_strlen(strip_tags($lifespan)) * 6.5;
 
-			$bdate = $value->getEstimatedBirthDate();
-			$ddate = $value->getEstimatedDeathDate();
-			if ($width > ($minlength + 110)) {
-				echo "<div id=\"bar_", $value->getXref(), "\" style=\"position: absolute; top:", $Y, "px; left:", $startPos, "px; width:", $width, "px; height:", $height, "px; background-color:", $this->color, "; border: solid blue 1px; z-index:$Z;\">";
-				foreach ($eventinformation as $evtwidth => $val) {
-					echo "<div style=\"position:absolute; left:", $evtwidth, ";\"><a class=\"showit\" href=\"#\" style=\"top:-2px; font-size:10px;\"><b>";
-					$text = explode("-fact, ", $val);
-					$fact = $text[0];
-					echo '</b><span>', self::getAbbreviation($fact), '</span></a></div>';
-				}
-				$indiName = $value->getFullName();
-				echo '<table><tr><td width="15"><a class="showit" href="#"><b>';
-				echo self::getAbbreviation('BIRT');
-				echo '</b><span>', $value->getSexImage(), $indiName, '<br>', GedcomTag::getLabel('BIRT'), ' ', strip_tags($bdate->display()), ' ', $value->getBirthPlace(), '</span></a>',
-				'<td align="left" width="100%"><a href="', $value->getHtmlUrl(), '">', $value->getSexImage(), $indiName, '  ', $lifespan, ' </a></td>',
-				'<td width="15">';
-				if ($value->isDead()) {
-					if ($deathReal || $value->isDead()) {
-						echo '<a class="showit" href="#"><b>';
-						echo self::getAbbreviation('DEAT');
-						if (!$deathReal) {
-							echo '*';
-						}
-						echo '</b><span>' . $value->getSexImage() . $indiName . '<br>' . GedcomTag::getLabel('DEAT') . ' ' . strip_tags($ddate->display()) . ' ' . $value->getDeathPlace() . '</span></a>';
-					}
-				}
-				echo '</td></tr></table>';
-				echo '</div>';
+			if ($width > $name_length + $lifespan_length) {
+				$printName    = $person->getFullName();
+				$abbrLifespan = $lifespan;
+			} elseif ($width > $name_length) {
+				$printName    = $person->getFullName();
+				$abbrLifespan = '&hellip;';
+			} elseif ($width > $short_name_length) {
+				$printName    = $person->getShortName();
+				$abbrLifespan = '';
 			} else {
-				if ($width > $minlength + 5) {
-					echo '<div style="text-align: left; position: absolute; top:', $Y, 'px; left:', $startPos, 'px; width:', $width, 'px; height:', $height, 'px; background-color:', $this->color, '; border: solid blue 1px; z-index:', $Z, '">';
-					foreach ($eventinformation as $evtwidth => $val) {
-						echo '<div style="position:absolute; left:', $evtwidth, ' "><a class="showit" href="#" style="top:-2px; font-size:10px;"><b>';
-						$text = explode("-fact,", $val);
-						$fact = $text[0];
-						echo '</b><span>' . self::getAbbreviation($fact) . '</span></a></div>';
-					}
-					$indiName = $value->getFullName();
-					echo '<table dir="ltr"><tr><td width="15"><a class="showit" href="#"><b>';
-					echo self::getAbbreviation('BIRT');
-					if (!$birthReal) {
-						echo '*';
-					}
-					echo '</b><span>' . $value->getSexImage() . $indiName . '<br>' . GedcomTag::getLabel('BIRT') . ' ' . strip_tags($bdate->display(false)) . ' ' . $value->getBirthPlace() . '</span></a></td>' . '<td align="left" width="100%"><a href="' . $value->getHtmlUrl() . '">' . $value->getSexImage() . $indiName . '</a></td>' .
-						'<td width="15">';
-					if ($value->isDead()) {
-						if ($deathReal || $value->isDead()) {
-							echo '<a class="showit" href="#"><b>';
-							echo self::getAbbreviation('DEAT');
-							if (!$deathReal) {
-								echo "*";
-							}
-							echo '</b><span>' . $value->getSexImage() . $indiName . '<br>' . GedcomTag::getLabel('DEAT') . ' ' . strip_tags($ddate->display()) . ' ' . $value->getDeathPlace() . '</span></a>';
-						}
-					}
-					echo '</td></tr></table>';
-					echo '</div>';
-				} else {
-					echo '<div style="text-align: left; position: absolute;top:', $Y, 'px; left:', $startPos, 'px;width:', $width, 'px; height:', $height, 'px; background-color:', $this->color, '; border: solid blue 1px; z-index:', $Z, '">';
-					$indiName = $value->getFullName();
-					echo '<a class="showit" href="' . $value->getHtmlUrl() . '"><b>';
-					echo self::getAbbreviation('BIRT');
-					echo '</b><span>' . $value->getSexImage() . $indiName . '<br>' . GedcomTag::getLabel('BIRT') . ' ' . strip_tags($bdate->display()) . ' ' . $value->getBirthPlace() . '<br>';
-					foreach ($eventinformation as $val) {
-						$text = explode('-fact,', $val);
-						$val  = $text[1];
-						echo $val . "<br>";
-					}
-					if ($value->isDead() && $deathReal) {
-						echo GedcomTag::getLabel('DEAT') . " " . strip_tags($ddate->display()) . " " . $value->getDeathPlace();
-					}
-					echo '</span></a>';
-					echo '</div>';
-				}
+				$printName    = '';
+				$abbrLifespan = '';
 			}
-			$zindex--;
 
-			if ($maxX < $startPos + $width) {
-				$maxX = $startPos + $width;
+			// Bar framework
+			printf('
+                <div class="person_box%s" style="top:%spx; %s:%spx; width:%spx; %s">
+                        <div class="itr">%s %s %s
+                            <div class="popup person_box%s">
+                                <div>
+                                    <a href="%s">%s%s</a>
+                                </div>',
+				$popupClass, $Y, $direction, $startPos, $width, $color,
+				$person->getSexImage(), $printName, $abbrLifespan,
+				$popupClass,
+				$person->getHtmlUrl(), $person->getFullName(), $lifespan
+			);
+
+			// Add events to popup
+			foreach ($eventList as $event) {
+				printf("<div>%s: %s %s</div>", $event['label'], $event['date'], $event['place']);
 			}
-			if ($maxY < $Y) {
-				$maxY = $Y;
-			}
+			echo
+				'</div>' . // class="popup"
+				'</div>' .  // class="itr"
+				'</div>';   // class=$popupclass
+
+			$maxY = max($maxY, $Y);
 		}
 
 		return $maxY;
 	}
 
 	/**
-	 * The significant individual on this page is the first one.
+	 * Function checkFact
 	 *
-	 * @return Individual
+	 * Does this fact meet the search criteria?
+	 *
+	 * @param  Fact $fact
+	 *
+	 * @return bool
 	 */
-	public function getSignificantIndividual() {
-		if ($this->people) {
-			return $this->people[0];
-		} else {
-			return parent::getSignificantIndividual();
+	private function checkFact(Fact $fact) {
+		$valid = !in_array($fact->getTag(), $this->nonfacts);
+		if ($valid && $this->place_obj) {
+			$valid = stripos($fact->getPlace()->getGedcomName(), $this->place_obj->getGedcomName()) !== false;
 		}
+		if ($valid && $this->startDate) {
+			if ($this->strictDate && $this->calendar !== $this->defaultCalendar) {
+				$valid = stripos($fact->getAttribute('DATE'), $this->calendar) !== false;
+			}
+			if ($valid) {
+				$date  = $fact->getDate();
+				$valid = $date->isOK() && Date::compare($date, $this->startDate) >= 0 && Date::compare($date, $this->endDate) <= 0;
+			}
+		}
+
+		return $valid;
 	}
 
 	/**
-	 * Search for people who had events in a given year range
+	 * Function getCalendarDate
 	 *
-	 * @param integer $startyear
-	 * @param integer $endyear
+	 * @param int $date
 	 *
-	 * @return Individual[]
+	 * @return object
 	 */
-	private static function searchIndividualsInYearRange($startyear, $endyear) {
-		global $WT_TREE;
-
-		// At present, the lifespan chart is driven by Gregorian years.
-		// We ought to allow it to work with other calendars...
-		$gregorian_calendar = new GregorianCalendar;
-
-		$startjd = $gregorian_calendar->ymdToJd($startyear, 1, 1);
-		$endjd   = $gregorian_calendar->ymdToJd($endyear, 12, 31);
-
-		$rows = Database::prepare(
-"SELECT DISTINCT i_id AS xref, i_file AS gedcom_id, i_gedcom AS gedcom" .
-			" FROM `##individuals`" .
-			" JOIN `##dates` ON i_id=d_gid AND i_file=d_file" .
-			" WHERE i_file=? AND d_julianday1 BETWEEN ? AND ?"
-		)->execute(array($WT_TREE->getTreeId(), $startjd, $endjd))->fetchAll();
-
-		$list = array();
-		foreach ($rows as $row) {
-			$list[] = Individual::getInstance($row->xref, $WT_TREE, $row->gedcom);
+	private function getCalendarDate($date) {
+		switch ($this->calendar) {
+			case 'julian':
+				$caldate = new JulianDate($date);
+				break;
+			case 'french':
+				$caldate = new FrenchDate($date);
+				break;
+			case 'jewish':
+				$caldate = new JewishDate($date);
+				break;
+			case 'hijri':
+				$caldate = new HijriDate($date);
+				break;
+			case 'jalali':
+				$caldate = new JalaliDate($date);
+				break;
+			default:
+				$caldate = new GregorianDate($date);
 		}
 
-		return $list;
+		return $caldate;
 	}
 
 	/**
-	 * Generate a very short abbreviation for birth/marriage/death
-	 *
-	 * @param string $tag
+	 * Function getCalendarOptionList
 	 *
 	 * @return string
 	 */
-	private static function getAbbreviation($tag) {
-		switch ($tag) {
-		case 'BIRT':
-			return I18N::translateContext('Abbreviation for birth', 'b.');
-		case 'MARR':
-			return I18N::translateContext('Abbreviation for marriage', 'm.');
-		case 'DEAT':
-			return I18N::translateContext('Abbreviation for death', 'd.');
-		default:
-			return mb_substr(GedcomTag::getLabel($tag), 0, 1); // Just use the first letter of the full fact
+	public function getCalendarOptionList() {
+		$html = '';
+		foreach (Date::calendarNames() as $calendar => $name) {
+			$selected = $this->calendar === $calendar ? 'selected' : '';
+			$html .= sprintf('<option dir="auto" value="%s" %s>%s</option>', $calendar, $selected, $name);
 		}
+
+		return $html;
 	}
 }

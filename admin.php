@@ -23,6 +23,9 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\Functions;
+
 define('WT_SCRIPT_NAME', 'admin.php');
 
 require './includes/session.php';
@@ -353,7 +356,12 @@ $old_files = array(
 	WT_ROOT . 'themes/_administration/jquery-ui-1.10.3',
 	// Removed in 1.7.0
 	WT_ROOT . 'admin_site_other.php',
+	WT_ROOT . 'includes/config_data.php',
+	WT_ROOT . 'includes/db_schema',
+	WT_ROOT . 'includes/fonts',
 	WT_ROOT . 'includes/hitcount.php',
+	WT_ROOT . 'includes/reportheader.php',
+	WT_ROOT . 'includes/specialchars.php',
 	WT_ROOT . 'js',
 	WT_ROOT . 'language/en_GB.mo', // Replaced with en-GB.mo
 	WT_ROOT . 'language/en_US.mo', // Replaced with en-US.mo
@@ -366,12 +374,16 @@ $old_files = array(
 	WT_ROOT . 'modules_v3/clippings/clippings_ctrl.php',
 	WT_ROOT . 'modules_v3/clippings/help_text.php',
 	WT_ROOT . 'modules_v3/faq/help_text.php',
+	WT_ROOT . 'modules_v3/gedcom_favorites/db_schema',
+	WT_ROOT . 'modules_v3/gedcom_news/db_schema',
+	WT_ROOT . 'modules_v3/googlemap/db_schema',
 	WT_ROOT . 'modules_v3/googlemap/help_text.php',
 	WT_ROOT . 'modules_v3/html/help_text.php',
 	WT_ROOT . 'modules_v3/logged_in/help_text.php',
 	WT_ROOT . 'modules_v3/review_changes/help_text.php',
 	WT_ROOT . 'modules_v3/todo/help_text.php',
 	WT_ROOT . 'modules_v3/tree/class_treeview.php',
+	WT_ROOT . 'modules_v3/user_blog/db_schema',
 	WT_ROOT . 'modules_v3/yahrzeit/help_text.php',
 	WT_ROOT . 'save.php',
 	WT_ROOT . 'themes/_administration/css-1.6.2',
@@ -419,7 +431,7 @@ $controller
 	->pageHeader();
 
 // Check for updates
-$latest_version_txt = fetch_latest_version();
+$latest_version_txt = Functions::fetchLatestVersion();
 if (preg_match('/^[0-9.]+\|[0-9.]+\|/', $latest_version_txt)) {
 	list($latest_version) = explode('|', $latest_version_txt);
 } else {

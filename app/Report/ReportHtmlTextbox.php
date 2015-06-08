@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Report;
 
 /**
  * webtrees: online genealogy
@@ -22,13 +22,11 @@ namespace Fisharebest\Webtrees;
 class ReportHtmlTextbox extends ReportBaseTextbox {
 	/**
 	 * @param ReportHtml $renderer
-	 *
-	 * @return void
 	 */
-	function render($renderer) {
+	public function render($renderer) {
 		// checkFootnote
-		$newelements = array();
-		$lastelement = array();
+		$newelements      = array();
+		$lastelement      = array();
 		$footnote_element = array();
 		// Element counter
 		$cE = count($this->elements);
@@ -52,7 +50,7 @@ class ReportHtmlTextbox extends ReportBaseTextbox {
 							$lastelement->addText(str_replace("\n", "<br>", $element->getValue()));
 						} elseif (!empty($lastelement)) {
 							$newelements[] = $lastelement;
-							$lastelement = $element;
+							$lastelement   = $element;
 						}
 					}
 				} // Collect the Footnote links
@@ -62,7 +60,7 @@ class ReportHtmlTextbox extends ReportBaseTextbox {
 					// Save first the last element if any
 					if (!empty($lastelement)) {
 						$newelements[] = $lastelement;
-						$lastelement = array();
+						$lastelement   = array();
 					}
 					// Save the Footnote with it’s link number as key for sorting later
 					$footnote_element[$element->num] = $element;
@@ -77,14 +75,14 @@ class ReportHtmlTextbox extends ReportBaseTextbox {
 					}
 					if (!empty($lastelement)) {
 						$newelements[] = $lastelement;
-						$lastelement = array();
+						$lastelement   = array();
 					}
 					$newelements[] = $element;
 				}
 			} else {
 				if (!empty($lastelement)) {
 					$newelements[] = $lastelement;
-					$lastelement = array();
+					$lastelement   = array();
 				}
 				if (!empty($footnote_element)) {
 					ksort($footnote_element);
@@ -146,7 +144,7 @@ class ReportHtmlTextbox extends ReportBaseTextbox {
 		$eH = 0;
 		// Footnote height (in points)
 		$fH = 0;
-		$w = 0;
+		$w  = 0;
 		//-- $lw is an array
 		// 0 => last line width
 		// 1 => 1 if text was wrapped, 0 if text did not wrap

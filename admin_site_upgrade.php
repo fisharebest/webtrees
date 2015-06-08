@@ -16,6 +16,9 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\Functions\FunctionsDate;
 use PclZip;
 
 define('WT_SCRIPT_NAME', 'admin_site_upgrade.php');
@@ -23,7 +26,7 @@ define('WT_SCRIPT_NAME', 'admin_site_upgrade.php');
 require './includes/session.php';
 
 // Check for updates
-$latest_version_txt = fetch_latest_version();
+$latest_version_txt = Functions::fetchLatestVersion();
 if (preg_match('/^[0-9.]+\|[0-9.]+\|/', $latest_version_txt)) {
 	list($latest_version, $earliest_version, $download_url) = explode('|', $latest_version_txt);
 } else {
@@ -36,7 +39,7 @@ $download_url_html   = '<b dir="auto"><a href="' . Filter::escapeHtml($download_
 
 // Show a friendly message while the site is being upgraded
 $lock_file           = __DIR__ . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'offline.txt';
-$lock_file_text      = I18N::translate('This website is being upgraded.  Try again in a few minutes.') . PHP_EOL . format_timestamp(WT_TIMESTAMP) . /* I18N: Timezone - http://en.wikipedia.org/wiki/UTC */ I18N::translate('UTC');
+$lock_file_text      = I18N::translate('This website is being upgraded.  Try again in a few minutes.') . PHP_EOL . FunctionsDate::formatTimestamp(WT_TIMESTAMP) . /* I18N: Timezone - http://en.wikipedia.org/wiki/UTC */ I18N::translate('UTC');
 
 // Success/failure indicators
 $icon_success        = '<i class="icon-yes"></i>';
@@ -350,7 +353,7 @@ $num_files = $res['nb'];
 
 reset_timeout();
 $start_time = microtime(true);
-$res = $archive->extract(
+$res        = $archive->extract(
 	\PCLZIP_OPT_PATH, $zip_dir,
 	\PCLZIP_OPT_REMOVE_PATH, 'webtrees',
 	\PCLZIP_OPT_REPLACE_NEWER
@@ -439,7 +442,7 @@ try {
 
 reset_timeout();
 $start_time = microtime(true);
-$res = $archive->extract(
+$res        = $archive->extract(
 	\PCLZIP_OPT_PATH, WT_ROOT,
 	\PCLZIP_OPT_REMOVE_PATH, 'webtrees',
 	\PCLZIP_OPT_REPLACE_NEWER

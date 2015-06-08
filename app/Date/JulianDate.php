@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Date;
 
 /**
  * webtrees: online genealogy
@@ -17,13 +17,14 @@ namespace Fisharebest\Webtrees;
  */
 
 use Fisharebest\ExtCalendar\JulianCalendar;
+use Fisharebest\Webtrees\I18N;
 
 /**
  * Class JulianDate - Definitions for the Julian Proleptic calendar
  * (Proleptic means we extend it backwards, prior to its introduction in 46BC)
  */
 class JulianDate extends CalendarDate {
-	/** @var boolean True for dates recorded in new-style/old-style format, e.g. 2 FEB 1743/44 */
+	/** @var bool True for dates recorded in new-style/old-style format, e.g. 2 FEB 1743/44 */
 	private $new_old_style = false;
 
 	/** {@inheritdoc} */
@@ -52,7 +53,7 @@ class JulianDate extends CalendarDate {
 			$this->new_old_style = true;
 
 			return $match[1] + 1;
-		} else if (preg_match('/^(\d+) B\.C\.$/', $year, $match)) {
+		} elseif (preg_match('/^(\d+) B\.C\.$/', $year, $match)) {
 			return -$match[1];
 		} else {
 			return (int) $year;

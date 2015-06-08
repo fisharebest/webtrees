@@ -23,6 +23,10 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\FunctionsDb;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+
 define('WT_SCRIPT_NAME', 'admin_site_merge.php');
 require './includes/session.php';
 
@@ -89,7 +93,7 @@ foreach ($facts1 as $id1 => $fact1) {
 }
 
 if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYPE === $rec2::RECORD_TYPE && Filter::post('action') === 'merge' && Filter::checkCsrf()) {
-	$ids = fetch_all_links($gid2, $WT_TREE->getTreeId());
+	$ids = FunctionsDb::fetchAllLinks($gid2, $WT_TREE->getTreeId());
 
 	// If we are not auto-accepting, then we can show a link to the pending deletion
 	if (Auth::user()->getPreference('auto_accept')) {
@@ -131,7 +135,7 @@ if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYP
 		" GROUP BY page_name"
 	)->execute(array($WT_TREE->getTreeId(), $gid1, $gid2))->fetchAssoc();
 
-	foreach ($hits as $page_name=>$page_count) {
+	foreach ($hits as $page_name => $page_count) {
 		Database::prepare(
 			"UPDATE `##hit_counter` SET page_count=?" .
 			" WHERE gedcom_id=? AND page_name=? AND page_parameter=?"
@@ -143,15 +147,15 @@ if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYP
 	)->execute(array($WT_TREE->getTreeId(), $gid2));
 
 	$gedcom = "0 @" . $rec1->getXref() . "@ " . $rec1::RECORD_TYPE;
-	foreach ($facts as $fact_id=>$fact) {
+	foreach ($facts as $fact_id => $fact) {
 		$gedcom .= "\n" . $fact->getGedcom();
 	}
-	foreach ($facts1 as $fact_id=>$fact) {
+	foreach ($facts1 as $fact_id => $fact) {
 		if (in_array($fact_id, $keep1)) {
 			$gedcom .= "\n" . $fact->getGedcom();
 		}
 	}
-	foreach ($facts2 as $fact_id=>$fact) {
+	foreach ($facts2 as $fact_id => $fact) {
 		if (in_array($fact_id, $keep2)) {
 			$gedcom .= "\n" . $fact->getGedcom();
 		}
@@ -159,7 +163,7 @@ if ($rec1 && $rec2 && $rec1->getXref() !== $rec2->getXref() && $rec1::RECORD_TYP
 
 	$rec1->updateRecord($gedcom, true);
 	$rec2->deleteRecord();
-	update_favorites($gid2, $gid1, $WT_TREE);
+	FunctionsDb::updateFavorites($gid2, $gid1, $WT_TREE);
 	FlashMessages::addMessage(I18N::translate(
 	/* I18N: Records are individuals, sources, etc. */
 		'The records “%1$s” and “%2$s” have been merged.',
@@ -352,12 +356,12 @@ $controller->pageHeader();
 		</div>
 		<div class="col-sm-9">
 			<input data-autocomplete-type="IFSRO" type="text" name="gid1" id="gid1" maxlength="20" value="<?php echo $gid1; ?>">
-			<?php echo print_findindi_link('gid1'); ?>
-			<?php echo print_findfamily_link('gid1'); ?>
-			<?php echo print_findsource_link('gid1'); ?>
-			<?php echo print_findrepository_link('gid1'); ?>
-			<?php echo print_findmedia_link('gid1'); ?>
-			<?php echo print_findnote_link('gid1'); ?>
+			<?php echo FunctionsPrint::printFindIndividualLink('gid1'); ?>
+			<?php echo FunctionsPrint::printFindFamilyLink('gid1'); ?>
+			<?php echo FunctionsPrint::printFindSourceLink('gid1'); ?>
+			<?php echo FunctionsPrint::printFindRepositoryLink('gid1'); ?>
+			<?php echo FunctionsPrint::printFindMediaLink('gid1'); ?>
+			<?php echo FunctionsPrint::printFindNoteLink('gid1'); ?>
 		</div>
 	</div>
 
@@ -369,12 +373,12 @@ $controller->pageHeader();
 		</div>
 		<div class="col-sm-9">
 			<input data-autocomplete-type="IFSRO" type="text" name="gid2" id="gid2" maxlength="20" value="<?php echo $gid2; ?>" >
-			<?php echo print_findindi_link('gid2'); ?>
-			<?php echo print_findfamily_link('gid2'); ?>
-			<?php echo print_findsource_link('gid2'); ?>
-			<?php echo print_findrepository_link('gid2'); ?>
-			<?php echo print_findmedia_link('gid2'); ?>
-			<?php echo print_findnote_link('gid2'); ?>
+			<?php echo FunctionsPrint::printFindIndividualLink('gid2'); ?>
+			<?php echo FunctionsPrint::printFindFamilyLink('gid2'); ?>
+			<?php echo FunctionsPrint::printFindSourceLink('gid2'); ?>
+			<?php echo FunctionsPrint::printFindRepositoryLink('gid2'); ?>
+			<?php echo FunctionsPrint::printFindMediaLink('gid2'); ?>
+			<?php echo FunctionsPrint::printFindNoteLink('gid2'); ?>
 		</div>
 	</div>
 

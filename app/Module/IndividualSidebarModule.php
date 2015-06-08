@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,14 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Query\QueryName;
+use Fisharebest\Webtrees\Theme;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Class IndividualSidebarModule
@@ -74,7 +82,7 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 
 	/** {@inheritdoc} */
 	public function getSidebarContent() {
-		global $WT_IMAGES, $UNKNOWN_NN, $controller, $WT_TREE;
+		global $controller, $WT_TREE;
 
 		// Fetch a list of the initial letters of all surnames in the database
 		$initials = QueryName::surnameAlpha($WT_TREE, true, false, false);
@@ -129,10 +137,10 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 		');
 
 		$out = '<form method="post" action="module.php?mod=' . $this->getName() . '&amp;mod_action=ajax" onsubmit="return false;"><input type="search" name="sb_indi_name" id="sb_indi_name" placeholder="' . I18N::translate('Search') . '"><p>';
-		foreach ($initials as $letter=>$count) {
+		foreach ($initials as $letter => $count) {
 			switch ($letter) {
 			case '@':
-				$html = $UNKNOWN_NN;
+				$html = I18N::translateContext('Unknown surname', '…');
 				break;
 			case ',':
 				$html = I18N::translate('None');
@@ -163,7 +171,7 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 	 */
 	private function getAlphaSurnames(Tree $tree, $alpha) {
 		$surnames = QueryName::surnames($tree, '', $alpha, true, false);
-		$out = '<ul>';
+		$out      = '<ul>';
 		foreach (array_keys($surnames) as $surname) {
 			$out .= '<li id="sb_indi_' . $surname . '" class="sb_indi_surname_li"><a href="' . $surname . '" title="' . $surname . '" alt="' . $alpha . '" class="sb_indi_surname">' . $surname . '</a>';
 			$out .= '<div class="name_tree_div"></div>';
@@ -183,7 +191,7 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 	 */
 	private function getSurnameIndis(Tree $tree, $alpha, $surname) {
 		$indis = QueryName::individuals($tree, $surname, $alpha, '', true, false);
-		$out = '<ul>';
+		$out   = '<ul>';
 		foreach ($indis as $person) {
 			if ($person->canShowName()) {
 				$out .= '<li><a href="' . $person->getHtmlUrl() . '">' . $person->getSexImage() . ' ' . $person->getFullName() . ' ';

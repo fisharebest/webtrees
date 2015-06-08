@@ -23,6 +23,10 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\FamilyController;
+use Fisharebest\Webtrees\Functions\FunctionsCharts;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+
 define('WT_SCRIPT_NAME', 'family.php');
 require './includes/session.php';
 
@@ -39,13 +43,13 @@ if ($controller->record && $controller->record->canShow()) {
 					'<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
 					'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
 				),
-				' ', help_link('pending_changes'),
+				' ', FunctionsPrint::helpLink('pending_changes'),
 				'</p>';
 		} elseif (Auth::isEditor($controller->record->getTree())) {
 			echo
 				'<p class="ui-state-highlight">',
 				I18N::translate('This family has been deleted.  The deletion will need to be reviewed by a moderator.'),
-				' ', help_link('pending_changes'),
+				' ', FunctionsPrint::helpLink('pending_changes'),
 				'</p>';
 		}
 	} elseif ($controller->record->isPendingAddtion()) {
@@ -57,13 +61,13 @@ if ($controller->record && $controller->record->canShow()) {
 					'<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'accept') . '</a>',
 					'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'reject') . '</a>'
 				),
-				' ', help_link('pending_changes'),
+				' ', FunctionsPrint::helpLink('pending_changes'),
 				'</p>';
 		} elseif (Auth::isEditor($controller->record->getTree())) {
 			echo
 				'<p class="ui-state-highlight">',
 				I18N::translate('This family has been edited.  The changes need to be reviewed by a moderator.'),
-				' ', help_link('pending_changes'),
+				' ', FunctionsPrint::helpLink('pending_changes'),
 				'</p>';
 		}
 	}
@@ -75,7 +79,7 @@ if ($controller->record && $controller->record->canShow()) {
 	http_response_code(404);
 	$controller->pageHeader();
 	echo '<p class="ui-state-error">', I18N::translate('This family does not exist or you do not have permission to view it.'), '</p>';
-	
+
 	return;
 }
 
@@ -86,7 +90,7 @@ if ($controller->record && $controller->record->canShow()) {
 <table id="family-table" align="center" width="95%">
 	<tr valign="top">
 		<td valign="top" style="width: <?php echo Theme::theme()->parameter('chart-box-x') + 30; ?>px;"><!--//List of children//-->
-			<?php print_family_children($controller->record); ?>
+			<?php FunctionsCharts::printFamilyChildren($controller->record); ?>
 		</td>
 		<td> <!--//parents pedigree chart and Family Details//-->
 			<table width="100%">
@@ -97,7 +101,7 @@ if ($controller->record && $controller->record->canShow()) {
 				<tr>
 					<td colspan="2">
 						<?php
-						print_family_parents($controller->record);
+						FunctionsCharts::printFamilyParents($controller->record);
 						if (Auth::isEditor($controller->record->getTree())) {
 							$husb = $controller->record->getHusband();
 							if (!$husb) {

@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Report;
 
 /**
  * webtrees: online genealogy
@@ -23,11 +23,9 @@ class ReportPdfFootnote extends ReportBaseFootnote {
 	/**
 	 * PDF Footnotes number renderer
 	 *
-	 * @param PDF $renderer
-	 *
-	 * @return void
+	 * @param ReportTcpdf $renderer
 	 */
-	function render($renderer) {
+	public function render($renderer) {
 		$renderer->setCurrentStyle("footnotenum");
 		$renderer->Write($renderer->getCurrentStyleHeight(), $this->numText, $this->addlink); //source link numbers after name
 	}
@@ -36,11 +34,9 @@ class ReportPdfFootnote extends ReportBaseFootnote {
 	 * Write the Footnote text
 	 * Uses style name "footnote" by default
 	 *
-	 * @param PDF $pdf
-	 *
-	 * @return void
+	 * @param ReportTcpdf $pdf
 	 */
-	function renderFootnote($pdf) {
+	public function renderFootnote($pdf) {
 		if ($pdf->getCurrentStyle() != $this->styleName) {
 			$pdf->setCurrentStyle($this->styleName);
 		}
@@ -62,11 +58,11 @@ class ReportPdfFootnote extends ReportBaseFootnote {
 	/**
 	 * Returns the height in points of the Footnote element
 	 *
-	 * @param PDF $renderer
+	 * @param ReportTcpdf $renderer
 	 *
 	 * @return float $h
 	 */
-	function getFootnoteHeight($renderer) {
+	public function getFootnoteHeight($renderer) {
 		return 0;
 	}
 
@@ -74,11 +70,11 @@ class ReportPdfFootnote extends ReportBaseFootnote {
 	 * Splits the text into lines to fit into a giving cell
 	 * and returns the last lines width
 	 *
-	 * @param PDF $pdf
+	 * @param ReportTcpdf $pdf
 	 *
 	 * @return array
 	 */
-	function getWidth($pdf) {
+	public function getWidth($pdf) {
 		// Setup the style name, a font must be selected to calculate the width
 		$pdf->setCurrentStyle("footnotenum");
 
@@ -102,18 +98,18 @@ class ReportPdfFootnote extends ReportBaseFootnote {
 			// Check with line counter too!
 			// but floor the $wrapWidthRemaining first to keep it bugfree!
 			$wrapWidthRemaining = (int) ($this->wrapWidthRemaining);
-			if (($lw >= $wrapWidthRemaining) or ($lfct > 1)) {
-				$newtext = "";
-				$lines = explode("\n", $this->numText);
+			if ($lw >= $wrapWidthRemaining || $lfct > 1) {
+				$newtext = '';
+				$lines   = explode("\n", $this->numText);
 				// Go throught the text line by line
 				foreach ($lines as $line) {
 					// Line width in points
 					$lw = ceil($pdf->GetStringWidth($line));
 					// If the line has to be wraped
 					if ($lw >= $wrapWidthRemaining) {
-						$words = explode(" ", $line);
+						$words    = explode(" ", $line);
 						$addspace = count($words);
-						$lw = 0;
+						$lw       = 0;
 						foreach ($words as $word) {
 							$addspace--;
 							$lw += ceil($pdf->GetStringWidth($word . " "));
@@ -147,12 +143,12 @@ class ReportPdfFootnote extends ReportBaseFootnote {
 					$lfct--;
 				}
 				$this->numText = $newtext;
-				$lfct = substr_count($this->numText, "\n");
+				$lfct          = substr_count($this->numText, "\n");
 
 				return array($lw, 1, $lfct);
 			}
 		}
-		$l = 0;
+		$l    = 0;
 		$lfct = substr_count($this->numText, "\n");
 		if ($lfct > 0) {
 			$l = 2;

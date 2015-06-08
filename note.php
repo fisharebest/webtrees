@@ -16,6 +16,12 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Controller\NoteController;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
+use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
+use Fisharebest\Webtrees\Module\CensusAssistantModule;
+
 define('WT_SCRIPT_NAME', 'note.php');
 require './includes/session.php';
 
@@ -32,13 +38,13 @@ if ($controller->record && $controller->record->canShow()) {
 					'<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
 					'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
 				),
-				' ', help_link('pending_changes'),
+				' ', FunctionsPrint::helpLink('pending_changes'),
 				'</p>';
 		} elseif (Auth::isEditor($controller->record->getTree())) {
 			echo
 				'<p class="ui-state-highlight">',
 				I18N::translate('This note has been deleted.  The deletion will need to be reviewed by a moderator.'),
-				' ', help_link('pending_changes'),
+				' ', FunctionsPrint::helpLink('pending_changes'),
 				'</p>';
 		}
 	} elseif ($controller->record->isPendingAddtion()) {
@@ -50,13 +56,13 @@ if ($controller->record && $controller->record->canShow()) {
 					'<a href="#" onclick="accept_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'accept') . '</a>',
 					'<a href="#" onclick="reject_changes(\'' . $controller->record->getXref() . '\');">' . I18N::translateContext('You should review the changes and then accept or reject them.', 'reject') . '</a>'
 				),
-				' ', help_link('pending_changes'),
+				' ', FunctionsPrint::helpLink('pending_changes'),
 				'</p>';
 		} elseif (Auth::isEditor($controller->record->getTree())) {
 			echo
 				'<p class="ui-state-highlight">',
 				I18N::translate('This note has been edited.  The changes need to be reviewed by a moderator.'),
-				' ', help_link('pending_changes'),
+				' ', FunctionsPrint::helpLink('pending_changes'),
 				'</p>';
 		}
 	}
@@ -64,7 +70,7 @@ if ($controller->record && $controller->record->canShow()) {
 	http_response_code(404);
 	$controller->pageHeader();
 	echo '<p class="ui-state-error">', I18N::translate('This note does not exist or you do not have permission to view it.'), '</p>';
-	
+
 	return;
 }
 
@@ -158,26 +164,26 @@ if (Module::getModuleByName('GEDFact_assistant')) {
 				</tr>
 				<?php
 					foreach ($facts as $fact) {
-						print_fact($fact, $controller->record);
+						FunctionsPrintFacts::printFact($fact, $controller->record);
 					}
 					if ($controller->record->canEdit()) {
-						print_add_new_fact($controller->record->getXref(), $facts, 'NOTE');
+						FunctionsPrint::printAddNewFact($controller->record->getXref(), $facts, 'NOTE');
 					}
 				?>
 			</table>
 		</div>
 		<?php
 		if ($linked_indi) {
-			echo '<div id="indi-note">', format_indi_table($linked_indi), '</div>';
+			echo '<div id="indi-note">', FunctionsPrintLists::individualTable($linked_indi), '</div>';
 		}
 		if ($linked_fam) {
-			echo '<div id="fam-note">', format_fam_table($linked_fam), '</div>';
+			echo '<div id="fam-note">', FunctionsPrintLists::familyTable($linked_fam), '</div>';
 		}
 		if ($linked_obje) {
-			echo '<div id="media-note">', format_media_table($linked_obje), '</div>';
+			echo '<div id="media-note">', FunctionsPrintLists::mediaTable($linked_obje), '</div>';
 		}
 		if ($linked_sour) {
-			echo '<div id="source-note">', format_sour_table($linked_sour), '</div>';
+			echo '<div id="source-note">', FunctionsPrintLists::sourceTable($linked_sour), '</div>';
 		}
 		?>
 	</div>

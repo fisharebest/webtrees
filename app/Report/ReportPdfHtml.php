@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Report;
 
 /**
  * webtrees: online genealogy
@@ -21,12 +21,12 @@ namespace Fisharebest\Webtrees;
  */
 class ReportPdfHtml extends ReportBaseHtml {
 	/**
-	 * @param         $renderer
-	 * @param boolean $sub
+	 * @param      $renderer
+	 * @param bool $sub
 	 *
-	 * @return integer|string
+	 * @return int|string
 	 */
-	function render($renderer, $sub = false) {
+	public function render($renderer, $sub = false) {
 		if (!empty($this->attrs['style'])) {
 			$renderer->setCurrentStyle($this->attrs['style']);
 		}
@@ -41,7 +41,7 @@ class ReportPdfHtml extends ReportBaseHtml {
 			} elseif (is_string($element) && $element == "addpage") {
 				$renderer->newPage();
 			} elseif ($element instanceof ReportBaseHtml) {
-				$this->text .= $element->render($renderer, true);
+				$element->render($renderer, true);
 			} else {
 				$element->render($renderer);
 			}

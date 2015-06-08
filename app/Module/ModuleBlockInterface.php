@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -22,8 +22,8 @@ namespace Fisharebest\Webtrees;
 interface ModuleBlockInterface {
 	/**
 	 * Generate the HTML content of this block.
-	 * 
-	 * @param integer $block_id
+	 *
+	 * @param int $block_id
 	 *
 	 * @return string
 	 */
@@ -34,30 +34,28 @@ interface ModuleBlockInterface {
 	 * Simple blocks are faster in-line, more comples ones
 	 * can be loaded later.
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function loadAjax();
 
 	/**
 	 * Can this block be shown on the user’s home page?
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function isUserBlock();
 
 	/**
 	 * Can this block be shown on the tree’s home page?
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function isGedcomBlock();
 
 	/**
 	 * An HTML form to edit block settings
 	 *
-	 * @param integer $block_id
-	 *
-	 * @return void
+	 * @param int $block_id
 	 */
 	public function configureBlock($block_id);
 }

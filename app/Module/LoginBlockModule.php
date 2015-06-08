@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,10 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Site;
+use Fisharebest\Webtrees\Theme;
 
 /**
  * Class LoginBlockModule
@@ -33,7 +37,7 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface {
 	/** {@inheritdoc} */
 	public function getBlock($block_id, $template = true, $cfg = null) {
 		global $controller;
-		$id = $this->getName() . $block_id;
+		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		$controller->addInlineJavascript('
 			jQuery("#new_passwd").hide();
@@ -55,24 +59,24 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface {
 		} else {
 			$title   = I18N::translate('Login');
 			$content = '<div id="login-box">
-				<form id="login-form" name="login-form" method="post" action="'. WT_LOGIN_URL . '" onsubmit="d=new Date(); this.timediff.value=-60*d.getTimezoneOffset();">
+				<form id="login-form" name="login-form" method="post" action="' . WT_LOGIN_URL . '" onsubmit="d=new Date(); this.timediff.value=-60*d.getTimezoneOffset();">
 				<input type="hidden" name="action" value="login">
 				<input type="hidden" name="timediff" value="">';
 			$content .= '<div>
-				<label for="username">'. I18N::translate('Username') .
+				<label for="username">' . I18N::translate('Username') .
 					'<input type="text" id="username" name="username" class="formField">
 				</label>
 				</div>
 				<div>
-					<label for="password">'. I18N::translate('Password') .
+					<label for="password">' . I18N::translate('Password') .
 						'<input type="password" id="password" name="password" class="formField">
 					</label>
 				</div>
 				<div>
-					<input type="submit" value="'. I18N::translate('Login') . '">
+					<input type="submit" value="' . I18N::translate('Login') . '">
 				</div>
 				<div>
-					<a href="#" id="passwd_click">'. I18N::translate('Request new password') . '</a>
+					<a href="#" id="passwd_click">' . I18N::translate('Request new password') . '</a>
 				</div>';
 			if (Site::getPreference('USE_REGISTRATION_MODULE')) {
 				$content .= '<div><a href="' . WT_LOGIN_URL . '?action=register">' . I18N::translate('Request new user account') . '</a></div>';
@@ -81,16 +85,16 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface {
 
 		// hidden New Password block
 		$content .= '<div id="new_passwd">
-			<form id="new_passwd_form" name="new_passwd_form" action="'.WT_LOGIN_URL . '" method="post">
+			<form id="new_passwd_form" name="new_passwd_form" action="' . WT_LOGIN_URL . '" method="post">
 			<input type="hidden" name="time" value="">
 			<input type="hidden" name="action" value="requestpw">
-			<h4>'. I18N::translate('Lost password request') . '</h4>
+			<h4>' . I18N::translate('Lost password request') . '</h4>
 			<div>
-				<label for="new_passwd_username">'. I18N::translate('Username or email address') .
+				<label for="new_passwd_username">' . I18N::translate('Username or email address') .
 					'<input type="text" id="new_passwd_username" name="new_passwd_username" value="">
 				</label>
 			</div>
-			<div><input type="submit" value="'. I18N::translate('continue') . '"></div>
+			<div><input type="submit" value="' . I18N::translate('continue') . '"></div>
 			</form>
 		</div>'; //"new_passwd"
 		$content .= '</div>'; //"login-box"

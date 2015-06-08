@@ -16,6 +16,10 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Module\ModuleConfigInterface;
+
 define('WT_SCRIPT_NAME', 'admin_module_tabs.php');
 require 'includes/session.php';
 
@@ -110,7 +114,7 @@ $controller
 										<?php echo $tree->getTitleHtml(); ?>
 									</td>
 									<td>
-										<?php echo edit_field_access_level('access-' . $module->getName() . '-' . $tree->getTreeId(), $module->getAccessLevel($tree, 'tab')); ?>
+										<?php echo FunctionsEdit::editFieldAccessLevel('access-' . $module->getName() . '-' . $tree->getTreeId(), $module->getAccessLevel($tree, 'tab')); ?>
 									</td>
 								</tr>
 							<?php endforeach; ?>

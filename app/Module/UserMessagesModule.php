@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,14 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsDate;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Theme;
+use Fisharebest\Webtrees\User;
 
 /**
  * Class UserMessagesModule
@@ -56,7 +64,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		$title = I18N::plural('%s message', '%s messages', $count, I18N::number($count));
-		$users = array_filter(User::all(), function(User $user) {
+		$users = array_filter(User::all(), function (User $user) {
 			return $user->getUserId() !== Auth::id() && $user->getPreference('verified_by_admin') && $user->getPreference('contactmethod') !== 'none';
 		});
 
@@ -83,7 +91,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 				$content .= '<tr>';
 				$content .= '<td class="list_value_wrap"><input type="checkbox" id="cb_message' . $message->message_id . '" name="message_id[]" value="' . $message->message_id . '"></td>';
 				$content .= '<td class="list_value_wrap"><a href="#" onclick="return expand_layer(\'message' . $message->message_id . '\');"><i id="message' . $message->message_id . '_img" class="icon-plus"></i> <b dir="auto">' . Filter::escapeHtml($message->subject) . '</b></a></td>';
-				$content .= '<td class="list_value_wrap">' . format_timestamp($message->created + WT_TIMESTAMP_OFFSET) . '</td>';
+				$content .= '<td class="list_value_wrap">' . FunctionsDate::formatTimestamp($message->created + WT_TIMESTAMP_OFFSET) . '</td>';
 				$content .= '<td class="list_value_wrap">';
 				$user = User::findByIdentifier($message->sender);
 				if ($user) {
@@ -113,6 +121,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 			if ($block) {
 				$class .= ' small_inner_block';
 			}
+
 			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 			return $content;
@@ -144,7 +153,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for a yes/no option */ I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('block', $block);
+		echo FunctionsEdit::editFieldYesNo('block', $block);
 		echo '</td></tr>';
 	}
 }

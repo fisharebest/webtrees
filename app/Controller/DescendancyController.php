@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Controller;
 
 /**
  * webtrees: online genealogy
@@ -16,20 +16,27 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsCharts;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Theme;
 use Rhumsaa\Uuid\Uuid;
 
 /**
  * Class DescendancyController - Controller for the descendancy chart
  */
 class DescendancyController extends ChartController {
-
-	/** @var integer Show boxes for cousins */
+	/** @var int Show boxes for cousins */
 	public $show_cousins;
 
-	/** @var integer Determines style of chart */
+	/** @var int Determines style of chart */
 	public $chart_style;
 
-	/** @var integer Number of generations to display */
+	/** @var int Number of generations to display */
 	public $generations;
 
 	// d'Aboville numbering system [ http://www.saintclair.org/numbers/numdob.html ]
@@ -62,11 +69,9 @@ class DescendancyController extends ChartController {
 	 * Print a child family
 	 *
 	 * @param Individual $person
-	 * @param integer    $depth the descendancy depth to show
+	 * @param int        $depth the descendancy depth to show
 	 * @param string     $label
 	 * @param string     $gpid
-	 *
-	 * @return void
 	 */
 	public function printChildFamily(Individual $person, $depth, $label = '1.', $gpid = '') {
 
@@ -74,7 +79,7 @@ class DescendancyController extends ChartController {
 			return;
 		}
 		foreach ($person->getSpouseFamilies() as $family) {
-			print_sosa_family($family->getXref(), '', -1, $label, $person->getXref(), $gpid, 0, $this->showFull());
+			FunctionsCharts::printSosaFamily($family->getXref(), '', -1, $label, $person->getXref(), $gpid, 0, $this->showFull());
 			$i = 1;
 			foreach ($family->getChildren() as $child) {
 				$this->printChildFamily($child, $depth - 1, $label . ($i++) . '.', $person->getXref());
@@ -86,9 +91,7 @@ class DescendancyController extends ChartController {
 	 * print a child descendancy
 	 *
 	 * @param Individual $person
-	 * @param integer    $depth the descendancy depth to show
-	 *
-	 * @return void
+	 * @param int        $depth the descendancy depth to show
 	 */
 	public function printChildDescendancy(Individual $person, $depth) {
 		echo "<li>";
@@ -99,7 +102,7 @@ class DescendancyController extends ChartController {
 			echo "<img src=\"" . Theme::theme()->parameter('image-spacer') . "\" height=\"3\" width=\"3\" alt=\"\">";
 			echo "<img src=\"" . Theme::theme()->parameter('image-hline') . "\" height=\"3\" width=\"", Theme::theme()->parameter('chart-descendancy-indent') - 3, "\" alt=\"\"></td><td>";
 		}
-		print_pedigree_person($person, $this->showFull());
+		FunctionsPrint::printPedigreePerson($person, $this->showFull());
 		echo '</td>';
 
 		// check if child has parents and add an arrow
@@ -107,7 +110,7 @@ class DescendancyController extends ChartController {
 		echo '<td>';
 		foreach ($person->getChildFamilies() as $cfamily) {
 			foreach ($cfamily->getSpouses() as $parent) {
-				print_url_arrow('?rootid=' . $parent->getXref() . '&amp;generations=' . $this->generations . '&amp;chart_style=' . $this->chart_style . '&amp;show_full=' . $this->showFull() . '&amp;ged=' . $parent->getTree()->getNameUrl(), I18N::translate('Start at parents'), 2);
+				FunctionsCharts::printUrlArrow('?rootid=' . $parent->getXref() . '&amp;generations=' . $this->generations . '&amp;chart_style=' . $this->chart_style . '&amp;show_full=' . $this->showFull() . '&amp;ged=' . $parent->getTree()->getNameUrl(), I18N::translate('Start at parents'), 2);
 				// only show the arrow for one of the parents
 				break;
 			}
@@ -124,7 +127,7 @@ class DescendancyController extends ChartController {
 		}
 		$this->dabo_num[$level]++;
 		$this->dabo_num[$level + 1] = 0;
-		$this->dabo_sex[$level] = $person->getSex();
+		$this->dabo_sex[$level]     = $person->getSex();
 		for ($i = 0; $i <= $level; $i++) {
 			$isf = $this->dabo_sex[$i];
 			if ($isf === 'M') {
@@ -154,9 +157,7 @@ class DescendancyController extends ChartController {
 	 *
 	 * @param Individual $person
 	 * @param Family     $family
-	 * @param integer       $depth the descendancy depth to show
-	 *
-	 * @return void
+	 * @param int        $depth the descendancy depth to show
 	 */
 	private function printFamilyDescendancy(Individual $person, Family $family, $depth) {
 		$uid = Uuid::uuid4(); // create a unique ID
@@ -177,7 +178,7 @@ class DescendancyController extends ChartController {
 		echo '<ul id="' . $uid . '" class="generation">';
 		echo '<li>';
 		echo '<table><tr><td>';
-		print_pedigree_person($spouse, $this->showFull());
+		FunctionsPrint::printPedigreePerson($spouse, $this->showFull());
 		echo '</td>';
 
 		// check if spouse has parents and add an arrow
@@ -186,7 +187,7 @@ class DescendancyController extends ChartController {
 		if ($spouse) {
 			foreach ($spouse->getChildFamilies() as $cfamily) {
 				foreach ($cfamily->getSpouses() as $parent) {
-					print_url_arrow('?rootid=' . $parent->getXref() . '&amp;generations=' . $this->generations . '&amp;chart_style=' . $this->chart_style . '&amp;show_full=' . $this->showFull() . '&amp;ged=' . $parent->getTree()->getNameUrl(), I18N::translate('Start at parents'), 2);
+					FunctionsCharts::printUrlArrow('?rootid=' . $parent->getXref() . '&amp;generations=' . $this->generations . '&amp;chart_style=' . $this->chart_style . '&amp;show_full=' . $this->showFull() . '&amp;ged=' . $parent->getTree()->getNameUrl(), I18N::translate('Start at parents'), 2);
 					// only show the arrow for one of the parents
 					break;
 				}
@@ -226,7 +227,7 @@ class DescendancyController extends ChartController {
 	 * Find all the individuals that are descended from an individual.
 	 *
 	 * @param Individual   $person
-	 * @param integer         $n
+	 * @param int          $n
 	 * @param Individual[] $array
 	 *
 	 * @return Individual[]
@@ -245,6 +246,7 @@ class DescendancyController extends ChartController {
 				$array = $this->individualDescendancy($child, $n - 1, $array);
 			}
 		}
+
 		return $array;
 	}
 
@@ -252,7 +254,7 @@ class DescendancyController extends ChartController {
 	 * Find all the families that are descended from an individual.
 	 *
 	 * @param Individual $person
-	 * @param integer       $n
+	 * @param int        $n
 	 * @param Family[]   $array
 	 *
 	 * @return Family[]
@@ -267,6 +269,7 @@ class DescendancyController extends ChartController {
 				$array = $this->familyDescendancy($child, $n - 1, $array);
 			}
 		}
+
 		return $array;
 	}
 }

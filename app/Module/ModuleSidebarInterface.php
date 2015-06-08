@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -23,12 +23,13 @@ interface ModuleSidebarInterface {
 	/**
 	 * The user can change the order of sidebars.  Until they do this, they are shown in this order.
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function defaultSidebarOrder();
 
 	/**
 	 * Load this sidebar synchronously.
+	 *
 	 * @return string
 	 */
 	public function getSidebarContent();
@@ -43,7 +44,7 @@ interface ModuleSidebarInterface {
 	/**
 	 * Does this sidebar have anything to display for this individual?
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function hasSidebarContent();
 }

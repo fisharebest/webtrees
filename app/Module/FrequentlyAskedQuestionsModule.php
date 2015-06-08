@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,15 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Class FrequentlyAskedQuestionsModule
@@ -78,7 +87,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 				)->execute(array(
 					'tree_id'     => Filter::postInteger('gedcom_id'),
 					'block_order' => Filter::postInteger('block_order'),
-					'block_id'    => $block_id
+					'block_id'    => $block_id,
 				));
 			} else {
 				Database::prepare(
@@ -167,7 +176,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 				</label>
 
 				<div class="col-sm-9">
-					<?php echo edit_language_checkboxes('lang', explode(',', $this->getBlockSetting($block_id, 'languages'))); ?>
+					<?php echo FunctionsEdit::editLanguageCheckboxes('lang', explode(',', $this->getBlockSetting($block_id, 'languages'))); ?>
 				</div>
 			</div>
 
@@ -187,7 +196,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 				</label>
 
 				<div class="col-sm-9">
-					<?php echo select_edit_control('gedcom_id', Tree::getIdList(), I18N::translate('All'), $gedcom_id, 'class="form-control"'); ?>
+					<?php echo FunctionsEdit::selectEditControl('gedcom_id', Tree::getIdList(), I18N::translate('All'), $gedcom_id, 'class="form-control"'); ?>
 					<p class="small text-muted">
 						<?php echo I18N::translate('A FAQ item can be displayed on just one of the family trees, or on all the family trees.'); ?>
 					</p>
@@ -243,7 +252,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 		)->execute(array(
 			'block_order'   => $block_order,
 			'module_name_1' => $this->getName(),
-			'module_name_2' => $this->getName()
+			'module_name_2' => $this->getName(),
 		))->fetchOneRow();
 		if ($swap_block) {
 			Database::prepare(
@@ -423,7 +432,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			I18N::translate('Family tree'), ' ',
 			'<input type="hidden" name="mod", value="', $this->getName(), '">',
 			'<input type="hidden" name="mod_action" value="admin_config">',
-			select_edit_control('ged', Tree::getNameList(), null, $WT_TREE->getNameHtml()),
+			FunctionsEdit::selectEditControl('ged', Tree::getNameList(), null, $WT_TREE->getNameHtml()),
 			'<input type="submit" value="', I18N::translate('show'), '">',
 			'</form></p>';
 
@@ -436,8 +445,8 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			foreach ($faqs as $faq) {
 				// NOTE: Print the position of the current item
 				echo '<tr class="faq_edit_pos"><td>';
-				echo I18N::translate('#%s',$faq->block_order + 1), ' ';
-				if ($faq->gedcom_id == null) {
+				echo I18N::translate('#%s', $faq->block_order + 1), ' ';
+				if ($faq->gedcom_id === null) {
 					echo I18N::translate('All');
 				} else {
 					echo $WT_TREE->getTitleHtml();

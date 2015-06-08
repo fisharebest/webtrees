@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,14 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsDb;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Query\QueryName;
+use Fisharebest\Webtrees\Theme;
 
 /**
  * Class TopSurnamesModule
@@ -50,7 +58,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 		}
 
 		// This next function is a bit out of date, and doesn't cope well with surname variants
-		$top_surnames = get_top_surnames($WT_TREE->getTreeId(), $COMMON_NAMES_THRESHOLD, $num);
+		$top_surnames = FunctionsDb::getTopSurnames($WT_TREE->getTreeId(), $COMMON_NAMES_THRESHOLD, $num);
 
 		// Remove names found in the "Remove Names" list
 		if ($COMMON_NAMES_REMOVE) {
@@ -74,7 +82,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
-			$title = '<i class="icon-admin" title="' . I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
+			$title = '<a class="icon-admin" title="' . I18N::translate('Configure') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
 		} else {
 			$title = '';
 		}
@@ -89,21 +97,21 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 
 		switch ($infoStyle) {
 		case 'tagcloud':
-			uksort($all_surnames, __NAMESPACE__ . '\I18N::strcasecmp');
-			$content = format_surname_tagcloud($all_surnames, 'indilist.php', true, $WT_TREE);
+			uksort($all_surnames, '\Fisharebest\Webtrees\I18N::strcasecmp');
+			$content = FunctionsPrintLists::surnameTagCloud($all_surnames, 'indilist.php', true, $WT_TREE);
 			break;
 		case 'list':
-			uasort($all_surnames, __NAMESPACE__ . '\\TopSurnamesModule::surnameCountSort');
-			$content = format_surname_list($all_surnames, '1', true, 'indilist.php', $WT_TREE);
+			uasort($all_surnames, '\Fisharebest\Webtrees\Module\TopSurnamesModule::surnameCountSort');
+			$content = FunctionsPrintLists::surnameList($all_surnames, '1', true, 'indilist.php', $WT_TREE);
 			break;
 		case 'array':
-			uasort($all_surnames, __NAMESPACE__ . '\\TopSurnamesModule::surnameCountSort');
-			$content = format_surname_list($all_surnames, '2', true, 'indilist.php', $WT_TREE);
+			uasort($all_surnames, '\Fisharebest\Webtrees\Module\TopSurnamesModule::surnameCountSort');
+			$content = FunctionsPrintLists::surnameList($all_surnames, '2', true, 'indilist.php', $WT_TREE);
 			break;
 		case 'table':
 		default:
-			uasort($all_surnames, __NAMESPACE__ . '\\TopSurnamesModule::surnameCountSort');
-			$content = format_surname_table($all_surnames, 'indilist.php', $WT_TREE);
+			uasort($all_surnames, '\Fisharebest\Webtrees\Module\TopSurnamesModule::surnameCountSort');
+			$content = FunctionsPrintLists::surnameTable($all_surnames, 'indilist.php', $WT_TREE);
 			break;
 		}
 
@@ -111,6 +119,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 			if ($block) {
 				$class .= ' small_inner_block';
 			}
+
 			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 
@@ -154,13 +163,13 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('infoStyle', array('list' => I18N::translate('bullet list'), 'array' => I18N::translate('compact list'), 'table' => I18N::translate('table'), 'tagcloud' => I18N::translate('tag cloud')), null, $infoStyle, '');
+		echo FunctionsEdit::selectEditControl('infoStyle', array('list' => I18N::translate('bullet list'), 'array' => I18N::translate('compact list'), 'table' => I18N::translate('table'), 'tagcloud' => I18N::translate('tag cloud')), null, $infoStyle, '');
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for a yes/no option */ I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('block', $block);
+		echo FunctionsEdit::editFieldYesNo('block', $block);
 		echo '</td></tr>';
 	}
 
@@ -170,7 +179,7 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 	 * @param string[] $a
 	 * @param string[] $b
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	private static function surnameCountSort($a, $b) {
 		$counta = 0;

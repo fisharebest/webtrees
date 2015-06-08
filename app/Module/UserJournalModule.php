@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -15,11 +15,25 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsDate;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Theme;
 
 /**
  * Class UserJournalModule
  */
 class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
+	/** {@inheritdoc} */
+	public function __construct($directory) {
+		parent::__construct($directory);
+
+		// Create/update the database tables.
+		Database::updateSchema('\Fisharebest\Webtrees\Module\FamilyTreeNews\Schema', 'NB_SCHEMA_VERSION', 3);
+	}
+
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('Journal');
@@ -65,7 +79,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 		foreach ($usernews as $news) {
 			$content .= '<div class="journal_box">';
 			$content .= '<div class="news_title">' . $news->subject . '</div>';
-			$content .= '<div class="news_date">' . format_timestamp($news->updated) . '</div>';
+			$content .= '<div class="news_date">' . FunctionsDate::formatTimestamp($news->updated) . '</div>';
 			if ($news->body == strip_tags($news->body)) {
 				// No HTML?
 				$news->body = nl2br($news->body, false);
@@ -81,6 +95,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 			if ($block) {
 				$class .= ' small_inner_block';
 			}
+
 			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 			return $content;

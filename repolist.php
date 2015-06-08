@@ -23,6 +23,10 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\FunctionsDb;
+use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
+
 define('WT_SCRIPT_NAME', 'repolist.php');
 require './includes/session.php';
 
@@ -32,5 +36,5 @@ $controller->pageHeader();
 
 echo '<div id="repolist-page">',
 	'<h2>', I18N::translate('Repositories'), '</h2>';
-	echo format_repo_table(get_repo_list($WT_TREE));
+	echo FunctionsPrintLists::repositoryTable(FunctionsDb::getRepositoryList($WT_TREE));
 echo '</div>';

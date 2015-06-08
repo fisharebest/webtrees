@@ -30,84 +30,84 @@ switch ($help) {
 	//
 	// Tags such as _BIRT_CHIL are pseudo-tags, used to create family events.
 	//
-	// Generally, these tags need to be lists explicitly in add_simple_tag()
+	// Generally, these tags need to be lists explicitly in FunctionsEdit::add_simple_tag()
 	//////////////////////////////////////////////////////////////////////////////
 
 case 'DATE':
 	$title = GedcomTag::getLabel('DATE');
 	$dates = array(
-		'1900'                     =>new Date('1900'),
-		'JAN 1900'                 =>new Date('JAN 1900'),
-		'FEB 1900'                 =>new Date('FEB 1900'),
-		'MAR 1900'                 =>new Date('MAR 1900'),
-		'APR 1900'                 =>new Date('APR 1900'),
-		'MAY 1900'                 =>new Date('MAY 1900'),
-		'JUN 1900'                 =>new Date('JUN 1900'),
-		'JUL 1900'                 =>new Date('JUL 1900'),
-		'AUG 1900'                 =>new Date('AUG 1900'),
-		'SEP 1900'                 =>new Date('SEP 1900'),
-		'OCT 1900'                 =>new Date('OCT 1900'),
-		'NOV 1900'                 =>new Date('NOV 1900'),
-		'DEC 1900'                 =>new Date('DEC 1900'),
-		'11 DEC 1913'              =>new Date('11 DEC 1913'),
-		'01 FEB 2003'              =>new Date('01 FEB 2003'),
-		'ABT 1900'                 =>new Date('ABT 1900'),
-		'EST 1900'                 =>new Date('EST 1900'),
-		'CAL 1900'                 =>new Date('CAL 1900'),
-		'INT 1900 (...)'           =>new Date('INT 1900 (...)'),
-		'@#DJULIAN@ 44 B.C.'       =>new Date('@#DJULIAN@ 44 B.C.'),
-		'@#DJULIAN@ 14 JAN 1700'   =>new Date('@#DJULIAN@ 14 JAN 1700'),
-		'BET @#DJULIAN@ 01 SEP 1752 AND @#DGREGORIAN@ 30 SEP 1752'   =>new Date('BET @#DJULIAN@ 01 SEP 1752 AND @#DGREGORIAN@ 30 SEP 1752'),
-		'@#DJULIAN@ 20 FEB 1742/43'=>new Date('@#DJULIAN@ 20 FEB 1742/43'),
-		'FROM 1900 TO 1910'        =>new Date('FROM 1900 TO 1910'),
-		'FROM 1900'                =>new Date('FROM 1900'),
-		'TO 1910'                  =>new Date('TO 1910'),
-		'BET 1900 AND 1910'        =>new Date('BET 1900 AND 1910'),
-		'BET JAN 1900 AND MAR 1900'=>new Date('BET JAN 1900 AND MAR 1900'),
-		'BET APR 1900 AND JUN 1900'=>new Date('BET APR 1900 AND JUN 1900'),
-		'BET JUL 1900 AND SEP 1900'=>new Date('BET JUL 1900 AND SEP 1900'),
-		'BET OCT 1900 AND DEC 1900'=>new Date('BET OCT 1900 AND DEC 1900'),
-		'AFT 1900'                 =>new Date('AFT 1900'),
-		'BEF 1910'                 =>new Date('BEF 1910'),
+		'1900'                                                       => new Date('1900'),
+		'JAN 1900'                                                   => new Date('JAN 1900'),
+		'FEB 1900'                                                   => new Date('FEB 1900'),
+		'MAR 1900'                                                   => new Date('MAR 1900'),
+		'APR 1900'                                                   => new Date('APR 1900'),
+		'MAY 1900'                                                   => new Date('MAY 1900'),
+		'JUN 1900'                                                   => new Date('JUN 1900'),
+		'JUL 1900'                                                   => new Date('JUL 1900'),
+		'AUG 1900'                                                   => new Date('AUG 1900'),
+		'SEP 1900'                                                   => new Date('SEP 1900'),
+		'OCT 1900'                                                   => new Date('OCT 1900'),
+		'NOV 1900'                                                   => new Date('NOV 1900'),
+		'DEC 1900'                                                   => new Date('DEC 1900'),
+		'11 DEC 1913'                                                => new Date('11 DEC 1913'),
+		'01 FEB 2003'                                                => new Date('01 FEB 2003'),
+		'ABT 1900'                                                   => new Date('ABT 1900'),
+		'EST 1900'                                                   => new Date('EST 1900'),
+		'CAL 1900'                                                   => new Date('CAL 1900'),
+		'INT 1900 (...)'                                             => new Date('INT 1900 (...)'),
+		'@#DJULIAN@ 44 B.C.'                                         => new Date('@#DJULIAN@ 44 B.C.'),
+		'@#DJULIAN@ 14 JAN 1700'                                     => new Date('@#DJULIAN@ 14 JAN 1700'),
+		'BET @#DJULIAN@ 01 SEP 1752 AND @#DGREGORIAN@ 30 SEP 1752'   => new Date('BET @#DJULIAN@ 01 SEP 1752 AND @#DGREGORIAN@ 30 SEP 1752'),
+		'@#DJULIAN@ 20 FEB 1742/43'                                  => new Date('@#DJULIAN@ 20 FEB 1742/43'),
+		'FROM 1900 TO 1910'                                          => new Date('FROM 1900 TO 1910'),
+		'FROM 1900'                                                  => new Date('FROM 1900'),
+		'TO 1910'                                                    => new Date('TO 1910'),
+		'BET 1900 AND 1910'                                          => new Date('BET 1900 AND 1910'),
+		'BET JAN 1900 AND MAR 1900'                                  => new Date('BET JAN 1900 AND MAR 1900'),
+		'BET APR 1900 AND JUN 1900'                                  => new Date('BET APR 1900 AND JUN 1900'),
+		'BET JUL 1900 AND SEP 1900'                                  => new Date('BET JUL 1900 AND SEP 1900'),
+		'BET OCT 1900 AND DEC 1900'                                  => new Date('BET OCT 1900 AND DEC 1900'),
+		'AFT 1900'                                                   => new Date('AFT 1900'),
+		'BEF 1910'                                                   => new Date('BEF 1910'),
 		// Hijri dates
-		'@#DHIJRI@ 1497'           =>new Date('@#DHIJRI@ 1497'),
-		'@#DHIJRI@ MUHAR 1497'     =>new Date('@#DHIJRI@ MUHAR 1497'),
-		'ABT @#DHIJRI@ SAFAR 1497' =>new Date('ABT @#DHIJRI@ SAFAR 1497'),
-		'BET @#DHIJRI@ RABIA 1497 AND @#DHIJRI@ RABIT 1497'=>new Date('BET @#DHIJRI@ RABIA 1497 AND @#DHIJRI@ RABIT 1497'),
-		'FROM @#DHIJRI@ JUMAA 1497 TO @#DHIJRI@ JUMAT 1497'=>new Date('FROM @#DHIJRI@ JUMAA 1497 TO @#DHIJRI@ JUMAT 1497'),
-		'AFT @#DHIJRI@ RAJAB 1497' =>new Date('AFT @#DHIJRI@ RAJAB 1497'),
-		'BEF @#DHIJRI@ SHAAB 1497' =>new Date('BEF @#DHIJRI@ SHAAB 1497'),
-		'ABT @#DHIJRI@ RAMAD 1497' =>new Date('ABT @#DHIJRI@ RAMAD 1497'),
-		'FROM @#DHIJRI@ SHAWW 1497'=>new Date('FROM @#DHIJRI@ SHAWW 1497'),
-		'TO @#DHIJRI@ DHUAQ 1497'  =>new Date('TO @#DHIJRI@ DHUAQ 1497'),
-		'@#DHIJRI@ 03 DHUAH 1497'  =>new Date('@#DHIJRI@ 03 DHUAH 1497'),
+		'@#DHIJRI@ 1497'                                    => new Date('@#DHIJRI@ 1497'),
+		'@#DHIJRI@ MUHAR 1497'                              => new Date('@#DHIJRI@ MUHAR 1497'),
+		'ABT @#DHIJRI@ SAFAR 1497'                          => new Date('ABT @#DHIJRI@ SAFAR 1497'),
+		'BET @#DHIJRI@ RABIA 1497 AND @#DHIJRI@ RABIT 1497' => new Date('BET @#DHIJRI@ RABIA 1497 AND @#DHIJRI@ RABIT 1497'),
+		'FROM @#DHIJRI@ JUMAA 1497 TO @#DHIJRI@ JUMAT 1497' => new Date('FROM @#DHIJRI@ JUMAA 1497 TO @#DHIJRI@ JUMAT 1497'),
+		'AFT @#DHIJRI@ RAJAB 1497'                          => new Date('AFT @#DHIJRI@ RAJAB 1497'),
+		'BEF @#DHIJRI@ SHAAB 1497'                          => new Date('BEF @#DHIJRI@ SHAAB 1497'),
+		'ABT @#DHIJRI@ RAMAD 1497'                          => new Date('ABT @#DHIJRI@ RAMAD 1497'),
+		'FROM @#DHIJRI@ SHAWW 1497'                         => new Date('FROM @#DHIJRI@ SHAWW 1497'),
+		'TO @#DHIJRI@ DHUAQ 1497'                           => new Date('TO @#DHIJRI@ DHUAQ 1497'),
+		'@#DHIJRI@ 03 DHUAH 1497'                           => new Date('@#DHIJRI@ 03 DHUAH 1497'),
 		// French dates
-		'@#DFRENCH R@ 12'          =>new Date('@#DFRENCH R@ 12'),
-		'@#DFRENCH R@ VEND 12'     =>new Date('@#DFRENCH R@ VEND 12'),
-		'ABT @#DFRENCH R@ BRUM 12' =>new Date('ABT @#DFRENCH R@ BRUM 12'),
-		'BET @#DFRENCH R@ FRIM 12 AND @#DFRENCH R@ NIVO 12'=>new Date('BET @#DFRENCH R@ FRIM 12 AND @#DFRENCH R@ NIVO 12'),
-		'FROM @#DFRENCH R@ PLUV 12 TO @#DFRENCH R@ VENT 12'=>new Date('FROM @#DFRENCH R@ PLUV 12 TO @#DFRENCH R@ VENT 12'),
-		'AFT @#DFRENCH R@ GERM 12' =>new Date('AFT @#DFRENCH R@ GERM 12'),
-		'BEF @#DFRENCH R@ FLOR 12' =>new Date('BEF @#DFRENCH R@ FLOR 12'),
-		'ABT @#DFRENCH R@ PRAI 12' =>new Date('ABT @#DFRENCH R@ PRAI 12'),
-		'FROM @#DFRENCH R@ MESS 12'=>new Date('FROM @#DFRENCH R@ MESS 12'),
-		'TO @#DFRENCH R@ THER 12'  =>new Date('TO @#DFRENCH R@ THER 12'),
-		'EST @#DFRENCH R@ FRUC 12' =>new Date('EST @#DFRENCH R@ FRUC 12'),
-		'@#DFRENCH R@ 03 COMP 12'  =>new Date('@#DFRENCH R@ 03 COMP 12'),
+		'@#DFRENCH R@ 12'                                   => new Date('@#DFRENCH R@ 12'),
+		'@#DFRENCH R@ VEND 12'                              => new Date('@#DFRENCH R@ VEND 12'),
+		'ABT @#DFRENCH R@ BRUM 12'                          => new Date('ABT @#DFRENCH R@ BRUM 12'),
+		'BET @#DFRENCH R@ FRIM 12 AND @#DFRENCH R@ NIVO 12' => new Date('BET @#DFRENCH R@ FRIM 12 AND @#DFRENCH R@ NIVO 12'),
+		'FROM @#DFRENCH R@ PLUV 12 TO @#DFRENCH R@ VENT 12' => new Date('FROM @#DFRENCH R@ PLUV 12 TO @#DFRENCH R@ VENT 12'),
+		'AFT @#DFRENCH R@ GERM 12'                          => new Date('AFT @#DFRENCH R@ GERM 12'),
+		'BEF @#DFRENCH R@ FLOR 12'                          => new Date('BEF @#DFRENCH R@ FLOR 12'),
+		'ABT @#DFRENCH R@ PRAI 12'                          => new Date('ABT @#DFRENCH R@ PRAI 12'),
+		'FROM @#DFRENCH R@ MESS 12'                         => new Date('FROM @#DFRENCH R@ MESS 12'),
+		'TO @#DFRENCH R@ THER 12'                           => new Date('TO @#DFRENCH R@ THER 12'),
+		'EST @#DFRENCH R@ FRUC 12'                          => new Date('EST @#DFRENCH R@ FRUC 12'),
+		'@#DFRENCH R@ 03 COMP 12'                           => new Date('@#DFRENCH R@ 03 COMP 12'),
 		// Jewish dates
-		'@#DHEBREW@ 5481'          =>new Date('@#DHEBREW@ 5481'),
-		'@#DHEBREW@ TSH 5481'      =>new Date('@#DHEBREW@ TSH 5481'),
-		'ABT @#DHEBREW@ CSH 5481'  =>new Date('ABT @#DHEBREW@ CSH 5481'),
-		'BET @#DHEBREW@ KSL 5481 AND @#DHEBREW@ TVT 5481'=>new Date('BET @#DHEBREW@ KSL 5481 AND @#DHEBREW@ TVT 5481'),
-		'FROM @#DHEBREW@ SHV 5481 TO @#DHEBREW@ ADR 5481'=>new Date('FROM @#DHEBREW@ SHV 5481 TO @#DHEBREW@ ADR 5481'),
-		'AFT @#DHEBREW@ ADR 5481'  =>new Date('AFT @#DHEBREW@ ADR 5481'),
-		'AFT @#DHEBREW@ ADS 5480'  =>new Date('AFT @#DHEBREW@ ADS 5480'),
-		'BEF @#DHEBREW@ NSN 5481'  =>new Date('BEF @#DHEBREW@ NSN 5481'),
-		'ABT @#DHEBREW@ IYR 5481'  =>new Date('ABT @#DHEBREW@ IYR 5481'),
-		'FROM @#DHEBREW@ SVN 5481' =>new Date('FROM @#DHEBREW@ SVN 5481'),
-		'TO @#DHEBREW@ TMZ 5481'   =>new Date('TO @#DHEBREW@ TMZ 5481'),
-		'EST @#DHEBREW@ AAV 5481'  =>new Date('EST @#DHEBREW@ AAV 5481'),
-		'@#DHEBREW@ 03 ELL 5481'   =>new Date('@#DHEBREW@ 03 ELL 5481'),
+		'@#DHEBREW@ 5481'                                 => new Date('@#DHEBREW@ 5481'),
+		'@#DHEBREW@ TSH 5481'                             => new Date('@#DHEBREW@ TSH 5481'),
+		'ABT @#DHEBREW@ CSH 5481'                         => new Date('ABT @#DHEBREW@ CSH 5481'),
+		'BET @#DHEBREW@ KSL 5481 AND @#DHEBREW@ TVT 5481' => new Date('BET @#DHEBREW@ KSL 5481 AND @#DHEBREW@ TVT 5481'),
+		'FROM @#DHEBREW@ SHV 5481 TO @#DHEBREW@ ADR 5481' => new Date('FROM @#DHEBREW@ SHV 5481 TO @#DHEBREW@ ADR 5481'),
+		'AFT @#DHEBREW@ ADR 5481'                         => new Date('AFT @#DHEBREW@ ADR 5481'),
+		'AFT @#DHEBREW@ ADS 5480'                         => new Date('AFT @#DHEBREW@ ADS 5480'),
+		'BEF @#DHEBREW@ NSN 5481'                         => new Date('BEF @#DHEBREW@ NSN 5481'),
+		'ABT @#DHEBREW@ IYR 5481'                         => new Date('ABT @#DHEBREW@ IYR 5481'),
+		'FROM @#DHEBREW@ SVN 5481'                        => new Date('FROM @#DHEBREW@ SVN 5481'),
+		'TO @#DHEBREW@ TMZ 5481'                          => new Date('TO @#DHEBREW@ TMZ 5481'),
+		'EST @#DHEBREW@ AAV 5481'                         => new Date('EST @#DHEBREW@ AAV 5481'),
+		'@#DHEBREW@ 03 ELL 5481'                          => new Date('@#DHEBREW@ 03 ELL 5481'),
 	);
 
 	foreach ($dates as &$date) {
@@ -215,7 +215,7 @@ case 'DATE':
 // This help text is used for all NAME components
 case 'NAME':
 	$title = GedcomTag::getLabel('NAME');
-	$text =
+	$text  =
 		'<p>' .
 		I18N::translate('The <b>name</b> field contains the individual’s full name, as they would have spelled it or as it was recorded.  This is how it will be displayed on screen.  It uses standard genealogy annotations to identify different parts of the name.') .
 		'</p>' .
@@ -236,14 +236,14 @@ case 'NAME':
 
 case 'SURN':
 	$title = GedcomTag::getLabel('SURN');
-	$text = '<p>' .
+	$text  = '<p>' .
 		I18N::translate('The <b>surname</b> field contains a name that is used for sorting and grouping.  It can be different to the individual’s actual surname which is always taken from the <b>name</b> field.  This field can be used to sort surnames with or without a prefix (Gogh / van Gogh) and to group spelling variations or inflections (Kowalski / Kowalska).  If an individual needs to be listed under more than one surname, each name should be separated by a comma.') .
 		'</p>';
 	break;
 
 case 'OBJE':
 	$title = GedcomTag::getLabel('OBJE');
-	$text =
+	$text  =
 		'<p>' .
 		I18N::translate('A media object is a record in the family tree which contains information about a media file.  This information may include a title, a copyright notice, a transcript, privacy restrictions, etc.  The media file, such as the photo or video, can be stored locally (on this webserver) or remotely (on a different webserver).') .
 		'</p>';
@@ -251,12 +251,12 @@ case 'OBJE':
 
 case 'PLAC':
 	$title = GedcomTag::getLabel('PLAC');
-	$text = I18N::translate('Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database.');
+	$text  = I18N::translate('Places should be entered according to the standards for genealogy.  In genealogy, places are recorded with the most specific information about the place first and then working up to the least specific place last, using commas to separate the different place levels.  The level at which you record the place information should represent the levels of government or church where vital records for that place are kept.<br><br>For example, a place like Salt Lake City would be entered as “Salt Lake City, Salt Lake, Utah, USA”.<br><br>Let’s examine each part of this place.  The first part, “Salt Lake City,” is the city or township where the event occurred.  In some countries, there may be municipalities or districts inside a city which are important to note.  In that case, they should come before the city.  The next part, “Salt Lake,” is the county.  “Utah” is the state, and “USA” is the country.  It is important to note each place because genealogy records are kept by the governments of each level.<br><br>If a level of the place is unknown, you should leave a space between the commas.  Suppose, in the example above, you didn’t know the county for Salt Lake City.  You should then record it like this: “Salt Lake City, , Utah, USA”.  Suppose you only know that an individual was born in Utah.  You would enter the information like this: “, , Utah, USA”.  <br><br>You can use the <b>Find Place</b> link to help you find places that already exist in the database.');
 	break;
 
 case 'RESN':
 	$title = GedcomTag::getLabel('RESN');
-	$text =
+	$text  =
 		I18N::translate('Restrictions can be added to records and/or facts.  They restrict who can view the data and who can edit it.') .
 		'<br><br>' .
 		I18N::translate('Note that if a user account is linked to a record, then that user will always be able to view that record.');
@@ -264,17 +264,12 @@ case 'RESN':
 
 case 'ROMN':
 	$title = GedcomTag::getLabel('ROMN');
-	$text = I18N::translate('In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur.');
-	break;
-
-case 'SHARED_NOTE':
-	$title = GedcomTag::getLabel('SHARED_NOTE');
-	$text = I18N::translate('Shared notes are free-form text and will appear in the Fact Details section of the page.<br><br>Each shared note can be linked to more than one individual, family, source, or event.');
+	$text  = I18N::translate('In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use a non-Latin alphabet such as Hebrew, Greek, Russian, Chinese, or Arabic to enter the name in the standard name fields, then you can use this field to enter the same name using the Latin alphabet.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Romanized”, it is not restricted to containing only characters based on the Latin alphabet.  This might be of use with Japanese names, where three different alphabets may occur.');
 	break;
 
 case '_HEB':
 	$title = GedcomTag::getLabel('_HEB');
-	$text = I18N::translate('In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters.');
+	$text  = I18N::translate('In many cultures it is customary to have a traditional name spelled in the traditional characters and also a romanized version of the name as it would be spelled or pronounced in languages based on the Latin alphabet, such as English.<br><br>If you prefer to use the Latin alphabet to enter the name in the standard name fields, then you can use this field to enter the same name in the non-Latin alphabet such as Greek, Hebrew, Russian, Arabic, or Chinese.  Both versions of the name will appear in lists and charts.<br><br>Although this field is labeled “Hebrew”, it is not restricted to containing only Hebrew characters.');
 	break;
 
 	//////////////////////////////////////////////////////////////////////////////
@@ -283,12 +278,12 @@ case '_HEB':
 
 case 'annivers_year_select':
 	$title = I18N::translate('Year input box');
-	$text = I18N::translate('This input box lets you change that year of the calendar.  Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>.  This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned.  Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits.  For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>');
+	$text  = I18N::translate('This input box lets you change that year of the calendar.  Type a year into the box and press <b>Enter</b> to change the calendar to that year.<br><br><b>Advanced features</b> for <b>View year</b><dl><dt><b>More than one year</b></dt><dd>You can search for dates in a range of years.<br><br>Year ranges are <u>inclusive</u>.  This means that the date range extends from 1 January of the first year of the range to 31 December of the last year mentioned.  Here are a few examples of year ranges:<br><br><b>1992-5</b> for all events from 1992 to 1995.<br><b>1972-89</b> for all events from 1972 to 1989.<br><b>1610-759</b> for all events from 1610 to 1759.<br><b>1880-1905</b> for all events from 1880 to 1905.<br><b>880-1105</b> for all events from 880 to 1105.<br><br>To see all the events in a given decade or century, you can use <b>?</b> in place of the final digits.  For example, <b>197?</b> for all events from 1970 to 1979 or <b>16??</b> for all events from 1600 to 1699.<br><br>Selecting a range of years will change the calendar to the year view.</dd></dl>');
 	break;
 
 case 'edit_edit_raw':
 	$title = I18N::translate('Edit raw GEDCOM');
-	$text =
+	$text  =
 		I18N::translate('This page allows you to bypass the usual forms, and edit the underlying data directly.  It is an advanced option, and you should not use it unless you understand the GEDCOM format.  If you make a mistake here, it can be difficult to fix.') .
 		'<br><br>' .
 		/* I18N: %s is a URL */ I18N::translate('You can download a copy of the GEDCOM specification from %s.', '<a href="http://wiki.webtrees.net/w/images-en/Ged551-5.pdf">http://wiki.webtrees.net/w/images-en/Ged551-5.pdf</a>');
@@ -296,23 +291,22 @@ case 'edit_edit_raw':
 
 case 'edit_SOUR_EVEN':
 	$title = I18N::translate('Associate events with this source');
-	$text = I18N::translate('Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County.  “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho.');
+	$text  = I18N::translate('Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County.  “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho.');
 	break;
-
 
 case 'gedcom_news_archive':
 	$title = I18N::translate('View archive');
-	$text = I18N::translate('To reduce the height of the News block, the administrator has hidden some articles.  You can reveal these hidden articles by clicking the <b>View archive</b> link.');
+	$text  = I18N::translate('To reduce the height of the News block, the administrator has hidden some articles.  You can reveal these hidden articles by clicking the <b>View archive</b> link.');
 	break;
 
 case 'google_chart_surname':
 	$title = I18N::translate('Surname');
-	$text = I18N::translate('The number of occurrences of the specified name will be shown on the map.  If you leave this field empty, the most common surname will be used.');
+	$text  = I18N::translate('The number of occurrences of the specified name will be shown on the map.  If you leave this field empty, the most common surname will be used.');
 	break;
 
 case 'pending_changes':
 	$title = I18N::translate('Pending changes');
-	$text =
+	$text  =
 		'<p>' .
 		I18N::translate('When you add, edit, or delete information, the changes are not saved immediately.  Instead, they are kept in a “pending” area.  These pending changes need to be reviewed by a moderator before they are accepted.') .
 		'</p><p>' .

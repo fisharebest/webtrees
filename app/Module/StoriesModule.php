@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,17 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Menu;
+use Fisharebest\Webtrees\Module;
+use Fisharebest\Webtrees\Tree;
 
 /**
  * Class StoriesModule
@@ -75,7 +86,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 			)->execute(array(
 				$this->getName(),
 				$controller->record->getXref(),
-				$controller->record->getTree()->getTreeId()
+				$controller->record->getTree()->getTreeId(),
 			))->fetchOneColumn();
 
 		$html = '';
@@ -102,7 +113,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 
 	/** {@inheritdoc} */
 	public function hasTabContent() {
-		return $this->getTabContent() <> '';
+		return $this->getTabContent() != '';
 	}
 
 	/** {@inheritdoc} */
@@ -119,7 +130,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 			)->execute(array(
 				$this->getName(),
 				$controller->record->getXref(),
-				$controller->record->getTree()->getTreeId()
+				$controller->record->getTree()->getTreeId(),
 			))->fetchOne();
 
 		return $count_of_stories == 0;
@@ -155,7 +166,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 						Filter::postInteger('gedcom_id'),
 						Filter::post('xref', WT_REGEX_XREF),
 						$this->getName(),
-						0
+						0,
 					));
 					$block_id = Database::getInstance()->lastInsertId();
 				}
@@ -231,7 +242,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 						</label>
 						<div class="col-sm-9">
 							<input data-autocomplete-type="INDI" type="text" name="xref" id="xref" size="4" value="<?php echo $xref; ?>">
-							<?php echo print_findindi_link('xref'); ?>
+							<?php echo FunctionsPrint::printFindIndividualLink('xref'); ?>
 							<?php if ($individual): ?>
 								<?php echo $individual->formatList('span'); ?>
 							<?php endif; ?>
@@ -243,7 +254,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 							<?php echo I18N::translate('Show this block for which languages?'); ?>
 						</label>
 						<div class="col-sm-9">
-							<?php echo edit_language_checkboxes('lang', explode(',', $this->getBlockSetting($block_id, 'languages'))); ?>
+							<?php echo FunctionsEdit::editLanguageCheckboxes('lang', explode(',', $this->getBlockSetting($block_id, 'languages'))); ?>
 						</div>
 					</div>
 
@@ -341,7 +352,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 			</label>
 			<input type="hidden" name="mod" value="<?php echo  $this->getName(); ?>">
 			<input type="hidden" name="mod_action" value="admin_config">
-			<?php echo select_edit_control('ged', Tree::getNameList(), null, $WT_TREE->getName(), 'class="form-control"'); ?>
+			<?php echo FunctionsEdit::selectEditControl('ged', Tree::getNameList(), null, $WT_TREE->getName(), 'class="form-control"'); ?>
 			<input type="submit" class="btn btn-primary" value="<?php echo I18N::translate('show'); ?>">
 		</form>
 

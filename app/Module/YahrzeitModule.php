@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -17,6 +17,16 @@ namespace Fisharebest\Webtrees;
  */
 
 use Fisharebest\ExtCalendar\JewishCalendar;
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Date\GregorianDate;
+use Fisharebest\Webtrees\Date\JewishDate;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsDb;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\GedcomTag;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Theme;
 use Rhumsaa\Uuid\Uuid;
 
 /**
@@ -56,7 +66,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
-			$title = '<i class="icon-admin" title="' . I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
+			$title = '<a class="icon-admin" title="' . I18N::translate('Configure') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
 		} else {
 			$title = '';
 		}
@@ -68,11 +78,11 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 		// Fetch normal anniversaries...
 		$yahrzeits = array();
 		for ($jd = $startjd - 1; $jd <= $endjd + $days; ++$jd) {
-			foreach (get_anniversary_events($jd, 'DEAT _YART', $WT_TREE) as $fact) {
+			foreach (FunctionsDb::getAnniversaryEvents($jd, 'DEAT _YART', $WT_TREE) as $fact) {
 				// Exact hebrew dates only
 				$date = $fact->getDate();
 				if ($date->minimumDate() instanceof JewishDate && $date->minimumJulianDay() === $date->maximumJulianDay()) {
-					$fact->jd = $jd;
+					$fact->jd    = $jd;
 					$yahrzeits[] = $fact;
 				}
 			}
@@ -84,8 +94,8 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 		foreach ($yahrzeits as $yahrzeit) {
 			if ($yahrzeit->getTag() === 'DEAT') {
 				$today = new JewishDate($yahrzeit->jd);
-				$hd = $yahrzeit->getDate()->minimumDate();
-				$hd1 = new JewishDate($hd);
+				$hd    = $yahrzeit->getDate()->minimumDate();
+				$hd1   = new JewishDate($hd);
 				$hd1->y += 1;
 				$hd1->setJdFromYmd();
 				// Special rules.  See http://www.hebcal.com/help/anniv.html
@@ -122,7 +132,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 			$controller
 				->addExternalJavascript(WT_JQUERY_DATATABLES_JS_URL)
 				->addInlineJavascript('
-					jQuery("#'.$table_id . '").dataTable({
+					jQuery("#' . $table_id . '").dataTable({
 						dom: \'t\',
 						' . I18N::datatablesI18N() . ',
 						autoWidth: false,
@@ -142,7 +152,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 							/* 6-YART */ { visible: false }
 						]
 					});
-					jQuery("#'.$table_id . '").css("visibility", "visible");
+					jQuery("#' . $table_id . '").css("visibility", "visible");
 					jQuery(".loading-image").css("display", "none");
 				');
 			$content = '';
@@ -164,7 +174,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 					$ind = $yahrzeit->getParent();
 					// Individual name(s)
 					$name = $ind->getFullName();
-					$url = $ind->getHtmlUrl();
+					$url  = $ind->getHtmlUrl();
 					$content .= '<td>';
 					$content .= '<a href="' . $url . '">' . $name . '</a>';
 					$content .= $ind->getSexImage();
@@ -208,6 +218,7 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 			if ($block) {
 				$class .= ' small_inner_block';
 			}
+
 			return Theme::theme()->formatBlock($id, $title, $class, $content);
 		} else {
 			return $content;
@@ -253,22 +264,22 @@ class YahrzeitModule extends AbstractModule implements ModuleBlockInterface {
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('infoStyle', array('list'=> I18N::translate('list'), 'table'=> I18N::translate('table')), null, $infoStyle, '');
+		echo FunctionsEdit::selectEditControl('infoStyle', array('list' => I18N::translate('list'), 'table' => I18N::translate('table')), null, $infoStyle, '');
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Calendar');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('calendar', array(
-			'jewish'   => /* I18N: The Hebrew/Jewish calendar */ I18N::translate('Jewish'),
-			'gregorian'=> /* I18N: The gregorian calendar */ I18N::translate('Gregorian'),
+		echo FunctionsEdit::selectEditControl('calendar', array(
+			'jewish'    => /* I18N: The Hebrew/Jewish calendar */ I18N::translate('Jewish'),
+			'gregorian' => /* I18N: The gregorian calendar */ I18N::translate('Gregorian'),
 		), null, $calendar, '');
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for a yes/no option */ I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('block', $block);
+		echo FunctionsEdit::editFieldYesNo('block', $block);
 		echo '</td></tr>';
 	}
 }

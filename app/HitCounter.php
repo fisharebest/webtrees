@@ -27,7 +27,7 @@ class HitCounter {
 	 * @param string $page
 	 * @param string $parameter
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public static function countHit(Tree $tree, $page, $parameter) {
 		// Don't increment the counter while we stay on the same page.
@@ -78,7 +78,7 @@ class HitCounter {
 	 * @param string $page
 	 * @param string $parameter
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public static function getCount(Tree $tree, $page, $parameter) {
 		return (int) Database::prepare(

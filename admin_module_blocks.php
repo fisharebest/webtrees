@@ -23,6 +23,10 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Module\ModuleConfigInterface;
+
 define('WT_SCRIPT_NAME', 'admin_module_blocks.php');
 require 'includes/session.php';
 
@@ -92,7 +96,7 @@ $controller
 										<?php echo $tree->getTitleHtml(); ?>
 									</td>
 									<td>
-										<?php echo edit_field_access_level('access-' . $module->getName() . '-' . $tree->getTreeId(), $module->getAccessLevel($tree, 'block')); ?>
+										<?php echo FunctionsEdit::editFieldAccessLevel('access-' . $module->getName() . '-' . $tree->getTreeId(), $module->getAccessLevel($tree, 'block')); ?>
 									</td>
 								</tr>
 							<?php endforeach; ?>

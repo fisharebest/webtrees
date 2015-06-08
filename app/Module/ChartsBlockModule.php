@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -15,6 +15,15 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Controller\HourglassController;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Module\InteractiveTree\TreeView;
+use Fisharebest\Webtrees\Theme;
 
 /**
  * Class ChartsBlockModule
@@ -56,10 +65,10 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 			$person = Individual::getInstance($pid, $WT_TREE);
 		}
 
-		$id = $this->getName() . $block_id;
+		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		if ($ctype == 'gedcom' && Auth::isManager($WT_TREE) || $ctype == 'user' && Auth::check()) {
-			$title = '<i class="icon-admin" title="' . I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
+			$title = '<a class="icon-admin" title="' . I18N::translate('Configure') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
 		} else {
 			$title = '';
 		}
@@ -73,7 +82,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 				$controller->addInlineJavascript($chartController->setupJavascript());
 				$content .= '<td valign="middle">';
 				ob_start();
-				print_pedigree_person($person, $details);
+				FunctionsPrint::printPedigreePerson($person, $details);
 				$content .= ob_get_clean();
 				$content .= '</td>';
 				$content .= '<td valign="middle">';
@@ -110,7 +119,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 			case 'treenav':
 				$title .= I18N::translate('Interactive tree of %s', $person->getFullName());
 				$mod = new InteractiveTreeModule(WT_MODULES_DIR . 'tree');
-				$tv = new TreeView;
+				$tv  = new TreeView;
 				$content .= '<td>';
 				$content .= '<script>jQuery("head").append(\'<link rel="stylesheet" href="' . $mod->css() . '" type="text/css" />\');</script>';
 				$content .= '<script src="' . $mod->js() . '"></script>';
@@ -170,19 +179,20 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 		<tr>
 			<td class="descriptionbox wrap width33"><?php echo I18N::translate('Chart type'); ?></td>
 			<td class="optionbox">
-				<?php echo select_edit_control('type',
+				<?php echo FunctionsEdit::selectEditControl('type',
 				array(
 					'pedigree'    => I18N::translate('Pedigree'),
 					'descendants' => I18N::translate('Descendants'),
 					'hourglass'   => I18N::translate('Hourglass chart'),
-					'treenav'     => I18N::translate('Interactive tree')),
+					'treenav'     => I18N::translate('Interactive tree'),
+				),
 				null, $type); ?>
 			</td>
 		</tr>
 		<tr>
 			<td class="descriptionbox wrap width33"><?php echo I18N::translate('Show details'); ?></td>
 		<td class="optionbox">
-			<?php echo edit_field_yes_no('details', $details); ?>
+			<?php echo FunctionsEdit::editFieldYesNo('details', $details); ?>
 			</td>
 		</tr>
 		<tr>
@@ -190,7 +200,7 @@ class ChartsBlockModule extends AbstractModule implements ModuleBlockInterface {
 			<td class="optionbox">
 				<input data-autocomplete-type="INDI" type="text" name="pid" id="pid" value="<?php echo $pid; ?>" size="5">
 				<?php
-				echo print_findindi_link('pid');
+				echo FunctionsPrint::printFindIndividualLink('pid');
 				$root = Individual::getInstance($pid, $WT_TREE);
 				if ($root) {
 					echo ' <span class="list_item">', $root->getFullName(), $root->formatFirstMajorFact(WT_EVENTS_BIRT, 1), '</span>';

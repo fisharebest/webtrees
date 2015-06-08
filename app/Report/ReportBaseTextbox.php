@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Report;
 
 /**
  * webtrees: online genealogy
@@ -36,7 +36,7 @@ class ReportBaseTextbox extends ReportBaseElement {
 	/**
 	 * Whether or not paint the background
 	 *
-	 * @var boolean
+	 * @var bool
 	 */
 	public $fill;
 
@@ -55,19 +55,19 @@ class ReportBaseTextbox extends ReportBaseElement {
 	/**
 	 * After this box is finished rendering, should the next section of text start immediately after the this box or should it start on a new line under this box. 0 = no new line, 1 = force new line. Default is 0
 	 *
-	 * @var boolean
+	 * @var bool
 	 */
 	public $newline;
 
 	/**
-	 * @var boolean
+	 * @var bool
 	 */
 	public $pagecheck;
 
 	/**
 	 * Whether or not a border should be printed around this box. 0 = no border, 1 = border. Default is 0
 	 *
-	 * @var boolean
+	 * @var bool
 	 */
 	public $border;
 	/**
@@ -86,7 +86,7 @@ class ReportBaseTextbox extends ReportBaseElement {
 	public $style;
 
 	/**
-	 * @var array $borderstyle Border style of rectangle. Array with keys among the following:
+	 * @var array Border style of rectangle. Array with keys among the following:
 	 * <ul>
 	 * <li>all: Line style of all borders. Array like for {@link SetLineStyle SetLineStyle}.</li>
 	 * <li>L, T, R, B or combinations: Line style of left, top, right or bottom border. Array like for {@link SetLineStyle SetLineStyle}.</li>
@@ -110,7 +110,7 @@ class ReportBaseTextbox extends ReportBaseElement {
 	/**
 	 * Use cell padding or not
 	 *
-	 * @var boolean $padding
+	 * @var bool
 	 */
 	public $padding;
 	/**
@@ -121,34 +121,34 @@ class ReportBaseTextbox extends ReportBaseElement {
 	/**
 	 * TextBox - Element - Base
 	 *
-	 * @param float   $width   Text box width
-	 * @param float   $height  Text box height
-	 * @param boolean $border
-	 * @param string  $bgcolor Background color code in HTML
-	 * @param boolean $newline
-	 * @param mixed   $left
-	 * @param mixed   $top
-	 * @param boolean $pagecheck
-	 * @param string  $style
-	 * @param boolean $fill
-	 * @param boolean $padding
-	 * @param boolean $reseth
+	 * @param float  $width   Text box width
+	 * @param float  $height  Text box height
+	 * @param bool   $border
+	 * @param string $bgcolor Background color code in HTML
+	 * @param bool   $newline
+	 * @param mixed  $left
+	 * @param mixed  $top
+	 * @param bool   $pagecheck
+	 * @param string $style
+	 * @param bool   $fill
+	 * @param bool   $padding
+	 * @param bool   $reseth
 	 */
 	public function __construct(
 		$width, $height, $border, $bgcolor, $newline, $left, $top, $pagecheck, $style, $fill, $padding, $reseth
 	) {
-		$this->border = $border;
-		$this->bgcolor = $bgcolor;
-		$this->fill = $fill;
-		$this->height = $height;
-		$this->left = $left;
-		$this->newline = $newline;
+		$this->border    = $border;
+		$this->bgcolor   = $bgcolor;
+		$this->fill      = $fill;
+		$this->height    = $height;
+		$this->left      = $left;
+		$this->newline   = $newline;
 		$this->pagecheck = $pagecheck;
-		$this->style = $style;
-		$this->top = $top;
-		$this->width = $width;
-		$this->padding = $padding;
-		$this->reseth = $reseth;
+		$this->style     = $style;
+		$this->top       = $top;
+		$this->width     = $width;
+		$this->padding   = $padding;
+		$this->reseth    = $reseth;
 
 		return 0;
 	}
@@ -157,12 +157,8 @@ class ReportBaseTextbox extends ReportBaseElement {
 	 * Add an element to the TextBox
 	 *
 	 * @param object|string $element
-	 *
-	 * @return integer
 	 */
-	function addElement($element) {
+	public function addElement($element) {
 		$this->elements[] = $element;
-
-		return 0;
 	}
 }

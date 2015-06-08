@@ -23,6 +23,10 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\FunctionsDb;
+use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
+
 define('WT_SCRIPT_NAME', 'sourcelist.php');
 require './includes/session.php';
 
@@ -32,5 +36,5 @@ $controller->pageHeader();
 
 echo '<div id="sourcelist-page">',
 	'<h2>', I18N::translate('Sources'), '</h2>';
-	echo format_sour_table(get_source_list($WT_TREE));
+	echo FunctionsPrintLists::sourceTable(FunctionsDb::getSourceList($WT_TREE));
 echo '</div>';

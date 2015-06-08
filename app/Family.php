@@ -21,7 +21,7 @@ namespace Fisharebest\Webtrees;
  */
 class Family extends GedcomRecord {
 	const RECORD_TYPE = 'FAM';
-	const URL_PREFIX = 'family.php?famid=';
+	const URL_PREFIX  = 'family.php?famid=';
 
 	/** @var Individual|null The husband (or first spouse for same-sex couples) */
 	private $husb;
@@ -48,27 +48,6 @@ class Family extends GedcomRecord {
 		// Make sure husb/wife are the right way round.
 		if ($this->husb && $this->husb->getSex() === 'F' || $this->wife && $this->wife->getSex() === 'M') {
 			list($this->husb, $this->wife) = array($this->wife, $this->husb);
-		}
-	}
-
-	/**
-	 * Get an instance of a family object.  For single records,
-	 * we just receive the XREF.  For bulk records (such as lists
-	 * and search results) we can receive the GEDCOM data as well.
-	 *
-	 * @param string      $xref
-	 * @param Tree        $tree
-	 * @param string|null $gedcom
-	 *
-	 * @return Family|null
-	 */
-	public static function getInstance($xref, Tree $tree, $gedcom = null) {
-		$record = parent::getInstance($xref, $tree, $gedcom);
-
-		if ($record instanceof Family) {
-			return $record;
-		} else {
-			return null;
 		}
 	}
 
@@ -104,7 +83,7 @@ class Family extends GedcomRecord {
 	 *
 	 * @return Individual|null
 	 */
-	function getHusband() {
+	public function getHusband() {
 		if ($this->husb && $this->husb->canShowName()) {
 			return $this->husb;
 		} else {
@@ -117,7 +96,7 @@ class Family extends GedcomRecord {
 	 *
 	 * @return Individual|null
 	 */
-	function getWife() {
+	public function getWife() {
 		if ($this->wife && $this->wife->canShowName()) {
 			return $this->wife;
 		} else {
@@ -153,7 +132,7 @@ class Family extends GedcomRecord {
 	 *
 	 * @return Individual|null
 	 */
-	function getSpouse(Individual $person) {
+	public function getSpouse(Individual $person) {
 		if ($person === $this->wife) {
 			return $this->husb;
 		} else {
@@ -164,11 +143,11 @@ class Family extends GedcomRecord {
 	/**
 	 * Get the (zero, one or two) spouses from this family.
 	 *
-	 * @param integer|null $access_level
+	 * @param int|null $access_level
 	 *
 	 * @return Individual[]
 	 */
-	function getSpouses($access_level = null) {
+	public function getSpouses($access_level = null) {
 		if ($access_level === null) {
 			$access_level = Auth::accessLevel($this->tree);
 		}
@@ -187,11 +166,11 @@ class Family extends GedcomRecord {
 	/**
 	 * Get a list of this family’s children.
 	 *
-	 * @param integer|null $access_level
+	 * @param int|null $access_level
 	 *
 	 * @return Individual[]
 	 */
-	function getChildren($access_level = null) {
+	public function getChildren($access_level = null) {
 		if ($access_level === null) {
 			$access_level = Auth::accessLevel($this->tree);
 		}
@@ -215,7 +194,7 @@ class Family extends GedcomRecord {
 	 * @param Family $x
 	 * @param Family $y
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public static function compareMarrDate(Family $x, Family $y) {
 		return Date::compare($x->getMarriageDate(), $y->getMarriageDate());
@@ -224,7 +203,7 @@ class Family extends GedcomRecord {
 	/**
 	 * Number of children - for the individual list
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function getNumberOfChildren() {
 		$nchi = count($this->getChildren());
@@ -261,7 +240,7 @@ class Family extends GedcomRecord {
 	/**
 	 * Get the marriage year - displayed on lists of families
 	 *
-	 * @return integer
+	 * @return int
 	 */
 	public function getMarriageYear() {
 		return $this->getMarriageDate()->minimumDate()->y;
@@ -324,8 +303,6 @@ class Family extends GedcomRecord {
 
 	/** {@inheritdoc} */
 	public function getAllNames() {
-		global $UNKNOWN_NN, $UNKNOWN_PN;
-
 		if (is_null($this->_getAllNames)) {
 			// Check the script used by each name, so we can match cyrillic with cyrillic, greek with greek, etc.
 			if ($this->husb) {
@@ -335,7 +312,7 @@ class Family extends GedcomRecord {
 					0 => array(
 						'type' => 'BIRT',
 						'sort' => '@N.N.',
-						'full' => $UNKNOWN_PN, ' ', $UNKNOWN_NN,
+						'full' => I18N::translateContext('Unknown given name', '…') . ' ' . I18N::translateContext('Unknown surname', '…'),
 					),
 				);
 			}
@@ -349,7 +326,7 @@ class Family extends GedcomRecord {
 					0 => array(
 						'type' => 'BIRT',
 						'sort' => '@N.N.',
-						'full' => $UNKNOWN_PN, ' ', $UNKNOWN_NN,
+						'full' => I18N::translateContext('Unknown given name', '…') . ' ' . I18N::translateContext('Unknown surname', '…'),
 					),
 				);
 			}
@@ -388,7 +365,7 @@ class Family extends GedcomRecord {
 	}
 
 	/** {@inheritdoc} */
-	function formatListDetails() {
+	public function formatListDetails() {
 		return
 			$this->formatFirstMajorFact(WT_EVENTS_MARR, 1) .
 			$this->formatFirstMajorFact(WT_EVENTS_DIV, 1);

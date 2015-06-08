@@ -16,6 +16,8 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Controller\HourglassController;
+
 define('WT_SCRIPT_NAME', 'hourglass_ajax.php');
 require './includes/session.php';
 

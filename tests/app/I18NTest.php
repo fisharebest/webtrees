@@ -1,5 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
 
 /**
  * webtrees: online genealogy
@@ -16,7 +15,7 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-use PHPUnit_Framework_TestCase;
+use Fisharebest\Webtrees\I18N;
 
 /**
  * Test harness for the class I18N
@@ -24,8 +23,6 @@ use PHPUnit_Framework_TestCase;
 class I18NTest extends PHPUnit_Framework_TestCase {
 	/**
 	 * Prepare the environment for these tests
-	 *
-	 * @return void
 	 */
 	public function setUp() {
 		\Patchwork\Utf8\Bootup::initAll();
@@ -41,8 +38,6 @@ class I18NTest extends PHPUnit_Framework_TestCase {
 	 * Test I18N::strtoupper()
 	 *
 	 * @todo test all locales
-	 *
-	 * @return void
 	 */
 	public function testStrtoupper() {
 		$this->assertSame(I18N::strtoupper(''), '');
@@ -53,8 +48,6 @@ class I18NTest extends PHPUnit_Framework_TestCase {
 	 * Test I18N::strtolower()
 	 *
 	 * @todo test all locales
-	 *
-	 * @return void
 	 */
 	public function testStrtolower() {
 		$this->assertSame(I18N::strtolower(''), '');
@@ -65,8 +58,6 @@ class I18NTest extends PHPUnit_Framework_TestCase {
 	 * Test I18N::strcasecmp()
 	 *
 	 * @todo test all locales
-	 *
-	 * @return void
 	 */
 	public function testStrcasecmp() {
 		$this->assertSame(I18N::strcasecmp('', ''), 0);
@@ -79,8 +70,6 @@ class I18NTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test I18N::reverseText()
-	 *
-	 * @return void
 	 */
 	public function testReverseText() {
 		// Create these strings carefully, as text editors can display them in confusing ways.
@@ -103,8 +92,6 @@ class I18NTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test I18N::languageName()
-	 *
-	 * @return void
 	 */
 	public function testKnownLanguageName() {
 		$this->assertSame('العربية', I18N::languageName('ar'));
@@ -116,8 +103,6 @@ class I18NTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Test I18N::languageScript()
-	 *
-	 * @return void
 	 */
 	public function testLanguageScript() {
 		$this->assertSame('Arab', I18N::languageScript('ar'));

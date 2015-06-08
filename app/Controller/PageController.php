@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Controller;
 
 /**
  * webtrees: online genealogy
@@ -16,6 +16,15 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\Theme;
+
 /**
  * Class PageController Controller for full-page, themed HTML responses
  */
@@ -29,7 +38,7 @@ class PageController extends BaseController {
 	/** @var string <head><title> $page_title </title></head> */
 	private $page_title = WT_WEBTREES;
 
-	/** @var boolean Is this a popup window? */
+	/** @var bool Is this a popup window? */
 	private $popup;
 
 	/**
@@ -101,13 +110,13 @@ class PageController extends BaseController {
 	/**
 	 * Restrict access
 	 *
-	 * @param boolean $condition
+	 * @param bool $condition
 	 *
 	 * @return $this
 	 */
 	public function restrictAccess($condition) {
 		if ($condition !== true) {
-			header('Location: ' . WT_LOGIN_URL . '?url=' . rawurlencode(get_query_url()));
+			header('Location: ' . WT_LOGIN_URL . '?url=' . rawurlencode(Functions::getQueryUrl()));
 			exit;
 		}
 
@@ -116,16 +125,14 @@ class PageController extends BaseController {
 
 	/**
 	 * Print the page footer, using the theme
-	 *
-	 * @return void
 	 */
 	public function pageFooter() {
 		echo
 			Theme::theme()->footerContainer() .
 			'<!--[if lt IE 9]><script src="' . WT_JQUERY_JS_URL . '"></script><![endif]-->' .
 			'<!--[if gte IE 9]><!--><script src="' . WT_JQUERY2_JS_URL . '"></script><!--<![endif]-->' .
-			'<script src="' . WT_JQUERYUI_JS_URL . '">"</script>' .
-			'<script src="' . WT_WEBTREES_JS_URL . '">"</script>' .
+			'<script src="' . WT_JQUERYUI_JS_URL . '"></script>' .
+			'<script src="' . WT_WEBTREES_JS_URL . '"></script>' .
 			$this->getJavascript() .
 			Theme::theme()->hookFooterExtraJavascript() .
 			(WT_DEBUG_SQL ? Database::getQueryLog() : '') .
@@ -140,8 +147,6 @@ class PageController extends BaseController {
 	/**
 	 * Print the page footer, using the theme
 	 * Note that popup windows are deprecated
-	 *
-	 * @return void
 	 */
 	public function pageFooterPopupWindow() {
 		echo
@@ -164,7 +169,7 @@ class PageController extends BaseController {
 	/**
 	 * Print the page header, using the theme
 	 *
-	 * @param boolean $popup Is this a popup window
+	 * @param bool $popup Is this a popup window
 	 *
 	 * @return $this
 	 */

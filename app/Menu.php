@@ -44,9 +44,6 @@ class Menu {
 	private $submenuclass;
 
 	/** @var string Used to format javascript menus */
-	private $iconclass;
-
-	/** @var string Used to format javascript menus */
 	private $menuclass;
 
 	/**
@@ -114,12 +111,10 @@ class Menu {
 	 *
 	 * @param string $menuclass
 	 * @param string $submenuclass
-	 * @param string $iconclass
 	 */
-	public function addClass($menuclass, $submenuclass = '', $iconclass = '') {
-		$this->menuclass = $menuclass;
+	public function addClass($menuclass, $submenuclass = '') {
+		$this->menuclass    = $menuclass;
 		$this->submenuclass = $submenuclass;
-		$this->iconclass = $iconclass;
 	}
 
 	/**

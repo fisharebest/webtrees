@@ -16,4 +16,6 @@ namespace Fisharebest\Webtrees;
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+use Fisharebest\Webtrees\Module\DeathReportModule;
+
 return new DeathReportModule(__DIR__);

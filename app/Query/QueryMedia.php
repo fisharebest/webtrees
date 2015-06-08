@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Query;
 
 /**
  * webtrees: online genealogy
@@ -15,13 +15,12 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Media;
 
 /**
  * Class QueryMedia - generate lists of files for admin_media.php
- *
- * @package   webtrees
- * @copyright (c) 2014 webtrees development team
- * @license   http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2
  */
 class QueryMedia {
 	/**
@@ -78,11 +77,13 @@ class QueryMedia {
 	 * @param string $subfolders either "include" or "exclude"
 	 * @param string $sort       either "file" or "title"
 	 * @param string $filter     optional search string
+	 * @param string $form_type  option OBJE/FILE/FORM/TYPE
+	 *
+	 * @throws \Exception
 	 *
 	 * @return Media[]
-	 * @throws \Exception
 	 */
-	public static function mediaList($folder, $subfolders, $sort, $filter) {
+	public static function mediaList($folder, $subfolders, $sort, $filter, $form_type) {
 		global $WT_TREE;
 
 		// All files in the folder, plus external files
@@ -123,6 +124,11 @@ class QueryMedia {
 			$args[] = Filter::escapeLike($filter);
 		}
 
+		if ($form_type) {
+			$sql .= " AND (m_gedcom LIKE CONCAT('%\n3 TYPE ', ?, '%'))";
+			$args[] = $form_type;
+		}
+
 		switch ($sort) {
 		case 'file':
 			$sql .= " ORDER BY m_filename";
@@ -142,6 +148,7 @@ class QueryMedia {
 				$list[] = $media;
 			}
 		}
+
 		return $list;
 	}
 }

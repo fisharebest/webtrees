@@ -23,6 +23,9 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+
 define('WT_SCRIPT_NAME', 'expand_view.php');
 require './includes/session.php';
 
@@ -38,7 +41,7 @@ foreach ($individual->getSpouseFamilies() as $family) {
 		$facts[] = $fact;
 	}
 }
-sort_facts($facts);
+Functions::sortFacts($facts);
 
 foreach ($facts as $fact) {
 	switch ($fact->getTag()) {
@@ -72,10 +75,10 @@ foreach ($facts as $fact) {
 		break;
 	case 'ASSO':
 		// Associates
-		echo format_asso_rela_record($fact);
+		echo FunctionsPrint::formatAssociateRelationship($fact);
 		break;
 	default:
-		// Simple version of print_fact()
+		// Simple version of FunctionsPrintFacts::print_fact()
 		echo $fact->summary();
 		break;
 	}

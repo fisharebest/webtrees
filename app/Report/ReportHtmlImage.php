@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Report;
 
 /**
  * webtrees: online genealogy
@@ -24,10 +24,8 @@ class ReportHtmlImage extends ReportBaseImage {
 	 * Image renderer
 	 *
 	 * @param ReportHtml $renderer
-	 *
-	 * @return void
 	 */
-	function render($renderer) {
+	public function render($renderer) {
 		global $lastpicbottom, $lastpicpage, $lastpicleft, $lastpicright;
 
 		// Get the current positions
@@ -62,9 +60,9 @@ class ReportHtmlImage extends ReportBaseImage {
 			echo "<img src=\"", $this->file, "\" style=\"position:absolute;", $renderer->alignRTL, ":", $this->x, "pt;top:", $this->y, "pt;width:", $this->width, "pt;height:", $this->height, "pt;\" alt=\"\">\n";
 		}
 
-		$lastpicpage = $renderer->pageNo();
-		$lastpicleft = $this->x;
-		$lastpicright = $this->x + $this->width;
+		$lastpicpage   = $renderer->pageNo();
+		$lastpicleft   = $this->x;
+		$lastpicright  = $this->x + $this->width;
 		$lastpicbottom = $this->y + $this->height;
 		// Setup for the next line
 		if ($this->line == "N") {
@@ -83,7 +81,7 @@ class ReportHtmlImage extends ReportBaseImage {
 	 *
 	 * @return float
 	 */
-	function getHeight($html) {
+	public function getHeight($html) {
 		return $this->height + ($html->cPadding * 2);
 	}
 

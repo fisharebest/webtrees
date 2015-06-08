@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Theme;
 
 /**
  * webtrees: online genealogy
@@ -15,35 +15,59 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Theme;
 
 /**
  * Class WebtreesTheme - The webtrees (default) theme.
  */
-class WebtreesTheme extends BaseTheme {
-	/** {@inheritdoc} */
+class WebtreesTheme extends AbstractTheme implements ThemeInterface {
+	/**
+	 * Where are our CSS, JS and other assets?
+	 *
+	 * @return string A relative path, such as "themes/foo/"
+	 */
 	public function assetUrl() {
 		return 'themes/webtrees/css-1.7.0/';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * HTML link to a "favorites icon".
+	 *
+	 * @return string
+	 */
 	protected function favicon() {
 		return '<link rel="icon" href="' . $this->assetUrl() . 'favicon.png" type="image/png">';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Add markup to a flash message.
+	 *
+	 * @param \stdClass $message
+	 *
+	 * @return string
+	 */
 	protected function flashMessageContainer(\stdClass $message) {
 		// This theme uses jQuery markup.
 		return '<p class="ui-state-highlight">' . $message->text . '</p>';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Create a search field and submit button for the quick search form in the header.
+	 *
+	 * @return string
+	 */
 	protected function formQuickSearchFields() {
 		return
 			'<input type="search" name="query" size="25" placeholder="' . I18N::translate('Search') . '">' .
 			'<input type="image" class="image" src="' . Theme::theme()->parameter('image-search') . '" alt="' . I18N::translate('Search') . '" title="' . I18N::translate('Search') . '">';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Allow themes to add extra scripts to the page footer.
+	 *
+	 * @return string
+	 */
 	public function hookFooterExtraJavascript() {
 		return
 			'<script src="' . WT_JQUERY_COLORBOX_URL . '"></script>' .
@@ -61,7 +85,13 @@ class WebtreesTheme extends BaseTheme {
 			'</script>';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Misecellaneous dimensions, fonts, styles, etc.
+	 *
+	 * @param string $parameter_name
+	 *
+	 * @return string|int|float
+	 */
 	public function parameter($parameter_name) {
 		$parameters = array(
 			'chart-background-f'             => 'e9daf1',
@@ -78,7 +108,11 @@ class WebtreesTheme extends BaseTheme {
 		}
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * A list of CSS files to include for this page.
+	 *
+	 * @return string[]
+	 */
 	protected function stylesheets() {
 		return array(
 			'themes/webtrees/jquery-ui-1.11.2/jquery-ui.css',
@@ -86,12 +120,20 @@ class WebtreesTheme extends BaseTheme {
 		);
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * A fixed string to identify this theme, in settings, etc.
+	 *
+	 * @return string
+	 */
 	public function themeId() {
 		return 'webtrees';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * What is this theme called?
+	 *
+	 * @return string
+	 */
 	public function themeName() {
 		return I18N::translate('webtrees');
 	}

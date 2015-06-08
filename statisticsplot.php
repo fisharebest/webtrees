@@ -23,13 +23,15 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Date\GregorianDate;
+
 define('WT_SCRIPT_NAME', 'statisticsplot.php');
 require './includes/session.php';
 
 /**
  * Month of birth
  *
- * @param integer   $z_axis
+ * @param int       $z_axis
  * @param integer[] $z_boundaries
  * @param Stats     $stats
  *
@@ -48,7 +50,7 @@ function month_of_birth($z_axis, array $z_boundaries, Stats $stats) {
 				}
 			}
 		}
-	} else if ($z_axis === 301) {
+	} elseif ($z_axis === 301) {
 		$num = $stats->statsBirthQuery(false, true);
 		foreach ($num as $values) {
 			foreach (array('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC') as $key => $month) {
@@ -56,7 +58,7 @@ function month_of_birth($z_axis, array $z_boundaries, Stats $stats) {
 					if ($values['i_sex'] === 'M') {
 						fill_y_data(0, $key, $values['total']);
 						$total += $values['total'];
-					} else if ($values['i_sex'] === 'F') {
+					} elseif ($values['i_sex'] === 'F') {
 						fill_y_data(1, $key, $values['total']);
 						$total += $values['total'];
 					}
@@ -85,7 +87,7 @@ function month_of_birth($z_axis, array $z_boundaries, Stats $stats) {
 /**
  * Month of birth of first child in a relation
  *
- * @param integer   $z_axis
+ * @param int       $z_axis
  * @param integer[] $z_boundaries
  * @param Stats     $stats
  *
@@ -93,7 +95,6 @@ function month_of_birth($z_axis, array $z_boundaries, Stats $stats) {
  */
 function month_of_birth_of_first_child($z_axis, array $z_boundaries, Stats $stats) {
 	$total = 0;
-
 
 	if ($z_axis === 300) {
 		$num = $stats->monthFirstChildQuery(false);
@@ -105,7 +106,7 @@ function month_of_birth_of_first_child($z_axis, array $z_boundaries, Stats $stat
 				}
 			}
 		}
-	} else if ($z_axis === 301) {
+	} elseif ($z_axis === 301) {
 		$num = $stats->monthFirstChildQuery(false, true);
 		foreach ($num as $values) {
 			foreach (array('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC') as $key => $month) {
@@ -113,7 +114,7 @@ function month_of_birth_of_first_child($z_axis, array $z_boundaries, Stats $stat
 					if ($values['i_sex'] === 'M') {
 						fill_y_data(0, $key, $values['total']);
 						$total += $values['total'];
-					} else if ($values['i_sex'] === 'F') {
+					} elseif ($values['i_sex'] === 'F') {
 						fill_y_data(1, $key, $values['total']);
 						$total += $values['total'];
 					}
@@ -142,7 +143,7 @@ function month_of_birth_of_first_child($z_axis, array $z_boundaries, Stats $stat
 /**
  * Month of death
  *
- * @param integer   $z_axis
+ * @param int       $z_axis
  * @param integer[] $z_boundaries
  * @param Stats     $stats
  *
@@ -150,7 +151,6 @@ function month_of_birth_of_first_child($z_axis, array $z_boundaries, Stats $stat
  */
 function month_of_death($z_axis, array $z_boundaries, Stats $stats) {
 	$total = 0;
-
 
 	if ($z_axis === 300) {
 		$num = $stats->statsDeathQuery(false);
@@ -162,7 +162,7 @@ function month_of_death($z_axis, array $z_boundaries, Stats $stats) {
 				}
 			}
 		}
-	} else if ($z_axis === 301) {
+	} elseif ($z_axis === 301) {
 		$num = $stats->statsDeathQuery(false, true);
 		foreach ($num as $values) {
 			foreach (array('JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC') as $key => $month) {
@@ -170,7 +170,7 @@ function month_of_death($z_axis, array $z_boundaries, Stats $stats) {
 					if ($values['i_sex'] === 'M') {
 						fill_y_data(0, $key, $values['total']);
 						$total += $values['total'];
-					} else if ($values['i_sex'] === 'F') {
+					} elseif ($values['i_sex'] === 'F') {
 						fill_y_data(1, $key, $values['total']);
 						$total += $values['total'];
 					}
@@ -199,7 +199,7 @@ function month_of_death($z_axis, array $z_boundaries, Stats $stats) {
 /**
  * Month of marriage
  *
- * @param integer   $z_axis
+ * @param int       $z_axis
  * @param integer[] $z_boundaries
  * @param Stats     $stats
  *
@@ -207,7 +207,6 @@ function month_of_death($z_axis, array $z_boundaries, Stats $stats) {
  */
 function month_of_marriage($z_axis, array $z_boundaries, Stats $stats) {
 	$total = 0;
-
 
 	if ($z_axis === 300) {
 		$num = $stats->statsMarrQuery(false, false);
@@ -241,7 +240,7 @@ function month_of_marriage($z_axis, array $z_boundaries, Stats $stats) {
 /**
  * Month of first marriage
  *
- * @param integer   $z_axis
+ * @param int       $z_axis
  * @param integer[] $z_boundaries
  * @param Stats     $stats
  *
@@ -294,7 +293,7 @@ function month_of_first_marriage($z_axis, array $z_boundaries, Stats $stats) {
 /**
  * Age related to birth year
  *
- * @param integer   $z_axis
+ * @param int       $z_axis
  * @param integer[] $z_boundaries
  * @param Stats     $stats
  *
@@ -311,7 +310,7 @@ function lifespan_by_birth_year($z_axis, array $z_boundaries, Stats $stats) {
 				$total++;
 			}
 		}
-	} else if ($z_axis === 301) {
+	} elseif ($z_axis === 301) {
 		$num = $stats->statsAgeQuery(false, 'BIRT', 'M');
 		foreach ($num as $values) {
 			foreach ($values as $age_value) {
@@ -346,7 +345,7 @@ function lifespan_by_birth_year($z_axis, array $z_boundaries, Stats $stats) {
 /**
  * Age related to death year
  *
- * @param integer   $z_axis
+ * @param int       $z_axis
  * @param integer[] $z_boundaries
  * @param Stats     $stats
  *
@@ -363,7 +362,7 @@ function lifespan_by_death_year($z_axis, array $z_boundaries, Stats $stats) {
 				$total++;
 			}
 		}
-	} else if ($z_axis === 301) {
+	} elseif ($z_axis === 301) {
 		$num = $stats->statsAgeQuery(false, 'DEAT', 'M');
 		foreach ($num as $values) {
 			foreach ($values as $age_value) {
@@ -398,7 +397,7 @@ function lifespan_by_death_year($z_axis, array $z_boundaries, Stats $stats) {
 /**
  * Age in year of marriage
  *
- * @param integer   $z_axis
+ * @param int       $z_axis
  * @param integer[] $z_boundaries
  * @param Stats     $stats
  *
@@ -418,7 +417,7 @@ function age_at_marriage($z_axis, array $z_boundaries, Stats $stats) {
 			fill_y_data(0, (int) ($values['age'] / 365.25), 1);
 			$total++;
 		}
-	} else if ($z_axis === 301) {
+	} elseif ($z_axis === 301) {
 		$num = $stats->statsMarrAgeQuery(false, 'M');
 		foreach ($num as $values) {
 			fill_y_data(0, (int) ($values['age'] / 365.25), 1);
@@ -452,7 +451,7 @@ function age_at_marriage($z_axis, array $z_boundaries, Stats $stats) {
 /**
  * Age in year of first marriage
  *
- * @param integer   $z_axis
+ * @param int       $z_axis
  * @param integer[] $z_boundaries
  * @param Stats     $stats
  *
@@ -480,7 +479,7 @@ function age_at_first_marriage($z_axis, array $z_boundaries, Stats $stats) {
 				$indi[] = $values['d_gid'];
 			}
 		}
-	} else if ($z_axis === 301) {
+	} elseif ($z_axis === 301) {
 		$num  = $stats->statsMarrAgeQuery(false, 'M');
 		$indi = array();
 		foreach ($num as $values) {
@@ -529,7 +528,7 @@ function age_at_first_marriage($z_axis, array $z_boundaries, Stats $stats) {
 /**
  * Number of children
  *
- * @param integer   $z_axis
+ * @param int       $z_axis
  * @param integer[] $z_boundaries
  * @param Stats     $stats
  *
@@ -544,7 +543,7 @@ function number_of_children($z_axis, array $z_boundaries, Stats $stats) {
 			fill_y_data(0, $values['f_numchil'], $values['total']);
 			$total += $values['f_numchil'] * $values['total'];
 		}
-	} else if ($z_axis === 301) {
+	} elseif ($z_axis === 301) {
 		$num = $stats->statsChildrenQuery(false, 'M');
 		foreach ($num as $values) {
 			fill_y_data(0, $values['num'], $values['total']);
@@ -571,9 +570,9 @@ function number_of_children($z_axis, array $z_boundaries, Stats $stats) {
 }
 
 /**
- * @param integer $z
- * @param integer $x
- * @param integer $val
+ * @param int $z
+ * @param int $x
+ * @param int $val
  */
 function fill_y_data($z, $x, $val) {
 	global $ydata, $xmax, $x_boundaries, $zmax, $z_boundaries, $xgiven, $zgiven;
@@ -622,30 +621,20 @@ function my_plot($mytitle, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 	} else {
 		$stop = count($ydata);
 	}
-	$yprocentmax = 0;
 	if ($percentage) {
-		$yt = array();
+		$ypercentmax = 0;
+		$yt          = array();
 		for ($i = 0; $i < $stop; $i++) {
-			$ytotal   = 0;
-			$ymax     = 0;
-			$yprocent = 0;
 			if (isset($ydata[$i])) {
-				for ($j = 0; $j < count($ydata[$i]); $j++) {
-					if ($ydata[$i][$j] > $ymax) {
-						$ymax = $ydata[$i][$j];
-					}
-					$ytotal += $ydata[$i][$j];
-				}
-				$yt[$i] = $ytotal;
-				if ($ytotal > 0) {
-					$yprocent = round($ymax / $ytotal * 100, 1);
-				}
-				if ($yprocentmax < $yprocent) {
-					$yprocentmax = $yprocent;
+				$ymax   = max($ydata[$i]);
+				$yt[$i] = array_sum($ydata[$i]);
+				if ($yt[$i] > 0) {
+					$ypercent    = round($ymax / $yt[$i] * 100, 1);
+					$ypercentmax = max($ypercentmax, $ypercent);
 				}
 			}
 		}
-		$ymax = $yprocentmax;
+		$ymax = $ypercentmax;
 		if ($ymax > 0) {
 			$scalefactor = 100.0 / $ymax;
 		} else {
@@ -654,28 +643,24 @@ function my_plot($mytitle, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 		$datastring = 'chd=t:';
 		for ($i = 0; $i < $stop; $i++) {
 			if (isset($ydata[$i])) {
-				for ($j = 0; $j < count($ydata[$i]); $j++) {
+				foreach ($ydata[$i] as $j => $data) {
+					if ($j > 0) {
+						$datastring .= ',';
+					}
 					if ($yt[$i] > 0) {
-						$datastring .= round($ydata[$i][$j] / $yt[$i] * 100 * $scalefactor, 1);
+						$datastring .= round($data / $yt[$i] * 100 * $scalefactor, 1);
 					} else {
 						$datastring .= '0';
 					}
-					if (!($j === (count($ydata[$i]) - 1))) {
-						$datastring .= ',';
-					}
 				}
-				if (!($i === ($stop - 1))) {
+				if ($i !== $stop - 1) {
 					$datastring .= '|';
 				}
 			}
 		}
 	} else {
 		for ($i = 0; $i < $stop; $i++) {
-			for ($j = 0; $j < count($ydata[$i]); $j++) {
-				if ($ydata[$i][$j] > $ymax) {
-					$ymax = $ydata[$i][$j];
-				}
-			}
+			$ymax = max($ymax, max($ydata[$i]));
 		}
 		if ($ymax > 0) {
 			$scalefactor = 100.0 / $ymax;
@@ -684,13 +669,13 @@ function my_plot($mytitle, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 		}
 		$datastring = 'chd=t:';
 		for ($i = 0; $i < $stop; $i++) {
-			for ($j = 0; $j < count($ydata[$i]); $j++) {
-				$datastring .= round($ydata[$i][$j] * $scalefactor, 1);
-				if (!($j === (count($ydata[$i]) - 1))) {
+			foreach ($ydata[$i] as $j => $data) {
+				if ($j > 0) {
 					$datastring .= ',';
 				}
+				$datastring .= round($data * $scalefactor, 1);
 			}
-			if (!($i === ($stop - 1))) {
+			if ($i !== $stop - 1) {
 				$datastring .= '|';
 			}
 		}
@@ -712,14 +697,14 @@ function my_plot($mytitle, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 	$imgurl = 'https://chart.googleapis.com/chart?cht=bvg&amp;chs=950x300&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt=' . rawurlencode($title) . '&amp;' . $datastring . '&amp;' . $colorstring . '&amp;chbh=';
 	if (count($ydata) > 3) {
 		$imgurl .= '5,1';
-	} else if (count($ydata) < 2) {
+	} elseif (count($ydata) < 2) {
 		$imgurl .= '45,1';
 	} else {
 		$imgurl .= '20,3';
 	}
 	$imgurl .= '&amp;chxt=x,x,y,y&amp;chxl=0:|';
-	for ($i = 0; $i < count($xdata); $i++) {
-		$imgurl .= rawurlencode($xdata[$i]) . '|';
+	foreach ($xdata as $data) {
+		$imgurl .= rawurlencode($data) . '|';
 	}
 
 	$imgurl .= '1:||||' . rawurlencode($xtitle) . '|2:|';
@@ -745,14 +730,14 @@ function my_plot($mytitle, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 		}
 		$imgurl .= '3:||' . rawurlencode($ytitle) . '|';
 	}
-	//only show legend if y-data is non-2-dimensional
+	// Only show legend if y-data is non-2-dimensional
 	if (count($ydata) > 1) {
 		$imgurl .= '&amp;chdl=';
-		for ($i = 0; $i < count($legend); $i++) {
-			$imgurl .= rawurlencode($legend[$i]);
-			if (!($i === (count($legend) - 1))) {
+		foreach ($legend as $i => $data) {
+			if ($i > 0) {
 				$imgurl .= '|';
 			}
+			$imgurl .= rawurlencode($data);
 		}
 	}
 	$title = strstr($mytitle, '|', true);
@@ -779,7 +764,7 @@ function calculate_axis($x_axis_boundaries) {
 		if (($hulpar[$i] - $hulpar[$i1]) === 1) {
 			$xdata[$i]        = $hulpar[$i1];
 			$x_boundaries[$i] = $hulpar[$i1];
-		} else if ($hulpar[$i1] === $hulpar[0]) {
+		} elseif ($hulpar[$i1] === $hulpar[0]) {
 			$xdata[$i]        = $hulpar[$i1] . '-' . $hulpar[$i];
 			$x_boundaries[$i] = $hulpar[$i];
 		} else {
@@ -810,8 +795,8 @@ function calculate_legend($boundaries_z_axis) {
 	global $legend, $zmax, $z_boundaries;
 
 	// calculate the legend values
-	$hulpar = explode(',', $boundaries_z_axis);
-	$i      = 1;
+	$hulpar          = explode(',', $boundaries_z_axis);
+	$i               = 1;
 	$date            = new Date('BEF ' . $hulpar[0]);
 	$legend[0]       = strip_tags($date->display());
 	$z_boundaries[0] = $hulpar[0] - 1;
@@ -822,8 +807,8 @@ function calculate_legend($boundaries_z_axis) {
 		$z_boundaries[$i] = $hulpar[$i] - 1;
 		$i++;
 	}
-	$zmax  = $i;
-	$zmax1 = $zmax - 1;
+	$zmax                = $i;
+	$zmax1               = $zmax - 1;
 	$date                = new Date('AFT ' . $hulpar[$zmax1]);
 	$legend[$zmax]       = strip_tags($date->display());
 	$z_boundaries[$zmax] = 10000;
@@ -835,10 +820,11 @@ function calculate_legend($boundaries_z_axis) {
 
 global $legend, $xdata, $ydata, $xmax, $zmax, $z_boundaries, $xgiven, $zgiven, $percentage, $male_female;
 
-$x_axis      = Filter::getInteger('x-as', 1, 21, 11);
-$y_axis      = Filter::getInteger('y-as', 201, 202, 201);
-$z_axis      = Filter::getInteger('z-as', 300, 302, 302);
-$stats       = new Stats($WT_TREE);
+$x_axis       = Filter::getInteger('x-as', 1, 21, 11);
+$y_axis       = Filter::getInteger('y-as', 201, 202, 201);
+$z_axis       = Filter::getInteger('z-as', 300, 302, 302);
+$stats        = new Stats($WT_TREE);
+$z_boundaries = array();
 
 echo '<div class="statistics_chart" title="', I18N::translate('Statistics plot'), '">';
 
@@ -866,15 +852,15 @@ case '11':
 	$xtitle            = I18N::translate('month');
 	$ytitle            = I18N::translate('numbers');
 	$boundaries_z_axis = Filter::get('z-axis-boundaries-periods', null, '0');
-	$xdata = $monthdata;
-	$xmax  = 12;
+	$xdata             = $monthdata;
+	$xmax              = 12;
 	if ($z_axis !== 300 && $z_axis !== 301) {
 		calculate_legend($boundaries_z_axis);
 	}
 	$percentage = false;
 	if ($y_axis === 201) {
 		$percentage = false;
-		$ytitle = I18N::translate('Individuals');
+		$ytitle     = I18N::translate('Individuals');
 	} elseif ($y_axis === 202) {
 		$percentage = true;
 		$ytitle     = I18N::translate('percentage');
@@ -902,7 +888,7 @@ case '11':
 		}
 	}
 	$total = month_of_birth($z_axis, $z_boundaries, $stats);
-	$hstr = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalIndividuals();
+	$hstr  = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalIndividuals();
 	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 case '12':
@@ -916,15 +902,15 @@ case '12':
 	$xtitle            = I18N::translate('month');
 	$ytitle            = I18N::translate('numbers');
 	$boundaries_z_axis = Filter::get('z-axis-boundaries-periods', null, '0');
-	$xdata = $monthdata;
-	$xmax  = 12;
+	$xdata             = $monthdata;
+	$xmax              = 12;
 	if ($z_axis !== 300 && $z_axis !== 301) {
 		calculate_legend($boundaries_z_axis);
 	}
 	$percentage = false;
 	if ($y_axis === 201) {
 		$percentage = false;
-		$ytitle = I18N::translate('Individuals');
+		$ytitle     = I18N::translate('Individuals');
 	} elseif ($y_axis === 202) {
 		$percentage = true;
 		$ytitle     = I18N::translate('percentage');
@@ -952,7 +938,7 @@ case '12':
 		}
 	}
 	$total = month_of_death($z_axis, $z_boundaries, $stats);
-	$hstr = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalIndividuals();
+	$hstr  = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalIndividuals();
 	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 case '13':
@@ -970,15 +956,15 @@ case '13':
 	$xtitle            = I18N::translate('month');
 	$ytitle            = I18N::translate('numbers');
 	$boundaries_z_axis = Filter::get('z-axis-boundaries-periods', null, '0');
-	$xdata = $monthdata;
-	$xmax  = 12;
+	$xdata             = $monthdata;
+	$xmax              = 12;
 	if ($z_axis !== 300 && $z_axis !== 301) {
 		calculate_legend($boundaries_z_axis);
 	}
 	$percentage = false;
 	if ($y_axis === 201) {
 		$percentage = false;
-		$ytitle = I18N::translate('Families');
+		$ytitle     = I18N::translate('Families');
 	} elseif ($y_axis === 202) {
 		$percentage = true;
 		$ytitle     = I18N::translate('percentage');
@@ -1006,7 +992,7 @@ case '13':
 		}
 	}
 	$total = month_of_marriage($z_axis, $z_boundaries, $stats);
-	$hstr = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalFamilies();
+	$hstr  = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalFamilies();
 	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 case '14':
@@ -1020,15 +1006,15 @@ case '14':
 	$xtitle            = I18N::translate('month');
 	$ytitle            = I18N::translate('numbers');
 	$boundaries_z_axis = Filter::get('z-axis-boundaries-periods', null, '0');
-	$xdata = $monthdata;
-	$xmax  = 12;
+	$xdata             = $monthdata;
+	$xmax              = 12;
 	if ($z_axis !== 300 && $z_axis !== 301) {
 		calculate_legend($boundaries_z_axis);
 	}
 	$percentage = false;
 	if ($y_axis === 201) {
 		$percentage = false;
-		$ytitle = I18N::translate('Children');
+		$ytitle     = I18N::translate('Children');
 	} elseif ($y_axis === 202) {
 		$percentage = true;
 		$ytitle     = I18N::translate('percentage');
@@ -1056,7 +1042,7 @@ case '14':
 		}
 	}
 	$total = month_of_birth_of_first_child($z_axis, $z_boundaries, $stats);
-	$hstr = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalFamilies();
+	$hstr  = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalFamilies();
 	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 case '15':
@@ -1074,15 +1060,15 @@ case '15':
 	$xtitle            = I18N::translate('month');
 	$ytitle            = I18N::translate('numbers');
 	$boundaries_z_axis = Filter::get('z-axis-boundaries-periods', null, '0');
-	$xdata = $monthdata;
-	$xmax  = 12;
+	$xdata             = $monthdata;
+	$xmax              = 12;
 	if ($z_axis !== 300 && $z_axis !== 301) {
 		calculate_legend($boundaries_z_axis);
 	}
 	$percentage = false;
 	if ($y_axis === 201) {
 		$percentage = false;
-		$ytitle = I18N::translate('Families');
+		$ytitle     = I18N::translate('Families');
 	} elseif ($y_axis === 202) {
 		$percentage = true;
 		$ytitle     = I18N::translate('percentage');
@@ -1110,7 +1096,7 @@ case '15':
 		}
 	}
 	$total = month_of_first_marriage($z_axis, $z_boundaries, $stats);
-	$hstr = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalFamilies();
+	$hstr  = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalFamilies();
 	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 case '17':
@@ -1132,7 +1118,7 @@ case '17':
 	$percentage = false;
 	if ($y_axis === 201) {
 		$percentage = false;
-		$ytitle = I18N::translate('Individuals');
+		$ytitle     = I18N::translate('Individuals');
 	} elseif ($y_axis === 202) {
 		$percentage = true;
 		$ytitle     = I18N::translate('percentage');
@@ -1160,7 +1146,7 @@ case '17':
 		}
 	}
 	$total = lifespan_by_birth_year($z_axis, $z_boundaries, $stats);
-	$hstr = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalIndividuals();
+	$hstr  = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalIndividuals();
 	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 case '18':
@@ -1182,7 +1168,7 @@ case '18':
 	$percentage = false;
 	if ($y_axis === 201) {
 		$percentage = false;
-		$ytitle = I18N::translate('Individuals');
+		$ytitle     = I18N::translate('Individuals');
 	} elseif ($y_axis === 202) {
 		$percentage = true;
 		$ytitle     = I18N::translate('percentage');
@@ -1210,7 +1196,7 @@ case '18':
 		}
 	}
 	$total = lifespan_by_death_year($z_axis, $z_boundaries, $stats);
-	$hstr = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalIndividuals();
+	$hstr  = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalIndividuals();
 	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 case '19':
@@ -1232,12 +1218,12 @@ case '19':
 	$percentage = false;
 	if ($y_axis === 201) {
 		$percentage = false;
-		$ytitle = I18N::translate('Individuals');
+		$ytitle     = I18N::translate('Individuals');
 	} elseif ($y_axis === 202) {
 		$percentage = true;
 		$ytitle     = I18N::translate('percentage');
 	}
-	$male_female = false;
+	$male_female     = false;
 	$z_boundaries[0] = 100000;
 	if ($z_axis === 300) {
 		$zgiven          = false;
@@ -1260,7 +1246,7 @@ case '19':
 		}
 	}
 	$total = age_at_marriage($z_axis, $z_boundaries, $stats);
-	$hstr = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalIndividuals();
+	$hstr  = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalIndividuals();
 	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 case '20':
@@ -1282,7 +1268,7 @@ case '20':
 	$percentage = false;
 	if ($y_axis === 201) {
 		$percentage = false;
-		$ytitle = I18N::translate('Individuals');
+		$ytitle     = I18N::translate('Individuals');
 	} elseif ($y_axis === 202) {
 		$percentage = true;
 		$ytitle     = I18N::translate('percentage');
@@ -1310,7 +1296,7 @@ case '20':
 		}
 	}
 	$total = age_at_first_marriage($z_axis, $z_boundaries, $stats);
-	$hstr = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalIndividuals();
+	$hstr  = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalIndividuals();
 	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 case '21':
@@ -1332,7 +1318,7 @@ case '21':
 	$percentage = false;
 	if ($y_axis === 201) {
 		$percentage = false;
-		$ytitle = I18N::translate('Families');
+		$ytitle     = I18N::translate('Families');
 	} elseif ($y_axis === 202) {
 		$percentage = true;
 		$ytitle     = I18N::translate('percentage');
@@ -1360,7 +1346,7 @@ case '21':
 		}
 	}
 	$total = number_of_children($z_axis, $z_boundaries, $stats);
-	$hstr = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalChildren();
+	$hstr  = $title . '|' . I18N::translate('Counts ') . ' ' . I18N::number($total) . ' ' . I18N::translate('of') . ' ' . $stats->totalChildren();
 	my_plot($hstr, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	break;
 default:

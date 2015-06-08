@@ -23,6 +23,8 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\PageController;
+
 define('WT_SCRIPT_NAME', 'admin_trees_manage.php');
 require './includes/session.php';
 
@@ -33,7 +35,7 @@ $controller
 	->setPageTitle(I18N::translate('Manage family trees'));
 
 // Show a reduced page when there are more than a certain number of trees
-$multiple_tree_threshold = Site::getPreference('MULTIPLE_TREE_THRESHOLD', 100);
+$multiple_tree_threshold = Site::getPreference('MULTIPLE_TREE_THRESHOLD') ?: 500;
 
 $gedcom_files = glob(WT_DATA_DIR . '*.{ged,Ged,GED}', GLOB_NOSORT | GLOB_BRACE);
 
@@ -217,11 +219,11 @@ case 'importform':
 								<?php echo WT_DATA_DIR; ?>
 							</span>
 							<?php
-							$d = opendir(WT_DATA_DIR);
+							$d     = opendir(WT_DATA_DIR);
 							$files = array();
 							while (($f = readdir($d)) !== false) {
 								if (!is_dir(WT_DATA_DIR . $f) && is_readable(WT_DATA_DIR . $f)) {
-									$fp = fopen(WT_DATA_DIR . $f, 'rb');
+									$fp     = fopen(WT_DATA_DIR . $f, 'rb');
 									$header = fread($fp, 64);
 									fclose($fp);
 									if (preg_match('/^(' . WT_UTF8_BOM . ')?0 *HEAD/', $header)) {
@@ -313,7 +315,7 @@ $all_trees = Tree::getAll();
 // On sites with hundreds or thousands of trees, this page becomes very large.
 // Just show the current tree, the default tree, and unimported trees
 if (count($all_trees) >= $multiple_tree_threshold) {
-	$all_trees = array_filter($all_trees, function($x) use ($WT_TREE) {
+	$all_trees = array_filter($all_trees, function (Tree $x) use ($WT_TREE) {
 		return $x->getPreference('imported') === '0' || $WT_TREE->getTreeId() === $x->getTreeId() || $x->getName() === Site::getPreference('DEFAULT_GEDCOM');
 	});
 }

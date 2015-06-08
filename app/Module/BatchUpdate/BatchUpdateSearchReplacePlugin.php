@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module\BatchUpdate;
 
 /**
  * webtrees: online genealogy
@@ -15,17 +15,19 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\I18N;
 
 /**
  * Class BatchUpdateSearchReplacePlugin Batch Update plugin: search/replace
  */
 class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
-	var $search = null; // Search string
-	var $replace = null; // Replace string
-	var $method = null; // simple/wildcards/regex
-	var $regex  = null; // Search string, converted to a regex
-	var $case   = null; // "i" for case insensitive, "" for case sensitive
-	var $error  = null; // Message for bad user parameters
+	private $search  = null; // Search string
+	private $replace = null; // Replace string
+	private $method  = null; // simple/wildcards/regex
+	private $regex   = null; // Search string, converted to a regex
+	private $case    = null; // "i" for case insensitive, "" for case sensitive
+	private $error   = null; // Message for bad user parameters
 
 	/**
 	 * User-friendly name for this plugin.
@@ -60,7 +62,7 @@ class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
 	 * @param string $xref
 	 * @param string $gedrec
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function doesRecordNeedUpdate($xref, $gedrec) {
 		return !$this->error && preg_match('/(?:' . $this->regex . ')/mu' . $this->case, $gedrec);

@@ -23,6 +23,8 @@ namespace Fisharebest\Webtrees;
  */
 global $WT_TREE;
 
+use Fisharebest\Webtrees\Controller\PageController;
+
 define('WT_SCRIPT_NAME', 'admin_trees_renumber.php');
 require './includes/session.php';
 
@@ -59,13 +61,13 @@ $xrefs = Database::prepare(
 	") AS other_trees USING (xref)"
 )->execute(array(
 	$WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId(),
-	$WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId()
+	$WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId(), $WT_TREE->getTreeId(),
 ))->fetchAssoc();
 
 echo '<h1>', $controller->getPageTitle(), '</h1>';
 
 if (Filter::get('action') === 'renumber') {
-	foreach ($xrefs as $old_xref=>$type) {
+	foreach ($xrefs as $old_xref => $type) {
 		Database::beginTransaction();
 		Database::exec(
 			"LOCK TABLE `##individuals` WRITE," .

@@ -1,5 +1,5 @@
 <?php
-namespace Fisharebest\Webtrees;
+namespace Fisharebest\Webtrees\Module;
 
 /**
  * webtrees: online genealogy
@@ -15,11 +15,26 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Database;
+use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsDate;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Theme;
 
 /**
  * Class FamilyTreeNewsModule
  */
 class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterface {
+	/** {@inheritdoc} */
+	public function __construct($directory) {
+		parent::__construct($directory);
+
+		// Create/update the database tables.
+		Database::updateSchema('\Fisharebest\Webtrees\Module\FamilyTreeNews\Schema', 'NB_SCHEMA_VERSION', 3);
+	}
+
 	/** {@inheritdoc} */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('News');
@@ -68,7 +83,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 		$id    = $this->getName() . $block_id;
 		$class = $this->getName() . '_block';
 		if ($ctype === 'gedcom' && Auth::isManager($WT_TREE) || $ctype === 'user' && Auth::check()) {
-			$title = '<i class="icon-admin" title="' . I18N::translate('Configure') . '" onclick="modalDialog(\'block_edit.php?block_id=' . $block_id . '\', \'' . $this->getTitle() . '\');"></i>';
+			$title = '<a class="icon-admin" title="' . I18N::translate('Configure') . '" href="block_edit.php?block_id=' . $block_id . '&amp;ged=' . $WT_TREE->getNameHtml() . '&amp;ctype=' . $ctype . '"></a>';
 		} else {
 			$title = '';
 		}
@@ -93,7 +108,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 			}
 			$content .= '<div class="news_box" id="article' . $news->news_id . '">';
 			$content .= '<div class="news_title">' . Filter::escapeHtml($news->subject) . '</div>';
-			$content .= '<div class="news_date">' . format_timestamp($news->updated) . '</div>';
+			$content .= '<div class="news_date">' . FunctionsDate::formatTimestamp($news->updated) . '</div>';
 			if ($news->body == strip_tags($news->body)) {
 				$news->body = nl2br($news->body, false);
 			}
@@ -114,7 +129,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 				$content .= '&nbsp;&nbsp;|&nbsp;&nbsp;';
 			}
 			$content .= '<a href="index.php?gedcom_news_archive=yes&amp;ctype=' . $ctype . '">' . I18N::translate('View archive') . "</a>";
-			$content .= help_link('gedcom_news_archive') . '<br>';
+			$content .= FunctionsPrint::helpLink('gedcom_news_archive') . '<br>';
 		}
 
 		if ($template) {
