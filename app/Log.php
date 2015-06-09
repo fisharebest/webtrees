@@ -1,5 +1,4 @@
 <?php
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -17,7 +16,7 @@
 namespace Fisharebest\Webtrees;
 
 /**
- * Class Log - record webtrees events in the database
+ * Record webtrees events in the database
  */
 class Log {
 	// We can log the following types of message in the wt_log table.

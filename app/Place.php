@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,24 +13,23 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 /**
- * Class Place - Gedcom Place functionality.
+ * A GEDCOM place (PLAC) object.
  */
 class Place {
 	const GEDCOM_SEPARATOR = ', ';
 
-	/**
-	 * @var string[] e.g. array('Westminster', 'London', 'England')
-	 */
+	/** @var string[] e.g. array('Westminster', 'London', 'England') */
 	private $gedcom_place;
 
-	/**
-	 * @var Tree We may have the same place name in different trees
-	 */
+	/** @var Tree We may have the same place name in different trees. */
 	private $tree;
 
 	/**
+	 * Create a place.
+	 *
 	 * @param string $gedcom_place
 	 * @param Tree   $tree
 	 */
@@ -47,6 +44,8 @@ class Place {
 	}
 
 	/**
+	 * Get the identifier for a place.
+	 *
 	 * @return int
 	 */
 	public function getPlaceId() {
@@ -65,6 +64,8 @@ class Place {
 	}
 
 	/**
+	 * Get the higher level place.
+	 *
 	 * @return Place
 	 */
 	public function getParentPlace() {
@@ -72,6 +73,8 @@ class Place {
 	}
 
 	/**
+	 * Get the lower level places.
+	 *
 	 * @return Place[]
 	 */
 	public function getChildPlaces() {
@@ -99,6 +102,8 @@ class Place {
 	}
 
 	/**
+	 * Create a URL to the place-hierarchy page.
+	 *
 	 * @return string
 	 */
 	public function getURL() {
@@ -117,6 +122,8 @@ class Place {
 	}
 
 	/**
+	 * Format this name for GEDCOM data.
+	 *
 	 * @return string
 	 */
 	public function getGedcomName() {
@@ -124,6 +131,8 @@ class Place {
 	}
 
 	/**
+	 * Format this place for display on screen.
+	 *
 	 * @return string
 	 */
 	public function getPlaceName() {
@@ -133,6 +142,8 @@ class Place {
 	}
 
 	/**
+	 * Is this a null/empty/missing/invalid place?
+	 *
 	 * @return bool
 	 */
 	public function isEmpty() {
@@ -140,6 +151,8 @@ class Place {
 	}
 
 	/**
+	 * Generate the place name for display, including the full hierarchy.
+	 *
 	 * @return string
 	 */
 	public function getFullName() {
@@ -197,6 +210,8 @@ class Place {
 	}
 
 	/**
+	 * Fetch all places from the database.
+	 *
 	 * @param Tree $tree
 	 *
 	 * @return string[]
@@ -230,6 +245,8 @@ class Place {
 	}
 
 	/**
+	 * Search for a place name.
+	 *
 	 * @param string  $filter
 	 * @param Tree    $tree
 	 *

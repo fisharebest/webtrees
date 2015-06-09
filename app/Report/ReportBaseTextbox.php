@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Report;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees\Report;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Report;
 
 /**
  * Class ReportBaseTextbox
@@ -59,17 +58,12 @@ class ReportBaseTextbox extends ReportBaseElement {
 	 */
 	public $newline;
 
-	/**
-	 * @var bool
-	 */
+	/** @var bool Unused? */
 	public $pagecheck;
 
-	/**
-	 * Whether or not a border should be printed around this box. 0 = no border, 1 = border. Default is 0
-	 *
-	 * @var bool
-	 */
+	/** @var bool Whether to print a border */
 	public $border;
+
 	/**
 	 * Style of rendering
 	 *

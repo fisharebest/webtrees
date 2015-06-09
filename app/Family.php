@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,9 +13,10 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 /**
- * Class Family - Class file for a Family
+ * A GEDCOM family (FAM) object.
  */
 class Family extends GedcomRecord {
 	const RECORD_TYPE = 'FAM';
@@ -29,7 +28,15 @@ class Family extends GedcomRecord {
 	/** @var Individual|null The wife (or second spouse for same-sex couples) */
 	private $wife;
 
-	/** {@inheritdoc} */
+	/**
+	 * Create a GedcomRecord object from raw GEDCOM data.
+	 *
+	 * @param string      $xref
+	 * @param string      $gedcom  an empty string for new/pending records
+	 * @param string|null $pending null for a record with no pending edits,
+	 *                             empty string for records with pending deletions
+	 * @param Tree        $tree
+	 */
 	public function __construct($xref, $gedcom, $pending, $tree) {
 		parent::__construct($xref, $gedcom, $pending, $tree);
 
@@ -51,7 +58,13 @@ class Family extends GedcomRecord {
 		}
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Generate a private version of this record
+	 *
+	 * @param int $access_level
+	 *
+	 * @return string
+	 */
 	protected function createPrivateGedcomRecord($access_level) {
 		$SHOW_PRIVATE_RELATIONSHIPS = $this->tree->getPreference('SHOW_PRIVATE_RELATIONSHIPS');
 
@@ -68,7 +81,14 @@ class Family extends GedcomRecord {
 		return $rec;
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Fetch data from the database
+	 *
+	 * @param string $xref
+	 * @param int    $tree_id
+	 *
+	 * @return null|string
+	 */
 	protected static function fetchGedcomRecord($xref, $tree_id) {
 		return Database::prepare(
 			"SELECT f_gedcom FROM `##families` WHERE f_id = :xref AND f_file = :tree_id"
@@ -104,7 +124,13 @@ class Family extends GedcomRecord {
 		}
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Each object type may have its own special rules, and re-implement this function.
+	 *
+	 * @param int $access_level
+	 *
+	 * @return bool
+	 */
 	protected function canShowByType($access_level) {
 		// Hide a family if any member is private
 		preg_match_all('/\n1 (?:CHIL|HUSB|WIFE) @(' . WT_REGEX_XREF . ')@/', $this->gedcom, $matches);
@@ -118,7 +144,13 @@ class Family extends GedcomRecord {
 		return true;
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Can the name of this record be shown?
+	 *
+	 * @param int|null $access_level
+	 *
+	 * @return bool
+	 */
 	public function canShowName($access_level = null) {
 		// We can always see the name (Husband-name + Wife-name), however,
 		// the name will often be "private + private"
@@ -301,7 +333,11 @@ class Family extends GedcomRecord {
 		return array();
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Derived classes should redefine this function, otherwise the object will have no name
+	 *
+	 * @return string[][]
+	 */
 	public function getAllNames() {
 		if (is_null($this->_getAllNames)) {
 			// Check the script used by each name, so we can match cyrillic with cyrillic, greek with greek, etc.
@@ -364,7 +400,12 @@ class Family extends GedcomRecord {
 		return $this->_getAllNames;
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * This function should be redefined in derived classes to show any major
+	 * identifying characteristics of this record.
+	 *
+	 * @return string
+	 */
 	public function formatListDetails() {
 		return
 			$this->formatFirstMajorFact(WT_EVENTS_MARR, 1) .

@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Controller;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,8 @@ namespace Fisharebest\Webtrees\Controller;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Controller;
+
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Date\GregorianDate;
 use Fisharebest\Webtrees\Fact;
@@ -27,7 +27,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Theme;
 
 /**
- * Class TimelineController - Controller for the timeline chart
+ * Controller for the timeline chart
  */
 class TimelineController extends PageController {
 	/** @var int Height of the age box */
@@ -63,7 +63,7 @@ class TimelineController extends PageController {
 	/** @var int Vertical scale */
 	public $scale = 2;
 
-	// GEDCOM elements that may have DATE data, but should not be displayed
+	/** @var string[] GEDCOM elements that may have DATE data, but should not be displayed */
 	private $nonfacts = array('BAPL', 'ENDL', 'SLGC', 'SLGS', '_TODO', 'CHAN');
 
 	/**
@@ -164,6 +164,8 @@ class TimelineController extends PageController {
 	}
 
 	/**
+	 * Print a fact for an individual.
+	 *
 	 * @param Fact $event
 	 */
 	public function printTimeFact(Fact $event) {

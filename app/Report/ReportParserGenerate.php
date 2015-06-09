@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Report;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,8 @@ namespace Fisharebest\Webtrees\Report;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Report;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Date;
@@ -43,13 +43,13 @@ class ReportParserGenerate extends ReportParserBase {
 	/** @var bool[] Push-down stack of $print_data */
 	private $print_data_stack = array();
 
-	/** @var int */
+	/** @var int Are we processing GEDCOM data */
 	private $process_gedcoms = 0;
 
-	/** @var int */
+	/** @var int Are we processing conditionals */
 	private $process_ifs = 0;
 
-	/** @var int */
+	/** @var int Are we processing repeats*/
 	private $process_repeats = 0;
 
 	/** @var int Quantity of data to repeat during loops */
@@ -112,7 +112,13 @@ class ReportParserGenerate extends ReportParserBase {
 	/** @var string[][] Variables defined in the report at run-time */
 	private $vars;
 
-	/** {@inheritDoc} */
+	/**
+	 * Create a parser for a report
+	 *
+	 * @param string     $report     The XML filename
+	 * @param ReportBase $report_root
+	 * @param string[][] $vars
+	 */
 	public function __construct($report, ReportBase $report_root = null, array $vars = array()) {
 		$this->report_root     = $report_root;
 		$this->wt_report       = $report_root;
@@ -122,7 +128,7 @@ class ReportParserGenerate extends ReportParserBase {
 	}
 
 	/**
-	 *XML start element handler
+	 * XML start element handler
 	 *
 	 * This function is called whenever a starting element is reached
 	 * The element handler will be called if found, otherwise it must be HTML
@@ -188,7 +194,7 @@ class ReportParserGenerate extends ReportParserBase {
 	}
 
 	/**
-	 * XML <style> start element handler
+	 * XML <style>
 	 *
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
@@ -225,7 +231,7 @@ class ReportParserGenerate extends ReportParserBase {
 	}
 
 	/**
-	 * XML <Doc> start element handler
+	 * XML <Doc>
 	 *
 	 * Sets up the basics of the document proparties
 	 *
@@ -318,14 +324,14 @@ class ReportParserGenerate extends ReportParserBase {
 	}
 
 	/**
-	 * XML </Doc> end element handler
+	 * XML </Doc>
 	 */
 	private function docEndHandler() {
 		$this->wt_report->run();
 	}
 
 	/**
-	 * XML <Header> start element handler
+	 * XML <Header>
 	 */
 	private function headerStartHandler() {
 		// Clear the Header before any new elements are added
@@ -334,7 +340,7 @@ class ReportParserGenerate extends ReportParserBase {
 	}
 
 	/**
-	 * XML <PageHeader> start element handler
+	 * XML <PageHeader>
 	 */
 	private function pageHeaderStartHandler() {
 		array_push($this->print_data_stack, $this->print_data);
@@ -344,7 +350,7 @@ class ReportParserGenerate extends ReportParserBase {
 	}
 
 	/**
-	 * XML <pageHeaderEndHandler> end element handler
+	 * XML <pageHeaderEndHandler>
 	 */
 	private function pageHeaderEndHandler() {
 		$this->print_data        = array_pop($this->print_data_stack);
@@ -354,21 +360,21 @@ class ReportParserGenerate extends ReportParserBase {
 	}
 
 	/**
-	 * XML <bodyStartHandler> start element handler
+	 * XML <bodyStartHandler>
 	 */
 	private function bodyStartHandler() {
 		$this->wt_report->setProcessing("B");
 	}
 
 	/**
-	 * XML <footerStartHandler> start element handler
+	 * XML <footerStartHandler>
 	 */
 	private function footerStartHandler() {
 		$this->wt_report->setProcessing("F");
 	}
 
 	/**
-	 * XML <Cell> start element handler
+	 * XML <Cell>
 	 *
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
@@ -524,7 +530,7 @@ class ReportParserGenerate extends ReportParserBase {
 	}
 
 	/**
-	 * XML </Cell> end element handler
+	 * XML </Cell>
 	 */
 	private function cellEndHandler() {
 		$this->print_data = array_pop($this->print_data_stack);
@@ -630,7 +636,7 @@ class ReportParserGenerate extends ReportParserBase {
 	}
 
 	/**
-	 * XML <textBoxStartHandler> start element handler
+	 * XML <textBoxStartHandler>
 	 *
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
@@ -755,7 +761,7 @@ class ReportParserGenerate extends ReportParserBase {
 	}
 
 	/**
-	 * XML <textBoxEndHandler> end element handler
+	 * XML <textBoxEndHandler>
 	 */
 	private function textBoxEndHandler() {
 		$this->print_data      = array_pop($this->print_data_stack);
@@ -765,6 +771,8 @@ class ReportParserGenerate extends ReportParserBase {
 	}
 
 	/**
+	 * XLM <Text>.
+	 *
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
 	private function textStartHandler($attrs) {
@@ -787,7 +795,7 @@ class ReportParserGenerate extends ReportParserBase {
 	}
 
 	/**
-	 *
+	 * XML </Text>
 	 */
 	private function textEndHandler() {
 		$this->print_data = array_pop($this->print_data_stack);
@@ -795,7 +803,8 @@ class ReportParserGenerate extends ReportParserBase {
 	}
 
 	/**
-	 * XML <GetPersonName> start element handler
+	 * XML <GetPersonName/>
+	 *
 	 * Get the name
 	 * 1. id is empty - current GEDCOM record
 	 * 2. id is set with a record id
@@ -881,7 +890,7 @@ class ReportParserGenerate extends ReportParserBase {
 	}
 
 	/**
-	 * XML <GedcomValue> start element handler
+	 * XML <GedcomValue/>
 	 *
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
@@ -948,7 +957,7 @@ class ReportParserGenerate extends ReportParserBase {
 	}
 
 	/**
-	 * XML <RepeatTag> start element handler
+	 * XML <RepeatTag>
 	 *
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
@@ -1012,7 +1021,7 @@ class ReportParserGenerate extends ReportParserBase {
 	}
 
 	/**
-	 * XML </ RepeatTag> end element handler
+	 * XML </ RepeatTag>
 	 */
 	private function repeatTagEndHandler() {
 		global $report;
@@ -1130,6 +1139,8 @@ class ReportParserGenerate extends ReportParserBase {
 	}
 
 	/**
+	 * XML <Facts>
+	 *
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
 	private function factsStartHandler($attrs) {
@@ -1178,7 +1189,7 @@ class ReportParserGenerate extends ReportParserBase {
 	}
 
 	/**
-	 * XML </ Facts> end element handler
+	 * XML </Facts>
 	 */
 	private function factsEndHandler() {
 		global $report;
@@ -1530,6 +1541,8 @@ class ReportParserGenerate extends ReportParserBase {
 	}
 
 	/**
+	 * XML <HighlightedImage/>
+	 *
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
 	private function highlightedImageStartHandler($attrs) {
@@ -1629,6 +1642,8 @@ class ReportParserGenerate extends ReportParserBase {
 	}
 
 	/**
+	 * XML <Image/>
+	 *
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
 	private function imageStartHandler($attrs) {
@@ -1799,7 +1814,7 @@ class ReportParserGenerate extends ReportParserBase {
 	}
 
 	/**
-	 * XML <List> start element handler
+	 * XML <List>
 	 *
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
@@ -1839,7 +1854,7 @@ class ReportParserGenerate extends ReportParserBase {
 					"  GROUP BY xref" .
 					" )"
 				)->execute(array(
-					'tree_id' => $WT_TREE->getTreeId()
+					'tree_id' => $WT_TREE->getTreeId(),
 				))->fetchAll();
 				$this->list = array();
 				foreach ($rows as $row) {
@@ -1860,7 +1875,7 @@ class ReportParserGenerate extends ReportParserBase {
 							$sql_join .= " JOIN `##dates` AS {$attr} ON ({$attr}.d_file=i_file AND {$attr}.d_gid=i_id)";
 							$sql_where .= " AND {$attr}.d_fact = :{$attr}fact'";
 							$sql_params[$attr . 'fact'] = $match[1];
-							$date = new Date($match[3]);
+							$date                       = new Date($match[3]);
 							if ($match[2] == "LTE") {
 								$sql_where .= " AND {$attr}.d_julianday2 <= :{$attr}date";
 								$sql_params[$attr . 'date'] = $date->maximumJulianDay();
@@ -1935,7 +1950,7 @@ class ReportParserGenerate extends ReportParserBase {
 						if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
 							$sql_where .= " AND {$attr}.d_fact = :{$attr}fact'";
 							$sql_params[$attr . 'fact'] = $match[1];
-							$date = new Date($match[3]);
+							$date                       = new Date($match[3]);
 							if ($match[2] == "LTE") {
 								$sql_where .= " AND {$attr}.d_julianday2 <= :{$attr}date";
 								$sql_params[$attr . 'date'] = $date->maximumJulianDay();
@@ -2177,7 +2192,7 @@ class ReportParserGenerate extends ReportParserBase {
 	}
 
 	/**
-	 * XML <List> end element handler
+	 * XML <List>
 	 */
 	private function listEndHandler() {
 		global $report;
@@ -2267,6 +2282,8 @@ class ReportParserGenerate extends ReportParserBase {
 	}
 
 	/**
+	 * XML <Relatives>
+	 *
 	 * @param array $attrs an array of key value pairs for the attributes
 	 */
 	private function relativesStartHandler($attrs) {
@@ -2406,7 +2423,7 @@ class ReportParserGenerate extends ReportParserBase {
 	}
 
 	/**
-	 * XML </ Relatives> end element handler
+	 * XML </ Relatives>
 	 */
 	private function relativesEndHandler() {
 		global $report, $WT_TREE;
@@ -2498,8 +2515,10 @@ class ReportParserGenerate extends ReportParserBase {
 	}
 
 	/**
-	 * @param array  $attrs an array of key value pairs for the attributes
-	 * @param string $tag   HTML tag name
+	 * XML <html>
+	 *
+	 * @param string  $tag   HTML tag name
+	 * @param array[] $attrs an array of key value pairs for the attributes
 	 */
 	private function htmlStartHandler($tag, $attrs) {
 		if ($tag === "tempdoc") {
@@ -2514,6 +2533,8 @@ class ReportParserGenerate extends ReportParserBase {
 	}
 
 	/**
+	 * XML </html>
+	 *
 	 * @param string $tag
 	 */
 	private function htmlEndHandler($tag) {
@@ -2560,20 +2581,22 @@ class ReportParserGenerate extends ReportParserBase {
 	}
 
 	/**
-	 * XML </titleEndHandler> end element handler
+	 * XML </titleEndHandler>
 	 */
 	private function titleEndHandler() {
 		$this->report_root->addTitle($this->text);
 	}
 
 	/**
-	 * XML </descriptionEndHandler> end element handler
+	 * XML </descriptionEndHandler>
 	 */
 	private function descriptionEndHandler() {
 		$this->report_root->addDescription($this->text);
 	}
 
 	/**
+	 * Create a list of all descendants.
+	 *
 	 * @param string[] $list
 	 * @param string   $pid
 	 * @param bool  $parents
@@ -2633,6 +2656,8 @@ class ReportParserGenerate extends ReportParserBase {
 	}
 
 	/**
+	 * Create a list of all ancestors.
+	 *
 	 * @param string[] $list
 	 * @param string   $pid
 	 * @param bool  $children

@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Report;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees\Report;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Report;
 
 /**
  * Class ReportBaseImage
@@ -87,6 +86,8 @@ class ReportBaseImage extends ReportBaseElement {
 	}
 
 	/**
+	 * Get the height.
+	 *
 	 * @param $renderer
 	 *
 	 * @return float
@@ -96,6 +97,8 @@ class ReportBaseImage extends ReportBaseElement {
 	}
 
 	/**
+	 * Get the width.
+	 *
 	 * @param $renderer
 	 *
 	 * @return float

@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Theme;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,13 +13,15 @@ namespace Fisharebest\Webtrees\Theme;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Theme;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Tree;
 
 /**
- * Class AdministrationTheme - Theme for the control panel.
+ * The theme for the control panel.
  */
 class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 	/**

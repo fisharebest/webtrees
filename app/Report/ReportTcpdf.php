@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Report;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees\Report;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Report;
 
 use TCPDF;
 
@@ -51,6 +50,7 @@ class ReportTcpdf extends TCPDF {
 	/** @var int The last pictures page number */
 	public $lastpicpage = 0;
 
+	/** @var ReportBase The current report. */
 	public $wt_report;
 
 	/**
@@ -178,6 +178,8 @@ class ReportTcpdf extends TCPDF {
 	}
 
 	/**
+	 * Remove the header.
+	 *
 	 * @param $index
 	 */
 	public function removeHeader($index) {
@@ -185,6 +187,8 @@ class ReportTcpdf extends TCPDF {
 	}
 
 	/**
+	 * Remove the page header.
+	 *
 	 * @param $index
 	 */
 	public function removePageHeader($index) {
@@ -192,6 +196,8 @@ class ReportTcpdf extends TCPDF {
 	}
 
 	/**
+	 * Remove the body.
+	 *
 	 * @param $index
 	 */
 	public function removeBody($index) {
@@ -199,6 +205,8 @@ class ReportTcpdf extends TCPDF {
 	}
 
 	/**
+	 * Remove the footer.
+	 *
 	 * @param $index
 	 */
 	public function removeFooter($index) {
@@ -222,6 +230,8 @@ class ReportTcpdf extends TCPDF {
 	}
 
 	/**
+	 * Set the report.
+	 *
 	 * @param $r
 	 */
 	public function setReport($r) {
@@ -300,6 +310,8 @@ class ReportTcpdf extends TCPDF {
 	}
 
 	/**
+	 * Get the height of the footnote.
+	 *
 	 * @return int
 	 */
 	public function getFootnotesHeight() {
@@ -364,10 +376,6 @@ class ReportTcpdf extends TCPDF {
 		}
 		$this->AddPage();
 	}
-
-	/*******************************************
-	 * TCPDF protected functions
-	 *******************************************/
 
 	/**
 	 * Add a page if needed -PDF

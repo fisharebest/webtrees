@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Functions;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees\Functions;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Config;
@@ -398,6 +397,8 @@ class FunctionsEdit {
 	}
 
 	/**
+	 * An HTML link to create a new media object.
+	 *
 	 * @param string $element_id
 	 *
 	 * @return string
@@ -407,6 +408,8 @@ class FunctionsEdit {
 	}
 
 	/**
+	 * An HTML link to create a new repository.
+	 *
 	 * @param string $element_id
 	 *
 	 * @return string
@@ -416,6 +419,8 @@ class FunctionsEdit {
 	}
 
 	/**
+	 * An HTML link to create a new note.
+	 *
 	 * @param string $element_id
 	 *
 	 * @return string
@@ -425,6 +430,8 @@ class FunctionsEdit {
 	}
 
 	/**
+	 * An HTML link to edit a note.
+	 *
 	 * @param string $note_id
 	 *
 	 * @return string
@@ -434,6 +441,8 @@ class FunctionsEdit {
 	}
 
 	/**
+	 * An HTML link to create a new source.
+	 *
 	 * @param string $element_id
 	 *
 	 * @return string
@@ -1108,6 +1117,8 @@ class FunctionsEdit {
 	}
 
 	/**
+	 * Create a form to add a sex record.
+	 *
 	 * @return string
 	 */
 	public static function addNewSex() {
@@ -1122,6 +1133,8 @@ class FunctionsEdit {
 	}
 
 	/**
+	 * Create a form to add a new fact.
+	 *
 	 * @param string $fact
 	 *
 	 * @return string

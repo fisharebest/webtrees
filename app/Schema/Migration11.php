@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Schema;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,14 +13,18 @@ namespace Fisharebest\Webtrees\Schema;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Schema;
+
 use Fisharebest\Webtrees\Database;
 use PDOException;
 
 /**
- * Class Migration11 - upgrade the database schema from version 11 to version 12.
+ * Upgrade the database schema from version 11 to version 12.
  */
 class Migration11 implements MigrationInterface {
-	/** {@inheritDoc} */
+	/**
+	 * Upgrade to to the next version
+	 */
 	public function upgrade() {
 		// - delete the wt_name.n_list column; it has never been used
 		// - a bug in webtrees 1.1.2 caused the wt_name.n_full column

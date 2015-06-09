@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Controller;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,8 @@ namespace Fisharebest\Webtrees\Controller;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Controller;
+
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\Functions\FunctionsCharts;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
@@ -23,7 +23,7 @@ use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Theme;
 
 /**
- * Class AncestryController - Controller for the ancestry chart
+ * Controller for the ancestry chart
  */
 class AncestryController extends ChartController {
 	/** @var int Show boxes for cousins */

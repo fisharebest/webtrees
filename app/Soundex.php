@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,12 +13,15 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 /**
- * Class Soundex Functions for phonetic matching of strings
+ * Phonetic matching of strings.
  */
 class Soundex {
 	/**
+	 * Which algorithms are supported.
+	 *
 	 * @return string[]
 	 */
 	public static function getAlgorithms() {
@@ -679,6 +680,8 @@ class Soundex {
 	);
 
 	/**
+	 * Calculate the Daitch-Mokotoff soundex for a word.
+	 *
 	 * @param string $name
 	 *
 	 * @return string[] List of possible DM codes for the word.

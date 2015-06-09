@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,22 +13,19 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 use PDO;
 use PDOStatement;
 
 /**
- * Class Statement.  Extend PHP's native PDOStatement class to provide:
- *
- * Additional options for fetching data.
- * Logging
- * Automatic calling of execute() and closeCursor()
+ * Extend PHP's native PDOStatement class.
  */
 class Statement {
-	/** @var PDOStatement */
+	/** @var PDOStatement A prepared statement. */
 	private $pdo_statement;
 
-	/** @var bool Keep track of calls to execute(), so we can do it automatically */
+	/** @var bool Keep track of calls to execute(), so we can do it automatically. */
 	private $executed = false;
 
 	/**

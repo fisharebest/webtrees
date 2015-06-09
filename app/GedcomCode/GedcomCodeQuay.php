@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\GedcomCode;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,12 +13,15 @@ namespace Fisharebest\Webtrees\GedcomCode;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\GedcomCode;
+
 use Fisharebest\Webtrees\I18N;
 
 /**
  * Class GedcomCodeQuay - Functions and logic for GEDCOM "QUAY" codes
  */
 class GedcomCodeQuay {
+	/** @var string[] Valid values for a QUAY tag. */
 	private static $TYPES = array('3', '2', '1', '0');
 
 	/**

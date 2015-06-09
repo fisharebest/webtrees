@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Controller;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,21 +13,27 @@ namespace Fisharebest\Webtrees\Controller;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Controller;
+
 use Fisharebest\Webtrees\Database;
 
 /**
- * Class BaseController - Base controller for all other controllers
+ * Base controller for all other controllers
  */
 class BaseController {
 	// The controller accumulates Javascript (inline and external), and renders it in the footer
-	const JS_PRIORITY_HIGH     = 0;
-	const JS_PRIORITY_NORMAL   = 1;
-	const JS_PRIORITY_LOW      = 2;
+	const JS_PRIORITY_HIGH   = 0;
+	const JS_PRIORITY_NORMAL = 1;
+	const JS_PRIORITY_LOW    = 2;
+
+	/** @var string[][] Inline JavaScript to add to the page. */
 	private $inline_javascript = array(
 		self::JS_PRIORITY_HIGH   => array(),
 		self::JS_PRIORITY_NORMAL => array(),
 		self::JS_PRIORITY_LOW    => array(),
 	);
+
+	/** @var string[] Exteral JavaScript files to load. */
 	private $external_javascript = array();
 
 	/**

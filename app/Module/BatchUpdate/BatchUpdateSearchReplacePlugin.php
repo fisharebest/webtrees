@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module\BatchUpdate;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,8 @@ namespace Fisharebest\Webtrees\Module\BatchUpdate;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module\BatchUpdate;
+
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\I18N;
 
@@ -22,12 +22,23 @@ use Fisharebest\Webtrees\I18N;
  * Class BatchUpdateSearchReplacePlugin Batch Update plugin: search/replace
  */
 class BatchUpdateSearchReplacePlugin extends BatchUpdateBasePlugin {
-	private $search  = null; // Search string
-	private $replace = null; // Replace string
-	private $method  = null; // simple/wildcards/regex
-	private $regex   = null; // Search string, converted to a regex
-	private $case    = null; // "i" for case insensitive, "" for case sensitive
-	private $error   = null; // Message for bad user parameters
+	/** @var string Search string */
+	private $search;
+
+	/** @var string Replace string */
+	private $replace;
+
+	/** @var string simple/wildcards/regex */
+	private $method;
+
+	/** @var string Search string, converted to a regex */
+	private $regex;
+
+	/** @var string "i" for case insensitive, "" for case sensitive */
+	private $case;
+
+	/** @var string Message for bad user parameters */
+	private $error;
 
 	/**
 	 * User-friendly name for this plugin.

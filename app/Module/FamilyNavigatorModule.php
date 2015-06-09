@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,8 @@ namespace Fisharebest\Webtrees\Module;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Functions\Functions;
@@ -55,7 +55,11 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 		return '';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Load this sidebar synchronously.
+	 *
+	 * @return string
+	 */
 	public function getSidebarContent() {
 		global $controller;
 
@@ -102,6 +106,8 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 	}
 
 	/**
+	 * Format a family.
+	 *
 	 * @param Family $family
 	 * @param string $title
 	 */
@@ -161,6 +167,8 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 	}
 
 	/**
+	 * Format an individual.
+	 *
 	 * @param      $person
 	 * @param bool $showUnknown
 	 *
@@ -177,6 +185,8 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 	}
 
 	/**
+	 * Forat the parents of an individual.
+	 *
 	 * @param Individual $person
 	 *
 	 * @return string
@@ -217,6 +227,8 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 	}
 
 	/**
+	 * Format a family.
+	 *
 	 * @param Individual $person
 	 *
 	 * @return string

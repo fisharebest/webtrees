@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,8 @@ namespace Fisharebest\Webtrees\Module;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Family;
@@ -28,22 +28,37 @@ use Fisharebest\Webtrees\Theme;
  * Class RelativesTabModule
  */
 class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
-	/** {@inheritdoc} */
+	/**
+	 * How should this module be labelled on tabs, menus, etc.?
+	 *
+	 * @return string
+	 */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('Families');
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * A sentence describing what this module does.
+	 *
+	 * @return string
+	 */
 	public function getDescription() {
 		return /* I18N: Description of the “Families” module */ I18N::translate('A tab showing the close relatives of an individual.');
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * The user can re-arrange the tab order, but until they do, this
+	 * is the order in which tabs are shown.
+	 *
+	 * @return int
+	 */
 	public function defaultTabOrder() {
 		return 20;
 	}
 
 	/**
+	 * Display the age difference between marriages and the births of children.
+	 *
 	 * @param Date $prev
 	 * @param Date $next
 	 * @param int  $child_number
@@ -77,6 +92,8 @@ class RelativesTabModule extends AbstractModule implements ModuleTabInterface {
 	}
 
 	/**
+	 * Print a family group.
+	 *
 	 * @param Family $family
 	 * @param string $type
 	 * @param string $label

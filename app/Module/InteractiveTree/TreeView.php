@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module\InteractiveTree;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,8 @@ namespace Fisharebest\Webtrees\Module\InteractiveTree;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module\InteractiveTree;
+
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\I18N;
@@ -24,7 +24,10 @@ use Fisharebest\Webtrees\Individual;
  * Class TreeView
  */
 class TreeView {
+	/** @var string HTML element name */
 	private $name;
+
+	/** @var string Show all partners */
 	private $all_partners;
 
 	/**

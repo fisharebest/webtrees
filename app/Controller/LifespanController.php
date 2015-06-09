@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Controller;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees\Controller;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Controller;
 
 use Fisharebest\Webtrees\ColorGenerator;
 use Fisharebest\Webtrees\Database;
@@ -36,7 +35,7 @@ use Fisharebest\Webtrees\Place;
 use Fisharebest\Webtrees\Session;
 
 /**
- * Class LifespanController - Controller for the timeline chart
+ * Controller for the timeline chart
  */
 class LifespanController extends PageController {
 	// Base color parameters
@@ -53,7 +52,7 @@ class LifespanController extends PageController {
 	/** @var string|null Chart parameter */
 	public $place     = null;
 
-/** @var int|null Chart parameter */
+	/** @var int|null Chart parameter */
 	public $beginYear = null;
 
 	/** @var int|null Chart parameter */
@@ -65,46 +64,46 @@ class LifespanController extends PageController {
 	/** @var string Chart parameter */
 	public $showDetails;
 
-	/** @var Individual[] */
+	/** @var Individual[] A list of individuals to display. */
 	private $people = array();
 
-	/** @var string */
+	/** @var string The default calendar to use. */
 	private $defaultCalendar;
 
-	/** @var string */
+	/** @var string Which calendar to use. */
 	private $calendar;
 
-	/** @var string */
+	/** @var string Which calendar escape to use. */
 	private $calendarEscape;
 
-	/** @var int */
+	/** @var int The earliest year to show. */
 	private $timelineMinYear;
 
-	/** @var int */
+	/** @var int That latest year to show. */
 	private $timelineMaxYear;
 
-	/** @var int */
+	/** @var int The current year. */
 	private $currentYear;
 
-	/** @var string[] */
+	/** @var string[] A list of colors to use. */
 	private $colors = array();
 
-	/** @var Place|null */
+	/** @var Place|null A place to serarh. */
 	private $place_obj = null;
 
-	/** @var Date|null */
+	/** @var Date|null Start of the date range. */
 	private $startDate = null;
 
-	/** @var Date|null */
+	/** @var Date|null End of the date range. */
 	private $endDate = null;
 
-	/** @var bool */
+	/** @var bool Only match dates in the chosen calendar. */
 	private $strictDate;
 
-	/** @var string[] */
+	/** @var string[] List of facts/events to include. */
 	private $facts;
 
-	/** @var string[] */
+	/** @var string[] Facts and events to exclude from the chart */
 	private $nonfacts = array(
 		'FAMS', 'FAMC', 'MAY', 'BLOB', 'OBJE', 'SEX', 'NAME', 'SOUR', 'NOTE', 'BAPL', 'ENDL',
 		'SLGC', 'SLGS', '_TODO', '_WT_OBJE_SORT', 'CHAN', 'HUSB', 'WIFE', 'CHIL', 'OCCU', 'ASSO',

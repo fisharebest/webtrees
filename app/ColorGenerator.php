@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,33 +13,36 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 /**
- * Class colorGenerator
+ * Generate a range of colurs for the lifespan chart.
  */
 class ColorGenerator {
-	/** @var int */
+	/** @var int Current hue */
 	private $hue;
 
-	/** @var int */
+	/** @var int Initial hue*/
 	private $basehue;
 
-	/** @var int */
+	/** @var int Saturation */
 	private $saturation;
 
-	/** @var int */
+	/** @var int Lightness */
 	private $lightness;
 
-	/** @var int */
+	/** @var int Initial lightness*/
 	private $baselightness;
 
-	/** @var int */
+	/** @var int Alpha transparancy */
 	private $alpha;
 
-	/** @var int */
+	/** @var int Clockwise or anticlockwise color wheel */
 	private $range;
 
 	/**
+	 * Create a color generator.
+	 *
 	 * @param int $hue (0Deg = Red, 120Deg = green, 240Deg = blue)
 	 * @param int $saturation
 	 * @param int $lightness

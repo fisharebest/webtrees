@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Controller;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees\Controller;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Controller;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
@@ -33,12 +32,16 @@ use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\User;
 
 /**
- * Class IndividualController - Controller for the individual page
+ * Controller for the individual page
  */
 class IndividualController extends GedcomRecordController {
+	/** @var int Count of names */
 	public $name_count  = 0;
+
+	/** @var int Count of names. */
 	public $total_names = 0;
 
+	/** ModuleTabInterface[] List of tabs to show */
 	public $tabs;
 
 	/**
@@ -427,11 +430,16 @@ class IndividualController extends GedcomRecordController {
 	}
 
 	/**
-	 * @param Family $family
+	 * Get the description for the family.
+	 *
+	 * For example, "XXX's family with new wife".
+	 *
+	 * @param Family     $family
+	 * @param Individual $individual
 	 *
 	 * @return string
 	 */
-	public function getSpouseFamilyLabel(Family $family, $individual) {
+	public function getSpouseFamilyLabel(Family $family, Individual $individual) {
 		$spouse = $family->getSpouse($individual);
 		if ($spouse) {
 			return

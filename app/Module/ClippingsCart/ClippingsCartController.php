@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module\ClippingsCart;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees\Module\ClippingsCart;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module\ClippingsCart;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
@@ -32,7 +31,7 @@ use PclZip;
  * The clippings cart.
  */
 class ClippingsCartController {
-	/** @var string  */
+	/** @var string Data to be downloaded. */
 	private $download_data;
 
 	/** @var string[] List of files to include */

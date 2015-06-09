@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,8 @@ namespace Fisharebest\Webtrees\Module;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
@@ -39,13 +39,18 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 			I18N::translate('A sidebar showing the descendants of an individual.');
 	}
 
-	/** {@inheritdoc} */
-	public function modAction($modAction) {
+	/**
+	 * This is a general purpose hook, allowing modules to respond to routes
+	 * of the form module.php?mod=FOO&mod_action=BAR
+	 *
+	 * @param string $mod_action
+	 */
+	public function modAction($mod_action) {
 		global $WT_TREE;
 
 		header('Content-Type: text/html; charset=UTF-8');
 
-		switch ($modAction) {
+		switch ($mod_action) {
 		case 'search':
 			$search = Filter::get('search');
 			echo $this->search($search, $WT_TREE);
@@ -77,7 +82,11 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 		return '';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Load this sidebar synchronously.
+	 *
+	 * @return string
+	 */
 	public function getSidebarContent() {
 		global $controller;
 
@@ -131,6 +140,8 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 	}
 
 	/**
+	 * Format an individual in a list.
+	 *
 	 * @param Individual $person
 	 * @param int        $generations
 	 *
@@ -153,6 +164,8 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 	}
 
 	/**
+	 * Format a family in a list.
+	 *
 	 * @param Family     $family
 	 * @param Individual $person
 	 * @param int        $generations
@@ -182,6 +195,8 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 	}
 
 	/**
+	 * Respond to an autocomplete search request.
+	 *
 	 * @param string $query Search for this term
 	 * @param Tree   $tree  Search in this tree
 	 *
@@ -218,6 +233,8 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 	}
 
 	/**
+	 * Display spouses.
+	 *
 	 * @param Individual $person
 	 * @param int        $generations
 	 *
@@ -238,6 +255,8 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 	}
 
 	/**
+	 * Display descendants.
+	 *
 	 * @param Family $family
 	 * @param int    $generations
 	 *

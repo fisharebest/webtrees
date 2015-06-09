@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,8 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
+
 use Fisharebest\Webtrees\Controller\LifespanController;
 use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
@@ -54,7 +54,7 @@ $controller
 					<?php echo I18N::translate('Include the individual’s immediate family?'); ?>
 				</label>
 				<span class="optionbox">
-					<input id="addFamily" type="checkbox" value="yes" name="addFamily">
+					<input id="addFamily" type="checkbox" value="yes" name="addFamily" <?php echo $controller->showDetails;?>>
 				</span>
 			</div>
 		</fieldset>

@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Schema;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,14 +13,18 @@ namespace Fisharebest\Webtrees\Schema;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Schema;
+
 use Fisharebest\Webtrees\Database;
 use PDOException;
 
 /**
- * Class Migration2 - upgrade the database schema from version 2 to version 2.
+ * Upgrade the database schema from version 2 to version 2.
  */
 class Migration2 implements MigrationInterface {
-	/** {@inheritDoc} */
+	/**
+	 * Upgrade to to the next version
+	 */
 	public function upgrade() {
 		// - create the wt_gedcom_chunk table to import gedcoms in
 		// blocks of data smaller than the max_allowed_packet restriction.

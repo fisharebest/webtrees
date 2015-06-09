@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Report;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees\Report;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Report;
 
 /**
  * Class ReportBaseFootnote
@@ -55,9 +54,12 @@ class ReportBaseFootnote extends ReportBaseElement {
 	 */
 	public $wrapWidthCell;
 
+	/** @var string A link */
 	public $addlink;
 
 	/**
+	 * Createa an element.
+	 *
 	 * @param string $style
 	 */
 	public function __construct($style = "") {
@@ -67,11 +69,11 @@ class ReportBaseFootnote extends ReportBaseElement {
 		} else {
 			$this->styleName = "footnote";
 		}
-
-		return 0;
 	}
 
 	/**
+	 * Add text.
+	 *
 	 * @param $t
 	 *
 	 * @return int
@@ -87,6 +89,8 @@ class ReportBaseFootnote extends ReportBaseElement {
 	}
 
 	/**
+	 * Set the width to wrap text.
+	 *
 	 * @param $wrapwidth
 	 * @param $cellwidth
 	 *
@@ -104,6 +108,8 @@ class ReportBaseFootnote extends ReportBaseElement {
 	}
 
 	/**
+	 * Set the number.
+	 *
 	 * @param $n
 	 *
 	 * @return int
@@ -116,6 +122,8 @@ class ReportBaseFootnote extends ReportBaseElement {
 	}
 
 	/**
+	 * Add a link.
+	 * 
 	 * @param $a
 	 *
 	 * @return int

@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,8 @@ namespace Fisharebest\Webtrees\Module;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
@@ -38,9 +38,14 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 		return /* I18N: Description of the “Families” module */ I18N::translate('A sidebar showing an alphabetic list of all the families in the family tree.');
 	}
 
-	/** {@inheritdoc} */
-	public function modAction($modAction) {
-		switch ($modAction) {
+	/**
+	 * This is a general purpose hook, allowing modules to respond to routes
+	 * of the form module.php?mod=FOO&mod_action=BAR
+	 *
+	 * @param string $mod_action
+	 */
+	public function modAction($mod_action) {
+		switch ($mod_action) {
 		case 'ajax':
 			header('Content-Type: text/html; charset=UTF-8');
 			echo $this->getSidebarAjaxContent();
@@ -80,7 +85,11 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 		}
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Load this sidebar synchronously.
+	 *
+	 * @return string
+	 */
 	public function getSidebarContent() {
 		global $controller, $WT_TREE;
 
@@ -164,6 +173,8 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 	}
 
 	/**
+	 * Get a list of surname initials.
+	 *
 	 * @param Tree   $tree
 	 * @param string $alpha
 	 *
@@ -183,6 +194,8 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 	}
 
 	/**
+	 * Get a list of surnames.
+	 *
 	 * @param Tree   $tree
 	 * @param string $alpha
 	 * @param string $surname
@@ -210,6 +223,8 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 	}
 
 	/**
+	 * Autocomplete search for families.
+	 *
 	 * @param Tree   $tree  Search this tree
 	 * @param string $query Search for this text
 	 *

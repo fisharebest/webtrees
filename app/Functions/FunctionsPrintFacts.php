@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Functions;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees\Functions;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Functions;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Date;
@@ -474,7 +473,7 @@ class FunctionsPrintFacts {
 					break;
 			}
 		}
-		echo FunctionsPrintFacts::printFactSources($fact->getGedcom(), 2);
+		echo self::printFactSources($fact->getGedcom(), 2);
 		echo FunctionsPrint::printFactNotes($fact->getGedcom(), 2);
 		self::printMediaLinks($fact->getGedcom(), 2);
 		echo '</td></tr>';
@@ -642,7 +641,7 @@ class FunctionsPrintFacts {
 						}
 					}
 					echo FunctionsPrint::printFactNotes($media->getGedcom(), $nlevel);
-					echo FunctionsPrintFacts::printFactSources($media->getGedcom(), $nlevel);
+					echo self::printFactSources($media->getGedcom(), $nlevel);
 					echo '</div>'; //close div "media-display-title"
 					echo '</div>'; //close div "media-display"
 				}
@@ -1006,7 +1005,7 @@ class FunctionsPrintFacts {
 			echo $text;
 
 			if (!empty($noterec)) {
-				echo FunctionsPrintFacts::printFactSources($noterec, 1);
+				echo self::printFactSources($noterec, 1);
 			}
 
 			// 2 RESN tags.  Note, there can be more than one, such as "privacy" and "locked"
@@ -1139,7 +1138,7 @@ class FunctionsPrintFacts {
 							break;
 					}
 					echo FunctionsPrint::printFactNotes($media->getGedcom(), 1);
-					echo FunctionsPrintFacts::printFactSources($media->getGedcom(), 1);
+					echo self::printFactSources($media->getGedcom(), 1);
 				} else {
 					echo $xref;
 				}

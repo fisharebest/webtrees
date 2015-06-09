@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module\GoogleMaps\Schema;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,11 +13,13 @@ namespace Fisharebest\Webtrees\Module\GoogleMaps\Schema;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module\GoogleMaps\Schema;
+
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Schema\MigrationInterface;
 
 /**
- * Class Migration5 - upgrade the database schema from version 5 to version 6.
+ * Upgrade the database schema from version 5 to version 6.
  */
 class Migration5 implements MigrationInterface {
 	/** {@inheritDoc} */

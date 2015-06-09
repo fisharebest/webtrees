@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 /**
  * Defined in session.php
@@ -248,7 +247,7 @@ if ($type == "source") {
 
 // Show specialchar and hide the rest
 if ($type == 'specialchar') {
-	$language_filter = Filter::get('language_filter', null, Auth::user()->getPreference('default_language_filter'));
+	$language_filter       = Filter::get('language_filter', null, Auth::user()->getPreference('default_language_filter'));
 	$specialchar_languages = SpecialChars::allLanguages();
 	if (!array_key_exists($language_filter, $specialchar_languages)) {
 		$language_filter = 'en';

@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,8 @@ namespace Fisharebest\Webtrees\Module;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
@@ -23,24 +23,42 @@ use Fisharebest\Webtrees\Menu;
  * Class BirthDeathMarriageReportModule
  */
 class BirthDeathMarriageReportModule extends AbstractModule implements ModuleReportInterface {
-	/** {@inheritdoc} */
+	/**
+	 * How should this module be labelled on tabs, menus, etc.?
+	 *
+	 * @return string
+	 */
 	public function getTitle() {
 		// This text also appears in the .XML file - update both together
 		return /* I18N: Name of a module/report. “Vital records” are life events - birth/marriage/death */ I18N::translate('Vital records');
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * A sentence describing what this module does.
+	 *
+	 * @return string
+	 */
 	public function getDescription() {
 		// This text also appears in the .XML file - update both together
 		return /* I18N: Description of the “Vital records” module. “Vital records” are life events - birth/marriage/death */ I18N::translate('A report of vital records for a given date or place.');
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * What is the default access level for this module?
+	 *
+	 * Some modules are aimed at admins or managers, and are not generally shown to users.
+	 *
+	 * @return int
+	 */
 	public function defaultAccessLevel() {
 		return Auth::PRIV_PRIVATE;
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Return a list of (usually just one) menu items.
+	 *
+	 * @return Menu[]
+	 */
 	public function getReportMenus() {
 		global $WT_TREE;
 
