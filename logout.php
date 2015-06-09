@@ -21,6 +21,7 @@ require './includes/session.php';
 if (Auth::id()) {
 	Log::addAuthenticationLog('Logout: ' . Auth::user()->getUserName() . '/' . Auth::user()->getRealName());
 	Auth::logout();
+	FlashMessages::addMessage(I18N::translate('You have logged out.'), 'info');
 }
 
 header('Location: ' . WT_BASE_URL);
