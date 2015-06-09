@@ -61,9 +61,6 @@ class LifespanController extends PageController {
 	/** @var string Chart parameter */
 	public $subtitle  = '&nbsp;';
 
-	/** @var string Chart parameter */
-	public $showDetails;
-
 	/** @var Individual[] A list of individuals to display. */
 	private $people = array();
 
@@ -117,7 +114,6 @@ class LifespanController extends PageController {
 
 		parent::__construct();
 		$this->setPageTitle(I18N::translate('Lifespans'));
-		$this->showDetails = $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS') ? 'checked' : '';
 
 		$this->facts           = explode('|', WT_EVENTS_BIRT . '|' . WT_EVENTS_DEAT . '|' . WT_EVENTS_MARR . '|' . WT_EVENTS_DIV);
 		$tmp                   = explode('\\', get_class(I18N::defaultCalendar()));
