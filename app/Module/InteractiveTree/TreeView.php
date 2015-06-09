@@ -337,28 +337,20 @@ class TreeView {
 		if ($this->all_partners === 'true') {
 			$family = $individual->getPrimaryChildFamily();
 			if ($family) {
-				switch ($individual->getSex()) {
-				case 'M':
-					$title = ' title="' . strip_tags(
-						/* I18N: e.g. “Son of [father name & mother name]” */
-						I18N::translate('Son of %s', $family->getFullName())
-					) . '"';
-					break;
-				case 'F':
-					$title = ' title="' . strip_tags(
-						/* I18N: e.g. “Daughter of [father name & mother name]” */
-						I18N::translate('Daughter of %s', $family->getFullName())
-					) . '"';
-					break;
-				default:
-					$title = ' title="' . strip_tags(
-						/* I18N: e.g. “Child of [father name & mother name]” */
-						I18N::translate('Child of %s', $family->getFullName())
-					) . '"';
-					break;
-				}
+				$family_name = strip_tags($family->getFullName());
 			} else {
-				$title = '';
+				$family_name = I18N::translateContext('unknown family', 'unknown');
+			}
+			switch ($individual->getSex()) {
+			case 'M':
+				$title = ' title="' . /* I18N: e.g. “Son of [father name & mother name]” */ I18N::translate('Son of %s', $family_name) . '"';
+				break;
+			case 'F':
+				$title = ' title="' . /* I18N: e.g. “Daughter of [father name & mother name]” */ I18N::translate('Daughter of %s', $family_name) . '"';
+				break;
+			default:
+				$title = ' title="' . /* I18N: e.g. “Child of [father name & mother name]” */ I18N::translate('Child of %s', $family_name) . '"';
+				break;
 			}
 		} else {
 			$title = '';
