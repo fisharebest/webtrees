@@ -523,6 +523,40 @@ if (substr(WT_SCRIPT_NAME, 0, 5) === 'admin' || WT_SCRIPT_NAME === 'module.php' 
 	Session::put('theme_id', $theme_id);
 }
 
+/*
+ * Theme and language parameters have been set.
+ * To have a canonical URI, those parameters will now be stripped.
+ * Then a 301 redirect (Moved Permanently)  and a Location
+ * directive will be sent to the user, containing the new URI.
+ */
+if (isset($_GET['lang'])) {
+	$requesturl = parse_url($_SERVER['REQUEST_URI']);
+	// the new query parameters, stripped of lang and theme.
+	$newquery = array();
+	
+	foreach (explode("&", $requesturl['query']) as $queryparameter) {
+		list($queryparametername, $queryparametervalue) = explode("=", $queryparameter);
+		
+		if (preg_match("/^lang$/i", $queryparametername)) {
+			continue;
+		}
+		
+		if (preg_match("/^theme$/i", $queryparametername)) {
+			continue;
+		}
+		
+		$newquery[$queryparametername] = $queryparametervalue;
+	}
+	// will give you ged=gedname&pid=I123 etc.
+	$requesturl['query'] = implode("&", $newquery);
+	// WT_BASE_URL . WT_SCRIPT_NAME is also possible.
+	$redirection =   $requesturl['path'] . '?' . http_build_query($newquery);
+
+	header("HTTP/1.1 301 Moved Permanently");
+	header('Location: ' . $redirection);
+}
+
+
 // Search engines are only allowed to see certain pages.
 if (Auth::isSearchEngine() && !in_array(WT_SCRIPT_NAME, array(
 	'index.php', 'indilist.php', 'module.php', 'mediafirewall.php',
