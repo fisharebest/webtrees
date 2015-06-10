@@ -49,13 +49,13 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 	/**
 	 * Generate the HTML content of this block.
 	 *
-	 * @param int   $block_id
-	 * @param bool  $template
-	 * @param array $cfg
+	 * @param int      $block_id
+	 * @param bool     $template
+	 * @param string[] $cfg
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = null) {
+	public function getBlock($block_id, $template = true, $cfg = array()) {
 		global $WT_TREE, $ctype;
 
 		$COMMON_NAMES_REMOVE    = $WT_TREE->getPreference('COMMON_NAMES_REMOVE');

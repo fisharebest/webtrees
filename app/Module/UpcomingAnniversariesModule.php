@@ -47,13 +47,13 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 	/**
 	 * Generate the HTML content of this block.
 	 *
-	 * @param int   $block_id
-	 * @param bool  $template
-	 * @param array $cfg
+	 * @param int      $block_id
+	 * @param bool     $template
+	 * @param string[] $cfg
 	 *
 	 * @return string
 	 */
-	public function getBlock($block_id, $template = true, $cfg = null) {
+	public function getBlock($block_id, $template = true, $cfg = array()) {
 		global $ctype, $WT_TREE;
 
 		$days      = $this->getBlockSetting($block_id, 'days', '7');
