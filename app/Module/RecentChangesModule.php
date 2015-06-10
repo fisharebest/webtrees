@@ -43,9 +43,9 @@ class RecentChangesModule extends AbstractModule implements ModuleBlockInterface
 	/**
 	 * Generate the HTML content of this block.
 	 *
-	 * @param int   $block_id
-	 * @param bool  $template
-	 * @param array $cfg
+	 * @param int      $block_id
+	 * @param bool     $template
+	 * @param string[] $cfg
 	 *
 	 * @return string
 	 */
