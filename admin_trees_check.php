@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 /**
  * Defined in session.php
@@ -195,6 +194,8 @@ foreach ($all_links as $xref1 => $links) {
 }
 
 /**
+ * Create a message linking one record to another.
+ *
  * @param string $type1
  * @param string $xref1
  * @param string $type2
@@ -213,6 +214,8 @@ function link_message($type1, $xref1, $type2, $xref2) {
 }
 
 /**
+ * Format a link to a record.
+ *
  * @param string $xref
  *
  * @return string
@@ -222,6 +225,8 @@ function format_link($xref) {
 }
 
 /**
+ * Format a record type.
+ *
  * @param string $type
  *
  * @return string
@@ -231,6 +236,8 @@ function format_type($type) {
 }
 
 /**
+ * Format an error message.
+ *
  * @param string $message
  *
  * @return string
@@ -243,6 +250,8 @@ function error($message) {
 }
 
 /**
+ * Format a warning message.
+ *
  * @param string $message
  *
  * @return string

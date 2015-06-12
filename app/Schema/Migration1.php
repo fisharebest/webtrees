@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Schema;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,13 +13,17 @@ namespace Fisharebest\Webtrees\Schema;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Schema;
+
 use Fisharebest\Webtrees\Database;
 
 /**
- * Class Migration1 - upgrade the database schema from version 1 to version 2.
+ * Upgrade the database schema from version 1 to version 2.
  */
 class Migration1 implements MigrationInterface {
-	/** {@inheritDoc} */
+	/**
+	 * Upgrade to to the next version
+	 */
 	public function upgrade() {
 		// Create the wt_session table to store session data in the database,
 		// rather than in the filesystem.

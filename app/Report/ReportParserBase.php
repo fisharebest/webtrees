@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Report;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees\Report;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Report;
 
 /**
  * Class ReportParserBase
@@ -31,8 +30,9 @@ class ReportParserBase {
 	 *
 	 * @param string     $report     The XML filename
 	 * @param ReportBase $report_root
+	 * @param string[][] $vars
 	 */
-	public function __construct($report, ReportBase $report_root = null) {
+	public function __construct($report, ReportBase $report_root = null, $vars = array()) {
 		$this->xml_parser = xml_parser_create();
 		xml_parser_set_option($this->xml_parser, XML_OPTION_CASE_FOLDING, false);
 		xml_set_element_handler($this->xml_parser, array($this, 'startElement'), array($this, 'endElement'));

@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,10 +13,13 @@ namespace Fisharebest\Webtrees\Module;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module;
@@ -38,7 +39,12 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 		return /* I18N: Description of the “FAQ” module */ I18N::translate('A list of frequently asked questions and answers.');
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * This is a general purpose hook, allowing modules to respond to routes
+	 * of the form module.php?mod=FOO&mod_action=BAR
+	 *
+	 * @param string $mod_action
+	 */
 	public function modAction($mod_action) {
 		switch ($mod_action) {
 		case 'admin_config':
@@ -175,7 +181,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 				</label>
 
 				<div class="col-sm-9">
-					<?php echo edit_language_checkboxes('lang', explode(',', $this->getBlockSetting($block_id, 'languages'))); ?>
+					<?php echo FunctionsEdit::editLanguageCheckboxes('lang', explode(',', $this->getBlockSetting($block_id, 'languages'))); ?>
 				</div>
 			</div>
 
@@ -195,7 +201,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 				</label>
 
 				<div class="col-sm-9">
-					<?php echo select_edit_control('gedcom_id', Tree::getIdList(), I18N::translate('All'), $gedcom_id, 'class="form-control"'); ?>
+					<?php echo FunctionsEdit::selectEditControl('gedcom_id', Tree::getIdList(), I18N::translate('All'), $gedcom_id, 'class="form-control"'); ?>
 					<p class="small text-muted">
 						<?php echo I18N::translate('A FAQ item can be displayed on just one of the family trees, or on all the family trees.'); ?>
 					</p>
@@ -431,7 +437,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			I18N::translate('Family tree'), ' ',
 			'<input type="hidden" name="mod", value="', $this->getName(), '">',
 			'<input type="hidden" name="mod_action" value="admin_config">',
-			select_edit_control('ged', Tree::getNameList(), null, $WT_TREE->getNameHtml()),
+			FunctionsEdit::selectEditControl('ged', Tree::getNameList(), null, $WT_TREE->getNameHtml()),
 			'<input type="submit" value="', I18N::translate('show'), '">',
 			'</form></p>';
 
@@ -445,7 +451,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 				// NOTE: Print the position of the current item
 				echo '<tr class="faq_edit_pos"><td>';
 				echo I18N::translate('#%s', $faq->block_order + 1), ' ';
-				if ($faq->gedcom_id == null) {
+				if ($faq->gedcom_id === null) {
 					echo I18N::translate('All');
 				} else {
 					echo $WT_TREE->getTitleHtml();

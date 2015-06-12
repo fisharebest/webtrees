@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 /**
  * Defined in session.php
@@ -22,6 +21,9 @@ namespace Fisharebest\Webtrees;
  * @global Tree $WT_TREE
  */
 global $WT_TREE;
+
+use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
 define('WT_SCRIPT_NAME', 'expand_view.php');
 require './includes/session.php';
@@ -38,7 +40,7 @@ foreach ($individual->getSpouseFamilies() as $family) {
 		$facts[] = $fact;
 	}
 }
-sort_facts($facts);
+Functions::sortFacts($facts);
 
 foreach ($facts as $fact) {
 	switch ($fact->getTag()) {
@@ -72,10 +74,10 @@ foreach ($facts as $fact) {
 		break;
 	case 'ASSO':
 		// Associates
-		echo format_asso_rela_record($fact);
+		echo FunctionsPrint::formatAssociateRelationship($fact);
 		break;
 	default:
-		// Simple version of print_fact()
+		// Simple version of FunctionsPrintFacts::print_fact()
 		echo $fact->summary();
 		break;
 	}

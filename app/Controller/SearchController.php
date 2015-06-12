@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Controller;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,11 +13,15 @@ namespace Fisharebest\Webtrees\Controller;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Controller;
 
 use Fisharebest\Webtrees\Auth;
+use Fisharebest\Webtrees\Config;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\FlashMessages;
+use Fisharebest\Webtrees\Functions\FunctionsDb;
+use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -30,7 +32,7 @@ use Fisharebest\Webtrees\Source;
 use Fisharebest\Webtrees\Tree;
 
 /**
- * Class SearchController - Controller for the search page
+ * Controller for the search page
  */
 class SearchController extends PageController {
 	/** @var string The type of search to perform */
@@ -237,26 +239,26 @@ class SearchController extends PageController {
 
 			// Search the individuals
 			if ($this->srindi && $query_terms) {
-				$this->myindilist = search_indis($query_terms, $this->search_trees);
+				$this->myindilist = FunctionsDb::searchIndividuals($query_terms, $this->search_trees);
 			}
 
 			// Search the fams
 			if ($this->srfams && $query_terms) {
 				$this->myfamlist = array_merge(
-					search_fams($query_terms, $this->search_trees),
-					search_fams_names($query_terms, $this->search_trees)
+					FunctionsDb::searchFamilies($query_terms, $this->search_trees),
+					FunctionsDb::searchFamilyNames($query_terms, $this->search_trees)
 				);
 				$this->myfamlist = array_unique($this->myfamlist);
 			}
 
 			// Search the sources
 			if ($this->srsour && $query_terms) {
-				$this->mysourcelist = search_sources($query_terms, $this->search_trees);
+				$this->mysourcelist = FunctionsDb::searchSources($query_terms, $this->search_trees);
 			}
 
 			// Search the notes
 			if ($this->srnote && $query_terms) {
-				$this->mynotelist = search_notes($query_terms, $this->search_trees);
+				$this->mynotelist = FunctionsDb::searchNotes($query_terms, $this->search_trees);
 			}
 
 			// If only 1 item is returned, automatically forward to that item
@@ -298,8 +300,6 @@ class SearchController extends PageController {
 	 * @param Tree $tree
 	 */
 	private function searchAndReplace(Tree $tree) {
-		global $STANDARD_NAME_FACTS;
-
 		$this->generalSearch();
 
 		//-- don't try to make any changes if nothing was found
@@ -310,7 +310,7 @@ class SearchController extends PageController {
 		Log::addEditLog("Search And Replace old:" . $this->query . " new:" . $this->replace);
 
 		$adv_name_tags   = preg_split("/[\s,;: ]+/", $tree->getPreference('ADVANCED_NAME_FACTS'));
-		$name_tags       = array_unique(array_merge($STANDARD_NAME_FACTS, $adv_name_tags));
+		$name_tags       = array_unique(array_merge(Config::standardNameFacts(), $adv_name_tags));
 		$name_tags[]     = '_MARNM';
 		$records_updated = 0;
 		foreach ($this->myindilist as $id => $record) {
@@ -463,7 +463,7 @@ class SearchController extends PageController {
 			Log::addSearchLog($logstring, $this->search_trees);
 
 			if ($this->search_trees) {
-				$this->myindilist = search_indis_soundex($this->soundex, $this->lastname, $this->firstname, $this->place, $this->search_trees);
+				$this->myindilist = FunctionsDb::searchIndividualsPhonetic($this->soundex, $this->lastname, $this->firstname, $this->place, $this->search_trees);
 			} else {
 				$this->myindilist = array();
 			}
@@ -525,16 +525,16 @@ class SearchController extends PageController {
 				}
 				echo '</ul>';
 				if (!empty($this->myindilist)) {
-					echo '<div id="individual-results-tab">', format_indi_table($this->myindilist), '</div>';
+					echo '<div id="individual-results-tab">', FunctionsPrintLists::individualTable($this->myindilist), '</div>';
 				}
 				if (!empty($this->myfamlist)) {
-					echo '<div id="families-results-tab">', format_fam_table($this->myfamlist), '</div>';
+					echo '<div id="families-results-tab">', FunctionsPrintLists::familyTable($this->myfamlist), '</div>';
 				}
 				if (!empty($this->mysourcelist)) {
-					echo '<div id="sources-results-tab">', format_sour_table($this->mysourcelist), '</div>';
+					echo '<div id="sources-results-tab">', FunctionsPrintLists::sourceTable($this->mysourcelist), '</div>';
 				}
 				if (!empty($this->mynotelist)) {
-					echo '<div id="notes-results-tab">', format_note_table($this->mynotelist), '</div>';
+					echo '<div id="notes-results-tab">', FunctionsPrintLists::noteTable($this->mynotelist), '</div>';
 				}
 			} else {
 				// One or more search terms were specified, but no results were found.

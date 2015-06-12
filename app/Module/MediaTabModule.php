@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,8 +13,13 @@ namespace Fisharebest\Webtrees\Module;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 
@@ -24,6 +27,7 @@ use Fisharebest\Webtrees\I18N;
  * Class MediaTabModule
  */
 class MediaTabModule extends AbstractModule implements ModuleTabInterface {
+	/** @var  Fact[] A list of facts with media objects. */
 	private $facts;
 
 	/** {@inheritdoc} */
@@ -61,10 +65,10 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface {
 		echo '<table class="facts_table">';
 		foreach ($this->getFactsWithMedia() as $fact) {
 			if ($fact->getTag() == 'OBJE') {
-				print_main_media($fact, 1);
+				FunctionsPrintFacts::printMainMedia($fact, 1);
 			} else {
 				for ($i = 2; $i < 4; ++$i) {
-					print_main_media($fact, $i);
+					FunctionsPrintFacts::printMainMedia($fact, $i);
 				}
 			}
 		}
@@ -82,7 +86,7 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface {
 					<a href="#" onclick="window.open('addmedia.php?action=showmediaform&amp;linktoid=<?php echo $controller->record->getXref(); ?>&amp;ged=<?php echo $controller->record->getTree()->getNameUrl(); ?>', '_blank', edit_window_specs); return false;">
 						<?php echo I18N::translate('Add a new media object'); ?>
 					</a>
-					<?php echo help_link('OBJE'); ?>
+					<?php echo FunctionsPrint::helpLink('OBJE'); ?>
 					<br>
 					<a href="#" onclick="window.open('inverselink.php?linktoid=<?php echo $controller->record->getXref(); ?>&amp;ged=<?php echo $WT_TREE->getNameUrl(); ?>&amp;linkto=person', '_blank', find_window_specs); return false;">
 						<?php echo I18N::translate('Link to an existing media object'); ?>
@@ -120,7 +124,7 @@ class MediaTabModule extends AbstractModule implements ModuleTabInterface {
 					$this->facts[] = $fact;
 				}
 			}
-			sort_facts($this->facts);
+			Functions::sortFacts($this->facts);
 		}
 
 		return $this->facts;

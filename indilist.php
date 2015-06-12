@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,17 +13,18 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 /**
  * Defined in session.php
  *
- * @global string $UNKNOWN_NN
- * @global string $UNKNOWN_PN
  * @global Tree   $WT_TREE
  */
-global $UNKNOWN_NN, $UNKNOWN_PN, $WT_TREE;
+global
+$WT_TREE;
 
 use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\Query\QueryName;
 
 define('WT_SCRIPT_NAME', 'indilist.php');
@@ -82,7 +81,7 @@ if ($show_all === 'yes') {
 	$alpha    = QueryName::initialLetter($surname); // so we can highlight the initial letter
 	$show_all = 'no';
 	if ($surname === '@N.N.') {
-		$legend = $UNKNOWN_NN;
+		$legend = I18N::translateContext('Unknown surname', '…');
 	} else {
 		$legend = Filter::escapeHtml($surname);
 	}
@@ -91,7 +90,7 @@ if ($show_all === 'yes') {
 	case '':
 		break;
 	case '@':
-		$legend .= ', ' . $UNKNOWN_PN;
+		$legend .= ', ' . I18N::translateContext('Unknown given name', '…');
 		$url .= '&amp;falpha=' . rawurlencode($falpha) . '&amp;ged=' . $WT_TREE->getNameUrl();
 		break;
 	default:
@@ -102,7 +101,7 @@ if ($show_all === 'yes') {
 	$show = 'indi'; // SURN list makes no sense here
 } elseif ($alpha === '@') {
 	$show_all = 'no';
-	$legend   = $UNKNOWN_NN;
+	$legend   = I18N::translateContext('Unknown surname', '…');
 	$url      = WT_SCRIPT_NAME . '?alpha=' . rawurlencode($alpha) . '&amp;ged=' . $WT_TREE->getNameUrl();
 	$show     = 'indi'; // SURN list makes no sense here
 } elseif ($alpha === ',') {
@@ -134,7 +133,7 @@ $list = array();
 foreach (QueryName::surnameAlpha($WT_TREE, $show_marnm === 'yes', false) as $letter => $count) {
 	switch ($letter) {
 	case '@':
-		$html = $UNKNOWN_NN;
+		$html = I18N::translateContext('Unknown surname', '…');
 		break;
 	case ',':
 		$html = I18N::translate('None');
@@ -192,14 +191,14 @@ if ($show === 'indi' || $show === 'surn') {
 		// Show the surname list
 		switch ($WT_TREE->getPreference('SURNAME_LIST_STYLE')) {
 		case 'style1';
-			echo format_surname_list($surns, 3, true, WT_SCRIPT_NAME, $WT_TREE);
+			echo FunctionsPrintLists::surnameList($surns, 3, true, WT_SCRIPT_NAME, $WT_TREE);
 			break;
 		case 'style3':
-			echo format_surname_tagcloud($surns, WT_SCRIPT_NAME, true, $WT_TREE);
+			echo FunctionsPrintLists::surnameTagCloud($surns, WT_SCRIPT_NAME, true, $WT_TREE);
 			break;
 		case 'style2':
 		default:
-			echo format_surname_table($surns, WT_SCRIPT_NAME, $WT_TREE);
+			echo FunctionsPrintLists::surnameTable($surns, WT_SCRIPT_NAME, $WT_TREE);
 			break;
 		}
 	} else {
@@ -224,7 +223,7 @@ if ($show === 'indi' || $show === 'surn') {
 				foreach ($givn_initials as $givn_initial => $count) {
 					switch ($givn_initial) {
 					case '@':
-						$html = $UNKNOWN_PN;
+						$html = I18N::translateContext('Unknown given name', '…');
 						break;
 					default:
 						$html = Filter::escapeHtml($givn_initial);
@@ -255,7 +254,7 @@ if ($show === 'indi' || $show === 'surn') {
 			}
 		}
 		if ($show === 'indi') {
-			echo format_indi_table(QueryName::individuals($WT_TREE, $surname, $alpha, $falpha, $show_marnm === 'yes', false));
+			echo FunctionsPrintLists::individualTable(QueryName::individuals($WT_TREE, $surname, $alpha, $falpha, $show_marnm === 'yes', false));
 		}
 	}
 }

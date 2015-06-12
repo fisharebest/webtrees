@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Date;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,13 +13,14 @@ namespace Fisharebest\Webtrees\Date;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Date;
 
 use FishareBest\ExtCalendar\CalendarInterface;
 use FishareBest\ExtCalendar\JewishCalendar;
 use Fisharebest\Webtrees\I18N;
 
 /**
- * Class CalendarDate - Classes for Gedcom Date/Calendar functionality.
+ * Classes for Gedcom Date/Calendar functionality.
  *
  * CalendarDate is a base class for classes such as GregorianDate, etc.
  * + All supported calendars have non-zero days/months/years.

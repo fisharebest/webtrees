@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,8 @@ namespace Fisharebest\Webtrees\Module;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
@@ -38,9 +38,14 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 		return /* I18N: Description of “Individuals” module */ I18N::translate('A sidebar showing an alphabetic list of all the individuals in the family tree.');
 	}
 
-	/** {@inheritdoc} */
-	public function modAction($modAction) {
-		switch ($modAction) {
+	/**
+	 * This is a general purpose hook, allowing modules to respond to routes
+	 * of the form module.php?mod=FOO&mod_action=BAR
+	 *
+	 * @param string $mod_action
+	 */
+	public function modAction($mod_action) {
+		switch ($mod_action) {
 		case 'ajax':
 			header('Content-Type: text/html; charset=UTF-8');
 			echo $this->getSidebarAjaxContent();
@@ -80,9 +85,13 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 		}
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Load this sidebar synchronously.
+	 *
+	 * @return string
+	 */
 	public function getSidebarContent() {
-		global $WT_IMAGES, $UNKNOWN_NN, $controller, $WT_TREE;
+		global $controller, $WT_TREE;
 
 		// Fetch a list of the initial letters of all surnames in the database
 		$initials = QueryName::surnameAlpha($WT_TREE, true, false, false);
@@ -140,7 +149,7 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 		foreach ($initials as $letter => $count) {
 			switch ($letter) {
 			case '@':
-				$html = $UNKNOWN_NN;
+				$html = I18N::translateContext('Unknown surname', '…');
 				break;
 			case ',':
 				$html = I18N::translate('None');
@@ -164,6 +173,8 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 	}
 
 	/**
+	 * Get the initial letters of surnames.
+	 *
 	 * @param Tree   $tree
 	 * @param string $alpha
 	 *
@@ -183,6 +194,8 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 	}
 
 	/**
+	 * Format a list of individuals.
+	 *
 	 * @param Tree   $tree
 	 * @param string $alpha
 	 * @param string $surname
@@ -210,6 +223,8 @@ class IndividualSidebarModule extends AbstractModule implements ModuleSidebarInt
 	}
 
 	/**
+	 * Search for individuals in a tree.
+	 *
 	 * @param Tree   $tree  Search this tree
 	 * @param string $query Search for this text
 	 *

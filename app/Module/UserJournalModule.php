@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,9 +13,12 @@ namespace Fisharebest\Webtrees\Module;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsDate;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Theme;
 
@@ -25,7 +26,11 @@ use Fisharebest\Webtrees\Theme;
  * Class UserJournalModule
  */
 class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
-	/** {@inheritdoc} */
+	/**
+	 * Create a new module.
+	 *
+	 * @param string $directory Where is this module installed
+	 */
 	public function __construct($directory) {
 		parent::__construct($directory);
 
@@ -33,18 +38,34 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 		Database::updateSchema('\Fisharebest\Webtrees\Module\FamilyTreeNews\Schema', 'NB_SCHEMA_VERSION', 3);
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * How should this module be labelled on tabs, menus, etc.?
+	 *
+	 * @return string
+	 */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('Journal');
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * A sentence describing what this module does.
+	 *
+	 * @return string
+	 */
 	public function getDescription() {
 		return /* I18N: Description of the “Journal” module */ I18N::translate('A private area to record notes or keep a journal.');
 	}
 
-	/** {@inheritdoc} */
-	public function getBlock($block_id, $template = true, $cfg = null) {
+	/**
+	 * Generate the HTML content of this block.
+	 *
+	 * @param int      $block_id
+	 * @param bool     $template
+	 * @param string[] $cfg
+	 *
+	 * @return string
+	 */
+	public function getBlock($block_id, $template = true, $cfg = array()) {
 		global $ctype;
 
 		switch (Filter::get('action')) {
@@ -56,11 +77,9 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 			break;
 		}
 		$block = $this->getBlockSetting($block_id, 'block', '1');
-		if ($cfg) {
-			foreach (array('block') as $name) {
-				if (array_key_exists($name, $cfg)) {
-					$$name = $cfg[$name];
-				}
+		foreach (array('block') as $name) {
+			if (array_key_exists($name, $cfg)) {
+				$$name = $cfg[$name];
 			}
 		}
 		$usernews = Database::prepare(
@@ -78,7 +97,7 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 		foreach ($usernews as $news) {
 			$content .= '<div class="journal_box">';
 			$content .= '<div class="news_title">' . $news->subject . '</div>';
-			$content .= '<div class="news_date">' . format_timestamp($news->updated) . '</div>';
+			$content .= '<div class="news_date">' . FunctionsDate::formatTimestamp($news->updated) . '</div>';
 			if ($news->body == strip_tags($news->body)) {
 				// No HTML?
 				$news->body = nl2br($news->body, false);
@@ -116,7 +135,11 @@ class UserJournalModule extends AbstractModule implements ModuleBlockInterface {
 		return false;
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * An HTML form to edit block settings
+	 *
+	 * @param int $block_id
+	 */
 	public function configureBlock($block_id) {
 	}
 }

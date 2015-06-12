@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Schema;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,15 +13,19 @@ namespace Fisharebest\Webtrees\Schema;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Schema;
+
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Site;
 
 /**
- * Class Migration0 - upgrade the database schema from version 0 (empty database) to version 1.
+ * Upgrade the database schema from version 0 (empty database) to version 1.
  */
 class Migration0 implements MigrationInterface {
-	/** {@inheritDoc} */
+	/**
+	 * Upgrade to to the next version
+	 */
 	public function upgrade() {
 		Database::exec(
 			"CREATE TABLE IF NOT EXISTS `##gedcom` (" .

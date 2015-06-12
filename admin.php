@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 /**
  * Defined in session.php
@@ -24,6 +23,7 @@ namespace Fisharebest\Webtrees;
 global $WT_TREE;
 
 use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\Functions;
 
 define('WT_SCRIPT_NAME', 'admin.php');
 
@@ -355,9 +355,12 @@ $old_files = array(
 	WT_ROOT . 'themes/_administration/jquery-ui-1.10.3',
 	// Removed in 1.7.0
 	WT_ROOT . 'admin_site_other.php',
+	WT_ROOT . 'includes/config_data.php',
 	WT_ROOT . 'includes/db_schema',
+	WT_ROOT . 'includes/fonts',
 	WT_ROOT . 'includes/hitcount.php',
 	WT_ROOT . 'includes/reportheader.php',
+	WT_ROOT . 'includes/specialchars.php',
 	WT_ROOT . 'js',
 	WT_ROOT . 'language/en_GB.mo', // Replaced with en-GB.mo
 	WT_ROOT . 'language/en_US.mo', // Replaced with en-US.mo
@@ -427,7 +430,7 @@ $controller
 	->pageHeader();
 
 // Check for updates
-$latest_version_txt = fetch_latest_version();
+$latest_version_txt = Functions::fetchLatestVersion();
 if (preg_match('/^[0-9.]+\|[0-9.]+\|/', $latest_version_txt)) {
 	list($latest_version) = explode('|', $latest_version_txt);
 } else {

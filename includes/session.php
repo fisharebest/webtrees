@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Theme\AdministrationTheme;
@@ -421,11 +420,6 @@ if (!Auth::isSearchEngine() && !Session::get('initiated')) {
 	// An existing session
 }
 
-/** @deprecated Will be removed in 1.7.0 */
-define('WT_USER_ID', Auth::id());
-/** @deprecated Will be removed in 1.7.0 */
-define('WT_USER_NAME', Auth::id() ? Auth::user()->getUserName() : '');
-
 // Set the tree for the page; (1) the request, (2) the session, (3) the site default, (4) any tree
 foreach (array(Filter::post('ged'), Filter::get('ged'), Session::get('GEDCOM'), Site::getPreference('DEFAULT_GEDCOM')) as $tree_name) {
 	$WT_TREE = Tree::findByName($tree_name);
@@ -458,9 +452,6 @@ if (Auth::check()) {
 	define('WT_TIMESTAMP_OFFSET', (int) date('Z'));
 }
 define('WT_CLIENT_JD', 2440588 + (int) ((WT_TIMESTAMP + WT_TIMESTAMP_OFFSET) / 86400));
-
-// Application configuration data - things that aren’t (yet?) user-editable
-require WT_ROOT . 'includes/config_data.php';
 
 // The login URL must be an absolute URL, and can be user-defined
 if (Site::getPreference('LOGIN_URL')) {

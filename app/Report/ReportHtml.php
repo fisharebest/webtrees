@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Report;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,7 +13,10 @@ namespace Fisharebest\Webtrees\Report;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Report;
+
 use Fisharebest\Webtrees\Controller\SimpleController;
+use Fisharebest\Webtrees\Functions\FunctionsRtl;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 
@@ -162,6 +163,8 @@ class ReportHtml extends ReportBase {
 	}
 
 	/**
+	 * Add an element.
+	 *
 	 * @param $element
 	 */
 	public function addElement($element) {
@@ -175,7 +178,7 @@ class ReportHtml extends ReportBase {
 	}
 
 	/**
-	 *
+	 * Generate the page header
 	 */
 	public function runPageHeader() {
 		foreach ($this->pageHeaderElements as $element) {
@@ -190,7 +193,7 @@ class ReportHtml extends ReportBase {
 	}
 
 	/**
-	 *
+	 * Generate footnotes
 	 */
 	public function footnotes() {
 		$this->currentStyle = "";
@@ -202,7 +205,7 @@ class ReportHtml extends ReportBase {
 	}
 
 	/**
-	 *
+	 * Run the report.
 	 */
 	public function run() {
 		$controller = new SimpleController;
@@ -312,6 +315,8 @@ class ReportHtml extends ReportBase {
 	}
 
 	/**
+	 * Create a text box.
+	 *
 	 * @param $width
 	 * @param $height
 	 * @param $border
@@ -332,6 +337,8 @@ class ReportHtml extends ReportBase {
 	}
 
 	/**
+	 * Create a text element.
+	 *
 	 * @param $style
 	 * @param $color
 	 *
@@ -342,6 +349,8 @@ class ReportHtml extends ReportBase {
 	}
 
 	/**
+	 * Create a footnote.
+	 *
 	 * @param string $style
 	 *
 	 * @return ReportHtmlFootnote
@@ -351,6 +360,8 @@ class ReportHtml extends ReportBase {
 	}
 
 	/**
+	 * Create a page header.
+	 *
 	 * @return ReportHtmlPageheader
 	 */
 	public function createPageHeader() {
@@ -358,6 +369,8 @@ class ReportHtml extends ReportBase {
 	}
 
 	/**
+	 * Create an image.
+	 *
 	 * @param $file
 	 * @param $x
 	 * @param $y
@@ -373,6 +386,8 @@ class ReportHtml extends ReportBase {
 	}
 
 	/**
+	 * Create an image.
+	 *
 	 * @param Media $mediaobject
 	 * @param $x
 	 * @param $y
@@ -388,6 +403,8 @@ class ReportHtml extends ReportBase {
 	}
 
 	/**
+	 * Create a line.
+	 *
 	 * @param $x1
 	 * @param $y1
 	 * @param $x2
@@ -400,6 +417,7 @@ class ReportHtml extends ReportBase {
 	}
 
 	/**
+	 * Create an HTML element.
 	 * @param $tag
 	 * @param $attrs
 	 *
@@ -415,10 +433,6 @@ class ReportHtml extends ReportBase {
 	public function clearHeader() {
 		$this->headerElements = array();
 	}
-
-	/****************************
-	 * Local HTML Report functions
-	 ****************************/
 
 	/**
 	 * Update the Page Number and set a new Y if max Y is larger - ReportHtml
@@ -449,6 +463,8 @@ class ReportHtml extends ReportBase {
 	}
 
 	/**
+	 * Add a page header.
+	 *
 	 * @param $element
 	 *
 	 * @return int
@@ -511,6 +527,8 @@ class ReportHtml extends ReportBase {
 	}
 
 	/**
+	 * Get the current style.
+	 *
 	 * @return string
 	 */
 	public function getCurrentStyle() {
@@ -518,6 +536,8 @@ class ReportHtml extends ReportBase {
 	}
 
 	/**
+	 * Get the current style height.
+	 *
 	 * @return int
 	 */
 	public function getCurrentStyleHeight() {
@@ -530,6 +550,8 @@ class ReportHtml extends ReportBase {
 	}
 
 	/**
+	 * Get the current footnotes height.
+	 *
 	 * @param $cellWidth
 	 *
 	 * @return int
@@ -553,6 +575,8 @@ class ReportHtml extends ReportBase {
 	}
 
 	/**
+	 * Get the page height.
+	 *
 	 * @return float
 	 */
 	public function getPageHeight() {
@@ -560,6 +584,8 @@ class ReportHtml extends ReportBase {
 	}
 
 	/**
+	 * Get the width of a string.
+	 *
 	 * @param $text
 	 *
 	 * @return int
@@ -612,6 +638,8 @@ class ReportHtml extends ReportBase {
 	}
 
 	/**
+	 * Set the current style.
+	 *
 	 * @param $s
 	 */
 	public function setCurrentStyle($s) {
@@ -671,7 +699,7 @@ class ReportHtml extends ReportBase {
 		$lfct     = count($lines);
 		$wraptext = '';
 		foreach ($lines as $line) {
-			$wtext = utf8_wordwrap($line, $lw, "\n", true);
+			$wtext = FunctionsRtl::utf8WordWrap($line, $lw, "\n", true);
 			$wraptext .= $wtext;
 			// Add a new line as long as it’s not the last line
 			if ($lfct > 1) {

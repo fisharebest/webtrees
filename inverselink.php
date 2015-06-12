@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 /**
  * Defined in session.php
@@ -24,6 +23,7 @@ namespace Fisharebest\Webtrees;
 global $WT_TREE;
 
 use Fisharebest\Webtrees\Controller\SimpleController;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
 define('WT_SCRIPT_NAME', 'inverselink.php');
 require './includes/session.php';
@@ -82,7 +82,7 @@ if ($linkto == 'manage' && Module::getModuleByName('GEDFact_assistant')) {
 			}
 		} else {
 			echo '<input data-autocomplete-type="OBJE" type="text" name="mediaid" id="mediaid" size="5">';
-			echo ' ', print_findmedia_link('mediaid', '1media');
+			echo ' ', FunctionsPrint::printFindMediaLink('mediaid', '1media');
 			echo '</td></tr>';
 		}
 
@@ -96,7 +96,7 @@ if ($linkto == 'manage' && Module::getModuleByName('GEDFact_assistant')) {
 			echo '<td class="optionbox wrap">';
 			if ($linktoid == "") {
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktopid" size="3" value="', $linktoid, '"> ';
-				echo print_findindi_link('linktopid');
+				echo FunctionsPrint::printFindIndividualLink('linktopid');
 			} else {
 				$record = Individual::getInstance($linktoid, $WT_TREE);
 				echo $record->formatList('span', false, $record->getFullName());
@@ -108,7 +108,7 @@ if ($linkto == 'manage' && Module::getModuleByName('GEDFact_assistant')) {
 			echo '<td class="optionbox wrap">';
 			if ($linktoid == "") {
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktofamid" size="3" value="', $linktoid, '"> ';
-				echo print_findfamily_link('linktofamid');
+				echo FunctionsPrint::printFindFamilyLink('linktofamid');
 			} else {
 				$record = Family::getInstance($linktoid, $WT_TREE);
 				echo $record->formatList('span', false, $record->getFullName());
@@ -120,7 +120,7 @@ if ($linkto == 'manage' && Module::getModuleByName('GEDFact_assistant')) {
 			echo '<td  class="optionbox wrap">';
 			if ($linktoid == "") {
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktosid" size="3" value="', $linktoid, '"> ';
-				echo print_findsource_link('linktosid');
+				echo FunctionsPrint::printFindSourceLink('linktosid');
 			} else {
 				$record = Source::getInstance($linktoid, $WT_TREE);
 				echo $record->formatList('span', false, $record->getFullName());

@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,8 +13,10 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 
 define('WT_SCRIPT_NAME', 'admin_module_sidebar.php');
@@ -113,7 +113,7 @@ $controller
 										<?php echo $tree->getTitleHtml(); ?>
 									</td>
 									<td>
-										<?php echo edit_field_access_level('access-' . $module->getName() . '-' . $tree->getTreeId(), $module->getAccessLevel($tree, 'sidebar')); ?>
+										<?php echo FunctionsEdit::editFieldAccessLevel('access-' . $module->getName() . '-' . $tree->getTreeId(), $module->getAccessLevel($tree, 'sidebar')); ?>
 									</td>
 								</tr>
 							<?php endforeach; ?>

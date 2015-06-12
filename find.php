@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 /**
  * Defined in session.php
@@ -24,6 +23,7 @@ namespace Fisharebest\Webtrees;
 global $WT_TREE;
 
 use Fisharebest\Webtrees\Controller\SimpleController;
+use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\Query\QueryMedia;
 
 define('WT_SCRIPT_NAME', 'find.php');
@@ -70,15 +70,6 @@ case 'source':
 	break;
 case 'specialchar':
 	$controller->setPageTitle(I18N::translate('Find a special character'));
-	$language_filter = Filter::get('language_filter');
-	// Users will probably always want the same language, so remember their setting
-	if (!$language_filter) {
-		$language_filter = Auth::user()->getPreference('default_language_filter');
-	} else {
-		Auth::user()->setPreference('default_language_filter', $language_filter);
-	}
-	require WT_ROOT . 'includes/specialchars.php';
-	$action = 'filter';
 	break;
 case 'facts':
 	$controller
@@ -119,25 +110,6 @@ echo '<script>';
 	}
 <?php
 echo '</script>';
-
-$options             = array();
-$options["option"][] = "findindi";
-$options["option"][] = "findfam";
-$options["option"][] = "findmedia";
-$options["option"][] = "findplace";
-$options["option"][] = "findrepo";
-$options["option"][] = "findnote";
-$options["option"][] = "findsource";
-$options["option"][] = "findspecialchar";
-$options["option"][] = "findfact";
-$options["form"][]   = "formindi";
-$options["form"][]   = "formfam";
-$options["form"][]   = "formmedia";
-$options["form"][]   = "formplace";
-$options["form"][]   = "formrepo";
-$options["form"][]   = "formnote";
-$options["form"][]   = "formsource";
-$options["form"][]   = "formspecialchar";
 
 echo '<div id="find-page"><h3>', $controller->getPageTitle(), '</h3>';
 
@@ -275,23 +247,27 @@ if ($type == "source") {
 
 // Show specialchar and hide the rest
 if ($type == 'specialchar') {
+	$language_filter       = Filter::get('language_filter', null, Auth::user()->getPreference('default_language_filter'));
+	$specialchar_languages = SpecialChars::allLanguages();
+	if (!array_key_exists($language_filter, $specialchar_languages)) {
+		$language_filter = 'en';
+	}
+	Auth::user()->setPreference('default_language_filter', $language_filter);
+	$action = 'filter';
 	echo '<div id="find-header">
 	<form name="filterspecialchar" method="get" action="find.php">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="type" value="specialchar">
 	<input type="hidden" name="callback" value="' . $callback . '">
-	<p><select id="language_filter" name="language_filter" onchange="submit();">
-	<option value="">', I18N::translate('Change language'), '</option>';
-	$language_options = '';
-	foreach ($specialchar_languages as $key => $special_character) {
-		$language_options .= '<option value="' . $key . '" ';
-		if ($key == $language_filter) {
-			$language_options .= 'selected';
+	<p><select id="language_filter" name="language_filter" onchange="submit();">';
+	foreach (SpecialChars::allLanguages() as $lanuguage_tag => $language_name) {
+		echo '<option value="' . $lanuguage_tag . '" ';
+		if ($lanuguage_tag === $language_filter) {
+			echo 'selected';
 		}
-		$language_options .= '>' . $special_character . '</option>';
+		echo '>', $language_name, '</option>';
 	}
-	echo $language_options,
-	'</select>
+	echo '</select>
 	</p></form></div>';
 }
 
@@ -480,7 +456,7 @@ if ($action == "filter") {
 	// Output Individual
 	if ($type == "indi") {
 		echo '<div id="find-output">';
-		$myindilist = search_indis_names($filter_array, array($WT_TREE));
+		$myindilist = FunctionsDb::searchIndividualNames($filter_array, array($WT_TREE));
 		if ($myindilist) {
 			echo '<ul>';
 			usort($myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
@@ -501,8 +477,8 @@ if ($action == "filter") {
 		// Get the famrecs with hits on names from the family table
 		// Get the famrecs with hits in the gedcom record from the family table
 		$myfamlist = array_unique(array_merge(
-			search_fams_names($filter_array, array($WT_TREE)),
-			search_fams($filter_array, array($WT_TREE))
+			FunctionsDb::searchFamilyNames($filter_array, array($WT_TREE)),
+			FunctionsDb::searchFamilies($filter_array, array($WT_TREE))
 		));
 
 		if ($myfamlist) {
@@ -606,9 +582,9 @@ if ($action == "filter") {
 	if ($type == "repo") {
 		echo '<div id="find-output">';
 		if ($filter) {
-			$repo_list = search_repos($filter_array, array($WT_TREE));
+			$repo_list = FunctionsDb::searchRepositories($filter_array, array($WT_TREE));
 		} else {
-			$repo_list = get_repo_list($WT_TREE);
+			$repo_list = FunctionsDb::getRepositoryList($WT_TREE);
 		}
 		if ($repo_list) {
 			usort($repo_list, '\Fisharebest\Webtrees\GedcomRecord::compare');
@@ -628,9 +604,9 @@ if ($action == "filter") {
 	if ($type == "note") {
 		echo '<div id="find-output">';
 		if ($filter) {
-			$mynotelist = search_notes($filter_array, array($WT_TREE));
+			$mynotelist = FunctionsDb::searchNotes($filter_array, array($WT_TREE));
 		} else {
-			$mynotelist = get_note_list($WT_TREE);
+			$mynotelist = FunctionsDb::getNoteList($WT_TREE);
 		}
 		if ($mynotelist) {
 			usort($mynotelist, '\Fisharebest\Webtrees\GedcomRecord::compare');
@@ -650,9 +626,9 @@ if ($action == "filter") {
 	if ($type == "source") {
 		echo '<div id="find-output">';
 		if ($filter) {
-			$mysourcelist = search_sources($filter_array, array($WT_TREE));
+			$mysourcelist = FunctionsDb::searchSources($filter_array, array($WT_TREE));
 		} else {
-			$mysourcelist = get_source_list($WT_TREE);
+			$mysourcelist = FunctionsDb::getSourceList($WT_TREE);
 		}
 		if ($mysourcelist) {
 			usort($mysourcelist, '\Fisharebest\Webtrees\GedcomRecord::compare');
@@ -674,17 +650,17 @@ if ($action == "filter") {
 	if ($type == "specialchar") {
 		echo '<div id="find-output-special"><p>';
 		// lower case special characters
-		foreach ($lcspecialchars as $special_character) {
+		foreach (SpecialChars::create($language_filter)->upper() as $special_character) {
 			echo '<a class="largechars" href="#" onclick="return window.opener.paste_char(\'', $special_character, '\');">', $special_character, '</a> ';
 		}
 		echo '</p><p>';
 		//upper case special characters
-		foreach ($ucspecialchars as $special_character) {
+		foreach (SpecialChars::create($language_filter)->lower() as $special_character) {
 			echo '<a class="largechars" href="#" onclick="return window.opener.paste_char(\'', $special_character, '\');">', $special_character, '</a> ';
 		}
 		echo '</p><p>';
 		// other special characters (not letters)
-		foreach ($otherspecialchars as $special_character) {
+		foreach (SpecialChars::create($language_filter)->other() as $special_character) {
 			echo '<a class="largechars" href="#" onclick="return window.opener.paste_char(\'', $special_character, '\');">', $special_character, '</a> ';
 		}
 		echo '</p></div>';

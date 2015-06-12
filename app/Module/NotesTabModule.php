@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,8 +13,12 @@ namespace Fisharebest\Webtrees\Module;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
+use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 
@@ -24,6 +26,7 @@ use Fisharebest\Webtrees\I18N;
  * Class NotesTabModule
  */
 class NotesTabModule extends AbstractModule implements ModuleTabInterface {
+	/** @var Fact[] A list facts for this note. */
 	private $facts;
 
 	/** {@inheritdoc} */
@@ -69,10 +72,10 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
 		<?php
 		foreach ($this->getFactsWithNotes() as $fact) {
 			if ($fact->getTag() == 'NOTE') {
-				print_main_notes($fact, 1);
+				FunctionsPrintFacts::printMainNotes($fact, 1);
 			} else {
 				for ($i = 2; $i < 4; ++$i) {
-					print_main_notes($fact, $i);
+					FunctionsPrintFacts::printMainNotes($fact, $i);
 				}
 			}
 		}
@@ -138,7 +141,7 @@ class NotesTabModule extends AbstractModule implements ModuleTabInterface {
 					$this->facts[] = $fact;
 				}
 			}
-			sort_facts($this->facts);
+			Functions::sortFacts($this->facts);
 		}
 
 		return $this->facts;

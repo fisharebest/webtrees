@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,8 +13,12 @@ namespace Fisharebest\Webtrees\Module;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsDate;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module;
@@ -39,8 +41,16 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 		return /* I18N: Description of the “HTML” module */ I18N::translate('Add your own text and graphics.');
 	}
 
-	/** {@inheritdoc} */
-	public function getBlock($block_id, $template = true, $cfg = null) {
+	/**
+	 * Generate the HTML content of this block.
+	 *
+	 * @param int      $block_id
+	 * @param bool     $template
+	 * @param string[] $cfg
+	 *
+	 * @return string
+	 */
+	public function getBlock($block_id, $template = true, $cfg = array()) {
 		global $ctype, $WT_TREE;
 
 		$title          = $this->getBlockSetting($block_id, 'title');
@@ -99,7 +109,7 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 		$content = $html;
 
 		if ($show_timestamp) {
-			$content .= '<br>' . format_timestamp($this->getBlockSetting($block_id, 'timestamp', WT_TIMESTAMP) + WT_TIMESTAMP_OFFSET);
+			$content .= '<br>' . FunctionsDate::formatTimestamp($this->getBlockSetting($block_id, 'timestamp', WT_TIMESTAMP) + WT_TIMESTAMP_OFFSET);
 		}
 
 		if ($template) {
@@ -124,7 +134,11 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 		return true;
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * An HTML form to edit block settings
+	 *
+	 * @param int $block_id
+	 */
 	public function configureBlock($block_id) {
 		global $WT_TREE;
 
@@ -310,14 +324,14 @@ class HtmlBlockModule extends AbstractModule implements ModuleBlockInterface {
 		echo '<tr><td class="descriptionbox wrap">';
 		echo I18N::translate('Show the date and time of update');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('show_timestamp', $show_timestamp);
+		echo FunctionsEdit::editFieldYesNo('show_timestamp', $show_timestamp);
 		echo '<input type="hidden" name="timestamp" value="', WT_TIMESTAMP, '">';
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap">';
 		echo I18N::translate('Show this block for which languages?');
 		echo '</td><td class="optionbox">';
-		echo edit_language_checkboxes('lang', $languages);
+		echo FunctionsEdit::editLanguageCheckboxes('lang', $languages);
 		echo '</td></tr>';
 	}
 }

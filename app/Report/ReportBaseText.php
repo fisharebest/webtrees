@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Report;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees\Report;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Report;
 
 /**
  * Class ReportBaseText
@@ -61,6 +60,8 @@ class ReportBaseText extends ReportBaseElement {
 	}
 
 	/**
+	 * Set the width for word-wrapping.
+	 *
 	 * @param $wrapwidth
 	 * @param $cellwidth
 	 *
@@ -78,6 +79,8 @@ class ReportBaseText extends ReportBaseElement {
 	}
 
 	/**
+	 * Get the style name.
+	 *
 	 * @return string
 	 */
 	public function getStyleName() {

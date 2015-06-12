@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Date;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,24 +13,39 @@ namespace Fisharebest\Webtrees\Date;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Date;
 
 use Fisharebest\ExtCalendar\FrenchCalendar;
 use Fisharebest\Webtrees\I18N;
 
 /**
- * Class FrenchDate - Definitions for the French Republican calendar
+ * Definitions for the French Republican calendar
  */
 class FrenchDate extends CalendarDate {
-	/** {@inheritdoc} */
+	/** @var integer[] Convert GEDCOM month names to month numbers  */
 	public static $MONTH_ABBREV = array('' => 0, 'VEND' => 1, 'BRUM' => 2, 'FRIM' => 3, 'NIVO' => 4, 'PLUV' => 5, 'VENT' => 6, 'GERM' => 7, 'FLOR' => 8, 'PRAI' => 9, 'MESS' => 10, 'THER' => 11, 'FRUC' => 12, 'COMP' => 13);
 
-	/** {@inheritdoc} */
+	/**
+	 * Create a date from either:
+	 * a Julian day number
+	 * day/month/year strings from a GEDCOM date
+	 * another CalendarDate object
+	 *
+	 * @param array|int|CalendarDate $date
+	 */
 	public function __construct($date) {
 		$this->calendar = new FrenchCalendar;
 		parent::__construct($date);
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Full month name in nominative case.
+	 *
+	 * @param int  $month_number
+	 * @param bool $leap_year    Some calendars use leap months
+	 *
+	 * @return string
+	 */
 	public static function monthNameNominativeCase($month_number, $leap_year) {
 		static $translated_month_names;
 
@@ -58,7 +71,14 @@ class FrenchDate extends CalendarDate {
 		return $translated_month_names[$month_number];
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Full month name in genitive case.
+	 *
+	 * @param int  $month_number
+	 * @param bool $leap_year    Some calendars use leap months
+	 *
+	 * @return string
+	 */
 	protected function monthNameGenitiveCase($month_number, $leap_year) {
 		static $translated_month_names;
 
@@ -84,7 +104,14 @@ class FrenchDate extends CalendarDate {
 		return $translated_month_names[$month_number];
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Full month name in locative case.
+	 *
+	 * @param int  $month_number
+	 * @param bool $leap_year    Some calendars use leap months
+	 *
+	 * @return string
+	 */
 	protected function monthNameLocativeCase($month_number, $leap_year) {
 		static $translated_month_names;
 
@@ -110,7 +137,14 @@ class FrenchDate extends CalendarDate {
 		return $translated_month_names[$month_number];
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Full month name in instrumental case.
+	 *
+	 * @param int  $month_number
+	 * @param bool $leap_year    Some calendars use leap months
+	 *
+	 * @return string
+	 */
 	protected function monthNameInstrumentalCase($month_number, $leap_year) {
 		static $translated_month_names;
 
@@ -136,12 +170,25 @@ class FrenchDate extends CalendarDate {
 		return $translated_month_names[$month_number];
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Abbreviated month name
+	 *
+	 * @param int  $month_number
+	 * @param bool $leap_year    Some calendars use leap months
+	 *
+	 * @return string
+	 */
 	protected function monthNameAbbreviated($month_number, $leap_year) {
 		return self::monthNameNominativeCase($month_number, $leap_year);
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Full day of th eweek
+	 *
+	 * @param int $day_number
+	 *
+	 * @return string
+	 */
 	public function dayNames($day_number) {
 		static $translated_day_names;
 
@@ -163,12 +210,22 @@ class FrenchDate extends CalendarDate {
 		return $translated_day_names[$day_number];
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Abbreviated day of the week
+	 *
+	 * @param int $day_number
+	 *
+	 * @return string
+	 */
 	protected function dayNamesAbbreviated($day_number) {
 		return $this->dayNames($day_number);
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Generate the %Y format for a date.
+	 *
+	 * @return string
+	 */
 	protected function formatLongYear() {
 		return $this->numberToRomanNumerals($this->y);
 	}

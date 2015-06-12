@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,8 +13,12 @@ namespace Fisharebest\Webtrees\Module;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Theme;
 
@@ -24,18 +26,34 @@ use Fisharebest\Webtrees\Theme;
  * Class UpcomingAnniversariesModule
  */
 class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockInterface {
-	/** {@inheritdoc} */
+	/**
+	 * How should this module be labelled on tabs, menus, etc.?
+	 *
+	 * @return string
+	 */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('Upcoming events');
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * A sentence describing what this module does.
+	 *
+	 * @return string
+	 */
 	public function getDescription() {
 		return /* I18N: Description of the “Upcoming events” module */ I18N::translate('A list of the anniversaries that will occur in the near future.');
 	}
 
-	/** {@inheritdoc} */
-	public function getBlock($block_id, $template = true, $cfg = null) {
+	/**
+	 * Generate the HTML content of this block.
+	 *
+	 * @param int      $block_id
+	 * @param bool     $template
+	 * @param string[] $cfg
+	 *
+	 * @return string
+	 */
+	public function getBlock($block_id, $template = true, $cfg = array()) {
 		global $ctype, $WT_TREE;
 
 		$days      = $this->getBlockSetting($block_id, 'days', '7');
@@ -45,11 +63,9 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 		$sortStyle = $this->getBlockSetting($block_id, 'sortStyle', 'alpha');
 		$block     = $this->getBlockSetting($block_id, 'block', '1');
 
-		if ($cfg) {
-			foreach (array('days', 'filter', 'onlyBDM', 'infoStyle', 'sortStyle', 'block') as $name) {
-				if (array_key_exists($name, $cfg)) {
-					$$name = $cfg[$name];
-				}
+		foreach (array('days', 'filter', 'onlyBDM', 'infoStyle', 'sortStyle', 'block') as $name) {
+			if (array_key_exists($name, $cfg)) {
+				$$name = $cfg[$name];
 			}
 		}
 
@@ -69,12 +85,12 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 		switch ($infoStyle) {
 		case 'list':
 			// Output style 1:  Old format, no visible tables, much smaller text.  Better suited to right side of page.
-			$content .= print_events_list($startjd, $endjd, $onlyBDM ? 'BIRT MARR DEAT' : '', $filter, $sortStyle);
+			$content .= FunctionsPrintLists::eventsList($startjd, $endjd, $onlyBDM ? 'BIRT MARR DEAT' : '', $filter, $sortStyle);
 			break;
 		case 'table':
 			// Style 2: New format, tables, big text, etc.  Not too good on right side of page
 			ob_start();
-			$content .= print_events_table($startjd, $endjd, $onlyBDM ? 'BIRT MARR DEAT' : '', $filter, $sortStyle);
+			$content .= FunctionsPrintLists::eventsTable($startjd, $endjd, $onlyBDM ? 'BIRT MARR DEAT' : '', $filter, $sortStyle);
 			$content .= ob_get_clean();
 			break;
 		}
@@ -105,7 +121,11 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 		return true;
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * An HTML form to edit block settings
+	 *
+	 * @param int $block_id
+	 */
 	public function configureBlock($block_id) {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
 			$this->setBlockSetting($block_id, 'days', Filter::postInteger('days', 1, 30, 7));
@@ -133,25 +153,25 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Show only events of living individuals?');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('filter', $filter);
+		echo FunctionsEdit::editFieldYesNo('filter', $filter);
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Show only births, deaths, and marriages?');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('onlyBDM', $onlyBDM);
+		echo FunctionsEdit::editFieldYesNo('onlyBDM', $onlyBDM);
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('infoStyle', array('list' => I18N::translate('list'), 'table' => I18N::translate('table')), null, $infoStyle, '');
+		echo FunctionsEdit::selectEditControl('infoStyle', array('list' => I18N::translate('list'), 'table' => I18N::translate('table')), null, $infoStyle, '');
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Sort order');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('sortStyle', array(
+		echo FunctionsEdit::selectEditControl('sortStyle', array(
 			/* I18N: An option in a list-box */ 'alpha' => I18N::translate('sort by name'),
 			/* I18N: An option in a list-box */ 'anniv' => I18N::translate('sort by date'),
 		), null, $sortStyle, '');
@@ -160,7 +180,7 @@ class UpcomingAnniversariesModule extends AbstractModule implements ModuleBlockI
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for a yes/no option */ I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('block', $block);
+		echo FunctionsEdit::editFieldYesNo('block', $block);
 		echo '</td></tr>';
 	}
 }

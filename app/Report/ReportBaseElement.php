@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Report;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,15 +13,14 @@ namespace Fisharebest\Webtrees\Report;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Report;
 
 /**
  * Class ReportBaseElement
  */
 class ReportBaseElement {
-	/**
-	 * @var string
-	 */
-	public $text = "";
+	/** @var string Text*/
+	public $text = '';
 
 	/**
 	 * Element renderer
@@ -35,6 +32,8 @@ class ReportBaseElement {
 	}
 
 	/**
+	 * Get the height.
+	 *
 	 * @param ReportHtml|ReportTcpdf $renderer
 	 *
 	 * @return float
@@ -44,6 +43,8 @@ class ReportBaseElement {
 	}
 
 	/**
+	 * Get the width.
+	 *
 	 * @param ReportHtml|ReportTcpdf $renderer
 	 *
 	 * @return float
@@ -53,6 +54,8 @@ class ReportBaseElement {
 	}
 
 	/**
+	 * Add text.
+	 *
 	 * @param string $t
 	 *
 	 * @return int
@@ -68,6 +71,8 @@ class ReportBaseElement {
 	}
 
 	/**
+	 * Add an end-of-line.
+	 *
 	 * @return int
 	 */
 	public function addNewline() {
@@ -77,6 +82,8 @@ class ReportBaseElement {
 	}
 
 	/**
+	 * Get the current text.
+	 *
 	 * @return string
 	 */
 	public function getValue() {
@@ -84,6 +91,8 @@ class ReportBaseElement {
 	}
 
 	/**
+	 * Set the width to wrap text.
+	 *
 	 * @param $wrapwidth
 	 * @param $cellwidth
 	 *
@@ -94,13 +103,16 @@ class ReportBaseElement {
 	}
 
 	/**
+	 * Render the footnotes.
+	 *
 	 * @param $renderer
 	 */
 	public function renderFootnote($renderer) {
-		// To be implemented in inherited classes
 	}
 
 	/**
+	 * Set the text.
+	 *
 	 * @param $text
 	 */
 	public function setText($text) {

@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Date;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,14 +13,22 @@ namespace Fisharebest\Webtrees\Date;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Date;
 
 use Fisharebest\ExtCalendar\GregorianCalendar;
 
 /**
- * Class GregorianDate - Definitions for the Gregorian calendar
+ * Definitions for the Gregorian calendar
  */
 class GregorianDate extends CalendarDate {
-	/** {@inheritdoc} */
+	/**
+	 * Create a date from either:
+	 * a Julian day number
+	 * day/month/year strings from a GEDCOM date
+	 * another CalendarDate object
+	 *
+	 * @param array|int|CalendarDate $date
+	 */
 	public function __construct($date) {
 		$this->calendar = new GregorianCalendar;
 		parent::__construct($date);

@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,8 +13,13 @@ namespace Fisharebest\Webtrees\Module;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsDb;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Query\QueryName;
 use Fisharebest\Webtrees\Theme;
@@ -25,18 +28,34 @@ use Fisharebest\Webtrees\Theme;
  * Class TopSurnamesModule
  */
 class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
-	/** {@inheritdoc} */
+	/**
+	 * How should this module be labelled on tabs, menus, etc.?
+	 *
+	 * @return string
+	 */
 	public function getTitle() {
 		return /* I18N: Name of a module.  Top=Most common */ I18N::translate('Top surnames');
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * A sentence describing what this module does.
+	 *
+	 * @return string
+	 */
 	public function getDescription() {
 		return /* I18N: Description of the “Top surnames” module */ I18N::translate('A list of the most popular surnames.');
 	}
 
-	/** {@inheritdoc} */
-	public function getBlock($block_id, $template = true, $cfg = null) {
+	/**
+	 * Generate the HTML content of this block.
+	 *
+	 * @param int      $block_id
+	 * @param bool     $template
+	 * @param string[] $cfg
+	 *
+	 * @return string
+	 */
+	public function getBlock($block_id, $template = true, $cfg = array()) {
 		global $WT_TREE, $ctype;
 
 		$COMMON_NAMES_REMOVE    = $WT_TREE->getPreference('COMMON_NAMES_REMOVE');
@@ -46,16 +65,14 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 		$infoStyle = $this->getBlockSetting($block_id, 'infoStyle', 'table');
 		$block     = $this->getBlockSetting($block_id, 'block', '0');
 
-		if ($cfg) {
-			foreach (array('num', 'infoStyle', 'block') as $name) {
-				if (array_key_exists($name, $cfg)) {
-					$$name = $cfg[$name];
-				}
+		foreach (array('num', 'infoStyle', 'block') as $name) {
+			if (array_key_exists($name, $cfg)) {
+				$$name = $cfg[$name];
 			}
 		}
 
 		// This next function is a bit out of date, and doesn't cope well with surname variants
-		$top_surnames = get_top_surnames($WT_TREE->getTreeId(), $COMMON_NAMES_THRESHOLD, $num);
+		$top_surnames = FunctionsDb::getTopSurnames($WT_TREE->getTreeId(), $COMMON_NAMES_THRESHOLD, $num);
 
 		// Remove names found in the "Remove Names" list
 		if ($COMMON_NAMES_REMOVE) {
@@ -95,20 +112,20 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 		switch ($infoStyle) {
 		case 'tagcloud':
 			uksort($all_surnames, '\Fisharebest\Webtrees\I18N::strcasecmp');
-			$content = format_surname_tagcloud($all_surnames, 'indilist.php', true, $WT_TREE);
+			$content = FunctionsPrintLists::surnameTagCloud($all_surnames, 'indilist.php', true, $WT_TREE);
 			break;
 		case 'list':
 			uasort($all_surnames, '\Fisharebest\Webtrees\Module\TopSurnamesModule::surnameCountSort');
-			$content = format_surname_list($all_surnames, '1', true, 'indilist.php', $WT_TREE);
+			$content = FunctionsPrintLists::surnameList($all_surnames, '1', true, 'indilist.php', $WT_TREE);
 			break;
 		case 'array':
 			uasort($all_surnames, '\Fisharebest\Webtrees\Module\TopSurnamesModule::surnameCountSort');
-			$content = format_surname_list($all_surnames, '2', true, 'indilist.php', $WT_TREE);
+			$content = FunctionsPrintLists::surnameList($all_surnames, '2', true, 'indilist.php', $WT_TREE);
 			break;
 		case 'table':
 		default:
 			uasort($all_surnames, '\Fisharebest\Webtrees\Module\TopSurnamesModule::surnameCountSort');
-			$content = format_surname_table($all_surnames, 'indilist.php', $WT_TREE);
+			$content = FunctionsPrintLists::surnameTable($all_surnames, 'indilist.php', $WT_TREE);
 			break;
 		}
 
@@ -139,7 +156,11 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 		return true;
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * An HTML form to edit block settings
+	 *
+	 * @param int $block_id
+	 */
 	public function configureBlock($block_id) {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
 			$this->setBlockSetting($block_id, 'num', Filter::postInteger('num', 1, 10000, 10));
@@ -160,13 +181,13 @@ class TopSurnamesModule extends AbstractModule implements ModuleBlockInterface {
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('infoStyle', array('list' => I18N::translate('bullet list'), 'array' => I18N::translate('compact list'), 'table' => I18N::translate('table'), 'tagcloud' => I18N::translate('tag cloud')), null, $infoStyle, '');
+		echo FunctionsEdit::selectEditControl('infoStyle', array('list' => I18N::translate('bullet list'), 'array' => I18N::translate('compact list'), 'table' => I18N::translate('table'), 'tagcloud' => I18N::translate('tag cloud')), null, $infoStyle, '');
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for a yes/no option */ I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('block', $block);
+		echo FunctionsEdit::editFieldYesNo('block', $block);
 		echo '</td></tr>';
 	}
 

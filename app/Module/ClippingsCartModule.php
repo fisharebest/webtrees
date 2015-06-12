@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,10 +13,13 @@ namespace Fisharebest\Webtrees\Module;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -45,7 +46,12 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 		return Auth::PRIV_USER;
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * This is a general purpose hook, allowing modules to respond to routes
+	 * of the form module.php?mod=FOO&mod_action=BAR
+	 *
+	 * @param string $mod_action
+	 */
 	public function modAction($mod_action) {
 		switch ($mod_action) {
 		case 'ajax':
@@ -58,8 +64,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 
 			$MAX_PEDIGREE_GENERATIONS = $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS');
 
-			$cart      = Session::get('cart');
 			$clip_ctrl = new ClippingsCartController;
+			$cart      = Session::get('cart');
 
 			$controller = new PageController;
 			$controller
@@ -304,9 +310,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 										<input type="text" data-autocomplete-type="IFSRO" name="id" id="cart_item_id" size="5">
 									</td>
 									<td class="optionbox">
-										<?php echo print_findindi_link('cart_item_id'); ?>
-										<?php echo print_findfamily_link('cart_item_id'); ?>
-										<?php echo print_findsource_link('cart_item_id', ''); ?>
+										<?php echo FunctionsPrint::printFindIndividualLink('cart_item_id'); ?>
+										<?php echo FunctionsPrint::printFindFamilyLink('cart_item_id'); ?>
+										<?php echo FunctionsPrint::printFindSourceLink('cart_item_id', ''); ?>
 										<input type="submit" value="<?php echo I18N::translate('Add'); ?>">
 									</td>
 								</tr>
@@ -399,9 +405,9 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 										<input type="text" data-autocomplete-type="IFSRO" name="id" id="cart_item_id" size="8">
 									</td>
 									<td class="optionbox">
-										<?php echo print_findindi_link('cart_item_id'); ?>
-										<?php echo print_findfamily_link('cart_item_id'); ?>
-										<?php echo print_findsource_link('cart_item_id'); ?>
+										<?php echo FunctionsPrint::printFindIndividualLink('cart_item_id'); ?>
+										<?php echo FunctionsPrint::printFindFamilyLink('cart_item_id'); ?>
+										<?php echo FunctionsPrint::printFindSourceLink('cart_item_id'); ?>
 										<input type="submit" value="<?php echo I18N::translate('Add'); ?>">
 									</td>
 								</tr>
@@ -502,7 +508,11 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 		}
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Load this sidebar synchronously.
+	 *
+	 * @return string
+	 */
 	public function getSidebarContent() {
 		global $controller;
 
@@ -644,6 +654,8 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 	}
 
 	/**
+	 * A form to choose the download options.
+	 *
 	 * @param ClippingsCartController $clip_ctrl
 	 *
 	 * @return string

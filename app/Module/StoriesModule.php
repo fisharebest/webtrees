@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,10 +13,14 @@ namespace Fisharebest\Webtrees\Module;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -39,7 +41,12 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 		return /* I18N: Description of the “Stories” module */ I18N::translate('Add narrative stories to individuals in the family tree.');
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * This is a general purpose hook, allowing modules to respond to routes
+	 * of the form module.php?mod=FOO&mod_action=BAR
+	 *
+	 * @param string $mod_action
+	 */
 	public function modAction($mod_action) {
 		switch ($mod_action) {
 		case 'admin_edit':
@@ -240,7 +247,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 						</label>
 						<div class="col-sm-9">
 							<input data-autocomplete-type="INDI" type="text" name="xref" id="xref" size="4" value="<?php echo $xref; ?>">
-							<?php echo print_findindi_link('xref'); ?>
+							<?php echo FunctionsPrint::printFindIndividualLink('xref'); ?>
 							<?php if ($individual): ?>
 								<?php echo $individual->formatList('span'); ?>
 							<?php endif; ?>
@@ -252,7 +259,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 							<?php echo I18N::translate('Show this block for which languages?'); ?>
 						</label>
 						<div class="col-sm-9">
-							<?php echo edit_language_checkboxes('lang', explode(',', $this->getBlockSetting($block_id, 'languages'))); ?>
+							<?php echo FunctionsEdit::editLanguageCheckboxes('lang', explode(',', $this->getBlockSetting($block_id, 'languages'))); ?>
 						</div>
 					</div>
 
@@ -350,7 +357,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 			</label>
 			<input type="hidden" name="mod" value="<?php echo  $this->getName(); ?>">
 			<input type="hidden" name="mod_action" value="admin_config">
-			<?php echo select_edit_control('ged', Tree::getNameList(), null, $WT_TREE->getName(), 'class="form-control"'); ?>
+			<?php echo FunctionsEdit::selectEditControl('ged', Tree::getNameList(), null, $WT_TREE->getName(), 'class="form-control"'); ?>
 			<input type="submit" class="btn btn-primary" value="<?php echo I18N::translate('show'); ?>">
 		</form>
 

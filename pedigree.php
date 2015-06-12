@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 /**
  * Defined in session.php
@@ -24,6 +23,8 @@ namespace Fisharebest\Webtrees;
 global $WT_TREE;
 
 use Fisharebest\Webtrees\Controller\PedigreeController;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
 define('WT_SCRIPT_NAME', 'pedigree.php');
 require './includes/session.php';
@@ -173,16 +174,16 @@ $controller
 					<td class="optionbox">
 						<input class="pedigree_form" data-autocomplete-type="INDI" type="text" id="rootid" name="rootid"
 							size="3" value="<?php echo $controller->root->getXref(); ?>">
-						<?php echo print_findindi_link('rootid'); ?>
+						<?php echo FunctionsPrint::printFindIndividualLink('rootid'); ?>
 					</td>
 					<td class="optionbox center">
-						<?php echo edit_field_integers('PEDIGREE_GENERATIONS', $controller->generations, 3, $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS')); ?>
+						<?php echo FunctionsEdit::editFieldInteger('PEDIGREE_GENERATIONS', $controller->generations, 3, $WT_TREE->getPreference('MAX_PEDIGREE_GENERATIONS')); ?>
 					</td>
 					<td class="optionbox center">
-						<?php echo select_edit_control('orientation', array(0 => I18N::translate('Portrait'), 1 => I18N::translate('Landscape'), 2 => I18N::translate('Oldest at top'), 3 => I18N::translate('Oldest at bottom')), null, $controller->orientation); ?>
+						<?php echo FunctionsEdit::selectEditControl('orientation', array(0 => I18N::translate('Portrait'), 1 => I18N::translate('Landscape'), 2 => I18N::translate('Oldest at top'), 3 => I18N::translate('Oldest at bottom')), null, $controller->orientation); ?>
 					</td>
 					<td class="optionbox center">
-						<?php echo two_state_checkbox("show_full", $controller->showFull()); ?>
+						<?php echo FunctionsEdit::twoStateCheckbox("show_full", $controller->showFull()); ?>
 					</td>
 				</tr>
 			</table>
@@ -212,15 +213,15 @@ foreach ($controller->nodes as $i => $node) {
 		}
 	} else {
 		if (!$i) {
-			echo $controller->get_menu();
+			echo $controller->getMenu();
 		}
 	}
 
-	print_pedigree_person($controller->nodes[$i]['indi'], $controller->showFull());
+	FunctionsPrint::printPedigreePerson($controller->nodes[$i]['indi'], $controller->showFull());
 
 	if ($controller->orientation === $controller::OLDEST_AT_TOP) {
 		if (!$i) {
-			echo $controller->get_menu();
+			echo $controller->getMenu();
 		}
 	} else {
 		if ($i >= $lastgenStart) {

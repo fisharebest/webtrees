@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Report;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,16 +13,24 @@ namespace Fisharebest\Webtrees\Report;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Report;
 
 /**
  * Class ReportBaseHtml
  */
 class ReportBaseHtml extends ReportBaseElement {
+	/** @var string The XML tag. */
 	public $tag;
+
+	/** @var string[] Attributes of the XML tag. */
 	public $attrs;
+
+	/** @var ReportBaseElement[] A list of elements. */
 	public $elements = array();
 
 	/**
+	 * Create an element.
+	 *
 	 * @param $tag
 	 * @param $attrs
 	 */
@@ -36,6 +42,8 @@ class ReportBaseHtml extends ReportBaseElement {
 	}
 
 	/**
+	 * Get the start tag.
+	 *
 	 * @return string
 	 */
 	public function getStart() {
@@ -49,6 +57,8 @@ class ReportBaseHtml extends ReportBaseElement {
 	}
 
 	/**
+	 * Get the end tag.
+	 *
 	 * @return string
 	 */
 	public function getEnd() {
@@ -56,7 +66,9 @@ class ReportBaseHtml extends ReportBaseElement {
 	}
 
 	/**
-	 * @param $element
+	 * Add an element.
+	 *
+	 * @param ReportBaseElement $element
 	 */
 	public function addElement($element) {
 		$this->elements[] = $element;

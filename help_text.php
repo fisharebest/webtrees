@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 define('WT_SCRIPT_NAME', 'help_text.php');
 require './includes/session.php';
@@ -30,7 +29,7 @@ switch ($help) {
 	//
 	// Tags such as _BIRT_CHIL are pseudo-tags, used to create family events.
 	//
-	// Generally, these tags need to be lists explicitly in add_simple_tag()
+	// Generally, these tags need to be lists explicitly in FunctionsEdit::add_simple_tag()
 	//////////////////////////////////////////////////////////////////////////////
 
 case 'DATE':

@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Schema;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,14 +13,18 @@ namespace Fisharebest\Webtrees\Schema;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Schema;
+
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\File;
 
 /**
- * Class Migration22 - upgrade the database schema from version 22 to version 23.
+ * Upgrade the database schema from version 22 to version 23.
  */
 class Migration22 implements MigrationInterface {
-	/** {@inheritDoc} */
+	/**
+	 * Upgrade to to the next version
+	 */
 	public function upgrade() {
 		// - data update for 1.4.0 media changes
 		$_cfgs = Database::prepare(
@@ -51,7 +53,7 @@ class Migration22 implements MigrationInterface {
 					// $WT_DATA_DIR = /home/fisharebest/public_html/webtrees/data/
 					// Therefore we need to calculate ../../../my_pictures/
 					$_media_dir = '';
-					$_tmp_dir = $WT_DATA_DIR;
+					$_tmp_dir   = $WT_DATA_DIR;
 					while (strpos($_mf_dir, $_tmp_dir) !== 0) {
 						$_media_dir .= '../';
 						$_tmp_dir = preg_replace('~[^/\\\\]+[/\\\\]$~', '', $_tmp_dir);

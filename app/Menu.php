@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,11 +13,12 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 use Rhumsaa\Uuid\Uuid;
 
 /**
- * Class Menu - System for generating menus.
+ * System for generating menus.
  */
 class Menu {
 	/** @var string The text to be displayed in the mneu */
@@ -34,7 +33,7 @@ class Menu {
 	/** @var string An onclick action, typically used with a link of "#" */
 	private $onclick;
 
-	/** @var Menu[] */
+	/** @var Menu[] An optional list of sub-menus. */
 	private $submenus;
 
 	/** @var string Used internally to create javascript menus */
@@ -42,9 +41,6 @@ class Menu {
 
 	/** @var string Used to format javascript menus */
 	private $submenuclass;
-
-	/** @var string Used to format javascript menus */
-	private $iconclass;
 
 	/** @var string Used to format javascript menus */
 	private $menuclass;
@@ -114,15 +110,15 @@ class Menu {
 	 *
 	 * @param string $menuclass
 	 * @param string $submenuclass
-	 * @param string $iconclass
 	 */
-	public function addClass($menuclass, $submenuclass = '', $iconclass = '') {
+	public function addClass($menuclass, $submenuclass = '') {
 		$this->menuclass    = $menuclass;
 		$this->submenuclass = $submenuclass;
-		$this->iconclass    = $iconclass;
 	}
 
 	/**
+	 * Get the class.
+	 *
 	 * @return string
 	 */
 	public function getClass() {
@@ -130,6 +126,8 @@ class Menu {
 	}
 
 	/**
+	 * Set the class.
+	 *
 	 * @param string $class
 	 *
 	 * @return $this
@@ -141,6 +139,8 @@ class Menu {
 	}
 
 	/**
+	 * Get the label.
+	 *
 	 * @return string
 	 */
 	public function getLabel() {
@@ -148,6 +148,8 @@ class Menu {
 	}
 
 	/**
+	 * Set the label.
+	 *
 	 * @param string $label
 	 *
 	 * @return $this
@@ -159,6 +161,7 @@ class Menu {
 	}
 
 	/**
+	 * Get the link.
 	 * @return string
 	 */
 	public function getLink() {
@@ -166,6 +169,8 @@ class Menu {
 	}
 
 	/**
+	 * Set the link.
+	 *
 	 * @param string $link
 	 *
 	 * @return $this
@@ -177,6 +182,8 @@ class Menu {
 	}
 
 	/**
+	 * Get the click handler.
+	 *
 	 * @return string
 	 */
 	public function getOnclick() {
@@ -184,6 +191,8 @@ class Menu {
 	}
 
 	/**
+	 * Set the click handler.
+	 *
 	 * @param string $onclick
 	 *
 	 * @return $this
@@ -270,6 +279,8 @@ class Menu {
 	}
 
 	/**
+	 * Get the sub-menus.
+	 *
 	 * @return Menu[]
 	 */
 	public function getSubmenus() {
@@ -277,6 +288,8 @@ class Menu {
 	}
 
 	/**
+	 * Set the sub-menus.
+	 *
 	 * @param Menu[] $submenus
 	 *
 	 * @return $this

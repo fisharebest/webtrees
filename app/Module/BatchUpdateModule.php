@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,11 +13,14 @@ namespace Fisharebest\Webtrees\Module;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -67,17 +68,30 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 	/** @var GedcomRecord The record corresponding to $curr_xref */
 	private $record;
 
-	/** {@inheritdoc} */
+	/**
+	 * How should this module be labelled on tabs, menus, etc.?
+	 *
+	 * @return string
+	 */
 	public function getTitle() {
 		return /* I18N: Name of a module */ I18N::translate('Batch update');
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * A sentence describing what this module does.
+	 *
+	 * @return string
+	 */
 	public function getDescription() {
 		return /* I18N: Description of the “Batch update” module */ I18N::translate('Apply automatic corrections to your genealogy data.');
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * This is a general purpose hook, allowing modules to respond to routes
+	 * of the form module.php?mod=FOO&mod_action=BAR
+	 *
+	 * @param string $mod_action
+	 */
 	public function modAction($mod_action) {
 		switch ($mod_action) {
 		case 'admin_batch_update':
@@ -181,7 +195,7 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 			'<input type="hidden" name="data"   value="">' . // will be set by javascript for next update
 			'<table id="batch_update"><tr>' .
 			'<th>' . I18N::translate('Family tree') . '</th>' .
-			'<td>' . select_edit_control('ged', Tree::getNameList(), '', $WT_TREE->getName(), 'onchange="reset_reload();"') .
+			'<td>' . FunctionsEdit::selectEditControl('ged', Tree::getNameList(), '', $WT_TREE->getName(), 'onchange="reset_reload();"') .
 			'</td></tr><tr><th>' . I18N::translate('Batch update') . '</th><td><select name="plugin" onchange="reset_reload();">';
 		if (!$this->plugin) {
 			$html .= '<option value="" selected></option>';
@@ -398,7 +412,12 @@ class BatchUpdateModule extends AbstractModule implements ModuleConfigInterface 
 		}
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * The URL to a page where the user can modify the configuration of this module.
+	 * These links are displayed in the admin page menu.
+	 *
+	 * @return string
+	 */
 	public function getConfigLink() {
 		return 'module.php?mod=' . $this->getName() . '&amp;mod_action=admin_batch_update';
 	}

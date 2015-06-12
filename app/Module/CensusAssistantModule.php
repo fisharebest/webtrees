@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,9 +13,12 @@ namespace Fisharebest\Webtrees\Module;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module;
+
 use Fisharebest\Webtrees\Controller\SimpleController;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsDb;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
@@ -38,7 +39,12 @@ class CensusAssistantModule extends AbstractModule {
 		return /* I18N: Description of the “Census assistant” module */ I18N::translate('An alternative way to enter census transcripts and link them to individuals.');
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * This is a general purpose hook, allowing modules to respond to routes
+	 * of the form module.php?mod=FOO&mod_action=BAR
+	 *
+	 * @param string $mod_action
+	 */
 	public function modAction($mod_action) {
 		switch ($mod_action) {
 		case 'census_find':
@@ -56,7 +62,7 @@ class CensusAssistantModule extends AbstractModule {
 	}
 
 	/**
-	 * ...
+	 * Find an individual.
 	 */
 	private static function censusFind() {
 		global $WT_TREE;
@@ -112,7 +118,7 @@ class CensusAssistantModule extends AbstractModule {
 
 			// Output Individual for GEDFact Assistant ======================
 			echo "<table class=\"tabs_table width90\">";
-			$myindilist = search_indis_names($filter_array, array($WT_TREE));
+			$myindilist = FunctionsDb::searchIndividualNames($filter_array, array($WT_TREE));
 			if ($myindilist) {
 				echo "<tr><td class=\"list_value_wrap\"><ul>";
 				usort($myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
@@ -181,9 +187,6 @@ class CensusAssistantModule extends AbstractModule {
 					}
 
 					echo "<li>";
-					// ==============================================================================================================================
-					// NOTES = is equivalent to= function pasterow(id, nam, mnam, label, gend, cond, dom, dob, age, dod, occu, birthpl, fbirthpl, mbirthpl, chilBLD) {
-					// ==============================================================================================================================
 					echo "<a href=\"#\" onclick=\"window.opener.insertRowToTable(";
 					echo "'" . $indi->getXref() . "', "; // id        - Indi Id
 					echo "'" . addslashes(strip_tags($fulln)) . "', "; // nam       - Name
@@ -221,7 +224,7 @@ class CensusAssistantModule extends AbstractModule {
 	}
 
 	/**
-	 * ...
+	 * Find a media object.
 	 */
 	private static function mediaFind() {
 		global $WT_TREE;
@@ -290,7 +293,7 @@ class CensusAssistantModule extends AbstractModule {
 		$filter       = trim($filter);
 		$filter_array = explode(' ', preg_replace('/ {2,}/', ' ', $filter));
 		echo "<table class=\"tabs_table width90\"><tr>";
-		$myindilist = search_indis_names($filter_array, array($WT_TREE));
+		$myindilist = FunctionsDb::searchIndividualNames($filter_array, array($WT_TREE));
 		if ($myindilist) {
 			echo "<td class=\"list_value_wrap\"><ul>";
 			usort($myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
@@ -320,7 +323,7 @@ class CensusAssistantModule extends AbstractModule {
 	}
 
 	/**
-	 * ...
+	 * Search for a media object.
 	 */
 	private static function mediaQuery() {
 		global $WT_TREE;

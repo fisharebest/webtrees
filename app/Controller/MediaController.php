@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Controller;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,17 +13,19 @@ namespace Fisharebest\Webtrees\Controller;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Controller;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
 use Fisharebest\Webtrees\Menu;
 use Fisharebest\Webtrees\Module;
 
 /**
- * Class MediaController - Controller for the media page
+ * Controller for the media page
  */
 class MediaController extends GedcomRecordController {
 	/**
@@ -131,7 +131,7 @@ class MediaController extends GedcomRecordController {
 			$facts[] = new Fact('1 __FILE_SIZE__ ' . $this->record->getFilesize(), $this->record, 0);
 		}
 
-		sort_facts($facts);
+		Functions::sortFacts($facts);
 
 		return $facts;
 	}

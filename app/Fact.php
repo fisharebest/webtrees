@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,9 +13,12 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
+
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
 /**
- * Class Fact - Class that defines an event details object
+ * A GEDCOM fact or event object.
  */
 class Fact {
 	/** @var string Unique identifier for this fact (currently implemented as a hash of the raw data). */
@@ -44,7 +45,7 @@ class Fact {
 	/** @var Place The place of this fact, from the “2 PLAC …” attribute */
 	private $place;
 
-	/** @var int Temporary(!) variable Used by sort_facts() */
+	/** @var int Temporary(!) variable Used by Functions::sortFacts() */
 	public $sortOrder;
 
 	/**
@@ -385,7 +386,7 @@ class Fact {
 			}
 			$date = $this->getDate();
 			if ($this->getTag() == 'BIRT' && $this->getParent() instanceof Individual && $this->getParent()->getTree()->getPreference('SHOW_PARENTS_AGE')) {
-				$attributes[] = $date->display() . format_parents_age($this->getParent(), $date);
+				$attributes[] = $date->display() . FunctionsPrint::formatParentsAges($this->getParent(), $date);
 			} else {
 				$attributes[] = $date->display();
 			}
@@ -542,11 +543,11 @@ class Fact {
 
 		// - Don't let dated after DEAT/BURI facts sort non-dated facts before DEAT/BURI
 		// - Treat dated after BURI facts as BURI instead
-		if ($a->getAttribute('DATE') != null && $factsort[$atag] > $factsort['BURI'] && $factsort[$atag] < $factsort['CHAN']) {
+		if ($a->getAttribute('DATE') !== null && $factsort[$atag] > $factsort['BURI'] && $factsort[$atag] < $factsort['CHAN']) {
 			$atag = 'BURI';
 		}
 
-		if ($b->getAttribute('DATE') != null && $factsort[$btag] > $factsort['BURI'] && $factsort[$btag] < $factsort['CHAN']) {
+		if ($b->getAttribute('DATE') !== null && $factsort[$btag] > $factsort['BURI'] && $factsort[$btag] < $factsort['CHAN']) {
 			$btag = 'BURI';
 		}
 
@@ -554,11 +555,11 @@ class Fact {
 
 		// If facts are the same then put dated facts before non-dated facts
 		if ($ret == 0) {
-			if ($a->getAttribute('DATE') != null && $b->getAttribute('DATE') == null) {
+			if ($a->getAttribute('DATE') !== null && $b->getAttribute('DATE') === null) {
 				return -1;
 			}
 
-			if ($b->getAttribute('DATE') != null && $a->getAttribute('DATE') == null) {
+			if ($b->getAttribute('DATE') !== null && $a->getAttribute('DATE') === null) {
 				return 1;
 			}
 

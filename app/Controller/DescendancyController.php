@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Controller;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,9 +13,12 @@ namespace Fisharebest\Webtrees\Controller;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Controller;
 
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsCharts;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -25,7 +26,7 @@ use Fisharebest\Webtrees\Theme;
 use Rhumsaa\Uuid\Uuid;
 
 /**
- * Class DescendancyController - Controller for the descendancy chart
+ * Controller for the descendancy chart
  */
 class DescendancyController extends ChartController {
 	/** @var int Show boxes for cousins */
@@ -37,8 +38,10 @@ class DescendancyController extends ChartController {
 	/** @var int Number of generations to display */
 	public $generations;
 
-	// d'Aboville numbering system [ http://www.saintclair.org/numbers/numdob.html ]
+	/** @var array d'Aboville numbering system <http://www.saintclair.org/numbers/numdob.html> */
 	public $dabo_num = array();
+
+	/** @var array d'Aboville numbering system <http://www.saintclair.org/numbers/numdob.html> */
 	public $dabo_sex = array();
 
 	/**
@@ -77,7 +80,7 @@ class DescendancyController extends ChartController {
 			return;
 		}
 		foreach ($person->getSpouseFamilies() as $family) {
-			print_sosa_family($family->getXref(), '', -1, $label, $person->getXref(), $gpid, 0, $this->showFull());
+			FunctionsCharts::printSosaFamily($family->getXref(), '', -1, $label, $person->getXref(), $gpid, 0, $this->showFull());
 			$i = 1;
 			foreach ($family->getChildren() as $child) {
 				$this->printChildFamily($child, $depth - 1, $label . ($i++) . '.', $person->getXref());
@@ -100,7 +103,7 @@ class DescendancyController extends ChartController {
 			echo "<img src=\"" . Theme::theme()->parameter('image-spacer') . "\" height=\"3\" width=\"3\" alt=\"\">";
 			echo "<img src=\"" . Theme::theme()->parameter('image-hline') . "\" height=\"3\" width=\"", Theme::theme()->parameter('chart-descendancy-indent') - 3, "\" alt=\"\"></td><td>";
 		}
-		print_pedigree_person($person, $this->showFull());
+		FunctionsPrint::printPedigreePerson($person, $this->showFull());
 		echo '</td>';
 
 		// check if child has parents and add an arrow
@@ -108,7 +111,7 @@ class DescendancyController extends ChartController {
 		echo '<td>';
 		foreach ($person->getChildFamilies() as $cfamily) {
 			foreach ($cfamily->getSpouses() as $parent) {
-				print_url_arrow('?rootid=' . $parent->getXref() . '&amp;generations=' . $this->generations . '&amp;chart_style=' . $this->chart_style . '&amp;show_full=' . $this->showFull() . '&amp;ged=' . $parent->getTree()->getNameUrl(), I18N::translate('Start at parents'), 2);
+				FunctionsCharts::printUrlArrow('?rootid=' . $parent->getXref() . '&amp;generations=' . $this->generations . '&amp;chart_style=' . $this->chart_style . '&amp;show_full=' . $this->showFull() . '&amp;ged=' . $parent->getTree()->getNameUrl(), I18N::translate('Start at parents'), 2);
 				// only show the arrow for one of the parents
 				break;
 			}
@@ -176,7 +179,7 @@ class DescendancyController extends ChartController {
 		echo '<ul id="' . $uid . '" class="generation">';
 		echo '<li>';
 		echo '<table><tr><td>';
-		print_pedigree_person($spouse, $this->showFull());
+		FunctionsPrint::printPedigreePerson($spouse, $this->showFull());
 		echo '</td>';
 
 		// check if spouse has parents and add an arrow
@@ -185,7 +188,7 @@ class DescendancyController extends ChartController {
 		if ($spouse) {
 			foreach ($spouse->getChildFamilies() as $cfamily) {
 				foreach ($cfamily->getSpouses() as $parent) {
-					print_url_arrow('?rootid=' . $parent->getXref() . '&amp;generations=' . $this->generations . '&amp;chart_style=' . $this->chart_style . '&amp;show_full=' . $this->showFull() . '&amp;ged=' . $parent->getTree()->getNameUrl(), I18N::translate('Start at parents'), 2);
+					FunctionsCharts::printUrlArrow('?rootid=' . $parent->getXref() . '&amp;generations=' . $this->generations . '&amp;chart_style=' . $this->chart_style . '&amp;show_full=' . $this->showFull() . '&amp;ged=' . $parent->getTree()->getNameUrl(), I18N::translate('Start at parents'), 2);
 					// only show the arrow for one of the parents
 					break;
 				}

@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,9 +13,11 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Controller\AjaxController;
 use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
 
 define('WT_SCRIPT_NAME', 'admin_media.php');
 require './includes/session.php';
@@ -517,7 +517,6 @@ function mediaFileInfo($media_folder, $media_path, $file) {
 function mediaObjectInfo(Media $media) {
 	$xref   = $media->getXref();
 	$gedcom = $media->getTree()->getName();
-	$name   = $media->getFullName();
 
 	$html =
 		'<div class="btn-group"><button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-pencil"></i> <span class="caret"></span></button><ul class="dropdown-menu" role="menu">' .
@@ -643,7 +642,7 @@ $controller
 
 					<div dir="ltr">
 						<?php if (count($media_folders) > 1): ?>
-						<?php echo WT_DATA_DIR, select_edit_control('media_folder', $media_folders, null, $media_folder, 'onchange="this.form.submit();"'); ?>
+						<?php echo WT_DATA_DIR, FunctionsEdit::selectEditControl('media_folder', $media_folders, null, $media_folder, 'onchange="this.form.submit();"'); ?>
 						<?php else: ?>
 						<?php echo WT_DATA_DIR, Filter::escapeHtml($media_folder); ?>
 						<input type="hidden" name="media_folder" value="<?php echo Filter::escapeHtml($media_folder); ?>">
@@ -651,7 +650,7 @@ $controller
 					</div>
 
 					<?php if (count($media_paths) > 1): ?>
-					<?php echo select_edit_control('media_path', $media_paths, null, $media_path, 'onchange="this.form.submit();"'); ?>
+					<?php echo FunctionsEdit::selectEditControl('media_path', $media_paths, null, $media_path, 'onchange="this.form.submit();"'); ?>
 					<?php else: ?>
 					<?php echo Filter::escapeHtml($media_path); ?>
 					<input type="hidden" name="media_path" value="<?php echo Filter::escapeHtml($media_path); ?>">

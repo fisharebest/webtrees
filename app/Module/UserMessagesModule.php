@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,9 +13,13 @@ namespace Fisharebest\Webtrees\Module;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsDate;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Theme;
 use Fisharebest\Webtrees\User;
@@ -36,8 +38,16 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 		return /* I18N: Description of the “Messages” module */ I18N::translate('Communicate directly with other users, using private messages.');
 	}
 
-	/** {@inheritdoc} */
-	public function getBlock($block_id, $template = true, $cfg = null) {
+	/**
+	 * Generate the HTML content of this block.
+	 *
+	 * @param int      $block_id
+	 * @param bool     $template
+	 * @param string[] $cfg
+	 *
+	 * @return string
+	 */
+	public function getBlock($block_id, $template = true, $cfg = array()) {
 		// Block actions
 		$action      = Filter::post('action');
 		$message_ids = Filter::postArray('message_id');
@@ -47,11 +57,9 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 			}
 		}
 		$block = $this->getBlockSetting($block_id, 'block', '1');
-		if ($cfg) {
-			foreach (array('block') as $name) {
-				if (array_key_exists($name, $cfg)) {
-					$$name = $cfg[$name];
-				}
+		foreach (array('block') as $name) {
+			if (array_key_exists($name, $cfg)) {
+				$$name = $cfg[$name];
 			}
 		}
 		$messages = Database::prepare("SELECT message_id, sender, subject, body, UNIX_TIMESTAMP(created) AS created FROM `##message` WHERE user_id=? ORDER BY message_id DESC")
@@ -89,7 +97,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 				$content .= '<tr>';
 				$content .= '<td class="list_value_wrap"><input type="checkbox" id="cb_message' . $message->message_id . '" name="message_id[]" value="' . $message->message_id . '"></td>';
 				$content .= '<td class="list_value_wrap"><a href="#" onclick="return expand_layer(\'message' . $message->message_id . '\');"><i id="message' . $message->message_id . '_img" class="icon-plus"></i> <b dir="auto">' . Filter::escapeHtml($message->subject) . '</b></a></td>';
-				$content .= '<td class="list_value_wrap">' . format_timestamp($message->created + WT_TIMESTAMP_OFFSET) . '</td>';
+				$content .= '<td class="list_value_wrap">' . FunctionsDate::formatTimestamp($message->created + WT_TIMESTAMP_OFFSET) . '</td>';
 				$content .= '<td class="list_value_wrap">';
 				$user = User::findByIdentifier($message->sender);
 				if ($user) {
@@ -141,7 +149,11 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 		return false;
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * An HTML form to edit block settings
+	 *
+	 * @param int $block_id
+	 */
 	public function configureBlock($block_id) {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
 			$this->setBlockSetting($block_id, 'block', Filter::postBool('block'));
@@ -151,7 +163,7 @@ class UserMessagesModule extends AbstractModule implements ModuleBlockInterface 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for a yes/no option */ I18N::translate('Add a scrollbar when block contents grow');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('block', $block);
+		echo FunctionsEdit::editFieldYesNo('block', $block);
 		echo '</td></tr>';
 	}
 }

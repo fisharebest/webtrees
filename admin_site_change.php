@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,8 +13,10 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use PDO;
 
 /**
@@ -294,7 +294,7 @@ foreach (User::all() as $tmp_user) {
 			<label for="type">
 				<?php echo I18N::translate('Status'); ?>
 			</label>
-			<?php echo select_edit_control('type', $statuses, null, $type, 'class="form-control"'); ?>
+			<?php echo FunctionsEdit::selectEditControl('type', $statuses, null, $type, 'class="form-control"'); ?>
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
@@ -324,14 +324,14 @@ foreach (User::all() as $tmp_user) {
 			<label for="user">
 				<?php echo I18N::translate('User'); ?>
 			</label>
-			<?php echo select_edit_control('user', $users_array, '', $user, 'class="form-control"'); ?>
+			<?php echo FunctionsEdit::selectEditControl('user', $users_array, '', $user, 'class="form-control"'); ?>
 		</div>
 
 		<div class="form-group col-xs-6 col-md-3">
 			<label for="gedc">
 				<?php echo I18N::translate('Family tree'); ?>
 			</label>
-			<?php echo select_edit_control('gedc', Tree::getNameList(), '', $gedc, Auth::isAdmin() ? 'class="form-control"' : 'disabled class="form-control"'); ?>
+			<?php echo FunctionsEdit::selectEditControl('gedc', Tree::getNameList(), '', $gedc, Auth::isAdmin() ? 'class="form-control"' : 'disabled class="form-control"'); ?>
 		</div>
 	</div>
 

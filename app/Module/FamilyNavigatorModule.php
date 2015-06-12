@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,8 +13,11 @@ namespace Fisharebest\Webtrees\Module;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Family;
+use Fisharebest\Webtrees\Functions\Functions;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Menu;
@@ -54,7 +55,11 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 		return '';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Load this sidebar synchronously.
+	 *
+	 * @return string
+	 */
 	public function getSidebarContent() {
 		global $controller;
 
@@ -86,7 +91,7 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 		}
 		//-- spouse and children --------------------------------------------------
 		foreach ($controller->record->getSpouseFamilies() as $family) {
-			$this->drawFamily($family, $controller->record->getSpouseFamilyLabel($family));
+			$this->drawFamily($family, $controller->getSpouseFamilyLabel($family, $controller->record));
 		}
 		//-- step children ----------------------------------------------------------------
 		foreach ($controller->record->getSpouseStepFamilies() as $family) {
@@ -101,6 +106,8 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 	}
 
 	/**
+	 * Format a family.
+	 *
 	 * @param Family $family
 	 * @param string $title
 	 */
@@ -117,7 +124,7 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 		</tr>
 		<?php
 		foreach ($family->getSpouses() as $spouse) {
-			$menu = new Menu(get_close_relationship_name($controller->record, $spouse));
+			$menu = new Menu(Functions::getCloseRelationshipName($controller->record, $spouse));
 			$menu->addClass('', 'submenu flyout');
 			$menu->addSubmenu(new Menu($this->getParents($spouse)));
 			?>
@@ -138,7 +145,7 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 		}
 
 		foreach ($family->getChildren() as $child) {
-			$menu = new Menu(get_close_relationship_name($controller->record, $child));
+			$menu = new Menu(Functions::getCloseRelationshipName($controller->record, $child));
 			$menu->addClass('', 'submenu flyout');
 			$menu->addSubmenu(new Menu($this->getFamily($child)));
 			?>
@@ -160,6 +167,8 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 	}
 
 	/**
+	 * Format an individual.
+	 *
 	 * @param      $person
 	 * @param bool $showUnknown
 	 *
@@ -176,6 +185,8 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 	}
 
 	/**
+	 * Forat the parents of an individual.
+	 *
 	 * @param Individual $person
 	 *
 	 * @return string
@@ -216,6 +227,8 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 	}
 
 	/**
+	 * Format a family.
+	 *
 	 * @param Individual $person
 	 *
 	 * @return string

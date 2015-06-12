@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 /**
  * Defined in session.php
@@ -25,6 +24,7 @@ global $WT_TREE;
 
 use Fisharebest\Webtrees\Controller\AjaxController;
 use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
 define('WT_SCRIPT_NAME', 'statistics.php');
 require './includes/session.php';
@@ -587,7 +587,7 @@ if (!$ajax) {
 			<br>
 			</div>
 			<div id="surname_opt" style="display:none;">';
-		echo GedcomTag::getLabel('SURN'), help_link('google_chart_surname'), '<br><input data-autocomplete-type="SURN" type="text" name="SURN" size="20">';
+		echo GedcomTag::getLabel('SURN'), FunctionsPrint::helpLink('google_chart_surname'), '<br><input data-autocomplete-type="SURN" type="text" name="SURN" size="20">';
 		echo '<br>
 			</div>';
 		echo I18N::translate('Geographical area');

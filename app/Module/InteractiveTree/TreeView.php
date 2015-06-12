@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module\InteractiveTree;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,8 @@ namespace Fisharebest\Webtrees\Module\InteractiveTree;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module\InteractiveTree;
+
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
 use Fisharebest\Webtrees\I18N;
@@ -24,7 +24,10 @@ use Fisharebest\Webtrees\Individual;
  * Class TreeView
  */
 class TreeView {
+	/** @var string HTML element name */
 	private $name;
+
+	/** @var string Show all partners */
 	private $all_partners;
 
 	/**
@@ -334,28 +337,20 @@ class TreeView {
 		if ($this->all_partners === 'true') {
 			$family = $individual->getPrimaryChildFamily();
 			if ($family) {
-				switch ($individual->getSex()) {
-				case 'M':
-					$title = ' title="' . strip_tags(
-						/* I18N: e.g. “Son of [father name & mother name]” */
-						I18N::translate('Son of %s', $family->getFullName())
-					) . '"';
-					break;
-				case 'F':
-					$title = ' title="' . strip_tags(
-						/* I18N: e.g. “Daughter of [father name & mother name]” */
-						I18N::translate('Daughter of %s', $family->getFullName())
-					) . '"';
-					break;
-				default:
-					$title = ' title="' . strip_tags(
-						/* I18N: e.g. “Child of [father name & mother name]” */
-						I18N::translate('Child of %s', $family->getFullName())
-					) . '"';
-					break;
-				}
+				$family_name = strip_tags($family->getFullName());
 			} else {
-				$title = '';
+				$family_name = I18N::translateContext('unknown family', 'unknown');
+			}
+			switch ($individual->getSex()) {
+			case 'M':
+				$title = ' title="' . /* I18N: e.g. “Son of [father name & mother name]” */ I18N::translate('Son of %s', $family_name) . '"';
+				break;
+			case 'F':
+				$title = ' title="' . /* I18N: e.g. “Daughter of [father name & mother name]” */ I18N::translate('Daughter of %s', $family_name) . '"';
+				break;
+			default:
+				$title = ' title="' . /* I18N: e.g. “Child of [father name & mother name]” */ I18N::translate('Child of %s', $family_name) . '"';
+				break;
 			}
 		} else {
 			$title = '';

@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Date;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,24 +13,36 @@ namespace Fisharebest\Webtrees\Date;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Date;
 
 use Fisharebest\ExtCalendar\JewishCalendar;
 use Fisharebest\Webtrees\I18N;
 
 /**
- * Class JewishDate - Definitions for the Jewish calendar
+ * Definitions for the Jewish calendar
  */
 class JewishDate extends CalendarDate {
-	/** {@inheritdoc} */
+	/** @var integer[] Convert GEDCOM month names to month numbers  */
 	public static $MONTH_ABBREV = array('' => 0, 'TSH' => 1, 'CSH' => 2, 'KSL' => 3, 'TVT' => 4, 'SHV' => 5, 'ADR' => 6, 'ADS' => 7, 'NSN' => 8, 'IYR' => 9, 'SVN' => 10, 'TMZ' => 11, 'AAV' => 12, 'ELL' => 13);
 
-	/** {@inheritdoc} */
+	/**
+	 * Create a date from either:
+	 * a Julian day number
+	 * day/month/year strings from a GEDCOM date
+	 * another CalendarDate object
+	 *
+	 * @param array|int|CalendarDate $date
+	 */
 	public function __construct($date) {
 		$this->calendar = new JewishCalendar;
 		parent::__construct($date);
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Generate the %j format for a date.
+	 *
+	 * @return string
+	 */
 	protected function formatDay() {
 		if (WT_LOCALE === 'he' || WT_LOCALE === 'yi') {
 			return $this->calendar->numberToHebrewNumerals($this->d, true);
@@ -41,7 +51,14 @@ class JewishDate extends CalendarDate {
 		}
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Generate the %y format for a date.
+	 *
+	 * NOTE Short year is NOT a 2-digit year.  It is for calendars such as hebrew
+	 * which have a 3-digit form of 4-digit years.
+	 *
+	 * @return string
+	 */
 	protected function formatShortYear() {
 		if (WT_LOCALE === 'he' || WT_LOCALE === 'yi') {
 			return $this->calendar->numberToHebrewNumerals($this->y, false);
@@ -50,7 +67,11 @@ class JewishDate extends CalendarDate {
 		}
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Generate the %Y format for a date.
+	 *
+	 * @return string
+	 */
 	protected function formatLongYear() {
 		if (WT_LOCALE === 'he' || WT_LOCALE === 'yi') {
 			return $this->calendar->numberToHebrewNumerals($this->y, true);
@@ -59,7 +80,14 @@ class JewishDate extends CalendarDate {
 		}
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Full month name in nominative case.
+	 *
+	 * @param int  $month_number
+	 * @param bool $leap_year    Some calendars use leap months
+	 *
+	 * @return string
+	 */
 	public static function monthNameNominativeCase($month_number, $leap_year) {
 		static $translated_month_names;
 
@@ -90,7 +118,14 @@ class JewishDate extends CalendarDate {
 		}
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Full month name in genitive case.
+	 *
+	 * @param int  $month_number
+	 * @param bool $leap_year    Some calendars use leap months
+	 *
+	 * @return string
+	 */
 	protected function monthNameGenitiveCase($month_number, $leap_year) {
 		static $translated_month_names;
 
@@ -121,7 +156,14 @@ class JewishDate extends CalendarDate {
 		}
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Full month name in locative case.
+	 *
+	 * @param int  $month_number
+	 * @param bool $leap_year    Some calendars use leap months
+	 *
+	 * @return string
+	 */
 	protected function monthNameLocativeCase($month_number, $leap_year) {
 		static $translated_month_names;
 
@@ -152,7 +194,14 @@ class JewishDate extends CalendarDate {
 		}
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Full month name in instrumental case.
+	 *
+	 * @param int  $month_number
+	 * @param bool $leap_year    Some calendars use leap months
+	 *
+	 * @return string
+	 */
 	protected function monthNameInstrumentalCase($month_number, $leap_year) {
 		static $translated_month_names;
 
@@ -183,12 +232,23 @@ class JewishDate extends CalendarDate {
 		}
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Abbreviated month name
+	 *
+	 * @param int  $month_number
+	 * @param bool $leap_year    Some calendars use leap months
+	 *
+	 * @return string
+	 */
 	protected function monthNameAbbreviated($month_number, $leap_year) {
 		return self::monthNameNominativeCase($month_number, $leap_year);
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Which months follows this one?  Calendars with leap-months should provide their own implementation.
+	 *
+	 * @return integer[]
+	 */
 	protected function nextMonth() {
 		if ($this->m == 6 && !$this->isLeapYear()) {
 			return array($this->y, 8);

@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Controller;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,12 +13,16 @@ namespace Fisharebest\Webtrees\Controller;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Controller;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsDb;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
+use Fisharebest\Webtrees\Functions\FunctionsPrintFacts;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeName;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
@@ -30,12 +32,16 @@ use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\User;
 
 /**
- * Class IndividualController - Controller for the individual page
+ * Controller for the individual page
  */
 class IndividualController extends GedcomRecordController {
+	/** @var int Count of names */
 	public $name_count  = 0;
+
+	/** @var int Count of names. */
 	public $total_names = 0;
 
+	/** ModuleTabInterface[] List of tabs to show */
 	public $tabs;
 
 	/**
@@ -48,7 +54,7 @@ class IndividualController extends GedcomRecordController {
 		$this->record = Individual::getInstance($xref, $WT_TREE);
 
 		if (!$this->record && $WT_TREE->getPreference('USE_RIN')) {
-			$rin          = find_rin_id($xref);
+			$rin          = FunctionsDb::findRin($xref);
 			$this->record = Individual::getInstance($rin, $WT_TREE);
 		}
 
@@ -209,10 +215,10 @@ class IndividualController extends GedcomRecordController {
 			echo '</div>';
 		}
 		if (preg_match("/\n2 SOUR/", $factrec)) {
-			echo '<div id="indi_sour" class="clearfloat">', print_fact_sources($factrec, 2), '</div>';
+			echo '<div id="indi_sour" class="clearfloat">', FunctionsPrintFacts::printFactSources($factrec, 2), '</div>';
 		}
 		if (preg_match("/\n2 NOTE/", $factrec)) {
-			echo '<div id="indi_note" class="clearfloat">', print_fact_notes($factrec, 2), '</div>';
+			echo '<div id="indi_note" class="clearfloat">', FunctionsPrint::printFactNotes($factrec, 2), '</div>';
 		}
 		echo '</div>';
 	}
@@ -420,6 +426,27 @@ class IndividualController extends GedcomRecordController {
 			return '<div id="sidebar"><div id="sidebarAccordion">' . $html . '</div></div>';
 		} else {
 			return '';
+		}
+	}
+
+	/**
+	 * Get the description for the family.
+	 *
+	 * For example, "XXX's family with new wife".
+	 *
+	 * @param Family     $family
+	 * @param Individual $individual
+	 *
+	 * @return string
+	 */
+	public function getSpouseFamilyLabel(Family $family, Individual $individual) {
+		$spouse = $family->getSpouse($individual);
+		if ($spouse) {
+			return
+				/* I18N: %s is the spouse name */
+				I18N::translate('Family with %s', $spouse->getFullName());
+		} else {
+			return $family->getFullName();
 		}
 	}
 }

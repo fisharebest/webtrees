@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Theme;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,35 +13,59 @@ namespace Fisharebest\Webtrees\Theme;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Theme;
+
 use Fisharebest\Webtrees\I18N;
 
 /**
- * Class MinimalTheme - The Minimal theme.
+ * The Minimal theme.
  */
-class MinimalTheme extends BaseTheme {
-	/** {@inheritdoc} */
+class MinimalTheme extends AbstractTheme implements ThemeInterface {
+	/**
+	 * Where are our CSS, JS and other assets?
+	 *
+	 * @return string A relative path, such as "themes/foo/"
+	 */
 	public function assetUrl() {
 		return 'themes/minimal/css-1.7.0/';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * HTML link to a "favorites icon".
+	 *
+	 * @return string
+	 */
 	protected function favicon() {
 		return '<link rel="icon" href="' . $this->assetUrl() . 'favicon.png" type="image/png">';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Add markup to a flash message.
+	 *
+	 * @param \stdClass $message
+	 *
+	 * @return string
+	 */
 	protected function flashMessageContainer(\stdClass $message) {
 		// This theme uses jQuery markup.
 		return '<p class="ui-state-highlight">' . $message->text . '</p>';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Create a search field and submit button for the quick search form in the header.
+	 *
+	 * @return string
+	 */
 	protected function formQuickSearchFields() {
 		return
 			'<input type="search" name="query" size="20" placeholder="' . I18N::translate('Search') . '">';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Add markup to the secondary menu.
+	 *
+	 * @return string
+	 */
 	protected function formatSecondaryMenu() {
 		return
 			'<ul class="secondary-menu">' .
@@ -53,7 +75,12 @@ class MinimalTheme extends BaseTheme {
 			'</li>' .
 			'</ul>';
 	}
-	/** {@inheritdoc} */
+
+	/**
+	 * Create the contents of the <header> tag.
+	 *
+	 * @return string
+	 */
 	protected function headerContent() {
 		return
 			//$this->accessibilityLinks() .
@@ -61,12 +88,20 @@ class MinimalTheme extends BaseTheme {
 			$this->formatSecondaryMenu();
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * A small "powered by webtrees" logo for the footer.
+	 *
+	 * @return string
+	 */
 	protected function logoPoweredBy() {
 		return '<a href="' . WT_WEBTREES_URL . '" class="powered-by-webtrees" title="' . WT_WEBTREES_URL . '">' . WT_WEBTREES . '</a>';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Allow themes to add extra scripts to the page footer.
+	 *
+	 * @return string
+	 */
 	public function hookFooterExtraJavascript() {
 		return
 			'<script src="' . WT_JQUERY_COLORBOX_URL . '"></script>' .
@@ -84,7 +119,13 @@ class MinimalTheme extends BaseTheme {
 			'</script>';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Misecellaneous dimensions, fonts, styles, etc.
+	 *
+	 * @param string $parameter_name
+	 *
+	 * @return string|int|float
+	 */
 	public function parameter($parameter_name) {
 		$parameters = array(
 			'chart-background-f'             => 'dddddd',
@@ -100,7 +141,11 @@ class MinimalTheme extends BaseTheme {
 		}
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * A list of CSS files to include for this page.
+	 *
+	 * @return string[]
+	 */
 	protected function stylesheets() {
 		return array(
 			'themes/minimal/jquery-ui-1.11.2/jquery-ui.css',
@@ -108,12 +153,20 @@ class MinimalTheme extends BaseTheme {
 		);
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * A fixed string to identify this theme, in settings, etc.
+	 *
+	 * @return string
+	 */
 	public function themeId() {
 		return 'minimal';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * What is this theme called?
+	 *
+	 * @return string
+	 */
 	public function themeName() {
 		return /* I18N: Name of a theme. */ I18N::translate('minimal');
 	}

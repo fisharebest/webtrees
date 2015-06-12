@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module\ClippingsCart;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,11 +13,13 @@ namespace Fisharebest\Webtrees\Module\ClippingsCart;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module\ClippingsCart;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsExport;
 use Fisharebest\Webtrees\GedcomRecord;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
@@ -31,7 +31,7 @@ use PclZip;
  * The clippings cart.
  */
 class ClippingsCartController {
-	/** @var string  */
+	/** @var string Data to be downloaded. */
 	private $download_data;
 
 	/** @var string[] List of files to include */
@@ -64,6 +64,9 @@ class ClippingsCartController {
 	/** @var int The number of descendent generations to add */
 	public $level3;
 
+	/** @var string[][] The contents of the cart */
+	private $cart;
+
 	/**
 	 * Create the clippings controller
 	 */
@@ -71,9 +74,10 @@ class ClippingsCartController {
 		global $WT_TREE;
 
 		// Our cart is an array of items in the session
-		$cart = Session::get('cart', array());
-		if (!array_key_exists($WT_TREE->getTreeId(), $cart)) {
-			$cart[$WT_TREE->getTreeId()] = array();
+		$this->cart = Session::get('cart', array());
+
+		if (!array_key_exists($WT_TREE->getTreeId(), $this->cart)) {
+			$this->cart[$WT_TREE->getTreeId()] = array();
 		}
 
 		$this->action           = Filter::get('action');
@@ -155,16 +159,16 @@ class ClippingsCartController {
 						$this->addFamilyDescendancy($family, $this->level3);
 					}
 				}
-				uksort($cart[$WT_TREE->getTreeId()], array($this, 'compareClippings'));
+				uksort($this->cart[$WT_TREE->getTreeId()], array($this, 'compareClippings'));
 			}
 		} elseif ($this->action === 'remove') {
-			unset($cart[$WT_TREE->getTreeId()][$this->id]);
+			unset($this->cart[$WT_TREE->getTreeId()][$this->id]);
 		} elseif ($this->action === 'empty') {
-			$cart[$WT_TREE->getTreeId()] = array();
+			$this->cart[$WT_TREE->getTreeId()] = array();
 		} elseif ($this->action === 'download') {
 			$media      = array();
 			$mediacount = 0;
-			$filetext   = gedcom_header($WT_TREE);
+			$filetext   = FunctionsExport::gedcomHeader($WT_TREE);
 			// Include SUBM/SUBN records, if they exist
 			$subn =
 				Database::prepare("SELECT o_gedcom FROM `##other` WHERE o_type=? AND o_file=?")
@@ -200,7 +204,7 @@ class ClippingsCartController {
 				break;
 			}
 
-			foreach (array_keys($cart[$WT_TREE->getTreeId()]) as $xref) {
+			foreach (array_keys($this->cart[$WT_TREE->getTreeId()]) as $xref) {
 				$object = GedcomRecord::getInstance($xref, $WT_TREE);
 				// The object may have been deleted since we added it to the cart....
 				if ($object) {
@@ -208,23 +212,23 @@ class ClippingsCartController {
 					// Remove links to objects that aren't in the cart
 					preg_match_all('/\n1 ' . WT_REGEX_TAG . ' @(' . WT_REGEX_XREF . ')@(\n[2-9].*)*/', $record, $matches, PREG_SET_ORDER);
 					foreach ($matches as $match) {
-						if (!array_key_exists($match[1], $cart[$WT_TREE->getTreeId()])) {
+						if (!array_key_exists($match[1], $this->cart[$WT_TREE->getTreeId()])) {
 							$record = str_replace($match[0], '', $record);
 						}
 					}
 					preg_match_all('/\n2 ' . WT_REGEX_TAG . ' @(' . WT_REGEX_XREF . ')@(\n[3-9].*)*/', $record, $matches, PREG_SET_ORDER);
 					foreach ($matches as $match) {
-						if (!array_key_exists($match[1], $cart[$WT_TREE->getTreeId()])) {
+						if (!array_key_exists($match[1], $this->cart[$WT_TREE->getTreeId()])) {
 							$record = str_replace($match[0], '', $record);
 						}
 					}
 					preg_match_all('/\n3 ' . WT_REGEX_TAG . ' @(' . WT_REGEX_XREF . ')@(\n[4-9].*)*/', $record, $matches, PREG_SET_ORDER);
 					foreach ($matches as $match) {
-						if (!array_key_exists($match[1], $cart[$WT_TREE->getTreeId()])) {
+						if (!array_key_exists($match[1], $this->cart[$WT_TREE->getTreeId()])) {
 							$record = str_replace($match[0], '', $record);
 						}
 					}
-					$record      = convert_media_path($record, $this->conv_path);
+					$record      = FunctionsExport::convertMediaPath($record, $this->conv_path);
 					$savedRecord = $record; // Save this for the "does this file exist" check
 					if ($convert === 'yes') {
 						$record = utf8_decode($record);
@@ -265,7 +269,6 @@ class ClippingsCartController {
 					}
 				}
 			}
-			Session::put('cart', $cart);
 
 			if ($this->IncludeMedia === "yes") {
 				$this->media_list = $media;
@@ -283,6 +286,7 @@ class ClippingsCartController {
 			$this->download_data = $filetext;
 			$this->downloadClipping();
 		}
+		Session::put('cart', $this->cart);
 	}
 
 	/**
@@ -343,14 +347,12 @@ class ClippingsCartController {
 	 */
 	public function addClipping(GedcomRecord $record) {
 		if ($record->canShowName()) {
-			$cart                                                      = Session::get('cart');
-			$cart[$record->getTree()->getTreeId()][$record->getXref()] = true;
+			$this->cart[$record->getTree()->getTreeId()][$record->getXref()] = true;
 			// Add directly linked records
 			preg_match_all('/\n\d (?:OBJE|NOTE|SOUR|REPO) @(' . WT_REGEX_XREF . ')@/', $record->getGedcom(), $matches);
 			foreach ($matches[1] as $match) {
-				$cart[$record->getTree()->getTreeId()][$match] = true;
+				$this->cart[$record->getTree()->getTreeId()][$match] = true;
 			}
-			Session::put('cart', $cart);
 		}
 	}
 

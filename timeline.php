@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,8 +13,11 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 use Fisharebest\Webtrees\Controller\TimelineController;
+use Fisharebest\Webtrees\Functions\Functions;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
 $basexoffset = 0;
 $baseyoffset = 0;
@@ -293,7 +294,7 @@ document.onmouseup = function () {
 			<td class="list_value" style="padding: 5px;" valign="top">
 				<?php echo I18N::translate('Add another individual to the chart'), '<br>'; ?>
 				<input class="pedigree_form" data-autocomplete-type="INDI" type="text" size="5" id="newpid" name="newpid">
-				<?php echo print_findindi_link('newpid'); ?>
+				<?php echo FunctionsPrint::printFindIndividualLink('newpid'); ?>
 				<br>
 				<br>
 
@@ -341,7 +342,7 @@ if (count($controller->people) > 0) {
 		echo "<div id=\"scale{$controller->topyear}\" style=\"position:absolute; " . (I18N::direction() === 'ltr' ? "left: $basexoffset" : "right: $basexoffset") . "px; top:" . ($baseyoffset + (($controller->topyear - $controller->baseyear) * $controller->scale)) . "px; font-size: 7pt; text-align:" . (I18N::direction() === 'ltr' ? 'left' : 'right') . ";\">";
 		echo $controller->topyear . '—';
 		echo '</div>';
-		sort_facts($controller->indifacts);
+		Functions::sortFacts($controller->indifacts);
 		$factcount = 0;
 		foreach ($controller->indifacts as $fact) {
 			$controller->printTimeFact($fact);

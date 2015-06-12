@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,8 +13,12 @@ namespace Fisharebest\Webtrees\Module;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsDb;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Stats;
 use Fisharebest\Webtrees\Theme;
@@ -35,8 +37,16 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		return /* I18N: Description of “Statistics” module */ I18N::translate('The size of the family tree, earliest and latest events, common names, etc.');
 	}
 
-	/** {@inheritdoc} */
-	public function getBlock($block_id, $template = true, $cfg = null) {
+	/**
+	 * Generate the HTML content of this block.
+	 *
+	 * @param int      $block_id
+	 * @param bool     $template
+	 * @param string[] $cfg
+	 *
+	 * @return string
+	 */
+	public function getBlock($block_id, $template = true, $cfg = array()) {
 		global $WT_TREE, $ctype;
 
 		$show_last_update     = $this->getBlockSetting($block_id, 'show_last_update', '1');
@@ -62,11 +72,9 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		$block     = '0';
 		$stat_link = '1';
 
-		if ($cfg) {
-			foreach (array('show_common_surnames', 'stat_indi', 'stat_fam', 'stat_sour', 'stat_media', 'stat_surname', 'stat_events', 'stat_users', 'stat_first_birth', 'stat_last_birth', 'stat_first_death', 'stat_last_death', 'stat_long_life', 'stat_avg_life', 'stat_most_chil', 'stat_avg_chil', 'stat_link', 'block') as $name) {
-				if (array_key_exists($name, $cfg)) {
-					$$name = $cfg[$name];
-				}
+		foreach (array('show_common_surnames', 'stat_indi', 'stat_fam', 'stat_sour', 'stat_media', 'stat_surname', 'stat_events', 'stat_users', 'stat_first_birth', 'stat_last_birth', 'stat_first_death', 'stat_last_death', 'stat_long_life', 'stat_avg_life', 'stat_most_chil', 'stat_avg_chil', 'stat_link', 'block') as $name) {
+			if (array_key_exists($name, $cfg)) {
+				$$name = $cfg[$name];
 			}
 		}
 
@@ -187,7 +195,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		}
 		// NOTE: Print the most common surnames
 		if ($show_common_surnames) {
-			$surnames = get_common_surnames($WT_TREE->getPreference('COMMON_NAMES_THRESHOLD'), $WT_TREE);
+			$surnames = FunctionsDb::getCommonSurnames($WT_TREE->getPreference('COMMON_NAMES_THRESHOLD'), $WT_TREE);
 			if (count($surnames) > 0) {
 				$content .= '<p><b>' . I18N::translate('Most common surnames') . '</b></p>';
 				$content .= '<div class="common_surnames">';
@@ -226,7 +234,11 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		return true;
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * An HTML form to edit block settings
+	 *
+	 * @param int $block_id
+	 */
 	public function configureBlock($block_id) {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
 			$this->setBlockSetting($block_id, 'show_last_update', Filter::postBool('show_last_update'));
@@ -272,13 +284,13 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo /* I18N: label for yes/no option */ I18N::translate('Show date of last update?');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('show_last_update', $show_last_update);
+		echo FunctionsEdit::editFieldYesNo('show_last_update', $show_last_update);
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Show common surnames?');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('show_common_surnames', $show_common_surnames);
+		echo FunctionsEdit::editFieldYesNo('show_common_surnames', $show_common_surnames);
 		echo '</td></tr>';
 
 ?>

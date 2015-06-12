@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,9 +13,13 @@ namespace Fisharebest\Webtrees\Module;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Media;
@@ -37,8 +39,16 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 		return /* I18N: Description of the “Slide show” module */ I18N::translate('Random images from the current family tree.');
 	}
 
-	/** {@inheritdoc} */
-	public function getBlock($block_id, $template = true, $cfg = null) {
+	/**
+	 * Generate the HTML content of this block.
+	 *
+	 * @param int      $block_id
+	 * @param bool     $template
+	 * @param string[] $cfg
+	 *
+	 * @return string
+	 */
+	public function getBlock($block_id, $template = true, $cfg = array()) {
 		global $ctype, $WT_TREE;
 
 		$filter   = $this->getBlockSetting($block_id, 'filter', 'all');
@@ -173,7 +183,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 				$content .= '<a href="' . $source->getHtmlUrl() . '">' . I18N::translate('View source') . ' — ' . $source->getFullname() . '</a><br>';
 			}
 			$content .= '<br><div class="indent">';
-			$content .= print_fact_notes($random_media->getGedcom(), "1", false);
+			$content .= FunctionsPrint::printFactNotes($random_media->getGedcom(), "1", false);
 			$content .= '</div>';
 			$content .= '</td></tr></table>';
 			$content .= '</div>'; // random_picture_content
@@ -203,7 +213,11 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 		return true;
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * An HTML form to edit block settings
+	 *
+	 * @param int $block_id
+	 */
 	public function configureBlock($block_id) {
 		if (Filter::postBool('save') && Filter::checkCsrf()) {
 			$this->setBlockSetting($block_id, 'filter', Filter::post('filter', 'indi|event|all', 'all'));
@@ -247,7 +261,7 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Show only individuals, events, or all?');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('filter', array('indi' => I18N::translate('Individuals'), 'event' => I18N::translate('Facts and events'), 'all' => I18N::translate('All')), null, $filter, '');
+		echo FunctionsEdit::selectEditControl('filter', array('indi' => I18N::translate('Individuals'), 'event' => I18N::translate('Facts and events'), 'all' => I18N::translate('All')), null, $filter, '');
 		echo '</td></tr>';
 
 		$filters = array(
@@ -393,13 +407,13 @@ class SlideShowModule extends AbstractModule implements ModuleBlockInterface {
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Show slide show controls?');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('controls', $controls);
+		echo FunctionsEdit::editFieldYesNo('controls', $controls);
 		echo '</td></tr>';
 
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo I18N::translate('Start slide show on page load?');
 		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('start', $start);
+		echo FunctionsEdit::editFieldYesNo('start', $start);
 		echo '</td></tr>';
 	}
 }

@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 /**
  * Defined in session.php
@@ -22,6 +21,8 @@ namespace Fisharebest\Webtrees;
  * @global Tree $WT_TREE
  */
 global $WT_TREE;
+
+use Fisharebest\Webtrees\Functions\FunctionsMedia;
 
 define('WT_SCRIPT_NAME', 'mediafirewall.php');
 require './includes/session.php';
@@ -89,6 +90,8 @@ function applyWatermark($im, Tree $tree) {
 }
 
 /**
+ * Embed text into an image.
+ *
  * @param resource $im
  * @param string   $text
  * @param int      $maxsize
@@ -201,6 +204,8 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 }
 
 /**
+ * Generate an approximate length of text, in pixels.
+ *
  * @param int    $t
  * @param int    $mxl
  * @param string $text
@@ -314,7 +319,7 @@ if ($type) {
 
 // determine whether we have enough memory to watermark this image
 if ($usewatermark) {
-	if (!hasMemoryForImage($serverFilename)) {
+	if (!FunctionsMedia::hasMemoryForImage($serverFilename)) {
 		// not enough memory to watermark this file
 		$usewatermark = false;
 	}

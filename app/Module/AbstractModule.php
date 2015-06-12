@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Module;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,8 @@ namespace Fisharebest\Webtrees\Module;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Module;
+
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Tree;
@@ -43,6 +43,8 @@ abstract class AbstractModule {
 	}
 
 	/**
+	 * Get a block setting.
+	 * 
 	 * @param int         $block_id
 	 * @param string      $setting_name
 	 * @param string|null $default_value
@@ -61,6 +63,8 @@ abstract class AbstractModule {
 	}
 
 	/**
+	 * Set a block setting.
+	 *
 	 * @param int         $block_id
 	 * @param string      $setting_name
 	 * @param string|null $setting_value

@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 /**
  * Defined in session.php
@@ -24,6 +23,8 @@ namespace Fisharebest\Webtrees;
 global $WT_TREE;
 
 use Fisharebest\Webtrees\Controller\FamilyBookController;
+use Fisharebest\Webtrees\Functions\FunctionsEdit;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
 define('WT_SCRIPT_NAME', 'familybook.php');
 require './includes/session.php';
@@ -47,13 +48,13 @@ $controller
 					</td>
 					<td class="optionbox">
 						<input class="pedigree_form" data-autocomplete-type="INDI" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
-						<?php echo print_findindi_link('rootid'); ?>
+						<?php echo FunctionsPrint::printFindIndividualLink('rootid'); ?>
 					</td>
 					<td class="descriptionbox">
 						<?php echo I18N::translate('Show details'); ?>
 					</td>
 					<td class="optionbox">
-						<?php echo two_state_checkbox("show_full", $controller->showFull()); ?>
+						<?php echo FunctionsEdit::twoStateCheckbox("show_full", $controller->showFull()); ?>
 		  			</td>
 					<td rowspan="3" class="topbottombar vmiddle">
 						<input type="submit" value="<?php echo /* I18N: Submit button, on a form */ I18N::translate('View'); ?>">

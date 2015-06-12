@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Controller;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,39 +13,45 @@ namespace Fisharebest\Webtrees\Controller;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Controller;
 
 use Fisharebest\Webtrees\Filter;
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Theme;
 
 /**
- * Class HourglassController - Controller for the hourglass chart
+ * Controller for the hourglass chart
  */
 class HourglassController extends ChartController {
-	/** @var int Whether to show spouse details */
+	/** @var int Whether to show spouse details. */
 	public $show_spouse;
 
-	/** @var int Number of ascendancy generations to show */
+	/** @var int Number of ascendancy generations to show. */
 	public $generations;
 
-	/** @var int Number of descendancy generations that exist */
+	/** @var int Number of descendancy generations that exist. */
 	private $dgenerations;
 
-	/** @var int Half height of personbox */
+	/** @var int Half height of personbox. */
 	public $bhalfheight;
 
-	// Left and right get reversed on RTL pages
+	/** @var string An arrow that points to the start of the line */
 	private $left_arrow;
+
+	/** @var string An arrow that points to the end of the line. */
 	private $right_arrow;
 
-	/** @var bool Can the Javascript be loaded by the controller */
+	/** @var bool Can the Javascript be loaded by the controller. */
 	private $canLoadJS;
 
 	const LINK        = "<a class='%s' href='%s' data-parms='%s-%s-%s'></a>";
 	const SWITCH_LINK = "<a href='hourglass.php?rootid=%s&amp;show_spouse=%s&amp;show_full=%s&amp;generations=%s' class='name1'>%s</a>";
 
 	/**
+	 * Create the hourglass controller.
+	 *
 	 * @param string $rootid
 	 * @param int    $show_full
 	 * @param bool   $loadJS
@@ -120,7 +124,7 @@ class HourglassController extends ChartController {
 			echo '<td><img class="line4" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3"></td>';
 			echo '<td>';
 			//-- print the father box
-			print_pedigree_person($family->getHusband(), $this->showFull());
+			FunctionsPrint::printPedigreePerson($family->getHusband(), $this->showFull());
 			echo "</td>";
 			if ($family->getHusband()) {
 				$ARID = $family->getHusband()->getXref();
@@ -152,7 +156,7 @@ class HourglassController extends ChartController {
 				'<td><img class="line4" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3" alt=""></td>',
 			'<td>';
 			//-- print the mother box
-			print_pedigree_person($family->getWife(), $this->showFull());
+			FunctionsPrint::printPedigreePerson($family->getWife(), $this->showFull());
 			echo '</td>';
 			if ($family->getWife()) {
 				$ARID = $family->getWife()->getXref();
@@ -285,7 +289,7 @@ class HourglassController extends ChartController {
 		}
 
 		echo '<table id="table2_' . $pid . '"><tr><td>';
-		print_pedigree_person($person, $this->showFull());
+		FunctionsPrint::printPedigreePerson($person, $this->showFull());
 		echo '</td><td><img class="line2" src="' . Theme::theme()->parameter('image-hline') . '" width="7" height="3">';
 
 		//----- Print the spouse
@@ -297,7 +301,7 @@ class HourglassController extends ChartController {
 				$temph = $this->getBoxDimensions()->height;
 				$this->getBoxDimensions()->width -= 10;
 				$this->getBoxDimensions()->height -= 10;
-				print_pedigree_person($family->getSpouse($person), $this->showFull());
+				FunctionsPrint::printPedigreePerson($family->getSpouse($person), $this->showFull());
 				$this->getBoxDimensions()->width  = $tempw;
 				$this->getBoxDimensions()->height = $temph;
 				$numkids += 0.95;

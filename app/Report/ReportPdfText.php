@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Report;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,9 @@ namespace Fisharebest\Webtrees\Report;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Report;
+
+use Fisharebest\Webtrees\Functions\FunctionsRtl;
 
 /**
  * Class ReportPdfText
@@ -44,7 +45,7 @@ class ReportPdfText extends ReportBaseText {
 		} else {
 			$renderer->SetTextColor(0, 0, 0);
 		}
-		$temptext = spanLTRRTL($temptext, "BOTH");
+		$temptext = FunctionsRtl::spanLtrRtl($temptext, "BOTH");
 		$temptext = str_replace(
 			array('<br><span dir="rtl" >', '<br><span dir="ltr" >', '> ', ' <'),
 			array('<span dir="rtl" ><br>', '<span dir="ltr" ><br>', '>&nbsp;', '&nbsp;<'),

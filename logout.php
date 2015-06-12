@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 define('WT_SCRIPT_NAME', 'logout.php');
 require './includes/session.php';
@@ -22,6 +21,7 @@ require './includes/session.php';
 if (Auth::id()) {
 	Log::addAuthenticationLog('Logout: ' . Auth::user()->getUserName() . '/' . Auth::user()->getRealName());
 	Auth::logout();
+	FlashMessages::addMessage(I18N::translate('You are logged out.'), 'info');
 }
 
 header('Location: ' . WT_BASE_URL);

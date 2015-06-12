@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Controller;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,21 +13,28 @@ namespace Fisharebest\Webtrees\Controller;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Controller;
+
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Date;
+use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 use Fisharebest\Webtrees\GedcomTag;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Individual;
 use Fisharebest\Webtrees\Soundex;
 
 /**
- * Class AdvancedSearchController - Controller for the advanced search page
+ * Controller for the advanced search page
  */
 class AdvancedSearchController extends SearchController {
+	/** @var string[] Fields to search */
 	public $fields    = array();
+
+	/** @var string[] Field values to search */
 	public $values    = array();
+
+	/** @var int[] Range of days either side of target date */
 	public $plusminus = array();
-	public $errors    = array();
 
 	/**
 	 * Startup activity
@@ -166,6 +171,8 @@ class AdvancedSearchController extends SearchController {
 	}
 
 	/**
+	 * Get the value.
+	 *
 	 * @param int $i
 	 *
 	 * @return string
@@ -180,6 +187,8 @@ class AdvancedSearchController extends SearchController {
 	}
 
 	/**
+	 * Get the field.
+	 *
 	 * @param int $i
 	 *
 	 * @return string
@@ -194,6 +203,8 @@ class AdvancedSearchController extends SearchController {
 	}
 
 	/**
+	 * Get the index.
+	 *
 	 * @param string $field
 	 *
 	 * @return int
@@ -203,6 +214,8 @@ class AdvancedSearchController extends SearchController {
 	}
 
 	/**
+	 * Get the label.
+	 *
 	 * @param string $tag
 	 *
 	 * @return string
@@ -634,11 +647,13 @@ class AdvancedSearchController extends SearchController {
 		}
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Display the search results
+	 */
 	public function printResults() {
 		if ($this->myindilist) {
 			uasort($this->myindilist, '\Fisharebest\Webtrees\GedcomRecord::compare');
-			echo format_indi_table($this->myindilist);
+			echo FunctionsPrintLists::individualTable($this->myindilist);
 		} elseif (array_filter($this->values)) {
 			echo '<p class="ui-state-highlight">', I18N::translate('No results found.'), '</p>';
 		}

@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,15 +13,23 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 /**
- * Class Repository - Class file for a Repository (REPO) object
+ * A GEDCOM repository (REPO) object.
  */
 class Repository extends GedcomRecord {
 	const RECORD_TYPE = 'REPO';
 	const URL_PREFIX  = 'repo.php?rid=';
 
-	/** {@inheritdoc} */
+	/**
+	 * Fetch data from the database
+	 *
+	 * @param string $xref
+	 * @param int    $tree_id
+	 *
+	 * @return null|string
+	 */
 	protected static function fetchGedcomRecord($xref, $tree_id) {
 		return Database::prepare(
 			"SELECT o_gedcom FROM `##other` WHERE o_id = :xref AND o_file = :tree_id AND o_type = 'REPO'"
@@ -33,12 +39,20 @@ class Repository extends GedcomRecord {
 		))->fetchOne();
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Generate a private version of this record
+	 *
+	 * @param int $access_level
+	 *
+	 * @return string
+	 */
 	protected function createPrivateGedcomRecord($access_level) {
 		return '0 @' . $this->xref . "@ REPO\n1 NAME " . I18N::translate('Private');
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Extract names from the GEDCOM record.
+	 */
 	public function extractNames() {
 		parent::extractNamesFromFacts(1, 'NAME', $this->getFacts('NAME'));
 	}

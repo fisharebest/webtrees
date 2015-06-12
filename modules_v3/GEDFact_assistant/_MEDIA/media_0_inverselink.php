@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 /**
  * Defined in session.php
@@ -22,6 +21,8 @@ namespace Fisharebest\Webtrees;
  * @global Tree $WT_TREE
  */
 global $WT_TREE;
+
+use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
 $more_links  = Filter::get('more_links');
 $exist_links = Filter::get('exist_links');
@@ -167,9 +168,9 @@ if ($action == 'choose' && $paramok) {
 	echo '</td><td style="padding-bottom: 2px; vertical-align: middle;">';
 	echo '&nbsp;';
 	echo '<img style="border-style:none;" src="', Theme::theme()->parameter('image-add'), '" alt="', I18N::translate('Add'), ' " title="', I18N::translate('Add'), '" align="middle" name="addLink" value="" onclick="blankwin(); return false;">';
-	echo ' ', print_findindi_link('gid');
-	echo ' ', print_findfamily_link('gid');
-	echo ' ', print_findsource_link('gid');
+	echo ' ', FunctionsPrint::printFindIndividualLink('gid');
+	echo ' ', FunctionsPrint::printFindFamilyLink('gid');
+	echo ' ', FunctionsPrint::printFindSourceLink('gid');
 	echo '</td></tr></table>';
 	echo "<sub>" . I18N::translate('Enter or search for the ID of the individual, family, or source to which this media item should be linked.') . "</sub>";
 	echo '<br><br>';

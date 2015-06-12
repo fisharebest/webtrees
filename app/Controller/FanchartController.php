@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Controller;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees\Controller;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Controller;
 
 use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Filter;
@@ -23,7 +22,7 @@ use Fisharebest\Webtrees\Module;
 use Fisharebest\Webtrees\Theme;
 
 /**
- * Class FanchartController Controller for the fan chart
+ * Controller for the fan chart
  */
 class FanchartController extends ChartController {
 	/** @var int Style of fanchart */

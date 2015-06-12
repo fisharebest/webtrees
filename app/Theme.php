@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,23 +13,25 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-use Fisharebest\Webtrees\Theme\BaseTheme;
+namespace Fisharebest\Webtrees;
+
+use Fisharebest\Webtrees\Theme\ThemeInterface;
 
 /**
- * Class Theme - provide access to the current theme.
+ * Provide access to the current theme.
  */
 class Theme {
-	/** @var BaseTheme The current theme*/
+	/** @var ThemeInterface The current theme*/
 	private static $theme;
 
-	/** @var BaseTheme[] All currently installed themes */
+	/** @var ThemeInterface[] All currently installed themes */
 	private static $installed_themes;
 
 	/**
 	 * Create a list of all themes available on the system, including
 	 * any custom themes.
 	 *
-	 * @return BaseTheme[]
+	 * @return ThemeInterface[]
 	 */
 	public static function installedThemes() {
 		if (self::$installed_themes === null) {
@@ -69,13 +69,13 @@ class Theme {
 	/**
 	 * The currently active theme
 	 *
-	 * @param BaseTheme|null $theme
+	 * @param ThemeInterface|null $theme
 	 *
 	 * @throws \LogicException
 	 *
-	 * @return BaseTheme
+	 * @return ThemeInterface
 	 */
-	public static function theme(BaseTheme $theme = null) {
+	public static function theme(ThemeInterface $theme = null) {
 
 		if ($theme) {
 			self::$theme = $theme;

@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 use Zend_Mail;
 use Zend_Mail_Transport_File;
@@ -22,7 +21,7 @@ use Zend_Mail_Transport_Sendmail;
 use Zend_Mail_Transport_Smtp;
 
 /**
- * Class Mail - Send mail messages
+ * Send mail messages.
  */
 class Mail {
 	const EOL = "<br>\r\n"; // End-of-line that works for both TEXT and HTML messages

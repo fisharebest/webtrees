@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees\Theme;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,30 +13,50 @@ namespace Fisharebest\Webtrees\Theme;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees\Theme;
+
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Menu;
 
 /**
- * Class FabTheme - The F.A.B. theme.
+ * The F.A.B. theme.
  */
-class FabTheme extends BaseTheme {
-	/** {@inheritdoc} */
+class FabTheme extends AbstractTheme implements ThemeInterface {
+	/**
+	 * Where are our CSS, JS and other assets?
+	 *
+	 * @return string A relative path, such as "themes/foo/"
+	 */
 	public function assetUrl() {
 		return 'themes/fab/css-1.7.0/';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * HTML link to a "favorites icon".
+	 *
+	 * @return string
+	 */
 	protected function favicon() {
 		return '<link rel="icon" href="' . $this->assetUrl() . 'favicon.png" type="image/png">';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Add markup to a flash message.
+	 *
+	 * @param \stdClass $message
+	 *
+	 * @return string
+	 */
 	protected function flashMessageContainer(\stdClass $message) {
 		// This theme uses jQuery markup.
 		return '<p class="ui-state-highlight">' . $message->text . '</p>';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Add markup to the secondary menu.
+	 *
+	 * @return string
+	 */
 	protected function formatSecondaryMenu() {
 		return
 			'<ul class="secondary-menu">' .
@@ -48,7 +66,12 @@ class FabTheme extends BaseTheme {
 			'</li>' .
 			'</ul>';
 	}
-	/** {@inheritdoc} */
+
+	/**
+	 * Create the contents of the <header> tag.
+	 *
+	 * @return string
+	 */
 	protected function headerContent() {
 		return
 			//$this->accessibilityLinks() .
@@ -56,18 +79,32 @@ class FabTheme extends BaseTheme {
 			$this->formatSecondaryMenu();
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Add markup to an item in the secondary menu.
+	 *
+	 * @param Menu $menu
+	 *
+	 * @return string
+	 */
 	protected function formatSecondaryMenuItem(Menu $menu) {
 		return $menu->getMenuAsList();
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Create a search field and submit button for the quick search form in the header.
+	 *
+	 * @return string
+	 */
 	protected function formQuickSearchFields() {
 		return
 			'<input type="search" name="query" size="20" placeholder="' . I18N::translate('Search') . '">';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Allow themes to add extra scripts to the page footer.
+	 *
+	 * @return string
+	 */
 	public function hookFooterExtraJavascript() {
 		return
 			'<script src="' . WT_JQUERY_COLORBOX_URL . '"></script>' .
@@ -85,7 +122,13 @@ class FabTheme extends BaseTheme {
 			'</script>';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * Misecellaneous dimensions, fonts, styles, etc.
+	 *
+	 * @param string $parameter_name
+	 *
+	 * @return string|int|float
+	 */
 	public function parameter($parameter_name) {
 		$parameters = array(
 			'chart-background-f'             => 'e9daf1',
@@ -103,7 +146,11 @@ class FabTheme extends BaseTheme {
 		}
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * A list of CSS files to include for this page.
+	 *
+	 * @return string[]
+	 */
 	protected function stylesheets() {
 		return array(
 			'themes/fab/jquery-ui-1.11.2/jquery-ui.css',
@@ -111,12 +158,20 @@ class FabTheme extends BaseTheme {
 		);
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * A fixed string to identify this theme, in settings, etc.
+	 *
+	 * @return string
+	 */
 	public function themeId() {
 		return 'fab';
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * What is this theme called?
+	 *
+	 * @return string
+	 */
 	public function themeName() {
 		return /* I18N: Name of a theme. */ I18N::translate('F.A.B.');
 	}

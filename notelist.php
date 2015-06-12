@@ -1,6 +1,4 @@
 <?php
-namespace Fisharebest\Webtrees;
-
 /**
  * webtrees: online genealogy
  * Copyright (C) 2015 webtrees development team
@@ -15,6 +13,7 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Fisharebest\Webtrees;
 
 /**
  * Defined in session.php
@@ -24,6 +23,8 @@ namespace Fisharebest\Webtrees;
 global $WT_TREE;
 
 use Fisharebest\Webtrees\Controller\PageController;
+use Fisharebest\Webtrees\Functions\FunctionsDb;
+use Fisharebest\Webtrees\Functions\FunctionsPrintLists;
 
 define('WT_SCRIPT_NAME', 'notelist.php');
 require './includes/session.php';
@@ -34,5 +35,5 @@ $controller->pageHeader();
 
 echo '<div id="notelist-page">',
 	'<h2>', I18N::translate('Shared notes'), '</h2>',
-	format_note_table(get_note_list($WT_TREE));
+	FunctionsPrintLists::noteTable(FunctionsDb::getNoteList($WT_TREE));
 echo '</div>';
