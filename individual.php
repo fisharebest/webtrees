@@ -80,17 +80,23 @@ if ($controller->record && $controller->record->canShow()) {
 				'</p>';
 		}
 	}
-} elseif ($controller->record && $controller->record->canShowName()) {
+} else if ($controller->record && $controller->record->canShowName()) {
 	// Just show the name.
 	$controller->pageHeader();
 	echo '<h2>', $controller->record->getFullName(), '</h2>';
 	echo '<p class="ui-state-highlight">', I18N::translate('The details of this individual are private.'), '</p>';
 
+	return; 
+} else if ($controller->record && !($controller->record->canShowName())) {
+	http_response_code(403);
+	$controller->pageHeader();
+	echo '<p class="ui-state-error">', I18N::translate('You do not have permission to view this individual.'), '</p>';
+	
 	return;
 } else {
 	http_response_code(404);
 	$controller->pageHeader();
-	echo '<p class="ui-state-error">', I18N::translate('This individual does not exist or you do not have permission to view it.'), '</p>';
+	echo '<p class="ui-state-error">', I18N::translate('This individual does not exist.'), '</p>';
 
 	return;
 }
