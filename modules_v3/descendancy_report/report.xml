@@ -5,8 +5,8 @@
 	<Input name="pid" lookup="INDI" type="text" default=""><var var="I18N::translate('Individual')" /></Input>
 	<Input name="maxgen" type="select" options="3=>I18N::number(3)|4=>I18N::number(4)|5=>I18N::number(5)|6=>I18N::number(6)|7=>I18N::number(7)|8=>I18N::number(8)|9=>I18N::number(9)|10=>I18N::number(10)|*=>I18N::translate('All')"><var var="I18N::translate('Generations')" /></Input>
 	<Input name="sources" type="checkbox" default="1"><var var="I18N::translate('Show sources?')" /></Input>
-	<Input name="pageSize" type="select" default="A4" options="letter=>I18N::translate_c('paper size','Letter')|A3=>I18N::translate_c('paper size', 'A3')|A4=>I18N::translate_c('paper size','A4')|legal=>I18N::translate_c('paper size','Legal')"><var var="I18N::translate('Page size')" /></Input>
-	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>I18N::translate_c('font name', 'Arial')|dejavusans=>I18N::translate_c('font name', 'DejaVu')|helvetica=>I18N::translate_c('font name', 'Helvetica')"><var var="I18N::translate('Font')"/></Input>
+	<Input name="pageSize" type="select" default="A4" options="letter=>I18N::translateContext('paper size','Letter')|A3=>I18N::translateContext('paper size', 'A3')|A4=>I18N::translateContext('paper size','A4')|legal=>I18N::translateContext('paper size','Legal')"><var var="I18N::translate('Page size')" /></Input>
+	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>I18N::translateContext('font name', 'Arial')|dejavusans=>I18N::translateContext('font name', 'DejaVu')|helvetica=>I18N::translateContext('font name', 'Helvetica')"><var var="I18N::translate('Font')"/></Input>
 
 	<!-- Header -->
 	<Style name="header" font="$fonts" size="18"/>
@@ -98,10 +98,10 @@
 							<SetVar name="birtExists" value="true" />	
 							<SetVar name="printPeriod" value="true" />
 							<if condition="$gender=='male'">
-								<Text style="label1"> <var var="I18N::translate_c('MALE', 'was born')" /> </Text>
+								<Text style="label1"> <var var="I18N::translateContext('MALE', 'was born')" /> </Text>
 							</if>
 							<if condition="$gender=='female'">
-								<Text style="label1"> <var var="I18N::translate_c('FEMALE', 'was born')" /> </Text>
+								<Text style="label1"> <var var="I18N::translateContext('FEMALE', 'was born')" /> </Text>
 							</if>
 							<if condition="$sources==1">
 								<RepeatTag tag="BIRT:SOUR">
@@ -130,10 +130,10 @@
 								<Text style="label1"> <var var="I18N::translate('and')" /></Text>
 							</if>
 							<if condition="$gender=='male'">
-								<Text style="label1"> <var var="I18N::translate_c('MALE', 'died')" /> </Text>
+								<Text style="label1"> <var var="I18N::translateContext('MALE', 'died')" /> </Text>
 							</if>
 							<if condition="$gender=='female'">
-								<Text style="label1"> <var var="I18N::translate_c('FEMALE', 'died')" /> </Text>
+								<Text style="label1"> <var var="I18N::translateContext('FEMALE', 'died')" /> </Text>
 							</if>
 							<if condition="$sources==1">
 								<RepeatTag tag="DEAT:SOUR">
@@ -171,7 +171,7 @@
 											<Text style="label1">  <var var="I18N::translate('He married')" /> </Text>
 										</if>
 										<if condition="$printPronoun=='false'" >
-											<Text style="label1">  <var var="I18N::translate_c('MALE', 'married')" /> </Text>
+											<Text style="label1">  <var var="I18N::translateContext('MALE', 'married')" /> </Text>
 										</if>
 										<SetVar name="printPeriod" value="true" />
 										<if condition="$sources==1">
@@ -240,7 +240,7 @@
 											<Text style="label1">  <var var="I18N::translate('She married')" /> </Text>
 										</if>
 										<if condition="$printPronoun=='false'" >
-											<Text style="label1"> <var var="I18N::translate_c('FEMALE', 'married')" /> </Text>
+											<Text style="label1"> <var var="I18N::translateContext('FEMALE', 'married')" /> </Text>
 										</if>
 										<SetVar name="printPeriod" value="true" />
 										<if condition="$sources==1">
@@ -360,7 +360,7 @@
 												<if condition="$birtExist=='true'">
 													<Text style="label1"> <var var="I18N::translate('and')" /></Text>
 												</if>
-												<Text style="label1"> <var var="I18N::translate_c('FEMALE', 'died')" /> </Text>
+												<Text style="label1"> <var var="I18N::translateContext('FEMALE', 'died')" /> </Text>
 												<if condition="$sources==1">
 													<RepeatTag tag="DEAT:SOUR">
 														<Footnote>
@@ -430,7 +430,7 @@
 												<if condition="$birtExist=='true'">
 													<Text style="label1"> <var var="I18N::translate('and')" /></Text>
 												</if>
-												<Text style="label1"> <var var="I18N::translate_c('MALE', 'died')" /> </Text>
+												<Text style="label1"> <var var="I18N::translateContext('MALE', 'died')" /> </Text>
 												<if condition="$sources==1">
 													<RepeatTag tag="DEAT:SOUR">
 														<Footnote>

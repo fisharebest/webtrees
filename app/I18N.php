@@ -830,8 +830,8 @@ class I18N {
 	/**
 	 * Context sensitive version of translate.
 	 *
-	 * echo I18N::translate_c('NOMINATIVE', 'January');
-	 * echo I18N::translate_c('GENITIVE',   'January');
+	 * echo I18N::translateContext('NOMINATIVE', 'January');
+	 * echo I18N::translateContext('GENITIVE',   'January');
 	 *
 	 * @return string
 	 */
