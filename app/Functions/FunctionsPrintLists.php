@@ -1996,7 +1996,7 @@ class FunctionsPrintLists {
 			$html .= '<td>' . $record->getSortName() . '</td>';
 			$html .= '<td>' . $fact->getDate()->display(!Auth::isSearchEngine()) . '</td>';
 			$html .= '<td>' . $n . '</td>';
-			$html .= '<td>' . I18N::number($fact->anniv) . '</td>';
+			$html .= '<td>' . ($fact->anniv ? I18N::number($fact->anniv) : '') . '</td>';
 			$html .= '<td>' . $fact->anniv . '</td>';
 			$html .= '<td>' . $fact->getLabel() . '</td>';
 			$html .= '</tr>';
@@ -2113,7 +2113,7 @@ class FunctionsPrintLists {
 			$html .= '<br><div class="indent">';
 			$html .= $fact->getLabel() . ' — ' . $fact->getDate()->display(true);
 			if ($fact->anniv) {
-				$html .= ' (' . I18N::translate('%s year anniversary', $fact->anniv) . ')';
+				$html .= ' (' . I18N::translate('%s year anniversary', I18N::number($fact->anniv)) . ')';
 			}
 			if (!$fact->getPlace()->isEmpty()) {
 				$html .= ' — <a href="' . $fact->getPlace()->getURL() . '">' . $fact->getPlace()->getFullName() . '</a>';
