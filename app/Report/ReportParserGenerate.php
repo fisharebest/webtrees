@@ -1909,7 +1909,8 @@ class ReportParserGenerate extends ReportParserBase {
 							unset($attrs[$attr]); // This filter has been fully processed
 						} elseif (preg_match('/^REGEXP \/(.+)\//', $value, $match)) {
 							$sql_where .= " AND i_gedcom REGEXP :{$attr}gedcom";
-							$sql_params[$attr . 'gedcom'] = $match[1];
+							// PDO helpfully escapes backslashes for us, preventing us from matching "\n1 FACT"
+							$sql_params[$attr . 'gedcom'] = str_replace('\n', "\n", $match[1]);
 							unset($attrs[$attr]); // This filter has been fully processed
 						} elseif (preg_match('/^(?:\w+):PLAC CONTAINS (.+)$/', $value, $match)) {
 							$sql_join .= " JOIN `##places` AS {$attr}a ON ({$attr}a.p_file = i_file)";
@@ -1965,7 +1966,8 @@ class ReportParserGenerate extends ReportParserBase {
 							unset($attrs[$attr]); // This filter has been fully processed
 						} elseif (preg_match('/^REGEXP \/(.+)\//', $value, $match)) {
 							$sql_where .= " AND f_gedcom REGEXP :{$attr}gedcom";
-							$sql_params[$attr . 'gedcom'] = $match[1];
+							// PDO helpfully escapes backslashes for us, preventing us from matching "\n1 FACT"
+							$sql_params[$attr . 'gedcom'] = str_replace('\n', "\n", $match[1]);
 							unset($attrs[$attr]); // This filter has been fully processed
 						} elseif (preg_match('/^NAME CONTAINS (.+)$/', $value, $match)) {
 							// Do nothing, unless you have to
