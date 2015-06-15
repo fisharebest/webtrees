@@ -1873,7 +1873,7 @@ class ReportParserGenerate extends ReportParserBase {
 						// Convert the various filters into SQL
 						if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
 							$sql_join .= " JOIN `##dates` AS {$attr} ON ({$attr}.d_file=i_file AND {$attr}.d_gid=i_id)";
-							$sql_where .= " AND {$attr}.d_fact = :{$attr}fact'";
+							$sql_where .= " AND {$attr}.d_fact = :{$attr}fact";
 							$sql_params[$attr . 'fact'] = $match[1];
 							$date                       = new Date($match[3]);
 							if ($match[2] == "LTE") {
@@ -1948,7 +1948,7 @@ class ReportParserGenerate extends ReportParserBase {
 						$value = $this->substituteVars($value, false);
 						// Convert the various filters into SQL
 						if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
-							$sql_where .= " AND {$attr}.d_fact = :{$attr}fact'";
+							$sql_where .= " AND {$attr}.d_fact = :{$attr}fact";
 							$sql_params[$attr . 'fact'] = $match[1];
 							$date                       = new Date($match[3]);
 							if ($match[2] == "LTE") {
