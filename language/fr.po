@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-05-14 08:44+0100\n"
-"PO-Revision-Date: 2015-06-03 17:03+0100\n"
-"Last-Translator: Michel <gustine@laposte.net>\n"
+"PO-Revision-Date: 2015-06-16 10:54+0100\n"
+"Last-Translator: Michael <mike_jpr@outlook.com>\n"
 "Language-Team: French "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/fr/>\n"
 "Language: fr\n"
@@ -7861,7 +7861,7 @@ msgstr "Langage"
 #. I18N: Menu entry
 #: admin_site_config.php:143 app/Theme/AdministrationTheme.php:64
 msgid "Languages"
-msgstr "Langages"
+msgstr "Langues"
 
 #: app/Stats.php:6177
 msgid "Laos"
@@ -11689,7 +11689,7 @@ msgstr "Choisir les faits et événements à conserver dans les deux enregistrem
 
 #: admin_site_config.php:611
 msgid "Select the languages that will be shown in menus."
-msgstr "Choisir les langages qui apparaîtront dans les menus."
+msgstr "Choisir les langues qui apparaîtront dans les menus."
 
 #: app/Module/FamilyTreeStatisticsModule.php:281
 msgid "Select the stats to show in this block"
@@ -12393,7 +12393,7 @@ msgstr "Afficher les cartes des lieux et des événements en utilisant le servic
 #: app/Module/FrequentlyAskedQuestionsModule.php:166
 #: app/Module/HtmlBlockModule.php:309 app/Module/StoriesModule.php:243
 msgid "Show this block for which languages?"
-msgstr "Afficher ce bloc pour quelles langues&nbsp;?"
+msgstr "Afficher ce bloc pour quelles langues ?"
 
 #: admin_trees_config.php:113 admin_trees_config.php:120
 #: admin_trees_config.php:1062 includes/functions/functions_edit.php:172
