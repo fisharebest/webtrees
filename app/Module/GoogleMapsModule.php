@@ -515,7 +515,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 	/**
 	 * Select a flag.
-	 *
 	 */
 	private function flags() {
 		global $WT_TREE;

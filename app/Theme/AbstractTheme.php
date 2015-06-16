@@ -1302,19 +1302,16 @@ abstract class AbstractTheme {
 			case 'NOTE':
 				$obj = GedcomRecord::getInstance($favorite['gid'], $this->tree);
 				if ($obj && $obj->canShowName()) {
-					$submenu = new Menu($obj->getFullName(), $obj->getHtmlUrl());
-					$menu->addSubmenu($submenu);
+					$menu->addSubmenu(new Menu($obj->getFullName(), $obj->getHtmlUrl()));
 				}
 				break;
 			}
 		}
 
-		if ($show_user_favorites) {
-			if (isset($controller->record) && $controller->record instanceof GedcomRecord) {
-				$submenu = new Menu(I18N::translate('Add to favorites'), '#');
-				$submenu->setOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'" . $controller->record->getXref() . "'},function(){location.reload();})");
-				$menu->addSubmenu($submenu);
-			}
+		if ($show_user_favorites && isset($controller->record) && $controller->record instanceof GedcomRecord) {
+			$menu->addSubmenu(new Menu(I18N::translate('Add to favorites'), '#', '', array(
+				'onclick' => 'jQuery.post("module.php?mod=user_favorites&mod_action=menu-add-favorite", {xref:"' . $controller->record->getXref() . '"},function(){location.reload();})',
+			)));
 		}
 
 		return $menu;
@@ -1346,7 +1343,7 @@ abstract class AbstractTheme {
 			$label = I18N::translate('Family trees');
 		}
 
-		return new Menu($label, 'index.php?ctype=gedcom&amp;' . $this->tree_url, 'menu-tree', null, $submenus);
+		return new Menu($label, 'index.php?ctype=gedcom&amp;' . $this->tree_url, 'menu-tree', array(), $submenus);
 	}
 
 	/**
@@ -1593,7 +1590,7 @@ abstract class AbstractTheme {
 	 */
 	protected function menuMyPages() {
 		if (Auth::id()) {
-			return new Menu(I18N::translate('My pages'), '#', 'menu-mymenu', null, array_filter(array(
+			return new Menu(I18N::translate('My pages'), '#', 'menu-mymenu', array(), array_filter(array(
 				$this->menuMyPage(),
 				$this->menuMyIndividualRecord(),
 				$this->menuMyPedigree(),
@@ -1635,8 +1632,7 @@ abstract class AbstractTheme {
 	 */
 	protected function menuPendingChanges() {
 		if ($this->pendingChangesExist()) {
-			$menu = new Menu(I18N::translate('Pending changes'), '#', 'menu-pending');
-			$menu->setOnclick('window.open(\'edit_changes.php\', \'_blank\', chan_window_specs); return false;');
+			$menu = new Menu(I18N::translate('Pending changes'), '#', 'menu-pending', array('onclick' => 'window.open("edit_changes.php", "_blank", chan_window_specs); return false;'));
 
 			return $menu;
 		} else {
@@ -1658,7 +1654,7 @@ abstract class AbstractTheme {
 		}
 
 		if ($submenus) {
-			return new Menu(I18N::translate('Reports'), 'reportengine.php?' . $this->tree_url, 'menu-report', null, $submenus);
+			return new Menu(I18N::translate('Reports'), 'reportengine.php?' . $this->tree_url, 'menu-report', array(), $submenus);
 		} else {
 			return null;
 		}
@@ -1715,7 +1711,7 @@ abstract class AbstractTheme {
 				return I18N::strcasecmp($x->getLabel(), $y->getLabel());
 			});
 
-			$menu = new Menu(I18N::translate('Theme'), '#', 'menu-theme', '', $submenus);
+			$menu = new Menu(I18N::translate('Theme'), '#', 'menu-theme', array(), $submenus);
 
 			return $menu;
 		} else {

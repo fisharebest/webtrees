@@ -279,68 +279,72 @@ class IndividualController extends GedcomRecordController {
 			return null;
 		}
 		// edit menu
-		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-indi');
+		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-indi', array(
+			'onclick' => 'return false;',
+		));
 
 		// What behaviour shall we give the main menu?  If we leave it blank, the framework
 		// will copy the first submenu - which may be edit-raw or delete.
 		// As a temporary solution, make it edit the name
-		$menu->setOnclick("return false;");
 		if (Auth::isEditor($this->record->getTree())) {
 			foreach ($this->record->getFacts() as $fact) {
 				if ($fact->getTag() === 'NAME' && $fact->canEdit()) {
-					$menu->setOnclick("return edit_name('" . $this->record->getXref() . "', '" . $fact->getFactId() . "');");
+					$menu->setAttrs(array(
+						'onclick' => 'return edit_name("' . $this->record->getXref() . '", "' . $fact->getFactId() . '");',
+					));
 					break;
 				}
 			}
 
-			$submenu = new Menu(I18N::translate('Add a new name'), '#', 'menu-indi-addname');
-			$submenu->setOnclick("return add_name('" . $this->record->getXref() . "');");
-			$menu->addSubmenu($submenu);
+			$menu->addSubmenu(new Menu(I18N::translate('Add a new name'), '#', 'menu-indi-addname', array(
+				'onclick' => 'return add_name("' . $this->record->getXref() . '");',
+			)));
 
 			$has_sex_record = false;
-			$submenu        = new Menu(I18N::translate('Edit gender'), '#', 'menu-indi-editsex');
 			foreach ($this->record->getFacts() as $fact) {
-				if ($fact->getTag() == 'SEX' && $fact->canEdit()) {
-					$submenu->setOnclick("return edit_record('" . $this->record->getXref() . "', '" . $fact->getFactId() . "');");
+				if ($fact->getTag() === 'SEX' && $fact->canEdit()) {
+					$menu->addSubmenu(new Menu(I18N::translate('Edit gender'), '#', 'menu-indi-editsex', array(
+						'onclick' => 'return edit_record("' . $this->record->getXref() . '", "' . $fact->getFactId() . '");',
+					)));
 					$has_sex_record = true;
 					break;
 				}
 			}
 			if (!$has_sex_record) {
-				$submenu->setOnclick("return add_new_record('" . $this->record->getXref() . "', 'SEX');");
+				$menu->addSubmenu(new Menu(I18N::translate('Edit gender'), '#', 'menu-indi-editsex', array(
+					'return add_new_record("' . $this->record->getXref() . '", "SEX");',
+				)));
 			}
-			$menu->addSubmenu($submenu);
 
 			if (count($this->record->getSpouseFamilies()) > 1) {
-				$submenu = new Menu(I18N::translate('Re-order families'), '#', 'menu-indi-orderfam');
-				$submenu->setOnclick("return reorder_families('" . $this->record->getXref() . "');");
-				$menu->addSubmenu($submenu);
+				$menu->addSubmenu(new Menu(I18N::translate('Re-order families'), '#', 'menu-indi-orderfam', array(
+					'onclick' => 'return reorder_families("' . $this->record->getXref() . '");',
+				)));
 			}
 		}
 
 		// delete
 		if (Auth::isEditor($this->record->getTree())) {
-			$submenu = new Menu(I18N::translate('Delete'), '#', 'menu-indi-del');
-			$submenu->setOnclick("return delete_individual('" . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJS(Filter::unescapeHtml($this->record->getFullName()))) . "', '" . $this->record->getXref() . "');");
-			$menu->addSubmenu($submenu);
+			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-indi-del', array(
+				'onclick' => 'return delete_individual("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJS(Filter::unescapeHtml($this->record->getFullName()))) . '", "' . $this->record->getXref() . '");',
+			)));
 		}
 
 		// edit raw
 		if (Auth::isAdmin() || Auth::isEditor($this->record->getTree()) && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
-			$submenu = new Menu(I18N::translate('Edit raw GEDCOM'), '#', 'menu-indi-editraw');
-			$submenu->setOnclick("return edit_raw('" . $this->record->getXref() . "');");
-			$menu->addSubmenu($submenu);
+			$menu->addSubmenu(new Menu(I18N::translate('Edit raw GEDCOM'), '#', 'menu-indi-editraw', array(
+				'onclick' => 'return edit_raw("' . $this->record->getXref() . '");',
+			)));
 		}
 
 		// add to favorites
 		if (Module::getModuleByName('user_favorites')) {
-			$submenu = new Menu(
-				/* I18N: Menu option.  Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
+			$menu->addSubmenu(new Menu(
+			/* I18N: Menu option.  Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
 				'#',
-				'menu-indi-addfav'
-			);
-			$submenu->setOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'" . $this->record->getXref() . "'},function(){location.reload();})");
-			$menu->addSubmenu($submenu);
+				'menu-indi-addfav', array(
+					'onclick' => 'jQuery.post("module.php?mod=user_favorites&mod_action=menu-add-favorite",{xref:"' . $this->record->getXref() . '"},function(){location.reload();})',
+				)));
 		}
 
 		return $menu;

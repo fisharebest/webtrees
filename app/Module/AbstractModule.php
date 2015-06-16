@@ -44,7 +44,7 @@ abstract class AbstractModule {
 
 	/**
 	 * Get a block setting.
-	 * 
+	 *
 	 * @param int         $block_id
 	 * @param string      $setting_name
 	 * @param string|null $default_value

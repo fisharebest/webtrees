@@ -2084,6 +2084,7 @@ class Stats {
 
 	/**
 	 * Find the earliest birth place.
+ *
 	 * @return string
 	 */
 	public function firstBirthPlace() {
@@ -2092,6 +2093,7 @@ class Stats {
 
 	/**
 	 * Find the latest birth.
+ *
 	 * @return string
 	 */
 	public function lastBirth() {
@@ -2201,6 +2203,7 @@ class Stats {
 
 	/**
 	 * Find the place of the latest death.
+ *
 	 * @return string
 	 */
 	public function lastDeathPlace() {
@@ -2837,6 +2840,7 @@ class Stats {
 
 	/**
 	 * Find the name of the longest lived male.
+ *
 	 * @return string
 	 */
 	public function longestLifeMaleName() {
@@ -2856,6 +2860,7 @@ class Stats {
 
 	/**
 	 * Find the longest lived males.
+ *
 	 * @param string[] $params
 	 *
 	 * @return string
@@ -2866,6 +2871,7 @@ class Stats {
 
 	/**
 	 * Find the longest lived living males.
+ *
 	 * @param string[] $params
 	 *
 	 * @return string
@@ -2997,6 +3003,7 @@ class Stats {
 
 	/**
 	 * Find the type of the earliest event.
+ *
 	 * @return string
 	 */
 	public function firstEventType() {
@@ -3005,6 +3012,7 @@ class Stats {
 
 	/**
 	 * Find the name of the individual with the earliest event.
+ *
 	 * @return string
 	 */
 	public function firstEventName() {
@@ -3013,6 +3021,7 @@ class Stats {
 
 	/**
 	 * Find the location of the earliest event.
+ *
 	 * @return string
 	 */
 	public function firstEventPlace() {
@@ -3039,6 +3048,7 @@ class Stats {
 
 	/**
 	 * Find the type of the latest event.
+ *
 	 * @return string
 	 */
 	public function lastEventType() {
@@ -3047,6 +3057,7 @@ class Stats {
 
 	/**
 	 * Find the name of the individual with the latest event.
+ *
 	 * @return string
 	 */
 	public function lastEventName() {
@@ -3055,6 +3066,7 @@ class Stats {
 
 	/**
 	 * FInd the location of the latest event.
+ *
 	 * @return string
 	 */
 	public function lastEventPlace() {
@@ -3690,6 +3702,7 @@ class Stats {
 
 	/**
 	 * Find the names of spouses of the latest marriage.
+ *
 	 * @return string
 	 */
 	public function lastMarriageName() {
@@ -3698,6 +3711,7 @@ class Stats {
 
 	/**
 	 * Find the location of the latest marriage.
+ *
 	 * @return string
 	 */
 	public function lastMarriagePlace() {
@@ -6048,6 +6062,7 @@ class Stats {
 
 	/**
 	 * Get the current user's ID.
+ *
 	 * @return null|string
 	 */
 	public function userId() {
@@ -6215,6 +6230,7 @@ class Stats {
 
 	/**
 	 * Create a link to contact the genealogy contact.
+ *
 	 * @return string
 	 */
 	public function contactGedcom() {
@@ -6247,6 +6263,7 @@ class Stats {
 
 	/**
 	 * What is the current time on the server (in 24 hour clock)?
+ *
 	 * @return string
 	 */
 	public function serverTime24() {
@@ -6282,6 +6299,7 @@ class Stats {
 
 	/**
 	 * What is the browser's tiemzone.
+ *
 	 * @return string
 	 */
 	public function browserTimezone() {

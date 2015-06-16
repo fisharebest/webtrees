@@ -103,7 +103,7 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 	 * @return Menu
 	 */
 	protected function menuAdminTrees() {
-		return new Menu(/* I18N: Menu entry */ I18N::translate('Family trees'), '#', '', '', array_filter(array(
+		return new Menu(/* I18N: Menu entry */ I18N::translate('Family trees'), '#', '', array(), array_filter(array(
 			$this->menuAdminTreesManage(),
 			$this->menuAdminTreesSetDefault(),
 			$this->menuAdminTreesMerge(),
@@ -151,7 +151,7 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 	 * @return Menu
 	 */
 	protected function menuAdminUsers() {
-		return new Menu(/* I18N: Menu entry */ I18N::translate('Users'), '#', '', '', array(
+		return new Menu(/* I18N: Menu entry */ I18N::translate('Users'), '#', '', array(), array(
 			new Menu(/* I18N: Menu entry */ I18N::translate('User administration'), 'admin_users.php'),
 			new Menu(/* I18N: Menu entry */ I18N::translate('Add a new user'), 'admin_users.php?action=edit'),
 			new Menu(/* I18N: Menu entry */ I18N::translate('Send broadcast messages'), 'admin_users_bulk.php'),
@@ -166,7 +166,7 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 	 * @return Menu
 	 */
 	protected function menuAdminMedia() {
-		return new Menu(/* I18N: Menu entry */ I18N::translate('Media'), '#', '', '', array(
+		return new Menu(/* I18N: Menu entry */ I18N::translate('Media'), '#', '', array(), array(
 			new Menu(/* I18N: Menu entry */ I18N::translate('Manage media'), 'admin_media.php'),
 			new Menu(/* I18N: Menu entry */ I18N::translate('Upload media files'), 'admin_media_upload.php'),
 		));
@@ -178,7 +178,7 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 	 * @return Menu
 	 */
 	protected function menuAdminModules() {
-		return new Menu(/* I18N: Menu entry */ I18N::translate('Modules'), '#', '', '', array(
+		return new Menu(/* I18N: Menu entry */ I18N::translate('Modules'), '#', '', array(), array(
 			new Menu(/* I18N: Menu entry */ I18N::translate('Module administration'), 'admin_modules.php'),
 			new Menu(/* I18N: Menu entry */ I18N::translate('Menus'), 'admin_module_menus.php'),
 			new Menu(/* I18N: Menu entry */ I18N::translate('Tabs'), 'admin_module_tabs.php'),
