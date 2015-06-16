@@ -1356,14 +1356,14 @@ abstract class AbstractTheme {
 
 		foreach (I18N::activeLocales() as $locale) {
 			$language_tag = $locale->languageTag();
-			$menu->addSubmenu(new Menu(
-				$locale->endonym(),
-				Functions::getQueryUrl(array('lang' => $language_tag), '&amp;'),
-				'menu-language-' . $language_tag . (WT_LOCALE === $language_tag ? ' active' : '')
-			));
+			$class        = 'menu-language-' . $language_tag . (WT_LOCALE === $language_tag ? ' active' : '');
+			$menu->addSubmenu(new Menu($locale->endonym(), '#', $class, array(
+				'onclick'       => 'return false;',
+				'data-language' => $language_tag,
+			)));
 		}
 
-		if (count($menu->getSubmenus()) > 1 && !Auth::isSearchEngine()) {
+		if (count($menu->getSubmenus()) > 1) {
 			return $menu;
 		} else {
 			return null;
@@ -1696,15 +1696,14 @@ abstract class AbstractTheme {
 	 * @return Menu|null
 	 */
 	public function menuThemes() {
-		if ($this->tree && !Auth::isSearchEngine() && Site::getPreference('ALLOW_USER_THEMES') && $this->tree->getPreference('ALLOW_THEME_DROPDOWN')) {
+		if ($this->tree && Site::getPreference('ALLOW_USER_THEMES') && $this->tree->getPreference('ALLOW_THEME_DROPDOWN')) {
 			$submenus = array();
 			foreach (Theme::installedThemes() as $theme) {
-				$submenu = new Menu(
-					$theme->themeName(),
-					Functions::getQueryUrl(array('theme' => $theme->themeId()), '&amp;'),
-					'menu-theme-' . $theme->themeId() . ($theme === $this ? ' active' : '')
-				);
-				$submenus[] = $submenu;
+				$class      = 'menu-theme-' . $theme->themeId() . ($theme === $this ? ' active' : '');
+				$submenus[] = new Menu($theme->themeName(), '#', $class, array(
+					'onclick'    => 'return false;',
+					'data-theme' => $theme->themeId(),
+				));
 			}
 
 			usort($submenus, function (Menu $x, Menu $y) {

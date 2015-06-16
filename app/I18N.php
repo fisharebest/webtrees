@@ -359,16 +359,7 @@ class I18N {
 		} else {
 			// Negotiate a locale, but if we can't then use a failsafe
 			self::$locale = new LocaleEnUs;
-			if (Filter::get('lang')) {
-				// A request in the URL
-				try {
-					$locale = Locale::create(Filter::get('lang'));
-					if (file_exists(WT_ROOT . 'language/' . $locale->languageTag() . '.mo')) {
-						self::$locale = $locale;
-					}
-				} catch (\Exception $ex) {
-				}
-			} elseif (Session::has('locale')) {
+			if (Session::has('locale')) {
 				// Previously used
 				self::$locale = Locale::create(Session::get('locale'));
 			} else {
