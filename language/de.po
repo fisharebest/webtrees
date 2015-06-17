@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-05-14 08:44+0100\n"
-"PO-Revision-Date: 2015-05-17 12:30+0100\n"
-"Last-Translator: Rico Sonntag <mail@ricosonntag.de>\n"
+"PO-Revision-Date: 2015-06-17 20:45+0100\n"
+"Last-Translator: Michael <mike_jpr@outlook.com>\n"
 "Language-Team: German "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -6373,7 +6373,7 @@ msgstr "Freiburg, Deutschland"
 #. I18N: The French calendar
 #: app/Date.php:212 help_text.php:199
 msgid "French"
-msgstr "Französisch"
+msgstr "Französischer Revolutionskalender"
 
 #: app/Stats.php:6147
 msgid "French Guiana"
