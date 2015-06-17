@@ -1010,26 +1010,14 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuCalendar() {
-		if (Auth::isSearchEngine()) {
-			return new Menu(I18N::translate('Calendar'), '#', 'menu-calendar');
-		}
-
-		// Default action is the day view.
-		$menu = new Menu(I18N::translate('Calendar'), 'calendar.php?' . $this->tree_url, 'menu-calendar');
-
-		// Day view
-		$submenu = new Menu(I18N::translate('Day'), 'calendar.php?' . $this->tree_url . '&amp;view=day', 'menu-calendar-day');
-		$menu->addSubmenu($submenu);
-
-		// Month view
-		$submenu = new Menu(I18N::translate('Month'), 'calendar.php?' . $this->tree_url . '&amp;view=month', 'menu-calendar-month');
-		$menu->addSubmenu($submenu);
-
-		//Year view
-		$submenu = new Menu(I18N::translate('Year'), 'calendar.php?' . $this->tree_url . '&amp;view=year', 'menu-calendar-year');
-		$menu->addSubmenu($submenu);
-
-		return $menu;
+		return new Menu(I18N::translate('Calendar'), 'calendar.php?' . $this->tree_url . '&amp;view=day', 'menu-calendar', array('rel' => 'nofollow'), array(
+			// Day view
+			new Menu(I18N::translate('Day'), 'calendar.php?' . $this->tree_url . '&amp;view=day', 'menu-calendar-day', array('rel' => 'nofollow')),
+			// Month view
+			new Menu(I18N::translate('Month'), 'calendar.php?' . $this->tree_url . '&amp;view=month', 'menu-calendar-month', array('rel' => 'nofollow')),
+			//Year view
+			new Menu(I18N::translate('Year'), 'calendar.php?' . $this->tree_url . '&amp;view=year', 'menu-calendar-year', array('rel' => 'nofollow'))
+		));
 	}
 
 	/**
@@ -1509,10 +1497,10 @@ abstract class AbstractTheme {
 	 * @return Menu|null
 	 */
 	protected function menuLogin() {
-		if (Auth::check() || Auth::isSearchEngine() || WT_SCRIPT_NAME === 'login.php') {
+		if (Auth::check() || WT_SCRIPT_NAME === 'login.php') {
 			return null;
 		} else {
-			return new Menu(I18N::translate('Login'), WT_LOGIN_URL . '?url=' . rawurlencode(Functions::getQueryUrl()));
+			return new Menu(I18N::translate('Login'), WT_LOGIN_URL . '?url=' . rawurlencode(Functions::getQueryUrl()), 'menu-login', array('rel' => 'nofollow'));
 		}
 	}
 
@@ -1523,7 +1511,7 @@ abstract class AbstractTheme {
 	 */
 	protected function menuLogout() {
 		if (Auth::check()) {
-			return new Menu(I18N::translate('Logout'), 'logout.php');
+			return new Menu(I18N::translate('Logout'), 'logout.php', 'menu-logout');
 		} else {
 			return null;
 		}
