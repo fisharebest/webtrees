@@ -55,21 +55,18 @@ class BirthDeathMarriageReportModule extends AbstractModule implements ModuleRep
 	}
 
 	/**
-	 * Return a list of (usually just one) menu items.
+	 * Return a menu item for this report.
 	 *
-	 * @return Menu[]
+	 * @return Menu
 	 */
-	public function getReportMenus() {
+	public function getReportMenu() {
 		global $WT_TREE;
 
-		$menus = array();
-		$menu  = new Menu(
+		return new Menu(
 			$this->getTitle(),
 			'reportengine.php?ged=' . $WT_TREE->getNameUrl() . '&amp;action=setup&amp;report=' . WT_MODULES_DIR . $this->getName() . '/report.xml',
-			'menu-report-' . $this->getName()
+			'menu-report-' . $this->getName(),
+			array('rel' => 'nofollow')
 		);
-		$menus[] = $menu;
-
-		return $menus;
 	}
 }

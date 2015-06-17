@@ -486,12 +486,20 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 		}
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * The user can re-order menus.  Until they do, they are shown in this order.
+	 *
+	 * @return int
+	 */
 	public function defaultMenuOrder() {
 		return 40;
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * A menu, to be added to the main application menu.
+	 *
+	 * @return Menu|null
+	 */
 	public function getMenu() {
 		global $WT_TREE;
 

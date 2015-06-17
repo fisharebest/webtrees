@@ -22,9 +22,9 @@ use Fisharebest\Webtrees\Menu;
  */
 interface ModuleReportInterface {
 	/**
-	 * Return a list of (usually just one) menu items.
+	 * Return a menu item for this report.
 	 *
-	 * @return Menu[]
+	 * @return Menu
 	 */
-	public function getReportMenus();
+	public function getReportMenu();
 }

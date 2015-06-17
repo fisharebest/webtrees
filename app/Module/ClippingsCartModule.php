@@ -41,7 +41,13 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 		return /* I18N: Description of the “Clippings cart” module */ I18N::translate('Select records from your family tree and save them as a GEDCOM file.');
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * What is the default access level for this module?
+	 *
+	 * Some modules are aimed at admins or managers, and are not generally shown to users.
+	 *
+	 * @return int
+	 */
 	public function defaultAccessLevel() {
 		return Auth::PRIV_USER;
 	}
@@ -465,12 +471,20 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 		}
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * The user can re-order menus.  Until they do, they are shown in this order.
+	 *
+	 * @return int
+	 */
 	public function defaultMenuOrder() {
 		return 20;
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * A menu, to be added to the main application menu.
+	 *
+	 * @return Menu|null
+	 */
 	public function getMenu() {
 		global $controller, $WT_TREE;
 
@@ -725,5 +739,4 @@ class ClippingsCartModule extends AbstractModule implements ModuleMenuInterface,
 
 		return $out;
 	}
-
 }

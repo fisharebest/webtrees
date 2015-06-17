@@ -35,23 +35,30 @@ class MarriageReportModule extends AbstractModule implements ModuleReportInterfa
 		return /* I18N: Description of the “Marriages” module */ I18N::translate('A report of individuals who were married in a given time or place.');
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * What is the default access level for this module?
+	 *
+	 * Some modules are aimed at admins or managers, and are not generally shown to users.
+	 *
+	 * @return int
+	 */
 	public function defaultAccessLevel() {
 		return Auth::PRIV_PRIVATE;
 	}
 
-	/** {@inheritdoc} */
-	public function getReportMenus() {
+	/**
+	 * Return a menu item for this report.
+	 *
+	 * @return Menu
+	 */
+	public function getReportMenu() {
 		global $WT_TREE;
 
-		$menus = array();
-		$menu  = new Menu(
+		return new Menu(
 			$this->getTitle(),
 			'reportengine.php?ged=' . $WT_TREE->getNameUrl() . '&amp;action=setup&amp;report=' . WT_MODULES_DIR . $this->getName() . '/report.xml',
-			'menu-report-' . $this->getName()
+			'menu-report-' . $this->getName(),
+			array('rel' => 'nofollow')
 		);
-		$menus[] = $menu;
-
-		return $menus;
 	}
 }
