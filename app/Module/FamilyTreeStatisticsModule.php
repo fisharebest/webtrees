@@ -191,7 +191,7 @@ class FamilyTreeStatisticsModule extends AbstractModule implements ModuleBlockIn
 			$content .= '</div>';
 		}
 		if ($stat_link) {
-			$content .= '</div><div class="clearfloat"><a href="statistics.php?ged=' . $WT_TREE->getNameUrl() . '"><b>' . I18N::translate('View statistics as graphs') . '</b></a></div>';
+			$content .= '</div><div class="clearfloat"><a href="statistics.php?ged=' . $WT_TREE->getNameUrl() . '" rel="nofollow"><b>' . I18N::translate('View statistics as graphs') . '</b></a></div>';
 		}
 		// NOTE: Print the most common surnames
 		if ($show_common_surnames) {
