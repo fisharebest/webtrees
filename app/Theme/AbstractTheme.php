@@ -1378,24 +1378,21 @@ abstract class AbstractTheme {
 
 		$menulist = array(
 			$this->menuListsIndividuals(),
+			$this->menuListsFamilies(),
+			$this->menuListsBranches(),
+			$this->menuListsPlaces(),
 		);
-
-		if (!Auth::isSearchEngine()) {
-			$menulist[] = $this->menuListsFamilies();
-			$menulist[] = $this->menuListsBranches();
-			$menulist[] = $this->menuListsPlaces();
-			if ($row->obje) {
-				$menulist[] = $this->menuListsMedia();
-			}
-			if ($row->repo) {
-				$menulist[] = $this->menuListsRepositories();
-			}
-			if ($row->sour) {
-				$menulist[] = $this->menuListsSources();
-			}
-			if ($row->note) {
-				$menulist[] = $this->menuListsNotes();
-			}
+		if ($row->obje) {
+			$menulist[] = $this->menuListsMedia();
+		}
+		if ($row->repo) {
+			$menulist[] = $this->menuListsRepositories();
+		}
+		if ($row->sour) {
+			$menulist[] = $this->menuListsSources();
+		}
+		if ($row->note) {
+			$menulist[] = $this->menuListsNotes();
 		}
 
 		uasort($menulist, function (Menu $x, Menu $y) {
@@ -1415,7 +1412,7 @@ abstract class AbstractTheme {
 	protected function menuListsBranches() {
 		global $controller;
 
-		return new Menu(I18N::translate('Branches'), 'branches.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($controller->getSignificantSurname()), 'menu-branches');
+		return new Menu(I18N::translate('Branches'), 'branches.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($controller->getSignificantSurname()), 'menu-branches', array('rel' => 'nofollow'));
 	}
 
 	/**
@@ -1426,7 +1423,7 @@ abstract class AbstractTheme {
 	protected function menuListsFamilies() {
 		global $controller;
 
-		return new Menu(I18N::translate('Families'), 'famlist.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($controller->getSignificantSurname()), 'menu-list-fam');
+		return new Menu(I18N::translate('Families'), 'famlist.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($controller->getSignificantSurname()), 'menu-list-fam', array('rel' => 'nofollow'));
 	}
 
 	/**
@@ -1446,7 +1443,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuListsMedia() {
-		return new Menu(I18N::translate('Media objects'), 'medialist.php?' . $this->tree_url, 'menu-list-obje');
+		return new Menu(I18N::translate('Media objects'), 'medialist.php?' . $this->tree_url, 'menu-list-obje', array('rel' => 'nofollow'));
 	}
 
 	/**
@@ -1455,7 +1452,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuListsNotes() {
-		return new Menu(I18N::translate('Shared notes'), 'notelist.php?' . $this->tree_url, 'menu-list-note');
+		return new Menu(I18N::translate('Shared notes'), 'notelist.php?' . $this->tree_url, 'menu-list-note', array('rel' => 'nofollow'));
 	}
 
 	/**
@@ -1466,7 +1463,7 @@ abstract class AbstractTheme {
 	protected function menuListsPlaces() {
 		global $controller;
 
-		return new Menu(I18N::translate('Place hierarchy'), 'placelist.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($controller->getSignificantSurname()), 'menu-list-plac');
+		return new Menu(I18N::translate('Place hierarchy'), 'placelist.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($controller->getSignificantSurname()), 'menu-list-plac', array('rel' => 'nofollow'));
 	}
 
 	/**
@@ -1475,7 +1472,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuListsRepositories() {
-		return new Menu(I18N::translate('Repositories'), 'repolist.php?' . $this->tree_url, 'menu-list-repo');
+		return new Menu(I18N::translate('Repositories'), 'repolist.php?' . $this->tree_url, 'menu-list-repo', array('rel' => 'nofollow'));
 	}
 
 	/**
@@ -1484,7 +1481,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuListsSources() {
-		return new Menu(I18N::translate('Sources'), 'sourcelist.php?' . $this->tree_url, 'menu-list-sour');
+		return new Menu(I18N::translate('Sources'), 'sourcelist.php?' . $this->tree_url, 'menu-list-sour', array('rel' => 'nofollow'));
 	}
 
 	/**
