@@ -501,11 +501,10 @@ if (substr(WT_SCRIPT_NAME, 0, 5) === 'admin' || WT_SCRIPT_NAME === 'module.php' 
 	foreach (Theme::installedThemes() as $theme) {
 		if ($theme->themeId() === $theme_id) {
 			Theme::theme($theme)->init($WT_TREE);
+			// Remember this setting
+			Session::put('theme_id', $theme_id);
 		}
 	}
-
-	// Remember this setting
-	Session::put('theme_id', $theme_id);
 }
 
 // Search engines are only allowed to see certain pages.
