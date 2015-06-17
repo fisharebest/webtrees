@@ -83,7 +83,7 @@ class AdministrationTheme extends AbstractTheme implements ThemeInterface {
 	 * @return Menu
 	 */
 	protected function menuAdminSite() {
-		return new Menu(/* I18N: Menu entry*/ I18N::translate('Website'), '#', '', '', array(
+		return new Menu(/* I18N: Menu entry*/ I18N::translate('Website'), '#', '', array(), array(
 			new Menu(/* I18N: Menu entry */ I18N::translate('Website preferences'), 'admin_site_config.php?action=site'),
 			new Menu(/* I18N: Menu entry */ I18N::translate('Sending email'), 'admin_site_config.php?action=email'),
 			new Menu(/* I18N: Menu entry */ I18N::translate('Login and registration'), 'admin_site_config.php?action=login'),
