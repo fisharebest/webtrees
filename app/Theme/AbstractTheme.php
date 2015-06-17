@@ -1043,38 +1043,34 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuChart(Individual $individual) {
-		if ($this->tree && !Auth::isSearchEngine()) {
-			// The top level menu is the pedigree chart
-			$menu = $this->menuChartPedigree($individual);
-			$menu->setLabel(I18N::translate('Charts'));
-			$menu->setClass('menu-chart');
+		// The top level menu is the pedigree chart
+		$menu = $this->menuChartPedigree($individual);
+		$menu->setLabel(I18N::translate('Charts'));
+		$menu->setClass('menu-chart');
 
-			$submenus = array_filter(array(
-				$this->menuChartAncestors($individual),
-				$this->menuChartCompact($individual),
-				$this->menuChartDescendants($individual),
-				$this->menuChartFamilyBook($individual),
-				$this->menuChartFanChart($individual),
-				$this->menuChartHourglass($individual),
-				$this->menuChartInteractiveTree($individual),
-				$this->menuChartLifespan($individual),
-				$this->menuChartPedigree($individual),
-				$this->menuChartPedigreeMap($individual),
-				$this->menuChartRelationship($individual),
-				$this->menuChartStatistics(),
-				$this->menuChartTimeline($individual),
-			));
+		$submenus = array_filter(array(
+			$this->menuChartAncestors($individual),
+			$this->menuChartCompact($individual),
+			$this->menuChartDescendants($individual),
+			$this->menuChartFamilyBook($individual),
+			$this->menuChartFanChart($individual),
+			$this->menuChartHourglass($individual),
+			$this->menuChartInteractiveTree($individual),
+			$this->menuChartLifespan($individual),
+			$this->menuChartPedigree($individual),
+			$this->menuChartPedigreeMap($individual),
+			$this->menuChartRelationship($individual),
+			$this->menuChartStatistics(),
+			$this->menuChartTimeline($individual),
+		));
 
-			usort($submenus, function (Menu $x, Menu $y) {
-				return I18N::strcasecmp($x->getLabel(), $y->getLabel());
-			});
+		usort($submenus, function (Menu $x, Menu $y) {
+			return I18N::strcasecmp($x->getLabel(), $y->getLabel());
+		});
 
-			$menu->setSubmenus($submenus);
+		$menu->setSubmenus($submenus);
 
-			return $menu;
-		} else {
-			return new Menu(I18N::translate('Charts'), '#', 'menu-chart');
-		}
+		return $menu;
 	}
 
 	/**
@@ -1085,7 +1081,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuChartAncestors(Individual $individual) {
-		return new Menu(I18N::translate('Ancestors'), 'ancestry.php?rootid=' . $individual->getXref() . '&amp;' . $this->tree_url, 'menu-chart-ancestry');
+		return new Menu(I18N::translate('Ancestors'), 'ancestry.php?rootid=' . $individual->getXref() . '&amp;' . $this->tree_url, 'menu-chart-ancestry', array('rel' => 'nofollow'));
 	}
 
 	/**
@@ -1096,7 +1092,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuChartCompact(Individual $individual) {
-		return new Menu(I18N::translate('Compact tree'), 'compact.php?rootid=' . $individual->getXref() . '&amp;' . $this->tree_url, 'menu-chart-compact');
+		return new Menu(I18N::translate('Compact tree'), 'compact.php?rootid=' . $individual->getXref() . '&amp;' . $this->tree_url, 'menu-chart-compact', array('rel' => 'nofollow'));
 	}
 
 	/**
@@ -1107,7 +1103,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuChartDescendants(Individual $individual) {
-		return new Menu(I18N::translate('Descendants'), 'descendancy.php?rootid=' . $individual->getXref() . '&amp;' . $this->tree_url, 'menu-chart-descendants');
+		return new Menu(I18N::translate('Descendants'), 'descendancy.php?rootid=' . $individual->getXref() . '&amp;' . $this->tree_url, 'menu-chart-descendants', array('rel' => 'nofollow'));
 	}
 
 	/**
@@ -1118,7 +1114,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuChartFamilyBook(Individual $individual) {
-		return new Menu(I18N::translate('Family book'), 'familybook.php?rootid=' . $individual->getXref() . '&amp;' . $this->tree_url, 'menu-chart-familybook');
+		return new Menu(I18N::translate('Family book'), 'familybook.php?rootid=' . $individual->getXref() . '&amp;' . $this->tree_url, 'menu-chart-familybook', array('rel' => 'nofollow'));
 	}
 
 	/**
@@ -1132,7 +1128,7 @@ abstract class AbstractTheme {
 	 */
 	protected function menuChartFanChart(Individual $individual) {
 		if (function_exists('imagettftext')) {
-			return new Menu(I18N::translate('Fan chart'), 'fanchart.php?rootid=' . $individual->getXref() . '&amp;' . $this->tree_url, 'menu-chart-fanchart');
+			return new Menu(I18N::translate('Fan chart'), 'fanchart.php?rootid=' . $individual->getXref() . '&amp;' . $this->tree_url, 'menu-chart-fanchart', array('rel' => 'nofollow'));
 		} else {
 			return null;
 		}
@@ -1147,7 +1143,7 @@ abstract class AbstractTheme {
 	 */
 	protected function menuChartInteractiveTree(Individual $individual) {
 		if (Module::getModuleByName('tree')) {
-			return new Menu(I18N::translate('Interactive tree'), 'module.php?mod=tree&amp;mod_action=treeview&amp;' . $this->tree_url . '&amp;rootid=' . $individual->getXref(), 'menu-chart-tree');
+			return new Menu(I18N::translate('Interactive tree'), 'module.php?mod=tree&amp;mod_action=treeview&amp;' . $this->tree_url . '&amp;rootid=' . $individual->getXref(), 'menu-chart-tree', array('rel' => 'nofollow'));
 		} else {
 			return null;
 		}
@@ -1161,7 +1157,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuChartHourglass(Individual $individual) {
-		return new Menu(I18N::translate('Hourglass chart'), 'hourglass.php?rootid=' . $individual->getXref() . '&amp;' . $this->tree_url, 'menu-chart-hourglass');
+		return new Menu(I18N::translate('Hourglass chart'), 'hourglass.php?rootid=' . $individual->getXref() . '&amp;' . $this->tree_url, 'menu-chart-hourglass', array('rel' => 'nofollow'));
 	}
 
 	/**
@@ -1172,7 +1168,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuChartLifespan(Individual $individual) {
-		return new Menu(I18N::translate('Lifespans'), 'lifespan.php', 'menu-chart-lifespan');
+		return new Menu(I18N::translate('Lifespans'), 'lifespan.php', 'menu-chart-lifespan', array('rel' => 'nofollow'));
 	}
 
 	/**
@@ -1183,7 +1179,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuChartPedigree(Individual $individual) {
-		return new Menu(I18N::translate('Pedigree'), 'pedigree.php?rootid=' . $individual->getXref() . '&amp;' . $this->tree_url, 'menu-chart-pedigree');
+		return new Menu(I18N::translate('Pedigree'), 'pedigree.php?rootid=' . $individual->getXref() . '&amp;' . $this->tree_url, 'menu-chart-pedigree', array('rel' => 'nofollow'));
 	}
 
 	/**
@@ -1195,7 +1191,7 @@ abstract class AbstractTheme {
 	 */
 	protected function menuChartPedigreeMap(Individual $individual) {
 		if (Module::getModuleByName('googlemap')) {
-			return new Menu(I18N::translate('Pedigree map'), 'module.php?' . $this->tree_url . '&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=' . $individual->getXref(), 'menu-chart-pedigree_map');
+			return new Menu(I18N::translate('Pedigree map'), 'module.php?' . $this->tree_url . '&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=' . $individual->getXref(), 'menu-chart-pedigree_map', array('rel' => 'nofollow'));
 		} else {
 			return null;
 		}
@@ -1212,9 +1208,9 @@ abstract class AbstractTheme {
 		$gedcomid = $this->tree->getUserPreference(Auth::user(), 'gedcomid');
 
 		if ($gedcomid && $individual->getXref()) {
-			return new Menu(I18N::translate('Relationship to me'), 'relationship.php?pid1=' . $gedcomid . '&amp;pid2=' . $individual->getXref() . '&amp;ged=' . $this->tree_url, 'menu-chart-relationship');
+			return new Menu(I18N::translate('Relationship to me'), 'relationship.php?pid1=' . $gedcomid . '&amp;pid2=' . $individual->getXref() . '&amp;ged=' . $this->tree_url, 'menu-chart-relationship', array('rel' => 'nofollow'));
 		} else {
-			return new Menu(I18N::translate('Relationships'), 'relationship.php?pid1=' . $individual->getXref() . '&amp;ged=' . $this->tree_url, 'menu-chart-relationship');
+			return new Menu(I18N::translate('Relationships'), 'relationship.php?pid1=' . $individual->getXref() . '&amp;ged=' . $this->tree_url, 'menu-chart-relationship', array('rel' => 'nofollow'));
 		}
 	}
 
@@ -1224,7 +1220,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuChartStatistics() {
-		return new Menu(I18N::translate('Statistics'), 'statistics.php?' . $this->tree_url, 'menu-chart-statistics');
+		return new Menu(I18N::translate('Statistics'), 'statistics.php?' . $this->tree_url, 'menu-chart-statistics', array('rel' => 'nofollow'));
 	}
 
 	/**
@@ -1235,7 +1231,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuChartTimeline(Individual $individual) {
-		return new Menu(I18N::translate('Timeline'), 'timeline.php?pids%5B%5D=' . $individual->getXref() . '&amp;' . $this->tree_url, 'menu-chart-timeline');
+		return new Menu(I18N::translate('Timeline'), 'timeline.php?pids%5B%5D=' . $individual->getXref() . '&amp;' . $this->tree_url, 'menu-chart-timeline', array('rel' => 'nofollow'));
 	}
 
 	/**
