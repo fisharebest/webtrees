@@ -90,11 +90,11 @@ $controller
 			<legend><?php echo I18N::translate('Controls');?></legend>
 			<div class="controls">
 				<div>
-					<input type="submit" value="<?php echo I18N::translate('Show'); ?>">
+					<input type="submit" value="<?php /* I18N: Button label */ echo I18N::translate('show'); ?>">
 				</div>
 				<div>
 					<input id="clear" type="hidden" name="clear" value=0>
-					<input type="reset" value="<?php echo I18N::translate('Clear chart'); ?>">
+					<input type="reset" value="<?php echo /* I18N: Button label */ I18N::translate('reset'); ?>">
 				</div>
 				<div>
 					<label class="descriptionbox" for="calendar">

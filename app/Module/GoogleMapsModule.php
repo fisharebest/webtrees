@@ -4970,7 +4970,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					<form name="myForm" title="myForm">
 						<?php
 						echo '<input id="butt1" name ="butt1" type="button" value="', I18N::translate('Google Maps™'), '" onclick="toggleStreetView();"></input>';
-						echo '<input id="butt2" name ="butt2" type="button" value="', I18N::translate('Reset'), '" onclick="initialize();"></input>';
+						echo '<input id="butt2" name ="butt2" type="button" value="', I18N::translate('reset'), '" onclick="initialize();"></input>';
 						?>
 					</form>
 				</div>
