@@ -74,7 +74,7 @@ class DescendancyModule extends AbstractModule implements ModuleSidebarInterface
 
 	/** {@inheritdoc} */
 	public function hasSidebarContent() {
-		return !Auth::isSearchEngine();
+		return true;
 	}
 
 	/** {@inheritdoc} */

@@ -278,20 +278,18 @@ class FunctionsPrint {
 				}
 
 				$values = array('<a href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a>');
-				if (!Auth::isSearchEngine()) {
-					foreach ($associates as $associate) {
-						$relationship_name = Functions::getAssociateRelationshipName($associate, $person);
-						if (!$relationship_name) {
-							$relationship_name = GedcomTag::getLabel('RELA');
-						}
-
-						if ($parent instanceof Family) {
-							// For family ASSO records (e.g. MARR), identify the spouse with a sex icon
-							$relationship_name .= $associate->getSexImage();
-						}
-
-						$values[] = '<a href="relationship.php?pid1=' . $associate->getXref() . '&amp;pid2=' . $person->getXref() . '&amp;ged=' . $associate->getTree()->getNameUrl() . '">' . $relationship_name . '</a>';
+				foreach ($associates as $associate) {
+					$relationship_name = Functions::getAssociateRelationshipName($associate, $person);
+					if (!$relationship_name) {
+						$relationship_name = GedcomTag::getLabel('RELA');
 					}
+
+					if ($parent instanceof Family) {
+						// For family ASSO records (e.g. MARR), identify the spouse with a sex icon
+						$relationship_name .= $associate->getSexImage();
+					}
+
+					$values[] = '<a href="relationship.php?pid1=' . $associate->getXref() . '&amp;pid2=' . $person->getXref() . '&amp;ged=' . $associate->getTree()->getNameUrl() . '" rel="nofollow">' . $relationship_name . '</a>';
 				}
 				$value = implode(' — ', $values);
 
@@ -393,7 +391,7 @@ class FunctionsPrint {
 		// Calculated age
 		if (preg_match('/\n2 DATE (.+)/', $factrec, $match)) {
 			$date = new Date($match[1]);
-			$html .= ' ' . $date->display($anchor && !Auth::isSearchEngine());
+			$html .= ' ' . $date->display($anchor);
 			// time
 			if ($time && preg_match('/\n3 TIME (.+)/', $factrec, $match)) {
 				$html .= ' – <span class="date">' . $match[1] . '</span>';

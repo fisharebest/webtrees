@@ -1994,7 +1994,7 @@ class FunctionsPrintLists {
 			}
 			$html .= '</td>';
 			$html .= '<td>' . $record->getSortName() . '</td>';
-			$html .= '<td>' . $fact->getDate()->display(!Auth::isSearchEngine()) . '</td>';
+			$html .= '<td>' . $fact->getDate()->display() . '</td>';
 			$html .= '<td>' . $n . '</td>';
 			$html .= '<td>' . ($fact->anniv ? I18N::number($fact->anniv) : '') . '</td>';
 			$html .= '<td>' . $fact->anniv . '</td>';

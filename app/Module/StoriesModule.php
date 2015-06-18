@@ -503,10 +503,6 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 	 * @return Menu|null
 	 */
 	public function getMenu() {
-		if (Auth::isSearchEngine()) {
-			return null;
-		}
-
 		$menu = new Menu($this->getTitle(), 'module.php?mod=' . $this->getName() . '&amp;mod_action=show_list', 'menu-story');
 
 		return $menu;

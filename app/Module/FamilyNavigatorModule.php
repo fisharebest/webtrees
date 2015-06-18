@@ -47,7 +47,7 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 
 	/** {@inheritdoc} */
 	public function hasSidebarContent() {
-		return !Auth::isSearchEngine();
+		return true;
 	}
 
 	/** {@inheritdoc} */
@@ -196,7 +196,7 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 		$mother = null;
 		$html   = sprintf(self::TTL, I18N::translate('Parents'));
 		$family = $person->getPrimaryChildFamily();
-		if (!Auth::isSearchEngine() && $person->canShowName() && $family !== null) {
+		if ($person->canShowName() && $family !== null) {
 			$father = $family->getHusband();
 			$mother = $family->getWife();
 			$html .= $this->getHTML($father) .
@@ -235,7 +235,7 @@ class FamilyNavigatorModule extends AbstractModule implements ModuleSidebarInter
 	 */
 	private function getFamily(Individual $person) {
 		$html = '';
-		if ($person->canShowName() && !Auth::isSearchEngine()) {
+		if ($person->canShowName()) {
 			foreach ($person->getSpouseFamilies() as $family) {
 				$spouse = $family->getSpouse($person);
 				$html .= $this->getHTML($spouse, true);

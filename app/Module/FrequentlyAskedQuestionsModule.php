@@ -503,10 +503,6 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 	public function getMenu() {
 		global $WT_TREE;
 
-		if (Auth::isSearchEngine()) {
-			return null;
-		}
-
 		$faqs = Database::prepare(
 			"SELECT block_id FROM `##block` WHERE module_name = :module_name AND IFNULL(gedcom_id, :tree_id_1) = :tree_id_2"
 		)->execute(array(
@@ -515,12 +511,11 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			'tree_id_2'   => $WT_TREE->getTreeId(),
 		))->fetchAll();
 
-		if (!$faqs) {
+		if ($faqs) {
+			return new Menu(I18N::translate('FAQ'), 'module.php?mod=faq&amp;mod_action=show', 'menu-help');
+		} else {
 			return null;
 		}
 
-		$menu = new Menu(I18N::translate('FAQ'), 'module.php?mod=faq&amp;mod_action=show', 'menu-help');
-
-		return $menu;
 	}
 }

@@ -63,7 +63,7 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 
 	/** {@inheritdoc} */
 	public function hasSidebarContent() {
-		return !Auth::isSearchEngine();
+		return true;
 	}
 
 	/** {@inheritdoc} */

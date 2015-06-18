@@ -204,7 +204,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 	/** {@inheritdoc} */
 	public function hasTabContent() {
-		return !Auth::isSearchEngine() && (Module::getModuleByName('googlemap') || Auth::isAdmin());
+		return Module::getModuleByName('googlemap') || Auth::isAdmin();
 	}
 
 	/** {@inheritdoc} */

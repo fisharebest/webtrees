@@ -1518,13 +1518,10 @@ abstract class AbstractTheme {
 	protected function menuModules() {
 		$menus = array();
 		foreach (Module::getActiveMenus($this->tree) as $module) {
-			$menu = $module->getMenu();
-			if ($menu) {
-				$menus[] = $menu;
-			}
+			$menus[] = $module->getMenu();
 		}
 
-		return $menus;
+		return array_filter($menus);
 	}
 
 	/**
