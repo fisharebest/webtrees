@@ -15825,16 +15825,16 @@ msgstr "Zambia"
 
 #: app/Stats.php:6981
 msgid "Zimbabwe"
-msgstr "Zimbabve"
+msgstr "Zimbabwe"
 
 #: app/Module/ClippingsCartModule.php:353
 #: app/Module/ClippingsCartModule.php:688
 msgid "Zip file(s)"
-msgstr "Zip dosya(lar)"
+msgstr "Sıkıştırılmış dosya(lar)"
 
 #: app/Module/GoogleMapsModule.php:2724 fanchart.php:107
 msgid "Zoom"
-msgstr "Yakınlaştır"
+msgstr "Yakınlaştırma"
 
 #: app/Module/GoogleMapsModule.php:1423 timeline.php:308
 msgid "Zoom in"
@@ -15846,7 +15846,7 @@ msgstr "Buraya yakınlaştır"
 
 #: app/Theme/AbstractTheme.php:712 app/Theme/AbstractTheme.php:757
 msgid "Zoom in/out on this box."
-msgstr "Bu kutuyu yakınlaştır/uzaklaştır."
+msgstr "Bu kutu üzerine yakınlaştır/uzaklaştır."
 
 #: app/Module/GoogleMapsModule.php:4070 app/Module/GoogleMapsModule.php:4143
 #: app/Module/GoogleMapsModule.php:4582
@@ -15863,11 +15863,11 @@ msgstr "Uzaklaştır"
 
 #: app/Module/GoogleMapsModule.php:1426
 msgid "Zoom out here"
-msgstr "Buraya uzaklaştır"
+msgstr "Buraya Uzaklaştır"
 
 #: app/Module/GoogleMapsModule.php:1717
 msgid "Zoom="
-msgstr "Yakınlaştır"
+msgstr "Yakınlık="
 
 #. I18N: time format “%a” - between 00:00:01 and 11:59:59
 #: app/Functions/FunctionsDate.php:89
@@ -15884,7 +15884,7 @@ msgstr "%s civarında"
 #: source.php:61
 msgctxt "You should review the changes and then accept or reject them."
 msgid "accept"
-msgstr "kabul et"
+msgstr ""
 
 #: family.php:42 individual.php:52 mediaviewer.php:43 note.php:37 repo.php:36
 #: source.php:43
@@ -15906,13 +15906,13 @@ msgstr "evlatlık adı"
 #: app/GedcomCode/GedcomCodeName.php:52
 msgctxt "FEMALE"
 msgid "adopted name"
-msgstr ""
+msgstr "evlâtlık adı"
 
 #. I18N: The name given to a child by its adoptive parents
 #: app/GedcomCode/GedcomCodeName.php:49
 msgctxt "MALE"
 msgid "adopted name"
-msgstr ""
+msgstr "evlâtlık adı"
 
 #: app/Stats.php:2919
 msgid "adoption"
@@ -15951,18 +15951,18 @@ msgstr "olarak da bilinir"
 #: app/GedcomCode/GedcomCodeName.php:64
 msgctxt "FEMALE"
 msgid "also known as"
-msgstr ""
+msgstr "olarak da bilinir"
 
 #. I18N: The name by which an individual is also known.  e.g. a professional name or a stage name
 #: app/GedcomCode/GedcomCodeName.php:61
 msgctxt "MALE"
 msgid "also known as"
-msgstr ""
+msgstr "olarak da bilinir"
 
 #. I18N: option in list box “always use this image”
 #: app/Functions/FunctionsEdit.php:630
 msgid "always"
-msgstr "herzaman"
+msgstr "her zaman"
 
 #: app/Controller/AncestryController.php:92 app/Stats.php:4539
 #: app/Stats.php:4565 app/Stats.php:4576 app/Stats.php:4586 app/Stats.php:5956
@@ -15979,47 +15979,47 @@ msgstr "ve"
 #: app/Functions/Functions.php:1108
 msgctxt "father’s brother’s wife"
 msgid "aunt"
-msgstr ""
+msgstr "teyze"
 
 #: app/Functions/Functions.php:864
 msgctxt "father’s sister"
 msgid "aunt"
-msgstr ""
+msgstr "hala"
 
 #: app/Functions/Functions.php:1170
 msgctxt "mother’s brother’s wife"
 msgid "aunt"
-msgstr ""
+msgstr "teyze"
 
 #: app/Functions/Functions.php:902
 msgctxt "mother’s sister"
 msgid "aunt"
-msgstr ""
+msgstr "teyze"
 
 #: app/Functions/Functions.php:1222
 msgctxt "parent’s brother’s wife"
 msgid "aunt"
-msgstr "teyze"
+msgstr "yenge"
 
 #: app/Functions/Functions.php:920
 msgctxt "parent’s sister"
 msgid "aunt"
-msgstr ""
+msgstr "hala/teyze"
 
 #: app/Functions/Functions.php:862
 msgctxt "father’s sibling"
 msgid "aunt/uncle"
-msgstr ""
+msgstr "hala/amca"
 
 #: app/Functions/Functions.php:900
 msgctxt "mother’s sibling"
 msgid "aunt/uncle"
-msgstr ""
+msgstr "teyze/dayı"
 
 #: app/Functions/Functions.php:918
 msgctxt "parent’s sibling"
 msgid "aunt/uncle"
-msgstr ""
+msgstr "teyze/amca"
 
 #: app/Module/FrequentlyAskedQuestionsModule.php:374
 msgid "back to top"
@@ -16054,13 +16054,13 @@ msgstr "doğum adı"
 #: app/GedcomCode/GedcomCodeName.php:76
 msgctxt "FEMALE"
 msgid "birth name"
-msgstr ""
+msgstr "doğum adı"
 
 #. I18N: The name given to an individual at their birth
 #: app/GedcomCode/GedcomCodeName.php:73
 msgctxt "MALE"
 msgid "birth name"
-msgstr ""
+msgstr "doğum adı"
 
 #. I18N: Extend privacy to dead individuals [who were] ...
 #: admin_trees_config.php:482
@@ -16075,17 +16075,17 @@ msgstr "erkek kardeş"
 #: app/Functions/Functions.php:1046
 msgctxt "brother’s wife’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "enişte"
 
 #: app/Functions/Functions.php:870
 msgctxt "husband’s brother"
 msgid "brother-in-law"
-msgstr ""
+msgstr "enişte"
 
 #: app/Functions/Functions.php:1162
 msgctxt "husband’s sister’s husband"
 msgid "brother-in-law"
-msgstr ""
+msgstr "enişte"
 
 #: app/Functions/Functions.php:938
 msgctxt "sister’s husband"
@@ -16095,32 +16095,32 @@ msgstr "enişte"
 #: app/Functions/Functions.php:1328
 msgctxt "sister’s husband’s brother"
 msgid "brother-in-law"
-msgstr "eniştenin erkek kardeşi"
+msgstr "enişte"
 
 #: app/Functions/Functions.php:950
 msgctxt "spouse’s brother"
 msgid "brother-in-law"
-msgstr "kayınbırader/enişte"
+msgstr "enişte"
 
 #: app/Functions/Functions.php:968
 msgctxt "wife’s brother"
 msgid "brother-in-law"
-msgstr "kayınbırader"
+msgstr "enişte"
 
 #: app/Functions/Functions.php:1384
 msgctxt "wife’s sister’s husband"
 msgid "brother-in-law"
-msgstr "bacanak"
+msgstr "enişte"
 
 #: app/Functions/Functions.php:1048
 msgctxt "brother’s wife’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "enişte/yenge"
 
 #: app/Functions/Functions.php:880
 msgctxt "husband’s sibling"
 msgid "brother/sister-in-law"
-msgstr ""
+msgstr "enişte/yenge"
 
 #: app/Functions/Functions.php:932
 msgctxt "sibling’s spouse"
@@ -16130,17 +16130,17 @@ msgstr "enişte/yenge"
 #: app/Functions/Functions.php:1330
 msgctxt "sister’s husband’s sibling"
 msgid "brother/sister-in-law"
-msgstr "eniştenin kardeşi"
+msgstr "enişte/yenge"
 
 #: app/Functions/Functions.php:966
 msgctxt "spouse’s sibling"
 msgid "brother/sister-in-law"
-msgstr "görümce/kayınbırader"
+msgstr "enişte/yenge"
 
 #: app/Functions/Functions.php:978
 msgctxt "wife’s sibling"
 msgid "brother/sister-in-law"
-msgstr "görümce/kayınbırader"
+msgstr "enişte/yenge"
 
 #: app/Module/TopSurnamesModule.php:184
 msgid "bullet list"
@@ -16178,13 +16178,13 @@ msgstr "adının değişikliği"
 #: app/GedcomCode/GedcomCodeName.php:88
 msgctxt "FEMALE"
 msgid "change of name"
-msgstr ""
+msgstr "adının değişikliği"
 
 #. I18N: A name chosen by an individual, to replace their existing name (whether legal or otherwise)
 #: app/GedcomCode/GedcomCodeName.php:85
 msgctxt "MALE"
 msgid "change of name"
-msgstr ""
+msgstr "adının değişikliği"
 
 #: app/Functions/Functions.php:767 app/Module/GoogleMapsModule.php:2050
 #: app/Module/GoogleMapsModule.php:2084 edit_interface.php:2008
@@ -16216,7 +16216,7 @@ msgstr "kapat"
 #. I18N: Name of a theme.
 #: app/Theme/CloudsTheme.php:184
 msgid "clouds"
-msgstr "clouds"
+msgstr "bulutlar"
 
 #. I18N: Name of a theme.
 #: app/Theme/ColorsTheme.php:188
@@ -16252,7 +16252,7 @@ msgstr "oluştur"
 msgid "creating thumbnails of images"
 msgstr "resimlerin küçültülmüş önizlemeleri oluşturuluyor"
 
-#: statistics.php:614
+#: statistics.php:611
 msgid "date periods"
 msgstr "tarih dönemleri"
 
@@ -16269,7 +16269,7 @@ msgstr "kızı"
 #: app/Functions/Functions.php:840
 msgctxt "child’s wife"
 msgid "daughter-in-law"
-msgstr ""
+msgstr "gelin"
 
 #: app/Functions/Functions.php:948
 msgctxt "son’s wife"
@@ -16293,7 +16293,7 @@ msgstr "gelininin ebeveyni"
 
 #: app/Stats.php:2917
 msgid "death"
-msgstr "vefat"
+msgstr "ölüm"
 
 #. I18N: Measure of latitude/longitude
 #: app/Module/GoogleMapsModule.php:4051 app/Module/GoogleMapsModule.php:4061
@@ -16348,18 +16348,18 @@ msgstr "düzelt"
 #: app/Functions/Functions.php:553
 msgctxt "FEMALE"
 msgid "eighth cousin"
-msgstr ""
+msgstr "sekizinci kuzen"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:510
 msgctxt "MALE"
 msgid "eighth cousin"
-msgstr ""
+msgstr "sekizinci kuzen"
 
 #: app/Functions/Functions.php:588
 msgctxt "MALE/FEMALE"
 msgid "eighth cousin"
-msgstr ""
+msgstr "sekizinci kuzen"
 
 #: app/Functions/Functions.php:779
 msgid "elder brother"
@@ -16376,35 +16376,35 @@ msgstr "abla"
 #: app/Functions/Functions.php:559
 msgctxt "FEMALE"
 msgid "eleventh cousin"
-msgstr ""
+msgstr "onbirinci kuzen"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:519
 msgctxt "MALE"
 msgid "eleventh cousin"
-msgstr ""
+msgstr "onbirinci kuzen"
 
 #: app/Functions/Functions.php:594
 msgctxt "MALE/FEMALE"
 msgid "eleventh cousin"
-msgstr ""
+msgstr "onbirinci kuzen"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:103
 msgid "estate name"
-msgstr "estate adı"
+msgstr ""
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:100
 msgctxt "FEMALE"
 msgid "estate name"
-msgstr ""
+msgstr "arazi adı"
 
 #. I18N: A name given to an individual, from the farm or estate on which they lived or worked
 #: app/GedcomCode/GedcomCodeName.php:97
 msgctxt "MALE"
 msgid "estate name"
-msgstr ""
+msgstr "arazi adı"
 
 #. I18N: Gedcom EST dates
 #: app/Date.php:304
@@ -16419,17 +16419,17 @@ msgstr "eski-koca"
 #: app/Functions/Functions.php:732
 msgctxt "FEMALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "eski-eş"
 
 #: app/Functions/Functions.php:714
 msgctxt "MALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "eski-eş"
 
 #: app/Functions/Functions.php:750
 msgctxt "MALE/FEMALE"
 msgid "ex-partner"
-msgstr ""
+msgstr "eski-eş"
 
 #: app/Functions/Functions.php:755
 msgid "ex-spouse"
@@ -16450,72 +16450,72 @@ msgstr "baba"
 #: app/Functions/Functions.php:876
 msgctxt "husband’s father"
 msgid "father-in-law"
-msgstr ""
+msgstr "kayın baba"
 
 #: app/Functions/Functions.php:956
 msgctxt "spouse’s father"
 msgid "father-in-law"
-msgstr "kayınpeder"
+msgstr "kayın baba"
 
 #: app/Functions/Functions.php:974
 msgctxt "wife’s father"
 msgid "father-in-law"
-msgstr "kayınpeder"
+msgstr "kayın baba"
 
 #: app/Functions/Functions.php:567
 msgctxt "FEMALE"
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "onbeşinci kuzen"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:531
 msgctxt "MALE"
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "onbeşinci kuzen"
 
 #: app/Functions/Functions.php:602
 msgctxt "MALE/FEMALE"
 msgid "fifteenth cousin"
-msgstr ""
+msgstr "onbeşinci kuzen"
 
 #: app/Functions/Functions.php:647
 #, php-format
 msgctxt "FEMALE"
 msgid "fifth %s"
-msgstr ""
+msgstr "beşinci %s"
 
 #: app/Functions/Functions.php:632
 #, php-format
 msgctxt "MALE"
 msgid "fifth %s"
-msgstr ""
+msgstr "beşinci %s"
 
 #: app/Functions/Functions.php:662
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "fifth %s"
-msgstr ""
+msgstr "beşinci %s"
 
 #: app/Functions/Functions.php:547
 msgctxt "FEMALE"
 msgid "fifth cousin"
-msgstr ""
+msgstr "beşinci kuzen"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:501
 msgctxt "MALE"
 msgid "fifth cousin"
-msgstr ""
+msgstr "beşinci kuzen"
 
 #: app/Functions/Functions.php:582
 msgctxt "MALE/FEMALE"
 msgid "fifth cousin"
-msgstr ""
+msgstr "beşinci kuzen"
 
 #. I18N: a program feature
 #: setup.php:141
 msgid "file upload capability"
-msgstr "dosya yükleme yeteneklilik"
+msgstr "dosya yükleme özelliği"
 
 #. I18N: button label, first page
 #: admin_trees_config.php:1657 app/I18N.php:222
@@ -16532,202 +16532,202 @@ msgstr "ilk"
 #, php-format
 msgctxt "FEMALE"
 msgid "first %s"
-msgstr ""
+msgstr "ilk %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:624
 #, php-format
 msgctxt "MALE"
 msgid "first %s"
-msgstr ""
+msgstr "ilk %s"
 
 #. I18N: A Spanish relationship name, such as third great-nephew
 #: app/Functions/Functions.php:654
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "first %s"
-msgstr ""
+msgstr "ilk %s"
 
 #: app/Functions/Functions.php:539
 msgctxt "FEMALE"
 msgid "first cousin"
-msgstr ""
+msgstr "ilk kuzen"
 
 #. I18N: Note that for Italian and Polish, “N’th cousins” are different from English “N’th cousins”, and the software has already generated the correct “N” for your language.  You only need to translate - you do not need to convert.  For other languages, if your cousin rules are different from English, please contact the developers.
 #: app/Functions/Functions.php:489
 msgctxt "MALE"
 msgid "first cousin"
-msgstr ""
+msgstr "ilk kuzen"
 
 #: app/Functions/Functions.php:574
 msgctxt "MALE/FEMALE"
 msgid "first cousin"
-msgstr ""
+msgstr "ilk kuzen"
 
 #: app/Functions/Functions.php:1102
 msgctxt "father’s brother’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "ilk kuzen"
 
 #: app/Functions/Functions.php:1104
 msgctxt "father’s brother’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "ilk kuzen"
 
 #: app/Functions/Functions.php:1106
 msgctxt "father’s brother’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "ilk kuzen"
 
 #: app/Functions/Functions.php:1146
 msgctxt "father’s sister’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "ilk kuzen"
 
 #: app/Functions/Functions.php:1148
 msgctxt "father’s sister’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "ilk kuzen"
 
 #: app/Functions/Functions.php:1152
 msgctxt "father’s sister’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "ilk kuzen"
 
 #: app/Functions/Functions.php:1164
 msgctxt "mother’s brother’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "ilk kuzen"
 
 #: app/Functions/Functions.php:1166
 msgctxt "mother’s brother’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "ilk kuzen"
 
 #: app/Functions/Functions.php:1168
 msgctxt "mother’s brother’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "ilk kuzen"
 
 #: app/Functions/Functions.php:1214
 msgctxt "mother’s sister’s child"
 msgid "first cousin"
-msgstr ""
+msgstr "ilk kuzen"
 
 #: app/Functions/Functions.php:1216
 msgctxt "mother’s sister’s daughter"
 msgid "first cousin"
-msgstr ""
+msgstr "ilk kuzen"
 
 #: app/Functions/Functions.php:1220
 msgctxt "mother’s sister’s son"
 msgid "first cousin"
-msgstr ""
+msgstr "ilk kuzen"
 
 #: app/Functions/Functions.php:1446
 msgctxt "father’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1442
 msgctxt "father’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1444
 msgctxt "father’s father’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1452
 msgctxt "father’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1448
 msgctxt "father’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1450
 msgctxt "father’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1458
 msgctxt "father’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1454
 msgctxt "father’s mother’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1456
 msgctxt "father’s mother’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1464
 msgctxt "father’s mother’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1460
 msgctxt "father’s mother’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1462
 msgctxt "father’s mother’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1470
 msgctxt "mother’s father’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1466
 msgctxt "mother’s father’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1468
 msgctxt "mother’s father’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1476
 msgctxt "mother’s father’s sister’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1472
 msgctxt "mother’s father’s sister’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1474
 msgctxt "mother’s father’s sister’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1482
 msgctxt "mother’s mother’s brother’s child"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1478
 msgctxt "mother’s mother’s brother’s daughter"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1480
 msgctxt "mother’s mother’s brother’s son"
 msgid "first cousin once removed ascending"
-msgstr ""
+msgstr "first cousin once removed ascending"
 
 #: app/Functions/Functions.php:1488
 msgctxt "mother’s mother’s sister’s child"
