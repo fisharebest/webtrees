@@ -1853,8 +1853,12 @@ span.link_text {
 	overflow: hidden;
 	border-radius: 3px;
 	border: 1px solid #b2c7d7;
-	margin: 0 0 5px;
+	margin: 0 0 5px 10px;
 	padding: 10px 0;
+}
+
+[dir='rtl'] #indi_header {
+	margin: 0 10px 5px 0;
 }
 
 #indi_header h3 {
@@ -2335,12 +2339,14 @@ dd .deletelink {
 #tabs {
 	background-color: #fff;
 	border-color: #ddd;
-	width: 100%;
+	margin-left: 10px;
 	overflow: visible;
 }
 
 [dir=rtl] #tabs {
 	float: right;
+	width: 99%;
+	margin-right: 10px;
 }
 
 /* sidebar */

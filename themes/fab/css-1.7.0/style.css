@@ -1838,7 +1838,7 @@ span.link_text {
 #indi_header {
 	overflow: hidden;
 	border-radius: 4px;
-	margin: 0 4px 5px;
+	margin-bottom: 5px;
 	width: 98%;
 }
 

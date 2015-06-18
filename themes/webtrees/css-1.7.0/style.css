@@ -2324,8 +2324,9 @@ dd .deletelink {
 #tabs {
 	background-color: #fff;
 	border-color: #ddd;
-	width: 100%;
+	margin-left: 0;
 	overflow: visible;
+	width: 100%;
 }
 
 [dir=rtl] #tabs {
