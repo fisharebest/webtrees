@@ -15,38 +15,34 @@
 # such as "www.example.com/robots.txt".  It will not work in a
 # subfolder, such as "www.example.com/webtrees/robots.txt"
 # If you need to move it, then remember to adjust the paths as well.
-# e.g. "Allow: /index.php" becomes "Allow: /webtrees/index.php".
-#
-# Well-behaved robots understand "Allow" directives.
-# Google (plus some others?) understands the "$" pattern match
+# e.g. "Disallow: /login.php" becomes "Disallow: /webtrees/login.php".
 
-User-Agent: bingbot       # Bing
-User-Agent: Googlebot     # Google
-User-Agent: ia_archiver   # Internet Archive "wayback" machine
-User-Agent: msnbot        # Microsoft
-User-Agent: robozilla     # DMOZ
-User-Agent: slurp         # Yahoo!
-User-Agent: teoma         # Ask Jeeves
-User-Agent: yandex        # Popular Russian search engine
-User-Agent: baiduspider   # Popular Chinese search engine
-Allow: /family.php
-Allow: /index.php
-Allow: /indilist.php
-Allow: /individual.php
-Allow: /mediafirewall.php
-Allow: /mediaviewer.php
-Allow: /module.php?mod=sitemap
-Allow: /note.php
-Allow: /repo.php
-Allow: /site-offline.php
-Allow: /site-unavailable.php
-Allow: /source.php
-Allow: /$
-Disallow: /
-
-# Disallow all other robots
+# These URLs are expensive to generate or duplicate existing content:
 User-Agent: *
-Disallow: /
+Disallow: /ancestry.php
+Disallow: /branches.php
+Disallow: /calendar.php
+Disallow: /compact.php
+Disallow: /descendancy.php
+Disallow: /familybook.php
+Disallow: /famlist.php
+Disallow: /fanchart.php
+Disallow: /hourglass.php
+Disallow: /lifespan.php
+Disallow: /login.php
+Disallow: /medialist.php
+Disallow: /notelist.php
+Disallow: /pedigree.php
+Disallow: /placelist.php
+Disallow: /relationship.php
+Disallow: /repolist.php
+Disallow: /reportengine.php
+Disallow: /search.php
+Disallow: /search_advanced.php
+Disallow: /sourcelist.php
+Disallow: /statistics.php
+Disallow: /statisticsplot.php
+Disallow: /timeline.php
 
 # Put your sitemap here:
 #Sitemap: http://www.example.com/module.php?mod=sitemap&mod_action=generate&file=sitemap.xml
