@@ -1288,7 +1288,7 @@ jQuery ('body').on ('click', '.iconz', function (e) {
 });
 
 // Activate the langauge selection menu.
-jQuery(".menu-language").on("click", "a", function() {
+jQuery(".menu-language").on("click", "li a", function() {
 	jQuery.post("action.php", {
 		action: "language",
 		language: $(this).data("language"),
@@ -1297,7 +1297,7 @@ jQuery(".menu-language").on("click", "a", function() {
 });
 
 // Activate the theme selection menu.
-jQuery(".menu-theme").on("click", "a", function() {
+jQuery(".menu-theme").on("click", "li a", function() {
 	jQuery.post("action.php", {
 		action: "theme",
 		theme: $(this).data("theme"),
