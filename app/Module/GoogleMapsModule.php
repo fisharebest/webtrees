@@ -1766,7 +1766,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$x++;
 			}
 			// echo final row of table
-			echo '<tr><td colspan="2" class="accepted">', /* I18N: A count of places */ I18N::translate('Total places: %s', I18N::number($countrows)), '</td></tr></table></div>';
+			echo '<tr><td colspan="', (1 + 3 * $max), '" class="accepted">', /* I18N: A count of places */ I18N::translate('Total places: %s', I18N::number($countrows)), '</td></tr></table></div>';
 			break;
 		default:
 			// Do not run until user selects a gedcom/place/etc.
