@@ -232,29 +232,29 @@ class LifespanController extends PageController {
 			// Build the subtitle
 			if ($this->place && $filterPids) {
 				$this->subtitle = I18N::plural(
-					'%s person with events in %s between %s and %s',
-					'%s people with events in %s between %s and %s',
+					'%s individual with events in %s between %s and %s',
+					'%s individuals with events in %s between %s and %s',
 					$count, I18N::number($count),
 					$this->place, $this->startDate->display(false, '%Y'), $this->endDate->display(false, '%Y')
 				);
 			} elseif ($this->place) {
 				$this->subtitle = I18N::plural(
-					'%s person with events in %s',
-					'%s people with events in %s',
+					'%s individual with events in %s',
+					'%s individuals with events in %s',
 					$count, I18N::number($count),
 					$this->place
 				);
 			} elseif ($filterPids) {
 				$this->subtitle = I18N::plural(
-					'%s person with events between %s and %s',
-					'%s people with events between %s and %s',
+					'%s individual with events between %s and %s',
+					'%s individuals with events between %s and %s',
 					$count, I18N::number($count),
 					$this->startDate->display(false, '%Y'), $this->endDate->display(false, '%Y')
 				);
 			} else {
 				$this->subtitle = I18N::plural(
-					'%s person',
-					'%s people',
+					'%s individual',
+					'%s individuals',
 					$count, I18N::number($count));
 			}
 

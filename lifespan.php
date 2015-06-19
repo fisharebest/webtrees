@@ -63,7 +63,7 @@ $controller
 				<tr>
 					<td class="optionbox">
 						<label for="beginYear">
-							<?php echo I18N::translate('Start year'); ?>
+							<?php echo /* I18N: The earliest year in a range */ I18N::translate('Start year'); ?>
 						</label>
 					</td>
 					<td class="optionbox">
@@ -71,7 +71,7 @@ $controller
 					</td>
 					<td class="optionbox">
 						<label for="endYear">
-							<?php echo I18N::translate('End year'); ?>
+							<?php echo /* I18N: The latest year in a range */ I18N::translate('End year'); ?>
 						</label>
 					</td>
 					<td class="optionbox">
