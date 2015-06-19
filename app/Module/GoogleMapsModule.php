@@ -1681,9 +1681,9 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$id          = 0;
 				$level       = 0;
 				$matched[$x] = 0; // used to exclude places where the gedcom place is matched at all levels
-				$mapstr_edit = "<a href=\"#\" onclick=\"edit_place_location('";
-				$mapstr_add  = "<a href=\"#\" onclick=\"add_place_location('";
-				$mapstr3     = "";
+				$mapstr_edit = '<a href="#" dir="auto" onclick="edit_place_location(\'';
+				$mapstr_add  = '<a href="#" dir="auto" onclick="add_place_location(\'';
+				$mapstr3     = '';
 				$mapstr4     = "";
 				$mapstr5     = "')\" title='";
 				$mapstr6     = "' >";
@@ -1724,7 +1724,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 							$placestr2 = $mapstr_add . $id . "&amp;place_name=" . urlencode($levels[$z]) . "&amp;level=" . $level . $mapstr3 . $mapstr7 . '<span class="error">' . rtrim(ltrim($levels[$z])) . '</span>' . $mapstr8; $matched[$x]++;
 						}
 					}
-					$plac[$z] = "<td>" . $placestr2 . "</td>\n";
+					$plac[$z] = '<td>' . $placestr2 . '</td>';
 					if ($row['pl_lati'] == '0') {
 						$lati[$z] = "<td class='error'><strong>" . $row['pl_lati'] . "</strong></td>";
 					} elseif ($row['pl_lati'] != '') {
