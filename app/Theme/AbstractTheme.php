@@ -570,7 +570,7 @@ abstract class AbstractTheme {
 			$this->metaViewport() .
 			$this->metaRobots($controller->getMetaRobots()) .
 			$this->metaUaCompatible() .
-			$this->metaGenerator(WT_WEBTREES . ' ' . WT_VERSION . ' - ' . WT_WEBTREES_URL) .
+			$this->metaGenerator(WT_WEBTREES . ' ' . WT_VERSION . ' - ' . WT_WEBTREES_URL);
 
 		if ($this->tree) {
 			$html .= $this->metaDescription($this->tree->getPreference('META_DESCRIPTION'));
