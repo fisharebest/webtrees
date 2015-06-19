@@ -203,15 +203,6 @@ abstract class AbstractTheme {
 	}
 
 	/**
-	 * Where are our CSS, JS and other assets?
-	 *
-	 * @return string A relative path, such as "themes/foo/"
-	 */
-	public function assetUrl() {
-		return '';
-	}
-
-	/**
 	 * Create the top of the <body>.
 	 *
 	 * @return string
@@ -1356,9 +1347,11 @@ abstract class AbstractTheme {
 	/**
 	 * Create a menu to show lists of individuals, families, sources, etc.
 	 *
+	 * @param string $surname The significant surname on the page
+	 *
 	 * @return Menu
 	 */
-	protected function menuLists() {
+	protected function menuLists($surname) {
 		$menu = new Menu(I18N::translate('Lists'), 'indilist.php?' . $this->tree_url, 'menu-list');
 
 		// Do not show empty lists
@@ -1376,9 +1369,9 @@ abstract class AbstractTheme {
 		))->fetchOneRow();
 
 		$menulist = array(
-			$this->menuListsIndividuals(),
-			$this->menuListsFamilies(),
-			$this->menuListsBranches(),
+			$this->menuListsIndividuals($surname),
+			$this->menuListsFamilies($surname),
+			$this->menuListsBranches($surname),
 			$this->menuListsPlaces(),
 		);
 		if ($row->obje) {
@@ -1406,34 +1399,34 @@ abstract class AbstractTheme {
 	/**
 	 * A menu for the list of branches
 	 *
+	 * @param string $surname The significant surname on the page
+	 *
 	 * @return Menu
 	 */
-	protected function menuListsBranches() {
-		global $controller;
-
-		return new Menu(I18N::translate('Branches'), 'branches.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($controller->getSignificantSurname()), 'menu-branches', array('rel' => 'nofollow'));
+	protected function menuListsBranches($surname) {
+		return new Menu(I18N::translate('Branches'), 'branches.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($surname), 'menu-branches', array('rel' => 'nofollow'));
 	}
 
 	/**
 	 * A menu for the list of families
 	 *
+	 * @param string $surname The significant surname on the page
+	 *
 	 * @return Menu
 	 */
-	protected function menuListsFamilies() {
-		global $controller;
-
-		return new Menu(I18N::translate('Families'), 'famlist.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($controller->getSignificantSurname()), 'menu-list-fam', array('rel' => 'nofollow'));
+	protected function menuListsFamilies($surname) {
+		return new Menu(I18N::translate('Families'), 'famlist.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($surname), 'menu-list-fam', array('rel' => 'nofollow'));
 	}
 
 	/**
 	 * A menu for the list of individuals
 	 *
+	 * @param string $surname The significant surname on the page
+	 *
 	 * @return Menu
 	 */
-	protected function menuListsIndividuals() {
-		global $controller;
-
-		return new Menu(I18N::translate('Individuals'), 'indilist.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($controller->getSignificantSurname()), 'menu-list-indi');
+	protected function menuListsIndividuals($surname) {
+		return new Menu(I18N::translate('Individuals'), 'indilist.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($surname), 'menu-list-indi');
 	}
 
 	/**
@@ -1460,9 +1453,7 @@ abstract class AbstractTheme {
 	 * @return Menu
 	 */
 	protected function menuListsPlaces() {
-		global $controller;
-
-		return new Menu(I18N::translate('Place hierarchy'), 'placelist.php?ged=' . $this->tree->getNameUrl() . '&amp;surname=' . rawurlencode($controller->getSignificantSurname()), 'menu-list-plac', array('rel' => 'nofollow'));
+		return new Menu(I18N::translate('Place hierarchy'), 'placelist.php?ged=' . $this->tree->getNameUrl(), 'menu-list-plac', array('rel' => 'nofollow'));
 	}
 
 	/**
@@ -1885,7 +1876,7 @@ abstract class AbstractTheme {
 			return array_filter(array_merge(array(
 				$this->menuHomePage(),
 				$this->menuChart($individual),
-				$this->menuLists(),
+				$this->menuLists($controller->getSignificantSurname()),
 				$this->menuCalendar(),
 				$this->menuReports(),
 				$this->menuSearch(),
