@@ -571,7 +571,6 @@ abstract class AbstractTheme {
 			$this->metaRobots($controller->getMetaRobots()) .
 			$this->metaUaCompatible() .
 			$this->metaGenerator(WT_WEBTREES . ' ' . WT_VERSION . ' - ' . WT_WEBTREES_URL) .
-			$this->metaCanonicalUrl($controller->getCanonicalUrl());
 
 		if ($this->tree) {
 			$html .= $this->metaDescription($this->tree->getPreference('META_DESCRIPTION'));
@@ -1684,21 +1683,6 @@ abstract class AbstractTheme {
 			return $menu;
 		} else {
 			return null;
-		}
-	}
-
-	/**
-	 * Create the <link rel="canonical"> tag.
-	 *
-	 * @param string $url
-	 *
-	 * @return string
-	 */
-	protected function metaCanonicalUrl($url) {
-		if ($url) {
-			return '<link rel="canonical" href="' . $url . '">';
-		} else {
-			return '';
 		}
 	}
 

@@ -28,9 +28,6 @@ use Fisharebest\Webtrees\Theme;
  * Controller for full-page, themed HTML responses
  */
 class PageController extends BaseController {
-	/** @var string Some pages have multiple URLs (TODO really?) */
-	private $canonical_url = '';
-
 	/** @var string Most pages are not intended for robots */
 	private $meta_robots = 'noindex,nofollow';
 
@@ -60,28 +57,6 @@ class PageController extends BaseController {
 	 */
 	public function getPageTitle() {
 		return $this->page_title;
-	}
-
-	/**
-	 * What is the preferred URL for this page?
-	 *
-	 * @param string $canonical_url
-	 *
-	 * @return $this
-	 */
-	public function setCanonicalUrl($canonical_url) {
-		$this->canonical_url = $canonical_url;
-
-		return $this;
-	}
-
-	/**
-	 * What is the preferred URL for this page?
-	 *
-	 * @return string
-	 */
-	public function getCanonicalUrl() {
-		return $this->canonical_url;
 	}
 
 	/**
