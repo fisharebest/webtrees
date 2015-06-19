@@ -76,12 +76,14 @@ class MyTheme extends WebtreesTheme {
 	/**
 	 * This is an example function which shows one way to remove an entry from a menu.
 	 *
+	 * @param string $surname The significant surname for the page.
+	 *
 	 * {@inheritdoc}
 	 */
-	public function menuLists() {
+	public function menuLists($surname) {
 		try {
 			// Start with the default "Lists" menu.
-			$menu = parent::menuLists();
+			$menu = parent::menuLists($surname);
 			// Remove the "notes" sub-menu.
 			$submenus = array_filter($menu->getSubmenus(), function (Menu $menu) {
 				return $menu->getClass() !== 'menu-list-note';
@@ -91,7 +93,7 @@ class MyTheme extends WebtreesTheme {
 		} catch (\Exception $ex) {
 			// Something went wrong with our script?  Maybe the core code was updated?
 			// Use the default behaviour instead, so that our theme continues to work.
-			return parent::menuLists();
+			return parent::menuLists($surname);
 		}
 
 		return $menu;
