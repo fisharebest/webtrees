@@ -7402,8 +7402,8 @@ msgid "In this year…"
 msgstr "Šiais metais Jūsų istorijoje…"
 
 #: app/Module/GoogleMapsModule.php:1567
-msgid "Include fully matched places: "
-msgstr "Įtraukti pilnai atitinkančias vietoves: "
+msgid "Include fully matched places"
+msgstr "Įtraukti pilnai atitinkančias vietoves"
 
 #: famlist.php:173 indilist.php:174
 #, php-format

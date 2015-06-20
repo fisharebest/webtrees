@@ -7343,8 +7343,8 @@ msgid "In this year…"
 msgstr "在这年…"
 
 #: app/Module/GoogleMapsModule.php:1567
-msgid "Include fully matched places: "
-msgstr "包括完全匹配的地方: "
+msgid "Include fully matched places"
+msgstr "包括完全匹配的地方"
 
 #: famlist.php:173 indilist.php:174
 #, php-format

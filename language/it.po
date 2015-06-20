@@ -7374,8 +7374,8 @@ msgid "In this year…"
 msgstr "In quest’anno…"
 
 #: app/Module/GoogleMapsModule.php:1567
-msgid "Include fully matched places: "
-msgstr "Includi i luoghi completamente abbinati: "
+msgid "Include fully matched places"
+msgstr "Includi i luoghi completamente abbinati"
 
 #: famlist.php:173 indilist.php:174
 #, php-format

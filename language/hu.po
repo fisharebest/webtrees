@@ -7448,8 +7448,8 @@ msgid "In this year…"
 msgstr "Ebben az évben az Ön múltjában …"
 
 #: app/Module/GoogleMapsModule.php:1567
-msgid "Include fully matched places: "
-msgstr "Teljesen egyező helyek is: "
+msgid "Include fully matched places"
+msgstr "Teljesen egyező helyek is"
 
 #: famlist.php:173 indilist.php:174
 #, php-format

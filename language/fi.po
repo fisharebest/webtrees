@@ -7368,8 +7368,8 @@ msgid "In this year…"
 msgstr "Historialliset tapahtumat vuonna…"
 
 #: app/Module/GoogleMapsModule.php:1567
-msgid "Include fully matched places: "
-msgstr "Sisällytä täysin vastaavat paikat: "
+msgid "Include fully matched places"
+msgstr "Sisällytä täysin vastaavat paikat"
 
 #: famlist.php:173 indilist.php:174
 #, php-format

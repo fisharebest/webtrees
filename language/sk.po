@@ -7403,8 +7403,8 @@ msgid "In this year…"
 msgstr "Tohoto roku vo vašej histórii…"
 
 #: app/Module/GoogleMapsModule.php:1567
-msgid "Include fully matched places: "
-msgstr "Zahrnúť miesta, ktoré plne vyhovujú požiadavkám: "
+msgid "Include fully matched places"
+msgstr "Zahrnúť miesta, ktoré plne vyhovujú požiadavkám"
 
 #: famlist.php:173 indilist.php:174
 #, php-format

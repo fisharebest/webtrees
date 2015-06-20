@@ -7396,7 +7396,7 @@ msgid "In this year…"
 msgstr ""
 
 #: app/Module/GoogleMapsModule.php:1567
-msgid "Include fully matched places: "
+msgid "Include fully matched places"
 msgstr ""
 
 #: famlist.php:173 indilist.php:174

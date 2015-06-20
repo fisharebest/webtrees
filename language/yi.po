@@ -7368,8 +7368,8 @@ msgid "In this year…"
 msgstr "אין דעם יאָר …"
 
 #: app/Module/GoogleMapsModule.php:1567
-msgid "Include fully matched places: "
-msgstr "אַרייַננעמען גאָר ריכטן ערטער: "
+msgid "Include fully matched places"
+msgstr "אַרייַננעמען גאָר ריכטן ערטער"
 
 #: famlist.php:173 indilist.php:174
 #, php-format

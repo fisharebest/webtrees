@@ -7407,8 +7407,8 @@ msgid "In this year…"
 msgstr "В этом году, в прошлом …"
 
 #: app/Module/GoogleMapsModule.php:1567
-msgid "Include fully matched places: "
-msgstr "Показать места с известными координатами: "
+msgid "Include fully matched places"
+msgstr "Показать места с известными координатами"
 
 #: famlist.php:173 indilist.php:174
 #, php-format

@@ -7368,8 +7368,8 @@ msgid "In this year…"
 msgstr "Á þessu ári …"
 
 #: app/Module/GoogleMapsModule.php:1567
-msgid "Include fully matched places: "
-msgstr "Innifela staði með fullri samsvörun: "
+msgid "Include fully matched places"
+msgstr "Innifela staði með fullri samsvörun"
 
 #: famlist.php:173 indilist.php:174
 #, php-format

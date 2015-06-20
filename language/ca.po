@@ -7370,8 +7370,8 @@ msgid "In this year…"
 msgstr "Enguany…"
 
 #: app/Module/GoogleMapsModule.php:1567
-msgid "Include fully matched places: "
-msgstr "Inclou-hi indrets que coincideixin completament - "
+msgid "Include fully matched places"
+msgstr "Inclou-hi indrets que coincideixin completament"
 
 #: famlist.php:173 indilist.php:174
 #, php-format

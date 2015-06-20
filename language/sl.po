@@ -7433,8 +7433,8 @@ msgid "In this year…"
 msgstr "V tem letu …"
 
 #: app/Module/GoogleMapsModule.php:1567
-msgid "Include fully matched places: "
-msgstr "Vključi polno ujemajoča mesta: "
+msgid "Include fully matched places"
+msgstr "Vključi polno ujemajoča mesta"
 
 #: famlist.php:173 indilist.php:174
 #, php-format
