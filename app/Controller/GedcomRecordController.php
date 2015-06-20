@@ -72,7 +72,6 @@ class GedcomRecordController extends PageController {
 
 		// Set a page title
 		if ($this->record) {
-			$this->setCanonicalUrl($this->record->getHtmlUrl());
 			if ($this->record->canShowName()) {
 				// e.g. "John Doe" or "1881 Census of Wales"
 				$this->setPageTitle($this->record->getFullName());

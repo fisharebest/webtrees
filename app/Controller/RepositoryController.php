@@ -51,47 +51,49 @@ class RepositoryController extends GedcomRecordController {
 
 		if (Auth::isEditor($this->record->getTree())) {
 			$fact    = $this->record->getFirstFact('NAME');
-			$submenu = new Menu(I18N::translate('Edit repository'), '#', 'menu-repo-edit');
 			if ($fact) {
 				// Edit existing name
-				$submenu->setOnclick('return edit_record(\'' . $this->record->getXref() . '\', \'' . $fact->getFactId() . '\');');
+				$menu->addSubmenu(new Menu(I18N::translate('Edit repository'), '#', 'menu-repo-edit', array(
+					'onclick' => 'return edit_record("' . $this->record->getXref() . '", "' . $fact->getFactId() . '");',
+				)));
 			} else {
 				// Add new name
-				$submenu->setOnclick('return add_fact(\'' . $this->record->getXref() . '\', \'NAME\');');
+				$menu->addSubmenu(new Menu(I18N::translate('Edit repository'), '#', 'menu-repo-edit', array(
+					'onclick' => 'return add_fact("' . $this->record->getXref() . '", "NAME");',
+				)));
 			}
-			$menu->addSubmenu($submenu);
 		}
 
 		// delete
 		if (Auth::isEditor($this->record->getTree())) {
-			$submenu = new Menu(I18N::translate('Delete'), '#', 'menu-repo-del');
-			$submenu->setOnclick("return delete_repository('" . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJS(Filter::unescapeHtml($this->record->getFullName()))) . "', '" . $this->record->getXref() . "');");
-			$menu->addSubmenu($submenu);
+			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-repo-del', array(
+				'onclick' => 'return delete_repository("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJS(Filter::unescapeHtml($this->record->getFullName()))) . '", "' . $this->record->getXref() . '");',
+			)));
 		}
 
 		// edit raw
 		if (Auth::isAdmin() || Auth::isEditor($this->record->getTree()) && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
-			$submenu = new Menu(I18N::translate('Edit raw GEDCOM'), '#', 'menu-repo-editraw');
-			$submenu->setOnclick("return edit_raw('" . $this->record->getXref() . "');");
-			$menu->addSubmenu($submenu);
+			$menu->addSubmenu(new Menu(I18N::translate('Edit raw GEDCOM'), '#', 'menu-repo-editraw', array(
+				'onclick' => 'return edit_raw("' . $this->record->getXref() . '");',
+			)));
 		}
 
 		// add to favorites
 		if (Module::getModuleByName('user_favorites')) {
-			$submenu = new Menu(
-				/* I18N: Menu option.  Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
+			$menu->addSubmenu(new Menu(
+			/* I18N: Menu option.  Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
 				'#',
-				'menu-repo-addfav'
-			);
-			$submenu->setOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'" . $this->record->getXref() . "'},function(){location.reload();})");
-			$menu->addSubmenu($submenu);
+				'menu-repo-addfav',
+				array(
+					'onclick' => 'jQuery.post("module.php?mod=user_favorites&mod_action=menu-add-favorite" ,{xref:"' . $this->record->getXref() . '"},function(){location.reload();})',
+				)));
 		}
 
 		// Get the link for the first submenu and set it as the link for the main menu
 		if ($menu->getSubmenus()) {
 			$submenus = $menu->getSubmenus();
 			$menu->setLink($submenus[0]->getLink());
-			$menu->setOnClick($submenus[0]->getOnClick());
+			$menu->setAttrs($submenus[0]->getAttrs());
 		}
 
 		return $menu;

@@ -97,10 +97,9 @@ foreach ($varnames as $name) {
 
 $reports = array();
 foreach (Module::getActiveReports($WT_TREE) as $rep) {
-	foreach ($rep->getReportMenus() as $menu) {
-		if (preg_match('/report=(' . preg_quote(WT_MODULES_DIR, '/') . '[a-z0-9_]+\/[a-z0-9_]+\.xml)/', $menu->getLink(), $match)) {
-			$reports[$match[1]] = $menu->getLabel();
-		}
+	$menu = $rep->getReportMenu();
+	if (preg_match('/report=(' . preg_quote(WT_MODULES_DIR, '/') . '[a-z0-9_]+\/[a-z0-9_]+\.xml)/', $menu->getLink(), $match)) {
+		$reports[$match[1]] = $menu->getLabel();
 	}
 }
 
@@ -220,7 +219,7 @@ case 'setup':
 					$display = I18N::number($match[1]);
 				} elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $display, $match)) {
 					$display = I18N::translate($match[1]);
-				} elseif (preg_match('/^I18N::translate_c\(\'(.+)\', *\'(.+)\'\)$/', $display, $match)) {
+				} elseif (preg_match('/^I18N::translateContext\(\'(.+)\', *\'(.+)\'\)$/', $display, $match)) {
 					$display = I18N::translateContext($match[1], $match[2]);
 				}
 				echo '<option value="', Filter::escapeHtml($value), '" ';

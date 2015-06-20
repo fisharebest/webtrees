@@ -1286,3 +1286,22 @@ jQuery ('body').on ('click', '.iconz', function (e) {
 	}
 	wrapper.find ('.iconz').toggleClass ("icon-zoomin icon-zoomout");
 });
+
+// Activate the langauge selection menu.
+jQuery(".menu-language").on("click", "li a", function() {
+	jQuery.post("action.php", {
+		action: "language",
+		language: $(this).data("language"),
+		csrf: WT_CSRF_TOKEN
+	}, function() { window.location.href = window.location.href; /*location.reload();*/ });
+});
+
+// Activate the theme selection menu.
+jQuery(".menu-theme").on("click", "li a", function() {
+	jQuery.post("action.php", {
+		action: "theme",
+		theme: $(this).data("theme"),
+		csrf: WT_CSRF_TOKEN
+	}, function() { location.reload(); });
+});
+

@@ -69,7 +69,7 @@ class ReportParserSetup extends ReportParserBase {
 			$this->text .=  I18N::number($match[1]);
 		} elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $attrs['var'], $match)) {
 			$this->text .=  I18N::translate($match[1]);
-		} elseif (preg_match('/^I18N::translate_c\(\'(.+)\', *\'(.+)\'\)$/', $attrs['var'], $match)) {
+		} elseif (preg_match('/^I18N::translateContext\(\'(.+)\', *\'(.+)\'\)$/', $attrs['var'], $match)) {
 			$this->text .=  I18N::translateContext($match[1], $match[2]);
 		} else {
 			$this->text .= $attrs['var'];

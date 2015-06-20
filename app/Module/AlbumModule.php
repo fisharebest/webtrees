@@ -133,7 +133,9 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 
 			// View Notes
 			if (strpos($media->getGedcom(), "\n1 NOTE")) {
-				$submenu = new Menu(I18N::translate('View notes'), '#', '', "modalNotes('" . Filter::escapeJs($notes) . "','" . I18N::translate('View notes') . "'); return false;");
+				$submenu = new Menu(I18N::translate('View notes'), '#', '', array(
+					'onclick' => 'modalNotes("' . Filter::escapeJs($notes) . '","' . I18N::translate('View notes') . '"); return false;',
+				));
 				$submenu->addClass("submenuitem");
 				$menu->addSubmenu($submenu);
 			}
@@ -154,28 +156,40 @@ class AlbumModule extends AbstractModule implements ModuleTabInterface {
 
 			if (Auth::isEditor($media->getTree())) {
 				// Edit Media
-				$submenu = new Menu(I18N::translate('Edit media'), '#', '', "return window.open('addmedia.php?action=editmedia&amp;pid=" . $media->getXref() . "', '_blank', edit_window_specs);");
+				$submenu = new Menu(I18N::translate('Edit media'), '#', '', array(
+					'onclick' => 'return window.open("addmedia.php?action=editmedia&pid=' . $media->getXref() . '", "_blank", edit_window_specs);',
+				));
 				$submenu->addClass("submenuitem");
 				$menu->addSubmenu($submenu);
 				if (Auth::isAdmin()) {
 					if (Module::getModuleByName('GEDFact_assistant')) {
-						$submenu = new Menu(I18N::translate('Manage links'), '#', '', "return window.open('inverselink.php?mediaid=" . $media->getXref() . "&amp;linkto=manage', '_blank', find_window_specs);");
+						$submenu = new Menu(I18N::translate('Manage links'), '#', '', array(
+							'onclick' => 'return window.open("inverselink.php?mediaid=' . $media->getXref() . '&linkto=manage", "_blank", find_window_specs);',
+						));
 						$submenu->addClass("submenuitem");
 						$menu->addSubmenu($submenu);
 					} else {
-						$submenu = new Menu(I18N::translate('Link this media object to an individual'), '#', 'menu-obje-link-indi', "return ilinkitem('" . $media->getXref() . "','person');");
+						$submenu = new Menu(I18N::translate('Link this media object to an individual'), '#', 'menu-obje-link-indi', array(
+							'onclick' => 'return ilinkitem("' . $media->getXref() . '","person");',
+						));
 						$submenu->addClass('submenuitem');
 						$menu->addSubmenu($submenu);
 
-						$submenu = new Menu(I18N::translate('Link this media object to a family'), '#', 'menu-obje-link-fam', "return ilinkitem('" . $media->getXref() . "','family');");
+						$submenu = new Menu(I18N::translate('Link this media object to a family'), '#', 'menu-obje-link-fam', array(
+							'onclick' => 'return ilinkitem("' . $media->getXref() . '","family");',
+						));
 						$submenu->addClass('submenuitem');
 						$menu->addSubmenu($submenu);
 
-						$submenu = new Menu(I18N::translate('Link this media object to a source'), '#', 'menu-obje-link-sour', "return ilinkitem('" . $media->getXref() . "','source');");
+						$submenu = new Menu(I18N::translate('Link this media object to a source'), '#', 'menu-obje-link-sour', array(
+							'onclick' => 'return ilinkitem("' . $media->getXref() . '","source");',
+						));
 						$submenu->addClass('submenuitem');
 						$menu->addSubmenu($submenu);
 					}
-					$submenu = new Menu(I18N::translate('Unlink media'), '#', '', "return unlink_media('" . I18N::translate('Are you sure you want to remove links to this media object?') . "', '" . $controller->record->getXref() . "', '" . $media->getXref() . "');");
+					$submenu = new Menu(I18N::translate('Unlink media'), '#', '', array(
+						'onclick' => 'return unlink_media("' . I18N::translate('Are you sure you want to remove links to this media object?') . '", "' . $controller->record->getXref() . '", "' . $media->getXref() . '");',
+					));
 					$submenu->addClass("submenuitem");
 					$menu->addSubmenu($submenu);
 				}

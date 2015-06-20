@@ -66,7 +66,7 @@ build/webtrees: clean update
 	# Extract from the repository, to filter files using .gitattributes
 	git archive --prefix=$@/ $(GIT_BRANCH) | tar -x
 	# Embed the build number in the code (for DEV builds only)
-	sed -i -e "s/define('WT_RELEASE', '$(WT_VERSION)-dev')/define('WT_RELEASE', '$(WT_VERSION)-dev+$(BUILD_NUMBER)')/" $@/includes/session.php
+	sed -i .bak -e "s/define('WT_RELEASE', '$(WT_VERSION)-dev')/define('WT_RELEASE', '$(WT_VERSION)-dev+$(BUILD_NUMBER)')/" $@/includes/session.php
 	# Add language files
 	cp -R $(LANGUAGE_DIR)/*.mo $@/$(LANGUAGE_DIR)/
 	# Minification
@@ -95,7 +95,7 @@ clean:
 language/webtrees.pot: $(LANGUAGE_SRC)
 	# Modify the .XML report files so that xgettext can scan them
 	find modules*/ -name "*.xml" -exec cp -p {} {}.bak \;
-	sed -i -e 's~\(I18N::[^)]*[)]\)~<?php echo \1; ?>~g' modules*/*/*.xml
+	sed -i .bak -e 's~\(I18N::[^)]*[)]\)~<?php echo \1; ?>~g' modules*/*/*.xml
 	echo $^ | xargs xgettext --package-name=webtrees --package-version=1.0 --msgid-bugs-address=i18n@webtrees.net --output=$@ --no-wrap --language=PHP --add-comments=I18N --from-code=utf-8 --keyword --keyword=translate:1 --keyword=translateContext:1c,2 --keyword=plural:1,2 --keyword=noop:1
 	# Restore the .XML files
 	find modules*/ -name "*.xml" -exec mv {}.bak {} \;

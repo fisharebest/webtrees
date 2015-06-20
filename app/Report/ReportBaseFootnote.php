@@ -123,7 +123,7 @@ class ReportBaseFootnote extends ReportBaseElement {
 
 	/**
 	 * Add a link.
-	 * 
+	 *
 	 * @param $a
 	 *
 	 * @return int

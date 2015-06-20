@@ -43,7 +43,7 @@ function send404AsImage() {
 	$bgc    = imagecolorallocate($im, 255, 255, 255); /* set background color */
 	imagefilledrectangle($im, 2, 2, $width - 4, $height - 4, $bgc); /* create a rectangle, leaving 2 px border */
 
-	embedText($im, $error, 100, '255, 0, 0', '', 'top', 'left');
+	embedText($im, $error, 100, '255, 0, 0', WT_ROOT . Config::FONT_DEJAVU_SANS_TTF, 'top', 'left');
 
 	http_response_code(404);
 	header('Content-Type: image/png');
@@ -68,8 +68,8 @@ function applyWatermark($im, Tree $tree) {
 	$word1_maxsize = 100;
 	// rgb color codes for text
 	$word1_color = '0,0,0';
-	// ttf font file to use. must exist in the includes/fonts/ folder
-	$word1_font = '';
+	// ttf font file to use
+	$word1_font = WT_ROOT . Config::FONT_DEJAVU_SANS_TTF;
 	// vertical position for the text to past; possible values are: top, middle or bottom, across
 	$word1_vpos = 'across';
 	// horizontal position for the text to past in media file; possible values are: left, right, top2bottom, bottom2top
@@ -79,7 +79,7 @@ function applyWatermark($im, Tree $tree) {
 	$word2_text    = $_SERVER['HTTP_HOST'];
 	$word2_maxsize = 20;
 	$word2_color   = '0,0,0';
-	$word2_font    = '';
+	$word2_font    = WT_ROOT . Config::FONT_DEJAVU_SANS_TTF;
 	$word2_vpos    = 'top';
 	$word2_hpos    = 'top2bottom';
 
@@ -106,15 +106,6 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 	// there are two ways to embed text with PHP
 	// (preferred) using GD and FreeType you can embed text using any True Type font
 	// (fall back) if that is not available, you can insert basic monospaced text
-	if ($useTTF) {
-		// imagettftext is available, make sure the requested font exists
-		if (!isset($font) || ($font == '') || !file_exists(WT_ROOT . 'includes/fonts/' . $font)) {
-			$font = 'DejaVuSans.ttf'; // this font ships with webtrees
-			if (!file_exists(WT_ROOT . 'includes/fonts/' . $font)) {
-				$useTTF = false;
-			}
-		}
-	}
 
 	$col       = explode(',', $color);
 	$textcolor = imagecolorallocate($im, $col[0], $col[1], $col[2]);
@@ -189,7 +180,7 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 	if ($useTTF) {
 		// if imagettftext throws errors, catch them with a custom error handler
 		set_error_handler('\Fisharebest\Webtrees\\imagettftextErrorHandler');
-		imagettftext($im, $taille, $rotation, $pos_x, $pos_y, $textcolor, 'includes/fonts/' . $font, $text);
+		imagettftext($im, $taille, $rotation, $pos_x, $pos_y, $textcolor, $font, $text);
 		restore_error_handler();
 	}
 	// Don’t use an ‘else’ here since imagettftextErrorHandler may have changed the value of $useTTF from true to false

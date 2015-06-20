@@ -28,86 +28,87 @@ $controller
 
 ?>
 <div id="lifespan-page">
-	<h2><?php echo I18N::translate('Lifespan chart');?></h2>
+	<h2><?php echo I18N::translate('Lifespans');?></h2>
 
-	<form class="descriptionbox lifespan-form noprint" method="post">
-		<fieldset>
-			<legend><?php echo I18N::translate('Select place or add individual(s)');?></legend>
-			<label class="descriptionbox" for="place">
-				<?php echo GedcomTag::getLabel('PLAC'); ?>
-			</label>
-			<span class="optionbox">
-				<input id="place" data-autocomplete-type="PLAC" type="text" name="place" size="15"
-					value="<?php echo Filter::escapeHtml($controller->place); ?>">
-			</span>
-			<div>
-				<label class="descriptionbox" for="newpid">
-					<?php echo I18N::translate('Add another individual to the chart'); ?>
-				</label>
-				<span class="optionbox">
-					<input id="newpid" class="pedigree_form" data-autocomplete-type="INDI" type="text" size="5"
-					       name="newpid"><?php FunctionsPrint::printFindIndividualLink('newpid'); ?>
-				</span>
-			</div>
-			<div>
-				<label class="descriptionbox" for="addFamily">
-					<?php echo I18N::translate('Include the individual’s immediate family?'); ?>
-				</label>
-				<span class="optionbox">
-					<input id="addFamily" type="checkbox" value="yes" name="addFamily">
-				</span>
-			</div>
-		</fieldset>
-		<fieldset>
-			<legend><?php echo I18N::translate('Filter selection by date');?></legend>
-			<div>
-				<label class="descriptionbox" for="beginYear">
-					<?php echo I18N::translate('Begin year'); ?>
-				</label>
-				<span class="optionbox">
-					<input id="beginYear" type="text" name="beginYear" size="5" value="<?php echo $controller->beginYear; ?>">
-				</span>
-			</div>
-			<div>
-				<label class="descriptionbox" for="endYear">
-					<?php echo I18N::translate('End year'); ?>
-				</label>
-				<span class="optionbox">
-					<input id="endYear" type="text" name="endYear" size="5"
-						value="<?php echo $controller->endYear; ?>">
-				</span>
-			</div>
-			<div>
-				<label class="descriptionbox" for="strictDate">
-					<?php echo I18N::translate('Match calendar'); ?>
-				</label>
-				<span class="optionbox">
-					<input id="strictDate" type="checkbox" value="yes" name="strictDate">
-				</span>
-			</div>
-		</fieldset>
-		<fieldset>
-			<legend><?php echo I18N::translate('Controls');?></legend>
-			<div class="controls">
-				<div>
-					<input type="submit" value="<?php echo I18N::translate('Show'); ?>">
-				</div>
-				<div>
-					<input id="clear" type="hidden" name="clear" value=0>
-					<input type="reset" value="<?php echo I18N::translate('Clear chart'); ?>">
-				</div>
-				<div>
-					<label class="descriptionbox" for="calendar">
-						<?php echo I18N::translate('Calendar'); ?>
-					</label>
-					<span>
+	<form>
+		<table class="list_table">
+			<tbody>
+				<tr>
+					<th class="descriptionbox" colspan="4">
+						<?php echo I18N::translate('Select individuals by place or date');?>
+					</th>
+					<th class="descriptionbox" colspan="2">
+						<?php echo I18N::translate('Add individuals');?>
+					</th>
+				</tr>
+				<tr>
+					<td class="optionbox">
+						<label for="place">
+							<?php echo GedcomTag::getLabel('PLAC'); ?>
+						</label>
+					</td>
+					<td class="optionbox" colspan="3">
+						<input id="place" data-autocomplete-type="PLAC" type="text" size="30" name="place">
+					</td>
+					<td class="optionbox">
+						<label for="newpid">
+							<?php echo I18N::translate('Individual'); ?>
+						</label>
+					</td>
+					<td class="optionbox">
+						<input id="newpid" class="pedigree_form" data-autocomplete-type="INDI" type="text" size="5" name="newpid"><?php echo FunctionsPrint::printFindIndividualLink('newpid'); ?>
+
+					</td>
+				</tr>
+				<tr>
+					<td class="optionbox">
+						<label for="beginYear">
+							<?php echo /* I18N: The earliest year in a range */ I18N::translate('Start year'); ?>
+						</label>
+					</td>
+					<td class="optionbox">
+						<input id="beginYear" type="text" name="beginYear" size="5">
+					</td>
+					<td class="optionbox">
+						<label for="endYear">
+							<?php echo /* I18N: The latest year in a range */ I18N::translate('End year'); ?>
+						</label>
+					</td>
+					<td class="optionbox">
+						<input id="endYear" type="text" name="endYear" size="5">
+					</td>
+					<td class="optionbox" colspan="2">
+						<label for="addFamily">
+							<input id="addFamily" type="checkbox" value="yes" name="addFamily">
+							<?php echo I18N::translate('Include the individual’s immediate family?'); ?>
+						</label>
+					</td>
+				</tr>
+				<tr>
+					<td class="optionbox">
+						<label for="calendar">
+							<?php echo I18N::translate('Calendar'); ?>
+						</label>
+					</td>
+					<td class="optionbox">
 						<select id="calendar" name="calendar">
 							<?php echo $controller->getCalendarOptionList();?>
 						</select>
-					</span>
-				</div>
-			</div>
-		</fieldset>
+					</td>
+					<td class="optionbox" colspan="2">
+						<label for="strictDate">
+							<input id="strictDate" type="checkbox" value="yes" name="strictDate">
+							<?php echo I18N::translate('Match calendar'); ?>
+						</label>
+					</td>
+					<th class="descriptionbox" colspan="2">
+						<input id="clear" type="hidden" name="clear" value=0>
+						<input type="reset" value="<?php echo /* I18N: Button label */ I18N::translate('reset'); ?>">
+						<input type="submit" value="<?php /* I18N: Button label */ echo I18N::translate('show'); ?>">
+					</th>
+				</tr>
+			</tbody>
+		</table>
 	</form>
 
 	<div id="lifespan-chart">

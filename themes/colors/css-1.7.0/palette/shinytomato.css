@@ -49,7 +49,7 @@ header {
 }
 
 /* Base */
-#indi_header h3, #lifespan-page .descriptionbox,
+#indi_header h3,
 .blockcontent, #search, #search-page-table .value, #edituser-table .value,
 .secondary-menu ul li a:hover, .ui-widget-header, #save-cancel,
 .optionbox, #indi_header .ui-state-active a:link,

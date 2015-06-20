@@ -899,7 +899,7 @@ class FunctionsDb {
 					$anniv_date = new Date($row->d_type . ' ' . $row->d_day . ' ' . $row->d_month . ' ' . $row->d_year);
 					foreach ($record->getFacts() as $fact) {
 						if (($fact->getDate()->minimumDate() == $anniv_date->minimumDate() || $fact->getDate()->maximumDate() == $anniv_date->minimumDate()) && $fact->getTag() === $row->d_fact) {
-							$fact->anniv   = $row->d_year === 0 ? 0 : $anniv->y - $row->d_year;
+							$fact->anniv   = $row->d_year === '0' ? 0 : $anniv->y - $row->d_year;
 							$found_facts[] = $fact;
 						}
 					}

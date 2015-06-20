@@ -1979,16 +1979,12 @@ span.link_text {
 
 #indi_mainimage {
 	float: left;
-	padding: 0 10px;
+	padding: 0 2px;
 }
 
 #header_accordion1 {
-	padding: 0 10px 0 0;
+	padding: 0;
 	overflow: hidden;
-}
-
-[dir='rtl'] #header_accordion1 {
-	padding: 0 0 0 10px;
 }
 
 #header_accordion1 .indi_name_details {
@@ -2439,9 +2435,9 @@ dd .deletelink {
 
 #tabs {
 	background-color: #fff;
-	border-color: #ddd;
 	width: 100%;
 	overflow: visible;
+	padding-top: 0.2em;
 }
 
 [dir=rtl] #tabs {
@@ -3400,13 +3396,6 @@ table.table-census-assistant th {
 }
 
 /*-- Lifespan ---- */
-#lifespan-page .descriptionbox {
-	color: #333;
-}
-#lifespan-page .optionbox{
-	background: #fff;
-}
-
 .lifespan-form {
 	display: table;
 	margin:  0 auto;

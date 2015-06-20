@@ -55,21 +55,18 @@ class AhnentafelReportModule extends AbstractModule implements ModuleReportInter
 	}
 
 	/**
-	 * Return a list of (usually just one) menu items.
+	 * Return a menu item for this report.
 	 *
-	 * @return Menu[]
+	 * @return Menu
 	 */
-	public function getReportMenus() {
+	public function getReportMenu() {
 		global $controller, $WT_TREE;
 
-		$menus = array();
-		$menu  = new Menu(
+		return new Menu(
 			$this->getTitle(),
 			'reportengine.php?ged=' . $WT_TREE->getNameUrl() . '&amp;action=setup&amp;report=' . WT_MODULES_DIR . $this->getName() . '/report.xml&amp;pid=' . $controller->getSignificantIndividual()->getXref(),
-			'menu-report-' . $this->getName()
+			'menu-report-' . $this->getName(),
+			array('rel' => 'nofollow')
 		);
-		$menus[] = $menu;
-
-		return $menus;
 	}
 }

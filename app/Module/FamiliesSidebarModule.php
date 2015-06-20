@@ -15,7 +15,6 @@
  */
 namespace Fisharebest\Webtrees\Module;
 
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Database;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
@@ -63,7 +62,7 @@ class FamiliesSidebarModule extends AbstractModule implements ModuleSidebarInter
 
 	/** {@inheritdoc} */
 	public function hasSidebarContent() {
-		return !Auth::isSearchEngine();
+		return true;
 	}
 
 	/** {@inheritdoc} */

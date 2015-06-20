@@ -8,8 +8,8 @@
 	<Input name="notes" type="checkbox" default="1"><var var="I18N::translate('Show notes?')" /></Input>
 	<Input name="photos" type="checkbox" default="1"><var var="I18N::translate('Show photos?')" /></Input>
 	<Input name="blanks" type="checkbox" default="0"><var var="I18N::translate('Print basic events when blank?')" /></Input>
-	<Input name="pageSize" type="select" default="A4" options="letter=>I18N::translate_c('paper size','Letter')|A3=>I18N::translate_c('paper size', 'A3')|A4=>I18N::translate_c('paper size','A4')|legal=>I18N::translate_c('paper size','Legal')"><var var="I18N::translate('Page size')" /></Input>
-	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>I18N::translate_c('font name', 'Arial')|dejavusans=>I18N::translate_c('font name', 'DejaVu')|helvetica=>I18N::translate_c('font name', 'Helvetica')"><var var="I18N::translate('Font')"/></Input>
+	<Input name="pageSize" type="select" default="A4" options="letter=>I18N::translateContext('paper size','Letter')|A3=>I18N::translateContext('paper size', 'A3')|A4=>I18N::translateContext('paper size','A4')|legal=>I18N::translateContext('paper size','Legal')"><var var="I18N::translate('Page size')" /></Input>
+	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>I18N::translateContext('font name', 'Arial')|dejavusans=>I18N::translateContext('font name', 'DejaVu')|helvetica=>I18N::translateContext('font name', 'Helvetica')"><var var="I18N::translate('Font')"/></Input>
 	<Input name="colors" type="checkbox" default="1"><var var="I18N::translate('Use colors')"/></Input>
 
 	<!-- Header -->
@@ -829,7 +829,7 @@
 						<!-- Print the unknown gender child's name -->
 						<if condition="(@SEX=='U') or (@SEX=='')">
 							<TextBox bgcolor="$unknowngenderbox_bgcolor" border="1" left="15" newline="1" width="$width1">
-								<Text color="$tcolor" style="text"><var var="I18N::translate('Gender')"/> <var var="I18N::translate_c('unknown gender', 'Unknown')"/>  </Text>
+								<Text color="$tcolor" style="text"><var var="I18N::translate('Gender')"/> <var var="I18N::translateContext('unknown gender', 'Unknown')"/>  </Text>
 								<Text color="$tcolor" style="name"><GetPersonName id="" /> </Text>
 								<if condition="$sources==1">
 									<!-- print level 1 sources -->

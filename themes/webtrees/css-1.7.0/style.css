@@ -2324,8 +2324,9 @@ dd .deletelink {
 #tabs {
 	background-color: #fff;
 	border-color: #ddd;
-	width: 100%;
+	margin-left: 0;
 	overflow: visible;
+	width: 100%;
 }
 
 [dir=rtl] #tabs {
@@ -3292,45 +3293,6 @@ table.table-census-assistant th {
 }
 
 /*-- Lifespan ---- */
-.lifespan-form {
-	display: table;
-	margin:  0 auto;
-}
-
-.lifespan-form fieldset {
-	display:        inline-block;
-	margin:         0;
-	vertical-align: top;
-	height:         85px;
-}
-
-.lifespan-form legend {
-	color: inherit;
-}
-
-.lifespan-form fieldset > div {
-	display: table-row;
-}
-
-.lifespan-form label,
-.lifespan-form span {
-	display: table-cell;
-	border:  none;
-}
-
-.lifespan-form .controls {
-	text-align: right;
-}
-
-[dir='rtl'] .lifespan-form .controls {
-	text-align: left;
-}
-
-.lifespan-form select,
-.lifespan-form .controls * {
-	margin: 1px 0;
-}
-
 #lifespan-chart {
 	padding:    0 10px 10px;
 	margin:     0 auto;

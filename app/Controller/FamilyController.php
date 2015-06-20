@@ -88,53 +88,53 @@ class FamilyController extends GedcomRecordController {
 
 		if (Auth::isEditor($this->record->getTree())) {
 			// edit_fam / members
-			$submenu = new Menu(I18N::translate('Change family members'), '#', 'menu-fam-change');
-			$submenu->setOnclick("return change_family_members('" . $this->record->getXref() . "');");
-			$menu->addSubmenu($submenu);
+			$menu->addSubmenu(new Menu(I18N::translate('Change family members'), '#', 'menu-fam-change', array(
+				'onclick' => 'return change_family_members("' . $this->record->getXref() . '");',
+			)));
 
 			// edit_fam / add child
-			$submenu = new Menu(I18N::translate('Add a child to this family'), '#', 'menu-fam-addchil');
-			$submenu->setOnclick("return add_child_to_family('" . $this->record->getXref() . "', 'U');");
-			$menu->addSubmenu($submenu);
+			$menu->addSubmenu(new Menu(I18N::translate('Add a child to this family'), '#', 'menu-fam-addchil', array(
+				'onclick' => 'return add_child_to_family("' . $this->record->getXref() . '", "U");',
+			)));
 
 			// edit_fam / reorder_children
 			if ($this->record->getNumberOfChildren() > 1) {
-				$submenu = new Menu(I18N::translate('Re-order children'), '#', 'menu-fam-orderchil');
-				$submenu->setOnclick("return reorder_children('" . $this->record->getXref() . "');");
-				$menu->addSubmenu($submenu);
+				$menu->addSubmenu(new Menu(I18N::translate('Re-order children'), '#', 'menu-fam-orderchil', array(
+					'onclick' => 'return reorder_children("' . $this->record->getXref() . '");',
+				)));
 			}
 		}
 
 		// delete
 		if (Auth::isEditor($this->record->getTree())) {
-			$submenu = new Menu(I18N::translate('Delete'), '#', 'menu-fam-del');
-			$submenu->setOnclick("return delete_family('" . I18N::translate('Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?') . "', '" . $this->record->getXref() . "');");
-			$menu->addSubmenu($submenu);
+			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-fam-del', array(
+				'onclick' => 'return delete_family("' . I18N::translate('Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?') . '", "' . $this->record->getXref() . '");',
+			)));
 		}
 
 		// edit raw
 		if (Auth::isAdmin() || Auth::isEditor($this->record->getTree()) && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
-			$submenu = new Menu(I18N::translate('Edit raw GEDCOM'), '#', 'menu-fam-editraw');
-			$submenu->setOnclick("return edit_raw('" . $this->record->getXref() . "');");
-			$menu->addSubmenu($submenu);
+			$menu->addSubmenu(new Menu(I18N::translate('Edit raw GEDCOM'), '#', 'menu-fam-editraw', array(
+				'onclick' => 'return edit_raw("' . $this->record->getXref() . '");',
+			)));
 		}
 
 		// add to favorites
 		if (Module::getModuleByName('user_favorites')) {
-			$submenu = new Menu(
-				/* I18N: Menu option.  Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
+			$menu->addSubmenu(new Menu(
+			/* I18N: Menu option.  Add [the current page] to the list of favorites */ I18N::translate('Add to favorites'),
 				'#',
-				'menu-fam-addfav'
-			);
-			$submenu->setOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'" . $this->record->getXref() . "'},function(){location.reload();})");
-			$menu->addSubmenu($submenu);
+				'menu-fam-addfav',
+				array(
+					'onclick' => 'jQuery.post("module.php?mod=user_favorites&mod_action=menu-add-favorite",{xref:"' . $this->record->getXref() . '"},function(){location.reload();})',
+				)));
 		}
 
 		// Get the link for the first submenu and set it as the link for the main menu
 		if ($menu->getSubmenus()) {
 			$submenus = $menu->getSubmenus();
 			$menu->setLink($submenus[0]->getLink());
-			$menu->setOnClick($submenus[0]->getOnClick());
+			$menu->setAttrs($submenus[0]->getAttrs());
 		}
 
 		return $menu;

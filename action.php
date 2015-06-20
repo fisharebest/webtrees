@@ -173,6 +173,20 @@ case 'delete-user':
 	}
 	break;
 
+case 'language':
+	// Change the current language
+	$language = Filter::post('language');
+	try {
+		I18N::init($language);
+		Session::put('locale', $language);
+		// Remember our selection
+		Auth::user()->setPreference('language', $language);
+	} catch (\Exception $ex) {
+		// Request for a non-existant language.
+		http_response_code(406);
+	}
+	break;
+
 case 'masquerade':
 	$user = User::find(Filter::postInteger('user_id'));
 
