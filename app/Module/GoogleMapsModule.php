@@ -1644,7 +1644,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$cols = 0;
 			$span = $max * 3 + 3;
 			echo '<div class="gm_check_details">';
-			echo '<table class="table table-bordered table-condensed table-hover"><tr>';
+			echo '<table class="table table-bordered table-condensed table-hover"><thead><tr>';
 			echo '<th rowspan="3">', I18N::translate('Place'), '</th>';
 			echo '<th colspan="', $span, '">', I18N::translate('Geographic data'), '</th></tr>';
 			echo '<tr>';
@@ -1652,31 +1652,30 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				if ($cols == 0) {
 					echo '<th colspan="3">', I18N::translate('Country'), '</th>';
 				} else {
-					echo '<th colspan="3">', I18N::translate('Level'), '&nbsp;', $cols + 1, '</th>';
+					echo '<th colspan="3">', I18N::translate('Level'), ' ', $cols + 1, '</th>';
 				}
 				$cols++;
 			}
 			echo '</tr><tr>';
-			$cols = 0;
-			while ($cols < $max) {
-				echo '<th>', GedcomTag::getLabel('PLAC'), '</th><th>', I18N::translate('Latitude'), '</th><th>', I18N::translate('Longitude'), '</th>';
-				$cols++;
+			for ($cols = 0; $cols < $max; ++$cols) {
+				echo '<th>', GedcomTag::getLabel('PLAC'), '</th>';
+				echo '<th>', I18N::translate('Latitude'), '</th>';
+				echo '<th>', I18N::translate('Longitude'), '</th>';
 			}
-			echo '</tr>';
+			echo '</tr></thead><tbody>';
 			$countrows = 0;
 			$matched   = array();
 			while ($x < $i) {
-				$placestr = "";
-				$levels   = explode(",", $place_list[$x]);
+				$placestr = '';
+				$levels   = explode(', ', $place_list[$x]);
 				$parts    = count($levels);
 				$levels   = array_reverse($levels);
-				$placestr .= "<a href=\"placelist.php?action=show";
+				$placestr .= '<a href="placelist.php?action=show';
 				foreach ($levels as $pindex => $ppart) {
-					$ppart = urlencode(trim($ppart));
-					$placestr .= "&amp;parent[$pindex]=" . $ppart . "";
+					$placestr .= '&amp;parent[' . $pindex . ']=' . urlencode($ppart);
 				}
-				$placestr .= "\">" . $place_list[$x] . "</a>";
-				$gedplace    = "<tr><td>" . $placestr . "</td>";
+				$placestr .= '">' . $place_list[$x] . "</a>";
+				$gedplace    = '<tr><td>' . $placestr . '</td>';
 				$z           = 0;
 				$id          = 0;
 				$level       = 0;
@@ -1684,19 +1683,18 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$mapstr_edit = '<a href="#" dir="auto" onclick="edit_place_location(\'';
 				$mapstr_add  = '<a href="#" dir="auto" onclick="add_place_location(\'';
 				$mapstr3     = '';
-				$mapstr4     = "";
-				$mapstr5     = "')\" title='";
-				$mapstr6     = "' >";
-				$mapstr7     = "')\">";
-				$mapstr8     = "</a>";
+				$mapstr4     = '';
+				$mapstr5     = '\')" title=\'';
+				$mapstr6     = '\' >';
+				$mapstr7     = '\')">';
+				$mapstr8     = '</a>';
 				$plac        = array();
 				$lati        = array();
 				$long        = array();
 				while ($z < $parts) {
-					if ($levels[$z] == ' ' || $levels[$z] == '')
-						$levels[$z] = "unknown"; // GoogleMap module uses "unknown" while GEDCOM uses , ,
-
-					$levels[$z] = rtrim(ltrim($levels[$z]));
+					if ($levels[$z] == '') {
+						$levels[$z] = 'unknown'; // GoogleMap module uses "unknown" while GEDCOM uses , ,
+					}
 
 					$placelist = $this->createPossiblePlaceNames($levels[$z], $z + 1); // add the necessary prefix/postfix values to the place name
 					foreach ($placelist as $key => $placename) {
@@ -1715,29 +1713,31 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 					if ($row['pl_place'] != '') {
 						$placestr2 = $mapstr_edit . $id . "&amp;level=" . $level . $mapstr3 . $mapstr5 . I18N::translate('Zoom=') . $row['pl_zoom'] . $mapstr6 . $row['pl_placerequested'] . $mapstr8;
-						if ($row['pl_place'] == 'unknown')
+						if ($row['pl_place'] === 'unknown')
 							$matched[$x]++;
 					} else {
-						if ($levels[$z] == "unknown") {
-							$placestr2 = $mapstr_add . $id . "&amp;level=" . $level . $mapstr3 . $mapstr7 . "<strong>" . rtrim(ltrim(I18N::translate('unknown'))) . "</strong>" . $mapstr8; $matched[$x]++;
+						if ($levels[$z] === 'unknown') {
+							$placestr2 = $mapstr_add . $id . "&amp;level=" . $level . $mapstr3 . $mapstr7 . "<strong>" . I18N::translate('unknown') . "</strong>" . $mapstr8; $matched[$x]++;
 						} else {
-							$placestr2 = $mapstr_add . $id . "&amp;place_name=" . urlencode($levels[$z]) . "&amp;level=" . $level . $mapstr3 . $mapstr7 . '<span class="error">' . rtrim(ltrim($levels[$z])) . '</span>' . $mapstr8; $matched[$x]++;
+							$placestr2 = $mapstr_add . $id . "&amp;place_name=" . urlencode($levels[$z]) . "&amp;level=" . $level . $mapstr3 . $mapstr7 . '<span class="error">' . $levels[$z] . '</span>' . $mapstr8; $matched[$x]++;
 						}
 					}
 					$plac[$z] = '<td>' . $placestr2 . '</td>';
-					if ($row['pl_lati'] == '0') {
-						$lati[$z] = "<td class='error'><strong>" . $row['pl_lati'] . "</strong></td>";
+					if ($row['pl_lati'] == '0' && $row['pl_long'] == '0') {
+						$lati[$z] = '<td class="danger">0</td>';
 					} elseif ($row['pl_lati'] != '') {
-						$lati[$z] = "<td>" . $row['pl_lati'] . "</td>";
+						$lati[$z] = '<td>' . $row['pl_lati'] . '</td>';
 					} else {
-						$lati[$z] = "<td class='error center'><strong>X</strong></td>"; $matched[$x]++;
+						$lati[$z] = '<td class="danger"><i class="fa fa-warning"></i></td>';
+						$matched[$x]++;
 					}
-					if ($row['pl_long'] == '0') {
-						$long[$z] = "<td class='error'><strong>" . $row['pl_long'] . "</strong></td>";
+					if ($row['pl_lati'] == '0' && $row['pl_long'] == '0') {
+						$long[$z] = '<td class="danger">0</td>';
 					} elseif ($row['pl_long'] != '') {
-						$long[$z] = "<td>" . $row['pl_long'] . "</td>";
+						$long[$z] = '<td>' . $row['pl_long'] . '</td>';
 					} else {
-						$long[$z] = "<td class='error center'><strong>X</strong></td>"; $matched[$x]++;
+						$long[$z] = '<td class="danger"><i class="fa fa-warning"></i></td>';
+						$matched[$x]++;
 					}
 					$level++;
 					$mapstr3 = $mapstr3 . "&amp;parent[" . $z . "]=" . Filter::escapeJs($row['pl_placerequested']);
@@ -1766,12 +1766,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				$x++;
 			}
 			// echo final row of table
-			echo '<tr><td colspan="', (1 + 3 * $max), '" class="accepted">', /* I18N: A count of places */ I18N::translate('Total places: %s', I18N::number($countrows)), '</td></tr></table></div>';
+			echo '</tbody><tfoot><tr><th colspan="', (1 + 3 * $max), '">', /* I18N: A count of places */ I18N::translate('Total places: %s', I18N::number($countrows)), '</th></tr></tfoot></table></div>';
 			break;
 		default:
 			// Do not run until user selects a gedcom/place/etc.
 			// Instead, show some useful help info.
-			echo '<div class="gm_check_top accepted">', I18N::translate('This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables.'), '</div>';
+			echo '<div class="gm_check_top">', I18N::translate('This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables.'), '</div>';
 			break;
 		}
 	}
@@ -4584,7 +4584,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		echo '<th>';
 		echo I18N::translate('Edit'), '</th><th>', I18N::translate('Delete'), '</th></tr>';
 		if (count($placelist) == 0)
-			echo '<tr><td colspan="7" class="accepted">', I18N::translate('No places found'), '</td></tr>';
+			echo '<tr><td colspan="7">', I18N::translate('No places found'), '</td></tr>';
 		foreach ($placelist as $place) {
 			echo '<tr><td><a href="module.php?mod=googlemap&mod_action=admin_places&parent=', $place['place_id'], '&inactive=', $inactive, '">';
 			if ($place['place'] != 'Unknown')
