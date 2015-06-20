@@ -266,10 +266,12 @@ class Menu {
 			$link = '';
 		}
 		$html = '<a' . $link . $attrs . '>' . $this->label . '</a>';
-		if ($this->submenus) {
+		if (is_array($this->submenus) && count($this->submenus)) {
 			$html .= '<ul>';
 			foreach ($this->submenus as $submenu) {
-				$html .= $submenu->getMenuAsList();
+				if ($submenu instanceof Menu) {
+					$html .= $submenu->getMenuAsList();
+				}
 			}
 			$html .= '</ul>';
 		}
