@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-06-19 10:49+0100\n"
-"PO-Revision-Date: 2015-06-22 14:27+0100\n"
+"PO-Revision-Date: 2015-06-22 14:30+0100\n"
 "Last-Translator: Łukasz Wileński <lukas.the.best@poczta.fm>\n"
 "Language-Team: Polish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/pl/>\n"
@@ -332,9 +332,9 @@ msgstr[2] "Dane %s osób są prywatne."
 #, php-format
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
-msgstr[0] "%s osoba z wydarzeniami pomiędzy %s i %s"
-msgstr[1] "%s osoby z wydarzeniami pomiędzy %s i %s"
-msgstr[2] "%s osób z wydarzeniami pomiędzy %s i %s"
+msgstr[0] "%s osoba z wydarzeniami pomiędzy rokiem %s a %s"
+msgstr[1] "%s osoby z wydarzeniami pomiędzy rokiem %s a %s"
+msgstr[2] "%s osób z wydarzeniami pomiędzy rokiem %s a %s"
 
 #: app/Controller/LifespanController.php:242
 #, php-format
