@@ -697,7 +697,7 @@ if (Auth::isAdmin()) {
 	} else {
 		echo '<input type="checkbox" name="preserve_last_changed">';
 	}
-	echo I18N::translate('Do not update the “last change” record'), '<br>';
+	echo I18N::translate('Keep the existing “last change” information'), '<br>';
 	echo '</td></tr>';
 }
 echo '</table>';
