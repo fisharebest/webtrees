@@ -1123,7 +1123,7 @@ class ReportParserGenerate extends ReportParserBase {
 				$var = I18N::number($match[1]);
 			} elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $var, $match)) {
 				$var = I18N::translate($match[1]);
-			} elseif (preg_match('/^I18N::translate_c\(\'(.+)\', *\'(.+)\'\)$/', $var, $match)) {
+			} elseif (preg_match('/^I18N::translateContext\(\'(.+)\', *\'(.+)\'\)$/', $var, $match)) {
 				$var = I18N::translateContext($match[1], $match[2]);
 			}
 		}
@@ -1313,7 +1313,7 @@ class ReportParserGenerate extends ReportParserBase {
 			$value = I18N::number($match[1]);
 		} elseif (preg_match('/^I18N::translate\(\'(.+)\'\)$/', $value, $match)) {
 			$value = I18N::translate($match[1]);
-		} elseif (preg_match('/^I18N::translate_c\(\'(.+)\', *\'(.+)\'\)$/', $value, $match)) {
+		} elseif (preg_match('/^I18N::translateContext\(\'(.+)\', *\'(.+)\'\)$/', $value, $match)) {
 			$value = I18N::translateContext($match[1], $match[2]);
 		}
 		// Arithmetic functions
@@ -1873,7 +1873,7 @@ class ReportParserGenerate extends ReportParserBase {
 						// Convert the various filters into SQL
 						if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
 							$sql_join .= " JOIN `##dates` AS {$attr} ON ({$attr}.d_file=i_file AND {$attr}.d_gid=i_id)";
-							$sql_where .= " AND {$attr}.d_fact = :{$attr}fact'";
+							$sql_where .= " AND {$attr}.d_fact = :{$attr}fact";
 							$sql_params[$attr . 'fact'] = $match[1];
 							$date                       = new Date($match[3]);
 							if ($match[2] == "LTE") {
@@ -1909,7 +1909,8 @@ class ReportParserGenerate extends ReportParserBase {
 							unset($attrs[$attr]); // This filter has been fully processed
 						} elseif (preg_match('/^REGEXP \/(.+)\//', $value, $match)) {
 							$sql_where .= " AND i_gedcom REGEXP :{$attr}gedcom";
-							$sql_params[$attr . 'gedcom'] = $match[1];
+							// PDO helpfully escapes backslashes for us, preventing us from matching "\n1 FACT"
+							$sql_params[$attr . 'gedcom'] = str_replace('\n', "\n", $match[1]);
 							unset($attrs[$attr]); // This filter has been fully processed
 						} elseif (preg_match('/^(?:\w+):PLAC CONTAINS (.+)$/', $value, $match)) {
 							$sql_join .= " JOIN `##places` AS {$attr}a ON ({$attr}a.p_file = i_file)";
@@ -1948,7 +1949,7 @@ class ReportParserGenerate extends ReportParserBase {
 						$value = $this->substituteVars($value, false);
 						// Convert the various filters into SQL
 						if (preg_match('/^(\w+):DATE (LTE|GTE) (.+)$/', $value, $match)) {
-							$sql_where .= " AND {$attr}.d_fact = :{$attr}fact'";
+							$sql_where .= " AND {$attr}.d_fact = :{$attr}fact";
 							$sql_params[$attr . 'fact'] = $match[1];
 							$date                       = new Date($match[3]);
 							if ($match[2] == "LTE") {
@@ -1965,7 +1966,8 @@ class ReportParserGenerate extends ReportParserBase {
 							unset($attrs[$attr]); // This filter has been fully processed
 						} elseif (preg_match('/^REGEXP \/(.+)\//', $value, $match)) {
 							$sql_where .= " AND f_gedcom REGEXP :{$attr}gedcom";
-							$sql_params[$attr . 'gedcom'] = $match[1];
+							// PDO helpfully escapes backslashes for us, preventing us from matching "\n1 FACT"
+							$sql_params[$attr . 'gedcom'] = str_replace('\n', "\n", $match[1]);
 							unset($attrs[$attr]); // This filter has been fully processed
 						} elseif (preg_match('/^NAME CONTAINS (.+)$/', $value, $match)) {
 							// Do nothing, unless you have to

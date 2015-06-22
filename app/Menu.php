@@ -30,8 +30,8 @@ class Menu {
 	/** @var string The CSS class used to style this menu item */
 	private $class;
 
-	/** @var string An onclick action, typically used with a link of "#" */
-	private $onclick;
+	/** @var string[] A list of optional HTML attributes, such as onclick or data-xxx */
+	private $attrs;
 
 	/** @var Menu[] An optional list of sub-menus. */
 	private $submenus;
@@ -48,18 +48,18 @@ class Menu {
 	/**
 	 * Constructor for the menu class
 	 *
-	 * @param string    $label    The label for the menu item
-	 * @param string    $link     The target URL
-	 * @param string    $class    An CSS class
-	 * @param string    $onclick  A javascript onclick handler
-	 * @param Menu[] $submenus Any submenus
+	 * @param string   $label    The label for the menu item
+	 * @param string   $link     The target URL
+	 * @param string   $class    A CSS class
+	 * @param string[] $attrs    Optional attributes, such as onclick or data-xxx
+	 * @param Menu[]   $submenus Any submenus
 	 */
-	public function __construct($label, $link = '#', $class = '', $onclick = '', $submenus = array()) {
+	public function __construct($label, $link = '#', $class = '', array $attrs = array(), array $submenus = array()) {
 		$this
 			->setLabel($label)
 			->setLink($link)
 			->setClass($class)
-			->setOnclick($onclick)
+			->setAttrs($attrs)
 			->setSubmenus($submenus);
 	}
 
@@ -95,14 +95,35 @@ class Menu {
 				'</ul>' .
 				'</li>';
 		} else {
-			if ($this->onclick) {
-				$onclick = ' onclick="' . $this->onclick . '"';
-			} else {
-				$onclick = '';
+			$attrs = '';
+			foreach ($this->attrs as $key => $value) {
+				$attrs .= ' ' . $key . '="' . Filter::escapeHtml($value) . '"';
 			}
 
-			return '<li class="' . $this->class . '"><a href="' . $this->link . '"' . $onclick . '>' . $this->label . '</a></li>';
+			return '<li class="' . $this->class . '"><a href="' . $this->link . '"' . $attrs . '>' . $this->label . '</a></li>';
 		}
+	}
+
+	/**
+	 * Get the optional attributes.
+	 *
+	 * @return string[]
+	 */
+	public function getAttrs() {
+		return $this->attrs;
+	}
+
+	/**
+	 * Set the optional attributes.
+	 *
+	 * @param string[] $attrs
+	 *
+	 * @return $this
+	 */
+	public function setAttrs(array $attrs) {
+		$this->attrs = $attrs;
+
+		return $this;
 	}
 
 	/**
@@ -162,6 +183,7 @@ class Menu {
 
 	/**
 	 * Get the link.
+ *
 	 * @return string
 	 */
 	public function getLink() {
@@ -177,28 +199,6 @@ class Menu {
 	 */
 	public function setLink($link) {
 		$this->link = $link;
-
-		return $this;
-	}
-
-	/**
-	 * Get the click handler.
-	 *
-	 * @return string
-	 */
-	public function getOnclick() {
-		return $this->onclick;
-	}
-
-	/**
-	 * Set the click handler.
-	 *
-	 * @param string $onclick
-	 *
-	 * @return $this
-	 */
-	public function setOnclick($onclick) {
-		$this->onclick = $onclick;
 
 		return $this;
 	}
@@ -226,8 +226,8 @@ class Menu {
 		$sub_menu_id = 'sub-' . $menu_id;
 
 		$html = '<a href="' . $this->link . '"';
-		if ($this->onclick) {
-			$html .= ' onclick="' . $this->onclick . '"';
+		foreach ($this->attrs as $key => $value) {
+			$html .= ' ' . $key . '="' . Filter::escapeHtml($value) . '"';
 		}
 		if (!empty($this->submenus)) {
 			$html .= ' onmouseover="show_submenu(\'' . $sub_menu_id . '\', \'' . $menu_id . '\');"';
@@ -256,17 +256,16 @@ class Menu {
 	 * @return string
 	 */
 	public function getMenuAsList() {
-		if ($this->onclick) {
-			$onclick = ' onclick="' . $this->onclick . '"';
-		} else {
-			$onclick = '';
+		$attrs = '';
+		foreach ($this->attrs as $key => $value) {
+			$attrs .= ' ' . $key . '="' . Filter::escapeHtml($value) . '"';
 		}
 		if ($this->link) {
 			$link = ' href="' . $this->link . '"';
 		} else {
 			$link = '';
 		}
-		$html = '<a' . $link . $onclick . '>' . $this->label . '</a>';
+		$html = '<a' . $link . $attrs . '>' . $this->label . '</a>';
 		if ($this->submenus) {
 			$html .= '<ul>';
 			foreach ($this->submenus as $submenu) {

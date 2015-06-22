@@ -10,8 +10,8 @@
 	<Input name="occu" type="checkbox" default="0"><var var="I18N::translate('Show occupations?')" /></Input>
 	<Input name="resi" type="checkbox" default="0"><var var="I18N::translate('Show residences?')" /></Input>
 	<Input name="children" type="checkbox" default="0"><var var="I18N::translate('Show children of ancestors?')" /></Input>
-	<Input name="pageSize" type="select" default="A4" options="letter=>I18N::translate_c('paper size','Letter')|A3=>I18N::translate_c('paper size', 'A3')|A4=>I18N::translate_c('paper size','A4')|legal=>I18N::translate_c('paper size','Legal')"><var var="I18N::translate('Page size')" /></Input>
-	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>I18N::translate_c('font name', 'Arial')|dejavusans=>I18N::translate_c('font name', 'DejaVu')|helvetica=>I18N::translate_c('font name', 'Helvetica')"><var var="I18N::translate('Font')"/></Input>
+	<Input name="pageSize" type="select" default="A4" options="letter=>I18N::translateContext('paper size','Letter')|A3=>I18N::translateContext('paper size', 'A3')|A4=>I18N::translateContext('paper size','A4')|legal=>I18N::translateContext('paper size','Legal')"><var var="I18N::translate('Page size')" /></Input>
+	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>I18N::translateContext('font name', 'Arial')|dejavusans=>I18N::translateContext('font name', 'DejaVu')|helvetica=>I18N::translateContext('font name', 'Helvetica')"><var var="I18N::translate('Font')"/></Input>
 	
 	<!-- Header -->
 	<Style name="header" font="$fonts" size="14" style="b" />
@@ -134,8 +134,8 @@
 						<!-- Individual, birth... -->
 						<Gedcom id="BIRT">
 							<Text style="text">
-								<if condition="$gender=='m'"><var var="I18N::translate_c('MALE', 'was born')" /></if>
-								<if condition="$gender=='f'"><var var="I18N::translate_c('FEMALE', 'was born')" /></if>
+								<if condition="$gender=='m'"><var var="I18N::translateContext('MALE', 'was born')" /></if>
+								<if condition="$gender=='f'"><var var="I18N::translateContext('FEMALE', 'was born')" /></if>
 							</Text>
 							<if condition="$sources==1">
 								<RepeatTag tag="BIRT:SOUR">

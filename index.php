@@ -73,6 +73,12 @@ if ($action === 'ajax') {
 	return;
 }
 
+// Redirect search engines to the full URL
+if (Filter::get('ctype') !== $ctype || Filter::get('ged') !== $WT_TREE->getName()) {
+	header('Location: ' . WT_BASE_URL . 'index.php?ctype=' . $ctype . '&ged=' . $WT_TREE->getName());
+	return;
+}
+
 $controller = new PageController;
 if ($ctype === 'user') {
 	$controller->restrictAccess(Auth::check());
@@ -80,7 +86,6 @@ if ($ctype === 'user') {
 $controller
 	->setPageTitle($ctype === 'user' ? I18N::translate('My page') : $WT_TREE->getTitle())
 	->setMetaRobots('index,follow')
-	->setCanonicalUrl(WT_SCRIPT_NAME . '?ctype=' . $ctype . '&amp;ged=' . $WT_TREE->getNameHtml())
 	->pageHeader()
 	// By default jQuery modifies AJAX URLs to disable caching, causing JS libraries to be loaded many times.
 	->addInlineJavascript('jQuery.ajaxSetup({cache:true});');

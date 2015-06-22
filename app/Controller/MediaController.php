@@ -52,61 +52,61 @@ class MediaController extends GedcomRecordController {
 		$menu = new Menu(I18N::translate('Edit'), '#', 'menu-obje');
 
 		if (Auth::isEditor($this->record->getTree())) {
-			$submenu = new Menu(I18N::translate('Edit media object'), '#', 'menu-obje-edit');
-			$submenu->setOnclick("window.open('addmedia.php?action=editmedia&amp;pid={$this->record->getXref()}', '_blank', edit_window_specs)");
-			$menu->addSubmenu($submenu);
+			$menu->addSubmenu(new Menu(I18N::translate('Edit media object'), '#', 'menu-obje-edit', array(
+				'onclick' => 'window.open("addmedia.php?action=editmedia&pid=' . $this->record->getXref() . '", "_blank", edit_window_specs)',
+			)));
 
 			// main link displayed on page
 			if (Module::getModuleByName('GEDFact_assistant')) {
-				$submenu = new Menu(I18N::translate('Manage links'), '#', 'menu-obje-link');
-				$submenu->setOnclick("return ilinkitem('" . $this->record->getXref() . "','manage');");
-				$menu->addSubmenu($submenu);
+				$menu->addSubmenu(new Menu(I18N::translate('Manage links'), '#', 'menu-obje-link', array(
+					'onclick' => 'return ilinkitem("' . $this->record->getXref() . '","manage");',
+				)));
 			} else {
-				$submenu = new Menu(I18N::translate('Link this media object to an individual'), '#', 'menu-obje-link-indi');
-				$submenu->setOnclick("return ilinkitem('" . $this->record->getXref() . "','person');");
-				$menu->addSubmenu($submenu);
+				$menu->addSubmenu(new Menu(I18N::translate('Link this media object to an individual'), '#', 'menu-obje-link-indi', array(
+					'onclick' => 'return ilinkitem("' . $this->record->getXref() . '","person");',
+				)));
 
-				$submenu = new Menu(I18N::translate('Link this media object to a family'), '#', 'menu-obje-link-fam');
-				$submenu->setOnclick("return ilinkitem('" . $this->record->getXref() . "','family');");
-				$menu->addSubmenu($submenu);
+				$menu->addSubmenu(new Menu(I18N::translate('Link this media object to a family'), '#', 'menu-obje-link-fam', array(
+					'onclick' => 'return ilinkitem("' . $this->record->getXref() . '","family");',
+				)));
 
-				$submenu = new Menu(I18N::translate('Link this media object to a source'), '#', 'menu-obje-link-sour');
-				$submenu->setOnclick("return ilinkitem('" . $this->record->getXref() . "','source');");
-				$menu->addSubmenu($submenu);
+				$menu->addSubmenu(new Menu(I18N::translate('Link this media object to a source'), '#', 'menu-obje-link-sour', array(
+					'onclick' => 'return ilinkitem("' . $this->record->getXref() . '","source");',
+				)));
 			}
 		}
 
 		// delete
 		if (Auth::isEditor($this->record->getTree())) {
-			$submenu = new Menu(I18N::translate('Delete'), '#', 'menu-obje-del');
-			$submenu->setOnclick("return delete_media('" . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJS(Filter::unescapeHtml($this->record->getFullName()))) . "', '" . $this->record->getXref() . "');");
-			$menu->addSubmenu($submenu);
+			$menu->addSubmenu(new Menu(I18N::translate('Delete'), '#', 'menu-obje-del', array(
+				'onlcick' => 'return delete_media("' . I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeJS(Filter::unescapeHtml($this->record->getFullName()))) . '", "' . $this->record->getXref() . '");',
+			)));
 		}
 
 		// edit raw
 		if (Auth::isAdmin() || Auth::isEditor($this->record->getTree()) && $this->record->getTree()->getPreference('SHOW_GEDCOM_RECORD')) {
-			$submenu = new Menu(I18N::translate('Edit raw GEDCOM'), '#', 'menu-obje-editraw');
-			$submenu->setOnclick("return edit_raw('" . $this->record->getXref() . "');");
-			$menu->addSubmenu($submenu);
+			$menu->addSubmenu(new Menu(I18N::translate('Edit raw GEDCOM'), '#', 'menu-obje-editraw', array(
+				'onclick' => 'return edit_raw("' . $this->record->getXref() . '");',
+			)));
 		}
 
 		// add to favorites
 		if (Module::getModuleByName('user_favorites')) {
-			$submenu = new Menu(
+			$menu->addSubmenu(new Menu(
 			/* I18N: Menu option.  Add [the current page] to the list of favorites */
 				I18N::translate('Add to favorites'),
 				'#',
-				'menu-obje-addfav'
-			);
-			$submenu->setOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'" . $this->record->getXref() . "'},function(){location.reload();})");
-			$menu->addSubmenu($submenu);
+				'menu-obje-addfav',
+				array(
+					'onclick' => 'jQuery.post("module.php?mod=user_favorites&mod_action=menu-add-favorite",{xref:"' . $this->record->getXref() . '"},function(){location.reload();})',
+				)));
 		}
 
 		// Get the link for the first submenu and set it as the link for the main menu
 		if ($menu->getSubmenus()) {
 			$submenus = $menu->getSubmenus();
 			$menu->setLink($submenus[0]->getLink());
-			$menu->setOnClick($submenus[0]->getOnClick());
+			$menu->setAttrs($submenus[0]->getAttrs());
 		}
 
 		return $menu;
@@ -146,13 +146,23 @@ class MediaController extends GedcomRecordController {
 	public static function getMediaListMenu(Media $mediaobject) {
 		$html = '';
 
-		$menu = new Menu(I18N::translate('Edit details'), '#', 'lb-image_edit', "return window.open('addmedia.php?action=editmedia&amp;pid=" . $mediaobject->getXref() . "', '_blank', edit_window_specs);");
+		$menu = new Menu(I18N::translate('Edit details'), '#', 'lb-image_edit', array(
+			'onclick' => 'return window.open("addmedia.php?action=editmedia&pid=' . $mediaobject->getXref() . '", "_blank", edit_window_specs);',
+		));
 		$html .= '<ul class="makeMenu lb-menu">' . $menu->getMenuAsList() . '</ul>';
 
-		$menu = new Menu(I18N::translate('Manage links'), '#', 'lb-image_link', "return ilinkitem('" . $mediaobject->getXref() . "','person')", array(
-			new Menu(I18N::translate('Link this media object to an individual'), '#', '', "return ilinkitem('" . $mediaobject->getXref() . "','person')"),
-			new Menu(I18N::translate('Link this media object to a family'), '#', '', "return ilinkitem('" . $mediaobject->getXref() . "','family')"),
-			new Menu(I18N::translate('Link this media object to a source'), '#', '', "return ilinkitem('" . $mediaobject->getXref() . "','source')"),
+		$menu = new Menu(I18N::translate('Manage links'), '#', 'lb-image_link', array(
+			'onclick' => 'return false;',
+		), array(
+			new Menu(I18N::translate('Link this media object to an individual'), '#', '', array(
+				'onclick' => 'return ilinkitem("' . $mediaobject->getXref() . '","person");',
+			)),
+			new Menu(I18N::translate('Link this media object to a family'), '#', '', array(
+				'onclick' => 'return ilinkitem("' . $mediaobject->getXref() . '","family");',
+			)),
+			new Menu(I18N::translate('Link this media object to a source'), '#', '', array(
+				'onclick' => 'return ilinkitem("' . $mediaobject->getXref() . '","source");',
+			)),
 		));
 		$html .= '<ul class="makeMenu lb-menu">' . $menu->getMenuAsList() . '</ul>';
 

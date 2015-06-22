@@ -122,14 +122,14 @@ class LifespanController extends PageController {
 		$filterPids            = false;
 
 		// Request parameters
-		$clear            = Filter::postBool('clear');
-		$newpid           = Filter::post('newpid', WT_REGEX_XREF);
-		$addfam           = Filter::postBool('addFamily');
-		$this->place      = Filter::post('place');
-		$this->beginYear  = Filter::postInteger('beginYear', 0, PHP_INT_MAX, null);
-		$this->endYear    = Filter::postInteger('endYear', 0, PHP_INT_MAX, null);
-		$this->calendar   = Filter::post('calendar', null, $this->defaultCalendar);
-		$this->strictDate = Filter::postBool('strictDate');
+		$clear            = Filter::getBool('clear');
+		$newpid           = Filter::get('newpid', WT_REGEX_XREF);
+		$addfam           = Filter::getBool('addFamily');
+		$this->place      = Filter::get('place');
+		$this->beginYear  = Filter::getInteger('beginYear', 0, PHP_INT_MAX, null);
+		$this->endYear    = Filter::getInteger('endYear', 0, PHP_INT_MAX, null);
+		$this->calendar   = Filter::get('calendar', null, $this->defaultCalendar);
+		$this->strictDate = Filter::getBool('strictDate');
 
 		// Set up base color parameters
 		$this->colors['M'] = new ColorGenerator(240, self::SATURATION, self::LIGHTNESS, self::ALPHA, self::RANGE * -1);
@@ -232,29 +232,29 @@ class LifespanController extends PageController {
 			// Build the subtitle
 			if ($this->place && $filterPids) {
 				$this->subtitle = I18N::plural(
-					'%s person with events in %s between %s and %s',
-					'%s people with events in %s between %s and %s',
+					'%s individual with events in %s between %s and %s',
+					'%s individuals with events in %s between %s and %s',
 					$count, I18N::number($count),
 					$this->place, $this->startDate->display(false, '%Y'), $this->endDate->display(false, '%Y')
 				);
 			} elseif ($this->place) {
 				$this->subtitle = I18N::plural(
-					'%s person with events in %s',
-					'%s people with events in %s',
+					'%s individual with events in %s',
+					'%s individuals with events in %s',
 					$count, I18N::number($count),
 					$this->place
 				);
 			} elseif ($filterPids) {
 				$this->subtitle = I18N::plural(
-					'%s person with events between %s and %s',
-					'%s people with events between %s and %s',
+					'%s individual with events between %s and %s',
+					'%s individuals with events between %s and %s',
 					$count, I18N::number($count),
 					$this->startDate->display(false, '%Y'), $this->endDate->display(false, '%Y')
 				);
 			} else {
 				$this->subtitle = I18N::plural(
-					'%s person',
-					'%s people',
+					'%s individual',
+					'%s individuals',
 					$count, I18N::number($count));
 			}
 

@@ -1981,16 +1981,10 @@ span.link_text {
 
 #indi_mainimage {
 	float: left;
-	padding: 0 10px 0 0;
 }
 
 #header_accordion1 {
-	padding: 0 10px 0 0;
 	overflow: hidden;
-}
-
-[dir='rtl'] #header_accordion1 {
-	padding: 0 0 0 10px;
 }
 
 #header_accordion1 .indi_name_details {
@@ -2275,7 +2269,7 @@ dd .deletelink {
 }
 
 .ui-helper-reset {
-	line-height: 1.5;
+	line-height: 1.3;
 }
 
 [dir=rtl] .ui-tabs .ui-tabs-nav li {
@@ -2442,8 +2436,8 @@ dd .deletelink {
 
 #tabs {
 	background-color: #fff;
-	border-color: #8fbcff;
 	width: 100%;
+	padding-top: 0.2em;
 	overflow: visible;
 }
 
@@ -3409,45 +3403,6 @@ table.table-census-assistant th {
 }
 
 /*-- Lifespan ---- */
-.lifespan-form {
-	display: table;
-	margin:  0 auto;
-}
-
-.lifespan-form fieldset {
-	display:        inline-block;
-	margin:         0;
-	vertical-align: top;
-	height:         97px;
-}
-
-.lifespan-form legend {
-	color: inherit;
-}
-
-.lifespan-form fieldset > div {
-	display: table-row;
-}
-
-.lifespan-form label,
-.lifespan-form span {
-	display: table-cell;
-	border:  none;
-}
-
-.lifespan-form .controls {
-	text-align: right;
-}
-
-[dir='rtl'] .lifespan-form .controls {
-	text-align: left;
-}
-
-.lifespan-form select,
-.lifespan-form .controls * {
-	margin: 1px 0;
-}
-
 #lifespan-chart {
 	padding:    0 10px 10px;
 	margin:     0 auto;
@@ -4253,7 +4208,7 @@ a.icon-udarrow:hover {
 
 header {
 	background: #acf url(images/clouds.png) repeat-x;
-	border: 1px solid #039;
+	border: 1px solid #79c;
 	height: 63px;
 	position: relative;
 	margin: 0;

@@ -112,7 +112,7 @@ class BranchesController extends PageController {
 		$args = array($WT_TREE->getTreeId(), '_MARNM', $this->surname, $this->surname);
 		if ($this->soundex_std) {
 			$sdx = Soundex::russell($this->surname);
-			if ($sdx) {
+			if ($sdx !== null) {
 				foreach (explode(':', $sdx) as $value) {
 					$sql .= " OR n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
 					$args[] = $value;
@@ -121,7 +121,7 @@ class BranchesController extends PageController {
 		}
 		if ($this->soundex_dm) {
 			$sdx = Soundex::daitchMokotoff($this->surname);
-			if ($sdx) {
+			if ($sdx !== null) {
 				foreach (explode(':', $sdx) as $value) {
 					$sql .= " OR n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
 					$args[] = $value;

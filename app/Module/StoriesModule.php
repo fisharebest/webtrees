@@ -477,22 +477,32 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 		}
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * The user can re-order menus.  Until they do, they are shown in this order.
+	 *
+	 * @return int
+	 */
 	public function defaultMenuOrder() {
 		return 30;
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * What is the default access level for this module?
+	 *
+	 * Some modules are aimed at admins or managers, and are not generally shown to users.
+	 *
+	 * @return int
+	 */
 	public function defaultAccessLevel() {
 		return Auth::PRIV_HIDE;
 	}
 
-	/** {@inheritdoc} */
+	/**
+	 * A menu, to be added to the main application menu.
+	 *
+	 * @return Menu|null
+	 */
 	public function getMenu() {
-		if (Auth::isSearchEngine()) {
-			return null;
-		}
-
 		$menu = new Menu($this->getTitle(), 'module.php?mod=' . $this->getName() . '&amp;mod_action=show_list', 'menu-story');
 
 		return $menu;

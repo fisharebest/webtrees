@@ -204,7 +204,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 	/** {@inheritdoc} */
 	public function hasTabContent() {
-		return !Auth::isSearchEngine() && (Module::getModuleByName('googlemap') || Auth::isAdmin());
+		return Module::getModuleByName('googlemap') || Auth::isAdmin();
 	}
 
 	/** {@inheritdoc} */
@@ -515,7 +515,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 
 	/**
 	 * Select a flag.
-	 *
 	 */
 	private function flags() {
 		global $WT_TREE;
@@ -1491,7 +1490,6 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 	private function adminPlaceCheck() {
 		global $WT_TREE;
 
-		$action    = Filter::get('action', '', 'go');
 		$gedcom_id = Filter::get('gedcom_id', null, $WT_TREE->getTreeId());
 		$country   = Filter::get('country', '.+', 'XYZ');
 		$state     = Filter::get('state', '.+', 'XYZ');
@@ -1529,106 +1527,99 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		</ul>
 		<?php
 
-		//Start of User Defined options
-		echo '
-			<form method="get" name="placecheck" action="module.php">
-				<input type="hidden" name="mod" value="', $this->getName(), '">
-				<input type="hidden" name="mod_action" value="admin_placecheck">
-				<div class="gm_check">
-					<label>', I18N::translate('Family tree'), '</label>';
-					echo FunctionsEdit::selectEditControl('gedcom_id', Tree::getIdList(), null, $gedcom_id, ' onchange="this.form.submit();"');
-					echo '<label>', I18N::translate('Country'), '</label>
-					<select name="country" onchange="this.form.submit();">
-						<option value="XYZ" selected>', /* I18N: first/default option in a drop-down listbox */ I18N::translate('&lt;select&gt;'), '</option>
-						<option value="XYZ">', I18N::translate('All'), '</option>';
-							$rows = Database::prepare("SELECT pl_id, pl_place FROM `##placelocation` WHERE pl_level=0 ORDER BY pl_place")
-								->fetchAssoc();
-							foreach ($rows as $id => $place) {
-								echo '<option value="', Filter::escapeHtml($place), '" ';
-								if ($place == $country) {
-									echo 'selected';
-									$par_id = $id;
-								}
-								echo '>', Filter::escapeHtml($place), '</option>';
-							}
-					echo '</select>';
-					if ($country != 'XYZ') {
-						echo '<label>', /* I18N: Part of a country, state/region/county */ I18N::translate('Subdivision'), '</label>
-							<select name="state" onchange="this.form.submit();">
-								<option value="XYZ" selected>', I18N::translate('&lt;select&gt;'), '</option>
-								<option value="XYZ">', I18N::translate('All'), '</option>';
-								$places = Database::prepare("SELECT pl_place FROM `##placelocation` WHERE pl_parent_id=? ORDER BY pl_place")
-									->execute(array($par_id))
-									->fetchOneColumn();
-								foreach ($places as $place) {
-									echo '<option value="', Filter::escapeHtml($place), '" ', $place == $state ? 'selected' : '', '>', Filter::escapeHtml($place), '</option>';
-								}
-								echo '</select>';
-							}
-					echo '<label>', I18N::translate('Include fully matched places: '), '</label>';
-					echo '<input type="checkbox" name="matching" value="1" onchange="this.form.submit();" ';
-					echo $matching ? 'checked' : '';
-					echo '>';
-				echo '</div>'; // close div gm_check
-				echo '<input type="hidden" name="action" value="go">';
-			echo '</form>'; //close form placecheck
-			echo '<hr>';
+		echo '<h2>', I18N::translate('Place check'), '</h2>';
 
-		switch ($action) {
-		case 'go':
-			//Identify gedcom file
-			echo '<div id="gm_check_title">', Tree::findById($gedcom_id)->getTitleHtml(), '</div>';
-			//Select all '2 PLAC ' tags in the file and create array
-			$place_list = array();
-			$ged_data   = Database::prepare("SELECT i_gedcom FROM `##individuals` WHERE i_gedcom LIKE ? AND i_file=?")
-				->execute(array("%\n2 PLAC %", $gedcom_id))
+		// User options
+		$rows = Database::prepare("SELECT pl_id, pl_place FROM `##placelocation` WHERE pl_level=0 ORDER BY pl_place")->fetchAssoc();
+
+		echo '<form name="placecheck" class="form form-inline">';
+		echo '<input type="hidden" name="mod" value="', $this->getName(), '">';
+		echo '<input type="hidden" name="mod_action" value="admin_placecheck">';
+
+		echo '<label for="gedcom_id">', I18N::translate('Family tree'), '</label> ';
+		echo FunctionsEdit::selectEditControl('gedcom_id', Tree::getIdList(), null, $gedcom_id, ' onchange="this.form.submit();" class="form-control"'), ' ';
+		echo '<label for="country">', I18N::translate('Country'), '</label> ';
+		echo '<select name="country" onchange="this.form.submit();" class="form-control"> ';
+		echo '<option value="XYZ">', I18N::translate('All'), '</option>';
+		foreach ($rows as $id => $place) {
+			echo '<option value="', Filter::escapeHtml($place), '" ';
+			if ($place == $country) {
+				echo 'selected';
+				$par_id = $id;
+			}
+			echo '>', Filter::escapeHtml($place), '</option>';
+		}
+		echo '</select> ';
+		if ($country != 'XYZ') {
+			echo '<label>', /* I18N: Part of a country, state/region/county */ I18N::translate('Subdivision'), '</label> ';
+			echo '<select name="state" onchange="this.form.submit();" class="form-control">';
+			echo '<option value="XYZ">', I18N::translate('All'), '</option>';
+			$places = Database::prepare("SELECT pl_place FROM `##placelocation` WHERE pl_parent_id=? ORDER BY pl_place")
+				->execute(array($par_id))
 				->fetchOneColumn();
-			foreach ($ged_data as $ged_datum) {
-				preg_match_all('/\n2 PLAC (.+)/', $ged_datum, $matches);
-				foreach ($matches[1] as $match) {
-					$place_list[$match] = true;
-				}
+			foreach ($places as $place) {
+				echo '<option value="', Filter::escapeHtml($place), '" ', $place == $state ? 'selected' : '', '>', Filter::escapeHtml($place), '</option>';
 			}
-			$ged_data = Database::prepare("SELECT f_gedcom FROM `##families` WHERE f_gedcom LIKE ? AND f_file=?")
-				->execute(array("%\n2 PLAC %", $gedcom_id))
-				->fetchOneColumn();
-			foreach ($ged_data as $ged_datum) {
-				preg_match_all('/\n2 PLAC (.+)/', $ged_datum, $matches);
-				foreach ($matches[1] as $match) {
-					$place_list[$match] = true;
-				}
+			echo '</select> ';
+		}
+		echo '<label>';
+		echo '<input type="checkbox" name="matching" value="1" onchange="this.form.submit();" ', ($matching ? 'checked' : ''), '>';
+		echo I18N::translate('Include fully matched places');
+		echo '</label>';
+		echo '</form>';
+		echo '<hr>';
+
+		//Select all '2 PLAC ' tags in the file and create array
+		$place_list = array();
+		$ged_data   = Database::prepare("SELECT i_gedcom FROM `##individuals` WHERE i_gedcom LIKE ? AND i_file=?")
+			->execute(array("%\n2 PLAC %", $gedcom_id))
+			->fetchOneColumn();
+		foreach ($ged_data as $ged_datum) {
+			preg_match_all('/\n2 PLAC (.+)/', $ged_datum, $matches);
+			foreach ($matches[1] as $match) {
+				$place_list[$match] = true;
 			}
-			// Unique list of places
-			$place_list = array_keys($place_list);
-
-			// Apply_filter
-			if ($country == 'XYZ') {
-				$filter = '.*$';
-			} else {
-				$filter = preg_quote($country) . '$';
-				if ($state != 'XYZ') {
-					$filter = preg_quote($state) . ', ' . $filter;
-				}
+		}
+		$ged_data = Database::prepare("SELECT f_gedcom FROM `##families` WHERE f_gedcom LIKE ? AND f_file=?")
+			->execute(array("%\n2 PLAC %", $gedcom_id))
+			->fetchOneColumn();
+		foreach ($ged_data as $ged_datum) {
+			preg_match_all('/\n2 PLAC (.+)/', $ged_datum, $matches);
+			foreach ($matches[1] as $match) {
+				$place_list[$match] = true;
 			}
-			$place_list = preg_grep('/' . $filter . '/', $place_list);
+		}
+		// Unique list of places
+		$place_list = array_keys($place_list);
 
-			//sort the array, limit to unique values, and count them
-			usort($place_list, '\Fisharebest\Webtrees\I18N::strcasecmp');
-			$i = count($place_list);
+		// Apply_filter
+		if ($country == 'XYZ') {
+			$filter = '.*$';
+		} else {
+			$filter = preg_quote($country) . '$';
+			if ($state != 'XYZ') {
+				$filter = preg_quote($state) . ', ' . $filter;
+			}
+		}
+		$place_list = preg_grep('/' . $filter . '/', $place_list);
 
-			//calculate maximum no. of levels to display
-			$x   = 0;
-			$max = 0;
-			while ($x < $i) {
-				$levels                 = explode(",", $place_list[$x]);
-				$parts                  = count($levels);
-				if ($parts > $max) $max = $parts;
+		//sort the array, limit to unique values, and count them
+		usort($place_list, '\Fisharebest\Webtrees\I18N::strcasecmp');
+		$i = count($place_list);
+
+		//calculate maximum no. of levels to display
+		$x   = 0;
+		$max = 0;
+		while ($x < $i) {
+			$levels                 = explode(",", $place_list[$x]);
+			$parts                  = count($levels);
+			if ($parts > $max) $max = $parts;
 			$x++; }
-			$x = 0;
+		$x = 0;
 
-			//scripts for edit, add and refresh
-			?>
-			<script>
+		//scripts for edit, add and refresh
+		?>
+		<script>
 			function edit_place_location(placeid) {
 				window.open('module.php?mod=googlemap&mod_action=places_edit&action=update&placeid='+placeid, '_blank', gmap_window_specs);
 				return false;
@@ -1638,143 +1629,139 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 				window.open('module.php?mod=googlemap&mod_action=places_edit&action=add&placeid='+placeid, '_blank', gmap_window_specs);
 				return false;
 			}
-			</script>
-			<?php
+		</script>
+		<?php
 
-			//start to produce the display table
-			$cols = 0;
-			$span = $max * 3 + 3;
-			echo '<div class="gm_check_details">';
-			echo '<table class="table table-bordered table-condensed table-hover"><tr>';
-			echo '<th rowspan="3">', I18N::translate('Place'), '</th>';
-			echo '<th colspan="', $span, '">', I18N::translate('Geographic data'), '</th></tr>';
-			echo '<tr>';
-			while ($cols < $max) {
-				if ($cols == 0) {
-					echo '<th colspan="3">', I18N::translate('Country'), '</th>';
-				} else {
-					echo '<th colspan="3">', I18N::translate('Level'), '&nbsp;', $cols + 1, '</th>';
-				}
-				$cols++;
+		//start to produce the display table
+		echo '<table class="table table-bordered table-condensed table-hover"><thead><tr>';
+		echo '<th rowspan="3">', I18N::translate('Place'), '</th>';
+		echo '<th colspan="', $max * 3, '">', I18N::translate('Geographic data'), '</th></tr>';
+		echo '<tr>';
+		for ($cols = 0; $cols < $max; ++$cols) {
+			if ($cols == 0) {
+				echo '<th colspan="3">', I18N::translate('Country'), '</th>';
+			} else {
+				echo '<th colspan="3">', I18N::translate('Level'), ' ', $cols + 1, '</th>';
 			}
-			echo '</tr><tr>';
-			$cols = 0;
-			while ($cols < $max) {
-				echo '<th>', GedcomTag::getLabel('PLAC'), '</th><th>', I18N::translate('Latitude'), '</th><th>', I18N::translate('Longitude'), '</th>';
-				$cols++;
+		}
+		echo '</tr><tr>';
+		for ($cols = 0; $cols < $max; ++$cols) {
+			echo '<th>', GedcomTag::getLabel('PLAC'), '</th>';
+			echo '<th>', I18N::translate('Latitude'), '</th>';
+			echo '<th>', I18N::translate('Longitude'), '</th>';
+		}
+		echo '</tr></thead><tbody>';
+		$countrows = 0;
+		$matched   = array();
+		while ($x < $i) {
+			$placestr = '';
+			$levels   = explode(', ', $place_list[$x]);
+			$parts    = count($levels);
+			$levels   = array_reverse($levels);
+			$placestr .= '<a href="placelist.php?action=show';
+			foreach ($levels as $pindex => $ppart) {
+				$placestr .= '&amp;parent[' . $pindex . ']=' . urlencode($ppart);
 			}
-			echo '</tr>';
-			$countrows = 0;
-			$matched   = array();
-			while ($x < $i) {
-				$placestr = "";
-				$levels   = explode(",", $place_list[$x]);
-				$parts    = count($levels);
-				$levels   = array_reverse($levels);
-				$placestr .= "<a href=\"placelist.php?action=show";
-				foreach ($levels as $pindex => $ppart) {
-					$ppart = urlencode(trim($ppart));
-					$placestr .= "&amp;parent[$pindex]=" . $ppart . "";
+			$placestr .= '">' . $place_list[$x] . "</a>";
+			$gedplace    = '<tr><td>' . $placestr . '</td>';
+			$z           = 0;
+			$id          = 0;
+			$level       = 0;
+			$matched[$x] = 0; // used to exclude places where the gedcom place is matched at all levels
+			$mapstr_edit = '<a href="#" dir="auto" onclick="edit_place_location(\'';
+			$mapstr_add  = '<a href="#" dir="auto" onclick="add_place_location(\'';
+			$mapstr3     = '';
+			$mapstr4     = '';
+			$mapstr5     = '\')" title=\'';
+			$mapstr6     = '\' >';
+			$mapstr7     = '\')">';
+			$mapstr8     = '</a>';
+			$plac        = array();
+			$lati        = array();
+			$long        = array();
+			while ($z < $parts) {
+				if ($levels[$z] == '') {
+					$levels[$z] = 'unknown'; // GoogleMap module uses "unknown" while GEDCOM uses , ,
 				}
-				$placestr .= "\">" . $place_list[$x] . "</a>";
-				$gedplace    = "<tr><td>" . $placestr . "</td>";
-				$z           = 0;
-				$id          = 0;
-				$level       = 0;
-				$matched[$x] = 0; // used to exclude places where the gedcom place is matched at all levels
-				$mapstr_edit = "<a href=\"#\" onclick=\"edit_place_location('";
-				$mapstr_add  = "<a href=\"#\" onclick=\"add_place_location('";
-				$mapstr3     = "";
-				$mapstr4     = "";
-				$mapstr5     = "')\" title='";
-				$mapstr6     = "' >";
-				$mapstr7     = "')\">";
-				$mapstr8     = "</a>";
-				$plac        = array();
-				$lati        = array();
-				$long        = array();
-				while ($z < $parts) {
-					if ($levels[$z] == ' ' || $levels[$z] == '')
-						$levels[$z] = "unknown"; // GoogleMap module uses "unknown" while GEDCOM uses , ,
 
-					$levels[$z] = rtrim(ltrim($levels[$z]));
-
-					$placelist = $this->createPossiblePlaceNames($levels[$z], $z + 1); // add the necessary prefix/postfix values to the place name
-					foreach ($placelist as $key => $placename) {
-						$row =
-							Database::prepare("SELECT pl_id, pl_place, pl_long, pl_lati, pl_zoom FROM `##placelocation` WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ? ORDER BY pl_place")
+				$placelist = $this->createPossiblePlaceNames($levels[$z], $z + 1); // add the necessary prefix/postfix values to the place name
+				foreach ($placelist as $key => $placename) {
+					$row =
+						Database::prepare("SELECT pl_id, pl_place, pl_long, pl_lati, pl_zoom FROM `##placelocation` WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ? ORDER BY pl_place")
 							->execute(array($z, $id, $placename))
 							->fetchOneRow(PDO::FETCH_ASSOC);
-						if (!empty($row['pl_id'])) {
-							$row['pl_placerequested'] = $levels[$z]; // keep the actual place name that was requested so we can display that instead of what is in the db
-							break;
-						}
+					if (!empty($row['pl_id'])) {
+						$row['pl_placerequested'] = $levels[$z]; // keep the actual place name that was requested so we can display that instead of what is in the db
+						break;
 					}
-					if ($row['pl_id'] != '') {
-						$id = $row['pl_id'];
-					}
+				}
+				if ($row['pl_id'] != '') {
+					$id = $row['pl_id'];
+				}
 
-					if ($row['pl_place'] != '') {
-						$placestr2 = $mapstr_edit . $id . "&amp;level=" . $level . $mapstr3 . $mapstr5 . I18N::translate('Zoom=') . $row['pl_zoom'] . $mapstr6 . $row['pl_placerequested'] . $mapstr8;
-						if ($row['pl_place'] == 'unknown')
-							$matched[$x]++;
+				if ($row['pl_place'] != '') {
+					$placestr2 = $mapstr_edit . $id . "&amp;level=" . $level . $mapstr3 . $mapstr5 . I18N::translate('Zoom=') . $row['pl_zoom'] . $mapstr6 . $row['pl_placerequested'] . $mapstr8;
+					if ($row['pl_place'] === 'unknown')
+						$matched[$x]++;
+				} else {
+					if ($levels[$z] === 'unknown') {
+						$placestr2 = $mapstr_add . $id . "&amp;level=" . $level . $mapstr3 . $mapstr7 . "<strong>" . I18N::translate('unknown') . "</strong>" . $mapstr8; $matched[$x]++;
 					} else {
-						if ($levels[$z] == "unknown") {
-							$placestr2 = $mapstr_add . $id . "&amp;level=" . $level . $mapstr3 . $mapstr7 . "<strong>" . rtrim(ltrim(I18N::translate('unknown'))) . "</strong>" . $mapstr8; $matched[$x]++;
-						} else {
-							$placestr2 = $mapstr_add . $id . "&amp;place_name=" . urlencode($levels[$z]) . "&amp;level=" . $level . $mapstr3 . $mapstr7 . '<span class="error">' . rtrim(ltrim($levels[$z])) . '</span>' . $mapstr8; $matched[$x]++;
-						}
+						$placestr2 = $mapstr_add . $id . "&amp;place_name=" . urlencode($levels[$z]) . "&amp;level=" . $level . $mapstr3 . $mapstr7 . '<span class="danger">' . $levels[$z] . '</span>' . $mapstr8; $matched[$x]++;
 					}
-					$plac[$z] = "<td>" . $placestr2 . "</td>\n";
-					if ($row['pl_lati'] == '0') {
-						$lati[$z] = "<td class='error'><strong>" . $row['pl_lati'] . "</strong></td>";
-					} elseif ($row['pl_lati'] != '') {
-						$lati[$z] = "<td>" . $row['pl_lati'] . "</td>";
+				}
+				$plac[$z] = '<td>' . $placestr2 . '</td>';
+				if ($row['pl_lati'] == '0' && $row['pl_long'] == '0') {
+					$lati[$z] = '<td class="danger">0</td>';
+				} elseif ($row['pl_lati'] != '') {
+					$lati[$z] = '<td>' . $row['pl_lati'] . '</td>';
+				} else {
+					$lati[$z] = '<td class="danger"><i class="fa fa-warning"></i></td>';
+					$matched[$x]++;
+				}
+				if ($row['pl_lati'] == '0' && $row['pl_long'] == '0') {
+					$long[$z] = '<td class="danger">0</td>';
+				} elseif ($row['pl_long'] != '') {
+					$long[$z] = '<td>' . $row['pl_long'] . '</td>';
+				} else {
+					$long[$z] = '<td class="danger"><i class="fa fa-warning"></i></td>';
+					$matched[$x]++;
+				}
+				$level++;
+				$mapstr3 = $mapstr3 . "&amp;parent[" . $z . "]=" . Filter::escapeJs($row['pl_placerequested']);
+				$mapstr4 = $mapstr4 . "&amp;parent[" . $z . "]=" . Filter::escapeJs($levels[$z]);
+				$z++;
+			}
+			if ($matching) {
+				$matched[$x] = 1;
+			}
+			if ($matched[$x] != 0) {
+				echo $gedplace;
+				$z = 0;
+				while ($z < $max) {
+					if ($z < $parts) {
+						echo $plac[$z];
+						echo $lati[$z];
+						echo $long[$z];
 					} else {
-						$lati[$z] = "<td class='error center'><strong>X</strong></td>"; $matched[$x]++;
+						echo '<td></td>';
+						echo '<td></td>';
+						echo '<td></td>';
 					}
-					if ($row['pl_long'] == '0') {
-						$long[$z] = "<td class='error'><strong>" . $row['pl_long'] . "</strong></td>";
-					} elseif ($row['pl_long'] != '') {
-						$long[$z] = "<td>" . $row['pl_long'] . "</td>";
-					} else {
-						$long[$z] = "<td class='error center'><strong>X</strong></td>"; $matched[$x]++;
-					}
-					$level++;
-					$mapstr3 = $mapstr3 . "&amp;parent[" . $z . "]=" . Filter::escapeJs($row['pl_placerequested']);
-					$mapstr4 = $mapstr4 . "&amp;parent[" . $z . "]=" . Filter::escapeJs($levels[$z]);
 					$z++;
 				}
-				if ($matching) {
-					$matched[$x] = 1;
-				}
-				if ($matched[$x] != 0) {
-					echo $gedplace;
-					$z = 0;
-					while ($z < $max) {
-						if ($z < $parts) {
-							echo $plac[$z];
-							echo $lati[$z];
-							echo $long[$z];
-						} else {
-							echo '<td></td><td></td><td></td>';
-						}
-						$z++;
-					}
-					echo '</tr>';
-					$countrows++;
-				}
-				$x++;
+				echo '</tr>';
+				$countrows++;
 			}
-			// echo final row of table
-			echo '<tr><td colspan="2" class="accepted">', /* I18N: A count of places */ I18N::translate('Total places: %s', I18N::number($countrows)), '</td></tr></table></div>';
-			break;
-		default:
-			// Do not run until user selects a gedcom/place/etc.
-			// Instead, show some useful help info.
-			echo '<div class="gm_check_top accepted">', I18N::translate('This will list all the places from the selected GEDCOM file.  By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables.'), '</div>';
-			break;
+			$x++;
 		}
+		echo '</tbody>';
+		echo '<tfoot>';
+		echo '<tr>';
+		echo '<th colspan="', (1 + 3 * $max), '">', /* I18N: A count of places */ I18N::translate('Total places: %s', I18N::number($countrows)), '</th>';
+		echo '</tr>';
+		echo '</tfoot>';
+		echo '</table>';
 	}
 
 	/**
@@ -4585,7 +4572,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 		echo '<th>';
 		echo I18N::translate('Edit'), '</th><th>', I18N::translate('Delete'), '</th></tr>';
 		if (count($placelist) == 0)
-			echo '<tr><td colspan="7" class="accepted">', I18N::translate('No places found'), '</td></tr>';
+			echo '<tr><td colspan="7">', I18N::translate('No places found'), '</td></tr>';
 		foreach ($placelist as $place) {
 			echo '<tr><td><a href="module.php?mod=googlemap&mod_action=admin_places&parent=', $place['place_id'], '&inactive=', $inactive, '">';
 			if ($place['place'] != 'Unknown')
@@ -4971,7 +4958,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					<form name="myForm" title="myForm">
 						<?php
 						echo '<input id="butt1" name ="butt1" type="button" value="', I18N::translate('Google Maps™'), '" onclick="toggleStreetView();"></input>';
-						echo '<input id="butt2" name ="butt2" type="button" value="', I18N::translate('Reset'), '" onclick="initialize();"></input>';
+						echo '<input id="butt2" name ="butt2" type="button" value="', I18N::translate('reset'), '" onclick="initialize();"></input>';
 						?>
 					</form>
 				</div>

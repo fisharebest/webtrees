@@ -307,7 +307,7 @@ document.onmouseup = function () {
 				<td class="list_value" style="padding: 5px;">
 					<a href="<?php echo WT_SCRIPT_NAME . "?" . $controller->pidlinks . "scale=" . ($controller->scale + $scalemod); ?>&amp;ged=<?php echo $WT_TREE->getNameUrl(); ?>" class="icon-zoomin" title="<?php echo I18N::translate('Zoom in'); ?>"></a><br>
 					<a href="<?php echo WT_SCRIPT_NAME . "?" . $controller->pidlinks . "scale=" . ($controller->scale - $scalemod); ?>&amp;ged=<?php echo $WT_TREE->getNameUrl(); ?>" class="icon-zoomout" title="<?php echo I18N::translate('Zoom out'); ?>"></a><br>
-					<input type="button" value="<?php echo I18N::translate('Clear chart'); ?>" onclick="window.location = 'timeline.php?ged=<?php echo $WT_TREE->getNameUrl(); ?>';">
+					<input type="button" value="<?php echo I18N::translate('reset'); ?>" onclick="window.location = 'timeline.php?ged=<?php echo $WT_TREE->getNameUrl(); ?>';">
 				</td>
 			<?php } ?>
 		</tr>

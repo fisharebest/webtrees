@@ -484,43 +484,27 @@ if (substr(WT_SCRIPT_NAME, 0, 5) === 'admin' || WT_SCRIPT_NAME === 'module.php' 
 	// Administration scripts begin with “admin” and use a special administration theme
 	Theme::theme(new AdministrationTheme)->init($WT_TREE);
 } else {
-	if (Site::getPreference('ALLOW_USER_THEMES')) {
-		// Requested change of theme?
-		$theme_id = Filter::get('theme');
-		if (!array_key_exists($theme_id, Theme::themeNames())) {
-			$theme_id = '';
-		}
-		// Last theme used?
-		if (!$theme_id && array_key_exists(Session::get('theme_id'), Theme::themeNames())) {
-			$theme_id = Session::get('theme_id');
-		}
-	} else {
-		$theme_id = '';
+	// Last theme used?
+	$theme_id = Session::get('theme_id');
+	// Default for tree
+	if (!array_key_exists($theme_id, Theme::themeNames()) && $WT_TREE) {
+		$theme_id = $WT_TREE->getPreference('THEME_DIR');
 	}
-	if (!$theme_id) {
-		// User cannot choose (or has not chosen) a theme.
-		// 1) gedcom setting
-		// 2) site setting
-		// 3) webtrees
-		// 4) first one found
-		if ($WT_TREE) {
-			$theme_id = $WT_TREE->getPreference('THEME_DIR');
-		}
-		if (!array_key_exists($theme_id, Theme::themeNames())) {
-			$theme_id = Site::getPreference('THEME_DIR');
-		}
-		if (!array_key_exists($theme_id, Theme::themeNames())) {
-			$theme_id = 'webtrees';
-		}
+	// Default for site
+	if (!array_key_exists($theme_id, Theme::themeNames())) {
+		$theme_id = Site::getPreference('THEME_DIR');
+	}
+	// Default
+	if (!array_key_exists($theme_id, Theme::themeNames())) {
+		$theme_id = 'webtrees';
 	}
 	foreach (Theme::installedThemes() as $theme) {
 		if ($theme->themeId() === $theme_id) {
 			Theme::theme($theme)->init($WT_TREE);
+			// Remember this setting
+			Session::put('theme_id', $theme_id);
 		}
 	}
-
-	// Remember this setting
-	Session::put('theme_id', $theme_id);
 }
 
 // Search engines are only allowed to see certain pages.

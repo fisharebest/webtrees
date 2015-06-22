@@ -1853,8 +1853,12 @@ span.link_text {
 	overflow: hidden;
 	border-radius: 3px;
 	border: 1px solid #b2c7d7;
-	margin: 0 0 5px;
+	margin: 0 0 5px 10px;
 	padding: 10px 0;
+}
+
+[dir='rtl'] #indi_header {
+	margin: 0 10px 5px 0;
 }
 
 #indi_header h3 {
@@ -2335,12 +2339,14 @@ dd .deletelink {
 #tabs {
 	background-color: #fff;
 	border-color: #ddd;
-	width: 100%;
+	margin-left: 10px;
 	overflow: visible;
 }
 
 [dir=rtl] #tabs {
 	float: right;
+	width: 99%;
+	margin-right: 10px;
 }
 
 /* sidebar */
@@ -3302,45 +3308,6 @@ table.table-census-assistant th {
 }
 
 /*-- Lifespan ---- */
-.lifespan-form {
-	display: table;
-	margin:  0 auto;
-}
-
-.lifespan-form fieldset {
-	display:        inline-block;
-	margin:         0;
-	vertical-align: top;
-	height:         85px;
-}
-
-.lifespan-form legend {
-	color: inherit;
-}
-
-.lifespan-form fieldset > div {
-	display: table-row;
-}
-
-.lifespan-form label,
-.lifespan-form span {
-	display: table-cell;
-	border:  none;
-}
-
-.lifespan-form .controls {
-	text-align: right;
-}
-
-[dir='rtl'] .lifespan-form .controls {
-	text-align: left;
-}
-
-.lifespan-form select,
-.lifespan-form .controls * {
-	margin: 1px 0;
-}
-
 #lifespan-chart {
 	padding:    0 10px 10px;
 	margin:     0 auto;
