@@ -899,7 +899,8 @@ $controller
 				id="WEBTREES_EMAIL"
 				maxlength="255"
 				name="WEBTREES_EMAIL"
-				type="text"
+				required
+				type="email"
 				value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('WEBTREES_EMAIL')); ?>"
 				>
 			<p class="small text-muted">

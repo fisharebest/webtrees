@@ -111,7 +111,7 @@ define('WT_DEBUG', strpos(WT_VERSION, 'dev') !== false);
 define('WT_DEBUG_SQL', false);
 
 // Required version of database tables/columns/indexes/etc.
-define('WT_SCHEMA_VERSION', 30);
+define('WT_SCHEMA_VERSION', 31);
 
 // Regular expressions for validating user input, etc.
 define('WT_MINIMUM_PASSWORD_LENGTH', 6);
@@ -438,10 +438,6 @@ if (!$WT_TREE) {
 // With no parameters, init() looks to the environment to choose a language
 define('WT_LOCALE', I18N::init());
 Session::put('locale', WT_LOCALE);
-
-if (empty($WEBTREES_EMAIL)) {
-	$WEBTREES_EMAIL = 'webtrees-noreply@' . preg_replace('/^www\./i', '', $_SERVER['SERVER_NAME']);
-}
 
 // Note that the database/webservers may not be synchronised, so use DB time throughout.
 define('WT_TIMESTAMP', (int) Database::prepare("SELECT UNIX_TIMESTAMP()")->fetchOne());
