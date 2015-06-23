@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-06-22 23:08+0100\n"
-"PO-Revision-Date: 2015-05-24 10:36+0100\n"
+"PO-Revision-Date: 2015-06-23 23:18+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
-"Language-Team: Dutch <http://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
+"Language-Team: Dutch "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -315,22 +316,22 @@ msgstr[1] "%s personen zijn privé."
 #, php-format
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s persoon met gebeurtenissen tussen %s en %s"
+msgstr[1] "%s personen met gebeurtenissen tussen %s en %s"
 
 #: app/Controller/LifespanController.php:242
 #, php-format
 msgid "%s individual with events in %s"
 msgid_plural "%s individuals with events in %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s persoon met gebeurtenissen in %s"
+msgstr[1] "%s personen met gebeurtenissen in %s"
 
 #: app/Controller/LifespanController.php:235
 #, php-format
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s persoon met gebeurtenissen in %s tussen %s en %s"
+msgstr[1] "%s personen met gebeurtenissen in %s tussen %s en %s"
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:117
@@ -2017,12 +2018,12 @@ msgstr "Privacy-instellingen toepassen"
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2313
 msgid "Apply these preferences to all family trees"
-msgstr ""
+msgstr "Pas deze voorkeuren toe op alle stambomen"
 
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2320
 msgid "Apply these preferences to new family trees"
-msgstr ""
+msgstr "Pas deze voorkeuren toe op nieuwe stambomen"
 
 #: admin_users.php:99
 #, php-format
@@ -7807,7 +7808,7 @@ msgstr "Media objects behouden"
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:59 edit_interface.php:2290
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:572
 msgid "Keep the existing “last change” information"
-msgstr ""
+msgstr "Behoud de bestaande \"laatste wijziging\" informatie"
 
 #: app/Stats.php:6840
 msgid "Kenya"
@@ -8718,7 +8719,7 @@ msgstr "Vermom uzelf als deze gebruiker"
 
 #: lifespan.php:101
 msgid "Match calendar"
-msgstr ""
+msgstr "Aanpassen aan kalender"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:138
 msgid "Match the exact text, even if it occurs in the middle of a word."
@@ -11798,7 +11799,7 @@ msgstr "Kies vlag"
 
 #: lifespan.php:38
 msgid "Select individuals by place or date"
-msgstr ""
+msgstr "Selecteer personen op basis van plaats of datum"
 
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:41
@@ -13582,11 +13583,11 @@ msgstr "De wachtwoorden komen niet overeen."
 
 #: admin_trees_config.php:224
 msgid "The preferences for all family trees have been updated."
-msgstr ""
+msgstr "De voorkeuren voor alle stambomen zijn bijgewerkt."
 
 #: admin_trees_config.php:227
 msgid "The preferences for new family trees have been updated."
-msgstr ""
+msgstr "De voorkeuren voor nieuwe stambomen zijn bijgewerkt."
 
 #: admin_trees_config.php:212 admin_trees_config.php:342
 #, php-format
@@ -15451,6 +15452,11 @@ msgstr "Westelijke Sahara"
 #: admin_trees_config.php:2295
 msgid "When a record is edited, the user and timestamp are recorded.  Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data.  This option controls whether this feature is selected by default."
 msgstr ""
+"Wanneer een record wordt bijgewerkt, worden de gebruiker en de datum/tijd "
+"opgeslagen. Soms is het wenselijk om de bestaande \"laatste wijziging\" "
+"informatie te behouden, bijvoorbeeld wanneer kleine correcties worden "
+"gemaakt in de data van iemand anders. Met deze optie kunt u deze toepassing "
+"instellen als standaard optie."
 
 #: admin_users.php:387
 msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
@@ -15464,6 +15470,10 @@ msgstr "Als u een link toevoegt dan mag het ID-veld niet leeg zijn."
 #: admin_trees_config.php:2261
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death).  This option controls whether records or facts will be selected by default."
 msgstr ""
+"Wanneer u nieuwe naaste familieleden toevoegt, kunt u bronvermeldingen aan "
+"de records (persoon of gezin) of aan de feiten/gebeurtenissen (geboorte, "
+"huwelijk en overlijden) toevoegen. Deze optie bepaalt welke checkboxen ("
+"records of feiten) standaard aangevinkt zijn."
 
 #. I18N: Help text for the “ID settings” configuration setting
 #: admin_trees_config.php:893
@@ -15631,7 +15641,7 @@ msgstr "U (of iemand die doet alsof hij u is) heeft een account aangevraagd op %
 
 #: logout.php:24
 msgid "You are logged out."
-msgstr ""
+msgstr "U bent uitgelogd."
 
 #: login.php:271 message.php:57
 msgid "You are not allowed to send messages that contain external links."
