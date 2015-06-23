@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-06-22 23:08+0100\n"
-"PO-Revision-Date: 2015-06-01 11:19+0100\n"
+"PO-Revision-Date: 2015-06-23 12:19+0100\n"
 "Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
-"Language-Team: Turkish <http://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
+"Language-Team: Turkish "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -297,13 +298,13 @@ msgstr[0] "%s bireyin hususi alanıdır."
 #, php-format
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
-msgstr[0] ""
+msgstr[0] "%s ve %s tarihleri arasındaki olaylarla %s birey"
 
 #: app/Controller/LifespanController.php:242
 #, php-format
 msgid "%s individual with events in %s"
 msgid_plural "%s individuals with events in %s"
-msgstr[0] ""
+msgstr[0] "%s tarihinde %s olaylı birey"
 
 #: app/Controller/LifespanController.php:235
 #, php-format
@@ -1003,9 +1004,10 @@ msgstr "öğleden önce"
 #: modules_v3/occupation_report/report.xml:7
 #: modules_v3/pedigree_report/report.xml:7
 #: modules_v3/relative_ext_report/report.xml:8
+#, fuzzy
 msgctxt "paper size"
 msgid "A3"
-msgstr ""
+msgstr "A3"
 
 #: modules_v3/ahnentafel_report/report.xml:13
 #: modules_v3/bdm_report/report.xml:12 modules_v3/birth_report/report.xml:10
@@ -1021,9 +1023,10 @@ msgstr ""
 #: modules_v3/occupation_report/report.xml:7
 #: modules_v3/pedigree_report/report.xml:7
 #: modules_v3/relative_ext_report/report.xml:8
+#, fuzzy
 msgctxt "paper size"
 msgid "A4"
-msgstr ""
+msgstr "A4"
 
 #: app/I18N.php:422
 msgid "ALPHABET_lower=abcdefghijklmnopqrstuvwxyz"
@@ -1985,12 +1988,12 @@ msgstr "Mahremiyet ayarları uygula"
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2313
 msgid "Apply these preferences to all family trees"
-msgstr ""
+msgstr "Bu ayarları tüm soy ağaçlarına uygula"
 
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2320
 msgid "Apply these preferences to new family trees"
-msgstr ""
+msgstr "Bu ayarları yeni aile ağaçlarına uygula"
 
 #: admin_users.php:99
 #, php-format
@@ -2111,9 +2114,10 @@ msgstr "Arjantin"
 #: modules_v3/occupation_report/report.xml:8
 #: modules_v3/pedigree_report/report.xml:8
 #: modules_v3/relative_ext_report/report.xml:9
+#, fuzzy
 msgctxt "font name"
 msgid "Arial"
-msgstr ""
+msgstr "Arial"
 
 #: app/Stats.php:6727
 msgid "Armenia"
@@ -4867,9 +4871,10 @@ msgstr "Derece"
 #: modules_v3/occupation_report/report.xml:8
 #: modules_v3/pedigree_report/report.xml:8
 #: modules_v3/relative_ext_report/report.xml:9
+#, fuzzy
 msgctxt "font name"
 msgid "DejaVu"
-msgstr ""
+msgstr "DejaVu"
 
 #: admin_media.php:524 admin_site_access.php:193 admin_site_change.php:349
 #: admin_site_logs.php:314 admin_trees_config.php:611
@@ -6952,9 +6957,10 @@ msgstr "Helsinki, Finlandiya"
 #: modules_v3/occupation_report/report.xml:8
 #: modules_v3/pedigree_report/report.xml:8
 #: modules_v3/relative_ext_report/report.xml:9
+#, fuzzy
 msgctxt "font name"
 msgid "Helvetica"
-msgstr ""
+msgstr "Helvetica"
 
 #: modules_v3/ahnentafel_report/report.xml:193
 msgid "Her occupation was"
@@ -7773,7 +7779,7 @@ msgstr "Medya ögelerini koru"
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:59 edit_interface.php:2290
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:572
 msgid "Keep the existing “last change” information"
-msgstr ""
+msgstr "Mevcut “son değişiklik” bilgisini koru"
 
 #: app/Stats.php:6840
 msgid "Kenya"
@@ -8026,9 +8032,10 @@ msgstr "Lübnan"
 #: modules_v3/occupation_report/report.xml:7
 #: modules_v3/pedigree_report/report.xml:7
 #: modules_v3/relative_ext_report/report.xml:8
+#, fuzzy
 msgctxt "paper size"
 msgid "Legal"
-msgstr ""
+msgstr "Legal"
 
 #. I18N: gedcom tag LEGA
 #: app/GedcomTag.php:544
@@ -8057,9 +8064,10 @@ msgstr "Lesotho"
 #: modules_v3/occupation_report/report.xml:7
 #: modules_v3/pedigree_report/report.xml:7
 #: modules_v3/relative_ext_report/report.xml:8
+#, fuzzy
 msgctxt "paper size"
 msgid "Letter"
-msgstr ""
+msgstr "Letter"
 
 #: app/Module/GoogleMapsModule.php:434 app/Module/GoogleMapsModule.php:1644
 #: app/Module/GoogleMapsModule.php:4121
@@ -8684,7 +8692,7 @@ msgstr "Bu kullanıcıyı taklit et"
 
 #: lifespan.php:101
 msgid "Match calendar"
-msgstr ""
+msgstr "Eşleşme takvimi"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:138
 msgid "Match the exact text, even if it occurs in the middle of a word."
@@ -11762,7 +11770,7 @@ msgstr "Bayrak seç"
 
 #: lifespan.php:38
 msgid "Select individuals by place or date"
-msgstr ""
+msgstr "Bireyleri yer veya tarihe göre seç"
 
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:41
@@ -13546,11 +13554,11 @@ msgstr "Şifreler eşleşmiyor."
 
 #: admin_trees_config.php:224
 msgid "The preferences for all family trees have been updated."
-msgstr ""
+msgstr "Tüm aile ağaçları için ayarlar güncellendi."
 
 #: admin_trees_config.php:227
 msgid "The preferences for new family trees have been updated."
-msgstr ""
+msgstr "Yeni aile ağaçları için ayarlar güncellendi."
 
 #: admin_trees_config.php:212 admin_trees_config.php:342
 #, php-format
@@ -15592,7 +15600,7 @@ msgstr "Siz (yada sizin adınıza bir başkası) %2$s email adresini kullanarak 
 
 #: logout.php:24
 msgid "You are logged out."
-msgstr ""
+msgstr "Çıkış yapıldı."
 
 #: login.php:271 message.php:57
 msgid "You are not allowed to send messages that contain external links."
@@ -15897,7 +15905,7 @@ msgstr "%s civarında"
 #: source.php:61
 msgctxt "You should review the changes and then accept or reject them."
 msgid "accept"
-msgstr ""
+msgstr "onayla"
 
 #: family.php:42 individual.php:52 mediaviewer.php:43 note.php:37 repo.php:36
 #: source.php:43
@@ -16327,13 +16335,13 @@ msgstr "reddet"
 #: modules_v3/descendancy_report/report.xml:363
 msgctxt "FEMALE"
 msgid "died"
-msgstr ""
+msgstr "öldü"
 
 #: modules_v3/descendancy_report/report.xml:133
 #: modules_v3/descendancy_report/report.xml:433
 msgctxt "MALE"
 msgid "died"
-msgstr ""
+msgstr "öldü"
 
 #: app/Module/GoogleMapsModule.php:362 app/Module/GoogleMapsModule.php:371
 #: app/Module/GoogleMapsModule.php:380 app/Module/GoogleMapsModule.php:388
@@ -16777,19 +16785,19 @@ msgstr ""
 #, php-format
 msgctxt "FEMALE"
 msgid "fourth %s"
-msgstr ""
+msgstr "dördüncü %s"
 
 #: app/Functions/Functions.php:630
 #, php-format
 msgctxt "MALE"
 msgid "fourth %s"
-msgstr ""
+msgstr "dördüncü %s"
 
 #: app/Functions/Functions.php:660
 #, php-format
 msgctxt "MALE/FEMALE"
 msgid "fourth %s"
-msgstr ""
+msgstr "dördüncü %s"
 
 #: app/Functions/Functions.php:545
 msgctxt "FEMALE"
@@ -16844,12 +16852,12 @@ msgstr "yeni bireye git"
 #: app/Functions/Functions.php:830
 msgctxt "child’s child"
 msgid "grandchild"
-msgstr ""
+msgstr "torun"
 
 #: app/Functions/Functions.php:842
 msgctxt "daughter’s child"
 msgid "grandchild"
-msgstr ""
+msgstr "torun"
 
 #: app/Functions/Functions.php:942
 msgctxt "son’s child"
@@ -16859,12 +16867,12 @@ msgstr "torun"
 #: app/Functions/Functions.php:832
 msgctxt "child’s daughter"
 msgid "granddaughter"
-msgstr ""
+msgstr "torun"
 
 #: app/Functions/Functions.php:844
 msgctxt "daughter’s daughter"
 msgid "granddaughter"
-msgstr ""
+msgstr "torun"
 
 #: app/Functions/Functions.php:944
 msgctxt "son’s daughter"
@@ -16874,12 +16882,12 @@ msgstr "kız torun"
 #: app/Functions/Functions.php:1062
 msgctxt "child’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr ""
+msgstr "torunun kocası"
 
 #: app/Functions/Functions.php:1084
 msgctxt "daughter’s daughter’s husband"
 msgid "granddaughter’s husband"
-msgstr ""
+msgstr "torunun kocası"
 
 #: app/Functions/Functions.php:1364
 msgctxt "son’s daughter’s husband"
@@ -16904,12 +16912,12 @@ msgstr "büyük ebeveyn"
 #: app/Functions/Functions.php:836
 msgctxt "child’s son"
 msgid "grandson"
-msgstr ""
+msgstr "torun"
 
 #: app/Functions/Functions.php:848
 msgctxt "daughter’s son"
 msgid "grandson"
-msgstr ""
+msgstr "torun"
 
 #: app/Functions/Functions.php:946
 msgctxt "son’s son"
@@ -16919,12 +16927,12 @@ msgstr "torun"
 #: app/Functions/Functions.php:1072
 msgctxt "child’s son’s wife"
 msgid "grandson’s wife"
-msgstr ""
+msgstr "torunun karısı"
 
 #: app/Functions/Functions.php:1100
 msgctxt "daughter’s son’s wife"
 msgid "grandson’s wife"
-msgstr ""
+msgstr "torunun karısı"
 
 #: app/Functions/Functions.php:1374
 msgctxt "son’s son’s wife"
@@ -16991,19 +16999,19 @@ msgstr "×%s göbek yeğen"
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "büyük x%s yeğen"
 
 #: app/Functions/Functions.php:1815
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandson"
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "büyük x%s yeğen"
 
 #: app/Functions/Functions.php:1817
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew"
 msgid "great ×%s nephew"
-msgstr ""
+msgstr "büyük x%s yeğen"
 
 #: app/Functions/Functions.php:1843 app/Functions/Functions.php:1856
 #, php-format
@@ -17014,19 +17022,19 @@ msgstr "×%s göbek yeğen"
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "büyük x%s yeğen"
 
 #: app/Functions/Functions.php:1831
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) grandchild"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "büyük x%s yeğen"
 
 #: app/Functions/Functions.php:1833
 #, php-format
 msgctxt "(a woman’s) great ×%s nephew/niece"
 msgid "great ×%s nephew/niece"
-msgstr ""
+msgstr "büyük x%s yeğen"
 
 #: app/Functions/Functions.php:1841 app/Functions/Functions.php:1854
 #, php-format
@@ -17037,19 +17045,19 @@ msgstr "×%s göbek yeğen"
 #, php-format
 msgctxt "(a man’s) brother’s great ×(%s-1) granddaughter"
 msgid "great ×%s niece"
-msgstr ""
+msgstr "büyük x%s yeğen"
 
 #: app/Functions/Functions.php:1823
 #, php-format
 msgctxt "(a man’s) sister’s great ×(%s-1) granddaughter"
 msgid "great ×%s niece"
-msgstr ""
+msgstr "büyük x%s yeğen"
 
 #: app/Functions/Functions.php:1825
 #, php-format
 msgctxt "(a woman’s) great ×%s niece"
 msgid "great ×%s niece"
-msgstr ""
+msgstr "büyük x%s yeğen"
 
 #. I18N: if you need a different number for %s, contact the developers, as a code-change is required
 #: app/Functions/Functions.php:1653 app/Functions/Functions.php:1681
@@ -17061,19 +17069,19 @@ msgstr "×%s göbek amca"
 #, php-format
 msgctxt "great ×(%s-1) grandfather’s brother"
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "büyük x%s amca"
 
 #: app/Functions/Functions.php:1665
 #, php-format
 msgctxt "great ×(%s-1) grandmother’s brother"
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "büyük x%s amca"
 
 #: app/Functions/Functions.php:1667
 #, php-format
 msgctxt "great ×(%s-1) grandparent’s brother"
 msgid "great ×%s uncle"
-msgstr ""
+msgstr "büyük x%s amca"
 
 #: app/Functions/Functions.php:1595
 msgid "great ×4 aunt"
@@ -17110,17 +17118,17 @@ msgstr "büyük ×4 erkek torunu"
 #: app/Functions/Functions.php:1753
 msgctxt "(a man’s) brother’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "büyük x4 yeğen"
 
 #: app/Functions/Functions.php:1755
 msgctxt "(a man’s) sister’s great-great-great-grandson"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "büyük x4 yeğen"
 
 #: app/Functions/Functions.php:1757
 msgctxt "(a woman’s) great ×4 nephew"
 msgid "great ×4 nephew"
-msgstr ""
+msgstr "büyük x4 yeğen"
 
 #: app/Functions/Functions.php:1769
 msgctxt "(a man’s) brother’s great-great-great-grandchild"
@@ -18345,7 +18353,7 @@ msgstr ""
 #: app/Functions/Functions.php:890
 msgctxt "mother’s daughter"
 msgid "half-sister"
-msgstr ""
+msgstr "üvey kızkardeş"
 
 #: app/Functions/Functions.php:910
 msgctxt "parent’s daughter"
@@ -18379,13 +18387,13 @@ msgstr "içgöç adı"
 #: app/GedcomCode/GedcomCodeName.php:112
 msgctxt "FEMALE"
 msgid "immigration name"
-msgstr ""
+msgstr "göç adı"
 
 #. I18N: A name taken on immigration - e.g. migrants to the USA frequently anglicized their names
 #: app/GedcomCode/GedcomCodeName.php:109
 msgctxt "MALE"
 msgid "immigration name"
-msgstr ""
+msgstr "göç adı"
 
 #. I18N: Gedcom INT dates
 #: app/Date.php:307
@@ -18416,19 +18424,19 @@ msgstr "seçimi tersine çevir"
 #: app/Date/FrenchDate.php:100
 msgctxt "GENITIVE"
 msgid "jours complémentaires"
-msgstr ""
+msgstr "ek günler"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:166
 msgctxt "INSTRUMENTAL"
 msgid "jours complémentaires"
-msgstr ""
+msgstr "ek gönler"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:133
 msgctxt "LOCATIVE"
 msgid "jours complémentaires"
-msgstr ""
+msgstr "ek günler"
 
 #. I18N: a month in the French republican calendar
 #: app/Date/FrenchDate.php:67
@@ -18470,8 +18478,9 @@ msgstr "idareciler"
 
 #. I18N: https://en.wikipedia.org/wiki/Markdown
 #: admin_trees_config.php:64
+#, fuzzy
 msgid "markdown"
-msgstr ""
+msgstr "markdown"
 
 #: app/Stats.php:2918
 msgid "marriage"
@@ -18480,12 +18489,12 @@ msgstr "evlilik"
 #: modules_v3/descendancy_report/report.xml:243
 msgctxt "FEMALE"
 msgid "married"
-msgstr ""
+msgstr "evli"
 
 #: modules_v3/descendancy_report/report.xml:174
 msgctxt "MALE"
 msgid "married"
-msgstr ""
+msgstr "evli"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:132
@@ -18496,28 +18505,28 @@ msgstr "evlilik adı"
 #: app/GedcomCode/GedcomCodeName.php:129
 msgctxt "FEMALE"
 msgid "married name"
-msgstr ""
+msgstr "evlilik adı"
 
 #. I18N: A name taken on marriage - usually the wife takes the husband’s surname
 #: app/GedcomCode/GedcomCodeName.php:126
 msgctxt "MALE"
 msgid "married name"
-msgstr ""
+msgstr "evlilik adı"
 
 #: app/Functions/Functions.php:892
 msgctxt "mother’s father"
 msgid "maternal grandfather"
-msgstr ""
+msgstr "anne tarafından dede"
 
 #: app/Functions/Functions.php:896
 msgctxt "mother’s mother"
 msgid "maternal grandmother"
-msgstr ""
+msgstr "anneanne"
 
 #: app/Functions/Functions.php:898
 msgctxt "mother’s parent"
 msgid "maternal grandparent"
-msgstr ""
+msgstr "anne tarafından büyükbaba/büyükanne"
 
 #. I18N: A system where children take their mother’s surname
 #: admin_trees_config.php:76
