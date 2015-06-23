@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-06-22 23:08+0100\n"
-"PO-Revision-Date: 2015-06-17 20:45+0100\n"
-"Last-Translator: Michael <mike_jpr@outlook.com>\n"
-"Language-Team: German <http://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
+"PO-Revision-Date: 2015-06-23 08:13+0100\n"
+"Last-Translator: Andreas Rauhut <andreas@rauhut.eu>\n"
+"Language-Team: German "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -311,22 +312,22 @@ msgstr[1] "Die Personen %s sind privat."
 #, php-format
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s Person mit Ereignissen zwischen %s und %s"
+msgstr[1] "%s Personen mit Ereignissen zwischen %s und %s"
 
 #: app/Controller/LifespanController.php:242
 #, php-format
 msgid "%s individual with events in %s"
 msgid_plural "%s individuals with events in %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s Person mit Ereignissen in %s"
+msgstr[1] "%s Personen mit Ereignissen in %s"
 
 #: app/Controller/LifespanController.php:235
 #, php-format
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s Person mit Ereignissen in %s zwischen %s und %s"
+msgstr[1] "%s Personen mit Ereignissen in %s zwischen %s und %s"
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:117
@@ -2013,12 +2014,12 @@ msgstr "Datenschutzeinstellungen verwenden"
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2313
 msgid "Apply these preferences to all family trees"
-msgstr ""
+msgstr "Diese Voreinstellungen auf alle Stammbäume anwenden"
 
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2320
 msgid "Apply these preferences to new family trees"
-msgstr ""
+msgstr "Diese Voreinstellungen auf alle neuen Stammbäume anwenden"
 
 #: admin_users.php:99
 #, php-format
@@ -4837,7 +4838,7 @@ msgstr "Dezember"
 #. I18N: a day in the French republican calendar
 #: app/Date/FrenchDate.php:206
 msgid "Decidi"
-msgstr "Decidi"
+msgstr "Decadi"
 
 #: app/Module/HtmlBlockModule.php:303
 msgid "Default"
@@ -7803,7 +7804,7 @@ msgstr "Medienobjekte behalten"
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:59 edit_interface.php:2290
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:572
 msgid "Keep the existing “last change” information"
-msgstr ""
+msgstr "Den Eintrag “Letzte Änderung” beibehalten"
 
 #: app/Stats.php:6840
 msgid "Kenya"
@@ -11794,7 +11795,7 @@ msgstr "Flagge auswählen"
 
 #: lifespan.php:38
 msgid "Select individuals by place or date"
-msgstr ""
+msgstr "Personen nach Ort oder Datum auswählen"
 
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:41
@@ -13578,11 +13579,11 @@ msgstr "Die Passwörter stimmen nicht überein."
 
 #: admin_trees_config.php:224
 msgid "The preferences for all family trees have been updated."
-msgstr ""
+msgstr "Die Voreinstellungen aller Stammbäume wurden aktualisiert."
 
 #: admin_trees_config.php:227
 msgid "The preferences for new family trees have been updated."
-msgstr ""
+msgstr "Die Voreinstellungen für neue Stammbäume wurden aktualisiert."
 
 #: admin_trees_config.php:212 admin_trees_config.php:342
 #, php-format
@@ -15627,7 +15628,7 @@ msgstr "Sie selbst (oder jemand der sich für Sie ausgibt) hat am %1$s ein Benut
 
 #: logout.php:24
 msgid "You are logged out."
-msgstr ""
+msgstr "Sie sind abgemeldet."
 
 #: login.php:271 message.php:57
 msgid "You are not allowed to send messages that contain external links."
