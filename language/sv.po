@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-06-22 23:08+0100\n"
-"PO-Revision-Date: 2015-05-21 18:43+0100\n"
+"PO-Revision-Date: 2015-06-24 21:17+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
-"Language-Team: Swedish <http://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
+"Language-Team: Swedish "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -315,22 +316,22 @@ msgstr[1] "%s personer är skyddade."
 #, php-format
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s individ med händelser mellan %s och %s"
+msgstr[1] "%s individer med händelser mellan %s och %s"
 
 #: app/Controller/LifespanController.php:242
 #, php-format
 msgid "%s individual with events in %s"
 msgid_plural "%s individuals with events in %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s individ med händelser i %s"
+msgstr[1] "%s individer med händelser i %s"
 
 #: app/Controller/LifespanController.php:235
 #, php-format
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s individ med händelser i %s mellan %s och %s"
+msgstr[1] "%s individer med händelser i %s mellan %s och %s"
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:117
@@ -951,7 +952,7 @@ msgstr "En rapport om den information som saknas för en person och dess anhöri
 #: app/Module/BirthDeathMarriageReportModule.php:43
 #: modules_v3/bdm_report/report.xml:4
 msgid "A report of vital records for a given date or place."
-msgstr "En sammanställning av händelserna vid specifik tid eller plats."
+msgstr "En sammanställning av vitala händelserna vid specifik tid eller plats."
 
 #: admin_users.php:508
 msgid "A role is a set of access rights, which give permission to view data, change configuration settings, etc.  Access rights are assigned to roles, and roles are granted to users.  Each family tree can assign different access to each role, and users can have a different role in each family tree."
@@ -1384,7 +1385,7 @@ msgstr "Lägg till en ny vigsel"
 
 #: app/Module/BatchUpdate/BatchUpdateMissingDeathPlugin.php:31
 msgid "Add missing death records"
-msgstr "Lägg till saknade dödsuppgifter"
+msgstr "Lägg till saknade dödsposter"
 
 #: app/Module/BatchUpdate/BatchUpdateMarriedNamesPlugin.php:35
 msgid "Add missing married names"
@@ -2017,12 +2018,12 @@ msgstr "Tillämpa integritetsinställningar"
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2313
 msgid "Apply these preferences to all family trees"
-msgstr ""
+msgstr "Använd dessa inställningar för alla släktträd"
 
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2320
 msgid "Apply these preferences to new family trees"
-msgstr ""
+msgstr "Använd dessa inställningar för nya släktträd"
 
 #: admin_users.php:99
 #, php-format
@@ -5282,7 +5283,19 @@ msgstr "E-postadress som skall användas i ”från:”-fältet för e-post som 
 
 #: help_text.php:293
 msgid "Each source records specific events, generally for a given date range and for a place jurisdiction.  For example a Census records census events and church records record birth, marriage, and death events.<br><br>Select the events that are recorded by this source from the list of events provided.  The date should be specified in a range format such as <i>FROM 1900 TO 1910</i>.  The place jurisdiction is the name of the lowest jurisdiction that encompasses all lower-level places named in this source.  For example, “Oneida, Idaho, USA” would be used as a source jurisdiction place for events occurring in the various towns within Oneida County.  “Idaho, USA” would be the source jurisdiction place if the events recorded took place not only in Oneida County but also in other counties in Idaho."
-msgstr "Varje källa registrerar specifika händelser, i allmänhet för ett visst datumintervall och för en plats jurisdiktion. Till exempel en folkräkning registrerar folkräkning händelser och kyrkans register registrerar födelse, giftermål och död händelser.<br><br>Markera de händelser som registreras av denna källa från listan över händelser som tillhandahålls. Datum bör anges i datumintervall format såsom <i>FROM 1900 TO 1910</i>. Plats jurisdiktion är namnet på den lägsta behörigheten som omfattar alla lägre nivå platser som nämns i denna källa. Exempelvis skulle ”Oneida, Idaho, USA” användas som en källa jurisdiktion plats för händelser som inträffar i de olika städerna inom Oneida County. ”Idaho, USA” skulle vara källa behörighet om de händelser som registrerats ägde rum inte bara i Oneida County, utan även i andra län i Idaho."
+msgstr ""
+"Varje källa registrerar specifika händelser, i allmänhet för ett visst "
+"datumintervall och för en plats jurisdiktion. Till exempel en folkräkning "
+"registrerar folkräkning händelser och kyrkans register registrerar födelse, "
+"giftermål och dödshändelser.<br><br>Markera de händelser som registreras av "
+"denna källa från listan över händelser som tillhandahålls. Datum bör anges i "
+"datumintervall format såsom <i>FROM 1900 TO 1910</i>. Plats jurisdiktion är "
+"namnet på den lägsta behörigheten som omfattar alla lägre nivå platser som "
+"nämns i denna källa. Exempelvis skulle ”Oneida, Idaho, USA” användas som en "
+"källa jurisdiktion plats för händelser som inträffar i de olika städerna "
+"inom Oneida County. ”Idaho, USA” skulle vara källa behörighet om de "
+"händelser som registrerats ägde rum inte bara i Oneida County, utan även i "
+"andra län i Idaho."
 
 #: help_text.php:319
 msgid "Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account."
@@ -5854,11 +5867,11 @@ msgstr "Fakta och händelser"
 
 #: admin_trees_config.php:1869
 msgid "Facts for family records"
-msgstr "Fakta om familjedatapost"
+msgstr "Fakta om familjedataposter"
 
 #: admin_trees_config.php:1751
 msgid "Facts for individual records"
-msgstr "Fakta om persondatapost"
+msgstr "Fakta om persondataposter"
 
 #: admin_trees_config.php:1932
 msgid "Facts for new families"
@@ -5870,11 +5883,11 @@ msgstr "Fakta för ny person"
 
 #: admin_trees_config.php:2076
 msgid "Facts for repository records"
-msgstr "Fakta om Arkivdatapost"
+msgstr "Fakta om Arkivdataposter"
 
 #: admin_trees_config.php:1987
 msgid "Facts for source records"
-msgstr "Fakta om Källdatapost"
+msgstr "Fakta om Källdataposter"
 
 #: app/Stats.php:6800
 msgid "Faeroe Islands"
@@ -7807,7 +7820,7 @@ msgstr "Behåll mediaobjekt"
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:59 edit_interface.php:2290
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:572
 msgid "Keep the existing “last change” information"
-msgstr ""
+msgstr "Behåll den befintliga ”senaste ändringen” informationen"
 
 #: app/Stats.php:6840
 msgid "Kenya"
@@ -8718,7 +8731,7 @@ msgstr "Byt identitet till denna användare"
 
 #: lifespan.php:101
 msgid "Match calendar"
-msgstr ""
+msgstr "Matcha kalendern"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:138
 msgid "Match the exact text, even if it occurs in the middle of a word."
@@ -8964,7 +8977,7 @@ msgstr "Sammanfoga släktträd"
 
 #: admin_site_merge.php:35 admin_trees_manage.php:467
 msgid "Merge records"
-msgstr "Sammanfoga poster"
+msgstr "Sammanfoga posterer"
 
 #: app/GedcomCode/GedcomCodeTemp.php:213
 msgid "Merida, Mexico"
@@ -11798,7 +11811,7 @@ msgstr "Välj flagga"
 
 #: lifespan.php:38
 msgid "Select individuals by place or date"
-msgstr ""
+msgstr "Välj individer efter plats eller datum"
 
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:41
@@ -13582,11 +13595,11 @@ msgstr "Lösenorden stämmer inte överens."
 
 #: admin_trees_config.php:224
 msgid "The preferences for all family trees have been updated."
-msgstr ""
+msgstr "Inställningarna för alla släktträd har uppdaterats."
 
 #: admin_trees_config.php:227
 msgid "The preferences for new family trees have been updated."
-msgstr ""
+msgstr "Inställningarna för nya släktträd har uppdaterats."
 
 #: admin_trees_config.php:212 admin_trees_config.php:342
 #, php-format
@@ -15451,6 +15464,10 @@ msgstr "Västsahara"
 #: admin_trees_config.php:2295
 msgid "When a record is edited, the user and timestamp are recorded.  Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data.  This option controls whether this feature is selected by default."
 msgstr ""
+"När en post redigeras, registreras användaren och tidsstämpeln. Ibland är "
+"det önskvärt att behålla den befintliga ”senaste ändringen” informationen, "
+"till exempel när du gör mindre korrigeringar av någon annans uppgifter. Det "
+"här alternativet styr om den här funktionen är vald som standard."
 
 #: admin_users.php:387
 msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
@@ -15464,6 +15481,10 @@ msgstr "När en länk läggs till, kan ID-fältet inte vara tomt."
 #: admin_trees_config.php:2261
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death).  This option controls whether records or facts will be selected by default."
 msgstr ""
+"När du lägger till nya nära släktingar, kan du lägga till källhänvisningar "
+"till dataposter (individer och familjer) eller till fakta och händelser ("
+"födelse, vigsel och dödsfall). Det här alternativet styr om dataposter eller "
+"fakta kommer att väljas som standard."
 
 #. I18N: Help text for the “ID settings” configuration setting
 #: admin_trees_config.php:893
@@ -15631,7 +15652,7 @@ msgstr "Du (eller någon som påstår sig vara du) har begärt ett konto på %1$
 
 #: logout.php:24
 msgid "You are logged out."
-msgstr ""
+msgstr "Du är utloggad."
 
 #: login.php:271 message.php:57
 msgid "You are not allowed to send messages that contain external links."
