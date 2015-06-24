@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-06-22 23:08+0100\n"
-"PO-Revision-Date: 2015-06-21 12:16+0100\n"
+"PO-Revision-Date: 2015-06-24 16:01+0100\n"
 "Last-Translator: Milivoj Bartoš <mic@mikrotakt.com>\n"
-"Language-Team: Croatian <http://translate.webtrees.net/projects/webtrees/webtrees/hr/>\n"
+"Language-Team: Croatian "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/hr/>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 2.3-dev\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: ..\n"
@@ -2050,7 +2052,7 @@ msgstr ""
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2320
 msgid "Apply these preferences to new family trees"
-msgstr ""
+msgstr "Primijeni ove postavke na nova obiteljska stabla"
 
 #: admin_users.php:99
 #, php-format
@@ -2464,71 +2466,71 @@ msgstr "Krštenje"
 
 #: app/GedcomTag.php:1017
 msgid "Baptism of a brother"
-msgstr ""
+msgstr "Krštenje brata"
 
 #: app/GedcomTag.php:976
 msgid "Baptism of a child"
-msgstr ""
+msgstr "Krštenje djeteta"
 
 #: app/GedcomTag.php:974
 msgid "Baptism of a daughter"
-msgstr ""
+msgstr "Krštenje kčeri"
 
 #: app/GedcomTag.php:985 app/GedcomTag.php:994 app/GedcomTag.php:1003
 msgid "Baptism of a grandchild"
-msgstr ""
+msgstr "Krštenje unuka"
 
 #: app/GedcomTag.php:983
 msgid "Baptism of a granddaughter"
-msgstr ""
+msgstr "Krštenje unuke"
 
 #: app/GedcomTag.php:992
 msgctxt "daughter’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr ""
+msgstr "Krštenje unuke"
 
 #: app/GedcomTag.php:1001
 msgctxt "son’s daughter"
 msgid "Baptism of a granddaughter"
-msgstr ""
+msgstr "Krštenje unuke"
 
 #: app/GedcomTag.php:981
 msgid "Baptism of a grandson"
-msgstr ""
+msgstr "Krštenje unuka"
 
 #: app/GedcomTag.php:990
 msgctxt "daughter’s son"
 msgid "Baptism of a grandson"
-msgstr ""
+msgstr "Krštenje unuka"
 
 #: app/GedcomTag.php:999
 msgctxt "son’s son"
 msgid "Baptism of a grandson"
-msgstr ""
+msgstr "Krštenje unuka"
 
 #: app/GedcomTag.php:1008
 msgid "Baptism of a half-brother"
-msgstr ""
+msgstr "Krštenje polubrata"
 
 #: app/GedcomTag.php:1012
 msgid "Baptism of a half-sibling"
-msgstr ""
+msgstr "Krštenje polusestre/polubrata"
 
 #: app/GedcomTag.php:1010
 msgid "Baptism of a half-sister"
-msgstr ""
+msgstr "Krštenje polusestre"
 
 #: app/GedcomTag.php:1021
 msgid "Baptism of a sibling"
-msgstr ""
+msgstr "Krštenje brata/sestre"
 
 #: app/GedcomTag.php:1019
 msgid "Baptism of a sister"
-msgstr ""
+msgstr "Krštenje sestre"
 
 #: app/GedcomTag.php:972
 msgid "Baptism of a son"
-msgstr ""
+msgstr "Krštenje sina"
 
 #. I18N: gedcom tag BARM
 #: app/GedcomTag.php:190 modules_v3/missing_facts_report/report.xml:14
@@ -4316,7 +4318,7 @@ msgstr ""
 #. I18N: A summary of the system status
 #: admin.php:429
 msgid "Dashboard"
-msgstr ""
+msgstr "Kontrolna ploča"
 
 #. I18N: gedcom tag DATA
 #: app/GedcomTag.php:342
@@ -7837,7 +7839,7 @@ msgstr "Zadrži medijski objekt"
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:59 edit_interface.php:2290
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:572
 msgid "Keep the existing “last change” information"
-msgstr ""
+msgstr "Zadrži postojeću informaciju \"zadnja promjena\""
 
 #: app/Stats.php:6840
 msgid "Kenya"
@@ -9109,7 +9111,7 @@ msgstr "Uredi promjene na redu"
 #. I18N: Listbox entry; name of a role
 #: admin_users.php:42 admin_users.php:534
 msgid "Moderator"
-msgstr ""
+msgstr "Upravitelj"
 
 #: admin.php:642
 msgid "Moderators"
@@ -12772,6 +12774,12 @@ msgstr "Neki genealoški programi kreiraju GEDCOM datoteke koje sadrže imena da
 #: app/Module/GoogleMapsModule.php:419
 msgid "Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”."
 msgstr ""
+"Neka imena mjesta mogu biti napisana sa prefiksima i sufiksima. Na primjer: "
+"\"Zagreb\" prema \"Grad Zagreb\". Ako obiteljsko stablo sadrži puna imena "
+"mjesta, a zemljopisna baza podataka sadrži skraćena imena mjesta, tada "
+"možete specificirati listu prefiksa i sufiksa koji će biti zanemareni. "
+"Višestruke opcije trebaju biti odvojene točka zarezom. Na primjer: \""
+"Grad;Selo;Otok\"."
 
 #. I18N: Help text for the “Fact icons” configuration setting
 #: admin_trees_config.php:1594
@@ -13614,11 +13622,11 @@ msgstr "Lozinke nisu iste."
 
 #: admin_trees_config.php:224
 msgid "The preferences for all family trees have been updated."
-msgstr ""
+msgstr "Postavke za sva obiteljska stabla su ažurirane."
 
 #: admin_trees_config.php:227
 msgid "The preferences for new family trees have been updated."
-msgstr ""
+msgstr "Postavke za novo obiteljsko stablo su ažurirane."
 
 #: admin_trees_config.php:212 admin_trees_config.php:342
 #, php-format
@@ -15491,6 +15499,10 @@ msgstr ""
 #: admin_trees_config.php:2295
 msgid "When a record is edited, the user and timestamp are recorded.  Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data.  This option controls whether this feature is selected by default."
 msgstr ""
+"Kada se uređuje zapis, evidentira se korisnik i vrijeme promjene.\n"
+"Ponekad je potrebno zadržati postojeći podatak \"zadnja promjena\", na "
+"primjer kada radimo sitne promjene na nečijem podatku.\n"
+"Ova opcija kontrolira da li će ovo svojstvo biti odabrano kao zadano."
 
 #: admin_users.php:387
 msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
@@ -15504,6 +15516,9 @@ msgstr "Kod dodavanja veze, ID polje ne smije biti prazno."
 #: admin_trees_config.php:2261
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death).  This option controls whether records or facts will be selected by default."
 msgstr ""
+"Kada dodajete nove bliže rođake, možete dodati izvore citata u zapis (za "
+"pojedinca i obitelj) ili činjenicu i događaj (rođenje, vjenčanje, smrt).\n"
+"Ova opcija kontrolira da li će zapis ili činjenica biti odabrani kao zadano."
 
 #. I18N: Help text for the “ID settings” configuration setting
 #: admin_trees_config.php:893
@@ -16054,7 +16069,7 @@ msgstr "znan kao"
 #. I18N: option in list box “always use this image”
 #: app/Functions/FunctionsEdit.php:630
 msgid "always"
-msgstr ""
+msgstr "uvijek"
 
 #: app/Controller/AncestryController.php:92 app/Stats.php:4539
 #: app/Stats.php:4565 app/Stats.php:4576 app/Stats.php:4586 app/Stats.php:5956
@@ -18869,12 +18884,12 @@ msgstr "partnerica"
 #: app/Functions/Functions.php:716
 msgctxt "MALE"
 msgid "partner"
-msgstr "partner"
+msgstr ""
 
 #: app/Functions/Functions.php:752
 msgctxt "MALE/FEMALE"
 msgid "partner"
-msgstr "partner"
+msgstr ""
 
 #: admin_trees_config.php:69
 msgctxt "Surname tradition"
@@ -19775,6 +19790,10 @@ msgstr "webtrees šalje e-poštu bez čuvanja kopije"
 #: admin_trees_download.php:153
 msgid "webtrees uses UTF-8 encoding for accented letters, special characters and non-latin scripts.  If you want to use this GEDCOM file with genealogy software that does not support UTF-8, then you can create it using ISO-8859-1 encoding."
 msgstr ""
+"webtrees koristi UTF-8 kodiranje za akcentirana slova, specijalne znakove i "
+"skripte.\n"
+"Ako želite koristiti ovu GEDCOM datoteku sa genealoškim programom koji ne "
+"podržava UTF-8, tada ju možete kreirati koristeći ISO-8859-1 kodiranje."
 
 #: app/Functions/FunctionsPrint.php:210
 msgid "webtrees wiki"
