@@ -787,7 +787,7 @@ class CalendarDate {
 	 * @return string
 	 */
 	protected function formatShortYear() {
-		return I18N::digits($this->y);
+		return $this->formatLongYear();
 	}
 
 	/**
