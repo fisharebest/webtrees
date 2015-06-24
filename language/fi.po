@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-06-22 23:08+0100\n"
-"PO-Revision-Date: 2015-05-21 18:46+0100\n"
+"PO-Revision-Date: 2015-06-24 20:09+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
-"Language-Team: Finnish <http://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
+"Language-Team: Finnish "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -311,22 +312,22 @@ msgstr[1] "%s henkilöä ovat yksityissuojattuja."
 #, php-format
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s henkilö, jolla on tapahtumia %s ja %s välillä"
+msgstr[1] "%s henkilöä, joilla on tapahtumia %s ja %s välillä"
 
 #: app/Controller/LifespanController.php:242
 #, php-format
 msgid "%s individual with events in %s"
 msgid_plural "%s individuals with events in %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s henkilö, jolla on tapahtumia paikassa %s"
+msgstr[1] "%s henkilöä, joilla on tapahtumia paikassa %s"
 
 #: app/Controller/LifespanController.php:235
 #, php-format
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%s henkilö, jolla on tapahtumia paikassa %s, %s ja %s välillä"
+msgstr[1] "%s henkilöä, joilla on tapahtumia paikassa %s, %s ja %s välillä"
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:117
@@ -2013,12 +2014,12 @@ msgstr "Käytä yksityisyysasetukset"
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2313
 msgid "Apply these preferences to all family trees"
-msgstr ""
+msgstr "Käytä näitä asetuksia kaikille sukupuille"
 
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2320
 msgid "Apply these preferences to new family trees"
-msgstr ""
+msgstr "Käytä näitä asetuksia uusille sukupuille"
 
 #: admin_users.php:99
 #, php-format
@@ -7803,7 +7804,7 @@ msgstr "Säilytä media kohteet"
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:59 edit_interface.php:2290
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:572
 msgid "Keep the existing “last change” information"
-msgstr ""
+msgstr "Pidä nykyinen ”viimeisin muutos” tieto"
 
 #: app/Stats.php:6840
 msgid "Kenya"
@@ -8714,7 +8715,7 @@ msgstr "Tekeydy täksi käyttäjäksi"
 
 #: lifespan.php:101
 msgid "Match calendar"
-msgstr ""
+msgstr "Vain valittu kalenteri"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:138
 msgid "Match the exact text, even if it occurs in the middle of a word."
@@ -11794,7 +11795,7 @@ msgstr "Valitse lippu"
 
 #: lifespan.php:38
 msgid "Select individuals by place or date"
-msgstr ""
+msgstr "Valitse henkilöt paikan tai päivämäärän mukaan"
 
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:41
@@ -13578,11 +13579,11 @@ msgstr "Salasana ei sama."
 
 #: admin_trees_config.php:224
 msgid "The preferences for all family trees have been updated."
-msgstr ""
+msgstr "Kaikkien sukupuiden asetukset on päivitetty."
 
 #: admin_trees_config.php:227
 msgid "The preferences for new family trees have been updated."
-msgstr ""
+msgstr "Uusien sukupuiden asetukset on päivitetty."
 
 #: admin_trees_config.php:212 admin_trees_config.php:342
 #, php-format
@@ -15447,6 +15448,10 @@ msgstr "Länsi-Sahara"
 #: admin_trees_config.php:2295
 msgid "When a record is edited, the user and timestamp are recorded.  Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data.  This option controls whether this feature is selected by default."
 msgstr ""
+"Kun tietuetta muokataan, käyttäjä ja aikaleima kirjataan. Joskus on "
+"toivottavaa säilyttää nykyinen ”viimeisin muutos” tieto, esimerkiksi kun "
+"tehdään pieniä korjauksia jonkun toisen tietoihin. Tämä vaihtoehto ohjaa "
+"valitaanko tämä ominaisuus oletusarvoisesti."
 
 #: admin_users.php:387
 msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
@@ -15460,6 +15465,9 @@ msgstr "Yhteyttä luotaessa, tunnus-kenttä ei voi olla tyhjä."
 #: admin_trees_config.php:2261
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death).  This option controls whether records or facts will be selected by default."
 msgstr ""
+"Kun lisäät uusia lähisukulaisia, voit lisätä lähteitä tietueisiin (henkilö "
+"ja perhe) tai tietoihin ja tapahtumiin (syntymä , avioliitto ja kuolema). "
+"Tämä vaihtoehto valvoo, valitaanko tietueet vai tiedot oletusarvoisesti."
 
 #. I18N: Help text for the “ID settings” configuration setting
 #: admin_trees_config.php:893
@@ -15627,7 +15635,7 @@ msgstr "Sinä (tai joku joka väittää olevansa sinä) on pyytänyt käyttäjä
 
 #: logout.php:24
 msgid "You are logged out."
-msgstr ""
+msgstr "Olet kirjautunut ulos."
 
 #: login.php:271 message.php:57
 msgid "You are not allowed to send messages that contain external links."
