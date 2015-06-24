@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-06-22 23:08+0100\n"
-"PO-Revision-Date: 2015-06-24 13:03+0100\n"
+"PO-Revision-Date: 2015-06-24 13:20+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Hebrew "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/he/>\n"
@@ -491,7 +491,7 @@ msgstr "%s&nbsp;לפנה״ס"
 #: app/Date/JulianDate.php:88 app/Date/JulianDate.php:91
 #, php-format
 msgid "%s&nbsp;CE"
-msgstr "%s&nbsp;אחה״ס"
+msgstr "%s&nbsp;אחה”ס"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:212
@@ -15452,9 +15452,9 @@ msgstr "סהרה המערבית"
 #: admin_trees_config.php:2295
 msgid "When a record is edited, the user and timestamp are recorded.  Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data.  This option controls whether this feature is selected by default."
 msgstr ""
-"כאשר עוריכים רשומה, המשתמש וחותמת הזמן נרשמים. לפעמים רצוי לשמור את המידע \""
-"שינוי אחרון\" הקיים, למשל בעת ביצוע תיקונים קלים לנתונים של מישהו אחר. "
-"אפשרות זו שולטת אם תכונה זו נבחרת כברירת מחדל."
+"כאשר עוריכים רשומה, המשתמש וחותמת הזמן נרשמים. לפעמים רצוי לשמור את המידע ”"
+"שינוי אחרון” הקיים, למשל בעת ביצוע תיקונים קלים לנתונים של מישהו אחר. אפשרות "
+"זו שולטת אם תכונה זו נבחרת כברירת מחדל."
 
 #: admin_users.php:387
 msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
