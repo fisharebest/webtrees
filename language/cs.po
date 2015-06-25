@@ -3,9 +3,11 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-06-22 23:08+0100\n"
-"PO-Revision-Date: 2013-07-26 12:07+0000\n"
-"Last-Translator: goliash <goliash@goliash.net>\n"
-"Language: \n"
+"PO-Revision-Date: 2015-06-25 13:05+0100\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"Language-Team: Czech "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/cs/>\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -864,7 +866,7 @@ msgstr "Bylo vytvořeno a posláno nové heslo uživateli %s. Můžete si ho zm�
 
 #: login.php:236
 msgid "A new password has been requested for your user name."
-msgstr "Bylo zažádáno o nové heslo pro vaše uživatelské jméno!"
+msgstr "Bylo zažádáno o nové heslo pro vaše uživatelské jméno."
 
 #. I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address
 #: login.php:541
