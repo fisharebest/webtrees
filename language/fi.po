@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-06-22 23:08+0100\n"
-"PO-Revision-Date: 2015-06-24 20:09+0100\n"
+"PO-Revision-Date: 2015-06-25 18:57+0100\n"
 "Last-Translator: Meliza Amity <meliza@amitys.com>\n"
 "Language-Team: Finnish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/fi/>\n"
@@ -3344,7 +3344,7 @@ msgstr "Väestönlaskenta avustaja"
 
 #: app/GedcomTag.php:252 app/Module/CensusAssistantModule.php:546
 msgid "Census date"
-msgstr "Väestönlaskennan päivä"
+msgstr "Väestönlaskennan päivämäärä"
 
 #: app/GedcomTag.php:254
 msgid "Census place"
@@ -4325,12 +4325,12 @@ msgstr "Tietokannan käyttäjätunnus"
 #: modules_v3/marriage_report/report.xml:43
 #: modules_v3/occupation_report/report.xml:54
 msgid "Date"
-msgstr "Aika"
+msgstr "Päivämäärä"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1648
 msgid "Date differences"
-msgstr "Ajan poikkeamat"
+msgstr "Päivämäärä erot"
 
 #: app/GedcomTag.php:176
 msgid "Date of LDS baptism"
@@ -4458,11 +4458,13 @@ msgstr "Asuinpaikan aika"
 
 #: help_text.php:159
 msgid "Date period"
-msgstr "Ajan kesto"
+msgstr "Päivämääräjakso"
 
 #: help_text.php:157
 msgid "Date periods are used to indicate that a fact, such as an occupation, continued for a period of time."
-msgstr "Ajan kestoja käytetään kun esimerkiksi ammattia on harjoitettu tietty aika."
+msgstr ""
+"Päivämääräjaksoja käytetään kun esimerkiksi ammattia on harjoitettu tietty "
+"aika."
 
 #: help_text.php:148 statistics.php:615
 msgid "Date range"
@@ -4478,7 +4480,7 @@ msgstr "Rekisteröintipäivä"
 
 #: app/Module/UserMessagesModule.php:93
 msgid "Date sent"
-msgstr "Luontiaika"
+msgstr "Luontipäivä"
 
 #. I18N: Help text for the “Calendar conversion” configuration setting
 #: admin_trees_config.php:748
@@ -5685,7 +5687,7 @@ msgstr "Tarkka"
 
 #: search_advanced.php:103 search_advanced.php:165
 msgid "Exact date"
-msgstr "Tarkka aika"
+msgstr "Tarkka päivämäärä"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:155
 msgid "Exact text"
@@ -7560,7 +7562,7 @@ msgstr "GEDCOM muoto ei kelpaa"
 
 #: app/Date.php:328
 msgid "Invalid date"
-msgstr "Virheellinen aika"
+msgstr "Virheellinen päivämäärä"
 
 #: app/Stats.php:6831
 msgid "Iran"
@@ -11775,7 +11777,7 @@ msgstr "Valitse tuotava GEDCOM tiedosto"
 
 #: app/Functions/FunctionsEdit.php:395 reportengine.php:244
 msgid "Select a date"
-msgstr "Valitse aika"
+msgstr "Valitse päivä"
 
 #: app/Module/GoogleMapsModule.php:4309
 msgid "Select a file from the list of files already on the server which contains the place locations in CSV format."
@@ -12601,7 +12603,11 @@ msgstr "Sierra Leone"
 
 #: help_text.php:164
 msgid "Simple dates are assumed to be in the gregorian calendar.  To specify a date in another calendar, add a keyword before the date.  This keyword is optional if the month or year format make the date unambiguous."
-msgstr "Päivämäärien oletetaan noudattavan gregoriaanista kalenteria. Voit määrittää ajan muun kalenterin avulla lisäämällä avainsanan ajan eteen. Avainsanan lisääminen on valinnaista, jos kirjoitetun kuukauden ja vuoden tietojen perusteella voidaan päätellä mistä kalenterista on kysymys."
+msgstr ""
+"Päivämäärien oletetaan noudattavan gregoriaanista kalenteria. Voit määrittää "
+"ajan muun kalenterin avulla lisäämällä avainsanan päivämäärän eteen. "
+"Avainsanan lisääminen on valinnaista, jos kirjoitetun kuukauden ja vuoden "
+"tietojen perusteella voidaan päätellä mistä kalenterista on kysymys."
 
 #: find.php:165
 msgid "Simple search filter based on the characters entered, no wildcards are accepted."
@@ -15986,7 +15992,7 @@ msgstr "%s jälkeen"
 
 #: app/Functions/FunctionsPrint.php:441
 msgid "after death"
-msgstr "Kuoleman jälkeen"
+msgstr "kuoleman jälkeen"
 
 #: statisticsplot.php:1117 statisticsplot.php:1167 statisticsplot.php:1217
 #: statisticsplot.php:1267
@@ -18803,7 +18809,7 @@ msgstr "/"
 
 #: app/Functions/FunctionsPrint.php:439
 msgid "on the date of death"
-msgstr "päivänä, jona kuollut"
+msgstr "kuolinpäivänä"
 
 #: statisticsplot.php:788
 msgid "over"
@@ -18895,7 +18901,7 @@ msgstr "ensisijainen todiste"
 
 #: statistics.php:568
 msgid "quarters after marriage"
-msgstr "Vuosineljänneksiä avioitumisen jälkeen"
+msgstr "vuosineljänneksiä avioitumisen jälkeen"
 
 #. I18N: Quality of source information - GEDCOM tag “QUAY 1”
 #: app/GedcomCode/GedcomCodeQuay.php:47
@@ -18949,7 +18955,7 @@ msgstr "raportointi"
 #: app/Module/GoogleMapsModule.php:4961 lifespan.php:106 medialist.php:195
 #: statistics.php:644 timeline.php:310
 msgid "reset"
-msgstr "Palauta alkuperäiset arvot"
+msgstr "palauta alkuperäiset arvot"
 
 #. I18N: http://en.wikipedia.org/wiki/Web_crawler
 #: admin_site_access.php:29 admin_site_access.php:36
@@ -19191,7 +19197,7 @@ msgstr "näytä"
 
 #: statistics.php:643
 msgid "show the plot"
-msgstr "Näytä käyrä"
+msgstr "näytä käyrä"
 
 #: app/Functions/Functions.php:818
 msgid "sibling"
@@ -19302,7 +19308,7 @@ msgstr "vävy/miniä"
 #: app/Module/UpcomingAnniversariesModule.php:176
 #: modules_v3/change_report/report.xml:7
 msgid "sort by date"
-msgstr "järjestä ajan mukaan"
+msgstr "lajittele päivämäärän mukaan"
 
 #: edit_interface.php:1853 modules_v3/bdm_report/report.xml:11
 #: modules_v3/birth_report/report.xml:9 modules_v3/change_report/report.xml:7
@@ -19326,12 +19332,12 @@ msgstr "järjestä avioitumisajan mukaan"
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:165
 msgid "sort by date, newest first"
-msgstr "järjestä ajan mukaan, uusin ensin"
+msgstr "lajittele päivämäärän mukaan, uusimmat ensin"
 
 #. I18N: An option in a list-box
 #: app/Module/RecentChangesModule.php:164
 msgid "sort by date, oldest first"
-msgstr "järjestä ajan mukaan, vanhin ensin"
+msgstr "Lajittele päivämäärän mukaan, vanhimmat ensin"
 
 #. I18N: An option in a list-box
 #: medialist.php:108
