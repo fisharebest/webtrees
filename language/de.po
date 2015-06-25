@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees 1.0\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-06-22 23:08+0100\n"
-"PO-Revision-Date: 2015-06-23 08:13+0100\n"
+"PO-Revision-Date: 2015-06-25 12:35+0100\n"
 "Last-Translator: Andreas Rauhut <andreas@rauhut.eu>\n"
 "Language-Team: German "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
@@ -8715,7 +8715,7 @@ msgstr "Ausgeben als dieser Benutzer"
 
 #: lifespan.php:101
 msgid "Match calendar"
-msgstr ""
+msgstr "Übereinstimmung mit Kalender"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:138
 msgid "Match the exact text, even if it occurs in the middle of a word."
@@ -15448,6 +15448,11 @@ msgstr "Westsahara"
 #: admin_trees_config.php:2295
 msgid "When a record is edited, the user and timestamp are recorded.  Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data.  This option controls whether this feature is selected by default."
 msgstr ""
+"Sobald ein Datensatz bearbeitet wird, wird der Benutzer und ein Zeitstempel "
+"aufgezeichnet. In einigen Fällen, z.B. bei kleinen Änderungen an Daten "
+"anderer Benutzer, ist es wünschenswert die vorhandene Information über die „"
+"Letzte Änderung“ zu erhalten. Diese Auswahl steuert die Voreinstellung für "
+"dieses Verhalten."
 
 #: admin_users.php:387
 msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
@@ -15461,6 +15466,9 @@ msgstr "ID-Nummer fehlt. Befehl kann nicht ausgeführt werden."
 #: admin_trees_config.php:2261
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death).  This option controls whether records or facts will be selected by default."
 msgstr ""
+"Beim Hinzufügen von nahen Verwandten, können Quellangaben zu den (Personen- "
+"und Familen-) Datensätzen oder zu Ereignissen wie Geburt, Heirat und Tod "
+"gemacht werden. Diese Auswahl steuert die Voreinstellung für das Verhalten."
 
 #. I18N: Help text for the “ID settings” configuration setting
 #: admin_trees_config.php:893
