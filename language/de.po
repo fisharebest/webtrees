@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-06-22 23:08+0100\n"
 "PO-Revision-Date: 2015-06-25 12:35+0100\n"
-"Last-Translator: Rico Sonntag <mail@ricosonntag.de>\n"
+"Last-Translator: Andreas Rauhut <andreas@rauhut.eu>\n"
 "Language-Team: German "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/de/>\n"
 "Language: de\n"
@@ -15466,6 +15466,9 @@ msgstr "ID-Nummer fehlt. Befehl kann nicht ausgeführt werden."
 #: admin_trees_config.php:2261
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death).  This option controls whether records or facts will be selected by default."
 msgstr ""
+"Beim Hinzufügen von nahen Verwandten, können Quellangaben zu den (Personen- "
+"und Familen-) Datensätzen oder zu Ereignissen wie Geburt, Heirat und Tod "
+"gemacht werden. Diese Auswahl steuert die Voreinstellung für das Verhalten."
 
 #. I18N: Help text for the “ID settings” configuration setting
 #: admin_trees_config.php:893
