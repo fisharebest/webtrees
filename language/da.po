@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-06-22 23:08+0100\n"
-"PO-Revision-Date: 2015-03-31 13:41+0100\n"
-"Last-Translator: Jens Friismose <jelo2007@gmail.com>\n"
-"Language-Team: Danish <http://translate.webtrees.net/projects/webtrees/webtrees/da/>\n"
+"PO-Revision-Date: 2015-06-25 13:03+0100\n"
+"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
+"Language-Team: Danish "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/da/>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -301,8 +302,8 @@ msgstr[1] "%s individer"
 #, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] "%s individ er blevet opdateret"
-msgstr[1] "%s individer er blevet opdateret"
+msgstr[0] "%s individ er blevet opdateret."
+msgstr[1] "%s individer er blevet opdateret."
 
 #: app/Module/GoogleMapsModule.php:897
 #, php-format
@@ -12457,15 +12458,15 @@ msgstr "Vis beslægtede personer/familier"
 
 #: app/Module/ResearchTaskModule.php:195
 msgid "Show research tasks that are assigned to other users"
-msgstr "Vis forskningsopgaver der er tildelt andre brugere."
+msgstr "Vis forskningsopgaver der er tildelt andre brugere"
 
 #: app/Module/ResearchTaskModule.php:201
 msgid "Show research tasks that are not assigned to any user"
-msgstr "Vis forskningsopgaver der ikke er tildelt til andre brugere."
+msgstr "Vis forskningsopgaver der ikke er tildelt til andre brugere"
 
 #: app/Module/ResearchTaskModule.php:207
 msgid "Show research tasks that have a date in the future"
-msgstr "Vis forskningsopgaver der har en fremtidig deadline."
+msgstr "Vis forskningsopgaver der har en fremtidig deadline"
 
 #: modules_v3/ahnentafel_report/report.xml:11
 msgid "Show residences?"
@@ -13375,7 +13376,7 @@ msgstr ""
 
 #: admin_trees_merge.php:189
 msgid "The family trees have been merged successfully."
-msgstr "Familietræerne flettet uden fejl"
+msgstr "Familietræerne flettet uden fejl."
 
 #. I18N: %s is the name of a family group, e.g. “Husband name + Wife name”
 #: action.php:143
