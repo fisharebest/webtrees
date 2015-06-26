@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-06-22 23:08+0100\n"
-"PO-Revision-Date: 2015-05-14 09:04+0100\n"
+"PO-Revision-Date: 2015-06-26 09:24+0100\n"
 "Last-Translator: Vytautas Krivickas <vytautas.krivickas@gmail.com>\n"
-"Language-Team: Lithuanian <http://translate.webtrees.net/projects/webtrees/webtrees/lt/>\n"
+"Language-Team: Lithuanian "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/lt/>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"(n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 2.3-dev\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: translate;noop;plural:1,2\n"
@@ -329,25 +331,25 @@ msgstr[2] "%s asmenų yra viešai nerodomi."
 #, php-format
 msgid "%s individual with events between %s and %s"
 msgid_plural "%s individuals with events between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s asmuo su įvykiais tarp %s ir %s"
+msgstr[1] "%s asmenys su įvykiais tarp %s ir %s"
+msgstr[2] "%s asmenų su įvykiais tarp %s ir %s"
 
 #: app/Controller/LifespanController.php:242
 #, php-format
 msgid "%s individual with events in %s"
 msgid_plural "%s individuals with events in %s"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s asmuo su įvykiais %s"
+msgstr[1] "%s asmenys su įvykiais %s"
+msgstr[2] "%s asmenų su įvykiais %s"
 
 #: app/Controller/LifespanController.php:235
 #, php-format
 msgid "%s individual with events in %s between %s and %s"
 msgid_plural "%s individuals with events in %s between %s and %s"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%s asmuo su įvykiais %s tarp %s ir %s"
+msgstr[1] "%s asmenys su įvykiais %s tarp %s ir %s"
+msgstr[2] "%s asmenų su įvykiais %s tarp %s ir %s"
 
 #. I18N: %s is a PHP function/module/setting
 #: setup.php:117
@@ -1688,6 +1690,7 @@ msgstr "Afrika"
 #: admin_trees_manage.php:669
 msgid "After creating the family tree, you will be able to import data from a GEDCOM file."
 msgstr ""
+"Po šeimos medžio sukurimo, jūs galėsite įvežti duomenis iš GEDCOM bylos."
 
 #: login.php:239
 msgid "After you have logged in, select the “My account” link under the “My page” menu and fill in the password fields to change your password."
@@ -2045,12 +2048,12 @@ msgstr "Pritaikyti saugumo nustatymus"
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2313
 msgid "Apply these preferences to all family trees"
-msgstr ""
+msgstr "Taikyti šiuos nustatymus visiems šeimos medžiams"
 
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2320
 msgid "Apply these preferences to new family trees"
-msgstr ""
+msgstr "Taikyti šiuos nustatymus naujiems šeimos medžiams"
 
 #: admin_users.php:99
 #, php-format
@@ -6311,7 +6314,7 @@ msgstr "Rasti asmenį"
 
 #: admin_trees_duplicates.php:33 admin_trees_manage.php:457
 msgid "Find duplicates"
-msgstr ""
+msgstr "Rasti duplikatus"
 
 #: relationship.php:95
 msgid "Find the closest relationships"
@@ -7837,7 +7840,7 @@ msgstr "Saugoti medijos objektus"
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:59 edit_interface.php:2290
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:572
 msgid "Keep the existing “last change” information"
-msgstr ""
+msgstr "Išsaugoti dabartine „Paskutinis pakeitimas“ informaciją"
 
 #: app/Stats.php:6840
 msgid "Kenya"
@@ -8748,7 +8751,7 @@ msgstr "Maskuotis kaip šis vartotojas"
 
 #: lifespan.php:101
 msgid "Match calendar"
-msgstr ""
+msgstr "Sutaipyti kalendorius"
 
 #: app/Module/BatchUpdate/BatchUpdateSearchReplacePlugin.php:138
 msgid "Match the exact text, even if it occurs in the middle of a word."
@@ -8985,7 +8988,7 @@ msgstr "Merkurijaus"
 
 #: admin_trees_duplicates.php:174
 msgid "Merge"
-msgstr ""
+msgstr "Sujungti"
 
 #. I18N: Menu entry
 #: admin_trees_merge.php:34 app/Theme/AdministrationTheme.php:129
@@ -9705,7 +9708,7 @@ msgstr "Nėra įjungtų nestandartinių temų."
 
 #: admin_trees_duplicates.php:181
 msgid "No duplicates have been found."
-msgstr ""
+msgstr "Duplikatų nebuvo rasta."
 
 #: admin_trees_check.php:267
 msgid "No errors have been found."
@@ -11830,7 +11833,7 @@ msgstr "Pasirink vėliavą"
 
 #: lifespan.php:38
 msgid "Select individuals by place or date"
-msgstr ""
+msgstr "Pasirinkti asmenis pagal vietovę arba datą"
 
 #. I18N: Description of the “Clippings cart” module
 #: app/Module/ClippingsCartModule.php:41
@@ -13594,6 +13597,8 @@ msgstr "Naujos bylos dabar yra %s aplankoje."
 #: admin_site_config.php:475
 msgid "The new user will be asked to confirm their email address before the account is created."
 msgstr ""
+"Naujas vartotojas bus paprašytas patikslinti savo elektroninio pašto adresą "
+"prieš paskyros sukurimo."
 
 #: help_text.php:303
 msgid "The number of occurrences of the specified name will be shown on the map.  If you leave this field empty, the most common surname will be used."
@@ -13614,11 +13619,11 @@ msgstr "Slaptažodžiai nesutampa."
 
 #: admin_trees_config.php:224
 msgid "The preferences for all family trees have been updated."
-msgstr ""
+msgstr "Visų šeimos medžių nustatymai buvo išsaugoti."
 
 #: admin_trees_config.php:227
 msgid "The preferences for new family trees have been updated."
-msgstr ""
+msgstr "Naujų šeimos medžių nustatymai buvo išsaugoti."
 
 #: admin_trees_config.php:212 admin_trees_config.php:342
 #, php-format
