@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-06-22 23:08+0100\n"
-"PO-Revision-Date: 2015-06-22 14:30+0100\n"
+"PO-Revision-Date: 2015-06-26 10:08+0100\n"
 "Last-Translator: Łukasz Wileński <lukas.the.best@poczta.fm>\n"
-"Language-Team: Polish <http://translate.webtrees.net/projects/webtrees/webtrees/pl/>\n"
+"Language-Team: Polish "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 2.3-dev\n"
 "X-Poedit-Language: Polish\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -2046,12 +2048,12 @@ msgstr "Czy zastosować ustawienia prywatności"
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2313
 msgid "Apply these preferences to all family trees"
-msgstr ""
+msgstr "Zastosuj dane ustawienia do wszystkich drzew genealogincznych"
 
 #. I18N: Label for checkbox
 #: admin_trees_config.php:2320
 msgid "Apply these preferences to new family trees"
-msgstr ""
+msgstr "Zastosuj dane ustawienia do nowych drzew genealogicznych"
 
 #: admin_users.php:99
 #, php-format
@@ -7838,7 +7840,7 @@ msgstr "Zachowaj obiekty multimedialne"
 #: app/Module/BatchUpdate/BatchUpdateBasePlugin.php:59 edit_interface.php:2290
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:572
 msgid "Keep the existing “last change” information"
-msgstr ""
+msgstr "Zachowaj istniejące dane o „ostatniej zmianie”"
 
 #: app/Stats.php:6840
 msgid "Kenya"
@@ -13615,11 +13617,11 @@ msgstr "Hasła nie są jednakowe."
 
 #: admin_trees_config.php:224
 msgid "The preferences for all family trees have been updated."
-msgstr ""
+msgstr "Ustawienia dla wszystkich drzew genealogicznych zostały zaktualizowane."
 
 #: admin_trees_config.php:227
 msgid "The preferences for new family trees have been updated."
-msgstr ""
+msgstr "Ustawienia dla nowych drzew genealogicznych zostały zaktualizowane."
 
 #: admin_trees_config.php:212 admin_trees_config.php:342
 #, php-format
@@ -15491,6 +15493,11 @@ msgstr "Sahara Zachodnia"
 #: admin_trees_config.php:2295
 msgid "When a record is edited, the user and timestamp are recorded.  Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data.  This option controls whether this feature is selected by default."
 msgstr ""
+"Podczas edycji wpisu rejestrowane są informacje o użytkowniku i czasie "
+"wprowadzenia zmian. W pewnych przypadkach zachodzi konieczność zachowania "
+"informacji o „ostatniej zmianie” (np. w przypadku drobnych poprawek danych "
+"wprowadzonych przez innego użytkownika). Ta opcja określa czy ta "
+"funkcjonalność jest domyślne włączona."
 
 #: admin_users.php:387
 msgid "When a user registers for an account, an email is sent to their email address with a verification link.  When they click this link, we know the email address is correct, and the “email verified” option is selected automatically."
@@ -15504,6 +15511,10 @@ msgstr "Podczas dodawania powiązania pole identyfikatora nie może być puste."
 #: admin_trees_config.php:2261
 msgid "When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death).  This option controls whether records or facts will be selected by default."
 msgstr ""
+"Podczas dodawania nowych blisko spokrewnionych osób można dodać powiązania "
+"ze źródłem do wpisów (osoby i rodziny) lub do faktów i wydarzeń (narodziny, "
+"śluby i zgony). Ta opcja określa czy ta funkcjonalność jest domyślne "
+"włączona dla wpisów czy dla faktów i wydarzeń."
 
 #. I18N: Help text for the “ID settings” configuration setting
 #: admin_trees_config.php:893
