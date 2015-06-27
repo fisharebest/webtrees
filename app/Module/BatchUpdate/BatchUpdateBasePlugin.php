@@ -56,7 +56,7 @@ class BatchUpdateBasePlugin {
 	 */
 	public function getOptionsForm() {
 		return
-			'<tr><th>' . I18N::translate('Do not update the “last change” record') . '</th>' .
+			'<tr><th>' . I18N::translate('Keep the existing “last change” information') . '</th>' .
 			'<td><select name="chan" onchange="this.form.submit();">' .
 			'<option value="0" ' . ($this->chan ? '' : 'selected') . '>' . I18N::translate('yes') . '</option>' .
 			'<option value="1" ' . ($this->chan ? 'selected' : '') . '>' . I18N::translate('no') . '</option>' .

@@ -218,6 +218,15 @@ case 'general':
 	if (!Filter::checkCsrf()) {
 		break;
 	}
+
+	// Coming soon
+	if (Filter::postBool('all_trees')) {
+		FlashMessages::addMessage(I18N::translate('The preferences for all family trees have been updated.', $WT_TREE->getTitleHtml()), 'success');
+	}
+	if (Filter::postBool('new_trees')) {
+		FlashMessages::addMessage(I18N::translate('The preferences for new family trees have been updated.', $WT_TREE->getTitleHtml()), 'success');
+	}
+
 	$WT_TREE->setPreference('ADVANCED_NAME_FACTS', Filter::post('ADVANCED_NAME_FACTS'));
 	$WT_TREE->setPreference('ADVANCED_PLAC_FACTS', Filter::post('ADVANCED_PLAC_FACTS'));
 	$WT_TREE->setPreference('ALLOW_THEME_DROPDOWN', Filter::postBool('ALLOW_THEME_DROPDOWN'));
@@ -899,7 +908,8 @@ $controller
 				id="WEBTREES_EMAIL"
 				maxlength="255"
 				name="WEBTREES_EMAIL"
-				type="text"
+				required
+				type="email"
 				value="<?php echo Filter::escapeHtml($WT_TREE->getPreference('WEBTREES_EMAIL')); ?>"
 				>
 			<p class="small text-muted">
@@ -2248,7 +2258,7 @@ $controller
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::radioButtons('PREFER_LEVEL2_SOURCES', $source_types, $WT_TREE->getPreference('PREFER_LEVEL2_SOURCES'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Source type” configuration setting */ I18N::translate('When adding new close relatives, you can add source citations to the records (e.g. INDI, FAM) or the facts (BIRT, MARR, DEAT).  This option controls which checkboxes are ticked by default.'); ?>
+				<?php echo /* I18N: Help text for the “Source type” configuration setting */ I18N::translate('When adding new close relatives, you can add source citations to the records (individual and family) or to the facts and events (birth, marriage, and death).  This option controls whether records or facts will be selected by default.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -2277,12 +2287,12 @@ $controller
 	<!-- NO_UPDATE_CHAN -->
 	<fieldset class="form-group">
 		<legend class="control-label col-sm-3">
-			<?php echo /* I18N: A configuration setting */ I18N::translate('Do not update the “last change” record'); ?>
+			<?php echo /* I18N: A configuration setting */ I18N::translate('Keep the existing “last change” information'); ?>
 		</legend>
 		<div class="col-sm-9">
 			<?php echo FunctionsEdit::radioButtons('NO_UPDATE_CHAN', $no_yes, $WT_TREE->getPreference('NO_UPDATE_CHAN'), 'class="radio-inline"'); ?>
 			<p class="small text-muted">
-				<?php echo /* I18N: Help text for the “Do not update the ‘last change’ record” configuration setting */ I18N::translate('Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br><br>When this option is selected, webtrees will retain the original change information instead of replacing it with that of the current session.  With this option selected, administrators also have the ability to modify or delete the information associated with the original CHAN tag.'); ?>
+				<?php echo /* I18N: Help text for the “Keep the existing ‘last change’ information” configuration setting */ I18N::translate('When a record is edited, the user and timestamp are recorded.  Sometimes it is desirable to keep the existing “last change” information, for example when making minor corrections to someone else’s data.  This option controls whether this feature is selected by default.'); ?>
 			</p>
 		</div>
 	</fieldset>
@@ -2295,6 +2305,22 @@ $controller
 				<i class="fa fa-check"></i>
 				<?php echo I18N::translate('save'); ?>
 			</button>
+			<!-- Coming soon
+			<div class="checkbox">
+				<?php if (count(Tree::getAll()) > 1): ?>
+				<label>
+					<input type="checkbox" name="all_trees">
+					<?php echo /* I18N: Label for checkbox */ I18N::translate('Apply these preferences to all family trees'); ?>
+				</label>
+				<?php endif; ?>
+			</div>
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" name="new_trees">
+					<?php echo /* I18N: Label for checkbox */ I18N::translate('Apply these preferences to new family trees'); ?>
+				</label>
+			</div>
 		</div>
+		-->
 	</div>
 </form>

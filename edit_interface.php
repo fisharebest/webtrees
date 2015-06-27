@@ -2287,7 +2287,7 @@ function keep_chan(GedcomRecord $record = null) {
 			GedcomTag::getLabel('CHAN') .
 			'</td><td class="optionbox wrap">' .
 			'<input type="checkbox" name="keep_chan" value="1" ' . ($WT_TREE->getPreference('NO_UPDATE_CHAN') ? 'checked' : '') . '>' .
-			I18N::translate('Do not update the “last change” record') .
+			I18N::translate('Keep the existing “last change” information') .
 			$details .
 			'</td></tr>';
 	} else {

@@ -8,7 +8,10 @@
 	<Input name="marrdate2" lookup="DATE" type="text"><var var="I18N::translate('Marriage Date range end')" /></Input>
 	<Input name="sortby" type="select" default="NAME" options="NAME=>I18N::translate('sort by name')|MARR:DATE=>I18N::translate('sort by date of marriage')"><var var="I18N::translate('Sort order')" /></Input>
 	<Input name="pageSize" type="select" default="A4" options="letter=>I18N::translateContext('paper size','Letter')|A3=>I18N::translateContext('paper size', 'A3')|A4=>I18N::translateContext('paper size','A4')|legal=>I18N::translateContext('paper size','Legal')"><var var="I18N::translate('Page size')" /></Input>
+	<!--
 	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>I18N::translateContext('font name', 'Arial')|dejavusans=>I18N::translateContext('font name', 'DejaVu')|helvetica=>I18N::translateContext('font name', 'Helvetica')"><var var="I18N::translate('Font')"/></Input>
+	-->
+	<SetVar name="fonts" value="dejavusans" />
 
 	<!-- Header -->
 	<Style name="header" font="$fonts" size="16" style="b" />
