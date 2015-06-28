@@ -4311,7 +4311,8 @@ header nav {
 .primary-menu > li {
 	background-image: url(images/sprites-top-menu.png);
 	background-repeat: no-repeat;
-	width: 80px;
+	min-width: 80px;
+	width: auto;
 	text-align: center;
 	height: 28px;
 	line-height: 28px;
