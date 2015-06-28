@@ -1561,7 +1561,10 @@ class FunctionsEdit {
 					self::addSimpleTag($subrecord, '', GedcomTag::getLabel($label, $person));
 				} elseif (!$inSource && $type === 'DATE') {
 					self::addSimpleTag($subrecord, $level1type, GedcomTag::getLabel($label, $person));
-					$add_date = false;
+					if ($level === '2') {
+						// We already have a date - no need to add one.
+						$add_date = false;
+					}
 				} elseif ($type === 'STAT') {
 					self::addSimpleTag($subrecord, $level1type, GedcomTag::getLabel($label, $person));
 				} elseif ($level0type === 'REPO') {
