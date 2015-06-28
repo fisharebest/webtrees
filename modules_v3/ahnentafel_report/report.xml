@@ -257,8 +257,8 @@
 								<Gedcom id="MARR">
 									<if condition="(($spid!='') and (@DATE!='' or @PLAC!='' or @desc=='Y'))">
 										<Text style="text">
-											<if condition="$gender=='m'"><var var="I18N::translate('He married')" /> </if>
-											<if condition="$gender=='f'"><var var="I18N::translate('She married')" /> </if>
+											<if condition="$gender=='m'"> <var var="I18N::translate('He married')" /> </if>
+											<if condition="$gender=='f'"> <var var="I18N::translate('She married')" /> </if>
 										</Text>
 										<if condition="$sources==1">
 											<RepeatTag tag="MARR:SOUR">
@@ -288,8 +288,8 @@
 						</if>
 						<Gedcom id="DEAT">
 							<Text style="text">
-								<if condition="$gender=='m'"><var var="I18N::translate('He died')" /></if>
-								<if condition="$gender=='f'"><var var="I18N::translate('She died')" /></if>
+								<if condition="$gender=='m'"> <var var="I18N::translate('He died')" /></if>
+								<if condition="$gender=='f'"> <var var="I18N::translate('She died')" /></if>
 							</Text>
 							<if condition="$sources==1">
 								<RepeatTag tag="DEAT:SOUR">
@@ -313,8 +313,8 @@
 						</Gedcom>
 						<Gedcom id="CREM">
 							<Text style="text">
-								<if condition="$gender=='m'"><var var="I18N::translate('He was cremated')" /></if>
-								<if condition="$gender=='f'"><var var="I18N::translate('She was cremated')" /></if>
+								<if condition="$gender=='m'"> <var var="I18N::translate('He was cremated')" /></if>
+								<if condition="$gender=='f'"> <var var="I18N::translate('She was cremated')" /></if>
 							</Text>
 							<if condition="$sources==1">
 								<RepeatTag tag="CREM:SOUR">
@@ -337,15 +337,9 @@
 							</Text>
 						</Gedcom>
 						<Gedcom id="BURI">
-							<!-- Look for Level 2 CREM subordinate to BURI (should have been at Level 1) -->
 							<Text style="text">
-								<RepeatTag tag="BURI:CREM">
-									<if condition="$gender=='m'"><var var="I18N::translate('He was cremated')" /></if>
-									<if condition="$gender=='f'"><var var="I18N::translate('She was cremated')" /></if>.
-								</RepeatTag>
-								<!-- Now for the real BURI information -->
-								<if condition="$gender=='m'"><var var="I18N::translate('He was buried')" /></if>
-								<if condition="$gender=='f'"><var var="I18N::translate('She was buried')" /></if>
+								<if condition="$gender=='m'"> <var var="I18N::translate('He was buried')" /></if>
+								<if condition="$gender=='f'"> <var var="I18N::translate('She was buried')" /></if>
 							</Text>
 							<if condition="$sources==1">
 								<RepeatTag tag="BURI:SOUR">
