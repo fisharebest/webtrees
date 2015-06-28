@@ -903,7 +903,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					echo /* I18N: %1$s is a count of individuals, %2$s is a list of their names */ I18N::plural(
 						'%1$s individual is missing birthplace map coordinates: %2$s.',
 						'%1$s individuals are missing birthplace map coordinates: %2$s.',
-						$miscount, I18N::number($miscount), I18N::number($missing)),
+						$miscount, I18N::number($miscount), $missing),
 						'<br>';
 				}
 			}
