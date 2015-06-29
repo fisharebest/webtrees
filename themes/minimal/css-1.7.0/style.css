@@ -1686,10 +1686,6 @@ a:hover .nameZoom {
 	min-width: 100px;
 }
 
-.add_fav_ref label:after {
-	content: ":";
-}
-
 .add_fav_ref input {
 	margin: 0 5px;
 }
@@ -1912,10 +1908,6 @@ div.faq_body {
 	margin: 0;
 	overflow: hidden;
 	padding: 5px;
-}
-
-.indi_name_details dt:after {
-	content: ":";
 }
 
 .indi_name_details .name1 {
