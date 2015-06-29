@@ -453,22 +453,6 @@ case 'update':
 	if (!empty($_POST['NSFX'])) {
 		$newged .= "\n2 NSFX " . $_POST['NSFX'];
 	}
-	if (!empty($_POST['ROMN'])) {
-		$newged .= "\n2 ROMN " . $_POST['ROMN'];
-	}
-	if (!empty($_POST['FONE'])) {
-		$newged .= "\n2 FONE " . $_POST['FONE'];
-	}
-	if (!empty($_POST['_HEB'])) {
-		$newged .= "\n2 _HEB " . $_POST['_HEB'];
-	}
-	if (!empty($_POST['_AKA'])) {
-		$newged .= "\n2 _AKA " . $_POST['_AKA'];
-	}
-	if (!empty($_POST['_MARNM'])) {
-		$newged .= "\n2 _MARNM " . $_POST['_MARNM'];
-	}
-
 	if (isset($_POST['NOTE'])) {
 		$NOTE = $_POST['NOTE'];
 	}
@@ -481,6 +465,24 @@ case 'update':
 	}
 
 	$newged = FunctionsEdit::handleUpdates($newged);
+
+	// Add new names after existing names
+	if (!empty($_POST['_MARNM'])) {
+		$newged .= "\n2 _MARNM " . $_POST['_MARNM'];
+	}
+	if (!empty($_POST['ROMN'])) {
+		$newged .= "\n2 ROMN " . $_POST['ROMN'];
+	}
+	if (!empty($_POST['FONE'])) {
+		$newged .= "\n2 FONE " . $_POST['FONE'];
+	}
+	if (!empty($_POST['_HEB'])) {
+		$newged .= "\n2 _HEB " . $_POST['_HEB'];
+	}
+	if (!empty($_POST['_AKA'])) {
+		$newged .= "\n2 _AKA " . $_POST['_AKA'];
+	}
+
 	$newged = substr($newged, 1); // Remove leading newline
 	$record->updateFact($fact_id, $newged, !$keep_chan);
 
@@ -2308,8 +2310,6 @@ function keep_chan(GedcomRecord $record = null) {
 function print_indi_form($nextaction, Individual $person = null, Family $family = null, Fact $name_fact = null, $famtag = 'CHIL', $gender = 'U') {
 	global $WT_TREE, $bdm, $controller;
 
-	$SURNAME_TRADITION = $WT_TREE->getPreference('SURNAME_TRADITION');
-
 	if ($person) {
 		$xref = $person->getXref();
 	} elseif ($family) {
@@ -2318,12 +2318,15 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		$xref = 'new';
 	}
 
+	// Different cultures do surnames differently
+	$surname_tradition = SurnameTradition::create($WT_TREE->getPreference('SURNAME_TRADITION'));
+
 	$name_fields = array();
 	if ($name_fact) {
+		// Editing an existing name
 		$name_fact_id = $name_fact->getFactId();
 		$name_type    = $name_fact->getAttribute('TYPE');
 		$namerec      = $name_fact->getGedcom();
-		// Populate the standard NAME field and subfields
 		foreach (Config::standardNameFacts() as $tag) {
 			if ($tag === 'NAME') {
 				$name_fields[$tag] = $name_fact->getValue();
@@ -2331,13 +2334,85 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 				$name_fields[$tag] = $name_fact->getAttribute($tag);
 			}
 		}
+		// Populate any missing 2 XXXX fields from the 1 NAME field
+		$npfx_accept = implode('|', Config::namePrefixes());
+		if (preg_match('/(((' . $npfx_accept . ')\.? +)*)([^\n\/"]*)("(.*)")? *\/(([a-z]{2,3} +)*)(.*)\/ *(.*)/i', $name_fields['NAME'], $name_bits)) {
+			if (empty($name_fields['NPFX'])) {
+				$name_fields['NPFX'] = $name_bits[1];
+			}
+			if (empty($name_fields['SPFX']) && empty($name_fields['SURN'])) {
+				$name_fields['SPFX'] = trim($name_bits[7]);
+				// For names with two surnames, there will be four slashes.
+				// Turn them into a list
+				$name_fields['SURN'] = preg_replace('~/[^/]*/~', ',', $name_bits[9]);
+			}
+			if (empty($name_fields['GIVN'])) {
+				$name_fields['GIVN'] = $name_bits[4];
+			}
+			if (empty($name_fields['NICK']) && !empty($name_bits[6]) && !preg_match('/^2 NICK/m', $namerec)) {
+				$name_fields['NICK'] = $name_bits[6];
+			}
+		}
+
 	} else {
+		// Creating a new name
 		$name_fact_id = null;
 		$name_type    = null;
 		$namerec      = null;
 		// Populate the standard NAME field and subfields
 		foreach (Config::standardNameFacts() as $tag) {
 			$name_fields[$tag] = '';
+		}
+		// Inherit surname from parents, spouse or child
+		if ($family) {
+			$father = $family->getHusband();
+			if ($father && $father->getFirstFact('NAME')) {
+				$father_name = $father->getFirstFact('NAME')->getValue();
+			} else {
+				$father_name = '';
+			}
+			$mother = $family->getWife();
+			if ($mother && $mother->getFirstFact('NAME')) {
+				$mother_name = $mother->getFirstFact('NAME')->getValue();
+			} else {
+				$mother_name = '';
+			}
+		} else {
+			$father      = null;
+			$mother      = null;
+			$father_name = '';
+			$mother_name = '';
+		}
+		if ($person && $person->getFirstFact('NAME')) {
+			$indi_name = $person->getFirstFact('NAME')->getValue();
+		} else {
+			$indi_name = '';
+		}
+
+		switch ($nextaction) {
+		case 'add_child_to_family_action':
+			$name_fields = $surname_tradition->newChildNames($father_name, $mother_name, $gender) + $name_fields;
+			break;
+		case 'add_child_to_individual_action':
+			if ($person->getSex() === 'F') {
+				$name_fields = $surname_tradition->newChildNames('', $indi_name, $gender) + $name_fields;
+			} else {
+				$name_fields = $surname_tradition->newChildNames($indi_name, '', $gender) + $name_fields;
+			}
+			break;
+		case 'add_parent_to_individual_action':
+			$name_fields = $surname_tradition->newParentNames($indi_name, $gender) + $name_fields;
+			break;
+		case 'add_spouse_to_family_action':
+			if ($father) {
+				$name_fields = $surname_tradition->newSpouseNames($father_name, $gender) + $name_fields;
+			} else {
+				$name_fields = $surname_tradition->newSpouseNames($mother_name, $gender) + $name_fields;
+			}
+			break;
+		case 'add_spouse_to_individual_action':
+			$name_fields = $surname_tradition->newSpouseNames($indi_name, $gender) + $name_fields;
+			break;
 		}
 	}
 
@@ -2369,307 +2444,57 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		break;
 	}
 
-	$new_marnm = '';
-	// Inherit surname from parents, spouse or child
-	if (!$namerec) {
-		// We’ll need the parent’s name to set the child’s surname
-		if ($family) {
-			$father = $family->getHusband();
-			if ($father && $father->getFirstFact('NAME')) {
-				$father_name = $father->getFirstFact('NAME')->getValue();
-			} else {
-				$father_name = '';
-			}
-			$mother = $family->getWife();
-			if ($mother && $mother->getFirstFact('NAME')) {
-				$mother_name = $mother->getFirstFact('NAME')->getValue();
-			} else {
-				$mother_name = '';
-			}
-		} else {
-			$father_name = '';
-			$mother_name = '';
-		}
-		// We’ll need the spouse/child’s name to set the spouse/parent’s surname
-		if ($person && $person->getFirstFact('NAME')) {
-			$indi_name = $person->getFirstFact('NAME')->getValue();
-		} else {
-			$indi_name = '';
-		}
-		// Different cultures do surnames differently
-		switch ($SURNAME_TRADITION) {
-		case 'spanish':
-			//Mother: Maria /AAAA BBBB/
-			//Father: Jose  /CCCC DDDD/
-			//Child:  Pablo /CCCC AAAA/
-			switch ($nextaction) {
-			case 'add_child_to_family_action':
-				if (preg_match('/\/(\S+) \S+\//', $mother_name, $matchm) &&
-						preg_match('/\/(\S+) \S+\//', $father_name, $matchf)) {
-					$name_fields['SURN'] = $matchf[1] . ' ' . $matchm[1];
-					$name_fields['NAME'] = '/' . $name_fields['SURN'] . '/';
-				}
-				break;
-			case 'add_parent_to_individual_action':
-				if ($famtag === 'HUSB' && preg_match('/\/(\S+) \S+\//', $indi_name, $match)) {
-					$name_fields['SURN'] = $match[1];
-					$name_fields['NAME'] = '/' . $name_fields['SURN'] . '/';
-				}
-				if ($famtag === 'WIFE' && preg_match('/\/\S+ (\S+)\//', $indi_name, $match)) {
-					$name_fields['SURN'] = $match[1];
-					$name_fields['NAME'] = '/' . $name_fields['SURN'] . '/';
-				}
-				break;
-			case 'add_child_to_individual_action':
-			case 'add_spouse_to_individual_action':
-			case 'add_spouse_to_family_action':
-				break;
-			}
-			break;
-		case 'portuguese':
-			//Mother: Maria /AAAA BBBB/
-			//Father: Jose  /CCCC DDDD/
-			//Child:  Pablo /BBBB DDDD/
-			switch ($nextaction) {
-			case 'add_child_to_family_action':
-				if (preg_match('/\/\S+\s+(\S+)\//', $mother_name, $matchm) &&
-						preg_match('/\/\S+\s+(\S+)\//', $father_name, $matchf)) {
-					$name_fields['SURN'] = $matchf[1] . ' ' . $matchm[1];
-					$name_fields['NAME'] = '/' . $name_fields['SURN'] . '/';
-				}
-				break;
-			case 'add_parent_to_individual_action':
-				if ($famtag === 'HUSB' && preg_match('/\/\S+\s+(\S+)\//', $indi_name, $match)) {
-					$name_fields['SURN'] = $match[1];
-					$name_fields['NAME'] = '/' . $name_fields['SURN'] . '/';
-				}
-				if ($famtag === 'WIFE' && preg_match('/\/(\S+)\s+\S+\//', $indi_name, $match)) {
-					$name_fields['SURN'] = $match[1];
-					$name_fields['NAME'] = '/' . $name_fields['SURN'] . '/';
-				}
-				break;
-			case 'add_child_to_individual_action':
-			case 'add_spouse_to_individual_action':
-			case 'add_spouse_to_family_action':
-				break;
-			}
-			break;
-		case 'icelandic':
-			// Sons get their father’s given name plus “sson”
-			// Daughters get their father’s given name plus “sdottir”
-			switch ($nextaction) {
-			case 'add_child_to_family_action':
-				if ($gender === 'M' && preg_match('/(\S+)\s+\/.*\//', $father_name, $match)) {
-					$name_fields['SURN'] = preg_replace('/s$/', '', $match[1]) . 'sson';
-					$name_fields['NAME'] = '/' . $name_fields['SURN'] . '/';
-				}
-				if ($gender === 'F' && preg_match('/(\S+)\s+\/.*\//', $father_name, $match)) {
-					$name_fields['SURN'] = preg_replace('/s$/', '', $match[1]) . 'sdottir';
-					$name_fields['NAME'] = '/' . $name_fields['SURN'] . '/';
-				}
-				break;
-			case 'add_parent_to_individual_action':
-				if ($famtag === 'HUSB' && preg_match('/(\S+)sson\s+\/.*\//i', $indi_name, $match)) {
-					$name_fields['GIVN'] = $match[1];
-					$name_fields['NAME'] = $name_fields['GIVN'] . ' //';
-				}
-				if ($famtag === 'WIFE' && preg_match('/(\S+)sdottir\s+\/.*\//i', $indi_name, $match)) {
-					$name_fields['GIVN'] = $match[1];
-					$name_fields['NAME'] = $name_fields['GIVN'] . ' //';
-				}
-				break;
-			case 'add_child_to_individual_action':
-			case 'add_spouse_to_individual_action':
-			case 'add_spouse_to_family_action':
-				break;
-			}
-			break;
-		case 'patrilineal':
-			// Father gives his surname to his children
-			switch ($nextaction) {
-			case 'add_child_to_family_action':
-				if (preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $father_name, $match)) {
-					$name_fields['SURN'] = $match[2];
-					$name_fields['SPFX'] = trim($match[1]);
-					$name_fields['NAME'] = '/' . $match[1] . $match[2] . '/';
-				}
-				break;
-			case 'add_parent_to_individual_action':
-				if ($famtag === 'HUSB' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
-					$name_fields['SURN'] = $match[2];
-					$name_fields['SPFX'] = trim($match[1]);
-					$name_fields['NAME'] = '/' . $match[1] . $match[2] . '/';
-				}
-				break;
-			case 'add_child_to_individual_action':
-			case 'add_spouse_to_individual_action':
-			case 'add_spouse_to_family_action':
-				break;
-			}
-			break;
-		case 'matrilineal':
-			// Mother gives her surname to her children
-			switch ($nextaction) {
-			case 'add_child_to_family_action':
-				if (preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $mother_name, $match)) {
-					$name_fields['SURN'] = $match[2];
-					$name_fields['SPFX'] = trim($match[1]);
-					$name_fields['NAME'] = '/' . $match[1] . $match[2] . '/';
-				}
-				break;
-			case 'add_parent_to_individual_action':
-				if ($famtag === 'WIFE' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
-					$name_fields['SURN'] = $match[2];
-					$name_fields['SPFX'] = trim($match[1]);
-					$name_fields['NAME'] = '/' . $match[1] . $match[2] . '/';
-				}
-				break;
-			case 'add_child_to_individual_action':
-			case 'add_spouse_to_individual_action':
-			case 'add_spouse_to_family_action':
-				break;
-			}
-			break;
-		case 'paternal':
-		case 'polish':
-		case 'lithuanian':
-			// Father gives his surname to his wife and children
-			switch ($nextaction) {
-			case 'add_spouse_to_individual_action':
-				if ($famtag === 'WIFE' && preg_match('/\/(.*)\//', $indi_name, $match)) {
-					if ($SURNAME_TRADITION === 'polish') {
-						$match[1] = preg_replace(array('/ski$/', '/cki$/', '/dzki$/', '/żki$/'), array('ska', 'cka', 'dzka', 'żka'), $match[1]);
-					} elseif ($SURNAME_TRADITION === 'lithuanian') {
-						$match[1] = preg_replace(array('/as$/', '/is$/', '/ys$/', '/us$/'), array('ienė', 'ienė', 'ienė', 'ienė'), $match[1]);
-					}
-					$new_marnm = $match[1];
-				}
-				break;
-			case 'add_child_to_family_action':
-				if (preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $father_name, $match)) {
-					$name_fields['SURN'] = $match[2];
-					if ($SURNAME_TRADITION === 'polish' && $gender === 'F') {
-						$match[2] = preg_replace(array('/ski$/', '/cki$/', '/dzki$/', '/żki$/'), array('ska', 'cka', 'dzka', 'żka'), $match[2]);
-					} elseif ($SURNAME_TRADITION === 'lithuanian' && $gender === 'F') {
-						$match[2] = preg_replace(array('/as$/', '/a$/', '/is$/', '/ys$/', '/ius$/', '/us$/'), array('aitė', 'aitė', 'ytė', 'ytė', 'iūtė', 'utė'), $match[2]);
-					}
-					$name_fields['SPFX'] = trim($match[1]);
-					$name_fields['NAME'] = '/' . $match[1] . $match[2] . '/';
-				}
-				break;
-			case 'add_child_to_individual_action':
-				if ($person->getSex() === 'M' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
-					$name_fields['SURN'] = $match[2];
-					if ($SURNAME_TRADITION === 'polish' && $gender === 'F') {
-						$match[2] = preg_replace(array('/ski$/', '/cki$/', '/dzki$/', '/żki$/'), array('ska', 'cka', 'dzka', 'żka'), $match[2]);
-					} elseif ($SURNAME_TRADITION === 'lithuanian' && $gender === 'F') {
-						$match[2] = preg_replace(array('/as$/', '/a$/', '/is$/', '/ys$/', '/ius$/', '/us$/'), array('aitė', 'aitė', 'ytė', 'ytė', 'iūtė', 'utė'), $match[2]);
-					}
-					$name_fields['SPFX'] = trim($match[1]);
-					$name_fields['NAME'] = '/' . $match[1] . $match[2] . '/';
-				}
-				break;
-			case 'add_parent_to_individual_action':
-				if ($famtag === 'HUSB' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
-					if ($SURNAME_TRADITION === 'polish' && $gender === 'M') {
-						$match[2] = preg_replace(array('/ska$/', '/cka$/', '/dzka$/', '/żka$/'), array('ski', 'cki', 'dzki', 'żki'), $match[2]);
-					} elseif ($SURNAME_TRADITION === 'lithuanian') {
-						// not a complete list as the rules are somewhat complicated but will do 95% correctly
-						$match[2] = preg_replace(array('/aitė$/', '/ytė$/', '/iūtė$/', '/utė$/'), array('as', 'is', 'ius', 'us'), $match[2]);
-					}
-					$name_fields['SPFX'] = trim($match[1]);
-					$name_fields['SURN'] = $match[2];
-					$name_fields['NAME'] = '/' . $match[1] . $match[2] . '/';
-				}
-				if ($famtag === 'WIFE' && preg_match('/\/((?:[a-z]{2,3} )*)(.*)\//i', $indi_name, $match)) {
-					if ($SURNAME_TRADITION === 'lithuanian') {
-						$match[2] = preg_replace(array('/as$/', '/is$/', '/ys$/', '/us$/'), array('ienė', 'ienė', 'ienė', 'ienė'), $match[2]);
-						$match[2] = preg_replace(array('/aitė$/', '/ytė$/', '/iūtė$/', '/utė$/'), array('ienė', 'ienė', 'ienė', 'ienė'), $match[2]);
-					}
-					$new_marnm = $match[2];
-				}
-				break;
-			case 'add_spouse_to_family_action':
-				break;
-			}
-			break;
-		}
-	}
-
-	// Initialise an empty name field
-	if (empty($name_fields['NAME'])) {
-		$name_fields['NAME'] = '//';
-	}
-
-	// Populate any missing 2 XXXX fields from the 1 NAME field
-	$npfx_accept = implode('|', Config::namePrefixes());
-	if (preg_match('/(((' . $npfx_accept . ')\.? +)*)([^\n\/"]*)("(.*)")? *\/(([a-z]{2,3} +)*)(.*)\/ *(.*)/i', $name_fields['NAME'], $name_bits)) {
-		if (empty($name_fields['NPFX'])) {
-			$name_fields['NPFX'] = $name_bits[1];
-		}
-		if (empty($name_fields['SPFX']) && empty($name_fields['SURN'])) {
-			$name_fields['SPFX'] = trim($name_bits[7]);
-			// For names with two surnames, there will be four slashes.
-			// Turn them into a list
-			$name_fields['SURN'] = preg_replace('~/[^/]*/~', ',', $name_bits[9]);
-		}
-		if (empty($name_fields['GIVN'])) {
-			$name_fields['GIVN'] = $name_bits[4];
-		}
-		// Don’t automatically create an empty NICK - it is an “advanced” field.
-		if (empty($name_fields['NICK']) && !empty($name_bits[6]) && !preg_match('/^2 NICK/m', $namerec)) {
-			$name_fields['NICK'] = $name_bits[6];
-		}
-	}
-
-	// Edit the standard name fields
+	// First - new/existing standard name fields
 	foreach ($name_fields as $tag => $value) {
-		FunctionsEdit::addSimpleTag('0 ' . $tag . ' ' . $value);
+		if (substr_compare($tag, '_', 0, 1) !== 0) {
+			FunctionsEdit::addSimpleTag('0 ' . $tag . ' ' . $value);
+		}
 	}
 
-	// Get the advanced name fields
-	$adv_name_fields = array();
+	// Second - new/existing advanced name fields
+	if ($surname_tradition->hasMarriedNames() || preg_match('/\n2 _MARNM /', $namerec)) {
+		$adv_name_fields = array('_MARNM' => '');
+	} else {
+		$adv_name_fields = array();
+	}
 	if (preg_match_all('/(' . WT_REGEX_TAG . ')/', $WT_TREE->getPreference('ADVANCED_NAME_FACTS'), $match)) {
 		foreach ($match[1] as $tag) {
 			$adv_name_fields[$tag] = '';
 		}
 	}
-	// This is a custom tag, but webtrees uses it extensively.
-	if ($SURNAME_TRADITION === 'paternal' || $SURNAME_TRADITION === 'polish' || $SURNAME_TRADITION === 'lithuanian' || (strpos($namerec, '2 _MARNM') !== false)) {
-		$adv_name_fields['_MARNM'] = '';
-	}
-	if (isset($adv_name_fields['TYPE'])) {
-		unset($adv_name_fields['TYPE']);
-	}
-	foreach ($adv_name_fields as $tag => $dummy) {
-		// Edit existing tags
+
+	foreach (array_keys($adv_name_fields) as $tag) {
+		// Edit existing tags, grouped together
 		if (preg_match_all('/2 ' . $tag . ' (.+)/', $namerec, $match)) {
 			foreach ($match[1] as $value) {
+				FunctionsEdit::addSimpleTag('2 ' . $tag . ' ' . $value, '', GedcomTag::getLabel('NAME:' . $tag, $person));
 				if ($tag === '_MARNM') {
-					$mnsct      = preg_match('/\/(.+)\//', $value, $match2);
-					$marnm_surn = '';
-					if ($mnsct > 0) {
-						$marnm_surn = $match2[1];
-					}
-					FunctionsEdit::addSimpleTag('2 _MARNM ' . $value);
-					FunctionsEdit::addSimpleTag('2 _MARNM_SURN ' . $marnm_surn);
-				} else {
-					FunctionsEdit::addSimpleTag('2 ' . $tag . ' ' . $value, '', GedcomTag::getLabel('NAME:' . $tag, $person));
+					preg_match_all('/\/([^\/]*)\//', $value, $matches);
+					FunctionsEdit::addSimpleTag('2 _MARNM_SURN ' . implode(',', $matches[1]));
 				}
 			}
 		}
-		// Allow a new row to be entered if there was no row provided
-		if (count($match[1]) === 0 && empty($name_fields[$tag]) || $tag !== '_HEB' && $tag !== 'NICK') {
+		// Allow a new tag to be entered
+		if (!array_key_exists($tag, $name_fields)) {
+			FunctionsEdit::addSimpleTag('0 ' . $tag, '', GedcomTag::getLabel('NAME:' . $tag, $person));
 			if ($tag === '_MARNM') {
-				FunctionsEdit::addSimpleTag('0 _MARNM');
-				FunctionsEdit::addSimpleTag('0 _MARNM_SURN ' . $new_marnm);
-			} else {
-				FunctionsEdit::addSimpleTag('0 ' . $tag, '', GedcomTag::getLabel('NAME:' . $tag, $person));
+				FunctionsEdit::addSimpleTag('0 _MARNM_SURN');
 			}
 		}
 	}
 
-	// Handle any other NAME subfields that aren’t included above (SOUR, NOTE, _CUSTOM, etc)
+	// Third - new/existing custom name fields
+	foreach ($name_fields as $tag => $value) {
+		if (substr_compare($tag, '_', 0, 1) === 0) {
+			FunctionsEdit::addSimpleTag('0 ' . $tag . ' ' . $value);
+			if ($tag === '_MARNM') {
+				preg_match_all('/\/([^\/]*)\//', $value, $matches);
+				FunctionsEdit::addSimpleTag('2 _MARNM_SURN ' . implode(',', $matches[1]));
+			}
+		}
+	}
+
+	// Fourth - SOUR, NOTE, _CUSTOM, etc.
 	if ($namerec) {
 		$gedlines = explode("\n", $namerec); // -- find the number of lines in the record
 		$fields   = explode(' ', $gedlines[0]);
@@ -2679,7 +2504,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 		$tags     = array();
 		$i        = 0;
 		do {
-			if ($type !== 'TYPE' && !isset($name_fields[$type]) && !isset($adv_name_fields[$type])) {
+			if ($type !== 'TYPE' && !array_key_exists($type, $name_fields) && !array_key_exists($type, $adv_name_fields)) {
 				$text = '';
 				for ($j = 2; $j < count($fields); $j++) {
 					if ($j > 2) {
@@ -2687,11 +2512,8 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 					}
 					$text .= $fields[$j];
 				}
-				while (($i + 1 < count($gedlines)) && (preg_match('/' . ($level + 1) . ' (CON[CT]) ?(.*)/', $gedlines[$i + 1], $cmatch) > 0)) {
-					if ($cmatch[1] === 'CONT') {
-						$text .= "\n";
-					}
-					$text .= $cmatch[2];
+				while (($i + 1 < count($gedlines)) && (preg_match('/' . ($level + 1) . ' CONT ?(.*)/', $gedlines[$i + 1], $cmatch) > 0)) {
+					$text .= "\n" . $cmatch[2];
 					$i++;
 				}
 				FunctionsEdit::addSimpleTag($level . ' ' . $type . ' ' . $text);
@@ -2744,6 +2566,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 			}
 		}
 	}
+
 	echo keep_chan($person);
 	echo '</table>';
 	if ($nextaction === 'update') {
@@ -2776,7 +2599,7 @@ function print_indi_form($nextaction, Individual $person = null, Family $family 
 	echo '</p>';
 	echo '</form>';
 	$controller->addInlineJavascript('
-	SURNAME_TRADITION="' . $SURNAME_TRADITION . '";
+	SURNAME_TRADITION="' . $WT_TREE->getPreference('SURNAME_TRADITION') . '";
 	gender="' . $gender . '";
 	famtag="' . $famtag . '";
 	function trim(str) {

@@ -4135,7 +4135,6 @@ header h1 {
 	background: #84beff url(images/barra.png);
 	width: 100%;
 	color: #fff;
-	font-weight: bold;
 	height: 40px;
 	position: relative;
 }
@@ -4228,7 +4227,7 @@ header h1 {
 	display: block;
 }
 
-.secondary-menu .active {
+.secondary-menu .active a {
 	color: #006;
 	font-weight: 900;
 }
@@ -4312,7 +4311,8 @@ header nav {
 .primary-menu > li {
 	background-image: url(images/sprites-top-menu.png);
 	background-repeat: no-repeat;
-	width: 80px;
+	min-width: 80px;
+	width: auto;
 	text-align: center;
 	height: 28px;
 	line-height: 28px;

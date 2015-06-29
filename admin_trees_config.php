@@ -64,40 +64,6 @@ $formats = array(
 	'markdown' => /* I18N: https://en.wikipedia.org/wiki/Markdown */ I18N::translate('markdown'),
 );
 
-$surname_traditions = array(
-	'paternal' =>
-		I18N::translateContext('Surname tradition', 'paternal') .
-		' — ' . /* I18N: In the paternal surname tradition, ... */ I18N::translate('Children take their father’s surname.') .
-		' ' . /* I18N: In the paternal surname tradition, ... */ I18N::translate('Wives take their husband’s surname.'),
-	/* I18N: A system where children take their father’s surname */ 'patrilineal' =>
-		I18N::translate('patrilineal') .
-		' — ' . /* I18N: In the patrilineal surname tradition, ... */ I18N::translate('Children take their father’s surname.'),
-	/* I18N: A system where children take their mother’s surname */ 'matrilineal' =>
-		I18N::translate('matrilineal') .
-		' — ' . /* I18N: In the matrilineal surname tradition, ... */ I18N::translate('Children take their mother’s surname.'),
-	'spanish' =>
-		I18N::translateContext('Surname tradition', 'Spanish') .
-		' — ' . /* I18N: In the Spanish surname tradition, ... */ I18N::translate('Children take one surname from the father and one surname from the mother.'),
-	'portuguese' =>
-		I18N::translateContext('Surname tradition', 'Portuguese') .
-		' — ' . /* I18N: In the Portuguese surname tradition, ... */ I18N::translate('Children take one surname from the mother and one surname from the father.'),
-	'icelandic' =>
-		I18N::translateContext('Surname tradition', 'Icelandic') .
-		' — ' . /* I18N: In the Icelandic surname tradition, ... */ I18N::translate('Children take a patronym instead of a surname.'),
-	'polish' =>
-		I18N::translateContext('Surname tradition', 'Polish') .
-		' — ' . /* I18N: In the Polish surname tradition, ... */ I18N::translate('Children take their father’s surname.') .
-		' ' . /* I18N: In the Polish surname tradition, ... */ I18N::translate('Wives take their husband’s surname.') .
-		' ' . /* I18N: In the Polish surname tradition, ... */ I18N::translate('Surnames are inflected to indicate an individual’s gender.'),
-	'lithuanian' =>
-		I18N::translateContext('Surname tradition', 'Lithuanian') .
-		' — ' . /* I18N: In the Lithuanian surname tradition, ... */ I18N::translate('Children take their father’s surname.') .
-		' ' . /* I18N: In the Lithuanian surname tradition, ... */ I18N::translate('Wives take their husband’s surname.') .
-		' ' . /* I18N: In the Lithuanian surname tradition, ... */ I18N::translate('Surnames are inflected to indicate an individual’s gender and marital status.'),
-	'none' =>
-		I18N::translateContext('Surname tradition', 'none'),
-);
-
 $source_types = array(
 	0 => I18N::translate('none'),
 	1 => I18N::translate('facts'),
@@ -2230,7 +2196,7 @@ $controller
 			<?php echo I18N::translate('Surname tradition'); ?>
 		</legend>
 		<div class="col-sm-9">
-			<?php echo FunctionsEdit::radioButtons('SURNAME_TRADITION', $surname_traditions, $WT_TREE->getPreference('SURNAME_TRADITION'), 'class="radio" style="padding-left:20px;font-weight:normal;"'); ?>
+			<?php echo FunctionsEdit::radioButtons('SURNAME_TRADITION', SurnameTradition::allDescriptions(), $WT_TREE->getPreference('SURNAME_TRADITION'), 'class="radio" style="padding-left:20px;font-weight:normal;"'); ?>
 			<p class="small text-muted">
 				<?php echo /* I18N: Help text for the “Surname tradition” configuration setting */ I18N::translate('When you add a new family member, a default surname can be provided.  This surname will depend on the local tradition.'); ?>
 			</p>
