@@ -428,31 +428,20 @@ case 'update':
 		}
 	}
 
-	$newged = '';
-	if (!empty($_POST['NAME'])) {
-		$newged .= "\n1 NAME " . $_POST['NAME'];
+	if (Filter::post('NAME')) {
+		$newged = "\n1 NAME " . Filter::post('NAME');
+	} else {
+		$newged = '';
 	}
-	if (!empty($_POST['TYPE'])) {
-		$newged .= "\n2 TYPE " . $_POST['TYPE'];
+	foreach(array('TYPE', 'NPFX', 'GIVN', 'NICK', 'SPFX', 'SURN', 'NSFX') as $tmp_tag) {
+		if (Filter::post($tmp_tag)) {
+			if ($newged === '') {
+				$newged = "\n1 NAME";
+			}
+			$newged .= "\n2 " . $tmp_tag . ' ' . Filter::post($tmp_tag);
+		}
 	}
-	if (!empty($_POST['NPFX'])) {
-		$newged .= "\n2 NPFX " . $_POST['NPFX'];
-	}
-	if (!empty($_POST['GIVN'])) {
-		$newged .= "\n2 GIVN " . $_POST['GIVN'];
-	}
-	if (!empty($_POST['NICK'])) {
-		$newged .= "\n2 NICK " . $_POST['NICK'];
-	}
-	if (!empty($_POST['SPFX'])) {
-		$newged .= "\n2 SPFX " . $_POST['SPFX'];
-	}
-	if (!empty($_POST['SURN'])) {
-		$newged .= "\n2 SURN " . $_POST['SURN'];
-	}
-	if (!empty($_POST['NSFX'])) {
-		$newged .= "\n2 NSFX " . $_POST['NSFX'];
-	}
+
 	if (isset($_POST['NOTE'])) {
 		$NOTE = $_POST['NOTE'];
 	}
@@ -465,22 +454,14 @@ case 'update':
 	}
 
 	$newged = FunctionsEdit::handleUpdates($newged);
-
 	// Add new names after existing names
-	if (!empty($_POST['_MARNM'])) {
-		$newged .= "\n2 _MARNM " . $_POST['_MARNM'];
-	}
-	if (!empty($_POST['ROMN'])) {
-		$newged .= "\n2 ROMN " . $_POST['ROMN'];
-	}
-	if (!empty($_POST['FONE'])) {
-		$newged .= "\n2 FONE " . $_POST['FONE'];
-	}
-	if (!empty($_POST['_HEB'])) {
-		$newged .= "\n2 _HEB " . $_POST['_HEB'];
-	}
-	if (!empty($_POST['_AKA'])) {
-		$newged .= "\n2 _AKA " . $_POST['_AKA'];
+	foreach(array('_MARNM', 'ROMN', 'FONE', '_HEB', '_AKA') as $tmp_tag) {
+		if (Filter::post($tmp_tag)) {
+			if ($newged === '') {
+				$newged = "\n1 NAME";
+			}
+			$newged .= "\n2 " . $tmp_tag . ' ' . Filter::post($tmp_tag);
+		}
 	}
 
 	$newged = substr($newged, 1); // Remove leading newline
