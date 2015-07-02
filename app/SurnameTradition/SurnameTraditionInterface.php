@@ -28,6 +28,13 @@ interface SurnameTraditionInterface {
 	public function hasMarriedNames();
 
 	/**
+	 * Does this surname tradition use surnames?
+	 *
+	 * @return bool
+	 */
+	public function hasSurnames();
+
+	/**
 	 * What names are given to a new child
 	 *
 	 * @param string $father_name A GEDCOM NAME

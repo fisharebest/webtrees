@@ -39,6 +39,13 @@ class PortugueseSurnameTraditionTest extends PHPUnit_Framework_TestCase {
 	}
 
 	/**
+	 * Test whether surnames are used
+	 */
+	public function testSurnames() {
+		$this->assertSame(true, $this->surname_tradition->hasSurnames());
+	}
+
+	/**
 	 * Test new son names
 	 */
 	public function testNewSonNames() {

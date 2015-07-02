@@ -23,6 +23,15 @@ namespace Fisharebest\Webtrees\SurnameTradition;
  */
 class IcelandicSurnameTradition extends DefaultSurnameTradition implements SurnameTraditionInterface {
 	/**
+	 * Does this surname tradition use surnames?
+	 *
+	 * @return bool
+	 */
+	public function hasSurnames() {
+		return false;
+	}
+
+	/**
 	 * What names are given to a new child
 	 *
 	 * @param string $father_name A GEDCOM NAME
