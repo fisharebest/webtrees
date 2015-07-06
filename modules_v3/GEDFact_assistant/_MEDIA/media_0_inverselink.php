@@ -104,7 +104,7 @@ if ($action == 'choose' && $paramok) {
 		echo '<td class="topbottombar" width="340" style="font-weight:100;" >', I18N::translate('Name'), '</td>';
 		echo '<td class="topbottombar" width="20"  style="font-weight:100;" >', I18N::translate('Keep'), '</td>';
 		echo '<td class="topbottombar" width="20"  style="font-weight:100;" >', I18N::translate('Remove'), '</td>';
-		echo '<td class="topbottombar" width="20"  style="font-weight:100;" >', I18N::translate('Navigator'), '</td>';
+		echo '<td class="topbottombar" width="20"  style="font-weight:100;" >', I18N::translate('Family navigator'), '</td>';
 		echo "</tr>";
 
 		$links = array_merge(
@@ -128,7 +128,7 @@ if ($action == 'choose' && $paramok) {
 
 			if ($record instanceof Individual) {
 				?>
-				<td align="center"><a href="#" class="icon-button_family" title="<?php echo I18N::translate('Family navigator'); ?>" name="family_'<?php echo $record->getXref(); ?>'" onclick="openFamNav('<?php echo $record->getXref(); ?>'); return false;"></a></td>
+				<td align="center"><a href="#" class="icon-button_family" name="family_'<?php echo $record->getXref(); ?>'" onclick="openFamNav('<?php echo $record->getXref(); ?>'); return false;"></a></td>
 				<?php
 			} elseif ($record instanceof Family) {
 				if ($record->getHusband()) {
@@ -139,7 +139,7 @@ if ($action == 'choose' && $paramok) {
 					$head = '';
 				}
 				?>
-				<td align="center"><a href="#" class="icon-button_family" title="<?php echo I18N::translate('Family navigator'); ?>" name="family_'<?php echo $record->getXref(); ?>'" onclick="openFamNav('<?php echo $head; ?>');"></a></td>
+				<td align="center"><a href="#" class="icon-button_family" name="family_'<?php echo $record->getXref(); ?>'" onclick="openFamNav('<?php echo $head; ?>');"></a></td>
 				<?php
 			} else {
 				echo '<td></td>';
@@ -167,12 +167,12 @@ if ($action == 'choose' && $paramok) {
 	echo '<input type="text" data-autocomplete-type="IFS" name="gid" id="gid" size="6" value="">';
 	echo '</td><td style="padding-bottom: 2px; vertical-align: middle;">';
 	echo '&nbsp;';
-	echo '<img style="border-style:none;" src="', Theme::theme()->parameter('image-add'), '" alt="', I18N::translate('Add'), ' " title="', I18N::translate('Add'), '" align="middle" name="addLink" value="" onclick="blankwin(); return false;">';
+	echo '<a href="#" class="icon-add" title="', I18N::translate('Add'), '" onclick="blankwin(); return false;"></a>';
 	echo ' ', FunctionsPrint::printFindIndividualLink('gid');
 	echo ' ', FunctionsPrint::printFindFamilyLink('gid');
 	echo ' ', FunctionsPrint::printFindSourceLink('gid');
 	echo '</td></tr></table>';
-	echo "<sub>" . I18N::translate('Enter or search for the ID of the individual, family, or source to which this media item should be linked.') . "</sub>";
+	echo "<sub>" . I18N::translate('Enter or search for the ID of the individual, family, or source to which this media object should be linked.') . "</sub>";
 	echo '<br><br>';
 	echo '<input type="hidden" name="idName" id="idName" size="36" value="Name of ID">';
 
@@ -195,13 +195,6 @@ if ($action == 'choose' && $paramok) {
 			winNav.focus();
 		}
 	}
-
-	var ifamily = "<?php echo I18N::translate('Family navigator'); ?>";
-	var remove = "<?php echo I18N::translate('Remove'); ?>";
-	/* ===icons === */
-	var removeLinkIcon = "<?php echo Theme::theme()->parameter('image-remove'); ?>";
-	var familyNavIcon = "<?php echo Theme::theme()->parameter('image-button_family'); ?>";
-
 
 var INPUT_NAME_PREFIX = 'InputCell_'; // this is being set via script
 var RADIO_NAME = "totallyrad"; // this is being set via script
@@ -368,34 +361,19 @@ function addRowToTable(num, pid, nam, head)
 
 			// cell btn - remove img button
 			var cellbtn = row.insertCell(3);
-				cellbtn.setAttribute('align', 'center');
-			var btnEl = document.createElement('img');
-				btnEl.setAttribute('type', 'img');
-				btnEl.setAttribute('src', removeLinkIcon);
-				btnEl.setAttribute('alt', remove);
-				btnEl.setAttribute('title', remove);
-				btnEl.setAttribute('height', '14px');
-				btnEl.onclick = function () {deleteCurrentRow(this)};
-			cellbtn.appendChild(btnEl);
+			var btnEl = jQuery('<a href="#" class="icon-remove"></a>');
+			btnEl.on('click', function () {deleteCurrentRow(this)});
+			jQuery(cellbtn).append(btnEl);
 
 			// cell btn - family img button
 			var cellbtn2 = row.insertCell(4);
-				cellbtn2.setAttribute('align', 'center');
 			if (pid.match("I")=="I" || pid.match("i")=="i") {
-				var btn2El = document.createElement('img');
-					btn2El.setAttribute('type', 'img');
-					btn2El.setAttribute('src', familyNavIcon);
-					btn2El.setAttribute('alt', ifamily);
-					btn2El.setAttribute('title', ifamily);
-					btn2El.onclick = function () {openFamNav(pid)};
-				cellbtn2.appendChild(btn2El);
+				var btn2El = jQuery('<a href="#" class="icon-button_family"></a>');
+				btn2El.on('click', function() {openFamNav(pid)});
+				jQuery(cellbtn2).append(btn2El);
 			} else if (pid.match("F")=="F" || pid.match("f")=="f") {
-				var btn2El = document.createElement('img');
-					btn2El.setAttribute('type', 'img');
-					btn2El.setAttribute('src', familyNavIcon);
-					btn2El.setAttribute('alt', ifamily);
-					btn2El.setAttribute('title', ifamily);
-					btn2El.onclick = function () {openFamNav(head)};
+				var btn2El = jQuery('<a href="#" class="icon-button_family"></a>');
+				btn2El.on('click', function () {openFamNav(head)});
 				cellbtn2.appendChild(btn2El);
 			} else {
 				// Show No Icon
@@ -551,7 +529,7 @@ function shiftlinks() {
 							<th class="topbottombar" width="55"  style="font-weight:100;" align="left"><?php echo I18N::translate('Record'); ?></th>
 							<th class="topbottombar" width="370" style="font-weight:100;" align="left"><?php echo I18N::translate('Name'); ?></th>
 							<th class="topbottombar" width="20"  style="font-weight:100;" align="left"><?php echo I18N::translate('Remove'); ?></th>
-							<th class="topbottombar" width="20"  style="font-weight:100;" align="left"><?php echo I18N::translate('Navigator'); ?></th>
+							<th class="topbottombar" width="20"  style="font-weight:100;" align="left"><?php echo I18N::translate('Family navigator'); ?></th>
 						</tr>
 					</thead>
 					<tbody>

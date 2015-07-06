@@ -5707,7 +5707,7 @@ msgstr "أدخل ملاحظات إضافية عن هذه المفضلة"
 
 #: addmedia.php:430
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:175
-msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
+msgid "Enter or search for the ID of the individual, family, or source to which this media object should be linked."
 msgstr "أدخل أو إبحث عن المعرف الخاص بفرد أو بأسرة أو بمصدر الذي تود ربط عنصر الوسائط هذا به."
 
 #: reportengine.php:152

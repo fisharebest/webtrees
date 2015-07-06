@@ -5625,7 +5625,7 @@ msgstr "Ваш комментарий"
 
 #: addmedia.php:430
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:175
-msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
+msgid "Enter or search for the ID of the individual, family, or source to which this media object should be linked."
 msgstr "Введите или найдите ID персоны, семьи или источника к которому присоединить этот медиаобъект."
 
 #: reportengine.php:152

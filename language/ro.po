@@ -5615,7 +5615,7 @@ msgstr "Introduceţi o notă opţională pentru acest favorit"
 
 #: addmedia.php:430
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:175
-msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
+msgid "Enter or search for the ID of the individual, family, or source to which this media object should be linked."
 msgstr "Introduceţi sau căutaţi ID-ul persoanei, familiei, sau sursei cu care ar trebui să fie legat acest articol."
 
 #: reportengine.php:152
