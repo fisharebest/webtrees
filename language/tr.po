@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-06-22 23:08+0100\n"
-"PO-Revision-Date: 2015-07-05 12:48+0100\n"
+"PO-Revision-Date: 2015-07-07 15:01+0100\n"
 "Last-Translator: Suleyman Arslan <hsarslan@yahoo.com>\n"
 "Language-Team: Turkish "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/tr/>\n"
@@ -17547,37 +17547,37 @@ msgstr "büyükanne/büyükbaba kardeşi"
 #: app/Functions/Functions.php:1438
 msgctxt "parent’s parent’s sibling’s spouse"
 msgid "great-aunt/uncle"
-msgstr ""
+msgstr "büyükanne/büyükbaba kardeş eşi"
 
 #: app/Functions/Functions.php:1052
 msgctxt "child’s child’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "torunun çocuğu"
 
 #: app/Functions/Functions.php:1058
 msgctxt "child’s daughter’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "torunun çocuğu"
 
 #: app/Functions/Functions.php:1066
 msgctxt "child’s son’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "torunun çocuğu"
 
 #: app/Functions/Functions.php:1074
 msgctxt "daughter’s child’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "kızının torunu"
 
 #: app/Functions/Functions.php:1080
 msgctxt "daughter’s daughter’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "kızının torunu"
 
 #: app/Functions/Functions.php:1094
 msgctxt "daughter’s son’s child"
 msgid "great-grandchild"
-msgstr ""
+msgstr "kızının torunu"
 
 #: app/Functions/Functions.php:1354
 msgctxt "son’s child’s child"
@@ -17597,32 +17597,32 @@ msgstr "torun çocuğu"
 #: app/Functions/Functions.php:1054
 msgctxt "child’s child’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "torunun çocuğu"
 
 #: app/Functions/Functions.php:1060
 msgctxt "child’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "torunun çocuğu"
 
 #: app/Functions/Functions.php:1068
 msgctxt "child’s son’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "torunun çocuğu"
 
 #: app/Functions/Functions.php:1076
 msgctxt "daughter’s child’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "kızının torunu"
 
 #: app/Functions/Functions.php:1082
 msgctxt "daughter’s daughter’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "kızının torunu"
 
 #: app/Functions/Functions.php:1096
 msgctxt "daughter’s son’s daughter"
 msgid "great-granddaughter"
-msgstr ""
+msgstr "kızının torunu"
 
 #: app/Functions/Functions.php:1356
 msgctxt "son’s child’s daughter"
@@ -17642,32 +17642,32 @@ msgstr "erkek torunun kızı"
 #: app/Functions/Functions.php:1112
 msgctxt "father’s father’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "babanın dedesi"
 
 #: app/Functions/Functions.php:1124
 msgctxt "father’s mother’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "babanın dedesi"
 
 #: app/Functions/Functions.php:1136
 msgctxt "father’s parent’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "babanın dedesi"
 
 #: app/Functions/Functions.php:1174
 msgctxt "mother’s father’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "annenin dedesi"
 
 #: app/Functions/Functions.php:1192
 msgctxt "mother’s mother’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "annenin dedesi"
 
 #: app/Functions/Functions.php:1204
 msgctxt "mother’s parent’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "annenin dedesi"
 
 #: app/Functions/Functions.php:1226
 msgctxt "parent’s father’s father"
@@ -17682,37 +17682,37 @@ msgstr "büyük-büyükbabası"
 #: app/Functions/Functions.php:1250
 msgctxt "parent’s parent’s father"
 msgid "great-grandfather"
-msgstr ""
+msgstr "büyük büyük baba"
 
 #: app/Functions/Functions.php:1114
 msgctxt "father’s father’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "büyük büyük anne"
 
 #: app/Functions/Functions.php:1126
 msgctxt "father’s mother’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "büyük büyük anne"
 
 #: app/Functions/Functions.php:1138
 msgctxt "father’s parent’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "büyük büyük anne"
 
 #: app/Functions/Functions.php:1176
 msgctxt "mother’s father’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "büyük büyük anne"
 
 #: app/Functions/Functions.php:1194
 msgctxt "mother’s mother’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "büyük büyük anne"
 
 #: app/Functions/Functions.php:1206
 msgctxt "mother’s parent’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "büyük büyük anne"
 
 #: app/Functions/Functions.php:1228
 msgctxt "parent’s father’s mother"
@@ -17727,37 +17727,37 @@ msgstr "büyük-babaannesi"
 #: app/Functions/Functions.php:1252
 msgctxt "parent’s parent’s mother"
 msgid "great-grandmother"
-msgstr ""
+msgstr "büyük büyük anne"
 
 #: app/Functions/Functions.php:1116
 msgctxt "father’s father’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "büyük büyük anne/baba"
 
 #: app/Functions/Functions.php:1128
 msgctxt "father’s mother’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "büyük büyük anne/baba"
 
 #: app/Functions/Functions.php:1140
 msgctxt "father’s parent’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "büyük büyük anne/baba"
 
 #: app/Functions/Functions.php:1178
 msgctxt "mother’s father’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "büyük büyük anne/baba"
 
 #: app/Functions/Functions.php:1196
 msgctxt "mother’s mother’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "büyük büyük anne/baba"
 
 #: app/Functions/Functions.php:1208
 msgctxt "mother’s parent’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "büyük büyük anne/baba"
 
 #: app/Functions/Functions.php:1230
 msgctxt "parent’s father’s parent"
@@ -17772,37 +17772,37 @@ msgstr "büyük-büyükebeveyni"
 #: app/Functions/Functions.php:1254
 msgctxt "parent’s parent’s parent"
 msgid "great-grandparent"
-msgstr ""
+msgstr "büyük büyük anne/baba"
 
 #: app/Functions/Functions.php:1056
 msgctxt "child’s child’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "torunun oğlu"
 
 #: app/Functions/Functions.php:1064
 msgctxt "child’s daughter’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "torunun oğlu"
 
 #: app/Functions/Functions.php:1070
 msgctxt "child’s son’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "torunun oğlu"
 
 #: app/Functions/Functions.php:1078
 msgctxt "daughter’s child’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "torunun oğlu"
 
 #: app/Functions/Functions.php:1086
 msgctxt "daughter’s daughter’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "torunun oğlu"
 
 #: app/Functions/Functions.php:1098
 msgctxt "daughter’s son’s son"
 msgid "great-grandson"
-msgstr ""
+msgstr "torunun oğlu"
 
 #: app/Functions/Functions.php:1358
 msgctxt "son’s child’s son"
