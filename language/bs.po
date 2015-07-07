@@ -5614,7 +5614,7 @@ msgstr "Unesite opcionalnu zabilješku za ovu omiljenu stavku"
 
 #: addmedia.php:430
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:175
-msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
+msgid "Enter or search for the ID of the individual, family, or source to which this media object should be linked."
 msgstr "Unesite ili nađite oznaku osobe, porodice ili izvora sa kojim bi ovaj medij trebao biti povezan."
 
 #: reportengine.php:152

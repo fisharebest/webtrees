@@ -81,7 +81,7 @@ class CloudsTheme extends AbstractTheme implements ThemeInterface {
 	protected function formQuickSearchFields() {
 		return
 			'<input type="search" name="query" size="15" placeholder="' . I18N::translate('Search') . '">' .
-			'<input class="search-icon" type="image" src="' . Theme::theme()->parameter('image-search') . '" alt="' . I18N::translate('Search') . '" title="' . I18N::translate('Search') . '">';
+			'<input class="search-icon" type="image" src="' . $this->assetUrl() . 'images/go.png" alt="' . I18N::translate('Search') . '" title="' . I18N::translate('Search') . '">';
 	}
 
 	/**

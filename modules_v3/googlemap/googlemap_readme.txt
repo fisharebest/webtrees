@@ -66,4 +66,4 @@ whatever is appropriate for your locale.)
 To make the flags work make sure that ./places/flags folder exists.
 
 More information:
-http://wiki.webtrees.net/Google_Map_module
+http://wiki.webtrees.net/en/Google_Map_module

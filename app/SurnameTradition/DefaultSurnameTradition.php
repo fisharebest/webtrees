@@ -41,6 +41,15 @@ class DefaultSurnameTradition implements SurnameTraditionInterface {
 	}
 
 	/**
+	 * Does this surname tradition use surnames?
+	 *
+	 * @return bool
+	 */
+	public function hasSurnames() {
+		return true;
+	}
+
+	/**
 	 * What names are given to a new child
 	 *
 	 * @param string $father_name A GEDCOM NAME

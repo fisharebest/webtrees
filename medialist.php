@@ -215,6 +215,11 @@ if ($action === 'submit') {
 	$pages = (int) (($count + $max - 1) / $max);
 	$page  = max(min($page, $pages), 1);
 
+	if ($page === $pages) {
+		// Last page has fewer than $max pages
+		$max = $count % $max;
+	}
+
 	if (I18N::direction() === 'ltr') {
 		$icons = array('first' => 'ldarrow', 'previous' => 'larrow', 'next' => 'rarrow', 'last' => 'rdarrow');
 	} else {

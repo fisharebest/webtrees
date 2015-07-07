@@ -5601,7 +5601,7 @@ msgstr "Skriv en extra anteckning om denna favorit"
 
 #: addmedia.php:430
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:175
-msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
+msgid "Enter or search for the ID of the individual, family, or source to which this media object should be linked."
 msgstr "Skriv in eller sök efter ID för person, familj eller källa till vilket denna media objekt ska länkas."
 
 #: reportengine.php:152

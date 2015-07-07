@@ -427,7 +427,7 @@ if (!$linktoid && $action == 'create') {
 	echo ' ', FunctionsPrint::printFindIndividualLink('linktoid');
 	echo ' ', FunctionsPrint::printFindFamilyLink('linktoid');
 	echo ' ', FunctionsPrint::printFindSourceLink('linktoid');
-	echo '<p class="small text-muted">', I18N::translate('Enter or search for the ID of the individual, family, or source to which this media item should be linked.'), '</p></td></tr>';
+	echo '<p class="small text-muted">', I18N::translate('Enter or search for the ID of the individual, family, or source to which this media object should be linked.'), '</p></td></tr>';
 }
 
 if ($media) {

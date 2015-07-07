@@ -3,14 +3,16 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-06-22 23:08+0100\n"
-"PO-Revision-Date: 2015-03-16 15:29+0100\n"
-"Last-Translator: Greg Roach <fisharebest@gmail.com>\n"
-"Language-Team: Russian <http://translate.webtrees.net/projects/webtrees/webtrees/ru/>\n"
+"PO-Revision-Date: 2015-07-01 11:25+0100\n"
+"Last-Translator: edison <edisonsharp@gmail.com>\n"
+"Language-Team: Russian "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 2.3-dev\n"
 "X-Language: ru_RU\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -213,33 +215,33 @@ msgstr "%s Кбайт"
 
 #. I18N: %s is a woman's name
 #: app/Module/ClippingsCartModule.php:194
-#, php-format
+#, fuzzy, php-format
 msgid "%s and her ancestors"
-msgstr ""
+msgstr "%ы и ее предки"
 
 #. I18N: %s is a man's name
 #: app/Module/ClippingsCartModule.php:196
-#, php-format
+#, fuzzy, php-format
 msgid "%s and his ancestors"
-msgstr ""
+msgstr "%ы и его предки"
 
 #. I18N: %s is the name of a source
 #: app/Module/ClippingsCartModule.php:280
-#, php-format
+#, fuzzy, php-format
 msgid "%s and the individuals that reference it."
-msgstr ""
+msgstr "%ы и люди, которые на него ссылаются."
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:118
-#, php-format
+#, fuzzy, php-format
 msgid "%s and their children"
-msgstr ""
+msgstr "%ы и их дети"
 
 #. I18N: %s is a family (husband + wife)
 #: app/Module/ClippingsCartModule.php:124
-#, php-format
+#, fuzzy, php-format
 msgid "%s and their descendants"
-msgstr ""
+msgstr "%ы и их потомки"
 
 #: app/Module/LoggedInUsersModule.php:68 app/Stats.php:5949
 #, php-format
@@ -275,20 +277,20 @@ msgstr[1] "%s дня назад"
 msgstr[2] "%s дней назад"
 
 #: app/Controller/SearchController.php:374
-#, php-format
+#, fuzzy, php-format
 msgid "%s family has been updated."
 msgid_plural "%s families have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%ы семья была обновлена."
+msgstr[1] "%ы семьи были обновлены."
+msgstr[2] "%ы семей были обновлены."
 
 #: admin.php:803
-#, php-format
+#, fuzzy, php-format
 msgid "%s family tree"
 msgid_plural "%s family trees"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%ы генеалогическое древо"
+msgstr[1] "%ы генеалогическое древо"
+msgstr[2] "%ы семейные деревья"
 
 #: app/Stats.php:5257 app/Stats.php:5261
 #, php-format
@@ -315,12 +317,12 @@ msgstr[1] "%s персоны"
 msgstr[2] "%s лиц"
 
 #: app/Controller/SearchController.php:345
-#, php-format
+#, fuzzy, php-format
 msgid "%s individual has been updated."
 msgid_plural "%s individuals have been updated."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "%ы отдельных обновлена."
+msgstr[1] "%ы лиц были обновлены."
+msgstr[2] "%ы лиц были обновлены."
 
 #: app/Module/GoogleMapsModule.php:897
 #, php-format
@@ -5623,7 +5625,7 @@ msgstr "Ваш комментарий"
 
 #: addmedia.php:430
 #: modules_v3/GEDFact_assistant/_MEDIA/media_0_inverselink.php:175
-msgid "Enter or search for the ID of the individual, family, or source to which this media item should be linked."
+msgid "Enter or search for the ID of the individual, family, or source to which this media object should be linked."
 msgstr "Введите или найдите ID персоны, семьи или источника к которому присоединить этот медиаобъект."
 
 #: reportengine.php:152
