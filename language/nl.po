@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-06-22 23:08+0100\n"
-"PO-Revision-Date: 2015-07-04 20:11+0100\n"
+"PO-Revision-Date: 2015-07-07 20:57+0100\n"
 "Last-Translator: Carmen Pijpers <carmen@justcarmen.nl>\n"
 "Language-Team: Dutch "
 "<http://translate.webtrees.net/projects/webtrees/webtrees/nl/>\n"
@@ -1294,7 +1294,7 @@ msgstr "Voeg nieuwe naam toe"
 #: app/Controller/FamilyController.php:183
 #: app/Functions/FunctionsEdit.php:1012 app/Module/NotesTabModule.php:95
 msgid "Add a new note"
-msgstr "Voeg een nieuwe Notitie toe"
+msgstr "Voeg een nieuwe notitie toe"
 
 #: app/Functions/FunctionsEdit.php:1043
 msgid "Add a new restriction"
@@ -1303,7 +1303,7 @@ msgstr "Voeg een nieuwe beperking toe"
 #: app/Controller/FamilyController.php:189
 #: app/Functions/FunctionsEdit.php:1022 app/Module/NotesTabModule.php:105
 msgid "Add a new shared note"
-msgstr "Voeg een nieuwe Gedeelde notitie toe"
+msgstr "Voeg een nieuwe gedeelde notitie toe"
 
 #: app/Module/RelativesTabModule.php:273
 msgid "Add a new son or daughter"
@@ -4058,13 +4058,13 @@ msgstr "Maak een nieuwe opslagplaats"
 #: app/Functions/FunctionsEdit.php:429 edit_interface.php:1346
 #: edit_interface.php:1382
 msgid "Create a new shared note"
-msgstr "Maak een nieuwe Gedeelde Notitie aan"
+msgstr "Maak een nieuwe gedeelde notitie aan"
 
 #: app/Module/CensusAssistantModule.php:510
 #: modules_v3/GEDFact_assistant/census/census-edit.php:35
 #: modules_v3/GEDFact_assistant/census/census-save.php:33
 msgid "Create a new shared note using assistant"
-msgstr "Maak een nieuwe Gedeelde Notitie met behulp van de Assistent"
+msgstr "Maak een nieuwe gedeelde notitie met behulp van de assistent"
 
 #: app/Functions/FunctionsEdit.php:451 edit_interface.php:1194
 #: edit_interface.php:1277
@@ -5406,7 +5406,7 @@ msgstr "Wijzig opslagplaats"
 #: app/Functions/FunctionsEdit.php:440 edit_interface.php:1442
 #: edit_interface.php:1488
 msgid "Edit shared note"
-msgstr "Wijzig een Gedeelde Notitie"
+msgstr "Wijzig een gedeelde notitie"
 
 #: app/Controller/SourceController.php:56
 #: app/Controller/SourceController.php:61
@@ -7380,7 +7380,7 @@ msgstr "Neem personen met ‘%s’ als  huwelijksnaam  mee"
 #: app/Module/ClippingsCartModule.php:358
 #: app/Module/ClippingsCartModule.php:691
 msgid "Include media (automatically zips files)"
-msgstr "Met inbegrip van Media (er wordt autmatisch een zip-bestand gemaakt)"
+msgstr "Met inbegrip van media (er wordt automatisch een zip-bestand gemaakt)"
 
 #. I18N: Label for check-box
 #: admin_media.php:661 medialist.php:120
@@ -8827,7 +8827,7 @@ msgstr "Aan het begin van media bestandsnamen wordt %s toegevoegd."
 
 #: admin_media.php:618 admin_trees_config.php:1065
 msgid "Media files"
-msgstr "Media-bestanden"
+msgstr "Mediabestanden"
 
 #. I18N: A configuration setting
 #: admin_trees_config.php:1040
@@ -12078,7 +12078,7 @@ msgstr "Gedeelde notitie bevat"
 #: app/Functions/FunctionsPrintLists.php:1088 app/Theme/AbstractTheme.php:1447
 #: notelist.php:33 notelist.php:37 search.php:102
 msgid "Shared notes"
-msgstr "Gedeelde Notities"
+msgstr "Gedeelde notities"
 
 #: find.php:618
 msgid "Shared notes found"
@@ -12228,7 +12228,9 @@ msgstr "Toon alle notities"
 #. I18N: A configuration setting
 #: admin_trees_config.php:1633
 msgid "Show all notes and source references on notes and sources tabs"
-msgstr "Toon alle notities en bronreferenties op de tabbladen voor Notities en Bronnen"
+msgstr ""
+"Toon alle notities en bronreferenties op de tabbladen voor notities en "
+"bronnen"
 
 #: placelist.php:239
 msgid "Show all places in a list"
@@ -13939,12 +13941,17 @@ msgstr "Dit bestand is gekoppeld aan een andere genealogische database op deze s
 #. I18N: Help text for the "Data folder" site configuration setting
 #: admin_site_config.php:178
 msgid "This folder will be used by webtrees to store media files, GEDCOM files, temporary files, etc.  These files may contain private data, and should not be made available over the internet."
-msgstr "Deze map wordt door webtrees gebruikt om media, GEDCOM, tijdelijke bestanden etc. in op te slaan. Deze bestanden kunnen privé data bevatten, en mogen niet beschikbaar worden gemaakt over het internet."
+msgstr ""
+"Deze map wordt door webtrees gebruikt om mediabestanden, GEDCOM bestanden, "
+"tijdelijke bestanden enz. in op te slaan. Deze bestanden kunnen privé data "
+"bevatten, en mogen niet beschikbaar worden gemaakt over het internet."
 
 #. I18N: Help text for the “Media folder” configuration setting
 #: admin_trees_config.php:1058
 msgid "This folder will be used to store the media files for this family tree."
-msgstr "Deze map wordt gebruikt om mediabestanden van deze stamboom in op te slaan."
+msgstr ""
+"Deze map wordt gebruikt om de mediabestanden van deze stamboom in op te "
+"slaan."
 
 #: app/Filter.php:480
 msgid "This form has expired.  Try again."
@@ -15012,7 +15019,9 @@ msgstr "Upload mediabestanden"
 
 #: admin_media_upload.php:187
 msgid "Upload one or more media files from your local computer.  Media files can be pictures, video, audio, or other formats."
-msgstr "Upload  één of meer mediabestanden vanaf uw lokale computer. Mediabestanden  kunnen foto-, video-, audio- of andere formaten zijn."
+msgstr ""
+"Upload  één of meer mediabestanden vanaf uw lokale computer. Mediabestanden "
+"kunnen foto-, video-, audio- of andere formaten zijn."
 
 #: app/Stats.php:6962
 msgid "Uruguay"
