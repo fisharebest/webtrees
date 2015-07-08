@@ -294,7 +294,7 @@ if (Filter::server('HTTP_CLIENT_IP') !== null) {
 } elseif (Filter::server('HTTP_X_FORWARDED_FOR') !== null) {
 	define('WT_CLIENT_IP', Filter::server('HTTP_X_FORWARDED_FOR'));
 } else {
-	define('WT_CLIENT_IP', Filter::server('REMOTE_ADDR'));
+	define('WT_CLIENT_IP', Filter::server('REMOTE_ADDR', WT_REGEX_IPV4, '127.0.0.1'));
 }
 
 // Connect to the database
