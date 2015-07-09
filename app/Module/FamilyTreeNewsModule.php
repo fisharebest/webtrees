@@ -133,7 +133,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 			$content .= $news->body;
 			// Print Admin options for this News item
 			if (Auth::isManager($WT_TREE)) {
-				$content .= '<hr>' . '<a href="#" onclick="window.open(\'editnews.php?news_id=\'+' . $news->news_id . ', \'_blank\', news_window_specs); return false;">' . I18N::translate('Edit') . '</a> | ' . '<a href="index.php?action=deletenews&amp;news_id=' . $news->news_id . '&amp;ctype=' . $ctype . '" onclick="return confirm(\'' . I18N::translate('Are you sure you want to delete this news article?') . "');\">" . I18N::translate('Delete') . '</a><br>';
+				$content .= '<hr>' . '<a href="#" onclick="window.open(\'editnews.php?news_id=\'+' . $news->news_id . ', \'_blank\', news_window_specs); return false;">' . I18N::translate('Edit') . '</a> | ' . '<a href="index.php?action=deletenews&amp;news_id=' . $news->news_id . '&amp;ctype=' . $ctype . '&amp;ged=' . $WT_TREE->getNameHtml() . '" onclick="return confirm(\'' . I18N::translate('Are you sure you want to delete this news article?') . "');\">" . I18N::translate('Delete') . '</a><br>';
 			}
 			$content .= '</div>';
 		}
@@ -146,7 +146,7 @@ class FamilyTreeNewsModule extends AbstractModule implements ModuleBlockInterfac
 			if ($printedAddLink) {
 				$content .= '&nbsp;&nbsp;|&nbsp;&nbsp;';
 			}
-			$content .= '<a href="index.php?gedcom_news_archive=yes&amp;ctype=' . $ctype . '">' . I18N::translate('View archive') . "</a>";
+			$content .= '<a href="index.php?gedcom_news_archive=yes&amp;ctype=' . $ctype . '&amp;ged=' . $WT_TREE->getNameHtml() . '">' . I18N::translate('View archive') . "</a>";
 			$content .= FunctionsPrint::helpLink('gedcom_news_archive') . '<br>';
 		}
 
