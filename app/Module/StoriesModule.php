@@ -395,7 +395,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 						</td>
 						<td>
 							<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_edit&amp;block_id=<?php echo $story->block_id; ?>">
-								<div class="icon-edit">&nbsp;</div>
+								<i class="fa fa-pencil"></i> <?php echo I18N::translate('Edit'); ?>
 							</a>
 						</td>
 						<td>
@@ -403,7 +403,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 								href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_delete&amp;block_id=<?php echo $story->block_id; ?>"
 								onclick="return confirm('<?php echo I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeHtml($this->getBlockSetting($story->block_id, 'title'))); ?>');"
 							>
-								<div class="icon-delete">&nbsp;</div>
+								<i class="fa fa-trash"></i> <?php echo I18N::translate('Delete'); ?>
 							</a>
 					</td>
 				</tr>
