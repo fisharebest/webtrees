@@ -1832,8 +1832,7 @@ case 'reorder_children':
 				if ($option === 'bybirth') {
 					asort($children);
 				}
-				$i         = 0;
-				$show_full = 1; // Force details to show for each child
+				$i = 0;
 				foreach ($children as $id => $child) {
 					echo '<li style="cursor:move; margin-bottom:2px; position:relative;"';
 					if (!in_array($id, $ids)) {
