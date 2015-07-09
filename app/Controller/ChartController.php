@@ -58,7 +58,11 @@ class ChartController extends PageController {
 		}
 
 		// Extract parameter from form
-		$this->show_full = $show_full && Filter::getInteger('show_full', 0, 1, $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS'));
+		if ($show_full) {
+			$this->show_full = Filter::getInteger('show_full', 0, 1, $WT_TREE->getPreference('PEDIGREE_FULL_DETAILS'));
+		} else {
+			$this->show_full = 0;
+		}
 
 		$this->box = new \stdClass();
 		if ($this->showFull()) {

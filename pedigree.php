@@ -183,7 +183,7 @@ $controller
 						<?php echo FunctionsEdit::selectEditControl('orientation', array(0 => I18N::translate('Portrait'), 1 => I18N::translate('Landscape'), 2 => I18N::translate('Oldest at top'), 3 => I18N::translate('Oldest at bottom')), null, $controller->orientation); ?>
 					</td>
 					<td class="optionbox center">
-						<?php echo FunctionsEdit::twoStateCheckbox("show_full", $controller->showFull()); ?>
+						<?php echo FunctionsEdit::twoStateCheckbox('show_full', $controller->showFull()); ?>
 					</td>
 				</tr>
 			</table>
