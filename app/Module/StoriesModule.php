@@ -401,7 +401,7 @@ class StoriesModule extends AbstractModule implements ModuleTabInterface, Module
 						<td>
 							<a
 								href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_delete&amp;block_id=<?php echo $story->block_id; ?>"
-								onclick="return confirm('<?php echo I18N::translate('Are you sure you want to delete this story?'); ?>');"
+								onclick="return confirm('<?php echo I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeHtml($this->getBlockSetting($story->block_id, 'title'))); ?>');"
 							>
 								<div class="icon-delete">&nbsp;</div>
 							</a>
