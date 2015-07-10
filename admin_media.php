@@ -306,7 +306,7 @@ case 'load_json':
 			if (!$exists_pending) {
 				foreach ($media_trees as $media_tree) {
 					$create_form .=
-						'<p><a onclick="window.open(\'addmedia.php?action=showmediaform&amp;ged=' . rawurlencode($media_tree) . '&amp;filename=' . rawurlencode($unused_file) . '\', \'_blank\', edit_window_specs); return false;">' . I18N::translate('Create') . '</a> — ' . Filter::escapeHtml($media_tree) . '<p>';
+						'<p><a href="" onclick="window.open(\'addmedia.php?action=showmediaform&amp;ged=' . rawurlencode($media_tree) . '&amp;filename=' . rawurlencode($unused_file) . '\', \'_blank\', edit_window_specs); return false;">' . I18N::translate('Create') . '</a> — ' . Filter::escapeHtml($media_tree) . '<p>';
 				}
 			}
 
