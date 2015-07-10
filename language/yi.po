@@ -3,9 +3,10 @@ msgstr ""
 "Project-Id-Version: webtrees\n"
 "Report-Msgid-Bugs-To: i18n@webtrees.net\n"
 "POT-Creation-Date: 2015-06-22 23:08+0100\n"
-"PO-Revision-Date: 2015-06-04 21:55+0100\n"
+"PO-Revision-Date: 2015-07-10 13:02+0100\n"
 "Last-Translator: Familia Boim <familiaboim@gmail.com>\n"
-"Language-Team: Yiddish <http://translate.webtrees.net/projects/webtrees/webtrees/yi/>\n"
+"Language-Team: Yiddish "
+"<http://translate.webtrees.net/projects/webtrees/webtrees/yi/>\n"
 "Language: yi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -748,7 +749,7 @@ msgstr ""
 
 #: admin_trees_download.php:115 admin_trees_manage.php:213
 msgid "A file on the server"
-msgstr ""
+msgstr "אַ טעקע אויף די דינער"
 
 #: admin_trees_download.php:200 admin_trees_manage.php:202
 msgid "A file on your computer"
@@ -777,7 +778,7 @@ msgstr "א רשימה פון אָפט געפרעגט פראגעס און ענט�
 #. I18N: Description of the “Recent changes” module
 #: app/Module/RecentChangesModule.php:40
 msgid "A list of records that have been updated recently."
-msgstr ""
+msgstr "א רשימה פון רעקאָרדס וואָס האָבן שוין מאדיפיצירט לעצטנס."
 
 #. I18N: Description of “Research tasks” module
 #: app/Module/ResearchTaskModule.php:38
@@ -851,7 +852,7 @@ msgstr "א פּריוואַט געגנט צו שרייַבן הערות אָדע
 #: login.php:301
 #, php-format
 msgid "A prospective user has registered with webtrees at %s."
-msgstr ""
+msgstr "א פּראָספּעקטיוו באַניצער האט רעגיסטרירט מיט webtrees בייַ %s."
 
 #. I18N: Description of the “Pedigree” module
 #: app/Module/PedigreeReportModule.php:35
@@ -875,7 +876,7 @@ msgstr "א באַריכט פון אַ יחיד ס קינדסקינדער, אין
 #: app/Module/IndividualReportModule.php:35
 #: modules_v3/individual_report/report.xml:4
 msgid "A report of an individual’s details."
-msgstr ""
+msgstr "א מעלדונג פון אַ פערזאנס פרטים."
 
 #: modules_v3/fact_sources/report.xml:4
 msgid "A report of facts which are supported by a given source."
@@ -935,7 +936,7 @@ msgstr "א באַריכט פון די מענטשן וואס זענען ענג ש
 #. I18N: Description of the “Source” module
 #: app/Module/FactSourcesReportModule.php:35
 msgid "A report of the information provided by a source."
-msgstr ""
+msgstr "א מעלדונג פון די אינפֿאָרמאַציע צוגעשטעלט דורך אַ מקור."
 
 #. I18N: Description of the “Missing data”
 #: app/Module/MissingFactsReportModule.php:35
@@ -1289,11 +1290,11 @@ msgstr "לייג נייַ נאָמען"
 #: app/Controller/FamilyController.php:183
 #: app/Functions/FunctionsEdit.php:1012 app/Module/NotesTabModule.php:95
 msgid "Add a new note"
-msgstr ""
+msgstr "לייגן אַ נייַ קוויטל"
 
 #: app/Functions/FunctionsEdit.php:1043
 msgid "Add a new restriction"
-msgstr ""
+msgstr "לייגן אַ נייַ באַגרענעצן"
 
 #: app/Controller/FamilyController.php:189
 #: app/Functions/FunctionsEdit.php:1022 app/Module/NotesTabModule.php:105
@@ -8058,7 +8059,7 @@ msgstr "לבנון"
 #: modules_v3/relative_ext_report/report.xml:8
 msgctxt "paper size"
 msgid "Legal"
-msgstr "Legal"
+msgstr "לעגאַל"
 
 #. I18N: gedcom tag LEGA
 #: app/GedcomTag.php:544
