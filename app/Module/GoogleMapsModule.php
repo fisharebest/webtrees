@@ -3344,7 +3344,7 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			exit;
 		}
 
-		if ($action == "update") {
+		if ($action === 'update') {
 			// --- find the place in the file
 			$row =
 				Database::prepare("SELECT pl_place, pl_lati, pl_long, pl_icon, pl_parent_id, pl_level, pl_zoom FROM `##placelocation` WHERE pl_id=?")
@@ -3360,14 +3360,14 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			$parent_id         = $row->pl_parent_id;
 			$level             = $row->pl_level;
 			$zoomfactor        = $row->pl_zoom;
-			$parent_lati       = "0.0";
-			$parent_long       = "0.0";
+			$parent_lati       = 0.0;
+			$parent_long       = 0.0;
 			if ($row->pl_lati !== null && $row->pl_long !== null) {
 				$place_lati = (float) (str_replace(array('N', 'S', ','), array('', '-', '.'), $row->pl_lati));
 				$place_long = (float) (str_replace(array('E', 'W', ','), array('', '-', '.'), $row->pl_long));
 			} else {
-				$place_lati = null;
-				$place_long = null;
+				$place_lati = 0.0;
+				$place_long = 0.0;
 				$zoomfactor = 1;
 			}
 
@@ -3387,23 +3387,21 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					}
 				}
 				$parent_id = $row->pl_parent_id;
-			}
-			while ($row->pl_parent_id != 0 && $row->pl_lati === null && $row->pl_long === null);
+			} while ($row->pl_parent_id != 0 && $row->pl_lati === null && $row->pl_long === null);
 
 			echo '<b>', Filter::escapeHtml(str_replace('Unknown', I18N::translate('unknown'), implode(I18N::$list_separator, array_reverse($where_am_i, true)))), '</b><br>';
 		}
 
-		if ($action == 'add') {
+		if ($action === 'add') {
 			// --- find the parent place in the file
 			if ($placeid != 0) {
-				if (!isset($place_name)) $place_name = '';
-				$place_lati                          = null;
-				$place_long                          = null;
-				$zoomfactor                          = 1;
-				$parent_lati                         = '0.0';
-				$parent_long                         = '0.0';
-				$place_icon                          = '';
-				$parent_id                           = $placeid;
+				$place_lati  = 0.0;
+				$place_long  = 0.0;
+				$zoomfactor  = 1;
+				$parent_lati = 0.0;
+				$parent_long = 0.0;
+				$place_icon  = '';
+				$parent_id   = $placeid;
 				do {
 					$row =
 						Database::prepare("SELECT pl_lati, pl_long, pl_parent_id, pl_zoom, pl_level FROM `##placelocation` WHERE pl_id=?")
@@ -3420,22 +3418,23 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 					}
 					$parent_id = $row->pl_parent_id;
 				} while ($row->pl_parent_id != 0 && $row->pl_lati === null && $row->pl_long === null);
-			}
-			else {
-				if (!isset($place_name)) $place_name = '';
-				$place_lati                          = null;
-				$place_long                          = null;
-				$parent_lati                         = "0.0";
-				$parent_long                         = "0.0";
-				$place_icon                          = '';
-				$parent_id                           = 0;
-				$level                               = 0;
-				$zoomfactor                          = $this->getSetting('GM_MIN_ZOOM');
+			} else {
+				$place_lati  = 0.0;
+				$place_long  = 0.0;
+				$parent_lati = 0.0;
+				$parent_long = 0.0;
+				$place_icon  = '';
+				$parent_id   = 0;
+				$level       = 0;
+				$zoomfactor  = $this->getSetting('GM_MIN_ZOOM');
 			}
 			$selected_country = 'Countries';
 
-			if (!isset($place_name) || $place_name == "") echo '<b>', I18N::translate('unknown');
-			else echo '<b>', $place_name;
+			if ($place_name == '') {
+				echo '<b>', I18N::translate('unknown');
+			} else {
+				echo '<b>', $place_name;
+			}
 			if (count($where_am_i) > 0)
 				echo ', ', Filter::escapeHtml(str_replace('Unknown', I18N::translate('unknown'), implode(I18N::$list_separator, array_reverse($where_am_i, true)))), '</b><br>';
 			echo '</b><br>';
@@ -3449,15 +3448,12 @@ class GoogleMapsModule extends AbstractModule implements ModuleConfigInterface, 
 			var marker;
 			var zoom;
 			var pl_name = '<?php echo Filter::escapeJs($place_name); ?>';
-			if (pl_name) {
-				var pl_lati = '<?php echo $place_lati; ?>';
-				var pl_long = '<?php echo $place_long; ?>';
+			if (<?php echo $place_lati; ?> !== 0.0 && <?php echo $place_long; ?> !== 0.0) {
+				var latlng = new google.maps.LatLng(<?php echo $place_lati; ?>, <?php echo $place_long; ?>);
 			} else {
-				var pl_lati = '<?php echo $parent_lati; ?>';
-				var pl_long = '<?php echo $parent_long; ?>';
+				var latlng = new google.maps.LatLng(<?php echo $parent_lati; ?>, <?php echo $parent_long; ?>);
 			}
 			var pl_zoom = <?php echo $zoomfactor; ?>;
-			var latlng = new google.maps.LatLng(pl_lati, pl_long);
 			var polygon1;
 			var polygon2;
 			var geocoder;
