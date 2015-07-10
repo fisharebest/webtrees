@@ -347,7 +347,7 @@ function all_media_folders() {
 	return Database::prepare(
 		"SELECT SQL_CACHE setting_value, setting_value" .
 		" FROM `##gedcom_setting`" .
-		" WHERE setting_name='MEDIA_DIRECTORY'" .
+		" WHERE setting_name='MEDIA_DIRECTORY' AND gedcom_id > 0" .
 		" GROUP BY 1" .
 		" ORDER BY 1"
 	)->execute(array())->fetchAssoc();
