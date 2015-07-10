@@ -248,7 +248,7 @@ case 'load_json':
 			"SELECT gedcom_name, gedcom_name" .
 			" FROM `##gedcom`" .
 			" JOIN `##gedcom_setting` USING (gedcom_id)" .
-			" WHERE setting_name='MEDIA_DIRECTORY' AND setting_value = :media_folder"
+			" WHERE setting_name='MEDIA_DIRECTORY' AND setting_value = :media_folder AND gedcom_id > 0"
 		)->execute(array(
 			'media_folder' => $media_folder,
 		))->fetchAssoc();
