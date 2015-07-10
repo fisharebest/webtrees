@@ -485,6 +485,10 @@ try {
 		'tblpfx="' . addcslashes($_POST['tblpfx'], '"') . '"' . PHP_EOL;
 
 	file_put_contents(WT_DATA_DIR . 'config.ini.php', $config_ini_php);
+
+	// Done - start using webtrees!
+	echo '<script>document.location=document.location;</script>';
+	echo '</form></body></html>';
 } catch (PDOException $ex) {
 	echo
 		'<p class="bad">', I18N::translate('An unexpected database error occurred.'), '</p>',
@@ -492,6 +496,3 @@ try {
 		'<p class="info">', I18N::translate('The webtrees developers would be very interested to learn about this error.  If you contact them, they will help you resolve the problem.'), '</p>';
 }
 
-// Done - start using webtrees!
-echo '<script>document.location=document.location;</script>';
-echo '</form></body></html>';

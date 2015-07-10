@@ -28,7 +28,7 @@ class Migration23 implements MigrationInterface {
 		// - media table columns should be not null, so we can find
 		// media objects with missing files
 		Database::exec(
-			"ALTER IGNORE TABLE `##media`" .
+			"ALTER TABLE `##media`" .
 			" CHANGE m_ext      m_ext      VARCHAR(6)   COLLATE utf8_unicode_ci NOT NULL," .
 			" CHANGE m_type     m_type     VARCHAR(20)  COLLATE utf8_unicode_ci NOT NULL," .
 			" CHANGE m_filename m_filename VARCHAR(512) COLLATE utf8_unicode_ci NOT NULL," .
