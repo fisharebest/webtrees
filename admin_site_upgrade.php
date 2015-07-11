@@ -433,8 +433,8 @@ echo '<li>', /* I18N: The system is about to [...] */ I18N::translate('Copy file
 // The wiki tells people how to customize webtrees by modifying various files.
 // Create a backup of these, just in case the user forgot!
 try {
-	copy('App/Gedcom/Code/Rela.php', WT_DATA_DIR . 'Rela' . date('-Y-m-d') . '.php');
-	copy('App/Gedcom/Tag.php', WT_DATA_DIR . 'Tag' . date('-Y-m-d') . '.php');
+	copy('app/GedcomCode/GedcomCode/Rela.php', WT_DATA_DIR . 'GedcomCodeRela' . date('-Y-m-d') . '.php');
+	copy('app/GedcomTag.php', WT_DATA_DIR . 'GedcomTag' . date('-Y-m-d') . '.php');
 } catch (\ErrorException $ex) {
 	// No problem if we cannot do this.
 }
