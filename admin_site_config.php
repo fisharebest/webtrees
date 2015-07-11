@@ -43,6 +43,7 @@ case 'site':
 		Site::setPreference('ALLOW_CHANGE_GEDCOM', Filter::postBool('ALLOW_CHANGE_GEDCOM'));
 		Site::setPreference('SESSION_TIME', Filter::post('SESSION_TIME'));
 		Site::setPreference('SERVER_URL', Filter::post('SERVER_URL'));
+		Site::setPreference('TIMEZONE', Filter::post('TIMEZONE'));
 		FlashMessages::addMessage(I18N::translate('The website preferences have been updated.'), 'success');
 	}
 	header('Location: ' . WT_BASE_URL . 'admin.php');
@@ -219,6 +220,19 @@ $controller->pageHeader();
 				?>
 				<?php echo I18N::translate('You can request a higher or lower limit, although the server may ignore this request.'); ?>
 				<?php echo I18N::translate('If you leave this setting empty, the default value will be used.'); ?>
+			</p>
+		</div>
+	</div>
+
+	<!-- TIMEZONE -->
+	<div class="form-group">
+		<label for="TIMEZONE" class="col-sm-3 control-label">
+			<?php echo I18N::translate('Time zone'); ?>
+		</label>
+		<div class="col-sm-9">
+			<?php echo FunctionsEdit::selectEditControl('TIMEZONE', array_combine(\DateTimeZone::listIdentifiers(), \DateTimeZone::listIdentifiers()), null, Site::getPreference('TIMEZONE') ?: 'UTC', 'class="form-control"'); ?>
+			<p class="small text-muted">
+				<?php echo I18N::translate('The time zone is required for date calculations, such as knowing today’s date.'); ?>
 			</p>
 		</div>
 	</div>

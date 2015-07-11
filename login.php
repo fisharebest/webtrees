@@ -50,7 +50,6 @@ $user_hashcode   = Filter::post('user_hashcode');
 $url             = Filter::post('url'); // Not actually a URL - just a path
 $username        = Filter::post('username');
 $password        = Filter::post('password');
-$timediff        = Filter::postInteger('timediff', -43200, 50400, 0); // Same range as date('Z')
 
 // These parameters may come from the URL which is emailed to users.
 if (!$action)        $action        = Filter::get('action');
@@ -93,7 +92,6 @@ case 'login':
 		Auth::login($user);
 		Log::addAuthenticationLog('Login: ' . Auth::user()->getUserName() . '/' . Auth::user()->getRealName());
 
-		Session::put('timediff', $timediff);
 		Session::put('locale', Auth::user()->getPreference('language'));
 		Session::put('theme_id', Auth::user()->getPreference('theme'));
 
@@ -163,10 +161,9 @@ default:
 		if ($message) {
 			echo '<p class="error">', $message, '</p>';
 		}
-	echo '<form id="login-form" name="login-form" method="post" action="', WT_LOGIN_URL, '" onsubmit="d=new Date(); this.timediff.value=-60*d.getTimezoneOffset();">
+	echo '<form id="login-form" name="login-form" method="post" action="', WT_LOGIN_URL, '">
 		<input type="hidden" name="action" value="login">
-		<input type="hidden" name="url" value="', Filter::escapeHtml($url), '">
-		<input type="hidden" name="timediff" value="0">';
+		<input type="hidden" name="url" value="', Filter::escapeHtml($url), '">';
 		echo '<div>
 			<label for="username">', I18N::translate('Username'),
 			'<input type="text" id="username" name="username" value="', Filter::escapeHtml($username), '" class="formField" autofocus>
