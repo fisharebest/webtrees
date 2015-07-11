@@ -180,7 +180,7 @@ case 'send':
 			$message['from_email'] = $from_email;
 		}
 		$message['subject'] = $subject;
-		$message['body']    = $body;
+		$message['body']    = nl2br($body, false);
 		$message['created'] = WT_TIMESTAMP;
 		$message['method']  = $method;
 		$message['url']     = $url;

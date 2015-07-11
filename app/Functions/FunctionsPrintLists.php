@@ -1624,7 +1624,12 @@ class FunctionsPrintLists {
 		$html = '';
 		foreach ($surnames as $surn => $surns) {
 			foreach ($surns as $spfxsurn => $indis) {
-				$size = 75.0 + 125.0 * (count($indis) - $minimum) / ($maximum - $minimum);
+				if ($maximum === $minimum) {
+					// All surnames occur the same number of times
+					$size = 150.0;
+				} else {
+					$size = 75.0 + 125.0 * (count($indis) - $minimum) / ($maximum - $minimum);
+				}
 				$html .= '<a style="font-size:' . $size . '%" href="' . $script . '?';
 				if ($surn) {
 					$html .= 'surname=' . urlencode($surn) . '&amp;ged=' . $tree->getNameUrl();

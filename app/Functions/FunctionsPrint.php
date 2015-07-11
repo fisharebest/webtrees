@@ -15,13 +15,11 @@
  */
 namespace Fisharebest\Webtrees\Functions;
 
-use Fisharebest\Webtrees\Auth;
 use Fisharebest\Webtrees\Controller\SearchController;
 use Fisharebest\Webtrees\Date;
 use Fisharebest\Webtrees\Fact;
 use Fisharebest\Webtrees\Family;
 use Fisharebest\Webtrees\Filter;
-use Fisharebest\Webtrees\GedcomCode\GedcomCodeRela;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeStat;
 use Fisharebest\Webtrees\GedcomCode\GedcomCodeTemp;
 use Fisharebest\Webtrees\GedcomRecord;
@@ -237,73 +235,6 @@ class FunctionsPrint {
 		} else {
 			return $string;
 		}
-	}
-
-	/**
-	 * Print the associations from the associated individuals in $event to the individuals in $record
-	 *
-	 * @param Fact $event
-	 *
-	 * @return string
-	 */
-	public static function formatAssociateRelationship(Fact $event) {
-		$parent = $event->getParent();
-		// To whom is this record an assocate?
-		if ($parent instanceof Individual) {
-			// On an individual page, we just show links to the person
-			$associates = array($parent);
-		} elseif ($parent instanceof Family) {
-			// On a family page, we show links to both spouses
-			$associates = $parent->getSpouses();
-		} else {
-			// On other pages, it does not make sense to show associates
-			return '';
-		}
-
-		preg_match_all('/^1 ASSO @(' . WT_REGEX_XREF . ')@((\n[2-9].*)*)/', $event->getGedcom(), $amatches1, PREG_SET_ORDER);
-		preg_match_all('/\n2 _?ASSO @(' . WT_REGEX_XREF . ')@((\n[3-9].*)*)/', $event->getGedcom(), $amatches2, PREG_SET_ORDER);
-
-		$html = '';
-		// For each ASSO record
-		foreach (array_merge($amatches1, $amatches2) as $amatch) {
-			$person = Individual::getInstance($amatch[1], $event->getParent()->getTree());
-			if ($person && $person->canShowName()) {
-				// Is there a "RELA" tag
-				if (preg_match('/\n[23] RELA (.+)/', $amatch[2], $rmatch)) {
-					// Use the supplied relationship as a label
-					$label = GedcomCodeRela::getValue($rmatch[1], $person);
-				} else {
-					// Use a default label
-					$label = GedcomTag::getLabel('ASSO', $person);
-				}
-
-				$values = array('<a href="' . $person->getHtmlUrl() . '">' . $person->getFullName() . '</a>');
-				foreach ($associates as $associate) {
-					$relationship_name = Functions::getAssociateRelationshipName($associate, $person);
-					if (!$relationship_name) {
-						$relationship_name = GedcomTag::getLabel('RELA');
-					}
-
-					if ($parent instanceof Family) {
-						// For family ASSO records (e.g. MARR), identify the spouse with a sex icon
-						$relationship_name .= $associate->getSexImage();
-					}
-
-					$values[] = '<a href="relationship.php?pid1=' . $associate->getXref() . '&amp;pid2=' . $person->getXref() . '&amp;ged=' . $associate->getTree()->getNameUrl() . '" rel="nofollow">' . $relationship_name . '</a>';
-				}
-				$value = implode(' — ', $values);
-
-				// Use same markup as GedcomTag::getLabelValue()
-				$asso = I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', $label, $value);
-			} elseif (!$person && Auth::isEditor($event->getParent()->getTree())) {
-				$asso = GedcomTag::getLabelValue('ASSO', '<span class="error">' . $amatch[1] . '</span>');
-			} else {
-				$asso = '';
-			}
-			$html .= '<div class="fact_ASSO">' . $asso . '</div>';
-		}
-
-		return $html;
 	}
 
 	/**

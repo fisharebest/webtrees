@@ -139,6 +139,9 @@
 
 				<!-- Print the husband -->
 				<Gedcom id="@HUSB">
+					<if condition="$photos==1">
+						<HighlightedImage left="$pwidth" width="80"/>
+					</if>
 					<!-- print the name and any level 1 sources -->
 					<TextBox bgcolor="$malebox_bgcolor" border="1" width="$width" newline="1">
 						<Text color="$tcolor" style="text"><var var="I18N::translate('Husband')" />  </Text>
@@ -490,6 +493,9 @@
 
 				<!-- Print the wife -->
 				<Gedcom id="@WIFE">
+					<if condition="$photos==1">
+						<HighlightedImage left="$pwidth" width="80"/>
+					</if>
 					<!-- print the name and sources -->
 					<TextBox bgcolor="$femalebox_bgcolor" border="1" width="$width" newline="1">
 						<Text color="$tcolor" style="text"><var var="I18N::translate('Wife')" />  </Text>
@@ -759,6 +765,9 @@
 				<!-- find and print all of the children in the family -->
 				<RepeatTag tag="CHIL">
 					<Gedcom id="@CHIL">
+						<if condition="$photos==1">
+							<HighlightedImage left="$pwidth" width="80"/>
+						</if>
 						<!-- Print the male child's name -->
 						<if condition="@SEX=='M'">
 							<TextBox bgcolor="$malebox_bgcolor" border="1" left="15" newline="1" width="$width1">

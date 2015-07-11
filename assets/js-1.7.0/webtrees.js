@@ -34,28 +34,6 @@ var pastefield, nameElement, remElement; // Elements to paste to
 // "rtl" on right-to-left pages.
 var textDirection = jQuery('html').attr('dir');
 
-// Create a modal dialog, fetching the contents from a URL
-function modalDialog(url, title, width) {
-	jQuery('<div title="' + title + '"></div>')
-		.load(url)
-		.dialog({
-			modal: true,
-			width: typeof width === 'undefined' ? 700 : width,
-			open: function() {
-				// Close the window when we click outside it.
-				var self = this;
-				jQuery('.ui-widget-overlay').on('click', function () {
-					jQuery(self).dialog('close');
-				});
-			},
-			close: function() {
-					jQuery(this).dialog ('destroy').remove ();
-			}
-		});
-
-	return false;
-}
-
 // Get a help message.
 function helpDialog(topic, module) {
 	jQuery.getJSON('help_text.php?help=' + topic + '&mod=' + module, function (json) {

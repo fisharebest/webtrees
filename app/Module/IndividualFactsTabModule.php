@@ -514,20 +514,6 @@ class IndividualFactsTabModule extends AbstractModule implements ModuleTabInterf
 						}
 					} else {
 						$factrec .= "\n2 _ASSO @" . $associate->getXref() . '@';
-						// CHR/BAPM events are commonly used.  Generate the reverse relationship
-						if (preg_match('/^(?:BAPM|CHR)$/', $fact->getTag()) && preg_match('/2 _?ASSO @(' . $person->getXref() . ')@\n3 RELA god(?:parent|mother|father)/', $fact->getGedcom())) {
-							switch ($associate->getSex()) {
-							case 'M':
-								$factrec .= "\n3 RELA godson";
-								break;
-							case 'F':
-								$factrec .= "\n3 RELA goddaughter";
-								break;
-							default:
-								$factrec .= "\n3 RELA godchild";
-								break;
-							}
-						}
 					}
 					$facts[] = new Fact($factrec, $associate, 'asso');
 				}
