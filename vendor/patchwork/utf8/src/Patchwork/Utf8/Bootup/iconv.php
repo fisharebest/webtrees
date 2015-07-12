@@ -1,4 +1,5 @@
-<?php // vi: set fenc=utf-8 ts=4 sw=4 et:
+<?php
+
 /*
  * Copyright (C) 2013 Nicolas Grekas - p@tchwork.com
  *
@@ -24,11 +25,11 @@ function iconv_mime_decode_headers($encoded_headers, $mode = 0, $enc = INF) {ret
 
 if (extension_loaded('mbstring'))
 {
-    function iconv_strlen($s, $enc = INF)                               {INF === $enc && $enc = s\Iconv::$internal_encoding; return mb_strlen($s, $enc);};
-    function iconv_strpos($s, $needle, $offset = 0, $enc = INF)         {INF === $enc && $enc = s\Iconv::$internal_encoding; return mb_strpos($s, $needle, $offset, $enc);};
-    function iconv_strrpos($s, $needle, $enc = INF)                     {INF === $enc && $enc = s\Iconv::$internal_encoding; return mb_strrpos($s, $needle, $enc);};
-    function iconv_substr($s, $start, $length = 2147483647, $enc = INF) {INF === $enc && $enc = s\Iconv::$internal_encoding; return mb_substr($s, $start, $length, $enc);};
-    function iconv_mime_decode($encoded_headers, $mode = 0, $enc = INF) {INF === $enc && $enc = s\Iconv::$internal_encoding; return mb_decode_mimeheader($encoded_headers, $mode, $enc);};
+    function iconv_strlen($s, $enc = INF)                               {INF === $enc and $enc = s\Iconv::$internal_encoding; return mb_strlen($s, $enc);};
+    function iconv_strpos($s, $needle, $offset = 0, $enc = INF)         {INF === $enc and $enc = s\Iconv::$internal_encoding; return mb_strpos($s, $needle, $offset, $enc);};
+    function iconv_strrpos($s, $needle, $enc = INF)                     {INF === $enc and $enc = s\Iconv::$internal_encoding; return mb_strrpos($s, $needle, $enc);};
+    function iconv_substr($s, $start, $length = 2147483647, $enc = INF) {INF === $enc and $enc = s\Iconv::$internal_encoding; return mb_substr($s, $start, $length, $enc);};
+    function iconv_mime_decode($encoded_headers, $mode = 0, $enc = INF) {INF === $enc and $enc = s\Iconv::$internal_encoding; return mb_decode_mimeheader($encoded_headers, $mode, $enc);};
 }
 else
 {

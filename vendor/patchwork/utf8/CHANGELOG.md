@@ -1,3 +1,11 @@
+## v1.2.3 (2015-06-25)
+
+- fix mb_strrpos shim with negative offset
+- sync tests with latest PHP/HHVM behaviors
+- remove PHP7/HHVM from allowed failures
+- move to PSR-1+2+4
+- mv class/ src/
+
 ## v1.2.2 (2015-04-26)
 
 - Fix ucwords to be functionally the same as in-built PHP version

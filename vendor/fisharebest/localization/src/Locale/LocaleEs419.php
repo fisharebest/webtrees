@@ -12,12 +12,12 @@ use Fisharebest\Localization\Territory\Territory419;
 class LocaleEs419 extends LocaleEs {
 	/** {@inheritdoc} */
 	public function endonym() {
-		return 'español de América';
+		return 'español latinoamericano';
 	}
 
 	/** {@inheritdoc} */
 	public function endonymSortable() {
-		return 'ESPANOL DE AMERICA';
+		return 'ESPANOL LATINOAMERICANO';
 	}
 
 	/** {@inheritdoc} */

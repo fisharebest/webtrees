@@ -17,4 +17,9 @@ class ScriptSidd extends AbstractScript implements ScriptInterface {
 	public function number() {
 		return '302';
 	}
+
+	/** {@inheritdoc} */
+	public function unicodeName() {
+		return 'Siddham';
+	}
 }

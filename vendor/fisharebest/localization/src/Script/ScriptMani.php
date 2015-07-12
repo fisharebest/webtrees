@@ -17,4 +17,9 @@ class ScriptMani extends AbstractScript implements ScriptInterface {
 	public function number() {
 		return '139';
 	}
+
+	/** {@inheritdoc} */
+	public function unicodeName() {
+		return 'Manichaean';
+	}
 }

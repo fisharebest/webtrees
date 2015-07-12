@@ -15,6 +15,11 @@ class ScriptModi extends AbstractScript implements ScriptInterface {
 
 	/** {@inheritdoc} */
 	public function number() {
-		return '323';
+		return '324';
+	}
+
+	/** {@inheritdoc} */
+	public function unicodeName() {
+		return 'Modi';
 	}
 }

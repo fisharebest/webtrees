@@ -17,4 +17,9 @@ class ScriptNarb extends AbstractScript implements ScriptInterface {
 	public function number() {
 		return '106';
 	}
+
+	/** {@inheritdoc} */
+	public function unicodeName() {
+		return 'Old_North_Arabian';
+	}
 }

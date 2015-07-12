@@ -17,4 +17,9 @@ class ScriptKhoj extends AbstractScript implements ScriptInterface {
 	public function number() {
 		return '322';
 	}
+
+	/** {@inheritdoc} */
+	public function unicodeName() {
+		return 'Khojki';
+	}
 }

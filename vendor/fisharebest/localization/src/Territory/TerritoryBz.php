@@ -19,6 +19,11 @@ class TerritoryBz extends AbstractTerritory implements TerritoryInterface {
 	}
 
 	/** {@inheritdoc} */
+	public function measurementSystem() {
+		return 'US';
+	}
+
+	/** {@inheritdoc} */
 	public function paperSize() {
 		return 'US-Letter';
 	}

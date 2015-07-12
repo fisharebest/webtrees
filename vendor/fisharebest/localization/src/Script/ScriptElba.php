@@ -17,4 +17,9 @@ class ScriptElba extends AbstractScript implements ScriptInterface {
 	public function number() {
 		return '226';
 	}
+
+	/** {@inheritdoc} */
+	public function unicodeName() {
+		return 'Elbasan';
+	}
 }
