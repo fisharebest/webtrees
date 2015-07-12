@@ -20,6 +20,7 @@
 $finder = Symfony\CS\Finder\DefaultFinder::create()
 	->in(__DIR__)
 	->exclude('packages')
+	->exclude('themes/_custom')
 	->exclude('vendor');
 
 return Symfony\CS\Config\Config::create()
