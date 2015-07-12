@@ -1968,20 +1968,6 @@ abstract class AbstractTheme {
 	}
 
 	/**
-	 * A fixed string to identify this theme, in settings, etc.
-	 *
-	 * @return string
-	 */
-	abstract public function themeId();
-
-	/**
-	 * What is this theme called?
-	 *
-	 * @return string
-	 */
-	abstract public function themeName();
-
-	/**
 	 * Create the <title> tag.
 	 *
 	 * @param string $title
