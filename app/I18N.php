@@ -389,19 +389,19 @@ class I18N {
 		if (defined('GLOB_BRACE')) {
 			$translation_files = array_merge(
 				array(WT_ROOT . 'language/' . self::$locale->languageTag() . '.mo'),
-				glob(WT_MODULES_DIR . '*/language/' . self::$locale->languageTag() . '.{csv,php,mo}', GLOB_BRACE) ? : array(),
-				glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.{csv,php,mo}', GLOB_BRACE) ? : array()
+				glob(WT_MODULES_DIR . '*/language/' . self::$locale->languageTag() . '.{csv,php,mo}', GLOB_BRACE) ?: array(),
+				glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.{csv,php,mo}', GLOB_BRACE) ?: array()
 			);
 		} else {
 			// Some servers do not have GLOB_BRACE - see http://php.net/manual/en/function.glob.php
 			$translation_files = array_merge(
 				array(WT_ROOT . 'language/' . self::$locale->languageTag() . '.mo'),
-				glob(WT_MODULES_DIR . '*/language/' . self::$locale->languageTag() . '.csv') ? : array(),
-				glob(WT_MODULES_DIR . '*/language/' . self::$locale->languageTag() . '.php') ? : array(),
-				glob(WT_MODULES_DIR . '*/language/' . self::$locale->languageTag() . '.mo') ? : array(),
-				glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.csv') ? : array(),
-				glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.php') ? : array(),
-				glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.mo') ? : array()
+				glob(WT_MODULES_DIR . '*/language/' . self::$locale->languageTag() . '.csv') ?: array(),
+				glob(WT_MODULES_DIR . '*/language/' . self::$locale->languageTag() . '.php') ?: array(),
+				glob(WT_MODULES_DIR . '*/language/' . self::$locale->languageTag() . '.mo') ?: array(),
+				glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.csv') ?: array(),
+				glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.php') ?: array(),
+				glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.mo') ?: array()
 			);
 		}
 		// Rebuild files after one hour

@@ -598,8 +598,8 @@ echo '</div>'; //close "calendar-page"
  * Filter a list of anniversaries
  *
  * @param Fact[] $facts
- * @param string    $filterof
- * @param string    $filtersx
+ * @param string $filterof
+ * @param string $filtersx
  *
  * @return array
  */

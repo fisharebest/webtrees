@@ -76,7 +76,7 @@ class PortugueseSurnameTradition extends DefaultSurnameTradition implements Surn
 		}
 
 		return array(
-			'NAME' => '// //'
+			'NAME' => '// //',
 		);
 	}
 

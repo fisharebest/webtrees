@@ -385,9 +385,9 @@ function media_paths($media_folder) {
 /**
  * Search a folder (and optional subfolders) for filenames that match a search pattern.
  *
- * @param string  $dir
- * @param bool    $recursive
- * @param string  $filter
+ * @param string $dir
+ * @param bool   $recursive
+ * @param string $filter
  *
  * @return string[]
  */
