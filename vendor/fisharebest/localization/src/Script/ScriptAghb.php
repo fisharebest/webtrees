@@ -17,4 +17,9 @@ class ScriptAghb extends AbstractScript implements ScriptInterface {
 	public function number() {
 		return '239';
 	}
+
+	/** {@inheritdoc} */
+	public function unicodeName() {
+		return 'Caucasian_Albanian';
+	}
 }

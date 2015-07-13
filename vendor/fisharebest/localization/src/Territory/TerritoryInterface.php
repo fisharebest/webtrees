@@ -26,7 +26,7 @@ interface TerritoryInterface {
 	public function firstDay();
 
 	/**
-	 * Does this territory prefer 'metric' or 'US' measurements.
+	 * Does this territory prefer 'metric', 'UK' or 'US' measurements.
 	 *
 	 * @return string
 	 */

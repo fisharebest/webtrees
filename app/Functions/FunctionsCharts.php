@@ -402,7 +402,7 @@ class FunctionsCharts {
 						echo "</td>";
 						// cousins
 						if ($show_cousins) {
-							print_cousins($famid_child, $show_full);
+							self::printCousins($famid_child, $show_full);
 						}
 					}
 				}

@@ -17,4 +17,9 @@ class ScriptPauc extends AbstractScript implements ScriptInterface {
 	public function number() {
 		return '263';
 	}
+
+	/** {@inheritdoc} */
+	public function unicodeName() {
+		return 'Pau_Cin_Hau';
+	}
 }

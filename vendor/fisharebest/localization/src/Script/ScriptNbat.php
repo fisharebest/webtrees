@@ -17,4 +17,9 @@ class ScriptNbat extends AbstractScript implements ScriptInterface {
 	public function number() {
 		return '159';
 	}
+
+	/** {@inheritdoc} */
+	public function unicodeName() {
+		return 'Nabataean';
+	}
 }

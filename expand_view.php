@@ -23,7 +23,6 @@ namespace Fisharebest\Webtrees;
 global $WT_TREE;
 
 use Fisharebest\Webtrees\Functions\Functions;
-use Fisharebest\Webtrees\Functions\FunctionsPrint;
 
 define('WT_SCRIPT_NAME', 'expand_view.php');
 require './includes/session.php';
@@ -44,37 +43,34 @@ Functions::sortFacts($facts);
 
 foreach ($facts as $fact) {
 	switch ($fact->getTag()) {
-	case 'SEX':
-	case 'FAMS':
-	case 'FAMC':
-	case 'NAME':
-	case 'TITL':
-	case 'NOTE':
-	case 'SOUR':
-	case 'SSN':
-	case 'OBJE':
-	case 'HUSB':
-	case 'WIFE':
-	case 'CHIL':
-	case 'ALIA':
 	case 'ADDR':
-	case 'PHON':
-	case 'SUBM':
-	case '_EMAIL':
+	case 'ALIA':
+	case 'ASSO':
 	case 'CHAN':
-	case 'URL':
+	case 'CHIL':
 	case 'EMAIL':
-	case 'WWW':
+	case 'FAMC':
+	case 'FAMS':
+	case 'HUSB':
+	case 'NAME':
+	case 'NOTE':
+	case 'OBJE':
+	case 'PHON':
 	case 'RESI':
 	case 'RESN':
-	case '_UID':
+	case 'SEX':
+	case 'SOUR':
+	case 'SSN':
+	case 'SUBM':
+	case 'TITL':
+	case 'URL':
+	case 'WIFE':
+	case 'WWW':
+	case '_EMAIL':
 	case '_TODO':
+	case '_UID':
 	case '_WT_OBJE_SORT':
 		// Do not show these
-		break;
-	case 'ASSO':
-		// Associates
-		echo FunctionsPrint::formatAssociateRelationship($fact);
 		break;
 	default:
 		// Simple version of FunctionsPrintFacts::print_fact()

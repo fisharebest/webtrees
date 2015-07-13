@@ -32,8 +32,8 @@ use Fisharebest\Webtrees\Query\QueryMedia;
 define('WT_SCRIPT_NAME', 'addmedia.php');
 require './includes/session.php';
 
-$NO_UPDATE_CHAN      = $WT_TREE->getPreference('NO_UPDATE_CHAN');
-$MEDIA_DIRECTORY     = $WT_TREE->getPreference('MEDIA_DIRECTORY');
+$NO_UPDATE_CHAN  = $WT_TREE->getPreference('NO_UPDATE_CHAN');
+$MEDIA_DIRECTORY = $WT_TREE->getPreference('MEDIA_DIRECTORY');
 
 $pid         = Filter::get('pid', WT_REGEX_XREF, Filter::post('pid', WT_REGEX_XREF)); // edit this media object
 $linktoid    = Filter::get('linktoid', WT_REGEX_XREF, Filter::post('linktoid', WT_REGEX_XREF)); // create a new media object, linked to this record
@@ -43,7 +43,6 @@ $text        = Filter::postArray('text');
 $tag         = Filter::postArray('tag', WT_REGEX_TAG);
 $islink      = Filter::postArray('islink');
 $glevels     = Filter::postArray('glevels', '[0-9]');
-
 $folder      = Filter::post('folder');
 $update_CHAN = !Filter::postBool('preserve_last_changed');
 
@@ -159,12 +158,10 @@ case 'create': // Save the information from the “showcreateform” action
 	} elseif (preg_match('/([\/\\\\<>])/', $filename, $match)) {
 		// Local media files cannot contain certain special characters
 		FlashMessages::addMessage(I18N::translate('Filenames are not allowed to contain the character “%s”.', $match[1]));
-		$filename = '';
 		break;
 	} elseif (preg_match('/(\.(php|pl|cgi|bash|sh|bat|exe|com|htm|html|shtml))$/i', $filename, $match)) {
 		// Do not allow obvious script files.
 		FlashMessages::addMessage(I18N::translate('Filenames are not allowed to have the extension “%s”.', $match[1]));
-		$filename = '';
 		break;
 	} elseif (!$filename) {
 		FlashMessages::addMessage(I18N::translate('No media file was provided.'));
@@ -178,7 +175,6 @@ case 'create': // Save the information from the “showcreateform” action
 		$serverFileName = WT_DATA_DIR . $MEDIA_DIRECTORY . $folderName . $fileName;
 		if (file_exists($serverFileName)) {
 			FlashMessages::addMessage(I18N::translate('The file %s already exists.  Use another filename.', $folderName . $fileName));
-			$filename = '';
 			break;
 		}
 		if (move_uploaded_file($_FILES['mediafile']['tmp_name'], $serverFileName)) {
@@ -189,7 +185,6 @@ case 'create': // Save the information from the “showcreateform” action
 				'<br>' .
 				Functions::fileUploadErrorText($_FILES['mediafile']['error'])
 			);
-			$filename = '';
 			break;
 		}
 
@@ -297,12 +292,10 @@ case 'update': // Save the information from the “editmedia” action
 	} elseif (preg_match('/([\/\\\\<>])/', $filename, $match)) {
 		// Local media files cannot contain certain special characters
 		FlashMessages::addMessage(I18N::translate('Filenames are not allowed to contain the character “%s”.', $match[1]));
-		$filename = '';
 		break;
 	} elseif (preg_match('/(\.(php|pl|cgi|bash|sh|bat|exe|com|htm|html|shtml))$/i', $filename, $match)) {
 		// Do not allow obvious script files.
 		FlashMessages::addMessage(I18N::translate('Filenames are not allowed to have the extension “%s”.', $match[1]));
-		$filename = '';
 		break;
 	} elseif (!$filename) {
 		FlashMessages::addMessage(I18N::translate('No media file was provided.'));
@@ -427,7 +420,7 @@ if (!$linktoid && $action == 'create') {
 	echo ' ', FunctionsPrint::printFindIndividualLink('linktoid');
 	echo ' ', FunctionsPrint::printFindFamilyLink('linktoid');
 	echo ' ', FunctionsPrint::printFindSourceLink('linktoid');
-	echo '<p class="small text-muted">', I18N::translate('Enter or search for the ID of the individual, family, or source to which this media item should be linked.'), '</p></td></tr>';
+	echo '<p class="small text-muted">', I18N::translate('Enter or search for the ID of the individual, family, or source to which this media object should be linked.'), '</p></td></tr>';
 }
 
 if ($media) {
@@ -439,6 +432,8 @@ if ($media) {
 // 1 FILE
 if (preg_match('/\n\d (FILE.*)/', $gedrec, $match)) {
 	$gedfile = $match[1];
+} elseif ($filename) {
+	$gedfile = 'FILE ' . $filename;
 } else {
 	$gedfile = 'FILE';
 }
@@ -467,7 +462,6 @@ if ($gedfile == 'FILE') {
 			'<p class="small text-muted">' . I18N::translate('Do not change to keep original filename.') . '<br>' . I18N::translate('You may enter a URL, beginning with “http://”.') . '</p>'
 		);
 	}
-	$fileName = '';
 	$folder   = '';
 } else {
 	if ($isExternal) {
@@ -689,7 +683,7 @@ if (!empty($gedrec)) {
 		FunctionsEdit::addSimpleTag(($sourceLevel + 1) . ' QUAY ' . $sourceQUAY);
 	}
 }
-if (Auth::isAdmin()) {
+if (Auth::isAdmin() && $action === 'update') {
 	echo '<tr><td class="descriptionbox wrap width25">';
 	echo GedcomTag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
 	if ($NO_UPDATE_CHAN) {

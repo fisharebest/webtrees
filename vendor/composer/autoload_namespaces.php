@@ -7,8 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Zend_' => array($vendorDir . '/bombayworks/zendframework1/library'),
-    'Patchwork' => array($vendorDir . '/patchwork/utf8/class'),
-    'Normalizer' => array($vendorDir . '/patchwork/utf8/class'),
     'Michelf' => array($vendorDir . '/michelf/php-markdown'),
     'HTMLPurifier' => array($vendorDir . '/ezyang/htmlpurifier/library'),
 );

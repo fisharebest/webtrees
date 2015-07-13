@@ -430,19 +430,24 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 			<?php echo I18N::translate('FAQs are lists of questions and answers, which allow you to explain the site’s rules, policies, and procedures to your visitors.  Questions are typically concerned with privacy, copyright, user-accounts, unsuitable content, requirement for source-citations, etc.'); ?>
 			<?php echo I18N::translate('You may use HTML to format the answer and to add links to other websites.'); ?>
 		</p>
+		<form class="form form-inline">
+			<label for="ged" class="sr-only">
+				<?php echo I18N::translate('Family tree'); ?>
+			</label>
+			<input type="hidden" name="mod" value="<?php echo  $this->getName(); ?>">
+			<input type="hidden" name="mod_action" value="admin_config">
+			<?php echo FunctionsEdit::selectEditControl('ged', Tree::getNameList(), null, $WT_TREE->getName(), 'class="form-control"'); ?>
+			<input type="submit" class="btn btn-primary" value="<?php echo I18N::translate('show'); ?>">
+		</form>
+
+		<p>
+			<a href="module.php?mod=<?php echo $this->getName(); ?>&amp;mod_action=admin_edit" class="btn btn-default">
+				<i class="fa fa-plus"></i>
+				<?php echo I18N::translate('Add an FAQ item'); ?>
+			</a>
+		</p>
+
 		<?php
-
-		echo
-			'<p><form>',
-			I18N::translate('Family tree'), ' ',
-			'<input type="hidden" name="mod", value="', $this->getName(), '">',
-			'<input type="hidden" name="mod_action" value="admin_config">',
-			FunctionsEdit::selectEditControl('ged', Tree::getNameList(), null, $WT_TREE->getNameHtml()),
-			'<input type="submit" value="', I18N::translate('show'), '">',
-			'</form></p>';
-
-		echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">', I18N::translate('Add an FAQ item'), '</a>';
-
 		echo '<table class="table table-bordered">';
 		if (empty($faqs)) {
 			echo '<tr><td class="error center" colspan="5">', I18N::translate('The FAQ list is empty.'), '</td></tr></table>';
@@ -473,7 +478,7 @@ class FrequentlyAskedQuestionsModule extends AbstractModule implements ModuleMen
 				echo '</td><td>';
 				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit&amp;block_id=', $faq->block_id, '"><i class="fa fa-pencil"></i> ', I18N::translate('Edit'), '</a>';
 				echo '</td><td>';
-				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_delete&amp;block_id=', $faq->block_id, '" onclick="return confirm(\'', I18N::translate('Are you sure you want to delete this FAQ entry?'), '\');"><i class="fa fa-trash"></i> ', I18N::translate('Delete'), '</a>';
+				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_delete&amp;block_id=', $faq->block_id, '" onclick="return confirm(\'', I18N::translate('Are you sure you want to delete “%s”?', Filter::escapeHtml($faq->header)), '\');"><i class="fa fa-trash"></i> ', I18N::translate('Delete'), '</a>';
 				echo '</td></tr>';
 				// NOTE: Print the title text of the current item
 				echo '<tr><td colspan="5">';

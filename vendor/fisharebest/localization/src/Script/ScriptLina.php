@@ -17,4 +17,9 @@ class ScriptLina extends AbstractScript implements ScriptInterface {
 	public function number() {
 		return '400';
 	}
+
+	/** {@inheritdoc} */
+	public function unicodeName() {
+		return 'Linear_A';
+	}
 }

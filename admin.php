@@ -53,8 +53,6 @@ $old_files = array(
 	WT_ROOT . 'includes/classes',
 	WT_ROOT . 'includes/controllers',
 	WT_ROOT . 'includes/family_nav.php',
-	WT_ROOT . 'includes/functions/functions_lang.php',
-	WT_ROOT . 'includes/functions/functions_tools.php',
 	WT_ROOT . 'logs.php',
 	WT_ROOT . 'manageservers.php',
 	WT_ROOT . 'media.php',
@@ -180,7 +178,6 @@ $old_files = array(
 	WT_ROOT . 'gedcheck.php',
 	WT_ROOT . 'images',
 	WT_ROOT . 'includes/dmsounds_UTF8.php',
-	WT_ROOT . 'includes/functions/functions_name.php',
 	WT_ROOT . 'includes/grampsxml.rng',
 	WT_ROOT . 'includes/session_spider.php',
 	WT_ROOT . 'modules_v3/googlemap/admin_editconfig.php',
@@ -193,7 +190,6 @@ $old_files = array(
 	WT_ROOT . 'modules_v3/tree/css/vline.jpg',
 	// Removed in 1.3.1
 	WT_ROOT . 'imageflush.php',
-	WT_ROOT . 'includes/functions/functions_places.php',
 	WT_ROOT . 'modules_v3/googlemap/wt_v3_pedigree_map.js.php',
 	WT_ROOT . 'modules_v3/lightbox/js/tip_balloon_RTL.js',
 	// Removed in 1.3.2
@@ -203,7 +199,6 @@ $old_files = array(
 	WT_ROOT . 'modules_v3/random_media/help_text.php',
 	// Removed in 1.4.0
 	WT_ROOT . 'imageview.php',
-	WT_ROOT . 'includes/functions/functions_media_reorder.php',
 	WT_ROOT . 'media/MediaInfo.txt',
 	WT_ROOT . 'media/thumbs/ThumbsInfo.txt',
 	WT_ROOT . 'modules_v3/GEDFact_assistant/css/media_0_inverselink.css',
@@ -247,8 +242,6 @@ $old_files = array(
 	WT_ROOT . 'themes/webtrees/jquery-ui-1.10.0',
 	WT_ROOT . 'themes/xenea/jquery-ui-1.10.0',
 	// Removed in 1.5.0
-	WT_ROOT . 'includes/functions/functions_mail.php',
-	WT_ROOT . 'includes/functions/functions_privacy.php',
 	WT_ROOT . 'includes/media_reorder.php',
 	WT_ROOT . 'includes/old_messages.php',
 	WT_ROOT . 'modules_v3/GEDFact_assistant/_CENS/census_note_decode.php',
@@ -324,7 +317,6 @@ $old_files = array(
 	WT_ROOT . 'themes/xenea/css-1.5.2',
 	// Removed in 1.6.0
 	WT_ROOT . 'downloadbackup.php',
-	WT_ROOT . 'includes/functions/functions_utf-8.php',
 	WT_ROOT . 'modules_v3/ckeditor/ckeditor-4.3.2-custom',
 	WT_ROOT . 'site-php-version.php',
 	WT_ROOT . 'themes/_administration/css-1.5.3',
@@ -358,12 +350,15 @@ $old_files = array(
 	WT_ROOT . 'includes/config_data.php',
 	WT_ROOT . 'includes/db_schema',
 	WT_ROOT . 'includes/fonts',
+	WT_ROOT . 'includes/functions',
 	WT_ROOT . 'includes/hitcount.php',
 	WT_ROOT . 'includes/reportheader.php',
 	WT_ROOT . 'includes/specialchars.php',
 	WT_ROOT . 'js',
 	WT_ROOT . 'language/en_GB.mo', // Replaced with en-GB.mo
 	WT_ROOT . 'language/en_US.mo', // Replaced with en-US.mo
+	WT_ROOT . 'language/pt_BR.mo', // Replaced with pt-BR.mo
+	WT_ROOT . 'language/zh_CN.mo', // Replaced with zh-Hans.mo
 	WT_ROOT . 'language/extra',
 	WT_ROOT . 'library',
 	WT_ROOT . 'modules_v3/batch_update/admin_batch_update.php',
@@ -507,16 +502,16 @@ $changes = Database::prepare(
 // Server warnings
 $server_warnings = array();
 if (
-	version_compare(PHP_VERSION, '5.4', '<') && date('Y-m-d') >= '2014-08-14' ||
+	version_compare(PHP_VERSION, '5.4', '<') ||
 	version_compare(PHP_VERSION, '5.5', '<') && date('Y-m-d') >= '2015-09-14' ||
-	version_compare(PHP_VERSION, '5.6', '<') && date('Y-m-d') >= '2016-06-20' ||
-	version_compare(PHP_VERSION, '5.7', '<') && date('Y-m-d') >= '2017-08-28'
+	version_compare(PHP_VERSION, '5.6', '<') && date('Y-m-d') >= '2016-07-10' ||
+	version_compare(PHP_VERSION, '7.0', '<') && date('Y-m-d') >= '2017-08-28'
 ) {
 	$server_warnings[] = I18N::translate('Your web server is using PHP version %s, which is no longer receiving security updates.  You should upgrade to a later version as soon as possible.', PHP_VERSION);
 } elseif (
 	version_compare(PHP_VERSION, '5.5', '<') && date('Y-m-d') >= '2014-09-14' ||
-	version_compare(PHP_VERSION, '5.6', '<') && date('Y-m-d') >= '2015-06-20' ||
-	version_compare(PHP_VERSION, '5.7', '<') && date('Y-m-d') >= '2016-08-28'
+	version_compare(PHP_VERSION, '5.6', '<') && date('Y-m-d') >= '2015-07-10' ||
+	version_compare(PHP_VERSION, '7.0', '<') && date('Y-m-d') >= '2016-08-28'
 ) {
 	$server_warnings[] = I18N::translate('Your web server is using PHP version %s, which is no longer maintained.  You should upgrade to a later version.', PHP_VERSION);
 } else

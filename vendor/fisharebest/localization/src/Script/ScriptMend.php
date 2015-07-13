@@ -17,4 +17,9 @@ class ScriptMend extends AbstractScript implements ScriptInterface {
 	public function number() {
 		return '438';
 	}
+
+	/** {@inheritdoc} */
+	public function unicodeName() {
+		return 'Mende_Kikakui';
+	}
 }

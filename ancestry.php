@@ -114,7 +114,7 @@ $controller
 						<?php echo '<label>', I18N::translate('Show details'), '</label>'; ?>
 					</td>
 					<td class="optionbox">
-						<?php echo FunctionsEdit::checkbox('show_full', $controller->showFull()); ?>
+						<?php echo FunctionsEdit::twoStateCheckbox('show_full', $controller->showFull()); ?>
 					</td>
 				</tr>
 			</tbody>

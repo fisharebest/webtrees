@@ -477,7 +477,7 @@ abstract class AbstractTheme {
 	protected function formQuickSearchFields() {
 		return
 			'<input type="search" name="query" size="15" placeholder="' . I18N::translate('Search') . '">' .
-			'<input type="image" src="' . Theme::theme()->parameter('image-search') . '" alt="' . I18N::translate('Search') . '">';
+			'<input type="image" src="' . $this->assetUrl() . 'images/go.png" alt="' . I18N::translate('Search') . '">';
 	}
 
 	/**
@@ -1006,7 +1006,7 @@ abstract class AbstractTheme {
 			// Month view
 			new Menu(I18N::translate('Month'), 'calendar.php?' . $this->tree_url . '&amp;view=month', 'menu-calendar-month', array('rel' => 'nofollow')),
 			//Year view
-			new Menu(I18N::translate('Year'), 'calendar.php?' . $this->tree_url . '&amp;view=year', 'menu-calendar-year', array('rel' => 'nofollow'))
+			new Menu(I18N::translate('Year'), 'calendar.php?' . $this->tree_url . '&amp;view=year', 'menu-calendar-year', array('rel' => 'nofollow')),
 		));
 	}
 
@@ -1814,15 +1814,8 @@ abstract class AbstractTheme {
 			'image-hline'                    => $this->assetUrl() . 'images/hline.png',
 			'image-spacer'                   => $this->assetUrl() . 'images/spacer.png',
 			'image-vline'                    => $this->assetUrl() . 'images/vline.png',
-			'image-add'                      => $this->assetUrl() . 'images/add.png',
-			'image-button_family'            => $this->assetUrl() . 'images/buttons/family.png',
 			'image-minus'                    => $this->assetUrl() . 'images/minus.png',
 			'image-plus'                     => $this->assetUrl() . 'images/plus.png',
-			'image-remove'                   => $this->assetUrl() . 'images/delete.png',
-			'image-search'                   => $this->assetUrl() . 'images/go.png',
-			'image-default_image_F'          => $this->assetUrl() . 'images/silhouette_female.png',
-			'image-default_image_M'          => $this->assetUrl() . 'images/silhouette_male.png',
-			'image-default_image_U'          => $this->assetUrl() . 'images/silhouette_unknown.png',
 		);
 
 		if (array_key_exists($parameter_name, $parameters)) {
@@ -1973,20 +1966,6 @@ abstract class AbstractTheme {
 
 		return $stylesheets;
 	}
-
-	/**
-	 * A fixed string to identify this theme, in settings, etc.
-	 *
-	 * @return string
-	 */
-	abstract public function themeId();
-
-	/**
-	 * What is this theme called?
-	 *
-	 * @return string
-	 */
-	abstract public function themeName();
 
 	/**
 	 * Create the <title> tag.

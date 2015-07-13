@@ -60,7 +60,7 @@ class WebtreesTheme extends AbstractTheme implements ThemeInterface {
 	protected function formQuickSearchFields() {
 		return
 			'<input type="search" name="query" size="25" placeholder="' . I18N::translate('Search') . '">' .
-			'<input type="image" class="image" src="' . Theme::theme()->parameter('image-search') . '" alt="' . I18N::translate('Search') . '" title="' . I18N::translate('Search') . '">';
+			'<input type="image" class="image" src="' . $this->assetUrl() . 'images/search.png" alt="' . I18N::translate('Search') . '" title="' . I18N::translate('Search') . '">';
 	}
 
 	/**
@@ -98,7 +98,6 @@ class WebtreesTheme extends AbstractTheme implements ThemeInterface {
 			'chart-background-m'             => 'b1cff0',
 			'distribution-chart-high-values' => '84beff',
 			'distribution-chart-low-values'  => 'c3dfff',
-			'image-search'                   => $this->assetUrl() . 'images/search.png',
 		);
 
 		if (array_key_exists($parameter_name, $parameters)) {

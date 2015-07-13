@@ -17,4 +17,9 @@ class ScriptPalm extends AbstractScript implements ScriptInterface {
 	public function number() {
 		return '126';
 	}
+
+	/** {@inheritdoc} */
+	public function unicodeName() {
+		return 'Palmyrene';
+	}
 }

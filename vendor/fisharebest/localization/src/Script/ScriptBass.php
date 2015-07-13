@@ -17,4 +17,9 @@ class ScriptBass extends AbstractScript implements ScriptInterface {
 	public function number() {
 		return '259';
 	}
+
+	/** {@inheritdoc} */
+	public function unicodeName() {
+		return 'Bassa_Vah';
+	}
 }

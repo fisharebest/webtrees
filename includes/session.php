@@ -40,7 +40,7 @@ global $WT_TREE, $SEARCH_SPIDER;
 
 // Identify ourself
 define('WT_WEBTREES', 'webtrees');
-define('WT_VERSION', '1.7.0-dev');
+define('WT_VERSION', '1.7.1-dev');
 
 // External URLs
 define('WT_WEBTREES_URL', 'http://www.webtrees.net/');
@@ -167,8 +167,8 @@ if (version_compare(PHP_VERSION, '5.4', '<')) {
 
 require WT_ROOT . 'vendor/autoload.php';
 
-// PHP requires a time zone to be set
-date_default_timezone_set(date_default_timezone_get());
+// PHP requires a time zone to be set.  We'll set a better one later on.
+date_default_timezone_set('UTC');
 
 // Use the patchwork/utf8 library to:
 // 1) set all PHP defaults to UTF-8
@@ -294,7 +294,7 @@ if (Filter::server('HTTP_CLIENT_IP') !== null) {
 } elseif (Filter::server('HTTP_X_FORWARDED_FOR') !== null) {
 	define('WT_CLIENT_IP', Filter::server('HTTP_X_FORWARDED_FOR'));
 } else {
-	define('WT_CLIENT_IP', Filter::server('REMOTE_ADDR'));
+	define('WT_CLIENT_IP', Filter::server('REMOTE_ADDR', WT_REGEX_IPV4, '127.0.0.1'));
 }
 
 // Connect to the database
@@ -442,11 +442,14 @@ Session::put('locale', WT_LOCALE);
 // Note that the database/webservers may not be synchronised, so use DB time throughout.
 define('WT_TIMESTAMP', (int) Database::prepare("SELECT UNIX_TIMESTAMP()")->fetchOne());
 
+// Users get their own time-zone.  Visitors get the site time-zone.
 if (Auth::check()) {
-	define('WT_TIMESTAMP_OFFSET', Session::get('timediff'));
+	date_default_timezone_set(Auth::user()->getPreference('TIMEZONE', 'UTC'));
 } else {
-	define('WT_TIMESTAMP_OFFSET', (int) date('Z'));
+	date_default_timezone_set(Site::getPreference('TIMEZONE') ?: 'UTC');
 }
+define('WT_TIMESTAMP_OFFSET', date_offset_get(new \DateTime('now')));
+
 define('WT_CLIENT_JD', 2440588 + (int) ((WT_TIMESTAMP + WT_TIMESTAMP_OFFSET) / 86400));
 
 // The login URL must be an absolute URL, and can be user-defined

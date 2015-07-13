@@ -17,4 +17,9 @@ class ScriptMahj extends AbstractScript implements ScriptInterface {
 	public function number() {
 		return '314';
 	}
+
+	/** {@inheritdoc} */
+	public function unicodeName() {
+		return 'Mahajani';
+	}
 }

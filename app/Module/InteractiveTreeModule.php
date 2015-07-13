@@ -150,7 +150,7 @@ class InteractiveTreeModule extends AbstractModule implements ModuleTabInterface
 
 	/**
 	 * URL for our style sheet.
- *
+	 *
 	 * @return string
 	 */
 	public function css() {

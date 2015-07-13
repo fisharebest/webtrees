@@ -386,14 +386,26 @@ class I18N {
 		// Load the translation file(s)
 		// Note that glob() returns false instead of an empty array when open_basedir_restriction
 		// is in force and no files are found.  See PHP bug #47358.
-		$translation_files = array_merge(
-			array(WT_ROOT . 'language/' . self::$locale->languageTag() . '.mo'),
-			glob(WT_MODULES_DIR . '*/language/' . self::$locale->languageTag() . '.{csv,php,mo}', GLOB_BRACE) ?: array(),
-			glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.{csv,php,mo}', GLOB_BRACE) ?: array()
-		);
-
-		// Rebuild files after 2 hours
-		$rebuild_cache = time() > $filemtime + 7200;
+		if (defined('GLOB_BRACE')) {
+			$translation_files = array_merge(
+				array(WT_ROOT . 'language/' . self::$locale->languageTag() . '.mo'),
+				glob(WT_MODULES_DIR . '*/language/' . self::$locale->languageTag() . '.{csv,php,mo}', GLOB_BRACE) ?: array(),
+				glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.{csv,php,mo}', GLOB_BRACE) ?: array()
+			);
+		} else {
+			// Some servers do not have GLOB_BRACE - see http://php.net/manual/en/function.glob.php
+			$translation_files = array_merge(
+				array(WT_ROOT . 'language/' . self::$locale->languageTag() . '.mo'),
+				glob(WT_MODULES_DIR . '*/language/' . self::$locale->languageTag() . '.csv') ?: array(),
+				glob(WT_MODULES_DIR . '*/language/' . self::$locale->languageTag() . '.php') ?: array(),
+				glob(WT_MODULES_DIR . '*/language/' . self::$locale->languageTag() . '.mo') ?: array(),
+				glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.csv') ?: array(),
+				glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.php') ?: array(),
+				glob(WT_DATA_DIR . 'language/' . self::$locale->languageTag() . '.mo') ?: array()
+			);
+		}
+		// Rebuild files after one hour
+		$rebuild_cache = time() > $filemtime + 3600;
 		// Rebuild files if any translation file has been updated
 		foreach ($translation_files as $translation_file) {
 			if (filemtime($translation_file) > $filemtime) {

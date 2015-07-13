@@ -1695,10 +1695,6 @@ a:hover .nameZoom {
 	min-width: 100px;
 }
 
-.add_fav_ref label:after {
-	content: ":";
-}
-
 .add_fav_ref input {
 	margin: 0 5px;
 }
@@ -1918,10 +1914,6 @@ span.link_text {
 	margin: 0;
 	overflow: hidden;
 	padding: 5px;
-}
-
-.indi_name_details dt:after {
-	content: ":";
 }
 
 .indi_name_details .name1 {
@@ -3315,10 +3307,9 @@ table.table-census-assistant th {
 }
 
 #lifespan-scale {
-	background:  transparent url(images/lifespan-chunk.png) repeat-x left bottom;
-	height:      55px;
-	display:     inline-block;
-	white-space: nowrap;
+	background: transparent url(images/lifespan-chunk.png) repeat-x left bottom;
+	display: inline-block;
+	padding-bottom: 37px;
 }
 
 #lifespan-scale .date {
@@ -4136,7 +4127,6 @@ header h1 {
 	background: #84beff url(images/barra.png);
 	width: 100%;
 	color: #fff;
-	font-weight: bold;
 	height: 40px;
 	position: relative;
 }
@@ -4229,7 +4219,7 @@ header h1 {
 	display: block;
 }
 
-.secondary-menu .active {
+.secondary-menu .active a {
 	color: #006;
 	font-weight: 900;
 }
@@ -4313,7 +4303,8 @@ header nav {
 .primary-menu > li {
 	background-image: url(images/sprites-top-menu.png);
 	background-repeat: no-repeat;
-	width: 80px;
+	min-width: 80px;
+	width: auto;
 	text-align: center;
 	height: 28px;
 	line-height: 28px;

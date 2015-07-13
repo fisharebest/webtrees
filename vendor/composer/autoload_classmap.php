@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Datamatrix' => $vendorDir . '/tecnick.com/tcpdf/include/barcodes/datamatrix.php',
+    'Normalizer' => $vendorDir . '/patchwork/utf8/src/Normalizer.php',
     'PDF417' => $vendorDir . '/tecnick.com/tcpdf/include/barcodes/pdf417.php',
     'PclZip' => $vendorDir . '/pclzip/pclzip/pclzip.lib.php',
     'QRcode' => $vendorDir . '/tecnick.com/tcpdf/include/barcodes/qrcode.php',

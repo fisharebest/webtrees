@@ -1,6 +1,6 @@
 <?php namespace Fisharebest\Localization\Language;
 
-use Fisharebest\Localization\PluralRule\PluralRule1;
+use Fisharebest\Localization\PluralRule\PluralRule2;
 use Fisharebest\Localization\Script\ScriptBeng;
 use Fisharebest\Localization\Territory\TerritoryIn;
 
@@ -29,6 +29,6 @@ class LanguageAs extends AbstractLanguage implements LanguageInterface {
 
 	/** {@inheritdoc} */
 	public function pluralRule() {
-		return new PluralRule1;
+		return new PluralRule2;
 	}
 }

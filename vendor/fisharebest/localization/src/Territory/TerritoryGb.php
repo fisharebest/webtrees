@@ -12,4 +12,9 @@ class TerritoryGb extends AbstractTerritory implements TerritoryInterface {
 	public function code() {
 		return 'GB';
 	}
+
+	/** {@inheritdoc} */
+	public function measurementSystem() {
+		return 'UK';
+	}
 }

@@ -248,7 +248,7 @@ case 'load_json':
 			"SELECT gedcom_name, gedcom_name" .
 			" FROM `##gedcom`" .
 			" JOIN `##gedcom_setting` USING (gedcom_id)" .
-			" WHERE setting_name='MEDIA_DIRECTORY' AND setting_value = :media_folder"
+			" WHERE setting_name='MEDIA_DIRECTORY' AND setting_value = :media_folder AND gedcom_id > 0"
 		)->execute(array(
 			'media_folder' => $media_folder,
 		))->fetchAssoc();
@@ -306,7 +306,7 @@ case 'load_json':
 			if (!$exists_pending) {
 				foreach ($media_trees as $media_tree) {
 					$create_form .=
-						'<p><a onclick="window.open(\'addmedia.php?action=showmediaform&amp;ged=' . rawurlencode($media_tree) . '&amp;filename=' . rawurlencode($unused_file) . '\', \'_blank\', edit_window_specs); return false;">' . I18N::translate('Create') . '</a> — ' . Filter::escapeHtml($media_tree) . '<p>';
+						'<p><a href="" onclick="window.open(\'addmedia.php?action=showmediaform&amp;ged=' . rawurlencode($media_tree) . '&amp;filename=' . rawurlencode($unused_file) . '\', \'_blank\', edit_window_specs); return false;">' . I18N::translate('Create') . '</a> — ' . Filter::escapeHtml($media_tree) . '<p>';
 				}
 			}
 
@@ -347,7 +347,7 @@ function all_media_folders() {
 	return Database::prepare(
 		"SELECT SQL_CACHE setting_value, setting_value" .
 		" FROM `##gedcom_setting`" .
-		" WHERE setting_name='MEDIA_DIRECTORY'" .
+		" WHERE setting_name='MEDIA_DIRECTORY' AND gedcom_id > 0" .
 		" GROUP BY 1" .
 		" ORDER BY 1"
 	)->execute(array())->fetchAssoc();
@@ -385,9 +385,9 @@ function media_paths($media_folder) {
 /**
  * Search a folder (and optional subfolders) for filenames that match a search pattern.
  *
- * @param string  $dir
- * @param bool    $recursive
- * @param string  $filter
+ * @param string $dir
+ * @param bool   $recursive
+ * @param string $filter
  *
  * @return string[]
  */
