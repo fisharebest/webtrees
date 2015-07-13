@@ -16,15 +16,16 @@ namespace Fisharebest\Webtrees;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
+use Fisharebest\Webtrees\Controller\BaseController;
+use Fisharebest\Webtrees\Controller\PageController;
 use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleConfigInterface;
 use Fisharebest\Webtrees\Module\ModuleMenuInterface;
 
 class CustomJavaScriptModule extends AbstractModule implements ModuleConfigInterface, ModuleMenuInterface {
-	
+
 	public function __construct() {
-		parent::__construct('custom_js');		
+		parent::__construct('custom_js');
 	}
 
 	// Extend WT_Module
@@ -45,30 +46,36 @@ class CustomJavaScriptModule extends AbstractModule implements ModuleConfigInter
 				$controller
 					->restrictAccess(Auth::isAdmin())
 					->setPageTitle($this->getTitle())
-					->addInlineJavascript("
-					jQuery('head')
-					.append(\"<style type='text/css'> \
-						form {width:600px} \
-						form fieldset{border:none} \
-					</style>\");")
-					->pageHeader();
+					->pageHeader()
+					->addInlineJavascript('
+						jQuery("head").append("<style type=\"text/css\">h2, button {margin-left:15px}</style>");
+					');
 
-				$action = Filter::post("action");
-
-				if ($action == 'update') {
+				if (Filter::postBool('save') && Filter::checkCsrf()) {
 					$this->setSetting('CJS_FOOTER', Filter::post('NEW_CJS_FOOTER'));
 					Log::addConfigurationLog($this->getTitle() . ' config updated');
 				}
 
 				$CJS_FOOTER = $this->getSetting('CJS_FOOTER');
 				?>
-				<h3><?php echo I18N::translate('Custom Javascript for Footer'); ?></h3>
-				<form method="post" name="configform" action="<?php echo $this->getConfigLink(); ?>">
-					<input type="hidden" name="action" value="update">
-					<fieldset>
-						<textarea rows="10" cols="60" name="NEW_CJS_FOOTER"><?php echo $CJS_FOOTER; ?></textarea>
-					</fieldset>
-					<input type="submit" value="<?php echo I18N::translate('Save configuration'); ?>">
+				<ol class="breadcrumb small">
+					<li><a href="admin.php"><?php echo I18N::translate('Control panel'); ?></a></li>
+					<li><a href="admin_modules.php"><?php echo I18N::translate('Module administration'); ?></a></li>
+					<li class="active"><?php echo $controller->getPageTitle(); ?></li>
+				</ol>
+				<h2><?php echo $this->getTitle(); ?></h2>
+				<form method="post" name="custom-javascript-form">
+					<?php echo Filter::getCsrf(); ?>
+					<input type="hidden" name="save" value="1">
+					<div class="form-group col-sm-12">
+						<label class="control-label col-sm-8">
+							<textarea class="form-control" rows="15" name="NEW_CJS_FOOTER"><?php echo $CJS_FOOTER; ?></textarea>
+						</label>						
+					</div>
+					<button class="btn btn-primary" type="submit">						
+						<i class="fa fa-check"></i>
+						<?php echo I18N::translate('save'); ?>
+					</button>
 				</form>
 				<?php
 				break;
