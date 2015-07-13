@@ -13,28 +13,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-namespace Fisharebest\Webtrees;
+
+use Fisharebest\Webtrees\Filter;
 
 /**
  * This function was introduced in PHP 5.4
  */
 function session_register_shutdown() {
 	register_shutdown_function('session_write_close');
-}
-
-/**
- * https://php.net/date_default_timezone_get
- * Prior to PHP 5.4, this function would attempt to guess the timezone,
- * and emit a warning when it did this.  Suppresss the warning.
- *
- * @return string
- */
-function date_default_timezone_get() {
-	$level    = error_reporting(0);
-	$timezone = \date_default_timezone_get();
-	error_reporting($level);
-
-	return $timezone;
 }
 
 // http://php.net/manual/en/security.magicquotes.disabling.php
