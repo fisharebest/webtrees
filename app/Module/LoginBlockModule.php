@@ -67,9 +67,8 @@ class LoginBlockModule extends AbstractModule implements ModuleBlockInterface {
 		} else {
 			$title   = I18N::translate('Login');
 			$content = '<div id="login-box">
-				<form id="login-form" name="login-form" method="post" action="' . WT_LOGIN_URL . '" onsubmit="d=new Date(); this.timediff.value=-60*d.getTimezoneOffset();">
-				<input type="hidden" name="action" value="login">
-				<input type="hidden" name="timediff" value="">';
+				<form id="login-form" name="login-form" method="post" action="' . WT_LOGIN_URL . '">
+				<input type="hidden" name="action" value="login">';
 			$content .= '<div>
 				<label for="username">' . I18N::translate('Username') .
 					'<input type="text" id="username" name="username" class="formField">

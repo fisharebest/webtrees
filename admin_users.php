@@ -56,6 +56,7 @@ case 'save':
 		$pass2          = Filter::post('pass2', WT_REGEX_PASSWORD);
 		$theme          = Filter::post('theme', implode('|', array_keys(Theme::installedThemes())), '');
 		$language       = Filter::post('language');
+		$timezone       = Filter::post('timezone');
 		$contact_method = Filter::post('contact_method');
 		$comment        = Filter::post('comment');
 		$auto_accept    = Filter::postBool('auto_accept');
@@ -104,6 +105,7 @@ case 'save':
 			$user
 				->setPreference('theme', $theme)
 				->setPreference('language', $language)
+				->setPreference('TIMEZONE', $timezone)
 				->setPreference('contactmethod', $contact_method)
 				->setPreference('comment', $comment)
 				->setPreference('auto_accept', $auto_accept ? '1' : '0')
@@ -415,9 +417,23 @@ case 'edit':
 			</div>
 		</div>
 
+		<!-- TIMEZONE -->
+		<div class="form-group">
+			<label class="control-label col-sm-3" for="timezone">
+				<?php echo /* I18N: A configuration setting */ I18N::translate('Time zone'); ?>
+			</label>
+			<div class="col-sm-9">
+				<?php echo FunctionsEdit::selectEditControl('timezone', array_combine(\DateTimeZone::listIdentifiers(), \DateTimeZone::listIdentifiers()), null, $user->getPreference('TIMEZONE') ?: 'UTC', 'class="form-control"'); ?>
+				<p class="small text-muted">
+					<?php echo I18N::translate('The time zone is required for date calculations, such as knowing today’s date.'); ?>
+				</p>
+			</div>
+		</div>
+
 		<!-- AUTO ACCEPT -->
 		<div class="form-group">
 			<label class="control-label col-sm-3" for="auto_accept">
+				<?php echo I18N::translate('Changes'); ?>
 			</label>
 			<div class="col-sm-9">
 				<div class="checkbox">

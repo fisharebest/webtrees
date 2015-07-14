@@ -357,6 +357,8 @@ $old_files = array(
 	WT_ROOT . 'js',
 	WT_ROOT . 'language/en_GB.mo', // Replaced with en-GB.mo
 	WT_ROOT . 'language/en_US.mo', // Replaced with en-US.mo
+	WT_ROOT . 'language/pt_BR.mo', // Replaced with pt-BR.mo
+	WT_ROOT . 'language/zh_CN.mo', // Replaced with zh-Hans.mo
 	WT_ROOT . 'language/extra',
 	WT_ROOT . 'library',
 	WT_ROOT . 'modules_v3/batch_update/admin_batch_update.php',
