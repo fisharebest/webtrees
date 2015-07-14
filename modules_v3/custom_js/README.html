@@ -19,7 +19,7 @@
 
 <head>
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
-    <title>webtrees ReadMe file</title>
+    <title>Custom Javascript Module for webtrees</title>
     <style type='text/css'>
         body{color:black;background-color:white;font:14px tahoma arial helvetica sans-serif;padding:10px;margin-right: 30px}
         a{color:#81A9CB;font-weight:normal;text-decoration:none}
@@ -35,8 +35,8 @@
     </style>
 </head>
 <body>
-    <a id='top'><h1><strong>webtrees</strong> ReadMe File</h1></a>
-    <h2>For Module: Custom JavaScript</h2>
+    <a id='top'><h1>Custom Javascript Module</h1></a>
+    <h2>For webtrees 1.7.0 or later</h2>
     <ol>
         <li><a href='#purpose'>Purpose of the module</a></li>
         <li><a href='#install'>Installing the module</a></li>
@@ -72,12 +72,26 @@
         <li>Extract the files from the zip container into your server's <strong>webtrees</strong> modules folder (currently called modules_v3); this will create a new folder there called 'custom_js' containing module.php and README.html (this file).</li>
         <li>Login to <strong>webtrees</strong> as administrator and go to the Module Administration (Control Panel -> Modules -> Module Administration). Look down the list of installed modules for 'Custom JavaScript' and ensure it is ticked as 'enabled'.
         </li>
-        <li>Click the module name to go to the module configuration page. Write your custom JavaScript (without &lt;script&gt;&lt;/script&gt; tags), save the configuration and you are ready.
+        <li>Click the module name to go to the module configuration page. Write your custom JavaScript, <strong>without &lt;script&gt;&lt;/script&gt; tags!</strong>, save the configuration and you are ready.
         </li>
         <li>
-            Note that your custom JavaScript can include embedded variables from the WT_Stats class.
+            Note that your custom JavaScript can include embedded variables from the Stats class.
         </li>
     </ul>
-    <hr>    
+    <hr>
+    <!-- USE-->
+    <div class='container'>
+        <a id='use'>
+            <h3>How to use the module</h3>
+        </a>
+        <div>
+            <a href='#top'>
+                back to top
+            </a>
+        </div>
+    </div>
+    One possible use for this module is to implement a custom footer on your site:
+	<pre>$(".contacts-links").after('<div id="copyright">Copyright 2015 JustCarmen</div>');</pre>
+    <hr>
 </body>
 </html>
