@@ -460,7 +460,7 @@ if (Site::getPreference('LOGIN_URL')) {
 }
 
 // If there is no current tree and we need one, then redirect somewhere
-if (WT_SCRIPT_NAME != 'admin_trees_manage.php' && WT_SCRIPT_NAME != 'admin_pgv_to_wt.php' && WT_SCRIPT_NAME != 'login.php' && WT_SCRIPT_NAME != 'logout.php' && WT_SCRIPT_NAME != 'import.php' && WT_SCRIPT_NAME != 'help_text.php' && WT_SCRIPT_NAME != 'message.php') {
+if (WT_SCRIPT_NAME != 'admin_trees_manage.php' && WT_SCRIPT_NAME != 'admin_pgv_to_wt.php' && WT_SCRIPT_NAME != 'login.php' && WT_SCRIPT_NAME != 'logout.php' && WT_SCRIPT_NAME != 'import.php' && WT_SCRIPT_NAME != 'help_text.php' && WT_SCRIPT_NAME != 'message.php' && WT_SCRIPT_NAME != 'action.php') {
 	if (!$WT_TREE || !$WT_TREE->getPreference('imported')) {
 		if (Auth::isAdmin()) {
 			header('Location: ' . WT_BASE_URL . 'admin_trees_manage.php');
